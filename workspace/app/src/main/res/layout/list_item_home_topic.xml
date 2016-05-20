@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.ushaqi.zhuishushenqi.widget.DividerSection android:layout_width="fill_parent" android:layout_height="@dimen/home_topic_item_height"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:paddingRight="@dimen/dp_20" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <FrameLayout android:layout_width="@dimen/shelf_divider_left_gap" android:layout_height="fill_parent">
+            <com.ushaqi.zhuishushenqi.ui.SmartImageView android:layout_gravity="center_vertical" android:id="@id/cover" android:layout_width="@dimen/dp_28" android:layout_height="@dimen/dp_35" android:layout_marginLeft="@dimen/dp_20" />
+        </FrameLayout>
+        <TextView android:textSize="@dimen/text_size_16" android:layout_gravity="center_vertical" android:id="@id/title" android:layout_width="0.0dip" android:layout_height="wrap_content" android:singleLine="true" android:layout_weight="1.0" />
+        <TextView android:textSize="@dimen/text_size_12" android:textColor="#ffffffff" android:gravity="center" android:layout_gravity="center" android:id="@id/message_count" android:background="@drawable/number_badge" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    </LinearLayout>
+</com.ushaqi.zhuishushenqi.widget.DividerSection>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_pressed="true" android:drawable="@drawable/bg_home_menu_top_pre_dark" />
+    <item android:drawable="@drawable/bg_home_menu_top_nor_dark" />
+</selector>

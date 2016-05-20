@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@id/game_post_menu_1" android:title="收藏" />
+    <item android:id="@id/game_post_menu_2" android:title="举报" />
+</menu>

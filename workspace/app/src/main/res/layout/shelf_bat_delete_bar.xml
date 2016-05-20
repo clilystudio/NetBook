@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="?android:windowBackground" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:background="@drawable/audio_bar_top_shadow" android:layout_width="fill_parent" android:layout_height="3.0dip" android:layout_alignParentTop="true" />
+    <RelativeLayout android:paddingLeft="@dimen/dp_32" android:paddingRight="@dimen/dp_32" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <Button android:textColor="?android:textColor" android:id="@id/select_all" android:background="@null" android:padding="@dimen/dp_16" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="全选" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+        <Button android:textColor="?colorPrimary" android:id="@id/delete" android:background="@null" android:padding="@dimen/dp_16" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="删除" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
+</RelativeLayout>

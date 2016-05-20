@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="?backgroundPressed" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/apk/res-auto">
+    <TextView android:gravity="left|center" android:background="?backgroundPressed" android:paddingTop="@dimen/dp_8" android:layout_width="fill_parent" android:layout_height="@dimen/dp_48" android:text="财产" style="@style/HomeListItemLabelV3" />
+    <com.ushaqi.zhuishushenqi.widget.PaySectionItem android:id="@id/section_pay_currency" tools:pay_label="追书币" tools:pay_icon="@drawable/ic_pay_currency" tools:pay_charge="@drawable/pay_charge_icon" style="@style/SectionItem" />
+    <View android:background="?lineColor" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="72.0dip" />
+    <com.ushaqi.zhuishushenqi.widget.PaySectionItem android:id="@id/section_pay_voucher" tools:pay_label="追书券" tools:pay_icon="@drawable/ic_pay_voucher" tools:pay_charge="@drawable/ios_arrow" style="@style/SectionItem" />
+    <TextView android:gravity="left|center" android:background="?backgroundPressed" android:paddingTop="@dimen/dp_8" android:layout_width="fill_parent" android:layout_height="@dimen/dp_48" android:text="记录" style="@style/HomeListItemLabelV3" />
+    <com.ushaqi.zhuishushenqi.widget.PaySectionItem android:id="@id/section_pay_charge" tools:pay_label="充值记录" tools:pay_icon="@drawable/ic_pay_record_charge" tools:pay_charge="@drawable/ios_arrow" style="@style/SectionItem" />
+    <View android:background="?lineColor" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="72.0dip" />
+    <com.ushaqi.zhuishushenqi.widget.PaySectionItem android:id="@id/section_pay_consume" tools:pay_label="消费记录" tools:pay_icon="@drawable/ic_pay_record_consume" tools:pay_charge="@drawable/ios_arrow" style="@style/SectionItem" />
+    <TextView android:gravity="left|center" android:id="@id/label_remove_ad" android:background="?backgroundPressed" android:paddingTop="@dimen/dp_8" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/dp_48" android:text="免广告" style="@style/HomeListItemLabelV3" />
+    <com.ushaqi.zhuishushenqi.widget.PaySectionItem android:id="@id/section_remove_ad" android:visibility="gone" tools:pay_label="免广告" tools:pay_icon="@drawable/ic_remove_ad" tools:pay_charge="@drawable/ios_arrow" style="@style/SectionItem" />
+</LinearLayout>

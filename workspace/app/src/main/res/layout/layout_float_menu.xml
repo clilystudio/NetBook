@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:fitsSystemWindows="false" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/ll_activity_container" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="16.0dip" android:layout_marginBottom="16.0dip" android:layout_alignParentRight="true" android:layout_alignParentBottom="true">
+        <android.support.design.widget.FloatingActionButton android:id="@id/fab_activty" android:layout_width="54.0dip" android:layout_height="54.0dip" android:src="@drawable/ic_fab_default" android:contentDescription="展开选项" app:elevation="0.0dip" app:backgroundTint="@color/primary_red" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/ll_tweet_container" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="50.0dip" android:layout_marginRight="19.0dip" android:layout_above="@id/ll_activity_container" android:layout_alignParentRight="true">
+        <TextView android:textSize="12.0sp" android:textColor="#ffffffff" android:background="@drawable/float_menu_bg_circle" android:padding="4.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="12.0dip" android:text="动态" />
+        <android.support.design.widget.FloatingActionButton android:id="@id/fab_tweet" android:layout_width="48.0dip" android:layout_height="48.0dip" android:src="@drawable/ic_activity" android:contentDescription="动态" app:elevation="0.0dip" app:backgroundTint="@color/primary_red" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/ll_artics_container" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="50.0dip" android:layout_marginRight="19.0dip" android:layout_above="@id/ll_tweet_container" android:layout_alignParentRight="true">
+        <TextView android:textSize="12.0sp" android:textColor="#ffffffff" android:background="@drawable/float_menu_bg_circle" android:padding="4.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="12.0dip" android:text="长文章" />
+        <android.support.design.widget.FloatingActionButton android:id="@id/fab_article" android:layout_width="48.0dip" android:layout_height="48.0dip" android:src="@drawable/ic_assignment_white_36dp" android:contentDescription="发表长文章" app:elevation="0.0dip" app:backgroundTint="@color/primary_red" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/ll_comment_container" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="50.0dip" android:layout_marginRight="19.0dip" android:layout_above="@id/ll_artics_container" android:layout_alignParentRight="true">
+        <TextView android:textSize="12.0sp" android:textColor="#ffffffff" android:background="@drawable/float_menu_bg_circle" android:padding="4.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="12.0dip" android:text="书评" />
+        <android.support.design.widget.FloatingActionButton android:id="@id/fab_comment" android:layout_width="48.0dip" android:layout_height="48.0dip" android:src="@drawable/ic_comment" android:contentDescription="书评" app:elevation="0.0dip" app:backgroundTint="@color/primary_red" />
+    </LinearLayout>
+</RelativeLayout>

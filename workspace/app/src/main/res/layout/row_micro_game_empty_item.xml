@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView android:textSize="@dimen/text_size_15" android:textColor="?android:textColor" android:gravity="center" android:padding="@dimen/dp_16" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="你还没有玩过的游戏哦"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

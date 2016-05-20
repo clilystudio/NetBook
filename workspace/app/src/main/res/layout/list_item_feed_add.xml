@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:gravity="center_vertical" android:background="?backgroundSelector" android:paddingTop="8.0dip" android:paddingRight="16.0dip" android:paddingBottom="8.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:baselineAligned="false"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/dp_5">
+        <FrameLayout android:id="@id/left_part" android:layout_width="@dimen/shelf_divider_left_gap" android:layout_height="wrap_content">
+            <com.ushaqi.zhuishushenqi.widget.CoverView android:layout_gravity="center" android:id="@id/book_feed_add_cover" style="@style/CoverView" />
+        </FrameLayout>
+        <TextView android:ellipsize="end" android:id="@id/book_feed_add_title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="书名" android:singleLine="true" android:layout_toRightOf="@id/left_part" android:layout_centerVertical="true" style="@style/LargeText" />
+    </RelativeLayout>
+    <CheckBox android:id="@id/book_feed_add_checkbox" android:focusable="false" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:checked="false" android:layout_alignParentRight="true" android:layout_centerVertical="true" style="@style/Feed_Add_Checkbox" />
+</RelativeLayout>

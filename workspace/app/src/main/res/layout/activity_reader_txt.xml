@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/root" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.ushaqi.zhuishushenqi.reader.PagerWidget android:id="@id/main_view" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.ushaqi.zhuishushenqi.reader.AutoReaderTextView android:id="@id/tv_auto_reader_body" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/page_horizontal_padding" android:layout_marginTop="@dimen/reader_page_body_margin" android:layout_marginRight="@dimen/page_horizontal_padding" android:layout_marginBottom="@dimen/reader_page_body_margin" android:layout_alignParentBottom="true" />
+    <View android:id="@id/view_auto_reader_shadow" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/dp_4" android:layout_alignTop="@id/tv_auto_reader_body" />
+    <include android:id="@id/auto_reader_setting" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" layout="@layout/reader_auto_setting" />
+    <include android:id="@id/reader_tts_setting" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" layout="@layout/reader_tts_setting" />
+    <include android:id="@id/setting_widget" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/action_bar_bottom_height" android:layout_alignParentBottom="true" layout="@layout/reader_setting" />
+    <include android:id="@id/reader_txt_action_bar" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_alignParentBottom="true" layout="@layout/reader_operation_bar" />
+    <ProgressBar android:id="@id/reader_content_loading" android:visibility="gone" android:layout_centerInParent="true" style="@style/Loading" />
+</RelativeLayout>

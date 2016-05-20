@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="-30.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RadioGroup android:id="@id/time_group" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dp_30" android:layout_marginRight="@dimen/dp_30">
+        <RadioButton android:id="@id/time_2" android:text="2分钟" style="@style/MyRadioButton" />
+        <RadioButton android:id="@id/time_5" android:text="5分钟" style="@style/MyRadioButton" />
+        <RadioButton android:id="@id/time_10" android:text="10分钟" style="@style/MyRadioButton" />
+        <RadioButton android:id="@id/time_0" android:text="屏幕常亮" style="@style/MyRadioButton" />
+    </RadioGroup>
+</LinearLayout>

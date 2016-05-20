@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="?android:windowBackground" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ListView android:id="@id/list" android:background="#ffe6e6e6" android:layout_width="fill_parent" android:layout_height="wrap_content" android:divider="@null" android:dividerHeight="0.0px" android:layout_weight="1.0" android:headerDividersEnabled="false" />
+    <TextView android:textSize="@dimen/text_size_15" android:textColor="?android:textColorTertiary" android:gravity="center" android:id="@id/ugc_add_empty" android:background="?backgroundPressed" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="请添加小说" android:layout_below="@id/list" />
+</RelativeLayout>

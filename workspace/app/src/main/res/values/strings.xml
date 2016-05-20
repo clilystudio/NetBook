@@ -1,0 +1,553 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="abc_action_bar_home_description">Navigate home</string>
+    <string name="abc_action_bar_up_description">Navigate up</string>
+    <string name="abc_action_menu_overflow_description">More options</string>
+    <string name="abc_action_mode_done">Done</string>
+    <string name="abc_activity_chooser_view_see_all">See all</string>
+    <string name="abc_activitychooserview_choose_application">Choose an app</string>
+    <string name="abc_searchview_description_clear">Clear query</string>
+    <string name="abc_searchview_description_query">Search query</string>
+    <string name="abc_searchview_description_search">Search</string>
+    <string name="abc_searchview_description_submit">Submit query</string>
+    <string name="abc_searchview_description_voice">Voice search</string>
+    <string name="abc_shareactionprovider_share_with">Share with</string>
+    <string name="abc_shareactionprovider_share_with_application">Share with %s</string>
+    <string name="pull_to_refresh_pull_label">Pull to refresh…</string>
+    <string name="pull_to_refresh_refreshing_label">Loading…</string>
+    <string name="pull_to_refresh_release_label">Release to refresh…</string>
+    <string name="bluetooth">蓝牙</string>
+    <string name="cancel">取消</string>
+    <string name="douban">豆瓣</string>
+    <string name="dropbox">Dropbox</string>
+    <string name="email">邮件</string>
+    <string name="evernote">印象笔记</string>
+    <string name="facebook">Facebook</string>
+    <string name="facebookmessenger">Facebook Messenger</string>
+    <string name="finish">完成</string>
+    <string name="flickr">Flickr</string>
+    <string name="foursquare">FourSquare</string>
+    <string name="google_plus_client_inavailable">Google+ 版本过低或者没有安装，需要升级或安装Google+才能使用！</string>
+    <string name="googleplus">Google+</string>
+    <string name="instagram">Instagram</string>
+    <string name="instagram_client_inavailable">Instagram版本过低或者没有安装，需要升级或安装Instagram才能使用！</string>
+    <string name="instapager_email_or_password_incorrect">Email或密码不正确</string>
+    <string name="instapaper">Instapaper</string>
+    <string name="instapaper_email">邮箱</string>
+    <string name="instapaper_login">登录</string>
+    <string name="instapaper_logining">登录中…</string>
+    <string name="instapaper_pwd">密码</string>
+    <string name="kaixin">开心网</string>
+    <string name="kakaostory">KakaoStory</string>
+    <string name="kakaostory_client_inavailable">目前您的KakaoStory版本过低或未安装，需要安装KakaoStory才能使用</string>
+    <string name="kakaotalk">KakaoTalk</string>
+    <string name="kakaotalk_client_inavailable">目前您的KakaoTalk版本过低或未安装，需要安装KakaoTalk才能使用</string>
+    <string name="line">Line</string>
+    <string name="line_client_inavailable">目前您的Line版本过低或未安装，需要安装Line才能使用</string>
+    <string name="linkedin">领英</string>
+    <string name="list_friends">%s的朋友</string>
+    <string name="mingdao">明道</string>
+    <string name="mingdao_share_content">网页分享</string>
+    <string name="multi_share">图文分享</string>
+    <string name="neteasemicroblog">网易微博</string>
+    <string name="pinterest">Pinterest</string>
+    <string name="pinterest_client_inavailable">Pinterest版本过低或者没有安装，需要升级或安装Pinterest才能使用！</string>
+    <string name="pocket">Pocket</string>
+    <string name="pull_to_refresh">下拉刷新</string>
+    <string name="qq">QQ</string>
+    <string name="qq_client_inavailable">QQ 版本过低或者没有安装，需要升级或安装QQ才能使用！</string>
+    <string name="qzone">QQ空间</string>
+    <string name="refreshing">刷新中…</string>
+    <string name="release_to_refresh">松开刷新</string>
+    <string name="renren">人人网</string>
+    <string name="select_a_friend">请选择一个朋友</string>
+    <string name="select_one_plat_at_least">请选择一个目标平台</string>
+    <string name="shake2share">摇晃手机！</string>
+    <string name="share">分享</string>
+    <string name="share_canceled">分享已取消</string>
+    <string name="share_completed">分享成功</string>
+    <string name="share_failed">分享失败</string>
+    <string name="share_to">分享到</string>
+    <string name="share_to_mingdao">分享到明道</string>
+    <string name="share_to_qq">分享到QQ</string>
+    <string name="share_to_qzone">分享到QQ空间</string>
+    <string name="share_to_qzone_default">来自%s的分享</string>
+    <string name="sharing">分享操作正在后台进行…</string>
+    <string name="shortmessage">信息</string>
+    <string name="sinaweibo">新浪微博</string>
+    <string name="sohumicroblog">搜狐微博</string>
+    <string name="sohusuishenkan">搜狐随身看</string>
+    <string name="tencentweibo">腾讯微博</string>
+    <string name="tumblr">Tumblr</string>
+    <string name="twitter">Twitter</string>
+    <string name="use_login_button">请改用“登录”按钮</string>
+    <string name="vkontakte">VK</string>
+    <string name="website">http://www.mob.com</string>
+    <string name="wechat">微信好友</string>
+    <string name="wechat_client_inavailable">目前您的微信版本过低或未安装微信，需要安装微信才能使用</string>
+    <string name="wechatfavorite">微信收藏</string>
+    <string name="wechatmoments">微信朋友圈</string>
+    <string name="weibo_oauth_regiseter">应用授权</string>
+    <string name="weibo_upload_content">分享图片</string>
+    <string name="whatsapp">WhatsApp</string>
+    <string name="whatsapp_client_inavailable">目前您的WhatsApp版本过低或未安装，需要安装WhatsApp才能使用</string>
+    <string name="yixin">易信</string>
+    <string name="yixin_client_inavailable">目前您的易信版本过低或未安装，需要安装易信才能使用</string>
+    <string name="yixinmoments">易信朋友圈</string>
+    <string name="youdao">有道云笔记</string>
+    <string name="pull_to_refresh_from_bottom_pull_label">@string/pull_to_refresh_pull_label</string>
+    <string name="pull_to_refresh_from_bottom_refreshing_label">@string/pull_to_refresh_refreshing_label</string>
+    <string name="pull_to_refresh_from_bottom_release_label">@string/pull_to_refresh_release_label</string>
+    <string name="app_init_message" formatted="false">首次打开应用，正在加载模块中…%n%</string>
+    <string name="app_name"> 追书神器 </string>
+    <string name="bad_tf_card_state">Bad TF Card State!</string>
+    <string name="copy_right">Copyright © 2015 Maxthon. All rights reserved.</string>
+    <string name="game_center">游戏中心</string>
+    <string name="game_not_found">Game Not Found!</string>
+    <string name="game_not_found_for_shortcut">Game Not Found!</string>
+    <string name="init_failure_message">应用初始化失败，请保证您的网络畅通！</string>
+    <string name="loading">载入中…</string>
+    <string name="no_network_connection">Please connect the network and try again!</string>
+    <string name="once_more_to_exit">Press once more to exit</string>
+    <string name="once_more_to_exit_online">Press once more to exit</string>
+    <string name="shortcut_gamecenter_addgame_title">More</string>
+    <string name="shortcut_gamecenter_title">Free</string>
+    <string name="storage_permission">Make Directoy Permission Denied!</string>
+    <string name="UMAppUpdate">App updating</string>
+    <string name="UMBreak_Network">Please make sure you are connected to internet,update failed</string>
+    <string name="UMDialog_InstallAPK">The lastest version has been downloaded, install now ?</string>
+    <string name="UMGprsCondition">(Warning: Not WIFI Condition)</string>
+    <string name="UMIgnore">Ingore this</string>
+    <string name="UMNewVersion">Latest version:</string>
+    <string name="UMNotNow">Not now</string>
+    <string name="UMTargetSize">Target size:</string>
+    <string name="UMToast_IsUpdating">Updating....</string>
+    <string name="UMUpdateContent">Update Content</string>
+    <string name="UMUpdateNow">Update now</string>
+    <string name="UMUpdateSize">Update size:</string>
+    <string name="UMUpdateTitle">New version found</string>
+    <string name="umeng_common_action_cancel">Cancel</string>
+    <string name="umeng_common_action_continue">Continue</string>
+    <string name="umeng_common_action_info_exist">The app is already in downloading list.</string>
+    <string name="umeng_common_action_pause">Pause</string>
+    <string name="umeng_common_download_failed">Download Failed!</string>
+    <string name="umeng_common_download_finish">Download finished,click to install it.</string>
+    <string name="umeng_common_download_notification_prefix">Downloading:</string>
+    <string name="umeng_common_info_interrupt">dowload interrupted.</string>
+    <string name="umeng_common_network_break_alert">Please make sure you are connected to internet, download failed</string>
+    <string name="umeng_common_patch_finish">Patch finished,click to install it.</string>
+    <string name="umeng_common_pause_notification_prefix">Pause:</string>
+    <string name="umeng_common_silent_download_finish">New version is ready,click to install it.</string>
+    <string name="umeng_common_start_download_notification">Download start.</string>
+    <string name="umeng_common_start_patch_notification">Patch start.</string>
+    <string name="umeng_fb_back">Back</string>
+    <string name="umeng_fb_contact_info">Contact Info</string>
+    <string name="umeng_fb_contact_info_hint">Email, msn, gtalk, or whatever we can find you.</string>
+    <string name="umeng_fb_contact_title">Contact</string>
+    <string name="umeng_fb_contact_update_at">Updated at</string>
+    <string name="umeng_fb_notification_content_formatter_multiple_msg">You received %d new replies from the app developer.</string>
+    <string name="umeng_fb_notification_content_formatter_single_msg">New reply: %s</string>
+    <string name="umeng_fb_notification_ticker_text">Got new reply</string>
+    <string name="umeng_fb_reply_content_default">Your precious feedback are appriciated.</string>
+    <string name="umeng_fb_reply_content_hint">I want to tell</string>
+    <string name="umeng_fb_reply_date_default">2013-3-12 13:24:00</string>
+    <string name="umeng_fb_send">Send</string>
+    <string name="umeng_fb_title">Feedback</string>
+    <string name="UMUpdateCheck">2.4.2.20140520</string>
+    <string name="abc_action_bar_home_description_format">%1$s, %2$s</string>
+    <string name="abc_action_bar_home_subtitle_description_format">%1$s, %2$s, %3$s</string>
+    <string name="abc_search_hint">Search…</string>
+    <string name="abc_toolbar_collapse_description">Collapse</string>
+    <string name="accessible_commit">发送</string>
+    <string name="accessible_game_center">游戏中心</string>
+    <string name="accessible_menu">菜单</string>
+    <string name="accessible_more">更多选项</string>
+    <string name="accessible_return">返回</string>
+    <string name="accessible_search">搜索</string>
+    <string name="accessible_search_clear">清除文字</string>
+    <string name="accessible_share">分享</string>
+    <string name="ad_download_prompt_flow">当前网络下载需消耗流量，请小心确认</string>
+    <string name="ad_download_prompt_wifi">哇，你正处在 Wi-Fi 网络下，下载无需流量 :)</string>
+    <string name="add_book">加入书架</string>
+    <string name="add_book_cancel">不了</string>
+    <string name="add_book_create">查找</string>
+    <string name="add_book_event">已添加《%1$s》</string>
+    <string name="add_book_help_content_title">请输入关键需求，限30字</string>
+    <string name="add_book_help_desc_hint">"请描述你想找的书的特点 
+
+- 需要等级lv3
+- 标题未注明需求的可能会被删除
+- 为了帮到更多的人，我们可能会删除需求相同的求书贴"</string>
+    <string name="add_book_help_title">编辑书荒求助</string>
+    <string name="add_book_hint">是否将本书加入书架？</string>
+    <string name="add_book_title">精确找书</string>
+    <string name="add_game_post_content_hint">请输入你的评论~</string>
+    <string name="add_girl_topic_desc_hint">"请输入话题内容
+
+要与网文有关啊~
+- 需要等级 lv.4
+- 文明用语、和谐友爱、团结互助、理解万岁！
+- 男生请低调，捣乱会被打"</string>
+    <string name="add_girl_topic_title">编辑女生区话题</string>
+    <string name="add_girl_topic_title_hint">请输入标题</string>
+    <string name="add_post">编辑话题</string>
+    <string name="add_post_category_title">发布</string>
+    <string name="add_review_content_title">编辑书评</string>
+    <string name="add_review_content_title_hint">请输入标题</string>
+    <string name="add_review_rating_title">打分</string>
+    <string name="add_review_title">选择小说</string>
+    <string name="add_topic_content_desc_hint">"请输入话题内容
+
+- 需要等级lv.2； 
+- 看书容易，写书不易，催更会被打PP； 
+- 友好讨论，请勿骂人； 
+- 发帖不加经验，勿发水帖； 
+- 优质话题将会被置顶加精哦，\\(^o^)/。"</string>
+    <string name="add_topic_content_title_hint">输入标题(不超过30字)</string>
+    <string name="add_update_not_notify">不再提示</string>
+    <string name="add_update_notify">登录后可同步您的书架哟！</string>
+    <string name="alarm_no_install_weixin">请安装微信后重试</string>
+    <string name="alert_download_in_3g">将消耗你%s的流量，是否下载？</string>
+    <string name="alert_too_many_words">回复文字太多了哦</string>
+    <string name="all">全部</string>
+    <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
+    <string name="audiobook_announcer">发布者:</string>
+    <string name="audiobook_attentiom_update">追更新</string>
+    <string name="audiobook_pause">暂停播放</string>
+    <string name="audiobook_sort_asc">从旧到新</string>
+    <string name="audiobook_sort_desc">从新到旧</string>
+    <string name="audiobook_start_listen">开始听书</string>
+    <string name="audiobooks">有声小说</string>
+    <string name="auth_invalid">第三方平台验证失败，请重试</string>
+    <string name="auto_buy_chapter_prompt_content">阅读页点击屏幕中央，选择“设置 → 更多设置”，可取消自动购买</string>
+    <string name="auto_buy_chapter_prompt_title">本书接下来的章节都会自动购买</string>
+    <string name="auto_reader_end_notify">已至本书最后一页</string>
+    <string name="auto_reader_speed_desc">翻页速度:%s</string>
+    <string name="auto_reader_stop">停止</string>
+    <string name="back">返回</string>
+    <string name="baidutieba">百度贴吧</string>
+    <string name="baidutieba_client_inavailable">目前您的百度贴吧版本过低或未安装，需要安装百度贴吧才能使用</string>
+    <string name="book_add_loading">正在搜索，请稍等…</string>
+    <string name="book_add_overflow">最多只能添加300本，请删除多余的小说后再进行添加</string>
+    <string name="book_feed_add_book">移入小说</string>
+    <string name="book_feed_setting_limit">当未读章节达到 %1$d 章时提醒</string>
+    <string name="book_info_add_book">追更新</string>
+    <string name="book_info_download">缓存全本</string>
+    <string name="book_info_remove_book">不追了</string>
+    <string name="book_info_search">开始阅读</string>
+    <string name="book_info_searching">正在打开…</string>
+    <string name="book_info_title">书籍详情</string>
+    <string name="category">分类</string>
+    <string name="category_title">分类</string>
+    <string name="chapter_dl">缓存</string>
+    <string name="chapter_dl_count_50">后面50章</string>
+    <string name="chapter_dl_count_after">后面全部</string>
+    <string name="chapter_dl_del_chapter">是否删除该资源站的缓存内容？</string>
+    <string name="chapter_dl_doing_msg">正在缓存中，是否停止？</string>
+    <string name="chapter_dl_goon">继续</string>
+    <string name="chapter_dl_net_type_msg">你没有连上WiFi哦，缓存会消耗你的流量，是否确定缓存？</string>
+    <string name="chapter_dl_title">缓存多少章？</string>
+    <string name="chapter_load_error">飞船失去网络已坠毁…</string>
+    <string name="charge_declare_desc1">1元=%1$d个追书币</string>
+    <string name="charge_declare_desc1_msg">1元话费=%1$d个追书币，已扣除运营商服务费用</string>
+    <string name="charge_declare_desc2">部分省份可能不支持短信充值</string>
+    <string name="charge_declare_desc3">"如充值遇到问题，请关注微信公众号：追书神器
+我们会及时为您服务。
+客服时间：周一至周五 09:00-20:00"</string>
+    <string name="charge_declare_title">说明：</string>
+    <string name="charge_help_a1">追书币是追书神器的虚拟货币，可以用来购买额外git的功能，享受追书神器提供的更加优质的服务。</string>
+    <string name="charge_help_a2">追书币可以通过充值的方式获取，支持支付宝、微信和短信等多种充值渠道。</string>
+    <string name="charge_help_a3">追书券是一种虚拟优惠券，有一定的有效期。在有效期内，追书劵可以等同于追书币使用，最终解释权归追书神器所有。</string>
+    <string name="charge_help_a4">追书券可以通过活动、促销等方式获取，请关注活动信息。</string>
+    <string name="charge_help_a5">正常情况下，充值的追书币将即刻到账，最迟不超过24小时。如未及时到账，可以关注“追书神器”官方微信公众号，联系客服为您处理。</string>
+    <string name="charge_help_a6">如果发现购买时所花费的追书币和预期不符，或有其他消费方面的问题，可以关注“追书神器”官方微信公众号，联系客服为您处理。</string>
+    <string name="charge_help_q1">什么是追书币？</string>
+    <string name="charge_help_q2">如何获取追书币？</string>
+    <string name="charge_help_q3">什么是追书券？</string>
+    <string name="charge_help_q4">如何获取追书券？</string>
+    <string name="charge_help_q5">充值没有到账？</string>
+    <string name="charge_help_q6">购买记录有问题？</string>
+    <string name="charge_help_title">帮助</string>
+    <string name="clean">清除</string>
+    <string name="cp_source">优质源</string>
+    <string name="custom_theme_day">日间模式</string>
+    <string name="custom_theme_night">夜间模式</string>
+    <string name="delete">删除</string>
+    <string name="disclaimer">"　　追书神器提醒您：在使用追书神器前，请您务必仔细阅读并透彻理解本声明。您可以选择不使用追书神器，但如果您使用追书神器，您的使用行为将被视为对本声明全部内容的认可。
+ 　　追书神器是一款提供网络小说即时更新的工具，为广大小说爱好者提供一种方便、快捷、舒适的试读体验。追书神器致力于最大程度的减少网络小说阅读者在自行搜寻过程中毫无意义的时间浪费，通过专业搜索展示不同网站中网络小说的最新章节。 追书神器为广大小说爱好者提供方便、快捷、舒适的试读体验的同时，也使优秀网络小说得以更迅捷、更广泛的传播，从而达到了在一定程度促进网络文学充分繁荣发展之目的。
+　　当您点击搜索一本书时，追书神器会将该书的书名以关键词的形式提交到第三方网站或搜索引擎（如百度、宜搜、贴吧等）。第三方网站返回的内容与追书神器无关，追书神器对其概不负责，亦不承担任何法律责任。 任何通过使用追书神器而链接到的第三方网页均系他人制作或提供，您可能从该第三方网页上获得其他服务，追书神器对其合法性概不负责，亦不承担任何法律责任。第三方搜索引擎结果根据你提交的书名自动搜索获得并提供试读，不代表追书神器赞成被搜索链接到的第三方网页上的内容或立场。 您应该对使用搜索引擎的结果自行承担风险。追书神器不做任何形式的保证：不保证第三方搜索引擎的搜索结果满足您的要求，不保证搜索服务不中断，不保证搜索结果的安全性、正确性、及时性、合法性。因网络状况、通讯线路、第三方网站等任何原因而导致您不能正常使用追书神器，追书神器不承担任何法律责任。 追书神器尊重并保护所有使用追书神器用户的个人隐私权，您注册的用户名、电子邮件地址等个人资料，非经您亲自许可或根据相关法律、法规的强制性规定，追书神器不会主动地泄露给第三方。
+　　追书神器鼓励广大小说爱好者通过追书神器发现优秀网络小说及其提供商，并建议阅读正版图书。任何单位或个人认为通过追书神器搜索链接到的第三方网页内容可能涉嫌侵犯其信息网络传播权，应该及时向追书神器提出书面权利通知，并提供身份证明、权属证明及详细侵权情况证明。追书神器在收到上述法律文件后，将会依法尽快断开相关链接内容。"</string>
+    <string name="disclaimer_title">免责声明</string>
+    <string name="discuss_list_edit">发布</string>
+    <string name="download">下载</string>
+    <string name="exit_autio_book">退出听书</string>
+    <string name="exit_hint">再按一次退出程序</string>
+    <string name="feed">养肥区</string>
+    <string name="feed_add_ok">移入</string>
+    <string name="feed_chapter_count10">养肥 10 章</string>
+    <string name="feed_chapter_count100">养肥 100 章</string>
+    <string name="feed_chapter_count20">养肥 20 章</string>
+    <string name="feed_chapter_count200">养肥 200 章</string>
+    <string name="feed_chapter_count50">养肥 50 章</string>
+    <string name="feed_intro">养肥说明</string>
+    <string name="feed_intro_desc">你可以将暂时不看的小说移入养肥区中，当养到指定数量的章节后会自动提醒你</string>
+    <string name="feed_select_book">选择小说</string>
+    <string name="feed_setting">养肥设置</string>
+    <string name="feedback_title">意见反馈</string>
+    <string name="female_story">女生小说</string>
+    <string name="follower_count_format">%s 人在追</string>
+    <string name="forbidden_tips">很抱歉，你已被禁止</string>
+    <string name="game_detail">游戏详情</string>
+    <string name="gender_intro_1">我们会根据你的喜好</string>
+    <string name="gender_intro_2">推荐相对应的小说</string>
+    <string name="gender_intro_3">一请选择你的喜好一</string>
+    <string name="girl_level_limit">lv.4以上开放发帖~</string>
+    <string name="girl_list_title">女生区</string>
+    <string name="girl_only">「女生专区，男士止步」</string>
+    <string name="help_list_title">书荒区</string>
+    <string name="hint_add_review_desc">"请输入书评内容
+
+你的书评会影响大家的选择，望详细评价~
+- 需要等级 lv.3
+- 需要至少 50 个字
+- 必须说明本书的优点或缺点
+- 凑字数书评或恶意书评将被删除或关小黑屋
+- 精品书评会有额外的经验奖励哦"</string>
+    <string name="hint_new_article_content">"请输入文章的内容，不少于300字
+
+"</string>
+    <string name="hint_new_discuss_topic_content">"请输入你的话题内容
+
+追书君悄悄地说：要与网文有关啊~
+- 需要等级lv.3
+- 书评与书荒求助，请去相应版块
+- 吐槽虽好，要适度哦
+"</string>
+    <string name="hint_new_discuss_topic_title">请输入标题</string>
+    <string name="hint_new_feedback_topic_content">"请输入你的反馈内容
+
+追书君悄悄地说：要与产品有关啊~
+- 其他帖子请去相应版块
+- 吐槽虽好，要适度哦
+"</string>
+    <string name="hint_new_feedback_topic_title">请输入标题</string>
+    <string name="hint_new_tweet_content">"即刻分享你的动态
+
+"</string>
+    <string name="instapager_login_html" formatted="false">&lt;!DOCTYPE html> &lt;html> &lt;head> &lt;meta content=\"text/html; charset=utf-8\" http-equiv=\"Content-Type\"> &lt;meta content=\"width=device-width,minimum-scale=1,maximum-scale=1,initial-scale=1,user-scalable=no\" id=\"viewport\" name=\"viewport\"> &lt;meta content=\"yes\" name=\"apple-mobile-web-app-capable\"> &lt;title>%s&lt;/title> &lt;style type=\"text/css\"> body{margin:0;padding:0} .inputstyle { -webkit-tap-highlight-color:rgba(255,255,255,0); width:100%%; height:44px; color:#000; background:0; border:0; font-size:16px; outline: none; -webkit-appearance:none } .btn { width:90%%; height:44px; line-height:44px; background:#A0C035; border:0; border-radius:4px; color:#fff; font-size:16px; text-align:center; margin-top:15px; display:block } .btn:disabled { background: #dddddd; } .error { color:red; } &lt;/style> &lt;/head> &lt;body> &lt;script type=\"text/javascript\"> function login(form){ var u=form[\"u\"].value,p=form[\"p\"].value; if(!u || !p) return false; form[\"s\"].disabled = true; return true; } &lt;/script> &lt;form style=\"margin-top:45px;\" action=\"%s\" metho=\"get\" onsubmit=\"return login(this);\"> %s &lt;div style=\"padding-left:15px;border-top:1px solid #E3E3E5;border-bottom:1px solid #E3E3E5;\"> &lt;input type=\"hidden\" name=\"ID_SIGN\" value=\"OWELJSFPWECSFEW\"/> &lt;input class=\"inputstyle\" id=\"u\" name=\"u\" type=\"text\" value=\"%s\" placeholder=\"%s\" style=\"border-bottom:1px solid #E3E3E5;\"/> &lt;input class=\"inputstyle\" id=\"p\" name=\"p\" type=\"password\" placeholder=\"%s\"/> &lt;/div> &lt;p>&lt;input style=\"margin:0 auto;\" type=\"submit\" name=\"s\" value=\" %s \" class=\"btn\"/>&lt;/p> &lt;/form> &lt;/body> &lt;/html></string>
+    <string name="intro_entry_app">直接进入</string>
+    <string name="intro_quick_login">快速登录</string>
+    <string name="is_first">这是第一页</string>
+    <string name="load_failed_tips">载入失败，请检查网络或稍后再试</string>
+    <string name="login_loading">正在登录，请稍后…</string>
+    <string name="login_prompt">登陆后才能看到朋友的分享</string>
+    <string name="male_story">男生小说</string>
+    <string name="mhd_list">漫画中心</string>
+    <string name="more">更多</string>
+    <string name="nav_back">后退</string>
+    <string name="nav_forward">前进</string>
+    <string name="nav_reload">刷新</string>
+    <string name="network_failed">网络不给力</string>
+    <string name="network_unconnected">网络未连接</string>
+    <string name="next">下一步</string>
+    <string name="night_mode">夜间</string>
+    <string name="no_resource">糟糕，这本书搜索不到资源站</string>
+    <string name="normal_mode">正常</string>
+    <string name="not_can_retween_self">呦呦,不能转发自己的动态!</string>
+    <string name="ok">确定</string>
+    <string name="ok_user">我知道了</string>
+    <string name="one_yuan">一元得宝</string>
+    <string name="pay_alipay">支付宝</string>
+    <string name="pay_smspay">短信支付</string>
+    <string name="pay_weixin">微信支付</string>
+    <string name="post_publish_loading">正在发布</string>
+    <string name="post_report_successful">举报成功，我们会尽快处理</string>
+    <string name="post_sort_create">最新发布</string>
+    <string name="post_sort_default">默认排序</string>
+    <string name="post_sort_reply_count">最多评论</string>
+    <string name="post_sort_update_default">默认排序</string>
+    <string name="post_sort_useful">最有用的</string>
+    <string name="pref_click_flip_animation">翻页动画</string>
+    <string name="pref_dialog_title_screen_off_time">选择屏幕关闭时间</string>
+    <string name="pref_reader_auto_buy">自动购买</string>
+    <string name="pref_reader_convert">繁体文字</string>
+    <string name="pref_reader_full_screen">全屏模式</string>
+    <string name="pref_setting_login_qzone">QQ账号登录</string>
+    <string name="pref_setting_login_weibo">新浪微博账号登录</string>
+    <string name="pref_setting_login_weixin">微信账号登录</string>
+    <string name="pref_title_screen_off_time">屏幕关闭时间</string>
+    <string name="pref_user_login_dialog_title">请选择登录方式</string>
+    <string name="pref_volume_keys_flip">音量键翻页</string>
+    <string name="publish">发布</string>
+    <string name="random_read_intro">无书名，无封面，无介绍，从精选的书库里随机阅读，体验未知的惊喜，随机看书，试试手气！</string>
+    <string name="rank_list">排行榜</string>
+    <string name="read_landscape">横屏</string>
+    <string name="read_portrait">竖屏</string>
+    <string name="read_random_add">添加到书架</string>
+    <string name="read_random_next">换一本</string>
+    <string name="reader_add_book_title">添书</string>
+    <string name="reader_mode_baidu">百度搜索</string>
+    <string name="reader_mode_mix">默认搜索</string>
+    <string name="reader_mode_res">追更搜索</string>
+    <string name="reader_mode_shenma">神马搜索</string>
+    <string name="reader_mode_tieba">百度贴吧</string>
+    <string name="reader_option_title">阅读设置</string>
+    <string name="reader_web_opt_msg">该网页支持智能转码，阅读体验优化，建议使用</string>
+    <string name="reader_web_opt_msg2">使用原网页阅读将消耗更多流量，建议使用转码阅读</string>
+    <string name="recommend_loading">数据生成中…</string>
+    <string name="refurbish_changed">小说已更新</string>
+    <string name="refurbish_no_change">你追的小说暂无更新</string>
+    <string name="remove_book_event">已移除《%1$s》</string>
+    <string name="report_chapter_format">"具体章节: %1$s
+ 当前使用的模式: %2$s
+ 错误类型: %3$s
+"</string>
+    <string name="resource_local_chapter">预读章节</string>
+    <string name="retention_ratio_format">%s%% 读者留存</string>
+    <string name="retry">重试</string>
+    <string name="retweeted">已经转发过这条动态了!</string>
+    <string name="retweeting">正在转发...</string>
+    <string name="review_list_title">书评区</string>
+    <string name="save">保存</string>
+    <string name="search">搜索</string>
+    <string name="search_add_tips">没有你想要的小说？ 点击精确搜索</string>
+    <string name="search_failed">搜索失败，请检查网络或稍后再试</string>
+    <string name="search_hint">输入书名或作者名</string>
+    <string name="secret_test_url">访问链接</string>
+    <string name="select_read_mode">选择模式</string>
+    <string name="select_read_resources">选择来源</string>
+    <string name="setting_sort_read">按最近阅读</string>
+    <string name="setting_sort_time">按更新时间</string>
+    <string name="settings">设置</string>
+    <string name="settings_market">给追书神器好评</string>
+    <string name="share_immediately">立即分享</string>
+    <string name="share_qq_content">这个软件挺好用，小说都能免费看，你试试%s</string>
+    <string name="share_qq_link">http://jump.zhuishushenqi.com/test_share_qq</string>
+    <string name="share_qzone_content">你试试http://jump.zhuishushenqi.com/test_share_qq</string>
+    <string name="share_qzone_link">http://jump.zhuishushenqi.com/test_share_qq</string>
+    <string name="share_qzone_title">这个软件挺好用，小说都能免费看</string>
+    <string name="share_remove_ad">分享免广告</string>
+    <string name="share_remove_ad_1">1.将自己的专属链接分享出去,你的小伙伴下载并成功安装追书神器,你便可获得7天免广告特权</string>
+    <string name="share_remove_ad_2">2.你的朋友只有通过你分享的专属链接下载，成功安装才有效哟</string>
+    <string name="share_remove_ad_3">3.如果有多个好友下载并成功安装追书神器，则去除广告天数相应进行累加</string>
+    <string name="share_remove_ad_4">4.如期间遇到问题,可关注\"追书神器\"微信公众号,并将问题反馈给我们,我们会及时进行处理</string>
+    <string name="share_remove_ad_title">分享规则</string>
+    <string name="share_to_baidutieba">分享到百度贴吧</string>
+    <string name="share_wx_content">这个软件挺好用，小说都能免费看，你试试%s</string>
+    <string name="share_wx_link">http://jump.zhuishushenqi.com/test_share_weixin</string>
+    <string name="shelf_ad_apk_no_wifi">%1$s, %2$s, 当前网络下载需消耗流量，请小心确认</string>
+    <string name="shelf_ad_apk_wifi">%1$s, %2$s, 哇，你正处在 Wi-Fi 网络下，下载无需流量 :)</string>
+    <string name="shelf_feed_fat_title">《%1$s》已经养肥了</string>
+    <string name="shelf_feed_title">%1$d 本书正在养肥</string>
+    <string name="shelf_third_ad_apk_no_wifi">%s, 当前网络下载需消耗流量，请小心确认</string>
+    <string name="shelf_third_ad_apk_wifi">%s, 哇，你正处在 Wi-Fi 网络下，下载无需流量 :)</string>
+    <string name="sms_description">"由于运营商的相关规定，不同地区有充值次数的限制；
+若无法充值，请使用其他充值方式。"</string>
+    <string name="sms_input_number">请输入本机或者其他手机号码</string>
+    <string name="sms_pay_cacenl_text">你真的要放弃吗？</string>
+    <string name="sms_pay_cacenl_title">放弃充值</string>
+    <string name="sms_verify_appname">应用名称</string>
+    <string name="sms_verify_goods">商品名称</string>
+    <string name="sms_verify_input_code">请输入验证码</string>
+    <string name="sms_verify_input_resend">重新发送(%1$d)</string>
+    <string name="sms_verify_input_send">发送验证码</string>
+    <string name="sms_verify_phone">手机号码</string>
+    <string name="sms_verify_price">支付金额</string>
+    <string name="sms_wrong_number">您输入的手机号有误，请核对后再试</string>
+    <string name="source_list_title">共搜索到%1$d个网站</string>
+    <item type="string" name="spb_default_speed">1.0</item>
+    <string name="status_bar_notification_info_overflow">999+</string>
+    <string name="stop">停止</string>
+    <string name="sync_loading">同步中…</string>
+    <string name="sync_token_failed">同步失败，请重新授权登录或稍后再试</string>
+    <string name="tips">提示</string>
+    <string name="toc">目录</string>
+    <string name="toc_load_error">目录加载失败</string>
+    <string name="token_invalid">登录过期，请重新登录</string>
+    <string name="total_track_count">共 %s 集</string>
+    <string name="tts_download_prompt_no_wifi">需下载朗读插件,当前网络下载需消耗流量，请小心确认</string>
+    <string name="tts_download_prompt_title">下载朗读插件</string>
+    <string name="tts_download_prompt_wifi">需下载朗读插件,您处于WiFi状态下,可任性下载</string>
+    <string name="tts_listen_book">朗读</string>
+    <string name="tts_speech_exit">退出朗读</string>
+    <string name="tts_speech_speed">语速：</string>
+    <string name="tts_speech_speed_fast">快</string>
+    <string name="tts_speech_speed_slow">慢</string>
+    <string name="tts_speech_time">定时：</string>
+    <string name="tts_speech_time_15">15分钟</string>
+    <string name="tts_speech_time_30">30分钟</string>
+    <string name="tts_speech_time_5">5分钟</string>
+    <string name="tts_speech_time_60">60分钟</string>
+    <string name="tts_speech_voice">发音：</string>
+    <string name="tts_speech_voice_more">+更多</string>
+    <string name="tweet">动态</string>
+    <string name="tweet_token_invalid">身份过期,请重新登录!</string>
+    <string name="type_all">全部</string>
+    <string name="type_cyjk">穿越架空</string>
+    <string name="type_dmtr">耽美同人</string>
+    <string name="type_dsyn">都市异能</string>
+    <string name="type_gdyq">古代言情</string>
+    <string name="type_hmzc">豪门总裁</string>
+    <string name="type_hxyq">幻想言情</string>
+    <string name="type_khly">科幻灵异</string>
+    <string name="type_lsjs">历史军事</string>
+    <string name="type_wxxx">武侠仙侠</string>
+    <string name="type_xdyq">现代言情</string>
+    <string name="type_xhqh">玄幻奇幻</string>
+    <string name="type_yxjj">游戏竞技</string>
+    <string name="ugc_all">全部书单</string>
+    <string name="ugc_create">创建书单</string>
+    <string name="ugc_edit">编辑书单</string>
+    <string name="ugc_female">女生书单</string>
+    <string name="ugc_list">主题书单</string>
+    <string name="ugc_male">男生书单</string>
+    <string name="ugc_myown">我的书单</string>
+    <string name="umeng_common_icon">icon</string>
+    <string name="umeng_fb_powered_by">Powered by</string>
+    <string name="update_notice">更新通知</string>
+    <string name="user_exp_desc">"经验值用来标示用户使用追书神器的经验积累，经验值越大，则经验等级越高，代表使用追书神器的资历越老。
+随着用户经验等级的提升，可获得一定的奖励和特权，同时经验等级也代表您在追书社区具有一定威望。"</string>
+    <string name="user_exp_get">追书神器为用户提供了丰富的获取经验值的方式。目前主要是做任务，具体任务可在任务区查看并领取。</string>
+    <string name="user_follow_app_name">追书神器</string>
+    <string name="user_follow_explanation">说明:</string>
+    <string name="user_follow_prompt">已复制追书神器,立即穿越至微信?</string>
+    <string name="user_follow_weixin">微信公众号</string>
+    <string name="user_follow_xeixin_explanation">脑洞更大，欢乐更多~有态度、有姿势的追书er，都在围观我们！还有在线客服+专享好礼哦~</string>
+    <string name="user_info">个人资料</string>
+    <string name="user_logout">确定</string>
+    <string name="user_logout_dialog">退出当前账号</string>
+    <string name="user_logout_dialog_tips">确定退出当前账号吗？</string>
+    <string name="version_title">version</string>
+    <string name="vote_ok">确定发布</string>
+    <string name="vote_send_loading">投票中，请稍后</string>
+    <string name="waring_dialog_game_post">"禁止发布以下内容，违反规定将封禁账号
+
+- 内容不明确
+- 人身攻击、广告及垃圾信息（含QQ）"</string>
+    <string name="waring_dialog_help">"禁止发布以下内容，违反规定将禁封账号
+
+- 与书荒求助无关
+- 求助信息不明确
+- 人身攻击、广告及垃圾信息（含QQ）"</string>
+    <string name="waring_dialog_review">"禁止发布以下内容，违反规定将禁封账号
+
+- 与书籍评论无关
+- 标题内容不明确
+- 人身攻击、广告及垃圾信息（含QQ）"</string>
+    <string name="waring_dialog_topic">"禁止发布以下内容，违反规定将禁封账号
+
+- 催更
+- 标题内容不明确
+- 人身攻击、广告及垃圾信息（含QQ）"</string>
+    <string name="waring_dialog_topic_girl">"禁止发布以下内容，违反规定将禁封账号
+
+- 广告、色情、辱骂等垃圾信息
+- 无意义水帖
+- 男性同胞刷存在感"</string>
+    <string name="warning_dialog_girl_topic">"禁止发布以下内容，违反规定将封禁账号
+
+- 内容不明确
+- 人身攻击、广告及垃圾信息（含QQ）"</string>
+    <string name="ximalaya_statement">以上内容由喜马拉雅FM提供</string>
+    <string name="zssq_tips">追书君友情提示</string>
+</resources>

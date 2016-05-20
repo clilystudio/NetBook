@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:icon="@drawable/ic_share_weixin" android:id="@id/wx_friend" android:title="微信好友" />
+    <item android:icon="@drawable/ic_share_qq" android:id="@id/qq_friend" android:title="QQ 好友" />
+    <item android:icon="@drawable/ic_share_qq_zone" android:id="@id/qzone" android:title="QQ 空间" />
+</menu>

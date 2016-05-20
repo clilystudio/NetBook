@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="book_category_list">
+        <item>全部</item>
+        <item>只看连载</item>
+        <item>只看完结</item>
+    </string-array>
+    <string-array name="book_category_tabs">
+        <item>新书</item>
+        <item>热门</item>
+        <item>口碑</item>
+        <item>完结</item>
+    </string-array>
+    <string-array name="chapter_error">
+        <item>章节错乱</item>
+        <item>乱码错字</item>
+        <item>空白缺头</item>
+        <item>排版混乱</item>
+    </string-array>
+    <string-array name="feed_chapter_count">
+        <item>养肥 10 章</item>
+        <item>养肥 20 章</item>
+        <item>养肥 50 章</item>
+        <item>养肥 100 章</item>
+        <item>养肥 200 章</item>
+    </string-array>
+    <string-array name="game_center_tabs">
+        <item>推荐</item>
+        <item>排行</item>
+        <item>分类</item>
+        <item>微游戏</item>
+    </string-array>
+    <string-array name="home_tabs">
+        <item>追书</item>
+        <item>社区</item>
+        <item>发现</item>
+    </string-array>
+    <string-array name="my_msg_tabs">
+        <item>回复</item>
+        <item>投票</item>
+    </string-array>
+    <string-array name="pay_voucher_empty_texts">
+        <item>"好悲催，好像没有可用的追书券了
+阅读优质资源可领追书券哟"</item>
+        <item>"哎呀呀，你还没有使用过追书券
+赶快去书城使用吧！"</item>
+        <item>"你还没有过期的追书券哟
+赶快去书城使用吧！"</item>
+    </string-array>
+    <string-array name="pay_voucher_params">
+        <item>useable</item>
+        <item>unuseable</item>
+        <item>expired</item>
+    </string-array>
+    <string-array name="pay_voucher_tabs">
+        <item>可使用</item>
+        <item>已用完</item>
+        <item>已过期</item>
+    </string-array>
+    <string-array name="post_detail_report">
+        <item>催更、辱骂作者及他人</item>
+        <item>广告及垃圾信息</item>
+        <item>色情、淫秽内容</item>
+        <item>激进时政、敏感信息</item>
+    </string-array>
+    <string-array name="reader_screen_off_time_tags">
+        <item>2分钟</item>
+        <item>5分钟</item>
+        <item>10分钟</item>
+        <item>常亮</item>
+    </string-array>
+    <integer-array name="reader_screen_off_time_values">
+        <item>120000</item>
+        <item>300000</item>
+        <item>600000</item>
+        <item>0</item>
+    </integer-array>
+    <string-array name="settings_shelf_sort">
+        <item>按更新时间</item>
+        <item>按最近阅读</item>
+    </string-array>
+    <string-array name="splash_baidu_event">
+        <item>ad_baidu_splash_show</item>
+        <item>ad_baidu_splash_click</item>
+        <item>ad_baidu_download</item>
+    </string-array>
+    <string-array name="splash_gdt_event">
+        <item>gdt_splash_ad_show</item>
+        <item>gdt_splash_ad_click</item>
+        <item>gdt_splash_ad_download</item>
+    </string-array>
+    <string-array name="splash_own_event">
+        <item>ad_splash_show</item>
+        <item>splash_ad_click</item>
+        <item></item>
+    </string-array>
+    <string-array name="tweet_tab">
+        <item>动态</item>
+        <item>热门</item>
+        <item>我的</item>
+    </string-array>
+    <string-array name="ucg_book_tabs">
+        <item>本周最热</item>
+        <item>最新发布</item>
+        <item>最多收藏</item>
+    </string-array>
+</resources>

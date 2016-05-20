@@ -1,0 +1,1 @@
+CREATE TABLE IF NOT EXISTS FollowRecord (id integer primary key AutoIncrement,userId varchar(20),followedId varchar(20))

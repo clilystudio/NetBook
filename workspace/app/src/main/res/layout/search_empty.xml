@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:background="?android:windowBackground" android:paddingLeft="@dimen/search_empty_add_left" android:paddingRight="@dimen/search_empty_add_right" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/search_empty_img" />
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp_40">
+        <TextView android:textSize="@dimen/text_size_14" android:textColor="?android:textColorSecondary" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="未搜索到结果" />
+    </LinearLayout>
+    <Button android:textSize="@dimen/text_size_17" android:textColor="?backgroundNormal" android:id="@id/search_empty_add" android:background="?redSelector" android:paddingLeft="@dimen/dp_25" android:paddingRight="@dimen/dp_25" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp_40" android:text="全网精确找书" />
+</LinearLayout>

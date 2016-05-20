@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:gravity="center_vertical" android:id="@id/ugc_all_layout" android:background="?backgroundPressed" android:layout_width="fill_parent" android:layout_height="@dimen/dp_40" android:layout_marginTop="@dimen/dp_8" android:layout_marginBottom="@dimen/dp_8"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="@dimen/text_size_15" android:textColor="?android:textColorSecondary" android:gravity="center" android:id="@id/ugc_filter_name" android:background="?backgroundSelector" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="返回全部书单" android:layout_centerInParent="true" />
+</RelativeLayout>

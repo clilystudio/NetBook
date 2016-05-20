@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:icon="@drawable/ic_action_feed_add" android:id="@id/action_menu_feed_add" android:orderInCategory="50" android:title="@string/book_feed_add_book" />
+    <item android:icon="@drawable/ic_action_feed_setting" android:id="@id/action_menu_feed_setting" android:orderInCategory="50" android:title="@string/settings" />
+</menu>

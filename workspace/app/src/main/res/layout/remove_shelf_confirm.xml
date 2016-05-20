@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:paddingLeft="@dimen/dp_20" android:paddingTop="@dimen/dp_16" android:paddingRight="@dimen/dp_16" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="@dimen/text_size_20" android:textColor="?android:textColor" android:id="@id/remove_shelf_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="移除所选书籍" />
+    <CheckBox android:textSize="@dimen/text_size_15" android:textColor="?android:textColorSecondary" android:gravity="left|center" android:id="@id/remove_shelf_cache" android:paddingLeft="@dimen/dp_8" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp_16" android:checked="true" android:button="@drawable/shelf_delete_confirm_checkbox" android:text="同时删除本地缓存" />
+</LinearLayout>

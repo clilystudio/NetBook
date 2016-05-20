@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <android.support.v4.view.ViewPager android:id="@id/vp_intro" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/linear_bottom_dots" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/dp_16" android:layout_above="@id/linearLayout" android:layout_centerHorizontal="true">
+        <ImageView android:id="@id/img_dot1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/dp_8" android:src="@drawable/ic_point_normal" />
+        <ImageView android:id="@id/img_dot2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/ic_point_normal" />
+    </LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:id="@id/linearLayout" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/dp_8" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true">
+        <Button android:textSize="@dimen/text_size_16" android:textColor="@color/intro_blue_color" android:id="@id/btnQuickLogin" android:background="@drawable/bg_intro_btn" android:layout_width="0.0dip" android:layout_height="@dimen/dp_48" android:layout_marginLeft="@dimen/dp_8" android:layout_marginRight="@dimen/dp_4" android:text="@string/intro_quick_login" android:layout_weight="1.0" />
+        <Button android:textSize="@dimen/text_size_16" android:textColor="@color/intro_blue_color" android:id="@id/btnEntryApp" android:background="@drawable/bg_intro_btn" android:layout_width="0.0dip" android:layout_height="@dimen/dp_48" android:layout_marginLeft="@dimen/dp_4" android:layout_marginRight="@dimen/dp_8" android:text="@string/intro_entry_app" android:layout_weight="1.0" />
+    </LinearLayout>
+</RelativeLayout>

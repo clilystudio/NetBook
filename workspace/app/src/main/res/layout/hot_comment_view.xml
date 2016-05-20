@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.ushaqi.zhuishushenqi.widget.HotCommentView android:orientation="vertical" android:id="@id/hot_comment_view" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:id="@id/hot_comment_label" android:visibility="gone" android:text="仰望神评论" style="@style/ListItemLabel" />
+    <View android:id="@id/hot_comment_label_line" android:background="?lineColor" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="1.0px" />
+    <TextView android:id="@id/comment_count" android:text="共0条评论" style="@style/ListItemLabel" />
+    <View android:background="?lineColor" android:layout_width="fill_parent" android:layout_height="1.0px" />
+</com.ushaqi.zhuishushenqi.widget.HotCommentView>

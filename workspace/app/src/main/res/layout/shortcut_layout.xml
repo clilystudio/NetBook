@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:background="@color/translut_color" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:layout_gravity="center_vertical" android:orientation="vertical" android:id="@id/gamecenter_layout" android:background="@drawable/round_corner_rect" android:paddingBottom="20.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginRight="12.0dip">
+        <LinearLayout android:gravity="center_horizontal" android:layout_gravity="top|center" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="40.0dip">
+            <ImageView android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/shortcut_gamecenter_title_img" />
+            <TextView android:textAppearance="?android:textAppearanceMedium" android:textColor="@color/shortcut_activity_title_color" android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:text="@string/shortcut_gamecenter_title" />
+        </LinearLayout>
+        <GridView android:id="@id/gamecenter_gridview" android:background="@drawable/shortcut_gamelist_bg" android:paddingLeft="20.0dip" android:paddingRight="20.0dip" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    </LinearLayout>
+</FrameLayout>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="?android:windowBackground" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.ushaqi.zhuishushenqi.widget.LabelPtrListView android:id="@id/ptr_list" android:layout_width="fill_parent" android:layout_height="fill_parent" ptr:ptrTabMode="true" style="@style/DividerListView" xmlns:ptr="http://schemas.android.com/apk/res-auto" />
+    <TextView android:textSize="@dimen/text_size_14" android:textColor="?android:textColorSecondary" android:id="@id/empty_text" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" />
+    <ProgressBar android:id="@id/pb_loading" android:layout_centerInParent="true" style="@style/Loading" />
+</RelativeLayout>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="?android:windowBackground" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ScrollView android:id="@id/content_category" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="@dimen/dp_40" android:layout_alignParentBottom="true">
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <TableLayout android:id="@id/tags_layout_category" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
+        </RelativeLayout>
+    </ScrollView>
+    <TextView android:gravity="center" android:id="@id/content_empty_text" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="无内容" style="@style/SubtitleText" />
+    <ProgressBar android:id="@id/content_loading_pb" android:layout_centerInParent="true" style="@style/Loading" />
+    <ImageView android:id="@id/content_load_error" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/load_error_hint" android:layout_centerInParent="true" />
+    <RelativeLayout android:id="@id/bottom_bg" android:layout_width="fill_parent" android:layout_height="50.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true">
+        <TextView android:textSize="@dimen/text_size_12" android:id="@id/BottomContentText" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/dp_20" android:drawableLeft="@drawable/ic_ximalaya_listen" android:drawablePadding="@dimen/dp_12" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+</RelativeLayout>

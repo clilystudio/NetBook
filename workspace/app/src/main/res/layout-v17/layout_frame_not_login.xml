@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/iv_not_login" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/dp_15" android:src="@drawable/ic_not_login_img" android:layout_above="@id/tv_login_prompt" android:layout_centerHorizontal="true" />
+    <TextView android:textSize="16.0sp" android:textColor="#ffffffff" android:gravity="center" android:id="@id/tv_login" android:background="@drawable/common_green_bg" android:padding="16.0dip" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp_25" android:text="@string/intro_quick_login" android:layout_below="@id/tv_login_prompt" android:layout_alignLeft="@id/tv_login_prompt" android:layout_alignRight="@id/tv_login_prompt" android:layout_alignStart="@id/tv_login_prompt" android:layout_alignEnd="@id/tv_login_prompt" />
+    <TextView android:textSize="@dimen/text_size_14" android:textColor="@color/sub_text" android:id="@id/tv_login_prompt" android:paddingLeft="@dimen/dp_10" android:paddingRight="@dimen/dp_10" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/login_prompt" android:layout_centerHorizontal="true" android:layout_centerVertical="true" />
+</RelativeLayout>

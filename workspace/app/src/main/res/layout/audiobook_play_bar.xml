@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_gravity="bottom" android:orientation="vertical" android:background="?android:windowBackground" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <SeekBar android:id="@id/audiobook_seekbar" android:padding="0.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxHeight="@dimen/dp_4" android:max="100" android:progressDrawable="@drawable/audiobook_play_progressbar" android:minHeight="@dimen/dp_4" android:thumb="@drawable/audiobook_play_point" />
+    <FrameLayout android:id="@id/play_layout" android:layout_width="fill_parent" android:layout_height="@dimen/dp_68">
+        <TextView android:textSize="@dimen/text_size_12" android:textColor="?android:textColorSecondary" android:layout_gravity="top|left|center" android:id="@id/audiobook_playtime" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dp_16" android:layout_marginTop="@dimen/dp_9" android:text="00:00" />
+        <TextView android:textSize="@dimen/text_size_12" android:textColor="?android:textColorSecondary" android:layout_gravity="top|right|center" android:id="@id/audiobook_totaltime" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp_9" android:layout_marginRight="@dimen/dp_16" android:text="00:00" />
+        <LinearLayout android:layout_gravity="center" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <ImageButton android:layout_gravity="center_vertical" android:id="@id/audiobook_playpre" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/audiobook_pre_selector" />
+            <ImageButton android:layout_gravity="center_vertical" android:id="@id/audiobook_play_pause" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dp_24" android:layout_marginRight="@dimen/dp_24" android:src="@drawable/audiobook_play_selector" />
+            <ImageButton android:layout_gravity="center_vertical" android:id="@id/audiobook_playnext" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/audiobook_next_selector" />
+        </LinearLayout>
+    </FrameLayout>
+</LinearLayout>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:android_custom="http://schemas.android.com/apk/res-auto">
+    <ImageView android:id="@id/roundProgressBarBg" android:layout_width="160.0dip" android:layout_height="160.0dip" android:src="@drawable/rbg" />
+    <TextView android:textSize="20.0sp" android:textColor="#ff99cc99" android:gravity="center" android:id="@id/gameCenter" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/game_center" />
+    <TextView android:textSize="30.0sp" android:textColor="#ff99cc99" android:gravity="center" android:id="@id/loading" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/loading" />
+    <TextView android:textSize="13.0sp" android:textColor="#ffcccc99" android:gravity="center" android:id="@id/copyRight" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/copy_right" />
+</RelativeLayout>

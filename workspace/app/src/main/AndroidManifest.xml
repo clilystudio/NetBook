@@ -1,0 +1,411 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.clilystudio.app.netbook">
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT"/>
+    <uses-permission android:name="com.android.launcher.permission.UNINSTALL_SHORTCUT"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS"/>
+    <uses-permission android:name="com.android.launcher.permission.WRITE_SETTINGS"/>
+    <uses-permission android:name="com.android.launcher2.permission.READ_SETTINGS"/>
+    <uses-permission android:name="com.android.launcher2.permission.WRITE_SETTINGS"/>
+    <uses-permission android:name="com.android.launcher3.permission.READ_SETTINGS"/>
+    <uses-permission android:name="com.android.launcher3.permission.WRITE_SETTINGS"/>
+    <uses-permission android:name="org.adw.launcher.permission.READ_SETTINGS"/>
+    <uses-permission android:name="org.adw.launcher.permission.WRITE_SETTINGS"/>
+    <uses-permission android:name="com.htc.launcher.permission.READ_SETTINGS"/>
+    <uses-permission android:name="com.htc.launcher.permission.WRITE_SETTINGS"/>
+    <uses-permission android:name="com.qihoo360.launcher.permission.READ_SETTINGS"/>
+    <uses-permission android:name="com.qihoo360.launcher.permission.WRITE_SETTINGS"/>
+    <uses-permission android:name="com.lge.launcher.permission.READ_SETTINGS"/>
+    <uses-permission android:name="com.lge.launcher.permission.WRITE_SETTINGS"/>
+    <uses-permission android:name="net.qihoo.launcher.permission.READ_SETTINGS"/>
+    <uses-permission android:name="net.qihoo.launcher.permission.WRITE_SETTINGS"/>
+    <uses-permission android:name="org.adwfreak.launcher.permission.READ_SETTINGS"/>
+    <uses-permission android:name="org.adwfreak.launcher.permission.WRITE_SETTINGS"/>
+    <uses-permission android:name="org.adw.launcher_donut.permission.READ_SETTINGS"/>
+    <uses-permission android:name="org.adw.launcher_donut.permission.WRITE_SETTINGS"/>
+    <uses-permission android:name="com.huawei.launcher3.permission.READ_SETTINGS"/>
+    <uses-permission android:name="com.huawei.launcher3.permission.WRITE_SETTINGS"/>
+    <uses-permission android:name="com.fede.launcher.permission.READ_SETTINGS"/>
+    <uses-permission android:name="com.fede.launcher.permission.WRITE_SETTINGS"/>
+    <uses-permission android:name="com.sec.android.app.twlauncher.settings.READ_SETTINGS"/>
+    <uses-permission android:name="com.sec.android.app.twlauncher.settings.WRITE_SETTINGS"/>
+    <uses-permission android:name="com.anddoes.launcher.permission.READ_SETTINGS"/>
+    <uses-permission android:name="com.anddoes.launcher.permission.WRITE_SETTINGS"/>
+    <uses-permission android:name="com.tencent.qqlauncher.permission.READ_SETTINGS"/>
+    <uses-permission android:name="com.tencent.qqlauncher.permission.WRITE_SETTINGS"/>
+    <uses-permission android:name="com.huawei.launcher2.permission.READ_SETTINGS"/>
+    <uses-permission android:name="com.huawei.launcher2.permission.WRITE_SETTINGS"/>
+    <uses-permission android:name="com.android.mylauncher.permission.READ_SETTINGS"/>
+    <uses-permission android:name="com.android.mylauncher.permission.WRITE_SETTINGS"/>
+    <uses-permission android:name="com.ebproductions.android.launcher.permission.READ_SETTINGS"/>
+    <uses-permission android:name="com.ebproductions.android.launcher.permission.WRITE_SETTINGS"/>
+    <uses-permission android:name="com.oppo.launcher.permission.READ_SETTINGS"/>
+    <uses-permission android:name="com.oppo.launcher.permission.WRITE_SETTINGS"/>
+    <uses-permission android:name="com.miui.mihome2.permission.READ_SETTINGS"/>
+    <uses-permission android:name="com.miui.mihome2.permission.WRITE_SETTINGS"/>
+    <uses-permission android:name="com.huawei.android.launcher.permission.READ_SETTINGS"/>
+    <uses-permission android:name="com.huawei.android.launcher.permission.WRITE_SETTINGS"/>
+    <uses-permission android:name="telecom.mdesk.permission.READ_SETTINGS"/>
+    <uses-permission android:name="telecom.mdesk.permission.WRITE_SETTINGS"/>
+    <uses-permission android:name="dianxin.permission.ACCESS_LAUNCHER_DATA"/>
+    <uses-permission android:name="android.permission.GET_TASKS"/>
+    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS"/>
+    <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
+    <uses-permission android:name="android.permission.SEND_SMS"/>
+    <uses-permission android:name="android.permission.READ_SMS"/>
+    <uses-permission android:name="android.permission.RECEIVE_SMS"/>
+    <uses-permission android:name="android.permission.WRITE_SMS"/>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_CONTACTS"/>
+    <permission android:name="com.clilystudio.app.netbook.permission.MIPUSH_RECEIVE" android:protectionLevel="signatureOrSystem"/>
+    <uses-permission android:name="com.clilystudio.app.netbook.permission.MIPUSH_RECEIVE"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_UPDATES"/>
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS"/>
+    <supports-screens android:anyDensity="true" android:largeScreens="true" android:normalScreens="true" android:resizeable="true" android:smallScreens="true" android:xlargeScreens="true"/>
+    <uses-feature android:glEsVersion="0x20000"/>
+    <application android:allowBackup="true" android:hardwareAccelerated="true" android:icon="@drawable/ic_launcher" android:label="@string/app_name" android:largeHeap="true" android:name="com.clilystudio.app.netbook.MyApplication" android:theme="@style/BaseTheme">
+        <activity android:label="@string/app_name" android:name="com.clilystudio.app.netbook.ui.SplashActivity" android:screenOrientation="portrait" android:theme="@style/Splash_NoTitleBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:scheme="file"/>
+                <data android:mimeType="text/plain"/>
+            </intent-filter>
+        </activity>
+        <activity android:launchMode="singleTask" android:name="com.clilystudio.app.netbook.ui.home.HomeActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.clilystudio.app.netbook.ui.user.AuthLoginActivity" android:screenOrientation="portrait" android:theme="@style/ActivityDialog"/>
+        <activity android:exported="true" android:name="com.clilystudio.app.netbook.ui.user.UserInfoActivity" android:screenOrientation="portrait"/>
+        <activity android:exported="true" android:name="com.clilystudio.app.netbook.ui.user.UserTaskActivity" android:screenOrientation="portrait"/>
+        <activity android:exported="true" android:name="com.clilystudio.app.netbook.ui.user.UserLevelActivity" android:screenOrientation="portrait"/>
+        <activity android:exported="true" android:name="com.clilystudio.app.netbook.ui.user.MyMessageActivity" android:screenOrientation="portrait"/>
+        <activity android:exported="true" android:name="com.clilystudio.app.netbook.ui.UnimportantNotificationActivity" android:screenOrientation="portrait"/>
+        <activity android:exported="true" android:name="com.clilystudio.app.netbook.ui.user.RemoveAdActivity" android:screenOrientation="portrait"/>
+        <activity android:launchMode="singleTask" android:name="com.clilystudio.app.netbook.ui.ugcbook.UGCMainActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.clilystudio.app.netbook.ui.ugcbook.UGCGuideAddCollectionActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.clilystudio.app.netbook.ui.ugcbook.UGCGuideEditBooksActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.clilystudio.app.netbook.ui.ugcbook.MyUGCBookListActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.clilystudio.app.netbook.ui.ugcbook.UGCGuideAddBookActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.clilystudio.app.netbook.ui.ugcbook.UGCGuideSelectBookActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.clilystudio.app.netbook.ui.ugcbook.UGCDetailActivity" android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:host="zhuishushenqi.com" android:pathPrefix="/ugcdetail" android:scheme="ushaqi"/>
+            </intent-filter>
+        </activity>
+        <activity android:launchMode="singleTask" android:name="com.clilystudio.app.netbook.ui.post.BookPostTabActivity" android:screenOrientation="portrait"/>
+        <activity android:exported="true" android:name="com.clilystudio.app.netbook.ui.post.PostDetailActivity" android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:host="zhuishushenqi.com" android:pathPrefix="/discussdetail" android:scheme="ushaqi"/>
+            </intent-filter>
+        </activity>
+        <activity android:exported="true" android:launchMode="singleTask" android:name="com.clilystudio.app.netbook.ui.post.ReviewListActivity" android:screenOrientation="portrait"/>
+        <activity android:exported="true" android:launchMode="singleTask" android:name="com.clilystudio.app.netbook.ui.post.CommonPostListActivity" android:screenOrientation="portrait"/>
+        <activity android:launchMode="singleTask" android:name="com.clilystudio.app.netbook.ui.post.BookHelpListActivity" android:screenOrientation="portrait"/>
+        <activity android:launchMode="singleTask" android:name="com.clilystudio.app.netbook.ui.post.GirlTopicListActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.clilystudio.app.netbook.ui.post.GirlTopicActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.clilystudio.app.netbook.ui.post.AddGirlTopicActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.clilystudio.app.netbook.ui.post.AddReviewActivity" android:screenOrientation="portrait"/>
+        <activity android:exported="true" android:name="com.clilystudio.app.netbook.ui.post.AddReviewRatingActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.clilystudio.app.netbook.ui.post.AddReviewContentActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.clilystudio.app.netbook.ui.post.ReviewActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.clilystudio.app.netbook.ui.post.AddBookHelpActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.clilystudio.app.netbook.ui.post.BookHelpActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.clilystudio.app.netbook.ui.post.AddTopicCategoryActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.clilystudio.app.netbook.ui.post.AddVoteActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.clilystudio.app.netbook.ui.post.AddTopicActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|screenSize" android:name="com.clilystudio.app.netbook.ui.post.AddVoteItemActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.clilystudio.app.netbook.ui.post.AddGamePostActivity" android:screenOrientation="portrait"/>
+        <activity android:launchMode="singleTask" android:name="com.clilystudio.app.netbook.ui.post.TweetTabActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.clilystudio.app.netbook.ui.post.FollowerListActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.clilystudio.app.netbook.ui.post.OtherUserActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.clilystudio.app.netbook.ui.post.TweetDetailActivity" android:screenOrientation="portrait"/>
+        <activity android:exported="true" android:name="com.clilystudio.app.netbook.ui.BookInfoActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.clilystudio.app.netbook.ui.BookRankListActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.clilystudio.app.netbook.ui.RelateBookListActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.clilystudio.app.netbook.ui.BookRankDetailActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.clilystudio.app.netbook.ui.BookCategoryActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.clilystudio.app.netbook.ui.BookCategoryListActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.clilystudio.app.netbook.ui.BookTagListActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.clilystudio.app.netbook.ui.MhdListActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.clilystudio.app.netbook.reader.ReaderResActivity" android:screenOrientation="portrait" android:theme="@style/BaseTheme_Dark"/>
+        <activity android:name="com.clilystudio.app.netbook.reader.ReaderOptionActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.clilystudio.app.netbook.reader.LocalChapterListActivity" android:screenOrientation="portrait" android:theme="@style/BaseTheme_Dark"/>
+        <activity android:configChanges="orientation" android:exported="true" android:name="com.clilystudio.app.netbook.reader.ReaderActivity" android:theme="@style/ReaderTheme"/>
+        <activity android:name="com.clilystudio.app.netbook.reader.random.ReaderRandomActivity" android:screenOrientation="portrait" android:theme="@style/ReaderTheme"/>
+        <activity android:configChanges="orientation" android:name="com.clilystudio.app.netbook.reader.txt.ReaderTxtActivity" android:theme="@style/ReaderTheme">
+            <intent-filter>
+                <action android:name="com.clilystudio.app.netbook.ACTION_READ_TXT"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity android:name="com.clilystudio.app.netbook.reader.ReaderWebActivity" android:screenOrientation="portrait" android:theme="@style/ReaderTheme"/>
+        <activity android:name="com.clilystudio.app.netbook.reader.ModeListActivity" android:screenOrientation="portrait" android:theme="@style/BaseTheme_Dark"/>
+        <activity android:name="com.clilystudio.app.netbook.reader.ReaderMixActivity" android:screenOrientation="portrait" android:theme="@style/BaseTheme_Dark"/>
+        <activity android:exported="true" android:name="com.clilystudio.app.netbook.ui.AdWebViewActivity" android:screenOrientation="portrait" android:theme="@style/BaseTheme_Dark"/>
+        <activity android:name="com.clilystudio.app.netbook.ui.LuckyGameWebActivity" android:screenOrientation="portrait" android:theme="@style/BaseTheme_Dark"/>
+        <activity android:exported="true" android:name="com.clilystudio.app.netbook.ui.SearchActivity" android:screenOrientation="portrait"/>
+        <activity android:exported="true" android:name="com.clilystudio.app.netbook.ui.AuthorBooksActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.clilystudio.app.netbook.ui.CustomSearchActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.clilystudio.app.netbook.ui.AddBookFailedActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.clilystudio.app.netbook.ui.SettingsActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.clilystudio.app.netbook.ui.DisclaimerActivity" android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name=".ui.DisclaimerActivity"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <service android:exported="false" android:name="com.qq.e.comm.DownloadService"/>
+        <activity android:configChanges="keyboard|keyboardHidden|orientation|screenSize" android:name="com.qq.e.ads.ADActivity"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:name="cn.sharesdk.framework.ShareSDKUIShell" android:screenOrientation="portrait" android:theme="@android:style/Theme.Translucent.NoTitleBar" android:windowSoftInputMode="stateHidden|adjustResize"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:exported="true" android:name="com.clilystudio.app.netbook.wxapi.WXEntryActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+        <activity android:name="com.clilystudio.app.netbook.ui.WifiActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.clilystudio.app.netbook.reader.txt.ScanTxtFileActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.clilystudio.app.netbook.ui.MysteryActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.clilystudio.app.netbook.reader.random.ReaderRandomEntranceActivity" android:screenOrientation="portrait"/>
+        <activity android:exported="true" android:name="com.clilystudio.app.netbook.ui.feed.FeedAddActivity" android:screenOrientation="portrait"/>
+        <activity android:exported="true" android:launchMode="singleTop" android:name="com.clilystudio.app.netbook.ui.feed.FeedListActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.clilystudio.app.netbook.ui.feed.FeedSettingActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.clilystudio.app.netbook.ui.feed.FeedIntroActivity" android:screenOrientation="portrait"/>
+        <activity android:exported="true" android:name="com.clilystudio.app.netbook.ui.user.UserUGCActivity" android:screenOrientation="portrait"/>
+        <activity android:exported="true" android:name="com.clilystudio.app.netbook.ui.user.UserTopicActivity" android:screenOrientation="portrait"/>
+        <activity android:exported="true" android:name="com.clilystudio.app.netbook.ui.user.ModifyUserInfoActivity" android:parentActivityName="com.clilystudio.app.netbook.ui.BaseActivity">
+            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="com.clilystudio.app.netbook.ui.BaseActivity"/>
+        </activity>
+        <activity android:name="com.clilystudio.app.netbook.ui.CropPhotoActivity" android:parentActivityName="com.clilystudio.app.netbook.ui.BaseActivity">
+            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="com.clilystudio.app.netbook.ui.BaseActivity"/>
+        </activity>
+        <activity android:name="com.clilystudio.app.netbook.ui.user.PayAccountActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.clilystudio.app.netbook.ui.user.ChargeActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.clilystudio.app.netbook.ui.user.PayChargeActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.clilystudio.app.netbook.ui.user.PayConsumeActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.clilystudio.app.netbook.ui.user.PayVoucherActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.clilystudio.app.netbook.ui.user.ChargeHelperActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.clilystudio.app.netbook.ui.user.SmsSendActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.clilystudio.app.netbook.ui.user.SmsVerifyActivity" android:screenOrientation="portrait"/>
+        <service android:name="com.umeng.update.net.DownloadingService" android:process=":DownloadingService"/>
+        <activity android:name="com.umeng.update.UpdateDialogActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="com.mob.tools.MobUIShell" android:screenOrientation="portrait" android:theme="@android:style/Theme.Translucent.NoTitleBar" android:windowSoftInputMode="stateHidden|adjustResize">
+            <intent-filter>
+                <data android:scheme="tencent100371282"/>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity android:configChanges="keyboard|keyboardHidden|orientation" android:name="com.baidu.mobad.feeds.BaiduActivity"/>
+        <activity android:name="com.clilystudio.app.netbook.ui.game.GameTabActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.clilystudio.app.netbook.ui.game.GameDetailActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.clilystudio.app.netbook.ui.game.GameListActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.clilystudio.app.netbook.ui.game.GameGiftListActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.clilystudio.app.netbook.ui.game.GameLocalListActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.clilystudio.app.netbook.ui.AudiobookCategoryActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.clilystudio.app.netbook.ui.AudiobookCategoryListActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.clilystudio.app.netbook.ui.AudiobookInfoActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.clilystudio.app.netbook.ui.AudioBookPlayActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.clilystudio.app.netbook.ui.home.HomeTransparentActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.NoTitleBar.Fullscreen"/>
+        <activity android:launchMode="singleTop" android:name="com.clilystudio.app.netbook.wxapi.WXPayEntryActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.Dialog">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:scheme="wx1e7c2477db57dc75"/>
+            </intent-filter>
+        </activity>
+        <activity android:name="com.clilystudio.app.netbook.ui.IntroActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.NoTitleBar.Fullscreen"/>
+        <receiver android:name="com.clilystudio.app.netbook.pay.weixin.AppRegister">
+            <intent-filter>
+                <action android:name="com.tencent.mm.plugin.openapi.Intent.ACTION_REFRESH_WXAPP"/>
+            </intent-filter>
+        </receiver>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:name="com.alipay.sdk.app.H5PayActivity" android:process="com.clilystudio.app.netbook.MGE_PROCESS" android:screenOrientation="behind" android:windowSoftInputMode="stateHidden|adjustResize"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="com.arcsoft.hpay100.HPaySdkActivity"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="com.arcsoft.hpay100.web.HPayWebActivity"/>
+        <service android:name="com.migu.sdk.service.MiguSdkService"/>
+        <service android:exported="false" android:name="com.clilystudio.app.netbook.reader.dl.BookDownloadService"/>
+        <service android:exported="false" android:name="com.clilystudio.app.netbook.reader.TtsSpeakingService"/>
+        <receiver android:name="com.clilystudio.app.netbook.event.DownloadCompleteReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.DOWNLOAD_COMPLETE"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:name="com.clilystudio.app.netbook.event.AppInstalledReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_ADDED"/>
+                <data android:scheme="package"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:name="com.clilystudio.app.netbook.event.ClickDownloadItemReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.DOWNLOAD_NOTIFICATION_CLICKED"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:label="NetworkConnection" android:name="com.clilystudio.app.netbook.download.ConnectionChangeReceiver">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:exported="true" android:name="com.clilystudio.app.netbook.push.MiPushReceiver">
+            <intent-filter>
+                <action android:name="com.xiaomi.mipush.RECEIVE_MESSAGE"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.xiaomi.mipush.ERROR"/>
+            </intent-filter>
+        </receiver>
+        <service android:enabled="true" android:name="com.xiaomi.push.service.XMPushService" android:process=":pushservice"/>
+        <service android:enabled="true" android:exported="true" android:name="com.xiaomi.mipush.sdk.PushMessageHandler"/>
+        <service android:enabled="true" android:name="com.xiaomi.mipush.sdk.MessageHandleService"/>
+        <receiver android:exported="true" android:name="com.xiaomi.push.service.receivers.NetworkStatusReceiver">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:exported="false" android:name="com.xiaomi.push.service.receivers.PingReceiver" android:process=":pushservice">
+            <intent-filter>
+                <action android:name="com.xiaomi.push.PING_TIMER"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:exported="false" android:name="com.xiaomi.push.service.receivers.PkgUninstallReceiver" android:process=":pushservice">
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_REMOVED"/>
+                <data android:scheme="package"/>
+            </intent-filter>
+        </receiver>
+        <service android:name="com.ximalaya.ting.android.opensdk.player.service.XmPlayerService" android:process=":player"/>
+        <meta-data android:name="AA_DB_NAME" android:value="zhuishushenqi.db"/>
+        <meta-data android:name="AA_DB_VERSION" android:value="45"/>
+        <meta-data android:name="UMENG_APPKEY" android:value="51307770527015737900000a"/>
+        <meta-data android:name="UMENG_CHANNEL" android:value="Official"/>
+        <meta-data android:name="BFD_APPKEY" android:value="1413697c84ff002bcdddee9ede58c971"/>
+        <meta-data android:name="BFD_CHANNEL" android:value="Official"/>
+        <meta-data android:name="BaiduMobAd_APP_ID" android:value="ef9b8e0f"/>
+        <meta-data android:name="COMMIT_ID" android:value="6767950c8d1bd4b2cac3b1dc9cd8df577d0959fb"/>
+        <meta-data android:name="app_key" android:value="1465c430f5e85b6b39aba101e4b9984b"/>
+        <meta-data android:name="pack_id" android:value="com.clilystudio.app.netbook"/>
+        <activity android:name="com.clilystudio.app.netbook.ui.BookRankMainActivity"/>
+        <activity android:name="com.clilystudio.app.netbook.ui.user.UserFollowWeixinActivity"/>
+        <activity android:name="com.clilystudio.app.netbook.ui.SecretOpWebActivity"/>
+        <activity android:name="com.clilystudio.app.netbook.ui.MainActivity"/>
+        <activity android:name="com.clilystudio.app.netbook.ui.ShareRemoveAdActivity"/>
+        <meta-data android:name="cocosplay_mode" android:value="4"/>
+        <meta-data android:name="MgePnKey" android:value="wge_maxthon_android_zssq"/>
+        <meta-data android:name="thirdparty_appid" android:value="zhuishushenqi"/>
+        <meta-data android:name="thirdparty_appkey" android:value="seft5933232daa9277581a8b72774fef969205ef116c4c"/>
+        <activity android:configChanges="keyboard|keyboardHidden|navigation|orientation|screenSize" android:label="@string/app_name" android:launchMode="singleInstance" android:name="com.maxthon.main.InitActivity" android:process="com.clilystudio.app.netbook.MGE_PROCESS" android:screenOrientation="portrait" android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="mge"/>
+            </intent-filter>
+        </activity>
+        <activity android:configChanges="keyboard|keyboardHidden|navigation|orientation|screenSize" android:label="@string/app_name" android:name="com.maxthon.proxy.MgeWebViewActivity" android:process="com.clilystudio.app.netbook.MGE_PROCESS" android:screenOrientation="portrait" android:theme="@style/noAnimationTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+            </intent-filter>
+        </activity>
+        <activity android:configChanges="keyboard|keyboardHidden|navigation|orientation|screenSize" android:label="@string/app_name" android:launchMode="singleTask" android:name="com.maxthon.proxy.MgeActivity" android:process="com.clilystudio.app.netbook.MGE_PROCESS" android:screenOrientation="portrait" android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
+            <intent-filter>
+                <action android:name="com.open.game.shortcutbox"/>
+            </intent-filter>
+        </activity>
+        <activity android:configChanges="locale|keyboard|keyboardHidden|navigation|orientation|screenSize|layoutDirection" android:launchMode="singleTask" android:name="com.maxthon.proxy.AppActivity" android:process="com.clilystudio.app.netbook.MGE_PROCESS" android:theme="@android:style/Theme.NoTitleBar.Fullscreen"/>
+        <activity android:configChanges="keyboard|keyboardHidden|navigation|orientation|screenSize" android:launchMode="singleTask" android:name="com.maxthon.proxy.MgeOnlineGameRunner" android:process="com.clilystudio.app.netbook.MGE_PROCESS" android:theme="@android:style/Theme.NoTitleBar.Fullscreen"/>
+        <activity android:configChanges="locale|keyboard|keyboardHidden|navigation|orientation|screenSize|layoutDirection" android:launchMode="singleTask" android:name="com.maxthon.proxy.EgretGameActivity" android:process="com.clilystudio.app.netbook.MGE_PROCESS" android:theme="@android:style/Theme.NoTitleBar.Fullscreen"/>
+        <activity android:configChanges="locale|keyboard|keyboardHidden|navigation|orientation|screenSize|layoutDirection" android:launchMode="singleTask" android:name="com.maxthon.proxy.LudeiGameActivity" android:process="com.clilystudio.app.netbook.MGE_PROCESS" android:theme="@android:style/Theme.NoTitleBar.Fullscreen"/>
+        <activity android:configChanges="locale|mcc|mnc|keyboard|keyboardHidden|navigation|orientation|screenSize|layoutDirection" android:launchMode="standard" android:name="com.maxthon.proxy.CocosPlayGameRunnerActivity" android:process="com.clilystudio.app.netbook.MGE_PROCESS" android:theme="@android:style/Theme.NoTitleBar.Fullscreen"/>
+        <activity android:launchMode="singleTop" android:name="com.maxthon.proxy.ShortcutActivity" android:process="com.clilystudio.app.netbook.MGE_PROCESS" android:taskAffinity="com.maxthon.shortcut.ShortcutActivity" android:theme="@style/shortcutTheme">
+            <intent-filter>
+                <action android:name="com.open.gamecenter.shortcutbox"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+            </intent-filter>
+        </activity>
+        <activity android:configChanges="mcc|mnc|keyboard|orientation|screenSize" android:exported="false" android:label="@string/app_name" android:launchMode="singleTop" android:name="com.chukong.cocosplay.GameActivity" android:process="com.clilystudio.app.netbook.MGE_PROCESS" android:screenOrientation="portrait" android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
+            <intent-filter>
+                <action android:name="com.chukong.cocosplay.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity android:configChanges="mcc|mnc|keyboard|orientation|screenSize" android:exported="false" android:label="@string/app_name" android:launchMode="singleTop" android:name="com.chukong.cocosplay.GameLandscapeActivity" android:process="com.clilystudio.app.netbook.MGE_PROCESS" android:screenOrientation="landscape" android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
+            <intent-filter>
+                <action android:name="com.chukong.cocosplay.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity android:configChanges="mcc|mnc|keyboard|orientation|screenSize" android:name="com.chukong.cocosplay.runtime.CocosRuntimeActivity" android:process="com.clilystudio.app.netbook.MGE_PROCESS" android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
+            <intent-filter>
+                <action android:name="com.chukong.cocosplay.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity android:configChanges="mcc|mnc|keyboard|orientation|screenSize" android:exported="false" android:label="@string/app_name" android:launchMode="singleTop" android:name="com.chukong.cocosplay.LoadActivity" android:process="com.clilystudio.app.netbook.MGE_PROCESS" android:screenOrientation="behind" android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
+            <intent-filter>
+                <action android:name="com.chukong.cocosplay.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity android:configChanges="mcc|mnc|keyboard|orientation|screenSize" android:exported="false" android:label="@string/app_name" android:launchMode="singleTop" android:name="com.chukong.cocosplay.LoadFragmentActivity" android:process="com.clilystudio.app.netbook.MGE_PROCESS" android:screenOrientation="behind" android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
+            <intent-filter>
+                <action android:name="com.chukong.cocosplay.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity android:configChanges="mcc|mnc|keyboard|orientation|screenSize" android:name="com.chukong.cocosplay.host.CocosPlayHostActivity" android:process="com.clilystudio.app.netbook.MGE_PROCESS" android:theme="@android:style/Theme.NoTitleBar.Fullscreen"/>
+        <activity android:configChanges="mcc|mnc|keyboard|orientation|screenSize" android:name="com.chukong.cocosplay.host.CocosPlayHostActivityGroup" android:process="com.clilystudio.app.netbook.MGE_PROCESS" android:theme="@android:style/Theme.NoTitleBar.Fullscreen"/>
+        <activity android:configChanges="mcc|mnc|keyboard|orientation|screenSize" android:name="com.chukong.cocosplay.host.CocosPlayHostListActivity" android:process="com.clilystudio.app.netbook.MGE_PROCESS" android:theme="@android:style/Theme.NoTitleBar.Fullscreen"/>
+        <activity android:configChanges="mcc|mnc|keyboard|orientation|screenSize" android:name="com.chukong.cocosplay.host.CocosPlayHostTabActivity" android:process="com.clilystudio.app.netbook.MGE_PROCESS" android:theme="@android:style/Theme.NoTitleBar.Fullscreen"/>
+        <activity android:configChanges="mcc|mnc|keyboard|orientation|screenSize" android:name="com.chukong.cocosplay.host.CocosPlayHostFragmentActivity" android:process="com.clilystudio.app.netbook.MGE_PROCESS" android:theme="@android:style/Theme.NoTitleBar.Fullscreen"/>
+        <activity android:configChanges="mcc|mnc|keyboard|orientation|screenSize" android:name="com.chukong.cocosplay.host.CocosPlayHostRemoteActivity" android:process="com.clilystudio.app.netbook.MGE_PROCESS" android:theme="@android:style/Theme.NoTitleBar.Fullscreen"/>
+        <activity android:configChanges="mcc|mnc|keyboard|orientation|screenSize" android:name="com.chukong.cocosplay.host.CocosPlayHostRemoteActivityGroup" android:process="com.clilystudio.app.netbook.MGE_PROCESS" android:theme="@android:style/Theme.NoTitleBar.Fullscreen"/>
+        <activity android:configChanges="mcc|mnc|keyboard|orientation|screenSize" android:name="com.chukong.cocosplay.host.CocosPlayHostRemoteListActivity" android:process="com.clilystudio.app.netbook.MGE_PROCESS" android:theme="@android:style/Theme.NoTitleBar.Fullscreen"/>
+        <activity android:configChanges="mcc|mnc|keyboard|orientation|screenSize" android:name="com.chukong.cocosplay.host.CocosPlayHostRemoteTabActivity" android:process="com.clilystudio.app.netbook.MGE_PROCESS" android:theme="@android:style/Theme.NoTitleBar.Fullscreen"/>
+        <activity android:configChanges="mcc|mnc|keyboard|orientation|screenSize" android:name="com.chukong.cocosplay.host.CocosPlayHostRemoteFragmentActivity" android:process="com.clilystudio.app.netbook.MGE_PROCESS" android:theme="@android:style/Theme.NoTitleBar.Fullscreen"/>
+        <service android:name="com.chukong.cocosplay.host.CocosPlayHostService" android:process="com.clilystudio.app.netbook.MGE_PROCESS"/>
+        <service android:name="com.chukong.cocosplay.host.CocosPlayHostRemoteService" android:process="com.clilystudio.app.netbook.MGE_PROCESS"/>
+        <service android:name="com.chukong.cocosplay.download.CocosPlayPreDownloadService" android:process="com.clilystudio.app.netbook.COCOSPLAY_DOWNLOAD_PROCESS">
+            <intent-filter>
+                <action android:name="com.chukong.cocosplay.gamehall.downloadservice"/>
+            </intent-filter>
+        </service>
+        <activity android:configChanges="locale|keyboard|keyboardHidden|navigation|orientation|screenSize|layoutDirection" android:exported="false" android:icon="@drawable/icon" android:label="@string/app_name" android:name="com.maxthon.proxy.MgePaymentActivity" android:process="com.clilystudio.app.netbook.MGE_PROCESS" android:theme="@android:style/Theme.NoTitleBar"/>
+        <activity android:configChanges="locale|keyboard|keyboardHidden|navigation|orientation|screenSize|layoutDirection" android:name="com.maxthon.proxy.LayaGameActivity" android:process="com.clilystudio.app.netbook.MGE_PROCESS" android:theme="@android:style/Theme.NoTitleBar.Fullscreen"/>
+        <activity android:configChanges="locale|keyboard|keyboardHidden|navigation|orientation|screenSize|layoutDirection" android:name="com.maxthon.proxy.LoginActivity" android:process="com.clilystudio.app.netbook.MGE_PROCESS" android:theme="@android:style/Theme.NoTitleBar.Fullscreen"/>
+        <activity android:configChanges="locale|keyboard|keyboardHidden|navigation|orientation|screenSize|layoutDirection" android:name="com.maxthon.proxy.MgeGameDetailPageActivity" android:process="com.clilystudio.app.netbook.MGE_PROCESS" android:theme="@style/noAnimationTheme"/>
+        <service android:enabled="true" android:exported="true" android:name="com.maxthon.proxy.MgePaymentService"/>
+        <receiver android:enabled="true" android:exported="true" android:name="com.maxthon.proxy.MgeResetServerReceiver">
+            <intent-filter>
+                <action android:name="com.maxthon.mge.MgePaymentReset"/>
+            </intent-filter>
+        </receiver>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="true" android:launchMode="standard" android:name="com.maxthon.proxy.GeneralActivity" android:windowSoftInputMode="stateHidden|adjustResize"/>
+        <service android:enabled="true" android:exported="true" android:name="com.maxthon.proxy.GeneralService"/>
+        <receiver android:enabled="true" android:exported="true" android:name="com.maxthon.proxy.GeneralReceiver">
+            <intent-filter>
+                <action android:name="com.maxthon.mge.GeneralReceiver"/>
+            </intent-filter>
+        </receiver>
+    </application>
+</manifest>

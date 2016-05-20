@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="@dimen/text_size_15" android:textColor="?android:textColorSecondary" android:layout_gravity="center" android:id="@id/empty_text" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="书架上没有书籍，试试从书库添加吧" />
+    <ListView android:id="@id/ugc_add_shelf_list" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="?android:listSelector" />
+    <RelativeLayout android:layout_gravity="bottom" android:id="@id/select_bar" android:background="?android:windowBackground" android:layout_width="fill_parent" android:layout_height="60.0dip">
+        <View android:background="@drawable/audio_bar_top_shadow" android:layout_width="fill_parent" android:layout_height="3.0dip" android:layout_alignParentTop="true" />
+        <RelativeLayout android:paddingLeft="@dimen/dp_32" android:paddingRight="@dimen/dp_32" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <Button android:textColor="?android:textColor" android:id="@id/select_cancel" android:background="@null" android:padding="@dimen/dp_16" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="取消" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+            <Button android:textColor="?colorPrimary" android:id="@id/select_ok" android:background="@null" android:padding="@dimen/dp_16" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="选好了" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        </RelativeLayout>
+    </RelativeLayout>
+</FrameLayout>

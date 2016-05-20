@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:background="?android:windowBackground" android:paddingLeft="@dimen/search_empty_add_left" android:paddingRight="@dimen/search_empty_add_right" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp_55" android:src="@drawable/add_book_failed_img" />
+    <TextView android:textSize="@dimen/text_size_16" android:textStyle="bold" android:textColor="?android:textColor" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp_55" android:text="没有找到这本书" />
+    <TextView android:textSize="@dimen/text_size_14" android:textColor="?android:textColorSecondary" android:gravity="center_horizontal" android:id="@id/add_book_failed_tips" android:layout_width="280.0dip" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp_20" android:text="追书君正走在找书的路上，请耐心等待" />
+</LinearLayout>

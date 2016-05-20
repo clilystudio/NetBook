@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="?android:windowBackground" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:id="@id/book_feed_add_content" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <TextView android:id="@id/add_book_review_tips" android:text="来自你的书架" style="@style/ListItemLabel" />
+        <View android:background="?lineColor" android:layout_width="fill_parent" android:layout_height="1.0px" />
+        <ListView android:id="@id/book_feed_add_list" android:background="?android:windowBackground" android:layout_width="fill_parent" android:layout_height="wrap_content" android:footerDividersEnabled="false" style="@style/DividerListView" />
+        <View android:background="?lineColor" android:layout_width="fill_parent" android:layout_height="1.0px" />
+    </LinearLayout>
+    <TextView android:textSize="@dimen/text_size_14" android:textColor="#ffbbbbbb" android:gravity="center" android:id="@id/book_feed_add_empty" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="添加你喜爱的小说" android:drawableTop="@drawable/feed_add_empty_img" android:layout_centerHorizontal="true" android:layout_centerVertical="true" />
+</RelativeLayout>

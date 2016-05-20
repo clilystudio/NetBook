@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView android:id="@id/hot_flag" android:background="@drawable/bg_hot_flag" android:text="热门" android:drawableLeft="@drawable/ic_topic_hot" style="@style/PostFlag"
+  xmlns:android="http://schemas.android.com/apk/res/android" />
