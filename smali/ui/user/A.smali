@@ -1,0 +1,321 @@
+.class final Lcom/ushaqi/zhuishushenqi/ui/user/A;
+.super Lcom/ushaqi/zhuishushenqi/a/e;
+.source "SourceFile"
+
+
+# annotations
+.annotation system Ldalvik/annotation/Signature;
+    value = {
+        "Lcom/ushaqi/zhuishushenqi/a/e",
+        "<",
+        "Ljava/lang/String;",
+        "Ljava/lang/Void;",
+        "Lcom/ushaqi/zhuishushenqi/model/Topic;",
+        ">;"
+    }
+.end annotation
+
+
+# instance fields
+.field private synthetic a:Lcom/ushaqi/zhuishushenqi/ui/user/MyFavTopicFragment;
+
+
+# direct methods
+.method private constructor <init>(Lcom/ushaqi/zhuishushenqi/ui/user/MyFavTopicFragment;)V
+    .locals 0
+
+    .prologue
+    .line 163
+    iput-object p1, p0, Lcom/ushaqi/zhuishushenqi/ui/user/A;->a:Lcom/ushaqi/zhuishushenqi/ui/user/MyFavTopicFragment;
+
+    invoke-direct {p0}, Lcom/ushaqi/zhuishushenqi/a/e;-><init>()V
+
+    return-void
+.end method
+
+.method synthetic constructor <init>(Lcom/ushaqi/zhuishushenqi/ui/user/MyFavTopicFragment;B)V
+    .locals 0
+
+    .prologue
+    .line 163
+    invoke-direct {p0, p1}, Lcom/ushaqi/zhuishushenqi/ui/user/A;-><init>(Lcom/ushaqi/zhuishushenqi/ui/user/MyFavTopicFragment;)V
+
+    return-void
+.end method
+
+.method private static varargs a([Ljava/lang/String;)Lcom/ushaqi/zhuishushenqi/model/Topic;
+    .locals 3
+
+    .prologue
+    .line 168
+    :try_start_0
+    invoke-static {}, Lcom/ushaqi/zhuishushenqi/api/b;->a()Lcom/ushaqi/zhuishushenqi/api/b;
+
+    invoke-static {}, Lcom/ushaqi/zhuishushenqi/api/b;->b()Lcom/ushaqi/zhuishushenqi/api/ApiService;
+
+    move-result-object v0
+
+    const/4 v1, 0x0
+
+    aget-object v1, p0, v1
+
+    const/4 v2, 0x0
+
+    invoke-virtual {v0, v1, v2}, Lcom/ushaqi/zhuishushenqi/api/ApiService;->d(Ljava/lang/String;I)Lcom/ushaqi/zhuishushenqi/model/Topic;
+    :try_end_0
+    .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
+
+    move-result-object v0
+
+    .line 172
+    :goto_0
+    return-object v0
+
+    .line 169
+    :catch_0
+    move-exception v0
+
+    .line 170
+    invoke-virtual {v0}, Ljava/lang/Exception;->printStackTrace()V
+
+    .line 172
+    const/4 v0, 0x0
+
+    goto :goto_0
+.end method
+
+
+# virtual methods
+.method protected final synthetic doInBackground([Ljava/lang/Object;)Ljava/lang/Object;
+    .locals 1
+
+    .prologue
+    .line 163
+    check-cast p1, [Ljava/lang/String;
+
+    invoke-static {p1}, Lcom/ushaqi/zhuishushenqi/ui/user/A;->a([Ljava/lang/String;)Lcom/ushaqi/zhuishushenqi/model/Topic;
+
+    move-result-object v0
+
+    return-object v0
+.end method
+
+.method protected final synthetic onPostExecute(Ljava/lang/Object;)V
+    .locals 6
+
+    .prologue
+    const/4 v5, 0x0
+
+    const/16 v1, 0x8
+
+    .line 163
+    check-cast p1, Lcom/ushaqi/zhuishushenqi/model/Topic;
+
+    .line 1177
+    invoke-super {p0, p1}, Lcom/ushaqi/zhuishushenqi/a/e;->onPostExecute(Ljava/lang/Object;)V
+
+    .line 1178
+    iget-object v0, p0, Lcom/ushaqi/zhuishushenqi/ui/user/A;->a:Lcom/ushaqi/zhuishushenqi/ui/user/MyFavTopicFragment;
+
+    invoke-static {v0}, Lcom/ushaqi/zhuishushenqi/ui/user/MyFavTopicFragment;->a(Lcom/ushaqi/zhuishushenqi/ui/user/MyFavTopicFragment;)Landroid/widget/TextView;
+
+    move-result-object v0
+
+    invoke-virtual {v0, v1}, Landroid/widget/TextView;->setVisibility(I)V
+
+    .line 1179
+    iget-object v0, p0, Lcom/ushaqi/zhuishushenqi/ui/user/A;->a:Lcom/ushaqi/zhuishushenqi/ui/user/MyFavTopicFragment;
+
+    invoke-static {v0}, Lcom/ushaqi/zhuishushenqi/ui/user/MyFavTopicFragment;->c(Lcom/ushaqi/zhuishushenqi/ui/user/MyFavTopicFragment;)Landroid/view/View;
+
+    move-result-object v0
+
+    invoke-virtual {v0, v1}, Landroid/view/View;->setVisibility(I)V
+
+    .line 1180
+    iget-object v0, p0, Lcom/ushaqi/zhuishushenqi/ui/user/A;->a:Lcom/ushaqi/zhuishushenqi/ui/user/MyFavTopicFragment;
+
+    invoke-static {v0}, Lcom/ushaqi/zhuishushenqi/ui/user/MyFavTopicFragment;->i(Lcom/ushaqi/zhuishushenqi/ui/user/MyFavTopicFragment;)Landroid/view/View;
+
+    move-result-object v0
+
+    invoke-virtual {v0, v1}, Landroid/view/View;->setVisibility(I)V
+
+    .line 1181
+    iget-object v0, p0, Lcom/ushaqi/zhuishushenqi/ui/user/A;->a:Lcom/ushaqi/zhuishushenqi/ui/user/MyFavTopicFragment;
+
+    invoke-static {v0}, Lcom/ushaqi/zhuishushenqi/ui/user/MyFavTopicFragment;->d(Lcom/ushaqi/zhuishushenqi/ui/user/MyFavTopicFragment;)Lcom/ushaqi/zhuishushenqi/widget/LabelPtrListView;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Lcom/ushaqi/zhuishushenqi/widget/LabelPtrListView;->n()V
+
+    .line 1182
+    iget-object v0, p0, Lcom/ushaqi/zhuishushenqi/ui/user/A;->a:Lcom/ushaqi/zhuishushenqi/ui/user/MyFavTopicFragment;
+
+    invoke-static {v0}, Lcom/ushaqi/zhuishushenqi/ui/user/MyFavTopicFragment;->d(Lcom/ushaqi/zhuishushenqi/ui/user/MyFavTopicFragment;)Lcom/ushaqi/zhuishushenqi/widget/LabelPtrListView;
+
+    move-result-object v0
+
+    iget-object v1, p0, Lcom/ushaqi/zhuishushenqi/ui/user/A;->a:Lcom/ushaqi/zhuishushenqi/ui/user/MyFavTopicFragment;
+
+    invoke-static {v1}, Lcom/ushaqi/zhuishushenqi/ui/user/MyFavTopicFragment;->j(Lcom/ushaqi/zhuishushenqi/ui/user/MyFavTopicFragment;)Lcom/handmark/pulltorefresh/library/j;
+
+    move-result-object v1
+
+    invoke-virtual {v0, v1}, Lcom/ushaqi/zhuishushenqi/widget/LabelPtrListView;->setOnLastItemVisibleListener(Lcom/handmark/pulltorefresh/library/j;)V
+
+    .line 1184
+    if-eqz p1, :cond_2
+
+    .line 1186
+    invoke-virtual {p1}, Lcom/ushaqi/zhuishushenqi/model/Topic;->isOk()Z
+
+    move-result v0
+
+    if-eqz v0, :cond_1
+
+    .line 1188
+    iget-object v0, p0, Lcom/ushaqi/zhuishushenqi/ui/user/A;->a:Lcom/ushaqi/zhuishushenqi/ui/user/MyFavTopicFragment;
+
+    invoke-static {v0, v5}, Lcom/ushaqi/zhuishushenqi/ui/user/MyFavTopicFragment;->a(Lcom/ushaqi/zhuishushenqi/ui/user/MyFavTopicFragment;I)I
+
+    .line 1189
+    iget-object v0, p0, Lcom/ushaqi/zhuishushenqi/ui/user/A;->a:Lcom/ushaqi/zhuishushenqi/ui/user/MyFavTopicFragment;
+
+    invoke-static {v0}, Lcom/ushaqi/zhuishushenqi/ui/user/MyFavTopicFragment;->h(Lcom/ushaqi/zhuishushenqi/ui/user/MyFavTopicFragment;)Ljava/util/List;
+
+    move-result-object v0
+
+    invoke-interface {v0}, Ljava/util/List;->clear()V
+
+    .line 1191
+    invoke-virtual {p1}, Lcom/ushaqi/zhuishushenqi/model/Topic;->getPosts()[Lcom/ushaqi/zhuishushenqi/model/TopicPost;
+
+    move-result-object v0
+
+    .line 1192
+    array-length v1, v0
+
+    .line 1193
+    invoke-static {v0}, Ljava/util/Arrays;->asList([Ljava/lang/Object;)Ljava/util/List;
+
+    move-result-object v0
+
+    .line 1195
+    iget-object v2, p0, Lcom/ushaqi/zhuishushenqi/ui/user/A;->a:Lcom/ushaqi/zhuishushenqi/ui/user/MyFavTopicFragment;
+
+    iget-object v3, p0, Lcom/ushaqi/zhuishushenqi/ui/user/A;->a:Lcom/ushaqi/zhuishushenqi/ui/user/MyFavTopicFragment;
+
+    invoke-static {v3}, Lcom/ushaqi/zhuishushenqi/ui/user/MyFavTopicFragment;->k(Lcom/ushaqi/zhuishushenqi/ui/user/MyFavTopicFragment;)I
+
+    move-result v3
+
+    invoke-interface {v0}, Ljava/util/List;->size()I
+
+    move-result v4
+
+    add-int/2addr v3, v4
+
+    invoke-static {v2, v3}, Lcom/ushaqi/zhuishushenqi/ui/user/MyFavTopicFragment;->a(Lcom/ushaqi/zhuishushenqi/ui/user/MyFavTopicFragment;I)I
+
+    .line 1196
+    iget-object v2, p0, Lcom/ushaqi/zhuishushenqi/ui/user/A;->a:Lcom/ushaqi/zhuishushenqi/ui/user/MyFavTopicFragment;
+
+    invoke-static {v2}, Lcom/ushaqi/zhuishushenqi/ui/user/MyFavTopicFragment;->h(Lcom/ushaqi/zhuishushenqi/ui/user/MyFavTopicFragment;)Ljava/util/List;
+
+    move-result-object v2
+
+    invoke-interface {v2, v0}, Ljava/util/List;->addAll(Ljava/util/Collection;)Z
+
+    .line 1197
+    iget-object v0, p0, Lcom/ushaqi/zhuishushenqi/ui/user/A;->a:Lcom/ushaqi/zhuishushenqi/ui/user/MyFavTopicFragment;
+
+    invoke-static {v0}, Lcom/ushaqi/zhuishushenqi/ui/user/MyFavTopicFragment;->l(Lcom/ushaqi/zhuishushenqi/ui/user/MyFavTopicFragment;)Lcom/ushaqi/zhuishushenqi/adapter/F;
+
+    move-result-object v0
+
+    iget-object v2, p0, Lcom/ushaqi/zhuishushenqi/ui/user/A;->a:Lcom/ushaqi/zhuishushenqi/ui/user/MyFavTopicFragment;
+
+    invoke-static {v2}, Lcom/ushaqi/zhuishushenqi/ui/user/MyFavTopicFragment;->h(Lcom/ushaqi/zhuishushenqi/ui/user/MyFavTopicFragment;)Ljava/util/List;
+
+    move-result-object v2
+
+    invoke-virtual {v0, v2}, Lcom/ushaqi/zhuishushenqi/adapter/F;->a(Ljava/util/Collection;)V
+
+    .line 1198
+    iget-object v0, p0, Lcom/ushaqi/zhuishushenqi/ui/user/A;->a:Lcom/ushaqi/zhuishushenqi/ui/user/MyFavTopicFragment;
+
+    invoke-static {v0, v1}, Lcom/ushaqi/zhuishushenqi/ui/user/MyFavTopicFragment;->b(Lcom/ushaqi/zhuishushenqi/ui/user/MyFavTopicFragment;I)V
+
+    .line 1200
+    const/16 v0, 0xa
+
+    if-ge v1, v0, :cond_0
+
+    .line 1201
+    iget-object v0, p0, Lcom/ushaqi/zhuishushenqi/ui/user/A;->a:Lcom/ushaqi/zhuishushenqi/ui/user/MyFavTopicFragment;
+
+    invoke-static {v0}, Lcom/ushaqi/zhuishushenqi/ui/user/MyFavTopicFragment;->d(Lcom/ushaqi/zhuishushenqi/ui/user/MyFavTopicFragment;)Lcom/ushaqi/zhuishushenqi/widget/LabelPtrListView;
+
+    move-result-object v0
+
+    const/4 v2, 0x0
+
+    invoke-virtual {v0, v2}, Lcom/ushaqi/zhuishushenqi/widget/LabelPtrListView;->setOnLastItemVisibleListener(Lcom/handmark/pulltorefresh/library/j;)V
+
+    .line 1202
+    if-nez v1, :cond_0
+
+    .line 1203
+    iget-object v0, p0, Lcom/ushaqi/zhuishushenqi/ui/user/A;->a:Lcom/ushaqi/zhuishushenqi/ui/user/MyFavTopicFragment;
+
+    invoke-static {v0}, Lcom/ushaqi/zhuishushenqi/ui/user/MyFavTopicFragment;->a(Lcom/ushaqi/zhuishushenqi/ui/user/MyFavTopicFragment;)Landroid/widget/TextView;
+
+    move-result-object v0
+
+    invoke-virtual {v0, v5}, Landroid/widget/TextView;->setVisibility(I)V
+
+    .line 1204
+    iget-object v0, p0, Lcom/ushaqi/zhuishushenqi/ui/user/A;->a:Lcom/ushaqi/zhuishushenqi/ui/user/MyFavTopicFragment;
+
+    invoke-static {v0}, Lcom/ushaqi/zhuishushenqi/ui/user/MyFavTopicFragment;->a(Lcom/ushaqi/zhuishushenqi/ui/user/MyFavTopicFragment;)Landroid/widget/TextView;
+
+    move-result-object v0
+
+    const-string v1, "\u4f60\u8fd8\u6ca1\u6709\u6536\u85cf\u54e6\uff0c\u5feb\u53bb\u6536\u85cf\u4e00\u4e2a\u5427"
+
+    invoke-virtual {v0, v1}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
+
+    .line 1210
+    :cond_0
+    :goto_0
+    return-void
+
+    :cond_1
+    iget-object v0, p0, Lcom/ushaqi/zhuishushenqi/ui/user/A;->a:Lcom/ushaqi/zhuishushenqi/ui/user/MyFavTopicFragment;
+
+    invoke-virtual {v0}, Lcom/ushaqi/zhuishushenqi/ui/user/MyFavTopicFragment;->getActivity()Landroid/support/v4/app/FragmentActivity;
+
+    move-result-object v0
+
+    const-string v1, "\u52a0\u8f7d\u5931\u8d25\uff0c\u8bf7\u4e0b\u62c9\u5237\u65b0\u91cd\u8bd5"
+
+    invoke-static {v0, v1}, Lcom/ushaqi/zhuishushenqi/util/e;->a(Landroid/app/Activity;Ljava/lang/String;)V
+
+    goto :goto_0
+
+    .line 1215
+    :cond_2
+    iget-object v0, p0, Lcom/ushaqi/zhuishushenqi/ui/user/A;->a:Lcom/ushaqi/zhuishushenqi/ui/user/MyFavTopicFragment;
+
+    invoke-virtual {v0}, Lcom/ushaqi/zhuishushenqi/ui/user/MyFavTopicFragment;->getActivity()Landroid/support/v4/app/FragmentActivity;
+
+    move-result-object v0
+
+    const-string v1, "\u52a0\u8f7d\u5931\u8d25\uff0c\u8bf7\u68c0\u67e5\u7f51\u7edc\u6216\u8005\u7a0d\u540e\u518d\u8bd5"
+
+    invoke-static {v0, v1}, Lcom/ushaqi/zhuishushenqi/util/e;->a(Landroid/app/Activity;Ljava/lang/String;)V
+
+    goto :goto_0
+.end method
