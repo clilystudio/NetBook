@@ -67,7 +67,7 @@ public abstract class AbsPostActivity extends BaseLoadingActivity
   protected void a(ReplyeeInfo paramReplyeeInfo, String paramString)
   {
     this.f = paramString;
-    Account localAccount = am.a(this);
+    Account localAccount = am_CommonUtils.1this);
     if (localAccount == null)
       return;
     if (this.f.length() > 512)
@@ -89,7 +89,7 @@ public abstract class AbsPostActivity extends BaseLoadingActivity
   protected final void a(boolean paramBoolean)
   {
     TextView localTextView = (TextView)findViewById(2131494004);
-    am.a(this, localTextView);
+    am_CommonUtils.1this, localTextView);
     if (paramBoolean)
       localTextView.setText("");
     localTextView.setHint("添加评论");

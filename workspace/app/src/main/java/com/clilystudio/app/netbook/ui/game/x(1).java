@@ -19,15 +19,15 @@ final class x
   public final void onClick(View paramView)
   {
     this.a.dismiss();
-    am.a(this.c, this.b);
+    am_CommonUtils.1this.c, this.b);
     e.a(this.c, "已复制");
     if (GameGiftListActivity.b(this.c))
     {
-      am.a(this.c, GameGiftListActivity.c(this.c).game);
+      am_CommonUtils.1this.c, GameGiftListActivity.c(this.c).game);
       b.a(this.c, "micro_game_play_click", GameGiftListActivity.c(this.c).game.getName());
       return;
     }
-    am.d(this.c, GameGiftListActivity.c(this.c).game.getAndroidPackageName());
+    am_CommonUtils.1this.c, GameGiftListActivity.c(this.c).game.getAndroidPackageName());
   }
 }
 

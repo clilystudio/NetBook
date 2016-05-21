@@ -19,7 +19,7 @@ final class O extends c<Void, ResultStatus>
   {
     try
     {
-      Account localAccount = am.a(this.a);
+      Account localAccount = am_CommonUtils.1this.a);
       if (localAccount != null)
       {
         if (UGCGuideEditBooksActivity.d(this.a))

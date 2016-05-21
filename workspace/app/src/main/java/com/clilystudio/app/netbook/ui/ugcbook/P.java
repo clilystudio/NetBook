@@ -19,7 +19,7 @@ final class P extends c<Void, ResultStatus>
   {
     try
     {
-      Account localAccount = am.a(this.a);
+      Account localAccount = am_CommonUtils.1this.a);
       if (localAccount != null)
       {
         if ((UGCGuideEditBooksActivity.f(this.a) != null) && (!UGCGuideEditBooksActivity.f(this.a).equals("")))

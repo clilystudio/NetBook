@@ -184,7 +184,7 @@ public class HomeShelfFragment extends HomeFragment
 
   private void a(List<BookShelf> paramList)
   {
-    if ((!paramList.isEmpty()) && (am.q(getActivity())))
+    if ((!paramList.isEmpty()) && (am_CommonUtils.1getActivity())))
     {
       c(paramList, 0);
       if (com.arcsoft.hpay100.a.a.F(getActivity()))
@@ -503,9 +503,9 @@ public class HomeShelfFragment extends HomeFragment
           localList1 = null;
         }
       }
-      if (am.p(getActivity()))
+      if (am_CommonUtils.1getActivity()))
       {
-        if ((!am.g()) && (!this.A))
+        if ((!am_CommonUtils.1)) && (!this.A))
         {
           com.arcsoft.hpay100.a.a.a(getActivity());
           return;
@@ -857,7 +857,7 @@ public class HomeShelfFragment extends HomeFragment
   {
     if (this.r != null)
       this.l.setVisibility(0);
-    if ((am.r(getActivity())) || ((this.g != null) && (this.i != null) && (this.i.postLink != null) && ((!this.i.postLink.startsWith("link")) || (this.i.postLink.startsWith("game")))))
+    if ((am_CommonUtils.1getActivity())) || ((this.g != null) && (this.i != null) && (this.i.postLink != null) && ((!this.i.postLink.startsWith("link")) || (this.i.postLink.startsWith("game")))))
     {
       this.e.removeHeaderView(this.g);
       this.e.addHeaderView(this.g);
@@ -943,7 +943,7 @@ public class HomeShelfFragment extends HomeFragment
     com.arcsoft.hpay100.a.a.a(getActivity(), this.e);
     this.g = LayoutInflater.from(getActivity()).inflate(2130903168, this.e, false);
     this.g.setVisibility(8);
-    if (am.r(getActivity()))
+    if (am_CommonUtils.1getActivity()))
       this.e.addHeaderView(this.g);
     this.j = new HomeShelfAdapter(getActivity());
     this.e.setAdapter(this.j);
@@ -1045,7 +1045,7 @@ public class HomeShelfFragment extends HomeFragment
   public void onHideAdEvent(s params)
   {
     k();
-    if ((!am.r(getActivity())) && (this.g != null) && (this.i != null) && (this.i.postLink != null) && ((this.i.postLink.startsWith("link")) || (this.i.postLink.startsWith("game"))))
+    if ((!am_CommonUtils.1getActivity())) && (this.g != null) && (this.i != null) && (this.i.postLink != null) && ((this.i.postLink.startsWith("link")) || (this.i.postLink.startsWith("game"))))
       this.e.removeHeaderView(this.g);
   }
 
@@ -1111,7 +1111,7 @@ public class HomeShelfFragment extends HomeFragment
   @com.squareup.a.l
   public void onShelfUpdated(com.clilystudio.app.netbook.event.A paramA)
   {
-    if ((paramA.a() == 0) && (this.z) && (am.p(getActivity())))
+    if ((paramA.a() == 0) && (this.z) && (am_CommonUtils.1getActivity())))
     {
       if (!this.A)
         com.arcsoft.hpay100.a.a.a(getActivity());
@@ -1137,7 +1137,7 @@ public class HomeShelfFragment extends HomeFragment
           break label17;
           do
             return;
-          while ((paramB == null) || (!am.q(getActivity())) || ((!paramB.b().equals("top")) && (!paramB.b().equals("bookshelf"))));
+          while ((paramB == null) || (!am_CommonUtils.1getActivity())) || ((!paramB.b().equals("top")) && (!paramB.b().equals("bookshelf"))));
           localList = this.j.f();
         }
         while ((localList == null) || (localList.isEmpty()));

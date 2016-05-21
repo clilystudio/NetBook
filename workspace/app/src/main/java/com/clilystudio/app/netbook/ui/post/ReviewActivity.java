@@ -73,7 +73,7 @@ public class ReviewActivity extends AbsPostActivity
     {
       return;
       g(paramString);
-      localAccount = am.a(this);
+      localAccount = am_CommonUtils.1this);
     }
     while (localAccount == null);
     if (paramString.length() > 512)

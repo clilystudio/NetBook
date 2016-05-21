@@ -20,7 +20,7 @@ final class r extends e<String, Void, UGCBookDetailRoot>
     {
       if (UGCDetailActivity.k(this.a))
       {
-        Account localAccount = am.a(this.a);
+        Account localAccount = am_CommonUtils.1this.a);
         if (localAccount != null)
           return b.b().C(localAccount.getToken(), paramArrayOfString[0]);
       }

@@ -19,7 +19,7 @@ final class d extends e<String, Void, UGCBookListRoot>
     {
       try
       {
-        Account localAccount = am.a((BaseActivity)this.a.getActivity());
+        Account localAccount = am_CommonUtils.1(BaseActivity)this.a.getActivity());
         if (localAccount != null)
         {
           UGCBookListRoot localUGCBookListRoot = this.a.a(localAccount, this.a.c.getCount());

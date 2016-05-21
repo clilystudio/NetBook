@@ -11,7 +11,7 @@ final class ao
 
   public final void run()
   {
-    if (!am.a(BookHelpListActivity.e(this.a.a)))
+    if (!am_CommonUtils.1BookHelpListActivity.e(this.a.a)))
       BookHelpListActivity.e(this.a.a).cancel(true);
     BookHelpListActivity.a(this.a.a, new av(this.a.a, (byte)0));
     av localav = BookHelpListActivity.h(this.a.a);

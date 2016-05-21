@@ -11,7 +11,7 @@ final class aA
 
   public final void run()
   {
-    if (!am.a(BookReviewListFragment.b(this.a.a)))
+    if (!am_CommonUtils.1BookReviewListFragment.b(this.a.a)))
       BookReviewListFragment.b(this.a.a).cancel(true);
     BookReviewListFragment.c(this.a.a);
   }

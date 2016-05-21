@@ -5,6 +5,7 @@ import android.support.design.widget.am;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.clilystudio.app.netbook.MyApplication;
+import com.clilystudio.app.netbook.util.am_CommonUtils;
 
 final class O
   implements View.OnClickListener
@@ -18,7 +19,7 @@ final class O
     if (this.a != this.b)
     {
       MyApplication.a().c(ReadModeItem.a(this.c));
-      am.c(ReadModeItem.a(this.c), this.b);
+      am_CommonUtils.c(ReadModeItem.a(this.c), this.b);
       ReadModeItem.a(this.c, this.b);
     }
     ReadModeItem.b(this.c).finish();

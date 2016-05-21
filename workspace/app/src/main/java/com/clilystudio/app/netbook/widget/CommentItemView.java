@@ -147,7 +147,7 @@ public class CommentItemView extends HorizontalScrollView
     View localView2 = findViewById(2131493773);
     label338: int j;
     label367: String str2;
-    if (!am.m(getContext()))
+    if (!am_CommonUtils.1getContext()))
     {
       localSmartImageView.setImageUrl(paramPostComment.getAuthor().getScaleAvatar(), 2130837614);
       localSmartImageView.setTag(paramPostComment);

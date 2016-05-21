@@ -5,6 +5,8 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
+
+import com.clilystudio.app.netbook.util.am_CommonUtils;
 import com.squareup.a.b;
 import com.clilystudio.app.netbook.MyApplication;
 import com.clilystudio.app.netbook.event.i;
@@ -27,7 +29,7 @@ final class bC
       MyApplication.a().c(ReaderMixActivity.b(this.a));
       if (!"vip.zhuishushenqi.com".equals(ReaderMixActivity.a(this.a)))
         break label123;
-      am.c(ReaderMixActivity.b(this.a), 9);
+      am_CommonUtils.c(ReaderMixActivity.b(this.a), 9);
     }
     while (true)
     {
@@ -35,7 +37,7 @@ final class bC
       ReaderMixActivity.a(this.a, localTocSummary.get_id());
       this.a.finish();
       return;
-      label123: am.c(ReaderMixActivity.b(this.a), 10);
+      label123: am_CommonUtils.c(ReaderMixActivity.b(this.a), 10);
     }
   }
 }

@@ -51,8 +51,8 @@ public class AddReviewContentActivity extends BaseActivity
     this.f = getIntent().getBooleanExtra("isFromBookReviewList", false);
     this.c = ((EditText)findViewById(2131493070));
     this.e = ((EditText)findViewById(2131493071));
-    am.a(this.c, "saveToLocalReviewTitle");
-    am.a(this.e, "saveToLocalReviewDesc");
+    am_CommonUtils.1this.c, "saveToLocalReviewTitle");
+    am_CommonUtils.1this.e, "saveToLocalReviewDesc");
   }
 }
 

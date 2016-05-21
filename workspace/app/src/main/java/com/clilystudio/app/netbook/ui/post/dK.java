@@ -11,7 +11,7 @@ final class dK
 
   public final void run()
   {
-    if (!am.a(TweetListFragment.b(this.a.a)))
+    if (!am_CommonUtils.1TweetListFragment.b(this.a.a)))
       TweetListFragment.b(this.a.a).cancel(true);
     TweetListFragment.c(this.a.a);
   }

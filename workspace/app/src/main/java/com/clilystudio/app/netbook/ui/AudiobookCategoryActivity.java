@@ -72,7 +72,7 @@ public class AudiobookCategoryActivity extends BaseActivity
     this.c = findViewById(2131493082);
     this.c.setOnClickListener(new q(this));
     b();
-    ((RelativeLayout)findViewById(2131493083)).setBackgroundResource(am.b(this, 2130771970));
+    ((RelativeLayout)findViewById(2131493083)).setBackgroundResource(am_CommonUtils.1this, 2130771970));
     TextView localTextView = (TextView)findViewById(2131493084);
     SpannableString localSpannableString = new SpannableString(getResources().getString(2131034591));
     localSpannableString.setSpan(new ForegroundColorSpan(getResources().getColor(2131427543)), 0, 5, 33);

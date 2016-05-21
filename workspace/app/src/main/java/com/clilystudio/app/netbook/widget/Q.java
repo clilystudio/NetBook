@@ -19,7 +19,7 @@ final class Q
       b.a(this.b.getContext(), "micro_game_continue_click", this.a.getName());
     while (true)
     {
-      am.a(this.b.getContext(), this.a);
+      am_CommonUtils.1this.b.getContext(), this.a);
       return;
       b.a(this.b.getContext(), "micro_game_play_click", this.a.getName());
     }

@@ -80,7 +80,7 @@ public class RankCollapseItem extends LinearLayout
       if (!this.a)
         break label143;
     }
-    label129: label136: label143: for (int n = -43230; ; n = am.a(getContext(), 16842904))
+    label129: label136: label143: for (int n = -43230; ; n = am_CommonUtils.1getContext(), 16842904))
     {
       localTextView.setTextColor(n);
       return;

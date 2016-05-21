@@ -19,7 +19,7 @@ final class bT
     if ((MyTweetFragment.b(this.a) == null) || (MyTweetFragment.b(this.a).getStatus() == AsyncTask.Status.FINISHED))
     {
       MyTweetFragment.v(this.a).setVisibility(0);
-      if (!am.a(MyTweetFragment.w(this.a)))
+      if (!am_CommonUtils.1MyTweetFragment.w(this.a)))
         MyTweetFragment.w(this.a).cancel(true);
       MyTweetFragment.a(this.a, new bW(this.a, (byte)0));
       int i = MyTweetFragment.q(this.a).size();

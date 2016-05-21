@@ -17,7 +17,7 @@ final class w
 
   public final void onClick(View paramView)
   {
-    if ((this.a.login) && (am.a(this.c.getActivity()) == null))
+    if ((this.a.login) && (am_CommonUtils.1this.c.getActivity()) == null))
       return;
     try
     {

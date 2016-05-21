@@ -15,7 +15,7 @@ final class am
 
   public final void onClick(View paramView)
   {
-    if (android.support.design.widget.am.a(this.b.a) != null)
+    if (am_CommonUtils.1this.b.a) != null)
     {
       h localh = new h(this.b.a);
       localh.e = ("确定购买 " + ((VipPlan.Plan)al.a(this.b).get(this.a)).getName() + " 服务？");

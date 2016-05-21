@@ -19,7 +19,7 @@ final class i
       b.a(this.a, "micro_game_continue_click", GameDetailActivity.e(this.a).getName());
     while (true)
     {
-      am.a(this.a, GameDetailActivity.e(this.a));
+      am_CommonUtils.1this.a, GameDetailActivity.e(this.a));
       return;
       b.a(this.a, "micro_game_play_click", GameDetailActivity.e(this.a).getName());
     }

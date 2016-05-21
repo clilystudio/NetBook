@@ -17,7 +17,7 @@ final class dg
     if ((ReviewListActivity.f(this.a) == null) || (ReviewListActivity.f(this.a).getStatus() == AsyncTask.Status.FINISHED))
     {
       ReviewListActivity.s(this.a).setVisibility(0);
-      if (!am.a(ReviewListActivity.j(this.a)))
+      if (!am_CommonUtils.1ReviewListActivity.j(this.a)))
         ReviewListActivity.j(this.a).cancel(true);
       ReviewListActivity.a(this.a, new do(this.a, (byte)0));
       do localdo = ReviewListActivity.f(this.a);

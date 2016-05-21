@@ -24,7 +24,7 @@ final class G extends c<Void, ResultStatus>
   {
     try
     {
-      Account localAccount = am.a(this.a);
+      Account localAccount = am_CommonUtils.1this.a);
       if (localAccount != null)
       {
         if ((UGCGuideAddCollectionActivity.e(this.a) != null) && (!UGCGuideAddCollectionActivity.e(this.a).equals("")))

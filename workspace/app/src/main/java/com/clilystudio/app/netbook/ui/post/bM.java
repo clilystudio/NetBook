@@ -11,7 +11,7 @@ final class bM
 
   public final void run()
   {
-    if (!am.a(MyTweetFragment.b(this.a.a)))
+    if (!am_CommonUtils.1MyTweetFragment.b(this.a.a)))
       MyTweetFragment.b(this.a.a).cancel(true);
     MyTweetFragment.c(this.a.a);
   }

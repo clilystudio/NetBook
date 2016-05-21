@@ -11,7 +11,7 @@ final class ca
 
   public final void run()
   {
-    if (!am.a(OtherUserActivity.b(this.a.a)))
+    if (!am_CommonUtils.1OtherUserActivity.b(this.a.a)))
       OtherUserActivity.b(this.a.a).cancel(true);
     OtherUserActivity.c(this.a.a);
   }

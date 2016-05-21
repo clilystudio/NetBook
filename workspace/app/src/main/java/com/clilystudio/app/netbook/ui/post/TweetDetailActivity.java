@@ -162,7 +162,7 @@ public class TweetDetailActivity extends AbsPostActivity
   protected final void a(ReplyeeInfo paramReplyeeInfo, String paramString)
   {
     g(paramString);
-    Account localAccount = am.a(this);
+    Account localAccount = am_CommonUtils.1this);
     if (localAccount == null)
       return;
     if (paramString.length() > 512)
