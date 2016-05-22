@@ -11,7 +11,7 @@ public class HomeParentActivity extends BaseActivity
     try
     {
       int i = Integer.parseInt(com.umeng.a.b.b(this, "force_update_until_version"));
-      int j = am_CommonUtils.1this);
+      int j = am.f(this);
       boolean bool = false;
       if (i > j)
         bool = true;

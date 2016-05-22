@@ -17,7 +17,7 @@ final class g
 
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Account localAccount = am_CommonUtils.1(BaseActivity)this.b.getActivity());
+    Account localAccount = am.a((BaseActivity)this.b.getActivity());
     if (localAccount != null)
     {
       FavUGCListFragment.a(this.b).setRefreshing();

@@ -23,7 +23,7 @@ final class t extends c<String, Root>
   {
     try
     {
-      Root localRoot = b.b().a(am_CommonUtils.1this.b).getToken(), this.a);
+      Root localRoot = b.b().a(am.a(this.b).getToken(), this.a);
       return localRoot;
     }
     catch (IOException localIOException)

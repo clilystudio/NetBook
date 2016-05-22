@@ -11,7 +11,7 @@ final class bC
 
   public final void run()
   {
-    if (!am_CommonUtils.1GirlTopicListActivity.e(this.a.a)))
+    if (!am.a(GirlTopicListActivity.e(this.a.a)))
       GirlTopicListActivity.e(this.a.a).cancel(true);
     GirlTopicListActivity.a(this.a.a, new bJ(this.a.a, (byte)0));
     bJ localbJ = GirlTopicListActivity.h(this.a.a);

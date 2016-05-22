@@ -15,7 +15,7 @@ final class d
 
   public final void onClick(View paramView)
   {
-    Account localAccount = am_CommonUtils.1this.b);
+    Account localAccount = am.a(this.b);
     if ((localAccount != null) && (AbsPostActivity.b(this.b)))
     {
       this.b.e = null;

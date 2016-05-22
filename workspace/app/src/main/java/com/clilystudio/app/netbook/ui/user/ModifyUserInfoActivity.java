@@ -179,7 +179,7 @@ public class ModifyUserInfoActivity extends BaseActivity
     setContentView(2130903114);
     b("编辑资料");
     ButterKnife.inject(this);
-    this.a = am_CommonUtils.1this).getUser();
+    this.a = am.a(this).getUser();
     this.mPortrait.setImageUrl(this.a.getFullAvatar());
     this.mNameView.setText(this.a.getNickname());
     TextView localTextView = this.mGenderView;

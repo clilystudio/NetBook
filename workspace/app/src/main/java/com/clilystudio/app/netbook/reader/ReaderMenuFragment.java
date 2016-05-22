@@ -64,14 +64,14 @@ public class ReaderMenuFragment extends Fragment
     super.onActivityCreated(paramBundle);
     this.e = getArguments().getString("BOOK_ID");
     this.f = getArguments().getString("BOOK_TITLE");
-    int m = am_CommonUtils.1getActivity());
+    int m = am.k(getActivity());
     if ((getView() != null) && (m != 0))
       getView().findViewById(2131493457).setPadding(0, m, 1, 0);
     bA localbA = new bA(this, (byte)0);
     String[] arrayOfString = new String[1];
     arrayOfString[0] = this.e;
     localbA.b(arrayOfString);
-    if (am_CommonUtils.1getActivity()))
+    if (am.q(getActivity()))
       new bz(this, (byte)0).b(new Void[0]);
     while (getView() == null)
       return;
@@ -81,7 +81,7 @@ public class ReaderMenuFragment extends Fragment
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     View localView = paramLayoutInflater.inflate(2130903216, paramViewGroup, false);
-    ((RelativeLayout)localView.findViewById(2131493446)).setPadding(0, am_CommonUtils.1getActivity()), 0, 0);
+    ((RelativeLayout)localView.findViewById(2131493446)).setPadding(0, am.k(getActivity()), 0, 0);
     localView.findViewById(2131493452).setOnClickListener(this.j);
     this.g = ((LoadingContainer)localView.findViewById(2131493460));
     localView.findViewById(2131493455).setOnClickListener(this.j);
@@ -98,7 +98,7 @@ public class ReaderMenuFragment extends Fragment
   @l
   public void onShowThirdAd(B paramB)
   {
-    if ((getView() == null) || (paramB == null) || (!am_CommonUtils.1getActivity())) || (!paramB.b().equals("top")));
+    if ((getView() == null) || (paramB == null) || (!am.q(getActivity())) || (!paramB.b().equals("top")));
     View localView;
     Advert localAdvert;
     do

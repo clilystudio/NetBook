@@ -17,7 +17,7 @@ final class aP
     if ((BookTopicListFragment.b(this.a) == null) || (BookTopicListFragment.b(this.a).getStatus() == AsyncTask.Status.FINISHED))
     {
       this.a.c.setVisibility(0);
-      if (!am_CommonUtils.1BookTopicListFragment.i(this.a)))
+      if (!am.a(BookTopicListFragment.i(this.a)))
         BookTopicListFragment.i(this.a).cancel(true);
       BookTopicListFragment.a(this.a, new aQ(this.a, (byte)0));
       aQ localaQ = BookTopicListFragment.b(this.a);

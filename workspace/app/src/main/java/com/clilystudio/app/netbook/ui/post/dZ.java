@@ -23,7 +23,7 @@ final class dZ
     if ((TweetTimelineFragment.b(this.a) == null) || (TweetTimelineFragment.b(this.a).getStatus() == AsyncTask.Status.FINISHED))
     {
       TweetTimelineFragment.j(this.a).setVisibility(0);
-      if (!am_CommonUtils.1TweetTimelineFragment.k(this.a)))
+      if (!am.a(TweetTimelineFragment.k(this.a)))
         TweetTimelineFragment.k(this.a).cancel(true);
       TweetTimelineFragment.a(this.a, new ea(this.a, (byte)0));
       int i = TweetTimelineFragment.h(this.a).size();

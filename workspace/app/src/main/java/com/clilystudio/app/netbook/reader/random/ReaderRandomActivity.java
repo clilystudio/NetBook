@@ -311,7 +311,7 @@ public class ReaderRandomActivity extends FragmentActivity
       localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
       if (!bool)
         break label544;
-      localLayoutParams.setMargins(0, am_CommonUtils.1localReaderRandomActionBar.getContext()), 0, 0);
+      localLayoutParams.setMargins(0, am.k(localReaderRandomActionBar.getContext()), 0, 0);
     }
     while (true)
     {

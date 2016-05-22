@@ -17,7 +17,7 @@ public final class N
 
   public final void a(String paramString)
   {
-    Account localAccount = am_CommonUtils.1this.a);
+    Account localAccount = am.a(this.a);
     if (localAccount != null)
       a(localAccount.getToken(), paramString);
   }

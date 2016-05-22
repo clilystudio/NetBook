@@ -12,7 +12,6 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import com.arcsoft.hpay100.a.a;
-import com.clilystudio.app.netbook.util.am_CommonUtils;
 import com.umeng.a.b;
 import com.clilystudio.app.netbook.ui.post.CommonPostListActivity;
 import uk.me.lewisdeane.ldialogs.h;
@@ -66,11 +65,11 @@ public class SettingsActivity extends BaseActivity
       startActivity(CommonPostListActivity.a(this, "android-feedback"));
       return;
     case 2131493206:
-      am_CommonUtils.1this, "market://details?id=" + getPackageName(), "打开应用市场失败");
+      am.a(this, "market://details?id=" + getPackageName(), "打开应用市场失败");
       return;
     case 2131493203:
     }
-    am_CommonUtils.1this, "http://www.lagou.com/gongsi/493.html?speedShow=true", null);
+    am.a(this, "http://www.lagou.com/gongsi/493.html?speedShow=true", null);
   }
 
   public void onCreate(Bundle paramBundle)
@@ -88,8 +87,8 @@ public class SettingsActivity extends BaseActivity
       findViewById(2131493205).setOnClickListener(this);
       findViewById(2131493206).setOnClickListener(this);
       localTextView = (TextView)findViewById(2131493207);
-      localStringBuilder = new StringBuilder().append(am_CommonUtils.1this)).append("(");
-      str1 = (String) am_CommonUtils.c(this, "COMMIT_ID");
+      localStringBuilder = new StringBuilder().append(am.g(this)).append("(");
+      str1 = (String)am.c(this, "COMMIT_ID");
       if ((str1 == null) || (str1.length() <= 8))
         break label390;
     }

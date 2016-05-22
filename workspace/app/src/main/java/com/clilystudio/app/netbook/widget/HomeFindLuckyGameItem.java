@@ -34,7 +34,7 @@ public class HomeFindLuckyGameItem extends HomeFindItem
   {
     int i = 1;
     Context localContext1 = getContext();
-    String str1 = am_CommonUtils.1localContext1);
+    String str1 = am.n(localContext1);
     String str2 = b.b(localContext1, "home_lucky_game_channel");
     int n;
     if ((str2 != null) && (str2.length() > 0))
@@ -56,7 +56,7 @@ public class HomeFindLuckyGameItem extends HomeFindItem
     }
     label94: Context localContext2 = getContext();
     int k = a.b(b.b(localContext2, "home_lucky_game_toggle"), 0);
-    if (am_CommonUtils.1localContext2) < k);
+    if (am.f(localContext2) < k);
     while (i != 0)
     {
       b();
@@ -68,7 +68,7 @@ public class HomeFindLuckyGameItem extends HomeFindItem
 
   protected final void a(Context paramContext, String paramString)
   {
-    Account localAccount = am_CommonUtils.1(Activity)paramContext);
+    Account localAccount = am.a((Activity)paramContext);
     if (localAccount != null)
       paramContext.startActivity(LuckyGameWebActivity.a(paramContext, paramString, String.format("http://share.zhuishushenqi.com/game/index?token=%s", new Object[] { localAccount.getToken() })));
   }

@@ -19,7 +19,7 @@ final class dG
     if ((TweetHotFragment.b(this.a) == null) || (TweetHotFragment.b(this.a).getStatus() == AsyncTask.Status.FINISHED))
     {
       TweetHotFragment.j(this.a).setVisibility(0);
-      if (!am_CommonUtils.1TweetHotFragment.k(this.a)))
+      if (!am.a(TweetHotFragment.k(this.a)))
         TweetHotFragment.k(this.a).cancel(true);
       TweetHotFragment.a(this.a, new dH(this.a, (byte)0));
       int i = TweetHotFragment.e(this.a).size();

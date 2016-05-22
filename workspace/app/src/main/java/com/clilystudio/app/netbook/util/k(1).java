@@ -21,7 +21,7 @@ public final class k
   public final void a()
   {
     this.b = t.a(new Date());
-    String str = am_CommonUtils.1);
+    String str = am.h();
     List localList1 = BookClickRecord.getBookClickRecords(this.a);
     if ((localList1 != null) && (localList1.size() > 0))
     {

@@ -100,7 +100,7 @@ public class GiftGameGameButton extends Button
 
   protected final void f()
   {
-    am_CommonUtils.1getContext(), this.a.getAndroidPackageName());
+    am.d(getContext(), this.a.getAndroidPackageName());
   }
 
   public final GiftGame g()

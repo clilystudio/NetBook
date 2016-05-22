@@ -53,12 +53,12 @@ public class SplashActivity extends Activity
       findViewById(2131493995).setVisibility(8);
       a(3000L);
       AdSplashImp localAdSplashImp = new AdSplashImp(this);
-      if (am_CommonUtils.1"com.qq.e.ads.nativ.NativeAD"))
+      if (am.i("com.qq.e.ads.nativ.NativeAD"))
       {
         new l(localAdSplashImp).a(this.g);
         return;
       }
-      if (am_CommonUtils.1"com.baidu.mobads.SplashAd"))
+      if (am.i("com.baidu.mobads.SplashAd"))
       {
         new g(localAdSplashImp).a(this.g);
         return;
@@ -133,7 +133,7 @@ public class SplashActivity extends Activity
   public final void b()
   {
     ImageView localImageView = (ImageView)findViewById(2131493995);
-    if ((!am_CommonUtils.1this)) && (localImageView.getDrawable() != null));
+    if ((!am.o(this)) && (localImageView.getDrawable() != null));
     for (this.b = 1200; ; this.b = 0)
     {
       f();
@@ -153,7 +153,7 @@ public class SplashActivity extends Activity
     if (this.e)
       return;
     Intent localIntent1;
-    if ((!am_CommonUtils.1)) && (!am_CommonUtils.1this)))
+    if ((!am.g()) && (!am.q(this)))
       localIntent1 = new Intent(this, IntroActivity.class);
     while (true)
     {
@@ -184,14 +184,14 @@ public class SplashActivity extends Activity
     com.arcsoft.hpay100.a.a.a(getWindow().getDecorView());
     ActiveAndroid.initialize(this);
     this.g = ((AdContainerLayout)findViewById(2131493263));
-    if (am_CommonUtils.1this))
+    if (am.q(this))
     {
       float f1 = com.arcsoft.hpay100.a.a.v(this, "rate_zssq_splash_ad");
       double d1 = Math.random();
       if ((f1 <= d1) || (!h()))
         g();
     }
-    while (am_CommonUtils.1))
+    while (am.g())
     {
       com.umeng.a.b.a(this, "user_register", "YES");
       return;
@@ -232,7 +232,7 @@ public class SplashActivity extends Activity
     com.xiaomi.mistatistic.sdk.b.a();
     int i;
     String str;
-    if (am_CommonUtils.1))
+    if (am.g())
     {
       Calendar localCalendar = Calendar.getInstance();
       i = 10000 * localCalendar.get(1) + 100 * localCalendar.get(2) + localCalendar.get(5);

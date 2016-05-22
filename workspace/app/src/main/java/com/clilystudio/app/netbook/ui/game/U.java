@@ -14,7 +14,7 @@ final class U
 
   public final void onClick(View paramView)
   {
-    am_CommonUtils.1this.b.a, this.a);
+    am.b(this.b.a, this.a);
   }
 }
 

@@ -33,7 +33,7 @@ public class ReaderRandomActionBar extends RelativeLayout
   {
     super.onFinishInflate();
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
-    localLayoutParams.setMargins(0, am_CommonUtils.1getContext()), 0, 0);
+    localLayoutParams.setMargins(0, am.k(getContext()), 0, 0);
     setLayoutParams(localLayoutParams);
     View localView = findViewById(2131493934);
     this.a = ((TextView)findViewById(2131493935));

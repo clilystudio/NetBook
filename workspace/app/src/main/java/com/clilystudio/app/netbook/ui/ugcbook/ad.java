@@ -16,7 +16,7 @@ final class ad
 
   public final void onClick(View paramView)
   {
-    if (am_CommonUtils.1this.a) != null)
+    if (am.a(this.a) != null)
     {
       b.a(this.a, "ugc_my_own");
       Intent localIntent = new Intent(this.a, UserUGCActivity.class);

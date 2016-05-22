@@ -17,7 +17,7 @@ final class aF
     if ((BookReviewListFragment.b(this.a) == null) || (BookReviewListFragment.b(this.a).getStatus() == AsyncTask.Status.FINISHED))
     {
       this.a.c.setVisibility(0);
-      if (!am_CommonUtils.1BookReviewListFragment.j(this.a)))
+      if (!am.a(BookReviewListFragment.j(this.a)))
         BookReviewListFragment.j(this.a).cancel(true);
       BookReviewListFragment.a(this.a, new aH(this.a, (byte)0));
       aH localaH = BookReviewListFragment.b(this.a);

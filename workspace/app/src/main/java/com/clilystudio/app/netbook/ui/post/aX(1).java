@@ -17,7 +17,7 @@ final class aX
     if ((CommonPostListActivity.c(this.a) == null) || (CommonPostListActivity.c(this.a).getStatus() == AsyncTask.Status.FINISHED))
     {
       CommonPostListActivity.q(this.a).setVisibility(0);
-      if (!am_CommonUtils.1CommonPostListActivity.f(this.a)))
+      if (!am.a(CommonPostListActivity.f(this.a)))
         CommonPostListActivity.f(this.a).cancel(true);
       CommonPostListActivity.a(this.a, new bh(this.a, (byte)0));
       bh localbh = CommonPostListActivity.c(this.a);

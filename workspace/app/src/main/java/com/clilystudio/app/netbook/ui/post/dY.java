@@ -11,7 +11,7 @@ final class dY
 
   public final void run()
   {
-    if (!am_CommonUtils.1TweetTimelineFragment.b(this.a.a)))
+    if (!am.a(TweetTimelineFragment.b(this.a.a)))
       TweetTimelineFragment.b(this.a.a).cancel(true);
     TweetTimelineFragment.c(this.a.a);
   }

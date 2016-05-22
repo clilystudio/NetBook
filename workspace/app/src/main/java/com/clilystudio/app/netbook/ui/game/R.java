@@ -14,7 +14,7 @@ final class R
 
   public final void onClick(View paramView)
   {
-    am_CommonUtils.1this.b.a, this.a);
+    am.a(this.b.a, this.a);
   }
 }
 

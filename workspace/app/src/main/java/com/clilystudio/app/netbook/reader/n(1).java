@@ -3,8 +3,6 @@ package com.clilystudio.app.netbook.reader;
 import android.content.Context;
 import android.support.design.widget.am;
 import com.clilystudio.app.netbook.util.CipherUtil;
-import com.clilystudio.app.netbook.util.am_CommonUtils;
-
 import java.util.LinkedList;
 import java.util.List;
 
@@ -40,7 +38,7 @@ public final class n
 
   public final String a(Context paramContext)
   {
-    return am_CommonUtils.b(paramContext, c());
+    return am.b(paramContext, c());
   }
 
   public final void a(int paramInt)

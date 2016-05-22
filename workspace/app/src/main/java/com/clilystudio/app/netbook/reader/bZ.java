@@ -16,8 +16,6 @@ import android.view.WindowManager;
 import com.arcsoft.hpay100.a.a;
 import com.clilystudio.app.netbook.event.C;
 import com.clilystudio.app.netbook.event.i;
-import com.clilystudio.app.netbook.util.am_CommonUtils;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
@@ -63,7 +61,7 @@ public final class bZ
     this.x = this.t.getBoolean("night_mode", false);
     this.y = this.t.getBoolean("convert_t", false);
     this.z = this.t.getInt("reader_background_mode", 1);
-    int i1 = am_CommonUtils.b(this.m).widthPixels;
+    int i1 = am.b(this.m).widthPixels;
     this.c = this.n.getDimensionPixelSize(2131099677);
     this.d = this.n.getDimensionPixelSize(2131099680);
     this.f = (i1 - (this.c << 1));
@@ -265,7 +263,7 @@ public final class bZ
       this.e = i3;
       return;
     }
-    this.e = (i3 - am_CommonUtils.k(this.m));
+    this.e = (i3 - am.k(this.m));
   }
 
   public final void b()

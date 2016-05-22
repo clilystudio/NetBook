@@ -17,7 +17,7 @@ final class by
     if ((GirlTopicListActivity.e(this.a) == null) || (GirlTopicListActivity.e(this.a).getStatus() == AsyncTask.Status.FINISHED))
     {
       GirlTopicListActivity.p(this.a).setVisibility(0);
-      if (!am_CommonUtils.1GirlTopicListActivity.h(this.a)))
+      if (!am.a(GirlTopicListActivity.h(this.a)))
         GirlTopicListActivity.h(this.a).cancel(true);
       GirlTopicListActivity.a(this.a, new bI(this.a, (byte)0));
       bI localbI = GirlTopicListActivity.e(this.a);

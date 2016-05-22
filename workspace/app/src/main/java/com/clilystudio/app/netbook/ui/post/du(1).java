@@ -21,7 +21,7 @@ final class du
     Account localAccount;
     if ((TweetDetailActivity.a(this.a)) && (TweetDetailActivity.c(this.a) != null))
     {
-      localAccount = am_CommonUtils.1this.a);
+      localAccount = am.a(this.a);
       if (G.a(localAccount, TweetDetailActivity.c(this.a).getTweet()))
       {
         dC localdC = new dC(this.a, this.a, 2131034473);

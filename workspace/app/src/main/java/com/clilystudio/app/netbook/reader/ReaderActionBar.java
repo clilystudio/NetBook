@@ -54,7 +54,7 @@ public class ReaderActionBar extends RelativeLayout
   {
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
     if (paramBoolean)
-      localLayoutParams.setMargins(0, am_CommonUtils.1getContext()), 0, 0);
+      localLayoutParams.setMargins(0, am.k(getContext()), 0, 0);
     while (true)
     {
       setLayoutParams(localLayoutParams);
@@ -120,7 +120,7 @@ public class ReaderActionBar extends RelativeLayout
   {
     super.onFinishInflate();
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
-    localLayoutParams.setMargins(0, am_CommonUtils.1getContext()), 0, 0);
+    localLayoutParams.setMargins(0, am.k(getContext()), 0, 0);
     setLayoutParams(localLayoutParams);
     ah localah = new ah(this);
     this.f = ((TextView)findViewById(2131493882));

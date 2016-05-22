@@ -24,7 +24,7 @@ public class PostAgreeView extends LinearLayout
 
   public void onClick(View paramView)
   {
-    Account localAccount = am_CommonUtils.1(Activity)getContext());
+    Account localAccount = am.a((Activity)getContext());
     if ((this.a != null) && (localAccount != null))
     {
       setAgree(true);

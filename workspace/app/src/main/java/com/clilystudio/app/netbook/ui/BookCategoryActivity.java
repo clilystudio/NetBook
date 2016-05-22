@@ -54,7 +54,7 @@ public class BookCategoryActivity extends BaseActivity
     Object localObject1 = null;
     TableRow.LayoutParams localLayoutParams1 = new TableRow.LayoutParams(-1, -2);
     LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
-    int j = am_CommonUtils.1this, 2130771969);
+    int j = am.b(this, 2130771969);
     int k = 0;
     String str;
     int m;

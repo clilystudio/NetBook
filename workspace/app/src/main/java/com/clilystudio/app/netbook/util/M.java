@@ -23,7 +23,7 @@ final class M extends S<Root>
   protected final void b(Root paramRoot)
   {
     this.a.b(0);
-    am_CommonUtils.1J.a(this.a), System.currentTimeMillis());
+    am.b(J.a(this.a), System.currentTimeMillis());
     Account localAccount = am_CommonUtils.e();
     if (localAccount != null)
     {

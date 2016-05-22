@@ -74,7 +74,7 @@ public class UGCDetailActivity extends BaseActivity
         this.g.setImageUrl(localAuthor.getScaleAvatar());
         this.b.setText(localAuthor.getNickname());
       }
-      if (am_CommonUtils.1))
+      if (am.g())
         this.x = (this.x + "?sharer=" + am_CommonUtils.e().getUser().getId());
       this.a.setText(t.e(paramUGCBookDetail.getCreated()));
       this.c.setText(this.u);

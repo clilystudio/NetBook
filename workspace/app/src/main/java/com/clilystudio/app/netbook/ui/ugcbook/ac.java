@@ -15,7 +15,7 @@ final class ac
 
   public final void onClick(View paramView)
   {
-    if (am_CommonUtils.1this.a) != null)
+    if (am.a(this.a) != null)
     {
       b.a(this.a, "ugc_create");
       Intent localIntent = new Intent(this.a, UGCGuideAddCollectionActivity.class);

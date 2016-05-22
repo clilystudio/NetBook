@@ -22,7 +22,7 @@ final class L extends S<Root>
   {
     this.a.a(0);
     i.a().c(new w());
-    am_CommonUtils.1J.a(this.a));
+    am.j(J.a(this.a));
   }
 }
 

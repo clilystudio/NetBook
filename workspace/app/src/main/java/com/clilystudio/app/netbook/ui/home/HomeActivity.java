@@ -233,7 +233,7 @@ public class HomeActivity extends HomeParentActivity
       }
       this.i = this.i;
       this.i.setAnimationStyle(2131165628);
-      this.i.showAtLocation(localView, 53, com.arcsoft.hpay100.a.a.a(this, 5.0F), am_CommonUtils.1this) + am_CommonUtils.1this));
+      this.i.showAtLocation(localView, 53, com.arcsoft.hpay100.a.a.a(this, 5.0F), am.l(this) + am.k(this));
       this.i.setOnDismissListener(new d(this));
       return;
     }
@@ -694,7 +694,7 @@ public class HomeActivity extends HomeParentActivity
       findViewById(2131493486).setOnClickListener(this);
       if (this != null)
       {
-        Account localAccount = am_CommonUtils.1);
+        Account localAccount = am.e();
         if (localAccount != null)
           new Z(this, localAccount.getToken()).a(true);
       }

@@ -122,7 +122,7 @@ public final class T
             return;
           case 5:
           }
-          am_CommonUtils.1paramContext, str2);
+          am.a(paramContext, str2);
           paramPlatformActionListener.onComplete(null, 0, null);
           return;
         }
