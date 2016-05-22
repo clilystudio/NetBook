@@ -1,6 +1,6 @@
 package com.clilystudio.app.netbook.db;
 
-import android.support.design.widget.am;
+import com.clilystudio.app.netbook.am_CommonUtils;
 import com.activeandroid.Model;
 import com.activeandroid.annotation.Column;
 import com.activeandroid.annotation.Table;

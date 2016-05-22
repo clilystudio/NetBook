@@ -1,6 +1,6 @@
 package com.clilystudio.app.netbook.ui.post;
 
-import android.support.design.widget.am;
+import com.clilystudio.app.netbook.am_CommonUtils;
 
 final class aL
   implements Runnable
@@ -11,7 +11,7 @@ final class aL
 
   public final void run()
   {
-    if (!am.a(BookTopicListFragment.b(this.a.a)))
+    if (!am_CommonUtils.a(BookTopicListFragment.b(this.a.a)))
       BookTopicListFragment.b(this.a.a).cancel(true);
     BookTopicListFragment.c(this.a.a);
   }

@@ -1,7 +1,7 @@
 package com.clilystudio.app.netbook.ui.home;
 
 import android.os.Bundle;
-import android.support.design.widget.am;
+import com.clilystudio.app.netbook.am_CommonUtils;
 import com.clilystudio.app.netbook.ui.BaseActivity;
 
 public class HomeParentActivity extends BaseActivity
@@ -11,7 +11,7 @@ public class HomeParentActivity extends BaseActivity
     try
     {
       int i = Integer.parseInt(com.umeng.a.b.b(this, "force_update_until_version"));
-      int j = am.f(this);
+      int j = am_CommonUtils.f(this);
       boolean bool = false;
       if (i > j)
         bool = true;

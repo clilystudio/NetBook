@@ -6,7 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.design.widget.am;
+import com.clilystudio.app.netbook.am_CommonUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -179,7 +179,7 @@ public class ModifyUserInfoActivity extends BaseActivity
     setContentView(2130903114);
     b("编辑资料");
     ButterKnife.inject(this);
-    this.a = am.a(this).getUser();
+    this.a = am_CommonUtils.a(this).getUser();
     this.mPortrait.setImageUrl(this.a.getFullAvatar());
     this.mNameView.setText(this.a.getNickname());
     TextView localTextView = this.mGenderView;

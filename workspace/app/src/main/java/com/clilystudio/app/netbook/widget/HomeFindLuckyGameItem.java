@@ -2,7 +2,7 @@ package com.clilystudio.app.netbook.widget;
 
 import android.app.Activity;
 import android.content.Context;
-import android.support.design.widget.am;
+import com.clilystudio.app.netbook.am_CommonUtils;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -34,7 +34,7 @@ public class HomeFindLuckyGameItem extends HomeFindItem
   {
     int i = 1;
     Context localContext1 = getContext();
-    String str1 = am.n(localContext1);
+    String str1 = am_CommonUtils.n(localContext1);
     String str2 = b.b(localContext1, "home_lucky_game_channel");
     int n;
     if ((str2 != null) && (str2.length() > 0))
@@ -56,7 +56,7 @@ public class HomeFindLuckyGameItem extends HomeFindItem
     }
     label94: Context localContext2 = getContext();
     int k = a.b(b.b(localContext2, "home_lucky_game_toggle"), 0);
-    if (am.f(localContext2) < k);
+    if (am_CommonUtils.f(localContext2) < k);
     while (i != 0)
     {
       b();
@@ -68,7 +68,7 @@ public class HomeFindLuckyGameItem extends HomeFindItem
 
   protected final void a(Context paramContext, String paramString)
   {
-    Account localAccount = am.a((Activity)paramContext);
+    Account localAccount = am_CommonUtils.a((Activity)paramContext);
     if (localAccount != null)
       paramContext.startActivity(LuckyGameWebActivity.a(paramContext, paramString, String.format("http://share.zhuishushenqi.com/game/index?token=%s", new Object[] { localAccount.getToken() })));
   }

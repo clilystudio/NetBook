@@ -1,6 +1,6 @@
 package com.clilystudio.app.netbook.reader;
 
-import android.support.design.widget.am;
+import com.clilystudio.app.netbook.am_CommonUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.CheckBox;

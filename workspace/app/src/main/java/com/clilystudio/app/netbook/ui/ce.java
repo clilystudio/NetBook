@@ -1,7 +1,7 @@
 package com.clilystudio.app.netbook.ui;
 
 import android.content.Intent;
-import android.support.design.widget.am;
+import com.clilystudio.app.netbook.am_CommonUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
 

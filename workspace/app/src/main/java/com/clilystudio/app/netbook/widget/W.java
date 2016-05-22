@@ -1,7 +1,7 @@
 package com.clilystudio.app.netbook.widget;
 
 import android.app.Activity;
-import android.support.design.widget.am;
+import com.clilystudio.app.netbook.am_CommonUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.clilystudio.app.netbook.model.GiftGame;
@@ -18,11 +18,11 @@ final class W
   public final void onClick(View paramView)
   {
     this.a.dismiss();
-    am.a(this.c.getContext(), this.b);
+    am_CommonUtils.a(this.c.getContext(), this.b);
     e.a((Activity)this.c.getContext(), "已复制");
     if (GiftGameGiftButton.b(this.c) != null)
     {
-      am.d(this.c.getContext(), GiftGameGiftButton.b(this.c).getAndroidPackageName());
+      am_CommonUtils.d(this.c.getContext(), GiftGameGiftButton.b(this.c).getAndroidPackageName());
       return;
     }
     e.a((Activity)this.c.getContext(), "启动游戏失败");

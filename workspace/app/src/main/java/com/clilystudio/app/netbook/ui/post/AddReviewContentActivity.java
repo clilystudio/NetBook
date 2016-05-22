@@ -2,7 +2,7 @@ package com.clilystudio.app.netbook.ui.post;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.am;
+import com.clilystudio.app.netbook.am_CommonUtils;
 import android.widget.EditText;
 import com.arcsoft.hpay100.a.a;
 import com.clilystudio.app.netbook.MyApplication;
@@ -51,8 +51,8 @@ public class AddReviewContentActivity extends BaseActivity
     this.f = getIntent().getBooleanExtra("isFromBookReviewList", false);
     this.c = ((EditText)findViewById(2131493070));
     this.e = ((EditText)findViewById(2131493071));
-    am.a(this.c, "saveToLocalReviewTitle");
-    am.a(this.e, "saveToLocalReviewDesc");
+    am_CommonUtils.a(this.c, "saveToLocalReviewTitle");
+    am_CommonUtils.a(this.e, "saveToLocalReviewDesc");
   }
 }
 

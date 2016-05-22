@@ -1,7 +1,7 @@
 package com.clilystudio.app.netbook.api;
 
 import android.net.Uri;
-import android.support.design.widget.am;
+import com.clilystudio.app.netbook.am_CommonUtils;
 import android.text.Html;
 import android.text.TextUtils;
 import android.util.Log;

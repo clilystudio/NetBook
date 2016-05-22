@@ -494,7 +494,7 @@ public class ReaderActivity extends BaseReadSlmActivity
       Iterator localIterator = com.arcsoft.hpay100.a.a.j(this.c, this.e).iterator();
       while (localIterator.hasNext())
       {
-        String str = android.support.design.widget.am.f((String)localIterator.next());
+        String str = com.clilystudio.app.netbook.am_CommonUtils_CommonUtils.f((String)localIterator.next());
         this.x.add(str);
       }
     }

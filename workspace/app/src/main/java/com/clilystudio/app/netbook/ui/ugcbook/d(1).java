@@ -1,6 +1,6 @@
 package com.clilystudio.app.netbook.ui.ugcbook;
 
-import android.support.design.widget.am;
+import com.clilystudio.app.netbook.am_CommonUtils;
 import com.clilystudio.app.netbook.a.e;
 import com.clilystudio.app.netbook.adapter.X;
 import com.clilystudio.app.netbook.model.Account;
@@ -19,7 +19,7 @@ final class d extends e<String, Void, UGCBookListRoot>
     {
       try
       {
-        Account localAccount = am.a((BaseActivity)this.a.getActivity());
+        Account localAccount = am_CommonUtils.a((BaseActivity)this.a.getActivity());
         if (localAccount != null)
         {
           UGCBookListRoot localUGCBookListRoot = this.a.a(localAccount, this.a.c.getCount());

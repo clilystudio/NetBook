@@ -1,6 +1,6 @@
 package com.clilystudio.app.netbook.ui.post;
 
-import android.support.design.widget.am;
+import com.clilystudio.app.netbook.am_CommonUtils;
 
 final class bb
   implements Runnable
@@ -11,7 +11,7 @@ final class bb
 
   public final void run()
   {
-    if (!am.a(CommonPostListActivity.c(this.a.a)))
+    if (!am_CommonUtils.a(CommonPostListActivity.c(this.a.a)))
       CommonPostListActivity.c(this.a.a).cancel(true);
     CommonPostListActivity.a(this.a.a, new bi(this.a.a, (byte)0));
     bi localbi = CommonPostListActivity.f(this.a.a);

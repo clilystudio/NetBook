@@ -1,6 +1,6 @@
 package com.clilystudio.app.netbook.adapter;
 
-import android.support.design.widget.am;
+import com.clilystudio.app.netbook.am_CommonUtils;
 import android.view.LayoutInflater;
 
 import com.clilystudio.app.netbook.util.am_CommonUtils;

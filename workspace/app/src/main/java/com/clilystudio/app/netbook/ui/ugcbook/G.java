@@ -1,6 +1,6 @@
 package com.clilystudio.app.netbook.ui.ugcbook;
 
-import android.support.design.widget.am;
+import com.clilystudio.app.netbook.am_CommonUtils;
 import android.widget.TextView;
 import com.clilystudio.app.netbook.a.c;
 import com.clilystudio.app.netbook.api.ApiService;
@@ -24,7 +24,7 @@ final class G extends c<Void, ResultStatus>
   {
     try
     {
-      Account localAccount = am.a(this.a);
+      Account localAccount = am_CommonUtils.a(this.a);
       if (localAccount != null)
       {
         if ((UGCGuideAddCollectionActivity.e(this.a) != null) && (!UGCGuideAddCollectionActivity.e(this.a).equals("")))

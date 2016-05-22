@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.design.widget.am;
+import com.clilystudio.app.netbook.am_CommonUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -126,7 +126,7 @@ public class BookInfoActivity extends BaseActivity
     {
       localView1.setVisibility(i2);
       return;
-      n = am.b(this, 2130771971);
+      n = am_CommonUtils.b(this, 2130771971);
       break;
       i1 = 2131034331;
       break label50;
@@ -191,7 +191,7 @@ public class BookInfoActivity extends BaseActivity
   private void f()
   {
     View localView = findViewById(2131493311);
-    if ((am.q(this)) && (com.arcsoft.hpay100.a.a.F(this)))
+    if ((am_CommonUtils.q(this)) && (com.arcsoft.hpay100.a.a.F(this)))
     {
       Advert localAdvert = n.b(this, "book");
       if ((localAdvert != null) && (com.arcsoft.hpay100.a.a.w(this, "rate_zssq_advert_reader_bookinfo")))
@@ -234,7 +234,7 @@ public class BookInfoActivity extends BaseActivity
     {
       localImageView.setImageResource(i5);
       return;
-      i4 = am.b(this, 2130771971);
+      i4 = am_CommonUtils.b(this, 2130771971);
       break;
       str = getString(2131034328);
       break label110;
@@ -254,7 +254,7 @@ public class BookInfoActivity extends BaseActivity
       e.a(this, (String)localObject);
       return;
     }
-    if (am.f());
+    if (am_CommonUtils.f());
     String str2;
     for (Object localObject = getString(2131034325); ; localObject = str2)
     {
@@ -267,7 +267,7 @@ public class BookInfoActivity extends BaseActivity
       Object[] arrayOfObject1 = new Object[1];
       arrayOfObject1[0] = this.k.getTitle();
       str2 = String.format(str1, arrayOfObject1);
-      if ((com.arcsoft.hpay100.a.a.a(this, "add_update_notify_login", true)) && (!am.g()))
+      if ((com.arcsoft.hpay100.a.a.a(this, "add_update_notify_login", true)) && (!am_CommonUtils.g()))
       {
         View localView = getLayoutInflater().inflate(2130903380, null, false);
         CheckBox localCheckBox = (CheckBox)localView.findViewById(2131493973);
@@ -429,13 +429,13 @@ public class BookInfoActivity extends BaseActivity
     super.onResume();
     k();
     a(false);
-    a(am.g(this.h));
+    a(am_CommonUtils.g(this.h));
   }
 
   @l
   public void onShowThirdAd(B paramB)
   {
-    if ((paramB == null) || (!am.q(this)) || (!paramB.b().equals("book")));
+    if ((paramB == null) || (!am_CommonUtils.q(this)) || (!paramB.b().equals("book")));
     Advert localAdvert;
     do
     {

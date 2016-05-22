@@ -1,6 +1,6 @@
 package com.clilystudio.app.netbook.util;
 
-import android.support.design.widget.am;
+import com.clilystudio.app.netbook.am_CommonUtils;
 import com.arcsoft.hpay100.a.a;
 import com.clilystudio.app.netbook.db.BookClickRecord;
 import java.util.Date;
@@ -21,7 +21,7 @@ public final class k
   public final void a()
   {
     this.b = t.a(new Date());
-    String str = am.h();
+    String str = am_CommonUtils.h();
     List localList1 = BookClickRecord.getBookClickRecords(this.a);
     if ((localList1 != null) && (localList1.size() > 0))
     {

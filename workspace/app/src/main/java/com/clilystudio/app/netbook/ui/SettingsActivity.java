@@ -3,7 +3,7 @@ package com.clilystudio.app.netbook.ui;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.am;
+import com.clilystudio.app.netbook.am_CommonUtils;
 import android.support.v7.widget.SwitchCompat;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -65,11 +65,11 @@ public class SettingsActivity extends BaseActivity
       startActivity(CommonPostListActivity.a(this, "android-feedback"));
       return;
     case 2131493206:
-      am.a(this, "market://details?id=" + getPackageName(), "打开应用市场失败");
+      am_CommonUtils.a(this, "market://details?id=" + getPackageName(), "打开应用市场失败");
       return;
     case 2131493203:
     }
-    am.a(this, "http://www.lagou.com/gongsi/493.html?speedShow=true", null);
+    am_CommonUtils.a(this, "http://www.lagou.com/gongsi/493.html?speedShow=true", null);
   }
 
   public void onCreate(Bundle paramBundle)
@@ -87,8 +87,8 @@ public class SettingsActivity extends BaseActivity
       findViewById(2131493205).setOnClickListener(this);
       findViewById(2131493206).setOnClickListener(this);
       localTextView = (TextView)findViewById(2131493207);
-      localStringBuilder = new StringBuilder().append(am.g(this)).append("(");
-      str1 = (String)am.c(this, "COMMIT_ID");
+      localStringBuilder = new StringBuilder().append(am_CommonUtils.g(this)).append("(");
+      str1 = (String)am_CommonUtils.c(this, "COMMIT_ID");
       if ((str1 == null) || (str1.length() <= 8))
         break label390;
     }

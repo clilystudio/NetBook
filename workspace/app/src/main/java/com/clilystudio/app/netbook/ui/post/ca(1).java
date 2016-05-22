@@ -1,6 +1,6 @@
 package com.clilystudio.app.netbook.ui.post;
 
-import android.support.design.widget.am;
+import com.clilystudio.app.netbook.am_CommonUtils;
 
 final class ca
   implements Runnable
@@ -11,7 +11,7 @@ final class ca
 
   public final void run()
   {
-    if (!am.a(OtherUserActivity.b(this.a.a)))
+    if (!am_CommonUtils.a(OtherUserActivity.b(this.a.a)))
       OtherUserActivity.b(this.a.a).cancel(true);
     OtherUserActivity.c(this.a.a);
   }

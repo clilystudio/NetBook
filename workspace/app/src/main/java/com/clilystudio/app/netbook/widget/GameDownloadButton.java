@@ -3,7 +3,7 @@ package com.clilystudio.app.netbook.widget;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
-import android.support.design.widget.am;
+import com.clilystudio.app.netbook.am_CommonUtils;
 import android.support.v7.app.j;
 import android.support.v7.app.k;
 import android.util.AttributeSet;
@@ -107,7 +107,7 @@ public class GameDownloadButton extends Button
 
   protected final void g()
   {
-    am.d(getContext(), this.a.getAndroidPackageName());
+    am_CommonUtils.d(getContext(), this.a.getAndroidPackageName());
   }
 
   public final Game h()

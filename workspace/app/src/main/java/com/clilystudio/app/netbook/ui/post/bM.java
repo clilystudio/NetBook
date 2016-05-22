@@ -1,6 +1,6 @@
 package com.clilystudio.app.netbook.ui.post;
 
-import android.support.design.widget.am;
+import com.clilystudio.app.netbook.am_CommonUtils;
 
 final class bM
   implements Runnable
@@ -11,7 +11,7 @@ final class bM
 
   public final void run()
   {
-    if (!am.a(MyTweetFragment.b(this.a.a)))
+    if (!am_CommonUtils.a(MyTweetFragment.b(this.a.a)))
       MyTweetFragment.b(this.a.a).cancel(true);
     MyTweetFragment.c(this.a.a);
   }

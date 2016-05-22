@@ -3,7 +3,7 @@ package com.clilystudio.app.netbook.ui.user;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
-import android.support.design.widget.am;
+import com.clilystudio.app.netbook.am_CommonUtils;
 import android.view.View;
 import android.widget.TextView;
 import butterknife.ButterKnife;
@@ -64,7 +64,7 @@ public class UserTaskActivity extends BaseActivity
         this.mExpShareTopic.setTextColor(getResources().getColor(2131427480));
       if ((localUserTodayTask != null) && (localUserTodayTask.isShare_book()))
         this.mExpShareBook.setTextColor(getResources().getColor(2131427480));
-      if (!"xiaomi".equals(am.n(this).toLowerCase()))
+      if (!"xiaomi".equals(am_CommonUtils.n(this).toLowerCase()))
         break label168;
       this.mVoteView.setVisibility(8);
     }

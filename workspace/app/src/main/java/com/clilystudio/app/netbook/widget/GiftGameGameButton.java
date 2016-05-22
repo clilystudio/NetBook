@@ -3,7 +3,7 @@ package com.clilystudio.app.netbook.widget;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
-import android.support.design.widget.am;
+import com.clilystudio.app.netbook.am_CommonUtils;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.Button;
@@ -100,7 +100,7 @@ public class GiftGameGameButton extends Button
 
   protected final void f()
   {
-    am.d(getContext(), this.a.getAndroidPackageName());
+    am_CommonUtils.d(getContext(), this.a.getAndroidPackageName());
   }
 
   public final GiftGame g()

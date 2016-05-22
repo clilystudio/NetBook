@@ -3,7 +3,7 @@ package com.clilystudio.app.netbook.ui.post;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.am;
+import com.clilystudio.app.netbook.am_CommonUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;

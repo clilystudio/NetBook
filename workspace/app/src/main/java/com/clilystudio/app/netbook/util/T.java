@@ -2,7 +2,7 @@ package com.clilystudio.app.netbook.util;
 
 import android.content.Context;
 import android.os.Handler;
-import android.support.design.widget.am;
+import com.clilystudio.app.netbook.am_CommonUtils;
 import cn.sharesdk.framework.Platform;
 import cn.sharesdk.framework.PlatformActionListener;
 import cn.sharesdk.framework.ShareSDK;
@@ -122,7 +122,7 @@ public final class T
             return;
           case 5:
           }
-          am.a(paramContext, str2);
+          am_CommonUtils.a(paramContext, str2);
           paramPlatformActionListener.onComplete(null, 0, null);
           return;
         }

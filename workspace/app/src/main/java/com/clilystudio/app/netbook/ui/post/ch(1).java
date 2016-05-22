@@ -1,7 +1,7 @@
 package com.clilystudio.app.netbook.ui.post;
 
 import android.os.AsyncTask.Status;
-import android.support.design.widget.am;
+import com.clilystudio.app.netbook.am_CommonUtils;
 import android.view.View;
 import com.handmark.pulltorefresh.library.j;
 import com.clilystudio.app.netbook.model.Tweet;
@@ -19,7 +19,7 @@ final class ch
     if ((OtherUserActivity.b(this.a) == null) || (OtherUserActivity.b(this.a).getStatus() == AsyncTask.Status.FINISHED))
     {
       OtherUserActivity.p(this.a).setVisibility(0);
-      if (!am.a(OtherUserActivity.q(this.a)))
+      if (!am_CommonUtils.a(OtherUserActivity.q(this.a)))
         OtherUserActivity.q(this.a).cancel(true);
       OtherUserActivity.a(this.a, new cl(this.a, (byte)0));
       String str = "";

@@ -1,6 +1,6 @@
 package com.clilystudio.app.netbook.ui.game;
 
-import android.support.design.widget.am;
+import com.clilystudio.app.netbook.am_CommonUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.clilystudio.app.netbook.model.Game;
@@ -14,7 +14,7 @@ final class R
 
   public final void onClick(View paramView)
   {
-    am.a(this.b.a, this.a);
+    am_CommonUtils.a(this.b.a, this.a);
   }
 }
 

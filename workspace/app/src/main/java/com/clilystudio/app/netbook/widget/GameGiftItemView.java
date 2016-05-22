@@ -2,7 +2,7 @@ package com.clilystudio.app.netbook.widget;
 
 import android.app.Activity;
 import android.content.Context;
-import android.support.design.widget.am;
+import com.clilystudio.app.netbook.am_CommonUtils;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.Button;

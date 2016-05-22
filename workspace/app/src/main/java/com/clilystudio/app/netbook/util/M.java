@@ -1,6 +1,6 @@
 package com.clilystudio.app.netbook.util;
 
-import android.support.design.widget.am;
+import com.clilystudio.app.netbook.am_CommonUtils;
 import com.squareup.a.b;
 import com.clilystudio.app.netbook.api.ApiService;
 import com.clilystudio.app.netbook.db.AccountInfo;
@@ -23,7 +23,7 @@ final class M extends S<Root>
   protected final void b(Root paramRoot)
   {
     this.a.b(0);
-    am.b(J.a(this.a), System.currentTimeMillis());
+    am_CommonUtils.b(J.a(this.a), System.currentTimeMillis());
     Account localAccount = am_CommonUtils.e();
     if (localAccount != null)
     {

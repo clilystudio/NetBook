@@ -15,7 +15,7 @@ final class am
 
   public final void onClick(View paramView)
   {
-    if (android.support.design.widget.am.a(this.b.a) != null)
+    if (com.clilystudio.app.netbook.am_CommonUtils_CommonUtils.a(this.b.a) != null)
     {
       h localh = new h(this.b.a);
       localh.e = ("确定购买 " + ((VipPlan.Plan)al.a(this.b).get(this.a)).getName() + " 服务？");

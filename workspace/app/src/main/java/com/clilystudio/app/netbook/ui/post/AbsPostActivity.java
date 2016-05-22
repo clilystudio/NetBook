@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.design.widget.am;
+import com.clilystudio.app.netbook.am_CommonUtils;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
@@ -67,7 +67,7 @@ public abstract class AbsPostActivity extends BaseLoadingActivity
   protected void a(ReplyeeInfo paramReplyeeInfo, String paramString)
   {
     this.f = paramString;
-    Account localAccount = am.a(this);
+    Account localAccount = am_CommonUtils.a(this);
     if (localAccount == null)
       return;
     if (this.f.length() > 512)
@@ -89,7 +89,7 @@ public abstract class AbsPostActivity extends BaseLoadingActivity
   protected final void a(boolean paramBoolean)
   {
     TextView localTextView = (TextView)findViewById(2131494004);
-    am.a(this, localTextView);
+    am_CommonUtils.a(this, localTextView);
     if (paramBoolean)
       localTextView.setText("");
     localTextView.setHint("添加评论");

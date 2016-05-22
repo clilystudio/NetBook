@@ -9,7 +9,7 @@ import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.Point;
 import android.preference.PreferenceManager;
-import android.support.design.widget.am;
+import com.clilystudio.app.netbook.am_CommonUtils;
 import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.WindowManager;
@@ -61,7 +61,7 @@ public final class bZ
     this.x = this.t.getBoolean("night_mode", false);
     this.y = this.t.getBoolean("convert_t", false);
     this.z = this.t.getInt("reader_background_mode", 1);
-    int i1 = am.b(this.m).widthPixels;
+    int i1 = am_CommonUtils.b(this.m).widthPixels;
     this.c = this.n.getDimensionPixelSize(2131099677);
     this.d = this.n.getDimensionPixelSize(2131099680);
     this.f = (i1 - (this.c << 1));
@@ -263,7 +263,7 @@ public final class bZ
       this.e = i3;
       return;
     }
-    this.e = (i3 - am.k(this.m));
+    this.e = (i3 - am_CommonUtils.k(this.m));
   }
 
   public final void b()

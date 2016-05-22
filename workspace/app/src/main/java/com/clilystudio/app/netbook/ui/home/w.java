@@ -1,6 +1,6 @@
 package com.clilystudio.app.netbook.ui.home;
 
-import android.support.design.widget.am;
+import com.clilystudio.app.netbook.am_CommonUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.umeng.a.b;
@@ -17,7 +17,7 @@ final class w
 
   public final void onClick(View paramView)
   {
-    if ((this.a.login) && (am.a(this.c.getActivity()) == null))
+    if ((this.a.login) && (am_CommonUtils.a(this.c.getActivity()) == null))
       return;
     try
     {

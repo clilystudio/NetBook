@@ -1,7 +1,7 @@
 package com.clilystudio.app.netbook.ui.ugcbook;
 
 import android.content.Intent;
-import android.support.design.widget.am;
+import com.clilystudio.app.netbook.am_CommonUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.umeng.a.b;
@@ -15,7 +15,7 @@ final class ac
 
   public final void onClick(View paramView)
   {
-    if (am.a(this.a) != null)
+    if (am_CommonUtils.a(this.a) != null)
     {
       b.a(this.a, "ugc_create");
       Intent localIntent = new Intent(this.a, UGCGuideAddCollectionActivity.class);

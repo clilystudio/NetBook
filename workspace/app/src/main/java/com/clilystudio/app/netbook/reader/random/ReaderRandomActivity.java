@@ -8,7 +8,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.design.widget.am;
+import com.clilystudio.app.netbook.am_CommonUtils;
 import android.support.v4.app.FragmentActivity;
 import android.view.KeyEvent;
 import android.view.View;
@@ -311,7 +311,7 @@ public class ReaderRandomActivity extends FragmentActivity
       localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
       if (!bool)
         break label544;
-      localLayoutParams.setMargins(0, am.k(localReaderRandomActionBar.getContext()), 0, 0);
+      localLayoutParams.setMargins(0, am_CommonUtils.k(localReaderRandomActionBar.getContext()), 0, 0);
     }
     while (true)
     {

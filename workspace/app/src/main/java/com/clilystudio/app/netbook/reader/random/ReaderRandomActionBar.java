@@ -1,7 +1,7 @@
 package com.clilystudio.app.netbook.reader.random;
 
 import android.content.Context;
-import android.support.design.widget.am;
+import com.clilystudio.app.netbook.am_CommonUtils;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.RelativeLayout;
@@ -33,7 +33,7 @@ public class ReaderRandomActionBar extends RelativeLayout
   {
     super.onFinishInflate();
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
-    localLayoutParams.setMargins(0, am.k(getContext()), 0, 0);
+    localLayoutParams.setMargins(0, am_CommonUtils.k(getContext()), 0, 0);
     setLayoutParams(localLayoutParams);
     View localView = findViewById(2131493934);
     this.a = ((TextView)findViewById(2131493935));

@@ -1,7 +1,7 @@
 package com.clilystudio.app.netbook.ui.post;
 
 import android.os.AsyncTask.Status;
-import android.support.design.widget.am;
+import com.clilystudio.app.netbook.am_CommonUtils;
 import android.view.View;
 import com.handmark.pulltorefresh.library.j;
 
@@ -17,7 +17,7 @@ final class ak
     if ((BookHelpListActivity.e(this.a) == null) || (BookHelpListActivity.e(this.a).getStatus() == AsyncTask.Status.FINISHED))
     {
       BookHelpListActivity.p(this.a).setVisibility(0);
-      if (!am.a(BookHelpListActivity.h(this.a)))
+      if (!am_CommonUtils.a(BookHelpListActivity.h(this.a)))
         BookHelpListActivity.h(this.a).cancel(true);
       BookHelpListActivity.a(this.a, new au(this.a, (byte)0));
       au localau = BookHelpListActivity.e(this.a);

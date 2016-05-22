@@ -3,7 +3,7 @@ package com.clilystudio.app.netbook.reader;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.res.Resources;
-import android.support.design.widget.am;
+import com.clilystudio.app.netbook.am_CommonUtils;
 import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -121,7 +121,7 @@ public final class o
       View localView3 = this.f.findViewById(2131493924);
       View localView4 = this.f.findViewById(2131493929);
       ((TextView)localView2.findViewById(2131493923)).setText(this.d.i());
-      if (am.g())
+      if (am_CommonUtils.g())
       {
         localView3.setVisibility(0);
         localView4.setVisibility(8);
@@ -340,7 +340,7 @@ public final class o
         localView = this.f.findViewById(2131493907);
       }
       while (localView == null);
-      if ((am.q(this.b)) && (a.F(this.b)) && (q()) && (a(localView)) && ((this.b instanceof ReaderActivity)))
+      if ((am_CommonUtils.q(this.b)) && (a.F(this.b)) && (q()) && (a(localView)) && ((this.b instanceof ReaderActivity)))
       {
         Advert localAdvert = com.clilystudio.app.netbook.util.adutil.n.b(this.b, "page");
         if ((localAdvert != null) && (a.w(this.b, "rate_zssq_advert_reader_bookinfo")))
@@ -354,7 +354,7 @@ public final class o
       }
       localView.setVisibility(8);
     }
-    while ((!this.e) || (a.a(this.b, "remove_ad_toast_showed" + com.clilystudio.app.netbook.util.I.a, false)) || (!q()) || (!a(localView)) || (am.r(this.b)));
+    while ((!this.e) || (a.a(this.b, "remove_ad_toast_showed" + com.clilystudio.app.netbook.util.I.a, false)) || (!q()) || (!a(localView)) || (am_CommonUtils.r(this.b)));
     e.a(this.b, "已为您自动免除广告");
     a.b(this.b, "remove_ad_toast_showed" + com.clilystudio.app.netbook.util.I.a, true);
   }
@@ -610,7 +610,7 @@ public final class o
   @l
   public final void onShowThirdAd(com.clilystudio.app.netbook.event.B paramB)
   {
-    if ((paramB == null) || (!am.q(this.b)) || (!paramB.b().equals("page")));
+    if ((paramB == null) || (!am_CommonUtils.q(this.b)) || (!paramB.b().equals("page")));
     View localView;
     Advert localAdvert;
     do

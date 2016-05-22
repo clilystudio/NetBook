@@ -2,7 +2,7 @@ package com.clilystudio.app.netbook.ui.user;
 
 import android.content.res.Resources;
 import android.os.Bundle;
-import android.support.design.widget.am;
+import com.clilystudio.app.netbook.am_CommonUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,18 +30,18 @@ final class ag extends BaseAdapter
     default:
       return;
     case 0:
-      this.c = am.b(paramPayVoucherFragment.getActivity(), 2130772009);
+      this.c = am_CommonUtils.b(paramPayVoucherFragment.getActivity(), 2130772009);
       this.d = 2131427467;
       this.e = "可\n使\n用";
       return;
     case 1:
-      this.c = am.b(paramPayVoucherFragment.getActivity(), 2130772008);
+      this.c = am_CommonUtils.b(paramPayVoucherFragment.getActivity(), 2130772008);
       this.d = 2131427466;
       this.e = "已\n用\n完";
       return;
     case 2:
     }
-    this.c = am.b(paramPayVoucherFragment.getActivity(), 2130772008);
+    this.c = am_CommonUtils.b(paramPayVoucherFragment.getActivity(), 2130772008);
     this.d = 2131427466;
     this.e = "已\n过\n期";
   }

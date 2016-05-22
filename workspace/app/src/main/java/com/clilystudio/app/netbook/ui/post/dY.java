@@ -1,6 +1,6 @@
 package com.clilystudio.app.netbook.ui.post;
 
-import android.support.design.widget.am;
+import com.clilystudio.app.netbook.am_CommonUtils;
 
 final class dY
   implements Runnable
@@ -11,7 +11,7 @@ final class dY
 
   public final void run()
   {
-    if (!am.a(TweetTimelineFragment.b(this.a.a)))
+    if (!am_CommonUtils.a(TweetTimelineFragment.b(this.a.a)))
       TweetTimelineFragment.b(this.a.a).cancel(true);
     TweetTimelineFragment.c(this.a.a);
   }

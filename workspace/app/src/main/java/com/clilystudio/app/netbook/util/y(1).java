@@ -10,7 +10,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Environment;
-import android.support.design.widget.am;
+import com.clilystudio.app.netbook.am_CommonUtils;
 import android.widget.Toast;
 import com.arcsoft.hpay100.a.a;
 import com.clilystudio.app.netbook.MyApplication;

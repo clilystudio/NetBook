@@ -1,7 +1,7 @@
 package com.clilystudio.app.netbook.ui.user;
 
 import android.net.Uri;
-import android.support.design.widget.am;
+import com.clilystudio.app.netbook.am_CommonUtils;
 import com.clilystudio.app.netbook.a.c;
 import com.clilystudio.app.netbook.api.ApiService;
 import com.clilystudio.app.netbook.api.b;
@@ -23,7 +23,7 @@ final class t extends c<String, Root>
   {
     try
     {
-      Root localRoot = b.b().a(am.a(this.b).getToken(), this.a);
+      Root localRoot = b.b().a(am_CommonUtils.a(this.b).getToken(), this.a);
       return localRoot;
     }
     catch (IOException localIOException)

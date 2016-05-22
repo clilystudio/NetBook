@@ -7,7 +7,7 @@ import android.content.res.Resources;
 import android.content.res.Resources.Theme;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
-import android.support.design.widget.am;
+import com.clilystudio.app.netbook.am_CommonUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;

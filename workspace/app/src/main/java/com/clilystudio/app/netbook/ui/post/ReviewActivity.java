@@ -3,7 +3,7 @@ package com.clilystudio.app.netbook.ui.post;
 import android.annotation.TargetApi;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.am;
+import com.clilystudio.app.netbook.am_CommonUtils;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -73,7 +73,7 @@ public class ReviewActivity extends AbsPostActivity
     {
       return;
       g(paramString);
-      localAccount = am.a(this);
+      localAccount = am_CommonUtils.a(this);
     }
     while (localAccount == null);
     if (paramString.length() > 512)

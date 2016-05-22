@@ -3,7 +3,7 @@ package com.clilystudio.app.netbook.ui.ugcbook;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.design.widget.am;
+import com.clilystudio.app.netbook.am_CommonUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -74,7 +74,7 @@ public class UGCDetailActivity extends BaseActivity
         this.g.setImageUrl(localAuthor.getScaleAvatar());
         this.b.setText(localAuthor.getNickname());
       }
-      if (am.g())
+      if (am_CommonUtils.g())
         this.x = (this.x + "?sharer=" + am_CommonUtils.e().getUser().getId());
       this.a.setText(t.e(paramUGCBookDetail.getCreated()));
       this.c.setText(this.u);

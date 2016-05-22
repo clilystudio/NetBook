@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
-import android.support.design.widget.am;
+import com.clilystudio.app.netbook.am_CommonUtils;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -36,7 +36,7 @@ public class HomeFindSecretItem extends HomeFindItem
     if (!com.arcsoft.hpay100.a.a.a(getContext(), "KEY_SECRET_UNLOCKED", false))
     {
       Context localContext = getContext();
-      String str1 = am.n(localContext);
+      String str1 = am_CommonUtils.n(localContext);
       String str2 = b.b(localContext, "switch_secret_to_random");
       if ((str2 == null) || (str2.length() <= 0))
         break label100;
@@ -83,7 +83,7 @@ public class HomeFindSecretItem extends HomeFindItem
           String str3 = b.b(localContext, "mystery_enable_minute_range");
           int j = com.arcsoft.hpay100.a.a.b(str1, 0);
           int k = com.arcsoft.hpay100.a.a.b(str3, 0);
-          if ((j == am.f(localContext)) || ("".equals(str2)) || ("0".equals(str2)))
+          if ((j == am_CommonUtils.f(localContext)) || ("".equals(str2)) || ("0".equals(str2)))
             break label242;
           Date localDate1 = t.a(str2);
           Calendar localCalendar = Calendar.getInstance();

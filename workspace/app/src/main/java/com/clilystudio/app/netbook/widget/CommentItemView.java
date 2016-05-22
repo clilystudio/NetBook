@@ -2,7 +2,7 @@ package com.clilystudio.app.netbook.widget;
 
 import android.app.AlertDialog;
 import android.content.Context;
-import android.support.design.widget.am;
+import com.clilystudio.app.netbook.am_CommonUtils;
 import android.util.AttributeSet;
 import android.view.Display;
 import android.view.MotionEvent;
@@ -147,7 +147,7 @@ public class CommentItemView extends HorizontalScrollView
     View localView2 = findViewById(2131493773);
     label338: int j;
     label367: String str2;
-    if (!am.m(getContext()))
+    if (!am_CommonUtils.m(getContext()))
     {
       localSmartImageView.setImageUrl(paramPostComment.getAuthor().getScaleAvatar(), 2130837614);
       localSmartImageView.setTag(paramPostComment);

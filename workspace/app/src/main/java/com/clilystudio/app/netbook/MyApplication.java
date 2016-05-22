@@ -4,7 +4,7 @@ import android.app.ActivityManager;
 import android.app.Application;
 import android.content.Context;
 import android.os.Process;
-import android.support.design.widget.am;
+import com.clilystudio.app.netbook.am_CommonUtils;
 import android.support.multidex.MultiDexApplication;
 
 import com.activeandroid.ActiveAndroid;

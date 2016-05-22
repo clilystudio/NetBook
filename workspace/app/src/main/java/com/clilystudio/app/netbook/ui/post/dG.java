@@ -1,7 +1,7 @@
 package com.clilystudio.app.netbook.ui.post;
 
 import android.os.AsyncTask.Status;
-import android.support.design.widget.am;
+import com.clilystudio.app.netbook.am_CommonUtils;
 import android.view.View;
 import com.handmark.pulltorefresh.library.j;
 import com.clilystudio.app.netbook.model.Tweet;
@@ -19,7 +19,7 @@ final class dG
     if ((TweetHotFragment.b(this.a) == null) || (TweetHotFragment.b(this.a).getStatus() == AsyncTask.Status.FINISHED))
     {
       TweetHotFragment.j(this.a).setVisibility(0);
-      if (!am.a(TweetHotFragment.k(this.a)))
+      if (!am_CommonUtils.a(TweetHotFragment.k(this.a)))
         TweetHotFragment.k(this.a).cancel(true);
       TweetHotFragment.a(this.a, new dH(this.a, (byte)0));
       int i = TweetHotFragment.e(this.a).size();

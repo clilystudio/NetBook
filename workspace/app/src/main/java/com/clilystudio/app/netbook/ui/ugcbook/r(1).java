@@ -1,6 +1,6 @@
 package com.clilystudio.app.netbook.ui.ugcbook;
 
-import android.support.design.widget.am;
+import com.clilystudio.app.netbook.am_CommonUtils;
 import com.clilystudio.app.netbook.a.e;
 import com.clilystudio.app.netbook.api.ApiService;
 import com.clilystudio.app.netbook.api.b;
@@ -20,7 +20,7 @@ final class r extends e<String, Void, UGCBookDetailRoot>
     {
       if (UGCDetailActivity.k(this.a))
       {
-        Account localAccount = am.a(this.a);
+        Account localAccount = am_CommonUtils.a(this.a);
         if (localAccount != null)
           return b.b().C(localAccount.getToken(), paramArrayOfString[0]);
       }

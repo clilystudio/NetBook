@@ -2,7 +2,7 @@ package com.clilystudio.app.netbook.util;
 
 import android.app.Activity;
 import android.content.res.Resources;
-import android.support.design.widget.am;
+import com.clilystudio.app.netbook.am_CommonUtils;
 import com.clilystudio.app.netbook.model.Account;
 import uk.me.lewisdeane.ldialogs.h;
 
@@ -17,7 +17,7 @@ public final class N
 
   public final void a(String paramString)
   {
-    Account localAccount = am.a(this.a);
+    Account localAccount = am_CommonUtils.a(this.a);
     if (localAccount != null)
       a(localAccount.getToken(), paramString);
   }

@@ -2,7 +2,7 @@ package com.clilystudio.app.netbook.util;
 
 import android.app.Activity;
 import android.os.Handler;
-import android.support.design.widget.am;
+import com.clilystudio.app.netbook.am_CommonUtils;
 import com.clilystudio.app.netbook.api.ApiService;
 import com.clilystudio.app.netbook.api.b;
 import com.clilystudio.app.netbook.db.BookReadRecord;
