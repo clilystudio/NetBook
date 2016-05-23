@@ -3,7 +3,6 @@ package com.clilystudio.app.netbook.reader;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -142,7 +141,7 @@ public class ReaderWebActivity extends BaseReadActivity
           localcJ1.b(arrayOfString3);
           break;
         }
-        if (MyApplication.a().c() == null)
+        if (MyApplication.a_getInstance().c() == null)
           break;
         cJ localcJ2 = new cJ(this, this, i, str2);
         String[] arrayOfString4 = new String[1];

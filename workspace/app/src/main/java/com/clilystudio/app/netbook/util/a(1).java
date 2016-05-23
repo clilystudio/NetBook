@@ -20,12 +20,12 @@ public final class a
 
   private static void a(AdsConfig2 paramAdsConfig2)
   {
-    MyApplication.a().a(paramAdsConfig2, "saved_adverts_reader_menu");
+    MyApplication.a_getInstance().a(paramAdsConfig2, "saved_adverts_reader_menu");
   }
 
   private static AdsConfig2 d()
   {
-    return (AdsConfig2)MyApplication.a().b("saved_adverts_reader_menu");
+    return (AdsConfig2)MyApplication.a_getInstance().b("saved_adverts_reader_menu");
   }
 
   public final boolean a(List<MenuAd> paramList)

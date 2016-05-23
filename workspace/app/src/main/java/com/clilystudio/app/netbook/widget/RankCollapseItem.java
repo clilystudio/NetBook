@@ -5,7 +5,6 @@ import com.clilystudio.app.netbook.am_CommonUtils;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -80,7 +79,7 @@ public class RankCollapseItem extends LinearLayout
       if (!this.a)
         break label143;
     }
-    label129: label136: label143: for (int n = -43230; ; n = am_CommonUtils.a(getContext(), 16842904))
+    label129: label136: label143: for (int n = -43230; ; n = am_CommonUtils.a_getTextColor(getContext(), 16842904))
     {
       localTextView.setTextColor(n);
       return;

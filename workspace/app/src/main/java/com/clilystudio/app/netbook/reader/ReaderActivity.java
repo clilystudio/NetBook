@@ -1,24 +1,16 @@
 package com.clilystudio.app.netbook.reader;
 
 import android.annotation.SuppressLint;
-import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.os.AsyncTask.Status;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.PowerManager.WakeLock;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.LocalBroadcastManager;
 import android.view.KeyEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.Window;
-import android.view.WindowManager.LayoutParams;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
@@ -34,18 +26,15 @@ import com.clilystudio.app.netbook.db.TocReadRecord;
 import com.clilystudio.app.netbook.event.C;
 import com.clilystudio.app.netbook.event.G;
 import com.clilystudio.app.netbook.event.g;
-import com.clilystudio.app.netbook.event.i;
 import com.clilystudio.app.netbook.event.j;
 import com.clilystudio.app.netbook.event.v;
-import com.clilystudio.app.netbook.model.Account;
 import com.clilystudio.app.netbook.ui.BaseReadSlmActivity;
 import com.clilystudio.app.netbook.ui.BookInfoActivity;
 import com.clilystudio.app.netbook.ui.cb;
 import com.clilystudio.app.netbook.util.ae;
-import com.clilystudio.app.netbook.util.e;
 import com.clilystudio.app.netbook.util.k;
 import com.clilystudio.app.netbook.widget.ThemeLoadingView;
-import java.util.ArrayList;
+
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -132,7 +121,7 @@ public class ReaderActivity extends BaseReadSlmActivity
       this.j.a(this.g);
     this.m.setOnPageChangeListener(new aw(this));
     this.m.setOnClickListener$4b8a6d15(new ax(this));
-    String str1 = MyApplication.a().g();
+    String str1 = MyApplication.a_getInstance().g();
     BookReadRecord localBookReadRecord;
     int i2;
     if (this.c.equals(str1))
@@ -143,12 +132,12 @@ public class ReaderActivity extends BaseReadSlmActivity
         i2 = -1;
         if (i2 != -1)
           this.g.a(i2, 0);
-        MyApplication.a().c(null);
+        MyApplication.a_getInstance().c(null);
       }
     }
     else
     {
-      MyApplication.a().a(this.g);
+      MyApplication.a_getInstance().a(this.g);
       if ((!q()) && (!com.arcsoft.hpay100.a.a.h(this.L)))
         break label345;
       if (!q())
@@ -1132,7 +1121,7 @@ public class ReaderActivity extends BaseReadSlmActivity
           if (!this.H)
             break label1383;
           this.I = false;
-          Reader localReader = MyApplication.a().b();
+          Reader localReader = MyApplication.a_getInstance().b();
           if (localReader == null)
             break label1376;
           this.g = localReader;
@@ -1152,7 +1141,7 @@ public class ReaderActivity extends BaseReadSlmActivity
           new k(this.c).a();
           com.umeng.a.b.a(this, "read_mode_33_new", com.arcsoft.hpay100.a.a.g(this.L));
           return;
-          i1 = MyApplication.a().d();
+          i1 = MyApplication.a_getInstance().d();
         }
       }
       catch (IllegalStateException localIllegalStateException)

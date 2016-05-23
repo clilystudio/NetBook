@@ -2,7 +2,7 @@ package com.clilystudio.app.netbook.ui.game;
 
 import com.clilystudio.app.netbook.am_CommonUtils;
 import android.view.View;
-import android.view.View.OnClickListener;
+
 import com.clilystudio.app.netbook.model.Game;
 
 final class U
@@ -14,7 +14,7 @@ final class U
 
   public final void onClick(View paramView)
   {
-    am_CommonUtils.b(this.b.a, this.a);
+    am_CommonUtils.b_loadWebGame(this.b.a, this.a);
   }
 }
 

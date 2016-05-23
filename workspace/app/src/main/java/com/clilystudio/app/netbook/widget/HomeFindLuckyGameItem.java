@@ -4,8 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import com.clilystudio.app.netbook.am_CommonUtils;
 import android.util.AttributeSet;
-import android.widget.ImageView;
-import android.widget.TextView;
+
 import com.arcsoft.hpay100.a.a;
 import com.umeng.a.b;
 import com.clilystudio.app.netbook.model.Account;
@@ -68,7 +67,7 @@ public class HomeFindLuckyGameItem extends HomeFindItem
 
   protected final void a(Context paramContext, String paramString)
   {
-    Account localAccount = am_CommonUtils.a((Activity)paramContext);
+    Account localAccount = am_CommonUtils.a_getLoginAccount((Activity)paramContext);
     if (localAccount != null)
       paramContext.startActivity(LuckyGameWebActivity.a(paramContext, paramString, String.format("http://share.zhuishushenqi.com/game/index?token=%s", new Object[] { localAccount.getToken() })));
   }

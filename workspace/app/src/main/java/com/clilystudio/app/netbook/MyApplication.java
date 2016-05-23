@@ -52,7 +52,7 @@ public class MyApplication extends Application {
     private List<String> j = null;
     private List<Long> k = null;
 
-    public static MyApplication a() {
+    public static MyApplication a_getInstance() {
         return app;
     }
 
@@ -60,8 +60,8 @@ public class MyApplication extends Application {
         AppProperties.getInstance(this).setProperties(paramProperties);
     }
 
-    public final String a(String paramString) {
-        return AppProperties.getInstance(this).loadProperties().getProperty(paramString);
+    public final String a_getProperty(String name) {
+        return AppProperties.getInstance(this).loadProperties().getProperty(name);
     }
 
     public final void a(int paramInt) {

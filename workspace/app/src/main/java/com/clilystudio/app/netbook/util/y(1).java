@@ -3,8 +3,6 @@ package com.clilystudio.app.netbook.util;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.DownloadManager;
-import android.app.DownloadManager.Query;
-import android.app.DownloadManager.Request;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
@@ -18,7 +16,6 @@ import com.clilystudio.app.netbook.model.Account;
 import com.clilystudio.app.netbook.model.AppItem;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public final class y
 {
@@ -31,7 +28,7 @@ public final class y
     this.c = paramContext;
     this.a = paramAppItem;
     this.b = ((DownloadManager)paramContext.getSystemService("download"));
-    Account localAccount = am_CommonUtils.e();
+    Account localAccount = am_CommonUtils.e_getAccount();
     if (localAccount != null)
       new Thread(new z(this, localAccount.getToken())).start();
   }
@@ -135,11 +132,11 @@ public final class y
     if (!a.d())
       return;
     this.c.sendBroadcast(new Intent("update_game_item_status"));
-    MyApplication.a().i().add(this.a.get_id());
+    MyApplication.a_getInstance().i().add(this.a.get_id());
     String str = this.a.getDownload_link();
     long l = a(Uri.parse(str));
-    MyApplication.a().j().add(Long.valueOf(l));
-    MyApplication.a().i().add(str);
+    MyApplication.a_getInstance().j().add(Long.valueOf(l));
+    MyApplication.a_getInstance().i().add(str);
   }
 }
 

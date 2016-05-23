@@ -9,7 +9,6 @@ import com.clilystudio.app.netbook.db.SourceRecord;
 import com.clilystudio.app.netbook.model.BookInfo;
 import com.clilystudio.app.netbook.model.BookTopRoot;
 import com.clilystudio.app.netbook.model.BookTopRoot.Favorite;
-import com.clilystudio.app.netbook.model.Chapter;
 import com.clilystudio.app.netbook.model.ChapterRoot;
 import com.clilystudio.app.netbook.model.MixTocRoot;
 import com.clilystudio.app.netbook.model.Toc;
@@ -489,7 +488,7 @@ public final class f
         {
           BookTopRoot.Favorite localFavorite = localBookTopRoot.getFavorite();
           if (localFavorite != null)
-            a.b(MyApplication.a(), localFavorite.getBookID(), localFavorite.getTocID(), localFavorite.getChecksum());
+            a.b(MyApplication.a_getInstance(), localFavorite.getBookID(), localFavorite.getTocID(), localFavorite.getChecksum());
         }
         localChapterRoot = c(paramChapterLink.getLink());
         I.h = false;

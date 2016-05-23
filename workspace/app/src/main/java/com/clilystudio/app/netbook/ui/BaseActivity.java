@@ -30,7 +30,7 @@ public class BaseActivity extends AppCompatActivity
 
   protected static UGCNewCollection e()
   {
-    MyApplication localMyApplication = MyApplication.a();
+    MyApplication localMyApplication = MyApplication.a_getInstance();
     if (localMyApplication.a == null)
       localMyApplication.a = new UGCNewCollection();
     return localMyApplication.a;

@@ -1,16 +1,12 @@
 package com.clilystudio.app.netbook.ui;
 
-import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Handler;
 import com.clilystudio.app.netbook.am_CommonUtils;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup.LayoutParams;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -19,13 +15,11 @@ import com.clilystudio.app.netbook.MyApplication;
 import com.clilystudio.app.netbook.db.BookReadRecord;
 import com.clilystudio.app.netbook.event.B;
 import com.clilystudio.app.netbook.event.c;
-import com.clilystudio.app.netbook.event.i;
 import com.clilystudio.app.netbook.event.s;
 import com.clilystudio.app.netbook.model.Advert;
 import com.clilystudio.app.netbook.model.BookInfo;
 import com.clilystudio.app.netbook.ui.post.BookPostTabActivity;
 import com.clilystudio.app.netbook.util.adutil.n;
-import com.clilystudio.app.netbook.util.e;
 import com.clilystudio.app.netbook.util.m;
 import com.clilystudio.app.netbook.widget.TagsLayout;
 
@@ -126,7 +120,7 @@ public class BookInfoActivity extends BaseActivity
     {
       localView1.setVisibility(i2);
       return;
-      n = am_CommonUtils.b(this, 2130771971);
+      n = am_CommonUtils.b_getBackgroundResourceId(this, 2130771971);
       break;
       i1 = 2131034331;
       break label50;
@@ -234,7 +228,7 @@ public class BookInfoActivity extends BaseActivity
     {
       localImageView.setImageResource(i5);
       return;
-      i4 = am_CommonUtils.b(this, 2130771971);
+      i4 = am_CommonUtils.b_getBackgroundResourceId(this, 2130771971);
       break;
       str = getString(2131034328);
       break label110;
@@ -311,7 +305,7 @@ public class BookInfoActivity extends BaseActivity
   private void k()
   {
     if (this.k != null)
-      MyApplication.a().a(this.k);
+      MyApplication.a_getInstance().a(this.k);
   }
 
   @l

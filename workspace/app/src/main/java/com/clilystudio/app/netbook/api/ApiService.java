@@ -1,12 +1,10 @@
 package com.clilystudio.app.netbook.api;
 
 import android.net.Uri;
-import com.clilystudio.app.netbook.am_CommonUtils;
 import android.text.Html;
 import android.text.TextUtils;
 import android.util.Log;
 
-import com.clilystudio.app.netbook.util.am_CommonUtils;
 import com.github.kevinsawicki.http.HttpRequest;
 import com.github.kevinsawicki.http.HttpRequest.HttpRequestException;
 import com.google.gson.Gson;
@@ -111,7 +109,6 @@ import com.clilystudio.app.netbook.model.UGCBookDetailRoot;
 import com.clilystudio.app.netbook.model.UGCBookListRoot;
 import com.clilystudio.app.netbook.model.UGCNewCollection;
 import com.clilystudio.app.netbook.model.UgcFilterRoot;
-import com.clilystudio.app.netbook.model.User;
 import com.clilystudio.app.netbook.model.UserInfo;
 import com.clilystudio.app.netbook.model.UserInfoResult;
 import com.clilystudio.app.netbook.model.UserVipInfo;
@@ -125,7 +122,6 @@ import com.clilystudio.app.netbook.model.mixtoc.EsTocRoot;
 import com.clilystudio.app.netbook.model.mixtoc.LdChapterRoot;
 import com.clilystudio.app.netbook.model.mixtoc.LdTocRoot;
 import com.clilystudio.app.netbook.model.mixtoc.SgChapterRoot;
-import com.clilystudio.app.netbook.model.mixtoc.SgMixChapter;
 import com.clilystudio.app.netbook.model.mixtoc.SgTocRoot;
 import com.clilystudio.app.netbook.model.mixtoc.SsChapterJson;
 import com.clilystudio.app.netbook.model.mixtoc.SsTocRoot;
@@ -133,15 +129,12 @@ import com.xiaomi.mistatistic.sdk.c;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
-import java.io.Reader;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 
 public class ApiService
 {
@@ -364,7 +357,7 @@ public class ApiService
       if (l1 > paramLong)
       {
         c.a(new com.xiaomi.mistatistic.sdk.b.a(paramString1, l1 - paramLong, paramInt, paramString2));
-        b.a(MyApplication.a(), "api_http_error", paramString2);
+        b.a(MyApplication.a_getInstance(), "api_http_error", paramString2);
       }
       return;
     }
@@ -382,7 +375,7 @@ public class ApiService
   {
     paramHttpRequest.b(15000).a(15000);
     f localf = this.c;
-    if ("1".equals(b.b(MyApplication.a(), "ua-toggle")));
+    if ("1".equals(b.b(MyApplication.a_getInstance(), "ua-toggle")));
     for (String str = localf.b(); ; str = "")
     {
       paramHttpRequest.a(str);
@@ -485,7 +478,7 @@ public class ApiService
 
   private static void v()
   {
-    b.a(MyApplication.a(), "server_error");
+    b.a(MyApplication.a_getInstance(), "server_error");
   }
 
   private static ChapterRoot w()

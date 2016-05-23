@@ -1,7 +1,5 @@
 package com.clilystudio.app.netbook.ui.ugcbook;
 
-import android.app.AlertDialog;
-import android.content.Intent;
 import android.os.Bundle;
 import android.text.Selection;
 import android.widget.TextView;
@@ -13,7 +11,7 @@ import com.clilystudio.app.netbook.event.i;
 import com.clilystudio.app.netbook.model.Author;
 import com.clilystudio.app.netbook.model.UGCNewCollection;
 import com.clilystudio.app.netbook.ui.BaseActivity;
-import java.util.List;
+
 import uk.me.lewisdeane.ldialogs.h;
 
 public class UGCGuideAddCollectionActivity extends BaseActivity
@@ -71,7 +69,7 @@ public class UGCGuideAddCollectionActivity extends BaseActivity
     int i = 2131034562;
     if ((this.c != null) && (!this.c.equals("")))
     {
-      UGCNewCollection localUGCNewCollection = MyApplication.a().a;
+      UGCNewCollection localUGCNewCollection = MyApplication.a_getInstance().a;
       if (localUGCNewCollection != null)
       {
         this.a.setText(localUGCNewCollection.getTitle());
@@ -84,7 +82,7 @@ public class UGCGuideAddCollectionActivity extends BaseActivity
     {
       a(i, 2131034419, new C(this));
       return;
-      MyApplication.a().a = new UGCNewCollection();
+      MyApplication.a_getInstance().a = new UGCNewCollection();
     }
   }
 

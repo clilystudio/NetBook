@@ -3,8 +3,7 @@ package com.clilystudio.app.netbook.widget;
 import android.app.Activity;
 import com.clilystudio.app.netbook.am_CommonUtils;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.clilystudio.app.netbook.model.GiftGame;
+
 import com.clilystudio.app.netbook.util.e;
 import com.clilystudio.app.netbook.view.a;
 
@@ -18,7 +17,7 @@ final class W
   public final void onClick(View paramView)
   {
     this.a.dismiss();
-    am_CommonUtils.a(this.c.getContext(), this.b);
+    am_CommonUtils.a_isSameString(this.c.getContext(), this.b);
     e.a((Activity)this.c.getContext(), "已复制");
     if (GiftGameGiftButton.b(this.c) != null)
     {

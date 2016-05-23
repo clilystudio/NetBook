@@ -7,9 +7,8 @@ import com.clilystudio.app.netbook.db.BookDlRecord;
 import com.clilystudio.app.netbook.db.BookReadRecord;
 import com.clilystudio.app.netbook.event.I;
 import com.clilystudio.app.netbook.event.d;
-import com.clilystudio.app.netbook.event.i;
 import com.clilystudio.app.netbook.util.e;
-import java.util.List;
+
 import uk.me.lewisdeane.ldialogs.h;
 
 public class a
@@ -53,7 +52,7 @@ public class a
     int i = paramBookReadRecord.getReadMode();
     i.a().c(new d(str, 1));
     e.a(this.a, "已加入缓存队列");
-    MyApplication.a().f().add(str);
+    MyApplication.a_getInstance().f().add(str);
     if (paramInt1 < 0);
     for (int j = 0; ; j = paramInt1)
     {

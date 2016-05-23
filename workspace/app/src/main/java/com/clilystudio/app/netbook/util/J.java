@@ -64,7 +64,7 @@ public class J
 
   public final void c()
   {
-    Account localAccount = am_CommonUtils.e();
+    Account localAccount = am_CommonUtils.e_getAccount();
     if (localAccount != null)
     {
       L localL = new L(this);
@@ -76,7 +76,7 @@ public class J
 
   public final void d()
   {
-    Account localAccount = am_CommonUtils.e();
+    Account localAccount = am_CommonUtils.e_getAccount();
     if (localAccount != null)
     {
       M localM = new M(this);
@@ -88,7 +88,7 @@ public class J
 
   public final int e()
   {
-    Account localAccount = am_CommonUtils.e();
+    Account localAccount = am_CommonUtils.e_getAccount();
     if (localAccount == null);
     do
     {

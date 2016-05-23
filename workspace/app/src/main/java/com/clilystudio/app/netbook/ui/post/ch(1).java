@@ -1,11 +1,8 @@
 package com.clilystudio.app.netbook.ui.post;
 
-import android.os.AsyncTask.Status;
 import com.clilystudio.app.netbook.am_CommonUtils;
-import android.view.View;
 import com.handmark.pulltorefresh.library.j;
 import com.clilystudio.app.netbook.model.Tweet;
-import java.util.List;
 
 final class ch
   implements j
@@ -19,7 +16,7 @@ final class ch
     if ((OtherUserActivity.b(this.a) == null) || (OtherUserActivity.b(this.a).getStatus() == AsyncTask.Status.FINISHED))
     {
       OtherUserActivity.p(this.a).setVisibility(0);
-      if (!am_CommonUtils.a(OtherUserActivity.q(this.a)))
+      if (!am_CommonUtils.a_isTaskStoped(OtherUserActivity.q(this.a)))
         OtherUserActivity.q(this.a).cancel(true);
       OtherUserActivity.a(this.a, new cl(this.a, (byte)0));
       String str = "";

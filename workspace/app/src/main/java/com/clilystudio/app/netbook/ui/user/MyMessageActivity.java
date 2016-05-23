@@ -16,7 +16,7 @@ public class MyMessageActivity extends BaseActivity
   public void onPause()
   {
     super.onPause();
-    am_CommonUtils.j(this);
+    am_CommonUtils.j_setNotifyTime(this);
   }
 }
 

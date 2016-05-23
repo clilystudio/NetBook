@@ -3,7 +3,6 @@ package com.clilystudio.app.netbook.util;
 import android.app.Activity;
 import android.os.Handler;
 import com.clilystudio.app.netbook.am_CommonUtils;
-import com.clilystudio.app.netbook.api.ApiService;
 import com.clilystudio.app.netbook.api.b;
 import com.clilystudio.app.netbook.db.BookReadRecord;
 import com.clilystudio.app.netbook.db.BookSyncRecord;
@@ -13,7 +12,7 @@ import com.clilystudio.app.netbook.model.Account;
 import com.clilystudio.app.netbook.model.BookShelfSyncTime;
 import com.clilystudio.app.netbook.model.RemoteBookShelf;
 import com.clilystudio.app.netbook.model.RemoteBookShelf.Book;
-import com.clilystudio.app.netbook.model.User;
+
 import java.util.Date;
 import java.util.List;
 
@@ -106,7 +105,7 @@ public final class Z
     String[] arrayOfString2 = new String[localList2.size()];
     for (int j = 0; j < localList2.size(); j++)
       arrayOfString2[j] = ((BookReadRecord)localList2.get(j)).getBookId();
-    Account localAccount = am_CommonUtils.e();
+    Account localAccount = am_CommonUtils.e_getAccount();
     if (localAccount != null)
     {
       String str = localAccount.getUser().getId();

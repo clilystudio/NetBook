@@ -11,7 +11,7 @@ final class aL
 
   public final void run()
   {
-    if (!am_CommonUtils.a(BookTopicListFragment.b(this.a.a)))
+    if (!am_CommonUtils.a_isTaskStoped(BookTopicListFragment.b(this.a.a)))
       BookTopicListFragment.b(this.a.a).cancel(true);
     BookTopicListFragment.c(this.a.a);
   }

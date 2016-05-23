@@ -1,7 +1,7 @@
 package com.clilystudio.app.netbook.reader;
 
 import android.os.Handler;
-import com.clilystudio.app.netbook.am_CommonUtils;
+
 import com.arcsoft.hpay100.a.a;
 import com.clilystudio.app.netbook.MyApplication;
 import com.clilystudio.app.netbook.db.BookReadRecord;
@@ -11,7 +11,6 @@ import com.clilystudio.app.netbook.model.BookInfo;
 import com.clilystudio.app.netbook.model.Chapter;
 import com.clilystudio.app.netbook.model.ChapterLink;
 import com.clilystudio.app.netbook.model.Toc;
-import com.clilystudio.app.netbook.util.am_CommonUtils;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -19,7 +18,6 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -141,7 +139,7 @@ public final class Reader
 
   public final void a()
   {
-    BookInfo localBookInfo = MyApplication.a().c();
+    BookInfo localBookInfo = MyApplication.a_getInstance().c();
     if ((localBookInfo == null) || (localBookInfo.getId() == null) || (!localBookInfo.getId().equals(this.c)))
       return;
     if (o())

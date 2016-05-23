@@ -13,15 +13,15 @@ public class MyApkAdvert extends BaseShelfAd
   public String getDownloadTitle(Context paramContext)
   {
     String str1 = a.c(getApkSize());
-    if (a.r(MyApplication.a()) == 1)
+    if (a.r(MyApplication.a_getInstance()) == 1)
     {
-      String str3 = MyApplication.a().getString(2131034503);
+      String str3 = MyApplication.a_getInstance().getString(2131034503);
       Object[] arrayOfObject2 = new Object[2];
       arrayOfObject2[0] = getTitle();
       arrayOfObject2[1] = str1;
       return String.format(str3, arrayOfObject2);
     }
-    String str2 = MyApplication.a().getString(2131034502);
+    String str2 = MyApplication.a_getInstance().getString(2131034502);
     Object[] arrayOfObject1 = new Object[2];
     arrayOfObject1[0] = getTitle();
     arrayOfObject1[1] = str1;

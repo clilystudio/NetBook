@@ -1,8 +1,6 @@
 package com.clilystudio.app.netbook.ui.post;
 
-import android.os.AsyncTask.Status;
 import com.clilystudio.app.netbook.am_CommonUtils;
-import android.view.View;
 import com.handmark.pulltorefresh.library.j;
 
 final class dg
@@ -17,7 +15,7 @@ final class dg
     if ((ReviewListActivity.f(this.a) == null) || (ReviewListActivity.f(this.a).getStatus() == AsyncTask.Status.FINISHED))
     {
       ReviewListActivity.s(this.a).setVisibility(0);
-      if (!am_CommonUtils.a(ReviewListActivity.j(this.a)))
+      if (!am_CommonUtils.a_isTaskStoped(ReviewListActivity.j(this.a)))
         ReviewListActivity.j(this.a).cancel(true);
       ReviewListActivity.a(this.a, new do(this.a, (byte)0));
       do localdo = ReviewListActivity.f(this.a);

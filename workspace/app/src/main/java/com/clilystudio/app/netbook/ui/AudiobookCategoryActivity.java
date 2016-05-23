@@ -2,7 +2,6 @@ package com.clilystudio.app.netbook.ui;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.os.Bundle;
 import com.clilystudio.app.netbook.am_CommonUtils;
 import android.text.SpannableString;
@@ -14,7 +13,6 @@ import com.clilystudio.app.netbook.d;
 import com.clilystudio.app.netbook.util.as;
 import com.ximalaya.ting.android.opensdk.datatrasfer.CommonRequest;
 import java.util.HashMap;
-import java.util.Map;
 
 public class AudiobookCategoryActivity extends BaseActivity
 {
@@ -72,7 +70,7 @@ public class AudiobookCategoryActivity extends BaseActivity
     this.c = findViewById(2131493082);
     this.c.setOnClickListener(new q(this));
     b();
-    ((RelativeLayout)findViewById(2131493083)).setBackgroundResource(am_CommonUtils.b(this, 2130771970));
+    ((RelativeLayout)findViewById(2131493083)).setBackgroundResource(am_CommonUtils.b_getBackgroundResourceId(this, 2130771970));
     TextView localTextView = (TextView)findViewById(2131493084);
     SpannableString localSpannableString = new SpannableString(getResources().getString(2131034591));
     localSpannableString.setSpan(new ForegroundColorSpan(getResources().getColor(2131427543)), 0, 5, 33);

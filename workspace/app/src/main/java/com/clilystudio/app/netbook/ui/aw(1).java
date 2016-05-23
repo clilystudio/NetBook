@@ -1,7 +1,7 @@
 package com.clilystudio.app.netbook.ui;
 
 import android.content.Context;
-import android.content.res.Resources;
+
 import com.clilystudio.app.netbook.am_CommonUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -65,7 +65,7 @@ public final class aw extends BaseAdapter
       localax2 = (ax)paramView.getTag();
       localView = paramView;
     }
-    label166: localax2.a.setTextColor(am_CommonUtils.a(this.c, 16842904));
+    label166: localax2.a.setTextColor(am_CommonUtils.a_isSameString(this.c, 16842904));
     localax2.b.setVisibility(8);
     return localView;
   }

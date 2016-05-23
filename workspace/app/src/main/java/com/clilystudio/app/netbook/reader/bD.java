@@ -2,12 +2,11 @@ package com.clilystudio.app.netbook.reader;
 
 import com.clilystudio.app.netbook.am_CommonUtils;
 import android.view.View;
-import android.view.View.OnClickListener;
+
 import com.squareup.a.b;
 import com.clilystudio.app.netbook.MyApplication;
 import com.clilystudio.app.netbook.event.i;
 import com.clilystudio.app.netbook.event.v;
-import com.clilystudio.app.netbook.model.TocSummary;
 
 final class bD
   implements View.OnClickListener
@@ -20,8 +19,8 @@ final class bD
   {
     if (!this.a.equals(ReaderMixActivity.a(this.b)))
     {
-      MyApplication.a().c(ReaderMixActivity.b(this.b));
-      am_CommonUtils.c(ReaderMixActivity.b(this.b), 9);
+      MyApplication.a_getInstance().c(ReaderMixActivity.b(this.b));
+      am_CommonUtils.c_setReadMode(ReaderMixActivity.b(this.b), 9);
       i.a().c(new v(1));
       ReaderMixActivity.a(this.b, ReaderMixActivity.f(this.b).get_id());
     }

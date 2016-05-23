@@ -1,18 +1,14 @@
 package com.clilystudio.app.netbook.ui.post;
 
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import com.clilystudio.app.netbook.am_CommonUtils;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import com.clilystudio.app.netbook.model.Account;
-import com.clilystudio.app.netbook.model.Author;
 import com.clilystudio.app.netbook.model.ReplyeeInfo;
 import com.clilystudio.app.netbook.ui.BaseLoadingActivity;
 import com.clilystudio.app.netbook.widget.CommentItemView;
@@ -67,7 +63,7 @@ public abstract class AbsPostActivity extends BaseLoadingActivity
   protected void a(ReplyeeInfo paramReplyeeInfo, String paramString)
   {
     this.f = paramString;
-    Account localAccount = am_CommonUtils.a(this);
+    Account localAccount = am_CommonUtils.a_getLoginAccount(this);
     if (localAccount == null)
       return;
     if (this.f.length() > 512)
@@ -89,7 +85,7 @@ public abstract class AbsPostActivity extends BaseLoadingActivity
   protected final void a(boolean paramBoolean)
   {
     TextView localTextView = (TextView)findViewById(2131494004);
-    am_CommonUtils.a(this, localTextView);
+    am_CommonUtils.a_hideSoftInput(this, localTextView);
     if (paramBoolean)
       localTextView.setText("");
     localTextView.setHint("添加评论");

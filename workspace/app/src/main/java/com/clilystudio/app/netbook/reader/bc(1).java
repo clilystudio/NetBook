@@ -1,12 +1,10 @@
 package com.clilystudio.app.netbook.reader;
 
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
+
 import com.clilystudio.app.netbook.MyApplication;
 import com.clilystudio.app.netbook.db.BookReadRecord;
 import com.clilystudio.app.netbook.reader.dl.a;
-import java.util.Map;
 
 final class bc
   implements DialogInterface.OnClickListener
@@ -31,7 +29,7 @@ final class bc
         ReaderActivity.ad(this.a);
       ReaderActivity.ah(this.a).setVisibility(0);
       a locala = new a(this.a);
-      MyApplication.a().e().put(ReaderActivity.M(this.a), ReaderActivity.Y(this.a).d());
+      MyApplication.a_getInstance().e().put(ReaderActivity.M(this.a), ReaderActivity.Y(this.a).d());
       locala.a(ReaderActivity.M(this.a), j, ReaderActivity.ai(this.a));
       return;
       if (paramInt == i)

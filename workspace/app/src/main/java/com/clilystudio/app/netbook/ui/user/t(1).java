@@ -3,9 +3,7 @@ package com.clilystudio.app.netbook.ui.user;
 import android.net.Uri;
 import com.clilystudio.app.netbook.am_CommonUtils;
 import com.clilystudio.app.netbook.a.c;
-import com.clilystudio.app.netbook.api.ApiService;
 import com.clilystudio.app.netbook.api.b;
-import com.clilystudio.app.netbook.model.Account;
 import com.clilystudio.app.netbook.model.Root;
 import java.io.IOException;
 
@@ -23,7 +21,7 @@ final class t extends c<String, Root>
   {
     try
     {
-      Root localRoot = b.b().a(am_CommonUtils.a(this.b).getToken(), this.a);
+      Root localRoot = b.b().a(am_CommonUtils.a_getLoginAccount(this.b).getToken(), this.a);
       return localRoot;
     }
     catch (IOException localIOException)

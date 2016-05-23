@@ -4,10 +4,8 @@ import android.app.Service;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.IBinder;
-import com.clilystudio.app.netbook.am_CommonUtils;
 import android.support.v4.content.LocalBroadcastManager;
 import com.arcsoft.hpay100.a.a;
-import com.clilystudio.app.netbook.util.am_CommonUtils;
 import com.squareup.a.b;
 import com.squareup.a.l;
 import com.clilystudio.app.netbook.MyApplication;
@@ -15,11 +13,9 @@ import com.clilystudio.app.netbook.db.BookDlRecord;
 import com.clilystudio.app.netbook.db.BookReadRecord;
 import com.clilystudio.app.netbook.db.SourceRecord;
 import com.clilystudio.app.netbook.event.d;
-import com.clilystudio.app.netbook.event.i;
 import com.clilystudio.app.netbook.model.ChapterLink;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public class BookDownloadService extends Service
 {
@@ -59,7 +55,7 @@ public class BookDownloadService extends Service
       this.e = localBookDlRecord.getTotal();
       this.l = 0;
       this.f = 0;
-      this.g = ((ChapterLink[])MyApplication.a().e().get(this.a));
+      this.g = ((ChapterLink[])MyApplication.a_getInstance().e().get(this.a));
       if ((this.g != null) && (this.e > 0))
       {
         b();
@@ -210,8 +206,8 @@ public class BookDownloadService extends Service
 
   private void f()
   {
-    MyApplication.a().e().remove(this.a);
-    MyApplication.a().f().remove(this.a);
+    MyApplication.a_getInstance().e().remove(this.a);
+    MyApplication.a_getInstance().f().remove(this.a);
     BookDlRecord.delete(this.a);
   }
 

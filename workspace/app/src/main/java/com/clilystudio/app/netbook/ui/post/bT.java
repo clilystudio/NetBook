@@ -1,11 +1,8 @@
 package com.clilystudio.app.netbook.ui.post;
 
-import android.os.AsyncTask.Status;
 import com.clilystudio.app.netbook.am_CommonUtils;
-import android.view.View;
 import com.handmark.pulltorefresh.library.j;
 import com.clilystudio.app.netbook.model.Tweet;
-import java.util.List;
 
 final class bT
   implements j
@@ -19,7 +16,7 @@ final class bT
     if ((MyTweetFragment.b(this.a) == null) || (MyTweetFragment.b(this.a).getStatus() == AsyncTask.Status.FINISHED))
     {
       MyTweetFragment.v(this.a).setVisibility(0);
-      if (!am_CommonUtils.a(MyTweetFragment.w(this.a)))
+      if (!am_CommonUtils.a_isTaskStoped(MyTweetFragment.w(this.a)))
         MyTweetFragment.w(this.a).cancel(true);
       MyTweetFragment.a(this.a, new bW(this.a, (byte)0));
       int i = MyTweetFragment.q(this.a).size();

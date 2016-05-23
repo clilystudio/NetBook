@@ -4,7 +4,6 @@ import android.content.Context;
 import com.clilystudio.app.netbook.am_CommonUtils;
 import com.clilystudio.app.netbook.util.CipherUtil;
 import java.util.LinkedList;
-import java.util.List;
 
 public final class n
 {
@@ -38,7 +37,7 @@ public final class n
 
   public final String a(Context paramContext)
   {
-    return am_CommonUtils.b(paramContext, c());
+    return am_CommonUtils.b_convertString(paramContext, c());
   }
 
   public final void a(int paramInt)

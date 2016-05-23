@@ -11,7 +11,7 @@ final class dj
 
   public final void run()
   {
-    if (!am_CommonUtils.a(ReviewListActivity.f(this.a.a)))
+    if (!am_CommonUtils.a_isTaskStoped(ReviewListActivity.f(this.a.a)))
       ReviewListActivity.f(this.a.a).cancel(true);
     ReviewListActivity.a(this.a.a, new dp(this.a.a, (byte)0));
     dp localdp = ReviewListActivity.j(this.a.a);

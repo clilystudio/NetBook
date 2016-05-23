@@ -2,7 +2,7 @@ package com.clilystudio.app.netbook.widget;
 
 import com.clilystudio.app.netbook.am_CommonUtils;
 import android.view.View;
-import android.view.View.OnClickListener;
+
 import com.umeng.a.b;
 import com.clilystudio.app.netbook.model.Game;
 
@@ -19,7 +19,7 @@ final class Q
       b.a(this.b.getContext(), "micro_game_continue_click", this.a.getName());
     while (true)
     {
-      am_CommonUtils.a(this.b.getContext(), this.a);
+      am_CommonUtils.a_isSameString(this.b.getContext(), this.a);
       return;
       b.a(this.b.getContext(), "micro_game_play_click", this.a.getName());
     }

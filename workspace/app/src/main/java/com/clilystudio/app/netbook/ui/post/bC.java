@@ -11,7 +11,7 @@ final class bC
 
   public final void run()
   {
-    if (!am_CommonUtils.a(GirlTopicListActivity.e(this.a.a)))
+    if (!am_CommonUtils.a_isTaskStoped(GirlTopicListActivity.e(this.a.a)))
       GirlTopicListActivity.e(this.a.a).cancel(true);
     GirlTopicListActivity.a(this.a.a, new bJ(this.a.a, (byte)0));
     bJ localbJ = GirlTopicListActivity.h(this.a.a);

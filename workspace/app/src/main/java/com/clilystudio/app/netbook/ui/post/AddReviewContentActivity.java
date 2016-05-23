@@ -1,6 +1,5 @@
 package com.clilystudio.app.netbook.ui.post;
 
-import android.content.Intent;
 import android.os.Bundle;
 import com.clilystudio.app.netbook.am_CommonUtils;
 import android.widget.EditText;
@@ -29,9 +28,9 @@ public class AddReviewContentActivity extends BaseActivity
         String str3 = this.c.getText().toString();
         String str4 = this.e.getText().toString();
         if (!a.Q(str3))
-          MyApplication.a().a("saveToLocalReviewTitle", str3);
+          MyApplication.a_getInstance().a("saveToLocalReviewTitle", str3);
         if (!a.Q(str4))
-          MyApplication.a().a("saveToLocalReviewDesc", str4);
+          MyApplication.a_getInstance().a("saveToLocalReviewDesc", str4);
       }
       super.onBackPressed();
       return;
@@ -51,8 +50,8 @@ public class AddReviewContentActivity extends BaseActivity
     this.f = getIntent().getBooleanExtra("isFromBookReviewList", false);
     this.c = ((EditText)findViewById(2131493070));
     this.e = ((EditText)findViewById(2131493071));
-    am_CommonUtils.a(this.c, "saveToLocalReviewTitle");
-    am_CommonUtils.a(this.e, "saveToLocalReviewDesc");
+    am_CommonUtils.a_setEditText(this.c, "saveToLocalReviewTitle");
+    am_CommonUtils.a_setEditText(this.e, "saveToLocalReviewDesc");
   }
 }
 

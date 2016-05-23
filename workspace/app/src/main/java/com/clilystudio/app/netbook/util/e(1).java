@@ -8,7 +8,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Bitmap;
-import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.widget.RemoteViews;
 import android.widget.Toast;
@@ -17,11 +16,9 @@ import com.clilystudio.app.netbook.db.SplashRecord;
 import com.clilystudio.app.netbook.model.Account;
 import com.clilystudio.app.netbook.model.Author;
 import com.clilystudio.app.netbook.model.SplashAdvert;
-import com.clilystudio.app.netbook.model.User;
 import com.clilystudio.app.netbook.ui.AudioBookPlayActivity;
 import com.clilystudio.app.netbook.ui.post.OtherUserActivity;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
@@ -168,18 +165,18 @@ public class e
 
   public static Notification c()
   {
-    d = (NotificationManager)MyApplication.a().getSystemService("notification");
-    c = new RemoteViews(MyApplication.a().getPackageName(), 2130903334);
-    android.support.v7.app.NotificationCompat.Builder localBuilder = new android.support.v7.app.NotificationCompat.Builder(MyApplication.a());
+    d = (NotificationManager)MyApplication.a_getInstance().getSystemService("notification");
+    c = new RemoteViews(MyApplication.a_getInstance().getPackageName(), 2130903334);
+    android.support.v7.app.NotificationCompat.Builder localBuilder = new android.support.v7.app.NotificationCompat.Builder(MyApplication.a_getInstance());
     localBuilder.setSmallIcon(17301623);
     localBuilder.setContent(c);
     localBuilder.setAutoCancel(false).setOngoing(true);
     g = new AudioBookNotification.SwitchButtonListener();
     try
     {
-      MyApplication.a().registerReceiver(g, new IntentFilter("com.clilystudio.app.netbook.SWITCH_AUDIO"));
+      MyApplication.a_getInstance().registerReceiver(g, new IntentFilter("com.clilystudio.app.netbook.SWITCH_AUDIO"));
       label101: Intent localIntent = new Intent("com.clilystudio.app.netbook.SWITCH_AUDIO");
-      PendingIntent localPendingIntent = PendingIntent.getBroadcast(MyApplication.a(), 0, localIntent, 0);
+      PendingIntent localPendingIntent = PendingIntent.getBroadcast(MyApplication.a_getInstance(), 0, localIntent, 0);
       c.setOnClickPendingIntent(2131493607, localPendingIntent);
       Notification localNotification = localBuilder.build();
       e = localNotification;

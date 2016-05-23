@@ -11,7 +11,7 @@ final class dY
 
   public final void run()
   {
-    if (!am_CommonUtils.a(TweetTimelineFragment.b(this.a.a)))
+    if (!am_CommonUtils.a_isTaskStoped(TweetTimelineFragment.b(this.a.a)))
       TweetTimelineFragment.b(this.a.a).cancel(true);
     TweetTimelineFragment.c(this.a.a);
   }

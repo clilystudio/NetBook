@@ -11,7 +11,7 @@ final class bb
 
   public final void run()
   {
-    if (!am_CommonUtils.a(CommonPostListActivity.c(this.a.a)))
+    if (!am_CommonUtils.a_isTaskStoped(CommonPostListActivity.c(this.a.a)))
       CommonPostListActivity.c(this.a.a).cancel(true);
     CommonPostListActivity.a(this.a.a, new bi(this.a.a, (byte)0));
     bi localbi = CommonPostListActivity.f(this.a.a);

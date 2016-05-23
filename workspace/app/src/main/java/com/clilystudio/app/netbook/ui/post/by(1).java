@@ -1,8 +1,6 @@
 package com.clilystudio.app.netbook.ui.post;
 
-import android.os.AsyncTask.Status;
 import com.clilystudio.app.netbook.am_CommonUtils;
-import android.view.View;
 import com.handmark.pulltorefresh.library.j;
 
 final class by
@@ -17,7 +15,7 @@ final class by
     if ((GirlTopicListActivity.e(this.a) == null) || (GirlTopicListActivity.e(this.a).getStatus() == AsyncTask.Status.FINISHED))
     {
       GirlTopicListActivity.p(this.a).setVisibility(0);
-      if (!am_CommonUtils.a(GirlTopicListActivity.h(this.a)))
+      if (!am_CommonUtils.a_isTaskStoped(GirlTopicListActivity.h(this.a)))
         GirlTopicListActivity.h(this.a).cancel(true);
       GirlTopicListActivity.a(this.a, new bI(this.a, (byte)0));
       bI localbI = GirlTopicListActivity.e(this.a);

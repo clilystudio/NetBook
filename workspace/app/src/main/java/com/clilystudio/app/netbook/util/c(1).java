@@ -25,12 +25,12 @@ public final class c
 
   private static void a(AdsConfig paramAdsConfig)
   {
-    MyApplication.a().a(paramAdsConfig, "saved_adverts_1");
+    MyApplication.a_getInstance().a(paramAdsConfig, "saved_adverts_1");
   }
 
   private static AdsConfig d()
   {
-    return (AdsConfig)MyApplication.a().b("saved_adverts_1");
+    return (AdsConfig)MyApplication.a_getInstance().b("saved_adverts_1");
   }
 
   public final Advert a(String paramString)

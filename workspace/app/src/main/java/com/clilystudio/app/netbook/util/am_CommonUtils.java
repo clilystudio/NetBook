@@ -2,40 +2,29 @@ package com.clilystudio.app.netbook.util;
 
 import android.app.Activity;
 import android.app.ActivityManager;
-import android.app.ActivityManager.RunningAppProcessInfo;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
-import android.content.Intent.ShortcutIconResource;
 import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
 import android.content.res.Resources;
-import android.content.res.Resources.Theme;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Rect;
 import android.graphics.drawable.NinePatchDrawable;
 import android.net.Uri;
 import android.os.AsyncTask;
-import android.os.AsyncTask.Status;
-import android.os.Bundle;
 import android.os.Process;
-import android.provider.Settings.Secure;
 import android.telephony.TelephonyManager;
 import android.text.ClipboardManager;
 import android.text.TextUtils;
 import android.util.Base64;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
-import android.view.Display;
 import android.view.View;
-import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 
@@ -48,13 +37,10 @@ import com.clilystudio.app.netbook.model.User;
 import com.clilystudio.app.netbook.ui.AdWebViewActivity;
 import com.clilystudio.app.netbook.ui.SplashActivity;
 import com.clilystudio.app.netbook.ui.user.AuthLoginActivity;
-import com.clilystudio.app.netbook.util.H;
-import com.clilystudio.app.netbook.util.e;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
-import java.lang.reflect.Field;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.nio.ByteBuffer;
@@ -373,7 +359,7 @@ public class am_CommonUtils {
 
     // @used
     public static void a(EditText paramEditText, String paramString) {
-        String str = MyApplication.a().a(paramString);
+        String str = MyApplication.a_getInstance().a_getProperty(paramString);
         if (!com.arcsoft.hpay100.a.a.Q(str)) {
             paramEditText.setText(str);
             paramEditText.requestFocus();
@@ -467,10 +453,10 @@ public class am_CommonUtils {
         if (paramString == null)
             return null;
         try {
-            H localH = H.a(paramContext);
+            H localH = H.a_getInstance(paramContext);
             char[] arrayOfChar = new char[paramString.length()];
             for (int i = 0; i < paramString.length(); i++)
-                arrayOfChar[i] = localH.a(paramString.charAt(i)).charValue();
+                arrayOfChar[i] = localH.a_convertChar(paramString.charAt(i)).charValue();
             String str = new String(arrayOfChar);
             return str;
         } catch (IOException localIOException) {
@@ -676,7 +662,7 @@ public class am_CommonUtils {
             localBookReadRecord.save();
             return;
         }
-        MyApplication.a().a(paramInt);
+        MyApplication.a_getInstance().a(paramInt);
     }
 
     // ERROR //
@@ -851,18 +837,18 @@ public class am_CommonUtils {
 
     // @used
     public static Account e() {
-        MyApplication localMyApplication = MyApplication.a();
-        String str1 = localMyApplication.a("user.id");
-        String str2 = localMyApplication.a("account.token");
+        MyApplication localMyApplication = MyApplication.a_getInstance();
+        String str1 = localMyApplication.a_getProperty("user.id");
+        String str2 = localMyApplication.a_getProperty("account.token");
         Account localAccount;
         if ((str1 != null) && (str2 != null)) {
             localAccount = new Account();
             User localUser = new User();
             localUser.setId(str1);
-            localUser.setNickname(localMyApplication.a("user.name"));
-            localUser.setAvatar(localMyApplication.a("user.avatar"));
-            localUser.setLv(com.arcsoft.hpay100.a.a.b(localMyApplication.a("user.lv"), 0));
-            localUser.setGender(localMyApplication.a("user.gender"));
+            localUser.setNickname(localMyApplication.a_getProperty("user.name"));
+            localUser.setAvatar(localMyApplication.a_getProperty("user.avatar"));
+            localUser.setLv(com.arcsoft.hpay100.a.a.b(localMyApplication.a_getProperty("user.lv"), 0));
+            localUser.setGender(localMyApplication.a_getProperty("user.gender"));
             localAccount.setOk(true);
             localAccount.setToken(str2);
             localAccount.setUser(localUser);
@@ -968,7 +954,7 @@ public class am_CommonUtils {
 
     // @used
     public static String h() {
-        return Settings.Secure.getString(MyApplication.a().getContentResolver(), "android_id");
+        return Settings.Secure.getString(MyApplication.a_getInstance().getContentResolver(), "android_id");
     }
 
     // @used
@@ -983,7 +969,7 @@ public class am_CommonUtils {
 
     // @used
     public static boolean h(String paramString) {
-        List localList = MyApplication.a().f();
+        List localList = MyApplication.a_getInstance().f();
         return (localList != null) && (localList.contains(paramString));
     }
 

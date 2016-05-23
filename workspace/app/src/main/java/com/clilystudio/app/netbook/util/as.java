@@ -12,7 +12,7 @@ public final class as
 {
   private static as a = new as();
   private static CommonRequest b;
-  private static XmPlayerManager c = XmPlayerManager.getInstance(MyApplication.a());
+  private static XmPlayerManager c = XmPlayerManager.getInstance(MyApplication.a_getInstance());
   private static boolean d = false;
 
   public static as a()
@@ -36,7 +36,7 @@ public final class as
     {
       CommonRequest localCommonRequest = CommonRequest.getInstanse();
       b = localCommonRequest;
-      localCommonRequest.init(MyApplication.a(), "20680e0758e832acb8eb01342338cee5");
+      localCommonRequest.init(MyApplication.a_getInstance(), "20680e0758e832acb8eb01342338cee5");
     }
     return b;
   }

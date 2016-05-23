@@ -6,13 +6,11 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.PowerManager.WakeLock;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager.LayoutParams;
+
 import com.iflytek.cloud.SpeechSynthesizer;
 import com.iflytek.cloud.SynthesizerListener;
 import com.squareup.a.b;
@@ -26,7 +24,6 @@ import com.clilystudio.app.netbook.reader.AutoReaderTextView;
 import com.clilystudio.app.netbook.reader.PagerWidget;
 import com.clilystudio.app.netbook.reader.Reader;
 import com.clilystudio.app.netbook.reader.ReaderActionBar;
-import com.clilystudio.app.netbook.reader.ReaderChapter;
 import com.clilystudio.app.netbook.reader.ReaderTocDialog;
 import com.clilystudio.app.netbook.reader.ReaderTtsSetWidget;
 import com.clilystudio.app.netbook.reader.SettingWidget;
@@ -364,7 +361,7 @@ public class ReaderTxtActivity extends FragmentActivity
     this.j.setAdapter(new i(this));
     this.j.setOnPageChangeListener(new j(this));
     this.j.setOnClickListener$4b8a6d15(new k(this));
-    MyApplication.a().a(this.d);
+    MyApplication.a_getInstance().a(this.d);
     BookFile localBookFile = TxtFileObject.getProgress(this.c);
     int i4;
     int i3;
@@ -701,7 +698,7 @@ public class ReaderTxtActivity extends FragmentActivity
       u();
       if (!this.t)
         break label738;
-      Reader localReader = MyApplication.a().b();
+      Reader localReader = MyApplication.a_getInstance().b();
       if (localReader == null)
         break;
       this.d = localReader;

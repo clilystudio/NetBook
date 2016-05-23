@@ -2,13 +2,11 @@ package com.clilystudio.app.netbook.widget;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import com.clilystudio.app.netbook.am_CommonUtils;
 import android.util.AttributeSet;
-import android.util.DisplayMetrics;
 import android.widget.TabWidget;
 
 import com.arcsoft.hpay100.a.a;
@@ -33,14 +31,14 @@ public class TabWidgetV2 extends TabWidget {
         if (this.a == 0)
             throw new RuntimeException("Item count can't be zero");
         localTypedArray.recycle();
-        int i = am_CommonUtils.b((Activity) paramContext).widthPixels;
+        int i = am_CommonUtils.b_getMetrics((Activity) paramContext).widthPixels;
         int j = (int) (2.1D * i);
         this.b = (i / this.a);
         this.g = (-(j - i) / 2);
         this.h = ((i - (this.e << 1)) / this.a / this.b);
         int k = getResources().getDimensionPixelSize(2131099784);
         if (a.a(paramContext, "customer_night_theme", false)) ;
-        for (this.d = am_CommonUtils.a(2130837642, j, k, getContext()); ; this.d = am_CommonUtils.a(2130837694, j, k, getContext())) {
+        for (this.d = am_CommonUtils.a_createNinePatchBitmap(2130837642, j, k, getContext()); ; this.d = am_CommonUtils.a_createNinePatchBitmap(2130837694, j, k, getContext())) {
             this.f = getResources().getDimensionPixelSize(2131099786);
             return;
         }
@@ -83,7 +81,7 @@ public class TabWidgetV2 extends TabWidget {
 
     public void setItemCount(Context paramContext, int paramInt) {
         this.a = paramInt;
-        int i = am_CommonUtils.b((Activity) paramContext).widthPixels;
+        int i = am_CommonUtils.b_getMetrics((Activity) paramContext).widthPixels;
         this.b = (i / this.a);
         this.h = ((i - (this.e << 1)) / this.a / this.b);
     }

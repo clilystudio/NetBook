@@ -122,7 +122,7 @@ public final class T
             return;
           case 5:
           }
-          am_CommonUtils.a(paramContext, str2);
+          am_CommonUtils.a_copyTextToClipboard(paramContext, str2);
           paramPlatformActionListener.onComplete(null, 0, null);
           return;
         }

@@ -1,8 +1,6 @@
 package com.clilystudio.app.netbook.ui.post;
 
-import android.os.AsyncTask.Status;
 import com.clilystudio.app.netbook.am_CommonUtils;
-import android.view.View;
 import com.handmark.pulltorefresh.library.j;
 
 final class aF
@@ -17,7 +15,7 @@ final class aF
     if ((BookReviewListFragment.b(this.a) == null) || (BookReviewListFragment.b(this.a).getStatus() == AsyncTask.Status.FINISHED))
     {
       this.a.c.setVisibility(0);
-      if (!am_CommonUtils.a(BookReviewListFragment.j(this.a)))
+      if (!am_CommonUtils.a_isTaskStoped(BookReviewListFragment.j(this.a)))
         BookReviewListFragment.j(this.a).cancel(true);
       BookReviewListFragment.a(this.a, new aH(this.a, (byte)0));
       aH localaH = BookReviewListFragment.b(this.a);

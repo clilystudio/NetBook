@@ -2,7 +2,7 @@ package com.clilystudio.app.netbook.ui.home;
 
 import com.clilystudio.app.netbook.am_CommonUtils;
 import android.view.View;
-import android.view.View.OnClickListener;
+
 import com.umeng.a.b;
 import com.clilystudio.app.netbook.model.InsideLink;
 import com.clilystudio.app.netbook.model.ShelfMsg;
@@ -17,7 +17,7 @@ final class w
 
   public final void onClick(View paramView)
   {
-    if ((this.a.login) && (am_CommonUtils.a(this.c.getActivity()) == null))
+    if ((this.a.login) && (am_CommonUtils.a_isTaskStoped(this.c.getActivity()) == null))
       return;
     try
     {

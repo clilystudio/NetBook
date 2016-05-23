@@ -23,8 +23,8 @@ final class M extends S<Root>
   protected final void b(Root paramRoot)
   {
     this.a.b(0);
-    am_CommonUtils.b(J.a(this.a), System.currentTimeMillis());
-    Account localAccount = am_CommonUtils.e();
+    am_CommonUtils.b_loadWebGame(J.a(this.a), System.currentTimeMillis());
+    Account localAccount = am_CommonUtils.e_getAccount();
     if (localAccount != null)
     {
       AccountInfo localAccountInfo = AccountInfo.getByToken(localAccount.getToken());

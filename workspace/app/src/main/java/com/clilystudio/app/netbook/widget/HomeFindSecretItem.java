@@ -6,11 +6,9 @@ import android.content.Context;
 import android.content.Intent;
 import com.clilystudio.app.netbook.am_CommonUtils;
 import android.util.AttributeSet;
-import android.widget.ImageView;
-import android.widget.TextView;
+
 import com.umeng.a.b;
 import com.clilystudio.app.netbook.MyApplication;
-import com.clilystudio.app.netbook.ui.MaskAbleImageView;
 import com.clilystudio.app.netbook.ui.MysteryActivity;
 import com.clilystudio.app.netbook.util.t;
 import java.util.Calendar;
@@ -83,7 +81,7 @@ public class HomeFindSecretItem extends HomeFindItem
           String str3 = b.b(localContext, "mystery_enable_minute_range");
           int j = com.arcsoft.hpay100.a.a.b(str1, 0);
           int k = com.arcsoft.hpay100.a.a.b(str3, 0);
-          if ((j == am_CommonUtils.f(localContext)) || ("".equals(str2)) || ("0".equals(str2)))
+          if ((j == am_CommonUtils.f_getVersionCode(localContext)) || ("".equals(str2)) || ("0".equals(str2)))
             break label242;
           Date localDate1 = t.a(str2);
           Calendar localCalendar = Calendar.getInstance();
@@ -113,7 +111,7 @@ public class HomeFindSecretItem extends HomeFindItem
     if (bool)
     {
       this.a = ProgressDialog.show(paramContext, null, paramContext.getString(2131034218), true, true);
-      com.a.a.a.a(MyApplication.a(), "rec_F184E6D9_7F75_01C9_CCA0_2336AEB54B2B", com.arcsoft.hpay100.a.a.o(getContext()), new aa(this, paramContext));
+      com.a.a.a.a(MyApplication.a_getInstance(), "rec_F184E6D9_7F75_01C9_CCA0_2336AEB54B2B", com.arcsoft.hpay100.a.a.o(getContext()), new aa(this, paramContext));
     }
     while (bool)
     {

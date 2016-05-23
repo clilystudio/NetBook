@@ -1,7 +1,7 @@
 package com.clilystudio.app.netbook.ui.ugcbook;
 
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+
 import com.clilystudio.app.netbook.am_CommonUtils;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.clilystudio.app.netbook.model.Account;
@@ -17,7 +17,7 @@ final class g
 
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Account localAccount = am_CommonUtils.a((BaseActivity)this.b.getActivity());
+    Account localAccount = am_CommonUtils.a_getLoginAccount((BaseActivity)this.b.getActivity());
     if (localAccount != null)
     {
       FavUGCListFragment.a(this.b).setRefreshing();

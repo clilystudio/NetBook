@@ -2,11 +2,9 @@ package com.clilystudio.app.netbook.ui.post;
 
 import com.clilystudio.app.netbook.am_CommonUtils;
 import android.view.View;
-import android.view.View.OnClickListener;
+
 import com.clilystudio.app.netbook.adapter.G;
 import com.clilystudio.app.netbook.model.Account;
-import com.clilystudio.app.netbook.model.Tweet;
-import com.clilystudio.app.netbook.model.TweetResult;
 import com.clilystudio.app.netbook.util.e;
 
 final class du
@@ -21,7 +19,7 @@ final class du
     Account localAccount;
     if ((TweetDetailActivity.a(this.a)) && (TweetDetailActivity.c(this.a) != null))
     {
-      localAccount = am_CommonUtils.a(this.a);
+      localAccount = am_CommonUtils.a_isTaskStoped(this.a);
       if (G.a(localAccount, TweetDetailActivity.c(this.a).getTweet()))
       {
         dC localdC = new dC(this.a, this.a, 2131034473);

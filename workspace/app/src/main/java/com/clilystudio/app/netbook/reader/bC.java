@@ -3,11 +3,9 @@ package com.clilystudio.app.netbook.reader;
 import com.clilystudio.app.netbook.am_CommonUtils;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ListView;
+
 import com.squareup.a.b;
 import com.clilystudio.app.netbook.MyApplication;
-import com.clilystudio.app.netbook.event.i;
 import com.clilystudio.app.netbook.event.v;
 import com.clilystudio.app.netbook.model.TocSummary;
 
@@ -24,10 +22,10 @@ final class bC
     TocSummary localTocSummary = (TocSummary)ReaderMixActivity.d(this.a).getItem(i);
     if (!localTocSummary.getHost().equals(ReaderMixActivity.a(this.a)))
     {
-      MyApplication.a().c(ReaderMixActivity.b(this.a));
+      MyApplication.a_getInstance().c(ReaderMixActivity.b(this.a));
       if (!"vip.zhuishushenqi.com".equals(ReaderMixActivity.a(this.a)))
         break label123;
-      am_CommonUtils.c(ReaderMixActivity.b(this.a), 9);
+      am_CommonUtils.c_setReadMode(ReaderMixActivity.b(this.a), 9);
     }
     while (true)
     {
@@ -35,7 +33,7 @@ final class bC
       ReaderMixActivity.a(this.a, localTocSummary.get_id());
       this.a.finish();
       return;
-      label123: am_CommonUtils.c(ReaderMixActivity.b(this.a), 10);
+      label123: am_CommonUtils.c_setReadMode(ReaderMixActivity.b(this.a), 10);
     }
   }
 }

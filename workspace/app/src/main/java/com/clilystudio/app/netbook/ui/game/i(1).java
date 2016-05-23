@@ -2,9 +2,8 @@ package com.clilystudio.app.netbook.ui.game;
 
 import com.clilystudio.app.netbook.am_CommonUtils;
 import android.view.View;
-import android.view.View.OnClickListener;
+
 import com.umeng.a.b;
-import com.clilystudio.app.netbook.model.Game;
 
 final class i
   implements View.OnClickListener
@@ -19,7 +18,7 @@ final class i
       b.a(this.a, "micro_game_continue_click", GameDetailActivity.e(this.a).getName());
     while (true)
     {
-      am_CommonUtils.a(this.a, GameDetailActivity.e(this.a));
+      am_CommonUtils.a_isSameString(this.a, GameDetailActivity.e(this.a));
       return;
       b.a(this.a, "micro_game_play_click", GameDetailActivity.e(this.a).getName());
     }

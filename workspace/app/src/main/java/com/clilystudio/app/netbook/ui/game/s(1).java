@@ -3,8 +3,6 @@ package com.clilystudio.app.netbook.ui.game;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.DownloadManager;
-import android.app.DownloadManager.Query;
-import android.app.DownloadManager.Request;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
@@ -17,7 +15,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 
 public final class s
 {
@@ -137,10 +134,10 @@ public final class s
       return;
     }
     this.b.sendBroadcast(new Intent("update_game_item_status"));
-    MyApplication.a().i().add(this.c.get_id());
+    MyApplication.a_getInstance().i().add(this.c.get_id());
     long l = a(Uri.parse(str));
-    MyApplication.a().j().add(Long.valueOf(l));
-    MyApplication.a().i().add(str);
+    MyApplication.a_getInstance().j().add(Long.valueOf(l));
+    MyApplication.a_getInstance().i().add(str);
   }
 }
 

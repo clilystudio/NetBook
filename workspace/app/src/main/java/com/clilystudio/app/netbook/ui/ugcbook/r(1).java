@@ -2,7 +2,6 @@ package com.clilystudio.app.netbook.ui.ugcbook;
 
 import com.clilystudio.app.netbook.am_CommonUtils;
 import com.clilystudio.app.netbook.a.e;
-import com.clilystudio.app.netbook.api.ApiService;
 import com.clilystudio.app.netbook.api.b;
 import com.clilystudio.app.netbook.model.Account;
 import com.clilystudio.app.netbook.model.UGCBookDetailRoot;
@@ -20,7 +19,7 @@ final class r extends e<String, Void, UGCBookDetailRoot>
     {
       if (UGCDetailActivity.k(this.a))
       {
-        Account localAccount = am_CommonUtils.a(this.a);
+        Account localAccount = am_CommonUtils.a_isTaskStoped(this.a);
         if (localAccount != null)
           return b.b().C(localAccount.getToken(), paramArrayOfString[0]);
       }

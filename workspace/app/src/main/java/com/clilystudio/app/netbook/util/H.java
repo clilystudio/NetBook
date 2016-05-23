@@ -1,58 +1,59 @@
 package com.clilystudio.app.netbook.util;
 
 import android.content.Context;
-import android.content.res.AssetManager;
-import android.content.res.Resources;
+
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public final class H
-{
-  private static H a;
-  private Map<Character, Character> b;
+public final class H {
+    private static H instance;
+    private Map<Character, Character> convertMap;
 
-  private H(Context paramContext)
-  {
-    List localList = a(paramContext, "ts.tab", "UTF-8");
-    if (localList.size() % 2 != 0)
-      throw new RuntimeException("The conversion table may be damaged or not exists");
-    this.b = new HashMap();
-    for (int i = 0; i < localList.size(); i += 2)
-      this.b.put(localList.get(i + 1), localList.get(i));
-  }
-
-  public static H a(Context paramContext)
-  {
-    if (a == null)
-      a = new H(paramContext);
-    return a;
-  }
-
-  private static List<Character> a(Context paramContext, String paramString1, String paramString2)
-  {
-    ArrayList localArrayList = new ArrayList();
-    BufferedReader localBufferedReader = new BufferedReader(new InputStreamReader(paramContext.getResources().getAssets().open(paramString1), paramString2));
-    while (true)
-    {
-      int i = localBufferedReader.read();
-      if (i == -1)
-        break;
-      localArrayList.add(Character.valueOf((char)i));
+    private H(Context paramContext) {
+        List<Character> localList = a_loadConvertList(paramContext, "ts.tab", "UTF-8");
+        if (localList.size() % 2 != 0)
+            throw new RuntimeException("The conversion table may be damaged or not exists");
+        this.convertMap = new HashMap<Character, Character>();
+        for (int i = 0; i < localList.size(); i += 2)
+            this.convertMap.put(localList.get(i + 1), localList.get(i));
     }
-    localBufferedReader.close();
-    return localArrayList;
-  }
 
-  public final Character a(char paramChar)
-  {
-    if (this.b.get(Character.valueOf(paramChar)) == null)
-      return Character.valueOf(paramChar);
-    return (Character)this.b.get(Character.valueOf(paramChar));
-  }
+    public static H a_getInstance(Context context) {
+        if (instance == null) {
+            instance = new H(context);
+        }
+        return instance;
+    }
+
+    private static List<Character> a_loadConvertList(Context context, String fileName, String charsetName) {
+        ArrayList<Character> localArrayList = new ArrayList<Character>();
+        try {
+            BufferedReader reader = new BufferedReader(new InputStreamReader(context.getResources().getAssets().open(fileName), charsetName));
+            int i = reader.read();
+            while (i != -1) {
+                localArrayList.add((char) i);
+            }
+            reader.close();
+         } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return localArrayList;
+    }
+
+    public final Character a_convertChar(char paramChar) {
+        Character character = paramChar;
+        Character character1 = this.convertMap.get(character);
+        if (character1 == null) {
+            return character;
+        } else {
+            return character1;
+        }
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

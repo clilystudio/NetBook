@@ -11,7 +11,7 @@ final class dF
 
   public final void run()
   {
-    if (!am_CommonUtils.a(TweetHotFragment.b(this.a.a)))
+    if (!am_CommonUtils.a_isTaskStoped(TweetHotFragment.b(this.a.a)))
       TweetHotFragment.b(this.a.a).cancel(true);
     TweetHotFragment.c(this.a.a);
   }

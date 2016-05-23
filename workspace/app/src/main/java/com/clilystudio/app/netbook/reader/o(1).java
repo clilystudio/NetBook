@@ -2,28 +2,21 @@ package com.clilystudio.app.netbook.reader;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
-import android.content.res.Resources;
-import com.clilystudio.app.netbook.am_CommonUtils;
-import android.text.Layout;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup.LayoutParams;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.arcsoft.hpay100.a.a;
-import com.clilystudio.app.netbook.util.am_CommonUtils;
 import com.squareup.a.l;
 import com.clilystudio.app.netbook.MyApplication;
-import com.clilystudio.app.netbook.event.i;
 import com.clilystudio.app.netbook.model.Account;
 import com.clilystudio.app.netbook.model.Advert;
 import com.clilystudio.app.netbook.model.ChapterLink;
 import com.clilystudio.app.netbook.ui.SmartImageView;
-import com.clilystudio.app.netbook.util.e;
+
 import java.text.SimpleDateFormat;
-import java.util.Map;
+
 import me.biubiubiu.justifytext.library.JustifyTextView;
 
 public final class o
@@ -126,7 +119,7 @@ public final class o
         localView3.setVisibility(0);
         localView4.setVisibility(8);
         TextView localTextView = (TextView)this.f.findViewById(2131493925);
-        ChapterLink[] arrayOfChapterLink = MyApplication.a().b().d();
+        ChapterLink[] arrayOfChapterLink = MyApplication.a_getInstance().b().d();
         int i1;
         CheckBox localCheckBox;
         if ((arrayOfChapterLink == null) || (arrayOfChapterLink.length == 0))
@@ -200,7 +193,7 @@ public final class o
   {
     if ((paramn != null) && (paramn.o() == -1))
     {
-      Reader localReader = MyApplication.a().b();
+      Reader localReader = MyApplication.a_getInstance().b();
       if (localReader != null)
       {
         String str = localReader.i();
@@ -307,7 +300,7 @@ public final class o
   private static boolean o()
   {
     if (am_CommonUtils.e() == null);
-    while (!a.a(MyApplication.a(), "auto_buy_chapter" + com.clilystudio.app.netbook.util.I.a, false))
+    while (!a.a(MyApplication.a_getInstance(), "auto_buy_chapter" + com.clilystudio.app.netbook.util.I.a, false))
       return false;
     return true;
   }
@@ -322,7 +315,7 @@ public final class o
 
   private boolean q()
   {
-    if (MyApplication.a().d() == 9);
+    if (MyApplication.a_getInstance().d() == 9);
     for (int i1 = 1; (i1 == 0) && (this.d != null) && (this.d.l() % 5 == 4) && (this.d.h()); i1 = 0)
       return true;
     return false;
@@ -436,7 +429,7 @@ public final class o
     if (paramn.j() == 0)
     {
       int i1 = paramn.l();
-      Reader localReader = MyApplication.a().b();
+      Reader localReader = MyApplication.a_getInstance().b();
       if (o())
         localReader.a(i1 + 1, new p(this), true, false);
     }
@@ -507,7 +500,7 @@ public final class o
     {
       if (this.d == null)
         return false;
-      ChapterLink[] arrayOfChapterLink = MyApplication.a().b().d();
+      ChapterLink[] arrayOfChapterLink = MyApplication.a_getInstance().b().d();
       if ((arrayOfChapterLink != null) && (arrayOfChapterLink.length != 0))
       {
         int i1 = this.d.l();

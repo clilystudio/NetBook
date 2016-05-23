@@ -2,7 +2,6 @@ package com.clilystudio.app.netbook.util;
 
 import android.app.Activity;
 import com.clilystudio.app.netbook.MyApplication;
-import com.clilystudio.app.netbook.db.BookReadRecord;
 import com.clilystudio.app.netbook.model.TocSource;
 import com.clilystudio.app.netbook.model.TocSourceRoot;
 
@@ -61,7 +60,7 @@ final class n extends com.clilystudio.app.netbook.a.a
     {
       m.a(this.a, j);
       return;
-      MyApplication.a().a(j);
+      MyApplication.a_getInstance().a(j);
     }
   }
 }

@@ -2,7 +2,6 @@ package com.clilystudio.app.netbook.ui.post;
 
 import com.clilystudio.app.netbook.am_CommonUtils;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.TextView;
 import com.clilystudio.app.netbook.model.Account;
 
@@ -15,7 +14,7 @@ final class d
 
   public final void onClick(View paramView)
   {
-    Account localAccount = am_CommonUtils.a(this.b);
+    Account localAccount = am_CommonUtils.a_isTaskStoped(this.b);
     if ((localAccount != null) && (AbsPostActivity.b(this.b)))
     {
       this.b.e = null;

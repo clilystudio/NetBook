@@ -1,9 +1,7 @@
 package com.clilystudio.app.netbook.ui.ugcbook;
 
 import com.clilystudio.app.netbook.am_CommonUtils;
-import android.widget.TextView;
 import com.clilystudio.app.netbook.a.c;
-import com.clilystudio.app.netbook.api.ApiService;
 import com.clilystudio.app.netbook.api.b;
 import com.clilystudio.app.netbook.model.Account;
 import com.clilystudio.app.netbook.model.ResultStatus;
@@ -24,7 +22,7 @@ final class G extends c<Void, ResultStatus>
   {
     try
     {
-      Account localAccount = am_CommonUtils.a(this.a);
+      Account localAccount = am_CommonUtils.a_isTaskStoped(this.a);
       if (localAccount != null)
       {
         if ((UGCGuideAddCollectionActivity.e(this.a) != null) && (!UGCGuideAddCollectionActivity.e(this.a).equals("")))

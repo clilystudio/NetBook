@@ -15,7 +15,7 @@ final class e extends com.clilystudio.app.netbook.a.e<String, Void, UGCBookListR
   {
     try
     {
-      Account localAccount = am_CommonUtils.a((BaseActivity)this.a.getActivity());
+      Account localAccount = am_CommonUtils.a_getLoginAccount((BaseActivity)this.a.getActivity());
       if (localAccount != null)
       {
         UGCBookListRoot localUGCBookListRoot = this.a.a(localAccount, 0);

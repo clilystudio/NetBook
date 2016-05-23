@@ -22,7 +22,7 @@ final class L extends S<Root>
   {
     this.a.a(0);
     i.a().c(new w());
-    am_CommonUtils.j(J.a(this.a));
+    am_CommonUtils.j_setNotifyTime(J.a(this.a));
   }
 }
 

@@ -2,12 +2,10 @@ package com.clilystudio.app.netbook.ui;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.os.Bundle;
 import com.clilystudio.app.netbook.am_CommonUtils;
-import android.view.MenuInflater;
+
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -15,7 +13,6 @@ import com.koushikdutta.async.http.a;
 import com.squareup.a.b;
 import com.clilystudio.app.netbook.d;
 import com.clilystudio.app.netbook.db.AudioRecord;
-import com.clilystudio.app.netbook.event.i;
 import com.clilystudio.app.netbook.event.p;
 import com.clilystudio.app.netbook.model.AlbumSerialized;
 import com.clilystudio.app.netbook.util.as;
@@ -25,8 +22,6 @@ import com.ximalaya.ting.android.opensdk.datatrasfer.CommonRequest;
 import com.ximalaya.ting.android.opensdk.httputil.XimalayaException;
 import com.ximalaya.ting.android.opensdk.player.service.IXmPlayerStatusListener;
 import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 public class AudiobookInfoActivity extends BaseActivity
   implements View.OnClickListener, ad
@@ -91,7 +86,7 @@ public class AudiobookInfoActivity extends BaseActivity
       this.g.setImageResource(2130837919);
       return;
     }
-    this.i.setBackgroundResource(am_CommonUtils.b(this, 2130771971));
+    this.i.setBackgroundResource(am_CommonUtils.b_getBackgroundResourceId(this, 2130771971));
     this.f.setText(getResources().getString(2131034313));
     this.f.setTextColor(-1);
     this.g.setImageResource(2130837588);
@@ -150,7 +145,7 @@ public class AudiobookInfoActivity extends BaseActivity
     {
       localImageView.setImageResource(i6);
       return;
-      i5 = am_CommonUtils.b(this, 2130771971);
+      i5 = am_CommonUtils.b_getBackgroundResourceId(this, 2130771971);
       break;
       str = getString(2131034328);
       break label110;

@@ -11,7 +11,6 @@ import com.clilystudio.app.netbook.db.SourceRecord;
 import com.clilystudio.app.netbook.event.i;
 import com.clilystudio.app.netbook.model.Account;
 import com.clilystudio.app.netbook.model.BookInfo;
-import com.clilystudio.app.netbook.model.User;
 import com.clilystudio.app.netbook.reader.ReaderActivity;
 import com.clilystudio.app.netbook.reader.ReaderResActivity;
 import com.clilystudio.app.netbook.reader.ReaderWebActivity;
@@ -35,7 +34,7 @@ public final class m
 
   private void a(int paramInt)
   {
-    MyApplication.a().a(paramInt);
+    MyApplication.a_getInstance().a(paramInt);
     if (paramInt == 5)
     {
       a(ReaderActivity.a(this.a, this.b, this.c, "MIX_TOC_ID", null, false));
@@ -58,7 +57,7 @@ public final class m
     {
       if (this.d != null)
         this.f = this.d.getTocId();
-      if (am_CommonUtils.e() != null)
+      if (am_CommonUtils.e_getAccount() != null)
       {
         HashMap localHashMap = a.M(this.b);
         if (localHashMap == null)
@@ -145,7 +144,7 @@ public final class m
         k = 0;
         if (m != 0)
           break;
-        Account localAccount = am_CommonUtils.e();
+        Account localAccount = am_CommonUtils.e_getAccount();
         if (localAccount != null)
         {
           int n = localAccount.getUser().getLv();

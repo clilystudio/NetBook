@@ -1,8 +1,6 @@
 package com.clilystudio.app.netbook.ui.post;
 
-import android.os.AsyncTask.Status;
 import com.clilystudio.app.netbook.am_CommonUtils;
-import android.view.View;
 import com.handmark.pulltorefresh.library.j;
 
 final class aX
@@ -17,7 +15,7 @@ final class aX
     if ((CommonPostListActivity.c(this.a) == null) || (CommonPostListActivity.c(this.a).getStatus() == AsyncTask.Status.FINISHED))
     {
       CommonPostListActivity.q(this.a).setVisibility(0);
-      if (!am_CommonUtils.a(CommonPostListActivity.f(this.a)))
+      if (!am_CommonUtils.a_isTaskStoped(CommonPostListActivity.f(this.a)))
         CommonPostListActivity.f(this.a).cancel(true);
       CommonPostListActivity.a(this.a, new bh(this.a, (byte)0));
       bh localbh = CommonPostListActivity.c(this.a);

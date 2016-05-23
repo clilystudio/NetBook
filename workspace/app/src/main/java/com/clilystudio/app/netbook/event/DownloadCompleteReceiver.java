@@ -1,7 +1,6 @@
 package com.clilystudio.app.netbook.event;
 
 import android.app.DownloadManager;
-import android.app.DownloadManager.Query;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -10,7 +9,6 @@ import android.net.Uri;
 import com.arcsoft.hpay100.a.a;
 import com.clilystudio.app.netbook.MyApplication;
 import java.io.File;
-import java.util.List;
 
 public class DownloadCompleteReceiver extends BroadcastReceiver
 {
@@ -29,7 +27,7 @@ public class DownloadCompleteReceiver extends BroadcastReceiver
         {
           String str1 = localCursor.getString(localCursor.getColumnIndex("uri"));
           String str2 = localCursor.getString(localCursor.getColumnIndex("local_uri"));
-          MyApplication localMyApplication = MyApplication.a();
+          MyApplication localMyApplication = MyApplication.a_getInstance();
           if ((localMyApplication.h().contains(str1)) || (localMyApplication.i().contains(str1)) || (localMyApplication.j().contains(Long.valueOf(l))) || (a.B(str1)))
           {
             a.a(paramContext, new File(Uri.parse(str2).getPath()));

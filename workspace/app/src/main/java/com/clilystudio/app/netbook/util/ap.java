@@ -1,9 +1,7 @@
 package com.clilystudio.app.netbook.util;
 
 import com.clilystudio.app.netbook.am_CommonUtils;
-import com.clilystudio.app.netbook.api.ApiService;
 import com.clilystudio.app.netbook.api.b;
-import com.clilystudio.app.netbook.model.Account;
 
 final class ap extends Thread
 {
@@ -16,7 +14,7 @@ final class ap extends Thread
     try
     {
       b.a();
-      b.b().e(am_CommonUtils.e().getToken(), this.a, this.b);
+      b.b().e(am_CommonUtils.e_getAccount().getToken(), this.a, this.b);
       return;
     }
     catch (Exception localException)
