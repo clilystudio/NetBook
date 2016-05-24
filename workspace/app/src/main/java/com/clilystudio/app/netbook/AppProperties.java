@@ -23,15 +23,12 @@ public final class AppProperties {
         return b;
     }
 
-    private void saveProperties(Properties paramProperties) {
-        FileOutputStream v1 = null;
+    private void saveProperties(Properties properties) {
         try {
-            v1 = new FileOutputStream(new File(this.a.getDir("config", 0), "config"));
-            paramProperties.store(v1, null);
-            v1.flush();
-            v1.close();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            FileOutputStream fos = new FileOutputStream(new File(this.a.getDir("config", 0), "config"));
+            properties.store(fos, null);
+            fos.flush();
+            fos.close();
         } catch (IOException e) {
             e.printStackTrace();
         }

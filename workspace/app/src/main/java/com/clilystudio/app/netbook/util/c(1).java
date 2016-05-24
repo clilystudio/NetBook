@@ -30,7 +30,7 @@ public final class c
 
   private static AdsConfig d()
   {
-    return (AdsConfig)MyApplication.a_getInstance().b("saved_adverts_1");
+    return (AdsConfig)MyApplication.a_getInstance().b_readSavedInfo("saved_adverts_1");
   }
 
   public final Advert a(String paramString)

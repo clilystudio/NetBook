@@ -25,7 +25,7 @@ public final class a
 
   private static AdsConfig2 d()
   {
-    return (AdsConfig2)MyApplication.a_getInstance().b("saved_adverts_reader_menu");
+    return (AdsConfig2)MyApplication.a_getInstance().b_readSavedInfo("saved_adverts_reader_menu");
   }
 
   public final boolean a(List<MenuAd> paramList)

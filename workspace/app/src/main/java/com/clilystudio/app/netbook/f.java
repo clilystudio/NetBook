@@ -21,8 +21,3 @@ final class f
     i.a().c(new H(com.arcsoft.hpay100.a.a.x(this.a)));
   }
 }
-
-/* Location:           E:\10.Progs\Dev\Compiler\zssq.jar
- * Qualified Name:     com.clilystudio.app.netbook.f
- * JD-Core Version:    0.6.2
- */

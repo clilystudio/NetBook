@@ -4,17 +4,12 @@ import android.app.ActivityManager;
 import android.app.Application;
 import android.content.Context;
 import android.os.Process;
-import android.support.multidex.MultiDexApplication;
 
 import com.activeandroid.ActiveAndroid;
-import com.arcsoft.hpay100.a.a;
 import com.clilystudio.app.netbook.model.User;
-import com.iflytek.cloud.SpeechUtility;
 import com.integralblue.httpresponsecache.HttpResponseCache;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
-import com.nostra13.universalimageloader.core.g;
-import com.nostra13.universalimageloader.core.i;
 import com.clilystudio.app.netbook.model.Account;
 import com.clilystudio.app.netbook.model.BookInfo;
 import com.clilystudio.app.netbook.model.ChapterLink;
@@ -23,7 +18,9 @@ import com.clilystudio.app.netbook.reader.Reader;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -98,166 +95,23 @@ public class MyApplication extends Application {
         return this.c;
     }
 
-    // ERROR //
-    public final java.io.Serializable b(String paramString) {
+     public final Serializable b_readSavedInfo(String name) {
+        File file = getFileStreamPath(name);
+        if (file.exists()) {
+            ObjectInputStream ois = null;
+            try {
+                ois = new ObjectInputStream(openFileInput(name));
+                Serializable object = (Serializable) ois.readObject();
+                ois.close();
+                file.delete();
+                return object;
+            } catch (IOException e1) {
+                e1.printStackTrace();
+            } catch (ClassNotFoundException e1) {
+                e1.printStackTrace();
+            }
+        }
         return null;
-        // Byte code:
-        //   0: aload_0
-        //   1: aload_1
-        //   2: invokevirtual 147	com/ushaqi/zhuishushenqi/MyApplication:getFileStreamPath	(Ljava/lang/String;)Ljava/io/File;
-        //   5: invokevirtual 151	java/io/File:exists	()Z
-        //   8: istore_2
-        //   9: iconst_0
-        //   10: istore_3
-        //   11: iload_2
-        //   12: ifeq +5 -> 17
-        //   15: iconst_1
-        //   16: istore_3
-        //   17: iload_3
-        //   18: ifne +9 -> 27
-        //   21: aconst_null
-        //   22: astore 20
-        //   24: aload 20
-        //   26: areturn
-        //   27: aload_0
-        //   28: aload_1
-        //   29: invokevirtual 155	com/ushaqi/zhuishushenqi/MyApplication:openFileInput	(Ljava/lang/String;)Ljava/io/FileInputStream;
-        //   32: astore 18
-        //   34: aload 18
-        //   36: astore 6
-        //   38: new 157	java/io/ObjectInputStream
-        //   41: dup
-        //   42: aload 6
-        //   44: invokespecial 160	java/io/ObjectInputStream:<init>	(Ljava/io/InputStream;)V
-        //   47: astore 5
-        //   49: aload 5
-        //   51: invokevirtual 164	java/io/ObjectInputStream:readObject	()Ljava/lang/Object;
-        //   54: checkcast 166	java/io/Serializable
-        //   57: astore 20
-        //   59: aload 5
-        //   61: invokevirtual 167	java/io/ObjectInputStream:close	()V
-        //   64: aload 6
-        //   66: ifnull -42 -> 24
-        //   69: aload 6
-        //   71: invokevirtual 170	java/io/FileInputStream:close	()V
-        //   74: aload 20
-        //   76: areturn
-        //   77: astore 22
-        //   79: aload 20
-        //   81: areturn
-        //   82: astore 13
-        //   84: aconst_null
-        //   85: astore 14
-        //   87: aconst_null
-        //   88: astore 15
-        //   90: aload 14
-        //   92: ifnull +8 -> 100
-        //   95: aload 14
-        //   97: invokevirtual 167	java/io/ObjectInputStream:close	()V
-        //   100: aload 15
-        //   102: ifnull +8 -> 110
-        //   105: aload 15
-        //   107: invokevirtual 170	java/io/FileInputStream:close	()V
-        //   110: aconst_null
-        //   111: areturn
-        //   112: astore 9
-        //   114: aconst_null
-        //   115: astore 5
-        //   117: aconst_null
-        //   118: astore 6
-        //   120: aload 9
-        //   122: invokevirtual 66	java/lang/Exception:printStackTrace	()V
-        //   125: aload 9
-        //   127: instanceof 172
-        //   130: ifeq +12 -> 142
-        //   133: aload_0
-        //   134: aload_1
-        //   135: invokevirtual 147	com/ushaqi/zhuishushenqi/MyApplication:getFileStreamPath	(Ljava/lang/String;)Ljava/io/File;
-        //   138: invokevirtual 175	java/io/File:delete	()Z
-        //   141: pop
-        //   142: aload 5
-        //   144: ifnull +8 -> 152
-        //   147: aload 5
-        //   149: invokevirtual 167	java/io/ObjectInputStream:close	()V
-        //   152: aload 6
-        //   154: ifnull -44 -> 110
-        //   157: aload 6
-        //   159: invokevirtual 170	java/io/FileInputStream:close	()V
-        //   162: goto -52 -> 110
-        //   165: astore 10
-        //   167: goto -57 -> 110
-        //   170: astore 4
-        //   172: aconst_null
-        //   173: astore 5
-        //   175: aconst_null
-        //   176: astore 6
-        //   178: aload 5
-        //   180: ifnull +8 -> 188
-        //   183: aload 5
-        //   185: invokevirtual 167	java/io/ObjectInputStream:close	()V
-        //   188: aload 6
-        //   190: ifnull +8 -> 198
-        //   193: aload 6
-        //   195: invokevirtual 170	java/io/FileInputStream:close	()V
-        //   198: aload 4
-        //   200: athrow
-        //   201: astore 21
-        //   203: goto -139 -> 64
-        //   206: astore 17
-        //   208: goto -108 -> 100
-        //   211: astore 16
-        //   213: goto -103 -> 110
-        //   216: astore 11
-        //   218: goto -66 -> 152
-        //   221: astore 8
-        //   223: goto -35 -> 188
-        //   226: astore 7
-        //   228: goto -30 -> 198
-        //   231: astore 4
-        //   233: aconst_null
-        //   234: astore 5
-        //   236: goto -58 -> 178
-        //   239: astore 4
-        //   241: goto -63 -> 178
-        //   244: astore 9
-        //   246: aconst_null
-        //   247: astore 5
-        //   249: goto -129 -> 120
-        //   252: astore 9
-        //   254: goto -134 -> 120
-        //   257: astore 23
-        //   259: aload 6
-        //   261: astore 15
-        //   263: aconst_null
-        //   264: astore 14
-        //   266: goto -176 -> 90
-        //   269: astore 19
-        //   271: aload 5
-        //   273: astore 14
-        //   275: aload 6
-        //   277: astore 15
-        //   279: goto -189 -> 90
-        //
-        // Exception table:
-        //   from	to	target	type
-        //   69	74	77	java/lang/Exception
-        //   27	34	82	java/io/FileNotFoundException
-        //   27	34	112	java/lang/Exception
-        //   157	162	165	java/lang/Exception
-        //   27	34	170	finally
-        //   59	64	201	java/lang/Exception
-        //   95	100	206	java/lang/Exception
-        //   105	110	211	java/lang/Exception
-        //   147	152	216	java/lang/Exception
-        //   183	188	221	java/lang/Exception
-        //   193	198	226	java/lang/Exception
-        //   38	49	231	finally
-        //   49	59	239	finally
-        //   120	142	239	finally
-        //   38	49	244	java/lang/Exception
-        //   49	59	252	java/lang/Exception
-        //   38	49	257	java/io/FileNotFoundException
-        //   49	59	269	java/io/FileNotFoundException
     }
 
     public final BookInfo c() {
@@ -310,7 +164,7 @@ public class MyApplication extends Application {
     public void onCreate() {
         super.onCreate();
         app = this;
-        com.clilystudio.app.netbook.api.e.a("1".equals(com.umeng.a.b.b(app, "use_http_dns")));
+//        com.clilystudio.app.netbook.api.e.a("1".equals(com.umeng.a.b.b(app, "use_http_dns")));
         ActiveAndroid.initialize(this);
         final long httpCacheSize = 10 * 1024 * 1024; // 10 MiB
         final File httpCacheDir = new File(getCacheDir(), "http2");
@@ -319,8 +173,8 @@ public class MyApplication extends Application {
         } catch (IOException e1) {
             e1.printStackTrace();
         }
-        com.umeng.a.b.c(this);
-        com.umeng.a.b.a(new f(this));
+//        com.umeng.a.b.c(this);
+//        com.umeng.a.b.a(new f(this));
         // 优易付更新？
 //        if (a.l(this, "update_notice_key")) {
 //            //初始化push推送服务
@@ -332,7 +186,7 @@ public class MyApplication extends Application {
         ImageLoaderConfiguration configuration = ImageLoaderConfiguration.createDefault(this);
         //Initialize ImageLoader with configuration.
         ImageLoader.getInstance().init(configuration);
- //        am_CommonUtils.s(this);
+        //        am_CommonUtils.s(this);
 //        SpeechUtility.createUtility(this, "appid=56655269");
 //        return;
     }
