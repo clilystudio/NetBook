@@ -969,7 +969,7 @@ public class am_CommonUtils {
 
     // @used
     public static boolean h(String paramString) {
-        List localList = MyApplication.a_getInstance().f();
+        List localList = MyApplication.a_getInstance().f_getBookIdList();
         return (localList != null) && (localList.contains(paramString));
     }
 

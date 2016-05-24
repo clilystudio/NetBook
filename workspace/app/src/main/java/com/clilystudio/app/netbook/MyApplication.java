@@ -4,12 +4,9 @@ import android.app.ActivityManager;
 import android.app.Application;
 import android.content.Context;
 import android.os.Process;
-import com.clilystudio.app.netbook.am_CommonUtils;
 import android.support.multidex.MultiDexApplication;
 
 import com.activeandroid.ActiveAndroid;
-import com.activeandroid.query.From;
-import com.activeandroid.query.Select;
 import com.arcsoft.hpay100.a.a;
 import com.clilystudio.app.netbook.model.User;
 import com.iflytek.cloud.SpeechUtility;
@@ -18,23 +15,17 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.nostra13.universalimageloader.core.g;
 import com.nostra13.universalimageloader.core.i;
-import com.clilystudio.app.netbook.db.BookReadRecord;
 import com.clilystudio.app.netbook.model.Account;
 import com.clilystudio.app.netbook.model.BookInfo;
 import com.clilystudio.app.netbook.model.ChapterLink;
 import com.clilystudio.app.netbook.model.UGCNewCollection;
 import com.clilystudio.app.netbook.reader.Reader;
-import com.clilystudio.app.netbook.util.V;
-import com.xiaomi.mipush.sdk.MiPushClient;
-import com.xiaomi.mipush.sdk.d;
 
 import java.io.File;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
@@ -46,7 +37,7 @@ public class MyApplication extends Application {
     private BookInfo d;
     private int e;
     private String f = null;
-    private List<String> g;
+    private List<String> g_mBookIdList;
     private Map<String, ChapterLink[]> h;
     private List<String> i = null;
     private List<String> j = null;
@@ -287,10 +278,11 @@ public class MyApplication extends Application {
         return this.h;
     }
 
-    public final List<String> f() {
-        if (this.g == null)
-            this.g = new ArrayList();
-        return this.g;
+    public final List<String> f_getBookIdList() {
+        if (this.g_mBookIdList == null) {
+            this.g_mBookIdList = new ArrayList<String>();
+        }
+        return this.g_mBookIdList;
     }
 
     public final String g() {

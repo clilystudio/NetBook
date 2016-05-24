@@ -34,7 +34,7 @@ public class HomeFindSecretItem extends HomeFindItem
     if (!com.arcsoft.hpay100.a.a.a(getContext(), "KEY_SECRET_UNLOCKED", false))
     {
       Context localContext = getContext();
-      String str1 = am_CommonUtils.n(localContext);
+      String str1 = am_CommonUtils.n_getPushChannel(localContext);
       String str2 = b.b(localContext, "switch_secret_to_random");
       if ((str2 == null) || (str2.length() <= 0))
         break label100;

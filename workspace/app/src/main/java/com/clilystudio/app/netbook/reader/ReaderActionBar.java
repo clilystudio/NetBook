@@ -6,7 +6,6 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 
 public class ReaderActionBar extends RelativeLayout
@@ -54,7 +53,7 @@ public class ReaderActionBar extends RelativeLayout
   {
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
     if (paramBoolean)
-      localLayoutParams.setMargins(0, am_CommonUtils.k(getContext()), 0, 0);
+      localLayoutParams.setMargins(0, am_CommonUtils.k_getStatusBarHeight(getContext()), 0, 0);
     while (true)
     {
       setLayoutParams(localLayoutParams);
@@ -120,7 +119,7 @@ public class ReaderActionBar extends RelativeLayout
   {
     super.onFinishInflate();
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
-    localLayoutParams.setMargins(0, am_CommonUtils.k(getContext()), 0, 0);
+    localLayoutParams.setMargins(0, am_CommonUtils.k_getStatusBarHeight(getContext()), 0, 0);
     setLayoutParams(localLayoutParams);
     ah localah = new ah(this);
     this.f = ((TextView)findViewById(2131493882));

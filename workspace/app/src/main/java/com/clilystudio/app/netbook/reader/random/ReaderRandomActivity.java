@@ -1,7 +1,6 @@
 package com.clilystudio.app.netbook.reader.random;
 
 import android.annotation.SuppressLint;
-import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -12,9 +11,6 @@ import com.clilystudio.app.netbook.am_CommonUtils;
 import android.support.v4.app.FragmentActivity;
 import android.view.KeyEvent;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager.LayoutParams;
-import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import com.arcsoft.hpay100.a.a;
 import com.clilystudio.app.netbook.reader.PagerWidget;
@@ -311,7 +307,7 @@ public class ReaderRandomActivity extends FragmentActivity
       localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
       if (!bool)
         break label544;
-      localLayoutParams.setMargins(0, am_CommonUtils.k(localReaderRandomActionBar.getContext()), 0, 0);
+      localLayoutParams.setMargins(0, am_CommonUtils.k_getStatusBarHeight(localReaderRandomActionBar.getContext()), 0, 0);
     }
     while (true)
     {

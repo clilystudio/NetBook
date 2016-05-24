@@ -1,15 +1,12 @@
 package com.clilystudio.app.netbook;
 
 import android.app.Activity;
-import android.app.ActivityManager;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -19,13 +16,9 @@ import android.graphics.drawable.NinePatchDrawable;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Environment;
-import android.os.Process;
-import android.support.v7.app.f;
-import android.telephony.TelephonyManager;
+import android.provider.Settings;
 import android.text.ClipboardManager;
-import android.text.TextUtils;
 import android.util.DisplayMetrics;
-import android.util.TypedValue;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
@@ -36,7 +29,6 @@ import com.clilystudio.app.netbook.model.Account;
 import com.clilystudio.app.netbook.model.Game;
 import com.clilystudio.app.netbook.model.User;
 import com.clilystudio.app.netbook.ui.AdWebViewActivity;
-import com.clilystudio.app.netbook.ui.SplashActivity;
 import com.clilystudio.app.netbook.ui.user.AuthLoginActivity;
 import com.clilystudio.app.netbook.util.H;
 import com.clilystudio.app.netbook.util.e;
@@ -44,23 +36,19 @@ import com.clilystudio.app.netbook.util.e;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.lang.reflect.Field;
 import java.net.URLDecoder;
-import java.net.URLEncoder;
-import java.util.Calendar;
-import java.util.Iterator;
 import java.util.List;
-import java.util.UUID;
-
-import org.json.JSONObject;
 
 public class am_CommonUtils {
-    private CharSequence a;
-    private int b = -1;
-    private final TabLayout c;
-
-    am_CommonUtils(TabLayout paramTabLayout) {
-        this.c = paramTabLayout;
-    }
+//    private CharSequence a;
+//    private int b = -1;
+//    private final TabLayout c;
+//
+//    am_CommonUtils(TabLayout paramTabLayout) {
+//        this.c = paramTabLayout;
+//    }
 //
 //    private static String A(Context paramContext) {
 //        String str = com.arcsoft.hpay100.a.a.a(paramContext, "vkeyid_profiles_v3", "deviceid", "");
@@ -440,7 +428,6 @@ public class am_CommonUtils {
             convertedChars[i] = localH.a_convertChar(str.charAt(i));
         }
         return new String(convertedChars);
-        ;
     }
 //
 //    public static String b(String paramString) {
@@ -588,14 +575,14 @@ public class am_CommonUtils {
             ApplicationInfo applicationInfo = context.getPackageManager().getApplicationInfo(context.getPackageName(), PackageManager.GET_META_DATA);
             if (applicationInfo.metaData != null) {
                 return (T) applicationInfo.metaData.get(key);
-                ;
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
         return null;
     }
-//
+
+    //
 //    public static String c(String paramString) {
 //        try {
 //            byte[] arrayOfByte1 = ByteBuffer.allocate(4).order(ByteOrder.LITTLE_ENDIAN).putInt(paramString.length()).array();
@@ -659,7 +646,7 @@ public class am_CommonUtils {
 
     public static void c_writeConfig(String name, String value) {
 //         if (com.arcsoft.hpay100.a.a.c(value) == 0) {
-            System.setProperty(name, value);
+        System.setProperty(name, value);
 //        }
         if (c_hasExternalStorage()) {
             StringBuilder stringBuilder = new StringBuilder(".SystemConfig");
@@ -679,64 +666,60 @@ public class am_CommonUtils {
         }
     }
 
-    public static d d() {
-        try {
-            String str = i();
-            boolean bool = a_isEmptyString(str);
-            Object localObject2 = null;
-            if (bool) ;
-            while (true) {
-                return localObject2;
-                try {
-                    JSONObject localJSONObject = new JSONObject(str);
-                    d locald = new d(localJSONObject.optString("apdid"), localJSONObject.optString("deviceInfoHash"), localJSONObject.optString("token"), localJSONObject.optString("timestamp"));
-                    localObject2 = locald;
-                } catch (Exception localException) {
-                    com.alipay.security.mobile.module.a.a.a(localException);
-                    localObject2 = null;
-                }
-            }
-        } finally {
-        }
-    }
+//    public static d d() {
+//        try {
+//            String str = i();
+//            boolean bool = a_isEmptyString(str);
+//            Object localObject2 = null;
+//            if (bool) ;
+//            while (true) {
+//                return localObject2;
+//                try {
+//                    JSONObject localJSONObject = new JSONObject(str);
+//                    d locald = new d(localJSONObject.optString("apdid"), localJSONObject.optString("deviceInfoHash"), localJSONObject.optString("token"), localJSONObject.optString("timestamp"));
+//                    localObject2 = locald;
+//                } catch (Exception localException) {
+//                    com.alipay.security.mobile.module.a.a.a(localException);
+//                    localObject2 = null;
+//                }
+//            }
+//        } finally {
+//        }
+//    }
 
-    public static String d(Context paramContext) {
-        String str = com.arcsoft.hpay100.a.a.a(paramContext, "alipay_vkey_random", "random", "");
-        if (a_isEmptyString(str)) {
-            str = com.arcsoft.hpay100.a.a.b(UUID.randomUUID().toString());
-            if (str != null) {
-                SharedPreferences.Editor localEditor = paramContext.getSharedPreferences("alipay_vkey_random", 0).edit();
-                if (localEditor != null) {
-                    localEditor.clear();
-                    localEditor.putString("random", str);
-                    localEditor.commit();
-                }
-            }
-        }
-        return str;
-    }
+//    public static String d(Context paramContext) {
+//        String str = com.arcsoft.hpay100.a.a.a(paramContext, "alipay_vkey_random", "random", "");
+//        if (a_isEmptyString(str)) {
+//            str = com.arcsoft.hpay100.a.a.b(UUID.randomUUID().toString());
+//            if (str != null) {
+//                SharedPreferences.Editor localEditor = paramContext.getSharedPreferences("alipay_vkey_random", 0).edit();
+//                if (localEditor != null) {
+//                    localEditor.clear();
+//                    localEditor.putString("random", str);
+//                    localEditor.commit();
+//                }
+//            }
+//        }
+//        return str;
+//    }
+//
+//    public static String d(String paramString) {
+//        Object localObject = "";
+//        try {
+//            String str = System.getProperty(paramString);
+//            localObject = str;
+//            label10:
+//            if (com.arcsoft.hpay100.a.a.c((String) localObject))
+//                localObject = f.b(".SystemConfig" + File.separator + paramString);
+//            return localObject;
+//        } catch (Throwable localThrowable) {
+//            break label10;
+//        }
+//    }
 
-    public static String d(String paramString) {
-        Object localObject = "";
-        try {
-            String str = System.getProperty(paramString);
-            localObject = str;
-            label10:
-            if (com.arcsoft.hpay100.a.a.c((String) localObject))
-                localObject = f.b(".SystemConfig" + File.separator + paramString);
-            return localObject;
-        } catch (Throwable localThrowable) {
-            break label10;
-        }
-    }
-
-    public static void d(Context paramContext, String paramString) {
-        Intent localIntent = paramContext.getPackageManager().getLaunchIntentForPackage(paramString);
-        try {
-            paramContext.startActivity(localIntent);
-            return;
-        } catch (ActivityNotFoundException localActivityNotFoundException) {
-        }
+    public static void d_startActivityForPackage(Context context, String packageName) {
+        Intent intent = context.getPackageManager().getLaunchIntentForPackage(packageName);
+        context.startActivity(intent);
     }
 
     public static Account e_getAccount() {
@@ -761,44 +744,44 @@ public class am_CommonUtils {
             return null;
         }
     }
-
-    public static String e(String paramString) {
-        if (paramString == null)
-            return null;
-        try {
-            String str = URLEncoder.encode(paramString, "UTF-8");
-            return str;
-        } catch (Exception localException) {
-            localException.printStackTrace();
-        }
-        return null;
-    }
-
-    public static boolean e(Context paramContext) {
-        try {
-            int i = Process.myPid();
-            Iterator localIterator = ((ActivityManager) paramContext.getSystemService("activity")).getRunningAppProcesses().iterator();
-            Object localObject2 = null;
-            while (true) {
-                boolean bool = localIterator.hasNext();
-                if (!bool) {
-                    localObject1 = localObject2;
-                    if ((!TextUtils.isEmpty(localObject1)) && (!paramContext.getPackageName().equals(localObject1)))
-                        break;
-                    return true;
-                }
-                ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo) localIterator.next();
-                if (localRunningAppProcessInfo.pid == i) {
-                    String str = localRunningAppProcessInfo.processName.trim();
-                    localObject2 = str;
-                }
-            }
-        } catch (Exception localException) {
-            while (true)
-                Object localObject1 = null;
-        }
-        return false;
-    }
+//
+//    public static String e(String paramString) {
+//        if (paramString == null)
+//            return null;
+//        try {
+//            String str = URLEncoder.encode(paramString, "UTF-8");
+//            return str;
+//        } catch (Exception localException) {
+//            localException.printStackTrace();
+//        }
+//        return null;
+//    }
+//
+//    public static boolean e(Context paramContext) {
+//        try {
+//            int i = Process.myPid();
+//            Iterator localIterator = ((ActivityManager) paramContext.getSystemService("activity")).getRunningAppProcesses().iterator();
+//            Object localObject2 = null;
+//            while (true) {
+//                boolean bool = localIterator.hasNext();
+//                if (!bool) {
+//                    localObject1 = localObject2;
+//                    if ((!TextUtils.isEmpty(localObject1)) && (!paramContext.getPackageName().equals(localObject1)))
+//                        break;
+//                    return true;
+//                }
+//                ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo) localIterator.next();
+//                if (localRunningAppProcessInfo.pid == i) {
+//                    String str = localRunningAppProcessInfo.processName.trim();
+//                    localObject2 = str;
+//                }
+//            }
+//        } catch (Exception localException) {
+//            while (true)
+//                Object localObject1 = null;
+//        }
+//        return false;
+//    }
 
     public static int f_getVersionCode(Context paramContext) {
         PackageInfo packageInfo = getPackageInfo(paramContext);
@@ -809,256 +792,248 @@ public class am_CommonUtils {
         }
     }
 
-    public static String f(String paramString) {
-        if (paramString == null)
-            return null;
-        try {
-            String str = URLDecoder.decode(paramString, "UTF-8");
-            return str;
-        } catch (Exception localException) {
-            localException.printStackTrace();
+    public static String f_decodeUrlString(String urlString) {
+        if (urlString != null) {
+            try {
+                return URLDecoder.decode(urlString, "UTF-8");
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            }
         }
         return null;
     }
 
-    public static boolean f() {
+    public static boolean f_BookReadRecordIsFull() {
         return BookReadRecord.getAll().size() >= 300;
     }
 
-    public static int g(String paramString) {
-        if (!h(paramString)) ;
-        BookDlRecord localBookDlRecord;
-        do {
-            return 0;
-            localBookDlRecord = BookDlRecord.get(paramString);
+    public static int g_getBookStatus(String bookId) {
+        if (h_hasBook(bookId)) {
+            BookDlRecord localBookDlRecord = BookDlRecord.get(bookId);
+            if (localBookDlRecord != null) {
+                return localBookDlRecord.getStatus();
+            }
         }
-        while (localBookDlRecord == null);
-        return localBookDlRecord.getStatus();
+        return BookDlRecord.IDLE;
     }
 
-    public static String g(Context paramContext) {
-        String str = "";
-        PackageInfo localPackageInfo = getPackageInfo(paramContext);
-        if (localPackageInfo != null)
-            str = localPackageInfo.versionName;
-        return str;
+    public static String g_getVersionName(Context context) {
+        PackageInfo packageInfo = getPackageInfo(context);
+        if (packageInfo != null) {
+            return packageInfo.versionName;
+        }
+        return "";
     }
 
-    public static boolean g() {
+    public static boolean g_hasLogined() {
         return e_getAccount() != null;
     }
 
-    public static String h() {
+    public static String h_getAndroidId() {
         return Settings.Secure.getString(MyApplication.a_getInstance().getContentResolver(), "android_id");
     }
+//
+//    public static String h(Context paramContext) {
+//        String str = com.arcsoft.hpay100.a.a.d(paramContext, "pref_new_imp_notif_time", null);
+//        if (str == null) {
+//            str = "0";
+//            com.arcsoft.hpay100.a.a.e(paramContext, "pref_new_imp_notif_time", str);
+//        }
+//        return str;
+//    }
 
-    public static String h(Context paramContext) {
-        String str = com.arcsoft.hpay100.a.a.d(paramContext, "pref_new_imp_notif_time", null);
-        if (str == null) {
-            str = "0";
-            com.arcsoft.hpay100.a.a.e(paramContext, "pref_new_imp_notif_time", str);
-        }
-        return str;
+    public static boolean h_hasBook(String bookId) {
+        List bookIdList = MyApplication.a_getInstance().f_getBookIdList();
+        return (bookIdList != null) && (bookIdList.contains(bookId));
     }
-
-    public static boolean h(String paramString) {
-        List localList = MyApplication.a_getInstance().f();
-        return (localList != null) && (localList.contains(paramString));
-    }
-
-    private static String i() {
-        String str1 = d("wxcasxx_v3");
-        try {
-            String str2 = new JSONObject(str1).getString("wxcasxx");
-            String str3 = com.alipay.security.mobile.module.a.a.b.b(com.alipay.security.mobile.module.a.a.b.a(), str2);
-            return str3;
-        } catch (Exception localException) {
-        }
-        return null;
-    }
-
-    public static String i(Context paramContext) {
-        String str = com.arcsoft.hpay100.a.a.d(paramContext, "pref_new_unimp_notif_time", null);
-        if (str == null) {
-            str = "0";
-            com.arcsoft.hpay100.a.a.e(paramContext, "pref_new_unimp_notif_time", str);
-        }
-        return str;
-    }
-
-    public static boolean i(String paramString) {
-        try {
-            Class.forName(paramString);
-            return true;
-        } catch (ClassNotFoundException localClassNotFoundException) {
-        }
-        return false;
-    }
+//
+//    private static String i() {
+//        String str1 = d("wxcasxx_v3");
+//        try {
+//            String str2 = new JSONObject(str1).getString("wxcasxx");
+//            String str3 = com.alipay.security.mobile.module.a.a.b.b(com.alipay.security.mobile.module.a.a.b.a(), str2);
+//            return str3;
+//        } catch (Exception localException) {
+//        }
+//        return null;
+//    }
+//
+//    public static String i(Context paramContext) {
+//        String str = com.arcsoft.hpay100.a.a.d(paramContext, "pref_new_unimp_notif_time", null);
+//        if (str == null) {
+//            str = "0";
+//            com.arcsoft.hpay100.a.a.e(paramContext, "pref_new_unimp_notif_time", str);
+//        }
+//        return str;
+//    }
+//
+//    public static boolean i(String paramString) {
+//        try {
+//            Class.forName(paramString);
+//            return true;
+//        } catch (ClassNotFoundException localClassNotFoundException) {
+//        }
+//        return false;
+//    }
 
     public static void j_setNotifyTime(Context paramContext) {
         a_setNotifyTime(paramContext, System.currentTimeMillis());
     }
 
-    public static int k(Context paramContext) {
-        if (paramContext == null)
-            return 0;
+    public static int k_getStatusBarHeight(Context context) {
         try {
-            Class localClass = Class.forName("com.android.internal.R$dimen");
-            Object localObject = localClass.newInstance();
-            int i = Integer.parseInt(localClass.getField("status_bar_height").get(localObject).toString());
-            int j = paramContext.getResources().getDimensionPixelSize(i);
-            return j;
-        } catch (Exception localException) {
-            localException.printStackTrace();
+            Class<?> clazz = Class.forName("com.android.internal.R$dimen");
+            Field field = clazz.getField("status_bar_height");
+            return context.getResources().getDimensionPixelSize(Integer.parseInt(field.get(clazz.newInstance()).toString()));
+        } catch (Exception e) {
+            e.printStackTrace();
         }
         return 0;
     }
+//
+//    public static int l(Context paramContext) {
+//        TypedValue localTypedValue = new TypedValue();
+//        Resources.Theme localTheme = paramContext.getTheme();
+//        int i = 0;
+//        if (localTheme != null) {
+//            boolean bool = paramContext.getTheme().resolveAttribute(2130772247, localTypedValue, true);
+//            i = 0;
+//            if (bool)
+//                i = TypedValue.complexToDimensionPixelSize(localTypedValue.data, paramContext.getResources().getDisplayMetrics());
+//        }
+//        return i;
+//    }
+//
+//    public static boolean m(Context paramContext) {
+//        return com.arcsoft.hpay100.a.a.a(paramContext, "save_bandwidth", false);
+//    }
 
-    public static int l(Context paramContext) {
-        TypedValue localTypedValue = new TypedValue();
-        Resources.Theme localTheme = paramContext.getTheme();
-        int i = 0;
-        if (localTheme != null) {
-            boolean bool = paramContext.getTheme().resolveAttribute(2130772247, localTypedValue, true);
-            i = 0;
-            if (bool)
-                i = TypedValue.complexToDimensionPixelSize(localTypedValue.data, paramContext.getResources().getDisplayMetrics());
+    public static String n_getPushChannel(Context paramContext) {
+        String pushChannel = (String) c_getMetaData(paramContext, "UMENG_CHANNEL");
+        if (pushChannel != null) {
+            return pushChannel;
         }
-        return i;
-    }
-
-    public static boolean m(Context paramContext) {
-        return com.arcsoft.hpay100.a.a.a(paramContext, "save_bandwidth", false);
-    }
-
-    public static String n(Context paramContext) {
-        String str = (String) c_getMetaData(paramContext, "UMENG_CHANNEL");
-        if (str != null)
-            return str;
         return "";
     }
+//
+//    public static boolean o(Context paramContext) {
+//        long l = com.arcsoft.hpay100.a.a.c(paramContext, "PREF_FIRST_LAUNCH_TIME", 0L);
+//        return Calendar.getInstance().getTimeInMillis() - l >= 259200000L;
+//    }
 
-    public static boolean o(Context paramContext) {
-        long l = com.arcsoft.hpay100.a.a.c(paramContext, "PREF_FIRST_LAUNCH_TIME", 0L);
-        return Calendar.getInstance().getTimeInMillis() - l >= 259200000L;
-    }
-
-    public static boolean p(Context paramContext) {
-        boolean bool = com.arcsoft.hpay100.a.a.a(paramContext, "is_first_launch_app", true);
-        if (bool)
-            com.arcsoft.hpay100.a.a.b(paramContext, "is_first_launch_app", false);
-        return bool;
-    }
-
-    public static boolean q(Context paramContext) {
-        return (o(paramContext)) && (r(paramContext));
-    }
-
-    public static boolean r(Context paramContext) {
-        if (com.arcsoft.hpay100.a.a.a(paramContext, "remove_ad_duration", 0L) <= 0L) {
-            String str1 = n(paramContext);
-            String str2 = com.umeng.a.b.b(paramContext, "hide_all_ads_channel");
-            int k;
-            if ((str2 != null) && (str2.length() > 0)) {
-                String[] arrayOfString = str2.split(",");
-                int j = arrayOfString.length;
-                k = 0;
-                if (k < j)
-                    if (!arrayOfString[k].equals(str1)) ;
-            }
-            for (int i = 1; ; i = 0) {
-                if (i != 0)
-                    break label92;
-                return true;
-                k++;
-                break;
-            }
-        }
-        label92:
+    public static boolean p_isFirstLaunch(Context paramContext) {
+//        boolean bool = com.arcsoft.hpay100.a.a.a(paramContext, "is_first_launch_app", true);
+//        if (bool)
+//            com.arcsoft.hpay100.a.a.b(paramContext, "is_first_launch_app", false);
+//        return bool;
         return false;
     }
 
-    public static void s(Context paramContext) {
-        String str1 = getPackageInfo(paramContext).packageName;
-        int i = Process.myPid();
-        Iterator localIterator = ((ActivityManager) paramContext.getSystemService("activity")).getRunningAppProcesses().iterator();
-        String str2;
-        while (localIterator.hasNext()) {
-            ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo) localIterator.next();
-            if (localRunningAppProcessInfo.pid == i) {
-                str2 = localRunningAppProcessInfo.processName;
-                if (str1.equals(str2))
-                    break label83;
-            }
-        }
-        label83:
-        while (com.arcsoft.hpay100.a.a.a(paramContext, "key_short_cut", false)) {
-            return;
-            str2 = null;
-            break;
-        }
-        Intent localIntent = new Intent("com.android.launcher.action.INSTALL_SHORTCUT");
-        localIntent.putExtra("duplicate", false);
-        localIntent.putExtra("android.intent.extra.shortcut.NAME", paramContext.getString(2131034211));
-        localIntent.putExtra("android.intent.extra.shortcut.ICON_RESOURCE", Intent.ShortcutIconResource.fromContext(paramContext, 2130837893));
-        localIntent.putExtra("android.intent.extra.shortcut.INTENT", new Intent(paramContext, SplashActivity.class));
-        paramContext.sendBroadcast(localIntent);
-        com.arcsoft.hpay100.a.a.b(paramContext, "key_short_cut", true);
+    public static boolean q_shouldShowAd(Context context) {
+//        return (o(context)) && (r(context));
+        return false;
     }
 
-    public static String t(Context paramContext) {
-        return ((TelephonyManager) paramContext.getSystemService("phone")).getDeviceId();
+    public static boolean r_shouldShowAdView(Context context) {
+//        if (com.arcsoft.hpay100.a.a.a(context, "remove_ad_duration", 0L) <= 0L) {
+//            String str1 = n(context);
+//            String str2 = com.umeng.a.b.b(context, "hide_all_ads_channel");
+//            int k;
+//            if ((str2 != null) && (str2.length() > 0)) {
+//                String[] arrayOfString = str2.split(",");
+//                int j = arrayOfString.length;
+//                k = 0;
+//                if (k < j)
+//                    if (!arrayOfString[k].equals(str1)) ;
+//            }
+//            for (int i = 1; ; i = 0) {
+//                if (i != 0)
+//                    break label92;
+//                return true;
+//                k++;
+//                break;
+//            }
+//        }
+//        label92:
+        return false;
     }
+//
+//    public static void s(Context paramContext) {
+//        String str1 = getPackageInfo(paramContext).packageName;
+//        int i = Process.myPid();
+//        Iterator localIterator = ((ActivityManager) paramContext.getSystemService("activity")).getRunningAppProcesses().iterator();
+//        String str2;
+//        while (localIterator.hasNext()) {
+//            ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo) localIterator.next();
+//            if (localRunningAppProcessInfo.pid == i) {
+//                str2 = localRunningAppProcessInfo.processName;
+//                if (str1.equals(str2))
+//                    break label83;
+//            }
+//        }
+//        label83:
+//        while (com.arcsoft.hpay100.a.a.a(paramContext, "key_short_cut", false)) {
+//            return;
+//            str2 = null;
+//            break;
+//        }
+//        Intent localIntent = new Intent("com.android.launcher.action.INSTALL_SHORTCUT");
+//        localIntent.putExtra("duplicate", false);
+//        localIntent.putExtra("android.intent.extra.shortcut.NAME", paramContext.getString(2131034211));
+//        localIntent.putExtra("android.intent.extra.shortcut.ICON_RESOURCE", Intent.ShortcutIconResource.fromContext(paramContext, 2130837893));
+//        localIntent.putExtra("android.intent.extra.shortcut.INTENT", new Intent(paramContext, SplashActivity.class));
+//        paramContext.sendBroadcast(localIntent);
+//        com.arcsoft.hpay100.a.a.b(paramContext, "key_short_cut", true);
+//    }
+//
+//    public static String t(Context paramContext) {
+//        return ((TelephonyManager) paramContext.getSystemService("phone")).getDeviceId();
+//    }
+//
+//    public static int u(Context paramContext) {
+//        return u.a.c.a(paramContext).a("umeng_common_progress_text");
+//    }
+//
+//    public static int v(Context paramContext) {
+//        return u.a.c.a(paramContext).a("umeng_common_icon_view");
+//    }
+//
+//    public static int w(Context paramContext) {
+//        return u.a.c.a(paramContext).a("umeng_common_progress_bar");
+//    }
+//
+//    public static int x(Context paramContext) {
+//        return u.a.c.a(paramContext).a("umeng_common_title");
+//    }
+//
+//    public static int y(Context paramContext) {
+//        return u.a.c.a(paramContext).a("umeng_common_rich_notification_continue");
+//    }
+//
+//    public static int z(Context paramContext) {
+//        return u.a.c.a(paramContext).a("umeng_common_rich_notification_cancel");
+//    }
 
-    public static int u(Context paramContext) {
-        return u.a.c.a(paramContext).a("umeng_common_progress_text");
-    }
-
-    public static int v(Context paramContext) {
-        return u.a.c.a(paramContext).a("umeng_common_icon_view");
-    }
-
-    public static int w(Context paramContext) {
-        return u.a.c.a(paramContext).a("umeng_common_progress_bar");
-    }
-
-    public static int x(Context paramContext) {
-        return u.a.c.a(paramContext).a("umeng_common_title");
-    }
-
-    public static int y(Context paramContext) {
-        return u.a.c.a(paramContext).a("umeng_common_rich_notification_continue");
-    }
-
-    public static int z(Context paramContext) {
-        return u.a.c.a(paramContext).a("umeng_common_rich_notification_cancel");
-    }
-
-    public final int a() {
-        return this.b;
-    }
-
-    public final am a(CharSequence paramCharSequence) {
-        this.a = paramCharSequence;
-        if (this.b >= 0)
-            TabLayout.a(this.c, this.b);
-        return this;
-    }
-
-    final void a(int paramInt) {
-        this.b = paramInt;
-    }
-
-    public final CharSequence b() {
-        return this.a;
-    }
-
-    public final void c() {
-        this.c.a(this);
-    }
+//    public final int a() {
+//        return this.b;
+//    }
+//
+//    public final am a(CharSequence paramCharSequence) {
+//        this.a = paramCharSequence;
+//        if (this.b >= 0)
+//            TabLayout.a(this.c, this.b);
+//        return this;
+//    }
+//
+//    final void a(int paramInt) {
+//        this.b = paramInt;
+//    }
+//
+//    public final CharSequence b() {
+//        return this.a;
+//    }
+//
+//    public final void c() {
+//        this.c.a(this);
+//    }
 }
-
-/* Location:           E:\10.Progs\Dev\Compiler\zssq.jar
- * Qualified Name:     android.support.design.widget.am
- * JD-Core Version:    0.6.2
- */

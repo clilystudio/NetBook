@@ -21,7 +21,7 @@ final class W
     e.a((Activity)this.c.getContext(), "已复制");
     if (GiftGameGiftButton.b(this.c) != null)
     {
-      am_CommonUtils.d(this.c.getContext(), GiftGameGiftButton.b(this.c).getAndroidPackageName());
+      am_CommonUtils.d_startActivityForPackage(this.c.getContext(), GiftGameGiftButton.b(this.c).getAndroidPackageName());
       return;
     }
     e.a((Activity)this.c.getContext(), "启动游戏失败");

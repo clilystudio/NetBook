@@ -85,7 +85,7 @@ public class SettingsActivity extends BaseActivity
       findViewById(2131493205).setOnClickListener(this);
       findViewById(2131493206).setOnClickListener(this);
       localTextView = (TextView)findViewById(2131493207);
-      localStringBuilder = new StringBuilder().append(am_CommonUtils.g(this)).append("(");
+      localStringBuilder = new StringBuilder().append(am_CommonUtils.g_getVersionName(this)).append("(");
       str1 = (String)am_CommonUtils.c_getMetaData(this, "COMMIT_ID");
       if ((str1 == null) || (str1.length() <= 8))
         break label390;

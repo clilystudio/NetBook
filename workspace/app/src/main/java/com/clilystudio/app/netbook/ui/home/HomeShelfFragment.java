@@ -1,20 +1,15 @@
 package com.clilystudio.app.netbook.ui.home;
 
 import android.content.Context;
-import android.content.res.Resources;
 import android.os.Bundle;
 import com.clilystudio.app.netbook.am_CommonUtils;
 import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
-import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
-import android.widget.AbsListView.OnScrollListener;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -29,7 +24,6 @@ import com.clilystudio.app.netbook.event.BookShelfRefreshEvent;
 import com.clilystudio.app.netbook.event.F;
 import com.clilystudio.app.netbook.event.g;
 import com.clilystudio.app.netbook.event.h;
-import com.clilystudio.app.netbook.event.i;
 import com.clilystudio.app.netbook.event.m;
 import com.clilystudio.app.netbook.event.r;
 import com.clilystudio.app.netbook.event.s;
@@ -40,22 +34,19 @@ import com.clilystudio.app.netbook.model.ShelfMsg;
 import com.clilystudio.app.netbook.model.TxtFileObject;
 import com.clilystudio.app.netbook.util.UmengGameTracer;
 import com.clilystudio.app.netbook.util.UmengGameTracer.From;
-import com.clilystudio.app.netbook.util.adutil.k;
 import com.clilystudio.app.netbook.util.as;
-import com.clilystudio.app.netbook.util.e;
 import com.clilystudio.app.netbook.widget.CoverLoadingView;
 import com.ximalaya.ting.android.opensdk.datatrasfer.CommonRequest;
 import com.ximalaya.ting.android.opensdk.model.album.Album;
 import com.ximalaya.ting.android.opensdk.model.album.SubordinatedAlbum;
 import com.ximalaya.ting.android.opensdk.model.track.Track;
 import com.ximalaya.ting.android.opensdk.player.service.IXmPlayerStatusListener;
-import java.io.PrintStream;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 
 public class HomeShelfFragment extends HomeFragment
   implements AbsListView.OnScrollListener
@@ -184,7 +175,7 @@ public class HomeShelfFragment extends HomeFragment
 
   private void a(List<BookShelf> paramList)
   {
-    if ((!paramList.isEmpty()) && (am_CommonUtils.q(getActivity())))
+    if ((!paramList.isEmpty()) && (am_CommonUtils.q_shouldShowAd(getActivity())))
     {
       c(paramList, 0);
       if (com.arcsoft.hpay100.a.a.F(getActivity()))
@@ -503,9 +494,9 @@ public class HomeShelfFragment extends HomeFragment
           localList1 = null;
         }
       }
-      if (am_CommonUtils.p(getActivity()))
+      if (am_CommonUtils.p_isFirstLaunch(getActivity()))
       {
-        if ((!am_CommonUtils.g()) && (!this.A))
+        if ((!am_CommonUtils.g_hasLogined()) && (!this.A))
         {
           com.arcsoft.hpay100.a.a.a(getActivity());
           return;
@@ -857,7 +848,7 @@ public class HomeShelfFragment extends HomeFragment
   {
     if (this.r != null)
       this.l.setVisibility(0);
-    if ((am_CommonUtils.r(getActivity())) || ((this.g != null) && (this.i != null) && (this.i.postLink != null) && ((!this.i.postLink.startsWith("link")) || (this.i.postLink.startsWith("game")))))
+    if ((am_CommonUtils.r_shouldShowAdView(getActivity())) || ((this.g != null) && (this.i != null) && (this.i.postLink != null) && ((!this.i.postLink.startsWith("link")) || (this.i.postLink.startsWith("game")))))
     {
       this.e.removeHeaderView(this.g);
       this.e.addHeaderView(this.g);
@@ -943,7 +934,7 @@ public class HomeShelfFragment extends HomeFragment
     com.arcsoft.hpay100.a.a.a(getActivity(), this.e);
     this.g = LayoutInflater.from(getActivity()).inflate(2130903168, this.e, false);
     this.g.setVisibility(8);
-    if (am_CommonUtils.r(getActivity()))
+    if (am_CommonUtils.r_shouldShowAdView(getActivity()))
       this.e.addHeaderView(this.g);
     this.j = new HomeShelfAdapter(getActivity());
     this.e.setAdapter(this.j);
@@ -1045,7 +1036,7 @@ public class HomeShelfFragment extends HomeFragment
   public void onHideAdEvent(s params)
   {
     k();
-    if ((!am_CommonUtils.r(getActivity())) && (this.g != null) && (this.i != null) && (this.i.postLink != null) && ((this.i.postLink.startsWith("link")) || (this.i.postLink.startsWith("game"))))
+    if ((!am_CommonUtils.r_shouldShowAdView(getActivity())) && (this.g != null) && (this.i != null) && (this.i.postLink != null) && ((this.i.postLink.startsWith("link")) || (this.i.postLink.startsWith("game"))))
       this.e.removeHeaderView(this.g);
   }
 
@@ -1111,7 +1102,7 @@ public class HomeShelfFragment extends HomeFragment
   @com.squareup.a.l
   public void onShelfUpdated(com.clilystudio.app.netbook.event.A paramA)
   {
-    if ((paramA.a() == 0) && (this.z) && (am_CommonUtils.p(getActivity())))
+    if ((paramA.a() == 0) && (this.z) && (am_CommonUtils.p_isFirstLaunch(getActivity())))
     {
       if (!this.A)
         com.arcsoft.hpay100.a.a.a(getActivity());
@@ -1137,7 +1128,7 @@ public class HomeShelfFragment extends HomeFragment
           break label17;
           do
             return;
-          while ((paramB == null) || (!am_CommonUtils.q(getActivity())) || ((!paramB.b().equals("top")) && (!paramB.b().equals("bookshelf"))));
+          while ((paramB == null) || (!am_CommonUtils.q_shouldShowAd(getActivity())) || ((!paramB.b().equals("top")) && (!paramB.b().equals("bookshelf"))));
           localList = this.j.f();
         }
         while ((localList == null) || (localList.isEmpty()));

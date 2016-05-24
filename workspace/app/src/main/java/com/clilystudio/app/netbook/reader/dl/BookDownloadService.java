@@ -207,7 +207,7 @@ public class BookDownloadService extends Service
   private void f()
   {
     MyApplication.a_getInstance().e().remove(this.a);
-    MyApplication.a_getInstance().f().remove(this.a);
+    MyApplication.a_getInstance().f_getBookIdList().remove(this.a);
     BookDlRecord.delete(this.a);
   }
 

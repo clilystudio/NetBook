@@ -262,7 +262,7 @@ public final class bZ
       this.e = i3;
       return;
     }
-    this.e = (i3 - am_CommonUtils.k(this.m));
+    this.e = (i3 - am_CommonUtils.k_getStatusBarHeight(this.m));
   }
 
   public final void b()

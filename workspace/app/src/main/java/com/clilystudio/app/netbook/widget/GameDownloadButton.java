@@ -107,7 +107,7 @@ public class GameDownloadButton extends Button
 
   protected final void g()
   {
-    am_CommonUtils.d(getContext(), this.a.getAndroidPackageName());
+    am_CommonUtils.d_startActivityForPackage(getContext(), this.a.getAndroidPackageName());
   }
 
   public final Game h()

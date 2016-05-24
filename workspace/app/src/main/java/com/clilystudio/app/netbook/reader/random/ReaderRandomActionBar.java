@@ -5,7 +5,6 @@ import com.clilystudio.app.netbook.am_CommonUtils;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import com.umeng.update.a;
 
@@ -33,7 +32,7 @@ public class ReaderRandomActionBar extends RelativeLayout
   {
     super.onFinishInflate();
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
-    localLayoutParams.setMargins(0, am_CommonUtils.k(getContext()), 0, 0);
+    localLayoutParams.setMargins(0, am_CommonUtils.k_getStatusBarHeight(getContext()), 0, 0);
     setLayoutParams(localLayoutParams);
     View localView = findViewById(2131493934);
     this.a = ((TextView)findViewById(2131493935));

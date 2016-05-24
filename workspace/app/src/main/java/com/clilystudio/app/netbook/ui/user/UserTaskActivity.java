@@ -63,7 +63,7 @@ public class UserTaskActivity extends BaseActivity
         this.mExpShareTopic.setTextColor(getResources().getColor(2131427480));
       if ((localUserTodayTask != null) && (localUserTodayTask.isShare_book()))
         this.mExpShareBook.setTextColor(getResources().getColor(2131427480));
-      if (!"xiaomi".equals(am_CommonUtils.n(this).toLowerCase()))
+      if (!"xiaomi".equals(am_CommonUtils.n_getPushChannel(this).toLowerCase()))
         break label168;
       this.mVoteView.setVisibility(8);
     }

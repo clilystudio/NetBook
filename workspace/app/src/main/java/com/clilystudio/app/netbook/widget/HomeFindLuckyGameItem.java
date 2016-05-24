@@ -33,7 +33,7 @@ public class HomeFindLuckyGameItem extends HomeFindItem
   {
     int i = 1;
     Context localContext1 = getContext();
-    String str1 = am_CommonUtils.n(localContext1);
+    String str1 = am_CommonUtils.n_getPushChannel(localContext1);
     String str2 = b.b(localContext1, "home_lucky_game_channel");
     int n;
     if ((str2 != null) && (str2.length() > 0))
@@ -55,7 +55,7 @@ public class HomeFindLuckyGameItem extends HomeFindItem
     }
     label94: Context localContext2 = getContext();
     int k = a.b(b.b(localContext2, "home_lucky_game_toggle"), 0);
-    if (am_CommonUtils.f(localContext2) < k);
+    if (am_CommonUtils.f_decodeUrlString(localContext2) < k);
     while (i != 0)
     {
       b();

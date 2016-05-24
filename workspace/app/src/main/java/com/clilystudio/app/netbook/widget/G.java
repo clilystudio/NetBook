@@ -26,7 +26,7 @@ final class G
       b.a(this.c.getContext(), "micro_game_play_click", GameGiftItemView.c(this.c).game.getName());
       return;
     }
-    am_CommonUtils.d(this.c.getContext(), GameGiftItemView.c(this.c).game.getAndroidPackageName());
+    am_CommonUtils.d_startActivityForPackage(this.c.getContext(), GameGiftItemView.c(this.c).game.getAndroidPackageName());
   }
 }
 
