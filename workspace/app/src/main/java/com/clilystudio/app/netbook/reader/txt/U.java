@@ -103,7 +103,7 @@ public final class U
   {
     try
     {
-      ObjectOutputStream localObjectOutputStream = new ObjectOutputStream(new FileOutputStream(new File(a.J(c_StoragePathConst.d), b(paramString))));
+      ObjectOutputStream localObjectOutputStream = new ObjectOutputStream(new FileOutputStream(new File(a.J(c_StoragePathConst.d_TxtToc), b(paramString))));
       localObjectOutputStream.writeObject(new LocalTxtToc(new File(paramString).length(), paramList));
       localObjectOutputStream.flush();
       localObjectOutputStream.close();
@@ -169,7 +169,7 @@ public final class U
   {
     try
     {
-      File localFile = new File(a.J(c_StoragePathConst.d), b(paramString));
+      File localFile = new File(a.J(c_StoragePathConst.d_TxtToc), b(paramString));
       if (!localFile.exists())
         return null;
       ObjectInputStream localObjectInputStream = new ObjectInputStream(new FileInputStream(localFile));

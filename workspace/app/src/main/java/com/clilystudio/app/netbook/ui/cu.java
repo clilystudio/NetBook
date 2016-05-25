@@ -21,7 +21,7 @@ final class cu
     byte[] arrayOfByte = new byte[paramv.c()];
     paramv.a(arrayOfByte);
     String str = this.a.b.b[0];
-    File localFile = new File(a.J(c_StoragePathConst.g), str);
+    File localFile = new File(a.J(c_StoragePathConst.g_Wifi), str);
     if (this.a.a[0] == null)
     {
       WifiActivity.a(this.a.b.c, localFile);

@@ -329,7 +329,7 @@ public class am_CommonUtils {
 
     // @used
     public static void a(Context paramContext, Game paramGame) {
-        List localList = (List) com.arcsoft.hpay100.a.a.k(c_StoragePathConst.h, "played_game.txt");
+        List localList = (List) com.arcsoft.hpay100.a.a.k(c_StoragePathConst.h_MicroGame, "played_game.txt");
         if (localList == null) ;
         for (Object localObject = new ArrayList(); ; localObject = localList) {
             Iterator localIterator = ((List) localObject).iterator();
@@ -344,7 +344,7 @@ public class am_CommonUtils {
                 if (localGame != null)
                     ((List) localObject).remove(localGame);
                 ((List) localObject).add(0, paramGame);
-                com.arcsoft.hpay100.a.a.a(localObject, c_StoragePathConst.h, "played_game.txt");
+                com.arcsoft.hpay100.a.a.a(localObject, c_StoragePathConst.h_MicroGame, "played_game.txt");
                 b(paramContext, paramGame);
                 return;
                 localGame = null;

@@ -16,7 +16,7 @@ final class u extends Thread
     try
     {
       String str = U.b(this.a);
-      a.F(c_StoragePathConst.d + str);
+      a.F(c_StoragePathConst.d_TxtToc + str);
       return;
     }
     catch (FileNotFoundException localFileNotFoundException)
