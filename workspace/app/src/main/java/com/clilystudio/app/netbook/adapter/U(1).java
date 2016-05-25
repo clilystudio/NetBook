@@ -1,8 +1,7 @@
 package com.clilystudio.app.netbook.adapter;
 
-import com.clilystudio.app.netbook.a.e;
+import com.clilystudio.app.netbook.a_packA.e;
 import com.clilystudio.app.netbook.model.PostPublish;
-import com.clilystudio.app.netbook.model.ResultStatus;
 import com.clilystudio.app.netbook.model.Tweet;
 import com.clilystudio.app.netbook.util.am_CommonUtils;
 

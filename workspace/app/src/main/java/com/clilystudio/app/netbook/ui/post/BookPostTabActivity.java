@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+
+import com.clilystudio.app.netbook.a_ActivityStack;
 import com.squareup.a.b;
 import com.clilystudio.app.netbook.d;
 import com.clilystudio.app.netbook.event.f;
@@ -113,8 +115,8 @@ public class BookPostTabActivity extends SimpleTabActivity
     a(str, 2130837872, new aw(this), "排序");
     if (getIntent().getBooleanExtra("FROM_READER", false))
     {
-      com.clilystudio.app.netbook.a.a();
-      com.clilystudio.app.netbook.a.b();
+      a_ActivityStack.a_getInstance();
+      a_ActivityStack.b_clearAll();
     }
     com.arcsoft.hpay100.a.a.u(this);
   }

@@ -1,13 +1,14 @@
 package com.clilystudio.app.netbook.ui.post;
 
-import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.view.View;
 import android.widget.EditText;
+
+import com.clilystudio.app.netbook.a_ActivityStack;
 import com.clilystudio.app.netbook.ui.BaseActivity;
-import com.clilystudio.app.netbook.util.e;
+
 import uk.me.lewisdeane.ldialogs.h;
 
 public class AddVoteActivity extends BaseActivity
@@ -91,8 +92,8 @@ public class AddVoteActivity extends BaseActivity
   {
     super.onCreate(paramBundle);
     setContentView(2130903078);
-    com.clilystudio.app.netbook.a.a();
-    com.clilystudio.app.netbook.a.a(this);
+    a_ActivityStack.a_getInstance();
+    a_ActivityStack.a_addActivity(this);
     this.a = ((EditText)findViewById(2131493072));
     this.b = ((EditText)findViewById(2131493074));
     this.c = findViewById(2131493073);

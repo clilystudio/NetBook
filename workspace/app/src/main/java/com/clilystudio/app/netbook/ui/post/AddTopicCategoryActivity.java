@@ -1,9 +1,8 @@
 package com.clilystudio.app.netbook.ui.post;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import com.clilystudio.app.netbook.a;
+
 import com.clilystudio.app.netbook.ui.BaseActivity;
 
 public class AddTopicCategoryActivity extends BaseActivity

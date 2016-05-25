@@ -4,10 +4,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
+
+import com.clilystudio.app.netbook.a_ActivityStack;
 import com.squareup.a.b;
 import com.squareup.a.l;
 import com.clilystudio.app.netbook.d;
@@ -48,8 +49,8 @@ public class ReaderResActivity extends ReaderModeActivity
     for (Object localObject = ReaderResourceFragment.a(this.b, this.c); ; localObject = a(this.c))
     {
       localFragmentTransaction.replace(2131493174, (Fragment)localObject).commit();
-      com.clilystudio.app.netbook.a.a();
-      com.clilystudio.app.netbook.a.a(this);
+      a_ActivityStack.a_getInstance();
+      a_ActivityStack.a_addActivity(this);
       bT localbT = new bT(this, (byte)0);
       String[] arrayOfString = new String[1];
       arrayOfString[0] = this.b;

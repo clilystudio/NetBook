@@ -1,11 +1,5 @@
 package com.clilystudio.app.netbook.ui.post;
 
-import com.clilystudio.app.netbook.a.e;
-import com.clilystudio.app.netbook.api.ApiService;
-import com.clilystudio.app.netbook.api.b;
-import com.clilystudio.app.netbook.model.ReviewList;
-import java.util.List;
-
 final class do extends e<String, Void, ReviewList>
 {
   private do(ReviewListActivity paramReviewListActivity)

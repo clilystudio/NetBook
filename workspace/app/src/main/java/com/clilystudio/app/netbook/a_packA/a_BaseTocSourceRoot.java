@@ -1,13 +1,13 @@
-package com.clilystudio.app.netbook.a;
+package com.clilystudio.app.netbook.a_packA;
 
 import android.app.Activity;
-import com.clilystudio.app.netbook.api.ApiService;
+
 import com.clilystudio.app.netbook.api.b;
 import com.clilystudio.app.netbook.model.TocSourceRoot;
 
-public abstract class a extends c<String, TocSourceRoot>
+public abstract class a_BaseTocSourceRoot extends c<String, TocSourceRoot>
 {
-  public a(Activity paramActivity, boolean paramBoolean)
+  public a_BaseTocSourceRoot(Activity paramActivity, boolean paramBoolean)
   {
     super(paramActivity, 2131034218, paramBoolean);
   }

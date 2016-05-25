@@ -1,8 +1,7 @@
 package com.clilystudio.app.netbook.util;
 
 import android.app.Activity;
-import com.clilystudio.app.netbook.a.c;
-import com.clilystudio.app.netbook.api.ApiService;
+import com.clilystudio.app.netbook.a_packA.c;
 import com.clilystudio.app.netbook.api.b;
 import com.clilystudio.app.netbook.model.TocSummary;
 import java.util.List;

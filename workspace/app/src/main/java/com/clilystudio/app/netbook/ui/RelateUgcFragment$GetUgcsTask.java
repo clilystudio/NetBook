@@ -1,8 +1,6 @@
 package com.clilystudio.app.netbook.ui;
 
-import com.clilystudio.app.netbook.a.e;
-import com.clilystudio.app.netbook.api.ApiService;
-import com.clilystudio.app.netbook.api.b;
+import com.clilystudio.app.netbook.a_packA.e;
 import com.clilystudio.app.netbook.model.RecommendUgcRoot;
 
 public final class RelateUgcFragment$GetUgcsTask extends e<String, Void, RecommendUgcRoot>

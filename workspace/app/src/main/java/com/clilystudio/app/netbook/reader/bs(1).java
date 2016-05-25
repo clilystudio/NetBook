@@ -2,9 +2,9 @@ package com.clilystudio.app.netbook.reader;
 
 import android.content.Intent;
 import android.view.View;
-import android.view.View.OnClickListener;
+
 import com.umeng.a.b;
-import com.clilystudio.app.netbook.a.f;
+import com.clilystudio.app.netbook.a_packA.f;
 import com.clilystudio.app.netbook.exception.UnImplementException;
 import com.clilystudio.app.netbook.ui.post.BookPostTabActivity;
 import com.clilystudio.app.netbook.util.InsideLinkIntent;

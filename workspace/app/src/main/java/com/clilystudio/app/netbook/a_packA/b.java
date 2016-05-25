@@ -1,6 +1,5 @@
-package com.clilystudio.app.netbook.a;
+package com.clilystudio.app.netbook.a_packA;
 
-import com.clilystudio.app.netbook.api.ApiService;
 import com.clilystudio.app.netbook.model.TopicCount;
 
 public abstract class b extends e<String, Void, TopicCount>

@@ -1,7 +1,6 @@
 package com.clilystudio.app.netbook.reader;
 
-import android.view.View;
-import com.clilystudio.app.netbook.a.b;
+import com.clilystudio.app.netbook.a_packA.b;
 import com.clilystudio.app.netbook.db.BookTopicEnterRecord;
 import com.clilystudio.app.netbook.model.TopicCount;
 

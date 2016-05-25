@@ -1,6 +1,6 @@
 package com.clilystudio.app.netbook.util;
 
-import com.clilystudio.app.netbook.a.e;
+import com.clilystudio.app.netbook.a_packA.e;
 import com.clilystudio.app.netbook.model.RemoteBookShelf;
 
 final class ab extends e<String, Void, RemoteBookShelf>

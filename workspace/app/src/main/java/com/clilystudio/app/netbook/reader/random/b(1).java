@@ -1,8 +1,7 @@
 package com.clilystudio.app.netbook.reader.random;
 
 import android.app.Activity;
-import com.clilystudio.app.netbook.a.c;
-import com.clilystudio.app.netbook.api.ApiService;
+import com.clilystudio.app.netbook.a_packA.c;
 import com.clilystudio.app.netbook.model.MysteryBookList;
 import java.io.IOException;
 

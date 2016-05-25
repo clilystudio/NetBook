@@ -1,6 +1,6 @@
 package com.clilystudio.app.netbook.reader.dl;
 
-import com.clilystudio.app.netbook.a.e;
+import com.clilystudio.app.netbook.a_packA.e;
 import com.clilystudio.app.netbook.model.Toc;
 
 final class g extends e<Void, Void, Toc>

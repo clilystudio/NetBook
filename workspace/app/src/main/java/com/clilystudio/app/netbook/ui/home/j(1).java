@@ -1,6 +1,6 @@
 package com.clilystudio.app.netbook.ui.home;
 
-import com.clilystudio.app.netbook.a.e;
+import com.clilystudio.app.netbook.a_packA.e;
 import com.clilystudio.app.netbook.model.ResultServer;
 
 final class j extends e<String, Void, ResultServer>

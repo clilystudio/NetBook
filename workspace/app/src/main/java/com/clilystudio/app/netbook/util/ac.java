@@ -1,7 +1,7 @@
 package com.clilystudio.app.netbook.util;
 
 import android.app.Activity;
-import com.clilystudio.app.netbook.a.c;
+import com.clilystudio.app.netbook.a_packA.c;
 import com.clilystudio.app.netbook.model.RemoteBookShelf;
 
 final class ac extends c<String, RemoteBookShelf>

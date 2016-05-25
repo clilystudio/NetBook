@@ -3,7 +3,7 @@ package com.clilystudio.app.netbook.reader.dl;
 import com.clilystudio.app.netbook.model.ChapterLink;
 import com.clilystudio.app.netbook.model.ChapterRoot;
 
-final class e extends com.clilystudio.app.netbook.a.e<Void, Void, ChapterRoot>
+final class e extends com.clilystudio.app.netbook.a_packA.e<Void, Void, ChapterRoot>
 {
   private ChapterLink a;
   private int b;

@@ -1,11 +1,12 @@
 package com.clilystudio.app.netbook.util;
 
 import android.app.Activity;
-import com.clilystudio.app.netbook.MyApplication;
+
+import com.clilystudio.app.netbook.*;
 import com.clilystudio.app.netbook.model.TocSource;
 import com.clilystudio.app.netbook.model.TocSourceRoot;
 
-final class n extends com.clilystudio.app.netbook.a.a
+final class n extends com.clilystudio.app.netbook.a_packA.a_BaseTocSourceRoot
 {
   public n(m paramm, Activity paramActivity, boolean paramBoolean)
   {

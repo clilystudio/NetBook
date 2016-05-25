@@ -5,7 +5,7 @@ import com.clilystudio.app.netbook.model.Account;
 import com.clilystudio.app.netbook.model.UGCBookListRoot;
 import com.clilystudio.app.netbook.ui.BaseActivity;
 
-final class e extends com.clilystudio.app.netbook.a.e<String, Void, UGCBookListRoot>
+final class e extends com.clilystudio.app.netbook.a_packA.e<String, Void, UGCBookListRoot>
 {
   private e(AbsUGCListFragment paramAbsUGCListFragment)
   {

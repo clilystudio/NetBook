@@ -1,4 +1,4 @@
-package com.clilystudio.app.netbook.a;
+package com.clilystudio.app.netbook.a_packA;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
