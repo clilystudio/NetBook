@@ -4,7 +4,7 @@ import android.os.Environment;
 
 import java.io.File;
 
-public final class c {
+public final class c_StoragePathConst {
     public static final String a = Environment.getExternalStorageDirectory().getAbsolutePath();
     public static final String b = a + "/ZhuiShuShenQi/Chapter";
     public static final String c = a + "/ZhuiShuShenQi/Chapteys";

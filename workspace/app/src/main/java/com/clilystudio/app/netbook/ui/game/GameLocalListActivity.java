@@ -5,7 +5,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import com.arcsoft.hpay100.a.a;
-import com.clilystudio.app.netbook.c;
 import com.clilystudio.app.netbook.model.Game;
 import com.clilystudio.app.netbook.ui.BaseActivity;
 import java.util.ArrayList;

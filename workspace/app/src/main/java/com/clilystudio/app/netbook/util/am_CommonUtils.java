@@ -29,6 +29,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 
 import com.clilystudio.app.netbook.MyApplication;
+import com.clilystudio.app.netbook.c_StoragePathConst;
 import com.clilystudio.app.netbook.db.BookDlRecord;
 import com.clilystudio.app.netbook.db.BookReadRecord;
 import com.clilystudio.app.netbook.model.Account;
@@ -328,7 +329,7 @@ public class am_CommonUtils {
 
     // @used
     public static void a(Context paramContext, Game paramGame) {
-        List localList = (List) com.arcsoft.hpay100.a.a.k(com.clilystudio.app.netbook.c.h, "played_game.txt");
+        List localList = (List) com.arcsoft.hpay100.a.a.k(c_StoragePathConst.h, "played_game.txt");
         if (localList == null) ;
         for (Object localObject = new ArrayList(); ; localObject = localList) {
             Iterator localIterator = ((List) localObject).iterator();
@@ -343,7 +344,7 @@ public class am_CommonUtils {
                 if (localGame != null)
                     ((List) localObject).remove(localGame);
                 ((List) localObject).add(0, paramGame);
-                com.arcsoft.hpay100.a.a.a(localObject, com.clilystudio.app.netbook.c.h, "played_game.txt");
+                com.arcsoft.hpay100.a.a.a(localObject, c_StoragePathConst.h, "played_game.txt");
                 b(paramContext, paramGame);
                 return;
                 localGame = null;

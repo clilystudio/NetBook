@@ -1,7 +1,7 @@
 package com.clilystudio.app.netbook.reader.txt;
 
 import com.arcsoft.hpay100.a.a;
-import com.clilystudio.app.netbook.c;
+import com.clilystudio.app.netbook.c_StoragePathConst;
 import com.clilystudio.app.netbook.model.ChapterLink;
 import com.clilystudio.app.netbook.model.Toc;
 import com.clilystudio.app.netbook.model.mixtoc.LocalTxtToc;
@@ -103,7 +103,7 @@ public final class U
   {
     try
     {
-      ObjectOutputStream localObjectOutputStream = new ObjectOutputStream(new FileOutputStream(new File(a.J(c.d), b(paramString))));
+      ObjectOutputStream localObjectOutputStream = new ObjectOutputStream(new FileOutputStream(new File(a.J(c_StoragePathConst.d), b(paramString))));
       localObjectOutputStream.writeObject(new LocalTxtToc(new File(paramString).length(), paramList));
       localObjectOutputStream.flush();
       localObjectOutputStream.close();
@@ -169,7 +169,7 @@ public final class U
   {
     try
     {
-      File localFile = new File(a.J(c.d), b(paramString));
+      File localFile = new File(a.J(c_StoragePathConst.d), b(paramString));
       if (!localFile.exists())
         return null;
       ObjectInputStream localObjectInputStream = new ObjectInputStream(new FileInputStream(localFile));

@@ -1,7 +1,7 @@
 package com.clilystudio.app.netbook.ui.home;
 
 import com.arcsoft.hpay100.a.a;
-import com.clilystudio.app.netbook.c;
+import com.clilystudio.app.netbook.c_StoragePathConst;
 import java.io.File;
 
 final class v extends Thread
@@ -13,7 +13,7 @@ final class v extends Thread
   public final void run()
   {
     String str = this.a;
-    a.E(c.b + File.separator + str);
+    a.E(c_StoragePathConst.b + File.separator + str);
   }
 }
 

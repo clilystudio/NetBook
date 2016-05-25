@@ -6,7 +6,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import com.arcsoft.hpay100.a.a;
 import com.umeng.a.b;
-import com.clilystudio.app.netbook.c;
 import com.clilystudio.app.netbook.model.Game;
 import com.clilystudio.app.netbook.model.GameGroupItem;
 import com.clilystudio.app.netbook.model.GameLayoutRoot.ModuleLayout;

@@ -1,7 +1,7 @@
 package com.clilystudio.app.netbook.ui.home;
 
 import com.arcsoft.hpay100.a.a;
-import com.clilystudio.app.netbook.c;
+import com.clilystudio.app.netbook.c_StoragePathConst;
 import com.clilystudio.app.netbook.reader.txt.U;
 import java.io.FileNotFoundException;
 
@@ -16,7 +16,7 @@ final class u extends Thread
     try
     {
       String str = U.b(this.a);
-      a.F(c.d + str);
+      a.F(c_StoragePathConst.d + str);
       return;
     }
     catch (FileNotFoundException localFileNotFoundException)

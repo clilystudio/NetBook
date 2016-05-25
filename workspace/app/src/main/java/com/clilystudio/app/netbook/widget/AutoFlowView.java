@@ -5,12 +5,10 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.MeasureSpec;
-import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.arcsoft.hpay100.a.a;
-import com.clilystudio.app.netbook.c;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;

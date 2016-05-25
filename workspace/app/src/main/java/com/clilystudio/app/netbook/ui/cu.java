@@ -4,7 +4,7 @@ import com.arcsoft.hpay100.a.a;
 import com.koushikdutta.async.a.b;
 import com.koushikdutta.async.v;
 import com.koushikdutta.async.y;
-import com.clilystudio.app.netbook.c;
+import com.clilystudio.app.netbook.c_StoragePathConst;
 import com.clilystudio.app.netbook.db.BookFile;
 import com.clilystudio.app.netbook.model.TxtFileObject;
 import java.io.File;
@@ -21,7 +21,7 @@ final class cu
     byte[] arrayOfByte = new byte[paramv.c()];
     paramv.a(arrayOfByte);
     String str = this.a.b.b[0];
-    File localFile = new File(a.J(c.g), str);
+    File localFile = new File(a.J(c_StoragePathConst.g), str);
     if (this.a.a[0] == null)
     {
       WifiActivity.a(this.a.b.c, localFile);

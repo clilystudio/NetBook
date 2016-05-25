@@ -1,9 +1,9 @@
 package com.clilystudio.app.netbook.reader;
 
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+
 import com.arcsoft.hpay100.a.a;
-import com.clilystudio.app.netbook.c;
+import com.clilystudio.app.netbook.c_StoragePathConst;
 import java.io.File;
 
 final class k
@@ -18,7 +18,7 @@ final class k
     paramDialogInterface.dismiss();
     String str1 = LocalChapterListActivity.c(this.b);
     String str2 = this.a;
-    a.E(c.b + File.separator + str1 + File.separator + str2);
+    a.E(c_StoragePathConst.b + File.separator + str1 + File.separator + str2);
     LocalChapterListActivity.e(this.b);
   }
 }
