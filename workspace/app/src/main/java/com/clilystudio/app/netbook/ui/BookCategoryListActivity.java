@@ -14,7 +14,7 @@ import android.widget.TabWidget;
 import android.widget.TextView;
 import com.arcsoft.hpay100.a.a;
 import com.umeng.a.b;
-import com.clilystudio.app.netbook.d;
+import com.clilystudio.app.netbook.d_IntentFactory;
 import com.clilystudio.app.netbook.model.CategoryLevelRoot;
 import com.clilystudio.app.netbook.model.CategoryLevelRoot.CategoryLevel;
 import java.util.ArrayList;
@@ -36,7 +36,7 @@ public class BookCategoryListActivity extends BaseTabActivity
 
   public static Intent a(Context paramContext, boolean paramBoolean, String paramString)
   {
-    return new d().a(paramContext, BookCategoryListActivity.class).a("CATEGORY_GENDER", Boolean.valueOf(paramBoolean)).a("CATEGORY_KEY", paramString).a();
+    return new d_IntentFactory().a_setClass(paramContext, BookCategoryListActivity.class).a_putExtra("CATEGORY_GENDER", Boolean.valueOf(paramBoolean)).a_putExtra("CATEGORY_KEY", paramString).a();
   }
 
   private String[] a(CategoryLevelRoot paramCategoryLevelRoot)

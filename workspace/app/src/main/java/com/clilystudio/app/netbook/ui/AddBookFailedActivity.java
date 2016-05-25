@@ -4,13 +4,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
-import com.clilystudio.app.netbook.d;
+import com.clilystudio.app.netbook.d_IntentFactory;
 
 public class AddBookFailedActivity extends BaseActivity
 {
   public static Intent a(Context paramContext, String paramString)
   {
-    return new d().a(paramContext, AddBookFailedActivity.class).a("bookTitle", paramString).a();
+    return new d_IntentFactory().a_setClass(paramContext, AddBookFailedActivity.class).a_putExtra("bookTitle", paramString).a();
   }
 
   public void onCreate(Bundle paramBundle)

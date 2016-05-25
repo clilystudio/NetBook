@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.widget.ListView;
-import com.clilystudio.app.netbook.d;
+import com.clilystudio.app.netbook.d_IntentFactory;
 import com.clilystudio.app.netbook.model.Game;
 import com.clilystudio.app.netbook.model.GameCat;
 import com.clilystudio.app.netbook.ui.BaseLoadingActivity;
@@ -24,7 +24,7 @@ public class GameListActivity extends BaseLoadingActivity
 
   public static Intent a(Context paramContext, GameCat paramGameCat)
   {
-    return new d().a(paramContext, GameListActivity.class).a("game_cat_list", paramGameCat).a();
+    return new d_IntentFactory().a_setClass(paramContext, GameListActivity.class).a_putExtra("game_cat_list", paramGameCat).a();
   }
 
   private void a(List<Game> paramList)

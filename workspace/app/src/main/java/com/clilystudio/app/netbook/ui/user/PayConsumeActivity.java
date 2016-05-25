@@ -2,13 +2,12 @@ package com.clilystudio.app.netbook.ui.user;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import com.clilystudio.app.netbook.d;
+import com.clilystudio.app.netbook.d_IntentFactory;
 import com.clilystudio.app.netbook.model.PayConsumeRecord.Order;
 import com.clilystudio.app.netbook.ui.BaseLoadingActivity;
 import com.clilystudio.app.netbook.widget.ScrollLoadListView;
@@ -28,7 +27,7 @@ public class PayConsumeActivity extends BaseLoadingActivity
 
   public static Intent a(Context paramContext, String paramString1, String paramString2)
   {
-    return new d().a(paramContext, PayConsumeActivity.class).a("token_key", paramString1).a("title_key", paramString2).a();
+    return new d_IntentFactory().a_setClass(paramContext, PayConsumeActivity.class).a_putExtra("token_key", paramString1).a_putExtra("title_key", paramString2).a();
   }
 
   protected final void b()

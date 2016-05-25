@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.arcsoft.hpay100.a.a;
+import com.clilystudio.app.netbook.d_IntentFactory;
 import com.clilystudio.app.netbook.model.Game;
 import com.clilystudio.app.netbook.model.GamePostRoot.GamePost;
 import com.clilystudio.app.netbook.ui.BaseLoadingActivity;
@@ -42,12 +43,12 @@ public class GameDetailActivity extends BaseLoadingActivity
 
   public static Intent a(Context paramContext, String paramString)
   {
-    return new com.clilystudio.app.netbook.d().a(paramContext, GameDetailActivity.class).a("game_id", paramString).a();
+    return new d_IntentFactory().a_setClass(paramContext, GameDetailActivity.class).a_putExtra("game_id", paramString).a();
   }
 
   public static Intent a(Context paramContext, String paramString, boolean paramBoolean1, boolean paramBoolean2)
   {
-    return new com.clilystudio.app.netbook.d().a(paramContext, GameDetailActivity.class).a("game_id", paramString).a("is_micro_game", Boolean.valueOf(paramBoolean1)).a("HAS_PLAYED", Boolean.valueOf(paramBoolean2)).a();
+    return new d_IntentFactory().a_setClass(paramContext, GameDetailActivity.class).a_putExtra("game_id", paramString).a_putExtra("is_micro_game", Boolean.valueOf(paramBoolean1)).a_putExtra("HAS_PLAYED", Boolean.valueOf(paramBoolean2)).a();
   }
 
   private void j()

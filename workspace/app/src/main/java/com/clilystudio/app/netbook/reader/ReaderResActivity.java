@@ -11,7 +11,7 @@ import android.view.View;
 import com.clilystudio.app.netbook.a_ActivityStack;
 import com.squareup.a.b;
 import com.squareup.a.l;
-import com.clilystudio.app.netbook.d;
+import com.clilystudio.app.netbook.d_IntentFactory;
 import com.clilystudio.app.netbook.event.i;
 import com.clilystudio.app.netbook.event.v;
 
@@ -22,7 +22,7 @@ public class ReaderResActivity extends ReaderModeActivity
 
   public static Intent a(Context paramContext, String paramString1, String paramString2, int paramInt)
   {
-    return new d().a(paramContext, ReaderResActivity.class).a("BOOK_ID", paramString1).a("BOOK_TITLE", paramString2).a("BOOK_MODE", paramInt).a();
+    return new d_IntentFactory().a_setClass(paramContext, ReaderResActivity.class).a_putExtra("BOOK_ID", paramString1).a_putExtra("BOOK_TITLE", paramString2).a_putExtra("BOOK_MODE", paramInt).a();
   }
 
   public void onCreate(Bundle paramBundle)

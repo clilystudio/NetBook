@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
 import com.clilystudio.app.netbook.adapter.g;
-import com.clilystudio.app.netbook.d;
+import com.clilystudio.app.netbook.d_IntentFactory;
 import com.clilystudio.app.netbook.model.BookRankDetail;
 
 public abstract class BookListActivity extends BaseActivity
@@ -19,7 +19,7 @@ public abstract class BookListActivity extends BaseActivity
 
   public static Intent a(Context paramContext, String paramString1, String paramString2)
   {
-    return new d().a(paramContext, BookRankDetailActivity.class).a("book_list_id", paramString1).a("book_list_title", paramString2).a();
+    return new d_IntentFactory().a_setClass(paramContext, BookRankDetailActivity.class).a_putExtra("book_list_id", paramString1).a_putExtra("book_list_title", paramString2).a();
   }
 
   protected void a(int paramInt)

@@ -5,15 +5,14 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.view.View;
-import android.view.Window;
-import com.clilystudio.app.netbook.d;
+
+import com.clilystudio.app.netbook.d_IntentFactory;
 
 public class ShareRemoveAdActivity extends BaseActivity
 {
   public static Intent a(Context paramContext, String paramString)
   {
-    return new d().a(paramContext, ShareRemoveAdActivity.class).a("entrance_type", paramString).a();
+    return new d_IntentFactory().a_setClass(paramContext, ShareRemoveAdActivity.class).a_putExtra("entrance_type", paramString).a();
   }
 
   protected void onCreate(Bundle paramBundle)

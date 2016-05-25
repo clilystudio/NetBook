@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.ViewGroup;
-import com.clilystudio.app.netbook.d;
+import com.clilystudio.app.netbook.d_IntentFactory;
 import com.clilystudio.app.netbook.ui.BaseActivity;
 
 public class ModeListActivity extends BaseActivity
@@ -15,7 +15,7 @@ public class ModeListActivity extends BaseActivity
 
   public static Intent a(Context paramContext, String paramString1, String paramString2, int paramInt)
   {
-    return new d().a(paramContext, ModeListActivity.class).a("BOOK_ID", paramString1).a("BOOK_TITLE", paramString2).a("BOOK_MODE", paramInt).a();
+    return new d_IntentFactory().a_setClass(paramContext, ModeListActivity.class).a_putExtra("BOOK_ID", paramString1).a_putExtra("BOOK_TITLE", paramString2).a_putExtra("BOOK_MODE", paramInt).a();
   }
 
   public void finish()

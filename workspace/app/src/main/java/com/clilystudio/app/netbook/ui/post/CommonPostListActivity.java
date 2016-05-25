@@ -16,7 +16,7 @@ import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.handmark.pulltorefresh.library.j;
 import com.umeng.a.b;
 import com.clilystudio.app.netbook.adapter.l;
-import com.clilystudio.app.netbook.d;
+import com.clilystudio.app.netbook.d_IntentFactory;
 import com.clilystudio.app.netbook.model.DiscussSummary;
 import com.clilystudio.app.netbook.ui.BaseActivity;
 import java.util.ArrayList;
@@ -45,7 +45,7 @@ public class CommonPostListActivity extends BaseActivity
 
   public static Intent a(Context paramContext, String paramString)
   {
-    return new d().a(paramContext, CommonPostListActivity.class).a("post_block_key", paramString).a();
+    return new d_IntentFactory().a_setClass(paramContext, CommonPostListActivity.class).a_putExtra("post_block_key", paramString).a();
   }
 
   private PopupWindow a(View paramView)

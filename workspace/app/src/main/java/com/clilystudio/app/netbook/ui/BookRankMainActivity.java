@@ -4,17 +4,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
-import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TabHost;
-import android.widget.TabHost.OnTabChangeListener;
-import android.widget.TabHost.TabContentFactory;
-import android.widget.TabHost.TabSpec;
 import android.widget.TabWidget;
 import android.widget.TextView;
 import com.umeng.a.b;
-import com.clilystudio.app.netbook.d;
+import com.clilystudio.app.netbook.d_IntentFactory;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,7 +24,7 @@ public class BookRankMainActivity extends BaseTabActivity
 
   public static Intent a(Context paramContext, String[] paramArrayOfString, String paramString1, String paramString2)
   {
-    return new d().a(paramContext, BookRankMainActivity.class).a("book_list_ids", paramArrayOfString).a("book_list_title", paramString1).a("rank_gender", paramString2).a();
+    return new d_IntentFactory().a_setClass(paramContext, BookRankMainActivity.class).a_putExtra("book_list_ids", paramArrayOfString).a_putExtra("book_list_title", paramString1).a_putExtra("rank_gender", paramString2).a();
   }
 
   private static String a(int paramInt)

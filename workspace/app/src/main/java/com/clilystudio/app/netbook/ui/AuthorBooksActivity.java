@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.widget.ListView;
 import com.clilystudio.app.netbook.adapter.E;
-import com.clilystudio.app.netbook.d;
+import com.clilystudio.app.netbook.d_IntentFactory;
 
 public class AuthorBooksActivity extends BaseLoadingActivity
 {
@@ -16,7 +16,7 @@ public class AuthorBooksActivity extends BaseLoadingActivity
 
   public static Intent a(Context paramContext, String paramString)
   {
-    return new d().a(paramContext, AuthorBooksActivity.class).a("keyword", paramString).a();
+    return new d_IntentFactory().a_setClass(paramContext, AuthorBooksActivity.class).a_putExtra("keyword", paramString).a();
   }
 
   protected final void b()

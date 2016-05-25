@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import com.clilystudio.app.netbook.adapter.b;
-import com.clilystudio.app.netbook.d;
+import com.clilystudio.app.netbook.d_IntentFactory;
 import com.clilystudio.app.netbook.util.as;
 import com.clilystudio.app.netbook.widget.ScrollLoadListView;
 import com.clilystudio.app.netbook.widget.av;
@@ -16,7 +16,6 @@ import com.ximalaya.ting.android.opensdk.model.album.Album;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class AudiobookCategoryListActivity extends BaseLoadingActivity
 {
@@ -31,7 +30,7 @@ public class AudiobookCategoryListActivity extends BaseLoadingActivity
 
   public static Intent a(Context paramContext, String paramString)
   {
-    return new d().a(paramContext, AudiobookCategoryListActivity.class).a("TAG_NAME", paramString).a();
+    return new d_IntentFactory().a_setClass(paramContext, AudiobookCategoryListActivity.class).a_putExtra("TAG_NAME", paramString).a();
   }
 
   private void j()

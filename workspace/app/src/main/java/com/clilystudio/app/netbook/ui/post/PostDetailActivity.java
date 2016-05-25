@@ -4,30 +4,24 @@ import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import com.clilystudio.app.netbook.am_CommonUtils;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import com.arcsoft.hpay100.a.a;
 import com.clilystudio.app.netbook.adapter.z;
-import com.clilystudio.app.netbook.d;
+import com.clilystudio.app.netbook.d_IntentFactory;
 import com.clilystudio.app.netbook.model.Account;
 import com.clilystudio.app.netbook.model.Author;
 import com.clilystudio.app.netbook.model.Post;
-import com.clilystudio.app.netbook.model.PostBook;
 import com.clilystudio.app.netbook.model.PostComment;
 import com.clilystudio.app.netbook.model.PostComment.PostCommentReply;
-import com.clilystudio.app.netbook.model.ReplyeeInfo;
 import com.clilystudio.app.netbook.model.User;
 import com.clilystudio.app.netbook.model.Vote;
 import com.clilystudio.app.netbook.ui.user.AuthLoginActivity;
 import com.clilystudio.app.netbook.util.N;
 import com.clilystudio.app.netbook.util.T;
-import com.clilystudio.app.netbook.util.am_CommonUtils;
-import com.clilystudio.app.netbook.util.e;
 import com.clilystudio.app.netbook.widget.HotCommentView;
 import com.clilystudio.app.netbook.widget.PostHeader;
 import com.clilystudio.app.netbook.widget.ScrollLoadListView;
@@ -60,7 +54,7 @@ public class PostDetailActivity extends AbsPostActivity
 
   public static Intent a(Context paramContext, String paramString1, String paramString2)
   {
-    return new d().a(paramContext, PostDetailActivity.class).a("PostBookId", paramString1).a("post_type_key", paramString2).a();
+    return new d_IntentFactory().a_setClass(paramContext, PostDetailActivity.class).a_putExtra("PostBookId", paramString1).a_putExtra("post_type_key", paramString2).a();
   }
 
   private void a(int paramInt, boolean paramBoolean)

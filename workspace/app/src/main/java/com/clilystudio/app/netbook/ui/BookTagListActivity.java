@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
-import com.clilystudio.app.netbook.d;
+import com.clilystudio.app.netbook.d_IntentFactory;
 import com.clilystudio.app.netbook.model.BookSummary;
 import com.clilystudio.app.netbook.widget.ScrollLoadListView;
 import com.clilystudio.app.netbook.widget.av;
@@ -24,7 +24,7 @@ public class BookTagListActivity extends BaseLoadingActivity
 
   public static Intent a(Context paramContext, String paramString)
   {
-    return new d().a(paramContext, BookTagListActivity.class).a("TAG_LIST_KEY", paramString).a();
+    return new d_IntentFactory().a_setClass(paramContext, BookTagListActivity.class).a_putExtra("TAG_LIST_KEY", paramString).a();
   }
 
   protected final void b()

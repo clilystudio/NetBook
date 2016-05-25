@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.ListView;
 import com.umeng.a.b;
 import com.clilystudio.app.netbook.adapter.v;
-import com.clilystudio.app.netbook.d;
+import com.clilystudio.app.netbook.d_IntentFactory;
 
 public class MhdListActivity extends BaseActivity
 {
@@ -17,7 +17,7 @@ public class MhdListActivity extends BaseActivity
 
   public static Intent a(Context paramContext)
   {
-    return new d().a(paramContext, MhdListActivity.class).a();
+    return new d_IntentFactory().a_setClass(paramContext, MhdListActivity.class).a();
   }
 
   private void a(int paramInt)

@@ -4,8 +4,12 @@ import android.app.ActivityManager;
 import android.app.Application;
 import android.content.Context;
 import android.os.Process;
+import android.text.TextUtils;
 
 import com.activeandroid.ActiveAndroid;
+import com.clilystudio.app.netbook.api.ApiService;
+import com.clilystudio.app.netbook.event.H;
+import com.clilystudio.app.netbook.event.i;
 import com.clilystudio.app.netbook.model.User;
 import com.integralblue.httpresponsecache.HttpResponseCache;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -174,6 +178,12 @@ public class MyApplication extends Application {
             e1.printStackTrace();
         }
 //        com.umeng.a.b.c(this);
+        // TODO set default api & reader web url
+//        String str = com.umeng.a.b.b(this.a, "set_default_api");
+//        if (!TextUtils.isEmpty(str))
+//            ApiService.a(str);
+//        ApiService.j(com.umeng.a.b.b(this.a, "reader_web_url"), 4);
+//        com.clilystudio.app.netbook.event.i.a().c(new H(com.arcsoft.hpay100.a.a.x(this.a)));
 //        com.umeng.a.b.a(new f(this));
         // 优易付更新？
 //        if (a.l(this, "update_notice_key")) {

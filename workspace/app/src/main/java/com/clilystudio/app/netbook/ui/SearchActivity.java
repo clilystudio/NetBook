@@ -12,7 +12,7 @@ import android.widget.TextView;
 import butterknife.ButterKnife;
 import com.arcsoft.hpay100.a.a;
 import com.clilystudio.app.netbook.adapter.E;
-import com.clilystudio.app.netbook.d;
+import com.clilystudio.app.netbook.d_IntentFactory;
 import com.clilystudio.app.netbook.widget.AutoFlowView;
 import com.clilystudio.app.netbook.widget.SearchEditText;
 import com.clilystudio.app.netbook.widget.SearchFixListView;
@@ -53,7 +53,7 @@ public class SearchActivity extends BaseActivity
 
   public static Intent a(Context paramContext, int paramInt)
   {
-    return new d().a(paramContext, SearchActivity.class).a("search_mode", paramInt).a();
+    return new d_IntentFactory().a_setClass(paramContext, SearchActivity.class).a_putExtra("search_mode", paramInt).a();
   }
 
   private void a(int paramInt)

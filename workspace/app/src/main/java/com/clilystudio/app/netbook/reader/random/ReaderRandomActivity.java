@@ -13,6 +13,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.TextView;
 import com.arcsoft.hpay100.a.a;
+import com.clilystudio.app.netbook.d_IntentFactory;
 import com.clilystudio.app.netbook.reader.PagerWidget;
 import com.clilystudio.app.netbook.reader.Reader;
 import com.clilystudio.app.netbook.reader.bH;
@@ -53,7 +54,7 @@ public class ReaderRandomActivity extends FragmentActivity
 
   public static Intent a(Context paramContext, String paramString1, String paramString2, String paramString3)
   {
-    return new com.clilystudio.app.netbook.d().a(paramContext, ReaderRandomActivity.class).a("BOOK_ID", paramString1).a("BOOK_TITLE", paramString2).a("TOC_ID", paramString3).a();
+    return new d_IntentFactory().a_setClass(paramContext, ReaderRandomActivity.class).a_putExtra("BOOK_ID", paramString1).a_putExtra("BOOK_TITLE", paramString2).a_putExtra("TOC_ID", paramString3).a();
   }
 
   private String a(String paramString)

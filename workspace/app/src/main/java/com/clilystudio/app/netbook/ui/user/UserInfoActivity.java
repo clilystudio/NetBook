@@ -10,13 +10,13 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 import com.arcsoft.hpay100.a.a;
 import com.squareup.a.l;
-import com.clilystudio.app.netbook.d;
+import com.clilystudio.app.netbook.d_IntentFactory;
 import com.clilystudio.app.netbook.event.K;
 import com.clilystudio.app.netbook.event.i;
 import com.clilystudio.app.netbook.event.u;
 import com.clilystudio.app.netbook.ui.BaseActivity;
 import com.clilystudio.app.netbook.ui.CircularSmartImageView;
-import com.clilystudio.app.netbook.util.e;
+
 import java.util.Date;
 
 public class UserInfoActivity extends BaseActivity
@@ -46,7 +46,7 @@ public class UserInfoActivity extends BaseActivity
 
   public static Intent a(Context paramContext, String paramString)
   {
-    return new d().a(paramContext, UserInfoActivity.class).a("account_token", paramString).a();
+    return new d_IntentFactory().a_setClass(paramContext, UserInfoActivity.class).a_putExtra("account_token", paramString).a();
   }
 
   private void b()

@@ -2,13 +2,12 @@ package com.clilystudio.app.netbook.reader;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v7.widget.SwitchCompat;
 import android.view.View;
 import android.widget.TextView;
 import com.arcsoft.hpay100.a.a;
-import com.clilystudio.app.netbook.d;
+import com.clilystudio.app.netbook.d_IntentFactory;
 import com.clilystudio.app.netbook.ui.BaseActivity;
 import com.clilystudio.app.netbook.util.I;
 import com.clilystudio.app.netbook.widget.SettingItem;
@@ -22,7 +21,7 @@ public class ReaderOptionActivity extends BaseActivity
 
   public static Intent a(Context paramContext)
   {
-    return new d().a(paramContext, ReaderOptionActivity.class).a();
+    return new d_IntentFactory().a_setClass(paramContext, ReaderOptionActivity.class).a();
   }
 
   public void onCreate(Bundle paramBundle)

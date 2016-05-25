@@ -4,11 +4,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.TextView;
 import com.arcsoft.hpay100.a.a;
 import com.squareup.a.l;
-import com.clilystudio.app.netbook.d;
+import com.clilystudio.app.netbook.d_IntentFactory;
 import com.clilystudio.app.netbook.event.i;
 import com.clilystudio.app.netbook.event.s;
 import com.clilystudio.app.netbook.event.y;
@@ -30,7 +29,7 @@ public class PayAccountActivity extends BaseActivity
 
   public static Intent a(Context paramContext, String paramString)
   {
-    return new d().a(paramContext, PayAccountActivity.class).a("key_token", paramString).a();
+    return new d_IntentFactory().a_setClass(paramContext, PayAccountActivity.class).a_putExtra("key_token", paramString).a();
   }
 
   public void onClick(View paramView)

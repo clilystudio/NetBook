@@ -5,10 +5,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
-import com.clilystudio.app.netbook.am_CommonUtils;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
-import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
@@ -16,14 +14,10 @@ import android.view.animation.DecelerateInterpolator;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TabHost;
-import android.widget.TabHost.OnTabChangeListener;
-import android.widget.TabHost.TabContentFactory;
-import android.widget.TabHost.TabSpec;
 import android.widget.TabWidget;
 import android.widget.TextView;
-import com.clilystudio.app.netbook.d;
+import com.clilystudio.app.netbook.d_IntentFactory;
 import com.clilystudio.app.netbook.ui.BaseTabActivity;
-import com.clilystudio.app.netbook.util.am_CommonUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,7 +41,7 @@ public class TweetTabActivity extends BaseTabActivity
 
   public static Intent a(Context paramContext)
   {
-    return new d().a(paramContext, TweetTabActivity.class).a();
+    return new d_IntentFactory().a_setClass(paramContext, TweetTabActivity.class).a();
   }
 
   private void b()

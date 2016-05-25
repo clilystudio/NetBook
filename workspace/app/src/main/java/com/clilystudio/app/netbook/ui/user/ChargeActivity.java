@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.TextView;
 import com.squareup.a.l;
 import com.clilystudio.app.netbook.adapter.x;
-import com.clilystudio.app.netbook.d;
+import com.clilystudio.app.netbook.d_IntentFactory;
 import com.clilystudio.app.netbook.event.y;
 import com.clilystudio.app.netbook.event.z;
 import com.clilystudio.app.netbook.model.ChargePlan;
@@ -29,7 +29,7 @@ public class ChargeActivity extends BaseLoadingActivity
 
   public static Intent a(Context paramContext, ChargeType paramChargeType)
   {
-    return new d().a(paramContext, ChargeActivity.class).a("key_pay_type", paramChargeType).a();
+    return new d_IntentFactory().a_setClass(paramContext, ChargeActivity.class).a_putExtra("key_pay_type", paramChargeType).a();
   }
 
   public final void a(ChargePlan paramChargePlan)

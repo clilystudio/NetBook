@@ -3,7 +3,6 @@ package com.clilystudio.app.netbook.ui.post;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import com.clilystudio.app.netbook.am_CommonUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -11,20 +10,16 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import com.arcsoft.hpay100.a.a;
-import com.clilystudio.app.netbook.util.am_CommonUtils;
 import com.handmark.pulltorefresh.library.PullToRefreshBase.Mode;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.handmark.pulltorefresh.library.j;
 import com.squareup.a.b;
 import com.squareup.a.l;
 import com.clilystudio.app.netbook.adapter.G;
-import com.clilystudio.app.netbook.d;
-import com.clilystudio.app.netbook.event.i;
+import com.clilystudio.app.netbook.d_IntentFactory;
 import com.clilystudio.app.netbook.event.t;
-import com.clilystudio.app.netbook.model.Account;
 import com.clilystudio.app.netbook.model.Follower;
 import com.clilystudio.app.netbook.model.Tweet;
-import com.clilystudio.app.netbook.model.User;
 import com.clilystudio.app.netbook.ui.BaseActivity;
 import com.clilystudio.app.netbook.ui.SmartImageView;
 import java.util.ArrayList;
@@ -62,7 +57,7 @@ public class OtherUserActivity extends BaseActivity
 
   public static Intent a(Context paramContext)
   {
-    return new d().a(paramContext, OtherUserActivity.class).a();
+    return new d_IntentFactory().a_setClass(paramContext, OtherUserActivity.class).a();
   }
 
   private void b()

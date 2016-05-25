@@ -9,7 +9,7 @@ import android.text.style.ForegroundColorSpan;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import com.clilystudio.app.netbook.d;
+import com.clilystudio.app.netbook.d_IntentFactory;
 import com.clilystudio.app.netbook.util.as;
 import com.ximalaya.ting.android.opensdk.datatrasfer.CommonRequest;
 import java.util.HashMap;
@@ -23,7 +23,7 @@ public class AudiobookCategoryActivity extends BaseActivity
 
   public static Intent a(Context paramContext)
   {
-    return new d().a(paramContext, AudiobookCategoryActivity.class).a();
+    return new d_IntentFactory().a_setClass(paramContext, AudiobookCategoryActivity.class).a();
   }
 
   private void a(int paramInt)

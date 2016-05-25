@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ListView;
-import com.clilystudio.app.netbook.d;
+import com.clilystudio.app.netbook.d_IntentFactory;
 import com.clilystudio.app.netbook.model.ChineseAllPromRoot;
 import com.clilystudio.app.netbook.model.TocSummary;
 import com.clilystudio.app.netbook.ui.BaseLoadingActivity;
@@ -26,7 +26,7 @@ public class ReaderMixActivity extends BaseLoadingActivity
 
   public static Intent a(Context paramContext, String paramString1, String paramString2, String paramString3)
   {
-    return new d().a(paramContext, ReaderMixActivity.class).a("BOOK_ID", paramString1).a("BOOK_TITLE", paramString2).a("SOURCE", paramString3).a();
+    return new d_IntentFactory().a_setClass(paramContext, ReaderMixActivity.class).a_putExtra("BOOK_ID", paramString1).a_putExtra("BOOK_TITLE", paramString2).a_putExtra("SOURCE", paramString3).a();
   }
 
   protected final void b()

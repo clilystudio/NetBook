@@ -4,8 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import com.arcsoft.hpay100.a.a;
 import com.umeng.a.b;
-import com.clilystudio.app.netbook.adapter.g;
-import com.clilystudio.app.netbook.d;
+import com.clilystudio.app.netbook.d_IntentFactory;
 import com.clilystudio.app.netbook.model.BookRankDetail;
 import com.clilystudio.app.netbook.model.BookSummary;
 import com.clilystudio.app.netbook.model.RelateBookRoot;
@@ -23,12 +22,12 @@ public class RelateBookListActivity extends BookListActivity
 
   public static Intent a(Context paramContext, RelateBookRoot paramRelateBookRoot, String paramString1, String paramString2)
   {
-    return new d().a(paramContext, RelateBookListActivity.class).a("RelateBookRoot", null).a("book_list_title", paramString1).a("bookId", paramString2).a("entrancePosition", 2).a();
+    return new d_IntentFactory().a_setClass(paramContext, RelateBookListActivity.class).a_putExtra("RelateBookRoot", null).a_putExtra("book_list_title", paramString1).a_putExtra("bookId", paramString2).a_putExtra("entrancePosition", 2).a();
   }
 
   public static Intent a(Context paramContext, RelateBookRoot paramRelateBookRoot, String paramString, boolean paramBoolean)
   {
-    return new d().a(paramContext, RelateBookListActivity.class).a("RelateBookRoot", paramRelateBookRoot).a("book_list_title", paramString).a("entrancePosition", 1).a("IS_BFD_RECOMMEND", Boolean.valueOf(paramBoolean)).a();
+    return new d_IntentFactory().a_setClass(paramContext, RelateBookListActivity.class).a_putExtra("RelateBookRoot", paramRelateBookRoot).a_putExtra("book_list_title", paramString).a_putExtra("entrancePosition", 1).a_putExtra("IS_BFD_RECOMMEND", Boolean.valueOf(paramBoolean)).a();
   }
 
   private void a(RelateBookRoot paramRelateBookRoot)

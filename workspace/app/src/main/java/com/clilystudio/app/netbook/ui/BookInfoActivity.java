@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.clilystudio.app.netbook.d_IntentFactory;
 import com.squareup.a.l;
 import com.clilystudio.app.netbook.MyApplication;
 import com.clilystudio.app.netbook.db.BookReadRecord;
@@ -41,12 +43,12 @@ public class BookInfoActivity extends BaseActivity
 
   public static Intent a(Context paramContext, String paramString)
   {
-    return new com.clilystudio.app.netbook.d().a(paramContext, BookInfoActivity.class).a("book_id", paramString).a("open_type", 0).a();
+    return new d_IntentFactory().a_setClass(paramContext, BookInfoActivity.class).a_putExtra("book_id", paramString).a_putExtra("open_type", 0).a();
   }
 
   public static Intent a(Context paramContext, String paramString, int paramInt)
   {
-    return new com.clilystudio.app.netbook.d().a(paramContext, BookInfoActivity.class).a("book_id", paramString).a("open_type", paramInt).a();
+    return new d_IntentFactory().a_setClass(paramContext, BookInfoActivity.class).a_putExtra("book_id", paramString).a_putExtra("open_type", paramInt).a();
   }
 
   private void a(int paramInt)

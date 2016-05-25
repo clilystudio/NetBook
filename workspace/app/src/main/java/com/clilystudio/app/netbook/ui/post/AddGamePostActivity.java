@@ -1,13 +1,12 @@
 package com.clilystudio.app.netbook.ui.post;
 
-import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.EditText;
 import cn.sharesdk.framework.ShareSDK;
 import com.arcsoft.hpay100.a.a;
-import com.clilystudio.app.netbook.d;
+import com.clilystudio.app.netbook.d_IntentFactory;
 import com.clilystudio.app.netbook.ui.BaseActivity;
 import uk.me.lewisdeane.ldialogs.h;
 
@@ -17,7 +16,7 @@ public class AddGamePostActivity extends BaseActivity
 
   public static Intent a(Context paramContext, String paramString)
   {
-    return new d().a(paramContext, AddGamePostActivity.class).a("post_game_id", paramString).a();
+    return new d_IntentFactory().a_setClass(paramContext, AddGamePostActivity.class).a_putExtra("post_game_id", paramString).a();
   }
 
   public void onBackPressed()

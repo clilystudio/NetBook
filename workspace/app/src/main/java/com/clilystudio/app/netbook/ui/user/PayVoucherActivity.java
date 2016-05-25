@@ -2,20 +2,14 @@ package com.clilystudio.app.netbook.ui.user;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.os.Bundle;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
-import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TabHost;
-import android.widget.TabHost.OnTabChangeListener;
-import android.widget.TabHost.TabContentFactory;
-import android.widget.TabHost.TabSpec;
 import android.widget.TabWidget;
 import android.widget.TextView;
-import com.clilystudio.app.netbook.d;
+import com.clilystudio.app.netbook.d_IntentFactory;
 import com.clilystudio.app.netbook.ui.BaseTabActivity;
 import java.util.ArrayList;
 import java.util.List;
@@ -31,7 +25,7 @@ public class PayVoucherActivity extends BaseTabActivity
 
   public static Intent a(Context paramContext, String paramString)
   {
-    return new d().a(paramContext, PayVoucherActivity.class).a("token_key", paramString).a();
+    return new d_IntentFactory().a_setClass(paramContext, PayVoucherActivity.class).a_putExtra("token_key", paramString).a();
   }
 
   public final PayVoucherFragment a(int paramInt)

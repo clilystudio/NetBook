@@ -11,7 +11,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.koushikdutta.async.http.a;
 import com.squareup.a.b;
-import com.clilystudio.app.netbook.d;
+import com.clilystudio.app.netbook.d_IntentFactory;
 import com.clilystudio.app.netbook.db.AudioRecord;
 import com.clilystudio.app.netbook.event.p;
 import com.clilystudio.app.netbook.model.AlbumSerialized;
@@ -54,7 +54,7 @@ public class AudiobookInfoActivity extends BaseActivity
 
   public static Intent a(Context paramContext, long paramLong)
   {
-    return new d().a(paramContext, AudiobookInfoActivity.class).a("ALBUM_ID", Long.valueOf(paramLong)).a();
+    return new d_IntentFactory().a_setClass(paramContext, AudiobookInfoActivity.class).a_putExtra("ALBUM_ID", Long.valueOf(paramLong)).a();
   }
 
   private void a(int paramInt)

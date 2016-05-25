@@ -2,7 +2,6 @@ package com.clilystudio.app.netbook.ui.user;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Handler;
 import android.widget.Button;
@@ -10,7 +9,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
-import com.clilystudio.app.netbook.d;
+import com.clilystudio.app.netbook.d_IntentFactory;
 import com.clilystudio.app.netbook.model.ChargePlan;
 import com.clilystudio.app.netbook.ui.BaseActivity;
 import java.util.Timer;
@@ -47,7 +46,7 @@ public class SmsVerifyActivity extends BaseActivity
 
   public static Intent a(Context paramContext, ChargePlan paramChargePlan, String paramString)
   {
-    return new d().a(paramContext, SmsVerifyActivity.class).a("key_charge_plan_verify", paramChargePlan).a("key_charge_plan_phone", paramString).a();
+    return new d_IntentFactory().a_setClass(paramContext, SmsVerifyActivity.class).a_putExtra("key_charge_plan_verify", paramChargePlan).a_putExtra("key_charge_plan_phone", paramString).a();
   }
 
   private void a(int paramInt)

@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
+import com.clilystudio.app.netbook.d_IntentFactory;
 import com.clilystudio.app.netbook.util.am_CommonUtils;
 import com.iflytek.cloud.SpeechSynthesizer;
 import com.iflytek.cloud.SynthesizerListener;
@@ -503,17 +504,17 @@ public class ReaderActivity extends BaseReadSlmActivity
 
   public static Intent a(Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4, boolean paramBoolean)
   {
-    return new com.clilystudio.app.netbook.d().a(paramContext, ReaderActivity.class).a("BOOK_ID", paramString1).a("BOOK_TITLE", paramString2).a("TOC_ID", paramString3).a("SOURCE_HOST", paramString4).a("IS_SHOW_TOC", Boolean.valueOf(paramBoolean)).a();
+    return new d_IntentFactory().a_setClass(paramContext, ReaderActivity.class).a_putExtra("BOOK_ID", paramString1).a_putExtra("BOOK_TITLE", paramString2).a_putExtra("TOC_ID", paramString3).a_putExtra("SOURCE_HOST", paramString4).a_putExtra("IS_SHOW_TOC", Boolean.valueOf(paramBoolean)).a();
   }
 
   public static Intent a(Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4, boolean paramBoolean1, HashMap<String, String> paramHashMap, boolean paramBoolean2)
   {
-    return new com.clilystudio.app.netbook.d().a(paramContext, ReaderActivity.class).a("BOOK_ID", paramString1).a("BOOK_TITLE", paramString2).a("TOC_ID", paramString3).a("SOURCE_HOST", null).a("IS_SHOW_TOC", Boolean.valueOf(false)).a("CHAPTERS_KEY", paramHashMap).a("HAS_OTHER_SOURCES", Boolean.valueOf(paramBoolean2)).a();
+    return new d_IntentFactory().a_setClass(paramContext, ReaderActivity.class).a_putExtra("BOOK_ID", paramString1).a_putExtra("BOOK_TITLE", paramString2).a_putExtra("TOC_ID", paramString3).a_putExtra("SOURCE_HOST", null).a_putExtra("IS_SHOW_TOC", Boolean.valueOf(false)).a_putExtra("CHAPTERS_KEY", paramHashMap).a_putExtra("HAS_OTHER_SOURCES", Boolean.valueOf(paramBoolean2)).a();
   }
 
   public static Intent a(Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4, boolean paramBoolean1, boolean paramBoolean2)
   {
-    return new com.clilystudio.app.netbook.d().a(paramContext, ReaderActivity.class).a("BOOK_ID", paramString1).a("BOOK_TITLE", paramString2).a("TOC_ID", paramString3).a("SOURCE_HOST", null).a("IS_SHOW_TOC", Boolean.valueOf(false)).a("HAS_OTHER_SOURCES", Boolean.valueOf(paramBoolean2)).a();
+    return new d_IntentFactory().a_setClass(paramContext, ReaderActivity.class).a_putExtra("BOOK_ID", paramString1).a_putExtra("BOOK_TITLE", paramString2).a_putExtra("TOC_ID", paramString3).a_putExtra("SOURCE_HOST", null).a_putExtra("IS_SHOW_TOC", Boolean.valueOf(false)).a_putExtra("HAS_OTHER_SOURCES", Boolean.valueOf(paramBoolean2)).a();
   }
 
   private String a(String paramString)

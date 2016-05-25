@@ -4,19 +4,17 @@ import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import com.clilystudio.app.netbook.am_CommonUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
-import com.clilystudio.app.netbook.d;
+import com.clilystudio.app.netbook.d_IntentFactory;
 import com.clilystudio.app.netbook.model.Account;
 import com.clilystudio.app.netbook.model.Game;
 import com.clilystudio.app.netbook.model.GameGift;
 import com.clilystudio.app.netbook.model.GameGiftRoot;
 import com.clilystudio.app.netbook.ui.BaseActivity;
 import com.clilystudio.app.netbook.ui.SmartImageView;
-import com.clilystudio.app.netbook.util.am_CommonUtils;
 import com.clilystudio.app.netbook.util.t;
 import com.clilystudio.app.netbook.widget.GameGiftGetButton;
 
@@ -32,7 +30,7 @@ public class GameGiftListActivity extends BaseActivity
 
   public static Intent a(Context paramContext, GameGiftRoot paramGameGiftRoot, boolean paramBoolean)
   {
-    return new d().a(paramContext, GameGiftListActivity.class).a("game_gift_list", paramGameGiftRoot).a("is_micro_game", Boolean.valueOf(paramBoolean)).a();
+    return new d_IntentFactory().a_setClass(paramContext, GameGiftListActivity.class).a_putExtra("game_gift_list", paramGameGiftRoot).a_putExtra("is_micro_game", Boolean.valueOf(paramBoolean)).a();
   }
 
   private void a(String paramString)

@@ -10,7 +10,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import com.arcsoft.hpay100.a.a;
 import com.clilystudio.app.netbook.adapter.C;
-import com.clilystudio.app.netbook.d;
+import com.clilystudio.app.netbook.d_IntentFactory;
 import com.clilystudio.app.netbook.ui.BaseActivity;
 
 public class LocalChapterListActivity extends BaseActivity
@@ -25,7 +25,7 @@ public class LocalChapterListActivity extends BaseActivity
 
   public static Intent a(Context paramContext, String paramString1, String paramString2)
   {
-    return new d().a(paramContext, LocalChapterListActivity.class).a("BOOK_ID", paramString1).a("BOOK_TITLE", paramString2).a();
+    return new d_IntentFactory().a_setClass(paramContext, LocalChapterListActivity.class).a_putExtra("BOOK_ID", paramString1).a_putExtra("BOOK_TITLE", paramString2).a();
   }
 
   private void b()

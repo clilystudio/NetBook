@@ -7,7 +7,7 @@ import android.support.v4.app.Fragment;
 
 import com.clilystudio.app.netbook.a_ActivityStack;
 import com.squareup.a.b;
-import com.clilystudio.app.netbook.d;
+import com.clilystudio.app.netbook.d_IntentFactory;
 import com.clilystudio.app.netbook.event.f;
 import com.clilystudio.app.netbook.event.i;
 import com.clilystudio.app.netbook.ui.SimpleTabActivity;
@@ -33,12 +33,12 @@ public class BookPostTabActivity extends SimpleTabActivity
 
   public static Intent a(Context paramContext, String paramString1, String paramString2)
   {
-    return new d().a(paramContext, BookPostTabActivity.class).a("BOOK_ID", paramString1).a("BOOK_TITLE", paramString2).a();
+    return new d_IntentFactory().a_setClass(paramContext, BookPostTabActivity.class).a_putExtra("BOOK_ID", paramString1).a_putExtra("BOOK_TITLE", paramString2).a();
   }
 
   public static Intent a(Context paramContext, String paramString1, String paramString2, boolean paramBoolean)
   {
-    return new d().a(paramContext, BookPostTabActivity.class).a("BOOK_ID", paramString1).a("BOOK_TITLE", paramString2).a("FROM_READER", Boolean.valueOf(paramBoolean)).a();
+    return new d_IntentFactory().a_setClass(paramContext, BookPostTabActivity.class).a_putExtra("BOOK_ID", paramString1).a_putExtra("BOOK_TITLE", paramString2).a_putExtra("FROM_READER", Boolean.valueOf(paramBoolean)).a();
   }
 
   public static String f(int paramInt)

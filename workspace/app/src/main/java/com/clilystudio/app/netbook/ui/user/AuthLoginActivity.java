@@ -3,18 +3,18 @@ package com.clilystudio.app.netbook.ui.user;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler.Callback;
 import android.os.Message;
 import android.support.v7.widget.av;
 import android.view.View;
 import android.view.Window;
-import android.view.WindowManager.LayoutParams;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Toast;
 import cn.sharesdk.framework.Platform;
 import cn.sharesdk.framework.PlatformDb;
 import cn.sharesdk.framework.ShareSDK;
+
+import com.clilystudio.app.netbook.d_IntentFactory;
 import com.squareup.a.l;
 import com.clilystudio.app.netbook.event.i;
 import com.clilystudio.app.netbook.ui.BaseActivity;
@@ -29,7 +29,7 @@ public class AuthLoginActivity extends BaseActivity
 
   public static Intent a(Context paramContext)
   {
-    return new com.clilystudio.app.netbook.d().a(paramContext, AuthLoginActivity.class).a();
+    return new d_IntentFactory().a_setClass(paramContext, AuthLoginActivity.class).a();
   }
 
   private void a(View paramView)

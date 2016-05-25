@@ -1,29 +1,23 @@
 package com.clilystudio.app.netbook.ui.user;
 
 import android.app.AlertDialog;
-import android.app.AlertDialog.Builder;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import com.clilystudio.app.netbook.am_CommonUtils;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import com.arcsoft.hpay100.a.a;
-import com.clilystudio.app.netbook.d;
-import com.clilystudio.app.netbook.model.Account;
+import com.clilystudio.app.netbook.d_IntentFactory;
 import com.clilystudio.app.netbook.model.User;
 import com.clilystudio.app.netbook.ui.BaseActivity;
 import com.clilystudio.app.netbook.ui.CircularSmartImageView;
 import com.clilystudio.app.netbook.ui.CropPhotoActivity;
-import com.clilystudio.app.netbook.util.am_CommonUtils;
-import com.clilystudio.app.netbook.util.e;
+
 import java.io.File;
 import java.util.Calendar;
 import uk.me.lewisdeane.ldialogs.h;
@@ -56,7 +50,7 @@ public class ModifyUserInfoActivity extends BaseActivity
 
   public static Intent a(Context paramContext, long paramLong)
   {
-    return new d().a(paramContext, ModifyUserInfoActivity.class).a("nickname_updated_time", Long.valueOf(paramLong)).a();
+    return new d_IntentFactory().a_setClass(paramContext, ModifyUserInfoActivity.class).a_putExtra("nickname_updated_time", Long.valueOf(paramLong)).a();
   }
 
   protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)

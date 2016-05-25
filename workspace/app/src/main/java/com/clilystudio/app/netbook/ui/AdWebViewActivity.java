@@ -6,9 +6,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
+
+import com.clilystudio.app.netbook.d_IntentFactory;
 import com.clilystudio.app.netbook.ui.home.HomeActivity;
 
 public class AdWebViewActivity extends BaseActivity
@@ -23,7 +24,7 @@ public class AdWebViewActivity extends BaseActivity
 
   public static Intent a(Context paramContext, String paramString1, String paramString2)
   {
-    return new com.clilystudio.app.netbook.d().a(paramContext, AdWebViewActivity.class).a("extra_title", paramString1).a("extra_url", paramString2).a();
+    return new d_IntentFactory().a_setClass(paramContext, AdWebViewActivity.class).a_putExtra("extra_title", paramString1).a_putExtra("extra_url", paramString2).a();
   }
 
   public void onBackPressed()

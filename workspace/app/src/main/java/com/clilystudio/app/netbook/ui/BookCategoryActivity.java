@@ -9,7 +9,7 @@ import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
-import com.clilystudio.app.netbook.d;
+import com.clilystudio.app.netbook.d_IntentFactory;
 import com.clilystudio.app.netbook.model.CategoryRoot.Category;
 
 public class BookCategoryActivity extends BaseActivity
@@ -20,7 +20,7 @@ public class BookCategoryActivity extends BaseActivity
 
   public static Intent a(Context paramContext)
   {
-    return new d().a(paramContext, BookCategoryActivity.class).a();
+    return new d_IntentFactory().a_setClass(paramContext, BookCategoryActivity.class).a();
   }
 
   private void a(int paramInt)

@@ -5,17 +5,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
-import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TabHost;
-import android.widget.TabHost.OnTabChangeListener;
-import android.widget.TabHost.TabContentFactory;
-import android.widget.TabHost.TabSpec;
 import android.widget.TabWidget;
 import android.widget.TextView;
 import com.umeng.a.b;
-import com.clilystudio.app.netbook.d;
+import com.clilystudio.app.netbook.d_IntentFactory;
 import com.clilystudio.app.netbook.ui.BaseTabActivity;
 import java.util.ArrayList;
 import java.util.List;
@@ -30,7 +26,7 @@ public class GameTabActivity extends BaseTabActivity
 
   public static Intent a(Context paramContext)
   {
-    return new d().a(paramContext, GameTabActivity.class).a();
+    return new d_IntentFactory().a_setClass(paramContext, GameTabActivity.class).a();
   }
 
   public View createTabContent(String paramString)
