@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import com.clilystudio.app.netbook.am_CommonUtils;
+import com.clilystudio.app.netbook.util.am_CommonUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.CheckBox;
@@ -254,7 +254,7 @@ public class BookInfoActivity extends BaseActivity
     String str2;
     for (Object localObject = getString(2131034325); ; localObject = str2)
     {
-      com.umeng.a.b.a(this, "book_info_add");
+      AppProperties.getInstance(this).setProperties("book_info_add");
       i();
       break;
       BookReadRecord.create(this.k);
@@ -282,17 +282,17 @@ public class BookInfoActivity extends BaseActivity
     default:
       return;
     case 1:
-      com.umeng.a.b.a(this, "book_info_recommend_add_shelf", "zhuishu");
+      AppProperties.getInstance(this).setProperties("book_info_recommend_add_shelf", "zhuishu");
       return;
     case 2:
-      com.umeng.a.b.a(this, "page_footing_recommend_add_shelf", "zhuishu");
+      AppProperties.getInstance(this).setProperties("page_footing_recommend_add_shelf", "zhuishu");
       return;
     case 3:
-      com.umeng.a.b.a(this, "book_info_recommend_add_shelf", "bfd");
+      AppProperties.getInstance(this).setProperties("book_info_recommend_add_shelf", "bfd");
       return;
     case 4:
     }
-    com.umeng.a.b.a(this, "page_footing_recommend_add_shelf", "bfd");
+    AppProperties.getInstance(this).setProperties("page_footing_recommend_add_shelf", "bfd");
   }
 
   private void j()
@@ -348,13 +348,13 @@ public class BookInfoActivity extends BaseActivity
       }
       while (true)
       {
-        com.umeng.a.b.a(this, "book_info_search");
+        AppProperties.getInstance(this).setProperties("book_info_search");
         return;
         new m(this).a(localBookReadRecord);
       }
     case 2131493329:
       startActivity(BookPostTabActivity.a(this, this.h, this.k.getTitle()));
-      com.umeng.a.b.a(this, "book_info_post");
+      AppProperties.getInstance(this).setProperties("book_info_post");
       return;
     case 2131493284:
       startActivity(AuthorBooksActivity.a(this, this.k.getAuthor()));
@@ -395,7 +395,7 @@ public class BookInfoActivity extends BaseActivity
       this.i = bool;
       i.a().a(this);
       j();
-      com.umeng.a.b.a(this, "book_info_open");
+      AppProperties.getInstance(this).setProperties("book_info_open");
       this.l = getIntent().getIntExtra("open_type", 0);
       return;
     }

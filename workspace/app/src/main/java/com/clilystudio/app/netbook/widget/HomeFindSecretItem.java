@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
-import com.clilystudio.app.netbook.am_CommonUtils;
+import com.clilystudio.app.netbook.util.am_CommonUtils;
 import android.util.AttributeSet;
 
 import com.umeng.a.b;

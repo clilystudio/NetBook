@@ -45,7 +45,7 @@ public class ChargeActivity extends BaseLoadingActivity
     }
     while (true)
     {
-      com.umeng.a.b.a(this, "charge_money_click", paramChargePlan.getPriceDsc());
+      AppProperties.getInstance(this).setProperties("charge_money_click", paramChargePlan.getPriceDsc());
       return;
       if ("weixinpay".equals(this.a.getType()))
       {

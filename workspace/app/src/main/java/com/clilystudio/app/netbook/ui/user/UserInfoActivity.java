@@ -87,7 +87,7 @@ public class UserInfoActivity extends BaseActivity
     }
     b();
     i.a().a(this);
-    com.umeng.a.b.a(this, "PERSONAL_PAGE_SHOW");
+    AppProperties.getInstance(this).setProperties("PERSONAL_PAGE_SHOW");
   }
 
   protected void onDestroy()

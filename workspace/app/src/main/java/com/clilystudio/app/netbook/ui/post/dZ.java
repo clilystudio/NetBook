@@ -1,7 +1,7 @@
 package com.clilystudio.app.netbook.ui.post;
 
 import android.os.AsyncTask.Status;
-import com.clilystudio.app.netbook.am_CommonUtils;
+import com.clilystudio.app.netbook.util.am_CommonUtils;
 import android.view.View;
 
 import com.clilystudio.app.netbook.util.am_CommonUtils;

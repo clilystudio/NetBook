@@ -2,7 +2,7 @@ package com.clilystudio.app.netbook.util;
 
 import android.content.Context;
 import android.os.Handler;
-import com.clilystudio.app.netbook.am_CommonUtils;
+import com.clilystudio.app.netbook.util.am_CommonUtils;
 import cn.sharesdk.framework.Platform;
 import cn.sharesdk.framework.PlatformActionListener;
 import cn.sharesdk.framework.ShareSDK;

@@ -308,7 +308,7 @@ public class ReaderActivity extends BaseReadSlmActivity
     this.V.pauseSpeaking();
     this.u.setPause(true);
     this.u.a();
-    com.umeng.a.b.a(this, "tts_pause_speaking", this.d);
+    AppProperties.getInstance(this).setProperties("tts_pause_speaking", this.d);
   }
 
   @SuppressLint({"NewApi"})
@@ -1140,7 +1140,7 @@ public class ReaderActivity extends BaseReadSlmActivity
             new bp(this, (byte)0).b(new Void[0]);
           }
           new k(this.c).a();
-          com.umeng.a.b.a(this, "read_mode_33_new", com.arcsoft.hpay100.a.a.g(this.L));
+          AppProperties.getInstance(this).setProperties("read_mode_33_new", com.arcsoft.hpay100.a.a.g(this.L));
           return;
           i1 = MyApplication.a_getInstance().d();
         }

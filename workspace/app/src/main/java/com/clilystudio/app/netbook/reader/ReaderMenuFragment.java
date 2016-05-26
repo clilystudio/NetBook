@@ -1,7 +1,7 @@
 package com.clilystudio.app.netbook.reader;
 
 import android.os.Bundle;
-import com.clilystudio.app.netbook.am_CommonUtils;
+import com.clilystudio.app.netbook.util.am_CommonUtils;
 import android.support.v4.app.Fragment;
 import android.text.TextUtils;
 import android.view.LayoutInflater;

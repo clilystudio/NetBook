@@ -62,7 +62,7 @@ public class BookRankListActivity extends BaseActivity
     {
       startActivity(localIntent);
       String str2 = localBookRankSummary.getTitle();
-      com.umeng.a.b.a(this, "book_rank_list_item", str2 + "_" + str1);
+      AppProperties.getInstance(this).setProperties("book_rank_list_item", str2 + "_" + str1);
       return;
       str1 = "female";
       break;

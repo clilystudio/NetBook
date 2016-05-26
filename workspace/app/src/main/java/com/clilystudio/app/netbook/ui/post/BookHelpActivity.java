@@ -3,7 +3,7 @@ package com.clilystudio.app.netbook.ui.post;
 import android.annotation.TargetApi;
 import android.content.Intent;
 import android.os.Bundle;
-import com.clilystudio.app.netbook.am_CommonUtils;
+import com.clilystudio.app.netbook.util.am_CommonUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;

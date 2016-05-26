@@ -24,8 +24,8 @@ public class BaseActivity extends AppCompatActivity
   {
     View localView = LayoutInflater.from(this).inflate(paramInt, null);
     a().a(localView);
-    ((TextView)localView.findViewById(2131492936)).setText(paramString);
-    localView.findViewById(2131493013).setOnClickListener(new R(this));
+    ((TextView)localView.findViewById(R.id.title)).setText(paramString);
+    localView.findViewById(R.id.back).setOnClickListener(new R_onBackListener(this));
   }
 
   protected static UGCNewCollection e()

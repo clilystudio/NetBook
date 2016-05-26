@@ -2,7 +2,7 @@ package com.clilystudio.app.netbook.ui.ugcbook;
 
 import android.content.DialogInterface;
 
-import com.clilystudio.app.netbook.am_CommonUtils;
+import com.clilystudio.app.netbook.util.am_CommonUtils;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.clilystudio.app.netbook.model.Account;
 import com.clilystudio.app.netbook.model.UGCBookListRoot.UGCBook;

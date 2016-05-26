@@ -1,7 +1,7 @@
 package com.clilystudio.app.netbook.ui.post;
 
 import android.os.Bundle;
-import com.clilystudio.app.netbook.am_CommonUtils;
+import com.clilystudio.app.netbook.util.am_CommonUtils;
 import android.widget.EditText;
 import com.arcsoft.hpay100.a.a;
 import com.clilystudio.app.netbook.MyApplication;

@@ -1,6 +1,6 @@
 package com.clilystudio.app.netbook.ui.post;
 
-import com.clilystudio.app.netbook.am_CommonUtils;
+import com.clilystudio.app.netbook.util.am_CommonUtils;
 import android.view.View;
 import android.widget.TextView;
 import com.clilystudio.app.netbook.model.Account;

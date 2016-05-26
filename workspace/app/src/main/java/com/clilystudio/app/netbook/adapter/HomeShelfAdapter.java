@@ -2,7 +2,7 @@ package com.clilystudio.app.netbook.adapter;
 
 import android.app.Activity;
 import android.content.Context;
-import com.clilystudio.app.netbook.am_CommonUtils;
+import com.clilystudio.app.netbook.util.am_CommonUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;

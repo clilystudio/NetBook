@@ -1,6 +1,6 @@
 package com.clilystudio.app.netbook.ui.home;
 
-import com.clilystudio.app.netbook.am_CommonUtils;
+import com.clilystudio.app.netbook.util.am_CommonUtils;
 import android.view.View;
 
 import com.umeng.a.b;

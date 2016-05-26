@@ -3,7 +3,7 @@ package com.clilystudio.app.netbook.widget;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
-import com.clilystudio.app.netbook.am_CommonUtils;
+import com.clilystudio.app.netbook.util.am_CommonUtils;
 import android.support.v7.app.j;
 import android.support.v7.app.k;
 import android.util.AttributeSet;

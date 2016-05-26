@@ -1,6 +1,6 @@
 package com.clilystudio.app.netbook.util;
 
-import com.clilystudio.app.netbook.am_CommonUtils;
+import com.clilystudio.app.netbook.util.am_CommonUtils;
 import com.clilystudio.app.netbook.api.b;
 
 final class ap extends Thread

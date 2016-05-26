@@ -5,7 +5,7 @@ import android.content.res.Resources;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Handler;
-import com.clilystudio.app.netbook.am_CommonUtils;
+import com.clilystudio.app.netbook.util.am_CommonUtils;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
@@ -504,7 +504,7 @@ public class HomeActivity extends HomeParentActivity
         AccountInfo localAccountInfo = AccountInfo.getOrCreate(this.p.getToken());
         localAccountInfo.setPrevUnimpNotif(J.a(this).b());
         localAccountInfo.save();
-        com.umeng.a.b.a(this, "view_notification");
+        AppProperties.getInstance(this).setProperties("view_notification");
         com.clilystudio.app.netbook.event.i.a().c(new w());
         startActivity(new Intent(this, MyMessageActivity.class));
         return;
@@ -543,7 +543,7 @@ public class HomeActivity extends HomeParentActivity
         this.o.setImageResource(2130838180);
         com.arcsoft.hpay100.a.a.b(this, "customer_night_theme", true);
         com.arcsoft.hpay100.a.a.b(this, "night_mode", true);
-        com.umeng.a.b.a(this, "start_night_theme_home");
+        AppProperties.getInstance(this).setProperties("start_night_theme_home");
         com.arcsoft.hpay100.a.a.B(this);
         localIntent1.putExtra("onThemeChange", 1);
       }

@@ -2,7 +2,7 @@ package com.clilystudio.app.netbook.ui.post;
 
 import android.os.Bundle;
 import android.os.Handler;
-import com.clilystudio.app.netbook.am_CommonUtils;
+import com.clilystudio.app.netbook.util.am_CommonUtils;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;

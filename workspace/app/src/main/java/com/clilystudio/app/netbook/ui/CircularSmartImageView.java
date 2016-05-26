@@ -1,7 +1,6 @@
 package com.clilystudio.app.netbook.ui;
 
 import android.content.Context;
-import android.content.res.TypedArray;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Paint;

@@ -3,7 +3,7 @@ package com.clilystudio.app.netbook.ui;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import com.clilystudio.app.netbook.am_CommonUtils;
+import com.clilystudio.app.netbook.util.am_CommonUtils;
 
 import android.view.View;
 import android.widget.ImageView;

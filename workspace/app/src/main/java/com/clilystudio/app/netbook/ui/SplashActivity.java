@@ -2,267 +2,64 @@ package com.clilystudio.app.netbook.ui;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Handler;
-import com.clilystudio.app.netbook.am_CommonUtils;
-import android.util.Log;
-import android.view.View;
-import android.view.Window;
-import android.widget.ImageView;
-import android.widget.TextView;
+
 import com.activeandroid.ActiveAndroid;
+import com.clilystudio.app.netbook.AppProperties;
 import com.clilystudio.app.netbook.db.BookFile;
-import com.clilystudio.app.netbook.db.SplashRecord;
 import com.clilystudio.app.netbook.model.Account;
-import com.clilystudio.app.netbook.model.SplashAdvert;
 import com.clilystudio.app.netbook.model.TxtFileObject;
-import com.clilystudio.app.netbook.model.User;
 import com.clilystudio.app.netbook.ui.home.HomeActivity;
-import com.clilystudio.app.netbook.util.UmengGameTracer;
-import com.clilystudio.app.netbook.util.UmengGameTracer.From;
-import com.clilystudio.app.netbook.util.adutil.AdSplashImp;
-import com.clilystudio.app.netbook.util.adutil.g;
-import com.clilystudio.app.netbook.util.adutil.l;
 import com.clilystudio.app.netbook.util.am_CommonUtils;
-import com.clilystudio.app.netbook.util.e;
-import com.clilystudio.app.netbook.widget.AdContainerLayout;
+
 import java.io.File;
-import java.util.Calendar;
 
-public class SplashActivity extends Activity
-{
-  private static final String a = SplashActivity.class.getSimpleName();
-  private int b = 1200;
-  private Handler c = new Handler();
-  private cl d;
-  private boolean e = false;
-  private boolean f = false;
-  private AdContainerLayout g;
+public class SplashActivity extends Activity {
+    private static final String TAG = SplashActivity.class.getSimpleName();
 
-  private void f()
-  {
-    a(this.b);
-  }
-
-  private void g()
-  {
-    if ("1".equals(com.umeng.a.b.b(this, "splash_ad_third_enable")))
-    {
-      findViewById(2131493995).setVisibility(8);
-      a(3000L);
-      AdSplashImp localAdSplashImp = new AdSplashImp(this);
-      if (am_CommonUtils.i("com.qq.e.ads.nativ.NativeAD"))
-      {
-        new l(localAdSplashImp).a(this.g);
-        return;
-      }
-      if (am_CommonUtils.i("com.baidu.mobads.SplashAd"))
-      {
-        new g(localAdSplashImp).a(this.g);
-        return;
-      }
-      b();
-      return;
-    }
-    b();
-  }
-
-  private boolean h()
-  {
-    e locale = e.a(getApplicationContext());
-    SplashAdvert localSplashAdvert = locale.a();
-    if (localSplashAdvert != null);
-    while (true)
-    {
-      try
-      {
-        new UmengGameTracer(this, UmengGameTracer.From.Splash).a(localSplashAdvert.getSplashRecord().splashId);
-        bool = true;
-        this.b = 3000;
-        Bitmap localBitmap = localSplashAdvert.getBitmap();
-        String str = localSplashAdvert.getSplashRecord().link;
-        findViewById(2131493263).setVisibility(0);
-        findViewById(2131493995).setVisibility(8);
-        ImageView localImageView = (ImageView)findViewById(2131493264);
-        localImageView.setImageBitmap(localBitmap);
-        localImageView.setOnClickListener(new cj(this, localSplashAdvert, str));
-        i();
-        com.arcsoft.hpay100.a.a.m(this, localSplashAdvert.getSplashRecord().splashId);
-        f();
-        locale.b();
-        return bool;
-      }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-        bool = false;
-        continue;
-      }
-      boolean bool = false;
-    }
-  }
-
-  private void i()
-  {
-    ((TextView)findViewById(2131493265)).setOnClickListener(new ck(this));
-  }
-
-  public final void a()
-  {
-    if (this.d != null)
-    {
-      Log.i(a, "cancelAutoClose  ");
-      this.d.a();
-      this.d = null;
-    }
-  }
-
-  public final void a(long paramLong)
-  {
-    cl localcl = new cl(this);
-    Handler localHandler = this.c;
-    ci localci = new ci(this, localcl, paramLong);
-    if (paramLong <= 0L)
-      paramLong = 0L;
-    localHandler.postDelayed(localci, paramLong);
-    this.d = localcl;
-  }
-
-  public final void b()
-  {
-    ImageView localImageView = (ImageView)findViewById(2131493995);
-    if ((!am_CommonUtils.o(this)) && (localImageView.getDrawable() != null));
-    for (this.b = 1200; ; this.b = 0)
-    {
-      f();
-      com.arcsoft.hpay100.a.a.m(this, null);
-      return;
-    }
-  }
-
-  public final void c()
-  {
-    i();
-    findViewById(2131493263).setVisibility(0);
-  }
-
-  public final void d()
-  {
-    if (this.e)
-      return;
-    Intent localIntent1;
-    if ((!am_CommonUtils.g()) && (!am_CommonUtils.q(this)))
-      localIntent1 = new Intent(this, IntroActivity.class);
-    while (true)
-    {
-      startActivity(localIntent1);
-      finish();
-      return;
-      localIntent1 = new Intent(this, HomeActivity.class);
-      Intent localIntent2 = getIntent();
-      Uri localUri = localIntent2.getData();
-      if (localUri != null)
-        if ("text/plain".equals(localIntent2.getType()))
-        {
-          String str = localUri.getPath();
-          localIntent1.putExtra("file_name", str);
-          TxtFileObject.add(new BookFile(new File(str)));
+    public void onCreate(Bundle paramBundle) {
+        super.onCreate(paramBundle);
+        setContentView(R.layout.splash);
+        ActiveAndroid.initialize(this);
+        if (am_CommonUtils.g_hasLogined()) {
+            AppProperties.getInstance(this).setProperties("user_register", "YES");
+        } else {
+            AppProperties.getInstance(this).setProperties("user_register", "NO");
         }
-        else
-        {
-          localIntent1.putExtra("file_name", "nonsupport");
+        startHomeActivity();
+    }
+
+    public void onResume() {
+        super.onResume();
+         if (am_CommonUtils.g_hasLogined()) {
+            Account account = am_CommonUtils.e_getAccount();
+            if (account != null) {
+                String gender = account.getUser().getGender();
+                if (gender != null) {
+                    if (gender.equals("male")) {
+                        AppProperties.getInstance(this).setProperties("user_gender", "male");
+                    } else if (gender.equals("female")) {
+                        AppProperties.getInstance(this).setProperties("user_gender", "female");
+                    }
+                }
+            }
         }
     }
-  }
 
-  public void onCreate(Bundle paramBundle)
-  {
-    super.onCreate(paramBundle);
-    setContentView(2130903397);
-    com.arcsoft.hpay100.a.a.a(getWindow().getDecorView());
-    ActiveAndroid.initialize(this);
-    this.g = ((AdContainerLayout)findViewById(2131493263));
-    if (am_CommonUtils.q(this))
-    {
-      float f1 = com.arcsoft.hpay100.a.a.v(this, "rate_zssq_splash_ad");
-      double d1 = Math.random();
-      if ((f1 <= d1) || (!h()))
-        g();
+    private void startHomeActivity() {
+        Intent intentStart = new Intent(this, HomeActivity.class);
+        Intent intent = getIntent();
+        Uri data = intent.getData();
+        if (data != null) {
+            if ("text/plain".equals(intent.getType())) {
+                String fileName = data.getPath();
+                intentStart.putExtra("file_name", fileName);
+                TxtFileObject.add(new BookFile(new File(fileName)));
+            } else {
+                intentStart.putExtra("file_name", "nonsupport");
+            }
+        }
+        startActivity(intentStart);
     }
-    while (am_CommonUtils.g())
-    {
-      com.umeng.a.b.a(this, "user_register", "YES");
-      return;
-      b();
-    }
-    com.umeng.a.b.a(this, "user_register", "NO");
-  }
-
-  protected void onDestroy()
-  {
-    super.onDestroy();
-    this.e = true;
-  }
-
-  public void onPause()
-  {
-    super.onPause();
-    com.umeng.a.b.a(this);
-  }
-
-  protected void onRestart()
-  {
-    super.onRestart();
-    if (this.f)
-    {
-      if ((hasWindowFocus()) || (this.f))
-        d();
-    }
-    else
-      return;
-    this.f = true;
-  }
-
-  public void onResume()
-  {
-    super.onResume();
-    com.umeng.a.b.b(this);
-    com.xiaomi.mistatistic.sdk.b.a();
-    int i;
-    String str;
-    if (am_CommonUtils.g())
-    {
-      Calendar localCalendar = Calendar.getInstance();
-      i = 10000 * localCalendar.get(1) + 100 * localCalendar.get(2) + localCalendar.get(5);
-      if (i > com.arcsoft.hpay100.a.a.a(this, "KEY_OPEN_TIME", 0))
-      {
-        str = am_CommonUtils.e().getUser().getGender();
-        if (str != null)
-          break label73;
-      }
-    }
-    return;
-    label73: if (str.equals("male"))
-    {
-      com.xiaomi.mistatistic.sdk.b.a("user_gender", "male");
-      com.umeng.a.b.a(this, "user_gender", "male");
-    }
-    while (true)
-    {
-      com.arcsoft.hpay100.a.a.b(this, "KEY_OPEN_TIME", i);
-      return;
-      if (str.equals("female"))
-      {
-        com.xiaomi.mistatistic.sdk.b.a("user_gender", "female");
-        com.umeng.a.b.a(this, "user_gender", "female");
-      }
-    }
-  }
 }
-
-/* Location:           E:\10.Progs\Dev\Compiler\zssq.jar
- * Qualified Name:     com.clilystudio.app.netbook.ui.SplashActivity
- * JD-Core Version:    0.6.2
- */

@@ -8,7 +8,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Environment;
-import com.clilystudio.app.netbook.am_CommonUtils;
+import com.clilystudio.app.netbook.util.am_CommonUtils;
 import android.widget.Toast;
 import com.arcsoft.hpay100.a.a;
 import com.clilystudio.app.netbook.MyApplication;

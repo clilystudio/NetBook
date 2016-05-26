@@ -11,21 +11,20 @@ import java.util.Properties;
 
 // @RF: b
 public final class AppProperties {
-    private static AppProperties b;
-    private Context a;
+    private static AppProperties mInstance;
+    private Context mContext;
 
     public static AppProperties getInstance(Context paramContext) {
-        if (b == null) {
-            AppProperties localb = new AppProperties();
-            b = localb;
-            localb.a = paramContext;
+        if (mInstance == null) {
+            mInstance = new AppProperties();
+            mInstance.mContext = paramContext;
         }
-        return b;
+        return mInstance;
     }
 
     private void saveProperties(Properties properties) {
         try {
-            FileOutputStream fos = new FileOutputStream(new File(this.a.getDir("config", 0), "config"));
+            FileOutputStream fos = new FileOutputStream(new File(this.mContext.getDir("config", 0), "config"));
             properties.store(fos, null);
             fos.flush();
             fos.close();
@@ -35,36 +34,36 @@ public final class AppProperties {
     }
 
     public final Properties loadProperties() {
-        FileInputStream v1 = null;
-        Properties p = new Properties();
+        FileInputStream fis = null;
+        Properties properties = new Properties();
         try {
-            v1 = new FileInputStream(new File(this.a.getDir("config", 0), "config"));
-            p.load(v1);
+            fis = new FileInputStream(new File(this.mContext.getDir("config", 0), "config"));
+            properties.load(fis);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return p;
+        return properties;
     }
 
-    public final void setProperties(String paramString1, String paramString2) {
-        Properties localProperties = loadProperties();
-        localProperties.setProperty(paramString1, paramString2);
-        saveProperties(localProperties);
+    public final void setProperties(String name, String value) {
+        Properties properties = loadProperties();
+        properties.setProperty(name, value);
+        saveProperties(properties);
     }
 
-    public final void setProperties(Properties paramProperties) {
-        Properties localProperties = loadProperties();
-        localProperties.putAll(paramProperties);
-        saveProperties(localProperties);
+    public final void setProperties(Properties properties) {
+        Properties loadProperties = loadProperties();
+        loadProperties.putAll(properties);
+        saveProperties(loadProperties);
     }
 
-    public final void removeProperties(String[] paramArrayOfString) {
-        Properties localProperties = loadProperties();
-        int i = paramArrayOfString.length;
-        for (int j = 0; j < i; j++)
-            localProperties.remove(paramArrayOfString[j]);
-        saveProperties(localProperties);
+    public final void removeProperties(String[] keys) {
+        Properties properties = loadProperties();
+        for (int i = 0; i < keys.length; i++) {
+            properties.remove(keys[i]);
+        }
+        saveProperties(properties);
     }
 }

@@ -2,7 +2,7 @@ package com.clilystudio.app.netbook.util;
 
 import android.app.Activity;
 import android.content.Intent;
-import com.clilystudio.app.netbook.am_CommonUtils;
+import com.clilystudio.app.netbook.util.am_CommonUtils;
 import com.arcsoft.hpay100.a.a;
 import com.squareup.a.b;
 import com.clilystudio.app.netbook.MyApplication;

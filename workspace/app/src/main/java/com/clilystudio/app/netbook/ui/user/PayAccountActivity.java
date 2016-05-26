@@ -48,13 +48,13 @@ public class PayAccountActivity extends BaseActivity
       startActivity(PayConsumeActivity.a(this, getIntent().getStringExtra("key_token"), "消费记录"));
       return;
     case 2131493807:
-      com.umeng.a.b.a(this, "user_remove_ad_click");
+      AppProperties.getInstance(this).setProperties("user_remove_ad_click");
       startActivity(new Intent(this, RemoveAdActivity.class));
       return;
     case 2131493199:
     }
     new p(this).a();
-    com.umeng.a.b.a(this, "charge_click_count");
+    AppProperties.getInstance(this).setProperties("charge_click_count");
   }
 
   protected void onCreate(Bundle paramBundle)

@@ -2,7 +2,7 @@ package com.clilystudio.app.netbook.ui.home;
 
 import android.content.Intent;
 import android.os.Bundle;
-import com.clilystudio.app.netbook.am_CommonUtils;
+import com.clilystudio.app.netbook.util.am_CommonUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
