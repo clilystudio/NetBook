@@ -3,10 +3,10 @@
   xmlns:android="http://schemas.android.com/apk/res/android">
     <LinearLayout android:orientation="vertical" android:id="@id/ll_mask" android:background="#88000000" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" />
     <RelativeLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <FrameLayout android:id="@id/left" android:layout_width="@dimen/actionbar_back_width" android:layout_height="fill_parent">
+        <FrameLayout android:id="@+id/left" android:layout_width="@dimen/actionbar_back_width" android:layout_height="fill_parent">
             <ImageView android:layout_gravity="left|center" android:id="@id/back" android:background="?selectableItemBackgroundBorderless" android:paddingLeft="@dimen/dp_16" android:paddingRight="@dimen/dp_16" android:layout_width="wrap_content" android:layout_height="fill_parent" android:src="@drawable/ab_back" android:contentDescription="@string/accessible_return" />
         </FrameLayout>
-        <RelativeLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/middle" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_toRightOf="@id/left">
+        <RelativeLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@+id/middle" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_toRightOf="@+id/left">
             <TextView android:textSize="@dimen/text_size_18" android:textColor="#ffffffff" android:layout_gravity="center" android:id="@id/title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
             <TextView android:textSize="@dimen/text_size_14" android:textColor="#ffffffff" android:layout_gravity="center" android:id="@id/sub_title" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2.0dip" android:singleLine="true" android:maxLength="10" android:layout_below="@id/title" />
         </RelativeLayout>

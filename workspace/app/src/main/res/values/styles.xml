@@ -6,8 +6,6 @@
         <item name="barSize">18.0dip</item>
     </style>
     <style name="Widget.Design.TabLayout" parent="@style/Base.Widget.Design.TabLayout">
-        <item name="tabMode">fixed</item>
-        <item name="tabGravity">fill</item>
     </style>
     <style name="Base.Theme.AppCompat.DialogWhenLarge" parent="@style/Theme.AppCompat" />
     <style name="Base.Theme.AppCompat.Light.DialogWhenLarge" parent="@style/Theme.AppCompat.Light" />
@@ -403,9 +401,6 @@
         <item name="android:dropDownHorizontalOffset">0.0dip</item>
         <item name="android:dropDownVerticalOffset">0.0dip</item>
         <item name="overlapAnchor">true</item>
-        <item name="spinnerMode">dropdown</item>
-        <item name="popupPromptView">@layout/abc_simple_dropdown_hint</item>
-        <item name="disableChildrenWhenDisabled">true</item>
     </style>
     <style name="Base.Widget.AppCompat.Spinner.Underlined" parent="@style/Base.Widget.AppCompat.Spinner">
         <item name="android:background">@drawable/abc_spinner_textfield_background_material</item>
@@ -918,8 +913,6 @@
     <style name="Base.Widget.AppCompat.DrawerArrowToggle.Common" parent="">
         <item name="color">?android:textColorSecondary</item>
         <item name="spinBars">true</item>
-        <item name="topBottomBarArrowSize">11.309998dip</item>
-        <item name="middleBarArrowSize">16.0dip</item>
         <item name="thickness">2.0dip</item>
     </style>
     <style name="Base.Widget.AppCompat.Light.ActionBar" parent="@style/Base.Widget.AppCompat.ActionBar">
@@ -962,14 +955,6 @@
         <item name="collapseContentDescription">@string/abc_toolbar_collapse_description</item>
     </style>
     <style name="Base.Widget.Design.TabLayout" parent="@android:style/Widget">
-        <item name="tabIndicatorColor">?colorAccent</item>
-        <item name="tabIndicatorHeight">2.0dip</item>
-        <item name="tabBackground">?selectableItemBackground</item>
-        <item name="tabMaxWidth">@dimen/tab_max_width</item>
-        <item name="tabTextAppearance">@style/TextAppearance.Design.Tab</item>
-        <item name="tabSelectedTextColor">?android:textColorPrimary</item>
-        <item name="tabPaddingStart">12.0dip</item>
-        <item name="tabPaddingEnd">12.0dip</item>
     </style>
     <style name="BaseTheme" parent="@style/AppTheme">
         <item name="android:textColorSecondary">@color/light_text_secondary</item>
@@ -1099,19 +1084,11 @@
         <item name="android:textColorHint">#42000000</item>
         <item name="android:windowAnimationStyle">@style/BottomSheet.Animation</item>
         <item name="android:backgroundDimEnabled">true</item>
-        <item name="dialogBackground">@android:color/background_light</item>
-        <item name="listSelector">@drawable/bs_list_selector</item>
-        <item name="drawSelectorOnTop">false</item>
-        <item name="dividerColor">@color/bs_divider_color</item>
-        <item name="numColumns">@integer/bs_grid_colum</item>
     </style>
     <style name="BottomSheet.Dialog.Dark" parent="@style/BottomSheet.Dialog">
         <item name="android:textColorPrimary">#ff999999</item>
         <item name="android:textColorSecondary">#ff666666</item>
         <item name="android:textColorHint">#ff505050</item>
-        <item name="dialogBackground">#ff444444</item>
-        <item name="listSelector">@drawable/bs_list_dark_selector</item>
-        <item name="dividerColor">#ff222222</item>
     </style>
     <style name="BottomSheet.Grid" parent="@style/BottomSheet" />
     <style name="BottomSheet.Grid.Item" parent="@style/BottomSheet.Grid">
@@ -1178,7 +1155,6 @@
         <item name="android:windowContentOverlay">@null</item>
         <item name="android:windowAnimationStyle">@style/BottomSheet.Animation</item>
         <item name="android:backgroundDimEnabled">true</item>
-        <item name="drawSelectorOnTop">false</item>
     </style>
     <style name="CenterBottom">
         <item name="android:gravity">center</item>
@@ -1293,9 +1269,6 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_margin">@dimen/fab_compat_margin</item>
         <item name="elevation">5.0dip</item>
-        <item name="rippleColor">@color/primary_red_dark</item>
-        <item name="pressedTranslationZ">10.0dip</item>
-        <item name="borderWidth">0.0dip</item>
         <item name="backgroundTint">@color/primary_red</item>
     </style>
     <style name="Feed_Add_Checkbox" parent="@android:style/Widget.CompoundButton.CheckBox">
@@ -1929,21 +1902,12 @@
         <item name="elevation">@dimen/appbar_elevation</item>
     </style>
     <style name="Widget.Design.CollapsingToolbar" parent="@android:style/Widget">
-        <item name="expandedTitleMargin">32.0dip</item>
-        <item name="expandedTitleTextAppearance">@style/TextAppearance.Design.CollapsingToolbar.Expanded</item>
-        <item name="collapsedTitleTextAppearance">@style/TextAppearance.AppCompat.Widget.ActionBar.Title</item>
-        <item name="statusBarScrim">?colorPrimaryDark</item>
     </style>
     <style name="Widget.Design.CoordinatorLayout" parent="@android:style/Widget">
-        <item name="statusBarBackground">?colorPrimaryDark</item>
     </style>
     <style name="Widget.Design.FloatingActionButton" parent="@android:style/Widget">
         <item name="android:background">@drawable/fab_background</item>
         <item name="elevation">@dimen/fab_elevation</item>
-        <item name="rippleColor">?colorControlHighlight</item>
-        <item name="fabSize">normal</item>
-        <item name="pressedTranslationZ">@dimen/fab_translation_z_pressed</item>
-        <item name="borderWidth">@dimen/fab_border_width</item>
         <item name="backgroundTint">?colorAccent</item>
     </style>
     <style name="Widget.Design.NavigationView" parent="">
@@ -1953,7 +1917,6 @@
         <item name="elevation">@dimen/navigation_elevation</item>
     </style>
     <style name="Widget.Design.ScrimInsetsFrameLayout" parent="">
-        <item name="insetForeground">#44000000</item>
     </style>
     <style name="Widget.Design.Snackbar" parent="@android:style/Widget">
         <item name="android:theme">@style/ThemeOverlay.AppCompat.Dark</item>
@@ -1963,11 +1926,8 @@
         <item name="android:maxWidth">@dimen/snackbar_max_width</item>
         <item name="android:minWidth">@dimen/snackbar_min_width</item>
         <item name="elevation">@dimen/snackbar_elevation</item>
-        <item name="maxActionInlineWidth">@dimen/snackbar_action_inline_max_width</item>
     </style>
     <style name="Widget.Design.TextInputLayout" parent="@android:style/Widget">
-        <item name="hintTextAppearance">@style/TextAppearance.Design.Hint</item>
-        <item name="errorTextAppearance">@style/TextAppearance.Design.Error</item>
     </style>
     <style name="alertDialogStyleDark" parent="@style/Theme.AppCompat.Dialog.Alert">
         <item name="android:textColorPrimary">?android:textColor</item>

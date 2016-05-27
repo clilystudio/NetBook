@@ -1,7 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TabHost android:id="@id/host" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <android.support.v4.view.ViewPager android:id="@id/pager" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="@dimen/tab_margin" />
-    <com.ushaqi.zhuishushenqi.widget.TabWidgetV2 android:orientation="horizontal" android:id="@android:id/tabs" android:layout_width="fill_parent" android:layout_height="@dimen/tab_height" android:divider="@null" apps:item_count="4" xmlns:apps="http://schemas.android.com/apk/res-auto" />
-    <FrameLayout android:id="@android:id/tabcontent" android:layout_width="fill_parent" android:layout_height="0.0dip" />
+<TabHost xmlns:android="http://schemas.android.com/apk/res/android"
+         android:id="@id/host"
+         android:layout_width="fill_parent"
+         android:layout_height="fill_parent">
+
+    <android.support.v4.view.ViewPager
+        android:id="@id/pager"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginTop="@dimen/tab_margin"/>
+
+    <com.clilystudio.app.netbook.widget.TabWidgetV2 xmlns:apps="http://schemas.android.com/apk/res-auto"
+                                                 android:id="@android:id/tabs"
+                                                 android:layout_width="fill_parent"
+                                                 android:layout_height="@dimen/tab_height"
+                                                 android:divider="@null"
+                                                 android:orientation="horizontal"
+                                                 apps:item_count="4"/>
+
+    <FrameLayout
+        android:id="@android:id/tabcontent"
+        android:layout_width="fill_parent"
+        android:layout_height="0.0dip"/>
 </TabHost>
