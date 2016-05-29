@@ -1,14 +1,13 @@
 package com.clilystudio.app.netbook.util;
 
 import com.clilystudio.app.netbook.model.MenuAd;
+
 import java.util.Comparator;
 
 final class b
-  implements Comparator<MenuAd>
-{
-  b(a parama)
-  {
-  }
+        implements Comparator<MenuAd> {
+    b(a parama) {
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

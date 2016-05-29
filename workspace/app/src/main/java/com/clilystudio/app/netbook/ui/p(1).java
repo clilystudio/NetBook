@@ -3,15 +3,13 @@ package com.clilystudio.app.netbook.ui;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public final class p
-{
-  TextView a;
-  TextView b;
-  ImageView c;
+public final class p {
+    TextView a;
+    TextView b;
+    ImageView c;
 
-  public p(AudioBookPlayActivity paramAudioBookPlayActivity)
-  {
-  }
+    public p(AudioBookPlayActivity paramAudioBookPlayActivity) {
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

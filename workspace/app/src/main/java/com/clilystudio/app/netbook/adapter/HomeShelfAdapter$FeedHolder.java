@@ -2,23 +2,23 @@ package com.clilystudio.app.netbook.adapter;
 
 import android.view.View;
 import android.widget.TextView;
-import butterknife.ButterKnife;
-import butterknife.InjectView;
+
 import com.clilystudio.app.netbook.widget.BookShelfFlagView;
 
-class HomeShelfAdapter$FeedHolder
-{
+import butterknife.ButterKnife;
+import butterknife.InjectView;
 
-  @InjectView(2131493754)
-  BookShelfFlagView flag;
+class HomeShelfAdapter$FeedHolder {
 
-  @InjectView(2131493481)
-  TextView title;
+    @InjectView(2131493754)
+    BookShelfFlagView flag;
 
-  HomeShelfAdapter$FeedHolder(View paramView)
-  {
-    ButterKnife.inject(this, paramView);
-  }
+    @InjectView(2131493481)
+    TextView title;
+
+    HomeShelfAdapter$FeedHolder(View paramView) {
+        ButterKnife.inject(this, paramView);
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

@@ -1,29 +1,24 @@
 package com.clilystudio.app.netbook.model;
 
-public class PayChargeRecord
-{
-  private boolean ok;
-  private PayChargeRecord.Order[] orders;
+public class PayChargeRecord {
+    private boolean ok;
+    private PayChargeRecord.Order[] orders;
 
-  public PayChargeRecord.Order[] getOrders()
-  {
-    return this.orders;
-  }
+    public PayChargeRecord.Order[] getOrders() {
+        return this.orders;
+    }
 
-  public boolean isOk()
-  {
-    return this.ok;
-  }
+    public boolean isOk() {
+        return this.ok;
+    }
 
-  public void setOk(boolean paramBoolean)
-  {
-    this.ok = paramBoolean;
-  }
+    public void setOk(boolean paramBoolean) {
+        this.ok = paramBoolean;
+    }
 
-  public void setOrders(PayChargeRecord.Order[] paramArrayOfOrder)
-  {
-    this.orders = paramArrayOfOrder;
-  }
+    public void setOrders(PayChargeRecord.Order[] paramArrayOfOrder) {
+        this.orders = paramArrayOfOrder;
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

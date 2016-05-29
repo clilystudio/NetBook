@@ -1,16 +1,13 @@
 package com.clilystudio.app.netbook.ui;
 
 final class ar
-  implements aa
-{
-  ar(BookCategoryListActivity paramBookCategoryListActivity)
-  {
-  }
+        implements aa {
+    ar(BookCategoryListActivity paramBookCategoryListActivity) {
+    }
 
-  public final void a()
-  {
-    BookCategoryListActivity.a(this.a);
-  }
+    public final void a() {
+        BookCategoryListActivity.a(this.a);
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

@@ -1,19 +1,15 @@
 package com.clilystudio.app.netbook.ui;
 
 import android.view.View;
-import android.view.View.OnClickListener;
 
 final class as
-  implements View.OnClickListener
-{
-  as(BookCategoryListActivity paramBookCategoryListActivity)
-  {
-  }
+        implements View.OnClickListener {
+    as(BookCategoryListActivity paramBookCategoryListActivity) {
+    }
 
-  public final void onClick(View paramView)
-  {
-    BookCategoryListActivity.e(this.a);
-  }
+    public final void onClick(View paramView) {
+        BookCategoryListActivity.e(this.a);
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

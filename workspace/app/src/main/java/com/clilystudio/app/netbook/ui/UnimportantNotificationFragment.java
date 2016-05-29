@@ -1,20 +1,16 @@
 package com.clilystudio.app.netbook.ui;
 
-import android.support.v4.app.FragmentActivity;
 import com.clilystudio.app.netbook.adapter.NotificationAdapter;
 import com.clilystudio.app.netbook.adapter.Y;
 
-public class UnimportantNotificationFragment extends NotifFragment
-{
-  protected final NotifFragment.Type a()
-  {
-    return NotifFragment.Type.UNIMPORTANT;
-  }
+public class UnimportantNotificationFragment extends NotifFragment {
+    protected final NotifFragment.Type a() {
+        return NotifFragment.Type.UNIMPORTANT;
+    }
 
-  protected final NotificationAdapter b()
-  {
-    return new Y(getActivity().getLayoutInflater());
-  }
+    protected final NotificationAdapter b() {
+        return new Y(getActivity().getLayoutInflater());
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

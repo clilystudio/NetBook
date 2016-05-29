@@ -2,18 +2,15 @@ package com.clilystudio.app.netbook.reader;
 
 import com.clilystudio.app.netbook.a_packA.e;
 
-public final class ag extends e<String, Void, Boolean>
-{
-  private af a;
+public final class ag extends e<String, Void, Boolean> {
+    private af a;
 
-  public ag(Reader paramReader)
-  {
-  }
+    public ag(Reader paramReader) {
+    }
 
-  public final void a(af paramaf)
-  {
-    this.a = paramaf;
-  }
+    public final void a(af paramaf) {
+        this.a = paramaf;
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

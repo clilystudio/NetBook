@@ -4,16 +4,13 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 
-final class bn extends BroadcastReceiver
-{
-  bn(MysteryActivity paramMysteryActivity)
-  {
-  }
+final class bn extends BroadcastReceiver {
+    bn(MysteryActivity paramMysteryActivity) {
+    }
 
-  public final void onReceive(Context paramContext, Intent paramIntent)
-  {
-    MysteryActivity.a(this.a);
-  }
+    public final void onReceive(Context paramContext, Intent paramIntent) {
+        MysteryActivity.a(this.a);
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

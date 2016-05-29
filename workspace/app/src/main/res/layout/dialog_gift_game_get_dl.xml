@@ -1,12 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="?android:windowBackground" android:paddingTop="@dimen/dp_16" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/text_size_17" android:textColor="?android:textColor" android:ellipsize="end" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dp_16" android:text="下载后即可领取" android:singleLine="true" />
-    <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dp_16" android:layout_marginTop="@dimen/dp_20" android:layout_marginRight="@dimen/dp_16">
-        <com.ushaqi.zhuishushenqi.ui.SmartImageView android:id="@id/game_gift_icon" android:layout_width="@dimen/dp_42" android:layout_height="@dimen/dp_42" android:layout_marginRight="@dimen/dp_16" android:scaleType="fitXY" android:layout_centerVertical="true" />
-        <TextView android:textSize="@dimen/text_size_17" android:textColor="?android:textColor" android:ellipsize="end" android:id="@id/game_gift_name" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="aaaaaaaaaaa" android:singleLine="true" android:layout_toRightOf="@id/game_gift_icon" />
-        <TextView android:textSize="@dimen/text_size_12" android:textColor="?android:textColorSecondary" android:id="@id/game_gift_type_size" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp_8" android:text="棋牌 | 100M" android:layout_toRightOf="@id/game_gift_icon" android:layout_below="@id/game_gift_name" />
-        <TextView android:textSize="@dimen/text_size_12" android:textColor="?android:textColorSecondary" android:id="@id/game_gift_left" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp_8" android:text="剩余1个礼包" android:layout_toRightOf="@id/game_gift_icon" android:layout_below="@id/game_gift_type_size" />
+<LinearLayout android:orientation="vertical"
+              android:background="?android:windowBackground"
+              android:paddingTop="@dimen/dp_16"
+              android:layout_width="fill_parent"
+              android:layout_height="wrap_content"
+              xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <TextView
+        android:textSize="@dimen/text_size_17"
+        android:textColor="?android:textColor"
+        android:ellipsize="end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_16"
+        android:text="下载后即可领取"
+        android:singleLine="true"/>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_16"
+        android:layout_marginTop="@dimen/dp_20"
+        android:layout_marginRight="@dimen/dp_16">
+
+        <com.clilystudio.app.netbook.ui.SmartImageView
+            android:id="@+id/game_gift_icon"
+            android:layout_width="@dimen/dp_42"
+            android:layout_height="@dimen/dp_42"
+            android:layout_marginRight="@dimen/dp_16"
+            android:scaleType="fitXY"
+            android:layout_centerVertical="true"/>
+
+        <TextView
+            android:textSize="@dimen/text_size_17"
+            android:textColor="?android:textColor"
+            android:ellipsize="end"
+            android:id="@+id/game_gift_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="aaaaaaaaaaa"
+            android:singleLine="true"
+            android:layout_toRightOf="@id/game_gift_icon"/>
+
+        <TextView
+            android:textSize="@dimen/text_size_12"
+            android:textColor="?android:textColorSecondary"
+            android:id="@+id/game_gift_type_size"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_8"
+            android:text="棋牌 | 100M"
+            android:layout_toRightOf="@id/game_gift_icon"
+            android:layout_below="@id/game_gift_name"/>
+
+        <TextView
+            android:textSize="@dimen/text_size_12"
+            android:textColor="?android:textColorSecondary"
+            android:id="@+id/game_gift_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_8"
+            android:text="剩余1个礼包"
+            android:layout_toRightOf="@id/game_gift_icon"
+            android:layout_below="@id/game_gift_type_size"/>
     </RelativeLayout>
-    <com.ushaqi.zhuishushenqi.widget.GiftGameGetButton android:textSize="@dimen/text_size_17" android:textColor="@color/white" android:id="@id/game_gift_download" android:layout_width="fill_parent" android:layout_height="@dimen/dp_55" android:layout_marginTop="@dimen/dp_20" android:text="@string/download" />
+
+    <com.clilystudio.app.netbook.widget.GiftGameGetButton
+        android:textSize="@dimen/text_size_17"
+        android:textColor="@color/white"
+        android:id="@+id/game_gift_download"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/dp_55"
+        android:layout_marginTop="@dimen/dp_20"
+        android:text="@string/download"/>
 </LinearLayout>

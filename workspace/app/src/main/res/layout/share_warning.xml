@@ -30,7 +30,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@id/content"
+                android:id="@+id/content"
                 style="@style/LargeText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -48,7 +48,7 @@
     </LinearLayout>
 
     <ImageView
-        android:id="@id/close"
+        android:id="@+id/close"
         android:layout_width="30.0dip"
         android:layout_height="30.0dip"
         android:layout_alignParentRight="true"
@@ -67,7 +67,7 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@id/negative"
+            android:id="@+id/negative"
             style="@style/MediumText"
             android:layout_width="wrap_content"
             android:layout_height="35.0dip"
@@ -79,7 +79,7 @@
             android:textColor="@color/font_red"/>
 
         <Button
-            android:id="@id/positive"
+            android:id="@+id/positive"
             style="@style/MediumText"
             android:layout_width="wrap_content"
             android:layout_height="35.0dip"

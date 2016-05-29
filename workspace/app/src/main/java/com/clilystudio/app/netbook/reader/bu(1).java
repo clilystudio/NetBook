@@ -1,19 +1,15 @@
 package com.clilystudio.app.netbook.reader;
 
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 
 final class bu
-  implements DialogInterface.OnClickListener
-{
-  bu(bt parambt)
-  {
-  }
+        implements DialogInterface.OnClickListener {
+    bu(bt parambt) {
+    }
 
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-  }
+    public final void onClick(DialogInterface paramDialogInterface, int paramInt) {
+        paramDialogInterface.dismiss();
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

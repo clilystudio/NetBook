@@ -1,18 +1,15 @@
 package com.clilystudio.app.netbook.model;
 
-public class HotKeywordResult
-{
-  private String[] hotWords;
+public class HotKeywordResult {
+    private String[] hotWords;
 
-  public String[] getHotWords()
-  {
-    return this.hotWords;
-  }
+    public String[] getHotWords() {
+        return this.hotWords;
+    }
 
-  public void setHotWords(String[] paramArrayOfString)
-  {
-    this.hotWords = paramArrayOfString;
-  }
+    public void setHotWords(String[] paramArrayOfString) {
+        this.hotWords = paramArrayOfString;
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

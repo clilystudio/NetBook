@@ -1,14 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:paddingLeft="@dimen/dp_16" android:paddingTop="12.0dip" android:paddingRight="@dimen/dp_16" android:paddingBottom="12.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/ListItemDeprecated"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.ushaqi.zhuishushenqi.widget.CoverView android:id="@id/iv_cover" android:layout_centerVertical="true" style="@style/CoverView" />
-    <FrameLayout android:id="@id/item_add_layout" android:layout_width="@dimen/dp_48" android:layout_height="@dimen/dp_24" android:layout_alignParentRight="true" android:layout_centerVertical="true">
-        <Button android:textSize="@dimen/text_size_12" android:textColor="?android:textColorTertiary" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/item_add_btn" android:background="@drawable/ugcbook_add_back" android:focusable="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="添加" />
-        <TextView android:textSize="@dimen/text_size_12" android:textColor="?android:textColorTertiary" android:gravity="center" android:layout_gravity="center" android:id="@id/item_add_text" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="已添加" android:layout_alignParentRight="true" />
+<RelativeLayout android:paddingLeft="@dimen/dp_16"
+                android:paddingTop="12.0dip"
+                android:paddingRight="@dimen/dp_16"
+                android:paddingBottom="12.0dip"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                style="@style/ListItemDeprecated"
+                xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <com.clilystudio.app.netbook.widget.CoverView
+        android:id="@+id/iv_cover"
+        android:layout_centerVertical="true"
+        style="@style/CoverView"/>
+
+    <FrameLayout
+        android:id="@+id/item_add_layout"
+        android:layout_width="@dimen/dp_48"
+        android:layout_height="@dimen/dp_24"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true">
+
+        <Button
+            android:textSize="@dimen/text_size_12"
+            android:textColor="?android:textColorTertiary"
+            android:gravity="center"
+            android:layout_gravity="center_vertical"
+            android:id="@+id/item_add_btn"
+            android:background="@drawable/ugcbook_add_back"
+            android:focusable="false"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:text="添加"/>
+
+        <TextView
+            android:textSize="@dimen/text_size_12"
+            android:textColor="?android:textColorTertiary"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:id="@+id/item_add_text"
+            android:visibility="gone"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:text="已添加"
+            android:layout_alignParentRight="true"/>
     </FrameLayout>
-    <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dp_16" android:layout_marginTop="4.0dip" android:layout_marginRight="@dimen/dp_16" android:layout_toLeftOf="@id/item_add_layout" android:layout_toRightOf="@id/iv_cover" android:layout_alignTop="@id/book_summary_listitem_cover_layout">
-        <TextView android:ellipsize="end" android:id="@id/tv_title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="简介" android:singleLine="true" style="@style/LargeText" />
-        <TextView android:textSize="@dimen/list_item_resource_select" android:textColor="?backgroundNormal" android:gravity="center_vertical" android:id="@id/prom_label" android:background="@drawable/reader_resource_sel_label_active" android:paddingLeft="5.0dip" android:paddingTop="2.0dip" android:paddingRight="5.0dip" android:paddingBottom="3.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip" android:layout_marginTop="4.0dip" android:text="17 K" android:layout_toRightOf="@id/tv_title" />
-        <TextView android:textSize="@dimen/text_size_12" android:textColor="?android:textColorSecondary" android:ellipsize="end" android:id="@id/tv_short_intro" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:singleLine="true" android:layout_below="@id/tv_title" android:layout_alignLeft="@id/tv_title" style="@style/SmallText" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_16"
+        android:layout_marginTop="4.0dip"
+        android:layout_marginRight="@dimen/dp_16"
+        android:layout_toLeftOf="@id/item_add_layout"
+        android:layout_toRightOf="@id/iv_cover"
+        android:layout_alignTop="@id/book_summary_listitem_cover_layout">
+
+        <TextView
+            android:ellipsize="end"
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="简介"
+            android:singleLine="true"
+            style="@style/LargeText"/>
+
+        <TextView
+            android:textSize="@dimen/list_item_resource_select"
+            android:textColor="?backgroundNormal"
+            android:gravity="center_vertical"
+            android:id="@+id/prom_label"
+            android:background="@drawable/reader_resource_sel_label_active"
+            android:paddingLeft="5.0dip"
+            android:paddingTop="2.0dip"
+            android:paddingRight="5.0dip"
+            android:paddingBottom="3.0dip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="6.0dip"
+            android:layout_marginTop="4.0dip"
+            android:text="17 K"
+            android:layout_toRightOf="@id/tv_title"/>
+
+        <TextView
+            android:textSize="@dimen/text_size_12"
+            android:textColor="?android:textColorSecondary"
+            android:ellipsize="end"
+            android:id="@+id/tv_short_intro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8.0dip"
+            android:singleLine="true"
+            android:layout_below="@id/tv_title"
+            android:layout_alignLeft="@id/tv_title"
+            style="@style/SmallText"/>
     </RelativeLayout>
 </RelativeLayout>

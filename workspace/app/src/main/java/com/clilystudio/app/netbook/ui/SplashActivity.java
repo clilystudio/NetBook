@@ -4,9 +4,11 @@ import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.activeandroid.ActiveAndroid;
 import com.clilystudio.app.netbook.AppProperties;
+import com.clilystudio.app.netbook.R;
 import com.clilystudio.app.netbook.db.BookFile;
 import com.clilystudio.app.netbook.model.Account;
 import com.clilystudio.app.netbook.model.TxtFileObject;
@@ -23,6 +25,7 @@ public class SplashActivity extends Activity {
         setContentView(R.layout.splash);
         ActiveAndroid.initialize(this);
         if (am_CommonUtils.g_hasLogined()) {
+            Log.d(TAG, "hasLogined");
             AppProperties.getInstance(this).setProperties("user_register", "YES");
         } else {
             AppProperties.getInstance(this).setProperties("user_register", "NO");
@@ -32,7 +35,7 @@ public class SplashActivity extends Activity {
 
     public void onResume() {
         super.onResume();
-         if (am_CommonUtils.g_hasLogined()) {
+        if (am_CommonUtils.g_hasLogined()) {
             Account account = am_CommonUtils.e_getAccount();
             if (account != null) {
                 String gender = account.getUser().getGender();

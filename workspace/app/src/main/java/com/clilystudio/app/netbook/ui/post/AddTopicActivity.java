@@ -1,11 +1,9 @@
 package com.clilystudio.app.netbook.ui.post;
 
-public class AddTopicActivity extends AddVoteActivity
-{
-  protected final String b()
-  {
-    return "话题";
-  }
+public class AddTopicActivity extends AddVoteActivity {
+    protected final String b() {
+        return "话题";
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

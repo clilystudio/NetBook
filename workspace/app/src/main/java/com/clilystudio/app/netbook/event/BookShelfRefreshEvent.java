@@ -4,11 +4,9 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 
-public class BookShelfRefreshEvent extends BroadcastReceiver
-{
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-  }
+public class BookShelfRefreshEvent extends BroadcastReceiver {
+    public void onReceive(Context paramContext, Intent paramIntent) {
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

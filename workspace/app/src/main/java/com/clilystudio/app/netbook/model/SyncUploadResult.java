@@ -1,29 +1,24 @@
 package com.clilystudio.app.netbook.model;
 
-public class SyncUploadResult
-{
-  private String code;
-  private boolean ok;
+public class SyncUploadResult {
+    private String code;
+    private boolean ok;
 
-  public String getCode()
-  {
-    return this.code;
-  }
+    public String getCode() {
+        return this.code;
+    }
 
-  public boolean isOk()
-  {
-    return this.ok;
-  }
+    public boolean isOk() {
+        return this.ok;
+    }
 
-  public void setCode(String paramString)
-  {
-    this.code = paramString;
-  }
+    public void setCode(String paramString) {
+        this.code = paramString;
+    }
 
-  public void setOk(boolean paramBoolean)
-  {
-    this.ok = paramBoolean;
-  }
+    public void setOk(boolean paramBoolean) {
+        this.ok = paramBoolean;
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

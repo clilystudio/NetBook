@@ -1,20 +1,16 @@
 package com.clilystudio.app.netbook.ui.user;
 
 import android.annotation.TargetApi;
-import com.clilystudio.app.netbook.widget.ScrollLoadListView;
 
 final class X
-  implements Runnable
-{
-  X(W paramW)
-  {
-  }
+        implements Runnable {
+    X(W paramW) {
+    }
 
-  @TargetApi(11)
-  public final void run()
-  {
-    PayConsumeActivity.a(this.a.b.a).smoothScrollToPositionFromTop(this.a.a, 0);
-  }
+    @TargetApi(11)
+    public final void run() {
+        PayConsumeActivity.a(this.a.b.a).smoothScrollToPositionFromTop(this.a.a, 0);
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

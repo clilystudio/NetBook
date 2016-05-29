@@ -2,22 +2,18 @@ package com.clilystudio.app.netbook.ui.user;
 
 import android.os.Handler;
 import android.widget.ListView;
-import android.widget.TextView;
+
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
-import com.handmark.pulltorefresh.library.k;
 
 final class B
-  implements k<ListView>
-{
-  B(MyTopicFragment paramMyTopicFragment)
-  {
-  }
+        implements k<ListView> {
+    B(MyTopicFragment paramMyTopicFragment) {
+    }
 
-  public final void a(PullToRefreshBase<ListView> paramPullToRefreshBase)
-  {
-    MyTopicFragment.a(this.a).setVisibility(8);
-    new Handler().postDelayed(new C(this), 1000L);
-  }
+    public final void a(PullToRefreshBase<ListView> paramPullToRefreshBase) {
+        MyTopicFragment.a(this.a).setVisibility(8);
+        new Handler().postDelayed(new C(this), 1000L);
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

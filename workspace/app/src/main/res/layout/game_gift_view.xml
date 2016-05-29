@@ -1,17 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.ushaqi.zhuishushenqi.widget.GameGiftView android:orientation="vertical" android:background="?android:windowBackground" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:id="@id/game_gift_line_gap" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <View android:background="?lineColor" android:layout_width="fill_parent" android:layout_height="1.0px" />
-        <View android:background="?backgroundPressed" android:layout_width="fill_parent" android:layout_height="@dimen/dp_16" />
-        <View android:background="?lineColor" android:layout_width="fill_parent" android:layout_height="1.0px" />
+<com.clilystudio.app.netbook.widget.GameGiftView android:orientation="vertical"
+                                              android:background="?android:windowBackground"
+                                              android:layout_width="fill_parent"
+                                              android:layout_height="wrap_content"
+                                              xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:id="@+id/game_gift_line_gap"
+        android:visibility="gone"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <View
+            android:background="?lineColor"
+            android:layout_width="fill_parent"
+            android:layout_height="1.0px"/>
+
+        <View
+            android:background="?backgroundPressed"
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/dp_16"/>
+
+        <View
+            android:background="?lineColor"
+            android:layout_width="fill_parent"
+            android:layout_height="1.0px"/>
     </LinearLayout>
-    <RelativeLayout android:id="@id/game_gift_label" android:paddingLeft="@dimen/dp_16" android:paddingRight="@dimen/dp_22" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/dp_48">
-        <TextView android:textSize="@dimen/text_size_12" android:textColor="#ffd32f2f" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="礼包" android:layout_centerVertical="true" />
-        <LinearLayout android:gravity="center_vertical" android:id="@id/game_gift_all" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_alignParentRight="true">
-            <TextView android:textSize="@dimen/text_size_12" android:textColor="#ffd32f2f" android:background="?android:windowBackground" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="查看全部" />
-            <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dp_5" android:src="@drawable/ios_arrow" />
+
+    <RelativeLayout
+        android:id="@+id/game_gift_label"
+        android:paddingLeft="@dimen/dp_16"
+        android:paddingRight="@dimen/dp_22"
+        android:visibility="gone"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/dp_48">
+
+        <TextView
+            android:textSize="@dimen/text_size_12"
+            android:textColor="#ffd32f2f"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="礼包"
+            android:layout_centerVertical="true"/>
+
+        <LinearLayout
+            android:gravity="center_vertical"
+            android:id="@+id/game_gift_all"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_alignParentRight="true">
+
+            <TextView
+                android:textSize="@dimen/text_size_12"
+                android:textColor="#ffd32f2f"
+                android:background="?android:windowBackground"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="查看全部"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_5"
+                android:src="@drawable/ios_arrow"/>
         </LinearLayout>
     </RelativeLayout>
-    <View android:background="?lineColor" android:layout_width="fill_parent" android:layout_height="1.0px" />
-</com.ushaqi.zhuishushenqi.widget.GameGiftView>
+
+    <View
+        android:background="?lineColor"
+        android:layout_width="fill_parent"
+        android:layout_height="1.0px"/>
+</com.clilystudio.app.netbook.widget.GameGiftView>

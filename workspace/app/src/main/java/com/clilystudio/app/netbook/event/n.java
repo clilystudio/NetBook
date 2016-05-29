@@ -1,11 +1,9 @@
 package com.clilystudio.app.netbook.event;
 
-public final class n extends e
-{
-  public n(String paramString)
-  {
-    super(paramString);
-  }
+public final class n extends e {
+    public n(String paramString) {
+        super(paramString);
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

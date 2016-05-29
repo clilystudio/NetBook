@@ -1,11 +1,9 @@
 package com.clilystudio.app.netbook.reader;
 
 final class aD
-  implements e<n>
-{
-  aD(ReaderActivity paramReaderActivity)
-  {
-  }
+        implements e<n> {
+    aD(ReaderActivity paramReaderActivity) {
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

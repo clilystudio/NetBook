@@ -2,34 +2,29 @@ package com.clilystudio.app.netbook.ui;
 
 import android.text.Editable;
 import android.text.TextWatcher;
+
 import com.arcsoft.hpay100.a.a;
 
 final class bK
-  implements TextWatcher
-{
-  bK(SearchActivity paramSearchActivity)
-  {
-  }
-
-  public final void afterTextChanged(Editable paramEditable)
-  {
-    SearchActivity localSearchActivity = this.a;
-    if (!a.Q(paramEditable.toString()));
-    for (boolean bool = true; ; bool = false)
-    {
-      SearchActivity.a(localSearchActivity, bool);
-      return;
+        implements TextWatcher {
+    bK(SearchActivity paramSearchActivity) {
     }
-  }
 
-  public final void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
-  {
-  }
+    public final void afterTextChanged(Editable paramEditable) {
+        SearchActivity localSearchActivity = this.a;
+        if (!a.Q(paramEditable.toString())) ;
+        for (boolean bool = true; ; bool = false) {
+            SearchActivity.a(localSearchActivity, bool);
+            return;
+        }
+    }
 
-  public final void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
-  {
-    SearchActivity.b(this.a, null);
-  }
+    public final void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {
+    }
+
+    public final void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {
+        SearchActivity.b(this.a, null);
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

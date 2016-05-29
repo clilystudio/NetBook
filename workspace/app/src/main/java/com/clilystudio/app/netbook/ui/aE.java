@@ -1,20 +1,17 @@
 package com.clilystudio.app.netbook.ui;
 
 import android.view.View;
-import android.view.View.OnClickListener;
+
 import com.clilystudio.app.netbook.model.Advert;
 
 final class aE
-  implements View.OnClickListener
-{
-  aE(BookInfoActivity paramBookInfoActivity, Advert paramAdvert)
-  {
-  }
+        implements View.OnClickListener {
+    aE(BookInfoActivity paramBookInfoActivity, Advert paramAdvert) {
+    }
 
-  public final void onClick(View paramView)
-  {
-    this.a.processClick(paramView);
-  }
+    public final void onClick(View paramView) {
+        this.a.processClick(paramView);
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

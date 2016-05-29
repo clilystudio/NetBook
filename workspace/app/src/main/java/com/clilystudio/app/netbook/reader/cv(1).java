@@ -1,7 +1,6 @@
 package com.clilystudio.app.netbook.reader;
 
-abstract interface cv
-{
+abstract interface cv {
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

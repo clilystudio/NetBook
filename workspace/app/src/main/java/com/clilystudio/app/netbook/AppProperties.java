@@ -47,6 +47,16 @@ public final class AppProperties {
         return properties;
     }
 
+    public final boolean getProperty(String name, boolean defValue) {
+        Properties properties = loadProperties();
+        String property = properties.getProperty(name);
+        if (property == null) {
+            return defValue;
+        } else {
+            return Boolean.valueOf(property);
+        }
+    }
+
     public final void setProperties(String name, String value) {
         Properties properties = loadProperties();
         properties.setProperty(name, value);

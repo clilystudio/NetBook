@@ -4,17 +4,14 @@ import com.arcsoft.hpay100.a.a;
 import com.clilystudio.app.netbook.widget.i;
 
 final class bN
-  implements i
-{
-  bN(bM parambM)
-  {
-  }
+        implements i {
+    bN(bM parambM) {
+    }
 
-  public final void a(String paramString)
-  {
-    a.t(this.a.a, paramString);
-    SearchActivity.a(this.a.a, paramString);
-  }
+    public final void a(String paramString) {
+        a.t(this.a.a, paramString);
+        SearchActivity.a(this.a.a, paramString);
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

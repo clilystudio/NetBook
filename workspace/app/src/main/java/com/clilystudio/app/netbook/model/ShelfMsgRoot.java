@@ -1,9 +1,8 @@
 package com.clilystudio.app.netbook.model;
 
-public class ShelfMsgRoot
-{
-  public ShelfMsg message;
-  public boolean ok;
+public class ShelfMsgRoot {
+    public ShelfMsg message;
+    public boolean ok;
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

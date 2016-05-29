@@ -1,16 +1,13 @@
 package com.clilystudio.app.netbook.reader.txt;
 
 final class E
-  implements Runnable
-{
-  E(ReaderTxtActivity paramReaderTxtActivity)
-  {
-  }
+        implements Runnable {
+    E(ReaderTxtActivity paramReaderTxtActivity) {
+    }
 
-  public final void run()
-  {
-    ReaderTxtActivity.M(this.a);
-  }
+    public final void run() {
+        ReaderTxtActivity.M(this.a);
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

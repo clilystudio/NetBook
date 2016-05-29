@@ -1,23 +1,17 @@
 package com.clilystudio.app.netbook.util;
 
-final class f extends Thread
-{
-  f(e parame)
-  {
-  }
+final class f extends Thread {
+    f(e parame) {
+    }
 
-  public final void run()
-  {
-    try
-    {
-      e.a(this.a);
-      return;
+    public final void run() {
+        try {
+            e.a(this.a);
+            return;
+        } catch (Exception localException) {
+            localException.printStackTrace();
+        }
     }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
-  }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

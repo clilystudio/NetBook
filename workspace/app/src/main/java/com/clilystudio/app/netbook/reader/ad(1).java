@@ -1,10 +1,9 @@
 package com.clilystudio.app.netbook.reader;
 
-public abstract interface ad
-{
-  public abstract void a();
+public abstract interface ad {
+    public abstract void a();
 
-  public abstract void b();
+    public abstract void b();
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

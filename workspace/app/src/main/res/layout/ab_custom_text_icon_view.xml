@@ -1,7 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <include android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_alignParentLeft="true" layout="@layout/ab_title" />
-    <TextView android:gravity="center" android:id="@id/actionbar_custom_right_text" android:background="?selectableItemBackgroundBorderless" android:paddingLeft="12.0dip" android:paddingRight="12.0dip" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_toLeftOf="@id/actionbar_custom_right_icon" android:layout_centerVertical="true" style="@style/ActionBarText" />
-    <ImageView android:id="@id/actionbar_custom_right_icon" android:background="?selectableItemBackgroundBorderless" android:layout_width="@dimen/actionbar_height" android:layout_height="fill_parent" android:scaleType="center" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+<RelativeLayout android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <include
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:layout_alignParentLeft="true"
+        layout="@layout/ab_title"/>
+
+    <TextView
+        android:gravity="center"
+        android:id="@+id/actionbar_custom_right_text"
+        android:background="?selectableItemBackgroundBorderless"
+        android:paddingLeft="12.0dip"
+        android:paddingRight="12.0dip"
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:layout_toLeftOf="@id/actionbar_custom_right_icon"
+        android:layout_centerVertical="true"
+        style="@style/ActionBarText"/>
+
+    <ImageView
+        android:id="@+id/actionbar_custom_right_icon"
+        android:background="?selectableItemBackgroundBorderless"
+        android:layout_width="@dimen/actionbar_height"
+        android:layout_height="fill_parent"
+        android:scaleType="center"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"/>
 </RelativeLayout>

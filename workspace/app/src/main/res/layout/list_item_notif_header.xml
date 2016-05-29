@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:id="@id/label_text" android:background="?backgroundPressed" style="@style/SettingLabel" />
-    <include android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_alignParentBottom="true" layout="@layout/horizontal_divider" />
+<RelativeLayout android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <TextView
+        android:id="@+id/label_text"
+        android:background="?backgroundPressed"
+        style="@style/SettingLabel"/>
+
+    <include
+        android:layout_width="fill_parent"
+        android:layout_height="1.0px"
+        android:layout_alignParentBottom="true"
+        layout="@layout/horizontal_divider"/>
 </RelativeLayout>

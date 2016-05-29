@@ -3,16 +3,13 @@ package com.clilystudio.app.netbook.reader.random;
 import com.clilystudio.app.netbook.reader.ca;
 
 final class J
-  implements ca
-{
-  J(ReaderRandomActivity paramReaderRandomActivity)
-  {
-  }
+        implements ca {
+    J(ReaderRandomActivity paramReaderRandomActivity) {
+    }
 
-  public final void a()
-  {
-    ReaderRandomActivity.k(this.a);
-  }
+    public final void a() {
+        ReaderRandomActivity.k(this.a);
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

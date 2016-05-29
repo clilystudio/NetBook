@@ -1,24 +1,18 @@
 package com.clilystudio.app.netbook.reader;
 
-import android.view.View.OnSystemUiVisibilityChangeListener;
-
 final class aV
-  implements View.OnSystemUiVisibilityChangeListener
-{
-  aV(ReaderActivity paramReaderActivity)
-  {
-  }
-
-  public final void onSystemUiVisibilityChange(int paramInt)
-  {
-    ReaderActivity localReaderActivity = this.a;
-    if ((paramInt & 0x1) == 0);
-    for (boolean bool = true; ; bool = false)
-    {
-      ReaderActivity.f(localReaderActivity, bool);
-      return;
+        implements View.OnSystemUiVisibilityChangeListener {
+    aV(ReaderActivity paramReaderActivity) {
     }
-  }
+
+    public final void onSystemUiVisibilityChange(int paramInt) {
+        ReaderActivity localReaderActivity = this.a;
+        if ((paramInt & 0x1) == 0) ;
+        for (boolean bool = true; ; bool = false) {
+            ReaderActivity.f(localReaderActivity, bool);
+            return;
+        }
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

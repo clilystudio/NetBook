@@ -1,45 +1,219 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView android:background="?backgroundPressed" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:id="@id/main_settings_content" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <TextView android:text="新手任务" style="@style/SettingLabel" />
-        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="?backgroundSelector" android:paddingLeft="@dimen/dp_16" android:paddingRight="@dimen/dp_16" android:layout_width="fill_parent" android:layout_height="@dimen/dp_56">
-            <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/user_task_info" />
-            <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dp_32">
-                <TextView android:textSize="@dimen/text_size_12" android:textColor="?android:textColor" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="完善个人资料" />
-                <TextView android:textSize="@dimen/text_size_12" android:textColor="?android:textColorSecondary" android:id="@id/user_exp_info" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp_4" android:text="+15经验" />
+<ScrollView android:background="?backgroundPressed"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:id="@+id/main_settings_content"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:text="新手任务"
+            style="@style/SettingLabel"/>
+
+        <LinearLayout
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:background="?backgroundSelector"
+            android:paddingLeft="@dimen/dp_16"
+            android:paddingRight="@dimen/dp_16"
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/dp_56">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/user_task_info"/>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_32">
+
+                <TextView
+                    android:textSize="@dimen/text_size_12"
+                    android:textColor="?android:textColor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="完善个人资料"/>
+
+                <TextView
+                    android:textSize="@dimen/text_size_12"
+                    android:textColor="?android:textColorSecondary"
+                    android:id="@+id/user_exp_info"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_4"
+                    android:text="+15经验"/>
             </LinearLayout>
         </LinearLayout>
-        <TextView android:text="每日任务" style="@style/SettingLabel" />
-        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="?backgroundSelector" android:paddingLeft="@dimen/dp_16" android:paddingRight="@dimen/dp_16" android:layout_width="fill_parent" android:layout_height="@dimen/dp_56">
-            <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/user_info_launch" />
-            <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dp_32">
-                <TextView android:textSize="@dimen/text_size_12" android:textColor="?android:textColor" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="每日启动" />
-                <TextView android:textSize="@dimen/text_size_12" android:textColor="?android:textColorSecondary" android:id="@id/user_exp_launch" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp_4" android:text="+10经验" />
+
+        <TextView
+            android:text="每日任务"
+            style="@style/SettingLabel"/>
+
+        <LinearLayout
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:background="?backgroundSelector"
+            android:paddingLeft="@dimen/dp_16"
+            android:paddingRight="@dimen/dp_16"
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/dp_56">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/user_info_launch"/>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_32">
+
+                <TextView
+                    android:textSize="@dimen/text_size_12"
+                    android:textColor="?android:textColor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="每日启动"/>
+
+                <TextView
+                    android:textSize="@dimen/text_size_12"
+                    android:textColor="?android:textColorSecondary"
+                    android:id="@+id/user_exp_launch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_4"
+                    android:text="+10经验"/>
             </LinearLayout>
         </LinearLayout>
-        <include layout="@layout/horizontal_divider" />
-        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="?backgroundSelector" android:paddingLeft="@dimen/dp_16" android:paddingRight="@dimen/dp_16" android:layout_width="fill_parent" android:layout_height="@dimen/dp_56">
-            <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/user_info_share" />
-            <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dp_32">
-                <TextView android:textSize="@dimen/text_size_12" android:textColor="?android:textColor" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="分享话题" />
-                <TextView android:textSize="@dimen/text_size_12" android:textColor="?android:textColorSecondary" android:id="@id/user_exp_share_topic" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp_4" android:text="+5经验" />
+
+        <include layout="@layout/horizontal_divider"/>
+
+        <LinearLayout
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:background="?backgroundSelector"
+            android:paddingLeft="@dimen/dp_16"
+            android:paddingRight="@dimen/dp_16"
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/dp_56">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/user_info_share"/>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_32">
+
+                <TextView
+                    android:textSize="@dimen/text_size_12"
+                    android:textColor="?android:textColor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="分享话题"/>
+
+                <TextView
+                    android:textSize="@dimen/text_size_12"
+                    android:textColor="?android:textColorSecondary"
+                    android:id="@+id/user_exp_share_topic"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_4"
+                    android:text="+5经验"/>
             </LinearLayout>
         </LinearLayout>
-        <include layout="@layout/horizontal_divider" />
-        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="?backgroundSelector" android:paddingLeft="@dimen/dp_16" android:paddingRight="@dimen/dp_16" android:layout_width="fill_parent" android:layout_height="@dimen/dp_56">
-            <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/user_info_share" />
-            <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dp_32">
-                <TextView android:textSize="@dimen/text_size_12" android:textColor="?android:textColor" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="分享书籍" />
-                <TextView android:textSize="@dimen/text_size_12" android:textColor="?android:textColorSecondary" android:id="@id/user_exp_share_book" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp_4" android:text="+5经验" />
+
+        <include layout="@layout/horizontal_divider"/>
+
+        <LinearLayout
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:background="?backgroundSelector"
+            android:paddingLeft="@dimen/dp_16"
+            android:paddingRight="@dimen/dp_16"
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/dp_56">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/user_info_share"/>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_32">
+
+                <TextView
+                    android:textSize="@dimen/text_size_12"
+                    android:textColor="?android:textColor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="分享书籍"/>
+
+                <TextView
+                    android:textSize="@dimen/text_size_12"
+                    android:textColor="?android:textColorSecondary"
+                    android:id="@+id/user_exp_share_book"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_4"
+                    android:text="+5经验"/>
             </LinearLayout>
         </LinearLayout>
-        <TextView android:text="特供任务" style="@style/SettingLabel" />
-        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/user_vote_layout" android:background="?backgroundSelector" android:paddingLeft="@dimen/dp_16" android:paddingRight="@dimen/dp_16" android:layout_width="fill_parent" android:layout_height="@dimen/dp_56">
-            <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/user_info_vote" />
-            <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dp_32">
-                <TextView android:textSize="@dimen/text_size_12" android:textColor="?android:textColor" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="给追书神器好评" />
-                <TextView android:textSize="@dimen/text_size_12" android:textColor="?android:textColorSecondary" android:id="@id/user_exp_vote" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp_4" android:text="+15经验" />
+
+        <TextView
+            android:text="特供任务"
+            style="@style/SettingLabel"/>
+
+        <LinearLayout
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:id="@+id/user_vote_layout"
+            android:background="?backgroundSelector"
+            android:paddingLeft="@dimen/dp_16"
+            android:paddingRight="@dimen/dp_16"
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/dp_56">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/user_info_vote"/>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_32">
+
+                <TextView
+                    android:textSize="@dimen/text_size_12"
+                    android:textColor="?android:textColor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="给追书神器好评"/>
+
+                <TextView
+                    android:textSize="@dimen/text_size_12"
+                    android:textColor="?android:textColorSecondary"
+                    android:id="@+id/user_exp_vote"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_4"
+                    android:text="+15经验"/>
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

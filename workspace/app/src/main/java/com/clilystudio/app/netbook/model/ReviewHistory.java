@@ -1,9 +1,8 @@
 package com.clilystudio.app.netbook.model;
 
-public class ReviewHistory
-{
-  public boolean ok;
-  public Review review;
+public class ReviewHistory {
+    public boolean ok;
+    public Review review;
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

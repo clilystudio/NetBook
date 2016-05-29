@@ -3,11 +3,9 @@ package com.clilystudio.app.netbook.ui.home;
 import com.clilystudio.app.netbook.a_packA.e;
 import com.clilystudio.app.netbook.model.ResultServer;
 
-final class j extends e<String, Void, ResultServer>
-{
-  j(HomeActivity paramHomeActivity)
-  {
-  }
+final class j extends e<String, Void, ResultServer> {
+    j(HomeActivity paramHomeActivity) {
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

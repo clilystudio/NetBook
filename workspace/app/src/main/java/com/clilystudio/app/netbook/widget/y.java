@@ -1,12 +1,11 @@
 package com.clilystudio.app.netbook.widget;
 
-public abstract interface y
-{
-  public abstract void a();
+public abstract interface y {
+    public abstract void a();
 
-  public abstract void b();
+    public abstract void b();
 
-  public abstract void c();
+    public abstract void c();
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

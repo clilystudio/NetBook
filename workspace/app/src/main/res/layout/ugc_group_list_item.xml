@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="?backgroundPressed" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/text_size_14" android:textColor="?android:textColorSecondary" android:gravity="left|center" android:id="@id/group_name" android:layout_width="wrap_content" android:layout_height="@dimen/dp_40" />
-    <TableLayout android:id="@id/group_container" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+<LinearLayout android:orientation="vertical"
+              android:background="?backgroundPressed"
+              android:layout_width="fill_parent"
+              android:layout_height="wrap_content"
+              xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <TextView
+        android:textSize="@dimen/text_size_14"
+        android:textColor="?android:textColorSecondary"
+        android:gravity="left|center"
+        android:id="@+id/group_name"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/dp_40"/>
+
+    <TableLayout
+        android:id="@+id/group_container"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"/>
 </LinearLayout>

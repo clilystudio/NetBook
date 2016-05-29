@@ -39,7 +39,7 @@ public final class H {
                 localArrayList.add((char) i);
             }
             reader.close();
-         } catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
         return localArrayList;

@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layer-list
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:drawable="@color/white" />
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@color/white"/>
     <item android:bottom="0.0dip">
-        <bitmap android:gravity="fill_horizontal|bottom|center" android:src="@drawable/splash_bottom_bg" />
+        <bitmap
+            android:gravity="fill_horizontal|bottom|center"
+            android:src="@drawable/splash_bottom_bg"/>
     </item>
 </layer-list>

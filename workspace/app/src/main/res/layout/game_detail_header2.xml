@@ -1,24 +1,145 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:background="?android:windowBackground" android:paddingBottom="@dimen/dp_10" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.ushaqi.zhuishushenqi.ui.SmartImageView android:id="@id/game_detail_banner" android:layout_width="fill_parent" android:layout_height="180.0dip" android:scaleType="fitXY" />
-    <RelativeLayout android:id="@id/game_detail_name_layout" android:paddingTop="@dimen/dp_16" android:paddingBottom="@dimen/dp_16" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dp_16" android:layout_marginRight="@dimen/dp_16" android:layout_below="@id/game_detail_banner">
-        <com.ushaqi.zhuishushenqi.ui.SmartImageView android:id="@id/game_detail_icon" android:layout_width="48.0dip" android:layout_height="48.0dip" android:layout_marginTop="3.0dip" android:layout_marginRight="@dimen/dp_8" android:scaleType="fitXY" />
-        <TextView android:textSize="@dimen/text_size_17" android:textColor="?android:textColor" android:ellipsize="end" android:id="@id/game_detail_name" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="热血传奇" android:singleLine="true" android:layout_toRightOf="@id/game_detail_icon" />
-        <TextView android:textSize="@dimen/text_size_12" android:textColor="?android:textColorSecondary" android:id="@id/game_detail_type_size" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp_8" android:text="棋牌 | 100M" android:layout_toRightOf="@id/game_detail_icon" android:layout_below="@id/game_detail_name" />
-        <TextView android:textSize="@dimen/text_size_12" android:textColor="?android:textColorSecondary" android:id="@id/game_detail_desc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp_8" android:text="哈哈哈哈哈哈哈哈哈哈哈哈" android:layout_toLeftOf="@id/game_detail_download" android:layout_toRightOf="@id/game_detail_icon" android:layout_below="@id/game_detail_type_size" />
-        <com.ushaqi.zhuishushenqi.widget.GameDownloadButton android:textSize="@dimen/text_size_13" android:textColor="@color/white" android:id="@id/game_detail_download" android:layout_width="@dimen/dp_53" android:layout_height="@dimen/dp_24" android:text="@string/download" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+<RelativeLayout android:orientation="vertical"
+                android:background="?android:windowBackground"
+                android:paddingBottom="@dimen/dp_10"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <com.clilystudio.app.netbook.ui.SmartImageView
+        android:id="@+id/game_detail_banner"
+        android:layout_width="fill_parent"
+        android:layout_height="180.0dip"
+        android:scaleType="fitXY"/>
+
+    <RelativeLayout
+        android:id="@+id/game_detail_name_layout"
+        android:paddingTop="@dimen/dp_16"
+        android:paddingBottom="@dimen/dp_16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_16"
+        android:layout_marginRight="@dimen/dp_16"
+        android:layout_below="@id/game_detail_banner">
+
+        <com.clilystudio.app.netbook.ui.SmartImageView
+            android:id="@+id/game_detail_icon"
+            android:layout_width="48.0dip"
+            android:layout_height="48.0dip"
+            android:layout_marginTop="3.0dip"
+            android:layout_marginRight="@dimen/dp_8"
+            android:scaleType="fitXY"/>
+
+        <TextView
+            android:textSize="@dimen/text_size_17"
+            android:textColor="?android:textColor"
+            android:ellipsize="end"
+            android:id="@+id/game_detail_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="热血传奇"
+            android:singleLine="true"
+            android:layout_toRightOf="@id/game_detail_icon"/>
+
+        <TextView
+            android:textSize="@dimen/text_size_12"
+            android:textColor="?android:textColorSecondary"
+            android:id="@+id/game_detail_type_size"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_8"
+            android:text="棋牌 | 100M"
+            android:layout_toRightOf="@id/game_detail_icon"
+            android:layout_below="@id/game_detail_name"/>
+
+        <TextView
+            android:textSize="@dimen/text_size_12"
+            android:textColor="?android:textColorSecondary"
+            android:id="@+id/game_detail_desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_8"
+            android:text="哈哈哈哈哈哈哈哈哈哈哈哈"
+            android:layout_toLeftOf="@id/game_detail_download"
+            android:layout_toRightOf="@id/game_detail_icon"
+            android:layout_below="@id/game_detail_type_size"/>
+
+        <com.clilystudio.app.netbook.widget.GameDownloadButton
+            android:textSize="@dimen/text_size_13"
+            android:textColor="@color/white"
+            android:id="@+id/game_detail_download"
+            android:layout_width="@dimen/dp_53"
+            android:layout_height="@dimen/dp_24"
+            android:text="@string/download"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"/>
     </RelativeLayout>
-    <LinearLayout android:orientation="vertical" android:id="@id/line_gap" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/game_detail_name_layout">
-        <View android:background="?lineColor" android:layout_width="fill_parent" android:layout_height="1.0px" />
-        <View android:background="?backgroundPressed" android:layout_width="fill_parent" android:layout_height="@dimen/dp_16" />
-        <View android:background="?lineColor" android:layout_width="fill_parent" android:layout_height="1.0px" />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:id="@+id/line_gap"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/game_detail_name_layout">
+
+        <View
+            android:background="?lineColor"
+            android:layout_width="fill_parent"
+            android:layout_height="1.0px"/>
+
+        <View
+            android:background="?backgroundPressed"
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/dp_16"/>
+
+        <View
+            android:background="?lineColor"
+            android:layout_width="fill_parent"
+            android:layout_height="1.0px"/>
     </LinearLayout>
-    <RelativeLayout android:id="@id/game_detail_intro_layout" android:paddingTop="@dimen/dp_16" android:paddingBottom="@dimen/dp_16" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/line_gap">
-        <TextView android:textSize="@dimen/text_size_12" android:textColor="#ff757575" android:ellipsize="end" android:id="@id/game_detail_intro" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dp_16" android:layout_marginRight="@dimen/dp_16" android:text="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" android:maxLines="2" android:layout_toLeftOf="@id/game_detail_intro_expand" android:lineSpacingMultiplier="1.1" />
-        <ImageView android:id="@id/game_detail_intro_expand" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/dp_13" android:src="@drawable/ic_game_center_expand" android:layout_alignParentRight="true" />
+
+    <RelativeLayout
+        android:id="@+id/game_detail_intro_layout"
+        android:paddingTop="@dimen/dp_16"
+        android:paddingBottom="@dimen/dp_16"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/line_gap">
+
+        <TextView
+            android:textSize="@dimen/text_size_12"
+            android:textColor="#ff757575"
+            android:ellipsize="end"
+            android:id="@+id/game_detail_intro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_16"
+            android:layout_marginRight="@dimen/dp_16"
+            android:text="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            android:maxLines="2"
+            android:layout_toLeftOf="@id/game_detail_intro_expand"
+            android:lineSpacingMultiplier="1.1"/>
+
+        <ImageView
+            android:id="@+id/game_detail_intro_expand"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/dp_13"
+            android:src="@drawable/ic_game_center_expand"
+            android:layout_alignParentRight="true"/>
     </RelativeLayout>
-    <HorizontalScrollView android:id="@id/horizontal_scroll_view" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/game_detail_intro_layout">
-        <LinearLayout android:orientation="horizontal" android:id="@id/scroll_content" android:layout_width="wrap_content" android:layout_height="fill_parent" />
+
+    <HorizontalScrollView
+        android:id="@+id/horizontal_scroll_view"
+        android:scrollbars="none"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/game_detail_intro_layout">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:id="@+id/scroll_content"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"/>
     </HorizontalScrollView>
 </RelativeLayout>

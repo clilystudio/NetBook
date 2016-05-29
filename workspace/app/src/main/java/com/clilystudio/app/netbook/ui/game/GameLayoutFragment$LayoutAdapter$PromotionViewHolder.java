@@ -3,34 +3,34 @@ package com.clilystudio.app.netbook.ui.game;
 import android.support.v7.widget.ay;
 import android.view.View;
 import android.widget.TextView;
-import butterknife.ButterKnife;
-import butterknife.InjectView;
+
 import com.clilystudio.app.netbook.ui.SmartImageView;
 import com.clilystudio.app.netbook.widget.NewGameDownloadButton;
 
-public class GameLayoutFragment$LayoutAdapter$PromotionViewHolder extends ay
-{
+import butterknife.ButterKnife;
+import butterknife.InjectView;
 
-  @InjectView(2131493481)
-  TextView mDesc;
+public class GameLayoutFragment$LayoutAdapter$PromotionViewHolder extends ay {
 
-  @InjectView(2131492916)
-  NewGameDownloadButton mDownload;
+    @InjectView(2131493481)
+    TextView mDesc;
 
-  @InjectView(2131493028)
-  SmartImageView mIcon;
+    @InjectView(2131492916)
+    NewGameDownloadButton mDownload;
 
-  @InjectView(2131492928)
-  TextView mName;
+    @InjectView(2131493028)
+    SmartImageView mIcon;
 
-  @InjectView(2131493482)
-  TextView mPlayingCount;
+    @InjectView(2131492928)
+    TextView mName;
 
-  public GameLayoutFragment$LayoutAdapter$PromotionViewHolder(GameLayoutFragment.LayoutAdapter paramLayoutAdapter, View paramView)
-  {
-    super(paramView);
-    ButterKnife.inject(this, paramView);
-  }
+    @InjectView(2131493482)
+    TextView mPlayingCount;
+
+    public GameLayoutFragment$LayoutAdapter$PromotionViewHolder(GameLayoutFragment.LayoutAdapter paramLayoutAdapter, View paramView) {
+        super(paramView);
+        ButterKnife.inject(this, paramView);
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

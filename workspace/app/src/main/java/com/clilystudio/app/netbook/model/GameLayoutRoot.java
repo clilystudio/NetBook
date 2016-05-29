@@ -2,41 +2,34 @@ package com.clilystudio.app.netbook.model;
 
 import java.util.List;
 
-public class GameLayoutRoot extends Root
-{
-  private List<GameLayoutRoot.ModuleLayout> layout;
-  private Game promotion;
-  private Game[] promotions;
+public class GameLayoutRoot extends Root {
+    private List<GameLayoutRoot.ModuleLayout> layout;
+    private Game promotion;
+    private Game[] promotions;
 
-  public List<GameLayoutRoot.ModuleLayout> getLayout()
-  {
-    return this.layout;
-  }
+    public List<GameLayoutRoot.ModuleLayout> getLayout() {
+        return this.layout;
+    }
 
-  public Game getPromotion()
-  {
-    return this.promotion;
-  }
+    public Game getPromotion() {
+        return this.promotion;
+    }
 
-  public Game[] getPromotions()
-  {
-    return this.promotions;
-  }
+    public Game[] getPromotions() {
+        return this.promotions;
+    }
 
-  public void setLayout(List<GameLayoutRoot.ModuleLayout> paramList)
-  {
-    this.layout = paramList;
-  }
+    public void setLayout(List<GameLayoutRoot.ModuleLayout> paramList) {
+        this.layout = paramList;
+    }
 
-  public void setPromotion(Game paramGame)
-  {
-    this.promotion = paramGame;
-  }
+    public void setPromotion(Game paramGame) {
+        this.promotion = paramGame;
+    }
 
-  public void setPromotions(Game[] paramArrayOfGame)
-  {
-    this.promotions = paramArrayOfGame;
-  }
+    public void setPromotions(Game[] paramArrayOfGame) {
+        this.promotions = paramArrayOfGame;
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

@@ -1,11 +1,9 @@
 package com.clilystudio.app.netbook.reader;
 
 final class aC
-  implements e<n>
-{
-  aC(aB paramaB)
-  {
-  }
+        implements e<n> {
+    aC(aB paramaB) {
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

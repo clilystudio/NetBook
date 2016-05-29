@@ -1,18 +1,15 @@
 package com.clilystudio.app.netbook.model;
 
-public class PostCountRoot extends Root
-{
-  private int postCount;
+public class PostCountRoot extends Root {
+    private int postCount;
 
-  public int getPostCount()
-  {
-    return this.postCount;
-  }
+    public int getPostCount() {
+        return this.postCount;
+    }
 
-  public void setPostCount(int paramInt)
-  {
-    this.postCount = paramInt;
-  }
+    public void setPostCount(int paramInt) {
+        this.postCount = paramInt;
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

@@ -1,20 +1,19 @@
 package com.clilystudio.app.netbook.util.adutil;
 
 import android.view.View;
+
 import java.lang.reflect.InvocationHandler;
 
 public abstract class a
-  implements InvocationHandler
-{
-  AdSplashImp a;
+        implements InvocationHandler {
+    AdSplashImp a;
 
-  public a(AdSplashImp paramAdSplashImp)
-  {
-    this.a = paramAdSplashImp;
-    this.a.a(this);
-  }
+    public a(AdSplashImp paramAdSplashImp) {
+        this.a = paramAdSplashImp;
+        this.a.a(this);
+    }
 
-  public abstract boolean a(View paramView);
+    public abstract boolean a(View paramView);
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

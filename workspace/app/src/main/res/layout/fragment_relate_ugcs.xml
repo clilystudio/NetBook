@@ -1,6 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/relate_ugc_root" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/text_size_15" android:gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="@dimen/dp_48" android:layout_marginLeft="@dimen/dp_16" android:layout_marginRight="@dimen/dp_16" android:text="推荐书单" />
-    <LinearLayout android:orientation="vertical" android:id="@id/ugcs" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+<LinearLayout android:orientation="vertical"
+              android:id="@+id/relate_ugc_root"
+              android:visibility="gone"
+              android:layout_width="fill_parent"
+              android:layout_height="fill_parent"
+              xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <TextView
+        android:textSize="@dimen/text_size_15"
+        android:gravity="center_vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/dp_48"
+        android:layout_marginLeft="@dimen/dp_16"
+        android:layout_marginRight="@dimen/dp_16"
+        android:text="推荐书单"/>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:id="@+id/ugcs"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"/>
 </LinearLayout>

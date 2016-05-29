@@ -1,7 +1,6 @@
 package com.clilystudio.app.netbook.db;
 
-final class a
-{
+final class a {
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

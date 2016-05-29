@@ -1,19 +1,15 @@
 package com.clilystudio.app.netbook.widget;
 
 import android.graphics.Bitmap;
-import com.clilystudio.app.netbook.ui.SmartImageView;
 
 final class aD
-  implements com.nostra13.universalimageloader.core.d.a
-{
-  aD(UserInfoPortraitView paramUserInfoPortraitView)
-  {
-  }
+        implements com.nostra13.universalimageloader.core.d.a {
+    aD(UserInfoPortraitView paramUserInfoPortraitView) {
+    }
 
-  public final void a(Bitmap paramBitmap)
-  {
-    UserInfoPortraitView.a(this.a).setImageBitmap(com.arcsoft.hpay100.a.a.a(paramBitmap));
-  }
+    public final void a(Bitmap paramBitmap) {
+        UserInfoPortraitView.a(this.a).setImageBitmap(com.arcsoft.hpay100.a.a.a(paramBitmap));
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

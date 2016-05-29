@@ -4,11 +4,9 @@ import com.clilystudio.app.netbook.reader.e;
 import com.clilystudio.app.netbook.reader.n;
 
 final class x
-  implements e<n>
-{
-  x(ReaderTxtActivity paramReaderTxtActivity)
-  {
-  }
+        implements e<n> {
+    x(ReaderTxtActivity paramReaderTxtActivity) {
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

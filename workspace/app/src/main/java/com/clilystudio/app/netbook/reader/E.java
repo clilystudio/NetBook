@@ -8,26 +8,20 @@ import com.clilystudio.app.netbook.model.ChapterSingleKey;
 
 import java.io.IOException;
 
-final class E extends c<String, ChapterSingleKey>
-{
-  public E(o paramo, Activity paramActivity, int paramInt, boolean paramBoolean)
-  {
-    super(paramActivity, 2131034218, paramBoolean);
-  }
+final class E extends c<String, ChapterSingleKey> {
+    public E(o paramo, Activity paramActivity, int paramInt, boolean paramBoolean) {
+        super(paramActivity, 2131034218, paramBoolean);
+    }
 
-  private static ChapterSingleKey a(String[] paramArrayOfString)
-  {
-    try
-    {
-      b.a();
-      ChapterSingleKey localChapterSingleKey = b.b().f(paramArrayOfString[0], am_CommonUtils.e().getToken());
-      return localChapterSingleKey;
+    private static ChapterSingleKey a(String[] paramArrayOfString) {
+        try {
+            b.a();
+            ChapterSingleKey localChapterSingleKey = b.b().f(paramArrayOfString[0], am_CommonUtils.e().getToken());
+            return localChapterSingleKey;
+        } catch (IOException localIOException) {
+        }
+        return null;
     }
-    catch (IOException localIOException)
-    {
-    }
-    return null;
-  }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

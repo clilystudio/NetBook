@@ -1,22 +1,18 @@
 package com.clilystudio.app.netbook.adapter;
 
-import android.content.Context;
 import android.view.View;
-import android.view.View.OnClickListener;
+
 import com.clilystudio.app.netbook.model.BookReview;
 import com.clilystudio.app.netbook.util.e;
 
 final class i
-  implements View.OnClickListener
-{
-  i(h paramh, BookReview paramBookReview)
-  {
-  }
+        implements View.OnClickListener {
+    i(h paramh, BookReview paramBookReview) {
+    }
 
-  public final void onClick(View paramView)
-  {
-    paramView.getContext().startActivity(e.a(paramView.getContext(), this.a.author));
-  }
+    public final void onClick(View paramView) {
+        paramView.getContext().startActivity(e.a(paramView.getContext(), this.a.author));
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

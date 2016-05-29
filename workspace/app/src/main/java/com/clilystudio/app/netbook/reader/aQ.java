@@ -1,19 +1,15 @@
 package com.clilystudio.app.netbook.reader;
 
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
 
 final class aQ
-  implements DialogInterface.OnDismissListener
-{
-  aQ(ReaderActivity paramReaderActivity)
-  {
-  }
+        implements DialogInterface.OnDismissListener {
+    aQ(ReaderActivity paramReaderActivity) {
+    }
 
-  public final void onDismiss(DialogInterface paramDialogInterface)
-  {
-    ReaderActivity.e(this.a, false);
-  }
+    public final void onDismiss(DialogInterface paramDialogInterface) {
+        ReaderActivity.e(this.a, false);
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

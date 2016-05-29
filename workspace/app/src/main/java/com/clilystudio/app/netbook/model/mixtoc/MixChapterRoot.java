@@ -1,29 +1,24 @@
 package com.clilystudio.app.netbook.model.mixtoc;
 
-public class MixChapterRoot
-{
-  private MixChapterResource[] chapterResources;
-  private boolean ok;
+public class MixChapterRoot {
+    private MixChapterResource[] chapterResources;
+    private boolean ok;
 
-  public MixChapterResource[] getChapterResources()
-  {
-    return this.chapterResources;
-  }
+    public MixChapterResource[] getChapterResources() {
+        return this.chapterResources;
+    }
 
-  public boolean isOk()
-  {
-    return this.ok;
-  }
+    public boolean isOk() {
+        return this.ok;
+    }
 
-  public void setChapterResources(MixChapterResource[] paramArrayOfMixChapterResource)
-  {
-    this.chapterResources = paramArrayOfMixChapterResource;
-  }
+    public void setChapterResources(MixChapterResource[] paramArrayOfMixChapterResource) {
+        this.chapterResources = paramArrayOfMixChapterResource;
+    }
 
-  public void setOk(boolean paramBoolean)
-  {
-    this.ok = paramBoolean;
-  }
+    public void setOk(boolean paramBoolean) {
+        this.ok = paramBoolean;
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

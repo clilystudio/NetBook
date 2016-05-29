@@ -2,85 +2,70 @@ package com.clilystudio.app.netbook.model;
 
 import java.util.Date;
 
-public class PayVoucherRecord$Voucher
-{
-  private int _id;
-  private String accountId;
-  private int amount;
-  private int balance;
-  private Date created;
-  private Date expired;
-  private String from;
+public class PayVoucherRecord$Voucher {
+    private int _id;
+    private String accountId;
+    private int amount;
+    private int balance;
+    private Date created;
+    private Date expired;
+    private String from;
 
-  public String getAccountId()
-  {
-    return this.accountId;
-  }
+    public String getAccountId() {
+        return this.accountId;
+    }
 
-  public int getAmount()
-  {
-    return this.amount;
-  }
+    public int getAmount() {
+        return this.amount;
+    }
 
-  public int getBalance()
-  {
-    return this.balance;
-  }
+    public int getBalance() {
+        return this.balance;
+    }
 
-  public Date getCreated()
-  {
-    return this.created;
-  }
+    public Date getCreated() {
+        return this.created;
+    }
 
-  public Date getExpired()
-  {
-    return this.expired;
-  }
+    public Date getExpired() {
+        return this.expired;
+    }
 
-  public String getFrom()
-  {
-    return this.from;
-  }
+    public String getFrom() {
+        return this.from;
+    }
 
-  public int get_id()
-  {
-    return this._id;
-  }
+    public int get_id() {
+        return this._id;
+    }
 
-  public void setAccountId(String paramString)
-  {
-    this.accountId = paramString;
-  }
+    public void setAccountId(String paramString) {
+        this.accountId = paramString;
+    }
 
-  public void setAmount(int paramInt)
-  {
-    this.amount = paramInt;
-  }
+    public void setAmount(int paramInt) {
+        this.amount = paramInt;
+    }
 
-  public void setBalance(int paramInt)
-  {
-    this.balance = paramInt;
-  }
+    public void setBalance(int paramInt) {
+        this.balance = paramInt;
+    }
 
-  public void setCreated(Date paramDate)
-  {
-    this.created = paramDate;
-  }
+    public void setCreated(Date paramDate) {
+        this.created = paramDate;
+    }
 
-  public void setExpired(Date paramDate)
-  {
-    this.expired = paramDate;
-  }
+    public void setExpired(Date paramDate) {
+        this.expired = paramDate;
+    }
 
-  public void setFrom(String paramString)
-  {
-    this.from = paramString;
-  }
+    public void setFrom(String paramString) {
+        this.from = paramString;
+    }
 
-  public void set_id(int paramInt)
-  {
-    this._id = paramInt;
-  }
+    public void set_id(int paramInt) {
+        this._id = paramInt;
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

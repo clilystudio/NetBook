@@ -1,40 +1,33 @@
 package com.clilystudio.app.netbook.model;
 
-public class PayBalance
-{
-  private int balance;
-  private boolean ok;
-  private int voucherBalance;
+public class PayBalance {
+    private int balance;
+    private boolean ok;
+    private int voucherBalance;
 
-  public int getBalance()
-  {
-    return this.balance;
-  }
+    public int getBalance() {
+        return this.balance;
+    }
 
-  public int getVoucherBalance()
-  {
-    return this.voucherBalance;
-  }
+    public int getVoucherBalance() {
+        return this.voucherBalance;
+    }
 
-  public boolean isOk()
-  {
-    return this.ok;
-  }
+    public boolean isOk() {
+        return this.ok;
+    }
 
-  public void setBalance(int paramInt)
-  {
-    this.balance = paramInt;
-  }
+    public void setBalance(int paramInt) {
+        this.balance = paramInt;
+    }
 
-  public void setOk(boolean paramBoolean)
-  {
-    this.ok = paramBoolean;
-  }
+    public void setOk(boolean paramBoolean) {
+        this.ok = paramBoolean;
+    }
 
-  public void setVoucherBalance(int paramInt)
-  {
-    this.voucherBalance = paramInt;
-  }
+    public void setVoucherBalance(int paramInt) {
+        this.voucherBalance = paramInt;
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

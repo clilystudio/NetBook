@@ -2,9 +2,8 @@ package com.clilystudio.app.netbook.util;
 
 import android.view.View;
 
-public final class ar
-{
-  public View[] a;
+public final class ar {
+    public View[] a;
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

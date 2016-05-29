@@ -2,20 +2,19 @@ package com.clilystudio.app.netbook.ui.post;
 
 import android.view.View;
 import android.widget.TextView;
+
 import com.clilystudio.app.netbook.widget.CoverView;
 
-final class bl
-{
-  CoverView a;
-  TextView b;
-  TextView c;
+final class bl {
+    CoverView a;
+    TextView b;
+    TextView c;
 
-  public bl(bj parambj, View paramView)
-  {
-    this.a = ((CoverView)paramView.findViewById(2131492899));
-    this.b = ((TextView)paramView.findViewById(2131492928));
-    this.c = ((TextView)paramView.findViewById(2131493590));
-  }
+    public bl(bj parambj, View paramView) {
+        this.a = ((CoverView) paramView.findViewById(2131492899));
+        this.b = ((TextView) paramView.findViewById(2131492928));
+        this.c = ((TextView) paramView.findViewById(2131493590));
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

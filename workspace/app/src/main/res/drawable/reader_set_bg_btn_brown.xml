@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_pressed="true" android:drawable="@drawable/reader_set_bg_btn_brown_pre" />
-    <item android:state_selected="true" android:drawable="@drawable/reader_set_bg_btn_brown_pre" />
-    <item android:drawable="@drawable/reader_set_bg_btn_brown_nor" />
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_pressed="true" android:drawable="@drawable/reader_set_bg_btn_brown_pre"/>
+    <item android:state_selected="true" android:drawable="@drawable/reader_set_bg_btn_brown_pre"/>
+    <item android:drawable="@drawable/reader_set_bg_btn_brown_nor"/>
 </selector>

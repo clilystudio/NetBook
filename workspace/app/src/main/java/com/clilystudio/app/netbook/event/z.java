@@ -1,18 +1,15 @@
 package com.clilystudio.app.netbook.event;
 
-public final class z
-{
-  private String a;
+public final class z {
+    private String a;
 
-  public z(String paramString)
-  {
-    this.a = paramString;
-  }
+    public z(String paramString) {
+        this.a = paramString;
+    }
 
-  public final String a()
-  {
-    return this.a;
-  }
+    public final String a() {
+        return this.a;
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

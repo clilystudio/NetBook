@@ -1,16 +1,13 @@
 package com.clilystudio.app.netbook.ui;
 
 final class aZ
-  implements aa
-{
-  aZ(CustomSearchActivity paramCustomSearchActivity)
-  {
-  }
+        implements aa {
+    aZ(CustomSearchActivity paramCustomSearchActivity) {
+    }
 
-  public final void a()
-  {
-    CustomSearchActivity.a(this.a);
-  }
+    public final void a() {
+        CustomSearchActivity.a(this.a);
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

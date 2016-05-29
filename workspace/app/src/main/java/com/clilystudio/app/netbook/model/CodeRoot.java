@@ -1,18 +1,15 @@
 package com.clilystudio.app.netbook.model;
 
-public class CodeRoot extends Root
-{
-  private String code;
+public class CodeRoot extends Root {
+    private String code;
 
-  public String getCode()
-  {
-    return this.code;
-  }
+    public String getCode() {
+        return this.code;
+    }
 
-  public void setCode(String paramString)
-  {
-    this.code = paramString;
-  }
+    public void setCode(String paramString) {
+        this.code = paramString;
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

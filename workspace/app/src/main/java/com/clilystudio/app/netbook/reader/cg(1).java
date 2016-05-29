@@ -1,22 +1,19 @@
 package com.clilystudio.app.netbook.reader;
 
 import android.view.View;
-import android.view.View.OnClickListener;
+
 import com.iflytek.cloud.SpeechUtility;
 
 final class cg
-  implements View.OnClickListener
-{
-  cg(ReaderTtsSetWidget paramReaderTtsSetWidget)
-  {
-  }
+        implements View.OnClickListener {
+    cg(ReaderTtsSetWidget paramReaderTtsSetWidget) {
+    }
 
-  public final void onClick(View paramView)
-  {
-    this.a.setVisibility(8);
-    ReaderTtsSetWidget.a(this.a).b();
-    SpeechUtility.getUtility().openEngineSettings("tts");
-  }
+    public final void onClick(View paramView) {
+        this.a.setVisibility(8);
+        ReaderTtsSetWidget.a(this.a).b();
+        SpeechUtility.getUtility().openEngineSettings("tts");
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

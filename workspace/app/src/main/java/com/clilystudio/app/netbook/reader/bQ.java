@@ -1,19 +1,15 @@
 package com.clilystudio.app.netbook.reader;
 
 import android.view.View;
-import android.view.View.OnClickListener;
 
 final class bQ
-  implements View.OnClickListener
-{
-  bQ(ReaderResActivity paramReaderResActivity)
-  {
-  }
+        implements View.OnClickListener {
+    bQ(ReaderResActivity paramReaderResActivity) {
+    }
 
-  public final void onClick(View paramView)
-  {
-    this.a.finish();
-  }
+    public final void onClick(View paramView) {
+        this.a.finish();
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

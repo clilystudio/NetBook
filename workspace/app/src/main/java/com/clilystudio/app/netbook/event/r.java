@@ -1,18 +1,15 @@
 package com.clilystudio.app.netbook.event;
 
-public final class r
-{
-  private int a;
+public final class r {
+    private int a;
 
-  public r(int paramInt)
-  {
-    this.a = paramInt;
-  }
+    public r(int paramInt) {
+        this.a = paramInt;
+    }
 
-  public final int a()
-  {
-    return this.a;
-  }
+    public final int a() {
+        return this.a;
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

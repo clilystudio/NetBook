@@ -4,16 +4,13 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 
-final class P extends BroadcastReceiver
-{
-  P(GameListActivity paramGameListActivity)
-  {
-  }
+final class P extends BroadcastReceiver {
+    P(GameListActivity paramGameListActivity) {
+    }
 
-  public final void onReceive(Context paramContext, Intent paramIntent)
-  {
-    GameListActivity.c(this.a);
-  }
+    public final void onReceive(Context paramContext, Intent paramIntent) {
+        GameListActivity.c(this.a);
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

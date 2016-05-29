@@ -1,22 +1,19 @@
 package com.clilystudio.app.netbook.ui.home;
 
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import android.widget.CheckBox;
+
 import java.util.List;
 
 final class t
-  implements DialogInterface.OnClickListener
-{
-  t(HomeShelfFragment paramHomeShelfFragment, List paramList, CheckBox paramCheckBox)
-  {
-  }
+        implements DialogInterface.OnClickListener {
+    t(HomeShelfFragment paramHomeShelfFragment, List paramList, CheckBox paramCheckBox) {
+    }
 
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    HomeShelfFragment.a(this.c, this.a, this.b.isChecked());
-    this.c.e();
-  }
+    public final void onClick(DialogInterface paramDialogInterface, int paramInt) {
+        HomeShelfFragment.a(this.c, this.a, this.b.isChecked());
+        this.c.e();
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

@@ -1,11 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:background="?android:windowBackground" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:id="@id/rl_container" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <com.handmark.pulltorefresh.library.PullToRefreshListView android:id="@id/ptr_list" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="?android:listSelector" style="@style/DividerListView" />
-        <TextView android:textSize="@dimen/text_size_16" android:textColor="@color/empty_view_text" android:id="@id/empty_text" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" />
-        <ProgressBar android:id="@id/pb_loading" android:layout_centerInParent="true" style="@style/Loading" />
-        <android.support.design.widget.FloatingActionButton android:id="@id/fab" android:visibility="gone" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" style="@style/FabStyle" />
+<FrameLayout android:background="?android:windowBackground"
+             android:layout_width="fill_parent"
+             android:layout_height="fill_parent"
+             xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <RelativeLayout
+        android:id="@+id/rl_container"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+        <com.handmark.pulltorefresh.library.PullToRefreshListView
+            android:id="@+id/ptr_list"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:listSelector="?android:listSelector"
+            style="@style/DividerListView"/>
+
+        <TextView
+            android:textSize="@dimen/text_size_16"
+            android:textColor="@color/empty_view_text"
+            android:id="@+id/empty_text"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"/>
+
+        <ProgressBar
+            android:id="@+id/pb_loading"
+            android:layout_centerInParent="true"
+            style="@style/Loading"/>
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab"
+            android:visibility="gone"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            style="@style/FabStyle"/>
     </RelativeLayout>
-    <include android:id="@id/fl_not_login_cover" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/layout_frame_not_login" />
+
+    <include
+        android:id="@+id/fl_not_login_cover"
+        android:visibility="gone"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        layout="@layout/layout_frame_not_login"/>
 </FrameLayout>

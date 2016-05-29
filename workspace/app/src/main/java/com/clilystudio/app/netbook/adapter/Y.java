@@ -1,21 +1,17 @@
 package com.clilystudio.app.netbook.adapter;
 
-import com.clilystudio.app.netbook.util.am_CommonUtils;
 import android.view.LayoutInflater;
 
 import com.clilystudio.app.netbook.util.am_CommonUtils;
 
-public final class Y extends NotificationAdapter
-{
-  public Y(LayoutInflater paramLayoutInflater)
-  {
-    super(paramLayoutInflater);
-  }
+public final class Y extends NotificationAdapter {
+    public Y(LayoutInflater paramLayoutInflater) {
+        super(paramLayoutInflater);
+    }
 
-  protected final String a()
-  {
-    return am_CommonUtils.i(b());
-  }
+    protected final String a() {
+        return am_CommonUtils.i(b());
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

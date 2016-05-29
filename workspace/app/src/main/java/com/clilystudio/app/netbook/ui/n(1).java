@@ -8,69 +8,59 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import com.clilystudio.app.netbook.util.as;
 import com.ximalaya.ting.android.opensdk.model.track.Track;
-import java.util.List;
 
-public final class n extends BaseAdapter
-{
-  private LayoutInflater b;
+public final class n extends BaseAdapter {
+    private LayoutInflater b;
 
-  public n(AudioBookPlayActivity paramAudioBookPlayActivity, Context paramContext)
-  {
-    this.b = LayoutInflater.from(paramContext);
-  }
-
-  public final int getCount()
-  {
-    return AudioBookPlayActivity.i(this.a).size();
-  }
-
-  public final Object getItem(int paramInt)
-  {
-    return AudioBookPlayActivity.i(this.a).get(paramInt);
-  }
-
-  public final long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-
-  public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    p localp;
-    if (paramView == null)
-    {
-      localp = new p(this.a);
-      paramView = this.b.inflate(2130903150, null);
-      localp.a = ((TextView)paramView.findViewById(2131493297));
-      localp.b = ((TextView)paramView.findViewById(2131493299));
-      localp.c = ((ImageView)paramView.findViewById(2131493298));
-      paramView.setTag(localp);
-      Track localTrack = (Track)AudioBookPlayActivity.i(this.a).get(paramInt);
-      localp.a.setText(String.valueOf(paramInt + 1));
-      localp.b.setText(localTrack.getTrackTitle());
-      if (paramInt == AudioBookPlayActivity.k(this.a))
-        break label169;
-      localp.c.setImageResource(2130837589);
+    public n(AudioBookPlayActivity paramAudioBookPlayActivity, Context paramContext) {
+        this.b = LayoutInflater.from(paramContext);
     }
-    while (true)
-    {
-      paramView.setOnClickListener(new o(this, paramInt));
-      return paramView;
-      localp = (p)paramView.getTag();
-      break;
-      label169: if (as.c())
-      {
-        localp.c.setImageResource(2130837602);
-        ((AnimationDrawable)localp.c.getDrawable()).start();
-      }
-      else
-      {
-        localp.c.setImageResource(2130837603);
-      }
+
+    public final int getCount() {
+        return AudioBookPlayActivity.i(this.a).size();
     }
-  }
+
+    public final Object getItem(int paramInt) {
+        return AudioBookPlayActivity.i(this.a).get(paramInt);
+    }
+
+    public final long getItemId(int paramInt) {
+        return paramInt;
+    }
+
+    public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup) {
+        p localp;
+        if (paramView == null) {
+            localp = new p(this.a);
+            paramView = this.b.inflate(2130903150, null);
+            localp.a = ((TextView) paramView.findViewById(2131493297));
+            localp.b = ((TextView) paramView.findViewById(2131493299));
+            localp.c = ((ImageView) paramView.findViewById(2131493298));
+            paramView.setTag(localp);
+            Track localTrack = (Track) AudioBookPlayActivity.i(this.a).get(paramInt);
+            localp.a.setText(String.valueOf(paramInt + 1));
+            localp.b.setText(localTrack.getTrackTitle());
+            if (paramInt == AudioBookPlayActivity.k(this.a))
+                break label169;
+            localp.c.setImageResource(2130837589);
+        }
+        while (true) {
+            paramView.setOnClickListener(new o(this, paramInt));
+            return paramView;
+            localp = (p) paramView.getTag();
+            break;
+            label169:
+            if (as.c()) {
+                localp.c.setImageResource(2130837602);
+                ((AnimationDrawable) localp.c.getDrawable()).start();
+            } else {
+                localp.c.setImageResource(2130837603);
+            }
+        }
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

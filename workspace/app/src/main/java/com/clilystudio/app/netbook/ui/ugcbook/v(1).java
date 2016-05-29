@@ -1,27 +1,22 @@
 package com.clilystudio.app.netbook.ui.ugcbook;
 
 import android.view.View;
-import android.view.View.OnFocusChangeListener;
+
 import com.arcsoft.hpay100.a.a;
-import com.clilystudio.app.netbook.widget.SearchEditText;
 
 final class v
-  implements View.OnFocusChangeListener
-{
-  v(UGCGuideAddBookActivity paramUGCGuideAddBookActivity)
-  {
-  }
-
-  public final void onFocusChange(View paramView, boolean paramBoolean)
-  {
-    UGCGuideAddBookActivity localUGCGuideAddBookActivity = this.a;
-    if (!a.Q(UGCGuideAddBookActivity.a(this.a).getText().toString()));
-    for (boolean bool = true; ; bool = false)
-    {
-      UGCGuideAddBookActivity.c(localUGCGuideAddBookActivity, bool);
-      return;
+        implements View.OnFocusChangeListener {
+    v(UGCGuideAddBookActivity paramUGCGuideAddBookActivity) {
     }
-  }
+
+    public final void onFocusChange(View paramView, boolean paramBoolean) {
+        UGCGuideAddBookActivity localUGCGuideAddBookActivity = this.a;
+        if (!a.Q(UGCGuideAddBookActivity.a(this.a).getText().toString())) ;
+        for (boolean bool = true; ; bool = false) {
+            UGCGuideAddBookActivity.c(localUGCGuideAddBookActivity, bool);
+            return;
+        }
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

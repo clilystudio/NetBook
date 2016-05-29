@@ -3,16 +3,13 @@ package com.clilystudio.app.netbook.ui.feed;
 import com.clilystudio.app.netbook.ui.aa;
 
 final class a
-  implements aa
-{
-  a(FeedAddActivity paramFeedAddActivity)
-  {
-  }
+        implements aa {
+    a(FeedAddActivity paramFeedAddActivity) {
+    }
 
-  public final void a()
-  {
-    FeedAddActivity.a(this.a);
-  }
+    public final void a() {
+        FeedAddActivity.a(this.a);
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

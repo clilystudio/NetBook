@@ -1,24 +1,18 @@
 package com.clilystudio.app.netbook.ui;
 
-import com.handmark.pulltorefresh.library.PullToRefreshListView;
-
 final class bt
-  implements Runnable
-{
-  bt(bs parambs)
-  {
-  }
-
-  public final void run()
-  {
-    if (NotifFragment.c(this.a.a) == null)
-    {
-      NotifFragment.a(this.a.a, false);
-      NotifFragment.d(this.a.a).n();
-      return;
+        implements Runnable {
+    bt(bs parambs) {
     }
-    this.a.a.c();
-  }
+
+    public final void run() {
+        if (NotifFragment.c(this.a.a) == null) {
+            NotifFragment.a(this.a.a, false);
+            NotifFragment.d(this.a.a).n();
+            return;
+        }
+        this.a.a.c();
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

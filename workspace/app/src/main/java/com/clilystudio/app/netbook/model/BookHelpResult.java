@@ -1,29 +1,24 @@
 package com.clilystudio.app.netbook.model;
 
-public class BookHelpResult
-{
-  private BookHelp help;
-  private boolean ok;
+public class BookHelpResult {
+    private BookHelp help;
+    private boolean ok;
 
-  public BookHelp getHelp()
-  {
-    return this.help;
-  }
+    public BookHelp getHelp() {
+        return this.help;
+    }
 
-  public boolean isOk()
-  {
-    return this.ok;
-  }
+    public boolean isOk() {
+        return this.ok;
+    }
 
-  public void setHelp(BookHelp paramBookHelp)
-  {
-    this.help = paramBookHelp;
-  }
+    public void setHelp(BookHelp paramBookHelp) {
+        this.help = paramBookHelp;
+    }
 
-  public void setOk(boolean paramBoolean)
-  {
-    this.ok = paramBoolean;
-  }
+    public void setOk(boolean paramBoolean) {
+        this.ok = paramBoolean;
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

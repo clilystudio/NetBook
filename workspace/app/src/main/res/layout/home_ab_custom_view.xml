@@ -1,8 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:paddingLeft="@dimen/dp_16" android:layout_width="wrap_content" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/home_ab_logo" android:layout_centerVertical="true" />
-    <ImageView android:id="@id/home_action_menu_game" android:background="?selectableItemBackgroundBorderless" android:layout_width="@dimen/actionbar_height" android:layout_height="fill_parent" android:src="@drawable/ic_action_game" android:scaleType="center" android:layout_toLeftOf="@id/home_action_menu_search" android:layout_centerVertical="true" android:contentDescription="@string/accessible_game_center" />
-    <ImageView android:id="@id/home_action_menu_search" android:background="?selectableItemBackgroundBorderless" android:layout_width="@dimen/actionbar_height" android:layout_height="fill_parent" android:src="@drawable/ic_action_search" android:scaleType="center" android:layout_toLeftOf="@id/home_action_menu_more" android:layout_centerVertical="true" android:contentDescription="@string/accessible_search" />
-    <ImageView android:id="@id/home_action_menu_more" android:background="?selectableItemBackgroundBorderless" android:layout_width="@dimen/actionbar_height" android:layout_height="fill_parent" android:src="@drawable/ic_action_overflow" android:scaleType="center" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:contentDescription="@string/accessible_more" />
+<RelativeLayout android:paddingLeft="@dimen/dp_16"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <ImageView
+        android:layout_gravity="center_vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/home_ab_logo"
+        android:layout_centerVertical="true"/>
+
+    <ImageView
+        android:id="@+id/home_action_menu_game"
+        android:background="?selectableItemBackgroundBorderless"
+        android:layout_width="@dimen/actionbar_height"
+        android:layout_height="fill_parent"
+        android:src="@drawable/ic_action_game"
+        android:scaleType="center"
+        android:layout_toLeftOf="@id/home_action_menu_search"
+        android:layout_centerVertical="true"
+        android:contentDescription="@string/accessible_game_center"/>
+
+    <ImageView
+        android:id="@+id/home_action_menu_search"
+        android:background="?selectableItemBackgroundBorderless"
+        android:layout_width="@dimen/actionbar_height"
+        android:layout_height="fill_parent"
+        android:src="@drawable/ic_action_search"
+        android:scaleType="center"
+        android:layout_toLeftOf="@id/home_action_menu_more"
+        android:layout_centerVertical="true"
+        android:contentDescription="@string/accessible_search"/>
+
+    <ImageView
+        android:id="@+id/home_action_menu_more"
+        android:background="?selectableItemBackgroundBorderless"
+        android:layout_width="@dimen/actionbar_height"
+        android:layout_height="fill_parent"
+        android:src="@drawable/ic_action_overflow"
+        android:scaleType="center"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:contentDescription="@string/accessible_more"/>
 </RelativeLayout>

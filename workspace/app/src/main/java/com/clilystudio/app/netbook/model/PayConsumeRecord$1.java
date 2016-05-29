@@ -1,7 +1,6 @@
 package com.clilystudio.app.netbook.model;
 
-class PayConsumeRecord$1
-{
+class PayConsumeRecord$1 {
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

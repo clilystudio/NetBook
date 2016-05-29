@@ -1,52 +1,418 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView android:background="?android:windowBackground" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:paddingTop="15.0dip" android:paddingBottom="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <TextView android:textSize="@dimen/text_size_12" android:textColor="?android:textColorTertiary" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginRight="10.0dip" android:layout_marginBottom="10.0dip" android:text="最多支持7个投票选项，每项最多20字" android:drawableLeft="@drawable/vote_edit_tips_icon" android:drawablePadding="5.0dip" />
-        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
-            <RelativeLayout android:id="@id/add_vote_item_layout1" android:background="?VoteItemSelector" android:paddingLeft="15.0dip" android:paddingRight="15.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" android:layout_marginBottom="7.0dip">
-                <TextView android:textSize="@dimen/text_size_16" android:textColor="?android:textColorTertiary" android:id="@id/add_vote_item_index_1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="1. " android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
-                <TextView android:textSize="@dimen/text_size_16" android:textColor="?android:textColor" android:id="@id/add_vote_item_edit_1" android:paddingLeft="3.0dip" android:paddingRight="2.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="" android:singleLine="true" android:layout_toLeftOf="@id/add_vote_item_del_1" android:layout_toRightOf="@id/add_vote_item_index_1" android:layout_centerVertical="true" />
-                <ImageView android:id="@id/add_vote_item_del_1" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/add_vote_item_delete" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+<ScrollView android:background="?android:windowBackground"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:paddingTop="15.0dip"
+        android:paddingBottom="10.0dip"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:textSize="@dimen/text_size_12"
+            android:textColor="?android:textColorTertiary"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12.0dip"
+            android:layout_marginRight="10.0dip"
+            android:layout_marginBottom="10.0dip"
+            android:text="最多支持7个投票选项，每项最多20字"
+            android:drawableLeft="@drawable/vote_edit_tips_icon"
+            android:drawablePadding="5.0dip"/>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="0.0dip"
+            android:layout_weight="1.0">
+
+            <RelativeLayout
+                android:id="@+id/add_vote_item_layout1"
+                android:background="?VoteItemSelector"
+                android:paddingLeft="15.0dip"
+                android:paddingRight="15.0dip"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10.0dip"
+                android:layout_marginRight="10.0dip"
+                android:layout_marginBottom="7.0dip">
+
+                <TextView
+                    android:textSize="@dimen/text_size_16"
+                    android:textColor="?android:textColorTertiary"
+                    android:id="@+id/add_vote_item_index_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1. "
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"/>
+
+                <TextView
+                    android:textSize="@dimen/text_size_16"
+                    android:textColor="?android:textColor"
+                    android:id="@+id/add_vote_item_edit_1"
+                    android:paddingLeft="3.0dip"
+                    android:paddingRight="2.0dip"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:singleLine="true"
+                    android:layout_toLeftOf="@id/add_vote_item_del_1"
+                    android:layout_toRightOf="@id/add_vote_item_index_1"
+                    android:layout_centerVertical="true"/>
+
+                <ImageView
+                    android:id="@+id/add_vote_item_del_1"
+                    android:visibility="invisible"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/add_vote_item_delete"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"/>
             </RelativeLayout>
-            <RelativeLayout android:id="@id/add_vote_item_layout2" android:background="?VoteItemSelector" android:paddingLeft="15.0dip" android:paddingRight="15.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" android:layout_marginBottom="7.0dip">
-                <TextView android:textSize="@dimen/text_size_16" android:textColor="?android:textColorTertiary" android:id="@id/add_vote_item_index_2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="2. " android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
-                <TextView android:textSize="@dimen/text_size_16" android:textColor="?android:textColor" android:id="@id/add_vote_item_edit_2" android:paddingLeft="3.0dip" android:paddingRight="2.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="" android:singleLine="true" android:layout_toLeftOf="@id/add_vote_item_del_2" android:layout_toRightOf="@id/add_vote_item_index_2" android:layout_centerVertical="true" />
-                <ImageView android:id="@id/add_vote_item_del_2" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/add_vote_item_delete" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+
+            <RelativeLayout
+                android:id="@+id/add_vote_item_layout2"
+                android:background="?VoteItemSelector"
+                android:paddingLeft="15.0dip"
+                android:paddingRight="15.0dip"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10.0dip"
+                android:layout_marginRight="10.0dip"
+                android:layout_marginBottom="7.0dip">
+
+                <TextView
+                    android:textSize="@dimen/text_size_16"
+                    android:textColor="?android:textColorTertiary"
+                    android:id="@+id/add_vote_item_index_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2. "
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"/>
+
+                <TextView
+                    android:textSize="@dimen/text_size_16"
+                    android:textColor="?android:textColor"
+                    android:id="@+id/add_vote_item_edit_2"
+                    android:paddingLeft="3.0dip"
+                    android:paddingRight="2.0dip"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:singleLine="true"
+                    android:layout_toLeftOf="@id/add_vote_item_del_2"
+                    android:layout_toRightOf="@id/add_vote_item_index_2"
+                    android:layout_centerVertical="true"/>
+
+                <ImageView
+                    android:id="@+id/add_vote_item_del_2"
+                    android:visibility="invisible"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/add_vote_item_delete"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"/>
             </RelativeLayout>
-            <RelativeLayout android:id="@id/add_vote_item_layout3" android:background="?VoteItemSelector" android:paddingLeft="15.0dip" android:paddingRight="15.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" android:layout_marginBottom="7.0dip">
-                <TextView android:textSize="@dimen/text_size_16" android:textColor="?android:textColorTertiary" android:id="@id/add_vote_item_index_3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="3. " android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
-                <TextView android:textSize="@dimen/text_size_16" android:textColor="?android:textColor" android:id="@id/add_vote_item_edit_3" android:paddingLeft="3.0dip" android:paddingRight="2.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="" android:singleLine="true" android:layout_toLeftOf="@id/add_vote_item_del_3" android:layout_toRightOf="@id/add_vote_item_index_3" android:layout_centerVertical="true" />
-                <ImageView android:id="@id/add_vote_item_del_3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/add_vote_item_delete" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+
+            <RelativeLayout
+                android:id="@+id/add_vote_item_layout3"
+                android:background="?VoteItemSelector"
+                android:paddingLeft="15.0dip"
+                android:paddingRight="15.0dip"
+                android:visibility="gone"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10.0dip"
+                android:layout_marginRight="10.0dip"
+                android:layout_marginBottom="7.0dip">
+
+                <TextView
+                    android:textSize="@dimen/text_size_16"
+                    android:textColor="?android:textColorTertiary"
+                    android:id="@+id/add_vote_item_index_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="3. "
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"/>
+
+                <TextView
+                    android:textSize="@dimen/text_size_16"
+                    android:textColor="?android:textColor"
+                    android:id="@+id/add_vote_item_edit_3"
+                    android:paddingLeft="3.0dip"
+                    android:paddingRight="2.0dip"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:singleLine="true"
+                    android:layout_toLeftOf="@id/add_vote_item_del_3"
+                    android:layout_toRightOf="@id/add_vote_item_index_3"
+                    android:layout_centerVertical="true"/>
+
+                <ImageView
+                    android:id="@+id/add_vote_item_del_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/add_vote_item_delete"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"/>
             </RelativeLayout>
-            <RelativeLayout android:id="@id/add_vote_item_layout4" android:background="?VoteItemSelector" android:paddingLeft="15.0dip" android:paddingRight="15.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" android:layout_marginBottom="7.0dip">
-                <TextView android:textSize="@dimen/text_size_16" android:textColor="?android:textColorTertiary" android:id="@id/add_vote_item_index_4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="4. " android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
-                <TextView android:textSize="@dimen/text_size_16" android:textColor="?android:textColor" android:id="@id/add_vote_item_edit_4" android:paddingLeft="3.0dip" android:paddingRight="2.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="" android:singleLine="true" android:layout_toLeftOf="@id/add_vote_item_del_4" android:layout_toRightOf="@id/add_vote_item_index_4" android:layout_centerVertical="true" />
-                <ImageView android:id="@id/add_vote_item_del_4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/add_vote_item_delete" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+
+            <RelativeLayout
+                android:id="@+id/add_vote_item_layout4"
+                android:background="?VoteItemSelector"
+                android:paddingLeft="15.0dip"
+                android:paddingRight="15.0dip"
+                android:visibility="gone"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10.0dip"
+                android:layout_marginRight="10.0dip"
+                android:layout_marginBottom="7.0dip">
+
+                <TextView
+                    android:textSize="@dimen/text_size_16"
+                    android:textColor="?android:textColorTertiary"
+                    android:id="@+id/add_vote_item_index_4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="4. "
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"/>
+
+                <TextView
+                    android:textSize="@dimen/text_size_16"
+                    android:textColor="?android:textColor"
+                    android:id="@+id/add_vote_item_edit_4"
+                    android:paddingLeft="3.0dip"
+                    android:paddingRight="2.0dip"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:singleLine="true"
+                    android:layout_toLeftOf="@id/add_vote_item_del_4"
+                    android:layout_toRightOf="@id/add_vote_item_index_4"
+                    android:layout_centerVertical="true"/>
+
+                <ImageView
+                    android:id="@+id/add_vote_item_del_4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/add_vote_item_delete"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"/>
             </RelativeLayout>
-            <RelativeLayout android:id="@id/add_vote_item_layout5" android:background="?VoteItemSelector" android:paddingLeft="15.0dip" android:paddingRight="15.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" android:layout_marginBottom="7.0dip">
-                <TextView android:textSize="@dimen/text_size_16" android:textColor="?android:textColorTertiary" android:id="@id/add_vote_item_index_5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="5. " android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
-                <TextView android:textSize="@dimen/text_size_16" android:textColor="?android:textColor" android:id="@id/add_vote_item_edit_5" android:paddingLeft="3.0dip" android:paddingRight="2.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="" android:singleLine="true" android:layout_toLeftOf="@id/add_vote_item_del_5" android:layout_toRightOf="@id/add_vote_item_index_5" android:layout_centerVertical="true" />
-                <ImageView android:id="@id/add_vote_item_del_5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/add_vote_item_delete" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+
+            <RelativeLayout
+                android:id="@+id/add_vote_item_layout5"
+                android:background="?VoteItemSelector"
+                android:paddingLeft="15.0dip"
+                android:paddingRight="15.0dip"
+                android:visibility="gone"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10.0dip"
+                android:layout_marginRight="10.0dip"
+                android:layout_marginBottom="7.0dip">
+
+                <TextView
+                    android:textSize="@dimen/text_size_16"
+                    android:textColor="?android:textColorTertiary"
+                    android:id="@+id/add_vote_item_index_5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="5. "
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"/>
+
+                <TextView
+                    android:textSize="@dimen/text_size_16"
+                    android:textColor="?android:textColor"
+                    android:id="@+id/add_vote_item_edit_5"
+                    android:paddingLeft="3.0dip"
+                    android:paddingRight="2.0dip"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:singleLine="true"
+                    android:layout_toLeftOf="@id/add_vote_item_del_5"
+                    android:layout_toRightOf="@id/add_vote_item_index_5"
+                    android:layout_centerVertical="true"/>
+
+                <ImageView
+                    android:id="@+id/add_vote_item_del_5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/add_vote_item_delete"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"/>
             </RelativeLayout>
-            <RelativeLayout android:id="@id/add_vote_item_layout6" android:background="?VoteItemSelector" android:paddingLeft="15.0dip" android:paddingRight="15.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" android:layout_marginBottom="7.0dip">
-                <TextView android:textSize="@dimen/text_size_16" android:textColor="?android:textColorTertiary" android:id="@id/add_vote_item_index_6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="6. " android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
-                <TextView android:textSize="@dimen/text_size_16" android:textColor="?android:textColor" android:id="@id/add_vote_item_edit_6" android:paddingLeft="3.0dip" android:paddingRight="2.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="" android:singleLine="true" android:layout_toLeftOf="@id/add_vote_item_del_6" android:layout_toRightOf="@id/add_vote_item_index_6" android:layout_centerVertical="true" />
-                <ImageView android:id="@id/add_vote_item_del_6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/add_vote_item_delete" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+
+            <RelativeLayout
+                android:id="@+id/add_vote_item_layout6"
+                android:background="?VoteItemSelector"
+                android:paddingLeft="15.0dip"
+                android:paddingRight="15.0dip"
+                android:visibility="gone"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10.0dip"
+                android:layout_marginRight="10.0dip"
+                android:layout_marginBottom="7.0dip">
+
+                <TextView
+                    android:textSize="@dimen/text_size_16"
+                    android:textColor="?android:textColorTertiary"
+                    android:id="@+id/add_vote_item_index_6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="6. "
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"/>
+
+                <TextView
+                    android:textSize="@dimen/text_size_16"
+                    android:textColor="?android:textColor"
+                    android:id="@+id/add_vote_item_edit_6"
+                    android:paddingLeft="3.0dip"
+                    android:paddingRight="2.0dip"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:singleLine="true"
+                    android:layout_toLeftOf="@id/add_vote_item_del_6"
+                    android:layout_toRightOf="@id/add_vote_item_index_6"
+                    android:layout_centerVertical="true"/>
+
+                <ImageView
+                    android:id="@+id/add_vote_item_del_6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/add_vote_item_delete"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"/>
             </RelativeLayout>
-            <RelativeLayout android:id="@id/add_vote_item_layout7" android:background="?VoteItemSelector" android:paddingLeft="15.0dip" android:paddingRight="15.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip">
-                <TextView android:textSize="@dimen/text_size_16" android:textColor="?android:textColorTertiary" android:id="@id/add_vote_item_index_7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="7. " android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
-                <TextView android:textSize="@dimen/text_size_16" android:textColor="?android:textColor" android:id="@id/add_vote_item_edit_7" android:paddingLeft="3.0dip" android:paddingRight="2.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="" android:singleLine="true" android:layout_toLeftOf="@id/add_vote_item_del_7" android:layout_toRightOf="@id/add_vote_item_index_7" android:layout_centerVertical="true" />
-                <ImageView android:id="@id/add_vote_item_del_7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/add_vote_item_delete" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+
+            <RelativeLayout
+                android:id="@+id/add_vote_item_layout7"
+                android:background="?VoteItemSelector"
+                android:paddingLeft="15.0dip"
+                android:paddingRight="15.0dip"
+                android:visibility="gone"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10.0dip"
+                android:layout_marginRight="10.0dip">
+
+                <TextView
+                    android:textSize="@dimen/text_size_16"
+                    android:textColor="?android:textColorTertiary"
+                    android:id="@+id/add_vote_item_index_7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="7. "
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"/>
+
+                <TextView
+                    android:textSize="@dimen/text_size_16"
+                    android:textColor="?android:textColor"
+                    android:id="@+id/add_vote_item_edit_7"
+                    android:paddingLeft="3.0dip"
+                    android:paddingRight="2.0dip"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:singleLine="true"
+                    android:layout_toLeftOf="@id/add_vote_item_del_7"
+                    android:layout_toRightOf="@id/add_vote_item_index_7"
+                    android:layout_centerVertical="true"/>
+
+                <ImageView
+                    android:id="@+id/add_vote_item_del_7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/add_vote_item_delete"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"/>
             </RelativeLayout>
-            <RelativeLayout android:gravity="center_horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip">
-                <RelativeLayout android:id="@id/add_vote_item_add_btn" android:background="@drawable/add_vote_item_btn" android:paddingLeft="18.0dip" android:paddingTop="5.0dip" android:paddingRight="21.0dip" android:paddingBottom="5.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:layout_centerVertical="true">
-                    <ImageView android:id="@id/dis_post_detail_talk" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="2.0dip" android:src="@drawable/add_vote_item_img" android:layout_centerVertical="true" />
-                    <TextView android:textSize="@dimen/text_size_14" android:textColor="@color/white" android:id="@id/post_detail_book_name" android:paddingBottom="@dimen/add_vote_item_btn_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="增加投票项" android:layout_toRightOf="@id/dis_post_detail_talk" android:layout_centerVertical="true" style="@style/Add_Vote_Item_Btn" />
+
+            <RelativeLayout
+                android:gravity="center_horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20.0dip">
+
+                <RelativeLayout
+                    android:id="@+id/add_vote_item_add_btn"
+                    android:background="@drawable/add_vote_item_btn"
+                    android:paddingLeft="18.0dip"
+                    android:paddingTop="5.0dip"
+                    android:paddingRight="21.0dip"
+                    android:paddingBottom="5.0dip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10.0dip"
+                    android:layout_centerVertical="true">
+
+                    <ImageView
+                        android:id="@+id/dis_post_detail_talk"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="2.0dip"
+                        android:src="@drawable/add_vote_item_img"
+                        android:layout_centerVertical="true"/>
+
+                    <TextView
+                        android:textSize="@dimen/text_size_14"
+                        android:textColor="@color/white"
+                        android:id="@+id/post_detail_book_name"
+                        android:paddingBottom="@dimen/add_vote_item_btn_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="增加投票项"
+                        android:layout_toRightOf="@id/dis_post_detail_talk"
+                        android:layout_centerVertical="true"
+                        style="@style/Add_Vote_Item_Btn"/>
                 </RelativeLayout>
-                <RelativeLayout android:id="@id/add_vote_item_ok_btn" android:background="@drawable/add_vote_item_ok_btn" android:paddingLeft="21.0dip" android:paddingTop="5.0dip" android:paddingRight="24.0dip" android:paddingBottom="5.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toRightOf="@id/add_vote_item_add_btn" android:layout_centerVertical="true">
-                    <ImageView android:id="@id/dis_post_detail_talk2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="2.0dip" android:src="@drawable/add_vote_item_ok_img" android:layout_centerVertical="true" />
-                    <TextView android:textSize="@dimen/text_size_14" android:textColor="@color/white" android:id="@id/post_detail_book_name" android:paddingBottom="@dimen/add_vote_item_btn_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="确认发布" android:layout_toRightOf="@id/dis_post_detail_talk2" android:layout_centerVertical="true" style="@style/Add_Vote_Item_Btn" />
+
+                <RelativeLayout
+                    android:id="@+id/add_vote_item_ok_btn"
+                    android:background="@drawable/add_vote_item_ok_btn"
+                    android:paddingLeft="21.0dip"
+                    android:paddingTop="5.0dip"
+                    android:paddingRight="24.0dip"
+                    android:paddingBottom="5.0dip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/add_vote_item_add_btn"
+                    android:layout_centerVertical="true">
+
+                    <ImageView
+                        android:id="@+id/dis_post_detail_talk2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="2.0dip"
+                        android:src="@drawable/add_vote_item_ok_img"
+                        android:layout_centerVertical="true"/>
+
+                    <TextView
+                        android:textSize="@dimen/text_size_14"
+                        android:textColor="@color/white"
+                        android:id="@+id/post_detail_book_name"
+                        android:paddingBottom="@dimen/add_vote_item_btn_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="确认发布"
+                        android:layout_toRightOf="@id/dis_post_detail_talk2"
+                        android:layout_centerVertical="true"
+                        style="@style/Add_Vote_Item_Btn"/>
                 </RelativeLayout>
             </RelativeLayout>
         </LinearLayout>

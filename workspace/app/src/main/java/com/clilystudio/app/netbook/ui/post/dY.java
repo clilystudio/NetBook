@@ -3,18 +3,15 @@ package com.clilystudio.app.netbook.ui.post;
 import com.clilystudio.app.netbook.util.am_CommonUtils;
 
 final class dY
-  implements Runnable
-{
-  dY(dX paramdX)
-  {
-  }
+        implements Runnable {
+    dY(dX paramdX) {
+    }
 
-  public final void run()
-  {
-    if (!am_CommonUtils.a_isTaskStoped(TweetTimelineFragment.b(this.a.a)))
-      TweetTimelineFragment.b(this.a.a).cancel(true);
-    TweetTimelineFragment.c(this.a.a);
-  }
+    public final void run() {
+        if (!am_CommonUtils.a_isTaskStoped(TweetTimelineFragment.b(this.a.a)))
+            TweetTimelineFragment.b(this.a.a).cancel(true);
+        TweetTimelineFragment.c(this.a.a);
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

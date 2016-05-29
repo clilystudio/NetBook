@@ -4,21 +4,17 @@ import android.app.ActivityManager;
 import android.app.Application;
 import android.content.Context;
 import android.os.Process;
-import android.text.TextUtils;
 
 import com.activeandroid.ActiveAndroid;
-import com.clilystudio.app.netbook.api.ApiService;
-import com.clilystudio.app.netbook.event.H;
-import com.clilystudio.app.netbook.event.i;
-import com.clilystudio.app.netbook.model.User;
-import com.integralblue.httpresponsecache.HttpResponseCache;
-import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.clilystudio.app.netbook.model.Account;
 import com.clilystudio.app.netbook.model.BookInfo;
 import com.clilystudio.app.netbook.model.ChapterLink;
 import com.clilystudio.app.netbook.model.UGCNewCollection;
+import com.clilystudio.app.netbook.model.User;
 import com.clilystudio.app.netbook.reader.Reader;
+import com.integralblue.httpresponsecache.HttpResponseCache;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
 import java.io.File;
 import java.io.IOException;
@@ -99,7 +95,7 @@ public class MyApplication extends Application {
         return this.c;
     }
 
-     public final Serializable b_readSavedInfo(String name) {
+    public final Serializable b_readSavedInfo(String name) {
         File file = getFileStreamPath(name);
         if (file.exists()) {
             ObjectInputStream ois = null;

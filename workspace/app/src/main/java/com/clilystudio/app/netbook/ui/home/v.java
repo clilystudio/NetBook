@@ -2,19 +2,17 @@ package com.clilystudio.app.netbook.ui.home;
 
 import com.arcsoft.hpay100.a.a;
 import com.clilystudio.app.netbook.c_StoragePathConst;
+
 import java.io.File;
 
-final class v extends Thread
-{
-  v(HomeShelfFragment paramHomeShelfFragment, String paramString)
-  {
-  }
+final class v extends Thread {
+    v(HomeShelfFragment paramHomeShelfFragment, String paramString) {
+    }
 
-  public final void run()
-  {
-    String str = this.a;
-    a.E(c_StoragePathConst.b_Chapter + File.separator + str);
-  }
+    public final void run() {
+        String str = this.a;
+        a.E(c_StoragePathConst.b_Chapter + File.separator + str);
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

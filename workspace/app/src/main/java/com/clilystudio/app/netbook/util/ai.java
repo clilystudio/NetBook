@@ -1,8 +1,7 @@
 package com.clilystudio.app.netbook.util;
 
-public abstract interface ai
-{
-  public abstract void a(String paramString, int paramInt);
+public abstract interface ai {
+    public abstract void a(String paramString, int paramInt);
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

@@ -1,7 +1,6 @@
 package com.clilystudio.app.netbook.util;
 
-final class G
-{
+final class G {
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

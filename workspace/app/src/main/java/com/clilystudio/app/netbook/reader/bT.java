@@ -4,22 +4,18 @@ import com.clilystudio.app.netbook.a_packA.b;
 import com.clilystudio.app.netbook.db.BookTopicEnterRecord;
 import com.clilystudio.app.netbook.model.TopicCount;
 
-final class bT extends b
-{
-  private bT(ReaderResActivity paramReaderResActivity)
-  {
-  }
-
-  protected final void a(TopicCount paramTopicCount)
-  {
-    ReaderResActivity.a(this.a, paramTopicCount.getCount());
-    if (Math.max(0, ReaderResActivity.a(this.a) - BookTopicEnterRecord.get(this.a.b).getVisitCount()) == 0)
-    {
-      ReaderResActivity.b(this.a).setVisibility(4);
-      return;
+final class bT extends b {
+    private bT(ReaderResActivity paramReaderResActivity) {
     }
-    ReaderResActivity.b(this.a).setVisibility(0);
-  }
+
+    protected final void a(TopicCount paramTopicCount) {
+        ReaderResActivity.a(this.a, paramTopicCount.getCount());
+        if (Math.max(0, ReaderResActivity.a(this.a) - BookTopicEnterRecord.get(this.a.b).getVisitCount()) == 0) {
+            ReaderResActivity.b(this.a).setVisibility(4);
+            return;
+        }
+        ReaderResActivity.b(this.a).setVisibility(0);
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

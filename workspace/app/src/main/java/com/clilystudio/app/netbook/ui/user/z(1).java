@@ -4,27 +4,21 @@ import com.clilystudio.app.netbook.a_packA.e;
 import com.clilystudio.app.netbook.api.b;
 import com.clilystudio.app.netbook.model.Topic;
 
-final class z extends e<String, Void, Topic>
-{
-  private z(MyFavTopicFragment paramMyFavTopicFragment)
-  {
-  }
+final class z extends e<String, Void, Topic> {
+    private z(MyFavTopicFragment paramMyFavTopicFragment) {
+    }
 
-  private Topic a(String[] paramArrayOfString)
-  {
-    if (!isCancelled())
-      try
-      {
-        b.a();
-        Topic localTopic = b.b().d(paramArrayOfString[0], MyFavTopicFragment.k(this.a));
-        return localTopic;
-      }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-      }
-    return null;
-  }
+    private Topic a(String[] paramArrayOfString) {
+        if (!isCancelled())
+            try {
+                b.a();
+                Topic localTopic = b.b().d(paramArrayOfString[0], MyFavTopicFragment.k(this.a));
+                return localTopic;
+            } catch (Exception localException) {
+                localException.printStackTrace();
+            }
+        return null;
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

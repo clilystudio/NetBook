@@ -1,22 +1,18 @@
 package com.clilystudio.app.netbook.reader;
 
 final class ar
-  implements ae
-{
-  ar(ReaderActivity paramReaderActivity)
-  {
-  }
+        implements ae {
+    ar(ReaderActivity paramReaderActivity) {
+    }
 
-  public final void a()
-  {
-    ReaderActivity.N(this.a);
-  }
+    public final void a() {
+        ReaderActivity.N(this.a);
+    }
 
-  public final void b()
-  {
-    if (ReaderActivity.O(this.a))
-      ReaderActivity.P(this.a);
-  }
+    public final void b() {
+        if (ReaderActivity.O(this.a))
+            ReaderActivity.P(this.a);
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

@@ -1,15 +1,12 @@
 package com.clilystudio.app.netbook.util;
 
 import android.app.Activity;
-import android.app.ActivityManager;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -19,50 +16,29 @@ import android.graphics.drawable.NinePatchDrawable;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Environment;
-import android.os.Process;
 import android.provider.Settings;
-import android.telephony.TelephonyManager;
 import android.text.ClipboardManager;
-import android.text.TextUtils;
-import android.util.Base64;
 import android.util.DisplayMetrics;
-import android.util.TypedValue;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 
 import com.clilystudio.app.netbook.MyApplication;
-import com.clilystudio.app.netbook.c_StoragePathConst;
 import com.clilystudio.app.netbook.db.BookDlRecord;
 import com.clilystudio.app.netbook.db.BookReadRecord;
 import com.clilystudio.app.netbook.model.Account;
 import com.clilystudio.app.netbook.model.Game;
 import com.clilystudio.app.netbook.model.User;
 import com.clilystudio.app.netbook.ui.AdWebViewActivity;
-import com.clilystudio.app.netbook.ui.SplashActivity;
 import com.clilystudio.app.netbook.ui.user.AuthLoginActivity;
 
-import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Field;
 import java.net.URLDecoder;
-import java.net.URLEncoder;
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
-import java.security.MessageDigest;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
-import java.util.UUID;
-import java.util.zip.GZIPOutputStream;
-
-import org.json.JSONObject;
 
 public class am_CommonUtils {
 //    private CharSequence a;
@@ -869,7 +845,8 @@ public class am_CommonUtils {
         List bookIdList = MyApplication.a_getInstance().f_getBookIdList();
         return (bookIdList != null) && (bookIdList.contains(bookId));
     }
-//
+
+    //
 //    private static String i() {
 //        String str1 = d("wxcasxx_v3");
 //        try {

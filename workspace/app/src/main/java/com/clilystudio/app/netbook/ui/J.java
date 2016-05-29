@@ -5,17 +5,14 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 
-final class J extends BroadcastReceiver
-{
-  J(BaseActivity paramBaseActivity)
-  {
-  }
+final class J extends BroadcastReceiver {
+    J(BaseActivity paramBaseActivity) {
+    }
 
-  @TargetApi(11)
-  public final void onReceive(Context paramContext, Intent paramIntent)
-  {
-    this.a.recreate();
-  }
+    @TargetApi(11)
+    public final void onReceive(Context paramContext, Intent paramIntent) {
+        this.a.recreate();
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

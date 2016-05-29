@@ -1,16 +1,13 @@
 package com.clilystudio.app.netbook.reader;
 
 final class w
-  implements Runnable
-{
-  w(v paramv)
-  {
-  }
+        implements Runnable {
+    w(v paramv) {
+    }
 
-  public final void run()
-  {
-    o.a(this.a.a, true);
-  }
+    public final void run() {
+        o.a(this.a.a, true);
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

@@ -1,19 +1,15 @@
 package com.clilystudio.app.netbook.ui;
 
 import android.view.View;
-import android.view.View.OnClickListener;
 
 final class r
-  implements View.OnClickListener
-{
-  r(AudiobookCategoryActivity paramAudiobookCategoryActivity)
-  {
-  }
+        implements View.OnClickListener {
+    r(AudiobookCategoryActivity paramAudiobookCategoryActivity) {
+    }
 
-  public final void onClick(View paramView)
-  {
-    AudiobookCategoryActivity.b(this.a);
-  }
+    public final void onClick(View paramView) {
+        AudiobookCategoryActivity.b(this.a);
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

@@ -1,16 +1,13 @@
 package com.clilystudio.app.netbook.ui.home;
 
 final class F
-  implements Runnable
-{
-  F(E paramE)
-  {
-  }
+        implements Runnable {
+    F(E paramE) {
+    }
 
-  public final void run()
-  {
-    HomeShelfFragment.f(this.a.a);
-  }
+    public final void run() {
+        HomeShelfFragment.f(this.a.a);
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

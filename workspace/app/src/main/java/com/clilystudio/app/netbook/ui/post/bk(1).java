@@ -2,24 +2,21 @@ package com.clilystudio.app.netbook.ui.post;
 
 import android.content.Intent;
 import android.view.View;
-import android.view.View.OnClickListener;
+
 import com.clilystudio.app.netbook.model.Follower;
 
 final class bk
-  implements View.OnClickListener
-{
-  bk(bj parambj, int paramInt)
-  {
-  }
+        implements View.OnClickListener {
+    bk(bj parambj, int paramInt) {
+    }
 
-  public final void onClick(View paramView)
-  {
-    Follower localFollower = (Follower)this.b.getItem(this.a);
-    Intent localIntent = OtherUserActivity.a(this.b.a);
-    localIntent.putExtra("USER_ID", localFollower.get_id());
-    localIntent.putExtra("USER_NAME", localFollower.getNickname());
-    this.b.a.startActivity(localIntent);
-  }
+    public final void onClick(View paramView) {
+        Follower localFollower = (Follower) this.b.getItem(this.a);
+        Intent localIntent = OtherUserActivity.a(this.b.a);
+        localIntent.putExtra("USER_ID", localFollower.get_id());
+        localIntent.putExtra("USER_NAME", localFollower.getNickname());
+        this.b.a.startActivity(localIntent);
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

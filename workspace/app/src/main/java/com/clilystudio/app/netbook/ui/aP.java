@@ -1,19 +1,15 @@
 package com.clilystudio.app.netbook.ui;
 
 import android.view.View;
-import android.view.View.OnClickListener;
 
 final class aP
-  implements View.OnClickListener
-{
-  aP(BookRankListFragment paramBookRankListFragment)
-  {
-  }
+        implements View.OnClickListener {
+    aP(BookRankListFragment paramBookRankListFragment) {
+    }
 
-  public final void onClick(View paramView)
-  {
-    BookRankListFragment.a(this.a);
-  }
+    public final void onClick(View paramView) {
+        BookRankListFragment.a(this.a);
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

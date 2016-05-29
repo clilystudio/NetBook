@@ -1,22 +1,21 @@
 package com.clilystudio.app.netbook.adapter;
 
 import android.widget.TextView;
-import butterknife.ButterKnife.Finder;
+
 import com.clilystudio.app.netbook.widget.BookShelfFlagView;
 
-public class HomeShelfAdapter$FeedHolder$$ViewInjector
-{
-  public static void inject(ButterKnife.Finder paramFinder, HomeShelfAdapter.FeedHolder paramFeedHolder, Object paramObject)
-  {
-    paramFeedHolder.title = ((TextView)paramFinder.findRequiredView(paramObject, 2131493481, "field 'title'"));
-    paramFeedHolder.flag = ((BookShelfFlagView)paramFinder.findRequiredView(paramObject, 2131493754, "field 'flag'"));
-  }
+import butterknife.ButterKnife.Finder;
 
-  public static void reset(HomeShelfAdapter.FeedHolder paramFeedHolder)
-  {
-    paramFeedHolder.title = null;
-    paramFeedHolder.flag = null;
-  }
+public class HomeShelfAdapter$FeedHolder$$ViewInjector {
+    public static void inject(ButterKnife.Finder paramFinder, HomeShelfAdapter.FeedHolder paramFeedHolder, Object paramObject) {
+        paramFeedHolder.title = ((TextView) paramFinder.findRequiredView(paramObject, 2131493481, "field 'title'"));
+        paramFeedHolder.flag = ((BookShelfFlagView) paramFinder.findRequiredView(paramObject, 2131493754, "field 'flag'"));
+    }
+
+    public static void reset(HomeShelfAdapter.FeedHolder paramFeedHolder) {
+        paramFeedHolder.title = null;
+        paramFeedHolder.flag = null;
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

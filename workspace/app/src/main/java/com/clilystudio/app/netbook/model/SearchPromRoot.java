@@ -1,13 +1,11 @@
 package com.clilystudio.app.netbook.model;
 
-public class SearchPromRoot extends Root
-{
-  BookSummary prom;
+public class SearchPromRoot extends Root {
+    BookSummary prom;
 
-  public BookSummary getProm()
-  {
-    return this.prom;
-  }
+    public BookSummary getProm() {
+        return this.prom;
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

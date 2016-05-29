@@ -1,19 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:paddingTop="16.0dip" android:paddingRight="16.0dip" android:paddingBottom="16.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
-      xmlns:android="http://schemas.android.com/apk/res/android">
-        <com.ushaqi.zhuishushenqi.widget.CoverView android:id="@id/new_topic_listitem_cover" android:layout_marginLeft="16.0dip" android:layout_alignParentLeft="true" style="@style/CoverView" />
-        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/shelf_divider_left_gap">
-            <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
-                <TextView android:textSize="12.0sp" android:textColor="?android:textColorSecondary" android:id="@id/new_topic_listitem_user" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="发" android:layout_weight="1.0" />
-                <TextView android:textSize="12.0sp" android:textColor="?android:textColorTertiary" android:id="@id/time" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+<FrameLayout android:layout_width="fill_parent"
+             android:layout_height="wrap_content"
+             xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <RelativeLayout android:paddingTop="16.0dip"
+                    android:paddingRight="16.0dip"
+                    android:paddingBottom="16.0dip"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    xmlns:android="http://schemas.android.com/apk/res/android">
+
+        <com.clilystudio.app.netbook.widget.CoverView
+            android:id="@+id/new_topic_listitem_cover"
+            android:layout_marginLeft="16.0dip"
+            android:layout_alignParentLeft="true"
+            style="@style/CoverView"/>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/shelf_divider_left_gap">
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:textSize="12.0sp"
+                    android:textColor="?android:textColorSecondary"
+                    android:id="@+id/new_topic_listitem_user"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="发"
+                    android:layout_weight="1.0"/>
+
+                <TextView
+                    android:textSize="12.0sp"
+                    android:textColor="?android:textColorTertiary"
+                    android:id="@+id/time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
             </LinearLayout>
-            <TextView android:textSize="14.0sp" android:textColor="?android:textColor" android:id="@id/title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="7.0dip" android:text="title" android:lineSpacingMultiplier="1.3" />
-            <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6.0dip">
-                <TextView android:textSize="12.0sp" android:textColor="#ff9c9c9c" android:id="@id/new_topic_listitem_vote" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:drawableLeft="@drawable/ic_vote" android:drawablePadding="3.0dip" />
-                <TextView android:textSize="12.0sp" android:textColor="?android:textColorTertiary" android:id="@id/new_topic_listitem_comment" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:drawableLeft="@drawable/ic_message" android:drawablePadding="3.0dip" />
-                <ImageView android:id="@id/new_topic_listitem_label_status" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+
+            <TextView
+                android:textSize="14.0sp"
+                android:textColor="?android:textColor"
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7.0dip"
+                android:text="title"
+                android:lineSpacingMultiplier="1.3"/>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6.0dip">
+
+                <TextView
+                    android:textSize="12.0sp"
+                    android:textColor="#ff9c9c9c"
+                    android:id="@+id/new_topic_listitem_vote"
+                    android:visibility="gone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/ic_vote"
+                    android:drawablePadding="3.0dip"/>
+
+                <TextView
+                    android:textSize="12.0sp"
+                    android:textColor="?android:textColorTertiary"
+                    android:id="@+id/new_topic_listitem_comment"
+                    android:visibility="gone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/ic_message"
+                    android:drawablePadding="3.0dip"/>
+
+                <ImageView
+                    android:id="@+id/new_topic_listitem_label_status"
+                    android:visibility="gone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
             </LinearLayout>
         </LinearLayout>
     </RelativeLayout>

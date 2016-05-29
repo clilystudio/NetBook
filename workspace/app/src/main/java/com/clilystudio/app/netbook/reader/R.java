@@ -1,18 +1,15 @@
 package com.clilystudio.app.netbook.reader;
 
 final class R
-  implements Runnable
-{
-  R(Reader paramReader, Reader.Type paramType)
-  {
-  }
+        implements Runnable {
+    R(Reader paramReader, Reader.Type paramType) {
+    }
 
-  public final void run()
-  {
-    ae localae = this.a.getListener(this.b);
-    if (localae != null)
-      localae.a();
-  }
+    public final void run() {
+        ae localae = this.a.getListener(this.b);
+        if (localae != null)
+            localae.a();
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

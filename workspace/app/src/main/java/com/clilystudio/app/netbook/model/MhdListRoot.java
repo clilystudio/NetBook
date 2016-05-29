@@ -1,40 +1,33 @@
 package com.clilystudio.app.netbook.model;
 
-public class MhdListRoot
-{
-  private int code;
-  private String code_msg;
-  private MhdInfo[] info;
+public class MhdListRoot {
+    private int code;
+    private String code_msg;
+    private MhdInfo[] info;
 
-  public int getCode()
-  {
-    return this.code;
-  }
+    public int getCode() {
+        return this.code;
+    }
 
-  public String getCode_msg()
-  {
-    return this.code_msg;
-  }
+    public String getCode_msg() {
+        return this.code_msg;
+    }
 
-  public MhdInfo[] getInfo()
-  {
-    return this.info;
-  }
+    public MhdInfo[] getInfo() {
+        return this.info;
+    }
 
-  public void setCode(int paramInt)
-  {
-    this.code = paramInt;
-  }
+    public void setCode(int paramInt) {
+        this.code = paramInt;
+    }
 
-  public void setCode_msg(String paramString)
-  {
-    this.code_msg = paramString;
-  }
+    public void setCode_msg(String paramString) {
+        this.code_msg = paramString;
+    }
 
-  public void setInfo(MhdInfo[] paramArrayOfMhdInfo)
-  {
-    this.info = paramArrayOfMhdInfo;
-  }
+    public void setInfo(MhdInfo[] paramArrayOfMhdInfo) {
+        this.info = paramArrayOfMhdInfo;
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

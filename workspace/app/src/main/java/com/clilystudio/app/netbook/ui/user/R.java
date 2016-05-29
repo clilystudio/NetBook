@@ -1,7 +1,6 @@
 package com.clilystudio.app.netbook.ui.user;
 
-final class R
-{
+final class R {
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

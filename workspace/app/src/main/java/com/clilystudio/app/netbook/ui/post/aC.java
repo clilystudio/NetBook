@@ -1,19 +1,15 @@
 package com.clilystudio.app.netbook.ui.post;
 
 import android.view.View;
-import android.view.View.OnClickListener;
 
 final class aC
-  implements View.OnClickListener
-{
-  aC(BookReviewListFragment paramBookReviewListFragment)
-  {
-  }
+        implements View.OnClickListener {
+    aC(BookReviewListFragment paramBookReviewListFragment) {
+    }
 
-  public final void onClick(View paramView)
-  {
-    BookReviewListFragment.e(this.a);
-  }
+    public final void onClick(View paramView) {
+        BookReviewListFragment.e(this.a);
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

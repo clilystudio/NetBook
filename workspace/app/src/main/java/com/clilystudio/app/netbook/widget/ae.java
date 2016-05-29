@@ -1,23 +1,16 @@
 package com.clilystudio.app.netbook.widget;
 
-import com.c.a.D;
-import com.c.a.w;
-
 final class ae
-  implements D
-{
-  ae(LoadingProgressView paramLoadingProgressView)
-  {
-  }
-
-  public final void a(w paramw)
-  {
-    if (!LoadingProgressView.a(this.a))
-    {
-      LoadingProgressView.a(this.a, ((Float)paramw.f()).floatValue());
-      this.a.setProgress(LoadingProgressView.b(this.a));
+        implements D {
+    ae(LoadingProgressView paramLoadingProgressView) {
     }
-  }
+
+    public final void a(w paramw) {
+        if (!LoadingProgressView.a(this.a)) {
+            LoadingProgressView.a(this.a, ((Float) paramw.f()).floatValue());
+            this.a.setProgress(LoadingProgressView.b(this.a));
+        }
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

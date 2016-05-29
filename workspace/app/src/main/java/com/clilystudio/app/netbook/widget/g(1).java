@@ -3,11 +3,9 @@ package com.clilystudio.app.netbook.widget;
 import java.util.Comparator;
 
 final class g
-  implements Comparator<AutoFlowView.Word>
-{
-  g(AutoFlowView paramAutoFlowView)
-  {
-  }
+        implements Comparator<AutoFlowView.Word> {
+    g(AutoFlowView paramAutoFlowView) {
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

@@ -1,16 +1,13 @@
 package com.clilystudio.app.netbook.ui.post;
 
 final class ce
-  implements Runnable
-{
-  ce(cd paramcd)
-  {
-  }
+        implements Runnable {
+    ce(cd paramcd) {
+    }
 
-  public final void run()
-  {
-    OtherUserActivity.j(this.a.a);
-  }
+    public final void run() {
+        OtherUserActivity.j(this.a.a);
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

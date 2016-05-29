@@ -1,19 +1,15 @@
 package com.clilystudio.app.netbook.widget;
 
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 
 final class z
-  implements DialogInterface.OnClickListener
-{
-  z(GameDownloadButton paramGameDownloadButton)
-  {
-  }
+        implements DialogInterface.OnClickListener {
+    z(GameDownloadButton paramGameDownloadButton) {
+    }
 
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.a.f();
-  }
+    public final void onClick(DialogInterface paramDialogInterface, int paramInt) {
+        this.a.f();
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

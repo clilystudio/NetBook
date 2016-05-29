@@ -1,18 +1,15 @@
 package com.clilystudio.app.netbook.model;
 
-public class ReviewBook extends PostBook
-{
-  private String type;
+public class ReviewBook extends PostBook {
+    private String type;
 
-  public String getType()
-  {
-    return this.type;
-  }
+    public String getType() {
+        return this.type;
+    }
 
-  public void setType(String paramString)
-  {
-    this.type = paramString;
-  }
+    public void setType(String paramString) {
+        this.type = paramString;
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

@@ -1,8 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="-30.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <RadioGroup android:id="@id/sort_group" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dp_30" android:layout_marginRight="@dimen/dp_30">
-        <RadioButton android:id="@id/sort_by_time" android:text="@string/setting_sort_time" style="@style/MyRadioButton" />
-        <RadioButton android:id="@id/sort_by_read" android:text="@string/setting_sort_read" style="@style/MyRadioButton" />
+<LinearLayout android:orientation="vertical"
+              android:layout_width="fill_parent"
+              android:layout_height="wrap_content"
+              android:layout_marginBottom="-30.0dip"
+              xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <RadioGroup
+        android:id="@+id/sort_group"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_30"
+        android:layout_marginRight="@dimen/dp_30">
+
+        <RadioButton
+            android:id="@+id/sort_by_time"
+            android:text="@string/setting_sort_time"
+            style="@style/MyRadioButton"/>
+
+        <RadioButton
+            android:id="@+id/sort_by_read"
+            android:text="@string/setting_sort_read"
+            style="@style/MyRadioButton"/>
     </RadioGroup>
 </LinearLayout>

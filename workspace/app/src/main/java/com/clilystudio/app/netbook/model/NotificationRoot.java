@@ -1,18 +1,15 @@
 package com.clilystudio.app.netbook.model;
 
-public class NotificationRoot extends Root
-{
-  private NotificationItem[] notifications = new NotificationItem[0];
+public class NotificationRoot extends Root {
+    private NotificationItem[] notifications = new NotificationItem[0];
 
-  public NotificationItem[] getNotifications()
-  {
-    return this.notifications;
-  }
+    public NotificationItem[] getNotifications() {
+        return this.notifications;
+    }
 
-  public void setNotifications(NotificationItem[] paramArrayOfNotificationItem)
-  {
-    this.notifications = paramArrayOfNotificationItem;
-  }
+    public void setNotifications(NotificationItem[] paramArrayOfNotificationItem) {
+        this.notifications = paramArrayOfNotificationItem;
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

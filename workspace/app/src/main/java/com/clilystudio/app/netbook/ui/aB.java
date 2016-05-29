@@ -3,17 +3,14 @@ package com.clilystudio.app.netbook.ui;
 import android.os.Handler;
 import android.os.Message;
 
-final class aB extends Handler
-{
-  aB(BookInfoActivity paramBookInfoActivity)
-  {
-  }
+final class aB extends Handler {
+    aB(BookInfoActivity paramBookInfoActivity) {
+    }
 
-  public final void handleMessage(Message paramMessage)
-  {
-    BookInfoActivity.a(this.a, true);
-    BookInfoActivity.b(this.a);
-  }
+    public final void handleMessage(Message paramMessage) {
+        BookInfoActivity.a(this.a, true);
+        BookInfoActivity.b(this.a);
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

@@ -2,8 +2,7 @@ package com.clilystudio.app.netbook.util;
 
 import com.clilystudio.app.netbook.model.RelateBookRoot;
 
-public abstract class R extends S<RelateBookRoot>
-{
+public abstract class R extends S<RelateBookRoot> {
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

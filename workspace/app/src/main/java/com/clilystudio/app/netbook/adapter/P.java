@@ -1,19 +1,15 @@
 package com.clilystudio.app.netbook.adapter;
 
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 
 final class P
-  implements DialogInterface.OnClickListener
-{
-  P(N paramN)
-  {
-  }
+        implements DialogInterface.OnClickListener {
+    P(N paramN) {
+    }
 
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-  }
+    public final void onClick(DialogInterface paramDialogInterface, int paramInt) {
+        paramDialogInterface.dismiss();
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

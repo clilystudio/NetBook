@@ -1,16 +1,13 @@
 package com.clilystudio.app.netbook.ui.post;
 
 final class ay
-  implements ax
-{
-  ay(BookReviewListFragment paramBookReviewListFragment)
-  {
-  }
+        implements ax {
+    ay(BookReviewListFragment paramBookReviewListFragment) {
+    }
 
-  public final void a()
-  {
-    BookReviewListFragment.a(this.a);
-  }
+    public final void a() {
+        BookReviewListFragment.a(this.a);
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

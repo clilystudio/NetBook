@@ -1,16 +1,13 @@
 package com.clilystudio.app.netbook.reader;
 
 final class aM
-  implements H
-{
-  aM(ReaderActivity paramReaderActivity)
-  {
-  }
+        implements H {
+    aM(ReaderActivity paramReaderActivity) {
+    }
 
-  public final void a()
-  {
-    ReaderActivity.Z(this.a);
-  }
+    public final void a() {
+        ReaderActivity.Z(this.a);
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

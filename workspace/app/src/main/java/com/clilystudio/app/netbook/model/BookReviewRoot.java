@@ -1,9 +1,8 @@
 package com.clilystudio.app.netbook.model;
 
-public class BookReviewRoot
-{
-  public boolean ok;
-  public BookReview[] reviews;
+public class BookReviewRoot {
+    public boolean ok;
+    public BookReview[] reviews;
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

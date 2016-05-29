@@ -1,13 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="?feedAreaDialogBg" android:padding="@dimen/dp_16" android:layout_width="wrap_content" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/imgCancel" android:layout_width="@dimen/dp_30" android:layout_height="@dimen/dp_30" android:src="@drawable/ic_action_cancel" android:layout_alignParentTop="true" android:layout_alignParentRight="true" android:layout_alignParentEnd="true" />
-    <ImageView android:id="@id/imgGenderLogo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/ic_gender_logo" android:layout_below="@id/imgCancel" android:layout_centerHorizontal="true" />
-    <TextView android:textSize="@dimen/text_size_12" android:textColor="?android:textColorSecondary" android:id="@id/txtPrompt1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp_24" android:text="@string/gender_intro_1" android:layout_below="@id/imgGenderLogo" android:layout_centerHorizontal="true" />
-    <TextView android:textSize="@dimen/text_size_12" android:textColor="?android:textColorSecondary" android:id="@id/txtPrompt2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/gender_intro_2" android:layout_below="@id/txtPrompt1" android:layout_centerHorizontal="true" />
-    <TextView android:textSize="@dimen/text_size_12" android:textColor="?android:textColorSecondary" android:id="@id/txtPrompt3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp_56" android:text="@string/gender_intro_3" android:layout_below="@id/txtPrompt2" android:layout_centerHorizontal="true" />
-    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp_32" android:layout_below="@id/txtPrompt3" android:layout_centerHorizontal="true">
-        <Button android:textSize="@dimen/text_size_14" android:textColor="@color/white" android:id="@id/btnMale" android:background="@drawable/bg_male_story_button" android:layout_width="0.0dip" android:layout_height="@dimen/dp_40" android:layout_marginRight="@dimen/dp_8" android:text="@string/male_story" android:layout_weight="1.0" />
-        <Button android:textSize="@dimen/text_size_14" android:textColor="@color/white" android:id="@id/btnFemale" android:background="@drawable/bg_female_story_button" android:layout_width="0.0dip" android:layout_height="@dimen/dp_40" android:layout_marginLeft="@dimen/dp_8" android:text="@string/female_story" android:layout_weight="1.0" />
+<RelativeLayout android:background="?feedAreaDialogBg"
+                android:padding="@dimen/dp_16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <ImageView
+        android:id="@+id/imgCancel"
+        android:layout_width="@dimen/dp_30"
+        android:layout_height="@dimen/dp_30"
+        android:src="@drawable/ic_action_cancel"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"/>
+
+    <ImageView
+        android:id="@+id/imgGenderLogo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_gender_logo"
+        android:layout_below="@id/imgCancel"
+        android:layout_centerHorizontal="true"/>
+
+    <TextView
+        android:textSize="@dimen/text_size_12"
+        android:textColor="?android:textColorSecondary"
+        android:id="@+id/txtPrompt1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_24"
+        android:text="@string/gender_intro_1"
+        android:layout_below="@id/imgGenderLogo"
+        android:layout_centerHorizontal="true"/>
+
+    <TextView
+        android:textSize="@dimen/text_size_12"
+        android:textColor="?android:textColorSecondary"
+        android:id="@+id/txtPrompt2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/gender_intro_2"
+        android:layout_below="@id/txtPrompt1"
+        android:layout_centerHorizontal="true"/>
+
+    <TextView
+        android:textSize="@dimen/text_size_12"
+        android:textColor="?android:textColorSecondary"
+        android:id="@+id/txtPrompt3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_56"
+        android:text="@string/gender_intro_3"
+        android:layout_below="@id/txtPrompt2"
+        android:layout_centerHorizontal="true"/>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_32"
+        android:layout_below="@id/txtPrompt3"
+        android:layout_centerHorizontal="true">
+
+        <Button
+            android:textSize="@dimen/text_size_14"
+            android:textColor="@color/white"
+            android:id="@+id/btnMale"
+            android:background="@drawable/bg_male_story_button"
+            android:layout_width="0.0dip"
+            android:layout_height="@dimen/dp_40"
+            android:layout_marginRight="@dimen/dp_8"
+            android:text="@string/male_story"
+            android:layout_weight="1.0"/>
+
+        <Button
+            android:textSize="@dimen/text_size_14"
+            android:textColor="@color/white"
+            android:id="@+id/btnFemale"
+            android:background="@drawable/bg_female_story_button"
+            android:layout_width="0.0dip"
+            android:layout_height="@dimen/dp_40"
+            android:layout_marginLeft="@dimen/dp_8"
+            android:text="@string/female_story"
+            android:layout_weight="1.0"/>
     </LinearLayout>
 </RelativeLayout>

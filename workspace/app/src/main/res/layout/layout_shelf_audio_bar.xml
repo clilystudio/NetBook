@@ -1,9 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="?android:windowBackground" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="59.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <View android:id="@id/top" android:background="@drawable/audio_bar_top_shadow" android:layout_width="fill_parent" android:layout_height="3.0dip" android:layout_alignParentTop="true" />
-    <com.ushaqi.zhuishushenqi.widget.CoverLoadingView android:id="@id/cover" android:layout_width="@dimen/dp_40" android:layout_height="@dimen/dp_40" android:layout_margin="8.0dip" android:scaleType="fitXY" android:layout_below="@id/top" android:layout_alignParentLeft="true" app:cornerRadius="1.5dip" />
-    <TextView android:textSize="12.0sp" android:textColor="?android:textColor" android:ellipsize="end" android:id="@id/tv_title" android:layout_width="180.0dip" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:text="人人都是产品经理" android:singleLine="true" android:layout_toRightOf="@id/cover" android:layout_below="@id/top" />
-    <TextView android:textSize="10.0sp" android:textColor="?android:textColorSecondary" android:id="@id/tv_time" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:text="00:00/00:00" android:layout_toRightOf="@id/cover" android:layout_below="@id/tv_title" />
-    <ImageView android:id="@id/iv_control" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="24.0dip" android:src="@drawable/ic_play_audiobook_button" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+<RelativeLayout android:background="?android:windowBackground"
+                android:visibility="gone"
+                android:layout_width="fill_parent"
+                android:layout_height="59.0dip"
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <View
+        android:id="@+id/top"
+        android:background="@drawable/audio_bar_top_shadow"
+        android:layout_width="fill_parent"
+        android:layout_height="3.0dip"
+        android:layout_alignParentTop="true"/>
+
+    <com.clilystudio.app.netbook.widget.CoverLoadingView
+        android:id="@+id/cover"
+        android:layout_width="@dimen/dp_40"
+        android:layout_height="@dimen/dp_40"
+        android:layout_margin="8.0dip"
+        android:scaleType="fitXY"
+        android:layout_below="@id/top"
+        android:layout_alignParentLeft="true"/>
+
+    <TextView
+        android:textSize="12.0sp"
+        android:textColor="?android:textColor"
+        android:ellipsize="end"
+        android:id="@+id/tv_title"
+        android:layout_width="180.0dip"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8.0dip"
+        android:text="人人都是产品经理"
+        android:singleLine="true"
+        android:layout_toRightOf="@id/cover"
+        android:layout_below="@id/top"/>
+
+    <TextView
+        android:textSize="10.0sp"
+        android:textColor="?android:textColorSecondary"
+        android:id="@+id/tv_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10.0dip"
+        android:text="00:00/00:00"
+        android:layout_toRightOf="@id/cover"
+        android:layout_below="@id/tv_title"/>
+
+    <ImageView
+        android:id="@+id/iv_control"
+        android:clickable="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="24.0dip"
+        android:src="@drawable/ic_play_audiobook_button"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"/>
 </RelativeLayout>

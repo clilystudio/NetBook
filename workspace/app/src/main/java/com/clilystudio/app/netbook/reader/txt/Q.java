@@ -2,17 +2,14 @@ package com.clilystudio.app.netbook.reader.txt;
 
 import com.clilystudio.app.netbook.a_packA.e;
 
-public final class Q extends e<Void, Void, Void>
-{
-  public Q(ScanTxtFileActivity paramScanTxtFileActivity)
-  {
-  }
+public final class Q extends e<Void, Void, Void> {
+    public Q(ScanTxtFileActivity paramScanTxtFileActivity) {
+    }
 
-  protected final void onPreExecute()
-  {
-    super.onPreExecute();
-    this.a.mPbLoading.setVisibility(0);
-  }
+    protected final void onPreExecute() {
+        super.onPreExecute();
+        this.a.mPbLoading.setVisibility(0);
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

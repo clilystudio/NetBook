@@ -1,8 +1,7 @@
 package com.clilystudio.app.netbook.ui.post;
 
-public abstract interface ax
-{
-  public abstract void a();
+public abstract interface ax {
+    public abstract void a();
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

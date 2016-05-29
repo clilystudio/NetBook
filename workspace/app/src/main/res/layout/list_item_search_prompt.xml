@@ -1,6 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:background="?backgroundSelector" android:layout_width="fill_parent" android:layout_height="48.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:layout_width="56.0dip" android:layout_height="fill_parent" android:src="@drawable/search_prompt_magnificant" android:scaleType="center" />
-    <TextView android:textSize="@dimen/text_size_16" android:textColor="?android:textColor" android:gravity="center_vertical" android:id="@id/search_prompt_list_item" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_marginLeft="21.0dip" android:layout_weight="1.0" />
+<LinearLayout android:orientation="horizontal"
+              android:background="?backgroundSelector"
+              android:layout_width="fill_parent"
+              android:layout_height="48.0dip"
+              xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <ImageView
+        android:layout_width="56.0dip"
+        android:layout_height="fill_parent"
+        android:src="@drawable/search_prompt_magnificant"
+        android:scaleType="center"/>
+
+    <TextView
+        android:textSize="@dimen/text_size_16"
+        android:textColor="?android:textColor"
+        android:gravity="center_vertical"
+        android:id="@+id/search_prompt_list_item"
+        android:layout_width="0.0dip"
+        android:layout_height="fill_parent"
+        android:layout_marginLeft="21.0dip"
+        android:layout_weight="1.0"/>
 </LinearLayout>

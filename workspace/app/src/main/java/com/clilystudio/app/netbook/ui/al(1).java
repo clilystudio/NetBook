@@ -4,25 +4,19 @@ import com.clilystudio.app.netbook.a_packA.e;
 import com.clilystudio.app.netbook.api.b;
 import com.clilystudio.app.netbook.model.CategoryRoot;
 
-final class al extends e<String, Void, CategoryRoot>
-{
-  private al(BookCategoryActivity paramBookCategoryActivity)
-  {
-  }
+final class al extends e<String, Void, CategoryRoot> {
+    private al(BookCategoryActivity paramBookCategoryActivity) {
+    }
 
-  private CategoryRoot a()
-  {
-    try
-    {
-      CategoryRoot localCategoryRoot = b.b().e();
-      return localCategoryRoot;
+    private CategoryRoot a() {
+        try {
+            CategoryRoot localCategoryRoot = b.b().e();
+            return localCategoryRoot;
+        } catch (Exception localException) {
+            localException.printStackTrace();
+        }
+        return null;
     }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
-    return null;
-  }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

@@ -6,99 +6,83 @@ import com.ximalaya.ting.android.opensdk.model.PlayableModel;
 import com.ximalaya.ting.android.opensdk.model.track.Track;
 import com.ximalaya.ting.android.opensdk.player.XmPlayerManager;
 import com.ximalaya.ting.android.opensdk.player.service.IXmPlayerStatusListener;
+
 import java.util.List;
 
-public final class as
-{
-  private static as a = new as();
-  private static CommonRequest b;
-  private static XmPlayerManager c = XmPlayerManager.getInstance(MyApplication.a_getInstance());
-  private static boolean d = false;
+public final class as {
+    private static as a = new as();
+    private static CommonRequest b;
+    private static XmPlayerManager c = XmPlayerManager.getInstance(MyApplication.a_getInstance());
+    private static boolean d = false;
 
-  public static as a()
-  {
-    return a;
-  }
-
-  public static void a(int paramInt)
-  {
-    c.seekTo(paramInt);
-  }
-
-  public static void a(IXmPlayerStatusListener paramIXmPlayerStatusListener)
-  {
-    c.addPlayerStatusListener(paramIXmPlayerStatusListener);
-  }
-
-  public static CommonRequest b()
-  {
-    if (b == null)
-    {
-      CommonRequest localCommonRequest = CommonRequest.getInstanse();
-      b = localCommonRequest;
-      localCommonRequest.init(MyApplication.a_getInstance(), "20680e0758e832acb8eb01342338cee5");
+    public static as a() {
+        return a;
     }
-    return b;
-  }
 
-  public static void b(IXmPlayerStatusListener paramIXmPlayerStatusListener)
-  {
-    c.removePlayerStatusListener(paramIXmPlayerStatusListener);
-  }
+    public static void a(int paramInt) {
+        c.seekTo(paramInt);
+    }
 
-  public static boolean c()
-  {
-    return (c != null) && (c.isPlaying());
-  }
+    public static void a(IXmPlayerStatusListener paramIXmPlayerStatusListener) {
+        c.addPlayerStatusListener(paramIXmPlayerStatusListener);
+    }
 
-  public static PlayableModel e()
-  {
-    return c.getCurrSound();
-  }
+    public static CommonRequest b() {
+        if (b == null) {
+            CommonRequest localCommonRequest = CommonRequest.getInstanse();
+            b = localCommonRequest;
+            localCommonRequest.init(MyApplication.a_getInstance(), "20680e0758e832acb8eb01342338cee5");
+        }
+        return b;
+    }
 
-  public static void f()
-  {
-    c.playPre();
-  }
+    public static void b(IXmPlayerStatusListener paramIXmPlayerStatusListener) {
+        c.removePlayerStatusListener(paramIXmPlayerStatusListener);
+    }
 
-  public static void g()
-  {
-    c.playNext();
-  }
+    public static boolean c() {
+        return (c != null) && (c.isPlaying());
+    }
 
-  public static void h()
-  {
-    c.pause();
-  }
+    public static PlayableModel e() {
+        return c.getCurrSound();
+    }
 
-  public static void i()
-  {
-    c.release();
-  }
+    public static void f() {
+        c.playPre();
+    }
 
-  public static List<Track> j()
-  {
-    return c.getPlayList();
-  }
+    public static void g() {
+        c.playNext();
+    }
 
-  private static void k()
-  {
-    if (!d)
-      c.init(1001, e.c());
-    d = true;
-  }
+    public static void h() {
+        c.pause();
+    }
 
-  public final void a(List<Track> paramList, int paramInt)
-  {
-    k();
-    c.playList(paramList, paramInt);
-  }
+    public static void i() {
+        c.release();
+    }
 
-  public final void d()
-  {
-    k();
-    c.play();
-  }
+    public static List<Track> j() {
+        return c.getPlayList();
+    }
+
+    private static void k() {
+        if (!d)
+            c.init(1001, e.c());
+        d = true;
+    }
+
+    public final void a(List<Track> paramList, int paramInt) {
+        k();
+        c.playList(paramList, paramInt);
+    }
+
+    public final void d() {
+        k();
+        c.play();
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

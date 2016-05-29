@@ -3,11 +3,9 @@ package com.clilystudio.app.netbook.reader.txt;
 import java.util.Comparator;
 
 final class O
-  implements Comparator<T>
-{
-  O(ScanTxtFileActivity paramScanTxtFileActivity)
-  {
-  }
+        implements Comparator<T> {
+    O(ScanTxtFileActivity paramScanTxtFileActivity) {
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

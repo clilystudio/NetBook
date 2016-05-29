@@ -1,24 +1,142 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="?backgroundPressed" android:paddingLeft="@dimen/dp_8" android:paddingTop="@dimen/dp_8" android:paddingRight="@dimen/dp_8" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:background="?backgroundSelector" android:paddingLeft="@dimen/dp_16" android:paddingTop="@dimen/dp_16" android:paddingRight="@dimen/dp_16" android:paddingBottom="@dimen/dp_8" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <RelativeLayout android:id="@id/avatar_layout" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <com.ushaqi.zhuishushenqi.widget.CoverView android:id="@id/avatar" android:src="@drawable/cover_default" android:layout_alignParentLeft="true" style="@style/Cover_Ugc_Detail_List" />
-            <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toRightOf="@id/avatar" android:layout_centerVertical="true">
-                <TextView android:textSize="@dimen/text_size_15" android:id="@id/title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dp_16" />
-                <TextView android:textSize="@dimen/text_size_12" android:textColor="?android:textColorTertiary" android:id="@id/author" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dp_16" android:layout_marginTop="@dimen/dp_6" android:layout_below="@id/title" />
-                <TextView android:textSize="@dimen/text_size_12" android:textColor="#ffb93221" android:id="@id/message_count" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dp_16" android:layout_marginTop="@dimen/dp_6" android:layout_below="@id/author" />
-                <TextView android:textSize="@dimen/text_size_12" android:textColor="?android:textColorTertiary" android:id="@id/message_follow" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text=" 人在追" android:layout_toRightOf="@id/message_count" android:layout_alignBaseline="@id/message_count" />
-                <TextView android:textSize="@dimen/text_size_12" android:textColor="?android:textColorTertiary" android:id="@id/message_separate" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dp_8" android:layout_marginRight="@dimen/dp_8" android:text="|" android:layout_toRightOf="@id/message_follow" android:layout_alignBaseline="@id/message_count" />
-                <TextView android:textSize="@dimen/text_size_12" android:textColor="#ffb93221" android:id="@id/message_textcount" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="0" android:layout_toRightOf="@id/message_separate" android:layout_alignBaseline="@id/message_count" />
-                <TextView android:textSize="@dimen/text_size_12" android:textColor="?android:textColorTertiary" android:id="@id/message_textunit" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text=" 万字" android:layout_toRightOf="@id/message_textcount" android:layout_alignBaseline="@id/message_count" />
+<LinearLayout android:orientation="vertical"
+              android:background="?backgroundPressed"
+              android:paddingLeft="@dimen/dp_8"
+              android:paddingTop="@dimen/dp_8"
+              android:paddingRight="@dimen/dp_8"
+              android:layout_width="fill_parent"
+              android:layout_height="wrap_content"
+              xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <RelativeLayout
+        android:background="?backgroundSelector"
+        android:paddingLeft="@dimen/dp_16"
+        android:paddingTop="@dimen/dp_16"
+        android:paddingRight="@dimen/dp_16"
+        android:paddingBottom="@dimen/dp_8"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+        <RelativeLayout
+            android:id="@+id/avatar_layout"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+            <com.clilystudio.app.netbook.widget.CoverView
+                android:id="@+id/avatar"
+                android:src="@drawable/cover_default"
+                android:layout_alignParentLeft="true"
+                style="@style/Cover_Ugc_Detail_List"/>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/avatar"
+                android:layout_centerVertical="true">
+
+                <TextView
+                    android:textSize="@dimen/text_size_15"
+                    android:id="@+id/title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp_16"/>
+
+                <TextView
+                    android:textSize="@dimen/text_size_12"
+                    android:textColor="?android:textColorTertiary"
+                    android:id="@+id/author"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp_16"
+                    android:layout_marginTop="@dimen/dp_6"
+                    android:layout_below="@id/title"/>
+
+                <TextView
+                    android:textSize="@dimen/text_size_12"
+                    android:textColor="#ffb93221"
+                    android:id="@+id/message_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp_16"
+                    android:layout_marginTop="@dimen/dp_6"
+                    android:layout_below="@id/author"/>
+
+                <TextView
+                    android:textSize="@dimen/text_size_12"
+                    android:textColor="?android:textColorTertiary"
+                    android:id="@+id/message_follow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" 人在追"
+                    android:layout_toRightOf="@id/message_count"
+                    android:layout_alignBaseline="@id/message_count"/>
+
+                <TextView
+                    android:textSize="@dimen/text_size_12"
+                    android:textColor="?android:textColorTertiary"
+                    android:id="@+id/message_separate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp_8"
+                    android:layout_marginRight="@dimen/dp_8"
+                    android:text="|"
+                    android:layout_toRightOf="@id/message_follow"
+                    android:layout_alignBaseline="@id/message_count"/>
+
+                <TextView
+                    android:textSize="@dimen/text_size_12"
+                    android:textColor="#ffb93221"
+                    android:id="@+id/message_textcount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:layout_toRightOf="@id/message_separate"
+                    android:layout_alignBaseline="@id/message_count"/>
+
+                <TextView
+                    android:textSize="@dimen/text_size_12"
+                    android:textColor="?android:textColorTertiary"
+                    android:id="@+id/message_textunit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" 万字"
+                    android:layout_toRightOf="@id/message_textcount"
+                    android:layout_alignBaseline="@id/message_count"/>
             </RelativeLayout>
         </RelativeLayout>
-        <LinearLayout android:orientation="vertical" android:id="@id/desc_layout" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp_16" android:layout_below="@id/avatar_layout">
-            <View android:background="?lineColor" android:layout_width="fill_parent" android:layout_height="1.0px" />
-            <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp_16">
-                <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/ugcbook_detail_quote" />
-                <TextView android:textSize="@dimen/text_size_15" android:textColor="?android:textColorSecondary" android:id="@id/desc" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dp_10" android:lineSpacingMultiplier="1.4" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:id="@+id/desc_layout"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_16"
+            android:layout_below="@id/avatar_layout">
+
+            <View
+                android:background="?lineColor"
+                android:layout_width="fill_parent"
+                android:layout_height="1.0px"/>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_16">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ugcbook_detail_quote"/>
+
+                <TextView
+                    android:textSize="@dimen/text_size_15"
+                    android:textColor="?android:textColorSecondary"
+                    android:id="@+id/desc"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp_10"
+                    android:lineSpacingMultiplier="1.4"/>
             </LinearLayout>
         </LinearLayout>
     </RelativeLayout>

@@ -1,12 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="?android:windowBackground" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:background="?lineColor" android:layout_width="fill_parent" android:layout_height="1.0px" />
-    <TextView android:id="@id/add_book_review_tips" android:text="来自你的书架" style="@style/ListItemLabel" />
-    <View android:background="?lineColor" android:layout_width="fill_parent" android:layout_height="1.0px" />
-    <LinearLayout android:orientation="vertical" android:id="@id/add_review_empty" android:background="?android:windowBackground" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <TextView android:textSize="@dimen/text_size_14" android:textColor="?android:textColorSecondary" android:gravity="center" android:layout_width="fill_parent" android:layout_height="60.0dip" android:text="你没有追任何书" />
-        <View android:background="?lineColor" android:layout_width="fill_parent" android:layout_height="1.0px" />
+<LinearLayout android:orientation="vertical"
+              android:background="?android:windowBackground"
+              android:layout_width="fill_parent"
+              android:layout_height="fill_parent"
+              xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <View
+        android:background="?lineColor"
+        android:layout_width="fill_parent"
+        android:layout_height="1.0px"/>
+
+    <TextView
+        android:id="@+id/add_book_review_tips"
+        android:text="来自你的书架"
+        style="@style/ListItemLabel"/>
+
+    <View
+        android:background="?lineColor"
+        android:layout_width="fill_parent"
+        android:layout_height="1.0px"/>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:id="@+id/add_review_empty"
+        android:background="?android:windowBackground"
+        android:visibility="gone"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:textSize="@dimen/text_size_14"
+            android:textColor="?android:textColorSecondary"
+            android:gravity="center"
+            android:layout_width="fill_parent"
+            android:layout_height="60.0dip"
+            android:text="你没有追任何书"/>
+
+        <View
+            android:background="?lineColor"
+            android:layout_width="fill_parent"
+            android:layout_height="1.0px"/>
     </LinearLayout>
-    <ListView android:id="@id/add_review_list" android:layout_width="fill_parent" android:layout_height="fill_parent" android:divider="?android:divider" android:dividerHeight="1.0px" android:headerDividersEnabled="false" />
+
+    <ListView
+        android:id="@+id/add_review_list"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:divider="?android:divider"
+        android:dividerHeight="1.0px"
+        android:headerDividersEnabled="false"/>
 </LinearLayout>

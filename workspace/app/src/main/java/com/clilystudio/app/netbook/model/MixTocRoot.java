@@ -1,29 +1,24 @@
 package com.clilystudio.app.netbook.model;
 
-public class MixTocRoot
-{
-  private Toc mixToc;
-  private boolean ok;
+public class MixTocRoot {
+    private Toc mixToc;
+    private boolean ok;
 
-  public Toc getMixToc()
-  {
-    return this.mixToc;
-  }
+    public Toc getMixToc() {
+        return this.mixToc;
+    }
 
-  public boolean isOk()
-  {
-    return this.ok;
-  }
+    public boolean isOk() {
+        return this.ok;
+    }
 
-  public void setMixToc(Toc paramToc)
-  {
-    this.mixToc = paramToc;
-  }
+    public void setMixToc(Toc paramToc) {
+        this.mixToc = paramToc;
+    }
 
-  public void setOk(boolean paramBoolean)
-  {
-    this.ok = paramBoolean;
-  }
+    public void setOk(boolean paramBoolean) {
+        this.ok = paramBoolean;
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

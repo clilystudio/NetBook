@@ -1,19 +1,15 @@
 package com.clilystudio.app.netbook.widget;
 
 import android.view.View;
-import android.view.View.OnClickListener;
 
 final class E
-  implements View.OnClickListener
-{
-  E(GameGiftItemView paramGameGiftItemView)
-  {
-  }
+        implements View.OnClickListener {
+    E(GameGiftItemView paramGameGiftItemView) {
+    }
 
-  public final void onClick(View paramView)
-  {
-    this.a.a();
-  }
+    public final void onClick(View paramView) {
+        this.a.a();
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

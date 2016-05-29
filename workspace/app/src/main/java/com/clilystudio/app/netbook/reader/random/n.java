@@ -1,20 +1,16 @@
 package com.clilystudio.app.netbook.reader.random;
 
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 
 final class n
-  implements DialogInterface.OnClickListener
-{
-  n(ReaderRandomActivity paramReaderRandomActivity)
-  {
-  }
+        implements DialogInterface.OnClickListener {
+    n(ReaderRandomActivity paramReaderRandomActivity) {
+    }
 
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-    ReaderRandomActivity.t(this.a);
-  }
+    public final void onClick(DialogInterface paramDialogInterface, int paramInt) {
+        paramDialogInterface.dismiss();
+        ReaderRandomActivity.t(this.a);
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

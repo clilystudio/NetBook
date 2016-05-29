@@ -1,19 +1,16 @@
 package com.clilystudio.app.netbook.adapter;
 
-final class w
-{
-  int a = -1;
-  int b = -1;
+final class w {
+    int a = -1;
+    int b = -1;
 
-  w(NotificationAdapter paramNotificationAdapter)
-  {
-  }
+    w(NotificationAdapter paramNotificationAdapter) {
+    }
 
-  final void a(int paramInt1, int paramInt2)
-  {
-    this.a = paramInt1;
-    this.b = paramInt2;
-  }
+    final void a(int paramInt1, int paramInt2) {
+        this.a = paramInt1;
+        this.b = paramInt2;
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

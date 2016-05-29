@@ -1,14 +1,13 @@
 package com.clilystudio.app.netbook.ui.ugcbook;
 
 import com.clilystudio.app.netbook.model.UGCBookListRoot.UGCBook;
+
 import java.util.Comparator;
 
 final class f
-  implements Comparator<UGCBookListRoot.UGCBook>
-{
-  f(DraftUGCListFragment paramDraftUGCListFragment)
-  {
-  }
+        implements Comparator<UGCBookListRoot.UGCBook> {
+    f(DraftUGCListFragment paramDraftUGCListFragment) {
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

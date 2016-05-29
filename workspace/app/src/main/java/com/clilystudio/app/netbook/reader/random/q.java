@@ -4,11 +4,9 @@ import com.clilystudio.app.netbook.reader.e;
 import com.clilystudio.app.netbook.reader.n;
 
 final class q
-  implements e<n>
-{
-  q(ReaderRandomActivity paramReaderRandomActivity)
-  {
-  }
+        implements e<n> {
+    q(ReaderRandomActivity paramReaderRandomActivity) {
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

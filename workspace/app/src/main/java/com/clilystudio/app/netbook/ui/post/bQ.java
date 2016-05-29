@@ -1,16 +1,13 @@
 package com.clilystudio.app.netbook.ui.post;
 
 final class bQ
-  implements Runnable
-{
-  bQ(bP parambP)
-  {
-  }
+        implements Runnable {
+    bQ(bP parambP) {
+    }
 
-  public final void run()
-  {
-    MyTweetFragment.i(this.a.a);
-  }
+    public final void run() {
+        MyTweetFragment.i(this.a.a);
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

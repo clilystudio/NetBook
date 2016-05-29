@@ -3,18 +3,15 @@ package com.clilystudio.app.netbook.ui.post;
 import com.clilystudio.app.netbook.util.am_CommonUtils;
 
 final class aL
-  implements Runnable
-{
-  aL(aK paramaK)
-  {
-  }
+        implements Runnable {
+    aL(aK paramaK) {
+    }
 
-  public final void run()
-  {
-    if (!am_CommonUtils.a_isTaskStoped(BookTopicListFragment.b(this.a.a)))
-      BookTopicListFragment.b(this.a.a).cancel(true);
-    BookTopicListFragment.c(this.a.a);
-  }
+    public final void run() {
+        if (!am_CommonUtils.a_isTaskStoped(BookTopicListFragment.b(this.a.a)))
+            BookTopicListFragment.b(this.a.a).cancel(true);
+        BookTopicListFragment.c(this.a.a);
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

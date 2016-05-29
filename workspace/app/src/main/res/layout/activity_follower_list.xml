@@ -1,10 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <ListView android:id="@id/lv_follows" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+<FrameLayout android:layout_width="fill_parent"
+             android:layout_height="fill_parent"
+             xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+        <ListView
+            android:id="@+id/lv_follows"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"/>
     </LinearLayout>
-    <RelativeLayout android:id="@id/rl_empty_container" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <TextView android:textSize="21.0sp" android:textColor="@color/empty_view_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="16.0dip" android:text="呦呦,快去社区结交书友吧！" android:layout_centerInParent="true" />
+
+    <RelativeLayout
+        android:id="@+id/rl_empty_container"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+        <TextView
+            android:textSize="21.0sp"
+            android:textColor="@color/empty_view_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16.0dip"
+            android:text="呦呦,快去社区结交书友吧！"
+            android:layout_centerInParent="true"/>
     </RelativeLayout>
 </FrameLayout>

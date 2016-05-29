@@ -2,22 +2,19 @@ package com.clilystudio.app.netbook.ui.user;
 
 import android.content.Intent;
 import android.view.View;
-import android.view.View.OnClickListener;
+
 import com.clilystudio.app.netbook.ui.SettingsActivity;
 
 final class aI
-  implements View.OnClickListener
-{
-  aI(UserInfoActivity paramUserInfoActivity)
-  {
-  }
+        implements View.OnClickListener {
+    aI(UserInfoActivity paramUserInfoActivity) {
+    }
 
-  public final void onClick(View paramView)
-  {
-    Intent localIntent = new Intent(this.a, SettingsActivity.class);
-    localIntent.putExtra("from_user_info", true);
-    this.a.startActivity(localIntent);
-  }
+    public final void onClick(View paramView) {
+        Intent localIntent = new Intent(this.a, SettingsActivity.class);
+        localIntent.putExtra("from_user_info", true);
+        this.a.startActivity(localIntent);
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

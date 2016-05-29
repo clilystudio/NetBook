@@ -1,8 +1,7 @@
 package com.clilystudio.app.netbook.model;
 
-public class GameGiftResponse extends ResultStatus
-{
-  public GameGiftResponse.GiftCode giftCode;
+public class GameGiftResponse extends ResultStatus {
+    public GameGiftResponse.GiftCode giftCode;
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

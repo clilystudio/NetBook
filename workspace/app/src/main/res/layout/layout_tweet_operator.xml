@@ -1,7 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/text_size_10" android:textColor="?android:textColorTertiary" android:ellipsize="end" android:gravity="center" android:id="@id/comment_count" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp_8" android:minWidth="48.0dip" android:text="125" android:singleLine="true" android:drawableLeft="@drawable/ic_message" android:drawablePadding="3.0dip" style="?tweetOperatorBackground" />
-    <TextView android:textSize="@dimen/text_size_10" android:textColor="?android:textColorTertiary" android:ellipsize="end" android:gravity="center" android:id="@id/retween_count" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dp_16" android:layout_marginTop="@dimen/dp_8" android:minWidth="48.0dip" android:text="153" android:singleLine="true" android:drawableLeft="@drawable/retween_normal" android:drawablePadding="3.0dip" android:layout_toRightOf="@id/comment_count" style="?tweetOperatorBackground" />
-    <TextView android:textSize="@dimen/text_size_10" android:textColor="?android:textColorTertiary" android:ellipsize="end" android:gravity="center" android:id="@id/follow" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp_8" android:minWidth="48.0dip" android:text="关注" android:singleLine="true" android:drawableLeft="@drawable/follow" android:drawablePadding="3.0dip" android:layout_alignParentRight="true" style="?tweetOperatorBackground" />
+<RelativeLayout android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <TextView
+        android:textSize="@dimen/text_size_10"
+        android:textColor="?android:textColorTertiary"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:id="@+id/comment_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_8"
+        android:minWidth="48.0dip"
+        android:text="125"
+        android:singleLine="true"
+        android:drawableLeft="@drawable/ic_message"
+        android:drawablePadding="3.0dip"
+        style="?tweetOperatorBackground"/>
+
+    <TextView
+        android:textSize="@dimen/text_size_10"
+        android:textColor="?android:textColorTertiary"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:id="@+id/retween_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_16"
+        android:layout_marginTop="@dimen/dp_8"
+        android:minWidth="48.0dip"
+        android:text="153"
+        android:singleLine="true"
+        android:drawableLeft="@drawable/retween_normal"
+        android:drawablePadding="3.0dip"
+        android:layout_toRightOf="@id/comment_count"
+        style="?tweetOperatorBackground"/>
+
+    <TextView
+        android:textSize="@dimen/text_size_10"
+        android:textColor="?android:textColorTertiary"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:id="@+id/follow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_8"
+        android:minWidth="48.0dip"
+        android:text="关注"
+        android:singleLine="true"
+        android:drawableLeft="@drawable/follow"
+        android:drawablePadding="3.0dip"
+        android:layout_alignParentRight="true"
+        style="?tweetOperatorBackground"/>
 </RelativeLayout>

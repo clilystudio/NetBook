@@ -9,31 +9,25 @@ import com.clilystudio.app.netbook.model.ChangeNickNameRoot;
 
 import java.io.IOException;
 
-final class s extends c<String, ChangeNickNameRoot>
-{
-  private String a;
+final class s extends c<String, ChangeNickNameRoot> {
+    private String a;
 
-  public s(ModifyUserInfoActivity paramModifyUserInfoActivity, Activity paramActivity, int paramInt)
-  {
-    super(paramActivity, 2131034218);
-  }
+    public s(ModifyUserInfoActivity paramModifyUserInfoActivity, Activity paramActivity, int paramInt) {
+        super(paramActivity, 2131034218);
+    }
 
-  private ChangeNickNameRoot a(String[] paramArrayOfString)
-  {
-    this.a = paramArrayOfString[0];
-    Account localAccount = am_CommonUtils.e();
-    if (localAccount != null)
-      try
-      {
-        ChangeNickNameRoot localChangeNickNameRoot = b.b().u(localAccount.getToken(), paramArrayOfString[0]);
-        return localChangeNickNameRoot;
-      }
-      catch (IOException localIOException)
-      {
-        localIOException.printStackTrace();
-      }
-    return null;
-  }
+    private ChangeNickNameRoot a(String[] paramArrayOfString) {
+        this.a = paramArrayOfString[0];
+        Account localAccount = am_CommonUtils.e();
+        if (localAccount != null)
+            try {
+                ChangeNickNameRoot localChangeNickNameRoot = b.b().u(localAccount.getToken(), paramArrayOfString[0]);
+                return localChangeNickNameRoot;
+            } catch (IOException localIOException) {
+                localIOException.printStackTrace();
+            }
+        return null;
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

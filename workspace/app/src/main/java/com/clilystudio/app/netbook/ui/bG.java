@@ -1,21 +1,16 @@
 package com.clilystudio.app.netbook.ui;
 
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.umeng.a.b;
 
 final class bG
-  implements View.OnClickListener
-{
-  bG(SearchActivity paramSearchActivity)
-  {
-  }
+        implements View.OnClickListener {
+    bG(SearchActivity paramSearchActivity) {
+    }
 
-  public final void onClick(View paramView)
-  {
-    SearchActivity.d(this.a);
-    b.a(this.a, "search_history_clear");
-  }
+    public final void onClick(View paramView) {
+        SearchActivity.d(this.a);
+        b.a(this.a, "search_history_clear");
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

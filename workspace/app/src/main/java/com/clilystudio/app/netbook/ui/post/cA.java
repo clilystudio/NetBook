@@ -1,21 +1,18 @@
 package com.clilystudio.app.netbook.ui.post;
 
 import android.view.View;
-import android.view.View.OnClickListener;
+
 import com.clilystudio.app.netbook.model.Author;
 import com.clilystudio.app.netbook.util.e;
 
 final class cA
-  implements View.OnClickListener
-{
-  cA(ReviewActivity paramReviewActivity, Author paramAuthor)
-  {
-  }
+        implements View.OnClickListener {
+    cA(ReviewActivity paramReviewActivity, Author paramAuthor) {
+    }
 
-  public final void onClick(View paramView)
-  {
-    this.b.startActivity(e.a(this.b, this.a));
-  }
+    public final void onClick(View paramView) {
+        this.b.startActivity(e.a(this.b, this.a));
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

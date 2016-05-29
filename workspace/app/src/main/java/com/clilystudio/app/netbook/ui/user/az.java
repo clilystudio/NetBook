@@ -1,19 +1,15 @@
 package com.clilystudio.app.netbook.ui.user;
 
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 
 final class az
-  implements DialogInterface.OnClickListener
-{
-  az(UserFollowWeixinActivity paramUserFollowWeixinActivity)
-  {
-  }
+        implements DialogInterface.OnClickListener {
+    az(UserFollowWeixinActivity paramUserFollowWeixinActivity) {
+    }
 
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-  }
+    public final void onClick(DialogInterface paramDialogInterface, int paramInt) {
+        paramDialogInterface.dismiss();
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

@@ -1,19 +1,15 @@
 package com.clilystudio.app.netbook.reader;
 
 import android.view.View;
-import android.view.View.OnClickListener;
 
 final class bX
-  implements View.OnClickListener
-{
-  bX(ReaderResourceFragment paramReaderResourceFragment, String paramString)
-  {
-  }
+        implements View.OnClickListener {
+    bX(ReaderResourceFragment paramReaderResourceFragment, String paramString) {
+    }
 
-  public final void onClick(View paramView)
-  {
-    ReaderResourceFragment.a(this.b, this.a);
-  }
+    public final void onClick(View paramView) {
+        ReaderResourceFragment.a(this.b, this.a);
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

@@ -1,11 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/splash_layout" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.ushaqi.zhuishushenqi.widget.AdContainerLayout android:orientation="vertical" android:id="@id/splash_ad_container" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/bottom_bg">
-        <ImageView android:id="@id/splash_ad_img" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="fitXY" />
-    </com.ushaqi.zhuishushenqi.widget.AdContainerLayout>
-    <RelativeLayout android:id="@id/bottom_bg" android:background="@drawable/splash_bottom_bg" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
-        <TextView android:textSize="@dimen/text_size_13" android:textColor="@color/white_90" android:gravity="center" android:id="@id/splash_ad_skip" android:background="@drawable/splash_skip_bg" android:layout_width="40.0dip" android:layout_height="24.0dip" android:layout_marginRight="@dimen/dp_10" android:text="跳过" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+<RelativeLayout android:id="@+id/splash_layout"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <com.clilystudio.app.netbook.widget.AdContainerLayout
+        android:orientation="vertical"
+        android:id="@+id/splash_ad_container"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@id/bottom_bg">
+
+        <ImageView
+            android:id="@+id/splash_ad_img"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:scaleType="fitXY"/>
+    </com.clilystudio.app.netbook.widget.AdContainerLayout>
+
+    <RelativeLayout
+        android:id="@+id/bottom_bg"
+        android:background="@drawable/splash_bottom_bg"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
+
+        <TextView
+            android:textSize="@dimen/text_size_13"
+            android:textColor="@color/white_90"
+            android:gravity="center"
+            android:id="@+id/splash_ad_skip"
+            android:background="@drawable/splash_skip_bg"
+            android:layout_width="40.0dip"
+            android:layout_height="24.0dip"
+            android:layout_marginRight="@dimen/dp_10"
+            android:text="跳过"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"/>
     </RelativeLayout>
-    <ImageView android:id="@id/splash_bottom" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/dp_20" android:layout_above="@id/bottom_bg" android:layout_centerHorizontal="true" />
+
+    <ImageView
+        android:id="@+id/splash_bottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/dp_20"
+        android:layout_above="@id/bottom_bg"
+        android:layout_centerHorizontal="true"/>
 </RelativeLayout>

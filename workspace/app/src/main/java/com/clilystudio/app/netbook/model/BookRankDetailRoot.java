@@ -1,29 +1,24 @@
 package com.clilystudio.app.netbook.model;
 
-public class BookRankDetailRoot
-{
-  private boolean ok;
-  private BookRankDetailList ranking;
+public class BookRankDetailRoot {
+    private boolean ok;
+    private BookRankDetailList ranking;
 
-  public BookRankDetailList getRanking()
-  {
-    return this.ranking;
-  }
+    public BookRankDetailList getRanking() {
+        return this.ranking;
+    }
 
-  public boolean isOk()
-  {
-    return this.ok;
-  }
+    public boolean isOk() {
+        return this.ok;
+    }
 
-  public void setOk(boolean paramBoolean)
-  {
-    this.ok = paramBoolean;
-  }
+    public void setOk(boolean paramBoolean) {
+        this.ok = paramBoolean;
+    }
 
-  public void setRanking(BookRankDetailList paramBookRankDetailList)
-  {
-    this.ranking = paramBookRankDetailList;
-  }
+    public void setRanking(BookRankDetailList paramBookRankDetailList) {
+        this.ranking = paramBookRankDetailList;
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

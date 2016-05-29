@@ -2,19 +2,15 @@ package com.clilystudio.app.netbook.ui;
 
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
 
 final class g
-  implements View.OnTouchListener
-{
-  g(AudioBookPlayActivity paramAudioBookPlayActivity)
-  {
-  }
+        implements View.OnTouchListener {
+    g(AudioBookPlayActivity paramAudioBookPlayActivity) {
+    }
 
-  public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    return true;
-  }
+    public final boolean onTouch(View paramView, MotionEvent paramMotionEvent) {
+        return true;
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

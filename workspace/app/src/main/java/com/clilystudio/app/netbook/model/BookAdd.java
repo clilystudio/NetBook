@@ -1,40 +1,33 @@
 package com.clilystudio.app.netbook.model;
 
-public class BookAdd
-{
-  private String book;
-  private String code;
-  private boolean ok;
+public class BookAdd {
+    private String book;
+    private String code;
+    private boolean ok;
 
-  public String getBook()
-  {
-    return this.book;
-  }
+    public String getBook() {
+        return this.book;
+    }
 
-  public String getCode()
-  {
-    return this.code;
-  }
+    public String getCode() {
+        return this.code;
+    }
 
-  public boolean isOk()
-  {
-    return this.ok;
-  }
+    public boolean isOk() {
+        return this.ok;
+    }
 
-  public void setBook(String paramString)
-  {
-    this.book = paramString;
-  }
+    public void setBook(String paramString) {
+        this.book = paramString;
+    }
 
-  public void setCode(String paramString)
-  {
-    this.code = paramString;
-  }
+    public void setCode(String paramString) {
+        this.code = paramString;
+    }
 
-  public void setOk(boolean paramBoolean)
-  {
-    this.ok = paramBoolean;
-  }
+    public void setOk(boolean paramBoolean) {
+        this.ok = paramBoolean;
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

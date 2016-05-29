@@ -1,46 +1,252 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="?android:windowBackground" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:apps="http://schemas.android.com/apk/res-auto">
-    <TextView android:layout_height="55.0dip" android:text="打个分吧" style="@style/ListItemLabel" />
-    <View android:background="?lineColor" android:layout_width="fill_parent" android:layout_height="1.0px" />
-    <RelativeLayout android:id="@id/review_rating_item1" android:background="?backgroundSelector" android:paddingLeft="15.0dip" android:paddingTop="@dimen/list_item_add_review_rating_top" android:paddingRight="15.0dip" android:paddingBottom="@dimen/list_item_add_review_rating_top" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true">
-            <com.ushaqi.zhuishushenqi.widget.RatingView android:layout_width="wrap_content" android:layout_height="wrap_content" apps:ratingType="review" apps:ratingMargin="4.0dip" apps:ratingValue="5" />
-            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip" android:text="必看神作" style="@style/MediumText" />
+<LinearLayout android:orientation="vertical"
+              android:background="?android:windowBackground"
+              android:layout_width="fill_parent"
+              android:layout_height="fill_parent"
+              xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:apps="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:layout_height="55.0dip"
+        android:text="打个分吧"
+        style="@style/ListItemLabel"/>
+
+    <View
+        android:background="?lineColor"
+        android:layout_width="fill_parent"
+        android:layout_height="1.0px"/>
+
+    <RelativeLayout
+        android:id="@+id/review_rating_item1"
+        android:background="?backgroundSelector"
+        android:paddingLeft="15.0dip"
+        android:paddingTop="@dimen/list_item_add_review_rating_top"
+        android:paddingRight="15.0dip"
+        android:paddingBottom="@dimen/list_item_add_review_rating_top"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true">
+
+            <com.clilystudio.app.netbook.widget.RatingView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                apps:ratingType="review"
+                apps:ratingMargin="4.0dip"
+                apps:ratingValue="5"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="6.0dip"
+                android:text="必看神作"
+                style="@style/MediumText"/>
         </LinearLayout>
-        <ImageView android:id="@id/review_rating_item1_icon" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/gray_tick_circle" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+
+        <ImageView
+            android:id="@+id/review_rating_item1_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/gray_tick_circle"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"/>
     </RelativeLayout>
-    <View android:background="?lineColor" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="15.0dip" />
-    <RelativeLayout android:id="@id/review_rating_item2" android:background="?backgroundSelector" android:paddingLeft="15.0dip" android:paddingTop="@dimen/list_item_add_review_rating_top" android:paddingRight="15.0dip" android:paddingBottom="@dimen/list_item_add_review_rating_top" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true">
-            <com.ushaqi.zhuishushenqi.widget.RatingView android:layout_width="wrap_content" android:layout_height="wrap_content" apps:ratingType="review" apps:ratingMargin="4.0dip" apps:ratingValue="4" />
-            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip" android:text="非常喜欢" style="@style/MediumText" />
+
+    <View
+        android:background="?lineColor"
+        android:layout_width="fill_parent"
+        android:layout_height="1.0px"
+        android:layout_marginLeft="15.0dip"/>
+
+    <RelativeLayout
+        android:id="@+id/review_rating_item2"
+        android:background="?backgroundSelector"
+        android:paddingLeft="15.0dip"
+        android:paddingTop="@dimen/list_item_add_review_rating_top"
+        android:paddingRight="15.0dip"
+        android:paddingBottom="@dimen/list_item_add_review_rating_top"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true">
+
+            <com.clilystudio.app.netbook.widget.RatingView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                apps:ratingType="review"
+                apps:ratingMargin="4.0dip"
+                apps:ratingValue="4"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="6.0dip"
+                android:text="非常喜欢"
+                style="@style/MediumText"/>
         </LinearLayout>
-        <ImageView android:id="@id/review_rating_item2_icon" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/gray_tick_circle" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+
+        <ImageView
+            android:id="@+id/review_rating_item2_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/gray_tick_circle"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"/>
     </RelativeLayout>
-    <View android:background="?lineColor" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="15.0dip" />
-    <RelativeLayout android:id="@id/review_rating_item3" android:background="?backgroundSelector" android:paddingLeft="15.0dip" android:paddingTop="@dimen/list_item_add_review_rating_top" android:paddingRight="15.0dip" android:paddingBottom="@dimen/list_item_add_review_rating_top" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true">
-            <com.ushaqi.zhuishushenqi.widget.RatingView android:layout_width="wrap_content" android:layout_height="wrap_content" apps:ratingType="review" apps:ratingMargin="4.0dip" apps:ratingValue="3" />
-            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip" android:text="值得一看" style="@style/MediumText" />
+
+    <View
+        android:background="?lineColor"
+        android:layout_width="fill_parent"
+        android:layout_height="1.0px"
+        android:layout_marginLeft="15.0dip"/>
+
+    <RelativeLayout
+        android:id="@+id/review_rating_item3"
+        android:background="?backgroundSelector"
+        android:paddingLeft="15.0dip"
+        android:paddingTop="@dimen/list_item_add_review_rating_top"
+        android:paddingRight="15.0dip"
+        android:paddingBottom="@dimen/list_item_add_review_rating_top"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true">
+
+            <com.clilystudio.app.netbook.widget.RatingView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                apps:ratingType="review"
+                apps:ratingMargin="4.0dip"
+                apps:ratingValue="3"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="6.0dip"
+                android:text="值得一看"
+                style="@style/MediumText"/>
         </LinearLayout>
-        <ImageView android:id="@id/review_rating_item3_icon" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/gray_tick_circle" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+
+        <ImageView
+            android:id="@+id/review_rating_item3_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/gray_tick_circle"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"/>
     </RelativeLayout>
-    <View android:background="?lineColor" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="15.0dip" />
-    <RelativeLayout android:id="@id/review_rating_item4" android:background="?backgroundSelector" android:paddingLeft="15.0dip" android:paddingTop="@dimen/list_item_add_review_rating_top" android:paddingRight="15.0dip" android:paddingBottom="@dimen/list_item_add_review_rating_top" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true">
-            <com.ushaqi.zhuishushenqi.widget.RatingView android:layout_width="wrap_content" android:layout_height="wrap_content" apps:ratingType="review" apps:ratingMargin="4.0dip" apps:ratingValue="2" />
-            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip" android:text="打发时间" style="@style/MediumText" />
+
+    <View
+        android:background="?lineColor"
+        android:layout_width="fill_parent"
+        android:layout_height="1.0px"
+        android:layout_marginLeft="15.0dip"/>
+
+    <RelativeLayout
+        android:id="@+id/review_rating_item4"
+        android:background="?backgroundSelector"
+        android:paddingLeft="15.0dip"
+        android:paddingTop="@dimen/list_item_add_review_rating_top"
+        android:paddingRight="15.0dip"
+        android:paddingBottom="@dimen/list_item_add_review_rating_top"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true">
+
+            <com.clilystudio.app.netbook.widget.RatingView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                apps:ratingType="review"
+                apps:ratingMargin="4.0dip"
+                apps:ratingValue="2"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="6.0dip"
+                android:text="打发时间"
+                style="@style/MediumText"/>
         </LinearLayout>
-        <ImageView android:id="@id/review_rating_item4_icon" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/gray_tick_circle" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+
+        <ImageView
+            android:id="@+id/review_rating_item4_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/gray_tick_circle"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"/>
     </RelativeLayout>
-    <View android:background="?lineColor" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="15.0dip" />
-    <RelativeLayout android:id="@id/review_rating_item5" android:background="?backgroundSelector" android:paddingLeft="15.0dip" android:paddingTop="@dimen/list_item_add_review_rating_top" android:paddingRight="15.0dip" android:paddingBottom="@dimen/list_item_add_review_rating_top" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true">
-            <com.ushaqi.zhuishushenqi.widget.RatingView android:layout_width="wrap_content" android:layout_height="wrap_content" apps:ratingType="review" apps:ratingMargin="4.0dip" apps:ratingValue="1" />
-            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip" android:text="浪费生命" style="@style/MediumText" />
+
+    <View
+        android:background="?lineColor"
+        android:layout_width="fill_parent"
+        android:layout_height="1.0px"
+        android:layout_marginLeft="15.0dip"/>
+
+    <RelativeLayout
+        android:id="@+id/review_rating_item5"
+        android:background="?backgroundSelector"
+        android:paddingLeft="15.0dip"
+        android:paddingTop="@dimen/list_item_add_review_rating_top"
+        android:paddingRight="15.0dip"
+        android:paddingBottom="@dimen/list_item_add_review_rating_top"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true">
+
+            <com.clilystudio.app.netbook.widget.RatingView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                apps:ratingType="review"
+                apps:ratingMargin="4.0dip"
+                apps:ratingValue="1"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="6.0dip"
+                android:text="浪费生命"
+                style="@style/MediumText"/>
         </LinearLayout>
-        <ImageView android:id="@id/review_rating_item5_icon" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/gray_tick_circle" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+
+        <ImageView
+            android:id="@+id/review_rating_item5_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/gray_tick_circle"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"/>
     </RelativeLayout>
-    <View android:background="?lineColor" android:layout_width="fill_parent" android:layout_height="1.0px" />
+
+    <View
+        android:background="?lineColor"
+        android:layout_width="fill_parent"
+        android:layout_height="1.0px"/>
 </LinearLayout>

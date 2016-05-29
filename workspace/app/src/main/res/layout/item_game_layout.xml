@@ -1,11 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.ushaqi.zhuishushenqi.widget.GameItemSection android:background="?android:windowBackground" android:paddingBottom="8.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:background="?backgroundPressed" android:layout_width="fill_parent" android:layout_height="8.0dip" />
-    <TableRow android:paddingLeft="16.0dip" android:paddingRight="16.0dip">
-        <TextView android:textSize="17.0dip" android:textColor="?android:textColor" android:gravity="left|center" android:id="@id/section_name" android:layout_height="48.0dip" android:layout_weight="1.0" />
-        <TextView android:textSize="12.0dip" android:textColor="?android:textColorSecondary" android:gravity="center" android:layout_gravity="right|center" android:id="@id/more" android:layout_width="wrap_content" android:layout_height="48.0dip" android:text="更多" android:drawableRight="@drawable/game_right_arrow" android:drawablePadding="3.0dip" />
+<com.clilystudio.app.netbook.widget.GameItemSection android:background="?android:windowBackground"
+                                                 android:paddingBottom="8.0dip"
+                                                 android:layout_width="fill_parent"
+                                                 android:layout_height="fill_parent"
+                                                 xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <View
+        android:background="?backgroundPressed"
+        android:layout_width="fill_parent"
+        android:layout_height="8.0dip"/>
+
+    <TableRow
+        android:paddingLeft="16.0dip"
+        android:paddingRight="16.0dip">
+
+        <TextView
+            android:textSize="17.0dip"
+            android:textColor="?android:textColor"
+            android:gravity="left|center"
+            android:id="@+id/section_name"
+            android:layout_height="48.0dip"
+            android:layout_weight="1.0"/>
+
+        <TextView
+            android:textSize="12.0dip"
+            android:textColor="?android:textColorSecondary"
+            android:gravity="center"
+            android:layout_gravity="right|center"
+            android:id="@+id/more"
+            android:layout_width="wrap_content"
+            android:layout_height="48.0dip"
+            android:text="更多"
+            android:drawableRight="@drawable/game_right_arrow"
+            android:drawablePadding="3.0dip"/>
     </TableRow>
-    <View android:background="?lineColor" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="16.0dip" android:layout_marginRight="16.0dip" />
-    <TableLayout android:id="@id/container" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-</com.ushaqi.zhuishushenqi.widget.GameItemSection>
+
+    <View
+        android:background="?lineColor"
+        android:layout_width="fill_parent"
+        android:layout_height="1.0px"
+        android:layout_marginLeft="16.0dip"
+        android:layout_marginRight="16.0dip"/>
+
+    <TableLayout
+        android:id="@+id/container"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"/>
+</com.clilystudio.app.netbook.widget.GameItemSection>

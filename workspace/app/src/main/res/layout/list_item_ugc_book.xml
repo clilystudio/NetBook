@@ -1,21 +1,113 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:id="@id/container" android:background="?backgroundSelector" android:paddingLeft="@dimen/dp_16" android:paddingRight="@dimen/dp_16" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:layout_width="fill_parent" android:layout_height="100.0dip">
-        <com.ushaqi.zhuishushenqi.widget.CoverView android:id="@id/cover" android:layout_alignParentLeft="true" android:layout_centerVertical="true" style="@style/CoverView" />
-        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dp_60" android:layout_centerVertical="true">
-            <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
-                <TextView android:textSize="@dimen/text_size_12" android:textColor="?android:textColorTertiary" android:id="@id/updated" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_alignParentRight="true" />
-                <TextView android:textSize="@dimen/text_size_15" android:textColor="?android:textColor" android:gravity="left|center" android:id="@id/title" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" android:layout_toLeftOf="@id/updated" />
+<FrameLayout android:id="@+id/container"
+             android:background="?backgroundSelector"
+             android:paddingLeft="@dimen/dp_16"
+             android:paddingRight="@dimen/dp_16"
+             android:layout_width="fill_parent"
+             android:layout_height="wrap_content"
+             xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="100.0dip">
+
+        <com.clilystudio.app.netbook.widget.CoverView
+            android:id="@+id/cover"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            style="@style/CoverView"/>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_60"
+            android:layout_centerVertical="true">
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:textSize="@dimen/text_size_12"
+                    android:textColor="?android:textColorTertiary"
+                    android:id="@+id/updated"
+                    android:visibility="gone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true"
+                    android:layout_alignParentRight="true"/>
+
+                <TextView
+                    android:textSize="@dimen/text_size_15"
+                    android:textColor="?android:textColor"
+                    android:gravity="left|center"
+                    android:id="@+id/title"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true"
+                    android:layout_toLeftOf="@id/updated"/>
             </RelativeLayout>
-            <TextView android:textSize="@dimen/text_size_12" android:textColor="?android:textColorSecondary" android:id="@id/author" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp_7" android:singleLine="true" />
-            <TextView android:textSize="@dimen/text_size_12" android:textColor="?android:textColorSecondary" android:id="@id/desc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp_7" android:singleLine="true" />
-            <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp_7">
-                <FrameLayout android:id="@id/publish_state" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentRight="true">
-                    <TextView android:textSize="@dimen/text_size_12" android:textColor="@color/primary_red" android:id="@id/can_published" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="可发布" android:singleLine="true" />
-                    <TextView android:textSize="@dimen/text_size_12" android:textColor="?android:textColorTertiary" android:id="@id/cannot_published" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="待完善" android:singleLine="true" />
+
+            <TextView
+                android:textSize="@dimen/text_size_12"
+                android:textColor="?android:textColorSecondary"
+                android:id="@+id/author"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_7"
+                android:singleLine="true"/>
+
+            <TextView
+                android:textSize="@dimen/text_size_12"
+                android:textColor="?android:textColorSecondary"
+                android:id="@+id/desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_7"
+                android:singleLine="true"/>
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_7">
+
+                <FrameLayout
+                    android:id="@+id/publish_state"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true">
+
+                    <TextView
+                        android:textSize="@dimen/text_size_12"
+                        android:textColor="@color/primary_red"
+                        android:id="@+id/can_published"
+                        android:visibility="gone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="可发布"
+                        android:singleLine="true"/>
+
+                    <TextView
+                        android:textSize="@dimen/text_size_12"
+                        android:textColor="?android:textColorTertiary"
+                        android:id="@+id/cannot_published"
+                        android:visibility="gone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="待完善"
+                        android:singleLine="true"/>
                 </FrameLayout>
-                <TextView android:textSize="@dimen/text_size_12" android:textColor="?android:textColorTertiary" android:gravity="left|center" android:id="@id/message_count" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" android:layout_toLeftOf="@id/publish_state" />
+
+                <TextView
+                    android:textSize="@dimen/text_size_12"
+                    android:textColor="?android:textColorTertiary"
+                    android:gravity="left|center"
+                    android:id="@+id/message_count"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true"
+                    android:layout_toLeftOf="@id/publish_state"/>
             </RelativeLayout>
         </LinearLayout>
     </RelativeLayout>

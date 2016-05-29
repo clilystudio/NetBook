@@ -1,11 +1,11 @@
 package com.clilystudio.app.netbook.reader;
 
 import android.view.View;
+
 import java.util.Comparator;
 
 final class cz
-  implements Comparator<View>
-{
+        implements Comparator<View> {
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

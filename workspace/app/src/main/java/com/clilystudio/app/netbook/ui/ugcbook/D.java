@@ -1,19 +1,15 @@
 package com.clilystudio.app.netbook.ui.ugcbook;
 
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 
 final class D
-  implements DialogInterface.OnClickListener
-{
-  D(UGCGuideAddCollectionActivity paramUGCGuideAddCollectionActivity)
-  {
-  }
+        implements DialogInterface.OnClickListener {
+    D(UGCGuideAddCollectionActivity paramUGCGuideAddCollectionActivity) {
+    }
 
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.a.finish();
-  }
+    public final void onClick(DialogInterface paramDialogInterface, int paramInt) {
+        this.a.finish();
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

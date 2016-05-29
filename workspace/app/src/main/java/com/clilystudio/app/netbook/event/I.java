@@ -1,7 +1,6 @@
 package com.clilystudio.app.netbook.event;
 
-public final class I
-{
+public final class I {
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

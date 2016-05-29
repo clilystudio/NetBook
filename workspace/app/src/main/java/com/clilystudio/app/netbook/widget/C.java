@@ -1,19 +1,15 @@
 package com.clilystudio.app.netbook.widget;
 
 import android.view.View;
-import android.view.View.OnClickListener;
 
 final class C
-  implements View.OnClickListener
-{
-  private C(GameDownloadButton paramGameDownloadButton)
-  {
-  }
+        implements View.OnClickListener {
+    private C(GameDownloadButton paramGameDownloadButton) {
+    }
 
-  public final void onClick(View paramView)
-  {
-    this.a.e();
-  }
+    public final void onClick(View paramView) {
+        this.a.e();
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

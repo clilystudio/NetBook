@@ -1,20 +1,16 @@
 package com.clilystudio.app.netbook.ui.post;
 
-import android.os.AsyncTask.Status;
 import com.clilystudio.app.netbook.widget.av;
 
 final class dv
-  implements av
-{
-  dv(TweetDetailActivity paramTweetDetailActivity)
-  {
-  }
+        implements av {
+    dv(TweetDetailActivity paramTweetDetailActivity) {
+    }
 
-  public final void a()
-  {
-    if ((TweetDetailActivity.m(this.a) == null) || (TweetDetailActivity.m(this.a).getStatus() == AsyncTask.Status.FINISHED))
-      TweetDetailActivity.n(this.a);
-  }
+    public final void a() {
+        if ((TweetDetailActivity.m(this.a) == null) || (TweetDetailActivity.m(this.a).getStatus() == AsyncTask.Status.FINISHED))
+            TweetDetailActivity.n(this.a);
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

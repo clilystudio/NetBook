@@ -4,29 +4,23 @@ import com.clilystudio.app.netbook.a_packA.e;
 import com.clilystudio.app.netbook.api.b;
 import com.clilystudio.app.netbook.model.FollowingsResult;
 
-final class bV extends e<String, Void, FollowingsResult>
-{
-  private Runnable a;
+final class bV extends e<String, Void, FollowingsResult> {
+    private Runnable a;
 
-  public bV(MyTweetFragment paramMyTweetFragment, Runnable paramRunnable)
-  {
-    this.a = paramRunnable;
-  }
+    public bV(MyTweetFragment paramMyTweetFragment, Runnable paramRunnable) {
+        this.a = paramRunnable;
+    }
 
-  private static FollowingsResult a(String[] paramArrayOfString)
-  {
-    try
-    {
-      b.a();
-      FollowingsResult localFollowingsResult = b.b().h(paramArrayOfString[0]);
-      return localFollowingsResult;
+    private static FollowingsResult a(String[] paramArrayOfString) {
+        try {
+            b.a();
+            FollowingsResult localFollowingsResult = b.b().h(paramArrayOfString[0]);
+            return localFollowingsResult;
+        } catch (Exception localException) {
+            localException.printStackTrace();
+        }
+        return null;
     }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
-    return null;
-  }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

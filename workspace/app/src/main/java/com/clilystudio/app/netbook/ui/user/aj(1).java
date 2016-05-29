@@ -3,27 +3,22 @@ package com.clilystudio.app.netbook.ui.user;
 import com.clilystudio.app.netbook.a_packA.e;
 import com.clilystudio.app.netbook.api.b;
 import com.clilystudio.app.netbook.model.VipPlan;
+
 import java.io.IOException;
 
-final class aj extends e<Void, Void, VipPlan>
-{
-  private aj(RemoveAdActivity paramRemoveAdActivity)
-  {
-  }
+final class aj extends e<Void, Void, VipPlan> {
+    private aj(RemoveAdActivity paramRemoveAdActivity) {
+    }
 
-  private VipPlan a()
-  {
-    try
-    {
-      VipPlan localVipPlan = b.b().m();
-      return localVipPlan;
+    private VipPlan a() {
+        try {
+            VipPlan localVipPlan = b.b().m();
+            return localVipPlan;
+        } catch (IOException localIOException) {
+            localIOException.printStackTrace();
+        }
+        return null;
     }
-    catch (IOException localIOException)
-    {
-      localIOException.printStackTrace();
-    }
-    return null;
-  }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

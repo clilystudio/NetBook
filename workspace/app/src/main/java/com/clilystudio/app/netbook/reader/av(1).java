@@ -1,16 +1,13 @@
 package com.clilystudio.app.netbook.reader;
 
 final class av
-  implements db
-{
-  av(ReaderActivity paramReaderActivity)
-  {
-  }
+        implements db {
+    av(ReaderActivity paramReaderActivity) {
+    }
 
-  public final void a()
-  {
-    this.a.startActivityForResult(ReaderOptionActivity.a(this.a), 0);
-  }
+    public final void a() {
+        this.a.startActivityForResult(ReaderOptionActivity.a(this.a), 0);
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

@@ -1,40 +1,33 @@
 package com.clilystudio.app.netbook.model;
 
-public class FollowingsResult
-{
-  private String code;
-  private Follower[] followings;
-  private boolean ok;
+public class FollowingsResult {
+    private String code;
+    private Follower[] followings;
+    private boolean ok;
 
-  public String getCode()
-  {
-    return this.code;
-  }
+    public String getCode() {
+        return this.code;
+    }
 
-  public Follower[] getFollowings()
-  {
-    return this.followings;
-  }
+    public Follower[] getFollowings() {
+        return this.followings;
+    }
 
-  public boolean isOk()
-  {
-    return this.ok;
-  }
+    public boolean isOk() {
+        return this.ok;
+    }
 
-  public void setCode(String paramString)
-  {
-    this.code = paramString;
-  }
+    public void setCode(String paramString) {
+        this.code = paramString;
+    }
 
-  public void setFollowings(Follower[] paramArrayOfFollower)
-  {
-    this.followings = paramArrayOfFollower;
-  }
+    public void setFollowings(Follower[] paramArrayOfFollower) {
+        this.followings = paramArrayOfFollower;
+    }
 
-  public void setOk(boolean paramBoolean)
-  {
-    this.ok = paramBoolean;
-  }
+    public void setOk(boolean paramBoolean) {
+        this.ok = paramBoolean;
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

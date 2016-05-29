@@ -1,10 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="?backgroundPressed" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.handmark.pulltorefresh.library.PullToRefreshListView android:id="@id/ptr_list" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="@dimen/dp_8" android:divider="@null" android:dividerHeight="0.0px" android:headerDividersEnabled="false" ptr:ptrShowIndicator="false" ptr:ptrHeaderTextAppearance="@style/ptr_header_text" ptr:ptrAnimationStyle="flip" ptr:ptrTabMode="true" ptr:ptrListViewExtrasEnabled="true" ptr:ptrRotateDrawableWhilePulling="@drawable/fancy_spinner" style="@style/ListView" xmlns:ptr="http://schemas.android.com/apk/res-auto" />
-    <ProgressBar android:id="@id/pb_loading" android:layout_centerInParent="true" style="@style/Loading" />
-    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/empty_view" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
-        <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/pay_account_empty" />
-        <TextView android:textSize="@dimen/text_size_15" android:textColor="?android:textColorSecondary" android:gravity="center" android:id="@id/voucher_empty_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp_24" />
+<RelativeLayout android:background="?backgroundPressed"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <com.handmark.pulltorefresh.library.PullToRefreshListView android:id="@+id/ptr_list"
+                                                              android:layout_width="fill_parent"
+                                                              android:layout_height="fill_parent"
+                                                              android:layout_marginTop="@dimen/dp_8"
+                                                              android:divider="@null"
+                                                              android:dividerHeight="0.0px"
+                                                              android:headerDividersEnabled="false"
+                                                              ptr:ptrShowIndicator="false"
+                                                              ptr:ptrHeaderTextAppearance="@style/ptr_header_text"
+                                                              ptr:ptrAnimationStyle="flip"
+                                                              ptr:ptrListViewExtrasEnabled="true"
+                                                              ptr:ptrRotateDrawableWhilePulling="@drawable/fancy_spinner"
+                                                              style="@style/ListView"
+                                                              xmlns:ptr="http://schemas.android.com/apk/res-auto"/>
+
+    <ProgressBar
+        android:id="@+id/pb_loading"
+        android:layout_centerInParent="true"
+        style="@style/Loading"/>
+
+    <LinearLayout
+        android:gravity="center"
+        android:orientation="vertical"
+        android:id="@+id/empty_view"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/pay_account_empty"/>
+
+        <TextView
+            android:textSize="@dimen/text_size_15"
+            android:textColor="?android:textColorSecondary"
+            android:gravity="center"
+            android:id="@+id/voucher_empty_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_24"/>
     </LinearLayout>
 </RelativeLayout>

@@ -3,21 +3,17 @@ package com.clilystudio.app.netbook.reader.random;
 import com.clilystudio.app.netbook.reader.ad;
 
 final class f
-  implements ad
-{
-  f(ReaderRandomActivity paramReaderRandomActivity)
-  {
-  }
+        implements ad {
+    f(ReaderRandomActivity paramReaderRandomActivity) {
+    }
 
-  public final void a()
-  {
-    ReaderRandomActivity.m(this.a);
-  }
+    public final void a() {
+        ReaderRandomActivity.m(this.a);
+    }
 
-  public final void b()
-  {
-    ReaderRandomActivity.n(this.a);
-  }
+    public final void b() {
+        ReaderRandomActivity.n(this.a);
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

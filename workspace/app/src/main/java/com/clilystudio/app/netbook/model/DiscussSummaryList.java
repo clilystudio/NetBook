@@ -1,29 +1,24 @@
 package com.clilystudio.app.netbook.model;
 
-public class DiscussSummaryList
-{
-  private boolean ok;
-  private DiscussSummary[] posts;
+public class DiscussSummaryList {
+    private boolean ok;
+    private DiscussSummary[] posts;
 
-  public DiscussSummary[] getPosts()
-  {
-    return this.posts;
-  }
+    public DiscussSummary[] getPosts() {
+        return this.posts;
+    }
 
-  public boolean isOk()
-  {
-    return this.ok;
-  }
+    public boolean isOk() {
+        return this.ok;
+    }
 
-  public void setOk(boolean paramBoolean)
-  {
-    this.ok = paramBoolean;
-  }
+    public void setOk(boolean paramBoolean) {
+        this.ok = paramBoolean;
+    }
 
-  public void setPosts(DiscussSummary[] paramArrayOfDiscussSummary)
-  {
-    this.posts = paramArrayOfDiscussSummary;
-  }
+    public void setPosts(DiscussSummary[] paramArrayOfDiscussSummary) {
+        this.posts = paramArrayOfDiscussSummary;
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

@@ -1,19 +1,126 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="?android:windowBackground" android:layout_width="fill_parent" android:layout_height="98.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:corner="http://schemas.android.com/apk/res-auto">
-    <com.ushaqi.zhuishushenqi.ui.CornerImageView android:id="@id/siv_avater" android:layout_width="60.0dip" android:layout_height="60.0dip" android:layout_marginLeft="16.0dip" android:layout_marginTop="16.0dip" android:layout_marginBottom="16.0dip" android:src="@drawable/avatar_default" android:layout_alignParentLeft="true" android:layout_centerVertical="true" corner:radius="2.0dip" />
-    <RelativeLayout android:id="@id/rl_container" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginRight="16.0dip" android:layout_toLeftOf="@id/btn_edit" android:layout_toRightOf="@id/siv_avater" android:layout_centerVertical="true">
-        <TextView android:textSize="15.0sp" android:textColor="?android:textColor" android:id="@id/tv_username" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="未登录" android:singleLine="true" android:layout_alignParentLeft="true" />
-        <ImageView android:id="@id/iv_sign" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="3.0dip" android:src="@drawable/user_avatar_verify_doyen" android:layout_toRightOf="@id/tv_username" />
-        <RelativeLayout android:orientation="vertical" android:id="@id/ll_following_container" android:layout_width="@dimen/dp_28" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:layout_below="@id/tv_username">
-            <TextView android:textSize="12.0sp" android:textStyle="bold" android:textColor="?android:textColor" android:id="@id/tv_following" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="0" />
-            <TextView android:textSize="10.0sp" android:textColor="?android:textColorSecondary" android:id="@id/tv_static_follow" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:text="关注" android:layout_below="@id/tv_following" android:layout_alignLeft="@id/tv_following" />
+<RelativeLayout android:background="?android:windowBackground"
+                android:layout_width="fill_parent"
+                android:layout_height="98.0dip"
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:corner="http://schemas.android.com/apk/res-auto">
+
+    <com.clilystudio.app.netbook.ui.CornerImageView
+        android:id="@+id/siv_avater"
+        android:layout_width="60.0dip"
+        android:layout_height="60.0dip"
+        android:layout_marginLeft="16.0dip"
+        android:layout_marginTop="16.0dip"
+        android:layout_marginBottom="16.0dip"
+        android:src="@drawable/avatar_default"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"/>
+
+    <RelativeLayout
+        android:id="@+id/rl_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16.0dip"
+        android:layout_marginRight="16.0dip"
+        android:layout_toLeftOf="@id/btn_edit"
+        android:layout_toRightOf="@id/siv_avater"
+        android:layout_centerVertical="true">
+
+        <TextView
+            android:textSize="15.0sp"
+            android:textColor="?android:textColor"
+            android:id="@+id/tv_username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="未登录"
+            android:singleLine="true"
+            android:layout_alignParentLeft="true"/>
+
+        <ImageView
+            android:id="@+id/iv_sign"
+            android:visibility="invisible"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="3.0dip"
+            android:src="@drawable/user_avatar_verify_doyen"
+            android:layout_toRightOf="@id/tv_username"/>
+
+        <RelativeLayout
+            android:orientation="vertical"
+            android:id="@+id/ll_following_container"
+            android:layout_width="@dimen/dp_28"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10.0dip"
+            android:layout_below="@id/tv_username">
+
+            <TextView
+                android:textSize="12.0sp"
+                android:textStyle="bold"
+                android:textColor="?android:textColor"
+                android:id="@+id/tv_following"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"/>
+
+            <TextView
+                android:textSize="10.0sp"
+                android:textColor="?android:textColorSecondary"
+                android:id="@+id/tv_static_follow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8.0dip"
+                android:text="关注"
+                android:layout_below="@id/tv_following"
+                android:layout_alignLeft="@id/tv_following"/>
         </RelativeLayout>
-        <RelativeLayout android:orientation="vertical" android:id="@id/ll_followers_container" android:layout_width="@dimen/dp_28" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:layout_marginTop="10.0dip" android:layout_toRightOf="@id/ll_following_container" android:layout_below="@id/tv_username">
-            <TextView android:textSize="12.0sp" android:textStyle="bold" android:textColor="?android:textColor" android:gravity="center" android:id="@id/tv_fans" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="0" />
-            <TextView android:textSize="10.0sp" android:textColor="?android:textColorSecondary" android:id="@id/tv_static_fans" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:text="粉丝" android:layout_below="@id/tv_fans" />
+
+        <RelativeLayout
+            android:orientation="vertical"
+            android:id="@+id/ll_followers_container"
+            android:layout_width="@dimen/dp_28"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8.0dip"
+            android:layout_marginTop="10.0dip"
+            android:layout_toRightOf="@id/ll_following_container"
+            android:layout_below="@id/tv_username">
+
+            <TextView
+                android:textSize="12.0sp"
+                android:textStyle="bold"
+                android:textColor="?android:textColor"
+                android:gravity="center"
+                android:id="@+id/tv_fans"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"/>
+
+            <TextView
+                android:textSize="10.0sp"
+                android:textColor="?android:textColorSecondary"
+                android:id="@+id/tv_static_fans"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8.0dip"
+                android:text="粉丝"
+                android:layout_below="@id/tv_fans"/>
         </RelativeLayout>
     </RelativeLayout>
-    <Button android:textSize="12.0sp" android:id="@id/btn_edit" android:layout_width="48.0dip" android:layout_height="27.0dip" android:layout_marginRight="16.0dip" android:text="编辑" android:layout_alignParentRight="true" android:layout_centerVertical="true" style="?myTweetHeadButton" />
-    <View android:id="@id/divider" android:background="?backgroundPressed" android:layout_width="fill_parent" android:layout_height="8.0dip" android:layout_alignParentBottom="true" />
+
+    <Button
+        android:textSize="12.0sp"
+        android:id="@+id/btn_edit"
+        android:layout_width="48.0dip"
+        android:layout_height="27.0dip"
+        android:layout_marginRight="16.0dip"
+        android:text="编辑"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        style="?myTweetHeadButton"/>
+
+    <View
+        android:id="@+id/divider"
+        android:background="?backgroundPressed"
+        android:layout_width="fill_parent"
+        android:layout_height="8.0dip"
+        android:layout_alignParentBottom="true"/>
 </RelativeLayout>

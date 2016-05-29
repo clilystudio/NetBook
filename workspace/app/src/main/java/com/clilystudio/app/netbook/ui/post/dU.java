@@ -1,19 +1,14 @@
 package com.clilystudio.app.netbook.ui.post;
 
-import android.widget.LinearLayout;
-
 final class dU
-  implements Runnable
-{
-  dU(TweetTabActivity paramTweetTabActivity)
-  {
-  }
+        implements Runnable {
+    dU(TweetTabActivity paramTweetTabActivity) {
+    }
 
-  public final void run()
-  {
-    TweetTabActivity.k(this.a).setVisibility(8);
-    TweetTabActivity.l(this.a).setVisibility(8);
-  }
+    public final void run() {
+        TweetTabActivity.k(this.a).setVisibility(8);
+        TweetTabActivity.l(this.a).setVisibility(8);
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

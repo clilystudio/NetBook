@@ -1,11 +1,9 @@
 package com.clilystudio.app.netbook.exception;
 
-public class DnsParseFailedException extends RuntimeException
-{
-  public DnsParseFailedException(String paramString)
-  {
-    super(paramString);
-  }
+public class DnsParseFailedException extends RuntimeException {
+    public DnsParseFailedException(String paramString) {
+        super(paramString);
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

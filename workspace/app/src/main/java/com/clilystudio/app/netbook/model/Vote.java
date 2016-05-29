@@ -1,35 +1,29 @@
 package com.clilystudio.app.netbook.model;
 
 public class Vote
-  implements Comparable<Vote>
-{
-  private String content;
-  private int count;
+        implements Comparable<Vote> {
+    private String content;
+    private int count;
 
-  public int compareTo(Vote paramVote)
-  {
-    return getCount() - paramVote.getCount();
-  }
+    public int compareTo(Vote paramVote) {
+        return getCount() - paramVote.getCount();
+    }
 
-  public String getContent()
-  {
-    return this.content;
-  }
+    public String getContent() {
+        return this.content;
+    }
 
-  public int getCount()
-  {
-    return this.count;
-  }
+    public int getCount() {
+        return this.count;
+    }
 
-  public void setContent(String paramString)
-  {
-    this.content = paramString;
-  }
+    public void setContent(String paramString) {
+        this.content = paramString;
+    }
 
-  public void setCount(int paramInt)
-  {
-    this.count = paramInt;
-  }
+    public void setCount(int paramInt) {
+        this.count = paramInt;
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

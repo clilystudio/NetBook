@@ -1,29 +1,24 @@
 package com.clilystudio.app.netbook.model;
 
-public class GameCatRoot
-{
-  private GameCat[] games;
-  private boolean ok;
+public class GameCatRoot {
+    private GameCat[] games;
+    private boolean ok;
 
-  public GameCat[] getGames()
-  {
-    return this.games;
-  }
+    public GameCat[] getGames() {
+        return this.games;
+    }
 
-  public boolean isOk()
-  {
-    return this.ok;
-  }
+    public boolean isOk() {
+        return this.ok;
+    }
 
-  public void setGames(GameCat[] paramArrayOfGameCat)
-  {
-    this.games = paramArrayOfGameCat;
-  }
+    public void setGames(GameCat[] paramArrayOfGameCat) {
+        this.games = paramArrayOfGameCat;
+    }
 
-  public void setOk(boolean paramBoolean)
-  {
-    this.ok = paramBoolean;
-  }
+    public void setOk(boolean paramBoolean) {
+        this.ok = paramBoolean;
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

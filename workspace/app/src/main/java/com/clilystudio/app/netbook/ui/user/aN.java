@@ -6,25 +6,19 @@ import com.clilystudio.app.netbook.model.ResultStatus;
 
 import java.io.IOException;
 
-final class aN extends e<String, Void, ResultStatus>
-{
-  private aN(UserTaskActivity paramUserTaskActivity)
-  {
-  }
+final class aN extends e<String, Void, ResultStatus> {
+    private aN(UserTaskActivity paramUserTaskActivity) {
+    }
 
-  private ResultStatus a()
-  {
-    try
-    {
-      ResultStatus localResultStatus = b.b().W(am_CommonUtils.e().getToken());
-      return localResultStatus;
+    private ResultStatus a() {
+        try {
+            ResultStatus localResultStatus = b.b().W(am_CommonUtils.e().getToken());
+            return localResultStatus;
+        } catch (IOException localIOException) {
+            localIOException.printStackTrace();
+        }
+        return null;
     }
-    catch (IOException localIOException)
-    {
-      localIOException.printStackTrace();
-    }
-    return null;
-  }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

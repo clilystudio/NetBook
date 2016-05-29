@@ -2,30 +2,30 @@ package com.clilystudio.app.netbook.adapter;
 
 import android.view.View;
 import android.widget.TextView;
-import butterknife.ButterKnife;
-import butterknife.InjectView;
+
 import com.clilystudio.app.netbook.ui.SmartImageView;
 import com.clilystudio.app.netbook.widget.GiftGameGameButton;
 
-class GameGiftGroupAdapter$GameHolder
-{
+import butterknife.ButterKnife;
+import butterknife.InjectView;
 
-  @InjectView(2131492916)
-  GiftGameGameButton button;
+class GameGiftGroupAdapter$GameHolder {
 
-  @InjectView(2131493481)
-  TextView desc;
+    @InjectView(2131492916)
+    GiftGameGameButton button;
 
-  @InjectView(2131493028)
-  SmartImageView icon;
+    @InjectView(2131493481)
+    TextView desc;
 
-  @InjectView(2131492936)
-  TextView title;
+    @InjectView(2131493028)
+    SmartImageView icon;
 
-  GameGiftGroupAdapter$GameHolder(View paramView)
-  {
-    ButterKnife.inject(this, paramView);
-  }
+    @InjectView(2131492936)
+    TextView title;
+
+    GameGiftGroupAdapter$GameHolder(View paramView) {
+        ButterKnife.inject(this, paramView);
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

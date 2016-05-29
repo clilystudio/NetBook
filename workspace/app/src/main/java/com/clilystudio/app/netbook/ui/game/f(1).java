@@ -1,19 +1,15 @@
 package com.clilystudio.app.netbook.ui.game;
 
 import android.view.View;
-import android.view.View.OnClickListener;
 
 final class f
-  implements View.OnClickListener
-{
-  f(GameDetailActivity paramGameDetailActivity)
-  {
-  }
+        implements View.OnClickListener {
+    f(GameDetailActivity paramGameDetailActivity) {
+    }
 
-  public final void onClick(View paramView)
-  {
-    GameDetailActivity.d(this.a);
-  }
+    public final void onClick(View paramView) {
+        GameDetailActivity.d(this.a);
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

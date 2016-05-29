@@ -4,25 +4,19 @@ import com.clilystudio.app.netbook.a_packA.e;
 import com.clilystudio.app.netbook.api.b;
 import com.clilystudio.app.netbook.model.PostDetailComment;
 
-final class cv extends e<String, Void, PostDetailComment>
-{
-  private cv(PostDetailActivity paramPostDetailActivity)
-  {
-  }
+final class cv extends e<String, Void, PostDetailComment> {
+    private cv(PostDetailActivity paramPostDetailActivity) {
+    }
 
-  private PostDetailComment a(String[] paramArrayOfString)
-  {
-    try
-    {
-      PostDetailComment localPostDetailComment = b.b().e(paramArrayOfString[0], PostDetailActivity.c(this.a).getCount(), 30);
-      return localPostDetailComment;
+    private PostDetailComment a(String[] paramArrayOfString) {
+        try {
+            PostDetailComment localPostDetailComment = b.b().e(paramArrayOfString[0], PostDetailActivity.c(this.a).getCount(), 30);
+            return localPostDetailComment;
+        } catch (Exception localException) {
+            localException.printStackTrace();
+        }
+        return null;
     }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
-    return null;
-  }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

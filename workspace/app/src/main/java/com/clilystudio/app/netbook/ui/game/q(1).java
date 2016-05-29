@@ -3,27 +3,22 @@ package com.clilystudio.app.netbook.ui.game;
 import com.clilystudio.app.netbook.a_packA.e;
 import com.clilystudio.app.netbook.api.b;
 import com.clilystudio.app.netbook.model.GameDetail;
+
 import java.io.IOException;
 
-final class q extends e<String, Void, GameDetail>
-{
-  private q(GameDetailActivity paramGameDetailActivity)
-  {
-  }
+final class q extends e<String, Void, GameDetail> {
+    private q(GameDetailActivity paramGameDetailActivity) {
+    }
 
-  private GameDetail a(String[] paramArrayOfString)
-  {
-    try
-    {
-      GameDetail localGameDetail = b.b().Y(paramArrayOfString[0]);
-      return localGameDetail;
+    private GameDetail a(String[] paramArrayOfString) {
+        try {
+            GameDetail localGameDetail = b.b().Y(paramArrayOfString[0]);
+            return localGameDetail;
+        } catch (IOException localIOException) {
+            localIOException.printStackTrace();
+        }
+        return null;
     }
-    catch (IOException localIOException)
-    {
-      localIOException.printStackTrace();
-    }
-    return null;
-  }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

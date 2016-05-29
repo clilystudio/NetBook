@@ -2,19 +2,15 @@ package com.clilystudio.app.netbook.ui.home;
 
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
 
 final class y
-  implements View.OnTouchListener
-{
-  y(HomeShelfFragment paramHomeShelfFragment)
-  {
-  }
+        implements View.OnTouchListener {
+    y(HomeShelfFragment paramHomeShelfFragment) {
+    }
 
-  public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    return true;
-  }
+    public final boolean onTouch(View paramView, MotionEvent paramMotionEvent) {
+        return true;
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

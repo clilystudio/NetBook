@@ -3,8 +3,7 @@ package com.clilystudio.app.netbook.reader;
 import android.support.v4.os.ParcelableCompatCreatorCallbacks;
 
 final class cy
-  implements ParcelableCompatCreatorCallbacks<ReaderViewPager.SavedState>
-{
+        implements ParcelableCompatCreatorCallbacks<ReaderViewPager.SavedState> {
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

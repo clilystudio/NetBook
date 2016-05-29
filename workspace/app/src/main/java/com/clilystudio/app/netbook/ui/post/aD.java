@@ -1,20 +1,17 @@
 package com.clilystudio.app.netbook.ui.post;
 
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+
 import com.clilystudio.app.netbook.model.Review;
 
 final class aD
-  implements DialogInterface.OnClickListener
-{
-  aD(BookReviewListFragment paramBookReviewListFragment, Review paramReview)
-  {
-  }
+        implements DialogInterface.OnClickListener {
+    aD(BookReviewListFragment paramBookReviewListFragment, Review paramReview) {
+    }
 
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    BookReviewListFragment.a(this.b, this.a);
-  }
+    public final void onClick(DialogInterface paramDialogInterface, int paramInt) {
+        BookReviewListFragment.a(this.b, this.a);
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

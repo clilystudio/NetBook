@@ -1,40 +1,33 @@
 package com.clilystudio.app.netbook.model.mixtoc;
 
-public class EsTocItem
-{
-  private String chapter_name;
-  private String curl;
-  private int sort;
+public class EsTocItem {
+    private String chapter_name;
+    private String curl;
+    private int sort;
 
-  public String getChapter_name()
-  {
-    return this.chapter_name;
-  }
+    public String getChapter_name() {
+        return this.chapter_name;
+    }
 
-  public String getCurl()
-  {
-    return this.curl;
-  }
+    public String getCurl() {
+        return this.curl;
+    }
 
-  public int getSort()
-  {
-    return this.sort;
-  }
+    public int getSort() {
+        return this.sort;
+    }
 
-  public void setChapter_name(String paramString)
-  {
-    this.chapter_name = paramString;
-  }
+    public void setChapter_name(String paramString) {
+        this.chapter_name = paramString;
+    }
 
-  public void setCurl(String paramString)
-  {
-    this.curl = paramString;
-  }
+    public void setCurl(String paramString) {
+        this.curl = paramString;
+    }
 
-  public void setSort(int paramInt)
-  {
-    this.sort = paramInt;
-  }
+    public void setSort(int paramInt) {
+        this.sort = paramInt;
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

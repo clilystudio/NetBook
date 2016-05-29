@@ -5,17 +5,14 @@ import com.clilystudio.app.netbook.ui.cd;
 import com.clilystudio.app.netbook.ui.post.AbsPostActivity;
 
 final class ap
-  implements cd
-{
-  ap(ao paramao, AbsPostActivity paramAbsPostActivity)
-  {
-  }
+        implements cd {
+    ap(ao paramao, AbsPostActivity paramAbsPostActivity) {
+    }
 
-  public final void a(int paramInt)
-  {
-    this.a.f(paramInt);
-    a.a(this.a, paramInt, 2);
-  }
+    public final void a(int paramInt) {
+        this.a.f(paramInt);
+        a.a(this.a, paramInt, 2);
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

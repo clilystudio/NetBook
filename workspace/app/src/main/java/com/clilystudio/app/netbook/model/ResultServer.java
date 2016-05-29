@@ -1,8 +1,7 @@
 package com.clilystudio.app.netbook.model;
 
-public class ResultServer
-{
-  private boolean ok;
+public class ResultServer {
+    private boolean ok;
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

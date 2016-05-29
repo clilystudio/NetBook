@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_checked="true" android:drawable="@drawable/shelf_delete_confirm_checked" />
-    <item android:state_checked="false" android:drawable="@drawable/shelf_delete_confirm_unchecked" />
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_checked="true" android:drawable="@drawable/shelf_delete_confirm_checked"/>
+    <item android:state_checked="false" android:drawable="@drawable/shelf_delete_confirm_unchecked"/>
 </selector>

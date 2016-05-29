@@ -1,29 +1,24 @@
 package com.clilystudio.app.netbook.model;
 
-public class IKanshuUrlResult
-{
-  private String[] links;
-  private boolean ok;
+public class IKanshuUrlResult {
+    private String[] links;
+    private boolean ok;
 
-  public String[] getLinks()
-  {
-    return this.links;
-  }
+    public String[] getLinks() {
+        return this.links;
+    }
 
-  public boolean isOk()
-  {
-    return this.ok;
-  }
+    public boolean isOk() {
+        return this.ok;
+    }
 
-  public void setLinks(String[] paramArrayOfString)
-  {
-    this.links = paramArrayOfString;
-  }
+    public void setLinks(String[] paramArrayOfString) {
+        this.links = paramArrayOfString;
+    }
 
-  public void setOk(boolean paramBoolean)
-  {
-    this.ok = paramBoolean;
-  }
+    public void setOk(boolean paramBoolean) {
+        this.ok = paramBoolean;
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

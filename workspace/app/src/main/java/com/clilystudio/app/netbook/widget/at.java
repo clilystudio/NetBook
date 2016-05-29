@@ -1,23 +1,20 @@
 package com.clilystudio.app.netbook.widget;
 
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.squareup.a.b;
+
 import com.clilystudio.app.netbook.event.i;
 import com.clilystudio.app.netbook.event.x;
 import com.clilystudio.app.netbook.model.BookRankSummary;
+import com.squareup.a.b;
 
 final class at
-  implements View.OnClickListener
-{
-  at(RankCollapseItem paramRankCollapseItem, BookRankSummary paramBookRankSummary, boolean paramBoolean)
-  {
-  }
+        implements View.OnClickListener {
+    at(RankCollapseItem paramRankCollapseItem, BookRankSummary paramBookRankSummary, boolean paramBoolean) {
+    }
 
-  public final void onClick(View paramView)
-  {
-    i.a().c(new x(this.a, this.b));
-  }
+    public final void onClick(View paramView) {
+        i.a().c(new x(this.a, this.b));
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

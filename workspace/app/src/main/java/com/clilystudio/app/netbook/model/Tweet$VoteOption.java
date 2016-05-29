@@ -1,13 +1,11 @@
 package com.clilystudio.app.netbook.model;
 
-public class Tweet$VoteOption
-{
-  public String content;
-  public int count;
+public class Tweet$VoteOption {
+    public String content;
+    public int count;
 
-  public Tweet$VoteOption(Tweet paramTweet)
-  {
-  }
+    public Tweet$VoteOption(Tweet paramTweet) {
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

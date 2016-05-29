@@ -1,29 +1,24 @@
 package com.clilystudio.app.netbook.model;
 
-public class GirlTopic extends GirlTopicSummary
-{
-  private String content;
-  private String shareLink;
+public class GirlTopic extends GirlTopicSummary {
+    private String content;
+    private String shareLink;
 
-  public String getContent()
-  {
-    return this.content;
-  }
+    public String getContent() {
+        return this.content;
+    }
 
-  public String getShareLink()
-  {
-    return this.shareLink;
-  }
+    public String getShareLink() {
+        return this.shareLink;
+    }
 
-  public void setContent(String paramString)
-  {
-    this.content = paramString;
-  }
+    public void setContent(String paramString) {
+        this.content = paramString;
+    }
 
-  public void setShareLink(String paramString)
-  {
-    this.shareLink = paramString;
-  }
+    public void setShareLink(String paramString) {
+        this.shareLink = paramString;
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

@@ -4,33 +4,27 @@ import com.clilystudio.app.netbook.a_packA.e;
 import com.clilystudio.app.netbook.api.b;
 import com.clilystudio.app.netbook.model.BookSummary;
 import com.clilystudio.app.netbook.model.BookTagRoot;
+
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
-final class aX extends e<String, Void, List<BookSummary>>
-{
-  private aX(BookTagListActivity paramBookTagListActivity)
-  {
-  }
+final class aX extends e<String, Void, List<BookSummary>> {
+    private aX(BookTagListActivity paramBookTagListActivity) {
+    }
 
-  private List<BookSummary> a()
-  {
-    try
-    {
-      BookTagRoot localBookTagRoot = b.b().c(BookTagListActivity.b(this.a), 0, 50);
-      if ((localBookTagRoot != null) && (localBookTagRoot.getBooks() != null))
-      {
-        List localList = Arrays.asList(localBookTagRoot.getBooks());
-        return localList;
-      }
+    private List<BookSummary> a() {
+        try {
+            BookTagRoot localBookTagRoot = b.b().c(BookTagListActivity.b(this.a), 0, 50);
+            if ((localBookTagRoot != null) && (localBookTagRoot.getBooks() != null)) {
+                List localList = Arrays.asList(localBookTagRoot.getBooks());
+                return localList;
+            }
+        } catch (IOException localIOException) {
+            localIOException.printStackTrace();
+        }
+        return null;
     }
-    catch (IOException localIOException)
-    {
-      localIOException.printStackTrace();
-    }
-    return null;
-  }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

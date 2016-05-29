@@ -1,8 +1,7 @@
 package com.clilystudio.app.netbook.reader;
 
-abstract interface Y
-{
-  public abstract void a(int paramInt, e<ReaderChapter> parame, boolean paramBoolean);
+abstract interface Y {
+    public abstract void a(int paramInt, e<ReaderChapter> parame, boolean paramBoolean);
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

@@ -1,40 +1,33 @@
 package com.clilystudio.app.netbook.model;
 
-public class ChapterRoot
-{
-  private Chapter chapter;
-  private boolean ok;
-  private int status;
+public class ChapterRoot {
+    private Chapter chapter;
+    private boolean ok;
+    private int status;
 
-  public Chapter getChapter()
-  {
-    return this.chapter;
-  }
+    public Chapter getChapter() {
+        return this.chapter;
+    }
 
-  public int getStatus()
-  {
-    return this.status;
-  }
+    public int getStatus() {
+        return this.status;
+    }
 
-  public boolean isOk()
-  {
-    return this.ok;
-  }
+    public boolean isOk() {
+        return this.ok;
+    }
 
-  public void setChapter(Chapter paramChapter)
-  {
-    this.chapter = paramChapter;
-  }
+    public void setChapter(Chapter paramChapter) {
+        this.chapter = paramChapter;
+    }
 
-  public void setOk(boolean paramBoolean)
-  {
-    this.ok = paramBoolean;
-  }
+    public void setOk(boolean paramBoolean) {
+        this.ok = paramBoolean;
+    }
 
-  public void setStatus(int paramInt)
-  {
-    this.status = paramInt;
-  }
+    public void setStatus(int paramInt) {
+        this.status = paramInt;
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

@@ -1,29 +1,24 @@
 package com.clilystudio.app.netbook.model;
 
-public class SplashRoot
-{
-  private boolean ok;
-  private Splash[] splash;
+public class SplashRoot {
+    private boolean ok;
+    private Splash[] splash;
 
-  public Splash[] getSplash()
-  {
-    return this.splash;
-  }
+    public Splash[] getSplash() {
+        return this.splash;
+    }
 
-  public boolean isOk()
-  {
-    return this.ok;
-  }
+    public boolean isOk() {
+        return this.ok;
+    }
 
-  public void setOk(boolean paramBoolean)
-  {
-    this.ok = paramBoolean;
-  }
+    public void setOk(boolean paramBoolean) {
+        this.ok = paramBoolean;
+    }
 
-  public void setSplash(Splash[] paramArrayOfSplash)
-  {
-    this.splash = paramArrayOfSplash;
-  }
+    public void setSplash(Splash[] paramArrayOfSplash) {
+        this.splash = paramArrayOfSplash;
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

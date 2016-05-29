@@ -4,11 +4,9 @@ import com.clilystudio.app.netbook.reader.e;
 import com.clilystudio.app.netbook.reader.n;
 
 final class B
-  implements e<n>
-{
-  B(A paramA)
-  {
-  }
+        implements e<n> {
+    B(A paramA) {
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

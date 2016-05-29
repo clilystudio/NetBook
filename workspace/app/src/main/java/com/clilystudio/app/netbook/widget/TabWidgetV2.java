@@ -5,13 +5,12 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
-import com.clilystudio.app.netbook.util.am_CommonUtils;
 import android.util.AttributeSet;
 import android.widget.TabWidget;
 
 import com.arcsoft.hpay100.a.a;
 import com.clilystudio.app.netbook.R;
-import com.clilystudio.app.netbook.R.styleable;
+import com.clilystudio.app.netbook.util.am_CommonUtils;
 
 public class TabWidgetV2 extends TabWidget {
     private int a;

@@ -1,25 +1,172 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="?backgroundPressed" android:paddingLeft="@dimen/dp_8" android:paddingTop="@dimen/dp_8" android:paddingRight="@dimen/dp_8" android:paddingBottom="0.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/ListItemDeprecated"
-  xmlns:android="http://schemas.android.com/apk/res/android"> android:orientation="vertical">
-<LinearLayout android:orientation="vertical" android:background="?backgroundSelector" android:paddingLeft="@dimen/dp_16" android:paddingTop="@dimen/dp_16" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <com.ushaqi.zhuishushenqi.widget.CoverView android:id="@id/avatar" android:src="@drawable/cover_default" android:layout_alignParentLeft="true" style="@style/Cover_Ugc_Detail_List" />
-            <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toRightOf="@id/avatar" android:layout_centerVertical="true">
-                <TextView android:textSize="@dimen/text_size_15" android:id="@id/title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dp_16" />
-                <TextView android:textSize="@dimen/text_size_12" android:textColor="?android:textColorTertiary" android:id="@id/author" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dp_16" android:layout_marginTop="@dimen/dp_6" android:layout_below="@id/title" />
-                <TextView android:textSize="@dimen/text_size_12" android:textColor="#ffb93221" android:id="@id/followcount" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dp_16" android:layout_marginTop="@dimen/dp_6" android:layout_below="@id/author" />
-                <TextView android:textSize="@dimen/text_size_12" android:textColor="?android:textColorTertiary" android:id="@id/follow" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text=" 人在追" android:layout_toRightOf="@id/followcount" android:layout_alignBaseline="@id/followcount" />
-                <TextView android:textSize="@dimen/text_size_12" android:textColor="?android:textColorTertiary" android:id="@id/separate" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dp_8" android:layout_marginRight="@dimen/dp_8" android:text="|" android:layout_toRightOf="@id/follow" android:layout_alignBaseline="@id/followcount" />
-                <TextView android:textSize="@dimen/text_size_12" android:textColor="#ffb93221" android:id="@id/wordcount" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="0" android:layout_toRightOf="@id/separate" android:layout_alignBaseline="@id/followcount" />
-                <TextView android:textSize="@dimen/text_size_12" android:textColor="?android:textColorTertiary" android:id="@id/wordunit" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text=" 万字" android:layout_toRightOf="@id/wordcount" android:layout_alignBaseline="@id/followcount" />
+<RelativeLayout android:background="?backgroundPressed"
+                android:paddingLeft="@dimen/dp_8"
+                android:paddingTop="@dimen/dp_8"
+                android:paddingRight="@dimen/dp_8"
+                android:paddingBottom="0.0dip"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                style="@style/ListItemDeprecated"
+                xmlns:android="http://schemas.android.com/apk/res/android">android:orientation="vertical">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:background="?backgroundSelector"
+        android:paddingLeft="@dimen/dp_16"
+        android:paddingTop="@dimen/dp_16"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+            <com.clilystudio.app.netbook.widget.CoverView
+                android:id="@+id/avatar"
+                android:src="@drawable/cover_default"
+                android:layout_alignParentLeft="true"
+                style="@style/Cover_Ugc_Detail_List"/>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/avatar"
+                android:layout_centerVertical="true">
+
+                <TextView
+                    android:textSize="@dimen/text_size_15"
+                    android:id="@+id/title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp_16"/>
+
+                <TextView
+                    android:textSize="@dimen/text_size_12"
+                    android:textColor="?android:textColorTertiary"
+                    android:id="@+id/author"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp_16"
+                    android:layout_marginTop="@dimen/dp_6"
+                    android:layout_below="@id/title"/>
+
+                <TextView
+                    android:textSize="@dimen/text_size_12"
+                    android:textColor="#ffb93221"
+                    android:id="@+id/followcount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp_16"
+                    android:layout_marginTop="@dimen/dp_6"
+                    android:layout_below="@id/author"/>
+
+                <TextView
+                    android:textSize="@dimen/text_size_12"
+                    android:textColor="?android:textColorTertiary"
+                    android:id="@+id/follow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" 人在追"
+                    android:layout_toRightOf="@id/followcount"
+                    android:layout_alignBaseline="@id/followcount"/>
+
+                <TextView
+                    android:textSize="@dimen/text_size_12"
+                    android:textColor="?android:textColorTertiary"
+                    android:id="@+id/separate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp_8"
+                    android:layout_marginRight="@dimen/dp_8"
+                    android:text="|"
+                    android:layout_toRightOf="@id/follow"
+                    android:layout_alignBaseline="@id/followcount"/>
+
+                <TextView
+                    android:textSize="@dimen/text_size_12"
+                    android:textColor="#ffb93221"
+                    android:id="@+id/wordcount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:layout_toRightOf="@id/separate"
+                    android:layout_alignBaseline="@id/followcount"/>
+
+                <TextView
+                    android:textSize="@dimen/text_size_12"
+                    android:textColor="?android:textColorTertiary"
+                    android:id="@+id/wordunit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" 万字"
+                    android:layout_toRightOf="@id/wordcount"
+                    android:layout_alignBaseline="@id/followcount"/>
             </RelativeLayout>
         </RelativeLayout>
-        <TextView android:textSize="@dimen/text_size_12" android:textColorHint="?android:textColorTertiary" android:gravity="center_vertical" android:id="@id/comment_add_layout" android:background="?backgroundPressed" android:paddingLeft="@dimen/dp_8" android:paddingRight="@dimen/dp_8" android:clickable="true" android:layout_width="fill_parent" android:layout_height="40.0dip" android:layout_marginTop="@dimen/dp_16" android:layout_marginRight="@dimen/dp_16" android:layout_marginBottom="@dimen/dp_16" android:hint="说说你推荐这本书的原因吧" style="@style/MediumText" />
-        <LinearLayout android:orientation="vertical" android:id="@id/comment_edit_layout" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <View android:background="?lineColor" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginTop="@dimen/dp_16" android:layout_marginRight="@dimen/dp_16" />
-            <TextView android:textSize="@dimen/text_size_12" android:textColor="?android:textColorSecondary" android:id="@id/comment" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp_13" android:layout_marginRight="@dimen/dp_16" />
-            <TextView android:textSize="@dimen/text_size_12" android:textColor="@color/primary_red" android:gravity="center" android:layout_gravity="right" android:id="@id/edit_comment" android:background="?backgroundSelector" android:padding="@dimen/dp_16" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp_18" android:text="编辑" />
+
+        <TextView
+            android:textSize="@dimen/text_size_12"
+            android:textColorHint="?android:textColorTertiary"
+            android:gravity="center_vertical"
+            android:id="@+id/comment_add_layout"
+            android:background="?backgroundPressed"
+            android:paddingLeft="@dimen/dp_8"
+            android:paddingRight="@dimen/dp_8"
+            android:clickable="true"
+            android:layout_width="fill_parent"
+            android:layout_height="40.0dip"
+            android:layout_marginTop="@dimen/dp_16"
+            android:layout_marginRight="@dimen/dp_16"
+            android:layout_marginBottom="@dimen/dp_16"
+            android:hint="说说你推荐这本书的原因吧"
+            style="@style/MediumText"/>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:id="@+id/comment_edit_layout"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+            <View
+                android:background="?lineColor"
+                android:layout_width="fill_parent"
+                android:layout_height="1.0dip"
+                android:layout_marginTop="@dimen/dp_16"
+                android:layout_marginRight="@dimen/dp_16"/>
+
+            <TextView
+                android:textSize="@dimen/text_size_12"
+                android:textColor="?android:textColorSecondary"
+                android:id="@+id/comment"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_13"
+                android:layout_marginRight="@dimen/dp_16"/>
+
+            <TextView
+                android:textSize="@dimen/text_size_12"
+                android:textColor="@color/primary_red"
+                android:gravity="center"
+                android:layout_gravity="right"
+                android:id="@+id/edit_comment"
+                android:background="?backgroundSelector"
+                android:padding="@dimen/dp_16"
+                android:clickable="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_18"
+                android:text="编辑"/>
         </LinearLayout>
     </LinearLayout>
-    <ImageView android:id="@id/delete_comment" android:background="?backgroundSelector" android:padding="@dimen/dp_16" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/ugcbook_delete" android:scaleType="center" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+
+    <ImageView
+        android:id="@+id/delete_comment"
+        android:background="?backgroundSelector"
+        android:padding="@dimen/dp_16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ugcbook_delete"
+        android:scaleType="center"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"/>
 </RelativeLayout>

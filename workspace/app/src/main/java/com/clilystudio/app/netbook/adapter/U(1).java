@@ -5,18 +5,16 @@ import com.clilystudio.app.netbook.model.PostPublish;
 import com.clilystudio.app.netbook.model.Tweet;
 import com.clilystudio.app.netbook.util.am_CommonUtils;
 
-final class U extends e<String, Void, PostPublish>
-{
-  public U(G paramG, Tweet paramTweet, R paramR)
-  {
-  }
+final class U extends e<String, Void, PostPublish> {
+    public U(G paramG, Tweet paramTweet, R paramR) {
+    }
 
-  // TODO 代码不全，需要看SMALI
-  @Override
-  protected PostPublish doInBackground(String... params) {
-    am_CommonUtils.e();
-    return null;
-  }
+    // TODO 代码不全，需要看SMALI
+    @Override
+    protected PostPublish doInBackground(String... params) {
+        am_CommonUtils.e();
+        return null;
+    }
 
 }
 

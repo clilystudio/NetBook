@@ -1,18 +1,13 @@
 package com.clilystudio.app.netbook.ui.ugcbook;
 
-import android.widget.PopupWindow.OnDismissListener;
-
 final class ab
-  implements PopupWindow.OnDismissListener
-{
-  ab(UGCMainActivity paramUGCMainActivity)
-  {
-  }
+        implements PopupWindow.OnDismissListener {
+    ab(UGCMainActivity paramUGCMainActivity) {
+    }
 
-  public final void onDismiss()
-  {
-    UGCMainActivity.g(this.a);
-  }
+    public final void onDismiss() {
+        UGCMainActivity.g(this.a);
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

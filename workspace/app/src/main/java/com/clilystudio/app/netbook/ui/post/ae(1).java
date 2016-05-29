@@ -4,25 +4,19 @@ import com.clilystudio.app.netbook.a_packA.e;
 import com.clilystudio.app.netbook.api.b;
 import com.clilystudio.app.netbook.model.BookHelpResult;
 
-final class ae extends e<String, Void, BookHelpResult>
-{
-  private ae(BookHelpActivity paramBookHelpActivity)
-  {
-  }
+final class ae extends e<String, Void, BookHelpResult> {
+    private ae(BookHelpActivity paramBookHelpActivity) {
+    }
 
-  private BookHelpResult a(String[] paramArrayOfString)
-  {
-    try
-    {
-      BookHelpResult localBookHelpResult = b.b().E(paramArrayOfString[0]);
-      return localBookHelpResult;
+    private BookHelpResult a(String[] paramArrayOfString) {
+        try {
+            BookHelpResult localBookHelpResult = b.b().E(paramArrayOfString[0]);
+            return localBookHelpResult;
+        } catch (Exception localException) {
+            localException.printStackTrace();
+        }
+        return null;
     }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
-    return null;
-  }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

@@ -1,22 +1,17 @@
 package com.clilystudio.app.netbook.reader;
 
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import android.view.View;
-import com.clilystudio.app.netbook.util.adutil.BaseShelfAd;
 
 final class bv
-  implements DialogInterface.OnClickListener
-{
-  bv(bt parambt, View paramView)
-  {
-  }
+        implements DialogInterface.OnClickListener {
+    bv(bt parambt, View paramView) {
+    }
 
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    ReaderMenuFragment.j(this.b.a).onAdClick(this.a);
-    ReaderMenuFragment.j(this.b.a).recordClick(this.a);
-  }
+    public final void onClick(DialogInterface paramDialogInterface, int paramInt) {
+        ReaderMenuFragment.j(this.b.a).onAdClick(this.a);
+        ReaderMenuFragment.j(this.b.a).recordClick(this.a);
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

@@ -1,63 +1,339 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="?backgroundPressed" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <LinearLayout android:orientation="horizontal" android:background="?colorPrimary" android:paddingLeft="@dimen/dp_16" android:paddingTop="@dimen/dp_6" android:paddingRight="@dimen/dp_16" android:layout_width="fill_parent" android:layout_height="86.0dip">
-            <com.ushaqi.zhuishushenqi.ui.CircularSmartImageView android:layout_gravity="center_vertical" android:id="@id/portrait" android:layout_width="@dimen/dp_60" android:layout_height="@dimen/dp_60" android:src="@drawable/avatar_default" />
-            <LinearLayout android:layout_gravity="center_vertical" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dp_16">
-                <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
-                    <TextView android:textSize="@dimen/text_size_15" android:textColor="@color/white" android:id="@id/name" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="用户名" />
-                    <TextView android:textSize="@dimen/text_size_8" android:textColor="@color/white" android:gravity="center" android:id="@id/level" android:background="@drawable/bg_user_level" android:layout_width="@dimen/dp_24" android:layout_height="@dimen/dp_12" android:layout_marginLeft="@dimen/dp_4" android:text="Lv:1" />
+<RelativeLayout android:background="?backgroundPressed"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:background="?colorPrimary"
+            android:paddingLeft="@dimen/dp_16"
+            android:paddingTop="@dimen/dp_6"
+            android:paddingRight="@dimen/dp_16"
+            android:layout_width="fill_parent"
+            android:layout_height="86.0dip">
+
+            <com.clilystudio.app.netbook.ui.CircularSmartImageView
+                android:layout_gravity="center_vertical"
+                android:id="@+id/portrait"
+                android:layout_width="@dimen/dp_60"
+                android:layout_height="@dimen/dp_60"
+                android:src="@drawable/avatar_default"/>
+
+            <LinearLayout
+                android:layout_gravity="center_vertical"
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_16">
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:textSize="@dimen/text_size_15"
+                        android:textColor="@color/white"
+                        android:id="@+id/name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="用户名"/>
+
+                    <TextView
+                        android:textSize="@dimen/text_size_8"
+                        android:textColor="@color/white"
+                        android:gravity="center"
+                        android:id="@+id/level"
+                        android:background="@drawable/bg_user_level"
+                        android:layout_width="@dimen/dp_24"
+                        android:layout_height="@dimen/dp_12"
+                        android:layout_marginLeft="@dimen/dp_4"
+                        android:text="Lv:1"/>
                 </LinearLayout>
-                <TextView android:textSize="@dimen/text_size_12" android:textColor="#ffe5bfbc" android:id="@id/exp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp_4" android:text="经验：0/0" />
-                <ProgressBar android:id="@id/exp_pregress" android:layout_width="120.0dip" android:layout_height="@dimen/dp_4" android:layout_marginTop="@dimen/dp_5" android:max="100" android:progressDrawable="@drawable/user_info_exp_pregress" style="@android:style/Widget.ProgressBar.Horizontal" />
+
+                <TextView
+                    android:textSize="@dimen/text_size_12"
+                    android:textColor="#ffe5bfbc"
+                    android:id="@+id/exp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_4"
+                    android:text="经验：0/0"/>
+
+                <ProgressBar
+                    android:id="@+id/exp_pregress"
+                    android:layout_width="120.0dip"
+                    android:layout_height="@dimen/dp_4"
+                    android:layout_marginTop="@dimen/dp_5"
+                    android:max="100"
+                    android:progressDrawable="@drawable/user_info_exp_pregress"
+                    style="@android:style/Widget.ProgressBar.Horizontal"/>
             </LinearLayout>
         </LinearLayout>
-        <ScrollView android:id="@id/user_info_content" android:visibility="gone" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent">
-            <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
-                <RelativeLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/user_message_block" android:background="?backgroundSelector" android:paddingLeft="@dimen/dp_16" android:paddingRight="@dimen/dp_16" android:layout_width="fill_parent" android:layout_height="@dimen/dp_56">
-                    <ImageView android:id="@id/user_msg_icon" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/user_info_message" />
-                    <TextView android:textSize="@dimen/text_size_15" android:textColor="?android:textColor" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dp_32" android:text="消息" android:layout_toRightOf="@id/user_msg_icon" />
-                    <TextView android:textSize="@dimen/text_size_12" android:textColor="#ffffffff" android:gravity="center" android:id="@id/message_count" android:background="@drawable/user_info_msg_count_bg" android:padding="@dimen/dp_4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="12" android:layout_alignParentRight="true" />
+
+        <ScrollView
+            android:id="@+id/user_info_content"
+            android:visibility="gone"
+            android:scrollbars="none"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+
+                <RelativeLayout
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:id="@+id/user_message_block"
+                    android:background="?backgroundSelector"
+                    android:paddingLeft="@dimen/dp_16"
+                    android:paddingRight="@dimen/dp_16"
+                    android:layout_width="fill_parent"
+                    android:layout_height="@dimen/dp_56">
+
+                    <ImageView
+                        android:id="@+id/user_msg_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/user_info_message"/>
+
+                    <TextView
+                        android:textSize="@dimen/text_size_15"
+                        android:textColor="?android:textColor"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/dp_32"
+                        android:text="消息"
+                        android:layout_toRightOf="@id/user_msg_icon"/>
+
+                    <TextView
+                        android:textSize="@dimen/text_size_12"
+                        android:textColor="#ffffffff"
+                        android:gravity="center"
+                        android:id="@+id/message_count"
+                        android:background="@drawable/user_info_msg_count_bg"
+                        android:padding="@dimen/dp_4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="12"
+                        android:layout_alignParentRight="true"/>
                 </RelativeLayout>
-                <include layout="@layout/horizontal_divider" />
-                <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/user_topic_block" android:background="?backgroundSelector" android:paddingLeft="@dimen/dp_16" android:paddingRight="@dimen/dp_16" android:layout_width="fill_parent" android:layout_height="@dimen/dp_56">
-                    <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/user_info_topic" />
-                    <TextView android:textSize="@dimen/text_size_15" android:textColor="?android:textColor" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dp_32" android:text="话题" />
+
+                <include layout="@layout/horizontal_divider"/>
+
+                <LinearLayout
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:id="@+id/user_topic_block"
+                    android:background="?backgroundSelector"
+                    android:paddingLeft="@dimen/dp_16"
+                    android:paddingRight="@dimen/dp_16"
+                    android:layout_width="fill_parent"
+                    android:layout_height="@dimen/dp_56">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/user_info_topic"/>
+
+                    <TextView
+                        android:textSize="@dimen/text_size_15"
+                        android:textColor="?android:textColor"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/dp_32"
+                        android:text="话题"/>
                 </LinearLayout>
-                <include layout="@layout/horizontal_divider" />
-                <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/user_ugc_block" android:background="?backgroundSelector" android:paddingLeft="@dimen/dp_16" android:paddingRight="@dimen/dp_16" android:layout_width="fill_parent" android:layout_height="@dimen/dp_56">
-                    <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/user_info_booklet" />
-                    <TextView android:textSize="@dimen/text_size_15" android:textColor="?android:textColor" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dp_32" android:text="书单" />
+
+                <include layout="@layout/horizontal_divider"/>
+
+                <LinearLayout
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:id="@+id/user_ugc_block"
+                    android:background="?backgroundSelector"
+                    android:paddingLeft="@dimen/dp_16"
+                    android:paddingRight="@dimen/dp_16"
+                    android:layout_width="fill_parent"
+                    android:layout_height="@dimen/dp_56">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/user_info_booklet"/>
+
+                    <TextView
+                        android:textSize="@dimen/text_size_15"
+                        android:textColor="?android:textColor"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/dp_32"
+                        android:text="书单"/>
                 </LinearLayout>
-                <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/user_account_block" android:background="?backgroundSelector" android:paddingLeft="@dimen/dp_16" android:paddingRight="@dimen/dp_16" android:layout_width="fill_parent" android:layout_height="@dimen/dp_56" android:layout_marginTop="@dimen/dp_8">
-                    <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/user_info_account" />
-                    <TextView android:textSize="@dimen/text_size_15" android:textColor="?android:textColor" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dp_32" android:text="我的账户" />
+
+                <LinearLayout
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:id="@+id/user_account_block"
+                    android:background="?backgroundSelector"
+                    android:paddingLeft="@dimen/dp_16"
+                    android:paddingRight="@dimen/dp_16"
+                    android:layout_width="fill_parent"
+                    android:layout_height="@dimen/dp_56"
+                    android:layout_marginTop="@dimen/dp_8">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/user_info_account"/>
+
+                    <TextView
+                        android:textSize="@dimen/text_size_15"
+                        android:textColor="?android:textColor"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/dp_32"
+                        android:text="我的账户"/>
                 </LinearLayout>
-                <include layout="@layout/horizontal_divider" />
-                <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/user_level_block" android:background="?backgroundSelector" android:paddingLeft="@dimen/dp_16" android:paddingRight="@dimen/dp_16" android:layout_width="fill_parent" android:layout_height="@dimen/dp_56">
-                    <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/user_info_level" />
-                    <TextView android:textSize="@dimen/text_size_15" android:textColor="?android:textColor" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dp_32" android:text="经验等级" />
+
+                <include layout="@layout/horizontal_divider"/>
+
+                <LinearLayout
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:id="@+id/user_level_block"
+                    android:background="?backgroundSelector"
+                    android:paddingLeft="@dimen/dp_16"
+                    android:paddingRight="@dimen/dp_16"
+                    android:layout_width="fill_parent"
+                    android:layout_height="@dimen/dp_56">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/user_info_level"/>
+
+                    <TextView
+                        android:textSize="@dimen/text_size_15"
+                        android:textColor="?android:textColor"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/dp_32"
+                        android:text="经验等级"/>
                 </LinearLayout>
-                <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/user_task_block" android:background="?backgroundSelector" android:paddingLeft="@dimen/dp_16" android:paddingRight="@dimen/dp_16" android:layout_width="fill_parent" android:layout_height="@dimen/dp_56" android:layout_marginTop="@dimen/dp_8">
-                    <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/user_info_task" />
-                    <TextView android:textSize="@dimen/text_size_15" android:textColor="?android:textColor" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dp_32" android:text="每日任务" />
+
+                <LinearLayout
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:id="@+id/user_task_block"
+                    android:background="?backgroundSelector"
+                    android:paddingLeft="@dimen/dp_16"
+                    android:paddingRight="@dimen/dp_16"
+                    android:layout_width="fill_parent"
+                    android:layout_height="@dimen/dp_56"
+                    android:layout_marginTop="@dimen/dp_8">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/user_info_task"/>
+
+                    <TextView
+                        android:textSize="@dimen/text_size_15"
+                        android:textColor="?android:textColor"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/dp_32"
+                        android:text="每日任务"/>
                 </LinearLayout>
-                <include layout="@layout/horizontal_divider" />
-                <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/user_share_remove_ad" android:background="?backgroundSelector" android:paddingLeft="@dimen/dp_16" android:paddingRight="@dimen/dp_16" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/dp_56">
-                    <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/user_info_remove_ad" />
-                    <TextView android:textSize="@dimen/text_size_15" android:textColor="?android:textColor" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dp_32" android:text="@string/share_remove_ad" />
+
+                <include layout="@layout/horizontal_divider"/>
+
+                <LinearLayout
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:id="@+id/user_share_remove_ad"
+                    android:background="?backgroundSelector"
+                    android:paddingLeft="@dimen/dp_16"
+                    android:paddingRight="@dimen/dp_16"
+                    android:visibility="gone"
+                    android:layout_width="fill_parent"
+                    android:layout_height="@dimen/dp_56">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/user_info_remove_ad"/>
+
+                    <TextView
+                        android:textSize="@dimen/text_size_15"
+                        android:textColor="?android:textColor"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/dp_32"
+                        android:text="@string/share_remove_ad"/>
                 </LinearLayout>
-                <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/user_follow_weixin" android:background="?backgroundSelector" android:paddingLeft="@dimen/dp_16" android:paddingRight="@dimen/dp_16" android:layout_width="fill_parent" android:layout_height="@dimen/dp_56" android:layout_marginTop="@dimen/dp_8">
-                    <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/user_info_weixin" />
-                    <TextView android:textSize="@dimen/text_size_15" android:textColor="?android:textColor" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dp_32" android:text="微信公众号" />
+
+                <LinearLayout
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:id="@+id/user_follow_weixin"
+                    android:background="?backgroundSelector"
+                    android:paddingLeft="@dimen/dp_16"
+                    android:paddingRight="@dimen/dp_16"
+                    android:layout_width="fill_parent"
+                    android:layout_height="@dimen/dp_56"
+                    android:layout_marginTop="@dimen/dp_8">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/user_info_weixin"/>
+
+                    <TextView
+                        android:textSize="@dimen/text_size_15"
+                        android:textColor="?android:textColor"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/dp_32"
+                        android:text="微信公众号"/>
                 </LinearLayout>
-                <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/user_setting_block" android:background="?backgroundSelector" android:paddingLeft="@dimen/dp_16" android:paddingRight="@dimen/dp_16" android:layout_width="fill_parent" android:layout_height="@dimen/dp_56" android:layout_marginTop="@dimen/dp_8">
-                    <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/user_info_setting" />
-                    <TextView android:textSize="@dimen/text_size_15" android:textColor="?android:textColor" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dp_32" android:text="设置" />
+
+                <LinearLayout
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:id="@+id/user_setting_block"
+                    android:background="?backgroundSelector"
+                    android:paddingLeft="@dimen/dp_16"
+                    android:paddingRight="@dimen/dp_16"
+                    android:layout_width="fill_parent"
+                    android:layout_height="@dimen/dp_56"
+                    android:layout_marginTop="@dimen/dp_8">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/user_info_setting"/>
+
+                    <TextView
+                        android:textSize="@dimen/text_size_15"
+                        android:textColor="?android:textColor"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/dp_32"
+                        android:text="设置"/>
                 </LinearLayout>
             </LinearLayout>
         </ScrollView>
     </LinearLayout>
-    <include layout="@layout/loading" />
+
+    <include layout="@layout/loading"/>
 </RelativeLayout>

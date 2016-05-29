@@ -2,11 +2,9 @@ package com.clilystudio.app.netbook.reader;
 
 import com.clilystudio.app.netbook.util.R;
 
-public final class cO extends R
-{
-  public cO(cM paramcM)
-  {
-  }
+public final class cO extends R {
+    public cO(cM paramcM) {
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

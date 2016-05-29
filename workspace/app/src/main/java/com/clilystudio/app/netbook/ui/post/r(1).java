@@ -1,19 +1,15 @@
 package com.clilystudio.app.netbook.ui.post;
 
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 
 final class r
-  implements DialogInterface.OnClickListener
-{
-  r(AddGamePostActivity paramAddGamePostActivity)
-  {
-  }
+        implements DialogInterface.OnClickListener {
+    r(AddGamePostActivity paramAddGamePostActivity) {
+    }
 
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-  }
+    public final void onClick(DialogInterface paramDialogInterface, int paramInt) {
+        paramDialogInterface.dismiss();
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

@@ -2,23 +2,23 @@ package com.clilystudio.app.netbook.adapter;
 
 import android.view.View;
 import android.widget.TextView;
-import butterknife.ButterKnife;
-import butterknife.InjectView;
+
 import com.clilystudio.app.netbook.ui.SmartImageView;
 
-class BookRankAdapter$ViewHolder
-{
+import butterknife.ButterKnife;
+import butterknife.InjectView;
 
-  @InjectView(2131493626)
-  SmartImageView cover;
+class BookRankAdapter$ViewHolder {
 
-  @InjectView(2131493627)
-  TextView title;
+    @InjectView(2131493626)
+    SmartImageView cover;
 
-  BookRankAdapter$ViewHolder(View paramView)
-  {
-    ButterKnife.inject(this, paramView);
-  }
+    @InjectView(2131493627)
+    TextView title;
+
+    BookRankAdapter$ViewHolder(View paramView) {
+        ButterKnife.inject(this, paramView);
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

@@ -3,11 +3,9 @@ package com.clilystudio.app.netbook.reader.dl;
 import com.clilystudio.app.netbook.a_packA.e;
 import com.clilystudio.app.netbook.model.Toc;
 
-final class g extends e<Void, Void, Toc>
-{
-  private g(BookDownloadService paramBookDownloadService)
-  {
-  }
+final class g extends e<Void, Void, Toc> {
+    private g(BookDownloadService paramBookDownloadService) {
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

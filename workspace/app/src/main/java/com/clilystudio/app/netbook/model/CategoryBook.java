@@ -1,29 +1,24 @@
 package com.clilystudio.app.netbook.model;
 
-public class CategoryBook extends BookSummary
-{
-  private String majorCate;
-  private String minorCate;
+public class CategoryBook extends BookSummary {
+    private String majorCate;
+    private String minorCate;
 
-  public String getMajorCate()
-  {
-    return this.majorCate;
-  }
+    public String getMajorCate() {
+        return this.majorCate;
+    }
 
-  public String getMinorCate()
-  {
-    return this.minorCate;
-  }
+    public String getMinorCate() {
+        return this.minorCate;
+    }
 
-  public void setMajorCate(String paramString)
-  {
-    this.majorCate = paramString;
-  }
+    public void setMajorCate(String paramString) {
+        this.majorCate = paramString;
+    }
 
-  public void setMinorCate(String paramString)
-  {
-    this.minorCate = paramString;
-  }
+    public void setMinorCate(String paramString) {
+        this.minorCate = paramString;
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

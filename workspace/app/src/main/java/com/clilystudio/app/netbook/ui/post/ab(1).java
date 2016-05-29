@@ -1,20 +1,16 @@
 package com.clilystudio.app.netbook.ui.post;
 
-import android.os.AsyncTask.Status;
 import com.clilystudio.app.netbook.widget.av;
 
 final class ab
-  implements av
-{
-  ab(BookHelpActivity paramBookHelpActivity)
-  {
-  }
+        implements av {
+    ab(BookHelpActivity paramBookHelpActivity) {
+    }
 
-  public final void a()
-  {
-    if ((BookHelpActivity.h(this.a) == null) || (BookHelpActivity.h(this.a).getStatus() == AsyncTask.Status.FINISHED))
-      BookHelpActivity.b(this.a);
-  }
+    public final void a() {
+        if ((BookHelpActivity.h(this.a) == null) || (BookHelpActivity.h(this.a).getStatus() == AsyncTask.Status.FINISHED))
+            BookHelpActivity.b(this.a);
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

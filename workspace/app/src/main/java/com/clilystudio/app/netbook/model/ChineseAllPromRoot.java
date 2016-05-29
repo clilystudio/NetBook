@@ -1,13 +1,11 @@
 package com.clilystudio.app.netbook.model;
 
-public class ChineseAllPromRoot extends Root
-{
-  ChineseAllPromRoot.Prom prom;
+public class ChineseAllPromRoot extends Root {
+    ChineseAllPromRoot.Prom prom;
 
-  public ChineseAllPromRoot.Prom getProm()
-  {
-    return this.prom;
-  }
+    public ChineseAllPromRoot.Prom getProm() {
+        return this.prom;
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

@@ -1,3 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<TextView android:textSize="@dimen/text_size_14" android:textColor="?android:textColor" android:gravity="center_horizontal" android:id="@id/title" android:background="?backgroundSelector" android:paddingTop="@dimen/dp_16" android:paddingBottom="@dimen/dp_16" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="更多福利"
-  xmlns:android="http://schemas.android.com/apk/res/android" />

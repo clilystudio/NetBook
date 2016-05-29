@@ -1,16 +1,13 @@
 package com.clilystudio.app.netbook.reader;
 
 final class cR
-  implements cc
-{
-  cR(SettingWidget paramSettingWidget)
-  {
-  }
+        implements cc {
+    cR(SettingWidget paramSettingWidget) {
+    }
 
-  public final void a()
-  {
-    SettingWidget.a(this.a);
-  }
+    public final void a() {
+        SettingWidget.a(this.a);
+    }
 }
 
 /* Location:           E:\10.Progs\Dev\Compiler\zssq.jar

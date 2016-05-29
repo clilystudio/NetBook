@@ -1,17 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="?android:windowBackground" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:id="@id/header_container" android:background="?android:windowBackground" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <ImageView android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp_30" android:layout_marginBottom="@dimen/dp_30" android:src="@drawable/secret_box" android:scaleType="center" />
-        <TextView android:textSize="@dimen/text_size_20" android:textStyle="bold" android:textColor="?android:textColor" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="前方高能预警！出现神秘功能！" />
-        <TextView android:textSize="@dimen/text_size_13" android:textColor="?android:textColorSecondary" android:gravity="center" android:layout_gravity="center" android:layout_width="300.0dip" android:layout_height="wrap_content" android:layout_marginTop="27.0dip" android:text="功能暗示：生活就像一盒巧克力，你永远不知道下一颗是什么味道。" />
-        <FrameLayout android:layout_gravity="center" android:background="@drawable/secret_text_bar" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="27.0dip" android:layout_marginBottom="27.0dip">
-            <TextView android:textSize="@dimen/text_size_13" android:textColor="#ffffffff" android:gravity="center" android:layout_gravity="center" android:id="@id/label" android:paddingLeft="3.0dip" android:paddingRight="3.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="完成任一任务开启神秘功能" />
+<RelativeLayout android:background="?android:windowBackground"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:id="@+id/header_container"
+        android:background="?android:windowBackground"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_30"
+            android:layout_marginBottom="@dimen/dp_30"
+            android:src="@drawable/secret_box"
+            android:scaleType="center"/>
+
+        <TextView
+            android:textSize="@dimen/text_size_20"
+            android:textStyle="bold"
+            android:textColor="?android:textColor"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="前方高能预警！出现神秘功能！"/>
+
+        <TextView
+            android:textSize="@dimen/text_size_13"
+            android:textColor="?android:textColorSecondary"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:layout_width="300.0dip"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="27.0dip"
+            android:text="功能暗示：生活就像一盒巧克力，你永远不知道下一颗是什么味道。"/>
+
+        <FrameLayout
+            android:layout_gravity="center"
+            android:background="@drawable/secret_text_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="27.0dip"
+            android:layout_marginBottom="27.0dip">
+
+            <TextView
+                android:textSize="@dimen/text_size_13"
+                android:textColor="#ffffffff"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:id="@+id/label"
+                android:paddingLeft="3.0dip"
+                android:paddingRight="3.0dip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="完成任一任务开启神秘功能"/>
         </FrameLayout>
     </LinearLayout>
-    <RelativeLayout android:id="@id/progress_container" android:background="#b2000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/secret_header_height" android:layout_alignParentTop="true">
-        <TextView android:textSize="108.0sp" android:textColor="#ffffffff" android:id="@id/progress" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" />
-        <TextView android:textSize="@dimen/text_size_16" android:textColor="#ffffffff" android:gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="55.0dip" android:layout_marginRight="55.0dip" android:text="解锁可能存在延迟，建议玩一会儿游戏等待验证通过" android:layout_below="@id/progress" />
+
+    <RelativeLayout
+        android:id="@+id/progress_container"
+        android:background="#b2000000"
+        android:visibility="gone"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/secret_header_height"
+        android:layout_alignParentTop="true">
+
+        <TextView
+            android:textSize="108.0sp"
+            android:textColor="#ffffffff"
+            android:id="@+id/progress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"/>
+
+        <TextView
+            android:textSize="@dimen/text_size_16"
+            android:textColor="#ffffffff"
+            android:gravity="center"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="55.0dip"
+            android:layout_marginRight="55.0dip"
+            android:text="解锁可能存在延迟，建议玩一会儿游戏等待验证通过"
+            android:layout_below="@id/progress"/>
     </RelativeLayout>
-    <include android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_alignParentBottom="true" layout="@layout/horizontal_divider" />
+
+    <include
+        android:layout_width="fill_parent"
+        android:layout_height="1.0px"
+        android:layout_alignParentBottom="true"
+        layout="@layout/horizontal_divider"/>
 </RelativeLayout>
