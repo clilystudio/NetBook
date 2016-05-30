@@ -13,7 +13,7 @@ public class BestReviewsFragment$ViewHolder$$ViewInjector {
         paramViewHolder.user = ((TextView) paramFinder.findRequiredView(paramObject, 2131493630, "field 'user'"));
         paramViewHolder.lv = ((TextView) paramFinder.findRequiredView(paramObject, 2131493631, "field 'lv'"));
         paramViewHolder.time = ((TextView) paramFinder.findRequiredView(paramObject, 2131492935, "field 'time'"));
-        paramViewHolder.title = ((TextView) paramFinder.findRequiredView(paramObject, 2131492936, "field 'title'"));
+        paramViewHolder.title = ((TextView) paramFinder.findRequiredView(paramObject, R.id.title, "field 'title'"));
         paramViewHolder.content = ((TextView) paramFinder.findRequiredView(paramObject, 2131492905, "field 'content'"));
         paramViewHolder.helpfulCount = ((TextView) paramFinder.findRequiredView(paramObject, 2131493634, "field 'helpfulCount'"));
         paramViewHolder.avatarVerify = ((ImageView) paramFinder.findRequiredView(paramObject, 2131493629, "field 'avatarVerify'"));

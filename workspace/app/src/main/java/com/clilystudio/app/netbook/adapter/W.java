@@ -10,7 +10,7 @@ public final class W extends com.clilystudio.app.netbook.util.W<UGCBookDetail.UG
     }
 
     protected final int[] a() {
-        return new int[]{2131492936, 2131493239, 2131493481, 2131492899, 2131493317, 2131493790, 2131493791, 2131493792, 2131493789};
+        return new int[]{R.id.title, 2131493239, 2131493481, 2131492899, 2131493317, 2131493790, 2131493791, 2131493792, 2131493789};
     }
 }
 

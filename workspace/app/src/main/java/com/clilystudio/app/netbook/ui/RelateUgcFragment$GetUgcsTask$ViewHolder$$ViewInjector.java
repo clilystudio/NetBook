@@ -9,7 +9,7 @@ import butterknife.ButterKnife.Finder;
 public class RelateUgcFragment$GetUgcsTask$ViewHolder$$ViewInjector {
     public static void inject(ButterKnife.Finder paramFinder, RelateUgcFragment.GetUgcsTask.ViewHolder paramViewHolder, Object paramObject) {
         paramViewHolder.mCover = ((CoverView) paramFinder.findRequiredView(paramObject, 2131493604, "field 'mCover'"));
-        paramViewHolder.mTitle = ((TextView) paramFinder.findRequiredView(paramObject, 2131492936, "field 'mTitle'"));
+        paramViewHolder.mTitle = ((TextView) paramFinder.findRequiredView(paramObject, R.id.title, "field 'mTitle'"));
         paramViewHolder.mCount = ((TextView) paramFinder.findRequiredView(paramObject, 2131493239, "field 'mCount'"));
         paramViewHolder.mAuthor = ((TextView) paramFinder.findRequiredView(paramObject, 2131493317, "field 'mAuthor'"));
         paramViewHolder.mDesc = ((TextView) paramFinder.findRequiredView(paramObject, 2131493481, "field 'mDesc'"));

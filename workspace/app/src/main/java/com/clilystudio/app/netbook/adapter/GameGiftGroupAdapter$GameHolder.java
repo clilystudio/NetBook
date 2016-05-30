@@ -20,7 +20,7 @@ class GameGiftGroupAdapter$GameHolder {
     @InjectView(2131493028)
     SmartImageView icon;
 
-    @InjectView(2131492936)
+    @InjectView(R.id.title)
     TextView title;
 
     GameGiftGroupAdapter$GameHolder(View paramView) {

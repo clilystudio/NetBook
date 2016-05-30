@@ -25,7 +25,7 @@ public class HomeFindItem extends FrameLayout {
     @InjectView(2131493683)
     TextView mSubText;
 
-    @InjectView(2131492936)
+    @InjectView(R.id.title)
     TextView mTitle;
 
     public HomeFindItem(Context paramContext, AttributeSet paramAttributeSet) {

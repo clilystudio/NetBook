@@ -28,7 +28,7 @@ class HomeShelfAdapter$BookHolder {
     @InjectView(2131493754)
     BookShelfFlagView flag;
 
-    @InjectView(2131492936)
+    @InjectView(R.id.title)
     TextView title;
 
     @InjectView(2131492978)

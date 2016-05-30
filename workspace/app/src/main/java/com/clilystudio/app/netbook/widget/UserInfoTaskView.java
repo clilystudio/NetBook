@@ -21,7 +21,7 @@ public class UserInfoTaskView extends FrameLayout {
     @InjectView(2131493028)
     ImageView mIcon;
 
-    @InjectView(2131492936)
+    @InjectView(R.id.title)
     TextView mTitle;
 
     public UserInfoTaskView(Context paramContext, AttributeSet paramAttributeSet) {

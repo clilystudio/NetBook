@@ -16,7 +16,7 @@ class GameGiftGroupAdapter$GiftHolder {
     @InjectView(2131493481)
     TextView desc;
 
-    @InjectView(2131492936)
+    @InjectView(R.id.title)
     TextView title;
 
     GameGiftGroupAdapter$GiftHolder(View paramView) {

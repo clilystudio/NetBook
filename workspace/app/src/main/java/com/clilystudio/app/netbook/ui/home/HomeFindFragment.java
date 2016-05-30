@@ -52,7 +52,7 @@ public class HomeFindFragment extends HomeFragment {
         FragmentActivity localFragmentActivity = getActivity();
         this.a = ((ViewGroup) localView.findViewById(2131493439));
         this.a.addView(new HomeFindItem(localFragmentActivity, getString(2131034450), 2130837830, new Intent(localFragmentActivity, BookRankListActivity.class)));
-        this.a.addView(new HomeFindItem(localFragmentActivity, getString(2131034565), 2130837833, new Intent(localFragmentActivity, UGCMainActivity.class)));
+        this.a.addView(new HomeFindItem(localFragmentActivity, getString(R.string.ugc_list), 2130837833, new Intent(localFragmentActivity, UGCMainActivity.class)));
         this.a.addView(new HomeFindItem(localFragmentActivity, getString(2131034334), 2130837823, BookCategoryActivity.a(localFragmentActivity)));
         if (a.r(getActivity(), "switch_audiobook"))
             this.a.addView(new HomeFindItem(localFragmentActivity, getString(2131034314), 2130837825, AudiobookCategoryActivity.a(localFragmentActivity)));

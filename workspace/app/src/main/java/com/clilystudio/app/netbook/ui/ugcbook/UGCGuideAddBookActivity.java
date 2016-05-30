@@ -116,7 +116,7 @@ public class UGCGuideAddBookActivity extends BaseActivity
                 this.c.setTextByCode(this.b);
                 b();
                 return;
-            case 2131493013:
+            case R.id.back:
         }
         f();
         finish();
@@ -128,7 +128,7 @@ public class UGCGuideAddBookActivity extends BaseActivity
         ButterKnife.inject(this);
         LayoutInflater localLayoutInflater = LayoutInflater.from(this);
         View localView = localLayoutInflater.inflate(2130903042, null, false);
-        localView.findViewById(2131493013).setOnClickListener(this);
+        localView.findViewById(R.id.back).setOnClickListener(this);
         setCustomActionBar(localView);
         findViewById(2131493186).setVisibility(8);
         this.n = true;

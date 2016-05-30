@@ -25,7 +25,7 @@ public class ReaderResActivity extends ReaderModeActivity {
     public void onCreate(Bundle paramBundle) {
         super.onCreate(paramBundle);
         setContentView(2130903179);
-        c();
+        c_init();
         View localView = LayoutInflater.from(this).inflate(2130903071, null);
         localView.findViewById(2131493860).setVisibility(8);
         localView.findViewById(2131493013).setOnClickListener(new bQ(this));

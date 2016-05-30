@@ -24,7 +24,7 @@ public class BaseActivity extends AppCompatActivity {
 
     private void a(String title, int resource) {
         View localView = LayoutInflater.from(this).inflate(resource, null);
-        a().a(localView);
+        setContentView(localView);
         ((TextView) localView.findViewById(R.id.title)).setText(title);
         localView.findViewById(R.id.back).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,18 +45,33 @@ public class BaseActivity extends AppCompatActivity {
         a_setTitleView(getString(paramInt1), getString(paramInt2), paramaa);
     }
 
-    public final void a(int paramInt1, String paramString, int paramInt2, ab paramab) {
-        c();
-        View localView = LayoutInflater.from(this).inflate(2130903040, null);
-        ((TextView) localView.findViewById(2131492936)).setText(2131034565);
-        localView.findViewById(2131493013).setOnClickListener(new K(this));
-        TextView localTextView = (TextView) localView.findViewById(2131493008);
-        ImageView localImageView = (ImageView) localView.findViewById(2131493009);
+    public final void a(int paramInt1, String paramString, int paramInt2, final ab paramab) {
+        c_init();
+        View localView = LayoutInflater.from(this).inflate(R.layout.ab_custom_text_icon_view, null);
+        ((TextView) localView.findViewById(R.id.title)).setText(R.string.ugc_list);
+        localView.findViewById(R.id.back).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
+        TextView localTextView = (TextView) localView.findViewById(R.id.actionbar_custom_right_text);
+        ImageView localImageView = (ImageView) localView.findViewById(R.id.actionbar_custom_right_icon);
         localTextView.setText(paramString);
-        localImageView.setImageResource(2130837871);
-        localTextView.setOnClickListener(new L(this, paramab));
-        localImageView.setOnClickListener(new M(this, paramab));
-        a().a(localView);
+        localImageView.setImageResource(R.drawable.ic_action_overflow);
+        localTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                paramab.a();
+            }
+        });
+        localImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                paramab.b();
+            }
+        });
+        setContentView(localView);
     }
 
     public final void a(int paramInt, String paramString, aa paramaa) {
@@ -64,17 +79,22 @@ public class BaseActivity extends AppCompatActivity {
     }
 
     public final void a(String paramString, int paramInt1, int paramInt2, ab paramab) {
-        c();
+        c_init();
         View localView = LayoutInflater.from(this).inflate(2130903041, null);
-        ((TextView) localView.findViewById(2131492936)).setText(paramString);
-        localView.findViewById(2131493013).setOnClickListener(new X(this));
+        ((TextView) localView.findViewById(R.id.title)).setText(paramString);
+        localView.findViewById(R.id.back).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
         TextView localTextView1 = (TextView) localView.findViewById(2131493010);
         TextView localTextView2 = (TextView) localView.findViewById(2131493011);
         localTextView1.setText(2131034475);
         localTextView2.setText(2131034448);
         localTextView1.setOnClickListener(new Y(this, paramab));
         localTextView2.setOnClickListener(new Z(this, paramab));
-        a().a(localView);
+        setContentView(localView);
     }
 
     public final void a(String paramString, int paramInt, aa paramaa) {
@@ -82,19 +102,24 @@ public class BaseActivity extends AppCompatActivity {
     }
 
     public final void a(String paramString1, int paramInt, aa paramaa, String paramString2) {
-        c();
+        c_init();
         View localView = LayoutInflater.from(this).inflate(2130903070, null);
-        ((TextView) localView.findViewById(2131492936)).setText(paramString1);
-        localView.findViewById(2131493013).setOnClickListener(new P(this));
+        ((TextView) localView.findViewById(R.id.title)).setText(paramString1);
+        localView.findViewById(R.id.back).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
         ImageView localImageView = (ImageView) localView.findViewById(2131493063);
         localImageView.setContentDescription(paramString2);
         localImageView.setImageResource(paramInt);
         localImageView.setOnClickListener(new Q(this, paramaa));
-        a().a(localView);
+        setContentView(localView);
     }
 
     public final void a_setTitleView(String title, String rightText, aa paramaa) {
-        c();
+        c_init();
         View localView = LayoutInflater.from(this).inflate(R.layout.actionbar_custom_text_view, null);
         ((TextView) localView.findViewById(R.id.title)).setText(title);
         localView.findViewById(R.id.back).setOnClickListener(new View.OnClickListener() {
@@ -106,7 +131,7 @@ public class BaseActivity extends AppCompatActivity {
         TextView localTextView = (TextView) localView.findViewById(R.id.actionbar_custom_right_text);
         localTextView.setText(rightText);
         localTextView.setOnClickListener(new T(this, paramaa));
-        a().a(localView);
+        setContentView(localView);
     }
 
     public final void b(int paramInt) {
@@ -114,37 +139,41 @@ public class BaseActivity extends AppCompatActivity {
     }
 
     public final void b(int paramInt1, int paramInt2, aa paramaa) {
-        String str = getString(2131034389);
-        c();
-        View localView = LayoutInflater.from(this).inflate(2130903070, null);
-        ((TextView) localView.findViewById(2131492936)).setText(str);
-        localView.findViewById(2131493013).setOnClickListener(new N(this));
+        String str = getString(R.string.game_detail);
+        c_init();
+        View localView = LayoutInflater.from(this).inflate(R.layout.actionbar_custom_icon_view, null);
+        ((TextView) localView.findViewById(R.id.title)).setText(str);
+        localView.findViewById(R.id.back).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
         ImageView localImageView = (ImageView) localView.findViewById(2131493063);
         localImageView.setImageResource(2130837866);
         localImageView.setOnClickListener(new O(this, paramaa));
-        a().a(localView);
+        setContentView(localView);
     }
 
     public final void b(String paramString) {
-        c();
+        c_init();
         a(paramString, 2130903043);
     }
 
-    public final void c() {
-        android.support.v7.app.a locala = a();
-        locala.a(false);
-        locala.b(false);
-        locala.c(false);
-        locala.d(true);
+    public final void c_init() {
+        super.setFinishOnTouchOutside(false);
+        super.setImmersive(false);
+        super.setProgressBarIndeterminate(false);
+        super.setProgressBarVisibility(true);
     }
 
     public final void c(int paramInt) {
-        c();
+        c_init();
         a(getString(paramInt), R.layout.ab_title_dark);
     }
 
     public final void c(String paramString) {
-        c();
+        c_init();
         a(paramString, 2130903044);
     }
 
@@ -156,20 +185,20 @@ public class BaseActivity extends AppCompatActivity {
     public final void d(int paramInt) {
         View localView = a().a();
         if (localView != null)
-            ((ImageView) localView.findViewById(2131493013)).setImageResource(2130837881);
+            ((ImageView) localView.findViewById(R.id.back)).setImageResource(R.drawable.ic_close_white_24dp);
     }
 
     public final void d(String paramString) {
-        ((TextView) a().a().findViewById(2131492936)).setText(paramString);
+        ((TextView) a().a().findViewById(R.id.title)).setText(paramString);
     }
 
     public final void e(String paramString) {
-        ((TextView) a().a().findViewById(2131493008)).setText(paramString);
+        ((TextView) a().a().findViewById(R.id.actionbar_custom_right_text)).setText(paramString);
     }
 
     protected final void f(String paramString) {
         try {
-            ((TextView) a().a().findViewById(2131492936)).setText(paramString);
+            ((TextView) a().a().findViewById(R.id.title)).setText(paramString);
             return;
         } catch (Exception localException) {
             localException.printStackTrace();
@@ -200,8 +229,8 @@ public class BaseActivity extends AppCompatActivity {
         super.onDestroy();
     }
 
-    public void setCustomActionBar(View paramView) {
-        c();
-        a().a(paramView);
+    public void setCustomActionBar(View view) {
+        c_init();
+        setContentView(view);
     }
 }

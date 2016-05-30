@@ -8,7 +8,7 @@ import butterknife.ButterKnife.Finder;
 public class UserInfoTaskView$$ViewInjector {
     public static void inject(ButterKnife.Finder paramFinder, UserInfoTaskView paramUserInfoTaskView, Object paramObject) {
         paramUserInfoTaskView.mIcon = ((ImageView) paramFinder.findRequiredView(paramObject, 2131493028, "field 'mIcon'"));
-        paramUserInfoTaskView.mTitle = ((TextView) paramFinder.findRequiredView(paramObject, 2131492936, "field 'mTitle'"));
+        paramUserInfoTaskView.mTitle = ((TextView) paramFinder.findRequiredView(paramObject, R.id.title, "field 'mTitle'"));
         paramUserInfoTaskView.mExp = ((ExpView) paramFinder.findRequiredView(paramObject, 2131493234, "field 'mExp'"));
     }
 

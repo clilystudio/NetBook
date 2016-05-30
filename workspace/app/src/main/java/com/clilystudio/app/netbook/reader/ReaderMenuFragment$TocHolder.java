@@ -14,7 +14,7 @@ class ReaderMenuFragment$TocHolder {
     @InjectView(2131492935)
     TextView time;
 
-    @InjectView(2131492936)
+    @InjectView(R.id.title)
     TextView title;
 
     ReaderMenuFragment$TocHolder(View paramView) {

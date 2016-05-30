@@ -7,7 +7,7 @@ import butterknife.ButterKnife.Finder;
 public class GameLayoutItemView$$ViewInjector {
     public static void inject(ButterKnife.Finder paramFinder, GameLayoutItemView paramGameLayoutItemView, Object paramObject) {
         paramGameLayoutItemView.mImage = ((GameImageView) paramFinder.findRequiredView(paramObject, 2131493025, "field 'mImage'"));
-        paramGameLayoutItemView.mTitle = ((TextView) paramFinder.findRequiredView(paramObject, 2131492936, "field 'mTitle'"));
+        paramGameLayoutItemView.mTitle = ((TextView) paramFinder.findRequiredView(paramObject, R.id.title, "field 'mTitle'"));
         paramGameLayoutItemView.mSubTitle = ((TextView) paramFinder.findRequiredView(paramObject, 2131493018, "field 'mSubTitle'"));
         paramGameLayoutItemView.mAction = ((GameDownloadButton) paramFinder.findRequiredView(paramObject, 2131493705, "field 'mAction'"));
     }

@@ -198,7 +198,7 @@ public class SearchActivity extends BaseActivity
             case 2131493982:
                 b();
                 return;
-            case 2131493013:
+            case R.id.back:
         }
         finish();
     }
@@ -213,7 +213,7 @@ public class SearchActivity extends BaseActivity
             this.b = localIntent.getStringExtra("keyword");
         LayoutInflater localLayoutInflater = LayoutInflater.from(this);
         View localView1 = localLayoutInflater.inflate(2130903042, null, false);
-        localView1.findViewById(2131493013).setOnClickListener(this);
+        localView1.findViewById(R.id.back).setOnClickListener(this);
         setCustomActionBar(localView1);
         SearchActivity.SearchPromptAdapter localSearchPromptAdapter = new SearchActivity.SearchPromptAdapter(this);
         this.i = ((SearchFixListView) findViewById(2131493193));

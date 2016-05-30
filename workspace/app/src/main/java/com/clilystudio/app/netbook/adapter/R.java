@@ -38,7 +38,7 @@ final class R {
         this.f = ((TextView) paramView.findViewById(2131493519));
         this.g = ((TextView) paramView.findViewById(2131493610));
         this.h = ((TextView) paramView.findViewById(2131493611));
-        this.i = ((TextView) paramView.findViewById(2131492936));
+        this.i = ((TextView) paramView.findViewById(R.id.title));
         this.j = paramView.findViewById(2131493348);
         this.k = ((PostFlag) paramView.findViewById(2131493632));
         this.l = ((TextView) paramView.findViewById(2131493774));

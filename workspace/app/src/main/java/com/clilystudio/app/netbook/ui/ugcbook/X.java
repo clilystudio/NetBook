@@ -40,7 +40,7 @@ public final class X extends BaseAdapter {
         if (paramView == null) {
             localZ = new Z(this);
             paramView = this.b.inflate(2130903318, null);
-            localZ.a = ((TextView) paramView.findViewById(2131492936));
+            localZ.a = ((TextView) paramView.findViewById(R.id.title));
             localZ.b = ((TextView) paramView.findViewById(2131493481));
             localZ.c = ((CoverView) paramView.findViewById(2131493604));
             localZ.d = ((CheckBox) paramView.findViewById(2131492900));

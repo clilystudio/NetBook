@@ -14,7 +14,7 @@ public final class X extends W<UGCBookListRoot.UGCBook> {
     }
 
     protected final int[] a() {
-        return new int[]{2131493604, 2131492936, 2131493239, 2131493317, 2131493481, 2131493783, 2131493785, 2131493786};
+        return new int[]{2131493604, R.id.title, 2131493239, 2131493317, 2131493481, 2131493783, 2131493785, 2131493786};
     }
 }
 

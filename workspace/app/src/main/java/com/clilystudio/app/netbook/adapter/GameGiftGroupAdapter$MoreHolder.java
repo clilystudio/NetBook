@@ -8,7 +8,7 @@ import butterknife.InjectView;
 
 class GameGiftGroupAdapter$MoreHolder {
 
-    @InjectView(2131492936)
+    @InjectView(R.id.title)
     TextView title;
 
     GameGiftGroupAdapter$MoreHolder(View paramView) {

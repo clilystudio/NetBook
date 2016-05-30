@@ -19,7 +19,7 @@ public final class d extends W<BookHelpSummary> {
     }
 
     protected final int[] a() {
-        return new int[]{2131492899, 2131493630, 2131493631, 2131492935, 2131492936, 2131493519, 2131493629, 2131493632};
+        return new int[]{2131492899, 2131493630, 2131493631, 2131492935, R.id.title, 2131493519, 2131493629, 2131493632};
     }
 }
 

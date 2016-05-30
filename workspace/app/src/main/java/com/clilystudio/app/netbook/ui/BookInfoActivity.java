@@ -51,7 +51,7 @@ public class BookInfoActivity extends BaseActivity
         View localView = a().a();
         TextView localTextView = null;
         if (localView != null)
-            localTextView = (TextView) localView.findViewById(2131493008);
+            localTextView = (TextView) localView.findViewById(R.id.actionbar_custom_right_text);
         if (localTextView == null)
             return;
         switch (paramInt) {
@@ -337,10 +337,10 @@ public class BookInfoActivity extends BaseActivity
         super.onCreate(paramBundle);
         setContentView(2130903087);
         ay localay = new ay(this);
-        c();
+        c_init();
         View localView = LayoutInflater.from(this).inflate(2130903041, null);
-        ((TextView) localView.findViewById(2131492936)).setText(2131034333);
-        localView.findViewById(2131493013).setOnClickListener(new U(this));
+        ((TextView) localView.findViewById(R.id.title)).setText(2131034333);
+        localView.findViewById(R.id.back).setOnClickListener(new U(this));
         TextView localTextView1 = (TextView) localView.findViewById(2131493010);
         TextView localTextView2 = (TextView) localView.findViewById(2131493011);
         localTextView1.setText(2131034329);

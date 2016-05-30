@@ -6,7 +6,7 @@ import butterknife.ButterKnife.Finder;
 
 public class GameGiftGroupAdapter$MoreHolder$$ViewInjector {
     public static void inject(ButterKnife.Finder paramFinder, GameGiftGroupAdapter.MoreHolder paramMoreHolder, Object paramObject) {
-        paramMoreHolder.title = ((TextView) paramFinder.findRequiredView(paramObject, 2131492936, "field 'title'"));
+        paramMoreHolder.title = ((TextView) paramFinder.findRequiredView(paramObject, R.id.title, "field 'title'"));
     }
 
     public static void reset(GameGiftGroupAdapter.MoreHolder paramMoreHolder) {

@@ -35,7 +35,7 @@ public class BestReviewsFragment$ViewHolder {
     @InjectView(2131492935)
     TextView time;
 
-    @InjectView(2131492936)
+    @InjectView(R.id.title)
     TextView title;
 
     @InjectView(2131493630)

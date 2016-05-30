@@ -15,7 +15,7 @@ class HomeShelfAdapter$TxtHolder {
     @InjectView(2131493481)
     TextView desc;
 
-    @InjectView(2131492936)
+    @InjectView(R.id.title)
     TextView title;
 
     @InjectView(2131492978)

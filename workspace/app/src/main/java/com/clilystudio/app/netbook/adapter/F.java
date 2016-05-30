@@ -11,7 +11,7 @@ public final class F extends W<TopicPost> {
     }
 
     protected final int[] a() {
-        return new int[]{2131493706, 2131493707, 2131492935, 2131492936, 2131493708, 2131493709, 2131493710};
+        return new int[]{2131493706, 2131493707, 2131492935, R.id.title, 2131493708, 2131493709, 2131493710};
     }
 }
 

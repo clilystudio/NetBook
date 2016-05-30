@@ -24,7 +24,7 @@ final class R extends W<T>
     }
 
     protected final int[] a() {
-        return new int[]{2131492936, 2131493040, 2131493625};
+        return new int[]{R.id.title, 2131493040, 2131493625};
     }
 
     public final void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong) {

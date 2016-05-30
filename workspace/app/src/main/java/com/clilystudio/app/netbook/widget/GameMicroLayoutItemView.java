@@ -21,7 +21,7 @@ public class GameMicroLayoutItemView extends LinearLayout {
     @InjectView(2131493018)
     TextView mSubTitle;
 
-    @InjectView(2131492936)
+    @InjectView(R.id.title)
     TextView mTitle;
 
     public GameMicroLayoutItemView(Context paramContext, AttributeSet paramAttributeSet) {

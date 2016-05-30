@@ -11,7 +11,7 @@ import butterknife.ButterKnife.Finder;
 
 public class HomeShelfAdapter$BookHolder$$ViewInjector {
     public static void inject(ButterKnife.Finder paramFinder, HomeShelfAdapter.BookHolder paramBookHolder, Object paramObject) {
-        paramBookHolder.title = ((TextView) paramFinder.findRequiredView(paramObject, 2131492936, "field 'title'"));
+        paramBookHolder.title = ((TextView) paramFinder.findRequiredView(paramObject, R.id.title, "field 'title'"));
         paramBookHolder.desc = ((TextView) paramFinder.findRequiredView(paramObject, 2131493481, "field 'desc'"));
         paramBookHolder.flag = ((BookShelfFlagView) paramFinder.findRequiredView(paramObject, 2131493754, "field 'flag'"));
         paramBookHolder.top = paramFinder.findRequiredView(paramObject, 2131492978, "field 'top'");

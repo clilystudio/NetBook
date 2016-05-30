@@ -16,7 +16,7 @@ public class RelateBooksFragment$ViewHolder {
     @InjectView(2131493577)
     View mContainer;
 
-    @InjectView(2131492936)
+    @InjectView(R.id.title)
     TextView mTitle;
 
     RelateBooksFragment$ViewHolder(RelateBooksFragment paramRelateBooksFragment, View paramView) {

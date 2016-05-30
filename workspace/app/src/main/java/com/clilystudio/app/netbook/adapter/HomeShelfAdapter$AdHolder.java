@@ -20,7 +20,7 @@ class HomeShelfAdapter$AdHolder {
     @InjectView(2131493754)
     BookShelfFlagView flag;
 
-    @InjectView(2131492936)
+    @InjectView(R.id.title)
     TextView title;
 
     HomeShelfAdapter$AdHolder(View paramView) {

@@ -9,7 +9,7 @@ import butterknife.ButterKnife.Finder;
 public class RelateBooksFragment$ViewHolder$$ViewInjector {
     public static void inject(ButterKnife.Finder paramFinder, RelateBooksFragment.ViewHolder paramViewHolder, Object paramObject) {
         paramViewHolder.mBook = ((CoverView) paramFinder.findRequiredView(paramObject, 2131493971, "field 'mBook'"));
-        paramViewHolder.mTitle = ((TextView) paramFinder.findRequiredView(paramObject, 2131492936, "field 'mTitle'"));
+        paramViewHolder.mTitle = ((TextView) paramFinder.findRequiredView(paramObject, R.id.title, "field 'mTitle'"));
         paramViewHolder.mContainer = paramFinder.findRequiredView(paramObject, 2131493577, "field 'mContainer'");
     }
 

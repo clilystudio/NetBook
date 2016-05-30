@@ -13,7 +13,7 @@ final class Q extends W<BookSummary> {
     }
 
     protected final int[] a() {
-        return new int[]{2131492899, 2131492936, 2131493317, 2131493775, 2131493776, 2131493777, 2131493780, 2131493778, 2131493779, 2131493411};
+        return new int[]{2131492899, R.id.title, 2131493317, 2131493775, 2131493776, 2131493777, 2131493780, 2131493778, 2131493779, 2131493411};
     }
 
     public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup) {

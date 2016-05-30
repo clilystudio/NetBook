@@ -25,7 +25,7 @@ public class RelateUgcFragment$GetUgcsTask$ViewHolder {
     @InjectView(2131493481)
     TextView mDesc;
 
-    @InjectView(2131492936)
+    @InjectView(R.id.title)
     TextView mTitle;
 
     @InjectView(2131493783)

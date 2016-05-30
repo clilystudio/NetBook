@@ -16,7 +16,7 @@ class HomeTopicAdapter$ViewHolder {
     @InjectView(2131493604)
     SmartImageView mCover;
 
-    @InjectView(2131492936)
+    @InjectView(R.id.title)
     TextView mTitle;
 
     HomeTopicAdapter$ViewHolder(View paramView) {

@@ -10,7 +10,7 @@ import butterknife.ButterKnife.Finder;
 public class GameGiftGroupAdapter$GameHolder$$ViewInjector {
     public static void inject(ButterKnife.Finder paramFinder, GameGiftGroupAdapter.GameHolder paramGameHolder, Object paramObject) {
         paramGameHolder.icon = ((SmartImageView) paramFinder.findRequiredView(paramObject, 2131493028, "field 'icon'"));
-        paramGameHolder.title = ((TextView) paramFinder.findRequiredView(paramObject, 2131492936, "field 'title'"));
+        paramGameHolder.title = ((TextView) paramFinder.findRequiredView(paramObject, R.id.title, "field 'title'"));
         paramGameHolder.desc = ((TextView) paramFinder.findRequiredView(paramObject, 2131493481, "field 'desc'"));
         paramGameHolder.button = ((GiftGameGameButton) paramFinder.findRequiredView(paramObject, 2131492916, "field 'button'"));
     }
