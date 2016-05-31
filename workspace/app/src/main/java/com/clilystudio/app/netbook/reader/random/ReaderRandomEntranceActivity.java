@@ -27,7 +27,7 @@ public class ReaderRandomEntranceActivity extends BaseActivity
     protected void onCreate(Bundle paramBundle) {
         super.onCreate(paramBundle);
         setContentView(2130903120);
-        b("随机看书");
+        b_initContentView("随机看书");
         ButterKnife.inject(this);
         this.mReadRandomBook.setOnClickListener(this);
     }

@@ -13,9 +13,9 @@ final class Z extends c<String, PostPublish> {
 
     private PostPublish a(String[] paramArrayOfString) {
         try {
-            if (AddVoteItemActivity.e(this.a) == 0)
+            if (AddVoteItemActivity.d_setRight(this.a) == 0)
                 return b.b().b(paramArrayOfString[0], paramArrayOfString[1], paramArrayOfString[2], paramArrayOfString[3], paramArrayOfString[4]);
-            if (AddVoteItemActivity.e(this.a) == 3)
+            if (AddVoteItemActivity.d_setRight(this.a) == 3)
                 return b.b().c(paramArrayOfString[0], paramArrayOfString[2], paramArrayOfString[3], paramArrayOfString[4]);
             PostPublish localPostPublish = b.b().d(paramArrayOfString[0], paramArrayOfString[2], paramArrayOfString[3], paramArrayOfString[4]);
             return localPostPublish;

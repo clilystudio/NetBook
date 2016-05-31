@@ -95,7 +95,7 @@ public class GameDetailActivity extends BaseLoadingActivity {
     protected void onCreate(Bundle paramBundle) {
         super.onCreate(paramBundle);
         a(2130903386);
-        b(2131034389, 2130837866, new d(this));
+        b_initContentView(2131034389, 2130837866, new d(this));
         this.c = getIntent().getStringExtra("game_id");
         this.m = getIntent().getBooleanExtra("is_micro_game", false);
         this.n = getIntent().getBooleanExtra("HAS_PLAYED", false);

@@ -11,15 +11,15 @@ final class av extends ZssqFragmentPagerAdapter {
 
     public av(BookCategoryListActivity paramBookCategoryListActivity, FragmentManager paramFragmentManager) {
         super(paramFragmentManager);
-        BookCategoryListActivity.b(paramBookCategoryListActivity).add(0, paramBookCategoryListActivity.a(this.a[0]));
-        BookCategoryListActivity.b(paramBookCategoryListActivity).add(1, paramBookCategoryListActivity.a(this.a[1]));
-        BookCategoryListActivity.b(paramBookCategoryListActivity).add(2, paramBookCategoryListActivity.a(this.a[2]));
-        BookCategoryListActivity.b(paramBookCategoryListActivity).add(3, paramBookCategoryListActivity.a(this.a[3]));
+        BookCategoryListActivity.b_initContentView(paramBookCategoryListActivity).add(0, paramBookCategoryListActivity.a(this.a[0]));
+        BookCategoryListActivity.b_initContentView(paramBookCategoryListActivity).add(1, paramBookCategoryListActivity.a(this.a[1]));
+        BookCategoryListActivity.b_initContentView(paramBookCategoryListActivity).add(2, paramBookCategoryListActivity.a(this.a[2]));
+        BookCategoryListActivity.b_initContentView(paramBookCategoryListActivity).add(3, paramBookCategoryListActivity.a(this.a[3]));
         FragmentTransaction localFragmentTransaction = paramFragmentManager.beginTransaction();
         for (int i = 0; i < 4; i++) {
-            Fragment localFragment = (Fragment) BookCategoryListActivity.b(paramBookCategoryListActivity).get(i);
+            Fragment localFragment = (Fragment) BookCategoryListActivity.b_initContentView(paramBookCategoryListActivity).get(i);
             if (!localFragment.isAdded())
-                localFragmentTransaction.add(BookCategoryListActivity.c(paramBookCategoryListActivity).getId(), localFragment, this.a[i]);
+                localFragmentTransaction.add(BookCategoryListActivity.c_initContentView(paramBookCategoryListActivity).getId(), localFragment, this.a[i]);
         }
         if (!localFragmentTransaction.isEmpty()) {
             localFragmentTransaction.commit();
@@ -28,7 +28,7 @@ final class av extends ZssqFragmentPagerAdapter {
     }
 
     public final Fragment a(int paramInt) {
-        return (Fragment) BookCategoryListActivity.b(this.b).get(paramInt);
+        return (Fragment) BookCategoryListActivity.b_initContentView(this.b).get(paramInt);
     }
 
     protected final String b(int paramInt) {
@@ -40,7 +40,7 @@ final class av extends ZssqFragmentPagerAdapter {
     }
 
     public final CharSequence getPageTitle(int paramInt) {
-        return BookCategoryListActivity.d(this.b)[paramInt];
+        return BookCategoryListActivity.d_setTitle(this.b)[paramInt];
     }
 }
 

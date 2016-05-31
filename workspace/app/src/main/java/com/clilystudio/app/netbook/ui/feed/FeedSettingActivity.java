@@ -14,7 +14,7 @@ public class FeedSettingActivity extends BaseActivity {
     public void onCreate(Bundle paramBundle) {
         super.onCreate(paramBundle);
         setContentView(2130903100);
-        b(2131034384);
+        b_initContentView(2131034384);
         if (paramBundle != null) ;
         for (this.b = paramBundle.getInt("savedCurrentCount", 50); ; this.b = a.a(this, "feed_chapter_count", 50)) {
             View localView = findViewById(2131493128);

@@ -11,7 +11,7 @@ final class bI
 
     public final void onClick(View paramView) {
         a.G(this.a);
-        SearchActivity.e(this.a).a();
+        SearchActivity.d_setRight(this.a).a();
     }
 }
 

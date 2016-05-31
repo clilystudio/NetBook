@@ -14,10 +14,10 @@ final class V
     }
 
     public final void onClick(View paramView) {
-        AddVoteItemActivity.a(this.e, this.a);
+        AddVoteItemActivity.a_initContentView(this.e, this.a);
         String str = this.a.getText().toString();
         if (!a.Q(str)) {
-            if (!AddVoteItemActivity.a(this.e, str))
+            if (!AddVoteItemActivity.a_initContentView(this.e, str))
                 break label57;
             e.a(this.e, "该投票项已经存在");
         }

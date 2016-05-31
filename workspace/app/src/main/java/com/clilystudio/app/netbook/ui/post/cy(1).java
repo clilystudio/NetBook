@@ -9,9 +9,9 @@ final class cy
     }
 
     public final void onClick(View paramView) {
-        ReviewActivity.d(this.b).findViewById(2131493085).setVisibility(0);
+        ReviewActivity.d_setTitle(this.b).findViewById(2131493085).setVisibility(0);
         this.a.setText("加载中...");
-        ReviewActivity.b(this.b);
+        ReviewActivity.b_initContentView(this.b);
     }
 }
 

@@ -19,21 +19,21 @@ final class E
                 do {
                     do
                         return true;
-                    while (AudiobookInfoActivity.f(this.a));
+                    while (AudiobookInfoActivity.f_setTitle(this.a));
                     AudiobookInfoActivity.e(this.a, true);
-                    AudiobookInfoActivity.h(this.a).a(AudiobookInfoActivity.f(this.a));
+                    AudiobookInfoActivity.h(this.a).a(AudiobookInfoActivity.f_setTitle(this.a));
                     AudiobookInfoActivity.o(this.a).setText(this.a.getResources().getString(2131034311));
-                    AudiobookInfoActivity.c(this.a, 1 + (AudiobookInfoActivity.j(this.a) - AudiobookInfoActivity.m(this.a)));
+                    AudiobookInfoActivity.c_initContentView(this.a, 1 + (AudiobookInfoActivity.j(this.a) - AudiobookInfoActivity.m(this.a)));
                 }
                 while (!AudiobookInfoActivity.p(this.a));
                 AudiobookInfoActivity.h(this.a).a(AudiobookInfoActivity.m(this.a), AudiobookInfoActivity.l(this.a));
                 return true;
             }
-            while (!AudiobookInfoActivity.f(this.a));
+            while (!AudiobookInfoActivity.f_setTitle(this.a));
             AudiobookInfoActivity.e(this.a, false);
-            AudiobookInfoActivity.h(this.a).a(AudiobookInfoActivity.f(this.a));
+            AudiobookInfoActivity.h(this.a).a(AudiobookInfoActivity.f_setTitle(this.a));
             AudiobookInfoActivity.o(this.a).setText(this.a.getResources().getString(2131034312));
-            AudiobookInfoActivity.c(this.a, 1 + (AudiobookInfoActivity.j(this.a) - AudiobookInfoActivity.m(this.a)));
+            AudiobookInfoActivity.c_initContentView(this.a, 1 + (AudiobookInfoActivity.j(this.a) - AudiobookInfoActivity.m(this.a)));
         }
         while (!AudiobookInfoActivity.p(this.a));
         AudiobookInfoActivity.h(this.a).a(AudiobookInfoActivity.m(this.a), AudiobookInfoActivity.l(this.a));

@@ -9,7 +9,7 @@ public class MyMessageActivity extends BaseActivity {
     protected void onCreate(Bundle paramBundle) {
         super.onCreate(paramBundle);
         setContentView(2130903115);
-        b("我的消息");
+        b_initContentView("我的消息");
     }
 
     public void onPause() {

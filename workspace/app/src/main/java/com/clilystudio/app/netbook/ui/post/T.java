@@ -9,7 +9,7 @@ final class T
 
     public final void onClick(View paramView) {
         int i = ((Integer) paramView.getTag()).intValue();
-        AddVoteItemActivity.a(this.a, i);
+        AddVoteItemActivity.a_initContentView(this.a, i);
     }
 }
 

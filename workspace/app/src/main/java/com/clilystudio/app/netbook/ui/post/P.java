@@ -13,11 +13,11 @@ final class P extends c<String, PostPublish> {
 
     private PostPublish a(String[] paramArrayOfString) {
         try {
-            switch (AddVoteActivity.d(this.a)) {
+            switch (AddVoteActivity.d_setTitle(this.a)) {
                 case 1:
                 case 2:
                 default:
-                    return b.b().g(paramArrayOfString[0], paramArrayOfString[2], paramArrayOfString[3], AddVoteActivity.e(this.a));
+                    return b.b().g(paramArrayOfString[0], paramArrayOfString[2], paramArrayOfString[3], AddVoteActivity.d_setRight(this.a));
                 case 0:
                     return b.b().e(paramArrayOfString[0], paramArrayOfString[1], paramArrayOfString[2], paramArrayOfString[3]);
                 case 3:
@@ -26,7 +26,7 @@ final class P extends c<String, PostPublish> {
                     return b.b().b(paramArrayOfString[0], paramArrayOfString[2], paramArrayOfString[3]);
                 case 5:
             }
-            PostPublish localPostPublish = b.b().g(paramArrayOfString[0], paramArrayOfString[2], paramArrayOfString[3], AddVoteActivity.e(this.a));
+            PostPublish localPostPublish = b.b().g(paramArrayOfString[0], paramArrayOfString[2], paramArrayOfString[3], AddVoteActivity.d_setRight(this.a));
             return localPostPublish;
         } catch (Exception localException) {
             localException.printStackTrace();

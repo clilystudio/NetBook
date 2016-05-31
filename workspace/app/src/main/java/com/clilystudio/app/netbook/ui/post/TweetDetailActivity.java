@@ -260,7 +260,7 @@ public class TweetDetailActivity extends AbsPostActivity {
     public void onCreate(Bundle paramBundle) {
         super.onCreate(paramBundle);
         a(2130903350);
-        b("动态详情");
+        b_initContentView("动态详情");
         this.a = getIntent().getStringExtra("TWEET_ID");
         this.u = getIntent().getStringExtra("TWEET_TYPE");
         this.i = findViewById(2131493838);

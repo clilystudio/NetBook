@@ -71,7 +71,7 @@ public class SettingsActivity extends BaseActivity
         StringBuilder localStringBuilder;
         String str1;
         if (getIntent().getBooleanExtra("from_user_info", false)) {
-            a(2131034485, "退出登录", new bU(this));
+            a_initContentView(2131034485, "退出登录", new bU(this));
             findViewById(2131493197).setOnClickListener(this);
             findViewById(2131493202).setOnClickListener(this);
             findViewById(2131493205).setOnClickListener(this);
@@ -106,7 +106,7 @@ public class SettingsActivity extends BaseActivity
             String str3 = getResources().getStringArray(2131361805)[this.a];
             ((TextView) findViewById(2131493198)).setText(str3);
             return;
-            b(2131034485);
+            b_initContentView(2131034485);
             break;
         }
     }

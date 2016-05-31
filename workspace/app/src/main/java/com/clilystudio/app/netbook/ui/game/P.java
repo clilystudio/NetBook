@@ -9,7 +9,7 @@ final class P extends BroadcastReceiver {
     }
 
     public final void onReceive(Context paramContext, Intent paramIntent) {
-        GameListActivity.c(this.a);
+        GameListActivity.c_initContentView(this.a);
     }
 }
 

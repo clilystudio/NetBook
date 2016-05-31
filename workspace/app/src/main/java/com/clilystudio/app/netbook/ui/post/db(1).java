@@ -11,7 +11,7 @@ final class db
     public final void onClick(View paramView) {
         this.a.dismiss();
         ReviewListActivity.o(this.b).setText(2131034432);
-        ReviewListActivity.b(this.b, "created");
+        ReviewListActivity.b_initContentView(this.b, "created");
         ReviewListActivity.n(this.b).setRefreshing();
     }
 }

@@ -30,7 +30,7 @@ public class UserLevelActivity extends BaseActivity {
         super.onCreate(paramBundle);
         setContentView(2130903142);
         ButterKnife.inject(this);
-        b("经验等级");
+        b_initContentView("经验等级");
         UserInfo localUserInfo = (UserInfo) MyApplication.a_getInstance().b_readSavedInfo("savedObject_userinfo");
         int i = localUserInfo.getLv();
         int j = localUserInfo.getExp();

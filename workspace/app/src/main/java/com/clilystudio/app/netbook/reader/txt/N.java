@@ -8,7 +8,7 @@ final class N
     }
 
     public final void a() {
-        R.a(ScanTxtFileActivity.a(this.a));
+        R.a(ScanTxtFileActivity.a_initContentView(this.a));
     }
 }
 

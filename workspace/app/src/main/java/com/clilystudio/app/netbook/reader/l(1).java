@@ -11,8 +11,8 @@ final class l extends Handler {
 
     public final void handleMessage(Message paramMessage) {
         super.handleMessage(paramMessage);
-        if (LocalChapterListActivity.f(this.a) != null)
-            LocalChapterListActivity.f(this.a).dismiss();
+        if (LocalChapterListActivity.f_setTitle(this.a) != null)
+            LocalChapterListActivity.f_setTitle(this.a).dismiss();
         ArrayList localArrayList;
         if ((paramMessage.what == 1) && (paramMessage.obj != null)) {
             localArrayList = (ArrayList) paramMessage.obj;
@@ -23,7 +23,7 @@ final class l extends Handler {
             LocalChapterListActivity.h(this.a).setText("无预读章节");
         }
         while (true) {
-            LocalChapterListActivity.b(this.a).a(localArrayList);
+            LocalChapterListActivity.b_initContentView(this.a).a(localArrayList);
             return;
             label102:
             LocalChapterListActivity.g(this.a).setVisibility(0);

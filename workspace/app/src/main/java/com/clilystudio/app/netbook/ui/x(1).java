@@ -10,7 +10,7 @@ final class x
     }
 
     public final void onError(int paramInt, String paramString) {
-        AudiobookCategoryListActivity.b(this.b).setVisibility(8);
+        AudiobookCategoryListActivity.b_initContentView(this.b).setVisibility(8);
         if (this.a) {
             this.b.h();
             return;

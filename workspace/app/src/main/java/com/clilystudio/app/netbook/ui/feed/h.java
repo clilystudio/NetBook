@@ -8,7 +8,7 @@ final class h
     }
 
     public final void onClick(View paramView) {
-        FeedSettingActivity.a(this.a, FeedSettingActivity.a(this.a));
+        FeedSettingActivity.a_initContentView(this.a, FeedSettingActivity.a_initContentView(this.a));
     }
 }
 

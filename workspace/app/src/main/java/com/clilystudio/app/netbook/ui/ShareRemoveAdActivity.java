@@ -20,7 +20,7 @@ public class ShareRemoveAdActivity extends BaseActivity {
             a().a(new ColorDrawable(Color.parseColor("#00000000")));
         }
         setContentView(2130903130);
-        b(2131034493);
+        b_initContentView(2131034493);
         findViewById(2131493209).setOnClickListener(new ce(this));
     }
 }

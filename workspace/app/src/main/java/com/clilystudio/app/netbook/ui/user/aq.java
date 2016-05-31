@@ -9,12 +9,12 @@ final class aq
     }
 
     public final void onClick(View paramView) {
-        if (SmsSendActivity.a(this.a, this.a.mNumberText.getText().toString())) {
-            Intent localIntent = SmsVerifyActivity.a(this.a, SmsSendActivity.c(this.a), this.a.mNumberText.getText().toString());
+        if (SmsSendActivity.a_initContentView(this.a, this.a.mNumberText.getText().toString())) {
+            Intent localIntent = SmsVerifyActivity.a(this.a, SmsSendActivity.c_initContentView(this.a), this.a.mNumberText.getText().toString());
             this.a.startActivity(localIntent);
             return;
         }
-        SmsSendActivity.d(this.a);
+        SmsSendActivity.d_setTitle(this.a);
     }
 }
 

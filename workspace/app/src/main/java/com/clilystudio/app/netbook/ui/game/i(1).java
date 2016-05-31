@@ -11,11 +11,11 @@ final class i
 
     public final void onClick(View paramView) {
         if (GameDetailActivity.h(this.a))
-            b.a(this.a, "micro_game_continue_click", GameDetailActivity.e(this.a).getName());
+            b.a(this.a, "micro_game_continue_click", GameDetailActivity.d_setRight(this.a).getName());
         while (true) {
-            am_CommonUtils.a_isSameString(this.a, GameDetailActivity.e(this.a));
+            am_CommonUtils.a_isSameString(this.a, GameDetailActivity.d_setRight(this.a));
             return;
-            b.a(this.a, "micro_game_play_click", GameDetailActivity.e(this.a).getName());
+            b.a(this.a, "micro_game_play_click", GameDetailActivity.d_setRight(this.a).getName());
         }
     }
 }

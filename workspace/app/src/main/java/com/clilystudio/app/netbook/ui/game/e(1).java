@@ -13,9 +13,9 @@ final class e
     }
 
     public final void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong) {
-        int i = paramInt - GameDetailActivity.b(this.a).getHeaderViewsCount();
-        if ((i >= 0) && (i < GameDetailActivity.c(this.a).size())) {
-            GamePostRoot.GamePost localGamePost = (GamePostRoot.GamePost) GameDetailActivity.c(this.a).get(i);
+        int i = paramInt - GameDetailActivity.b_initContentView(this.a).getHeaderViewsCount();
+        if ((i >= 0) && (i < GameDetailActivity.c_initContentView(this.a).size())) {
+            GamePostRoot.GamePost localGamePost = (GamePostRoot.GamePost) GameDetailActivity.c_initContentView(this.a).get(i);
             Intent localIntent = PostDetailActivity.a(this.a, localGamePost.get_id(), "game");
             this.a.startActivity(localIntent);
         }

@@ -11,7 +11,7 @@ final class bB
     }
 
     public final void a(PullToRefreshBase<ListView> paramPullToRefreshBase) {
-        GirlTopicListActivity.d(this.a).setVisibility(8);
+        GirlTopicListActivity.d_setTitle(this.a).setVisibility(8);
         new Handler().postDelayed(new bC(this), 1000L);
     }
 }

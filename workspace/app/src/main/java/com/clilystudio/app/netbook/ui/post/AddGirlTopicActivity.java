@@ -33,7 +33,7 @@ public class AddGirlTopicActivity extends BaseActivity {
     public void onCreate(Bundle paramBundle) {
         super.onCreate(paramBundle);
         setContentView(2130903076);
-        a(2131034291, 2131034448, new u(this));
+        a_initContentView(2131034291, R.string.publish, new u(this));
         ShareSDK.initSDK(this);
         this.a = ((EditText) findViewById(2131493068));
         this.b = ((EditText) findViewById(2131493069));

@@ -6,7 +6,7 @@ final class aZ
     }
 
     public final void a() {
-        CustomSearchActivity.a(this.a);
+        CustomSearchActivity.a_initContentView(this.a);
     }
 }
 

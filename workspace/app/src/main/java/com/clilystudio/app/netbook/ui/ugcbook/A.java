@@ -27,24 +27,24 @@ class A extends com.clilystudio.app.netbook.a_packA.e<String, Void, List<BookSum
 
     protected void a(List<BookSummary> paramList) {
         super.onPostExecute(paramList);
-        UGCGuideAddBookActivity.c(this.a, true);
+        UGCGuideAddBookActivity.c_initContentView(this.a, true);
         if (paramList != null) {
-            UGCGuideAddBookActivity.c(this.a).a(paramList);
+            UGCGuideAddBookActivity.c_initContentView(this.a).a(paramList);
             new Handler().post(new B(this));
             if (paramList.size() > 0) {
-                UGCGuideAddBookActivity.b(this.a, 1);
+                UGCGuideAddBookActivity.b_initContentView(this.a, 1);
                 return;
             }
-            UGCGuideAddBookActivity.b(this.a, 3);
+            UGCGuideAddBookActivity.b_initContentView(this.a, 3);
             return;
         }
-        UGCGuideAddBookActivity.b(this.a, 2);
+        UGCGuideAddBookActivity.b_initContentView(this.a, 2);
         com.clilystudio.app.netbook.util.e.a(this.a, 2131034478);
     }
 
     protected void onPreExecute() {
         super.onPreExecute();
-        UGCGuideAddBookActivity.c(this.a, false);
+        UGCGuideAddBookActivity.c_initContentView(this.a, false);
     }
 }
 

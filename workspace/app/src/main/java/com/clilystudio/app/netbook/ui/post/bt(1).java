@@ -8,7 +8,7 @@ final class bt
     }
 
     public final void a() {
-        GirlTopicListActivity.a(this.a);
+        GirlTopicListActivity.a_initContentView(this.a);
     }
 }
 

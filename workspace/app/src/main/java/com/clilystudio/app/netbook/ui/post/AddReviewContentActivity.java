@@ -39,7 +39,7 @@ public class AddReviewContentActivity extends BaseActivity {
         Bundle localBundle = getIntent().getExtras();
         if (localBundle != null)
             this.g = "BOOK_COMMENT".equals(localBundle.getString("INTENT_TYPE_NAME"));
-        a(2131034295, 2131034448, new D(this));
+        a_initContentView(2131034295, R.string.publish, new D(this));
         this.a = getIntent().getStringExtra("bookReviewBookId");
         this.b = getIntent().getIntExtra("bookReviewBookRating", 0);
         this.f = getIntent().getBooleanExtra("isFromBookReviewList", false);

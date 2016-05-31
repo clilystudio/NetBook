@@ -18,7 +18,7 @@ public class FeedAddActivity extends BaseActivity {
     public void onCreate(Bundle paramBundle) {
         super.onCreate(paramBundle);
         setContentView(2130903097);
-        a(2131034383, 2131034375, new a(this));
+        a_initContentView(2131034383, 2131034375, new a(this));
         this.b = ((ListView) findViewById(2131493124));
         this.b.setOnItemClickListener(new b(this));
     }

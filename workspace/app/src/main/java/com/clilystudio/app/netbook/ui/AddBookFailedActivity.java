@@ -15,7 +15,7 @@ public class AddBookFailedActivity extends BaseActivity {
     public void onCreate(Bundle paramBundle) {
         super.onCreate(paramBundle);
         setContentView(2130903073);
-        b(2131034288);
+        b_initContentView(2131034288);
         String str = getIntent().getStringExtra("bookTitle");
         ((TextView) findViewById(2131493064)).setText("追书君正奔走在找《" + str + "》的路上，请耐心等待");
     }

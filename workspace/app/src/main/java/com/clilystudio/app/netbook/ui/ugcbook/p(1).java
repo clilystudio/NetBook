@@ -6,11 +6,11 @@ final class p
     }
 
     public final void run() {
-        if (UGCDetailActivity.d(this.a).getLineCount() > 5) {
-            UGCDetailActivity.e(this.a).setVisibility(0);
-            UGCDetailActivity.d(this.a).setEllipsize(TextUtils.TruncateAt.END);
-            UGCDetailActivity.d(this.a).setClickable(true);
-            UGCDetailActivity.d(this.a).setOnClickListener(UGCDetailActivity.l(this.a));
+        if (UGCDetailActivity.d_setTitle(this.a).getLineCount() > 5) {
+            UGCDetailActivity.d_setRight(this.a).setVisibility(0);
+            UGCDetailActivity.d_setTitle(this.a).setEllipsize(TextUtils.TruncateAt.END);
+            UGCDetailActivity.d_setTitle(this.a).setClickable(true);
+            UGCDetailActivity.d_setTitle(this.a).setOnClickListener(UGCDetailActivity.l(this.a));
         }
     }
 }

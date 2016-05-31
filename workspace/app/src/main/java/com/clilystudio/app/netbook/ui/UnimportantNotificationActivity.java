@@ -8,7 +8,7 @@ public class UnimportantNotificationActivity extends BaseActivity {
     protected void onCreate(Bundle paramBundle) {
         super.onCreate(paramBundle);
         setContentView(2130903139);
-        b("通知");
+        b_initContentView("通知");
     }
 
     public void onPause() {

@@ -11,7 +11,7 @@ final class i extends e<Void, Void, DeleteResult> {
     private DeleteResult a() {
         try {
             b.a();
-            DeleteResult localDeleteResult = b.b().e(ChargeActivity.c(this.a), am_CommonUtils.e().getToken());
+            DeleteResult localDeleteResult = b.b().e(ChargeActivity.c_initContentView(this.a), am_CommonUtils.e().getToken());
             return localDeleteResult;
         } catch (Exception localException) {
             localException.printStackTrace();

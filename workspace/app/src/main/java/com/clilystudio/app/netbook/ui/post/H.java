@@ -9,7 +9,7 @@ final class H
 
     public final void onClick(DialogInterface paramDialogInterface, int paramInt) {
         paramDialogInterface.dismiss();
-        AddReviewRatingActivity.b(this.a);
+        AddReviewRatingActivity.b_initContentView(this.a);
         this.a.finish();
     }
 }

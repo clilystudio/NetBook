@@ -16,7 +16,7 @@ final class bL
     public final void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean) {
         a.b(this.b, "convert_t", paramBoolean);
         i.a().c(new j());
-        ReaderOptionActivity.a(this.b, this.a, paramBoolean);
+        ReaderOptionActivity.a_initContentView(this.b, this.a, paramBoolean);
     }
 }
 

@@ -59,7 +59,7 @@ public class AudiobookCategoryListActivity extends BaseLoadingActivity {
         super.onCreate(paramBundle);
         a(2130903386);
         this.a = getIntent().getStringExtra("TAG_NAME");
-        b(this.a);
+        b_initContentView(this.a);
         as.a();
         this.g = as.b();
         LayoutInflater localLayoutInflater = LayoutInflater.from(this);

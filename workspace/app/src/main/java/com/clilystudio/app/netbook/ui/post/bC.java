@@ -8,12 +8,12 @@ final class bC
     }
 
     public final void run() {
-        if (!am_CommonUtils.a_isTaskStoped(GirlTopicListActivity.e(this.a.a)))
-            GirlTopicListActivity.e(this.a.a).cancel(true);
-        GirlTopicListActivity.a(this.a.a, new bJ(this.a.a, (byte) 0));
+        if (!am_CommonUtils.a_isTaskStoped(GirlTopicListActivity.d_setRight(this.a.a)))
+            GirlTopicListActivity.d_setRight(this.a.a).cancel(true);
+        GirlTopicListActivity.a_initContentView(this.a.a, new bJ(this.a.a, (byte) 0));
         bJ localbJ = GirlTopicListActivity.h(this.a.a);
         String[] arrayOfString = new String[2];
-        arrayOfString[0] = GirlTopicListActivity.f(this.a.a);
+        arrayOfString[0] = GirlTopicListActivity.f_setTitle(this.a.a);
         arrayOfString[1] = GirlTopicListActivity.g(this.a.a);
         localbJ.b(arrayOfString);
     }

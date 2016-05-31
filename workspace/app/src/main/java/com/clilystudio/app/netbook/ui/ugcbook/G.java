@@ -12,17 +12,17 @@ import java.io.IOException;
 final class G extends c<Void, ResultStatus> {
     public G(UGCGuideAddCollectionActivity paramUGCGuideAddCollectionActivity) {
         super(paramUGCGuideAddCollectionActivity, "正在保存到草稿箱...");
-        UGCNewCollection localUGCNewCollection = UGCGuideAddCollectionActivity.b(paramUGCGuideAddCollectionActivity);
-        localUGCNewCollection.setTitle(UGCGuideAddCollectionActivity.c(paramUGCGuideAddCollectionActivity).getText().toString());
-        localUGCNewCollection.setDesc(UGCGuideAddCollectionActivity.d(paramUGCGuideAddCollectionActivity).getText().toString());
+        UGCNewCollection localUGCNewCollection = UGCGuideAddCollectionActivity.b_initContentView(paramUGCGuideAddCollectionActivity);
+        localUGCNewCollection.setTitle(UGCGuideAddCollectionActivity.c_initContentView(paramUGCGuideAddCollectionActivity).getText().toString());
+        localUGCNewCollection.setDesc(UGCGuideAddCollectionActivity.d_setTitle(paramUGCGuideAddCollectionActivity).getText().toString());
     }
 
     private ResultStatus a() {
         try {
             Account localAccount = am_CommonUtils.a_isTaskStoped(this.a);
             if (localAccount != null) {
-                if ((UGCGuideAddCollectionActivity.e(this.a) != null) && (!UGCGuideAddCollectionActivity.e(this.a).equals("")))
-                    return b.b().b(UGCGuideAddCollectionActivity.f(this.a), localAccount.getToken(), UGCGuideAddCollectionActivity.e(this.a));
+                if ((UGCGuideAddCollectionActivity.d_setRight(this.a) != null) && (!UGCGuideAddCollectionActivity.d_setRight(this.a).equals("")))
+                    return b.b().b(UGCGuideAddCollectionActivity.f_setTitle(this.a), localAccount.getToken(), UGCGuideAddCollectionActivity.d_setRight(this.a));
                 ResultStatus localResultStatus = b.b().b(UGCGuideAddCollectionActivity.g(this.a), localAccount.getToken());
                 return localResultStatus;
             }

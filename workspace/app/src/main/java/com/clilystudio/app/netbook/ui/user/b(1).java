@@ -12,7 +12,7 @@ final class b
     public final void onClick(View paramView) {
         AuthLoginActivity.a(this.a, paramView);
         AuthLoginActivity.a(this.a, QZone.NAME);
-        AuthLoginActivity.b(this.a, "QQ");
+        AuthLoginActivity.b_initContentView(this.a, "QQ");
     }
 }
 

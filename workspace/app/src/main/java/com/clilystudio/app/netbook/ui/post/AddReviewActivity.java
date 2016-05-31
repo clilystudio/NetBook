@@ -40,7 +40,7 @@ public class AddReviewActivity extends BaseActivity {
     public void onCreate(Bundle paramBundle) {
         super.onCreate(paramBundle);
         setContentView(2130903147);
-        a(2131034298, 2131034419, new A(this));
+        a_initContentView(2131034298, 2131034419, new A(this));
         View localView = findViewById(2131493270);
         ListView localListView = (ListView) findViewById(2131493271);
         localListView.setOnItemClickListener(new B(this));

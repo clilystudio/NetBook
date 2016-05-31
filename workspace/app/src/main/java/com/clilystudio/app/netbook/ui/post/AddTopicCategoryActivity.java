@@ -14,7 +14,7 @@ public class AddTopicCategoryActivity extends BaseActivity {
     public void onCreate(Bundle paramBundle) {
         super.onCreate(paramBundle);
         setContentView(2130903146);
-        b(2131034294);
+        b_initContentView(2131034294);
         a.a();
         a.a(this);
         this.a = getIntent().getStringExtra("book_post_list_bookId");

@@ -9,18 +9,18 @@ final class ap
     }
 
     public final void afterTextChanged(Editable paramEditable) {
-        SmsSendActivity.a(this.a);
+        SmsSendActivity.a_initContentView(this.a);
         if ((paramEditable == null) || (paramEditable.toString() == null)) {
-            SmsSendActivity.a(this.a, false);
+            SmsSendActivity.a_initContentView(this.a, false);
             return;
         }
         String str1 = paramEditable.toString().replace(" ", "");
-        for (String str2 : SmsSendActivity.b(this.a))
+        for (String str2 : SmsSendActivity.b_initContentView(this.a))
             if ((str1.startsWith(str2)) && (str1.length() == 11 + str2.length())) {
-                SmsSendActivity.a(this.a, true);
+                SmsSendActivity.a_initContentView(this.a, true);
                 return;
             }
-        SmsSendActivity.a(this.a, false);
+        SmsSendActivity.a_initContentView(this.a, false);
     }
 
     public final void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {

@@ -43,7 +43,7 @@ public class LuckyGameWebActivity extends BaseActivity
     protected void onCreate(Bundle paramBundle) {
         super.onCreate(paramBundle);
         setContentView(2130903420);
-        c(getIntent().getStringExtra("extra_title"));
+        c_initContentView(getIntent().getStringExtra("extra_title"));
         this.b = ((WebView) findViewById(2131494048));
         this.c = findViewById(2131493085);
         this.e = findViewById(2131494050);

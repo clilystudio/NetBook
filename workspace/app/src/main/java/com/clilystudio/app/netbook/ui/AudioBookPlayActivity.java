@@ -229,7 +229,7 @@ public class AudioBookPlayActivity extends BaseActivity
         super.onCreate(paramBundle);
         setContentView(2130903082);
         com.clilystudio.app.netbook.event.i.a().a(this);
-        a("", 2131034372, new f(this));
+        a_initContentView("", 2131034372, new f(this));
         this.a = as.b();
         as.a(this.E);
         if (getIntent() != null) {

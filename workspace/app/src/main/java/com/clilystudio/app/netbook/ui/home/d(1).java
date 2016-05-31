@@ -6,7 +6,7 @@ final class d
     }
 
     public final void onDismiss() {
-        HomeActivity.e(this.a);
+        HomeActivity.d_setRight(this.a);
     }
 }
 

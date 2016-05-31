@@ -11,7 +11,7 @@ final class aV
     public final void onClick(View paramView) {
         this.a.dismiss();
         CommonPostListActivity.k(this.b).setText("最多评论");
-        CommonPostListActivity.b(this.b, "comment-count");
+        CommonPostListActivity.b_initContentView(this.b, "comment-count");
         CommonPostListActivity.j(this.b).setVisibility(0);
         CommonPostListActivity.j(this.b).setRefreshing();
     }

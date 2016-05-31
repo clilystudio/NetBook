@@ -10,8 +10,8 @@ final class w
 
     public final void onClick(View paramView) {
         this.a.dismiss();
-        String str1 = AddGirlTopicActivity.c(this.c).getText().toString().trim();
-        String str2 = AddGirlTopicActivity.d(this.c).getText().toString().trim();
+        String str1 = AddGirlTopicActivity.c_initContentView(this.c).getText().toString().trim();
+        String str2 = AddGirlTopicActivity.d_setTitle(this.c).getText().toString().trim();
         z localz = new z(this.c, this.c, 2131034430);
         String[] arrayOfString = new String[3];
         arrayOfString[0] = this.b;

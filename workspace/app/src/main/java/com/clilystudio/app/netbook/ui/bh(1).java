@@ -13,12 +13,12 @@ final class bh extends WebViewClient {
     }
 
     public final void onPageFinished(WebView paramWebView, String paramString) {
-        LuckyGameWebActivity.c(this.a);
+        LuckyGameWebActivity.c_initContentView(this.a);
         LuckyGameWebActivity.a(this.a);
     }
 
     public final void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap) {
-        LuckyGameWebActivity.b(this.a);
+        LuckyGameWebActivity.b_initContentView(this.a);
     }
 }
 

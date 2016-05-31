@@ -12,10 +12,10 @@ final class bP
 
     public final void onClick(View paramView) {
         this.a.dismiss();
-        if (ReaderOptionActivity.b(this.c) != this.b) {
+        if (ReaderOptionActivity.b_initContentView(this.c) != this.b) {
             ReaderOptionActivity.a(this.c, this.b);
-            ReaderOptionActivity.d(this.c).setText(ReaderOptionActivity.c(this.c)[this.b]);
-            a.b(this.c, "reader_screen_off_time", ReaderOptionActivity.e(this.c)[this.b]);
+            ReaderOptionActivity.d_setTitle(this.c).setText(ReaderOptionActivity.c_initContentView(this.c)[this.b]);
+            a.b(this.c, "reader_screen_off_time", ReaderOptionActivity.d_setRight(this.c)[this.b]);
         }
     }
 }

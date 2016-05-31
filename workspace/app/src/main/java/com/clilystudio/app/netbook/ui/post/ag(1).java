@@ -11,7 +11,7 @@ final class ag
     public final void onClick(View paramView) {
         this.a.dismiss();
         BookHelpListActivity.m(this.b).setText(2131034433);
-        BookHelpListActivity.b(this.b, "updated");
+        BookHelpListActivity.b_initContentView(this.b, "updated");
         BookHelpListActivity.l(this.b).setRefreshing();
     }
 }

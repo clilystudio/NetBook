@@ -10,7 +10,7 @@ final class bY
 
     public final void onClick(View paramView) {
         this.a.dismiss();
-        SettingsActivity.a(this.d, this.b, this.d.getResources().getString(this.c[this.b]));
+        SettingsActivity.a_initContentView(this.d, this.b, this.d.getResources().getString(this.c[this.b]));
     }
 }
 

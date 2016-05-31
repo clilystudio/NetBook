@@ -57,7 +57,7 @@ public abstract class BookListActivity extends BaseActivity {
     protected void onCreate(Bundle paramBundle) {
         super.onCreate(paramBundle);
         setContentView(2130903108);
-        b(getIntent().getStringExtra("book_list_title"));
+        b_initContentView(getIntent().getStringExtra("book_list_title"));
         this.b = findViewById(2131493081);
         this.e = ((TextView) findViewById(2131493080));
         this.c = findViewById(2131493082);

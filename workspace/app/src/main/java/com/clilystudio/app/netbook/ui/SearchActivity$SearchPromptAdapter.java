@@ -50,8 +50,8 @@ public final class SearchActivity$SearchPromptAdapter extends BaseAdapter
         SearchActivity.k(this.a).setVisibility(8);
         if ((paramInt >= 0) && (paramInt < this.b.size())) {
             String str = (String) this.b.get(paramInt);
-            SearchActivity.f(this.a).setTextByCode(str);
-            SearchActivity.b(this.a, true);
+            SearchActivity.f_setTitle(this.a).setTextByCode(str);
+            SearchActivity.b_initContentView(this.a, true);
         }
     }
 }

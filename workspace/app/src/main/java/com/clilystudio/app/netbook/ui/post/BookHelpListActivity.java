@@ -50,7 +50,7 @@ public class BookHelpListActivity extends BaseActivity {
     protected void onCreate(Bundle paramBundle) {
         super.onCreate(paramBundle);
         setContentView(2130903086);
-        a("书荒区", 2130837866, new af(this), "编辑书荒");
+        a_initContentView("书荒区", 2130837866, new af(this), "编辑书荒");
         if (paramBundle != null)
             this.o = paramBundle.getString("savedHelpDuration");
         for (this.p = paramBundle.getString("savedHelpSort"); ; this.p = "updated") {

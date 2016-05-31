@@ -15,7 +15,7 @@ final class x extends Filter {
     }
 
     protected final Filter.FilterResults performFiltering(CharSequence paramCharSequence) {
-        String str = UGCGuideAddBookActivity.a(this.a.a).getText().toString();
+        String str = UGCGuideAddBookActivity.a_initContentView(this.a.a).getText().toString();
         ArrayList localArrayList = new ArrayList();
         localArrayList.add(str);
         localArrayList.add(paramCharSequence.toString());
@@ -51,14 +51,14 @@ final class x extends Filter {
         Object localObject;
         label108:
         SearchFixListView localSearchFixListView;
-        if ((i > 2) && (!UGCGuideAddBookActivity.b(this.a.a, str))) {
+        if ((i > 2) && (!UGCGuideAddBookActivity.b_initContentView(this.a.a, str))) {
             localObject = localList.subList(0, i - 2);
             UGCGuideAddBookActivity.SearchPromptAdapter.a(this.a, (List) localObject);
             if (!UGCGuideAddBookActivity.SearchPromptAdapter.a(this.a).isEmpty())
                 break label172;
             this.a.notifyDataSetInvalidated();
-            localSearchFixListView = UGCGuideAddBookActivity.f(this.a.a);
-            if ((!UGCGuideAddBookActivity.SearchPromptAdapter.a(this.a).isEmpty()) && (UGCGuideAddBookActivity.e(this.a.a)))
+            localSearchFixListView = UGCGuideAddBookActivity.f_setTitle(this.a.a);
+            if ((!UGCGuideAddBookActivity.SearchPromptAdapter.a(this.a).isEmpty()) && (UGCGuideAddBookActivity.d_setRight(this.a.a)))
                 break label182;
         }
         label172:

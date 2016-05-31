@@ -8,7 +8,7 @@ final class bZ
     }
 
     public final void onClick(DialogInterface paramDialogInterface, int paramInt) {
-        SettingsActivity.c(this.a);
+        SettingsActivity.c_initContentView(this.a);
     }
 }
 

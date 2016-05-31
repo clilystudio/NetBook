@@ -9,7 +9,7 @@ final class C
 
     public final void onClick(DialogInterface paramDialogInterface, int paramInt) {
         paramDialogInterface.dismiss();
-        AddReviewActivity.c(this.a);
+        AddReviewActivity.c_initContentView(this.a);
         this.a.finish();
     }
 }

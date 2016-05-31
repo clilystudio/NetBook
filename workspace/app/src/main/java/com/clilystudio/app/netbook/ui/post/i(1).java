@@ -8,8 +8,8 @@ final class i
     }
 
     public final void a() {
-        if (AddBookHelpActivity.a(this.a))
-            AddBookHelpActivity.b(this.a);
+        if (AddBookHelpActivity.a_initContentView(this.a))
+            AddBookHelpActivity.b_initContentView(this.a);
     }
 }
 

@@ -6,7 +6,7 @@ final class aY
     }
 
     public final void a() {
-        CropPhotoActivity.a(this.a);
+        CropPhotoActivity.a_initContentView(this.a);
     }
 }
 

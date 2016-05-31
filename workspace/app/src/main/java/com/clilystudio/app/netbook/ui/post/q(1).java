@@ -11,7 +11,7 @@ final class q
     public final void onClick(View paramView) {
         this.a.dismiss();
         String str1 = this.c.getIntent().getStringExtra("post_game_id");
-        String str2 = AddGamePostActivity.c(this.c).getText().toString().trim();
+        String str2 = AddGamePostActivity.c_initContentView(this.c).getText().toString().trim();
         t localt = new t(this.c, this.c, 2131034430);
         String[] arrayOfString = new String[3];
         arrayOfString[0] = this.b;

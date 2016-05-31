@@ -11,8 +11,8 @@ final class dm
     public final void onClick(View paramView) {
         this.a.dismiss();
         ReviewListActivity.m(this.b).setText("全部");
-        ReviewListActivity.a(this.b, "all");
-        ReviewListActivity.a(this.b, false);
+        ReviewListActivity.a_initContentView(this.b, "all");
+        ReviewListActivity.a_initContentView(this.b, false);
         ReviewListActivity.n(this.b).setRefreshing();
     }
 }

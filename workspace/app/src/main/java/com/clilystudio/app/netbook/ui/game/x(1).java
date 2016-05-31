@@ -16,12 +16,12 @@ final class x
         this.a.dismiss();
         am_CommonUtils.a_isSameString(this.c, this.b);
         e.a(this.c, "已复制");
-        if (GameGiftListActivity.b(this.c)) {
-            am_CommonUtils.a_isSameString(this.c, GameGiftListActivity.c(this.c).game);
-            b.a(this.c, "micro_game_play_click", GameGiftListActivity.c(this.c).game.getName());
+        if (GameGiftListActivity.b_initContentView(this.c)) {
+            am_CommonUtils.a_isSameString(this.c, GameGiftListActivity.c_initContentView(this.c).game);
+            b.a(this.c, "micro_game_play_click", GameGiftListActivity.c_initContentView(this.c).game.getName());
             return;
         }
-        am_CommonUtils.d_startActivityForPackage(this.c, GameGiftListActivity.c(this.c).game.getAndroidPackageName());
+        am_CommonUtils.d_startActivityForPackage(this.c, GameGiftListActivity.c_initContentView(this.c).game.getAndroidPackageName());
     }
 }
 

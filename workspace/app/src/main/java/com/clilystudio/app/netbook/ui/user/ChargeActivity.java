@@ -72,7 +72,7 @@ public class ChargeActivity extends BaseLoadingActivity {
             str3 = this.a.getType();
             if ("alipay".equals(str3)) {
                 str4 = "支付宝";
-                a(str4, 2131034362, new g(this));
+                a_initContentView(str4, 2131034362, new g(this));
                 this.b.a(this.a.getPlan());
             }
         }

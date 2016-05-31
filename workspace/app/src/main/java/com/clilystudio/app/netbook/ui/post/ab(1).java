@@ -9,7 +9,7 @@ final class ab
 
     public final void a() {
         if ((BookHelpActivity.h(this.a) == null) || (BookHelpActivity.h(this.a).getStatus() == AsyncTask.Status.FINISHED))
-            BookHelpActivity.b(this.a);
+            BookHelpActivity.b_initContentView(this.a);
     }
 }
 

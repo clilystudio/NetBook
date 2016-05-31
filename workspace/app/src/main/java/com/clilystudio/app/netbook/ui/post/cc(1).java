@@ -6,8 +6,8 @@ final class cc
     }
 
     public final void run() {
-        OtherUserActivity.e(this.a);
-        OtherUserActivity.f(this.a);
+        OtherUserActivity.d_setRight(this.a);
+        OtherUserActivity.f_setTitle(this.a);
     }
 }
 

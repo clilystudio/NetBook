@@ -105,7 +105,7 @@ public class OtherUserActivity extends BaseActivity {
         this.l.addFooterView(this.m);
         if (a.j())
             this.l.setFooterDividersEnabled(false);
-        b("详情");
+        b_initContentView("详情");
         if (am_CommonUtils.e() != null) {
             if (am_CommonUtils.e().getUser().getId().equals(this.r)) {
                 this.y = 2;

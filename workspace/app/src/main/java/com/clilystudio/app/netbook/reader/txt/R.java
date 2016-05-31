@@ -29,7 +29,7 @@ final class R extends W<T>
 
     public final void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong) {
         ((T) c().get(paramInt)).c();
-        ScanTxtFileActivity.a(this.a).notifyDataSetChanged();
+        ScanTxtFileActivity.a_initContentView(this.a).notifyDataSetChanged();
     }
 }
 

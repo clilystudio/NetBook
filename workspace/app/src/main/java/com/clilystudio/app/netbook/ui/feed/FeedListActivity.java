@@ -58,7 +58,7 @@ public class FeedListActivity extends BaseActivity {
     public void onCreate(Bundle paramBundle) {
         super.onCreate(paramBundle);
         setContentView(2130903099);
-        b(2131034374);
+        b_initContentView(2131034374);
         i.a().a(this);
         ListView localListView = (ListView) findViewById(2131493127);
         this.a = new f(this, getLayoutInflater());

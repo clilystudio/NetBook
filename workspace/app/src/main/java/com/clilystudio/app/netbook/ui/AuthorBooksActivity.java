@@ -30,7 +30,7 @@ public class AuthorBooksActivity extends BaseLoadingActivity {
         super.onCreate(paramBundle);
         a(2130903322);
         this.c = getIntent().getStringExtra("keyword");
-        b(this.c);
+        b_initContentView(this.c);
         this.a = ((ListView) findViewById(2131493185));
         this.b = new E(LayoutInflater.from(this));
         this.a.setAdapter(this.b);

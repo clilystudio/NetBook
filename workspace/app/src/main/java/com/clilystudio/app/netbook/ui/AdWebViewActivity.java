@@ -52,7 +52,7 @@ public class AdWebViewActivity extends BaseActivity
         super.onCreate(paramBundle);
         setContentView(2130903420);
         this.f = getIntent().getStringExtra("extra_title");
-        c(this.f);
+        c_initContentView(this.f);
         this.g = ((DownloadManager) getSystemService("download"));
         this.a = ((WebView) findViewById(2131494048));
         this.b = findViewById(2131493085);

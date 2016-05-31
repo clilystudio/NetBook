@@ -117,7 +117,7 @@ public class BookCategoryActivity extends BaseActivity {
     public void onCreate(Bundle paramBundle) {
         super.onCreate(paramBundle);
         setContentView(2130903084);
-        b(2131034335);
+        b_initContentView(2131034335);
         this.c = findViewById(2131493078);
         this.a = findViewById(2131493081);
         this.b = findViewById(2131493082);

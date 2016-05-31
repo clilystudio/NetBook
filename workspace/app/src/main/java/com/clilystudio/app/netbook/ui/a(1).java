@@ -12,7 +12,7 @@ final class a
             AdWebViewActivity.a(this.a, paramString1);
             return;
         }
-        AdWebViewActivity.b(this.a, paramString1);
+        AdWebViewActivity.b_initContentView(this.a, paramString1);
     }
 }
 

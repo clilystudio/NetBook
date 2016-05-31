@@ -8,7 +8,7 @@ public class MyUGCBookListActivity extends BaseActivity {
     protected void onCreate(Bundle paramBundle) {
         super.onCreate(paramBundle);
         setContentView(2130903116);
-        b("我的书单");
+        b_initContentView("我的书单");
     }
 }
 

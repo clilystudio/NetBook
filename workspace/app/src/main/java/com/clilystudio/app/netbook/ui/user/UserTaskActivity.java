@@ -49,7 +49,7 @@ public class UserTaskActivity extends BaseActivity {
         super.onCreate(paramBundle);
         setContentView(2130903143);
         ButterKnife.inject(this);
-        b("任务");
+        b_initContentView("任务");
         UserInfo localUserInfo = (UserInfo) MyApplication.a_getInstance().b_readSavedInfo("savedObject_userinfo");
         this.mExpInfo.setTextColor(getResources().getColor(2131427480));
         this.mExpLaunch.setTextColor(getResources().getColor(2131427480));

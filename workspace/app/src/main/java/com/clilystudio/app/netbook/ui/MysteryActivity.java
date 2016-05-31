@@ -115,7 +115,7 @@ public class MysteryActivity extends BaseLoadingActivity {
     protected void onCreate(Bundle paramBundle) {
         super.onCreate(paramBundle);
         a(2130903117);
-        b("神秘功能");
+        b_initContentView("神秘功能");
         ListView localListView = (ListView) findViewById(2131493150);
         View localView = getLayoutInflater().inflate(2130903331, localListView, false);
         localListView.addHeaderView(localView, null, false);

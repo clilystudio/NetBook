@@ -19,7 +19,7 @@ public class GameLocalListActivity extends BaseActivity {
     protected void onCreate(Bundle paramBundle) {
         super.onCreate(paramBundle);
         setContentView(2130903102);
-        b("我玩过的游戏");
+        b_initContentView("我玩过的游戏");
         this.c = ((List) a.k(c.h, "played_game.txt"));
         if (this.c == null)
             this.c = new ArrayList();

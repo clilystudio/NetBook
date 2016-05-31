@@ -10,9 +10,9 @@ final class dn
 
     public final void onClick(View paramView) {
         this.a.dismiss();
-        ReviewListActivity.a(this.b, true);
+        ReviewListActivity.a_initContentView(this.b, true);
         ReviewListActivity.m(this.b).setText("精品");
-        ReviewListActivity.a(this.b, "all");
+        ReviewListActivity.a_initContentView(this.b, "all");
         ReviewListActivity.n(this.b).setRefreshing();
     }
 }

@@ -56,7 +56,7 @@ public class SmsSendActivity extends BaseActivity {
     protected void onCreate(Bundle paramBundle) {
         super.onCreate(paramBundle);
         setContentView(2130903131);
-        b("短信充值");
+        b_initContentView("短信充值");
         ButterKnife.inject(this);
         b();
         a(false);

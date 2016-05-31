@@ -25,7 +25,7 @@ public class WifiActivity extends BaseActivity {
     protected void onCreate(Bundle paramBundle) {
         super.onCreate(paramBundle);
         setContentView(2130903144);
-        b("Wi-Fi传书");
+        b_initContentView("Wi-Fi传书");
         this.b = new com.koushikdutta.async.http.server.a();
         this.c = ((TextView) findViewById(2131493260));
         this.e = ((TextView) findViewById(2131493261));

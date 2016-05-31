@@ -8,7 +8,7 @@ final class bV
     }
 
     public final boolean onLongClick(View paramView) {
-        SettingsActivity.b(this.a);
+        SettingsActivity.b_initContentView(this.a);
         return true;
     }
 }

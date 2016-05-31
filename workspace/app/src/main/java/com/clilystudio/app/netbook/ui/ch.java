@@ -15,7 +15,7 @@ final class ch extends ZssqFragmentPagerAdapter {
         while (i < paramSimpleTabActivity.b) {
             Fragment localFragment = (Fragment) SimpleTabActivity.a(paramSimpleTabActivity).get(i);
             if (!localFragment.isAdded())
-                localFragmentTransaction.add(SimpleTabActivity.b(paramSimpleTabActivity).getId(), localFragment, paramSimpleTabActivity.c[i]);
+                localFragmentTransaction.add(SimpleTabActivity.b_initContentView(paramSimpleTabActivity).getId(), localFragment, paramSimpleTabActivity.c[i]);
             i++;
         }
         if (!localFragmentTransaction.isEmpty()) {

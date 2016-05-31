@@ -86,7 +86,7 @@ public class AddReviewRatingActivity extends BaseActivity
     public void onCreate(Bundle paramBundle) {
         super.onCreate(paramBundle);
         setContentView(2130903148);
-        a(2131034297, 2131034419, new G(this));
+        a_initContentView(2131034297, 2131034419, new G(this));
         int[] arrayOfInt = {2131493272, 2131493274, 2131493276, 2131493278, 2131493280};
         for (int i = 0; i < 5; i++)
             findViewById(arrayOfInt[i]).setOnClickListener(this);

@@ -23,7 +23,7 @@ final class bK
     }
 
     public final void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {
-        SearchActivity.b(this.a, null);
+        SearchActivity.b_initContentView(this.a, null);
     }
 }
 

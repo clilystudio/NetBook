@@ -8,7 +8,7 @@ final class A
     }
 
     public final void a() {
-        AddReviewActivity.a(this.a);
+        AddReviewActivity.a_initContentView(this.a);
     }
 }
 

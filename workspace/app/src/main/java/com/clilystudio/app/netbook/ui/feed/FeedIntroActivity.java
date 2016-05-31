@@ -9,7 +9,7 @@ public class FeedIntroActivity extends BaseActivity {
     public void onCreate(Bundle paramBundle) {
         super.onCreate(paramBundle);
         setContentView(2130903098);
-        b(2131034381);
+        b_initContentView(2131034381);
         ((Button) findViewById(2131493126)).setOnClickListener(new d(this));
     }
 

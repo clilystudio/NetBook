@@ -25,8 +25,8 @@ public class ModeListActivity extends BaseActivity {
     protected void onCreate(Bundle paramBundle) {
         super.onCreate(paramBundle);
         setContentView(2130903113);
-        c(2131034481);
-        d(2130837881);
+        c_initContentView(2131034481);
+        d_setBackIcon(2130837881);
         this.a = getIntent().getIntExtra("BOOK_MODE", 5);
         this.b = getIntent().getStringExtra("BOOK_ID");
         this.c = getIntent().getStringExtra("BOOK_TITLE");

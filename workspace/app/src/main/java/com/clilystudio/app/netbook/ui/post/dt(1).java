@@ -12,9 +12,9 @@ final class dt
         if (TweetDetailActivity.a(this.a)) {
             dA localdA = new dA(this.a, this.a, 2131034584);
             String[] arrayOfString = new String[3];
-            arrayOfString[0] = TweetDetailActivity.b(this.a).getToken();
-            arrayOfString[1] = TweetDetailActivity.c(this.a).getTweet().get_id();
-            arrayOfString[2] = String.valueOf(TweetDetailActivity.d(this.a));
+            arrayOfString[0] = TweetDetailActivity.b_initContentView(this.a).getToken();
+            arrayOfString[1] = TweetDetailActivity.c_initContentView(this.a).getTweet().get_id();
+            arrayOfString[2] = String.valueOf(TweetDetailActivity.d_setTitle(this.a));
             localdA.b(arrayOfString);
         }
     }

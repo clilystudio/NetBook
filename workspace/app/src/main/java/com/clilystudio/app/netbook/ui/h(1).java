@@ -8,7 +8,7 @@ final class h
     }
 
     public final void onClick(View paramView) {
-        this.a.startActivity(AudiobookInfoActivity.a(this.a, AudioBookPlayActivity.d(this.a)));
+        this.a.startActivity(AudiobookInfoActivity.a(this.a, AudioBookPlayActivity.d_setTitle(this.a)));
     }
 }
 

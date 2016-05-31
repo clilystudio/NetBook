@@ -11,7 +11,7 @@ final class aU
     public final void onClick(View paramView) {
         this.a.dismiss();
         CommonPostListActivity.k(this.b).setText("最新发布");
-        CommonPostListActivity.b(this.b, "created");
+        CommonPostListActivity.b_initContentView(this.b, "created");
         CommonPostListActivity.j(this.b).setVisibility(0);
         CommonPostListActivity.j(this.b).setRefreshing();
     }

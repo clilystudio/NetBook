@@ -8,7 +8,7 @@ final class bG
     }
 
     public final void onClick(View paramView) {
-        SearchActivity.d(this.a);
+        SearchActivity.d_setTitle(this.a);
         b.a(this.a, "search_history_clear");
     }
 }

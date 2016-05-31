@@ -16,7 +16,7 @@ final class aa extends ZssqFragmentPagerAdapter {
         for (int i = 0; i < 3; i++) {
             Fragment localFragment = (Fragment) PayVoucherActivity.a(paramPayVoucherActivity).get(i);
             if (!localFragment.isAdded())
-                localFragmentTransaction.add(PayVoucherActivity.b(paramPayVoucherActivity).getId(), localFragment, paramPayVoucherActivity.b[i]);
+                localFragmentTransaction.add(PayVoucherActivity.b_initContentView(paramPayVoucherActivity).getId(), localFragment, paramPayVoucherActivity.b[i]);
         }
         if (!localFragmentTransaction.isEmpty()) {
             localFragmentTransaction.commit();

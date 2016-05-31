@@ -6,8 +6,8 @@ final class bx
     }
 
     public final void onDismiss() {
-        GirlTopicListActivity.b(this.a).setImageDrawable(this.a.getResources().getDrawable(2130837721));
-        GirlTopicListActivity.c(this.a).setImageDrawable(this.a.getResources().getDrawable(2130837721));
+        GirlTopicListActivity.b_initContentView(this.a).setImageDrawable(this.a.getResources().getDrawable(2130837721));
+        GirlTopicListActivity.c_initContentView(this.a).setImageDrawable(this.a.getResources().getDrawable(2130837721));
     }
 }
 

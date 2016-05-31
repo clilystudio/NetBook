@@ -10,9 +10,9 @@ final class bG
 
     public final void onClick(View paramView) {
         this.a.dismiss();
-        GirlTopicListActivity.b(this.b, true);
+        GirlTopicListActivity.b_initContentView(this.b, true);
         GirlTopicListActivity.k(this.b).setText("精品");
-        GirlTopicListActivity.a(this.b, "all");
+        GirlTopicListActivity.a_initContentView(this.b, "all");
         GirlTopicListActivity.l(this.b).setRefreshing();
     }
 }

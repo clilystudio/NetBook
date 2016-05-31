@@ -8,8 +8,8 @@ final class R
     }
 
     public final void onClick(View paramView) {
-        if (AddVoteItemActivity.b(this.a))
-            AddVoteItemActivity.c(this.a);
+        if (AddVoteItemActivity.b_initContentView(this.a))
+            AddVoteItemActivity.c_initContentView(this.a);
     }
 }
 

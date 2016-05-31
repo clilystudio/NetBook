@@ -15,7 +15,7 @@ public final class y extends W<BookSummary> {
 
     public y(UGCGuideAddBookActivity paramUGCGuideAddBookActivity, LayoutInflater paramLayoutInflater) {
         super(paramLayoutInflater, 2130903411);
-        this.b = UGCGuideAddBookActivity.b(paramUGCGuideAddBookActivity).getBooks();
+        this.b = UGCGuideAddBookActivity.b_initContentView(paramUGCGuideAddBookActivity).getBooks();
     }
 
     protected final int[] a() {

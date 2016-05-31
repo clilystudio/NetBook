@@ -8,9 +8,9 @@ final class dj
     }
 
     public final void run() {
-        if (!am_CommonUtils.a_isTaskStoped(ReviewListActivity.f(this.a.a)))
-            ReviewListActivity.f(this.a.a).cancel(true);
-        ReviewListActivity.a(this.a.a, new dp(this.a.a, (byte) 0));
+        if (!am_CommonUtils.a_isTaskStoped(ReviewListActivity.f_setTitle(this.a.a)))
+            ReviewListActivity.f_setTitle(this.a.a).cancel(true);
+        ReviewListActivity.a_initContentView(this.a.a, new dp(this.a.a, (byte) 0));
         dp localdp = ReviewListActivity.j(this.a.a);
         String[] arrayOfString = new String[3];
         arrayOfString[0] = ReviewListActivity.g(this.a.a);

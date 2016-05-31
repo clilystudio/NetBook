@@ -9,7 +9,7 @@ final class t
     }
 
     public final boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent) {
-        UGCGuideAddBookActivity.b(this.a, true);
+        UGCGuideAddBookActivity.b_initContentView(this.a, true);
         return true;
     }
 }

@@ -8,7 +8,7 @@ final class k
     }
 
     public final void onClick(View paramView) {
-        UGCDetailActivity.f(this.a);
+        UGCDetailActivity.f_setTitle(this.a);
     }
 }
 

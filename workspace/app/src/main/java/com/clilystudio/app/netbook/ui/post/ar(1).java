@@ -11,8 +11,8 @@ final class ar
     public final void onClick(View paramView) {
         this.a.dismiss();
         BookHelpListActivity.k(this.b).setText("全部");
-        BookHelpListActivity.b(this.b, false);
-        BookHelpListActivity.a(this.b, "all");
+        BookHelpListActivity.b_initContentView(this.b, false);
+        BookHelpListActivity.a_initContentView(this.b, "all");
         BookHelpListActivity.l(this.b).setRefreshing();
     }
 }

@@ -15,16 +15,16 @@ final class aA
     }
 
     public final void onCancel(Platform paramPlatform, int paramInt) {
-        Log.i(BookInfoActivity.b(), "onCancel");
+        Log.i(BookInfoActivity.b_initContentView(), "onCancel");
     }
 
     public final void onComplete(Platform paramPlatform, int paramInt, HashMap<String, Object> paramHashMap) {
         e.c("share_book");
-        Log.i(BookInfoActivity.b(), "onComplete");
+        Log.i(BookInfoActivity.b_initContentView(), "onComplete");
     }
 
     public final void onError(Platform paramPlatform, int paramInt, Throwable paramThrowable) {
-        Log.i(BookInfoActivity.b(), "onError");
+        Log.i(BookInfoActivity.b_initContentView(), "onError");
     }
 }
 

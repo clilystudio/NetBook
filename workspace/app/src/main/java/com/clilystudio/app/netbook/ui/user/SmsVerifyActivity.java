@@ -95,7 +95,7 @@ public class SmsVerifyActivity extends BaseActivity {
     protected void onCreate(Bundle paramBundle) {
         super.onCreate(paramBundle);
         setContentView(2130903132);
-        b("短信充值");
+        b_initContentView("短信充值");
         ButterKnife.inject(this);
         this.b = ((ChargePlan) getIntent().getSerializableExtra("key_charge_plan_verify"));
         this.mAppNameText.setText("追书神器");

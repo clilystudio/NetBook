@@ -55,16 +55,16 @@ public final class X extends BaseAdapter {
             localZ.b.setText(localBookReadRecord.buildDesc());
             localCheckBox = localZ.d;
             this.d = true;
-            if (UGCGuideSelectBookActivity.c(this.a).length > paramInt)
+            if (UGCGuideSelectBookActivity.c_initContentView(this.a).length > paramInt)
                 break label233;
             arrayOfBoolean = new boolean[paramInt + 1];
-            for (int i = 0; i < UGCGuideSelectBookActivity.c(this.a).length; i++)
-                arrayOfBoolean[i] = UGCGuideSelectBookActivity.c(this.a)[i];
+            for (int i = 0; i < UGCGuideSelectBookActivity.c_initContentView(this.a).length; i++)
+                arrayOfBoolean[i] = UGCGuideSelectBookActivity.c_initContentView(this.a)[i];
             localZ = (Z) paramView.getTag();
         }
         UGCGuideSelectBookActivity.a(this.a, arrayOfBoolean);
         label233:
-        localCheckBox.setChecked(UGCGuideSelectBookActivity.c(this.a)[paramInt]);
+        localCheckBox.setChecked(UGCGuideSelectBookActivity.c_initContentView(this.a)[paramInt]);
         UGCGuideSelectBookActivity.a(this.a, paramInt);
         this.d = false;
         localCheckBox.setOnCheckedChangeListener(new Y(this, paramInt));

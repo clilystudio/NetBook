@@ -87,7 +87,7 @@ public class GameGiftListActivity extends BaseActivity {
         String str = getIntent().getStringExtra("title");
         this.h = getIntent().getBooleanExtra("is_micro_game", false);
         if (str != null)
-            b(str);
+            b_initContentView(str);
         while (true) {
             ListView localListView = (ListView) findViewById(2131493135);
             localListView.setDividerHeight(0);
@@ -100,7 +100,7 @@ public class GameGiftListActivity extends BaseActivity {
                 this.a.a(arrayOfGameGift);
             }
             return;
-            b("往期游戏");
+            b_initContentView("往期游戏");
         }
     }
 }

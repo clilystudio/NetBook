@@ -8,8 +8,8 @@ final class ax
     }
 
     public final void onClick(View paramView) {
-        UserFollowWeixinActivity.a(this.a);
-        UserFollowWeixinActivity.b(this.a);
+        UserFollowWeixinActivity.a_initContentView(this.a);
+        UserFollowWeixinActivity.b_initContentView(this.a);
     }
 }
 

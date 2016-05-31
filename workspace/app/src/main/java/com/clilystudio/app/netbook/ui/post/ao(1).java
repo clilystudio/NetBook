@@ -8,12 +8,12 @@ final class ao
     }
 
     public final void run() {
-        if (!am_CommonUtils.a_isTaskStoped(BookHelpListActivity.e(this.a.a)))
-            BookHelpListActivity.e(this.a.a).cancel(true);
-        BookHelpListActivity.a(this.a.a, new av(this.a.a, (byte) 0));
+        if (!am_CommonUtils.a_isTaskStoped(BookHelpListActivity.d_setRight(this.a.a)))
+            BookHelpListActivity.d_setRight(this.a.a).cancel(true);
+        BookHelpListActivity.a_initContentView(this.a.a, new av(this.a.a, (byte) 0));
         av localav = BookHelpListActivity.h(this.a.a);
         String[] arrayOfString = new String[2];
-        arrayOfString[0] = BookHelpListActivity.f(this.a.a);
+        arrayOfString[0] = BookHelpListActivity.f_setTitle(this.a.a);
         arrayOfString[1] = BookHelpListActivity.g(this.a.a);
         localav.b(arrayOfString);
     }

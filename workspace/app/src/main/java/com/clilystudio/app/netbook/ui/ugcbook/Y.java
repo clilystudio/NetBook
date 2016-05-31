@@ -10,7 +10,7 @@ final class Y
     public final void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean) {
         if (X.a(this.b))
             return;
-        UGCGuideSelectBookActivity.c(this.b.a)[this.a] = paramBoolean;
+        UGCGuideSelectBookActivity.c_initContentView(this.b.a)[this.a] = paramBoolean;
         UGCGuideSelectBookActivity.a(this.b.a, this.a);
     }
 }

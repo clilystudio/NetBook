@@ -9,7 +9,7 @@ final class bF
     }
 
     public final boolean onTouch(View paramView, MotionEvent paramMotionEvent) {
-        SearchActivity.c(this.a);
+        SearchActivity.c_initContentView(this.a);
         return false;
     }
 }

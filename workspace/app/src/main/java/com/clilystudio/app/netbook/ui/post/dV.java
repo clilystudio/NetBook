@@ -35,7 +35,7 @@ final class dV extends ZssqFragmentPagerAdapter {
         while (i < 3) {
             Fragment localFragment = (Fragment) TweetTabActivity.a(paramTweetTabActivity).get(i);
             if (!localFragment.isAdded())
-                localFragmentTransaction.add(TweetTabActivity.b(paramTweetTabActivity).getId(), localFragment, this.a[i]);
+                localFragmentTransaction.add(TweetTabActivity.b_initContentView(paramTweetTabActivity).getId(), localFragment, this.a[i]);
             i++;
         }
         if (!localFragmentTransaction.isEmpty()) {

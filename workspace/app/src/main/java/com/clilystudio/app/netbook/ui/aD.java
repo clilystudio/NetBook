@@ -8,13 +8,13 @@ final class aD
     }
 
     public final void onClick(View paramView) {
-        if (BookInfoActivity.c(this.a.b)) {
+        if (BookInfoActivity.c_initContentView(this.a.b)) {
             this.a.a.setMaxLines(4);
-            BookInfoActivity.b(this.a.b, false);
+            BookInfoActivity.b_initContentView(this.a.b, false);
             return;
         }
         this.a.a.setMaxLines(2147483647);
-        BookInfoActivity.b(this.a.b, true);
+        BookInfoActivity.b_initContentView(this.a.b, true);
     }
 }
 

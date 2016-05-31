@@ -14,8 +14,8 @@ final class bE
     public final void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong) {
         int i = paramInt - SearchActivity.a(this.a).getHeaderViewsCount();
         BookSummary localBookSummary;
-        if ((i >= 0) && (i < SearchActivity.b(this.a).getCount())) {
-            localBookSummary = (BookSummary) SearchActivity.b(this.a).getItem(i);
+        if ((i >= 0) && (i < SearchActivity.b_initContentView(this.a).getCount())) {
+            localBookSummary = (BookSummary) SearchActivity.b_initContentView(this.a).getItem(i);
             if (localBookSummary != null) {
                 if (localBookSummary.getPromLink() != null)
                     break label84;

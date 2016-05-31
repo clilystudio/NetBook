@@ -14,7 +14,7 @@ class f
         as.i();
         i.a().c(new com.clilystudio.app.netbook.event.b());
         e.b(this.a);
-        AudioBookPlayActivity.c(this.a);
+        AudioBookPlayActivity.c_initContentView(this.a);
     }
 }
 

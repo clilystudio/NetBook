@@ -30,8 +30,8 @@ final class m
     }
 
     public final void onPlayProgress(int paramInt1, int paramInt2) {
-        AudioBookPlayActivity.a(this.a, AudioBookPlayActivity.g(this.a), paramInt1 / 1000);
-        AudioBookPlayActivity.a(this.a, AudioBookPlayActivity.v(this.a), paramInt2 / 1000);
+        AudioBookPlayActivity.a_initContentView(this.a, AudioBookPlayActivity.g(this.a), paramInt1 / 1000);
+        AudioBookPlayActivity.a_initContentView(this.a, AudioBookPlayActivity.v(this.a), paramInt2 / 1000);
         AudioBookPlayActivity.e(this.a, true);
         AudioBookPlayActivity.w(this.a).setProgress(paramInt1 * 100 / paramInt2);
         AudioBookPlayActivity.e(this.a, false);
@@ -44,7 +44,7 @@ final class m
 
     public final void onPlayStart() {
         if (AudioBookPlayActivity.i(this.a).size() > AudioBookPlayActivity.k(this.a))
-            AudioBookPlayActivity.b(this.a, true);
+            AudioBookPlayActivity.b_initContentView(this.a, true);
         AudioBookPlayActivity.t(this.a).setImageResource(2130837596);
         AudioBookPlayActivity.j(this.a);
     }
@@ -73,7 +73,7 @@ final class m
             if (AudioBookPlayActivity.k(this.a) == -1 + AudioBookPlayActivity.i(this.a).size())
                 AudioBookPlayActivity.h(this.a);
             AudioBookPlayActivity.d(this.a, 1 + AudioBookPlayActivity.k(this.a));
-            e.a(this.a, AudioBookPlayActivity.d(this.a), 1 + AudioBookPlayActivity.k(this.a));
+            e.a(this.a, AudioBookPlayActivity.d_setTitle(this.a), 1 + AudioBookPlayActivity.k(this.a));
             return;
             label166:
             AudioBookPlayActivity.p(this.a);

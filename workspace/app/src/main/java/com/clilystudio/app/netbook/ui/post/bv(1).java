@@ -11,7 +11,7 @@ final class bv
     public final void onClick(View paramView) {
         this.a.dismiss();
         GirlTopicListActivity.m(this.b).setText(2131034432);
-        GirlTopicListActivity.b(this.b, "created");
+        GirlTopicListActivity.b_initContentView(this.b, "created");
         GirlTopicListActivity.l(this.b).setRefreshing();
     }
 }

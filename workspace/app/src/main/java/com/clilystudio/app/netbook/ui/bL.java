@@ -11,7 +11,7 @@ final class bL
 
     public final void onFocusChange(View paramView, boolean paramBoolean) {
         SearchActivity localSearchActivity = this.a;
-        if (!a.Q(SearchActivity.f(this.a).getText().toString())) ;
+        if (!a.Q(SearchActivity.f_setTitle(this.a).getText().toString())) ;
         for (boolean bool = true; ; bool = false) {
             SearchActivity.a(localSearchActivity, bool);
             return;

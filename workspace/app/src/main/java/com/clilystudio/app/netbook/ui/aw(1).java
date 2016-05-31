@@ -46,7 +46,7 @@ public final class aw extends BaseAdapter {
         }
         while (true) {
             localax2.a.setText(this.b[paramInt]);
-            if (!BookCategoryListActivity.f(this.c).equals(this.b[paramInt]))
+            if (!BookCategoryListActivity.f_setTitle(this.c).equals(this.b[paramInt]))
                 break label166;
             localax2.a.setTextColor(this.c.getResources().getColor(2131427485));
             localax2.b.setVisibility(0);

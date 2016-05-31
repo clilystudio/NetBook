@@ -12,12 +12,12 @@ final class aS extends ZssqFragmentPagerAdapter {
     public aS(BookRankMainActivity paramBookRankMainActivity, FragmentManager paramFragmentManager) {
         super(paramFragmentManager);
         for (int i = 0; i < 3; i++)
-            BookRankMainActivity.b(paramBookRankMainActivity).add(i, BookRankMainActivity.a(paramBookRankMainActivity, BookRankMainActivity.a(paramBookRankMainActivity)[i], this.a[i], this.a[i]));
+            BookRankMainActivity.b_initContentView(paramBookRankMainActivity).add(i, BookRankMainActivity.a(paramBookRankMainActivity, BookRankMainActivity.a(paramBookRankMainActivity)[i], this.a[i], this.a[i]));
         FragmentTransaction localFragmentTransaction = paramFragmentManager.beginTransaction();
         for (int j = 0; j < 3; j++) {
-            Fragment localFragment = (Fragment) BookRankMainActivity.b(paramBookRankMainActivity).get(j);
+            Fragment localFragment = (Fragment) BookRankMainActivity.b_initContentView(paramBookRankMainActivity).get(j);
             if (!localFragment.isAdded())
-                localFragmentTransaction.add(BookRankMainActivity.c(paramBookRankMainActivity).getId(), localFragment, this.a[j]);
+                localFragmentTransaction.add(BookRankMainActivity.c_initContentView(paramBookRankMainActivity).getId(), localFragment, this.a[j]);
         }
         if (!localFragmentTransaction.isEmpty()) {
             localFragmentTransaction.commit();
@@ -26,7 +26,7 @@ final class aS extends ZssqFragmentPagerAdapter {
     }
 
     public final Fragment a(int paramInt) {
-        return (Fragment) BookRankMainActivity.b(this.b).get(paramInt);
+        return (Fragment) BookRankMainActivity.b_initContentView(this.b).get(paramInt);
     }
 
     protected final String b(int paramInt) {

@@ -59,7 +59,7 @@ public class GameListActivity extends BaseLoadingActivity {
         if (localIntent.hasExtra("game_cat_list"))
             this.c = ((GameCat) getIntent().getSerializableExtra("game_cat_list"));
         for (String str = this.c.get_id(); ; str = localIntent.getStringExtra("game_list_title")) {
-            b(str);
+            b_initContentView(str);
             ListView localListView = (ListView) findViewById(2131493135);
             localListView.setDividerHeight(0);
             localListView.setOnItemClickListener(new O(this));

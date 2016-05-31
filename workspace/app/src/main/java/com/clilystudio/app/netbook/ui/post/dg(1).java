@@ -9,12 +9,12 @@ final class dg
     }
 
     public final void a() {
-        if ((ReviewListActivity.f(this.a) == null) || (ReviewListActivity.f(this.a).getStatus() == AsyncTask.Status.FINISHED)) {
+        if ((ReviewListActivity.f_setTitle(this.a) == null) || (ReviewListActivity.f_setTitle(this.a).getStatus() == AsyncTask.Status.FINISHED)) {
             ReviewListActivity.s(this.a).setVisibility(0);
             if (!am_CommonUtils.a_isTaskStoped(ReviewListActivity.j(this.a)))
                 ReviewListActivity.j(this.a).cancel(true);
-            ReviewListActivity.a(this.a, new do (this.a, (byte) 0));
-            do localdo = ReviewListActivity.f(this.a);
+            ReviewListActivity.a_initContentView(this.a, new do (this.a, (byte) 0));
+            do localdo = ReviewListActivity.f_setTitle(this.a);
             String[] arrayOfString = new String[3];
             arrayOfString[0] = ReviewListActivity.g(this.a);
             arrayOfString[1] = ReviewListActivity.h(this.a);

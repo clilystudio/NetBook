@@ -47,7 +47,7 @@ public class PayVoucherActivity extends BaseTabActivity
         setContentView(2130903119);
         this.g = getIntent().getStringExtra("token_key");
         this.b = getResources().getStringArray(2131361801);
-        b("追书券");
+        b_initContentView("追书券");
         this.a = ((TabHost) findViewById(2131493096));
         this.e = ((ViewPager) findViewById(2131493097));
         this.f = new aa(this, getSupportFragmentManager());

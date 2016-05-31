@@ -13,7 +13,7 @@ final class d
 
     public final void onClick(View paramView) {
         Account localAccount = am_CommonUtils.a_isTaskStoped(this.b);
-        if ((localAccount != null) && (AbsPostActivity.b(this.b))) {
+        if ((localAccount != null) && (AbsPostActivity.b_initContentView(this.b))) {
             this.b.e = null;
             String str = this.a.getText().toString();
             AbsPostActivity.a(this.b, str);

@@ -11,7 +11,7 @@ final class ai
     public final void onClick(View paramView) {
         this.a.dismiss();
         BookHelpListActivity.m(this.b).setText(2131034434);
-        BookHelpListActivity.b(this.b, "comment-count");
+        BookHelpListActivity.b_initContentView(this.b, "comment-count");
         BookHelpListActivity.l(this.b).setRefreshing();
     }
 }

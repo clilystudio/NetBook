@@ -8,7 +8,7 @@ final class aM
     }
 
     public final void onClick(View paramView) {
-        BookRankListActivity.a(this.a);
+        BookRankListActivity.a_initContentView(this.a);
     }
 }
 

@@ -19,10 +19,10 @@ final class cu
         String str = this.a.b.b[0];
         File localFile = new File(a.J(c_StoragePathConst.g_Wifi), str);
         if (this.a.a[0] == null) {
-            WifiActivity.a(this.a.b.c, localFile);
+            WifiActivity.a_initContentView(this.a.b.c, localFile);
             this.a.a[0] = Boolean.valueOf(false);
         }
-        WifiActivity.a(this.a.b.c, localFile, arrayOfByte);
+        WifiActivity.a_initContentView(this.a.b.c, localFile, arrayOfByte);
         TxtFileObject.add(new BookFile(localFile));
         cs localcs = this.a.b;
         localcs.a += paramv.c();

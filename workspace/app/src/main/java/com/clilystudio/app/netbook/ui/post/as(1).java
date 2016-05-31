@@ -10,9 +10,9 @@ final class as
 
     public final void onClick(View paramView) {
         this.a.dismiss();
-        BookHelpListActivity.b(this.b, true);
+        BookHelpListActivity.b_initContentView(this.b, true);
         BookHelpListActivity.k(this.b).setText("精品");
-        BookHelpListActivity.a(this.b, "all");
+        BookHelpListActivity.a_initContentView(this.b, "all");
         BookHelpListActivity.l(this.b).setRefreshing();
     }
 }

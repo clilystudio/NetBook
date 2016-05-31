@@ -10,7 +10,7 @@ final class ad extends e<String, Void, PostDetailComment> {
 
     private PostDetailComment a(String[] paramArrayOfString) {
         try {
-            PostDetailComment localPostDetailComment = b.b().f(paramArrayOfString[0], BookHelpActivity.c(this.a).getCount(), 30);
+            PostDetailComment localPostDetailComment = b.b().f(paramArrayOfString[0], BookHelpActivity.c_initContentView(this.a).getCount(), 30);
             return localPostDetailComment;
         } catch (Exception localException) {
             localException.printStackTrace();

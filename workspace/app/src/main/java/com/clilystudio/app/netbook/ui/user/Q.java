@@ -8,7 +8,7 @@ final class Q
     }
 
     public final void a() {
-        PayConsumeActivity.d(this.a).setVisibility(0);
+        PayConsumeActivity.d_setTitle(this.a).setVisibility(0);
         Z localZ = new Z(this.a, (byte) 0);
         String[] arrayOfString = new String[1];
         arrayOfString[0] = PayConsumeActivity.g(this.a);

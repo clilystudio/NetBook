@@ -17,10 +17,10 @@ final class O extends c<Void, ResultStatus> {
         try {
             Account localAccount = am_CommonUtils.a_isTaskStoped(this.a);
             if (localAccount != null) {
-                if (UGCGuideEditBooksActivity.d(this.a))
-                    return b.b().c(UGCGuideEditBooksActivity.e(this.a), localAccount.getToken(), UGCGuideEditBooksActivity.f(this.a));
-                if ((UGCGuideEditBooksActivity.f(this.a) != null) && (!UGCGuideEditBooksActivity.f(this.a).equals("")))
-                    return b.b().a(UGCGuideEditBooksActivity.g(this.a), localAccount.getToken(), UGCGuideEditBooksActivity.f(this.a));
+                if (UGCGuideEditBooksActivity.d_setTitle(this.a))
+                    return b.b().c(UGCGuideEditBooksActivity.d_setRight(this.a), localAccount.getToken(), UGCGuideEditBooksActivity.f_setTitle(this.a));
+                if ((UGCGuideEditBooksActivity.f_setTitle(this.a) != null) && (!UGCGuideEditBooksActivity.f_setTitle(this.a).equals("")))
+                    return b.b().a(UGCGuideEditBooksActivity.g(this.a), localAccount.getToken(), UGCGuideEditBooksActivity.f_setTitle(this.a));
                 ResultStatus localResultStatus = b.b().a(UGCGuideEditBooksActivity.h(this.a), localAccount.getToken());
                 return localResultStatus;
             }

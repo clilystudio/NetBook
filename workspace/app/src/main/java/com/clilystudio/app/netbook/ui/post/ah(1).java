@@ -11,7 +11,7 @@ final class ah
     public final void onClick(View paramView) {
         this.a.dismiss();
         BookHelpListActivity.m(this.b).setText(2131034432);
-        BookHelpListActivity.b(this.b, "created");
+        BookHelpListActivity.b_initContentView(this.b, "created");
         BookHelpListActivity.l(this.b).setRefreshing();
     }
 }

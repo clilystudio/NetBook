@@ -33,7 +33,7 @@ public class AddBookHelpActivity extends BaseActivity {
     public void onCreate(Bundle paramBundle) {
         super.onCreate(paramBundle);
         setContentView(2130903074);
-        a(2131034286, 2131034448, new i(this));
+        a_initContentView(2131034286, R.string.publish, new i(this));
         ShareSDK.initSDK(this);
         this.a = ((EditText) findViewById(2131493065));
         this.b = ((EditText) findViewById(2131493066));

@@ -141,7 +141,7 @@ public class BookHelpActivity extends AbsPostActivity {
     public void onCreate(Bundle paramBundle) {
         super.onCreate(paramBundle);
         a(2130903350);
-        b("书荒互助区详情");
+        b_initContentView("书荒互助区详情");
         this.a = getIntent().getStringExtra("extraBookHelpId");
         this.b = ((ScrollLoadListView) findViewById(2131493135));
         this.k = findViewById(2131493838);

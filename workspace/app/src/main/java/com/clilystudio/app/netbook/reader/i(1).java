@@ -13,7 +13,7 @@ final class i
     public final boolean onItemLongClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong) {
         int i = paramInt - LocalChapterListActivity.a(this.a).getHeaderViewsCount();
         if (i >= 0) {
-            TocDownloadSummary localTocDownloadSummary = (TocDownloadSummary) LocalChapterListActivity.b(this.a).getItem(i);
+            TocDownloadSummary localTocDownloadSummary = (TocDownloadSummary) LocalChapterListActivity.b_initContentView(this.a).getItem(i);
             if (localTocDownloadSummary != null)
                 LocalChapterListActivity.a(this.a, localTocDownloadSummary.getTocId());
         }

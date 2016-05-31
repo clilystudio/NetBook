@@ -58,7 +58,7 @@ public class AudiobookCategoryActivity extends BaseActivity {
     protected void onCreate(Bundle paramBundle) {
         super.onCreate(paramBundle);
         setContentView(2130903080);
-        b(getResources().getString(2131034314));
+        b_initContentView(getResources().getString(2131034314));
         as.a();
         this.a = as.b();
         this.e = findViewById(2131493078);

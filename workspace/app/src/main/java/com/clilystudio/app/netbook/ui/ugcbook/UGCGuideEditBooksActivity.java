@@ -76,7 +76,7 @@ public class UGCGuideEditBooksActivity extends BaseActivity
             ShareSDK.initSDK(this);
             if ((!this.h) && (this.f != null) && (!this.f.equals("")))
                 break label340;
-            a("编辑书单", 2131034475, 2131034448, new H(this));
+            a_initContentView("编辑书单", R.string.save, R.string.publish, new H(this));
         }
         while (true) {
             UGCNewCollection localUGCNewCollection = e();
@@ -99,7 +99,7 @@ public class UGCGuideEditBooksActivity extends BaseActivity
             str2 = "default_name";
             break;
             label340:
-            a("书单详情", 2131034448, new I(this));
+            a_initContentView("书单详情", R.string.publish, new I(this));
         }
     }
 

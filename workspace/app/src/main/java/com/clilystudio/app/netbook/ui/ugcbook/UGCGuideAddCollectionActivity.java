@@ -67,7 +67,7 @@ public class UGCGuideAddCollectionActivity extends BaseActivity {
             i = 2131034563;
         }
         while (true) {
-            a(i, 2131034419, new C(this));
+            a_initContentView(i, 2131034419, new C(this));
             return;
             MyApplication.a_getInstance().a = new UGCNewCollection();
         }

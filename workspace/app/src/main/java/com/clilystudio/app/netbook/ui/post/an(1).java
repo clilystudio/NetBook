@@ -11,7 +11,7 @@ final class an
     }
 
     public final void a(PullToRefreshBase<ListView> paramPullToRefreshBase) {
-        BookHelpListActivity.d(this.a).setVisibility(8);
+        BookHelpListActivity.d_setTitle(this.a).setVisibility(8);
         new Handler().postDelayed(new ao(this), 1000L);
     }
 }

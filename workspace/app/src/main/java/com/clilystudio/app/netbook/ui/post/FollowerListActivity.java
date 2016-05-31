@@ -23,7 +23,7 @@ public class FollowerListActivity extends BaseActivity {
         Bundle localBundle = getIntent().getExtras();
         if (localBundle.getString("type").equals("TYPE_FOLLOWINGS")) ;
         for (String str = "关注"; ; str = "粉丝") {
-            b(str);
+            b_initContentView(str);
             this.c = ((RelativeLayout) findViewById(2131493132));
             this.b = ((ListView) findViewById(2131493131));
             this.b.setDivider(getResources().getDrawable(2130838151));

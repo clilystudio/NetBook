@@ -9,16 +9,16 @@ final class b extends WebViewClient {
     }
 
     public final void doUpdateVisitedHistory(WebView paramWebView, String paramString, boolean paramBoolean) {
-        AdWebViewActivity.b(this.a);
+        AdWebViewActivity.b_initContentView(this.a);
     }
 
     public final void onPageFinished(WebView paramWebView, String paramString) {
-        AdWebViewActivity.d(this.a);
-        AdWebViewActivity.b(this.a);
+        AdWebViewActivity.d_setTitle(this.a);
+        AdWebViewActivity.b_initContentView(this.a);
     }
 
     public final void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap) {
-        AdWebViewActivity.c(this.a);
+        AdWebViewActivity.c_initContentView(this.a);
     }
 
     public final boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString) {

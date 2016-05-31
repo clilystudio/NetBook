@@ -8,15 +8,15 @@ final class aX
     }
 
     public final void a() {
-        if ((CommonPostListActivity.c(this.a) == null) || (CommonPostListActivity.c(this.a).getStatus() == AsyncTask.Status.FINISHED)) {
+        if ((CommonPostListActivity.c_initContentView(this.a) == null) || (CommonPostListActivity.c_initContentView(this.a).getStatus() == AsyncTask.Status.FINISHED)) {
             CommonPostListActivity.q(this.a).setVisibility(0);
-            if (!am_CommonUtils.a_isTaskStoped(CommonPostListActivity.f(this.a)))
-                CommonPostListActivity.f(this.a).cancel(true);
+            if (!am_CommonUtils.a_isTaskStoped(CommonPostListActivity.f_setTitle(this.a)))
+                CommonPostListActivity.f_setTitle(this.a).cancel(true);
             CommonPostListActivity.a(this.a, new bh(this.a, (byte) 0));
-            bh localbh = CommonPostListActivity.c(this.a);
+            bh localbh = CommonPostListActivity.c_initContentView(this.a);
             String[] arrayOfString = new String[2];
-            arrayOfString[0] = CommonPostListActivity.d(this.a);
-            arrayOfString[1] = CommonPostListActivity.e(this.a);
+            arrayOfString[0] = CommonPostListActivity.d_setTitle(this.a);
+            arrayOfString[1] = CommonPostListActivity.d_setRight(this.a);
             localbh.b(arrayOfString);
         }
     }

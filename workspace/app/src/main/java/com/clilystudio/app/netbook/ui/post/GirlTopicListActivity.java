@@ -50,7 +50,7 @@ public class GirlTopicListActivity extends BaseActivity {
     protected void onCreate(Bundle paramBundle) {
         super.onCreate(paramBundle);
         setContentView(2130903104);
-        a("女生区", 2130837866, new bt(this), "编辑话题");
+        a_initContentView("女生区", 2130837866, new bt(this), "编辑话题");
         if (paramBundle != null)
             this.o = paramBundle.getString("savedGirlDuration");
         for (this.p = paramBundle.getString("savedGirlSort"); ; this.p = "updated") {

@@ -67,7 +67,7 @@ public class CommonPostListActivity extends BaseActivity {
         if ("android-feedback".equals(this.r)) {
             str1 = "意见反馈区";
             str2 = "写反馈";
-            a(str1, 2130837866, new aS(this), str2);
+            a_initContentView(str1, 2130837866, new aS(this), str2);
             if (paramBundle != null) {
                 this.a = paramBundle.getString("savedReviewDur");
                 this.b = paramBundle.getString("savedReviewSort");

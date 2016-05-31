@@ -11,14 +11,14 @@ final class aj extends ZssqFragmentPagerAdapter {
 
     public aj(UGCMainActivity paramUGCMainActivity, FragmentManager paramFragmentManager) {
         super(paramFragmentManager);
-        UGCMainActivity.e(paramUGCMainActivity).add(0, paramUGCMainActivity.a(this.a[0], "collectorCount", "last-seven-days"));
-        UGCMainActivity.e(paramUGCMainActivity).add(1, paramUGCMainActivity.a(this.a[1], "created", "all"));
-        UGCMainActivity.e(paramUGCMainActivity).add(2, paramUGCMainActivity.a(this.a[2], "collectorCount", "all"));
+        UGCMainActivity.d_setRight(paramUGCMainActivity).add(0, paramUGCMainActivity.a(this.a[0], "collectorCount", "last-seven-days"));
+        UGCMainActivity.d_setRight(paramUGCMainActivity).add(1, paramUGCMainActivity.a(this.a[1], "created", "all"));
+        UGCMainActivity.d_setRight(paramUGCMainActivity).add(2, paramUGCMainActivity.a(this.a[2], "collectorCount", "all"));
         FragmentTransaction localFragmentTransaction = paramFragmentManager.beginTransaction();
         for (int i = 0; i < 3; i++) {
-            Fragment localFragment = (Fragment) UGCMainActivity.e(paramUGCMainActivity).get(i);
+            Fragment localFragment = (Fragment) UGCMainActivity.d_setRight(paramUGCMainActivity).get(i);
             if (!localFragment.isAdded())
-                localFragmentTransaction.add(UGCMainActivity.f(paramUGCMainActivity).getId(), localFragment, this.a[i]);
+                localFragmentTransaction.add(UGCMainActivity.f_setTitle(paramUGCMainActivity).getId(), localFragment, this.a[i]);
         }
         if (!localFragmentTransaction.isEmpty()) {
             localFragmentTransaction.commit();
@@ -27,7 +27,7 @@ final class aj extends ZssqFragmentPagerAdapter {
     }
 
     public final Fragment a(int paramInt) {
-        return (Fragment) UGCMainActivity.e(this.b).get(paramInt);
+        return (Fragment) UGCMainActivity.d_setRight(this.b).get(paramInt);
     }
 
     protected final String b(int paramInt) {

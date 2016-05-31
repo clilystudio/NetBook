@@ -8,10 +8,10 @@ final class j
     }
 
     public final void onClick(View paramView) {
-        UGCDetailActivity.d(this.a).setMaxLines(2147483647);
-        UGCDetailActivity.d(this.a).setEllipsize(null);
-        UGCDetailActivity.e(this.a).setVisibility(8);
-        UGCDetailActivity.d(this.a).setClickable(false);
+        UGCDetailActivity.d_setTitle(this.a).setMaxLines(2147483647);
+        UGCDetailActivity.d_setTitle(this.a).setEllipsize(null);
+        UGCDetailActivity.d_setRight(this.a).setVisibility(8);
+        UGCDetailActivity.d_setTitle(this.a).setClickable(false);
     }
 }
 

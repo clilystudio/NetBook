@@ -11,11 +11,11 @@ final class bJ
     }
 
     public final boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent) {
-        if (SearchActivity.f(this.a).getText().toString().trim().equals("")) {
+        if (SearchActivity.f_setTitle(this.a).getText().toString().trim().equals("")) {
             e.a(this.a, "请输入要搜索的关键字");
             return true;
         }
-        SearchActivity.a(this.a, true, true);
+        SearchActivity.a_initContentView(this.a, true, true);
         return true;
     }
 }

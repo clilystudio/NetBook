@@ -8,8 +8,8 @@ final class D
     }
 
     public final void a() {
-        if (AddReviewContentActivity.a(this.a))
-            AddReviewContentActivity.b(this.a);
+        if (AddReviewContentActivity.a_initContentView(this.a))
+            AddReviewContentActivity.b_initContentView(this.a);
     }
 }
 

@@ -41,7 +41,7 @@ final class an extends ZssqFragmentPagerAdapter {
         while (i < 4) {
             Fragment localFragment = (Fragment) GameTabActivity.a(paramGameTabActivity).get(i);
             if (!localFragment.isAdded())
-                localFragmentTransaction.add(GameTabActivity.b(paramGameTabActivity).getId(), localFragment, this.a[i]);
+                localFragmentTransaction.add(GameTabActivity.b_initContentView(paramGameTabActivity).getId(), localFragment, this.a[i]);
             i++;
         }
         if (!localFragmentTransaction.isEmpty()) {

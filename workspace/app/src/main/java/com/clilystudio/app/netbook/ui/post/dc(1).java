@@ -11,7 +11,7 @@ final class dc
     public final void onClick(View paramView) {
         this.a.dismiss();
         ReviewListActivity.o(this.b).setText(2131034436);
-        ReviewListActivity.b(this.b, "helpful");
+        ReviewListActivity.b_initContentView(this.b, "helpful");
         ReviewListActivity.n(this.b).setRefreshing();
     }
 }

@@ -36,7 +36,7 @@ public class BookTagListActivity extends BaseLoadingActivity {
         super.onCreate(paramBundle);
         a(2130903386);
         this.c = getIntent().getStringExtra("TAG_LIST_KEY");
-        b(this.c);
+        b_initContentView(this.c);
         LayoutInflater localLayoutInflater = LayoutInflater.from(this);
         this.f = localLayoutInflater.inflate(2130903325, null);
         this.f.setVisibility(8);

@@ -63,7 +63,7 @@ public class UserInfoActivity extends BaseActivity {
         super.onCreate(paramBundle);
         setContentView(2130903141);
         ButterKnife.inject(this);
-        a(2131034578, "编辑资料", new aA(this));
+        a_initContentView(2131034578, "编辑资料", new aA(this));
         this.c = getIntent().getStringExtra("account_token");
         this.a = findViewById(2131493085);
         this.b = findViewById(2131493236);

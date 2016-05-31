@@ -11,7 +11,7 @@ final class d extends WebChromeClient {
     public final void onReceivedTitle(WebView paramWebView, String paramString) {
         super.onReceivedTitle(paramWebView, paramString);
         if (!TextUtils.isEmpty(paramString)) {
-            AdWebViewActivity.c(this.a, paramString);
+            AdWebViewActivity.c_initContentView(this.a, paramString);
             this.a.d(paramString);
         }
     }

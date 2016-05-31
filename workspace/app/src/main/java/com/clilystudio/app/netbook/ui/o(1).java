@@ -11,14 +11,14 @@ final class o
     }
 
     public final void onClick(View paramView) {
-        if (AudioBookPlayActivity.b(this.b.a) == null) {
+        if (AudioBookPlayActivity.b_initContentView(this.b.a) == null) {
             e.a(this.b.a, "播放器出错了");
             return;
         }
         if (this.a != AudioBookPlayActivity.k(this.b.a)) {
             AudioBookPlayActivity.d(this.b.a, true);
-            AudioBookPlayActivity.b(this.b.a, this.a);
-            AudioBookPlayActivity.c(this.b.a, AudioBookPlayActivity.k(this.b.a));
+            AudioBookPlayActivity.b_initContentView(this.b.a, this.a);
+            AudioBookPlayActivity.c_initContentView(this.b.a, AudioBookPlayActivity.k(this.b.a));
         }
         while (true) {
             this.b.notifyDataSetChanged();
@@ -26,7 +26,7 @@ final class o
             if (as.c())
                 as.h();
             else
-                AudioBookPlayActivity.b(this.b.a).d();
+                AudioBookPlayActivity.b_initContentView(this.b.a).d();
         }
     }
 }

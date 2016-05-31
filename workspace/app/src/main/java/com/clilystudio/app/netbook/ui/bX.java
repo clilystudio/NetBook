@@ -12,7 +12,7 @@ final class bX
 
     public final void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean) {
         a.b(this.b, "save_bandwidth", paramBoolean);
-        SettingsActivity.a(this.b, this.a, paramBoolean);
+        SettingsActivity.a_initContentView(this.b, this.a, paramBoolean);
     }
 }
 

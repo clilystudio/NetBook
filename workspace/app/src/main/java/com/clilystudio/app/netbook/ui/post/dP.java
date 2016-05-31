@@ -8,16 +8,16 @@ final class dP
     }
 
     public final void onClick(View paramView) {
-        if (TweetTabActivity.c(this.a)) {
+        if (TweetTabActivity.c_initContentView(this.a)) {
             TweetTabActivity.a(this.a, false);
-            TweetTabActivity.d(this.a);
-            TweetTabActivity.e(this.a).setContentDescription("关闭选项");
+            TweetTabActivity.d_setTitle(this.a);
+            TweetTabActivity.d_setRight(this.a).setContentDescription("关闭选项");
             return;
         }
-        TweetTabActivity.f(this.a);
+        TweetTabActivity.f_setTitle(this.a);
         TweetTabActivity.a(this.a, true);
         TweetTabActivity.g(this.a);
-        TweetTabActivity.e(this.a).setContentDescription("展开选项");
+        TweetTabActivity.d_setRight(this.a).setContentDescription("展开选项");
     }
 }
 

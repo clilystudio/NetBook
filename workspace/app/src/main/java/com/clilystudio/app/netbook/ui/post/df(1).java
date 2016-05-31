@@ -8,8 +8,8 @@ final class df
     }
 
     public final void onClick(View paramView) {
-        ReviewListActivity.a(this.a, 1).showAsDropDown(paramView, 0, 1);
-        ReviewListActivity.c(this.a).setImageDrawable(this.a.getResources().getDrawable(2130837722));
+        ReviewListActivity.a_initContentView(this.a, 1).showAsDropDown(paramView, 0, 1);
+        ReviewListActivity.c_initContentView(this.a).setImageDrawable(this.a.getResources().getDrawable(2130837722));
     }
 }
 

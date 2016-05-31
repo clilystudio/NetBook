@@ -8,7 +8,7 @@ final class B
     }
 
     public final void onClick(View paramView) {
-        if (AudiobookInfoActivity.b(this.a.b)) {
+        if (AudiobookInfoActivity.b_initContentView(this.a.b)) {
             this.a.a.setMaxLines(4);
             AudiobookInfoActivity.a(this.a.b, false);
             return;

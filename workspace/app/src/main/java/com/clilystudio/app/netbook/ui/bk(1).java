@@ -11,7 +11,7 @@ final class bk
     }
 
     public final void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong) {
-        MhdInfo localMhdInfo = (MhdInfo) MhdListActivity.b(this.a).getItem(paramInt);
+        MhdInfo localMhdInfo = (MhdInfo) MhdListActivity.b_initContentView(this.a).getItem(paramInt);
         if (localMhdInfo != null)
             MhdListActivity.a(this.a, localMhdInfo.getBigbookid());
         b.a(this.a, "mhd_list_item_click");

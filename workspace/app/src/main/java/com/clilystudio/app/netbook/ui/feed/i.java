@@ -11,7 +11,7 @@ final class i
     public final void onClick(View paramView) {
         this.a.dismiss();
         if (this.b != this.c)
-            FeedSettingActivity.b(this.d, this.b);
+            FeedSettingActivity.b_initContentView(this.d, this.b);
     }
 }
 

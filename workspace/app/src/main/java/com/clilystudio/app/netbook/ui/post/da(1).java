@@ -11,7 +11,7 @@ final class da
     public final void onClick(View paramView) {
         this.a.dismiss();
         ReviewListActivity.o(this.b).setText(2131034433);
-        ReviewListActivity.b(this.b, "updated");
+        ReviewListActivity.b_initContentView(this.b, "updated");
         ReviewListActivity.n(this.b).setRefreshing();
     }
 }

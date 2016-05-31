@@ -6,8 +6,8 @@ final class B
     }
 
     public final void run() {
-        if (UGCGuideAddBookActivity.d(this.a.a) != null)
-            UGCGuideAddBookActivity.d(this.a.a).setSelection(0);
+        if (UGCGuideAddBookActivity.d_setTitle(this.a.a) != null)
+            UGCGuideAddBookActivity.d_setTitle(this.a.a).setSelection(0);
     }
 }
 

@@ -8,8 +8,8 @@ final class u
     }
 
     public final void a() {
-        if (AddGirlTopicActivity.a(this.a))
-            AddGirlTopicActivity.b(this.a);
+        if (AddGirlTopicActivity.a_initContentView(this.a))
+            AddGirlTopicActivity.b_initContentView(this.a);
     }
 }
 

@@ -79,7 +79,7 @@ public class BookCategoryListActivity extends BaseTabActivity
     private void i() {
         if ((this.f != null) && (this.f.isShowing()))
             this.f.dismiss();
-        e("筛选");
+        d_setRight("筛选");
     }
 
     public final BookCategoryFragment a(String paramString) {
@@ -145,7 +145,7 @@ public class BookCategoryListActivity extends BaseTabActivity
             localListView.setAdapter(this.g);
             localListView.setOnItemClickListener(new at(this, arrayOfString3));
             if (this.h)
-                b(this.c);
+                b_initContentView(this.c);
             while (true) {
                 this.a = ((TabHost) findViewById(2131493096));
                 this.k = ((ViewPager) findViewById(2131493097));

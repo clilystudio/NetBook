@@ -8,14 +8,14 @@ final class by
     }
 
     public final void a() {
-        if ((GirlTopicListActivity.e(this.a) == null) || (GirlTopicListActivity.e(this.a).getStatus() == AsyncTask.Status.FINISHED)) {
+        if ((GirlTopicListActivity.d_setRight(this.a) == null) || (GirlTopicListActivity.d_setRight(this.a).getStatus() == AsyncTask.Status.FINISHED)) {
             GirlTopicListActivity.p(this.a).setVisibility(0);
             if (!am_CommonUtils.a_isTaskStoped(GirlTopicListActivity.h(this.a)))
                 GirlTopicListActivity.h(this.a).cancel(true);
-            GirlTopicListActivity.a(this.a, new bI(this.a, (byte) 0));
-            bI localbI = GirlTopicListActivity.e(this.a);
+            GirlTopicListActivity.a_initContentView(this.a, new bI(this.a, (byte) 0));
+            bI localbI = GirlTopicListActivity.d_setRight(this.a);
             String[] arrayOfString = new String[2];
-            arrayOfString[0] = GirlTopicListActivity.f(this.a);
+            arrayOfString[0] = GirlTopicListActivity.f_setTitle(this.a);
             arrayOfString[1] = GirlTopicListActivity.g(this.a);
             localbI.b(arrayOfString);
         }

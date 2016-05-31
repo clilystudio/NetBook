@@ -39,8 +39,8 @@ public class ReaderMixActivity extends BaseLoadingActivity {
     protected void onCreate(Bundle paramBundle) {
         super.onCreate(paramBundle);
         a(2130903321);
-        c(2131034482);
-        d(2130837881);
+        c_initContentView(2131034482);
+        d_setBackIcon(2130837881);
         this.a = getIntent().getStringExtra("BOOK_ID");
         this.b = getIntent().getStringExtra("BOOK_TITLE");
         this.c = getIntent().getStringExtra("SOURCE");

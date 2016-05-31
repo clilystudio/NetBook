@@ -8,7 +8,7 @@ final class af
     }
 
     public final void a() {
-        BookHelpListActivity.a(this.a);
+        BookHelpListActivity.a_initContentView(this.a);
     }
 }
 

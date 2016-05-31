@@ -11,10 +11,10 @@ final class bT extends b {
     protected final void a(TopicCount paramTopicCount) {
         ReaderResActivity.a(this.a, paramTopicCount.getCount());
         if (Math.max(0, ReaderResActivity.a(this.a) - BookTopicEnterRecord.get(this.a.b).getVisitCount()) == 0) {
-            ReaderResActivity.b(this.a).setVisibility(4);
+            ReaderResActivity.b_initContentView(this.a).setVisibility(4);
             return;
         }
-        ReaderResActivity.b(this.a).setVisibility(0);
+        ReaderResActivity.b_initContentView(this.a).setVisibility(0);
     }
 }
 

@@ -9,8 +9,8 @@ final class bi
     }
 
     public final boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent) {
-        if ((paramInt == 4) && (LuckyGameWebActivity.d(this.a).canGoBack())) {
-            LuckyGameWebActivity.d(this.a).goBack();
+        if ((paramInt == 4) && (LuckyGameWebActivity.d_setTitle(this.a).canGoBack())) {
+            LuckyGameWebActivity.d_setTitle(this.a).goBack();
             return true;
         }
         return false;

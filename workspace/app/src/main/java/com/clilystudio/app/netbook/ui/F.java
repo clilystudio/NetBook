@@ -42,12 +42,12 @@ final class F
     public final void onSoundSwitch(int paramInt1, int paramInt2, int paramInt3) {
         if (AudiobookInfoActivity.q(this.a)) {
             AudiobookInfoActivity.h(this.a).setPlayButtonDefault(AudiobookInfoActivity.m(this.a));
-            AudiobookInfoActivity.c(this.a, 1 + AudiobookInfoActivity.m(this.a));
+            AudiobookInfoActivity.c_initContentView(this.a, 1 + AudiobookInfoActivity.m(this.a));
             AudiobookInfoActivity.h(this.a).a(AudiobookInfoActivity.m(this.a), true);
             AudiobookInfoActivity.r(this.a);
             return;
         }
-        AudiobookInfoActivity.f(this.a, true);
+        AudiobookInfoActivity.f_setTitle(this.a, true);
     }
 }
 

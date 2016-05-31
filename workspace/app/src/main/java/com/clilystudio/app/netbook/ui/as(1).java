@@ -8,7 +8,7 @@ final class as
     }
 
     public final void onClick(View paramView) {
-        BookCategoryListActivity.e(this.a);
+        BookCategoryListActivity.d_setRight(this.a);
     }
 }
 

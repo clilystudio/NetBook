@@ -19,7 +19,7 @@ public class UserTopicActivity extends SimpleTabActivity {
 
     protected void onCreate(Bundle paramBundle) {
         super.onCreate(paramBundle);
-        b("话题");
+        b_initContentView("话题");
     }
 }
 

@@ -8,9 +8,9 @@ final class ca
     }
 
     public final void run() {
-        if (!am_CommonUtils.a_isTaskStoped(OtherUserActivity.b(this.a.a)))
-            OtherUserActivity.b(this.a.a).cancel(true);
-        OtherUserActivity.c(this.a.a);
+        if (!am_CommonUtils.a_isTaskStoped(OtherUserActivity.b_initContentView(this.a.a)))
+            OtherUserActivity.b_initContentView(this.a.a).cancel(true);
+        OtherUserActivity.c_initContentView(this.a.a);
     }
 }
 

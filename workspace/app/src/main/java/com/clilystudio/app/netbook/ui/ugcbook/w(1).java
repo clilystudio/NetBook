@@ -15,7 +15,7 @@ final class w extends A {
 
     protected final void onPreExecute() {
         super.onPreExecute();
-        UGCGuideAddBookActivity.a(this.b, UGCGuideAddBookActivity.a(this.b).getText().toString());
+        UGCGuideAddBookActivity.a_initContentView(this.b, UGCGuideAddBookActivity.a_initContentView(this.b).getText().toString());
     }
 }
 

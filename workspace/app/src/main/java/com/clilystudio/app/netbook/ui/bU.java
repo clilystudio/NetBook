@@ -6,7 +6,7 @@ final class bU
     }
 
     public final void a() {
-        SettingsActivity.a(this.a);
+        SettingsActivity.a_initContentView(this.a);
     }
 }
 

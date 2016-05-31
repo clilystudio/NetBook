@@ -8,7 +8,7 @@ final class z
     }
 
     public final void onClick(View paramView) {
-        UGCGuideAddBookActivity.a(this.b.a, this.a);
+        UGCGuideAddBookActivity.a_initContentView(this.b.a, this.a);
         this.b.notifyDataSetChanged();
     }
 }

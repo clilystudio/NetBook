@@ -8,7 +8,7 @@ final class f
     }
 
     public final void onClick(View paramView) {
-        GameDetailActivity.d(this.a);
+        GameDetailActivity.d_setTitle(this.a);
     }
 }
 

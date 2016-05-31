@@ -10,18 +10,18 @@ final class bo extends CountDownTimer {
     }
 
     public final void onFinish() {
-        MysteryActivity.c(this.b);
+        MysteryActivity.c_initContentView(this.b);
     }
 
     public final void onTick(long paramLong) {
         MysteryActivity.a(this.b, new Date().getTime());
         long l = paramLong - this.a;
         if (l > 0L) {
-            MysteryActivity.b(this.b).setText(String.valueOf(l / 1000L));
+            MysteryActivity.b_initContentView(this.b).setText(String.valueOf(l / 1000L));
             return;
         }
-        MysteryActivity.c(this.b);
-        MysteryActivity.d(this.b);
+        MysteryActivity.c_initContentView(this.b);
+        MysteryActivity.d_setTitle(this.b);
     }
 }
 

@@ -15,7 +15,7 @@ final class bQ extends Filter {
     }
 
     protected final Filter.FilterResults performFiltering(CharSequence paramCharSequence) {
-        String str = SearchActivity.f(this.a.a).getText().toString();
+        String str = SearchActivity.f_setTitle(this.a.a).getText().toString();
         ArrayList localArrayList = new ArrayList();
         localArrayList.add(str);
         localArrayList.add(paramCharSequence.toString());
@@ -51,7 +51,7 @@ final class bQ extends Filter {
         Object localObject;
         label108:
         SearchFixListView localSearchFixListView;
-        if ((i > 2) && (!SearchActivity.c(this.a.a, str))) {
+        if ((i > 2) && (!SearchActivity.c_initContentView(this.a.a, str))) {
             localObject = localList.subList(0, i - 2);
             SearchActivity.SearchPromptAdapter.a(this.a, (List) localObject);
             if (!SearchActivity.SearchPromptAdapter.a(this.a).isEmpty())

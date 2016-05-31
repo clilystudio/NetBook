@@ -159,7 +159,7 @@ public class ModifyUserInfoActivity extends BaseActivity
     protected void onCreate(Bundle paramBundle) {
         super.onCreate(paramBundle);
         setContentView(2130903114);
-        b("编辑资料");
+        b_initContentView("编辑资料");
         ButterKnife.inject(this);
         this.a = am_CommonUtils.a(this).getUser();
         this.mPortrait.setImageUrl(this.a.getFullAvatar());

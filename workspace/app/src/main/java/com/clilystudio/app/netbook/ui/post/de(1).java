@@ -6,9 +6,9 @@ final class de
     }
 
     public final void onDismiss() {
-        ReviewListActivity.b(this.a).setImageDrawable(this.a.getResources().getDrawable(2130837721));
-        ReviewListActivity.c(this.a).setImageDrawable(this.a.getResources().getDrawable(2130837721));
-        ReviewListActivity.d(this.a).setImageDrawable(this.a.getResources().getDrawable(2130837721));
+        ReviewListActivity.b_initContentView(this.a).setImageDrawable(this.a.getResources().getDrawable(2130837721));
+        ReviewListActivity.c_initContentView(this.a).setImageDrawable(this.a.getResources().getDrawable(2130837721));
+        ReviewListActivity.d_setTitle(this.a).setImageDrawable(this.a.getResources().getDrawable(2130837721));
     }
 }
 

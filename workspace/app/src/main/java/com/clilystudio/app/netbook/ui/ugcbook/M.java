@@ -13,7 +13,7 @@ final class M
 
     public final void onClick(DialogInterface paramDialogInterface, int paramInt) {
         this.a.remove(this.b);
-        UGCGuideEditBooksActivity.c(this.c);
+        UGCGuideEditBooksActivity.c_initContentView(this.c);
     }
 }
 

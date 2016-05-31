@@ -24,8 +24,8 @@ final class W
         while (localIterator.hasNext())
             localArrayList1.add(((BookSummary) localIterator.next()).getId());
         ArrayList localArrayList2 = new ArrayList();
-        for (int i = 0; i < UGCGuideSelectBookActivity.b(this.a).size(); i++) {
-            String str = ((BookReadRecord) UGCGuideSelectBookActivity.b(this.a).get(i)).getBookId();
+        for (int i = 0; i < UGCGuideSelectBookActivity.b_initContentView(this.a).size(); i++) {
+            String str = ((BookReadRecord) UGCGuideSelectBookActivity.b_initContentView(this.a).get(i)).getBookId();
             if (!localArrayList1.contains(str))
                 localArrayList2.add(str);
         }

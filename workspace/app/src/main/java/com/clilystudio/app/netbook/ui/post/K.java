@@ -8,7 +8,7 @@ final class K
     }
 
     public final void a() {
-        AddVoteActivity.a(this.a, AddVoteActivity.a(this.a));
+        AddVoteActivity.a_initContentView(this.a, AddVoteActivity.a_initContentView(this.a));
     }
 }
 

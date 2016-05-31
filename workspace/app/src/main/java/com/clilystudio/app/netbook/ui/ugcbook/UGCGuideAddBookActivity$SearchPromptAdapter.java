@@ -47,12 +47,12 @@ public final class UGCGuideAddBookActivity$SearchPromptAdapter extends BaseAdapt
     }
 
     public final void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong) {
-        UGCGuideAddBookActivity.f(this.a).setVisibility(8);
+        UGCGuideAddBookActivity.f_setTitle(this.a).setVisibility(8);
         if ((paramInt >= 0) && (paramInt < this.b.size())) {
             String str = (String) this.b.get(paramInt);
-            UGCGuideAddBookActivity.a(this.a).setTextByCode(str);
+            UGCGuideAddBookActivity.a_initContentView(this.a).setTextByCode(str);
             UGCGuideAddBookActivity.g(this.a);
-            UGCGuideAddBookActivity.a(this.a, false);
+            UGCGuideAddBookActivity.a_initContentView(this.a, false);
         }
     }
 }

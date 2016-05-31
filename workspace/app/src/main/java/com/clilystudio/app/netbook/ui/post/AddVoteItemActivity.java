@@ -55,7 +55,7 @@ public class AddVoteItemActivity extends BaseActivity {
             this.l = getIntent().getStringExtra("add_vote_title");
             this.m = getIntent().getStringExtra("add_vote_desc");
             this.n = getIntent().getBooleanExtra("book_post_list_from_reader", false);
-            b("编辑投票项");
+            b_initContentView("编辑投票项");
             int[] arrayOfInt1 = {2131492890, 2131492891, 2131492892, 2131492893, 2131492894, 2131492895, 2131492896};
             int[] arrayOfInt2 = {2131492876, 2131492877, 2131492878, 2131492879, 2131492880, 2131492881, 2131492882};
             arrayOfInt3 = new int[]{2131492871, 2131492872, 2131492873, 2131492874, 2131492875};

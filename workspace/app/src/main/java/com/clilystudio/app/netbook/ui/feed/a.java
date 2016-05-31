@@ -8,7 +8,7 @@ final class a
     }
 
     public final void a() {
-        FeedAddActivity.a(this.a);
+        FeedAddActivity.a_initContentView(this.a);
     }
 }
 

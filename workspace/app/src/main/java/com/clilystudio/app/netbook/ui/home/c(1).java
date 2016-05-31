@@ -10,7 +10,7 @@ final class c
 
     public final boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent) {
         if ((paramKeyEvent.getAction() == 0) && (paramInt == 82) && (paramKeyEvent.getRepeatCount() == 0)) {
-            HomeActivity.d(this.a);
+            HomeActivity.d_setTitle(this.a);
             return true;
         }
         return false;

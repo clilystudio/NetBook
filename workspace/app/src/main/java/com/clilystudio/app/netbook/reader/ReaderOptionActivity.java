@@ -26,7 +26,7 @@ public class ReaderOptionActivity extends BaseActivity {
     public void onCreate(Bundle paramBundle) {
         super.onCreate(paramBundle);
         setContentView(2130903366);
-        b(2131034461);
+        b_initContentView(2131034461);
         SwitchCompat localSwitchCompat1;
         SwitchCompat localSwitchCompat2;
         SwitchCompat localSwitchCompat3;

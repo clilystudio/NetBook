@@ -11,7 +11,7 @@ final class aH
     }
 
     public final void onClick(DialogInterface paramDialogInterface, int paramInt) {
-        BookInfoActivity.c(this.b, this.a.isChecked());
+        BookInfoActivity.c_initContentView(this.b, this.a.isChecked());
         this.b.startActivity(AuthLoginActivity.a(this.b));
     }
 }

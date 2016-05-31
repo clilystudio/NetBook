@@ -10,7 +10,7 @@ final class T extends ah<GameLocalListActivity.GameViewHolder> {
     }
 
     public final int a() {
-        return GameLocalListActivity.a(this.a).size();
+        return GameLocalListActivity.a_initContentView(this.a).size();
     }
 }
 

@@ -11,7 +11,7 @@ final class aN
 
     @TargetApi(11)
     public final void run() {
-        BookRankListActivity.b(this.b).smoothScrollToPositionFromTop(this.a.a(), 0);
+        BookRankListActivity.b_initContentView(this.b).smoothScrollToPositionFromTop(this.a.a(), 0);
     }
 }
 

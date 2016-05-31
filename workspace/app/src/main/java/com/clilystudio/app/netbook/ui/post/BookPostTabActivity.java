@@ -95,7 +95,7 @@ public class BookPostTabActivity extends SimpleTabActivity {
         String str = this.h;
         if ((str != null) && (str.length() > 10))
             str = str.substring(0, 10) + "...";
-        a(str, 2130837872, new aw(this), "排序");
+        a_initContentView(str, 2130837872, new aw(this), "排序");
         if (getIntent().getBooleanExtra("FROM_READER", false)) {
             a_ActivityStack.a_getInstance();
             a_ActivityStack.b_clearAll();
@@ -107,7 +107,7 @@ public class BookPostTabActivity extends SimpleTabActivity {
         super.onNewIntent(paramIntent);
         this.g = paramIntent.getStringExtra("BOOK_ID");
         this.h = paramIntent.getStringExtra("BOOK_TITLE");
-        d(this.h);
+        d_setTitle(this.h);
         i.a().c(new f());
     }
 }

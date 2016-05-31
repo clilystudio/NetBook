@@ -15,7 +15,7 @@ final class aX extends e<String, Void, List<BookSummary>> {
 
     private List<BookSummary> a() {
         try {
-            BookTagRoot localBookTagRoot = b.b().c(BookTagListActivity.b(this.a), 0, 50);
+            BookTagRoot localBookTagRoot = b.b().c(BookTagListActivity.b_initContentView(this.a), 0, 50);
             if ((localBookTagRoot != null) && (localBookTagRoot.getBooks() != null)) {
                 List localList = Arrays.asList(localBookTagRoot.getBooks());
                 return localList;

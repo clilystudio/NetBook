@@ -6,8 +6,8 @@ final class P
     }
 
     public final void run() {
-        ScanTxtFileActivity.a(this.a).a(ScanTxtFileActivity.b(this.a));
-        ScanTxtFileActivity.a(this.a, ScanTxtFileActivity.b(this.a).size());
+        ScanTxtFileActivity.a_initContentView(this.a).a(ScanTxtFileActivity.b_initContentView(this.a));
+        ScanTxtFileActivity.a_initContentView(this.a, ScanTxtFileActivity.b_initContentView(this.a).size());
     }
 }
 

@@ -8,7 +8,7 @@ final class aF
     }
 
     public final void onClick(View paramView) {
-        UserInfoActivity.b(this.a);
+        UserInfoActivity.b_initContentView(this.a);
         b.a(this.a, "my_account_click");
     }
 }

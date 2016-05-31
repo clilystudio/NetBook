@@ -11,8 +11,8 @@ final class bF
     public final void onClick(View paramView) {
         this.a.dismiss();
         GirlTopicListActivity.k(this.b).setText("全部");
-        GirlTopicListActivity.b(this.b, false);
-        GirlTopicListActivity.a(this.b, "all");
+        GirlTopicListActivity.b_initContentView(this.b, false);
+        GirlTopicListActivity.a_initContentView(this.b, "all");
         GirlTopicListActivity.l(this.b).setRefreshing();
     }
 }

@@ -14,7 +14,7 @@ final class u
         UGCGuideAddBookActivity localUGCGuideAddBookActivity = this.a;
         if (!a.Q(paramEditable.toString())) ;
         for (boolean bool = true; ; bool = false) {
-            UGCGuideAddBookActivity.c(localUGCGuideAddBookActivity, bool);
+            UGCGuideAddBookActivity.c_initContentView(localUGCGuideAddBookActivity, bool);
             return;
         }
     }
@@ -23,7 +23,7 @@ final class u
     }
 
     public final void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {
-        UGCGuideAddBookActivity.a(this.a, null);
+        UGCGuideAddBookActivity.a_initContentView(this.a, null);
     }
 }
 

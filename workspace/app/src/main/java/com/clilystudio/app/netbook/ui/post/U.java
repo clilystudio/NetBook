@@ -9,7 +9,7 @@ final class U
     }
 
     public final void onClick(DialogInterface paramDialogInterface, int paramInt) {
-        AddVoteItemActivity.a(this.b, this.a);
+        AddVoteItemActivity.a_initContentView(this.b, this.a);
     }
 }
 

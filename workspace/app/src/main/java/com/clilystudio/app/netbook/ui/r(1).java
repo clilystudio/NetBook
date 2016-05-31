@@ -8,7 +8,7 @@ final class r
     }
 
     public final void onClick(View paramView) {
-        AudiobookCategoryActivity.b(this.a);
+        AudiobookCategoryActivity.b_initContentView(this.a);
     }
 }
 

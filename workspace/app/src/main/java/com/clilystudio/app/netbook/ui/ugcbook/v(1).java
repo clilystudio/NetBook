@@ -11,9 +11,9 @@ final class v
 
     public final void onFocusChange(View paramView, boolean paramBoolean) {
         UGCGuideAddBookActivity localUGCGuideAddBookActivity = this.a;
-        if (!a.Q(UGCGuideAddBookActivity.a(this.a).getText().toString())) ;
+        if (!a.Q(UGCGuideAddBookActivity.a_initContentView(this.a).getText().toString())) ;
         for (boolean bool = true; ; bool = false) {
-            UGCGuideAddBookActivity.c(localUGCGuideAddBookActivity, bool);
+            UGCGuideAddBookActivity.c_initContentView(localUGCGuideAddBookActivity, bool);
             return;
         }
     }

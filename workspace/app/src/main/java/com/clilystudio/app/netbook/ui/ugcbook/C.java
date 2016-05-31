@@ -8,7 +8,7 @@ final class C
     }
 
     public final void a() {
-        UGCGuideAddCollectionActivity.a(this.a);
+        UGCGuideAddCollectionActivity.a_initContentView(this.a);
     }
 }
 

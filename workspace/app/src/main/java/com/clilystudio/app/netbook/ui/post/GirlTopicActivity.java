@@ -198,7 +198,7 @@ public class GirlTopicActivity extends AbsPostActivity {
     public void onCreate(Bundle paramBundle) {
         super.onCreate(paramBundle);
         a(2130903350);
-        b("女生区话题详情");
+        b_initContentView("女生区话题详情");
         this.a = getIntent().getStringExtra("extraGirlTopicId");
         this.b = ((ScrollLoadListView) findViewById(2131493135));
         this.k = findViewById(2131493838);

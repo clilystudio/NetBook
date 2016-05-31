@@ -8,7 +8,7 @@ final class cb
     }
 
     public final void onClick(View paramView) {
-        OtherUserActivity.d(this.a);
+        OtherUserActivity.d_setTitle(this.a);
     }
 }
 

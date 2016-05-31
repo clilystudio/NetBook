@@ -14,7 +14,7 @@ final class r extends e<String, Void, List<GamePostRoot.GamePost>> {
 
     private List<GamePostRoot.GamePost> a(String[] paramArrayOfString) {
         try {
-            GamePostRoot localGamePostRoot = b.b().d(paramArrayOfString[0], GameDetailActivity.c(this.a).size(), 10);
+            GamePostRoot localGamePostRoot = b.b().d(paramArrayOfString[0], GameDetailActivity.c_initContentView(this.a).size(), 10);
             if ((localGamePostRoot != null) && (localGamePostRoot.getPosts() != null)) {
                 List localList = Arrays.asList(localGamePostRoot.getPosts());
                 return localList;

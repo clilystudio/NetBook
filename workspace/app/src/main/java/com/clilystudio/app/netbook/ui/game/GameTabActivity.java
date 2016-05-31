@@ -38,7 +38,7 @@ public class GameTabActivity extends BaseTabActivity
     protected void onCreate(Bundle paramBundle) {
         super.onCreate(paramBundle);
         setContentView(2130903103);
-        b(2131034214);
+        b_initContentView(2131034214);
         this.a = ((TabHost) findViewById(2131493096));
         this.e = ((ViewPager) findViewById(2131493097));
         this.f = new an(this, getSupportFragmentManager());

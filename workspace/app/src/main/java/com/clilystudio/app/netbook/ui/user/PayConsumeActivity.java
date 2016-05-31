@@ -48,7 +48,7 @@ public class PayConsumeActivity extends BaseLoadingActivity {
         localTextView.setCompoundDrawablesWithIntrinsicBounds(null, getResources().getDrawable(2130838029), null, null);
         localTextView.setTextSize(2, getResources().getDimension(2131099793) / 3.0F);
         localTextView.setCompoundDrawablePadding((int) getResources().getDimension(2131099721));
-        b(getIntent().getStringExtra("title_key"));
+        b_initContentView(getIntent().getStringExtra("title_key"));
         this.g = getIntent().getStringExtra("token_key");
         LayoutInflater localLayoutInflater = LayoutInflater.from(this);
         this.b = localLayoutInflater.inflate(2130903325, null);

@@ -15,8 +15,8 @@ final class bD
 
     public final void onClick(View paramView) {
         if (!this.a.equals(ReaderMixActivity.a(this.b))) {
-            MyApplication.a_getInstance().c(ReaderMixActivity.b(this.b));
-            am_CommonUtils.c_setReadMode(ReaderMixActivity.b(this.b), 9);
+            MyApplication.a_getInstance().c(ReaderMixActivity.b_initContentView(this.b));
+            am_CommonUtils.c_setReadMode(ReaderMixActivity.b_initContentView(this.b), 9);
             i.a().c(new v(1));
             ReaderMixActivity.a(this.b, ReaderMixActivity.f(this.b).get_id());
         }

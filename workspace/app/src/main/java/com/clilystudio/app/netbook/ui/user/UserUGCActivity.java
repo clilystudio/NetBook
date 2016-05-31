@@ -28,7 +28,7 @@ public class UserUGCActivity extends SimpleTabActivity {
 
     protected void onCreate(Bundle paramBundle) {
         super.onCreate(paramBundle);
-        b("我的书单");
+        b_initContentView("我的书单");
     }
 }
 

@@ -8,7 +8,7 @@ final class Q
     }
 
     public final void onClick(View paramView) {
-        AddVoteItemActivity.a(this.a);
+        AddVoteItemActivity.a_initContentView(this.a);
     }
 }
 

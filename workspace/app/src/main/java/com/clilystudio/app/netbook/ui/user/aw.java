@@ -9,11 +9,11 @@ final class aw extends TimerTask {
     }
 
     public final void run() {
-        if (SmsVerifyActivity.b(this.a) > 0)
-            SmsVerifyActivity.c(this.a);
+        if (SmsVerifyActivity.b_initContentView(this.a) > 0)
+            SmsVerifyActivity.c_initContentView(this.a);
         Message localMessage = new Message();
         localMessage.what = 1;
-        localMessage.arg1 = SmsVerifyActivity.b(this.a);
+        localMessage.arg1 = SmsVerifyActivity.b_initContentView(this.a);
         this.a.a.sendMessage(localMessage);
     }
 }

@@ -8,7 +8,7 @@ final class ar
     }
 
     public final void onClick(DialogInterface paramDialogInterface, int paramInt) {
-        SmsSendActivity.e(this.a);
+        SmsSendActivity.d_setRight(this.a);
     }
 }
 

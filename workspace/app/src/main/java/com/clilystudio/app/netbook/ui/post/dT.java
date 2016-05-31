@@ -8,8 +8,8 @@ final class dT
     }
 
     public final void onClick(View paramView) {
-        if (TweetTabActivity.c(this.a)) {
-            TweetTabActivity.d(this.a);
+        if (TweetTabActivity.c_initContentView(this.a)) {
+            TweetTabActivity.d_setTitle(this.a);
             TweetTabActivity.a(this.a, false);
         }
     }

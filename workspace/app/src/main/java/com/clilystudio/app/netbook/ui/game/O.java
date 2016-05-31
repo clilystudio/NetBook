@@ -13,7 +13,7 @@ final class O
 
     public final void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong) {
         Game localGame = (Game) GameListActivity.a(this.a).get(paramInt);
-        Intent localIntent = GameDetailActivity.a(this.a, localGame.get_id(), GameListActivity.b(this.a), false);
+        Intent localIntent = GameDetailActivity.a(this.a, localGame.get_id(), GameListActivity.b_initContentView(this.a), false);
         this.a.startActivity(localIntent);
         b.a(this.a, "game_pasted_item_click", localGame.getName());
     }

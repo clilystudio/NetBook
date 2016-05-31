@@ -10,7 +10,7 @@ final class s
     }
 
     public final void a() {
-        UGCGuideAddBookActivity.a(this.b, true);
+        UGCGuideAddBookActivity.a_initContentView(this.b, true);
         String str = String.valueOf(Calendar.getInstance().getTimeInMillis());
         this.a.getFilter().filter(str);
     }

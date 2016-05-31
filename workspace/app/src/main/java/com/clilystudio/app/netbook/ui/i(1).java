@@ -10,11 +10,11 @@ final class i
     }
 
     public final void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean) {
-        if (AudioBookPlayActivity.e(this.a))
+        if (AudioBookPlayActivity.d_setRight(this.a))
             return;
-        as.a(10 * (paramInt * AudioBookPlayActivity.f(this.a)));
-        AudioBookPlayActivity.b(this.a).d();
-        AudioBookPlayActivity.a(this.a, AudioBookPlayActivity.g(this.a), paramInt * AudioBookPlayActivity.f(this.a) / 100);
+        as.a(10 * (paramInt * AudioBookPlayActivity.f_setTitle(this.a)));
+        AudioBookPlayActivity.b_initContentView(this.a).d();
+        AudioBookPlayActivity.a_initContentView(this.a, AudioBookPlayActivity.g(this.a), paramInt * AudioBookPlayActivity.f_setTitle(this.a) / 100);
     }
 
     public final void onStartTrackingTouch(SeekBar paramSeekBar) {

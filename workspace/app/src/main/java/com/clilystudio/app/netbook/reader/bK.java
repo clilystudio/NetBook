@@ -12,7 +12,7 @@ final class bK
 
     public final void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean) {
         a.b(this.b, "reader_opt_full_screen", paramBoolean);
-        ReaderOptionActivity.a(this.b, this.a, paramBoolean);
+        ReaderOptionActivity.a_initContentView(this.b, this.a, paramBoolean);
     }
 }
 

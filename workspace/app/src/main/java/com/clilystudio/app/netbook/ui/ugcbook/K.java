@@ -12,7 +12,7 @@ final class K
 
     public final void onClick(DialogInterface paramDialogInterface, int paramInt) {
         this.a.setAppendComment(this.b.getText().toString());
-        UGCGuideEditBooksActivity.c(this.c);
+        UGCGuideEditBooksActivity.c_initContentView(this.c);
     }
 }
 

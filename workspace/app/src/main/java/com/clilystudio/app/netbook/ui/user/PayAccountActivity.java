@@ -58,7 +58,7 @@ public class PayAccountActivity extends BaseActivity
         super.onCreate(paramBundle);
         i.a().a(this);
         setContentView(2130903329);
-        b("我的账户");
+        b_initContentView("我的账户");
         this.b = ((PaySectionItem) findViewById(2131493802));
         this.c = ((PaySectionItem) findViewById(2131493803));
         PaySectionItem localPaySectionItem1 = (PaySectionItem) findViewById(2131493804);

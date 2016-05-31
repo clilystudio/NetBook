@@ -9,7 +9,7 @@ final class P
 
     public final void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {
         PayConsumeActivity.a(this.a).onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
-        PayConsumeActivity.b(this.a).removeView(null);
+        PayConsumeActivity.b_initContentView(this.a).removeView(null);
     }
 
     public final void onScrollStateChanged(AbsListView paramAbsListView, int paramInt) {

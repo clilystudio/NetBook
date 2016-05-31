@@ -8,7 +8,7 @@ final class R
     }
 
     public final void onClick(View paramView) {
-        UGCGuideEditBooksActivity.a(this.b.a, this.a);
+        UGCGuideEditBooksActivity.a_initContentView(this.b.a, this.a);
     }
 }
 

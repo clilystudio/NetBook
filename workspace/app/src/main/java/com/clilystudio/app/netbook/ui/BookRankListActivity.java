@@ -66,7 +66,7 @@ public class BookRankListActivity extends BaseActivity {
     public void onCreate(Bundle paramBundle) {
         super.onCreate(paramBundle);
         setContentView(2130903088);
-        b(2131034450);
+        b_initContentView(2131034450);
         this.f = new Handler();
         this.e = ((ListView) findViewById(2131493101));
         this.a = findViewById(2131493102);

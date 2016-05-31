@@ -9,7 +9,7 @@ final class bg extends WebChromeClient {
     }
 
     public final boolean onConsoleMessage(ConsoleMessage paramConsoleMessage) {
-        Log.i(LuckyGameWebActivity.b(), paramConsoleMessage.message().toString());
+        Log.i(LuckyGameWebActivity.b_initContentView(), paramConsoleMessage.message().toString());
         return super.onConsoleMessage(paramConsoleMessage);
     }
 }

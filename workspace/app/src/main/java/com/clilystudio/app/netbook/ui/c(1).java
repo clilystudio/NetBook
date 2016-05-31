@@ -9,8 +9,8 @@ final class c
     }
 
     public final boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent) {
-        if ((paramInt == 4) && (AdWebViewActivity.e(this.a).canGoBack())) {
-            AdWebViewActivity.e(this.a).goBack();
+        if ((paramInt == 4) && (AdWebViewActivity.d_setRight(this.a).canGoBack())) {
+            AdWebViewActivity.d_setRight(this.a).goBack();
             return true;
         }
         return false;

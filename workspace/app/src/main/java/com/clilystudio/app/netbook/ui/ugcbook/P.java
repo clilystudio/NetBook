@@ -17,8 +17,8 @@ final class P extends c<Void, ResultStatus> {
         try {
             Account localAccount = am_CommonUtils.a_isTaskStoped(this.a);
             if (localAccount != null) {
-                if ((UGCGuideEditBooksActivity.f(this.a) != null) && (!UGCGuideEditBooksActivity.f(this.a).equals("")))
-                    return b.b().b(UGCGuideEditBooksActivity.l(this.a), localAccount.getToken(), UGCGuideEditBooksActivity.f(this.a));
+                if ((UGCGuideEditBooksActivity.f_setTitle(this.a) != null) && (!UGCGuideEditBooksActivity.f_setTitle(this.a).equals("")))
+                    return b.b().b(UGCGuideEditBooksActivity.l(this.a), localAccount.getToken(), UGCGuideEditBooksActivity.f_setTitle(this.a));
                 ResultStatus localResultStatus = b.b().b(UGCGuideEditBooksActivity.m(this.a), localAccount.getToken());
                 return localResultStatus;
             }

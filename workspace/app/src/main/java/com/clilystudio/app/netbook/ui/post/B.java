@@ -11,9 +11,9 @@ final class B
     }
 
     public final void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong) {
-        AddReviewActivity.a(this.a, ((BookReadRecord) AddReviewActivity.b(this.a).getItem(paramInt)).getBookId());
-        AddReviewActivity.b(this.a).a(paramInt);
-        AddReviewActivity.b(this.a).notifyDataSetChanged();
+        AddReviewActivity.a_initContentView(this.a, ((BookReadRecord) AddReviewActivity.b_initContentView(this.a).getItem(paramInt)).getBookId());
+        AddReviewActivity.b_initContentView(this.a).a(paramInt);
+        AddReviewActivity.b_initContentView(this.a).notifyDataSetChanged();
     }
 }
 

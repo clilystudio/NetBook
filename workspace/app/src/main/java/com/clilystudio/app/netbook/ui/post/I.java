@@ -10,10 +10,10 @@ final class I
 
     public final void onClick(View paramView) {
         Intent localIntent = new Intent(this.a, AddTopicActivity.class);
-        localIntent.putExtra("book_post_list_bookId", AddTopicCategoryActivity.a(this.a));
-        localIntent.putExtra("book_post_list_bookTitle", AddTopicCategoryActivity.b(this.a));
-        localIntent.putExtra("add_post_mode", AddTopicCategoryActivity.c(this.a));
-        localIntent.putExtra("book_post_list_from_reader", AddTopicCategoryActivity.d(this.a));
+        localIntent.putExtra("book_post_list_bookId", AddTopicCategoryActivity.a_initContentView(this.a));
+        localIntent.putExtra("book_post_list_bookTitle", AddTopicCategoryActivity.b_initContentView(this.a));
+        localIntent.putExtra("add_post_mode", AddTopicCategoryActivity.c_initContentView(this.a));
+        localIntent.putExtra("book_post_list_from_reader", AddTopicCategoryActivity.d_setTitle(this.a));
         this.a.startActivity(localIntent);
     }
 }

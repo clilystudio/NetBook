@@ -224,7 +224,7 @@ public class PostDetailActivity extends AbsPostActivity {
     public void onCreate(Bundle paramBundle) {
         super.onCreate(paramBundle);
         a(2130903350);
-        b("详情");
+        b_initContentView("详情");
         if (a.a(getIntent())) {
             String[] arrayOfString = getIntent().getDataString().split("/");
             this.a = arrayOfString[(-1 + arrayOfString.length)];

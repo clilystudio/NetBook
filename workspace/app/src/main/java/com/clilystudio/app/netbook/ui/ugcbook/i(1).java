@@ -9,10 +9,10 @@ final class i
 
     public final void a() {
         if (UGCDetailActivity.a(this.a)) {
-            UGCDetailActivity.b(this.a);
+            UGCDetailActivity.b_initContentView(this.a);
             return;
         }
-        UGCDetailActivity.c(this.a);
+        UGCDetailActivity.c_initContentView(this.a);
     }
 }
 

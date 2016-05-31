@@ -8,8 +8,8 @@ final class am
     }
 
     public final void onClick(View paramView) {
-        BookHelpListActivity.a(this.a, false).showAsDropDown(paramView);
-        BookHelpListActivity.c(this.a).setImageDrawable(this.a.getResources().getDrawable(2130837722));
+        BookHelpListActivity.a_initContentView(this.a, false).showAsDropDown(paramView);
+        BookHelpListActivity.c_initContentView(this.a).setImageDrawable(this.a.getResources().getDrawable(2130837722));
     }
 }
 

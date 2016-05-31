@@ -12,7 +12,7 @@ final class bI
 
     public final void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean) {
         a.b(this.b, "volume_keys_flip", paramBoolean);
-        ReaderOptionActivity.a(this.b, this.a, paramBoolean);
+        ReaderOptionActivity.a_initContentView(this.b, this.a, paramBoolean);
     }
 }
 

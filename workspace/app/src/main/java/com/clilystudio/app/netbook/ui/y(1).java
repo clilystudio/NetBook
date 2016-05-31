@@ -8,7 +8,7 @@ final class y
     }
 
     public final void a() {
-        AudiobookCategoryListActivity.b(this.a).setVisibility(0);
+        AudiobookCategoryListActivity.b_initContentView(this.a).setVisibility(0);
         AudiobookCategoryListActivity.h(this.a);
     }
 }

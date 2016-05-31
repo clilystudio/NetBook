@@ -9,7 +9,7 @@ final class aB extends Handler {
 
     public final void handleMessage(Message paramMessage) {
         BookInfoActivity.a(this.a, true);
-        BookInfoActivity.b(this.a);
+        BookInfoActivity.b_initContentView(this.a);
     }
 }
 

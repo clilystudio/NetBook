@@ -10,8 +10,8 @@ final class k
 
     public final void onClick(View paramView) {
         this.a.dismiss();
-        String str1 = AddBookHelpActivity.c(this.c).getText().toString().trim();
-        String str2 = AddBookHelpActivity.d(this.c).getText().toString().trim();
+        String str1 = AddBookHelpActivity.c_initContentView(this.c).getText().toString().trim();
+        String str2 = AddBookHelpActivity.d_setTitle(this.c).getText().toString().trim();
         n localn = new n(this.c, this.c, 2131034430);
         String[] arrayOfString = new String[3];
         arrayOfString[0] = this.b;

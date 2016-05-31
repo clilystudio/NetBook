@@ -8,7 +8,7 @@ final class I
     }
 
     public final void a() {
-        if (UGCGuideEditBooksActivity.b(this.a))
+        if (UGCGuideEditBooksActivity.b_initContentView(this.a))
             new O(this.a).b(new Void[0]);
     }
 }

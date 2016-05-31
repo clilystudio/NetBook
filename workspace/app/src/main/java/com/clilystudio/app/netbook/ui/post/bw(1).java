@@ -11,7 +11,7 @@ final class bw
     public final void onClick(View paramView) {
         this.a.dismiss();
         GirlTopicListActivity.m(this.b).setText(2131034434);
-        GirlTopicListActivity.b(this.b, "comment-count");
+        GirlTopicListActivity.b_initContentView(this.b, "comment-count");
         GirlTopicListActivity.l(this.b).setRefreshing();
     }
 }

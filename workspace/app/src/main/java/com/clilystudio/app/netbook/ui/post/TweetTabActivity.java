@@ -68,7 +68,7 @@ public class TweetTabActivity extends BaseTabActivity
     protected void onCreate(Bundle paramBundle) {
         super.onCreate(paramBundle);
         setContentView(2130903134);
-        b(2131034546);
+        b_initContentView(2131034546);
         this.n = a().a().findViewById(2131493017);
         this.f = ((RelativeLayout) findViewById(2131493222));
         this.g = ((RelativeLayout) findViewById(2131493223));

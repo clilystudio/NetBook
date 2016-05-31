@@ -9,7 +9,7 @@ final class cz
 
     public final void a() {
         if ((ReviewActivity.i(this.a) == null) || (ReviewActivity.i(this.a).getStatus() == AsyncTask.Status.FINISHED))
-            ReviewActivity.b(this.a);
+            ReviewActivity.b_initContentView(this.a);
     }
 }
 

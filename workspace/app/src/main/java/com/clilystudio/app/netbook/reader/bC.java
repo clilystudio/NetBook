@@ -14,13 +14,13 @@ final class bC
     }
 
     public final void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong) {
-        int i = paramInt - ReaderMixActivity.c(this.a).getHeaderViewsCount();
-        TocSummary localTocSummary = (TocSummary) ReaderMixActivity.d(this.a).getItem(i);
+        int i = paramInt - ReaderMixActivity.c_initContentView(this.a).getHeaderViewsCount();
+        TocSummary localTocSummary = (TocSummary) ReaderMixActivity.d_setTitle(this.a).getItem(i);
         if (!localTocSummary.getHost().equals(ReaderMixActivity.a(this.a))) {
-            MyApplication.a_getInstance().c(ReaderMixActivity.b(this.a));
+            MyApplication.a_getInstance().c(ReaderMixActivity.b_initContentView(this.a));
             if (!"vip.zhuishushenqi.com".equals(ReaderMixActivity.a(this.a)))
                 break label123;
-            am_CommonUtils.c_setReadMode(ReaderMixActivity.b(this.a), 9);
+            am_CommonUtils.c_setReadMode(ReaderMixActivity.b_initContentView(this.a), 9);
         }
         while (true) {
             i.a().c(new v(1));
@@ -28,7 +28,7 @@ final class bC
             this.a.finish();
             return;
             label123:
-            am_CommonUtils.c_setReadMode(ReaderMixActivity.b(this.a), 10);
+            am_CommonUtils.c_setReadMode(ReaderMixActivity.b_initContentView(this.a), 10);
         }
     }
 }

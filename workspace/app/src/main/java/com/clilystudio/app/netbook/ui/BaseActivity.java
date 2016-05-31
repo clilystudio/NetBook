@@ -1,6 +1,8 @@
 package com.clilystudio.app.netbook.ui;
 
+import android.annotation.TargetApi;
 import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
@@ -19,14 +21,20 @@ import com.clilystudio.app.netbook.ui.user.AuthLoginActivity;
 import com.clilystudio.app.netbook.util.e;
 
 public class BaseActivity extends AppCompatActivity {
-    private BroadcastReceiver a = new J(this);
+    private BroadcastReceiver mReceiver = new BroadcastReceiver() {
+        @TargetApi(11)
+        public final void onReceive(Context context, Intent intent) {
+            BaseActivity.this.recreate();
+        }
+    };
     protected com.clilystudio.app.netbook.api.b d = com.clilystudio.app.netbook.api.b.a();
+    private View mContentView;
 
-    private void a(String title, int resource) {
-        View localView = LayoutInflater.from(this).inflate(resource, null);
-        setContentView(localView);
-        ((TextView) localView.findViewById(R.id.title)).setText(title);
-        localView.findViewById(R.id.back).setOnClickListener(new View.OnClickListener() {
+    private void a_initContentView(String title, int resource) {
+        mContentView = LayoutInflater.from(this).inflate(resource, null);
+        setContentView(mContentView);
+        ((TextView) mContentView.findViewById(R.id.title)).setText(title);
+        mContentView.findViewById(R.id.back).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onBackPressed();
@@ -41,22 +49,22 @@ public class BaseActivity extends AppCompatActivity {
         return localMyApplication.a;
     }
 
-    public final void a(int paramInt1, int paramInt2, aa paramaa) {
+    public final void a_initContentView(int paramInt1, int paramInt2, aa paramaa) {
         a_setTitleView(getString(paramInt1), getString(paramInt2), paramaa);
     }
 
-    public final void a(int paramInt1, String paramString, int paramInt2, final ab paramab) {
+    public final void a_initContentView(int paramInt1, String paramString, int paramInt2, final ab paramab) {
         c_init();
-        View localView = LayoutInflater.from(this).inflate(R.layout.ab_custom_text_icon_view, null);
-        ((TextView) localView.findViewById(R.id.title)).setText(R.string.ugc_list);
-        localView.findViewById(R.id.back).setOnClickListener(new View.OnClickListener() {
+        mContentView= LayoutInflater.from(this).inflate(R.layout.ab_custom_text_icon_view, null);
+        ((TextView) mContentView.findViewById(R.id.title)).setText(R.string.ugc_list);
+        mContentView.findViewById(R.id.back).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onBackPressed();
             }
         });
-        TextView localTextView = (TextView) localView.findViewById(R.id.actionbar_custom_right_text);
-        ImageView localImageView = (ImageView) localView.findViewById(R.id.actionbar_custom_right_icon);
+        TextView localTextView = (TextView) mContentView.findViewById(R.id.actionbar_custom_right_text);
+        ImageView localImageView = (ImageView) mContentView.findViewById(R.id.actionbar_custom_right_icon);
         localTextView.setText(paramString);
         localImageView.setImageResource(R.drawable.ic_action_overflow);
         localTextView.setOnClickListener(new View.OnClickListener() {
@@ -71,74 +79,94 @@ public class BaseActivity extends AppCompatActivity {
                 paramab.b();
             }
         });
-        setContentView(localView);
+        setContentView(mContentView);
     }
 
-    public final void a(int paramInt, String paramString, aa paramaa) {
+    public final void a_initContentView(int paramInt, String paramString, aa paramaa) {
         a_setTitleView(getString(paramInt), paramString, paramaa);
     }
 
-    public final void a(String paramString, int paramInt1, int paramInt2, ab paramab) {
+    public final void a_initContentView(String paramString, int paramInt1, int paramInt2, final ab paramab) {
         c_init();
-        View localView = LayoutInflater.from(this).inflate(2130903041, null);
-        ((TextView) localView.findViewById(R.id.title)).setText(paramString);
-        localView.findViewById(R.id.back).setOnClickListener(new View.OnClickListener() {
+        mContentView = LayoutInflater.from(this).inflate(R.layout.ab_custom_two_text_view, null);
+        ((TextView) mContentView.findViewById(R.id.title)).setText(paramString);
+        mContentView.findViewById(R.id.back).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onBackPressed();
             }
         });
-        TextView localTextView1 = (TextView) localView.findViewById(2131493010);
-        TextView localTextView2 = (TextView) localView.findViewById(2131493011);
-        localTextView1.setText(2131034475);
-        localTextView2.setText(2131034448);
-        localTextView1.setOnClickListener(new Y(this, paramab));
-        localTextView2.setOnClickListener(new Z(this, paramab));
-        setContentView(localView);
+        TextView localTextView1 = (TextView) mContentView.findViewById(R.id.ab_custom_right_text);
+        TextView localTextView2 = (TextView) mContentView.findViewById(R.id.ab_custom_right_text_2);
+        localTextView1.setText(R.string.save);
+        localTextView2.setText(R.string.publish);
+        localTextView1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                paramab.a();
+            }
+        });
+        localTextView2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                paramab.b();
+            }
+        });
+        setContentView(mContentView);
     }
 
-    public final void a(String paramString, int paramInt, aa paramaa) {
+    public final void a_initContentView(String paramString, int paramInt, aa paramaa) {
         a_setTitleView(paramString, getString(paramInt), paramaa);
     }
 
-    public final void a(String paramString1, int paramInt, aa paramaa, String paramString2) {
+    public final void a_initContentView(String paramString1, int paramInt, final aa paramaa, String paramString2) {
         c_init();
-        View localView = LayoutInflater.from(this).inflate(2130903070, null);
-        ((TextView) localView.findViewById(R.id.title)).setText(paramString1);
-        localView.findViewById(R.id.back).setOnClickListener(new View.OnClickListener() {
+        mContentView = LayoutInflater.from(this).inflate(R.layout.actionbar_custom_icon_view, null);
+        ((TextView) mContentView.findViewById(R.id.title)).setText(paramString1);
+        mContentView.findViewById(R.id.back).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onBackPressed();
             }
         });
-        ImageView localImageView = (ImageView) localView.findViewById(2131493063);
+        ImageView localImageView = (ImageView) mContentView.findViewById(R.id.ab_icon);
         localImageView.setContentDescription(paramString2);
         localImageView.setImageResource(paramInt);
-        localImageView.setOnClickListener(new Q(this, paramaa));
-        setContentView(localView);
+        localImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                paramaa.a();
+            }
+        });
+        setContentView(mContentView);
     }
 
-    public final void a_setTitleView(String title, String rightText, aa paramaa) {
+    public final void a_setTitleView(String title, String rightText, final aa paramaa) {
         c_init();
-        View localView = LayoutInflater.from(this).inflate(R.layout.actionbar_custom_text_view, null);
-        ((TextView) localView.findViewById(R.id.title)).setText(title);
-        localView.findViewById(R.id.back).setOnClickListener(new View.OnClickListener() {
+        mContentView = LayoutInflater.from(this).inflate(R.layout.actionbar_custom_text_view, null);
+        ((TextView) mContentView.findViewById(R.id.title)).setText(title);
+        mContentView.findViewById(R.id.back).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onBackPressed();
             }
         });
-        TextView localTextView = (TextView) localView.findViewById(R.id.actionbar_custom_right_text);
+        TextView localTextView = (TextView) mContentView.findViewById(R.id.actionbar_custom_right_text);
         localTextView.setText(rightText);
-        localTextView.setOnClickListener(new T(this, paramaa));
-        setContentView(localView);
+        localTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                paramaa.a();
+            }
+        });
+        setContentView(mContentView);
     }
 
-    public final void b(int paramInt) {
-        b(getString(paramInt));
+    public final void b_initContentView(int paramInt) {
+        b_initContentView(getString(paramInt));
     }
 
-    public final void b(int paramInt1, int paramInt2, aa paramaa) {
+    public final void b_initContentView(int paramInt1, int paramInt2, final aa paramaa) {
         String str = getString(R.string.game_detail);
         c_init();
         View localView = LayoutInflater.from(this).inflate(R.layout.actionbar_custom_icon_view, null);
@@ -149,15 +177,20 @@ public class BaseActivity extends AppCompatActivity {
                 onBackPressed();
             }
         });
-        ImageView localImageView = (ImageView) localView.findViewById(2131493063);
-        localImageView.setImageResource(2130837866);
-        localImageView.setOnClickListener(new O(this, paramaa));
+        ImageView localImageView = (ImageView) localView.findViewById(R.id.ab_icon);
+        localImageView.setImageResource(R.drawable.ic_action_edit);
+        localImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                paramaa.a();
+            }
+        });
         setContentView(localView);
     }
 
-    public final void b(String paramString) {
+    public final void b_initContentView(String paramString) {
         c_init();
-        a(paramString, 2130903043);
+        a_initContentView(paramString, R.layout.ab_title);
     }
 
     public final void c_init() {
@@ -167,14 +200,14 @@ public class BaseActivity extends AppCompatActivity {
         super.setProgressBarVisibility(true);
     }
 
-    public final void c(int paramInt) {
+    public final void c_initContentView(int paramInt) {
         c_init();
-        a(getString(paramInt), R.layout.ab_title_dark);
+        a_initContentView(getString(paramInt), R.layout.ab_title_dark);
     }
 
-    public final void c(String paramString) {
+    public final void c_initContentView(String paramString) {
         c_init();
-        a(paramString, 2130903044);
+        a_initContentView(paramString, R.layout.ab_title_dark);
     }
 
     public final void d() {
@@ -182,27 +215,21 @@ public class BaseActivity extends AppCompatActivity {
         startActivity(AuthLoginActivity.a(this));
     }
 
-    public final void d(int paramInt) {
-        View localView = a().a();
-        if (localView != null)
-            ((ImageView) localView.findViewById(R.id.back)).setImageResource(R.drawable.ic_close_white_24dp);
+    public final void d_setBackIcon(int paramInt) {
+        if (mContentView != null)
+            ((ImageView) mContentView.findViewById(R.id.back)).setImageResource(R.drawable.ic_close_white_24dp);
     }
 
-    public final void d(String paramString) {
-        ((TextView) a().a().findViewById(R.id.title)).setText(paramString);
+    public final void d_setTitle(String paramString) {
+        ((TextView) mContentView.findViewById(R.id.title)).setText(paramString);
     }
 
-    public final void e(String paramString) {
-        ((TextView) a().a().findViewById(R.id.actionbar_custom_right_text)).setText(paramString);
+    public final void d_setRight(String paramString) {
+        ((TextView) mContentView.findViewById(R.id.actionbar_custom_right_text)).setText(paramString);
     }
 
-    protected final void f(String paramString) {
-        try {
-            ((TextView) a().a().findViewById(R.id.title)).setText(paramString);
-            return;
-        } catch (Exception localException) {
-            localException.printStackTrace();
-        }
+    protected final void f_setTitle(String paramString) {
+        ((TextView)mContentView.findViewById(R.id.title)).setText(paramString);
     }
 
     public void onBackPressed() {
@@ -221,11 +248,11 @@ public class BaseActivity extends AppCompatActivity {
         }
         IntentFilter filter = new IntentFilter();
         filter.addAction("broadcastOnThemeChanged");
-        registerReceiver(this.a, filter);
+        registerReceiver(this.mReceiver, filter);
     }
 
     protected void onDestroy() {
-        unregisterReceiver(this.a);
+        unregisterReceiver(this.mReceiver);
         super.onDestroy();
     }
 

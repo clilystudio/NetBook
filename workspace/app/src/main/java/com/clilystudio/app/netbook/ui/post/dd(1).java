@@ -11,7 +11,7 @@ final class dd
     public final void onClick(View paramView) {
         this.a.dismiss();
         ReviewListActivity.o(this.b).setText(2131034434);
-        ReviewListActivity.b(this.b, "comment-count");
+        ReviewListActivity.b_initContentView(this.b, "comment-count");
         ReviewListActivity.n(this.b).setRefreshing();
     }
 }

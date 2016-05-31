@@ -15,7 +15,7 @@ final class bP extends bR {
 
     protected final void onPreExecute() {
         super.onPreExecute();
-        SearchActivity.b(this.b, SearchActivity.f(this.b).getText().toString());
+        SearchActivity.b_initContentView(this.b, SearchActivity.f_setTitle(this.b).getText().toString());
     }
 }
 

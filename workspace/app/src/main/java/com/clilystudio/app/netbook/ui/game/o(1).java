@@ -8,7 +8,7 @@ final class o
     }
 
     public final void onClick(View paramView) {
-        GameDetailActivity.a(this.c.a, this.a, this.b);
+        GameDetailActivity.a_initContentView(this.c.a, this.a, this.b);
     }
 }
 

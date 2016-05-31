@@ -47,7 +47,7 @@ public class BookRankMainActivity extends BaseTabActivity
     protected void onCreate(Bundle paramBundle) {
         super.onCreate(paramBundle);
         setContentView(2130903089);
-        b(getIntent().getStringExtra("book_list_title"));
+        b_initContentView(getIntent().getStringExtra("book_list_title"));
         this.f = getIntent().getStringArrayExtra("book_list_ids");
         this.a = ((TabHost) findViewById(2131493096));
         this.c = ((ViewPager) findViewById(2131493097));

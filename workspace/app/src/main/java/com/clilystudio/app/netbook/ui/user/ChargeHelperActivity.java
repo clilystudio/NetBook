@@ -8,7 +8,7 @@ public class ChargeHelperActivity extends BaseActivity {
     public void onCreate(Bundle paramBundle) {
         super.onCreate(paramBundle);
         setContentView(2130903091);
-        b(2131034362);
+        b_initContentView(2131034362);
     }
 }
 

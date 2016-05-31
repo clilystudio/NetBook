@@ -8,7 +8,7 @@ final class dS
     }
 
     public final void onClick(View paramView) {
-        TweetTabActivity.d(this.a);
+        TweetTabActivity.d_setTitle(this.a);
         TweetTabActivity.j(this.a);
         TweetTabActivity.a(this.a, false);
     }

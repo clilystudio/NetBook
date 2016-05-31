@@ -12,7 +12,7 @@ final class aa
     }
 
     public final void b() {
-        UGCMainActivity.b(this.a);
+        UGCMainActivity.b_initContentView(this.a);
     }
 }
 

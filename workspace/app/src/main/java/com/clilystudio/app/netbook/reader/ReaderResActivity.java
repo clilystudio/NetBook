@@ -35,7 +35,7 @@ public class ReaderResActivity extends ReaderModeActivity {
         a().a(localView);
         a().d(true);
         i.a().a(this);
-        f(this.c);
+        f_setTitle(this.c);
         FragmentTransaction localFragmentTransaction = getSupportFragmentManager().beginTransaction();
         if (this.a == 0) {
             localObject = (ReaderResourceFragment) getSupportFragmentManager().findFragmentByTag(ReaderResourceFragment.class.getName());

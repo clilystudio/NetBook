@@ -42,7 +42,7 @@ class bR extends com.clilystudio.app.netbook.a_packA.e<String, Void, List<BookSu
         super.onPostExecute(paramList);
         SearchActivity.a(this.a, true);
         if (paramList != null) {
-            SearchActivity.b(this.a).a(paramList);
+            SearchActivity.b_initContentView(this.a).a(paramList);
             new Handler().post(new bS(this));
             if (paramList.size() > 0)
                 SearchActivity.a(this.a, 1);

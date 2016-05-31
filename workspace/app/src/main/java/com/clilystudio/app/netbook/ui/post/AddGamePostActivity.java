@@ -34,7 +34,7 @@ public class AddGamePostActivity extends BaseActivity {
     public void onCreate(Bundle paramBundle) {
         super.onCreate(paramBundle);
         setContentView(2130903075);
-        a(2131034293, 2131034448, new o(this));
+        a_initContentView(2131034293, R.string.publish, new o(this));
         ShareSDK.initSDK(this);
         this.a = ((EditText) findViewById(2131493067));
     }

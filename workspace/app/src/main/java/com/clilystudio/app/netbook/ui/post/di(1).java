@@ -11,7 +11,7 @@ final class di
     }
 
     public final void a(PullToRefreshBase<ListView> paramPullToRefreshBase) {
-        ReviewListActivity.e(this.a).setVisibility(8);
+        ReviewListActivity.d_setRight(this.a).setVisibility(8);
         new Handler().postDelayed(new dj(this), 1000L);
     }
 }

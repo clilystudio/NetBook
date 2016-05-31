@@ -9,7 +9,7 @@ final class bo
 
     public final void a() {
         if ((GirlTopicActivity.k(this.a) == null) || (GirlTopicActivity.k(this.a).getStatus() == AsyncTask.Status.FINISHED))
-            GirlTopicActivity.b(this.a);
+            GirlTopicActivity.b_initContentView(this.a);
     }
 }
 

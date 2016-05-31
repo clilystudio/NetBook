@@ -9,7 +9,7 @@ final class h extends BroadcastReceiver {
     }
 
     public final void onReceive(Context paramContext, Intent paramIntent) {
-        if (GameDetailActivity.e(this.a) != null)
+        if (GameDetailActivity.d_setRight(this.a) != null)
             GameDetailActivity.f(this.a);
     }
 }

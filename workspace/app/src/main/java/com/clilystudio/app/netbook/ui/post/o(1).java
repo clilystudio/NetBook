@@ -9,7 +9,7 @@ final class o
 
     public final void a() {
         if (AddGamePostActivity.a(this.a))
-            AddGamePostActivity.b(this.a);
+            AddGamePostActivity.b_initContentView(this.a);
     }
 }
 

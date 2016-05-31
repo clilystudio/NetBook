@@ -8,8 +8,8 @@ final class bz
     }
 
     public final void onClick(View paramView) {
-        GirlTopicListActivity.a(this.a, true).showAsDropDown(paramView);
-        GirlTopicListActivity.b(this.a).setImageDrawable(this.a.getResources().getDrawable(2130837722));
+        GirlTopicListActivity.a_initContentView(this.a, true).showAsDropDown(paramView);
+        GirlTopicListActivity.b_initContentView(this.a).setImageDrawable(this.a.getResources().getDrawable(2130837722));
     }
 }
 

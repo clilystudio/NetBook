@@ -13,11 +13,11 @@ final class bj extends BaseAdapter {
     }
 
     public final int getCount() {
-        return FollowerListActivity.a(this.a).length;
+        return FollowerListActivity.a_initContentView(this.a).length;
     }
 
     public final Object getItem(int paramInt) {
-        return FollowerListActivity.a(this.a)[paramInt];
+        return FollowerListActivity.a_initContentView(this.a)[paramInt];
     }
 
     public final long getItemId(int paramInt) {

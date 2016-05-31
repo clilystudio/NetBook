@@ -11,7 +11,7 @@ final class ba
     }
 
     public final void a(PullToRefreshBase<ListView> paramPullToRefreshBase) {
-        CommonPostListActivity.b(this.a).setVisibility(8);
+        CommonPostListActivity.b_initContentView(this.a).setVisibility(8);
         new Handler().postDelayed(new bb(this), 1000L);
     }
 }

@@ -9,7 +9,7 @@ final class cO
     }
 
     public final void onClick(View paramView) {
-        ReviewListActivity.a(this.b, this.a, 3);
+        ReviewListActivity.a_initContentView(this.b, this.a, 3);
     }
 }
 

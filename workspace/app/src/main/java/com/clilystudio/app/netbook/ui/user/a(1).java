@@ -12,7 +12,7 @@ final class a
     public final void onClick(View paramView) {
         AuthLoginActivity.a(this.a, paramView);
         AuthLoginActivity.a(this.a, SinaWeibo.NAME);
-        AuthLoginActivity.b(this.a, "SinaWeibo");
+        AuthLoginActivity.b_initContentView(this.a, "SinaWeibo");
     }
 }
 

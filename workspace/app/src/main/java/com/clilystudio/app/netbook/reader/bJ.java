@@ -12,7 +12,7 @@ final class bJ
 
     public final void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean) {
         a.b(this.b, "click_flip_animation", paramBoolean);
-        ReaderOptionActivity.a(this.b, this.a, paramBoolean);
+        ReaderOptionActivity.a_initContentView(this.b, this.a, paramBoolean);
     }
 }
 

@@ -44,7 +44,7 @@ public class MhdListActivity extends BaseActivity {
     public void onCreate(Bundle paramBundle) {
         super.onCreate(paramBundle);
         setContentView(2130903088);
-        b(2131034412);
+        b_initContentView(2131034412);
         ListView localListView = (ListView) findViewById(2131493101);
         this.a = findViewById(2131493102);
         this.b = findViewById(2131493103);

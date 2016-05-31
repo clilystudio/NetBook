@@ -14,20 +14,20 @@ final class du
 
     public final void onClick(View paramView) {
         Account localAccount;
-        if ((TweetDetailActivity.a(this.a)) && (TweetDetailActivity.c(this.a) != null)) {
+        if ((TweetDetailActivity.a(this.a)) && (TweetDetailActivity.c_initContentView(this.a) != null)) {
             localAccount = am_CommonUtils.a_isTaskStoped(this.a);
-            if (G.a(localAccount, TweetDetailActivity.c(this.a).getTweet())) {
+            if (G.a(localAccount, TweetDetailActivity.c_initContentView(this.a).getTweet())) {
                 dC localdC = new dC(this.a, this.a, 2131034473);
                 String[] arrayOfString = new String[2];
                 arrayOfString[0] = localAccount.getToken();
-                arrayOfString[1] = TweetDetailActivity.c(this.a).getTweet().get_id();
+                arrayOfString[1] = TweetDetailActivity.c_initContentView(this.a).getTweet().get_id();
                 localdC.execute(arrayOfString);
             }
         } else {
             return;
         }
         String str = this.a.getString(2131034472);
-        if (G.a(TweetDetailActivity.c(this.a).getTweet(), localAccount))
+        if (G.a(TweetDetailActivity.c_initContentView(this.a).getTweet(), localAccount))
             str = this.a.getString(2131034423);
         e.a(this.a, "\t\t" + str + "\t\t");
     }

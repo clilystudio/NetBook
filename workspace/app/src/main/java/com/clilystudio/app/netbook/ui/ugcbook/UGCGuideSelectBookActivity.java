@@ -39,7 +39,7 @@ public class UGCGuideSelectBookActivity extends BaseActivity {
     public void onCreate(Bundle paramBundle) {
         super.onCreate(paramBundle);
         setContentView(2130903137);
-        b("书架添加");
+        b_initContentView("书架添加");
         this.h = BookReadRecord.getAllNotDeleted();
         this.a = ((ListView) findViewById(2131493226));
         this.e = ((Button) findViewById(2131493228));

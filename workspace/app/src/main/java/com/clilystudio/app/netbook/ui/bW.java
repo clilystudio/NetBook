@@ -12,8 +12,8 @@ final class bW
 
     public final void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean) {
         a.b(this.b, "update_notice_key", paramBoolean);
-        SettingsActivity.a(this.b, paramBoolean);
-        SettingsActivity.a(this.b, this.a, paramBoolean);
+        SettingsActivity.a_initContentView(this.b, paramBoolean);
+        SettingsActivity.a_initContentView(this.b, this.a, paramBoolean);
     }
 }
 

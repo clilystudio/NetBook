@@ -192,7 +192,7 @@ public class ReviewActivity extends AbsPostActivity {
     public void onCreate(Bundle paramBundle) {
         super.onCreate(paramBundle);
         a(2130903350);
-        b("书评详情");
+        b_initContentView("书评详情");
         String str = getIntent().getStringExtra("EXTRA_TYPE_NAME");
         if (!TextUtils.isEmpty(str))
             this.n = str.equals("BOOK_COMMENT");

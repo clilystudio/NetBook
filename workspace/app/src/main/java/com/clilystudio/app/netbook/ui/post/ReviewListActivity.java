@@ -56,7 +56,7 @@ public class ReviewListActivity extends BaseActivity {
     protected void onCreate(Bundle paramBundle) {
         super.onCreate(paramBundle);
         setContentView(2130903090);
-        a("书评区", 2130837866, new cJ(this), "写书评");
+        a_initContentView("书评区", 2130837866, new cJ(this), "写书评");
         if (paramBundle != null) {
             this.s = paramBundle.getString("savedReviewDur");
             this.t = paramBundle.getString("savedReviewType");

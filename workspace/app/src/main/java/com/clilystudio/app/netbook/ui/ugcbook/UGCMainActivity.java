@@ -59,7 +59,7 @@ public class UGCMainActivity extends BaseTabActivity
     private void h() {
         if ((this.h != null) && (this.h.isShowing()))
             this.h.dismiss();
-        e("筛选");
+        d_setRight("筛选");
     }
 
     public final UGCMainListFragment a(String paramString1, String paramString2, String paramString3) {
@@ -99,7 +99,7 @@ public class UGCMainActivity extends BaseTabActivity
         this.k = new ak(this, this, new UgcFilterRoot.FilterGroup[0]);
         this.j.setAdapter(this.k);
         this.h.setOnDismissListener(new ah(this));
-        a(R.string.ugc_list, "筛选", 2130837871, new aa(this));
+        a_initContentView(R.string.ugc_list, "筛选", 2130837871, new aa(this));
         this.a = ((TabHost) findViewById(2131493096));
         this.c = ((ViewPager) findViewById(2131493097));
         this.e = new aj(this, getSupportFragmentManager());

@@ -9,7 +9,7 @@ final class H
     }
 
     public final void a() {
-        if (UGCGuideEditBooksActivity.a(this.a).getBooks().size() == 0) {
+        if (UGCGuideEditBooksActivity.a_initContentView(this.a).getBooks().size() == 0) {
             e.a(this.a, "至少要添加一本书籍才能保存哦");
             return;
         }
@@ -17,7 +17,7 @@ final class H
     }
 
     public final void b() {
-        if (UGCGuideEditBooksActivity.b(this.a))
+        if (UGCGuideEditBooksActivity.b_initContentView(this.a))
             new O(this.a).b(new Void[0]);
     }
 }

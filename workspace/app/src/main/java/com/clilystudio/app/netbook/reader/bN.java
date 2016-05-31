@@ -13,7 +13,7 @@ final class bN
 
     public final void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean) {
         a.b(this.b, "auto_buy_chapter" + I.a, paramBoolean);
-        ReaderOptionActivity.a(this.b, this.a, paramBoolean);
+        ReaderOptionActivity.a_initContentView(this.b, this.a, paramBoolean);
     }
 }
 

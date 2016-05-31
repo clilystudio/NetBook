@@ -8,13 +8,13 @@ final class bb
     }
 
     public final void run() {
-        if (!am_CommonUtils.a_isTaskStoped(CommonPostListActivity.c(this.a.a)))
-            CommonPostListActivity.c(this.a.a).cancel(true);
+        if (!am_CommonUtils.a_isTaskStoped(CommonPostListActivity.c_initContentView(this.a.a)))
+            CommonPostListActivity.c_initContentView(this.a.a).cancel(true);
         CommonPostListActivity.a(this.a.a, new bi(this.a.a, (byte) 0));
-        bi localbi = CommonPostListActivity.f(this.a.a);
+        bi localbi = CommonPostListActivity.f_setTitle(this.a.a);
         String[] arrayOfString = new String[2];
-        arrayOfString[0] = CommonPostListActivity.d(this.a.a);
-        arrayOfString[1] = CommonPostListActivity.e(this.a.a);
+        arrayOfString[0] = CommonPostListActivity.d_setTitle(this.a.a);
+        arrayOfString[1] = CommonPostListActivity.d_setRight(this.a.a);
         localbi.b(arrayOfString);
     }
 }
