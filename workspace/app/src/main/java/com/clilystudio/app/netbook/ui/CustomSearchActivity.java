@@ -8,8 +8,8 @@ public class CustomSearchActivity extends BaseActivity {
     private EditText a;
     private EditText b;
 
-    public void onCreate(Bundle paramBundle) {
-        super.onCreate(paramBundle);
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(2130903094);
         a_initContentView(2131034288, 2131034282, new aZ(this));
         this.a = ((EditText) findViewById(2131493119));

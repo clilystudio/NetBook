@@ -6,7 +6,7 @@ public class CropPhotoActivity extends BaseActivity {
     private CropView a;
 
     // ERROR //
-    protected void onCreate(android.os.Bundle paramBundle) {
+    protected void onCreate(android.os.Bundle savedInstanceState) {
         // Byte code:
         //   0: ldc 89
         //   2: fstore_2

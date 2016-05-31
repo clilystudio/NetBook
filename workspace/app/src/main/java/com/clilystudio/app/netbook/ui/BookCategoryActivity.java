@@ -114,8 +114,8 @@ public class BookCategoryActivity extends BaseActivity {
         new ak(this, (byte) 0).b(new String[0]);
     }
 
-    public void onCreate(Bundle paramBundle) {
-        super.onCreate(paramBundle);
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(2130903084);
         b_initContentView(2131034335);
         this.c = findViewById(2131493078);

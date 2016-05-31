@@ -119,8 +119,8 @@ public class UGCDetailActivity extends BaseActivity
         b();
     }
 
-    protected void onCreate(Bundle paramBundle) {
-        super.onCreate(paramBundle);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(2130903138);
         com.clilystudio.app.netbook.event.i.a().a(this);
         if (a.a(getIntent())) {

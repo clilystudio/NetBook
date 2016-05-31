@@ -257,8 +257,8 @@ public class TweetDetailActivity extends AbsPostActivity {
         this.b.setSelection(2);
     }
 
-    public void onCreate(Bundle paramBundle) {
-        super.onCreate(paramBundle);
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         a(2130903350);
         b_initContentView("动态详情");
         this.a = getIntent().getStringExtra("TWEET_ID");

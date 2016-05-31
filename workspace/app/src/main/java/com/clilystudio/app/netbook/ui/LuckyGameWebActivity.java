@@ -40,8 +40,8 @@ public class LuckyGameWebActivity extends BaseActivity
 
     @SuppressLint({"JavascriptInterface"})
     @TargetApi(9)
-    protected void onCreate(Bundle paramBundle) {
-        super.onCreate(paramBundle);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(2130903420);
         c_initContentView(getIntent().getStringExtra("extra_title"));
         this.b = ((WebView) findViewById(2131494048));

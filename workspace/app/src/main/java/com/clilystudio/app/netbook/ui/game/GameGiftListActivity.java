@@ -81,8 +81,8 @@ public class GameGiftListActivity extends BaseActivity {
     }
 
     @TargetApi(9)
-    protected void onCreate(Bundle paramBundle) {
-        super.onCreate(paramBundle);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(2130903321);
         String str = getIntent().getStringExtra("title");
         this.h = getIntent().getBooleanExtra("is_micro_game", false);

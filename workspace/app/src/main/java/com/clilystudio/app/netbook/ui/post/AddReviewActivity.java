@@ -37,8 +37,8 @@ public class AddReviewActivity extends BaseActivity {
         super.onBackPressed();
     }
 
-    public void onCreate(Bundle paramBundle) {
-        super.onCreate(paramBundle);
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(2130903147);
         a_initContentView(2131034298, 2131034419, new A(this));
         View localView = findViewById(2131493270);

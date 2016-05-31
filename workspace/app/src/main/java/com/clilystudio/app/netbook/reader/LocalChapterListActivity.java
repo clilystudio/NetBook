@@ -33,8 +33,8 @@ public class LocalChapterListActivity extends BaseActivity {
         new m(this, locall).start();
     }
 
-    public void onCreate(Bundle paramBundle) {
-        super.onCreate(paramBundle);
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(2130903110);
         c_initContentView(2131034469);
         this.g = getIntent().getStringExtra("BOOK_ID");

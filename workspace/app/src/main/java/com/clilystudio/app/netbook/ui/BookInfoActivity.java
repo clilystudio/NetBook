@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.clilystudio.app.netbook.MyApplication;
+import com.clilystudio.app.netbook.R;
 import com.clilystudio.app.netbook.d_IntentFactory;
 import com.clilystudio.app.netbook.db.BookReadRecord;
 import com.clilystudio.app.netbook.event.B;
@@ -333,20 +334,35 @@ public class BookInfoActivity extends BaseActivity
         j();
     }
 
-    public void onCreate(Bundle paramBundle) {
-        super.onCreate(paramBundle);
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(2130903087);
-        ay localay = new ay(this);
+        final ay localay = new ay(this);
         c_init();
         View localView = LayoutInflater.from(this).inflate(2130903041, null);
         ((TextView) localView.findViewById(R.id.title)).setText(2131034333);
-        localView.findViewById(R.id.back).setOnClickListener(new U(this));
+        localView.findViewById(R.id.back).setOnClickListener(new View.OnClickListener(){
+           @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
         TextView localTextView1 = (TextView) localView.findViewById(2131493010);
         TextView localTextView2 = (TextView) localView.findViewById(2131493011);
         localTextView1.setText(2131034329);
         localTextView2.setText(2131034175);
-        localTextView1.setOnClickListener(new V(this, localay));
-        localTextView2.setOnClickListener(new W(this, localay));
+        localTextView1.setOnClickListener(new View.OnClickListener() {
+           @Override
+            public void onClick(View v) {
+               localay.a();
+            }
+        });
+        localTextView2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                localay.b();
+            }
+        });
         a().a(localView);
         this.b = findViewById(2131492905);
         this.c = findViewById(2131493085);

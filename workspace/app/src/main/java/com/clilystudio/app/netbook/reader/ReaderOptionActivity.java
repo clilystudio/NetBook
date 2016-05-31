@@ -23,8 +23,8 @@ public class ReaderOptionActivity extends BaseActivity {
         return new d_IntentFactory().a_setClass(paramContext, ReaderOptionActivity.class).a();
     }
 
-    public void onCreate(Bundle paramBundle) {
-        super.onCreate(paramBundle);
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(2130903366);
         b_initContentView(2131034461);
         SwitchCompat localSwitchCompat1;

@@ -38,8 +38,8 @@ public class PayConsumeActivity extends BaseLoadingActivity {
         localZ.b(arrayOfString);
     }
 
-    public void onCreate(Bundle paramBundle) {
-        super.onCreate(paramBundle);
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         a(2130903386);
         this.c = ((RelativeLayout) findViewById(2131493136));
         TextView localTextView = (TextView) findViewById(2131493104);

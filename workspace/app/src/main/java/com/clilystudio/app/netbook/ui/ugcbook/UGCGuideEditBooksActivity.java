@@ -59,8 +59,8 @@ public class UGCGuideEditBooksActivity extends BaseActivity
         startActivity(new Intent(this, UGCGuideSelectBookActivity.class));
     }
 
-    protected void onCreate(Bundle paramBundle) {
-        super.onCreate(paramBundle);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(2130903401);
         i.a().a(this);
         Bundle localBundle = getIntent().getExtras();

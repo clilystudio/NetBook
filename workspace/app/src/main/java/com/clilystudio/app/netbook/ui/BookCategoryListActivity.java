@@ -112,8 +112,8 @@ public class BookCategoryListActivity extends BaseTabActivity
         return this.e;
     }
 
-    public void onCreate(Bundle paramBundle) {
-        super.onCreate(paramBundle);
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(2130903085);
         this.b = getIntent().getBooleanExtra("CATEGORY_GENDER", false);
         this.c = getIntent().getStringExtra("CATEGORY_KEY");

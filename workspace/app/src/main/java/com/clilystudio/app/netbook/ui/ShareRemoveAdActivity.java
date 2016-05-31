@@ -13,8 +13,8 @@ public class ShareRemoveAdActivity extends BaseActivity {
         return new d_IntentFactory().a_setClass(paramContext, ShareRemoveAdActivity.class).a_putExtra("entrance_type", paramString).a();
     }
 
-    protected void onCreate(Bundle paramBundle) {
-        super.onCreate(paramBundle);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         if (com.arcsoft.hpay100.a.a.i()) {
             getWindow().setFlags(67108864, 67108864);
             a().a(new ColorDrawable(Color.parseColor("#00000000")));

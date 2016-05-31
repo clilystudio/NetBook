@@ -5,8 +5,8 @@ import android.os.Bundle;
 import com.clilystudio.app.netbook.ui.BaseActivity;
 
 public class ChargeHelperActivity extends BaseActivity {
-    public void onCreate(Bundle paramBundle) {
-        super.onCreate(paramBundle);
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(2130903091);
         b_initContentView(2131034362);
     }

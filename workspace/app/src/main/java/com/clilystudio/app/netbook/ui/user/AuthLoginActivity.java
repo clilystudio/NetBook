@@ -63,8 +63,8 @@ public class AuthLoginActivity extends BaseActivity
         return false;
     }
 
-    protected void onCreate(Bundle paramBundle) {
-        super.onCreate(paramBundle);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(2130903111);
         setTitle("");
         ShareSDK.initSDK(this);

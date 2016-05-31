@@ -26,8 +26,8 @@ public class AuthorBooksActivity extends BaseLoadingActivity {
         localH.b(arrayOfString);
     }
 
-    public void onCreate(Bundle paramBundle) {
-        super.onCreate(paramBundle);
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         a(2130903322);
         this.c = getIntent().getStringExtra("keyword");
         b_initContentView(this.c);

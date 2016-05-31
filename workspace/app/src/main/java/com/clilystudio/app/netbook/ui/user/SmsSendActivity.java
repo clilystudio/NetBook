@@ -53,8 +53,8 @@ public class SmsSendActivity extends BaseActivity {
         new h(this).a(2131034511).b(2131034510).a("确认", new ar(this)).b("取消", null).b();
     }
 
-    protected void onCreate(Bundle paramBundle) {
-        super.onCreate(paramBundle);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(2130903131);
         b_initContentView("短信充值");
         ButterKnife.inject(this);

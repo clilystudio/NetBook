@@ -15,8 +15,8 @@ public class FeedAddActivity extends BaseActivity {
     private ListView b;
     private ArrayList<BookReadRecord> c = new ArrayList();
 
-    public void onCreate(Bundle paramBundle) {
-        super.onCreate(paramBundle);
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(2130903097);
         a_initContentView(2131034383, 2131034375, new a(this));
         this.b = ((ListView) findViewById(2131493124));

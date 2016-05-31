@@ -75,8 +75,8 @@ public class AddVoteActivity extends BaseActivity {
         super.onBackPressed();
     }
 
-    public void onCreate(Bundle paramBundle) {
-        super.onCreate(paramBundle);
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(2130903078);
         a_ActivityStack.a_getInstance();
         a_ActivityStack.a_addActivity(this);

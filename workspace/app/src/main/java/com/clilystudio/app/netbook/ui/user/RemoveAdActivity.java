@@ -18,8 +18,8 @@ public class RemoveAdActivity extends BaseLoadingActivity {
         new aj(this, (byte) 0).b(new Void[0]);
     }
 
-    public void onCreate(Bundle paramBundle) {
-        super.onCreate(paramBundle);
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         a(2130903125);
         b_initContentView("免广告");
         this.b = ((RecyclerView) findViewById(2131493175));

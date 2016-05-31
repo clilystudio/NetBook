@@ -65,8 +65,8 @@ public class TweetTabActivity extends BaseTabActivity
         return localView;
     }
 
-    protected void onCreate(Bundle paramBundle) {
-        super.onCreate(paramBundle);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(2130903134);
         b_initContentView(2131034546);
         this.n = a().a().findViewById(2131493017);

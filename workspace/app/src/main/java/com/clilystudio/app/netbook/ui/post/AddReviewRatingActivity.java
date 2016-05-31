@@ -83,8 +83,8 @@ public class AddReviewRatingActivity extends BaseActivity
         }
     }
 
-    public void onCreate(Bundle paramBundle) {
-        super.onCreate(paramBundle);
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(2130903148);
         a_initContentView(2131034297, 2131034419, new G(this));
         int[] arrayOfInt = {2131493272, 2131493274, 2131493276, 2131493278, 2131493280};

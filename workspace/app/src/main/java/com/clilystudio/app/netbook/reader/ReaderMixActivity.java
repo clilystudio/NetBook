@@ -36,8 +36,8 @@ public class ReaderMixActivity extends BaseLoadingActivity {
         localbE.b(arrayOfString);
     }
 
-    protected void onCreate(Bundle paramBundle) {
-        super.onCreate(paramBundle);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         a(2130903321);
         c_initContentView(2131034482);
         d_setBackIcon(2130837881);

@@ -26,8 +26,8 @@ public class UserLevelActivity extends BaseActivity {
     @InjectView(2131493250)
     TextView mLevelRank;
 
-    public void onCreate(Bundle paramBundle) {
-        super.onCreate(paramBundle);
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(2130903142);
         ButterKnife.inject(this);
         b_initContentView("经验等级");

@@ -49,9 +49,15 @@ import com.clilystudio.app.netbook.util.as;
 import com.clilystudio.app.netbook.util.s;
 import com.clilystudio.app.netbook.widget.TabWidgetV2;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.Iterator;
 import java.util.List;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipFile;
 
 
 public class HomeActivity extends HomeParentActivity
@@ -218,130 +224,29 @@ public class HomeActivity extends HomeParentActivity
             this.j.dismiss();
     }
 
-    // ERROR //
-    private String o() {
-        // Byte code:
-        //   0: aload_0
-        //   1: invokevirtual 469	com/ushaqi/zhuishushenqi/ui/home/HomeActivity:getApplicationInfo	()Landroid/content/pm/ApplicationInfo;
-        //   4: getfield 474	android/content/pm/ApplicationInfo:sourceDir	Ljava/lang/String;
-        //   7: astore_1
-        //   8: new 476	java/util/zip/ZipFile
-        //   11: dup
-        //   12: aload_1
-        //   13: invokespecial 477	java/util/zip/ZipFile:<init>	(Ljava/lang/String;)V
-        //   16: astore_2
-        //   17: aload_2
-        //   18: invokevirtual 481	java/util/zip/ZipFile:entries	()Ljava/util/Enumeration;
-        //   21: astore 7
-        //   23: aload 7
-        //   25: invokeinterface 486 1 0
-        //   30: ifeq +129 -> 159
-        //   33: aload 7
-        //   35: invokeinterface 489 1 0
-        //   40: checkcast 491	java/util/zip/ZipEntry
-        //   43: astore 9
-        //   45: aload 9
-        //   47: invokevirtual 494	java/util/zip/ZipEntry:getName	()Ljava/lang/String;
-        //   50: ldc_w 496
-        //   53: invokevirtual 139	java/lang/String:equals	(Ljava/lang/Object;)Z
-        //   56: ifeq -33 -> 23
-        //   59: new 498	java/io/BufferedReader
-        //   62: dup
-        //   63: new 500	java/io/InputStreamReader
-        //   66: dup
-        //   67: aload_2
-        //   68: aload 9
-        //   70: invokevirtual 504	java/util/zip/ZipFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
-        //   73: invokespecial 507	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
-        //   76: invokespecial 510	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
-        //   79: astore 10
-        //   81: new 256	java/lang/StringBuilder
-        //   84: dup
-        //   85: invokespecial 511	java/lang/StringBuilder:<init>	()V
-        //   88: astore 11
-        //   90: aload 10
-        //   92: invokevirtual 514	java/io/BufferedReader:readLine	()Ljava/lang/String;
-        //   95: astore 12
-        //   97: aload 12
-        //   99: ifnull +31 -> 130
-        //   102: aload 11
-        //   104: aload 12
-        //   106: invokevirtual 266	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-        //   109: pop
-        //   110: goto -20 -> 90
-        //   113: astore 5
-        //   115: aload 5
-        //   117: invokevirtual 515	java/io/IOException:printStackTrace	()V
-        //   120: aload_2
-        //   121: ifnull +7 -> 128
-        //   124: aload_2
-        //   125: invokevirtual 518	java/util/zip/ZipFile:close	()V
-        //   128: aconst_null
-        //   129: areturn
-        //   130: aload 10
-        //   132: invokevirtual 519	java/io/BufferedReader:close	()V
-        //   135: aload 11
-        //   137: invokevirtual 269	java/lang/StringBuilder:toString	()Ljava/lang/String;
-        //   140: astore 14
-        //   142: aload_2
-        //   143: invokevirtual 518	java/util/zip/ZipFile:close	()V
-        //   146: aload 14
-        //   148: areturn
-        //   149: astore 15
-        //   151: aload 15
-        //   153: invokevirtual 515	java/io/IOException:printStackTrace	()V
-        //   156: aload 14
-        //   158: areturn
-        //   159: aload_2
-        //   160: invokevirtual 518	java/util/zip/ZipFile:close	()V
-        //   163: goto -35 -> 128
-        //   166: astore 8
-        //   168: aload 8
-        //   170: invokevirtual 515	java/io/IOException:printStackTrace	()V
-        //   173: goto -45 -> 128
-        //   176: astore 6
-        //   178: aload 6
-        //   180: invokevirtual 515	java/io/IOException:printStackTrace	()V
-        //   183: goto -55 -> 128
-        //   186: astore_3
-        //   187: aconst_null
-        //   188: astore_2
-        //   189: aload_2
-        //   190: ifnull +7 -> 197
-        //   193: aload_2
-        //   194: invokevirtual 518	java/util/zip/ZipFile:close	()V
-        //   197: aload_3
-        //   198: athrow
-        //   199: astore 4
-        //   201: aload 4
-        //   203: invokevirtual 515	java/io/IOException:printStackTrace	()V
-        //   206: goto -9 -> 197
-        //   209: astore_3
-        //   210: goto -21 -> 189
-        //   213: astore 5
-        //   215: aconst_null
-        //   216: astore_2
-        //   217: goto -102 -> 115
-        //
-        // Exception table:
-        //   from	to	target	type
-        //   17	23	113	java/io/IOException
-        //   23	90	113	java/io/IOException
-        //   90	97	113	java/io/IOException
-        //   102	110	113	java/io/IOException
-        //   130	142	113	java/io/IOException
-        //   142	146	149	java/io/IOException
-        //   159	163	166	java/io/IOException
-        //   124	128	176	java/io/IOException
-        //   8	17	186	finally
-        //   193	197	199	java/io/IOException
-        //   17	23	209	finally
-        //   23	90	209	finally
-        //   90	97	209	finally
-        //   102	110	209	finally
-        //   115	120	209	finally
-        //   130	142	209	finally
-        //   8	17	213	java/io/IOException
+    // wrap by g()
+   private String o() {
+        ZipFile v2 = null;
+        try {
+            v2 = new ZipFile(getApplicationInfo().sourceDir);
+            Enumeration<? extends ZipEntry> entries = v2.entries();
+            StringBuilder v0 = new StringBuilder();
+            while (entries.hasMoreElements()) {
+                ZipEntry v01 = entries.nextElement();
+                if (v01.getName().equals("META-INF/DATA")) {
+                    BufferedReader v3 = new BufferedReader(new InputStreamReader(v2.getInputStream(v01)));
+                    String v4 = v3.readLine();
+                    while (v4 != null) {
+                        v0.append(v4);
+                        v4 = v3.readLine();
+                    }
+                }
+            }
+            return v0.toString();
+        } catch (IOException e1) {
+            e1.printStackTrace();
+        }
+        return null;
     }
 
     public final HomeShelfFragment a(String paramString) {
@@ -515,8 +420,8 @@ public class HomeActivity extends HomeParentActivity
         e(paramView.getId());
     }
 
-    public void onCreate(Bundle paramBundle) {
-        super.onCreate(paramBundle);
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_tabhost);
         w = this;
         android.support.v7.app.a locala = a();
@@ -621,8 +526,8 @@ public class HomeActivity extends HomeParentActivity
                 arrayOfString[0] = this.p.getToken();
                 localh.b(arrayOfString);
             }
-            if (paramBundle != null)
-                localTabWidgetV2.setIndex(paramBundle.getInt("extra_index"));
+            if (savedInstanceState != null)
+                localTabWidgetV2.setIndex(savedInstanceState.getInt("extra_index"));
             findViewById(2131493487).setOnClickListener(this);
             findViewById(2131493486).setOnClickListener(this);
             if (this != null) {
@@ -770,35 +675,35 @@ public class HomeActivity extends HomeParentActivity
     public void onTabChanged(String paramString) {
         a(this.f.getCurrentTab());
     }
-
-    @com.squareup.a.l
-    public void onUpdateGameCenter(H paramH) {
-        boolean bool = true;
-        int i1;
-        if (this.c == paramH.a()) {
-            i1 = 0;
-            if (i1 != 0) {
-                if ((!paramH.a()) || (!com.arcsoft.hpay100.a.a.w(this)))
-                    break label88;
-                label33:
-                this.c = bool;
-                if (!this.c)
-                    break label93;
-                this.r.setVisibility(0);
-            }
-        }
-        while (true) {
-            HomeFindFragment localHomeFindFragment = (HomeFindFragment) this.e.get(2);
-            if (localHomeFindFragment != null)
-                localHomeFindFragment.a(this.c);
-            return;
-            i1 = bool;
-            break;
-            label88:
-            bool = false;
-            break label33;
-            label93:
-            this.r.setVisibility(4);
-        }
-    }
+//
+//    @com.squareup.a.l
+//    public void onUpdateGameCenter(H paramH) {
+//        boolean bool = true;
+//        int i1;
+//        if (this.c == paramH.a()) {
+//            i1 = 0;
+//            if (i1 != 0) {
+//                if ((!paramH.a()) || (!com.arcsoft.hpay100.a.a.w(this)))
+//                    break label88;
+//                label33:
+//                this.c = bool;
+//                if (!this.c)
+//                    break label93;
+//                this.r.setVisibility(0);
+//            }
+//        }
+//        while (true) {
+//            HomeFindFragment localHomeFindFragment = (HomeFindFragment) this.e.get(2);
+//            if (localHomeFindFragment != null)
+//                localHomeFindFragment.a(this.c);
+//            return;
+//            i1 = bool;
+//            break;
+//            label88:
+//            bool = false;
+//            break label33;
+//            label93:
+//            this.r.setVisibility(4);
+//        }
+//    }
 }

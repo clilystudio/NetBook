@@ -39,8 +39,8 @@ public class AddVoteItemActivity extends BaseActivity {
         finish();
     }
 
-    public void onCreate(Bundle paramBundle) {
-        super.onCreate(paramBundle);
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(2130903079);
         a.a();
         a.a(this);

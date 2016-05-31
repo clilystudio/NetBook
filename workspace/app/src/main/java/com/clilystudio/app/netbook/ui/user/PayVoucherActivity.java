@@ -42,8 +42,8 @@ public class PayVoucherActivity extends BaseTabActivity
         return localView;
     }
 
-    public void onCreate(Bundle paramBundle) {
-        super.onCreate(paramBundle);
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(2130903119);
         this.g = getIntent().getStringExtra("token_key");
         this.b = getResources().getStringArray(2131361801);

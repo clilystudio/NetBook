@@ -47,13 +47,13 @@ public class BookHelpListActivity extends BaseActivity {
         return localPopupWindow;
     }
 
-    protected void onCreate(Bundle paramBundle) {
-        super.onCreate(paramBundle);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(2130903086);
         a_initContentView("书荒区", 2130837866, new af(this), "编辑书荒");
-        if (paramBundle != null)
-            this.o = paramBundle.getString("savedHelpDuration");
-        for (this.p = paramBundle.getString("savedHelpSort"); ; this.p = "updated") {
+        if (savedInstanceState != null)
+            this.o = savedInstanceState.getString("savedHelpDuration");
+        for (this.p = savedInstanceState.getString("savedHelpSort"); ; this.p = "updated") {
             this.g = findViewById(2131493085);
             this.h = ((TextView) findViewById(2131493100));
             this.c = ((PullToRefreshListView) findViewById(2131493099));

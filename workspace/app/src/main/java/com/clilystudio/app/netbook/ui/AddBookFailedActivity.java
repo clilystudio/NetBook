@@ -12,8 +12,8 @@ public class AddBookFailedActivity extends BaseActivity {
         return new d_IntentFactory().a_setClass(paramContext, AddBookFailedActivity.class).a_putExtra("bookTitle", paramString).a();
     }
 
-    public void onCreate(Bundle paramBundle) {
-        super.onCreate(paramBundle);
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(2130903073);
         b_initContentView(2131034288);
         String str = getIntent().getStringExtra("bookTitle");

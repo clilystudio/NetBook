@@ -30,8 +30,8 @@ public class AddGirlTopicActivity extends BaseActivity {
         super.onBackPressed();
     }
 
-    public void onCreate(Bundle paramBundle) {
-        super.onCreate(paramBundle);
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(2130903076);
         a_initContentView(2131034291, R.string.publish, new u(this));
         ShareSDK.initSDK(this);

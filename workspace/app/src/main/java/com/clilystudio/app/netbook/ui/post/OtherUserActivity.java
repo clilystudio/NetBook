@@ -87,8 +87,8 @@ public class OtherUserActivity extends BaseActivity {
         localcm.b(arrayOfString);
     }
 
-    public void onCreate(Bundle paramBundle) {
-        super.onCreate(paramBundle);
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         i.a().a(this);
         setContentView(2130903211);
         this.b = LayoutInflater.from(this);

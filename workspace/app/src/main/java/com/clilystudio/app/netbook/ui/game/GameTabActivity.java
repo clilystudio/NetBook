@@ -35,8 +35,8 @@ public class GameTabActivity extends BaseTabActivity
         return localView;
     }
 
-    protected void onCreate(Bundle paramBundle) {
-        super.onCreate(paramBundle);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(2130903103);
         b_initContentView(2131034214);
         this.a = ((TabHost) findViewById(2131493096));

@@ -222,8 +222,8 @@ public class AudiobookInfoActivity extends BaseActivity
         a(paramView);
     }
 
-    protected void onCreate(Bundle paramBundle) {
-        super.onCreate(paramBundle);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(2130903081);
         this.r = as.a();
         this.s = as.b();

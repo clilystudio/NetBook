@@ -30,8 +30,8 @@ public class AddBookHelpActivity extends BaseActivity {
         super.onBackPressed();
     }
 
-    public void onCreate(Bundle paramBundle) {
-        super.onCreate(paramBundle);
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(2130903074);
         a_initContentView(2131034286, R.string.publish, new i(this));
         ShareSDK.initSDK(this);

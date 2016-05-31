@@ -130,8 +130,8 @@ public class ScanTxtFileActivity extends BaseActivity {
             a((File) localStack.pop(), localStack);
     }
 
-    protected void onCreate(Bundle paramBundle) {
-        super.onCreate(paramBundle);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(2130903126);
         this.a = new R(this, getLayoutInflater());
         this.mList.setAdapter(this.a);

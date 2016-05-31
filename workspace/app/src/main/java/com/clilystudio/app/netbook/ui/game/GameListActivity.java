@@ -51,8 +51,8 @@ public class GameListActivity extends BaseLoadingActivity {
         new S(this, (byte) 0).b(new String[0]);
     }
 
-    protected void onCreate(Bundle paramBundle) {
-        super.onCreate(paramBundle);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         a(2130903321);
         Intent localIntent = getIntent();
         this.e = localIntent.getBooleanExtra("micro_game", false);

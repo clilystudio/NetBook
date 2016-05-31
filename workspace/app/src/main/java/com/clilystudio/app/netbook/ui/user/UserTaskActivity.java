@@ -45,8 +45,8 @@ public class UserTaskActivity extends BaseActivity {
             new aN(this, (byte) 0).b(new String[0]);
     }
 
-    public void onCreate(Bundle paramBundle) {
-        super.onCreate(paramBundle);
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(2130903143);
         ButterKnife.inject(this);
         b_initContentView("任务");

@@ -59,8 +59,8 @@ public class ChargeActivity extends BaseLoadingActivity {
         new j(this, (byte) 0).b(new Void[0]);
     }
 
-    protected void onCreate(Bundle paramBundle) {
-        super.onCreate(paramBundle);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         a(2130903118);
         com.clilystudio.app.netbook.event.i.a().a(this);
         this.b = new x(this, LayoutInflater.from(this));

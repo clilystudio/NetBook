@@ -55,8 +55,8 @@ public class AudiobookCategoryActivity extends BaseActivity {
         CommonRequest.getTags(localHashMap, new u(this));
     }
 
-    protected void onCreate(Bundle paramBundle) {
-        super.onCreate(paramBundle);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(2130903080);
         b_initContentView(getResources().getString(2131034314));
         as.a();

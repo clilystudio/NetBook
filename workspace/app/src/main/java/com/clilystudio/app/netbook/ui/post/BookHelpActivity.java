@@ -138,8 +138,8 @@ public class BookHelpActivity extends AbsPostActivity {
         this.b.setSelection(2);
     }
 
-    public void onCreate(Bundle paramBundle) {
-        super.onCreate(paramBundle);
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         a(2130903350);
         b_initContentView("书荒互助区详情");
         this.a = getIntent().getStringExtra("extraBookHelpId");

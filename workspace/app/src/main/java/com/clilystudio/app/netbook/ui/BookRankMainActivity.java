@@ -44,8 +44,8 @@ public class BookRankMainActivity extends BaseTabActivity
         return localView;
     }
 
-    protected void onCreate(Bundle paramBundle) {
-        super.onCreate(paramBundle);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(2130903089);
         b_initContentView(getIntent().getStringExtra("book_list_title"));
         this.f = getIntent().getStringArrayExtra("book_list_ids");

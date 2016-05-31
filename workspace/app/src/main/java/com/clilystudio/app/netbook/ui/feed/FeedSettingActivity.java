@@ -11,12 +11,12 @@ public class FeedSettingActivity extends BaseActivity {
     private TextView a;
     private int b;
 
-    public void onCreate(Bundle paramBundle) {
-        super.onCreate(paramBundle);
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(2130903100);
         b_initContentView(2131034384);
-        if (paramBundle != null) ;
-        for (this.b = paramBundle.getInt("savedCurrentCount", 50); ; this.b = a.a(this, "feed_chapter_count", 50)) {
+        if (savedInstanceState != null) ;
+        for (this.b = savedInstanceState.getInt("savedCurrentCount", 50); ; this.b = a.a(this, "feed_chapter_count", 50)) {
             View localView = findViewById(2131493128);
             this.a = ((TextView) findViewById(2131493130));
             TextView localTextView = this.a;

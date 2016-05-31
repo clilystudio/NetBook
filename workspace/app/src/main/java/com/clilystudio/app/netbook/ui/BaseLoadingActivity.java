@@ -51,8 +51,8 @@ public abstract class BaseLoadingActivity extends BaseActivity {
         a(this.b);
     }
 
-    protected void onCreate(Bundle paramBundle) {
-        super.onCreate(paramBundle);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         if (a.k())
             getWindow().setUiOptions(1);
         setContentView(2130903109);

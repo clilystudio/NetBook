@@ -81,8 +81,8 @@ public class UGCMainActivity extends BaseTabActivity
         return localView;
     }
 
-    protected void onCreate(Bundle paramBundle) {
-        super.onCreate(paramBundle);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(2130903136);
         View localView1 = getLayoutInflater().inflate(2130903410, null);
         this.g = a(this.g, localView1);

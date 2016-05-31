@@ -48,8 +48,8 @@ public class AdWebViewActivity extends BaseActivity
     }
 
     @TargetApi(9)
-    protected void onCreate(Bundle paramBundle) {
-        super.onCreate(paramBundle);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(2130903420);
         this.f = getIntent().getStringExtra("extra_title");
         c_initContentView(this.f);

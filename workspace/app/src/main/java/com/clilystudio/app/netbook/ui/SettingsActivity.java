@@ -64,8 +64,8 @@ public class SettingsActivity extends BaseActivity
         am_CommonUtils.a_startActivity(this, "http://www.lagou.com/gongsi/493.html?speedShow=true", null);
     }
 
-    public void onCreate(Bundle paramBundle) {
-        super.onCreate(paramBundle);
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(2130903129);
         TextView localTextView;
         StringBuilder localStringBuilder;

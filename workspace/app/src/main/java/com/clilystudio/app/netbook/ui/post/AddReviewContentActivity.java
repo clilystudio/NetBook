@@ -33,8 +33,8 @@ public class AddReviewContentActivity extends BaseActivity {
         }
     }
 
-    public void onCreate(Bundle paramBundle) {
-        super.onCreate(paramBundle);
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(2130903077);
         Bundle localBundle = getIntent().getExtras();
         if (localBundle != null)

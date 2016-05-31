@@ -63,8 +63,8 @@ public class BookRankListActivity extends BaseActivity {
         }
     }
 
-    public void onCreate(Bundle paramBundle) {
-        super.onCreate(paramBundle);
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(2130903088);
         b_initContentView(2131034450);
         this.f = new Handler();

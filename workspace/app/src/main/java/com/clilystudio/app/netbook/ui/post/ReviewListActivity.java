@@ -53,15 +53,15 @@ public class ReviewListActivity extends BaseActivity {
         return localPopupWindow;
     }
 
-    protected void onCreate(Bundle paramBundle) {
-        super.onCreate(paramBundle);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(2130903090);
         a_initContentView("书评区", 2130837866, new cJ(this), "写书评");
-        if (paramBundle != null) {
-            this.s = paramBundle.getString("savedReviewDur");
-            this.t = paramBundle.getString("savedReviewType");
+        if (savedInstanceState != null) {
+            this.s = savedInstanceState.getString("savedReviewDur");
+            this.t = savedInstanceState.getString("savedReviewType");
         }
-        for (this.u = paramBundle.getString("savedReviewSort"); ; this.u = "updated") {
+        for (this.u = savedInstanceState.getString("savedReviewSort"); ; this.u = "updated") {
             this.g = findViewById(2131493085);
             this.h = ((TextView) findViewById(2131493100));
             this.c = ((PullToRefreshListView) findViewById(2131493099));

@@ -122,8 +122,8 @@ public class UGCGuideAddBookActivity extends BaseActivity
         finish();
     }
 
-    public void onCreate(Bundle paramBundle) {
-        super.onCreate(paramBundle);
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(2130903127);
         ButterKnife.inject(this);
         LayoutInflater localLayoutInflater = LayoutInflater.from(this);
@@ -150,8 +150,8 @@ public class UGCGuideAddBookActivity extends BaseActivity
         this.g = ((ListView) findViewById(2131493185));
         this.k = new y(this, localLayoutInflater);
         this.g.setAdapter(this.k);
-        if (paramBundle != null) {
-            this.b = paramBundle.getString("saved_keyword");
+        if (savedInstanceState != null) {
+            this.b = savedInstanceState.getString("saved_keyword");
             if (this.b != null)
                 this.c.setTextByCode(this.b);
         }

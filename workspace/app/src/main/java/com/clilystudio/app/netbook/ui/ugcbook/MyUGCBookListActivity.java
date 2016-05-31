@@ -5,8 +5,8 @@ import android.os.Bundle;
 import com.clilystudio.app.netbook.ui.BaseActivity;
 
 public class MyUGCBookListActivity extends BaseActivity {
-    protected void onCreate(Bundle paramBundle) {
-        super.onCreate(paramBundle);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(2130903116);
         b_initContentView("我的书单");
     }

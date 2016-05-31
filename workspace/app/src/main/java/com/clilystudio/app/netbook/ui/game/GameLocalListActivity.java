@@ -16,8 +16,8 @@ public class GameLocalListActivity extends BaseActivity {
     private T b;
     private List<Game> c;
 
-    protected void onCreate(Bundle paramBundle) {
-        super.onCreate(paramBundle);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(2130903102);
         b_initContentView("我玩过的游戏");
         this.c = ((List) a.k(c.h, "played_game.txt"));

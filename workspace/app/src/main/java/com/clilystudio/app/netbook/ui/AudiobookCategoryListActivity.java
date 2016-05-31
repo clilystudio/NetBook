@@ -55,8 +55,8 @@ public class AudiobookCategoryListActivity extends BaseLoadingActivity {
         j();
     }
 
-    protected void onCreate(Bundle paramBundle) {
-        super.onCreate(paramBundle);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         a(2130903386);
         this.a = getIntent().getStringExtra("TAG_NAME");
         b_initContentView(this.a);

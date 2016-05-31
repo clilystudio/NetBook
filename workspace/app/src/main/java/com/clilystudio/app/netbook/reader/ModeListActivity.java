@@ -22,8 +22,8 @@ public class ModeListActivity extends BaseActivity {
         overridePendingTransition(2130968604, 2130968605);
     }
 
-    protected void onCreate(Bundle paramBundle) {
-        super.onCreate(paramBundle);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(2130903113);
         c_initContentView(2131034481);
         d_setBackIcon(2130837881);

@@ -55,8 +55,8 @@ public class CommonPostListActivity extends BaseActivity {
         return localPopupWindow;
     }
 
-    protected void onCreate(Bundle paramBundle) {
-        super.onCreate(paramBundle);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(2130903096);
         this.r = getIntent().getStringExtra("post_block_key");
         if (this.r == null)
@@ -68,9 +68,9 @@ public class CommonPostListActivity extends BaseActivity {
             str1 = "意见反馈区";
             str2 = "写反馈";
             a_initContentView(str1, 2130837866, new aS(this), str2);
-            if (paramBundle != null) {
-                this.a = paramBundle.getString("savedReviewDur");
-                this.b = paramBundle.getString("savedReviewSort");
+            if (savedInstanceState != null) {
+                this.a = savedInstanceState.getString("savedReviewDur");
+                this.b = savedInstanceState.getString("savedReviewSort");
             }
             this.f = ((PullToRefreshListView) findViewById(2131493099));
             this.f.setMode(PullToRefreshBase.Mode.PULL_FROM_START);

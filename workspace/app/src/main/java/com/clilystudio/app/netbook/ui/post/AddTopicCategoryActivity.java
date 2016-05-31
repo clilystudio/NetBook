@@ -11,8 +11,8 @@ public class AddTopicCategoryActivity extends BaseActivity {
     private String c;
     private boolean e;
 
-    public void onCreate(Bundle paramBundle) {
-        super.onCreate(paramBundle);
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(2130903146);
         b_initContentView(2131034294);
         a.a();

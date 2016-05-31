@@ -5,8 +5,8 @@ import android.os.Bundle;
 import com.clilystudio.app.netbook.ui.BaseActivity;
 
 public class UserFollowWeixinActivity extends BaseActivity {
-    protected void onCreate(Bundle paramBundle) {
-        super.onCreate(paramBundle);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(2130903140);
         b_initContentView(2131034576);
         findViewById(2131493232).setOnClickListener(new ax(this));

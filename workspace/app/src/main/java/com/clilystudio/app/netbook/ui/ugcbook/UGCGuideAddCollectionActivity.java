@@ -47,8 +47,8 @@ public class UGCGuideAddCollectionActivity extends BaseActivity {
         finish();
     }
 
-    protected void onCreate(Bundle paramBundle) {
-        super.onCreate(paramBundle);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(2130903135);
         i.a().a(this);
         this.a = ((TextView) findViewById(2131493224));

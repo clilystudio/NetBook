@@ -56,9 +56,9 @@ public abstract class SimpleTabActivity extends BaseTabActivity
 
     public abstract Fragment[] i();
 
-    protected void onCreate(Bundle paramBundle) {
+    protected void onCreate(Bundle savedInstanceState) {
         int i = 0;
-        super.onCreate(paramBundle);
+        super.onCreate(savedInstanceState);
         setContentView(2130903133);
         b();
         this.a = ((TabHost) findViewById(2131493096));
@@ -87,8 +87,8 @@ public abstract class SimpleTabActivity extends BaseTabActivity
             i++;
         }
         f();
-        if (paramBundle != null)
-            localTabWidgetV2.setIndex(paramBundle.getInt("extra_index"));
+        if (savedInstanceState != null)
+            localTabWidgetV2.setIndex(savedInstanceState.getInt("extra_index"));
     }
 
     public void onPageScrollStateChanged(int paramInt) {

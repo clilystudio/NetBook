@@ -32,8 +32,8 @@ public class BookTagListActivity extends BaseLoadingActivity {
         new aX(this, (byte) 0).b(new String[0]);
     }
 
-    public void onCreate(Bundle paramBundle) {
-        super.onCreate(paramBundle);
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         a(2130903386);
         this.c = getIntent().getStringExtra("TAG_LIST_KEY");
         b_initContentView(this.c);

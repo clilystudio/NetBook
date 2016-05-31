@@ -90,8 +90,8 @@ public class BookPostTabActivity extends SimpleTabActivity {
         return str;
     }
 
-    protected void onCreate(Bundle paramBundle) {
-        super.onCreate(paramBundle);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         String str = this.h;
         if ((str != null) && (str.length() > 10))
             str = str.substring(0, 10) + "...";

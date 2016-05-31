@@ -124,8 +124,8 @@ public abstract class AbsPostActivity extends BaseLoadingActivity {
 
     protected abstract void o();
 
-    protected void onCreate(Bundle paramBundle) {
-        super.onCreate(paramBundle);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         com.arcsoft.hpay100.a.a.u(this);
     }
 

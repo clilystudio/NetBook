@@ -59,8 +59,8 @@ public class UserInfoActivity extends BaseActivity {
         e.a(this, "账号异常，请重新授权登录后再试");
     }
 
-    public void onCreate(Bundle paramBundle) {
-        super.onCreate(paramBundle);
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(2130903141);
         ButterKnife.inject(this);
         a_initContentView(2131034578, "编辑资料", new aA(this));

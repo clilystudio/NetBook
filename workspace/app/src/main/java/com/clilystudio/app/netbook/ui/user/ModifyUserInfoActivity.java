@@ -156,8 +156,8 @@ public class ModifyUserInfoActivity extends BaseActivity
         localView1.findViewById(2131493414).setOnClickListener(new l(this, localAlertDialog));
     }
 
-    protected void onCreate(Bundle paramBundle) {
-        super.onCreate(paramBundle);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(2130903114);
         b_initContentView("编辑资料");
         ButterKnife.inject(this);

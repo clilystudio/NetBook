@@ -22,8 +22,8 @@ public class ReaderResActivity extends ReaderModeActivity {
         return new d_IntentFactory().a_setClass(paramContext, ReaderResActivity.class).a_putExtra("BOOK_ID", paramString1).a_putExtra("BOOK_TITLE", paramString2).a_putExtra("BOOK_MODE", paramInt).a();
     }
 
-    public void onCreate(Bundle paramBundle) {
-        super.onCreate(paramBundle);
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(2130903179);
         c_init();
         View localView = LayoutInflater.from(this).inflate(2130903071, null);

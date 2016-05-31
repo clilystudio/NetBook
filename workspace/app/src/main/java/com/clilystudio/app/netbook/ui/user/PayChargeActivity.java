@@ -56,8 +56,8 @@ public class PayChargeActivity extends BaseLoadingActivity {
         localO.b(arrayOfString);
     }
 
-    public void onCreate(Bundle paramBundle) {
-        super.onCreate(paramBundle);
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         a(2130903386);
         TextView localTextView = (TextView) findViewById(2131493104);
         localTextView.setGravity(1);

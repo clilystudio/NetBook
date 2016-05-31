@@ -6,8 +6,8 @@ import android.widget.Button;
 import com.clilystudio.app.netbook.ui.BaseActivity;
 
 public class FeedIntroActivity extends BaseActivity {
-    public void onCreate(Bundle paramBundle) {
-        super.onCreate(paramBundle);
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(2130903098);
         b_initContentView(2131034381);
         ((Button) findViewById(2131493126)).setOnClickListener(new d(this));

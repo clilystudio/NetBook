@@ -54,8 +54,8 @@ public class PayAccountActivity extends BaseActivity
         AppProperties.getInstance(this).setProperties("charge_click_count");
     }
 
-    protected void onCreate(Bundle paramBundle) {
-        super.onCreate(paramBundle);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         i.a().a(this);
         setContentView(2130903329);
         b_initContentView("我的账户");

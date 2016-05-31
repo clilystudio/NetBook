@@ -26,8 +26,8 @@ public class UserUGCActivity extends SimpleTabActivity {
         return arrayOfFragment;
     }
 
-    protected void onCreate(Bundle paramBundle) {
-        super.onCreate(paramBundle);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         b_initContentView("我的书单");
     }
 }

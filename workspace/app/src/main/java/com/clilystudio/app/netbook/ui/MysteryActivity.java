@@ -112,8 +112,8 @@ public class MysteryActivity extends BaseLoadingActivity {
     protected final void b() {
     }
 
-    protected void onCreate(Bundle paramBundle) {
-        super.onCreate(paramBundle);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         a(2130903117);
         b_initContentView("神秘功能");
         ListView localListView = (ListView) findViewById(2131493150);

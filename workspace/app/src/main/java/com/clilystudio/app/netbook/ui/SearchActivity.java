@@ -203,8 +203,8 @@ public class SearchActivity extends BaseActivity
         finish();
     }
 
-    public void onCreate(Bundle paramBundle) {
-        super.onCreate(paramBundle);
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(2130903127);
         ButterKnife.inject(this);
         Intent localIntent = getIntent();
@@ -240,8 +240,8 @@ public class SearchActivity extends BaseActivity
         this.l = new E(localLayoutInflater);
         this.h.setAdapter(this.l);
         this.h.setOnItemClickListener(new bE(this));
-        if (paramBundle != null) {
-            this.b = paramBundle.getString("saved_keyword");
+        if (savedInstanceState != null) {
+            this.b = savedInstanceState.getString("saved_keyword");
             if (this.b != null)
                 this.e.setTextByCode(this.b);
         }

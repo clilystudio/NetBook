@@ -34,12 +34,12 @@ public class ReaderModeActivity extends BaseActivity {
         overridePendingTransition(2130968602, 2130968603);
     }
 
-    protected void onCreate(Bundle paramBundle) {
-        super.onCreate(paramBundle);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         this.b = g("BOOK_ID");
         this.c = g("BOOK_TITLE");
-        if (paramBundle != null) ;
-        for (this.a = paramBundle.getInt("savedCurrentMode", 5); ; this.a = getIntent().getIntExtra("BOOK_MODE", 5)) {
+        if (savedInstanceState != null) ;
+        for (this.a = savedInstanceState.getInt("savedCurrentMode", 5); ; this.a = getIntent().getIntExtra("BOOK_MODE", 5)) {
             getIntent().getBooleanExtra("SELECT_LAST", false);
             return;
         }

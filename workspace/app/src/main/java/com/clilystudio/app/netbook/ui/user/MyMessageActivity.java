@@ -6,8 +6,8 @@ import com.clilystudio.app.netbook.ui.BaseActivity;
 import com.clilystudio.app.netbook.util.am_CommonUtils;
 
 public class MyMessageActivity extends BaseActivity {
-    protected void onCreate(Bundle paramBundle) {
-        super.onCreate(paramBundle);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(2130903115);
         b_initContentView("我的消息");
     }

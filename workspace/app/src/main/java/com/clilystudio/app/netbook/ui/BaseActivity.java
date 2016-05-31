@@ -239,8 +239,8 @@ public class BaseActivity extends AppCompatActivity {
         }
     }
 
-    protected void onCreate(Bundle paramBundle) {
-        super.onCreate(paramBundle);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         if (AppProperties.getInstance(this).getProperty("customer_night_theme", false)) {
             setTheme(R.style.BaseTheme_Dark);
         } else {

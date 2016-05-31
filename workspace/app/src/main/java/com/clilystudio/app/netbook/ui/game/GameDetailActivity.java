@@ -92,8 +92,8 @@ public class GameDetailActivity extends BaseLoadingActivity {
         finish();
     }
 
-    protected void onCreate(Bundle paramBundle) {
-        super.onCreate(paramBundle);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         a(2130903386);
         b_initContentView(2131034389, 2130837866, new d(this));
         this.c = getIntent().getStringExtra("game_id");

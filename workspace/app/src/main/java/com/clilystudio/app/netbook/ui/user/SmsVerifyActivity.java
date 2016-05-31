@@ -92,8 +92,8 @@ public class SmsVerifyActivity extends BaseActivity {
         a(this.f);
     }
 
-    protected void onCreate(Bundle paramBundle) {
-        super.onCreate(paramBundle);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(2130903132);
         b_initContentView("短信充值");
         ButterKnife.inject(this);
