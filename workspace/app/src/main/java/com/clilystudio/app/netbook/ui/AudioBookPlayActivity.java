@@ -105,8 +105,8 @@ public class AudioBookPlayActivity extends BaseActivity
     private void b() {
         Intent localIntent = new Intent(this, HomeActivity.class);
         localIntent.setFlags(67108864);
-        if (HomeActivity.b() != null)
-            HomeActivity.b().f();
+        if (HomeActivity.b_getInstance() != null)
+            HomeActivity.b_getInstance().f();
         startActivity(localIntent);
         finish();
     }

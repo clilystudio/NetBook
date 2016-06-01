@@ -23,7 +23,6 @@ import com.clilystudio.app.netbook.R;
 import com.clilystudio.app.netbook.db.AccountInfo;
 import com.clilystudio.app.netbook.db.BookReadRecord;
 import com.clilystudio.app.netbook.event.BookShelfRefreshEvent;
-import com.clilystudio.app.netbook.event.H;
 import com.clilystudio.app.netbook.event.o;
 import com.clilystudio.app.netbook.event.t;
 import com.clilystudio.app.netbook.event.w;
@@ -63,7 +62,7 @@ import java.util.zip.ZipFile;
 public class HomeActivity extends HomeParentActivity
         implements ViewPager.OnPageChangeListener, View.OnClickListener, TabHost.OnTabChangeListener, TabHost.TabContentFactory {
     private static final String a = HomeActivity.class.getSimpleName();
-    private static HomeActivity w;
+    private static HomeActivity mInstance;
     private long b = 0L;
     private boolean c = true;
     private List<Fragment> e = new ArrayList();
@@ -131,8 +130,8 @@ public class HomeActivity extends HomeParentActivity
         }
     }
 
-    public static HomeActivity b() {
-        return w;
+    public static HomeActivity b_getInstance() {
+        return mInstance;
     }
 
     private void e(int paramInt) {
@@ -423,7 +422,8 @@ public class HomeActivity extends HomeParentActivity
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_tabhost);
-        w = this;
+        mInstance = this;
+
         android.support.v7.app.a locala = a();
         locala.c(false);
         locala.a(false);
