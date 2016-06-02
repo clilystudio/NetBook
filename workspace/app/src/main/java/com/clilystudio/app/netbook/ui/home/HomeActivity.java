@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.ActionBar;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -19,6 +20,7 @@ import android.widget.TabWidget;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.clilystudio.app.netbook.AppProperties;
 import com.clilystudio.app.netbook.R;
 import com.clilystudio.app.netbook.db.AccountInfo;
 import com.clilystudio.app.netbook.db.BookReadRecord;
@@ -64,29 +66,29 @@ public class HomeActivity extends HomeParentActivity
     private static final String a = HomeActivity.class.getSimpleName();
     private static HomeActivity mInstance;
     private long b = 0L;
-    private boolean c = true;
+    private boolean mIsGameCenterShow = true;
     private List<Fragment> e = new ArrayList();
-    private TabHost f;
-    private ViewPager g;
+    private TabHost mTabHost;
+    private ViewPager mViewPager;
     private i h;
     private PopupWindow i;
     private PopupWindow j;
-    private View k;
-    private SmartImageView l;
-    private TextView m;
+    private View mPopWin;
+    private SmartImageView mUserAvatar;
+    private TextView mUserName;
     private TextView n;
     private ImageView o;
-    private Account p;
-    private ImageView q;
-    private ImageView r;
-    private ViewGroup s;
+    private Account mAccount;
+    private ImageView moreImageView;
+    private ImageView gameImageView;
+    private ViewGroup mNotifyItem;
     private WebView t;
     private boolean u;
     private String[] v;
 
     private void a(int paramInt) {
         if ((paramInt >= 0) && (paramInt < this.h.getCount())) {
-            this.g.setCurrentItem(paramInt, true);
+            this.mViewPager.setCurrentItem(paramInt, true);
             if (paramInt == -1 + this.h.getCount()) {
                 boolean bool = com.arcsoft.hpay100.a.a.r(this, "switch_17kflow");
                 float f1 = j();
@@ -116,10 +118,10 @@ public class HomeActivity extends HomeParentActivity
 
     private void a(User paramUser) {
         if (paramUser == null) ;
-        while (this.k == null)
+        while (this.mPopWin == null)
             return;
-        this.l.setImageUrl(paramUser.getFullAvatar());
-        this.m.setText(paramUser.getNickname());
+        this.mUserAvatar.setImageUrl(paramUser.getFullAvatar());
+        this.mUserName.setText(paramUser.getNickname());
     }
 
     private static void a(List<BookReadRecord> paramList) {
@@ -179,9 +181,9 @@ public class HomeActivity extends HomeParentActivity
     }
 
     private void k() {
-        if (this.k != null) {
-            this.l.setImageResource(2130837835);
-            this.m.setText("请登录");
+        if (this.mPopWin != null) {
+            this.mUserAvatar.setImageResource(2130837835);
+            this.mUserName.setText("请登录");
         }
     }
 
@@ -194,7 +196,7 @@ public class HomeActivity extends HomeParentActivity
             }
             View localView = findViewById(2131493096);
             if (this.i == null) {
-                this.i = new PopupWindow(this.k, getResources().getDimensionPixelSize(2131099746), -2);
+                this.i = new PopupWindow(this.mPopWin, getResources().getDimensionPixelSize(2131099746), -2);
                 this.i.setFocusable(true);
                 this.i.setOutsideTouchable(true);
                 this.i.setBackgroundDrawable(new ColorDrawable(0));
@@ -224,7 +226,7 @@ public class HomeActivity extends HomeParentActivity
     }
 
     // wrap by g()
-   private String o() {
+    private String o() {
         ZipFile v2 = null;
         try {
             v2 = new ZipFile(getApplicationInfo().sourceDir);
@@ -272,22 +274,22 @@ public class HomeActivity extends HomeParentActivity
         HomeFindFragment localHomeFindFragment = (HomeFindFragment) getSupportFragmentManager().findFragmentByTag(paramString);
         if (localHomeFindFragment == null) {
             Bundle localBundle = new Bundle();
-            localBundle.putBoolean("game_center_show", this.c);
+            localBundle.putBoolean("game_center_show", this.mIsGameCenterShow);
             localHomeFindFragment = HomeFindFragment.a(localBundle);
         }
         return localHomeFindFragment;
     }
 
     public final void g() {
-        this.g.setCurrentItem(2, true);
+        this.mViewPager.setCurrentItem(2, true);
     }
 
     @com.squareup.a.l
     public void onAccountUpdated(com.clilystudio.app.netbook.event.a parama) {
         Account localAccount = am_CommonUtils.e();
         if (localAccount != null) {
-            this.l.setImageUrl(localAccount.getUser().getFullAvatar());
-            this.m.setText(localAccount.getUser().getNickname());
+            this.mUserAvatar.setImageUrl(localAccount.getUser().getFullAvatar());
+            this.mUserName.setText(localAccount.getUser().getNickname());
         }
     }
 
@@ -313,8 +315,8 @@ public class HomeActivity extends HomeParentActivity
 
     @com.squareup.a.l
     public void onBookShelfRefresh(BookShelfRefreshEvent paramBookShelfRefreshEvent) {
-        if (this.p != null)
-            a(this.p);
+        if (this.mAccount != null)
+            a(this.mAccount);
     }
 
     public void onClick(View paramView) {
@@ -335,9 +337,9 @@ public class HomeActivity extends HomeParentActivity
             default:
                 return;
             case 2131493488:
-                if (this.p != null) {
+                if (this.mAccount != null) {
                     m();
-                    startActivity(UserInfoActivity.a(this, this.p.getToken()));
+                    startActivity(UserInfoActivity.a(this, this.mAccount.getToken()));
                     return;
                 }
                 Intent localIntent2 = AuthLoginActivity.a(this);
@@ -345,10 +347,10 @@ public class HomeActivity extends HomeParentActivity
                 startActivityForResult(localIntent2, 100);
                 return;
             case 2131493491:
-                if (this.p != null) {
+                if (this.mAccount != null) {
                     m();
                     com.arcsoft.hpay100.a.a.b(this, "key_enter_msg_time", System.currentTimeMillis());
-                    AccountInfo localAccountInfo = AccountInfo.getOrCreate(this.p.getToken());
+                    AccountInfo localAccountInfo = AccountInfo.getOrCreate(this.mAccount.getToken());
                     localAccountInfo.setPrevUnimpNotif(J.a(this).b());
                     localAccountInfo.save();
                     AppProperties.getInstance(this).setProperties("view_notification");
@@ -359,9 +361,9 @@ public class HomeActivity extends HomeParentActivity
                 startActivityForResult(AuthLoginActivity.a(this), 100);
                 return;
             case 2131493496:
-                if (this.p != null) {
+                if (this.mAccount != null) {
                     m();
-                    new Z(this, this.p.getToken()).a(false);
+                    new Z(this, this.mAccount.getToken()).a(false);
                     return;
                 }
                 startActivityForResult(AuthLoginActivity.a(this), 100);
@@ -424,134 +426,120 @@ public class HomeActivity extends HomeParentActivity
         setContentView(R.layout.activity_home_tabhost);
         mInstance = this;
 
-        android.support.v7.app.a locala = a();
-        locala.c(false);
-        locala.a(false);
-        locala.a(R.layout.home_ab_custom_view);
-        locala.d(true);
-        this.q = ((ImageView) locala.a().findViewById(R.id.home_action_menu_more));
-        this.q.setOnClickListener(this);
-        ImageView localImageView = (ImageView) locala.a().findViewById(R.id.home_action_menu_search);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setCustomView(R.layout.home_ab_custom_view);
+        actionBar.setDisplayUseLogoEnabled(false);
+        actionBar.setDisplayShowHomeEnabled(false);
+        actionBar.setCustomView(R.layout.home_ab_custom_view);
+        actionBar.setDisplayShowCustomEnabled(true);
+        this.moreImageView = ((ImageView) actionBar.getCustomView().findViewById(R.id.home_action_menu_more));
+        this.moreImageView.setOnClickListener(this);
+        ImageView localImageView = (ImageView) actionBar.getCustomView().findViewById(R.id.home_action_menu_search);
         localImageView.setOnClickListener(this);
-        this.r = ((ImageView) locala.a().findViewById(R.id.home_action_menu_game));
-        this.r.setOnClickListener(this);
-        TabWidgetV2 localTabWidgetV2;
-        LayoutInflater localLayoutInflater;
-        int i1;
-        label297:
-        TabHost.TabSpec localTabSpec;
-        View localView8;
-        if (com.arcsoft.hpay100.a.a.w(this)) {
-            this.r.setVisibility(View.VISIBLE);
-            this.c = com.arcsoft.hpay100.a.a.x(this);
-            if (!this.c)
-                this.r.setVisibility(View.GONE);
-            com.clilystudio.app.netbook.event.i.a().a(this);
-            this.f = ((TabHost) findViewById(R.id.host));
-            localTabWidgetV2 = (TabWidgetV2) findViewById(android.R.id.tabs);
-            this.g = ((ViewPager) findViewById(2131493097));
-            this.h = new i(this, getSupportFragmentManager());
-            this.g.setOffscreenPageLimit(3);
-            this.g.setAdapter(this.h);
-            this.g.setOnPageChangeListener(this);
-            this.f.setup();
-            this.f.setOnTabChangedListener(this);
-            if (this.f.getTabWidget().getTabCount() > 0) {
-                this.f.setCurrentTab(0);
-                this.f.clearAllTabs();
-            }
-            localLayoutInflater = getLayoutInflater();
-            i1 = 0;
-            if (i1 >= this.h.getCount())
-                break label469;
-            localTabSpec = this.f.newTabSpec("tab" + i1);
+        this.gameImageView = ((ImageView) actionBar.getCustomView().findViewById(R.id.home_action_menu_game));
+        this.gameImageView.setOnClickListener(this);
+        this.gameImageView.setVisibility(View.GONE);
+        this.mIsGameCenterShow = false;
+        com.clilystudio.app.netbook.event.i.a().a(this);
+        this.mTabHost = ((TabHost) findViewById(R.id.host));
+        TabWidgetV2  localTabWidgetV2 = (TabWidgetV2) findViewById(android.R.id.tabs);
+        this.mViewPager = ((ViewPager) findViewById(R.id.pager));
+        this.h = new i(this, getSupportFragmentManager());
+        this.mViewPager.setOffscreenPageLimit(3);
+        this.mViewPager.setAdapter(this.h);
+        this.mViewPager.setOnPageChangeListener(this);
+        this.mTabHost.setup();
+        this.mTabHost.setOnTabChangedListener(this);
+        if (this.mTabHost.getTabWidget().getTabCount() > 0) {
+            this.mTabHost.setCurrentTab(0);
+            this.mTabHost.clearAllTabs();
+        }
+        LayoutInflater localLayoutInflater = getLayoutInflater();
+        for (int i1 = 0; i1 < this.h.getCount(); i1++) {
+            TabHost.TabSpec localTabSpec = this.mTabHost.newTabSpec("tab" + i1);
             localTabSpec.setContent(this);
-            if ((i1 != 1) || (!com.arcsoft.hpay100.a.a.a(this, "FRIST_RUN_POST", true)) || (!com.arcsoft.hpay100.a.a.r(this, "switch_news")))
-                break label455;
-            localView8 = localLayoutInflater.inflate(2130903230, null);
-            this.s = ((ViewGroup) localView8);
-        }
-        label455:
-        for (View localView7 = localView8; ; localView7 = localLayoutInflater.inflate(2130903229, null)) {
-            ((TextView) localView7.findViewById(2131493509)).setText((String) this.h.getPageTitle(i1));
+            View localView7;
+
+            if (i1 != 1 || !AppProperties.getInstance(this).getProperty("FRIST_RUN_POST", true) || !com.arcsoft.hpay100.a.a.r(this, "switch_news")) {
+                localView7 = localLayoutInflater.inflate(R.layout.home_tabhost_item, null);
+            } else {
+                localView7 = localLayoutInflater.inflate(R.layout.home_tabhost_notify_item, null);
+                this.mNotifyItem = ((ViewGroup) localView7);
+            }
+            ((TextView) localView7.findViewById(R.id.text)).setText((String) this.h.getPageTitle(i1));
             localTabSpec.setIndicator(localView7);
-            this.f.addTab(localTabSpec);
-            i1++;
-            break label297;
-            this.r.setVisibility(8);
-            break;
+            this.mTabHost.addTab(localTabSpec);
         }
-        label469:
-        this.p = am_CommonUtils.e();
-        this.k = getLayoutInflater().inflate(2130903228, null);
-        View localView1 = this.k.findViewById(2131493488);
-        View localView2 = this.k.findViewById(2131493491);
-        View localView3 = this.k.findViewById(2131493496);
-        View localView4 = this.k.findViewById(2131493502);
-        View localView5 = this.k.findViewById(2131493507);
-        View localView6 = this.k.findViewById(2131493504);
-        this.k.findViewById(2131493498).setOnClickListener(this);
-        this.k.findViewById(2131493500).setOnClickListener(this);
+        this.mAccount = am_CommonUtils.e_getAccount();
+        this.mPopWin = getLayoutInflater().inflate(R.layout.home_popupwindow_layout, null);
+
+        View localView1 = this.mPopWin.findViewById(R.id.home_menu_user);
+        View localView2 = this.mPopWin.findViewById(R.id.home_menu_msg);
+        View localView3 = this.mPopWin.findViewById(R.id.home_menu_sync);
+        View localView4 = this.mPopWin.findViewById(R.id.home_menu_feedback);
+        View localView5 = this.mPopWin.findViewById(R.id.home_menu_settings);
+        View localView6 = this.mPopWin.findViewById(R.id.home_menu_theme);
+        this.mPopWin.findViewById(R.id.home_menu_scan).setOnClickListener(this);
+
+        this.mPopWin.findViewById(R.id.home_menu_wifi_transfer).setOnClickListener(this);
+
         localView1.setOnClickListener(this);
         localView2.setOnClickListener(this);
         localView3.setOnClickListener(this);
         localView4.setOnClickListener(this);
         localView5.setOnClickListener(this);
         localView6.setOnClickListener(this);
-        this.l = ((SmartImageView) localView1.findViewById(2131493489));
-        this.m = ((TextView) localView1.findViewById(2131493490));
-        if (this.p != null) {
-            a(this.p.getUser());
-            this.n = ((TextView) this.k.findViewById(2131493506));
-            this.o = ((ImageView) this.k.findViewById(2131493505));
-            if (!com.arcsoft.hpay100.a.a.a(this, "customer_night_theme", false))
-                break label985;
-            this.n.setText(2131034365);
-            this.o.setImageResource(2130838180);
-        }
-        while (true) {
-            if (!com.arcsoft.hpay100.a.a.a(this, "bookPushRecords", false)) {
-                List localList = BookReadRecord.getAll();
-                if ((localList != null) && (!localList.isEmpty()))
-                    a(localList);
-                com.arcsoft.hpay100.a.a.b(this, "bookPushRecords", true);
-            }
-            h();
-            i();
-            new Handler().postDelayed(new l(this), 3000L);
-            if (this.p != null) {
-                com.clilystudio.app.netbook.util.e.c("launch");
-                h localh = new h(this);
-                String[] arrayOfString = new String[1];
-                arrayOfString[0] = this.p.getToken();
-                localh.b(arrayOfString);
-            }
-            if (savedInstanceState != null)
-                localTabWidgetV2.setIndex(savedInstanceState.getInt("extra_index"));
-            findViewById(2131493487).setOnClickListener(this);
-            findViewById(2131493486).setOnClickListener(this);
-            if (this != null) {
-                Account localAccount = am_CommonUtils.e();
-                if (localAccount != null)
-                    new Z(this, localAccount.getToken()).a(true);
-            }
-            a(getIntent());
-            new j(this).b(new String[0]);
-            new Handler().postDelayed(new a(this), 10000L);
-            return;
+        this.mUserAvatar = ((SmartImageView) localView1.findViewById(R.id.home_menu_user_avatar));
+        this.mUserName = ((TextView) localView1.findViewById(R.id.home_menu_user_name));
+        if (this.mAccount != null) {
+            a(this.mAccount.getUser());
+        } else {
             k();
-            break;
-            label985:
-            this.n.setText(2131034366);
-            this.o.setImageResource(2130838181);
         }
+
+        this.n = ((TextView) this.mPopWin.findViewById(R.id.text_theme));
+        this.o = ((ImageView) this.mPopWin.findViewById(R.id.icon_theme));
+        if (!AppProperties.getInstance(this).getProperty("customer_night_theme", false)) {
+            this.n.setText(R.string.custom_theme_night);
+            this.o.setImageResource(R.drawable.theme_night);
+        } else {
+            this.n.setText(R.string.custom_theme_day);
+            this.o.setImageResource(R.drawable.theme_day);
+        }
+        if (!AppProperties.getInstance(this).getProperty("bookPushRecords", false)) {
+            List localList = BookReadRecord.getAll();
+            if ((localList != null) && (!localList.isEmpty()))
+                a(localList);
+            AppProperties.getInstance(this).setProperties("bookPushRecords", "true");
+        }
+        h();
+        i();
+        new Handler().postDelayed(new l(this), 3000L);
+        if (this.mAccount != null) {
+            com.clilystudio.app.netbook.util.e.c("launch");
+            h localh = new h(this);
+            String[] arrayOfString = new String[1];
+            arrayOfString[0] = this.mAccount.getToken();
+            localh.b(arrayOfString);
+        }
+        if (savedInstanceState != null)
+            localTabWidgetV2.setIndex(savedInstanceState.getInt("extra_index"));
+        findViewById(R.id.home_action_menu_more).setOnClickListener(this);
+        findViewById(R.id.home_action_menu_search).setOnClickListener(this);
+        if (this != null) {
+            Account localAccount = am_CommonUtils.e_getAccount();
+            if (localAccount != null)
+                new Z(this, localAccount.getToken()).a(true);
+        }
+        a(getIntent());
+        new j(this).b(new String[0]);
+        new Handler().postDelayed(new a(this), 10000L);
     }
 
     protected void onDestroy() {
         super.onDestroy();
-        ShareSDK.stopSDK(this);
         com.clilystudio.app.netbook.event.i.a().b(this);
-        this.p = null;
+        this.mAccount = null;
         if (this.t != null) {
             this.t.clearHistory();
             this.t.clearCache(true);
@@ -565,7 +553,7 @@ public class HomeActivity extends HomeParentActivity
 
     @com.squareup.a.l
     public void onEnterTweet(o paramo) {
-        this.s.getChildAt(1).setVisibility(8);
+        this.mNotifyItem.getChildAt(1).setVisibility(8);
     }
 
     public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent) {
@@ -578,19 +566,19 @@ public class HomeActivity extends HomeParentActivity
 
     @com.squareup.a.l
     public void onLoginEvent(t paramt) {
-        this.p = paramt.a();
-        if (this.p != null) {
-            a(this.p.getUser());
+        this.mAccount = paramt.a();
+        if (this.mAccount != null) {
+            a(this.mAccount.getUser());
             if (paramt.b() == AuthLoginActivity.Source.HOME)
                 break label99;
         }
         label99:
         for (boolean bool = true; ; bool = false) {
-            new Z(this, this.p.getToken()).a(bool);
-            a(this.p);
+            new Z(this, this.mAccount.getToken()).a(bool);
+            a(this.mAccount);
             h localh = new h(this);
             String[] arrayOfString = new String[1];
-            arrayOfString[0] = this.p.getToken();
+            arrayOfString[0] = this.mAccount.getToken();
             localh.b(arrayOfString);
             return;
         }
@@ -604,14 +592,14 @@ public class HomeActivity extends HomeParentActivity
     @com.squareup.a.l
     public void onNotifEvent(w paramw) {
         int i1 = J.a(this).e();
-        View localView = this.k.findViewById(2131493495);
-        TextView localTextView = (TextView) this.k.findViewById(2131493494);
+        View localView = this.mPopWin.findViewById(2131493495);
+        TextView localTextView = (TextView) this.mPopWin.findViewById(2131493494);
         if (i1 > 0) {
             localTextView.setVisibility(0);
             localView.setVisibility(8);
             localTextView.setText(String.valueOf(i1));
-            if (this.q != null)
-                this.q.setImageResource(2130837870);
+            if (this.moreImageView != null)
+                this.moreImageView.setImageResource(2130837870);
         }
         do {
             do {
@@ -621,28 +609,28 @@ public class HomeActivity extends HomeParentActivity
                 localTextView.setVisibility(8);
                 localView.setVisibility(0);
             }
-            while (this.q == null);
-            this.q.setImageResource(2130837870);
+            while (this.moreImageView == null);
+            this.moreImageView.setImageResource(2130837870);
             return;
             localTextView.setVisibility(8);
             localView.setVisibility(8);
         }
-        while (this.q == null);
-        this.q.setImageResource(2130837871);
+        while (this.moreImageView == null);
+        this.moreImageView.setImageResource(2130837871);
     }
 
     public void onPageScrollStateChanged(int paramInt) {
     }
 
     public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {
-        ((TabWidgetV2) this.f.getTabWidget()).a(paramInt1, paramInt2);
+        ((TabWidgetV2) this.mTabHost.getTabWidget()).a(paramInt1, paramInt2);
     }
 
     public void onPageSelected(int paramInt) {
-        TabWidget localTabWidget = this.f.getTabWidget();
+        TabWidget localTabWidget = this.mTabHost.getTabWidget();
         int i1 = localTabWidget.getDescendantFocusability();
         localTabWidget.setDescendantFocusability(393216);
-        this.f.setCurrentTab(paramInt);
+        this.mTabHost.setCurrentTab(paramInt);
         localTabWidget.setDescendantFocusability(i1);
     }
 
@@ -659,21 +647,21 @@ public class HomeActivity extends HomeParentActivity
             new s(this).b(new Void[0]);
         Account localAccount = am_CommonUtils.e();
         if (localAccount != null) {
-            this.p = localAccount;
+            this.mAccount = localAccount;
             a(localAccount.getUser());
             return;
         }
-        this.p = null;
+        this.mAccount = null;
         k();
     }
 
     protected void onSaveInstanceState(Bundle paramBundle) {
         super.onSaveInstanceState(paramBundle);
-        paramBundle.putInt("extra_index", this.f.getCurrentTab());
+        paramBundle.putInt("extra_index", this.mTabHost.getCurrentTab());
     }
 
     public void onTabChanged(String paramString) {
-        a(this.f.getCurrentTab());
+        a(this.mTabHost.getCurrentTab());
     }
 //
 //    @com.squareup.a.l

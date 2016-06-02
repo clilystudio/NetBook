@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextView android:textSize="@dimen/tab_host_text"
-          android:textColor="@drawable/tab_text"
-          android:ellipsize="middle"
-          android:gravity="center"
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
           android:id="@+id/text"
-          android:paddingTop="@dimen/tab_host_padding_top"
-          android:paddingBottom="@dimen/tab_host_padding_top"
           android:layout_width="fill_parent"
           android:layout_height="wrap_content"
+          android:ellipsize="middle"
+          android:gravity="center"
+          android:paddingBottom="@dimen/tab_host_padding_top"
+          android:paddingTop="@dimen/tab_host_padding_top"
           android:singleLine="true"
-          xmlns:android="http://schemas.android.com/apk/res/android"/>
+          android:textColor="@drawable/tab_text"
+          android:textSize="@dimen/tab_host_text"/>
