@@ -27,12 +27,12 @@ final class av extends ZssqFragmentPagerAdapter {
         }
     }
 
-    public final Fragment a(int paramInt) {
-        return (Fragment) BookCategoryListActivity.b_initContentView(this.b).get(paramInt);
+    public final Fragment getFragment(int position) {
+        return (Fragment) BookCategoryListActivity.b_initContentView(this.b).get(position);
     }
 
-    protected final String b(int paramInt) {
-        return this.a[paramInt];
+    protected final String getTag(int position) {
+        return this.a[position];
     }
 
     public final int getCount() {

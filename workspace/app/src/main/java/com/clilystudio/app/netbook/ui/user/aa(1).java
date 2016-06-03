@@ -24,12 +24,12 @@ final class aa extends ZssqFragmentPagerAdapter {
         }
     }
 
-    public final Fragment a(int paramInt) {
-        return (Fragment) PayVoucherActivity.a(this.a).get(paramInt);
+    public final Fragment getFragment(int position) {
+        return (Fragment) PayVoucherActivity.a(this.a).get(position);
     }
 
-    protected final String b(int paramInt) {
-        return this.a.b[paramInt];
+    protected final String getTag(int position) {
+        return this.a.b[position];
     }
 
     public final int getCount() {

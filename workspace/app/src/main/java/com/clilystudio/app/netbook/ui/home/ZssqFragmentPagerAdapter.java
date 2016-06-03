@@ -9,51 +9,53 @@ import android.view.View;
 import android.view.ViewGroup;
 
 public abstract class ZssqFragmentPagerAdapter extends PagerAdapter {
-    private final FragmentManager a;
-    private FragmentTransaction b = null;
+    private final FragmentManager manager;
+    private FragmentTransaction transaction = null;
     private Fragment c = null;
 
-    public ZssqFragmentPagerAdapter(FragmentManager paramFragmentManager) {
-        this.a = paramFragmentManager;
+    public ZssqFragmentPagerAdapter(FragmentManager manager) {
+        this.manager = manager;
     }
 
-    public abstract Fragment a(int paramInt);
+    public abstract Fragment getFragment(int position);
 
-    protected abstract String b(int paramInt);
+    protected abstract String getTag(int position);
 
     public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject) {
-        if (this.b == null)
-            this.b = this.a.beginTransaction();
-        this.b.detach((Fragment) paramObject);
+        if (this.transaction == null) {
+            this.transaction = this.manager.beginTransaction();
+        }
+        this.transaction.detach((Fragment) paramObject);
     }
 
     public void finishUpdate(ViewGroup paramViewGroup) {
-        if (this.b != null) {
-            this.b.commitAllowingStateLoss();
-            this.b = null;
-            this.a.executePendingTransactions();
+        if (this.transaction != null) {
+            this.transaction.commitAllowingStateLoss();
+            this.transaction = null;
+            this.manager.executePendingTransactions();
         }
     }
 
-    public Object instantiateItem(ViewGroup paramViewGroup, int paramInt) {
-        if (this.b == null)
-            this.b = this.a.beginTransaction();
-        String str = b(paramInt);
-        Fragment localFragment = this.a.findFragmentByTag(str);
-        if (localFragment != null)
-            this.b.attach(localFragment);
-        while (true) {
-            if (localFragment != this.c) {
-                localFragment.setMenuVisibility(false);
-                localFragment.setUserVisibleHint(false);
-            }
-            return localFragment;
-            localFragment = a(paramInt);
-            if (!localFragment.isAdded())
-                this.b.add(paramViewGroup.getId(), localFragment, b(paramInt));
-            else
-                this.b.show(localFragment);
+    public Object instantiateItem(ViewGroup paramViewGroup, int position) {
+        if (this.transaction == null) {
+            this.transaction = this.manager.beginTransaction();
         }
+        Fragment localFragment = this.manager.findFragmentByTag(getTag(position));
+        if (localFragment != null) {
+            this.transaction.attach(localFragment);
+        } else {
+            localFragment = getFragment(position);
+            if (!localFragment.isAdded()) {
+                this.transaction.add(paramViewGroup.getId(), localFragment, getTag(position));
+            } else {
+                this.transaction.show(localFragment);
+            }
+        }
+        if (localFragment != this.c) {
+            localFragment.setMenuVisibility(false);
+            localFragment.setUserVisibleHint(false);
+        }
+        return localFragment;
     }
 
     public boolean isViewFromObject(View paramView, Object paramObject) {
@@ -85,8 +87,3 @@ public abstract class ZssqFragmentPagerAdapter extends PagerAdapter {
     public void startUpdate(ViewGroup paramViewGroup) {
     }
 }
-
-/* Location:           E:\10.Progs\Dev\Compiler\zssq.jar
- * Qualified Name:     com.clilystudio.app.netbook.ui.home.ZssqFragmentPagerAdapter
- * JD-Core Version:    0.6.2
- */

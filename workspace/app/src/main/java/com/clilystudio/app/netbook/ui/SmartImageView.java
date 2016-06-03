@@ -48,8 +48,3 @@ public class SmartImageView extends MaskAbleImageView {
         f.a().a(paramString, this, locald, parama);
     }
 }
-
-/* Location:           E:\10.Progs\Dev\Compiler\zssq.jar
- * Qualified Name:     com.clilystudio.app.netbook.ui.SmartImageView
- * JD-Core Version:    0.6.2
- */

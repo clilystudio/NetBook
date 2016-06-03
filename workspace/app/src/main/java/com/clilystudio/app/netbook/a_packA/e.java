@@ -1,6 +1,7 @@
 package com.clilystudio.app.netbook.a_packA;
 
 import android.os.AsyncTask;
+import android.os.Build;
 
 import com.clilystudio.app.netbook.api.ApiService;
 import com.clilystudio.app.netbook.api.b;
@@ -13,12 +14,13 @@ public abstract class e<Params, Progress, Result> extends AsyncTask<Params, Prog
         this.a = b.b();
     }
 
-    public final AsyncTask<Params, Progress, Result> b(Params[] paramArrayOfParams) {
+    public final AsyncTask<Params, Progress, Result> b(Params[] params) {
         try {
-            if (Build.VERSION.SDK_INT >= 11)
-                return executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, paramArrayOfParams);
-            AsyncTask localAsyncTask = execute(paramArrayOfParams);
-            return localAsyncTask;
+            if (Build.VERSION.SDK_INT >= 11) {
+                return executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, params);
+            } else {
+                return execute(params);
+            }
         } catch (Exception localException) {
         }
         return null;
@@ -28,8 +30,3 @@ public abstract class e<Params, Progress, Result> extends AsyncTask<Params, Prog
         return this.a;
     }
 }
-
-/* Location:           E:\10.Progs\Dev\Compiler\zssq.jar
- * Qualified Name:     com.clilystudio.app.netbook.a.e
- * JD-Core Version:    0.6.2
- */

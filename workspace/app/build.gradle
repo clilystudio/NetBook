@@ -28,4 +28,6 @@ dependencies {
     compile files('libs/MiPush_SDK_Client_2_2_21.jar')
     compile files('libs/activeandroid-3.0.jar')
     compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
+    compile 'com.squareup.okhttp:okhttp:2.7.5'
+    compile 'com.squareup.okio:okio:1.8.0'
 }

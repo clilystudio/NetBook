@@ -24,12 +24,12 @@ final class ch extends ZssqFragmentPagerAdapter {
         }
     }
 
-    public final Fragment a(int paramInt) {
-        return (Fragment) SimpleTabActivity.a(this.a).get(paramInt);
+    public final Fragment getFragment(int position) {
+        return (Fragment) SimpleTabActivity.a(this.a).get(position);
     }
 
-    protected final String b(int paramInt) {
-        return this.a.c[paramInt];
+    protected final String getTag(int position) {
+        return this.a.c[position];
     }
 
     public final int getCount() {

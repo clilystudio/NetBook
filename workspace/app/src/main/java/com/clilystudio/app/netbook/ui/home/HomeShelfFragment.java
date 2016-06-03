@@ -936,12 +936,12 @@ public class HomeShelfFragment extends HomeFragment
         do {
             return;
             if (i1 == 1) {
-                new I(this, getActivity()).b(new String[]{"male"});
+                new I_BookRecommandTask(this, getActivity()).b(new String[]{"male"});
                 return;
             }
         }
         while (i1 != 2);
-        new I(this, getActivity()).b(new String[]{"female"});
+        new I_BookRecommandTask(this, getActivity()).b(new String[]{"female"});
     }
 
     @com.squareup.a.l

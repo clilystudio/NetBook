@@ -466,18 +466,6 @@
             android:name="com.clilystudio.app.netbook.ui.game.GameLocalListActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name="com.clilystudio.app.netbook.ui.AudiobookCategoryActivity"
-            android:screenOrientation="portrait"/>
-        <activity
-            android:name="com.clilystudio.app.netbook.ui.AudiobookCategoryListActivity"
-            android:screenOrientation="portrait"/>
-        <activity
-            android:name="com.clilystudio.app.netbook.ui.AudiobookInfoActivity"
-            android:screenOrientation="portrait"/>
-        <activity
-            android:name="com.clilystudio.app.netbook.ui.AudioBookPlayActivity"
-            android:screenOrientation="portrait"/>
-        <activity
             android:name="com.clilystudio.app.netbook.ui.home.HomeTransparentActivity"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen"/>

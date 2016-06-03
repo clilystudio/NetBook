@@ -101,9 +101,9 @@ public class AuthLoginActivity extends BaseActivity
         Toast.makeText(this, paramav.e(), 0).show();
         finish();
     }
-}
 
-/* Location:           E:\10.Progs\Dev\Compiler\zssq.jar
- * Qualified Name:     com.clilystudio.app.netbook.ui.user.AuthLoginActivity
- * JD-Core Version:    0.6.2
- */
+    public enum Source {
+        HOME,
+        OTHER
+    }
+}

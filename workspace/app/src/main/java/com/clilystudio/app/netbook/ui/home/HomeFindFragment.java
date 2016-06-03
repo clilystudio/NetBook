@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.clilystudio.app.netbook.ui.AdWebViewActivity;
-import com.clilystudio.app.netbook.ui.AudiobookCategoryActivity;
 import com.clilystudio.app.netbook.ui.BookCategoryActivity;
 import com.clilystudio.app.netbook.ui.BookRankListActivity;
 import com.clilystudio.app.netbook.ui.MhdListActivity;

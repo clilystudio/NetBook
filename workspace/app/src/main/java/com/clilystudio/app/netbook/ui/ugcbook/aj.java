@@ -26,12 +26,12 @@ final class aj extends ZssqFragmentPagerAdapter {
         }
     }
 
-    public final Fragment a(int paramInt) {
-        return (Fragment) UGCMainActivity.d_setRight(this.b).get(paramInt);
+    public final Fragment getFragment(int position) {
+        return (Fragment) UGCMainActivity.d_setRight(this.b).get(position);
     }
 
-    protected final String b(int paramInt) {
-        return this.a[paramInt];
+    protected final String getTag(int position) {
+        return this.a[position];
     }
 
     public final int getCount() {

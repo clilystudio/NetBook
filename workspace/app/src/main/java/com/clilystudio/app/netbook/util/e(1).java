@@ -17,7 +17,6 @@ import com.clilystudio.app.netbook.db.SplashRecord;
 import com.clilystudio.app.netbook.model.Account;
 import com.clilystudio.app.netbook.model.Author;
 import com.clilystudio.app.netbook.model.SplashAdvert;
-import com.clilystudio.app.netbook.ui.AudioBookPlayActivity;
 import com.clilystudio.app.netbook.ui.post.OtherUserActivity;
 
 import java.util.ArrayList;
@@ -96,6 +95,7 @@ public class e {
         localIntent.putExtra("INDEX_OF_PLAYLIST", paramInt);
         PendingIntent localPendingIntent = PendingIntent.getActivity(paramContext, 0, localIntent, 134217728);
         e.contentIntent = localPendingIntent;
+
         as.a();
         a(as.c());
         d.notify(1001, e);
