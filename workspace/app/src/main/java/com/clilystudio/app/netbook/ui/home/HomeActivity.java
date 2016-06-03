@@ -46,6 +46,7 @@ import com.clilystudio.app.netbook.util.Z;
 import com.clilystudio.app.netbook.util.am_CommonUtils;
 import com.clilystudio.app.netbook.util.s;
 import com.clilystudio.app.netbook.widget.TabWidgetV2;
+import com.xiaomi.mipush.sdk.MiPushClient;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -63,7 +64,6 @@ public class HomeActivity extends HomeParentActivity
     private static final String TAG = HomeActivity.class.getSimpleName();
     private static HomeActivity mInstance;
     private long b = 0L;
-    private boolean mIsGameCenterShow = true;
     private List<Fragment> e = new ArrayList<>();
     private TabHost mTabHost;
     private ViewPager mViewPager;
@@ -158,19 +158,17 @@ public class HomeActivity extends HomeParentActivity
         com.arcsoft.hpay100.a.a.n(this, "home_ab_more");
     }
 
-    private void h() {
-        Iterator localIterator = BookSubRecord.getAll().iterator();
-        while (localIterator.hasNext()) {
-            BookSubRecord localBookSubRecord = (BookSubRecord) localIterator.next();
-            com.xiaomi.mipush.sdk.d.b(getApplicationContext(), localBookSubRecord.pushId, null);
+    private void subscribeBook() {
+        Iterator<BookSubRecord> iterator = BookSubRecord.getAll().iterator();
+        while (iterator.hasNext()) {
+            MiPushClient.subscribe(getApplicationContext(), iterator.next().pushId, null);
         }
     }
 
-    private void i() {
-        Iterator localIterator = BookUnSubRecord.getAll().iterator();
-        while (localIterator.hasNext()) {
-            BookUnSubRecord localBookUnSubRecord = (BookUnSubRecord) localIterator.next();
-            com.xiaomi.mipush.sdk.d.c(getApplicationContext(), localBookUnSubRecord.pushId, null);
+    private void unsubscribeBook() {
+        Iterator<BookUnSubRecord> iterator = BookUnSubRecord.getAll().iterator();
+        while (iterator.hasNext()) {
+            MiPushClient.unsubscribe(getApplicationContext(), iterator.next().pushId, null);
         }
     }
 
@@ -184,9 +182,9 @@ public class HomeActivity extends HomeParentActivity
         return 0.0F;
     }
 
-    private void k() {
+    private void setUnLogin() {
         if (this.mPopWin != null) {
-            this.mUserAvatar.setImageResource(2130837835);
+            this.mUserAvatar.setImageResource(R.drawable.home_menu_0);
             this.mUserName.setText("请登录");
         }
     }
@@ -471,7 +469,7 @@ public class HomeActivity extends HomeParentActivity
         if (this.mAccount != null) {
             setUserInfo(this.mAccount.getUser());
         } else {
-            k();
+            setUnLogin();
         }
 
         this.n = ((TextView) this.mPopWin.findViewById(R.id.text_theme));
@@ -489,8 +487,8 @@ public class HomeActivity extends HomeParentActivity
                 a(localList);
             AppProperties.getInstance(this).setProperties("bookPushRecords", "true");
         }
-        h();
-        i();
+        subscribeBook();
+        unsubscribeBook();
         new Handler().postDelayed(new l(this), 3000L);
         if (this.mAccount != null) {
             com.clilystudio.app.netbook.util.e.c("launch");
@@ -619,14 +617,12 @@ public class HomeActivity extends HomeParentActivity
         com.clilystudio.app.netbook.api.e.a("1".equals(com.umeng.a.b.b(this, "use_http_dns")));
         if (com.arcsoft.hpay100.a.a.l())
             new s(this).b(new Void[0]);
-        Account localAccount = am_CommonUtils.e();
-        if (localAccount != null) {
-            this.mAccount = localAccount;
-            setUserInfo(localAccount.getUser());
-            return;
+        this.mAccount = am_CommonUtils.e_getAccount();
+        if (this.mAccount != null) {
+             setUserInfo(this.mAccount.getUser());
+        } else {
+            setUnLogin();
         }
-        this.mAccount = null;
-        k();
     }
 
     protected void onSaveInstanceState(Bundle paramBundle) {
