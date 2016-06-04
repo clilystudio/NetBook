@@ -97,16 +97,17 @@ public class HomeActivity extends HomeParentActivity
         }
     }
 
-    private void a(Intent paramIntent) {
-        String str = paramIntent.getStringExtra("file_name");
-        if (str != null) {
-            if ("nonsupport".equals(str))
+    private void readTextFile(Intent intent) {
+        String fileName = intent.getStringExtra("file_name");
+        if (fileName != null) {
+            if ("nonsupport".equals(fileName)) {
                 com.clilystudio.app.netbook.util.e.a(this, "很抱歉，暂不支持此格式的图书");
-        } else
-            return;
-        Intent localIntent = new Intent("com.clilystudio.app.netbook.ACTION_READ_TXT");
-        localIntent.putExtra("file_name", str);
-        startActivity(localIntent);
+            } else {
+                Intent localIntent = new Intent("com.clilystudio.app.netbook.ACTION_READ_TXT");
+                localIntent.putExtra("file_name", fileName);
+                startActivity(localIntent);
+            }
+        }
     }
 
     private void a(Account paramAccount) {
@@ -497,8 +498,9 @@ public class HomeActivity extends HomeParentActivity
             arrayOfString[0] = this.mAccount.getToken();
             localh.b(arrayOfString);
         }
-        if (savedInstanceState != null)
+        if (localTabWidgetV2 != null && savedInstanceState != null) {
             localTabWidgetV2.setIndex(savedInstanceState.getInt("extra_index"));
+        }
         findViewById(R.id.home_action_menu_more).setOnClickListener(this);
         findViewById(R.id.home_action_menu_search).setOnClickListener(this);
         if (this != null) {
@@ -506,7 +508,7 @@ public class HomeActivity extends HomeParentActivity
             if (localAccount != null)
                 new Z(this, localAccount.getToken()).a(true);
         }
-        a(getIntent());
+        readTextFile(getIntent());
         new j(this).b(new String[0]);
         new Handler().postDelayed(new a(this), 10000L);
     }
@@ -523,7 +525,7 @@ public class HomeActivity extends HomeParentActivity
             this.mWebView.destroy();
         }
         this.u = false;
-        com.arcsoft.hpay100.a.a.b(this, "search_hot_words_date", 0);
+        AppProperties.getInstance(this).setProperties("search_hot_words_date", "0");
     }
 
     public void onEnterTweet(o paramo) {
@@ -559,7 +561,7 @@ public class HomeActivity extends HomeParentActivity
 
     protected void onNewIntent(Intent paramIntent) {
         super.onNewIntent(paramIntent);
-        a(paramIntent);
+        readTextFile(paramIntent);
     }
 
     public void onNotifEvent(w paramw) {
@@ -619,7 +621,7 @@ public class HomeActivity extends HomeParentActivity
             new s(this).b(new Void[0]);
         this.mAccount = am_CommonUtils.e_getAccount();
         if (this.mAccount != null) {
-             setUserInfo(this.mAccount.getUser());
+            setUserInfo(this.mAccount.getUser());
         } else {
             setUnLogin();
         }
