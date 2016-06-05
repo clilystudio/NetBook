@@ -19,7 +19,7 @@ public class PostAgreeView extends LinearLayout
     }
 
     public void onClick(View paramView) {
-        Account localAccount = am_CommonUtils.a((Activity) getContext());
+        Account localAccount = com.arcsoft.hpay100.a.a.a((Activity) getContext());
         if ((this.a != null) && (localAccount != null)) {
             setAgree(true);
             an localan = new an(this, (byte) 0);

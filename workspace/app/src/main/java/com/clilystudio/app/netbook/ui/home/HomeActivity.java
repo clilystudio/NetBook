@@ -21,7 +21,6 @@ import android.widget.Toast;
 
 import com.clilystudio.app.netbook.AppProperties;
 import com.clilystudio.app.netbook.R;
-import com.clilystudio.app.netbook.db.AccountInfo;
 import com.clilystudio.app.netbook.db.BookReadRecord;
 import com.clilystudio.app.netbook.event.BookShelfRefreshEvent;
 import com.clilystudio.app.netbook.event.o;
@@ -35,11 +34,8 @@ import com.clilystudio.app.netbook.reader.txt.ScanTxtFileActivity;
 import com.clilystudio.app.netbook.ui.SearchActivity;
 import com.clilystudio.app.netbook.ui.SettingsActivity;
 import com.clilystudio.app.netbook.ui.SmartImageView;
-import com.clilystudio.app.netbook.ui.WifiActivity;
-import com.clilystudio.app.netbook.ui.game.GameTabActivity;
 import com.clilystudio.app.netbook.ui.post.CommonPostListActivity;
 import com.clilystudio.app.netbook.ui.user.AuthLoginActivity;
-import com.clilystudio.app.netbook.ui.user.MyMessageActivity;
 import com.clilystudio.app.netbook.ui.user.UserInfoActivity;
 import com.clilystudio.app.netbook.util.J;
 import com.clilystudio.app.netbook.util.Z;
@@ -68,13 +64,13 @@ public class HomeActivity extends HomeParentActivity
     private TabHost mTabHost;
     private ViewPager mViewPager;
     private i_HomePagerAdapter mHomePagerAdapter;
-    private PopupWindow i;
-    private PopupWindow j;
-    private View mPopWin;
+    private PopupWindow mMoreMenuPopup;
+    private PopupWindow mPopupMask;
+    private View mMoreMenuView;
     private SmartImageView mUserAvatar;
     private TextView mUserName;
-    private TextView n;
-    private ImageView o;
+    private TextView mThemeTV;
+    private ImageView mThemeIV;
     private Account mAccount;
     private ImageView moreImageView;
     private ImageView gameImageView;
@@ -83,17 +79,9 @@ public class HomeActivity extends HomeParentActivity
     private boolean u;
     private String[] v;
 
-    private void setUserInfo(int paramInt) {
-        if ((paramInt >= 0) && (paramInt < this.mHomePagerAdapter.getCount())) {
-            this.mViewPager.setCurrentItem(paramInt, true);
-            if (paramInt == -1 + this.mHomePagerAdapter.getCount()) {
-                boolean bool = com.arcsoft.hpay100.a.a.r(this, "switch_17kflow");
-                float f1 = j();
-                double d = Math.random();
-                if ((bool) && (f1 > d) && (!this.u))
-                    new g(this, (byte) 0).b(new Void[0]);
-                this.u = true;
-            }
+    private void setUserInfo(int item) {
+        if (item >= 0 && item < this.mHomePagerAdapter.getCount()) {
+            this.mViewPager.setCurrentItem(item, true);
         }
     }
 
@@ -115,17 +103,16 @@ public class HomeActivity extends HomeParentActivity
     }
 
     private void setUserInfo(User user) {
-        if (user != null && this.mPopWin != null) {
+        if (user != null && this.mMoreMenuView != null) {
             this.mUserAvatar.setImageUrl(user.getFullAvatar());
             this.mUserName.setText(user.getNickname());
         }
     }
 
-    private static void a(List<BookReadRecord> paramList) {
-        Iterator localIterator = paramList.iterator();
-        while (localIterator.hasNext()) {
-            BookReadRecord localBookReadRecord = (BookReadRecord) localIterator.next();
-            BookSubRecord.create("book:" + localBookReadRecord.getBookId());
+    private static void createBookSubRecord(List<BookReadRecord> readRecords) {
+        Iterator<BookReadRecord> iterator = readRecords.iterator();
+        while (iterator.hasNext()) {
+            BookSubRecord.create("book:" + iterator.next().getBookId());
         }
     }
 
@@ -139,24 +126,6 @@ public class HomeActivity extends HomeParentActivity
 
     public ViewPager getmViewPager() {
         return this.mViewPager;
-    }
-
-    private void e(int paramInt) {
-        switch (paramInt) {
-            default:
-                return;
-            case 2131493485:
-                startActivity(GameTabActivity.a(this));
-                com.arcsoft.hpay100.a.a.n(this, "home_ab_game");
-                return;
-            case 2131493486:
-                startActivity(SearchActivity.a(this));
-                com.arcsoft.hpay100.a.a.n(this, "home_ab_search");
-                return;
-            case 2131493487:
-        }
-        l();
-        com.arcsoft.hpay100.a.a.n(this, "home_ab_more");
     }
 
     private void subscribeBook() {
@@ -173,59 +142,49 @@ public class HomeActivity extends HomeParentActivity
         }
     }
 
-    private float j() {
-        String str = com.umeng.a.b.b(this, "rate_17kflow");
-        try {
-            float f1 = Float.parseFloat(str);
-            return f1;
-        } catch (Exception localException) {
-        }
-        return 0.0F;
-    }
-
     private void setUnLogin() {
-        if (this.mPopWin != null) {
+        if (this.mMoreMenuView != null) {
             this.mUserAvatar.setImageResource(R.drawable.home_menu_0);
             this.mUserName.setText("请登录");
         }
     }
 
-    private void l() {
-        try {
-            if ((this.j == null) || (!this.j.isShowing())) {
-                this.j = new PopupWindow(getLayoutInflater().inflate(2130903227, null, false), -1, com.arcsoft.hpay100.a.a.L(this));
-                this.j.setAnimationStyle(2131165629);
-                this.j.showAtLocation(a().a(), 0, 0, 0);
-            }
-            View localView = findViewById(2131493096);
-            if (this.i == null) {
-                this.i = new PopupWindow(this.mPopWin, getResources().getDimensionPixelSize(2131099746), -2);
-                this.i.setFocusable(true);
-                this.i.setOutsideTouchable(true);
-                this.i.setBackgroundDrawable(new ColorDrawable(0));
-                this.i.getContentView().setFocusableInTouchMode(true);
-                this.i.getContentView().setFocusable(true);
-                this.i.getContentView().setOnKeyListener(new c(this));
-            }
-            this.i = this.i;
-            this.i.setAnimationStyle(2131165628);
-            this.i.showAtLocation(localView, 53, com.arcsoft.hpay100.a.a.a(this, 5.0F), am_CommonUtils.l(this) + am_CommonUtils.k(this));
-            this.i.setOnDismissListener(new d(this));
-            return;
-        } catch (Exception localException) {
-            localException.printStackTrace();
+    private void showMorePopupMenu() {
+        if (this.mPopupMask == null || !this.mPopupMask.isShowing()) {
+            this.mPopupMask = new PopupWindow(getLayoutInflater().inflate(R.layout.home_menu_bg_popup, null, false), ActionBar.LayoutParams.MATCH_PARENT, am_CommonUtils.getWindowHeight(this));
+            this.mPopupMask.setAnimationStyle(R.style.home_menu_bg_anim);
+            this.mPopupMask.showAtLocation(getSupportActionBar().getCustomView(), 0, 0, 0);
         }
+        if (this.mMoreMenuPopup == null) {
+            this.mMoreMenuPopup = new PopupWindow(this.mMoreMenuView, getResources().getDimensionPixelSize(R.dimen.home_popup_width), ActionBar.LayoutParams.WRAP_CONTENT);
+            this.mMoreMenuPopup.setFocusable(true);
+            this.mMoreMenuPopup.setOutsideTouchable(true);
+            this.mMoreMenuPopup.setBackgroundDrawable(new ColorDrawable(0));
+            this.mMoreMenuPopup.getContentView().setFocusableInTouchMode(true);
+            this.mMoreMenuPopup.getContentView().setFocusable(true);
+            this.mMoreMenuPopup.getContentView().setOnKeyListener(new c(this));
+        }
+        this.mMoreMenuPopup.setAnimationStyle(R.style.home_menu_anim);
+        this.mMoreMenuPopup.showAtLocation(findViewById(R.id.host), 53, am_CommonUtils.getPixelToDp(this, 5.0F), am_CommonUtils.l_getActionBarSize(this) + am_CommonUtils.k_getStatusBarHeight(this));
+        this.mMoreMenuPopup.setOnDismissListener(new PopupWindow.OnDismissListener() {
+            @Override
+            public void onDismiss() {
+                dismissPopupMask();
+            }
+        });
     }
 
-    private void m() {
-        if ((this.i != null) && (this.i.isShowing()))
-            this.i.dismiss();
-        n();
+    private void dismissMorePopupMenu() {
+        if (this.mMoreMenuPopup != null && this.mMoreMenuPopup.isShowing()) {
+            this.mMoreMenuPopup.dismiss();
+        }
+        dismissPopupMask();
     }
 
-    private void n() {
-        if ((this.j != null) && (this.j.isShowing()))
-            this.j.dismiss();
+    private void dismissPopupMask() {
+        if (this.mPopupMask != null && this.mPopupMask.isShowing()) {
+            this.mPopupMask.dismiss();
+        }
     }
 
     // wrap by g()
@@ -284,7 +243,7 @@ public class HomeActivity extends HomeParentActivity
         long l1 = System.currentTimeMillis();
         if (l1 - this.b > 2000L) {
             this.b = l1;
-            Toast.makeText(this, 2131034373, 0).show();
+            Toast.makeText(this, R.string.exit_hint, Toast.LENGTH_SHORT).show();
             return;
         }
         super.onBackPressed();
@@ -296,8 +255,87 @@ public class HomeActivity extends HomeParentActivity
     }
 
     public void onClick(View paramView) {
-        m();
+        dismissMorePopupMenu();
         switch (paramView.getId()) {
+            case R.id.home_menu_user:
+                if (this.mAccount != null) {
+                    dismissMorePopupMenu();
+                    startActivity(UserInfoActivity.a(this, this.mAccount.getToken()));
+                    return;
+                }
+                Intent localIntent2 = AuthLoginActivity.a(this);
+                localIntent2.putExtra("KEY_SOURCE", AuthLoginActivity.Source.HOME);
+                startActivityForResult(localIntent2, 100);
+                return;
+//            case R.id.home_menu_msg:
+//                if (this.mAccount != null) {
+//                    m();
+//                    com.arcsoft.hpay100.a.a.b(this, "key_enter_msg_time", System.currentTimeMillis());
+//                    AccountInfo localAccountInfo = AccountInfo.getOrCreate(this.mAccount.getToken());
+//                    localAccountInfo.setPrevUnimpNotif(J.a(this).b());
+//                    localAccountInfo.save();
+//                    AppProperties.getInstance(this).setProperties("view_notification");
+//                    com.clilystudio.app.netbook.event.i.a().c(new w());
+//                    startActivity(new Intent(this, MyMessageActivity.class));
+//                    return;
+//                }
+//                startActivityForResult(AuthLoginActivity.a(this), 100);
+//                return;
+            case R.id.home_menu_sync:
+                if (this.mAccount != null) {
+                    dismissMorePopupMenu();
+                    new Z(this, this.mAccount.getToken()).a(false);
+                    return;
+                }
+                startActivityForResult(AuthLoginActivity.a(this), 100);
+                return;
+            case R.id.home_menu_feedback:
+                startActivity(CommonPostListActivity.a(this, "android-feedback"));
+                return;
+            case R.id.home_menu_theme:
+                Intent localIntent1 = new Intent(this, HomeTransparentActivity.class);
+                if (AppProperties.getInstance(this).getProperty("customer_night_theme", false)) {
+                    this.mThemeTV.setText(R.string.custom_theme_night);
+                    this.mThemeIV.setImageResource(R.drawable.theme_night);
+                    AppProperties.getInstance(this).setProperties("customer_night_theme", "false");
+                    AppProperties.getInstance(this).setProperties("night_mode", "false");
+                    localIntent1.putExtra("onThemeChange", 0);
+                } else {
+                    this.mThemeTV.setText(R.string.custom_theme_day);
+                    this.mThemeIV.setImageResource(R.drawable.theme_day);
+                    AppProperties.getInstance(this).setProperties("customer_night_theme", "true");
+                    AppProperties.getInstance(this).setProperties("night_mode", "true");
+                    localIntent1.putExtra("onThemeChange", 1);
+                }
+                startActivity(localIntent1);
+                overridePendingTransition(R.anim.shade_alpha_in, R.anim.shade_alpha_out);
+                return;
+            case R.id.home_menu_settings:
+                startActivity(new Intent(this, SettingsActivity.class));
+                return;
+            case R.id.home_menu_scan:
+                startActivity(new Intent(this, ScanTxtFileActivity.class));
+                return;
+//            case R.id.home_menu_wifi_transfer:
+//                if (!com.arcsoft.hpay100.a.a.d()) {
+//                    com.clilystudio.app.netbook.util.e.a(this, "无法使用，请检查SD卡是否挂载");
+//                    return;
+//                }
+//                if (com.arcsoft.hpay100.a.a.e() <= 20000L) {
+//                    com.clilystudio.app.netbook.util.e.a(this, "SD卡剩余容量不足");
+//                    return;
+//                }
+//                startActivity(new Intent(this, WifiActivity.class));
+//                return;
+//            case R.id.home_action_menu_game:
+//                startActivity(GameTabActivity.a(this));
+//                com.arcsoft.hpay100.a.a.n(this, "home_ab_game");
+//                return;
+            case R.id.home_action_menu_search:
+                startActivity(SearchActivity.a(this));
+                return;
+            case R.id.home_action_menu_more:
+                showMorePopupMenu();
             case 2131493489:
             case 2131493490:
             case 2131493492:
@@ -312,89 +350,7 @@ public class HomeActivity extends HomeParentActivity
             case 2131493506:
             default:
                 return;
-            case 2131493488:
-                if (this.mAccount != null) {
-                    m();
-                    startActivity(UserInfoActivity.a(this, this.mAccount.getToken()));
-                    return;
-                }
-                Intent localIntent2 = AuthLoginActivity.a(this);
-                localIntent2.putExtra("KEY_SOURCE", AuthLoginActivity.Source.HOME);
-                startActivityForResult(localIntent2, 100);
-                return;
-            case 2131493491:
-                if (this.mAccount != null) {
-                    m();
-                    com.arcsoft.hpay100.a.a.b(this, "key_enter_msg_time", System.currentTimeMillis());
-                    AccountInfo localAccountInfo = AccountInfo.getOrCreate(this.mAccount.getToken());
-                    localAccountInfo.setPrevUnimpNotif(J.a(this).b());
-                    localAccountInfo.save();
-                    AppProperties.getInstance(this).setProperties("view_notification");
-                    com.clilystudio.app.netbook.event.i.a().c(new w());
-                    startActivity(new Intent(this, MyMessageActivity.class));
-                    return;
-                }
-                startActivityForResult(AuthLoginActivity.a(this), 100);
-                return;
-            case 2131493496:
-                if (this.mAccount != null) {
-                    m();
-                    new Z(this, this.mAccount.getToken()).a(false);
-                    return;
-                }
-                startActivityForResult(AuthLoginActivity.a(this), 100);
-                return;
-            case 2131493502:
-                startActivity(CommonPostListActivity.a(this, "android-feedback"));
-                return;
-            case 2131493504:
-                Intent localIntent1 = new Intent(this, HomeTransparentActivity.class);
-                if (com.arcsoft.hpay100.a.a.a(this, "customer_night_theme", false)) {
-                    this.n.setText(2131034366);
-                    this.o.setImageResource(2130838181);
-                    com.arcsoft.hpay100.a.a.b(this, "customer_night_theme", false);
-                    com.arcsoft.hpay100.a.a.b(this, "night_mode", false);
-                    com.arcsoft.hpay100.a.a.C(this);
-                    localIntent1.putExtra("onThemeChange", 0);
-                }
-                while (true) {
-                    startActivity(localIntent1);
-                    overridePendingTransition(2130968606, 2130968607);
-                    return;
-                    this.n.setText(2131034365);
-                    this.o.setImageResource(2130838180);
-                    com.arcsoft.hpay100.a.a.b(this, "customer_night_theme", true);
-                    com.arcsoft.hpay100.a.a.b(this, "night_mode", true);
-                    AppProperties.getInstance(this).setProperties("start_night_theme_home");
-                    com.arcsoft.hpay100.a.a.B(this);
-                    localIntent1.putExtra("onThemeChange", 1);
-                }
-            case 2131493507:
-                startActivity(new Intent(this, SettingsActivity.class));
-                return;
-            case 2131493498:
-                startActivity(new Intent(this, ScanTxtFileActivity.class));
-                return;
-            case 2131493500:
-                if (!com.arcsoft.hpay100.a.a.d()) {
-                    com.clilystudio.app.netbook.util.e.a(this, "无法使用，请检查SD卡是否挂载");
-                    return;
-                }
-                if (com.arcsoft.hpay100.a.a.e() <= 20000L) {
-                    com.clilystudio.app.netbook.util.e.a(this, "SD卡剩余容量不足");
-                    return;
-                }
-                startActivity(new Intent(this, WifiActivity.class));
-                return;
-            case 2131493485:
-                e(paramView.getId());
-                return;
-            case 2131493486:
-                e(paramView.getId());
-                return;
-            case 2131493487:
         }
-        e(paramView.getId());
     }
 
     public void onCreate(Bundle savedInstanceState) {
@@ -415,7 +371,6 @@ public class HomeActivity extends HomeParentActivity
         this.gameImageView = ((ImageView) actionBar.getCustomView().findViewById(R.id.home_action_menu_game));
         this.gameImageView.setOnClickListener(this);
         this.gameImageView.setVisibility(View.GONE);
-        this.mIsGameCenterShow = false;
         com.clilystudio.app.netbook.event.i.a().a(this);
         this.mTabHost = ((TabHost) findViewById(R.id.host));
         TabWidgetV2 localTabWidgetV2 = (TabWidgetV2) findViewById(android.R.id.tabs);
@@ -436,7 +391,8 @@ public class HomeActivity extends HomeParentActivity
             localTabSpec.setContent(this);
             View localView7;
 
-            if (i1 != 1 || !AppProperties.getInstance(this).getProperty("FRIST_RUN_POST", true) || !com.arcsoft.hpay100.a.a.r(this, "switch_news")) {
+            if (i1 != 1 || !AppProperties.getInstance(this).getProperty("FRIST_RUN_POST", true)) {
+//            || !com.arcsoft.hpay100.a.a.r(this, "switch_news"){
                 localView7 = localLayoutInflater.inflate(R.layout.home_tabhost_item, null);
             } else {
                 localView7 = localLayoutInflater.inflate(R.layout.home_tabhost_notify_item, null);
@@ -447,17 +403,17 @@ public class HomeActivity extends HomeParentActivity
             this.mTabHost.addTab(localTabSpec);
         }
         this.mAccount = am_CommonUtils.e_getAccount();
-        this.mPopWin = getLayoutInflater().inflate(R.layout.home_popupwindow_layout, null);
+        this.mMoreMenuView = getLayoutInflater().inflate(R.layout.home_popupwindow_layout, null);
 
-        View localView1 = this.mPopWin.findViewById(R.id.home_menu_user);
-        View localView2 = this.mPopWin.findViewById(R.id.home_menu_msg);
-        View localView3 = this.mPopWin.findViewById(R.id.home_menu_sync);
-        View localView4 = this.mPopWin.findViewById(R.id.home_menu_feedback);
-        View localView5 = this.mPopWin.findViewById(R.id.home_menu_settings);
-        View localView6 = this.mPopWin.findViewById(R.id.home_menu_theme);
-        this.mPopWin.findViewById(R.id.home_menu_scan).setOnClickListener(this);
+        View localView1 = this.mMoreMenuView.findViewById(R.id.home_menu_user);
+        View localView2 = this.mMoreMenuView.findViewById(R.id.home_menu_msg);
+        View localView3 = this.mMoreMenuView.findViewById(R.id.home_menu_sync);
+        View localView4 = this.mMoreMenuView.findViewById(R.id.home_menu_feedback);
+        View localView5 = this.mMoreMenuView.findViewById(R.id.home_menu_settings);
+        View localView6 = this.mMoreMenuView.findViewById(R.id.home_menu_theme);
+        this.mMoreMenuView.findViewById(R.id.home_menu_scan).setOnClickListener(this);
 
-        this.mPopWin.findViewById(R.id.home_menu_wifi_transfer).setOnClickListener(this);
+        this.mMoreMenuView.findViewById(R.id.home_menu_wifi_transfer).setOnClickListener(this);
 
         localView1.setOnClickListener(this);
         localView2.setOnClickListener(this);
@@ -473,19 +429,20 @@ public class HomeActivity extends HomeParentActivity
             setUnLogin();
         }
 
-        this.n = ((TextView) this.mPopWin.findViewById(R.id.text_theme));
-        this.o = ((ImageView) this.mPopWin.findViewById(R.id.icon_theme));
+        this.mThemeTV = ((TextView) this.mMoreMenuView.findViewById(R.id.text_theme));
+        this.mThemeIV = ((ImageView) this.mMoreMenuView.findViewById(R.id.icon_theme));
         if (!AppProperties.getInstance(this).getProperty("customer_night_theme", false)) {
-            this.n.setText(R.string.custom_theme_night);
-            this.o.setImageResource(R.drawable.theme_night);
+            this.mThemeTV.setText(R.string.custom_theme_night);
+            this.mThemeIV.setImageResource(R.drawable.theme_night);
         } else {
-            this.n.setText(R.string.custom_theme_day);
-            this.o.setImageResource(R.drawable.theme_day);
+            this.mThemeTV.setText(R.string.custom_theme_day);
+            this.mThemeIV.setImageResource(R.drawable.theme_day);
         }
         if (!AppProperties.getInstance(this).getProperty("bookPushRecords", false)) {
-            List localList = BookReadRecord.getAll();
-            if ((localList != null) && (!localList.isEmpty()))
-                a(localList);
+            List<BookReadRecord> readRecords = BookReadRecord.getAll();
+            if (readRecords != null && !readRecords.isEmpty()) {
+                createBookSubRecord(readRecords);
+            }
             AppProperties.getInstance(this).setProperties("bookPushRecords", "true");
         }
         subscribeBook();
@@ -534,7 +491,7 @@ public class HomeActivity extends HomeParentActivity
 
     public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent) {
         if ((paramInt == 82) && (paramKeyEvent.getRepeatCount() == 0)) {
-            l();
+            showMorePopupMenu();
             return true;
         }
         return super.onKeyDown(paramInt, paramKeyEvent);
@@ -566,31 +523,31 @@ public class HomeActivity extends HomeParentActivity
 
     public void onNotifEvent(w paramw) {
         int i1 = J.a(this).e();
-        View localView = this.mPopWin.findViewById(2131493495);
-        TextView localTextView = (TextView) this.mPopWin.findViewById(2131493494);
+        View localView = this.mMoreMenuView.findViewById(R.id.msg_dot);
+        TextView localTextView = (TextView) this.mMoreMenuView.findViewById(R.id.msg_count);
         if (i1 > 0) {
-            localTextView.setVisibility(0);
-            localView.setVisibility(8);
+            localTextView.setVisibility(View.VISIBLE);
+            localView.setVisibility(View.GONE);
             localTextView.setText(String.valueOf(i1));
             if (this.moreImageView != null)
-                this.moreImageView.setImageResource(2130837870);
+                this.moreImageView.setImageResource(R.drawable.ic_action_home_overflow_dot);
         }
         do {
             do {
                 return;
                 if (i1 != -1)
                     break;
-                localTextView.setVisibility(8);
-                localView.setVisibility(0);
+                localTextView.setVisibility(View.GONE);
+                localView.setVisibility(View.VISIBLE);
             }
             while (this.moreImageView == null);
-            this.moreImageView.setImageResource(2130837870);
+            this.moreImageView.setImageResource(R.drawable.ic_action_home_overflow_dot);
             return;
-            localTextView.setVisibility(8);
-            localView.setVisibility(8);
+            localTextView.setVisibility(View.GONE);
+            localView.setVisibility(View.GONE);
         }
         while (this.moreImageView == null);
-        this.moreImageView.setImageResource(2130837871);
+        this.moreImageView.setImageResource(R.drawable.ic_action_overflow);
     }
 
     public void onPageScrollStateChanged(int paramInt) {
@@ -610,8 +567,8 @@ public class HomeActivity extends HomeParentActivity
 
     public void onPause() {
         super.onPause();
-        if ((this.i != null) && (this.i.isShowing()) && (this.j != null) && (this.j.isShowing()))
-            m();
+        if ((this.mMoreMenuPopup != null) && (this.mMoreMenuPopup.isShowing()) && (this.mPopupMask != null) && (this.mPopupMask.isShowing()))
+            dismissMorePopupMenu();
     }
 
     public void onResume() {

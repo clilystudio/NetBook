@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -19,11 +20,14 @@ import android.os.Environment;
 import android.provider.Settings;
 import android.text.ClipboardManager;
 import android.util.DisplayMetrics;
+import android.util.TypedValue;
 import android.view.View;
+import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 
 import com.clilystudio.app.netbook.MyApplication;
+import com.clilystudio.app.netbook.R;
 import com.clilystudio.app.netbook.db.BookDlRecord;
 import com.clilystudio.app.netbook.db.BookReadRecord;
 import com.clilystudio.app.netbook.model.Account;
@@ -890,19 +894,19 @@ public class am_CommonUtils {
         }
         return 0;
     }
-//
-//    public static int l(Context paramContext) {
-//        TypedValue localTypedValue = new TypedValue();
-//        Resources.Theme localTheme = paramContext.getTheme();
-//        int i = 0;
-//        if (localTheme != null) {
-//            boolean bool = paramContext.getTheme().resolveAttribute(2130772247, localTypedValue, true);
-//            i = 0;
-//            if (bool)
-//                i = TypedValue.complexToDimensionPixelSize(localTypedValue.data, paramContext.getResources().getDisplayMetrics());
-//        }
-//        return i;
-//    }
+
+    public static int l_getActionBarSize(Context context) {
+        TypedValue localTypedValue = new TypedValue();
+        Resources.Theme localTheme = context.getTheme();
+        int i = 0;
+        if (localTheme != null) {
+            boolean bool = context.getTheme().resolveAttribute(R.attr.actionBarSize, localTypedValue, true);
+            if (bool) {
+                i = TypedValue.complexToDimensionPixelSize(localTypedValue.data, context.getResources().getDisplayMetrics());
+            }
+        }
+        return i;
+    }
 //
 //    public static boolean m(Context paramContext) {
 //        return com.arcsoft.hpay100.a.a.a(paramContext, "save_bandwidth", false);
@@ -1036,4 +1040,18 @@ public class am_CommonUtils {
 //    public final void c() {
 //        this.c.a(this);
 //    }
+
+    public static int getPixelToDp(Context context, float pixel) {
+        if (context == null) {
+            return 0;
+        } else {
+            return (int)(0.5F + pixel * context.getResources().getDisplayMetrics().density);
+        }
+    }
+
+    public static int getWindowHeight(Context context){
+        DisplayMetrics metrics = new DisplayMetrics();
+        ((WindowManager)context.getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay().getMetrics(metrics);
+        return metrics.heightPixels;
+    }
 }

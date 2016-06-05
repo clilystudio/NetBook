@@ -1,8 +1,8 @@
 package com.clilystudio.app.netbook.reader;
 
-import com.clilystudio.app.netbook.util.R;
+import com.clilystudio.app.netbook.util.R_RelateBook;
 
-public final class cO extends R {
+public final class cO extends R_RelateBook {
     public cO(cM paramcM) {
     }
 }

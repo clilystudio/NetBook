@@ -65,7 +65,7 @@ public class ReviewActivity extends AbsPostActivity {
         do {
             return;
             g(paramString);
-            localAccount = am_CommonUtils.a(this);
+            localAccount = com.arcsoft.hpay100.a.a.a(this);
         }
         while (localAccount == null);
         if (paramString.length() > 512) {

@@ -24,8 +24,3 @@ public abstract class S<T extends Root> extends e<String, Void, T> {
 
     protected abstract void b(T paramT);
 }
-
-/* Location:           E:\10.Progs\Dev\Compiler\zssq.jar
- * Qualified Name:     com.clilystudio.app.netbook.util.S
- * JD-Core Version:    0.6.2
- */
