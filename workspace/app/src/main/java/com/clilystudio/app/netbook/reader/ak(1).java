@@ -1,5 +1,6 @@
 package com.clilystudio.app.netbook.reader;
 
+import android.os.Build;
 import android.view.View;
 
 import com.clilystudio.app.netbook.util.e;
@@ -49,7 +50,7 @@ final class ak
             case 2131493860:
                 ReaderActivity.w(this.a).setVisibility(8);
                 View localView = ReaderActivity.A(this.a).findViewById(2131493860);
-                if (com.arcsoft.hpay100.a.a.i()) {
+                if (Build.VERSION.SDK_INT > 19) {
                     ReaderActivity.a(this.a, localView);
                     return;
                 }

@@ -17,6 +17,7 @@ import android.graphics.drawable.NinePatchDrawable;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Environment;
+import android.preference.PreferenceManager;
 import android.provider.Settings;
 import android.text.ClipboardManager;
 import android.util.DisplayMetrics;
@@ -24,7 +25,9 @@ import android.util.TypedValue;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.AbsListView;
 import android.widget.EditText;
+import android.widget.ListView;
 
 import com.clilystudio.app.netbook.MyApplication;
 import com.clilystudio.app.netbook.R;
@@ -1054,4 +1057,26 @@ public class am_CommonUtils {
         ((WindowManager)context.getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay().getMetrics(metrics);
         return metrics.heightPixels;
     }
+
+    public static boolean getBooleanSetting(Context context, String key, boolean defValue) {
+        if (context == null) {
+            return defValue;
+        } else {
+            return PreferenceManager.getDefaultSharedPreferences(context).getBoolean(key, defValue);
+        }
+    }
+
+    public static void configListView(Context context, ListView listView) {
+        int i = context.getResources().getDimensionPixelSize(R.dimen.tab_overlap);
+        View localView = new View(context);
+        localView.setLayoutParams(new AbsListView.LayoutParams(-2, i));
+        if (getBooleanSetting(context, "customer_night_theme", false)) {
+            localView.setBackgroundResource(R.drawable.bg_dark_list_item);
+        } else {
+            localView.setBackgroundResource(R.drawable.bg_list_item);
+        }
+        localView.setEnabled(false);
+        listView.addHeaderView(localView);
+    }
+
 }

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.os.Build;
 import android.os.Bundle;
 
 import com.clilystudio.app.netbook.d_IntentFactory;
@@ -15,7 +16,7 @@ public class ShareRemoveAdActivity extends BaseActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (com.arcsoft.hpay100.a.a.i()) {
+        if (Build.VERSION.SDK_INT > 19) {
             getWindow().setFlags(67108864, 67108864);
             a().a(new ColorDrawable(Color.parseColor("#00000000")));
         }

@@ -2,6 +2,7 @@ package com.clilystudio.app.netbook.ui.home;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.FragmentActivity;
@@ -58,12 +59,10 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
-public class HomeShelfFragment extends HomeFragment
-        implements AbsListView.OnScrollListener {
+public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScrollListener {
     private static final String TAG = HomeShelfFragment.class.getSimpleName();
     private boolean A = false;
     private long B = 0L;
-    private IXmPlayerStatusListener E = new x(this);
     private boolean b = true;
     private View rootView;
     private PullToRefreshListView shelfPullToRefreshListView;
@@ -810,7 +809,7 @@ public class HomeShelfFragment extends HomeFragment
         this.r = null;
     }
 
-     public void onBookAdded(com.clilystudio.app.netbook.event.c paramc) {
+    public void onBookAdded(com.clilystudio.app.netbook.event.c paramc) {
         if (paramc.a())
             k();
         com.arcsoft.hpay100.a.a.r(paramc.b());
@@ -835,7 +834,6 @@ public class HomeShelfFragment extends HomeFragment
         if (this.q == null) {
             this.q = as.b();
         }
-        as.a(this.E);
     }
 
     public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup root, Bundle savedInstanceState) {
@@ -863,7 +861,7 @@ public class HomeShelfFragment extends HomeFragment
         this.rootView.findViewById(R.id.add_new_book).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((HomeActivity)getActivity()).g_gotoFindFragment();
+                ((HomeActivity) getActivity()).g_gotoFindFragment();
             }
         });
         this.w = ((RelativeLayout) this.rootView.findViewById(R.id.delete_shelf_bar));
@@ -885,11 +883,12 @@ public class HomeShelfFragment extends HomeFragment
         });
         this.selectAllButton = ((Button) this.w.findViewById(R.id.select_all));
         this.selectAllButton.setOnClickListener(new z(this));
-          if (com.arcsoft.hpay100.a.a.i())
+        if (Build.VERSION.SDK_INT > 19) {
             this.shelfListView.setFooterDividersEnabled(false);
+        }
         View localView = LayoutInflater.from(getActivity()).inflate(R.layout.ptr_list_footer_empty_view, null);
         this.shelfListView.addFooterView(localView);
-        com.arcsoft.hpay100.a.a.a(getActivity(), this.shelfListView);
+        am_CommonUtils.configListView(getActivity(), this.shelfListView);
         this.adHeaderView = LayoutInflater.from(getActivity()).inflate(R.layout.bookshelf_header_msg, this.shelfListView, false);
         this.adHeaderView.setVisibility(View.GONE);
         if (am_CommonUtils.r_shouldShowAdView(getActivity())) {
@@ -900,130 +899,154 @@ public class HomeShelfFragment extends HomeFragment
         this.shelfListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                BookShelf localBookShelf = HomeShelfFragment.a(this.a, paramInt);
-                if (localBookShelf == null) ;
-                Advert localAdvert;
-                do {
-                    BookReadRecord localBookReadRecord;
-                    do {
+                BookShelf localBookShelf = shelfAdapter.e().get(position);
+                if (localBookShelf != null) {
+                    if (HomeShelfFragment.a(this.a).a()) {
+                        HomeShelfFragment.a(this.a).a(paramInt - HomeShelfFragment.j(this.a).getHeaderViewsCount());
                         return;
-                        if (HomeShelfFragment.a(this.a).a()) {
-                            HomeShelfFragment.a(this.a).a(paramInt - HomeShelfFragment.j(this.a).getHeaderViewsCount());
+                    }
+                    switch (localBookShelf.getType()) {
+                        case 0:
+                            BookReadRecord localBookReadRecord = localBookShelf.getBookRecord();
+                            new com.clilystudio.app.netbook.util.m(this.a.getActivity()).a(localBookReadRecord);
+                            if (localBookReadRecord.isUnread()) {
+                                localBookReadRecord.setUnread(false);
+                                localBookReadRecord.save();
+                                HomeShelfFragment.a(this.a).notifyDataSetChanged();
+                            }
+                            if (localBookReadRecord.isRecommended()) {
+                                com.umeng.a.b.a(this.a.getActivity(), "book_recommend_read_click", localBookReadRecord.getTitle());
+                            }
+                            break;
+                        case 1:
+                            BookFile localBookFile = localBookShelf.getTxt();
+                            if (new File(localBookFile.getFilePath()).exists()) {
+                                String str = localBookFile.getPathAndName();
+                                Intent localIntent2 = new Intent("com.clilystudio.app.netbook.ACTION_READ_TXT");
+                                localIntent2.putExtra("file_name", str);
+                                this.a.startActivity(localIntent2);
+                            } else {
+                                e.a(this.a.getActivity(), "书籍不存在");
+                                TxtFileObject.delete(localBookFile);
+                                i_OttoBus.a().c(new com.clilystudio.app.netbook.event.A());
+                            }
+                            break;
+                        case 2:
+                            Advert localAdvert = localBookShelf.getAdvert();
+                            localAdvert.processClick(paramView);
+                            if (!localAdvert.isRead()) {
+                                HomeShelfFragment.a(this.a, localAdvert);
+                                HomeShelfFragment.a(this.a).notifyDataSetChanged();
+                            }
+                            break;
+                        case 3:
+                            Intent localIntent1
+                            if (a.l(this.a.getActivity(), "feed_intro")) {
+                                localIntent1 = new Intent(this.a.getActivity(), FeedIntroActivity.class);
+                            } else {
+                                localIntent1 = new Intent(this.a.getActivity(), FeedListActivity.class
+                            }
+                            this.a.startActivity(localIntent1);
+                            break;
+                        case 4:
+                            AudioRecord localAudioRecord = localBookShelf.getAlbum();
+                            HomeShelfFragment.a(this.a, localAudioRecord);
+                            if (!localAudioRecord.isUpdateReaded()) {
+                                AudioRecord.updateRecordRead(localAudioRecord.getBookId(), true);
+                            }
+                            AudioRecord.updateLastRead(localAudioRecord.getBookId());
+                            HomeShelfFragment.c(this.a);
+                        default:
                             return;
-                        }
-                        switch (localBookShelf.getType()) {
-                            default:
-                                return;
-                            case 0:
-                                localBookReadRecord = localBookShelf.getBookRecord();
-                                new com.clilystudio.app.netbook.util.m(this.a.getActivity()).a(localBookReadRecord);
-                                if (localBookReadRecord.isUnread()) {
-                                    localBookReadRecord.setUnread(false);
-                                    localBookReadRecord.save();
-                                    HomeShelfFragment.a(this.a).notifyDataSetChanged();
-                                }
-                                break;
-                            case 2:
-                            case 1:
-                            case 3:
-                            case 4:
-                        }
-                    }
-                    while (!localBookReadRecord.isRecommended());
-                    com.umeng.a.b.a(this.a.getActivity(), "book_recommend_read_click", localBookReadRecord.getTitle());
-                    return;
-                    BookFile localBookFile = localBookShelf.getTxt();
-                    if (new File(localBookFile.getFilePath()).exists()) {
-                        String str = localBookFile.getPathAndName();
-                        Intent localIntent2 = new Intent("com.clilystudio.app.netbook.ACTION_READ_TXT");
-                        localIntent2.putExtra("file_name", str);
-                        this.a.startActivity(localIntent2);
-                        return;
-                    }
-                    e.a(this.a.getActivity(), "书籍不存在");
-                    TxtFileObject.delete(localBookFile);
-                    i_OttoBus.a().c(new com.clilystudio.app.netbook.event.A());
-                    return;
-                    localAdvert = localBookShelf.getAdvert();
-                    localAdvert.processClick(paramView);
-                }
-                while (localAdvert.isRead());
-                HomeShelfFragment.a(this.a, localAdvert);
-                HomeShelfFragment.a(this.a).notifyDataSetChanged();
-                return;
-                if (a.l(this.a.getActivity(), "feed_intro")) ;
-                for (Intent localIntent1 = new Intent(this.a.getActivity(), FeedIntroActivity.class); ; localIntent1 = new Intent(this.a.getActivity(), FeedListActivity.class)) {
-                    this.a.startActivity(localIntent1);
-                    return;
-                }
-                AudioRecord localAudioRecord = localBookShelf.getAlbum();
-                HomeShelfFragment.a(this.a, localAudioRecord);
-                if (!localAudioRecord.isUpdateReaded())
-                    AudioRecord.updateRecordRead(localAudioRecord.getBookId(), true);
-                AudioRecord.updateLastRead(localAudioRecord.getBookId());
-                HomeShelfFragment.c(this.a);
-            }
-        });
-        this.shelfListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-            @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                BookShelf localBookShelf = HomeShelfFragment.a(this.a, paramInt);
-                if (localBookShelf == null)
-                    return true;
-                int i = localBookShelf.getType();
-                String[] arrayOfString;
-                if (i == 1)
-                    arrayOfString = new String[]{"删除", "去广告"};
-                while (true) {
-                    HomeShelfFragment.a(this.a, arrayOfString, localBookShelf);
-                    return true;
-                    if (i == 0) {
-                        if (localBookShelf.isTop())
-                            arrayOfString = new String[]{"取消置顶", "书籍详情", "移入养肥区", "缓存全本", "删除", "批量管理"};
-                        else
-                            arrayOfString = new String[]{"置顶", "书籍详情", "移入养肥区", "缓存全本", "删除", "批量管理"};
-                    } else if (i == 2) {
-                        if (localBookShelf.isTop())
-                            arrayOfString = new String[]{"取消置顶", "删除", "批量管理"};
-                        else
-                            arrayOfString = new String[]{"置顶", "删除", "批量管理"};
-                    } else {
-                        arrayOfString = null;
-                        if (i == 4)
-                            if (localBookShelf.isTop())
-                                arrayOfString = new String[]{"取消置顶", "书籍详情", "删除", "批量管理"};
-                            else
-                                arrayOfString = new String[]{"置顶", "书籍详情", "删除", "批量管理"};
                     }
                 }
             }
         });
+        this.shelfListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener()
+
+                                                      {
+                                                          @Override
+                                                          public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                                                              BookShelf localBookShelf = HomeShelfFragment.a(this.a, paramInt);
+                                                              if (localBookShelf == null)
+                                                                  return true;
+                                                              int i = localBookShelf.getType();
+                                                              String[] arrayOfString;
+                                                              if (i == 1)
+                                                                  arrayOfString = new String[]{"删除", "去广告"};
+                                                              while (true) {
+                                                                  HomeShelfFragment.a(this.a, arrayOfString, localBookShelf);
+                                                                  return true;
+                                                                  if (i == 0) {
+                                                                      if (localBookShelf.isTop())
+                                                                          arrayOfString = new String[]{"取消置顶", "书籍详情", "移入养肥区", "缓存全本", "删除", "批量管理"};
+                                                                      else
+                                                                          arrayOfString = new String[]{"置顶", "书籍详情", "移入养肥区", "缓存全本", "删除", "批量管理"};
+                                                                  } else if (i == 2) {
+                                                                      if (localBookShelf.isTop())
+                                                                          arrayOfString = new String[]{"取消置顶", "删除", "批量管理"};
+                                                                      else
+                                                                          arrayOfString = new String[]{"置顶", "删除", "批量管理"};
+                                                                  } else {
+                                                                      arrayOfString = null;
+                                                                      if (i == 4)
+                                                                          if (localBookShelf.isTop())
+                                                                              arrayOfString = new String[]{"取消置顶", "书籍详情", "删除", "批量管理"};
+                                                                          else
+                                                                              arrayOfString = new String[]{"置顶", "书籍详情", "删除", "批量管理"};
+                                                                  }
+                                                              }
+                                                          }
+                                                      }
+
+        );
         this.shelfAdapter.a(this.deleteButton, this.selectAllButton);
+
         i();
+
         this.shelfListView.getHeight();
         Log.i(TAG, this.shelfListView.getHeight() + " ," + this.shelfListView.getMeasuredHeight());
-        this.l = ((RelativeLayout) this.rootView.findViewById(2131493441));
-        this.m = ((CoverLoadingView) this.l.findViewById(2131493604));
-        this.n = ((TextView) this.l.findViewById(2131493605));
-        this.o = ((TextView) this.l.findViewById(2131493606));
-        this.p = ((ImageView) this.l.findViewById(2131493607));
-        this.p.setOnClickListener(new B(this));
+        this.l = ((RelativeLayout) this.rootView.findViewById(R.id.ic_audio_bar));
+        this.m = ((CoverLoadingView) this.l.findViewById(R.id.cover));
+        this.n = ((TextView) this.l.findViewById(R.id.tv_title));
+        this.o = ((TextView) this.l.findViewById(R.id.tv_time));
+        this.p = ((ImageView) this.l.findViewById(R.id.iv_control));
+        this.p.setOnClickListener(new View.OnClickListener()
+
+                                  {
+                                      @Override
+                                      public void onClick(View v) {
+                                          if (as.c()) {
+                                              h();
+                                          } else {
+                                              u.d();
+                                          }
+                                      }
+                                  }
+
+        );
         if (as.c())
+
             h();
-        this.l.setOnClickListener(new C(this));
+
+        this.l.setOnClickListener(new View.OnClickListener()
+
+                                  {
+                                      @Override
+                                      public void onClick(View v) {
+                                          // Play Audio
+                                      }
+                                  }
+
+        );
         return this.rootView;
     }
 
     public void onDestroy() {
         super.onDestroy();
-        if (this.E != null) {
-            as.b(this.E);
-            this.E = null;
-        }
-        i.a().b(this);
+        new Bus().unregister(this);
     }
 
-    @com.squareup.a.l
     public void onDownloadProgress(com.clilystudio.app.netbook.event.I paramI) {
         if (this.k == 0)
             this.shelfAdapter.notifyDataSetChanged();
@@ -1130,7 +1153,6 @@ public class HomeShelfFragment extends HomeFragment
         this.k = paramInt;
     }
 
-    @com.squareup.a.l
     public void onShelfUpdated(com.clilystudio.app.netbook.event.A paramA) {
         if ((paramA.a() == 0) && (this.z) && (am_CommonUtils.p_isFirstLaunch(getActivity()))) {
             if (!this.A)
@@ -1140,7 +1162,6 @@ public class HomeShelfFragment extends HomeFragment
         k();
     }
 
-    @com.squareup.a.l
     public void onShowThirdAd(com.clilystudio.app.netbook.event.B paramB) {
         if ((getActivity() == null) || (getActivity().isFinishing())) ;
         label17:
