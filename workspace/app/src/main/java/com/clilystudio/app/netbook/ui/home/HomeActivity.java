@@ -225,7 +225,7 @@ public class HomeActivity extends HomeParentActivity
         setUserInfo(0);
     }
 
-    public final void g() {
+    public final void g_gotoFindFragment() {
         this.mViewPager.setCurrentItem(2, true);
     }
 
