@@ -1,6 +1,7 @@
 package com.clilystudio.app.netbook.event;
 
 import com.clilystudio.app.netbook.model.Account;
+import com.clilystudio.app.netbook.ui.user.AuthLoginActivity;
 import com.clilystudio.app.netbook.ui.user.AuthLoginActivity.Source;
 
 public final class t {

@@ -20,6 +20,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.clilystudio.app.netbook.AppProperties;
+import com.clilystudio.app.netbook.MyApplication;
 import com.clilystudio.app.netbook.R;
 import com.clilystudio.app.netbook.db.BookReadRecord;
 import com.clilystudio.app.netbook.event.BookShelfRefreshEvent;
@@ -42,6 +43,7 @@ import com.clilystudio.app.netbook.util.Z;
 import com.clilystudio.app.netbook.util.am_CommonUtils;
 import com.clilystudio.app.netbook.util.s;
 import com.clilystudio.app.netbook.widget.TabWidgetV2;
+import com.squareup.otto.Bus;
 import com.xiaomi.mipush.sdk.MiPushClient;
 
 import java.io.BufferedReader;
@@ -371,8 +373,8 @@ public class HomeActivity extends HomeParentActivity
         this.gameImageView = ((ImageView) actionBar.getCustomView().findViewById(R.id.home_action_menu_game));
         this.gameImageView.setOnClickListener(this);
         this.gameImageView.setVisibility(View.GONE);
-        com.clilystudio.app.netbook.event.i.a().a(this);
-        this.mTabHost = ((TabHost) findViewById(R.id.host));
+        new Bus().register(this);
+         this.mTabHost = ((TabHost) findViewById(R.id.host));
         TabWidgetV2 localTabWidgetV2 = (TabWidgetV2) findViewById(android.R.id.tabs);
         this.mViewPager = ((ViewPager) findViewById(R.id.pager));
         this.mHomePagerAdapter = new i_HomePagerAdapter(this, getSupportFragmentManager());
@@ -472,7 +474,7 @@ public class HomeActivity extends HomeParentActivity
 
     protected void onDestroy() {
         super.onDestroy();
-        com.clilystudio.app.netbook.event.i.a().b(this);
+        new Bus().unregister(this);
         this.mAccount = null;
         if (this.mWebView != null) {
             this.mWebView.clearHistory();
@@ -501,12 +503,7 @@ public class HomeActivity extends HomeParentActivity
         this.mAccount = paramt.a();
         if (this.mAccount != null) {
             setUserInfo(this.mAccount.getUser());
-            if (paramt.b() == AuthLoginActivity.Source.HOME)
-                break label99;
-        }
-        label99:
-        for (boolean bool = true; ; bool = false) {
-            new Z(this, this.mAccount.getToken()).a(bool);
+             new Z(this, this.mAccount.getToken()).a(paramt.b() != AuthLoginActivity.Source.HOME);
             a(this.mAccount);
             h localh = new h(this);
             String[] arrayOfString = new String[1];
@@ -529,25 +526,22 @@ public class HomeActivity extends HomeParentActivity
             localTextView.setVisibility(View.VISIBLE);
             localView.setVisibility(View.GONE);
             localTextView.setText(String.valueOf(i1));
-            if (this.moreImageView != null)
+            if (this.moreImageView != null) {
                 this.moreImageView.setImageResource(R.drawable.ic_action_home_overflow_dot);
-        }
-        do {
-            do {
-                return;
-                if (i1 != -1)
-                    break;
-                localTextView.setVisibility(View.GONE);
-                localView.setVisibility(View.VISIBLE);
             }
-            while (this.moreImageView == null);
-            this.moreImageView.setImageResource(R.drawable.ic_action_home_overflow_dot);
-            return;
+        } else if (i1 == -1) {
+            localTextView.setVisibility(View.GONE);
+            localView.setVisibility(View.VISIBLE);
+            if (this.moreImageView != null) {
+                this.moreImageView.setImageResource(R.drawable.ic_action_home_overflow_dot);
+            }
+        } else {
             localTextView.setVisibility(View.GONE);
             localView.setVisibility(View.GONE);
+            if (this.moreImageView != null) {
+                this.moreImageView.setImageResource(R.drawable.ic_action_overflow);
+            }
         }
-        while (this.moreImageView == null);
-        this.moreImageView.setImageResource(R.drawable.ic_action_overflow);
     }
 
     public void onPageScrollStateChanged(int paramInt) {
@@ -560,7 +554,7 @@ public class HomeActivity extends HomeParentActivity
     public void onPageSelected(int paramInt) {
         TabWidget localTabWidget = this.mTabHost.getTabWidget();
         int i1 = localTabWidget.getDescendantFocusability();
-        localTabWidget.setDescendantFocusability(393216);
+        localTabWidget.setDescendantFocusability(ViewGroup.FOCUS_BLOCK_DESCENDANTS);
         this.mTabHost.setCurrentTab(paramInt);
         localTabWidget.setDescendantFocusability(i1);
     }
@@ -573,9 +567,10 @@ public class HomeActivity extends HomeParentActivity
 
     public void onResume() {
         super.onResume();
-        com.clilystudio.app.netbook.api.e.a("1".equals(com.umeng.a.b.b(this, "use_http_dns")));
-        if (com.arcsoft.hpay100.a.a.l())
+        com.clilystudio.app.netbook.api.e.a("1".equals(AppProperties.getSetting("use_http_dns")));
+        if (!AppProperties.getSetting("force_encrypt_chapter").equals("0")) {
             new s(this).b(new Void[0]);
+        }
         this.mAccount = am_CommonUtils.e_getAccount();
         if (this.mAccount != null) {
             setUserInfo(this.mAccount.getUser());

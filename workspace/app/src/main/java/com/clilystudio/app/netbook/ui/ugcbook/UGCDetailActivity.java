@@ -21,6 +21,7 @@ import com.clilystudio.app.netbook.ui.SmartImageView;
 import com.clilystudio.app.netbook.util.T;
 import com.clilystudio.app.netbook.util.am_CommonUtils;
 import com.squareup.a.b;
+import com.squareup.otto.Bus;
 
 import java.util.List;
 
@@ -122,7 +123,7 @@ public class UGCDetailActivity extends BaseActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(2130903138);
-        com.clilystudio.app.netbook.event.i.a().a(this);
+        new Bus().register(this);
         if (a.a(getIntent())) {
             List localList2 = getIntent().getData().getPathSegments();
             this.o = ((String) localList2.get(-1 + localList2.size()));
@@ -197,7 +198,7 @@ public class UGCDetailActivity extends BaseActivity
 
     protected void onDestroy() {
         super.onDestroy();
-        com.clilystudio.app.netbook.event.i.a().b(this);
+        new Bus().unregister(this);
     }
 
     @com.squareup.a.l

@@ -1,6 +1,7 @@
 package com.clilystudio.app.netbook;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -75,5 +76,10 @@ public final class AppProperties {
             properties.remove(keys[i]);
         }
         saveProperties(properties);
+    }
+
+    public final static String getSetting(String key) {
+        SharedPreferences preferences = MyApplication.a_getInstance().getSharedPreferences("NetBook", Context.MODE_PRIVATE);
+        return preferences.getString(key, "");
     }
 }

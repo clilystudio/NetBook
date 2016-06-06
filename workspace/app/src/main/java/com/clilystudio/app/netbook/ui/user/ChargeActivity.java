@@ -16,6 +16,7 @@ import com.clilystudio.app.netbook.model.ChargePlan;
 import com.clilystudio.app.netbook.model.ChargeType;
 import com.clilystudio.app.netbook.ui.BaseLoadingActivity;
 import com.clilystudio.app.netbook.widget.ScrollGridView;
+import com.squareup.otto.Bus;
 
 public class ChargeActivity extends BaseLoadingActivity {
     private ChargeType a;
@@ -62,7 +63,7 @@ public class ChargeActivity extends BaseLoadingActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         a(2130903118);
-        com.clilystudio.app.netbook.event.i.a().a(this);
+        new Bus().register(this);
         this.b = new x(this, LayoutInflater.from(this));
         ((ScrollGridView) findViewById(2131493151)).setAdapter(this.b);
         this.a = ((ChargeType) getIntent().getSerializableExtra("key_pay_type"));
@@ -115,7 +116,7 @@ public class ChargeActivity extends BaseLoadingActivity {
     }
 
     protected void onDestroy() {
-        com.clilystudio.app.netbook.event.i.a().b(this);
+        new Bus().unregister(this);
         super.onDestroy();
     }
 
