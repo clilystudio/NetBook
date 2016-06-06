@@ -82,4 +82,16 @@ public final class AppProperties {
         SharedPreferences preferences = MyApplication.a_getInstance().getSharedPreferences("NetBook", Context.MODE_PRIVATE);
         return preferences.getString(key, "");
     }
+
+    public final static long getSetting(String key, long defValue) {
+        SharedPreferences preferences = MyApplication.a_getInstance().getSharedPreferences("NetBook", Context.MODE_PRIVATE);
+        return preferences.getLong(key, defValue);
+    }
+
+    public final static void setSetting(String key, long value) {
+        SharedPreferences preferences = MyApplication.a_getInstance().getSharedPreferences("NetBook", Context.MODE_PRIVATE);
+        SharedPreferences.Editor edit = preferences.edit();
+        edit.putLong(key, value);
+        edit.apply();
+    }
 }

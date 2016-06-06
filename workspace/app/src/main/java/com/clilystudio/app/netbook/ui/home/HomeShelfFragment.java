@@ -19,16 +19,17 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.clilystudio.app.netbook.AppProperties;
 import com.clilystudio.app.netbook.R;
 import com.clilystudio.app.netbook.adapter.HomeShelfAdapter;
 import com.clilystudio.app.netbook.db.AudioRecord;
 import com.clilystudio.app.netbook.db.BookFile;
 import com.clilystudio.app.netbook.db.BookReadRecord;
-import com.clilystudio.app.netbook.event.*;
+import com.clilystudio.app.netbook.event.BookShelfRefreshEvent;
 import com.clilystudio.app.netbook.event.F;
 import com.clilystudio.app.netbook.event.g;
 import com.clilystudio.app.netbook.event.h;
-import com.clilystudio.app.netbook.event.m;
+import com.clilystudio.app.netbook.event.i_OttoBus;
 import com.clilystudio.app.netbook.event.r;
 import com.clilystudio.app.netbook.event.s;
 import com.clilystudio.app.netbook.model.Advert;
@@ -38,10 +39,11 @@ import com.clilystudio.app.netbook.model.ShelfMsg;
 import com.clilystudio.app.netbook.model.TxtFileObject;
 import com.clilystudio.app.netbook.ui.feed.FeedIntroActivity;
 import com.clilystudio.app.netbook.ui.feed.FeedListActivity;
-import com.clilystudio.app.netbook.util.*;
+import com.clilystudio.app.netbook.util.UmengGameTracer;
 import com.clilystudio.app.netbook.util.UmengGameTracer.From;
+import com.clilystudio.app.netbook.util.am_CommonUtils;
+import com.clilystudio.app.netbook.util.as;
 import com.clilystudio.app.netbook.util.e;
-import com.clilystudio.app.netbook.util.m;
 import com.clilystudio.app.netbook.widget.CoverLoadingView;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
@@ -50,7 +52,6 @@ import com.ximalaya.ting.android.opensdk.datatrasfer.CommonRequest;
 import com.ximalaya.ting.android.opensdk.model.album.Album;
 import com.ximalaya.ting.android.opensdk.model.album.SubordinatedAlbum;
 import com.ximalaya.ting.android.opensdk.model.track.Track;
-import com.ximalaya.ting.android.opensdk.player.service.IXmPlayerStatusListener;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -453,307 +454,162 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
         shelfListView.a(getActivity(), "载入书架失败，请重试");
     }
 
-    // ERROR //
     private List<BookShelf> j() {
-        // Byte code:
-        //   0: new 704	java/util/ArrayList
-        //   3: dup
-        //   4: invokespecial 705	java/util/ArrayList:<init>	()V
-        //   7: astore_1
-        //   8: aload_0
-        //   9: invokevirtual 162	com/ushaqi/zhuishushenqi/ui/home/HomeShelfFragment:getActivity	()Landroid/support/v4/app/FragmentActivity;
-        //   12: ldc_w 1077
-        //   15: iconst_1
-        //   16: invokestatic 458	com/arcsoft/hpay100/a/a:a	(Landroid/content/Context;Ljava/lang/String;I)I
-        //   19: istore_2
-        //   20: iload_2
-        //   21: ifne +189 -> 210
-        //   24: invokestatic 1080	com/ushaqi/zhuishushenqi/db/BookReadRecord:getAllWithTopNoFeed	()Ljava/util/List;
-        //   27: astore_3
-        //   28: invokestatic 1083	com/ushaqi/zhuishushenqi/db/BookReadRecord:getAllFeeding	()Ljava/util/List;
-        //   31: astore 4
-        //   33: aload 4
-        //   35: invokeinterface 601 1 0
-        //   40: ifne +177 -> 217
-        //   43: iconst_1
-        //   44: istore 5
-        //   46: lconst_0
-        //   47: lstore 6
-        //   49: iload 5
-        //   51: ifeq +18 -> 69
-        //   54: aload_0
-        //   55: invokevirtual 162	com/ushaqi/zhuishushenqi/ui/home/HomeShelfFragment:getActivity	()Landroid/support/v4/app/FragmentActivity;
-        //   58: ldc_w 761
-        //   61: invokestatic 759	java/lang/System:currentTimeMillis	()J
-        //   64: invokestatic 1085	com/arcsoft/hpay100/a/a:c	(Landroid/content/Context;Ljava/lang/String;J)J
-        //   67: lstore 6
-        //   69: aload_3
-        //   70: invokeinterface 523 1 0
-        //   75: astore 8
-        //   77: iconst_0
-        //   78: istore 9
-        //   80: aload 8
-        //   82: invokeinterface 528 1 0
-        //   87: ifeq +136 -> 223
-        //   90: aload 8
-        //   92: invokeinterface 532 1 0
-        //   97: checkcast 218	com/ushaqi/zhuishushenqi/db/BookReadRecord
-        //   100: astore 24
-        //   102: aload 24
-        //   104: invokevirtual 475	com/ushaqi/zhuishushenqi/db/BookReadRecord:getUpdated	()Ljava/util/Date;
-        //   107: invokevirtual 182	java/util/Date:getTime	()J
-        //   110: lstore 25
-        //   112: iload 9
-        //   114: ifne +26 -> 140
-        //   117: iload 5
-        //   119: ifeq +21 -> 140
-        //   122: lload 6
-        //   124: lload 25
-        //   126: lcmp
-        //   127: iflt +13 -> 140
-        //   130: aload_0
-        //   131: aload_1
-        //   132: aload 4
-        //   134: invokespecial 1087	com/ushaqi/zhuishushenqi/ui/home/HomeShelfFragment:a	(Ljava/util/List;Ljava/util/List;)V
-        //   137: iconst_1
-        //   138: istore 9
-        //   140: new 109	com/ushaqi/zhuishushenqi/model/BookShelf
-        //   143: dup
-        //   144: invokespecial 635	com/ushaqi/zhuishushenqi/model/BookShelf:<init>	()V
-        //   147: astore 27
-        //   149: aload 27
-        //   151: aload 24
-        //   153: invokevirtual 1090	com/ushaqi/zhuishushenqi/model/BookShelf:setBookRecord	(Lcom/ushaqi/zhuishushenqi/db/BookReadRecord;)V
-        //   156: aload 24
-        //   158: getfield 1094	com/ushaqi/zhuishushenqi/db/BookReadRecord:readTime	Ljava/util/Date;
-        //   161: ifnull +16 -> 177
-        //   164: aload 27
-        //   166: aload 24
-        //   168: getfield 1094	com/ushaqi/zhuishushenqi/db/BookReadRecord:readTime	Ljava/util/Date;
-        //   171: invokevirtual 182	java/util/Date:getTime	()J
-        //   174: invokevirtual 1097	com/ushaqi/zhuishushenqi/model/BookShelf:setLastRead	(J)V
-        //   177: aload 24
-        //   179: invokevirtual 475	com/ushaqi/zhuishushenqi/db/BookReadRecord:getUpdated	()Ljava/util/Date;
-        //   182: ifnull +16 -> 198
-        //   185: aload 27
-        //   187: aload 24
-        //   189: invokevirtual 475	com/ushaqi/zhuishushenqi/db/BookReadRecord:getUpdated	()Ljava/util/Date;
-        //   192: invokevirtual 182	java/util/Date:getTime	()J
-        //   195: invokevirtual 1100	com/ushaqi/zhuishushenqi/model/BookShelf:setLastUpdate	(J)V
-        //   198: aload_1
-        //   199: aload 27
-        //   201: invokeinterface 684 2 0
-        //   206: pop
-        //   207: goto -127 -> 80
-        //   210: invokestatic 1103	com/ushaqi/zhuishushenqi/db/BookReadRecord:getAllWithTopNoFeedByRead	()Ljava/util/List;
-        //   213: astore_3
-        //   214: goto -186 -> 28
-        //   217: iconst_0
-        //   218: istore 5
-        //   220: goto -174 -> 46
-        //   223: aload_0
-        //   224: aload_1
-        //   225: invokestatic 1105	com/ushaqi/zhuishushenqi/ui/home/HomeShelfFragment:b	(Ljava/util/List;)I
-        //   228: putfield 83	com/ushaqi/zhuishushenqi/ui/home/HomeShelfFragment:v	I
-        //   231: iload 9
-        //   233: ifne +15 -> 248
-        //   236: iload 5
-        //   238: ifeq +10 -> 248
-        //   241: aload_0
-        //   242: aload_1
-        //   243: aload 4
-        //   245: invokespecial 1087	com/ushaqi/zhuishushenqi/ui/home/HomeShelfFragment:a	(Ljava/util/List;Ljava/util/List;)V
-        //   248: aload_0
-        //   249: invokevirtual 162	com/ushaqi/zhuishushenqi/ui/home/HomeShelfFragment:getActivity	()Landroid/support/v4/app/FragmentActivity;
-        //   252: ldc_w 1107
-        //   255: invokestatic 1110	com/umeng/a/b:b	(Landroid/content/Context;Ljava/lang/String;)Ljava/lang/String;
-        //   258: astore 10
-        //   260: aload 10
-        //   262: ifnull +66 -> 328
-        //   265: ldc_w 1112
-        //   268: aload 10
-        //   270: invokevirtual 1115	java/lang/String:equals	(Ljava/lang/Object;)Z
-        //   273: ifeq +55 -> 328
-        //   276: iconst_1
-        //   277: istore 11
-        //   279: invokestatic 989	com/ushaqi/zhuishushenqi/db/AudioRecord:findAll	()Ljava/util/List;
-        //   282: invokeinterface 523 1 0
-        //   287: astore 12
-        //   289: aload 12
-        //   291: invokeinterface 528 1 0
-        //   296: ifeq +106 -> 402
-        //   299: aload 12
-        //   301: invokeinterface 532 1 0
-        //   306: checkcast 267	com/ushaqi/zhuishushenqi/db/AudioRecord
-        //   309: astore 21
-        //   311: iload 11
-        //   313: ifeq +21 -> 334
-        //   316: aload 21
-        //   318: invokevirtual 269	com/ushaqi/zhuishushenqi/db/AudioRecord:delete	()V
-        //   321: aload_0
-        //   322: invokespecial 189	com/ushaqi/zhuishushenqi/ui/home/HomeShelfFragment:k	()V
-        //   325: goto -36 -> 289
-        //   328: iconst_0
-        //   329: istore 11
-        //   331: goto -52 -> 279
-        //   334: new 109	com/ushaqi/zhuishushenqi/model/BookShelf
-        //   337: dup
-        //   338: invokespecial 635	com/ushaqi/zhuishushenqi/model/BookShelf:<init>	()V
-        //   341: astore 22
-        //   343: aload 22
-        //   345: aload 21
-        //   347: invokevirtual 1119	com/ushaqi/zhuishushenqi/model/BookShelf:setAlbum	(Lcom/ushaqi/zhuishushenqi/db/AudioRecord;)V
-        //   350: aload 22
-        //   352: aload 21
-        //   354: invokevirtual 1120	com/ushaqi/zhuishushenqi/db/AudioRecord:getLastRead	()J
-        //   357: invokevirtual 1097	com/ushaqi/zhuishushenqi/model/BookShelf:setLastRead	(J)V
-        //   360: aload 22
-        //   362: aload 21
-        //   364: invokevirtual 1121	com/ushaqi/zhuishushenqi/db/AudioRecord:getLastUpdate	()J
-        //   367: invokevirtual 1100	com/ushaqi/zhuishushenqi/model/BookShelf:setLastUpdate	(J)V
-        //   370: aload 22
-        //   372: invokevirtual 714	com/ushaqi/zhuishushenqi/model/BookShelf:isTop	()Z
-        //   375: ifeq +15 -> 390
-        //   378: aload_1
-        //   379: iconst_0
-        //   380: aload 22
-        //   382: invokeinterface 639 3 0
-        //   387: goto -98 -> 289
-        //   390: aload_1
-        //   391: aload 22
-        //   393: invokeinterface 684 2 0
-        //   398: pop
-        //   399: goto -110 -> 289
-        //   402: aload_1
-        //   403: new 1123	com/ushaqi/zhuishushenqi/ui/home/G
-        //   406: dup
-        //   407: aload_0
-        //   408: iload_2
-        //   409: invokespecial 1124	com/ushaqi/zhuishushenqi/ui/home/G:<init>	(Lcom/ushaqi/zhuishushenqi/ui/home/HomeShelfFragment;I)V
-        //   412: invokestatic 1129	java/util/Collections:sort	(Ljava/util/List;Ljava/util/Comparator;)V
-        //   415: aload_0
-        //   416: invokevirtual 162	com/ushaqi/zhuishushenqi/ui/home/HomeShelfFragment:getActivity	()Landroid/support/v4/app/FragmentActivity;
-        //   419: ldc_w 1131
-        //   422: iconst_0
-        //   423: invokestatic 780	com/arcsoft/hpay100/a/a:a	(Landroid/content/Context;Ljava/lang/String;Z)Z
-        //   426: ifne +163 -> 589
-        //   429: aload_3
-        //   430: invokeinterface 463 1 0
-        //   435: anewarray 323	java/lang/String
-        //   438: astore 17
-        //   440: iconst_0
-        //   441: istore 18
-        //   443: iload 18
-        //   445: aload_3
-        //   446: invokeinterface 463 1 0
-        //   451: if_icmpge +64 -> 515
-        //   454: aload 17
-        //   456: iload 18
-        //   458: aload_3
-        //   459: iload 18
-        //   461: invokeinterface 466 2 0
-        //   466: checkcast 218	com/ushaqi/zhuishushenqi/db/BookReadRecord
-        //   469: invokevirtual 221	com/ushaqi/zhuishushenqi/db/BookReadRecord:getBookId	()Ljava/lang/String;
-        //   472: aastore
-        //   473: iinc 18 1
-        //   476: goto -33 -> 443
-        //   479: astore 13
-        //   481: aload_0
-        //   482: invokevirtual 162	com/ushaqi/zhuishushenqi/ui/home/HomeShelfFragment:getActivity	()Landroid/support/v4/app/FragmentActivity;
-        //   485: ldc_w 1058
-        //   488: new 164	java/lang/StringBuilder
-        //   491: dup
-        //   492: ldc_w 1133
-        //   495: invokespecial 169	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-        //   498: aload 13
-        //   500: invokevirtual 1051	java/lang/Exception:getMessage	()Ljava/lang/String;
-        //   503: invokevirtual 992	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-        //   506: invokevirtual 176	java/lang/StringBuilder:toString	()Ljava/lang/String;
-        //   509: invokestatic 590	com/umeng/a/b:a	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;)V
-        //   512: goto -97 -> 415
-        //   515: aload 17
-        //   517: invokestatic 1136	com/arcsoft/hpay100/a/a:a	([Ljava/lang/String;)V
-        //   520: aload 4
-        //   522: invokeinterface 463 1 0
-        //   527: anewarray 323	java/lang/String
-        //   530: astore 19
-        //   532: iconst_0
-        //   533: istore 20
-        //   535: iload 20
-        //   537: aload 4
-        //   539: invokeinterface 463 1 0
-        //   544: if_icmpge +29 -> 573
-        //   547: aload 19
-        //   549: iload 20
-        //   551: aload 4
-        //   553: iload 20
-        //   555: invokeinterface 466 2 0
-        //   560: checkcast 218	com/ushaqi/zhuishushenqi/db/BookReadRecord
-        //   563: invokevirtual 221	com/ushaqi/zhuishushenqi/db/BookReadRecord:getBookId	()Ljava/lang/String;
-        //   566: aastore
-        //   567: iinc 20 1
-        //   570: goto -35 -> 535
-        //   573: aload 19
-        //   575: invokestatic 1138	com/arcsoft/hpay100/a/a:b	([Ljava/lang/String;)V
-        //   578: aload_0
-        //   579: invokevirtual 162	com/ushaqi/zhuishushenqi/ui/home/HomeShelfFragment:getActivity	()Landroid/support/v4/app/FragmentActivity;
-        //   582: ldc_w 1131
-        //   585: iconst_1
-        //   586: invokestatic 811	com/arcsoft/hpay100/a/a:b	(Landroid/content/Context;Ljava/lang/String;Z)V
-        //   589: aload_0
-        //   590: aload_1
-        //   591: invokespecial 1139	com/ushaqi/zhuishushenqi/ui/home/HomeShelfFragment:a	(Ljava/util/List;)V
-        //   594: aload_1
-        //   595: areturn
-        //   596: astore 14
-        //   598: aload_0
-        //   599: invokevirtual 162	com/ushaqi/zhuishushenqi/ui/home/HomeShelfFragment:getActivity	()Landroid/support/v4/app/FragmentActivity;
-        //   602: ldc_w 1058
-        //   605: new 164	java/lang/StringBuilder
-        //   608: dup
-        //   609: ldc_w 1133
-        //   612: invokespecial 169	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-        //   615: aload 14
-        //   617: invokevirtual 1051	java/lang/Exception:getMessage	()Ljava/lang/String;
-        //   620: invokevirtual 992	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-        //   623: invokevirtual 176	java/lang/StringBuilder:toString	()Ljava/lang/String;
-        //   626: invokestatic 590	com/umeng/a/b:a	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;)V
-        //   629: aload 14
-        //   631: invokevirtual 1051	java/lang/Exception:getMessage	()Ljava/lang/String;
-        //   634: ldc_w 1141
-        //   637: invokevirtual 1056	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
-        //   640: ifeq -51 -> 589
-        //   643: new 1143	com/activeandroid/util/SQLiteUtils
-        //   646: dup
-        //   647: invokespecial 1144	com/activeandroid/util/SQLiteUtils:<init>	()V
-        //   650: pop
-        //   651: ldc_w 1146
-        //   654: invokestatic 1149	com/activeandroid/util/SQLiteUtils:execSql	(Ljava/lang/String;)V
-        //   657: goto -68 -> 589
-        //   660: astore 16
-        //   662: aload_0
-        //   663: invokevirtual 162	com/ushaqi/zhuishushenqi/ui/home/HomeShelfFragment:getActivity	()Landroid/support/v4/app/FragmentActivity;
-        //   666: ldc_w 1058
-        //   669: new 164	java/lang/StringBuilder
-        //   672: dup
-        //   673: ldc_w 1151
-        //   676: invokespecial 169	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-        //   679: aload 14
-        //   681: invokevirtual 1051	java/lang/Exception:getMessage	()Ljava/lang/String;
-        //   684: invokevirtual 992	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-        //   687: invokevirtual 176	java/lang/StringBuilder:toString	()Ljava/lang/String;
-        //   690: invokestatic 590	com/umeng/a/b:a	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;)V
-        //   693: goto -104 -> 589
-        //
-        // Exception table:
-        //   from	to	target	type
-        //   402	415	479	java/lang/Exception
-        //   415	440	596	java/lang/Exception
-        //   443	473	596	java/lang/Exception
-        //   515	532	596	java/lang/Exception
-        //   535	567	596	java/lang/Exception
-        //   573	589	596	java/lang/Exception
-        //   643	657	660	java/lang/Exception
+        v6 = new ArrayList();
+        v6.<init> ();
+        v0 = p0.getActivity();
+        v1 = "key_shelf_sort";
+        v2 = 0x1;
+        v7 = Lcom / arcsoft / hpay100 / a / a.a(v0, v1, v2);
+        if (v7 != 0) {
+            v1 = BookReadRecord.getAllWithTopNoFeedByRead();
+        } else {
+            v1 = BookReadRecord.getAllWithTopNoFeed();
+        }
+        v8 = BookReadRecord.getAllFeeding();
+        if (v8.isEmpty()) {
+            v5 = 0;
+        } else {
+            v5 = 1;
+        }
+        v0 = 0x0;
+        v2 = 0x0;
+        if (!v8.isEmpty()) {
+            AppProperties.setSetting("FeedUpdateTime", System.currentTimeMillis());
+        }
+        v9 = v1.iterator();
+        v4 = false;
+        while (v9.hasNext()) {
+            BookReadRecord v0 = v9.next();
+             v10 = v0.getUpdated().getTime();
+            if (!v4  && !v8.isEmpty() && v0.getUpdated().getTime() < 0) {
+                p0.a(v6, v8);
+                v4 = true;
+            }
+            v10 = new BookShelf();
+            v10.setBookRecord(v0);
+            v11 = v0.Lcom / ushaqi / zhuishushenqi / db / BookReadRecord;->readTime;
+            if (v0.readTime != 0) {
+                 v10.setLastRead(v0.readTime.getTime(), v13);
+            }
+            if (v0.getUpdated() != 0) {
+                 v10.setLastUpdate(v0.getUpdated().getTime(), v13);
+            }
+            v6.add(v10);
+        }
+        this.v = HomeShelfFragment.b(v6);
+        if (v4 == 0 && v5 != 0) {
+            p0.a(v6, v8);
+        }
+        if (Lcom / umeng / a / b.b(getActivity(), "delete_audio_on_shelf") == 0 || !"1".equals(v0)) {
+            v0 = 0x0;
+            v2 = v0;
+        } else {
+            v0 = 0x1;
+            v2 = v0;
+        }
+         :
+        try_start_0
+                v0 = new G(p0, v7);
+        Collections.sort(v6, v0);
+        :try_end_0
+                .catch Ljava / lang / Exception;
+        {:try_start_0..:try_end_0
+        }:catch_0
+        :
+        goto_5
+        :
+        try_start_1
+                v0 = p0.getActivity();
+        v2 = "unsync_bookrecord_first";
+        v3 = 0x0;
+        v0 = Lcom / arcsoft / hpay100 / a / a.a(v0, v2, v3);
+        if (v0 != 0) {
+            p0.a(v6);
+            return v6;
+        }
+        v3 = new String[v1.size()];
+         for (v2 = 0; v2 < v1.size(); v2++) {
+             v3[v2] = v1.get(v2).getBookId();
+        }
+        Lcom / arcsoft / hpay100 / a / a.a(v3);
+        v0 = v8.size();
+        new - array v2, v0,[Ljava / lang / String;
+        for (int v1 = 0; v1 < v8.size(); v1++) {
+            v0 = v8.get(v1);
+            check - cast v0, Lcom / ushaqi / zhuishushenqi / db / BookReadRecord;
+            v0 = v0.getBookId();
+            v2[v1] = v0;
+        }
+        Lcom / arcsoft / hpay100 / a / a.b(v2);
+        v0 = p0.getActivity();
+        v1 = "unsync_bookrecord_first";
+        v2 = 0x1;
+        Lcom / arcsoft / hpay100 / a / a.b(v0, v1, v2);
+
+        :try_end_1
+                .catch Ljava / lang / Exception;
+        {:try_start_1..:try_end_1
+        }:catch_1
+                v0 = v2 + 0x1;
+        v2 = v0;
+        goto:goto_6
+        :
+        catch_0
+        move - exception v0
+                showErrorMessage("zhuishu_catch_exception", new StringBuilder("HomeShelfFragment_createShelf:"
+                        .append(ex.getMeesage()).toString()));
+         :
+        cond_c
+        :
+        try_start_2
+         :try_end_2
+                .catch Ljava / lang / Exception;
+        {:try_start_2..:try_end_2
+        }:catch_1
+        :
+        goto_8
+        p0.a(v6);
+        return v6;
+        :catch_1
+        move - exception v0
+                v1 = p0.getActivity();
+        v2 = "zhuishu_catch_exception";
+        v3 = new StringBuilder();
+        v4 = "HomeShelfFragment_createShelf:";
+        v3.<init> (v4);
+        v4 = v0.getMessage();
+        v3 = v3.append(v4);
+        v3 = v3.toString();
+        Lcom / umeng / a / b.a(v1, v2, v3);
+        v1 = v0.getMessage();
+        v2 = "no such table: BookSyncRecord";
+        v1 = v1.contains(v2);
+        if (v1 == 0) {
+//       if-eqz v1, :cond_e
+        }
+        :try_start_3
+                v1 = new SQLiteUtils();
+        v1 = "CREATE TABLE IF NOT EXISTS BookSyncRecord (id integer primary key AutoIncrement,userId varchar(20),bookId varchar(20), type int,updated long);";
+        Lcom / activeandroid / util / SQLiteUtils.execSql(v1);
+        :try_end_3
+                .catch Ljava / lang / Exception;
+        {:try_start_3..:try_end_3
+        }:catch_2
+        goto:goto_8
+        :
+        catch_2
+        move - exception v1
+                v1 = p0.getActivity();
+        v2 = "zhuishu_catch_exception";
+        v3 = new StringBuilder();
+        v4 = "HomeShelfFragment_createTableBookSyncRecord:";
+        v3.<init> (v4);
+        v0 = v0.getMessage();
+        v0 = v3.append(v0);
+        v0 = v0.toString();
+        Lcom / umeng / a / b.a(v1, v2, v0);
+        goto:goto_8
     }
 
     private void k() {
