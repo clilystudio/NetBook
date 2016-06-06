@@ -7,7 +7,7 @@ import com.arcsoft.hpay100.a.a;
 import com.clilystudio.app.netbook.MyApplication;
 import com.clilystudio.app.netbook.db.BookReadRecord;
 import com.clilystudio.app.netbook.db.SourceRecord;
-import com.clilystudio.app.netbook.event.i;
+import com.clilystudio.app.netbook.event.i_OttoBus;
 import com.clilystudio.app.netbook.model.Account;
 import com.clilystudio.app.netbook.model.BookInfo;
 import com.clilystudio.app.netbook.reader.ReaderActivity;
@@ -27,7 +27,7 @@ public final class m {
 
     public m(Activity paramActivity) {
         this.a = paramActivity;
-        i.a().a(this);
+        i_OttoBus.a().a(this);
     }
 
     private void a(int paramInt) {

@@ -8,7 +8,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.clilystudio.app.netbook.event.D;
-import com.clilystudio.app.netbook.event.i;
+import com.clilystudio.app.netbook.event.i_OttoBus;
 import com.clilystudio.app.netbook.model.Author;
 import com.clilystudio.app.netbook.model.UGCNewCollection;
 import com.clilystudio.app.netbook.ui.BaseActivity;
@@ -62,7 +62,7 @@ public class UGCGuideEditBooksActivity extends BaseActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(2130903401);
-        i.a().a(this);
+        i_OttoBus.a().a(this);
         Bundle localBundle = getIntent().getExtras();
         String str1;
         String str2;
@@ -105,7 +105,7 @@ public class UGCGuideEditBooksActivity extends BaseActivity
 
     protected void onDestroy() {
         super.onDestroy();
-        i.a().b(this);
+        i_OttoBus.a().b(this);
     }
 
     public void onResume() {

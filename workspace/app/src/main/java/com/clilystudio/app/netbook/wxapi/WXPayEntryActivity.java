@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.clilystudio.app.netbook.event.i;
+import com.clilystudio.app.netbook.event.i_OttoBus;
 import com.clilystudio.app.netbook.event.y;
 import com.clilystudio.app.netbook.util.e;
 import com.e.a.a.g.a;
@@ -15,7 +15,7 @@ public class WXPayEntryActivity extends Activity
     private a a;
 
     public final void a(com.e.a.a.d.b paramb) {
-        com.squareup.a.b localb = i.a();
+        com.squareup.a.b localb = i_OttoBus.a();
         boolean bool;
         if (paramb.a == 0) {
             bool = true;

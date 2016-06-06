@@ -9,7 +9,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.clilystudio.app.netbook.event.i;
+import com.clilystudio.app.netbook.event.i_OttoBus;
 import com.clilystudio.app.netbook.event.k;
 import com.clilystudio.app.netbook.model.BookRankSummary;
 import com.clilystudio.app.netbook.util.am_CommonUtils;
@@ -118,7 +118,7 @@ public class RankCollapseItem extends LinearLayout
             this.a = bool;
             a();
             if (this.a)
-                i.a().c(new k(this.b));
+                i_OttoBus.a().c(new k(this.b));
             return;
         }
     }

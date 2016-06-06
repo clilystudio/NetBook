@@ -1077,8 +1077,3 @@ public class HomeShelfFragment extends HomeFragment
         a(this.j.f());
     }
 }
-
-/* Location:           E:\10.Progs\Dev\Compiler\zssq.jar
- * Qualified Name:     com.clilystudio.app.netbook.ui.home.HomeShelfFragment
- * JD-Core Version:    0.6.2
- */

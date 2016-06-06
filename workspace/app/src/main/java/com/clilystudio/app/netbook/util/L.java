@@ -1,7 +1,7 @@
 package com.clilystudio.app.netbook.util;
 
 import com.clilystudio.app.netbook.api.ApiService;
-import com.clilystudio.app.netbook.event.i;
+import com.clilystudio.app.netbook.event.i_OttoBus;
 import com.clilystudio.app.netbook.event.w;
 import com.clilystudio.app.netbook.model.Root;
 
@@ -15,7 +15,7 @@ final class L extends S<Root> {
 
     protected final void b(Root paramRoot) {
         this.a.a(0);
-        i.a().c(new w());
+        i_OttoBus.a().c(new w());
         am_CommonUtils.j_setNotifyTime(J.a(this.a));
     }
 }

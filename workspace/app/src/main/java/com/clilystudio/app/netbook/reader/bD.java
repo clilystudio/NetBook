@@ -3,7 +3,7 @@ package com.clilystudio.app.netbook.reader;
 import android.view.View;
 
 import com.clilystudio.app.netbook.MyApplication;
-import com.clilystudio.app.netbook.event.i;
+import com.clilystudio.app.netbook.event.i_OttoBus;
 import com.clilystudio.app.netbook.event.v;
 import com.clilystudio.app.netbook.util.am_CommonUtils;
 import com.squareup.a.b;
@@ -17,7 +17,7 @@ final class bD
         if (!this.a.equals(ReaderMixActivity.a(this.b))) {
             MyApplication.a_getInstance().c(ReaderMixActivity.b_initContentView(this.b));
             am_CommonUtils.c_setReadMode(ReaderMixActivity.b_initContentView(this.b), 9);
-            i.a().c(new v(1));
+            i_OttoBus.a().c(new v(1));
             ReaderMixActivity.a(this.b, ReaderMixActivity.f(this.b).get_id());
         }
         this.b.finish();

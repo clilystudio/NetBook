@@ -8,7 +8,7 @@ import android.support.v4.app.Fragment;
 import com.clilystudio.app.netbook.a_ActivityStack;
 import com.clilystudio.app.netbook.d_IntentFactory;
 import com.clilystudio.app.netbook.event.f;
-import com.clilystudio.app.netbook.event.i;
+import com.clilystudio.app.netbook.event.i_OttoBus;
 import com.clilystudio.app.netbook.ui.SimpleTabActivity;
 
 public class BookPostTabActivity extends SimpleTabActivity {
@@ -108,7 +108,7 @@ public class BookPostTabActivity extends SimpleTabActivity {
         this.g = paramIntent.getStringExtra("BOOK_ID");
         this.h = paramIntent.getStringExtra("BOOK_TITLE");
         d_setTitle(this.h);
-        i.a().c(new f());
+        i_OttoBus.a().c(new f());
     }
 }
 

@@ -13,7 +13,7 @@ import com.clilystudio.app.netbook.MyApplication;
 import com.clilystudio.app.netbook.d_IntentFactory;
 import com.clilystudio.app.netbook.db.BookReadRecord;
 import com.clilystudio.app.netbook.db.SourceWebReadRecord;
-import com.clilystudio.app.netbook.event.i;
+import com.clilystudio.app.netbook.event.i_OttoBus;
 import com.clilystudio.app.netbook.event.v;
 import com.clilystudio.app.netbook.ui.post.BookPostTabActivity;
 import com.squareup.a.b;
@@ -59,7 +59,7 @@ public class ReaderWebActivity extends BaseReadActivity {
     public void onCreate(Bundle paramBundle) {
         super.onCreate(paramBundle);
         setContentView(2130903124);
-        i.a().a(this);
+        i_OttoBus.a().a(this);
         this.c = getIntent().getStringExtra("BOOK_ID");
         this.d = getIntent().getStringExtra("BOOK_TITLE");
         this.e = getIntent().getStringExtra("SOURCE_ID");
@@ -153,7 +153,7 @@ public class ReaderWebActivity extends BaseReadActivity {
 
     protected void onDestroy() {
         super.onDestroy();
-        i.a().b(this);
+        i_OttoBus.a().b(this);
     }
 
     @l

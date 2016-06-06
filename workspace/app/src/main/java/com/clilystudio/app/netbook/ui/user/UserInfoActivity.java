@@ -10,7 +10,7 @@ import android.widget.TextView;
 import com.arcsoft.hpay100.a.a;
 import com.clilystudio.app.netbook.d_IntentFactory;
 import com.clilystudio.app.netbook.event.K;
-import com.clilystudio.app.netbook.event.i;
+import com.clilystudio.app.netbook.event.i_OttoBus;
 import com.clilystudio.app.netbook.event.u;
 import com.clilystudio.app.netbook.ui.BaseActivity;
 import com.clilystudio.app.netbook.ui.CircularSmartImageView;
@@ -81,13 +81,13 @@ public class UserInfoActivity extends BaseActivity {
             localView.setOnClickListener(new aB(this));
         }
         b();
-        i.a().a(this);
+        i_OttoBus.a().a(this);
         AppProperties.getInstance(this).setProperties("PERSONAL_PAGE_SHOW");
     }
 
     protected void onDestroy() {
         super.onDestroy();
-        i.a().b(this);
+        i_OttoBus.a().b(this);
     }
 
     @l

@@ -8,7 +8,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.clilystudio.app.netbook.event.i;
+import com.clilystudio.app.netbook.event.i_OttoBus;
 import com.clilystudio.app.netbook.event.v;
 
 import butterknife.ButterKnife;
@@ -58,7 +58,7 @@ public class ReadModeItem extends FrameLayout {
     }
 
     private static void a() {
-        i.a().c(new v(1));
+        i_OttoBus.a().c(new v(1));
     }
 }
 

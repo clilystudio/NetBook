@@ -3,7 +3,7 @@ package com.clilystudio.app.netbook.pay.b;
 import android.widget.Toast;
 
 import com.arcsoft.hpay100.z;
-import com.clilystudio.app.netbook.event.i;
+import com.clilystudio.app.netbook.event.i_OttoBus;
 
 class b
         implements com.arcsoft.hpay100.y {
@@ -11,7 +11,7 @@ class b
     }
 
     public void a(z paramz) {
-        com.squareup.a.b localb = i.a();
+        com.squareup.a.b localb = i_OttoBus.a();
         boolean bool;
         if (paramz.a() == 1) {
             bool = true;

@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 
 import com.arcsoft.hpay100.a.a;
-import com.clilystudio.app.netbook.event.i;
+import com.clilystudio.app.netbook.event.i_OttoBus;
 import com.clilystudio.app.netbook.ui.BaseLoadingActivity;
 import com.clilystudio.app.netbook.util.D;
 import com.squareup.a.b;
@@ -26,7 +26,7 @@ public class RemoveAdActivity extends BaseLoadingActivity {
         this.b.setLayoutManager(new D(this));
         this.a = new al(this);
         this.b.setAdapter(this.a);
-        i.a().a(this);
+        i_OttoBus.a().a(this);
         b();
         if (a.r(this, "switch_share_remove_ad")) {
             findViewById(2131493176).setVisibility(0);
@@ -37,7 +37,7 @@ public class RemoveAdActivity extends BaseLoadingActivity {
 
     protected void onDestroy() {
         super.onDestroy();
-        i.a().b(this);
+        i_OttoBus.a().b(this);
     }
 }
 

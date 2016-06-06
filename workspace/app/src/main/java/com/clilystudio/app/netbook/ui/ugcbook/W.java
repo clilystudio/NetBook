@@ -5,7 +5,7 @@ import android.view.View;
 import com.arcsoft.hpay100.a.a;
 import com.clilystudio.app.netbook.db.BookReadRecord;
 import com.clilystudio.app.netbook.event.D;
-import com.clilystudio.app.netbook.event.i;
+import com.clilystudio.app.netbook.event.i_OttoBus;
 import com.clilystudio.app.netbook.model.BookSummary;
 import com.clilystudio.app.netbook.model.UGCNewCollection;
 
@@ -30,7 +30,7 @@ final class W
                 localArrayList2.add(str);
         }
         String[] arrayOfString = (String[]) a.a(localArrayList2, String.class);
-        i.a().c(new D(arrayOfString));
+        i_OttoBus.a().c(new D(arrayOfString));
         this.a.finish();
     }
 }

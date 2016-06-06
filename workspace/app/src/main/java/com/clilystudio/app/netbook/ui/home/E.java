@@ -4,7 +4,7 @@ import android.os.Handler;
 import android.widget.ListView;
 
 import com.clilystudio.app.netbook.event.BookShelfRefreshEvent;
-import com.clilystudio.app.netbook.event.i;
+import com.clilystudio.app.netbook.event.i_OttoBus;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 
 final class E
@@ -13,7 +13,7 @@ final class E
     }
 
     public final void a(PullToRefreshBase<ListView> paramPullToRefreshBase) {
-        i.a().c(new BookShelfRefreshEvent());
+        i_OttoBus.a().c(new BookShelfRefreshEvent());
         HomeShelfFragment.e(this.a);
         com.clilystudio.app.netbook.adapter.HomeShelfAdapter.a = true;
         new Handler().postDelayed(new F(this), 1000L);

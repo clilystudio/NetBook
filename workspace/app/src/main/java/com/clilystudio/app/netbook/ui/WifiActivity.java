@@ -8,7 +8,7 @@ import android.widget.TextView;
 
 import com.clilystudio.app.netbook.db.BookFile;
 import com.clilystudio.app.netbook.event.A;
-import com.clilystudio.app.netbook.event.i;
+import com.clilystudio.app.netbook.event.i_OttoBus;
 import com.squareup.a.b;
 
 import java.io.IOException;
@@ -90,7 +90,7 @@ public class WifiActivity extends BaseActivity {
 
     protected void onStop() {
         super.onStop();
-        i.a().c(new A());
+        i_OttoBus.a().c(new A());
     }
 }
 

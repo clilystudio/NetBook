@@ -2,7 +2,7 @@ package com.clilystudio.app.netbook.util;
 
 import com.clilystudio.app.netbook.api.ApiService;
 import com.clilystudio.app.netbook.db.AccountInfo;
-import com.clilystudio.app.netbook.event.i;
+import com.clilystudio.app.netbook.event.i_OttoBus;
 import com.clilystudio.app.netbook.event.w;
 import com.clilystudio.app.netbook.model.Account;
 import com.clilystudio.app.netbook.model.Root;
@@ -26,7 +26,7 @@ final class M extends S<Root> {
                 localAccountInfo.save();
             }
         }
-        i.a().c(new w());
+        i_OttoBus.a().c(new w());
     }
 }
 

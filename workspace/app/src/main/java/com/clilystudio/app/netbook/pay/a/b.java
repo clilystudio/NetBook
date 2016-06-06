@@ -5,7 +5,7 @@ import android.os.Message;
 import android.text.TextUtils;
 import android.widget.Toast;
 
-import com.clilystudio.app.netbook.event.i;
+import com.clilystudio.app.netbook.event.i_OttoBus;
 import com.clilystudio.app.netbook.event.y;
 
 import org.json.JSONException;
@@ -21,7 +21,7 @@ final class b extends Handler {
             case 1:
                 e locale = new e((String) paramMessage.obj);
                 String str1 = locale.a();
-                i.a().c(new y(TextUtils.equals(str1, "9000")));
+                i_OttoBus.a().c(new y(TextUtils.equals(str1, "9000")));
                 if (TextUtils.equals(str1, "9000")) {
                     try {
                         String str2 = locale.b();

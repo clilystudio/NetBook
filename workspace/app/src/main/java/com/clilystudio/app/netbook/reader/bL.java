@@ -4,7 +4,7 @@ import android.support.v7.widget.SwitchCompat;
 import android.widget.CompoundButton;
 
 import com.arcsoft.hpay100.a.a;
-import com.clilystudio.app.netbook.event.i;
+import com.clilystudio.app.netbook.event.i_OttoBus;
 import com.clilystudio.app.netbook.event.j;
 import com.squareup.a.b;
 
@@ -15,7 +15,7 @@ final class bL
 
     public final void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean) {
         a.b(this.b, "convert_t", paramBoolean);
-        i.a().c(new j());
+        i_OttoBus.a().c(new j());
         ReaderOptionActivity.a_initContentView(this.b, this.a, paramBoolean);
     }
 }

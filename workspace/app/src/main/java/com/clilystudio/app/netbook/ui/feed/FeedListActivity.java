@@ -12,7 +12,7 @@ import android.widget.RadioGroup;
 
 import com.arcsoft.hpay100.a.a;
 import com.clilystudio.app.netbook.db.BookReadRecord;
-import com.clilystudio.app.netbook.event.i;
+import com.clilystudio.app.netbook.event.i_OttoBus;
 import com.clilystudio.app.netbook.event.m;
 import com.clilystudio.app.netbook.ui.BaseActivity;
 import com.squareup.a.b;
@@ -59,7 +59,7 @@ public class FeedListActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(2130903099);
         b_initContentView(2131034374);
-        i.a().a(this);
+        i_OttoBus.a().a(this);
         ListView localListView = (ListView) findViewById(2131493127);
         this.a = new f(this, getLayoutInflater());
         localListView.setAdapter(this.a);
@@ -73,7 +73,7 @@ public class FeedListActivity extends BaseActivity {
 
     protected void onDestroy() {
         super.onDestroy();
-        i.a().b(this);
+        i_OttoBus.a().b(this);
     }
 
     public boolean onOptionsItemSelected(MenuItem paramMenuItem) {

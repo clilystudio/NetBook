@@ -5,7 +5,7 @@ import android.app.Activity;
 import com.clilystudio.app.netbook.db.BookDlRecord;
 import com.clilystudio.app.netbook.event.I;
 import com.clilystudio.app.netbook.event.d;
-import com.clilystudio.app.netbook.event.i;
+import com.clilystudio.app.netbook.event.i_OttoBus;
 import com.clilystudio.app.netbook.reader.dl.a;
 import com.clilystudio.app.netbook.widget.y;
 import com.squareup.a.b;
@@ -20,7 +20,7 @@ final class r
 
     public final void a() {
         String str = this.a;
-        i.a().c(new d(str, 3));
+        i_OttoBus.a().c(new d(str, 3));
     }
 
     public final void b() {
@@ -34,7 +34,7 @@ final class r
         if (localBookDlRecord != null) {
             localBookDlRecord.setStatus(3);
             localBookDlRecord.save();
-            i.a().c(new I());
+            i_OttoBus.a().c(new I());
         }
     }
 }

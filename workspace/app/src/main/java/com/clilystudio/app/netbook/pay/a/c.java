@@ -2,7 +2,7 @@ package com.clilystudio.app.netbook.pay.a;
 
 import android.app.Activity;
 
-import com.clilystudio.app.netbook.event.i;
+import com.clilystudio.app.netbook.event.i_OttoBus;
 import com.clilystudio.app.netbook.event.y;
 import com.clilystudio.app.netbook.model.AliPayOrder;
 import com.clilystudio.app.netbook.model.ChargePlan;
@@ -27,7 +27,7 @@ public final class c extends com.clilystudio.app.netbook.a_packA.c<ChargePlan, A
 
     public final void onCancelled() {
         super.onCancelled();
-        i.a().c(new y(false));
+        i_OttoBus.a().c(new y(false));
     }
 }
 

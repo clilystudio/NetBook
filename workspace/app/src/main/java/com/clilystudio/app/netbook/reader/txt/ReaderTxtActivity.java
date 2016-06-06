@@ -14,6 +14,7 @@ import android.view.View;
 import com.clilystudio.app.netbook.MyApplication;
 import com.clilystudio.app.netbook.db.BookFile;
 import com.clilystudio.app.netbook.event.A;
+import com.clilystudio.app.netbook.event.i_OttoBus;
 import com.clilystudio.app.netbook.model.ChapterLink;
 import com.clilystudio.app.netbook.model.TxtFileObject;
 import com.clilystudio.app.netbook.reader.AutoReaderSetWidget;
@@ -539,7 +540,7 @@ public class ReaderTxtActivity extends FragmentActivity
             }
         }
         TxtFileObject.updateProgress(localBookFile);
-        com.clilystudio.app.netbook.event.i.a().c(new A());
+        i_OttoBus.a().c(new A());
     }
 
     public void onCreate(Bundle paramBundle) {

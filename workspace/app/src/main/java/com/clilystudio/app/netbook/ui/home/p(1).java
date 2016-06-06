@@ -9,7 +9,7 @@ import com.clilystudio.app.netbook.db.AudioRecord;
 import com.clilystudio.app.netbook.db.BookFile;
 import com.clilystudio.app.netbook.db.BookReadRecord;
 import com.clilystudio.app.netbook.event.A;
-import com.clilystudio.app.netbook.event.i;
+import com.clilystudio.app.netbook.event.i_OttoBus;
 import com.clilystudio.app.netbook.model.Advert;
 import com.clilystudio.app.netbook.model.BookShelf;
 import com.clilystudio.app.netbook.model.TxtFileObject;
@@ -68,7 +68,7 @@ final class p
             }
             e.a(this.a.getActivity(), "书籍不存在");
             TxtFileObject.delete(localBookFile);
-            i.a().c(new A());
+            i_OttoBus.a().c(new A());
             return;
             localAdvert = localBookShelf.getAdvert();
             localAdvert.processClick(paramView);

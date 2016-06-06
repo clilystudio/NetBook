@@ -8,7 +8,7 @@ import android.widget.TextView;
 
 import com.arcsoft.hpay100.a.a;
 import com.clilystudio.app.netbook.d_IntentFactory;
-import com.clilystudio.app.netbook.event.i;
+import com.clilystudio.app.netbook.event.i_OttoBus;
 import com.clilystudio.app.netbook.event.s;
 import com.clilystudio.app.netbook.event.y;
 import com.clilystudio.app.netbook.event.z;
@@ -56,7 +56,7 @@ public class PayAccountActivity extends BaseActivity
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        i.a().a(this);
+        i_OttoBus.a().a(this);
         setContentView(2130903329);
         b_initContentView("我的账户");
         this.b = ((PaySectionItem) findViewById(2131493802));
@@ -90,7 +90,7 @@ public class PayAccountActivity extends BaseActivity
 
     protected void onDestroy() {
         super.onDestroy();
-        i.a().b(this);
+        i_OttoBus.a().b(this);
     }
 
     @l

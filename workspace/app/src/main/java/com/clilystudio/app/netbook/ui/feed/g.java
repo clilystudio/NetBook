@@ -4,7 +4,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.clilystudio.app.netbook.db.BookReadRecord;
-import com.clilystudio.app.netbook.event.i;
+import com.clilystudio.app.netbook.event.i_OttoBus;
 import com.clilystudio.app.netbook.event.n;
 import com.squareup.a.b;
 
@@ -19,7 +19,7 @@ final class g
         this.b.setFeedFat(false);
         BookReadRecord.addAccountInfo(this.b);
         this.b.save();
-        i.a().c(new n(this.b.getBookId()));
+        i_OttoBus.a().c(new n(this.b.getBookId()));
     }
 }
 

@@ -10,7 +10,7 @@ import android.view.View;
 
 import com.clilystudio.app.netbook.a_ActivityStack;
 import com.clilystudio.app.netbook.d_IntentFactory;
-import com.clilystudio.app.netbook.event.i;
+import com.clilystudio.app.netbook.event.i_OttoBus;
 import com.clilystudio.app.netbook.event.v;
 import com.squareup.a.b;
 
@@ -34,7 +34,7 @@ public class ReaderResActivity extends ReaderModeActivity {
         localView.findViewById(2131493861).setOnClickListener(new bS(this));
         a().a(localView);
         a().d(true);
-        i.a().a(this);
+        i_OttoBus.a().a(this);
         f_setTitle(this.c);
         FragmentTransaction localFragmentTransaction = getSupportFragmentManager().beginTransaction();
         if (this.a == 0) {
@@ -55,7 +55,7 @@ public class ReaderResActivity extends ReaderModeActivity {
 
     protected void onDestroy() {
         super.onDestroy();
-        i.a().b(this);
+        i_OttoBus.a().b(this);
     }
 
     @l

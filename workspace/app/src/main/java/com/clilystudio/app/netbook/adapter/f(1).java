@@ -2,7 +2,7 @@ package com.clilystudio.app.netbook.adapter;
 
 import android.view.View;
 
-import com.clilystudio.app.netbook.event.i;
+import com.clilystudio.app.netbook.event.i_OttoBus;
 import com.clilystudio.app.netbook.event.x;
 import com.clilystudio.app.netbook.model.BookRankSummary;
 import com.squareup.a.b;
@@ -13,7 +13,7 @@ final class f
     }
 
     public final void onClick(View paramView) {
-        i.a().c(new x(this.a, BookRankAdapter.a(this.c, this.b)));
+        i_OttoBus.a().c(new x(this.a, BookRankAdapter.a(this.c, this.b)));
     }
 }
 

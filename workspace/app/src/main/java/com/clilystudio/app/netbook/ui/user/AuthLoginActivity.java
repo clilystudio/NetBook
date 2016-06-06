@@ -11,7 +11,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.Toast;
 
 import com.clilystudio.app.netbook.d_IntentFactory;
-import com.clilystudio.app.netbook.event.i;
+import com.clilystudio.app.netbook.event.i_OttoBus;
 import com.clilystudio.app.netbook.ui.BaseActivity;
 
 import cn.sharesdk.framework.Platform;
@@ -79,12 +79,12 @@ public class AuthLoginActivity extends BaseActivity
         findViewById(2131493141).setOnClickListener(new b(this));
         a(findViewById(2131493143));
         findViewById(2131493143).setOnClickListener(new c(this));
-        i.a().a(this);
+        i_OttoBus.a().a(this);
     }
 
     protected void onDestroy() {
         super.onDestroy();
-        i.a().b(this);
+        i_OttoBus.a().b(this);
     }
 
     @l

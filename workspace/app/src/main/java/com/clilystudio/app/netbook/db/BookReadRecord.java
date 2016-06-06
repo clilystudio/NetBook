@@ -9,7 +9,7 @@ import com.activeandroid.query.Select;
 import com.clilystudio.app.netbook.api.ApiService;
 import com.clilystudio.app.netbook.event.c;
 import com.clilystudio.app.netbook.event.h;
-import com.clilystudio.app.netbook.event.i;
+import com.clilystudio.app.netbook.event.i_OttoBus;
 import com.clilystudio.app.netbook.model.Account;
 import com.clilystudio.app.netbook.model.BookGenderRecommend.RecommendBook;
 import com.clilystudio.app.netbook.model.BookInfo;
@@ -118,7 +118,7 @@ public class BookReadRecord extends Model {
         BookReadRecord localBookReadRecord = createBookRecord(paramBookInfo);
         addAccountInfo(localBookReadRecord);
         localBookReadRecord.save();
-        i.a().c(new c(localBookReadRecord.getBookId()));
+        i_OttoBus.a().c(new c(localBookReadRecord.getBookId()));
     }
 
     public static void create(BookInfo paramBookInfo, String paramString, int paramInt1, int paramInt2, int paramInt3) {
@@ -130,7 +130,7 @@ public class BookReadRecord extends Model {
         addAccountInfo(localBookReadRecord);
         localBookReadRecord.save();
         MixTocRecord.create(str, paramString, paramInt1, paramInt2);
-        i.a().c(new c(str));
+        i_OttoBus.a().c(new c(str));
     }
 
     public static void create(BookInfo paramBookInfo, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, int paramInt3) {
@@ -142,7 +142,7 @@ public class BookReadRecord extends Model {
         addAccountInfo(localBookReadRecord);
         localBookReadRecord.save();
         TocReadRecord.create(str, paramString1, paramString2, paramString3, paramInt1, paramInt2);
-        i.a().c(new c(str));
+        i_OttoBus.a().c(new c(str));
     }
 
     public static void create(RemoteBookShelf.Book paramBook, boolean paramBoolean) {
@@ -227,7 +227,7 @@ public class BookReadRecord extends Model {
 
     public static void deleteAndSync(String paramString) {
         delete(paramString);
-        i.a().c(new h(paramString));
+        i_OttoBus.a().c(new h(paramString));
     }
 
     private static void deleteDlRecord(String paramString) {

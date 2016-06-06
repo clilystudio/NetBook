@@ -3,7 +3,7 @@ package com.clilystudio.app.netbook.pay.weixin;
 import android.app.Activity;
 
 import com.clilystudio.app.netbook.a_packA.c;
-import com.clilystudio.app.netbook.event.i;
+import com.clilystudio.app.netbook.event.i_OttoBus;
 import com.clilystudio.app.netbook.event.y;
 import com.clilystudio.app.netbook.model.ChargePlan;
 import com.clilystudio.app.netbook.model.WXPayOrder;
@@ -28,7 +28,7 @@ public final class b extends c<ChargePlan, WXPayOrder> {
 
     public final void onCancelled() {
         super.onCancelled();
-        i.a().c(new y(false));
+        i_OttoBus.a().c(new y(false));
     }
 }
 

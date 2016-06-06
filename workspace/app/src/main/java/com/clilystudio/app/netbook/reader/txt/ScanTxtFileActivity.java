@@ -8,7 +8,7 @@ import android.widget.TextView;
 
 import com.clilystudio.app.netbook.db.BookFile;
 import com.clilystudio.app.netbook.event.A;
-import com.clilystudio.app.netbook.event.i;
+import com.clilystudio.app.netbook.event.i_OttoBus;
 import com.clilystudio.app.netbook.model.TxtFileObject;
 import com.clilystudio.app.netbook.ui.BaseActivity;
 import com.squareup.a.b;
@@ -149,7 +149,7 @@ public class ScanTxtFileActivity extends BaseActivity {
         while (localIterator.hasNext())
             ((BookFile) localIterator.next()).setUpdated(new Date());
         TxtFileObject.saveTxtFiles(localList);
-        i.a().c(new A());
+        i_OttoBus.a().c(new A());
         finish();
     }
 

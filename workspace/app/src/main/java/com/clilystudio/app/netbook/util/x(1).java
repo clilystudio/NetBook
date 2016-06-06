@@ -2,7 +2,7 @@ package com.clilystudio.app.netbook.util;
 
 import android.view.View;
 
-import com.clilystudio.app.netbook.event.i;
+import com.clilystudio.app.netbook.event.i_OttoBus;
 import com.clilystudio.app.netbook.event.r;
 
 final class x
@@ -12,7 +12,7 @@ final class x
 
     public final void onClick(View paramView) {
         this.a.dismiss();
-        i.a().c(new r(2));
+        i_OttoBus.a().c(new r(2));
         com.umeng.a.b.a(paramView.getContext(), "book_recommend_gender_click", "female");
     }
 }

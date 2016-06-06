@@ -8,7 +8,7 @@ import android.widget.ListView;
 
 import com.arcsoft.hpay100.a.a;
 import com.clilystudio.app.netbook.adapter.BookRankAdapter;
-import com.clilystudio.app.netbook.event.i;
+import com.clilystudio.app.netbook.event.i_OttoBus;
 import com.clilystudio.app.netbook.event.k;
 import com.clilystudio.app.netbook.event.x;
 import com.clilystudio.app.netbook.model.BookRankSummary;
@@ -87,12 +87,12 @@ public class BookRankListActivity extends BaseActivity {
 
     public void onPause() {
         super.onPause();
-        i.a().b(this);
+        i_OttoBus.a().b(this);
     }
 
     public void onResume() {
         super.onResume();
-        i.a().a(this);
+        i_OttoBus.a().a(this);
     }
 }
 

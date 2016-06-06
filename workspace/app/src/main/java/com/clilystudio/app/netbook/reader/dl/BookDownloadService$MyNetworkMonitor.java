@@ -6,7 +6,7 @@ import android.content.Intent;
 
 import com.arcsoft.hpay100.a.a;
 import com.clilystudio.app.netbook.event.d;
-import com.clilystudio.app.netbook.event.i;
+import com.clilystudio.app.netbook.event.i_OttoBus;
 
 public class BookDownloadService$MyNetworkMonitor extends BroadcastReceiver {
     public BookDownloadService$MyNetworkMonitor(BookDownloadService paramBookDownloadService) {
@@ -18,7 +18,7 @@ public class BookDownloadService$MyNetworkMonitor extends BroadcastReceiver {
             BookDownloadService.c(this.a);
             BookDownloadService.a(this.a, false);
             BookDownloadService.a(this.a, 2);
-            i.a().c(new d(BookDownloadService.d(this.a), 2));
+            i_OttoBus.a().c(new d(BookDownloadService.d(this.a), 2));
             BookDownloadService.e(this.a);
             BookDownloadService.b(this.a, false);
         }

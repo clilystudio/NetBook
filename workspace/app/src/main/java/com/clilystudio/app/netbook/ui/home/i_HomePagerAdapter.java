@@ -10,41 +10,36 @@ import com.clilystudio.app.netbook.R;
 import java.util.List;
 
 final class i_HomePagerAdapter extends ZssqFragmentPagerAdapter {
-    private String[] tags = {"homeTag0", "homeTag1", "homeTag2"};
+    private String[] tags = {"homeTag0", "homeTag1"};
     private HomeActivity activity;
 
-    public i_HomePagerAdapter(HomeActivity paramHomeActivity, FragmentManager paramFragmentManager) {
-        super(paramFragmentManager);
-        activity = paramHomeActivity;
-        List<Fragment> localList = activity.getFragmentList();
+    public i_HomePagerAdapter(HomeActivity activity, FragmentManager manager) {
+        super(manager);
+        this.activity = activity;
+        List<Fragment> fragmentList = this.activity.getFragmentList();
 
-        HomeShelfFragment localHomeShelfFragment = (HomeShelfFragment) activity.getSupportFragmentManager().findFragmentByTag(this.tags[0]);
-        if (localHomeShelfFragment == null) {
-            localHomeShelfFragment = HomeShelfFragment.b();
+        HomeShelfFragment homeShelfFragment = (HomeShelfFragment) this.activity.getSupportFragmentManager().findFragmentByTag(this.tags[0]);
+        if (homeShelfFragment == null) {
+            homeShelfFragment = HomeShelfFragment.b();
         }
-        localList.add(localHomeShelfFragment);
-        HomeTopicFragment localHomeTopicFragment = (HomeTopicFragment) activity.getSupportFragmentManager().findFragmentByTag(this.tags[1]);
-        if (localHomeTopicFragment == null) {
-            localHomeTopicFragment = HomeTopicFragment.b();
+        fragmentList.add(homeShelfFragment);
+
+        HomeTopicFragment homeTopicFragment = (HomeTopicFragment) this.activity.getSupportFragmentManager().findFragmentByTag(this.tags[1]);
+        if (homeTopicFragment == null) {
+            homeTopicFragment = HomeTopicFragment.b();
         }
-        localList.add(localHomeTopicFragment);
-        HomeFindFragment localHomeFindFragment = (HomeFindFragment) activity.getSupportFragmentManager().findFragmentByTag(this.tags[2]);
-        if (localHomeFindFragment == null) {
-            Bundle localBundle = new Bundle();
-            localBundle.putBoolean("game_center_show", false);
-            localHomeFindFragment = HomeFindFragment.a(localBundle);
-        }
-        localList.add(localHomeFindFragment);
-        FragmentTransaction localFragmentTransaction = paramFragmentManager.beginTransaction();
-        for (int i = 0;i < 3; i++) {
-            Fragment localFragment = localList.get(i);
-            if (!localFragment.isAdded()) {
-                localFragmentTransaction.add(activity.getmViewPager().getId(), localFragment, this.tags[i]);
+        fragmentList.add(homeTopicFragment);
+
+        FragmentTransaction transaction = manager.beginTransaction();
+        for (int i = 0;i < tags.length; i++) {
+            Fragment fragment = fragmentList.get(i);
+            if (!fragment.isAdded()) {
+                transaction.add(this.activity.getmViewPager().getId(), fragment, this.tags[i]);
             }
         }
-        if (!localFragmentTransaction.isEmpty()) {
-            localFragmentTransaction.commit();
-            paramFragmentManager.executePendingTransactions();
+        if (!transaction.isEmpty()) {
+            transaction.commit();
+            manager.executePendingTransactions();
         }
     }
 
@@ -57,10 +52,10 @@ final class i_HomePagerAdapter extends ZssqFragmentPagerAdapter {
     }
 
     public final int getCount() {
-        return 3;
+        return tags.length;
     }
 
-    public final CharSequence getPageTitle(int paramInt) {
-        return activity.getResources().getStringArray(R.array.home_tabs)[paramInt];
+    public final CharSequence getPageTitle(int position) {
+        return activity.getResources().getStringArray(R.array.home_tabs)[position];
     }
 }

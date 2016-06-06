@@ -6,7 +6,7 @@ import android.widget.TextView;
 
 import com.arcsoft.hpay100.a.a;
 import com.clilystudio.app.netbook.MyApplication;
-import com.clilystudio.app.netbook.event.i;
+import com.clilystudio.app.netbook.event.i_OttoBus;
 import com.clilystudio.app.netbook.model.Author;
 import com.clilystudio.app.netbook.model.UGCNewCollection;
 import com.clilystudio.app.netbook.ui.BaseActivity;
@@ -50,7 +50,7 @@ public class UGCGuideAddCollectionActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(2130903135);
-        i.a().a(this);
+        i_OttoBus.a().a(this);
         this.a = ((TextView) findViewById(2131493224));
         this.b = ((TextView) findViewById(2131493225));
         this.c = getIntent().getStringExtra("ugc_id");
@@ -75,7 +75,7 @@ public class UGCGuideAddCollectionActivity extends BaseActivity {
 
     protected void onDestroy() {
         super.onDestroy();
-        i.a().b(this);
+        i_OttoBus.a().b(this);
     }
 
     @l

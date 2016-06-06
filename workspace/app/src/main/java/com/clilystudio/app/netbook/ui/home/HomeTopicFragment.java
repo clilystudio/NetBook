@@ -13,7 +13,7 @@ import com.clilystudio.app.netbook.db.BookReadRecord;
 import com.clilystudio.app.netbook.event.BookShelfRefreshEvent;
 import com.clilystudio.app.netbook.event.c;
 import com.clilystudio.app.netbook.event.h;
-import com.clilystudio.app.netbook.event.i;
+import com.clilystudio.app.netbook.event.i_OttoBus;
 import com.clilystudio.app.netbook.event.o;
 import com.clilystudio.app.netbook.model.BookShelfTopic;
 import com.clilystudio.app.netbook.ui.post.BookHelpListActivity;
@@ -22,7 +22,6 @@ import com.clilystudio.app.netbook.ui.post.GirlTopicListActivity;
 import com.clilystudio.app.netbook.ui.post.ReviewListActivity;
 import com.clilystudio.app.netbook.ui.post.TweetTabActivity;
 import com.clilystudio.app.netbook.ui.user.AuthLoginActivity;
-import com.clilystudio.app.netbook.ui.user.AuthLoginActivity.Source;
 import com.clilystudio.app.netbook.util.am_CommonUtils;
 import com.clilystudio.app.netbook.widget.CommunitySection;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
@@ -168,7 +167,7 @@ public class HomeTopicFragment extends HomeFragment
                 Intent localIntent2 = new Intent(getActivity(), TweetTabActivity.class);
                 if (a.a(getActivity(), "FRIST_RUN_POST", true)) {
                     a.b(getActivity(), "FRIST_RUN_POST", false);
-                    i.a().c(new o());
+                    i_OttoBus.a().c(new o());
                 }
                 startActivity(localIntent2);
                 return;
@@ -194,7 +193,7 @@ public class HomeTopicFragment extends HomeFragment
 
     public void onCreate(Bundle paramBundle) {
         super.onCreate(paramBundle);
-        i.a().a(this);
+        i_OttoBus.a().a(this);
     }
 
     public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle) {
@@ -211,12 +210,12 @@ public class HomeTopicFragment extends HomeFragment
 
     public void onPause() {
         super.onPause();
-        i.a().b(this);
+        i_OttoBus.a().b(this);
     }
 
     public void onResume() {
         super.onResume();
-        i.a().a(this);
+        i_OttoBus.a().a(this);
         this.d.notifyDataSetChanged();
     }
 }
