@@ -3680,9 +3680,16 @@ public class ApiService
     }
     throw localHttpRequestException.getCause();
   }
-}
 
-/* Location:           E:\Progs\Dev\Android\Decompile\apktool\zssq\zssq-dex2jar.jar
- * Qualified Name:     com.clilystudio.netbook.api.ApiService
- * JD-Core Version:    0.6.0
- */
+  class JsonException extends IOException
+  {
+    private static final long serialVersionUID = -8247637549733902252L;
+
+    public JsonException(JsonParseException paramJsonParseException)
+    {
+      super(paramJsonParseException.getMessage());
+      initCause(paramJsonParseException);
+    }
+  }
+
+}

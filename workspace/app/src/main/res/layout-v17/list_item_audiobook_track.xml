@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="@dimen/dp_56"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/text_size_12" android:textStyle="italic" android:id="@id/tv_track_number" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dp_16" android:layout_alignParentLeft="true" android:layout_centerVertical="true" android:layout_alignParentStart="true" />
-    <TextView android:textSize="@dimen/text_size_15" android:ellipsize="end" android:id="@id/tv_track_name" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dp_16" android:singleLine="true" android:layout_toLeftOf="@id/img_play_button" android:layout_toRightOf="@id/tv_track_number" android:layout_centerVertical="true" android:layout_toStartOf="@id/img_play_button" />
-    <ImageView android:id="@id/img_play_button" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/dp_24" android:src="@drawable/audiobook_item_play" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:layout_alignParentEnd="true" />
-</RelativeLayout>
