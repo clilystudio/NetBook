@@ -31,4 +31,11 @@ dependencies {
     compile 'com.squareup.okhttp:okhttp:2.7.5'
     compile 'com.squareup.okio:okio:1.8.0'
     compile 'com.squareup:otto:1.3.8'
+    compile 'uk.me.lewisdeane.ldialogs:ldialogs@aar'
+}
+
+repositories{
+    flatDir{
+        dirs 'libs'
+    }
 }

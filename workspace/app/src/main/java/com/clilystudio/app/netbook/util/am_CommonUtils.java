@@ -36,8 +36,10 @@ import com.clilystudio.app.netbook.db.BookReadRecord;
 import com.clilystudio.app.netbook.model.Account;
 import com.clilystudio.app.netbook.model.Game;
 import com.clilystudio.app.netbook.model.User;
+import com.clilystudio.app.netbook.push.BookUnSubRecord;
 import com.clilystudio.app.netbook.ui.AdWebViewActivity;
 import com.clilystudio.app.netbook.ui.user.AuthLoginActivity;
+import com.xiaomi.mipush.sdk.MiPushClient;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -1079,4 +1081,9 @@ public class am_CommonUtils {
         listView.addHeaderView(localView);
     }
 
+    public static void deleteBookRecord(String bookId) {
+        String paramString = "book:" + bookId;
+        BookUnSubRecord.create(paramString);
+        MiPushClient.unsubscribe(MyApplication.a_getInstance(),paramString,null );
+     }
 }

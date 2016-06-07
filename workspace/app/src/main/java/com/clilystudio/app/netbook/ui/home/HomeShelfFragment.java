@@ -1,11 +1,13 @@
 package com.clilystudio.app.netbook.ui.home;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.FragmentActivity;
+import android.support.v7.app.AlertDialog;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -14,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
@@ -25,6 +28,7 @@ import com.clilystudio.app.netbook.adapter.HomeShelfAdapter;
 import com.clilystudio.app.netbook.db.AudioRecord;
 import com.clilystudio.app.netbook.db.BookFile;
 import com.clilystudio.app.netbook.db.BookReadRecord;
+import com.clilystudio.app.netbook.db.BookSyncRecord;
 import com.clilystudio.app.netbook.event.BookShelfRefreshEvent;
 import com.clilystudio.app.netbook.event.F;
 import com.clilystudio.app.netbook.event.g;
@@ -41,6 +45,8 @@ import com.clilystudio.app.netbook.ui.feed.FeedIntroActivity;
 import com.clilystudio.app.netbook.ui.feed.FeedListActivity;
 import com.clilystudio.app.netbook.util.UmengGameTracer;
 import com.clilystudio.app.netbook.util.UmengGameTracer.From;
+import com.clilystudio.app.netbook.util.X;
+import com.clilystudio.app.netbook.util.am;
 import com.clilystudio.app.netbook.util.am_CommonUtils;
 import com.clilystudio.app.netbook.util.as;
 import com.clilystudio.app.netbook.util.e;
@@ -55,10 +61,14 @@ import com.ximalaya.ting.android.opensdk.model.track.Track;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+
+import uk.me.lewisdeane.ldialogs.BaseDialog;
+import uk.me.lewisdeane.ldialogs.CustomDialog;
 
 public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScrollListener {
     private static final String TAG = HomeShelfFragment.class.getSimpleName();
@@ -169,10 +179,6 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
     private void a(List<BookShelf> paramList) {
         if ((!paramList.isEmpty()) && (am_CommonUtils.q_shouldShowAd(getActivity()))) {
             c(paramList, 0);
-            if (com.arcsoft.hpay100.a.a.F(getActivity())) {
-                com.clilystudio.app.netbook.util.c.a().c();
-                c(paramList, 4);
-            }
         }
     }
 
@@ -455,161 +461,193 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
     }
 
     private List<BookShelf> j() {
-        v6 = new ArrayList();
-        v6.<init> ();
-        v0 = p0.getActivity();
-        v1 = "key_shelf_sort";
-        v2 = 0x1;
-        v7 = Lcom / arcsoft / hpay100 / a / a.a(v0, v1, v2);
-        if (v7 != 0) {
-            v1 = BookReadRecord.getAllWithTopNoFeedByRead();
+        List<BookShelf> v6 = new ArrayList<>();
+        List<BookReadRecord> bookReadRecords;
+        if (AppProperties.getSetting("key_shelf_sort", true)) {
+            bookReadRecords = BookReadRecord.getAllWithTopNoFeedByRead();
         } else {
-            v1 = BookReadRecord.getAllWithTopNoFeed();
+            bookReadRecords = BookReadRecord.getAllWithTopNoFeed();
         }
-        v8 = BookReadRecord.getAllFeeding();
-        if (v8.isEmpty()) {
-            v5 = 0;
-        } else {
-            v5 = 1;
-        }
-        v0 = 0x0;
-        v2 = 0x0;
-        if (!v8.isEmpty()) {
+        List<BookReadRecord> v8 = BookReadRecord.getAllFeeding();
+        boolean v5 = !v8.isEmpty();
+        if (v5) {
             AppProperties.setSetting("FeedUpdateTime", System.currentTimeMillis());
         }
-        v9 = v1.iterator();
-        v4 = false;
-        while (v9.hasNext()) {
-            BookReadRecord v0 = v9.next();
-             v10 = v0.getUpdated().getTime();
-            if (!v4  && !v8.isEmpty() && v0.getUpdated().getTime() < 0) {
-                p0.a(v6, v8);
+        Iterator<BookReadRecord> iterator = bookReadRecords.iterator();
+        boolean v4 = false;
+        while (iterator.hasNext()) {
+            BookReadRecord v0 = iterator.next();
+            if (!v4 && v5 && v0.getUpdated().getTime() < 0) {
+                a(v6, v8);
                 v4 = true;
             }
-            v10 = new BookShelf();
+            BookShelf v10 = new BookShelf();
             v10.setBookRecord(v0);
-            v11 = v0.Lcom / ushaqi / zhuishushenqi / db / BookReadRecord;->readTime;
-            if (v0.readTime != 0) {
-                 v10.setLastRead(v0.readTime.getTime(), v13);
+            if (v0.readTime != null) {
+                v10.setLastRead(v0.readTime.getTime());
             }
-            if (v0.getUpdated() != 0) {
-                 v10.setLastUpdate(v0.getUpdated().getTime(), v13);
+            if (v0.getUpdated() != null) {
+                v10.setLastUpdate(v0.getUpdated().getTime());
             }
             v6.add(v10);
         }
         this.v = HomeShelfFragment.b(v6);
-        if (v4 == 0 && v5 != 0) {
-            p0.a(v6, v8);
+        if (!v4 && v5) {
+            a(v6, v8);
         }
-        if (Lcom / umeng / a / b.b(getActivity(), "delete_audio_on_shelf") == 0 || !"1".equals(v0)) {
-            v0 = 0x0;
-            v2 = v0;
+//        Collections.sort(v6, new G(p0, v7));
+        if (AppProperties.getSetting("unsync_bookrecord_first", false)) {
+            a(v6);
         } else {
-            v0 = 0x1;
-            v2 = v0;
+            String[] v3 = new String[bookReadRecords.size()];
+            for (int v2 = 0; v2 < bookReadRecords.size(); v2++) {
+                v3[v2] = bookReadRecords.get(v2).getBookId();
+            }
+            syncBookRecord(v3, BookSyncRecord.BookModifyType.SHELF_ADD);
+            String[] v2 = new String[v8.size()];
+            for (int v1 = 0; v1 < v8.size(); v1++) {
+                v2[v1] = v8.get(v1).getBookId();
+            }
+            syncBookRecord(v2, BookSyncRecord.BookModifyType.FEED_ADD);
+            AppProperties.setSetting("unsync_bookrecord_first", true);
         }
-         :
-        try_start_0
-                v0 = new G(p0, v7);
-        Collections.sort(v6, v0);
-        :try_end_0
-                .catch Ljava / lang / Exception;
-        {:try_start_0..:try_end_0
-        }:catch_0
-        :
-        goto_5
-        :
-        try_start_1
-                v0 = p0.getActivity();
-        v2 = "unsync_bookrecord_first";
-        v3 = 0x0;
-        v0 = Lcom / arcsoft / hpay100 / a / a.a(v0, v2, v3);
-        if (v0 != 0) {
-            p0.a(v6);
-            return v6;
-        }
-        v3 = new String[v1.size()];
-         for (v2 = 0; v2 < v1.size(); v2++) {
-             v3[v2] = v1.get(v2).getBookId();
-        }
-        Lcom / arcsoft / hpay100 / a / a.a(v3);
-        v0 = v8.size();
-        new - array v2, v0,[Ljava / lang / String;
-        for (int v1 = 0; v1 < v8.size(); v1++) {
-            v0 = v8.get(v1);
-            check - cast v0, Lcom / ushaqi / zhuishushenqi / db / BookReadRecord;
-            v0 = v0.getBookId();
-            v2[v1] = v0;
-        }
-        Lcom / arcsoft / hpay100 / a / a.b(v2);
-        v0 = p0.getActivity();
-        v1 = "unsync_bookrecord_first";
-        v2 = 0x1;
-        Lcom / arcsoft / hpay100 / a / a.b(v0, v1, v2);
-
-        :try_end_1
-                .catch Ljava / lang / Exception;
-        {:try_start_1..:try_end_1
-        }:catch_1
-                v0 = v2 + 0x1;
-        v2 = v0;
-        goto:goto_6
-        :
-        catch_0
-        move - exception v0
-                showErrorMessage("zhuishu_catch_exception", new StringBuilder("HomeShelfFragment_createShelf:"
-                        .append(ex.getMeesage()).toString()));
-         :
-        cond_c
-        :
-        try_start_2
-         :try_end_2
-                .catch Ljava / lang / Exception;
-        {:try_start_2..:try_end_2
-        }:catch_1
-        :
-        goto_8
-        p0.a(v6);
         return v6;
-        :catch_1
-        move - exception v0
-                v1 = p0.getActivity();
-        v2 = "zhuishu_catch_exception";
-        v3 = new StringBuilder();
-        v4 = "HomeShelfFragment_createShelf:";
-        v3.<init> (v4);
-        v4 = v0.getMessage();
-        v3 = v3.append(v4);
-        v3 = v3.toString();
-        Lcom / umeng / a / b.a(v1, v2, v3);
-        v1 = v0.getMessage();
-        v2 = "no such table: BookSyncRecord";
-        v1 = v1.contains(v2);
-        if (v1 == 0) {
-//       if-eqz v1, :cond_e
+//        :try_end_1
+//                .catch Ljava / lang / Exception;
+//        {:try_start_1..:try_end_1
+//        }:catch_1
+//                v0 = v2 + 0x1;
+//        v2 = v0;
+//        goto:goto_6
+//        :
+//        catch_0
+//        move - exception v0
+//                showErrorMessage("zhuishu_catch_exception", new StringBuilder("HomeShelfFragment_createShelf:"
+//                        .append(ex.getMeesage()).toString()));
+//         :
+//        cond_c
+//        :
+//        try_start_2
+//         :try_end_2
+//                .catch Ljava / lang / Exception;
+//        {:try_start_2..:try_end_2
+//        }:catch_1
+//        :
+//        goto_8
+//        p0.a(v6);
+//        return v6;
+//        :catch_1
+//        move - exception v0
+//                v1 = p0.getActivity();
+//        v2 = "zhuishu_catch_exception";
+//        v3 = new StringBuilder();
+//        v4 = "HomeShelfFragment_createShelf:";
+//        v3.<init> (v4);
+//        v4 = v0.getMessage();
+//        v3 = v3.append(v4);
+//        v3 = v3.toString();
+//        Lcom / umeng / a / b.a(v1, v2, v3);
+//        v1 = v0.getMessage();
+//        v2 = "no such table: BookSyncRecord";
+//        v1 = v1.contains(v2);
+//        if (v1 == 0) {
+////       if-eqz v1, :cond_e
+//        }
+//        :try_start_3
+//                v1 = new SQLiteUtils();
+//        v1 = "CREATE TABLE IF NOT EXISTS BookSyncRecord (id integer primary key AutoIncrement,userId varchar(20),bookId varchar(20), type int,updated long);";
+//        Lcom / activeandroid / util / SQLiteUtils.execSql(v1);
+//        :try_end_3
+//                .catch Ljava / lang / Exception;
+//        {:try_start_3..:try_end_3
+//        }:catch_2
+//        goto:goto_8
+//        :
+//        catch_2
+//        move - exception v1
+//                v1 = p0.getActivity();
+//        v2 = "zhuishu_catch_exception";
+//        v3 = new StringBuilder();
+//        v4 = "HomeShelfFragment_createTableBookSyncRecord:";
+//        v3.<init> (v4);
+//        v0 = v0.getMessage();
+//        v0 = v3.append(v0);
+//        v0 = v0.toString();
+//        Lcom / umeng / a / b.a(v1, v2, v0);
+//        goto:goto_8
+    }
+
+    private static void syncBookRecord(String[] paramArrayOfString, BookSyncRecord.BookModifyType paramBookModifyType) {
+        int i = paramArrayOfString.length;
+        for (int j = 0; j < i; j++) {
+            String str3 = paramArrayOfString[j];
+            BookSyncRecord.updateOrCreate(o(), str3, BookSyncRecord.getTypeId(paramBookModifyType));
         }
-        :try_start_3
-                v1 = new SQLiteUtils();
-        v1 = "CREATE TABLE IF NOT EXISTS BookSyncRecord (id integer primary key AutoIncrement,userId varchar(20),bookId varchar(20), type int,updated long);";
-        Lcom / activeandroid / util / SQLiteUtils.execSql(v1);
-        :try_end_3
-                .catch Ljava / lang / Exception;
-        {:try_start_3..:try_end_3
-        }:catch_2
-        goto:goto_8
-        :
-        catch_2
-        move - exception v1
-                v1 = p0.getActivity();
-        v2 = "zhuishu_catch_exception";
-        v3 = new StringBuilder();
-        v4 = "HomeShelfFragment_createTableBookSyncRecord:";
-        v3.<init> (v4);
-        v0 = v0.getMessage();
-        v0 = v3.append(v0);
-        v0 = v0.toString();
-        Lcom / umeng / a / b.a(v1, v2, v0);
-        goto:goto_8
+        if ((am.e() == null) || (am.e().getUser() == null)) ;
+        String str1;
+        String str2;
+        List localList;
+        do {
+            return;
+            str1 = am.e().getToken();
+            str2 = am.e().getUser().getId();
+            localList = BookSyncRecord.find(str2, BookSyncRecord.getTypeId(paramBookModifyType));
+        }
+        while ((localList == null) || (localList.size() == 0));
+        String[] arrayOfString = new String[localList.size()];
+        for (int k = 0; k < localList.size(); k++)
+            arrayOfString[k] = ((BookSyncRecord) localList.get(k)).getBookId();
+        new X(str2, str1, paramBookModifyType, arrayOfString).b(new Void[0]);
+    }
+
+    private void a_pub(final List<BookShelf> paramList) {
+        View v1 = getActivity().getLayoutInflater().inflate(R.layout.remove_shelf_confirm, null, false);
+        final CheckBox v0 = (CheckBox) v1.findViewById(R.id.remove_shelf_cache);
+
+        AlertDialog.Builder v21 = new AlertDialog.Builder(getActivity());
+        v21 = v21.setView(v1);
+        v21 = v21.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                a_pub2(paramList, v0.isChecked());
+                e();
+            }
+        });
+        v21 = v21.setNegativeButton("取消", null);
+        v21.create().show();
+    }
+
+    private void a_pub2(final List<BookShelf> paramList, boolean checked) {
+        Iterator<BookShelf> iterator = paramList.iterator();
+        while (iterator.hasNext()) {
+            BookShelf bookShelf = iterator.next();
+            if (bookShelf.getBookRecord() == null) {
+                if (bookShelf.getTxt() == null) {
+                    if (bookShelf.getType() != 1) {
+                        if (bookShelf.getType() != 4) {
+                            bookShelf.getAlbum().delete();
+                            k();
+                        }
+                    } else {
+                        a(bookShelf.getAdIndex());
+                    }
+                } else {
+                    a(bookShelf.getTxt());
+                }
+            } else {
+                BookReadRecord bookRecord = bookShelf.getBookRecord();
+                String bookId = bookRecord.getBookId();
+                BookReadRecord.delete(bookRecord);
+                am_CommonUtils.deleteBookRecord(bookId);
+                if (checked) {
+                    b(bookId);
+                }
+                a(bookId, bookRecord.getTitle(), bookRecord.isRecommended());
+                syncBookRecord(new String[]{bookId}, BookSyncRecord.BookModifyType.SHELF_REMOVE);
+            }
+        }
+        k();
+        new Bus().post(new BookShelfRefreshEvent());
     }
 
     private void k() {
@@ -732,7 +770,7 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
                     if (localList == null || localList.size() == 0) {
                         com.clilystudio.app.netbook.util.e.a(getActivity(), "你没有选择要删除的书哦");
                     } else {
-                        a(localList);
+                        a_pub(localList);
                     }
                 }
             }

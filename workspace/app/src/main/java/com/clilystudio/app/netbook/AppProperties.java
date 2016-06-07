@@ -88,10 +88,22 @@ public final class AppProperties {
         return preferences.getLong(key, defValue);
     }
 
+    public final static boolean getSetting(String key, boolean defValue) {
+        SharedPreferences preferences = MyApplication.a_getInstance().getSharedPreferences("NetBook", Context.MODE_PRIVATE);
+        return preferences.getBoolean(key, defValue);
+    }
+
     public final static void setSetting(String key, long value) {
         SharedPreferences preferences = MyApplication.a_getInstance().getSharedPreferences("NetBook", Context.MODE_PRIVATE);
         SharedPreferences.Editor edit = preferences.edit();
         edit.putLong(key, value);
+        edit.apply();
+    }
+
+    public final static void setSetting(String key, boolean value) {
+        SharedPreferences preferences = MyApplication.a_getInstance().getSharedPreferences("NetBook", Context.MODE_PRIVATE);
+        SharedPreferences.Editor edit = preferences.edit();
+        edit.putBoolean(key, value);
         edit.apply();
     }
 }
