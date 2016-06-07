@@ -1,12 +1,12 @@
 package com.clilystudio.app.netbook.ui;
 
-import com.clilystudio.app.netbook.a_packA.e;
+import com.clilystudio.app.netbook.a_packA.e_BaseAsyncTask;
 import com.clilystudio.app.netbook.api.b;
 import com.clilystudio.app.netbook.model.BookRankRoot;
 
 import java.io.IOException;
 
-final class aO extends e<Void, Void, BookRankRoot> {
+final class aO extends e_BaseAsyncTask<Void, Void, BookRankRoot> {
     private aO(BookRankListActivity paramBookRankListActivity) {
     }
 

@@ -1,10 +1,10 @@
 package com.clilystudio.app.netbook.ui.post;
 
-import com.clilystudio.app.netbook.a_packA.e;
+import com.clilystudio.app.netbook.a_packA.e_BaseAsyncTask;
 import com.clilystudio.app.netbook.api.b;
 import com.clilystudio.app.netbook.model.FollowResult;
 
-final class ci extends e<String, Void, FollowResult> {
+final class ci extends e_BaseAsyncTask<String, Void, FollowResult> {
     private ci(OtherUserActivity paramOtherUserActivity) {
     }
 

@@ -1,6 +1,6 @@
 package com.clilystudio.app.netbook.ui.home;
 
-import com.clilystudio.app.netbook.a_packA.e;
+import com.clilystudio.app.netbook.a_packA.e_BaseAsyncTask;
 import com.clilystudio.app.netbook.api.b;
 import com.clilystudio.app.netbook.db.BookReadRecord;
 import com.clilystudio.app.netbook.model.BookUpdate;
@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-final class K extends e<Void, Void, List<BookUpdate>> {
+final class K extends e_BaseAsyncTask<Void, Void, List<BookUpdate>> {
     private List<BookReadRecord> a;
 
     private K(HomeShelfFragment paramHomeShelfFragment) {
@@ -31,9 +31,9 @@ final class K extends e<Void, Void, List<BookUpdate>> {
         List localList = b.b().a(localArrayList);
         return localList;
     }
-}
 
-/* Location:           E:\10.Progs\Dev\Compiler\zssq.jar
- * Qualified Name:     com.clilystudio.app.netbook.ui.home.K
- * JD-Core Version:    0.6.2
- */
+    @Override
+    protected List<BookUpdate> doInBackground(Void... params) {
+        return null;
+    }
+}

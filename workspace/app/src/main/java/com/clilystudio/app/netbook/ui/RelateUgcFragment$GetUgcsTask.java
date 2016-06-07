@@ -1,9 +1,9 @@
 package com.clilystudio.app.netbook.ui;
 
-import com.clilystudio.app.netbook.a_packA.e;
+import com.clilystudio.app.netbook.a_packA.e_BaseAsyncTask;
 import com.clilystudio.app.netbook.model.RecommendUgcRoot;
 
-public final class RelateUgcFragment$GetUgcsTask extends e<String, Void, RecommendUgcRoot> {
+public final class RelateUgcFragment$GetUgcsTask extends e_BaseAsyncTask<String, Void, RecommendUgcRoot> {
     private String b = "共%1$d本书  |  %2$d人收藏";
 
     public RelateUgcFragment$GetUgcsTask(RelateUgcFragment paramRelateUgcFragment) {

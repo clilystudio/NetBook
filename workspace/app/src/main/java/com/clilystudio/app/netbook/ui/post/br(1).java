@@ -1,10 +1,10 @@
 package com.clilystudio.app.netbook.ui.post;
 
-import com.clilystudio.app.netbook.a_packA.e;
+import com.clilystudio.app.netbook.a_packA.e_BaseAsyncTask;
 import com.clilystudio.app.netbook.api.b;
 import com.clilystudio.app.netbook.model.GirlTopicResult;
 
-final class br extends e<String, Void, GirlTopicResult> {
+final class br extends e_BaseAsyncTask<String, Void, GirlTopicResult> {
     private br(GirlTopicActivity paramGirlTopicActivity) {
     }
 

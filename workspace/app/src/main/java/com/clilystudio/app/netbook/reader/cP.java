@@ -1,12 +1,12 @@
 package com.clilystudio.app.netbook.reader;
 
-import com.clilystudio.app.netbook.a_packA.e;
+import com.clilystudio.app.netbook.a_packA.e_BaseAsyncTask;
 import com.clilystudio.app.netbook.api.b;
 import com.clilystudio.app.netbook.model.RelateBookRoot;
 
 import java.io.IOException;
 
-public final class cP extends e<String, Void, RelateBookRoot> {
+public final class cP extends e_BaseAsyncTask<String, Void, RelateBookRoot> {
     public cP(cM paramcM) {
     }
 

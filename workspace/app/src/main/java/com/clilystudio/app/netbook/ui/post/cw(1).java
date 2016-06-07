@@ -1,10 +1,10 @@
 package com.clilystudio.app.netbook.ui.post;
 
-import com.clilystudio.app.netbook.a_packA.e;
+import com.clilystudio.app.netbook.a_packA.e_BaseAsyncTask;
 import com.clilystudio.app.netbook.api.b;
 import com.clilystudio.app.netbook.model.PostDetail;
 
-final class cw extends e<String, Void, PostDetail> {
+final class cw extends e_BaseAsyncTask<String, Void, PostDetail> {
     private cw(PostDetailActivity paramPostDetailActivity) {
     }
 

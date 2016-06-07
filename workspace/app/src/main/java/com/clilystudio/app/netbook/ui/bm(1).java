@@ -1,12 +1,12 @@
 package com.clilystudio.app.netbook.ui;
 
-import com.clilystudio.app.netbook.a_packA.e;
+import com.clilystudio.app.netbook.a_packA.e_BaseAsyncTask;
 import com.clilystudio.app.netbook.api.b;
 import com.clilystudio.app.netbook.model.MhdListRoot;
 
 import java.io.IOException;
 
-final class bm extends e<Void, Void, MhdListRoot> {
+final class bm extends e_BaseAsyncTask<Void, Void, MhdListRoot> {
     private bm(MhdListActivity paramMhdListActivity) {
     }
 

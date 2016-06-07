@@ -1,12 +1,12 @@
 package com.clilystudio.app.netbook.ui.ugcbook;
 
-import com.clilystudio.app.netbook.a_packA.e;
+import com.clilystudio.app.netbook.a_packA.e_BaseAsyncTask;
 import com.clilystudio.app.netbook.api.b;
 import com.clilystudio.app.netbook.model.UgcFilterRoot;
 
 import java.io.IOException;
 
-final class ai extends e<Void, Void, UgcFilterRoot> {
+final class ai extends e_BaseAsyncTask<Void, Void, UgcFilterRoot> {
     private ai(UGCMainActivity paramUGCMainActivity) {
     }
 

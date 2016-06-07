@@ -1,12 +1,12 @@
 package com.clilystudio.app.netbook.ui.game;
 
-import com.clilystudio.app.netbook.a_packA.e;
+import com.clilystudio.app.netbook.a_packA.e_BaseAsyncTask;
 import com.clilystudio.app.netbook.api.b;
 import com.clilystudio.app.netbook.model.GameLayoutRoot;
 
 import java.io.IOException;
 
-final class H extends e<String, Void, GameLayoutRoot> {
+final class H extends e_BaseAsyncTask<String, Void, GameLayoutRoot> {
     private H(GameLayoutFragment paramGameLayoutFragment) {
     }
 

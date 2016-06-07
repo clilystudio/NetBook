@@ -1,10 +1,10 @@
 package com.clilystudio.app.netbook.ui.post;
 
-import com.clilystudio.app.netbook.a_packA.e;
+import com.clilystudio.app.netbook.a_packA.e_BaseAsyncTask;
 import com.clilystudio.app.netbook.api.b;
 import com.clilystudio.app.netbook.model.Topic;
 
-final class dN extends e<String, Void, Topic> {
+final class dN extends e_BaseAsyncTask<String, Void, Topic> {
     private dN(TweetListFragment paramTweetListFragment) {
     }
 

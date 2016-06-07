@@ -1,10 +1,10 @@
 package com.clilystudio.app.netbook.widget;
 
-import com.clilystudio.app.netbook.a_packA.e;
+import com.clilystudio.app.netbook.a_packA.e_BaseAsyncTask;
 import com.clilystudio.app.netbook.api.b;
 import com.clilystudio.app.netbook.model.HotCommentRoot;
 
-final class ab extends e<String, Void, HotCommentRoot> {
+final class ab extends e_BaseAsyncTask<String, Void, HotCommentRoot> {
     private ab(HotCommentView paramHotCommentView) {
     }
 

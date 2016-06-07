@@ -1,11 +1,11 @@
 package com.clilystudio.app.netbook.ui;
 
-import com.clilystudio.app.netbook.a_packA.e;
+import com.clilystudio.app.netbook.a_packA.e_BaseAsyncTask;
 import com.clilystudio.app.netbook.api.b;
 import com.clilystudio.app.netbook.model.NotificationItem;
 import com.clilystudio.app.netbook.model.NotificationRoot;
 
-final class bw extends e<String, Void, NotificationRoot> {
+final class bw extends e_BaseAsyncTask<String, Void, NotificationRoot> {
     private bw(NotifFragment paramNotifFragment) {
     }
 

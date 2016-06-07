@@ -1,6 +1,6 @@
 package com.clilystudio.app.netbook.ui;
 
-import com.clilystudio.app.netbook.a_packA.e;
+import com.clilystudio.app.netbook.a_packA.e_BaseAsyncTask;
 import com.clilystudio.app.netbook.api.ApiService;
 import com.clilystudio.app.netbook.api.b;
 import com.clilystudio.app.netbook.model.BookListRoot;
@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
-final class aq extends e<String, Void, List<CategoryBook>> {
+final class aq extends e_BaseAsyncTask<String, Void, List<CategoryBook>> {
     private boolean a = true;
 
     public aq(BookCategoryFragment paramBookCategoryFragment) {

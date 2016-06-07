@@ -1,11 +1,11 @@
 package com.clilystudio.app.netbook.reader;
 
-import com.clilystudio.app.netbook.a_packA.e;
+import com.clilystudio.app.netbook.a_packA.e_BaseAsyncTask;
 import com.clilystudio.app.netbook.api.ApiService;
 import com.clilystudio.app.netbook.api.b;
 
-final class bE extends e<String, Void, Object[]> {
-    private bE(ReaderMixActivity paramReaderMixActivity) {
+final class bEBaseAsyncTask extends e_BaseAsyncTask<String, Void, Object[]> {
+    private bEBaseAsyncTask(ReaderMixActivity paramReaderMixActivity) {
     }
 
     private static Object[] a(String[] paramArrayOfString) {

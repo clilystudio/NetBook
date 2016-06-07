@@ -1,11 +1,11 @@
 package com.clilystudio.app.netbook.util;
 
-import com.clilystudio.app.netbook.a_packA.e;
+import com.clilystudio.app.netbook.a_packA.e_BaseAsyncTask;
 import com.clilystudio.app.netbook.api.ApiService;
 import com.clilystudio.app.netbook.api.b;
 import com.clilystudio.app.netbook.model.Root;
 
-public abstract class S<T extends Root> extends e<String, Void, T> {
+public abstract class S<T extends Root> extends e_BaseAsyncTask<String, Void, T> {
     private T a(String[] paramArrayOfString) {
         try {
             b.a();

@@ -2,7 +2,7 @@ package com.clilystudio.app.netbook.a_packA;
 
 import com.clilystudio.app.netbook.model.TopicCount;
 
-public abstract class b extends e<String, Void, TopicCount> {
+public abstract class b extends e_BaseAsyncTask<String, Void, TopicCount> {
     private static TopicCount a(String[] paramArrayOfString) {
         try {
             com.clilystudio.app.netbook.api.b.a();

@@ -1,11 +1,11 @@
 package com.clilystudio.app.netbook.ui.post;
 
-import com.clilystudio.app.netbook.a_packA.e;
+import com.clilystudio.app.netbook.a_packA.e_BaseAsyncTask;
 import com.clilystudio.app.netbook.api.b;
 import com.clilystudio.app.netbook.model.DiscussSummary;
 import com.clilystudio.app.netbook.model.DiscussSummaryList;
 
-final class bh extends e<String, Void, DiscussSummary[]> {
+final class bh extends e_BaseAsyncTask<String, Void, DiscussSummary[]> {
     private bh(CommonPostListActivity paramCommonPostListActivity) {
     }
 

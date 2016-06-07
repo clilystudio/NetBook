@@ -1,10 +1,10 @@
 package com.clilystudio.app.netbook.ui.home;
 
-import com.clilystudio.app.netbook.a_packA.e;
+import com.clilystudio.app.netbook.a_packA.e_BaseAsyncTask;
 import com.clilystudio.app.netbook.api.b;
 import com.clilystudio.app.netbook.model.AdsResult;
 
-final class H extends e<Void, Void, AdsResult> {
+final class H extends e_BaseAsyncTask<Void, Void, AdsResult> {
     private H(HomeShelfFragment paramHomeShelfFragment) {
     }
 

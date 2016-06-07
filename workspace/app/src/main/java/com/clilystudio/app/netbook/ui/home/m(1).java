@@ -1,10 +1,10 @@
 package com.clilystudio.app.netbook.ui.home;
 
-import com.clilystudio.app.netbook.a_packA.e;
+import com.clilystudio.app.netbook.a_packA.e_BaseAsyncTask;
 import com.clilystudio.app.netbook.api.b;
 import com.clilystudio.app.netbook.model.UshaqiOnlineConfig;
 
-final class m extends e<Void, Void, UshaqiOnlineConfig> {
+final class m extends e_BaseAsyncTask<Void, Void, UshaqiOnlineConfig> {
     private m(HomeParentActivity paramHomeParentActivity) {
     }
 

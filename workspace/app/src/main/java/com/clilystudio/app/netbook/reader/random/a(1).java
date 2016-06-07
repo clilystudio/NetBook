@@ -3,7 +3,7 @@ package com.clilystudio.app.netbook.reader.random;
 import android.app.Activity;
 import android.app.ProgressDialog;
 
-import com.clilystudio.app.netbook.a_packA.e;
+import com.clilystudio.app.netbook.a_packA.e_BaseAsyncTask;
 import com.clilystudio.app.netbook.model.BookInfo;
 import com.clilystudio.app.netbook.model.MysteryDefaultBook;
 import com.clilystudio.app.netbook.model.TocSummary;
@@ -11,7 +11,7 @@ import com.clilystudio.app.netbook.model.TocSummary;
 import java.io.IOException;
 import java.util.List;
 
-public final class a extends e<String, Void, MysteryDefaultBook> {
+public final class a extends e_BaseAsyncTask<String, Void, MysteryDefaultBook> {
     private ProgressDialog a;
     private Activity b;
     private boolean c;

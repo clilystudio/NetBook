@@ -5,11 +5,11 @@ import com.clilystudio.app.netbook.db.BookFile;
 import com.clilystudio.app.netbook.db.BookReadRecord;
 
 public class BookShelf {
-    public static final int SHELF_AD = 1;
-    public static final int SHELF_ALBUM = 4;
     public static final int SHELF_BOOK = 0;
-    public static final int SHELF_FEED = 3;
+    public static final int SHELF_AD = 1;
     public static final int SHELF_TXT = 2;
+    public static final int SHELF_FEED = 3;
+    public static final int SHELF_ALBUM = 4;
     public static final int TYPE_COUNT = 5;
     private int adIndex = -1;
     private long lastRead;

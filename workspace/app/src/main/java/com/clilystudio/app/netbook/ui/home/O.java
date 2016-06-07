@@ -1,13 +1,13 @@
 package com.clilystudio.app.netbook.ui.home;
 
-import com.clilystudio.app.netbook.a_packA.e;
+import com.clilystudio.app.netbook.a_packA.e_BaseAsyncTask;
 import com.clilystudio.app.netbook.api.b;
 import com.clilystudio.app.netbook.db.BookReadRecord;
 import com.clilystudio.app.netbook.model.TopicSummary;
 
 import java.util.List;
 
-final class O extends e<String, Void, TopicSummary> {
+final class O extends e_BaseAsyncTask<String, Void, TopicSummary> {
     private List<BookReadRecord> a;
 
     private O(HomeTopicFragment paramHomeTopicFragment) {

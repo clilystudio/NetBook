@@ -1,12 +1,12 @@
 package com.clilystudio.app.netbook.ui.game;
 
-import com.clilystudio.app.netbook.a_packA.e;
+import com.clilystudio.app.netbook.a_packA.e_BaseAsyncTask;
 import com.clilystudio.app.netbook.api.b;
 import com.clilystudio.app.netbook.model.GameDetail;
 
 import java.io.IOException;
 
-final class q extends e<String, Void, GameDetail> {
+final class q extends e_BaseAsyncTask<String, Void, GameDetail> {
     private q(GameDetailActivity paramGameDetailActivity) {
     }
 

@@ -1,10 +1,10 @@
 package com.clilystudio.app.netbook.adapter;
 
-import com.clilystudio.app.netbook.a_packA.e;
+import com.clilystudio.app.netbook.a_packA.e_BaseAsyncTask;
 import com.clilystudio.app.netbook.model.ResultStatus;
 import com.clilystudio.app.netbook.util.am_CommonUtils;
 
-final class V extends e<String, Void, ResultStatus> {
+final class V extends e_BaseAsyncTask<String, Void, ResultStatus> {
     private String a;
 
     private V(G paramG) {

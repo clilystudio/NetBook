@@ -1,13 +1,12 @@
 package com.clilystudio.app.netbook.util;
 
-import com.clilystudio.app.netbook.a_packA.e;
+import com.clilystudio.app.netbook.a_packA.e_BaseAsyncTask;
 import com.clilystudio.app.netbook.api.ApiService;
-import com.clilystudio.app.netbook.db.BookSyncRecord.BookModifyType;
 import com.clilystudio.app.netbook.model.SyncUploadResult;
 
 import java.io.IOException;
 
-public final class X extends e<Void, Void, SyncUploadResult> {
+public final class X extends e_BaseAsyncTask<Void, Void, SyncUploadResult> {
     private final ApiService a;
     private String b;
     private String c;

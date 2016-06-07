@@ -1,11 +1,11 @@
 package com.clilystudio.app.netbook.adapter;
 
-import com.clilystudio.app.netbook.a_packA.e;
+import com.clilystudio.app.netbook.a_packA.e_BaseAsyncTask;
 import com.clilystudio.app.netbook.model.PostPublish;
 import com.clilystudio.app.netbook.model.Tweet;
 import com.clilystudio.app.netbook.util.am_CommonUtils;
 
-final class U extends e<String, Void, PostPublish> {
+final class U extends e_BaseAsyncTask<String, Void, PostPublish> {
     public U(G paramG, Tweet paramTweet, R paramR) {
     }
 

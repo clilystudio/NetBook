@@ -1,6 +1,6 @@
 package com.clilystudio.app.netbook.ui.user;
 
-import com.clilystudio.app.netbook.a_packA.e;
+import com.clilystudio.app.netbook.a_packA.e_BaseAsyncTask;
 import com.clilystudio.app.netbook.api.b;
 import com.clilystudio.app.netbook.model.PayConsumeRecord;
 import com.clilystudio.app.netbook.model.PayConsumeRecord.Order;
@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
-final class Z extends e<String, Void, List<PayConsumeRecord.Order>> {
+final class Z extends e_BaseAsyncTask<String, Void, List<PayConsumeRecord.Order>> {
     private Z(PayConsumeActivity paramPayConsumeActivity) {
     }
 

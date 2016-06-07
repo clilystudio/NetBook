@@ -1,8 +1,8 @@
 package com.clilystudio.app.netbook.reader;
 
-import com.clilystudio.app.netbook.a_packA.e;
+import com.clilystudio.app.netbook.a_packA.e_BaseAsyncTask;
 
-public final class ag extends e<String, Void, Boolean> {
+public final class ag extends e_BaseAsyncTask<String, Void, Boolean> {
     private af a;
 
     public ag(Reader paramReader) {

@@ -1,12 +1,12 @@
 package com.clilystudio.app.netbook.ui.ugcbook;
 
-import com.clilystudio.app.netbook.a_packA.e;
+import com.clilystudio.app.netbook.a_packA.e_BaseAsyncTask;
 import com.clilystudio.app.netbook.api.b;
 import com.clilystudio.app.netbook.model.ResultStatus;
 
 import java.io.IOException;
 
-final class q extends e<String, Void, ResultStatus> {
+final class q extends e_BaseAsyncTask<String, Void, ResultStatus> {
     private q(UGCDetailActivity paramUGCDetailActivity) {
     }
 

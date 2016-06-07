@@ -1,9 +1,9 @@
 package com.clilystudio.app.netbook.ui.home;
 
-import com.clilystudio.app.netbook.a_packA.e;
+import com.clilystudio.app.netbook.a_packA.e_BaseAsyncTask;
 import com.clilystudio.app.netbook.model.ResultServer;
 
-final class j extends e<String, Void, ResultServer> {
+final class j extends e_BaseAsyncTask<String, Void, ResultServer> {
     j(HomeActivity paramHomeActivity) {
     }
 }

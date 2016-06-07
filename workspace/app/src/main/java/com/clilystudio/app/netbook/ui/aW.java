@@ -1,6 +1,6 @@
 package com.clilystudio.app.netbook.ui;
 
-import com.clilystudio.app.netbook.a_packA.e;
+import com.clilystudio.app.netbook.a_packA.e_BaseAsyncTask;
 import com.clilystudio.app.netbook.api.b;
 import com.clilystudio.app.netbook.model.BookSummary;
 import com.clilystudio.app.netbook.model.BookTagRoot;
@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
-final class aW extends e<String, Void, List<BookSummary>> {
+final class aW extends e_BaseAsyncTask<String, Void, List<BookSummary>> {
     private aW(BookTagListActivity paramBookTagListActivity) {
     }
 

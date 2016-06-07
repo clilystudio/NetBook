@@ -1,10 +1,10 @@
 package com.clilystudio.app.netbook.ui.user;
 
-import com.clilystudio.app.netbook.a_packA.e;
+import com.clilystudio.app.netbook.a_packA.e_BaseAsyncTask;
 import com.clilystudio.app.netbook.api.b;
 import com.clilystudio.app.netbook.model.DeleteResult;
 
-final class i extends e<Void, Void, DeleteResult> {
+final class i extends e_BaseAsyncTask<Void, Void, DeleteResult> {
     private i(ChargeActivity paramChargeActivity) {
     }
 

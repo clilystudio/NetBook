@@ -1,10 +1,10 @@
 package com.clilystudio.app.netbook.reader;
 
-import com.clilystudio.app.netbook.a_packA.e;
+import com.clilystudio.app.netbook.a_packA.e_BaseAsyncTask;
 import com.clilystudio.app.netbook.api.b;
 import com.clilystudio.app.netbook.model.PurchaseChapterResult;
 
-final class J extends e<String, Void, PurchaseChapterResult> {
+final class J extends e_BaseAsyncTask<String, Void, PurchaseChapterResult> {
     private ReaderChapter a;
 
     public J(o paramo, ReaderChapter paramReaderChapter) {

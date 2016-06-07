@@ -3,7 +3,7 @@ package com.clilystudio.app.netbook.util;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
-import com.clilystudio.app.netbook.a_packA.e;
+import com.clilystudio.app.netbook.a_packA.e_BaseAsyncTask;
 
 import java.io.BufferedInputStream;
 import java.io.IOException;
@@ -11,7 +11,7 @@ import java.io.InputStream;
 import java.net.URL;
 import java.net.URLConnection;
 
-public final class h extends e<String, Void, Bitmap> {
+public final class h extends e_BaseAsyncTask<String, Void, Bitmap> {
     private static Bitmap a(String paramString) {
         try {
             URLConnection localURLConnection = new URL(paramString).openConnection();

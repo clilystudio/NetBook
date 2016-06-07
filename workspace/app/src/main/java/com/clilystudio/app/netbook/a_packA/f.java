@@ -6,7 +6,7 @@ import com.clilystudio.app.netbook.model.TopicCount;
 
 import java.io.IOException;
 
-public final class f extends e<Void, Void, Void> {
+public final class f extends e_BaseAsyncTask<Void, Void, Void> {
     private String a;
 
     public f(String paramString) {

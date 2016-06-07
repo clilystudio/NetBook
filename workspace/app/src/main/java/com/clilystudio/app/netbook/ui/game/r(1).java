@@ -1,6 +1,6 @@
 package com.clilystudio.app.netbook.ui.game;
 
-import com.clilystudio.app.netbook.a_packA.e;
+import com.clilystudio.app.netbook.a_packA.e_BaseAsyncTask;
 import com.clilystudio.app.netbook.api.b;
 import com.clilystudio.app.netbook.model.GamePostRoot;
 import com.clilystudio.app.netbook.model.GamePostRoot.GamePost;
@@ -8,7 +8,7 @@ import com.clilystudio.app.netbook.model.GamePostRoot.GamePost;
 import java.util.Arrays;
 import java.util.List;
 
-final class r extends e<String, Void, List<GamePostRoot.GamePost>> {
+final class r extends e_BaseAsyncTask<String, Void, List<GamePostRoot.GamePost>> {
     private r(GameDetailActivity paramGameDetailActivity) {
     }
 

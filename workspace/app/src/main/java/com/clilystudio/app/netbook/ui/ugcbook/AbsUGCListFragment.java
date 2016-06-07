@@ -29,7 +29,7 @@ public abstract class AbsUGCListFragment extends Fragment
     protected View d;
     protected View e;
     protected Handler f = new Handler();
-    protected e g;
+    protected e_BaseAsyncTask g;
     protected d h;
     protected List<UGCBookListRoot.UGCBook> i = new ArrayList();
     protected TextView j;
@@ -40,7 +40,7 @@ public abstract class AbsUGCListFragment extends Fragment
     protected abstract UGCBookListRoot a(Account paramAccount, int paramInt);
 
     public final void a() {
-        new e(this, (byte) 0).b(new String[0]);
+        new e_BaseAsyncTask(this, (byte) 0).b(new String[0]);
     }
 
     public final W b() {

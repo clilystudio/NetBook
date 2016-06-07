@@ -1,11 +1,11 @@
 package com.clilystudio.app.netbook.ui.post;
 
-import com.clilystudio.app.netbook.a_packA.e;
+import com.clilystudio.app.netbook.a_packA.e_BaseAsyncTask;
 import com.clilystudio.app.netbook.api.b;
 import com.clilystudio.app.netbook.model.ReviewResult;
 
-final class cE extends e<String, Void, ReviewResult> {
-    private cE(ReviewActivity paramReviewActivity) {
+final class cEBaseAsyncTask extends e_BaseAsyncTask<String, Void, ReviewResult> {
+    private cEBaseAsyncTask(ReviewActivity paramReviewActivity) {
     }
 
     private ReviewResult a(String[] paramArrayOfString) {

@@ -1,10 +1,10 @@
 package com.clilystudio.app.netbook.ui.post;
 
-import com.clilystudio.app.netbook.a_packA.e;
+import com.clilystudio.app.netbook.a_packA.e_BaseAsyncTask;
 import com.clilystudio.app.netbook.api.b;
 import com.clilystudio.app.netbook.model.TimelineResult;
 
-final class eb extends e<String, Void, TimelineResult> {
+final class eb extends e_BaseAsyncTask<String, Void, TimelineResult> {
     private eb(TweetTimelineFragment paramTweetTimelineFragment) {
     }
 

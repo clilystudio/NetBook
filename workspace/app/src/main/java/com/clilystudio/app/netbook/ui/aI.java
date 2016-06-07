@@ -1,12 +1,12 @@
 package com.clilystudio.app.netbook.ui;
 
-import com.clilystudio.app.netbook.a_packA.e;
+import com.clilystudio.app.netbook.a_packA.e_BaseAsyncTask;
 import com.clilystudio.app.netbook.api.b;
 import com.clilystudio.app.netbook.model.BookInfo;
 
 import java.io.IOException;
 
-final class aI extends e<String, Void, BookInfo> {
+final class aI extends e_BaseAsyncTask<String, Void, BookInfo> {
     private aI(BookInfoActivity paramBookInfoActivity) {
     }
 

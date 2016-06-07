@@ -1,12 +1,12 @@
 package com.clilystudio.app.netbook.ui.home;
 
-import com.clilystudio.app.netbook.a_packA.e;
+import com.clilystudio.app.netbook.a_packA.e_BaseAsyncTask;
 import com.clilystudio.app.netbook.api.b;
 import com.clilystudio.app.netbook.model.UserVipInfo;
 
 import java.io.IOException;
 
-final class h extends e<String, Void, UserVipInfo> {
+final class h extends e_BaseAsyncTask<String, Void, UserVipInfo> {
     h(HomeActivity paramHomeActivity) {
     }
 

@@ -8,8 +8,8 @@ import com.clilystudio.app.netbook.model.ChapterSingleKey;
 
 import java.io.IOException;
 
-final class E extends c<String, ChapterSingleKey> {
-    public E(o paramo, Activity paramActivity, int paramInt, boolean paramBoolean) {
+final class EBaseAsyncTask extends c<String, ChapterSingleKey> {
+    public EBaseAsyncTask(o paramo, Activity paramActivity, int paramInt, boolean paramBoolean) {
         super(paramActivity, 2131034218, paramBoolean);
     }
 

@@ -1,9 +1,9 @@
 package com.clilystudio.app.netbook.util;
 
-import com.clilystudio.app.netbook.a_packA.e;
+import com.clilystudio.app.netbook.a_packA.e_BaseAsyncTask;
 import com.clilystudio.app.netbook.model.RemoteBookShelf;
 
-final class ab extends e<String, Void, RemoteBookShelf> {
+final class ab extends e_BaseAsyncTask<String, Void, RemoteBookShelf> {
     private ab(Z paramZ) {
     }
 }

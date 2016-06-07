@@ -1,11 +1,11 @@
 package com.clilystudio.app.netbook.ui;
 
-import com.clilystudio.app.netbook.a_packA.e;
+import com.clilystudio.app.netbook.a_packA.e_BaseAsyncTask;
 import com.clilystudio.app.netbook.api.b;
 import com.clilystudio.app.netbook.model.BookReview;
 import com.clilystudio.app.netbook.model.BookReviewRoot;
 
-final class ah extends e<String, Void, BookReview[]> {
+final class ah extends e_BaseAsyncTask<String, Void, BookReview[]> {
     private ah(BestReviewsFragment paramBestReviewsFragment) {
     }
 

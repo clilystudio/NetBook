@@ -1,10 +1,10 @@
 package com.clilystudio.app.netbook.reader;
 
-import com.clilystudio.app.netbook.a_packA.e;
+import com.clilystudio.app.netbook.a_packA.e_BaseAsyncTask;
 import com.clilystudio.app.netbook.api.b;
 import com.clilystudio.app.netbook.model.ChapterKeysRoot;
 
-final class bp extends e<Void, Void, ChapterKeysRoot> {
+final class bp extends e_BaseAsyncTask<Void, Void, ChapterKeysRoot> {
     private bp(ReaderActivity paramReaderActivity) {
     }
 

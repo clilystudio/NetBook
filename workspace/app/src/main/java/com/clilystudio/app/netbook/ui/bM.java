@@ -1,9 +1,9 @@
 package com.clilystudio.app.netbook.ui;
 
-import com.clilystudio.app.netbook.a_packA.e;
+import com.clilystudio.app.netbook.a_packA.e_BaseAsyncTask;
 import com.clilystudio.app.netbook.model.HotKeywordResult;
 
-final class bM extends e<String, Void, HotKeywordResult> {
+final class bM extends e_BaseAsyncTask<String, Void, HotKeywordResult> {
     private bM(SearchActivity paramSearchActivity) {
     }
 

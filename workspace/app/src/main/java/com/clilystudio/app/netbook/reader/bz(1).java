@@ -1,12 +1,12 @@
 package com.clilystudio.app.netbook.reader;
 
-import com.clilystudio.app.netbook.a_packA.e;
+import com.clilystudio.app.netbook.a_packA.e_BaseAsyncTask;
 import com.clilystudio.app.netbook.api.b;
 import com.clilystudio.app.netbook.model.MenuAd;
 
 import java.util.List;
 
-final class bz extends e<Void, Void, List<MenuAd>> {
+final class bz extends e_BaseAsyncTask<Void, Void, List<MenuAd>> {
     private bz(ReaderMenuFragment paramReaderMenuFragment) {
     }
 

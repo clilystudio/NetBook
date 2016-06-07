@@ -1,6 +1,6 @@
 package com.clilystudio.app.netbook.ui.game;
 
-import com.clilystudio.app.netbook.a_packA.e;
+import com.clilystudio.app.netbook.a_packA.e_BaseAsyncTask;
 import com.clilystudio.app.netbook.api.b;
 import com.clilystudio.app.netbook.model.GameGiftGroup;
 import com.clilystudio.app.netbook.model.GamesGiftRoot;
@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-final class v extends e<String, Void, List<GameGiftGroup>> {
+final class v extends e_BaseAsyncTask<String, Void, List<GameGiftGroup>> {
     private v(GameGiftFragment paramGameGiftFragment) {
     }
 

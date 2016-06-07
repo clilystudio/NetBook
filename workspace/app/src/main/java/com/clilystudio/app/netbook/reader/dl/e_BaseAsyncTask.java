@@ -3,11 +3,11 @@ package com.clilystudio.app.netbook.reader.dl;
 import com.clilystudio.app.netbook.model.ChapterLink;
 import com.clilystudio.app.netbook.model.ChapterRoot;
 
-final class e extends com.clilystudio.app.netbook.a_packA.e<Void, Void, ChapterRoot> {
+final class e_BaseAsyncTask extends com.clilystudio.app.netbook.a_packA.e_BaseAsyncTask<Void, Void, ChapterRoot> {
     private ChapterLink a;
     private int b;
 
-    public e(BookDownloadService paramBookDownloadService, ChapterLink paramChapterLink, int paramInt) {
+    public e_BaseAsyncTask(BookDownloadService paramBookDownloadService, ChapterLink paramChapterLink, int paramInt) {
         this.a = paramChapterLink;
         this.b = paramInt;
     }

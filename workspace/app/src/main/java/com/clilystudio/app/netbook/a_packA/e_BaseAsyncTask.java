@@ -6,10 +6,10 @@ import android.os.Build;
 import com.clilystudio.app.netbook.api.ApiService;
 import com.clilystudio.app.netbook.api.b;
 
-public abstract class e<Params, Progress, Result> extends AsyncTask<Params, Progress, Result> {
+public abstract class e_BaseAsyncTask<Params, Progress, Result> extends AsyncTask<Params, Progress, Result> {
     private final ApiService a;
 
-    public e() {
+    public e_BaseAsyncTask() {
         b.a();
         this.a = b.b();
     }

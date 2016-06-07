@@ -1,12 +1,12 @@
 package com.clilystudio.app.netbook.ui.home;
 
-import com.clilystudio.app.netbook.a_packA.e;
+import com.clilystudio.app.netbook.a_packA.e_BaseAsyncTask;
 import com.clilystudio.app.netbook.api.b;
 import com.clilystudio.app.netbook.model.UserInfo;
 
 import java.io.IOException;
 
-final class P extends e<String, Void, UserInfo> {
+final class P extends e_BaseAsyncTask<String, Void, UserInfo> {
     private P(HomeTopicFragment paramHomeTopicFragment) {
     }
 

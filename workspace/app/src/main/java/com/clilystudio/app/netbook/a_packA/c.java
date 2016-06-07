@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.widget.Toast;
 
-public abstract class c<Input, E> extends e<Input, Void, E> {
+public abstract class c<Input, E> extends e_BaseAsyncTask<Input, Void, E> {
     private ProgressDialog a;
     private Activity b;
     private String c;

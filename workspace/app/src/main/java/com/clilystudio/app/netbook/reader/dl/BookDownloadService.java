@@ -159,7 +159,7 @@ public class BookDownloadService extends Service {
                     return;
                 }
             }
-            new e(this, localChapterLink, i1).b(new Void[0]);
+            new e_BaseAsyncTask(this, localChapterLink, i1).b(new Void[0]);
             return;
         }
         e();

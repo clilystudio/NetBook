@@ -88,7 +88,7 @@ public class ReviewActivity extends AbsPostActivity {
     protected final void b() {
         i();
         if (!this.n) {
-            cE localcE = new cE(this, (byte) 0);
+            cEBaseAsyncTask localcE = new cEBaseAsyncTask(this, (byte) 0);
             String[] arrayOfString1 = new String[1];
             arrayOfString1[0] = this.a;
             localcE.b(arrayOfString1);

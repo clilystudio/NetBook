@@ -2,6 +2,7 @@ package com.clilystudio.app.netbook.ui;
 
 import android.os.Handler;
 
+import com.clilystudio.app.netbook.a_packA.e_BaseAsyncTask;
 import com.clilystudio.app.netbook.api.b;
 import com.clilystudio.app.netbook.model.BookSummary;
 import com.clilystudio.app.netbook.model.SearchPromRoot;
@@ -10,7 +11,7 @@ import com.clilystudio.app.netbook.model.SearchResultRoot;
 import java.util.List;
 import java.util.Map;
 
-class bR extends com.clilystudio.app.netbook.a_packA.e<String, Void, List<BookSummary>> {
+class bR extends e_BaseAsyncTask<String, Void, List<BookSummary>> {
     private bR(SearchActivity paramSearchActivity) {
     }
 

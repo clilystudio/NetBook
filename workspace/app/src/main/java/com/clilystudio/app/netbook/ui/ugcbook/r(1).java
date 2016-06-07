@@ -1,6 +1,6 @@
 package com.clilystudio.app.netbook.ui.ugcbook;
 
-import com.clilystudio.app.netbook.a_packA.e;
+import com.clilystudio.app.netbook.a_packA.e_BaseAsyncTask;
 import com.clilystudio.app.netbook.api.b;
 import com.clilystudio.app.netbook.model.Account;
 import com.clilystudio.app.netbook.model.UGCBookDetailRoot;
@@ -8,7 +8,7 @@ import com.clilystudio.app.netbook.util.am_CommonUtils;
 
 import java.io.IOException;
 
-final class r extends e<String, Void, UGCBookDetailRoot> {
+final class r extends e_BaseAsyncTask<String, Void, UGCBookDetailRoot> {
     private r(UGCDetailActivity paramUGCDetailActivity) {
     }
 

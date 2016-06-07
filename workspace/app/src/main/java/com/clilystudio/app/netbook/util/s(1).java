@@ -2,12 +2,12 @@ package com.clilystudio.app.netbook.util;
 
 import android.content.Context;
 
-import com.clilystudio.app.netbook.a_packA.e;
+import com.clilystudio.app.netbook.a_packA.e_BaseAsyncTask;
 import com.clilystudio.app.netbook.model.BookTopRoot;
 
 import java.io.IOException;
 
-public final class s extends e<Void, Void, BookTopRoot> {
+public final class s extends e_BaseAsyncTask<Void, Void, BookTopRoot> {
     private Context a;
 
     public s(Context paramContext) {

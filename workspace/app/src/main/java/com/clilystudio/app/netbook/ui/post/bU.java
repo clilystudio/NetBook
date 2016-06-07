@@ -1,10 +1,10 @@
 package com.clilystudio.app.netbook.ui.post;
 
-import com.clilystudio.app.netbook.a_packA.e;
+import com.clilystudio.app.netbook.a_packA.e_BaseAsyncTask;
 import com.clilystudio.app.netbook.api.b;
 import com.clilystudio.app.netbook.model.FollowersResult;
 
-final class bU extends e<String, Void, FollowersResult> {
+final class bU extends e_BaseAsyncTask<String, Void, FollowersResult> {
     private Runnable a;
 
     public bU(MyTweetFragment paramMyTweetFragment, Runnable paramRunnable) {

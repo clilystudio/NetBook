@@ -30,7 +30,7 @@ public class ReaderMixActivity extends BaseLoadingActivity {
 
     protected final void b() {
         i();
-        bE localbE = new bE(this, (byte) 0);
+        bEBaseAsyncTask localbE = new bEBaseAsyncTask(this, (byte) 0);
         String[] arrayOfString = new String[1];
         arrayOfString[0] = this.a;
         localbE.b(arrayOfString);

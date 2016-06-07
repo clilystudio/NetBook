@@ -1,12 +1,12 @@
 package com.clilystudio.app.netbook.ui.ugcbook;
 
-import com.clilystudio.app.netbook.a_packA.e;
+import com.clilystudio.app.netbook.a_packA.e_BaseAsyncTask;
 import com.clilystudio.app.netbook.model.Account;
 import com.clilystudio.app.netbook.model.UGCBookListRoot;
 import com.clilystudio.app.netbook.ui.BaseActivity;
 import com.clilystudio.app.netbook.util.am_CommonUtils;
 
-final class d extends e<String, Void, UGCBookListRoot> {
+final class d extends e_BaseAsyncTask<String, Void, UGCBookListRoot> {
     private d(AbsUGCListFragment paramAbsUGCListFragment) {
     }
 

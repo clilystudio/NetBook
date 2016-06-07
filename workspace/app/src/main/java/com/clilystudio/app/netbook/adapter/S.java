@@ -1,10 +1,10 @@
 package com.clilystudio.app.netbook.adapter;
 
-import com.clilystudio.app.netbook.a_packA.e;
+import com.clilystudio.app.netbook.a_packA.e_BaseAsyncTask;
 import com.clilystudio.app.netbook.api.b;
 import com.clilystudio.app.netbook.model.PostPublish;
 
-final class S extends e<String, Void, PostPublish> {
+final class S extends e_BaseAsyncTask<String, Void, PostPublish> {
     S(G paramG) {
     }
 

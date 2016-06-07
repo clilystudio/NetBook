@@ -8,7 +8,7 @@ final class c
     public final void run() {
         if ((this.a.a.g != null) && (this.a.a.g.getStatus() != AsyncTask.Status.FINISHED) && (!this.a.a.g.isCancelled()))
             this.a.a.g.cancel(true);
-        this.a.a.g = new e(this.a.a, (byte) 0);
+        this.a.a.g = new e_BaseAsyncTask(this.a.a, (byte) 0);
         this.a.a.g.b(new String[0]);
     }
 }

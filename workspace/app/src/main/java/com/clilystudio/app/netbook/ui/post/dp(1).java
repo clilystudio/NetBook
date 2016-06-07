@@ -1,10 +1,10 @@
 package com.clilystudio.app.netbook.ui.post;
 
-import com.clilystudio.app.netbook.a_packA.e;
+import com.clilystudio.app.netbook.a_packA.e_BaseAsyncTask;
 import com.clilystudio.app.netbook.api.b;
 import com.clilystudio.app.netbook.model.ReviewList;
 
-final class dp extends e<String, Void, ReviewList> {
+final class dp extends e_BaseAsyncTask<String, Void, ReviewList> {
     private dp(ReviewListActivity paramReviewListActivity) {
     }
 

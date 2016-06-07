@@ -315,15 +315,6 @@
             android:screenOrientation="portrait"
             android:theme="@style/ReaderTheme"/>
         <activity
-            android:name="com.clilystudio.app.netbook.reader.txt.ReaderTxtActivity"
-            android:configChanges="orientation"
-            android:theme="@style/ReaderTheme">
-            <intent-filter>
-                <action android:name="com.clilystudio.app.netbook.ACTION_READ_TXT"/>
-                <category android:name="android.intent.category.DEFAULT"/>
-            </intent-filter>
-        </activity>
-        <activity
             android:name="com.clilystudio.app.netbook.reader.ReaderWebActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ReaderTheme"/>

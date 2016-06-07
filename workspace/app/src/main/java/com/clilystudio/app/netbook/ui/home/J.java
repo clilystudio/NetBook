@@ -1,10 +1,10 @@
 package com.clilystudio.app.netbook.ui.home;
 
-import com.clilystudio.app.netbook.a_packA.e;
+import com.clilystudio.app.netbook.a_packA.e_BaseAsyncTask;
 import com.clilystudio.app.netbook.api.b;
 import com.clilystudio.app.netbook.model.ShelfMsgRoot;
 
-final class J extends e<Void, Void, ShelfMsgRoot> {
+final class J extends e_BaseAsyncTask<Void, Void, ShelfMsgRoot> {
     private J(HomeShelfFragment paramHomeShelfFragment) {
     }
 
