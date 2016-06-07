@@ -66,42 +66,16 @@ public abstract class c<Input, E> extends e<Input, Void, E>
   }
 
   // ERROR //
-  public void onPostExecute(E paramE)
+   public void onPostExecute(E paramE)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: aload_1
-    //   2: invokespecial 67	com/ushaqi/zhuishushenqi/a/e:onPostExecute	(Ljava/lang/Object;)V
-    //   5: aload_0
-    //   6: getfield 69	com/ushaqi/zhuishushenqi/a/c:a	Landroid/app/ProgressDialog;
-    //   9: ifnull +10 -> 19
-    //   12: aload_0
-    //   13: getfield 69	com/ushaqi/zhuishushenqi/a/c:a	Landroid/app/ProgressDialog;
-    //   16: invokevirtual 74	android/app/ProgressDialog:dismiss	()V
-    //   19: aload_0
-    //   20: aconst_null
-    //   21: putfield 69	com/ushaqi/zhuishushenqi/a/c:a	Landroid/app/ProgressDialog;
-    //   24: aload_0
-    //   25: aload_1
-    //   26: invokevirtual 76	com/ushaqi/zhuishushenqi/a/c:a	(Ljava/lang/Object;)V
-    //   29: return
-    //   30: astore_3
-    //   31: aload_0
-    //   32: aconst_null
-    //   33: putfield 69	com/ushaqi/zhuishushenqi/a/c:a	Landroid/app/ProgressDialog;
-    //   36: goto -12 -> 24
-    //   39: astore_2
-    //   40: aload_0
-    //   41: aconst_null
-    //   42: putfield 69	com/ushaqi/zhuishushenqi/a/c:a	Landroid/app/ProgressDialog;
-    //   45: aload_2
-    //   46: athrow
-    //
-    // Exception table:
-    //   from	to	target	type
-    //   5	19	30	java/lang/Exception
-    //   5	19	39	finally
-  }
+    v1 = 0x0;
+    super.onPostExecute(paramE);
+    if (this.a != null) {
+		this.a.dismiss();
+    }
+	this.a = null;
+	this.a();
+   }
 
   public void onPreExecute()
   {

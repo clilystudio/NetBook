@@ -259,128 +259,122 @@ public class HomeActivity extends HomeParentActivity
   // ERROR //
   private String o()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: invokevirtual 469	com/ushaqi/zhuishushenqi/ui/home/HomeActivity:getApplicationInfo	()Landroid/content/pm/ApplicationInfo;
-    //   4: getfield 474	android/content/pm/ApplicationInfo:sourceDir	Ljava/lang/String;
-    //   7: astore_1
-    //   8: new 476	java/util/zip/ZipFile
-    //   11: dup
-    //   12: aload_1
-    //   13: invokespecial 477	java/util/zip/ZipFile:<init>	(Ljava/lang/String;)V
-    //   16: astore_2
-    //   17: aload_2
-    //   18: invokevirtual 481	java/util/zip/ZipFile:entries	()Ljava/util/Enumeration;
-    //   21: astore 7
-    //   23: aload 7
-    //   25: invokeinterface 486 1 0
-    //   30: ifeq +129 -> 159
-    //   33: aload 7
-    //   35: invokeinterface 489 1 0
-    //   40: checkcast 491	java/util/zip/ZipEntry
-    //   43: astore 9
-    //   45: aload 9
-    //   47: invokevirtual 494	java/util/zip/ZipEntry:getName	()Ljava/lang/String;
-    //   50: ldc_w 496
-    //   53: invokevirtual 139	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   56: ifeq -33 -> 23
-    //   59: new 498	java/io/BufferedReader
-    //   62: dup
-    //   63: new 500	java/io/InputStreamReader
-    //   66: dup
-    //   67: aload_2
-    //   68: aload 9
-    //   70: invokevirtual 504	java/util/zip/ZipFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
-    //   73: invokespecial 507	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
-    //   76: invokespecial 510	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
-    //   79: astore 10
-    //   81: new 256	java/lang/StringBuilder
-    //   84: dup
-    //   85: invokespecial 511	java/lang/StringBuilder:<init>	()V
-    //   88: astore 11
-    //   90: aload 10
-    //   92: invokevirtual 514	java/io/BufferedReader:readLine	()Ljava/lang/String;
-    //   95: astore 12
-    //   97: aload 12
-    //   99: ifnull +31 -> 130
-    //   102: aload 11
-    //   104: aload 12
-    //   106: invokevirtual 266	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   109: pop
-    //   110: goto -20 -> 90
-    //   113: astore 5
-    //   115: aload 5
-    //   117: invokevirtual 515	java/io/IOException:printStackTrace	()V
-    //   120: aload_2
-    //   121: ifnull +7 -> 128
-    //   124: aload_2
-    //   125: invokevirtual 518	java/util/zip/ZipFile:close	()V
-    //   128: aconst_null
-    //   129: areturn
-    //   130: aload 10
-    //   132: invokevirtual 519	java/io/BufferedReader:close	()V
-    //   135: aload 11
-    //   137: invokevirtual 269	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   140: astore 14
-    //   142: aload_2
-    //   143: invokevirtual 518	java/util/zip/ZipFile:close	()V
-    //   146: aload 14
-    //   148: areturn
-    //   149: astore 15
-    //   151: aload 15
-    //   153: invokevirtual 515	java/io/IOException:printStackTrace	()V
-    //   156: aload 14
-    //   158: areturn
-    //   159: aload_2
-    //   160: invokevirtual 518	java/util/zip/ZipFile:close	()V
-    //   163: goto -35 -> 128
-    //   166: astore 8
-    //   168: aload 8
-    //   170: invokevirtual 515	java/io/IOException:printStackTrace	()V
-    //   173: goto -45 -> 128
-    //   176: astore 6
-    //   178: aload 6
-    //   180: invokevirtual 515	java/io/IOException:printStackTrace	()V
-    //   183: goto -55 -> 128
-    //   186: astore_3
-    //   187: aconst_null
-    //   188: astore_2
-    //   189: aload_2
-    //   190: ifnull +7 -> 197
-    //   193: aload_2
-    //   194: invokevirtual 518	java/util/zip/ZipFile:close	()V
-    //   197: aload_3
-    //   198: athrow
-    //   199: astore 4
-    //   201: aload 4
-    //   203: invokevirtual 515	java/io/IOException:printStackTrace	()V
-    //   206: goto -9 -> 197
-    //   209: astore_3
-    //   210: goto -21 -> 189
-    //   213: astore 5
-    //   215: aconst_null
-    //   216: astore_2
-    //   217: goto -102 -> 115
-    //
-    // Exception table:
-    //   from	to	target	type
-    //   17	23	113	java/io/IOException
-    //   23	90	113	java/io/IOException
-    //   90	97	113	java/io/IOException
-    //   102	110	113	java/io/IOException
-    //   130	142	113	java/io/IOException
-    //   142	146	149	java/io/IOException
-    //   159	163	166	java/io/IOException
-    //   124	128	176	java/io/IOException
-    //   8	17	186	finally
-    //   193	197	199	java/io/IOException
-    //   17	23	209	finally
-    //   23	90	209	finally
-    //   90	97	209	finally
-    //   102	110	209	finally
-    //   115	120	209	finally
-    //   130	142	209	finally
-    //   8	17	213	java/io/IOException
+    v1 = 0x0;
+    v0 = p0.getApplicationInfo();
+    v0 = v0.Landroid/content/pm/ApplicationInfo;->sourceDir;
+    :try_start_0
+    v2 = new ZipFile();
+    v2.<init>(v0);
+    :try_end_0
+    .catch Ljava/io/IOException; {:try_start_0 .. :try_end_0} :catch_5
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+    :try_start_1
+    v3 = v2.entries();
+    :cond_0
+    v0 = v3.hasMoreElements();
+    if (v0 == 0) {
+//       if-eqz v0, :cond_3
+    }
+    v0 = v3.nextElement();
+    check-cast v0, Ljava/util/zip/ZipEntry;
+    v4 = v0.getName();
+    v5 = "META-INF/DATA";
+    v4 = v4.equals(v5);
+    if (v4 == 0) {
+//       if-eqz v4, :cond_0
+    }
+    v3 = new BufferedReader();
+    v4 = new InputStreamReader();
+    v0 = v2.getInputStream(v0);
+    v4.<init>(v0);
+    v3.<init>(v4);
+    v0 = new StringBuilder();
+    v0.<init>();
+    :goto_0
+    v4 = v3.readLine();
+    if (v4 == 0) {
+//       if-eqz v4, :cond_2
+    }
+    v0.append(v4);
+    :try_end_1
+    .catch Ljava/io/IOException; {:try_start_1 .. :try_end_1} :catch_0
+    .catchall {:try_start_1 .. :try_end_1} :catchall_1
+    goto :goto_0
+    :catch_0
+    move-exception v0
+    :goto_1
+    :try_start_2
+    v0.printStackTrace();
+    :try_end_2
+    .catchall {:try_start_2 .. :try_end_2} :catchall_1
+    if (v2 == 0) {
+//       if-eqz v2, :cond_1
+    }
+    :try_start_3
+    v2.close();
+    :try_end_3
+    .catch Ljava/io/IOException; {:try_start_3 .. :try_end_3} :catch_3
+    :cond_1
+    :goto_2
+    v0 = v1;
+    :goto_3
+    return v0;
+    :cond_2
+    :try_start_4
+    v3.close();
+    v0.toString();
+    :try_end_4
+    .catch Ljava/io/IOException; {:try_start_4 .. :try_end_4} :catch_0
+    .catchall {:try_start_4 .. :try_end_4} :catchall_1
+    move-result-object v0
+    :try_start_5
+    v2.close();
+    :try_end_5
+    .catch Ljava/io/IOException; {:try_start_5 .. :try_end_5} :catch_1
+    goto :goto_3
+    :catch_1
+    move-exception v1
+    v1.printStackTrace();
+    goto :goto_3
+    :cond_3
+    :try_start_6
+    v2.close();
+    :try_end_6
+    .catch Ljava/io/IOException; {:try_start_6 .. :try_end_6} :catch_2
+    goto :goto_2
+    :catch_2
+    move-exception v0
+    v0.printStackTrace();
+    goto :goto_2
+    :catch_3
+    move-exception v0
+    v0.printStackTrace();
+    goto :goto_2
+    :catchall_0
+    move-exception v0
+    v2 = v1;
+    :goto_4
+    if (v2 == 0) {
+//       if-eqz v2, :cond_4
+    }
+    :try_start_7
+    v2.close();
+    :try_end_7
+    .catch Ljava/io/IOException; {:try_start_7 .. :try_end_7} :catch_4
+    :cond_4
+    :goto_5
+    throw v0
+    :catch_4
+    move-exception v1
+    v1.printStackTrace();
+    goto :goto_5
+    :catchall_1
+    move-exception v0
+    goto :goto_4
+    :catch_5
+    move-exception v0
+    v2 = v1;
+    goto :goto_1
   }
 
   public final HomeShelfFragment a(String paramString)

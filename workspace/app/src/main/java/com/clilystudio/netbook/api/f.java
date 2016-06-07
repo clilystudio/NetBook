@@ -54,215 +54,158 @@ public class f
   // ERROR //
   public final String b()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: getfield 20	com/ushaqi/zhuishushenqi/api/f:a	Ljava/lang/String;
-    //   4: ifnonnull +344 -> 348
-    //   7: ldc 2
-    //   9: monitorenter
-    //   10: invokestatic 84	com/ushaqi/zhuishushenqi/MyApplication:a	()Lcom/ushaqi/zhuishushenqi/MyApplication;
-    //   13: astore_2
-    //   14: aload_2
-    //   15: invokevirtual 90	android/app/Application:getPackageManager	()Landroid/content/pm/PackageManager;
-    //   18: aload_2
-    //   19: invokevirtual 93	android/app/Application:getPackageName	()Ljava/lang/String;
-    //   22: iconst_0
-    //   23: invokevirtual 99	android/content/pm/PackageManager:getPackageInfo	(Ljava/lang/String;I)Landroid/content/pm/PackageInfo;
-    //   26: astore 20
-    //   28: aload 20
-    //   30: astore 4
-    //   32: aload 4
-    //   34: ifnull +352 -> 386
-    //   37: aload 4
-    //   39: getfield 104	android/content/pm/PackageInfo:versionName	Ljava/lang/String;
-    //   42: astore 5
-    //   44: aload_2
-    //   45: ldc 106
-    //   47: invokevirtual 110	android/app/Application:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
-    //   50: checkcast 112	android/telephony/TelephonyManager
-    //   53: astore 6
-    //   55: aload 6
-    //   57: invokevirtual 115	android/telephony/TelephonyManager:getSimOperatorName	()Ljava/lang/String;
-    //   60: astore 19
-    //   62: aload 19
-    //   64: astore 8
-    //   66: bipush 8
-    //   68: anewarray 4	java/lang/Object
-    //   71: astore 9
-    //   73: aload 9
-    //   75: iconst_0
-    //   76: ldc 117
-    //   78: aastore
-    //   79: aload 9
-    //   81: iconst_1
-    //   82: aload 5
-    //   84: aastore
-    //   85: aload 9
-    //   87: iconst_2
-    //   88: getstatic 122	android/os/Build$VERSION:RELEASE	Ljava/lang/String;
-    //   91: aastore
-    //   92: aload 9
-    //   94: iconst_3
-    //   95: getstatic 127	android/os/Build:MANUFACTURER	Ljava/lang/String;
-    //   98: invokestatic 129	com/ushaqi/zhuishushenqi/api/f:a	(Ljava/lang/String;)Ljava/lang/String;
-    //   101: aastore
-    //   102: aload 9
-    //   104: iconst_4
-    //   105: getstatic 132	android/os/Build:DEVICE	Ljava/lang/String;
-    //   108: invokestatic 129	com/ushaqi/zhuishushenqi/api/f:a	(Ljava/lang/String;)Ljava/lang/String;
-    //   111: aastore
-    //   112: aload 9
-    //   114: iconst_5
-    //   115: getstatic 135	android/os/Build:BRAND	Ljava/lang/String;
-    //   118: invokestatic 129	com/ushaqi/zhuishushenqi/api/f:a	(Ljava/lang/String;)Ljava/lang/String;
-    //   121: aastore
-    //   122: aload 9
-    //   124: bipush 6
-    //   126: getstatic 138	android/os/Build:MODEL	Ljava/lang/String;
-    //   129: invokestatic 129	com/ushaqi/zhuishushenqi/api/f:a	(Ljava/lang/String;)Ljava/lang/String;
-    //   132: aastore
-    //   133: aload 9
-    //   135: bipush 7
-    //   137: aload 8
-    //   139: invokestatic 129	com/ushaqi/zhuishushenqi/api/f:a	(Ljava/lang/String;)Ljava/lang/String;
-    //   142: aastore
-    //   143: aload_0
-    //   144: ldc 140
-    //   146: aload 9
-    //   148: invokestatic 144	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   151: putfield 20	com/ushaqi/zhuishushenqi/api/f:a	Ljava/lang/String;
-    //   154: new 146	java/util/ArrayList
-    //   157: dup
-    //   158: invokespecial 147	java/util/ArrayList:<init>	()V
-    //   161: astore 10
-    //   163: new 45	java/lang/StringBuilder
-    //   166: dup
-    //   167: ldc 149
-    //   169: invokespecial 152	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   172: astore 11
-    //   174: iconst_1
-    //   175: aload_2
-    //   176: invokevirtual 156	android/app/Application:getApplicationInfo	()Landroid/content/pm/ApplicationInfo;
-    //   179: getfield 162	android/content/pm/ApplicationInfo:flags	I
-    //   182: iand
-    //   183: iconst_1
-    //   184: if_icmpne +185 -> 369
-    //   187: iconst_1
-    //   188: istore 12
-    //   190: aload 10
-    //   192: aload 11
-    //   194: iload 12
-    //   196: invokevirtual 165	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   199: invokevirtual 71	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   202: invokevirtual 169	java/util/ArrayList:add	(Ljava/lang/Object;)Z
-    //   205: pop
-    //   206: aload 10
-    //   208: new 45	java/lang/StringBuilder
-    //   211: dup
-    //   212: ldc 171
-    //   214: invokespecial 152	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   217: invokestatic 177	java/util/Locale:getDefault	()Ljava/util/Locale;
-    //   220: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   223: invokevirtual 71	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   226: invokevirtual 169	java/util/ArrayList:add	(Ljava/lang/Object;)Z
-    //   229: pop
-    //   230: aload_2
-    //   231: invokevirtual 184	android/app/Application:getClassLoader	()Ljava/lang/ClassLoader;
-    //   234: ldc 186
-    //   236: invokevirtual 192	java/lang/ClassLoader:loadClass	(Ljava/lang/String;)Ljava/lang/Class;
-    //   239: astore 16
-    //   241: aload 16
-    //   243: ldc 194
-    //   245: iconst_1
-    //   246: anewarray 196	java/lang/Class
-    //   249: dup
-    //   250: iconst_0
-    //   251: ldc 39
-    //   253: aastore
-    //   254: invokevirtual 200	java/lang/Class:getMethod	(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
-    //   257: astore 17
-    //   259: aload 10
-    //   261: new 45	java/lang/StringBuilder
-    //   264: dup
-    //   265: ldc 202
-    //   267: invokespecial 152	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   270: aload 17
-    //   272: aload 16
-    //   274: iconst_1
-    //   275: anewarray 4	java/lang/Object
-    //   278: dup
-    //   279: iconst_0
-    //   280: ldc 204
-    //   282: aastore
-    //   283: invokevirtual 210	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
-    //   286: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   289: invokevirtual 71	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   292: invokevirtual 169	java/util/ArrayList:add	(Ljava/lang/Object;)Z
-    //   295: pop
-    //   296: aload 10
-    //   298: invokevirtual 213	java/util/ArrayList:size	()I
-    //   301: ifle +44 -> 345
-    //   304: aload_0
-    //   305: new 45	java/lang/StringBuilder
-    //   308: dup
-    //   309: invokespecial 46	java/lang/StringBuilder:<init>	()V
-    //   312: aload_0
-    //   313: getfield 20	com/ushaqi/zhuishushenqi/api/f:a	Ljava/lang/String;
-    //   316: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   319: ldc 215
-    //   321: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   324: ldc 217
-    //   326: aload 10
-    //   328: invokestatic 223	android/text/TextUtils:join	(Ljava/lang/CharSequence;Ljava/lang/Iterable;)Ljava/lang/String;
-    //   331: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   334: ldc 225
-    //   336: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   339: invokevirtual 71	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   342: putfield 20	com/ushaqi/zhuishushenqi/api/f:a	Ljava/lang/String;
-    //   345: ldc 2
-    //   347: monitorexit
-    //   348: aload_0
-    //   349: getfield 20	com/ushaqi/zhuishushenqi/api/f:a	Ljava/lang/String;
-    //   352: areturn
-    //   353: astore_3
-    //   354: aconst_null
-    //   355: astore 4
-    //   357: goto -325 -> 32
-    //   360: astore 7
-    //   362: ldc 37
-    //   364: astore 8
-    //   366: goto -300 -> 66
-    //   369: iconst_0
-    //   370: istore 12
-    //   372: goto -182 -> 190
-    //   375: astore_1
-    //   376: ldc 2
-    //   378: monitorexit
-    //   379: aload_1
-    //   380: athrow
-    //   381: astore 15
-    //   383: goto -87 -> 296
-    //   386: ldc 37
-    //   388: astore 5
-    //   390: goto -346 -> 44
-    //
-    // Exception table:
-    //   from	to	target	type
-    //   14	28	353	android/content/pm/PackageManager$NameNotFoundException
-    //   55	62	360	java/lang/Exception
-    //   10	14	375	finally
-    //   14	28	375	finally
-    //   37	44	375	finally
-    //   44	55	375	finally
-    //   55	62	375	finally
-    //   66	187	375	finally
-    //   190	230	375	finally
-    //   230	296	375	finally
-    //   296	345	375	finally
-    //   345	348	375	finally
-    //   376	379	375	finally
-    //   230	296	381	java/lang/Exception
-  }
+    v1 = 0x1;
+    v2 = 0x0;
+    v0 = p0.com.clilystudio.netbook.api/f;->a;
+    if (v0 == null) {
+		v5 = com.clilystudio.netbook.api/f;;
+		monitor-enter v5
+		:try_start_0
+		invoke-static {}, com.clilystudio.netbook.MyApplication;->a()com.clilystudio.netbook.MyApplication;
+		:try_end_0
+		.catchall {:try_start_0 .. :try_end_0} :catchall_0
+		move-result-object v6
+		v0 = 0x0;
+		:try_start_1
+		v3 = v6.getPackageManager();
+		v4 = v6.getPackageName();
+		v7 = 0x0;
+		v3.getPackageInfo(v4, v7);
+		:try_end_1
+		.catch Landroid/content/pm/PackageManager$NameNotFoundException; {:try_start_1 .. :try_end_1} :catch_0
+		.catchall {:try_start_1 .. :try_end_1} :catchall_0
+		move-result-object v0
+		v3 = v0;
+		:goto_0
+		:try_start_2
+		v0 = "not-found";
+		if (v3 == 0) {
+			v4 = v0;
+		} else {
+			v0 = v3.Landroid/content/pm/PackageInfo;->versionName;
+			v4 = v0;
+		}
+		v3 = "not-found";
+		v0 = "phone";
+		v0 = v6.getSystemService(v0);
+		check-cast v0, Landroid/telephony/TelephonyManager;
+		:try_end_2
+		.catchall {:try_start_2 .. :try_end_2} :catchall_0
+		:try_start_3
+		v0.getSimOperatorName();
+		:try_end_3
+		.catch Ljava/lang/Exception; {:try_start_3 .. :try_end_3} :catch_1
+		.catchall {:try_start_3 .. :try_end_3} :catchall_0
+		move-result-object v0
+		:goto_2
+		:try_start_4
+		v3 = "%s/%s (Android %s; %s %s / %s %s; %s)";
+		v7 = 0x8;
+		new-array v7, v7, [Ljava/lang/Object;
+		v8 = 0x0;
+		v9 = "ZhuiShuShenQi";
+		v7[v8] = v9;
+		v8 = 0x1;
+		v7[v8] = v4;
+		v4 = 0x2;
+		v8 = Landroid/os/Build$VERSION;->RELEASE;
+		v7[v4] = v8;
+		v4 = 0x3;
+		v8 = Landroid/os/Build;->MANUFACTURER;
+		v8 = com.clilystudio.netbook.api/f.a(v8);
+		v7[v4] = v8;
+		v4 = 0x4;
+		v8 = Landroid/os/Build;->DEVICE;
+		v8 = com.clilystudio.netbook.api/f.a(v8);
+		v7[v4] = v8;
+		v4 = 0x5;
+		v8 = Landroid/os/Build;->BRAND;
+		v8 = com.clilystudio.netbook.api/f.a(v8);
+		v7[v4] = v8;
+		v4 = 0x6;
+		v8 = Landroid/os/Build;->MODEL;
+		v8 = com.clilystudio.netbook.api/f.a(v8);
+		v7[v4] = v8;
+		v4 = 0x7;
+		v0 = com.clilystudio.netbook.api/f.a(v0);
+		v7[v4] = v0;
+		v0 = Ljava/lang/String.format(v3, v7);
+		p0.com.clilystudio.netbook.api/f;->a = v0;
+		v3 = new ArrayList();
+		v3.<init>();
+		v4 = new StringBuilder();
+		v0 = "preload=";
+		v4.<init>(v0);
+		v0 = v6.getApplicationInfo();
+		v0 = v0.Landroid/content/pm/ApplicationInfo;->flags;
+		v0 = v0 & 0x1;
+		if (v0 != v1) {
+			v0 = v2;
+		} else {
+			v0 = v1;
+		}
+		v0 = v4.append(v0);
+		v0 = v0.toString();
+		v3.add(v0);
+		v0 = new StringBuilder();
+		v1 = "locale=";
+		v0.<init>(v1);
+		v1 = invoke-static {}, Ljava/util/Locale;->getDefault()Ljava/util/Locale;
+		v0 = v0.append(v1);
+		v0 = v0.toString();
+		v3.add(v0);
+		:try_end_4
+		.catchall {:try_start_4 .. :try_end_4} :catchall_0
+		:try_start_5
+		v0 = v6.getClassLoader();
+		v1 = "android.os.SystemProperties";
+		v0 = v0.loadClass(v1);
+		v1 = "get";
+		v2 = 0x1;
+		new-array v2, v2, [Ljava/lang/Class;
+		v4 = 0x0;
+		v6 = Ljava/lang/String;;
+		v2[v4] = v6;
+		v1 = v0.getMethod(v1, v2);
+		v2 = new StringBuilder();
+		v4 = "clientidbase=";
+		v2.<init>(v4);
+		v4 = 0x1;
+		new-array v4, v4, [Ljava/lang/Object;
+		v6 = 0x0;
+		v7 = "ro.com.google.clientidbase";
+		v4[v6] = v7;
+		v0 = v1.invoke(v0, v4);
+		v0 = v2.append(v0);
+		v0 = v0.toString();
+		v3.add(v0);
+		:try_end_5
+		.catch Ljava/lang/Exception; {:try_start_5 .. :try_end_5} :catch_2
+		.catchall {:try_start_5 .. :try_end_5} :catchall_0
+		:goto_4
+		:try_start_6
+		if (v3.size() > 0) {
+			v0 = new StringBuilder();
+			v0.<init>();
+			v1 = p0.com.clilystudio.netbook.api/f;->a;
+			v0 = v0.append(v1);
+			v1 = "[";
+			v0 = v0.append(v1);
+			v1 = ";";
+			v1 = Landroid/text/TextUtils.join(v1, v3);
+			v0 = v0.append(v1);
+			v1 = "]";
+			v0 = v0.append(v1);
+			v0 = v0.toString();
+			p0.com.clilystudio.netbook.api/f;->a = v0;
+		}
+		:cond_0
+		monitor-exit v5
+		:try_end_6
+		.catchall {:try_start_6 .. :try_end_6} :catchall_0
+    }
+    return this.a;
+   }
 }
 
 /* Location:           E:\Progs\Dev\Android\Decompile\apktool\zssq\zssq-dex2jar.jar

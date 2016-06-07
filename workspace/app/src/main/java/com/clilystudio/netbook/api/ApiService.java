@@ -264,45 +264,44 @@ public class ApiService
   }
 
   // ERROR //
-  private static <V> V a(HttpRequest paramHttpRequest, Class<V> paramClass)
+   private static <V> V a(HttpRequest paramHttpRequest, Class<V> paramClass)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: invokevirtual 211	com/github/kevinsawicki/http/HttpRequest:e	()Ljava/io/BufferedReader;
-    //   4: astore_2
-    //   5: getstatic 107	com/ushaqi/zhuishushenqi/api/ApiService:l	Lcom/google/gson/Gson;
-    //   8: aload_2
-    //   9: aload_1
-    //   10: invokevirtual 217	com/google/gson/Gson:fromJson	(Ljava/io/Reader;Ljava/lang/Class;)Ljava/lang/Object;
-    //   13: astore 6
-    //   15: aload_2
-    //   16: invokevirtual 222	java/io/Reader:close	()V
-    //   19: aload 6
-    //   21: areturn
-    //   22: astore 5
-    //   24: new 224	com/ushaqi/zhuishushenqi/api/ApiService$JsonException
-    //   27: dup
-    //   28: aload 5
-    //   30: invokespecial 227	com/ushaqi/zhuishushenqi/api/ApiService$JsonException:<init>	(Lcom/google/gson/JsonParseException;)V
-    //   33: athrow
-    //   34: astore_3
-    //   35: aload_2
-    //   36: invokevirtual 222	java/io/Reader:close	()V
-    //   39: aload_3
-    //   40: athrow
-    //   41: astore 7
-    //   43: aload 6
-    //   45: areturn
-    //   46: astore 4
-    //   48: goto -9 -> 39
-    //
-    // Exception table:
-    //   from	to	target	type
-    //   5	15	22	com/google/gson/JsonParseException
-    //   5	15	34	finally
-    //   24	34	34	finally
-    //   15	19	41	java/io/IOException
-    //   35	39	46	java/io/IOException
+     v1 = this.e();
+    v0 = com.clilystudio.netbook.api/ApiService;->l;
+    v0 = l.fromJson(v1, paramHttpRequest);
+	v1.close();
+	return  v0;
+     // .catch Lcom/google/gson/JsonParseException; {:try_start_0 .. :try_end_0} :catch_0
+    // .catchall {:try_start_0 .. :try_end_0} :catchall_0
+    // move-result-object v0
+    // :try_start_1
+    // v1.close();
+    // :try_end_1
+    // .catch Ljava/io/IOException; {:try_start_1 .. :try_end_1} :catch_1
+    // :goto_0
+    // return v0;
+    // :catch_0
+    // move-exception v0
+    // :try_start_2
+    // v2 = new ApiService$JsonException();
+    // v2.<init>(v0);
+    // throw v2
+    // :try_end_2
+    // .catchall {:try_start_2 .. :try_end_2} :catchall_0
+    // :catchall_0
+    // move-exception v0
+    // :try_start_3
+    // v1.close();
+    // :try_end_3
+    // .catch Ljava/io/IOException; {:try_start_3 .. :try_end_3} :catch_2
+    // :goto_1
+    // throw v0
+    // :catch_1
+    // move-exception v1
+    // goto :goto_0
+    // :catch_2
+    // move-exception v1
+    // goto :goto_1
   }
 
   private <V> V a(String paramString, Class<V> paramClass)

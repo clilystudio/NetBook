@@ -91,117 +91,132 @@ public class MyApplication extends MultiDexApplication
   // ERROR //
   public final boolean a(java.io.Serializable paramSerializable, String paramString)
   {
-    // Byte code:
-    //   0: aconst_null
-    //   1: astore_3
-    //   2: aload_0
-    //   3: aload_2
-    //   4: iconst_0
-    //   5: invokevirtual 121	com/ushaqi/zhuishushenqi/MyApplication:openFileOutput	(Ljava/lang/String;I)Ljava/io/FileOutputStream;
-    //   8: astore 13
-    //   10: aload 13
-    //   12: astore 6
-    //   14: new 123	java/io/ObjectOutputStream
-    //   17: dup
-    //   18: aload 6
-    //   20: invokespecial 126	java/io/ObjectOutputStream:<init>	(Ljava/io/OutputStream;)V
-    //   23: astore 5
-    //   25: aload 5
-    //   27: aload_1
-    //   28: invokevirtual 130	java/io/ObjectOutputStream:writeObject	(Ljava/lang/Object;)V
-    //   31: aload 5
-    //   33: invokevirtual 133	java/io/ObjectOutputStream:flush	()V
-    //   36: aload 5
-    //   38: invokevirtual 136	java/io/ObjectOutputStream:close	()V
-    //   41: aload 6
-    //   43: ifnull +8 -> 51
-    //   46: aload 6
-    //   48: invokevirtual 139	java/io/FileOutputStream:close	()V
-    //   51: iconst_1
-    //   52: istore 10
-    //   54: iload 10
-    //   56: ireturn
-    //   57: astore 9
-    //   59: aconst_null
-    //   60: astore 5
-    //   62: aload 9
-    //   64: invokevirtual 66	java/lang/Exception:printStackTrace	()V
-    //   67: aload 5
-    //   69: ifnull +8 -> 77
-    //   72: aload 5
-    //   74: invokevirtual 136	java/io/ObjectOutputStream:close	()V
-    //   77: iconst_0
-    //   78: istore 10
-    //   80: aload_3
-    //   81: ifnull -27 -> 54
-    //   84: aload_3
-    //   85: invokevirtual 139	java/io/FileOutputStream:close	()V
-    //   88: iconst_0
-    //   89: ireturn
-    //   90: astore 11
-    //   92: iconst_0
-    //   93: ireturn
-    //   94: astore 4
-    //   96: aconst_null
-    //   97: astore 5
-    //   99: aconst_null
-    //   100: astore 6
-    //   102: aload 5
-    //   104: ifnull +8 -> 112
-    //   107: aload 5
-    //   109: invokevirtual 136	java/io/ObjectOutputStream:close	()V
-    //   112: aload 6
-    //   114: ifnull +8 -> 122
-    //   117: aload 6
-    //   119: invokevirtual 139	java/io/FileOutputStream:close	()V
-    //   122: aload 4
-    //   124: athrow
-    //   125: astore 14
-    //   127: goto -86 -> 41
-    //   130: astore 15
-    //   132: goto -81 -> 51
-    //   135: astore 12
-    //   137: goto -60 -> 77
-    //   140: astore 8
-    //   142: goto -30 -> 112
-    //   145: astore 7
-    //   147: goto -25 -> 122
-    //   150: astore 4
-    //   152: aconst_null
-    //   153: astore 5
-    //   155: goto -53 -> 102
-    //   158: astore 4
-    //   160: goto -58 -> 102
-    //   163: astore 4
-    //   165: aload_3
-    //   166: astore 6
-    //   168: goto -66 -> 102
-    //   171: astore 9
-    //   173: aload 6
-    //   175: astore_3
-    //   176: aconst_null
-    //   177: astore 5
-    //   179: goto -117 -> 62
-    //   182: astore 9
-    //   184: aload 6
-    //   186: astore_3
-    //   187: goto -125 -> 62
-    //
-    // Exception table:
-    //   from	to	target	type
-    //   2	10	57	java/lang/Exception
-    //   84	88	90	java/lang/Exception
-    //   2	10	94	finally
-    //   36	41	125	java/lang/Exception
-    //   46	51	130	java/lang/Exception
-    //   72	77	135	java/lang/Exception
-    //   107	112	140	java/lang/Exception
-    //   117	122	145	java/lang/Exception
-    //   14	25	150	finally
-    //   25	36	158	finally
-    //   62	67	163	finally
-    //   14	25	171	java/lang/Exception
-    //   25	36	182	java/lang/Exception
+     v3 = 0x0;
+    v0 = 0x0;
+    v1 = 0x0;
+    :try_start_0
+    p0.openFileOutput(p2, v1);
+    :try_end_0
+    .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+    move-result-object v4
+    :try_start_1
+    v2 = new ObjectOutputStream();
+    v2.<init>(v4);
+    :try_end_1
+    .catch Ljava/lang/Exception; {:try_start_1 .. :try_end_1} :catch_7
+    .catchall {:try_start_1 .. :try_end_1} :catchall_1
+    :try_start_2
+    v2.writeObject(p1);
+    v2.flush();
+    :try_end_2
+    .catch Ljava/lang/Exception; {:try_start_2 .. :try_end_2} :catch_8
+    .catchall {:try_start_2 .. :try_end_2} :catchall_2
+    :try_start_3
+    v2.close();
+    :try_end_3
+    .catch Ljava/lang/Exception; {:try_start_3 .. :try_end_3} :catch_2
+    :goto_0
+    if (v4 == 0) {
+//       if-eqz v4, :cond_0
+    }
+    :try_start_4
+    v4.close();
+    :try_end_4
+    .catch Ljava/lang/Exception; {:try_start_4 .. :try_end_4} :catch_3
+    :cond_0
+    :goto_1
+    v0 = 0x1;
+    :cond_1
+    :goto_2
+    return v0
+    :catch_0
+    move-exception v1
+    v2 = v3;
+    :goto_3
+    :try_start_5
+    v1.printStackTrace();
+    :try_end_5
+    .catchall {:try_start_5 .. :try_end_5} :catchall_3
+    if (v2 == 0) {
+//       if-eqz v2, :cond_2
+    }
+    :try_start_6
+    v2.close();
+    :try_end_6
+    .catch Ljava/lang/Exception; {:try_start_6 .. :try_end_6} :catch_4
+    :cond_2
+    :goto_4
+    if (v3 == 0) {
+//       if-eqz v3, :cond_1
+    }
+    :try_start_7
+    v3.close();
+    :try_end_7
+    .catch Ljava/lang/Exception; {:try_start_7 .. :try_end_7} :catch_1
+    goto :goto_2
+    :catch_1
+    move-exception v1
+    goto :goto_2
+    :catchall_0
+    move-exception v0
+    v2 = v3;
+    v4 = v3;
+    :goto_5
+    if (v2 == 0) {
+//       if-eqz v2, :cond_3
+    }
+    :try_start_8
+    v2.close();
+    :try_end_8
+    .catch Ljava/lang/Exception; {:try_start_8 .. :try_end_8} :catch_5
+    :cond_3
+    :goto_6
+    if (v4 == 0) {
+//       if-eqz v4, :cond_4
+    }
+    :try_start_9
+    v4.close();
+    :try_end_9
+    .catch Ljava/lang/Exception; {:try_start_9 .. :try_end_9} :catch_6
+    :cond_4
+    :goto_7
+    throw v0
+    :catch_2
+    move-exception v0
+    goto :goto_0
+    :catch_3
+    move-exception v0
+    goto :goto_1
+    :catch_4
+    move-exception v1
+    goto :goto_4
+    :catch_5
+    move-exception v1
+    goto :goto_6
+    :catch_6
+    move-exception v1
+    goto :goto_7
+    :catchall_1
+    move-exception v0
+    v2 = v3;
+    goto :goto_5
+    :catchall_2
+    move-exception v0
+    goto :goto_5
+    :catchall_3
+    move-exception v0
+    v4 = v3;
+    goto :goto_5
+    :catch_7
+    move-exception v1
+    v2 = v3;
+    v3 = v4;
+    goto :goto_3
+    :catch_8
+    move-exception v1
+    v3 = v4;
+    goto :goto_3
   }
 
   public final Reader b()
@@ -212,163 +227,187 @@ public class MyApplication extends MultiDexApplication
   // ERROR //
   public final java.io.Serializable b(String paramString)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: aload_1
-    //   2: invokevirtual 147	com/ushaqi/zhuishushenqi/MyApplication:getFileStreamPath	(Ljava/lang/String;)Ljava/io/File;
-    //   5: invokevirtual 151	java/io/File:exists	()Z
-    //   8: istore_2
-    //   9: iconst_0
-    //   10: istore_3
-    //   11: iload_2
-    //   12: ifeq +5 -> 17
-    //   15: iconst_1
-    //   16: istore_3
-    //   17: iload_3
-    //   18: ifne +9 -> 27
-    //   21: aconst_null
-    //   22: astore 20
-    //   24: aload 20
-    //   26: areturn
-    //   27: aload_0
-    //   28: aload_1
-    //   29: invokevirtual 155	com/ushaqi/zhuishushenqi/MyApplication:openFileInput	(Ljava/lang/String;)Ljava/io/FileInputStream;
-    //   32: astore 18
-    //   34: aload 18
-    //   36: astore 6
-    //   38: new 157	java/io/ObjectInputStream
-    //   41: dup
-    //   42: aload 6
-    //   44: invokespecial 160	java/io/ObjectInputStream:<init>	(Ljava/io/InputStream;)V
-    //   47: astore 5
-    //   49: aload 5
-    //   51: invokevirtual 164	java/io/ObjectInputStream:readObject	()Ljava/lang/Object;
-    //   54: checkcast 166	java/io/Serializable
-    //   57: astore 20
-    //   59: aload 5
-    //   61: invokevirtual 167	java/io/ObjectInputStream:close	()V
-    //   64: aload 6
-    //   66: ifnull -42 -> 24
-    //   69: aload 6
-    //   71: invokevirtual 170	java/io/FileInputStream:close	()V
-    //   74: aload 20
-    //   76: areturn
-    //   77: astore 22
-    //   79: aload 20
-    //   81: areturn
-    //   82: astore 13
-    //   84: aconst_null
-    //   85: astore 14
-    //   87: aconst_null
-    //   88: astore 15
-    //   90: aload 14
-    //   92: ifnull +8 -> 100
-    //   95: aload 14
-    //   97: invokevirtual 167	java/io/ObjectInputStream:close	()V
-    //   100: aload 15
-    //   102: ifnull +8 -> 110
-    //   105: aload 15
-    //   107: invokevirtual 170	java/io/FileInputStream:close	()V
-    //   110: aconst_null
-    //   111: areturn
-    //   112: astore 9
-    //   114: aconst_null
-    //   115: astore 5
-    //   117: aconst_null
-    //   118: astore 6
-    //   120: aload 9
-    //   122: invokevirtual 66	java/lang/Exception:printStackTrace	()V
-    //   125: aload 9
-    //   127: instanceof 172
-    //   130: ifeq +12 -> 142
-    //   133: aload_0
-    //   134: aload_1
-    //   135: invokevirtual 147	com/ushaqi/zhuishushenqi/MyApplication:getFileStreamPath	(Ljava/lang/String;)Ljava/io/File;
-    //   138: invokevirtual 175	java/io/File:delete	()Z
-    //   141: pop
-    //   142: aload 5
-    //   144: ifnull +8 -> 152
-    //   147: aload 5
-    //   149: invokevirtual 167	java/io/ObjectInputStream:close	()V
-    //   152: aload 6
-    //   154: ifnull -44 -> 110
-    //   157: aload 6
-    //   159: invokevirtual 170	java/io/FileInputStream:close	()V
-    //   162: goto -52 -> 110
-    //   165: astore 10
-    //   167: goto -57 -> 110
-    //   170: astore 4
-    //   172: aconst_null
-    //   173: astore 5
-    //   175: aconst_null
-    //   176: astore 6
-    //   178: aload 5
-    //   180: ifnull +8 -> 188
-    //   183: aload 5
-    //   185: invokevirtual 167	java/io/ObjectInputStream:close	()V
-    //   188: aload 6
-    //   190: ifnull +8 -> 198
-    //   193: aload 6
-    //   195: invokevirtual 170	java/io/FileInputStream:close	()V
-    //   198: aload 4
-    //   200: athrow
-    //   201: astore 21
-    //   203: goto -139 -> 64
-    //   206: astore 17
-    //   208: goto -108 -> 100
-    //   211: astore 16
-    //   213: goto -103 -> 110
-    //   216: astore 11
-    //   218: goto -66 -> 152
-    //   221: astore 8
-    //   223: goto -35 -> 188
-    //   226: astore 7
-    //   228: goto -30 -> 198
-    //   231: astore 4
-    //   233: aconst_null
-    //   234: astore 5
-    //   236: goto -58 -> 178
-    //   239: astore 4
-    //   241: goto -63 -> 178
-    //   244: astore 9
-    //   246: aconst_null
-    //   247: astore 5
-    //   249: goto -129 -> 120
-    //   252: astore 9
-    //   254: goto -134 -> 120
-    //   257: astore 23
-    //   259: aload 6
-    //   261: astore 15
-    //   263: aconst_null
-    //   264: astore 14
-    //   266: goto -176 -> 90
-    //   269: astore 19
-    //   271: aload 5
-    //   273: astore 14
-    //   275: aload 6
-    //   277: astore 15
-    //   279: goto -189 -> 90
-    //
-    // Exception table:
-    //   from	to	target	type
-    //   69	74	77	java/lang/Exception
-    //   27	34	82	java/io/FileNotFoundException
-    //   27	34	112	java/lang/Exception
-    //   157	162	165	java/lang/Exception
-    //   27	34	170	finally
-    //   59	64	201	java/lang/Exception
-    //   95	100	206	java/lang/Exception
-    //   105	110	211	java/lang/Exception
-    //   147	152	216	java/lang/Exception
-    //   183	188	221	java/lang/Exception
-    //   193	198	226	java/lang/Exception
-    //   38	49	231	finally
-    //   49	59	239	finally
-    //   120	142	239	finally
-    //   38	49	244	java/lang/Exception
-    //   49	59	252	java/lang/Exception
-    //   38	49	257	java/io/FileNotFoundException
-    //   49	59	269	java/io/FileNotFoundException
+     v1 = 0x0;
+    v0 = 0x0;
+    v2 = p0.getFileStreamPath(p1);
+    v2 = v2.exists();
+    if (v2 == 0) {
+//       if-eqz v2, :cond_0
+    }
+    v0 = 0x1;
+    :cond_0
+    if (v0 != 0) {
+//       if-nez v0, :cond_2
+    }
+    v0 = v1;
+    :cond_1
+    :goto_0
+    return v0;
+    :cond_2
+    :try_start_0
+    p0.openFileInput(p1);
+    :try_end_0
+    .catch Ljava/io/FileNotFoundException; {:try_start_0 .. :try_end_0} :catch_1
+    .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_2
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+    move-result-object v3
+    :try_start_1
+    v2 = new ObjectInputStream();
+    v2.<init>(v3);
+    :try_end_1
+    .catch Ljava/io/FileNotFoundException; {:try_start_1 .. :try_end_1} :catch_c
+    .catch Ljava/lang/Exception; {:try_start_1 .. :try_end_1} :catch_a
+    .catchall {:try_start_1 .. :try_end_1} :catchall_1
+    :try_start_2
+    v0 = v2.readObject();
+    check-cast v0, Ljava/io/Serializable;
+    :try_end_2
+    .catch Ljava/io/FileNotFoundException; {:try_start_2 .. :try_end_2} :catch_d
+    .catch Ljava/lang/Exception; {:try_start_2 .. :try_end_2} :catch_b
+    .catchall {:try_start_2 .. :try_end_2} :catchall_2
+    :try_start_3
+    v2.close();
+    :try_end_3
+    .catch Ljava/lang/Exception; {:try_start_3 .. :try_end_3} :catch_4
+    :goto_1
+    if (v3 == 0) {
+//       if-eqz v3, :cond_1
+    }
+    :try_start_4
+    v3.close();
+    :try_end_4
+    .catch Ljava/lang/Exception; {:try_start_4 .. :try_end_4} :catch_0
+    goto :goto_0
+    :catch_0
+    move-exception v1
+    goto :goto_0
+    :catch_1
+    move-exception v0
+    v0 = v1;
+    v2 = v1;
+    :goto_2
+    if (v0 == 0) {
+//       if-eqz v0, :cond_3
+    }
+    :try_start_5
+    v0.close();
+    :try_end_5
+    .catch Ljava/lang/Exception; {:try_start_5 .. :try_end_5} :catch_5
+    :cond_3
+    :goto_3
+    if (v2 == 0) {
+//       if-eqz v2, :cond_4
+    }
+    :try_start_6
+    v2.close();
+    :try_end_6
+    .catch Ljava/lang/Exception; {:try_start_6 .. :try_end_6} :catch_6
+    :cond_4
+    :goto_4
+    v0 = v1;
+    goto :goto_0
+    :catch_2
+    move-exception v0
+    v2 = v1;
+    v3 = v1;
+    :goto_5
+    :try_start_7
+    v0.printStackTrace();
+    instance-of v0, v0, Ljava/io/InvalidClassException;
+    if (v0 == 0) {
+//       if-eqz v0, :cond_5
+    }
+    v0 = p0.getFileStreamPath(p1);
+    v0.delete();
+    :try_end_7
+    .catchall {:try_start_7 .. :try_end_7} :catchall_2
+    :cond_5
+    if (v2 == 0) {
+//       if-eqz v2, :cond_6
+    }
+    :try_start_8
+    v2.close();
+    :try_end_8
+    .catch Ljava/lang/Exception; {:try_start_8 .. :try_end_8} :catch_7
+    :cond_6
+    :goto_6
+    if (v3 == 0) {
+//       if-eqz v3, :cond_4
+    }
+    :try_start_9
+    v3.close();
+    :try_end_9
+    .catch Ljava/lang/Exception; {:try_start_9 .. :try_end_9} :catch_3
+    goto :goto_4
+    :catch_3
+    move-exception v0
+    goto :goto_4
+    :catchall_0
+    move-exception v0
+    v2 = v1;
+    v3 = v1;
+    :goto_7
+    if (v2 == 0) {
+//       if-eqz v2, :cond_7
+    }
+    :try_start_a
+    v2.close();
+    :try_end_a
+    .catch Ljava/lang/Exception; {:try_start_a .. :try_end_a} :catch_8
+    :cond_7
+    :goto_8
+    if (v3 == 0) {
+//       if-eqz v3, :cond_8
+    }
+    :try_start_b
+    v3.close();
+    :try_end_b
+    .catch Ljava/lang/Exception; {:try_start_b .. :try_end_b} :catch_9
+    :cond_8
+    :goto_9
+    throw v0
+    :catch_4
+    move-exception v1
+    goto :goto_1
+    :catch_5
+    move-exception v0
+    goto :goto_3
+    :catch_6
+    move-exception v0
+    goto :goto_4
+    :catch_7
+    move-exception v0
+    goto :goto_6
+    :catch_8
+    move-exception v1
+    goto :goto_8
+    :catch_9
+    move-exception v1
+    goto :goto_9
+    :catchall_1
+    move-exception v0
+    v2 = v1;
+    goto :goto_7
+    :catchall_2
+    move-exception v0
+    goto :goto_7
+    :catch_a
+    move-exception v0
+    v2 = v1;
+    goto :goto_5
+    :catch_b
+    move-exception v0
+    goto :goto_5
+    :catch_c
+    move-exception v0
+    v0 = v1;
+    v2 = v3;
+    goto :goto_2
+    :catch_d
+    move-exception v0
+    v0 = v2;
+    v2 = v3;
+    goto :goto_2
   }
 
   public final BookInfo c()
