@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:background="#ffffffff" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:textColor="#ffffffff" android:gravity="center" android:background="#ff99cc66" android:layout_width="fill_parent" android:layout_height="40.0dip" android:text="傲游游戏中心充值" />
+        </LinearLayout>
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/boder" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:layout_marginBottom="10.0dip">
+            <TextView android:textColor="#ff777777" android:layout_width="wrap_content" android:layout_height="32.0dip" android:text=" 游戏名称:" />
+            <TextView android:textColor="#ff333333" android:gravity="left" android:id="@id/product_subject" android:layout_width="90.0dip" android:layout_height="32.0dip" android:text="" />
+            <TextView android:textColor="#ff777777" android:layout_width="wrap_content" android:layout_height="32.0dip" android:text="商品名称:" />
+            <TextView android:textColor="#ff333333" android:gravity="left" android:id="@id/product_body" android:layout_width="90.0dip" android:layout_height="32.0dip" />
+        </LinearLayout>
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/boder" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:layout_marginBottom="10.0dip">
+            <TextView android:textColor="#ff777777" android:layout_width="wrap_content" android:layout_height="32.0dip" android:text=" 商品价格:" />
+            <EditText android:textColor="#ff333333" android:gravity="center" android:id="@id/product_price" android:layout_width="200.0dip" android:layout_height="36.0dip" android:hint="输入金额" android:cursorVisible="true" android:singleLine="true" android:digits="1234567890." android:inputType="number" />
+            <TextView android:textColor="#ff333333" android:gravity="left" android:layout_width="34.0dip" android:layout_height="32.0dip" android:text="元" />
+        </LinearLayout>
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:textColor="#ff777777" android:layout_gravity="clip_vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text=" 支付方式:" />
+        </LinearLayout>
+        <LinearLayout android:gravity="left" android:layout_gravity="fill_horizontal" android:orientation="horizontal" android:background="@drawable/boder" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <ImageButton android:id="@id/alipayBtn" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="10.0dip" />
+            <ImageButton android:id="@id/wxpayBtn" android:background="@null" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="10.0dip" />
+            <ImageButton android:id="@id/msgpayBtn" android:background="@null" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="10.0dip" />
+        </LinearLayout>
+        <Button android:enabled="true" android:layout_gravity="center" android:id="@id/pay" android:layout_width="154.0dip" android:layout_height="wrap_content" android:layout_margin="10.0dip" android:text="确认支付" />
+    </LinearLayout>
+</ScrollView>

@@ -1,24 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal"
-              android:background="?android:windowBackground"
-              android:paddingLeft="22.0dip"
-              android:paddingTop="10.0dip"
-              android:paddingRight="22.0dip"
-              android:paddingBottom="10.0dip"
-              android:fitsSystemWindows="true"
-              android:layout_width="fill_parent"
-              android:layout_height="wrap_content"
-              xmlns:android="http://schemas.android.com/apk/res/android">
-
-    <EditText
-        android:textColor="?android:textColor"
-        android:textColorHint="?android:textColorTertiary"
-        android:gravity="top|left|center"
-        android:id="@+id/dialog_edit_content"
-        android:scrollbars="vertical"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:maxHeight="300.0dip"
-        android:minHeight="100.0dip"
-        android:hint="请输入投票项标题"/>
+<LinearLayout android:orientation="horizontal" android:background="?android:windowBackground" android:paddingLeft="22.0dip" android:paddingTop="10.0dip" android:paddingRight="22.0dip" android:paddingBottom="10.0dip" android:fitsSystemWindows="true" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <EditText android:textColor="?android:textColor" android:textColorHint="?android:textColorTertiary" android:gravity="top|left|center" android:id="@id/dialog_edit_content" android:scrollbars="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxHeight="300.0dip" android:minHeight="100.0dip" android:hint="请输入投票项标题" />
 </LinearLayout>

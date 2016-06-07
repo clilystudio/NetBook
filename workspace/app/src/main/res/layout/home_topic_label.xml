@@ -1,11 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextView android:enabled="false"
-          android:gravity="left"
-          android:background="?android:windowBackground"
-          android:paddingTop="@dimen/dp_20"
-          android:clickable="false"
-          android:layout_width="fill_parent"
-          android:layout_height="wrap_content"
-          android:text="公共社区"
-          style="@style/HomeListItemLabelV3"
-          xmlns:android="http://schemas.android.com/apk/res/android"/>
+<TextView android:enabled="false" android:gravity="left" android:background="?android:windowBackground" android:paddingTop="@dimen/dp_20" android:clickable="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="公共社区" style="@style/HomeListItemLabelV3"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

@@ -1,40 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="?android:windowBackground"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                xmlns:android="http://schemas.android.com/apk/res/android">
-
-    <LinearLayout
-        android:orientation="vertical"
-        android:id="@+id/content"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
-
-        <include layout="@layout/community_top"/>
-
-        <View
-            android:background="?lineColor"
-            android:layout_width="fill_parent"
-            android:layout_height="1.0px"/>
-
-        <com.handmark.pulltorefresh.library.PullToRefreshListView android:id="@+id/ptr_list"
-                                                                  android:layout_width="fill_parent"
-                                                                  android:layout_height="fill_parent"
-                                                                  ptr:ptrAnimationStyle="flip"
-                                                                  style="@style/DividerListView"
-                                                                  xmlns:ptr="http://schemas.android.com/apk/res-auto"/>
+<RelativeLayout android:background="?android:windowBackground" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:id="@id/content" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <include layout="@layout/community_top" />
+        <View android:background="?lineColor" android:layout_width="fill_parent" android:layout_height="1.0px" />
+        <com.handmark.pulltorefresh.library.PullToRefreshListView android:id="@id/ptr_list" android:layout_width="fill_parent" android:layout_height="fill_parent" ptr:ptrAnimationStyle="flip" style="@style/DividerListView" xmlns:ptr="http://schemas.android.com/apk/res-auto" />
     </LinearLayout>
-
-    <TextView
-        android:textSize="@dimen/text_size_16"
-        android:textColor="@color/empty_view_text"
-        android:id="@+id/empty_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"/>
-
-    <ProgressBar
-        android:id="@+id/pb_loading"
-        android:layout_centerInParent="true"
-        style="@style/Loading"/>
+    <TextView android:textSize="@dimen/text_size_16" android:textColor="@color/empty_view_text" android:id="@id/empty_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" />
+    <ProgressBar android:id="@id/pb_loading" android:layout_centerInParent="true" style="@style/Loading" />
 </RelativeLayout>

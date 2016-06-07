@@ -1,0 +1,36 @@
+package com.clilystudio.netbook.util;
+
+import android.app.Activity;
+import com.clilystudio.netbook.a.c;
+import com.clilystudio.netbook.api.ApiService;
+import com.clilystudio.netbook.api.b;
+import com.clilystudio.netbook.model.ChargeTypes;
+import java.io.IOException;
+
+final class r extends c<Void, ChargeTypes>
+{
+  public r(p paramp, Activity paramActivity)
+  {
+    super(paramActivity);
+  }
+
+  private static ChargeTypes a()
+  {
+    try
+    {
+      b.a();
+      ChargeTypes localChargeTypes = b.b().c();
+      return localChargeTypes;
+    }
+    catch (IOException localIOException)
+    {
+      localIOException.printStackTrace();
+    }
+    return null;
+  }
+}
+
+/* Location:           E:\Progs\Dev\Android\Decompile\apktool\zssq\zssq-dex2jar.jar
+ * Qualified Name:     com.clilystudio.netbook.util.r
+ * JD-Core Version:    0.6.0
+ */

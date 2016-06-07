@@ -1,95 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.clilystudio.app.netbook.widget.PostUsefulView android:orientation="vertical"
-                                                android:id="@+id/review_useful_container"
-                                                android:background="?android:windowBackground"
-                                                android:visibility="gone"
-                                                android:layout_width="fill_parent"
-                                                android:layout_height="wrap_content"
-                                                xmlns:android="http://schemas.android.com/apk/res/android">
-
-    <TextView
-        android:text="给书评打分"
-        style="@style/ListItemLabel"/>
-
-    <View
-        android:background="?lineColor"
-        android:layout_width="fill_parent"
-        android:layout_height="1.0px"/>
-
-    <LinearLayout
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:layout_width="fill_parent"
-        android:layout_height="@dimen/dp_72">
-
-        <LinearLayout
-            android:gravity="center"
-            android:orientation="vertical"
-            android:id="@+id/review_useful_yes"
-            android:background="?backgroundSelector"
-            android:layout_width="0.0dip"
-            android:layout_height="fill_parent"
-            android:layout_weight="1.0">
-
-            <TextView
-                android:textSize="@dimen/text_size_16"
-                android:textColor="?android:textColorSecondary"
-                android:id="@+id/review_useful_yes_count"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="0"/>
-
-            <TextView
-                android:textSize="@dimen/text_size_12"
-                android:textColor="?android:textColorSecondary"
-                android:gravity="center_vertical"
-                android:id="@+id/review_useful_yes_label"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4.0dip"
-                android:text="有用"
-                android:drawableLeft="@drawable/review_useful_yes_nor"
-                android:drawablePadding="8.0dip"/>
+<com.clilystudio.netbook.widget.PostUsefulView android:orientation="vertical" android:id="@id/review_useful_container" android:background="?android:windowBackground" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:text="给书评打分" style="@style/ListItemLabel" />
+    <View android:background="?lineColor" android:layout_width="fill_parent" android:layout_height="1.0px" />
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="@dimen/dp_72">
+        <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/review_useful_yes" android:background="?backgroundSelector" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
+            <TextView android:textSize="@dimen/text_size_16" android:textColor="?android:textColorSecondary" android:id="@id/review_useful_yes_count" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="\ 0" />
+            <TextView android:textSize="@dimen/text_size_12" android:textColor="?android:textColorSecondary" android:gravity="center_vertical" android:id="@id/review_useful_yes_label" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:text="有用" android:drawableLeft="@drawable/review_useful_yes_nor" android:drawablePadding="8.0dip" />
         </LinearLayout>
-
-        <View
-            android:background="?lineColor"
-            android:layout_width="1.0px"
-            android:layout_height="@dimen/dp_36"/>
-
-        <LinearLayout
-            android:gravity="center"
-            android:orientation="vertical"
-            android:id="@+id/review_useful_no"
-            android:background="?backgroundSelector"
-            android:layout_width="0.0dip"
-            android:layout_height="fill_parent"
-            android:layout_weight="1.0">
-
-            <TextView
-                android:textSize="@dimen/text_size_16"
-                android:textColor="?android:textColorSecondary"
-                android:id="@+id/review_useful_no_count"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="0"/>
-
-            <TextView
-                android:textSize="@dimen/text_size_12"
-                android:textColor="?android:textColorSecondary"
-                android:gravity="center_vertical"
-                android:id="@+id/review_useful_no_label"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4.0dip"
-                android:text="无用"
-                android:drawableLeft="@drawable/review_useful_no_nor"
-                android:drawablePadding="8.0dip"/>
+        <View android:background="?lineColor" android:layout_width="1.0px" android:layout_height="@dimen/dp_36" />
+        <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/review_useful_no" android:background="?backgroundSelector" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
+            <TextView android:textSize="@dimen/text_size_16" android:textColor="?android:textColorSecondary" android:id="@id/review_useful_no_count" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="\ 0" />
+            <TextView android:textSize="@dimen/text_size_12" android:textColor="?android:textColorSecondary" android:gravity="center_vertical" android:id="@id/review_useful_no_label" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:text="无用" android:drawableLeft="@drawable/review_useful_no_nor" android:drawablePadding="8.0dip" />
         </LinearLayout>
     </LinearLayout>
-
-    <View
-        android:background="?lineColor"
-        android:layout_width="fill_parent"
-        android:layout_height="1.0px"/>
-</com.clilystudio.app.netbook.widget.PostUsefulView>
+    <View android:background="?lineColor" android:layout_width="fill_parent" android:layout_height="1.0px" />
+</com.clilystudio.netbook.widget.PostUsefulView>

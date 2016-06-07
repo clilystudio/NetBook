@@ -1,39 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical"
-                android:background="?backgroundPressed"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                xmlns:android="http://schemas.android.com/apk/res/android">
-
-    <ListView
-        android:id="@+id/list"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        style="@style/DividerListView.ReadMode"/>
-
-    <include
-        android:layout_width="fill_parent"
-        android:layout_height="1.0px"
-        android:layout_below="@id/list"
-        layout="@layout/horizontal_divider"/>
-
-    <include layout="@layout/loading"/>
-
-    <ImageView
-        android:id="@+id/load_error_hint"
-        android:visibility="gone"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/load_error_hint"
-        android:layout_centerInParent="true"/>
-
-    <TextView
-        android:textColor="?android:textColorSecondary"
-        android:gravity="center"
-        android:id="@+id/empty"
-        android:visibility="gone"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:text="@string/no_resource"
-        style="@style/SubtitleText"/>
+<RelativeLayout android:orientation="vertical" android:background="?backgroundPressed" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ListView android:id="@id/list" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/DividerListView.ReadMode" />
+    <include android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_below="@id/list" layout="@layout/horizontal_divider" />
+    <include layout="@layout/loading" />
+    <ImageView android:id="@id/load_error_hint" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/load_error_hint" android:layout_centerInParent="true" />
+    <TextView android:textColor="?android:textColorSecondary" android:gravity="center" android:id="@id/empty" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/no_resource" style="@style/SubtitleText" />
 </RelativeLayout>

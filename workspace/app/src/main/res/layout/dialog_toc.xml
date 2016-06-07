@@ -1,35 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="?dialog_background"
-                android:paddingBottom="30.0dip"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                xmlns:android="http://schemas.android.com/apk/res/android">
-
-    <TextView
-        android:textSize="@dimen/read_toc_title_text"
-        android:textColor="?dialog_text_color"
-        android:id="@+id/dialog_toc_title"
-        android:paddingTop="@dimen/dp_12"
-        android:paddingBottom="@dimen/dp_12"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"/>
-
-    <View
-        android:id="@+id/dialog_toc_line"
-        android:background="?dialog_divider"
-        android:layout_width="fill_parent"
-        android:layout_height="2.0px"
-        android:layout_below="@id/dialog_toc_title"/>
-
-    <ListView
-        android:id="@+id/dialog_toc_list"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:divider="?dialog_list_divider"
-        android:dividerHeight="1.0px"
-        android:layout_below="@id/dialog_toc_line"
-        android:layout_alignParentBottom="true"
-        android:fastScrollEnabled="true"
-        android:footerDividersEnabled="true"/>
+<RelativeLayout android:background="?dialog_background" android:paddingBottom="30.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="@dimen/read_toc_title_text" android:textColor="?dialog_text_color" android:id="@id/dialog_toc_title" android:paddingTop="@dimen/dp_12" android:paddingBottom="@dimen/dp_12" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerHorizontal="true" />
+    <View android:id="@id/dialog_toc_line" android:background="?dialog_divider" android:layout_width="fill_parent" android:layout_height="2.0px" android:layout_below="@id/dialog_toc_title" />
+    <ListView android:id="@id/dialog_toc_list" android:layout_width="fill_parent" android:layout_height="fill_parent" android:divider="?dialog_list_divider" android:dividerHeight="1.0px" android:layout_below="@id/dialog_toc_line" android:layout_alignParentBottom="true" android:fastScrollEnabled="true" android:footerDividersEnabled="true" />
 </RelativeLayout>

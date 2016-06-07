@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="action_bar_bottom_height">55.0dip</dimen>
+    <dimen name="add_vote_item_btn_text">2.0dip</dimen>
+    <dimen name="book_review_pop_height">260.0dip</dimen>
+    <dimen name="dp_18">16.0dip</dimen>
+    <dimen name="dp_20">18.0dip</dimen>
+    <dimen name="dp_25">22.0dip</dimen>
+    <dimen name="post_comment_name_width">120.0dip</dimen>
+    <dimen name="random_entrance_gap_big">15.0dip</dimen>
+    <dimen name="random_entrance_gap_small">10.0dip</dimen>
+    <item type="dimen" name="random_entrance_multiplier">1.0</item>
+    <dimen name="random_entrance_title">30.0sp</dimen>
+</resources>

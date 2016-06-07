@@ -1,33 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:padding="16.0dip"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                xmlns:android="http://schemas.android.com/apk/res/android">
-
-    <com.clilystudio.app.netbook.widget.CoverView
-        android:id="@+id/avatar"
-        android:layout_width="40.0dip"
-        android:layout_height="40.0dip"/>
-
-    <TextView
-        android:textSize="16.0sp"
-        android:textColor="#ff212121"
-        android:id="@+id/name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="16.0dip"
-        android:text="许邵杰"
-        android:layout_toRightOf="@id/avatar"
-        android:layout_alignTop="@id/avatar"/>
-
-    <TextView
-        android:textSize="12.0sp"
-        android:textColor="#ff727272"
-        android:id="@+id/tv_desc"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="16.0dip"
-        android:text="动态 12 |  关注 24 |  粉丝 12"
-        android:layout_toRightOf="@id/avatar"
-        android:layout_alignBottom="@id/avatar"/>
+<RelativeLayout android:padding="16.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.clilystudio.netbook.widget.CoverView android:id="@id/avatar" android:layout_width="40.0dip" android:layout_height="40.0dip" />
+    <TextView android:textSize="16.0sp" android:textColor="#ff212121" android:id="@id/name" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:text="许邵杰" android:layout_toRightOf="@id/avatar" android:layout_alignTop="@id/avatar" />
+    <TextView android:textSize="12.0sp" android:textColor="#ff727272" android:id="@id/tv_desc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:text="动态 12 |  关注 24 |  粉丝 12" android:layout_toRightOf="@id/avatar" android:layout_alignBottom="@id/avatar" />
 </RelativeLayout>

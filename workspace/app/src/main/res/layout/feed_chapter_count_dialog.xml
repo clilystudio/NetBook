@@ -1,41 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical"
-              android:layout_width="fill_parent"
-              android:layout_height="wrap_content"
-              android:layout_marginTop="@dimen/dp_24"
-              android:layout_marginBottom="-40.0dip"
-              xmlns:android="http://schemas.android.com/apk/res/android">
-
-    <RadioGroup
-        android:id="@+id/feed_group"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/dp_30"
-        android:layout_marginRight="@dimen/dp_30">
-
-        <RadioButton
-            android:id="@+id/feed_chapter_10"
-            android:text="@string/feed_chapter_count10"
-            style="@style/MyRadioButton"/>
-
-        <RadioButton
-            android:id="@+id/feed_chapter_20"
-            android:text="@string/feed_chapter_count20"
-            style="@style/MyRadioButton"/>
-
-        <RadioButton
-            android:id="@+id/feed_chapter_50"
-            android:text="@string/feed_chapter_count50"
-            style="@style/MyRadioButton"/>
-
-        <RadioButton
-            android:id="@+id/feed_chapter_100"
-            android:text="@string/feed_chapter_count100"
-            style="@style/MyRadioButton"/>
-
-        <RadioButton
-            android:id="@+id/feed_chapter_200"
-            android:text="@string/feed_chapter_count200"
-            style="@style/MyRadioButton"/>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp_24" android:layout_marginBottom="-40.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RadioGroup android:id="@id/feed_group" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dp_30" android:layout_marginRight="@dimen/dp_30">
+        <RadioButton android:id="@id/feed_chapter_10" android:text="@string/feed_chapter_count10" style="@style/MyRadioButton" />
+        <RadioButton android:id="@id/feed_chapter_20" android:text="@string/feed_chapter_count20" style="@style/MyRadioButton" />
+        <RadioButton android:id="@id/feed_chapter_50" android:text="@string/feed_chapter_count50" style="@style/MyRadioButton" />
+        <RadioButton android:id="@id/feed_chapter_100" android:text="@string/feed_chapter_count100" style="@style/MyRadioButton" />
+        <RadioButton android:id="@id/feed_chapter_200" android:text="@string/feed_chapter_count200" style="@style/MyRadioButton" />
     </RadioGroup>
 </LinearLayout>

@@ -1,96 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:gravity="center_vertical"
-             android:background="?backgroundPressed"
-             android:paddingLeft="@dimen/dp_16"
-             android:paddingTop="@dimen/dp_4"
-             android:paddingRight="@dimen/dp_16"
-             android:paddingBottom="@dimen/dp_4"
-             android:layout_width="fill_parent"
-             android:layout_height="@dimen/dp_88"
-             android:minHeight="@dimen/dp_88"
-             xmlns:android="http://schemas.android.com/apk/res/android">
-
-    <RelativeLayout
-        android:gravity="center_vertical"
-        android:layout_width="fill_parent"
-        android:layout_height="@dimen/dp_80"
-        android:minHeight="@dimen/dp_80">
-
-        <TextView
-            android:textSize="@dimen/text_size_20"
-            android:gravity="center"
-            android:id="@+id/voucher_right_text"
-            android:background="?voucherRightDisableBg"
-            android:layout_width="@dimen/dp_40"
-            android:layout_height="@dimen/dp_80"
-            android:layout_alignParentRight="true"/>
-
-        <RelativeLayout
-            android:background="?voucherLeftBg"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:minHeight="@dimen/dp_80"
-            android:layout_toLeftOf="@id/voucher_right_text">
-
-            <RelativeLayout
-                android:padding="@dimen/dp_16"
-                android:layout_width="fill_parent"
-                android:layout_height="@dimen/dp_80"
-                android:minHeight="@dimen/dp_80">
-
-                <TextView
-                    android:textSize="@dimen/text_size_24"
-                    android:textColor="@color/primary_red"
-                    android:id="@+id/voucher_amount"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentTop="true"/>
-
-                <TextView
-                    android:textSize="@dimen/text_size_15"
-                    android:textColor="?android:textColor"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text=" 追书币"
-                    android:layout_toRightOf="@id/voucher_amount"
-                    android:layout_alignBaseline="@id/voucher_amount"/>
-
-                <TextView
-                    android:textSize="@dimen/text_size_12"
-                    android:textColor="?android:textColor"
-                    android:id="@+id/voucher_balance"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentBottom="true"/>
-
-                <TextView
-                    android:textSize="@dimen/text_size_12"
-                    android:textColor="?android:textColorSecondary"
-                    android:id="@+id/voucher_expired"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_alignParentBottom="true"/>
-
-                <TextView
-                    android:textSize="@dimen/text_size_12"
-                    android:textColor="?android:textColorSecondary"
-                    android:id="@+id/voucher_source"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/dp_10"
-                    android:layout_above="@id/voucher_expired"
-                    android:layout_alignParentRight="true"/>
+<FrameLayout android:gravity="center_vertical" android:background="?backgroundPressed" android:paddingLeft="@dimen/dp_16" android:paddingTop="@dimen/dp_4" android:paddingRight="@dimen/dp_16" android:paddingBottom="@dimen/dp_4" android:layout_width="fill_parent" android:layout_height="@dimen/dp_88" android:minHeight="@dimen/dp_88"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="@dimen/dp_80" android:minHeight="@dimen/dp_80">
+        <TextView android:textSize="@dimen/text_size_20" android:gravity="center" android:id="@id/voucher_right_text" android:background="?voucherRightDisableBg" android:layout_width="@dimen/dp_40" android:layout_height="@dimen/dp_80" android:layout_alignParentRight="true" />
+        <RelativeLayout android:background="?voucherLeftBg" android:layout_width="fill_parent" android:layout_height="fill_parent" android:minHeight="@dimen/dp_80" android:layout_toLeftOf="@id/voucher_right_text">
+            <RelativeLayout android:padding="@dimen/dp_16" android:layout_width="fill_parent" android:layout_height="@dimen/dp_80" android:minHeight="@dimen/dp_80">
+                <TextView android:textSize="@dimen/text_size_24" android:textColor="@color/primary_red" android:id="@id/voucher_amount" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
+                <TextView android:textSize="@dimen/text_size_15" android:textColor="?android:textColor" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text=" 追书币" android:layout_toRightOf="@id/voucher_amount" android:layout_alignBaseline="@id/voucher_amount" />
+                <TextView android:textSize="@dimen/text_size_12" android:textColor="?android:textColor" android:id="@id/voucher_balance" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true" />
+                <TextView android:textSize="@dimen/text_size_12" android:textColor="?android:textColorSecondary" android:id="@id/voucher_expired" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
+                <TextView android:textSize="@dimen/text_size_12" android:textColor="?android:textColorSecondary" android:id="@id/voucher_source" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/dp_10" android:layout_above="@id/voucher_expired" android:layout_alignParentRight="true" />
             </RelativeLayout>
-
-            <View
-                android:background="@drawable/voucher_dash"
-                android:visibility="gone"
-                android:layout_width="2.0dip"
-                android:layout_height="@dimen/dp_80"
-                android:layout_alignParentRight="true"/>
+            <View android:background="@drawable/voucher_dash" android:visibility="gone" android:layout_width="2.0dip" android:layout_height="@dimen/dp_80" android:layout_alignParentRight="true" />
         </RelativeLayout>
     </RelativeLayout>
 </FrameLayout>

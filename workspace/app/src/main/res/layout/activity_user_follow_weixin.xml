@@ -1,54 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical"
-              android:background="?backgroundPressed"
-              android:layout_width="fill_parent"
-              android:layout_height="fill_parent"
-              xmlns:android="http://schemas.android.com/apk/res/android">
-
-    <RelativeLayout
-        android:layout_gravity="center_horizontal"
-        android:id="@+id/rl_follow_weixin"
-        android:background="?backgroundSelector"
-        android:layout_width="fill_parent"
-        android:layout_height="@dimen/dp_56"
-        android:layout_marginTop="@dimen/dp_16">
-
-        <TextView
-            android:textSize="@dimen/text_size_16"
-            android:textColor="?android:textColor"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/dp_16"
-            android:text="@string/user_follow_weixin"
-            android:layout_alignParentLeft="true"
-            android:layout_centerVertical="true"/>
-
-        <TextView
-            android:textSize="@dimen/text_size_16"
-            android:textColor="?android:textColorSecondary"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="@dimen/dp_16"
-            android:text="@string/user_follow_app_name"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"/>
+<LinearLayout android:orientation="vertical" android:background="?backgroundPressed" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_gravity="center_horizontal" android:id="@id/rl_follow_weixin" android:background="?backgroundSelector" android:layout_width="fill_parent" android:layout_height="@dimen/dp_56" android:layout_marginTop="@dimen/dp_16">
+        <TextView android:textSize="@dimen/text_size_16" android:textColor="?android:textColor" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dp_16" android:text="@string/user_follow_weixin" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+        <TextView android:textSize="@dimen/text_size_16" android:textColor="?android:textColorSecondary" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/dp_16" android:text="@string/user_follow_app_name" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
     </RelativeLayout>
-
-    <TextView
-        android:textSize="@dimen/text_size_16"
-        android:textColor="?android:textColorTertiary"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/dp_16"
-        android:layout_marginTop="@dimen/dp_32"
-        android:text="@string/user_follow_explanation"/>
-
-    <TextView
-        android:textSize="@dimen/text_size_14"
-        android:textColor="?android:textColorTertiary"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/dp_16"
-        android:layout_marginTop="@dimen/dp_16"
-        android:text="@string/user_follow_xeixin_explanation"/>
+    <TextView android:textSize="@dimen/text_size_16" android:textColor="?android:textColorTertiary" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dp_16" android:layout_marginTop="@dimen/dp_32" android:text="@string/user_follow_explanation" />
+    <TextView android:textSize="@dimen/text_size_14" android:textColor="?android:textColorTertiary" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dp_16" android:layout_marginTop="@dimen/dp_16" android:text="@string/user_follow_xeixin_explanation" />
 </LinearLayout>

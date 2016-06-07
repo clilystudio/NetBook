@@ -1,78 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical"
-              android:background="?android:windowBackground"
-              android:layout_width="fill_parent"
-              android:layout_height="fill_parent"
-              xmlns:android="http://schemas.android.com/apk/res/android">
-
-    <LinearLayout
-        android:gravity="center"
-        android:orientation="vertical"
-        android:layout_width="fill_parent"
-        android:layout_height="0.0dip"
-        android:layout_weight="8.0">
-
-        <ImageView
-            android:layout_gravity="center_horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="-15.0dip"
-            android:src="@drawable/pc_and_phone"/>
-
-        <TextView
-            android:textSize="13.0sp"
-            android:textColor="?android:textColorSecondary"
-            android:layout_gravity="center_horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="25.0dip"
-            android:text="请在电脑浏览器的地址栏输入"/>
-
-        <TextView
-            android:textSize="17.0sp"
-            android:textColor="#ffe33124"
-            android:gravity="center"
-            android:layout_gravity="center_horizontal"
-            android:id="@+id/ip_address"
-            android:background="@drawable/ip_address_background"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="18.0dip"/>
+<LinearLayout android:orientation="vertical" android:background="?android:windowBackground" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="8.0">
+        <ImageView android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="-15.0dip" android:src="@drawable/pc_and_phone" />
+        <TextView android:textSize="13.0sp" android:textColor="?android:textColorSecondary" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="25.0dip" android:text="请在电脑浏览器的地址栏输入" />
+        <TextView android:textSize="17.0sp" android:textColor="#ffe33124" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/ip_address" android:background="@drawable/ip_address_background" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="18.0dip" />
     </LinearLayout>
-
-    <View
-        android:background="?lineColor"
-        android:layout_width="fill_parent"
-        android:layout_height="6.0px"/>
-
-    <LinearLayout
-        android:gravity="center"
-        android:orientation="vertical"
-        android:background="?backgroundPressed"
-        android:layout_width="fill_parent"
-        android:layout_height="0.0dip"
-        android:layout_weight="2.0">
-
-        <TextView
-            android:textSize="13.0sp"
-            android:textColor="?android:textColorSecondary"
-            android:layout_gravity="center_horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="WiFi传书过程中不要关闭此页面哦"/>
-
-        <TextView
-            android:textSize="12.0sp"
-            android:textColor="#ff999999"
-            android:gravity="center"
-            android:layout_gravity="center_horizontal"
-            android:id="@+id/wifi_name"
-            android:background="@drawable/wifi_name_background"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="11.0dip"
-            android:text="name"
-            android:drawableLeft="@drawable/wifi_icon"
-            android:drawablePadding="3.0dip"/>
+    <View android:background="?lineColor" android:layout_width="fill_parent" android:layout_height="6.0px" />
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:background="?backgroundPressed" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="2.0">
+        <TextView android:textSize="13.0sp" android:textColor="?android:textColorSecondary" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="WiFi传书过程中不要关闭此页面哦" />
+        <TextView android:textSize="12.0sp" android:textColor="#ff999999" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/wifi_name" android:background="@drawable/wifi_name_background" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="11.0dip" android:text="name" android:drawableLeft="@drawable/wifi_icon" android:drawablePadding="3.0dip" />
     </LinearLayout>
 </LinearLayout>

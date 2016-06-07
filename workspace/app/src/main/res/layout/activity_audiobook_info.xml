@@ -1,23 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="?android:windowBackground"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                xmlns:android="http://schemas.android.com/apk/res/android">
-
-    <include
-        android:visibility="gone"
-        layout="@layout/audiobook_info_content"/>
-
-    <ProgressBar
-        android:id="@+id/pb_loading"
-        android:layout_centerInParent="true"
-        style="@style/Loading"/>
-
-    <ImageView
-        android:id="@+id/load_error_hint_btn"
-        android:visibility="gone"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/load_error_hint"
-        android:layout_centerInParent="true"/>
+<RelativeLayout android:background="?android:windowBackground" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include android:visibility="gone" layout="@layout/audiobook_info_content" />
+    <ProgressBar android:id="@id/pb_loading" android:layout_centerInParent="true" style="@style/Loading" />
+    <ImageView android:id="@id/load_error_hint_btn" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/load_error_hint" android:layout_centerInParent="true" />
 </RelativeLayout>

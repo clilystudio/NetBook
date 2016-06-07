@@ -1,173 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView android:background="?android:windowBackground"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:apps="http://schemas.android.com/apk/res-auto">
-
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
-
-        <View
-            android:layout_width="fill_parent"
-            android:layout_height="40.0dip"/>
-
-        <View
-            android:background="?lineColor"
-            android:layout_width="fill_parent"
-            android:layout_height="1.0px"/>
-
-        <android.support.v7.widget.SwitchCompat
-            android:textSize="@dimen/settings_item_l"
-            android:textColor="?android:textColor"
-            android:id="@+id/reader_option_cb_volume_flip"
-            android:checked="true"
-            android:text="@string/pref_volume_keys_flip"
-            style="@style/Setting_Item_Switch"/>
-
-        <View
-            android:background="?lineColor"
-            android:layout_width="fill_parent"
-            android:layout_height="1.0px"/>
-
-        <com.clilystudio.app.netbook.widget.SettingCheckBox
-            android:textSize="@dimen/settings_item_l"
-            android:textColor="?android:textColor"
-            android:id="@+id/always_next_page"
-            android:checked="false"
-            android:text="全屏点击翻下页"
-            style="@style/Setting_Item_Switch"/>
-
-        <View
-            android:background="?lineColor"
-            android:layout_width="fill_parent"
-            android:layout_height="1.0px"/>
-
-        <android.support.v7.widget.SwitchCompat
-            android:textSize="@dimen/settings_item_l"
-            android:textColor="?android:textColor"
-            android:id="@+id/reader_option_cb_flip_animation"
-            android:checked="false"
-            android:text="@string/pref_click_flip_animation"
-            style="@style/Setting_Item_Switch"/>
-
-        <View
-            android:background="?lineColor"
-            android:layout_width="fill_parent"
-            android:layout_height="1.0px"/>
-
-        <android.support.v7.widget.SwitchCompat
-            android:textSize="@dimen/settings_item_l"
-            android:textColor="?android:textColor"
-            android:id="@+id/reader_option_full_screen"
-            android:checked="false"
-            android:text="@string/pref_reader_full_screen"
-            style="@style/Setting_Item_Switch"/>
-
-        <View
-            android:id="@+id/immersive_divider"
-            android:background="?lineColor"
-            android:layout_width="fill_parent"
-            android:layout_height="1.0px"/>
-
-        <com.clilystudio.app.netbook.widget.SettingItem
-            android:id="@+id/immersive_container"
-            android:clickable="true"
-            android:layout_width="fill_parent"
-            android:layout_height="@dimen/dp_75"
-            style="@style/Setting_Item_Switch">
-
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true">
-
-                <TextView
-                    android:textSize="@dimen/settings_item_l"
-                    android:textColor="?android:textColor"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="沉浸模式"/>
-
-                <TextView
-                    android:textSize="@dimen/settings_item_s"
-                    android:textColor="?android:textColorSecondary"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="2.0dip"
-                    android:text="阅读时隐藏虚拟按键"/>
+<ScrollView android:background="?android:windowBackground" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:apps="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <View android:layout_width="fill_parent" android:layout_height="40.0dip" />
+        <View android:background="?lineColor" android:layout_width="fill_parent" android:layout_height="1.0px" />
+        <android.support.v7.widget.SwitchCompat android:textSize="@dimen/settings_item_l" android:textColor="?android:textColor" android:id="@id/reader_option_cb_volume_flip" android:checked="true" android:text="@string/pref_volume_keys_flip" style="@style/Setting_Item_Switch" />
+        <View android:background="?lineColor" android:layout_width="fill_parent" android:layout_height="1.0px" />
+        <com.clilystudio.netbook.widget.SettingCheckBox android:textSize="@dimen/settings_item_l" android:textColor="?android:textColor" android:id="@id/always_next_page" android:checked="false" android:text="全屏点击翻下页" apps:pref_name="key_always_next_page" style="@style/Setting_Item_Switch" />
+        <View android:background="?lineColor" android:layout_width="fill_parent" android:layout_height="1.0px" />
+        <android.support.v7.widget.SwitchCompat android:textSize="@dimen/settings_item_l" android:textColor="?android:textColor" android:id="@id/reader_option_cb_flip_animation" android:checked="false" android:text="@string/pref_click_flip_animation" style="@style/Setting_Item_Switch" />
+        <View android:background="?lineColor" android:layout_width="fill_parent" android:layout_height="1.0px" />
+        <android.support.v7.widget.SwitchCompat android:textSize="@dimen/settings_item_l" android:textColor="?android:textColor" android:id="@id/reader_option_full_screen" android:checked="false" android:text="@string/pref_reader_full_screen" style="@style/Setting_Item_Switch" />
+        <View android:id="@id/immersive_divider" android:background="?lineColor" android:layout_width="fill_parent" android:layout_height="1.0px" />
+        <com.clilystudio.netbook.widget.SettingItem android:id="@id/immersive_container" android:clickable="true" android:layout_width="fill_parent" android:layout_height="@dimen/dp_75" style="@style/Setting_Item_Switch">
+            <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true">
+                <TextView android:textSize="@dimen/settings_item_l" android:textColor="?android:textColor" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="沉浸模式" />
+                <TextView android:textSize="@dimen/settings_item_s" android:textColor="?android:textColorSecondary" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2.0dip" android:text="阅读时隐藏虚拟按键" />
             </LinearLayout>
-
-            <android.support.v7.widget.SwitchCompat
-                android:id="@+id/check"
-                android:clickable="false"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="3.0dip"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"/>
-        </com.clilystudio.app.netbook.widget.SettingItem>
-
-        <View
-            android:background="?lineColor"
-            android:layout_width="fill_parent"
-            android:layout_height="1.0px"/>
-
-        <android.support.v7.widget.SwitchCompat
-            android:textSize="@dimen/settings_item_l"
-            android:textColor="?android:textColor"
-            android:id="@+id/reader_option_convert"
-            android:checked="false"
-            android:text="@string/pref_reader_convert"
-            style="@style/Setting_Item_Switch"/>
-
-        <View
-            android:background="?lineColor"
-            android:layout_width="fill_parent"
-            android:layout_height="1.0px"/>
-
-        <LinearLayout
-            android:orientation="vertical"
-            android:id="@+id/reader_option_screen_off_time"
-            android:layout_height="@dimen/dp_75"
-            style="@style/Setting_Item_Switch">
-
-            <TextView
-                android:textSize="@dimen/settings_item_l"
-                android:textColor="?android:textColor"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/pref_title_screen_off_time"/>
-
-            <TextView
-                android:textSize="@dimen/settings_item_s"
-                android:textColor="?android:textColorSecondary"
-                android:id="@+id/reader_option_screen_off_time_value"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="2.0dip"
-                android:text="2分钟"/>
+            <android.support.v7.widget.SwitchCompat android:id="@id/check" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="3.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        </com.clilystudio.netbook.widget.SettingItem>
+        <View android:background="?lineColor" android:layout_width="fill_parent" android:layout_height="1.0px" />
+        <android.support.v7.widget.SwitchCompat android:textSize="@dimen/settings_item_l" android:textColor="?android:textColor" android:id="@id/reader_option_convert" android:checked="false" android:text="@string/pref_reader_convert" style="@style/Setting_Item_Switch" />
+        <View android:background="?lineColor" android:layout_width="fill_parent" android:layout_height="1.0px" />
+        <LinearLayout android:orientation="vertical" android:id="@id/reader_option_screen_off_time" android:layout_height="@dimen/dp_75" style="@style/Setting_Item_Switch">
+            <TextView android:textSize="@dimen/settings_item_l" android:textColor="?android:textColor" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/pref_title_screen_off_time" />
+            <TextView android:textSize="@dimen/settings_item_s" android:textColor="?android:textColorSecondary" android:id="@id/reader_option_screen_off_time_value" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2.0dip" android:text="2分钟" />
         </LinearLayout>
-
-        <View
-            android:background="?lineColor"
-            android:layout_width="fill_parent"
-            android:layout_height="1.0px"/>
-
-        <android.support.v7.widget.SwitchCompat
-            android:textSize="@dimen/settings_item_l"
-            android:textColor="?android:textColor"
-            android:id="@+id/reader_option_auto_buy"
-            android:checked="false"
-            android:text="@string/pref_reader_auto_buy"
-            style="@style/Setting_Item_Switch"/>
-
-        <View
-            android:background="?lineColor"
-            android:layout_width="fill_parent"
-            android:layout_height="1.0px"/>
+        <View android:background="?lineColor" android:layout_width="fill_parent" android:layout_height="1.0px" />
+        <android.support.v7.widget.SwitchCompat android:textSize="@dimen/settings_item_l" android:textColor="?android:textColor" android:id="@id/reader_option_auto_buy" android:checked="false" android:text="@string/pref_reader_auto_buy" style="@style/Setting_Item_Switch" />
+        <View android:background="?lineColor" android:layout_width="fill_parent" android:layout_height="1.0px" />
     </LinearLayout>
 </ScrollView>

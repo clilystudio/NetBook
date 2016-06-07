@@ -1,40 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal"
-              android:background="?backgroundSelector"
-              android:paddingTop="16.0dip"
-              android:paddingRight="16.0dip"
-              android:paddingBottom="16.0dip"
-              android:descendantFocusability="blocksDescendants"
-              android:layout_width="fill_parent"
-              android:layout_height="wrap_content"
-              xmlns:android="http://schemas.android.com/apk/res/android">
-
-    <ImageView
-        android:layout_gravity="center_vertical"
-        android:layout_width="@dimen/scan_txt_divider_left_gap"
-        android:layout_height="wrap_content"
-        android:src="@drawable/txt_book_file"/>
-
-    <LinearLayout
-        android:layout_gravity="center_vertical"
-        android:orientation="vertical"
-        android:layout_width="0.0dip"
-        android:layout_height="wrap_content"
-        android:layout_weight="1.0">
-
-        <TextView
-            android:id="@+id/title"
-            android:singleLine="true"
-            style="@style/LargeText"/>
-
-        <TextView
-            android:id="@+id/size"
-            style="@style/SmallText"/>
+<LinearLayout android:orientation="horizontal" android:background="?backgroundSelector" android:paddingTop="16.0dip" android:paddingRight="16.0dip" android:paddingBottom="16.0dip" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:layout_gravity="center_vertical" android:layout_width="@dimen/scan_txt_divider_left_gap" android:layout_height="wrap_content" android:src="@drawable/txt_book_file" />
+    <LinearLayout android:layout_gravity="center_vertical" android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+        <TextView android:id="@id/title" android:singleLine="true" style="@style/LargeText" />
+        <TextView android:id="@id/size" style="@style/SmallText" />
     </LinearLayout>
-
-    <ImageView
-        android:layout_gravity="center_vertical"
-        android:id="@+id/checkbox"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+    <ImageView android:layout_gravity="center_vertical" android:id="@id/checkbox" android:layout_width="wrap_content" android:layout_height="wrap_content" />
 </LinearLayout>

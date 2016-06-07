@@ -1,109 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@+id/reader_page_normal"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                xmlns:android="http://schemas.android.com/apk/res/android">
-
-    <TextView
-        android:textSize="@dimen/text_size_13"
-        android:ellipsize="end"
-        android:id="@+id/tv_title"
-        android:layout_width="fill_parent"
-        android:layout_height="@dimen/page_small_text_height"
-        android:singleLine="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"/>
-
-    <me.biubiubiu.justifytext.library.JustifyTextView
-        android:id="@+id/tv_body"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/page_body_margin"
-        android:layout_marginBottom="@dimen/page_body_margin"
-        android:layout_above="@id/tv_time"
-        android:layout_below="@id/tv_title"/>
-
-    <TextView
-        android:textSize="@dimen/text_size_8"
-        android:textStyle="bold"
-        android:gravity="center"
-        android:id="@+id/tv_battery"
-        android:background="@drawable/reader_battery_bg_normal"
-        android:paddingLeft="1.0dip"
-        android:layout_width="24.0dip"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="1.0dip"
-        android:layout_alignParentBottom="true"/>
-
-    <TextView
-        android:textSize="@dimen/text_size_13"
-        android:gravity="center"
-        android:id="@+id/tv_time"
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/page_small_text_height"
-        android:layout_marginLeft="5.0dip"
-        android:layout_toRightOf="@id/tv_battery"
-        android:layout_alignParentBottom="true"/>
-
-    <TextView
-        android:textSize="@dimen/text_size_13"
-        android:id="@+id/tv_page_number"
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/page_small_text_height"
-        android:singleLine="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"/>
-
-    <LinearLayout
-        android:gravity="center_horizontal"
-        android:orientation="vertical"
-        android:id="@+id/reader_page_error"
-        android:visibility="gone"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true">
-
-        <ImageView
-            android:id="@+id/reader_page_error_img"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-
-        <TextView
-            android:textSize="@dimen/text_size_16"
-            android:textColor="@color/reader_error_text"
-            android:id="@+id/reader_page_error_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="23.0dip"
-            android:text="网络连接不可用"/>
-
-        <TextView
-            android:textSize="15.0sp"
-            android:textColor="@color/reader_error_text"
-            android:id="@+id/reader_page_error_hint"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5.0dip"
-            android:text="@string/chapter_load_error"/>
-
-        <TextView
-            android:id="@+id/reader_page_error_txt"
-            android:layout_marginTop="27.0dip"
-            android:text="@string/retry"
-            style="@style/ReaderError"/>
-
-        <TextView
-            android:id="@+id/reader_page_sub_error_txt"
-            android:layout_marginTop="13.0dip"
-            android:text="@string/retry"
-            style="@style/ReaderError"/>
+<RelativeLayout android:id="@id/reader_page_normal" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="@dimen/text_size_13" android:ellipsize="end" android:id="@id/tv_title" android:layout_width="fill_parent" android:layout_height="@dimen/page_small_text_height" android:singleLine="true" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
+    <me.biubiubiu.justifytext.library.JustifyTextView android:id="@id/tv_body" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/page_body_margin" android:layout_marginBottom="@dimen/page_body_margin" android:layout_above="@id/tv_time" android:layout_below="@id/tv_title" />
+    <TextView android:textSize="@dimen/text_size_8" android:textStyle="bold" android:gravity="center" android:id="@id/tv_battery" android:background="@drawable/reader_battery_bg_normal" android:paddingLeft="1.0dip" android:layout_width="24.0dip" android:layout_height="wrap_content" android:layout_marginBottom="1.0dip" android:layout_alignParentBottom="true" />
+    <TextView android:textSize="@dimen/text_size_13" android:gravity="center" android:id="@id/tv_time" android:layout_width="wrap_content" android:layout_height="@dimen/page_small_text_height" android:layout_marginLeft="5.0dip" android:layout_toRightOf="@id/tv_battery" android:layout_alignParentBottom="true" />
+    <TextView android:textSize="@dimen/text_size_13" android:id="@id/tv_page_number" android:layout_width="wrap_content" android:layout_height="@dimen/page_small_text_height" android:singleLine="true" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
+    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/reader_page_error" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerHorizontal="true" android:layout_centerVertical="true">
+        <ImageView android:id="@id/reader_page_error_img" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        <TextView android:textSize="@dimen/text_size_16" android:textColor="@color/reader_error_text" android:id="@id/reader_page_error_title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="23.0dip" android:text="网络连接不可用" />
+        <TextView android:textSize="15.0sp" android:textColor="@color/reader_error_text" android:id="@id/reader_page_error_hint" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:text="@string/chapter_load_error" />
+        <TextView android:id="@id/reader_page_error_txt" android:layout_marginTop="27.0dip" android:text="@string/retry" style="@style/ReaderError" />
+        <TextView android:id="@id/reader_page_sub_error_txt" android:layout_marginTop="13.0dip" android:text="@string/retry" style="@style/ReaderError" />
     </LinearLayout>
-
-    <include
-        android:layout_width="fill_parent"
-        android:layout_height="@dimen/dp_60"
-        android:layout_marginBottom="@dimen/dp_30"
-        android:layout_alignParentBottom="true"
-        layout="@layout/reader_page_ad"/>
+    <include android:layout_width="fill_parent" android:layout_height="@dimen/dp_60" android:layout_marginBottom="@dimen/dp_30" android:layout_alignParentBottom="true" layout="@layout/reader_page_ad" />
 </RelativeLayout>

@@ -1,42 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@+id/ll_item"
-                android:background="?dialog_item_background"
-                style="@style/ListItem_Reader_Toc"
-                xmlns:android="http://schemas.android.com/apk/res/android">
-
-    <ImageView
-        android:id="@+id/iv_icon"
-        android:layout_width="14.0dip"
-        android:layout_height="14.0dip"
-        android:src="?dialog_icon_drawable"
-        android:scaleType="center"
-        android:layout_alignParentLeft="true"
-        android:layout_centerVertical="true"
-        android:layout_alignParentStart="true"/>
-
-    <TextView
-        android:textSize="@dimen/text_size_14"
-        android:textColor="?dialog_text_color"
-        android:id="@+id/tv_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/reader_toc_icon_right"
-        android:layout_marginRight="@dimen/dp_16"
-        android:text="Title"
-        android:singleLine="true"
-        android:layout_toRightOf="@id/iv_icon"
-        android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"
-        android:layout_alignParentEnd="true"/>
-
-    <ImageView
-        android:id="@+id/iv_readable"
-        android:visibility="gone"
-        android:layout_width="14.0dip"
-        android:layout_height="14.0dip"
-        android:src="@drawable/dialog_icon_readable"
-        android:scaleType="center"
-        android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"
-        android:layout_alignParentEnd="true"/>
+<RelativeLayout android:id="@id/ll_item" android:background="?dialog_item_background" style="@style/ListItem_Reader_Toc"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/iv_icon" android:layout_width="14.0dip" android:layout_height="14.0dip" android:src="?dialog_icon_drawable" android:scaleType="center" android:layout_alignParentLeft="true" android:layout_centerVertical="true" android:layout_alignParentStart="true" />
+    <TextView android:textSize="@dimen/text_size_14" android:textColor="?dialog_text_color" android:id="@id/tv_title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/reader_toc_icon_right" android:layout_marginRight="@dimen/dp_16" android:text="Title" android:singleLine="true" android:layout_toRightOf="@id/iv_icon" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:layout_alignParentEnd="true" />
+    <ImageView android:id="@id/iv_readable" android:visibility="gone" android:layout_width="14.0dip" android:layout_height="14.0dip" android:src="@drawable/dialog_icon_readable" android:scaleType="center" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:layout_alignParentEnd="true" />
 </RelativeLayout>

@@ -1,0 +1,42 @@
+package com.ushaqi.zhuishushenqi.reader;
+
+import android.app.Dialog;
+import android.content.Intent;
+import android.view.MenuItem;
+import android.widget.PopupMenu.OnMenuItemClickListener;
+import com.ushaqi.zhuishushenqi.ui.BookInfoActivity;
+import com.ushaqi.zhuishushenqi.ui.cb;
+
+final class ap
+  implements PopupMenu.OnMenuItemClickListener
+{
+  ap(ReaderActivity paramReaderActivity)
+  {
+  }
+
+  public final boolean onMenuItemClick(MenuItem paramMenuItem)
+  {
+    switch (paramMenuItem.getItemId())
+    {
+    default:
+    case 2131493931:
+    case 2131493932:
+    case 2131493933:
+    }
+    while (true)
+    {
+      return true;
+      ReaderActivity.L(this.a);
+      continue;
+      Intent localIntent = BookInfoActivity.a(this.a, ReaderActivity.M(this.a));
+      this.a.startActivity(localIntent);
+      continue;
+      new cb(this.a, new aq(this)).a().show();
+    }
+  }
+}
+
+/* Location:           E:\Progs\Dev\Android\Decompile\apktool\zssq\zssq-dex2jar.jar
+ * Qualified Name:     com.ushaqi.zhuishushenqi.reader.ap
+ * JD-Core Version:    0.6.0
+ */

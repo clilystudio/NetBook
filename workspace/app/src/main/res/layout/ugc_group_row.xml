@@ -1,18 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TableRow android:id="@+id/row"
-          xmlns:android="http://schemas.android.com/apk/res/android">
-
-    <com.clilystudio.app.netbook.widget.UgcFilterTextView style="@style/Style_Ugc_Filter_Item"/>
-
-    <com.clilystudio.app.netbook.widget.UgcFilterTextView
-        android:layout_marginLeft="@dimen/dp_8"
-        style="@style/Style_Ugc_Filter_Item"/>
-
-    <com.clilystudio.app.netbook.widget.UgcFilterTextView
-        android:layout_marginLeft="@dimen/dp_8"
-        style="@style/Style_Ugc_Filter_Item"/>
-
-    <com.clilystudio.app.netbook.widget.UgcFilterTextView
-        android:layout_marginLeft="@dimen/dp_8"
-        style="@style/Style_Ugc_Filter_Item"/>
+<TableRow android:id="@id/row"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.clilystudio.netbook.widget.UgcFilterTextView style="@style/Style_Ugc_Filter_Item" />
+    <com.clilystudio.netbook.widget.UgcFilterTextView android:layout_marginLeft="@dimen/dp_8" style="@style/Style_Ugc_Filter_Item" />
+    <com.clilystudio.netbook.widget.UgcFilterTextView android:layout_marginLeft="@dimen/dp_8" style="@style/Style_Ugc_Filter_Item" />
+    <com.clilystudio.netbook.widget.UgcFilterTextView android:layout_marginLeft="@dimen/dp_8" style="@style/Style_Ugc_Filter_Item" />
 </TableRow>

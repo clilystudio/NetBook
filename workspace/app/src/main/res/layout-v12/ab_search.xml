@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:id="@id/search_input_layout" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_gravity="center" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
+        <ImageView android:id="@id/back" android:background="?selectableItemBackgroundBorderless" android:layout_width="56.0dip" android:layout_height="fill_parent" android:src="@drawable/ab_back" android:scaleType="center" android:layout_centerVertical="true" android:contentDescription="@string/accessible_return" />
+        <View android:layout_gravity="center" android:background="#33000000" android:layout_width="1.0px" android:layout_height="fill_parent" android:layout_alignRight="@id/back" />
+        <com.clilystudio.netbook.widget.SearchEditText android:textSize="@dimen/text_size_16" android:textColor="#ffffffff" android:textColorHint="#4cffffff" android:layout_gravity="center_vertical" android:id="@id/search_input_edit" android:background="@null" android:paddingLeft="21.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/margin_xs" android:hint="@string/search_hint" android:layout_toLeftOf="@id/search_input_clean" android:layout_toRightOf="@id/back" android:layout_centerVertical="true" android:inputType="text" android:imeOptions="actionSearch" android:textCursorDrawable="@null" />
+        <ImageButton android:id="@id/search_input_clean" android:background="@null" android:visibility="invisible" android:layout_width="48.0dip" android:layout_height="48.0dip" android:src="@drawable/search_bar_btn_clear" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:contentDescription="@string/accessible_search_clear" />
+    </RelativeLayout>
+    <View android:background="#ff9f2b1c" android:layout_width="1.0dip" android:layout_height="fill_parent" />
+    <ImageView android:gravity="center" android:layout_gravity="center" android:id="@id/search_input_search" android:background="?selectableItemBackgroundBorderless" android:layout_width="56.0dip" android:layout_height="fill_parent" android:src="@drawable/ic_action_search" android:scaleType="center" android:contentDescription="@string/accessible_search" />
+</LinearLayout>

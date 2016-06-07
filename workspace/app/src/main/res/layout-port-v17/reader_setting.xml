@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.clilystudio.netbook.reader.SettingWidget android:orientation="vertical" android:background="@color/reader_setting_bg" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:paddingTop="@dimen/dp_20" android:paddingBottom="@dimen/dp_20" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:paddingLeft="@dimen/dp_30" android:paddingRight="@dimen/dp_30" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="7.0">
+            <ImageView android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/brightness_min" />
+            <SeekBar android:layout_gravity="center_vertical" android:id="@id/sb_brightness" android:layout_width="0.0dip" android:layout_height="wrap_content" android:max="255" android:progressDrawable="@drawable/seek_bar" android:thumb="@drawable/seek_bar_thumb" android:thumbOffset="@dimen/dp_12" android:layout_weight="1.0" />
+            <ImageView android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/brightness_max" />
+        </LinearLayout>
+        <LinearLayout android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="3.0">
+            <CheckBox android:textSize="@dimen/text_size_15" android:textColor="#ffffffff" android:id="@id/cb_system_brightness" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="-2.0dip" android:button="@drawable/checkbox_system_brightness" />
+            <TextView android:textSize="@dimen/text_size_12" android:textColor="#fff0f0f0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip" android:text="跟随系统" />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="70.0dip" android:baselineAligned="false">
+        <LinearLayout android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="7.1">
+            <View android:layout_width="0.0dip" android:layout_height="1.0dip" android:layout_weight="1.0" />
+            <ImageButton android:layout_gravity="center" android:id="@id/btn_decrease" android:background="@null" android:padding="@dimen/dp_10" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="30.0dip" android:layout_marginRight="30.0dip" android:src="@drawable/ic_text_size_dec" android:contentDescription="减小字号" />
+            <ImageButton android:layout_gravity="center" android:id="@id/btn_increase" android:background="@null" android:padding="@dimen/dp_10" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/ic_text_size_inc" android:contentDescription="增大字号" />
+            <View android:layout_width="0.0dip" android:layout_height="1.0dip" android:layout_weight="1.5" />
+        </LinearLayout>
+        <RelativeLayout android:layout_gravity="center_vertical" android:id="@id/reader_auto_start" android:background="@drawable/reader_settings_more_bg" android:layout_width="0.0dip" android:layout_height="@dimen/dp_40" android:layout_weight="2.9">
+            <ImageView android:id="@id/image_reader_auto" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/ic_reader_auto" android:layout_centerVertical="true" />
+            <TextView android:textSize="@dimen/text_size_12" android:textColor="#fff0f0f0" android:gravity="center" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/dp_10" android:text="自动阅读" android:layout_toRightOf="@id/image_reader_auto" android:layout_centerVertical="true" android:layout_toEndOf="@id/image_reader_auto" />
+        </RelativeLayout>
+    </LinearLayout>
+    <LinearLayout android:gravity="center_horizontal" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="70.0dip" android:baselineAligned="false">
+        <LinearLayout android:gravity="center_horizontal" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="7.1">
+            <ImageView android:id="@id/reader_set_bg_1" android:background="@drawable/reader_set_bg_btn_white" android:contentDescription="灰色背景色" style="@style/ReaderSettingBgBtn" />
+            <ImageView android:id="@id/reader_set_bg_2" android:background="@drawable/reader_set_bg_btn_brown" android:layout_marginLeft="@dimen/dp_25" android:layout_marginRight="@dimen/dp_25" android:contentDescription="棕色背景色" style="@style/ReaderSettingBgBtn" />
+            <ImageView android:id="@id/reader_set_bg_3" android:background="@drawable/reader_set_bg_btn_green" android:contentDescription="暗绿色背景色" style="@style/ReaderSettingBgBtn" />
+        </LinearLayout>
+        <RelativeLayout android:layout_gravity="center_vertical" android:id="@id/reader_set_more" android:background="@drawable/reader_settings_more_bg" android:layout_width="0.0dip" android:layout_height="@dimen/dp_40" android:layout_weight="2.9">
+            <ImageView android:id="@id/image_reader_setting" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/ic_reader_setting" android:layout_centerVertical="true" />
+            <TextView android:textSize="@dimen/text_size_12" android:textColor="#fff0f0f0" android:gravity="center" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/dp_10" android:text="更多设置" android:layout_toRightOf="@id/image_reader_setting" android:layout_centerHorizontal="true" android:layout_centerVertical="true" />
+        </RelativeLayout>
+    </LinearLayout>
+</com.clilystudio.netbook.reader.SettingWidget>

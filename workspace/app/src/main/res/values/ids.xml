@@ -1,90 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <item type="id" name="action_bar_activity_content"/>
-    <item type="id" name="action_bar_spinner"/>
-    <item type="id" name="action_menu_divider"/>
-    <item type="id" name="action_menu_presenter"/>
-    <item type="id" name="add_vote_item_add_btn"/>
-    <item type="id" name="add_vote_item_del_1"/>
-    <item type="id" name="add_vote_item_del_2"/>
-    <item type="id" name="add_vote_item_del_3"/>
-    <item type="id" name="add_vote_item_del_4"/>
-    <item type="id" name="add_vote_item_del_5"/>
-    <item type="id" name="add_vote_item_del_6"/>
-    <item type="id" name="add_vote_item_del_7"/>
-    <item type="id" name="add_vote_item_edit_1"/>
-    <item type="id" name="add_vote_item_edit_2"/>
-    <item type="id" name="add_vote_item_edit_3"/>
-    <item type="id" name="add_vote_item_edit_4"/>
-    <item type="id" name="add_vote_item_edit_5"/>
-    <item type="id" name="add_vote_item_edit_6"/>
-    <item type="id" name="add_vote_item_edit_7"/>
-    <item type="id" name="add_vote_item_index_1"/>
-    <item type="id" name="add_vote_item_index_2"/>
-    <item type="id" name="add_vote_item_index_3"/>
-    <item type="id" name="add_vote_item_index_4"/>
-    <item type="id" name="add_vote_item_index_5"/>
-    <item type="id" name="add_vote_item_index_6"/>
-    <item type="id" name="add_vote_item_index_7"/>
-    <item type="id" name="add_vote_item_layout1"/>
-    <item type="id" name="add_vote_item_layout2"/>
-    <item type="id" name="add_vote_item_layout3"/>
-    <item type="id" name="add_vote_item_layout4"/>
-    <item type="id" name="add_vote_item_layout5"/>
-    <item type="id" name="add_vote_item_layout6"/>
-    <item type="id" name="add_vote_item_layout7"/>
-    <item type="id" name="add_vote_item_ok_btn"/>
-    <item type="id" name="alarm"/>
-    <item type="id" name="avatar"/>
-    <item type="id" name="checked"/>
-    <item type="id" name="comment_item_avatar"/>
-    <item type="id" name="comment_item_content"/>
-    <item type="id" name="comment_item_time"/>
-    <item type="id" name="comment_total"/>
-    <item type="id" name="content"/>
-    <item type="id" name="cover_loading"/>
-    <item type="id" name="delete"/>
-    <item type="id" name="dis_list_more_layout"/>
-    <item type="id" name="dis_post_comment_time"/>
-    <item type="id" name="dis_post_detail_comment_item_1"/>
-    <item type="id" name="dis_post_detail_comment_percent_bar"/>
-    <item type="id" name="dis_post_detail_comment_percent_text"/>
-    <item type="id" name="dis_post_detail_comment_title"/>
-    <item type="id" name="dis_post_detail_comment_vote"/>
-    <item type="id" name="dis_post_detail_comment_vote_layout"/>
-    <item type="id" name="download"/>
+    <item type="id" name="action_bar_activity_content" />
+    <item type="id" name="action_bar_spinner" />
+    <item type="id" name="action_menu_divider" />
+    <item type="id" name="action_menu_presenter" />
+    <item type="id" name="add_vote_item_add_btn" />
+    <item type="id" name="add_vote_item_del_1" />
+    <item type="id" name="add_vote_item_del_2" />
+    <item type="id" name="add_vote_item_del_3" />
+    <item type="id" name="add_vote_item_del_4" />
+    <item type="id" name="add_vote_item_del_5" />
+    <item type="id" name="add_vote_item_del_6" />
+    <item type="id" name="add_vote_item_del_7" />
+    <item type="id" name="add_vote_item_edit_1" />
+    <item type="id" name="add_vote_item_edit_2" />
+    <item type="id" name="add_vote_item_edit_3" />
+    <item type="id" name="add_vote_item_edit_4" />
+    <item type="id" name="add_vote_item_edit_5" />
+    <item type="id" name="add_vote_item_edit_6" />
+    <item type="id" name="add_vote_item_edit_7" />
+    <item type="id" name="add_vote_item_index_1" />
+    <item type="id" name="add_vote_item_index_2" />
+    <item type="id" name="add_vote_item_index_3" />
+    <item type="id" name="add_vote_item_index_4" />
+    <item type="id" name="add_vote_item_index_5" />
+    <item type="id" name="add_vote_item_index_6" />
+    <item type="id" name="add_vote_item_index_7" />
+    <item type="id" name="add_vote_item_layout1" />
+    <item type="id" name="add_vote_item_layout2" />
+    <item type="id" name="add_vote_item_layout3" />
+    <item type="id" name="add_vote_item_layout4" />
+    <item type="id" name="add_vote_item_layout5" />
+    <item type="id" name="add_vote_item_layout6" />
+    <item type="id" name="add_vote_item_layout7" />
+    <item type="id" name="add_vote_item_ok_btn" />
+    <item type="id" name="alarm" />
+    <item type="id" name="avatar" />
+    <item type="id" name="checked" />
+    <item type="id" name="comment_item_avatar" />
+    <item type="id" name="comment_item_content" />
+    <item type="id" name="comment_item_time" />
+    <item type="id" name="comment_total" />
+    <item type="id" name="content" />
+    <item type="id" name="cover_loading" />
+    <item type="id" name="delete" />
+    <item type="id" name="dis_list_more_layout" />
+    <item type="id" name="dis_post_comment_time" />
+    <item type="id" name="dis_post_detail_comment_item_1" />
+    <item type="id" name="dis_post_detail_comment_percent_bar" />
+    <item type="id" name="dis_post_detail_comment_percent_text" />
+    <item type="id" name="dis_post_detail_comment_title" />
+    <item type="id" name="dis_post_detail_comment_vote" />
+    <item type="id" name="dis_post_detail_comment_vote_layout" />
+    <item type="id" name="download" />
     <item type="id" name="feedback_fail">发送失败，请检查网络</item>
-    <item type="id" name="gridview"/>
-    <item type="id" name="group_book_shelf"/>
-    <item type="id" name="home"/>
-    <item type="id" name="home_actionbar_right"/>
-    <item type="id" name="id_notification"/>
-    <item type="id" name="item_touch_helper_previous_elevation"/>
-    <item type="id" name="list"/>
-    <item type="id" name="make_top"/>
-    <item type="id" name="menu"/>
-    <item type="id" name="msg_comment_to_me_new"/>
-    <item type="id" name="name"/>
-    <item type="id" name="progress_circular"/>
-    <item type="id" name="progress_horizontal"/>
-    <item type="id" name="scrollview"/>
-    <item type="id" name="selected_view"/>
-    <item type="id" name="slm_reader_layout_ad"/>
-    <item type="id" name="split_action_bar"/>
-    <item type="id" name="time"/>
-    <item type="id" name="title"/>
-    <item type="id" name="umeng_feedback_notification"/>
-    <item type="id" name="up"/>
-    <item type="id" name="view_offset_helper"/>
-    <item type="id" name="vote_item_1"/>
-    <item type="id" name="vote_item_2"/>
-    <item type="id" name="vote_item_3"/>
-    <item type="id" name="vote_item_4"/>
-    <item type="id" name="vote_item_5"/>
-    <item type="id" name="vote_item_6"/>
-    <item type="id" name="vote_item_7"/>
-    <item type="id" name="vote_total"/>
-    <item type="id" name="webview"/>
+    <item type="id" name="gridview" />
+    <item type="id" name="group_book_shelf" />
+    <item type="id" name="home" />
+    <item type="id" name="home_actionbar_right" />
+    <item type="id" name="id_notification" />
+    <item type="id" name="item_touch_helper_previous_elevation" />
+    <item type="id" name="list" />
+    <item type="id" name="make_top" />
+    <item type="id" name="menu" />
+    <item type="id" name="msg_comment_to_me_new" />
+    <item type="id" name="name" />
+    <item type="id" name="progress_circular" />
+    <item type="id" name="progress_horizontal" />
+    <item type="id" name="scrollview" />
+    <item type="id" name="selected_view" />
+    <item type="id" name="slm_reader_layout_ad" />
+    <item type="id" name="split_action_bar" />
+    <item type="id" name="time" />
+    <item type="id" name="title" />
+    <item type="id" name="umeng_feedback_notification" />
+    <item type="id" name="up" />
+    <item type="id" name="view_offset_helper" />
+    <item type="id" name="vote_item_1" />
+    <item type="id" name="vote_item_2" />
+    <item type="id" name="vote_item_3" />
+    <item type="id" name="vote_item_4" />
+    <item type="id" name="vote_item_5" />
+    <item type="id" name="vote_item_6" />
+    <item type="id" name="vote_item_7" />
+    <item type="id" name="vote_total" />
+    <item type="id" name="webview" />
     <item type="id" name="actionbar_custom_right_text">false</item>
     <item type="id" name="actionbar_custom_right_icon">false</item>
     <item type="id" name="ab_custom_right_text">false</item>

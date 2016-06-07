@@ -1,227 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@+id/rl_ad_container"
-                android:background="@color/slm_read_mode_bg"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                xmlns:android="http://schemas.android.com/apk/res/android">
-
-    <RelativeLayout
-        android:id="@+id/slm_reader_layout_ad"
-        android:layout_alignParentTop="true"
-        style="@style/Slm_Reader_App_Item">
-
-        <LinearLayout
-            android:orientation="vertical"
-            android:id="@+id/download_layout"
-            android:background="#ff343434"
-            android:padding="@dimen/dp_10"
-            android:layout_width="100.0dip"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true">
-
-            <com.clilystudio.app.netbook.ui.SmartImageView
-                android:layout_gravity="center_horizontal"
-                android:id="@+id/slm_reader_app_icon"
-                style="@style/Slm_Reader_App_Icon"/>
-
-            <TextView
-                android:textSize="@dimen/text_size_15"
-                android:textColor="#ffb2b2b2"
-                android:gravity="center_horizontal"
-                android:layout_gravity="center_horizontal"
-                android:id="@+id/slm_reader_app_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dp_10"
-                android:maxLines="2"/>
-
-            <Button
-                android:textSize="@dimen/text_size_12"
-                android:textColor="#ffdfdfdf"
-                android:layout_gravity="center_horizontal"
-                android:id="@+id/download"
-                android:background="@drawable/reader_ad_round_button"
-                android:clickable="true"
-                android:layout_width="68.0dip"
-                android:layout_height="20.0dip"
-                android:layout_marginTop="@dimen/dp_10"/>
+<RelativeLayout android:id="@id/rl_ad_container" android:background="@color/slm_read_mode_bg" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/slm_reader_layout_ad" android:layout_alignParentTop="true" style="@style/Slm_Reader_App_Item">
+        <LinearLayout android:orientation="vertical" android:id="@id/download_layout" android:background="#ff343434" android:padding="@dimen/dp_10" android:layout_width="100.0dip" android:layout_height="wrap_content" android:layout_alignParentRight="true" android:layout_centerVertical="true">
+            <com.clilystudio.netbook.ui.SmartImageView android:layout_gravity="center_horizontal" android:id="@id/slm_reader_app_icon" style="@style/Slm_Reader_App_Icon" />
+            <TextView android:textSize="@dimen/text_size_15" android:textColor="#ffb2b2b2" android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:id="@id/slm_reader_app_title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp_10" android:maxLines="2" />
+            <Button android:textSize="@dimen/text_size_12" android:textColor="#ffdfdfdf" android:layout_gravity="center_horizontal" android:id="@id/download" android:background="@drawable/reader_ad_round_button" android:clickable="true" android:layout_width="68.0dip" android:layout_height="20.0dip" android:layout_marginTop="@dimen/dp_10" />
         </LinearLayout>
-
-        <LinearLayout
-            android:gravity="center"
-            android:orientation="vertical"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_marginRight="@dimen/dp_32"
-            android:layout_toLeftOf="@id/download_layout">
-
-            <ImageView
-                android:layout_gravity="center_horizontal"
-                android:background="@null"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/reader_ad_quote"/>
-
-            <TextView
-                android:textSize="@dimen/text_size_12"
-                android:textColor="@color/slm_reader_app_desc_text"
-                android:gravity="center_horizontal"
-                android:layout_gravity="center_horizontal"
-                android:id="@+id/slm_reader_app_desc"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dp_20"
-                android:maxLines="4"
-                android:lineSpacingMultiplier="1.3"/>
+        <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginRight="@dimen/dp_32" android:layout_toLeftOf="@id/download_layout">
+            <ImageView android:layout_gravity="center_horizontal" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/reader_ad_quote" />
+            <TextView android:textSize="@dimen/text_size_12" android:textColor="@color/slm_reader_app_desc_text" android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:id="@id/slm_reader_app_desc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp_20" android:maxLines="4" android:lineSpacingMultiplier="1.3" />
         </LinearLayout>
     </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_below="@id/slm_reader_layout_ad">
-
-        <View
-            android:background="@color/black"
-            android:layout_width="fill_parent"
-            android:layout_height="1.0px"
-            android:layout_alignParentTop="true"/>
-
-        <LinearLayout
-            android:orientation="vertical"
-            android:id="@+id/slm_reader_part2"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true">
-
-            <View
-                android:background="@color/black"
-                android:layout_width="fill_parent"
-                android:layout_height="1.0px"/>
-
-            <RelativeLayout
-                android:id="@+id/slm_reader_all_post"
-                android:background="@drawable/bg_darker"
-                android:paddingLeft="@dimen/dp_16"
-                android:paddingRight="@dimen/dp_16"
-                android:layout_width="fill_parent"
-                android:layout_height="@dimen/slm_right_read_item_height"
-                android:layout_marginTop="@dimen/dp_8">
-
-                <ImageView
-                    android:id="@+id/slm_reader_all_post_img"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_read_menu_topic"
-                    android:layout_alignParentLeft="true"
-                    android:layout_centerVertical="true"/>
-
-                <TextView
-                    android:textSize="@dimen/text_size_12"
-                    android:textColor="#ff808080"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/dp_16"
-                    android:text="社区话题"
-                    android:layout_toRightOf="@id/slm_reader_all_post_img"
-                    android:layout_centerVertical="true"/>
-
-                <TextView
-                    android:textSize="@dimen/text_size_12"
-                    android:textColor="#ff808080"
-                    android:gravity="center"
-                    android:id="@+id/reader_menu_topic_count"
-                    android:background="@drawable/bg_read_menu_count"
-                    android:paddingLeft="@dimen/dp_6"
-                    android:paddingRight="@dimen/dp_6"
-                    android:visibility="gone"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"/>
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/slm_reader_layout_ad">
+        <View android:background="@color/black" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_alignParentTop="true" />
+        <LinearLayout android:orientation="vertical" android:id="@id/slm_reader_part2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+            <View android:background="@color/black" android:layout_width="fill_parent" android:layout_height="1.0px" />
+            <RelativeLayout android:id="@id/slm_reader_all_post" android:background="@drawable/bg_darker" android:paddingLeft="@dimen/dp_16" android:paddingRight="@dimen/dp_16" android:layout_width="fill_parent" android:layout_height="@dimen/slm_right_read_item_height" android:layout_marginTop="@dimen/dp_8">
+                <ImageView android:id="@id/slm_reader_all_post_img" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/ic_read_menu_topic" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+                <TextView android:textSize="@dimen/text_size_12" android:textColor="#ff808080" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dp_16" android:text="社区话题" android:layout_toRightOf="@id/slm_reader_all_post_img" android:layout_centerVertical="true" />
+                <TextView android:textSize="@dimen/text_size_12" android:textColor="#ff808080" android:gravity="center" android:id="@id/reader_menu_topic_count" android:background="@drawable/bg_read_menu_count" android:paddingLeft="@dimen/dp_6" android:paddingRight="@dimen/dp_6" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
             </RelativeLayout>
-
-            <RelativeLayout
-                android:id="@+id/slm_reader_relate_book"
-                android:background="@drawable/bg_darker"
-                android:paddingLeft="@dimen/dp_16"
-                android:paddingRight="@dimen/dp_16"
-                android:layout_width="fill_parent"
-                android:layout_height="@dimen/slm_right_read_item_height"
-                android:layout_marginBottom="@dimen/dp_8">
-
-                <ImageView
-                    android:id="@+id/slm_reader_relate_book_img"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_read_menu_relate_book"
-                    android:layout_alignParentLeft="true"
-                    android:layout_centerVertical="true"/>
-
-                <TextView
-                    android:textSize="@dimen/text_size_12"
-                    android:textColor="#ff808080"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/dp_16"
-                    android:text="相似书籍"
-                    android:layout_toRightOf="@id/slm_reader_relate_book_img"
-                    android:layout_centerVertical="true"/>
+            <RelativeLayout android:id="@id/slm_reader_relate_book" android:background="@drawable/bg_darker" android:paddingLeft="@dimen/dp_16" android:paddingRight="@dimen/dp_16" android:layout_width="fill_parent" android:layout_height="@dimen/slm_right_read_item_height" android:layout_marginBottom="@dimen/dp_8">
+                <ImageView android:id="@id/slm_reader_relate_book_img" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/ic_read_menu_relate_book" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+                <TextView android:textSize="@dimen/text_size_12" android:textColor="#ff808080" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dp_16" android:text="相似书籍" android:layout_toRightOf="@id/slm_reader_relate_book_img" android:layout_centerVertical="true" />
             </RelativeLayout>
         </LinearLayout>
-
-        <ScrollView
-            android:id="@+id/slm_frame"
-            android:scrollbars="vertical"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_above="@id/slm_reader_part2">
-
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content">
-
-                <RelativeLayout
-                    android:id="@+id/slm_reader_sources"
-                    android:paddingLeft="@dimen/dp_16"
-                    android:visibility="gone"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/dp_16">
-
-                    <TextView
-                        android:textSize="@dimen/text_size_12"
-                        android:textColor="#ff343434"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="其他来源"
-                        android:layout_centerVertical="true"/>
-
-                    <TextView
-                        android:textSize="@dimen/text_size_12"
-                        android:textColor="#ff727272"
-                        android:id="@+id/slm_reader_more_source"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/dp_16"
-                        android:layout_marginRight="@dimen/dp_16"
-                        android:text="更多>"
-                        android:layout_alignParentRight="true"/>
+        <ScrollView android:id="@id/slm_frame" android:scrollbars="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/slm_reader_part2">
+            <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <RelativeLayout android:id="@id/slm_reader_sources" android:paddingLeft="@dimen/dp_16" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/dp_16">
+                    <TextView android:textSize="@dimen/text_size_12" android:textColor="#ff343434" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="其他来源" android:layout_centerVertical="true" />
+                    <TextView android:textSize="@dimen/text_size_12" android:textColor="#ff727272" android:id="@id/slm_reader_more_source" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dp_16" android:layout_marginRight="@dimen/dp_16" android:text="更多>" android:layout_alignParentRight="true" />
                 </RelativeLayout>
-
-                <com.clilystudio.app.netbook.widget.LoadingContainer android:id="@+id/loading_container"
-                                                                  android:layout_width="fill_parent"
-                                                                  android:layout_height="wrap_content"
-                                                                  xmlns:apps="http://schemas.android.com/apk/res-auto">
-
-                    <LinearLayout
-                        android:orientation="vertical"
-                        android:id="@+id/toc_container"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"/>
-                </com.clilystudio.app.netbook.widget.LoadingContainer>
+                <com.clilystudio.netbook.widget.LoadingContainer android:id="@id/loading_container" android:layout_width="fill_parent" android:layout_height="wrap_content" apps:emptyLayout="@layout/reader_menu_empty" apps:loadingLayout="@layout/reader_menu_loading" xmlns:apps="http://schemas.android.com/apk/res-auto">
+                    <LinearLayout android:orientation="vertical" android:id="@id/toc_container" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+                </com.clilystudio.netbook.widget.LoadingContainer>
             </LinearLayout>
         </ScrollView>
     </RelativeLayout>

@@ -1,47 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:background="?android:windowBackground"
-             android:layout_width="fill_parent"
-             android:layout_height="fill_parent"
-             xmlns:android="http://schemas.android.com/apk/res/android">
-
-    <RelativeLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
-
-        <com.handmark.pulltorefresh.library.PullToRefreshListView android:id="@+id/home_shelf_ptr"
-                                                                  android:layout_width="fill_parent"
-                                                                  android:layout_height="fill_parent"
-                                                                  android:listSelector="?android:listSelector"
-                                                                  ptr:ptrMode="pullDownFromTop"
-                                                                  ptr:ptrAnimationStyle="flip"
-                                                                  style="@style/DividerListView"
-                                                                  xmlns:ptr="http://schemas.android.com/apk/res-auto"/>
-
-        <include
-            android:background="#ffffffff"
-            android:visibility="gone"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            layout="@layout/bookshelf_empty"/>
+<FrameLayout android:background="?android:windowBackground" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.handmark.pulltorefresh.library.PullToRefreshListView android:id="@id/home_shelf_ptr" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="?android:listSelector" ptr:ptrMode="pullDownFromTop" ptr:ptrAnimationStyle="flip" ptr:ptrTabMode="true" style="@style/DividerListView" xmlns:ptr="http://schemas.android.com/apk/res-auto" />
+        <include android:background="#ffffffff" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/bookshelf_empty" />
     </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_gravity="bottom"
-        android:layout_width="fill_parent"
-        android:layout_height="60.0dip">
-
-        <include
-            android:id="@+id/ic_audio_bar"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            layout="@layout/layout_shelf_audio_bar"/>
-
-        <include
-            android:id="@+id/delete_shelf_bar"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            layout="@layout/shelf_bat_delete_bar"/>
+    <RelativeLayout android:layout_gravity="bottom" android:layout_width="fill_parent" android:layout_height="60.0dip">
+        <include android:id="@id/ic_audio_bar" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" layout="@layout/layout_shelf_audio_bar" />
+        <include android:id="@id/delete_shelf_bar" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" layout="@layout/shelf_bat_delete_bar" />
     </RelativeLayout>
 </FrameLayout>

@@ -1,45 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical"
-              android:layout_width="fill_parent"
-              android:layout_height="wrap_content"
-              xmlns:android="http://schemas.android.com/apk/res/android" >
-
-    <com.clilystudio.app.netbook.widget.CommunitySection
-        android:id="@+id/community_section"
-        android:background="?android:listSelector"
-        style="@style/TopicSectionItem"/>
-
-    <TextView
-        android:enabled="false"
-        android:gravity="bottom|left|center"
-        android:background="?android:windowBackground"
-        android:paddingTop="@dimen/dp_15"
-        android:clickable="false"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="公共社区"
-        style="@style/HomeListItemLabelV3"/>
-
-    <com.clilystudio.app.netbook.widget.TopicSectionItem
-        android:id="@+id/discuss_section"
-        android:background="?android:listSelector"
-        style="@style/TopicSectionItem"/>
-
-    <com.clilystudio.app.netbook.widget.TopicSectionItem
-        android:id="@+id/review_section"
-        android:background="?android:listSelector"
-        android:layout_width="fill_parent"
-        android:layout_height="@dimen/home_topic_item_height"/>
-
-    <com.clilystudio.app.netbook.widget.TopicSectionItem
-        android:id="@+id/helper_section"
-        android:background="?android:listSelector"
-        android:layout_width="fill_parent"
-        android:layout_height="@dimen/home_topic_item_height"/>
-
-    <com.clilystudio.app.netbook.widget.TopicSectionItem
-        android:id="@+id/girl_section"
-        android:background="?android:listSelector"
-        android:layout_width="fill_parent"
-        android:layout_height="@dimen/home_topic_item_height"/>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/apk/res-auto">
+    <com.clilystudio.netbook.widget.CommunitySection android:id="@id/community_section" android:background="?android:listSelector" style="@style/TopicSectionItem" />
+    <TextView android:enabled="false" android:gravity="bottom|left|center" android:background="?android:windowBackground" android:paddingTop="@dimen/dp_15" android:clickable="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="公共社区" style="@style/HomeListItemLabelV3" />
+    <com.clilystudio.netbook.widget.TopicSectionItem android:id="@id/discuss_section" android:background="?android:listSelector" tools:label="综合讨论区" tools:icona="@drawable/discuss_section" style="@style/TopicSectionItem" />
+    <com.clilystudio.netbook.widget.TopicSectionItem android:id="@id/review_section" android:background="?android:listSelector" android:layout_width="fill_parent" android:layout_height="@dimen/home_topic_item_height" tools:label="书评区" tools:icona="@drawable/comment_section" />
+    <com.clilystudio.netbook.widget.TopicSectionItem android:id="@id/helper_section" android:background="?android:listSelector" android:layout_width="fill_parent" android:layout_height="@dimen/home_topic_item_height" tools:label="书荒互助区" tools:icona="@drawable/helper_section" />
+    <com.clilystudio.netbook.widget.TopicSectionItem android:id="@id/girl_section" android:background="?android:listSelector" android:layout_width="fill_parent" android:layout_height="@dimen/home_topic_item_height" tools:label="女生区" tools:icona="@drawable/girl_section" />
 </LinearLayout>

@@ -1,98 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@+id/root"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                xmlns:android="http://schemas.android.com/apk/res/android">
-
-    <com.clilystudio.app.netbook.reader.PagerWidget
-        android:id="@+id/main_view"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"/>
-
-    <RelativeLayout
-        android:id="@+id/reader_download_pro"
-        android:background="@color/chapter_dl_bg"
-        android:visibility="gone"
-        android:layout_width="fill_parent"
-        android:layout_height="35.0dip"
-        android:layout_marginBottom="@dimen/action_bar_bottom_height"
-        android:layout_alignParentBottom="true">
-
-        <TextView
-            android:textSize="@dimen/text_size_12"
-            android:textColor="@color/white_80"
-            android:id="@+id/reader_download_pro_current"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20.0dip"
-            android:layout_centerVertical="true"/>
-
-        <View
-            android:background="#ff111111"
-            android:layout_width="fill_parent"
-            android:layout_height="2.0dip"
-            android:layout_alignParentBottom="true"/>
+<RelativeLayout android:id="@id/root" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.clilystudio.netbook.reader.PagerWidget android:id="@id/main_view" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <RelativeLayout android:id="@id/reader_download_pro" android:background="@color/chapter_dl_bg" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="35.0dip" android:layout_marginBottom="@dimen/action_bar_bottom_height" android:layout_alignParentBottom="true">
+        <TextView android:textSize="@dimen/text_size_12" android:textColor="@color/white_80" android:id="@id/reader_download_pro_current" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_centerVertical="true" />
+        <View android:background="#ff111111" android:layout_width="fill_parent" android:layout_height="2.0dip" android:layout_alignParentBottom="true" />
     </RelativeLayout>
-
-    <com.clilystudio.app.netbook.reader.AutoReaderTextView
-        android:id="@+id/tv_auto_reader_body"
-        android:visibility="gone"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/page_horizontal_padding"
-        android:layout_marginTop="@dimen/reader_page_body_margin"
-        android:layout_marginRight="@dimen/page_horizontal_padding"
-        android:layout_marginBottom="@dimen/reader_page_body_margin"
-        android:layout_alignParentBottom="true"/>
-
-    <View
-        android:id="@+id/view_auto_reader_shadow"
-        android:visibility="gone"
-        android:layout_width="fill_parent"
-        android:layout_height="@dimen/dp_4"
-        android:layout_alignTop="@id/tv_auto_reader_body"/>
-
-    <include
-        android:id="@+id/auto_reader_setting"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        layout="@layout/reader_auto_setting"/>
-
-    <include
-        android:id="@+id/reader_tts_setting"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        layout="@layout/reader_tts_setting"/>
-
-    <include
-        android:id="@+id/setting_widget"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/action_bar_bottom_height"
-        android:layout_alignParentBottom="true"
-        layout="@layout/reader_setting"/>
-
-    <include
-        android:id="@+id/bottom_action_bar"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_alignParentBottom="true"
-        layout="@layout/reader_operation_bar"/>
-
-    <com.clilystudio.app.netbook.widget.ThemeLoadingView
-        android:id="@+id/reader_content_loading"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true">
-
-        <include
-            android:id="@+id/light_loading"
-            layout="@layout/light_progress_loading"/>
-
-        <include
-            android:id="@+id/dark_loading"
-            layout="@layout/dark_progress_loading"/>
-    </com.clilystudio.app.netbook.widget.ThemeLoadingView>
+    <com.clilystudio.netbook.reader.AutoReaderTextView android:id="@id/tv_auto_reader_body" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/page_horizontal_padding" android:layout_marginTop="@dimen/reader_page_body_margin" android:layout_marginRight="@dimen/page_horizontal_padding" android:layout_marginBottom="@dimen/reader_page_body_margin" android:layout_alignParentBottom="true" />
+    <View android:id="@id/view_auto_reader_shadow" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/dp_4" android:layout_alignTop="@id/tv_auto_reader_body" />
+    <include android:id="@id/auto_reader_setting" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" layout="@layout/reader_auto_setting" />
+    <include android:id="@id/reader_tts_setting" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" layout="@layout/reader_tts_setting" />
+    <include android:id="@id/setting_widget" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/action_bar_bottom_height" android:layout_alignParentBottom="true" layout="@layout/reader_setting" />
+    <include android:id="@id/bottom_action_bar" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_alignParentBottom="true" layout="@layout/reader_operation_bar" />
+    <com.clilystudio.netbook.widget.ThemeLoadingView android:id="@id/reader_content_loading" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
+        <include android:id="@id/light_loading" layout="@layout/light_progress_loading" />
+        <include android:id="@id/dark_loading" layout="@layout/dark_progress_loading" />
+    </com.clilystudio.netbook.widget.ThemeLoadingView>
 </RelativeLayout>

@@ -1,115 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical"
-              android:paddingLeft="10.0dip"
-              android:paddingTop="10.0dip"
-              android:paddingRight="10.0dip"
-              android:paddingBottom="10.0dip"
-              android:fitsSystemWindows="true"
-              android:layout_width="fill_parent"
-              android:layout_height="wrap_content"
-              xmlns:android="http://schemas.android.com/apk/res/android">
-
-    <RelativeLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/dp_8"
-        android:layout_marginTop="@dimen/dp_8">
-
-        <com.clilystudio.app.netbook.widget.CoverView
-            android:id="@+id/avatar"
-            android:src="@drawable/cover_default"
-            android:layout_alignParentLeft="true"
-            style="@style/Cover_Ugc_Detail_List"/>
-
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/avatar"
-            android:layout_centerVertical="true">
-
-            <TextView
-                android:textSize="@dimen/text_size_15"
-                android:id="@+id/title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/dp_16"/>
-
-            <TextView
-                android:textSize="@dimen/text_size_12"
-                android:textColor="?android:textColorTertiary"
-                android:id="@+id/author"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/dp_16"
-                android:layout_marginTop="@dimen/dp_6"
-                android:layout_below="@id/title"/>
-
-            <TextView
-                android:textSize="@dimen/text_size_12"
-                android:textColor="#ffb93221"
-                android:id="@+id/followcount"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/dp_16"
-                android:layout_marginTop="@dimen/dp_6"
-                android:layout_below="@id/author"/>
-
-            <TextView
-                android:textSize="@dimen/text_size_12"
-                android:textColor="?android:textColorTertiary"
-                android:id="@+id/follow"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=" 人在追"
-                android:layout_toRightOf="@id/followcount"
-                android:layout_alignBaseline="@id/followcount"/>
-
-            <TextView
-                android:textSize="@dimen/text_size_12"
-                android:textColor="?android:textColorTertiary"
-                android:id="@+id/separate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/dp_8"
-                android:layout_marginRight="@dimen/dp_8"
-                android:text="|"
-                android:layout_toRightOf="@id/follow"
-                android:layout_alignBaseline="@id/followcount"/>
-
-            <TextView
-                android:textSize="@dimen/text_size_12"
-                android:textColor="#ffb93221"
-                android:id="@+id/wordcount"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="0"
-                android:layout_toRightOf="@id/separate"
-                android:layout_alignBaseline="@id/followcount"/>
-
-            <TextView
-                android:textSize="@dimen/text_size_12"
-                android:textColor="?android:textColorTertiary"
-                android:id="@+id/wordunit"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=" 万字"
-                android:layout_toRightOf="@id/wordcount"
-                android:layout_alignBaseline="@id/followcount"/>
+<LinearLayout android:orientation="vertical" android:paddingLeft="10.0dip" android:paddingTop="10.0dip" android:paddingRight="10.0dip" android:paddingBottom="10.0dip" android:fitsSystemWindows="true" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dp_8" android:layout_marginTop="@dimen/dp_8">
+        <com.clilystudio.netbook.widget.CoverView android:id="@id/avatar" android:src="@drawable/cover_default" android:layout_alignParentLeft="true" style="@style/Cover_Ugc_Detail_List" />
+        <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toRightOf="@id/avatar" android:layout_centerVertical="true">
+            <TextView android:textSize="@dimen/text_size_15" android:id="@id/title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dp_16" />
+            <TextView android:textSize="@dimen/text_size_12" android:textColor="?android:textColorTertiary" android:id="@id/author" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dp_16" android:layout_marginTop="@dimen/dp_6" android:layout_below="@id/title" />
+            <TextView android:textSize="@dimen/text_size_12" android:textColor="#ffb93221" android:id="@id/followcount" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dp_16" android:layout_marginTop="@dimen/dp_6" android:layout_below="@id/author" />
+            <TextView android:textSize="@dimen/text_size_12" android:textColor="?android:textColorTertiary" android:id="@id/follow" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text=" 人在追" android:layout_toRightOf="@id/followcount" android:layout_alignBaseline="@id/followcount" />
+            <TextView android:textSize="@dimen/text_size_12" android:textColor="?android:textColorTertiary" android:id="@id/separate" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dp_8" android:layout_marginRight="@dimen/dp_8" android:text="|" android:layout_toRightOf="@id/follow" android:layout_alignBaseline="@id/followcount" />
+            <TextView android:textSize="@dimen/text_size_12" android:textColor="#ffb93221" android:id="@id/wordcount" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="\ 0" android:layout_toRightOf="@id/separate" android:layout_alignBaseline="@id/followcount" />
+            <TextView android:textSize="@dimen/text_size_12" android:textColor="?android:textColorTertiary" android:id="@id/wordunit" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text=" 万字" android:layout_toRightOf="@id/wordcount" android:layout_alignBaseline="@id/followcount" />
         </RelativeLayout>
     </RelativeLayout>
-
-    <EditText
-        android:textSize="@dimen/text_size_12"
-        android:textColor="?android:textColor"
-        android:textColorHint="?android:textColorTertiary"
-        android:gravity="top|left|center"
-        android:id="@+id/comment_field"
-        android:background="@null"
-        android:scrollbars="vertical"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dp_30"
-        android:minHeight="100.0dip"
-        android:hint="说说你推荐这本书的原因吧"
-        style="@style/DialogEditText"/>
+    <EditText android:textSize="@dimen/text_size_12" android:textColor="?android:textColor" android:textColorHint="?android:textColorTertiary" android:gravity="top|left|center" android:id="@id/comment_field" android:background="@null" android:scrollbars="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp_30" android:minHeight="100.0dip" android:hint="说说你推荐这本书的原因吧" style="@style/DialogEditText" />
 </LinearLayout>

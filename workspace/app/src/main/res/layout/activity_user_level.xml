@@ -1,361 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView android:background="?backgroundPressed"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            xmlns:android="http://schemas.android.com/apk/res/android">
-
-    <LinearLayout
-        android:orientation="vertical"
-        android:id="@+id/main_settings_content"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
-
-        <TextView
-            android:text="我的等级"
-            style="@style/SettingLabel"/>
-
-        <LinearLayout
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:background="?backgroundSelector"
-            android:paddingLeft="@dimen/dp_16"
-            android:paddingRight="@dimen/dp_16"
-            android:layout_width="fill_parent"
-            android:layout_height="@dimen/dp_56">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/user_level_current"/>
-
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/dp_32">
-
-                <TextView
-                    android:textSize="@dimen/text_size_12"
-                    android:textColor="?android:textColor"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="当前等级"/>
-
-                <TextView
-                    android:textSize="@dimen/text_size_12"
-                    android:textColor="?android:textColorSecondary"
-                    android:id="@+id/user_current_level"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/dp_4"
-                    android:text="1级"/>
+<ScrollView android:background="?backgroundPressed" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:id="@id/main_settings_content" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:text="我的等级" style="@style/SettingLabel" />
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="?backgroundSelector" android:paddingLeft="@dimen/dp_16" android:paddingRight="@dimen/dp_16" android:layout_width="fill_parent" android:layout_height="@dimen/dp_56">
+            <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/user_level_current" />
+            <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dp_32">
+                <TextView android:textSize="@dimen/text_size_12" android:textColor="?android:textColor" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="当前等级" />
+                <TextView android:textSize="@dimen/text_size_12" android:textColor="?android:textColorSecondary" android:id="@id/user_current_level" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp_4" android:text="1级" />
             </LinearLayout>
         </LinearLayout>
-
-        <include layout="@layout/horizontal_divider"/>
-
-        <LinearLayout
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:background="?backgroundSelector"
-            android:paddingLeft="@dimen/dp_16"
-            android:paddingRight="@dimen/dp_16"
-            android:layout_width="fill_parent"
-            android:layout_height="@dimen/dp_56">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/user_level_progress"/>
-
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/dp_32">
-
-                <TextView
-                    android:textSize="@dimen/text_size_12"
-                    android:textColor="?android:textColor"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="升级进度"/>
-
-                <TextView
-                    android:textSize="@dimen/text_size_12"
-                    android:textColor="?android:textColorSecondary"
-                    android:id="@+id/user_level_progress"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/dp_4"
-                    android:text="0/100"/>
+        <include layout="@layout/horizontal_divider" />
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="?backgroundSelector" android:paddingLeft="@dimen/dp_16" android:paddingRight="@dimen/dp_16" android:layout_width="fill_parent" android:layout_height="@dimen/dp_56">
+            <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/user_level_progress" />
+            <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dp_32">
+                <TextView android:textSize="@dimen/text_size_12" android:textColor="?android:textColor" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="升级进度" />
+                <TextView android:textSize="@dimen/text_size_12" android:textColor="?android:textColorSecondary" android:id="@id/user_level_progress" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp_4" android:text="0/100" />
             </LinearLayout>
         </LinearLayout>
-
-        <include layout="@layout/horizontal_divider"/>
-
-        <LinearLayout
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:background="?backgroundSelector"
-            android:paddingLeft="@dimen/dp_16"
-            android:paddingRight="@dimen/dp_16"
-            android:layout_width="fill_parent"
-            android:layout_height="@dimen/dp_56">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/user_level_rank"/>
-
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/dp_32">
-
-                <TextView
-                    android:textSize="@dimen/text_size_12"
-                    android:textColor="?android:textColor"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="等级排名"/>
-
-                <TextView
-                    android:textSize="@dimen/text_size_12"
-                    android:textColor="?android:textColorSecondary"
-                    android:id="@+id/user_level_rank"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/dp_4"
-                    android:text="超过40%的追书用户"/>
+        <include layout="@layout/horizontal_divider" />
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="?backgroundSelector" android:paddingLeft="@dimen/dp_16" android:paddingRight="@dimen/dp_16" android:layout_width="fill_parent" android:layout_height="@dimen/dp_56">
+            <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/user_level_rank" />
+            <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dp_32">
+                <TextView android:textSize="@dimen/text_size_12" android:textColor="?android:textColor" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="等级排名" />
+                <TextView android:textSize="@dimen/text_size_12" android:textColor="?android:textColorSecondary" android:id="@id/user_level_rank" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp_4" android:text="超过40%的追书用户" />
             </LinearLayout>
         </LinearLayout>
-
-        <TextView
-            android:text="等级特权"
-            style="@style/SettingLabel"/>
-
-        <LinearLayout
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:background="?backgroundSelector"
-            android:paddingLeft="@dimen/dp_16"
-            android:paddingRight="@dimen/dp_16"
-            android:layout_width="fill_parent"
-            android:layout_height="@dimen/dp_56">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/user_level_desc_2"/>
-
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/dp_32">
-
-                <TextView
-                    android:textSize="@dimen/text_size_12"
-                    android:textColor="?android:textColor"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="达到2级"/>
-
-                <TextView
-                    android:textSize="@dimen/text_size_12"
-                    android:textColor="?android:textColorSecondary"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/dp_4"
-                    android:text="发布话题书评"
-                    android:singleLine="true"/>
+        <TextView android:text="等级特权" style="@style/SettingLabel" />
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="?backgroundSelector" android:paddingLeft="@dimen/dp_16" android:paddingRight="@dimen/dp_16" android:layout_width="fill_parent" android:layout_height="@dimen/dp_56">
+            <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/user_level_desc_2" />
+            <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dp_32">
+                <TextView android:textSize="@dimen/text_size_12" android:textColor="?android:textColor" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="达到2级" />
+                <TextView android:textSize="@dimen/text_size_12" android:textColor="?android:textColorSecondary" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp_4" android:text="发布话题书评" android:singleLine="true" />
             </LinearLayout>
         </LinearLayout>
-
-        <include layout="@layout/horizontal_divider"/>
-
-        <LinearLayout
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:background="?backgroundSelector"
-            android:paddingLeft="@dimen/dp_16"
-            android:paddingRight="@dimen/dp_16"
-            android:layout_width="fill_parent"
-            android:layout_height="@dimen/dp_56">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/user_level_desc_3"/>
-
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/dp_32">
-
-                <TextView
-                    android:textSize="@dimen/text_size_12"
-                    android:textColor="?android:textColor"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="达到3级"/>
-
-                <TextView
-                    android:textSize="@dimen/text_size_12"
-                    android:textColor="?android:textColorSecondary"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/dp_4"
-                    android:text="发布书荒求助，发布综合讨论"
-                    android:singleLine="true"/>
+        <include layout="@layout/horizontal_divider" />
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="?backgroundSelector" android:paddingLeft="@dimen/dp_16" android:paddingRight="@dimen/dp_16" android:layout_width="fill_parent" android:layout_height="@dimen/dp_56">
+            <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/user_level_desc_3" />
+            <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dp_32">
+                <TextView android:textSize="@dimen/text_size_12" android:textColor="?android:textColor" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="达到3级" />
+                <TextView android:textSize="@dimen/text_size_12" android:textColor="?android:textColorSecondary" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp_4" android:text="发布书荒求助，发布综合讨论" android:singleLine="true" />
             </LinearLayout>
         </LinearLayout>
-
-        <include layout="@layout/horizontal_divider"/>
-
-        <LinearLayout
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:background="?backgroundSelector"
-            android:paddingLeft="@dimen/dp_16"
-            android:paddingRight="@dimen/dp_16"
-            android:layout_width="fill_parent"
-            android:layout_height="@dimen/dp_56">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/user_level_desc_4"/>
-
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/dp_32">
-
-                <TextView
-                    android:textSize="@dimen/text_size_12"
-                    android:textColor="?android:textColor"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="达到4级"/>
-
-                <TextView
-                    android:textSize="@dimen/text_size_12"
-                    android:textColor="?android:textColorSecondary"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/dp_4"
-                    android:text="修改头像"
-                    android:singleLine="true"/>
+        <include layout="@layout/horizontal_divider" />
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="?backgroundSelector" android:paddingLeft="@dimen/dp_16" android:paddingRight="@dimen/dp_16" android:layout_width="fill_parent" android:layout_height="@dimen/dp_56">
+            <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/user_level_desc_4" />
+            <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dp_32">
+                <TextView android:textSize="@dimen/text_size_12" android:textColor="?android:textColor" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="达到4级" />
+                <TextView android:textSize="@dimen/text_size_12" android:textColor="?android:textColorSecondary" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp_4" android:text="修改头像" android:singleLine="true" />
             </LinearLayout>
         </LinearLayout>
-
-        <include layout="@layout/horizontal_divider"/>
-
-        <LinearLayout
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:background="?backgroundSelector"
-            android:paddingLeft="@dimen/dp_16"
-            android:paddingRight="@dimen/dp_16"
-            android:layout_width="fill_parent"
-            android:layout_height="@dimen/dp_56">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/user_level_desc_n"/>
-
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/dp_32">
-
-                <TextView
-                    android:textSize="@dimen/text_size_12"
-                    android:textColor="?android:textColor"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="达到N级"/>
-
-                <TextView
-                    android:textSize="@dimen/text_size_12"
-                    android:textColor="?android:textColorSecondary"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/dp_4"
-                    android:text="更多等级特权即将上线"
-                    android:singleLine="true"/>
+        <include layout="@layout/horizontal_divider" />
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="?backgroundSelector" android:paddingLeft="@dimen/dp_16" android:paddingRight="@dimen/dp_16" android:layout_width="fill_parent" android:layout_height="@dimen/dp_56">
+            <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/user_level_desc_n" />
+            <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dp_32">
+                <TextView android:textSize="@dimen/text_size_12" android:textColor="?android:textColor" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="达到N级" />
+                <TextView android:textSize="@dimen/text_size_12" android:textColor="?android:textColorSecondary" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp_4" android:text="更多等级特权即将上线" android:singleLine="true" />
             </LinearLayout>
         </LinearLayout>
-
-        <TextView
-            android:text="等级说明"
-            style="@style/SettingLabel"/>
-
-        <LinearLayout
-            android:orientation="vertical"
-            android:background="?android:windowBackground"
-            android:paddingLeft="@dimen/dp_16"
-            android:paddingRight="@dimen/dp_16"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:textSize="@dimen/text_size_15"
-                android:textColor="?android:textColor"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dp_10"
-                android:text="什么是经验值？"/>
-
-            <TextView
-                android:textSize="@dimen/text_size_12"
-                android:textColor="?android:textColorSecondary"
-                android:id="@+id/user_exp_desc"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dp_10"
-                android:layout_marginBottom="@dimen/dp_4"
-                android:text="@string/user_exp_desc"
-                android:lineSpacingMultiplier="1.4"/>
-
-            <TextView
-                android:textSize="@dimen/text_size_15"
-                android:textColor="?android:textColor"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dp_16"
-                android:text="如何获得经验值"/>
-
-            <TextView
-                android:textSize="@dimen/text_size_12"
-                android:textColor="?android:textColorSecondary"
-                android:id="@+id/user_exp_get"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dp_10"
-                android:layout_marginBottom="@dimen/dp_4"
-                android:text="@string/user_exp_get"
-                android:lineSpacingMultiplier="1.4"/>
-
-            <Button
-                android:textSize="@dimen/text_size_12"
-                android:textColor="@color/white"
-                android:gravity="center"
-                android:layout_gravity="right"
-                android:id="@+id/go_to_task"
-                android:background="@drawable/common_btn_red_bg"
-                android:layout_width="@dimen/dp_56"
-                android:layout_height="@dimen/dp_24"
-                android:layout_marginTop="@dimen/dp_24"
-                android:layout_marginBottom="@dimen/dp_16"
-                android:text="去做任务"/>
+        <TextView android:text="等级说明" style="@style/SettingLabel" />
+        <LinearLayout android:orientation="vertical" android:background="?android:windowBackground" android:paddingLeft="@dimen/dp_16" android:paddingRight="@dimen/dp_16" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:textSize="@dimen/text_size_15" android:textColor="?android:textColor" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp_10" android:text="什么是经验值？" />
+            <TextView android:textSize="@dimen/text_size_12" android:textColor="?android:textColorSecondary" android:id="@id/user_exp_desc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp_10" android:layout_marginBottom="@dimen/dp_4" android:text="@string/user_exp_desc" android:lineSpacingMultiplier="1.4" />
+            <TextView android:textSize="@dimen/text_size_15" android:textColor="?android:textColor" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp_16" android:text="如何获得经验值" />
+            <TextView android:textSize="@dimen/text_size_12" android:textColor="?android:textColorSecondary" android:id="@id/user_exp_get" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp_10" android:layout_marginBottom="@dimen/dp_4" android:text="@string/user_exp_get" android:lineSpacingMultiplier="1.4" />
+            <Button android:textSize="@dimen/text_size_12" android:textColor="@color/white" android:gravity="center" android:layout_gravity="right" android:id="@id/go_to_task" android:background="@drawable/common_btn_red_bg" android:layout_width="@dimen/dp_56" android:layout_height="@dimen/dp_24" android:layout_marginTop="@dimen/dp_24" android:layout_marginBottom="@dimen/dp_16" android:text="去做任务" />
         </LinearLayout>
     </LinearLayout>
 </ScrollView>

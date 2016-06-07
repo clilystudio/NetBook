@@ -1,124 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="horizontal"
-                android:id="@+id/list_item_book_review_container"
-                android:background="?backgroundSelector"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:apps="http://schemas.android.com/apk/res-auto">
-
-    <com.clilystudio.app.netbook.ui.CircularSmartImageView
-        android:id="@+id/avatar"
-        android:layout_marginLeft="@dimen/dp_16"
-        android:layout_marginTop="@dimen/dp_16"
-        style="@style/Cover_Book_Post_List"/>
-
-    <ImageView
-        android:id="@+id/avatar_verify"
-        android:visibility="gone"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/list_item_post_avatar_verify_margin"
-        android:layout_marginTop="@dimen/list_item_post_avatar_verify_margin"
-        android:src="@drawable/ic_list_item_post_user_verify"
-        android:layout_toRightOf="@id/avatar"
-        android:layout_below="@id/avatar"/>
-
-    <RelativeLayout
-        android:paddingBottom="@dimen/dp_15"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/shelf_divider_left_gap"
-        android:layout_marginTop="@dimen/dp_16"
-        android:layout_marginRight="@dimen/dp_16"
-        android:layout_alignParentLeft="true">
-
-        <RelativeLayout
-            android:id="@+id/top"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:textSize="@dimen/text_size_11"
-                android:textColor="@color/book_topic_listitem_user"
-                android:ellipsize="end"
-                android:id="@+id/user"
-                android:paddingRight="@dimen/dp_5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="昵称"
-                android:singleLine="true"
-                android:layout_alignParentLeft="true"
-                android:layout_centerVertical="true"/>
-
-            <TextView
-                android:textSize="@dimen/text_size_11"
-                android:textColor="@color/book_topic_listitem_user"
-                android:id="@+id/lv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="lv.1"
-                android:layout_toRightOf="@id/user"
-                android:layout_centerVertical="true"/>
-
-            <TextView
-                android:textSize="@dimen/text_size_11"
-                android:textColor="?android:textColorTertiary"
-                android:id="@+id/time"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="0分钟前"
-                android:layout_alignParentRight="true"/>
-
-            <com.clilystudio.app.netbook.widget.PostFlag
-                android:id="@+id/post_flag"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"/>
+<RelativeLayout android:orientation="horizontal" android:id="@id/list_item_book_review_container" android:background="?backgroundSelector" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:apps="http://schemas.android.com/apk/res-auto">
+    <com.clilystudio.netbook.ui.CircularSmartImageView android:id="@id/avatar" android:layout_marginLeft="@dimen/dp_16" android:layout_marginTop="@dimen/dp_16" style="@style/Cover_Book_Post_List" />
+    <ImageView android:id="@id/avatar_verify" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/list_item_post_avatar_verify_margin" android:layout_marginTop="@dimen/list_item_post_avatar_verify_margin" android:src="@drawable/ic_list_item_post_user_verify" android:layout_toRightOf="@id/avatar" android:layout_below="@id/avatar" />
+    <RelativeLayout android:paddingBottom="@dimen/dp_15" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/shelf_divider_left_gap" android:layout_marginTop="@dimen/dp_16" android:layout_marginRight="@dimen/dp_16" android:layout_alignParentLeft="true">
+        <RelativeLayout android:id="@id/top" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:textSize="@dimen/text_size_11" android:textColor="@color/book_topic_listitem_user" android:ellipsize="end" android:id="@id/user" android:paddingRight="@dimen/dp_5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="昵称" android:singleLine="true" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+            <TextView android:textSize="@dimen/text_size_11" android:textColor="@color/book_topic_listitem_user" android:id="@id/lv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="lv.1" android:layout_toRightOf="@id/user" android:layout_centerVertical="true" />
+            <TextView android:textSize="@dimen/text_size_11" android:textColor="?android:textColorTertiary" android:id="@id/time" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="0分钟前" android:layout_alignParentRight="true" />
+            <com.clilystudio.netbook.widget.PostFlag android:id="@id/post_flag" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentRight="true" />
         </RelativeLayout>
-
-        <TextView
-            android:textSize="@dimen/text_size_14"
-            android:textColor="?android:textColor"
-            android:ellipsize="end"
-            android:id="@+id/title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dp_7"
-            android:text="标题"
-            android:singleLine="true"
-            android:layout_below="@id/top"/>
-
-        <com.clilystudio.app.netbook.widget.RatingView
-            android:id="@+id/rating"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dp_5"
-            android:layout_marginBottom="@dimen/dp_5"
-            android:layout_below="@id/title"/>
-
-        <TextView
-            android:textSize="@dimen/text_size_12"
-            android:textColor="?android:textColorSecondary"
-            android:ellipsize="end"
-            android:id="@+id/content"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="内容内容内容"
-            android:maxLines="2"
-            android:layout_below="@id/rating"
-            android:lineSpacingMultiplier="1.3"/>
-
-        <TextView
-            android:textSize="@dimen/text_size_12"
-            android:textColor="?android:textColorTertiary"
-            android:id="@+id/helpful_count"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dp_5"
-            android:text="0"
-            android:drawableLeft="@drawable/post_item_like"
-            android:drawablePadding="5.0dip"
-            android:layout_below="@id/content"/>
+        <TextView android:textSize="@dimen/text_size_14" android:textColor="?android:textColor" android:ellipsize="end" android:id="@id/title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp_7" android:text="标题" android:singleLine="true" android:layout_below="@id/top" />
+        <com.clilystudio.netbook.widget.RatingView android:id="@id/rating" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp_5" android:layout_marginBottom="@dimen/dp_5" android:layout_below="@id/title" apps:ratingType="list" apps:ratingMargin="@dimen/dp_3" />
+        <TextView android:textSize="@dimen/text_size_12" android:textColor="?android:textColorSecondary" android:ellipsize="end" android:id="@id/content" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="内容内容内容" android:maxLines="2" android:layout_below="@id/rating" android:lineSpacingMultiplier="1.3" />
+        <TextView android:textSize="@dimen/text_size_12" android:textColor="?android:textColorTertiary" android:id="@id/helpful_count" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp_5" android:text="\ 0" android:drawableLeft="@drawable/post_item_like" android:drawablePadding="5.0dip" android:layout_below="@id/content" />
     </RelativeLayout>
 </RelativeLayout>

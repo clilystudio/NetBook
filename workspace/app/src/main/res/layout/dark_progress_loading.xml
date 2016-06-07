@@ -1,9 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.clilystudio.app.netbook.widget.LoadingProgressView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:apps="http://schemas.android.com/apk/res-auto" android:visibility="gone"
-                                                     android:layout_width="32.0dip"
-                                                     android:layout_height="32.0dip"
-                                                     apps:circle_stroke_width="4.0"
-                                                     apps:circle_color="\#000000"
-                                                     apps:circle_progress_color="\#545454"/>
+<com.clilystudio.netbook.widget.LoadingProgressView android:visibility="gone" android:layout_width="32.0dip" android:layout_height="32.0dip" apps:circle_stroke_width="4.0" apps:circle_color="\#000000" apps:circle_progress_color="\#545454"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:apps="http://schemas.android.com/apk/res-auto" />

@@ -1,59 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.clilystudio.app.netbook.widget.RankCollapseItem android:orientation="vertical"
-                                                  android:background="?backgroundSelector"
-                                                  android:layout_width="fill_parent"
-                                                  android:layout_height="wrap_content"
-                                                  xmlns:android="http://schemas.android.com/apk/res/android">
-
-    <RelativeLayout
-        android:id="@+id/label_container"
-        android:layout_width="fill_parent"
-        android:layout_height="@dimen/list_item_height_large">
-
-        <include
-            android:id="@+id/top_divider"
-            android:visibility="gone"
-            android:layout_width="fill_parent"
-            android:layout_height="1.0px"
-            android:layout_alignParentTop="true"
-            layout="@layout/horizontal_divider"/>
-
-        <ImageView
-            android:layout_width="@dimen/cover_width_rank"
-            android:layout_height="@dimen/cover_height_rank"
-            android:layout_marginLeft="15.0dip"
-            android:src="@drawable/ic_rank_collapse"
-            android:scaleType="fitXY"
-            android:layout_centerVertical="true"/>
-
-        <TextView
-            android:id="@+id/label"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/shelf_divider_left_gap"
-            android:layout_centerVertical="true"
-            style="@style/RankItemText"/>
-
-        <ImageView
-            android:id="@+id/arrow"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="16.0dip"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"/>
+<com.clilystudio.netbook.widget.RankCollapseItem android:orientation="vertical" android:background="?backgroundSelector" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/label_container" android:layout_width="fill_parent" android:layout_height="@dimen/list_item_height_large">
+        <include android:id="@id/top_divider" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_alignParentTop="true" layout="@layout/horizontal_divider" />
+        <ImageView android:layout_width="@dimen/cover_width_rank" android:layout_height="@dimen/cover_height_rank" android:layout_marginLeft="15.0dip" android:src="@drawable/ic_rank_collapse" android:scaleType="fitXY" android:layout_centerVertical="true" />
+        <TextView android:id="@id/label" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/shelf_divider_left_gap" android:layout_centerVertical="true" style="@style/RankItemText" />
+        <ImageView android:id="@id/arrow" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="16.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
     </RelativeLayout>
-
-    <LinearLayout
-        android:orientation="vertical"
-        android:id="@+id/item_container"
-        android:visibility="gone"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"/>
-
-    <include
-        android:id="@+id/bottom_divider"
-        android:visibility="gone"
-        android:layout_width="fill_parent"
-        android:layout_height="1.0px"
-        layout="@layout/horizontal_divider"/>
-</com.clilystudio.app.netbook.widget.RankCollapseItem>
+    <LinearLayout android:orientation="vertical" android:id="@id/item_container" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <include android:id="@id/bottom_divider" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="1.0px" layout="@layout/horizontal_divider" />
+</com.clilystudio.netbook.widget.RankCollapseItem>

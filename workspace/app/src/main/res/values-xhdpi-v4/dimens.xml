@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="add_vote_item_btn_text">2.0dip</dimen>
+    <dimen name="book_review_pop_height">330.0dip</dimen>
+    <dimen name="post_comment_name_width">170.0dip</dimen>
+    <dimen name="random_entrance_gap_big">25.0dip</dimen>
+    <dimen name="random_entrance_gap_small">20.0dip</dimen>
+    <item type="dimen" name="random_entrance_multiplier">1.5</item>
+    <dimen name="random_entrance_title">40.0sp</dimen>
+</resources>

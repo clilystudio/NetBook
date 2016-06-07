@@ -1,46 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical"
-              android:background="?android:windowBackground"
-              android:paddingTop="15.0dip"
-              android:paddingBottom="15.0dip"
-              android:layout_width="fill_parent"
-              android:layout_height="fill_parent"
-              xmlns:android="http://schemas.android.com/apk/res/android">
-
-    <EditText
-        android:textSize="@dimen/text_size_14"
-        android:textColor="?android:textColor"
-        android:textColorHint="?android:textColorTertiary"
-        android:id="@+id/add_girl_topic_content_title"
-        android:background="@null"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="15.0dip"
-        android:layout_marginRight="15.0dip"
-        android:layout_marginBottom="15.0dip"
-        android:hint="@string/add_girl_topic_title_hint"
-        android:maxLength="30"/>
-
-    <View
-        android:background="?lineColor"
-        android:layout_width="fill_parent"
-        android:layout_height="1.0px"/>
-
-    <EditText
-        android:textSize="@dimen/text_size_14"
-        android:textColor="?android:textColor"
-        android:textColorHint="?android:textColorTertiary"
-        android:gravity="top"
-        android:id="@+id/add_girl_topic_content_desc"
-        android:background="@null"
-        android:scrollbars="vertical"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_marginLeft="15.0dip"
-        android:layout_marginTop="15.0dip"
-        android:layout_marginRight="15.0dip"
-        android:layout_marginBottom="10.0dip"
-        android:minHeight="200.0dip"
-        android:hint="@string/add_girl_topic_desc_hint"
-        android:lineSpacingMultiplier="1.2"/>
+<LinearLayout android:orientation="vertical" android:background="?android:windowBackground" android:paddingTop="15.0dip" android:paddingBottom="15.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <EditText android:textSize="@dimen/text_size_14" android:textColor="?android:textColor" android:textColorHint="?android:textColorTertiary" android:id="@id/add_girl_topic_content_title" android:background="@null" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginRight="15.0dip" android:layout_marginBottom="15.0dip" android:hint="@string/add_girl_topic_title_hint" android:maxLength="30" />
+    <View android:background="?lineColor" android:layout_width="fill_parent" android:layout_height="1.0px" />
+    <EditText android:textSize="@dimen/text_size_14" android:textColor="?android:textColor" android:textColorHint="?android:textColorTertiary" android:gravity="top" android:id="@id/add_girl_topic_content_desc" android:background="@null" android:scrollbars="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="15.0dip" android:layout_marginTop="15.0dip" android:layout_marginRight="15.0dip" android:layout_marginBottom="10.0dip" android:minHeight="200.0dip" android:hint="@string/add_girl_topic_desc_hint" android:lineSpacingMultiplier="1.2" />
 </LinearLayout>

@@ -1,0 +1,100 @@
+package com.ximalaya.ting.android.opensdk.constants;
+
+public class DTransferConstants
+{
+  public static final String ACCESS_TOKEN = "access_token";
+  public static final String ALBUM = "album";
+  public static final String ALBUM_ID = "album_id";
+  public static final String ALBUM_IDS = "ids";
+  public static final String ALBUM_TITLE = "album_title";
+  public static final String ALL_ALBUMLIST_URL = "http://api.ximalaya.com/openapi-gateway-app/albums/get_all";
+  public static final String APPKEY = "app_key";
+  public static final String APPSECRET = "app_secret";
+  public static final String BASE_URL = "http://api.ximalaya.com/openapi-gateway-app";
+  public static final String BATCHALBUM = "batchalbum";
+  public static final String BATCHTRACK = "batchtrack";
+  public static final String BATCH_ALBUMLIST_URL = "http://api.ximalaya.com/openapi-gateway-app/albums/get_batch";
+  public static final String BATCH_TRACKLIST_URL = "http://api.ximalaya.com/openapi-gateway-app/tracks/get_batch";
+  public static final String CATEGORY = "category";
+  public static final String CATEGORYLIST_URL = "http://api.ximalaya.com/openapi-gateway-app/categories/list";
+  public static final String CATEGORY_BANNERLIST_URL = "http://api.ximalaya.com/openapi-gateway-app/banners/category_banners";
+  public static final String CATEGORY_ID = "category_id";
+  public static final String CATEGORY_NAME = "category_name";
+  public static final String CLIENT_OS_TYPE = "client_os_type";
+  public static final int CLIENT_OS_TYPE_VALUE = 2;
+  public static final String COLUMANLIST_URL = "http://api.ximalaya.com/openapi-gateway-app/column/quality_list";
+  public static final String COLUMAN_DETAIL_URL = "http://api.ximalaya.com/openapi-gateway-app/column/detail";
+  public static final int DEFAULT_PAGE_SIZE = 20;
+  public static final String DEVICE_ID = "device_id";
+  public static final String DISCOVERY_BANNERLIST_URL = "http://api.ximalaya.com/openapi-gateway-app/banners/discovery_banners";
+  public static final String GENERATE_OTP_URL = "http://api.ximalaya.com/openapi-platformcoorp-authenticate-app/platformcoorp/generate_otp";
+  public static final String GET_ADVERT = "http://adse.test.ximalaya.com/soundPatch/";
+  public static final String HOTALBUMSLIST_URL = "http://api.ximalaya.com/openapi-gateway-app/albums/hot";
+  public static final String HOT_AGGREGATION_URL = "http://api.ximalaya.com/openapi-gateway-app/albums/hot_aggregation";
+  public static final String HUMAN_RECOMMEND_ALBUMLIST_URL = "http://api.ximalaya.com/openapi-gateway-app/albums/human_recommend";
+  public static final String HUMAN_RECOMMEND_CATEGORYLIST_URL = "http://api.ximalaya.com/openapi-gateway-app/categories/human_recommend";
+  public static final boolean IS_ONLINE_EVN = false;
+  public static final String LAST_PLAY_TRACKLIST_URL = "http://api.ximalaya.com/openapi-gateway-app/tracks/get_last_play_tracks";
+  public static final String LIVE_PROGRAMLIST_URL = "http://api.ximalaya.com/openapi-gateway-app/live/get_playing_program";
+  public static final String LIVE_PROVINCELIST_URL = "http://api.ximalaya.com/openapi-gateway-app/live/provinces";
+  public static final String LIVE_RADIOLIST_URL = "http://api.ximalaya.com/openapi-gateway-app/live/radios";
+  public static final String LIVE_SCHEDULELIST_URL = "http://api.ximalaya.com/openapi-gateway-app/live/schedules";
+  public static final String OTP = "otp";
+  public static final String OTP_URL = "http://api.ximalaya.com/openapi-platformcoorp-authenticate-app";
+  public static final String PACKID = "pack_id";
+  public static final String PAGE = "page";
+  public static final String PAGE_SIZE = "count";
+  public static final String PLAY_RECORD = "http://play.ximalaya.com/";
+  public static final String POST_XDCS = "http://xdcs-collector.test.ximalaya.com/api/v1/realtime";
+  public static final String PROGRAM = "program";
+  public static final String PROVINCE = "province";
+  public static final String PROVINCECODE = "province_code";
+  public static final String RADIO = "radio";
+  public static final String RADIOID = "radio_id";
+  public static final String RADIOTYPE = "radio_type";
+  public static final String RANKLIST_URL = "http://api.ximalaya.com/openapi-gateway-app/ranks/index_list";
+  public static final String RANKS_RADIOLIST_URL = "http://api.ximalaya.com/openapi-gateway-app/ranks/radios";
+  public static final String RANK_ALBUMLIST_URL = "http://api.ximalaya.com/openapi-gateway-app/ranks/albums";
+  public static final String RANK_BANNERLIST_URL = "http://api.ximalaya.com/openapi-gateway-app/banners/rank_banners";
+  public static final String RANK_TRACKLIST_URL = "http://api.ximalaya.com/openapi-gateway-app/ranks/tracks";
+  public static final String RECOMMEND_DOWNLOAD_URL = "http://api.ximalaya.com/openapi-gateway-app/albums/recommend_download";
+  public static final String RELATIVE_ALBUMLIST_URL = "http://api.ximalaya.com/openapi-gateway-app/albums/relative_album";
+  public static final String RELATIVE_ALBUMLIST_USE_TRACKID_URL = "http://api.ximalaya.com/openapi-gateway-app/tracks/relative_album";
+  public static final String SCHEDULE = "schedule";
+  public static final String SDK_VERSION = "sdk_version";
+  public static final String SDK_VERSION_VALUE = "v1.0";
+  public static final String SEARCHALBUM = "searchalbum";
+  public static final String SEARCHTRACK = "searchtrack";
+  public static final String SEARCH_ALBUMLIST_URL = "http://api.ximalaya.com/openapi-gateway-app/search/albums";
+  public static final String SEARCH_HOT_WORDS_URL = "http://api.ximalaya.com/openapi-gateway-app/search/hot_words";
+  public static final String SEARCH_KEY = "q";
+  public static final String SEARCH_RADIOLIST_URL = "http://api.ximalaya.com/openapi-gateway-app/search/radios";
+  public static final String SEARCH_SUGGEST_WORDS_URL = "http://api.ximalaya.com/openapi-gateway-app/search/suggest_words";
+  public static final String SEARCH_TRACKLIST_URL = "http://api.ximalaya.com/openapi-gateway-app/search/tracks";
+  public static final String SIGNATURE = "sig";
+  public static final String SORT = "sort";
+  public static final String TAG = "tag";
+  public static final String TAGLIST_URL = "http://api.ximalaya.com/openapi-gateway-app/tags/list";
+  public static final String TAG_NAME = "tag_name";
+  public static final String TOTAL_PAGE = "total_page";
+  public static final String TRACK = "track";
+  public static final String TRACKHOT = "trackhot";
+  public static final String TRACKHOTLIST_URL = "http://api.ximalaya.com/openapi-gateway-app/tracks/hot";
+  public static final String TRACKLIST_URL = "http://api.ximalaya.com/openapi-gateway-app/albums/browse";
+  public static final String TRACK_BASE_URL = "track_base_url";
+  public static final String TRACK_IDS = "ids";
+  public static final String TYPE = "type";
+  public static final String UID = "uid";
+  public static final String UPDATE_BATCH_URL = "http://api.ximalaya.com/openapi-gateway-app/albums/get_update_batch";
+  public static final String URL = "URL";
+  public static final String VERSION_REGULAR_REL = "http://api.ximalaya.com/version/get_latest_version";
+  public static final String VERSION_TEST_URL = "http://192.168.1.173:90/version/get_latest_version";
+  public static final String WEEKDAY = "weekday";
+  public static final String XDCS_OFFLINE = "http://xdcs-collector.ximalaya.com/api/v1/offline";
+  public static final String XDCS_ONLINE = "http://xdcs-collector.ximalaya.com/api/v1/realtime";
+}
+
+/* Location:           E:\Progs\Dev\Android\Decompile\apktool\zssq\zssq-dex2jar.jar
+ * Qualified Name:     com.ximalaya.ting.android.opensdk.constants.DTransferConstants
+ * JD-Core Version:    0.6.0
+ */

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="?consumePopupBg" android:layout_width="160.0dip" android:layout_height="@dimen/dp_40"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="@dimen/text_size_12" android:gravity="left|center" android:id="@id/consume_record_copy" android:layout_width="fill_parent" android:layout_height="@dimen/dp_40" android:layout_marginLeft="@dimen/dp_16" android:text="复制订单信息" />
+    <View android:id="@id/consume_record_line" android:background="?lineColor" android:layout_width="fill_parent" android:layout_height="1.0px" />
+    <TextView android:textSize="@dimen/text_size_12" android:gravity="left|center" android:id="@id/consume_record_desc" android:layout_width="fill_parent" android:layout_height="@dimen/dp_40" android:layout_marginLeft="@dimen/dp_16" android:text="展开详情" />
+</LinearLayout>

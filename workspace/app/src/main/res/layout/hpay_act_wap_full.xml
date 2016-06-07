@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@drawable/hpay_bg" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:orientation="horizontal" android:background="@color/hpay_dd_title_background" android:layout_width="fill_parent" android:layout_height="48.0dip">
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/hpay_btnback" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:src="@drawable/hpay_top_back_selector" android:layout_alignParentLeft="true" />
+        <TextView android:textSize="18.0sp" android:textColor="#ffffffff" android:id="@id/hpay_tvTitle" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:singleLine="true" android:layout_toRightOf="@id/hpay_btnback" android:layout_centerInParent="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <FrameLayout android:id="@id/hpay_flwebview" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.arcsoft.hpay100.web.HPayWebView android:id="@id/hpay_webview" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="vertical" android:id="@id/hpay_net_error" android:background="@drawable/hpay_bg" android:focusable="true" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <ImageView android:gravity="center" android:id="@id/hpay_error_image_retry" android:focusableInTouchMode="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/hpay_net_error" />
+            <TextView android:textSize="16.0sp" android:textColor="#ff000000" android:gravity="center" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:text="您的网络不给力，请重试" />
+        </LinearLayout>
+        <ProgressBar android:id="@id/hpay_progressbar" android:layout_width="fill_parent" android:layout_height="4.0dip" android:progressDrawable="@drawable/hpay_pb_web_title" style="?android:attr/progressBarStyleHorizontal" />
+    </FrameLayout>
+</LinearLayout>

@@ -1,0 +1,22 @@
+package com.clilystudio.netbook.adapter;
+
+import android.support.design.widget.am;
+import android.view.LayoutInflater;
+
+public final class Y extends NotificationAdapter
+{
+  public Y(LayoutInflater paramLayoutInflater)
+  {
+    super(paramLayoutInflater);
+  }
+
+  protected final String a()
+  {
+    return am.i(b());
+  }
+}
+
+/* Location:           E:\Progs\Dev\Android\Decompile\apktool\zssq\zssq-dex2jar.jar
+ * Qualified Name:     com.clilystudio.netbook.adapter.Y
+ * JD-Core Version:    0.6.0
+ */

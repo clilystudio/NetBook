@@ -1,62 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView android:background="?backgroundPressed"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            xmlns:android="http://schemas.android.com/apk/res/android">
-
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
-
-        <TextView
-            android:text="付费去广告"
-            style="@style/SettingLabel"/>
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/recycler_view"
-            android:background="?android:windowBackground"
-            android:scrollbars="vertical"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"/>
-
-        <TextView
-            android:id="@+id/txt_share_remove"
-            android:visibility="gone"
-            android:text="免费去广告"
-            style="@style/SettingLabel"/>
-
-        <RelativeLayout
-            android:id="@+id/rl_share_remove"
-            android:background="?android:windowBackground"
-            android:paddingLeft="@dimen/dp_16"
-            android:paddingRight="@dimen/dp_16"
-            android:visibility="gone"
-            android:layout_width="fill_parent"
-            android:layout_height="@dimen/dp_56"
-            android:minHeight="@dimen/dp_56">
-
-            <TextView
-                android:textSize="@dimen/text_size_15"
-                android:id="@+id/vip_content"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="不想花钱?"
-                android:layout_alignParentLeft="true"
-                android:layout_centerVertical="true"/>
-
-            <Button
-                android:textSize="@dimen/text_size_12"
-                android:textColor="@color/white"
-                android:id="@+id/btn_share_remove_ad"
-                android:background="@drawable/common_btn_red_bg"
-                android:paddingLeft="@dimen/dp_8"
-                android:paddingRight="@dimen/dp_8"
-                android:layout_width="wrap_content"
-                android:layout_height="@dimen/dp_24"
-                android:text="分享免广告"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"/>
+<ScrollView android:background="?backgroundPressed" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:text="付费去广告" style="@style/SettingLabel" />
+        <android.support.v7.widget.RecyclerView android:id="@id/recycler_view" android:background="?android:windowBackground" android:scrollbars="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        <TextView android:id="@id/txt_share_remove" android:visibility="gone" android:text="免费去广告" style="@style/SettingLabel" />
+        <RelativeLayout android:id="@id/rl_share_remove" android:background="?android:windowBackground" android:paddingLeft="@dimen/dp_16" android:paddingRight="@dimen/dp_16" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/dp_56" android:minHeight="@dimen/dp_56">
+            <TextView android:textSize="@dimen/text_size_15" android:id="@id/vip_content" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="不想花钱?" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+            <Button android:textSize="@dimen/text_size_12" android:textColor="@color/white" android:id="@id/btn_share_remove_ad" android:background="@drawable/common_btn_red_bg" android:paddingLeft="@dimen/dp_8" android:paddingRight="@dimen/dp_8" android:layout_width="wrap_content" android:layout_height="@dimen/dp_24" android:text="分享免广告" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
         </RelativeLayout>
     </LinearLayout>
 </ScrollView>

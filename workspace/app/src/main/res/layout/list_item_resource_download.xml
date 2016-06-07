@@ -1,44 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@drawable/list_item_reader_res"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                style="@style/ListItemDeprecated"
-                xmlns:android="http://schemas.android.com/apk/res/android">
-
-    <TextView
-        android:layout_gravity="center_vertical"
-        android:id="@+id/tv_name"
-        android:text="Resource Name"
-        style="@style/ListItem_Resource_Main"/>
-
-    <TextView
-        android:textSize="@dimen/text_size_10"
-        android:textColor="@color/sub_text"
-        android:ellipsize="end"
-        android:id="@+id/tv_last_chapter"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dp_3"
-        android:layout_marginRight="@dimen/dp_6"
-        android:text="Last Chapter"
-        android:singleLine="true"
-        android:layout_toLeftOf="@id/resource_list_item_last_select"
-        android:layout_below="@id/tv_name"
-        android:layout_alignLeft="@id/tv_name"/>
-
-    <TextView
-        android:textSize="9.0sp"
-        android:textColor="@color/white"
-        android:gravity="center_vertical"
-        android:id="@+id/resource_list_item_last_select"
-        android:background="@drawable/reader_resource_last_sel_bg"
-        android:paddingLeft="5.0dip"
-        android:paddingTop="2.0dip"
-        android:paddingRight="5.0dip"
-        android:paddingBottom="3.0dip"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="上次选择"
-        android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"/>
+<RelativeLayout android:background="@drawable/list_item_reader_res" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/ListItemDeprecated"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:layout_gravity="center_vertical" android:id="@id/tv_name" android:text="Resource Name" style="@style/ListItem_Resource_Main" />
+    <TextView android:textSize="@dimen/text_size_10" android:textColor="@color/sub_text" android:ellipsize="end" android:id="@id/tv_last_chapter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp_3" android:layout_marginRight="@dimen/dp_6" android:text="Last Chapter" android:singleLine="true" android:layout_toLeftOf="@id/resource_list_item_last_select" android:layout_below="@id/tv_name" android:layout_alignLeft="@id/tv_name" />
+    <TextView android:textSize="9.0sp" android:textColor="@color/white" android:gravity="center_vertical" android:id="@id/resource_list_item_last_select" android:background="@drawable/reader_resource_last_sel_bg" android:paddingLeft="5.0dip" android:paddingTop="2.0dip" android:paddingRight="5.0dip" android:paddingBottom="3.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="上次选择" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
 </RelativeLayout>

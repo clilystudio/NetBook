@@ -1,50 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_horizontal"
-              android:orientation="vertical"
-              android:background="?android:windowBackground"
-              android:paddingLeft="20.0dip"
-              android:paddingTop="20.0dip"
-              android:paddingRight="20.0dip"
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              xmlns:android="http://schemas.android.com/apk/res/android">
-
-    <TextView
-        android:textSize="@dimen/text_size_17"
-        android:textColor="?android:textColor"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/reader_web_opt_msg"/>
-
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10.0dip">
-
-        <CheckBox
-            android:textColor="?android:textColor"
-            android:id="@+id/reader_web_opt_box"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:checked="true"
-            android:button="@drawable/checkbox_system_brightness"/>
-
-        <TextView
-            android:textSize="@dimen/text_size_14"
-            android:textColor="?android:textColorSecondary"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="自动转码"/>
-
-        <TextView
-            android:textSize="@dimen/text_size_14"
-            android:textColor="?android:textColorTertiary"
-            android:id="@+id/reader_web_opt_url"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="2.0dip"
-            android:text="www"
-            android:singleLine="true"/>
+<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:background="?android:windowBackground" android:paddingLeft="20.0dip" android:paddingTop="20.0dip" android:paddingRight="20.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="@dimen/text_size_17" android:textColor="?android:textColor" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/reader_web_opt_msg" />
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip">
+        <CheckBox android:textColor="?android:textColor" android:id="@id/reader_web_opt_box" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checked="true" android:button="@drawable/checkbox_system_brightness" />
+        <TextView android:textSize="@dimen/text_size_14" android:textColor="?android:textColorSecondary" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="自动转码" />
+        <TextView android:textSize="@dimen/text_size_14" android:textColor="?android:textColorTertiary" android:id="@id/reader_web_opt_url" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="2.0dip" android:text="www" android:singleLine="true" />
     </LinearLayout>
 </LinearLayout>

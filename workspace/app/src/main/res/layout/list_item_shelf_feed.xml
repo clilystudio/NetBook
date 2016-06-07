@@ -1,43 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent"
-                android:layout_height="@dimen/bookshelf_height"
-                xmlns:android="http://schemas.android.com/apk/res/android">
-
-    <LinearLayout
-        android:orientation="horizontal"
-        android:paddingLeft="@dimen/dp_16"
-        android:paddingRight="@dimen/dp_16"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
-
-        <com.clilystudio.app.netbook.widget.CoverView android:layout_gravity="center_vertical"
-                                                   android:id="@+id/cover"
-                                                   android:layout_marginRight="@dimen/dp_15"
-                                                   style="@style/CoverView"
-                                                   xmlns:apps="http://schemas.android.com/apk/res-auto"/>
-
-        <LinearLayout
-            android:layout_gravity="center"
-            android:orientation="vertical"
-            android:layout_width="0.0dip"
-            android:layout_height="wrap_content"
-            android:layout_weight="1.0">
-
-            <TextView
-                android:id="@+id/title"
-                android:text="养肥区"
-                style="@style/ShelfMainText"/>
-
-            <TextView
-                android:id="@+id/desc"
-                style="@style/ShelfSubText"/>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="@dimen/bookshelf_height"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:paddingLeft="@dimen/dp_16" android:paddingRight="@dimen/dp_16" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.clilystudio.netbook.widget.CoverView android:layout_gravity="center_vertical" android:id="@id/cover" android:layout_marginRight="@dimen/dp_15" apps:cover="@drawable/ic_bookshelf_feed" style="@style/CoverView" xmlns:apps="http://schemas.android.com/apk/res-auto" />
+        <LinearLayout android:layout_gravity="center" android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <TextView android:id="@id/title" android:text="养肥区" style="@style/ShelfMainText" />
+            <TextView android:id="@id/desc" style="@style/ShelfSubText" />
         </LinearLayout>
-
-        <com.clilystudio.app.netbook.widget.BookShelfFlagView
-            android:layout_gravity="center"
-            android:id="@+id/flag"
-            android:layout_width="32.0dip"
-            android:layout_height="16.0dip"
-            android:layout_marginLeft="35.0dip"/>
+        <com.clilystudio.netbook.widget.BookShelfFlagView android:layout_gravity="center" android:id="@id/flag" android:layout_width="32.0dip" android:layout_height="16.0dip" android:layout_marginLeft="35.0dip" />
     </LinearLayout>
 </RelativeLayout>

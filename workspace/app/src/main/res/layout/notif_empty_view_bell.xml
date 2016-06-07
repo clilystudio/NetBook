@@ -1,24 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical"
-              android:id="@+id/load_error_hint"
-              android:visibility="gone"
-              android:layout_width="fill_parent"
-              android:layout_height="fill_parent"
-              xmlns:android="http://schemas.android.com/apk/res/android">
-
-    <ImageView
-        android:layout_gravity="center"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="100.0dip"
-        android:src="@drawable/bell"/>
-
-    <TextView
-        android:textSize="14.0sp"
-        android:textColor="#ff9c9c9c"
-        android:layout_gravity="center"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="41.0dip"
-        android:text="没任何消息"/>
+<LinearLayout android:orientation="vertical" android:id="@id/load_error_hint" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="100.0dip" android:src="@drawable/bell" />
+    <TextView android:textSize="14.0sp" android:textColor="#ff9c9c9c" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="41.0dip" android:text="没任何消息" />
 </LinearLayout>

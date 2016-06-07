@@ -1,136 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center"
-              android:orientation="vertical"
-              android:id="@+id/reader_page_pay"
-              android:visibility="gone"
-              android:layout_width="fill_parent"
-              android:layout_height="fill_parent"
-              xmlns:android="http://schemas.android.com/apk/res/android">
-
-    <TextView
-        android:textSize="@dimen/text_size_34"
-        android:layout_gravity="center_horizontal"
-        android:id="@+id/reader_page_pay_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-
-    <LinearLayout
-        android:gravity="center_horizontal"
-        android:orientation="vertical"
-        android:id="@+id/reader_page_pay_buy"
-        android:visibility="gone"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dp_40">
-
-        <LinearLayout
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:textSize="@dimen/text_size_15"
-                android:textColor="?android:textColorSecondary"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="需要支付 "/>
-
-            <TextView
-                android:textSize="@dimen/text_size_15"
-                android:textColor="@color/primary_red"
-                android:id="@+id/reader_page_pay_price"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="10"/>
-
-            <TextView
-                android:textSize="@dimen/text_size_15"
-                android:textColor="?android:textColorSecondary"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=" 追书币"/>
+<LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/reader_page_pay" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="@dimen/text_size_34" android:layout_gravity="center_horizontal" android:id="@id/reader_page_pay_title" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/reader_page_pay_buy" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp_40">
+        <LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <TextView android:textSize="@dimen/text_size_15" android:textColor="?android:textColorSecondary" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="需要支付 " />
+            <TextView android:textSize="@dimen/text_size_15" android:textColor="@color/primary_red" android:id="@id/reader_page_pay_price" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="\ 10" />
+            <TextView android:textSize="@dimen/text_size_15" android:textColor="?android:textColorSecondary" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text=" 追书币" />
         </LinearLayout>
-
-        <CheckBox
-            android:textSize="@dimen/text_size_12"
-            android:textColor="?android:textColorSecondary"
-            android:id="@+id/reader_page_pay_checkbox"
-            android:background="@null"
-            android:paddingLeft="@dimen/dp_8"
-            android:focusable="false"
-            android:focusableInTouchMode="false"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dp_60"
-            android:button="@drawable/shelf_select_checkbox"
-            android:text="不再提醒，下章时自动购买"/>
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dp_20">
-
-            <Button
-                android:textSize="@dimen/text_size_14"
-                android:textColor="@color/white"
-                android:id="@+id/reader_page_pay_btn"
-                android:background="@drawable/common_btn_red_bg"
-                android:layout_width="160.0dip"
-                android:layout_height="40.0dip"
-                android:text="购买，继续阅读"/>
-
-            <Button
-                android:textSize="@dimen/text_size_14"
-                android:textColor="@color/white"
-                android:id="@+id/reader_page_change_btn"
-                android:background="@drawable/common_btn_green_bg"
-                android:layout_width="160.0dip"
-                android:layout_height="40.0dip"
-                android:layout_marginLeft="@dimen/dp_12"
-                android:text="选择其他来源"/>
+        <CheckBox android:textSize="@dimen/text_size_12" android:textColor="?android:textColorSecondary" android:id="@id/reader_page_pay_checkbox" android:background="@null" android:paddingLeft="@dimen/dp_8" android:focusable="false" android:focusableInTouchMode="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp_60" android:button="@drawable/shelf_select_checkbox" android:text="不再提醒，下章时自动购买" />
+        <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp_20">
+            <Button android:textSize="@dimen/text_size_14" android:textColor="@color/white" android:id="@id/reader_page_pay_btn" android:background="@drawable/common_btn_red_bg" android:layout_width="160.0dip" android:layout_height="40.0dip" android:text="购买，继续阅读" />
+            <Button android:textSize="@dimen/text_size_14" android:textColor="@color/white" android:id="@id/reader_page_change_btn" android:background="@drawable/common_btn_green_bg" android:layout_width="160.0dip" android:layout_height="40.0dip" android:layout_marginLeft="@dimen/dp_12" android:text="选择其他来源" />
         </LinearLayout>
     </LinearLayout>
-
-    <LinearLayout
-        android:gravity="center_horizontal"
-        android:orientation="vertical"
-        android:id="@+id/reader_page_pay_login"
-        android:visibility="gone"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dp_100">
-
-        <TextView
-            android:textSize="@dimen/text_size_15"
-            android:textColor="?android:textColorSecondary"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="本章节需要登录后继续阅读"/>
-
-        <CheckBox
-            android:textSize="@dimen/text_size_12"
-            android:textColor="?android:textColorSecondary"
-            android:background="@null"
-            android:paddingLeft="@dimen/dp_8"
-            android:focusable="false"
-            android:focusableInTouchMode="false"
-            android:visibility="invisible"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dp_60"
-            android:button="@drawable/shelf_select_checkbox"
-            android:text="填充高度"/>
-
-        <Button
-            android:textSize="@dimen/text_size_14"
-            android:textColor="@color/white"
-            android:id="@+id/reader_page_pay_btn_login"
-            android:background="@drawable/common_btn_red_bg"
-            android:layout_width="160.0dip"
-            android:layout_height="40.0dip"
-            android:layout_marginTop="@dimen/dp_20"
-            android:text="登录"/>
+    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/reader_page_pay_login" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp_100">
+        <TextView android:textSize="@dimen/text_size_15" android:textColor="?android:textColorSecondary" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="本章节需要登录后继续阅读" />
+        <CheckBox android:textSize="@dimen/text_size_12" android:textColor="?android:textColorSecondary" android:background="@null" android:paddingLeft="@dimen/dp_8" android:focusable="false" android:focusableInTouchMode="false" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp_60" android:button="@drawable/shelf_select_checkbox" android:text="填充高度" />
+        <Button android:textSize="@dimen/text_size_14" android:textColor="@color/white" android:id="@id/reader_page_pay_btn_login" android:background="@drawable/common_btn_red_bg" android:layout_width="160.0dip" android:layout_height="40.0dip" android:layout_marginTop="@dimen/dp_20" android:text="登录" />
     </LinearLayout>
 </LinearLayout>

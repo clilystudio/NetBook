@@ -1,100 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="?backgroundSelector"
-                android:layout_width="fill_parent"
-                android:layout_height="84.0dip"
-                xmlns:android="http://schemas.android.com/apk/res/android">
-
-    <com.clilystudio.app.netbook.widget.CoverView
-        android:id="@+id/book_review_listitem_cover"
-        android:layout_width="@dimen/dp_40"
-        android:layout_height="@dimen/dp_55"
-        android:layout_marginLeft="@dimen/dp_16"
-        android:layout_marginTop="@dimen/dp_16"/>
-
-    <LinearLayout
-        android:orientation="vertical"
-        android:paddingBottom="@dimen/list_item_review_content_top"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/shelf_divider_left_gap"
-        android:layout_marginTop="@dimen/dp_16"
-        android:layout_marginRight="@dimen/list_item_review_left">
-
-        <RelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:textSize="@dimen/text_size_11"
-                android:textColor="@color/book_topic_listitem_user"
-                android:ellipsize="end"
-                android:id="@+id/book_review_listitem_book"
-                android:paddingRight="@dimen/dp_8"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="书名"
-                android:singleLine="true"
-                android:layout_alignParentLeft="true"
-                android:layout_centerVertical="true"/>
-
-            <TextView
-                android:textSize="@dimen/text_size_11"
-                android:textColor="@color/book_topic_listitem_user"
-                android:id="@+id/book_review_listitem_type"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="[历史架空]"
-                android:layout_toRightOf="@id/book_review_listitem_book"
-                android:layout_centerVertical="true"/>
-
-            <TextView
-                android:textSize="@dimen/text_size_11"
-                android:textColor="?android:textColorTertiary"
-                android:id="@+id/book_review_listitem_time"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="0分钟前"
-                android:layout_alignParentRight="true"/>
-
-            <com.clilystudio.app.netbook.widget.PostFlag
-                android:id="@+id/post_flag"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"/>
+<RelativeLayout android:background="?backgroundSelector" android:layout_width="fill_parent" android:layout_height="84.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.clilystudio.netbook.widget.CoverView android:id="@id/book_review_listitem_cover" android:layout_width="@dimen/dp_40" android:layout_height="@dimen/dp_55" android:layout_marginLeft="@dimen/dp_16" android:layout_marginTop="@dimen/dp_16" />
+    <LinearLayout android:orientation="vertical" android:paddingBottom="@dimen/list_item_review_content_top" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/shelf_divider_left_gap" android:layout_marginTop="@dimen/dp_16" android:layout_marginRight="@dimen/list_item_review_left">
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:textSize="@dimen/text_size_11" android:textColor="@color/book_topic_listitem_user" android:ellipsize="end" android:id="@id/book_review_listitem_book" android:paddingRight="@dimen/dp_8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="书名" android:singleLine="true" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+            <TextView android:textSize="@dimen/text_size_11" android:textColor="@color/book_topic_listitem_user" android:id="@id/book_review_listitem_type" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="[历史架空]" android:layout_toRightOf="@id/book_review_listitem_book" android:layout_centerVertical="true" />
+            <TextView android:textSize="@dimen/text_size_11" android:textColor="?android:textColorTertiary" android:id="@id/book_review_listitem_time" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="0分钟前" android:layout_alignParentRight="true" />
+            <com.clilystudio.netbook.widget.PostFlag android:id="@id/post_flag" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentRight="true" />
         </RelativeLayout>
-
-        <TextView
-            android:textSize="@dimen/text_size_14"
-            android:textColor="?android:textColor"
-            android:id="@+id/book_review_listitem_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dp_9"
-            android:text="书评标题，书评标题，书评标题书评标题书评标题"
-            android:lineSpacingMultiplier="1.3"/>
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="1.0dip"
-            android:layout_marginTop="3.0dip">
-
-            <ImageView
-                android:paddingBottom="1.0dip"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/post_item_like"/>
-
-            <TextView
-                android:textSize="@dimen/text_size_10"
-                android:textColor="?android:textColorTertiary"
-                android:gravity="bottom"
-                android:layout_gravity="bottom"
-                android:id="@+id/support_percentage"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/dp_6"/>
+        <TextView android:textSize="@dimen/text_size_14" android:textColor="?android:textColor" android:id="@id/book_review_listitem_title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp_9" android:text="书评标题，书评标题，书评标题书评标题书评标题" android:lineSpacingMultiplier="1.3" />
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="1.0dip" android:layout_marginTop="3.0dip">
+            <ImageView android:paddingBottom="1.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/post_item_like" />
+            <TextView android:textSize="@dimen/text_size_10" android:textColor="?android:textColorTertiary" android:gravity="bottom" android:layout_gravity="bottom" android:id="@id/support_percentage" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dp_6" />
         </LinearLayout>
     </LinearLayout>
 </RelativeLayout>

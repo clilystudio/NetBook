@@ -1,28 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                xmlns:android="http://schemas.android.com/apk/res/android">
-
-    <ListView
-        android:id="@+id/local_chapter_list"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        style="@style/ListView_With_Divider"/>
-
-    <ImageView
-        android:id="@+id/load_error_hint"
-        android:visibility="gone"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/load_error_hint"
-        android:layout_centerInParent="true"/>
-
-    <TextView
-        android:textSize="@dimen/text_size_16"
-        android:textColor="@color/empty_view_text"
-        android:id="@+id/new_topic_empty_text"
-        android:visibility="gone"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"/>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ListView android:id="@id/local_chapter_list" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/ListView_With_Divider" />
+    <ImageView android:id="@id/load_error_hint" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/load_error_hint" android:layout_centerInParent="true" />
+    <TextView android:textSize="@dimen/text_size_16" android:textColor="@color/empty_view_text" android:id="@id/new_topic_empty_text" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" />
 </RelativeLayout>

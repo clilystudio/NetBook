@@ -1,89 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical"
-              android:background="?android:windowBackground"
-              android:layout_width="fill_parent"
-              android:layout_height="fill_parent"
-              xmlns:android="http://schemas.android.com/apk/res/android">
-
-    <LinearLayout
-        android:orientation="vertical"
-        android:paddingLeft="35.0dip"
-        android:paddingRight="35.0dip"
-        android:layout_width="fill_parent"
-        android:layout_height="0.0dip"
-        android:layout_weight="1.0">
-
-        <ImageView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:src="@drawable/light_bubble"/>
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <View
-                android:layout_gravity="center"
-                android:background="#ffbababa"
-                android:layout_width="0.0dip"
-                android:layout_height="1.0px"
-                android:layout_weight="1.0"/>
-
-            <TextView
-                android:textSize="12.0sp"
-                android:textColor="#ffffffff"
-                android:layout_gravity="center"
-                android:background="@drawable/long_secret_text_bar"
-                android:paddingLeft="6.0dip"
-                android:paddingRight="6.0dip"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="获得新技能"/>
-
-            <View
-                android:layout_gravity="center"
-                android:background="#ffbababa"
-                android:layout_width="0.0dip"
-                android:layout_height="1.0px"
-                android:layout_weight="1.0"/>
+<LinearLayout android:orientation="vertical" android:background="?android:windowBackground" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:paddingLeft="35.0dip" android:paddingRight="35.0dip" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+        <ImageView android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/random_entrance_gap_small" android:src="@drawable/light_bubble" />
+        <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/random_entrance_gap_small">
+            <View android:layout_gravity="center" android:background="#ffbababa" android:layout_width="0.0dip" android:layout_height="1.0px" android:layout_weight="1.0" />
+            <TextView android:textSize="12.0sp" android:textColor="#ffffffff" android:layout_gravity="center" android:background="@drawable/long_secret_text_bar" android:paddingLeft="6.0dip" android:paddingRight="6.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="获得新技能" />
+            <View android:layout_gravity="center" android:background="#ffbababa" android:layout_width="0.0dip" android:layout_height="1.0px" android:layout_weight="1.0" />
         </LinearLayout>
-
-        <TextView
-            android:textStyle="bold"
-            android:textColor="#ff211f1c"
-            android:gravity="center"
-            android:layout_gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="随机看书"/>
-
-        <TextView
-            android:textSize="14.0sp"
-            android:textColor="#ff494949"
-            android:gravity="center"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/random_read_intro"/>
+        <TextView android:textSize="@dimen/random_entrance_title" android:textStyle="bold" android:textColor="#ff211f1c" android:gravity="center" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/random_entrance_gap_big" android:text="随机看书" />
+        <TextView android:textSize="14.0sp" android:textColor="#ff494949" android:gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/random_entrance_gap_big" android:text="@string/random_read_intro" android:lineSpacingMultiplier="@dimen/random_entrance_multiplier" />
     </LinearLayout>
-
-    <include layout="@layout/horizontal_divider"/>
-
-    <FrameLayout
-        android:layout_width="fill_parent"
-        android:layout_height="100.0dip">
-
-        <com.clilystudio.app.netbook.widget.SAutoBgButton
-            android:textSize="20.0sp"
-            android:textColor="#ffffffff"
-            android:gravity="center"
-            android:layout_gravity="center"
-            android:id="@+id/read_random_book"
-            android:background="@drawable/red_round_button"
-            android:layout_width="300.0dip"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="6.0dip"
-            android:layout_marginRight="6.0dip"
-            android:text="立即开始随机看书"/>
+    <include layout="@layout/horizontal_divider" />
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="100.0dip">
+        <com.clilystudio.netbook.widget.SAutoBgButton android:textSize="20.0sp" android:textColor="#ffffffff" android:gravity="center" android:layout_gravity="center" android:id="@id/read_random_book" android:background="@drawable/red_round_button" android:layout_width="300.0dip" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip" android:layout_marginRight="6.0dip" android:text="立即开始随机看书" />
     </FrameLayout>
 </LinearLayout>

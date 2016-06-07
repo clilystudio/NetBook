@@ -1,22 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical"
-              android:id="@+id/book_info_tags_root"
-              android:paddingLeft="@dimen/dp_16"
-              android:paddingTop="@dimen/dp_16"
-              android:paddingRight="@dimen/dp_16"
-              android:visibility="gone"
-              android:layout_width="fill_parent"
-              android:layout_height="fill_parent"
-              xmlns:android="http://schemas.android.com/apk/res/android">
-
-    <com.clilystudio.app.netbook.widget.TagsLayout
-        android:id="@+id/tags_layout"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"/>
-
-    <View
-        android:id="@+id/book_info_tags_divider"
-        android:background="?lineColor"
-        android:layout_width="fill_parent"
-        android:layout_height="1.0px"/>
+<LinearLayout android:orientation="vertical" android:id="@id/book_info_tags_root" android:paddingLeft="@dimen/dp_16" android:paddingTop="@dimen/dp_16" android:paddingRight="@dimen/dp_16" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.clilystudio.netbook.widget.TagsLayout android:id="@id/tags_layout" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <View android:id="@id/book_info_tags_divider" android:background="?lineColor" android:layout_width="fill_parent" android:layout_height="1.0px" />
 </LinearLayout>

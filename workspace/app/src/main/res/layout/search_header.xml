@@ -1,25 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical"
-                android:id="@+id/advance_search_container"
-                android:background="?backgroundSelector"
-                android:visibility="gone"
-                android:layout_width="fill_parent"
-                android:layout_height="48.0dip"
-                xmlns:android="http://schemas.android.com/apk/res/android">
-
-    <TextView
-        android:ellipsize="end"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20.0dip"
-        android:text="@string/search_add_tips"
-        android:singleLine="true"
-        android:layout_centerInParent="true"
-        style="@style/SmallText"/>
-
-    <View
-        android:background="?lineColor"
-        android:layout_width="fill_parent"
-        android:layout_height="2.0px"
-        android:layout_alignParentBottom="true"/>
+<RelativeLayout android:orientation="vertical" android:id="@id/advance_search_container" android:background="?backgroundSelector" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="48.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:ellipsize="end" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:text="@string/search_add_tips" android:singleLine="true" android:layout_centerInParent="true" style="@style/SmallText" />
+    <View android:background="?lineColor" android:layout_width="fill_parent" android:layout_height="2.0px" android:layout_alignParentBottom="true" />
 </RelativeLayout>
