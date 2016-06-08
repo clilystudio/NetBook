@@ -118,16 +118,16 @@ public class G extends u {
                 return paramView;
             case 0:
                 View localView3 = LayoutInflater.from(paramViewGroup.getContext()).inflate(2130903313, paramViewGroup, false);
-                localView3.setTag(new R(this, localView3));
+                localView3.setTag(new R_Clz(this, localView3));
                 return localView3;
             case 1:
                 View localView2 = LayoutInflater.from(paramViewGroup.getContext()).inflate(2130903315, paramViewGroup, false);
                 localView2.findViewById(2131493348).setVisibility(0);
-                localView2.setTag(new R(this, localView2));
+                localView2.setTag(new R_Clz(this, localView2));
                 return localView2;
             case 2:
                 View localView1 = LayoutInflater.from(paramViewGroup.getContext()).inflate(2130903314, paramViewGroup, false);
-                localView1.setTag(new R(this, localView1));
+                localView1.setTag(new R_Clz(this, localView1));
                 return localView1;
             case 3:
         }
@@ -149,7 +149,7 @@ public class G extends u {
         paramView.setOnClickListener(new J(this, paramTweet));
     }
 
-    private void a(R paramR) {
+    private void a(R_Clz paramR) {
         paramR.h.setText("已关注");
         paramR.h.setTextColor(-5822976);
         paramR.h.setTextSize(10.0F);
@@ -158,7 +158,7 @@ public class G extends u {
         paramR.h.setCompoundDrawables(localDrawable, null, null, null);
     }
 
-    private void a(R paramR, Tweet paramTweet, User paramUser, boolean paramBoolean) {
+    private void a(R_Clz paramR, Tweet paramTweet, User paramUser, boolean paramBoolean) {
         a(paramR.h, 15, 15, 15, 15);
         paramR.h.setVisibility(0);
         if (paramBoolean) {
@@ -187,7 +187,7 @@ public class G extends u {
         paramR.h.setVisibility(4);
     }
 
-    private void a(Tweet paramTweet, R paramR) {
+    private void a(Tweet paramTweet, R_Clz paramR) {
         User localUser;
         if (paramTweet.isRetween()) {
             localUser = paramTweet.getFrom();
@@ -307,7 +307,7 @@ public class G extends u {
         paramR.p.setVisibility(8);
     }
 
-    private void b(R paramR) {
+    private void b(R_Clz paramR) {
         paramR.h.setText("关注");
         paramR.h.setTextColor(this.a.getResources().getColor(2131427543));
         Drawable localDrawable = this.a.getResources().getDrawable(2130837803);
@@ -324,7 +324,7 @@ public class G extends u {
         int i = getItemViewType(paramInt);
         View localView = a(paramView, i, paramViewGroup, paramInt);
         Tweet localTweet = (Tweet) getItem(paramInt);
-        R localR = (R) localView.getTag();
+        R_Clz localR = (R_Clz) localView.getTag();
         switch (i) {
             default:
             case 0:

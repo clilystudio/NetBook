@@ -6,7 +6,7 @@ import com.clilystudio.netbook.model.Tweet;
 
 final class N
         implements View.OnClickListener {
-    N(G paramG, R paramR, Tweet paramTweet) {
+    N(G paramG, R_Clz paramR, Tweet paramTweet) {
     }
 
     public final void onClick(View paramView) {

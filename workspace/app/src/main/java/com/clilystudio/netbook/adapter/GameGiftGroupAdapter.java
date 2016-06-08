@@ -5,11 +5,16 @@ import android.support.design.widget.am;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.model.GameGiftGroup;
 import com.clilystudio.netbook.model.GiftGame;
 import com.clilystudio.netbook.model.GiftGameGift;
+import com.clilystudio.netbook.ui.SmartImageView;
+import com.clilystudio.netbook.widget.GiftGameGameButton;
+import com.clilystudio.netbook.widget.GiftGameGiftButton;
 
 public final class GameGiftGroupAdapter extends u<GameGiftGroup> {
     private LayoutInflater a;
@@ -71,5 +76,40 @@ public final class GameGiftGroupAdapter extends u<GameGiftGroup> {
     public final int getViewTypeCount() {
         return 3;
     }
+
+    class GameHolder {
+        GiftGameGameButton button;
+        TextView desc;
+        SmartImageView icon;
+        TextView title;
+
+        GameHolder(View paramView) {
+            button = (GiftGameGameButton) paramView.findViewById(R.id.download);
+            desc = (TextView) paramView.findViewById(R.id.desc);
+            icon = (SmartImageView) paramView.findViewById(R.id.icon);
+            title = (TextView) paramView.findViewById(R.id.title);
+        }
+    }
+
+    class GiftHolder {
+        GiftGameGiftButton button;
+        TextView desc;
+        TextView title;
+
+        GiftHolder(View paramView) {
+            button = (GiftGameGiftButton) paramView.findViewById(R.id.download);
+            desc = (TextView) paramView.findViewById(R.id.desc);
+            title = (TextView) paramView.findViewById(R.id.title);
+        }
+    }
+
+    class MoreHolder {
+        TextView title;
+
+        MoreHolder(View paramView) {
+            title = (TextView) paramView.findViewById(R.id.title);
+        }
+    }
+
 }
 

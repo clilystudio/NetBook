@@ -12,7 +12,7 @@ import com.clilystudio.netbook.util.e;
 
 final class L
         implements View.OnClickListener {
-    L(G paramG, Tweet paramTweet, R paramR) {
+    L(G paramG, Tweet paramTweet, R_Clz paramR) {
     }
 
     public final void onClick(View paramView) {

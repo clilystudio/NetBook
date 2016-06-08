@@ -5,8 +5,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.model.BookRankRoot;
 import com.clilystudio.netbook.model.BookRankSummary;
+import com.clilystudio.netbook.ui.SmartImageView;
 import com.clilystudio.netbook.widget.RankCollapseItem;
 
 import java.util.List;
@@ -158,5 +160,18 @@ public final class BookRankAdapter extends u<BookRankSummary> {
     public final int getViewTypeCount() {
         return 3;
     }
+
+    class ViewHolder {
+
+        SmartImageView cover;
+
+        TextView title;
+
+        ViewHolder(View paramView) {
+            cover = (SmartImageView)paramView.findViewById(R.id.list_item_book_rank_cover);
+            title = (TextView)paramView.findViewById(R.id.list_item_book_rank_title);
+        }
+    }
+
 }
 

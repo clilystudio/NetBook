@@ -5,7 +5,7 @@ import com.clilystudio.netbook.model.PostPublish;
 import com.clilystudio.netbook.model.Tweet;
 
 final class U extends e<String, Void, PostPublish> {
-    public U(G paramG, Tweet paramTweet, R paramR) {
+    public U(G paramG, Tweet paramTweet, R_Clz paramR) {
     }
 }
 

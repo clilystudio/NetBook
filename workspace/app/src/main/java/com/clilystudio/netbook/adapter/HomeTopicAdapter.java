@@ -6,8 +6,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.model.BookShelfTopic;
+import com.clilystudio.netbook.ui.SmartImageView;
 import com.clilystudio.netbook.util.ag;
+import com.clilystudio.netbook.widget.BookShelfFlagView;
 
 public final class HomeTopicAdapter extends u<BookShelfTopic> {
     private LayoutInflater a;
@@ -70,5 +73,18 @@ public final class HomeTopicAdapter extends u<BookShelfTopic> {
     public final int getViewTypeCount() {
         return 2;
     }
+
+    class ViewHolder {
+        TextView mCount;
+        SmartImageView mCover;
+        TextView mTitle;
+
+        ViewHolder(View paramView) {
+            mCount = (TextView) paramView.findViewById(R.id.message_count);
+            mCover = (SmartImageView) paramView.findViewById(R.id.cover);
+             mTitle = (TextView) paramView.findViewById(R.id.title);
+        }
+    }
+
 }
 

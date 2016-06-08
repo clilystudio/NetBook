@@ -4,10 +4,15 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.model.NotificationItem;
+import com.clilystudio.netbook.ui.CircularSmartImageView;
+import com.clilystudio.netbook.ui.SmartImageView;
 import com.clilystudio.netbook.viewbinder.notification.NotifBinder;
 import com.clilystudio.netbook.viewbinder.notification.NotifBinderFactory;
+import com.clilystudio.netbook.widget.BookShelfFlagView;
 import com.clilystudio.netbook.widget.DividerSection;
 
 import java.util.ArrayList;
@@ -192,6 +197,26 @@ public abstract class NotificationAdapter extends u<NotificationItem> {
 
     public int getViewTypeCount() {
         return this.i.length;
+    }
+
+    class HeaderHolder {
+        TextView mLabelText;
+
+        HeaderHolder(View paramView) {
+            mLabelText = (TextView) paramView.findViewById(R.id.label_text);
+        }
+    }
+
+    class ViewHolder {
+        CircularSmartImageView mAvatar;
+        TextView mMainText;
+        TextView mSubText;
+
+        ViewHolder(View paramView) {
+            mAvatar = (CircularSmartImageView) paramView.findViewById(R.id.avatar);
+            mMainText = (TextView) paramView.findViewById(R.id.main_text);
+            mSubText = (TextView) paramView.findViewById(R.id.sub_text);
+        }
     }
 }
 

@@ -8,7 +8,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.TextView;
 
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.db.AudioRecord;
 import com.clilystudio.netbook.db.BookDlRecord;
 import com.clilystudio.netbook.db.BookFile;
@@ -16,8 +18,12 @@ import com.clilystudio.netbook.db.BookReadRecord;
 import com.clilystudio.netbook.model.Advert;
 import com.clilystudio.netbook.model.BookFeed;
 import com.clilystudio.netbook.model.BookShelf;
+import com.clilystudio.netbook.ui.SmartImageView;
 import com.clilystudio.netbook.util.adutil.n;
 import com.clilystudio.netbook.util.t;
+import com.clilystudio.netbook.widget.BookShelfFlagView;
+import com.clilystudio.netbook.widget.CoverLoadingLayer;
+import com.clilystudio.netbook.widget.CoverView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -364,6 +370,84 @@ public class HomeShelfAdapter extends u<BookShelf> {
 
     public int getViewTypeCount() {
         return 5;
+    }
+
+    class AdHolder {
+        SmartImageView cover;
+        TextView desc;
+        BookShelfFlagView flag;
+        TextView title;
+
+        AdHolder(View paramView) {
+            cover = (SmartImageView) paramView.findViewById(R.id.cover);
+            desc = (TextView) paramView.findViewById(R.id.desc);
+            flag = (BookShelfFlagView) paramView.findViewById(R.id.flag);
+            title = (TextView) paramView.findViewById(R.id.title);
+        }
+    }
+
+    class AlbumHolder {
+        CheckBox check;
+        CoverView cover;
+        CoverLoadingLayer coverLoadingLayer;
+        TextView desc;
+        BookShelfFlagView flag;
+        TextView title;
+        View top;
+
+        AlbumHolder(View paramView) {
+            check = (CheckBox) paramView.findViewById(R.id.checked);
+            cover = (CoverView) paramView.findViewById(R.id.cover);
+            coverLoadingLayer = (CoverLoadingLayer) paramView.findViewById(R.id.cover_loading);
+            desc = (TextView) paramView.findViewById(R.id.desc);
+            flag = (BookShelfFlagView) paramView.findViewById(R.id.flag);
+            title = (TextView) paramView.findViewById(R.id.title);
+            top = paramView.findViewById(R.id.top);
+        }
+    }
+
+    class BookHolder {
+        CheckBox check;
+        CoverView cover;
+        CoverLoadingLayer coverLoadingLayer;
+        TextView desc;
+        BookShelfFlagView flag;
+        TextView title;
+        View top;
+
+        BookHolder(View paramView) {
+            check = (CheckBox) paramView.findViewById(R.id.checked);
+            cover = (CoverView) paramView.findViewById(R.id.cover);
+            coverLoadingLayer = (CoverLoadingLayer) paramView.findViewById(R.id.cover_loading);
+            desc = (TextView) paramView.findViewById(R.id.desc);
+            flag = (BookShelfFlagView) paramView.findViewById(R.id.flag);
+            title = (TextView) paramView.findViewById(R.id.title);
+            top = paramView.findViewById(R.id.top);
+        }
+    }
+
+    class FeedHolder {
+        BookShelfFlagView flag;
+        TextView title;
+
+        FeedHolder(View paramView) {
+            flag = (BookShelfFlagView) paramView.findViewById(R.id.flag);
+            title = (TextView) paramView.findViewById(R.id.title);
+        }
+    }
+
+    class TxtHolder {
+        CheckBox check;
+        TextView desc;
+        TextView title;
+        View top;
+
+        TxtHolder(View paramView) {
+            check = (CheckBox) paramView.findViewById(R.id.checked);
+            desc = (TextView) paramView.findViewById(R.id.desc);
+            title = (TextView) paramView.findViewById(R.id.title);
+            top = paramView.findViewById(R.id.top);
+        }
     }
 }
 

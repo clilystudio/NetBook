@@ -6,7 +6,7 @@ import com.clilystudio.netbook.model.User;
 
 final class M
         implements View.OnClickListener {
-    M(G paramG, R paramR, User paramUser) {
+    M(G paramG, R_Clz paramR, User paramUser) {
     }
 
     public final void onClick(View paramView) {
