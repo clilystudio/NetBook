@@ -2,7 +2,7 @@ package com.clilystudio.netbook.ui;
 
 import android.content.Context;
 import android.text.SpannableString;
-import com.clilystudio.netbook.model.InsideLink;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -39,7 +39,7 @@ public final class by extends be
     while (localIterator.hasNext())
     {
       bz localbz = (bz)localIterator.next();
-      this.b.setSpan(new com.clilystudio.netbook.b.a(this.a, localbz.a()), localbz.b(), localbz.c(), 17);
+      this.b.setSpan(new com.clilystudio.netbook.b_pack.a(this.a, localbz.a()), localbz.b(), localbz.c(), 17);
     }
   }
 
