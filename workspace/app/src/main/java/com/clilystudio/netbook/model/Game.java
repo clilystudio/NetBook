@@ -2,8 +2,7 @@ package com.clilystudio.netbook.model;
 
 import java.io.Serializable;
 
-public class Game
-        implements Serializable {
+public class Game implements Serializable {
     private static final long serialVersionUID = -8334205226470939171L;
     private String _id;
     private boolean activityFlag;
@@ -221,5 +220,29 @@ public class Game
     public void setRecommend(boolean paramBoolean) {
         this.recommend = paramBoolean;
     }
+
+
+    public class MainPromoInfo implements Serializable {
+        private static final long serialVersionUID = -6306060308396347871L;
+        private String desc;
+        private int playingCount;
+
+        public String getDesc() {
+            return this.desc;
+        }
+
+        public void setDesc(String paramString) {
+            this.desc = paramString;
+        }
+
+        public int getPlayingCount() {
+            return this.playingCount;
+        }
+
+        public void setPlayingCount(int paramInt) {
+            this.playingCount = paramInt;
+        }
+    }
+
 }
 

@@ -37,5 +37,54 @@ public class TimelineResult {
     public void setOk(boolean paramBoolean) {
         this.ok = paramBoolean;
     }
+
+    public class Names {
+        private String id;
+        private String[] names;
+
+        public Names(TimelineResult paramTimelineResult) {
+        }
+
+        public String getId() {
+            return this.id;
+        }
+
+        public void setId(String paramString) {
+            this.id = paramString;
+        }
+
+        public String[] getNames() {
+            return this.names;
+        }
+
+        public void setNames(String[] paramArrayOfString) {
+            this.names = paramArrayOfString;
+        }
+    }
+
+    public class Temp {
+        private Tweet tweet;
+        private User user;
+
+        public Temp(TimelineResult paramTimelineResult) {
+        }
+
+        public Tweet getTweet() {
+            return this.tweet;
+        }
+
+        public void setTweet(Tweet paramTweet) {
+            this.tweet = paramTweet;
+        }
+
+        public User getUser() {
+            return this.user;
+        }
+
+        public void setUser(User paramUser) {
+            this.user = paramUser;
+        }
+    }
+
 }
 

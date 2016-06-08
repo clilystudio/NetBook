@@ -149,5 +149,121 @@ public class UserInfo
     public void setOk(boolean paramBoolean) {
         this.ok = paramBoolean;
     }
+
+    public class BookListCount implements Serializable {
+        private static final long serialVersionUID = -3528347781783671315L;
+        private int collected;
+        private int posted;
+
+        public int getCollected() {
+            return this.collected;
+        }
+
+        public void setCollected(int paramInt) {
+            this.collected = paramInt;
+        }
+
+        public int getPosted() {
+            return this.posted;
+        }
+
+        public void setPosted(int paramInt) {
+            this.posted = paramInt;
+        }
+    }
+
+    public class ThisWeekTasks implements Serializable {
+        private static final long serialVersionUID = 44867902917495881L;
+        private boolean rate;
+
+        public boolean isRate() {
+            return this.rate;
+        }
+
+        public void setRate(boolean paramBoolean) {
+            this.rate = paramBoolean;
+        }
+    }
+
+    public class UserPostCount
+            implements Serializable {
+        private static final long serialVersionUID = 6406545074214643620L;
+        private int collected;
+        private int posted;
+
+        public int getCollected() {
+            return this.collected;
+        }
+
+        public void setCollected(int paramInt) {
+            this.collected = paramInt;
+        }
+
+        public int getPosted() {
+            return this.posted;
+        }
+
+        public void setPosted(int paramInt) {
+            this.posted = paramInt;
+        }
+    }
+
+    public class UserTodayTask implements Serializable {
+        private static final long serialVersionUID = 327955040176412798L;
+        private boolean comment;
+        private boolean launch;
+        private boolean post;
+        private boolean share;
+        private boolean share_book;
+        private boolean vote;
+
+        public boolean isComment() {
+            return this.comment;
+        }
+
+        public void setComment(boolean paramBoolean) {
+            this.comment = paramBoolean;
+        }
+
+        public boolean isLaunch() {
+            return this.launch;
+        }
+
+        public void setLaunch(boolean paramBoolean) {
+            this.launch = paramBoolean;
+        }
+
+        public boolean isPost() {
+            return this.post;
+        }
+
+        public void setPost(boolean paramBoolean) {
+            this.post = paramBoolean;
+        }
+
+        public boolean isShare() {
+            return this.share;
+        }
+
+        public void setShare(boolean paramBoolean) {
+            this.share = paramBoolean;
+        }
+
+        public boolean isShare_book() {
+            return this.share_book;
+        }
+
+        public void setShare_book(boolean paramBoolean) {
+            this.share_book = paramBoolean;
+        }
+
+        public boolean isVote() {
+            return this.vote;
+        }
+
+        public void setVote(boolean paramBoolean) {
+            this.vote = paramBoolean;
+        }
+    }
 }
 

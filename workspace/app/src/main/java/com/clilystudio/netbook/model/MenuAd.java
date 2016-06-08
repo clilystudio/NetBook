@@ -110,5 +110,18 @@ public class MenuAd
             return 0;
         return get_id().hashCode();
     }
+
+    public class Settings implements Serializable {
+        private static final long serialVersionUID = 2418387003302899660L;
+        private int readerMenuPriority;
+
+        public int getReaderMenuPriority() {
+            return this.readerMenuPriority;
+        }
+
+        public void setReaderMenuPriority(int paramInt) {
+            this.readerMenuPriority = paramInt;
+        }
+    }
 }
 

@@ -2,8 +2,7 @@ package com.clilystudio.netbook.model;
 
 import java.io.Serializable;
 
-public class CategoryLevelRoot
-        implements Serializable {
+public class CategoryLevelRoot implements Serializable {
     private CategoryLevelRoot.CategoryLevel[] female;
     private CategoryLevelRoot.CategoryLevel[] male;
     private boolean ok;
@@ -31,5 +30,30 @@ public class CategoryLevelRoot
     public void setOk(boolean paramBoolean) {
         this.ok = paramBoolean;
     }
+
+    public class CategoryLevel implements Serializable {
+        private String major;
+        private String[] mins;
+
+        public CategoryLevel(CategoryLevelRoot paramCategoryLevelRoot) {
+        }
+
+        public String getMajor() {
+            return this.major;
+        }
+
+        public void setMajor(String paramString) {
+            this.major = paramString;
+        }
+
+        public String[] getMins() {
+            return this.mins;
+        }
+
+        public void setMins(String[] paramArrayOfString) {
+            this.mins = paramArrayOfString;
+        }
+    }
+
 }
 

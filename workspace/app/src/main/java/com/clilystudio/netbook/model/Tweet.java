@@ -27,11 +27,11 @@ public class Tweet {
     private Tweet.VoteOption[] votes;
 
     public boolean equals(Object paramObject) {
-        if (paramObject == null) ;
-        do
+        if (paramObject != null && paramObject.getClass().equals(Tweet.class)) {
+            return this._id.equals(((Tweet) paramObject).get_id());
+        } else {
             return false;
-        while (!paramObject.getClass().equals(Tweet.class));
-        return this._id.equals(((Tweet) paramObject).get_id());
+        }
     }
 
     public Book getBook() {
@@ -147,26 +147,13 @@ public class Tweet {
     }
 
     public int getVoteCount() {
-        Tweet.VoteOption[] arrayOfVoteOption1 = this.votes;
-        int i = 0;
-        if (arrayOfVoteOption1 != null) {
-            int j = this.votes.length;
-            i = 0;
-            if (j != 0)
-                break label25;
-        }
-        while (true) {
-            return i;
-            label25:
-            Tweet.VoteOption[] arrayOfVoteOption2 = this.votes;
-            int k = arrayOfVoteOption2.length;
-            int m = 0;
-            while (m < k) {
-                int n = i + arrayOfVoteOption2[m].count;
-                m++;
-                i = n;
+        int voteCount = 0;
+        if (this.votes != null) {
+            for (int i = 0; i < this.votes.length; i++) {
+                voteCount += this.votes[i].count;
             }
         }
+        return voteCount;
     }
 
     public Tweet.VoteOption[] getVotes() {
@@ -211,6 +198,39 @@ public class Tweet {
 
     public void setIsHot(boolean paramBoolean) {
         this.isHot = paramBoolean;
+    }
+
+    public class Post {
+        private String _id;
+        private String block;
+
+        public Post(Tweet paramTweet) {
+        }
+
+        public String getBlock() {
+            return this.block;
+        }
+
+        public void setBlock(String paramString) {
+            this.block = paramString;
+        }
+
+        public String getId() {
+            return this._id;
+        }
+
+        public void setId(String paramString) {
+            this._id = paramString;
+        }
+    }
+
+
+    public class VoteOption {
+        public String content;
+        public int count;
+
+        public VoteOption(Tweet paramTweet) {
+        }
     }
 }
 

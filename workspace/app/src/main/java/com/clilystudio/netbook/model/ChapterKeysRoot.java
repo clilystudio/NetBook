@@ -8,13 +8,14 @@ public class ChapterKeysRoot
     private boolean ok;
 
     public String getKey(String paramString) {
-        if ((this.keys == null) || (this.keys.length == 0)) ;
-        while (true) {
-            return null;
-            for (ChapterKeysRoot.ChapterKey localChapterKey : this.keys)
-                if (localChapterKey.get_id().equals(paramString))
+        if (this.keys != null && this.keys.length > 0) {
+            for (ChapterKeysRoot.ChapterKey localChapterKey : this.keys) {
+                if (localChapterKey.get_id().equals(paramString)) {
                     return localChapterKey.getKey();
+                }
+            }
         }
+        return null;
     }
 
     public int getKeyLength() {
@@ -37,6 +38,27 @@ public class ChapterKeysRoot
 
     public void setOk(boolean paramBoolean) {
         this.ok = paramBoolean;
+    }
+
+    public class ChapterKey implements Serializable {
+        private String _id;
+        private String key;
+
+        public String getKey() {
+            return this.key;
+        }
+
+        public void setKey(String paramString) {
+            this.key = paramString;
+        }
+
+        public String get_id() {
+            return this._id;
+        }
+
+        public void set_id(String paramString) {
+            this._id = paramString;
+        }
     }
 }
 

@@ -19,5 +19,30 @@ public class MysteryBookList {
     public void setOk(boolean paramBoolean) {
         this.ok = paramBoolean;
     }
+
+    public class MysteryBookRoot {
+        private MysteryBook book;
+        private MysteryToc toc;
+
+        public MysteryBookRoot(MysteryBookList paramMysteryBookList) {
+        }
+
+        public MysteryBook getBook() {
+            return this.book;
+        }
+
+        public void setBook(MysteryBook paramMysteryBook) {
+            this.book = paramMysteryBook;
+        }
+
+        public MysteryToc getToc() {
+            return this.toc;
+        }
+
+        public void setToc(MysteryToc paramMysteryToc) {
+            this.toc = paramMysteryToc;
+        }
+    }
+
 }
 
