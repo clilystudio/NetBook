@@ -173,9 +173,9 @@
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </activity>
-        <service android:exported="false" android:name="com.qq.e.comm.DownloadService"/>
-        <activity android:configChanges="keyboard|keyboardHidden|orientation|screenSize" android:name="com.qq.e.ads.ADActivity"/>
-        <activity android:configChanges="keyboardHidden|orientation" android:name="cn.sharesdk.framework.ShareSDKUIShell" android:screenOrientation="portrait" android:theme="@android:style/Theme.Translucent.NoTitleBar" android:windowSoftInputMode="stateHidden|adjustResize"/>
+        <!--<service android:exported="false" android:name="com.qq.e.comm.DownloadService"/>-->
+        <!--<activity android:configChanges="keyboard|keyboardHidden|orientation|screenSize" android:name="com.qq.e.ads.ADActivity"/>-->
+        <!--<activity android:configChanges="keyboardHidden|orientation" android:name="cn.sharesdk.framework.ShareSDKUIShell" android:screenOrientation="portrait" android:theme="@android:style/Theme.Translucent.NoTitleBar" android:windowSoftInputMode="stateHidden|adjustResize"/>-->
         <activity android:configChanges="keyboardHidden|orientation|screenSize" android:exported="true" android:name="com.clilystudio.netbook.wxapi.WXEntryActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
         <activity android:name="com.clilystudio.netbook.ui.WifiActivity" android:screenOrientation="portrait"/>
         <activity android:name="com.clilystudio.netbook.reader.txt.ScanTxtFileActivity" android:screenOrientation="portrait"/>
