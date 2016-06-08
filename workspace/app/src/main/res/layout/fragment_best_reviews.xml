@@ -10,7 +10,7 @@
             <TextView android:textSize="@dimen/text_size_15" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="热门书评" />
             <TextView android:textSize="@dimen/text_size_12" android:textColor="?android:textColorSecondary" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp_5" android:text="暂时还没有书评哦~" />
         </LinearLayout>
-        <Button android:textSize="@dimen/text_size_12" android:textColor="@color/white" android:id="@id/best_reviews_edit" android:background="@drawable/green_round_button" android:layout_width="@dimen/dp_48" android:layout_height="@dimen/dp_24" android:text="写书评" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        <Button android:textSize="@dimen/text_size_12" android:textColor="@android:color/white" android:id="@id/best_reviews_edit" android:background="@drawable/green_round_button" android:layout_width="@dimen/dp_48" android:layout_height="@dimen/dp_24" android:text="写书评" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
     </RelativeLayout>
     <LinearLayout android:orientation="vertical" android:id="@id/reviews" android:layout_width="fill_parent" android:layout_height="fill_parent" />
     <View android:background="?lineColor" android:layout_width="fill_parent" android:layout_height="1.0px" />

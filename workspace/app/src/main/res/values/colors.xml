@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="snackbar_background_color">#cccccc</color>
+    <color name="light_line">#aaaaaa</color>
+    <color name="dark_line">#666666</color>
+</resources>

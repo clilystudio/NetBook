@@ -8,7 +8,7 @@
             <TextView android:textSize="@dimen/text_size_14" android:textColor="?android:textColor" android:layout_gravity="center_vertical" android:id="@id/title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="AAAAAAAAAAAAAAAAAAAAAAA" />
             <TextView android:textSize="@dimen/text_size_12" android:textColor="?android:textColorSecondary" android:ellipsize="end" android:id="@id/desc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp_10" android:layout_marginRight="@dimen/dp_30" android:text="BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBVVVVVVVVVVVVVV" android:singleLine="true" />
         </LinearLayout>
-        <com.clilystudio.netbook.widget.GiftGameGameButton android:textSize="@dimen/text_size_12" android:textColor="@color/white" android:id="@id/download" android:layout_width="51.0dip" android:layout_height="27.0dip" android:layout_marginRight="@dimen/dp_16" android:text="下载" android:layout_alignParentRight="true" android:layout_centerVertical="true" apps:where="gift_game" />
+        <com.clilystudio.netbook.widget.GiftGameGameButton android:textSize="@dimen/text_size_12" android:textColor="@android:color/white" android:id="@id/download" android:layout_width="51.0dip" android:layout_height="27.0dip" android:layout_marginRight="@dimen/dp_16" android:text="下载" android:layout_alignParentRight="true" android:layout_centerVertical="true" apps:where="gift_game" />
         <View android:background="?backgroundPressed" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_alignParentBottom="true" />
     </RelativeLayout>
 </LinearLayout>

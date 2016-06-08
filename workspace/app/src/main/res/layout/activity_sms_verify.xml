@@ -21,11 +21,11 @@
     </TableLayout>
     <TextView android:textSize="@dimen/text_size_15" android:textColor="?android:textColorSecondary" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp_40" android:text="@string/sms_verify_input_code" />
     <RelativeLayout android:layout_width="fill_parent" android:layout_height="@dimen/dp_32" android:layout_marginTop="@dimen/dp_16">
-        <Button android:textSize="@dimen/text_size_12" android:textColor="@color/white" android:gravity="center" android:id="@id/sms_verify_sendcode" android:background="@color/primary_gray" android:layout_width="@dimen/dp_90" android:layout_height="fill_parent" android:layout_alignParentRight="true" />
+        <Button android:textSize="@dimen/text_size_12" android:textColor="@android:color/white" android:gravity="center" android:id="@id/sms_verify_sendcode" android:background="@android:color/darker_gray" android:layout_width="@dimen/dp_90" android:layout_height="fill_parent" android:layout_alignParentRight="true" />
         <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginRight="@dimen/dp_24" android:layout_toLeftOf="@id/sms_verify_sendcode">
             <EditText android:textSize="@dimen/text_size_20" android:textColor="?android:textColor" android:gravity="center_vertical" android:id="@id/sms_verify_code" android:background="@null" android:layout_width="fill_parent" android:layout_height="fill_parent" />
             <View android:layout_gravity="bottom" android:background="?lineColor" android:layout_width="fill_parent" android:layout_height="1.0dip" />
         </FrameLayout>
     </RelativeLayout>
-    <Button android:textSize="@dimen/text_size_15" android:textColor="@color/white" android:gravity="center" android:id="@id/sms_verify_commit" android:background="@color/primary_gray" android:layout_width="fill_parent" android:layout_height="@dimen/dp_48" android:layout_marginTop="@dimen/dp_48" android:text="确认提交" />
+    <Button android:textSize="@dimen/text_size_15" android:textColor="@android:color/white" android:gravity="center" android:id="@id/sms_verify_commit" android:background="@android:color/darker_gray" android:layout_width="fill_parent" android:layout_height="@dimen/dp_48" android:layout_marginTop="@dimen/dp_48" android:text="确认提交" />
 </LinearLayout>
