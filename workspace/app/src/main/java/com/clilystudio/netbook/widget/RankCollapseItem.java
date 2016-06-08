@@ -4,11 +4,13 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.event.i;
 import com.clilystudio.netbook.event.k;
 import com.clilystudio.netbook.model.BookRankSummary;
@@ -21,17 +23,11 @@ import butterknife.InjectView;
 
 public class RankCollapseItem extends LinearLayout
         implements View.OnClickListener {
-    @InjectView(2131493199)
     ImageView mArrow;
-    @InjectView(2131493603)
     View mBottomDivdier;
-    @InjectView(2131493578)
     LinearLayout mItemContainer;
-    @InjectView(2131493515)
     TextView mLabel;
-    @InjectView(2131493601)
     RelativeLayout mLabelContainer;
-    @InjectView(2131493602)
     View mTopDivdier;
     private boolean a;
     private int b;
@@ -118,7 +114,12 @@ public class RankCollapseItem extends LinearLayout
 
     protected void onFinishInflate() {
         super.onFinishInflate();
-        ButterKnife.inject(this);
+        mArrow = (ImageView) findViewById(R.id.arrow);
+        mBottomDivdier = findViewById(R.id.bottom_divider);
+        mItemContainer = (LinearLayout) findViewById(R.id.item_container);
+        mLabel = (TextView) findViewById(R.id.label);
+        mLabelContainer = (RelativeLayout) findViewById(R.id.label_container);
+        mTopDivdier = findViewById(R.id.top_divider);
         this.mLabel.setText("别人家的排行榜");
         this.mLabelContainer.setOnClickListener(this);
         a();

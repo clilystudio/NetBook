@@ -8,27 +8,24 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.clilystudio.netbook.R;
+
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 
 public class PaySectionItem extends DividerSection {
-
-    @InjectView(2131493199)
     ImageView mArrow;
-
-    @InjectView(2131493823)
     TextView mBalance;
-
-    @InjectView(2131493028)
     ImageView mIcon;
-
-    @InjectView(2131493515)
     TextView mLabel;
 
     public PaySectionItem(Context paramContext, AttributeSet paramAttributeSet) {
         super(paramContext, paramAttributeSet);
-        LayoutInflater.from(paramContext).inflate(2130903343, a());
-        ButterKnife.inject(this);
+        LayoutInflater.from(paramContext).inflate(R.layout.pay_account_item, a());
+        mArrow = (ImageView) findViewById(R.id.arrow);
+        mBalance = (TextView) findViewById(R.id.balance);
+        mIcon = (ImageView) findViewById(R.id.distillate_flag);
+        mLabel = (TextView) findViewById(R.id.label);
         TypedArray localTypedArray = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.PaySectionItem);
         String str = localTypedArray.getString(0);
         this.mLabel.setText(str);

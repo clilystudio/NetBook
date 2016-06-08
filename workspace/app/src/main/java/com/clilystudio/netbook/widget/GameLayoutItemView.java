@@ -6,7 +6,8 @@ import android.view.LayoutInflater;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import butterknife.ButterKnife;
+import com.clilystudio.netbook.R;
+
 import butterknife.InjectView;
 
 public class GameLayoutItemView extends LinearLayout {
@@ -30,8 +31,11 @@ public class GameLayoutItemView extends LinearLayout {
     protected void onFinishInflate() {
         super.onFinishInflate();
         setOrientation(1);
-        LayoutInflater.from(getContext()).inflate(2130903421, this);
-        ButterKnife.inject(this);
+        LayoutInflater.from(getContext()).inflate(R.layout.widget_game_layout_item, this);
+        mAction = (GameDownloadButton) findViewById(R.id.action);
+        mImage = (GameImageView) findViewById(R.id.image);
+        mSubTitle = (TextView) findViewById(R.id.sub_title);
+        mTitle = (TextView) findViewById(R.id.title);
     }
 }
 

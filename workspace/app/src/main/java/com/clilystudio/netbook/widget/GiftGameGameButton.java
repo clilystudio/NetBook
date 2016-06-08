@@ -45,7 +45,7 @@ public class GiftGameGameButton extends Button {
                 return;
             case 8:
                 c();
-                setOnClickListener(new R(this, 0));
+                setOnClickListener(new R_Clz(this, 0));
                 return;
             case 32:
         }

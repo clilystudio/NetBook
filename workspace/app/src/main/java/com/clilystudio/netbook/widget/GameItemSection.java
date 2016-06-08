@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.TableLayout;
 import android.widget.TextView;
 
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.model.Game;
 import com.clilystudio.netbook.model.GameLayoutRoot.ModuleLayout;
 
@@ -80,7 +81,7 @@ public class GameItemSection extends TableLayout {
 
     protected void onFinishInflate() {
         super.onFinishInflate();
-        ButterKnife.inject(this);
+        mContainer = (TableLayout)findViewById(R.id.container);
     }
 }
 

@@ -8,20 +8,13 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import butterknife.ButterKnife;
-import butterknife.InjectView;
+import com.clilystudio.netbook.R;
 
 public class UserInfoTaskView extends FrameLayout {
     private final int a;
     private final String b;
-
-    @InjectView(2131493234)
     ExpView mExp;
-
-    @InjectView(2131493028)
     ImageView mIcon;
-
-    @InjectView(2131492936)
     TextView mTitle;
 
     public UserInfoTaskView(Context paramContext, AttributeSet paramAttributeSet) {
@@ -30,12 +23,14 @@ public class UserInfoTaskView extends FrameLayout {
         this.a = localTypedArray.getResourceId(0, 2130838241);
         this.b = localTypedArray.getString(1);
         localTypedArray.recycle();
-        LayoutInflater.from(paramContext).inflate(2130903418, this);
+        LayoutInflater.from(paramContext).inflate(R.layout.user_info_task, this);
     }
 
     protected void onFinishInflate() {
         super.onFinishInflate();
-        ButterKnife.inject(this);
+        mExp = (ExpView) findViewById(R.id.exp);
+        mIcon = (ImageView) findViewById(R.id.icon);
+        mTitle = (TextView) findViewById(R.id.title);
         this.mIcon.setImageResource(this.a);
         this.mTitle.setText(this.b);
     }

@@ -7,9 +7,9 @@ import com.arcsoft.hpay100.a.a;
 
 import java.io.File;
 
-final class R
+final class R_Clz
         implements View.OnClickListener {
-    private R(GiftGameGameButton paramGiftGameGameButton) {
+    private R_Clz(GiftGameGameButton paramGiftGameGameButton) {
     }
 
     public final void onClick(View paramView) {

@@ -354,5 +354,8 @@ public class CoverLoadingLayer extends ImageView {
             }
         }
     }
+    enum Status {
+        NONE,PREPARE,PROGRESS,PAUSE,PENDING,DOWNLOADED;
+    }
 }
 

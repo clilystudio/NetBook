@@ -79,5 +79,9 @@ public class ThemeLoadingView extends FrameLayout {
         this.b = ((LoadingProgressView) findViewById(2131493169));
         c();
     }
+
+    public enum Mode {
+        LIGHT, DARK;
+    }
 }
 

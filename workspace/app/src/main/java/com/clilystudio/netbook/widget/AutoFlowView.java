@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.arcsoft.hpay100.a.a;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -220,6 +221,13 @@ public class AutoFlowView extends LinearLayout
             this.j.add(localWord);
         }
         a();
+    }
+
+    public class Word implements Serializable {
+        public String content;
+        public int show;
+        int leftMargin;
+        int topMargin;
     }
 }
 

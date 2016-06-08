@@ -6,12 +6,12 @@ import android.view.LayoutInflater;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.clilystudio.netbook.R;
+
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 
 public class PayRecordCollapseItem extends LinearLayout {
-
-    @InjectView(2131493578)
     LinearLayout mItemContainer;
 
     public PayRecordCollapseItem(Context paramContext, AttributeSet paramAttributeSet) {
@@ -32,7 +32,7 @@ public class PayRecordCollapseItem extends LinearLayout {
 
     protected void onFinishInflate() {
         super.onFinishInflate();
-        ButterKnife.inject(this);
+        mItemContainer = (LinearLayout) findViewById(R.id.item_container);
     }
 }
 

@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.TableLayout;
 import android.widget.TextView;
 
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.model.Game;
 import com.clilystudio.netbook.model.GameLayoutRoot.ModuleLayout;
 
@@ -17,7 +18,6 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 
 public class GameMicroItemSection extends TableLayout {
-    @InjectView(2131493577)
     TableLayout mContainer;
     private boolean a = false;
 
@@ -78,7 +78,7 @@ public class GameMicroItemSection extends TableLayout {
 
     protected void onFinishInflate() {
         super.onFinishInflate();
-        ButterKnife.inject(this);
+        mContainer = (TableLayout)findViewById(R.id.container)
     }
 
     public void setHasPlayed(boolean paramBoolean) {

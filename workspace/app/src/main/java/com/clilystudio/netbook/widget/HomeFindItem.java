@@ -8,6 +8,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.ui.MaskAbleImageView;
 
 import butterknife.ButterKnife;
@@ -31,8 +32,11 @@ public class HomeFindItem extends FrameLayout {
     public HomeFindItem(Context paramContext, String paramString, int paramInt1, int paramInt2, Intent paramIntent) {
         super(paramContext);
         this.a = paramIntent;
-        LayoutInflater.from(paramContext).inflate(2130903283, this);
-        ButterKnife.inject(this);
+        LayoutInflater.from(paramContext).inflate(R.layout.list_item_home_find, this);
+        mIcon = (MaskAbleImageView) findViewById(R.id.icon);
+        mSubFlag = (ImageView) findViewById(R.id.sub_flag);
+        mSubText = (TextView) findViewById(R.id.sub_text);
+        mTitle = (TextView) findViewById(R.id.title);
         this.mIcon.setImageResource(paramInt1);
         this.mTitle.setText(paramString);
         if (paramInt2 != 0)

@@ -6,15 +6,13 @@ import android.view.LayoutInflater;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.clilystudio.netbook.R;
+
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 
 public class MenuGameTitle extends LinearLayout {
-
-    @InjectView(2131493870)
     TextView mSlmReaderAppName;
-
-    @InjectView(2131493871)
     TextView mSlmReaderAppSize;
 
     public MenuGameTitle(Context paramContext) {
@@ -32,9 +30,10 @@ public class MenuGameTitle extends LinearLayout {
     }
 
     private void a(Context paramContext) {
-        LayoutInflater.from(paramContext).inflate(2130903361, this);
-        ButterKnife.inject(this);
-    }
+        LayoutInflater.from(paramContext).inflate(R.layout.reader_menu_app_title, this);
+        mSlmReaderAppName = (TextView) findViewById(R.id.slm_reader_app_name);
+        mSlmReaderAppSize = (TextView) findViewById(R.id.slm_reader_app_size);
+     }
 
     public void setTitle(String paramString1, String paramString2) {
         String str = "(" + paramString2 + ")";

@@ -6,15 +6,13 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+import com.clilystudio.netbook.R;
+
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 
 public class SendView extends LinearLayout {
-
-    @InjectView(2131494004)
     EditText mSendContent;
-
-    @InjectView(2131494005)
     ImageView mSendView;
 
     public SendView(Context paramContext, AttributeSet paramAttributeSet) {
@@ -44,7 +42,8 @@ public class SendView extends LinearLayout {
 
     protected void onFinishInflate() {
         super.onFinishInflate();
-        ButterKnife.inject(this);
+        mSendContent = (EditText) findViewById(R.id.send_content);
+        mSendView = (ImageView) findViewById(R.id.commit);
         d();
         this.mSendContent.addTextChangedListener(new ay(this));
     }
