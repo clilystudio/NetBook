@@ -8,6 +8,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.arcsoft.hpay100.a.a;
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.d;
 import com.clilystudio.netbook.event.K;
 import com.clilystudio.netbook.event.i;
@@ -17,21 +18,12 @@ import com.clilystudio.netbook.ui.CircularSmartImageView;
 
 import java.util.Date;
 
-import butterknife.ButterKnife;
-import butterknife.InjectView;
-
 public class UserInfoActivity extends BaseActivity {
-    @InjectView(2131493234)
     TextView mExp;
-    @InjectView(2131493235)
     ProgressBar mExpProgress;
-    @InjectView(2131493233)
     TextView mLevel;
-    @InjectView(2131493239)
     TextView mMessageCount;
-    @InjectView(2131492928)
     TextView mName;
-    @InjectView(2131493146)
     CircularSmartImageView mPortrait;
     private View a;
     private View b;
@@ -55,8 +47,13 @@ public class UserInfoActivity extends BaseActivity {
 
     public void onCreate(Bundle paramBundle) {
         super.onCreate(paramBundle);
-        setContentView(2130903141);
-        ButterKnife.inject(this);
+        setContentView(R.layout.activity_user_info);
+        mExp = (TextView) findViewById(R.id.exp);
+        mExpProgress = (ProgressBar) findViewById(R.id.exp_pregress);
+        mLevel = (TextView) findViewById(R.id.level);
+        mMessageCount = (TextView) findViewById(R.id.message_count);
+        mName = (TextView) findViewById(R.id.name);
+        mPortrait = (CircularSmartImageView) findViewById(R.id.portrait);
         a(2131034578, "编辑资料", new aA(this));
         this.c = getIntent().getStringExtra("account_token");
         this.a = findViewById(2131493085);

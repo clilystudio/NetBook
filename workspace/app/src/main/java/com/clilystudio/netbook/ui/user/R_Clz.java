@@ -1,5 +1,5 @@
 package com.clilystudio.netbook.ui.user;
 
-final class R {
+final class R_Clz {
 }
 

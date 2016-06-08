@@ -6,31 +6,19 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.clilystudio.netbook.MyApplication;
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.model.UserInfo;
-import com.clilystudio.netbook.model.UserInfo.UserTodayTask;
 import com.clilystudio.netbook.ui.BaseActivity;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 
 public class UserTaskActivity extends BaseActivity {
-
-    @InjectView(2131493254)
     TextView mExpInfo;
-
-    @InjectView(2131493255)
     TextView mExpLaunch;
-
-    @InjectView(2131493257)
     TextView mExpShareBook;
-
-    @InjectView(2131493256)
     TextView mExpShareTopic;
-
-    @InjectView(2131493259)
     TextView mExpVote;
-
-    @InjectView(2131493258)
     View mVoteView;
 
     private void a(boolean paramBoolean) {
@@ -46,8 +34,13 @@ public class UserTaskActivity extends BaseActivity {
 
     public void onCreate(Bundle paramBundle) {
         super.onCreate(paramBundle);
-        setContentView(2130903143);
-        ButterKnife.inject(this);
+        setContentView(R.layout.activity_user_task);
+        mExpInfo = (TextView)findViewById(R.id.user_exp_info);
+        mExpLaunch = (TextView)findViewById(R.id.user_exp_launch);
+        mExpShareBook = (TextView)findViewById(R.id.user_exp_share_book);
+        mExpShareTopic = (TextView)findViewById(R.id.user_exp_share_topic);
+        mExpVote = (TextView)findViewById(R.id.user_exp_vote);
+        mVoteView = findViewById(R.id.user_vote_layout);
         b("任务");
         UserInfo localUserInfo = (UserInfo) MyApplication.a().b("savedObject_userinfo");
         this.mExpInfo.setTextColor(getResources().getColor(2131427480));

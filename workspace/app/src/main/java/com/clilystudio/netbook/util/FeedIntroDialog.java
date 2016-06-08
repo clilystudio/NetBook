@@ -7,7 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 
-public class DialogUtil$FeedIntroDialog extends DialogFragment {
+public class FeedIntroDialog extends DialogFragment {
     public Dialog onCreateDialog(Bundle paramBundle) {
         View localView = ((LayoutInflater) getActivity().getSystemService("layout_inflater")).inflate(2130903190, null);
         ((Button) localView.findViewById(2131493393)).setOnClickListener(new u(this));

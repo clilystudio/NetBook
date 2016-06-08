@@ -88,5 +88,9 @@ public final class AdSplashImp {
     public final void e() {
         a(AdSplashImp.EventType.DOWNLOAD);
     }
+
+    enum EventType {
+        PRESENT, CLICK, DOWNLOAD;
+    }
 }
 

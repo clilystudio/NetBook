@@ -7,7 +7,7 @@ import android.os.Handler;
 
 import java.util.Date;
 
-public class AudioBookNotification$SwitchButtonListener extends BroadcastReceiver {
+public class SwitchButtonListener extends BroadcastReceiver {
     private Handler a = new Handler();
 
     public void onReceive(Context paramContext, Intent paramIntent) {

@@ -5,6 +5,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.clilystudio.netbook.MyApplication;
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.model.UserInfo;
 import com.clilystudio.netbook.ui.BaseActivity;
 import com.clilystudio.netbook.util.e;
@@ -13,23 +14,18 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 
 public class UserLevelActivity extends BaseActivity {
-
-    @InjectView(2131493248)
     TextView mCurrentLevel;
-
-    @InjectView(2131493253)
     Button mDoTask;
-
-    @InjectView(2131493249)
     TextView mLevelProgress;
-
-    @InjectView(2131493250)
     TextView mLevelRank;
 
     public void onCreate(Bundle paramBundle) {
         super.onCreate(paramBundle);
-        setContentView(2130903142);
-        ButterKnife.inject(this);
+        setContentView(R.layout.activity_user_level);
+        mCurrentLevel = (TextView)findViewById(R.id.user_current_level);
+        mDoTask = (Button)findViewById(R.id.go_to_task);
+        mLevelProgress = (TextView)findViewById(R.id.user_level_progress);
+        mLevelRank = (TextView)findViewById(R.id.user_level_rank);
         b("经验等级");
         UserInfo localUserInfo = (UserInfo) MyApplication.a().b("savedObject_userinfo");
         int i = localUserInfo.getLv();

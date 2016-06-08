@@ -14,5 +14,22 @@ public final class UmengGameTracer {
     public final void a(String paramString) {
         b.a(this.a, this.b.build(), paramString);
     }
-}
+
+    public enum From {
+        Splash, Bookshelf, Reader, Notification;
+
+        private String mPre;
+
+        private From(String paramString) {
+            this.mPre = ("new_game_ad_" + paramString);
+        }
+
+        public final String build() {
+            return this.mPre + "_";
+        }
+
+        public final String getPre() {
+            return this.mPre;
+        }
+    }}
 

@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
-public class DialogUtil$GenderIntroDialog extends DialogFragment {
+public class GenderIntroDialog extends DialogFragment {
     public Dialog onCreateDialog(Bundle paramBundle) {
         View localView = ((LayoutInflater) getActivity().getSystemService("layout_inflater")).inflate(2130903193, null);
         ((ImageView) localView.findViewById(2131493403)).setOnClickListener(new v(this));
