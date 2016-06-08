@@ -2,8 +2,7 @@ package com.clilystudio.netbook.ui.home;
 
 import android.app.Activity;
 import com.arcsoft.hpay100.a.a;
-import com.clilystudio.netbook.a.c;
-import com.clilystudio.netbook.api.ApiService;
+import com.clilystudio.netbook.a_pack.c;
 import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.db.BookReadRecord;
 import com.clilystudio.netbook.model.BookGenderRecommend;

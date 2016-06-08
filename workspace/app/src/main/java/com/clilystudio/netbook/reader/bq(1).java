@@ -1,6 +1,6 @@
 package com.clilystudio.netbook.reader;
 
-import com.clilystudio.netbook.a.b;
+import com.clilystudio.netbook.a_pack.b;
 import com.clilystudio.netbook.db.BookTopicEnterRecord;
 import com.clilystudio.netbook.model.TopicCount;
 

@@ -1,8 +1,7 @@
 package com.clilystudio.netbook.ui;
 
 import android.os.Handler;
-import com.clilystudio.netbook.adapter.E;
-import com.clilystudio.netbook.api.ApiService;
+
 import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.model.BookSummary;
 import com.clilystudio.netbook.model.SearchPromRoot;
@@ -10,7 +9,7 @@ import com.clilystudio.netbook.model.SearchResultRoot;
 import java.util.List;
 import java.util.Map;
 
-class bR extends com.clilystudio.netbook.a.e<String, Void, List<BookSummary>>
+class bR extends com.clilystudio.netbook.a_pack.e<String, Void, List<BookSummary>>
 {
   private bR(SearchActivity paramSearchActivity)
   {

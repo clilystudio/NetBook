@@ -1,8 +1,7 @@
-package com.clilystudio.netbook.b;
+package com.clilystudio.netbook.b_pack;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.text.TextPaint;
 import android.text.style.ClickableSpan;
 import android.view.View;

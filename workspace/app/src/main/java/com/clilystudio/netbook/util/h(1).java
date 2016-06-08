@@ -2,7 +2,7 @@ package com.clilystudio.netbook.util;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import com.clilystudio.netbook.a.e;
+import com.clilystudio.netbook.a_pack.e;
 import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.InputStream;

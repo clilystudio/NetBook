@@ -1,7 +1,7 @@
-package com.clilystudio.netbook.a;
+package com.clilystudio.netbook.a_pack;
 
 import android.app.Activity;
-import com.clilystudio.netbook.api.ApiService;
+
 import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.model.TocSourceRoot;
 

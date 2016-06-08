@@ -1,13 +1,13 @@
 package com.clilystudio.netbook.ui.ugcbook;
 
 import android.os.Handler;
-import com.clilystudio.netbook.api.ApiService;
+
 import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.model.BookSummary;
 import com.clilystudio.netbook.model.SearchPromRoot;
 import java.util.List;
 
-class A extends com.clilystudio.netbook.a.e<String, Void, List<BookSummary>>
+class A extends com.clilystudio.netbook.a_pack.e<String, Void, List<BookSummary>>
 {
   private A(UGCGuideAddBookActivity paramUGCGuideAddBookActivity)
   {

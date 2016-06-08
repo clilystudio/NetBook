@@ -1,7 +1,6 @@
 package com.clilystudio.netbook.reader.txt;
 
-import android.widget.ProgressBar;
-import com.clilystudio.netbook.a.e;
+import com.clilystudio.netbook.a_pack.e;
 
 public final class Q extends e<Void, Void, Void>
 {

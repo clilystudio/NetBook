@@ -1,11 +1,10 @@
-package com.clilystudio.netbook.b;
+package com.clilystudio.netbook.b_pack;
 
 import android.content.Context;
 import android.content.Intent;
 import android.view.View;
 import com.clilystudio.netbook.exception.UnImplementException;
 import com.clilystudio.netbook.model.InsideLink;
-import com.clilystudio.netbook.model.InsideLinkType;
 import com.clilystudio.netbook.util.InsideLinkIntent;
 
 public final class a extends b

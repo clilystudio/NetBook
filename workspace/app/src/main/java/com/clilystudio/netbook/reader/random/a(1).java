@@ -2,9 +2,7 @@ package com.clilystudio.netbook.reader.random;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
-import com.clilystudio.netbook.a.e;
-import com.clilystudio.netbook.api.ApiService;
-import com.clilystudio.netbook.api.b;
+import com.clilystudio.netbook.a_pack.e;
 import com.clilystudio.netbook.model.BookInfo;
 import com.clilystudio.netbook.model.MysteryDefaultBook;
 import com.clilystudio.netbook.model.TocSummary;

@@ -1,8 +1,7 @@
 package com.clilystudio.netbook.ui.ugcbook;
 
 import android.support.design.widget.am;
-import com.clilystudio.netbook.a.e;
-import com.clilystudio.netbook.api.ApiService;
+import com.clilystudio.netbook.a_pack.e;
 import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.model.UGCBookDetailRoot;

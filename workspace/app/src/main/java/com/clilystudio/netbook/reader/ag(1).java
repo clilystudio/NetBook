@@ -1,6 +1,6 @@
 package com.clilystudio.netbook.reader;
 
-import com.clilystudio.netbook.a.e;
+import com.clilystudio.netbook.a_pack.e;
 
 public final class ag extends e<String, Void, Boolean>
 {

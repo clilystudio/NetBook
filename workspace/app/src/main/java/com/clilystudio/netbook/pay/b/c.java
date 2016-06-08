@@ -2,15 +2,14 @@ package com.clilystudio.netbook.pay.b;
 
 import android.app.Activity;
 import android.support.design.widget.am;
-import com.clilystudio.netbook.api.ApiService;
+
 import com.clilystudio.netbook.event.i;
 import com.clilystudio.netbook.event.y;
-import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.model.ChargePlan;
 import com.clilystudio.netbook.model.YyfPayOrder;
 import java.io.IOException;
 
-public final class c extends com.clilystudio.netbook.a.c<ChargePlan, YyfPayOrder>
+public final class c extends com.clilystudio.netbook.a_pack.c<ChargePlan, YyfPayOrder>
 {
   public c(a parama, Activity paramActivity)
   {

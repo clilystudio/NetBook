@@ -1,7 +1,7 @@
-package com.clilystudio.netbook.a;
+package com.clilystudio.netbook.a_pack;
 
 import android.os.AsyncTask;
-import android.os.Build.VERSION;
+
 import com.clilystudio.netbook.api.ApiService;
 import com.clilystudio.netbook.api.b;
 

@@ -1,9 +1,8 @@
 package com.clilystudio.netbook.ui.ugcbook;
 
 import android.support.design.widget.am;
-import android.widget.TextView;
-import com.clilystudio.netbook.a.c;
-import com.clilystudio.netbook.api.ApiService;
+
+import com.clilystudio.netbook.a_pack.c;
 import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.model.ResultStatus;

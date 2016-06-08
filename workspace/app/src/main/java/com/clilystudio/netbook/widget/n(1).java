@@ -1,7 +1,6 @@
 package com.clilystudio.netbook.widget;
 
-import com.clilystudio.netbook.a.e;
-import com.clilystudio.netbook.model.PostComment;
+import com.clilystudio.netbook.a_pack.e;
 import com.clilystudio.netbook.model.ResultStatus;
 
 final class n extends e<String, Void, ResultStatus>

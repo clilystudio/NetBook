@@ -1,7 +1,6 @@
-package com.clilystudio.netbook.a;
+package com.clilystudio.netbook.a_pack;
 
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
 
 final class d
   implements DialogInterface.OnCancelListener
