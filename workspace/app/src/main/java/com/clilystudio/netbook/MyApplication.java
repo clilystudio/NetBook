@@ -14,6 +14,7 @@ import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.model.BookInfo;
 import com.clilystudio.netbook.model.ChapterLink;
 import com.clilystudio.netbook.model.UGCNewCollection;
+import com.clilystudio.netbook.model.User;
 import com.clilystudio.netbook.reader.Reader;
 import com.clilystudio.netbook.util.V;
 import com.iflytek.cloud.SpeechUtility;
@@ -65,8 +66,17 @@ public class MyApplication extends Application {
     }
 
     public final void a(Account paramAccount) {
-        a(new MyApplication .3 (this, paramAccount));
-        a(new MyApplication .4 (this, paramAccount.getUser()));
+        Properties tokenProperties = new Properties();
+        tokenProperties.setProperty("account.tokenProperties", paramAccount.getToken());
+        a(tokenProperties);
+        Properties userProperties = new Properties();
+        User user = paramAccount.getUser();
+        userProperties.setProperty("users.id", user.getId());
+        userProperties.setProperty("user.name", user.getNickname());
+        userProperties.setProperty("user.avatar", user.getAvatar());
+        userProperties.setProperty("user.lv", String.valueOf(user.getLv()));
+        userProperties.setProperty("user.gender", user.getGender());
+        a(userProperties);
     }
 
     public final void a(BookInfo paramBookInfo) {
