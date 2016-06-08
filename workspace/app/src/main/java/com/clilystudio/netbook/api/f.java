@@ -67,7 +67,7 @@ public class f {
             } catch (PackageManager.NameNotFoundException e1) {
                 e1.printStackTrace();
             }
-            String v4  = "not-found";
+            String v4 = "not-found";
             if (packageInfo != null) {
                 v4 = packageInfo.versionName;
             }

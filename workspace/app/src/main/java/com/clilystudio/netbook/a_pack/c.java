@@ -54,7 +54,7 @@ public abstract class c<Input, E> extends e<Input, Void, E> {
         Toast.makeText(this.b, "已取消", 0).show();
     }
 
-     public void onPostExecute(E paramE) {
+    public void onPostExecute(E paramE) {
         super.onPostExecute(paramE);
         if (this.a != null) {
             this.a.dismiss();
@@ -74,7 +74,3 @@ public abstract class c<Input, E> extends e<Input, Void, E> {
     }
 }
 
-/* Location:           E:\Progs\Dev\Android\Decompile\apktool\zssq\zssq-dex2jar.jar
- * Qualified Name:     com.clilystudio.netbook.a.c
- * JD-Core Version:    0.6.0
- */

@@ -1,32 +1,23 @@
 package com.clilystudio.netbook.model;
 
-public class SplashRoot
-{
-  private boolean ok;
-  private Splash[] splash;
+public class SplashRoot {
+    private boolean ok;
+    private Splash[] splash;
 
-  public Splash[] getSplash()
-  {
-    return this.splash;
-  }
+    public Splash[] getSplash() {
+        return this.splash;
+    }
 
-  public boolean isOk()
-  {
-    return this.ok;
-  }
+    public void setSplash(Splash[] paramArrayOfSplash) {
+        this.splash = paramArrayOfSplash;
+    }
 
-  public void setOk(boolean paramBoolean)
-  {
-    this.ok = paramBoolean;
-  }
+    public boolean isOk() {
+        return this.ok;
+    }
 
-  public void setSplash(Splash[] paramArrayOfSplash)
-  {
-    this.splash = paramArrayOfSplash;
-  }
+    public void setOk(boolean paramBoolean) {
+        this.ok = paramBoolean;
+    }
 }
 
-/* Location:           E:\Progs\Dev\Android\Decompile\apktool\zssq\zssq-dex2jar.jar
- * Qualified Name:     com.clilystudio.netbook.model.SplashRoot
- * JD-Core Version:    0.6.0
- */

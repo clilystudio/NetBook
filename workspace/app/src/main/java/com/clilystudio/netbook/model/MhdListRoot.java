@@ -1,43 +1,32 @@
 package com.clilystudio.netbook.model;
 
-public class MhdListRoot
-{
-  private int code;
-  private String code_msg;
-  private MhdInfo[] info;
+public class MhdListRoot {
+    private int code;
+    private String code_msg;
+    private MhdInfo[] info;
 
-  public int getCode()
-  {
-    return this.code;
-  }
+    public int getCode() {
+        return this.code;
+    }
 
-  public String getCode_msg()
-  {
-    return this.code_msg;
-  }
+    public void setCode(int paramInt) {
+        this.code = paramInt;
+    }
 
-  public MhdInfo[] getInfo()
-  {
-    return this.info;
-  }
+    public String getCode_msg() {
+        return this.code_msg;
+    }
 
-  public void setCode(int paramInt)
-  {
-    this.code = paramInt;
-  }
+    public void setCode_msg(String paramString) {
+        this.code_msg = paramString;
+    }
 
-  public void setCode_msg(String paramString)
-  {
-    this.code_msg = paramString;
-  }
+    public MhdInfo[] getInfo() {
+        return this.info;
+    }
 
-  public void setInfo(MhdInfo[] paramArrayOfMhdInfo)
-  {
-    this.info = paramArrayOfMhdInfo;
-  }
+    public void setInfo(MhdInfo[] paramArrayOfMhdInfo) {
+        this.info = paramArrayOfMhdInfo;
+    }
 }
 
-/* Location:           E:\Progs\Dev\Android\Decompile\apktool\zssq\zssq-dex2jar.jar
- * Qualified Name:     com.clilystudio.netbook.model.MhdListRoot
- * JD-Core Version:    0.6.0
- */

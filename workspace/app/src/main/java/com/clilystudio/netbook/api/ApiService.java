@@ -37,8 +37,9 @@ import java.util.Iterator;
 import java.util.List;
 
 public class ApiService {
-    public static String a;
     private static final String b = ApiService.class.getSimpleName();
+    private static final Gson l;
+    public static String a;
     private static String d = "zhuishushenqi.com";
     private static final String e = "http://api." + d;
     private static String f;
@@ -47,8 +48,6 @@ public class ApiService {
     private static String i;
     private static String j;
     private static String k;
-    private static final Gson l;
-    private final f c;
 
     static {
         String str;
@@ -76,6 +75,8 @@ public class ApiService {
         }
     }
 
+    private final f c;
+
     public ApiService(f paramf) {
         c.a(new com.xiaomi.mistatistic.sdk.a.a());
         this.c = paramf;
@@ -93,49 +94,6 @@ public class ApiService {
         return k + paramString;
     }
 
-    private HttpRequest a(HttpRequest paramHttpRequest) {
-        long l1 = new Date().getTime();
-        if (e.a())
-            e.a(paramHttpRequest);
-        try {
-            boolean bool = b(paramHttpRequest).c();
-            a(paramHttpRequest.a().toString(), l1, paramHttpRequest.b(), "");
-            if (!bool)
-                throw new IOException("Unexpected response code: " + paramHttpRequest.b());
-        } catch (HttpRequest.HttpRequestException localHttpRequestException) {
-            a(paramHttpRequest.a().toString(), l1, paramHttpRequest.b(), localHttpRequestException.getClass().getName());
-            v();
-            throw localHttpRequestException;
-        }
-        return paramHttpRequest;
-    }
-
-    private HttpRequest a(HttpRequest paramHttpRequest, int paramInt) {
-        try {
-            if (!b(paramHttpRequest, paramInt).c())
-                throw new IOException("Unexpected response code: " + paramHttpRequest.b());
-        } catch (HttpRequest.HttpRequestException localHttpRequestException) {
-            v();
-            throw localHttpRequestException;
-        }
-        return paramHttpRequest;
-    }
-
-    private Root a(String paramString, HashMap<String, String> paramHashMap) {
-        try {
-            HttpRequest localHttpRequest = b(HttpRequest.b(f + paramString));
-            localHttpRequest.a(paramHashMap);
-            Root localRoot = (Root) a(localHttpRequest, Root.class);
-            return localRoot;
-        } catch (IOException localIOException) {
-            localIOException.printStackTrace();
-            return null;
-        } catch (HttpRequest.HttpRequestException localHttpRequestException) {
-            label52:
-            break label52;
-        }
-    }
-
     private static <V> V a(HttpRequest paramHttpRequest, Class<V> paramClass) {
         try {
             BufferedReader reader = paramHttpRequest.bufferedReader();
@@ -146,16 +104,6 @@ public class ApiService {
             e1.printStackTrace();
             return null;
         }
-    }
-
-    private <V> V a(String paramString, Class<V> paramClass) {
-        try {
-            Object localObject = a(a(HttpRequest.a(f + paramString)), paramClass);
-            return localObject;
-        } catch (IOException localIOException) {
-            localIOException.printStackTrace();
-        }
-        return null;
     }
 
     public static String a(String paramString, int paramInt) {
@@ -208,26 +156,6 @@ public class ApiService {
 
     private static String ad(String paramString) {
         return paramString + "&distillate=true";
-    }
-
-    private HttpRequest b(HttpRequest paramHttpRequest) {
-        paramHttpRequest.b(15000).a(15000);
-        f localf = this.c;
-        if ("1".equals(b.b(MyApplication.a(), "ua-toggle"))) ;
-        for (String str = localf.b(); ; str = "") {
-            paramHttpRequest.a(str);
-            paramHttpRequest.a("X-User-Agent", this.c.b());
-            paramHttpRequest.a("X-Device-Id", am.h());
-            return paramHttpRequest;
-        }
-    }
-
-    private HttpRequest b(HttpRequest paramHttpRequest, int paramInt) {
-        paramHttpRequest.b(15000).a(15000);
-        paramHttpRequest.a(this.c.a(paramInt));
-        if (paramInt == 6)
-            paramHttpRequest.b("http://bookshelf.html5.qq.com/page?t=pad");
-        return paramHttpRequest;
     }
 
     public static String b(String paramString1, int paramInt, String paramString2) {
@@ -312,6 +240,79 @@ public class ApiService {
         localChapterRoot.setStatus(-3);
         localChapterRoot.setChapter(new Chapter());
         return localChapterRoot;
+    }
+
+    private HttpRequest a(HttpRequest paramHttpRequest) {
+        long l1 = new Date().getTime();
+        if (e.a())
+            e.a(paramHttpRequest);
+        try {
+            boolean bool = b(paramHttpRequest).c();
+            a(paramHttpRequest.a().toString(), l1, paramHttpRequest.b(), "");
+            if (!bool)
+                throw new IOException("Unexpected response code: " + paramHttpRequest.b());
+        } catch (HttpRequest.HttpRequestException localHttpRequestException) {
+            a(paramHttpRequest.a().toString(), l1, paramHttpRequest.b(), localHttpRequestException.getClass().getName());
+            v();
+            throw localHttpRequestException;
+        }
+        return paramHttpRequest;
+    }
+
+    private HttpRequest a(HttpRequest paramHttpRequest, int paramInt) {
+        try {
+            if (!b(paramHttpRequest, paramInt).c())
+                throw new IOException("Unexpected response code: " + paramHttpRequest.b());
+        } catch (HttpRequest.HttpRequestException localHttpRequestException) {
+            v();
+            throw localHttpRequestException;
+        }
+        return paramHttpRequest;
+    }
+
+    private Root a(String paramString, HashMap<String, String> paramHashMap) {
+        try {
+            HttpRequest localHttpRequest = b(HttpRequest.b(f + paramString));
+            localHttpRequest.a(paramHashMap);
+            Root localRoot = (Root) a(localHttpRequest, Root.class);
+            return localRoot;
+        } catch (IOException localIOException) {
+            localIOException.printStackTrace();
+            return null;
+        } catch (HttpRequest.HttpRequestException localHttpRequestException) {
+            label52:
+            break label52;
+        }
+    }
+
+    private <V> V a(String paramString, Class<V> paramClass) {
+        try {
+            Object localObject = a(a(HttpRequest.a(f + paramString)), paramClass);
+            return localObject;
+        } catch (IOException localIOException) {
+            localIOException.printStackTrace();
+        }
+        return null;
+    }
+
+    private HttpRequest b(HttpRequest paramHttpRequest) {
+        paramHttpRequest.b(15000).a(15000);
+        f localf = this.c;
+        if ("1".equals(b.b(MyApplication.a(), "ua-toggle"))) ;
+        for (String str = localf.b(); ; str = "") {
+            paramHttpRequest.a(str);
+            paramHttpRequest.a("X-User-Agent", this.c.b());
+            paramHttpRequest.a("X-Device-Id", am.h());
+            return paramHttpRequest;
+        }
+    }
+
+    private HttpRequest b(HttpRequest paramHttpRequest, int paramInt) {
+        paramHttpRequest.b(15000).a(15000);
+        paramHttpRequest.a(this.c.a(paramInt));
+        if (paramInt == 6)
+            paramHttpRequest.b("http://bookshelf.html5.qq.com/page?t=pad");
+        return paramHttpRequest;
     }
 
     public final BookShelfSyncTime A(String paramString) {

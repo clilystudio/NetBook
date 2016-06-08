@@ -1,22 +1,14 @@
 package com.clilystudio.netbook.ui.game;
 
 import android.view.View;
-import android.view.View.OnClickListener;
 
 final class f
-  implements View.OnClickListener
-{
-  f(GameDetailActivity paramGameDetailActivity)
-  {
-  }
+        implements View.OnClickListener {
+    f(GameDetailActivity paramGameDetailActivity) {
+    }
 
-  public final void onClick(View paramView)
-  {
-    GameDetailActivity.d(this.a);
-  }
+    public final void onClick(View paramView) {
+        GameDetailActivity.d(this.a);
+    }
 }
 
-/* Location:           E:\Progs\Dev\Android\Decompile\apktool\zssq\zssq-dex2jar.jar
- * Qualified Name:     com.clilystudio.netbook.ui.game.f
- * JD-Core Version:    0.6.0
- */

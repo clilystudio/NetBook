@@ -1,22 +1,16 @@
 package com.clilystudio.netbook.widget;
 
 import android.widget.TableLayout;
+
 import butterknife.ButterKnife.Finder;
 
-public class GameItemSection$$ViewInjector
-{
-  public static void inject(ButterKnife.Finder paramFinder, GameItemSection paramGameItemSection, Object paramObject)
-  {
-    paramGameItemSection.mContainer = ((TableLayout)paramFinder.findRequiredView(paramObject, 2131493577, "field 'mContainer'"));
-  }
+public class GameItemSection$$ViewInjector {
+    public static void inject(ButterKnife.Finder paramFinder, GameItemSection paramGameItemSection, Object paramObject) {
+        paramGameItemSection.mContainer = ((TableLayout) paramFinder.findRequiredView(paramObject, 2131493577, "field 'mContainer'"));
+    }
 
-  public static void reset(GameItemSection paramGameItemSection)
-  {
-    paramGameItemSection.mContainer = null;
-  }
+    public static void reset(GameItemSection paramGameItemSection) {
+        paramGameItemSection.mContainer = null;
+    }
 }
 
-/* Location:           E:\Progs\Dev\Android\Decompile\apktool\zssq\zssq-dex2jar.jar
- * Qualified Name:     com.clilystudio.netbook.widget.GameItemSection..ViewInjector
- * JD-Core Version:    0.6.0
- */

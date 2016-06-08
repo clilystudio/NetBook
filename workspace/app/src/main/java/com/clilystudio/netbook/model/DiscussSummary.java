@@ -2,111 +2,88 @@ package com.clilystudio.netbook.model;
 
 import java.util.Date;
 
-public class DiscussSummary
-{
-  private String _id;
-  private Author author;
-  private int commentCount;
-  private Date created;
-  public int likeCount;
-  private String state;
-  private String title;
-  private String type;
-  private Date updated;
-  private int voteCount;
+public class DiscussSummary {
+    public int likeCount;
+    private String _id;
+    private Author author;
+    private int commentCount;
+    private Date created;
+    private String state;
+    private String title;
+    private String type;
+    private Date updated;
+    private int voteCount;
 
-  public Author getAuthor()
-  {
-    return this.author;
-  }
+    public Author getAuthor() {
+        return this.author;
+    }
 
-  public int getCommentCount()
-  {
-    return this.commentCount;
-  }
+    public void setAuthor(Author paramAuthor) {
+        this.author = paramAuthor;
+    }
 
-  public Date getCreated()
-  {
-    return this.created;
-  }
+    public int getCommentCount() {
+        return this.commentCount;
+    }
 
-  public String getState()
-  {
-    return this.state;
-  }
+    public void setCommentCount(int paramInt) {
+        this.commentCount = paramInt;
+    }
 
-  public String getTitle()
-  {
-    return this.title;
-  }
+    public Date getCreated() {
+        return this.created;
+    }
 
-  public String getType()
-  {
-    return this.type;
-  }
+    public void setCreated(Date paramDate) {
+        this.created = paramDate;
+    }
 
-  public Date getUpdated()
-  {
-    return this.updated;
-  }
+    public String getState() {
+        return this.state;
+    }
 
-  public int getVoteCount()
-  {
-    return this.voteCount;
-  }
+    public void setState(String paramString) {
+        this.state = paramString;
+    }
 
-  public String get_id()
-  {
-    return this._id;
-  }
+    public String getTitle() {
+        return this.title;
+    }
 
-  public void setAuthor(Author paramAuthor)
-  {
-    this.author = paramAuthor;
-  }
+    public void setTitle(String paramString) {
+        this.title = paramString;
+    }
 
-  public void setCommentCount(int paramInt)
-  {
-    this.commentCount = paramInt;
-  }
+    public String getType() {
+        return this.type;
+    }
 
-  public void setCreated(Date paramDate)
-  {
-    this.created = paramDate;
-  }
+    public void setType(String paramString) {
+        this.type = paramString;
+    }
 
-  public void setState(String paramString)
-  {
-    this.state = paramString;
-  }
+    public Date getUpdated() {
+        return this.updated;
+    }
 
-  public void setTitle(String paramString)
-  {
-    this.title = paramString;
-  }
+    public void setUpdated(Date paramDate) {
+        this.updated = paramDate;
+    }
 
-  public void setType(String paramString)
-  {
-    this.type = paramString;
-  }
+    public int getVoteCount() {
+        return this.voteCount;
+    }
 
-  public void setUpdated(Date paramDate)
-  {
-    this.updated = paramDate;
-  }
+    public void setVoteCount(int paramInt) {
+        this.voteCount = paramInt;
+    }
 
-  public void setVoteCount(int paramInt)
-  {
-    this.voteCount = paramInt;
-  }
+    public String get_id() {
+        return this._id;
+    }
 
-  public void set_id(String paramString)
-  {
-    this._id = paramString;
-  }
+    public void set_id(String paramString) {
+        this._id = paramString;
+    }
 }
 
-/* Location:           E:\Progs\Dev\Android\Decompile\apktool\zssq\zssq-dex2jar.jar
- * Qualified Name:     com.clilystudio.netbook.model.DiscussSummary
- * JD-Core Version:    0.6.0
- */

@@ -1,54 +1,41 @@
 package com.clilystudio.netbook.model;
 
-public class BookShelfTopic
-{
-  private String bookId;
-  private String fullCover;
-  private int postCount;
-  private String title;
+public class BookShelfTopic {
+    private String bookId;
+    private String fullCover;
+    private int postCount;
+    private String title;
 
-  public String getBookId()
-  {
-    return this.bookId;
-  }
+    public String getBookId() {
+        return this.bookId;
+    }
 
-  public String getFullCover()
-  {
-    return this.fullCover;
-  }
+    public void setBookId(String paramString) {
+        this.bookId = paramString;
+    }
 
-  public int getPostCount()
-  {
-    return this.postCount;
-  }
+    public String getFullCover() {
+        return this.fullCover;
+    }
 
-  public String getTitle()
-  {
-    return this.title;
-  }
+    public void setFullCover(String paramString) {
+        this.fullCover = paramString;
+    }
 
-  public void setBookId(String paramString)
-  {
-    this.bookId = paramString;
-  }
+    public int getPostCount() {
+        return this.postCount;
+    }
 
-  public void setFullCover(String paramString)
-  {
-    this.fullCover = paramString;
-  }
+    public void setPostCount(int paramInt) {
+        this.postCount = paramInt;
+    }
 
-  public void setPostCount(int paramInt)
-  {
-    this.postCount = paramInt;
-  }
+    public String getTitle() {
+        return this.title;
+    }
 
-  public void setTitle(String paramString)
-  {
-    this.title = paramString;
-  }
+    public void setTitle(String paramString) {
+        this.title = paramString;
+    }
 }
 
-/* Location:           E:\Progs\Dev\Android\Decompile\apktool\zssq\zssq-dex2jar.jar
- * Qualified Name:     com.clilystudio.netbook.model.BookShelfTopic
- * JD-Core Version:    0.6.0
- */

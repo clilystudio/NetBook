@@ -1,45 +1,34 @@
 package com.clilystudio.netbook.model;
 
-public class InsideLink
-{
-  private String mLabel;
-  private final InsideLinkType mType;
-  private final String mValue;
+public class InsideLink {
+    private final InsideLinkType mType;
+    private final String mValue;
+    private String mLabel;
 
-  public InsideLink(InsideLinkType paramInsideLinkType, String paramString)
-  {
-    this(paramInsideLinkType, paramString, null);
-  }
+    public InsideLink(InsideLinkType paramInsideLinkType, String paramString) {
+        this(paramInsideLinkType, paramString, null);
+    }
 
-  public InsideLink(InsideLinkType paramInsideLinkType, String paramString1, String paramString2)
-  {
-    this.mType = paramInsideLinkType;
-    this.mValue = paramString1;
-    setLabel(paramString2);
-  }
+    public InsideLink(InsideLinkType paramInsideLinkType, String paramString1, String paramString2) {
+        this.mType = paramInsideLinkType;
+        this.mValue = paramString1;
+        setLabel(paramString2);
+    }
 
-  public String getLabel()
-  {
-    return this.mLabel;
-  }
+    public String getLabel() {
+        return this.mLabel;
+    }
 
-  public InsideLinkType getType()
-  {
-    return this.mType;
-  }
+    public void setLabel(String paramString) {
+        this.mLabel = paramString;
+    }
 
-  public String getValue()
-  {
-    return this.mValue;
-  }
+    public InsideLinkType getType() {
+        return this.mType;
+    }
 
-  public void setLabel(String paramString)
-  {
-    this.mLabel = paramString;
-  }
+    public String getValue() {
+        return this.mValue;
+    }
 }
 
-/* Location:           E:\Progs\Dev\Android\Decompile\apktool\zssq\zssq-dex2jar.jar
- * Qualified Name:     com.clilystudio.netbook.model.InsideLink
- * JD-Core Version:    0.6.0
- */

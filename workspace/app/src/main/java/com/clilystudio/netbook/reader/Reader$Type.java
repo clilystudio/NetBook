@@ -1,31 +1,23 @@
 package com.clilystudio.netbook.reader;
 
-public enum Reader$Type
-{
-  private int code;
+public enum Reader$Type {
+    static {
+        Type[] arrayOfType = new Type[2];
+        arrayOfType[0] = CHAPTER;
+        arrayOfType[1] = TOC;
+        a = arrayOfType;
+    }
 
-  static
-  {
-    Type[] arrayOfType = new Type[2];
-    arrayOfType[0] = CHAPTER;
-    arrayOfType[1] = TOC;
-    a = arrayOfType;
-  }
+    private int code;
 
-  private Reader$Type(int paramInt)
-  {
-    this.code = paramInt;
-  }
+    private Reader$Type(int paramInt) {
+        this.code = paramInt;
+    }
 
-  public final ae getListener(Reader paramReader)
-  {
-    if (this.code == 0)
-      return Reader.a(paramReader);
-    return Reader.b(paramReader);
-  }
+    public final ae getListener(Reader paramReader) {
+        if (this.code == 0)
+            return Reader.a(paramReader);
+        return Reader.b(paramReader);
+    }
 }
 
-/* Location:           E:\Progs\Dev\Android\Decompile\apktool\zssq\zssq-dex2jar.jar
- * Qualified Name:     com.clilystudio.netbook.reader.Reader.Type
- * JD-Core Version:    0.6.0
- */

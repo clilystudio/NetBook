@@ -1,24 +1,16 @@
 package com.clilystudio.netbook.reader;
 
-final class P extends aa
-{
-  P(Reader paramReader, boolean paramBoolean, ad paramad)
-  {
-    super(paramReader, paramBoolean);
-  }
+final class P extends aa {
+    P(Reader paramReader, boolean paramBoolean, ad paramad) {
+        super(paramReader, paramBoolean);
+    }
 
-  public final void a()
-  {
-    this.a.a();
-  }
+    public final void a() {
+        this.a.a();
+    }
 
-  public final void b()
-  {
-    this.a.b();
-  }
+    public final void b() {
+        this.a.b();
+    }
 }
 
-/* Location:           E:\Progs\Dev\Android\Decompile\apktool\zssq\zssq-dex2jar.jar
- * Qualified Name:     com.clilystudio.netbook.reader.P
- * JD-Core Version:    0.6.0
- */

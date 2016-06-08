@@ -2,85 +2,67 @@ package com.clilystudio.netbook.model;
 
 import java.util.Date;
 
-public class ReviewSummary
-{
-  private String _id;
-  private ReviewBook book;
-  private Date created;
-  private ReviewHelpful helpful;
-  private String state;
-  private String title;
+public class ReviewSummary {
+    private String _id;
+    private ReviewBook book;
+    private Date created;
+    private ReviewHelpful helpful;
+    private String state;
+    private String title;
 
-  public ReviewBook getBook()
-  {
-    if (this.book == null)
-    {
-      this.book = new ReviewBook();
-      this.book.set_id("");
-      this.book.setTitle("该书不存在");
-      this.book.setCover("");
-      this.book.setType("");
+    public ReviewBook getBook() {
+        if (this.book == null) {
+            this.book = new ReviewBook();
+            this.book.set_id("");
+            this.book.setTitle("该书不存在");
+            this.book.setCover("");
+            this.book.setType("");
+        }
+        return this.book;
     }
-    return this.book;
-  }
 
-  public Date getCreated()
-  {
-    return this.created;
-  }
+    public void setBook(ReviewBook paramReviewBook) {
+        this.book = paramReviewBook;
+    }
 
-  public ReviewHelpful getHelpful()
-  {
-    return this.helpful;
-  }
+    public Date getCreated() {
+        return this.created;
+    }
 
-  public String getState()
-  {
-    return this.state;
-  }
+    public void setCreated(Date paramDate) {
+        this.created = paramDate;
+    }
 
-  public String getTitle()
-  {
-    return this.title;
-  }
+    public ReviewHelpful getHelpful() {
+        return this.helpful;
+    }
 
-  public String get_id()
-  {
-    return this._id;
-  }
+    public void setHelpful(ReviewHelpful paramReviewHelpful) {
+        this.helpful = paramReviewHelpful;
+    }
 
-  public void setBook(ReviewBook paramReviewBook)
-  {
-    this.book = paramReviewBook;
-  }
+    public String getState() {
+        return this.state;
+    }
 
-  public void setCreated(Date paramDate)
-  {
-    this.created = paramDate;
-  }
+    public void setState(String paramString) {
+        this.state = paramString;
+    }
 
-  public void setHelpful(ReviewHelpful paramReviewHelpful)
-  {
-    this.helpful = paramReviewHelpful;
-  }
+    public String getTitle() {
+        return this.title;
+    }
 
-  public void setState(String paramString)
-  {
-    this.state = paramString;
-  }
+    public void setTitle(String paramString) {
+        this.title = paramString;
+    }
 
-  public void setTitle(String paramString)
-  {
-    this.title = paramString;
-  }
+    public String get_id() {
+        return this._id;
+    }
 
-  public void set_id(String paramString)
-  {
-    this._id = paramString;
-  }
+    public void set_id(String paramString) {
+        this._id = paramString;
+    }
 }
 
-/* Location:           E:\Progs\Dev\Android\Decompile\apktool\zssq\zssq-dex2jar.jar
- * Qualified Name:     com.clilystudio.netbook.model.ReviewSummary
- * JD-Core Version:    0.6.0
- */

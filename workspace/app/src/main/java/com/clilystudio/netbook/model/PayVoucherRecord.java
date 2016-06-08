@@ -1,32 +1,23 @@
 package com.clilystudio.netbook.model;
 
-public class PayVoucherRecord
-{
-  private boolean ok;
-  private PayVoucherRecord.Voucher[] vouchers;
+public class PayVoucherRecord {
+    private boolean ok;
+    private PayVoucherRecord.Voucher[] vouchers;
 
-  public PayVoucherRecord.Voucher[] getVouchers()
-  {
-    return this.vouchers;
-  }
+    public PayVoucherRecord.Voucher[] getVouchers() {
+        return this.vouchers;
+    }
 
-  public boolean isOk()
-  {
-    return this.ok;
-  }
+    public void setVouchers(PayVoucherRecord.Voucher[] paramArrayOfVoucher) {
+        this.vouchers = paramArrayOfVoucher;
+    }
 
-  public void setOk(boolean paramBoolean)
-  {
-    this.ok = paramBoolean;
-  }
+    public boolean isOk() {
+        return this.ok;
+    }
 
-  public void setVouchers(PayVoucherRecord.Voucher[] paramArrayOfVoucher)
-  {
-    this.vouchers = paramArrayOfVoucher;
-  }
+    public void setOk(boolean paramBoolean) {
+        this.ok = paramBoolean;
+    }
 }
 
-/* Location:           E:\Progs\Dev\Android\Decompile\apktool\zssq\zssq-dex2jar.jar
- * Qualified Name:     com.clilystudio.netbook.model.PayVoucherRecord
- * JD-Core Version:    0.6.0
- */

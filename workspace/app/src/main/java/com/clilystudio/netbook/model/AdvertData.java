@@ -3,137 +3,109 @@ package com.clilystudio.netbook.model;
 import java.io.Serializable;
 
 public class AdvertData
-  implements Serializable
-{
-  private String _id;
-  private int apkSize;
-  private String desc;
-  private String img;
-  private String insideLink;
-  private boolean isApk;
-  private int priority;
-  private String[] showAt;
-  private String title;
-  private String type;
-  private String url;
+        implements Serializable {
+    private String _id;
+    private int apkSize;
+    private String desc;
+    private String img;
+    private String insideLink;
+    private boolean isApk;
+    private int priority;
+    private String[] showAt;
+    private String title;
+    private String type;
+    private String url;
 
-  public int getApkSize()
-  {
-    return this.apkSize;
-  }
+    public int getApkSize() {
+        return this.apkSize;
+    }
 
-  public String getDesc()
-  {
-    return this.desc;
-  }
+    public void setApkSize(int paramInt) {
+        this.apkSize = paramInt;
+    }
 
-  public String getImg()
-  {
-    return this.img;
-  }
+    public String getDesc() {
+        return this.desc;
+    }
 
-  public String getInsideLink()
-  {
-    return this.insideLink;
-  }
+    public void setDesc(String paramString) {
+        this.desc = paramString;
+    }
 
-  public int getPriority()
-  {
-    return this.priority;
-  }
+    public String getImg() {
+        return this.img;
+    }
 
-  public String[] getShowAt()
-  {
-    return this.showAt;
-  }
+    public void setImg(String paramString) {
+        this.img = paramString;
+    }
 
-  public String getTitle()
-  {
-    return this.title;
-  }
+    public String getInsideLink() {
+        return this.insideLink;
+    }
 
-  public String getType()
-  {
-    return this.type;
-  }
+    public void setInsideLink(String paramString) {
+        this.insideLink = paramString;
+    }
 
-  public String getUrl()
-  {
-    return this.url;
-  }
+    public int getPriority() {
+        return this.priority;
+    }
 
-  public String get_id()
-  {
-    return this._id;
-  }
+    public void setPriority(int paramInt) {
+        this.priority = paramInt;
+    }
 
-  public boolean isApk()
-  {
-    return this.isApk;
-  }
+    public String[] getShowAt() {
+        return this.showAt;
+    }
 
-  public void setApk(boolean paramBoolean)
-  {
-    this.isApk = paramBoolean;
-  }
+    public void setShowAt(String[] paramArrayOfString) {
+        this.showAt = paramArrayOfString;
+    }
 
-  public void setApkSize(int paramInt)
-  {
-    this.apkSize = paramInt;
-  }
+    public String getTitle() {
+        return this.title;
+    }
 
-  public void setDesc(String paramString)
-  {
-    this.desc = paramString;
-  }
+    public void setTitle(String paramString) {
+        this.title = paramString;
+    }
 
-  public void setImg(String paramString)
-  {
-    this.img = paramString;
-  }
+    public String getType() {
+        return this.type;
+    }
 
-  public void setInsideLink(String paramString)
-  {
-    this.insideLink = paramString;
-  }
+    public void setType(String paramString) {
+        this.type = paramString;
+    }
 
-  public void setIsApk(boolean paramBoolean)
-  {
-    this.isApk = paramBoolean;
-  }
+    public String getUrl() {
+        return this.url;
+    }
 
-  public void setPriority(int paramInt)
-  {
-    this.priority = paramInt;
-  }
+    public void setUrl(String paramString) {
+        this.url = paramString;
+    }
 
-  public void setShowAt(String[] paramArrayOfString)
-  {
-    this.showAt = paramArrayOfString;
-  }
+    public String get_id() {
+        return this._id;
+    }
 
-  public void setTitle(String paramString)
-  {
-    this.title = paramString;
-  }
+    public void set_id(String paramString) {
+        this._id = paramString;
+    }
 
-  public void setType(String paramString)
-  {
-    this.type = paramString;
-  }
+    public boolean isApk() {
+        return this.isApk;
+    }
 
-  public void setUrl(String paramString)
-  {
-    this.url = paramString;
-  }
+    public void setApk(boolean paramBoolean) {
+        this.isApk = paramBoolean;
+    }
 
-  public void set_id(String paramString)
-  {
-    this._id = paramString;
-  }
+    public void setIsApk(boolean paramBoolean) {
+        this.isApk = paramBoolean;
+    }
 }
 
-/* Location:           E:\Progs\Dev\Android\Decompile\apktool\zssq\zssq-dex2jar.jar
- * Qualified Name:     com.clilystudio.netbook.model.AdvertData
- * JD-Core Version:    0.6.0
- */

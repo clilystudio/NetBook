@@ -2,125 +2,99 @@ package com.clilystudio.netbook.model;
 
 import java.util.Date;
 
-public class BookGenderRecommend$RecommendBook
-{
-  private String _id;
-  private String author;
-  private int chaptersCount;
-  private String cover;
-  private String lastChapter;
-  private int latelyFollower;
-  private double retentionRatio;
-  private String shortIntro;
-  private String title;
-  private Date updated;
+public class BookGenderRecommend$RecommendBook {
+    private String _id;
+    private String author;
+    private int chaptersCount;
+    private String cover;
+    private String lastChapter;
+    private int latelyFollower;
+    private double retentionRatio;
+    private String shortIntro;
+    private String title;
+    private Date updated;
 
-  public BookGenderRecommend$RecommendBook(BookGenderRecommend paramBookGenderRecommend)
-  {
-  }
+    public BookGenderRecommend$RecommendBook(BookGenderRecommend paramBookGenderRecommend) {
+    }
 
-  public String getAuthor()
-  {
-    return this.author;
-  }
+    public String getAuthor() {
+        return this.author;
+    }
 
-  public int getChaptersCount()
-  {
-    return this.chaptersCount;
-  }
+    public void setAuthor(String paramString) {
+        this.author = paramString;
+    }
 
-  public String getCover()
-  {
-    return this.cover;
-  }
+    public int getChaptersCount() {
+        return this.chaptersCount;
+    }
 
-  public String getLastChapter()
-  {
-    return this.lastChapter;
-  }
+    public void setChaptersCount(int paramInt) {
+        this.chaptersCount = paramInt;
+    }
 
-  public int getLatelyFollower()
-  {
-    return this.latelyFollower;
-  }
+    public String getCover() {
+        return this.cover;
+    }
 
-  public double getRetentionRatio()
-  {
-    return this.retentionRatio;
-  }
+    public void setCover(String paramString) {
+        this.cover = paramString;
+    }
 
-  public String getShortIntro()
-  {
-    return this.shortIntro;
-  }
+    public String getLastChapter() {
+        return this.lastChapter;
+    }
 
-  public String getTitle()
-  {
-    return this.title;
-  }
+    public void setLastChapter(String paramString) {
+        this.lastChapter = paramString;
+    }
 
-  public Date getUpdated()
-  {
-    return this.updated;
-  }
+    public int getLatelyFollower() {
+        return this.latelyFollower;
+    }
 
-  public String get_id()
-  {
-    return this._id;
-  }
+    public void setLatelyFollower(int paramInt) {
+        this.latelyFollower = paramInt;
+    }
 
-  public void setAuthor(String paramString)
-  {
-    this.author = paramString;
-  }
+    public double getRetentionRatio() {
+        return this.retentionRatio;
+    }
 
-  public void setChaptersCount(int paramInt)
-  {
-    this.chaptersCount = paramInt;
-  }
+    public void setRetentionRatio(double paramDouble) {
+        this.retentionRatio = paramDouble;
+    }
 
-  public void setCover(String paramString)
-  {
-    this.cover = paramString;
-  }
+    public String getShortIntro() {
+        return this.shortIntro;
+    }
 
-  public void setLastChapter(String paramString)
-  {
-    this.lastChapter = paramString;
-  }
+    public void setShortIntro(String paramString) {
+        this.shortIntro = paramString;
+    }
 
-  public void setLatelyFollower(int paramInt)
-  {
-    this.latelyFollower = paramInt;
-  }
+    public String getTitle() {
+        return this.title;
+    }
 
-  public void setRetentionRatio(double paramDouble)
-  {
-    this.retentionRatio = paramDouble;
-  }
+    public void setTitle(String paramString) {
+        this.title = paramString;
+    }
 
-  public void setShortIntro(String paramString)
-  {
-    this.shortIntro = paramString;
-  }
+    public Date getUpdated() {
+        return this.updated;
+    }
 
-  public void setTitle(String paramString)
-  {
-    this.title = paramString;
-  }
+    public void setUpdated(Date paramDate) {
+        this.updated = paramDate;
+    }
 
-  public void setUpdated(Date paramDate)
-  {
-    this.updated = paramDate;
-  }
+    public String get_id() {
+        return this._id;
+    }
 
-  public void set_id(String paramString)
-  {
-    this._id = paramString;
-  }
+    public void set_id(String paramString) {
+        this._id = paramString;
+    }
 }
 
-/* Location:           E:\Progs\Dev\Android\Decompile\apktool\zssq\zssq-dex2jar.jar
- * Qualified Name:     com.clilystudio.netbook.model.BookGenderRecommend.RecommendBook
- * JD-Core Version:    0.6.0
- */

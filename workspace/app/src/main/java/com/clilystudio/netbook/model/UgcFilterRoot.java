@@ -1,32 +1,23 @@
 package com.clilystudio.netbook.model;
 
-public class UgcFilterRoot
-{
-  private UgcFilterRoot.FilterGroup[] data;
-  private boolean ok;
+public class UgcFilterRoot {
+    private UgcFilterRoot.FilterGroup[] data;
+    private boolean ok;
 
-  public UgcFilterRoot.FilterGroup[] getData()
-  {
-    return this.data;
-  }
+    public UgcFilterRoot.FilterGroup[] getData() {
+        return this.data;
+    }
 
-  public boolean isOk()
-  {
-    return this.ok;
-  }
+    public void setData(UgcFilterRoot.FilterGroup[] paramArrayOfFilterGroup) {
+        this.data = paramArrayOfFilterGroup;
+    }
 
-  public void setData(UgcFilterRoot.FilterGroup[] paramArrayOfFilterGroup)
-  {
-    this.data = paramArrayOfFilterGroup;
-  }
+    public boolean isOk() {
+        return this.ok;
+    }
 
-  public void setOk(boolean paramBoolean)
-  {
-    this.ok = paramBoolean;
-  }
+    public void setOk(boolean paramBoolean) {
+        this.ok = paramBoolean;
+    }
 }
 
-/* Location:           E:\Progs\Dev\Android\Decompile\apktool\zssq\zssq-dex2jar.jar
- * Qualified Name:     com.clilystudio.netbook.model.UgcFilterRoot
- * JD-Core Version:    0.6.0
- */

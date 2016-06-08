@@ -1,23 +1,15 @@
 package com.clilystudio.netbook.reader.random;
 
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 
 final class n
-  implements DialogInterface.OnClickListener
-{
-  n(ReaderRandomActivity paramReaderRandomActivity)
-  {
-  }
+        implements DialogInterface.OnClickListener {
+    n(ReaderRandomActivity paramReaderRandomActivity) {
+    }
 
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-    ReaderRandomActivity.t(this.a);
-  }
+    public final void onClick(DialogInterface paramDialogInterface, int paramInt) {
+        paramDialogInterface.dismiss();
+        ReaderRandomActivity.t(this.a);
+    }
 }
 
-/* Location:           E:\Progs\Dev\Android\Decompile\apktool\zssq\zssq-dex2jar.jar
- * Qualified Name:     com.clilystudio.netbook.reader.random.n
- * JD-Core Version:    0.6.0
- */

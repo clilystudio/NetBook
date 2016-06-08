@@ -3,91 +3,72 @@ package com.clilystudio.netbook.model;
 import java.io.Serializable;
 
 public class Chapter
-  implements Serializable
-{
-  private static final long serialVersionUID = -7332522845657326368L;
-  private String body;
-  private String content;
-  private String cpContent;
-  private int currency;
-  private String id;
-  private boolean isVip;
-  protected String link;
+        implements Serializable {
+    private static final long serialVersionUID = -7332522845657326368L;
+    protected String link;
+    private String body;
+    private String content;
+    private String cpContent;
+    private int currency;
+    private String id;
+    private boolean isVip;
 
-  public String getBody()
-  {
-    return this.body;
-  }
+    public String getBody() {
+        return this.body;
+    }
 
-  public String getContent()
-  {
-    if (this.cpContent != null)
-      return this.cpContent;
-    return this.content;
-  }
+    public void setBody(String paramString) {
+        this.body = paramString;
+    }
 
-  public String getCpContent()
-  {
-    return this.cpContent;
-  }
+    public String getContent() {
+        if (this.cpContent != null)
+            return this.cpContent;
+        return this.content;
+    }
 
-  public int getCurrency()
-  {
-    return this.currency;
-  }
+    public void setContent(String paramString) {
+        this.content = paramString;
+    }
 
-  public String getId()
-  {
-    return this.id;
-  }
+    public String getCpContent() {
+        return this.cpContent;
+    }
 
-  public String getLink()
-  {
-    return this.link;
-  }
+    public void setCpContent(String paramString) {
+        this.cpContent = paramString;
+    }
 
-  public boolean isVip()
-  {
-    return this.isVip;
-  }
+    public int getCurrency() {
+        return this.currency;
+    }
 
-  public void setBody(String paramString)
-  {
-    this.body = paramString;
-  }
+    public void setCurrency(int paramInt) {
+        this.currency = paramInt;
+    }
 
-  public void setContent(String paramString)
-  {
-    this.content = paramString;
-  }
+    public String getId() {
+        return this.id;
+    }
 
-  public void setCpContent(String paramString)
-  {
-    this.cpContent = paramString;
-  }
+    public void setId(String paramString) {
+        this.id = paramString;
+    }
 
-  public void setCurrency(int paramInt)
-  {
-    this.currency = paramInt;
-  }
+    public String getLink() {
+        return this.link;
+    }
 
-  public void setId(String paramString)
-  {
-    this.id = paramString;
-  }
+    public void setLink(String paramString) {
+        this.link = paramString;
+    }
 
-  public void setIsVip(boolean paramBoolean)
-  {
-    this.isVip = paramBoolean;
-  }
+    public boolean isVip() {
+        return this.isVip;
+    }
 
-  public void setLink(String paramString)
-  {
-    this.link = paramString;
-  }
+    public void setIsVip(boolean paramBoolean) {
+        this.isVip = paramBoolean;
+    }
 }
 
-/* Location:           E:\Progs\Dev\Android\Decompile\apktool\zssq\zssq-dex2jar.jar
- * Qualified Name:     com.clilystudio.netbook.model.Chapter
- * JD-Core Version:    0.6.0
- */

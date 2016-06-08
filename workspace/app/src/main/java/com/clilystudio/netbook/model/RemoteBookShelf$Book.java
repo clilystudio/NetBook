@@ -2,103 +2,81 @@ package com.clilystudio.netbook.model;
 
 import java.util.Date;
 
-public class RemoteBookShelf$Book
-{
-  private String _id;
-  private String author;
-  private int chaptersCount;
-  private String cover;
-  private boolean hasCp;
-  private String lastChapter;
-  private String title;
-  private Date updated;
+public class RemoteBookShelf$Book {
+    private String _id;
+    private String author;
+    private int chaptersCount;
+    private String cover;
+    private boolean hasCp;
+    private String lastChapter;
+    private String title;
+    private Date updated;
 
-  public RemoteBookShelf$Book(RemoteBookShelf paramRemoteBookShelf)
-  {
-  }
+    public RemoteBookShelf$Book(RemoteBookShelf paramRemoteBookShelf) {
+    }
 
-  public String getAuthor()
-  {
-    return this.author;
-  }
+    public String getAuthor() {
+        return this.author;
+    }
 
-  public int getChaptersCount()
-  {
-    return this.chaptersCount;
-  }
+    public void setAuthor(String paramString) {
+        this.author = paramString;
+    }
 
-  public String getCover()
-  {
-    return this.cover;
-  }
+    public int getChaptersCount() {
+        return this.chaptersCount;
+    }
 
-  public String getId()
-  {
-    return this._id;
-  }
+    public void setChaptersCount(int paramInt) {
+        this.chaptersCount = paramInt;
+    }
 
-  public String getLastChapter()
-  {
-    return this.lastChapter;
-  }
+    public String getCover() {
+        return this.cover;
+    }
 
-  public String getTitle()
-  {
-    return this.title;
-  }
+    public void setCover(String paramString) {
+        this.cover = paramString;
+    }
 
-  public Date getUpdated()
-  {
-    return this.updated;
-  }
+    public String getId() {
+        return this._id;
+    }
 
-  public boolean isHasCp()
-  {
-    return this.hasCp;
-  }
+    public void setId(String paramString) {
+        this._id = paramString;
+    }
 
-  public void setAuthor(String paramString)
-  {
-    this.author = paramString;
-  }
+    public String getLastChapter() {
+        return this.lastChapter;
+    }
 
-  public void setChaptersCount(int paramInt)
-  {
-    this.chaptersCount = paramInt;
-  }
+    public void setLastChapter(String paramString) {
+        this.lastChapter = paramString;
+    }
 
-  public void setCover(String paramString)
-  {
-    this.cover = paramString;
-  }
+    public String getTitle() {
+        return this.title;
+    }
 
-  public void setHasCp(boolean paramBoolean)
-  {
-    this.hasCp = paramBoolean;
-  }
+    public void setTitle(String paramString) {
+        this.title = paramString;
+    }
 
-  public void setId(String paramString)
-  {
-    this._id = paramString;
-  }
+    public Date getUpdated() {
+        return this.updated;
+    }
 
-  public void setLastChapter(String paramString)
-  {
-    this.lastChapter = paramString;
-  }
+    public void setUpdated(Date paramDate) {
+        this.updated = paramDate;
+    }
 
-  public void setTitle(String paramString)
-  {
-    this.title = paramString;
-  }
+    public boolean isHasCp() {
+        return this.hasCp;
+    }
 
-  public void setUpdated(Date paramDate)
-  {
-    this.updated = paramDate;
-  }
+    public void setHasCp(boolean paramBoolean) {
+        this.hasCp = paramBoolean;
+    }
 }
 
-/* Location:           E:\Progs\Dev\Android\Decompile\apktool\zssq\zssq-dex2jar.jar
- * Qualified Name:     com.clilystudio.netbook.model.RemoteBookShelf.Book
- * JD-Core Version:    0.6.0
- */

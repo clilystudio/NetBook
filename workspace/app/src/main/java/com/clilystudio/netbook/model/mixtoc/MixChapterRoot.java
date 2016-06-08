@@ -1,32 +1,23 @@
 package com.clilystudio.netbook.model.mixtoc;
 
-public class MixChapterRoot
-{
-  private MixChapterResource[] chapterResources;
-  private boolean ok;
+public class MixChapterRoot {
+    private MixChapterResource[] chapterResources;
+    private boolean ok;
 
-  public MixChapterResource[] getChapterResources()
-  {
-    return this.chapterResources;
-  }
+    public MixChapterResource[] getChapterResources() {
+        return this.chapterResources;
+    }
 
-  public boolean isOk()
-  {
-    return this.ok;
-  }
+    public void setChapterResources(MixChapterResource[] paramArrayOfMixChapterResource) {
+        this.chapterResources = paramArrayOfMixChapterResource;
+    }
 
-  public void setChapterResources(MixChapterResource[] paramArrayOfMixChapterResource)
-  {
-    this.chapterResources = paramArrayOfMixChapterResource;
-  }
+    public boolean isOk() {
+        return this.ok;
+    }
 
-  public void setOk(boolean paramBoolean)
-  {
-    this.ok = paramBoolean;
-  }
+    public void setOk(boolean paramBoolean) {
+        this.ok = paramBoolean;
+    }
 }
 
-/* Location:           E:\Progs\Dev\Android\Decompile\apktool\zssq\zssq-dex2jar.jar
- * Qualified Name:     com.clilystudio.netbook.model.mixtoc.MixChapterRoot
- * JD-Core Version:    0.6.0
- */

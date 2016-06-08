@@ -1,43 +1,32 @@
 package com.clilystudio.netbook.model.mixtoc;
 
-public class SsTocRow
-{
-  private String resourceid;
-  private int serialid;
-  private String serialname;
+public class SsTocRow {
+    private String resourceid;
+    private int serialid;
+    private String serialname;
 
-  public String getResourceid()
-  {
-    return this.resourceid;
-  }
+    public String getResourceid() {
+        return this.resourceid;
+    }
 
-  public int getSerialid()
-  {
-    return this.serialid;
-  }
+    public void setResourceid(String paramString) {
+        this.resourceid = paramString;
+    }
 
-  public String getSerialname()
-  {
-    return this.serialname;
-  }
+    public int getSerialid() {
+        return this.serialid;
+    }
 
-  public void setResourceid(String paramString)
-  {
-    this.resourceid = paramString;
-  }
+    public void setSerialid(int paramInt) {
+        this.serialid = paramInt;
+    }
 
-  public void setSerialid(int paramInt)
-  {
-    this.serialid = paramInt;
-  }
+    public String getSerialname() {
+        return this.serialname;
+    }
 
-  public void setSerialname(String paramString)
-  {
-    this.serialname = paramString;
-  }
+    public void setSerialname(String paramString) {
+        this.serialname = paramString;
+    }
 }
 
-/* Location:           E:\Progs\Dev\Android\Decompile\apktool\zssq\zssq-dex2jar.jar
- * Qualified Name:     com.clilystudio.netbook.model.mixtoc.SsTocRow
- * JD-Core Version:    0.6.0
- */

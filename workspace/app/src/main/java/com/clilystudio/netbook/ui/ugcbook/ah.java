@@ -1,21 +1,12 @@
 package com.clilystudio.netbook.ui.ugcbook;
 
-import android.widget.PopupWindow.OnDismissListener;
-
 final class ah
-  implements PopupWindow.OnDismissListener
-{
-  ah(UGCMainActivity paramUGCMainActivity)
-  {
-  }
+        implements PopupWindow.OnDismissListener {
+    ah(UGCMainActivity paramUGCMainActivity) {
+    }
 
-  public final void onDismiss()
-  {
-    this.a.e("筛选");
-  }
+    public final void onDismiss() {
+        this.a.e("筛选");
+    }
 }
 
-/* Location:           E:\Progs\Dev\Android\Decompile\apktool\zssq\zssq-dex2jar.jar
- * Qualified Name:     com.clilystudio.netbook.ui.ugcbook.ah
- * JD-Core Version:    0.6.0
- */

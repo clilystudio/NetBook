@@ -3,144 +3,115 @@ package com.clilystudio.netbook.model;
 import java.io.Serializable;
 
 public class ChapterLink
-  implements Serializable
-{
-  private static final long serialVersionUID = -5702613650428568284L;
-  private int currency;
-  private String id;
-  private boolean isVip;
-  private String link;
-  private int mEasouIndex;
-  private String mLeidianTk;
-  private int mSosoIndex;
-  private int mTxtCharLength;
-  private int mTxtCharOffset;
-  private int mTxtLineOffset;
-  private String title;
-  private boolean unreadble = false;
+        implements Serializable {
+    private static final long serialVersionUID = -5702613650428568284L;
+    private int currency;
+    private String id;
+    private boolean isVip;
+    private String link;
+    private int mEasouIndex;
+    private String mLeidianTk;
+    private int mSosoIndex;
+    private int mTxtCharLength;
+    private int mTxtCharOffset;
+    private int mTxtLineOffset;
+    private String title;
+    private boolean unreadble = false;
 
-  public int getCurrency()
-  {
-    return this.currency;
-  }
+    public int getCurrency() {
+        return this.currency;
+    }
 
-  public int getEasouIndex()
-  {
-    return this.mEasouIndex;
-  }
+    public void setCurrency(int paramInt) {
+        this.currency = paramInt;
+    }
 
-  public String getId()
-  {
-    return this.id;
-  }
+    public int getEasouIndex() {
+        return this.mEasouIndex;
+    }
 
-  public String getLeidianTk()
-  {
-    return this.mLeidianTk;
-  }
+    public void setEasouIndex(int paramInt) {
+        this.mEasouIndex = paramInt;
+    }
 
-  public String getLink()
-  {
-    return this.link;
-  }
+    public String getId() {
+        return this.id;
+    }
 
-  public int getSosoIndex()
-  {
-    return this.mSosoIndex;
-  }
+    public void setId(String paramString) {
+        this.id = paramString;
+    }
 
-  public String getTitle()
-  {
-    return this.title;
-  }
+    public String getLeidianTk() {
+        return this.mLeidianTk;
+    }
 
-  public int getTxtCharLength()
-  {
-    return this.mTxtCharLength;
-  }
+    public void setLeidianTk(String paramString) {
+        this.mLeidianTk = paramString;
+    }
 
-  public int getTxtCharOffset()
-  {
-    return this.mTxtCharOffset;
-  }
+    public String getLink() {
+        return this.link;
+    }
 
-  public int getTxtLineOffset()
-  {
-    return this.mTxtLineOffset;
-  }
+    public void setLink(String paramString) {
+        this.link = paramString;
+    }
 
-  public boolean getUnreadble()
-  {
-    return this.unreadble;
-  }
+    public int getSosoIndex() {
+        return this.mSosoIndex;
+    }
 
-  public boolean isVip()
-  {
-    return this.isVip;
-  }
+    public void setSosoIndex(int paramInt) {
+        this.mSosoIndex = paramInt;
+    }
 
-  public void setCurrency(int paramInt)
-  {
-    this.currency = paramInt;
-  }
+    public String getTitle() {
+        return this.title;
+    }
 
-  public void setEasouIndex(int paramInt)
-  {
-    this.mEasouIndex = paramInt;
-  }
+    public void setTitle(String paramString) {
+        this.title = paramString;
+    }
 
-  public void setId(String paramString)
-  {
-    this.id = paramString;
-  }
+    public int getTxtCharLength() {
+        return this.mTxtCharLength;
+    }
 
-  public void setIsVip(boolean paramBoolean)
-  {
-    this.isVip = paramBoolean;
-  }
+    public void setTxtCharLength(int paramInt) {
+        this.mTxtCharLength = paramInt;
+    }
 
-  public void setLeidianTk(String paramString)
-  {
-    this.mLeidianTk = paramString;
-  }
+    public int getTxtCharOffset() {
+        return this.mTxtCharOffset;
+    }
 
-  public void setLink(String paramString)
-  {
-    this.link = paramString;
-  }
+    public void setTxtCharOffset(int paramInt) {
+        this.mTxtCharOffset = paramInt;
+    }
 
-  public void setSosoIndex(int paramInt)
-  {
-    this.mSosoIndex = paramInt;
-  }
+    public int getTxtLineOffset() {
+        return this.mTxtLineOffset;
+    }
 
-  public void setTitle(String paramString)
-  {
-    this.title = paramString;
-  }
+    public void setTxtLineOffset(int paramInt) {
+        this.mTxtLineOffset = paramInt;
+    }
 
-  public void setTxtCharLength(int paramInt)
-  {
-    this.mTxtCharLength = paramInt;
-  }
+    public boolean getUnreadble() {
+        return this.unreadble;
+    }
 
-  public void setTxtCharOffset(int paramInt)
-  {
-    this.mTxtCharOffset = paramInt;
-  }
+    public void setUnreadble(boolean paramBoolean) {
+        this.unreadble = paramBoolean;
+    }
 
-  public void setTxtLineOffset(int paramInt)
-  {
-    this.mTxtLineOffset = paramInt;
-  }
+    public boolean isVip() {
+        return this.isVip;
+    }
 
-  public void setUnreadble(boolean paramBoolean)
-  {
-    this.unreadble = paramBoolean;
-  }
+    public void setIsVip(boolean paramBoolean) {
+        this.isVip = paramBoolean;
+    }
 }
 
-/* Location:           E:\Progs\Dev\Android\Decompile\apktool\zssq\zssq-dex2jar.jar
- * Qualified Name:     com.clilystudio.netbook.model.ChapterLink
- * JD-Core Version:    0.6.0
- */

@@ -1,77 +1,60 @@
 package com.clilystudio.netbook.model;
 
-public class BookInfo extends BookSummary
-{
-  private static final long serialVersionUID = -8685880187278615441L;
-  private int chaptersCount;
-  private boolean hasCp;
-  private boolean isSerial;
-  private String longIntro;
-  private int postCount;
-  private int serializeWordCount = -1;
+public class BookInfo extends BookSummary {
+    private static final long serialVersionUID = -8685880187278615441L;
+    private int chaptersCount;
+    private boolean hasCp;
+    private boolean isSerial;
+    private String longIntro;
+    private int postCount;
+    private int serializeWordCount = -1;
 
-  public int getChaptersCount()
-  {
-    return this.chaptersCount;
-  }
+    public int getChaptersCount() {
+        return this.chaptersCount;
+    }
 
-  public boolean getIsSerial()
-  {
-    return this.isSerial;
-  }
+    public void setChaptersCount(int paramInt) {
+        this.chaptersCount = paramInt;
+    }
 
-  public String getLongIntro()
-  {
-    return this.longIntro;
-  }
+    public boolean getIsSerial() {
+        return this.isSerial;
+    }
 
-  public int getPostCount()
-  {
-    return this.postCount;
-  }
+    public void setIsSerial(boolean paramBoolean) {
+        this.isSerial = paramBoolean;
+    }
 
-  public int getSerializeWordCount()
-  {
-    return this.serializeWordCount;
-  }
+    public String getLongIntro() {
+        return this.longIntro;
+    }
 
-  public boolean isHasCp()
-  {
-    return this.hasCp;
-  }
+    public void setLongIntro(String paramString) {
+        this.longIntro = paramString;
+    }
 
-  public void setChaptersCount(int paramInt)
-  {
-    this.chaptersCount = paramInt;
-  }
+    public int getPostCount() {
+        return this.postCount;
+    }
 
-  public void setHasCp(boolean paramBoolean)
-  {
-    this.hasCp = paramBoolean;
-  }
+    public void setPostCount(int paramInt) {
+        this.postCount = paramInt;
+    }
 
-  public void setIsSerial(boolean paramBoolean)
-  {
-    this.isSerial = paramBoolean;
-  }
+    public int getSerializeWordCount() {
+        return this.serializeWordCount;
+    }
 
-  public void setLongIntro(String paramString)
-  {
-    this.longIntro = paramString;
-  }
+    public void setSerializeWordCount(int paramInt) {
+        this.serializeWordCount = paramInt;
+    }
 
-  public void setPostCount(int paramInt)
-  {
-    this.postCount = paramInt;
-  }
+    public boolean isHasCp() {
+        return this.hasCp;
+    }
 
-  public void setSerializeWordCount(int paramInt)
-  {
-    this.serializeWordCount = paramInt;
-  }
+    public void setHasCp(boolean paramBoolean) {
+        this.hasCp = paramBoolean;
+    }
 }
 
-/* Location:           E:\Progs\Dev\Android\Decompile\apktool\zssq\zssq-dex2jar.jar
- * Qualified Name:     com.clilystudio.netbook.model.BookInfo
- * JD-Core Version:    0.6.0
- */

@@ -2,138 +2,110 @@ package com.clilystudio.netbook.model;
 
 import java.util.Date;
 
-public class Post
-{
-  private String _id;
-  private Author author;
-  private PostBook book;
-  private int commentCount;
-  private String content;
-  private Date created;
-  private String shareLink;
-  private String title;
-  private String type;
-  private int voteCount;
-  private Vote[] votes;
+public class Post {
+    private String _id;
+    private Author author;
+    private PostBook book;
+    private int commentCount;
+    private String content;
+    private Date created;
+    private String shareLink;
+    private String title;
+    private String type;
+    private int voteCount;
+    private Vote[] votes;
 
-  public Author getAuthor()
-  {
-    return this.author;
-  }
-
-  public PostBook getBook()
-  {
-    if (this.book == null)
-    {
-      this.book = new PostBook();
-      this.book.set_id("");
-      this.book.setTitle("此书不存在");
+    public Author getAuthor() {
+        return this.author;
     }
-    return this.book;
-  }
 
-  public int getCommentCount()
-  {
-    return this.commentCount;
-  }
+    public void setAuthor(Author paramAuthor) {
+        this.author = paramAuthor;
+    }
 
-  public String getContent()
-  {
-    return this.content;
-  }
+    public PostBook getBook() {
+        if (this.book == null) {
+            this.book = new PostBook();
+            this.book.set_id("");
+            this.book.setTitle("此书不存在");
+        }
+        return this.book;
+    }
 
-  public Date getCreated()
-  {
-    return this.created;
-  }
+    public void setBook(PostBook paramPostBook) {
+        this.book = paramPostBook;
+    }
 
-  public String getShareLink()
-  {
-    return this.shareLink;
-  }
+    public int getCommentCount() {
+        return this.commentCount;
+    }
 
-  public String getTitle()
-  {
-    return this.title;
-  }
+    public void setCommentCount(int paramInt) {
+        this.commentCount = paramInt;
+    }
 
-  public String getType()
-  {
-    return this.type;
-  }
+    public String getContent() {
+        return this.content;
+    }
 
-  public int getVoteCount()
-  {
-    return this.voteCount;
-  }
+    public void setContent(String paramString) {
+        this.content = paramString;
+    }
 
-  public Vote[] getVotes()
-  {
-    return this.votes;
-  }
+    public Date getCreated() {
+        return this.created;
+    }
 
-  public String get_id()
-  {
-    return this._id;
-  }
+    public void setCreated(Date paramDate) {
+        this.created = paramDate;
+    }
 
-  public void setAuthor(Author paramAuthor)
-  {
-    this.author = paramAuthor;
-  }
+    public String getShareLink() {
+        return this.shareLink;
+    }
 
-  public void setBook(PostBook paramPostBook)
-  {
-    this.book = paramPostBook;
-  }
+    public void setShareLink(String paramString) {
+        this.shareLink = paramString;
+    }
 
-  public void setCommentCount(int paramInt)
-  {
-    this.commentCount = paramInt;
-  }
+    public String getTitle() {
+        return this.title;
+    }
 
-  public void setContent(String paramString)
-  {
-    this.content = paramString;
-  }
+    public void setTitle(String paramString) {
+        this.title = paramString;
+    }
 
-  public void setCreated(Date paramDate)
-  {
-    this.created = paramDate;
-  }
+    public String getType() {
+        return this.type;
+    }
 
-  public void setShareLink(String paramString)
-  {
-    this.shareLink = paramString;
-  }
+    public void setType(String paramString) {
+        this.type = paramString;
+    }
 
-  public void setTitle(String paramString)
-  {
-    this.title = paramString;
-  }
+    public int getVoteCount() {
+        return this.voteCount;
+    }
 
-  public void setType(String paramString)
-  {
-    this.type = paramString;
-  }
+    public void setVoteCount(int paramInt) {
+        this.voteCount = paramInt;
+    }
 
-  public void setVoteCount(int paramInt)
-  {
-    this.voteCount = paramInt;
-  }
+    public Vote[] getVotes() {
+        return this.votes;
+    }
 
-  public void setVotes(Vote[] paramArrayOfVote)
-  {
-    this.votes = paramArrayOfVote;
-  }
+    public void setVotes(Vote[] paramArrayOfVote) {
+        this.votes = paramArrayOfVote;
+    }
 
-  public void set_id(String paramString)
-  {
-    this._id = paramString;
-  }
+    public String get_id() {
+        return this._id;
+    }
+
+    public void set_id(String paramString) {
+        this._id = paramString;
+    }
 }
 
-/* Location:           E:\Progs\Dev\Android\Decompile\apktool\zssq\zssq-dex2jar.jar
- * Qualified Name:     com.clilystudio.netbook.model.Post
- * JD-Core Version:    0.6.0
- */

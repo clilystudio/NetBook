@@ -1,32 +1,23 @@
 package com.clilystudio.netbook.model;
 
-public class BookHelpList
-{
-  private BookHelpSummary[] helps;
-  private boolean ok;
+public class BookHelpList {
+    private BookHelpSummary[] helps;
+    private boolean ok;
 
-  public BookHelpSummary[] getHelps()
-  {
-    return this.helps;
-  }
+    public BookHelpSummary[] getHelps() {
+        return this.helps;
+    }
 
-  public boolean isOk()
-  {
-    return this.ok;
-  }
+    public void setHelps(BookHelpSummary[] paramArrayOfBookHelpSummary) {
+        this.helps = paramArrayOfBookHelpSummary;
+    }
 
-  public void setHelps(BookHelpSummary[] paramArrayOfBookHelpSummary)
-  {
-    this.helps = paramArrayOfBookHelpSummary;
-  }
+    public boolean isOk() {
+        return this.ok;
+    }
 
-  public void setOk(boolean paramBoolean)
-  {
-    this.ok = paramBoolean;
-  }
+    public void setOk(boolean paramBoolean) {
+        this.ok = paramBoolean;
+    }
 }
 
-/* Location:           E:\Progs\Dev\Android\Decompile\apktool\zssq\zssq-dex2jar.jar
- * Qualified Name:     com.clilystudio.netbook.model.BookHelpList
- * JD-Core Version:    0.6.0
- */

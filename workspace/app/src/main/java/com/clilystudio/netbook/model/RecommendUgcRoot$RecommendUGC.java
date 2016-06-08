@@ -2,93 +2,73 @@ package com.clilystudio.netbook.model;
 
 import com.clilystudio.netbook.api.ApiService;
 
-public class RecommendUgcRoot$RecommendUGC
-{
-  private String author;
-  private int bookCount;
-  private int collectorCount;
-  private String cover;
-  private String desc;
-  private String id;
-  private String title;
+public class RecommendUgcRoot$RecommendUGC {
+    private String author;
+    private int bookCount;
+    private int collectorCount;
+    private String cover;
+    private String desc;
+    private String id;
+    private String title;
 
-  public String getAuthor()
-  {
-    return this.author;
-  }
+    public String getAuthor() {
+        return this.author;
+    }
 
-  public int getBookCount()
-  {
-    return this.bookCount;
-  }
+    public void setAuthor(String paramString) {
+        this.author = paramString;
+    }
 
-  public int getCollectorCount()
-  {
-    return this.collectorCount;
-  }
+    public int getBookCount() {
+        return this.bookCount;
+    }
 
-  public String getCover()
-  {
-    return this.cover;
-  }
+    public void setBookCount(int paramInt) {
+        this.bookCount = paramInt;
+    }
 
-  public String getDesc()
-  {
-    return this.desc;
-  }
+    public int getCollectorCount() {
+        return this.collectorCount;
+    }
 
-  public String getFullCover()
-  {
-    return ApiService.a + this.cover + "-covers";
-  }
+    public void setCollectorCount(int paramInt) {
+        this.collectorCount = paramInt;
+    }
 
-  public String getId()
-  {
-    return this.id;
-  }
+    public String getCover() {
+        return this.cover;
+    }
 
-  public String getTitle()
-  {
-    return this.title;
-  }
+    public void setCover(String paramString) {
+        this.cover = paramString;
+    }
 
-  public void setAuthor(String paramString)
-  {
-    this.author = paramString;
-  }
+    public String getDesc() {
+        return this.desc;
+    }
 
-  public void setBookCount(int paramInt)
-  {
-    this.bookCount = paramInt;
-  }
+    public void setDesc(String paramString) {
+        this.desc = paramString;
+    }
 
-  public void setCollectorCount(int paramInt)
-  {
-    this.collectorCount = paramInt;
-  }
+    public String getFullCover() {
+        return ApiService.a + this.cover + "-covers";
+    }
 
-  public void setCover(String paramString)
-  {
-    this.cover = paramString;
-  }
+    public String getId() {
+        return this.id;
+    }
 
-  public void setDesc(String paramString)
-  {
-    this.desc = paramString;
-  }
+    public void setId(String paramString) {
+        this.id = paramString;
+    }
 
-  public void setId(String paramString)
-  {
-    this.id = paramString;
-  }
+    public String getTitle() {
+        return this.title;
+    }
 
-  public void setTitle(String paramString)
-  {
-    this.title = paramString;
-  }
+    public void setTitle(String paramString) {
+        this.title = paramString;
+    }
 }
 
-/* Location:           E:\Progs\Dev\Android\Decompile\apktool\zssq\zssq-dex2jar.jar
- * Qualified Name:     com.clilystudio.netbook.model.RecommendUgcRoot.RecommendUGC
- * JD-Core Version:    0.6.0
- */

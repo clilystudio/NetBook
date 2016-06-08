@@ -2,105 +2,83 @@ package com.clilystudio.netbook.model;
 
 import java.util.Date;
 
-public class PostComment
-{
-  private String _id;
-  private Author author;
-  private String content;
-  private Date created;
-  private int floor;
-  private int likeCount;
-  private boolean likedInView;
-  private PostComment.PostCommentReply replyTo;
+public class PostComment {
+    private String _id;
+    private Author author;
+    private String content;
+    private Date created;
+    private int floor;
+    private int likeCount;
+    private boolean likedInView;
+    private PostComment.PostCommentReply replyTo;
 
-  public Author getAuthor()
-  {
-    return this.author;
-  }
+    public Author getAuthor() {
+        return this.author;
+    }
 
-  public String getContent()
-  {
-    return this.content;
-  }
+    public void setAuthor(Author paramAuthor) {
+        this.author = paramAuthor;
+    }
 
-  public Date getCreated()
-  {
-    return this.created;
-  }
+    public String getContent() {
+        return this.content;
+    }
 
-  public int getFloor()
-  {
-    return this.floor;
-  }
+    public void setContent(String paramString) {
+        this.content = paramString;
+    }
 
-  public int getLikeCount()
-  {
-    return this.likeCount;
-  }
+    public Date getCreated() {
+        return this.created;
+    }
 
-  @Deprecated
-  public PostComment.PostCommentReply getReplyTo()
-  {
-    return this.replyTo;
-  }
+    public void setCreated(Date paramDate) {
+        this.created = paramDate;
+    }
 
-  public String get_id()
-  {
-    return this._id;
-  }
+    public int getFloor() {
+        return this.floor;
+    }
 
-  public boolean isLikedInView()
-  {
-    return this.likedInView;
-  }
+    public void setFloor(int paramInt) {
+        this.floor = paramInt;
+    }
 
-  public void setAuthor(Author paramAuthor)
-  {
-    this.author = paramAuthor;
-  }
+    public int getLikeCount() {
+        return this.likeCount;
+    }
 
-  public void setContent(String paramString)
-  {
-    this.content = paramString;
-  }
+    public void setLikeCount(int paramInt) {
+        this.likeCount = paramInt;
+    }
 
-  public void setCreated(Date paramDate)
-  {
-    this.created = paramDate;
-  }
+    @Deprecated
+    public PostComment.PostCommentReply getReplyTo() {
+        return this.replyTo;
+    }
 
-  public void setFloor(int paramInt)
-  {
-    this.floor = paramInt;
-  }
+    public void setReplyTo(PostComment.PostCommentReply paramPostCommentReply) {
+        this.replyTo = paramPostCommentReply;
+    }
 
-  public void setLikeCount(int paramInt)
-  {
-    this.likeCount = paramInt;
-  }
+    public String get_id() {
+        return this._id;
+    }
 
-  public void setLikedInView(boolean paramBoolean)
-  {
-    this.likedInView = paramBoolean;
-  }
+    public void set_id(String paramString) {
+        this._id = paramString;
+    }
 
-  public void setReplyTo(PostComment.PostCommentReply paramPostCommentReply)
-  {
-    this.replyTo = paramPostCommentReply;
-  }
+    public boolean isLikedInView() {
+        return this.likedInView;
+    }
 
-  public void set_id(String paramString)
-  {
-    this._id = paramString;
-  }
+    public void setLikedInView(boolean paramBoolean) {
+        this.likedInView = paramBoolean;
+    }
 
-  public ReplyeeInfo toRepliedInfo()
-  {
-    return new CommonReplyeeInfo(get_id(), getAuthor(), getFloor());
-  }
+    public ReplyeeInfo toRepliedInfo() {
+        return new CommonReplyeeInfo(get_id(), getAuthor(), getFloor());
+    }
 }
 
-/* Location:           E:\Progs\Dev\Android\Decompile\apktool\zssq\zssq-dex2jar.jar
- * Qualified Name:     com.clilystudio.netbook.model.PostComment
- * JD-Core Version:    0.6.0
- */

@@ -3,276 +3,223 @@ package com.clilystudio.netbook.model;
 import java.io.Serializable;
 
 public class Game
-  implements Serializable
-{
-  private static final long serialVersionUID = -8334205226470939171L;
-  private String _id;
-  private boolean activityFlag;
-  private String androidLink;
-  private String androidPackageName;
-  private int androidSize;
-  private String banner;
-  private String cat;
-  private String cover;
-  private int downloadStatus;
-  private boolean firsthand;
-  private int followers;
-  private boolean giftFlag;
-  private boolean h5MainPromo;
-  private boolean hotFlag;
-  private String icon;
-  private int iconId;
-  private String intro;
-  private String localFileUri;
-  private boolean mainPromo;
-  private Game.MainPromoInfo mainPromoInfo;
-  private String name;
-  private String[] pictures;
-  private boolean recommend;
-  private String shortIntro;
+        implements Serializable {
+    private static final long serialVersionUID = -8334205226470939171L;
+    private String _id;
+    private boolean activityFlag;
+    private String androidLink;
+    private String androidPackageName;
+    private int androidSize;
+    private String banner;
+    private String cat;
+    private String cover;
+    private int downloadStatus;
+    private boolean firsthand;
+    private int followers;
+    private boolean giftFlag;
+    private boolean h5MainPromo;
+    private boolean hotFlag;
+    private String icon;
+    private int iconId;
+    private String intro;
+    private String localFileUri;
+    private boolean mainPromo;
+    private Game.MainPromoInfo mainPromoInfo;
+    private String name;
+    private String[] pictures;
+    private boolean recommend;
+    private String shortIntro;
 
-  public String getAndroidLink()
-  {
-    return this.androidLink;
-  }
+    public String getAndroidLink() {
+        return this.androidLink;
+    }
 
-  public String getAndroidPackageName()
-  {
-    return this.androidPackageName;
-  }
+    public void setAndroidLink(String paramString) {
+        this.androidLink = paramString;
+    }
 
-  public int getAndroidSize()
-  {
-    return this.androidSize;
-  }
+    public String getAndroidPackageName() {
+        return this.androidPackageName;
+    }
 
-  public String getBanner()
-  {
-    return this.banner;
-  }
+    public void setAndroidPackageName(String paramString) {
+        this.androidPackageName = paramString;
+    }
 
-  public String getCat()
-  {
-    return this.cat;
-  }
+    public int getAndroidSize() {
+        return this.androidSize;
+    }
 
-  public String getCover()
-  {
-    return this.cover;
-  }
+    public void setAndroidSize(int paramInt) {
+        this.androidSize = paramInt;
+    }
 
-  public int getDownloadStatus()
-  {
-    return this.downloadStatus;
-  }
+    public String getBanner() {
+        return this.banner;
+    }
 
-  public int getFollowers()
-  {
-    return this.followers;
-  }
+    public void setBanner(String paramString) {
+        this.banner = paramString;
+    }
 
-  public String getIcon()
-  {
-    return this.icon;
-  }
+    public String getCat() {
+        return this.cat;
+    }
 
-  public int getIconId()
-  {
-    return this.iconId;
-  }
+    public void setCat(String paramString) {
+        this.cat = paramString;
+    }
 
-  public String getIntro()
-  {
-    return this.intro;
-  }
+    public String getCover() {
+        return this.cover;
+    }
 
-  public String getLocalFileUri()
-  {
-    return this.localFileUri;
-  }
+    public void setCover(String paramString) {
+        this.cover = paramString;
+    }
 
-  public Game.MainPromoInfo getMainPromoInfo()
-  {
-    return this.mainPromoInfo;
-  }
+    public int getDownloadStatus() {
+        return this.downloadStatus;
+    }
 
-  public String getName()
-  {
-    return this.name;
-  }
+    public void setDownloadStatus(int paramInt) {
+        this.downloadStatus = paramInt;
+    }
 
-  public String[] getPictures()
-  {
-    return this.pictures;
-  }
+    public int getFollowers() {
+        return this.followers;
+    }
 
-  public String getShortIntro()
-  {
-    return this.shortIntro;
-  }
+    public void setFollowers(int paramInt) {
+        this.followers = paramInt;
+    }
 
-  public String get_id()
-  {
-    return this._id;
-  }
+    public String getIcon() {
+        return this.icon;
+    }
 
-  public boolean isActivityFlag()
-  {
-    return this.activityFlag;
-  }
+    public void setIcon(String paramString) {
+        this.icon = paramString;
+    }
 
-  public boolean isFirsthand()
-  {
-    return this.firsthand;
-  }
+    public int getIconId() {
+        return this.iconId;
+    }
 
-  public boolean isGiftFlag()
-  {
-    return this.giftFlag;
-  }
+    public void setIconId(int paramInt) {
+        this.iconId = paramInt;
+    }
 
-  public boolean isH5MainPromo()
-  {
-    return this.h5MainPromo;
-  }
+    public String getIntro() {
+        return this.intro;
+    }
 
-  public boolean isHotFlag()
-  {
-    return this.hotFlag;
-  }
+    public void setIntro(String paramString) {
+        this.intro = paramString;
+    }
 
-  public boolean isMainPromo()
-  {
-    return this.mainPromo;
-  }
+    public String getLocalFileUri() {
+        return this.localFileUri;
+    }
 
-  public boolean isRecommend()
-  {
-    return this.recommend;
-  }
+    public void setLocalFileUri(String paramString) {
+        this.localFileUri = paramString;
+    }
 
-  public void setActivityFlag(boolean paramBoolean)
-  {
-    this.activityFlag = paramBoolean;
-  }
+    public Game.MainPromoInfo getMainPromoInfo() {
+        return this.mainPromoInfo;
+    }
 
-  public void setAndroidLink(String paramString)
-  {
-    this.androidLink = paramString;
-  }
+    public void setMainPromoInfo(Game.MainPromoInfo paramMainPromoInfo) {
+        this.mainPromoInfo = paramMainPromoInfo;
+    }
 
-  public void setAndroidPackageName(String paramString)
-  {
-    this.androidPackageName = paramString;
-  }
+    public String getName() {
+        return this.name;
+    }
 
-  public void setAndroidSize(int paramInt)
-  {
-    this.androidSize = paramInt;
-  }
+    public void setName(String paramString) {
+        this.name = paramString;
+    }
 
-  public void setBanner(String paramString)
-  {
-    this.banner = paramString;
-  }
+    public String[] getPictures() {
+        return this.pictures;
+    }
 
-  public void setCat(String paramString)
-  {
-    this.cat = paramString;
-  }
+    public void setPictures(String[] paramArrayOfString) {
+        this.pictures = paramArrayOfString;
+    }
 
-  public void setCover(String paramString)
-  {
-    this.cover = paramString;
-  }
+    public String getShortIntro() {
+        return this.shortIntro;
+    }
 
-  public void setDownloadStatus(int paramInt)
-  {
-    this.downloadStatus = paramInt;
-  }
+    public void setShortIntro(String paramString) {
+        this.shortIntro = paramString;
+    }
 
-  public void setFirsthand(boolean paramBoolean)
-  {
-    this.firsthand = paramBoolean;
-  }
+    public String get_id() {
+        return this._id;
+    }
 
-  public void setFollowers(int paramInt)
-  {
-    this.followers = paramInt;
-  }
+    public void set_id(String paramString) {
+        this._id = paramString;
+    }
 
-  public void setGiftFlag(boolean paramBoolean)
-  {
-    this.giftFlag = paramBoolean;
-  }
+    public boolean isActivityFlag() {
+        return this.activityFlag;
+    }
 
-  public void setH5MainPromo(boolean paramBoolean)
-  {
-    this.h5MainPromo = paramBoolean;
-  }
+    public void setActivityFlag(boolean paramBoolean) {
+        this.activityFlag = paramBoolean;
+    }
 
-  public void setHotFlag(boolean paramBoolean)
-  {
-    this.hotFlag = paramBoolean;
-  }
+    public boolean isFirsthand() {
+        return this.firsthand;
+    }
 
-  public void setIcon(String paramString)
-  {
-    this.icon = paramString;
-  }
+    public void setFirsthand(boolean paramBoolean) {
+        this.firsthand = paramBoolean;
+    }
 
-  public void setIconId(int paramInt)
-  {
-    this.iconId = paramInt;
-  }
+    public boolean isGiftFlag() {
+        return this.giftFlag;
+    }
 
-  public void setIntro(String paramString)
-  {
-    this.intro = paramString;
-  }
+    public void setGiftFlag(boolean paramBoolean) {
+        this.giftFlag = paramBoolean;
+    }
 
-  public void setLocalFileUri(String paramString)
-  {
-    this.localFileUri = paramString;
-  }
+    public boolean isH5MainPromo() {
+        return this.h5MainPromo;
+    }
 
-  public void setMainPromo(boolean paramBoolean)
-  {
-    this.mainPromo = paramBoolean;
-  }
+    public void setH5MainPromo(boolean paramBoolean) {
+        this.h5MainPromo = paramBoolean;
+    }
 
-  public void setMainPromoInfo(Game.MainPromoInfo paramMainPromoInfo)
-  {
-    this.mainPromoInfo = paramMainPromoInfo;
-  }
+    public boolean isHotFlag() {
+        return this.hotFlag;
+    }
 
-  public void setName(String paramString)
-  {
-    this.name = paramString;
-  }
+    public void setHotFlag(boolean paramBoolean) {
+        this.hotFlag = paramBoolean;
+    }
 
-  public void setPictures(String[] paramArrayOfString)
-  {
-    this.pictures = paramArrayOfString;
-  }
+    public boolean isMainPromo() {
+        return this.mainPromo;
+    }
 
-  public void setRecommend(boolean paramBoolean)
-  {
-    this.recommend = paramBoolean;
-  }
+    public void setMainPromo(boolean paramBoolean) {
+        this.mainPromo = paramBoolean;
+    }
 
-  public void setShortIntro(String paramString)
-  {
-    this.shortIntro = paramString;
-  }
+    public boolean isRecommend() {
+        return this.recommend;
+    }
 
-  public void set_id(String paramString)
-  {
-    this._id = paramString;
-  }
+    public void setRecommend(boolean paramBoolean) {
+        this.recommend = paramBoolean;
+    }
 }
 
-/* Location:           E:\Progs\Dev\Android\Decompile\apktool\zssq\zssq-dex2jar.jar
- * Qualified Name:     com.clilystudio.netbook.model.Game
- * JD-Core Version:    0.6.0
- */

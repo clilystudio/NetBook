@@ -2,22 +2,17 @@ package com.clilystudio.netbook.ui;
 
 import android.view.View;
 import android.widget.TextView;
+
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 
-class SearchActivity$SearchPromptAdapter$ViewHolder
-{
+class SearchActivity$SearchPromptAdapter$ViewHolder {
 
-  @InjectView(2131493751)
-  TextView label;
+    @InjectView(2131493751)
+    TextView label;
 
-  SearchActivity$SearchPromptAdapter$ViewHolder(SearchActivity.SearchPromptAdapter paramSearchPromptAdapter, View paramView)
-  {
-    ButterKnife.inject(this, paramView);
-  }
+    SearchActivity$SearchPromptAdapter$ViewHolder(SearchActivity.SearchPromptAdapter paramSearchPromptAdapter, View paramView) {
+        ButterKnife.inject(this, paramView);
+    }
 }
 
-/* Location:           E:\Progs\Dev\Android\Decompile\apktool\zssq\zssq-dex2jar.jar
- * Qualified Name:     com.clilystudio.netbook.ui.SearchActivity.SearchPromptAdapter.ViewHolder
- * JD-Core Version:    0.6.0
- */

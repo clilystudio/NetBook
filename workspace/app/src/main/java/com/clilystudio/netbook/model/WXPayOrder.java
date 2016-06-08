@@ -1,48 +1,36 @@
 package com.clilystudio.netbook.model;
 
-public class WXPayOrder
-{
-  private boolean ok;
-  private String orderId;
-  private WXPayOrder.PayOrder payOrder;
+public class WXPayOrder {
+    private boolean ok;
+    private String orderId;
+    private WXPayOrder.PayOrder payOrder;
 
-  public String getOrderId()
-  {
-    return this.orderId;
-  }
+    public String getOrderId() {
+        return this.orderId;
+    }
 
-  public WXPayOrder.PayOrder getPayOrder()
-  {
-    return this.payOrder;
-  }
+    public void setOrderId(String paramString) {
+        this.orderId = paramString;
+    }
 
-  public boolean isOk()
-  {
-    return this.ok;
-  }
+    public WXPayOrder.PayOrder getPayOrder() {
+        return this.payOrder;
+    }
 
-  public void setOk(boolean paramBoolean)
-  {
-    this.ok = paramBoolean;
-  }
+    public void setPayOrder(WXPayOrder.PayOrder paramPayOrder) {
+        this.payOrder = paramPayOrder;
+    }
 
-  public void setOrderId(String paramString)
-  {
-    this.orderId = paramString;
-  }
+    public boolean isOk() {
+        return this.ok;
+    }
 
-  public void setPayOrder(WXPayOrder.PayOrder paramPayOrder)
-  {
-    this.payOrder = paramPayOrder;
-  }
+    public void setOk(boolean paramBoolean) {
+        this.ok = paramBoolean;
+    }
 
-  public String toString()
-  {
-    return "WXPayOrder{ok=" + this.ok + ", payOrder=" + this.payOrder + ", orderId='" + this.orderId + '\'' + '}';
-  }
+    public String toString() {
+        return "WXPayOrder{ok=" + this.ok + ", payOrder=" + this.payOrder + ", orderId='" + this.orderId + '\'' + '}';
+    }
 }
 
-/* Location:           E:\Progs\Dev\Android\Decompile\apktool\zssq\zssq-dex2jar.jar
- * Qualified Name:     com.clilystudio.netbook.model.WXPayOrder
- * JD-Core Version:    0.6.0
- */

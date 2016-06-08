@@ -1,32 +1,23 @@
 package com.clilystudio.netbook.model;
 
-public class GirlTopicResult
-{
-  private boolean ok;
-  private GirlTopic post;
+public class GirlTopicResult {
+    private boolean ok;
+    private GirlTopic post;
 
-  public GirlTopic getPost()
-  {
-    return this.post;
-  }
+    public GirlTopic getPost() {
+        return this.post;
+    }
 
-  public boolean isOk()
-  {
-    return this.ok;
-  }
+    public void setPost(GirlTopic paramGirlTopic) {
+        this.post = paramGirlTopic;
+    }
 
-  public void setOk(boolean paramBoolean)
-  {
-    this.ok = paramBoolean;
-  }
+    public boolean isOk() {
+        return this.ok;
+    }
 
-  public void setPost(GirlTopic paramGirlTopic)
-  {
-    this.post = paramGirlTopic;
-  }
+    public void setOk(boolean paramBoolean) {
+        this.ok = paramBoolean;
+    }
 }
 
-/* Location:           E:\Progs\Dev\Android\Decompile\apktool\zssq\zssq-dex2jar.jar
- * Qualified Name:     com.clilystudio.netbook.model.GirlTopicResult
- * JD-Core Version:    0.6.0
- */

@@ -1,43 +1,32 @@
 package com.clilystudio.netbook.model;
 
-public class HotTweetResult
-{
-  private String msg;
-  private boolean ok;
-  private TimelineResult.Temp[] tweets;
+public class HotTweetResult {
+    private String msg;
+    private boolean ok;
+    private TimelineResult.Temp[] tweets;
 
-  public String getMsg()
-  {
-    return this.msg;
-  }
+    public String getMsg() {
+        return this.msg;
+    }
 
-  public TimelineResult.Temp[] getTweets()
-  {
-    return this.tweets;
-  }
+    public void setMsg(String paramString) {
+        this.msg = paramString;
+    }
 
-  public boolean isOk()
-  {
-    return this.ok;
-  }
+    public TimelineResult.Temp[] getTweets() {
+        return this.tweets;
+    }
 
-  public void setMsg(String paramString)
-  {
-    this.msg = paramString;
-  }
+    public void setTweets(TimelineResult.Temp[] paramArrayOfTemp) {
+        this.tweets = paramArrayOfTemp;
+    }
 
-  public void setOk(boolean paramBoolean)
-  {
-    this.ok = paramBoolean;
-  }
+    public boolean isOk() {
+        return this.ok;
+    }
 
-  public void setTweets(TimelineResult.Temp[] paramArrayOfTemp)
-  {
-    this.tweets = paramArrayOfTemp;
-  }
+    public void setOk(boolean paramBoolean) {
+        this.ok = paramBoolean;
+    }
 }
 
-/* Location:           E:\Progs\Dev\Android\Decompile\apktool\zssq\zssq-dex2jar.jar
- * Qualified Name:     com.clilystudio.netbook.model.HotTweetResult
- * JD-Core Version:    0.6.0
- */

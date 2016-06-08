@@ -4,69 +4,54 @@ import java.io.Serializable;
 import java.text.DecimalFormat;
 
 public class ChargePlan
-  implements Serializable
-{
-  private static final long serialVersionUID = -8138264341542713200L;
-  private String _id;
-  private int currency;
-  private float price;
-  private int voucher;
+        implements Serializable {
+    private static final long serialVersionUID = -8138264341542713200L;
+    private String _id;
+    private int currency;
+    private float price;
+    private int voucher;
 
-  public int getCurrency()
-  {
-    return this.currency;
-  }
+    public int getCurrency() {
+        return this.currency;
+    }
 
-  public float getPrice()
-  {
-    return this.price;
-  }
+    public void setCurrency(int paramInt) {
+        this.currency = paramInt;
+    }
 
-  public String getPriceDsc()
-  {
-    return new DecimalFormat("##.##").format(this.price);
-  }
+    public float getPrice() {
+        return this.price;
+    }
 
-  public String getString()
-  {
-    String str = this.currency + "追书币";
-    if (this.voucher > 0)
-      str = str + "+" + this.voucher + "追书券";
-    return str;
-  }
+    public void setPrice(float paramFloat) {
+        this.price = paramFloat;
+    }
 
-  public int getVoucher()
-  {
-    return this.voucher;
-  }
+    public String getPriceDsc() {
+        return new DecimalFormat("##.##").format(this.price);
+    }
 
-  public String get_id()
-  {
-    return this._id;
-  }
+    public String getString() {
+        String str = this.currency + "追书币";
+        if (this.voucher > 0)
+            str = str + "+" + this.voucher + "追书券";
+        return str;
+    }
 
-  public void setCurrency(int paramInt)
-  {
-    this.currency = paramInt;
-  }
+    public int getVoucher() {
+        return this.voucher;
+    }
 
-  public void setPrice(float paramFloat)
-  {
-    this.price = paramFloat;
-  }
+    public void setVoucher(int paramInt) {
+        this.voucher = paramInt;
+    }
 
-  public void setVoucher(int paramInt)
-  {
-    this.voucher = paramInt;
-  }
+    public String get_id() {
+        return this._id;
+    }
 
-  public void set_id(String paramString)
-  {
-    this._id = paramString;
-  }
+    public void set_id(String paramString) {
+        this._id = paramString;
+    }
 }
 
-/* Location:           E:\Progs\Dev\Android\Decompile\apktool\zssq\zssq-dex2jar.jar
- * Qualified Name:     com.clilystudio.netbook.model.ChargePlan
- * JD-Core Version:    0.6.0
- */

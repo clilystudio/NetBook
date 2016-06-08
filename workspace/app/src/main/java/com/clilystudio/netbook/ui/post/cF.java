@@ -4,30 +4,20 @@ import com.clilystudio.netbook.a_pack.e;
 import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.model.PostDetailComment;
 
-final class cF extends e<String, Void, PostDetailComment>
-{
-  private cF(ReviewActivity paramReviewActivity)
-  {
-  }
+final class cF extends e<String, Void, PostDetailComment> {
+    private cF(ReviewActivity paramReviewActivity) {
+    }
 
-  private PostDetailComment a(String[] paramArrayOfString)
-  {
-    try
-    {
-      if (paramArrayOfString.length > 1)
-        return b.b().l(paramArrayOfString[0], paramArrayOfString[1]);
-      PostDetailComment localPostDetailComment = b.b().l(paramArrayOfString[0], null);
-      return localPostDetailComment;
+    private PostDetailComment a(String[] paramArrayOfString) {
+        try {
+            if (paramArrayOfString.length > 1)
+                return b.b().l(paramArrayOfString[0], paramArrayOfString[1]);
+            PostDetailComment localPostDetailComment = b.b().l(paramArrayOfString[0], null);
+            return localPostDetailComment;
+        } catch (Exception localException) {
+            localException.printStackTrace();
+        }
+        return null;
     }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
-    return null;
-  }
 }
 
-/* Location:           E:\Progs\Dev\Android\Decompile\apktool\zssq\zssq-dex2jar.jar
- * Qualified Name:     com.clilystudio.netbook.ui.post.cF
- * JD-Core Version:    0.6.0
- */

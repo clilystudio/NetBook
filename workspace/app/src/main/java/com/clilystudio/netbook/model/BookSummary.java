@@ -1,186 +1,151 @@
 package com.clilystudio.netbook.model;
 
 import com.clilystudio.netbook.api.ApiService;
+
 import java.io.Serializable;
 import java.util.Date;
 
 public class BookSummary
-  implements Serializable
-{
-  private static final long serialVersionUID = -2648695569160810325L;
-  private String _id;
-  private String appendComment;
-  private String author;
-  private String cat;
-  private String cover;
-  private boolean isSelected;
-  private String lastChapter;
-  private int latelyFollower;
-  private String promLink;
-  private float retentionRatio;
-  private String shortIntro;
-  private String[] tags;
-  private String title;
-  private Date updated;
-  private int wordCount;
+        implements Serializable {
+    private static final long serialVersionUID = -2648695569160810325L;
+    private String _id;
+    private String appendComment;
+    private String author;
+    private String cat;
+    private String cover;
+    private boolean isSelected;
+    private String lastChapter;
+    private int latelyFollower;
+    private String promLink;
+    private float retentionRatio;
+    private String shortIntro;
+    private String[] tags;
+    private String title;
+    private Date updated;
+    private int wordCount;
 
-  public String getAppendComment()
-  {
-    return this.appendComment;
-  }
+    public String getAppendComment() {
+        return this.appendComment;
+    }
 
-  public String getAuthor()
-  {
-    return this.author;
-  }
+    public void setAppendComment(String paramString) {
+        this.appendComment = paramString;
+    }
 
-  public String getCat()
-  {
-    return this.cat;
-  }
+    public String getAuthor() {
+        return this.author;
+    }
 
-  public String getCover()
-  {
-    return this.cover;
-  }
+    public void setAuthor(String paramString) {
+        this.author = paramString;
+    }
 
-  public String getFullCover()
-  {
-    return ApiService.a + this.cover + "-covers";
-  }
+    public String getCat() {
+        return this.cat;
+    }
 
-  public String getFullCoverLarge()
-  {
-    return ApiService.a + this.cover + "-coverl";
-  }
+    public void setCat(String paramString) {
+        this.cat = paramString;
+    }
 
-  public String getId()
-  {
-    return this._id;
-  }
+    public String getCover() {
+        return this.cover;
+    }
 
-  public String getLastChapter()
-  {
-    return this.lastChapter;
-  }
+    public void setCover(String paramString) {
+        this.cover = paramString;
+    }
 
-  public int getLatelyFollower()
-  {
-    return this.latelyFollower;
-  }
+    public String getFullCover() {
+        return ApiService.a + this.cover + "-covers";
+    }
 
-  public String getPromLink()
-  {
-    return this.promLink;
-  }
+    public String getFullCoverLarge() {
+        return ApiService.a + this.cover + "-coverl";
+    }
 
-  public float getRetentionRatio()
-  {
-    return this.retentionRatio;
-  }
+    public String getId() {
+        return this._id;
+    }
 
-  public String getShortIntro()
-  {
-    return this.shortIntro;
-  }
+    public void setId(String paramString) {
+        this._id = paramString;
+    }
 
-  public String[] getTags()
-  {
-    return this.tags;
-  }
+    public String getLastChapter() {
+        return this.lastChapter;
+    }
 
-  public String getTitle()
-  {
-    return this.title;
-  }
+    public void setLastChapter(String paramString) {
+        this.lastChapter = paramString;
+    }
 
-  public Date getUpdated()
-  {
-    return this.updated;
-  }
+    public int getLatelyFollower() {
+        return this.latelyFollower;
+    }
 
-  public int getWordCount()
-  {
-    return this.wordCount;
-  }
+    public void setLatelyFollower(int paramInt) {
+        this.latelyFollower = paramInt;
+    }
 
-  public boolean isSelected()
-  {
-    return this.isSelected;
-  }
+    public String getPromLink() {
+        return this.promLink;
+    }
 
-  public void setAppendComment(String paramString)
-  {
-    this.appendComment = paramString;
-  }
+    public float getRetentionRatio() {
+        return this.retentionRatio;
+    }
 
-  public void setAuthor(String paramString)
-  {
-    this.author = paramString;
-  }
+    public void setRetentionRatio(float paramFloat) {
+        this.retentionRatio = paramFloat;
+    }
 
-  public void setCat(String paramString)
-  {
-    this.cat = paramString;
-  }
+    public String getShortIntro() {
+        return this.shortIntro;
+    }
 
-  public void setCover(String paramString)
-  {
-    this.cover = paramString;
-  }
+    public void setShortIntro(String paramString) {
+        this.shortIntro = paramString;
+    }
 
-  public void setId(String paramString)
-  {
-    this._id = paramString;
-  }
+    public String[] getTags() {
+        return this.tags;
+    }
 
-  public void setLastChapter(String paramString)
-  {
-    this.lastChapter = paramString;
-  }
+    public void setTags(String[] paramArrayOfString) {
+        this.tags = paramArrayOfString;
+    }
 
-  public void setLatelyFollower(int paramInt)
-  {
-    this.latelyFollower = paramInt;
-  }
+    public String getTitle() {
+        return this.title;
+    }
 
-  public void setRetentionRatio(float paramFloat)
-  {
-    this.retentionRatio = paramFloat;
-  }
+    public void setTitle(String paramString) {
+        this.title = paramString;
+    }
 
-  public void setSelected(boolean paramBoolean)
-  {
-    this.isSelected = paramBoolean;
-  }
+    public Date getUpdated() {
+        return this.updated;
+    }
 
-  public void setShortIntro(String paramString)
-  {
-    this.shortIntro = paramString;
-  }
+    public void setUpdated(Date paramDate) {
+        this.updated = paramDate;
+    }
 
-  public void setTags(String[] paramArrayOfString)
-  {
-    this.tags = paramArrayOfString;
-  }
+    public int getWordCount() {
+        return this.wordCount;
+    }
 
-  public void setTitle(String paramString)
-  {
-    this.title = paramString;
-  }
+    public void setWordCount(int paramInt) {
+        this.wordCount = paramInt;
+    }
 
-  public void setUpdated(Date paramDate)
-  {
-    this.updated = paramDate;
-  }
+    public boolean isSelected() {
+        return this.isSelected;
+    }
 
-  public void setWordCount(int paramInt)
-  {
-    this.wordCount = paramInt;
-  }
+    public void setSelected(boolean paramBoolean) {
+        this.isSelected = paramBoolean;
+    }
 }
 
-/* Location:           E:\Progs\Dev\Android\Decompile\apktool\zssq\zssq-dex2jar.jar
- * Qualified Name:     com.clilystudio.netbook.model.BookSummary
- * JD-Core Version:    0.6.0
- */

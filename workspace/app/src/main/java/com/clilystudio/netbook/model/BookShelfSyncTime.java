@@ -2,44 +2,33 @@ package com.clilystudio.netbook.model;
 
 import java.util.Date;
 
-public class BookShelfSyncTime
-{
-  private Date bookshelfUpdated;
-  private String code;
-  private boolean ok;
+public class BookShelfSyncTime {
+    private Date bookshelfUpdated;
+    private String code;
+    private boolean ok;
 
-  public Date getBookshelfUpdated()
-  {
-    return this.bookshelfUpdated;
-  }
+    public Date getBookshelfUpdated() {
+        return this.bookshelfUpdated;
+    }
 
-  public String getCode()
-  {
-    return this.code;
-  }
+    public void setBookshelfUpdated(Date paramDate) {
+        this.bookshelfUpdated = paramDate;
+    }
 
-  public boolean isOk()
-  {
-    return this.ok;
-  }
+    public String getCode() {
+        return this.code;
+    }
 
-  public void setBookshelfUpdated(Date paramDate)
-  {
-    this.bookshelfUpdated = paramDate;
-  }
+    public void setCode(String paramString) {
+        this.code = paramString;
+    }
 
-  public void setCode(String paramString)
-  {
-    this.code = paramString;
-  }
+    public boolean isOk() {
+        return this.ok;
+    }
 
-  public void setOk(boolean paramBoolean)
-  {
-    this.ok = paramBoolean;
-  }
+    public void setOk(boolean paramBoolean) {
+        this.ok = paramBoolean;
+    }
 }
 
-/* Location:           E:\Progs\Dev\Android\Decompile\apktool\zssq\zssq-dex2jar.jar
- * Qualified Name:     com.clilystudio.netbook.model.BookShelfSyncTime
- * JD-Core Version:    0.6.0
- */

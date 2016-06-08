@@ -1,103 +1,83 @@
 package com.clilystudio.netbook.model;
 
 import com.clilystudio.netbook.api.ApiService;
+
 import java.io.Serializable;
 
 public class Author
-  implements Serializable
-{
-  private static final long serialVersionUID = 4660498853182934697L;
-  private String _id;
-  private String avatar;
-  private String gender;
-  private int lv;
-  private String nickname;
-  private String type;
+        implements Serializable {
+    private static final long serialVersionUID = 4660498853182934697L;
+    private String _id;
+    private String avatar;
+    private String gender;
+    private int lv;
+    private String nickname;
+    private String type;
 
-  public String getAvatar()
-  {
-    return this.avatar;
-  }
+    public String getAvatar() {
+        return this.avatar;
+    }
 
-  public String getFullAvatar()
-  {
-    return ApiService.a + this.avatar;
-  }
+    public void setAvatar(String paramString) {
+        this.avatar = paramString;
+    }
 
-  public String getGender()
-  {
-    return this.gender;
-  }
+    public String getFullAvatar() {
+        return ApiService.a + this.avatar;
+    }
 
-  public int getLv()
-  {
-    return this.lv;
-  }
+    public String getGender() {
+        return this.gender;
+    }
 
-  public String getNickname()
-  {
-    return this.nickname;
-  }
+    public void setGender(String paramString) {
+        this.gender = paramString;
+    }
 
-  public String getScaleAvatar()
-  {
-    return getScaleAvatar(1);
-  }
+    public int getLv() {
+        return this.lv;
+    }
 
-  public String getScaleAvatar(int paramInt)
-  {
-    if (paramInt == 1)
-      return ApiService.a + this.avatar + "-avatars";
-    return ApiService.a + this.avatar + "-avatarl";
-  }
+    public void setLv(int paramInt) {
+        this.lv = paramInt;
+    }
 
-  public String getType()
-  {
-    return this.type;
-  }
+    public String getNickname() {
+        return this.nickname;
+    }
 
-  public String get_id()
-  {
-    return this._id;
-  }
+    public void setNickname(String paramString) {
+        this.nickname = paramString;
+    }
 
-  public boolean isOfficial()
-  {
-    return "official".equals(getType());
-  }
+    public String getScaleAvatar() {
+        return getScaleAvatar(1);
+    }
 
-  public void setAvatar(String paramString)
-  {
-    this.avatar = paramString;
-  }
+    public String getScaleAvatar(int paramInt) {
+        if (paramInt == 1)
+            return ApiService.a + this.avatar + "-avatars";
+        return ApiService.a + this.avatar + "-avatarl";
+    }
 
-  public void setGender(String paramString)
-  {
-    this.gender = paramString;
-  }
+    public String getType() {
+        return this.type;
+    }
 
-  public void setLv(int paramInt)
-  {
-    this.lv = paramInt;
-  }
+    public void setType(String paramString) {
+        this.type = paramString;
+    }
 
-  public void setNickname(String paramString)
-  {
-    this.nickname = paramString;
-  }
+    public String get_id() {
+        return this._id;
+    }
 
-  public void setType(String paramString)
-  {
-    this.type = paramString;
-  }
+    public void set_id(String paramString) {
+        this._id = paramString;
+    }
 
-  public void set_id(String paramString)
-  {
-    this._id = paramString;
-  }
+    public boolean isOfficial() {
+        return "official".equals(getType());
+    }
 }
 
-/* Location:           E:\Progs\Dev\Android\Decompile\apktool\zssq\zssq-dex2jar.jar
- * Qualified Name:     com.clilystudio.netbook.model.Author
- * JD-Core Version:    0.6.0
- */

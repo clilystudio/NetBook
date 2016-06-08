@@ -1,21 +1,14 @@
 package com.clilystudio.netbook.event;
 
-public final class C
-{
-  private boolean a;
+public final class C {
+    private boolean a;
 
-  public C(boolean paramBoolean)
-  {
-    this.a = paramBoolean;
-  }
+    public C(boolean paramBoolean) {
+        this.a = paramBoolean;
+    }
 
-  public final boolean a()
-  {
-    return this.a;
-  }
+    public final boolean a() {
+        return this.a;
+    }
 }
 
-/* Location:           E:\Progs\Dev\Android\Decompile\apktool\zssq\zssq-dex2jar.jar
- * Qualified Name:     com.clilystudio.netbook.event.C
- * JD-Core Version:    0.6.0
- */

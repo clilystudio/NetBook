@@ -1,32 +1,23 @@
 package com.clilystudio.netbook.model;
 
-public class PayConsumeRecord
-{
-  private boolean ok;
-  private PayConsumeRecord.Order[] orders;
+public class PayConsumeRecord {
+    private boolean ok;
+    private PayConsumeRecord.Order[] orders;
 
-  public PayConsumeRecord.Order[] getOrders()
-  {
-    return this.orders;
-  }
+    public PayConsumeRecord.Order[] getOrders() {
+        return this.orders;
+    }
 
-  public boolean isOk()
-  {
-    return this.ok;
-  }
+    public void setOrders(PayConsumeRecord.Order[] paramArrayOfOrder) {
+        this.orders = paramArrayOfOrder;
+    }
 
-  public void setOk(boolean paramBoolean)
-  {
-    this.ok = paramBoolean;
-  }
+    public boolean isOk() {
+        return this.ok;
+    }
 
-  public void setOrders(PayConsumeRecord.Order[] paramArrayOfOrder)
-  {
-    this.orders = paramArrayOfOrder;
-  }
+    public void setOk(boolean paramBoolean) {
+        this.ok = paramBoolean;
+    }
 }
 
-/* Location:           E:\Progs\Dev\Android\Decompile\apktool\zssq\zssq-dex2jar.jar
- * Qualified Name:     com.clilystudio.netbook.model.PayConsumeRecord
- * JD-Core Version:    0.6.0
- */

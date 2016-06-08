@@ -1,117 +1,94 @@
 package com.clilystudio.netbook.model;
 
 import com.clilystudio.netbook.api.ApiService;
+
 import java.util.Date;
 
-public class UGCBookListRoot$UGCBook
-{
-  private String _id;
-  private String author;
-  private int bookCount;
-  private int collectorCount;
-  private String cover;
-  private String desc;
-  private boolean isDraft;
-  private String title;
-  private Date updated;
+public class UGCBookListRoot$UGCBook {
+    private String _id;
+    private String author;
+    private int bookCount;
+    private int collectorCount;
+    private String cover;
+    private String desc;
+    private boolean isDraft;
+    private String title;
+    private Date updated;
 
-  public String getAuthor()
-  {
-    return this.author;
-  }
+    public String getAuthor() {
+        return this.author;
+    }
 
-  public int getBookCount()
-  {
-    return this.bookCount;
-  }
+    public void setAuthor(String paramString) {
+        this.author = paramString;
+    }
 
-  public int getCollectorCount()
-  {
-    return this.collectorCount;
-  }
+    public int getBookCount() {
+        return this.bookCount;
+    }
 
-  public String getCover()
-  {
-    return this.cover;
-  }
+    public void setBookCount(int paramInt) {
+        this.bookCount = paramInt;
+    }
 
-  public String getDesc()
-  {
-    return this.desc;
-  }
+    public int getCollectorCount() {
+        return this.collectorCount;
+    }
 
-  public String getFullCover()
-  {
-    return ApiService.a + this.cover + "-covers";
-  }
+    public void setCollectorCount(int paramInt) {
+        this.collectorCount = paramInt;
+    }
 
-  public String getTitle()
-  {
-    return this.title;
-  }
+    public String getCover() {
+        return this.cover;
+    }
 
-  public Date getUpdated()
-  {
-    return this.updated;
-  }
+    public void setCover(String paramString) {
+        this.cover = paramString;
+    }
 
-  public String get_id()
-  {
-    return this._id;
-  }
+    public String getDesc() {
+        return this.desc;
+    }
 
-  public boolean isDraft()
-  {
-    return this.isDraft;
-  }
+    public void setDesc(String paramString) {
+        this.desc = paramString;
+    }
 
-  public void setAuthor(String paramString)
-  {
-    this.author = paramString;
-  }
+    public String getFullCover() {
+        return ApiService.a + this.cover + "-covers";
+    }
 
-  public void setBookCount(int paramInt)
-  {
-    this.bookCount = paramInt;
-  }
+    public String getTitle() {
+        return this.title;
+    }
 
-  public void setCollectorCount(int paramInt)
-  {
-    this.collectorCount = paramInt;
-  }
+    public void setTitle(String paramString) {
+        this.title = paramString;
+    }
 
-  public void setCover(String paramString)
-  {
-    this.cover = paramString;
-  }
+    public Date getUpdated() {
+        return this.updated;
+    }
 
-  public void setDesc(String paramString)
-  {
-    this.desc = paramString;
-  }
+    public void setUpdated(Date paramDate) {
+        this.updated = paramDate;
+    }
 
-  public void setIsDraft(boolean paramBoolean)
-  {
-    this.isDraft = paramBoolean;
-  }
+    public String get_id() {
+        return this._id;
+    }
 
-  public void setTitle(String paramString)
-  {
-    this.title = paramString;
-  }
+    public void set_id(String paramString) {
+        this._id = paramString;
+    }
 
-  public void setUpdated(Date paramDate)
-  {
-    this.updated = paramDate;
-  }
+    public boolean isDraft() {
+        return this.isDraft;
+    }
 
-  public void set_id(String paramString)
-  {
-    this._id = paramString;
-  }
+    public void setIsDraft(boolean paramBoolean) {
+        this.isDraft = paramBoolean;
+    }
 }
 
-/* Location:           E:\Progs\Dev\Android\Decompile\apktool\zssq\zssq-dex2jar.jar
- * Qualified Name:     com.clilystudio.netbook.model.UGCBookListRoot.UGCBook
- * JD-Core Version:    0.6.0
- */
