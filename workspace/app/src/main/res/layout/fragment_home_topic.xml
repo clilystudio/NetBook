@@ -1,3 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.handmark.pulltorefresh.library.PullToRefreshListView android:id="@id/ptr_list_home_topic" android:background="?android:windowBackground" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="?android:listSelector" android:headerDividersEnabled="false" ptr:ptrShowIndicator="false" ptr:ptrHeaderTextAppearance="@style/ptr_header_text" ptr:ptrAnimationStyle="flip" ptr:ptrTabMode="true" ptr:ptrListViewExtrasEnabled="true" style="@style/ListView"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:ptr="http://schemas.android.com/apk/res-auto" />
+<com.handmark.pulltorefresh.library.PullToRefreshListView xmlns:android="http://schemas.android.com/apk/res/android"
+                                                          xmlns:ptr="http://schemas.android.com/apk/res-auto"
+                                                          android:id="@id/ptr_list_home_topic"
+                                                          style="@style/ListView"
+                                                          android:layout_width="fill_parent"
+                                                          android:layout_height="fill_parent"
+                                                          android:background="?android:windowBackground"
+                                                          android:headerDividersEnabled="false"
+                                                          android:listSelector="?android:listSelector"
+                                                          ptr:ptrAnimationStyle="flip"
+                                                          ptr:ptrHeaderTextAppearance="@style/ptr_header_text"
+                                                          ptr:ptrListViewExtrasEnabled="true"
+                                                          ptr:ptrShowIndicator="false"/>

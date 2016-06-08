@@ -276,4 +276,5 @@
     <dimen name="theme_loading_padding">5.0dip</dimen>
     <item type="dimen" name="toc_dialog_left_gap">@dimen/reader_toc_left</item>
     <dimen name="topic_detail_divider_left_gap">42.0dip</dimen>
+    <dimen name="list_item_book_category_top">4.0dip</dimen>
 </resources>
