@@ -4,15 +4,15 @@
     <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
         <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
             <ImageView android:layout_gravity="center_horizontal" android:id="@id/tv_qq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/login_qq" android:scaleType="centerInside" />
-            <TextView android:textSize="@dimen/text_size_15" android:textColor="@color/white_90" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="QQ" />
+            <TextView android:textSize="@dimen/text_size_15" android:textColor="@android:color/white" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="QQ" />
         </LinearLayout>
         <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
             <ImageView android:layout_gravity="center_horizontal" android:id="@id/tv_sina" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/login_weibo" android:scaleType="centerInside" />
-            <TextView android:textSize="@dimen/text_size_15" android:textColor="@color/white_90" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="微博" />
+            <TextView android:textSize="@dimen/text_size_15" android:textColor="@android:color/white" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="微博" />
         </LinearLayout>
         <LinearLayout android:orientation="vertical" android:visibility="gone" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
             <ImageView android:layout_gravity="center_horizontal" android:id="@id/tv_weixin" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/login_wechat" android:scaleType="centerInside" />
-            <TextView android:textSize="@dimen/text_size_15" android:textColor="@color/white_90" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="微信" />
+            <TextView android:textSize="@dimen/text_size_15" android:textColor="@android:color/white" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="微信" />
         </LinearLayout>
     </LinearLayout>
 </RelativeLayout>

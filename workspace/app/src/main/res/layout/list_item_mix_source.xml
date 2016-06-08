@@ -3,7 +3,7 @@
   xmlns:android="http://schemas.android.com/apk/res/android">
     <RelativeLayout android:id="@id/source_icon" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/dp_16" android:layout_centerVertical="true">
         <ImageView android:id="@id/source_icon_logo" android:layout_width="@dimen/dp_24" android:layout_height="@dimen/dp_24" android:src="@drawable/mode_list_item_bd" />
-        <TextView android:textSize="@dimen/text_size_14" android:textColor="@color/white_80" android:gravity="center" android:id="@id/source_icon_text" android:background="@drawable/source_icon_oval_bg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="A" />
+        <TextView android:textSize="@dimen/text_size_14" android:textColor="@android:color/white" android:gravity="center" android:id="@id/source_icon_text" android:background="@drawable/source_icon_oval_bg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="A" />
     </RelativeLayout>
     <TextView android:ellipsize="end" android:id="@id/source" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/margin_xs" android:layout_marginRight="@dimen/margin_s" android:text="baidu.com" android:singleLine="true" android:layout_toLeftOf="@id/selected" android:layout_toRightOf="@id/source_icon" style="@style/LargeText" />
     <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toLeftOf="@id/selected" android:layout_toRightOf="@id/source_icon" android:layout_below="@id/source">

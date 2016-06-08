@@ -3,7 +3,7 @@
   xmlns:android="http://schemas.android.com/apk/res/android">
     <View android:background="#ffbebebe" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginTop="@dimen/dp_25" />
     <RelativeLayout android:id="@id/book_feed_set_chapter" android:background="@drawable/home_list_item_bg" android:paddingLeft="@dimen/dp_15" android:paddingTop="@dimen/dp_10" android:paddingRight="@dimen/dp_15" android:paddingBottom="@dimen/dp_10" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <TextView android:textSize="@dimen/text_size_16" android:textColor="@color/black" android:id="@id/book_feed_set_chapter_title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="养肥章节数" />
+        <TextView android:textSize="@dimen/text_size_16" android:textColor="@android:color/black" android:id="@id/book_feed_set_chapter_title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="养肥章节数" />
         <TextView android:textSize="@dimen/text_size_13" android:textColor="@color/bookshelf_time" android:id="@id/book_feed_set_chapter_count" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp_5" android:layout_below="@id/book_feed_set_chapter_title" />
     </RelativeLayout>
     <View android:background="#ffbebebe" android:layout_width="fill_parent" android:layout_height="1.0px" />

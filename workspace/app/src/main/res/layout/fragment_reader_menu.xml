@@ -13,9 +13,9 @@
         </LinearLayout>
     </RelativeLayout>
     <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/slm_reader_layout_ad">
-        <View android:background="@color/black" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_alignParentTop="true" />
+        <View android:background="@android:color/black" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_alignParentTop="true" />
         <LinearLayout android:orientation="vertical" android:id="@id/slm_reader_part2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
-            <View android:background="@color/black" android:layout_width="fill_parent" android:layout_height="1.0px" />
+            <View android:background="@android:color/black" android:layout_width="fill_parent" android:layout_height="1.0px" />
             <RelativeLayout android:id="@id/slm_reader_all_post" android:background="@drawable/bg_darker" android:paddingLeft="@dimen/dp_16" android:paddingRight="@dimen/dp_16" android:layout_width="fill_parent" android:layout_height="@dimen/slm_right_read_item_height" android:layout_marginTop="@dimen/dp_8">
                 <ImageView android:id="@id/slm_reader_all_post_img" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/ic_read_menu_topic" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
                 <TextView android:textSize="@dimen/text_size_12" android:textColor="#ff808080" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dp_16" android:text="社区话题" android:layout_toRightOf="@id/slm_reader_all_post_img" android:layout_centerVertical="true" />
