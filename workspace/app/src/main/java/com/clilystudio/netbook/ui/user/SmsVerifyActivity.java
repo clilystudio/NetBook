@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.d;
 import com.clilystudio.netbook.model.ChargePlan;
 import com.clilystudio.netbook.ui.BaseActivity;
@@ -15,24 +16,14 @@ import com.clilystudio.netbook.ui.BaseActivity;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import butterknife.ButterKnife;
-import butterknife.InjectView;
-
 public class SmsVerifyActivity extends BaseActivity {
     Handler a = new av(this);
-    @InjectView(2131493215)
     TextView mAppNameText;
-    @InjectView(2131493220)
     EditText mCodeText;
-    @InjectView(2131493221)
     Button mCommitBtn;
-    @InjectView(2131493216)
     TextView mGoodsText;
-    @InjectView(2131493218)
     TextView mPhoneText;
-    @InjectView(2131493217)
     TextView mPriceText;
-    @InjectView(2131493219)
     Button mSendCodeBtn;
     private ChargePlan b;
     private Timer c;
@@ -87,9 +78,15 @@ public class SmsVerifyActivity extends BaseActivity {
 
     protected void onCreate(Bundle paramBundle) {
         super.onCreate(paramBundle);
-        setContentView(2130903132);
+        setContentView(R.layout.activity_sms_verify);
         b("短信充值");
-        ButterKnife.inject(this);
+        mAppNameText = (TextView) findViewById(R.id.sms_verify_appname);
+        mCodeText = (EditText) findViewById(R.id.sms_verify_code);
+        mCommitBtn = (Button) findViewById(R.id.sms_verify_commit);
+        mGoodsText = (TextView) findViewById(R.id.sms_verify_goods);
+        mPhoneText = (TextView) findViewById(R.id.sms_verify_phone);
+        mPriceText = (TextView) findViewById(R.id.sms_verify_price);
+        mSendCodeBtn = (Button) findViewById(R.id.sms_verify_sendcode);
         this.b = ((ChargePlan) getIntent().getSerializableExtra("key_charge_plan_verify"));
         this.mAppNameText.setText("追书神器");
         this.mGoodsText.setText(this.b.getString());

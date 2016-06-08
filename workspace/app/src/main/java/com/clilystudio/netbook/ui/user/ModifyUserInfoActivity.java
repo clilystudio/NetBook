@@ -11,6 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.arcsoft.hpay100.a.a;
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.d;
 import com.clilystudio.netbook.model.User;
 import com.clilystudio.netbook.ui.BaseActivity;
@@ -20,22 +21,13 @@ import com.clilystudio.netbook.ui.CropPhotoActivity;
 import java.io.File;
 import java.util.Calendar;
 
-import butterknife.ButterKnife;
-import butterknife.InjectView;
-
 public class ModifyUserInfoActivity extends BaseActivity
         implements View.OnClickListener {
-    @InjectView(2131493148)
     LinearLayout mGenderSection;
-    @InjectView(2131493149)
     TextView mGenderView;
-    @InjectView(2131493147)
     LinearLayout mNameSection;
-    @InjectView(2131492928)
     TextView mNameView;
-    @InjectView(2131493146)
     CircularSmartImageView mPortrait;
-    @InjectView(2131493145)
     LinearLayout mPortraitSection;
     private User a;
     private long b;
@@ -153,9 +145,14 @@ public class ModifyUserInfoActivity extends BaseActivity
 
     protected void onCreate(Bundle paramBundle) {
         super.onCreate(paramBundle);
-        setContentView(2130903114);
+        setContentView(R.layout.activity_modify_user_info);
         b("编辑资料");
-        ButterKnife.inject(this);
+        mGenderSection = (LinearLayout) findViewById(R.id.gender_section);
+        mGenderView = (TextView) findViewById(R.id.gender);
+        mNameSection = (LinearLayout) findViewById(R.id.name_section);
+        mNameView = (TextView) findViewById(R.id.name);
+        mPortrait = (CircularSmartImageView) findViewById(R.id.portrait);
+        mPortraitSection = (LinearLayout) findViewById(R.id.portrait_section);
         this.a = am.a(this).getUser();
         this.mPortrait.setImageUrl(this.a.getFullAvatar());
         this.mNameView.setText(this.a.getNickname());

@@ -100,5 +100,9 @@ public class AuthLoginActivity extends BaseActivity
         Toast.makeText(this, paramav.e(), 0).show();
         finish();
     }
+
+    public enum Source {
+        HOME, OTHER;
+    }
 }
 

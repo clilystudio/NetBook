@@ -4,7 +4,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.model.ChargePlan;
 import com.clilystudio.netbook.ui.BaseActivity;
 
@@ -12,15 +14,10 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 
 public class SmsSendActivity extends BaseActivity {
-    @InjectView(2131493212)
     View mErrorLine;
-    @InjectView(2131493214)
     Button mNextBtn;
-    @InjectView(2131493211)
     View mNormalLine;
-    @InjectView(2131493210)
     EditText mNumberText;
-    @InjectView(2131493213)
     View mWrongText;
     private ChargePlan a;
     private String b = "^(0|86|17951)?(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$";
@@ -50,9 +47,13 @@ public class SmsSendActivity extends BaseActivity {
 
     protected void onCreate(Bundle paramBundle) {
         super.onCreate(paramBundle);
-        setContentView(2130903131);
+        setContentView(R.layout.activity_sms_send);
         b("短信充值");
-        ButterKnife.inject(this);
+        mErrorLine = findViewById(R.id.sms_error_line);
+        mNextBtn = (Button) findViewById(R.id.sms_pay_next);
+        mNormalLine = findViewById(R.id.sms_normal_line);
+        mNumberText = (EditText) findViewById(R.id.sms_number_text);
+        mWrongText = findViewById(R.id.sms_wrong_text);
         b();
         a(false);
         this.a = ((ChargePlan) getIntent().getSerializableExtra("key_charge_plan_send"));
