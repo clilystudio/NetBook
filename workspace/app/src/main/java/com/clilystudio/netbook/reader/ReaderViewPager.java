@@ -5,7 +5,9 @@ import android.content.res.Resources;
 import android.graphics.Canvas;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
+import android.os.Parcel;
 import android.os.Parcelable;
+import android.support.v4.os.ParcelableCompat;
 import android.support.v4.view.KeyEventCompat;
 import android.support.v4.view.MotionEventCompat;
 import android.support.v4.view.PagerAdapter;
@@ -2164,5 +2166,37 @@ public class ReaderViewPager extends ViewGroup {
     protected boolean verifyDrawable(Drawable paramDrawable) {
         return (super.verifyDrawable(paramDrawable)) || (paramDrawable == this.mMarginDrawable);
     }
+
+    public class SavedState extends View.BaseSavedState {
+        public  final Parcelable.Creator<SavedState> CREATOR = ParcelableCompat.newCreator(new cy());
+        int a;
+        Parcelable b;
+        ClassLoader c;
+
+        SavedState(Parcel paramParcel, ClassLoader paramClassLoader) {
+            super(paramParcel);
+            if (paramClassLoader == null)
+                paramClassLoader = getClass().getClassLoader();
+            this.a = paramParcel.readInt();
+            this.b = paramParcel.readParcelable(paramClassLoader);
+            this.c = paramClassLoader;
+        }
+
+        public SavedState(Parcelable paramParcelable) {
+            super(paramParcelable);
+        }
+
+        public String toString() {
+            return "FragmentPager.SavedState{" + Integer.toHexString(System.identityHashCode(this)) + " position=" + this.a + "}";
+        }
+
+        public void writeToParcel(Parcel paramParcel, int paramInt) {
+            super.writeToParcel(paramParcel, paramInt);
+            paramParcel.writeInt(this.a);
+            paramParcel.writeParcelable(this.b, paramInt);
+        }
+    }
+
+
 }
 

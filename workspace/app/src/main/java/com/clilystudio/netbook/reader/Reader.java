@@ -100,7 +100,7 @@ public final class Reader {
             if (this.t.intValue() == 0)
                 this.o.post(new Q(this));
             this.t = Integer.valueOf(1 + this.t.intValue());
-            this.o.post(new R(this, paramType));
+            this.o.post(new R_Clz(this, paramType));
             return;
         }
         this.t = Integer.valueOf(-1 + this.t.intValue());
@@ -356,5 +356,29 @@ public final class Reader {
             return localChapterLink.getTitle();
         return "";
     }
+
+    public final ae getListener(Type type) {
+        if (type == Type.CHAPTER) {
+            return this.s;
+        } else {
+            return this.r;
+        }
+    }
+    public enum Type {
+        CHAPTER,TOC;
+
+//        private int code;
+//
+//        private Type(int paramInt) {
+//            this.code = paramInt;
+//        }
+//
+//        public final ae getListener(Reader paramReader) {
+//            if (this.code == 0)
+//                return Reader.a(paramReader);
+//            return Reader.b(paramReader);
+//        }
+    }
+
 }
 

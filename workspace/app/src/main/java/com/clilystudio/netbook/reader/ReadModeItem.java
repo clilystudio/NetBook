@@ -8,6 +8,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.event.i;
 import com.clilystudio.netbook.event.v;
 
@@ -15,15 +16,10 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 
 public class ReadModeItem extends FrameLayout {
-    @InjectView(2131493702)
     TextView mChapter;
-    @InjectView(2131493703)
     TextView mFlagSelect;
-    @InjectView(2131493701)
     TextView mFlagWeb;
-    @InjectView(2131493028)
     ImageView mIcon;
-    @InjectView(2131492928)
     TextView mName;
     private Activity a;
     private String b;
@@ -34,8 +30,12 @@ public class ReadModeItem extends FrameLayout {
         this.a = paramActivity;
         this.b = paramString1;
         this.c = paramString2;
-        LayoutInflater.from(this.a).inflate(2130903288, this);
-        ButterKnife.inject(this);
+        LayoutInflater.from(this.a).inflate(R.layout.list_item_mode, this);
+        mChapter = (TextView)findViewById(R.id.chapter);
+        mFlagSelect = (TextView)findViewById(R.id.flag_select);
+        mFlagWeb = (TextView)findViewById(R.id.flag_web);
+        mIcon = (ImageView)findViewById(R.id.icon);
+        mName = (TextView)findViewById(R.id.name);
         this.mIcon.setImageResource(paramInt1);
         this.mName.setText(paramInt2);
         if (paramInt3 == paramInt4) {

@@ -1,6 +1,8 @@
 package com.clilystudio.netbook.reader;
 
+import android.app.Dialog;
 import android.os.Bundle;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -9,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.event.B;
 import com.clilystudio.netbook.model.Advert;
 import com.clilystudio.netbook.ui.SmartImageView;
@@ -83,7 +86,6 @@ public class ReaderMenuFragment extends Fragment {
         a.a().c();
     }
 
-    @l
     public void onShowThirdAd(B paramB) {
         if ((getView() == null) || (paramB == null) || (!am.q(getActivity())) || (!paramB.b().equals("top"))) ;
         View localView;
@@ -116,6 +118,46 @@ public class ReaderMenuFragment extends Fragment {
             }
         }
         localView.setVisibility(4);
+    }
+    public static class DownLoadDialogFragment extends DialogFragment {
+        private SmartImageView a;
+
+        public static DownLoadDialogFragment a(String paramString1, String paramString2, String paramString3) {
+            DownLoadDialogFragment localDownLoadDialogFragment = new DownLoadDialogFragment();
+            Bundle localBundle = new Bundle();
+            localBundle.putString("name", paramString1);
+            localBundle.putString("size", paramString2);
+            localBundle.putString("link", paramString3);
+            localDownLoadDialogFragment.setArguments(localBundle);
+            return localDownLoadDialogFragment;
+        }
+
+        public void onActivityCreated(Bundle paramBundle) {
+            super.onActivityCreated(paramBundle);
+            this.a = ((SmartImageView) getActivity().findViewById(2131493448));
+        }
+
+        public Dialog onCreateDialog(Bundle paramBundle) {
+            String str1 = getArguments().getString("name");
+            String str2 = getArguments().getString("link");
+            String str3 = getArguments().getString("size");
+            h localh = new h(getActivity()).a(2131034371);
+            localh.e = ("是否下载" + str1 + "(" + str3 + "，建议使用WIFI下载)？");
+            return localh.a(2131034371, new by(this, str1, str2)).b(2131034129, null).a();
+        }
+    }
+
+
+    class TocHolder {
+        TextView link;
+        TextView time;
+        TextView title;
+
+        TocHolder(View paramView) {
+            link = (TextView)paramView.findViewById(R.id.link);
+            time = (TextView)paramView.findViewById(R.id.time);
+            title = (TextView)paramView.findViewById(R.id.title);
+        }
     }
 }
 

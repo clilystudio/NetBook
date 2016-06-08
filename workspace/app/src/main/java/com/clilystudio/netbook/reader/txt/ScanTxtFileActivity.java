@@ -6,6 +6,7 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.db.BookFile;
 import com.clilystudio.netbook.event.A;
 import com.clilystudio.netbook.event.i;
@@ -22,19 +23,12 @@ import java.util.List;
 import java.util.Stack;
 import java.util.regex.Pattern;
 
-import butterknife.ButterKnife;
-import butterknife.InjectView;
-
 public class ScanTxtFileActivity extends BaseActivity {
-    @InjectView(2131493181)
     TextView mEmpty;
-    @InjectView(2131492924)
     ListView mList;
-    @InjectView(2131493085)
     ProgressBar mPbLoading;
-    @InjectView(2131493180)
     TextView mStatus;
-    private R a;
+    private R_Clz a;
     private List<T> b = new ArrayList();
     private int c;
     private List<BookFile> e = new ArrayList();
@@ -129,16 +123,19 @@ public class ScanTxtFileActivity extends BaseActivity {
 
     protected void onCreate(Bundle paramBundle) {
         super.onCreate(paramBundle);
-        setContentView(2130903126);
-        ButterKnife.inject(this);
-        this.a = new R(this, getLayoutInflater());
+        setContentView(R.layout.activity_scan_txt_file);
+        mEmpty = (TextView) findViewById(R.id.empty);
+        mList = (ListView) findViewById(R.id.list);
+        mPbLoading = (ProgressBar) findViewById(R.id.pb_loading);
+        mStatus = (TextView) findViewById(R.id.hot_flag);
+        this.a = new R_Clz(this, getLayoutInflater());
         this.mList.setAdapter(this.a);
         this.mList.setOnItemClickListener(this.a);
         a("本地书籍", "全选", new N(this));
     }
 
     public void onImport(View paramView) {
-        List localList = R.b(this.a);
+        List localList = R_Clz.b(this.a);
         if (localList.size() == 0) {
             e.a(this, "请先选择导入的书籍");
             return;

@@ -7,9 +7,8 @@ import android.widget.ImageView;
 
 import com.clilystudio.netbook.util.W;
 
-final class R extends W<T>
-        implements AdapterView.OnItemClickListener {
-    public R(ScanTxtFileActivity paramScanTxtFileActivity, LayoutInflater paramLayoutInflater) {
+final class R_Clz extends W<T> implements AdapterView.OnItemClickListener {
+    public R_Clz(ScanTxtFileActivity paramScanTxtFileActivity, LayoutInflater paramLayoutInflater) {
         super(paramLayoutInflater, 2130903266);
     }
 
