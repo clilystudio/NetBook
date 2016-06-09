@@ -1,8 +1,8 @@
 package com.clilystudio.netbook.ui.home;
 
-final class R
+final class R_Clz
         implements Runnable {
-    R(HomeTransparentActivity paramHomeTransparentActivity) {
+    R_Clz(HomeTransparentActivity paramHomeTransparentActivity) {
     }
 
     public final void run() {

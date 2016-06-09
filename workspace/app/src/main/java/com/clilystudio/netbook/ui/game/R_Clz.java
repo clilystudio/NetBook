@@ -4,9 +4,9 @@ import android.view.View;
 
 import com.clilystudio.netbook.model.Game;
 
-final class R
+final class R_Clz
         implements View.OnClickListener {
-    R(Q paramQ, Game paramGame) {
+    R_Clz(Q paramQ, Game paramGame) {
     }
 
     public final void onClick(View paramView) {

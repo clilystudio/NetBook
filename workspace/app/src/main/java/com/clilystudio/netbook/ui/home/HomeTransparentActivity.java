@@ -22,7 +22,7 @@ public class HomeTransparentActivity extends Activity {
     protected void onResume() {
         super.onResume();
         new Handler().postDelayed(new Q(this), 500L);
-        new Handler().postDelayed(new R(this), 1500L);
+        new Handler().postDelayed(new R_Clz(this), 1500L);
     }
 }
 
