@@ -31,7 +31,12 @@ public class BaseActivity extends AppCompatActivity {
         View localView = LayoutInflater.from(this).inflate(paramInt, null);
         a().a(localView);
         ((TextView) localView.findViewById(2131492936)).setText(paramString);
-        localView.findViewById(2131493013).setOnClickListener(new R(this));
+        localView.findViewById(2131493013).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
     }
 
     public final void a(int paramInt1, int paramInt2, aa paramaa) {

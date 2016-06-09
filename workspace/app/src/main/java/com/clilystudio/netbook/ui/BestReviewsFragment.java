@@ -5,7 +5,12 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
+
+import com.clilystudio.netbook.R;
+import com.clilystudio.netbook.widget.RatingView;
 
 import butterknife.ButterKnife;
 
@@ -37,6 +42,32 @@ public class BestReviewsFragment extends Fragment {
         this.b = ((LinearLayout) this.a.findViewById(2131493435));
         this.c = a.r(this.a.getContext(), "community_user_gender_icon_toggle");
         return this.a;
+    }
+
+    public class ViewHolder {
+        SmartImageView avatar;
+        ImageView avatarVerify;
+        View container;
+        TextView content;
+        TextView helpfulCount;
+        TextView lv;
+        RatingView rating;
+        TextView time;
+        TextView title;
+        TextView user;
+
+        ViewHolder(BestReviewsFragment paramBestReviewsFragment, View paramView) {
+            avatar = (SmartImageView) paramView.findViewById(R.id.avatar);
+            avatarVerify = (ImageView) paramView.findViewById(R.id.avatar_verify);
+            container = paramView.findViewById(R.id.list_item_book_review_container);
+            content = (TextView) paramView.findViewById(R.id.content);
+            helpfulCount = (TextView) paramView.findViewById(R.id.helpful_count);
+            lv = (TextView) paramView.findViewById(R.id.lv);
+            rating = (RatingView) paramView.findViewById(R.id.rating);
+            time = (TextView) paramView.findViewById(R.id.time);
+            title = (TextView) paramView.findViewById(R.id.title);
+            user = (TextView) paramView.findViewById(R.id.user);
+        }
     }
 }
 

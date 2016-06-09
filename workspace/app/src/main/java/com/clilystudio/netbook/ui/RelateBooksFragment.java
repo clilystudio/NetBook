@@ -11,27 +11,22 @@ import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.model.BookSummary;
 import com.clilystudio.netbook.model.RelateBookRoot;
 import com.clilystudio.netbook.reader.cM;
 import com.clilystudio.netbook.reader.cQ;
 import com.clilystudio.netbook.util.E;
 import com.clilystudio.netbook.util.F;
+import com.clilystudio.netbook.widget.CoverView;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import butterknife.ButterKnife;
-import butterknife.InjectView;
-
-public class RelateBooksFragment extends Fragment
-        implements cQ {
-    @InjectView(2131493463)
+public class RelateBooksFragment extends Fragment implements cQ {
     LinearLayout mBookContainer;
-    @InjectView(2131493432)
     TextView mMore;
-    @InjectView(2131493462)
     LinearLayout mRelateBookRoot;
     private boolean a = false;
 
@@ -131,8 +126,22 @@ public class RelateBooksFragment extends Fragment
 
     public void onViewCreated(View paramView, Bundle paramBundle) {
         super.onViewCreated(paramView, paramBundle);
-        ButterKnife.inject(this, getView());
+        mBookContainer = (LinearLayout) paramView.findViewById(R.id.books);
+        mMore = (TextView) paramView.findViewById(R.id.more);
+        mRelateBookRoot = (LinearLayout) paramView.findViewById(R.id.relate_book_root);
         this.a = new cM(getActivity(), this).a(getArguments().getString("book_id"));
+    }
+
+    public class ViewHolder {
+        CoverView mBook;
+        View mContainer;
+        TextView mTitle;
+
+        ViewHolder(RelateBooksFragment paramRelateBooksFragment, View paramView) {
+            mBook = (CoverView) paramView.findViewById(R.id.book);
+            mContainer = paramView.findViewById(R.id.container);
+            mTitle = (TextView) paramView.findViewById(R.id.title);
+        }
     }
 }
 

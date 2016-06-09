@@ -100,10 +100,12 @@ public abstract class NotifFragment extends Fragment {
         return localView;
     }
 
-    @l
-    public void onNewMsgClickEvent$154ad029(a parama) {
+     public void onNewMsgClickEvent$154ad029(a parama) {
         if ((this.d != null) && (this.l > 0))
             this.d.setRefreshing();
     }
+    public enum Type {
+        IMPORTANT,UNIMPORTANT;
+     }
 }
 

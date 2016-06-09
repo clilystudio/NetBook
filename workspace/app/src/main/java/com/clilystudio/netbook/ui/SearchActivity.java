@@ -5,12 +5,18 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
+import android.widget.BaseAdapter;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.arcsoft.hpay100.a.a;
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.adapter.E;
 import com.clilystudio.netbook.d;
 import com.clilystudio.netbook.widget.AutoFlowView;
@@ -286,6 +292,101 @@ public class SearchActivity extends BaseActivity
         super.onSaveInstanceState(paramBundle);
         if (this.b != null)
             paramBundle.putString("saved_keyword", this.b);
+    }
+
+    public final class SearchPromptAdapter extends BaseAdapter
+            implements AdapterView.OnItemClickListener, Filterable {
+        private List<String> b = new ArrayList();
+        private bQ c;
+
+        public SearchPromptAdapter(SearchActivity paramSearchActivity) {
+        }
+
+        public final int getCount() {
+            return this.b.size();
+        }
+
+        public final Filter getFilter() {
+            if (this.c == null)
+                this.c = new bQ(this, 0);
+            return this.c;
+        }
+
+        public final Object getItem(int paramInt) {
+            if ((paramInt >= 0) && (paramInt < this.b.size()))
+                return this.b.get(paramInt);
+            return null;
+        }
+
+        public final long getItemId(int paramInt) {
+            return paramInt;
+        }
+
+        public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup) {
+            View localView = this.a.getLayoutInflater().inflate(2130903303, paramViewGroup, false);
+            SearchActivity.SearchPromptAdapter.ViewHolder localViewHolder = new SearchActivity.SearchPromptAdapter.ViewHolder(this, localView);
+            if ((paramInt >= 0) && (paramInt < this.b.size()))
+                localViewHolder.label.setText((CharSequence) this.b.get(paramInt));
+            return localView;
+        }
+
+        public final void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong) {
+            SearchActivity.k(this.a).setVisibility(8);
+            if ((paramInt >= 0) && (paramInt < this.b.size())) {
+                String str = (String) this.b.get(paramInt);
+                SearchActivity.f(this.a).setTextByCode(str);
+                SearchActivity.b(this.a, true);
+            }
+        }
+
+        class ViewHolder {
+            TextView label;
+
+            ViewHolder(SearchActivity.SearchPromptAdapter paramSearchPromptAdapter, View paramView) {
+                label = (TextView)paramView.findViewById(R.id.search_prompt_list_item);
+            }
+        }
+    }
+
+    public final class SearchHistoryAdapter extends BaseAdapter
+            implements AdapterView.OnItemClickListener {
+        public SearchHistoryAdapter(SearchActivity paramSearchActivity) {
+        }
+
+        public final int getCount() {
+            return SearchActivity.l(this.a).size();
+        }
+
+        public final Object getItem(int paramInt) {
+            return SearchActivity.l(this.a).get(paramInt);
+        }
+
+        public final long getItemId(int paramInt) {
+            return paramInt;
+        }
+
+        public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup) {
+            View localView = this.a.getLayoutInflater().inflate(2130903302, paramViewGroup, false);
+            SearchActivity.SearchHistoryAdapter.ViewHolder localViewHolder = new SearchActivity.SearchHistoryAdapter.ViewHolder(this, localView);
+            if ((paramInt >= 0) && (paramInt < SearchActivity.l(this.a).size()))
+                localViewHolder.word.setText((CharSequence) SearchActivity.l(this.a).get(paramInt));
+            return localView;
+        }
+
+        public final void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong) {
+            if ((paramInt >= 0) && (paramInt < SearchActivity.l(this.a).size())) {
+                SearchActivity.a(this.a, (String) SearchActivity.l(this.a).get(paramInt));
+                b.a(this.a, "search_history_word_click", (String) SearchActivity.l(this.a).get(paramInt));
+            }
+        }
+
+        class ViewHolder {
+           TextView word;
+
+            ViewHolder(SearchActivity.SearchHistoryAdapter paramSearchHistoryAdapter, View paramView) {
+                word = (TextView)paramView.findViewById(R.id.search_history_item);
+            }
+        }
     }
 }
 

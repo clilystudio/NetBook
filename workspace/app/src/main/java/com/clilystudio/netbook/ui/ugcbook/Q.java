@@ -18,7 +18,7 @@ final class Q extends W<BookSummary> {
 
     public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup) {
         View localView = super.getView(paramInt, paramView, paramViewGroup);
-        localView.findViewById(2131493781).setOnClickListener(new R(this, paramInt));
+        localView.findViewById(2131493781).setOnClickListener(new R_Clz(this, paramInt));
         localView.findViewById(2131493778).setOnClickListener(new S(this, paramInt));
         localView.findViewById(2131493782).setOnClickListener(new T(this, paramInt));
         a(paramInt, localView, getItem(paramInt));
