@@ -1,6 +1,6 @@
 package com.clilystudio.netbook.model;
 
-import com.arcsoft.hpay100.a.a;
+import com.clilystudio.netbook.hpay100.a_Pack.a;
 import com.clilystudio.netbook.api.ApiService;
 
 import java.util.Date;

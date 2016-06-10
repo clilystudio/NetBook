@@ -2,7 +2,7 @@ package com.clilystudio.netbook.ui.user;
 
 import android.content.DialogInterface;
 
-import com.arcsoft.hpay100.a.a;
+import com.clilystudio.netbook.hpay100.a_Pack.a;
 
 final class n
         implements DialogInterface.OnClickListener {

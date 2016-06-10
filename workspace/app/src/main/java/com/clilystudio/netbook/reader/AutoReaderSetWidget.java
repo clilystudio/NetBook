@@ -9,8 +9,6 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.umeng.a.b;
-
 public class AutoReaderSetWidget extends LinearLayout
         implements View.OnClickListener {
     private Context a;
@@ -50,7 +48,7 @@ public class AutoReaderSetWidget extends LinearLayout
         if (this.b < 10) {
             this.b = (1 + this.b);
             e();
-            com.arcsoft.hpay100.a.a.b(this.a, "auto_reader_speed", this.b);
+            com.clilystudio.netbook.hpay100.a_Pack.a.b(this.a, "auto_reader_speed", this.b);
         }
     }
 
@@ -58,7 +56,7 @@ public class AutoReaderSetWidget extends LinearLayout
         if (this.b > 1) {
             this.b = (-1 + this.b);
             e();
-            com.arcsoft.hpay100.a.a.b(this.a, "auto_reader_speed", this.b);
+            com.clilystudio.netbook.hpay100.a_Pack.a.b(this.a, "auto_reader_speed", this.b);
         }
     }
 
@@ -74,7 +72,7 @@ public class AutoReaderSetWidget extends LinearLayout
                 return;
             case 2131493869:
         }
-        com.arcsoft.hpay100.a.a.E(getContext());
+        com.clilystudio.netbook.hpay100.a_Pack.a.E(getContext());
         this.h.c();
     }
 
@@ -84,7 +82,7 @@ public class AutoReaderSetWidget extends LinearLayout
 
     public void setOptionClickListener(a parama) {
         this.h = parama;
-        this.b = com.arcsoft.hpay100.a.a.a(this.a, "auto_reader_speed", 5);
+        this.b = com.clilystudio.netbook.hpay100.a_Pack.a.a(this.a, "auto_reader_speed", 5);
         this.d = ((TextView) findViewById(2131493865));
         e();
         this.e = ((Button) findViewById(2131493867));

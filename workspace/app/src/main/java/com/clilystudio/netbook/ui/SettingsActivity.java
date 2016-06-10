@@ -9,9 +9,8 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
-import com.arcsoft.hpay100.a.a;
 import com.clilystudio.netbook.ui.post.CommonPostListActivity;
-import com.umeng.a.b;
+import com.clilystudio.netbook.umeng.a_Pack.b;
 
 public class SettingsActivity extends BaseActivity
         implements View.OnClickListener {

@@ -11,7 +11,6 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.arcsoft.hpay100.a.a;
 import com.clilystudio.netbook.adapter.G;
 import com.clilystudio.netbook.db.TweetCache;
 import com.clilystudio.netbook.event.q;

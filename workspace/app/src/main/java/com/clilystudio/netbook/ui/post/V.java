@@ -5,7 +5,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.arcsoft.hpay100.a.a;
+import com.clilystudio.netbook.hpay100.a_Pack.a;
 import com.clilystudio.netbook.util.e;
 
 final class V

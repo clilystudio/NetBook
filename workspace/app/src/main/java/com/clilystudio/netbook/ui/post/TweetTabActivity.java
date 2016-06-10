@@ -48,8 +48,8 @@ public class TweetTabActivity extends BaseTabActivity
     }
 
     private void f() {
-        int i1 = com.arcsoft.hpay100.a.a.a(this, 18.0F);
-        int i2 = com.arcsoft.hpay100.a.a.a(this, 36.0F);
+        int i1 = com.clilystudio.netbook.hpay100.a_Pack.a.a(this, 18.0F);
+        int i2 = com.clilystudio.netbook.hpay100.a_Pack.a.a(this, 36.0F);
         this.f.setVisibility(4);
         this.n.setVisibility(4);
         com.c.b.a.a(this.i).c(0.0F).b(i1).a(150L).a(new DecelerateInterpolator()).a();

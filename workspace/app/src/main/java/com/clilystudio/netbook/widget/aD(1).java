@@ -8,7 +8,7 @@ final class aD
     }
 
     public final void a(Bitmap paramBitmap) {
-        UserInfoPortraitView.a(this.a).setImageBitmap(com.arcsoft.hpay100.a.a.a(paramBitmap));
+        UserInfoPortraitView.a(this.a).setImageBitmap(com.clilystudio.netbook.hpay100.a_Pack.a.a(paramBitmap));
     }
 }
 

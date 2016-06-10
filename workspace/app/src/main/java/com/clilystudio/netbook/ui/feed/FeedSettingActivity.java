@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-import com.arcsoft.hpay100.a.a;
 import com.clilystudio.netbook.ui.BaseActivity;
 
 public class FeedSettingActivity extends BaseActivity {

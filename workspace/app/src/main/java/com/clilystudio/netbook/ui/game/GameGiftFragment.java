@@ -9,7 +9,6 @@ import android.widget.ListView;
 import com.clilystudio.netbook.adapter.GameGiftGroupAdapter;
 import com.clilystudio.netbook.model.GameGiftGroup;
 import com.clilystudio.netbook.ui.BaseLoadingFragment;
-import com.umeng.a.b;
 
 import java.util.ArrayList;
 import java.util.List;

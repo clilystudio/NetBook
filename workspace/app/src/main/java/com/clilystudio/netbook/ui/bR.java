@@ -49,7 +49,7 @@ class bR extends com.clilystudio.netbook.a_pack.e<String, Void, List<BookSummary
             for (String str1 = "1"; ; str1 = "0") {
                 SearchActivity localSearchActivity = this.a;
                 String str2 = SearchActivity.j(this.a);
-                Map localMap = com.arcsoft.hpay100.a.a.p(this.a);
+                Map localMap = com.clilystudio.netbook.hpay100.a_Pack.a.p(this.a);
                 localMap.put("emp", str1);
                 com.a.a.a.c(localSearchActivity, str2, localMap);
                 return;

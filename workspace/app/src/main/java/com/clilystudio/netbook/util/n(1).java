@@ -24,7 +24,7 @@ final class n extends com.clilystudio.netbook.a_pack.a {
         int k = 0;
         if (k < i) {
             TocSource localTocSource = arrayOfTocSource[k];
-            com.arcsoft.hpay100.a.a.a(localTocSource, m.b(this.a));
+            com.clilystudio.netbook.hpay100.a_Pack.a.a(localTocSource, m.b(this.a));
             String str;
             if (localTocSource.isPriority()) {
                 str = localTocSource.getSource();

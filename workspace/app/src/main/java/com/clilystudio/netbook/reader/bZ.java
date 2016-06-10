@@ -11,7 +11,6 @@ import android.preference.PreferenceManager;
 import android.view.Display;
 import android.view.WindowManager;
 
-import com.arcsoft.hpay100.a.a;
 import com.clilystudio.netbook.event.C;
 
 import java.util.ArrayList;
@@ -158,7 +157,7 @@ public final class bZ {
         a.b(this.m, "customer_night_theme", this.x);
         a.b(this.m, "night_mode", this.x);
         if (this.x) {
-            com.umeng.a.b.a(this.m, "start_night_theme_page");
+            com.clilystudio.netbook.umeng.a_Pack.b.a(this.m, "start_night_theme_page");
             a.B(this.m);
         }
         while (true) {

@@ -9,7 +9,7 @@ import android.util.AttributeSet;
 import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.ui.MysteryActivity;
 import com.clilystudio.netbook.util.t;
-import com.umeng.a.b;
+import com.clilystudio.netbook.umeng.a_Pack.b;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -27,7 +27,7 @@ public class HomeFindSecretItem extends HomeFindItem {
 
     private boolean b() {
         int m;
-        if (!com.arcsoft.hpay100.a.a.a(getContext(), "KEY_SECRET_UNLOCKED", false)) {
+        if (!com.clilystudio.netbook.hpay100.a_Pack.a.a(getContext(), "KEY_SECRET_UNLOCKED", false)) {
             Context localContext = getContext();
             String str1 = am.n(localContext);
             String str2 = b.b(localContext, "switch_secret_to_random");
@@ -71,8 +71,8 @@ public class HomeFindSecretItem extends HomeFindItem {
                     String str1 = b.b(localContext, "mystery_disabled_at_version");
                     String str2 = b.b(localContext, "mystery_enable_time");
                     String str3 = b.b(localContext, "mystery_enable_minute_range");
-                    int j = com.arcsoft.hpay100.a.a.b(str1, 0);
-                    int k = com.arcsoft.hpay100.a.a.b(str3, 0);
+                    int j = com.clilystudio.netbook.hpay100.a_Pack.a.b(str1, 0);
+                    int k = com.clilystudio.netbook.hpay100.a_Pack.a.b(str3, 0);
                     if ((j == am.f(localContext)) || ("".equals(str2)) || ("0".equals(str2)))
                         break label242;
                     Date localDate1 = t.a(str2);
@@ -103,7 +103,7 @@ public class HomeFindSecretItem extends HomeFindItem {
         boolean bool = b();
         if (bool) {
             this.a = ProgressDialog.show(paramContext, null, paramContext.getString(2131034218), true, true);
-            com.a.a.a.a(MyApplication.a(), "rec_F184E6D9_7F75_01C9_CCA0_2336AEB54B2B", com.arcsoft.hpay100.a.a.o(getContext()), new aa(this, paramContext));
+            com.a.a.a.a(MyApplication.a(), "rec_F184E6D9_7F75_01C9_CCA0_2336AEB54B2B", com.clilystudio.netbook.hpay100.a_Pack.a.o(getContext()), new aa(this, paramContext));
         }
         while (bool) {
             b.a(paramContext, "home_find_mystery_click", "unlock");

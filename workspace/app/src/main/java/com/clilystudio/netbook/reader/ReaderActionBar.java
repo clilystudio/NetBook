@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 public class ReaderActionBar extends RelativeLayout {
     private View a;
-    private com.umeng.update.a b;
+    private com.clilystudio.netbook.umeng.update.a b;
     private bZ c;
     private TextView d;
     private ImageView e;
@@ -104,7 +104,7 @@ public class ReaderActionBar extends RelativeLayout {
         ah localah = new ah(this);
         this.f = ((TextView) findViewById(2131493882));
         this.g = ((TextView) findViewById(2131493859));
-        if (!com.arcsoft.hpay100.a.a.r(getContext(), "switch_xunfei_read"))
+        if (!com.clilystudio.netbook.hpay100.a_Pack.a.r(getContext(), "switch_xunfei_read"))
             this.g.setVisibility(8);
         this.h = findViewById(2131493861);
         this.i = findViewById(2131493864);
@@ -135,7 +135,7 @@ public class ReaderActionBar extends RelativeLayout {
         this.k.setText(paramString);
     }
 
-    public void setOnBtnClickListener$7ead76dc(com.umeng.update.a parama) {
+    public void setOnBtnClickListener$7ead76dc(com.clilystudio.netbook.umeng.update.a parama) {
         this.b = parama;
     }
 

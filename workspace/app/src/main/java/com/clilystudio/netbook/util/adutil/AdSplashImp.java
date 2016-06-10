@@ -1,6 +1,5 @@
 package com.clilystudio.netbook.util.adutil;
 
-import com.arcsoft.hpay100.a.a;
 import com.clilystudio.netbook.ui.SplashActivity;
 import com.clilystudio.netbook.widget.AdContainerLayout;
 
@@ -39,7 +38,7 @@ public final class AdSplashImp {
         }
         while (true) {
             if ((str != null) && (str.length() > 0))
-                com.umeng.a.b.a(this.a, str);
+                com.clilystudio.netbook.umeng.a_Pack.b.a(this.a, str);
             return;
             str = paramArrayOfString[0];
             continue;

@@ -30,7 +30,7 @@ public final class a extends b {
         super.onClick(paramView);
         Context localContext = this.a;
         InsideLink localInsideLink = this.b;
-        com.umeng.a.b.a(localContext, "post_official_link_click", localInsideLink.getType().getName() + "-" + localInsideLink.getLabel());
+        com.clilystudio.netbook.umeng.a_Pack.b.a(localContext, "post_official_link_click", localInsideLink.getType().getName() + "-" + localInsideLink.getLabel());
     }
 }
 

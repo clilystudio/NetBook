@@ -30,7 +30,7 @@ public class WifiActivity extends BaseActivity {
         this.c = ((TextView) findViewById(2131493260));
         this.e = ((TextView) findViewById(2131493261));
         this.a.clear();
-        List localList = com.arcsoft.hpay100.a.a.f();
+        List localList = com.clilystudio.netbook.hpay100.a_Pack.a.f();
         this.a.addAll(localList);
         Iterator localIterator = this.a.iterator();
         while (localIterator.hasNext()) {
@@ -71,7 +71,7 @@ public class WifiActivity extends BaseActivity {
         this.b.b("/delete_file", new cr(this));
         this.b.b("/files", new cs(this, arrayOfString1));
         this.b.a(5000);
-        if (com.arcsoft.hpay100.a.a.r(this) != 1) {
+        if (com.clilystudio.netbook.hpay100.a_Pack.a.r(this) != 1) {
             this.c.setText("未连接到 Wi-Fi");
             this.e.setText("未连接");
         }

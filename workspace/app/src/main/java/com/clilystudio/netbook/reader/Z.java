@@ -1,6 +1,5 @@
 package com.clilystudio.netbook.reader;
 
-import com.arcsoft.hpay100.a.a;
 import com.clilystudio.netbook.model.Chapter;
 import com.clilystudio.netbook.model.ChapterLink;
 import com.clilystudio.netbook.model.ChapterRoot;

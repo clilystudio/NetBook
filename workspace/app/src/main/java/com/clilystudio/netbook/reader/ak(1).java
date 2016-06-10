@@ -8,7 +8,7 @@ import com.iflytek.cloud.SpeechUtility;
 import java.util.LinkedList;
 
 final class ak
-        implements com.umeng.update.a {
+        implements com.clilystudio.netbook.umeng.update.a {
     ak(ReaderActivity paramReaderActivity) {
     }
 
@@ -49,7 +49,7 @@ final class ak
             case 2131493860:
                 ReaderActivity.w(this.a).setVisibility(8);
                 View localView = ReaderActivity.A(this.a).findViewById(2131493860);
-                if (com.arcsoft.hpay100.a.a.i()) {
+                if (com.clilystudio.netbook.hpay100.a_Pack.a.i()) {
                     ReaderActivity.a(this.a, localView);
                     return;
                 }
@@ -78,7 +78,7 @@ final class ak
                 ReaderActivity.o(this.a);
                 b.a(this.a, "tts_start_speaking", ReaderActivity.D(this.a));
                 b.a(this.a, "tts_start_speaking_message", null, 1);
-                com.arcsoft.hpay100.a.a.J(this.a);
+                com.clilystudio.netbook.hpay100.a_Pack.a.J(this.a);
                 ReaderActivity.E(this.a);
                 return;
             }
@@ -89,7 +89,7 @@ final class ak
             ReaderActivity.F(this.a);
             return;
         }
-        com.arcsoft.hpay100.a.a.a(ReaderActivity.a, this.a, "追书神器朗读插件");
+        com.clilystudio.netbook.hpay100.a_Pack.a.a(ReaderActivity.a, this.a, "追书神器朗读插件");
     }
 }
 

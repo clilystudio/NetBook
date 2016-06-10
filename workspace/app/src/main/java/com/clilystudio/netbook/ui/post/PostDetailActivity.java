@@ -10,14 +10,12 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.arcsoft.hpay100.a.a;
 import com.clilystudio.netbook.adapter.z;
 import com.clilystudio.netbook.d;
 import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.model.Author;
 import com.clilystudio.netbook.model.Post;
 import com.clilystudio.netbook.model.PostComment;
-import com.clilystudio.netbook.model.PostComment.PostCommentReply;
 import com.clilystudio.netbook.model.User;
 import com.clilystudio.netbook.model.Vote;
 import com.clilystudio.netbook.ui.user.AuthLoginActivity;

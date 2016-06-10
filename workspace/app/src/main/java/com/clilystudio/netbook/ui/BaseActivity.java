@@ -177,7 +177,7 @@ public class BaseActivity extends AppCompatActivity {
 
     protected void onCreate(Bundle paramBundle) {
         super.onCreate(paramBundle);
-        if (com.arcsoft.hpay100.a.a.a(this, "customer_night_theme", false))
+        if (com.clilystudio.netbook.hpay100.a_Pack.a.a(this, "customer_night_theme", false))
             setTheme(2131165359);
         while (true) {
             IntentFilter localIntentFilter = new IntentFilter();
@@ -195,14 +195,14 @@ public class BaseActivity extends AppCompatActivity {
 
     public void onPause() {
         super.onPause();
-        com.umeng.a.b.a(this);
+        com.clilystudio.netbook.umeng.a_Pack.b.a(this);
         com.a.a.a.b(this);
         com.xiaomi.mistatistic.sdk.b.b();
     }
 
     public void onResume() {
         super.onResume();
-        com.umeng.a.b.b(this);
+        com.clilystudio.netbook.umeng.a_Pack.b.b(this);
         com.a.a.a.a(this);
         com.xiaomi.mistatistic.sdk.b.a(this, getClass().getName());
     }

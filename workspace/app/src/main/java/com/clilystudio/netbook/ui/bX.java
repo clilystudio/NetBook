@@ -3,7 +3,7 @@ package com.clilystudio.netbook.ui;
 import android.support.v7.widget.SwitchCompat;
 import android.widget.CompoundButton;
 
-import com.arcsoft.hpay100.a.a;
+import com.clilystudio.netbook.hpay100.a_Pack.a;
 
 final class bX
         implements CompoundButton.OnCheckedChangeListener {

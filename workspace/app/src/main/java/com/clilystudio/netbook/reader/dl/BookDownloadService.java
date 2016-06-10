@@ -9,13 +9,11 @@ import android.os.IBinder;
 import android.support.design.widget.am;
 import android.support.v4.content.LocalBroadcastManager;
 
-import com.arcsoft.hpay100.a.a;
 import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.db.BookDlRecord;
 import com.clilystudio.netbook.db.BookReadRecord;
 import com.clilystudio.netbook.db.SourceRecord;
 import com.clilystudio.netbook.event.d;
-import com.clilystudio.netbook.event.i;
 import com.clilystudio.netbook.model.ChapterLink;
 import com.squareup.a.b;
 import com.squareup.a.l;

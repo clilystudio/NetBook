@@ -24,7 +24,7 @@ public class AddVoteActivity extends BaseActivity {
     private boolean f() {
         String str = this.a.getText().toString().trim();
         if (this.j != 3) {
-            if (com.arcsoft.hpay100.a.a.Q(str)) {
+            if (com.clilystudio.netbook.hpay100.a_Pack.a.Q(str)) {
                 e.a(this, "\t\t请输入帖子标题\t\t");
                 return false;
             }
@@ -34,7 +34,7 @@ public class AddVoteActivity extends BaseActivity {
             }
         }
         Editable localEditable = this.b.getText();
-        if ((localEditable == null) || (com.arcsoft.hpay100.a.a.Q(localEditable.toString()))) {
+        if ((localEditable == null) || (com.clilystudio.netbook.hpay100.a_Pack.a.Q(localEditable.toString()))) {
             e.a(this, "\t\t请输入正文\t\t");
             return false;
         }
@@ -59,7 +59,7 @@ public class AddVoteActivity extends BaseActivity {
         int m = 1;
         String str1 = this.a.getText().toString();
         String str2 = this.b.getText().toString();
-        if (!com.arcsoft.hpay100.a.a.Q(str1)) ;
+        if (!com.clilystudio.netbook.hpay100.a_Pack.a.Q(str1)) ;
         while (m != 0) {
             h localh = new h(this);
             localh.d = "提示";
@@ -68,7 +68,7 @@ public class AddVoteActivity extends BaseActivity {
             localh.a("离开", new O(this));
             localh.a().show();
             return;
-            if (!com.arcsoft.hpay100.a.a.Q(str2))
+            if (!com.clilystudio.netbook.hpay100.a_Pack.a.Q(str2))
                 continue;
             m = 0;
         }

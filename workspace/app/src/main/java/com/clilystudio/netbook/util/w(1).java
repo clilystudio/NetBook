@@ -13,7 +13,7 @@ final class w
     public final void onClick(View paramView) {
         this.a.dismiss();
         i.a().c(new r(1));
-        com.umeng.a.b.a(paramView.getContext(), "book_recommend_gender_click", "male");
+        com.clilystudio.netbook.umeng.a_Pack.b.a(paramView.getContext(), "book_recommend_gender_click", "male");
     }
 }
 

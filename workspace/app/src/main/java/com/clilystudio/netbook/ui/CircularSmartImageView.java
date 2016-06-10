@@ -7,8 +7,6 @@ import android.graphics.Paint;
 import android.net.Uri;
 import android.util.AttributeSet;
 
-import com.arcsoft.hpay100.a.a;
-
 public class CircularSmartImageView extends CornerImageView {
     private final int b;
 

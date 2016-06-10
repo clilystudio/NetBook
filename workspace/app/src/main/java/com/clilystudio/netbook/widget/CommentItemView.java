@@ -10,12 +10,10 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.arcsoft.hpay100.a.a;
 import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.model.Author;
 import com.clilystudio.netbook.model.PostComment;
-import com.clilystudio.netbook.model.PostComment.PostCommentReply;
 import com.clilystudio.netbook.ui.SmartImageView;
 import com.clilystudio.netbook.ui.post.AbsPostActivity;
 import com.clilystudio.netbook.ui.user.AuthLoginActivity;

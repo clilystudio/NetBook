@@ -56,7 +56,7 @@ public class GameGiftListActivity extends BaseActivity {
     }
 
     public final void b() {
-        if ((this.h) || (com.arcsoft.hpay100.a.a.j(this, this.c.game.getAndroidPackageName())))
+        if ((this.h) || (com.clilystudio.netbook.hpay100.a_Pack.a.j(this, this.c.game.getAndroidPackageName())))
             try {
                 if (this.g != null)
                     this.g.dismiss();
@@ -71,7 +71,7 @@ public class GameGiftListActivity extends BaseActivity {
         ((SmartImageView) localView.findViewById(2131493394)).setImageUrl(localGame.getIcon());
         ((TextView) localView.findViewById(2131493397)).setText("剩余礼包" + this.c.left + "个");
         ((TextView) localView.findViewById(2131493395)).setText(this.c.title);
-        ((TextView) localView.findViewById(2131493396)).setText(localGame.getCat() + " | " + com.arcsoft.hpay100.a.a.c(localGame.getAndroidSize()));
+        ((TextView) localView.findViewById(2131493396)).setText(localGame.getCat() + " | " + com.clilystudio.netbook.hpay100.a_Pack.a.c(localGame.getAndroidSize()));
         GameGiftGetButton localGameGiftGetButton = (GameGiftGetButton) localView.findViewById(2131493398);
         s.a(this, localGame);
         localGameGiftGetButton.setGame(localGame);

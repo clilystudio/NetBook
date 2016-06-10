@@ -3,7 +3,7 @@ package com.clilystudio.netbook.ui;
 import android.text.TextUtils;
 import android.view.View;
 
-import com.arcsoft.hpay100.a.a;
+import com.clilystudio.netbook.hpay100.a_Pack.a;
 import com.clilystudio.netbook.exception.UnImplementException;
 import com.clilystudio.netbook.model.SplashAdvert;
 import com.clilystudio.netbook.util.InsideLinkIntent;

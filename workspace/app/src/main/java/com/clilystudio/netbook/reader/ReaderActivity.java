@@ -143,7 +143,7 @@ public class ReaderActivity extends BaseReadSlmActivity
             }
         } else {
             MyApplication.a().a(this.g);
-            if ((!q()) && (!com.arcsoft.hpay100.a.a.h(this.L)))
+            if ((!q()) && (!com.clilystudio.netbook.hpay100.a_Pack.a.h(this.L)))
                 break label345;
             if (!q())
                 break label324;
@@ -232,7 +232,7 @@ public class ReaderActivity extends BaseReadSlmActivity
             this.k.a(new aP(this));
             this.k.a(new aQ(this));
         }
-        com.arcsoft.hpay100.a.a.a(this, this.k);
+        com.clilystudio.netbook.hpay100.a_Pack.a.a(this, this.k);
     }
 
     private void E() {
@@ -281,7 +281,7 @@ public class ReaderActivity extends BaseReadSlmActivity
                     str = localn.a().getLink();
             }
             this.r.setChapterLink(str);
-            if ((com.arcsoft.hpay100.a.a.h()) && (!this.p))
+            if ((com.clilystudio.netbook.hpay100.a_Pack.a.h()) && (!this.p))
                 this.q.setSystemUiVisibility(0);
         }
         label122:
@@ -297,7 +297,7 @@ public class ReaderActivity extends BaseReadSlmActivity
         this.V.pauseSpeaking();
         this.u.setPause(true);
         this.u.a();
-        com.umeng.a.b.a(this, "tts_pause_speaking", this.d);
+        com.clilystudio.netbook.umeng.a_Pack.b.a(this, "tts_pause_speaking", this.d);
     }
 
     @SuppressLint({"NewApi"})
@@ -321,12 +321,12 @@ public class ReaderActivity extends BaseReadSlmActivity
             getWindow().clearFlags(2048);
             if (this.F) {
                 getWindow().addFlags(512);
-                com.arcsoft.hpay100.a.a.a(this.q);
+                com.clilystudio.netbook.hpay100.a_Pack.a.a(this.q);
             }
         } else {
             if (!this.i.f())
                 break label235;
-            if ((com.arcsoft.hpay100.a.a.h()) && (this.p))
+            if ((com.clilystudio.netbook.hpay100.a_Pack.a.h()) && (this.p))
                 this.q.setSystemUiVisibility(2055);
         }
         label235:
@@ -335,12 +335,12 @@ public class ReaderActivity extends BaseReadSlmActivity
             getWindow().addFlags(2048);
             getWindow().clearFlags(1024);
             getWindow().clearFlags(512);
-            if ((!com.arcsoft.hpay100.a.a.h()) || (!this.p))
+            if ((!com.clilystudio.netbook.hpay100.a_Pack.a.h()) || (!this.p))
                 break;
             this.q.setSystemUiVisibility(0);
             break;
         }
-        while ((!com.arcsoft.hpay100.a.a.h()) || (!this.p));
+        while ((!com.clilystudio.netbook.hpay100.a_Pack.a.h()) || (!this.p));
         this.q.setSystemUiVisibility(1);
     }
 
@@ -350,7 +350,7 @@ public class ReaderActivity extends BaseReadSlmActivity
     }
 
     private void J() {
-        this.F = com.arcsoft.hpay100.a.a.l(this, "reader_opt_full_screen");
+        this.F = com.clilystudio.netbook.hpay100.a_Pack.a.l(this, "reader_opt_full_screen");
         this.r.a(this.F);
         H();
     }
@@ -445,8 +445,8 @@ public class ReaderActivity extends BaseReadSlmActivity
     }
 
     private void Q() {
-        if (com.arcsoft.hpay100.a.a.d()) {
-            Iterator localIterator = com.arcsoft.hpay100.a.a.j(this.c, this.e).iterator();
+        if (com.clilystudio.netbook.hpay100.a_Pack.a.d()) {
+            Iterator localIterator = com.clilystudio.netbook.hpay100.a_Pack.a.j(this.c, this.e).iterator();
             while (localIterator.hasNext()) {
                 String str = android.support.design.widget.am.f((String) localIterator.next());
                 this.x.add(str);
@@ -875,7 +875,7 @@ public class ReaderActivity extends BaseReadSlmActivity
         super.onCreate(paramBundle);
         getWindow().addFlags(256);
         getWindow().addFlags(512);
-        this.G = com.arcsoft.hpay100.a.a.l(this, "reader_orientation");
+        this.G = com.clilystudio.netbook.hpay100.a_Pack.a.l(this, "reader_orientation");
         r();
         setContentView(2130903121);
         i.a().a(this);
@@ -900,7 +900,7 @@ public class ReaderActivity extends BaseReadSlmActivity
             com.clilystudio.netbook.util.I.d = this.f;
             com.clilystudio.netbook.util.I.c = this.e;
             com.clilystudio.netbook.util.I.g = this.L;
-            com.arcsoft.hpay100.a.a.i(this, this.c);
+            com.clilystudio.netbook.hpay100.a_Pack.a.i(this, this.c);
             this.g = new Reader(this.c, this.e, this.d, this.L);
             this.g.a(getIntent().getStringExtra("SOURCE_ID"));
             this.g.a((Map) getIntent().getSerializableExtra("CHAPTERS_KEY"));
@@ -929,8 +929,8 @@ public class ReaderActivity extends BaseReadSlmActivity
                 if (this.V == null) {
                     this.V = SpeechSynthesizer.createSynthesizer(this, new al(this));
                     this.V.setParameter("engine_type", "local");
-                    this.V.setParameter("speed", com.arcsoft.hpay100.a.a.a(this, "speech_speed", 50));
-                    this.V.setParameter("voice_name", com.arcsoft.hpay100.a.a.d(this, "speech_voice", ""));
+                    this.V.setParameter("speed", com.clilystudio.netbook.hpay100.a_Pack.a.a(this, "speech_speed", 50));
+                    this.V.setParameter("voice_name", com.clilystudio.netbook.hpay100.a_Pack.a.d(this, "speech_voice", ""));
                 }
                 this.m = ((PagerWidget) findViewById(2131493158));
                 this.r = ((ReaderActionBar) findViewById(2131493166));
@@ -958,7 +958,7 @@ public class ReaderActivity extends BaseReadSlmActivity
                 this.T.setLineSpacing(this.h.b, 1.0F);
                 if (this.h.h == 2130838077) {
                     this.T.setBackgroundResource(2130838076);
-                    if ((this.L != 5) && (this.L != 10) && (!com.arcsoft.hpay100.a.a.h(this.L)) && (this.L != 9))
+                    if ((this.L != 5) && (this.L != 10) && (!com.clilystudio.netbook.hpay100.a_Pack.a.h(this.L)) && (this.L != 9))
                         break label1363;
                     i2 = 1;
                     View localView = findViewById(2131493862);
@@ -981,7 +981,7 @@ public class ReaderActivity extends BaseReadSlmActivity
                     C();
                     this.m.setAdapter(new au(this));
                     this.q = getWindow().getDecorView();
-                    if (com.arcsoft.hpay100.a.a.h())
+                    if (com.clilystudio.netbook.hpay100.a_Pack.a.h())
                         this.q.setOnSystemUiVisibilityChangeListener(new aV(this));
                     J();
                     if (!this.H)
@@ -1004,7 +1004,7 @@ public class ReaderActivity extends BaseReadSlmActivity
                         new bp(this, 0).b(new Void[0]);
                     }
                     new k(this.c).a();
-                    com.umeng.a.b.a(this, "read_mode_33_new", com.arcsoft.hpay100.a.a.g(this.L));
+                    com.clilystudio.netbook.umeng.a_Pack.b.a(this, "read_mode_33_new", com.clilystudio.netbook.hpay100.a_Pack.a.g(this.L));
                     return;
                     i1 = MyApplication.a().d();
                 }
@@ -1037,7 +1037,7 @@ public class ReaderActivity extends BaseReadSlmActivity
             if (this.V != null) {
                 this.V.stopSpeaking();
                 this.V.destroy();
-                com.arcsoft.hpay100.a.a.K(this);
+                com.clilystudio.netbook.hpay100.a_Pack.a.K(this);
                 n();
             }
             p();
@@ -1099,7 +1099,7 @@ public class ReaderActivity extends BaseReadSlmActivity
         super.onPause();
         if (this.g != null)
             this.g.c();
-        if (com.arcsoft.hpay100.a.a.a(this, "key_shelf_sort", i1) == i1) ;
+        if (com.clilystudio.netbook.hpay100.a_Pack.a.a(this, "key_shelf_sort", i1) == i1) ;
         while (true) {
             if (i1 != 0) {
                 BookReadRecord localBookReadRecord = BookReadRecord.get(this.c);

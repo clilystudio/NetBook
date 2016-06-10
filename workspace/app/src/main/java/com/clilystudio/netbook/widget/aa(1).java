@@ -20,8 +20,8 @@ final class aa extends c {
                 if ((str != null) && (str.length() > 0)) {
                     if (HomeFindSecretItem.a(this.b).isShowing())
                         new com.clilystudio.netbook.reader.random.a(HomeFindSecretItem.a(this.b), (Activity) this.a, false).b(new String[]{str});
-                    com.arcsoft.hpay100.a.a.c(this.b.getContext(), str, "rec_F184E6D9_7F75_01C9_CCA0_2336AEB54B2B");
-                    com.arcsoft.hpay100.a.a.i(this.b.getContext(), str);
+                    com.clilystudio.netbook.hpay100.a_Pack.a.c(this.b.getContext(), str, "rec_F184E6D9_7F75_01C9_CCA0_2336AEB54B2B");
+                    com.clilystudio.netbook.hpay100.a_Pack.a.i(this.b.getContext(), str);
                     return;
                 }
                 e.a((Activity) this.a, "打开失败或暂时未开放");

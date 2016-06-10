@@ -3,7 +3,6 @@ package com.clilystudio.netbook.util;
 import android.app.Activity;
 import android.content.Intent;
 
-import com.arcsoft.hpay100.a.a;
 import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.db.BookReadRecord;
 import com.clilystudio.netbook.db.SourceRecord;

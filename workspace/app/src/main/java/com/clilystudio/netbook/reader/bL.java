@@ -3,7 +3,7 @@ package com.clilystudio.netbook.reader;
 import android.support.v7.widget.SwitchCompat;
 import android.widget.CompoundButton;
 
-import com.arcsoft.hpay100.a.a;
+import com.clilystudio.netbook.hpay100.a_Pack.a;
 import com.clilystudio.netbook.event.i;
 import com.clilystudio.netbook.event.j;
 import com.squareup.a.b;

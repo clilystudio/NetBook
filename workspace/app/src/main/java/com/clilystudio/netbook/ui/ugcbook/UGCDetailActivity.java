@@ -7,14 +7,11 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.arcsoft.hpay100.a.a;
 import com.clilystudio.netbook.adapter.W;
 import com.clilystudio.netbook.event.E;
 import com.clilystudio.netbook.model.Author;
 import com.clilystudio.netbook.model.BookSummary;
 import com.clilystudio.netbook.model.UGCBookDetail;
-import com.clilystudio.netbook.model.UGCBookDetail.UGCBookContainer;
-import com.clilystudio.netbook.model.UGCBookDetail.UGCBookContainer.UGCBookItem;
 import com.clilystudio.netbook.model.UGCNewCollection;
 import com.clilystudio.netbook.ui.BaseActivity;
 import com.clilystudio.netbook.ui.SmartImageView;

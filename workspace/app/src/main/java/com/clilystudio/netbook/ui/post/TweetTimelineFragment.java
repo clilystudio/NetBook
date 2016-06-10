@@ -9,15 +9,12 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.arcsoft.hpay100.a.a;
 import com.clilystudio.netbook.adapter.G;
 import com.clilystudio.netbook.db.RetweenRecord;
 import com.clilystudio.netbook.db.TweetCache;
 import com.clilystudio.netbook.event.t;
 import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.model.TimelineResult;
-import com.clilystudio.netbook.model.TimelineResult.Names;
-import com.clilystudio.netbook.model.TimelineResult.Temp;
 import com.clilystudio.netbook.model.Tweet;
 import com.clilystudio.netbook.model.User;
 import com.google.gson.Gson;

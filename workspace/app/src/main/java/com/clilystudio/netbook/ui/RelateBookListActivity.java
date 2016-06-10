@@ -3,7 +3,6 @@ package com.clilystudio.netbook.ui;
 import android.content.Context;
 import android.content.Intent;
 
-import com.arcsoft.hpay100.a.a;
 import com.clilystudio.netbook.d;
 import com.clilystudio.netbook.model.BookRankDetail;
 import com.clilystudio.netbook.model.BookSummary;

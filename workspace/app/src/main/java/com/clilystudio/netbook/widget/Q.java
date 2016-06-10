@@ -3,7 +3,7 @@ package com.clilystudio.netbook.widget;
 import android.view.View;
 
 import com.clilystudio.netbook.model.Game;
-import com.umeng.a.b;
+import com.clilystudio.netbook.umeng.a_Pack.b;
 
 final class Q
         implements View.OnClickListener {

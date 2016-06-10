@@ -2,8 +2,8 @@ package com.clilystudio.netbook.reader;
 
 import android.view.View;
 
-import com.arcsoft.hpay100.a.a;
-import com.umeng.a.b;
+import com.clilystudio.netbook.hpay100.a_Pack.a;
+import com.clilystudio.netbook.umeng.a_Pack.b;
 
 final class cS
         implements View.OnClickListener {

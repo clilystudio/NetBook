@@ -127,9 +127,9 @@ public class BookInfoActivity extends BaseActivity
         View localView = findViewById(2131493334);
         localView.setVisibility(0);
         int n = paramArrayOfString.length;
-        int i1 = com.arcsoft.hpay100.a.a.a(this, 16.0F);
+        int i1 = com.clilystudio.netbook.hpay100.a_Pack.a.a(this, 16.0F);
         TagsLayout localTagsLayout = (TagsLayout) localView.findViewById(2131493335);
-        if (com.arcsoft.hpay100.a.a.a(this, "customer_night_theme", false)) ;
+        if (com.clilystudio.netbook.hpay100.a_Pack.a.a(this, "customer_night_theme", false)) ;
         for (int[] arrayOfInt = {2130837623, 2130837625, 2130837627, 2130837629, 2130837631, 2130837633, 2130837635}; ; arrayOfInt = new int[]{2130837622, 2130837624, 2130837626, 2130837628, 2130837630, 2130837632, 2130837634}) {
             int i2 = 0;
             int i4;
@@ -172,9 +172,9 @@ public class BookInfoActivity extends BaseActivity
 
     private void f() {
         View localView = findViewById(2131493311);
-        if ((am.q(this)) && (com.arcsoft.hpay100.a.a.F(this))) {
+        if ((am.q(this)) && (com.clilystudio.netbook.hpay100.a_Pack.a.F(this))) {
             Advert localAdvert = n.b(this, "book");
-            if ((localAdvert != null) && (com.arcsoft.hpay100.a.a.w(this, "rate_zssq_advert_reader_bookinfo"))) {
+            if ((localAdvert != null) && (com.clilystudio.netbook.hpay100.a_Pack.a.w(this, "rate_zssq_advert_reader_bookinfo"))) {
                 localView.setVisibility(0);
                 a(localView, localAdvert);
                 return;
@@ -223,7 +223,7 @@ public class BookInfoActivity extends BaseActivity
     private void h() {
         if (this.i) {
             BookReadRecord.deleteAndSync(this.h);
-            com.arcsoft.hpay100.a.a.v(this.h);
+            com.clilystudio.netbook.hpay100.a_Pack.a.v(this.h);
             String str3 = getString(2131034467);
             Object[] arrayOfObject2 = new Object[1];
             arrayOfObject2[0] = this.k.getTitle();
@@ -234,16 +234,16 @@ public class BookInfoActivity extends BaseActivity
         if (am.f()) ;
         String str2;
         for (Object localObject = getString(2131034325); ; localObject = str2) {
-            com.umeng.a.b.a(this, "book_info_add");
+            com.clilystudio.netbook.umeng.a_Pack.b.a(this, "book_info_add");
             i();
             break;
             BookReadRecord.create(this.k);
-            com.arcsoft.hpay100.a.a.u(this.h);
+            com.clilystudio.netbook.hpay100.a_Pack.a.u(this.h);
             String str1 = getString(2131034283);
             Object[] arrayOfObject1 = new Object[1];
             arrayOfObject1[0] = this.k.getTitle();
             str2 = String.format(str1, arrayOfObject1);
-            if ((!com.arcsoft.hpay100.a.a.a(this, "add_update_notify_login", true)) || (am.g()))
+            if ((!com.clilystudio.netbook.hpay100.a_Pack.a.a(this, "add_update_notify_login", true)) || (am.g()))
                 continue;
             View localView = getLayoutInflater().inflate(2130903380, null, false);
             CheckBox localCheckBox = (CheckBox) localView.findViewById(2131493973);
@@ -259,17 +259,17 @@ public class BookInfoActivity extends BaseActivity
             default:
                 return;
             case 1:
-                com.umeng.a.b.a(this, "book_info_recommend_add_shelf", "zhuishu");
+                com.clilystudio.netbook.umeng.a_Pack.b.a(this, "book_info_recommend_add_shelf", "zhuishu");
                 return;
             case 2:
-                com.umeng.a.b.a(this, "page_footing_recommend_add_shelf", "zhuishu");
+                com.clilystudio.netbook.umeng.a_Pack.b.a(this, "page_footing_recommend_add_shelf", "zhuishu");
                 return;
             case 3:
-                com.umeng.a.b.a(this, "book_info_recommend_add_shelf", "bfd");
+                com.clilystudio.netbook.umeng.a_Pack.b.a(this, "book_info_recommend_add_shelf", "bfd");
                 return;
             case 4:
         }
-        com.umeng.a.b.a(this, "page_footing_recommend_add_shelf", "bfd");
+        com.clilystudio.netbook.umeng.a_Pack.b.a(this, "page_footing_recommend_add_shelf", "bfd");
     }
 
     private void j() {
@@ -315,13 +315,13 @@ public class BookInfoActivity extends BaseActivity
                     new m(this).a(this.k);
                 }
                 while (true) {
-                    com.umeng.a.b.a(this, "book_info_search");
+                    com.clilystudio.netbook.umeng.a_Pack.b.a(this, "book_info_search");
                     return;
                     new m(this).a(localBookReadRecord);
                 }
             case 2131493329:
                 startActivity(BookPostTabActivity.a(this, this.h, this.k.getTitle()));
-                com.umeng.a.b.a(this, "book_info_post");
+                com.clilystudio.netbook.umeng.a_Pack.b.a(this, "book_info_post");
                 return;
             case 2131493284:
                 startActivity(AuthorBooksActivity.a(this, this.k.getAuthor()));
@@ -360,7 +360,7 @@ public class BookInfoActivity extends BaseActivity
             this.i = bool;
             i.a().a(this);
             j();
-            com.umeng.a.b.a(this, "book_info_open");
+            com.clilystudio.netbook.umeng.a_Pack.b.a(this, "book_info_open");
             this.l = getIntent().getIntExtra("open_type", 0);
             return;
         }

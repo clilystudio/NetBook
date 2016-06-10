@@ -2,7 +2,7 @@ package com.clilystudio.netbook.reader;
 
 import android.widget.CompoundButton;
 
-import com.arcsoft.hpay100.a.a;
+import com.clilystudio.netbook.hpay100.a_Pack.a;
 
 final class bO
         implements CompoundButton.OnCheckedChangeListener {

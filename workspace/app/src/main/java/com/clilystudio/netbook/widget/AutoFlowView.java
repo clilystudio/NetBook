@@ -8,8 +8,6 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.arcsoft.hpay100.a.a;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;

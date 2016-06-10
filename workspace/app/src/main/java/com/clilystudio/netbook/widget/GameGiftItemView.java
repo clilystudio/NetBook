@@ -62,7 +62,7 @@ public class GameGiftItemView extends RelativeLayout {
     }
 
     public final void a() {
-        if ((this.f) || (com.arcsoft.hpay100.a.a.j(getContext(), this.a.game.getAndroidPackageName())))
+        if ((this.f) || (com.clilystudio.netbook.hpay100.a_Pack.a.j(getContext(), this.a.game.getAndroidPackageName())))
             try {
                 if (this.b != null)
                     this.b.dismiss();
@@ -77,7 +77,7 @@ public class GameGiftItemView extends RelativeLayout {
         ((SmartImageView) localView.findViewById(2131493394)).setImageUrl(localGame.getIcon());
         ((TextView) localView.findViewById(2131493397)).setText("剩余礼包" + this.a.left + "个");
         ((TextView) localView.findViewById(2131493395)).setText(this.a.title);
-        ((TextView) localView.findViewById(2131493396)).setText(localGame.getCat() + " | " + com.arcsoft.hpay100.a.a.c(localGame.getAndroidSize()));
+        ((TextView) localView.findViewById(2131493396)).setText(localGame.getCat() + " | " + com.clilystudio.netbook.hpay100.a_Pack.a.c(localGame.getAndroidSize()));
         s.a((Activity) getContext(), localGame);
         GameGiftGetButton localGameGiftGetButton = (GameGiftGetButton) localView.findViewById(2131493398);
         localGameGiftGetButton.setGame(localGame);

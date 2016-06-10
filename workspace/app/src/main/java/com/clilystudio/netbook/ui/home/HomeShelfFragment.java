@@ -33,7 +33,6 @@ import com.clilystudio.netbook.model.BookShelf;
 import com.clilystudio.netbook.model.ShelfMsg;
 import com.clilystudio.netbook.model.TxtFileObject;
 import com.clilystudio.netbook.util.UmengGameTracer;
-import com.clilystudio.netbook.util.UmengGameTracer.From;
 import com.clilystudio.netbook.util.as;
 import com.clilystudio.netbook.widget.CoverLoadingView;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
@@ -84,7 +83,7 @@ public class HomeShelfFragment extends HomeFragment
     private boolean z = false;
 
     private static boolean a(Context paramContext, int paramInt) {
-        long l1 = com.arcsoft.hpay100.a.a.a(paramContext, "DELETE_SHELF_AD_KEY" + paramInt, 0L);
+        long l1 = com.clilystudio.netbook.hpay100.a_Pack.a.a(paramContext, "DELETE_SHELF_AD_KEY" + paramInt, 0L);
         return new Date().getTime() - l1 > 86400000L;
     }
 
@@ -176,9 +175,9 @@ public class HomeShelfFragment extends HomeFragment
 
     private void a(int paramInt) {
         com.clilystudio.netbook.util.c.a().b();
-        com.arcsoft.hpay100.a.a.b(getActivity(), "DELETE_SHELF_AD_KEY" + paramInt, new Date().getTime());
+        com.clilystudio.netbook.hpay100.a_Pack.a.b(getActivity(), "DELETE_SHELF_AD_KEY" + paramInt, new Date().getTime());
         k();
-        com.umeng.a.b.a(getActivity(), "ad_delete_shelf");
+        com.clilystudio.netbook.umeng.a_Pack.b.a(getActivity(), "ad_delete_shelf");
     }
 
     private void a(BookFile paramBookFile) {
@@ -188,11 +187,11 @@ public class HomeShelfFragment extends HomeFragment
     }
 
     private void a(BookReadRecord paramBookReadRecord, boolean paramBoolean) {
-        com.arcsoft.hpay100.a.a.t(paramBookReadRecord.getBookId());
+        com.clilystudio.netbook.hpay100.a_Pack.a.t(paramBookReadRecord.getBookId());
         BookReadRecord.addAccountInfo(paramBookReadRecord);
         if (paramBoolean) {
             k();
-            com.arcsoft.hpay100.a.a.w(paramBookReadRecord.getBookId());
+            com.clilystudio.netbook.hpay100.a_Pack.a.w(paramBookReadRecord.getBookId());
         }
     }
 
@@ -239,21 +238,21 @@ public class HomeShelfFragment extends HomeFragment
 
     private void a(String paramString) {
         k();
-        com.arcsoft.hpay100.a.a.t(paramString);
+        com.clilystudio.netbook.hpay100.a_Pack.a.t(paramString);
         i.a().c(new BookShelfRefreshEvent());
-        com.arcsoft.hpay100.a.a.v(paramString);
+        com.clilystudio.netbook.hpay100.a_Pack.a.v(paramString);
     }
 
     private void a(String paramString1, String paramString2, boolean paramBoolean) {
         if (paramBoolean)
-            com.umeng.a.b.a(getActivity(), "book_recommend_delete_click", paramString2);
-        com.a.a.a.b(getActivity(), paramString1, com.arcsoft.hpay100.a.a.p(getActivity()));
+            com.clilystudio.netbook.umeng.a_Pack.b.a(getActivity(), "book_recommend_delete_click", paramString2);
+        com.a.a.a.b(getActivity(), paramString1, com.clilystudio.netbook.hpay100.a_Pack.a.p(getActivity()));
     }
 
     private void a(List<BookShelf> paramList) {
         if ((!paramList.isEmpty()) && (am.q(getActivity()))) {
             c(paramList, 0);
-            if (com.arcsoft.hpay100.a.a.F(getActivity())) {
+            if (com.clilystudio.netbook.hpay100.a_Pack.a.F(getActivity())) {
                 com.clilystudio.netbook.util.c.a().c();
                 c(paramList, 4);
             }
@@ -367,7 +366,7 @@ public class HomeShelfFragment extends HomeFragment
             str2 = "rate_zssq_advert_bookshelf_top";
             label17:
             Advert localAdvert = com.clilystudio.netbook.util.c.a().a(str1);
-            if ((localAdvert == null) || (!a(getActivity(), paramInt)) || (!com.arcsoft.hpay100.a.a.w(getActivity(), str2)))
+            if ((localAdvert == null) || (!a(getActivity(), paramInt)) || (!com.clilystudio.netbook.hpay100.a_Pack.a.w(getActivity(), str2)))
                 break label115;
             if (getActivity() != null)
                 new UmengGameTracer(getActivity(), UmengGameTracer.From.Bookshelf).a(localAdvert.get_id());
@@ -382,7 +381,7 @@ public class HomeShelfFragment extends HomeFragment
             str2 = "rate_zssq_advert_bookshelf_five";
             break label17;
             label115:
-            if ((!com.arcsoft.hpay100.a.a.A(getActivity())) || (!com.arcsoft.hpay100.a.a.t(getActivity())))
+            if ((!com.clilystudio.netbook.hpay100.a_Pack.a.A(getActivity())) || (!com.clilystudio.netbook.hpay100.a_Pack.a.t(getActivity())))
                 continue;
             getActivity();
             if ((k.c()) || (k.b())) ;
@@ -429,16 +428,16 @@ public class HomeShelfFragment extends HomeFragment
         } catch (Exception localException) {
             while (true) {
                 if ((localException.getMessage() != null) && (localException.getMessage().contains("not attached to Activity"))) {
-                    com.umeng.a.b.a(getActivity(), "zhuishu_catch_exception", "HomeShelfFragment_loadShelf:Fragment HomeShelfFragment not attached to Activity");
+                    com.clilystudio.netbook.umeng.a_Pack.b.a(getActivity(), "zhuishu_catch_exception", "HomeShelfFragment_loadShelf:Fragment HomeShelfFragment not attached to Activity");
                     localList1 = null;
                     continue;
                 }
-                com.umeng.a.b.a(getActivity(), "zhuishu_catch_exception", "HomeShelfFragment_loadShelf:" + localException.getMessage());
+                com.clilystudio.netbook.umeng.a_Pack.b.a(getActivity(), "zhuishu_catch_exception", "HomeShelfFragment_loadShelf:" + localException.getMessage());
                 List localList1 = null;
             }
             if (am.p(getActivity())) {
                 if ((!am.g()) && (!this.A)) {
-                    com.arcsoft.hpay100.a.a.a(getActivity());
+                    com.clilystudio.netbook.hpay100.a_Pack.a.a(getActivity());
                     return;
                 }
                 this.z = true;
@@ -757,7 +756,7 @@ public class HomeShelfFragment extends HomeFragment
     }
 
     public final void d() {
-        com.umeng.a.b.a(getActivity(), "home_shelf_bulk_operation");
+        com.clilystudio.netbook.umeng.a_Pack.b.a(getActivity(), "home_shelf_bulk_operation");
         if (this.r != null)
             this.l.setVisibility(8);
         this.e.removeHeaderView(this.g);
@@ -801,7 +800,7 @@ public class HomeShelfFragment extends HomeFragment
     public void onBookAdded(com.clilystudio.netbook.event.c paramc) {
         if (paramc.a())
             k();
-        com.arcsoft.hpay100.a.a.r(paramc.b());
+        com.clilystudio.netbook.hpay100.a_Pack.a.r(paramc.b());
         FragmentActivity localFragmentActivity = getActivity();
         String str = paramc.b();
         HashMap localHashMap = new HashMap();
@@ -844,11 +843,11 @@ public class HomeShelfFragment extends HomeFragment
         this.y.setOnClickListener(new z(this));
         this.x.setOnClickListener(new A(this));
         this.d.setOnRefreshListener(new E(this));
-        if (com.arcsoft.hpay100.a.a.i())
+        if (com.clilystudio.netbook.hpay100.a_Pack.a.i())
             this.e.setFooterDividersEnabled(false);
         View localView = LayoutInflater.from(getActivity()).inflate(2130903354, null);
         this.e.addFooterView(localView);
-        com.arcsoft.hpay100.a.a.a(getActivity(), this.e);
+        com.clilystudio.netbook.hpay100.a_Pack.a.a(getActivity(), this.e);
         this.g = LayoutInflater.from(getActivity()).inflate(2130903168, this.e, false);
         this.g.setVisibility(8);
         if (am.r(getActivity()))
@@ -896,8 +895,8 @@ public class HomeShelfFragment extends HomeFragment
     @com.squareup.a.l
     public void onFeedRemoved(com.clilystudio.netbook.event.n paramn) {
         k();
-        com.arcsoft.hpay100.a.a.r(paramn.b());
-        com.arcsoft.hpay100.a.a.x(paramn.b());
+        com.clilystudio.netbook.hpay100.a_Pack.a.r(paramn.b());
+        com.clilystudio.netbook.hpay100.a_Pack.a.x(paramn.b());
     }
 
     @com.squareup.a.l
@@ -954,7 +953,7 @@ public class HomeShelfFragment extends HomeFragment
     public void onResume() {
         super.onResume();
         List localList;
-        if (!com.arcsoft.hpay100.a.a.A(getActivity())) {
+        if (!com.clilystudio.netbook.hpay100.a_Pack.a.A(getActivity())) {
             localList = this.j.f();
             if ((localList != null) && (!localList.isEmpty()))
                 break label41;
@@ -967,14 +966,14 @@ public class HomeShelfFragment extends HomeFragment
             localAdvert = com.clilystudio.netbook.util.c.a().a("top");
             if ((localAdvert != null) && (a(getActivity(), 0)))
                 break;
-            com.arcsoft.hpay100.a.a.a(getActivity(), null);
+            com.clilystudio.netbook.hpay100.a_Pack.a.a(getActivity(), null);
         }
         BookShelf localBookShelf = (BookShelf) localList.get(0);
         if (localBookShelf.getAdvert() == null)
             a(localList, 0, localAdvert);
         while (true) {
             this.j.notifyDataSetChanged();
-            com.arcsoft.hpay100.a.a.a(getActivity(), localAdvert);
+            com.clilystudio.netbook.hpay100.a_Pack.a.a(getActivity(), localAdvert);
             break;
             if (localAdvert.equals(localBookShelf.getAdvert()))
                 continue;
@@ -999,7 +998,7 @@ public class HomeShelfFragment extends HomeFragment
     public void onShelfUpdated(com.clilystudio.netbook.event.A paramA) {
         if ((paramA.a() == 0) && (this.z) && (am.p(getActivity()))) {
             if (!this.A)
-                com.arcsoft.hpay100.a.a.a(getActivity());
+                com.clilystudio.netbook.hpay100.a_Pack.a.a(getActivity());
             return;
         }
         k();

@@ -60,7 +60,7 @@ public abstract class AbsUGCListFragment extends Fragment
         this.a = ((PullToRefreshListView) localView1.findViewById(2131493099));
         this.b = ((ListView) this.a.h());
         this.b.setOnItemClickListener(this);
-        com.arcsoft.hpay100.a.a.a(getActivity(), this.b);
+        com.clilystudio.netbook.hpay100.a_Pack.a.a(getActivity(), this.b);
         View localView2 = paramLayoutInflater.inflate(2130903330, this.b, false);
         this.k = ((TextView) localView2.findViewById(2131492905));
         this.k.setVisibility(8);
@@ -68,7 +68,7 @@ public abstract class AbsUGCListFragment extends Fragment
         this.d = localView1.findViewById(2131493085);
         this.j = ((TextView) localView1.findViewById(2131493100));
         this.e = LayoutInflater.from(getActivity()).inflate(2130903325, null);
-        if (com.arcsoft.hpay100.a.a.i())
+        if (com.clilystudio.netbook.hpay100.a_Pack.a.i())
             this.b.setFooterDividersEnabled(false);
         this.b.addFooterView(this.e);
         this.e.setVisibility(8);

@@ -22,7 +22,7 @@ public class WXPayEntryActivity extends Activity
             localb.c(new y(bool));
             switch (paramb.a) {
                 default:
-                    com.umeng.a.b.a(this, "charge_money_failed", "weixinpay");
+                    com.clilystudio.netbook.umeng.a_Pack.b.a(this, "charge_money_failed", "weixinpay");
                     e.a(this, "支付失败！");
                 case 0:
                 case -1:
@@ -35,12 +35,12 @@ public class WXPayEntryActivity extends Activity
             bool = false;
             break;
             e.a(this, "支付成功！");
-            com.umeng.a.b.a(this, "charge_complete", "weixinpay");
+            com.clilystudio.netbook.umeng.a_Pack.b.a(this, "charge_complete", "weixinpay");
             continue;
-            com.umeng.a.b.a(this, "charge_money_failed", "weixinpay");
+            com.clilystudio.netbook.umeng.a_Pack.b.a(this, "charge_money_failed", "weixinpay");
             e.a(this, "签名错误！");
             continue;
-            com.umeng.a.b.a(this, "charge_money_cancel", "weixinpay");
+            com.clilystudio.netbook.umeng.a_Pack.b.a(this, "charge_money_cancel", "weixinpay");
             e.a(this, "取消支付！");
         }
     }

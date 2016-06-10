@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.text.Selection;
 import android.widget.TextView;
 
-import com.arcsoft.hpay100.a.a;
 import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.event.i;
 import com.clilystudio.netbook.model.Author;

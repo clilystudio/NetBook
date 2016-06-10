@@ -13,7 +13,6 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.TextView;
 
-import com.arcsoft.hpay100.a.a;
 import com.clilystudio.netbook.reader.PagerWidget;
 import com.clilystudio.netbook.reader.Reader;
 import com.clilystudio.netbook.reader.bH;

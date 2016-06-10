@@ -10,9 +10,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.arcsoft.hpay100.a.a;
 import com.clilystudio.netbook.adapter.X;
-import com.clilystudio.netbook.model.UGCBookListRoot.UGCBook;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 
 import java.io.UnsupportedEncodingException;

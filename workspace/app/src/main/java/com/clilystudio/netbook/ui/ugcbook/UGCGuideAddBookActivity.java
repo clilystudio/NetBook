@@ -12,7 +12,6 @@ import android.widget.Filterable;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.arcsoft.hpay100.a.a;
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.ui.BaseActivity;
 import com.clilystudio.netbook.widget.SearchEditText;

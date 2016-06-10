@@ -1,6 +1,6 @@
 package com.clilystudio.netbook.reader.txt;
 
-import com.umeng.update.a;
+import com.clilystudio.netbook.umeng.update.a;
 
 final class M
         implements a {

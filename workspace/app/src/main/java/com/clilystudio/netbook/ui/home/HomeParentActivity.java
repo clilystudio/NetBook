@@ -8,7 +8,7 @@ import com.clilystudio.netbook.ui.BaseActivity;
 public class HomeParentActivity extends BaseActivity {
     private boolean b() {
         try {
-            int i = Integer.parseInt(com.umeng.a.b.b(this, "force_update_until_version"));
+            int i = Integer.parseInt(com.clilystudio.netbook.umeng.a_Pack.b.b(this, "force_update_until_version"));
             int j = am.f(this);
             int k = 0;
             if (i > j)
@@ -22,9 +22,9 @@ public class HomeParentActivity extends BaseActivity {
 
     public void onCreate(Bundle paramBundle) {
         super.onCreate(paramBundle);
-        com.umeng.update.b.a(this);
+        com.clilystudio.netbook.umeng.update.b.a(this);
         if (b())
-            com.umeng.update.b.a(new k(this));
+            com.clilystudio.netbook.umeng.update.b.a(new k(this));
     }
 }
 

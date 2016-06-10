@@ -15,7 +15,7 @@ public class ShareRemoveAdActivity extends BaseActivity {
 
     protected void onCreate(Bundle paramBundle) {
         super.onCreate(paramBundle);
-        if (com.arcsoft.hpay100.a.a.i()) {
+        if (com.clilystudio.netbook.hpay100.a_Pack.a.i()) {
             getWindow().setFlags(67108864, 67108864);
             a().a(new ColorDrawable(Color.parseColor("#00000000")));
         }

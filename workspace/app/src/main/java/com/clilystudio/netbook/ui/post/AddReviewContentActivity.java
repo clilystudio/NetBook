@@ -3,7 +3,6 @@ package com.clilystudio.netbook.ui.post;
 import android.os.Bundle;
 import android.widget.EditText;
 
-import com.arcsoft.hpay100.a.a;
 import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.ui.BaseActivity;
 

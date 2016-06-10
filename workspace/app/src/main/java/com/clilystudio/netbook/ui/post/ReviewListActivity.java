@@ -10,7 +10,6 @@ import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
-import com.arcsoft.hpay100.a.a;
 import com.clilystudio.netbook.adapter.D;
 import com.clilystudio.netbook.model.ReviewSummary;
 import com.clilystudio.netbook.ui.BaseActivity;

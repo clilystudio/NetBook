@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.AdapterView;
 
-import com.arcsoft.hpay100.a.a;
+import com.clilystudio.netbook.hpay100.a_Pack.a;
 import com.clilystudio.netbook.db.AudioRecord;
 import com.clilystudio.netbook.db.BookFile;
 import com.clilystudio.netbook.db.BookReadRecord;
@@ -55,7 +55,7 @@ final class p
                 }
             }
             while (!localBookReadRecord.isRecommended());
-            com.umeng.a.b.a(this.a.getActivity(), "book_recommend_read_click", localBookReadRecord.getTitle());
+            com.clilystudio.netbook.umeng.a_Pack.b.a(this.a.getActivity(), "book_recommend_read_click", localBookReadRecord.getTitle());
             return;
             BookFile localBookFile = localBookShelf.getTxt();
             if (new File(localBookFile.getFilePath()).exists()) {

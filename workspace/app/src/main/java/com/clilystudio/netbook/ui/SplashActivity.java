@@ -16,7 +16,6 @@ import com.clilystudio.netbook.model.SplashAdvert;
 import com.clilystudio.netbook.model.TxtFileObject;
 import com.clilystudio.netbook.ui.home.HomeActivity;
 import com.clilystudio.netbook.util.UmengGameTracer;
-import com.clilystudio.netbook.util.UmengGameTracer.From;
 import com.clilystudio.netbook.util.adutil.AdSplashImp;
 import com.clilystudio.netbook.util.adutil.g;
 import com.clilystudio.netbook.util.adutil.l;
@@ -40,7 +39,7 @@ public class SplashActivity extends Activity {
     }
 
     private void g() {
-        if ("1".equals(com.umeng.a.b.b(this, "splash_ad_third_enable"))) {
+        if ("1".equals(com.clilystudio.netbook.umeng.a_Pack.b.b(this, "splash_ad_third_enable"))) {
             findViewById(2131493995).setVisibility(8);
             a(3000L);
             AdSplashImp localAdSplashImp = new AdSplashImp(this);
@@ -75,7 +74,7 @@ public class SplashActivity extends Activity {
                 localImageView.setImageBitmap(localBitmap);
                 localImageView.setOnClickListener(new cj(this, localSplashAdvert, str));
                 i();
-                com.arcsoft.hpay100.a.a.m(this, localSplashAdvert.getSplashRecord().splashId);
+                com.clilystudio.netbook.hpay100.a_Pack.a.m(this, localSplashAdvert.getSplashRecord().splashId);
                 f();
                 locale.b();
                 return i;
@@ -115,7 +114,7 @@ public class SplashActivity extends Activity {
         if ((!am.o(this)) && (localImageView.getDrawable() != null)) ;
         for (this.b = 1200; ; this.b = 0) {
             f();
-            com.arcsoft.hpay100.a.a.m(this, null);
+            com.clilystudio.netbook.hpay100.a_Pack.a.m(this, null);
             return;
         }
     }
@@ -153,21 +152,21 @@ public class SplashActivity extends Activity {
     public void onCreate(Bundle paramBundle) {
         super.onCreate(paramBundle);
         setContentView(2130903397);
-        com.arcsoft.hpay100.a.a.a(getWindow().getDecorView());
+        com.clilystudio.netbook.hpay100.a_Pack.a.a(getWindow().getDecorView());
         ActiveAndroid.initialize(this);
         this.g = ((AdContainerLayout) findViewById(2131493263));
         if (am.q(this)) {
-            float f1 = com.arcsoft.hpay100.a.a.v(this, "rate_zssq_splash_ad");
+            float f1 = com.clilystudio.netbook.hpay100.a_Pack.a.v(this, "rate_zssq_splash_ad");
             double d1 = Math.random();
             if ((f1 <= d1) || (!h()))
                 g();
         }
         while (am.g()) {
-            com.umeng.a.b.a(this, "user_register", "YES");
+            com.clilystudio.netbook.umeng.a_Pack.b.a(this, "user_register", "YES");
             return;
             b();
         }
-        com.umeng.a.b.a(this, "user_register", "NO");
+        com.clilystudio.netbook.umeng.a_Pack.b.a(this, "user_register", "NO");
     }
 
     protected void onDestroy() {
@@ -177,7 +176,7 @@ public class SplashActivity extends Activity {
 
     public void onPause() {
         super.onPause();
-        com.umeng.a.b.a(this);
+        com.clilystudio.netbook.umeng.a_Pack.b.a(this);
     }
 
     protected void onRestart() {
@@ -192,14 +191,14 @@ public class SplashActivity extends Activity {
 
     public void onResume() {
         super.onResume();
-        com.umeng.a.b.b(this);
+        com.clilystudio.netbook.umeng.a_Pack.b.b(this);
         com.xiaomi.mistatistic.sdk.b.a();
         int i;
         String str;
         if (am.g()) {
             Calendar localCalendar = Calendar.getInstance();
             i = 10000 * localCalendar.get(1) + 100 * localCalendar.get(2) + localCalendar.get(5);
-            if (i > com.arcsoft.hpay100.a.a.a(this, "KEY_OPEN_TIME", 0)) {
+            if (i > com.clilystudio.netbook.hpay100.a_Pack.a.a(this, "KEY_OPEN_TIME", 0)) {
                 str = am.e().getUser().getGender();
                 if (str != null)
                     break label73;
@@ -209,15 +208,15 @@ public class SplashActivity extends Activity {
         label73:
         if (str.equals("male")) {
             com.xiaomi.mistatistic.sdk.b.a("user_gender", "male");
-            com.umeng.a.b.a(this, "user_gender", "male");
+            com.clilystudio.netbook.umeng.a_Pack.b.a(this, "user_gender", "male");
         }
         while (true) {
-            com.arcsoft.hpay100.a.a.b(this, "KEY_OPEN_TIME", i);
+            com.clilystudio.netbook.hpay100.a_Pack.a.b(this, "KEY_OPEN_TIME", i);
             return;
             if (!str.equals("female"))
                 continue;
             com.xiaomi.mistatistic.sdk.b.a("user_gender", "female");
-            com.umeng.a.b.a(this, "user_gender", "female");
+            com.clilystudio.netbook.umeng.a_Pack.b.a(this, "user_gender", "female");
         }
     }
 }

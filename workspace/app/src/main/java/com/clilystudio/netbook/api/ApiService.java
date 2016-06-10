@@ -23,7 +23,6 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParseException;
 import com.google.gson.JsonParser;
-import com.umeng.a.b;
 import com.xiaomi.mistatistic.sdk.c;
 
 import java.io.BufferedReader;
@@ -115,7 +114,7 @@ public class ApiService {
 
     public static String a(String paramString1, int paramInt, String paramString2) {
         String str = am.e(paramString2);
-        String[] arrayOfString = com.arcsoft.hpay100.a.a.O(paramString1);
+        String[] arrayOfString = com.clilystudio.netbook.hpay100.a_Pack.a.O(paramString1);
         if (arrayOfString != null) {
             Object[] arrayOfObject = new Object[4];
             arrayOfObject[0] = arrayOfString[0];
@@ -758,7 +757,7 @@ public class ApiService {
             if (localEsChapterRoot != null) {
                 if (localEsChapterRoot.getContent() != null) {
                     ChapterRoot localChapterRoot1 = new ChapterRoot();
-                    String str3 = com.arcsoft.hpay100.a.a.z(localEsChapterRoot.getContent());
+                    String str3 = com.clilystudio.netbook.hpay100.a_Pack.a.z(localEsChapterRoot.getContent());
                     Chapter localChapter = new Chapter();
                     localChapter.setLink(paramString4);
                     localChapter.setBody(str3);
@@ -1403,7 +1402,7 @@ public class ApiService {
                 String str3 = null;
                 if (str2 != null)
                     str3 = str2.replaceAll("<p>", "").replaceAll("</p>", "\n");
-                String str4 = com.arcsoft.hpay100.a.a.z(str3);
+                String str4 = com.clilystudio.netbook.hpay100.a_Pack.a.z(str3);
                 Chapter localChapter = new Chapter();
                 localChapter.setLink(localLdChapterRoot.getSrc());
                 localChapter.setBody(str4);
@@ -2382,7 +2381,7 @@ public class ApiService {
             SgChapterRoot localSgChapterRoot = (SgChapterRoot) a(localHttpRequest, SgChapterRoot.class);
             if ((localSgChapterRoot != null) && (localSgChapterRoot.getContent() != null) && (localSgChapterRoot.getContent().length > 0)) {
                 ChapterRoot localChapterRoot = new ChapterRoot();
-                String str2 = com.arcsoft.hpay100.a.a.z(localSgChapterRoot.getContent()[0].getBlock());
+                String str2 = com.clilystudio.netbook.hpay100.a_Pack.a.z(localSgChapterRoot.getContent()[0].getBlock());
                 Chapter localChapter = new Chapter();
                 localChapter.setLink(paramString1);
                 if ((str2 != null) && (str2.contains("</")))
@@ -2488,7 +2487,7 @@ public class ApiService {
 
     public final NotificationRoot r(String paramString1, String paramString2) {
         String str1;
-        if (com.arcsoft.hpay100.a.a.Q(paramString2))
+        if (com.clilystudio.netbook.hpay100.a_Pack.a.Q(paramString2))
             str1 = String.format("/user/notification/important?token=%s", new Object[]{paramString1});
         while (true) {
             String str2 = f + str1;
@@ -2514,7 +2513,7 @@ public class ApiService {
 
     public final NotificationRoot s(String paramString1, String paramString2) {
         String str1;
-        if (com.arcsoft.hpay100.a.a.Q(paramString2))
+        if (com.clilystudio.netbook.hpay100.a_Pack.a.Q(paramString2))
             str1 = String.format("/user/notification/unimportant?token=%s", new Object[]{paramString1});
         while (true) {
             String str2 = f + str1;
@@ -2626,7 +2625,7 @@ public class ApiService {
     }
 
     public final EsTocRoot v(String paramString) {
-        String[] arrayOfString = com.arcsoft.hpay100.a.a.O(paramString);
+        String[] arrayOfString = com.clilystudio.netbook.hpay100.a_Pack.a.O(paramString);
         if (arrayOfString == null)
             return null;
         Object[] arrayOfObject = new Object[2];
@@ -2669,7 +2668,7 @@ public class ApiService {
     public final ChapterRoot x(String paramString) {
         String str1 = String.format("/chapter/%s", new Object[]{am.e(paramString)});
         String str2 = h + str1;
-        String str3 = str2 + "?" + com.arcsoft.hpay100.a.a.A(str1);
+        String str3 = str2 + "?" + com.clilystudio.netbook.hpay100.a_Pack.a.A(str1);
         ChapterRoot localChapterRoot;
         try {
             HttpRequest localHttpRequest1 = HttpRequest.a(str3);

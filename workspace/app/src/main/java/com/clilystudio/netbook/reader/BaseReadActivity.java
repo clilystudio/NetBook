@@ -3,8 +3,6 @@ package com.clilystudio.netbook.reader;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 
-import com.arcsoft.hpay100.a.a;
-
 public class BaseReadActivity extends FragmentActivity {
     protected com.clilystudio.netbook.api.b a = com.clilystudio.netbook.api.b.a();
 
@@ -19,12 +17,12 @@ public class BaseReadActivity extends FragmentActivity {
 
     public void onPause() {
         super.onPause();
-        com.umeng.a.b.a(this);
+        com.clilystudio.netbook.umeng.a_Pack.b.a(this);
     }
 
     public void onResume() {
         super.onResume();
-        com.umeng.a.b.b(this);
+        com.clilystudio.netbook.umeng.a_Pack.b.b(this);
     }
 }
 

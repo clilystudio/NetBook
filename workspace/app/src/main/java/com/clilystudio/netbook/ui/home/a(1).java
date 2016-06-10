@@ -17,7 +17,7 @@ final class a
     @TargetApi(11)
     public final void run() {
         int i = 1;
-        long l = com.arcsoft.hpay100.a.a.c(this.a, "PREF_FIRST_LAUNCH_TIME", 0L);
+        long l = com.clilystudio.netbook.hpay100.a_Pack.a.c(this.a, "PREF_FIRST_LAUNCH_TIME", 0L);
         int j;
         String str1;
         SharedPreferences localSharedPreferences;
@@ -26,7 +26,7 @@ final class a
         if (Calendar.getInstance().getTimeInMillis() - l >= 604800000L) {
             j = i;
             if (j != 0) {
-                com.clilystudio.netbook.download.a locala = com.arcsoft.hpay100.a.a.I(this.a);
+                com.clilystudio.netbook.download.a locala = com.clilystudio.netbook.hpay100.a_Pack.a.I(this.a);
                 if (locala != null) {
                     locala.a();
                     str1 = locala.b();

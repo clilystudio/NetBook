@@ -3,11 +3,11 @@ package com.clilystudio.netbook.model;
 import android.content.Context;
 import android.view.View;
 
-import com.arcsoft.hpay100.a.a;
+import com.clilystudio.netbook.hpay100.a_Pack.a;
 import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.util.adutil.BaseShelfAd;
 import com.clilystudio.netbook.util.y;
-import com.umeng.a.b;
+import com.clilystudio.netbook.umeng.a_Pack.b;
 
 public class MyApkAdvert extends BaseShelfAd {
     public String getDownloadTitle(Context paramContext) {

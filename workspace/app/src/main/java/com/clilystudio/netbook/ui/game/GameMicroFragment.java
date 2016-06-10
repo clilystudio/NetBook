@@ -12,16 +12,13 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.arcsoft.hpay100.a.a;
 import com.clilystudio.netbook.model.Game;
 import com.clilystudio.netbook.model.GameGroupItem;
-import com.clilystudio.netbook.model.GameLayoutRoot.ModuleLayout;
 import com.clilystudio.netbook.model.ModuleType;
 import com.clilystudio.netbook.ui.BaseLoadingFragment;
 import com.clilystudio.netbook.ui.SmartImageView;
 import com.clilystudio.netbook.widget.GameMicroItemSection;
 import com.clilystudio.netbook.widget.NewGameDownloadButton;
-import com.umeng.a.b;
 
 import java.util.ArrayList;
 import java.util.List;

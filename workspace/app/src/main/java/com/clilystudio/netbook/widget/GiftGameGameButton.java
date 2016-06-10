@@ -72,7 +72,7 @@ public class GiftGameGameButton extends Button {
         ((SmartImageView) localView.findViewById(2131493394)).setImageUrl(this.a.icon);
         ((TextView) localView.findViewById(2131493397)).setText("有 " + this.a.followers + " 个小伙伴正在玩");
         ((TextView) localView.findViewById(2131493395)).setText(this.a.getName());
-        ((TextView) localView.findViewById(2131493396)).setText(com.arcsoft.hpay100.a.a.c(this.a.androidSize));
+        ((TextView) localView.findViewById(2131493396)).setText(com.clilystudio.netbook.hpay100.a_Pack.a.c(this.a.androidSize));
         com.clilystudio.netbook.view.a locala = new com.clilystudio.netbook.view.a(getContext());
         ao.a((Activity) getContext(), this.a);
         GiftGameGetButton localGiftGameGetButton = (GiftGameGetButton) localView.findViewById(2131493398);

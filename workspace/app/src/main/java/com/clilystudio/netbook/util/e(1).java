@@ -204,8 +204,8 @@ public class e {
                 return null;
         }
         SplashRecord localSplashRecord1 = (SplashRecord) localList3.get((int) (Math.random() * i));
-        String str = com.arcsoft.hpay100.a.a.K(localSplashRecord1.img3x4);
-        Bitmap localBitmap = com.arcsoft.hpay100.a.a.k(this.b, str);
+        String str = com.clilystudio.netbook.hpay100.a_Pack.a.K(localSplashRecord1.img3x4);
+        Bitmap localBitmap = com.clilystudio.netbook.hpay100.a_Pack.a.k(this.b, str);
         if (localBitmap == null)
             return null;
         localSplashRecord1.isShow = true;

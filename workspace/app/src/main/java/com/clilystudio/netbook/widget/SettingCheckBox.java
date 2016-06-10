@@ -5,8 +5,6 @@ import android.content.res.TypedArray;
 import android.support.v7.widget.SwitchCompat;
 import android.util.AttributeSet;
 
-import com.arcsoft.hpay100.a.a;
-
 public class SettingCheckBox extends SwitchCompat {
     private final String a;
     private final boolean b;

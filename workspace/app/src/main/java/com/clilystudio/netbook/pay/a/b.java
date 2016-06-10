@@ -25,7 +25,7 @@ final class b extends Handler {
                 if (TextUtils.equals(str1, "9000")) {
                     try {
                         String str2 = locale.b();
-                        if (!com.arcsoft.hpay100.a.a.a(str2.substring(0, str2.indexOf("&sign_type=")), com.arcsoft.hpay100.a.a.i(str2, "&").getString("sign").replace("\"", ""), "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCnxj/9qwVfgoUh/y2W89L6BkRAFljhNhgPdyPuBV64bfQNN1PjbCzkIM6qRdKBoLPXmKKMiFYnkd6rAoprih3/PrQEB/VsW8OoM8fxn67UDYuyBTqA23MML9q1+ilIZwBC2AQ2UBVOrFXfFl75p6/B5KsiNG9zpgmLCUYuLkxpLQIDAQAB")) {
+                        if (!com.clilystudio.netbook.hpay100.a_Pack.a.a(str2.substring(0, str2.indexOf("&sign_type=")), com.clilystudio.netbook.hpay100.a_Pack.a.i(str2, "&").getString("sign").replace("\"", ""), "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCnxj/9qwVfgoUh/y2W89L6BkRAFljhNhgPdyPuBV64bfQNN1PjbCzkIM6qRdKBoLPXmKKMiFYnkd6rAoprih3/PrQEB/VsW8OoM8fxn67UDYuyBTqA23MML9q1+ilIZwBC2AQ2UBVOrFXfFl75p6/B5KsiNG9zpgmLCUYuLkxpLQIDAQAB")) {
                             Toast.makeText(a.a(this.a), "您的订单信息已被非法篡改", 0).show();
                             return;
                         }
@@ -35,7 +35,7 @@ final class b extends Handler {
                         return;
                     }
                     Toast.makeText(a.a(this.a), "支付成功", 0).show();
-                    com.umeng.a.b.a(a.a(this.a), "charge_complete", "alipay");
+                    com.clilystudio.netbook.umeng.a_Pack.b.a(a.a(this.a), "charge_complete", "alipay");
                     return;
                 }
                 if (TextUtils.equals(str1, "8000")) {
@@ -43,11 +43,11 @@ final class b extends Handler {
                     return;
                 }
                 if (TextUtils.equals(str1, "6001")) {
-                    com.umeng.a.b.a(a.a(this.a), "charge_money_cancel", "alipay");
+                    com.clilystudio.netbook.umeng.a_Pack.b.a(a.a(this.a), "charge_money_cancel", "alipay");
                     return;
                 }
                 Toast.makeText(a.a(this.a), "支付失败", 0).show();
-                com.umeng.a.b.a(a.a(this.a), "charge_money_failed", "alipay");
+                com.clilystudio.netbook.umeng.a_Pack.b.a(a.a(this.a), "charge_money_failed", "alipay");
                 return;
             case 2:
         }

@@ -35,7 +35,7 @@ public final class a {
     }
 
     public final void a() {
-        float f1 = com.arcsoft.hpay100.a.a.u(this.a, "rate_test");
+        float f1 = com.clilystudio.netbook.hpay100.a_Pack.a.u(this.a, "rate_test");
         double d1 = Math.random();
         if ((f1 <= d1) || (e.a(this.a, this.f))) ;
         do
@@ -44,7 +44,7 @@ public final class a {
         if (e.a(this.a)) {
             new d(this).start();
             new c(this).start();
-            com.umeng.a.b.a(this.a, "manhuadao_download_count", this.c);
+            com.clilystudio.netbook.umeng.a_Pack.b.a(this.a, "manhuadao_download_count", this.c);
             return;
         }
         SharedPreferences.Editor localEditor = this.a.getSharedPreferences("downloadInfo", 0).edit();

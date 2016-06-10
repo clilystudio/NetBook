@@ -99,7 +99,7 @@ public class BookPostTabActivity extends SimpleTabActivity {
             com.clilystudio.netbook.a.a();
             com.clilystudio.netbook.a.b();
         }
-        com.arcsoft.hpay100.a.a.u(this);
+        com.clilystudio.netbook.hpay100.a_Pack.a.u(this);
     }
 
     protected void onNewIntent(Intent paramIntent) {

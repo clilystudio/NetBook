@@ -5,7 +5,7 @@ import android.view.View;
 
 import com.clilystudio.netbook.util.e;
 import com.clilystudio.netbook.view.a;
-import com.umeng.a.b;
+import com.clilystudio.netbook.umeng.a_Pack.b;
 
 final class G
         implements View.OnClickListener {

@@ -40,7 +40,7 @@ public class ChargeActivity extends BaseLoadingActivity {
             this.f.a(paramChargePlan);
         }
         while (true) {
-            com.umeng.a.b.a(this, "charge_money_click", paramChargePlan.getPriceDsc());
+            com.clilystudio.netbook.umeng.a_Pack.b.a(this, "charge_money_click", paramChargePlan.getPriceDsc());
             return;
             if ("weixinpay".equals(this.a.getType())) {
                 if (this.g == null)

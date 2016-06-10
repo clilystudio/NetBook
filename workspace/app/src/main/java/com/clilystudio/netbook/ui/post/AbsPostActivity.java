@@ -126,7 +126,7 @@ public abstract class AbsPostActivity extends BaseLoadingActivity {
 
     protected void onCreate(Bundle paramBundle) {
         super.onCreate(paramBundle);
-        com.arcsoft.hpay100.a.a.u(this);
+        com.clilystudio.netbook.hpay100.a_Pack.a.u(this);
     }
 
     public void onResume() {

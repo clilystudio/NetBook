@@ -7,7 +7,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.util.AttributeSet;
 
-import com.arcsoft.hpay100.a.a;
+import com.clilystudio.netbook.hpay100.a_Pack.a;
 import com.clilystudio.netbook.db.DownloadItem;
 import com.clilystudio.netbook.util.y;
 

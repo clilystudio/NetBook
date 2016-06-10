@@ -30,7 +30,7 @@ public class CornerImageView extends SmartImageView {
     }
 
     public void setImageURI(Uri paramUri) {
-        setImageBitmap(com.arcsoft.hpay100.a.a.a(BitmapFactory.decodeFile(paramUri.getPath())));
+        setImageBitmap(com.clilystudio.netbook.hpay100.a_Pack.a.a(BitmapFactory.decodeFile(paramUri.getPath())));
     }
 
     public void setImageUrl(String paramString, int paramInt) {

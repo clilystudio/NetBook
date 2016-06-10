@@ -8,8 +8,6 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 
-import com.arcsoft.hpay100.a.a;
-
 public class DividerSection extends RelativeLayout {
     private final FrameLayout a;
     private final View b;

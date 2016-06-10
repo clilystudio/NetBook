@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
-import com.arcsoft.hpay100.a.a;
 import com.clilystudio.netbook.adapter.HomeTopicAdapter;
 import com.clilystudio.netbook.db.BookReadRecord;
 import com.clilystudio.netbook.event.BookShelfRefreshEvent;
@@ -23,7 +22,6 @@ import com.clilystudio.netbook.ui.post.GirlTopicListActivity;
 import com.clilystudio.netbook.ui.post.ReviewListActivity;
 import com.clilystudio.netbook.ui.post.TweetTabActivity;
 import com.clilystudio.netbook.ui.user.AuthLoginActivity;
-import com.clilystudio.netbook.ui.user.AuthLoginActivity.Source;
 import com.clilystudio.netbook.widget.CommunitySection;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 
@@ -164,7 +162,7 @@ public class HomeTopicFragment extends HomeFragment
             default:
                 return;
             case 2131493510:
-                com.umeng.a.b.a(getActivity(), "enter_home_topic");
+                com.clilystudio.netbook.umeng.a_Pack.b.a(getActivity(), "enter_home_topic");
                 Intent localIntent2 = new Intent(getActivity(), TweetTabActivity.class);
                 if (a.a(getActivity(), "FRIST_RUN_POST", true)) {
                     a.b(getActivity(), "FRIST_RUN_POST", false);

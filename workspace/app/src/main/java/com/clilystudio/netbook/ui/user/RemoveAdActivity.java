@@ -3,7 +3,6 @@ package com.clilystudio.netbook.ui.user;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 
-import com.arcsoft.hpay100.a.a;
 import com.clilystudio.netbook.event.i;
 import com.clilystudio.netbook.ui.BaseLoadingActivity;
 import com.clilystudio.netbook.util.D;

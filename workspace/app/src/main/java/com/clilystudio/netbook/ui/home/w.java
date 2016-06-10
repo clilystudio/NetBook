@@ -6,7 +6,7 @@ import android.view.View;
 import com.clilystudio.netbook.model.InsideLink;
 import com.clilystudio.netbook.model.ShelfMsg;
 import com.clilystudio.netbook.util.InsideLinkIntent;
-import com.umeng.a.b;
+import com.clilystudio.netbook.umeng.a_Pack.b;
 
 final class w
         implements View.OnClickListener {

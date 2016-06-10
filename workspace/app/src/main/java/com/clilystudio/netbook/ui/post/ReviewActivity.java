@@ -7,12 +7,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
 
-import com.arcsoft.hpay100.a.a;
 import com.clilystudio.netbook.adapter.z;
 import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.model.Author;
 import com.clilystudio.netbook.model.PostComment;
-import com.clilystudio.netbook.model.PostComment.PostCommentReply;
 import com.clilystudio.netbook.model.ReplyeeInfo;
 import com.clilystudio.netbook.model.Review;
 import com.clilystudio.netbook.model.User;

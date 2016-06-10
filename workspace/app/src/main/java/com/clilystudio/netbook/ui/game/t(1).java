@@ -40,7 +40,7 @@ final class t
         ((SmartImageView) localView.findViewById(2131493394)).setImageUrl(localGiftGame.icon);
         ((TextView) localView.findViewById(2131493397)).setText("有 " + localGiftGame.followers + " 个小伙伴正在玩");
         ((TextView) localView.findViewById(2131493395)).setText(localGiftGame.getName());
-        ((TextView) localView.findViewById(2131493396)).setText(com.arcsoft.hpay100.a.a.c(localGiftGame.androidSize));
+        ((TextView) localView.findViewById(2131493396)).setText(com.clilystudio.netbook.hpay100.a_Pack.a.c(localGiftGame.androidSize));
         com.clilystudio.netbook.view.a locala = new com.clilystudio.netbook.view.a(localGameGiftFragment.getActivity());
         ao.a(localGameGiftFragment.getActivity(), localGiftGame);
         GiftGameGetButton localGiftGameGetButton = (GiftGameGetButton) localView.findViewById(2131493398);

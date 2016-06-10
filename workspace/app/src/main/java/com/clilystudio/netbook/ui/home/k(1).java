@@ -1,6 +1,6 @@
 package com.clilystudio.netbook.ui.home;
 
-import com.umeng.update.a;
+import com.clilystudio.netbook.umeng.update.a;
 
 final class k
         implements a {

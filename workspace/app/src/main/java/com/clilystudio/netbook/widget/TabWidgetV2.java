@@ -8,8 +8,6 @@ import android.graphics.Canvas;
 import android.util.AttributeSet;
 import android.widget.TabWidget;
 
-import com.arcsoft.hpay100.a.a;
-
 public class TabWidgetV2 extends TabWidget {
     private final int e;
     private final int f;

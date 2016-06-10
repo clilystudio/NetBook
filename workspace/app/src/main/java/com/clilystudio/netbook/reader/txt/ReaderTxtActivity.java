@@ -346,7 +346,7 @@ public class ReaderTxtActivity extends FragmentActivity
                 this.o.setVisibility(0);
                 getWindow().addFlags(2048);
                 getWindow().clearFlags(1024);
-                if ((!com.arcsoft.hpay100.a.a.h()) || (this.m))
+                if ((!com.clilystudio.netbook.hpay100.a_Pack.a.h()) || (this.m))
                     continue;
                 this.n.setSystemUiVisibility(0);
                 return;
@@ -383,12 +383,12 @@ public class ReaderTxtActivity extends FragmentActivity
             getWindow().clearFlags(2048);
             if (this.r) {
                 getWindow().addFlags(512);
-                com.arcsoft.hpay100.a.a.a(this.n);
+                com.clilystudio.netbook.hpay100.a_Pack.a.a(this.n);
             }
         } else {
             if (!this.f.f())
                 break label226;
-            if ((com.arcsoft.hpay100.a.a.h()) && (this.m))
+            if ((com.clilystudio.netbook.hpay100.a_Pack.a.h()) && (this.m))
                 this.n.setSystemUiVisibility(2055);
         }
         label226:
@@ -397,17 +397,17 @@ public class ReaderTxtActivity extends FragmentActivity
             getWindow().addFlags(2048);
             getWindow().clearFlags(1024);
             getWindow().clearFlags(512);
-            if ((!com.arcsoft.hpay100.a.a.h()) || (!this.m))
+            if ((!com.clilystudio.netbook.hpay100.a_Pack.a.h()) || (!this.m))
                 break;
             this.n.setSystemUiVisibility(0);
             break;
         }
-        while ((!com.arcsoft.hpay100.a.a.h()) || (!this.m));
+        while ((!com.clilystudio.netbook.hpay100.a_Pack.a.h()) || (!this.m));
         this.n.setSystemUiVisibility(1);
     }
 
     private void u() {
-        this.r = com.arcsoft.hpay100.a.a.l(this, "reader_opt_full_screen");
+        this.r = com.clilystudio.netbook.hpay100.a_Pack.a.l(this, "reader_opt_full_screen");
         this.o.a(this.r);
         t();
     }
@@ -557,7 +557,7 @@ public class ReaderTxtActivity extends FragmentActivity
         super.onCreate(paramBundle);
         getWindow().addFlags(256);
         getWindow().addFlags(512);
-        this.s = com.arcsoft.hpay100.a.a.l(this, "reader_orientation");
+        this.s = com.clilystudio.netbook.hpay100.a_Pack.a.l(this, "reader_orientation");
         f();
         setContentView(2130903123);
         this.c = getIntent().getStringExtra("file_name");
@@ -568,8 +568,8 @@ public class ReaderTxtActivity extends FragmentActivity
         if (this.G == null) {
             this.G = SpeechSynthesizer.createSynthesizer(this, new e(this));
             this.G.setParameter("engine_type", "local");
-            this.G.setParameter("speed", com.arcsoft.hpay100.a.a.a(this, "speech_speed", 50));
-            this.G.setParameter("voice_name", com.arcsoft.hpay100.a.a.d(this, "speech_voice", ""));
+            this.G.setParameter("speed", com.clilystudio.netbook.hpay100.a_Pack.a.a(this, "speech_speed", 50));
+            this.G.setParameter("voice_name", com.clilystudio.netbook.hpay100.a_Pack.a.d(this, "speech_voice", ""));
         }
         this.j = ((PagerWidget) findViewById(2131493158));
         this.u = findViewById(2131493167);
@@ -611,7 +611,7 @@ public class ReaderTxtActivity extends FragmentActivity
             this.z.a(this.G);
             this.z.setOnPlayChangeListener(new w(this));
             this.n = getWindow().getDecorView();
-            if (com.arcsoft.hpay100.a.a.h())
+            if (com.clilystudio.netbook.hpay100.a_Pack.a.h())
                 this.n.setOnSystemUiVisibilityChangeListener(new u(this));
             u();
             if (!this.t)
@@ -637,7 +637,7 @@ public class ReaderTxtActivity extends FragmentActivity
             if (this.G != null) {
                 this.G.stopSpeaking();
                 this.G.destroy();
-                com.arcsoft.hpay100.a.a.K(this);
+                com.clilystudio.netbook.hpay100.a_Pack.a.K(this);
                 h();
             }
             i();

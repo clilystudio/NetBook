@@ -3,7 +3,7 @@ package com.clilystudio.netbook.model;
 import android.content.Context;
 import android.view.View;
 
-import com.arcsoft.hpay100.a.a;
+import com.clilystudio.netbook.hpay100.a_Pack.a;
 import com.clilystudio.netbook.ui.AdWebViewActivity;
 import com.clilystudio.netbook.util.InsideLinkIntent;
 import com.clilystudio.netbook.util.adutil.BaseShelfAd;

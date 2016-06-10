@@ -6,13 +6,12 @@ import android.content.res.Resources;
 import android.util.AttributeSet;
 import android.widget.Button;
 
-import com.arcsoft.hpay100.a.a;
 import com.clilystudio.netbook.db.DownloadItem;
 import com.clilystudio.netbook.model.Game;
 import com.clilystudio.netbook.ui.game.GameDetailActivity;
 import com.clilystudio.netbook.ui.game.s;
 import com.clilystudio.netbook.util.e;
-import com.umeng.a.b;
+import com.clilystudio.netbook.umeng.a_Pack.b;
 
 public class GameDownloadButton extends Button {
     private Game a;

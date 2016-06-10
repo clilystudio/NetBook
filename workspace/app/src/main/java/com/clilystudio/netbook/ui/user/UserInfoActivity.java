@@ -7,7 +7,6 @@ import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.arcsoft.hpay100.a.a;
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.d;
 import com.clilystudio.netbook.event.K;
@@ -73,7 +72,7 @@ public class UserInfoActivity extends BaseActivity {
         }
         b();
         i.a().a(this);
-        com.umeng.a.b.a(this, "PERSONAL_PAGE_SHOW");
+        com.clilystudio.netbook.umeng.a_Pack.b.a(this, "PERSONAL_PAGE_SHOW");
     }
 
     protected void onDestroy() {

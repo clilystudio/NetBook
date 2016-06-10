@@ -3,7 +3,7 @@ package com.clilystudio.netbook.ui;
 import android.text.Editable;
 import android.text.TextWatcher;
 
-import com.arcsoft.hpay100.a.a;
+import com.clilystudio.netbook.hpay100.a_Pack.a;
 
 final class bK
         implements TextWatcher {

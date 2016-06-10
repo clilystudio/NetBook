@@ -2,7 +2,7 @@ package com.clilystudio.netbook.ui.ugcbook;
 
 import android.view.View;
 
-import com.arcsoft.hpay100.a.a;
+import com.clilystudio.netbook.hpay100.a_Pack.a;
 import com.clilystudio.netbook.db.BookReadRecord;
 import com.clilystudio.netbook.event.D;
 import com.clilystudio.netbook.event.i;

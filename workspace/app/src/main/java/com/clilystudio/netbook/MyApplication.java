@@ -8,7 +8,6 @@ import android.support.design.widget.am;
 
 import com.activeandroid.ActiveAndroid;
 import com.activeandroid.query.Select;
-import com.arcsoft.hpay100.a.a;
 import com.clilystudio.netbook.db.BookReadRecord;
 import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.model.BookInfo;
@@ -17,10 +16,7 @@ import com.clilystudio.netbook.model.UGCNewCollection;
 import com.clilystudio.netbook.model.User;
 import com.clilystudio.netbook.reader.Reader;
 import com.clilystudio.netbook.util.V;
-import com.iflytek.cloud.SpeechUtility;
 import com.integralblue.httpresponsecache.HttpResponseCache;
-import com.nostra13.universalimageloader.core.g;
-import com.nostra13.universalimageloader.core.i;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -38,7 +34,7 @@ import java.util.Map;
 import java.util.Properties;
 
 public class MyApplication extends Application {
-    private static MyApplication b = null;
+    private static MyApplication instance = null;
     public UGCNewCollection a;
     private Reader c;
     private BookInfo d;
@@ -51,7 +47,7 @@ public class MyApplication extends Application {
     private List<Long> k = null;
 
     public static MyApplication a() {
-        return b;
+        return instance;
     }
 
     private void a(Properties paramProperties) {
@@ -209,9 +205,9 @@ public class MyApplication extends Application {
 
     public void onCreate() {
         super.onCreate();
-        b = this;
-        com.clilystudio.netbook.api.e.a("1".equals(com.umeng.a.b.b(b, "use_http_dns")));
-        a.q(this);
+        instance = this;
+        com.clilystudio.netbook.api.e.a("1".equals(com.clilystudio.netbook.umeng.a_Pack.b.b(instance, "use_http_dns")));
+        com.clilystudio.netbook.hpay100.a_Pack.a.q(this);
         ActiveAndroid.initialize(this);
         Object localObject1 = null;
         int m = Process.myPid();
@@ -243,8 +239,8 @@ public class MyApplication extends Application {
                 };
                 t.start();
              }
-            com.umeng.a.b.c(this);
-            com.umeng.a.b.a(new f(this));
+            com.clilystudio.netbook.umeng.a_Pack.b.c(this);
+            com.clilystudio.netbook.umeng.a_Pack.b.a(new f(this));
             int i2;
             if (a.l(this, "update_notice_key")) {
                 List localList = ((ActivityManager) getSystemService("activity")).getRunningAppProcesses();
@@ -282,7 +278,6 @@ public class MyApplication extends Application {
                 if (localV.a() == 0L)
                     localV.a(Calendar.getInstance().getTimeInMillis());
                 am.s(this);
-                SpeechUtility.createUtility(this, "appid=56655269");
                 return;
                 i2 = 0;
                 break;

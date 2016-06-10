@@ -8,7 +8,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
 
-import com.arcsoft.hpay100.a.a;
 import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.d;
 import com.clilystudio.netbook.db.BookReadRecord;

@@ -39,7 +39,6 @@ import com.clilystudio.netbook.ui.WifiActivity;
 import com.clilystudio.netbook.ui.game.GameTabActivity;
 import com.clilystudio.netbook.ui.post.CommonPostListActivity;
 import com.clilystudio.netbook.ui.user.AuthLoginActivity;
-import com.clilystudio.netbook.ui.user.AuthLoginActivity.Source;
 import com.clilystudio.netbook.ui.user.MyMessageActivity;
 import com.clilystudio.netbook.ui.user.UserInfoActivity;
 import com.clilystudio.netbook.util.J;
@@ -96,7 +95,7 @@ public class HomeActivity extends HomeParentActivity
         if ((paramInt >= 0) && (paramInt < this.h.getCount())) {
             this.g.setCurrentItem(paramInt, true);
             if (paramInt == -1 + this.h.getCount()) {
-                boolean bool = com.arcsoft.hpay100.a.a.r(this, "switch_17kflow");
+                boolean bool = com.clilystudio.netbook.hpay100.a_Pack.a.r(this, "switch_17kflow");
                 float f1 = j();
                 double d = Math.random();
                 if ((bool) && (f1 > d) && (!this.u))
@@ -137,16 +136,16 @@ public class HomeActivity extends HomeParentActivity
                 return;
             case 2131493485:
                 startActivity(GameTabActivity.a(this));
-                com.arcsoft.hpay100.a.a.n(this, "home_ab_game");
+                com.clilystudio.netbook.hpay100.a_Pack.a.n(this, "home_ab_game");
                 return;
             case 2131493486:
                 startActivity(SearchActivity.a(this));
-                com.arcsoft.hpay100.a.a.n(this, "home_ab_search");
+                com.clilystudio.netbook.hpay100.a_Pack.a.n(this, "home_ab_search");
                 return;
             case 2131493487:
         }
         l();
-        com.arcsoft.hpay100.a.a.n(this, "home_ab_more");
+        com.clilystudio.netbook.hpay100.a_Pack.a.n(this, "home_ab_more");
     }
 
     private void h() {
@@ -166,7 +165,7 @@ public class HomeActivity extends HomeParentActivity
     }
 
     private float j() {
-        String str = com.umeng.a.b.b(this, "rate_17kflow");
+        String str = com.clilystudio.netbook.umeng.a_Pack.b.b(this, "rate_17kflow");
         try {
             float f1 = Float.parseFloat(str);
             return f1;
@@ -185,7 +184,7 @@ public class HomeActivity extends HomeParentActivity
     private void l() {
         try {
             if ((this.j == null) || (!this.j.isShowing())) {
-                this.j = new PopupWindow(getLayoutInflater().inflate(2130903227, null, false), -1, com.arcsoft.hpay100.a.a.L(this));
+                this.j = new PopupWindow(getLayoutInflater().inflate(2130903227, null, false), -1, com.clilystudio.netbook.hpay100.a_Pack.a.L(this));
                 this.j.setAnimationStyle(2131165629);
                 this.j.showAtLocation(a().a(), 0, 0, 0);
             }
@@ -201,7 +200,7 @@ public class HomeActivity extends HomeParentActivity
             }
             this.i = this.i;
             this.i.setAnimationStyle(2131165628);
-            this.i.showAtLocation(localView, 53, com.arcsoft.hpay100.a.a.a(this, 5.0F), am.l(this) + am.k(this));
+            this.i.showAtLocation(localView, 53, com.clilystudio.netbook.hpay100.a_Pack.a.a(this, 5.0F), am.l(this) + am.k(this));
             this.i.setOnDismissListener(new d(this));
             return;
         } catch (Exception localException) {
@@ -475,11 +474,11 @@ public class HomeActivity extends HomeParentActivity
             case 2131493491:
                 if (this.p != null) {
                     m();
-                    com.arcsoft.hpay100.a.a.b(this, "key_enter_msg_time", System.currentTimeMillis());
+                    com.clilystudio.netbook.hpay100.a_Pack.a.b(this, "key_enter_msg_time", System.currentTimeMillis());
                     AccountInfo localAccountInfo = AccountInfo.getOrCreate(this.p.getToken());
                     localAccountInfo.setPrevUnimpNotif(J.a(this).b());
                     localAccountInfo.save();
-                    com.umeng.a.b.a(this, "view_notification");
+                    com.clilystudio.netbook.umeng.a_Pack.b.a(this, "view_notification");
                     com.clilystudio.netbook.event.i.a().c(new w());
                     startActivity(new Intent(this, MyMessageActivity.class));
                     return;
@@ -499,12 +498,12 @@ public class HomeActivity extends HomeParentActivity
                 return;
             case 2131493504:
                 Intent localIntent1 = new Intent(this, HomeTransparentActivity.class);
-                if (com.arcsoft.hpay100.a.a.a(this, "customer_night_theme", false)) {
+                if (com.clilystudio.netbook.hpay100.a_Pack.a.a(this, "customer_night_theme", false)) {
                     this.n.setText(2131034366);
                     this.o.setImageResource(2130838181);
-                    com.arcsoft.hpay100.a.a.b(this, "customer_night_theme", false);
-                    com.arcsoft.hpay100.a.a.b(this, "night_mode", false);
-                    com.arcsoft.hpay100.a.a.C(this);
+                    com.clilystudio.netbook.hpay100.a_Pack.a.b(this, "customer_night_theme", false);
+                    com.clilystudio.netbook.hpay100.a_Pack.a.b(this, "night_mode", false);
+                    com.clilystudio.netbook.hpay100.a_Pack.a.C(this);
                     localIntent1.putExtra("onThemeChange", 0);
                 }
                 while (true) {
@@ -513,10 +512,10 @@ public class HomeActivity extends HomeParentActivity
                     return;
                     this.n.setText(2131034365);
                     this.o.setImageResource(2130838180);
-                    com.arcsoft.hpay100.a.a.b(this, "customer_night_theme", true);
-                    com.arcsoft.hpay100.a.a.b(this, "night_mode", true);
-                    com.umeng.a.b.a(this, "start_night_theme_home");
-                    com.arcsoft.hpay100.a.a.B(this);
+                    com.clilystudio.netbook.hpay100.a_Pack.a.b(this, "customer_night_theme", true);
+                    com.clilystudio.netbook.hpay100.a_Pack.a.b(this, "night_mode", true);
+                    com.clilystudio.netbook.umeng.a_Pack.b.a(this, "start_night_theme_home");
+                    com.clilystudio.netbook.hpay100.a_Pack.a.B(this);
                     localIntent1.putExtra("onThemeChange", 1);
                 }
             case 2131493507:
@@ -526,11 +525,11 @@ public class HomeActivity extends HomeParentActivity
                 startActivity(new Intent(this, ScanTxtFileActivity.class));
                 return;
             case 2131493500:
-                if (!com.arcsoft.hpay100.a.a.d()) {
+                if (!com.clilystudio.netbook.hpay100.a_Pack.a.d()) {
                     com.clilystudio.netbook.util.e.a(this, "无法使用，请检查SD卡是否挂载");
                     return;
                 }
-                if (com.arcsoft.hpay100.a.a.e() <= 20000L) {
+                if (com.clilystudio.netbook.hpay100.a_Pack.a.e() <= 20000L) {
                     com.clilystudio.netbook.util.e.a(this, "SD卡剩余容量不足");
                     return;
                 }
@@ -569,9 +568,9 @@ public class HomeActivity extends HomeParentActivity
         label297:
         TabHost.TabSpec localTabSpec;
         View localView8;
-        if (com.arcsoft.hpay100.a.a.w(this)) {
+        if (com.clilystudio.netbook.hpay100.a_Pack.a.w(this)) {
             this.r.setVisibility(0);
-            this.c = com.arcsoft.hpay100.a.a.x(this);
+            this.c = com.clilystudio.netbook.hpay100.a_Pack.a.x(this);
             if (!this.c)
                 this.r.setVisibility(8);
             com.clilystudio.netbook.event.i.a().a(this);
@@ -594,7 +593,7 @@ public class HomeActivity extends HomeParentActivity
                 break label469;
             localTabSpec = this.f.newTabSpec("tab" + i1);
             localTabSpec.setContent(this);
-            if ((i1 != 1) || (!com.arcsoft.hpay100.a.a.a(this, "FRIST_RUN_POST", true)) || (!com.arcsoft.hpay100.a.a.r(this, "switch_news")))
+            if ((i1 != 1) || (!com.clilystudio.netbook.hpay100.a_Pack.a.a(this, "FRIST_RUN_POST", true)) || (!com.clilystudio.netbook.hpay100.a_Pack.a.r(this, "switch_news")))
                 break label455;
             localView8 = localLayoutInflater.inflate(2130903230, null);
             this.s = ((ViewGroup) localView8);
@@ -632,17 +631,17 @@ public class HomeActivity extends HomeParentActivity
             a(this.p.getUser());
             this.n = ((TextView) this.k.findViewById(2131493506));
             this.o = ((ImageView) this.k.findViewById(2131493505));
-            if (!com.arcsoft.hpay100.a.a.a(this, "customer_night_theme", false))
+            if (!com.clilystudio.netbook.hpay100.a_Pack.a.a(this, "customer_night_theme", false))
                 break label985;
             this.n.setText(2131034365);
             this.o.setImageResource(2130838180);
         }
         while (true) {
-            if (!com.arcsoft.hpay100.a.a.a(this, "bookPushRecords", false)) {
+            if (!com.clilystudio.netbook.hpay100.a_Pack.a.a(this, "bookPushRecords", false)) {
                 List localList = BookReadRecord.getAll();
                 if ((localList != null) && (!localList.isEmpty()))
                     a(localList);
-                com.arcsoft.hpay100.a.a.b(this, "bookPushRecords", true);
+                com.clilystudio.netbook.hpay100.a_Pack.a.b(this, "bookPushRecords", true);
             }
             h();
             i();
@@ -688,7 +687,7 @@ public class HomeActivity extends HomeParentActivity
             this.t.destroy();
         }
         this.u = false;
-        com.arcsoft.hpay100.a.a.b(this, "search_hot_words_date", 0);
+        com.clilystudio.netbook.hpay100.a_Pack.a.b(this, "search_hot_words_date", 0);
     }
 
     @com.squareup.a.l
@@ -783,8 +782,8 @@ public class HomeActivity extends HomeParentActivity
 
     public void onResume() {
         super.onResume();
-        com.clilystudio.netbook.api.e.a("1".equals(com.umeng.a.b.b(this, "use_http_dns")));
-        if (com.arcsoft.hpay100.a.a.l())
+        com.clilystudio.netbook.api.e.a("1".equals(com.clilystudio.netbook.umeng.a_Pack.b.b(this, "use_http_dns")));
+        if (com.clilystudio.netbook.hpay100.a_Pack.a.l())
             new s(this).b(new Void[0]);
         Account localAccount = am.e();
         if (localAccount != null) {
@@ -812,7 +811,7 @@ public class HomeActivity extends HomeParentActivity
         if (this.c == paramH.a()) {
             i1 = 0;
             if (i1 != 0) {
-                if ((!paramH.a()) || (!com.arcsoft.hpay100.a.a.w(this)))
+                if ((!paramH.a()) || (!com.clilystudio.netbook.hpay100.a_Pack.a.w(this)))
                     break label88;
                 label33:
                 this.c = bool;

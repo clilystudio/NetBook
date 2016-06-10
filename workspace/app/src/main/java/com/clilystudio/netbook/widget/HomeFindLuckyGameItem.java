@@ -6,7 +6,7 @@ import android.util.AttributeSet;
 
 import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.ui.LuckyGameWebActivity;
-import com.umeng.a.b;
+import com.clilystudio.netbook.umeng.a_Pack.b;
 
 public class HomeFindLuckyGameItem extends HomeFindItem {
     public HomeFindLuckyGameItem(Activity paramActivity) {

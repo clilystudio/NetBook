@@ -10,7 +10,6 @@ import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
-import com.arcsoft.hpay100.a.a;
 import com.clilystudio.netbook.db.BookReadRecord;
 import com.clilystudio.netbook.event.i;
 import com.clilystudio.netbook.event.m;

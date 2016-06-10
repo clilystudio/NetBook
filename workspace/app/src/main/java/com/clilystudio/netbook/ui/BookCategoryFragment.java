@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.arcsoft.hpay100.a.a;
 import com.clilystudio.netbook.adapter.c;
 import com.clilystudio.netbook.model.CategoryBook;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;

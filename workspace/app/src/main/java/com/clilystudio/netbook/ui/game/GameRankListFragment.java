@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 
-import com.arcsoft.hpay100.a.a;
 import com.clilystudio.netbook.model.Game;
 import com.clilystudio.netbook.ui.BaseLoadingFragment;
 import com.clilystudio.netbook.widget.ScrollLoadListView;

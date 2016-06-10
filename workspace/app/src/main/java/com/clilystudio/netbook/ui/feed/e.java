@@ -3,7 +3,7 @@ package com.clilystudio.netbook.ui.feed;
 import android.app.AlertDialog;
 import android.view.View;
 
-import com.arcsoft.hpay100.a.a;
+import com.clilystudio.netbook.hpay100.a_Pack.a;
 import com.clilystudio.netbook.event.m;
 import com.squareup.a.b;
 

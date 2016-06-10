@@ -24,15 +24,15 @@ public class a {
             e.a(this.a, "请重试");
             return;
         }
-        if (!com.arcsoft.hpay100.a.a.d()) {
+        if (!com.clilystudio.netbook.hpay100.a_Pack.a.d()) {
             e.a(this.a, "无法缓存，请检查SD卡是否挂载");
             return;
         }
-        if (com.arcsoft.hpay100.a.a.f(paramBookReadRecord.getReadMode())) {
+        if (com.clilystudio.netbook.hpay100.a_Pack.a.f(paramBookReadRecord.getReadMode())) {
             e.b(this.a, "暂不支持当前模式缓存");
             return;
         }
-        if (1 == com.arcsoft.hpay100.a.a.r(this.a)) {
+        if (1 == com.clilystudio.netbook.hpay100.a_Pack.a.r(this.a)) {
             b(paramBookReadRecord, paramInt1, paramInt2);
             return;
         }

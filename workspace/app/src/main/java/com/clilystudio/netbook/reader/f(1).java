@@ -1,6 +1,5 @@
 package com.clilystudio.netbook.reader;
 
-import com.arcsoft.hpay100.a.a;
 import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.api.ApiService;
 import com.clilystudio.netbook.api.b;
@@ -8,7 +7,6 @@ import com.clilystudio.netbook.db.BookReadRecord;
 import com.clilystudio.netbook.db.SourceRecord;
 import com.clilystudio.netbook.model.BookInfo;
 import com.clilystudio.netbook.model.BookTopRoot;
-import com.clilystudio.netbook.model.BookTopRoot.Favorite;
 import com.clilystudio.netbook.model.ChapterRoot;
 import com.clilystudio.netbook.model.MixTocRoot;
 import com.clilystudio.netbook.model.Toc;

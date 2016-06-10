@@ -6,7 +6,6 @@ import android.os.Handler;
 import android.view.View;
 import android.widget.ListView;
 
-import com.arcsoft.hpay100.a.a;
 import com.clilystudio.netbook.adapter.BookRankAdapter;
 import com.clilystudio.netbook.event.i;
 import com.clilystudio.netbook.event.k;
@@ -56,7 +55,7 @@ public class BookRankListActivity extends BaseActivity {
         for (Intent localIntent = BookRankMainActivity.a(this, localBookRankSummary.getIds(), localBookRankSummary.getTitle(), str1); ; localIntent = BookRankDetailActivity.a(this, localBookRankSummary.get_id(), localBookRankSummary.getTitle())) {
             startActivity(localIntent);
             String str2 = localBookRankSummary.getTitle();
-            com.umeng.a.b.a(this, "book_rank_list_item", str2 + "_" + str1);
+            com.clilystudio.netbook.umeng.a_Pack.b.a(this, "book_rank_list_item", str2 + "_" + str1);
             return;
             str1 = "female";
             break;

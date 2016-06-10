@@ -8,7 +8,7 @@ import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.arcsoft.hpay100.a.a;
+import com.clilystudio.netbook.hpay100.a_Pack.a;
 import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.model.Advert;
@@ -188,7 +188,7 @@ public final class o {
             Reader localReader = MyApplication.a().b();
             if (localReader != null) {
                 String str = localReader.i();
-                com.umeng.a.b.a(this.b, "chapter_load_error", str);
+                com.clilystudio.netbook.umeng.a_Pack.b.a(this.b, "chapter_load_error", str);
             }
         }
     }
@@ -378,7 +378,7 @@ public final class o {
         n();
         b(paramn);
         if (a(paramn.a())) {
-            com.umeng.a.b.a(this.b, "paying_page_auto_purchase", com.clilystudio.netbook.util.I.b);
+            com.clilystudio.netbook.umeng.a_Pack.b.a(this.b, "paying_page_auto_purchase", com.clilystudio.netbook.util.I.b);
             I localI = new I(this, this.b, "自动购买中...");
             String[] arrayOfString = new String[2];
             arrayOfString[0] = am.e().getToken();
@@ -423,7 +423,7 @@ public final class o {
             return;
         if (f()) {
             if (this.e)
-                com.umeng.a.b.a(this.b, "paying_page_show", com.clilystudio.netbook.util.I.b);
+                com.clilystudio.netbook.umeng.a_Pack.b.a(this.b, "paying_page_show", com.clilystudio.netbook.util.I.b);
             a(true);
             return;
         }
@@ -469,7 +469,7 @@ public final class o {
                 return str == null;
             }
         } catch (Exception localException) {
-            com.umeng.a.b.a(this.b, "zhuishu_catch_exception", "PageBinder_needPay:" + localException.getMessage());
+            com.clilystudio.netbook.umeng.a_Pack.b.a(this.b, "zhuishu_catch_exception", "PageBinder_needPay:" + localException.getMessage());
             return false;
         }
         return false;
@@ -477,7 +477,7 @@ public final class o {
 
     public final void g() {
         if (this.e)
-            com.umeng.a.b.a(this.b, "paying_page_cancel", com.clilystudio.netbook.util.I.b);
+            com.clilystudio.netbook.umeng.a_Pack.b.a(this.b, "paying_page_cancel", com.clilystudio.netbook.util.I.b);
     }
 
     public final void h() {

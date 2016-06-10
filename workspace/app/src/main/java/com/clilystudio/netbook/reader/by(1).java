@@ -4,7 +4,7 @@ import android.content.DialogInterface;
 
 import com.clilystudio.netbook.model.AppItem;
 import com.clilystudio.netbook.util.y;
-import com.umeng.a.b;
+import com.clilystudio.netbook.umeng.a_Pack.b;
 
 final class by
         implements DialogInterface.OnClickListener {

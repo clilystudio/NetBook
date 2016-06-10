@@ -3,7 +3,7 @@ package com.clilystudio.netbook.db;
 import com.activeandroid.Model;
 import com.activeandroid.annotation.Column;
 import com.activeandroid.annotation.Table;
-import com.arcsoft.hpay100.a.a;
+import com.clilystudio.netbook.hpay100.a_Pack.a;
 
 import java.io.File;
 import java.util.Date;

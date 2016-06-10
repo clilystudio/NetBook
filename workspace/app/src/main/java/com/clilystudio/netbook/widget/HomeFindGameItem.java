@@ -5,9 +5,8 @@ import android.content.Context;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 
-import com.arcsoft.hpay100.a.a;
 import com.clilystudio.netbook.ui.game.GameTabActivity;
-import com.umeng.a.b;
+import com.clilystudio.netbook.umeng.a_Pack.b;
 
 public class HomeFindGameItem extends HomeFindItem {
     private String a;

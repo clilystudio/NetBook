@@ -3,7 +3,7 @@ package com.clilystudio.netbook.ui;
 import android.os.Bundle;
 
 import com.jeremyfeinstein.slidingmenu.lib.app.SlidingFragmentActivity;
-import com.umeng.a.b;
+import com.clilystudio.netbook.umeng.a_Pack.b;
 
 public class BaseReadSlmActivity extends SlidingFragmentActivity {
     public void onCreate(Bundle paramBundle) {

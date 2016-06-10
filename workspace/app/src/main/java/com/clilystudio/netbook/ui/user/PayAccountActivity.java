@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-import com.arcsoft.hpay100.a.a;
 import com.clilystudio.netbook.d;
 import com.clilystudio.netbook.event.i;
 import com.clilystudio.netbook.event.s;
@@ -45,13 +44,13 @@ public class PayAccountActivity extends BaseActivity
                 startActivity(PayConsumeActivity.a(this, getIntent().getStringExtra("key_token"), "消费记录"));
                 return;
             case 2131493807:
-                com.umeng.a.b.a(this, "user_remove_ad_click");
+                com.clilystudio.netbook.umeng.a_Pack.b.a(this, "user_remove_ad_click");
                 startActivity(new Intent(this, RemoveAdActivity.class));
                 return;
             case 2131493199:
         }
         new p(this).a();
-        com.umeng.a.b.a(this, "charge_click_count");
+        com.clilystudio.netbook.umeng.a_Pack.b.a(this, "charge_click_count");
     }
 
     protected void onCreate(Bundle paramBundle) {

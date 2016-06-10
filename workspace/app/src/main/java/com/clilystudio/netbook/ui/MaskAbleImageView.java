@@ -5,8 +5,6 @@ import android.graphics.Canvas;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 
-import com.arcsoft.hpay100.a.a;
-
 public class MaskAbleImageView extends ImageView {
     protected int a;
 
