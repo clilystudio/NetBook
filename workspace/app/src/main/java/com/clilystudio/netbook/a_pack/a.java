@@ -10,7 +10,7 @@ public abstract class a extends c<String, TocSourceRoot> {
         super(paramActivity, 2131034218, paramBoolean);
     }
 
-    private static TocSourceRoot a(String[] paramArrayOfString) {
+    public TocSourceRoot a(String[] paramArrayOfString) {
         try {
             b.a();
             TocSourceRoot localTocSourceRoot = b.b().g(paramArrayOfString[0]);
@@ -20,7 +20,16 @@ public abstract class a extends c<String, TocSourceRoot> {
         }
         return null;
     }
-
+//    public Object a(Object[] paramArrayOfString) {
+//        try {
+//            b.a();
+//            TocSourceRoot localTocSourceRoot = b.b().g((String)paramArrayOfString[0]);
+//            return localTocSourceRoot;
+//        } catch (Exception localException) {
+//            localException.printStackTrace();
+//        }
+//        return null;
+//    }
     protected void a() {
     }
 

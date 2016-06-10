@@ -18,6 +18,7 @@ import com.clilystudio.netbook.model.User;
 import com.clilystudio.netbook.reader.Reader;
 import com.clilystudio.netbook.util.V;
 import com.iflytek.cloud.SpeechUtility;
+import com.integralblue.httpresponsecache.HttpResponseCache;
 import com.nostra13.universalimageloader.core.g;
 import com.nostra13.universalimageloader.core.i;
 
@@ -227,8 +228,21 @@ public class MyApplication extends Application {
         for (Object localObject2 = localRunningAppProcessInfo2.processName; ; localObject2 = localObject1) {
             localObject1 = localObject2;
             break;
-            if (localObject1.equals("com.clilystudio.netbook"))
-                new e(this).start();
+            if (localObject1.equals("com.clilystudio.netbook")) {
+                Thread t = new Thread() {
+                    @Override
+                    public void run() {
+                        File v1 = getCacheDir();
+                        File v0 = new File(v1, "http2");
+                        try {
+                            HttpResponseCache.install(v0, 200 * 1024 * 1024);
+                        } catch (IOException e1) {
+                            e1.printStackTrace();
+                        }
+                    }
+                };
+                t.start();
+             }
             com.umeng.a.b.c(this);
             com.umeng.a.b.a(new f(this));
             int i2;

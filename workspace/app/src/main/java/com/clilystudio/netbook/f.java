@@ -6,8 +6,7 @@ import com.clilystudio.netbook.api.ApiService;
 import com.clilystudio.netbook.event.H;
 import com.clilystudio.netbook.event.i;
 
-final class f
-        implements com.umeng.a.a.a {
+final class f implements com.umeng.a.a.a {
     f(MyApplication paramMyApplication) {
     }
 

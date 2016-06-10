@@ -4,8 +4,6 @@ import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.db.BookTopicEnterRecord;
 import com.clilystudio.netbook.model.TopicCount;
 
-import java.io.IOException;
-
 public final class f extends e<Void, Void, Void> {
     private String a;
 
@@ -13,17 +11,12 @@ public final class f extends e<Void, Void, Void> {
         this.a = paramString;
     }
 
-    private Void a() {
-        try {
-            b.a();
-            TopicCount localTopicCount = b.b().I(this.a);
-            if ((localTopicCount != null) && (localTopicCount.isOk()))
-                BookTopicEnterRecord.updateCount(this.a, localTopicCount.getCount());
-            return null;
-        } catch (IOException localIOException) {
-            while (true)
-                localIOException.printStackTrace();
-        }
+    public Void doInBackground(Void[] paramArrayOfInput) {
+        b.a();
+        TopicCount localTopicCount = b.b().I(this.a);
+        if ((localTopicCount != null) && (localTopicCount.isOk()))
+            BookTopicEnterRecord.updateCount(this.a, localTopicCount.getCount());
+        return null;
     }
 }
 
