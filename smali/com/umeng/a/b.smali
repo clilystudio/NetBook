@@ -39,107 +39,59 @@
     .locals 7
 
     .prologue
-    .line 204
-    sget-object v0, Lcom/umeng/a/b;->a:Lcom/umeng/a/j;
-
-    const/4 v3, 0x0
-
-    const-wide/16 v4, -0x1
-
-    const/4 v6, 0x1
-
-    move-object v1, p0
-
-    move-object v2, p1
-
-    invoke-virtual/range {v0 .. v6}, Lcom/umeng/a/j;->a(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;JI)V
-
-    .line 205
-    return-void
+    v0 = Lcom/umeng/a/b;->a;
+    v3 = 0x0;
+    v4 = -0x1;
+    v6 = 0x1;
+    v1 = p0;
+    v2 = p1;
+    v0.a(..v6);
+    return;
 .end method
-
 .method public static a(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;)V
     .locals 7
-
     .prologue
-    .line 240
-    invoke-static {p2}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
-
-    move-result v0
-
-    if-eqz v0, :cond_0
-
-    .line 241
-    const-string v0, "MobclickAgent"
-
-    const-string v1, "label is null or empty"
-
-    invoke-static {v0, v1}, Lu/aly/bt;->a(Ljava/lang/String;Ljava/lang/String;)V
-
-    .line 246
+    v0 = Landroid/text/TextUtils.isEmpty(p2);
+    if (v0 == 0) {
+//       if-eqz v0, :cond_0
+    }
+    v0 = "MobclickAgent";
+    v1 = "label is null or empty";
+    Lu/aly/bt.a(v0, v1);
     :goto_0
-    return-void
-
-    .line 245
+    return;
     :cond_0
-    sget-object v0, Lcom/umeng/a/b;->a:Lcom/umeng/a/j;
-
-    const-wide/16 v4, -0x1
-
-    const/4 v6, 0x1
-
-    move-object v1, p0
-
-    move-object v2, p1
-
-    move-object v3, p2
-
-    invoke-virtual/range {v0 .. v6}, Lcom/umeng/a/j;->a(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;JI)V
-
+    v0 = Lcom/umeng/a/b;->a;
+    v4 = -0x1;
+    v6 = 0x1;
+    v1 = p0;
+    v2 = p1;
+    v3 = p2;
+    v0.a(..v6);
     goto :goto_0
 .end method
-
 .method public static a(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;I)V
     .locals 7
-
     .prologue
-    const/4 v3, 0x0
-
-    .line 225
-    invoke-static {v3}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
-
-    move-result v0
-
-    if-eqz v0, :cond_0
-
-    .line 226
-    const-string v0, "MobclickAgent"
-
-    const-string v1, "label is null or empty"
-
-    invoke-static {v0, v1}, Lu/aly/bt;->a(Ljava/lang/String;Ljava/lang/String;)V
-
-    .line 231
+    v3 = 0x0;
+    v0 = Landroid/text/TextUtils.isEmpty(v3);
+    if (v0 == 0) {
+//       if-eqz v0, :cond_0
+    }
+    v0 = "MobclickAgent";
+    v1 = "label is null or empty";
+    Lu/aly/bt.a(v0, v1);
     :goto_0
-    return-void
-
-    .line 230
+    return;
     :cond_0
-    sget-object v0, Lcom/umeng/a/b;->a:Lcom/umeng/a/j;
-
-    const-wide/16 v4, -0x1
-
-    const/4 v6, 0x1
-
-    move-object v1, p0
-
-    move-object v2, p1
-
-    invoke-virtual/range {v0 .. v6}, Lcom/umeng/a/j;->a(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;JI)V
-
+    v0 = Lcom/umeng/a/b;->a;
+    v4 = -0x1;
+    v6 = 0x1;
+    v1 = p0;
+    v2 = p1;
+    v0.a(..v6);
     goto :goto_0
 .end method
-
 .method public static a(Landroid/content/Context;Ljava/lang/String;Ljava/util/Map;I)V
     .locals 6
     .annotation system Ldalvik/annotation/Signature;
@@ -154,169 +106,89 @@
             ">;I)V"
         }
     .end annotation
-
     .prologue
-    .line 327
-    new-instance v3, Ljava/util/HashMap;
-
-    invoke-direct {v3}, Ljava/util/HashMap;-><init>()V
-
-    .line 331
-    const-string v0, "__ct__"
-
-    invoke-static {p3}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-
-    move-result-object v1
-
-    invoke-virtual {v3, v0, v1}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-
-    .line 332
-    sget-object v0, Lcom/umeng/a/b;->a:Lcom/umeng/a/j;
-
-    const-wide/16 v4, -0x1
-
-    move-object v1, p0
-
-    move-object v2, p1
-
-    invoke-virtual/range {v0 .. v5}, Lcom/umeng/a/j;->a(Landroid/content/Context;Ljava/lang/String;Ljava/util/Map;J)V
-
-    .line 333
-    return-void
+    v3 = new HashMap();
+    v3.<init>();
+    v0 = "__ct__";
+    v1 = Ljava/lang/Integer.valueOf(p3);
+    v3.put(v0, v1);
+    v0 = Lcom/umeng/a/b;->a;
+    v4 = -0x1;
+    v1 = p0;
+    v2 = p1;
+    v0.a(..v5);
+    return;
 .end method
-
 .method public static a(Lcom/umeng/a/a/a;)V
     .locals 1
-
     .prologue
-    .line 67
-    sget-object v0, Lcom/umeng/a/b;->a:Lcom/umeng/a/j;
-
-    invoke-virtual {v0, p0}, Lcom/umeng/a/j;->a(Lcom/umeng/a/a/a;)V
-
-    .line 68
-    return-void
+    v0 = Lcom/umeng/a/b;->a;
+    v0.a(p0);
+    return;
 .end method
-
 .method public static a(Ljava/lang/String;)V
     .locals 2
-
     .prologue
-    .line 101
-    invoke-static {p0}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
-
-    move-result v0
-
-    if-nez v0, :cond_0
-
-    .line 102
-    sget-object v0, Lcom/umeng/a/b;->a:Lcom/umeng/a/j;
-
-    invoke-virtual {v0, p0}, Lcom/umeng/a/j;->a(Ljava/lang/String;)V
-
-    .line 106
+    v0 = Landroid/text/TextUtils.isEmpty(p0);
+    if (v0 != 0) {
+//       if-nez v0, :cond_0
+    }
+    v0 = Lcom/umeng/a/b;->a;
+    v0.a(p0);
     :goto_0
-    return-void
-
-    .line 104
+    return;
     :cond_0
-    const-string v0, "MobclickAgent"
-
-    const-string v1, "pageName is null or empty"
-
-    invoke-static {v0, v1}, Lu/aly/bt;->b(Ljava/lang/String;Ljava/lang/String;)V
-
+    v0 = "MobclickAgent";
+    v1 = "pageName is null or empty";
+    Lu/aly/bt.b(v0, v1);
     goto :goto_0
 .end method
-
 .method public static b(Landroid/content/Context;Ljava/lang/String;)Ljava/lang/String;
     .locals 2
-
     .prologue
-    .line 436
-    invoke-static {p0}, Lcom/umeng/a/o;->a(Landroid/content/Context;)Lcom/umeng/a/o;
-
-    invoke-static {}, Lcom/umeng/a/o;->g()Landroid/content/SharedPreferences;
-
-    move-result-object v0
-
-    .line 437
-    const-string v1, ""
-
-    invoke-interface {v0, p1, v1}, Landroid/content/SharedPreferences;->getString(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-
-    move-result-object v0
-
-    return-object v0
+    Lcom/umeng/a/o.a(p0);
+    v0 = invoke-static {}, Lcom/umeng/a/o;->g()Landroid/content/SharedPreferences;
+    v1 = "";
+    v0 = v0.getString(p1, v1);
+    return v0;
 .end method
-
 .method public static b(Landroid/content/Context;)V
     .locals 2
-
     .prologue
-    .line 139
-    if-nez p0, :cond_0
-
-    .line 140
-    const-string v0, "MobclickAgent"
-
-    const-string v1, "unexpected null context in onResume"
-
-    invoke-static {v0, v1}, Lu/aly/bt;->b(Ljava/lang/String;Ljava/lang/String;)V
-
-    .line 145
+    if (p0 != 0) {
+//       if-nez p0, :cond_0
+    }
+    v0 = "MobclickAgent";
+    v1 = "unexpected null context in onResume";
+    Lu/aly/bt.b(v0, v1);
     :goto_0
-    return-void
-
-    .line 144
+    return;
     :cond_0
-    sget-object v0, Lcom/umeng/a/b;->a:Lcom/umeng/a/j;
-
-    invoke-virtual {v0, p0}, Lcom/umeng/a/j;->b(Landroid/content/Context;)V
-
+    v0 = Lcom/umeng/a/b;->a;
+    v0.b(p0);
     goto :goto_0
 .end method
-
 .method public static b(Ljava/lang/String;)V
     .locals 2
-
     .prologue
-    .line 112
-    invoke-static {p0}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
-
-    move-result v0
-
-    if-nez v0, :cond_0
-
-    .line 113
-    sget-object v0, Lcom/umeng/a/b;->a:Lcom/umeng/a/j;
-
-    invoke-virtual {v0, p0}, Lcom/umeng/a/j;->b(Ljava/lang/String;)V
-
-    .line 117
+    v0 = Landroid/text/TextUtils.isEmpty(p0);
+    if (v0 != 0) {
+//       if-nez v0, :cond_0
+    }
+    v0 = Lcom/umeng/a/b;->a;
+    v0.b(p0);
     :goto_0
-    return-void
-
-    .line 115
+    return;
     :cond_0
-    const-string v0, "MobclickAgent"
-
-    const-string v1, "pageName is null or empty"
-
-    invoke-static {v0, v1}, Lu/aly/bt;->b(Ljava/lang/String;Ljava/lang/String;)V
-
+    v0 = "MobclickAgent";
+    v1 = "pageName is null or empty";
+    Lu/aly/bt.b(v0, v1);
     goto :goto_0
 .end method
-
 .method public static c(Landroid/content/Context;)V
     .locals 1
-
     .prologue
-    .line 463
-    sget-object v0, Lcom/umeng/a/b;->a:Lcom/umeng/a/j;
-
-    invoke-virtual {v0, p0}, Lcom/umeng/a/j;->a(Landroid/content/Context;)V
-
-    .line 464
-    return-void
+    v0 = Lcom/umeng/a/b;->a;
+    v0.a(p0);
+    return;
 .end method
