@@ -3,6 +3,7 @@ package com.clilystudio.netbook.ui.ugcbook;
 import android.content.Context;
 import android.support.v7.widget.ay;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import com.clilystudio.netbook.model.UgcFilterRoot.FilterGroup;
@@ -85,7 +86,15 @@ final class ak extends ah {
                         localUgcFilterTextView.setVisibility(0);
                         localUgcFilterTextView.setText(str1);
                         localUgcFilterTextView.setSelected(UGCMainActivity.j(localal.k.c).equals(localUgcFilterTextView.a()));
-                        localUgcFilterTextView.setOnClickListener(new am(localal, str1));
+                        localUgcFilterTextView.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                ak.this.a = true;
+                                UGCMainActivity.a(UGCMainActivity.this, str1);
+                                super.b(0);
+                                ak.this.b(0); // super.b(0); -> ah.b(0);
+                            }
+                        });
                         m++;
                         continue;
                         i = 0;

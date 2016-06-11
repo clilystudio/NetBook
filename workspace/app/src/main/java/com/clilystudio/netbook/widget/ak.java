@@ -10,10 +10,10 @@ import java.util.List;
 
 public final class ak {
     private final g b;
-    private am a;
+    private am_interface a;
     private List<PaySheetItem> c;
 
-    public ak(Activity paramActivity, am paramam, List<PaySheetItem> paramList) {
+    public ak(Activity paramActivity, am_interface paramam, List<PaySheetItem> paramList) {
         this.a = paramam;
         this.b = new g(paramActivity);
         this.c = paramList;

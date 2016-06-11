@@ -30,5 +30,6 @@ public final class p extends Shape {
         super.onResize(paramFloat1, paramFloat2);
         this.a = new RectF(0.0F, 0.0F, paramFloat1, paramFloat2);
     }
+// TODO method public final synthetic a(Ljava/lang/Object;)V
 }
 
