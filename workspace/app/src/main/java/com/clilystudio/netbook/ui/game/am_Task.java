@@ -9,8 +9,8 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
-final class am extends e<String, Void, List<Game>> {
-    private am(GameRankListFragment paramGameRankListFragment) {
+final class am_Task extends e<String, Void, List<Game>> {
+    private am_Task(GameRankListFragment paramGameRankListFragment) {
     }
 
     private List<Game> a() {

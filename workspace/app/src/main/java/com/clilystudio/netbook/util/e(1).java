@@ -13,6 +13,8 @@ import android.widget.RemoteViews;
 import android.widget.Toast;
 
 import com.clilystudio.netbook.MyApplication;
+import com.clilystudio.netbook.api.*;
+import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.db.SplashRecord;
 import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.model.Author;
@@ -177,11 +179,22 @@ public class e {
         return android.support.design.widget.am.e().getUser().getId();
     }
 
-    public static void c(String paramString) {
-        Account localAccount = android.support.design.widget.am.e();
+    public static void c(final String paramString) {
+        final Account localAccount = android.support.design.widget.am.e();
         if (localAccount == null)
             return;
-        new am(localAccount, paramString).start();
+        Thread t = new Thread() {
+            @Override
+            public void run() {
+                try {
+                    com.clilystudio.netbook.api.b.a();
+                    com.clilystudio.netbook.api.b.b().x(localAccount.getToken(), paramString);
+                    return;
+                } catch (Exception localException) {
+                    localException.printStackTrace();
+                }            }
+        };
+        t.start();
     }
 
     public final SplashAdvert a() {

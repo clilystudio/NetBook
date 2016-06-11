@@ -19,9 +19,19 @@ public class GameRankListFragment extends BaseLoadingFragment {
     private View b;
     private List<Game> c = new ArrayList();
     private al d;
-    private am e;
+    private am_Task e;
     private BroadcastReceiver f = new aj(this);
-    private av g = new ak(this);
+    private av g = new av(this) {
+
+        @Override
+        public void a() {
+            if (GameRankListFragment.this.e || (GameRankListFragment.this.e.getStatus() == AsyncTask.Status.FINISHED)) {
+                GameRankListFragment.d(this.a).setVisibility(0);
+                GameRankListFragment.a(this.a, new am_Task(this.a, 0));
+                GameRankListFragment.this.e.b(new String[0]);
+            }
+       }
+    };
 
     private void g() {
         if (!this.c.isEmpty()) {
@@ -37,7 +47,7 @@ public class GameRankListFragment extends BaseLoadingFragment {
     protected final void b() {
         f();
         this.c.clear();
-        this.e = new am(this, 0);
+        this.e = new am_Task(this, 0);
         this.e.b(new String[0]);
     }
 
