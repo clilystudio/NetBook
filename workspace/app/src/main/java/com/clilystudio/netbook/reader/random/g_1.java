@@ -1,0 +1,19 @@
+
+package com.clilystudio.netbook.reader.random;
+
+import com.clilystudio.netbook.reader.G;
+
+final class g implements G {
+
+    g(ReaderRandomActivity ReaderRandomActivity1)
+    {
+        a = ReaderRandomActivity1;
+    }
+
+    private ReaderRandomActivity a;
+
+    public final void a(int int1)
+    {
+        ReaderRandomActivity.b( a, int1 );
+    }
+}
