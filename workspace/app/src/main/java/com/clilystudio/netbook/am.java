@@ -27,6 +27,7 @@ import android.util.TypedValue;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
+import android.widget.TableLayout;
 
 import com.alipay.b.a.d;
 import com.ushaqi.zhuishushenqi.db.BookDlRecord;
@@ -94,84 +95,8 @@ public class am {
         return null;
     }
 
-    public static int a(Context paramContext, int paramInt) {
-        TypedArray localTypedArray = paramContext.getTheme().obtainStyledAttributes(new int[]{paramInt});
-        int i = localTypedArray.getColor(0, 0);
-        localTypedArray.recycle();
-        return i;
-    }
-
-    public static int a(String paramString, int paramInt) {
-        while (paramInt < paramString.length()) {
-            int i = paramString.charAt(paramInt);
-            if ((i != 32) && (i != 9))
-                break;
-            paramInt++;
-        }
-        return paramInt;
-    }
-
-    public static int a(String paramString1, int paramInt, String paramString2) {
-        while ((paramInt < paramString1.length()) && (paramString2.indexOf(paramString1.charAt(paramInt)) == -1))
-            paramInt++;
-        return paramInt;
-    }
-
-    public static Bitmap a(int paramInt1, int paramInt2, int paramInt3, Context paramContext) {
-        Bitmap localBitmap1 = BitmapFactory.decodeResource(paramContext.getResources(), paramInt1);
-        NinePatchDrawable localNinePatchDrawable = new NinePatchDrawable(localBitmap1, localBitmap1.getNinePatchChunk(), new Rect(), null);
-        localNinePatchDrawable.setBounds(0, 0, paramInt2, paramInt3);
-        Bitmap localBitmap2 = Bitmap.createBitmap(paramInt2, paramInt3, Bitmap.Config.ARGB_8888);
-        localNinePatchDrawable.draw(new Canvas(localBitmap2));
-        return localBitmap2;
-    }
-
-    public static d a(Context paramContext) {
-        monitorenter;
-        try {
-            String str = A(paramContext);
-            if (a(str))
-                str = i();
-            boolean bool = a(str);
-            Object localObject2 = null;
-            if (bool) ;
-            while (true) {
-                return localObject2;
-                try {
-                    JSONObject localJSONObject = new JSONObject(str);
-                    d locald = new d(localJSONObject.optString("apdid"), localJSONObject.optString("deviceInfoHash"), localJSONObject.optString("token"), localJSONObject.optString("timestamp"));
-                    localObject2 = locald;
-                } catch (Exception localException) {
-                    com.alipay.security.mobile.module.a.a.a(localException);
-                    localObject2 = null;
-                }
-            }
-        } finally {
-            monitorexit;
-        }
-        throw localObject1;
-    }
-
-    public static Account a(Activity paramActivity) {
-        if (paramActivity == null)
-            return null;
-        Account localAccount = e();
-        if (localAccount != null)
-            return localAccount;
-        e.a(paramActivity, "请登录后再操作");
-        paramActivity.startActivity(AuthLoginActivity.a(paramActivity));
-        return null;
-    }
-
-    public static String a(Map<String, String> paramMap, String paramString1, String paramString2) {
-        if (paramMap == null) ;
-        String str;
-        do {
-            return paramString2;
-            str = (String) paramMap.get(paramString1);
-        }
-        while (str == null);
-        return str;
+    public final int a() {
+        return this.b;
     }
 
     public static String a(byte[] paramArrayOfByte) {
@@ -199,6 +124,30 @@ public class am {
         return null;
     }
 
+    final void a(int paramInt) {
+        this.b = paramInt;
+    }
+
+
+    public static Bitmap a(int paramInt1, int paramInt2, int paramInt3, Context paramContext) {
+        Bitmap localBitmap1 = BitmapFactory.decodeResource(paramContext.getResources(), paramInt1);
+        NinePatchDrawable localNinePatchDrawable = new NinePatchDrawable(localBitmap1, localBitmap1.getNinePatchChunk(), new Rect(), null);
+        localNinePatchDrawable.setBounds(0, 0, paramInt2, paramInt3);
+        Bitmap localBitmap2 = Bitmap.createBitmap(paramInt2, paramInt3, Bitmap.Config.ARGB_8888);
+        localNinePatchDrawable.draw(new Canvas(localBitmap2));
+        return localBitmap2;
+    }
+
+    public static Account a(Activity paramActivity) {
+        if (paramActivity == null)
+            return null;
+        Account localAccount = e();
+        if (localAccount != null)
+            return localAccount;
+        e.a(paramActivity, "请登录后再操作");
+        paramActivity.startActivity(AuthLoginActivity.a(paramActivity));
+        return null;
+    }
     public static void a(Activity paramActivity, String paramString1, String paramString2) {
         Intent localIntent = new Intent("android.intent.action.VIEW", Uri.parse(paramString1));
         try {
@@ -212,12 +161,45 @@ public class am {
         }
     }
 
+    public static int a(Context paramContext, int paramInt) {
+        TypedArray localTypedArray = paramContext.getTheme().obtainStyledAttributes(new int[]{paramInt});
+        int i = localTypedArray.getColor(0, 0);
+        localTypedArray.recycle();
+        return i;
+    }
+
     public static void a(Context paramContext, long paramLong) {
         com.clilystudio.netbook.hpay100.a_Pack.a.e(paramContext, "pref_new_imp_notif_time", String.valueOf(paramLong));
     }
 
     public static void a(Context paramContext, View paramView) {
         ((InputMethodManager) paramContext.getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+    }
+
+    public static d a(Context paramContext) {
+        monitorenter;
+        try {
+            String str = A(paramContext);
+            if (a(str))
+                str = i();
+            boolean bool = a(str);
+            Object localObject2 = null;
+            if (bool) ;
+            while (true) {
+                return localObject2;
+                try {
+                    JSONObject localJSONObject = new JSONObject(str);
+                    d locald = new d(localJSONObject.optString("apdid"), localJSONObject.optString("deviceInfoHash"), localJSONObject.optString("token"), localJSONObject.optString("timestamp"));
+                    localObject2 = locald;
+                } catch (Exception localException) {
+                    com.alipay.security.mobile.module.a.a.a(localException);
+                    localObject2 = null;
+                }
+            }
+        } finally {
+            monitorexit;
+        }
+        throw localObject1;
     }
 
     // ERROR //
@@ -354,6 +336,10 @@ public class am {
             ((ClipboardManager) paramContext.getSystemService("clipboard")).setText(paramString);
     }
 
+    public static boolean a(AsyncTask paramAsyncTask) {
+        return (paramAsyncTask == null) || (paramAsyncTask.getStatus() == AsyncTask.Status.FINISHED) || (paramAsyncTask.isCancelled());
+    }
+
     public static void a(EditText paramEditText, String paramString) {
         String str = MyApplication.a().getProperty(paramString);
         if (!com.clilystudio.netbook.hpay100.a_Pack.a.Q(str)) {
@@ -363,8 +349,11 @@ public class am {
         }
     }
 
-    public static boolean a(AsyncTask paramAsyncTask) {
-        return (paramAsyncTask == null) || (paramAsyncTask.getStatus() == AsyncTask.Status.FINISHED) || (paramAsyncTask.isCancelled());
+    public final am a(CharSequence paramCharSequence) {
+        this.a = paramCharSequence;
+        if (this.b >= 0)
+            TabLayout.a(this.c, this.b);
+        return this;
     }
 
     public static boolean a(String paramString) {
@@ -389,10 +378,43 @@ public class am {
         return true;
     }
 
+    public static int a(String paramString, int paramInt) {
+        while (paramInt < paramString.length()) {
+            int i = paramString.charAt(paramInt);
+            if ((i != 32) && (i != 9))
+                break;
+            paramInt++;
+        }
+        return paramInt;
+    }
+
+    public static int a(String paramString1, int paramInt, String paramString2) {
+        while ((paramInt < paramString1.length()) && (paramString2.indexOf(paramString1.charAt(paramInt)) == -1))
+            paramInt++;
+        return paramInt;
+    }
+
     public static boolean a(String paramString1, String paramString2) {
         if (paramString1 == null)
             return paramString2 == null;
         return paramString1.equals(paramString2);
+    }
+
+    public static String a(Map<String, String> paramMap, String paramString1, String paramString2) {
+        if (paramMap == null) ;
+        String str;
+        do {
+            return paramString2;
+            str = (String) paramMap.get(paramString1);
+        }
+        while (str == null);
+        return str;
+    }
+
+//    .method static synthetic a(Landroid/support/design/widget/am;)Landroid/support/design/widget/TabLayout;
+    // call by widget/TabLayout
+    public static TableLayout a(am paramam) {
+        return this.c;
     }
 
     public static int b(Context paramContext, int paramInt) {
@@ -1125,21 +1147,6 @@ public class am {
 
     public static int z(Context paramContext) {
         return u.a.c.a(paramContext).a("umeng_common_rich_notification_cancel");
-    }
-
-    public final int a() {
-        return this.b;
-    }
-
-    public final am a(CharSequence paramCharSequence) {
-        this.a = paramCharSequence;
-        if (this.b >= 0)
-            TabLayout.a(this.c, this.b);
-        return this;
-    }
-
-    final void a(int paramInt) {
-        this.b = paramInt;
     }
 
     public final CharSequence b() {
