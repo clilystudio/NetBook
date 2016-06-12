@@ -54,11 +54,13 @@ public class MyApplication extends Application {
     }
 
     private void a(Properties paramProperties) {
-        b.a(this).a(paramProperties);
+        Properties localProperties = getProperties();
+        localProperties.putAll(paramProperties);
+        setProperties(localProperties);
     }
 
     public final String a(String paramString) {
-        return b.a(this).a().getProperty(paramString);
+        return getProperties().getProperty(paramString);
     }
 
     public final void a(int paramInt) {
@@ -88,11 +90,17 @@ public class MyApplication extends Application {
     }
 
     public final void a(String paramString1, String paramString2) {
-        b.a(this).a(paramString1, paramString2);
+        Properties localProperties = getProperties();
+        localProperties.setProperty(paramString1, paramString2);
+        setProperties(localProperties);
     }
 
     public final void a(String[] paramArrayOfString) {
-        b.a(this).a(paramArrayOfString);
+        Properties localProperties = getProperties();
+        int i = paramArrayOfString.length;
+        for (int j = 0; j < i; j++)
+            localProperties.remove(paramArrayOfString[j]);
+        setProperties(localProperties);
     }
 
     public final boolean a(java.io.Serializable paramSerializable, String paramString) {
@@ -275,5 +283,54 @@ public class MyApplication extends Application {
         am.s(this);
         return;
     }
+
+
+    private final Properties getProperties() {
+        Properties properties = new Properties();
+        File file = getDir("config", Context.MODE_PRIVATE);
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder = stringBuilder.append(file.getPath());
+        stringBuilder = stringBuilder.append(File.separator);
+        stringBuilder = stringBuilder.append("config");
+        FileInputStream fis = null;
+        try {
+            fis = new FileInputStream(stringBuilder.toString());
+            properties.load(fis);
+            return properties;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        } finally {
+            if (fis != null) {
+                try {
+                    fis.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+
+    private void setProperties(Properties paramProperties) {
+        File file = new File(getDir("config", Context.MODE_PRIVATE), "config");
+        FileOutputStream fos = null;
+        try {
+            fos = new FileOutputStream(file);
+            paramProperties.store(fos, null);
+            fos.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (fos != null) {
+                try {
+                    fos.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
 }
 

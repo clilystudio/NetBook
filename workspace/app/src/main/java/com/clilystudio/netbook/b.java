@@ -8,6 +8,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Properties;
 
+@Deprecated
 public final class b {
     private static b b;
     private Context a;
@@ -21,7 +22,7 @@ public final class b {
         return b;
     }
 
-    private void b(Properties paramProperties) {
+    private void setProperties(Properties paramProperties) {
         File file = new File(this.a.getDir("config", Context.MODE_PRIVATE), "config");
         FileOutputStream fos = null;
         try {
@@ -41,7 +42,7 @@ public final class b {
         }
     }
 
-    public final Properties a() {
+    public final Properties getProperties() {
         Properties properties = new Properties();
         File file = this.a.getDir("config", Context.MODE_PRIVATE);
         StringBuilder stringBuilder = new StringBuilder();
@@ -68,23 +69,23 @@ public final class b {
     }
 
     public final void a(String paramString1, String paramString2) {
-        Properties localProperties = a();
+        Properties localProperties = getProperties();
         localProperties.setProperty(paramString1, paramString2);
-        b(localProperties);
+        setProperties(localProperties);
     }
 
     public final void a(Properties paramProperties) {
-        Properties localProperties = a();
+        Properties localProperties = getProperties();
         localProperties.putAll(paramProperties);
-        b(localProperties);
+        setProperties(localProperties);
     }
 
     public final void a(String[] paramArrayOfString) {
-        Properties localProperties = a();
+        Properties localProperties = getProperties();
         int i = paramArrayOfString.length;
         for (int j = 0; j < i; j++)
             localProperties.remove(paramArrayOfString[j]);
-        b(localProperties);
+        setProperties(localProperties);
     }
 }
 
