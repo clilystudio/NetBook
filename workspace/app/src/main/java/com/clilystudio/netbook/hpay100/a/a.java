@@ -192,7 +192,7 @@ public class a {
     }
 
     public static boolean A(Context Context1) {
-        return "1".equals(com.clilystudio.netbook.umeng.a.b.b(Context1, "shelf_ad_third_enable"));
+        return "1".equals(com.umeng.a.b.b(Context1, "shelf_ad_third_enable"));
     }
 
     public static void B(Context Context1) {
@@ -208,7 +208,7 @@ public class a {
         long long4 = new Date().getTime();
 
         if (long2 > 0L && long4 > long2)
-            com.clilystudio.netbook.umeng.a.b.a(Context1, "night_theme_period", null, (int) ((long4 - long2) / 1000L / 60L));
+            com.umeng.a.b.a(Context1, "night_theme_period", null, (int) ((long4 - long2) / 1000L / 60L));
         b(Context1, "start_night_theme", 0L);
     }
 
@@ -286,7 +286,7 @@ public class a {
         long long4 = new Date().getTime();
 
         if (long2 > 0L && long4 > long2)
-            com.clilystudio.netbook.umeng.a.b.a(Context1, "auto_read_period", null, (int) ((long4 - long2) / 1000L / 60L));
+            com.umeng.a.b.a(Context1, "auto_read_period", null, (int) ((long4 - long2) / 1000L / 60L));
         b(Context1, "start_auto_read_time", 0L);
     }
 
@@ -334,7 +334,7 @@ public class a {
     public static boolean F(Context Context1) {
         if (r(Context1, "show_new_ads")) {
             String String2 = am.n(Context1);
-            String String3 = com.clilystudio.netbook.umeng.a.b.b(Context1, "show_new_ads_disabled_channel");
+            String String3 = com.umeng.a.b.b(Context1, "show_new_ads_disabled_channel");
             int int4;
 
             label_36:
@@ -380,11 +380,11 @@ public class a {
     }
 
     public static void G(Context Context1) {
-        com.clilystudio.netbook.umeng.a.b.a(Context1, "HOT_KEY_WORD_CHANGE_CLICK", "CHANGE");
+        com.umeng.a.b.a(Context1, "HOT_KEY_WORD_CHANGE_CLICK", "CHANGE");
     }
 
     public static float H(Context Context1) {
-        String String2 = com.clilystudio.netbook.umeng.a.b.b(Context1, "rate_bfd_recommend");
+        String String2 = com.umeng.a.b.b(Context1, "rate_bfd_recommend");
         float float4;
 
         try {
@@ -419,10 +419,10 @@ public class a {
     }
 
     public static com.clilystudio.netbook.download.a I(Context Context1) {
-        String String2 = com.clilystudio.netbook.umeng.a.b.b(Context1, "app_name");
-        String String3 = com.clilystudio.netbook.umeng.a.b.b(Context1, "app_apk_url");
-        String String4 = com.clilystudio.netbook.umeng.a.b.b(Context1, "app_icon_url");
-        String String5 = com.clilystudio.netbook.umeng.a.b.b(Context1, "app_package_name");
+        String String2 = com.umeng.a.b.b(Context1, "app_name");
+        String String3 = com.umeng.a.b.b(Context1, "app_apk_url");
+        String String4 = com.umeng.a.b.b(Context1, "app_icon_url");
+        String String5 = com.umeng.a.b.b(Context1, "app_package_name");
 
         if (!Z(String2) && !Z(String3) && !Z(String4) && !Z(String5))
             return new com.clilystudio.netbook.download.a(Context1, String2, String3, String4, String5);
@@ -470,7 +470,7 @@ public class a {
         long long4 = new Date().getTime();
 
         if (long2 > 0L && long4 > long2)
-            com.clilystudio.netbook.umeng.a.b.a(Context1, "tts_speaking_period", null, (int) ((long4 - long2) / 1000L / 60L));
+            com.umeng.a.b.a(Context1, "tts_speaking_period", null, (int) ((long4 - long2) / 1000L / 60L));
         b(Context1, "tts_start_time", 0L);
     }
 
@@ -2191,12 +2191,12 @@ public class a {
 
         if (String4 != null) {
             if (int3 == 1)
-                com.clilystudio.netbook.umeng.a.b.a(Context1, "share_book_info_platform", String4);
+                com.umeng.a.b.a(Context1, "share_book_info_platform", String4);
             else if (int3 == 2) {
-                com.clilystudio.netbook.umeng.a.b.a(Context1, "share_post_detail_platform", String4);
+                com.umeng.a.b.a(Context1, "share_post_detail_platform", String4);
                 return;
             } else if (int3 == 3) {
-                com.clilystudio.netbook.umeng.a.b.a(Context1, "share_book_list_platform", String4);
+                com.umeng.a.b.a(Context1, "share_book_list_platform", String4);
                 return;
             }
         }
@@ -2223,7 +2223,7 @@ public class a {
             String String4 = d(Context1, "ad_shelf_show", null);
 
             if (String4 == null || !String4.contains((CharSequence) Object3)) {
-                com.clilystudio.netbook.umeng.a.b.a(Context1, new StringBuilder("zssq_ad_show_").append(Advert2.getPosition()).toString(), Advert2.getTitle());
+                com.umeng.a.b.a(Context1, new StringBuilder("zssq_ad_show_").append(Advert2.getPosition()).toString(), Advert2.getTitle());
                 e(Context1, "ad_shelf_show", new StringBuilder().append(String4).append((String) Object3).toString());
                 return;
             }
@@ -3388,7 +3388,7 @@ public class a {
 
     public static void b(Context Context1, Advert Advert2) {
         if (Advert2 != null)
-            com.clilystudio.netbook.umeng.a.b.a(Context1, new StringBuilder("zssq_ad_click_").append(Advert2.getPosition()).toString(), Advert2.getTitle());
+            com.umeng.a.b.a(Context1, new StringBuilder("zssq_ad_click_").append(Advert2.getPosition()).toString(), Advert2.getTitle());
     }
 // Error: Internal #201:
 // The following method may not be correct.
@@ -4544,7 +4544,7 @@ public class a {
     }
 
     public static boolean l() {
-        if (!"0".equals(com.clilystudio.netbook.umeng.a.b.b((Context) MyApplication.a(), "force_encrypt_chapter")))
+        if (!"0".equals(com.umeng.a.b.b((Context) MyApplication.a(), "force_encrypt_chapter")))
             return true;
         else
             return false;
@@ -4604,7 +4604,7 @@ public class a {
             String String3 = d(Context1, "ad_splash_show", null);
 
             if (String3 == null || !String3.contains((CharSequence) String2)) {
-                com.clilystudio.netbook.umeng.a.b.a(Context1, "ad_splash_show", String2);
+                com.umeng.a.b.a(Context1, "ad_splash_show", String2);
                 e(Context1, "ad_splash_show", new StringBuilder().append(String3).append(String2).toString());
                 return;
             }
@@ -4695,7 +4695,7 @@ public class a {
     }
 
     public static void n(Context Context1, String String2) {
-        com.clilystudio.netbook.umeng.a.b.a(Context1, "home_ab_menu_click", String2);
+        com.umeng.a.b.a(Context1, "home_ab_menu_click", String2);
     }
 
     public static long o(String String1) {
@@ -4740,7 +4740,7 @@ public class a {
     }
 
     public static void o(Context Context1, String String2) {
-        com.clilystudio.netbook.umeng.a.b.a(Context1, "splash_ad_click", String2);
+        com.umeng.a.b.a(Context1, "splash_ad_click", String2);
     }
 
     public static Map p(Context Context1) {
@@ -4751,7 +4751,7 @@ public class a {
     }
 
     public static void p(Context Context1, String String2) {
-        com.clilystudio.netbook.umeng.a.b.a(Context1, "book_category_major_click", String2);
+        com.umeng.a.b.a(Context1, "book_category_major_click", String2);
     }
 
     public static boolean p(String String1) {
@@ -4768,7 +4768,7 @@ public class a {
     }
 
     public static void q(Context Context1, String String2) {
-        com.clilystudio.netbook.umeng.a.b.a(Context1, "reader_menu_event", String2);
+        com.umeng.a.b.a(Context1, "reader_menu_event", String2);
     }
 
     public static boolean q(String String1) {
@@ -4814,7 +4814,7 @@ public class a {
     }
 
     public static boolean r(Context Context1, String String2) {
-        return "1".equals(com.clilystudio.netbook.umeng.a.b.b(Context1, String2));
+        return "1".equals(com.umeng.a.b.b(Context1, String2));
     }
 
     public static String s(String String1) {
@@ -4822,7 +4822,7 @@ public class a {
     }
 
     public static void s(Context Context1, String String2) {
-        com.clilystudio.netbook.umeng.a.b.a(Context1, "post_official_open", String2);
+        com.umeng.a.b.a(Context1, "post_official_open", String2);
     }
 
     public static boolean s(Context Context1) {
@@ -4833,7 +4833,7 @@ public class a {
     }
 
     public static void t(Context Context1, String String2) {
-        com.clilystudio.netbook.umeng.a.b.a(Context1, "HOT_KEY_WORD_CLICK", String2);
+        com.umeng.a.b.a(Context1, "HOT_KEY_WORD_CLICK", String2);
     }
 
     public static void t(String String1) {
@@ -4859,7 +4859,7 @@ public class a {
     }
 
     public static float u(Context Context1, String String2) {
-        String String3 = com.clilystudio.netbook.umeng.a.b.b(Context1, String2);
+        String String3 = com.umeng.a.b.b(Context1, String2);
         float float5;
 
         try {
@@ -4874,7 +4874,7 @@ public class a {
         int int2 = com.clilystudio.netbook.util.t.a();
 
         if (int2 != a(Context1, "key_all_post_open_by_day", 0)) {
-            com.clilystudio.netbook.umeng.a.b.a(Context1, "all_post_open_by_day");
+            com.umeng.a.b.a(Context1, "all_post_open_by_day");
             b(Context1, "key_all_post_open_by_day", int2);
         }
     }
@@ -4884,7 +4884,7 @@ public class a {
     }
 
     public static float v(Context Context1, String String2) {
-        String String3 = com.clilystudio.netbook.umeng.a.b.b(Context1, String2);
+        String String3 = com.umeng.a.b.b(Context1, String2);
         float float5;
 
         try {
@@ -4899,7 +4899,7 @@ public class a {
         int int2 = com.clilystudio.netbook.util.t.a();
 
         if (int2 != a(Context1, "key_audiobook_listen_count", 0)) {
-            com.clilystudio.netbook.umeng.a.b.a(Context1, "audiobook_listen_count");
+            com.umeng.a.b.a(Context1, "audiobook_listen_count");
             b(Context1, "key_audiobook_listen_count", int2);
         }
     }
@@ -4915,7 +4915,7 @@ public class a {
     public static boolean w(Context Context1) {
         if (!"com.clilystudio.netbooktest".equals("com.clilystudio.netbook")) {
             String String2 = am.n(Context1);
-            int int3 = b(com.clilystudio.netbook.umeng.a.b.b(Context1, "home_game_center_toggle"), 0);
+            int int3 = b(com.umeng.a.b.b(Context1, "home_game_center_toggle"), 0);
             boolean boolean4;
 
             if (am.f(Context1) < int3)
@@ -4931,7 +4931,7 @@ public class a {
     }
 
     public static boolean w(Context Context1, String String2) {
-        String String3 = com.clilystudio.netbook.umeng.a.b.b(Context1, String2);
+        String String3 = com.umeng.a.b.b(Context1, String2);
         float float5;
 
         try {
@@ -4951,7 +4951,7 @@ public class a {
 
     public static boolean x(Context Context1) {
         String String2 = am.n(Context1);
-        String String3 = com.clilystudio.netbook.umeng.a.b.b(Context1, "game_center_disabled_at_channel");
+        String String3 = com.umeng.a.b.b(Context1, "game_center_disabled_at_channel");
 
         if (String3 != null && String3.length() > 0) {
             String[] String_1darray4 = String3.split(",");
@@ -5000,7 +5000,7 @@ public class a {
     }
 
     public static boolean y(Context Context1) {
-        return "1".equals(com.clilystudio.netbook.umeng.a.b.b(Context1, "show_remove_ad"));
+        return "1".equals(com.umeng.a.b.b(Context1, "show_remove_ad"));
     }
 
     public static String z(String String1) {
@@ -5012,7 +5012,7 @@ public class a {
 
     public static boolean z(Context Context1) {
         String String2 = am.n(Context1);
-        String String3 = com.clilystudio.netbook.umeng.a.b.b(Context1, "one_yuan_disabled_channel");
+        String String3 = com.umeng.a.b.b(Context1, "one_yuan_disabled_channel");
 
         if (String3 != null && String3.length() > 0) {
             String[] String_1darray4 = String3.split(",");

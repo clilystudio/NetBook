@@ -63,12 +63,12 @@ public class GameCatListFragment extends BaseLoadingFragment {
 
     public void onPause() {
         super.onPause();
-        com.clilystudio.netbook.umeng.a.b.b("game_cate");
+        com.umeng.a.b.b("game_cate");
     }
 
     public void onResume() {
         super.onResume();
-        com.clilystudio.netbook.umeng.a.b.a("game_cate");
+        com.umeng.a.b.a("game_cate");
     }
 
     public void onViewCreated(View View1, Bundle Bundle2) {

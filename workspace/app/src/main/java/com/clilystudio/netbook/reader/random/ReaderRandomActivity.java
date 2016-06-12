@@ -203,7 +203,7 @@ public class ReaderRandomActivity extends FragmentActivity {
         ReaderRandomActivity1.j = (PagerWidget) ReaderRandomActivity1.findViewById(2131493158);
         ReaderRandomActivity1.j.setAdapter((PagerAdapter) new h(ReaderRandomActivity1));
         ReaderRandomActivity1.j.setOnPageChangeListener((cw) new i(ReaderRandomActivity1));
-        ReaderRandomActivity1.j.setOnClickListener$4b8a6d15((com.clilystudio.netbook.umeng.update.a) new j(ReaderRandomActivity1));
+        ReaderRandomActivity1.j.setOnClickListener$4b8a6d15((com.umeng.update.a) new j(ReaderRandomActivity1));
         MyApplication.a().a(ReaderRandomActivity1.e);
         ReaderRandomActivity1.a(0);
     }
@@ -462,7 +462,7 @@ public class ReaderRandomActivity extends FragmentActivity {
         f.a((cd) new K(this));
         b();
         o.setTitle("\u4E66\u540D\u88AB\u5C01\u5370");
-        o.setOnBtnClickListener$3ce42dcd((com.clilystudio.netbook.umeng.update.a) new L(this));
+        o.setOnBtnClickListener$3ce42dcd((com.umeng.update.a) new L(this));
         s = findViewById(2131493171);
         s.setVisibility(0);
         View2 = findViewById(2131493936);

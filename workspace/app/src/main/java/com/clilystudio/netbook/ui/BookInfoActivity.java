@@ -453,7 +453,7 @@ public class BookInfoActivity extends BaseActivity implements View$OnClickListen
                 }
                 String4 = String3;
             }
-            com.clilystudio.netbook.umeng.a.b.a((Context) this, "book_info_add");
+            com.umeng.a.b.a((Context) this, "book_info_add");
             i();
         }
         com.clilystudio.netbook.util.e.a((Activity) this, String4);
@@ -464,16 +464,16 @@ public class BookInfoActivity extends BaseActivity implements View$OnClickListen
             default:
                 return;
             case 1:
-                com.clilystudio.netbook.umeng.a.b.a((Context) this, "book_info_recommend_add_shelf", "zhuishu");
+                com.umeng.a.b.a((Context) this, "book_info_recommend_add_shelf", "zhuishu");
                 return;
             case 2:
-                com.clilystudio.netbook.umeng.a.b.a((Context) this, "page_footing_recommend_add_shelf", "zhuishu");
+                com.umeng.a.b.a((Context) this, "page_footing_recommend_add_shelf", "zhuishu");
                 return;
             case 3:
-                com.clilystudio.netbook.umeng.a.b.a((Context) this, "book_info_recommend_add_shelf", "bfd");
+                com.umeng.a.b.a((Context) this, "book_info_recommend_add_shelf", "bfd");
                 return;
             case 4:
-                com.clilystudio.netbook.umeng.a.b.a((Context) this, "page_footing_recommend_add_shelf", "bfd");
+                com.umeng.a.b.a((Context) this, "page_footing_recommend_add_shelf", "bfd");
                 return;
         }
     }
@@ -523,11 +523,11 @@ public class BookInfoActivity extends BaseActivity implements View$OnClickListen
                     new com.clilystudio.netbook.util.m((Activity) this).a(k);
                 } else
                     new com.clilystudio.netbook.util.m((Activity) this).a(BookReadRecord2);
-                com.clilystudio.netbook.umeng.a.b.a((Context) this, "book_info_search");
+                com.umeng.a.b.a((Context) this, "book_info_search");
                 return;
             case 2131493329:
                 startActivity(BookPostTabActivity.a((Context) this, h, k.getTitle()));
-                com.clilystudio.netbook.umeng.a.b.a((Context) this, "book_info_post");
+                com.umeng.a.b.a((Context) this, "book_info_post");
                 return;
             case 2131493284:
                 startActivity(AuthorBooksActivity.a((Context) this, k.getAuthor()));
@@ -575,7 +575,7 @@ public class BookInfoActivity extends BaseActivity implements View$OnClickListen
         i = boolean6;
         com.clilystudio.netbook.event.i.a().a(this);
         j();
-        com.clilystudio.netbook.umeng.a.b.a((Context) this, "book_info_open");
+        com.umeng.a.b.a((Context) this, "book_info_open");
         l = getIntent().getIntExtra("open_type", 0);
     }
 

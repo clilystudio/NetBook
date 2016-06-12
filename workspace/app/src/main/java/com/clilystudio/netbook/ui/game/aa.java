@@ -23,7 +23,7 @@ final class aa implements View$OnClickListener {
             Object Object3;
 
             if (GameMicroFragment.e(b.i.a) != null && GameMicroFragment.e(b.i.a).indexOf(a.getBannerImage()) >= 0)
-                com.clilystudio.netbook.umeng.a.b.a((Context) b.i.a.getActivity(), "micro_game_banner_click", new StringBuilder("Banner ").append(GameMicroFragment.e(b.i.a).indexOf(a.getBannerImage())).toString());
+                com.umeng.a.b.a((Context) b.i.a.getActivity(), "micro_game_banner_click", new StringBuilder("Banner ").append(GameMicroFragment.e(b.i.a).indexOf(a.getBannerImage())).toString());
             Object3 = new InsideLinkIntent((Context) b.i.a.getActivity(), a.getLink(), true);
             b.i.a.startActivity((Intent) Object3);
         } catch (UnImplementException UnImplementException2) {

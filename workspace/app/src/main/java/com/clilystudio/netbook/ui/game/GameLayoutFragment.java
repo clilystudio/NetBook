@@ -118,14 +118,14 @@ public class GameLayoutFragment extends BaseLoadingFragment {
     public void onPause() {
         super.onPause();
         getActivity().unregisterReceiver(f);
-        com.clilystudio.netbook.umeng.a.b.b("game_layout");
+        com.umeng.a.b.b("game_layout");
     }
 
     public void onResume() {
         super.onResume();
         getActivity().registerReceiver(f, new IntentFilter("update_game_item_status"));
         h();
-        com.clilystudio.netbook.umeng.a.b.a("game_layout");
+        com.umeng.a.b.a("game_layout");
     }
 
     public void onViewCreated(View View1, Bundle Bundle2) {

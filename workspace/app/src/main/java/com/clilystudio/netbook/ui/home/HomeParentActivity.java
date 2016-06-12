@@ -19,7 +19,7 @@ public class HomeParentActivity extends BaseActivity {
         boolean boolean4;
 
         try {
-            int2 = Integer.parseInt(com.clilystudio.netbook.umeng.a.b.b((Context) this, "force_update_until_version"));
+            int2 = Integer.parseInt(com.umeng.a.b.b((Context) this, "force_update_until_version"));
             int3 = am.f((Context) this);
         } catch (Exception Exception1) {
             Exception1.printStackTrace();
@@ -33,8 +33,8 @@ public class HomeParentActivity extends BaseActivity {
 
     public void onCreate(Bundle Bundle1) {
         super.onCreate(Bundle1);
-        com.clilystudio.netbook.umeng.update.b.a((Context) this);
+        com.umeng.update.b.a((Context) this);
         if (b())
-            com.clilystudio.netbook.umeng.update.b.a((com.clilystudio.netbook.umeng.update.a) new k(this));
+            com.umeng.update.b.a((com.umeng.update.a) new k(this));
     }
 }

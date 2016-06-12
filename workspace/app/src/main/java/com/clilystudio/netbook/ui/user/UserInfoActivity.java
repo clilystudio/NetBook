@@ -138,7 +138,7 @@ public class UserInfoActivity extends BaseActivity {
         }
         b();
         i.a().a(this);
-        com.clilystudio.netbook.umeng.a.b.a((Context) this, "PERSONAL_PAGE_SHOW");
+        com.umeng.a.b.a((Context) this, "PERSONAL_PAGE_SHOW");
     }
 
     protected void onDestroy() {

@@ -70,7 +70,7 @@ public class ChargeActivity extends BaseLoadingActivity {
                     h = new com.clilystudio.netbook.pay.b.a((Context) this);
                 h.a(ChargePlan1);
             }
-            com.clilystudio.netbook.umeng.a.b.a((Context) this, "charge_money_click", ChargePlan1.getPriceDsc());
+            com.umeng.a.b.a((Context) this, "charge_money_click", ChargePlan1.getPriceDsc());
         }
     }
 

@@ -164,7 +164,7 @@ public final class bZ {
         com.clilystudio.netbook.hpay100.a.a.b((Context) m, "customer_night_theme", x);
         com.clilystudio.netbook.hpay100.a.a.b((Context) m, "night_mode", x);
         if (x) {
-            com.clilystudio.netbook.umeng.a.b.a((Context) m, "start_night_theme_page");
+            com.umeng.a.b.a((Context) m, "start_night_theme_page");
             com.clilystudio.netbook.hpay100.a.a.B((Context) m);
         } else
             com.clilystudio.netbook.hpay100.a.a.C((Context) m);

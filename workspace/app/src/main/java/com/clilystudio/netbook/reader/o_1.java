@@ -279,7 +279,7 @@ public final class o {
             if (Reader2 != null) {
                 String String3 = Reader2.i();
 
-                com.clilystudio.netbook.umeng.a.b.a((Context) b, "chapter_load_error", String3);
+                com.umeng.a.b.a((Context) b, "chapter_load_error", String3);
             }
         }
     }
@@ -484,7 +484,7 @@ public final class o {
             I I5;
             String[] String_1darray6;
 
-            com.clilystudio.netbook.umeng.a.b.a((Context) b, "paying_page_auto_purchase", com.clilystudio.netbook.util.I.b);
+            com.umeng.a.b.a((Context) b, "paying_page_auto_purchase", com.clilystudio.netbook.util.I.b);
             I5 = new I(this, b, "\u81EA\u52A8\u8D2D\u4E70\u4E2D...");
             String_1darray6 = new String[2];
             String_1darray6[0] = am.e().getToken();
@@ -535,7 +535,7 @@ public final class o {
         if (d != null) {
             if (f()) {
                 if (e)
-                    com.clilystudio.netbook.umeng.a.b.a((Context) b, "paying_page_show", com.clilystudio.netbook.util.I.b);
+                    com.umeng.a.b.a((Context) b, "paying_page_show", com.clilystudio.netbook.util.I.b);
                 a(true);
             } else {
                 TextView TextView1;
@@ -566,13 +566,13 @@ public final class o {
             if (d == null)
                 return false;
         } catch (Exception Exception1) {
-            com.clilystudio.netbook.umeng.a.b.a((Context) b, "zhuishu_catch_exception", new StringBuilder("PageBinder_needPay:").append(Exception1.getMessage()).toString());
+            com.umeng.a.b.a((Context) b, "zhuishu_catch_exception", new StringBuilder("PageBinder_needPay:").append(Exception1.getMessage()).toString());
             return false;
         }
         try {
             ChapterLink_1darray2 = MyApplication.a().b().d();
         } catch (Exception Exception5) {
-            com.clilystudio.netbook.umeng.a.b.a((Context) b, "zhuishu_catch_exception", new StringBuilder("PageBinder_needPay:").append(Exception5.getMessage()).toString());
+            com.umeng.a.b.a((Context) b, "zhuishu_catch_exception", new StringBuilder("PageBinder_needPay:").append(Exception5.getMessage()).toString());
             return false;
         }
         if (ChapterLink_1darray2 == null || ChapterLink_1darray2.length == 0)
@@ -584,7 +584,7 @@ public final class o {
             try {
                 int3 = d.l();
             } catch (Exception Exception6) {
-                com.clilystudio.netbook.umeng.a.b.a((Context) b, "zhuishu_catch_exception", new StringBuilder("PageBinder_needPay:").append(Exception6.getMessage()).toString());
+                com.umeng.a.b.a((Context) b, "zhuishu_catch_exception", new StringBuilder("PageBinder_needPay:").append(Exception6.getMessage()).toString());
                 return false;
             }
             if (int3 < 0)
@@ -594,7 +594,7 @@ public final class o {
                     if (int3 >= ChapterLink_1darray2.length)
                         int3 = -1 + ChapterLink_1darray2.length;
                 } catch (Exception Exception7) {
-                    com.clilystudio.netbook.umeng.a.b.a((Context) b, "zhuishu_catch_exception", new StringBuilder("PageBinder_needPay:").append(Exception7.getMessage()).toString());
+                    com.umeng.a.b.a((Context) b, "zhuishu_catch_exception", new StringBuilder("PageBinder_needPay:").append(Exception7.getMessage()).toString());
                     return false;
                 }
             }
@@ -602,27 +602,27 @@ public final class o {
                 if (!ChapterLink_1darray2[int3].isVip())
                     return false;
             } catch (Exception Exception8) {
-                com.clilystudio.netbook.umeng.a.b.a((Context) b, "zhuishu_catch_exception", new StringBuilder("PageBinder_needPay:").append(Exception8.getMessage()).toString());
+                com.umeng.a.b.a((Context) b, "zhuishu_catch_exception", new StringBuilder("PageBinder_needPay:").append(Exception8.getMessage()).toString());
                 return false;
             }
             try {
                 String4 = d.a().getKey();
             } catch (Exception Exception9) {
-                com.clilystudio.netbook.umeng.a.b.a((Context) b, "zhuishu_catch_exception", new StringBuilder("PageBinder_needPay:").append(Exception9.getMessage()).toString());
+                com.umeng.a.b.a((Context) b, "zhuishu_catch_exception", new StringBuilder("PageBinder_needPay:").append(Exception9.getMessage()).toString());
                 return false;
             }
             if (String4 == null) {
                 try {
                     String4 = (String) d.q().a().e().get(d.a().getId());
                 } catch (Exception Exception10) {
-                    com.clilystudio.netbook.umeng.a.b.a((Context) b, "zhuishu_catch_exception", new StringBuilder("PageBinder_needPay:").append(Exception10.getMessage()).toString());
+                    com.umeng.a.b.a((Context) b, "zhuishu_catch_exception", new StringBuilder("PageBinder_needPay:").append(Exception10.getMessage()).toString());
                     return false;
                 }
                 if (String4 != null) {
                     try {
                         d.a().setKey(String4);
                     } catch (Exception Exception11) {
-                        com.clilystudio.netbook.umeng.a.b.a((Context) b, "zhuishu_catch_exception", new StringBuilder("PageBinder_needPay:").append(Exception11.getMessage()).toString());
+                        com.umeng.a.b.a((Context) b, "zhuishu_catch_exception", new StringBuilder("PageBinder_needPay:").append(Exception11.getMessage()).toString());
                         return false;
                     }
                 }
@@ -637,7 +637,7 @@ public final class o {
 
     public final void g() {
         if (e)
-            com.clilystudio.netbook.umeng.a.b.a((Context) b, "paying_page_cancel", com.clilystudio.netbook.util.I.b);
+            com.umeng.a.b.a((Context) b, "paying_page_cancel", com.clilystudio.netbook.util.I.b);
     }
 
     public final void h() {

@@ -24,19 +24,19 @@ public class WXPayEntryActivity extends Activity implements com.e.a.a.g.b {
         b2.c(new y(boolean3));
         switch (b1.a) {
             default:
-                com.clilystudio.netbook.umeng.a.b.a((Context) this, "charge_money_failed", "weixinpay");
+                com.umeng.a.b.a((Context) this, "charge_money_failed", "weixinpay");
                 e.a(this, "\u652F\u4ED8\u5931\u8D25\uFF01");
                 break;
             case 0:
                 e.a(this, "\u652F\u4ED8\u6210\u529F\uFF01");
-                com.clilystudio.netbook.umeng.a.b.a((Context) this, "charge_complete", "weixinpay");
+                com.umeng.a.b.a((Context) this, "charge_complete", "weixinpay");
                 break;
             case -1:
-                com.clilystudio.netbook.umeng.a.b.a((Context) this, "charge_money_failed", "weixinpay");
+                com.umeng.a.b.a((Context) this, "charge_money_failed", "weixinpay");
                 e.a(this, "\u7B7E\u540D\u9519\u8BEF\uFF01");
                 break;
             case -2:
-                com.clilystudio.netbook.umeng.a.b.a((Context) this, "charge_money_cancel", "weixinpay");
+                com.umeng.a.b.a((Context) this, "charge_money_cancel", "weixinpay");
                 e.a(this, "\u53D6\u6D88\u652F\u4ED8\uFF01");
                 break;
         }

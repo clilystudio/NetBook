@@ -12,6 +12,6 @@ public final class UmengGameTracer {
     }
 
     public final void a(String String1) {
-        com.clilystudio.netbook.umeng.a.b.a(a, b.build(), String1);
+        com.umeng.a.b.a(a, b.build(), String1);
     }
 }

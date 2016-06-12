@@ -84,11 +84,11 @@ public class IntroActivity extends Activity implements ViewPager$OnPageChangeLis
                 return;
             case 1137:
                 startActivity(AuthLoginActivity.a((Context) this));
-                com.clilystudio.netbook.umeng.a.b.a((Context) this, "intro_quick_login");
+                com.umeng.a.b.a((Context) this, "intro_quick_login");
                 return;
             case 1138:
                 c();
-                com.clilystudio.netbook.umeng.a.b.a((Context) this, "intro_entry_app");
+                com.umeng.a.b.a((Context) this, "intro_entry_app");
                 return;
         }
     }
@@ -104,7 +104,7 @@ public class IntroActivity extends Activity implements ViewPager$OnPageChangeLis
         d = (Button) findViewById(2131494002);
         d.setOnClickListener(this);
         a();
-        com.clilystudio.netbook.umeng.a.b.a((Context) this, "intro_show_count");
+        com.umeng.a.b.a((Context) this, "intro_show_count");
     }
 
     public void onPageScrollStateChanged(int int1) {

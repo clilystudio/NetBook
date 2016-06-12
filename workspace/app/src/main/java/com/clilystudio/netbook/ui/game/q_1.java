@@ -45,11 +45,11 @@ final class q extends com.clilystudio.netbook.a.e {
             GameDetailActivity.f(a);
             GameDetailActivity.b(a, GameDetailActivity.e(a));
             GameDetailActivity.g(a);
-            com.clilystudio.netbook.umeng.a.b.a((Context) a, "game_detail_opened", GameDetailActivity.e(a).getName());
+            com.umeng.a.b.a((Context) a, "game_detail_opened", GameDetailActivity.e(a).getName());
             if (GameDetailActivity.h(a))
-                com.clilystudio.netbook.umeng.a.b.a((Context) a, "micro_game_continue_detail", GameDetailActivity.e(a).getName());
+                com.umeng.a.b.a((Context) a, "micro_game_continue_detail", GameDetailActivity.e(a).getName());
             else
-                com.clilystudio.netbook.umeng.a.b.a((Context) a, "micro_game_play_detail", GameDetailActivity.e(a).getName());
+                com.umeng.a.b.a((Context) a, "micro_game_play_detail", GameDetailActivity.e(a).getName());
         } else {
             a.h();
             com.clilystudio.netbook.util.e.a((Activity) a, "\u8F7D\u5165\u5931\u8D25\uFF0C\u8BF7\u7A0D\u540E\u518D\u8BD5");

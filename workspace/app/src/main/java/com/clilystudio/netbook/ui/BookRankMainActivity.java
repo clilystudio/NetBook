@@ -122,7 +122,7 @@ public class BookRankMainActivity extends BaseTabActivity implements ViewPager$O
         String5 = Intent4.getStringExtra("book_list_title");
         String6 = new StringBuilder().append(String5).append(a(int1)).toString();
         String7 = Intent4.getStringExtra("rank_gender");
-        com.clilystudio.netbook.umeng.a.b.a((Context) this, "book_rank_tab_click", new StringBuilder().append(String6).append("_").append(String7).toString());
+        com.umeng.a.b.a((Context) this, "book_rank_tab_click", new StringBuilder().append(String6).append("_").append(String7).toString());
     }
 
     public void onTabChanged(String String1) {

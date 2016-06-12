@@ -21,6 +21,6 @@ final class O implements AdapterView$OnItemClickListener {
         Intent Intent7 = GameDetailActivity.a((Context) a, Game6.get_id(), GameListActivity.b(a), false);
 
         a.startActivity(Intent7);
-        com.clilystudio.netbook.umeng.a.b.a((Context) a, "game_pasted_item_click", Game6.getName());
+        com.umeng.a.b.a((Context) a, "game_pasted_item_click", Game6.getName());
     }
 }

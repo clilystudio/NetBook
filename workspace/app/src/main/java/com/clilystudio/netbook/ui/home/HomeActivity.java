@@ -106,7 +106,7 @@ public class HomeActivity extends HomeParentActivity implements ViewPager$OnPage
         HomeActivity1.t.setWebViewClient((WebViewClient) new b(HomeActivity1));
         HomeActivity1.t.loadUrl(String2);
         HomeActivity1.u = true;
-        com.clilystudio.netbook.umeng.a.b.a((Context) HomeActivity1, "take_17k_webflow");
+        com.umeng.a.b.a((Context) HomeActivity1, "take_17k_webflow");
     }
 
     private static void a(List List1) {
@@ -238,7 +238,7 @@ public class HomeActivity extends HomeParentActivity implements ViewPager$OnPage
     }
 
     private float j() {
-        String String1 = com.clilystudio.netbook.umeng.a.b.b((Context) this, "rate_17kflow");
+        String String1 = com.umeng.a.b.b((Context) this, "rate_17kflow");
         float float3;
 
         try {
@@ -647,7 +647,7 @@ public class HomeActivity extends HomeParentActivity implements ViewPager$OnPage
         Account Account1;
 
         super.onResume();
-        com.clilystudio.netbook.api.e.a("1".equals(com.clilystudio.netbook.umeng.a.b.b((Context) this, "use_http_dns")));
+        com.clilystudio.netbook.api.e.a("1".equals(com.umeng.a.b.b((Context) this, "use_http_dns")));
         if (com.clilystudio.netbook.hpay100.a.a.l())
             new com.clilystudio.netbook.util.s((Context) this).b(new Void[0]);
         Account1 = am.e();

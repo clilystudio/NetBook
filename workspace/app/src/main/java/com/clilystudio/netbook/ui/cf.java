@@ -2,7 +2,7 @@ package com.clilystudio.netbook.ui;
 
 import android.content.Context;
 
-import com.clilystudio.netbook.umeng.a.b;
+import com.umeng.a.b;
 
 final class cf implements cd {
 

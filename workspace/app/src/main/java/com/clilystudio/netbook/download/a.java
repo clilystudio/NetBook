@@ -84,7 +84,7 @@ public final class a {
             if (e.a(a)) {
                 new d(this).start();
                 new c(this).start();
-                com.clilystudio.netbook.umeng.a.b.a(a, "manhuadao_download_count", c);
+                com.umeng.a.b.a(a, "manhuadao_download_count", c);
             } else {
                 SharedPreferences$Editor Editor4 = a.getSharedPreferences("downloadInfo", 0).edit();
 

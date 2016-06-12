@@ -1,6 +1,6 @@
 package com.clilystudio.netbook.reader.txt;
 
-final class M implements com.clilystudio.netbook.umeng.update.a {
+final class M implements com.umeng.update.a {
 
     private ReaderTxtActivity a;
 

@@ -276,7 +276,7 @@ public class GirlTopicListActivity extends BaseActivity {
         String_1darray5[1] = p;
         bJ4.b(String_1darray5);
         com.clilystudio.netbook.hpay100.a.a.u((Context) this);
-        com.clilystudio.netbook.umeng.a.b.a((Context) this, "GirlTopicListActivity_Opened");
+        com.umeng.a.b.a((Context) this, "GirlTopicListActivity_Opened");
     }
 
     protected void onNewIntent(Intent Intent1) {

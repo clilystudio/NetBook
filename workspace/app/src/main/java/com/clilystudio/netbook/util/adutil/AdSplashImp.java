@@ -61,7 +61,7 @@ public final class AdSplashImp {
                 break;
         }
         if (String4 != null && String4.length() > 0)
-            com.clilystudio.netbook.umeng.a.b.a((Context) a, String4);
+            com.umeng.a.b.a((Context) a, String4);
     }
 
     public final void a() {

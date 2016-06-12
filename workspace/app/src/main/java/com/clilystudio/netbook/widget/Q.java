@@ -17,9 +17,9 @@ final class Q implements View$OnClickListener {
 
     public final void onClick(View View1) {
         if (b.a)
-            com.clilystudio.netbook.umeng.a.b.a(b.getContext(), "micro_game_continue_click", a.getName());
+            com.umeng.a.b.a(b.getContext(), "micro_game_continue_click", a.getName());
         else
-            com.clilystudio.netbook.umeng.a.b.a(b.getContext(), "micro_game_play_click", a.getName());
+            com.umeng.a.b.a(b.getContext(), "micro_game_play_click", a.getName());
         am.a(b.getContext(), a);
     }
 }

@@ -395,7 +395,7 @@ public class ReviewListActivity extends BaseActivity {
         String_1darray6[2] = u;
         dp5.b(String_1darray6);
         com.clilystudio.netbook.hpay100.a.a.u((Context) this);
-        com.clilystudio.netbook.umeng.a.b.a((Context) this, "BookReviewListActivity_Opened");
+        com.umeng.a.b.a((Context) this, "BookReviewListActivity_Opened");
     }
 
     protected void onNewIntent(Intent Intent1) {

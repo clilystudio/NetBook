@@ -32,7 +32,7 @@ public final class p {
                 Intent Intent3 = ChargeActivity.a((Context) p1.a, PaySheetItem2.getChargeType());
 
                 p1.a.startActivity(Intent3);
-                com.clilystudio.netbook.umeng.a.b.a((Context) p1.a, "enter_charge_channel", PaySheetItem2.getChargeType().getType());
+                com.umeng.a.b.a((Context) p1.a, "enter_charge_channel", PaySheetItem2.getChargeType().getType());
                 return;
             }
         }

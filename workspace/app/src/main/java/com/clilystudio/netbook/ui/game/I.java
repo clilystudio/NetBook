@@ -14,6 +14,6 @@ final class I implements View$OnClickListener {
 
     public final void onClick(View View1) {
         a.a.startActivity(GameDetailActivity.a((Context) a.a.getActivity(), GameLayoutFragment.b(a.a).get_id()));
-        com.clilystudio.netbook.umeng.a.b.a((Context) a.a.getActivity(), "game_center_layout_promotion", GameLayoutFragment.b(a.a).getName());
+        com.umeng.a.b.a((Context) a.a.getActivity(), "game_center_layout_promotion", GameLayoutFragment.b(a.a).getName());
     }
 }

@@ -23,7 +23,7 @@ final class L implements View$OnClickListener {
             Object Object2 = new InsideLinkIntent((Context) b.i.a.getActivity(), a.getLink());
 
             b.i.a.startActivity((Intent) Object2);
-            com.clilystudio.netbook.umeng.a.b.a((Context) b.i.a.getActivity(), "game_center_layout_banner", a.getLink());
+            com.umeng.a.b.a((Context) b.i.a.getActivity(), "game_center_layout_banner", a.getLink());
         } catch (UnImplementException UnImplementException3) {
             UnImplementException3.printStackTrace();
             return;

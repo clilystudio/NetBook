@@ -9,7 +9,7 @@ import android.view.ViewConfiguration;
 public class PagerWidget extends ReaderViewPager {
 
     private int a;
-    private com.clilystudio.netbook.umeng.update.a b;
+    private com.umeng.update.a b;
     private M c;
     private boolean d;
     private float e;
@@ -183,7 +183,7 @@ public class PagerWidget extends ReaderViewPager {
         j = AutoReaderTextView1;
     }
 
-    public void setOnClickListener$4b8a6d15(com.clilystudio.netbook.umeng.update.a a1) {
+    public void setOnClickListener$4b8a6d15(com.umeng.update.a a1) {
         b = a1;
     }
 

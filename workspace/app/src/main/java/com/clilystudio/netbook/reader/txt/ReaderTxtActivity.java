@@ -659,7 +659,7 @@ public class ReaderTxtActivity extends FragmentActivity implements com.clilystud
         registerReceiver(L, new IntentFilter("android.intent.action.TIME_TICK"));
         j.setAdapter((PagerAdapter) new i(this));
         j.setOnPageChangeListener((cw) new j(this));
-        j.setOnClickListener$4b8a6d15((com.clilystudio.netbook.umeng.update.a) new k(this));
+        j.setOnClickListener$4b8a6d15((com.umeng.update.a) new k(this));
         MyApplication.a().a(d);
         BookFile7 = TxtFileObject.getProgress(c);
         if (BookFile7 != null) {
@@ -939,7 +939,7 @@ public class ReaderTxtActivity extends FragmentActivity implements com.clilystud
         o.d(false);
         o.e(false);
         o.g(false);
-        o.setOnBtnClickListener$7ead76dc((com.clilystudio.netbook.umeng.update.a) new M(this));
+        o.setOnBtnClickListener$7ead76dc((com.umeng.update.a) new M(this));
         p.setReaderStyle(e, o);
         p.a((db) new a(this));
         p.a((dc) new l(this));

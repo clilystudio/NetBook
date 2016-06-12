@@ -70,7 +70,7 @@ public class GameDetailActivity extends BaseLoadingActivity {
 
     static void a(GameDetailActivity GameDetailActivity1) {
         if (GameDetailActivity1.b != null) {
-            if ("1".equals(com.clilystudio.netbook.umeng.a.b.b((Context) GameDetailActivity1, "game_center_edit_post_always")) || GameDetailActivity1.m || com.clilystudio.netbook.hpay100.a.a.j((Context) GameDetailActivity1, GameDetailActivity1.b.getAndroidPackageName()))
+            if ("1".equals(com.umeng.a.b.b((Context) GameDetailActivity1, "game_center_edit_post_always")) || GameDetailActivity1.m || com.clilystudio.netbook.hpay100.a.a.j((Context) GameDetailActivity1, GameDetailActivity1.b.getAndroidPackageName()))
                 GameDetailActivity1.startActivity(AddGamePostActivity.a((Context) GameDetailActivity1, GameDetailActivity1.b.get_id()));
             else {
                 com.clilystudio.netbook.util.e.a((Activity) GameDetailActivity1, "\u5B89\u88C5\u540E\u624D\u80FD\u4E00\u8D77\u6109\u5FEB\u5730\u5410\u69FD\u54DF~");

@@ -17,6 +17,6 @@ final class w implements View$OnClickListener {
     public final void onClick(View View1) {
         a.dismiss();
         i.a().c(new r(1));
-        com.clilystudio.netbook.umeng.a.b.a(View1.getContext(), "book_recommend_gender_click", "male");
+        com.umeng.a.b.a(View1.getContext(), "book_recommend_gender_click", "male");
     }
 }

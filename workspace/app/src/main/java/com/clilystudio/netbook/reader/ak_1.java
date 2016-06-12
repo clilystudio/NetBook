@@ -9,7 +9,7 @@ import com.iflytek.cloud.SpeechUtility;
 
 import java.util.LinkedList;
 
-final class ak implements com.clilystudio.netbook.umeng.update.a {
+final class ak implements com.umeng.update.a {
 
     private ReaderActivity a;
 
@@ -48,7 +48,7 @@ final class ak implements com.clilystudio.netbook.umeng.update.a {
                 ReaderActivity.w(a).setVisibility(8);
                 ReaderActivity.z(a);
                 ReaderActivity.A(a).f(false);
-                com.clilystudio.netbook.umeng.a.b.a((Context) a, "reader_activity_topic");
+                com.umeng.a.b.a((Context) a, "reader_activity_topic");
                 return;
             case 2131493862:
                 ReaderActivity.w(a).setVisibility(8);
@@ -86,8 +86,8 @@ final class ak implements com.clilystudio.netbook.umeng.update.a {
                         ReaderActivity.a(a, (LinkedList) Object_1darray3[1]);
                         ReaderActivity.c(a, false);
                         ReaderActivity.o(a);
-                        com.clilystudio.netbook.umeng.a.b.a((Context) a, "tts_start_speaking", ReaderActivity.D(a));
-                        com.clilystudio.netbook.umeng.a.b.a((Context) a, "tts_start_speaking_message", null, 1);
+                        com.umeng.a.b.a((Context) a, "tts_start_speaking", ReaderActivity.D(a));
+                        com.umeng.a.b.a((Context) a, "tts_start_speaking_message", null, 1);
                         com.clilystudio.netbook.hpay100.a.a.J((Context) a);
                         ReaderActivity.E(a);
                     } else

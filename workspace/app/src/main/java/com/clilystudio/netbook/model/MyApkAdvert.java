@@ -45,7 +45,7 @@ public class MyApkAdvert extends BaseShelfAd {
 
     public void recordDownload(Context Context1) {
         if (this != null)
-            com.clilystudio.netbook.umeng.a.b.a(Context1, new StringBuilder("zssq_ad_download_").append(((Advert) this).getPosition()).toString(), ((Advert) this).getTitle());
+            com.umeng.a.b.a(Context1, new StringBuilder("zssq_ad_download_").append(((Advert) this).getPosition()).toString(), ((Advert) this).getTitle());
     }
 
     public void recordShow(Context Context1) {

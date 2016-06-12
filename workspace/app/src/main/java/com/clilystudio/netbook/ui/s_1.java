@@ -6,7 +6,7 @@ import android.content.DialogInterface$OnClickListener;
 import android.content.Intent;
 import android.net.Uri;
 
-import com.clilystudio.netbook.umeng.a.b;
+import com.umeng.a.b;
 
 final class s implements DialogInterface$OnClickListener {
 

@@ -97,7 +97,7 @@ public class GameTabActivity extends BaseTabActivity implements ViewPager$OnPage
         TabWidget2.setDescendantFocusability(393216);
         a.setCurrentTab(int1);
         TabWidget2.setDescendantFocusability(int3);
-        com.clilystudio.netbook.umeng.a.b.a((Context) this, "game_center_tab_click", b[int1]);
+        com.umeng.a.b.a((Context) this, "game_center_tab_click", b[int1]);
     }
 
     public void onTabChanged(String String1) {

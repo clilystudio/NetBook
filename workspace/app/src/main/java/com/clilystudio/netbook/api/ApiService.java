@@ -238,7 +238,7 @@ public class ApiService {
         if (long7 > long2) {
             try {
                 com.xiaomi.mistatistic.sdk.c.a(new com.xiaomi.mistatistic.sdk.b.a(String1, long7 - long2, int4, String5));
-                com.clilystudio.netbook.umeng.a.b.a((Context) MyApplication.a(), "api_http_error", String5);
+                com.umeng.a.b.a((Context) MyApplication.a(), "api_http_error", String5);
             } catch (Exception Exception9) {
                 return;
             }
@@ -326,7 +326,7 @@ public class ApiService {
     }
 
     private static void v() {
-        com.clilystudio.netbook.umeng.a.b.a((Context) MyApplication.a(), "server_error");
+        com.umeng.a.b.a((Context) MyApplication.a(), "server_error");
     }
 
     private static ChapterRoot w() {
@@ -402,7 +402,7 @@ public class ApiService {
 
         HttpRequest1.b(15000).a(15000);
         f3 = c;
-        if ("1".equals(com.clilystudio.netbook.umeng.a.b.b((Context) MyApplication.a(), "ua-toggle")))
+        if ("1".equals(com.umeng.a.b.b((Context) MyApplication.a(), "ua-toggle")))
             String4 = f3.b();
         else
             String4 = "";

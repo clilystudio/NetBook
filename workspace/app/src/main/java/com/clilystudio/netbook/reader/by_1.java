@@ -27,6 +27,6 @@ final class by implements DialogInterface$OnClickListener {
         AppItem3.setName(a);
         AppItem3.setDownload_link(b);
         new y((Context) c.getActivity(), AppItem3).a();
-        com.clilystudio.netbook.umeng.a.b.a((Context) c.getActivity(), "app_recommend_click", a);
+        com.umeng.a.b.a((Context) c.getActivity(), "app_recommend_click", a);
     }
 }

@@ -212,14 +212,14 @@ public class BaseActivity extends AppCompatActivity {
 
     public void onPause() {
         super.onPause();
-        com.clilystudio.netbook.umeng.a.b.a((Context) this);
+        com.umeng.a.b.a((Context) this);
         com.a.a.a.b((Context) this);
         com.xiaomi.mistatistic.sdk.b.b();
     }
 
     public void onResume() {
         super.onResume();
-        com.clilystudio.netbook.umeng.a.b.b((Context) this);
+        com.umeng.a.b.b((Context) this);
         com.a.a.a.a((Context) this);
         com.xiaomi.mistatistic.sdk.b.a((Activity) this, getClass().getName());
     }

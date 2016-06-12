@@ -81,14 +81,14 @@ public class GameGiftFragment extends BaseLoadingFragment {
     public void onPause() {
         super.onPause();
         getActivity().unregisterReceiver(d);
-        com.clilystudio.netbook.umeng.a.b.b("game_gift");
+        com.umeng.a.b.b("game_gift");
     }
 
     public void onResume() {
         super.onResume();
         getActivity().registerReceiver(d, new IntentFilter("update_game_item_status"));
         g();
-        com.clilystudio.netbook.umeng.a.b.a("game_gift");
+        com.umeng.a.b.a("game_gift");
     }
 
     public void onViewCreated(View View1, Bundle Bundle2) {

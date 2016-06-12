@@ -125,7 +125,7 @@ public class SettingsActivity extends BaseActivity implements View$OnClickListen
         a((View) Object9, boolean7);
         ((SwitchCompat) Object8).setOnCheckedChangeListener((CompoundButton$OnCheckedChangeListener) new bW(this, (SwitchCompat) Object8));
         ((SwitchCompat) Object9).setOnCheckedChangeListener((CompoundButton$OnCheckedChangeListener) new bX(this, (SwitchCompat) Object9));
-        if ("1".equals(com.clilystudio.netbook.umeng.a.b.b((Context) this, "enable_job"))) {
+        if ("1".equals(com.umeng.a.b.b((Context) this, "enable_job"))) {
             View View11 = findViewById(2131493203);
 
             View11.setVisibility(0);

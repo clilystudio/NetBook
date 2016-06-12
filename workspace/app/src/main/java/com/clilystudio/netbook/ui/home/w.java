@@ -26,7 +26,7 @@ final class w implements View$OnClickListener {
         if (!a.login || am.a((Activity) c.getActivity()) != null) {
             try {
                 c.startActivity((Intent) new InsideLinkIntent((Context) c.getActivity(), b));
-                com.clilystudio.netbook.umeng.a.b.a((Context) c.getActivity(), "shelf_msg_click", b.getLabel());
+                com.umeng.a.b.a((Context) c.getActivity(), "shelf_msg_click", b.getLabel());
             } catch (Exception Exception2) {
                 Exception2.printStackTrace();
                 return;

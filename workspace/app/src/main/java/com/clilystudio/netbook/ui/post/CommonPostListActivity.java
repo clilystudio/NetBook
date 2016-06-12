@@ -300,9 +300,9 @@ public class CommonPostListActivity extends BaseActivity {
         com.clilystudio.netbook.hpay100.a.a.u((Context) this);
         String9 = r;
         if ("ramble".equals(String9))
-            com.clilystudio.netbook.umeng.a.b.a((Context) this, "DiscussListActivity_Opened");
+            com.umeng.a.b.a((Context) this, "DiscussListActivity_Opened");
         else if ("android-feedback".equals(String9)) {
-            com.clilystudio.netbook.umeng.a.b.a((Context) this, "CommonPostListActivity_Feedback_Opened");
+            com.umeng.a.b.a((Context) this, "CommonPostListActivity_Feedback_Opened");
             return;
         }
     }

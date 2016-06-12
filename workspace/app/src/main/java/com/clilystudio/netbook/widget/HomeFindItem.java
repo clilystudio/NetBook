@@ -12,7 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.clilystudio.netbook.ui.MaskAbleImageView;
-import com.clilystudio.netbook.umeng.a.b;
+import com.umeng.a.b;
 
 import butterknife.ButterKnife;
 

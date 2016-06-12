@@ -24,7 +24,7 @@ final class G implements View$OnClickListener {
         e.a((Activity) c.getContext(), "\u5DF2\u590D\u5236");
         if (GameGiftItemView.b(c)) {
             am.a(c.getContext(), GameGiftItemView.c(c).game);
-            com.clilystudio.netbook.umeng.a.b.a(c.getContext(), "micro_game_play_click", GameGiftItemView.c(c).game.getName());
+            com.umeng.a.b.a(c.getContext(), "micro_game_play_click", GameGiftItemView.c(c).game.getName());
         } else
             am.d(c.getContext(), GameGiftItemView.c(c).game.getAndroidPackageName());
     }

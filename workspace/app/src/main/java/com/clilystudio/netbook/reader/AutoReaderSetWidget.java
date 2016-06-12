@@ -41,7 +41,7 @@ public class AutoReaderSetWidget extends LinearLayout implements View$OnClickLis
 
     public final void b() {
         if (c != b)
-            com.clilystudio.netbook.umeng.a.b.a(getContext(), "auto_read_speed", null, b);
+            com.umeng.a.b.a(getContext(), "auto_read_speed", null, b);
         setVisibility(8);
     }
 

@@ -64,16 +64,16 @@ public class RelateBookListActivity extends BookListActivity implements cQ {
             if (b) {
                 com.clilystudio.netbook.hpay100.a.a.c((Context) this, BookRankDetail3.get_id(), "rec_C6613205_93B6_61A6_9FEC_180B70F91B94");
                 if (c == int2) {
-                    com.clilystudio.netbook.umeng.a.b.a((Context) this, "book_info_recommend_click", "bfd");
+                    com.umeng.a.b.a((Context) this, "book_info_recommend_click", "bfd");
                     int2 = 3;
                 } else {
-                    com.clilystudio.netbook.umeng.a.b.a((Context) this, "page_footing_recommend_click", "bfd");
+                    com.umeng.a.b.a((Context) this, "page_footing_recommend_click", "bfd");
                     int2 = 4;
                 }
             } else if (c == int2)
-                com.clilystudio.netbook.umeng.a.b.a((Context) this, "book_info_recommend_click", "zhuishu");
+                com.umeng.a.b.a((Context) this, "book_info_recommend_click", "zhuishu");
             else {
-                com.clilystudio.netbook.umeng.a.b.a((Context) this, "page_footing_recommend_click", "zhuishu");
+                com.umeng.a.b.a((Context) this, "page_footing_recommend_click", "zhuishu");
                 int2 = 2;
             }
             startActivity(BookInfoActivity.a((Context) this, BookRankDetail3.get_id(), int2));

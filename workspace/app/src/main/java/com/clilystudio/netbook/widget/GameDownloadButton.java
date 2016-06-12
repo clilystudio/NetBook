@@ -86,8 +86,8 @@ public class GameDownloadButton extends Button {
         Context Context1 = getContext();
 
         if (Context1 instanceof GameDetailActivity)
-            com.clilystudio.netbook.umeng.a.b.a(getContext(), "game_center_detail_install", a.getName());
-        com.clilystudio.netbook.umeng.a.b.a(Context1, "game_center_app_download", a.getName());
+            com.umeng.a.b.a(getContext(), "game_center_detail_install", a.getName());
+        com.umeng.a.b.a(Context1, "game_center_app_download", a.getName());
         if (com.clilystudio.netbook.hpay100.a.a.r(Context1) == 1) {
             e.a((Activity) Context1, "\u5F00\u59CB\u4E0B\u8F7D...");
             f();

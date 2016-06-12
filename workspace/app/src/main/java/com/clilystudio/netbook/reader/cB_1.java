@@ -1,6 +1,6 @@
 package com.clilystudio.netbook.reader;
 
-final class cB implements com.clilystudio.netbook.umeng.update.a {
+final class cB implements com.umeng.update.a {
 
     private ReaderWebActivity a;
 

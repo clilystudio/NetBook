@@ -690,7 +690,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View$OnClickL
         if (H)
             j.a(g);
         m.setOnPageChangeListener((cw) new aw(this));
-        m.setOnClickListener$4b8a6d15((com.clilystudio.netbook.umeng.update.a) new ax(this));
+        m.setOnClickListener$4b8a6d15((com.umeng.update.a) new ax(this));
         String2 = MyApplication.a().g();
         if (c.equals(String2)) {
             BookReadRecord BookReadRecord3 = BookReadRecord.getOnShelf(c);
@@ -850,7 +850,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View$OnClickL
                 V.pauseSpeaking();
                 u.setPause(true);
                 u.a();
-                com.clilystudio.netbook.umeng.a.b.a((Context) this, "tts_pause_speaking", d);
+                com.umeng.a.b.a((Context) this, "tts_pause_speaking", d);
                 return;
             }
         }
@@ -1143,7 +1143,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View$OnClickL
 
     private void u() {
         m.setAdapter((PagerAdapter) new ay(this));
-        m.setOnClickListener$4b8a6d15((com.clilystudio.netbook.umeng.update.a) new az(this));
+        m.setOnClickListener$4b8a6d15((com.umeng.update.a) new az(this));
     }
 
     private void v() {
@@ -1561,7 +1561,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View$OnClickL
         View11.setVisibility(int12);
         r.setReaderStyle(h);
         r.b(G);
-        r.setOnBtnClickListener$7ead76dc((com.clilystudio.netbook.umeng.update.a) new ak(this));
+        r.setOnBtnClickListener$7ead76dc((com.umeng.update.a) new ak(this));
         s.setReaderStyle(h, r);
         s.a((db) new av(this));
         s.a((dc) new aJ(this));
@@ -1602,7 +1602,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View$OnClickL
             new bp(this, (byte) 0).b(new Void[0]);
         }
         new com.clilystudio.netbook.util.k(c).a();
-        com.clilystudio.netbook.umeng.a.b.a((Context) this, "read_mode_33_new", com.clilystudio.netbook.hpay100.a.a.g(L));
+        com.umeng.a.b.a((Context) this, "read_mode_33_new", com.clilystudio.netbook.hpay100.a.a.g(L));
     }
 
     public void onDestroy() {

@@ -33,7 +33,7 @@ public class HomeFindSecretItem extends HomeFindItem {
         if (!com.clilystudio.netbook.hpay100.a.a.a(getContext(), "KEY_SECRET_UNLOCKED", false)) {
             Context Context2 = getContext();
             String String3 = am.n(Context2);
-            String String4 = com.clilystudio.netbook.umeng.a.b.b(Context2, "switch_secret_to_random");
+            String String4 = com.umeng.a.b.b(Context2, "switch_secret_to_random");
             int int5;
 
             label_41:
@@ -66,9 +66,9 @@ public class HomeFindSecretItem extends HomeFindItem {
 
         if (!b()) {
             Context Context2 = getContext();
-            String String3 = com.clilystudio.netbook.umeng.a.b.b(Context2, "mystery_disabled_at_version");
-            String String4 = com.clilystudio.netbook.umeng.a.b.b(Context2, "mystery_enable_time");
-            String String5 = com.clilystudio.netbook.umeng.a.b.b(Context2, "mystery_enable_minute_range");
+            String String3 = com.umeng.a.b.b(Context2, "mystery_disabled_at_version");
+            String String4 = com.umeng.a.b.b(Context2, "mystery_enable_time");
+            String String5 = com.umeng.a.b.b(Context2, "mystery_enable_minute_range");
             int int6 = com.clilystudio.netbook.hpay100.a.a.b(String3, 0);
             int int7 = com.clilystudio.netbook.hpay100.a.a.b(String5, 0);
 

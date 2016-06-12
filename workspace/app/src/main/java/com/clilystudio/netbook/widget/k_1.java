@@ -19,7 +19,7 @@ final class k implements DialogInterface$OnClickListener {
         if (!android.text.TextUtils.isEmpty((CharSequence) a)) {
             Intent Intent3;
 
-            com.clilystudio.netbook.umeng.a.b.a(b, "visit_17k_webpage");
+            com.umeng.a.b.a(b, "visit_17k_webpage");
             Intent3 = new Intent("android.intent.action.VIEW");
             Intent3.setData(Uri.parse(a));
             b.startActivity(Intent3);

@@ -78,7 +78,7 @@ public class BookRankListActivity extends BaseActivity {
             Intent4 = BookRankDetailActivity.a((Context) this, BookRankSummary2.get_id(), BookRankSummary2.getTitle());
         startActivity(Intent4);
         String5 = BookRankSummary2.getTitle();
-        com.clilystudio.netbook.umeng.a.b.a((Context) this, "book_rank_list_item", new StringBuilder().append(String5).append("_").append(String3).toString());
+        com.umeng.a.b.a((Context) this, "book_rank_list_item", new StringBuilder().append(String5).append("_").append(String3).toString());
     }
 
     public void onCreate(Bundle Bundle1) {

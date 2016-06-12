@@ -3,7 +3,7 @@ package com.clilystudio.netbook.util.adutil;
 import android.content.Context;
 import android.view.View;
 
-import com.clilystudio.netbook.umeng.a.b;
+import com.umeng.a.b;
 
 public class BaiduShelfAdContainer$BaiduAdvert extends BaseShelfAd {
 // Error: Internal #201: 

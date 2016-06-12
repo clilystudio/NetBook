@@ -95,14 +95,14 @@ public class GameRankListFragment extends BaseLoadingFragment {
     public void onPause() {
         super.onPause();
         getActivity().unregisterReceiver(f);
-        com.clilystudio.netbook.umeng.a.b.a("game_rank_list");
+        com.umeng.a.b.a("game_rank_list");
     }
 
     public void onResume() {
         super.onResume();
         getActivity().registerReceiver(f, new IntentFilter("update_game_item_status"));
         g();
-        com.clilystudio.netbook.umeng.a.b.a("game_rank_list");
+        com.umeng.a.b.a("game_rank_list");
     }
 
     public void onViewCreated(View View1, Bundle Bundle2) {

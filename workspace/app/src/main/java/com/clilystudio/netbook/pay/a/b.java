@@ -42,10 +42,10 @@ final class b extends Handler {
                 } else if (TextUtils.equals((CharSequence) Object3, (CharSequence) "8000"))
                     Toast.makeText(a.a(a), (CharSequence) "\u652F\u4ED8\u7ED3\u679C\u786E\u8BA4\u4E2D", 0).show();
                 else if (TextUtils.equals((CharSequence) Object3, (CharSequence) "6001"))
-                    com.clilystudio.netbook.umeng.a.b.a(a.a(a), "charge_money_cancel", "alipay");
+                    com.umeng.a.b.a(a.a(a), "charge_money_cancel", "alipay");
                 else {
                     Toast.makeText(a.a(a), (CharSequence) "\u652F\u4ED8\u5931\u8D25", 0).show();
-                    com.clilystudio.netbook.umeng.a.b.a(a.a(a), "charge_money_failed", "alipay");
+                    com.umeng.a.b.a(a.a(a), "charge_money_failed", "alipay");
                 }
                 return;
             case 2:
@@ -53,6 +53,6 @@ final class b extends Handler {
                 return;
         }
         Toast.makeText(a.a(a), (CharSequence) "\u652F\u4ED8\u6210\u529F", 0).show();
-        com.clilystudio.netbook.umeng.a.b.a(a.a(a), "charge_complete", "alipay");
+        com.umeng.a.b.a(a.a(a), "charge_complete", "alipay");
     }
 }

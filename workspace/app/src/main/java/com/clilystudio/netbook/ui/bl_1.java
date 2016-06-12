@@ -5,7 +5,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface$OnClickListener;
 
-import com.clilystudio.netbook.umeng.a.b;
+import com.umeng.a.b;
 import com.clilystudio.netbook.util.A;
 import com.clilystudio.netbook.util.e;
 

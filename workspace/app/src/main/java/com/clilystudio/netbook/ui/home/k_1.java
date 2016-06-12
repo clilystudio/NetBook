@@ -1,6 +1,6 @@
 package com.clilystudio.netbook.ui.home;
 
-final class k implements com.clilystudio.netbook.umeng.update.a {
+final class k implements com.umeng.update.a {
 
     private HomeParentActivity a;
 

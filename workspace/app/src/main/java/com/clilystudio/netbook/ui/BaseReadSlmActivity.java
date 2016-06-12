@@ -14,11 +14,11 @@ public class BaseReadSlmActivity extends SlidingFragmentActivity {
 
     public void onPause() {
         super.onPause();
-        com.clilystudio.netbook.umeng.a.b.a((Context) this);
+        com.umeng.a.b.a((Context) this);
     }
 
     public void onResume() {
         super.onResume();
-        com.clilystudio.netbook.umeng.a.b.b((Context) this);
+        com.umeng.a.b.b((Context) this);
     }
 }

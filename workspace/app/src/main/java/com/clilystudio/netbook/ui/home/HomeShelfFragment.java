@@ -611,7 +611,7 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView$OnScr
         com.clilystudio.netbook.util.c.a().b();
         com.clilystudio.netbook.hpay100.a.a.b((Context) getActivity(), new StringBuilder("DELETE_SHELF_AD_KEY").append(int1).toString(), new Date().getTime());
         k();
-        com.clilystudio.netbook.umeng.a.b.a((Context) getActivity(), "ad_delete_shelf");
+        com.umeng.a.b.a((Context) getActivity(), "ad_delete_shelf");
     }
 
     private void a(BookFile BookFile1) {
@@ -677,7 +677,7 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView$OnScr
 
     private void a(String String1, String String2, boolean boolean3) {
         if (boolean3)
-            com.clilystudio.netbook.umeng.a.b.a((Context) getActivity(), "book_recommend_delete_click", String2);
+            com.umeng.a.b.a((Context) getActivity(), "book_recommend_delete_click", String2);
         com.a.a.a.b((Context) getActivity(), String1, com.clilystudio.netbook.hpay100.a.a.p((Context) getActivity()));
     }
 
@@ -854,10 +854,10 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView$OnScr
                 List List6 = j();
             } catch (Exception Exception3) {
                 if (Exception3.getMessage() != null && Exception3.getMessage().contains((CharSequence) "not attached to Activity")) {
-                    com.clilystudio.netbook.umeng.a.b.a((Context) getActivity(), "zhuishu_catch_exception", "HomeShelfFragment_loadShelf:Fragment HomeShelfFragment not attached to Activity");
+                    com.umeng.a.b.a((Context) getActivity(), "zhuishu_catch_exception", "HomeShelfFragment_loadShelf:Fragment HomeShelfFragment not attached to Activity");
                     List4 = null;
                 } else {
-                    com.clilystudio.netbook.umeng.a.b.a((Context) getActivity(), "zhuishu_catch_exception", new StringBuilder("HomeShelfFragment_loadShelf:").append(Exception3.getMessage()).toString());
+                    com.umeng.a.b.a((Context) getActivity(), "zhuishu_catch_exception", new StringBuilder("HomeShelfFragment_loadShelf:").append(Exception3.getMessage()).toString());
                     List4 = null;
                 }
             }
@@ -931,7 +931,7 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView$OnScr
         v = b((List) Object1);
         if (int9 == 0 && int5 != 0)
             a((List) Object1, List4);
-        String10 = com.clilystudio.netbook.umeng.a.b.b((Context) getActivity(), "delete_audio_on_shelf");
+        String10 = com.umeng.a.b.b((Context) getActivity(), "delete_audio_on_shelf");
         if (String10 != null && "1".equals(String10))
             int11 = 1;
         else
@@ -958,7 +958,7 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView$OnScr
         try {
             Collections.sort((List) Object1, (Comparator) new G(this, int2));
         } catch (Exception Exception13) {
-            com.clilystudio.netbook.umeng.a.b.a((Context) getActivity(), "zhuishu_catch_exception", new StringBuilder("HomeShelfFragment_createShelf:").append(Exception13.getMessage()).toString());
+            com.umeng.a.b.a((Context) getActivity(), "zhuishu_catch_exception", new StringBuilder("HomeShelfFragment_createShelf:").append(Exception13.getMessage()).toString());
         }
         label_244:
         {
@@ -969,13 +969,13 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView$OnScr
                     break label_244;
                 String_1darray17 = new String[List3.size()];
             } catch (Exception Exception14) {
-                com.clilystudio.netbook.umeng.a.b.a((Context) getActivity(), "zhuishu_catch_exception", new StringBuilder("HomeShelfFragment_createShelf:").append(Exception14.getMessage()).toString());
+                com.umeng.a.b.a((Context) getActivity(), "zhuishu_catch_exception", new StringBuilder("HomeShelfFragment_createShelf:").append(Exception14.getMessage()).toString());
                 if (Exception14.getMessage().contains((CharSequence) "no such table: BookSyncRecord")) {
                     try {
                         new SQLiteUtils();
                         SQLiteUtils.execSql("CREATE TABLE IF NOT EXISTS BookSyncRecord (id integer primary key AutoIncrement,userId varchar(20),bookId varchar(20), type int,updated long);");
                     } catch (Exception Exception16) {
-                        com.clilystudio.netbook.umeng.a.b.a((Context) getActivity(), "zhuishu_catch_exception", new StringBuilder("HomeShelfFragment_createTableBookSyncRecord:").append(Exception14.getMessage()).toString());
+                        com.umeng.a.b.a((Context) getActivity(), "zhuishu_catch_exception", new StringBuilder("HomeShelfFragment_createTableBookSyncRecord:").append(Exception14.getMessage()).toString());
                     }
                 }
             }
@@ -998,7 +998,7 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView$OnScr
     }
 
     public final void d() {
-        com.clilystudio.netbook.umeng.a.b.a((Context) getActivity(), "home_shelf_bulk_operation");
+        com.umeng.a.b.a((Context) getActivity(), "home_shelf_bulk_operation");
         if (r != null)
             l.setVisibility(8);
         e.removeHeaderView(g);

@@ -19,9 +19,9 @@ final class s implements View$OnClickListener {
         I I2;
         String[] String_1darray3;
 
-        com.clilystudio.netbook.umeng.a.b.a((Context) o.a(b), "paying_page_purchase", com.clilystudio.netbook.util.I.b);
+        com.umeng.a.b.a((Context) o.a(b), "paying_page_purchase", com.clilystudio.netbook.util.I.b);
         if (a.isChecked())
-            com.clilystudio.netbook.umeng.a.b.a((Context) o.a(b), "paying_page_auto_choose", com.clilystudio.netbook.util.I.b);
+            com.umeng.a.b.a((Context) o.a(b), "paying_page_auto_choose", com.clilystudio.netbook.util.I.b);
         o.a(b, false);
         com.clilystudio.netbook.hpay100.a.a.b((Context) o.a(b), new StringBuilder("auto_buy_chapter").append(com.clilystudio.netbook.util.I.a).toString(), a.isChecked());
         I2 = new I(b, o.a(b), "\u8D2D\u4E70\u4E2D...");

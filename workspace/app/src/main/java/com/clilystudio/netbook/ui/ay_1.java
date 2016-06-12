@@ -3,7 +3,7 @@ package com.clilystudio.netbook.ui;
 import android.app.Activity;
 import android.content.Context;
 
-import com.clilystudio.netbook.umeng.a.b;
+import com.umeng.a.b;
 
 final class ay implements ab {
 

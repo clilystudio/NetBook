@@ -13,7 +13,7 @@ import android.widget.TextView;
 public class ReaderRandomActionBar extends RelativeLayout {
 
     private TextView a;
-    private com.clilystudio.netbook.umeng.update.a b;
+    private com.umeng.update.a b;
     public ReaderRandomActionBar(Context Context1, AttributeSet AttributeSet2, int int3) {
         super(Context1, AttributeSet2, int3);
     }
@@ -44,7 +44,7 @@ public class ReaderRandomActionBar extends RelativeLayout {
         View2.setOnClickListener((View$OnClickListener) new c(this));
     }
 
-    public void setOnBtnClickListener$3ce42dcd(com.clilystudio.netbook.umeng.update.a a1) {
+    public void setOnBtnClickListener$3ce42dcd(com.umeng.update.a a1) {
         b = a1;
     }
 

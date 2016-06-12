@@ -2,9 +2,9 @@ package com.clilystudio.netbook.reader.random;
 
 import android.content.Context;
 
-import com.clilystudio.netbook.umeng.a.b;
+import com.umeng.a.b;
 
-final class L implements com.clilystudio.netbook.umeng.update.a {
+final class L implements com.umeng.update.a {
 
     private ReaderRandomActivity a;
 

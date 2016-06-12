@@ -20,7 +20,7 @@ final class p implements e {
             J J3;
             String[] String_1darray4;
 
-            com.clilystudio.netbook.umeng.a.b.a((Context) o.a(a), "paying_page_auto_purchase", I.b);
+            com.umeng.a.b.a((Context) o.a(a), "paying_page_auto_purchase", I.b);
             J3 = new J(a, ReaderChapter2);
             String_1darray4 = new String[2];
             String_1darray4[0] = am.e().getToken();

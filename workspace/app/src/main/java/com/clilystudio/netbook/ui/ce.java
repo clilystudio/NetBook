@@ -6,7 +6,7 @@ import android.view.View;
 import android.view.View$OnClickListener;
 
 import com.clilystudio.netbook.ui.user.AuthLoginActivity;
-import com.clilystudio.netbook.umeng.a.b;
+import com.umeng.a.b;
 
 final class ce implements View$OnClickListener {
 

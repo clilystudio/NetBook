@@ -7,7 +7,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView$OnItemClickListener;
 import android.widget.BaseAdapter;
 
-import com.clilystudio.netbook.umeng.a.b;
+import com.umeng.a.b;
 
 public final class SearchActivity$SearchHistoryAdapter extends BaseAdapter implements AdapterView$OnItemClickListener {
 

@@ -20,6 +20,6 @@ final class bk implements AdapterView$OnItemClickListener {
 
         if (MhdInfo6 != null)
             MhdListActivity.a(a, MhdInfo6.getBigbookid());
-        com.clilystudio.netbook.umeng.a.b.a((Context) a, "mhd_list_item_click");
+        com.umeng.a.b.a((Context) a, "mhd_list_item_click");
     }
 }

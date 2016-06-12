@@ -6,7 +6,7 @@ import android.view.View;
 import android.view.View$OnClickListener;
 
 import com.clilystudio.netbook.ui.ShareRemoveAdActivity;
-import com.clilystudio.netbook.umeng.a.b;
+import com.umeng.a.b;
 
 final class ai implements View$OnClickListener {
 

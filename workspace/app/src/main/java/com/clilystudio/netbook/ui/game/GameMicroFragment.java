@@ -106,7 +106,7 @@ public class GameMicroFragment extends BaseLoadingFragment {
 
     public void onPause() {
         super.onPause();
-        com.clilystudio.netbook.umeng.a.b.b("game_micro_layout");
+        com.umeng.a.b.b("game_micro_layout");
     }
 
     public void onResume() {
@@ -118,7 +118,7 @@ public class GameMicroFragment extends BaseLoadingFragment {
             else
                 g.b();
         }
-        com.clilystudio.netbook.umeng.a.b.a("game_micro_layout");
+        com.umeng.a.b.a("game_micro_layout");
     }
 
     public void onViewCreated(View View1, Bundle Bundle2) {

@@ -23,7 +23,7 @@ public class HomeFindGameItem extends HomeFindItem {
             setVisibility(0);
             mSubFlag.setVisibility(8);
             mSubText.setVisibility(8);
-            a = com.clilystudio.netbook.umeng.a.b.b(getContext(), "home_game_center_value");
+            a = com.umeng.a.b.b(getContext(), "home_game_center_value");
             if ("1".equals(a)) {
                 if (com.clilystudio.netbook.hpay100.a.a.l(getContext(), "sp_find_item_game_dot")) {
                     mSubFlag.setVisibility(0);
@@ -52,6 +52,6 @@ public class HomeFindGameItem extends HomeFindItem {
             mSubFlag.setVisibility(8);
             mSubText.setVisibility(8);
         }
-        com.clilystudio.netbook.umeng.a.b.a(Context1, "GameCenterActivity_open");
+        com.umeng.a.b.a(Context1, "GameCenterActivity_open");
     }
 }

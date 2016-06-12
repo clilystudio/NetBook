@@ -93,6 +93,6 @@ public class MhdListActivity extends BaseActivity {
         ListView2.setAdapter((ListAdapter) c);
         ListView2.setOnItemClickListener((AdapterView$OnItemClickListener) new bk(this));
         b();
-        com.clilystudio.netbook.umeng.a.b.a((Context) this, "mhd_open");
+        com.umeng.a.b.a((Context) this, "mhd_open");
     }
 }

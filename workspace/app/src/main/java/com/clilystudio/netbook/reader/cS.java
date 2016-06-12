@@ -13,7 +13,7 @@ final class cS implements View$OnClickListener {
     }
 
     public final void onClick(View View1) {
-        com.clilystudio.netbook.umeng.a.b.a(b.getContext(), "auto_read_start");
+        com.umeng.a.b.a(b.getContext(), "auto_read_start");
         com.clilystudio.netbook.hpay100.a.a.D(b.getContext());
         a.a();
     }

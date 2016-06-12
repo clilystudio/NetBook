@@ -14,6 +14,6 @@ final class bO implements CompoundButton$OnCheckedChangeListener {
 
     public final void onCheckedChanged(CompoundButton CompoundButton1, boolean boolean2) {
         com.clilystudio.netbook.hpay100.a.a.b((Context) a, "key_enable_imersive_mode", boolean2);
-        com.clilystudio.netbook.umeng.a.b.a((Context) a, "imersive_switcher");
+        com.umeng.a.b.a((Context) a, "imersive_switcher");
     }
 }

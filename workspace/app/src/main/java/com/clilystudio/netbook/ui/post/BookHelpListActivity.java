@@ -273,7 +273,7 @@ public class BookHelpListActivity extends BaseActivity {
         String_1darray5[1] = p;
         av4.b(String_1darray5);
         com.clilystudio.netbook.hpay100.a.a.u((Context) this);
-        com.clilystudio.netbook.umeng.a.b.a((Context) this, "BookHelpListActivity_Opened");
+        com.umeng.a.b.a((Context) this, "BookHelpListActivity_Opened");
     }
 
     protected void onNewIntent(Intent Intent1) {

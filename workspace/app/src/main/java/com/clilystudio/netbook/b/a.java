@@ -36,6 +36,6 @@ public final class a extends b {
         super.onClick(View1);
         Context2 = a;
         InsideLink3 = b;
-        com.clilystudio.netbook.umeng.a.b.a(Context2, "post_official_link_click", new StringBuilder().append(InsideLink3.getType().getName()).append("-").append(InsideLink3.getLabel()).toString());
+        com.umeng.a.b.a(Context2, "post_official_link_click", new StringBuilder().append(InsideLink3.getType().getName()).append("-").append(InsideLink3.getLabel()).toString());
     }
 }

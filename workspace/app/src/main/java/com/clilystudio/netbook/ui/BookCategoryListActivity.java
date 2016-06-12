@@ -56,7 +56,7 @@ public class BookCategoryListActivity extends BaseTabActivity implements ViewPag
 
                 BookCategoryListActivity1.f.showAsDropDown((View) Object2);
             }
-            com.clilystudio.netbook.umeng.a.b.a((Context) BookCategoryListActivity1, "book_category_filter_click");
+            com.umeng.a.b.a((Context) BookCategoryListActivity1, "book_category_filter_click");
             BookCategoryListActivity1.e("\u6536\u8D77");
         }
     }
@@ -77,7 +77,7 @@ public class BookCategoryListActivity extends BaseTabActivity implements ViewPag
             if (String2.equals(BookCategoryListActivity1.c))
                 com.clilystudio.netbook.hpay100.a.a.p((Context) BookCategoryListActivity1, new StringBuilder().append(String3).append(String2).toString());
             else
-                com.clilystudio.netbook.umeng.a.b.a((Context) BookCategoryListActivity1, "book_category_minor_click", new StringBuilder().append(String3).append(BookCategoryListActivity1.c).append(" - ").append(String2).toString());
+                com.umeng.a.b.a((Context) BookCategoryListActivity1, "book_category_minor_click", new StringBuilder().append(String3).append(BookCategoryListActivity1.c).append(" - ").append(String2).toString());
         }
         BookCategoryListActivity1.i();
     }
@@ -274,7 +274,7 @@ public class BookCategoryListActivity extends BaseTabActivity implements ViewPag
 
         if (int2 >= 0 && int2 < l.getCount()) {
             k.setCurrentItem(int2, true);
-            com.clilystudio.netbook.umeng.a.b.a((Context) this, "book_category_tab_click", i[int2]);
+            com.umeng.a.b.a((Context) this, "book_category_tab_click", i[int2]);
         }
     }
 }

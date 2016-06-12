@@ -25,7 +25,7 @@ final class d implements View$OnClickListener {
             ReaderRandomActivity.d(a).setBackgroundResource(2130837650);
             ReaderRandomActivity.c(a).setCompoundDrawablesWithIntrinsicBounds(2130838130, 0, 0, 0);
             ReaderRandomActivity.c(a).setText((CharSequence) "\u5DF2\u6DFB\u52A0");
-            com.clilystudio.netbook.umeng.a.b.a((Context) a, "random_rader_add_shelf");
+            com.umeng.a.b.a((Context) a, "random_rader_add_shelf");
         }
     }
 }

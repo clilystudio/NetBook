@@ -143,7 +143,7 @@ public class ReaderMenuFragment extends Fragment {
 
     static void i(ReaderMenuFragment ReaderMenuFragment1) {
         ReaderMenuFragment1.startActivity(RelateBookListActivity.a((Context) ReaderMenuFragment1.getActivity(), null, "\u4F60\u53EF\u80FD\u611F\u5174\u8DA3", ReaderMenuFragment1.e));
-        com.clilystudio.netbook.umeng.a.b.a((Context) ReaderMenuFragment1.getActivity(), "reader_menu_relate_book_a");
+        com.umeng.a.b.a((Context) ReaderMenuFragment1.getActivity(), "reader_menu_relate_book_a");
     }
 
     static BaseShelfAd j(ReaderMenuFragment ReaderMenuFragment1) {

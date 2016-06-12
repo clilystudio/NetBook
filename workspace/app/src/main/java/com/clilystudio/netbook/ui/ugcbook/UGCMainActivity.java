@@ -56,7 +56,7 @@ public class UGCMainActivity extends BaseTabActivity implements ViewPager$OnPage
     }
 
     static void a(UGCMainActivity UGCMainActivity1, String String2) {
-        com.clilystudio.netbook.umeng.a.b.a((Context) UGCMainActivity1, "ugc_filter", String2);
+        com.umeng.a.b.a((Context) UGCMainActivity1, "ugc_filter", String2);
         if (!UGCMainActivity1.i.equals(String2)) {
             UGCMainActivity1.i = String2;
             UGCMainActivity1.d(String2);

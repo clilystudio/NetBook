@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 public class ReaderWebActionBar extends RelativeLayout {
 
-    private com.clilystudio.netbook.umeng.update.a a;
+    private com.umeng.update.a a;
     private TextView b;
     private View c;
     private View d;
@@ -81,7 +81,7 @@ public class ReaderWebActionBar extends RelativeLayout {
         }
     }
 
-    public void setOnBtnClickListener$74b8600c(com.clilystudio.netbook.umeng.update.a a1) {
+    public void setOnBtnClickListener$74b8600c(com.umeng.update.a a1) {
         a = a1;
     }
 

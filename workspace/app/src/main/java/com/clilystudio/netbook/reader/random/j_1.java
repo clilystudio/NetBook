@@ -1,6 +1,6 @@
 package com.clilystudio.netbook.reader.random;
 
-final class j implements com.clilystudio.netbook.umeng.update.a {
+final class j implements com.umeng.update.a {
 
     private ReaderRandomActivity a;
 

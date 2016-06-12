@@ -28,7 +28,7 @@ public class HomeFindLuckyGameItem extends HomeFindItem {
         int int1 = 1;
         Context Context2 = getContext();
         String String3 = am.n(Context2);
-        String String4 = com.clilystudio.netbook.umeng.a.b.b(Context2, "home_lucky_game_channel");
+        String String4 = com.umeng.a.b.b(Context2, "home_lucky_game_channel");
         int int5;
 
         label_37:
@@ -52,7 +52,7 @@ public class HomeFindLuckyGameItem extends HomeFindItem {
             b();
         else {
             Context Context6 = getContext();
-            int int7 = com.clilystudio.netbook.hpay100.a.a.b(com.clilystudio.netbook.umeng.a.b.b(Context6, "home_lucky_game_toggle"), 0);
+            int int7 = com.clilystudio.netbook.hpay100.a.a.b(com.umeng.a.b.b(Context6, "home_lucky_game_toggle"), 0);
 
             if (am.f(Context6) >= int7)
                 int1 = 0;

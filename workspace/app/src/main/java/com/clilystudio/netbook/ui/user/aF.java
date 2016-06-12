@@ -14,6 +14,6 @@ final class aF implements View$OnClickListener {
 
     public final void onClick(View View1) {
         UserInfoActivity.b(a);
-        com.clilystudio.netbook.umeng.a.b.a((Context) a, "my_account_click");
+        com.umeng.a.b.a((Context) a, "my_account_click");
     }
 }

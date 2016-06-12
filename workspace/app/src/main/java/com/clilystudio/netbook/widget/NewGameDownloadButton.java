@@ -5,7 +5,7 @@ import android.content.res.TypedArray;
 import android.util.AttributeSet;
 
 import com.clilystudio.netbook.R$styleable;
-import com.clilystudio.netbook.umeng.a.b;
+import com.umeng.a.b;
 
 public class NewGameDownloadButton extends GameDownloadButton {
 

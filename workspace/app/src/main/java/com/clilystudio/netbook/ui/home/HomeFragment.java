@@ -8,11 +8,11 @@ public abstract class HomeFragment extends Fragment {
 
     public void onPause() {
         super.onPause();
-        com.clilystudio.netbook.umeng.a.b.b(a());
+        com.umeng.a.b.b(a());
     }
 
     public void onResume() {
         super.onResume();
-        com.clilystudio.netbook.umeng.a.b.a(a());
+        com.umeng.a.b.a(a());
     }
 }

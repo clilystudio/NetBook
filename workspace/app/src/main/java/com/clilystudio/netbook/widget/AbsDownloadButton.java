@@ -21,7 +21,7 @@ public abstract class AbsDownloadButton extends Button {
     static void a(AbsDownloadButton AbsDownloadButton1) {
         String String2 = AbsDownloadButton1.a.getName();
 
-        com.clilystudio.netbook.umeng.a.b.a(AbsDownloadButton1.getContext(), "mystery_app_download", String2);
+        com.umeng.a.b.a(AbsDownloadButton1.getContext(), "mystery_app_download", String2);
         if (com.clilystudio.netbook.hpay100.a.a.r(AbsDownloadButton1.getContext()) == 1)
             new k(AbsDownloadButton1.getContext()).a((CharSequence) "\u786E\u8BA4\u4E0B\u8F7D").b((CharSequence) new StringBuilder("\u5373\u5C06\u5F00\u59CB\u4E0B\u8F7D\u300A").append(String2).append("\u300B\uFF0C\u662F\u5426\u4E0B\u8F7D\uFF1F").toString()).a(2131034424, (DialogInterface$OnClickListener) new a(AbsDownloadButton1)).b(2131034129, null).b().show();
         else {

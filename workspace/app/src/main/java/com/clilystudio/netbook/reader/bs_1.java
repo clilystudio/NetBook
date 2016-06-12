@@ -34,7 +34,7 @@ final class bs implements View$OnClickListener {
             case 2131493452:
                 Intent Intent3;
 
-                com.clilystudio.netbook.umeng.a.b.a((Context) a.getActivity(), "reader_menu_topic");
+                com.umeng.a.b.a((Context) a.getActivity(), "reader_menu_topic");
                 Intent3 = BookPostTabActivity.a((Context) a.getActivity(), ReaderMenuFragment.f(a), ReaderMenuFragment.g(a));
                 Intent3.putExtra("extra_sort_type", "created");
                 a.startActivity(Intent3);

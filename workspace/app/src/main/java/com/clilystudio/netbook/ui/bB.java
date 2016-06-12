@@ -22,10 +22,10 @@ final class bB implements View$OnClickListener {
 
         if (RelateBooksFragment.a(b)) {
             com.clilystudio.netbook.hpay100.a.a.c((Context) b.getActivity(), a.getId(), "rec_C6613205_93B6_61A6_9FEC_180B70F91B94");
-            com.clilystudio.netbook.umeng.a.b.a((Context) b.getActivity(), "book_info_recommend_click", "bfd");
+            com.umeng.a.b.a((Context) b.getActivity(), "book_info_recommend_click", "bfd");
             int2 = 3;
         } else {
-            com.clilystudio.netbook.umeng.a.b.a((Context) b.getActivity(), "book_info_recommend_click", "zhuishu");
+            com.umeng.a.b.a((Context) b.getActivity(), "book_info_recommend_click", "zhuishu");
             int2 = 1;
         }
         Intent3 = BookInfoActivity.a((Context) b.getActivity(), a.getId(), int2);

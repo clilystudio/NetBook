@@ -14,7 +14,7 @@ import android.widget.TextView;
 public class ReaderActionBar extends RelativeLayout {
 
     private View a;
-    private com.clilystudio.netbook.umeng.update.a b;
+    private com.umeng.update.a b;
     private bZ c;
     private TextView d;
     private ImageView e;
@@ -154,7 +154,7 @@ public class ReaderActionBar extends RelativeLayout {
         }
     }
 
-    public void setOnBtnClickListener$7ead76dc(com.clilystudio.netbook.umeng.update.a a1) {
+    public void setOnBtnClickListener$7ead76dc(com.umeng.update.a a1) {
         b = a1;
     }
 

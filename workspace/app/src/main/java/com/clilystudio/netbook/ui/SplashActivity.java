@@ -67,7 +67,7 @@ public class SplashActivity extends Activity {
     }
 
     private void g() {
-        if ("1".equals(com.clilystudio.netbook.umeng.a.b.b((Context) this, "splash_ad_third_enable"))) {
+        if ("1".equals(com.umeng.a.b.b((Context) this, "splash_ad_third_enable"))) {
             AdSplashImp AdSplashImp1;
 
             findViewById(2131493995).setVisibility(8);
@@ -175,9 +175,9 @@ public class SplashActivity extends Activity {
         } else
             b();
         if (am.g())
-            com.clilystudio.netbook.umeng.a.b.a((Context) this, "user_register", "YES");
+            com.umeng.a.b.a((Context) this, "user_register", "YES");
         else
-            com.clilystudio.netbook.umeng.a.b.a((Context) this, "user_register", "NO");
+            com.umeng.a.b.a((Context) this, "user_register", "NO");
     }
 
     protected void onDestroy() {
@@ -187,7 +187,7 @@ public class SplashActivity extends Activity {
 
     public void onPause() {
         super.onPause();
-        com.clilystudio.netbook.umeng.a.b.a((Context) this);
+        com.umeng.a.b.a((Context) this);
     }
 
     protected void onRestart() {
@@ -204,7 +204,7 @@ public class SplashActivity extends Activity {
 
     public void onResume() {
         super.onResume();
-        com.clilystudio.netbook.umeng.a.b.b((Context) this);
+        com.umeng.a.b.b((Context) this);
         com.xiaomi.mistatistic.sdk.b.a();
         if (am.g()) {
             Calendar Calendar1 = Calendar.getInstance();
@@ -216,10 +216,10 @@ public class SplashActivity extends Activity {
                 if (String3 != null) {
                     if (String3.equals("male")) {
                         com.xiaomi.mistatistic.sdk.b.a("user_gender", "male");
-                        com.clilystudio.netbook.umeng.a.b.a((Context) this, "user_gender", "male");
+                        com.umeng.a.b.a((Context) this, "user_gender", "male");
                     } else if (String3.equals("female")) {
                         com.xiaomi.mistatistic.sdk.b.a("user_gender", "female");
-                        com.clilystudio.netbook.umeng.a.b.a((Context) this, "user_gender", "female");
+                        com.umeng.a.b.a((Context) this, "user_gender", "female");
                     }
                     com.clilystudio.netbook.hpay100.a.a.b((Context) this, "KEY_OPEN_TIME", int2);
                     return;
