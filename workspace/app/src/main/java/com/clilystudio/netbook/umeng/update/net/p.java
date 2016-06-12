@@ -9,7 +9,7 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Build.VERSION;
 import android.os.Messenger;
-import android.support.design.widget.am;
+import com.clilystudio.netbook.am;
 import android.util.SparseArray;
 import android.widget.RemoteViews;
 import com.clilystudio.netbook.umeng.update.util.a;

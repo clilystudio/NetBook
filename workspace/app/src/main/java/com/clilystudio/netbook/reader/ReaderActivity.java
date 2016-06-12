@@ -448,7 +448,7 @@ public class ReaderActivity extends BaseReadSlmActivity
         if (com.clilystudio.netbook.hpay100.a_Pack.a.d()) {
             Iterator localIterator = com.clilystudio.netbook.hpay100.a_Pack.a.j(this.c, this.e).iterator();
             while (localIterator.hasNext()) {
-                String str = android.support.design.widget.am.f((String) localIterator.next());
+                String str = com.clilystudio.netbook.am.f((String) localIterator.next());
                 this.x.add(str);
             }
         }
@@ -728,10 +728,10 @@ public class ReaderActivity extends BaseReadSlmActivity
 
     @l
     public void OnUpdateBalanceEvent(G paramG) {
-        if (android.support.design.widget.am.e() != null) {
+        if (com.clilystudio.netbook.am.e() != null) {
             bo localbo = new bo(this, 0);
             String[] arrayOfString = new String[1];
-            arrayOfString[0] = android.support.design.widget.am.e().getToken();
+            arrayOfString[0] = com.clilystudio.netbook.am.e().getToken();
             localbo.b(arrayOfString);
         }
     }
@@ -996,10 +996,10 @@ public class ReaderActivity extends BaseReadSlmActivity
                     String[] arrayOfString1 = new String[1];
                     arrayOfString1[0] = this.c;
                     localbq.b(arrayOfString1);
-                    if (android.support.design.widget.am.e() != null) {
+                    if (com.clilystudio.netbook.am.e() != null) {
                         bo localbo = new bo(this, 0);
                         String[] arrayOfString2 = new String[1];
-                        arrayOfString2[0] = android.support.design.widget.am.e().getToken();
+                        arrayOfString2[0] = com.clilystudio.netbook.am.e().getToken();
                         localbo.b(arrayOfString2);
                         new bp(this, 0).b(new Void[0]);
                     }

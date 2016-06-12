@@ -6,7 +6,7 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.res.Resources;
 import android.os.Build.VERSION;
-import android.support.design.widget.am;
+import com.clilystudio.netbook.am;
 import android.widget.RemoteViews;
 import com.alipay.sdk.b.b;
 import com.clilystudio.netbook.umeng.update.util.a;

@@ -4,7 +4,6 @@ import android.app.ActivityManager;
 import android.app.Application;
 import android.content.Context;
 import android.os.Process;
-import android.support.design.widget.am;
 
 import com.activeandroid.ActiveAndroid;
 import com.activeandroid.query.Select;
@@ -17,6 +16,10 @@ import com.clilystudio.netbook.model.User;
 import com.clilystudio.netbook.reader.Reader;
 import com.clilystudio.netbook.util.V;
 import com.integralblue.httpresponsecache.HttpResponseCache;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
+import com.xiaomi.mipush.sdk.MiPushClient;
+import com.xiaomi.mistatistic.sdk.MiStatInterface;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -211,81 +214,66 @@ public class MyApplication extends Application {
         ActiveAndroid.initialize(this);
         Object localObject1 = null;
         int m = Process.myPid();
-        Iterator localIterator1 = ((ActivityManager) getSystemService("activity")).getRunningAppProcesses().iterator();
+        Iterator localIterator1 = ((ActivityManager) getSystemService(Context.ACTIVITY_SERVICE)).getRunningAppProcesses().iterator();
         ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo2;
-        if (localIterator1.hasNext()) {
+        while (localIterator1.hasNext()) {
             localRunningAppProcessInfo2 = (ActivityManager.RunningAppProcessInfo) localIterator1.next();
-            if (localRunningAppProcessInfo2.pid != m)
-                break label419;
-        }
-        label397:
-        label403:
-        label419:
-        for (Object localObject2 = localRunningAppProcessInfo2.processName; ; localObject2 = localObject1) {
-            localObject1 = localObject2;
-            break;
-            if (localObject1.equals("com.clilystudio.netbook")) {
-                Thread t = new Thread() {
-                    @Override
-                    public void run() {
-                        File v1 = getCacheDir();
-                        File v0 = new File(v1, "http2");
-                        try {
-                            HttpResponseCache.install(v0, 200 * 1024 * 1024);
-                        } catch (IOException e1) {
-                            e1.printStackTrace();
-                        }
-                    }
-                };
-                t.start();
-             }
-            com.clilystudio.netbook.umeng.a_Pack.b.c(this);
-            com.clilystudio.netbook.umeng.a_Pack.b.a(new f(this));
-            int i2;
-            if (a.l(this, "update_notice_key")) {
-                List localList = ((ActivityManager) getSystemService("activity")).getRunningAppProcesses();
-                String str = getPackageName();
-                int i1 = Process.myPid();
-                Iterator localIterator2 = localList.iterator();
-                ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo1;
-                do {
-                    if (!localIterator2.hasNext())
-                        break;
-                    localRunningAppProcessInfo1 = (ActivityManager.RunningAppProcessInfo) localIterator2.next();
-                }
-                while ((localRunningAppProcessInfo1.pid != i1) || (!str.equals(localRunningAppProcessInfo1.processName)));
-                i2 = 1;
-                if (i2 != 0)
-                    d.a(this, "2882303761517133731", "5941713373731");
-            }
-            com.xiaomi.mistatistic.sdk.b.a(this, "2882303761517133731", "5941713373731", am.n(this));
-            g localg = new i(this).a();
-            com.nostra13.universalimageloader.core.f.a().a(localg);
-            int n;
-            if (a.c(this, "PREF_FIRST_LAUNCH_TIME", 0L) == 0L) {
-                if (new Select().from(BookReadRecord.class).execute().isEmpty())
-                    break label397;
-                n = 1;
-                label316:
-                if (n == 0)
-                    break label403;
-                Calendar localCalendar = Calendar.getInstance();
-                localCalendar.set(1, 2000);
-                a.b(this, "PREF_FIRST_LAUNCH_TIME", localCalendar.getTimeInMillis());
-            }
-            while (true) {
-                V localV = new V(this);
-                if (localV.a() == 0L)
-                    localV.a(Calendar.getInstance().getTimeInMillis());
-                am.s(this);
-                return;
-                i2 = 0;
+            if (localRunningAppProcessInfo2.pid == m) {
+                localObject1 = localRunningAppProcessInfo2.processName;
                 break;
-                n = 0;
-                break label316;
-                a.b(this, "PREF_FIRST_LAUNCH_TIME", Calendar.getInstance().getTimeInMillis());
             }
         }
+
+        if (localObject1.equals("com.clilystudio.netbook")) {
+            Thread t = new Thread() {
+                @Override
+                public void run() {
+                    File v1 = getCacheDir();
+                    File v0 = new File(v1, "http2");
+                    try {
+                        HttpResponseCache.install(v0, 200 * 1024 * 1024);
+                    } catch (IOException e1) {
+                        e1.printStackTrace();
+                    }
+                }
+            };
+            t.start();
+        }
+        com.clilystudio.netbook.umeng.a_Pack.b.c(this);
+        com.clilystudio.netbook.umeng.a_Pack.b.a(new f(this));
+        if (com.clilystudio.netbook.hpay100.a_Pack.a.l(this, "update_notice_key")) {
+            List localList = ((ActivityManager) getSystemService(Context.ACTIVITY_SERVICE)).getRunningAppProcesses();
+            String str = getPackageName();
+            int i1 = Process.myPid();
+            Iterator localIterator2 = localList.iterator();
+            ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo1;
+            while (localIterator2.hasNext()) {
+                localRunningAppProcessInfo1 = (ActivityManager.RunningAppProcessInfo) localIterator2.next();
+                if ((localRunningAppProcessInfo1.pid == i1) || (str.equals(localRunningAppProcessInfo1.processName))) {
+                    MiPushClient.registerPush(this, "2882303761517133731", "5941713373731");
+                    break;
+                }
+            }
+        }
+        MiStatInterface.initialize(this, "2882303761517133731", "5941713373731", am.n(this));
+        ImageLoaderConfiguration configuration = ImageLoaderConfiguration.createDefault(this);
+        ImageLoader.getInstance().init(configuration);
+        int n;
+        if (com.clilystudio.netbook.hpay100.a_Pack.a.c(this, "PREF_FIRST_LAUNCH_TIME", 0L) == 0L) {
+            if (new Select().from(BookReadRecord.class).execute().isEmpty()) {
+                com.clilystudio.netbook.hpay100.a_Pack.a.b(this, "PREF_FIRST_LAUNCH_TIME", Calendar.getInstance().getTimeInMillis());
+            } else {
+                Calendar localCalendar = Calendar.getInstance();
+                localCalendar.set(Calendar.YEAR, 2000);
+                com.clilystudio.netbook.hpay100.a_Pack.a.b(this, "PREF_FIRST_LAUNCH_TIME", localCalendar.getTimeInMillis());
+            }
+        }
+        V localV = new V(this);
+        if (localV.a() == 0L) {
+            localV.a(Calendar.getInstance().getTimeInMillis());
+        }
+        am.s(this);
+        return;
     }
 }
 

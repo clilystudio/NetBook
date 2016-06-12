@@ -1,6 +1,6 @@
 package com.clilystudio.netbook.adapter;
 
-import android.support.design.widget.am;
+import com.clilystudio.netbook.am;
 import android.view.LayoutInflater;
 
 public final class Y extends NotificationAdapter {

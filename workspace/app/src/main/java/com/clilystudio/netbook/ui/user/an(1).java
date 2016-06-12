@@ -13,7 +13,7 @@ final class an
         paramDialogInterface.dismiss();
         ak localak = new ak(this.a.b.a, this.a.b.a, "正在购买");
         String[] arrayOfString = new String[2];
-        arrayOfString[0] = android.support.design.widget.am.e().getToken();
+        arrayOfString[0] = com.clilystudio.netbook.am.e().getToken();
         arrayOfString[1] = ((VipPlan.Plan) al.a(this.a.b).get(this.a.a)).get_id();
         localak.b(arrayOfString);
     }

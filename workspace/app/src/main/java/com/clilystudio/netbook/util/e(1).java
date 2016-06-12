@@ -170,17 +170,17 @@ public class e {
     }
 
     public static String c(Context paramContext) {
-        if (android.support.design.widget.am.e() == null) {
+        if (com.clilystudio.netbook.am.e() == null) {
             String str = ((WifiManager) paramContext.getSystemService("wifi")).getConnectionInfo().getMacAddress();
             if (str == null)
                 str = "";
             return com.integralblue.httpresponsecache.compat.libcore.a.a.b(str.getBytes());
         }
-        return android.support.design.widget.am.e().getUser().getId();
+        return com.clilystudio.netbook.am.e().getUser().getId();
     }
 
     public static void c(final String paramString) {
-        final Account localAccount = android.support.design.widget.am.e();
+        final Account localAccount = com.clilystudio.netbook.am.e();
         if (localAccount == null)
             return;
         Thread t = new Thread() {
