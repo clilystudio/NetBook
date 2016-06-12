@@ -6,6 +6,7 @@ import android.text.Editable;
 import android.view.View;
 import android.widget.EditText;
 
+import com.clilystudio.netbook.ActivityStack;
 import com.clilystudio.netbook.ui.BaseActivity;
 
 public class AddVoteActivity extends BaseActivity {
@@ -78,8 +79,8 @@ public class AddVoteActivity extends BaseActivity {
     public void onCreate(Bundle paramBundle) {
         super.onCreate(paramBundle);
         setContentView(2130903078);
-        com.clilystudio.netbook.a.a();
-        com.clilystudio.netbook.a.a(this);
+        ActivityStack.getInstance();
+        ActivityStack.addActivity(this);
         this.a = ((EditText) findViewById(2131493072));
         this.b = ((EditText) findViewById(2131493074));
         this.c = findViewById(2131493073);

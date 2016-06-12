@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.clilystudio.netbook.ActivityStack;
 import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.ui.BaseActivity;
 
@@ -42,8 +43,8 @@ public class AddVoteItemActivity extends BaseActivity {
     public void onCreate(Bundle paramBundle) {
         super.onCreate(paramBundle);
         setContentView(2130903079);
-        com.clilystudio.netbook.a.a();
-        com.clilystudio.netbook.a.a(this);
+        ActivityStack.getInstance();
+        ActivityStack.addActivity(this);
         String str1 = getIntent().getStringExtra("block");
         if ("ramble".equals(str1))
             this.a = 1;

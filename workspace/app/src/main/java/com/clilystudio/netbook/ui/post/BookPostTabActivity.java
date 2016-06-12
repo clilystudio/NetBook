@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 
+import com.clilystudio.netbook.ActivityStack;
 import com.clilystudio.netbook.d;
 import com.clilystudio.netbook.event.f;
 import com.clilystudio.netbook.event.i;
@@ -96,8 +97,8 @@ public class BookPostTabActivity extends SimpleTabActivity {
             str = str.substring(0, 10) + "...";
         a(str, 2130837872, new aw(this), "排序");
         if (getIntent().getBooleanExtra("FROM_READER", false)) {
-            com.clilystudio.netbook.a.a();
-            com.clilystudio.netbook.a.b();
+            ActivityStack.getInstance();
+            ActivityStack.clearAll();
         }
         com.clilystudio.netbook.hpay100.a_Pack.a.u(this);
     }

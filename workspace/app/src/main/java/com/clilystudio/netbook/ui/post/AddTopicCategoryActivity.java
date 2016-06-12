@@ -3,6 +3,7 @@ package com.clilystudio.netbook.ui.post;
 import android.os.Bundle;
 import android.view.View;
 
+import com.clilystudio.netbook.ActivityStack;
 import com.clilystudio.netbook.ui.BaseActivity;
 
 public class AddTopicCategoryActivity extends BaseActivity {
@@ -15,8 +16,8 @@ public class AddTopicCategoryActivity extends BaseActivity {
         super.onCreate(paramBundle);
         setContentView(2130903146);
         b(2131034294);
-        com.clilystudio.netbook.a.a();
-        com.clilystudio.netbook.a.a(this);
+        ActivityStack.getInstance();
+        ActivityStack.addActivity(this);
         this.a = getIntent().getStringExtra("book_post_list_bookId");
         this.b = getIntent().getStringExtra("book_post_list_bookTitle");
         this.c = getIntent().getStringExtra("add_post_mode");

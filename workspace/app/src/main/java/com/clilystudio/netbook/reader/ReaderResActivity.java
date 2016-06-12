@@ -8,6 +8,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 
+import com.clilystudio.netbook.ActivityStack;
 import com.clilystudio.netbook.d;
 import com.clilystudio.netbook.event.i;
 import com.clilystudio.netbook.event.v;
@@ -42,8 +43,8 @@ public class ReaderResActivity extends ReaderModeActivity {
         }
         for (Object localObject = ReaderResourceFragment.a(this.b, this.c); ; localObject = a(this.c)) {
             localFragmentTransaction.replace(2131493174, (Fragment) localObject).commit();
-            com.clilystudio.netbook.a.a();
-            com.clilystudio.netbook.a.a(this);
+            ActivityStack.getInstance();
+            ActivityStack.addActivity(this);
             bT localbT = new bT(this, 0);
             String[] arrayOfString = new String[1];
             arrayOfString[0] = this.b;
