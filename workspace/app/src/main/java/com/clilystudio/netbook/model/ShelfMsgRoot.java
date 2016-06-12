@@ -1,4 +1,3 @@
-
 package com.clilystudio.netbook.model;
 
 public class ShelfMsgRoot {

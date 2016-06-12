@@ -1,4 +1,3 @@
-
 package com.clilystudio.netbook.model;
 
 import java.util.Date;
@@ -12,80 +11,67 @@ public class RemoteBookShelf {
     private boolean ok;
     private boolean mNeedSync = true;
 
-    public RemoteBookShelf$Book[] getBookShelfs()
-    {
+    public RemoteBookShelf$Book[] getBookShelfs() {
         return bookshelf;
     }
 
-    public String getCode()
-    {
+    public void setBookShelfs(RemoteBookShelf$Book[] Book_1darray1) {
+        bookshelf = Book_1darray1;
+    }
+
+    public String getCode() {
         return code;
     }
 
-    public RemoteBookShelf$Book[] getFeedingBooks()
-    {
+    public void setCode(String String1) {
+        code = String1;
+    }
+
+    public RemoteBookShelf$Book[] getFeedingBooks() {
         return feedingBooks;
     }
 
-    public Date getSyncDate()
-    {
+    public void setFeedingBooks(RemoteBookShelf$Book[] Book_1darray1) {
+        feedingBooks = Book_1darray1;
+    }
+
+    public Date getSyncDate() {
         return mSyncDate;
     }
 
-    public int getTotalBookCounts()
-    {
+    public void setSyncDate(Date Date1) {
+        mSyncDate = Date1;
+    }
+
+    public int getTotalBookCounts() {
         int int1;
         RemoteBookShelf$Book[] Book_1darray2;
         int int3;
 
-        if( bookshelf != null )
+        if (bookshelf != null)
             int1 = bookshelf.length;
         else
             int1 = 0;
         Book_1darray2 = feedingBooks;
         int3 = 0;
-        if( Book_1darray2 != null )
+        if (Book_1darray2 != null)
             int3 = feedingBooks.length;
         return int1 + int3;
     }
 
-    public boolean isNeedSync()
-    {
+    public boolean isNeedSync() {
         return mNeedSync;
     }
 
-    public boolean isOk()
-    {
-        return ok;
-    }
-
-    public void setBookShelfs(RemoteBookShelf$Book[] Book_1darray1)
-    {
-        bookshelf = Book_1darray1;
-    }
-
-    public void setCode(String String1)
-    {
-        code = String1;
-    }
-
-    public void setFeedingBooks(RemoteBookShelf$Book[] Book_1darray1)
-    {
-        feedingBooks = Book_1darray1;
-    }
-
-    public void setNeedSync(boolean boolean1)
-    {
+    public void setNeedSync(boolean boolean1) {
         mNeedSync = boolean1;
     }
 
-    public void setOk(boolean boolean1)
-    {
-        ok = boolean1;
+    public boolean isOk() {
+        return ok;
     }
 
-    public void setSyncDate(Date Date1)
-    {
-        mSyncDate = Date1;
+    public void setOk(boolean boolean1) {
+        ok = boolean1;
     }
 }

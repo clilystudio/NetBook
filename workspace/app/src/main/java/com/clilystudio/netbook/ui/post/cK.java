@@ -1,4 +1,3 @@
-
 package com.clilystudio.netbook.ui.post;
 
 import android.view.MotionEvent;
@@ -8,16 +7,14 @@ import android.widget.PopupWindow;
 
 final class cK implements View$OnTouchListener {
 
-    cK(ReviewListActivity ReviewListActivity1, PopupWindow PopupWindow2)
-    {
+    private PopupWindow a;
+
+    cK(ReviewListActivity ReviewListActivity1, PopupWindow PopupWindow2) {
         a = PopupWindow2;
     }
 
-    private PopupWindow a;
-
-    public final boolean onTouch(View View1, MotionEvent MotionEvent2)
-    {
-        if( a != null && a.isShowing() )
+    public final boolean onTouch(View View1, MotionEvent MotionEvent2) {
+        if (a != null && a.isShowing())
             a.dismiss();
         return true;
     }

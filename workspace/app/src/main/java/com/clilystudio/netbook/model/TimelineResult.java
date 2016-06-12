@@ -1,4 +1,3 @@
-
 package com.clilystudio.netbook.model;
 
 public class TimelineResult {
@@ -8,43 +7,35 @@ public class TimelineResult {
     private TimelineResult$Names[] retweetNames;
     private TimelineResult$Temp[] timeline;
 
-    public String getCode()
-    {
+    public String getCode() {
         return code;
     }
 
-    public TimelineResult$Names[] getRetweetNames()
-    {
-        return retweetNames;
-    }
-
-    public TimelineResult$Temp[] getTweets()
-    {
-        return timeline;
-    }
-
-    public boolean isOk()
-    {
-        return ok;
-    }
-
-    public void setCode(String String1)
-    {
+    public void setCode(String String1) {
         code = String1;
     }
 
-    public void setOk(boolean boolean1)
-    {
-        ok = boolean1;
+    public TimelineResult$Names[] getRetweetNames() {
+        return retweetNames;
     }
 
-    public void setRetweetNames(TimelineResult$Names[] Names_1darray1)
-    {
+    public void setRetweetNames(TimelineResult$Names[] Names_1darray1) {
         retweetNames = Names_1darray1;
     }
 
-    public void setTweets(TimelineResult$Temp[] Temp_1darray1)
-    {
+    public TimelineResult$Temp[] getTweets() {
+        return timeline;
+    }
+
+    public void setTweets(TimelineResult$Temp[] Temp_1darray1) {
         timeline = Temp_1darray1;
+    }
+
+    public boolean isOk() {
+        return ok;
+    }
+
+    public void setOk(boolean boolean1) {
+        ok = boolean1;
     }
 }

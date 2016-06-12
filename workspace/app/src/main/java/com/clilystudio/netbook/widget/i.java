@@ -1,4 +1,3 @@
-
 package com.clilystudio.netbook.widget;
 
 public interface i {

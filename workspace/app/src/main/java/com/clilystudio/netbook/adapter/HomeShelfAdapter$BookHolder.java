@@ -1,20 +1,16 @@
-
 package com.clilystudio.netbook.adapter;
 
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.TextView;
-import butterknife.ButterKnife;
+
 import com.clilystudio.netbook.widget.BookShelfFlagView;
 import com.clilystudio.netbook.widget.CoverLoadingLayer;
 import com.clilystudio.netbook.widget.CoverView;
 
-class HomeShelfAdapter$BookHolder {
+import butterknife.ButterKnife;
 
-    HomeShelfAdapter$BookHolder(View View1)
-    {
-        ButterKnife.inject( this, View1 );
-    }
+class HomeShelfAdapter$BookHolder {
 
     CheckBox check;
     CoverView cover;
@@ -23,4 +19,7 @@ class HomeShelfAdapter$BookHolder {
     BookShelfFlagView flag;
     TextView title;
     View top;
+    HomeShelfAdapter$BookHolder(View View1) {
+        ButterKnife.inject(this, View1);
+    }
 }

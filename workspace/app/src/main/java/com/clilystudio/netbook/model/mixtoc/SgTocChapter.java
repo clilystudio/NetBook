@@ -1,4 +1,3 @@
-
 package com.clilystudio.netbook.model.mixtoc;
 
 public class SgTocChapter {
@@ -7,33 +6,27 @@ public class SgTocChapter {
     private String name;
     private String url;
 
-    public String getCmd()
-    {
+    public String getCmd() {
         return cmd;
     }
 
-    public String getName()
-    {
-        return name;
-    }
-
-    public String getUrl()
-    {
-        return url;
-    }
-
-    public void setCmd(String String1)
-    {
+    public void setCmd(String String1) {
         cmd = String1;
     }
 
-    public void setName(String String1)
-    {
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String String1) {
         name = String1;
     }
 
-    public void setUrl(String String1)
-    {
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String String1) {
         url = String1;
     }
 }

@@ -1,25 +1,20 @@
-
 package com.clilystudio.netbook.view;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface$OnClickListener;
-import com.clilystudio.netbook.ui.cd;
 
 final class d implements DialogInterface$OnClickListener {
 
-    d(c c1)
-    {
+    private c a;
+
+    d(c c1) {
         a = c1;
     }
 
-    private c a;
-
-    public final void onClick(DialogInterface DialogInterface1, int int2)
-    {
+    public final void onClick(DialogInterface DialogInterface1, int int2) {
         int int3 = 0;
 
-        switch( int2 )
-        {
+        switch (int2) {
             case 1201:
                 int3 = 2;
                 break;
@@ -30,7 +25,7 @@ final class d implements DialogInterface$OnClickListener {
             default:
                 break;
         }
-        if( c.a( a ) != null )
-            c.a( a ).a( int3 );
+        if (c.a(a) != null)
+            c.a(a).a(int3);
     }
 }

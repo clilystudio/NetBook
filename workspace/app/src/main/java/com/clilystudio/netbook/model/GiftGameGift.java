@@ -1,4 +1,3 @@
-
 package com.clilystudio.netbook.model;
 
 import java.util.Date;

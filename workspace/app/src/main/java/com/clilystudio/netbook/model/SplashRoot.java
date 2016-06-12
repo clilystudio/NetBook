@@ -1,4 +1,3 @@
-
 package com.clilystudio.netbook.model;
 
 public class SplashRoot {
@@ -6,23 +5,19 @@ public class SplashRoot {
     private boolean ok;
     private Splash[] splash;
 
-    public Splash[] getSplash()
-    {
+    public Splash[] getSplash() {
         return splash;
     }
 
-    public boolean isOk()
-    {
+    public void setSplash(Splash[] Splash_1darray1) {
+        splash = Splash_1darray1;
+    }
+
+    public boolean isOk() {
         return ok;
     }
 
-    public void setOk(boolean boolean1)
-    {
+    public void setOk(boolean boolean1) {
         ok = boolean1;
-    }
-
-    public void setSplash(Splash[] Splash_1darray1)
-    {
-        splash = Splash_1darray1;
     }
 }

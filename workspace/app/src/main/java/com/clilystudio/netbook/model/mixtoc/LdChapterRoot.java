@@ -1,4 +1,3 @@
-
 package com.clilystudio.netbook.model.mixtoc;
 
 public class LdChapterRoot {
@@ -8,28 +7,23 @@ public class LdChapterRoot {
     private String name;
     private String src;
 
-    public String getAuthor()
-    {
+    public String getAuthor() {
         return author;
     }
 
-    public String getContent()
-    {
+    public String getContent() {
         return content;
     }
 
-    public String getName()
-    {
+    public String getName() {
         return name;
     }
 
-    public String getSrc()
-    {
+    public String getSrc() {
         return src;
     }
 
-    public void setSrc(String String1)
-    {
+    public void setSrc(String String1) {
         src = String1;
     }
 }

@@ -1,4 +1,3 @@
-
 package com.clilystudio.netbook.util;
 
 import android.view.View;

@@ -1,10 +1,8 @@
-
 package com.clilystudio.netbook.exception;
 
 public class DnsParseFailedException extends RuntimeException {
 
-    public DnsParseFailedException(String String1)
-    {
-        super( String1 );
+    public DnsParseFailedException(String String1) {
+        super(String1);
     }
 }

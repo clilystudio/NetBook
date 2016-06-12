@@ -1,14 +1,6 @@
-
 package com.clilystudio.netbook.umeng.update.net;
 
 final class k {
-
-    public k(String String1, String String2, String String3)
-    {
-        a = String1;
-        b = String2;
-        c = String3;
-    }
 
     public String a;
     public String b;
@@ -19,4 +11,9 @@ final class k {
     public boolean g = false;
     public boolean h = false;
     public boolean i = false;
+    public k(String String1, String String2, String String3) {
+        a = String1;
+        b = String2;
+        c = String3;
+    }
 }

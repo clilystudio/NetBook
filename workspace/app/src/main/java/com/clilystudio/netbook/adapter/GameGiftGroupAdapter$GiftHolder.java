@@ -1,19 +1,18 @@
-
 package com.clilystudio.netbook.adapter;
 
 import android.view.View;
 import android.widget.TextView;
-import butterknife.ButterKnife;
+
 import com.clilystudio.netbook.widget.GiftGameGiftButton;
 
-class GameGiftGroupAdapter$GiftHolder {
+import butterknife.ButterKnife;
 
-    GameGiftGroupAdapter$GiftHolder(View View1)
-    {
-        ButterKnife.inject( this, View1 );
-    }
+class GameGiftGroupAdapter$GiftHolder {
 
     GiftGameGiftButton button;
     TextView desc;
     TextView title;
+    GameGiftGroupAdapter$GiftHolder(View View1) {
+        ButterKnife.inject(this, View1);
+    }
 }

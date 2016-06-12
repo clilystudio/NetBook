@@ -1,4 +1,3 @@
-
 package com.clilystudio.netbook.model;
 
 public class WXPayOrder {
@@ -7,38 +6,31 @@ public class WXPayOrder {
     private String orderId;
     private WXPayOrder$PayOrder payOrder;
 
-    public String getOrderId()
-    {
+    public String getOrderId() {
         return orderId;
     }
 
-    public WXPayOrder$PayOrder getPayOrder()
-    {
-        return payOrder;
-    }
-
-    public boolean isOk()
-    {
-        return ok;
-    }
-
-    public void setOk(boolean boolean1)
-    {
-        ok = boolean1;
-    }
-
-    public void setOrderId(String String1)
-    {
+    public void setOrderId(String String1) {
         orderId = String1;
     }
 
-    public void setPayOrder(WXPayOrder$PayOrder PayOrder1)
-    {
+    public WXPayOrder$PayOrder getPayOrder() {
+        return payOrder;
+    }
+
+    public void setPayOrder(WXPayOrder$PayOrder PayOrder1) {
         payOrder = PayOrder1;
     }
 
-    public String toString()
-    {
-        return new StringBuilder( "WXPayOrder{ok=" ).append( ok ).append( ", payOrder=" ).append( payOrder ).append( ", orderId='" ).append( orderId ).append( '\'' ).append( '}' ).toString();
+    public boolean isOk() {
+        return ok;
+    }
+
+    public void setOk(boolean boolean1) {
+        ok = boolean1;
+    }
+
+    public String toString() {
+        return new StringBuilder("WXPayOrder{ok=").append(ok).append(", payOrder=").append(payOrder).append(", orderId='").append(orderId).append('\'').append('}').toString();
     }
 }

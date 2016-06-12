@@ -1,4 +1,3 @@
-
 package com.clilystudio.netbook.model;
 
 public class ChapterRoot {
@@ -7,33 +6,27 @@ public class ChapterRoot {
     private boolean ok;
     private int status;
 
-    public Chapter getChapter()
-    {
+    public Chapter getChapter() {
         return chapter;
     }
 
-    public int getStatus()
-    {
-        return status;
-    }
-
-    public boolean isOk()
-    {
-        return ok;
-    }
-
-    public void setChapter(Chapter Chapter1)
-    {
+    public void setChapter(Chapter Chapter1) {
         chapter = Chapter1;
     }
 
-    public void setOk(boolean boolean1)
-    {
-        ok = boolean1;
+    public int getStatus() {
+        return status;
     }
 
-    public void setStatus(int int1)
-    {
+    public void setStatus(int int1) {
         status = int1;
+    }
+
+    public boolean isOk() {
+        return ok;
+    }
+
+    public void setOk(boolean boolean1) {
+        ok = boolean1;
     }
 }

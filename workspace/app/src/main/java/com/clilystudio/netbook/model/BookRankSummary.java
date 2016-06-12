@@ -1,4 +1,3 @@
-
 package com.clilystudio.netbook.model;
 
 import com.clilystudio.netbook.api.ApiService;
@@ -12,18 +11,19 @@ public class BookRankSummary {
     private String title;
     private String totalRank;
 
-    public String getCover()
-    {
+    public String getCover() {
         return cover;
     }
 
-    public String getFullCover()
-    {
-        return new StringBuilder().append( ApiService.a ).append( cover ).toString();
+    public void setCover(String String1) {
+        cover = String1;
     }
 
-    public String[] getIds()
-    {
+    public String getFullCover() {
+        return new StringBuilder().append(ApiService.a).append(cover).toString();
+    }
+
+    public String[] getIds() {
         String[] String_1darray1 = new String[3];
 
         String_1darray1[0] = _id;
@@ -32,58 +32,43 @@ public class BookRankSummary {
         return String_1darray1;
     }
 
-    public String getMonthRank()
-    {
+    public String getMonthRank() {
         return monthRank;
     }
 
-    public String getTitle()
-    {
-        return title;
-    }
-
-    public String getTotalRank()
-    {
-        return totalRank;
-    }
-
-    public String get_id()
-    {
-        return _id;
-    }
-
-    public boolean isCollapse()
-    {
-        return collapse;
-    }
-
-    public void setCollapse(boolean boolean1)
-    {
-        collapse = boolean1;
-    }
-
-    public void setCover(String String1)
-    {
-        cover = String1;
-    }
-
-    public void setMonthRank(String String1)
-    {
+    public void setMonthRank(String String1) {
         monthRank = String1;
     }
 
-    public void setTitle(String String1)
-    {
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String String1) {
         title = String1;
     }
 
-    public void setTotalRank(String String1)
-    {
+    public String getTotalRank() {
+        return totalRank;
+    }
+
+    public void setTotalRank(String String1) {
         totalRank = String1;
     }
 
-    public void set_id(String String1)
-    {
+    public String get_id() {
+        return _id;
+    }
+
+    public void set_id(String String1) {
         _id = String1;
+    }
+
+    public boolean isCollapse() {
+        return collapse;
+    }
+
+    public void setCollapse(boolean boolean1) {
+        collapse = boolean1;
     }
 }

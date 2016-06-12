@@ -1,10 +1,13 @@
-
 package com.clilystudio.netbook.event;
 
 public final class J {
 
-    public J(String String1, String String2, String String3, int int4, String String5)
-    {
+    private String a;
+    private String b;
+    private String c;
+    private String d;
+    private int e;
+    public J(String String1, String String2, String String3, int int4, String String5) {
         a = String1;
         b = String2;
         d = String5;
@@ -12,34 +15,23 @@ public final class J {
         e = int4;
     }
 
-    private String a;
-    private String b;
-    private String c;
-    private String d;
-    private int e;
-
-    public final String a()
-    {
+    public final String a() {
         return d;
     }
 
-    public final String b()
-    {
+    public final String b() {
         return a;
     }
 
-    public final String c()
-    {
+    public final String c() {
         return b;
     }
 
-    public final String d()
-    {
+    public final String d() {
         return c;
     }
 
-    public final int e()
-    {
+    public final int e() {
         return e;
     }
 }

@@ -1,4 +1,3 @@
-
 package com.clilystudio.netbook.ui.post;
 
 import android.view.View;
@@ -7,17 +6,14 @@ import android.widget.PopupWindow;
 
 final class cS implements View$OnClickListener {
 
-    cS(ReviewListActivity ReviewListActivity1, PopupWindow PopupWindow2)
-    {
+    private PopupWindow a;
+    private ReviewListActivity b;
+    cS(ReviewListActivity ReviewListActivity1, PopupWindow PopupWindow2) {
         b = ReviewListActivity1;
         a = PopupWindow2;
     }
 
-    private PopupWindow a;
-    private ReviewListActivity b;
-
-    public final void onClick(View View1)
-    {
-        ReviewListActivity.a( b, a, 7 );
+    public final void onClick(View View1) {
+        ReviewListActivity.a(b, a, 7);
     }
 }

@@ -1,4 +1,3 @@
-
 package com.clilystudio.netbook.model;
 
 public class PostComment$PostCommentReply {
@@ -7,33 +6,27 @@ public class PostComment$PostCommentReply {
     private Author author;
     private int floor;
 
-    public Author getAuthor()
-    {
+    public Author getAuthor() {
         return author;
     }
 
-    public int getFloor()
-    {
-        return floor;
-    }
-
-    public String get_id()
-    {
-        return _id;
-    }
-
-    public void setAuthor(Author Author1)
-    {
+    public void setAuthor(Author Author1) {
         author = Author1;
     }
 
-    public void setFloor(int int1)
-    {
+    public int getFloor() {
+        return floor;
+    }
+
+    public void setFloor(int int1) {
         floor = int1;
     }
 
-    public void set_id(String String1)
-    {
+    public String get_id() {
+        return _id;
+    }
+
+    public void set_id(String String1) {
         _id = String1;
     }
 }

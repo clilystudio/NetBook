@@ -1,4 +1,3 @@
-
 package com.clilystudio.netbook.hpay100.web;
 
 public interface m {

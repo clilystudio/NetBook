@@ -1,19 +1,16 @@
-
 package com.clilystudio.netbook.reader;
 
 final class aA implements e {
 
-    aA(ReaderActivity ReaderActivity1)
-    {
+    private ReaderActivity a;
+
+    aA(ReaderActivity ReaderActivity1) {
         a = ReaderActivity1;
     }
 
-    private ReaderActivity a;
-
-    public final volatile void a(Object Object1)
-    {
+    public final volatile void a(Object Object1) {
         n n2 = (n) Object1;
 
-        ReaderActivity.a( a, n2 );
+        ReaderActivity.a(a, n2);
     }
 }

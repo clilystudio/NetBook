@@ -1,4 +1,3 @@
-
 package com.clilystudio.netbook.umeng.update.net;
 
 interface e {

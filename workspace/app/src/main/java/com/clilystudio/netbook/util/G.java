@@ -1,4 +1,3 @@
-
 package com.clilystudio.netbook.util;
 
 import com.clilystudio.netbook.model.InsideLinkType;
@@ -7,58 +6,36 @@ final class G {
 
     static final int[] a = new int[InsideLinkType.values().length];
 
-    static 
-    {
-exit_point:
+    static {
+        exit_point:
         {
-            try
-            {
+            try {
                 a[InsideLinkType.GAME.ordinal()] = 1;
+            } catch (NoSuchFieldError NoSuchFieldError1) {
             }
-            catch( NoSuchFieldError NoSuchFieldError1 )
-            {
-            }
-            try
-            {
+            try {
                 a[InsideLinkType.POST.ordinal()] = 2;
+            } catch (NoSuchFieldError NoSuchFieldError2) {
             }
-            catch( NoSuchFieldError NoSuchFieldError2 )
-            {
-            }
-            try
-            {
+            try {
                 a[InsideLinkType.LINK.ordinal()] = 3;
+            } catch (NoSuchFieldError NoSuchFieldError3) {
             }
-            catch( NoSuchFieldError NoSuchFieldError3 )
-            {
-            }
-            try
-            {
+            try {
                 a[InsideLinkType.BOOK.ordinal()] = 4;
+            } catch (NoSuchFieldError NoSuchFieldError4) {
             }
-            catch( NoSuchFieldError NoSuchFieldError4 )
-            {
-            }
-            try
-            {
+            try {
                 a[InsideLinkType.POST_HELP.ordinal()] = 5;
+            } catch (NoSuchFieldError NoSuchFieldError5) {
             }
-            catch( NoSuchFieldError NoSuchFieldError5 )
-            {
-            }
-            try
-            {
+            try {
                 a[InsideLinkType.POST_REVIEW.ordinal()] = 6;
+            } catch (NoSuchFieldError NoSuchFieldError6) {
             }
-            catch( NoSuchFieldError NoSuchFieldError6 )
-            {
-            }
-            try
-            {
+            try {
                 a[InsideLinkType.BOOKLIST.ordinal()] = 7;
-            }
-            catch( NoSuchFieldError NoSuchFieldError7 )
-            {
+            } catch (NoSuchFieldError NoSuchFieldError7) {
                 break exit_point;
             }
             return;

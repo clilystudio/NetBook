@@ -1,4 +1,3 @@
-
 package com.clilystudio.netbook.util;
 
 public interface ai {

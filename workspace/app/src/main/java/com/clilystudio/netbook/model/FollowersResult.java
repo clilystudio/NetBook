@@ -1,4 +1,3 @@
-
 package com.clilystudio.netbook.model;
 
 public class FollowersResult {
@@ -6,23 +5,19 @@ public class FollowersResult {
     private Follower[] followers;
     private boolean ok;
 
-    public Follower[] getFollowers()
-    {
+    public Follower[] getFollowers() {
         return followers;
     }
 
-    public boolean isOk()
-    {
-        return ok;
-    }
-
-    public void setFollowers(Follower[] Follower_1darray1)
-    {
+    public void setFollowers(Follower[] Follower_1darray1) {
         followers = Follower_1darray1;
     }
 
-    public void setOk(boolean boolean1)
-    {
+    public boolean isOk() {
+        return ok;
+    }
+
+    public void setOk(boolean boolean1) {
         ok = boolean1;
     }
 }

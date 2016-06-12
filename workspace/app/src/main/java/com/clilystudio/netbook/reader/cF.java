@@ -1,4 +1,3 @@
-
 package com.clilystudio.netbook.reader;
 
 import android.app.AlertDialog;
@@ -7,18 +6,15 @@ import android.view.View$OnClickListener;
 
 final class cF implements View$OnClickListener {
 
-    cF(ReaderWebActivity ReaderWebActivity1, AlertDialog AlertDialog2)
-    {
+    private AlertDialog a;
+    private ReaderWebActivity b;
+    cF(ReaderWebActivity ReaderWebActivity1, AlertDialog AlertDialog2) {
         b = ReaderWebActivity1;
         a = AlertDialog2;
     }
 
-    private AlertDialog a;
-    private ReaderWebActivity b;
-
-    public final void onClick(View View1)
-    {
+    public final void onClick(View View1) {
         a.dismiss();
-        ReaderWebActivity.b( b );
+        ReaderWebActivity.b(b);
     }
 }

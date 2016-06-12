@@ -1,4 +1,3 @@
-
 package com.clilystudio.netbook.model;
 
 public class TopicCount {
@@ -6,23 +5,19 @@ public class TopicCount {
     private int count;
     private boolean ok;
 
-    public int getCount()
-    {
+    public int getCount() {
         return count;
     }
 
-    public boolean isOk()
-    {
-        return ok;
-    }
-
-    public void setCount(int int1)
-    {
+    public void setCount(int int1) {
         count = int1;
     }
 
-    public void setOk(boolean boolean1)
-    {
+    public boolean isOk() {
+        return ok;
+    }
+
+    public void setOk(boolean boolean1) {
         ok = boolean1;
     }
 }

@@ -1,4 +1,3 @@
-
 package com.clilystudio.netbook.model.mixtoc;
 
 public class SsChapter {
@@ -6,23 +5,19 @@ public class SsChapter {
     private String serialcontent;
     private String serialurl;
 
-    public String getSerialcontent()
-    {
+    public String getSerialcontent() {
         return serialcontent;
     }
 
-    public String getSerialurl()
-    {
-        return serialurl;
-    }
-
-    public void setSerialcontent(String String1)
-    {
+    public void setSerialcontent(String String1) {
         serialcontent = String1;
     }
 
-    public void setSerialurl(String String1)
-    {
+    public String getSerialurl() {
+        return serialurl;
+    }
+
+    public void setSerialurl(String String1) {
         serialurl = String1;
     }
 }

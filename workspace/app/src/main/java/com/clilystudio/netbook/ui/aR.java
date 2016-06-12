@@ -1,72 +1,54 @@
-
 package com.clilystudio.netbook.ui;
 
 import android.app.Activity;
-import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import com.clilystudio.netbook.adapter.g;
-import com.clilystudio.netbook.api.ApiService;
-import com.clilystudio.netbook.model.BookRankDetail;
-import com.clilystudio.netbook.model.BookRankDetailList;
+
 import com.clilystudio.netbook.model.BookRankDetailRoot;
+
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.List;
 
 final class aR extends com.clilystudio.netbook.a.e {
 
-    aR(BookRankListFragment BookRankListFragment1, byte byte2)
-    {
-        this( BookRankListFragment1 );
-    }
-
     private BookRankListFragment a;
 
-    private aR(BookRankListFragment BookRankListFragment1)
-    {
+    aR(BookRankListFragment BookRankListFragment1, byte byte2) {
+        this(BookRankListFragment1);
+    }
+
+    private aR(BookRankListFragment BookRankListFragment1) {
         a = BookRankListFragment1;
     }
 
-    private transient BookRankDetailRoot a()
-    {
+    private transient BookRankDetailRoot a() {
         BookRankDetailRoot BookRankDetailRoot3;
 
-        try
-        {
+        try {
             com.clilystudio.netbook.api.b.a();
-            BookRankDetailRoot3 = com.clilystudio.netbook.api.b.b().z( a.getArguments().getString( "book_list_id" ) );
-        }
-        catch( IOException IOException1 )
-        {
+            BookRankDetailRoot3 = com.clilystudio.netbook.api.b.b().z(a.getArguments().getString("book_list_id"));
+        } catch (IOException IOException1) {
             IOException1.printStackTrace();
             return null;
         }
         return BookRankDetailRoot3;
     }
 
-    protected final Object doInBackground(Object[] Object_1darray1)
-    {
+    protected final Object doInBackground(Object[] Object_1darray1) {
         return a();
     }
 
-    protected final void onPostExecute(Object Object1)
-    {
+    protected final void onPostExecute(Object Object1) {
         Object Object2 = (BookRankDetailRoot) Object1;
 
-        super.onPostExecute( Object2 );
-        BookRankListFragment.b( a ).setVisibility( 8 );
-        if( Object2 != null && ((BookRankDetailRoot) Object2).getRanking() != null )
-        {
-            a.b( 1 );
-            BookRankListFragment.c( a ).addAll( (Collection) Arrays.asList( ((BookRankDetailRoot) Object2).getRanking().getBooks() ) );
-            a.a.a( (Collection) BookRankListFragment.c( a ) );
-        }
-        else
-        {
-            a.b( 2 );
-            com.clilystudio.netbook.util.e.a( (Activity) a.getActivity(), 2131034408 );
+        super.onPostExecute(Object2);
+        BookRankListFragment.b(a).setVisibility(8);
+        if (Object2 != null && ((BookRankDetailRoot) Object2).getRanking() != null) {
+            a.b(1);
+            BookRankListFragment.c(a).addAll((Collection) Arrays.asList(((BookRankDetailRoot) Object2).getRanking().getBooks()));
+            a.a.a((Collection) BookRankListFragment.c(a));
+        } else {
+            a.b(2);
+            com.clilystudio.netbook.util.e.a((Activity) a.getActivity(), 2131034408);
         }
     }
 }

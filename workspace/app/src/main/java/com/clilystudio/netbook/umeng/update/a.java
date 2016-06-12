@@ -1,4 +1,3 @@
-
 package com.clilystudio.netbook.umeng.update;
 
 public interface a {

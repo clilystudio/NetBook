@@ -1,4 +1,3 @@
-
 package com.clilystudio.netbook.widget;
 
 import android.content.Context;
@@ -8,29 +7,21 @@ import android.widget.RelativeLayout;
 
 public class AdContainerLayout extends RelativeLayout {
 
-    public AdContainerLayout(Context Context1, AttributeSet AttributeSet2)
-    {
-        super( Context1, AttributeSet2 );
-    }
-
     private f b;
     private boolean a = false;
+    public AdContainerLayout(Context Context1, AttributeSet AttributeSet2) {
+        super(Context1, AttributeSet2);
+    }
 
-    public boolean onInterceptTouchEvent(MotionEvent MotionEvent1)
-    {
-        switch( MotionEvent1.getAction() )
-        {
+    public boolean onInterceptTouchEvent(MotionEvent MotionEvent1) {
+        switch (MotionEvent1.getAction()) {
             case 0:
-                if( a )
-                {
-                    if( b != null )
+                if (a) {
+                    if (b != null)
                         b.a();
                     return true;
-                }
-                else
-                {
-                    if( b != null )
-                    {
+                } else {
+                    if (b != null) {
                         b.b();
                         break;
                     }
@@ -39,16 +30,14 @@ public class AdContainerLayout extends RelativeLayout {
             default:
                 break;
         }
-        return super.onInterceptTouchEvent( MotionEvent1 );
+        return super.onInterceptTouchEvent(MotionEvent1);
     }
 
-    public void setIsShowConfirm(boolean boolean1)
-    {
+    public void setIsShowConfirm(boolean boolean1) {
         a = boolean1;
     }
 
-    public void setSplashAdContainerClickListener(f f1)
-    {
+    public void setSplashAdContainerClickListener(f f1) {
         b = f1;
     }
 }

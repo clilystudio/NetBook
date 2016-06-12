@@ -1,4 +1,3 @@
-
 package com.clilystudio.netbook.reader.random;
 
 import android.content.Context;
@@ -13,51 +12,43 @@ import android.widget.TextView;
 
 public class ReaderRandomActionBar extends RelativeLayout {
 
-    public ReaderRandomActionBar(Context Context1, AttributeSet AttributeSet2, int int3)
-    {
-        super( Context1, AttributeSet2, int3 );
-    }
-
     private TextView a;
     private com.clilystudio.netbook.umeng.update.a b;
-
-    public ReaderRandomActionBar(Context Context1)
-    {
-        super( Context1 );
+    public ReaderRandomActionBar(Context Context1, AttributeSet AttributeSet2, int int3) {
+        super(Context1, AttributeSet2, int3);
     }
 
-    public ReaderRandomActionBar(Context Context1, AttributeSet AttributeSet2)
-    {
-        super( Context1, AttributeSet2 );
+    public ReaderRandomActionBar(Context Context1) {
+        super(Context1);
     }
 
-    static void a(ReaderRandomActionBar ReaderRandomActionBar1, int int2)
-    {
-        if( ReaderRandomActionBar1.b != null )
-            ReaderRandomActionBar1.b.a( int2 );
+    public ReaderRandomActionBar(Context Context1, AttributeSet AttributeSet2) {
+        super(Context1, AttributeSet2);
     }
 
-    protected void onFinishInflate()
-    {
+    static void a(ReaderRandomActionBar ReaderRandomActionBar1, int int2) {
+        if (ReaderRandomActionBar1.b != null)
+            ReaderRandomActionBar1.b.a(int2);
+    }
+
+    protected void onFinishInflate() {
         Object Object1;
         View View2;
 
         super.onFinishInflate();
-        Object1 = new RelativeLayout$LayoutParams( -1, -1 );
-        ((RelativeLayout$LayoutParams) Object1).setMargins( 0, am.k( getContext() ), 0, 0 );
-        setLayoutParams( (ViewGroup$LayoutParams) Object1 );
-        View2 = findViewById( 2131493934 );
-        a = (TextView) findViewById( 2131493935 );
-        View2.setOnClickListener( (View$OnClickListener) new c( this ) );
+        Object1 = new RelativeLayout$LayoutParams(-1, -1);
+        ((RelativeLayout$LayoutParams) Object1).setMargins(0, am.k(getContext()), 0, 0);
+        setLayoutParams((ViewGroup$LayoutParams) Object1);
+        View2 = findViewById(2131493934);
+        a = (TextView) findViewById(2131493935);
+        View2.setOnClickListener((View$OnClickListener) new c(this));
     }
 
-    public void setOnBtnClickListener$3ce42dcd(com.clilystudio.netbook.umeng.update.a a1)
-    {
+    public void setOnBtnClickListener$3ce42dcd(com.clilystudio.netbook.umeng.update.a a1) {
         b = a1;
     }
 
-    public void setTitle(String String1)
-    {
-        a.setText( (CharSequence) String1 );
+    public void setTitle(String String1) {
+        a.setText((CharSequence) String1);
     }
 }

@@ -1,4 +1,3 @@
-
 package com.clilystudio.netbook.reader;
 
 final class cs {

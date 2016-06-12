@@ -1,19 +1,15 @@
-
 package com.clilystudio.netbook.reader;
 
 final class cB implements com.clilystudio.netbook.umeng.update.a {
 
-    cB(ReaderWebActivity ReaderWebActivity1)
-    {
+    private ReaderWebActivity a;
+
+    cB(ReaderWebActivity ReaderWebActivity1) {
         a = ReaderWebActivity1;
     }
 
-    private ReaderWebActivity a;
-
-    public final void a(int int1)
-    {
-        switch( int1 )
-        {
+    public final void a(int int1) {
+        switch (int1) {
             default:
                 return;
             case 2131493881:
@@ -21,13 +17,13 @@ final class cB implements com.clilystudio.netbook.umeng.update.a {
                 return;
             case 2131493861:
                 a.b();
-                ReaderWebActivity.a( a ).a( false );
+                ReaderWebActivity.a(a).a(false);
                 return;
             case 2131493862:
                 a.a();
                 return;
             case 2131493893:
-                ReaderWebActivity.b( a );
+                ReaderWebActivity.b(a);
                 return;
         }
     }

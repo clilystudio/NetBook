@@ -1,4 +1,3 @@
-
 package com.clilystudio.netbook.model;
 
 public class PostDetail {
@@ -6,23 +5,19 @@ public class PostDetail {
     private boolean ok;
     private Post post;
 
-    public Post getPost()
-    {
+    public Post getPost() {
         return post;
     }
 
-    public boolean isOk()
-    {
+    public void setPost(Post Post1) {
+        post = Post1;
+    }
+
+    public boolean isOk() {
         return ok;
     }
 
-    public void setOk(boolean boolean1)
-    {
+    public void setOk(boolean boolean1) {
         ok = boolean1;
-    }
-
-    public void setPost(Post Post1)
-    {
-        post = Post1;
     }
 }

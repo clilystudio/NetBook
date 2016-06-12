@@ -1,4 +1,3 @@
-
 package com.clilystudio.netbook.model;
 
 public class VoteResult {
@@ -8,43 +7,35 @@ public class VoteResult {
     private boolean ok;
     private int selected;
 
-    public String getCode()
-    {
+    public String getCode() {
         return code;
     }
 
-    public String getMsg()
-    {
-        return msg;
-    }
-
-    public int getSelected()
-    {
-        return selected;
-    }
-
-    public boolean isOk()
-    {
-        return ok;
-    }
-
-    public void setCode(String String1)
-    {
+    public void setCode(String String1) {
         code = String1;
     }
 
-    public void setMsg(String String1)
-    {
+    public String getMsg() {
+        return msg;
+    }
+
+    public void setMsg(String String1) {
         msg = String1;
     }
 
-    public void setOk(boolean boolean1)
-    {
-        ok = boolean1;
+    public int getSelected() {
+        return selected;
     }
 
-    public void setSelected(int int1)
-    {
+    public void setSelected(int int1) {
         selected = int1;
+    }
+
+    public boolean isOk() {
+        return ok;
+    }
+
+    public void setOk(boolean boolean1) {
+        ok = boolean1;
     }
 }
