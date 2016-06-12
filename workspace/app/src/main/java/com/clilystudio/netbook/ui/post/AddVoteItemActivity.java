@@ -42,8 +42,8 @@ public class AddVoteItemActivity extends BaseActivity {
     public void onCreate(Bundle paramBundle) {
         super.onCreate(paramBundle);
         setContentView(2130903079);
-        a.a();
-        a.a(this);
+        com.clilystudio.netbook.a.a();
+        com.clilystudio.netbook.a.a(this);
         String str1 = getIntent().getStringExtra("block");
         if ("ramble".equals(str1))
             this.a = 1;

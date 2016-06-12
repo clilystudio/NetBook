@@ -15,8 +15,8 @@ public class AddTopicCategoryActivity extends BaseActivity {
         super.onCreate(paramBundle);
         setContentView(2130903146);
         b(2131034294);
-        a.a();
-        a.a(this);
+        com.clilystudio.netbook.a.a();
+        com.clilystudio.netbook.a.a(this);
         this.a = getIntent().getStringExtra("book_post_list_bookId");
         this.b = getIntent().getStringExtra("book_post_list_bookTitle");
         this.c = getIntent().getStringExtra("add_post_mode");
