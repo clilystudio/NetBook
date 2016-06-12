@@ -53,32 +53,53 @@ public class MyApplication extends Application {
         return instance;
     }
 
-    private void a(Properties paramProperties) {
-        Properties localProperties = getProperties();
-        localProperties.putAll(paramProperties);
-        setProperties(localProperties);
+    private void saveProperties(Properties properties) {
+        Properties appConfig = getAppConfig();
+        assert appConfig != null;
+        appConfig.putAll(properties);
+        setAppConfig(appConfig);
     }
 
-    public final String a(String paramString) {
-        return getProperties().getProperty(paramString);
+    public String getProperty(String name) {
+        Properties appConfig = getAppConfig();
+        assert appConfig != null;
+        return appConfig.getProperty(name);
+    }
+
+    // TODO BookReviewListFragment hava 2 calls .method static synthetic a(Lcom/ushaqi/zhuishushenqi/ui/post/BookReviewListFragment;Lcom/ushaqi/zhuishushenqi/model/Review;)V
+    public void setProperty(String name, String value) {
+        Properties appConfig = getAppConfig();
+        assert appConfig != null;
+        appConfig.setProperty(name, value);
+        setAppConfig(appConfig);
+    }
+
+    // TODO   post\AddReviewActivity, ddReviewContentActivity, AddReviewRatingActivity, aG.smali hava calls
+    public void removeProperty(String[] keys) {
+        Properties appConfig = getAppConfig();
+        assert appConfig != null;
+        for (String key : keys) {
+            appConfig.remove(key);
+        }
+        setAppConfig(appConfig);
     }
 
     public final void a(int paramInt) {
         this.e = paramInt;
     }
 
-    public final void a(Account paramAccount) {
+    public final void a(Account account) {
         Properties tokenProperties = new Properties();
-        tokenProperties.setProperty("account.tokenProperties", paramAccount.getToken());
-        a(tokenProperties);
+        tokenProperties.setProperty("account.tokenProperties", account.getToken());
+        saveProperties(tokenProperties);
         Properties userProperties = new Properties();
-        User user = paramAccount.getUser();
+        User user = account.getUser();
         userProperties.setProperty("users.id", user.getId());
         userProperties.setProperty("user.name", user.getNickname());
         userProperties.setProperty("user.avatar", user.getAvatar());
         userProperties.setProperty("user.lv", String.valueOf(user.getLv()));
         userProperties.setProperty("user.gender", user.getGender());
-        a(userProperties);
+        saveProperties(userProperties);
     }
 
     public final void a(BookInfo paramBookInfo) {
@@ -87,20 +108,6 @@ public class MyApplication extends Application {
 
     public final void a(Reader paramReader) {
         this.c = paramReader;
-    }
-
-    public final void a(String paramString1, String paramString2) {
-        Properties localProperties = getProperties();
-        localProperties.setProperty(paramString1, paramString2);
-        setProperties(localProperties);
-    }
-
-    public final void a(String[] paramArrayOfString) {
-        Properties localProperties = getProperties();
-        int i = paramArrayOfString.length;
-        for (int j = 0; j < i; j++)
-            localProperties.remove(paramArrayOfString[j]);
-        setProperties(localProperties);
     }
 
     public final boolean a(java.io.Serializable paramSerializable, String paramString) {
@@ -285,7 +292,7 @@ public class MyApplication extends Application {
     }
 
 
-    private final Properties getProperties() {
+    private Properties getAppConfig() {
         Properties properties = new Properties();
         File file = getDir("config", Context.MODE_PRIVATE);
         StringBuilder stringBuilder = new StringBuilder();
@@ -312,7 +319,7 @@ public class MyApplication extends Application {
     }
 
 
-    private void setProperties(Properties paramProperties) {
+    private void setAppConfig(Properties paramProperties) {
         File file = new File(getDir("config", Context.MODE_PRIVATE), "config");
         FileOutputStream fos = null;
         try {
@@ -331,6 +338,5 @@ public class MyApplication extends Application {
             }
         }
     }
-
 }
 

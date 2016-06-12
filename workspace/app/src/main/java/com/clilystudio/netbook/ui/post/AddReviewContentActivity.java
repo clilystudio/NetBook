@@ -23,9 +23,9 @@ public class AddReviewContentActivity extends BaseActivity {
                 String str3 = this.c.getText().toString();
                 String str4 = this.e.getText().toString();
                 if (!a.Q(str3))
-                    MyApplication.a().a("saveToLocalReviewTitle", str3);
+                    MyApplication.a().setProperty("saveToLocalReviewTitle", str3);
                 if (!a.Q(str4))
-                    MyApplication.a().a("saveToLocalReviewDesc", str4);
+                    MyApplication.a().setProperty("saveToLocalReviewDesc", str4);
             }
             super.onBackPressed();
             return;

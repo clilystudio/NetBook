@@ -355,7 +355,7 @@ public class am {
     }
 
     public static void a(EditText paramEditText, String paramString) {
-        String str = MyApplication.a().a(paramString);
+        String str = MyApplication.a().getProperty(paramString);
         if (!com.clilystudio.netbook.hpay100.a_Pack.a.Q(str)) {
             paramEditText.setText(str);
             paramEditText.requestFocus();
@@ -833,17 +833,17 @@ public class am {
 
     public static Account e() {
         MyApplication localMyApplication = MyApplication.a();
-        String str1 = localMyApplication.a("user.id");
-        String str2 = localMyApplication.a("account.token");
+        String str1 = localMyApplication.getProperty("user.id");
+        String str2 = localMyApplication.getProperty("account.token");
         Account localAccount;
         if ((str1 != null) && (str2 != null)) {
             localAccount = new Account();
             User localUser = new User();
             localUser.setId(str1);
-            localUser.setNickname(localMyApplication.a("user.name"));
-            localUser.setAvatar(localMyApplication.a("user.avatar"));
-            localUser.setLv(com.clilystudio.netbook.hpay100.a_Pack.a.b(localMyApplication.a("user.lv"), 0));
-            localUser.setGender(localMyApplication.a("user.gender"));
+            localUser.setNickname(localMyApplication.getProperty("user.name"));
+            localUser.setAvatar(localMyApplication.getProperty("user.avatar"));
+            localUser.setLv(com.clilystudio.netbook.hpay100.a_Pack.a.b(localMyApplication.getProperty("user.lv"), 0));
+            localUser.setGender(localMyApplication.getProperty("user.gender"));
             localAccount.setOk(true);
             localAccount.setToken(str2);
             localAccount.setUser(localUser);
