@@ -1,47 +1,52 @@
 package com.clilystudio.netbook.ui.post;
 
 import com.clilystudio.netbook.a.e;
+import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.model.FollowResult;
 
-final class ci extends e {
+final class ci
+        extends e<String, Void, FollowResult> {
+    private /* synthetic */ OtherUserActivity a;
 
-    private OtherUserActivity a;
-
-    ci(OtherUserActivity OtherUserActivity1, byte byte2) {
-        this(OtherUserActivity1);
+    private ci(OtherUserActivity otherUserActivity) {
+        this.a = otherUserActivity;
     }
 
-    private ci(OtherUserActivity OtherUserActivity1) {
-        a = OtherUserActivity1;
+    /* synthetic */ ci(OtherUserActivity otherUserActivity, byte by) {
+        this(otherUserActivity);
     }
 
-    private static transient FollowResult a(String[] String_1darray1) {
-        FollowResult FollowResult4;
-
+    private static /* varargs */ FollowResult a(String... arrstring) {
         try {
-            com.clilystudio.netbook.api.b.a();
-            FollowResult4 = com.clilystudio.netbook.api.b.b().n(String_1darray1[0], String_1darray1[1]);
-        } catch (Exception Exception2) {
-            Exception2.printStackTrace();
+            b.a();
+            FollowResult followResult = b.b().n(arrstring[0], arrstring[1]);
+            return followResult;
+        } catch (Exception var1_2) {
+            var1_2.printStackTrace();
             return null;
         }
-        return FollowResult4;
     }
 
-    protected final Object doInBackground(Object[] Object_1darray1) {
-        return a((String[]) Object_1darray1);
+    @Override
+    protected final /* synthetic */ Object doInBackground(Object[] arrobject) {
+        return ci.a((String[]) arrobject);
     }
 
-    protected final void onPostExecute(Object Object1) {
-        FollowResult FollowResult2 = (FollowResult) Object1;
-
-        if (FollowResult2 != null && FollowResult2.isOk()) {
-            if (FollowResult2.isFollowed())
-                OtherUserActivity.a(a, 1);
-            else
-                OtherUserActivity.a(a, 0);
-        } else
-            OtherUserActivity.a(a, 0);
-        OtherUserActivity.z(a);
+    /*
+     * Enabled aggressive block sorting
+     */
+    @Override
+    protected final /* synthetic */ void onPostExecute(Object object) {
+        FollowResult followResult = (FollowResult) object;
+        if (followResult != null && followResult.isOk()) {
+            if (followResult.isFollowed()) {
+                OtherUserActivity.a(this.a, 1);
+            } else {
+                OtherUserActivity.a(this.a, 0);
+            }
+        } else {
+            OtherUserActivity.a(this.a, 0);
+        }
+        OtherUserActivity.z(this.a);
     }
 }

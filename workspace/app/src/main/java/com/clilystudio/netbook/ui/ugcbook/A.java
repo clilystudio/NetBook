@@ -3,65 +3,74 @@ package com.clilystudio.netbook.ui.ugcbook;
 import android.app.Activity;
 import android.os.Handler;
 
+import com.clilystudio.netbook.api.b;
+import com.clilystudio.netbook.model.BookSummary;
 import com.clilystudio.netbook.model.SearchPromRoot;
+import com.clilystudio.netbook.util.e;
 
-import java.util.Collection;
 import java.util.List;
 
-class A extends com.clilystudio.netbook.a.e {
+class A
+        extends com.clilystudio.netbook.a.e<String, Void, List<BookSummary>> {
+    final /* synthetic */ UGCGuideAddBookActivity a;
 
-    final UGCGuideAddBookActivity a = null;
-
-    A(UGCGuideAddBookActivity UGCGuideAddBookActivity1, byte byte2) {
-        this(UGCGuideAddBookActivity1);
+    private A(UGCGuideAddBookActivity uGCGuideAddBookActivity) {
+        this.a = uGCGuideAddBookActivity;
     }
 
-    private A(UGCGuideAddBookActivity UGCGuideAddBookActivity1) {
-        a = UGCGuideAddBookActivity1;
+    /* synthetic */ A(UGCGuideAddBookActivity uGCGuideAddBookActivity, byte by) {
+        this(uGCGuideAddBookActivity);
     }
 
-    private transient List a(String[] String_1darray1) {
-        List List3;
-        SearchPromRoot SearchPromRoot4;
-
-        try {
-            List3 = com.clilystudio.netbook.api.b.b().n(String_1darray1[0]);
-            SearchPromRoot4 = com.clilystudio.netbook.api.b.b().q(String_1darray1[0]);
-        } catch (Exception Exception2) {
-            Exception2.printStackTrace();
-            return null;
+    private /* varargs */ List<BookSummary> a(String... arrstring) {
+        List<BookSummary> list;
+        block3:
+        {
+            SearchPromRoot searchPromRoot;
+            try {
+                list = b.b().n(arrstring[0]);
+                searchPromRoot = b.b().q(arrstring[0]);
+                if (searchPromRoot == null) break block3;
+            } catch (Exception var2_4) {
+                var2_4.printStackTrace();
+                return null;
+            }
+            if (searchPromRoot.getProm() == null) break block3;
+            list.add(0, searchPromRoot.getProm());
         }
-        if (SearchPromRoot4 != null && SearchPromRoot4.getProm() != null)
-            List3.add(0, SearchPromRoot4.getProm());
-        return List3;
+        return list;
     }
 
-    protected void a(List List1) {
-        super.onPostExecute(List1);
-        UGCGuideAddBookActivity.c(a, true);
-        if (List1 != null) {
-            UGCGuideAddBookActivity.c(a).a((Collection) List1);
-            new Handler().post((Runnable) new B(this));
-            if (List1.size() > 0)
-                UGCGuideAddBookActivity.b(a, 1);
-            else
-                UGCGuideAddBookActivity.b(a, 3);
-        } else {
-            UGCGuideAddBookActivity.b(a, 2);
-            com.clilystudio.netbook.util.e.a((Activity) a, 2131034478);
+    protected void a(List<BookSummary> list) {
+        super.onPostExecute(list);
+        UGCGuideAddBookActivity.c(this.a, true);
+        if (list != null) {
+            UGCGuideAddBookActivity.c(this.a).a(list);
+            new Handler().post(new B(this));
+            if (list.size() > 0) {
+                UGCGuideAddBookActivity.b(this.a, 1);
+                return;
+            }
+            UGCGuideAddBookActivity.b(this.a, 3);
+            return;
         }
+        UGCGuideAddBookActivity.b(this.a, 2);
+        e.a((Activity) this.a, (int) 2131034478);
     }
 
-    protected Object doInBackground(Object[] Object_1darray1) {
-        return a((String[]) Object_1darray1);
+    @Override
+    protected /* synthetic */ Object doInBackground(Object[] arrobject) {
+        return this.a((String[]) arrobject);
     }
 
-    protected void onPostExecute(Object Object1) {
-        a((List) Object1);
+    @Override
+    protected /* synthetic */ void onPostExecute(Object object) {
+        this.a((List) object);
     }
 
+    @Override
     protected void onPreExecute() {
         super.onPreExecute();
-        UGCGuideAddBookActivity.c(a, false);
+        UGCGuideAddBookActivity.c(this.a, false);
     }
 }

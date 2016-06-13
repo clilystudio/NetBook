@@ -1,17 +1,17 @@
 package com.clilystudio.netbook.ui.user;
 
 import android.content.DialogInterface;
-import android.content.DialogInterface$OnClickListener;
 
-final class ar implements DialogInterface$OnClickListener {
+final class ar
+        implements DialogInterface.OnClickListener {
+    private /* synthetic */ SmsSendActivity a;
 
-    private SmsSendActivity a;
-
-    ar(SmsSendActivity SmsSendActivity1) {
-        a = SmsSendActivity1;
+    ar(SmsSendActivity smsSendActivity) {
+        this.a = smsSendActivity;
     }
 
-    public final void onClick(DialogInterface DialogInterface1, int int2) {
-        SmsSendActivity.e(a);
+    @Override
+    public final void onClick(DialogInterface dialogInterface, int n) {
+        SmsSendActivity.e(this.a);
     }
 }

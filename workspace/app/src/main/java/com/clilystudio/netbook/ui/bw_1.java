@@ -1,94 +1,95 @@
 package com.clilystudio.netbook.ui;
 
 import android.app.Activity;
-import android.content.Context;
 
+import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.model.NotificationItem;
 import com.clilystudio.netbook.model.NotificationRoot;
 import com.clilystudio.netbook.ui.user.AuthLoginActivity;
+import com.clilystudio.netbook.util.e;
 
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.List;
 
-final class bw extends com.clilystudio.netbook.a.e {
+final class bw
+        extends com.clilystudio.netbook.a.e<String, Void, NotificationRoot> {
+    private /* synthetic */ NotifFragment a;
 
-    private NotifFragment a;
-
-    bw(NotifFragment NotifFragment1, byte byte2) {
-        this(NotifFragment1);
+    private bw(NotifFragment notifFragment) {
+        this.a = notifFragment;
     }
 
-    private bw(NotifFragment NotifFragment1) {
-        a = NotifFragment1;
+    /* synthetic */ bw(NotifFragment notifFragment, byte by) {
+        this(notifFragment);
     }
 
-    private transient NotificationRoot a(String[] String_1darray1) {
-        if (!isCancelled()) {
-            String String2 = "";
-
+    private /* varargs */ NotificationRoot a(String... arrstring) {
+        if (!this.isCancelled()) {
+            String string = "";
             try {
-                if (NotifFragment.k(a) != null && NotifFragment.k(a).size() > 0)
-                    String2 = ((NotificationItem) NotifFragment.k(a).get(-1 + NotifFragment.k(a).size())).getCreated();
-                if (a.a() == NotifFragment$Type.IMPORTANT) {
-                    NotifFragment.g(a);
-                    return com.clilystudio.netbook.api.b.b().r(String_1darray1[0], String2);
-                } else {
-                    NotificationRoot NotificationRoot5;
-
-                    NotifFragment.g(a);
-                    NotificationRoot5 = com.clilystudio.netbook.api.b.b().s(String_1darray1[0], String2);
+                if (NotifFragment.k(this.a) != null && NotifFragment.k(this.a).size() > 0) {
+                    string = ((NotificationItem) NotifFragment.k(this.a).get(-1 + NotifFragment.k(this.a).size())).getCreated();
                 }
-            } catch (Exception Exception3) {
-                Exception3.printStackTrace();
+                if (this.a.a() == NotifFragment$Type.IMPORTANT) {
+                    NotifFragment.g(this.a);
+                    return b.b().r(arrstring[0], string);
+                }
+                NotifFragment.g(this.a);
+                NotificationRoot notificationRoot = b.b().s(arrstring[0], string);
+                return notificationRoot;
+            } catch (Exception var3_4) {
+                var3_4.printStackTrace();
             }
         }
         return null;
     }
 
-    protected final Object doInBackground(Object[] Object_1darray1) {
-        return a((String[]) Object_1darray1);
+    @Override
+    protected final /* synthetic */ Object doInBackground(Object[] arrobject) {
+        return this.a((String[]) arrobject);
     }
 
-    protected final void onPostExecute(Object Object1) {
-        Object Object2 = (NotificationRoot) Object1;
-
-        super.onPostExecute(Object2);
-        if (a.getActivity() != null) {
-            NotifFragment.b(a).setVisibility(8);
-            NotifFragment.a(a).setVisibility(8);
-            NotifFragment.h(a).setVisibility(8);
-            NotifFragment.i(a).setVisibility(8);
-            NotifFragment.d(a).n();
-            if (!isCancelled()) {
-                if (Object2 != null && ((NotificationRoot) Object2).isOk()) {
-                    int int3 = ((NotificationRoot) Object2).getNotifications().length;
-                    Object Object4 = Arrays.asList(((NotificationRoot) Object2).getNotifications());
-
-                    NotifFragment.a(a, NotifFragment.l(a) + ((List) Object4).size());
-                    NotifFragment.k(a).addAll((Collection) Object4);
-                    NotifFragment.f(a).a(NotifFragment.k(a));
-                    if (int3 > 0) {
-                        if (int3 >= 100) {
-                            if (int3 == 100)
-                                NotifFragment.d(a).setOnLastItemVisibleListener(NotifFragment.j(a));
-                            return;
-                        }
-                    } else if (NotifFragment.l(a) == 0) {
-                        NotifFragment.a(a).setVisibility(0);
-                        NotifFragment.a(a).setText((CharSequence) "\u4F60\u8FD8\u6CA1\u6709\u6D88\u606F");
-                        NotifFragment.b(a).setVisibility(8);
-                    }
-                    NotifFragment.d(a).setOnLastItemVisibleListener(null);
-                } else if (Object2 != null && "TOKEN_INVALID".equals(((NotificationRoot) Object2).getCode())) {
-                    a.startActivity(AuthLoginActivity.a((Context) a.getActivity()));
-                    com.clilystudio.netbook.util.e.a((Activity) a.getActivity(), 2131034547);
-                } else {
-                    NotifFragment.d(a).setOnLastItemVisibleListener(NotifFragment.j(a));
-                    NotifFragment.m(a);
+    /*
+     * Enabled force condition propagation
+     * Lifted jumps to return sites
+     */
+    @Override
+    protected final /* synthetic */ void onPostExecute(Object object) {
+        NotificationRoot notificationRoot = (NotificationRoot) object;
+        super.onPostExecute(notificationRoot);
+        if (this.a.getActivity() == null) return;
+        NotifFragment.b(this.a).setVisibility(8);
+        NotifFragment.a(this.a).setVisibility(8);
+        NotifFragment.h(this.a).setVisibility(8);
+        NotifFragment.i(this.a).setVisibility(8);
+        NotifFragment.d(this.a).n();
+        if (this.isCancelled()) return;
+        if (notificationRoot != null && notificationRoot.isOk()) {
+            int n = notificationRoot.getNotifications().length;
+            List<NotificationItem> list = Arrays.asList(notificationRoot.getNotifications());
+            NotifFragment.a(this.a, NotifFragment.l(this.a) + list.size());
+            NotifFragment.k(this.a).addAll(list);
+            NotifFragment.f(this.a).a(NotifFragment.k(this.a));
+            if (n > 0) {
+                if (n >= 100) {
+                    if (n != 100) return;
+                    NotifFragment.d(this.a).setOnLastItemVisibleListener(NotifFragment.j(this.a));
+                    return;
                 }
-                return;
+            } else if (NotifFragment.l(this.a) == 0) {
+                NotifFragment.a(this.a).setVisibility(0);
+                NotifFragment.a(this.a).setText("\u4f60\u8fd8\u6ca1\u6709\u6d88\u606f");
+                NotifFragment.b(this.a).setVisibility(8);
             }
+            NotifFragment.d(this.a).setOnLastItemVisibleListener(null);
+            return;
         }
+        if (notificationRoot != null && "TOKEN_INVALID".equals(notificationRoot.getCode())) {
+            this.a.startActivity(AuthLoginActivity.a(this.a.getActivity()));
+            e.a((Activity) this.a.getActivity(), 2131034547);
+            return;
+        }
+        NotifFragment.d(this.a).setOnLastItemVisibleListener(NotifFragment.j(this.a));
+        NotifFragment.m(this.a);
     }
 }

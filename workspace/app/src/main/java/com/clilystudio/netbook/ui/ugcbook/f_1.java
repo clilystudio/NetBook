@@ -4,18 +4,18 @@ import com.clilystudio.netbook.model.UGCBookListRoot$UGCBook;
 
 import java.util.Comparator;
 
-final class f implements Comparator {
-
-    f(DraftUGCListFragment DraftUGCListFragment1) {
+final class f
+        implements Comparator<UGCBookListRoot$UGCBook> {
+    f(DraftUGCListFragment draftUGCListFragment) {
     }
 
-    public final int compare(Object Object1, Object Object2) {
-        UGCBookListRoot$UGCBook UGCBook3 = (UGCBookListRoot$UGCBook) Object1;
-        UGCBookListRoot$UGCBook UGCBook4 = (UGCBookListRoot$UGCBook) Object2;
-
-        if (UGCBook3.getUpdated().before(UGCBook4.getUpdated()))
+    @Override
+    public final /* synthetic */ int compare(Object object, Object object2) {
+        UGCBookListRoot$UGCBook uGCBookListRoot$UGCBook = (UGCBookListRoot$UGCBook) object;
+        UGCBookListRoot$UGCBook uGCBookListRoot$UGCBook2 = (UGCBookListRoot$UGCBook) object2;
+        if (uGCBookListRoot$UGCBook.getUpdated().before(uGCBookListRoot$UGCBook2.getUpdated())) {
             return 1;
-        else
-            return -1;
+        }
+        return -1;
     }
 }

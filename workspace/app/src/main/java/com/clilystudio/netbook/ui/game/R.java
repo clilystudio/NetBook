@@ -3,20 +3,21 @@ package com.clilystudio.netbook.ui.game;
 import android.content.Context;
 import android.support.design.widget.am;
 import android.view.View;
-import android.view.View$OnClickListener;
 
 import com.clilystudio.netbook.model.Game;
 
-final class R implements View$OnClickListener {
+final class R
+        implements View.OnClickListener {
+    private /* synthetic */ Game a;
+    private /* synthetic */ Q b;
 
-    private Game a;
-    private Q b;
-    R(Q Q1, Game Game2) {
-        b = Q1;
-        a = Game2;
+    R(Q q, Game game) {
+        this.b = q;
+        this.a = game;
     }
 
-    public final void onClick(View View1) {
-        am.a((Context) b.a, a);
+    @Override
+    public final void onClick(View view) {
+        am.a((Context) this.b.a, (Game) this.a);
     }
 }

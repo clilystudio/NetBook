@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -12,24 +11,24 @@ import android.widget.TextView;
 import com.clilystudio.netbook.R$styleable;
 
 import butterknife.ButterKnife;
+import butterknife.InjectView;
 
-public class TopicSectionItem extends DividerSection {
-
+public class TopicSectionItem
+        extends DividerSection {
+    @InjectView(value = 2131493028)
     ImageView mIcon;
+    @InjectView(value = 2131493515)
     TextView mLabel;
-    public TopicSectionItem(Context Context1, AttributeSet AttributeSet2) {
-        super(Context1, AttributeSet2);
-        int int6;
-        Object Object5;
-        TypedArray TypedArray4;
 
-        LayoutInflater.from(Context1).inflate(2130903232, (ViewGroup) a());
-        ButterKnife.inject((View) this);
-        TypedArray4 = Context1.obtainStyledAttributes(AttributeSet2, R$styleable.TopicSectionItem);
-        Object5 = TypedArray4.getString(0);
-        mLabel.setText((CharSequence) Object5);
-        int6 = TypedArray4.getResourceId(1, 0);
-        mIcon.setImageResource(int6);
-        TypedArray4.recycle();
+    public TopicSectionItem(Context context, AttributeSet attributeSet) {
+        super(context, attributeSet);
+        LayoutInflater.from(context).inflate(2130903232, (ViewGroup) this.a());
+        ButterKnife.inject(this);
+        TypedArray typedArray = context.obtainStyledAttributes(attributeSet, R$styleable.TopicSectionItem);
+        String string = typedArray.getString(0);
+        this.mLabel.setText(string);
+        int n = typedArray.getResourceId(1, 0);
+        this.mIcon.setImageResource(n);
+        typedArray.recycle();
     }
 }

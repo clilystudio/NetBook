@@ -1,32 +1,31 @@
 package com.clilystudio.netbook.model.mixtoc;
 
 public class EsTocItem {
-
     private String chapter_name;
     private String curl;
     private int sort;
 
     public String getChapter_name() {
-        return chapter_name;
+        return this.chapter_name;
     }
 
-    public void setChapter_name(String String1) {
-        chapter_name = String1;
+    public void setChapter_name(String string) {
+        this.chapter_name = string;
     }
 
     public String getCurl() {
-        return curl;
+        return this.curl;
     }
 
-    public void setCurl(String String1) {
-        curl = String1;
+    public void setCurl(String string) {
+        this.curl = string;
     }
 
     public int getSort() {
-        return sort;
+        return this.sort;
     }
 
-    public void setSort(int int1) {
-        sort = int1;
+    public void setSort(int n) {
+        this.sort = n;
     }
 }

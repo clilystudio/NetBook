@@ -3,51 +3,58 @@ package com.clilystudio.netbook.ui.home;
 import android.app.Activity;
 
 import com.clilystudio.netbook.a.c;
+import com.clilystudio.netbook.api.b;
+import com.clilystudio.netbook.db.BookReadRecord;
 import com.clilystudio.netbook.model.BookGenderRecommend;
 import com.clilystudio.netbook.model.BookGenderRecommend$RecommendBook;
 
 import java.io.IOException;
 
-final class I extends c {
+final class I
+        extends c<String, BookGenderRecommend> {
+    private /* synthetic */ HomeShelfFragment a;
 
-    private HomeShelfFragment a;
-
-    public I(HomeShelfFragment HomeShelfFragment1, Activity Activity2) {
-        super(Activity2, Activity2.getString(2131034464));
-        a = HomeShelfFragment1;
+    public I(HomeShelfFragment homeShelfFragment, Activity activity) {
+        this.a = homeShelfFragment;
+        super(activity, activity.getString(2131034464));
     }
 
-    private static transient BookGenderRecommend a(String[] String_1darray1) {
-        int int2 = 0;
-        BookGenderRecommend BookGenderRecommend4;
-
+    /*
+     * Enabled force condition propagation
+     * Lifted jumps to return sites
+     */
+    private static /* varargs */ BookGenderRecommend a(String... arrstring) {
+        BookGenderRecommend$RecommendBook[] arrbookGenderRecommend$RecommendBook;
+        int n;
+        BookGenderRecommend bookGenderRecommend;
+        int n2 = 0;
         try {
-            BookGenderRecommend$RecommendBook[] RecommendBook_1darray6;
-            int int7;
-
-            com.clilystudio.netbook.api.b.a();
-            BookGenderRecommend4 = com.clilystudio.netbook.api.b.b().ac(String_1darray1[0]);
-            if (!BookGenderRecommend4.isOk())
-                return BookGenderRecommend4;
-            RecommendBook_1darray6 = BookGenderRecommend4.getBooks();
-            int7 = RecommendBook_1darray6.length;
-        } catch (IOException IOException3) {
-            IOException3.printStackTrace();
-            BookGenderRecommend4 = null;
+            b.a();
+            bookGenderRecommend = b.b().ac(arrstring[0]);
+            if (!bookGenderRecommend.isOk()) return bookGenderRecommend;
+            arrbookGenderRecommend$RecommendBook = bookGenderRecommend.getBooks();
+            n = arrbookGenderRecommend$RecommendBook.length;
+        } catch (IOException var2_6) {
+            var2_6.printStackTrace();
+            return null;
         }
-        return BookGenderRecommend4;
+        while (n2 < n) {
+            BookGenderRecommend$RecommendBook bookGenderRecommend$RecommendBook = arrbookGenderRecommend$RecommendBook[n2];
+            BookReadRecord.create(bookGenderRecommend$RecommendBook);
+            a.u(bookGenderRecommend$RecommendBook.get_id());
+            ++n2;
+            continue;
+        }
+        return bookGenderRecommend;
     }
 
-    public final volatile Object a(Object[] Object_1darray1) {
-        return a((String[]) Object_1darray1);
-    }
-
-    public final void a(Object Object1) {
-        BookGenderRecommend BookGenderRecommend2 = (BookGenderRecommend) Object1;
-
-        if (BookGenderRecommend2 != null && BookGenderRecommend2.isOk())
-            HomeShelfFragment.l(a);
-        else
-            HomeShelfFragment.b(a, 3);
+    @Override
+    public final /* synthetic */ void a(Object object) {
+        BookGenderRecommend bookGenderRecommend = (BookGenderRecommend) object;
+        if (bookGenderRecommend != null && bookGenderRecommend.isOk()) {
+            HomeShelfFragment.l(this.a);
+            return;
+        }
+        HomeShelfFragment.b(this.a, 3);
     }
 }

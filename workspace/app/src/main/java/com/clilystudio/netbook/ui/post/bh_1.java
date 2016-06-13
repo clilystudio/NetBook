@@ -2,61 +2,71 @@ package com.clilystudio.netbook.ui.post;
 
 import android.app.Activity;
 
+import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.model.DiscussSummary;
 import com.clilystudio.netbook.model.DiscussSummaryList;
+import com.clilystudio.netbook.util.e;
 
 import java.util.Arrays;
-import java.util.Collection;
 
-final class bh extends com.clilystudio.netbook.a.e {
+final class bh
+        extends com.clilystudio.netbook.a.e<String, Void, DiscussSummary[]> {
+    private /* synthetic */ CommonPostListActivity a;
 
-    private CommonPostListActivity a;
-
-    bh(CommonPostListActivity CommonPostListActivity1, byte byte2) {
-        this(CommonPostListActivity1);
+    private bh(CommonPostListActivity commonPostListActivity) {
+        this.a = commonPostListActivity;
     }
 
-    private bh(CommonPostListActivity CommonPostListActivity1) {
-        a = CommonPostListActivity1;
+    /* synthetic */ bh(CommonPostListActivity commonPostListActivity, byte by) {
+        this(commonPostListActivity);
     }
 
-    private transient DiscussSummary[] a(String[] String_1darray1) {
+    /*
+     * Enabled force condition propagation
+     * Lifted jumps to return sites
+     */
+    private /* varargs */ DiscussSummary[] a(String... arrstring) {
+        DiscussSummaryList discussSummaryList = b.b().a(arrstring[0], arrstring[1], CommonPostListActivity.r(this.a).getCount(), 20, CommonPostListActivity.n(this.a), CommonPostListActivity.o(this.a));
+        if (discussSummaryList == null) return null;
         try {
-            DiscussSummaryList DiscussSummaryList3 = com.clilystudio.netbook.api.b.b().a(String_1darray1[0], String_1darray1[1], CommonPostListActivity.r(a).getCount(), 20, CommonPostListActivity.n(a), CommonPostListActivity.o(a));
-        } catch (Exception Exception2) {
-            Exception2.printStackTrace();
+            return discussSummaryList.getPosts();
+        } catch (Exception var2_4) {
+            var2_4.printStackTrace();
         }
         return null;
     }
 
-    protected final Object doInBackground(Object[] Object_1darray1) {
-        return a((String[]) Object_1darray1);
+    @Override
+    protected final /* synthetic */ Object doInBackground(Object[] arrobject) {
+        return this.a((String[]) arrobject);
     }
 
-    protected final void onPostExecute(Object Object1) {
-        DiscussSummary[] DiscussSummary_1darray2 = (DiscussSummary[]) Object1;
-
-        super.onPostExecute(DiscussSummary_1darray2);
-        CommonPostListActivity.b(a).setVisibility(8);
-        CommonPostListActivity.p(a).setVisibility(8);
-        CommonPostListActivity.q(a).setVisibility(8);
-        CommonPostListActivity.j(a).n();
-        if (!isCancelled()) {
-            if (DiscussSummary_1darray2 != null) {
-                int int3 = DiscussSummary_1darray2.length;
-
-                if (int3 > 0) {
-                    CommonPostListActivity.h(a).addAll((Collection) Arrays.asList(DiscussSummary_1darray2));
-                    CommonPostListActivity.r(a).a((Collection) CommonPostListActivity.h(a));
-                    if (int3 >= 20) {
-                        CommonPostListActivity.j(a).setOnLastItemVisibleListener(CommonPostListActivity.s(a));
-                        return;
-                    }
+    /*
+     * Enabled force condition propagation
+     * Lifted jumps to return sites
+     */
+    @Override
+    protected final /* synthetic */ void onPostExecute(Object object) {
+        DiscussSummary[] arrdiscussSummary = (DiscussSummary[]) object;
+        super.onPostExecute(arrdiscussSummary);
+        CommonPostListActivity.b(this.a).setVisibility(8);
+        CommonPostListActivity.p(this.a).setVisibility(8);
+        CommonPostListActivity.q(this.a).setVisibility(8);
+        CommonPostListActivity.j(this.a).n();
+        if (this.isCancelled()) return;
+        if (arrdiscussSummary != null) {
+            int n = arrdiscussSummary.length;
+            if (n > 0) {
+                CommonPostListActivity.h(this.a).addAll(Arrays.asList(arrdiscussSummary));
+                CommonPostListActivity.r(this.a).a(CommonPostListActivity.h(this.a));
+                if (n >= 20) {
+                    CommonPostListActivity.j(this.a).setOnLastItemVisibleListener(CommonPostListActivity.s(this.a));
+                    return;
                 }
-                CommonPostListActivity.j(a).setOnLastItemVisibleListener(null);
-            } else
-                com.clilystudio.netbook.util.e.a((Activity) a, "\u52A0\u8F7D\u5931\u8D25\uFF0C\u8BF7\u68C0\u67E5\u7F51\u7EDC\u6216\u7A0D\u540E\u518D\u8BD5");
+            }
+            CommonPostListActivity.j(this.a).setOnLastItemVisibleListener(null);
             return;
         }
+        e.a((Activity) this.a, "\u52a0\u8f7d\u5931\u8d25\uff0c\u8bf7\u68c0\u67e5\u7f51\u7edc\u6216\u7a0d\u540e\u518d\u8bd5");
     }
 }

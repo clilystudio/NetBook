@@ -8,32 +8,28 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.TextView;
 
-public class LabelPtrListView extends HeaderPtrListView {
-
+public class LabelPtrListView
+        extends HeaderPtrListView {
     private TextView c;
 
-    public LabelPtrListView(Context Context1, AttributeSet AttributeSet2) {
-        super(Context1, AttributeSet2);
-        View View4;
-        Object Object3;
-
-        Object3 = (ListView) h();
-        View4 = LayoutInflater.from(Context1).inflate(2130903330, (ViewGroup) Object3, false);
-        c = (TextView) View4.findViewById(2131492905);
-        c.setVisibility(8);
-        ((ListView) Object3).addHeaderView(View4, null, false);
-        invalidate();
+    public LabelPtrListView(Context context, AttributeSet attributeSet) {
+        super(context, attributeSet);
+        ListView listView = (ListView) this.h();
+        View view = LayoutInflater.from(context).inflate(2130903330, (ViewGroup) listView, false);
+        this.c = (TextView) view.findViewById(2131492905);
+        this.c.setVisibility(8);
+        listView.addHeaderView(view, null, false);
+        this.invalidate();
     }
 
-    public void setCountText(String String1, int int2) {
-        TextView TextView3 = c;
-        Object[] Object_1darray4 = new Object[1];
-
-        Object_1darray4[0] = Integer.valueOf(int2);
-        TextView3.setText((CharSequence) String.format(String1, Object_1darray4));
-        if (int2 == 0)
-            c.setVisibility(8);
-        else
-            c.setVisibility(0);
+    public void setCountText(String string, int n) {
+        TextView textView = this.c;
+        Object[] arrobject = new Object[]{n};
+        textView.setText(String.format(string, arrobject));
+        if (n == 0) {
+            this.c.setVisibility(8);
+            return;
+        }
+        this.c.setVisibility(0);
     }
 }

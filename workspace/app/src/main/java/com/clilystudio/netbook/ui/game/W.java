@@ -1,5 +1,7 @@
 package com.clilystudio.netbook.ui.game;
 
+import com.clilystudio.netbook.a.e;
+import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.model.GameLayoutRoot;
 import com.clilystudio.netbook.model.GameLayoutRoot$ModuleLayout;
 import com.clilystudio.netbook.model.ModuleType;
@@ -9,69 +11,72 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-final class W extends com.clilystudio.netbook.a.e {
+final class W
+        extends e<String, Void, GameLayoutRoot> {
+    private /* synthetic */ GameMicroFragment a;
 
-    private GameMicroFragment a;
-
-    W(GameMicroFragment GameMicroFragment1, byte byte2) {
-        this(GameMicroFragment1);
+    private W(GameMicroFragment gameMicroFragment) {
+        this.a = gameMicroFragment;
     }
 
-    private W(GameMicroFragment GameMicroFragment1) {
-        a = GameMicroFragment1;
+    /* synthetic */ W(GameMicroFragment gameMicroFragment, byte by) {
+        this(gameMicroFragment);
     }
 
-    private static transient GameLayoutRoot a() {
-        GameLayoutRoot GameLayoutRoot3;
-
+    private static /* varargs */ GameLayoutRoot a() {
         try {
-            com.clilystudio.netbook.api.b.a();
-            GameLayoutRoot3 = com.clilystudio.netbook.api.b.b().s();
-        } catch (IOException IOException1) {
-            IOException1.printStackTrace();
+            b.a();
+            GameLayoutRoot gameLayoutRoot = b.b().s();
+            return gameLayoutRoot;
+        } catch (IOException var0_1) {
+            var0_1.printStackTrace();
             return null;
         }
-        return GameLayoutRoot3;
     }
 
-    protected final Object doInBackground(Object[] Object_1darray1) {
-        return a();
+    /*
+     * Exception decompiling
+     */
+    @Override
+    protected final /* synthetic */ Object doInBackground(Object[] var1_1) {
+        // This method has failed to decompile.  When submitting a bug report, please provide this stack trace, and (if you hold appropriate legal rights) the relevant class file.
+        // java.lang.ArrayIndexOutOfBoundsException
+        throw new IllegalStateException("Decompilation failed");
     }
 
-    protected final void onPostExecute(Object Object1) {
-        int int2 = 1;
-        Object Object3 = (GameLayoutRoot) Object1;
-
-        super.onPostExecute(Object3);
-        if (a.getActivity() != null) {
-            if (Object3 != null && ((GameLayoutRoot) Object3).isOk() && ((GameLayoutRoot) Object3).getLayout() != null) {
-                Iterator Iterator6;
-
-                a.c();
-                GameMicroFragment.a(a, ((GameLayoutRoot) Object3).getLayout());
-                if (GameMicroFragment.d(a) != null) {
-                    List List10;
-
-                    a.g();
-                    List10 = GameMicroFragment.d(a);
-                    if (GameMicroFragment.d(a).size() <= int2)
-                        int2 = 0;
-                    List10.add(int2, GameMicroFragment.c(a));
+    /*
+     * Enabled aggressive block sorting
+     * Lifted jumps to return sites
+     */
+    @Override
+    protected final /* synthetic */ void onPostExecute(Object object) {
+        int n = 1;
+        GameLayoutRoot gameLayoutRoot = (GameLayoutRoot) object;
+        super.onPostExecute(gameLayoutRoot);
+        if (this.a.getActivity() == null) return;
+        if (gameLayoutRoot != null && gameLayoutRoot.isOk() && gameLayoutRoot.getLayout() != null) {
+            this.a.c();
+            GameMicroFragment.a(this.a, gameLayoutRoot.getLayout());
+            if (GameMicroFragment.d(this.a) != null) {
+                this.a.g();
+                List list = GameMicroFragment.d(this.a);
+                if (GameMicroFragment.d(this.a).size() <= n) {
+                    n = 0;
                 }
-                GameMicroFragment.b(a, (List) new ArrayList());
-                Iterator6 = GameMicroFragment.d(a).iterator();
-                while (Iterator6.hasNext()) {
-                    GameLayoutRoot$ModuleLayout ModuleLayout8 = (GameLayoutRoot$ModuleLayout) Iterator6.next();
-
-                    if (ModuleLayout8.getActivity() == null || ModuleLayout8.getType() != ModuleType.ACTIVITY)
-                        continue;
-                    GameMicroFragment.e(a).add(ModuleLayout8.getActivity().getBannerImage());
-                }
-                GameMicroFragment.a(a, ((GameLayoutRoot) Object3).getPromotions());
-            } else {
-                a.e();
-                return;
+                list.add(n, GameMicroFragment.c(this.a));
             }
+            GameMicroFragment.b(this.a, new ArrayList());
+            Iterator iterator = GameMicroFragment.d(this.a).iterator();
+            do {
+                if (!iterator.hasNext()) {
+                    GameMicroFragment.a(this.a, gameLayoutRoot.getPromotions());
+                    return;
+                }
+                GameLayoutRoot$ModuleLayout gameLayoutRoot$ModuleLayout = (GameLayoutRoot$ModuleLayout) iterator.next();
+                if (gameLayoutRoot$ModuleLayout.getActivity() == null || gameLayoutRoot$ModuleLayout.getType() != ModuleType.ACTIVITY) continue;
+                GameMicroFragment.e(this.a).add(gameLayoutRoot$ModuleLayout.getActivity().getBannerImage());
+            } while (true);
         }
+        this.a.e();
     }
 }

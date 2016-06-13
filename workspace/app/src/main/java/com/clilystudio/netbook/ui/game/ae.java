@@ -2,29 +2,31 @@ package com.clilystudio.netbook.ui.game;
 
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.View$OnTouchListener;
 
-final class ae implements View$OnTouchListener {
+final class ae
+        implements View.OnTouchListener {
+    private /* synthetic */ GameMicroFragment$LayoutAdapter$PromotionViewPager a;
 
-    private GameMicroFragment$LayoutAdapter$PromotionViewPager a;
-
-    ae(GameMicroFragment$LayoutAdapter$PromotionViewPager PromotionViewPager1) {
-        a = PromotionViewPager1;
+    ae(GameMicroFragment$LayoutAdapter$PromotionViewPager promotionViewPager) {
+        this.a = promotionViewPager;
     }
 
-    public final boolean onTouch(View View1, MotionEvent MotionEvent2) {
-        switch (MotionEvent2.getAction()) {
-            case 0:
-                GameMicroFragment$LayoutAdapter$PromotionViewPager.a(a);
-                break;
-            case 3:
+    /*
+     * Enabled aggressive block sorting
+     */
+    @Override
+    public final boolean onTouch(View view, MotionEvent motionEvent) {
+        switch (motionEvent.getAction()) {
+            case 0: {
+                GameMicroFragment$LayoutAdapter$PromotionViewPager.a(this.a);
+            }
+            default: {
+                return false;
+            }
             case 1:
-                GameMicroFragment$LayoutAdapter$PromotionViewPager.b(a);
-                break;
-            case 2:
-            default:
-                break;
+            case 3:
         }
+        GameMicroFragment$LayoutAdapter$PromotionViewPager.b(this.a);
         return false;
     }
 }

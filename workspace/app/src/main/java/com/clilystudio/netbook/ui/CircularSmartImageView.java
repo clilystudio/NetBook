@@ -8,34 +8,38 @@ import android.net.Uri;
 import android.util.AttributeSet;
 
 import com.clilystudio.netbook.R$styleable;
+import com.nostra13.universalimageloader.core.b.b;
 
-public class CircularSmartImageView extends CornerImageView {
+public class CircularSmartImageView
+        extends CornerImageView {
+    private final int b;
 
-    private int b;     // final access specifier removed
-
-    public CircularSmartImageView(Context Context1, AttributeSet AttributeSet2) {
-        super(Context1, AttributeSet2);
-        b = Context1.obtainStyledAttributes(AttributeSet2, new int[]{16842996}).getDimensionPixelSize(0, -1);
-        Context1.obtainStyledAttributes(AttributeSet2, R$styleable.CircularSmartImageView).recycle();
+    public CircularSmartImageView(Context context, AttributeSet attributeSet) {
+        super(context, attributeSet);
+        this.b = context.obtainStyledAttributes(attributeSet, new int[]{16842996}).getDimensionPixelSize(0, -1);
+        context.obtainStyledAttributes(attributeSet, R$styleable.CircularSmartImageView).recycle();
     }
 
-    protected final com.nostra13.universalimageloader.core.b.a a() {
-        return (com.nostra13.universalimageloader.core.b.a) new com.nostra13.universalimageloader.core.b.b(b / 2);
+    @Override
+    protected final /* synthetic */ com.nostra13.universalimageloader.core.b.a a() {
+        return new b(this.b / 2);
     }
 
-    protected final void a(Canvas Canvas1) {
-        Paint Paint2 = new Paint(a);
-
-        Paint2.setAlpha(34);
-        Paint2.setAntiAlias(true);
-        Canvas1.drawCircle((float) (b / 2), (float) (b / 2), (float) (b / 2), Paint2);
+    @Override
+    protected final void a(Canvas canvas) {
+        Paint paint = new Paint(this.a);
+        paint.setAlpha(34);
+        paint.setAntiAlias(true);
+        canvas.drawCircle(this.b / 2, this.b / 2, this.b / 2, paint);
     }
 
-    public void setImageURI(Uri Uri1) {
-        setImageBitmap(com.clilystudio.netbook.hpay100.a.a.a(BitmapFactory.decodeFile(Uri1.getPath())));
+    @Override
+    public void setImageURI(Uri uri) {
+        this.setImageBitmap(a.a(BitmapFactory.decodeFile(uri.getPath())));
     }
 
-    public void setImageUrl(String String1, int int2) {
-        super.setImageUrl(String1, 2130837614);
+    @Override
+    public void setImageUrl(String string, int n) {
+        super.setImageUrl(string, 2130837614);
     }
 }

@@ -2,46 +2,46 @@ package com.clilystudio.netbook.ui;
 
 import android.content.Context;
 import android.graphics.Canvas;
-import android.graphics.PorterDuff$Mode;
+import android.graphics.PorterDuff;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 
-public class MaskAbleImageView extends ImageView {
-
+public class MaskAbleImageView
+        extends ImageView {
     protected int a;
 
-    public MaskAbleImageView(Context Context1, AttributeSet AttributeSet2, int int3) {
-        super(Context1, AttributeSet2, int3);
-        a(Context1);
+    public MaskAbleImageView(Context context) {
+        super(context);
+        this.a(context);
     }
 
-    public MaskAbleImageView(Context Context1) {
-        super(Context1);
-        a(Context1);
+    public MaskAbleImageView(Context context, AttributeSet attributeSet) {
+        super(context, attributeSet);
+        this.a(context);
     }
 
-    public MaskAbleImageView(Context Context1, AttributeSet AttributeSet2) {
-        super(Context1, AttributeSet2);
-        a(Context1);
+    public MaskAbleImageView(Context context, AttributeSet attributeSet, int n) {
+        super(context, attributeSet, n);
+        this.a(context);
     }
 
-    private void a(Context Context1) {
-        int int2;
-
-        if (com.clilystudio.netbook.hpay100.a.a.a(Context1, "customer_night_theme", false))
-            int2 = getResources().getColor(2131427405);
-        else
-            int2 = -1;
-        a = int2;
+    /*
+     * Enabled aggressive block sorting
+     */
+    private void a(Context context) {
+        int n = a.a(context, "customer_night_theme", false) ? this.getResources().getColor(2131427405) : -1;
+        this.a = n;
     }
 
-    protected void a(Canvas Canvas1) {
-        Canvas1.drawColor(a, PorterDuff$Mode.SRC_ATOP);
+    protected void a(Canvas canvas) {
+        canvas.drawColor(this.a, PorterDuff.Mode.SRC_ATOP);
     }
 
-    protected void onDraw(Canvas Canvas1) {
-        super.onDraw(Canvas1);
-        if (a != -1)
-            a(Canvas1);
+    @Override
+    protected void onDraw(Canvas canvas) {
+        super.onDraw(canvas);
+        if (this.a != -1) {
+            this.a(canvas);
+        }
     }
 }

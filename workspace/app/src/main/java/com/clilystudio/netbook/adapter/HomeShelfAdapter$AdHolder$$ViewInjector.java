@@ -8,18 +8,17 @@ import com.clilystudio.netbook.widget.BookShelfFlagView;
 import butterknife.ButterKnife$Finder;
 
 public class HomeShelfAdapter$AdHolder$$ViewInjector {
-
-    public static void inject(ButterKnife$Finder Finder1, HomeShelfAdapter$AdHolder AdHolder2, Object Object3) {
-        AdHolder2.title = (TextView) Finder1.findRequiredView(Object3, 2131492936, "field 'title'");
-        AdHolder2.desc = (TextView) Finder1.findRequiredView(Object3, 2131493481, "field 'desc'");
-        AdHolder2.flag = (BookShelfFlagView) Finder1.findRequiredView(Object3, 2131493754, "field 'flag'");
-        AdHolder2.cover = (SmartImageView) Finder1.findRequiredView(Object3, 2131493604, "field 'cover'");
+    public static void inject(ButterKnife$Finder butterKnife$Finder, HomeShelfAdapter$AdHolder homeShelfAdapter$AdHolder, Object object) {
+        homeShelfAdapter$AdHolder.title = (TextView) butterKnife$Finder.findRequiredView(object, 2131492936, "field 'title'");
+        homeShelfAdapter$AdHolder.desc = (TextView) butterKnife$Finder.findRequiredView(object, 2131493481, "field 'desc'");
+        homeShelfAdapter$AdHolder.flag = (BookShelfFlagView) butterKnife$Finder.findRequiredView(object, 2131493754, "field 'flag'");
+        homeShelfAdapter$AdHolder.cover = (SmartImageView) butterKnife$Finder.findRequiredView(object, 2131493604, "field 'cover'");
     }
 
-    public static void reset(HomeShelfAdapter$AdHolder AdHolder1) {
-        AdHolder1.title = null;
-        AdHolder1.desc = null;
-        AdHolder1.flag = null;
-        AdHolder1.cover = null;
+    public static void reset(HomeShelfAdapter$AdHolder homeShelfAdapter$AdHolder) {
+        homeShelfAdapter$AdHolder.title = null;
+        homeShelfAdapter$AdHolder.desc = null;
+        homeShelfAdapter$AdHolder.flag = null;
+        homeShelfAdapter$AdHolder.cover = null;
     }
 }

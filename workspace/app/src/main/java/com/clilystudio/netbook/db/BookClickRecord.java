@@ -1,45 +1,58 @@
 package com.clilystudio.netbook.db;
 
 import com.activeandroid.Model;
+import com.activeandroid.annotation.Column;
+import com.activeandroid.annotation.Table;
+import com.activeandroid.query.Delete;
+import com.activeandroid.query.Select;
 
 import java.util.List;
 
-public class BookClickRecord extends Model {
-
+@Table(name = "BookClickRecords")
+public class BookClickRecord
+        extends Model {
+    @Column(name = "book_id")
     public String book_id;
+    @Column(name = "today_time")
     public String today_time;
+    @Column(name = "send_status")
     private boolean send_status = false;
 
-    public static BookClickRecord create(String String1, String String2, boolean boolean3) {
-        BookClickRecord BookClickRecord4 = new BookClickRecord();
-
-        BookClickRecord4.book_id = String1;
-        BookClickRecord4.today_time = String2;
-        BookClickRecord4.send_status = boolean3;
-        BookClickRecord4.save();
-        return BookClickRecord4;
+    public static BookClickRecord create(String string, String string2, boolean bl) {
+        BookClickRecord bookClickRecord = new BookClickRecord();
+        bookClickRecord.book_id = string;
+        bookClickRecord.today_time = string2;
+        bookClickRecord.send_status = bl;
+        bookClickRecord.save();
+        return bookClickRecord;
     }
-// Error: Internal #201: 
-// The following method may not be correct.
 
-    public static void deleteByBookId(String String1) {
+    public static void deleteByBookId(String string) {
+        if (string == null) {
+            return;
+        }
+        new Delete().from(BookClickRecord.class).where("book_id = ?", string).execute();
     }
-// Error: Internal #201: 
-// The following method may not be correct.
 
-    public static List getBookClickRecords(String String1) {
+    public static List<BookClickRecord> getBookClickRecords(String string) {
+        if (string == null) {
+            return null;
+        }
+        return new Select().from(BookClickRecord.class).where("book_id = ?", string).execute();
     }
-// Error: Internal #201: 
-// The following method may not be correct.
 
-    public static List getBookClickRecords(String String1, String String2) {
+    public static List<BookClickRecord> getBookClickRecords(String string, String string2) {
+        if (string == null || string2 == null) {
+            return null;
+        }
+        return new Select().from(BookClickRecord.class).where("book_id = ? AND today_time = ?", string, string2).execute();
     }
 
     public boolean isSendStatus() {
-        return send_status;
+        return this.send_status;
     }
 
-    public void setSendStatus(boolean boolean1) {
-        send_status = boolean1;
+    public void setSendStatus(boolean bl) {
+        this.send_status = bl;
     }
 }

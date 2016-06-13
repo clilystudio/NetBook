@@ -3,109 +3,118 @@ package com.clilystudio.netbook.widget;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.support.design.widget.am;
 import android.util.AttributeSet;
 
+import com.clilystudio.netbook.MyApplication;
+import com.clilystudio.netbook.ui.MysteryActivity;
 import com.clilystudio.netbook.util.t;
+import com.umeng.a.b;
 
 import java.util.Calendar;
 import java.util.Date;
 
-public class HomeFindSecretItem extends HomeFindItem {
-
+public class HomeFindSecretItem
+        extends HomeFindItem {
     private ProgressDialog a;
 
-    public HomeFindSecretItem(Context Context1, AttributeSet AttributeSet2) {
-        super(Context1, AttributeSet2);
+    public HomeFindSecretItem(Activity activity) {
+        super(activity, "\u795e\u79d8\u529f\u80fd", 2130837831, 2130837826, null);
     }
 
-    public HomeFindSecretItem(Activity Activity1) {
-        super((Context) Activity1, "\u795E\u79D8\u529F\u80FD", 2130837831, 2130837826, null);
+    public HomeFindSecretItem(Context context, AttributeSet attributeSet) {
+        super(context, attributeSet);
     }
 
-    static ProgressDialog a(HomeFindSecretItem HomeFindSecretItem1) {
-        return HomeFindSecretItem1.a;
+    static /* synthetic */ ProgressDialog a(HomeFindSecretItem homeFindSecretItem) {
+        return homeFindSecretItem.a;
     }
 
+    /*
+     * Enabled force condition propagation
+     * Lifted jumps to return sites
+     */
     private boolean b() {
-        boolean boolean1;
-
-        if (!com.clilystudio.netbook.hpay100.a.a.a(getContext(), "KEY_SECRET_UNLOCKED", false)) {
-            Context Context2 = getContext();
-            String String3 = am.n(Context2);
-            String String4 = com.umeng.a.b.b(Context2, "switch_secret_to_random");
-            int int5;
-
-            label_41:
-            {
-                if (String4 != null && String4.length() > 0) {
-                    String[] String_1darray6 = String4.split(",");
-                    int int7 = String_1darray6.length;
-                    int int8 = 0;
-
-                    while (int8 < int7) {
-                        if (String_1darray6[int8].equals(String3)) {
-                            int5 = 1;
-                            break label_41;
-                        } else
-                            ++int8;
-                    }
-                }
-                int5 = 0;
+        if (a.a(this.getContext(), "KEY_SECRET_UNLOCKED", false)) return true;
+        Context context = this.getContext();
+        String string = am.n((Context) context);
+        String string2 = b.b(context, "switch_secret_to_random");
+        if (string2 == null) return false;
+        if (string2.length() <= 0) return false;
+        String[] arrstring = string2.split(",");
+        int n = arrstring.length;
+        int n2 = 0;
+        while (n2 < n) {
+            if (arrstring[n2].equals(string)) {
+                return true;
             }
-            boolean1 = false;
-            if (int5 == 0)
-                return boolean1;
+            ++n2;
         }
-        boolean1 = true;
-        return boolean1;
+        return false;
     }
 
+    /*
+     * Enabled aggressive block sorting
+     */
     public final void a() {
-        int int1 = 1;
-
-        if (!b()) {
-            Context Context2 = getContext();
-            String String3 = com.umeng.a.b.b(Context2, "mystery_disabled_at_version");
-            String String4 = com.umeng.a.b.b(Context2, "mystery_enable_time");
-            String String5 = com.umeng.a.b.b(Context2, "mystery_enable_minute_range");
-            int int6 = com.clilystudio.netbook.hpay100.a.a.b(String3, 0);
-            int int7 = com.clilystudio.netbook.hpay100.a.a.b(String5, 0);
-
-            if (int6 != am.f(Context2) && !"".equals(String4) && !"0".equals(String4)) {
-                Date Date8 = t.a(String4);
-                Calendar Calendar9 = Calendar.getInstance();
-                Date Date10;
-                long long11;
-
-                Calendar9.setTime(Date8);
-                Calendar9.add(12, int7);
-                Date10 = Calendar9.getTime();
-                long11 = new Date().getTime();
-                if (long11 <= Date8.getTime() || long11 >= Date10.getTime())
-                    int1 = 0;
-            } else
-                int1 = 0;
-        }
-        if (int1 != 0) {
-            setVisibility(0);
-            if (b())
-                mIcon.setImageResource(2130837832);
-            else
-                mIcon.setImageResource(2130837831);
-            if (b()) {
-                mTitle.setText((CharSequence) "\u968F\u673A\u770B\u4E66");
-                mSubFlag.setVisibility(4);
+        boolean bl = true;
+        if (!this.b()) {
+            Context context = this.getContext();
+            String string = b.b(context, "mystery_disabled_at_version");
+            String string2 = b.b(context, "mystery_enable_time");
+            String string3 = b.b(context, "mystery_enable_minute_range");
+            int n = a.b(string, 0);
+            int n2 = a.b(string3, 0);
+            if (n != am.f((Context) context) && !"".equals(string2) && !"0".equals(string2)) {
+                Date date = t.a((String) string2);
+                Calendar calendar = Calendar.getInstance();
+                calendar.setTime(date);
+                calendar.add(12, n2);
+                Date date2 = calendar.getTime();
+                long l = new Date().getTime();
+                if (l <= date.getTime() || l >= date2.getTime()) {
+                    bl = false;
+                }
             } else {
-                mTitle.setText((CharSequence) "\u795E\u79D8\u529F\u80FD");
-                mSubFlag.setVisibility(0);
+                bl = false;
             }
-        } else
-            setVisibility(8);
+        }
+        if (!bl) {
+            this.setVisibility(8);
+            return;
+        }
+        this.setVisibility(0);
+        if (this.b()) {
+            this.mIcon.setImageResource(2130837832);
+        } else {
+            this.mIcon.setImageResource(2130837831);
+        }
+        if (this.b()) {
+            this.mTitle.setText("\u968f\u673a\u770b\u4e66");
+            this.mSubFlag.setVisibility(4);
+            return;
+        }
+        this.mTitle.setText("\u795e\u79d8\u529f\u80fd");
+        this.mSubFlag.setVisibility(0);
     }
-// Error: Internal #201: 
-// The following method may not be correct.
 
-    protected final void a(Context Context1, String String2) {
+    /*
+     * Enabled aggressive block sorting
+     */
+    @Override
+    protected final void a(Context context, String string) {
+        boolean bl = this.b();
+        if (bl) {
+            this.a = ProgressDialog.show(context, null, context.getString(2131034218), true, true);
+            com.a.a.a.a((Context) MyApplication.a(), "rec_F184E6D9_7F75_01C9_CCA0_2336AEB54B2B", a.o(this.getContext()), (c) ((Object) new aa(this, context)));
+        } else {
+            context.startActivity(new Intent(context, MysteryActivity.class));
+        }
+        if (bl) {
+            b.a(context, "home_find_mystery_click", "unlock");
+            return;
+        }
+        b.a(context, "home_find_mystery_click", "lock");
     }
 }

@@ -5,7 +5,6 @@ import android.support.design.widget.am;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View$OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -16,105 +15,89 @@ import com.clilystudio.netbook.event.i;
 import com.clilystudio.netbook.event.k;
 import com.clilystudio.netbook.model.BookRankSummary;
 
-import java.util.Iterator;
 import java.util.List;
 
 import butterknife.ButterKnife;
+import butterknife.InjectView;
 
-public class RankCollapseItem extends LinearLayout implements View$OnClickListener {
-
+public class RankCollapseItem
+        extends LinearLayout
+        implements View.OnClickListener {
+    @InjectView(value = 2131493199)
     ImageView mArrow;
+    @InjectView(value = 2131493603)
     View mBottomDivdier;
+    @InjectView(value = 2131493578)
     LinearLayout mItemContainer;
+    @InjectView(value = 2131493515)
     TextView mLabel;
+    @InjectView(value = 2131493601)
     RelativeLayout mLabelContainer;
+    @InjectView(value = 2131493602)
     View mTopDivdier;
     private boolean a;
     private int b;
-    public RankCollapseItem(Context Context1, AttributeSet AttributeSet2) {
-        super(Context1, AttributeSet2);
+
+    public RankCollapseItem(Context context, AttributeSet attributeSet) {
+        super(context, attributeSet);
     }
 
+    /*
+     * Enabled aggressive block sorting
+     */
     private void a() {
-        ImageView ImageView1 = mArrow;
-        int int2;
-        LinearLayout LinearLayout3;
-        int int4;
-        View View5;
-        int int6;
-        View View7;
-        boolean boolean8;
-        int int9;
-        TextView TextView10;
-        int int11;
-
-        if (a)
-            int2 = 2130838065;
-        else
-            int2 = 2130838064;
-        ImageView1.setImageResource(int2);
-        LinearLayout3 = mItemContainer;
-        if (a)
-            int4 = 0;
-        else
-            int4 = 8;
-        LinearLayout3.setVisibility(int4);
-        View5 = mBottomDivdier;
-        if (a)
-            int6 = 0;
-        else
-            int6 = 8;
-        View5.setVisibility(int6);
-        View7 = mTopDivdier;
-        boolean8 = a;
-        int9 = 0;
-        if (!boolean8)
-            int9 = 8;
-        View7.setVisibility(int9);
-        TextView10 = mLabel;
-        if (a)
-            int11 = -43230;
-        else
-            int11 = am.a(getContext(), 16842904);
-        TextView10.setTextColor(int11);
+        ImageView imageView = this.mArrow;
+        int n = this.a ? 2130838065 : 2130838064;
+        imageView.setImageResource(n);
+        LinearLayout linearLayout = this.mItemContainer;
+        int n2 = this.a ? 0 : 8;
+        linearLayout.setVisibility(n2);
+        View view = this.mBottomDivdier;
+        int n3 = this.a ? 0 : 8;
+        view.setVisibility(n3);
+        View view2 = this.mTopDivdier;
+        boolean bl = this.a;
+        int n4 = 0;
+        if (!bl) {
+            n4 = 8;
+        }
+        view2.setVisibility(n4);
+        TextView textView = this.mLabel;
+        int n5 = this.a ? -43230 : am.a((Context) this.getContext(), (int) 16842904);
+        textView.setTextColor(n5);
     }
 
-    public final void a(List List1, int int2, boolean boolean3) {
-        LayoutInflater LayoutInflater4;
-        Iterator Iterator5;
-
-        b = int2;
-        mItemContainer.removeAllViews();
-        LayoutInflater4 = LayoutInflater.from(getContext());
-        Iterator5 = List1.iterator();
-        while (Iterator5.hasNext()) {
-            BookRankSummary BookRankSummary6 = (BookRankSummary) Iterator5.next();
-            Object Object7 = (TextView) LayoutInflater4.inflate(2130903248, (ViewGroup) mItemContainer, false);
-
-            ((TextView) Object7).setText((CharSequence) BookRankSummary6.getTitle());
-            mItemContainer.addView((View) Object7);
-            ((TextView) Object7).setOnClickListener((View$OnClickListener) new at(this, BookRankSummary6, boolean3));
+    public final void a(List<BookRankSummary> list, int n, boolean bl) {
+        this.b = n;
+        this.mItemContainer.removeAllViews();
+        LayoutInflater layoutInflater = LayoutInflater.from(this.getContext());
+        for (BookRankSummary bookRankSummary : list) {
+            TextView textView = (TextView) layoutInflater.inflate(2130903248, (ViewGroup) this.mItemContainer, false);
+            textView.setText(bookRankSummary.getTitle());
+            this.mItemContainer.addView(textView);
+            textView.setOnClickListener(new at(this, bookRankSummary, bl));
         }
     }
 
-    public void onClick(View View1) {
-        boolean boolean2;
-
-        if (!a)
-            boolean2 = true;
-        else
-            boolean2 = false;
-        a = boolean2;
-        a();
-        if (a)
-            i.a().c(new k(b));
+    /*
+     * Enabled aggressive block sorting
+     */
+    @Override
+    public void onClick(View view) {
+        boolean bl = !this.a;
+        this.a = bl;
+        this.a();
+        if (this.a) {
+            i.a().c(new k(this.b));
+        }
     }
 
+    @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
-        ButterKnife.inject((View) this);
-        mLabel.setText((CharSequence) "\u522B\u4EBA\u5BB6\u7684\u6392\u884C\u699C");
-        mLabelContainer.setOnClickListener(this);
-        a();
+        ButterKnife.inject(this);
+        this.mLabel.setText("\u522b\u4eba\u5bb6\u7684\u6392\u884c\u699c");
+        this.mLabelContainer.setOnClickListener(this);
+        this.a();
     }
 }

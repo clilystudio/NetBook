@@ -3,26 +3,36 @@ package com.clilystudio.netbook.widget;
 import android.text.Editable;
 import android.text.TextWatcher;
 
-final class aw implements TextWatcher {
+final class aw
+        implements TextWatcher {
+    private /* synthetic */ SearchEditText a;
 
-    private SearchEditText a;
-
-    aw(SearchEditText SearchEditText1) {
-        a = SearchEditText1;
+    aw(SearchEditText searchEditText) {
+        this.a = searchEditText;
     }
 
-    public final void afterTextChanged(Editable Editable1) {
+    @Override
+    public final void afterTextChanged(Editable editable) {
     }
 
-    public final void beforeTextChanged(CharSequence CharSequence1, int int2, int int3, int int4) {
-        if (SearchEditText.a(a))
-            SearchEditText.a(a, false);
-        else if (SearchEditText.b(a) != null) {
-            SearchEditText.b(a).a();
+    /*
+     * Enabled aggressive block sorting
+     */
+    @Override
+    public final void beforeTextChanged(CharSequence charSequence, int n, int n2, int n3) {
+        if (SearchEditText.a(this.a)) {
+            SearchEditText.a(this.a, false);
             return;
+        } else {
+            if (SearchEditText.b(this.a) == null) return;
+            {
+                SearchEditText.b(this.a).a();
+                return;
+            }
         }
     }
 
-    public final void onTextChanged(CharSequence CharSequence1, int int2, int int3, int int4) {
+    @Override
+    public final void onTextChanged(CharSequence charSequence, int n, int n2, int n3) {
     }
 }

@@ -1,21 +1,21 @@
 package com.clilystudio.netbook.widget;
 
 import android.view.View;
-import android.view.View$OnClickListener;
 
-final class S implements View$OnClickListener {
+final class S
+        implements View.OnClickListener {
+    private /* synthetic */ GiftGameGameButton a;
 
-    private GiftGameGameButton a;
-
-    S(GiftGameGameButton GiftGameGameButton1, byte byte2) {
-        this(GiftGameGameButton1);
+    private S(GiftGameGameButton giftGameGameButton) {
+        this.a = giftGameGameButton;
     }
 
-    private S(GiftGameGameButton GiftGameGameButton1) {
-        a = GiftGameGameButton1;
+    /* synthetic */ S(GiftGameGameButton giftGameGameButton, byte by) {
+        this(giftGameGameButton);
     }
 
-    public final void onClick(View View1) {
-        a.f();
+    @Override
+    public final void onClick(View view) {
+        this.a.f();
     }
 }

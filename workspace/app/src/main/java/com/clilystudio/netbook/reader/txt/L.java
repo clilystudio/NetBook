@@ -3,25 +3,20 @@ package com.clilystudio.netbook.reader.txt;
 import com.clilystudio.netbook.reader.cd;
 import com.clilystudio.netbook.reader.o;
 
-final class L implements cd {
+final class L
+        implements cd {
+    private /* synthetic */ ReaderTxtActivity a;
 
-    private ReaderTxtActivity a;
-
-    L(ReaderTxtActivity ReaderTxtActivity1) {
-        a = ReaderTxtActivity1;
+    L(ReaderTxtActivity readerTxtActivity) {
+        this.a = readerTxtActivity;
     }
 
+    @Override
     public final void a() {
-        o[] o_1darray1 = ReaderTxtActivity.d(a);
-        int int2 = o_1darray1.length;
-        int int3;
-
-        for (int3 = 0; int3 < int2; ++int3) {
-            o o4 = o_1darray1[int3];
-
-            if (o4 != null)
-                o4.c();
+        for (o o2 : ReaderTxtActivity.d(this.a)) {
+            if (o2 == null) continue;
+            o2.c();
         }
-        ReaderTxtActivity.q(a);
+        ReaderTxtActivity.q(this.a);
     }
 }

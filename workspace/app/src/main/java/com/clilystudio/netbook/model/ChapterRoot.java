@@ -1,32 +1,31 @@
 package com.clilystudio.netbook.model;
 
 public class ChapterRoot {
-
     private Chapter chapter;
     private boolean ok;
     private int status;
 
     public Chapter getChapter() {
-        return chapter;
+        return this.chapter;
     }
 
-    public void setChapter(Chapter Chapter1) {
-        chapter = Chapter1;
+    public void setChapter(Chapter chapter) {
+        this.chapter = chapter;
     }
 
     public int getStatus() {
-        return status;
+        return this.status;
     }
 
-    public void setStatus(int int1) {
-        status = int1;
+    public void setStatus(int n) {
+        this.status = n;
     }
 
     public boolean isOk() {
-        return ok;
+        return this.ok;
     }
 
-    public void setOk(boolean boolean1) {
-        ok = boolean1;
+    public void setOk(boolean bl) {
+        this.ok = bl;
     }
 }

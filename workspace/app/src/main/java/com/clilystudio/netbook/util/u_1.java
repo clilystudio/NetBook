@@ -1,17 +1,17 @@
 package com.clilystudio.netbook.util;
 
 import android.view.View;
-import android.view.View$OnClickListener;
 
-final class u implements View$OnClickListener {
+final class u
+        implements View.OnClickListener {
+    private /* synthetic */ DialogUtil$FeedIntroDialog a;
 
-    private DialogUtil$FeedIntroDialog a;
-
-    u(DialogUtil$FeedIntroDialog FeedIntroDialog1) {
-        a = FeedIntroDialog1;
+    u(DialogUtil$FeedIntroDialog feedIntroDialog) {
+        this.a = feedIntroDialog;
     }
 
-    public final void onClick(View View1) {
-        a.dismiss();
+    @Override
+    public final void onClick(View view) {
+        this.a.dismiss();
     }
 }

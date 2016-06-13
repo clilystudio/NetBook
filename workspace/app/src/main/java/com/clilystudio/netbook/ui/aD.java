@@ -1,23 +1,23 @@
 package com.clilystudio.netbook.ui;
 
 import android.view.View;
-import android.view.View$OnClickListener;
 
-final class aD implements View$OnClickListener {
+final class aD
+        implements View.OnClickListener {
+    private /* synthetic */ aC a;
 
-    private aC a;
-
-    aD(aC aC1) {
-        a = aC1;
+    aD(aC aC2) {
+        this.a = aC2;
     }
 
-    public final void onClick(View View1) {
-        if (BookInfoActivity.c(a.b)) {
-            a.a.setMaxLines(4);
-            BookInfoActivity.b(a.b, false);
-        } else {
-            a.a.setMaxLines(2147483647);
-            BookInfoActivity.b(a.b, true);
+    @Override
+    public final void onClick(View view) {
+        if (BookInfoActivity.c(this.a.b)) {
+            this.a.a.setMaxLines(4);
+            BookInfoActivity.b(this.a.b, false);
+            return;
         }
+        this.a.a.setMaxLines(Integer.MAX_VALUE);
+        BookInfoActivity.b(this.a.b, true);
     }
 }

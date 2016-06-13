@@ -3,21 +3,21 @@ package com.clilystudio.netbook.reader.random;
 import com.clilystudio.netbook.reader.cc;
 import com.clilystudio.netbook.reader.o;
 
-final class G implements cc {
+final class G
+        implements cc {
+    private /* synthetic */ ReaderRandomActivity a;
 
-    private ReaderRandomActivity a;
-
-    G(ReaderRandomActivity ReaderRandomActivity1) {
-        a = ReaderRandomActivity1;
+    G(ReaderRandomActivity readerRandomActivity) {
+        this.a = readerRandomActivity;
     }
 
+    @Override
     public final void a() {
-        o[] o_1darray1 = ReaderRandomActivity.i(a);
-        int int2 = o_1darray1.length;
-        int int3;
-
-        for (int3 = 0; int3 < int2; ++int3)
-            o_1darray1[int3].a();
-        ReaderRandomActivity.j(a);
+        o[] arro = ReaderRandomActivity.i(this.a);
+        int n2 = arro.length;
+        for (int i = 0; i < n2; ++i) {
+            arro[i].a();
+        }
+        ReaderRandomActivity.j(this.a);
     }
 }

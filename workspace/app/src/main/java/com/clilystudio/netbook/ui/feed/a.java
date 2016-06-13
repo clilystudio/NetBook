@@ -2,15 +2,16 @@ package com.clilystudio.netbook.ui.feed;
 
 import com.clilystudio.netbook.ui.aa;
 
-final class a implements aa {
+final class a
+        implements aa {
+    private /* synthetic */ FeedAddActivity a;
 
-    private FeedAddActivity a;
-
-    a(FeedAddActivity FeedAddActivity1) {
-        a = FeedAddActivity1;
+    a(FeedAddActivity feedAddActivity) {
+        this.a = feedAddActivity;
     }
 
+    @Override
     public final void a() {
-        FeedAddActivity.a(a);
+        FeedAddActivity.a(this.a);
     }
 }

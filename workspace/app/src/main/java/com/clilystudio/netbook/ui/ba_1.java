@@ -1,55 +1,57 @@
 package com.clilystudio.netbook.ui;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 
 import com.clilystudio.netbook.a.c;
+import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.model.BookAdd;
 import com.clilystudio.netbook.util.e;
 
-final class ba extends c {
+final class ba
+        extends c<String, BookAdd> {
+    private /* synthetic */ CustomSearchActivity a;
 
-    private CustomSearchActivity a;
-
-    public ba(CustomSearchActivity CustomSearchActivity1, Activity Activity2, int int3) {
-        super(Activity2, 2131034324);
-        a = CustomSearchActivity1;
+    public ba(CustomSearchActivity customSearchActivity, Activity activity, int n) {
+        this.a = customSearchActivity;
+        super(activity, 2131034324);
     }
 
-    private transient BookAdd a(String[] String_1darray1) {
-        BookAdd BookAdd3;
-
+    private /* varargs */ BookAdd a(String... arrstring) {
         try {
-            BookAdd3 = com.clilystudio.netbook.api.b.b().f(String_1darray1[0], String_1darray1[1], String_1darray1[2]);
-        } catch (Exception Exception2) {
-            Exception2.printStackTrace();
+            BookAdd bookAdd = b.b().f(arrstring[0], arrstring[1], arrstring[2]);
+            return bookAdd;
+        } catch (Exception var2_3) {
+            var2_3.printStackTrace();
             return null;
         }
-        return BookAdd3;
     }
 
-    public final volatile Object a(Object[] Object_1darray1) {
-        return a((String[]) Object_1darray1);
-    }
-
-    public final void a(Object Object1) {
-        BookAdd BookAdd2 = (BookAdd) Object1;
-
-        if (BookAdd2 != null) {
-            if (BookAdd2.isOk()) {
-                String String3 = BookAdd2.getBook();
-                Intent Intent4 = BookInfoActivity.a((Context) a, String3);
-
-                a.startActivity(Intent4);
-            } else if ("EXISTS".equals(BookAdd2.getCode())) {
-                e.a((Activity) a, "\u8BE5\u4E66\u5DF2\u5B58\u5728");
-                return;
-            } else if ("NOTFOUND".equals(BookAdd2.getCode())) {
-                CustomSearchActivity.b(a);
+    /*
+     * Enabled aggressive block sorting
+     */
+    @Override
+    public final /* synthetic */ void a(Object object) {
+        BookAdd bookAdd = (BookAdd) object;
+        if (bookAdd == null) {
+            e.a((Activity) this.a, "\u641c\u7d22\u5931\u8d25\uff0c\u8bf7\u68c0\u67e5\u7f51\u7edc\u6216\u7a0d\u540e\u518d\u8bd5");
+            return;
+        }
+        if (bookAdd.isOk()) {
+            String string = bookAdd.getBook();
+            Intent intent = BookInfoActivity.a(this.a, string);
+            this.a.startActivity(intent);
+            return;
+        } else {
+            if ("EXISTS".equals(bookAdd.getCode())) {
+                e.a((Activity) this.a, "\u8be5\u4e66\u5df2\u5b58\u5728");
                 return;
             }
-        } else
-            e.a((Activity) a, "\u641C\u7D22\u5931\u8D25\uFF0C\u8BF7\u68C0\u67E5\u7F51\u7EDC\u6216\u7A0D\u540E\u518D\u8BD5");
+            if (!"NOTFOUND".equals(bookAdd.getCode())) return;
+            {
+                CustomSearchActivity.b(this.a);
+                return;
+            }
+        }
     }
 }

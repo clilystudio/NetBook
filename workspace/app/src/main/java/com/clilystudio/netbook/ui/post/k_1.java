@@ -1,35 +1,27 @@
 package com.clilystudio.netbook.ui.post;
 
-import android.app.Activity;
 import android.app.Dialog;
 import android.view.View;
-import android.view.View$OnClickListener;
 
-final class k implements View$OnClickListener {
+final class k
+        implements View.OnClickListener {
+    private /* synthetic */ Dialog a;
+    private /* synthetic */ String b;
+    private /* synthetic */ AddBookHelpActivity c;
 
-    private Dialog a;
-    private String b;
-    private AddBookHelpActivity c;
-    k(AddBookHelpActivity AddBookHelpActivity1, Dialog Dialog2, String String3) {
-        c = AddBookHelpActivity1;
-        a = Dialog2;
-        b = String3;
+    k(AddBookHelpActivity addBookHelpActivity, Dialog dialog, String string) {
+        this.c = addBookHelpActivity;
+        this.a = dialog;
+        this.b = string;
     }
 
-    public final void onClick(View View1) {
-        String String2;
-        String String3;
-        n n4;
-        String[] String_1darray5;
-
-        a.dismiss();
-        String2 = AddBookHelpActivity.c(c).getText().toString().trim();
-        String3 = AddBookHelpActivity.d(c).getText().toString().trim();
-        n4 = new n(c, (Activity) c, 2131034430);
-        String_1darray5 = new String[3];
-        String_1darray5[0] = b;
-        String_1darray5[1] = String2;
-        String_1darray5[2] = String3;
-        n4.b(String_1darray5);
+    @Override
+    public final void onClick(View view) {
+        this.a.dismiss();
+        String string = AddBookHelpActivity.c(this.c).getText().toString().trim();
+        String string2 = AddBookHelpActivity.d(this.c).getText().toString().trim();
+        n n2 = new n(this.c, this.c, 2131034430);
+        String[] arrstring = new String[]{this.b, string, string2};
+        n2.b(arrstring);
     }
 }

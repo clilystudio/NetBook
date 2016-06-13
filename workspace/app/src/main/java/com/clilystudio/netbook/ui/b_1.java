@@ -4,30 +4,35 @@ import android.graphics.Bitmap;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
-final class b extends WebViewClient {
+final class b
+        extends WebViewClient {
+    private /* synthetic */ AdWebViewActivity a;
 
-    private AdWebViewActivity a;
-
-    b(AdWebViewActivity AdWebViewActivity1) {
-        a = AdWebViewActivity1;
+    b(AdWebViewActivity adWebViewActivity) {
+        this.a = adWebViewActivity;
     }
 
-    public final void doUpdateVisitedHistory(WebView WebView1, String String2, boolean boolean3) {
-        AdWebViewActivity.b(a);
+    @Override
+    public final void doUpdateVisitedHistory(WebView webView, String string, boolean bl) {
+        AdWebViewActivity.b(this.a);
     }
 
-    public final void onPageFinished(WebView WebView1, String String2) {
-        AdWebViewActivity.d(a);
-        AdWebViewActivity.b(a);
+    @Override
+    public final void onPageFinished(WebView webView, String string) {
+        AdWebViewActivity.d(this.a);
+        AdWebViewActivity.b(this.a);
     }
 
-    public final void onPageStarted(WebView WebView1, String String2, Bitmap Bitmap3) {
-        AdWebViewActivity.c(a);
+    @Override
+    public final void onPageStarted(WebView webView, String string, Bitmap bitmap) {
+        AdWebViewActivity.c(this.a);
     }
 
-    public final boolean shouldOverrideUrlLoading(WebView WebView1, String String2) {
-        if (String2.startsWith("http:") || String2.startsWith("https:"))
-            WebView1.loadUrl(String2);
+    @Override
+    public final boolean shouldOverrideUrlLoading(WebView webView, String string) {
+        if (string.startsWith("http:") || string.startsWith("https:")) {
+            webView.loadUrl(string);
+        }
         return true;
     }
 }

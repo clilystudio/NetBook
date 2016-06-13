@@ -2,75 +2,70 @@ package com.clilystudio.netbook.widget;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import android.view.View;
-import android.view.ViewGroup$LayoutParams;
 import android.widget.RelativeLayout;
-import android.widget.RelativeLayout$LayoutParams;
 import android.widget.TextView;
 
 import com.clilystudio.netbook.ui.SmartImageView;
+import com.nostra13.universalimageloader.core.d.a;
 
-public class UserInfoPortraitView extends RelativeLayout {
-
-    private final float a = getResources().getDisplayMetrics().density;
-    private final float b = 80.0F * a;
+public class UserInfoPortraitView
+        extends RelativeLayout {
+    private final float a;
+    private final float b;
     private TextView c;
     private SmartImageView d;
     private ProgressView e;
-    public UserInfoPortraitView(Context Context1, AttributeSet AttributeSet2) {
-        super(Context1, AttributeSet2);
+
+    public UserInfoPortraitView(Context context, AttributeSet attributeSet) {
+        super(context, attributeSet);
+        this.a = this.getResources().getDisplayMetrics().density;
+        this.b = 80.0f * this.a;
     }
 
-    static SmartImageView a(UserInfoPortraitView UserInfoPortraitView1) {
-        return UserInfoPortraitView1.d;
+    static /* synthetic */ SmartImageView a(UserInfoPortraitView userInfoPortraitView) {
+        return userInfoPortraitView.d;
     }
 
+    @Override
     protected void onFinishInflate() {
-        Object Object1;
-        Object Object2;
-        Object Object3;
-        float float4;
-        Object Object5;
-        Object Object6;
-
         super.onFinishInflate();
-        Object1 = new RelativeLayout$LayoutParams((int) b, (int) b);
-        Object2 = new RelativeLayout(getContext());
-        ((RelativeLayout) Object2).setLayoutParams((ViewGroup$LayoutParams) Object1);
-        Object3 = new RelativeLayout$LayoutParams((int) b, (int) b);
-        e = new ProgressView(getContext());
-        e.setLayoutParams((ViewGroup$LayoutParams) Object3);
-        ((RelativeLayout) Object2).addView((View) e);
-        d = new SmartImageView(getContext());
-        float4 = b - 11.0F * a;
-        Object5 = new RelativeLayout$LayoutParams((int) float4, (int) float4);
-        ((RelativeLayout$LayoutParams) Object5).addRule(13);
-        d.setLayoutParams((ViewGroup$LayoutParams) Object5);
-        ((RelativeLayout) Object2).addView((View) d);
-        addView((View) Object2);
-        c = new TextView(getContext());
-        c.setBackgroundResource(2130837697);
-        c.setTextSize(12.0F);
-        c.setGravity(17);
-        c.setTextColor(getResources().getColor(17170443));
-        Object6 = new RelativeLayout$LayoutParams(-2, -2);
-        ((RelativeLayout$LayoutParams) Object6).addRule(14);
-        ((RelativeLayout$LayoutParams) Object6).addRule(12);
-        ((RelativeLayout$LayoutParams) Object6).setMargins(0, 0, 0, (int) (4.0F * a));
-        c.setLayoutParams((ViewGroup$LayoutParams) Object6);
-        addView((View) c);
+        RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams((int) this.b, (int) this.b);
+        RelativeLayout relativeLayout = new RelativeLayout(this.getContext());
+        relativeLayout.setLayoutParams(layoutParams);
+        RelativeLayout.LayoutParams layoutParams2 = new RelativeLayout.LayoutParams((int) this.b, (int) this.b);
+        this.e = new ProgressView(this.getContext());
+        this.e.setLayoutParams(layoutParams2);
+        relativeLayout.addView(this.e);
+        this.d = new SmartImageView(this.getContext());
+        float f = this.b - 11.0f * this.a;
+        RelativeLayout.LayoutParams layoutParams3 = new RelativeLayout.LayoutParams((int) f, (int) f);
+        layoutParams3.addRule(13);
+        this.d.setLayoutParams(layoutParams3);
+        relativeLayout.addView(this.d);
+        this.addView(relativeLayout);
+        this.c = new TextView(this.getContext());
+        this.c.setBackgroundResource(2130837697);
+        this.c.setTextSize(12.0f);
+        this.c.setGravity(17);
+        this.c.setTextColor(this.getResources().getColor(17170443));
+        RelativeLayout.LayoutParams layoutParams4 = new RelativeLayout.LayoutParams(-2, -2);
+        layoutParams4.addRule(14);
+        layoutParams4.addRule(12);
+        layoutParams4.setMargins(0, 0, 0, (int) (4.0f * this.a));
+        this.c.setLayoutParams(layoutParams4);
+        this.addView(this.c);
     }
 
-    public void setAvatar(String String1) {
-        f.a().a(String1, (com.nostra13.universalimageloader.core.d.a) new aD(this));
+    public void setAvatar(String string) {
+        f.a().a(string, (a) ((Object) new aD(this)));
     }
 
-    public void setExp(int int1) {
-        e.setMax(100);
-        e.setProgress((float) int1);
+    public void setExp(int n) {
+        this.e.setMax(100);
+        this.e.setProgress(n);
     }
 
-    public void setLv(int int1) {
-        c.setText((CharSequence) new StringBuilder("lv.").append(int1).toString());
+    public void setLv(int n) {
+        this.c.setText("lv." + n);
     }
 }

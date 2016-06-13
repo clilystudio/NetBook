@@ -1,10 +1,8 @@
 package com.clilystudio.netbook.ui.game;
 
-import android.content.Context;
 import android.support.v7.widget.ay;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View$OnClickListener;
 import android.view.ViewGroup;
 
 import com.clilystudio.netbook.model.GameLayoutRoot$ModuleLayout;
@@ -15,113 +13,122 @@ import com.clilystudio.netbook.widget.GameMicroItemSection;
 
 import java.util.List;
 
-final class GameMicroFragment$LayoutAdapter extends ah {
+final class GameMicroFragment$LayoutAdapter
+        extends ah {
+    final /* synthetic */ GameMicroFragment a;
 
-    GameMicroFragment a;     // final access specifier removed
-
-    GameMicroFragment$LayoutAdapter(GameMicroFragment GameMicroFragment1) {
-        a = GameMicroFragment1;
+    GameMicroFragment$LayoutAdapter(GameMicroFragment gameMicroFragment) {
+        this.a = gameMicroFragment;
     }
 
-    private GameLayoutRoot$ModuleLayout d(int int1) {
-        List List2 = GameMicroFragment.d(a);
-
-        if (GameMicroFragment.a(a) != null)
-            --int1;
-        return (GameLayoutRoot$ModuleLayout) List2.get(int1);
+    private GameLayoutRoot$ModuleLayout d(int n) {
+        List list = GameMicroFragment.d(this.a);
+        if (GameMicroFragment.a(this.a) != null) {
+            --n;
+        }
+        return (GameLayoutRoot$ModuleLayout) list.get(n);
     }
 
     public final int a() {
-        int int1;
-
-        if (GameMicroFragment.d(a) == null)
-            return 0;
-        int1 = GameMicroFragment.d(a).size();
-        if (GameMicroFragment.a(a) != null)
-            ++int1;
-        return int1;
-    }
-
-    public final int a(int int1) {
-        if (GameMicroFragment.a(a) != null && int1 == 0)
-            return 0;
-        else {
-            GameLayoutRoot$ModuleLayout ModuleLayout2 = d(int1);
-            ModuleType ModuleType3 = ModuleLayout2.getType();
-
-            if (ModuleType3 == ModuleType.GAME_GROUP)
-                return 1 + (ModuleLayout2.getGameGroup().getRowCount() << 4);
-            else if (ModuleType3 == ModuleType.ACTIVITY)
-                return 2;
-            else if (ModuleType3 == ModuleType.LOCAL)
-                return 3;
-            else
-                return -1;
+        if (GameMicroFragment.d(this.a) != null) {
+            int n = GameMicroFragment.d(this.a).size();
+            if (GameMicroFragment.a(this.a) != null) {
+                ++n;
+            }
+            return n;
         }
+        return 0;
     }
 
-    public final ay a(ViewGroup ViewGroup1, int int2) {
-        N N3 = com.clilystudio.netbook.hpay100.a.a.b(int2);
-        LayoutInflater LayoutInflater4 = LayoutInflater.from((Context) a.getActivity());
+    public final int a(int n) {
+        if (GameMicroFragment.a(this.a) != null && n == 0) {
+            return 0;
+        }
+        GameLayoutRoot$ModuleLayout gameLayoutRoot$ModuleLayout = this.d(n);
+        ModuleType moduleType = gameLayoutRoot$ModuleLayout.getType();
+        if (moduleType == ModuleType.GAME_GROUP) {
+            return 1 + (gameLayoutRoot$ModuleLayout.getGameGroup().getRowCount() << 4);
+        }
+        if (moduleType == ModuleType.ACTIVITY) {
+            return 2;
+        }
+        if (moduleType == ModuleType.LOCAL) {
+            return 3;
+        }
+        return -1;
+    }
 
-        switch (N3.a()) {
-            default:
+    /*
+     * Enabled force condition propagation
+     * Lifted jumps to return sites
+     */
+    public final ay a(ViewGroup viewGroup, int n) {
+        N n2 = a.b(n);
+        LayoutInflater layoutInflater = LayoutInflater.from(this.a.getActivity());
+        switch (n2.a()) {
+            default: {
                 return null;
-            case 0:
-                return (ay) new GameMicroFragment$LayoutAdapter$PromotionViewPager(this, LayoutInflater4.inflate(2130903225, ViewGroup1, false));
-            case 1:
-                GameMicroItemSection GameMicroItemSection6 = (GameMicroItemSection) LayoutInflater4.inflate(2130903247, ViewGroup1, false);
-
-                GameMicroItemSection6.a(N3.b());
-                return (ay) new ab(this, GameMicroItemSection6);
-            case 2:
-                return (ay) new Z(this, LayoutInflater4.inflate(2130903244, ViewGroup1, false));
+            }
+            case 0: {
+                return new GameMicroFragment$LayoutAdapter$PromotionViewPager(this, layoutInflater.inflate(2130903225, viewGroup, false));
+            }
+            case 1: {
+                GameMicroItemSection gameMicroItemSection = (GameMicroItemSection) layoutInflater.inflate(2130903247, viewGroup, false);
+                gameMicroItemSection.a(n2.b());
+                return new ab(this, gameMicroItemSection);
+            }
+            case 2: {
+                return new Z(this, layoutInflater.inflate(2130903244, viewGroup, false));
+            }
             case 3:
-                GameMicroItemSection GameMicroItemSection5 = (GameMicroItemSection) LayoutInflater4.inflate(2130903247, ViewGroup1, false);
-
-                if (GameMicroFragment.b(a) == 0)
-                    GameMicroItemSection5.a();
-                else
-                    GameMicroItemSection5.a(1);
-                return (ay) new ab(this, GameMicroItemSection5);
         }
+        GameMicroItemSection gameMicroItemSection = (GameMicroItemSection) layoutInflater.inflate(2130903247, viewGroup, false);
+        if (GameMicroFragment.b(this.a) == 0) {
+            gameMicroItemSection.a();
+            do {
+                return new ab(this, gameMicroItemSection);
+                break;
+            } while (true);
+        }
+        gameMicroItemSection.a(1);
+        return new ab(this, gameMicroItemSection);
     }
 
-    public final void a(ay ay1, int int2) {
-        switch (com.clilystudio.netbook.hpay100.a.a.b(a(int2)).a()) {
-            default:
+    public final void a(ay ay2, int n) {
+        switch (a.b(this.a(n)).a()) {
+            default: {
                 return;
-            case 0:
-                ((GameMicroFragment$LayoutAdapter$PromotionViewPager) ay1).q();
+            }
+            case 0: {
+                ((GameMicroFragment$LayoutAdapter$PromotionViewPager) ay2).q();
                 return;
-            case 1:
-                GameLayoutRoot$ModuleLayout ModuleLayout9 = d(int2);
-
-                ((GameMicroItemSection) ay1.a).a(ModuleLayout9);
-                ay1.a.findViewById(2131493432).setOnClickListener((View$OnClickListener) new X(this, ModuleLayout9));
+            }
+            case 1: {
+                GameLayoutRoot$ModuleLayout gameLayoutRoot$ModuleLayout = this.d(n);
+                ((GameMicroItemSection) ((Object) ay2.a)).a(gameLayoutRoot$ModuleLayout);
+                ay2.a.findViewById(2131493432).setOnClickListener(new X(this, gameLayoutRoot$ModuleLayout));
                 return;
-            case 2:
-                Z Z5 = (Z) ay1;
-                GameLayoutRoot$ModuleLayout ModuleLayout6 = d(int2);
-                SmartImageView SmartImageView7 = (SmartImageView) Z5.a.findViewById(2131493025);
-                GameLayoutRoot$ModuleLayout$ActivityItem ActivityItem8 = ModuleLayout6.getActivity();
-
-                SmartImageView7.setImageUrl(ActivityItem8.getBannerImage());
-                SmartImageView7.setOnClickListener((View$OnClickListener) new aa(Z5, ActivityItem8));
+            }
+            case 2: {
+                Z z = (Z) ay2;
+                GameLayoutRoot$ModuleLayout gameLayoutRoot$ModuleLayout = this.d(n);
+                SmartImageView smartImageView = (SmartImageView) z.a.findViewById(2131493025);
+                GameLayoutRoot$ModuleLayout$ActivityItem gameLayoutRoot$ModuleLayout$ActivityItem = gameLayoutRoot$ModuleLayout.getActivity();
+                smartImageView.setImageUrl(gameLayoutRoot$ModuleLayout$ActivityItem.getBannerImage());
+                smartImageView.setOnClickListener(new aa(z, gameLayoutRoot$ModuleLayout$ActivityItem));
                 return;
+            }
             case 3:
-                GameMicroItemSection GameMicroItemSection3 = (GameMicroItemSection) ay1.a;
-                View View4;
-
-                GameMicroItemSection3.setHasPlayed(true);
-                GameMicroItemSection3.a(GameMicroFragment.c(a));
-                View4 = ay1.a.findViewById(2131493432);
-                if (GameMicroFragment.b(a) > 3) {
-                    View4.setVisibility(0);
-                    View4.setOnClickListener((View$OnClickListener) new Y(this));
-                } else
-                    View4.setVisibility(8);
-                return;
         }
+        GameMicroItemSection gameMicroItemSection = (GameMicroItemSection) ((Object) ay2.a);
+        gameMicroItemSection.setHasPlayed(true);
+        gameMicroItemSection.a(GameMicroFragment.c(this.a));
+        View view = ay2.a.findViewById(2131493432);
+        if (GameMicroFragment.b(this.a) > 3) {
+            view.setVisibility(0);
+            view.setOnClickListener(new Y(this));
+            return;
+        }
+        view.setVisibility(8);
     }
 }

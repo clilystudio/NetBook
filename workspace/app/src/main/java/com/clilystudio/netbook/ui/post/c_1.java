@@ -1,21 +1,22 @@
 package com.clilystudio.netbook.ui.post;
 
-import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 
-final class c implements Runnable {
+final class c
+        implements Runnable {
+    private /* synthetic */ EditText a;
+    private /* synthetic */ AbsPostActivity b;
 
-    private EditText a;
-    private AbsPostActivity b;
-    c(AbsPostActivity AbsPostActivity1, EditText EditText2) {
-        b = AbsPostActivity1;
-        a = EditText2;
+    c(AbsPostActivity absPostActivity, EditText editText) {
+        this.b = absPostActivity;
+        this.a = editText;
     }
 
+    @Override
     public final void run() {
-        b.getWindow().setSoftInputMode(5);
-        a.requestFocus();
-        ((InputMethodManager) b.getSystemService("input_method")).showSoftInput((View) a, 1);
+        this.b.getWindow().setSoftInputMode(5);
+        this.a.requestFocus();
+        ((InputMethodManager) this.b.getSystemService("input_method")).showSoftInput(this.a, 1);
     }
 }

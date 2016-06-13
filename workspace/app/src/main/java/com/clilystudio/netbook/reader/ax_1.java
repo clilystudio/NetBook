@@ -1,29 +1,33 @@
 package com.clilystudio.netbook.reader;
 
-final class ax implements com.umeng.update.a {
+final class ax
+        implements a {
+    private /* synthetic */ ReaderActivity a;
 
-    private ReaderActivity a;
-
-    ax(ReaderActivity ReaderActivity1) {
-        a = ReaderActivity1;
+    ax(ReaderActivity readerActivity) {
+        this.a = readerActivity;
     }
 
-    public final void a(int int1) {
-        switch (int1) {
-            default:
+    @Override
+    public final void a(int n2) {
+        switch (n2) {
+            default: {
                 return;
-            case 1:
-                if (ReaderActivity.T(a).e())
-                    ReaderActivity.U(a);
-                else
-                    ReaderActivity.V(a);
+            }
+            case 1: {
+                if (ReaderActivity.T(this.a).e()) {
+                    ReaderActivity.U(this.a);
+                    return;
+                }
+                ReaderActivity.V(this.a);
                 return;
-            case 2:
-                ReaderActivity.U(a);
+            }
+            case 2: {
+                ReaderActivity.U(this.a);
                 return;
+            }
             case 0:
-                ReaderActivity.W(a);
-                return;
         }
+        ReaderActivity.W(this.a);
     }
 }

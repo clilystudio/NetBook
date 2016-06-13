@@ -5,21 +5,22 @@ import com.clilystudio.netbook.reader.txt.U;
 
 import java.io.FileNotFoundException;
 
-final class u extends Thread {
+final class u
+        extends Thread {
+    private /* synthetic */ String a;
 
-    private String a;
-
-    u(HomeShelfFragment HomeShelfFragment1, String String2) {
-        a = String2;
+    u(HomeShelfFragment homeShelfFragment, String string) {
+        this.a = string;
     }
 
+    @Override
     public final void run() {
         try {
-            String String2 = U.b(a);
-
-            com.clilystudio.netbook.hpay100.a.a.F(new StringBuilder().append(c.d).append(String2).toString());
-        } catch (FileNotFoundException FileNotFoundException1) {
-            FileNotFoundException1.printStackTrace();
+            String string = U.b(this.a);
+            a.F(c.d + string);
+            return;
+        } catch (FileNotFoundException var1_2) {
+            var1_2.printStackTrace();
             return;
         }
     }

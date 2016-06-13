@@ -2,19 +2,19 @@ package com.clilystudio.netbook.ui.ugcbook;
 
 import android.support.v7.widget.ay;
 import android.view.View;
-import android.view.View$OnClickListener;
 import android.widget.TextView;
 
-public final class an extends ay {
-
+public final class an
+        extends ay {
+    final /* synthetic */ ak k;
     TextView i;
     String j;
-    ak k;     // final access specifier removed
-    public an(ak ak1, View View2) {
-        super(View2);
-        k = ak1;
-        i = (TextView) View2.findViewById(2131494012);
-        View2.findViewById(2131494011);
-        View2.setOnClickListener((View$OnClickListener) new ao(this, ak1));
+
+    public an(ak ak2, View view) {
+        this.k = ak2;
+        super(view);
+        this.i = (TextView) view.findViewById(2131494012);
+        view.findViewById(2131494011);
+        view.setOnClickListener(new ao(this, ak2));
     }
 }

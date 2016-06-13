@@ -2,8 +2,8 @@ package com.clilystudio.netbook.model;
 
 import java.io.Serializable;
 
-public class Chapter implements Serializable {
-
+public class Chapter
+        implements Serializable {
     private static final long serialVersionUID = -7332522845657326368L;
     protected String link;
     private String body;
@@ -14,61 +14,61 @@ public class Chapter implements Serializable {
     private boolean isVip;
 
     public String getBody() {
-        return body;
+        return this.body;
     }
 
-    public void setBody(String String1) {
-        body = String1;
+    public void setBody(String string) {
+        this.body = string;
     }
 
     public String getContent() {
-        if (cpContent != null)
-            return cpContent;
-        else
-            return content;
+        if (this.cpContent != null) {
+            return this.cpContent;
+        }
+        return this.content;
     }
 
-    public void setContent(String String1) {
-        content = String1;
+    public void setContent(String string) {
+        this.content = string;
     }
 
     public String getCpContent() {
-        return cpContent;
+        return this.cpContent;
     }
 
-    public void setCpContent(String String1) {
-        cpContent = String1;
+    public void setCpContent(String string) {
+        this.cpContent = string;
     }
 
     public int getCurrency() {
-        return currency;
+        return this.currency;
     }
 
-    public void setCurrency(int int1) {
-        currency = int1;
+    public void setCurrency(int n) {
+        this.currency = n;
     }
 
     public String getId() {
-        return id;
+        return this.id;
     }
 
-    public void setId(String String1) {
-        id = String1;
+    public void setId(String string) {
+        this.id = string;
     }
 
     public String getLink() {
-        return link;
+        return this.link;
     }
 
-    public void setLink(String String1) {
-        link = String1;
+    public void setLink(String string) {
+        this.link = string;
     }
 
     public boolean isVip() {
-        return isVip;
+        return this.isVip;
     }
 
-    public void setIsVip(boolean boolean1) {
-        isVip = boolean1;
+    public void setIsVip(boolean bl) {
+        this.isVip = bl;
     }
 }

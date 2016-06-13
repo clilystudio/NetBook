@@ -8,34 +8,34 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 import butterknife.ButterKnife;
+import butterknife.InjectView;
 
-public class RelateUgcFragment extends Fragment {
-
+public class RelateUgcFragment
+        extends Fragment {
+    @InjectView(value = 2131493464)
     LinearLayout mRelateUgcRoot;
+    @InjectView(value = 2131493465)
     LinearLayout mUgcContainer;
 
-    public static RelateUgcFragment a(String String1) {
-        RelateUgcFragment RelateUgcFragment2 = new RelateUgcFragment();
-        Bundle Bundle3 = new Bundle();
-
-        Bundle3.putString("book_id", String1);
-        RelateUgcFragment2.setArguments(Bundle3);
-        return RelateUgcFragment2;
+    public static RelateUgcFragment a(String string) {
+        RelateUgcFragment relateUgcFragment = new RelateUgcFragment();
+        Bundle bundle = new Bundle();
+        bundle.putString("book_id", string);
+        relateUgcFragment.setArguments(bundle);
+        return relateUgcFragment;
     }
 
-    public View onCreateView(LayoutInflater LayoutInflater1, ViewGroup ViewGroup2, Bundle Bundle3) {
-        return LayoutInflater1.inflate(2130903218, ViewGroup2, false);
+    @Override
+    public View onCreateView(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
+        return layoutInflater.inflate(2130903218, viewGroup, false);
     }
 
-    public void onViewCreated(View View1, Bundle Bundle2) {
-        RelateUgcFragment$GetUgcsTask GetUgcsTask3;
-        String[] String_1darray4;
-
-        super.onViewCreated(View1, Bundle2);
-        ButterKnife.inject(this, getView());
-        GetUgcsTask3 = new RelateUgcFragment$GetUgcsTask(this);
-        String_1darray4 = new String[1];
-        String_1darray4[0] = getArguments().getString("book_id");
-        GetUgcsTask3.b(String_1darray4);
+    @Override
+    public void onViewCreated(View view, Bundle bundle) {
+        super.onViewCreated(view, bundle);
+        ButterKnife.inject((Object) this, this.getView());
+        RelateUgcFragment$GetUgcsTask relateUgcFragment$GetUgcsTask = new RelateUgcFragment$GetUgcsTask(this);
+        String[] arrstring = new String[]{this.getArguments().getString("book_id")};
+        relateUgcFragment$GetUgcsTask.b(arrstring);
     }
 }

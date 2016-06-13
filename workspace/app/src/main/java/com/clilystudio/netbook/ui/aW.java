@@ -2,57 +2,72 @@ package com.clilystudio.netbook.ui;
 
 import android.app.Activity;
 
+import com.clilystudio.netbook.api.b;
+import com.clilystudio.netbook.model.BookSummary;
 import com.clilystudio.netbook.model.BookTagRoot;
+import com.clilystudio.netbook.util.e;
 
 import java.io.IOException;
-import java.util.Collection;
+import java.util.Arrays;
 import java.util.List;
 
-final class aW extends com.clilystudio.netbook.a.e {
+final class aW
+        extends com.clilystudio.netbook.a.e<String, Void, List<BookSummary>> {
+    private /* synthetic */ BookTagListActivity a;
 
-    private BookTagListActivity a;
-
-    aW(BookTagListActivity BookTagListActivity1, byte byte2) {
-        this(BookTagListActivity1);
+    private aW(BookTagListActivity bookTagListActivity) {
+        this.a = bookTagListActivity;
     }
 
-    private aW(BookTagListActivity BookTagListActivity1) {
-        a = BookTagListActivity1;
+    /* synthetic */ aW(BookTagListActivity bookTagListActivity, byte by) {
+        this(bookTagListActivity);
     }
 
-    private transient List a() {
+    /*
+     * Enabled force condition propagation
+     * Lifted jumps to return sites
+     */
+    private /* varargs */ List<BookSummary> a() {
+        BookTagRoot bookTagRoot = b.b().c(BookTagListActivity.b(this.a), BookTagListActivity.a(this.a).size(), 50);
+        if (bookTagRoot == null) return null;
         try {
-            BookTagRoot BookTagRoot2 = com.clilystudio.netbook.api.b.b().c(BookTagListActivity.b(a), BookTagListActivity.a(a).size(), 50);
-        } catch (IOException IOException1) {
-            IOException1.printStackTrace();
+            if (bookTagRoot.getBooks() == null) return null;
+            return Arrays.asList(bookTagRoot.getBooks());
+        } catch (IOException var1_3) {
+            var1_3.printStackTrace();
         }
         return null;
     }
 
-    protected final Object doInBackground(Object[] Object_1darray1) {
-        return a();
+    /*
+     * Exception decompiling
+     */
+    @Override
+    protected final /* synthetic */ Object doInBackground(Object[] var1_1) {
+        // This method has failed to decompile.  When submitting a bug report, please provide this stack trace, and (if you hold appropriate legal rights) the relevant class file.
+        // java.lang.ArrayIndexOutOfBoundsException
+        throw new IllegalStateException("Decompilation failed");
     }
 
-    protected final void onPostExecute(Object Object1) {
-        Object Object2 = (List) Object1;
-
-        super.onPostExecute(Object2);
-        BookTagListActivity.c(a).setVisibility(8);
-        if (Object2 != null) {
-            int int3;
-
-            a.f();
-            int3 = ((List) Object2).size();
-            if (int3 > 0) {
-                BookTagListActivity.a(a).addAll((Collection) Object2);
-                BookTagListActivity.d(a).a((Collection) BookTagListActivity.a(a));
-                if (int3 >= 50) {
-                    BookTagListActivity.e(a).setOnLastItemListener(BookTagListActivity.f(a));
+    @Override
+    protected final /* synthetic */ void onPostExecute(Object object) {
+        List list = (List) object;
+        super.onPostExecute(list);
+        BookTagListActivity.c(this.a).setVisibility(8);
+        if (list != null) {
+            this.a.f();
+            int n = list.size();
+            if (n > 0) {
+                BookTagListActivity.a(this.a).addAll(list);
+                BookTagListActivity.d(this.a).a(BookTagListActivity.a(this.a));
+                if (n >= 50) {
+                    BookTagListActivity.e(this.a).setOnLastItemListener(BookTagListActivity.f(this.a));
                     return;
                 }
             }
-            BookTagListActivity.e(a).setOnLastItemListener(null);
-        } else
-            com.clilystudio.netbook.util.e.a((Activity) a, "\u52A0\u8F7D\u5931\u8D25\uFF0C\u8BF7\u68C0\u67E5\u7F51\u7EDC\u6216\u7A0D\u540E\u518D\u8BD5");
+            BookTagListActivity.e(this.a).setOnLastItemListener(null);
+            return;
+        }
+        e.a((Activity) this.a, (String) "\u52a0\u8f7d\u5931\u8d25\uff0c\u8bf7\u68c0\u67e5\u7f51\u7edc\u6216\u7a0d\u540e\u518d\u8bd5");
     }
 }

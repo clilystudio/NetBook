@@ -1,20 +1,20 @@
 package com.clilystudio.netbook.ui.home;
 
-final class k implements com.umeng.update.a {
+final class k
+        implements a {
+    private /* synthetic */ HomeParentActivity a;
 
-    private HomeParentActivity a;
-
-    k(HomeParentActivity HomeParentActivity1) {
-        a = HomeParentActivity1;
+    k(HomeParentActivity homeParentActivity) {
+        this.a = homeParentActivity;
     }
 
-    public final void a(int int1) {
-        switch (int1) {
-            default:
-                a.finish();
-                break;
+    @Override
+    public final void a(int n) {
+        switch (n) {
+            default: {
+                this.a.finish();
+            }
             case 5:
-                break;
         }
     }
 }

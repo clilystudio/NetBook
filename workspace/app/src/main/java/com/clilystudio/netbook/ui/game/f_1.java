@@ -1,17 +1,17 @@
 package com.clilystudio.netbook.ui.game;
 
 import android.view.View;
-import android.view.View$OnClickListener;
 
-final class f implements View$OnClickListener {
+final class f
+        implements View.OnClickListener {
+    private /* synthetic */ GameDetailActivity a;
 
-    private GameDetailActivity a;
-
-    f(GameDetailActivity GameDetailActivity1) {
-        a = GameDetailActivity1;
+    f(GameDetailActivity gameDetailActivity) {
+        this.a = gameDetailActivity;
     }
 
-    public final void onClick(View View1) {
-        GameDetailActivity.d(a);
+    @Override
+    public final void onClick(View view) {
+        GameDetailActivity.d(this.a);
     }
 }

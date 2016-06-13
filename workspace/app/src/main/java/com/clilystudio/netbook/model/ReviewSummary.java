@@ -3,7 +3,6 @@ package com.clilystudio.netbook.model;
 import java.util.Date;
 
 public class ReviewSummary {
-
     private String _id;
     private ReviewBook book;
     private Date created;
@@ -12,57 +11,57 @@ public class ReviewSummary {
     private String title;
 
     public ReviewBook getBook() {
-        if (book == null) {
-            book = new ReviewBook();
-            book.set_id("");
-            book.setTitle("\u8BE5\u4E66\u4E0D\u5B58\u5728");
-            book.setCover("");
-            book.setType("");
+        if (this.book == null) {
+            this.book = new ReviewBook();
+            this.book.set_id("");
+            this.book.setTitle("\u8be5\u4e66\u4e0d\u5b58\u5728");
+            this.book.setCover("");
+            this.book.setType("");
         }
-        return book;
+        return this.book;
     }
 
-    public void setBook(ReviewBook ReviewBook1) {
-        book = ReviewBook1;
+    public void setBook(ReviewBook reviewBook) {
+        this.book = reviewBook;
     }
 
     public Date getCreated() {
-        return created;
+        return this.created;
     }
 
-    public void setCreated(Date Date1) {
-        created = Date1;
+    public void setCreated(Date date) {
+        this.created = date;
     }
 
     public ReviewHelpful getHelpful() {
-        return helpful;
+        return this.helpful;
     }
 
-    public void setHelpful(ReviewHelpful ReviewHelpful1) {
-        helpful = ReviewHelpful1;
+    public void setHelpful(ReviewHelpful reviewHelpful) {
+        this.helpful = reviewHelpful;
     }
 
     public String getState() {
-        return state;
+        return this.state;
     }
 
-    public void setState(String String1) {
-        state = String1;
+    public void setState(String string) {
+        this.state = string;
     }
 
     public String getTitle() {
-        return title;
+        return this.title;
     }
 
-    public void setTitle(String String1) {
-        title = String1;
+    public void setTitle(String string) {
+        this.title = string;
     }
 
     public String get_id() {
-        return _id;
+        return this._id;
     }
 
-    public void set_id(String String1) {
-        _id = String1;
+    public void set_id(String string) {
+        this._id = string;
     }
 }

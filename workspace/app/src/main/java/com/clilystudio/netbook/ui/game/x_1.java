@@ -4,29 +4,32 @@ import android.app.Activity;
 import android.content.Context;
 import android.support.design.widget.am;
 import android.view.View;
-import android.view.View$OnClickListener;
 
 import com.clilystudio.netbook.util.e;
+import com.clilystudio.netbook.view.a;
 
-final class x implements View$OnClickListener {
+final class x
+        implements View.OnClickListener {
+    private /* synthetic */ a a;
+    private /* synthetic */ String b;
+    private /* synthetic */ GameGiftListActivity c;
 
-    private com.clilystudio.netbook.view.a a;
-    private String b;
-    private GameGiftListActivity c;
-    x(GameGiftListActivity GameGiftListActivity1, com.clilystudio.netbook.view.a a2, String String3) {
-        c = GameGiftListActivity1;
-        a = a2;
-        b = String3;
+    x(GameGiftListActivity gameGiftListActivity, a a2, String string) {
+        this.c = gameGiftListActivity;
+        this.a = a2;
+        this.b = string;
     }
 
-    public final void onClick(View View1) {
-        a.dismiss();
-        am.a((Context) c, b);
-        e.a((Activity) c, "\u5DF2\u590D\u5236");
-        if (GameGiftListActivity.b(c)) {
-            am.a((Context) c, GameGiftListActivity.c(c).game);
-            com.umeng.a.b.a((Context) c, "micro_game_play_click", GameGiftListActivity.c(c).game.getName());
-        } else
-            am.d((Context) c, GameGiftListActivity.c(c).game.getAndroidPackageName());
+    @Override
+    public final void onClick(View view) {
+        this.a.dismiss();
+        am.a((Context) this.c, this.b);
+        e.a((Activity) this.c, "\u5df2\u590d\u5236");
+        if (GameGiftListActivity.b(this.c)) {
+            am.a((Context) this.c, GameGiftListActivity.c((GameGiftListActivity) this.c).game);
+            b.a(this.c, "micro_game_play_click", GameGiftListActivity.c((GameGiftListActivity) this.c).game.getName());
+            return;
+        }
+        am.d(this.c, GameGiftListActivity.c((GameGiftListActivity) this.c).game.getAndroidPackageName());
     }
 }

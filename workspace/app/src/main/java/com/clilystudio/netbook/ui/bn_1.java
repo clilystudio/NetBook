@@ -4,15 +4,16 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 
-final class bn extends BroadcastReceiver {
+final class bn
+        extends BroadcastReceiver {
+    private /* synthetic */ MysteryActivity a;
 
-    private MysteryActivity a;
-
-    bn(MysteryActivity MysteryActivity1) {
-        a = MysteryActivity1;
+    bn(MysteryActivity mysteryActivity) {
+        this.a = mysteryActivity;
     }
 
-    public final void onReceive(Context Context1, Intent Intent2) {
-        MysteryActivity.a(a);
+    @Override
+    public final void onReceive(Context context, Intent intent) {
+        MysteryActivity.a(this.a);
     }
 }

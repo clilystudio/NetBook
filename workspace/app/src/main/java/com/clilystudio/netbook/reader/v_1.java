@@ -2,21 +2,21 @@ package com.clilystudio.netbook.reader;
 
 import android.os.Handler;
 import android.view.View;
-import android.view.View$OnClickListener;
 
 import com.clilystudio.netbook.util.p;
 
-final class v implements View$OnClickListener {
+final class v
+        implements View.OnClickListener {
+    final /* synthetic */ o a;
 
-    o a;     // final access specifier removed
-
-    v(o o1) {
-        a = o1;
+    v(o o2) {
+        this.a = o2;
     }
 
-    public final void onClick(View View1) {
-        o.a(a, false);
-        new p(o.a(a)).a();
-        new Handler().postDelayed((Runnable) new w(this), 2000L);
+    @Override
+    public final void onClick(View view) {
+        o.a(this.a, false);
+        new p(o.a(this.a)).a();
+        new Handler().postDelayed(new w(this), 2000);
     }
 }

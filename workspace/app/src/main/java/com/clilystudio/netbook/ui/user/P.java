@@ -1,22 +1,23 @@
 package com.clilystudio.netbook.ui.user;
 
 import android.widget.AbsListView;
-import android.widget.AbsListView$OnScrollListener;
 
-final class P implements AbsListView$OnScrollListener {
+final class P
+        implements AbsListView.OnScrollListener {
+    private /* synthetic */ PayConsumeActivity a;
 
-    private PayConsumeActivity a;
-
-    P(PayConsumeActivity PayConsumeActivity1) {
-        a = PayConsumeActivity1;
+    P(PayConsumeActivity payConsumeActivity) {
+        this.a = payConsumeActivity;
     }
 
-    public final void onScroll(AbsListView AbsListView1, int int2, int int3, int int4) {
-        PayConsumeActivity.a(a).onScroll(AbsListView1, int2, int3, int4);
-        PayConsumeActivity.b(a).removeView(null);
+    @Override
+    public final void onScroll(AbsListView absListView, int n, int n2, int n3) {
+        PayConsumeActivity.a(this.a).onScroll(absListView, n, n2, n3);
+        PayConsumeActivity.b(this.a).removeView(null);
     }
 
-    public final void onScrollStateChanged(AbsListView AbsListView1, int int2) {
-        PayConsumeActivity.a(a).onScrollStateChanged(AbsListView1, int2);
+    @Override
+    public final void onScrollStateChanged(AbsListView absListView, int n) {
+        PayConsumeActivity.a(this.a).onScrollStateChanged(absListView, n);
     }
 }

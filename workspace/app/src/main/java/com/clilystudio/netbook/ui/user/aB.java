@@ -1,25 +1,22 @@
 package com.clilystudio.netbook.ui.user;
 
-import android.content.Context;
 import android.content.Intent;
 import android.view.View;
-import android.view.View$OnClickListener;
 
 import com.clilystudio.netbook.ui.ShareRemoveAdActivity;
-import com.umeng.a.b;
 
-final class aB implements View$OnClickListener {
+final class aB
+        implements View.OnClickListener {
+    private /* synthetic */ UserInfoActivity a;
 
-    private UserInfoActivity a;
-
-    aB(UserInfoActivity UserInfoActivity1) {
-        a = UserInfoActivity1;
+    aB(UserInfoActivity userInfoActivity) {
+        this.a = userInfoActivity;
     }
 
-    public final void onClick(View View1) {
-        Intent Intent2 = ShareRemoveAdActivity.a((Context) a, "userInfo");
-
-        a.startActivity(Intent2);
-        b.a((Context) a, "share_remove_entrance_click", "userInfo");
+    @Override
+    public final void onClick(View view) {
+        Intent intent = ShareRemoveAdActivity.a(this.a, "userInfo");
+        this.a.startActivity(intent);
+        b.a(this.a, "share_remove_entrance_click", "userInfo");
     }
 }

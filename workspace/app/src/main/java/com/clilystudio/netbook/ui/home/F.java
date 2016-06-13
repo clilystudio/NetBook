@@ -1,14 +1,15 @@
 package com.clilystudio.netbook.ui.home;
 
-final class F implements Runnable {
+final class F
+        implements Runnable {
+    private /* synthetic */ E a;
 
-    private E a;
-
-    F(E E1) {
-        a = E1;
+    F(E e) {
+        this.a = e;
     }
 
+    @Override
     public final void run() {
-        HomeShelfFragment.f(a.a);
+        HomeShelfFragment.f(this.a.a);
     }
 }

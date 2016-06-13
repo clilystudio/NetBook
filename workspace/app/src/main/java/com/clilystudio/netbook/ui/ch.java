@@ -6,47 +6,48 @@ import android.support.v4.app.FragmentTransaction;
 
 import com.clilystudio.netbook.ui.home.ZssqFragmentPagerAdapter;
 
-final class ch extends ZssqFragmentPagerAdapter {
+final class ch
+        extends ZssqFragmentPagerAdapter {
+    private /* synthetic */ SimpleTabActivity a;
 
-    private SimpleTabActivity a;
-
-    public ch(SimpleTabActivity SimpleTabActivity1, FragmentManager FragmentManager2) {
-        super(FragmentManager2);
-        FragmentTransaction FragmentTransaction5;
-        int int4;
-        int int3;
-
-        int3 = 0;
-        a = SimpleTabActivity1;
-        for (int4 = 0; int4 < SimpleTabActivity1.b; ++int4)
-            SimpleTabActivity.a(SimpleTabActivity1).add(int4, SimpleTabActivity1.e(int4));
-        FragmentTransaction5 = FragmentManager2.beginTransaction();
-        while (int3 < SimpleTabActivity1.b) {
-            Fragment Fragment8 = (Fragment) SimpleTabActivity.a(SimpleTabActivity1).get(int3);
-
-            if (!Fragment8.isAdded())
-                FragmentTransaction5.add(SimpleTabActivity.b(SimpleTabActivity1).getId(), Fragment8, SimpleTabActivity1.c[int3]);
-            ++int3;
+    public ch(SimpleTabActivity simpleTabActivity, FragmentManager fragmentManager) {
+        int n = 0;
+        this.a = simpleTabActivity;
+        super(fragmentManager);
+        for (int i = 0; i < simpleTabActivity.b; ++i) {
+            SimpleTabActivity.a(simpleTabActivity).add(i, simpleTabActivity.e(i));
         }
-        if (!FragmentTransaction5.isEmpty()) {
-            FragmentTransaction5.commit();
-            FragmentManager2.executePendingTransactions();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        while (n < simpleTabActivity.b) {
+            Fragment fragment = (Fragment) SimpleTabActivity.a(simpleTabActivity).get(n);
+            if (!fragment.isAdded()) {
+                fragmentTransaction.add(SimpleTabActivity.b(simpleTabActivity).getId(), fragment, simpleTabActivity.c[n]);
+            }
+            ++n;
+        }
+        if (!fragmentTransaction.isEmpty()) {
+            fragmentTransaction.commit();
+            fragmentManager.executePendingTransactions();
         }
     }
 
-    public final Fragment a(int int1) {
-        return (Fragment) SimpleTabActivity.a(a).get(int1);
+    @Override
+    public final Fragment a(int n) {
+        return (Fragment) SimpleTabActivity.a(this.a).get(n);
     }
 
-    protected final String b(int int1) {
-        return a.c[int1];
+    @Override
+    protected final String b(int n) {
+        return this.a.c[n];
     }
 
+    @Override
     public final int getCount() {
-        return a.b;
+        return this.a.b;
     }
 
-    public final CharSequence getPageTitle(int int1) {
-        return (CharSequence) a.getResources().getStringArray(2131361798)[int1];
+    @Override
+    public final CharSequence getPageTitle(int n) {
+        return this.a.getResources().getStringArray(2131361798)[n];
     }
 }

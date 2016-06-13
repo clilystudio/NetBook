@@ -3,128 +3,115 @@ package com.clilystudio.netbook.ui;
 import android.content.Context;
 import android.content.Intent;
 
+import com.clilystudio.netbook.d;
 import com.clilystudio.netbook.model.BookRankDetail;
 import com.clilystudio.netbook.model.BookSummary;
 import com.clilystudio.netbook.model.RelateBookRoot;
 import com.clilystudio.netbook.reader.cM;
 import com.clilystudio.netbook.reader.cQ;
 
+import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
 
-public class RelateBookListActivity extends BookListActivity implements cQ {
-
-    private int c;
+public class RelateBookListActivity
+        extends BookListActivity
+        implements cQ {
     private boolean b = false;
-// Error: Internal #201: 
-// The following method may not be correct.
+    private int c;
 
-    public static Intent a(Context Context1, RelateBookRoot RelateBookRoot2, String String3, String String4) {
-    }
-// Error: Internal #201: 
-// The following method may not be correct.
-
-    public static Intent a(Context Context1, RelateBookRoot RelateBookRoot2, String String3, boolean boolean4) {
+    public static Intent a(Context context, RelateBookRoot relateBookRoot, String string, String string2) {
+        return new d().a(context, RelateBookListActivity.class).a("RelateBookRoot", (Serializable) null).a("book_list_title", string).a("bookId", string2).a("entrancePosition", 2).a();
     }
 
-    private void a(RelateBookRoot RelateBookRoot1) {
-        List List2;
-        Object Object3;
-        Iterator Iterator4;
+    public static Intent a(Context context, RelateBookRoot relateBookRoot, String string, boolean bl) {
+        return new d().a(context, RelateBookListActivity.class).a("RelateBookRoot", relateBookRoot).a("book_list_title", string).a("entrancePosition", 1).a("IS_BFD_RECOMMEND", Boolean.valueOf(bl)).a();
+    }
 
-        e(1);
-        List2 = RelateBookRoot1.getBooks();
-        Object3 = new ArrayList();
-        Iterator4 = List2.iterator();
-        while (Iterator4.hasNext()) {
-            BookSummary BookSummary5 = (BookSummary) Iterator4.next();
-            Object Object6 = new BookRankDetail();
-
-            ((BookRankDetail) Object6).set_id(BookSummary5.getId());
-            ((BookRankDetail) Object6).setAuthor(BookSummary5.getAuthor());
-            ((BookRankDetail) Object6).setCover(BookSummary5.getCover());
-            ((BookRankDetail) Object6).setLatelyFollower(BookSummary5.getLatelyFollower());
-            ((BookRankDetail) Object6).setRetentionRatio(String.valueOf(BookSummary5.getRetentionRatio()));
-            ((BookRankDetail) Object6).setShortIntro(BookSummary5.getShortIntro());
-            ((BookRankDetail) Object6).setTitle(BookSummary5.getTitle());
-            ((BookRankDetail) Object6).setCat(BookSummary5.getCat());
-            ((List) Object3).add(Object6);
+    private void a(RelateBookRoot relateBookRoot) {
+        this.e(1);
+        List<BookSummary> list = relateBookRoot.getBooks();
+        ArrayList<BookRankDetail> arrayList = new ArrayList<BookRankDetail>();
+        for (BookSummary bookSummary : list) {
+            BookRankDetail bookRankDetail = new BookRankDetail();
+            bookRankDetail.set_id(bookSummary.getId());
+            bookRankDetail.setAuthor(bookSummary.getAuthor());
+            bookRankDetail.setCover(bookSummary.getCover());
+            bookRankDetail.setLatelyFollower(bookSummary.getLatelyFollower());
+            bookRankDetail.setRetentionRatio(String.valueOf(bookSummary.getRetentionRatio()));
+            bookRankDetail.setShortIntro(bookSummary.getShortIntro());
+            bookRankDetail.setTitle(bookSummary.getTitle());
+            bookRankDetail.setCat(bookSummary.getCat());
+            arrayList.add(bookRankDetail);
         }
-        a.a((Collection) Object3);
+        this.a.a(arrayList);
     }
 
-    protected final void a(int int1) {
-        int int2 = 1;
-
-        if (int1 >= 0 && int1 < a.getCount()) {
-            BookRankDetail BookRankDetail3 = (BookRankDetail) a.getItem(int1);
-
-            if (b) {
-                com.clilystudio.netbook.hpay100.a.a.c((Context) this, BookRankDetail3.get_id(), "rec_C6613205_93B6_61A6_9FEC_180B70F91B94");
-                if (c == int2) {
-                    com.umeng.a.b.a((Context) this, "book_info_recommend_click", "bfd");
-                    int2 = 3;
+    /*
+     * Enabled aggressive block sorting
+     */
+    @Override
+    protected final void a(int n) {
+        int n2 = 1;
+        if (n < 0) return;
+        if (n < this.a.getCount()) {
+            BookRankDetail bookRankDetail = (BookRankDetail) this.a.getItem(n);
+            if (this.b) {
+                a.c((Context) this, bookRankDetail.get_id(), "rec_C6613205_93B6_61A6_9FEC_180B70F91B94");
+                if (this.c == n2) {
+                    b.a(this, "book_info_recommend_click", "bfd");
+                    n2 = 3;
                 } else {
-                    com.umeng.a.b.a((Context) this, "page_footing_recommend_click", "bfd");
-                    int2 = 4;
+                    b.a(this, "page_footing_recommend_click", "bfd");
+                    n2 = 4;
                 }
-            } else if (c == int2)
-                com.umeng.a.b.a((Context) this, "book_info_recommend_click", "zhuishu");
-            else {
-                com.umeng.a.b.a((Context) this, "page_footing_recommend_click", "zhuishu");
-                int2 = 2;
+            } else if (this.c == n2) {
+                b.a(this, "book_info_recommend_click", "zhuishu");
+            } else {
+                b.a(this, "page_footing_recommend_click", "zhuishu");
+                n2 = 2;
             }
-            startActivity(BookInfoActivity.a((Context) this, BookRankDetail3.get_id(), int2));
+            this.startActivity(BookInfoActivity.a(this, bookRankDetail.get_id(), n2));
         }
     }
 
-    public final void a(RelateBookRoot RelateBookRoot1, String[] String_1darray2) {
-        if (RelateBookRoot1 != null && RelateBookRoot1.isOk()) {
-            List List3 = RelateBookRoot1.getBooks();
-
-            if (List3 != null && !List3.isEmpty()) {
-                Object Object4 = new ArrayList(20);
-                int int5 = String_1darray2.length;
-                int int6;
-
-                for (int6 = 0; int6 < int5; ++int6) {
-                    String String7 = String_1darray2[int6];
-                    Iterator Iterator8 = List3.iterator();
-
-                    while (Iterator8.hasNext()) {
-                        Object Object9 = (BookSummary) Iterator8.next();
-
-                        if (!((BookSummary) Object9).getId().equals(String7))
-                            continue;
-                        ((List) Object4).add(Object9);
+    @Override
+    public final void a(RelateBookRoot relateBookRoot, String[] arrstring) {
+        if (relateBookRoot != null && relateBookRoot.isOk()) {
+            List<BookSummary> list = relateBookRoot.getBooks();
+            if (list != null && !list.isEmpty()) {
+                ArrayList<BookSummary> arrayList = new ArrayList<BookSummary>(20);
+                for (String string : arrstring) {
+                    for (BookSummary bookSummary : list) {
+                        if (!bookSummary.getId().equals(string)) continue;
+                        arrayList.add(bookSummary);
                     }
                 }
-                RelateBookRoot1.setBooks((List) Object4);
-                a(RelateBookRoot1);
-            } else
-                e(3);
-        } else
-            e(2);
+                relateBookRoot.setBooks(arrayList);
+                this.a(relateBookRoot);
+                return;
+            }
+            this.e(3);
+            return;
+        }
+        this.e(2);
     }
 
+    @Override
     protected final void b() {
-        RelateBookRoot RelateBookRoot1;
-
-        c = getIntent().getIntExtra("entrancePosition", 1);
-        RelateBookRoot1 = (RelateBookRoot) getIntent().getSerializableExtra("RelateBookRoot");
-        if (RelateBookRoot1 != null) {
-            a(RelateBookRoot1);
-            b = getIntent().getBooleanExtra("IS_BFD_RECOMMEND", false);
-        } else {
-            String String2 = getIntent().getStringExtra("bookId");
-
-            if (String2 != null) {
-                e(0);
-                b = new cM((Context) this, this).a(String2);
-            } else
-                e(2);
+        this.c = this.getIntent().getIntExtra("entrancePosition", 1);
+        RelateBookRoot relateBookRoot = (RelateBookRoot) this.getIntent().getSerializableExtra("RelateBookRoot");
+        if (relateBookRoot != null) {
+            this.a(relateBookRoot);
+            this.b = this.getIntent().getBooleanExtra("IS_BFD_RECOMMEND", false);
+            return;
         }
+        String string = this.getIntent().getStringExtra("bookId");
+        if (string != null) {
+            this.e(0);
+            this.b = new cM(this, this).a(string);
+            return;
+        }
+        this.e(2);
     }
 }

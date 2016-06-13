@@ -1,50 +1,60 @@
 package com.clilystudio.netbook.util;
 
+import android.app.Activity;
+
+import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.model.ResultStatus;
 
 import java.io.IOException;
 
-final class P extends com.clilystudio.netbook.a.e {
+final class P
+        extends com.clilystudio.netbook.a.e<String, Void, ResultStatus> {
+    private /* synthetic */ N a;
 
-    private N a;
-
-    P(N N1, byte byte2) {
-        this(N1);
+    private P(N n) {
+        this.a = n;
     }
 
-    private P(N N1) {
-        a = N1;
+    /* synthetic */ P(N n, byte by) {
+        this(n);
     }
 
-    private static transient ResultStatus a(String[] String_1darray1) {
-        ResultStatus ResultStatus4;
-
+    private static /* varargs */ ResultStatus a(String... arrstring) {
         try {
-            com.clilystudio.netbook.api.b.a();
-            ResultStatus4 = com.clilystudio.netbook.api.b.b().y(String_1darray1[0], String_1darray1[1]);
-        } catch (IOException IOException2) {
-            IOException2.printStackTrace();
+            b.a();
+            ResultStatus resultStatus = b.b().y(arrstring[0], arrstring[1]);
+            return resultStatus;
+        } catch (IOException var1_2) {
+            var1_2.printStackTrace();
             return null;
         }
-        return ResultStatus4;
     }
 
-    protected final Object doInBackground(Object[] Object_1darray1) {
-        return a((String[]) Object_1darray1);
+    @Override
+    protected final /* synthetic */ Object doInBackground(Object[] arrobject) {
+        return P.a((String[]) arrobject);
     }
 
-    protected final void onPostExecute(Object Object1) {
-        Object Object2 = (ResultStatus) Object1;
-
-        super.onPostExecute(Object2);
-        if (Object2 != null) {
-            if (((ResultStatus) Object2).isOk())
-                e.a(N.a(a), "\u6536\u85CF\u6210\u529F");
-            else if ("11000".equals(((ResultStatus) Object2).getCode())) {
-                e.a(N.a(a), "\u4F60\u5DF2\u7ECF\u6536\u85CF\u8FC7\u5566\uFF5E");
+    /*
+     * Enabled aggressive block sorting
+     */
+    @Override
+    protected final /* synthetic */ void onPostExecute(Object object) {
+        ResultStatus resultStatus = (ResultStatus) object;
+        super.onPostExecute(resultStatus);
+        if (resultStatus == null) {
+            e.a((Activity) N.a(this.a), (String) "\u6536\u85cf\u5931\u8d25\uff0c\u8bf7\u68c0\u67e5\u7f51\u7edc\u6216\u7a0d\u540e\u518d\u8bd5");
+            return;
+        }
+        if (resultStatus.isOk()) {
+            e.a((Activity) N.a(this.a), (String) "\u6536\u85cf\u6210\u529f");
+            return;
+        } else {
+            if (!"11000".equals(resultStatus.getCode())) return;
+            {
+                e.a((Activity) N.a(this.a), (String) "\u4f60\u5df2\u7ecf\u6536\u85cf\u8fc7\u5566\uff5e");
                 return;
             }
-        } else
-            e.a(N.a(a), "\u6536\u85CF\u5931\u8D25\uFF0C\u8BF7\u68C0\u67E5\u7F51\u7EDC\u6216\u7A0D\u540E\u518D\u8BD5");
+        }
     }
 }

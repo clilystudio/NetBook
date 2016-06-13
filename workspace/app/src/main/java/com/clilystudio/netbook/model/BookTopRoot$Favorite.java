@@ -1,32 +1,31 @@
 package com.clilystudio.netbook.model;
 
 public class BookTopRoot$Favorite {
-
     private String bookID;
     private String checksum;
     private String tocID;
 
     public String getBookID() {
-        return bookID;
+        return this.bookID;
     }
 
-    public void setBookID(String String1) {
-        bookID = String1;
+    public void setBookID(String string) {
+        this.bookID = string;
     }
 
     public String getChecksum() {
-        return checksum;
+        return this.checksum;
     }
 
-    public void setChecksum(String String1) {
-        checksum = String1;
+    public void setChecksum(String string) {
+        this.checksum = string;
     }
 
     public String getTocID() {
-        return tocID;
+        return this.tocID;
     }
 
-    public void setTocID(String String1) {
-        tocID = String1;
+    public void setTocID(String string) {
+        this.tocID = string;
     }
 }

@@ -1,28 +1,27 @@
 package com.clilystudio.netbook.widget;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.view.View;
-import android.view.View$OnClickListener;
 
 import com.clilystudio.netbook.model.GameGiftRoot;
 import com.clilystudio.netbook.ui.game.GameGiftListActivity;
 
-final class K implements View$OnClickListener {
+final class K
+        implements View.OnClickListener {
+    private /* synthetic */ GameGiftRoot a;
+    private /* synthetic */ GameGiftView b;
 
-    private GameGiftRoot a;
-    private GameGiftView b;
-    K(GameGiftView GameGiftView1, GameGiftRoot GameGiftRoot2) {
-        b = GameGiftView1;
-        a = GameGiftRoot2;
+    K(GameGiftView gameGiftView, GameGiftRoot gameGiftRoot) {
+        this.b = gameGiftView;
+        this.a = gameGiftRoot;
     }
 
-    public final void onClick(View View1) {
-        Object Object2 = (Activity) b.getContext();
-        Intent Intent3 = GameGiftListActivity.a((Context) Object2, a, GameGiftView.a(b));
-
-        Intent3.putExtra("title", "\u5168\u90E8\u793C\u5305");
-        ((Activity) Object2).startActivity(Intent3);
+    @Override
+    public final void onClick(View view) {
+        Activity activity = (Activity) this.b.getContext();
+        Intent intent = GameGiftListActivity.a(activity, this.a, GameGiftView.a(this.b));
+        intent.putExtra("title", "\u5168\u90e8\u793c\u5305");
+        activity.startActivity(intent);
     }
 }

@@ -1,23 +1,23 @@
 package com.clilystudio.netbook.ui;
 
-import android.content.Context;
 import android.content.DialogInterface;
-import android.content.DialogInterface$OnClickListener;
 import android.widget.CheckBox;
 
 import com.clilystudio.netbook.ui.user.AuthLoginActivity;
 
-final class aH implements DialogInterface$OnClickListener {
+final class aH
+        implements DialogInterface.OnClickListener {
+    private /* synthetic */ CheckBox a;
+    private /* synthetic */ BookInfoActivity b;
 
-    private CheckBox a;
-    private BookInfoActivity b;
-    aH(BookInfoActivity BookInfoActivity1, CheckBox CheckBox2) {
-        b = BookInfoActivity1;
-        a = CheckBox2;
+    aH(BookInfoActivity bookInfoActivity, CheckBox checkBox) {
+        this.b = bookInfoActivity;
+        this.a = checkBox;
     }
 
-    public final void onClick(DialogInterface DialogInterface1, int int2) {
-        BookInfoActivity.c(b, a.isChecked());
-        b.startActivity(AuthLoginActivity.a((Context) b));
+    @Override
+    public final void onClick(DialogInterface dialogInterface, int n) {
+        BookInfoActivity.c(this.b, this.a.isChecked());
+        this.b.startActivity(AuthLoginActivity.a(this.b));
     }
 }

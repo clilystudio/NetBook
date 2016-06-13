@@ -1,14 +1,14 @@
 package com.clilystudio.netbook.model;
 
-public class PostCountRoot extends Root {
-
+public class PostCountRoot
+        extends Root {
     private int postCount;
 
     public int getPostCount() {
-        return postCount;
+        return this.postCount;
     }
 
-    public void setPostCount(int int1) {
-        postCount = int1;
+    public void setPostCount(int n) {
+        this.postCount = n;
     }
 }

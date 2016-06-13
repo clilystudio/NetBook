@@ -1,32 +1,30 @@
 package com.clilystudio.netbook.ui.user;
 
-import android.os.AsyncTask$Status;
+import android.os.AsyncTask;
 
-final class C implements Runnable {
+final class C
+        implements Runnable {
+    private /* synthetic */ B a;
 
-    private B a;
-
-    C(B B1) {
-        a = B1;
+    C(B b) {
+        this.a = b;
     }
 
+    @Override
     public final void run() {
-        if (MyTopicFragment.b(a.a) == null) {
-            MyTopicFragment.c(a.a).setVisibility(8);
-            MyTopicFragment.a(a.a).setVisibility(0);
-            MyTopicFragment.a(a.a).setText((CharSequence) "\u8BF7\u767B\u5F55\u540E\u67E5\u770B");
-            MyTopicFragment.d(a.a).n();
-        } else {
-            G G2;
-            String[] String_1darray3;
-
-            if (MyTopicFragment.e(a.a) != null && MyTopicFragment.e(a.a).getStatus() != AsyncTask$Status.FINISHED && !com.clilystudio.netbook.ui.user.MyTopicFragment.e(a.a).isCancelled())
-                MyTopicFragment.e(a.a).cancel(true);
-            MyTopicFragment.a(a.a, new G(a.a, (byte) 0));
-            G2 = MyTopicFragment.f(a.a);
-            String_1darray3 = new String[1];
-            String_1darray3[0] = MyTopicFragment.b(a.a);
-            G2.b(String_1darray3);
+        if (MyTopicFragment.b(this.a.a) == null) {
+            MyTopicFragment.c(this.a.a).setVisibility(8);
+            MyTopicFragment.a(this.a.a).setVisibility(0);
+            MyTopicFragment.a(this.a.a).setText("\u8bf7\u767b\u5f55\u540e\u67e5\u770b");
+            MyTopicFragment.d(this.a.a).n();
+            return;
         }
+        if (MyTopicFragment.e(this.a.a) != null && MyTopicFragment.e(this.a.a).getStatus() != AsyncTask.Status.FINISHED && !MyTopicFragment.e(this.a.a).isCancelled()) {
+            MyTopicFragment.e(this.a.a).cancel(true);
+        }
+        MyTopicFragment.a(this.a.a, new G(this.a.a, 0));
+        G g = MyTopicFragment.f(this.a.a);
+        String[] arrstring = new String[]{MyTopicFragment.b(this.a.a)};
+        g.b(arrstring);
     }
 }

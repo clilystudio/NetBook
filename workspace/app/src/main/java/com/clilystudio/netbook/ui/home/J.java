@@ -1,50 +1,57 @@
 package com.clilystudio.netbook.ui.home;
 
 import com.clilystudio.netbook.a.e;
+import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.model.ShelfMsgRoot;
 
-final class J extends e {
+final class J
+        extends e<Void, Void, ShelfMsgRoot> {
+    private /* synthetic */ HomeShelfFragment a;
 
-    private HomeShelfFragment a;
-
-    J(HomeShelfFragment HomeShelfFragment1, byte byte2) {
-        this(HomeShelfFragment1);
+    private J(HomeShelfFragment homeShelfFragment) {
+        this.a = homeShelfFragment;
     }
 
-    private J(HomeShelfFragment HomeShelfFragment1) {
-        a = HomeShelfFragment1;
+    /* synthetic */ J(HomeShelfFragment homeShelfFragment, byte by) {
+        this(homeShelfFragment);
     }
 
-    private static transient ShelfMsgRoot a() {
-        ShelfMsgRoot ShelfMsgRoot3;
-
+    private static /* varargs */ ShelfMsgRoot a() {
         try {
-            com.clilystudio.netbook.api.b.a();
-            ShelfMsgRoot3 = com.clilystudio.netbook.api.b.b().l();
-        } catch (Exception Exception1) {
-            Exception1.printStackTrace();
+            b.a();
+            ShelfMsgRoot shelfMsgRoot = b.b().l();
+            return shelfMsgRoot;
+        } catch (Exception var0_1) {
+            var0_1.printStackTrace();
             return null;
         }
-        return ShelfMsgRoot3;
     }
 
-    protected final Object doInBackground(Object[] Object_1darray1) {
-        return a();
+    /*
+     * Exception decompiling
+     */
+    @Override
+    protected final /* synthetic */ Object doInBackground(Object[] var1_1) {
+        // This method has failed to decompile.  When submitting a bug report, please provide this stack trace, and (if you hold appropriate legal rights) the relevant class file.
+        // java.lang.ArrayIndexOutOfBoundsException
+        throw new IllegalStateException("Decompilation failed");
     }
 
-    protected final void onPostExecute(Object Object1) {
-        Object Object2 = (ShelfMsgRoot) Object1;
-
-        super.onPostExecute(Object2);
-        if (a.getActivity() != null) {
-            if (Object2 == null || !((ShelfMsgRoot) Object2).ok || ((ShelfMsgRoot) Object2).message == null) {
-                HomeShelfFragment.j(a).removeHeaderView(HomeShelfFragment.m(a));
-                HomeShelfFragment.a(a).notifyDataSetChanged();
-            } else {
-                HomeShelfFragment.a(a, ((ShelfMsgRoot) Object2).message);
-                HomeShelfFragment.b(a, HomeShelfFragment.n(a));
-                return;
-            }
+    /*
+     * Enabled force condition propagation
+     * Lifted jumps to return sites
+     */
+    @Override
+    protected final /* synthetic */ void onPostExecute(Object object) {
+        ShelfMsgRoot shelfMsgRoot = (ShelfMsgRoot) object;
+        super.onPostExecute(shelfMsgRoot);
+        if (this.a.getActivity() == null) return;
+        if (shelfMsgRoot == null || !shelfMsgRoot.ok || shelfMsgRoot.message == null) {
+            HomeShelfFragment.j(this.a).removeHeaderView(HomeShelfFragment.m(this.a));
+            HomeShelfFragment.a(this.a).notifyDataSetChanged();
+            return;
         }
+        HomeShelfFragment.a(this.a, shelfMsgRoot.message);
+        HomeShelfFragment.b(this.a, HomeShelfFragment.n(this.a));
     }
 }

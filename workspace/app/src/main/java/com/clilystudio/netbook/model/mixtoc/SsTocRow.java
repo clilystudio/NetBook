@@ -1,32 +1,31 @@
 package com.clilystudio.netbook.model.mixtoc;
 
 public class SsTocRow {
-
     private String resourceid;
     private int serialid;
     private String serialname;
 
     public String getResourceid() {
-        return resourceid;
+        return this.resourceid;
     }
 
-    public void setResourceid(String String1) {
-        resourceid = String1;
+    public void setResourceid(String string) {
+        this.resourceid = string;
     }
 
     public int getSerialid() {
-        return serialid;
+        return this.serialid;
     }
 
-    public void setSerialid(int int1) {
-        serialid = int1;
+    public void setSerialid(int n) {
+        this.serialid = n;
     }
 
     public String getSerialname() {
-        return serialname;
+        return this.serialname;
     }
 
-    public void setSerialname(String String1) {
-        serialname = String1;
+    public void setSerialname(String string) {
+        this.serialname = string;
     }
 }

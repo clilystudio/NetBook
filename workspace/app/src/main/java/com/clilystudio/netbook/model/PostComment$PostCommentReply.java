@@ -1,32 +1,31 @@
 package com.clilystudio.netbook.model;
 
 public class PostComment$PostCommentReply {
-
     private String _id;
     private Author author;
     private int floor;
 
     public Author getAuthor() {
-        return author;
+        return this.author;
     }
 
-    public void setAuthor(Author Author1) {
-        author = Author1;
+    public void setAuthor(Author author) {
+        this.author = author;
     }
 
     public int getFloor() {
-        return floor;
+        return this.floor;
     }
 
-    public void setFloor(int int1) {
-        floor = int1;
+    public void setFloor(int n) {
+        this.floor = n;
     }
 
     public String get_id() {
-        return _id;
+        return this._id;
     }
 
-    public void set_id(String String1) {
-        _id = String1;
+    public void set_id(String string) {
+        this._id = string;
     }
 }

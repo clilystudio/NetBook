@@ -6,54 +6,65 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.support.v4.view.ViewCompat;
 import android.util.AttributeSet;
-import android.view.View;
 
 import com.clilystudio.netbook.model.Game;
 import com.clilystudio.netbook.ui.SmartImageView;
 
-public class GameImageView extends SmartImageView {
-
-    private final Bitmap e = BitmapFactory.decodeResource(getResources(), 2130837800);
-    private final Bitmap f = BitmapFactory.decodeResource(getResources(), 2130837801);
-    private final Bitmap b = BitmapFactory.decodeResource(getResources(), 2130837799);
-    private final Bitmap c = BitmapFactory.decodeResource(getResources(), 2130837797);
+public class GameImageView
+        extends SmartImageView {
+    private final Bitmap b;
+    private final Bitmap c;
+    private final Bitmap e;
+    private final Bitmap f;
+    private Bitmap d;
     private boolean g;
     private boolean h;
     private boolean i;
     private boolean j;
     private boolean k;
-    private Bitmap d = BitmapFactory.decodeResource(getResources(), 2130837798);
-    public GameImageView(Context Context1, AttributeSet AttributeSet2) {
-        super(Context1, AttributeSet2);
-        ViewCompat.setElevation((View) this, 10.0F);
+
+    public GameImageView(Context context, AttributeSet attributeSet) {
+        super(context, attributeSet);
+        this.e = BitmapFactory.decodeResource(this.getResources(), 2130837800);
+        this.f = BitmapFactory.decodeResource(this.getResources(), 2130837801);
+        this.d = BitmapFactory.decodeResource(this.getResources(), 2130837798);
+        this.b = BitmapFactory.decodeResource(this.getResources(), 2130837799);
+        this.c = BitmapFactory.decodeResource(this.getResources(), 2130837797);
+        ViewCompat.setElevation(this, 10.0f);
     }
 
-    public final void a(Game Game1) {
-        g = Game1.isFirsthand();
-        h = Game1.isRecommend();
-        i = Game1.isGiftFlag();
-        j = Game1.isActivityFlag();
-        k = Game1.isHotFlag();
-        invalidate();
+    public final void a(Game game) {
+        this.g = game.isFirsthand();
+        this.h = game.isRecommend();
+        this.i = game.isGiftFlag();
+        this.j = game.isActivityFlag();
+        this.k = game.isHotFlag();
+        this.invalidate();
     }
 
-    protected void onDraw(Canvas Canvas1) {
-        Bitmap Bitmap2;
-
-        super.onDraw(Canvas1);
-        if (h)
-            Bitmap2 = e;
-        else if (g)
-            Bitmap2 = f;
-        else if (i)
-            Bitmap2 = d;
-        else if (j)
-            Bitmap2 = c;
-        else if (k)
-            Bitmap2 = b;
-        else
-            Bitmap2 = null;
-        if (Bitmap2 != null)
-            Canvas1.drawBitmap(Bitmap2, (float) (getWidth() - Bitmap2.getWidth()), 0.0F, null);
+    /*
+     * Enabled aggressive block sorting
+     */
+    @Override
+    protected void onDraw(Canvas canvas) {
+        Bitmap bitmap;
+        super.onDraw(canvas);
+        if (this.h) {
+            bitmap = this.e;
+        } else if (this.g) {
+            bitmap = this.f;
+        } else if (this.i) {
+            bitmap = this.d;
+        } else if (this.j) {
+            bitmap = this.c;
+        } else {
+            if (!this.k) {
+                return;
+            }
+            bitmap = this.b;
+        }
+        if (bitmap != null) {
+            canvas.drawBitmap(bitmap, this.getWidth() - bitmap.getWidth(), 0.0f, null);
+        }
     }
 }

@@ -3,36 +3,30 @@ package com.clilystudio.netbook.widget;
 import android.text.InputFilter;
 import android.text.Spanned;
 
-final class aj implements InputFilter {
+final class aj
+        implements InputFilter {
+    private /* synthetic */ NicknameEditText a;
 
-    private NicknameEditText a;
-
-    aj(NicknameEditText NicknameEditText1, byte byte2) {
-        this(NicknameEditText1);
+    private aj(NicknameEditText nicknameEditText) {
+        this.a = nicknameEditText;
     }
 
-    private aj(NicknameEditText NicknameEditText1) {
-        a = NicknameEditText1;
+    /* synthetic */ aj(NicknameEditText nicknameEditText, byte by) {
+        this(nicknameEditText);
     }
 
-    public final CharSequence filter(CharSequence CharSequence1, int int2, int int3, Spanned Spanned4, int int5, int int6) {
-        int int7 = 0;
-        String String8 = a.getText().toString();
-        int int9 = 0;
-        Object Object11;
-
-        while (int7 < String8.length()) {
-            int int10;
-
-            if (Character.isLetterOrDigit(String8.charAt(int7)))
-                int10 = 1;
-            else
-                int10 = 2;
-            int9 += int10;
-            ++int7;
+    /*
+     * Enabled aggressive block sorting
+     */
+    @Override
+    public final CharSequence filter(CharSequence charSequence, int n, int n2, Spanned spanned, int n3, int n4) {
+        int n5;
+        String string = this.a.getText().toString();
+        int n6 = 0;
+        for (int i = 0; i < string.length(); n6 += n5, ++i) {
+            n5 = Character.isLetterOrDigit(string.charAt(i)) ? 1 : 2;
         }
-        if (int9 >= 28)
-            Object11 = "";
-        return (CharSequence) Object11;
+        if (n6 < 28) return charSequence;
+        return "";
     }
 }

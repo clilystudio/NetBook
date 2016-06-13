@@ -1,25 +1,27 @@
 package com.clilystudio.netbook.reader;
 
-import android.content.Context;
+import android.app.Activity;
 import android.view.View;
-import android.view.View$OnClickListener;
 
 import com.clilystudio.netbook.util.e;
 
-final class B implements View$OnClickListener {
+final class B
+        implements View.OnClickListener {
+    private /* synthetic */ o a;
 
-    private o a;
-
-    B(o o1) {
-        a = o1;
+    B(o o2) {
+        this.a = o2;
     }
 
-    public final void onClick(View View1) {
-        if (com.clilystudio.netbook.hpay100.a.a.t((Context) o.a(a))) {
-            o.c(a).setVisibility(8);
-            if (o.d(a) != null)
-                o.d(a).a(o.b(a).l());
-        } else
-            e.a(o.a(a), 2131034418);
+    @Override
+    public final void onClick(View view) {
+        if (a.t(o.a((o) this.a))) {
+            o.c((o) this.a).setVisibility(8);
+            if (o.d((o) this.a) != null) {
+                o.d((o) this.a).a(o.b((o) this.a).l());
+            }
+            return;
+        }
+        e.a((Activity) o.a((o) this.a), (int) 2131034418);
     }
 }

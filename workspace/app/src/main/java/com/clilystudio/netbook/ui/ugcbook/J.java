@@ -1,23 +1,24 @@
 package com.clilystudio.netbook.ui.ugcbook;
 
 import android.content.DialogInterface;
-import android.content.DialogInterface$OnClickListener;
 import android.widget.EditText;
 
 import com.clilystudio.netbook.model.BookSummary;
 
-final class J implements DialogInterface$OnClickListener {
+final class J
+        implements DialogInterface.OnClickListener {
+    private /* synthetic */ BookSummary a;
+    private /* synthetic */ EditText b;
+    private /* synthetic */ UGCGuideEditBooksActivity c;
 
-    private BookSummary a;
-    private EditText b;
-    private UGCGuideEditBooksActivity c;
-    J(UGCGuideEditBooksActivity UGCGuideEditBooksActivity1, BookSummary BookSummary2, EditText EditText3) {
-        c = UGCGuideEditBooksActivity1;
-        a = BookSummary2;
-        b = EditText3;
+    J(UGCGuideEditBooksActivity uGCGuideEditBooksActivity, BookSummary bookSummary, EditText editText) {
+        this.c = uGCGuideEditBooksActivity;
+        this.a = bookSummary;
+        this.b = editText;
     }
 
-    public final void onClick(DialogInterface DialogInterface1, int int2) {
-        c.a.put(a.getId(), b.getText().toString());
+    @Override
+    public final void onClick(DialogInterface dialogInterface, int n) {
+        this.c.a.put(this.a.getId(), this.b.getText().toString());
     }
 }

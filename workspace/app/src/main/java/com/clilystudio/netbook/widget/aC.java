@@ -1,15 +1,16 @@
 package com.clilystudio.netbook.widget;
 
-final class aC implements ah {
+final class aC
+        implements ah {
+    private /* synthetic */ ThemeLoadingView a;
 
-    private ThemeLoadingView a;
-
-    aC(ThemeLoadingView ThemeLoadingView1) {
-        a = ThemeLoadingView1;
+    aC(ThemeLoadingView themeLoadingView) {
+        this.a = themeLoadingView;
     }
 
+    @Override
     public final void a() {
-        a.setVisibility(8);
-        ThemeLoadingView.a(a, true);
+        this.a.setVisibility(8);
+        ThemeLoadingView.a(this.a, true);
     }
 }

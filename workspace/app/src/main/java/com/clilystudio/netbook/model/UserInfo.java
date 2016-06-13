@@ -5,12 +5,12 @@ import com.clilystudio.netbook.api.ApiService;
 import java.io.Serializable;
 import java.util.Date;
 
-public class UserInfo implements Serializable {
-
+public class UserInfo
+        implements Serializable {
     private static final long serialVersionUID = 2519451769850149545L;
     private String _id;
     private String avatar;
-    private UserInfo$BookListCount book_list_count;
+    private BookListCount book_list_count;
     private String code;
     private int exp;
     private String gender;
@@ -19,135 +19,135 @@ public class UserInfo implements Serializable {
     private String nickname;
     private Date nicknameUpdated;
     private boolean ok;
-    private UserInfo$UserPostCount post_count;
+    private UserPostCount post_count;
     private float rank;
-    private UserInfo$ThisWeekTasks this_week_tasks;
-    private UserInfo$UserTodayTask today_tasks;
+    private ThisWeekTasks this_week_tasks;
+    private UserTodayTask today_tasks;
 
     public String getAvatar() {
-        return avatar;
+        return this.avatar;
     }
 
-    public void setAvatar(String String1) {
-        avatar = String1;
+    public void setAvatar(String string) {
+        this.avatar = string;
     }
 
-    public UserInfo$BookListCount getBook_list_count() {
-        return book_list_count;
+    public BookListCount getBook_list_count() {
+        return this.book_list_count;
     }
 
-    public void setBook_list_count(UserInfo$BookListCount BookListCount1) {
-        book_list_count = BookListCount1;
+    public void setBook_list_count(BookListCount bookListCount) {
+        this.book_list_count = bookListCount;
     }
 
     public String getCode() {
-        return code;
+        return this.code;
     }
 
-    public void setCode(String String1) {
-        code = String1;
+    public void setCode(String string) {
+        this.code = string;
     }
 
     public int getExp() {
-        return exp;
+        return this.exp;
     }
 
-    public void setExp(int int1) {
-        exp = int1;
+    public void setExp(int n) {
+        this.exp = n;
     }
 
     public String getGender() {
-        return gender;
+        return this.gender;
     }
 
-    public void setGender(String String1) {
-        gender = String1;
+    public void setGender(String string) {
+        this.gender = string;
     }
 
     public String getId() {
-        return _id;
+        return this._id;
     }
 
-    public void setId(String String1) {
-        _id = String1;
+    public void setId(String string) {
+        this._id = string;
     }
 
     public int getLv() {
-        return lv;
+        return this.lv;
     }
 
-    public void setLv(int int1) {
-        lv = int1;
+    public void setLv(int n) {
+        this.lv = n;
     }
 
     public String getNickname() {
-        return nickname;
+        return this.nickname;
     }
 
-    public void setNickname(String String1) {
-        nickname = String1;
+    public void setNickname(String string) {
+        this.nickname = string;
     }
 
     public Date getNicknameUpdated() {
-        return nicknameUpdated;
+        return this.nicknameUpdated;
     }
 
-    public void setNicknameUpdated(Date Date1) {
-        nicknameUpdated = Date1;
+    public void setNicknameUpdated(Date date) {
+        this.nicknameUpdated = date;
     }
 
-    public UserInfo$UserPostCount getPost_count() {
-        return post_count;
+    public UserPostCount getPost_count() {
+        return this.post_count;
     }
 
-    public void setPost_count(UserInfo$UserPostCount UserPostCount1) {
-        post_count = UserPostCount1;
+    public void setPost_count(UserPostCount userPostCount) {
+        this.post_count = userPostCount;
     }
 
     public float getRank() {
-        return rank;
+        return this.rank;
     }
 
-    public void setRank(float float1) {
-        rank = float1;
+    public void setRank(float f2) {
+        this.rank = f2;
     }
 
-    public String getScaleAvatar(int int1) {
-        if (int1 == 2)
-            return new StringBuilder().append(ApiService.a).append(avatar).append("-avatarl").toString();
-        else
-            return new StringBuilder().append(ApiService.a).append(avatar).append("-avatars").toString();
+    public String getScaleAvatar(int n) {
+        if (n == 2) {
+            return ApiService.a + this.avatar + "-avatarl";
+        }
+        return ApiService.a + this.avatar + "-avatars";
     }
 
-    public UserInfo$ThisWeekTasks getThis_week_tasks() {
-        return this_week_tasks;
+    public ThisWeekTasks getThis_week_tasks() {
+        return this.this_week_tasks;
     }
 
-    public void setThis_week_tasks(UserInfo$ThisWeekTasks ThisWeekTasks1) {
-        this_week_tasks = ThisWeekTasks1;
+    public void setThis_week_tasks(ThisWeekTasks thisWeekTasks) {
+        this.this_week_tasks = thisWeekTasks;
     }
 
-    public UserInfo$UserTodayTask getToday_tasks() {
-        return today_tasks;
+    public UserTodayTask getToday_tasks() {
+        return this.today_tasks;
     }
 
-    public void setToday_tasks(UserInfo$UserTodayTask UserTodayTask1) {
-        today_tasks = UserTodayTask1;
+    public void setToday_tasks(UserTodayTask userTodayTask) {
+        this.today_tasks = userTodayTask;
     }
 
     public boolean isGenderChanged() {
-        return genderChanged;
+        return this.genderChanged;
     }
 
-    public void setGenderChanged(boolean boolean1) {
-        genderChanged = boolean1;
+    public void setGenderChanged(boolean bl) {
+        this.genderChanged = bl;
     }
 
     public boolean isOk() {
-        return ok;
+        return this.ok;
     }
 
-    public void setOk(boolean boolean1) {
-        ok = boolean1;
+    public void setOk(boolean bl) {
+        this.ok = bl;
     }
 }

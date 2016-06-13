@@ -3,32 +3,36 @@ package com.clilystudio.netbook.reader.random;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
-import android.view.View$OnClickListener;
 
 import com.clilystudio.netbook.ui.BaseActivity;
 import com.clilystudio.netbook.widget.SAutoBgButton;
 
 import butterknife.ButterKnife;
+import butterknife.InjectView;
 
-public class ReaderRandomEntranceActivity extends BaseActivity implements View$OnClickListener {
-
+public class ReaderRandomEntranceActivity
+        extends BaseActivity
+        implements View.OnClickListener {
+    @InjectView(value = 2131493156)
     SAutoBgButton mReadRandomBook;
 
-    public void onClick(View View1) {
-        switch (View1.getId()) {
-            default:
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            default: {
                 return;
-            case 292:
-                new b((Activity) this, 2131034218, true).b(new String[0]);
-                return;
+            }
+            case 2131493156:
         }
+        new b((Activity) this, 2131034218, true).b((Object[]) new String[0]);
     }
 
-    protected void onCreate(Bundle Bundle1) {
-        super.onCreate(Bundle1);
-        setContentView(2130903120);
-        b("\u968F\u673A\u770B\u4E66");
-        ButterKnife.inject((Activity) this);
-        mReadRandomBook.setOnClickListener(this);
+    @Override
+    protected void onCreate(Bundle bundle) {
+        super.onCreate(bundle);
+        this.setContentView(2130903120);
+        this.b("\u968f\u673a\u770b\u4e66");
+        ButterKnife.inject(this);
+        this.mReadRandomBook.setOnClickListener(this);
     }
 }

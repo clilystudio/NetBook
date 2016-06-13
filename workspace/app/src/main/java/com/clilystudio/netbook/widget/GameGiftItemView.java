@@ -5,7 +5,6 @@ import android.content.Context;
 import android.support.design.widget.am;
 import android.util.AttributeSet;
 import android.view.View;
-import android.view.View$OnClickListener;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -18,146 +17,140 @@ import com.clilystudio.netbook.ui.SmartImageView;
 import com.clilystudio.netbook.ui.game.s;
 import com.clilystudio.netbook.util.t;
 
-import java.util.List;
+import java.util.Date;
 
-public class GameGiftItemView extends RelativeLayout {
-
+public class GameGiftItemView
+        extends RelativeLayout {
     private GameGift a;
     private com.clilystudio.netbook.view.a b;
+    private Account c = am.e();
     private TextView d;
     private View e;
     private boolean f;
-    private Account c = am.e();
-    public GameGiftItemView(Context Context1, AttributeSet AttributeSet2) {
-        super(Context1, AttributeSet2);
-        setClickable(true);
+
+    public GameGiftItemView(Context context, AttributeSet attributeSet) {
+        super(context, attributeSet);
+        this.setClickable(true);
     }
 
-    static void a(GameGiftItemView GameGiftItemView1) {
-        Activity Activity2 = (Activity) GameGiftItemView1.getContext();
-
-        if (GameGiftItemView1.c == null)
-            GameGiftItemView1.c = am.a(Activity2);
-        else {
-            J J3 = new J(GameGiftItemView1, Activity2);
-            String[] String_1darray4 = new String[2];
-
-            String_1darray4[0] = GameGiftItemView1.a._id;
-            String_1darray4[1] = GameGiftItemView1.c.getToken();
-            J3.b(String_1darray4);
+    static /* synthetic */ void a(GameGiftItemView gameGiftItemView) {
+        Activity activity = (Activity) gameGiftItemView.getContext();
+        if (gameGiftItemView.c == null) {
+            gameGiftItemView.c = am.a((Activity) activity);
+            return;
         }
+        J j = new J(gameGiftItemView, activity);
+        String[] arrstring = new String[]{gameGiftItemView.a._id, gameGiftItemView.c.getToken()};
+        j.b(arrstring);
     }
 
-    static void a(GameGiftItemView GameGiftItemView1, String String2) {
-        GameGiftItemView1.a(String2);
+    static /* synthetic */ void a(GameGiftItemView gameGiftItemView, String string) {
+        gameGiftItemView.a(string);
     }
 
-    static void b(GameGiftItemView GameGiftItemView1, String String2) {
-        GameGiftItemView1.b(String2);
+    static /* synthetic */ void b(GameGiftItemView gameGiftItemView, String string) {
+        gameGiftItemView.b(string);
     }
 
-    static boolean b(GameGiftItemView GameGiftItemView1) {
-        return GameGiftItemView1.f;
+    static /* synthetic */ boolean b(GameGiftItemView gameGiftItemView) {
+        return gameGiftItemView.f;
     }
 
-    static GameGift c(GameGiftItemView GameGiftItemView1) {
-        return GameGiftItemView1.a;
+    static /* synthetic */ GameGift c(GameGiftItemView gameGiftItemView) {
+        return gameGiftItemView.a;
     }
 
-    static Account d(GameGiftItemView GameGiftItemView1) {
-        return GameGiftItemView1.c;
+    static /* synthetic */ Account d(GameGiftItemView gameGiftItemView) {
+        return gameGiftItemView.c;
     }
 
-    private void a(String String1) {
-        com.clilystudio.netbook.view.a a2 = new com.clilystudio.netbook.view.a(getContext());
-        View View3 = View.inflate(getContext(), 2130903192, null);
-        TextView TextView4;
-        Button Button5;
-
-        ((TextView) View3.findViewById(2131493395)).setText((CharSequence) a.title);
-        TextView4 = (TextView) View3.findViewById(2131493397);
-        ((TextView) View3.findViewById(2131493399)).setText((CharSequence) a.description);
-        ((TextView) View3.findViewById(2131493401)).setText((CharSequence) a.usage);
-        ((TextView) View3.findViewById(2131493400)).setText((CharSequence) new StringBuilder().append(t.b(a.rangeFrom)).append(" - ").append(t.b(a.rangeTo)).toString());
-        a2.a(View3).show();
-        Button5 = (Button) View3.findViewById(2131493402);
-        if (String1 == null) {
-            Button5.setText((CharSequence) "\u9886\u53D6");
-            TextView4.setText((CharSequence) new StringBuilder("\u5DF2\u6709 ").append(a.total - a.left).append(" \u4EBA\u9886\u53D6\uFF0C\u5269\u4F59 ").append(a.left).append(" \u4E2A").toString());
-            Button5.setBackgroundResource(2130837746);
-            Button5.setOnClickListener((View$OnClickListener) new F(this, a2));
-        } else {
-            TextView4.setText((CharSequence) new StringBuilder("\u5151\u6362\u7801\uFF1A").append(String1).toString());
-            Button5.setText((CharSequence) "\u590D\u5236\u5151\u6362\u7801\u5E76\u6253\u5F00\u6E38\u620F");
-            Button5.setBackgroundResource(2130837749);
-            Button5.setOnClickListener((View$OnClickListener) new G(this, a2, String1));
+    private void a(String string) {
+        com.clilystudio.netbook.view.a a2 = new com.clilystudio.netbook.view.a(this.getContext());
+        View view = View.inflate(this.getContext(), 2130903192, null);
+        ((TextView) view.findViewById(2131493395)).setText(this.a.title);
+        TextView textView = (TextView) view.findViewById(2131493397);
+        ((TextView) view.findViewById(2131493399)).setText(this.a.description);
+        ((TextView) view.findViewById(2131493401)).setText(this.a.usage);
+        ((TextView) view.findViewById(2131493400)).setText(t.b((Date) this.a.rangeFrom) + " - " + t.b((Date) this.a.rangeTo));
+        a2.a(view).show();
+        Button button = (Button) view.findViewById(2131493402);
+        if (string == null) {
+            button.setText("\u9886\u53d6");
+            textView.setText("\u5df2\u6709 " + (this.a.total - this.a.left) + " \u4eba\u9886\u53d6\uff0c\u5269\u4f59 " + this.a.left + " \u4e2a");
+            button.setBackgroundResource(2130837746);
+            button.setOnClickListener((View.OnClickListener) ((Object) new F(this, a2)));
+            return;
         }
+        textView.setText("\u5151\u6362\u7801\uff1a" + string);
+        button.setText("\u590d\u5236\u5151\u6362\u7801\u5e76\u6253\u5f00\u6e38\u620f");
+        button.setBackgroundResource(2130837749);
+        button.setOnClickListener(new G(this, a2, string));
     }
 
-    private void b(String String1) {
-        d.setText((CharSequence) "\u67E5\u770B");
-        d.setBackgroundResource(2130837819);
-        d.setOnClickListener((View$OnClickListener) new H(this, String1));
-        e.setOnClickListener((View$OnClickListener) new I(this, String1));
+    private void b(String string) {
+        this.d.setText("\u67e5\u770b");
+        this.d.setBackgroundResource(2130837819);
+        this.d.setOnClickListener(new H(this, string));
+        this.e.setOnClickListener((View.OnClickListener) ((Object) new I(this, string)));
     }
 
+    /*
+     * Enabled aggressive block sorting
+     * Enabled unnecessary exception pruning
+     * Enabled aggressive exception aggregation
+     */
     public final void a() {
-        if (f || com.clilystudio.netbook.hpay100.a.a.j(getContext(), a.game.getAndroidPackageName())) {
-            try {
-                if (b != null)
-                    b.dismiss();
-            } catch (Exception Exception1) {
-                Exception1.printStackTrace();
-            }
-            a(null);
-        } else {
-            Game Game2 = a.game;
-            View View3 = View.inflate(getContext(), 2130903191, null);
-            GameGiftGetButton GameGiftGetButton4;
-
-            ((SmartImageView) View3.findViewById(2131493394)).setImageUrl(Game2.getIcon());
-            ((TextView) View3.findViewById(2131493397)).setText((CharSequence) new StringBuilder("\u5269\u4F59\u793C\u5305").append(a.left).append("\u4E2A").toString());
-            ((TextView) View3.findViewById(2131493395)).setText((CharSequence) a.title);
-            ((TextView) View3.findViewById(2131493396)).setText((CharSequence) new StringBuilder().append(Game2.getCat()).append(" | ").append(com.clilystudio.netbook.hpay100.a.a.c(Game2.getAndroidSize())).toString());
-            s.a((Activity) getContext(), Game2);
-            GameGiftGetButton4 = (GameGiftGetButton) View3.findViewById(2131493398);
-            GameGiftGetButton4.setGame(Game2);
-            GameGiftGetButton4.a(Game2.getDownloadStatus());
-            GameGiftGetButton4.setGiftItemView(this);
-            b = new com.clilystudio.netbook.view.a(getContext());
-            b.a(View3).show();
+        if (!this.f && !a.j(this.getContext(), this.a.game.getAndroidPackageName())) {
+            Game game = this.a.game;
+            View view = View.inflate(this.getContext(), 2130903191, null);
+            ((SmartImageView) view.findViewById(2131493394)).setImageUrl(game.getIcon());
+            ((TextView) view.findViewById(2131493397)).setText("\u5269\u4f59\u793c\u5305" + this.a.left + "\u4e2a");
+            ((TextView) view.findViewById(2131493395)).setText(this.a.title);
+            ((TextView) view.findViewById(2131493396)).setText(game.getCat() + " | " + a.c(game.getAndroidSize()));
+            s.a((Activity) ((Activity) this.getContext()), (Game) game);
+            GameGiftGetButton gameGiftGetButton = (GameGiftGetButton) view.findViewById(2131493398);
+            gameGiftGetButton.setGame(game);
+            gameGiftGetButton.a(game.getDownloadStatus());
+            gameGiftGetButton.setGiftItemView(this);
+            this.b = new com.clilystudio.netbook.view.a(this.getContext());
+            this.b.a(view).show();
+            return;
         }
+        try {
+            if (this.b != null) {
+                this.b.dismiss();
+            }
+        } catch (Exception var1_1) {
+            var1_1.printStackTrace();
+        }
+        this.a(null);
     }
 
-    public final void a(GameGift GameGift1, boolean boolean2) {
-        String String3;
-
-        f = boolean2;
-        ((TextView) findViewById(2131493675)).setText((CharSequence) GameGift1.title);
-        ((TextView) findViewById(2131493677)).setText((CharSequence) GameGift1.description);
-        d = (TextView) findViewById(2131493676);
-        e = findViewById(2131493673);
-        a = GameGift1;
-        label_64:
+    /*
+     * Unable to fully structure code
+     * Enabled aggressive block sorting
+     * Lifted jumps to return sites
+     */
+    public final void a(GameGift var1_1, boolean var2_2) {
+        this.f = var2_2;
+        ((TextView) this.findViewById(2131493675)).setText(var1_1.title);
+        ((TextView) this.findViewById(2131493677)).setText(var1_1.description);
+        this.d = (TextView) this.findViewById(2131493676);
+        this.e = this.findViewById(2131493673);
+        this.a = var1_1;
+        if (this.c == null || (var4_3 = GameGiftRecord.getRecords(this.c.getUser().getId(), var1_1._id)) == null || var4_3.isEmpty())**GOTO lbl -1000
+        var5_4 = var4_3.get(0);
+        if (var5_4.giftId != null && var5_4.giftId.equals(var1_1._id)) {
+            var3_5 = var5_4.giftCode;
+        } else lbl - 1000: // 2 sources:
         {
-            if (c != null) {
-                List List4 = GameGiftRecord.getRecords(c.getUser().getId(), GameGift1._id);
-
-                if (List4 != null && !List4.isEmpty()) {
-                    GameGiftRecord GameGiftRecord5 = (GameGiftRecord) List4.get(0);
-
-                    if (GameGiftRecord5.giftId != null && GameGiftRecord5.giftId.equals(GameGift1._id)) {
-                        String3 = GameGiftRecord5.giftCode;
-                        break label_64;
-                    }
-                }
-            }
-            String3 = null;
+            var3_5 = null;
         }
-        if (String3 != null) {
-            b(String3);
-            e.setOnClickListener((View$OnClickListener) new D(this, String3));
-        } else
-            e.setOnClickListener((View$OnClickListener) new E(this));
+        if (var3_5 != null) {
+            this.b(var3_5);
+            this.e.setOnClickListener(new D(this, var3_5));
+            return;
+        }
+        this.e.setOnClickListener(new E(this));
     }
 }

@@ -5,34 +5,37 @@ import com.clilystudio.netbook.event.A;
 import com.clilystudio.netbook.event.i;
 import com.clilystudio.netbook.model.TxtFileObject;
 
-public final class Q extends e {
+public final class Q
+        extends e<Void, Void, Void> {
+    private /* synthetic */ ScanTxtFileActivity a;
 
-    private ScanTxtFileActivity a;
-
-    public Q(ScanTxtFileActivity ScanTxtFileActivity1) {
-        a = ScanTxtFileActivity1;
+    public Q(ScanTxtFileActivity scanTxtFileActivity) {
+        this.a = scanTxtFileActivity;
     }
 
-    protected final Object doInBackground(Object[] Object_1darray1) {
-        ScanTxtFileActivity.b(a, 0);
-        ScanTxtFileActivity.a(a, TxtFileObject.getTxtFiles());
-        a.b();
+    @Override
+    protected final /* synthetic */ Object doInBackground(Object[] arrobject) {
+        ScanTxtFileActivity.b(this.a, 0);
+        ScanTxtFileActivity.a(this.a, TxtFileObject.getTxtFiles());
+        this.a.b();
         return null;
     }
 
-    protected final void onPostExecute(Object Object1) {
-        super.onPostExecute((Void) Object1);
-        a.mPbLoading.setVisibility(8);
-        if (ScanTxtFileActivity.b(a).size() == 0) {
-            a.mEmpty.setVisibility(0);
-            a.mList.setVisibility(8);
-            ScanTxtFileActivity.a(a, 0);
+    @Override
+    protected final /* synthetic */ void onPostExecute(Object object) {
+        super.onPostExecute((Void) object);
+        this.a.mPbLoading.setVisibility(8);
+        if (ScanTxtFileActivity.b(this.a).size() == 0) {
+            this.a.mEmpty.setVisibility(0);
+            this.a.mList.setVisibility(8);
+            ScanTxtFileActivity.a(this.a, 0);
         }
         i.a().c(new A());
     }
 
+    @Override
     protected final void onPreExecute() {
         super.onPreExecute();
-        a.mPbLoading.setVisibility(0);
+        this.a.mPbLoading.setVisibility(0);
     }
 }

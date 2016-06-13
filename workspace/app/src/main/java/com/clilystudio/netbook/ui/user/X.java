@@ -1,14 +1,18 @@
 package com.clilystudio.netbook.ui.user;
 
-final class X implements Runnable {
+import android.annotation.TargetApi;
 
-    private W a;
+final class X
+        implements Runnable {
+    private /* synthetic */ W a;
 
-    X(W W1) {
-        a = W1;
+    X(W w) {
+        this.a = w;
     }
 
+    @TargetApi(value = 11)
+    @Override
     public final void run() {
-        PayConsumeActivity.a(a.b.a).smoothScrollToPositionFromTop(a.a, 0);
+        PayConsumeActivity.a(this.a.b.a).smoothScrollToPositionFromTop(this.a.a, 0);
     }
 }

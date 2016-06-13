@@ -1,14 +1,15 @@
 package com.clilystudio.netbook.ui;
 
-final class ar implements aa {
+final class ar
+        implements aa {
+    private /* synthetic */ BookCategoryListActivity a;
 
-    private BookCategoryListActivity a;
-
-    ar(BookCategoryListActivity BookCategoryListActivity1) {
-        a = BookCategoryListActivity1;
+    ar(BookCategoryListActivity bookCategoryListActivity) {
+        this.a = bookCategoryListActivity;
     }
 
+    @Override
     public final void a() {
-        BookCategoryListActivity.a(a);
+        BookCategoryListActivity.a(this.a);
     }
 }

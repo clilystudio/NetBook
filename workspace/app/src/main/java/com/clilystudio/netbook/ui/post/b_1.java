@@ -3,18 +3,18 @@ package com.clilystudio.netbook.ui.post;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 
-final class b implements Runnable {
+final class b
+        implements Runnable {
+    private /* synthetic */ a a;
 
-    private a a;
-
-    b(a a1) {
-        a = a1;
+    b(a a2) {
+        this.a = a2;
     }
 
+    @Override
     public final void run() {
-        EditText EditText1 = AbsPostActivity.a(a.a);
-
-        EditText1.clearFocus();
-        ((InputMethodManager) a.a.getSystemService("input_method")).hideSoftInputFromWindow(EditText1.getWindowToken(), 0);
+        EditText editText = AbsPostActivity.a(this.a.a);
+        editText.clearFocus();
+        ((InputMethodManager) this.a.a.getSystemService("input_method")).hideSoftInputFromWindow(editText.getWindowToken(), 0);
     }
 }

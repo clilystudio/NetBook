@@ -7,36 +7,38 @@ import android.net.Uri;
 import android.util.AttributeSet;
 
 import com.clilystudio.netbook.R$styleable;
+import com.nostra13.universalimageloader.core.b.b;
 
 import m.framework.utils.Utils;
 
-public class CornerImageView extends SmartImageView {
-
+public class CornerImageView
+        extends SmartImageView {
     private int b;
 
-    public CornerImageView(Context Context1, AttributeSet AttributeSet2) {
-        super(Context1, AttributeSet2);
-        TypedArray TypedArray3;
-
-        TypedArray3 = Context1.obtainStyledAttributes(AttributeSet2, R$styleable.CornerSmartImageView);
-        b = (int) TypedArray3.getDimension(TypedArray3.getIndex(0), 2.0F);
-        TypedArray3.recycle();
+    public CornerImageView(Context context) {
+        super(context);
+        this.b = Utils.dipToPx(context, 2);
     }
 
-    public CornerImageView(Context Context1) {
-        super(Context1);
-        b = Utils.dipToPx(Context1, 2);
+    public CornerImageView(Context context, AttributeSet attributeSet) {
+        super(context, attributeSet);
+        TypedArray typedArray = context.obtainStyledAttributes(attributeSet, R$styleable.CornerSmartImageView);
+        this.b = (int) typedArray.getDimension(typedArray.getIndex(0), 2.0f);
+        typedArray.recycle();
     }
 
+    @Override
     protected com.nostra13.universalimageloader.core.b.a a() {
-        return (com.nostra13.universalimageloader.core.b.a) new com.nostra13.universalimageloader.core.b.b(b);
+        return new b(this.b);
     }
 
-    public void setImageURI(Uri Uri1) {
-        setImageBitmap(com.clilystudio.netbook.hpay100.a.a.a(BitmapFactory.decodeFile(Uri1.getPath())));
+    @Override
+    public void setImageURI(Uri uri) {
+        this.setImageBitmap(a.a(BitmapFactory.decodeFile(uri.getPath())));
     }
 
-    public void setImageUrl(String String1, int int2) {
-        super.setImageUrl(String1, int2);
+    @Override
+    public void setImageUrl(String string, int n) {
+        super.setImageUrl(string, n);
     }
 }

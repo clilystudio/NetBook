@@ -1,6 +1,5 @@
 package com.clilystudio.netbook.reader;
 
 interface Y {
-
-    void a(int int1, e e2, boolean boolean3);
+    public void a(int var1, e<ReaderChapter> var2, boolean var3);
 }

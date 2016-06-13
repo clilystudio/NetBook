@@ -6,8 +6,10 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.ViewConfiguration;
 
-public class PagerWidget extends ReaderViewPager {
+import org.apache.commons.lang3.a.a;
 
+public class PagerWidget
+        extends ReaderViewPager {
     private int a;
     private com.umeng.update.a b;
     private M c;
@@ -15,179 +17,195 @@ public class PagerWidget extends ReaderViewPager {
     private float e;
     private float f;
     private boolean g;
-    private float h;
-    private int i;
+    private float h = 20.0f;
+    private int i = 0;
     private AutoReaderTextView j;
-    private boolean k;
-    public PagerWidget(Context Context1, AttributeSet AttributeSet2) {
-        super(Context1, AttributeSet2);
-        h = 20.0F;
-        i = 0;
-        k = false;
-        d();
+    private boolean k = false;
+
+    public PagerWidget(Context context) {
+        super(context);
+        this.d();
     }
 
-    public PagerWidget(Context Context1) {
-        super(Context1);
-        h = 20.0F;
-        i = 0;
-        k = false;
-        d();
+    public PagerWidget(Context context, AttributeSet attributeSet) {
+        super(context, attributeSet);
+        this.d();
     }
 
-    private static MotionEvent a(MotionEvent MotionEvent1) {
-        MotionEvent MotionEvent2 = MotionEvent.obtain(MotionEvent1);
-
+    private static MotionEvent a(MotionEvent motionEvent) {
+        MotionEvent motionEvent2 = MotionEvent.obtain(motionEvent);
         try {
-            MotionEvent2.setAction(0);
-        } catch (Exception Exception3) {
-            Exception3.printStackTrace();
-            return MotionEvent2;
+            motionEvent2.setAction(0);
+            return motionEvent2;
+        } catch (Exception var2_2) {
+            var2_2.printStackTrace();
+            return motionEvent2;
         }
-        return MotionEvent2;
     }
-// Error: Internal #201: 
-// The following method may not be correct.
 
-    private Object a(String String1) {
+    private Object a(String string) {
+        try {
+            Object object = a.a(ReaderViewPager.class.getDeclaredField(string), (Object) this, true);
+            return object;
+        } catch (IllegalAccessException var4_3) {
+            var4_3.printStackTrace();
+            return null;
+        } catch (NoSuchFieldException var3_4) {
+            var3_4.printStackTrace();
+            return null;
+        } catch (Exception var2_5) {
+            var2_5.printStackTrace();
+            return null;
+        }
     }
-// Error: Internal #201: 
-// The following method may not be correct.
 
-    private void a(String String1, Object Object2) {
+    private void a(String string, Object object) {
+        try {
+            a.a(ReaderViewPager.class.getDeclaredField(string), (Object) this, object, true);
+            return;
+        } catch (Exception var3_3) {
+            var3_3.printStackTrace();
+            return;
+        }
     }
 
     private void d() {
-        a = ViewConfiguration.get(getContext()).getScaledTouchSlop();
-        a("mMinimumVelocity", Integer.valueOf(0));
-        a("mFlingDistance", Integer.valueOf(0));
-        c = new M(this, getContext());
-        a("mScroller", c);
+        this.a = ViewConfiguration.get(this.getContext()).getScaledTouchSlop();
+        this.a("mMinimumVelocity", 0);
+        this.a("mFlingDistance", 0);
+        this.c = new M(this, this.getContext());
+        this.a("mScroller", this.c);
     }
 
     private boolean e() {
-        return ((Boolean) a("mIsBeingDragged")).booleanValue();
+        return (Boolean) this.a("mIsBeingDragged");
     }
 
-    public boolean onTouchEvent(MotionEvent MotionEvent1) {
-        int int2 = 2;
-        boolean boolean3 = true;
-        int int4 = 0xFF & MotionEvent1.getAction();
-
-        if (i == 0) {
-            switch (int4) {
-                case 2:
-                    if (e()) {
-                        if (getContext() instanceof ReaderActivity)
-                            ((ReaderActivity) getContext()).k();
-                        return super.onTouchEvent(MotionEvent1);
-                    } else {
-                        float float10 = ((Float) a("mInitialMotionX")).floatValue();
-                        int int11 = MotionEventCompat.findPointerIndex(MotionEvent1, ((Integer) a("mActivePointerId")).intValue());
-                        float float13;
-
-                        try {
-                            float float15 = MotionEventCompat.getX(MotionEvent1, int11);
-                        } catch (Exception Exception12) {
-                            Exception12.printStackTrace();
-                            float13 = 0.0F;
-                        }
-                        if (Math.abs(float13 - float10) > (float) a) {
-                            super.onTouchEvent(a(MotionEvent1));
-                            return boolean3;
-                        }
-                        break;
-                    }
-                case 1:
-                    if (!e() && c.isFinished() && !d) {
-                        float float6;
-                        float float7;
-                        float float8;
-                        float float9;
-
-                        d = boolean3;
-                        float6 = MotionEvent1.getX();
-                        float7 = MotionEvent1.getY();
-                        float8 = (float) (getWidth() / 3);
-                        float9 = (float) (getHeight() / 5);
-                        if (float6 < float8)
-                            int2 = boolean3;
-                        else if (float6 <= float8 * 2.0F) {
-                            if (float7 < float9)
-                                int2 = boolean3;
-                            else if (float7 <= 4.0F * float9)
-                                int2 = 0;
-                        }
-                        if (b != null)
-                            b.a(int2);
-                        d = false;
-                        return boolean3;
-                    }
-                default:
-                    boolean3 = super.onTouchEvent(MotionEvent1);
-                    break;
-                case 0:
-                    break;
+    /*
+     * Unable to fully structure code
+     * Enabled aggressive block sorting
+     * Enabled unnecessary exception pruning
+     * Enabled aggressive exception aggregation
+     * Lifted jumps to return sites
+     */
+    @Override
+    public boolean onTouchEvent(MotionEvent var1_1) {
+        var2_2 = BADBOOL 2;
+        var3_3 = true;
+        var4_4 = 255 & var1_1.getAction();
+        if (this.i != 0)**GOTO lbl47
+        switch (var4_4) {
+            default: {
+                **GOTO lbl34
             }
-        } else if (i == boolean3) {
-            switch (int4) {
-                default:
-                    return boolean3;
-                case 0:
-                    e = MotionEvent1.getX();
-                    f = MotionEvent1.getY();
-                    k = false;
-                    return boolean3;
-                case 2:
-                    if (!k) {
-                        j.clearAnimation();
-                        k = boolean3;
-                    }
-                    if ((float) Math.abs((int) (MotionEvent1.getY() - f)) > h) {
-                        int int5 = getMeasuredHeight() - (int) MotionEvent1.getY();
-
-                        if (int5 > j.g())
-                            int5 = j.g();
-                        else if (int5 < 10)
-                            int5 = 10;
-                        j.a(int5);
-                        return boolean3;
-                    }
-                    break;
-                case 1:
-                    if (Math.abs(e - MotionEvent1.getX()) > h || Math.abs(f - MotionEvent1.getY()) > h)
-                        g = false;
-                    else
-                        g = boolean3;
-                    if (b != null && g)
-                        b.a(0);
-                    if (!g) {
-                        j.e();
-                        return boolean3;
-                    }
-                    break;
+            case 2: {
+                if (this.e()) {
+                    if (this.getContext() instanceof ReaderActivity == false) return super.onTouchEvent(var1_1);
+                    ((ReaderActivity) this.getContext()).k();
+                    return super.onTouchEvent(var1_1);
+                }
+                var10_5 = ((Float) this.a("mInitialMotionX")).floatValue();
+                var11_6 = MotionEventCompat.findPointerIndex(var1_1, (Integer) this.a("mActivePointerId"));
+                try {
+                    var13_8 = var15_7 = MotionEventCompat.getX(var1_1, var11_6);
+                } catch (Exception var12_9) {
+                    var12_9.printStackTrace();
+                    var13_8 = 0.0f;
+                }
+                if (Math.abs(var13_8 - var10_5) <= (float) this.a) return var3_3;
+                super.onTouchEvent(PagerWidget.a(var1_1));
+                return var3_3;
             }
-        } else {
-            switch (int4) {
-                default:
-                    return boolean3;
-                case 1:
-                    b.a(0);
-                    return boolean3;
+            case 1: {
+                if (this.e() || !this.c.isFinished() || this.d)**GOTO lbl34
+                this.d = var3_3;
+                var6_10 = var1_1.getX();
+                var7_11 = var1_1.getY();
+                var8_12 = this.getWidth() / 3;
+                var9_13 = this.getHeight() / 5;
+                if (var6_10 >= var8_12)**GOTO lbl37
+                var2_2 = var3_3;
+                **GOTO lbl43
+                lbl34:
+                // 2 sources:
+                var3_3 = super.onTouchEvent(var1_1);
+            }
+            case 0:
+        }
+        return var3_3;
+        lbl37:
+        // 1 sources:
+        if (var6_10 <= var8_12 * 2.0f) {
+            if (var7_11 < var9_13) {
+                var2_2 = var3_3;
+            } else if (var7_11 <= 4.0f * var9_13) {
+                var2_2 = false;
             }
         }
-        return boolean3;
+        lbl43:
+        // 7 sources:
+        if (this.b != null) {
+            this.b.a((int) var2_2 ? 1 : 0);
+        }
+        this.d = false;
+        return var3_3;
+        lbl47:
+        // 1 sources:
+        if (this.i == var3_3) {
+            switch (var4_4) {
+                default: {
+                    return var3_3;
+                }
+                case 0: {
+                    this.e = var1_1.getX();
+                    this.f = var1_1.getY();
+                    this.k = false;
+                    return var3_3;
+                }
+                case 2: {
+                    if (!this.k) {
+                        this.j.clearAnimation();
+                        this.k = var3_3;
+                    }
+                    if ((float) Math.abs((int) (var1_1.getY() - this.f)) <= this.h) return var3_3;
+                    var5_14 = this.getMeasuredHeight() - (int) var1_1.getY();
+                    if (var5_14 > this.j.g()) {
+                        var5_14 = this.j.g();
+                    } else if (var5_14 < 10) {
+                        var5_14 = 10;
+                    }
+                    this.j.a(var5_14);
+                    return var3_3;
+                }
+                case 1:
+            }
+            this.g = Math.abs(this.e - var1_1.getX()) > this.h || Math.abs(this.f - var1_1.getY()) > this.h ? false : var3_3;
+            if (this.b != null && this.g) {
+                this.b.a(0);
+            }
+            if (this.g != false) return var3_3;
+            this.j.e();
+            return var3_3;
+        }
+        switch (var4_4) {
+            default: {
+                return var3_3;
+            }
+            case 1:
+        }
+        this.b.a(0);
+        return var3_3;
     }
 
-    public void setAutoReaderTextView(AutoReaderTextView AutoReaderTextView1) {
-        j = AutoReaderTextView1;
+    public void setAutoReaderTextView(AutoReaderTextView autoReaderTextView) {
+        this.j = autoReaderTextView;
     }
 
-    public void setOnClickListener$4b8a6d15(com.umeng.update.a a1) {
-        b = a1;
+    public void setOnClickListener$4b8a6d15(com.umeng.update.a a2) {
+        this.b = a2;
     }
 
-    public void setReadMode(int int1) {
-        i = int1;
+    public void setReadMode(int n2) {
+        this.i = n2;
     }
 }

@@ -6,31 +6,31 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.am;
-import android.support.v4.view.PagerAdapter;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager$OnPageChangeListener;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View$OnClickListener;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.DecelerateInterpolator;
-import android.view.animation.Interpolator;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TabHost;
-import android.widget.TabHost$OnTabChangeListener;
-import android.widget.TabHost$TabContentFactory;
-import android.widget.TabHost$TabSpec;
 import android.widget.TabWidget;
 import android.widget.TextView;
 
+import com.clilystudio.netbook.d;
 import com.clilystudio.netbook.ui.BaseTabActivity;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class TweetTabActivity extends BaseTabActivity implements ViewPager$OnPageChangeListener, TabHost$OnTabChangeListener, TabHost$TabContentFactory {
-
+public class TweetTabActivity
+        extends BaseTabActivity
+        implements ViewPager$OnPageChangeListener,
+        TabHost.OnTabChangeListener,
+        TabHost.TabContentFactory {
+    private List<Fragment> b = new ArrayList<Fragment>();
     private ViewPager c;
     private dV e;
     private RelativeLayout f;
@@ -42,184 +42,184 @@ public class TweetTabActivity extends BaseTabActivity implements ViewPager$OnPag
     private FloatingActionButton l;
     private FloatingActionButton m;
     private View n;
-    private List b = new ArrayList();
     private boolean o = false;
-// Error: Internal #201: 
-// The following method may not be correct.
 
-    public static Intent a(Context Context1) {
+    public static Intent a(Context context) {
+        return new d().a(context, TweetTabActivity.class).a();
     }
 
-    static List a(TweetTabActivity TweetTabActivity1) {
-        return TweetTabActivity1.b;
+    static /* synthetic */ List a(TweetTabActivity tweetTabActivity) {
+        return tweetTabActivity.b;
     }
 
-    static boolean a(TweetTabActivity TweetTabActivity1, boolean boolean2) {
-        TweetTabActivity1.o = boolean2;
-        return boolean2;
+    static /* synthetic */ boolean a(TweetTabActivity tweetTabActivity, boolean bl) {
+        tweetTabActivity.o = bl;
+        return bl;
     }
 
-    static ViewPager b(TweetTabActivity TweetTabActivity1) {
-        return TweetTabActivity1.c;
+    static /* synthetic */ ViewPager b(TweetTabActivity tweetTabActivity) {
+        return tweetTabActivity.c;
     }
 
-    static boolean c(TweetTabActivity TweetTabActivity1) {
-        return TweetTabActivity1.o;
+    static /* synthetic */ boolean c(TweetTabActivity tweetTabActivity) {
+        return tweetTabActivity.o;
     }
 
-    static void d(TweetTabActivity TweetTabActivity1) {
-        TweetTabActivity1.f();
+    static /* synthetic */ void d(TweetTabActivity tweetTabActivity) {
+        tweetTabActivity.f();
     }
 
-    static FloatingActionButton e(TweetTabActivity TweetTabActivity1) {
-        return TweetTabActivity1.j;
+    static /* synthetic */ FloatingActionButton e(TweetTabActivity tweetTabActivity) {
+        return tweetTabActivity.j;
     }
 
-    static void f(TweetTabActivity TweetTabActivity1) {
-        int int2 = com.clilystudio.netbook.hpay100.a.a.a((Context) TweetTabActivity1, 18.0F);
-        int int3 = com.clilystudio.netbook.hpay100.a.a.a((Context) TweetTabActivity1, 36.0F);
-
-        TweetTabActivity1.f.setVisibility(0);
-        TweetTabActivity1.n.setVisibility(0);
-        TweetTabActivity1.i.setVisibility(0);
-        TweetTabActivity1.h.setVisibility(0);
-        com.c.b.a.a((View) TweetTabActivity1.i).c(1.0F).b((float) -int2).a(150L).a((Interpolator) new DecelerateInterpolator()).b(35L).a();
-        com.c.b.a.a((View) TweetTabActivity1.h).c(1.0F).b((float) -int3).a(150L).a((Interpolator) new DecelerateInterpolator()).a();
-        com.c.b.a.a((View) TweetTabActivity1.j).a(135.0F).a(150L).a((Interpolator) new AccelerateDecelerateInterpolator()).a();
+    static /* synthetic */ void f(TweetTabActivity tweetTabActivity) {
+        int n = a.a((Context) tweetTabActivity, 18.0f);
+        int n2 = a.a((Context) tweetTabActivity, 36.0f);
+        tweetTabActivity.f.setVisibility(0);
+        tweetTabActivity.n.setVisibility(0);
+        tweetTabActivity.i.setVisibility(0);
+        tweetTabActivity.h.setVisibility(0);
+        com.c.b.a.a(tweetTabActivity.i).c(1.0f).b((float) (-n)).a(150).a(new DecelerateInterpolator()).b(35).a();
+        com.c.b.a.a(tweetTabActivity.h).c(1.0f).b((float) (-n2)).a(150).a(new DecelerateInterpolator()).a();
+        com.c.b.a.a(tweetTabActivity.j).a(135.0f).a(150).a(new AccelerateDecelerateInterpolator()).a();
     }
 
-    static void g(TweetTabActivity TweetTabActivity1) {
-        TweetTabActivity1.b();
+    static /* synthetic */ void g(TweetTabActivity tweetTabActivity) {
+        tweetTabActivity.b();
     }
 
-    static void h(TweetTabActivity TweetTabActivity1) {
+    static /* synthetic */ void h(TweetTabActivity tweetTabActivity) {
+        Intent intent = new Intent(tweetTabActivity, AddVoteActivity.class);
+        intent.putExtra("add_post_mode", "TWEET");
+        tweetTabActivity.startActivity(intent);
     }
 
-    static void i(TweetTabActivity TweetTabActivity1) {
+    static /* synthetic */ void i(TweetTabActivity tweetTabActivity) {
+        Intent intent = new Intent(tweetTabActivity, AddVoteActivity.class);
+        intent.putExtra("add_post_mode", "ARTICLE");
+        tweetTabActivity.startActivity(intent);
     }
-// Error: Internal #201: 
-// The following method may not be correct.
 
-    static void j(TweetTabActivity TweetTabActivity1) {
+    static /* synthetic */ void j(TweetTabActivity tweetTabActivity) {
+        Intent intent = new Intent(tweetTabActivity, AddReviewActivity.class);
+        intent.putExtra("INTENT_TYPE_NAME", "BOOK_COMMENT");
+        tweetTabActivity.startActivity(intent);
     }
-// Error: Internal #201: 
-// The following method may not be correct.
 
-    static LinearLayout k(TweetTabActivity TweetTabActivity1) {
-        return TweetTabActivity1.i;
+    static /* synthetic */ LinearLayout k(TweetTabActivity tweetTabActivity) {
+        return tweetTabActivity.i;
     }
-// Error: Internal #201: 
-// The following method may not be correct.
 
-    static LinearLayout l(TweetTabActivity TweetTabActivity1) {
-        return TweetTabActivity1.h;
+    static /* synthetic */ LinearLayout l(TweetTabActivity tweetTabActivity) {
+        return tweetTabActivity.h;
     }
 
     private void b() {
-        f.setOnClickListener((View$OnClickListener) new dT(this));
+        this.f.setOnClickListener(new dT(this));
     }
 
     private void f() {
-        int int1 = com.clilystudio.netbook.hpay100.a.a.a((Context) this, 18.0F);
-        int int2 = com.clilystudio.netbook.hpay100.a.a.a((Context) this, 36.0F);
-
-        f.setVisibility(4);
-        n.setVisibility(4);
-        com.c.b.a.a((View) i).c(0.0F).b((float) int1).a(150L).a((Interpolator) new DecelerateInterpolator()).a();
-        com.c.b.a.a((View) h).c(0.0F).b((float) int2).a(150L).a((Interpolator) new DecelerateInterpolator()).b(100L).a();
-        com.c.b.a.a((View) j).a(0.0F).a(150L).a((Interpolator) new AccelerateDecelerateInterpolator()).a();
-        new Handler().postDelayed((Runnable) new dU(this), 150L);
+        int n = a.a((Context) this, 18.0f);
+        int n2 = a.a((Context) this, 36.0f);
+        this.f.setVisibility(4);
+        this.n.setVisibility(4);
+        com.c.b.a.a(this.i).c(0.0f).b((float) n).a(150).a(new DecelerateInterpolator()).a();
+        com.c.b.a.a(this.h).c(0.0f).b((float) n2).a(150).a(new DecelerateInterpolator()).b(100).a();
+        com.c.b.a.a(this.j).a(0.0f).a(150).a(new AccelerateDecelerateInterpolator()).a();
+        new Handler().postDelayed(new dU(this), 150);
     }
 
-    public View createTabContent(String String1) {
-        View View2 = new View((Context) this);
-
-        View2.setMinimumHeight(0);
-        View2.setMinimumWidth(0);
-        return View2;
+    @Override
+    public View createTabContent(String string) {
+        View view = new View(this);
+        view.setMinimumHeight(0);
+        view.setMinimumWidth(0);
+        return view;
     }
 
-    protected void onCreate(Bundle Bundle1) {
-        LayoutInflater LayoutInflater4;
-        int int5;
-        int int6;
-
-        super.onCreate(Bundle1);
-        setContentView(2130903134);
-        b(2131034546);
-        n = a().a().findViewById(2131493017);
-        f = (RelativeLayout) findViewById(2131493222);
-        g = (RelativeLayout) findViewById(2131493223);
-        findViewById(2131493579);
-        h = (LinearLayout) findViewById(2131493583);
-        findViewById(2131493585);
-        i = (LinearLayout) findViewById(2131493581);
-        j = (FloatingActionButton) findViewById(2131493580);
-        k = (FloatingActionButton) findViewById(2131493584);
-        l = (FloatingActionButton) findViewById(2131493586);
-        m = (FloatingActionButton) findViewById(2131493582);
-        j.setOnClickListener((View$OnClickListener) new dP(this));
-        m.setOnClickListener((View$OnClickListener) new dQ(this));
-        k.setOnClickListener((View$OnClickListener) new dR(this));
-        l.setOnClickListener((View$OnClickListener) new dS(this));
-        b();
-        f();
-        a = (TabHost) findViewById(2131493096);
-        c = (ViewPager) findViewById(2131493097);
-        e = new dV(this, getSupportFragmentManager());
-        c.setOffscreenPageLimit(3);
-        c.setAdapter((PagerAdapter) e);
-        c.addOnPageChangeListener(this);
-        a.setup();
-        a.setOnTabChangedListener(this);
-        if (a.getTabWidget().getTabCount() > 0) {
-            a.setCurrentTab(0);
-            a.clearAllTabs();
+    @Override
+    protected void onCreate(Bundle bundle) {
+        super.onCreate(bundle);
+        this.setContentView(2130903134);
+        this.b(2131034546);
+        this.n = this.a().a().findViewById(2131493017);
+        this.f = (RelativeLayout) this.findViewById(2131493222);
+        this.g = (RelativeLayout) this.findViewById(2131493223);
+        this.findViewById(2131493579);
+        this.h = (LinearLayout) this.findViewById(2131493583);
+        this.findViewById(2131493585);
+        this.i = (LinearLayout) this.findViewById(2131493581);
+        this.j = (FloatingActionButton) this.findViewById(2131493580);
+        this.k = (FloatingActionButton) this.findViewById(2131493584);
+        this.l = (FloatingActionButton) this.findViewById(2131493586);
+        this.m = (FloatingActionButton) this.findViewById(2131493582);
+        this.j.setOnClickListener(new dP(this));
+        this.m.setOnClickListener(new dQ(this));
+        this.k.setOnClickListener(new dR(this));
+        this.l.setOnClickListener(new dS(this));
+        this.b();
+        this.f();
+        this.a = (TabHost) this.findViewById(2131493096);
+        this.c = (ViewPager) this.findViewById(2131493097);
+        this.e = new dV(this, this.getSupportFragmentManager());
+        this.c.setOffscreenPageLimit(3);
+        this.c.setAdapter(this.e);
+        this.c.addOnPageChangeListener(this);
+        this.a.setup();
+        this.a.setOnTabChangedListener(this);
+        if (this.a.getTabWidget().getTabCount() > 0) {
+            this.a.setCurrentTab(0);
+            this.a.clearAllTabs();
         }
-        LayoutInflater4 = getLayoutInflater();
-        int5 = e.getCount();
-        for (int6 = 0; int6 < int5; ++int6) {
-            TabHost$TabSpec TabSpec7 = a.newTabSpec(new StringBuilder("tab").append(int6).toString());
-            View View9;
-
-            TabSpec7.setContent(this);
-            View9 = LayoutInflater4.inflate(2130903229, null);
-            ((TextView) View9.findViewById(2131493509)).setText((CharSequence) (String) e.getPageTitle(int6));
-            TabSpec7.setIndicator(View9);
-            a.addTab(TabSpec7);
+        LayoutInflater layoutInflater = this.getLayoutInflater();
+        int n = this.e.getCount();
+        for (int j = 0; j < n; ++j) {
+            TabHost.TabSpec tabSpec = this.a.newTabSpec("tab" + j);
+            tabSpec.setContent(this);
+            View view = layoutInflater.inflate(2130903229, null);
+            ((TextView) view.findViewById(2131493509)).setText((String) this.e.getPageTitle(j));
+            tabSpec.setIndicator(view);
+            this.a.addTab(tabSpec);
         }
-        if (am.e() == null)
-            a.setCurrentTab(1);
+        if (am.e() == null) {
+            this.a.setCurrentTab(1);
+        }
     }
 
-    protected void onNewIntent(Intent Intent1) {
-        super.onNewIntent(Intent1);
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
     }
 
-    public void onPageScrollStateChanged(int int1) {
+    @Override
+    public void onPageScrollStateChanged(int n) {
     }
 
-    public void onPageScrolled(int int1, float float2, int int3) {
-        a(int1, int3);
+    @Override
+    public void onPageScrolled(int n, float f2, int n2) {
+        this.a(n, n2);
     }
 
-    public void onPageSelected(int int1) {
-        TabWidget TabWidget2 = a.getTabWidget();
-        int int3 = TabWidget2.getDescendantFocusability();
-
-        TabWidget2.setDescendantFocusability(393216);
-        a.setCurrentTab(int1);
-        TabWidget2.setDescendantFocusability(int3);
+    @Override
+    public void onPageSelected(int n) {
+        TabWidget tabWidget = this.a.getTabWidget();
+        int n2 = tabWidget.getDescendantFocusability();
+        tabWidget.setDescendantFocusability(393216);
+        this.a.setCurrentTab(n);
+        tabWidget.setDescendantFocusability(n2);
     }
 
-    public void onTabChanged(String String1) {
-        int int2 = a.getCurrentTab();
-
-        if (int2 >= 0 && int2 < e.getCount())
-            c.setCurrentItem(int2, true);
-        if (int2 != 0)
-            g.setVisibility(4);
-        else
-            g.setVisibility(0);
+    @Override
+    public void onTabChanged(String string) {
+        int n = this.a.getCurrentTab();
+        if (n >= 0 && n < this.e.getCount()) {
+            this.c.setCurrentItem(n, true);
+        }
+        if (n != 0) {
+            this.g.setVisibility(4);
+            return;
+        }
+        this.g.setVisibility(0);
     }
 }

@@ -1,20 +1,21 @@
 package com.clilystudio.netbook.ui.user;
 
-import android.os.AsyncTask$Status;
+import android.os.AsyncTask;
 
-final class ae implements j {
+final class ae
+        implements j {
+    private /* synthetic */ PayVoucherFragment a;
 
-    private PayVoucherFragment a;
-
-    ae(PayVoucherFragment PayVoucherFragment1) {
-        a = PayVoucherFragment1;
+    ae(PayVoucherFragment payVoucherFragment) {
+        this.a = payVoucherFragment;
     }
 
+    @Override
     public final void a() {
-        if (PayVoucherFragment.c(a) == null || PayVoucherFragment.c(a).getStatus() == AsyncTask$Status.FINISHED) {
-            PayVoucherFragment.f(a).setVisibility(0);
-            PayVoucherFragment.a(a, new af(a));
-            PayVoucherFragment.c(a).b(new String[0]);
+        if (PayVoucherFragment.c(this.a) == null || PayVoucherFragment.c(this.a).getStatus() == AsyncTask.Status.FINISHED) {
+            PayVoucherFragment.f(this.a).setVisibility(0);
+            PayVoucherFragment.a(this.a, new af(this.a));
+            PayVoucherFragment.c(this.a).b(new String[0]);
         }
     }
 }

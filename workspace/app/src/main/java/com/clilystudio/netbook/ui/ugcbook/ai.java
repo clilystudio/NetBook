@@ -1,49 +1,52 @@
 package com.clilystudio.netbook.ui.ugcbook;
 
-import android.content.Context;
-
 import com.clilystudio.netbook.a.e;
+import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.model.UgcFilterRoot;
 import com.clilystudio.netbook.util.D;
 
 import java.io.IOException;
 
-final class ai extends e {
+final class ai
+        extends e<Void, Void, UgcFilterRoot> {
+    private /* synthetic */ UGCMainActivity a;
 
-    private UGCMainActivity a;
-
-    ai(UGCMainActivity UGCMainActivity1, byte byte2) {
-        this(UGCMainActivity1);
+    private ai(UGCMainActivity uGCMainActivity) {
+        this.a = uGCMainActivity;
     }
 
-    private ai(UGCMainActivity UGCMainActivity1) {
-        a = UGCMainActivity1;
+    /* synthetic */ ai(UGCMainActivity uGCMainActivity, byte by) {
+        this(uGCMainActivity);
     }
 
-    private transient UgcFilterRoot a() {
-        UgcFilterRoot UgcFilterRoot2;
-
+    private /* varargs */ UgcFilterRoot a() {
         try {
-            UgcFilterRoot2 = com.clilystudio.netbook.api.b.b().o();
-        } catch (IOException IOException1) {
-            IOException1.printStackTrace();
+            UgcFilterRoot ugcFilterRoot = b.b().o();
+            return ugcFilterRoot;
+        } catch (IOException var1_2) {
+            var1_2.printStackTrace();
             return null;
         }
-        return UgcFilterRoot2;
     }
 
-    protected final Object doInBackground(Object[] Object_1darray1) {
-        return a();
+    /*
+     * Exception decompiling
+     */
+    @Override
+    protected final /* synthetic */ Object doInBackground(Object[] var1_1) {
+        // This method has failed to decompile.  When submitting a bug report, please provide this stack trace, and (if you hold appropriate legal rights) the relevant class file.
+        // java.lang.ArrayIndexOutOfBoundsException
+        throw new IllegalStateException("Decompilation failed");
     }
 
-    protected final void onPostExecute(Object Object1) {
-        Object Object2 = (UgcFilterRoot) Object1;
-
-        super.onPostExecute(Object2);
-        if (Object2 != null && ((UgcFilterRoot) Object2).isOk() && ((UgcFilterRoot) Object2).getData() != null) {
-            UGCMainActivity.a(a, new ak(a, (Context) a, ((UgcFilterRoot) Object2).getData()));
-            UGCMainActivity.c(a).setLayoutManager((ao) new D((Context) a));
-            UGCMainActivity.c(a).setAdapter((ah) UGCMainActivity.d(a));
+    @Override
+    protected final /* synthetic */ void onPostExecute(Object object) {
+        UgcFilterRoot ugcFilterRoot = (UgcFilterRoot) object;
+        super.onPostExecute(ugcFilterRoot);
+        if (ugcFilterRoot != null && ugcFilterRoot.isOk() && ugcFilterRoot.getData() != null) {
+            UGCMainActivity.a(this.a, new ak(this.a, this.a, ugcFilterRoot.getData()));
+            UGCMainActivity.c(this.a).setLayoutManager(new D(this.a));
+            UGCMainActivity.c(this.a).setAdapter(UGCMainActivity.d(this.a));
         }
     }
 }

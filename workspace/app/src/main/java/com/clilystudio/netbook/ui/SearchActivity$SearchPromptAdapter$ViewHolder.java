@@ -4,12 +4,13 @@ import android.view.View;
 import android.widget.TextView;
 
 import butterknife.ButterKnife;
+import butterknife.InjectView;
 
 class SearchActivity$SearchPromptAdapter$ViewHolder {
-
+    @InjectView(value = 2131493751)
     TextView label;
 
-    SearchActivity$SearchPromptAdapter$ViewHolder(SearchActivity$SearchPromptAdapter SearchPromptAdapter1, View View2) {
-        ButterKnife.inject(this, View2);
+    SearchActivity$SearchPromptAdapter$ViewHolder(SearchActivity.SearchPromptAdapter searchPromptAdapter, View view) {
+        ButterKnife.inject((Object) this, view);
     }
 }

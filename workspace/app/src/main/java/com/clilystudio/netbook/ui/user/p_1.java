@@ -2,18 +2,19 @@ package com.clilystudio.netbook.ui.user;
 
 import android.app.AlertDialog;
 import android.view.View;
-import android.view.View$OnFocusChangeListener;
 
-final class p implements View$OnFocusChangeListener {
+final class p
+        implements View.OnFocusChangeListener {
+    private /* synthetic */ AlertDialog a;
 
-    private AlertDialog a;
-
-    p(ModifyUserInfoActivity ModifyUserInfoActivity1, AlertDialog AlertDialog2) {
-        a = AlertDialog2;
+    p(ModifyUserInfoActivity modifyUserInfoActivity, AlertDialog alertDialog) {
+        this.a = alertDialog;
     }
 
-    public final void onFocusChange(View View1, boolean boolean2) {
-        if (boolean2)
-            a.getWindow().setSoftInputMode(5);
+    @Override
+    public final void onFocusChange(View view, boolean bl) {
+        if (bl) {
+            this.a.getWindow().setSoftInputMode(5);
+        }
     }
 }

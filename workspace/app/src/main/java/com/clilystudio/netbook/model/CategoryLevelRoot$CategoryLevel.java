@@ -2,28 +2,29 @@ package com.clilystudio.netbook.model;
 
 import java.io.Serializable;
 
-public class CategoryLevelRoot$CategoryLevel implements Serializable {
-
-    CategoryLevelRoot this$0;     // final access specifier removed
+public class CategoryLevelRoot$CategoryLevel
+        implements Serializable {
+    final /* synthetic */ CategoryLevelRoot this$0;
     private String major;
     private String[] mins;
-    public CategoryLevelRoot$CategoryLevel(CategoryLevelRoot CategoryLevelRoot1) {
-        this$0 = CategoryLevelRoot1;
+
+    public CategoryLevelRoot$CategoryLevel(CategoryLevelRoot categoryLevelRoot) {
+        this.this$0 = categoryLevelRoot;
     }
 
     public String getMajor() {
-        return major;
+        return this.major;
     }
 
-    public void setMajor(String String1) {
-        major = String1;
+    public void setMajor(String string) {
+        this.major = string;
     }
 
     public String[] getMins() {
-        return mins;
+        return this.mins;
     }
 
-    public void setMins(String[] String_1darray1) {
-        mins = String_1darray1;
+    public void setMins(String[] arrstring) {
+        this.mins = arrstring;
     }
 }

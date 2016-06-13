@@ -1,14 +1,13 @@
 package com.clilystudio.netbook.ui.post;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Dialog;
-import android.content.Context;
-import android.content.DialogInterface$OnClickListener;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.design.widget.am;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View$OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -17,84 +16,89 @@ import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.ui.BaseActivity;
 import com.clilystudio.netbook.ui.aa;
 import com.clilystudio.netbook.ui.user.AuthLoginActivity;
+import com.clilystudio.netbook.util.e;
 
 import cn.sharesdk.framework.ShareSDK;
 
-public class AddBookHelpActivity extends BaseActivity {
-
+public class AddBookHelpActivity
+        extends BaseActivity {
     private EditText a;
     private EditText b;
 
-    static boolean a(AddBookHelpActivity AddBookHelpActivity1) {
-        String String2 = AddBookHelpActivity1.a.getText().toString().trim();
-        String String3 = AddBookHelpActivity1.b.getText().toString().trim();
-
-        if (com.clilystudio.netbook.hpay100.a.a.Q(String2))
-            com.clilystudio.netbook.util.e.a((Activity) AddBookHelpActivity1, "\u8BF7\u8F93\u5165\u6807\u9898");
-        else if (String2.length() < 4)
-            com.clilystudio.netbook.util.e.a((Activity) AddBookHelpActivity1, "\u6807\u9898\u6587\u5B57\u592A\u5C11\u4E86\u54E6");
-        else {
-            if (!com.clilystudio.netbook.hpay100.a.a.Q(String3))
-                return true;
-            com.clilystudio.netbook.util.e.a((Activity) AddBookHelpActivity1, "\u8BF7\u8F93\u5165\u6B63\u6587");
+    static /* synthetic */ boolean a(AddBookHelpActivity addBookHelpActivity) {
+        String string = addBookHelpActivity.a.getText().toString().trim();
+        String string2 = addBookHelpActivity.b.getText().toString().trim();
+        if (a.Q(string)) {
+            e.a((Activity) addBookHelpActivity, (String) "\u8bf7\u8f93\u5165\u6807\u9898");
+            return false;
         }
-        return false;
-    }
-
-    static void b(AddBookHelpActivity AddBookHelpActivity1) {
-        Account Account2 = am.e();
-
-        if (Account2 == null) {
-            com.clilystudio.netbook.util.e.a((Activity) AddBookHelpActivity1, "\u8BF7\u767B\u5F55\u540E\u518D\u53D1\u5E03");
-            AddBookHelpActivity1.startActivity(AuthLoginActivity.a((Context) AddBookHelpActivity1));
-        } else {
-            String String3 = Account2.getToken();
-            h h4 = new h((Context) AddBookHelpActivity1);
-            View View5 = LayoutInflater.from((Context) AddBookHelpActivity1).inflate(2130903202, null);
-            Object Object8;
-
-            ((TextView) View5.findViewById(2131493422)).setText(2131034586);
-            h4.d = "\u53D1\u5E03";
-            h4.a(2131034583, null);
-            h4.b(2131034129, (DialogInterface$OnClickListener) new j(AddBookHelpActivity1));
-            Object8 = h4.a(View5).b();
-            ((Button) ((Dialog) Object8).findViewById(16908313)).setOnClickListener((View$OnClickListener) new k(AddBookHelpActivity1, (Dialog) Object8, String3));
+        if (string.length() < 4) {
+            e.a((Activity) addBookHelpActivity, (String) "\u6807\u9898\u6587\u5b57\u592a\u5c11\u4e86\u54e6");
+            return false;
         }
+        if (a.Q(string2)) {
+            e.a((Activity) addBookHelpActivity, (String) "\u8bf7\u8f93\u5165\u6b63\u6587");
+            return false;
+        }
+        return true;
     }
 
-    static EditText c(AddBookHelpActivity AddBookHelpActivity1) {
-        return AddBookHelpActivity1.a;
+    static /* synthetic */ void b(AddBookHelpActivity addBookHelpActivity) {
+        Account account = am.e();
+        if (account == null) {
+            e.a((Activity) addBookHelpActivity, (String) "\u8bf7\u767b\u5f55\u540e\u518d\u53d1\u5e03");
+            addBookHelpActivity.startActivity(AuthLoginActivity.a(addBookHelpActivity));
+            return;
+        }
+        String string = account.getToken();
+        h h2 = new h(addBookHelpActivity);
+        View view = LayoutInflater.from(addBookHelpActivity).inflate(2130903202, null);
+        ((TextView) view.findViewById(2131493422)).setText(2131034586);
+        h2.d = "\u53d1\u5e03";
+        h2.a(2131034583, null);
+        h2.b(2131034129, (DialogInterface.OnClickListener) ((Object) new j(addBookHelpActivity)));
+        AlertDialog alertDialog = h2.a(view).b();
+        ((Button) alertDialog.findViewById(16908313)).setOnClickListener((View.OnClickListener) ((Object) new k(addBookHelpActivity, (Dialog) alertDialog, string)));
     }
 
-    static EditText d(AddBookHelpActivity AddBookHelpActivity1) {
-        return AddBookHelpActivity1.b;
+    static /* synthetic */ EditText c(AddBookHelpActivity addBookHelpActivity) {
+        return addBookHelpActivity.a;
     }
 
+    static /* synthetic */ EditText d(AddBookHelpActivity addBookHelpActivity) {
+        return addBookHelpActivity.b;
+    }
+
+    /*
+     * Enabled aggressive block sorting
+     */
+    @Override
     public void onBackPressed() {
-        int int1 = 1;
-        String String2 = a.getText().toString();
-        String String3 = b.getText().toString();
-
-        if (com.clilystudio.netbook.hpay100.a.a.Q(String2) && com.clilystudio.netbook.hpay100.a.a.Q(String3))
-            int1 = 0;
-        if (int1 != 0) {
-            h h4 = new h((Context) this);
-
-            h4.d = "\u63D0\u793A";
-            h4.e = "\u79BB\u5F00\u5C06\u4E22\u5931\u5DF2\u8F93\u5165\u7684\u5185\u5BB9\uFF0C\u786E\u5B9A\u79BB\u5F00\uFF1F";
-            h4.b("\u7559\u5728\u6B64\u9875", (DialogInterface$OnClickListener) new l(this));
-            h4.a("\u79BB\u5F00", (DialogInterface$OnClickListener) new m(this));
-            h4.a().show();
-        } else
-            super.onBackPressed();
+        boolean bl = true;
+        String string = this.a.getText().toString();
+        String string2 = this.b.getText().toString();
+        if (a.Q(string) && a.Q(string2)) {
+            bl = false;
+        }
+        if (bl) {
+            h h2 = new h(this);
+            h2.d = "\u63d0\u793a";
+            h2.e = "\u79bb\u5f00\u5c06\u4e22\u5931\u5df2\u8f93\u5165\u7684\u5185\u5bb9\uff0c\u786e\u5b9a\u79bb\u5f00\uff1f";
+            h2.b("\u7559\u5728\u6b64\u9875", (DialogInterface.OnClickListener) new l(this));
+            h2.a("\u79bb\u5f00", (DialogInterface.OnClickListener) new m(this));
+            h2.a().show();
+            return;
+        }
+        super.onBackPressed();
     }
 
-    public void onCreate(Bundle Bundle1) {
-        super.onCreate(Bundle1);
-        setContentView(2130903074);
-        a(2131034286, 2131034448, (aa) new i(this));
-        ShareSDK.initSDK((Context) this);
-        a = (EditText) findViewById(2131493065);
-        b = (EditText) findViewById(2131493066);
+    @Override
+    public void onCreate(Bundle bundle) {
+        super.onCreate(bundle);
+        this.setContentView(2130903074);
+        this.a(2131034286, 2131034448, (aa) ((Object) new i(this)));
+        ShareSDK.initSDK(this);
+        this.a = (EditText) this.findViewById(2131493065);
+        this.b = (EditText) this.findViewById(2131493066);
     }
 }

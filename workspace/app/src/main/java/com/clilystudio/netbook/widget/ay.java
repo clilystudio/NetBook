@@ -3,21 +3,24 @@ package com.clilystudio.netbook.widget;
 import android.text.Editable;
 import android.text.TextWatcher;
 
-final class ay implements TextWatcher {
+final class ay
+        implements TextWatcher {
+    private /* synthetic */ SendView a;
 
-    private SendView a;
-
-    ay(SendView SendView1) {
-        a = SendView1;
+    ay(SendView sendView) {
+        this.a = sendView;
     }
 
-    public final void afterTextChanged(Editable Editable1) {
+    @Override
+    public final void afterTextChanged(Editable editable) {
     }
 
-    public final void beforeTextChanged(CharSequence CharSequence1, int int2, int int3, int int4) {
+    @Override
+    public final void beforeTextChanged(CharSequence charSequence, int n, int n2, int n3) {
     }
 
-    public final void onTextChanged(CharSequence CharSequence1, int int2, int int3, int int4) {
-        SendView.a(a);
+    @Override
+    public final void onTextChanged(CharSequence charSequence, int n, int n2, int n3) {
+        SendView.a(this.a);
     }
 }

@@ -5,25 +5,27 @@ import android.graphics.Canvas;
 import android.util.AttributeSet;
 import android.widget.ListView;
 
-public class SearchFixListView extends ListView {
-
-    public SearchFixListView(Context Context1, AttributeSet AttributeSet2, int int3) {
-        super(Context1, AttributeSet2, int3);
+public class SearchFixListView
+        extends ListView {
+    public SearchFixListView(Context context) {
+        super(context);
     }
 
-    public SearchFixListView(Context Context1) {
-        super(Context1);
+    public SearchFixListView(Context context, AttributeSet attributeSet) {
+        super(context, attributeSet);
     }
 
-    public SearchFixListView(Context Context1, AttributeSet AttributeSet2) {
-        super(Context1, AttributeSet2);
+    public SearchFixListView(Context context, AttributeSet attributeSet, int n) {
+        super(context, attributeSet, n);
     }
 
-    protected void dispatchDraw(Canvas Canvas1) {
+    @Override
+    protected void dispatchDraw(Canvas canvas) {
         try {
-            super.dispatchDraw(Canvas1);
-        } catch (IndexOutOfBoundsException IndexOutOfBoundsException2) {
-            IndexOutOfBoundsException2.printStackTrace();
+            super.dispatchDraw(canvas);
+            return;
+        } catch (IndexOutOfBoundsException var2_2) {
+            var2_2.printStackTrace();
             return;
         }
     }

@@ -2,28 +2,33 @@ package com.clilystudio.netbook.ui;
 
 import android.os.CountDownTimer;
 
-final class bo extends CountDownTimer {
+import java.util.Date;
 
-    private long a;
-    private MysteryActivity b;
-    bo(MysteryActivity MysteryActivity1, long long2, long long4, long long6) {
-        super(long2, 1000L);
-        b = MysteryActivity1;
-        a = long6;
+final class bo
+        extends CountDownTimer {
+    private /* synthetic */ long a;
+    private /* synthetic */ MysteryActivity b;
+
+    bo(MysteryActivity mysteryActivity, long l, long l2, long l3) {
+        this.b = mysteryActivity;
+        this.a = l3;
+        super(l, 1000);
     }
 
+    @Override
     public final void onFinish() {
-        MysteryActivity.c(b);
+        MysteryActivity.c(this.b);
     }
 
-    public final void onTick(long long1) {
-        long long5 = long1 - a;
-
-        if (long5 > 0L)
-            MysteryActivity.b(b).setText((CharSequence) String.valueOf(long5 / 1000L));
-        else {
-            MysteryActivity.c(b);
-            MysteryActivity.d(b);
+    @Override
+    public final void onTick(long l) {
+        MysteryActivity.a(this.b, new Date().getTime());
+        long l2 = l - this.a;
+        if (l2 > 0) {
+            MysteryActivity.b(this.b).setText(String.valueOf(l2 / 1000));
+            return;
         }
+        MysteryActivity.c(this.b);
+        MysteryActivity.d(this.b);
     }
 }

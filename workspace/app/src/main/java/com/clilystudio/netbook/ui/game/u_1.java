@@ -4,15 +4,16 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 
-final class u extends BroadcastReceiver {
+final class u
+        extends BroadcastReceiver {
+    private /* synthetic */ GameGiftFragment a;
 
-    private GameGiftFragment a;
-
-    u(GameGiftFragment GameGiftFragment1) {
-        a = GameGiftFragment1;
+    u(GameGiftFragment gameGiftFragment) {
+        this.a = gameGiftFragment;
     }
 
-    public final void onReceive(Context Context1, Intent Intent2) {
-        GameGiftFragment.c(a);
+    @Override
+    public final void onReceive(Context context, Intent intent) {
+        GameGiftFragment.c(this.a);
     }
 }

@@ -2,22 +2,27 @@ package com.clilystudio.netbook.reader.random;
 
 import com.clilystudio.netbook.reader.cw;
 
-final class i implements cw {
+final class i
+        implements cw {
+    private /* synthetic */ ReaderRandomActivity a;
 
-    private ReaderRandomActivity a;
-
-    i(ReaderRandomActivity ReaderRandomActivity1) {
-        a = ReaderRandomActivity1;
+    i(ReaderRandomActivity readerRandomActivity) {
+        this.a = readerRandomActivity;
     }
 
-    public final void a(int int1) {
-        ReaderRandomActivity.c(a, int1);
+    @Override
+    public final void a(int n2) {
+        ReaderRandomActivity.c(this.a, n2);
     }
 
-    public final void b(int int1) {
-        if (int1 == 2)
-            ReaderRandomActivity.o(a);
-        if (int1 == 0)
-            ReaderRandomActivity.p(a);
+    @Override
+    public final void b(int n2) {
+        if (n2 == 2) {
+            ReaderRandomActivity.o(this.a);
+        }
+        if (n2 != 0) {
+            return;
+        }
+        ReaderRandomActivity.p(this.a);
     }
 }

@@ -1,30 +1,27 @@
 package com.clilystudio.netbook.reader;
 
-import android.content.Context;
 import android.content.Intent;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.AdapterView$OnItemClickListener;
 
 import com.clilystudio.netbook.model.TocSummary;
 
-final class bV implements AdapterView$OnItemClickListener {
+final class bV
+        implements AdapterView.OnItemClickListener {
+    private /* synthetic */ ReaderResourceFragment a;
 
-    private ReaderResourceFragment a;
-
-    bV(ReaderResourceFragment ReaderResourceFragment1) {
-        a = ReaderResourceFragment1;
+    bV(ReaderResourceFragment readerResourceFragment) {
+        this.a = readerResourceFragment;
     }
 
-    public final void onItemClick(AdapterView AdapterView1, View View2, int int3, long long4) {
-        int int6 = int3 - ReaderResourceFragment.b(a).getHeaderViewsCount();
-
-        if (int6 >= 0) {
-            TocSummary TocSummary7 = (TocSummary) ReaderResourceFragment.c(a).getItem(int6);
-            Intent Intent8 = ReaderActivity.a((Context) a.getActivity(), ReaderResourceFragment.a(a), ReaderResourceFragment.d(a), TocSummary7.get_id(), null, true);
-
-            a.startActivity(Intent8);
-            ReaderResourceFragment.c(a).a(int6);
+    @Override
+    public final void onItemClick(AdapterView<?> adapterView, View view, int n2, long l2) {
+        int n3 = n2 - ReaderResourceFragment.b(this.a).getHeaderViewsCount();
+        if (n3 >= 0) {
+            TocSummary tocSummary = (TocSummary) ReaderResourceFragment.c(this.a).getItem(n3);
+            Intent intent = ReaderActivity.a(this.a.getActivity(), ReaderResourceFragment.a(this.a), ReaderResourceFragment.d(this.a), tocSummary.get_id(), null, true);
+            this.a.startActivity(intent);
+            ReaderResourceFragment.c(this.a).a(n3);
         }
     }
 }

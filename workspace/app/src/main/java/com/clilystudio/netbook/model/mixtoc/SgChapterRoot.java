@@ -1,23 +1,22 @@
 package com.clilystudio.netbook.model.mixtoc;
 
 public class SgChapterRoot {
-
     private SgChapterBook book;
     private SgMixChapter[] content;
 
     public SgChapterBook getBook() {
-        return book;
+        return this.book;
     }
 
-    public void setBook(SgChapterBook SgChapterBook1) {
-        book = SgChapterBook1;
+    public void setBook(SgChapterBook sgChapterBook) {
+        this.book = sgChapterBook;
     }
 
     public SgMixChapter[] getContent() {
-        return content;
+        return this.content;
     }
 
-    public void setContent(SgMixChapter[] SgMixChapter_1darray1) {
-        content = SgMixChapter_1darray1;
+    public void setContent(SgMixChapter[] arrsgMixChapter) {
+        this.content = arrsgMixChapter;
     }
 }

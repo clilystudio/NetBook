@@ -1,27 +1,27 @@
 package com.clilystudio.netbook.model;
 
 public class TopicSummary$TopicSummaryBook {
-
-    TopicSummary this$0;     // final access specifier removed
+    final /* synthetic */ TopicSummary this$0;
     private String _id;
     private int postCount;
-    public TopicSummary$TopicSummaryBook(TopicSummary TopicSummary1) {
-        this$0 = TopicSummary1;
+
+    public TopicSummary$TopicSummaryBook(TopicSummary topicSummary) {
+        this.this$0 = topicSummary;
     }
 
     public int getPostCount() {
-        return postCount;
+        return this.postCount;
     }
 
-    public void setPostCount(int int1) {
-        postCount = int1;
+    public void setPostCount(int n) {
+        this.postCount = n;
     }
 
     public String get_id() {
-        return _id;
+        return this._id;
     }
 
-    public void set_id(String String1) {
-        _id = String1;
+    public void set_id(String string) {
+        this._id = string;
     }
 }

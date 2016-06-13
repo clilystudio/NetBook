@@ -1,18 +1,23 @@
 package com.clilystudio.netbook.ui;
 
+import android.content.Intent;
 import android.view.View;
-import android.view.View$OnClickListener;
 
-final class af implements View$OnClickListener {
+import com.clilystudio.netbook.ui.post.AddReviewRatingActivity;
 
-    private BestReviewsFragment a;
+final class af
+        implements View.OnClickListener {
+    private /* synthetic */ BestReviewsFragment a;
 
-    af(BestReviewsFragment BestReviewsFragment1) {
-        a = BestReviewsFragment1;
+    af(BestReviewsFragment bestReviewsFragment) {
+        this.a = bestReviewsFragment;
     }
-// Error: Internal #201: 
-// The following method may not be correct.
 
-    public final void onClick(View View1) {
+    @Override
+    public final void onClick(View view) {
+        String string = this.a.getArguments().getString("args_book_id");
+        Intent intent = new Intent(this.a.getActivity(), AddReviewRatingActivity.class);
+        intent.putExtra("bookReviewBookId", string);
+        this.a.startActivity(intent);
     }
 }

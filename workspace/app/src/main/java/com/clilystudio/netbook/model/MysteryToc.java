@@ -1,23 +1,22 @@
 package com.clilystudio.netbook.model;
 
 public class MysteryToc {
-
     private String _id;
     private String book;
 
     public String getBook() {
-        return book;
+        return this.book;
     }
 
-    public void setBook(String String1) {
-        book = String1;
+    public void setBook(String string) {
+        this.book = string;
     }
 
     public String get_id() {
-        return _id;
+        return this._id;
     }
 
-    public void set_id(String String1) {
-        _id = String1;
+    public void set_id(String string) {
+        this._id = string;
     }
 }

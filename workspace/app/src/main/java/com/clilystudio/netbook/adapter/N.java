@@ -1,26 +1,26 @@
 package com.clilystudio.netbook.adapter;
 
-import android.content.DialogInterface$OnClickListener;
+import android.content.DialogInterface;
 import android.view.View;
-import android.view.View$OnClickListener;
 
 import com.clilystudio.netbook.model.Tweet;
 
-final class N implements View$OnClickListener {
+final class N
+        implements View.OnClickListener {
+    final /* synthetic */ R a;
+    final /* synthetic */ Tweet b;
+    final /* synthetic */ G c;
 
-    R a;     // final access specifier removed
-    Tweet b;     // final access specifier removed
-    G c;     // final access specifier removed
-    N(G G1, R R2, Tweet Tweet3) {
-        c = G1;
-        a = R2;
-        b = Tweet3;
+    N(G g, R r, Tweet tweet) {
+        this.c = g;
+        this.a = r;
+        this.b = tweet;
     }
 
-    public final void onClick(View View1) {
-        h h2 = new h(a.q.getContext()).a(true);
-
-        h2.e = "\u786E\u5B9A\u5220\u9664\u52A8\u6001\uFF1F";
-        h2.b("\u53D6\u6D88", (DialogInterface$OnClickListener) new P(this)).a("\u786E\u5B9A", (DialogInterface$OnClickListener) new O(this)).b();
+    @Override
+    public final void onClick(View view) {
+        h h2 = new h(this.a.q.getContext()).a(true);
+        h2.e = "\u786e\u5b9a\u5220\u9664\u52a8\u6001\uff1f";
+        h2.b("\u53d6\u6d88", (DialogInterface.OnClickListener) new P(this)).a("\u786e\u5b9a", (DialogInterface.OnClickListener) new O(this)).b();
     }
 }

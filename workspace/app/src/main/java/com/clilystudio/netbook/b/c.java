@@ -6,19 +6,19 @@ import android.content.Intent;
 import com.clilystudio.netbook.ui.SearchActivity;
 import com.clilystudio.netbook.ui.bf;
 
-public final class c extends b {
-
+public final class c
+        extends b {
     private bf b;
 
-    public c(Context Context1, bf bf2) {
-        super(Context1);
-        b = bf2;
+    public c(Context context, bf bf2) {
+        super(context);
+        this.b = bf2;
     }
 
+    @Override
     public final Intent a() {
-        Intent Intent1 = SearchActivity.a(a, 2);
-
-        Intent1.putExtra("keyword", b.c());
-        return Intent1;
+        Intent intent = SearchActivity.a(this.a, 2);
+        intent.putExtra("keyword", this.b.c());
+        return intent;
     }
 }

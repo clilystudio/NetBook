@@ -1,10 +1,10 @@
 package com.clilystudio.netbook.model;
 
-public class BookTopRoot extends Root {
+public class BookTopRoot
+        extends Root {
+    Favorite favorite;
 
-    BookTopRoot$Favorite favorite;
-
-    public BookTopRoot$Favorite getFavorite() {
-        return favorite;
+    public Favorite getFavorite() {
+        return this.favorite;
     }
 }

@@ -1,232 +1,202 @@
 package com.clilystudio.netbook.reader.txt;
 
+import com.clilystudio.netbook.c;
 import com.clilystudio.netbook.model.ChapterLink;
 import com.clilystudio.netbook.model.Toc;
 import com.clilystudio.netbook.model.mixtoc.LocalTxtToc;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public final class U {
+    private static final String[] a = new String[]{"\b*(\u7b2c.+\u7ae0)", "(\\d{3})\\s"};
 
-    private static final String[] a = {"\b*(\u7B2C.+\u7AE0)", "(\\d{3})\\s"};
-
-    public static Toc a(String String1) {
-        Toc Toc2 = new Toc();
-        Object Object4;
-        int int6;
-
-        Toc2.setHost(String1);
-        try {
-            Object4 = d(String1);
-        } catch (IOException IOException3) {
-            IOException3.printStackTrace();
-            return null;
-        }
-        label_110:
+    /*
+     * Unable to fully structure code
+     * Enabled force condition propagation
+     * Lifted jumps to return sites
+     */
+    public static Toc a(String var0) {
+        block18:
         {
-            if (Object4 == null || ((List) Object4).size() == 0) {
-                String[] String_1darray5 = a;
-
-                int6 = 0;
-                while (int6 < 2) {
-                    BufferedReader BufferedReader8;
-                    Object Object9;
-                    Pattern Pattern10;
-                    int int11;
-                    int int12;
-                    int int13;
-
-                    try {
-                        String String7 = String_1darray5[int6];
-
-                        BufferedReader8 = com.clilystudio.netbook.hpay100.a.a.G(String1);
-                        Object9 = new ArrayList();
-                        Pattern10 = Pattern.compile(String7);
-                    } catch (IOException IOException21) {
-                        IOException21.printStackTrace();
-                        return null;
-                    }
-                    int11 = 0;
-                    int12 = 0;
-                    int13 = 0;
-                    for (; ; ) {
-                        Object Object14;
-
-                        try {
-                            Object14 = BufferedReader8.readLine();
-                        } catch (IOException IOException22) {
-                            IOException22.printStackTrace();
-                            return null;
+            var1_1 = new Toc();
+            var1_1.setHost(var0);
+            var3_2 = U.d(var0);
+            if (var3_2 == null)**GOTO lbl8
+            if (var3_2.size() != 0) break block18;
+            lbl8:
+            // 2 sources:
+            var4_3 = U.a;
+            block10:
+            for (var5_4 = 0; var5_4 < 2; ++var5_4) {
+                var6_5 = var4_3[var5_4];
+                var7_6 = a.G(var0);
+                var8_7 = new ArrayList<ChapterLink>();
+                var9_8 = Pattern.compile(var6_5);
+                var10_9 = 0;
+                var11_10 = 0;
+                var12_11 = 0;
+                do {
+                    block19:
+                    {
+                        var13_12 = var7_6.readLine();
+                        if (var13_12 == null) break;
+                        var14_13 = var9_8.matcher(var13_12);
+                        if (var14_13.find() && var14_13.groupCount() > 0) {
+                            if (var8_7.size() > 0) {
+                                var18_16 = var8_7.get(-1 + var8_7.size());
+                                var18_16.setTxtCharLength(var11_10 - var18_16.getTxtCharOffset());
+                            }
+                            var16_15 = new ChapterLink();
+                            var16_15.setUnreadble(false);
+                            var16_15.setTitle(var14_13.group(1));
+                            var16_15.setTxtLineOffset(var12_11);
+                            var16_15.setTxtCharOffset(var11_10);
+                            var8_7.add(var16_15);
+                            var10_9 = var12_11;
                         }
-                        if (Object14 != null) {
-                            label_98:
-                            {
-                                try {
-                                    Matcher Matcher15 = Pattern10.matcher((CharSequence) Object14);
-                                    Object Object17;
-
-                                    if (!Matcher15.find() || Matcher15.groupCount() <= 0)
-                                        break label_98;
-                                    if (((List) Object9).size() > 0) {
-                                        ChapterLink ChapterLink19 = (ChapterLink) ((List) Object9).get(-1 + ((List) Object9).size());
-
-                                        ChapterLink19.setTxtCharLength(int12 - ChapterLink19.getTxtCharOffset());
-                                    }
-                                    Object17 = new ChapterLink();
-                                    ((ChapterLink) Object17).setUnreadble(false);
-                                    ((ChapterLink) Object17).setTitle(Matcher15.group(1));
-                                    ((ChapterLink) Object17).setTxtLineOffset(int13);
-                                    ((ChapterLink) Object17).setTxtCharOffset(int12);
-                                    ((List) Object9).add(Object17);
-                                } catch (IOException IOException23) {
-                                    IOException23.printStackTrace();
-                                    return null;
-                                }
-                                int11 = int13;
-                            }
-                            if (int13 - int11 > 2000) {
-                                try {
-                                    Object4 = new ArrayList();
-                                    if (((List) Object4).size() == 0)
-                                        break label_110;
-                                    else
-                                        break;
-                                } catch (IOException IOException24) {
-                                    IOException24.printStackTrace();
-                                    return null;
-                                }
-                                break;
-                            } else {
-                                int int16 = int13 + 1;
-
-                                try {
-                                    int12 += ((String) Object14).length();
-                                } catch (IOException IOException25) {
-                                    IOException25.printStackTrace();
-                                    return null;
-                                }
-                                int13 = int16;
-                            }
-                            continue;
-                        } else {
-                            try {
-                                if (((List) Object9).size() > 0) {
-                                    ChapterLink ChapterLink20 = (ChapterLink) ((List) Object9).get(-1 + ((List) Object9).size());
-
-                                    ChapterLink20.setTxtCharLength(int12 - ChapterLink20.getTxtCharOffset());
-                                    a((List) Object9, String1);
-                                }
-                                BufferedReader8.close();
-                            } catch (IOException IOException26) {
-                                IOException26.printStackTrace();
-                                return null;
-                            }
-                            Object4 = Object9;
+                        if (var12_11 - var10_9 <= 2000) break block19;
+                        var3_2 = new ArrayList<ChapterLink>();
+                        lbl38:
+                        // 2 sources:
+                        while (var3_2.size() == 0) {
+                            continue block10;
                         }
+                        break block10;
                     }
+                    var15_14 = var12_11 + 1;
+                    var11_10 += var13_12.length();
+                    var12_11 = var15_14;
+                    continue;
                     break;
+                } while (true);
+                if (var8_7.size() > 0) {
+                    var19_17 = var8_7.get(-1 + var8_7.size());
+                    var19_17.setTxtCharLength(var11_10 - var19_17.getTxtCharOffset());
+                    U.a(var8_7, var0);
+                }
+                var7_6.close();
+                var3_2 = var8_7;
+                **GOTO lbl38
+            }
+        }
+        if (var3_2 == null)**GOTO lbl -1000
+        try {
+            if (var3_2.size() == 0) lbl - 1000: // 2 sources:
+            {
+                if ((var3_2 = U.c(var0)).size() > 0) {
+                    var1_1.setRealChapter(false);
                 }
             }
-            if (Object4 == null || ((List) Object4).size() == 0) {
-                Object4 = c(String1);
-                if (((List) Object4).size() > 0)
-                    Toc2.setRealChapter(false);
-            }
-            Toc2.setChapters((ChapterLink[]) ((List) Object4).toArray(new ChapterLink[((List) Object4).size()]));
-            return Toc2;
+            var1_1.setChapters(var3_2.toArray(new ChapterLink[var3_2.size()]));
+            return var1_1;
+        } catch (IOException var2_18) {
+            var2_18.printStackTrace();
+            return null;
         }
-        ++int6;
     }
 
-    private static void a(List List1, String String2) {
+    private static void a(List<ChapterLink> list, String string) {
         try {
-            ObjectOutputStream ObjectOutputStream3 = new ObjectOutputStream((OutputStream) new FileOutputStream(new File(com.clilystudio.netbook.hpay100.a.a.J(com.clilystudio.netbook.c.d), b(String2))));
-
-            ObjectOutputStream3.writeObject(new LocalTxtToc(new File(String2).length(), List1));
-            ObjectOutputStream3.flush();
-            ObjectOutputStream3.close();
-        } catch (IOException IOException4) {
-            IOException4.printStackTrace();
+            ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(new File(a.J(c.d), U.b(string))));
+            objectOutputStream.writeObject(new LocalTxtToc(new File(string).length(), list));
+            objectOutputStream.flush();
+            objectOutputStream.close();
+            return;
+        } catch (IOException var3_3) {
+            var3_3.printStackTrace();
             return;
         }
     }
 
-    public static String b(String String1) {
-        String String2 = String1.trim().substring(1 + String1.lastIndexOf("/"));
-        int int3 = String2.lastIndexOf(".");
-
-        if (int3 != -1)
-            return String2.substring(0, int3);
-        else
-            throw new FileNotFoundException();
+    public static String b(String string) {
+        String string2 = string.trim().substring(1 + string.lastIndexOf("/"));
+        int n = string2.lastIndexOf(".");
+        if (n != -1) {
+            return string2.substring(0, n);
+        }
+        throw new FileNotFoundException();
     }
 
-    private static List c(String String1) {
-        BufferedReader BufferedReader2 = com.clilystudio.netbook.hpay100.a.a.G(String1);
-        Object Object3 = new ArrayList();
-        int int4 = 1;
-        int int5 = 0;
-        int int6 = 0;
-
-        for (; ; ) {
-            String String7 = BufferedReader2.readLine();
-
-            if (String7 != null) {
-                int int11;
-
-                if (int5 >= int4 * 5000 || int6 == 0) {
-                    Object Object9;
-
-                    if (((List) Object3).size() > 0) {
-                        ChapterLink ChapterLink12 = (ChapterLink) ((List) Object3).get(-1 + ((List) Object3).size());
-
-                        ChapterLink12.setTxtCharLength(int5 - ChapterLink12.getTxtCharOffset());
-                    }
-                    Object9 = new ChapterLink();
-                    ((ChapterLink) Object9).setUnreadble(false);
-                    ((ChapterLink) Object9).setTitle(new StringBuilder("\u7B2C").append(int4).append("\u8282").toString());
-                    ((ChapterLink) Object9).setTxtCharOffset(int5);
-                    ((ChapterLink) Object9).setTxtLineOffset(int6);
-                    ((List) Object3).add(Object9);
-                    int11 = int4 + 1;
-                } else
-                    int11 = int4;
-                ++int6;
-                int5 += String7.length();
-                int4 = int11;
-            } else {
-                if (((List) Object3).size() > 0) {
-                    ChapterLink ChapterLink8 = (ChapterLink) ((List) Object3).get(-1 + ((List) Object3).size());
-
-                    ChapterLink8.setTxtCharLength(int5 - ChapterLink8.getTxtCharOffset());
-                    a((List) Object3, String1);
+    /*
+     * Enabled aggressive block sorting
+     */
+    private static List<ChapterLink> c(String string) {
+        String string2;
+        BufferedReader bufferedReader = a.G(string);
+        ArrayList<ChapterLink> arrayList = new ArrayList<ChapterLink>();
+        int n = 1;
+        int n2 = 0;
+        int n3 = 0;
+        while ((string2 = bufferedReader.readLine()) != null) {
+            int n4;
+            if (n2 >= n * 5000 || n3 == 0) {
+                if (arrayList.size() > 0) {
+                    ChapterLink chapterLink = arrayList.get(-1 + arrayList.size());
+                    chapterLink.setTxtCharLength(n2 - chapterLink.getTxtCharOffset());
                 }
-                BufferedReader2.close();
-                return (List) Object3;
+                ChapterLink chapterLink = new ChapterLink();
+                chapterLink.setUnreadble(false);
+                chapterLink.setTitle("\u7b2c" + n + "\u8282");
+                chapterLink.setTxtCharOffset(n2);
+                chapterLink.setTxtLineOffset(n3);
+                arrayList.add(chapterLink);
+                n4 = n + 1;
+            } else {
+                n4 = n;
             }
+            ++n3;
+            n2 += string2.length();
+            n = n4;
         }
+        if (arrayList.size() > 0) {
+            ChapterLink chapterLink = arrayList.get(-1 + arrayList.size());
+            chapterLink.setTxtCharLength(n2 - chapterLink.getTxtCharOffset());
+            U.a(arrayList, string);
+        }
+        bufferedReader.close();
+        return arrayList;
     }
 
-    private static List d(String String1) {
-        try {
-            File File2 = new File(com.clilystudio.netbook.hpay100.a.a.J(com.clilystudio.netbook.c.d), b(String1));
-
-            if (!File2.exists())
-        } catch (IOException IOException4) {
-            IOException4.printStackTrace();
-        } catch (ClassNotFoundException ClassNotFoundException3) {
-            ClassNotFoundException3.printStackTrace();
+    /*
+     * Enabled force condition propagation
+     * Lifted jumps to return sites
+     */
+    private static List<ChapterLink> d(String string) {
+        File file;
+        block6:
+        {
+            file = new File(a.J(c.d), U.b(string));
+            if (file.exists()) break block6;
+            return null;
         }
-        return null;
+        try {
+            ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(file));
+            LocalTxtToc localTxtToc = (LocalTxtToc) objectInputStream.readObject();
+            objectInputStream.close();
+            if (new File(string).length() == localTxtToc.getTxtFileLength()) {
+                return localTxtToc.getChapterLinks();
+            }
+            file.delete();
+            do {
+                return null;
+                break;
+            } while (true);
+        } catch (IOException var3_4) {
+            var3_4.printStackTrace();
+            return null;
+        } catch (ClassNotFoundException var2_5) {
+            var2_5.printStackTrace();
+            return null;
+        }
     }
 }

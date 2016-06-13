@@ -1,53 +1,63 @@
 package com.clilystudio.netbook.ui.post;
 
 import com.clilystudio.netbook.a.e;
+import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.model.TweetResult;
 
-final class dz extends e {
+final class dz
+        extends e<String, Void, TweetResult> {
+    private /* synthetic */ TweetDetailActivity a;
 
-    private TweetDetailActivity a;
-
-    dz(TweetDetailActivity TweetDetailActivity1, byte byte2) {
-        this(TweetDetailActivity1);
+    private dz(TweetDetailActivity tweetDetailActivity) {
+        this.a = tweetDetailActivity;
     }
 
-    private dz(TweetDetailActivity TweetDetailActivity1) {
-        a = TweetDetailActivity1;
+    /* synthetic */ dz(TweetDetailActivity tweetDetailActivity, byte by) {
+        this(tweetDetailActivity);
     }
 
-    private transient TweetResult a() {
-        TweetResult TweetResult2;
-
+    private /* varargs */ TweetResult a() {
         try {
-            TweetResult2 = com.clilystudio.netbook.api.b.b().l(a.a);
-        } catch (Exception Exception1) {
-            Exception1.printStackTrace();
+            TweetResult tweetResult = b.b().l(this.a.a);
+            return tweetResult;
+        } catch (Exception var1_2) {
+            var1_2.printStackTrace();
             return null;
         }
-        return TweetResult2;
     }
 
-    protected final Object doInBackground(Object[] Object_1darray1) {
-        return a();
+    /*
+     * Exception decompiling
+     */
+    @Override
+    protected final /* synthetic */ Object doInBackground(Object[] var1_1) {
+        // This method has failed to decompile.  When submitting a bug report, please provide this stack trace, and (if you hold appropriate legal rights) the relevant class file.
+        // java.lang.ArrayIndexOutOfBoundsException
+        throw new IllegalStateException("Decompilation failed");
     }
 
-    protected final void onPostExecute(Object Object1) {
-        Object Object2 = (TweetResult) Object1;
-
-        super.onPostExecute(Object2);
-        if (Object2 != null && ((TweetResult) Object2).getTweet() != null) {
-            TweetDetailActivity.a(a, (TweetResult) Object2);
-            TweetDetailActivity.c(a).getTweet().setUser(TweetDetailActivity.c(a).getUser());
-            if (((TweetResult) Object2).getTweet().isArticle())
-                TweetDetailActivity.b(a, "ARTICLE");
-            else
-                TweetDetailActivity.b(a, "TWEET");
-            a.f();
-            TweetDetailActivity.b(a, (TweetResult) Object2);
-            TweetDetailActivity.a(a, TweetDetailActivity.c(a).getTweet().getVotes());
-            TweetDetailActivity.g(a);
-            TweetDetailActivity.h(a);
-        } else
-            a.h();
+    /*
+     * Enabled aggressive block sorting
+     */
+    @Override
+    protected final /* synthetic */ void onPostExecute(Object object) {
+        TweetResult tweetResult = (TweetResult) object;
+        super.onPostExecute(tweetResult);
+        if (tweetResult != null && tweetResult.getTweet() != null) {
+            TweetDetailActivity.a(this.a, tweetResult);
+            TweetDetailActivity.c(this.a).getTweet().setUser(TweetDetailActivity.c(this.a).getUser());
+            if (tweetResult.getTweet().isArticle()) {
+                TweetDetailActivity.b(this.a, "ARTICLE");
+            } else {
+                TweetDetailActivity.b(this.a, "TWEET");
+            }
+            this.a.f();
+            TweetDetailActivity.b(this.a, tweetResult);
+            TweetDetailActivity.a(this.a, TweetDetailActivity.c(this.a).getTweet().getVotes());
+            TweetDetailActivity.g(this.a);
+            TweetDetailActivity.h(this.a);
+            return;
+        }
+        this.a.h();
     }
 }

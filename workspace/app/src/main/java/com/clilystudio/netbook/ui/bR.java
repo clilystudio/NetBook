@@ -1,92 +1,95 @@
 package com.clilystudio.netbook.ui;
 
 import android.app.Activity;
-import android.content.Context;
 import android.os.Handler;
 
+import com.clilystudio.netbook.api.b;
+import com.clilystudio.netbook.model.BookSummary;
 import com.clilystudio.netbook.model.SearchPromRoot;
 import com.clilystudio.netbook.model.SearchResultRoot;
+import com.clilystudio.netbook.util.e;
 
-import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
-class bR extends com.clilystudio.netbook.a.e {
+class bR
+        extends com.clilystudio.netbook.a.e<String, Void, List<BookSummary>> {
+    final /* synthetic */ SearchActivity a;
 
-    final SearchActivity a = null;
-
-    bR(SearchActivity SearchActivity1, byte byte2) {
-        this(SearchActivity1);
+    private bR(SearchActivity searchActivity) {
+        this.a = searchActivity;
     }
 
-    private bR(SearchActivity SearchActivity1) {
-        a = SearchActivity1;
+    /* synthetic */ bR(SearchActivity searchActivity, byte by) {
+        this(searchActivity);
     }
 
-    private transient List a(String[] String_1darray1) {
-        label_29:
+    /*
+     * Enabled force condition propagation
+     * Lifted jumps to return sites
+     */
+    private /* varargs */ List<BookSummary> a(String... arrstring) {
+        block5:
         {
-            List List3;
-
-            try {
-                SearchPromRoot SearchPromRoot6;
-
-                if (SearchActivity.i(a) != 1)
-                    break label_29;
-                List3 = com.clilystudio.netbook.api.b.b().n(String_1darray1[0]);
-                SearchPromRoot6 = com.clilystudio.netbook.api.b.b().q(String_1darray1[0]);
-            } catch (Exception Exception2) {
-                Exception2.printStackTrace();
-            }
-            List3 = null;
-            return List3;
+            if (SearchActivity.i(this.a) != 1) break block5;
+            List<BookSummary> list = b.b().n(arrstring[0]);
+            SearchPromRoot searchPromRoot = b.b().q(arrstring[0]);
+            if (searchPromRoot == null) return list;
+            if (searchPromRoot.getProm() == null) return list;
+            list.add(0, searchPromRoot.getProm());
+            return list;
         }
+        SearchResultRoot searchResultRoot = b.b().p(arrstring[0]);
+        if (searchResultRoot == null) return null;
         try {
-            SearchResultRoot SearchResultRoot4 = com.clilystudio.netbook.api.b.b().p(String_1darray1[0]);
-        } catch (Exception Exception7) {
-            Exception7.printStackTrace();
+            return searchResultRoot.getBooks();
+        } catch (Exception var2_6) {
+            var2_6.printStackTrace();
         }
+        return null;
     }
 
-    protected void a(List List1) {
-        super.onPostExecute(List1);
-        SearchActivity.a(a, true);
-        if (List1 != null) {
-            String String3;
-            Object Object4;
-            String String5;
-            Map Map6;
-
-            SearchActivity.b(a).a((Collection) List1);
-            new Handler().post((Runnable) new bS(this));
-            if (List1.size() > 0) {
-                SearchActivity.a(a, 1);
-                String3 = "1";
-            } else {
-                SearchActivity.a(a, 3);
-                String3 = "0";
-            }
-            Object4 = a;
-            String5 = SearchActivity.j(a);
-            Map6 = com.clilystudio.netbook.hpay100.a.a.p((Context) a);
-            Map6.put("emp", String3);
-            com.a.a.a.c((Context) Object4, String5, Map6);
+    /*
+     * Enabled aggressive block sorting
+     */
+    protected void a(List<BookSummary> list) {
+        String string;
+        super.onPostExecute(list);
+        SearchActivity.a(this.a, true);
+        if (list == null) {
+            SearchActivity.a(this.a, 2);
+            e.a((Activity) this.a, (int) 2131034478);
+            return;
+        }
+        SearchActivity.b(this.a).a(list);
+        new Handler().post(new bS(this));
+        if (list.size() > 0) {
+            SearchActivity.a(this.a, 1);
+            string = "1";
         } else {
-            SearchActivity.a(a, 2);
-            com.clilystudio.netbook.util.e.a((Activity) a, 2131034478);
+            SearchActivity.a(this.a, 3);
+            string = "0";
         }
+        SearchActivity searchActivity = this.a;
+        String string2 = SearchActivity.j(this.a);
+        Map<String, String> map = a.p(this.a);
+        map.put("emp", string);
+        com.a.a.a.c(searchActivity, string2, map);
     }
 
-    protected Object doInBackground(Object[] Object_1darray1) {
-        return a((String[]) Object_1darray1);
+    @Override
+    protected /* synthetic */ Object doInBackground(Object[] arrobject) {
+        return this.a((String[]) arrobject);
     }
 
-    protected void onPostExecute(Object Object1) {
-        a((List) Object1);
+    @Override
+    protected /* synthetic */ void onPostExecute(Object object) {
+        this.a((List) object);
     }
 
+    @Override
     protected void onPreExecute() {
         super.onPreExecute();
-        SearchActivity.a(a, false);
+        SearchActivity.a(this.a, false);
     }
 }

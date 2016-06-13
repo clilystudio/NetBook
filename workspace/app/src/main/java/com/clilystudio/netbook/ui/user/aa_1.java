@@ -6,45 +6,45 @@ import android.support.v4.app.FragmentTransaction;
 
 import com.clilystudio.netbook.ui.home.ZssqFragmentPagerAdapter;
 
-final class aa extends ZssqFragmentPagerAdapter {
+final class aa
+        extends ZssqFragmentPagerAdapter {
+    private /* synthetic */ PayVoucherActivity a;
 
-    private PayVoucherActivity a;
-
-    public aa(PayVoucherActivity PayVoucherActivity1, FragmentManager FragmentManager2) {
-        super(FragmentManager2);
-        int int4;
-        FragmentTransaction FragmentTransaction3;
-
-        a = PayVoucherActivity1;
-        PayVoucherActivity.a(PayVoucherActivity1).add(0, PayVoucherActivity1.a(0));
-        PayVoucherActivity.a(PayVoucherActivity1).add(1, PayVoucherActivity1.a(1));
-        PayVoucherActivity.a(PayVoucherActivity1).add(2, PayVoucherActivity1.a(2));
-        FragmentTransaction3 = FragmentManager2.beginTransaction();
-        for (int4 = 0; int4 < 3; ++int4) {
-            Fragment Fragment7 = (Fragment) PayVoucherActivity.a(PayVoucherActivity1).get(int4);
-
-            if (!Fragment7.isAdded())
-                FragmentTransaction3.add(PayVoucherActivity.b(PayVoucherActivity1).getId(), Fragment7, PayVoucherActivity1.b[int4]);
+    public aa(PayVoucherActivity payVoucherActivity, FragmentManager fragmentManager) {
+        this.a = payVoucherActivity;
+        super(fragmentManager);
+        PayVoucherActivity.a(payVoucherActivity).add(0, payVoucherActivity.a(0));
+        PayVoucherActivity.a(payVoucherActivity).add(1, payVoucherActivity.a(1));
+        PayVoucherActivity.a(payVoucherActivity).add(2, payVoucherActivity.a(2));
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        for (int i = 0; i < 3; ++i) {
+            Fragment fragment = (Fragment) PayVoucherActivity.a(payVoucherActivity).get(i);
+            if (fragment.isAdded()) continue;
+            fragmentTransaction.add(PayVoucherActivity.b(payVoucherActivity).getId(), fragment, payVoucherActivity.b[i]);
         }
-        if (!FragmentTransaction3.isEmpty()) {
-            FragmentTransaction3.commit();
-            FragmentManager2.executePendingTransactions();
+        if (!fragmentTransaction.isEmpty()) {
+            fragmentTransaction.commit();
+            fragmentManager.executePendingTransactions();
         }
     }
 
-    public final Fragment a(int int1) {
-        return (Fragment) PayVoucherActivity.a(a).get(int1);
+    @Override
+    public final Fragment a(int n) {
+        return (Fragment) PayVoucherActivity.a(this.a).get(n);
     }
 
-    protected final String b(int int1) {
-        return a.b[int1];
+    @Override
+    protected final String b(int n) {
+        return this.a.b[n];
     }
 
+    @Override
     public final int getCount() {
         return 3;
     }
 
-    public final CharSequence getPageTitle(int int1) {
-        return (CharSequence) a.b[int1];
+    @Override
+    public final CharSequence getPageTitle(int n) {
+        return this.a.b[n];
     }
 }

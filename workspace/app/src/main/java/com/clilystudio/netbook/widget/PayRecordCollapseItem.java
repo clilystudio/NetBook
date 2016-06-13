@@ -3,40 +3,35 @@ package com.clilystudio.netbook.widget;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import butterknife.ButterKnife;
+import butterknife.InjectView;
 
-public class PayRecordCollapseItem extends LinearLayout {
-
+public class PayRecordCollapseItem
+        extends LinearLayout {
+    @InjectView(value = 2131493578)
     LinearLayout mItemContainer;
 
-    public PayRecordCollapseItem(Context Context1, AttributeSet AttributeSet2) {
-        super(Context1, AttributeSet2);
+    public PayRecordCollapseItem(Context context, AttributeSet attributeSet) {
+        super(context, attributeSet);
     }
 
-    public final void a(String[] String_1darray1, int int2) {
-        LayoutInflater LayoutInflater3;
-        int int4;
-        int int5;
-
-        mItemContainer.removeAllViews();
-        LayoutInflater3 = LayoutInflater.from(getContext());
-        int4 = String_1darray1.length;
-        for (int5 = 0; int5 < int4; ++int5) {
-            Object Object6 = String_1darray1[int5];
-            Object Object7 = (TextView) LayoutInflater3.inflate(2130903348, (ViewGroup) mItemContainer, false);
-
-            ((TextView) Object7).setText((CharSequence) Object6);
-            mItemContainer.addView((View) Object7);
+    public final void a(String[] arrstring, int n) {
+        this.mItemContainer.removeAllViews();
+        LayoutInflater layoutInflater = LayoutInflater.from(this.getContext());
+        for (String string : arrstring) {
+            TextView textView = (TextView) layoutInflater.inflate(2130903348, (ViewGroup) this.mItemContainer, false);
+            textView.setText(string);
+            this.mItemContainer.addView(textView);
         }
     }
 
+    @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
-        ButterKnife.inject((View) this);
+        ButterKnife.inject(this);
     }
 }

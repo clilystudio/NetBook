@@ -5,197 +5,224 @@ import android.support.design.widget.am;
 
 import com.clilystudio.netbook.util.CipherUtil;
 
-public final class n {
+import java.util.LinkedList;
 
-    private K a;     // final access specifier removed
-    private ReaderChapter b;     // final access specifier removed
+public final class n {
+    private final K a;
+    private final ReaderChapter b;
     private int[] c;
     private int d;
     private int e;
     private int f;
-    public n(K K1, ReaderChapter ReaderChapter2, int[] int_1darray3, int int4) {
-        a = K1;
-        b = ReaderChapter2;
-        c = int_1darray3;
-        e = int4;
-        d = int_1darray3[int4];
+
+    public n(K k, ReaderChapter readerChapter, int[] arrn, int n2) {
+        this.a = k;
+        this.b = readerChapter;
+        this.c = arrn;
+        this.e = n2;
+        this.d = arrn[n2];
     }
 
-    public static n a(K K1, ReaderChapter ReaderChapter2, int int3) {
-        n n4 = new n(K1, ReaderChapter2, {0}, 0);
-
-        n4.f = int3;
-        return n4;
+    public static n a(K k, ReaderChapter readerChapter, int n2) {
+        n n3 = new n(k, readerChapter, new int[]{0}, 0);
+        n3.f = n2;
+        return n3;
     }
 
     public final ReaderChapter a() {
-        return b;
+        return this.b;
     }
 
-    public final String a(Context Context1) {
-        return am.b(Context1, c());
+    public final String a(Context context) {
+        return am.b(context, this.c());
     }
 
-    public final void a(int int1) {
-        e = 0;
+    public final void a(int n2) {
+        this.e = 0;
     }
 
-    public final void a(e e1) {
-        if (e()) {
-            if (h())
-                a.b(1 + b.getIndex(), e1, false);
-            else
-                e1.a(new n(a, b, c, 1 + e));
-        } else
-            e1.a(null);
+    public final void a(e<n> e2) {
+        if (this.e()) {
+            if (this.h()) {
+                this.a.b(1 + this.b.getIndex(), e2, false);
+                return;
+            }
+            e2.a(new n(this.a, this.b, this.c, 1 + this.e));
+            return;
+        }
+        e2.a(null);
     }
 
-    public final void a(String String1) {
-        c = a.a(String1);
-        d = c[0];
+    public final void a(String string) {
+        this.c = this.a.a(string);
+        this.d = this.c[0];
     }
 
     public final int b() {
-        return c[e];
+        return this.c[this.e];
     }
 
-    public final void b(e e1) {
-        if (f()) {
-            if (e > 0)
-                e1.a(new n(a, b, c, -1 + e));
-            else
-                a.a(-1 + b.getIndex(), e1, false);
-        } else
-            e1.a(null);
+    public final void b(e<n> e2) {
+        if (this.f()) {
+            if (this.e > 0) {
+                e2.a(new n(this.a, this.b, this.c, -1 + this.e));
+                return;
+            }
+            this.a.a(-1 + this.b.getIndex(), e2, false);
+            return;
+        }
+        e2.a(null);
     }
 
     public final String c() {
-        String String1 = b.getBody(this);
-
-        if (String1 == null)
+        String string = this.b.getBody(this);
+        if (string == null) {
             return "";
-        else {
-            String String3;
-
-            if (e > -1 + c.length)
-                e = -1 + c.length;
-            d = c[e];
-            try {
-                if (1 + e < c.length)
-                    return String1.substring(d, c[1 + e]);
-                else
-                    String3 = String1.substring(d);
-            } catch (Exception Exception2) {
-                Exception2.printStackTrace();
-                return "";
+        }
+        if (this.e > -1 + this.c.length) {
+            this.e = -1 + this.c.length;
+        }
+        this.d = this.c[this.e];
+        try {
+            if (1 + this.e < this.c.length) {
+                return string.substring(this.d, this.c[1 + this.e]);
             }
-            return String3;
+            String string2 = string.substring(this.d);
+            return string2;
+        } catch (Exception var2_3) {
+            var2_3.printStackTrace();
+            return "";
         }
     }
 
+    /*
+     * Unable to fully structure code
+     * Enabled aggressive block sorting
+     * Enabled unnecessary exception pruning
+     * Enabled aggressive exception aggregation
+     * Lifted jumps to return sites
+     */
     public final Object[] d() {
-        String String1 = b.getBody(this);
-
-        label_191:
-        {
-            if (String1 == null)
-                return null;
-            else {
-                Object[] Object_1darray2;
-
-                if (e > -1 + c.length)
-                    e = -1 + c.length;
-                d = c[e];
-                Object_1darray2 = new Object[2];
-                try {
-                    String String6;
-                    String String17;
-                    int int18;
-
-                    if (1 + e >= c.length)
-                        break label_191;
-                    String17 = String1.substring(d, c[1 + e]);
-                    String6 = String1.substring(c[1 + e]);
-                    int18 = String6.indexOf("\n");
-                } catch (Exception Exception3) {
-                    Exception3.printStackTrace();
-                }
-                return Object_1darray2;
-            }
+        var1_1 = this.b.getBody(this);
+        if (var1_1 == null) {
+            return null;
         }
+        if (this.e > -1 + this.c.length) {
+            this.e = -1 + this.c.length;
+        }
+        this.d = this.c[this.e];
+        var2_2 = new Object[2];
         try {
-            String String4 = String1.substring(d);
-        } catch (Exception Exception19) {
-            Exception19.printStackTrace();
+            if (1 + this.e >= this.c.length)**GOTO lbl17
+            var17_3 = var1_1.substring(this.d, this.c[1 + this.e]);
+            var6_4 = var1_1.substring(this.c[1 + this.e]);
+            var18_5 = var6_4.indexOf("\n");
+            if (var18_5 != -1) {
+                var6_4 = var6_4.substring(0, var18_5);
+            }
+            if (var6_4.startsWith("\u3000\u3000"))**GOTO lbl20
+            **GOTO lbl21
+            lbl17:
+            // 1 sources:
+            var5_7 = var4_6 = var1_1.substring(this.d);
+            var6_4 = "";
+            **GOTO lbl22
+            lbl20:
+            // 1 sources:
+            var6_4 = "";
+            lbl21:
+            // 2 sources:
+            var5_7 = var17_3;
+            lbl22:
+            // 2 sources:
+            var7_8 = var5_7.split("\n");
+            var8_9 = var7_8[-1 + var7_8.length].length();
+            var9_10 = var6_4.length();
+            var10_11 = new StringBuilder();
+            var11_12 = -1 + var7_8.length;
+            var7_8[var11_12] = var10_11.append(var7_8[var11_12]).append(var6_4).toString();
+            var12_13 = new LinkedList<Integer>();
+            var13_14 = 0;
+            do {
+                var14_15 = this.c[var13_14 + this.e] - this.d;
+                var15_16 = new Object[]{Float.valueOf(((float) var8_9 + (float) var14_15) / (float) (var8_9 + var9_10))};
+                var12_13.add((int) (100.0f * Float.parseFloat(String.format("%.2f", var15_16))));
+            } while (++var13_14 + this.e != this.c.length && this.c[var13_14 + this.e] - this.d < var9_10);
+            var2_2[0] = var7_8;
+            var2_2[1] = var12_13;
+            return var2_2;
+        } catch (Exception var3_17) {
+            var3_17.printStackTrace();
+            return var2_2;
         }
     }
 
     public final boolean e() {
-        if (!h() || b.hasNext())
+        if (!this.h() || this.b.hasNext()) {
             return true;
-        else
-            return false;
+        }
+        return false;
     }
 
     public final boolean f() {
-        if (e > 0 || b.hasPrevious())
+        if (this.e > 0 || this.b.hasPrevious()) {
             return true;
-        else
-            return false;
+        }
+        return false;
     }
 
     public final void g() {
-        String String1 = CipherUtil.a(b.getKey(), b.getContent());
-
-        if (String1 != null) {
-            c = a.a(String1);
-            d = c[0];
+        String string = CipherUtil.a(this.b.getKey(), this.b.getContent());
+        if (string == null) {
+            return;
         }
+        this.c = this.a.a(string);
+        this.d = this.c[0];
     }
 
     public final boolean h() {
-        if (1 + e >= c.length)
+        if (1 + this.e >= this.c.length) {
             return true;
-        else
-            return false;
+        }
+        return false;
     }
 
     public final String i() {
-        return b.getTitle();
+        return this.b.getTitle();
     }
 
     public final int j() {
-        return e;
+        return this.e;
     }
 
     public final int k() {
-        return c.length;
+        return this.c.length;
     }
 
     public final int l() {
-        return b.getIndex();
+        return this.b.getIndex();
     }
 
     public final int m() {
-        return d;
+        return this.d;
     }
 
     public final int n() {
-        return f;
+        return this.f;
     }
 
     public final int o() {
-        return b.getStatus();
+        return this.b.getStatus();
     }
 
     public final boolean p() {
-        if (b.getStatus() == 1)
+        if (this.b.getStatus() == 1) {
             return true;
-        else
-            return false;
+        }
+        return false;
     }
 
     public final K q() {
-        return a;
+        return this.a;
     }
 }

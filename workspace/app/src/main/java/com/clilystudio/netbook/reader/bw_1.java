@@ -1,28 +1,27 @@
 package com.clilystudio.netbook.reader;
 
 import android.app.Activity;
-import android.content.Context;
-import android.content.DialogInterface$OnClickListener;
+import android.content.DialogInterface;
 import android.view.View;
-import android.view.View$OnClickListener;
 
 import com.clilystudio.netbook.model.TocSummary;
 
-final class bw implements View$OnClickListener {
+final class bw
+        implements View.OnClickListener {
+    final /* synthetic */ Activity a;
+    final /* synthetic */ TocSummary b;
+    final /* synthetic */ ReaderMenuFragment c;
 
-    Activity a;     // final access specifier removed
-    TocSummary b;     // final access specifier removed
-    ReaderMenuFragment c;     // final access specifier removed
-    bw(ReaderMenuFragment ReaderMenuFragment1, Activity Activity2, TocSummary TocSummary3) {
-        c = ReaderMenuFragment1;
-        a = Activity2;
-        b = TocSummary3;
+    bw(ReaderMenuFragment readerMenuFragment, Activity activity, TocSummary tocSummary) {
+        this.c = readerMenuFragment;
+        this.a = activity;
+        this.b = tocSummary;
     }
 
-    public final void onClick(View View1) {
-        h h2 = new h((Context) a);
-
-        h2.e = "\u66F4\u6362\u6765\u6E90\u5C06\u4F1A\u5220\u9664\u4E4B\u524D\u7684\u9884\u8BFB\u7AE0\u8282\uFF0C\u662F\u5426\u7EE7\u7EED\uFF1F";
-        h2.a("\u66F4\u6362", (DialogInterface$OnClickListener) new bx(this)).b("\u53D6\u6D88", null).b();
+    @Override
+    public final void onClick(View view) {
+        h h2 = new h(this.a);
+        h2.e = "\u66f4\u6362\u6765\u6e90\u5c06\u4f1a\u5220\u9664\u4e4b\u524d\u7684\u9884\u8bfb\u7ae0\u8282\uff0c\u662f\u5426\u7ee7\u7eed\uff1f";
+        h2.a("\u66f4\u6362", (DialogInterface.OnClickListener) new bx(this)).b("\u53d6\u6d88", null).b();
     }
 }

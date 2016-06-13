@@ -2,26 +2,23 @@ package com.clilystudio.netbook.reader;
 
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.AdapterView$OnItemLongClickListener;
 
 import com.clilystudio.netbook.model.TocDownloadSummary;
 
-final class i implements AdapterView$OnItemLongClickListener {
+final class i
+        implements AdapterView.OnItemLongClickListener {
+    private /* synthetic */ LocalChapterListActivity a;
 
-    private LocalChapterListActivity a;
-
-    i(LocalChapterListActivity LocalChapterListActivity1) {
-        a = LocalChapterListActivity1;
+    i(LocalChapterListActivity localChapterListActivity) {
+        this.a = localChapterListActivity;
     }
 
-    public final boolean onItemLongClick(AdapterView AdapterView1, View View2, int int3, long long4) {
-        int int6 = int3 - LocalChapterListActivity.a(a).getHeaderViewsCount();
-
-        if (int6 >= 0) {
-            TocDownloadSummary TocDownloadSummary7 = (TocDownloadSummary) LocalChapterListActivity.b(a).getItem(int6);
-
-            if (TocDownloadSummary7 != null)
-                LocalChapterListActivity.a(a, TocDownloadSummary7.getTocId());
+    @Override
+    public final boolean onItemLongClick(AdapterView<?> adapterView, View view, int n, long l) {
+        TocDownloadSummary tocDownloadSummary;
+        int n2 = n - LocalChapterListActivity.a(this.a).getHeaderViewsCount();
+        if (n2 >= 0 && (tocDownloadSummary = (TocDownloadSummary) LocalChapterListActivity.b(this.a).getItem(n2)) != null) {
+            LocalChapterListActivity.a(this.a, tocDownloadSummary.getTocId());
         }
         return true;
     }

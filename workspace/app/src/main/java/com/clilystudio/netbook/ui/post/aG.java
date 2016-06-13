@@ -4,47 +4,51 @@ import android.app.Activity;
 
 import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.a.c;
+import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.model.Review;
 import com.clilystudio.netbook.model.ReviewHistory;
 
 import java.io.IOException;
 
-final class aG extends c {
+final class aG
+        extends c<String, Review> {
+    private /* synthetic */ BookReviewListFragment a;
 
-    private BookReviewListFragment a;
-
-    public aG(BookReviewListFragment BookReviewListFragment1, Activity Activity2) {
-        super(Activity2, "\u6B63\u5728\u83B7\u53D6\u5386\u53F2\u4E66\u8BC4...");
-        a = BookReviewListFragment1;
+    public aG(BookReviewListFragment bookReviewListFragment, Activity activity) {
+        this.a = bookReviewListFragment;
+        super(activity, "\u6b63\u5728\u83b7\u53d6\u5386\u53f2\u4e66\u8bc4...");
     }
 
-    private static Review a(String[] String_1darray1) {
+    /*
+     * Enabled force condition propagation
+     * Lifted jumps to return sites
+     */
+    private static Review a(String[] arrstring) {
+        b.a();
+        ReviewHistory reviewHistory = b.b().q(arrstring[0], arrstring[1]);
+        if (reviewHistory == null) return null;
         try {
-            ReviewHistory ReviewHistory4;
-
-            com.clilystudio.netbook.api.b.a();
-            ReviewHistory4 = com.clilystudio.netbook.api.b.b().q(String_1darray1[0], String_1darray1[1]);
-        } catch (IOException IOException2) {
-            IOException2.printStackTrace();
+            if (!reviewHistory.ok) return null;
+            return reviewHistory.review;
+        } catch (IOException var1_3) {
+            var1_3.printStackTrace();
         }
         return null;
     }
 
-    public final volatile Object a(Object[] Object_1darray1) {
-        return a((String[]) Object_1darray1);
-    }
-
-    public final void a(Object Object1) {
-        Review Review2 = (Review) Object1;
-
-        if (b() != null) {
-            if (Review2 != null)
-                BookReviewListFragment.b(a, Review2);
-            else {
-                MyApplication.a().a(new String[]{"saveToLocalReviewTitle", "saveToLocalReviewDesc"});
-                BookReviewListFragment.f(a);
-                return;
-            }
+    /*
+     * Enabled force condition propagation
+     * Lifted jumps to return sites
+     */
+    @Override
+    public final /* synthetic */ void a(Object object) {
+        Review review = (Review) object;
+        if (this.b() == null) return;
+        if (review != null) {
+            BookReviewListFragment.b(this.a, review);
+            return;
         }
+        MyApplication.a().a(new String[]{"saveToLocalReviewTitle", "saveToLocalReviewDesc"});
+        BookReviewListFragment.f(this.a);
     }
 }

@@ -5,25 +5,27 @@ import android.view.LayoutInflater;
 import com.clilystudio.netbook.model.TocDownloadSummary;
 import com.clilystudio.netbook.util.W;
 
-public final class C extends W {
-
+public final class C
+        extends W<TocDownloadSummary> {
     private int a = -1;
 
-    public C(LayoutInflater LayoutInflater1) {
-        super(LayoutInflater1, 2130903300);
+    public C(LayoutInflater layoutInflater) {
+        super(layoutInflater, 2130903300);
     }
 
-    protected final void a(int int1, Object Object2) {
-        TocDownloadSummary TocDownloadSummary3 = (TocDownloadSummary) Object2;
-
-        a(0, (CharSequence) TocDownloadSummary3.getHostName());
-        a(1, (CharSequence) new StringBuilder("\u5DF2\u9884\u8BFB").append(TocDownloadSummary3.getCount()).append("\u7AE0").toString());
-        if (a == int1)
-            a(2, false);
-        else
-            a(2, true);
+    @Override
+    protected final /* synthetic */ void a(int n, Object object) {
+        TocDownloadSummary tocDownloadSummary = (TocDownloadSummary) object;
+        this.a(0, tocDownloadSummary.getHostName());
+        this.a(1, "\u5df2\u9884\u8bfb" + tocDownloadSummary.getCount() + "\u7ae0");
+        if (this.a == n) {
+            this.a(2, false);
+            return;
+        }
+        this.a(2, true);
     }
 
+    @Override
     protected final int[] a() {
         return new int[]{2131493741, 2131493738, 2131493740};
     }

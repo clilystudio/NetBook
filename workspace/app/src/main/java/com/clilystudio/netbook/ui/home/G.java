@@ -4,27 +4,34 @@ import com.clilystudio.netbook.model.BookShelf;
 
 import java.util.Comparator;
 
-final class G implements Comparator {
+final class G
+        implements Comparator<BookShelf> {
+    private /* synthetic */ int a;
+    private /* synthetic */ HomeShelfFragment b;
 
-    private int a;
-    private HomeShelfFragment b;
-    G(HomeShelfFragment HomeShelfFragment1, int int2) {
-        b = HomeShelfFragment1;
-        a = int2;
+    G(HomeShelfFragment homeShelfFragment, int n) {
+        this.b = homeShelfFragment;
+        this.a = n;
     }
 
-    public final int compare(Object Object1, Object Object2) {
-        BookShelf BookShelf3 = (BookShelf) Object1;
-        BookShelf BookShelf4 = (BookShelf) Object2;
-
-        if (!BookShelf3.isTop() || BookShelf4.isTop()) {
-            if (!BookShelf4.isTop() || BookShelf3.isTop()) {
-                if (HomeShelfFragment.a(b, BookShelf3, a) == HomeShelfFragment.a(b, BookShelf4, a))
-                    return 0;
-                else if (HomeShelfFragment.a(b, BookShelf3, a) > HomeShelfFragment.a(b, BookShelf4, a))
-                    return -1;
-            }
-            return 1;
+    /*
+     * Enabled aggressive block sorting
+     * Lifted jumps to return sites
+     */
+    @Override
+    public final /* synthetic */ int compare(Object object, Object object2) {
+        BookShelf bookShelf = (BookShelf) object;
+        BookShelf bookShelf2 = (BookShelf) object2;
+        if (bookShelf.isTop() && !bookShelf2.isTop()) {
+            return -1;
         }
+        if (bookShelf2.isTop()) {
+            if (!bookShelf.isTop()) return 1;
+        }
+        if (HomeShelfFragment.a(this.b, bookShelf, this.a) == HomeShelfFragment.a(this.b, bookShelf2, this.a)) {
+            return 0;
+        }
+        if (HomeShelfFragment.a(this.b, bookShelf, this.a) > HomeShelfFragment.a(this.b, bookShelf2, this.a)) return -1;
+        return 1;
     }
 }

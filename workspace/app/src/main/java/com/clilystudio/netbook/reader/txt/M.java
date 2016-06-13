@@ -1,34 +1,39 @@
 package com.clilystudio.netbook.reader.txt;
 
-final class M implements com.umeng.update.a {
+final class M
+        implements a {
+    private /* synthetic */ ReaderTxtActivity a;
 
-    private ReaderTxtActivity a;
-
-    M(ReaderTxtActivity ReaderTxtActivity1) {
-        a = ReaderTxtActivity1;
+    M(ReaderTxtActivity readerTxtActivity) {
+        this.a = readerTxtActivity;
     }
 
-    public final void a(int int1) {
-        switch (int1) {
-            default:
+    @Override
+    public final void a(int n2) {
+        switch (n2) {
+            default: {
                 return;
-            case 2131493890:
-                ReaderTxtActivity.s(a).a();
+            }
+            case 2131493890: {
+                ReaderTxtActivity.s(this.a).a();
                 return;
-            case 2131493892:
-                ReaderTxtActivity.a(a);
-                ReaderTxtActivity.t(a);
+            }
+            case 2131493892: {
+                ReaderTxtActivity.a(this.a);
+                ReaderTxtActivity.t(this.a);
                 return;
-            case 2131493881:
-                a.onBackPressed();
+            }
+            case 2131493881: {
+                this.a.onBackPressed();
                 return;
-            case 2131493888:
-                ReaderTxtActivity.b(a, true);
-                ReaderTxtActivity.u(a);
+            }
+            case 2131493888: {
+                ReaderTxtActivity.b(this.a, true);
+                ReaderTxtActivity.u(this.a);
                 return;
+            }
             case 2131493859:
-                ReaderTxtActivity.v(a);
-                return;
         }
+        ReaderTxtActivity.v(this.a);
     }
 }

@@ -1,32 +1,29 @@
 package com.clilystudio.netbook.ui.post;
 
-import android.app.Activity;
 import android.support.design.widget.am;
 import android.view.View;
-import android.view.View$OnClickListener;
 import android.widget.TextView;
 
 import com.clilystudio.netbook.model.Account;
 
-final class d implements View$OnClickListener {
+final class d
+        implements View.OnClickListener {
+    private /* synthetic */ TextView a;
+    private /* synthetic */ AbsPostActivity b;
 
-    private TextView a;
-    private AbsPostActivity b;
-    d(AbsPostActivity AbsPostActivity1, TextView TextView2) {
-        b = AbsPostActivity1;
-        a = TextView2;
+    d(AbsPostActivity absPostActivity, TextView textView) {
+        this.b = absPostActivity;
+        this.a = textView;
     }
 
-    public final void onClick(View View1) {
-        Account Account2 = am.a((Activity) b);
-
-        if (Account2 != null && AbsPostActivity.b(b)) {
-            String String3;
-
-            b.e = null;
-            String3 = a.getText().toString();
-            AbsPostActivity.a(b, String3);
-            b.a(Account2, String3);
+    @Override
+    public final void onClick(View view) {
+        Account account = am.a(this.b);
+        if (account != null && AbsPostActivity.b(this.b)) {
+            this.b.e = null;
+            String string = this.a.getText().toString();
+            AbsPostActivity.a(this.b, string);
+            this.b.a(account, string);
         }
     }
 }

@@ -1,121 +1,116 @@
 package com.clilystudio.netbook.ui.game;
 
-import android.content.Context;
 import android.os.Handler;
-import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.support.v4.view.ViewPager$OnPageChangeListener;
 import android.support.v7.widget.ay;
 import android.view.View;
-import android.view.View$OnClickListener;
-import android.view.View$OnTouchListener;
-import android.view.ViewGroup$LayoutParams;
 import android.widget.ImageView;
-import android.widget.ImageView$ScaleType;
 import android.widget.LinearLayout;
-import android.widget.LinearLayout$LayoutParams;
 
 import com.clilystudio.netbook.model.Game;
 import com.clilystudio.netbook.ui.SmartImageView;
 
 import java.util.ArrayList;
 import java.util.Timer;
-import java.util.TimerTask;
 
 import butterknife.ButterKnife;
+import butterknife.InjectView;
 
-public class GameMicroFragment$LayoutAdapter$PromotionViewPager extends ay {
-
-    ArrayList i;
+public class GameMicroFragment$LayoutAdapter$PromotionViewPager
+        extends ay {
+    final /* synthetic */ GameMicroFragment$LayoutAdapter k;
+    ArrayList<View> i;
     Handler j;
-    GameMicroFragment$LayoutAdapter k;     // final access specifier removed
+    @InjectView(value = 2131493484)
     LinearLayout mViewDots;
+    @InjectView(value = 2131493483)
     ViewPager mViewPager;
-    private ArrayList l;
-    public GameMicroFragment$LayoutAdapter$PromotionViewPager(GameMicroFragment$LayoutAdapter LayoutAdapter1, View View2) {
-        super(View2);
-        int int6;
-        int int5;
-        Game[] Game_1darray4;
-        Object Object3;
+    private ArrayList<ImageView> l;
 
-        k = LayoutAdapter1;
-        j = (Handler) new ag(this);
-        ButterKnife.inject(this, View2);
-        i = new ArrayList();
-        l = new ArrayList();
-        Object3 = new LinearLayout$LayoutParams(-2, -2);
-        ((LinearLayout$LayoutParams) Object3).setMargins(20, 20, 20, 20);
-        Game_1darray4 = GameMicroFragment.a(LayoutAdapter1.a);
-        int5 = Game_1darray4.length;
-        for (int6 = 0; int6 < int5; ++int6) {
-            Game Game7 = Game_1darray4[int6];
-            Object Object8 = new SmartImageView((Context) LayoutAdapter1.a.getActivity());
-            Object Object10;
-            int int11;
-
-            ((SmartImageView) Object8).setLayoutParams((ViewGroup$LayoutParams) Object3);
-            ((SmartImageView) Object8).setImageUrl(Game7.getBanner());
-            ((SmartImageView) Object8).setScaleType(ImageView$ScaleType.FIT_XY);
-            ((SmartImageView) Object8).setOnClickListener((View$OnClickListener) new ac(this, LayoutAdapter1, Game7.get_id()));
-            i.add(Object8);
-            Object10 = new ImageView((Context) LayoutAdapter1.a.getActivity());
-            if (l.size() == 0)
-                int11 = 2130837927;
-            else
-                int11 = 2130837926;
-            ((ImageView) Object10).setImageResource(int11);
-            l.add(Object10);
-            mViewDots.addView((View) Object10, (ViewGroup$LayoutParams) Object3);
+    /*
+     * Enabled aggressive block sorting
+     */
+    public GameMicroFragment$LayoutAdapter$PromotionViewPager(GameMicroFragment$LayoutAdapter gameMicroFragment$LayoutAdapter, View view) {
+        this.k = gameMicroFragment$LayoutAdapter;
+        super(view);
+        this.j = new ag(this);
+        ButterKnife.inject((Object) this, view);
+        this.i = new ArrayList();
+        this.l = new ArrayList();
+        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(-2, -2);
+        layoutParams.setMargins(20, 20, 20, 20);
+        Game[] arrgame = GameMicroFragment.a(gameMicroFragment$LayoutAdapter.a);
+        int n = arrgame.length;
+        int n2 = 0;
+        while (n2 < n) {
+            Game game = arrgame[n2];
+            SmartImageView smartImageView = new SmartImageView(gameMicroFragment$LayoutAdapter.a.getActivity());
+            smartImageView.setLayoutParams(layoutParams);
+            smartImageView.setImageUrl(game.getBanner());
+            smartImageView.setScaleType(ImageView.ScaleType.FIT_XY);
+            smartImageView.setOnClickListener(new ac(this, gameMicroFragment$LayoutAdapter, game.get_id()));
+            this.i.add(smartImageView);
+            ImageView imageView = new ImageView(gameMicroFragment$LayoutAdapter.a.getActivity());
+            int n3 = this.l.size() == 0 ? 2130837927 : 2130837926;
+            imageView.setImageResource(n3);
+            this.l.add(imageView);
+            this.mViewDots.addView((View) imageView, layoutParams);
+            ++n2;
         }
     }
 
-    private static void a(ImageView ImageView1, boolean boolean2) {
-        if (boolean2)
-            ImageView1.setImageResource(2130837927);
-        else
-            ImageView1.setImageResource(2130837926);
+    private static void a(ImageView imageView, boolean bl) {
+        if (bl) {
+            imageView.setImageResource(2130837927);
+            return;
+        }
+        imageView.setImageResource(2130837926);
     }
 
-    static void a(GameMicroFragment$LayoutAdapter$PromotionViewPager PromotionViewPager1) {
-        PromotionViewPager1.s();
+    static /* synthetic */ void a(GameMicroFragment$LayoutAdapter$PromotionViewPager gameMicroFragment$LayoutAdapter$PromotionViewPager) {
+        gameMicroFragment$LayoutAdapter$PromotionViewPager.s();
     }
 
-    static void a(GameMicroFragment$LayoutAdapter$PromotionViewPager PromotionViewPager1, int int2) {
-        int int3;
-
-        for (int3 = 0; int3 < PromotionViewPager1.l.size(); ++int3) {
-            if (int3 == int2)
-                a((ImageView) PromotionViewPager1.l.get(int3), true);
-            else
-                a((ImageView) PromotionViewPager1.l.get(int3), false);
+    /*
+     * Enabled aggressive block sorting
+     */
+    static /* synthetic */ void a(GameMicroFragment$LayoutAdapter$PromotionViewPager gameMicroFragment$LayoutAdapter$PromotionViewPager, int n) {
+        int n2 = 0;
+        while (n2 < gameMicroFragment$LayoutAdapter$PromotionViewPager.l.size()) {
+            if (n2 == n) {
+                GameMicroFragment$LayoutAdapter$PromotionViewPager.a(gameMicroFragment$LayoutAdapter$PromotionViewPager.l.get(n2), true);
+            } else {
+                GameMicroFragment$LayoutAdapter$PromotionViewPager.a(gameMicroFragment$LayoutAdapter$PromotionViewPager.l.get(n2), false);
+            }
+            ++n2;
         }
     }
 
-    static void b(GameMicroFragment$LayoutAdapter$PromotionViewPager PromotionViewPager1) {
-        PromotionViewPager1.r();
+    static /* synthetic */ void b(GameMicroFragment$LayoutAdapter$PromotionViewPager gameMicroFragment$LayoutAdapter$PromotionViewPager) {
+        gameMicroFragment$LayoutAdapter$PromotionViewPager.r();
     }
 
     private void r() {
-        if (k.a.a == null)
-            k.a.a = new Timer();
-        s();
-        k.a.b = (TimerTask) new af(this);
-        k.a.a.schedule(k.a.b, 5000L, 5000L);
+        if (this.k.a.a == null) {
+            this.k.a.a = new Timer();
+        }
+        this.s();
+        this.k.a.b = new af(this);
+        this.k.a.a.schedule(this.k.a.b, 5000, 5000);
     }
 
     private void s() {
-        if (k.a.b != null) {
-            k.a.b.cancel();
-            k.a.b = null;
+        if (this.k.a.b != null) {
+            this.k.a.b.cancel();
+            this.k.a.b = null;
         }
     }
 
     public final void q() {
-        mViewPager.setAdapter((PagerAdapter) new ah(this));
-        mViewPager.addOnPageChangeListener((ViewPager$OnPageChangeListener) new ad(this));
-        mViewPager.setOnTouchListener((View$OnTouchListener) new ae(this));
-        mViewPager.setCurrentItem(k.a.c);
-        r();
+        this.mViewPager.setAdapter(new ah(this));
+        this.mViewPager.addOnPageChangeListener(new ad(this));
+        this.mViewPager.setOnTouchListener(new ae(this));
+        this.mViewPager.setCurrentItem(this.k.a.c);
+        this.r();
     }
 }

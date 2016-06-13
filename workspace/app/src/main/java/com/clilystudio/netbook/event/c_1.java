@@ -1,21 +1,19 @@
 package com.clilystudio.netbook.event;
 
-public final class c extends e {
+public final class c
+        extends e {
+    private boolean a = true;
 
-    private boolean a;
-
-    public c(String String1, boolean boolean2) {
-        super(String1);
-        a = true;
-        a = false;
+    public c(String string) {
+        super(string);
     }
 
-    public c(String String1) {
-        super(String1);
-        a = true;
+    public c(String string, boolean bl) {
+        super(string);
+        this.a = false;
     }
 
     public final boolean a() {
-        return a;
+        return this.a;
     }
 }

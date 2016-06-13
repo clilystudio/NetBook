@@ -2,67 +2,67 @@ package com.clilystudio.netbook.ui.post;
 
 import android.app.Activity;
 
+import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.model.BookHelpList;
 import com.clilystudio.netbook.model.BookHelpSummary;
+import com.clilystudio.netbook.util.e;
 
 import java.util.Arrays;
-import java.util.Collection;
+import java.util.List;
 
-final class av extends com.clilystudio.netbook.a.e {
+final class av
+        extends com.clilystudio.netbook.a.e<String, Void, BookHelpList> {
+    private /* synthetic */ BookHelpListActivity a;
 
-    private BookHelpListActivity a;
-
-    av(BookHelpListActivity BookHelpListActivity1, byte byte2) {
-        this(BookHelpListActivity1);
+    private av(BookHelpListActivity bookHelpListActivity) {
+        this.a = bookHelpListActivity;
     }
 
-    private av(BookHelpListActivity BookHelpListActivity1) {
-        a = BookHelpListActivity1;
+    /* synthetic */ av(BookHelpListActivity bookHelpListActivity, byte by) {
+        this(bookHelpListActivity);
     }
 
-    private transient BookHelpList a(String[] String_1darray1) {
-        BookHelpList BookHelpList3;
-
+    private /* varargs */ BookHelpList a(String... arrstring) {
         try {
-            BookHelpList3 = com.clilystudio.netbook.api.b.b().a(String_1darray1[0], String_1darray1[1], 0, 20, BookHelpListActivity.n(a));
-        } catch (Exception Exception2) {
-            Exception2.printStackTrace();
+            BookHelpList bookHelpList = b.b().a(arrstring[0], arrstring[1], 0, 20, BookHelpListActivity.n(this.a));
+            return bookHelpList;
+        } catch (Exception var2_3) {
+            var2_3.printStackTrace();
             return null;
         }
-        return BookHelpList3;
     }
 
-    protected final Object doInBackground(Object[] Object_1darray1) {
-        return a((String[]) Object_1darray1);
+    @Override
+    protected final /* synthetic */ Object doInBackground(Object[] arrobject) {
+        return this.a((String[]) arrobject);
     }
 
-    protected final void onPostExecute(Object Object1) {
-        Object Object2 = (BookHelpList) Object1;
-
-        super.onPostExecute(Object2);
-        BookHelpListActivity.d(a).setVisibility(8);
-        BookHelpListActivity.o(a).setVisibility(8);
-        BookHelpListActivity.p(a).setVisibility(8);
-        BookHelpListActivity.l(a).n();
-        if (Object2 != null && ((BookHelpList) Object2).getHelps() != null) {
-            BookHelpSummary[] BookHelpSummary_1darray3;
-            int int4;
-
-            BookHelpListActivity.j(a).clear();
-            BookHelpSummary_1darray3 = ((BookHelpList) Object2).getHelps();
-            int4 = BookHelpSummary_1darray3.length;
-            if (int4 > 0) {
-                Object Object5 = Arrays.asList(BookHelpSummary_1darray3);
-
-                BookHelpListActivity.j(a).addAll((Collection) Object5);
-                BookHelpListActivity.q(a).a((Collection) BookHelpListActivity.j(a));
-                if (int4 < 20)
-                    BookHelpListActivity.l(a).setOnLastItemVisibleListener(null);
-                else
-                    BookHelpListActivity.l(a).setOnLastItemVisibleListener(BookHelpListActivity.r(a));
-            } else
-                BookHelpListActivity.s(a);
-        } else
-            com.clilystudio.netbook.util.e.a((Activity) a, "\u52A0\u8F7D\u5931\u8D25\uFF0C\u8BF7\u68C0\u67E5\u7F51\u7EDC\u6216\u7A0D\u540E\u518D\u8BD5");
+    @Override
+    protected final /* synthetic */ void onPostExecute(Object object) {
+        BookHelpList bookHelpList = (BookHelpList) object;
+        super.onPostExecute(bookHelpList);
+        BookHelpListActivity.d(this.a).setVisibility(8);
+        BookHelpListActivity.o(this.a).setVisibility(8);
+        BookHelpListActivity.p(this.a).setVisibility(8);
+        BookHelpListActivity.l(this.a).n();
+        if (bookHelpList != null && bookHelpList.getHelps() != null) {
+            BookHelpListActivity.j(this.a).clear();
+            BookHelpSummary[] arrbookHelpSummary = bookHelpList.getHelps();
+            int n = arrbookHelpSummary.length;
+            if (n > 0) {
+                List<BookHelpSummary> list = Arrays.asList(arrbookHelpSummary);
+                BookHelpListActivity.j(this.a).addAll(list);
+                BookHelpListActivity.q(this.a).a(BookHelpListActivity.j(this.a));
+                if (n < 20) {
+                    BookHelpListActivity.l(this.a).setOnLastItemVisibleListener(null);
+                    return;
+                }
+                BookHelpListActivity.l(this.a).setOnLastItemVisibleListener(BookHelpListActivity.r(this.a));
+                return;
+            }
+            BookHelpListActivity.s(this.a);
+            return;
+        }
+        e.a((Activity) this.a, "\u52a0\u8f7d\u5931\u8d25\uff0c\u8bf7\u68c0\u67e5\u7f51\u7edc\u6216\u7a0d\u540e\u518d\u8bd5");
     }
 }

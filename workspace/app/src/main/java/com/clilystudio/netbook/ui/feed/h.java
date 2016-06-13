@@ -1,17 +1,17 @@
 package com.clilystudio.netbook.ui.feed;
 
 import android.view.View;
-import android.view.View$OnClickListener;
 
-final class h implements View$OnClickListener {
+final class h
+        implements View.OnClickListener {
+    private /* synthetic */ FeedSettingActivity a;
 
-    private FeedSettingActivity a;
-
-    h(FeedSettingActivity FeedSettingActivity1) {
-        a = FeedSettingActivity1;
+    h(FeedSettingActivity feedSettingActivity) {
+        this.a = feedSettingActivity;
     }
 
-    public final void onClick(View View1) {
-        FeedSettingActivity.a(a, FeedSettingActivity.a(a));
+    @Override
+    public final void onClick(View view) {
+        FeedSettingActivity.a(this.a, FeedSettingActivity.a(this.a));
     }
 }

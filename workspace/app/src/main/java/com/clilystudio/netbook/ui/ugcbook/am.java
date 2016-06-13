@@ -1,20 +1,21 @@
 package com.clilystudio.netbook.ui.ugcbook;
 
 import android.view.View;
-import android.view.View$OnClickListener;
 
-final class am implements View$OnClickListener {
+final class am
+        implements View.OnClickListener {
+    private /* synthetic */ String a;
+    private /* synthetic */ al b;
 
-    private String a;
-    private al b;
-    am(al al1, String String2) {
-        b = al1;
-        a = String2;
+    am(al al2, String string) {
+        this.b = al2;
+        this.a = string;
     }
 
-    public final void onClick(View View1) {
-        b.k.a = true;
-        UGCMainActivity.a(b.k.c, a);
-        b.k.b(0);
+    @Override
+    public final void onClick(View view) {
+        this.b.k.a = true;
+        UGCMainActivity.a(this.b.k.c, this.a);
+        this.b.k.b(0);
     }
 }

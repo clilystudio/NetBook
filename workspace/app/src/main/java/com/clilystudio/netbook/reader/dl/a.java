@@ -1,52 +1,78 @@
 package com.clilystudio.netbook.reader.dl;
 
 import android.app.Activity;
-import android.content.Context;
-import android.content.DialogInterface$OnClickListener;
+import android.content.DialogInterface;
+import android.content.Intent;
 
+import com.clilystudio.netbook.MyApplication;
+import com.clilystudio.netbook.db.BookDlRecord;
 import com.clilystudio.netbook.db.BookReadRecord;
+import com.clilystudio.netbook.event.I;
+import com.clilystudio.netbook.event.i;
 import com.clilystudio.netbook.util.e;
 
 import uk.me.lewisdeane.ldialogs.h;
 
 public class a {
-
     private Activity a;
 
-    public a(Activity Activity1) {
-        a = Activity1;
+    public a(Activity activity) {
+        this.a = activity;
     }
 
-    static void a(a a1, BookReadRecord BookReadRecord2, int int3, int int4) {
-        a1.b(BookReadRecord2, int3, int4);
+    static /* synthetic */ void a(a a2, BookReadRecord bookReadRecord, int n, int n2) {
+        a2.b(bookReadRecord, n, n2);
     }
 
-    private void a(BookReadRecord BookReadRecord1, int int2, int int3) {
-        if (BookReadRecord1 == null)
-            e.a(a, "\u8BF7\u91CD\u8BD5");
-        else if (!com.clilystudio.netbook.hpay100.a.a.d())
-            e.a(a, "\u65E0\u6CD5\u7F13\u5B58\uFF0C\u8BF7\u68C0\u67E5SD\u5361\u662F\u5426\u6302\u8F7D");
-        else if (com.clilystudio.netbook.hpay100.a.a.f(BookReadRecord1.getReadMode()))
-            e.b(a, "\u6682\u4E0D\u652F\u6301\u5F53\u524D\u6A21\u5F0F\u7F13\u5B58");
-        else if (1 == com.clilystudio.netbook.hpay100.a.a.r((Context) a))
-            b(BookReadRecord1, int2, int3);
-        else {
-            Object Object4 = new b(this, BookReadRecord1, int2, int3);
-
-            new h((Context) a).a(2131034592).b(2131034342).a(2131034336, (DialogInterface$OnClickListener) new c(this, (d) Object4)).b(2131034129, null).b();
+    private void a(BookReadRecord bookReadRecord, int n, int n2) {
+        if (bookReadRecord == null) {
+            e.a((Activity) this.a, (String) "\u8bf7\u91cd\u8bd5");
+            return;
         }
+        if (!com.clilystudio.netbook.hpay100.a.a.d()) {
+            e.a((Activity) this.a, (String) "\u65e0\u6cd5\u7f13\u5b58\uff0c\u8bf7\u68c0\u67e5SD\u5361\u662f\u5426\u6302\u8f7d");
+            return;
+        }
+        if (com.clilystudio.netbook.hpay100.a.a.f(bookReadRecord.getReadMode())) {
+            e.b((Activity) this.a, (String) "\u6682\u4e0d\u652f\u6301\u5f53\u524d\u6a21\u5f0f\u7f13\u5b58");
+            return;
+        }
+        if (1 == com.clilystudio.netbook.hpay100.a.a.r(this.a)) {
+            this.b(bookReadRecord, n, n2);
+            return;
+        }
+        b b2 = new b(this, bookReadRecord, n, n2);
+        new h(this.a).a(2131034592).b(2131034342).a(2131034336, (DialogInterface.OnClickListener) new c(this, b2)).b(2131034129, null).b();
     }
-// Error: Internal #201: 
-// The following method may not be correct.
 
-    private void b(BookReadRecord BookReadRecord1, int int2, int int3) {
+    /*
+     * Enabled aggressive block sorting
+     */
+    private void b(BookReadRecord bookReadRecord, int n, int n2) {
+        String string = bookReadRecord.getBookId();
+        int n3 = bookReadRecord.getReadMode();
+        i.a().c(new com.clilystudio.netbook.event.d(string, 1));
+        e.a((Activity) this.a, (String) "\u5df2\u52a0\u5165\u7f13\u5b58\u961f\u5217");
+        MyApplication.a().f().add(string);
+        int n4 = n < 0 ? 0 : n;
+        BookDlRecord bookDlRecord = BookDlRecord.get(string);
+        if (bookDlRecord == null) {
+            BookDlRecord.create(string, bookReadRecord.getTitle(), bookReadRecord.getAuthor(), bookReadRecord.getTocId(), n3, n4, n2, 1);
+        } else if (bookDlRecord.getMode() != n3) {
+            BookDlRecord.update(bookDlRecord, bookReadRecord.getTocId(), n3, n4, n2, 1);
+        } else {
+            BookDlRecord.reset(bookDlRecord, n4, n2);
+        }
+        i.a().c(new I());
+        Intent intent = new Intent(this.a, BookDownloadService.class);
+        this.a.startService(intent);
     }
 
-    public final void a(BookReadRecord BookReadRecord1) {
-        a(BookReadRecord1, 0, 0);
+    public final void a(BookReadRecord bookReadRecord) {
+        this.a(bookReadRecord, 0, 0);
     }
 
-    public final void a(String String1, int int2, int int3) {
-        a(BookReadRecord.get(String1), int2, int3);
+    public final void a(String string, int n, int n2) {
+        this.a(BookReadRecord.get(string), n, n2);
     }
 }

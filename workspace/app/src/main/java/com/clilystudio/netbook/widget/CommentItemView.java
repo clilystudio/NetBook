@@ -3,19 +3,19 @@ package com.clilystudio.netbook.widget;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface$OnClickListener;
+import android.content.DialogInterface;
 import android.support.design.widget.am;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.View$OnClickListener;
 import android.view.ViewGroup;
 import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.model.Author;
 import com.clilystudio.netbook.model.PostComment;
@@ -25,310 +25,305 @@ import com.clilystudio.netbook.ui.post.AbsPostActivity;
 import com.clilystudio.netbook.ui.user.AuthLoginActivity;
 import com.clilystudio.netbook.util.t;
 
-public class CommentItemView extends HorizontalScrollView implements View$OnClickListener {
+import java.util.Date;
 
+public class CommentItemView
+        extends HorizontalScrollView
+        implements View.OnClickListener {
     private int a;
+    private boolean b = true;
+    private boolean c = false;
     private AbsPostActivity d;
     private ViewGroup e;
     private TextView f;
+    private b g = b.a();
     private PostComment h;
     private int i;
-    private boolean b = true;
-    private boolean c = false;
-    private com.clilystudio.netbook.api.b g = com.clilystudio.netbook.api.b.a();
-    public CommentItemView(Context Context1, AttributeSet AttributeSet2) {
-        super(Context1, AttributeSet2);
-        if (!isInEditMode()) {
-            if (!(Context1 instanceof AbsPostActivity))
+
+    public CommentItemView(Context context, AttributeSet attributeSet) {
+        super(context, attributeSet);
+        if (!this.isInEditMode()) {
+            if (!(context instanceof AbsPostActivity)) {
                 throw new RuntimeException("Must be used in TopicDetailActivity");
-            else {
-                d = (AbsPostActivity) Context1;
-                setHorizontalScrollBarEnabled(false);
-                a = d.getWindowManager().getDefaultDisplay().getWidth();
             }
+            this.d = (AbsPostActivity) context;
+            this.setHorizontalScrollBarEnabled(false);
+            this.a = this.d.getWindowManager().getDefaultDisplay().getWidth();
         }
     }
 
-    static AbsPostActivity a(CommentItemView CommentItemView1) {
-        return CommentItemView1.d;
+    static /* synthetic */ AbsPostActivity a(CommentItemView commentItemView) {
+        return commentItemView.d;
     }
 
-    private static void a(View View1, boolean boolean2) {
-        int int3;
-
-        if (boolean2)
-            int3 = 8;
-        else
-            int3 = 0;
-        View1.setVisibility(int3);
+    /*
+     * Enabled aggressive block sorting
+     */
+    private static void a(View view, boolean bl) {
+        int n = bl ? 8 : 0;
+        view.setVisibility(n);
     }
 
-    static void a(CommentItemView CommentItemView1, PostComment PostComment2) {
-        View View3 = LayoutInflater.from((Context) CommentItemView1.d).inflate(2130903353, null);
-        Object Object4 = PostComment2.getAuthor().getNickname();
-        Object Object5;
-        AlertDialog AlertDialog7;
-
-        ((TextView) View3.findViewById(2131493844)).setText((CharSequence) Object4);
-        Object5 = PostComment2.getContent();
-        ((TextView) View3.findViewById(2131493845)).setText((CharSequence) Object5);
-        if (PostComment2.get_id() != null) {
-            uk.me.lewisdeane.ldialogs.h h6 = new uk.me.lewisdeane.ldialogs.h((Context) CommentItemView1.d);
-
-            h6.d = (String) Object4;
-            h6.e = (String) Object5;
-            AlertDialog7 = h6.a("\u56DE\u590DTA", (DialogInterface$OnClickListener) new m(CommentItemView1, PostComment2)).b("\u5173\u95ED", null).a();
-        } else
-            AlertDialog7 = new uk.me.lewisdeane.ldialogs.h((Context) CommentItemView1.d).a(View3).b("\u5173\u95ED", null).a();
-        AlertDialog7.show();
-    }
-
-    static PostComment b(CommentItemView CommentItemView1) {
-        return CommentItemView1.h;
-    }
-
-    static void c(CommentItemView CommentItemView1) {
-        CommentItemView1.c();
-    }
-
-    static int d(CommentItemView CommentItemView1) {
-        return CommentItemView1.i;
-    }
-
-    private void a(TextView TextView1, int int2) {
-        StringBuilder StringBuilder3 = new StringBuilder();
-        Object Object4;
-
-        if (int2 == 0)
-            Object4 = "";
-        else
-            Object4 = Integer.valueOf(int2);
-        TextView1.setText((CharSequence) StringBuilder3.append(Object4).append(" \u540C\u611F").toString());
-    }
-
-    private void a(boolean boolean1) {
-        boolean boolean2 = true;
-        int int3 = e.getWidth();
-        int int4;
-        int int5;
-
-        if (b) {
-            int5 = -int3;
-            int4 = 0;
+    /*
+     * Enabled aggressive block sorting
+     */
+    static /* synthetic */ void a(CommentItemView commentItemView, PostComment postComment) {
+        AlertDialog alertDialog;
+        View view = LayoutInflater.from(commentItemView.d).inflate(2130903353, null);
+        String string = postComment.getAuthor().getNickname();
+        ((TextView) view.findViewById(2131493844)).setText(string);
+        String string2 = postComment.getContent();
+        ((TextView) view.findViewById(2131493845)).setText(string2);
+        if (postComment.get_id() != null) {
+            h h2 = new h(commentItemView.d);
+            h2.d = string;
+            h2.e = string2;
+            alertDialog = h2.a("\u56de\u590dTA", (DialogInterface.OnClickListener) ((Object) new m(commentItemView, postComment))).b("\u5173\u95ed", null).a();
         } else {
-            int4 = -int3;
-            int5 = 0;
+            alertDialog = new h(commentItemView.d).a(view).b("\u5173\u95ed", null).a();
         }
-        if (boolean1) {
-            smoothScrollTo(int4 - int5, 0);
-            if (b)
-                boolean2 = false;
-            b = boolean2;
+        alertDialog.show();
+    }
+
+    static /* synthetic */ PostComment b(CommentItemView commentItemView) {
+        return commentItemView.h;
+    }
+
+    static /* synthetic */ void c(CommentItemView commentItemView) {
+        commentItemView.c();
+    }
+
+    static /* synthetic */ int d(CommentItemView commentItemView) {
+        return commentItemView.i;
+    }
+
+    /*
+     * Enabled aggressive block sorting
+     */
+    private void a(TextView textView, int n) {
+        StringBuilder stringBuilder = new StringBuilder();
+        String string = n == 0 ? "" : Integer.valueOf(n);
+        textView.setText(stringBuilder.append((Object) string).append(" \u540c\u611f").toString());
+    }
+
+    /*
+     * Enabled aggressive block sorting
+     */
+    private void a(boolean bl) {
+        int n;
+        int n2;
+        boolean bl2 = true;
+        int n3 = this.e.getWidth();
+        if (this.b) {
+            n2 = -n3;
+            n = 0;
         } else {
-            scrollTo(int4 - int5, 0);
-            if (b)
-                boolean2 = false;
-            b = boolean2;
+            n = -n3;
+            n2 = 0;
         }
+        if (bl) {
+            this.smoothScrollTo(n - n2, 0);
+            if (this.b) {
+                bl2 = false;
+            }
+            this.b = bl2;
+            return;
+        }
+        this.scrollTo(n - n2, 0);
+        if (this.b) {
+            bl2 = false;
+        }
+        this.b = bl2;
     }
 
     private void c() {
-        int int1;
-
-        f.setCompoundDrawablesWithIntrinsicBounds(0, 2130837985, 0, 0);
-        int1 = 1 + d().getLikeCount();
-        f.setTextColor(-2741204);
-        a(f, int1);
+        this.f.setCompoundDrawablesWithIntrinsicBounds(0, 2130837985, 0, 0);
+        int n = 1 + this.d().getLikeCount();
+        this.f.setTextColor(-2741204);
+        this.a(this.f, n);
     }
 
     private PostComment d() {
-        return (PostComment) findViewById(2131493761).getTag();
+        return (PostComment) this.findViewById(2131493761).getTag();
     }
 
     public final void a() {
-        if (!b)
-            a(true);
+        if (!this.b) {
+            this.a(true);
+        }
     }
 
-    public final void a(PostComment PostComment1, int int2) {
-        SmartImageView SmartImageView3;
-        TextView TextView4;
-        TextView TextView5;
-        TextView TextView6;
-        LinkifyTextView LinkifyTextView7;
-        TextView TextView8;
-        Object Object9;
-        View View10;
-        TextView TextView11;
-        Object Object12;
-        Object Object13;
-        View View14;
-        PostComment$PostCommentReply PostCommentReply15;
-        int int16;
-
-        h = PostComment1;
-        i = int2;
-        SmartImageView3 = (SmartImageView) findViewById(2131493761);
-        TextView4 = (TextView) findViewById(2131493764);
-        TextView5 = (TextView) findViewById(2131493765);
-        TextView6 = (TextView) findViewById(2131493769);
-        LinkifyTextView7 = (LinkifyTextView) findViewById(2131493766);
-        TextView8 = (TextView) findViewById(2131493763);
-        Object9 = (TextView) findViewById(2131493767);
-        View10 = findViewById(2131493759);
-        TextView11 = (TextView) findViewById(2131493772);
-        Object12 = (ImageView) findViewById(2131493762);
-        Object13 = (TextView) findViewById(2131493432);
-        View14 = findViewById(2131493773);
-        if (!android.support.design.widget.am.m(getContext()))
-            SmartImageView3.setImageUrl(PostComment1.getAuthor().getScaleAvatar(), 2130837614);
-        else
-            SmartImageView3.setImageResource(2130837614);
-        SmartImageView3.setTag(PostComment1);
-        TextView4.setText((CharSequence) PostComment1.getAuthor().getNickname());
-        TextView5.setText((CharSequence) new StringBuilder("lv.").append(PostComment1.getAuthor().getLv()).toString());
-        TextView6.setText((CharSequence) t.e(PostComment1.getCreated()));
-        LinkifyTextView7.setLinkifyText(PostComment1.getContent(), PostComment1.getAuthor().isOfficial());
-        TextView8.setText((CharSequence) new StringBuilder().append(PostComment1.getFloor()).append("\u697C").toString());
-        PostCommentReply15 = PostComment1.getReplyTo();
-        if (PostCommentReply15 != null && PostCommentReply15.getAuthor() != null) {
-            Author Author19 = PostCommentReply15.getAuthor();
-
-            a((View) Object9, false);
-            ((TextView) Object9).setText((CharSequence) new StringBuilder("\u56DE\u590D ").append(Author19.getNickname()).append(" (").append(PostCommentReply15.getFloor()).append("\u697C)").toString());
-        } else
-            a((View) Object9, true);
-        View10.getLayoutParams().width = a;
-        int16 = PostComment1.getLikeCount();
-        if (PostComment1.isLikedInView())
-            c();
-        else
-            a(TextView11, int16);
-        if (com.clilystudio.netbook.hpay100.a.a.r(getContext(), "community_user_gender_icon_toggle")) {
-            String String18 = PostComment1.getAuthor().getGender();
-
-            a((View) Object12, false);
-            if ("male".equals(String18))
-                ((ImageView) Object12).setImageLevel(2);
-            else if ("female".equals(String18))
-                ((ImageView) Object12).setImageLevel(3);
-            else
-                ((ImageView) Object12).setImageLevel(4);
+    /*
+     * Enabled aggressive block sorting
+     */
+    public final void a(PostComment postComment, int n) {
+        this.h = postComment;
+        this.i = n;
+        SmartImageView smartImageView = (SmartImageView) this.findViewById(2131493761);
+        TextView textView = (TextView) this.findViewById(2131493764);
+        TextView textView2 = (TextView) this.findViewById(2131493765);
+        TextView textView3 = (TextView) this.findViewById(2131493769);
+        LinkifyTextView linkifyTextView = (LinkifyTextView) this.findViewById(2131493766);
+        TextView textView4 = (TextView) this.findViewById(2131493763);
+        TextView textView5 = (TextView) this.findViewById(2131493767);
+        View view = this.findViewById(2131493759);
+        TextView textView6 = (TextView) this.findViewById(2131493772);
+        ImageView imageView = (ImageView) this.findViewById(2131493762);
+        TextView textView7 = (TextView) this.findViewById(2131493432);
+        View view2 = this.findViewById(2131493773);
+        if (!am.m((Context) this.getContext())) {
+            smartImageView.setImageUrl(postComment.getAuthor().getScaleAvatar(), 2130837614);
         } else {
-            String String17 = PostComment1.getAuthor().getType();
-
-            if ("official".equals(String17)) {
-                a((View) Object12, false);
-                ((ImageView) Object12).setImageLevel(0);
-            } else if ("doyen".equals(String17)) {
-                a((View) Object12, false);
-                ((ImageView) Object12).setImageLevel(1);
-            } else
-                a((View) Object12, true);
+            smartImageView.setImageResource(2130837614);
         }
-        if (PostComment1.get_id() == null) {
-            a((View) Object13, true);
-            a(View14, true);
+        smartImageView.setTag(postComment);
+        textView.setText(postComment.getAuthor().getNickname());
+        textView2.setText("lv." + postComment.getAuthor().getLv());
+        textView3.setText(t.e((Date) postComment.getCreated()));
+        linkifyTextView.setLinkifyText(postComment.getContent(), postComment.getAuthor().isOfficial());
+        textView4.setText("" + postComment.getFloor() + "\u697c");
+        PostComment$PostCommentReply postComment$PostCommentReply = postComment.getReplyTo();
+        if (postComment$PostCommentReply != null && postComment$PostCommentReply.getAuthor() != null) {
+            Author author = postComment$PostCommentReply.getAuthor();
+            CommentItemView.a(textView5, false);
+            textView5.setText("\u56de\u590d " + author.getNickname() + " (" + postComment$PostCommentReply.getFloor() + "\u697c)");
         } else {
-            a((View) Object13, false);
-            a(View14, false);
+            CommentItemView.a(textView5, true);
         }
+        view.getLayoutParams().width = this.a;
+        int n2 = postComment.getLikeCount();
+        if (postComment.isLikedInView()) {
+            this.c();
+        } else {
+            this.a(textView6, n2);
+        }
+        if (a.r(this.getContext(), "community_user_gender_icon_toggle")) {
+            String string = postComment.getAuthor().getGender();
+            CommentItemView.a(imageView, false);
+            if ("male".equals(string)) {
+                imageView.setImageLevel(2);
+            } else if ("female".equals(string)) {
+                imageView.setImageLevel(3);
+            } else {
+                imageView.setImageLevel(4);
+            }
+        } else {
+            String string = postComment.getAuthor().getType();
+            if ("official".equals(string)) {
+                CommentItemView.a(imageView, false);
+                imageView.setImageLevel(0);
+            } else if ("doyen".equals(string)) {
+                CommentItemView.a(imageView, false);
+                imageView.setImageLevel(1);
+            } else {
+                CommentItemView.a(imageView, true);
+            }
+        }
+        if (postComment.get_id() == null) {
+            CommentItemView.a(textView7, true);
+            CommentItemView.a(view2, true);
+            return;
+        }
+        CommentItemView.a(textView7, false);
+        CommentItemView.a(view2, false);
     }
 
     public final void b() {
-        if (!b)
-            a(false);
-    }
-
-    public final void b(PostComment PostComment1, int int2) {
-        TextView TextView3;
-
-        a(PostComment1, -1);
-        TextView3 = (TextView) findViewById(2131493768);
-        TextView3.setVisibility(0);
-        TextView3.setText((CharSequence) new StringBuilder().append(PostComment1.getLikeCount()).append("\u6B21\u540C\u611F").toString());
-    }
-
-    public void onClick(View View1) {
-        switch (View1.getId()) {
-            case 2131493760:
-                d.startActivity(com.clilystudio.netbook.util.e.a(View1.getContext(), d().getAuthor()));
-                return;
-            case 2131493766:
-            case 2131493759:
-                ListView ListView10 = d.m();
-                int int11;
-
-                for (int11 = 0; int11 < ListView10.getChildCount(); ++int11) {
-                    View View12 = ListView10.getChildAt(int11);
-
-                    if (View12 instanceof CommentItemView && View12 != this)
-                        ((CommentItemView) View12).a();
-                }
-                a(true);
-                return;
-            case 2131493771:
-                PostComment PostComment9 = d();
-
-                d.a(PostComment9.toRepliedInfo(), d.m().getHeaderViewsCount() + i);
-                return;
-            case 2131493772:
-                Account Account5 = am.e();
-
-                if (Account5 == null) {
-                    com.clilystudio.netbook.util.e.a((Activity) d, "\u8BF7\u767B\u5F55\u540E\u518D\u64CD\u4F5C");
-                    d.startActivity(AuthLoginActivity.a((Context) d));
-                    Account5 = null;
-                }
-                if (Account5 != null) {
-                    n n6 = new n(this, (byte) 0);
-                    String[] String_1darray7 = new String[2];
-
-                    String_1darray7[0] = d().get_id();
-                    String_1darray7[1] = Account5.getToken();
-                    n6.b(String_1darray7);
-                    return;
-                }
-            default:
-                return;
-            case 2131493432:
-                PostComment PostComment2 = d();
-                Object[] Object_1darray3;
-                uk.me.lewisdeane.ldialogs.h h4;
-
-                if (PostComment2.getReplyTo() == null)
-                    Object_1darray3 = new String[]{"\u4E3E\u62A5"};
-                else
-                    Object_1darray3 = new String[]{"\u67E5\u770B\u56DE\u590D\u7684\u697C\u5C42", "\u4E3E\u62A5"};
-                h4 = new uk.me.lewisdeane.ldialogs.h((Context) d);
-                h4.d = "\u66F4\u591A";
-                h4.a((CharSequence[]) Object_1darray3, (DialogInterface$OnClickListener) new l(this, (String[]) Object_1darray3, PostComment2)).a().show();
-                return;
+        if (!this.b) {
+            this.a(false);
         }
     }
 
-    protected void onFinishInflate() {
-        super.onFinishInflate();
-        findViewById(2131493760).setOnClickListener(this);
-        findViewById(2131493759).setOnClickListener(this);
-        e = (ViewGroup) findViewById(2131493770);
-        findViewById(2131493766).setOnClickListener(this);
-        findViewById(2131493771).setOnClickListener(this);
-        f = (TextView) findViewById(2131493772);
-        f.setOnClickListener(this);
-        findViewById(2131493432).setOnClickListener(this);
+    public final void b(PostComment postComment, int n) {
+        this.a(postComment, -1);
+        TextView textView = (TextView) this.findViewById(2131493768);
+        textView.setVisibility(0);
+        textView.setText("" + postComment.getLikeCount() + "\u6b21\u540c\u611f");
     }
 
-    public boolean onInterceptTouchEvent(MotionEvent MotionEvent1) {
+    /*
+     * Enabled aggressive block sorting
+     */
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case 2131493760: {
+                this.d.startActivity(e.a((Context) view.getContext(), (Author) this.d().getAuthor()));
+                return;
+            }
+            case 2131493759:
+            case 2131493766: {
+                ListView listView = this.d.m();
+                int n2 = 0;
+                do {
+                    if (n2 >= listView.getChildCount()) {
+                        this.a(true);
+                        return;
+                    }
+                    View view2 = listView.getChildAt(n2);
+                    if (view2 instanceof CommentItemView && view2 != this) {
+                        ((CommentItemView) view2).a();
+                    }
+                    ++n2;
+                } while (true);
+            }
+            case 2131493771: {
+                PostComment postComment = this.d();
+                this.d.a(postComment.toRepliedInfo(), this.d.m().getHeaderViewsCount() + this.i);
+                return;
+            }
+            case 2131493772: {
+                Account account = am.e();
+                if (account == null) {
+                    e.a((Activity) this.d, (String) "\u8bf7\u767b\u5f55\u540e\u518d\u64cd\u4f5c");
+                    this.d.startActivity(AuthLoginActivity.a(this.d));
+                    return;
+                }
+                if (account != null) {
+                    n n3 = new n(this, 0);
+                    Object[] arrobject = new String[]{this.d().get_id(), account.getToken()};
+                    n3.b(arrobject);
+                    return;
+                }
+            }
+            default: {
+                return;
+            }
+            case 2131493432:
+        }
+        PostComment postComment = this.d();
+        CharSequence[] arrcharSequence = postComment.getReplyTo() == null ? new String[]{"\u4e3e\u62a5"} : new String[]{"\u67e5\u770b\u56de\u590d\u7684\u697c\u5c42", "\u4e3e\u62a5"};
+        h h2 = new h(this.d);
+        h2.d = "\u66f4\u591a";
+        h2.a(arrcharSequence, (DialogInterface.OnClickListener) ((Object) new l(this, (String[]) arrcharSequence, postComment))).a().show();
+    }
+
+    @Override
+    protected void onFinishInflate() {
+        super.onFinishInflate();
+        this.findViewById(2131493760).setOnClickListener(this);
+        this.findViewById(2131493759).setOnClickListener(this);
+        this.e = (ViewGroup) this.findViewById(2131493770);
+        this.findViewById(2131493766).setOnClickListener(this);
+        this.findViewById(2131493771).setOnClickListener(this);
+        this.f = (TextView) this.findViewById(2131493772);
+        this.f.setOnClickListener(this);
+        this.findViewById(2131493432).setOnClickListener(this);
+    }
+
+    @Override
+    public boolean onInterceptTouchEvent(MotionEvent motionEvent) {
         return false;
     }
 
-    public boolean onTouchEvent(MotionEvent MotionEvent1) {
-        switch (MotionEvent1.getAction()) {
-            default:
-                return super.onTouchEvent(MotionEvent1);
+    @Override
+    public boolean onTouchEvent(MotionEvent motionEvent) {
+        switch (motionEvent.getAction()) {
+            default: {
+                return super.onTouchEvent(motionEvent);
+            }
             case 0:
-                return false;
         }
+        return false;
     }
 }

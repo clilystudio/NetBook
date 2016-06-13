@@ -4,17 +4,11 @@ import com.clilystudio.netbook.reader.e;
 import com.clilystudio.netbook.reader.n;
 import com.clilystudio.netbook.reader.o;
 
-final class m implements e {
+final class m
+        implements e<n> {
+    private /* synthetic */ o a;
 
-    private o a;
-
-    m(ReaderTxtActivity ReaderTxtActivity1, o o2) {
-        a = o2;
-    }
-
-    public final volatile void a(Object Object1) {
-        n n2 = (n) Object1;
-
-        a.a(n2);
+    m(ReaderTxtActivity readerTxtActivity, o o2) {
+        this.a = o2;
     }
 }

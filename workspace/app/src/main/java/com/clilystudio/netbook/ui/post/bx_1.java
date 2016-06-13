@@ -1,17 +1,18 @@
 package com.clilystudio.netbook.ui.post;
 
-import android.widget.PopupWindow$OnDismissListener;
+import android.widget.PopupWindow;
 
-final class bx implements PopupWindow$OnDismissListener {
+final class bx
+        implements PopupWindow.OnDismissListener {
+    private /* synthetic */ GirlTopicListActivity a;
 
-    private GirlTopicListActivity a;
-
-    bx(GirlTopicListActivity GirlTopicListActivity1) {
-        a = GirlTopicListActivity1;
+    bx(GirlTopicListActivity girlTopicListActivity) {
+        this.a = girlTopicListActivity;
     }
 
+    @Override
     public final void onDismiss() {
-        GirlTopicListActivity.b(a).setImageDrawable(a.getResources().getDrawable(2130837721));
-        GirlTopicListActivity.c(a).setImageDrawable(a.getResources().getDrawable(2130837721));
+        GirlTopicListActivity.b(this.a).setImageDrawable(this.a.getResources().getDrawable(2130837721));
+        GirlTopicListActivity.c(this.a).setImageDrawable(this.a.getResources().getDrawable(2130837721));
     }
 }

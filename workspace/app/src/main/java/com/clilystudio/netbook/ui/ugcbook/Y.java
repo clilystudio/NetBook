@@ -1,21 +1,23 @@
 package com.clilystudio.netbook.ui.ugcbook;
 
 import android.widget.CompoundButton;
-import android.widget.CompoundButton$OnCheckedChangeListener;
 
-final class Y implements CompoundButton$OnCheckedChangeListener {
+final class Y
+        implements CompoundButton.OnCheckedChangeListener {
+    private /* synthetic */ int a;
+    private /* synthetic */ X b;
 
-    private int a;
-    private X b;
-    Y(X X1, int int2) {
-        b = X1;
-        a = int2;
+    Y(X x, int n) {
+        this.b = x;
+        this.a = n;
     }
 
-    public final void onCheckedChanged(CompoundButton CompoundButton1, boolean boolean2) {
-        if (!com.clilystudio.netbook.ui.ugcbook.X.a(b)) {
-            UGCGuideSelectBookActivity.c(b.a)[a] = boolean2;
-            UGCGuideSelectBookActivity.a(b.a, a);
+    @Override
+    public final void onCheckedChanged(CompoundButton compoundButton, boolean bl) {
+        if (X.a(this.b)) {
+            return;
         }
+        UGCGuideSelectBookActivity.c((UGCGuideSelectBookActivity) this.b.a)[this.a] = bl;
+        UGCGuideSelectBookActivity.a(this.b.a, this.a);
     }
 }

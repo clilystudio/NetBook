@@ -1,41 +1,40 @@
 package com.clilystudio.netbook.model;
 
 public class BookShelfTopic {
-
     private String bookId;
     private String fullCover;
     private int postCount;
     private String title;
 
     public String getBookId() {
-        return bookId;
+        return this.bookId;
     }
 
-    public void setBookId(String String1) {
-        bookId = String1;
+    public void setBookId(String string) {
+        this.bookId = string;
     }
 
     public String getFullCover() {
-        return fullCover;
+        return this.fullCover;
     }
 
-    public void setFullCover(String String1) {
-        fullCover = String1;
+    public void setFullCover(String string) {
+        this.fullCover = string;
     }
 
     public int getPostCount() {
-        return postCount;
+        return this.postCount;
     }
 
-    public void setPostCount(int int1) {
-        postCount = int1;
+    public void setPostCount(int n) {
+        this.postCount = n;
     }
 
     public String getTitle() {
-        return title;
+        return this.title;
     }
 
-    public void setTitle(String String1) {
-        title = String1;
+    public void setTitle(String string) {
+        this.title = string;
     }
 }

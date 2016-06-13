@@ -6,34 +6,30 @@ import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.widget.TextView;
 
-public class DrawableTextView extends TextView {
-
-    public DrawableTextView(Context Context1, AttributeSet AttributeSet2, int int3) {
-        super(Context1, AttributeSet2, int3);
+public class DrawableTextView
+        extends TextView {
+    public DrawableTextView(Context context) {
+        super(context);
     }
 
-    public DrawableTextView(Context Context1) {
-        super(Context1);
+    public DrawableTextView(Context context, AttributeSet attributeSet) {
+        super(context, attributeSet);
     }
 
-    public DrawableTextView(Context Context1, AttributeSet AttributeSet2) {
-        super(Context1, AttributeSet2);
+    public DrawableTextView(Context context, AttributeSet attributeSet, int n) {
+        super(context, attributeSet, n);
     }
 
-    protected void onDraw(Canvas Canvas1) {
-        Drawable[] Drawable_1darray2 = getCompoundDrawables();
-
-        if (Drawable_1darray2 != null) {
-            Drawable Drawable3 = Drawable_1darray2[0];
-
-            if (Drawable3 != null) {
-                float float4 = getPaint().measureText(getText().toString());
-                int int5 = getCompoundDrawablePadding();
-                float float6 = float4 + (float) Drawable3.getIntrinsicWidth() + (float) int5 + (float) getPaddingLeft() + (float) getPaddingRight();
-
-                Canvas1.translate(((float) getWidth() - float6) / 2.0F, 0.0F);
-            }
+    @Override
+    protected void onDraw(Canvas canvas) {
+        Drawable drawable;
+        Drawable[] arrdrawable = this.getCompoundDrawables();
+        if (arrdrawable != null && (drawable = arrdrawable[0]) != null) {
+            float f = this.getPaint().measureText(this.getText().toString());
+            int n = this.getCompoundDrawablePadding();
+            float f2 = f + (float) drawable.getIntrinsicWidth() + (float) n + (float) this.getPaddingLeft() + (float) this.getPaddingRight();
+            canvas.translate(((float) this.getWidth() - f2) / 2.0f, 0.0f);
         }
-        super.onDraw(Canvas1);
+        super.onDraw(canvas);
     }
 }

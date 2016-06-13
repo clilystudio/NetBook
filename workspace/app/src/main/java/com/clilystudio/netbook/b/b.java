@@ -6,42 +6,42 @@ import android.text.TextPaint;
 import android.text.style.ClickableSpan;
 import android.view.View;
 
-public abstract class b extends ClickableSpan {
-
+public abstract class b
+        extends ClickableSpan {
     protected Context a;
     private int b;
     private int c;
     private int d;
     private boolean e;
-    public b(Context Context1) {
-        a = Context1;
-        b = a.getResources().getColor(2131427452);
-        d = a.getResources().getColor(2131427453);
-        c = a.getResources().getColor(17170445);
+
+    public b(Context context) {
+        this.a = context;
+        this.b = this.a.getResources().getColor(2131427452);
+        this.d = this.a.getResources().getColor(2131427453);
+        this.c = this.a.getResources().getColor(17170445);
     }
 
     abstract Intent a();
 
-    public final void a(boolean boolean1) {
-        e = boolean1;
+    public final void a(boolean bl) {
+        this.e = bl;
     }
 
-    public void onClick(View View1) {
-        Intent Intent2 = a();
-
-        a.startActivity(Intent2);
+    @Override
+    public void onClick(View view) {
+        Intent intent = this.a();
+        this.a.startActivity(intent);
     }
 
-    public void updateDrawState(TextPaint TextPaint1) {
-        int int2;
-
-        super.updateDrawState(TextPaint1);
-        TextPaint1.setUnderlineText(false);
-        TextPaint1.setColor(b);
-        if (e)
-            int2 = d;
-        else
-            int2 = c;
-        TextPaint1.bgColor = int2;
+    /*
+     * Enabled aggressive block sorting
+     */
+    @Override
+    public void updateDrawState(TextPaint textPaint) {
+        super.updateDrawState(textPaint);
+        textPaint.setUnderlineText(false);
+        textPaint.setColor(this.b);
+        int n = this.e ? this.d : this.c;
+        textPaint.bgColor = n;
     }
 }

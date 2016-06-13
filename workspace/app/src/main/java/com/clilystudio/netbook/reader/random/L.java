@@ -1,25 +1,22 @@
 package com.clilystudio.netbook.reader.random;
 
-import android.content.Context;
+final class L
+        implements a {
+    private /* synthetic */ ReaderRandomActivity a;
 
-import com.umeng.a.b;
-
-final class L implements com.umeng.update.a {
-
-    private ReaderRandomActivity a;
-
-    L(ReaderRandomActivity ReaderRandomActivity1) {
-        a = ReaderRandomActivity1;
+    L(ReaderRandomActivity readerRandomActivity) {
+        this.a = readerRandomActivity;
     }
 
-    public final void a(int int1) {
-        switch (int1) {
-            default:
+    @Override
+    public final void a(int n2) {
+        switch (n2) {
+            default: {
                 return;
-            case 1070:
-                a.onBackPressed();
-                b.a((Context) a, "random_reader_quit");
-                return;
+            }
+            case 2131493934:
         }
+        this.a.onBackPressed();
+        b.a(this.a, "random_reader_quit");
     }
 }

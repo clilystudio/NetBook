@@ -31,6 +31,7 @@ public class am {
     private CharSequence a;
     private TabLayout c;     // final access specifier removed
     private int b = -1;
+
     am(TabLayout TabLayout1) {
         c = TabLayout1;
     }

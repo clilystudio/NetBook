@@ -1,23 +1,25 @@
 package com.clilystudio.netbook.ui.post;
 
 import android.os.AsyncTask;
-import android.os.AsyncTask$Status;
+import android.support.design.widget.am;
 
-final class dM implements j {
+final class dM
+        implements j {
+    private /* synthetic */ TweetListFragment a;
 
-    private TweetListFragment a;
-
-    dM(TweetListFragment TweetListFragment1) {
-        a = TweetListFragment1;
+    dM(TweetListFragment tweetListFragment) {
+        this.a = tweetListFragment;
     }
 
+    @Override
     public final void a() {
-        if (TweetListFragment.b(a) == null || TweetListFragment.b(a).getStatus() == AsyncTask$Status.FINISHED) {
-            TweetListFragment.k(a).setVisibility(0);
-            if (!android.support.design.widget.am.a((AsyncTask) TweetListFragment.l(a)))
-                TweetListFragment.l(a).cancel(true);
-            TweetListFragment.a(a, new dN(a, (byte) 0));
-            TweetListFragment.b(a).b(new String[]{"50bff3ec209793513100001c", "updated"});
+        if (TweetListFragment.b(this.a) == null || TweetListFragment.b(this.a).getStatus() == AsyncTask.Status.FINISHED) {
+            TweetListFragment.k(this.a).setVisibility(0);
+            if (!am.a((AsyncTask) TweetListFragment.l(this.a))) {
+                TweetListFragment.l(this.a).cancel(true);
+            }
+            TweetListFragment.a(this.a, new dN(this.a, 0));
+            TweetListFragment.b(this.a).b("50bff3ec209793513100001c", "updated");
         }
     }
 }

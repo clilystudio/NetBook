@@ -5,39 +5,48 @@ import android.os.Bundle;
 import com.iflytek.cloud.SpeechError;
 import com.iflytek.cloud.SynthesizerListener;
 
-final class am implements SynthesizerListener {
+final class am
+        implements SynthesizerListener {
+    private /* synthetic */ ReaderActivity a;
 
-    private ReaderActivity a;
-
-    am(ReaderActivity ReaderActivity1) {
-        a = ReaderActivity1;
+    am(ReaderActivity readerActivity) {
+        this.a = readerActivity;
     }
 
-    public final void onBufferProgress(int int1, int int2, int int3, String String4) {
+    @Override
+    public final void onBufferProgress(int n, int n2, int n3, String string) {
     }
 
-    public final void onCompleted(SpeechError SpeechError1) {
-        if (ReaderActivity.G(a) < -1 + ReaderActivity.H(a).length) {
-            ReaderActivity.K(a);
-            ReaderActivity.c(a, false);
-        } else
-            ReaderActivity.J(a);
+    @Override
+    public final void onCompleted(SpeechError speechError) {
+        if (ReaderActivity.G(this.a) < -1 + ReaderActivity.H(this.a).length) {
+            ReaderActivity.K(this.a);
+            ReaderActivity.c(this.a, false);
+            return;
+        }
+        ReaderActivity.J(this.a);
     }
 
-    public final void onEvent(int int1, int int2, int int3, Bundle Bundle4) {
+    @Override
+    public final void onEvent(int n2, int n3, int n4, Bundle bundle) {
     }
 
+    @Override
     public final void onSpeakBegin() {
     }
 
+    @Override
     public final void onSpeakPaused() {
     }
 
-    public final void onSpeakProgress(int int1, int int2, int int3) {
-        if (ReaderActivity.G(a) == -1 + ReaderActivity.H(a).length && int1 >= -1 + ((Integer) ReaderActivity.I(a).get(0)).intValue() && ((Integer) ReaderActivity.I(a).get(0)).intValue() < 100)
-            ReaderActivity.J(a);
+    @Override
+    public final void onSpeakProgress(int n2, int n3, int n4) {
+        if (ReaderActivity.G(this.a) == -1 + ReaderActivity.H(this.a).length && n2 >= -1 + (Integer) ReaderActivity.I(this.a).get(0) && (Integer) ReaderActivity.I(this.a).get(0) < 100) {
+            ReaderActivity.J(this.a);
+        }
     }
 
+    @Override
     public final void onSpeakResumed() {
     }
 }

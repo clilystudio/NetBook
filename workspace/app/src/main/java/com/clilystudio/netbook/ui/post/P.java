@@ -1,50 +1,80 @@
 package com.clilystudio.netbook.ui.post;
 
 import android.app.Activity;
+import android.content.Intent;
 
+import com.clilystudio.netbook.a.c;
+import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.model.PostPublish;
+import com.clilystudio.netbook.util.e;
 
-final class P extends com.clilystudio.netbook.a.c {
+final class P
+        extends c<String, PostPublish> {
+    private /* synthetic */ AddVoteActivity a;
 
-    private AddVoteActivity a;
-
-    public P(AddVoteActivity AddVoteActivity1, Activity Activity2, int int3) {
-        super(Activity2, 2131034430);
-        a = AddVoteActivity1;
+    public P(AddVoteActivity addVoteActivity, Activity activity, int n) {
+        this.a = addVoteActivity;
+        super(activity, 2131034430);
     }
 
-    private transient PostPublish a(String[] String_1darray1) {
-        PostPublish PostPublish3;
-
+    private /* varargs */ PostPublish a(String... arrstring) {
         try {
-            switch (AddVoteActivity.d(a)) {
-                case 1:
-                case 2:
-                default:
-                    return com.clilystudio.netbook.api.b.b().g(String_1darray1[0], String_1darray1[2], String_1darray1[3], AddVoteActivity.e(a));
-                case 0:
-                    return com.clilystudio.netbook.api.b.b().e(String_1darray1[0], String_1darray1[1], String_1darray1[2], String_1darray1[3]);
-                case 3:
-                    return com.clilystudio.netbook.api.b.b().j(String_1darray1[0], String_1darray1[3]);
-                case 4:
-                    return com.clilystudio.netbook.api.b.b().b(String_1darray1[0], String_1darray1[2], String_1darray1[3]);
+            switch (AddVoteActivity.d(this.a)) {
+                default: {
+                    return b.b().g(arrstring[0], arrstring[2], arrstring[3], AddVoteActivity.e(this.a));
+                }
+                case 0: {
+                    return b.b().e(arrstring[0], arrstring[1], arrstring[2], arrstring[3]);
+                }
+                case 3: {
+                    return b.b().j(arrstring[0], arrstring[3]);
+                }
+                case 4: {
+                    return b.b().b(arrstring[0], arrstring[2], arrstring[3]);
+                }
                 case 5:
-                    PostPublish3 = com.clilystudio.netbook.api.b.b().g(String_1darray1[0], String_1darray1[2], String_1darray1[3], AddVoteActivity.e(a));
-                    break;
             }
-        } catch (Exception Exception2) {
-            Exception2.printStackTrace();
+            PostPublish postPublish = b.b().g(arrstring[0], arrstring[2], arrstring[3], AddVoteActivity.e(this.a));
+            return postPublish;
+        } catch (Exception var2_3) {
+            var2_3.printStackTrace();
             return null;
         }
-        return PostPublish3;
     }
 
-    public final volatile Object a(Object[] Object_1darray1) {
-        return a((String[]) Object_1darray1);
-    }
-// Error: Internal #201: 
-// The following method may not be correct.
-
-    public final void a(Object Object1) {
+    /*
+     * Enabled aggressive block sorting
+     */
+    @Override
+    public final /* synthetic */ void a(Object object) {
+        PostPublish postPublish = (PostPublish) object;
+        if (postPublish == null) {
+            e.a((Activity) this.a, (String) "\u53d1\u5e03\u5931\u8d25\uff0c\u8bf7\u68c0\u67e5\u7f51\u7edc\u6216\u7a0d\u540e\u518d\u8bd5");
+            return;
+        }
+        if (postPublish.isOk()) {
+            e.a((Activity) this.a, (String) "\u53d1\u5e03\u6210\u529f");
+            Intent intent = AddVoteActivity.d(this.a) == 0 ? BookPostTabActivity.a(this.a, AddVoteActivity.c(this.a), AddVoteActivity.f(this.a), AddVoteActivity.g(this.a)) : (AddVoteActivity.d(this.a) == 3 || AddVoteActivity.d(this.a) == 4 ? TweetTabActivity.a(this.a) : (AddVoteActivity.d(this.a) == 5 ? new Intent(this.a, GirlTopicListActivity.class) : new Intent(this.a, CommonPostListActivity.class)));
+            this.a.startActivity(intent);
+            return;
+        }
+        if ("TOKEN_INVALID".equals(postPublish.getCode())) {
+            this.a.d();
+            return;
+        }
+        if ("LV_NOT_ENOUGH".equals(postPublish.getCode())) {
+            e.a((Activity) this.a, (String) "\u5f88\u62b1\u6b49\uff0c\u60a8\u7684\u7b49\u7ea7\u4e0d\u591f");
+            return;
+        }
+        if (!"FORBIDDEN".equals(postPublish.getCode())) {
+            e.a((Activity) this.a, (String) "\u53d1\u5e03\u5931\u8d25\uff0c\u8bf7\u91cd\u8bd5");
+            return;
+        }
+        String string = postPublish.getMsg();
+        if (string != null) {
+            e.a((Activity) this.a, (String) string);
+            return;
+        }
+        e.a((Activity) this.a, (int) 2131034388);
     }
 }

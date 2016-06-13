@@ -1,21 +1,26 @@
 package com.clilystudio.netbook.reader;
 
-final class aw implements cw {
+final class aw
+        implements cw {
+    private /* synthetic */ ReaderActivity a;
 
-    private ReaderActivity a;
-
-    aw(ReaderActivity ReaderActivity1) {
-        a = ReaderActivity1;
+    aw(ReaderActivity readerActivity) {
+        this.a = readerActivity;
     }
 
-    public final void a(int int1) {
-        ReaderActivity.g(a, int1);
+    @Override
+    public final void a(int n2) {
+        ReaderActivity.g(this.a, n2);
     }
 
-    public final void b(int int1) {
-        if (int1 == 2)
-            ReaderActivity.f(a);
-        if (int1 == 0)
-            ReaderActivity.S(a);
+    @Override
+    public final void b(int n2) {
+        if (n2 == 2) {
+            ReaderActivity.f(this.a);
+        }
+        if (n2 != 0) {
+            return;
+        }
+        ReaderActivity.S(this.a);
     }
 }

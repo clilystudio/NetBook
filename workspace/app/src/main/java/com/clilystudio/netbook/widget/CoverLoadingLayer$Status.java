@@ -1,34 +1,32 @@
 package com.clilystudio.netbook.widget;
 
-final class CoverLoadingLayer$Status extends Enum {
-
-    public static final CoverLoadingLayer$Status NONE = new CoverLoadingLayer$Status("NONE", 0);
-    public static final CoverLoadingLayer$Status PREPARE = new CoverLoadingLayer$Status("PREPARE", 1);
-    public static final CoverLoadingLayer$Status PROGRESS = new CoverLoadingLayer$Status("PROGRESS", 2);
-    public static final CoverLoadingLayer$Status PAUSE = new CoverLoadingLayer$Status("PAUSE", 3);
-    public static final CoverLoadingLayer$Status PENDING = new CoverLoadingLayer$Status("PENDING", 4);
-    public static final CoverLoadingLayer$Status DOWNLOADED = new CoverLoadingLayer$Status("DOWNLOADED", 5);
-    private static CoverLoadingLayer$Status[] a;     // final access specifier removed
+final class CoverLoadingLayer$Status
+        extends Enum<CoverLoadingLayer$Status> {
+    public static final /* enum */ CoverLoadingLayer$Status DOWNLOADED;
+    public static final /* enum */ CoverLoadingLayer$Status NONE;
+    public static final /* enum */ CoverLoadingLayer$Status PAUSE;
+    public static final /* enum */ CoverLoadingLayer$Status PENDING;
+    public static final /* enum */ CoverLoadingLayer$Status PREPARE;
+    public static final /* enum */ CoverLoadingLayer$Status PROGRESS;
+    private static final /* synthetic */ CoverLoadingLayer$Status[] a;
 
     static {
-        CoverLoadingLayer$Status[] Status_1darray1 = new CoverLoadingLayer$Status[6];
-
-        Status_1darray1[0] = NONE;
-        Status_1darray1[1] = PREPARE;
-        Status_1darray1[2] = PROGRESS;
-        Status_1darray1[3] = PAUSE;
-        Status_1darray1[4] = PENDING;
-        Status_1darray1[5] = DOWNLOADED;
-        a = Status_1darray1;
-    }
-// Error: Internal #201: 
-// The following method may not be correct.
-
-    private CoverLoadingLayer$Status(String String1, int int2) {
-        super(String1, int2);
+        NONE = new CoverLoadingLayer$Status();
+        PREPARE = new CoverLoadingLayer$Status();
+        PROGRESS = new CoverLoadingLayer$Status();
+        PAUSE = new CoverLoadingLayer$Status();
+        PENDING = new CoverLoadingLayer$Status();
+        DOWNLOADED = new CoverLoadingLayer$Status();
+        CoverLoadingLayer$Status[] arrcoverLoadingLayer$Status = new CoverLoadingLayer$Status[]{NONE, PREPARE, PROGRESS, PAUSE, PENDING, DOWNLOADED};
+        a = arrcoverLoadingLayer$Status;
     }
 
-    public static CoverLoadingLayer$Status valueOf(String String1) {
+    private CoverLoadingLayer$Status() {
+        super(string, n);
+    }
+
+    public static CoverLoadingLayer$Status valueOf(String string) {
+        return (CoverLoadingLayer$Status) ((Object) Enum.valueOf(CoverLoadingLayer$Status.class, string));
     }
 
     public static CoverLoadingLayer$Status[] values() {

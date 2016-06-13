@@ -7,28 +7,27 @@ import com.clilystudio.netbook.model.ChargePlan;
 import com.e.a.a.g.c;
 
 public final class a {
-
-    com.e.a.a.g.a a;     // final access specifier removed
+    final com.e.a.a.g.a a;
     private Context b;
-    public a(Context Context1) {
-        b = Context1;
-        a = c.a(Context1, null);
+
+    public a(Context context) {
+        this.b = context;
+        this.a = c.a(context, null);
     }
 
-    static Context a(a a1) {
-        return a1.b;
+    static /* synthetic */ Context a(a a2) {
+        return a2.b;
     }
 
-    public static boolean a(Context Context1) {
-        com.e.a.a.g.a a2 = c.a(Context1, "");
-
-        if (a2.a() && a2.b())
+    public static boolean a(Context context) {
+        com.e.a.a.g.a a2 = c.a(context, "");
+        if (a2.a() && a2.b()) {
             return true;
-        else
-            return false;
+        }
+        return false;
     }
 
-    public final void a(ChargePlan ChargePlan1) {
-        new b(this, (Activity) b, "\u6B63\u5728\u53D1\u8D77\u5FAE\u4FE1\u652F\u4ED8").b(new ChargePlan[]{ChargePlan1});
+    public final void a(ChargePlan chargePlan) {
+        new b(this, (Activity) this.b, "\u6b63\u5728\u53d1\u8d77\u5fae\u4fe1\u652f\u4ed8").b(chargePlan);
     }
 }

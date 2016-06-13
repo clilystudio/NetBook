@@ -5,34 +5,37 @@ import android.content.Intent;
 
 import com.clilystudio.netbook.model.NotificationItem;
 
-public class PostVoteBinder extends NotifBinder {
-
+public class PostVoteBinder
+        extends NotifBinder {
     public static final String LABEL = "post_vote";
 
-    public PostVoteBinder(NotificationItem NotificationItem1) {
-        super(NotificationItem1);
+    public PostVoteBinder(NotificationItem notificationItem) {
+        super(notificationItem);
     }
 
+    @Override
     protected int getIconRes() {
         return 2130837917;
     }
 
-    public Intent getIntent(Context Context1) {
-        return getPostIntent(Context1, getItem().getMyPost());
+    @Override
+    public Intent getIntent(Context context) {
+        return this.getPostIntent(context, this.getItem().getMyPost());
     }
 
+    @Override
     public String getLabel() {
         return "post_vote";
     }
 
+    @Override
     public String getMainText() {
-        Object[] Object_1darray1 = new Object[1];
-
-        Object_1darray1[0] = getItem().getTrigger().getNickname();
-        return String.format("%s \u53C2\u4E0E\u4E86\u6295\u7968", Object_1darray1);
+        Object[] arrobject = new Object[]{this.getItem().getTrigger().getNickname()};
+        return String.format("%s \u53c2\u4e0e\u4e86\u6295\u7968", arrobject);
     }
 
+    @Override
     public String getSubText() {
-        return getItem().getMyPost().getTitle();
+        return this.getItem().getMyPost().getTitle();
     }
 }

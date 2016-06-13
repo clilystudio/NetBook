@@ -7,24 +7,23 @@ import android.widget.TextView;
 import butterknife.ButterKnife$Finder;
 
 public class SmsVerifyActivity$$ViewInjector {
-
-    public static void inject(ButterKnife$Finder Finder1, SmsVerifyActivity SmsVerifyActivity2, Object Object3) {
-        SmsVerifyActivity2.mCodeText = (EditText) Finder1.findRequiredView(Object3, 2131493220, "field 'mCodeText'");
-        SmsVerifyActivity2.mAppNameText = (TextView) Finder1.findRequiredView(Object3, 2131493215, "field 'mAppNameText'");
-        SmsVerifyActivity2.mGoodsText = (TextView) Finder1.findRequiredView(Object3, 2131493216, "field 'mGoodsText'");
-        SmsVerifyActivity2.mPriceText = (TextView) Finder1.findRequiredView(Object3, 2131493217, "field 'mPriceText'");
-        SmsVerifyActivity2.mPhoneText = (TextView) Finder1.findRequiredView(Object3, 2131493218, "field 'mPhoneText'");
-        SmsVerifyActivity2.mSendCodeBtn = (Button) Finder1.findRequiredView(Object3, 2131493219, "field 'mSendCodeBtn'");
-        SmsVerifyActivity2.mCommitBtn = (Button) Finder1.findRequiredView(Object3, 2131493221, "field 'mCommitBtn'");
+    public static void inject(ButterKnife$Finder butterKnife$Finder, SmsVerifyActivity smsVerifyActivity, Object object) {
+        smsVerifyActivity.mCodeText = (EditText) butterKnife$Finder.findRequiredView(object, 2131493220, "field 'mCodeText'");
+        smsVerifyActivity.mAppNameText = (TextView) butterKnife$Finder.findRequiredView(object, 2131493215, "field 'mAppNameText'");
+        smsVerifyActivity.mGoodsText = (TextView) butterKnife$Finder.findRequiredView(object, 2131493216, "field 'mGoodsText'");
+        smsVerifyActivity.mPriceText = (TextView) butterKnife$Finder.findRequiredView(object, 2131493217, "field 'mPriceText'");
+        smsVerifyActivity.mPhoneText = (TextView) butterKnife$Finder.findRequiredView(object, 2131493218, "field 'mPhoneText'");
+        smsVerifyActivity.mSendCodeBtn = (Button) butterKnife$Finder.findRequiredView(object, 2131493219, "field 'mSendCodeBtn'");
+        smsVerifyActivity.mCommitBtn = (Button) butterKnife$Finder.findRequiredView(object, 2131493221, "field 'mCommitBtn'");
     }
 
-    public static void reset(SmsVerifyActivity SmsVerifyActivity1) {
-        SmsVerifyActivity1.mCodeText = null;
-        SmsVerifyActivity1.mAppNameText = null;
-        SmsVerifyActivity1.mGoodsText = null;
-        SmsVerifyActivity1.mPriceText = null;
-        SmsVerifyActivity1.mPhoneText = null;
-        SmsVerifyActivity1.mSendCodeBtn = null;
-        SmsVerifyActivity1.mCommitBtn = null;
+    public static void reset(SmsVerifyActivity smsVerifyActivity) {
+        smsVerifyActivity.mCodeText = null;
+        smsVerifyActivity.mAppNameText = null;
+        smsVerifyActivity.mGoodsText = null;
+        smsVerifyActivity.mPriceText = null;
+        smsVerifyActivity.mPhoneText = null;
+        smsVerifyActivity.mSendCodeBtn = null;
+        smsVerifyActivity.mCommitBtn = null;
     }
 }

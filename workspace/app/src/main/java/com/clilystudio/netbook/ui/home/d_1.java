@@ -1,16 +1,17 @@
 package com.clilystudio.netbook.ui.home;
 
-import android.widget.PopupWindow$OnDismissListener;
+import android.widget.PopupWindow;
 
-final class d implements PopupWindow$OnDismissListener {
+final class d
+        implements PopupWindow.OnDismissListener {
+    private /* synthetic */ HomeActivity a;
 
-    private HomeActivity a;
-
-    d(HomeActivity HomeActivity1) {
-        a = HomeActivity1;
+    d(HomeActivity homeActivity) {
+        this.a = homeActivity;
     }
 
+    @Override
     public final void onDismiss() {
-        HomeActivity.e(a);
+        HomeActivity.e(this.a);
     }
 }

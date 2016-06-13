@@ -1,39 +1,44 @@
 package com.clilystudio.netbook.push;
 
 import com.activeandroid.Model;
+import com.activeandroid.annotation.Column;
+import com.activeandroid.annotation.Table;
+import com.activeandroid.query.Delete;
+import com.activeandroid.query.Select;
 import com.clilystudio.netbook.hpay100.a.a;
 
 import java.util.List;
 
-public class BookUnSubRecord extends Model {
-
+@Table(name = "BookUnSubRecords")
+public class BookUnSubRecord
+        extends Model {
+    @Column(name = "pushId", unique = 1)
     public String pushId;
 
-    public static void create(String String1) {
-        if (get(String1) == null) {
-            BookUnSubRecord BookUnSubRecord2 = new BookUnSubRecord();
-
-            BookUnSubRecord2.pushId = String1;
-            BookUnSubRecord2.save();
+    public static void create(String string) {
+        if (BookUnSubRecord.get(string) == null) {
+            BookUnSubRecord bookUnSubRecord = new BookUnSubRecord();
+            bookUnSubRecord.pushId = string;
+            bookUnSubRecord.save();
         }
     }
-// Error: Internal #201: 
-// The following method may not be correct.
 
-    public static void delete(String String1) {
-    }
-// Error: Internal #201: 
-// The following method may not be correct.
-
-    public static BookUnSubRecord get(String String1) {
-    }
-// Error: Internal #201: 
-// The following method may not be correct.
-
-    public static List getAll() {
+    public static void delete(String string) {
+        new Delete().from(BookUnSubRecord.class).where("pushId = ?", string).execute();
     }
 
-    public static BookUnSubRecord getBookId(String String1) {
-        return get(a.s(String1));
+    public static BookUnSubRecord get(String string) {
+        if (string == null) {
+            return null;
+        }
+        return (BookUnSubRecord) new Select().from(BookUnSubRecord.class).where("pushId = ?", string).executeSingle();
+    }
+
+    public static List<BookUnSubRecord> getAll() {
+        return new Select().from(BookUnSubRecord.class).execute();
+    }
+
+    public static BookUnSubRecord getBookId(String string) {
+        return BookUnSubRecord.get(a.s(string));
     }
 }

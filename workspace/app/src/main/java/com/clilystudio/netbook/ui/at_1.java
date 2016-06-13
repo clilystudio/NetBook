@@ -2,18 +2,19 @@ package com.clilystudio.netbook.ui;
 
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.AdapterView$OnItemClickListener;
 
-final class at implements AdapterView$OnItemClickListener {
+final class at
+        implements AdapterView.OnItemClickListener {
+    private /* synthetic */ String[] a;
+    private /* synthetic */ BookCategoryListActivity b;
 
-    private String[] a;
-    private BookCategoryListActivity b;
-    at(BookCategoryListActivity BookCategoryListActivity1, String[] String_1darray2) {
-        b = BookCategoryListActivity1;
-        a = String_1darray2;
+    at(BookCategoryListActivity bookCategoryListActivity, String[] arrstring) {
+        this.b = bookCategoryListActivity;
+        this.a = arrstring;
     }
 
-    public final void onItemClick(AdapterView AdapterView1, View View2, int int3, long long4) {
-        BookCategoryListActivity.a(b, a[int3]);
+    @Override
+    public final void onItemClick(AdapterView<?> adapterView, View view, int n, long l) {
+        BookCategoryListActivity.a(this.b, this.a[n]);
     }
 }

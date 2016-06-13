@@ -1,19 +1,19 @@
 package com.clilystudio.netbook.ui;
 
 import android.view.View;
-import android.view.View$OnClickListener;
 
 import com.clilystudio.netbook.model.Advert;
 
-final class aE implements View$OnClickListener {
+final class aE
+        implements View.OnClickListener {
+    private /* synthetic */ Advert a;
 
-    private Advert a;
-
-    aE(BookInfoActivity BookInfoActivity1, Advert Advert2) {
-        a = Advert2;
+    aE(BookInfoActivity bookInfoActivity, Advert advert) {
+        this.a = advert;
     }
 
-    public final void onClick(View View1) {
-        a.processClick(View1);
+    @Override
+    public final void onClick(View view) {
+        this.a.processClick(view);
     }
 }

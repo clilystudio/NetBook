@@ -3,8 +3,7 @@ package com.clilystudio.netbook.model;
 import java.util.Date;
 
 public class RemoteBookShelf$Book {
-
-    RemoteBookShelf this$0;     // final access specifier removed
+    final /* synthetic */ RemoteBookShelf this$0;
     private String _id;
     private String author;
     private int chaptersCount;
@@ -13,71 +12,72 @@ public class RemoteBookShelf$Book {
     private String lastChapter;
     private String title;
     private Date updated;
-    public RemoteBookShelf$Book(RemoteBookShelf RemoteBookShelf1) {
-        this$0 = RemoteBookShelf1;
+
+    public RemoteBookShelf$Book(RemoteBookShelf remoteBookShelf) {
+        this.this$0 = remoteBookShelf;
     }
 
     public String getAuthor() {
-        return author;
+        return this.author;
     }
 
-    public void setAuthor(String String1) {
-        author = String1;
+    public void setAuthor(String string) {
+        this.author = string;
     }
 
     public int getChaptersCount() {
-        return chaptersCount;
+        return this.chaptersCount;
     }
 
-    public void setChaptersCount(int int1) {
-        chaptersCount = int1;
+    public void setChaptersCount(int n) {
+        this.chaptersCount = n;
     }
 
     public String getCover() {
-        return cover;
+        return this.cover;
     }
 
-    public void setCover(String String1) {
-        cover = String1;
+    public void setCover(String string) {
+        this.cover = string;
     }
 
     public String getId() {
-        return _id;
+        return this._id;
     }
 
-    public void setId(String String1) {
-        _id = String1;
+    public void setId(String string) {
+        this._id = string;
     }
 
     public String getLastChapter() {
-        return lastChapter;
+        return this.lastChapter;
     }
 
-    public void setLastChapter(String String1) {
-        lastChapter = String1;
+    public void setLastChapter(String string) {
+        this.lastChapter = string;
     }
 
     public String getTitle() {
-        return title;
+        return this.title;
     }
 
-    public void setTitle(String String1) {
-        title = String1;
+    public void setTitle(String string) {
+        this.title = string;
     }
 
     public Date getUpdated() {
-        return updated;
+        return this.updated;
     }
 
-    public void setUpdated(Date Date1) {
-        updated = Date1;
+    public void setUpdated(Date date) {
+        this.updated = date;
     }
 
     public boolean isHasCp() {
-        return hasCp;
+        return this.hasCp;
     }
 
-    public void setHasCp(boolean boolean1) {
-        hasCp = boolean1;
+    public void setHasCp(boolean bl) {
+        this.hasCp = bl;
     }
 }

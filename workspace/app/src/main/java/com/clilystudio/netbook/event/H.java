@@ -1,14 +1,13 @@
 package com.clilystudio.netbook.event;
 
 public final class H {
-
     private boolean a;
 
-    public H(boolean boolean1) {
-        a = boolean1;
+    public H(boolean bl) {
+        this.a = bl;
     }
 
     public final boolean a() {
-        return a;
+        return this.a;
     }
 }

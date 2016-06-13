@@ -3,55 +3,58 @@ package com.clilystudio.netbook.ui.post;
 import android.app.Activity;
 
 import com.clilystudio.netbook.a.c;
+import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.model.PostPublish;
 import com.clilystudio.netbook.util.e;
 
-final class t extends c {
+final class t
+        extends c<String, PostPublish> {
+    private /* synthetic */ AddGamePostActivity a;
 
-    private AddGamePostActivity a;
-
-    public t(AddGamePostActivity AddGamePostActivity1, Activity Activity2, int int3) {
-        super(Activity2, 2131034430);
-        a = AddGamePostActivity1;
+    public t(AddGamePostActivity addGamePostActivity, Activity activity, int n) {
+        this.a = addGamePostActivity;
+        super(activity, 2131034430);
     }
 
-    private transient PostPublish a(String[] String_1darray1) {
-        PostPublish PostPublish3;
-
+    private /* varargs */ PostPublish a(String... arrstring) {
         try {
-            PostPublish3 = com.clilystudio.netbook.api.b.b().i(String_1darray1[0], String_1darray1[1], String_1darray1[2]);
-        } catch (Exception Exception2) {
-            Exception2.printStackTrace();
+            PostPublish postPublish = b.b().i(arrstring[0], arrstring[1], arrstring[2]);
+            return postPublish;
+        } catch (Exception var2_3) {
+            var2_3.printStackTrace();
             return null;
         }
-        return PostPublish3;
     }
 
-    public final volatile Object a(Object[] Object_1darray1) {
-        return a((String[]) Object_1darray1);
-    }
-
-    public final void a(Object Object1) {
-        PostPublish PostPublish2 = (PostPublish) Object1;
-
-        if (PostPublish2 != null) {
-            if (PostPublish2.isOk()) {
-                e.a((Activity) a, "\u53D1\u5E03\u6210\u529F");
-                a.finish();
-            } else if ("TOKEN_INVALID".equals(PostPublish2.getCode()))
-                e.a((Activity) a, "\u8EAB\u4EFD\u8BA4\u8BC1\u5931\u8D25\uFF0C\u8BF7\u91CD\u65B0\u767B\u5F55\u540E\u518D\u53D1\u5E03");
-            else if ("LV_NOT_ENOUGH".equals(PostPublish2.getCode()))
-                e.a((Activity) a, "\u5F88\u62B1\u6B49\uFF0C\u60A8\u7684\u7B49\u7EA7\u4E0D\u591F");
-            else if ("FORBIDDEN".equals(PostPublish2.getCode())) {
-                String String3 = PostPublish2.getMsg();
-
-                if (String3 != null)
-                    e.a((Activity) a, String3);
-                else
-                    e.a((Activity) a, 2131034388);
-            } else
-                e.a((Activity) a, "\u53D1\u5E03\u5931\u8D25\uFF0C\u8BF7\u91CD\u8BD5");
-        } else
-            e.a((Activity) a, "\u53D1\u5E03\u5F02\u5E38\uFF0C\u8BF7\u68C0\u67E5\u7F51\u7EDC\u6216\u8005\u7A0D\u540E\u518D\u8BD5");
+    @Override
+    public final /* synthetic */ void a(Object object) {
+        PostPublish postPublish = (PostPublish) object;
+        if (postPublish != null) {
+            if (postPublish.isOk()) {
+                e.a((Activity) this.a, "\u53d1\u5e03\u6210\u529f");
+                this.a.finish();
+                return;
+            }
+            if ("TOKEN_INVALID".equals(postPublish.getCode())) {
+                e.a((Activity) this.a, "\u8eab\u4efd\u8ba4\u8bc1\u5931\u8d25\uff0c\u8bf7\u91cd\u65b0\u767b\u5f55\u540e\u518d\u53d1\u5e03");
+                return;
+            }
+            if ("LV_NOT_ENOUGH".equals(postPublish.getCode())) {
+                e.a((Activity) this.a, "\u5f88\u62b1\u6b49\uff0c\u60a8\u7684\u7b49\u7ea7\u4e0d\u591f");
+                return;
+            }
+            if ("FORBIDDEN".equals(postPublish.getCode())) {
+                String string = postPublish.getMsg();
+                if (string != null) {
+                    e.a((Activity) this.a, string);
+                    return;
+                }
+                e.a((Activity) this.a, 2131034388);
+                return;
+            }
+            e.a((Activity) this.a, "\u53d1\u5e03\u5931\u8d25\uff0c\u8bf7\u91cd\u8bd5");
+            return;
+        }
+        e.a((Activity) this.a, "\u53d1\u5e03\u5f02\u5e38\uff0c\u8bf7\u68c0\u67e5\u7f51\u7edc\u6216\u8005\u7a0d\u540e\u518d\u8bd5");
     }
 }

@@ -1,31 +1,33 @@
 package com.clilystudio.netbook.view;
 
 import android.content.DialogInterface;
-import android.content.DialogInterface$OnClickListener;
 
-final class d implements DialogInterface$OnClickListener {
+final class d
+        implements DialogInterface.OnClickListener {
+    private /* synthetic */ c a;
 
-    private c a;
-
-    d(c c1) {
-        a = c1;
+    d(c c2) {
+        this.a = c2;
     }
 
-    public final void onClick(DialogInterface DialogInterface1, int int2) {
-        int int3 = 0;
-
-        switch (int2) {
-            case 1201:
-                int3 = 2;
+    /*
+     * Enabled aggressive block sorting
+     */
+    @Override
+    public final void onClick(DialogInterface dialogInterface, int n) {
+        int n2 = 0;
+        switch (n) {
+            case 2131494065: {
+                n2 = 2;
+            }
+            default: {
                 break;
-            case 1199:
-                int3 = 4;
-                break;
-            case 1200:
-            default:
-                break;
+            }
+            case 2131494063: {
+                n2 = 4;
+            }
         }
-        if (c.a(a) != null)
-            c.a(a).a(int3);
+        if (c.a(this.a) == null) return;
+        c.a(this.a).a(n2);
     }
 }

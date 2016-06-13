@@ -1,138 +1,156 @@
 package com.clilystudio.netbook.db;
 
 import com.activeandroid.Model;
+import com.activeandroid.annotation.Column;
+import com.activeandroid.annotation.Table;
+import com.clilystudio.netbook.hpay100.a.a;
 
 import java.io.File;
 import java.util.Date;
 
-public class BookFile extends Model {
-
+@Table(name = "BookFile")
+public class BookFile
+        extends Model {
+    @Column(name = "file_path")
     public String filePath;
+    @Column(name = "name")
     public String name;
+    @Column(name = "progress")
     public float progress;
+    @Column(name = "progress_chapter_index")
     public int progressChapterIndex;
+    @Column(name = "progress_char_offset")
     public int progressCharOffset;
+    @Column(name = "size")
     public String size;
+    @Column(name = "top")
     public boolean top;
+    @Column(name = "updated")
     public Date updated;
-    public BookFile(File File1) {
-        name = File1.getName();
-        size = com.clilystudio.netbook.hpay100.a.a.a(File1.length(), true);
-        filePath = File1.getPath();
-    }
 
     public BookFile() {
     }
 
-    public boolean equals(Object Object1) {
-        if (Object1 != null && Object1 instanceof BookFile) {
-            BookFile BookFile2 = (BookFile) Object1;
+    public BookFile(File file) {
+        this.name = file.getName();
+        this.size = a.a(file.length(), true);
+        this.filePath = file.getPath();
+    }
 
-            if (BookFile2.name != null && BookFile2.name.equals(name))
-                return true;
+    /*
+     * Enabled aggressive block sorting
+     * Lifted jumps to return sites
+     */
+    @Override
+    public boolean equals(Object object) {
+        if (object == null) return false;
+        if (!(object instanceof BookFile)) {
+            return false;
         }
-        return false;
+        BookFile bookFile = (BookFile) object;
+        if (bookFile.name == null) return false;
+        if (!bookFile.name.equals(this.name)) return false;
+        return true;
     }
 
     public String getFilePath() {
-        return filePath;
+        return this.filePath;
     }
 
-    public void setFilePath(String String1) {
-        filePath = String1;
+    public void setFilePath(String string) {
+        this.filePath = string;
     }
 
     public int getIntSize() {
-        int int2;
-
         try {
-            int2 = Integer.parseInt(getSize());
-        } catch (Exception Exception1) {
+            int n = Integer.parseInt(this.getSize());
+            return n;
+        } catch (Exception var1_2) {
             return 0;
         }
-        return int2;
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
-    public void setName(String String1) {
-        name = String1;
+    public void setName(String string) {
+        this.name = string;
     }
 
     public String getPathAndName() {
-        return filePath;
+        return this.filePath;
     }
 
     public float getProgress() {
-        return progress;
+        return this.progress;
     }
 
-    public void setProgress(float float1) {
-        progress = float1;
+    public void setProgress(float f2) {
+        this.progress = f2;
     }
 
     public int getProgressChapterIndex() {
-        return progressChapterIndex;
+        return this.progressChapterIndex;
     }
 
-    public void setProgressChapterIndex(int int1) {
-        progressChapterIndex = int1;
+    public void setProgressChapterIndex(int n) {
+        this.progressChapterIndex = n;
     }
 
     public int getProgressCharOffset() {
-        return progressCharOffset;
+        return this.progressCharOffset;
     }
 
-    public void setProgressCharOffset(int int1) {
-        progressCharOffset = int1;
+    public void setProgressCharOffset(int n) {
+        this.progressCharOffset = n;
     }
 
     public String getReadableProgress() {
-        if (progress == 0.0F)
+        if (this.progress == 0.0f) {
             return "0%";
-        else {
-            int int1 = (int) (100.0F * progress);
-
-            if (int1 == 0)
-                int1 = 1;
-            return new StringBuilder().append(int1).append("%").toString();
         }
+        int n = (int) (100.0f * this.progress);
+        if (n == 0) {
+            n = 1;
+        }
+        return "" + n + "%";
     }
 
     public String getSize() {
-        return size;
+        return this.size;
     }
 
-    public void setSize(String String1) {
-        size = String1;
+    public void setSize(String string) {
+        this.size = string;
     }
 
     public Date getUpdated() {
-        return updated;
+        return this.updated;
     }
 
-    public void setUpdated(Date Date1) {
-        updated = Date1;
+    public void setUpdated(Date date) {
+        this.updated = date;
     }
 
+    @Override
     public int hashCode() {
-        if (name != null)
-            return name.hashCode();
-        else
-            return 0;
+        if (this.name != null) {
+            return this.name.hashCode();
+        }
+        return 0;
     }
 
     public boolean isTop() {
-        return top;
+        return this.top;
     }
 
-    public void setTop(boolean boolean1) {
-        top = boolean1;
+    public void setTop(boolean bl) {
+        this.top = bl;
     }
 
+    @Override
     public String toString() {
-        return getName();
+        return this.getName();
     }
 }

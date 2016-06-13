@@ -3,12 +3,12 @@ package com.clilystudio.netbook.ui.game;
 import android.support.v7.widget.ay;
 import android.view.View;
 
-final class Z extends ay {
+final class Z
+        extends ay {
+    final /* synthetic */ GameMicroFragment.LayoutAdapter i;
 
-    GameMicroFragment$LayoutAdapter i;     // final access specifier removed
-
-    public Z(GameMicroFragment$LayoutAdapter LayoutAdapter1, View View2) {
-        super(View2);
-        i = LayoutAdapter1;
+    public Z(GameMicroFragment.LayoutAdapter layoutAdapter, View view) {
+        this.i = layoutAdapter;
+        super(view);
     }
 }

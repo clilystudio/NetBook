@@ -1,17 +1,17 @@
 package com.clilystudio.netbook.ui.user;
 
 import android.view.View;
-import android.view.View$OnClickListener;
 
-final class as implements View$OnClickListener {
+final class as
+        implements View.OnClickListener {
+    private /* synthetic */ SmsVerifyActivity a;
 
-    private SmsVerifyActivity a;
-
-    as(SmsVerifyActivity SmsVerifyActivity1) {
-        a = SmsVerifyActivity1;
+    as(SmsVerifyActivity smsVerifyActivity) {
+        this.a = smsVerifyActivity;
     }
 
-    public final void onClick(View View1) {
-        SmsVerifyActivity.a(a);
+    @Override
+    public final void onClick(View view) {
+        SmsVerifyActivity.a(this.a);
     }
 }

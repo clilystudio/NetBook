@@ -1,32 +1,31 @@
 package com.clilystudio.netbook.model;
 
 public class FollowingsResult {
-
     private String code;
     private Follower[] followings;
     private boolean ok;
 
     public String getCode() {
-        return code;
+        return this.code;
     }
 
-    public void setCode(String String1) {
-        code = String1;
+    public void setCode(String string) {
+        this.code = string;
     }
 
     public Follower[] getFollowings() {
-        return followings;
+        return this.followings;
     }
 
-    public void setFollowings(Follower[] Follower_1darray1) {
-        followings = Follower_1darray1;
+    public void setFollowings(Follower[] arrfollower) {
+        this.followings = arrfollower;
     }
 
     public boolean isOk() {
-        return ok;
+        return this.ok;
     }
 
-    public void setOk(boolean boolean1) {
-        ok = boolean1;
+    public void setOk(boolean bl) {
+        this.ok = bl;
     }
 }

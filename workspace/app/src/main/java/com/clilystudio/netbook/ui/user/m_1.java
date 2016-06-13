@@ -1,28 +1,26 @@
 package com.clilystudio.netbook.ui.user;
 
-import android.app.Activity;
 import android.content.DialogInterface;
-import android.content.DialogInterface$OnClickListener;
 
-final class m implements DialogInterface$OnClickListener {
+final class m
+        implements DialogInterface.OnClickListener {
+    private /* synthetic */ boolean a;
+    private /* synthetic */ ModifyUserInfoActivity b;
 
-    private boolean a;
-    private ModifyUserInfoActivity b;
-    m(ModifyUserInfoActivity ModifyUserInfoActivity1, boolean boolean2) {
-        b = ModifyUserInfoActivity1;
-        a = boolean2;
+    m(ModifyUserInfoActivity modifyUserInfoActivity, boolean bl) {
+        this.b = modifyUserInfoActivity;
+        this.a = bl;
     }
 
-    public final void onClick(DialogInterface DialogInterface1, int int2) {
-        q q3 = new q(b, (Activity) b, 2131034218);
-        String[] String_1darray4 = new String[1];
-        String String5;
-
-        if (a)
-            String5 = "male";
-        else
-            String5 = "female";
-        String_1darray4[0] = String5;
-        q3.b(String_1darray4);
+    /*
+     * Enabled aggressive block sorting
+     */
+    @Override
+    public final void onClick(DialogInterface dialogInterface, int n) {
+        q q2 = new q(this.b, this.b, 2131034218);
+        String[] arrstring = new String[1];
+        String string = this.a ? "male" : "female";
+        arrstring[0] = string;
+        q2.b(arrstring);
     }
 }

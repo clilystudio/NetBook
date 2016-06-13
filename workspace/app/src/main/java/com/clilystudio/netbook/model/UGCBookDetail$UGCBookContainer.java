@@ -1,23 +1,22 @@
 package com.clilystudio.netbook.model;
 
 public class UGCBookDetail$UGCBookContainer {
-
-    UGCBookDetail$UGCBookContainer$UGCBookItem book;
+    UGCBookItem book;
     String comment;
 
-    public UGCBookDetail$UGCBookContainer$UGCBookItem getBook() {
-        return book;
+    public UGCBookItem getBook() {
+        return this.book;
     }
 
-    public void setBook(UGCBookDetail$UGCBookContainer$UGCBookItem UGCBookItem1) {
-        book = UGCBookItem1;
+    public void setBook(UGCBookItem uGCBookItem) {
+        this.book = uGCBookItem;
     }
 
     public String getComment() {
-        return comment;
+        return this.comment;
     }
 
-    public void setComment(String String1) {
-        comment = String1;
+    public void setComment(String string) {
+        this.comment = string;
     }
 }

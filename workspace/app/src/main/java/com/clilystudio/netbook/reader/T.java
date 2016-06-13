@@ -1,18 +1,20 @@
 package com.clilystudio.netbook.reader;
 
-final class T implements Runnable {
+final class T
+        implements Runnable {
+    private /* synthetic */ Reader$Type a;
+    private /* synthetic */ Reader b;
 
-    private Reader$Type a;
-    private Reader b;
-    T(Reader Reader1, Reader$Type Type2) {
-        b = Reader1;
-        a = Type2;
+    T(Reader reader, Reader$Type type) {
+        this.b = reader;
+        this.a = type;
     }
 
+    @Override
     public final void run() {
-        ae ae1 = a.getListener(b);
-
-        if (ae1 != null)
-            ae1.b();
+        ae ae2 = this.a.getListener(this.b);
+        if (ae2 != null) {
+            ae2.b();
+        }
     }
 }

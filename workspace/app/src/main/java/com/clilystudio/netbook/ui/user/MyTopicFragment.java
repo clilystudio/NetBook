@@ -1,26 +1,24 @@
 package com.clilystudio.netbook.ui.user;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.design.widget.am;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView$OnItemClickListener;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.clilystudio.netbook.model.Account;
+import com.clilystudio.netbook.model.TopicPost;
 import com.clilystudio.netbook.widget.LabelPtrListView;
 import com.handmark.pulltorefresh.library.PullToRefreshBase$Mode;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MyTopicFragment extends Fragment {
-
+public class MyTopicFragment
+        extends Fragment {
     private F a;
     private G b;
     private LabelPtrListView c;
@@ -29,104 +27,102 @@ public class MyTopicFragment extends Fragment {
     private View f;
     private TextView g;
     private com.clilystudio.netbook.adapter.F h;
+    private List<TopicPost> i = new ArrayList<TopicPost>();
     private String j;
-    private List i = new ArrayList();
-    private com.handmark.pulltorefresh.library.j k = new E(this);
+    private j k;
 
-    static TextView a(MyTopicFragment MyTopicFragment1) {
-        return MyTopicFragment1.g;
+    public MyTopicFragment() {
+        this.k = new E(this);
     }
 
-    static F a(MyTopicFragment MyTopicFragment1, F F2) {
-        MyTopicFragment1.a = F2;
-        return F2;
+    static /* synthetic */ TextView a(MyTopicFragment myTopicFragment) {
+        return myTopicFragment.g;
     }
 
-    static G a(MyTopicFragment MyTopicFragment1, G G2) {
-        MyTopicFragment1.b = G2;
-        return G2;
+    static /* synthetic */ F a(MyTopicFragment myTopicFragment, F f) {
+        myTopicFragment.a = f;
+        return f;
     }
 
-    static void a(MyTopicFragment MyTopicFragment1, int int2) {
-        MyTopicFragment1.c.setCountText("\u5171\u53D1\u5E03\u4E86%d\u6761\u8BDD\u9898", int2);
+    static /* synthetic */ G a(MyTopicFragment myTopicFragment, G g) {
+        myTopicFragment.b = g;
+        return g;
     }
 
-    static String b(MyTopicFragment MyTopicFragment1) {
-        return MyTopicFragment1.j;
+    static /* synthetic */ void a(MyTopicFragment myTopicFragment, int n) {
+        myTopicFragment.c.setCountText("\u5171\u53d1\u5e03\u4e86%d\u6761\u8bdd\u9898", n);
     }
 
-    static View c(MyTopicFragment MyTopicFragment1) {
-        return MyTopicFragment1.f;
+    static /* synthetic */ String b(MyTopicFragment myTopicFragment) {
+        return myTopicFragment.j;
     }
 
-    static LabelPtrListView d(MyTopicFragment MyTopicFragment1) {
-        return MyTopicFragment1.c;
+    static /* synthetic */ View c(MyTopicFragment myTopicFragment) {
+        return myTopicFragment.f;
     }
 
-    static F e(MyTopicFragment MyTopicFragment1) {
-        return MyTopicFragment1.a;
+    static /* synthetic */ LabelPtrListView d(MyTopicFragment myTopicFragment) {
+        return myTopicFragment.c;
     }
 
-    static G f(MyTopicFragment MyTopicFragment1) {
-        return MyTopicFragment1.b;
+    static /* synthetic */ F e(MyTopicFragment myTopicFragment) {
+        return myTopicFragment.a;
     }
 
-    static ListView g(MyTopicFragment MyTopicFragment1) {
-        return MyTopicFragment1.d;
+    static /* synthetic */ G f(MyTopicFragment myTopicFragment) {
+        return myTopicFragment.b;
     }
 
-    static List h(MyTopicFragment MyTopicFragment1) {
-        return MyTopicFragment1.i;
+    static /* synthetic */ ListView g(MyTopicFragment myTopicFragment) {
+        return myTopicFragment.d;
     }
 
-    static View i(MyTopicFragment MyTopicFragment1) {
-        return MyTopicFragment1.e;
+    static /* synthetic */ List h(MyTopicFragment myTopicFragment) {
+        return myTopicFragment.i;
     }
 
-    static com.handmark.pulltorefresh.library.j j(MyTopicFragment MyTopicFragment1) {
-        return MyTopicFragment1.k;
+    static /* synthetic */ View i(MyTopicFragment myTopicFragment) {
+        return myTopicFragment.e;
     }
 
-    static com.clilystudio.netbook.adapter.F k(MyTopicFragment MyTopicFragment1) {
-        return MyTopicFragment1.h;
+    static /* synthetic */ j j(MyTopicFragment myTopicFragment) {
+        return myTopicFragment.k;
     }
 
-    public View onCreateView(LayoutInflater LayoutInflater1, ViewGroup ViewGroup2, Bundle Bundle3) {
-        View View4 = LayoutInflater1.inflate(2130903221, ViewGroup2, false);
-        LayoutInflater LayoutInflater5;
-        Account Account6;
+    static /* synthetic */ com.clilystudio.netbook.adapter.F k(MyTopicFragment myTopicFragment) {
+        return myTopicFragment.h;
+    }
 
-        f = View4.findViewById(2131493085);
-        g = (TextView) View4.findViewById(2131493100);
-        LayoutInflater5 = LayoutInflater.from((Context) getActivity());
-        c = (LabelPtrListView) View4.findViewById(2131493099);
-        c.setMode(PullToRefreshBase$Mode.PULL_FROM_START);
-        e = LayoutInflater5.inflate(2130903325, null);
-        d = (ListView) c.h();
-        if (com.clilystudio.netbook.hpay100.a.a.i())
-            d.setFooterDividersEnabled(false);
-        d.addFooterView(e);
-        e.setVisibility(8);
-        c.setOnRefreshListener((com.handmark.pulltorefresh.library.k) new B(this));
-        d.setOnItemClickListener((AdapterView$OnItemClickListener) new D(this));
-        h = new com.clilystudio.netbook.adapter.F(LayoutInflater5);
-        d.setAdapter((ListAdapter) h);
-        Account6 = am.e();
-        if (Account6 == null) {
-            f.setVisibility(8);
-            g.setVisibility(0);
-            g.setText((CharSequence) "\u8BF7\u767B\u5F55\u540E\u67E5\u770B");
-        } else {
-            G G7;
-            String[] String_1darray8;
-
-            j = Account6.getToken();
-            b = new G(this, (byte) 0);
-            G7 = b;
-            String_1darray8 = new String[1];
-            String_1darray8[0] = j;
-            G7.b(String_1darray8);
+    @Override
+    public View onCreateView(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
+        View view = layoutInflater.inflate(2130903221, viewGroup, false);
+        this.f = view.findViewById(2131493085);
+        this.g = (TextView) view.findViewById(2131493100);
+        LayoutInflater layoutInflater2 = LayoutInflater.from(this.getActivity());
+        this.c = (LabelPtrListView) view.findViewById(2131493099);
+        this.c.setMode(PullToRefreshBase$Mode.PULL_FROM_START);
+        this.e = layoutInflater2.inflate(2130903325, null);
+        this.d = (ListView) this.c.h();
+        if (a.i()) {
+            this.d.setFooterDividersEnabled(false);
         }
-        return View4;
+        this.d.addFooterView(this.e);
+        this.e.setVisibility(8);
+        this.c.setOnRefreshListener(new B(this));
+        this.d.setOnItemClickListener(new D(this));
+        this.h = new com.clilystudio.netbook.adapter.F(layoutInflater2);
+        this.d.setAdapter(this.h);
+        Account account = am.e();
+        if (account == null) {
+            this.f.setVisibility(8);
+            this.g.setVisibility(0);
+            this.g.setText("\u8bf7\u767b\u5f55\u540e\u67e5\u770b");
+            return view;
+        }
+        this.j = account.getToken();
+        G g2 = this.b = new G(this, 0);
+        String[] arrstring = new String[]{this.j};
+        g2.b(arrstring);
+        return view;
     }
 }

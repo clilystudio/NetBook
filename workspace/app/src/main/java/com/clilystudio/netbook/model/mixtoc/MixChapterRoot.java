@@ -1,23 +1,22 @@
 package com.clilystudio.netbook.model.mixtoc;
 
 public class MixChapterRoot {
-
     private MixChapterResource[] chapterResources;
     private boolean ok;
 
     public MixChapterResource[] getChapterResources() {
-        return chapterResources;
+        return this.chapterResources;
     }
 
-    public void setChapterResources(MixChapterResource[] MixChapterResource_1darray1) {
-        chapterResources = MixChapterResource_1darray1;
+    public void setChapterResources(MixChapterResource[] arrmixChapterResource) {
+        this.chapterResources = arrmixChapterResource;
     }
 
     public boolean isOk() {
-        return ok;
+        return this.ok;
     }
 
-    public void setOk(boolean boolean1) {
-        ok = boolean1;
+    public void setOk(boolean bl) {
+        this.ok = bl;
     }
 }

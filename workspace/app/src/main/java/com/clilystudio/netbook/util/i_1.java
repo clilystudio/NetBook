@@ -1,10 +1,13 @@
 package com.clilystudio.netbook.util;
 
-final class i implements Runnable {
+import com.clilystudio.netbook.util.AudioBookNotification;
 
-    i(AudioBookNotification$SwitchButtonListener SwitchButtonListener1) {
+final class i
+        implements Runnable {
+    i(AudioBookNotification.SwitchButtonListener switchButtonListener) {
     }
 
+    @Override
     public final void run() {
         as.a();
         as.h();

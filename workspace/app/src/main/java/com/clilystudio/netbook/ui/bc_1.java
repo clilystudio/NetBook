@@ -4,31 +4,35 @@ import android.support.v4.view.PagerAdapter;
 import android.view.View;
 import android.view.ViewGroup;
 
-final class bc extends PagerAdapter {
+final class bc
+        extends PagerAdapter {
+    private /* synthetic */ IntroActivity a;
 
-    private IntroActivity a;
-
-    bc(IntroActivity IntroActivity1) {
-        a = IntroActivity1;
+    bc(IntroActivity introActivity) {
+        this.a = introActivity;
     }
 
-    public final void destroyItem(ViewGroup ViewGroup1, int int2, Object Object3) {
-        ViewGroup1.removeView((View) IntroActivity.a(a).get(int2));
+    @Override
+    public final void destroyItem(ViewGroup viewGroup, int n, Object object) {
+        viewGroup.removeView((View) IntroActivity.a(this.a).get(n));
     }
 
+    @Override
     public final int getCount() {
-        return IntroActivity.a(a).size();
+        return IntroActivity.a(this.a).size();
     }
 
-    public final Object instantiateItem(ViewGroup ViewGroup1, int int2) {
-        ViewGroup1.addView((View) IntroActivity.a(a).get(int2), 0);
-        return IntroActivity.a(a).get(int2);
+    @Override
+    public final Object instantiateItem(ViewGroup viewGroup, int n) {
+        viewGroup.addView((View) IntroActivity.a(this.a).get(n), 0);
+        return IntroActivity.a(this.a).get(n);
     }
 
-    public final boolean isViewFromObject(View View1, Object Object2) {
-        if (View1 == Object2)
+    @Override
+    public final boolean isViewFromObject(View view, Object object) {
+        if (view == object) {
             return true;
-        else
-            return false;
+        }
+        return false;
     }
 }

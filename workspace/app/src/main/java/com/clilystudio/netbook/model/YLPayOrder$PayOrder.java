@@ -1,32 +1,31 @@
 package com.clilystudio.netbook.model;
 
 public class YLPayOrder$PayOrder {
-
     String SubmitUrl;
     String orderId;
     String resultCode;
 
     public String getOrderId() {
-        return orderId;
+        return this.orderId;
     }
 
-    public void setOrderId(String String1) {
-        orderId = String1;
+    public void setOrderId(String string) {
+        this.orderId = string;
     }
 
     public String getResultCode() {
-        return resultCode;
+        return this.resultCode;
     }
 
-    public void setResultCode(String String1) {
-        resultCode = String1;
+    public void setResultCode(String string) {
+        this.resultCode = string;
     }
 
     public String getSubmitUrl() {
-        return SubmitUrl;
+        return this.SubmitUrl;
     }
 
-    public void setSubmitUrl(String String1) {
-        SubmitUrl = String1;
+    public void setSubmitUrl(String string) {
+        this.SubmitUrl = string;
     }
 }

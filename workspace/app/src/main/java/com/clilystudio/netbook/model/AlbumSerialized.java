@@ -4,8 +4,8 @@ import com.ximalaya.ting.android.opensdk.model.album.Album;
 
 import java.io.Serializable;
 
-public class AlbumSerialized implements Serializable {
-
+public class AlbumSerialized
+        implements Serializable {
     private String announcer;
     private int id;
     private String intro;
@@ -14,78 +14,79 @@ public class AlbumSerialized implements Serializable {
     private long totalCount;
     private long updateAt;
     private String url;
-    public AlbumSerialized(Album Album1) {
-        id = (int) Album1.getId();
-        title = Album1.getAlbumTitle();
-        totalCount = Album1.getIncludeTrackCount();
-        url = Album1.getCoverUrlSmall();
-        announcer = Album1.getAnnouncer().getNickname();
-        intro = Album1.getAlbumIntro();
-        updateAt = Album1.getUpdatedAt();
-        lastTrackTitle = Album1.getLastUptrack().getTrackTitle();
+
+    public AlbumSerialized(Album album) {
+        this.id = (int) album.getId();
+        this.title = album.getAlbumTitle();
+        this.totalCount = album.getIncludeTrackCount();
+        this.url = album.getCoverUrlSmall();
+        this.announcer = album.getAnnouncer().getNickname();
+        this.intro = album.getAlbumIntro();
+        this.updateAt = album.getUpdatedAt();
+        this.lastTrackTitle = album.getLastUptrack().getTrackTitle();
     }
 
     public String getAnnouncer() {
-        return announcer;
+        return this.announcer;
     }
 
-    public void setAnnouncer(String String1) {
-        announcer = String1;
+    public void setAnnouncer(String string) {
+        this.announcer = string;
     }
 
     public int getId() {
-        return id;
+        return this.id;
     }
 
-    public void setId(int int1) {
-        id = int1;
+    public void setId(int n) {
+        this.id = n;
     }
 
     public String getIntro() {
-        return intro;
+        return this.intro;
     }
 
-    public void setIntro(String String1) {
-        intro = String1;
+    public void setIntro(String string) {
+        this.intro = string;
     }
 
     public String getLastTrackTitle() {
-        return lastTrackTitle;
+        return this.lastTrackTitle;
     }
 
-    public void setLastTrackTitle(String String1) {
-        lastTrackTitle = String1;
+    public void setLastTrackTitle(String string) {
+        this.lastTrackTitle = string;
     }
 
     public String getTitle() {
-        return title;
+        return this.title;
     }
 
-    public void setTitle(String String1) {
-        title = String1;
+    public void setTitle(String string) {
+        this.title = string;
     }
 
     public long getTotalCount() {
-        return totalCount;
+        return this.totalCount;
     }
 
-    public void setTotalCount(long long1) {
-        totalCount = long1;
+    public void setTotalCount(long l) {
+        this.totalCount = l;
     }
 
     public long getUpdateAt() {
-        return updateAt;
+        return this.updateAt;
     }
 
-    public void setUpdateAt(long long1) {
-        updateAt = long1;
+    public void setUpdateAt(long l) {
+        this.updateAt = l;
     }
 
     public String getUrl() {
-        return url;
+        return this.url;
     }
 
-    public void setUrl(String String1) {
-        url = String1;
+    public void setUrl(String string) {
+        this.url = string;
     }
 }

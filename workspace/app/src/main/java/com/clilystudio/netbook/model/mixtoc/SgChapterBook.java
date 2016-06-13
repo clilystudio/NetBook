@@ -1,14 +1,13 @@
 package com.clilystudio.netbook.model.mixtoc;
 
 public class SgChapterBook {
-
     private String chapter;
 
     public String getChapter() {
-        return chapter;
+        return this.chapter;
     }
 
-    public void setChapter(String String1) {
-        chapter = String1;
+    public void setChapter(String string) {
+        this.chapter = string;
     }
 }

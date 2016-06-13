@@ -1,19 +1,22 @@
 package com.clilystudio.netbook.reader;
 
-final class ar implements ae {
+final class ar
+        implements ae {
+    private /* synthetic */ ReaderActivity a;
 
-    private ReaderActivity a;
-
-    ar(ReaderActivity ReaderActivity1) {
-        a = ReaderActivity1;
+    ar(ReaderActivity readerActivity) {
+        this.a = readerActivity;
     }
 
+    @Override
     public final void a() {
-        ReaderActivity.N(a);
+        ReaderActivity.N(this.a);
     }
 
+    @Override
     public final void b() {
-        if (ReaderActivity.O(a))
-            ReaderActivity.P(a);
+        if (ReaderActivity.O(this.a)) {
+            ReaderActivity.P(this.a);
+        }
     }
 }

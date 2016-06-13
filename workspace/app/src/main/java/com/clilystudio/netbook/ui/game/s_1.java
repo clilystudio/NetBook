@@ -1,10 +1,8 @@
 package com.clilystudio.netbook.ui.game;
 
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.DownloadManager;
-import android.app.DownloadManager$Query;
-import android.app.DownloadManager$Request;
-import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
@@ -18,116 +16,117 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 
 public final class s {
+    private final DownloadManager a;
+    private final Activity b;
+    private final Game c;
 
-    private DownloadManager a;     // final access specifier removed
-    private Activity b;     // final access specifier removed
-    private Game c;     // final access specifier removed
-    public s(Activity Activity1, Game Game2) {
-        b = Activity1;
-        c = Game2;
-        a = (DownloadManager) Activity1.getSystemService("download");
+    public s(Activity activity, Game game) {
+        this.b = activity;
+        this.c = game;
+        this.a = (DownloadManager) activity.getSystemService("download");
     }
 
-    public static void a(Activity Activity1, Game Game2) {
-        if (Game2 != null) {
-            Object Object3 = new ArrayList();
-
-            ((ArrayList) Object3).add(Game2);
-            a(Activity1, (List) Object3);
+    public static void a(Activity activity, Game game) {
+        if (game == null) {
+            return;
         }
+        ArrayList<Game> arrayList = new ArrayList<Game>();
+        arrayList.add(game);
+        s.a(activity, arrayList);
     }
 
-    public static void a(Activity Activity1, List List2) {
-        if (List2 != null && List2.size() != 0) {
-            DownloadManager DownloadManager3 = (DownloadManager) Activity1.getSystemService("download");
-            Object Object4 = new HashMap();
-            Cursor Cursor5 = DownloadManager3.query(new DownloadManager$Query());
-            Iterator Iterator6;
-
-            if (Cursor5 != null) {
-                while (Cursor5.moveToNext())
-                    ((Map) Object4).put(Cursor5.getString(Cursor5.getColumnIndex("uri")), Integer.valueOf(Cursor5.getPosition()));
+    /*
+     * Enabled aggressive block sorting
+     * Lifted jumps to return sites
+     */
+    public static void a(Activity activity, List<Game> list) {
+        if (list == null) return;
+        if (list.size() == 0) {
+            return;
+        }
+        DownloadManager downloadManager = (DownloadManager) activity.getSystemService("download");
+        HashMap<String, Integer> hashMap = new HashMap<String, Integer>();
+        Cursor cursor = downloadManager.query(new DownloadManager.Query());
+        if (cursor != null) {
+            while (cursor.moveToNext()) {
+                hashMap.put(cursor.getString(cursor.getColumnIndex("uri")), cursor.getPosition());
             }
-            Iterator6 = List2.iterator();
-            while (Iterator6.hasNext()) {
-                Game Game7 = (Game) Iterator6.next();
-                String String8 = Game7.getAndroidLink();
-
-                if (com.clilystudio.netbook.hpay100.a.a.j((Context) Activity1, Game7.getAndroidPackageName())) {
-                    Game7.setDownloadStatus(32);
-                    Game7.setLocalFileUri(null);
-                } else if (((Map) Object4).containsKey(String8)) {
-                    int int10;
-                    String String11;
-
-                    Cursor5.moveToPosition(((Integer) ((Map) Object4).get(String8)).intValue());
-                    int10 = Cursor5.getInt(Cursor5.getColumnIndex("status"));
-                    String11 = Cursor5.getString(Cursor5.getColumnIndex("local_uri"));
-                    Game7.setDownloadStatus(int10);
-                    Game7.setLocalFileUri(String11);
-                } else {
-                    Game7.setDownloadStatus(0);
-                    Game7.setLocalFileUri(null);
-                }
-            }
-            if (Cursor5 != null) {
-                Cursor5.close();
+        }
+        Iterator<Game> iterator = list.iterator();
+        do {
+            if (!iterator.hasNext()) {
+                if (cursor == null) return;
+                cursor.close();
                 return;
             }
-        }
+            Game game = iterator.next();
+            String string = game.getAndroidLink();
+            if (a.j(activity, game.getAndroidPackageName())) {
+                game.setDownloadStatus(32);
+                game.setLocalFileUri(null);
+                continue;
+            }
+            if (hashMap.containsKey(string)) {
+                cursor.moveToPosition((Integer) hashMap.get(string));
+                int n = cursor.getInt(cursor.getColumnIndex("status"));
+                String string2 = cursor.getString(cursor.getColumnIndex("local_uri"));
+                game.setDownloadStatus(n);
+                game.setLocalFileUri(string2);
+                continue;
+            }
+            game.setDownloadStatus(0);
+            game.setLocalFileUri(null);
+        } while (true);
     }
 
-    private long a(Uri Uri1) {
-        DownloadManager$Request Request2;
-
+    /*
+     * Enabled aggressive block sorting
+     * Enabled unnecessary exception pruning
+     * Enabled aggressive exception aggregation
+     */
+    @TargetApi(value = 11)
+    private long a(Uri uri) {
+        DownloadManager.Request request;
         try {
-            Request2 = new DownloadManager$Request(Uri1);
-        } catch (IllegalArgumentException IllegalArgumentException9) {
-            IllegalArgumentException9.printStackTrace();
-            Request2 = null;
+            request = new DownloadManager.Request(uri);
+        } catch (IllegalArgumentException var9_3) {
+            var9_3.printStackTrace();
+            request = null;
         }
-        if (Request2 == null) {
-            e.a(b, "\u65E0\u6CD5\u4E0B\u8F7D");
-            return 0L;
-        } else {
-            long long6;
-
-            Request2.setTitle((CharSequence) c.getName());
-            if (com.clilystudio.netbook.hpay100.a.a.g()) {
-                Request2.allowScanningByMediaScanner();
-                Request2.setNotificationVisibility(1);
-            }
-            Request2.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, com.clilystudio.netbook.hpay100.a.a.N(c.getAndroidLink()));
-            try {
-                long6 = a.enqueue(Request2);
-            } catch (Exception Exception5) {
-                Exception5.printStackTrace();
-                return 0L;
-            }
-            return long6;
+        if (request == null) {
+            e.a(this.b, "\u65e0\u6cd5\u4e0b\u8f7d");
+            return 0;
+        }
+        request.setTitle(this.c.getName());
+        if (a.g()) {
+            request.allowScanningByMediaScanner();
+            request.setNotificationVisibility(1);
+        }
+        request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, a.N(this.c.getAndroidLink()));
+        try {
+            return this.a.enqueue(request);
+        } catch (Exception var5_5) {
+            var5_5.printStackTrace();
+            return 0;
         }
     }
 
     public final void a() {
-        if (!com.clilystudio.netbook.hpay100.a.a.d())
-            e.a(b, "sd\u5361\u672A\u6302\u8F7D");
-        else {
-            String String1 = c.getAndroidLink();
-
-            if (String1 == null)
-                e.a(b, "\u4E0B\u8F7D\u94FE\u63A5\u4E0D\u5B58\u5728");
-            else {
-                long long3;
-
-                b.sendBroadcast(new Intent("update_game_item_status"));
-                MyApplication.a().i().add(c.get_id());
-                long3 = a(Uri.parse(String1));
-                MyApplication.a().j().add(Long.valueOf(long3));
-                MyApplication.a().i().add(String1);
-            }
+        if (!a.d()) {
+            e.a(this.b, "sd\u5361\u672a\u6302\u8f7d");
+            return;
         }
+        String string = this.c.getAndroidLink();
+        if (string == null) {
+            e.a(this.b, "\u4e0b\u8f7d\u94fe\u63a5\u4e0d\u5b58\u5728");
+            return;
+        }
+        this.b.sendBroadcast(new Intent("update_game_item_status"));
+        MyApplication.a().i().add(this.c.get_id());
+        long l = this.a(Uri.parse(string));
+        MyApplication.a().j().add(l);
+        MyApplication.a().i().add(string);
     }
 }

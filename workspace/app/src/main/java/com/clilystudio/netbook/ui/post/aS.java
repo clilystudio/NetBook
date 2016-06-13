@@ -2,15 +2,16 @@ package com.clilystudio.netbook.ui.post;
 
 import com.clilystudio.netbook.ui.aa;
 
-final class aS implements aa {
+final class aS
+        implements aa {
+    private /* synthetic */ CommonPostListActivity a;
 
-    private CommonPostListActivity a;
-
-    aS(CommonPostListActivity CommonPostListActivity1) {
-        a = CommonPostListActivity1;
+    aS(CommonPostListActivity commonPostListActivity) {
+        this.a = commonPostListActivity;
     }
 
+    @Override
     public final void a() {
-        CommonPostListActivity.a(a);
+        CommonPostListActivity.a(this.a);
     }
 }

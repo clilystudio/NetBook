@@ -3,7 +3,6 @@ package com.clilystudio.netbook.model;
 import com.clilystudio.netbook.api.ApiService;
 
 public class RecommendUgcRoot$RecommendUGC {
-
     private String author;
     private int bookCount;
     private int collectorCount;
@@ -13,62 +12,62 @@ public class RecommendUgcRoot$RecommendUGC {
     private String title;
 
     public String getAuthor() {
-        return author;
+        return this.author;
     }
 
-    public void setAuthor(String String1) {
-        author = String1;
+    public void setAuthor(String string) {
+        this.author = string;
     }
 
     public int getBookCount() {
-        return bookCount;
+        return this.bookCount;
     }
 
-    public void setBookCount(int int1) {
-        bookCount = int1;
+    public void setBookCount(int n) {
+        this.bookCount = n;
     }
 
     public int getCollectorCount() {
-        return collectorCount;
+        return this.collectorCount;
     }
 
-    public void setCollectorCount(int int1) {
-        collectorCount = int1;
+    public void setCollectorCount(int n) {
+        this.collectorCount = n;
     }
 
     public String getCover() {
-        return cover;
+        return this.cover;
     }
 
-    public void setCover(String String1) {
-        cover = String1;
+    public void setCover(String string) {
+        this.cover = string;
     }
 
     public String getDesc() {
-        return desc;
+        return this.desc;
     }
 
-    public void setDesc(String String1) {
-        desc = String1;
+    public void setDesc(String string) {
+        this.desc = string;
     }
 
     public String getFullCover() {
-        return new StringBuilder().append(ApiService.a).append(cover).append("-covers").toString();
+        return ApiService.a + this.cover + "-covers";
     }
 
     public String getId() {
-        return id;
+        return this.id;
     }
 
-    public void setId(String String1) {
-        id = String1;
+    public void setId(String string) {
+        this.id = string;
     }
 
     public String getTitle() {
-        return title;
+        return this.title;
     }
 
-    public void setTitle(String String1) {
-        title = String1;
+    public void setTitle(String string) {
+        this.title = string;
     }
 }

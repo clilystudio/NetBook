@@ -1,20 +1,21 @@
 package com.clilystudio.netbook.ui.post;
 
 import android.content.DialogInterface;
-import android.content.DialogInterface$OnClickListener;
 
 import com.clilystudio.netbook.model.Review;
 
-final class aD implements DialogInterface$OnClickListener {
+final class aD
+        implements DialogInterface.OnClickListener {
+    private /* synthetic */ Review a;
+    private /* synthetic */ BookReviewListFragment b;
 
-    private Review a;
-    private BookReviewListFragment b;
-    aD(BookReviewListFragment BookReviewListFragment1, Review Review2) {
-        b = BookReviewListFragment1;
-        a = Review2;
+    aD(BookReviewListFragment bookReviewListFragment, Review review) {
+        this.b = bookReviewListFragment;
+        this.a = review;
     }
 
-    public final void onClick(DialogInterface DialogInterface1, int int2) {
-        BookReviewListFragment.a(b, a);
+    @Override
+    public final void onClick(DialogInterface dialogInterface, int n) {
+        BookReviewListFragment.a(this.b, this.a);
     }
 }

@@ -3,46 +3,46 @@ package com.clilystudio.netbook.widget;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import butterknife.ButterKnife;
+import butterknife.InjectView;
 
-public class PostFlag extends FrameLayout {
-
+public class PostFlag
+        extends FrameLayout {
+    @InjectView(value = 2131493423)
     TextView mDistillateFlag;
+    @InjectView(value = 2131493180)
     TextView mHotFlag;
-    public PostFlag(Context Context1, AttributeSet AttributeSet2) {
-        super(Context1, AttributeSet2);
-        LayoutInflater.from(Context1).inflate(2130903351, (ViewGroup) this);
-        ButterKnife.inject((View) this);
+
+    public PostFlag(Context context, AttributeSet attributeSet) {
+        super(context, attributeSet);
+        LayoutInflater.from(context).inflate(2130903351, (ViewGroup) this);
+        ButterKnife.inject(this);
     }
 
-    public static boolean b(String String1) {
-        String[] String_1darray2 = {"distillate", "focus", "hot"};
-        int int3 = 0;
-
-        while (int3 < 3) {
-            if (String_1darray2[int3].equals(String1))
-                return true;
-            else
-                ++int3;
+    public static boolean b(String string) {
+        String[] arrstring = new String[]{"distillate", "focus", "hot"};
+        for (int i = 0; i < 3; ++i) {
+            if (!arrstring[i].equals(string)) continue;
+            return true;
         }
         return false;
     }
 
-    public final boolean a(String String1) {
-        if ("hot".equals(String1) || "focus".equals(String1)) {
-            mHotFlag.setVisibility(0);
-            mDistillateFlag.setVisibility(8);
-        } else {
-            if (!"distillate".equals(String1))
-                return false;
-            mDistillateFlag.setVisibility(0);
-            mHotFlag.setVisibility(8);
+    public final boolean a(String string) {
+        if ("hot".equals(string) || "focus".equals(string)) {
+            this.mHotFlag.setVisibility(0);
+            this.mDistillateFlag.setVisibility(8);
+            return true;
         }
-        return true;
+        if ("distillate".equals(string)) {
+            this.mDistillateFlag.setVisibility(0);
+            this.mHotFlag.setVisibility(8);
+            return true;
+        }
+        return false;
     }
 }

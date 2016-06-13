@@ -2,85 +2,75 @@ package com.clilystudio.netbook.model;
 
 import java.util.Calendar;
 
-public class ReaderChapterIdentifier implements Comparable {
-
+public class ReaderChapterIdentifier
+        implements Comparable<ReaderChapterIdentifier> {
     private String bookId;
     private long createTime;
     private String tocHost;
-    public ReaderChapterIdentifier(String String1, String String2) {
-        bookId = String1;
-        tocHost = String2;
-        createTime = Calendar.getInstance().getTimeInMillis();
+
+    public ReaderChapterIdentifier(String string, String string2) {
+        this.bookId = string;
+        this.tocHost = string2;
+        this.createTime = Calendar.getInstance().getTimeInMillis();
     }
 
-    public int compareTo(ReaderChapterIdentifier ReaderChapterIdentifier1) {
-        if (ReaderChapterIdentifier1 == null)
+    @Override
+    public int compareTo(ReaderChapterIdentifier readerChapterIdentifier) {
+        if (readerChapterIdentifier == null) {
             return 1;
-        else
-            return (int) (createTime - ReaderChapterIdentifier1.getCreateTime());
-    }
-
-    public volatile int compareTo(Object Object1) {
-        return compareTo((ReaderChapterIdentifier) Object1);
-    }
-
-    public boolean equals(Object Object1) {
-        ReaderChapterIdentifier ReaderChapterIdentifier3;
-        boolean boolean4;
-        boolean boolean5;
-
-        try {
-            ReaderChapterIdentifier3 = (ReaderChapterIdentifier) Object1;
-            boolean4 = ReaderChapterIdentifier3.bookId.equals(bookId);
-        } catch (Exception Exception2) {
-            Exception2.printStackTrace();
-            return false;
         }
-        boolean5 = false;
-        if (boolean4) {
-            boolean boolean6;
+        return (int) (this.createTime - readerChapterIdentifier.getCreateTime());
+    }
 
+    public boolean equals(Object object) {
+        boolean bl;
+        block3:
+        {
             try {
-                boolean6 = ReaderChapterIdentifier3.tocHost.equals(tocHost);
-            } catch (Exception Exception7) {
-                Exception7.printStackTrace();
+                ReaderChapterIdentifier readerChapterIdentifier = (ReaderChapterIdentifier) object;
+                boolean bl2 = readerChapterIdentifier.bookId.equals(this.bookId);
+                bl = false;
+                if (!bl2) break block3;
+            } catch (Exception var2_6) {
+                var2_6.printStackTrace();
                 return false;
             }
-            boolean5 = false;
-            if (boolean6)
-                boolean5 = true;
+            boolean bl3 = readerChapterIdentifier.tocHost.equals(this.tocHost);
+            bl = false;
+            if (!bl3) break block3;
+            bl = true;
         }
-        return boolean5;
+        return bl;
     }
 
     public String getBookId() {
-        return bookId;
+        return this.bookId;
     }
 
-    public void setBookId(String String1) {
-        bookId = String1;
+    public void setBookId(String string) {
+        this.bookId = string;
     }
 
     public long getCreateTime() {
-        return createTime;
+        return this.createTime;
     }
 
-    public void setCreateTime(long long1) {
-        createTime = long1;
+    public void setCreateTime(long l) {
+        this.createTime = l;
     }
 
     public String getTocHost() {
-        return tocHost;
+        return this.tocHost;
     }
 
-    public void setTocHost(String String1) {
-        tocHost = String1;
+    public void setTocHost(String string) {
+        this.tocHost = string;
     }
 
     public int hashCode() {
-        if (bookId == null || tocHost == null)
+        if (this.bookId == null || this.tocHost == null) {
             return super.hashCode();
-        else
-            return bookId.hashCode();
+        }
+        return this.bookId.hashCode();
     }
 }

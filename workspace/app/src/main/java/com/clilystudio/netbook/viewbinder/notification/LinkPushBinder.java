@@ -5,31 +5,36 @@ import android.content.Intent;
 
 import com.clilystudio.netbook.model.NotificationItem;
 
-public class LinkPushBinder extends OfficialNotifBinder {
-
+public class LinkPushBinder
+        extends OfficialNotifBinder {
     public static final String LABEL = "link_push";
 
-    public LinkPushBinder(NotificationItem NotificationItem1) {
-        super(NotificationItem1);
+    public LinkPushBinder(NotificationItem notificationItem) {
+        super(notificationItem);
     }
 
+    @Override
     protected int getIconRes() {
         return 2130837915;
     }
 
-    public Intent getIntent(Context Context1) {
-        return getWebIntent(getItem().getLink());
+    @Override
+    public Intent getIntent(Context context) {
+        return this.getWebIntent(this.getItem().getLink());
     }
 
+    @Override
     public String getLabel() {
         return "link_push";
     }
 
+    @Override
     public String getMainText() {
-        return getItem().getTitle();
+        return this.getItem().getTitle();
     }
 
+    @Override
     public String getSubText() {
-        return getItem().getLinkTitle();
+        return this.getItem().getLinkTitle();
     }
 }

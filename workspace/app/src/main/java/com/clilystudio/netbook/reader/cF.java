@@ -2,19 +2,20 @@ package com.clilystudio.netbook.reader;
 
 import android.app.AlertDialog;
 import android.view.View;
-import android.view.View$OnClickListener;
 
-final class cF implements View$OnClickListener {
+final class cF
+        implements View.OnClickListener {
+    private /* synthetic */ AlertDialog a;
+    private /* synthetic */ ReaderWebActivity b;
 
-    private AlertDialog a;
-    private ReaderWebActivity b;
-    cF(ReaderWebActivity ReaderWebActivity1, AlertDialog AlertDialog2) {
-        b = ReaderWebActivity1;
-        a = AlertDialog2;
+    cF(ReaderWebActivity readerWebActivity, AlertDialog alertDialog) {
+        this.b = readerWebActivity;
+        this.a = alertDialog;
     }
 
-    public final void onClick(View View1) {
-        a.dismiss();
-        ReaderWebActivity.b(b);
+    @Override
+    public final void onClick(View view) {
+        this.a.dismiss();
+        ReaderWebActivity.b(this.b);
     }
 }

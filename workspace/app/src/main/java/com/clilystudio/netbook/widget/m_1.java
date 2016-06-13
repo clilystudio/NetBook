@@ -1,20 +1,21 @@
 package com.clilystudio.netbook.widget;
 
 import android.content.DialogInterface;
-import android.content.DialogInterface$OnClickListener;
 
 import com.clilystudio.netbook.model.PostComment;
 
-final class m implements DialogInterface$OnClickListener {
+final class m
+        implements DialogInterface.OnClickListener {
+    private /* synthetic */ PostComment a;
+    private /* synthetic */ CommentItemView b;
 
-    private PostComment a;
-    private CommentItemView b;
-    m(CommentItemView CommentItemView1, PostComment PostComment2) {
-        b = CommentItemView1;
-        a = PostComment2;
+    m(CommentItemView commentItemView, PostComment postComment) {
+        this.b = commentItemView;
+        this.a = postComment;
     }
 
-    public final void onClick(DialogInterface DialogInterface1, int int2) {
-        CommentItemView.a(b).a(a.toRepliedInfo(), CommentItemView.d(b));
+    @Override
+    public final void onClick(DialogInterface dialogInterface, int n) {
+        CommentItemView.a(this.b).a(this.a.toRepliedInfo(), CommentItemView.d(this.b));
     }
 }

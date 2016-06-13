@@ -1,37 +1,62 @@
 package com.clilystudio.netbook.ui.post;
 
 import android.app.Activity;
+import android.content.Intent;
 
 import com.clilystudio.netbook.a.c;
+import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.model.PostPublish;
+import com.clilystudio.netbook.util.e;
 
-final class z extends c {
+final class z
+        extends c<String, PostPublish> {
+    private /* synthetic */ AddGirlTopicActivity a;
 
-    private AddGirlTopicActivity a;
-
-    public z(AddGirlTopicActivity AddGirlTopicActivity1, Activity Activity2, int int3) {
-        super(Activity2, 2131034430);
-        a = AddGirlTopicActivity1;
+    public z(AddGirlTopicActivity addGirlTopicActivity, Activity activity, int n) {
+        this.a = addGirlTopicActivity;
+        super(activity, 2131034430);
     }
 
-    private transient PostPublish a(String[] String_1darray1) {
-        PostPublish PostPublish3;
-
+    private /* varargs */ PostPublish a(String... arrstring) {
         try {
-            PostPublish3 = com.clilystudio.netbook.api.b.b().g(String_1darray1[0], String_1darray1[1], String_1darray1[2], "girl");
-        } catch (Exception Exception2) {
-            Exception2.printStackTrace();
+            PostPublish postPublish = b.b().g(arrstring[0], arrstring[1], arrstring[2], "girl");
+            return postPublish;
+        } catch (Exception var2_3) {
+            var2_3.printStackTrace();
             return null;
         }
-        return PostPublish3;
     }
 
-    public final volatile Object a(Object[] Object_1darray1) {
-        return a((String[]) Object_1darray1);
-    }
-// Error: Internal #201: 
-// The following method may not be correct.
-
-    public final void a(Object Object1) {
+    @Override
+    public final /* synthetic */ void a(Object object) {
+        PostPublish postPublish = (PostPublish) object;
+        if (postPublish != null) {
+            if (postPublish.isOk()) {
+                e.a((Activity) this.a, "\u53d1\u5e03\u6210\u529f");
+                Intent intent = new Intent(this.a, GirlTopicListActivity.class);
+                this.a.startActivity(intent);
+                return;
+            }
+            if ("TOKEN_INVALID".equals(postPublish.getCode())) {
+                e.a((Activity) this.a, "\u8eab\u4efd\u8ba4\u8bc1\u5931\u8d25\uff0c\u8bf7\u91cd\u65b0\u767b\u5f55\u540e\u518d\u53d1\u5e03");
+                return;
+            }
+            if ("LV_NOT_ENOUGH".equals(postPublish.getCode())) {
+                e.a((Activity) this.a, "\u5f88\u62b1\u6b49\uff0c\u60a8\u7684\u7b49\u7ea7\u4e0d\u591f");
+                return;
+            }
+            if ("FORBIDDEN".equals(postPublish.getCode())) {
+                String string = postPublish.getMsg();
+                if (string != null) {
+                    e.a((Activity) this.a, string);
+                    return;
+                }
+                e.a((Activity) this.a, 2131034388);
+                return;
+            }
+            e.a((Activity) this.a, "\u53d1\u5e03\u5931\u8d25\uff0c\u8bf7\u91cd\u8bd5");
+            return;
+        }
+        e.a((Activity) this.a, "\u53d1\u5e03\u5f02\u5e38\uff0c\u8bf7\u68c0\u67e5\u7f51\u7edc\u6216\u8005\u7a0d\u540e\u518d\u8bd5");
     }
 }

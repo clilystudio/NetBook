@@ -1,23 +1,24 @@
 package com.clilystudio.netbook.ui.post;
 
 import android.view.View;
-import android.view.View$OnClickListener;
 import android.widget.PopupWindow;
 
-final class aU implements View$OnClickListener {
+final class aU
+        implements View.OnClickListener {
+    private /* synthetic */ PopupWindow a;
+    private /* synthetic */ CommonPostListActivity b;
 
-    private PopupWindow a;
-    private CommonPostListActivity b;
-    aU(CommonPostListActivity CommonPostListActivity1, PopupWindow PopupWindow2) {
-        b = CommonPostListActivity1;
-        a = PopupWindow2;
+    aU(CommonPostListActivity commonPostListActivity, PopupWindow popupWindow) {
+        this.b = commonPostListActivity;
+        this.a = popupWindow;
     }
 
-    public final void onClick(View View1) {
-        a.dismiss();
-        CommonPostListActivity.k(b).setText((CharSequence) "\u6700\u65B0\u53D1\u5E03");
-        CommonPostListActivity.b(b, "created");
-        CommonPostListActivity.j(b).setVisibility(0);
-        CommonPostListActivity.j(b).setRefreshing();
+    @Override
+    public final void onClick(View view) {
+        this.a.dismiss();
+        CommonPostListActivity.k(this.b).setText("\u6700\u65b0\u53d1\u5e03");
+        CommonPostListActivity.b(this.b, "created");
+        CommonPostListActivity.j(this.b).setVisibility(0);
+        CommonPostListActivity.j(this.b).setRefreshing();
     }
 }

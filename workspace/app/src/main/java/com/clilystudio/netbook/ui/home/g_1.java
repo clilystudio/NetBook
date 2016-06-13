@@ -1,50 +1,54 @@
 package com.clilystudio.netbook.ui.home;
 
 import com.clilystudio.netbook.a.e;
+import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.model.IKanshuUrlResult;
 
 import java.io.IOException;
 
-final class g extends e {
+final class g
+        extends e<Void, Void, IKanshuUrlResult> {
+    private /* synthetic */ HomeActivity a;
 
-    private HomeActivity a;
-
-    g(HomeActivity HomeActivity1, byte byte2) {
-        this(HomeActivity1);
+    private g(HomeActivity homeActivity) {
+        this.a = homeActivity;
     }
 
-    private g(HomeActivity HomeActivity1) {
-        a = HomeActivity1;
+    /* synthetic */ g(HomeActivity homeActivity, byte by) {
+        this(homeActivity);
     }
 
-    private static transient IKanshuUrlResult a() {
-        IKanshuUrlResult IKanshuUrlResult3;
-
+    private static /* varargs */ IKanshuUrlResult a() {
         try {
-            com.clilystudio.netbook.api.b.a();
-            IKanshuUrlResult3 = com.clilystudio.netbook.api.b.b().t();
-        } catch (IOException IOException1) {
-            IOException1.printStackTrace();
+            b.a();
+            IKanshuUrlResult iKanshuUrlResult = b.b().t();
+            return iKanshuUrlResult;
+        } catch (IOException var0_1) {
+            var0_1.printStackTrace();
             return null;
         }
-        return IKanshuUrlResult3;
     }
 
-    protected final Object doInBackground(Object[] Object_1darray1) {
-        return a();
+    /*
+     * Exception decompiling
+     */
+    @Override
+    protected final /* synthetic */ Object doInBackground(Object[] var1_1) {
+        // This method has failed to decompile.  When submitting a bug report, please provide this stack trace, and (if you hold appropriate legal rights) the relevant class file.
+        // java.lang.ArrayIndexOutOfBoundsException
+        throw new IllegalStateException("Decompilation failed");
     }
 
-    protected final void onPostExecute(Object Object1) {
-        Object Object2 = (IKanshuUrlResult) Object1;
-
-        super.onPostExecute(Object2);
-        if (Object2 != null && ((IKanshuUrlResult) Object2).isOk()) {
-            String String4;
-
-            HomeActivity.a(a, ((IKanshuUrlResult) Object2).getLinks());
-            String4 = HomeActivity.a(a);
-            if (String4 != null)
-                HomeActivity.a(a, String4);
+    @Override
+    protected final /* synthetic */ void onPostExecute(Object object) {
+        IKanshuUrlResult iKanshuUrlResult = (IKanshuUrlResult) object;
+        super.onPostExecute(iKanshuUrlResult);
+        if (iKanshuUrlResult != null && iKanshuUrlResult.isOk()) {
+            HomeActivity.a(this.a, iKanshuUrlResult.getLinks());
+            String string = HomeActivity.a(this.a);
+            if (string != null) {
+                HomeActivity.a(this.a, string);
+            }
         }
     }
 }

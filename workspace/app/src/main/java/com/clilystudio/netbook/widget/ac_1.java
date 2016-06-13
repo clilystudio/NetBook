@@ -1,18 +1,19 @@
 package com.clilystudio.netbook.widget;
 
 import android.view.View;
-import android.view.View$OnClickListener;
 
-final class ac implements View$OnClickListener {
+final class ac
+        implements View.OnClickListener {
+    private /* synthetic */ int a;
+    private /* synthetic */ LinearListView b;
 
-    private int a;
-    private LinearListView b;
-    ac(LinearListView LinearListView1, int int2) {
-        b = LinearListView1;
-        a = int2;
+    ac(LinearListView linearListView, int n) {
+        this.b = linearListView;
+        this.a = n;
     }
 
-    public final void onClick(View View1) {
-        LinearListView.a(b, a);
+    @Override
+    public final void onClick(View view) {
+        LinearListView.a(this.b, this.a);
     }
 }

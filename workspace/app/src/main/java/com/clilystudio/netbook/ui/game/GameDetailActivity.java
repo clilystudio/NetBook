@@ -9,34 +9,35 @@ import android.os.Bundle;
 import android.support.design.widget.am;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View$OnClickListener;
 import android.view.ViewGroup;
-import android.view.ViewGroup$LayoutParams;
-import android.widget.AdapterView$OnItemClickListener;
+import android.widget.AdapterView;
 import android.widget.ImageView;
-import android.widget.ImageView$ScaleType;
-import android.widget.LinearLayout$LayoutParams;
+import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.TextView;
 
+import com.clilystudio.netbook.d;
 import com.clilystudio.netbook.db.PostAgreeRecord;
 import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.model.Game;
+import com.clilystudio.netbook.model.GamePostRoot;
 import com.clilystudio.netbook.ui.BaseLoadingActivity;
 import com.clilystudio.netbook.ui.SmartImageView;
 import com.clilystudio.netbook.ui.aa;
+import com.clilystudio.netbook.ui.home.HomeActivity;
 import com.clilystudio.netbook.ui.post.AddGamePostActivity;
 import com.clilystudio.netbook.widget.GameDownloadButton;
 import com.clilystudio.netbook.widget.GameGiftGetButton;
 import com.clilystudio.netbook.widget.GameGiftView;
 import com.clilystudio.netbook.widget.ScrollLoadListView;
 import com.clilystudio.netbook.widget.av;
+import com.umeng.a.b;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class GameDetailActivity extends BaseLoadingActivity {
-
+public class GameDetailActivity
+        extends BaseLoadingActivity {
     private TextView a;
     private Game b;
     private String c;
@@ -46,269 +47,257 @@ public class GameDetailActivity extends BaseLoadingActivity {
     private View h;
     private ScrollLoadListView i;
     private n j;
-    private List k = new ArrayList();
+    private List<GamePostRoot.GamePost> k = new ArrayList<GamePostRoot.GamePost>();
     private boolean l = false;
     private boolean m = false;
     private boolean n = false;
-    private BroadcastReceiver o = new h(this);
-    private av p = new l(this);
-// Error: Internal #201: 
-// The following method may not be correct.
+    private BroadcastReceiver o;
+    private av p;
 
-    public static Intent a(Context Context1, String String2) {
-    }
-// Error: Internal #201: 
-// The following method may not be correct.
-
-    public static Intent a(Context Context1, String String2, boolean boolean3, boolean boolean4) {
+    public GameDetailActivity() {
+        this.o = new h(this);
+        this.p = new l(this);
     }
 
-    static Game a(GameDetailActivity GameDetailActivity1, Game Game2) {
-        GameDetailActivity1.b = Game2;
-        return Game2;
+    public static Intent a(Context context, String string) {
+        return new d().a(context, GameDetailActivity.class).a("game_id", string).a();
     }
 
-    static void a(GameDetailActivity GameDetailActivity1) {
-        if (GameDetailActivity1.b != null) {
-            if ("1".equals(com.umeng.a.b.b((Context) GameDetailActivity1, "game_center_edit_post_always")) || GameDetailActivity1.m || com.clilystudio.netbook.hpay100.a.a.j((Context) GameDetailActivity1, GameDetailActivity1.b.getAndroidPackageName()))
-                GameDetailActivity1.startActivity(AddGamePostActivity.a((Context) GameDetailActivity1, GameDetailActivity1.b.get_id()));
-            else {
-                com.clilystudio.netbook.util.e.a((Activity) GameDetailActivity1, "\u5B89\u88C5\u540E\u624D\u80FD\u4E00\u8D77\u6109\u5FEB\u5730\u5410\u69FD\u54DF~");
+    public static Intent a(Context context, String string, boolean bl, boolean bl2) {
+        return new d().a(context, GameDetailActivity.class).a("game_id", string).a("is_micro_game", Boolean.valueOf(bl)).a("HAS_PLAYED", Boolean.valueOf(bl2)).a();
+    }
+
+    static /* synthetic */ Game a(GameDetailActivity gameDetailActivity, Game game) {
+        gameDetailActivity.b = game;
+        return game;
+    }
+
+    /*
+     * Enabled force condition propagation
+     * Lifted jumps to return sites
+     */
+    static /* synthetic */ void a(GameDetailActivity gameDetailActivity) {
+        if (gameDetailActivity.b == null) return;
+        if ("1".equals(b.b(gameDetailActivity, "game_center_edit_post_always")) || gameDetailActivity.m || a.j(gameDetailActivity, gameDetailActivity.b.getAndroidPackageName())) {
+            gameDetailActivity.startActivity(AddGamePostActivity.a(gameDetailActivity, gameDetailActivity.b.get_id()));
+            return;
+        }
+        com.clilystudio.netbook.util.e.a((Activity) gameDetailActivity, (String) "\u5b89\u88c5\u540e\u624d\u80fd\u4e00\u8d77\u6109\u5feb\u5730\u5410\u69fd\u54df~");
+    }
+
+    static /* synthetic */ void a(GameDetailActivity gameDetailActivity, View view, TextView textView, int n2, String string) {
+        Account account = am.a((Activity) gameDetailActivity);
+        if (account != null) {
+            view.setEnabled(false);
+            textView.setText("" + (n2 + 1));
+            m m2 = new m(gameDetailActivity, 0);
+            Object[] arrobject = new String[]{string, account.getToken()};
+            m2.b(arrobject);
+        }
+    }
+
+    static /* synthetic */ void a(GameDetailActivity gameDetailActivity, View view, String string) {
+        com.koushikdutta.async.http.a a2 = new com.koushikdutta.async.http.a(gameDetailActivity, view);
+        a2.b().inflate(2131558403, a2.a());
+        a2.a((android.support.v7.widget.m) ((Object) new k(gameDetailActivity, string)));
+        a2.c();
+    }
+
+    static /* synthetic */ void a(GameDetailActivity gameDetailActivity, String string, View view) {
+        Account account = am.e();
+        if (account != null) {
+            if (PostAgreeRecord.get(account.getToken(), string) != null) {
+                view.setEnabled(false);
                 return;
             }
+            view.setEnabled(true);
+            return;
+        }
+        view.setEnabled(true);
+    }
+
+    static /* synthetic */ ScrollLoadListView b(GameDetailActivity gameDetailActivity) {
+        return gameDetailActivity.i;
+    }
+
+    /*
+     * Enabled aggressive block sorting
+     */
+    static /* synthetic */ void b(GameDetailActivity gameDetailActivity, Game game) {
+        SmartImageView smartImageView = (SmartImageView) gameDetailActivity.findViewById(2131493466);
+        int n2 = am.b((Activity) gameDetailActivity).widthPixels / 2;
+        ViewGroup.LayoutParams layoutParams = smartImageView.getLayoutParams();
+        layoutParams.height = n2;
+        smartImageView.setLayoutParams(layoutParams);
+        smartImageView.setImageUrl(game.getBanner());
+        ((TextView) gameDetailActivity.findViewById(2131493471)).setText(game.getShortIntro());
+        ((SmartImageView) gameDetailActivity.findViewById(2131493468)).setImageUrl(game.getIcon());
+        ((TextView) gameDetailActivity.findViewById(2131493469)).setText(game.getName());
+        String string = gameDetailActivity.m ? game.getCat() : game.getCat() + " | " + a.c(game.getAndroidSize());
+        ((TextView) gameDetailActivity.findViewById(2131493470)).setText(string);
+        gameDetailActivity.a.setText(game.getIntro());
+        ViewGroup viewGroup = (ViewGroup) gameDetailActivity.findViewById(2131493093);
+        String[] arrstring = game.getPictures();
+        int n3 = a.a((Context) gameDetailActivity, 8.0f);
+        int n4 = 0;
+        while (n4 < arrstring.length) {
+            String string2 = arrstring[n4];
+            SmartImageView smartImageView2 = new SmartImageView(gameDetailActivity);
+            LinearLayout.LayoutParams layoutParams2 = new LinearLayout.LayoutParams(a.a((Context) gameDetailActivity, 240.0f), a.a((Context) gameDetailActivity, 160.0f));
+            smartImageView2.setScaleType(ImageView.ScaleType.FIT_XY);
+            smartImageView2.setLayoutParams(layoutParams2);
+            smartImageView2.setImageUrl(string2);
+            viewGroup.addView(smartImageView2);
+            if (n4 != -1 + arrstring.length) {
+                ((LinearLayout.LayoutParams) smartImageView2.getLayoutParams()).rightMargin = n3;
+            }
+            ++n4;
         }
     }
 
-    static void a(GameDetailActivity GameDetailActivity1, View View2, TextView TextView3, int int4, String String5) {
-        Account Account6 = am.a((Activity) GameDetailActivity1);
-
-        if (Account6 != null) {
-            m m7;
-            String[] String_1darray8;
-
-            View2.setEnabled(false);
-            TextView3.setText((CharSequence) new StringBuilder().append(int4 + 1).toString());
-            m7 = new m(GameDetailActivity1, (byte) 0);
-            String_1darray8 = new String[2];
-            String_1darray8[0] = String5;
-            String_1darray8[1] = Account6.getToken();
-            m7.b(String_1darray8);
-        }
+    static /* synthetic */ List c(GameDetailActivity gameDetailActivity) {
+        return gameDetailActivity.k;
     }
 
-    static void a(GameDetailActivity GameDetailActivity1, View View2, String String3) {
-        com.koushikdutta.async.http.a a4 = new com.koushikdutta.async.http.a((Context) GameDetailActivity1, View2);
-
-        a4.b().inflate(2131558403, a4.a());
-        a4.a((android.support.v7.widget.m) new k(GameDetailActivity1, String3));
-        a4.c();
+    static /* synthetic */ void d(GameDetailActivity gameDetailActivity) {
+        gameDetailActivity.a.setOnClickListener(null);
+        gameDetailActivity.a.setMaxLines(Integer.MAX_VALUE);
     }
 
-    static void a(GameDetailActivity GameDetailActivity1, String String2, View View3) {
-        Account Account4 = am.e();
-
-        if (Account4 != null) {
-            if (PostAgreeRecord.get(Account4.getToken(), String2) != null)
-                View3.setEnabled(false);
-            else
-                View3.setEnabled(true);
-        } else
-            View3.setEnabled(true);
+    static /* synthetic */ Game e(GameDetailActivity gameDetailActivity) {
+        return gameDetailActivity.b;
     }
 
-    static ScrollLoadListView b(GameDetailActivity GameDetailActivity1) {
-        return GameDetailActivity1.i;
+    static /* synthetic */ void f(GameDetailActivity gameDetailActivity) {
+        gameDetailActivity.j();
     }
 
-    static void b(GameDetailActivity GameDetailActivity1, Game Game2) {
-        SmartImageView SmartImageView3 = (SmartImageView) GameDetailActivity1.findViewById(2131493466);
-        int int4 = am.b((Activity) GameDetailActivity1).widthPixels / 2;
-        ViewGroup$LayoutParams LayoutParams5 = SmartImageView3.getLayoutParams();
-        Object Object6;
-        ViewGroup ViewGroup7;
-        String[] String_1darray8;
-        int int9;
-        int int10;
-
-        LayoutParams5.height = int4;
-        SmartImageView3.setLayoutParams(LayoutParams5);
-        SmartImageView3.setImageUrl(Game2.getBanner());
-        ((TextView) GameDetailActivity1.findViewById(2131493471)).setText((CharSequence) Game2.getShortIntro());
-        ((SmartImageView) GameDetailActivity1.findViewById(2131493468)).setImageUrl(Game2.getIcon());
-        ((TextView) GameDetailActivity1.findViewById(2131493469)).setText((CharSequence) Game2.getName());
-        if (GameDetailActivity1.m)
-            Object6 = Game2.getCat();
-        else
-            Object6 = new StringBuilder().append(Game2.getCat()).append(" | ").append(com.clilystudio.netbook.hpay100.a.a.c(Game2.getAndroidSize())).toString();
-        ((TextView) GameDetailActivity1.findViewById(2131493470)).setText((CharSequence) Object6);
-        GameDetailActivity1.a.setText((CharSequence) Game2.getIntro());
-        ViewGroup7 = (ViewGroup) GameDetailActivity1.findViewById(2131493093);
-        String_1darray8 = Game2.getPictures();
-        int9 = com.clilystudio.netbook.hpay100.a.a.a((Context) GameDetailActivity1, 8.0F);
-        for (int10 = 0; int10 < String_1darray8.length; ++int10) {
-            String String11 = String_1darray8[int10];
-            Object Object12 = new SmartImageView((Context) GameDetailActivity1);
-            Object Object13 = new LinearLayout$LayoutParams(com.clilystudio.netbook.hpay100.a.a.a((Context) GameDetailActivity1, 240.0F), com.clilystudio.netbook.hpay100.a.a.a((Context) GameDetailActivity1, 160.0F));
-
-            ((SmartImageView) Object12).setScaleType(ImageView$ScaleType.FIT_XY);
-            ((SmartImageView) Object12).setLayoutParams((ViewGroup$LayoutParams) Object13);
-            ((SmartImageView) Object12).setImageUrl(String11);
-            ViewGroup7.addView((View) Object12);
-            if (int10 != -1 + String_1darray8.length)
-                ((LinearLayout$LayoutParams) ((SmartImageView) Object12).getLayoutParams()).rightMargin = int9;
-        }
+    static /* synthetic */ void g(GameDetailActivity gameDetailActivity) {
+        gameDetailActivity.h.setVisibility(0);
+        r r2 = gameDetailActivity.g = new r(gameDetailActivity, 0);
+        Object[] arrobject = new String[]{gameDetailActivity.b.get_id()};
+        r2.b(arrobject);
     }
 
-    static List c(GameDetailActivity GameDetailActivity1) {
-        return GameDetailActivity1.k;
+    static /* synthetic */ boolean h(GameDetailActivity gameDetailActivity) {
+        return gameDetailActivity.n;
     }
 
-    static void d(GameDetailActivity GameDetailActivity1) {
-        GameDetailActivity1.a.setOnClickListener(null);
-        GameDetailActivity1.a.setMaxLines(2147483647);
+    static /* synthetic */ View i(GameDetailActivity gameDetailActivity) {
+        return gameDetailActivity.h;
     }
 
-    static Game e(GameDetailActivity GameDetailActivity1) {
-        return GameDetailActivity1.b;
+    static /* synthetic */ av j(GameDetailActivity gameDetailActivity) {
+        return gameDetailActivity.p;
     }
 
-    static void f(GameDetailActivity GameDetailActivity1) {
-        GameDetailActivity1.j();
+    static /* synthetic */ n k(GameDetailActivity gameDetailActivity) {
+        return gameDetailActivity.j;
     }
 
-    static void g(GameDetailActivity GameDetailActivity1) {
-        r r2;
-        String[] String_1darray3;
-
-        GameDetailActivity1.h.setVisibility(0);
-        GameDetailActivity1.g = new r(GameDetailActivity1, (byte) 0);
-        r2 = GameDetailActivity1.g;
-        String_1darray3 = new String[1];
-        String_1darray3[0] = GameDetailActivity1.b.get_id();
-        r2.b(String_1darray3);
+    static /* synthetic */ void l(GameDetailActivity gameDetailActivity) {
+        gameDetailActivity.h.setVisibility(0);
+        gameDetailActivity.h.findViewById(2131493085).setVisibility(8);
+        TextView textView = (TextView) gameDetailActivity.h.findViewById(2131493798);
+        textView.setText("\u70b9\u51fb\u91cd\u8bd5");
+        gameDetailActivity.h.setOnClickListener(new j(gameDetailActivity, textView));
     }
 
-    static boolean h(GameDetailActivity GameDetailActivity1) {
-        return GameDetailActivity1.n;
+    static /* synthetic */ boolean m(GameDetailActivity gameDetailActivity) {
+        return gameDetailActivity.l;
     }
 
-    static View i(GameDetailActivity GameDetailActivity1) {
-        return GameDetailActivity1.h;
+    static /* synthetic */ r n(GameDetailActivity gameDetailActivity) {
+        return gameDetailActivity.g;
     }
 
-    static av j(GameDetailActivity GameDetailActivity1) {
-        return GameDetailActivity1.p;
-    }
-
-    static n k(GameDetailActivity GameDetailActivity1) {
-        return GameDetailActivity1.j;
-    }
-
-    static void l(GameDetailActivity GameDetailActivity1) {
-        TextView TextView2;
-
-        GameDetailActivity1.h.setVisibility(0);
-        GameDetailActivity1.h.findViewById(2131493085).setVisibility(8);
-        TextView2 = (TextView) GameDetailActivity1.h.findViewById(2131493798);
-        TextView2.setText((CharSequence) "\u70B9\u51FB\u91CD\u8BD5");
-        GameDetailActivity1.h.setOnClickListener((View$OnClickListener) new j(GameDetailActivity1, TextView2));
-    }
-
-    static boolean m(GameDetailActivity GameDetailActivity1) {
-        return GameDetailActivity1.l;
-    }
-
-    static r n(GameDetailActivity GameDetailActivity1) {
-        return GameDetailActivity1.g;
-    }
-
+    /*
+     * Enabled aggressive block sorting
+     */
     private void j() {
-        if (m) {
-            GameDownloadButton GameDownloadButton1 = e;
-            Object Object2;
-
-            if (n)
-                Object2 = "\u7EE7\u7EED";
-            else
-                Object2 = "\u8BD5\u73A9";
-            GameDownloadButton1.setText((CharSequence) Object2);
-            e.setBackgroundResource(2130838100);
-            e.setOnClickListener((View$OnClickListener) new i(this));
+        if (this.m) {
+            GameDownloadButton gameDownloadButton = this.e;
+            String string = this.n ? "\u7ee7\u7eed" : "\u8bd5\u73a9";
+            gameDownloadButton.setText(string);
+            this.e.setBackgroundResource(2130838100);
+            this.e.setOnClickListener(new i(this));
+            return;
         } else {
-            s.a((Activity) this, b);
-            e.setGame(b);
-            e.a(b.getDownloadStatus());
-            if (f != null) {
-                f.setGame(b);
-                f.a(b.getDownloadStatus());
+            s.a((Activity) this, (Game) this.b);
+            this.e.setGame(this.b);
+            this.e.a(this.b.getDownloadStatus());
+            if (this.f == null) return;
+            {
+                this.f.setGame(this.b);
+                this.f.a(this.b.getDownloadStatus());
                 return;
             }
         }
     }
 
-    public final void a(GameGiftGetButton GameGiftGetButton1) {
-        f = GameGiftGetButton1;
+    public final void a(GameGiftGetButton gameGiftGetButton) {
+        this.f = gameGiftGetButton;
     }
 
+    @Override
     protected final void b() {
-        q q1;
-        String[] String_1darray2;
-
-        i();
-        q1 = new q(this, (byte) 0);
-        String_1darray2 = new String[1];
-        String_1darray2[0] = c;
-        q1.b(String_1darray2);
+        this.i();
+        q q2 = new q(this, 0);
+        Object[] arrobject = new String[]{this.c};
+        q2.b(arrobject);
     }
-// Error: Internal #201: 
-// The following method may not be correct.
 
+    @Override
     public void onBackPressed() {
+        super.onBackPressed();
+        if (this.getIntent().getBooleanExtra("from_splash", false)) {
+            this.startActivity(new Intent(this, HomeActivity.class));
+        }
+        this.finish();
     }
 
-    protected void onCreate(Bundle Bundle1) {
-        LayoutInflater LayoutInflater2;
-        View View3;
-        ImageView ImageView4;
-        Object Object5;
-
-        super.onCreate(Bundle1);
-        a(2130903386);
-        b(2131034389, 2130837866, (aa) new d(this));
-        c = getIntent().getStringExtra("game_id");
-        m = getIntent().getBooleanExtra("is_micro_game", false);
-        n = getIntent().getBooleanExtra("HAS_PLAYED", false);
-        LayoutInflater2 = LayoutInflater.from((Context) this);
-        i = (ScrollLoadListView) findViewById(2131493981);
-        i.setDividerHeight(0);
-        View3 = LayoutInflater2.inflate(2130903222, (ViewGroup) i, false);
-        a = (TextView) View3.findViewById(2131493475);
-        e = (GameDownloadButton) View3.findViewById(2131493472);
-        ImageView4 = (ImageView) View3.findViewById(2131493476);
-        a.setOnClickListener((View$OnClickListener) new f(this));
-        ImageView4.setOnClickListener((View$OnClickListener) new g(this));
-        i.addHeaderView(View3, null, false);
-        h = LayoutInflater2.inflate(2130903325, null);
-        i.addFooterView(h);
-        Object5 = (GameGiftView) LayoutInflater2.inflate(2130903223, (ViewGroup) i, false);
-        i.addHeaderView((View) Object5, null, false);
-        ((GameGiftView) Object5).a(c, m);
-        j = new n(this, LayoutInflater2);
-        i.setAdapter((ListAdapter) j);
-        i.setOnItemClickListener((AdapterView$OnItemClickListener) new e(this));
-        b();
-        l = com.clilystudio.netbook.hpay100.a.a.r((Context) this, "community_user_gender_icon_toggle");
+    @Override
+    protected void onCreate(Bundle bundle) {
+        super.onCreate(bundle);
+        this.a(2130903386);
+        this.b(2131034389, 2130837866, (aa) ((Object) new com.clilystudio.netbook.ui.game.d(this)));
+        this.c = this.getIntent().getStringExtra("game_id");
+        this.m = this.getIntent().getBooleanExtra("is_micro_game", false);
+        this.n = this.getIntent().getBooleanExtra("HAS_PLAYED", false);
+        LayoutInflater layoutInflater = LayoutInflater.from(this);
+        this.i = (ScrollLoadListView) this.findViewById(2131493981);
+        this.i.setDividerHeight(0);
+        View view = layoutInflater.inflate(2130903222, (ViewGroup) this.i, false);
+        this.a = (TextView) view.findViewById(2131493475);
+        this.e = (GameDownloadButton) view.findViewById(2131493472);
+        ImageView imageView = (ImageView) view.findViewById(2131493476);
+        this.a.setOnClickListener(new f(this));
+        imageView.setOnClickListener((View.OnClickListener) ((Object) new g(this)));
+        this.i.addHeaderView(view, null, false);
+        this.h = layoutInflater.inflate(2130903325, null);
+        this.i.addFooterView(this.h);
+        GameGiftView gameGiftView = (GameGiftView) layoutInflater.inflate(2130903223, (ViewGroup) this.i, false);
+        this.i.addHeaderView(gameGiftView, null, false);
+        gameGiftView.a(this.c, this.m);
+        this.j = new n(this, layoutInflater);
+        this.i.setAdapter((ListAdapter) ((Object) this.j));
+        this.i.setOnItemClickListener((AdapterView.OnItemClickListener) ((Object) new e(this)));
+        this.b();
+        this.l = a.r(this, "community_user_gender_icon_toggle");
     }
 
+    @Override
     public void onPause() {
         super.onPause();
-        unregisterReceiver(o);
+        this.unregisterReceiver(this.o);
     }
 
+    @Override
     public void onResume() {
         super.onResume();
-        registerReceiver(o, new IntentFilter("update_game_item_status"));
-        if (b != null)
-            j();
+        this.registerReceiver(this.o, new IntentFilter("update_game_item_status"));
+        if (this.b != null) {
+            this.j();
+        }
     }
 }

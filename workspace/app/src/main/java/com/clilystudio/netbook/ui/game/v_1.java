@@ -1,57 +1,111 @@
 package com.clilystudio.netbook.ui.game;
 
+import com.clilystudio.netbook.a.e;
+import com.clilystudio.netbook.api.b;
+import com.clilystudio.netbook.model.GameGiftGroup;
 import com.clilystudio.netbook.model.GamesGiftRoot;
+import com.clilystudio.netbook.model.GiftGame;
+import com.clilystudio.netbook.model.GiftGameGift;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
-final class v extends com.clilystudio.netbook.a.e {
+final class v
+        extends e<String, Void, List<GameGiftGroup>> {
+    private /* synthetic */ GameGiftFragment a;
 
-    private GameGiftFragment a;
-
-    v(GameGiftFragment GameGiftFragment1, byte byte2) {
-        this(GameGiftFragment1);
+    private v(GameGiftFragment gameGiftFragment) {
+        this.a = gameGiftFragment;
     }
 
-    private v(GameGiftFragment GameGiftFragment1) {
-        a = GameGiftFragment1;
+    /* synthetic */ v(GameGiftFragment gameGiftFragment, byte by) {
+        this(gameGiftFragment);
     }
 
-    private static transient List a() {
+    /*
+     * Enabled aggressive block sorting
+     * Enabled unnecessary exception pruning
+     * Enabled aggressive exception aggregation
+     */
+    private static /* varargs */ List<GameGiftGroup> a() {
         try {
-            GamesGiftRoot GamesGiftRoot3;
-
-            com.clilystudio.netbook.api.b.a();
-            GamesGiftRoot3 = com.clilystudio.netbook.api.b.b().b(0, 30);
-        } catch (IOException IOException1) {
-            IOException1.printStackTrace();
+            b.a();
+            GamesGiftRoot gamesGiftRoot = b.b().b(0, 30);
+            if (gamesGiftRoot == null || !gamesGiftRoot.ok || gamesGiftRoot.games == null) return null;
+            {
+                List<GiftGame> list = Arrays.asList(gamesGiftRoot.games);
+                ArrayList<GameGiftGroup> arrayList = new ArrayList<GameGiftGroup>();
+                int n = 0;
+                while (n < list.size()) {
+                    GiftGame giftGame = list.get(n);
+                    GameGiftGroup gameGiftGroup = new GameGiftGroup();
+                    gameGiftGroup.setType(0);
+                    gameGiftGroup.setGame(giftGame);
+                    arrayList.add(gameGiftGroup);
+                    GiftGameGift[] arrgiftGameGift = giftGame.gifts;
+                    if (arrgiftGameGift != null && arrgiftGameGift.length != 0) {
+                        boolean bl;
+                        int n2 = arrgiftGameGift.length;
+                        if (n2 > 3) {
+                            n2 = 3;
+                            bl = true;
+                        } else {
+                            bl = false;
+                        }
+                        for (int i = 0; i < n2; ++i) {
+                            GameGiftGroup gameGiftGroup2 = new GameGiftGroup();
+                            gameGiftGroup2.setType(1);
+                            gameGiftGroup2.setGift(arrgiftGameGift[i]);
+                            gameGiftGroup2.setGame(giftGame);
+                            arrayList.add(gameGiftGroup2);
+                        }
+                        GameGiftGroup gameGiftGroup3 = new GameGiftGroup();
+                        gameGiftGroup3.setType(2);
+                        gameGiftGroup3.setGame(giftGame);
+                        arrayList.add(gameGiftGroup3);
+                    }
+                    ++n;
+                }
+                return arrayList;
+            }
+        } catch (IOException var0_12) {
+            var0_12.printStackTrace();
         }
         return null;
     }
 
-    protected final Object doInBackground(Object[] Object_1darray1) {
-        return a();
+    /*
+     * Exception decompiling
+     */
+    @Override
+    protected final /* synthetic */ Object doInBackground(Object[] var1_1) {
+        // This method has failed to decompile.  When submitting a bug report, please provide this stack trace, and (if you hold appropriate legal rights) the relevant class file.
+        // java.lang.ArrayIndexOutOfBoundsException
+        throw new IllegalStateException("Decompilation failed");
     }
 
-    protected final void onPostExecute(Object Object1) {
-        Object Object2 = (List) Object1;
-
-        super.onPostExecute(Object2);
-        if (a.getActivity() != null) {
-            if (Object2 != null) {
-                if (((List) Object2).size() > 0) {
-                    a.c();
-                    GameGiftFragment.a(a, (List) Object2);
-                    GameGiftFragment.d(a).a(GameGiftFragment.b(a));
-                    GameGiftFragment.c(a);
-                } else {
-                    a.d();
-                    return;
-                }
-            } else {
-                a.e();
+    /*
+     * Enabled force condition propagation
+     * Lifted jumps to return sites
+     */
+    @Override
+    protected final /* synthetic */ void onPostExecute(Object object) {
+        List list = (List) object;
+        super.onPostExecute(list);
+        if (this.a.getActivity() == null) return;
+        if (list != null) {
+            if (list.size() > 0) {
+                this.a.c();
+                GameGiftFragment.a(this.a, list);
+                GameGiftFragment.d(this.a).a(GameGiftFragment.b(this.a));
+                GameGiftFragment.c(this.a);
                 return;
             }
+            this.a.d();
+            return;
         }
+        this.a.e();
     }
 }

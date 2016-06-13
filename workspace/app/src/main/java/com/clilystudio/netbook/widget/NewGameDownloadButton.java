@@ -5,57 +5,62 @@ import android.content.res.TypedArray;
 import android.util.AttributeSet;
 
 import com.clilystudio.netbook.R$styleable;
-import com.umeng.a.b;
 
-public class NewGameDownloadButton extends GameDownloadButton {
+public class NewGameDownloadButton
+        extends GameDownloadButton {
+    private final String a;
 
-    private String a;     // final access specifier removed
-
-    public NewGameDownloadButton(Context Context1, AttributeSet AttributeSet2) {
-        super(Context1, AttributeSet2);
-        TypedArray TypedArray3;
-
-        TypedArray3 = Context1.obtainStyledAttributes(AttributeSet2, R$styleable.NewGameDownloadButton);
-        a = TypedArray3.getString(0);
-        TypedArray3.recycle();
+    public NewGameDownloadButton(Context context, AttributeSet attributeSet) {
+        super(context, attributeSet);
+        TypedArray typedArray = context.obtainStyledAttributes(attributeSet, R$styleable.NewGameDownloadButton);
+        this.a = typedArray.getString(0);
+        typedArray.recycle();
     }
 
+    @Override
     protected final void a() {
-        c();
+        this.c();
     }
 
+    @Override
     protected final void b() {
-        setText((CharSequence) "\u4E0B\u8F7D\u4E2D");
-        setTextColor(-9079435);
-        setBackgroundResource(2130837729);
+        this.setText("\u4e0b\u8f7d\u4e2d");
+        this.setTextColor(-9079435);
+        this.setBackgroundResource(2130837729);
     }
 
+    @Override
     protected void c() {
-        setText((CharSequence) "\u5B89\u88C5");
-        setTextColor(-1);
-        setBackgroundResource(2130837728);
+        this.setText("\u5b89\u88c5");
+        this.setTextColor(-1);
+        this.setBackgroundResource(2130837728);
     }
 
+    @Override
     protected final void d() {
-        setText((CharSequence) "\u6253\u5F00");
-        setTextColor(-14540254);
-        setBackgroundResource(2130837731);
+        this.setText("\u6253\u5f00");
+        this.setTextColor(-14540254);
+        this.setBackgroundResource(2130837731);
     }
 
+    /*
+     * Enabled force condition propagation
+     * Lifted jumps to return sites
+     */
+    @Override
     protected final void e() {
         super.e();
-        if (h() != null) {
-            if ("promotion".equals(a))
-                b.a(getContext(), "game_center_main_install_promotion", h().getName());
-            else {
-                b.a(getContext(), "game_center_main_install", h().getName());
-                return;
-            }
+        if (this.h() == null) return;
+        if ("promotion".equals(this.a)) {
+            b.a(this.getContext(), "game_center_main_install_promotion", this.h().getName());
+            return;
         }
+        b.a(this.getContext(), "game_center_main_install", this.h().getName());
     }
 
+    @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
-        setPadding(0, 0, 0, 0);
+        this.setPadding(0, 0, 0, 0);
     }
 }

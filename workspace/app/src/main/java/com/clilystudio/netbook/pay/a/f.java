@@ -1,206 +1,176 @@
 package com.clilystudio.netbook.pay.a;
 
 public final class f {
-
-    private static char a = '=';
-    private static byte[] b = new byte[128];
-    private static char[] c = new char[64];
+    private static char a;
+    private static byte[] b;
+    private static char[] c;
 
     static {
-        int int1 = 0;
-        int int2;
-        int int3;
-        int int4;
-        int int5;
-        int int6;
-        int int7;
-        int int8;
-        int int9;
-
-        for (int2 = 0; int2 < 128; ++int2)
-            b[int2] = (byte) -1;
-        for (int3 = 90; int3 >= 65; --int3)
-            b[int3] = (byte) (int3 - 65);
-        for (int4 = 122; int4 >= 97; --int4)
-            b[int4] = (byte) (26 + (int4 - 97));
-        for (int5 = 57; int5 >= 48; --int5)
-            b[int5] = (byte) (52 + (int5 - 48));
-        b[43] = (byte) 62;
-        b[47] = (byte) 63;
-        for (int6 = 0; int6 <= 25; ++int6)
-            c[int6] = (char) (int6 + 65);
-        int7 = 26;
-        for (int8 = 0; int7 <= 51; ++int8) {
-            c[int7] = (char) (int8 + 97);
-            ++int7;
+        int n = 0;
+        a = 61;
+        b = new byte[128];
+        c = new char[64];
+        for (int i = 0; i < 128; ++i) {
+            f.b[i] = -1;
         }
-        int9 = 52;
-        while (int9 <= 61) {
-            c[int9] = (char) (int1 + 48);
-            ++int9;
-            ++int1;
+        for (int j = 90; j >= 65; --j) {
+            f.b[j] = (byte) (j - 65);
         }
-        c[62] = '+';
-        c[63] = '/';
+        for (int k = 122; k >= 97; --k) {
+            f.b[k] = (byte) (26 + (k - 97));
+        }
+        for (int i2 = 57; i2 >= 48; --i2) {
+            f.b[i2] = (byte) (52 + (i2 - 48));
+        }
+        f.b[43] = 62;
+        f.b[47] = 63;
+        for (int i3 = 0; i3 <= 25; ++i3) {
+            f.c[i3] = (char) (i3 + 65);
+        }
+        int n2 = 26;
+        int n3 = 0;
+        while (n2 <= 51) {
+            f.c[n2] = (char) (n3 + 97);
+            ++n2;
+            ++n3;
+        }
+        int n4 = 52;
+        while (n4 <= 61) {
+            f.c[n4] = (char) (n + 48);
+            ++n4;
+            ++n;
+        }
+        f.c[62] = 43;
+        f.c[63] = 47;
     }
 
-    private static boolean a(char char1) {
-        if (char1 == a)
+    private static boolean a(char c) {
+        if (c == a) {
             return true;
-        else
-            return false;
+        }
+        return false;
     }
 
-    public static byte[] a(String String1) {
-        if (String1 == null)
+    /*
+     * Unable to fully structure code
+     * Enabled aggressive block sorting
+     * Lifted jumps to return sites
+     */
+    public static byte[] a(String var0) {
+        if (var0 == null) {
             return null;
-        else {
-            char[] char_1darray2 = String1.toCharArray();
-            int int5;
-
-            if (char_1darray2 == null)
-                int5 = 0;
-            else {
-                int int3 = char_1darray2.length;
-                int int4 = 0;
-                int int8;
-
-                for (int5 = 0; int4 < int3; int5 = int8) {
-                    char char6 = char_1darray2[int4];
-                    int int7;
-
-                    if (char6 == 32 || char6 == 13 || char6 == 10 || char6 == 9)
-                        int7 = 1;
-                    else
-                        int7 = 0;
-                    if (int7 == 0) {
-                        int8 = int5 + 1;
-                        char_1darray2[int5] = char_1darray2[int4];
-                    } else
-                        int8 = int5;
-                    ++int4;
-                }
-            }
-            if (int5 % 4 != 0)
-                return null;
-            else {
-                int int9 = int5 / 4;
-
-                if (int9 == 0)
-                    return new byte[0];
-                else {
-                    byte[] byte_1darray10 = new byte[int9 * 3];
-                    int int11 = 0;
-                    int int12 = 0;
-                    int int13 = 0;
-                    int int14;
-                    char char15;
-
-                    while (int13 < int9 - 1) {
-                        int int31 = int11 + 1;
-                        char char32 = char_1darray2[int11];
-
-                        if (b(char32)) {
-                            int int33 = int31 + 1;
-                            char char34 = char_1darray2[int31];
-
-                            if (b(char34)) {
-                                int int35 = int33 + 1;
-                                char char36 = char_1darray2[int33];
-
-                                if (b(char36)) {
-                                    char char37;
-
-                                    int11 = int35 + 1;
-                                    char37 = char_1darray2[int35];
-                                    if (b(char37)) {
-                                        byte byte38 = b[char32];
-                                        byte byte39 = b[char34];
-                                        byte byte40 = b[char36];
-                                        byte byte41 = b[char37];
-                                        int int42 = int12 + 1;
-                                        int int43;
-
-                                        byte_1darray10[int12] = (byte) (byte38 << 0x2 | byte39 >> 0x4);
-                                        int43 = int42 + 1;
-                                        byte_1darray10[int42] = (byte) ((byte39 & 0xF) << 0x4 | 0xF & byte40 >> 0x2);
-                                        int12 = int43 + 1;
-                                        byte_1darray10[int43] = (byte) (byte41 | byte40 << 0x6);
-                                        ++int13;
-                                        continue;
-                                    }
-                                }
-                            }
-                        }
-                        return null;
-                    }
-                    int14 = int11 + 1;
-                    char15 = char_1darray2[int11];
-                    if (b(char15)) {
-                        int int16 = int14 + 1;
-                        char char17 = char_1darray2[int14];
-
-                        if (b(char17)) {
-                            byte byte18 = b[char15];
-                            byte byte19 = b[char17];
-                            int int20 = int16 + 1;
-                            char char21 = char_1darray2[int16];
-                            char char22 = char_1darray2[int20];
-
-                            if (!b(char21) || !b(char22)) {
-                                if (a(char21) && a(char22)) {
-                                    if ((byte19 & 0xF) != 0)
-                                        return null;
-                                    else {
-                                        byte[] byte_1darray26 = new byte[1 + int13 * 3];
-
-                                        System.arraycopy(byte_1darray10, 0, byte_1darray26, 0, int13 * 3);
-                                        byte_1darray26[int12] = (byte) (byte18 << 0x2 | byte19 >> 0x4);
-                                        return byte_1darray26;
-                                    }
-                                } else {
-                                    byte byte23;
-
-                                    if (a(char21) || !a(char22))
-                                        return null;
-                                    byte23 = b[char21];
-                                    if ((byte23 & 0x3) != 0)
-                                        return null;
-                                    else {
-                                        byte[] byte_1darray24 = new byte[2 + int13 * 3];
-                                        int int25;
-
-                                        System.arraycopy(byte_1darray10, 0, byte_1darray24, 0, int13 * 3);
-                                        int25 = int12 + 1;
-                                        byte_1darray24[int12] = (byte) (byte18 << 0x2 | byte19 >> 0x4);
-                                        byte_1darray24[int25] = (byte) ((byte19 & 0xF) << 0x4 | 0xF & byte23 >> 0x2);
-                                        return byte_1darray24;
-                                    }
-                                }
-                            } else {
-                                byte byte27 = b[char21];
-                                byte byte28 = b[char22];
-                                int int29 = int12 + 1;
-                                int int30;
-
-                                byte_1darray10[int12] = (byte) (byte18 << 0x2 | byte19 >> 0x4);
-                                int30 = int29 + 1;
-                                byte_1darray10[int29] = (byte) ((byte19 & 0xF) << 0x4 | 0xF & byte27 >> 0x2);
-                                byte_1darray10[int30] = (byte) (byte28 | byte27 << 0x6);
-                                return byte_1darray10;
-                            }
-                        }
-                    }
+        }
+        var1_1 = var0.toCharArray();
+        if (var1_1 != null)**GOTO lbl7
+        var4_2 = 0;
+        **GOTO lbl -1000
+        lbl7:
+        // 1 sources:
+        var2_3 = var1_1.length;
+        var3_4 = 0;
+        var4_2 = 0;
+        do {
+            if (var3_4 >= var2_3) lbl - 1000: // 2 sources:
+            {
+                if (var4_2 % 4 != 0) {
                     return null;
                 }
+                var8_8 = var4_2 / 4;
+                if (var8_8 == 0) {
+                    return new byte[0];
+                }
+                var9_9 = new byte[var8_8 * 3];
+                var10_10 = 0;
+                var11_11 = 0;
+                break;
             }
+            var5_5 = var1_1[var3_4];
+            var6_6 = var5_5 == ' ' || var5_5 == '\r' || var5_5 == '\n' || var5_5 == '\t';
+            if (!var6_6) {
+                var7_7 = var4_2 + 1;
+                var1_1[var4_2] = var1_1[var3_4];
+            } else {
+                var7_7 = var4_2;
+            }
+            ++var3_4;
+            var4_2 = var7_7;
+        } while (true);
+        for (var12_12 = 0; var12_12 < var8_8 - 1; ++var12_12) {
+            var30_13 = var10_10 + 1;
+            var31_14 = var1_1[var10_10];
+            if (f.b(var31_14) == false) return null;
+            var32_15 = var30_13 + 1;
+            var33_16 = var1_1[var30_13];
+            if (f.b(var33_16) == false) return null;
+            var34_17 = var32_15 + 1;
+            var35_18 = var1_1[var32_15];
+            if (f.b(var35_18) == false) return null;
+            var10_10 = var34_17 + 1;
+            var36_19 = var1_1[var34_17];
+            if (!f.b(var36_19)) {
+                return null;
+            }
+            var37_20 = f.b[var31_14];
+            var38_21 = f.b[var33_16];
+            var39_22 = f.b[var35_18];
+            var40_23 = f.b[var36_19];
+            var41_24 = var11_11 + 1;
+            var9_9[var11_11] = (byte) (var37_20 << 2 | var38_21 >> 4);
+            var42_25 = var41_24 + 1;
+            var9_9[var41_24] = (byte) ((var38_21 & 15) << 4 | 15 & var39_22 >> 2);
+            var11_11 = var42_25 + 1;
+            var9_9[var42_25] = (byte) (var40_23 | var39_22 << 6);
         }
+        var13_26 = var10_10 + 1;
+        var14_27 = var1_1[var10_10];
+        if (f.b(var14_27) == false) return null;
+        var15_28 = var13_26 + 1;
+        var16_29 = var1_1[var13_26];
+        if (!f.b(var16_29)) {
+            return null;
+        }
+        var17_30 = f.b[var14_27];
+        var18_31 = f.b[var16_29];
+        var19_32 = var15_28 + 1;
+        var20_33 = var1_1[var15_28];
+        var21_34 = var1_1[var19_32];
+        if (f.b(var20_33) && f.b(var21_34)) {
+            var26_39 = f.b[var20_33];
+            var27_40 = f.b[var21_34];
+            var28_41 = var11_11 + 1;
+            var9_9[var11_11] = (byte) (var17_30 << 2 | var18_31 >> 4);
+            var29_42 = var28_41 + 1;
+            var9_9[var28_41] = (byte) ((var18_31 & 15) << 4 | 15 & var26_39 >> 2);
+            var9_9[var29_42] = (byte) (var27_40 | var26_39 << 6);
+            return var9_9;
+        }
+        if (f.a(var20_33) && f.a(var21_34)) {
+            if ((var18_31 & 15) != 0) {
+                return null;
+            }
+            var25_35 = new byte[1 + var12_12 * 3];
+            System.arraycopy(var9_9, 0, var25_35, 0, var12_12 * 3);
+            var25_35[var11_11] = (byte) (var17_30 << 2 | var18_31 >> 4);
+            return var25_35;
+        }
+        if (f.a(var20_33) != false) return null;
+        if (f.a(var21_34) == false) return null;
+        var22_36 = f.b[var20_33];
+        if ((var22_36 & 3) != 0) {
+            return null;
+        }
+        var23_37 = new byte[2 + var12_12 * 3];
+        System.arraycopy(var9_9, 0, var23_37, 0, var12_12 * 3);
+        var24_38 = var11_11 + 1;
+        var23_37[var11_11] = (byte) (var17_30 << 2 | var18_31 >> 4);
+        var23_37[var24_38] = (byte) ((var18_31 & 15) << 4 | 15 & var22_36 >> 2);
+        return var23_37;
     }
 
-    private static boolean b(char char1) {
-        if (char1 < 128 && b[char1] != -1)
+    private static boolean b(char c) {
+        if (c < '?' && b[c] != -1) {
             return true;
-        else
-            return false;
+        }
+        return false;
     }
 }

@@ -1,23 +1,23 @@
 package com.clilystudio.netbook.model;
 
-public class CategoryBook extends BookSummary {
-
+public class CategoryBook
+        extends BookSummary {
     private String majorCate;
     private String minorCate;
 
     public String getMajorCate() {
-        return majorCate;
+        return this.majorCate;
     }
 
-    public void setMajorCate(String String1) {
-        majorCate = String1;
+    public void setMajorCate(String string) {
+        this.majorCate = string;
     }
 
     public String getMinorCate() {
-        return minorCate;
+        return this.minorCate;
     }
 
-    public void setMinorCate(String String1) {
-        minorCate = String1;
+    public void setMinorCate(String string) {
+        this.minorCate = string;
     }
 }

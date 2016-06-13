@@ -1,14 +1,15 @@
 package com.clilystudio.netbook;
 
-final class e extends Thread {
+final class e
+        extends Thread {
+    private /* synthetic */ MyApplication a;
 
-    private MyApplication a;
-
-    e(MyApplication MyApplication1) {
-        a = MyApplication1;
+    e(MyApplication myApplication) {
+        this.a = myApplication;
     }
 
+    @Override
     public final void run() {
-        MyApplication.a(a);
+        MyApplication.a(this.a);
     }
 }

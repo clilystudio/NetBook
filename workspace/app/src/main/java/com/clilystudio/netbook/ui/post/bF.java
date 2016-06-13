@@ -1,23 +1,24 @@
 package com.clilystudio.netbook.ui.post;
 
 import android.view.View;
-import android.view.View$OnClickListener;
 import android.widget.PopupWindow;
 
-final class bF implements View$OnClickListener {
+final class bF
+        implements View.OnClickListener {
+    private /* synthetic */ PopupWindow a;
+    private /* synthetic */ GirlTopicListActivity b;
 
-    private PopupWindow a;
-    private GirlTopicListActivity b;
-    bF(GirlTopicListActivity GirlTopicListActivity1, PopupWindow PopupWindow2) {
-        b = GirlTopicListActivity1;
-        a = PopupWindow2;
+    bF(GirlTopicListActivity girlTopicListActivity, PopupWindow popupWindow) {
+        this.b = girlTopicListActivity;
+        this.a = popupWindow;
     }
 
-    public final void onClick(View View1) {
-        a.dismiss();
-        GirlTopicListActivity.k(b).setText((CharSequence) "\u5168\u90E8");
-        GirlTopicListActivity.b(b, false);
-        GirlTopicListActivity.a(b, "all");
-        GirlTopicListActivity.l(b).setRefreshing();
+    @Override
+    public final void onClick(View view) {
+        this.a.dismiss();
+        GirlTopicListActivity.k(this.b).setText("\u5168\u90e8");
+        GirlTopicListActivity.b(this.b, false);
+        GirlTopicListActivity.a(this.b, "all");
+        GirlTopicListActivity.l(this.b).setRefreshing();
     }
 }

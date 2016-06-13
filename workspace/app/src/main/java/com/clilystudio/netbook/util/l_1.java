@@ -1,44 +1,45 @@
 package com.clilystudio.netbook.util;
 
 import com.clilystudio.netbook.a.e;
+import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.model.ResultStatus;
 
-final class l extends e {
+final class l
+        extends e<String, Void, ResultStatus> {
+    private /* synthetic */ k a;
 
-    private k a;
-
-    l(k k1, byte byte2) {
-        this(k1);
+    private l(k k2) {
+        this.a = k2;
     }
 
-    private l(k k1) {
-        a = k1;
+    /* synthetic */ l(k k2, byte by) {
+        this(k2);
     }
 
-    private static transient ResultStatus a(String[] String_1darray1) {
-        ResultStatus ResultStatus4;
-
+    private static /* varargs */ ResultStatus a(String... arrstring) {
         try {
-            com.clilystudio.netbook.api.b.a();
-            ResultStatus4 = com.clilystudio.netbook.api.b.b().n(String_1darray1[0], String_1darray1[1], String_1darray1[2]);
-        } catch (Exception Exception2) {
-            Exception2.printStackTrace();
+            b.a();
+            ResultStatus resultStatus = b.b().n(arrstring[0], arrstring[1], arrstring[2]);
+            return resultStatus;
+        } catch (Exception var1_2) {
+            var1_2.printStackTrace();
             return null;
         }
-        return ResultStatus4;
     }
 
-    protected final Object doInBackground(Object[] Object_1darray1) {
-        return a((String[]) Object_1darray1);
+    @Override
+    protected final /* synthetic */ Object doInBackground(Object[] arrobject) {
+        return l.a((String[]) arrobject);
     }
 
-    protected final void onPostExecute(Object Object1) {
-        Object Object2 = (ResultStatus) Object1;
-
-        super.onPostExecute(Object2);
-        if (Object2 != null && ((ResultStatus) Object2).isOk())
-            k.a(a, true);
-        else
-            k.a(a, false);
+    @Override
+    protected final /* synthetic */ void onPostExecute(Object object) {
+        ResultStatus resultStatus = (ResultStatus) object;
+        super.onPostExecute(resultStatus);
+        if (resultStatus != null && resultStatus.isOk()) {
+            k.a(this.a, true);
+            return;
+        }
+        k.a(this.a, false);
     }
 }

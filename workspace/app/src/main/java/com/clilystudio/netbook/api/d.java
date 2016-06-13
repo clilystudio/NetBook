@@ -4,23 +4,21 @@ import java.util.Calendar;
 import java.util.Date;
 
 public final class d {
+    private final String a;
+    private final Date b;
 
-    private String a;     // final access specifier removed
-    private Date b;     // final access specifier removed
-    public d(String String1, int int2) {
-        Calendar Calendar3;
-
-        a = String1;
-        Calendar3 = Calendar.getInstance();
-        Calendar3.add(13, int2);
-        b = Calendar3.getTime();
+    public d(String string, int n) {
+        this.a = string;
+        Calendar calendar = Calendar.getInstance();
+        calendar.add(13, n);
+        this.b = calendar.getTime();
     }
 
     public final String a() {
-        return a;
+        return this.a;
     }
 
     public final Date b() {
-        return b;
+        return this.b;
     }
 }

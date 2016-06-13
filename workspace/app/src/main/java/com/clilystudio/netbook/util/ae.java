@@ -3,210 +3,145 @@ package com.clilystudio.netbook.util;
 import android.text.TextUtils;
 
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public final class ae {
-
-    private String[][] b = {
-            {"\uFF01", "!"},
-            {"\uFF1F", "?"},
-            {"\uFF08", "("},
-            {"\uFF09", ")"},
-            {"\u3002", "."},
-            {"\uFF0C", ","},
-            {"\uFF1B", ";"},
-            {"\uFF1A", ":"},
-            {"\u3001", ","},
-            {"\u3014", "("},
-            {"\u3015", ")"},
-            {"\u3000", " "},
-            {"\uFF10", "0"},
-            {"\uFF11", "1"},
-            {"\uFF12", "2"},
-            {"\uFF13", "3"},
-            {"\uFF14", "4"},
-            {"\uFF15", "5"},
-            {"\uFF16", "6"},
-            {"\uFF17", "7"},
-            {"\uFF18", "8"},
-            {"\uFF19", "9"}
-    };
-    private String[][] c = {
-            {"\u96F6", "0"},
-            {"\u4E00", "1"},
-            {"\u4E8C", "2"},
-            {"\u4E24", "2"},
-            {"\u4E09", "3"},
-            {"\u56DB", "4"},
-            {"\u4E94", "5"},
-            {"\u516D", "6"},
-            {"\u4E03", "7"},
-            {"\u516B", "8"},
-            {"\u4E5D", "9"}
-    };
-    private String[][] d = {
-            {"\u4E07", "10000"},
-            {"\u5343", "1000"},
-            {"\u767E", "100"},
-            {"\u5341", "10"}
-    };
-    private Map e = new HashMap();
-    private Map f = new HashMap();
-    private Map g = new HashMap();
     private ak a = new ak();
+    private String[][] b = new String[][]{{"\uff01", "!"}, {"\uff1f", "?"}, {"\uff08", "("}, {"\uff09", ")"}, {"\u3002", "."}, {"\uff0c", ","}, {"\uff1b", ";"}, {"\uff1a", ":"}, {"\u3001", ","}, {"\u3014", "("}, {"\u3015", ")"}, {"\u3000", " "}, {"\uff10", "0"}, {"\uff11", "1"}, {"\uff12", "2"}, {"\uff13", "3"}, {"\uff14", "4"}, {"\uff15", "5"}, {"\uff16", "6"}, {"\uff17", "7"}, {"\uff18", "8"}, {"\uff19", "9"}};
+    private String[][] c = new String[][]{{"\u96f6", "0"}, {"\u4e00", "1"}, {"\u4e8c", "2"}, {"\u4e24", "2"}, {"\u4e09", "3"}, {"\u56db", "4"}, {"\u4e94", "5"}, {"\u516d", "6"}, {"\u4e03", "7"}, {"\u516b", "8"}, {"\u4e5d", "9"}};
+    private String[][] d = new String[][]{{"\u4e07", "10000"}, {"\u5343", "1000"}, {"\u767e", "100"}, {"\u5341", "10"}};
+    private Map<String, String> e = new HashMap<String, String>();
+    private Map<String, Integer> f = new HashMap<String, Integer>();
+    private Map<String, Integer> g = new HashMap<String, Integer>();
+
     public ae() {
-        a();
+        this.a();
     }
 
-    private af a(String String1) {
-        Matcher Matcher2 = Pattern.compile("[\u7AE0|\u7B2C]?(\\d+)[\u7AE0|\u8282|\u56DE]([^\\(]*)(\\(.+?\\))?").matcher((CharSequence) String1);
-        String String3;
-        int int4;
-
-        if (!Matcher2.find())
-            return new af(this, 0, String1, "");
-        String3 = Matcher2.group(1);
-        int4 = 0;
-        if (String3 != null)
-            int4 = Integer.parseInt(String3);
-        return new af(this, int4, Matcher2.group(2), Matcher2.group(3));
+    /*
+     * Enabled force condition propagation
+     * Lifted jumps to return sites
+     */
+    private af a(String string) {
+        Matcher matcher = Pattern.compile("[\u7ae0|\u7b2c]?(\\d+)[\u7ae0|\u8282|\u56de]([^\\(]*)(\\(.+?\\))?").matcher(string);
+        if (!matcher.find()) return new af(this, 0, string, "");
+        String string2 = matcher.group(1);
+        int n = 0;
+        if (string2 == null) {
+            do {
+                return new af(this, n, matcher.group(2), matcher.group(3));
+                break;
+            } while (true);
+        }
+        n = Integer.parseInt(string2);
+        return new af(this, n, matcher.group(2), matcher.group(3));
     }
 
     private void a() {
-        String[][] String_2darray1;
-        int int2;
-        int int3;
-        String[][] String_2darray4;
-        int int5;
-        int int6;
-        String[][] String_2darray7;
-        int int8;
-        int int9;
-
-        e.clear();
-        String_2darray1 = b;
-        int2 = String_2darray1.length;
-        for (int3 = 0; int3 < int2; ++int3) {
-            String[] String_1darray14 = String_2darray1[int3];
-
-            e.put(String_1darray14[0], String_1darray14[1]);
+        this.e.clear();
+        for (String[] arrstring : this.b) {
+            this.e.put(arrstring[0], arrstring[1]);
         }
-        f.clear();
-        String_2darray4 = c;
-        int5 = String_2darray4.length;
-        for (int6 = 0; int6 < int5; ++int6) {
-            String[] String_1darray12 = String_2darray4[int6];
-
-            f.put(String_1darray12[0], Integer.valueOf(Integer.parseInt(String_1darray12[1])));
+        this.f.clear();
+        for (String[] arrstring2 : this.c) {
+            this.f.put(arrstring2[0], Integer.parseInt(arrstring2[1]));
         }
-        g.clear();
-        String_2darray7 = d;
-        int8 = String_2darray7.length;
-        for (int9 = 0; int9 < int8; ++int9) {
-            String[] String_1darray10 = String_2darray7[int9];
-
-            g.put(String_1darray10[0], Integer.valueOf(String_1darray10[1]));
+        this.g.clear();
+        for (String[] arrstring3 : this.d) {
+            this.g.put(arrstring3[0], Integer.valueOf(arrstring3[1]));
         }
     }
 
-    private String b(String String1) {
-        Object Object2 = "";
-        Iterator Iterator3 = e.keySet().iterator();
-        StringBuffer StringBuffer4;
-        Matcher Matcher5;
-        String String7;
-
-        while (Iterator3.hasNext()) {
-            String String10 = (String) Iterator3.next();
-
-            if (!android.text.TextUtils.isEmpty((CharSequence) Object2))
-                Object2 = new StringBuilder().append((String) Object2).append("|").toString();
-            Object2 = new StringBuilder().append((String) Object2).append(String.valueOf(String10)).toString();
+    private String b(String string) {
+        String string2 = "";
+        for (String string3 : this.e.keySet()) {
+            if (!TextUtils.isEmpty(string2)) {
+                string2 = string2 + "|";
+            }
+            string2 = string2 + String.valueOf(string3);
         }
-        StringBuffer4 = new StringBuffer();
-        Matcher5 = Pattern.compile((String) Object2).matcher((CharSequence) String1);
-        while (Matcher5.find())
-            Matcher5.appendReplacement(StringBuffer4, String.valueOf(e.get(Matcher5.group())));
-        Matcher5.appendTail(StringBuffer4);
-        String7 = c(StringBuffer4.toString()).replaceAll("[\\(|\u3010|\\[]((?![\u4E0A\u4E2D\u4E0B1-9])[^\\(|\u3010|\\[]+?)[\\)|\u3011|\\]]$", "");
-        String7.trim();
-        return String7;
+        StringBuffer stringBuffer = new StringBuffer();
+        Matcher matcher = Pattern.compile(string2).matcher(string);
+        while (matcher.find()) {
+            matcher.appendReplacement(stringBuffer, String.valueOf(this.e.get(matcher.group())));
+        }
+        matcher.appendTail(stringBuffer);
+        String string4 = this.c(stringBuffer.toString()).replaceAll("[\\(|\u3010|\\[]((?![\u4e0a\u4e2d\u4e0b1-9])[^\\(|\u3010|\\[]+?)[\\)|\u3011|\\]]$", "");
+        string4.trim();
+        return string4;
     }
 
-    private String c(String String1) {
-        StringBuffer StringBuffer2 = new StringBuffer();
-        Matcher Matcher3 = Pattern.compile(new StringBuilder("[").append(com.clilystudio.netbook.hpay100.a.a.a((Iterable) f.keySet(), "|")).append("|").append(com.clilystudio.netbook.hpay100.a.a.a((Iterable) g.keySet(), "|")).append("]+").toString()).matcher((CharSequence) String1);
-
-        while (Matcher3.find())
-            Matcher3.appendReplacement(StringBuffer2, String.valueOf(d(Matcher3.group())));
-        Matcher3.appendTail(StringBuffer2);
-        return StringBuffer2.toString();
+    private String c(String string) {
+        StringBuffer stringBuffer = new StringBuffer();
+        Matcher matcher = Pattern.compile("[" + a.a(this.f.keySet(), "|") + "|" + a.a(this.g.keySet(), "|") + "]+").matcher(string);
+        while (matcher.find()) {
+            matcher.appendReplacement(stringBuffer, String.valueOf(this.d(matcher.group())));
+        }
+        matcher.appendTail(stringBuffer);
+        return stringBuffer.toString();
     }
 
-    private int d(String String1) {
-        int[] int_1darray2 = new int[String1.length()];
-        int int3;
-        int int4;
-        int int5;
-        int int6;
-        int int7;
-        int int10;
-
-        for (int3 = 0; int3 < String1.length(); ++int3) {
-            String String11 = String.valueOf(String1.charAt(int3));
-
-            if (f.containsKey(String11))
-                int_1darray2[int3] = ((Integer) f.get(String11)).intValue();
-            else if (g.containsKey(String11))
-                int_1darray2[int3] = ((Integer) g.get(String11)).intValue();
+    /*
+     * Enabled aggressive block sorting
+     */
+    private int d(String string) {
+        int[] arrn = new int[string.length()];
+        for (int j = 0; j < string.length(); ++j) {
+            String string2 = String.valueOf(string.charAt(j));
+            if (this.f.containsKey(string2)) {
+                arrn[j] = this.f.get(string2);
+                continue;
+            }
+            if (!this.g.containsKey(string2)) continue;
+            arrn[j] = this.g.get(string2);
         }
-        int4 = int_1darray2.length;
-        int5 = 0;
-        int6 = 0;
-        for (int7 = 0; int5 < int4; int7 = int10) {
-            int int8 = int_1darray2[int5];
-            int int9;
-
-            if (int8 >= 10)
-                int9 = 1;
-            else
-                int9 = 0;
-            if (int9 != 0) {
-                if (int6 == 0)
-                    int6 = 1;
-                int10 = int7 + int6 * int8;
-                int6 = 0;
+        int n = arrn.length;
+        int n2 = 0;
+        int n3 = 0;
+        int n4 = 0;
+        while (n2 < n) {
+            int n5;
+            int n6 = arrn[n2];
+            boolean bl = n6 >= 10;
+            if (bl) {
+                if (n3 == 0) {
+                    n3 = 1;
+                }
+                n5 = n4 + n3 * n6;
+                n3 = 0;
             } else {
-                int6 = int8;
-                int10 = int7;
+                n3 = n6;
+                n5 = n4;
             }
-            ++int5;
+            ++n2;
+            n4 = n5;
         }
-        return int6 + int7;
+        return n3 + n4;
     }
 
-    public final boolean a(String String1, String String2) {
-        boolean boolean3 = true;
-
-        if (TextUtils.isEmpty((CharSequence) String1) || TextUtils.isEmpty((CharSequence) String2))
-            boolean3 = false;
-        else if (!String1.equals(String2)) {
-            String String4 = b(String1);
-            String String5 = b(String2);
-
-            if (!String4.equals(String5)) {
-                af af6 = a(String4);
-                af af7 = a(String5);
-
-                if (af.a(af6) != af.a(af7) || !android.text.TextUtils.equals((CharSequence) af6.b(), (CharSequence) af7.b()))
-                    return false;
-                else if (a.a(af6.a(), af7.a()) < 0.5F)
-                    return false;
-            }
+    /*
+     * Enabled force condition propagation
+     * Lifted jumps to return sites
+     */
+    public final boolean a(String string, String string2) {
+        String string3;
+        boolean bl = true;
+        if (TextUtils.isEmpty(string)) return false;
+        if (TextUtils.isEmpty(string2)) {
+            return false;
         }
-        return boolean3;
+        if (string.equals(string2)) return bl;
+        String string4 = this.b(string);
+        if (string4.equals(string3 = this.b(string2))) return bl;
+        af af2 = this.a(string4);
+        af af3 = this.a(string3);
+        if (af.a(af2) != af.a(af3)) return false;
+        if (!TextUtils.equals(af2.b(), af3.b())) {
+            return false;
+        }
+        if (this.a.a(af2.a(), af3.a()) >= 0.5f) return bl;
+        return false;
     }
 }

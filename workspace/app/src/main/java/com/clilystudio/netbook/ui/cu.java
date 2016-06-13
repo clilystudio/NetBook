@@ -1,35 +1,33 @@
 package com.clilystudio.netbook.ui;
 
+import com.clilystudio.netbook.c;
 import com.clilystudio.netbook.db.BookFile;
 import com.clilystudio.netbook.model.TxtFileObject;
 
 import java.io.File;
 
-final class cu implements com.koushikdutta.async.a.b {
+final class cu
+        implements b {
+    private /* synthetic */ ct a;
 
-    private ct a;
-
-    cu(ct ct1) {
-        a = ct1;
+    cu(ct ct2) {
+        this.a = ct2;
     }
 
-    public final void a(y y1, v v2) {
-        byte[] byte_1darray3 = new byte[v2.c()];
-        String String4;
-        File File5;
-        cs cs7;
-
-        v2.a(byte_1darray3);
-        String4 = a.b.b[0];
-        File5 = new File(com.clilystudio.netbook.hpay100.a.a.J(com.clilystudio.netbook.c.g), String4);
-        if (a.a[0] == null) {
-            WifiActivity.a(a.b.c, File5);
-            a.a[0] = Boolean.valueOf(false);
+    @Override
+    public final void a(y y2, v v2) {
+        byte[] arrby = new byte[v2.c()];
+        v2.a(arrby);
+        String string = this.a.b.b[0];
+        File file = new File(a.J(c.g), string);
+        if (this.a.a[0] == null) {
+            WifiActivity.a(this.a.b.c, file);
+            this.a.a[0] = false;
         }
-        WifiActivity.a(a.b.c, File5, byte_1darray3);
-        TxtFileObject.add(new BookFile(File5));
-        cs7 = a.b;
-        cs7.a += v2.c();
+        WifiActivity.a(this.a.b.c, file, arrby);
+        TxtFileObject.add(new BookFile(file));
+        cs cs2 = this.a.b;
+        cs2.a += v2.c();
         v2.j();
     }
 }

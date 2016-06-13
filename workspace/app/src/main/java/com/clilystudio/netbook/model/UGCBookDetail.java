@@ -3,7 +3,6 @@ package com.clilystudio.netbook.model;
 import java.util.Date;
 
 public class UGCBookDetail {
-
     Author author;
     UGCBookDetail$UGCBookContainer[] books;
     String collectorCount;
@@ -13,58 +12,58 @@ public class UGCBookDetail {
     String title;
 
     public Author getAuthor() {
-        return author;
+        return this.author;
     }
 
-    public void setAuthor(Author Author1) {
-        author = Author1;
+    public void setAuthor(Author author) {
+        this.author = author;
     }
 
     public UGCBookDetail$UGCBookContainer[] getBooks() {
-        return books;
+        return this.books;
     }
 
-    public void setBooks(UGCBookDetail$UGCBookContainer[] UGCBookContainer_1darray1) {
-        books = UGCBookContainer_1darray1;
+    public void setBooks(UGCBookDetail$UGCBookContainer[] arruGCBookDetail$UGCBookContainer) {
+        this.books = arruGCBookDetail$UGCBookContainer;
     }
 
     public String getCollectorCount() {
-        return collectorCount;
+        return this.collectorCount;
     }
 
-    public void setCollectorCount(String String1) {
-        collectorCount = String1;
+    public void setCollectorCount(String string) {
+        this.collectorCount = string;
     }
 
     public Date getCreated() {
-        return created;
+        return this.created;
     }
 
-    public void setCreated(Date Date1) {
-        created = Date1;
+    public void setCreated(Date date) {
+        this.created = date;
     }
 
     public String getDesc() {
-        return desc;
+        return this.desc;
     }
 
-    public void setDesc(String String1) {
-        desc = String1;
+    public void setDesc(String string) {
+        this.desc = string;
     }
 
     public String getShareLink() {
-        return shareLink;
+        return this.shareLink;
     }
 
-    public void setShareLink(String String1) {
-        shareLink = String1;
+    public void setShareLink(String string) {
+        this.shareLink = string;
     }
 
     public String getTitle() {
-        return title;
+        return this.title;
     }
 
-    public void setTitle(String String1) {
-        title = String1;
+    public void setTitle(String string) {
+        this.title = string;
     }
 }

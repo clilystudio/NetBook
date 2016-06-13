@@ -1,12 +1,12 @@
 package com.clilystudio.netbook.reader.random;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.DialogInterface$OnCancelListener;
-import android.content.DialogInterface$OnClickListener;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
@@ -16,41 +16,43 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.PagerAdapter;
 import android.view.KeyEvent;
 import android.view.View;
-import android.view.View$OnClickListener;
-import android.view.View$OnSystemUiVisibilityChangeListener;
-import android.view.ViewGroup$LayoutParams;
-import android.view.WindowManager$LayoutParams;
-import android.widget.RelativeLayout$LayoutParams;
+import android.view.WindowManager;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.clilystudio.netbook.MyApplication;
+import com.clilystudio.netbook.d;
 import com.clilystudio.netbook.db.BookReadRecord;
+import com.clilystudio.netbook.reader.G;
+import com.clilystudio.netbook.reader.K;
 import com.clilystudio.netbook.reader.PagerWidget;
 import com.clilystudio.netbook.reader.Reader;
 import com.clilystudio.netbook.reader.ad;
 import com.clilystudio.netbook.reader.ae;
 import com.clilystudio.netbook.reader.bH;
 import com.clilystudio.netbook.reader.bZ;
-import com.clilystudio.netbook.reader.ca;
-import com.clilystudio.netbook.reader.cb;
-import com.clilystudio.netbook.reader.cc;
-import com.clilystudio.netbook.reader.cd;
-import com.clilystudio.netbook.reader.ce;
 import com.clilystudio.netbook.reader.cw;
 
-public class ReaderRandomActivity extends FragmentActivity {
-
+public class ReaderRandomActivity
+        extends FragmentActivity {
+    private BroadcastReceiver A;
+    private BroadcastReceiver B;
+    private com.clilystudio.netbook.reader.o[] a = new com.clilystudio.netbook.reader.o[3];
     private String b;
     private String c;
     private String d;
     private Reader e;
     private bZ f;
     private bH g;
-    private com.clilystudio.netbook.reader.K h;
+    private K h;
+    private Handler i = new Handler();
     private PagerWidget j;
     private int k;
+    private boolean l = true;
+    private boolean m = true;
     private View n;
     private ReaderRandomActionBar o;
+    private int p = -1;
     private boolean q;
     private boolean r;
     private View s;
@@ -59,500 +61,522 @@ public class ReaderRandomActivity extends FragmentActivity {
     private boolean v;
     private View w;
     private ProgressDialog x;
-    private com.clilystudio.netbook.reader.o[] a = new com.clilystudio.netbook.reader.o[3];
-    private Handler i = new Handler();
-    private boolean l = true;
-    private boolean m = true;
-    private int p = -1;
     private int y = 1;
-    private Runnable z = new D(this);
-    private BroadcastReceiver A = new E(this);
-    private BroadcastReceiver B = new F(this);
+    private Runnable z;
 
-    static int a(ReaderRandomActivity ReaderRandomActivity1, int int2) {
-        ReaderRandomActivity1.y = int2;
-        return int2;
-    }
-// Error: Internal #201: 
-// The following method may not be correct.
-
-    public static Intent a(Context Context1, String String2, String String3, String String4) {
+    public ReaderRandomActivity() {
+        this.z = new D(this);
+        this.A = new E(this);
+        this.B = new F(this);
     }
 
-    static void a(ReaderRandomActivity ReaderRandomActivity1, com.clilystudio.netbook.reader.n n2) {
+    static /* synthetic */ int a(ReaderRandomActivity readerRandomActivity, int n2) {
+        readerRandomActivity.y = n2;
+        return n2;
+    }
+
+    public static Intent a(Context context, String string, String string2, String string3) {
+        return new d().a(context, ReaderRandomActivity.class).a("BOOK_ID", string).a("BOOK_TITLE", string2).a("TOC_ID", string3).a();
+    }
+
+    static /* synthetic */ void a(ReaderRandomActivity readerRandomActivity, com.clilystudio.netbook.reader.n n2) {
         if (!n2.f()) {
-            ReaderRandomActivity1.a[0].a(n2);
-            n2.a((com.clilystudio.netbook.reader.e) new u(ReaderRandomActivity1));
-        } else if (!n2.e()) {
-            ReaderRandomActivity1.a[2].a(n2);
-            n2.b((com.clilystudio.netbook.reader.e) new w(ReaderRandomActivity1));
-        } else {
-            ReaderRandomActivity1.a[1].a(n2);
-            n2.a((com.clilystudio.netbook.reader.e) new y(ReaderRandomActivity1, n2));
+            readerRandomActivity.a[0].a(n2);
+            n2.a((com.clilystudio.netbook.reader.e) new u(readerRandomActivity));
+            return;
+        }
+        if (!n2.e()) {
+            readerRandomActivity.a[2].a(n2);
+            n2.b((com.clilystudio.netbook.reader.e) new w(readerRandomActivity));
+            return;
+        }
+        readerRandomActivity.a[1].a(n2);
+        n2.a((com.clilystudio.netbook.reader.e) new y(readerRandomActivity, n2));
+    }
+
+    static /* synthetic */ boolean a(ReaderRandomActivity readerRandomActivity) {
+        return readerRandomActivity.r;
+    }
+
+    static /* synthetic */ boolean a(ReaderRandomActivity readerRandomActivity, boolean bl) {
+        readerRandomActivity.r = bl;
+        return bl;
+    }
+
+    static /* synthetic */ void b(ReaderRandomActivity readerRandomActivity) {
+        BookReadRecord.deleteAndSync(readerRandomActivity.b);
+        String string = readerRandomActivity.getResources().getString(2131034467);
+        Object[] arrobject = new Object[]{readerRandomActivity.c};
+        com.clilystudio.netbook.util.e.a((Activity) readerRandomActivity, (String) String.format(string, arrobject));
+    }
+
+    static /* synthetic */ void b(ReaderRandomActivity readerRandomActivity, int n2) {
+        readerRandomActivity.a(n2);
+    }
+
+    static /* synthetic */ boolean b(ReaderRandomActivity readerRandomActivity, boolean bl) {
+        readerRandomActivity.m = bl;
+        return bl;
+    }
+
+    static /* synthetic */ int c(ReaderRandomActivity readerRandomActivity, int n2) {
+        readerRandomActivity.k = n2;
+        return n2;
+    }
+
+    static /* synthetic */ TextView c(ReaderRandomActivity readerRandomActivity) {
+        return readerRandomActivity.t;
+    }
+
+    static /* synthetic */ int d(ReaderRandomActivity readerRandomActivity, int n2) {
+        readerRandomActivity.p = n2;
+        return n2;
+    }
+
+    static /* synthetic */ View d(ReaderRandomActivity readerRandomActivity) {
+        return readerRandomActivity.u;
+    }
+
+    static /* synthetic */ void e(ReaderRandomActivity readerRandomActivity) {
+        if (am.f()) {
+            com.clilystudio.netbook.util.e.a((Activity) readerRandomActivity, (String) readerRandomActivity.getString(2131034325));
+            return;
+        }
+        readerRandomActivity.e.a();
+        a.u(readerRandomActivity.b);
+        String string = readerRandomActivity.getResources().getString(2131034283);
+        Object[] arrobject = new Object[]{readerRandomActivity.c};
+        com.clilystudio.netbook.util.e.a((Activity) readerRandomActivity, (String) String.format(string, arrobject));
+    }
+
+    static /* synthetic */ void f(ReaderRandomActivity readerRandomActivity) {
+        readerRandomActivity.x = ProgressDialog.show(readerRandomActivity, null, readerRandomActivity.getString(2131034218), true, true);
+        com.a.a.a.a((Context) MyApplication.a(), "rec_F184E6D9_7F75_01C9_CCA0_2336AEB54B2B", a.o(readerRandomActivity), new C(readerRandomActivity));
+    }
+
+    static /* synthetic */ int g(ReaderRandomActivity readerRandomActivity) {
+        return readerRandomActivity.y;
+    }
+
+    static /* synthetic */ ProgressDialog h(ReaderRandomActivity readerRandomActivity) {
+        return readerRandomActivity.x;
+    }
+
+    static /* synthetic */ com.clilystudio.netbook.reader.o[] i(ReaderRandomActivity readerRandomActivity) {
+        return readerRandomActivity.a;
+    }
+
+    static /* synthetic */ void j(ReaderRandomActivity readerRandomActivity) {
+        readerRandomActivity.h.a(new s(readerRandomActivity));
+    }
+
+    static /* synthetic */ void k(ReaderRandomActivity readerRandomActivity) {
+        readerRandomActivity.b();
+    }
+
+    static /* synthetic */ View l(ReaderRandomActivity readerRandomActivity) {
+        return readerRandomActivity.w;
+    }
+
+    static /* synthetic */ void m(ReaderRandomActivity readerRandomActivity) {
+        readerRandomActivity.h = new K(readerRandomActivity.e, readerRandomActivity.f);
+        g g2 = new g(readerRandomActivity);
+        int n2 = readerRandomActivity.a.length;
+        for (int i2 = 0; i2 < n2; ++i2) {
+            com.clilystudio.netbook.reader.o o2;
+            readerRandomActivity.a[i2] = o2 = new com.clilystudio.netbook.reader.o((Activity) readerRandomActivity, readerRandomActivity.f);
+            o2.a((G) ((Object) g2));
+        }
+        readerRandomActivity.registerReceiver(readerRandomActivity.A, new IntentFilter("android.intent.action.BATTERY_CHANGED"));
+        readerRandomActivity.registerReceiver(readerRandomActivity.B, new IntentFilter("android.intent.action.TIME_TICK"));
+        readerRandomActivity.j = (PagerWidget) readerRandomActivity.findViewById(2131493158);
+        readerRandomActivity.j.setAdapter((PagerAdapter) ((Object) new h(readerRandomActivity)));
+        readerRandomActivity.j.setOnPageChangeListener((cw) ((Object) new i(readerRandomActivity)));
+        readerRandomActivity.j.setOnClickListener$4b8a6d15((com.umeng.update.a) ((Object) new j(readerRandomActivity)));
+        MyApplication.a().a(readerRandomActivity.e);
+        readerRandomActivity.a(0);
+    }
+
+    /*
+     * Enabled force condition propagation
+     * Lifted jumps to return sites
+     */
+    static /* synthetic */ void n(ReaderRandomActivity readerRandomActivity) {
+        if (readerRandomActivity.isFinishing()) return;
+        uk.me.lewisdeane.ldialogs.h h2 = new uk.me.lewisdeane.ldialogs.h(readerRandomActivity);
+        h2.b(2131034528);
+        h2.a(2131034471, (DialogInterface.OnClickListener) new n(readerRandomActivity)).b(2131034321, (DialogInterface.OnClickListener) new m(readerRandomActivity));
+        AlertDialog alertDialog = h2.a();
+        alertDialog.setCanceledOnTouchOutside(false);
+        alertDialog.setOnCancelListener(new p(readerRandomActivity));
+        try {
+            alertDialog.show();
+            return;
+        } catch (Exception var5_3) {
+            var5_3.printStackTrace();
+            return;
         }
     }
 
-    static boolean a(ReaderRandomActivity ReaderRandomActivity1) {
-        return ReaderRandomActivity1.r;
+    static /* synthetic */ void o(ReaderRandomActivity readerRandomActivity) {
+        readerRandomActivity.i();
     }
 
-    static boolean a(ReaderRandomActivity ReaderRandomActivity1, boolean boolean2) {
-        ReaderRandomActivity1.r = boolean2;
-        return boolean2;
+    static /* synthetic */ void p(ReaderRandomActivity readerRandomActivity) {
+        readerRandomActivity.c();
     }
 
-    static void b(ReaderRandomActivity ReaderRandomActivity1) {
-        String String2;
-        Object[] Object_1darray3;
-
-        BookReadRecord.deleteAndSync(ReaderRandomActivity1.b);
-        String2 = ReaderRandomActivity1.getResources().getString(2131034467);
-        Object_1darray3 = new Object[1];
-        Object_1darray3[0] = ReaderRandomActivity1.c;
-        com.clilystudio.netbook.util.e.a((Activity) ReaderRandomActivity1, String.format(String2, Object_1darray3));
+    static /* synthetic */ void q(ReaderRandomActivity readerRandomActivity) {
+        readerRandomActivity.f();
     }
 
-    static void b(ReaderRandomActivity ReaderRandomActivity1, int int2) {
-        ReaderRandomActivity1.a(int2);
+    static /* synthetic */ void r(ReaderRandomActivity readerRandomActivity) {
+        readerRandomActivity.e();
     }
 
-    static boolean b(ReaderRandomActivity ReaderRandomActivity1, boolean boolean2) {
-        ReaderRandomActivity1.m = boolean2;
-        return boolean2;
+    static /* synthetic */ void s(ReaderRandomActivity readerRandomActivity) {
+        readerRandomActivity.g();
     }
 
-    static int c(ReaderRandomActivity ReaderRandomActivity1, int int2) {
-        ReaderRandomActivity1.k = int2;
-        return int2;
+    static /* synthetic */ void t(ReaderRandomActivity readerRandomActivity) {
+        readerRandomActivity.a();
     }
 
-    static TextView c(ReaderRandomActivity ReaderRandomActivity1) {
-        return ReaderRandomActivity1.t;
+    static /* synthetic */ PagerWidget u(ReaderRandomActivity readerRandomActivity) {
+        return readerRandomActivity.j;
     }
 
-    static int d(ReaderRandomActivity ReaderRandomActivity1, int int2) {
-        ReaderRandomActivity1.p = int2;
-        return int2;
+    static /* synthetic */ void v(ReaderRandomActivity readerRandomActivity) {
+        readerRandomActivity.d();
     }
 
-    static View d(ReaderRandomActivity ReaderRandomActivity1) {
-        return ReaderRandomActivity1.u;
+    static /* synthetic */ void w(ReaderRandomActivity readerRandomActivity) {
+        readerRandomActivity.getWindow().clearFlags(128);
     }
 
-    static void e(ReaderRandomActivity ReaderRandomActivity1) {
-        if (am.f())
-            com.clilystudio.netbook.util.e.a((Activity) ReaderRandomActivity1, ReaderRandomActivity1.getString(2131034325));
-        else {
-            String String2;
-            Object[] Object_1darray3;
-
-            ReaderRandomActivity1.e.a();
-            com.clilystudio.netbook.hpay100.a.a.u(ReaderRandomActivity1.b);
-            String2 = ReaderRandomActivity1.getResources().getString(2131034283);
-            Object_1darray3 = new Object[1];
-            Object_1darray3[0] = ReaderRandomActivity1.c;
-            com.clilystudio.netbook.util.e.a((Activity) ReaderRandomActivity1, String.format(String2, Object_1darray3));
-        }
+    static /* synthetic */ int x(ReaderRandomActivity readerRandomActivity) {
+        return readerRandomActivity.p;
     }
 
-    static void f(ReaderRandomActivity ReaderRandomActivity1) {
-        ReaderRandomActivity1.x = ProgressDialog.show((Context) ReaderRandomActivity1, null, (CharSequence) ReaderRandomActivity1.getString(2131034218), true, true);
-        com.a.a.a.a((Context) MyApplication.a(), "rec_F184E6D9_7F75_01C9_CCA0_2336AEB54B2B", com.clilystudio.netbook.hpay100.a.a.o((Context) ReaderRandomActivity1), (com.a.a.c) new C(ReaderRandomActivity1));
-    }
-
-    static int g(ReaderRandomActivity ReaderRandomActivity1) {
-        return ReaderRandomActivity1.y;
-    }
-
-    static ProgressDialog h(ReaderRandomActivity ReaderRandomActivity1) {
-        return ReaderRandomActivity1.x;
-    }
-
-    static com.clilystudio.netbook.reader.o[] i(ReaderRandomActivity ReaderRandomActivity1) {
-        return ReaderRandomActivity1.a;
-    }
-
-    static void j(ReaderRandomActivity ReaderRandomActivity1) {
-        ReaderRandomActivity1.h.a((com.clilystudio.netbook.reader.e) new s(ReaderRandomActivity1));
-    }
-
-    static void k(ReaderRandomActivity ReaderRandomActivity1) {
-        ReaderRandomActivity1.b();
-    }
-
-    static View l(ReaderRandomActivity ReaderRandomActivity1) {
-        return ReaderRandomActivity1.w;
-    }
-
-    static void m(ReaderRandomActivity ReaderRandomActivity1) {
-        Object Object2;
-        int int3;
-        int int4;
-
-        ReaderRandomActivity1.h = new com.clilystudio.netbook.reader.K(ReaderRandomActivity1.e, ReaderRandomActivity1.f);
-        Object2 = new g(ReaderRandomActivity1);
-        int3 = ReaderRandomActivity1.a.length;
-        for (int4 = 0; int4 < int3; ++int4) {
-            com.clilystudio.netbook.reader.o o5 = new com.clilystudio.netbook.reader.o((Activity) ReaderRandomActivity1, ReaderRandomActivity1.f);
-
-            ReaderRandomActivity1.a[int4] = o5;
-            o5.a((com.clilystudio.netbook.reader.G) Object2);
-        }
-        ReaderRandomActivity1.registerReceiver(ReaderRandomActivity1.A, new IntentFilter("android.intent.action.BATTERY_CHANGED"));
-        ReaderRandomActivity1.registerReceiver(ReaderRandomActivity1.B, new IntentFilter("android.intent.action.TIME_TICK"));
-        ReaderRandomActivity1.j = (PagerWidget) ReaderRandomActivity1.findViewById(2131493158);
-        ReaderRandomActivity1.j.setAdapter((PagerAdapter) new h(ReaderRandomActivity1));
-        ReaderRandomActivity1.j.setOnPageChangeListener((cw) new i(ReaderRandomActivity1));
-        ReaderRandomActivity1.j.setOnClickListener$4b8a6d15((com.umeng.update.a) new j(ReaderRandomActivity1));
-        MyApplication.a().a(ReaderRandomActivity1.e);
-        ReaderRandomActivity1.a(0);
-    }
-
-    static void n(ReaderRandomActivity ReaderRandomActivity1) {
-        if (!ReaderRandomActivity1.isFinishing()) {
-            uk.me.lewisdeane.ldialogs.h h2 = new uk.me.lewisdeane.ldialogs.h((Context) ReaderRandomActivity1);
-            AlertDialog AlertDialog5;
-
-            h2.b(2131034528);
-            h2.a(2131034471, (DialogInterface$OnClickListener) new n(ReaderRandomActivity1)).b(2131034321, (DialogInterface$OnClickListener) new m(ReaderRandomActivity1));
-            AlertDialog5 = h2.a();
-            AlertDialog5.setCanceledOnTouchOutside(false);
-            AlertDialog5.setOnCancelListener((DialogInterface$OnCancelListener) new p(ReaderRandomActivity1));
-            try {
-                AlertDialog5.show();
-            } catch (Exception Exception6) {
-                Exception6.printStackTrace();
-                return;
-            }
-        }
-    }
-
-    static void o(ReaderRandomActivity ReaderRandomActivity1) {
-        ReaderRandomActivity1.i();
-    }
-
-    static void p(ReaderRandomActivity ReaderRandomActivity1) {
-        ReaderRandomActivity1.c();
-    }
-
-    static void q(ReaderRandomActivity ReaderRandomActivity1) {
-        ReaderRandomActivity1.f();
-    }
-
-    static void r(ReaderRandomActivity ReaderRandomActivity1) {
-        ReaderRandomActivity1.e();
-    }
-
-    static void s(ReaderRandomActivity ReaderRandomActivity1) {
-        ReaderRandomActivity1.g();
-    }
-
-    static void t(ReaderRandomActivity ReaderRandomActivity1) {
-        ReaderRandomActivity1.a();
-    }
-
-    static PagerWidget u(ReaderRandomActivity ReaderRandomActivity1) {
-        return ReaderRandomActivity1.j;
-    }
-
-    static void v(ReaderRandomActivity ReaderRandomActivity1) {
-        ReaderRandomActivity1.d();
-    }
-
-    static void w(ReaderRandomActivity ReaderRandomActivity1) {
-        ReaderRandomActivity1.getWindow().clearFlags(128);
-    }
-
-    static int x(ReaderRandomActivity ReaderRandomActivity1) {
-        return ReaderRandomActivity1.p;
-    }
-
-    private String a(String String1) {
-        return getIntent().getStringExtra(String1);
+    private String a(String string) {
+        return this.getIntent().getStringExtra(string);
     }
 
     private void a() {
-        e.a((ad) new f(this), false);
+        this.e.a((ad) ((Object) new f(this)), false);
     }
 
-    private void a(int int1) {
-        h.b(int1, (com.clilystudio.netbook.reader.e) new q(this), true);
+    private void a(int n2) {
+        this.h.b(n2, new q(this), true);
     }
 
+    /*
+     * Enabled aggressive block sorting
+     */
     private void b() {
-        WindowManager$LayoutParams LayoutParams1 = getWindow().getAttributes();
-        float float2;
-
-        if (f.g())
-            float2 = -1.0F;
-        else
-            float2 = (float) f.f() / 255.0F;
-        LayoutParams1.screenBrightness = float2;
-        getWindow().setAttributes(LayoutParams1);
+        WindowManager.LayoutParams layoutParams = this.getWindow().getAttributes();
+        float f2 = this.f.g() ? -1.0f : (float) this.f.f() / 255.0f;
+        layoutParams.screenBrightness = f2;
+        this.getWindow().setAttributes(layoutParams);
     }
 
+    /*
+     * Enabled aggressive block sorting
+     */
     private void c() {
-        com.clilystudio.netbook.reader.n n1 = a[k].j();
-
-        if (n1 != null && !n1.p()) {
-            if (n1.n() == 1)
-                a(n1.l());
-            else {
-                int int8 = n1.l();
-
-                h.a(int8, (com.clilystudio.netbook.reader.e) new t(this), true);
+        com.clilystudio.netbook.reader.n n2 = this.a[this.k].j();
+        if (n2 != null && !n2.p()) {
+            if (n2.n() == 1) {
+                this.a(n2.l());
+                return;
             }
-        } else {
-            com.clilystudio.netbook.reader.o o2 = a[0];
-            com.clilystudio.netbook.reader.o o3 = a[1];
-            com.clilystudio.netbook.reader.o o4 = a[2];
-            com.clilystudio.netbook.reader.n n5 = o2.j();
-            com.clilystudio.netbook.reader.n n6 = o3.j();
-            com.clilystudio.netbook.reader.n n7 = o4.j();
-
-            if (k == 2 && n7 != null && n7.e()) {
-                o2.a(n6);
-                o3.a(n7);
-                j.setCurrentItem(1, false);
-                n7.a((com.clilystudio.netbook.reader.e) new k(this, o4));
-            } else if (k == 0 && n5 != null && n5.f()) {
-                o4.a(n6);
-                o3.a(n5);
-                j.setCurrentItem(1, false);
-                n5.b((com.clilystudio.netbook.reader.e) new l(this, o2));
-            }
-            d();
+            int n3 = n2.l();
+            this.h.a(n3, new t(this), true);
+            return;
         }
+        com.clilystudio.netbook.reader.o o2 = this.a[0];
+        com.clilystudio.netbook.reader.o o3 = this.a[1];
+        com.clilystudio.netbook.reader.o o4 = this.a[2];
+        com.clilystudio.netbook.reader.n n4 = o2.j();
+        com.clilystudio.netbook.reader.n n5 = o3.j();
+        com.clilystudio.netbook.reader.n n6 = o4.j();
+        if (this.k == 2 && n6 != null && n6.e()) {
+            o2.a(n5);
+            o3.a(n6);
+            this.j.setCurrentItem(1, false);
+            n6.a((com.clilystudio.netbook.reader.e) ((Object) new k(this, o4)));
+        } else if (this.k == 0 && n4 != null && n4.f()) {
+            o4.a(n5);
+            o3.a(n4);
+            this.j.setCurrentItem(1, false);
+            n4.b((com.clilystudio.netbook.reader.e) ((Object) new l(this, o2)));
+        }
+        this.d();
     }
 
     private void d() {
-        com.clilystudio.netbook.reader.n n1 = a[k].j();
-
-        if (n1 != null) {
-            e.a(n1.l(), n1.m());
-            if (!n1.e())
-                com.clilystudio.netbook.util.e.a((Activity) this, "\u5DF2\u7ECF\u662F\u6700\u540E\u4E00\u9875\u5566");
+        com.clilystudio.netbook.reader.n n2 = this.a[this.k].j();
+        if (n2 != null) {
+            this.e.a(n2.l(), n2.m());
+            if (!n2.e()) {
+                com.clilystudio.netbook.util.e.a((Activity) this, (String) "\u5df2\u7ecf\u662f\u6700\u540e\u4e00\u9875\u5566");
+            }
         }
     }
 
+    /*
+     * Enabled aggressive block sorting
+     */
     private void e() {
-        com.clilystudio.netbook.reader.o o1 = a[k];
-
-        if (o1 != null) {
-            com.clilystudio.netbook.reader.n n2 = o1.j();
-
-            if (n2 != null) {
-                if (n2.e()) {
-                    i();
-                    if (g.c())
-                        j.a(1 + k);
-                    else {
-                        j.setCurrentItem(1 + k, false);
-                        c();
-                    }
-                } else
-                    com.clilystudio.netbook.util.e.a((Activity) this, "\u5DF2\u7ECF\u662F\u6700\u540E\u4E00\u9875\u5566");
-                return;
-            }
+        com.clilystudio.netbook.reader.n n2;
+        com.clilystudio.netbook.reader.o o2 = this.a[this.k];
+        if (o2 == null || (n2 = o2.j()) == null) {
+            return;
         }
+        if (!n2.e()) {
+            com.clilystudio.netbook.util.e.a((Activity) this, (String) "\u5df2\u7ecf\u662f\u6700\u540e\u4e00\u9875\u5566");
+            return;
+        }
+        this.i();
+        if (this.g.c()) {
+            this.j.a(1 + this.k);
+            return;
+        }
+        this.j.setCurrentItem(1 + this.k, false);
+        this.c();
     }
 
+    /*
+     * Enabled aggressive block sorting
+     */
     private void f() {
-        com.clilystudio.netbook.reader.o o1 = a[k];
-
-        if (o1 != null) {
-            com.clilystudio.netbook.reader.n n2 = o1.j();
-
-            if (n2 != null) {
-                if (n2.f()) {
-                    i();
-                    if (g.c())
-                        j.a(-1 + k);
-                    else {
-                        j.setCurrentItem(-1 + k, false);
-                        c();
-                    }
-                } else
-                    com.clilystudio.netbook.util.e.a((Activity) this, 2131034407);
-                return;
-            }
+        com.clilystudio.netbook.reader.n n2;
+        com.clilystudio.netbook.reader.o o2 = this.a[this.k];
+        if (o2 == null || (n2 = o2.j()) == null) {
+            return;
         }
+        if (!n2.f()) {
+            com.clilystudio.netbook.util.e.a((Activity) this, (int) 2131034407);
+            return;
+        }
+        this.i();
+        if (this.g.c()) {
+            this.j.a(-1 + this.k);
+            return;
+        }
+        this.j.setCurrentItem(-1 + this.k, false);
+        this.c();
     }
 
     private void g() {
-        if (l)
-            i();
-        else
-            h();
+        if (this.l) {
+            this.i();
+            return;
+        }
+        this.h();
     }
 
+    @SuppressLint(value = {"NewApi"})
     private void h() {
-        if (!l) {
-            o.setVisibility(0);
-            s.setVisibility(0);
-            getWindow().addFlags(2048);
-            getWindow().clearFlags(1024);
-            l = true;
+        if (!this.l) {
+            this.o.setVisibility(0);
+            this.s.setVisibility(0);
+            this.getWindow().addFlags(2048);
+            this.getWindow().clearFlags(1024);
+            this.l = true;
         }
-        if (com.clilystudio.netbook.hpay100.a.a.h() && !m)
-            n.setSystemUiVisibility(0);
+        if (a.h() && !this.m) {
+            this.n.setSystemUiVisibility(0);
+        }
     }
 
+    /*
+     * Enabled aggressive block sorting
+     */
+    @SuppressLint(value = {"NewApi"})
     private void i() {
-        if (l) {
-            o.setVisibility(4);
-            getWindow().addFlags(1024);
-            getWindow().clearFlags(2048);
-            l = false;
+        if (this.l) {
+            this.o.setVisibility(4);
+            this.getWindow().addFlags(1024);
+            this.getWindow().clearFlags(2048);
+            this.l = false;
         }
-        if (com.clilystudio.netbook.hpay100.a.a.h() && m)
-            n.setSystemUiVisibility(1);
-        if (q)
-            getWindow().addFlags(512);
-        else {
-            getWindow().addFlags(2048);
-            getWindow().clearFlags(1024);
-            getWindow().clearFlags(512);
-            if (com.clilystudio.netbook.hpay100.a.a.h() && m)
-                n.setSystemUiVisibility(0);
+        if (a.h() && this.m) {
+            this.n.setSystemUiVisibility(1);
         }
-        s.setVisibility(8);
-        com.clilystudio.netbook.hpay100.a.a.a(getWindow().getDecorView());
+        if (this.q) {
+            this.getWindow().addFlags(512);
+        } else {
+            this.getWindow().addFlags(2048);
+            this.getWindow().clearFlags(1024);
+            this.getWindow().clearFlags(512);
+            if (a.h() && this.m) {
+                this.n.setSystemUiVisibility(0);
+            }
+        }
+        this.s.setVisibility(8);
+        a.a(this.getWindow().getDecorView());
     }
 
     private void j() {
-        i.removeCallbacks(z);
-        if (g.d() != 0)
-            i.postDelayed(z, (long) g.d());
-    }
-
-    public void onBackPressed() {
-        if (e.m())
-            super.onBackPressed();
-        else
-            new uk.me.lewisdeane.ldialogs.h((Context) this).a(2131034455).b(2131034287).a(2131034280, (DialogInterface$OnClickListener) new B(this)).b(2131034281, (DialogInterface$OnClickListener) new A(this)).a().show();
-    }
-
-    public void onCreate(Bundle Bundle1) {
-        View View2;
-        View View3;
-        ReaderRandomActionBar ReaderRandomActionBar4;
-        boolean boolean5;
-        Object Object6;
-
-        super.onCreate(Bundle1);
-        getWindow().addFlags(256);
-        getWindow().addFlags(512);
-        setContentView(2130903122);
-        b = a("BOOK_ID");
-        c = a("BOOK_TITLE");
-        d = a("TOC_ID");
-        com.clilystudio.netbook.util.I.g = 0;
-        if (Bundle1 != null)
-            k = Bundle1.getInt("SaveSelectedPageIndex", 0);
-        w = findViewById(2131493167);
-        o = (ReaderRandomActionBar) findViewById(2131493170);
-        f = new bZ((Activity) this);
-        g = new bH((Context) this);
-        e = new Reader(b, d, c, 5);
-        f.a((cc) new G(this));
-        f.a((cb) new H(this));
-        f.a((ce) new I(this));
-        f.a((ca) new J(this));
-        f.a((cd) new K(this));
-        b();
-        o.setTitle("\u4E66\u540D\u88AB\u5C01\u5370");
-        o.setOnBtnClickListener$3ce42dcd((com.umeng.update.a) new L(this));
-        s = findViewById(2131493171);
-        s.setVisibility(0);
-        View2 = findViewById(2131493936);
-        View3 = findViewById(2131493939);
-        t = (TextView) findViewById(2131493938);
-        u = findViewById(2131493937);
-        v = com.clilystudio.netbook.hpay100.a.a.l((Context) this, "firstRandomBooks");
-        if (e.m()) {
-            u.setBackgroundResource(2130837650);
-            t.setCompoundDrawablesWithIntrinsicBounds(2130838130, 0, 0, 0);
-            t.setText((CharSequence) "\u5DF2\u6DFB\u52A0");
-            r = true;
-        } else
-            r = false;
-        View2.setOnClickListener((View$OnClickListener) new d(this));
-        View3.setOnClickListener((View$OnClickListener) new o(this));
-        n = getWindow().getDecorView();
-        if (com.clilystudio.netbook.hpay100.a.a.h())
-            n.setOnSystemUiVisibilityChangeListener((View$OnSystemUiVisibilityChangeListener) new r(this));
-        q = com.clilystudio.netbook.hpay100.a.a.l((Context) this, "reader_opt_full_screen");
-        ReaderRandomActionBar4 = o;
-        boolean5 = q;
-        Object6 = new RelativeLayout$LayoutParams(-1, -1);
-        if (boolean5)
-            ((RelativeLayout$LayoutParams) Object6).setMargins(0, am.k(ReaderRandomActionBar4.getContext()), 0, 0);
-        else
-            ((RelativeLayout$LayoutParams) Object6).setMargins(0, 0, 0, 0);
-        ReaderRandomActionBar4.setLayoutParams((ViewGroup$LayoutParams) Object6);
-        i();
-        if (v) {
-            h();
-            v = false;
+        this.i.removeCallbacks(this.z);
+        if (this.g.d() != 0) {
+            this.i.postDelayed(this.z, this.g.d());
         }
-        e.c((ae) new e(this));
-        a();
     }
 
+    @Override
+    public void onBackPressed() {
+        if (this.e.m()) {
+            super.onBackPressed();
+            return;
+        }
+        new uk.me.lewisdeane.ldialogs.h(this).a(2131034455).b(2131034287).a(2131034280, (DialogInterface.OnClickListener) new B(this)).b(2131034281, (DialogInterface.OnClickListener) new A(this)).a().show();
+    }
+
+    /*
+     * Enabled aggressive block sorting
+     */
+    @Override
+    public void onCreate(Bundle bundle) {
+        super.onCreate(bundle);
+        this.getWindow().addFlags(256);
+        this.getWindow().addFlags(512);
+        this.setContentView(2130903122);
+        this.b = this.a("BOOK_ID");
+        this.c = this.a("BOOK_TITLE");
+        this.d = this.a("TOC_ID");
+        com.clilystudio.netbook.util.I.g = 0;
+        if (bundle != null) {
+            this.k = bundle.getInt("SaveSelectedPageIndex", 0);
+        }
+        this.w = this.findViewById(2131493167);
+        this.o = (ReaderRandomActionBar) this.findViewById(2131493170);
+        this.f = new bZ(this);
+        this.g = new bH(this);
+        this.e = new Reader(this.b, this.d, this.c, 5);
+        this.f.a(new com.clilystudio.netbook.reader.random.G(this));
+        this.f.a(new H(this));
+        this.f.a(new I(this));
+        this.f.a(new J(this));
+        this.f.a(new com.clilystudio.netbook.reader.random.K(this));
+        this.b();
+        this.o.setTitle("\u4e66\u540d\u88ab\u5c01\u5370");
+        this.o.setOnBtnClickListener$3ce42dcd(new L(this));
+        this.s = this.findViewById(2131493171);
+        this.s.setVisibility(0);
+        View view = this.findViewById(2131493936);
+        View view2 = this.findViewById(2131493939);
+        this.t = (TextView) this.findViewById(2131493938);
+        this.u = this.findViewById(2131493937);
+        this.v = a.l(this, "firstRandomBooks");
+        if (this.e.m()) {
+            this.u.setBackgroundResource(2130837650);
+            this.t.setCompoundDrawablesWithIntrinsicBounds(2130838130, 0, 0, 0);
+            this.t.setText("\u5df2\u6dfb\u52a0");
+            this.r = true;
+        } else {
+            this.r = false;
+        }
+        view.setOnClickListener((View.OnClickListener) ((Object) new com.clilystudio.netbook.reader.random.d(this)));
+        view2.setOnClickListener(new o(this));
+        this.n = this.getWindow().getDecorView();
+        if (a.h()) {
+            this.n.setOnSystemUiVisibilityChangeListener(new r(this));
+        }
+        this.q = a.l(this, "reader_opt_full_screen");
+        ReaderRandomActionBar readerRandomActionBar = this.o;
+        boolean bl = this.q;
+        RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(-1, -1);
+        if (bl) {
+            layoutParams.setMargins(0, am.k((Context) readerRandomActionBar.getContext()), 0, 0);
+        } else {
+            layoutParams.setMargins(0, 0, 0, 0);
+        }
+        readerRandomActionBar.setLayoutParams(layoutParams);
+        this.i();
+        if (this.v) {
+            this.h();
+            this.v = false;
+        }
+        this.e.c((ae) ((Object) new e(this)));
+        this.a();
+    }
+
+    /*
+     * Enabled aggressive block sorting
+     * Enabled unnecessary exception pruning
+     * Enabled aggressive exception aggregation
+     */
+    @Override
     public void onDestroy() {
         try {
-            unregisterReceiver(A);
-            unregisterReceiver(B);
-        } catch (IllegalArgumentException IllegalArgumentException1) {
-            IllegalArgumentException1.printStackTrace();
+            this.unregisterReceiver(this.A);
+            this.unregisterReceiver(this.B);
+        } catch (IllegalArgumentException var1_1) {
+            var1_1.printStackTrace();
         }
         super.onDestroy();
     }
 
-    public boolean onKeyDown(int int1, KeyEvent KeyEvent2) {
-        switch (int1) {
-            default:
-                return super.onKeyDown(int1, KeyEvent2);
-            case 25:
-                if (!g.b())
-                    return false;
-                e();
-                return true;
+    @Override
+    public boolean onKeyDown(int n2, KeyEvent keyEvent) {
+        switch (n2) {
+            default: {
+                return super.onKeyDown(n2, keyEvent);
+            }
+            case 25: {
+                if (this.g.b()) {
+                    this.e();
+                    return true;
+                }
+                return false;
+            }
             case 24:
-                if (!g.b())
-                    return false;
-                f();
-                return true;
+        }
+        if (this.g.b()) {
+            this.f();
+            return true;
+        }
+        return false;
+    }
+
+    /*
+     * Enabled aggressive block sorting
+     */
+    @Override
+    public boolean onKeyUp(int n2, KeyEvent keyEvent) {
+        if (n2 == 82) {
+            this.g();
+            return true;
+        } else {
+            if (n2 == 25 || n2 == 24) return true;
+            return super.onKeyUp(n2, keyEvent);
         }
     }
 
-    public boolean onKeyUp(int int1, KeyEvent KeyEvent2) {
-        if (int1 == 82)
-            g();
-        else if (int1 != 25 && int1 != 24)
-            return super.onKeyUp(int1, KeyEvent2);
-        return true;
-    }
-
+    @Override
     public void onPause() {
         super.onPause();
-        com.clilystudio.netbook.hpay100.a.a.b((Context) this, "firstRandomBooks", false);
+        a.b((Context) this, "firstRandomBooks", false);
     }
 
+    @Override
     public void onResume() {
         super.onResume();
-        getWindow().addFlags(128);
-        j();
+        this.getWindow().addFlags(128);
+        this.j();
     }
 
-    protected void onSaveInstanceState(Bundle Bundle1) {
-        super.onSaveInstanceState(Bundle1);
-        Bundle1.putInt("SaveSelectedPageIndex", k);
+    @Override
+    protected void onSaveInstanceState(Bundle bundle) {
+        super.onSaveInstanceState(bundle);
+        bundle.putInt("SaveSelectedPageIndex", this.k);
     }
 
+    @Override
     public void onUserInteraction() {
         super.onUserInteraction();
-        j();
+        this.j();
     }
 }

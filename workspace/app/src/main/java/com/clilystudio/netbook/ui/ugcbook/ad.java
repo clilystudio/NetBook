@@ -1,18 +1,27 @@
 package com.clilystudio.netbook.ui.ugcbook;
 
+import android.app.Activity;
+import android.content.Intent;
+import android.support.design.widget.am;
 import android.view.View;
-import android.view.View$OnClickListener;
 
-final class ad implements View$OnClickListener {
+import com.clilystudio.netbook.ui.user.UserUGCActivity;
 
-    private UGCMainActivity a;
+final class ad
+        implements View.OnClickListener {
+    private /* synthetic */ UGCMainActivity a;
 
-    ad(UGCMainActivity UGCMainActivity1) {
-        a = UGCMainActivity1;
+    ad(UGCMainActivity uGCMainActivity) {
+        this.a = uGCMainActivity;
     }
-// Error: Internal #201: 
-// The following method may not be correct.
 
-    public final void onClick(View View1) {
+    @Override
+    public final void onClick(View view) {
+        if (am.a((Activity) this.a) != null) {
+            b.a(this.a, "ugc_my_own");
+            Intent intent = new Intent(this.a, UserUGCActivity.class);
+            this.a.startActivity(intent);
+            UGCMainActivity.h(this.a);
+        }
     }
 }

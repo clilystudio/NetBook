@@ -1,76 +1,74 @@
 package com.clilystudio.netbook.ui.post;
 
 import android.app.Activity;
-import android.content.Context;
 
+import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.model.Tweet;
 import com.clilystudio.netbook.model.TweetsResult;
 import com.clilystudio.netbook.ui.user.AuthLoginActivity;
+import com.clilystudio.netbook.util.e;
 
-final class bW extends com.clilystudio.netbook.a.e {
+final class bW
+        extends com.clilystudio.netbook.a.e<String, Void, TweetsResult> {
+    private /* synthetic */ MyTweetFragment a;
 
-    private MyTweetFragment a;
-
-    bW(MyTweetFragment MyTweetFragment1, byte byte2) {
-        this(MyTweetFragment1);
+    private bW(MyTweetFragment myTweetFragment) {
+        this.a = myTweetFragment;
     }
 
-    private bW(MyTweetFragment MyTweetFragment1) {
-        a = MyTweetFragment1;
+    /* synthetic */ bW(MyTweetFragment myTweetFragment, byte by) {
+        this(myTweetFragment);
     }
 
-    private static transient TweetsResult a(String[] String_1darray1) {
-        TweetsResult TweetsResult4;
-
+    private static /* varargs */ TweetsResult a(String... arrstring) {
         try {
-            com.clilystudio.netbook.api.b.a();
-            TweetsResult4 = com.clilystudio.netbook.api.b.b().k(String_1darray1[0]);
-        } catch (Exception Exception2) {
-            Exception2.printStackTrace();
+            b.a();
+            TweetsResult tweetsResult = b.b().k(arrstring[0]);
+            return tweetsResult;
+        } catch (Exception var1_2) {
+            var1_2.printStackTrace();
             return null;
         }
-        return TweetsResult4;
     }
 
-    protected final Object doInBackground(Object[] Object_1darray1) {
-        return a((String[]) Object_1darray1);
+    @Override
+    protected final /* synthetic */ Object doInBackground(Object[] arrobject) {
+        return bW.a((String[]) arrobject);
     }
 
-    protected final void onPostExecute(Object Object1) {
-        Object Object2 = (TweetsResult) Object1;
-
-        super.onPostExecute(Object2);
-        if (a.getActivity() != null) {
-            MyTweetFragment.p(a);
-            if (!isCancelled()) {
-                if (Object2 != null && ((TweetsResult) Object2).getTweets() != null) {
-                    Object[] Object_1darray3 = ((TweetsResult) Object2).getTweets();
-                    int int4 = Object_1darray3.length;
-
-                    if (int4 > 0) {
-                        int int5 = Object_1darray3.length;
-                        int int6;
-
-                        for (int6 = 0; int6 < int5; ++int6) {
-                            Object Object7 = Object_1darray3[int6];
-
-                            ((Tweet) Object7).setUser(((TweetsResult) Object2).getUser());
-                            MyTweetFragment.q(a).add(Object7);
-                        }
-                        MyTweetFragment.u(a).a(MyTweetFragment.q(a));
-                        if (int4 >= 20) {
-                            MyTweetFragment.r(a).setOnLastItemVisibleListener(MyTweetFragment.s(a));
-                            return;
-                        }
-                    }
-                    MyTweetFragment.r(a).setOnLastItemVisibleListener(null);
-                } else if (Object2 != null && "TOKEN_INVALID".equals(((TweetsResult) Object2).getCode())) {
-                    a.startActivity(AuthLoginActivity.a((Context) a.getActivity()));
-                    com.clilystudio.netbook.util.e.a((Activity) a.getActivity(), 2131034529);
-                } else
-                    com.clilystudio.netbook.util.e.a((Activity) a.getActivity(), "\u52A0\u8F7D\u5931\u8D25\uFF0C\u8BF7\u68C0\u67E5\u7F51\u7EDC\u6216\u91CD\u8BD5");
-                return;
+    /*
+     * Enabled force condition propagation
+     * Lifted jumps to return sites
+     */
+    @Override
+    protected final /* synthetic */ void onPostExecute(Object object) {
+        TweetsResult tweetsResult = (TweetsResult) object;
+        super.onPostExecute(tweetsResult);
+        if (this.a.getActivity() == null) return;
+        MyTweetFragment.p(this.a);
+        if (this.isCancelled()) return;
+        if (tweetsResult != null && tweetsResult.getTweets() != null) {
+            Tweet[] arrtweet = tweetsResult.getTweets();
+            int n = arrtweet.length;
+            if (n > 0) {
+                for (Tweet tweet : arrtweet) {
+                    tweet.setUser(tweetsResult.getUser());
+                    MyTweetFragment.q(this.a).add(tweet);
+                }
+                MyTweetFragment.u(this.a).a(MyTweetFragment.q(this.a));
+                if (n >= 20) {
+                    MyTweetFragment.r(this.a).setOnLastItemVisibleListener(MyTweetFragment.s(this.a));
+                    return;
+                }
             }
+            MyTweetFragment.r(this.a).setOnLastItemVisibleListener(null);
+            return;
         }
+        if (tweetsResult != null && "TOKEN_INVALID".equals(tweetsResult.getCode())) {
+            this.a.startActivity(AuthLoginActivity.a(this.a.getActivity()));
+            e.a((Activity) this.a.getActivity(), (int) 2131034529);
+            return;
+        }
+        e.a((Activity) this.a.getActivity(), (String) "\u52a0\u8f7d\u5931\u8d25\uff0c\u8bf7\u68c0\u67e5\u7f51\u7edc\u6216\u91cd\u8bd5");
     }
 }

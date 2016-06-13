@@ -8,55 +8,47 @@ import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.design.widget.am;
-import android.view.View$OnClickListener;
 
+import com.clilystudio.netbook.d;
+import com.clilystudio.netbook.hpay100.a.a;
 import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.model.User;
 import com.clilystudio.netbook.util.T;
+import com.clilystudio.netbook.util.e;
 
-import cn.sharesdk.framework.PlatformActionListener;
-
-public class ShareRemoveAdActivity extends BaseActivity {
-// Error: Internal #201: 
-// The following method may not be correct.
-
-    public static Intent a(Context Context1, String String2) {
+public class ShareRemoveAdActivity
+        extends BaseActivity {
+    public static Intent a(Context context, String string) {
+        return new d().a(context, ShareRemoveAdActivity.class).a("entrance_type", string).a();
     }
 
-    static void a(ShareRemoveAdActivity ShareRemoveAdActivity1) {
-        new cb((Activity) ShareRemoveAdActivity1, (cd) new cf(ShareRemoveAdActivity1)).a().show();
+    static /* synthetic */ void a(ShareRemoveAdActivity shareRemoveAdActivity) {
+        new cb(shareRemoveAdActivity, new cf(shareRemoveAdActivity)).a().show();
     }
 
-    static void a(ShareRemoveAdActivity ShareRemoveAdActivity1, int int2) {
-        Account Account3 = am.e();
-        String String4;
-
-        label_12:
-        {
-            if (Account3 != null) {
-                User User5 = Account3.getUser();
-
-                if (User5 != null) {
-                    String4 = User5.getId();
-                    break label_12;
-                }
-            }
-            String4 = null;
+    /*
+     * Enabled aggressive block sorting
+     */
+    static /* synthetic */ void a(ShareRemoveAdActivity shareRemoveAdActivity, int n) {
+        User user;
+        Account account = am.e();
+        String string = account != null && (user = account.getUser()) != null ? user.getId() : null;
+        if (string == null) {
+            e.a((Activity) shareRemoveAdActivity, (String) "\u83b7\u53d6\u7528\u6237\u4fe1\u606f\u5931\u8d25,\u8bf7\u767b\u5f55\u540e\u91cd\u8bd5");
+            return;
         }
-        if (String4 == null)
-            com.clilystudio.netbook.util.e.a((Activity) ShareRemoveAdActivity1, "\u83B7\u53D6\u7528\u6237\u4FE1\u606F\u5931\u8D25,\u8BF7\u767B\u5F55\u540E\u91CD\u8BD5");
-        else
-            T.a((Context) ShareRemoveAdActivity1, "\u6709\u4EBA@\u4F60\uFF0C\u4ECB\u7ECD\u4F60\u4E2A\u65B0\u670B\u53CB", "\u6211\u5BF9\u5979\u5DF2\u7ECF\u6709\u611F\u60C5\u4E86\u3002\u5168\u7F51\u5C0F\u8BF4\u514D\u8D39\u770B\uFF0C\u518D\u6CA1\u6709\u5E7F\u544A\uFF0C\u7B80\u76F4\u5B8C\u7F8E\uFF01", new StringBuilder("http://share.zhuishushenqi.com/invitation-card?recommended=").append(String4).append("&op=rmad7").toString(), "http://statics.zhuishushenqi.com/android-app-icon%2Fthanks_invite.png", int2, (PlatformActionListener) new cg(ShareRemoveAdActivity1));
+        T.a(shareRemoveAdActivity, "\u6709\u4eba@\u4f60\uff0c\u4ecb\u7ecd\u4f60\u4e2a\u65b0\u670b\u53cb", "\u6211\u5bf9\u5979\u5df2\u7ecf\u6709\u611f\u60c5\u4e86\u3002\u5168\u7f51\u5c0f\u8bf4\u514d\u8d39\u770b\uff0c\u518d\u6ca1\u6709\u5e7f\u544a\uff0c\u7b80\u76f4\u5b8c\u7f8e\uff01", "http://share.zhuishushenqi.com/invitation-card?recommended=" + string + "&op=rmad7", "http://statics.zhuishushenqi.com/android-app-icon%2Fthanks_invite.png", n, new cg(shareRemoveAdActivity));
     }
 
-    protected void onCreate(Bundle Bundle1) {
-        super.onCreate(Bundle1);
-        if (com.clilystudio.netbook.hpay100.a.a.i()) {
-            getWindow().setFlags(67108864, 67108864);
-            a().a((Drawable) new ColorDrawable(Color.parseColor("#00000000")));
+    @Override
+    protected void onCreate(Bundle bundle) {
+        super.onCreate(bundle);
+        if (a.i()) {
+            this.getWindow().setFlags(67108864, 67108864);
+            this.a().a((Drawable) new ColorDrawable(Color.parseColor("#00000000")));
         }
-        setContentView(2130903130);
-        b(2131034493);
-        findViewById(2131493209).setOnClickListener((View$OnClickListener) new ce(this));
+        this.setContentView(2130903130);
+        this.b(2131034493);
+        this.findViewById(2131493209).setOnClickListener(new ce(this));
     }
 }

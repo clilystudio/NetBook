@@ -3,18 +3,20 @@ package com.clilystudio.netbook.util;
 import android.content.Context;
 import android.widget.Toast;
 
-final class ad implements Runnable {
+final class ad
+        implements Runnable {
+    private /* synthetic */ Context a;
+    private /* synthetic */ String b;
+    private /* synthetic */ int c;
 
-    private Context a;
-    private String b;
-    private int c;
-    ad(Context Context1, String String2, int int3) {
-        a = Context1;
-        b = String2;
-        c = int3;
+    ad(Context context, String string, int n) {
+        this.a = context;
+        this.b = string;
+        this.c = n;
     }
 
+    @Override
     public final void run() {
-        Toast.makeText(a, (CharSequence) b, c).show();
+        Toast.makeText(this.a, this.b, this.c).show();
     }
 }

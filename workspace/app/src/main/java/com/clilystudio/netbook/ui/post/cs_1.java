@@ -1,27 +1,22 @@
 package com.clilystudio.netbook.ui.post;
 
-import android.app.Activity;
 import android.view.View;
-import android.view.View$OnClickListener;
 
-final class cs implements View$OnClickListener {
+final class cs
+        implements View.OnClickListener {
+    private /* synthetic */ PostDetailActivity a;
 
-    private PostDetailActivity a;
-
-    cs(PostDetailActivity PostDetailActivity1) {
-        a = PostDetailActivity1;
+    cs(PostDetailActivity postDetailActivity) {
+        this.a = postDetailActivity;
     }
 
-    public final void onClick(View View1) {
-        PostDetailActivity.a(a, ((Integer) View1.getTag()).intValue());
-        if (PostDetailActivity.k(a)) {
-            cx cx3 = new cx(a, (Activity) a, 2131034584);
-            String[] String_1darray4 = new String[3];
-
-            String_1darray4[0] = PostDetailActivity.a(a).get_id();
-            String_1darray4[1] = PostDetailActivity.i(a).getToken();
-            String_1darray4[2] = String.valueOf(PostDetailActivity.h(a));
-            cx3.b(String_1darray4);
+    @Override
+    public final void onClick(View view) {
+        PostDetailActivity.a(this.a, (Integer) view.getTag());
+        if (PostDetailActivity.k(this.a)) {
+            cx cx2 = new cx(this.a, this.a, 2131034584);
+            String[] arrstring = new String[]{PostDetailActivity.a(this.a).get_id(), PostDetailActivity.i(this.a).getToken(), String.valueOf(PostDetailActivity.h(this.a))};
+            cx2.b(arrstring);
         }
     }
 }

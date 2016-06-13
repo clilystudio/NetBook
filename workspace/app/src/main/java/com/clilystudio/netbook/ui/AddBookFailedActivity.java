@@ -5,20 +5,20 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 
-public class AddBookFailedActivity extends BaseActivity {
-// Error: Internal #201: 
-// The following method may not be correct.
+import com.clilystudio.netbook.d;
 
-    public static Intent a(Context Context1, String String2) {
+public class AddBookFailedActivity
+        extends BaseActivity {
+    public static Intent a(Context context, String string) {
+        return new d().a(context, AddBookFailedActivity.class).a("bookTitle", string).a();
     }
 
-    public void onCreate(Bundle Bundle1) {
-        String String2;
-
-        super.onCreate(Bundle1);
-        setContentView(2130903073);
-        b(2131034288);
-        String2 = getIntent().getStringExtra("bookTitle");
-        ((TextView) findViewById(2131493064)).setText((CharSequence) new StringBuilder("\u8FFD\u4E66\u541B\u6B63\u5954\u8D70\u5728\u627E\u300A").append(String2).append("\u300B\u7684\u8DEF\u4E0A\uFF0C\u8BF7\u8010\u5FC3\u7B49\u5F85").toString());
+    @Override
+    public void onCreate(Bundle bundle) {
+        super.onCreate(bundle);
+        this.setContentView(2130903073);
+        this.b(2131034288);
+        String string = this.getIntent().getStringExtra("bookTitle");
+        ((TextView) this.findViewById(2131493064)).setText("\u8ffd\u4e66\u541b\u6b63\u5954\u8d70\u5728\u627e\u300a" + string + "\u300b\u7684\u8def\u4e0a\uff0c\u8bf7\u8010\u5fc3\u7b49\u5f85");
     }
 }

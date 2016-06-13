@@ -1,14 +1,14 @@
 package com.clilystudio.netbook.model;
 
-public class GameGroupRoot extends Root {
-
+public class GameGroupRoot
+        extends Root {
     private GameGroupItem gameGroup;
 
     public GameGroupItem getGameGroup() {
-        return gameGroup;
+        return this.gameGroup;
     }
 
-    public void setGameGroup(GameGroupItem GameGroupItem1) {
-        gameGroup = GameGroupItem1;
+    public void setGameGroup(GameGroupItem gameGroupItem) {
+        this.gameGroup = gameGroupItem;
     }
 }

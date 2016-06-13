@@ -2,8 +2,8 @@ package com.clilystudio.netbook.model;
 
 import java.io.Serializable;
 
-public class ChapterLink implements Serializable {
-
+public class ChapterLink
+        implements Serializable {
     private static final long serialVersionUID = -5702613650428568284L;
     private int currency;
     private String id;
@@ -19,98 +19,98 @@ public class ChapterLink implements Serializable {
     private boolean unreadble = false;
 
     public int getCurrency() {
-        return currency;
+        return this.currency;
     }
 
-    public void setCurrency(int int1) {
-        currency = int1;
+    public void setCurrency(int n) {
+        this.currency = n;
     }
 
     public int getEasouIndex() {
-        return mEasouIndex;
+        return this.mEasouIndex;
     }
 
-    public void setEasouIndex(int int1) {
-        mEasouIndex = int1;
+    public void setEasouIndex(int n) {
+        this.mEasouIndex = n;
     }
 
     public String getId() {
-        return id;
+        return this.id;
     }
 
-    public void setId(String String1) {
-        id = String1;
+    public void setId(String string) {
+        this.id = string;
     }
 
     public String getLeidianTk() {
-        return mLeidianTk;
+        return this.mLeidianTk;
     }
 
-    public void setLeidianTk(String String1) {
-        mLeidianTk = String1;
+    public void setLeidianTk(String string) {
+        this.mLeidianTk = string;
     }
 
     public String getLink() {
-        return link;
+        return this.link;
     }
 
-    public void setLink(String String1) {
-        link = String1;
+    public void setLink(String string) {
+        this.link = string;
     }
 
     public int getSosoIndex() {
-        return mSosoIndex;
+        return this.mSosoIndex;
     }
 
-    public void setSosoIndex(int int1) {
-        mSosoIndex = int1;
+    public void setSosoIndex(int n) {
+        this.mSosoIndex = n;
     }
 
     public String getTitle() {
-        return title;
+        return this.title;
     }
 
-    public void setTitle(String String1) {
-        title = String1;
+    public void setTitle(String string) {
+        this.title = string;
     }
 
     public int getTxtCharLength() {
-        return mTxtCharLength;
+        return this.mTxtCharLength;
     }
 
-    public void setTxtCharLength(int int1) {
-        mTxtCharLength = int1;
+    public void setTxtCharLength(int n) {
+        this.mTxtCharLength = n;
     }
 
     public int getTxtCharOffset() {
-        return mTxtCharOffset;
+        return this.mTxtCharOffset;
     }
 
-    public void setTxtCharOffset(int int1) {
-        mTxtCharOffset = int1;
+    public void setTxtCharOffset(int n) {
+        this.mTxtCharOffset = n;
     }
 
     public int getTxtLineOffset() {
-        return mTxtLineOffset;
+        return this.mTxtLineOffset;
     }
 
-    public void setTxtLineOffset(int int1) {
-        mTxtLineOffset = int1;
+    public void setTxtLineOffset(int n) {
+        this.mTxtLineOffset = n;
     }
 
     public boolean getUnreadble() {
-        return unreadble;
+        return this.unreadble;
     }
 
-    public void setUnreadble(boolean boolean1) {
-        unreadble = boolean1;
+    public void setUnreadble(boolean bl) {
+        this.unreadble = bl;
     }
 
     public boolean isVip() {
-        return isVip;
+        return this.isVip;
     }
 
-    public void setIsVip(boolean boolean1) {
-        isVip = boolean1;
+    public void setIsVip(boolean bl) {
+        this.isVip = bl;
     }
 }

@@ -2,82 +2,84 @@ package com.clilystudio.netbook.ui.user;
 
 import android.app.Activity;
 
+import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.model.Topic;
 import com.clilystudio.netbook.model.TopicPost;
+import com.clilystudio.netbook.util.e;
 
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.List;
 
-final class z extends com.clilystudio.netbook.a.e {
+final class z
+        extends com.clilystudio.netbook.a.e<String, Void, Topic> {
+    private /* synthetic */ MyFavTopicFragment a;
 
-    private MyFavTopicFragment a;
-
-    z(MyFavTopicFragment MyFavTopicFragment1, byte byte2) {
-        this(MyFavTopicFragment1);
+    private z(MyFavTopicFragment myFavTopicFragment) {
+        this.a = myFavTopicFragment;
     }
 
-    private z(MyFavTopicFragment MyFavTopicFragment1) {
-        a = MyFavTopicFragment1;
+    /* synthetic */ z(MyFavTopicFragment myFavTopicFragment, byte by) {
+        this(myFavTopicFragment);
     }
 
-    private transient Topic a(String[] String_1darray1) {
-        if (!isCancelled()) {
+    private /* varargs */ Topic a(String... arrstring) {
+        if (!this.isCancelled()) {
             try {
-                Topic Topic4;
-
-                com.clilystudio.netbook.api.b.a();
-                Topic4 = com.clilystudio.netbook.api.b.b().d(String_1darray1[0], MyFavTopicFragment.k(a));
-            } catch (Exception Exception2) {
-                Exception2.printStackTrace();
+                b.a();
+                Topic topic = b.b().d(arrstring[0], MyFavTopicFragment.k(this.a));
+                return topic;
+            } catch (Exception var2_3) {
+                var2_3.printStackTrace();
             }
         }
         return null;
     }
 
-    protected final Object doInBackground(Object[] Object_1darray1) {
-        return a((String[]) Object_1darray1);
+    @Override
+    protected final /* synthetic */ Object doInBackground(Object[] arrobject) {
+        return this.a((String[]) arrobject);
     }
 
-    protected final void onPostExecute(Object Object1) {
-        Object Object2 = (Topic) Object1;
-
-        super.onPostExecute(Object2);
-        MyFavTopicFragment.a(a).setVisibility(8);
-        MyFavTopicFragment.c(a).setVisibility(8);
-        MyFavTopicFragment.i(a).setVisibility(8);
-        MyFavTopicFragment.d(a).n();
-        if (!isCancelled()) {
-            if (Object2 != null) {
-                if (((Topic) Object2).isOk()) {
-                    TopicPost[] TopicPost_1darray3 = ((Topic) Object2).getPosts();
-                    int int4 = TopicPost_1darray3.length;
-                    Object Object5 = Arrays.asList(TopicPost_1darray3);
-
-                    MyFavTopicFragment.a(a, MyFavTopicFragment.k(a) + ((List) Object5).size());
-                    MyFavTopicFragment.h(a).addAll((Collection) Object5);
-                    MyFavTopicFragment.l(a).a((Collection) MyFavTopicFragment.h(a));
-                    MyFavTopicFragment.b(a, int4);
-                    if (int4 > 0) {
-                        if (int4 >= 10) {
-                            if (int4 == 10)
-                                MyFavTopicFragment.d(a).setOnLastItemVisibleListener(MyFavTopicFragment.j(a));
-                            return;
-                        }
-                    } else if (MyFavTopicFragment.k(a) == 0) {
-                        MyFavTopicFragment.a(a).setVisibility(0);
-                        MyFavTopicFragment.a(a).setText((CharSequence) "\u4F60\u8FD8\u6CA1\u6709\u6536\u85CF\u54E6");
+    /*
+     * Enabled force condition propagation
+     * Lifted jumps to return sites
+     */
+    @Override
+    protected final /* synthetic */ void onPostExecute(Object object) {
+        Topic topic = (Topic) object;
+        super.onPostExecute(topic);
+        MyFavTopicFragment.a(this.a).setVisibility(8);
+        MyFavTopicFragment.c(this.a).setVisibility(8);
+        MyFavTopicFragment.i(this.a).setVisibility(8);
+        MyFavTopicFragment.d(this.a).n();
+        if (this.isCancelled()) return;
+        if (topic != null) {
+            if (topic.isOk()) {
+                TopicPost[] arrtopicPost = topic.getPosts();
+                int n = arrtopicPost.length;
+                List<TopicPost> list = Arrays.asList(arrtopicPost);
+                MyFavTopicFragment.a(this.a, MyFavTopicFragment.k(this.a) + list.size());
+                MyFavTopicFragment.h(this.a).addAll(list);
+                MyFavTopicFragment.l(this.a).a(MyFavTopicFragment.h(this.a));
+                MyFavTopicFragment.b(this.a, n);
+                if (n > 0) {
+                    if (n >= 10) {
+                        if (n != 10) return;
+                        MyFavTopicFragment.d(this.a).setOnLastItemVisibleListener(MyFavTopicFragment.j(this.a));
+                        return;
                     }
-                    MyFavTopicFragment.d(a).setOnLastItemVisibleListener(null);
-                } else {
-                    MyFavTopicFragment.d(a).setOnLastItemVisibleListener(MyFavTopicFragment.j(a));
-                    com.clilystudio.netbook.util.e.a((Activity) a.getActivity(), "\u52A0\u8F7D\u5931\u8D25\uFF0C\u4E0A\u62C9\u53EF\u91CD\u65B0\u52A0\u8F7D");
+                } else if (MyFavTopicFragment.k(this.a) == 0) {
+                    MyFavTopicFragment.a(this.a).setVisibility(0);
+                    MyFavTopicFragment.a(this.a).setText("\u4f60\u8fd8\u6ca1\u6709\u6536\u85cf\u54e6");
                 }
-            } else {
-                MyFavTopicFragment.d(a).setOnLastItemVisibleListener(MyFavTopicFragment.j(a));
-                com.clilystudio.netbook.util.e.a((Activity) a.getActivity(), "\u52A0\u8F7D\u5931\u8D25\uFF0C\u8BF7\u68C0\u67E5\u7F51\u7EDC\u6216\u7A0D\u540E\u518D\u8BD5");
+                MyFavTopicFragment.d(this.a).setOnLastItemVisibleListener(null);
+                return;
             }
+            MyFavTopicFragment.d(this.a).setOnLastItemVisibleListener(MyFavTopicFragment.j(this.a));
+            e.a((Activity) this.a.getActivity(), "\u52a0\u8f7d\u5931\u8d25\uff0c\u4e0a\u62c9\u53ef\u91cd\u65b0\u52a0\u8f7d");
             return;
         }
+        MyFavTopicFragment.d(this.a).setOnLastItemVisibleListener(MyFavTopicFragment.j(this.a));
+        e.a((Activity) this.a.getActivity(), "\u52a0\u8f7d\u5931\u8d25\uff0c\u8bf7\u68c0\u67e5\u7f51\u7edc\u6216\u7a0d\u540e\u518d\u8bd5");
     }
 }

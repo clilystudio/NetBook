@@ -2,27 +2,27 @@ package com.clilystudio.netbook.widget;
 
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.DialogInterface$OnClickListener;
 import android.content.Intent;
 import android.net.Uri;
+import android.text.TextUtils;
 
-final class k implements DialogInterface$OnClickListener {
+final class k
+        implements DialogInterface.OnClickListener {
+    private /* synthetic */ String a;
+    private /* synthetic */ Context b;
 
-    private String a;
-    private Context b;
-    k(j j1, String String2, Context Context3) {
-        a = String2;
-        b = Context3;
+    k(j j2, String string, Context context) {
+        this.a = string;
+        this.b = context;
     }
 
-    public final void onClick(DialogInterface DialogInterface1, int int2) {
-        if (!android.text.TextUtils.isEmpty((CharSequence) a)) {
-            Intent Intent3;
-
-            com.umeng.a.b.a(b, "visit_17k_webpage");
-            Intent3 = new Intent("android.intent.action.VIEW");
-            Intent3.setData(Uri.parse(a));
-            b.startActivity(Intent3);
+    @Override
+    public final void onClick(DialogInterface dialogInterface, int n) {
+        if (!TextUtils.isEmpty(this.a)) {
+            b.a(this.b, "visit_17k_webpage");
+            Intent intent = new Intent("android.intent.action.VIEW");
+            intent.setData(Uri.parse(this.a));
+            this.b.startActivity(intent);
         }
     }
 }

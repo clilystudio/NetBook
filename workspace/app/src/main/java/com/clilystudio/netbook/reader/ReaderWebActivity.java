@@ -1,24 +1,29 @@
 package com.clilystudio.netbook.reader;
 
 import android.app.AlertDialog;
-import android.app.AlertDialog$Builder;
 import android.content.Context;
-import android.content.DialogInterface$OnClickListener;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View$OnClickListener;
 import android.widget.Button;
+import android.widget.TextView;
 
+import com.clilystudio.netbook.MyApplication;
+import com.clilystudio.netbook.d;
+import com.clilystudio.netbook.db.BookReadRecord;
 import com.clilystudio.netbook.db.SourceRecord;
+import com.clilystudio.netbook.db.SourceWebReadRecord;
 import com.clilystudio.netbook.event.i;
 import com.clilystudio.netbook.event.v;
 import com.clilystudio.netbook.model.mixtoc.SgTocChapter;
 import com.clilystudio.netbook.ui.post.BookPostTabActivity;
+import com.squareup.a.l;
 
-public class ReaderWebActivity extends BaseReadActivity {
-
+public class ReaderWebActivity
+        extends BaseReadActivity {
     private int b;
     private String c;
     private String d;
@@ -27,117 +32,222 @@ public class ReaderWebActivity extends BaseReadActivity {
     private ReaderWebActionBar g;
     private int h;
 
-    static int a(ReaderWebActivity ReaderWebActivity1, int int2) {
-        ReaderWebActivity1.h = int2;
-        return int2;
-    }
-// Error: Internal #201: 
-// The following method may not be correct.
-
-    public static Intent a(Context Context1, String String2, String String3, String String4, String String5, int int6) {
+    static /* synthetic */ int a(ReaderWebActivity readerWebActivity, int n) {
+        readerWebActivity.h = n;
+        return n;
     }
 
-    static SgTocChapter a(ReaderWebActivity ReaderWebActivity1, SgTocChapter[] SgTocChapter_1darray2, String String3) {
-        int int4 = SgTocChapter_1darray2.length;
-        int int5 = 0;
+    public static Intent a(Context context, String string, String string2, String string3, String string4, int n) {
+        return new d().a(context, ReaderWebActivity.class).a("BOOK_ID", string).a("BOOK_TITLE", string2).a("TOC_ID", string3).a("SOURCE_ID", string4).a("BOOK_MODE", n).a();
+    }
 
-        while (int5 < int4) {
-            SgTocChapter SgTocChapter6 = SgTocChapter_1darray2[int5];
-
-            if (String3.equals(SgTocChapter6.getCmd()))
-                return SgTocChapter6;
-            else
-                ++int5;
+    static /* synthetic */ SgTocChapter a(ReaderWebActivity readerWebActivity, SgTocChapter[] arrsgTocChapter, String string) {
+        for (SgTocChapter sgTocChapter : arrsgTocChapter) {
+            if (!string.equals(sgTocChapter.getCmd())) continue;
+            return sgTocChapter;
         }
         return null;
     }
 
-    static ReaderWebActionBar a(ReaderWebActivity ReaderWebActivity1) {
-        return ReaderWebActivity1.g;
-    }
-// Error: Internal #201: 
-// The following method may not be correct.
-
-    static void a(ReaderWebActivity ReaderWebActivity1, int int2, String String3) {
-    }
-// Error: Internal #201: 
-// The following method may not be correct.
-
-    static void a(ReaderWebActivity ReaderWebActivity1, String String2, String String3, String String4, String String5) {
-    }
-// Error: Internal #201: 
-// The following method may not be correct.
-
-    static void b(ReaderWebActivity ReaderWebActivity1) {
-        String String2;
-        boolean boolean3;
-        Intent Intent4;
-
-        com.clilystudio.netbook.hpay100.a.a.b((Context) ReaderWebActivity1, ReaderWebActivity1.f, true);
-        com.clilystudio.netbook.hpay100.a.a.b((Context) ReaderWebActivity1, new StringBuilder().append(ReaderWebActivity1.f).append("source_web_alert").toString(), false);
-        if (SourceRecord.get(ReaderWebActivity1.c, ReaderWebActivity1.f) == null)
-            SourceRecord.create(ReaderWebActivity1.c, ReaderWebActivity1.f, null);
-        String2 = ReaderWebActivity1.getIntent().getStringExtra("TOC_ID");
-        boolean3 = ReaderWebActivity1.getIntent().getBooleanExtra("SELECT_LAST", false);
-        Intent4 = ReaderActivity.a((Context) ReaderWebActivity1, ReaderWebActivity1.c, ReaderWebActivity1.d, String2, ReaderWebActivity1.f, true);
-        Intent4.putExtra("SELECT_LAST", boolean3);
-        Intent4.putExtra("SOURCE_ID", ReaderWebActivity1.e);
-        ReaderWebActivity1.startActivity(Intent4);
-        ReaderWebActivity1.finish();
+    static /* synthetic */ ReaderWebActionBar a(ReaderWebActivity readerWebActivity) {
+        return readerWebActivity.g;
     }
 
-    static void c(ReaderWebActivity ReaderWebActivity1) {
-        if (com.clilystudio.netbook.hpay100.a.a.g()) {
-            AlertDialog AlertDialog3 = new AlertDialog$Builder((Context) ReaderWebActivity1).create();
-            View View4 = LayoutInflater.from((Context) ReaderWebActivity1).inflate(2130903198, null);
-            Button Button5 = (Button) View4.findViewById(2131493417);
-            Button Button6 = (Button) View4.findViewById(2131493418);
-
-            Button5.setOnClickListener((View$OnClickListener) new cE(ReaderWebActivity1, AlertDialog3));
-            Button6.setOnClickListener((View$OnClickListener) new cF(ReaderWebActivity1, AlertDialog3));
-            AlertDialog3.setCancelable(false);
-            AlertDialog3.setView(View4);
-            AlertDialog3.show();
-        } else
-            new uk.me.lewisdeane.ldialogs.h((Context) ReaderWebActivity1).b(2131034463).a(false).a("\u8F6C\u7801\u9605\u8BFB", (DialogInterface$OnClickListener) new cH(ReaderWebActivity1)).b("\u539F\u7F51\u9875\u9605\u8BFB", (DialogInterface$OnClickListener) new cG(ReaderWebActivity1)).b();
+    static /* synthetic */ void a(ReaderWebActivity readerWebActivity, int n, String string) {
+        FragmentTransaction fragmentTransaction = readerWebActivity.getSupportFragmentManager().beginTransaction();
+        String string2 = readerWebActivity.e;
+        ReaderWebPageFragment readerWebPageFragment = (ReaderWebPageFragment) readerWebActivity.getSupportFragmentManager().findFragmentByTag(ReaderWebPageFragment.class.getName());
+        if (readerWebPageFragment == null) {
+            readerWebPageFragment = ReaderWebPageFragment.a(readerWebActivity.b, string2, n, string);
+        }
+        fragmentTransaction.replace(2131493174, readerWebPageFragment);
+        try {
+            fragmentTransaction.commitAllowingStateLoss();
+            return;
+        } catch (IllegalStateException var7_6) {
+            var7_6.printStackTrace();
+            return;
+        }
     }
 
-    static int d(ReaderWebActivity ReaderWebActivity1) {
-        return ReaderWebActivity1.h;
+    static /* synthetic */ void a(ReaderWebActivity readerWebActivity, String string, String string2, String string3, String string4) {
+        FragmentTransaction fragmentTransaction = readerWebActivity.getSupportFragmentManager().beginTransaction();
+        String string5 = readerWebActivity.e;
+        ReaderWebPageFragment readerWebPageFragment = (ReaderWebPageFragment) readerWebActivity.getSupportFragmentManager().findFragmentByTag(ReaderWebPageFragment.class.getName());
+        if (readerWebPageFragment == null) {
+            readerWebPageFragment = ReaderWebPageFragment.a(readerWebActivity.b, string, string5, string2, string3, string4);
+        }
+        fragmentTransaction.replace(2131493174, readerWebPageFragment);
+        try {
+            fragmentTransaction.commitAllowingStateLoss();
+            return;
+        } catch (IllegalStateException var9_8) {
+            var9_8.printStackTrace();
+            return;
+        }
     }
 
-    static String e(ReaderWebActivity ReaderWebActivity1) {
-        return ReaderWebActivity1.c;
+    static /* synthetic */ void b(ReaderWebActivity readerWebActivity) {
+        a.b((Context) readerWebActivity, readerWebActivity.f, true);
+        a.b((Context) readerWebActivity, readerWebActivity.f + "source_web_alert", false);
+        if (SourceRecord.get(readerWebActivity.c, readerWebActivity.f) == null) {
+            SourceRecord.create(readerWebActivity.c, readerWebActivity.f, null);
+        }
+        String string = readerWebActivity.getIntent().getStringExtra("TOC_ID");
+        boolean bl = readerWebActivity.getIntent().getBooleanExtra("SELECT_LAST", false);
+        Intent intent = ReaderActivity.a(readerWebActivity, readerWebActivity.c, readerWebActivity.d, string, readerWebActivity.f, true);
+        intent.putExtra("SELECT_LAST", bl);
+        intent.putExtra("SOURCE_ID", readerWebActivity.e);
+        readerWebActivity.startActivity(intent);
+        readerWebActivity.finish();
     }
 
-    private void a(int int1) {
+    static /* synthetic */ void c(ReaderWebActivity readerWebActivity) {
+        if (a.g()) {
+            AlertDialog alertDialog = new AlertDialog.Builder(readerWebActivity).create();
+            View view = LayoutInflater.from(readerWebActivity).inflate(2130903198, null);
+            Button button = (Button) view.findViewById(2131493417);
+            Button button2 = (Button) view.findViewById(2131493418);
+            button.setOnClickListener((View.OnClickListener) ((Object) new cE(readerWebActivity, alertDialog)));
+            button2.setOnClickListener(new cF(readerWebActivity, alertDialog));
+            alertDialog.setCancelable(false);
+            alertDialog.setView(view);
+            alertDialog.show();
+            return;
+        }
+        new h(readerWebActivity).b(2131034463).a(false).a("\u8f6c\u7801\u9605\u8bfb", (DialogInterface.OnClickListener) new cH(readerWebActivity)).b("\u539f\u7f51\u9875\u9605\u8bfb", (DialogInterface.OnClickListener) new cG(readerWebActivity)).b();
+    }
+
+    static /* synthetic */ int d(ReaderWebActivity readerWebActivity) {
+        return readerWebActivity.h;
+    }
+
+    static /* synthetic */ String e(ReaderWebActivity readerWebActivity) {
+        return readerWebActivity.c;
+    }
+
+    private void a(int n) {
+        FragmentTransaction fragmentTransaction = this.getSupportFragmentManager().beginTransaction();
+        String string = this.e;
+        ReaderWebPageFragment readerWebPageFragment = (ReaderWebPageFragment) this.getSupportFragmentManager().findFragmentByTag(ReaderWebPageFragment.class.getName());
+        if (readerWebPageFragment == null) {
+            readerWebPageFragment = ReaderWebPageFragment.a(this.b, string, n);
+        }
+        fragmentTransaction.replace(2131493174, readerWebPageFragment);
+        try {
+            fragmentTransaction.commitAllowingStateLoss();
+            return;
+        } catch (IllegalStateException var6_5) {
+            var6_5.printStackTrace();
+            return;
+        }
     }
 
     public final void a() {
-        startActivity(ModeListActivity.a((Context) this, c, d, b));
-        overridePendingTransition(2130968602, 2130968603);
+        this.startActivity(ModeListActivity.a(this, this.c, this.d, this.b));
+        this.overridePendingTransition(2130968602, 2130968603);
     }
 
     public final void b() {
-        startActivity(BookPostTabActivity.a((Context) this, c, d));
-    }
-// Error: Internal #201: 
-// The following method may not be correct.
-
-    public void onCreate(Bundle Bundle1) {
+        this.startActivity(BookPostTabActivity.a(this, this.c, this.d));
     }
 
+    /*
+     * Unable to fully structure code
+     * Enabled aggressive block sorting
+     * Lifted jumps to return sites
+     */
+    @Override
+    public void onCreate(Bundle var1_1) {
+        super.onCreate(var1_1);
+        this.setContentView(2130903124);
+        i.a().a(this);
+        this.c = this.getIntent().getStringExtra("BOOK_ID");
+        this.d = this.getIntent().getStringExtra("BOOK_TITLE");
+        this.e = this.getIntent().getStringExtra("SOURCE_ID");
+        this.b = var1_1 != null ? var1_1.getInt("savedCurrentMode", 5) : this.getIntent().getIntExtra("BOOK_MODE", 5);
+        this.f = a.g(this.b);
+        this.g = (ReaderWebActionBar) this.findViewById(2131493173);
+        this.g.setTitle(this.d);
+        this.g.setChapterLink(a.P(this.f));
+        this.g.setOnBtnClickListener$74b8600c((com.umeng.update.a) new cB(this));
+        var2_2 = SourceWebReadRecord.get(this.c, this.b);
+        var3_3 = var2_2 != null ? var2_2.getChapterIndex() : 0;
+        switch (this.b) {
+            default: {
+                var27_4 = this.getSupportFragmentManager().beginTransaction();
+                var28_5 = this.e;
+                var29_6 = (ReaderWebPageFragment) this.getSupportFragmentManager().findFragmentByTag(ReaderWebPageFragment.class.getName());
+                if (var29_6 == null) {
+                    var29_6 = ReaderWebPageFragment.a(this.b, var28_5);
+                }
+                var27_4.replace(2131493174, var29_6).commit();
+                **GOTO lbl48
+            }
+            case 6: {
+                var24_12 = new cK(this, this, var3_3 + 1);
+                var25_13 = new String[]{this.e};
+                var24_12.b(var25_13);
+                **GOTO lbl48
+            }
+            case 7: {
+                var17_14 = var2_2 != null ? var2_2.getCmd() : null;
+            }
+            case 8: {
+                this.a(var3_3);
+                **GOTO lbl48
+            }
+            case 3: {
+                var4_19 = new cI(this, this, var3_3);
+                var5_20 = new String[]{this.e};
+                var4_19.b(var5_20);
+                **GOTO lbl48
+            }
+        }
+        if (BookReadRecord.get(this.c) != null) {
+            var18_15 = new cJ(this, this, var3_3, var17_14);
+            var19_16 = new String[]{this.e};
+            var18_15.b(var19_16);
+        } else if (MyApplication.a().c() != null) {
+            var21_17 = new cJ(this, this, var3_3, var17_14);
+            var22_18 = new String[]{this.e};
+            var21_17.b(var22_18);
+        }
+        lbl48:
+        // 8 sources:
+        if (a.l(this, this.f + "source_web_alert")) {
+            var10_7 = this.getString(2131034462);
+            var11_8 = LayoutInflater.from(this).inflate(2130903197, null);
+            var12_9 = new cC(this, var11_8);
+            if (a.g()) {
+                ((TextView) var11_8.findViewById(2131493416)).setText(a.P(this.f));
+                new h(this).a(var11_8).a(false).b(true).a("\u597d\u7684", (DialogInterface.OnClickListener) var12_9).b();
+            } else {
+                var13_21 = new cD(this);
+                var14_22 = new h(this);
+                var14_22.e = var10_7;
+                var14_22.a(false).a("\u597d\u7684", (DialogInterface.OnClickListener) var12_9).b("\u4e0d\u4f7f\u7528", (DialogInterface.OnClickListener) var13_21).b();
+            }
+        }
+        var7_10 = new cL(this, 0);
+        var8_11 = new String[]{this.c};
+        var7_10.b(var8_11);
+    }
+
+    @Override
     protected void onDestroy() {
         super.onDestroy();
         i.a().b(this);
     }
 
-    public void onModeChanged(v v1) {
-        finish();
+    @l
+    public void onModeChanged(v v2) {
+        this.finish();
     }
 
-    protected void onSaveInstanceState(Bundle Bundle1) {
-        super.onSaveInstanceState(Bundle1);
-        Bundle1.putInt("savedCurrentMode", b);
+    @Override
+    protected void onSaveInstanceState(Bundle bundle) {
+        super.onSaveInstanceState(bundle);
+        bundle.putInt("savedCurrentMode", this.b);
     }
 }

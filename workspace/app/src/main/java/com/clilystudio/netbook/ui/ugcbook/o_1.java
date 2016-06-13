@@ -7,18 +7,21 @@ import java.util.HashMap;
 import cn.sharesdk.framework.Platform;
 import cn.sharesdk.framework.PlatformActionListener;
 
-final class o implements PlatformActionListener {
-
-    o(UGCDetailActivity UGCDetailActivity1) {
+final class o
+        implements PlatformActionListener {
+    o(UGCDetailActivity uGCDetailActivity) {
     }
 
-    public final void onCancel(Platform Platform1, int int2) {
+    @Override
+    public final void onCancel(Platform platform, int n) {
     }
 
-    public final void onComplete(Platform Platform1, int int2, HashMap HashMap3) {
+    @Override
+    public final void onComplete(Platform platform, int n, HashMap<String, Object> hashMap) {
         e.c("share");
     }
 
-    public final void onError(Platform Platform1, int int2, Throwable Throwable3) {
+    @Override
+    public final void onError(Platform platform, int n, Throwable throwable) {
     }
 }

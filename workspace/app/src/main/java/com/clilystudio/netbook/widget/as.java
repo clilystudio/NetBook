@@ -1,59 +1,66 @@
 package com.clilystudio.netbook.widget;
 
+import android.app.Activity;
+
+import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.model.ResultStatus;
+import com.clilystudio.netbook.util.e;
 
-final class as extends com.clilystudio.netbook.a.e {
+final class as
+        extends com.clilystudio.netbook.a.e<String, Void, ResultStatus> {
+    private /* synthetic */ PostUsefulView a;
 
-    private PostUsefulView a;
-
-    as(PostUsefulView PostUsefulView1, byte byte2) {
-        this(PostUsefulView1);
+    private as(PostUsefulView postUsefulView) {
+        this.a = postUsefulView;
     }
 
-    private as(PostUsefulView PostUsefulView1) {
-        a = PostUsefulView1;
+    /* synthetic */ as(PostUsefulView postUsefulView, byte by) {
+        this(postUsefulView);
     }
 
-    private static transient ResultStatus a(String[] String_1darray1) {
-        ResultStatus ResultStatus4;
-
+    private static /* varargs */ ResultStatus a(String... arrstring) {
         try {
-            com.clilystudio.netbook.api.b.a();
-            ResultStatus4 = com.clilystudio.netbook.api.b.b().m(String_1darray1[0], String_1darray1[1], String_1darray1[2]);
-        } catch (Exception Exception2) {
-            Exception2.printStackTrace();
+            b.a();
+            ResultStatus resultStatus = b.b().m(arrstring[0], arrstring[1], arrstring[2]);
+            return resultStatus;
+        } catch (Exception var1_2) {
+            var1_2.printStackTrace();
             return null;
         }
-        return ResultStatus4;
     }
 
-    protected final Object doInBackground(Object[] Object_1darray1) {
-        return a((String[]) Object_1darray1);
+    @Override
+    protected final /* synthetic */ Object doInBackground(Object[] arrobject) {
+        return as.a((String[]) arrobject);
     }
 
-    protected final void onPostExecute(Object Object1) {
-        Object Object2 = (ResultStatus) Object1;
-
-        super.onPostExecute(Object2);
-        if (Object2 != null) {
-            if (((ResultStatus) Object2).isOk()) {
-                int int3;
-
-                if (PostUsefulView.a(a))
-                    int3 = 1;
-                else
-                    int3 = 2;
-                PostUsefulView.a(a, int3, true);
-                PostUsefulView.a(a, int3);
-                com.clilystudio.netbook.util.e.a(PostUsefulView.b(a), "\u8BC4\u4EF7\u6210\u529F");
-            } else if ("TOKEN_INVALID".equals(((ResultStatus) Object2).getCode())) {
-                com.clilystudio.netbook.util.e.a(PostUsefulView.b(a), 2131034529);
-                return;
-            } else if ("ALREADY_SET".equals(((ResultStatus) Object2).getCode())) {
-                com.clilystudio.netbook.util.e.a(PostUsefulView.b(a), "\u60A8\u5DF2\u7ECF\u8BC4\u4EF7\u8FC7\u5566");
+    /*
+     * Enabled aggressive block sorting
+     */
+    @Override
+    protected final /* synthetic */ void onPostExecute(Object object) {
+        ResultStatus resultStatus = (ResultStatus) object;
+        super.onPostExecute(resultStatus);
+        if (resultStatus == null) {
+            e.a((Activity) PostUsefulView.b(this.a), (String) "\u8bc4\u4ef7\u5931\u8d25");
+            return;
+        }
+        if (resultStatus.isOk()) {
+            int n = PostUsefulView.a(this.a) ? 1 : 2;
+            PostUsefulView.a(this.a, n, true);
+            PostUsefulView.a(this.a, n);
+            e.a((Activity) PostUsefulView.b(this.a), (String) "\u8bc4\u4ef7\u6210\u529f");
+            return;
+        } else {
+            if ("TOKEN_INVALID".equals(resultStatus.getCode())) {
+                e.a((Activity) PostUsefulView.b(this.a), (int) 2131034529);
                 return;
             }
-        } else
-            com.clilystudio.netbook.util.e.a(PostUsefulView.b(a), "\u8BC4\u4EF7\u5931\u8D25");
+            if (!"ALREADY_SET".equals(resultStatus.getCode())) return;
+            {
+                e.a((Activity) PostUsefulView.b(this.a), (String) "\u60a8\u5df2\u7ecf\u8bc4\u4ef7\u8fc7\u5566");
+                return;
+            }
+        }
     }
 }

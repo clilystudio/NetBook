@@ -6,12 +6,15 @@ import android.widget.TextView;
 import com.clilystudio.netbook.widget.BookShelfFlagView;
 
 import butterknife.ButterKnife;
+import butterknife.InjectView;
 
 class HomeShelfAdapter$FeedHolder {
-
+    @InjectView(value = 2131493754)
     BookShelfFlagView flag;
+    @InjectView(value = 2131493481)
     TextView title;
-    HomeShelfAdapter$FeedHolder(View View1) {
-        ButterKnife.inject(this, View1);
+
+    HomeShelfAdapter$FeedHolder(View view) {
+        ButterKnife.inject((Object) this, view);
     }
 }

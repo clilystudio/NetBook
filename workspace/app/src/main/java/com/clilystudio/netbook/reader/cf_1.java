@@ -10,50 +10,51 @@ import android.widget.TextView;
 import com.clilystudio.netbook.adapter.u;
 import com.clilystudio.netbook.model.ChapterLink;
 
-final class cf extends u {
-
+final class cf
+        extends u<ChapterLink> {
     private int a;
     private int b;
     private LayoutInflater c;
-    private ReaderTocDialog d;
-    public cf(ReaderTocDialog ReaderTocDialog1, LayoutInflater LayoutInflater2) {
-        d = ReaderTocDialog1;
-        a = com.clilystudio.netbook.hpay100.a.a.b((Context) ReaderTocDialog1.getActivity(), 2130771984, ReaderTocDialog.a(ReaderTocDialog1));
-        b = com.clilystudio.netbook.hpay100.a.a.b((Context) ReaderTocDialog1.getActivity(), 2130771985, ReaderTocDialog.a(ReaderTocDialog1));
-        c = LayoutInflater2;
+    private /* synthetic */ ReaderTocDialog d;
+
+    public cf(ReaderTocDialog readerTocDialog, LayoutInflater layoutInflater) {
+        this.d = readerTocDialog;
+        this.a = a.b((Context) readerTocDialog.getActivity(), 2130771984, ReaderTocDialog.a(readerTocDialog));
+        this.b = a.b((Context) readerTocDialog.getActivity(), 2130771985, ReaderTocDialog.a(readerTocDialog));
+        this.c = layoutInflater;
     }
 
-    public final View getView(int int1, View View2, ViewGroup ViewGroup3) {
-        ChapterLink ChapterLink4 = (ChapterLink) getItem(int1);
-        View View5;
-
-        if (View2 == null)
-            View5 = c.inflate(2130903311, ViewGroup3, false);
-        else
-            View5 = View2;
-        if (ChapterLink4 != null) {
-            ImageView ImageView6 = (ImageView) View5.findViewById(2131493756);
-            TextView TextView7 = (TextView) View5.findViewById(2131493605);
-            int int8 = ReaderTocDialog.a(d, int1);
-
-            TextView7.setText((CharSequence) new StringBuilder().append(int8 + 1).append(". ").append(ChapterLink4.getTitle()).toString());
-            if (int8 == ReaderTocDialog.b(d).k()) {
-                ImageView6.setImageLevel(1);
-                TextView7.setTextColor(b);
-            } else {
-                String String9 = ChapterLink4.getLink();
-
-                if (ReaderTocDialog.c(d) != null && ReaderTocDialog.c(d).contains(String9))
-                    ImageView6.setImageLevel(2);
-                else
-                    ImageView6.setImageLevel(0);
-                TextView7.setTextColor(a);
-            }
-            if (!com.clilystudio.netbook.reader.ReaderTocDialog.a(d, ChapterLink4))
-                View5.findViewById(2131493757).setVisibility(0);
-            else
-                View5.findViewById(2131493757).setVisibility(8);
+    /*
+     * Enabled aggressive block sorting
+     */
+    @Override
+    public final View getView(int n, View view, ViewGroup viewGroup) {
+        ChapterLink chapterLink = (ChapterLink) this.getItem(n);
+        View view2 = view == null ? this.c.inflate(2130903311, viewGroup, false) : view;
+        if (chapterLink == null) {
+            return view2;
         }
-        return View5;
+        ImageView imageView = (ImageView) view2.findViewById(2131493756);
+        TextView textView = (TextView) view2.findViewById(2131493605);
+        int n2 = ReaderTocDialog.a(this.d, n);
+        textView.setText("" + (n2 + 1) + ". " + chapterLink.getTitle());
+        if (n2 == ReaderTocDialog.b(this.d).k()) {
+            imageView.setImageLevel(1);
+            textView.setTextColor(this.b);
+        } else {
+            String string = chapterLink.getLink();
+            if (ReaderTocDialog.c(this.d) != null && ReaderTocDialog.c(this.d).contains(string)) {
+                imageView.setImageLevel(2);
+            } else {
+                imageView.setImageLevel(0);
+            }
+            textView.setTextColor(this.a);
+        }
+        if (!ReaderTocDialog.a(this.d, chapterLink)) {
+            view2.findViewById(2131493757).setVisibility(0);
+            return view2;
+        }
+        view2.findViewById(2131493757).setVisibility(8);
+        return view2;
     }
 }

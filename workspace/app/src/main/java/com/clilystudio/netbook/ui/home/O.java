@@ -1,64 +1,66 @@
 package com.clilystudio.netbook.ui.home;
 
+import com.clilystudio.netbook.a.e;
 import com.clilystudio.netbook.db.BookReadRecord;
 import com.clilystudio.netbook.model.BookShelfTopic;
 import com.clilystudio.netbook.model.TopicSummary;
 
 import java.util.List;
 
-final class O extends com.clilystudio.netbook.a.e {
+final class O
+        extends e<String, Void, TopicSummary> {
+    private List<BookReadRecord> a;
+    private /* synthetic */ HomeTopicFragment b;
 
-    private List a;
-    private HomeTopicFragment b;
-    O(HomeTopicFragment HomeTopicFragment1, byte byte2) {
-        this(HomeTopicFragment1);
+    private O(HomeTopicFragment homeTopicFragment) {
+        this.b = homeTopicFragment;
     }
 
-    private O(HomeTopicFragment HomeTopicFragment1) {
-        b = HomeTopicFragment1;
+    /* synthetic */ O(HomeTopicFragment homeTopicFragment, byte by) {
+        this(homeTopicFragment);
     }
 
-    private transient TopicSummary a() {
-        TopicSummary TopicSummary3;
-
+    private /* varargs */ TopicSummary a() {
         try {
-            a = BookReadRecord.getAll();
-            com.clilystudio.netbook.api.b.a();
-            TopicSummary3 = com.clilystudio.netbook.api.b.b().k();
-        } catch (Exception Exception1) {
-            Exception1.printStackTrace();
+            this.a = BookReadRecord.getAll();
+            b.a();
+            TopicSummary topicSummary = b.b().k();
+            return topicSummary;
+        } catch (Exception var1_2) {
+            var1_2.printStackTrace();
             return null;
         }
-        return TopicSummary3;
     }
 
-    protected final Object doInBackground(Object[] Object_1darray1) {
-        return a();
+    /*
+     * Exception decompiling
+     */
+    @Override
+    protected final /* synthetic */ Object doInBackground(Object[] var1_1) {
+        // This method has failed to decompile.  When submitting a bug report, please provide this stack trace, and (if you hold appropriate legal rights) the relevant class file.
+        // java.lang.ArrayIndexOutOfBoundsException
+        throw new IllegalStateException("Decompilation failed");
     }
 
-    protected final void onPostExecute(Object Object1) {
-        Object Object2 = (TopicSummary) Object1;
-
-        super.onPostExecute(Object2);
-        if (b.getActivity() != null) {
-            HomeTopicFragment.d(b);
-            if (Object2 != null && ((TopicSummary) Object2).isOk()) {
-                int int3;
-                int int4;
-
-                HomeTopicFragment.c(b).clear();
-                int3 = a.size();
-                for (int4 = 0; int4 < int3; ++int4) {
-                    BookReadRecord BookReadRecord5 = (BookReadRecord) a.get(int4);
-                    String String6 = BookReadRecord5.getBookId();
-                    Object Object7 = new BookShelfTopic();
-
-                    ((BookShelfTopic) Object7).setBookId(String6);
-                    ((BookShelfTopic) Object7).setTitle(BookReadRecord5.getTitle());
-                    ((BookShelfTopic) Object7).setFullCover(BookReadRecord5.getFullCover());
-                    HomeTopicFragment.c(b).add(Object7);
+    @Override
+    protected final /* synthetic */ void onPostExecute(Object object) {
+        TopicSummary topicSummary = (TopicSummary) object;
+        super.onPostExecute(topicSummary);
+        if (this.b.getActivity() != null) {
+            HomeTopicFragment.d(this.b);
+            if (topicSummary != null && topicSummary.isOk()) {
+                HomeTopicFragment.c(this.b).clear();
+                int n = this.a.size();
+                for (int i = 0; i < n; ++i) {
+                    BookReadRecord bookReadRecord = this.a.get(i);
+                    String string = bookReadRecord.getBookId();
+                    BookShelfTopic bookShelfTopic = new BookShelfTopic();
+                    bookShelfTopic.setBookId(string);
+                    bookShelfTopic.setTitle(bookReadRecord.getTitle());
+                    bookShelfTopic.setFullCover(bookReadRecord.getFullCover());
+                    HomeTopicFragment.c(this.b).add(bookShelfTopic);
                 }
-                HomeTopicFragment.e(b).a(HomeTopicFragment.c(b));
+                HomeTopicFragment.e(this.b).a(HomeTopicFragment.c(this.b));
             }
         }
     }

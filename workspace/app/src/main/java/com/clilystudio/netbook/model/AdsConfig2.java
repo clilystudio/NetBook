@@ -3,25 +3,25 @@ package com.clilystudio.netbook.model;
 import java.io.Serializable;
 import java.util.List;
 
-public class AdsConfig2 implements Serializable {
-
+public class AdsConfig2
+        implements Serializable {
     private static final long serialVersionUID = -4786655193645998408L;
-    private List advertList;
+    private List<MenuAd> advertList;
     private int index;
 
-    public List getAdvertList() {
-        return advertList;
+    public List<MenuAd> getAdvertList() {
+        return this.advertList;
     }
 
-    public void setAdvertList(List List1) {
-        advertList = List1;
+    public void setAdvertList(List<MenuAd> list) {
+        this.advertList = list;
     }
 
     public int getIndex() {
-        return index;
+        return this.index;
     }
 
-    public void setIndex(int int1) {
-        index = int1;
+    public void setIndex(int n) {
+        this.index = n;
     }
 }

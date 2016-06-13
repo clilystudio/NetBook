@@ -1,11 +1,11 @@
 package com.clilystudio.netbook.model;
 
 public class Tweet$VoteOption {
-
+    final /* synthetic */ Tweet this$0;
     public String content;
     public int count;
-    Tweet this$0;     // final access specifier removed
-    public Tweet$VoteOption(Tweet Tweet1) {
-        this$0 = Tweet1;
+
+    public Tweet$VoteOption(Tweet tweet) {
+        this.this$0 = tweet;
     }
 }

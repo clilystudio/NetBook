@@ -1,7 +1,7 @@
 package com.clilystudio.netbook.model;
 
-public class Review extends ReviewSummary {
-
+public class Review
+        extends ReviewSummary {
     private Author author;
     private int commentCount;
     private String content;
@@ -9,42 +9,42 @@ public class Review extends ReviewSummary {
     private String shareLink;
 
     public Author getAuthor() {
-        return author;
+        return this.author;
     }
 
-    public void setAuthor(Author Author1) {
-        author = Author1;
+    public void setAuthor(Author author) {
+        this.author = author;
     }
 
     public int getCommentCount() {
-        return commentCount;
+        return this.commentCount;
     }
 
-    public void setCommentCount(int int1) {
-        commentCount = int1;
+    public void setCommentCount(int n) {
+        this.commentCount = n;
     }
 
     public String getContent() {
-        return content;
+        return this.content;
     }
 
-    public void setContent(String String1) {
-        content = String1;
+    public void setContent(String string) {
+        this.content = string;
     }
 
     public int getRating() {
-        return rating;
+        return this.rating;
     }
 
-    public void setRating(int int1) {
-        rating = int1;
+    public void setRating(int n) {
+        this.rating = n;
     }
 
     public String getShareLink() {
-        return shareLink;
+        return this.shareLink;
     }
 
-    public void setShareLink(String String1) {
-        shareLink = String1;
+    public void setShareLink(String string) {
+        this.shareLink = string;
     }
 }

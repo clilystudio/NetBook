@@ -1,18 +1,21 @@
 package com.clilystudio.netbook.ui.post;
 
 import android.os.AsyncTask;
+import android.support.design.widget.am;
 
-final class aL implements Runnable {
+final class aL
+        implements Runnable {
+    private /* synthetic */ aK a;
 
-    private aK a;
-
-    aL(aK aK1) {
-        a = aK1;
+    aL(aK aK2) {
+        this.a = aK2;
     }
 
+    @Override
     public final void run() {
-        if (!android.support.design.widget.am.a((AsyncTask) BookTopicListFragment.b(a.a)))
-            BookTopicListFragment.b(a.a).cancel(true);
-        BookTopicListFragment.c(a.a);
+        if (!am.a((AsyncTask) BookTopicListFragment.b(this.a.a))) {
+            BookTopicListFragment.b(this.a.a).cancel(true);
+        }
+        BookTopicListFragment.c(this.a.a);
     }
 }

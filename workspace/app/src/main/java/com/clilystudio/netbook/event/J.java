@@ -1,37 +1,37 @@
 package com.clilystudio.netbook.event;
 
 public final class J {
-
     private String a;
     private String b;
     private String c;
     private String d;
     private int e;
-    public J(String String1, String String2, String String3, int int4, String String5) {
-        a = String1;
-        b = String2;
-        d = String5;
-        c = String3;
-        e = int4;
+
+    public J(String string, String string2, String string3, int n, String string4) {
+        this.a = string;
+        this.b = string2;
+        this.d = string4;
+        this.c = string3;
+        this.e = n;
     }
 
     public final String a() {
-        return d;
+        return this.d;
     }
 
     public final String b() {
-        return a;
+        return this.a;
     }
 
     public final String c() {
-        return b;
+        return this.b;
     }
 
     public final String d() {
-        return c;
+        return this.c;
     }
 
     public final int e() {
-        return e;
+        return this.e;
     }
 }

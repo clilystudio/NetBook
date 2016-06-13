@@ -3,46 +3,48 @@ package com.clilystudio.netbook.pay.b;
 import android.widget.Toast;
 
 import com.clilystudio.netbook.event.i;
+import com.clilystudio.netbook.hpay100.y;
 import com.clilystudio.netbook.hpay100.z;
 
-class b implements com.clilystudio.netbook.hpay100.y {
+class b
+        implements y {
+    final /* synthetic */ a a;
 
-    final a a = null;
-
-    b(a a1, byte byte2) {
-        this(a1);
+    private b(a a2) {
+        this.a = a2;
     }
 
-    private b(a a1) {
-        a = a1;
+    /* synthetic */ b(a a2, byte by) {
+        this(a2);
     }
 
-    public void a(z z1) {
+    /*
+     * Enabled aggressive block sorting
+     */
+    @Override
+    public void a(z z2) {
         com.squareup.a.b b2 = i.a();
-        boolean boolean3;
-
-        if (z1.a() == 1)
-            boolean3 = true;
-        else
-            boolean3 = false;
-        b2.c(new com.clilystudio.netbook.event.y(boolean3));
-        switch (z1.a()) {
-            case 1:
-                Toast.makeText(a.a(a), (CharSequence) "\u8BA2\u5355\u63D0\u4EA4\u6210\u529F", 1).show();
-                com.umeng.a.b.a(a.a(a), "charge_complete", "youyifupay");
+        boolean bl = z2.a() == 1;
+        b2.c(new com.clilystudio.netbook.event.y(bl));
+        switch (z2.a()) {
+            case 1: {
+                Toast.makeText(a.a(this.a), "\u8ba2\u5355\u63d0\u4ea4\u6210\u529f", 1).show();
+                com.umeng.a.b.a(a.a(this.a), "charge_complete", "youyifupay");
                 return;
-            case 2:
-                if (!z1.b()) {
-                    com.umeng.a.b.a(a.a(a), "charge_money_failed", "youyifupay");
-                    Toast.makeText(a.a(a), (CharSequence) "\u975E\u5E38\u62B1\u6B49\uFF0C\u60A8\u7684\u624B\u673A\u53F7\u6240\u5728\u5730\u533A\u6682\u4E0D\u652F\u6301\u8BDD\u8D39\u5145\u503C\uFF0C\u8BF7\u60A8\u9009\u62E9\u5176\u4ED6\u5145\u503C\u65B9\u5F0F\uFF01", 1).show();
+            }
+            case 2: {
+                if (!z2.b()) {
+                    com.umeng.a.b.a(a.a(this.a), "charge_money_failed", "youyifupay");
+                    Toast.makeText(a.a(this.a), "\u975e\u5e38\u62b1\u6b49\uff0c\u60a8\u7684\u624b\u673a\u53f7\u6240\u5728\u5730\u533a\u6682\u4e0d\u652f\u6301\u8bdd\u8d39\u5145\u503c\uff0c\u8bf7\u60a8\u9009\u62e9\u5176\u4ed6\u5145\u503c\u65b9\u5f0f\uff01", 1).show();
                     return;
                 }
-            default:
+            }
+            default: {
                 return;
+            }
             case 3:
-                com.umeng.a.b.a(a.a(a), "charge_money_cancel", "youyifupay");
-                Toast.makeText(a.a(a), (CharSequence) "\u652F\u4ED8\u53D6\u6D88", 1).show();
-                return;
         }
+        com.umeng.a.b.a(a.a(this.a), "charge_money_cancel", "youyifupay");
+        Toast.makeText(a.a(this.a), "\u652f\u4ed8\u53d6\u6d88", 1).show();
     }
 }

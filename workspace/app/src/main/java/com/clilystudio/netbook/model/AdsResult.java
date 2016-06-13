@@ -1,23 +1,22 @@
 package com.clilystudio.netbook.model;
 
 public class AdsResult {
-
     private AdvertData[] adverts;
     private boolean ok;
 
     public AdvertData[] getAdverts() {
-        return adverts;
+        return this.adverts;
     }
 
-    public void setAdverts(AdvertData[] AdvertData_1darray1) {
-        adverts = AdvertData_1darray1;
+    public void setAdverts(AdvertData[] arradvertData) {
+        this.adverts = arradvertData;
     }
 
     public boolean isOk() {
-        return ok;
+        return this.ok;
     }
 
-    public void setOk(boolean boolean1) {
-        ok = boolean1;
+    public void setOk(boolean bl) {
+        this.ok = bl;
     }
 }

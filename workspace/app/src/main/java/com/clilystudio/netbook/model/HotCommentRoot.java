@@ -1,23 +1,22 @@
 package com.clilystudio.netbook.model;
 
 public class HotCommentRoot {
-
     private PostComment[] comments;
     private boolean ok;
 
     public PostComment[] getComments() {
-        return comments;
+        return this.comments;
     }
 
-    public void setComments(PostComment[] PostComment_1darray1) {
-        comments = PostComment_1darray1;
+    public void setComments(PostComment[] arrpostComment) {
+        this.comments = arrpostComment;
     }
 
     public boolean isOk() {
-        return ok;
+        return this.ok;
     }
 
-    public void setOk(boolean boolean1) {
-        ok = boolean1;
+    public void setOk(boolean bl) {
+        this.ok = bl;
     }
 }

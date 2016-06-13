@@ -1,27 +1,22 @@
 package com.clilystudio.netbook.ui.post;
 
-import android.app.Activity;
 import android.view.View;
-import android.view.View$OnClickListener;
 
-final class dt implements View$OnClickListener {
+final class dt
+        implements View.OnClickListener {
+    private /* synthetic */ TweetDetailActivity a;
 
-    private TweetDetailActivity a;
-
-    dt(TweetDetailActivity TweetDetailActivity1) {
-        a = TweetDetailActivity1;
+    dt(TweetDetailActivity tweetDetailActivity) {
+        this.a = tweetDetailActivity;
     }
 
-    public final void onClick(View View1) {
-        TweetDetailActivity.a(a, ((Integer) View1.getTag()).intValue());
-        if (TweetDetailActivity.a(a)) {
-            dA dA3 = new dA(a, (Activity) a, 2131034584);
-            String[] String_1darray4 = new String[3];
-
-            String_1darray4[0] = TweetDetailActivity.b(a).getToken();
-            String_1darray4[1] = TweetDetailActivity.c(a).getTweet().get_id();
-            String_1darray4[2] = String.valueOf(TweetDetailActivity.d(a));
-            dA3.b(String_1darray4);
+    @Override
+    public final void onClick(View view) {
+        TweetDetailActivity.a(this.a, (Integer) view.getTag());
+        if (TweetDetailActivity.a(this.a)) {
+            dA dA2 = new dA(this.a, this.a, 2131034584);
+            String[] arrstring = new String[]{TweetDetailActivity.b(this.a).getToken(), TweetDetailActivity.c(this.a).getTweet().get_id(), String.valueOf(TweetDetailActivity.d(this.a))};
+            dA2.b(arrstring);
         }
     }
 }

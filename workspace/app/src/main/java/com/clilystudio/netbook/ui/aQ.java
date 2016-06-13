@@ -2,17 +2,17 @@ package com.clilystudio.netbook.ui;
 
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.AdapterView$OnItemClickListener;
 
-final class aQ implements AdapterView$OnItemClickListener {
+final class aQ
+        implements AdapterView.OnItemClickListener {
+    private /* synthetic */ BookRankListFragment a;
 
-    private BookRankListFragment a;
-
-    aQ(BookRankListFragment BookRankListFragment1) {
-        a = BookRankListFragment1;
+    aQ(BookRankListFragment bookRankListFragment) {
+        this.a = bookRankListFragment;
     }
 
-    public final void onItemClick(AdapterView AdapterView1, View View2, int int3, long long4) {
-        a.a(int3);
+    @Override
+    public final void onItemClick(AdapterView<?> adapterView, View view, int n, long l) {
+        this.a.a(n);
     }
 }

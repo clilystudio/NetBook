@@ -2,16 +2,17 @@ package com.clilystudio.netbook.ui;
 
 import com.clilystudio.netbook.widget.av;
 
-final class y implements av {
+final class y
+        implements av {
+    private /* synthetic */ AudiobookCategoryListActivity a;
 
-    private AudiobookCategoryListActivity a;
-
-    y(AudiobookCategoryListActivity AudiobookCategoryListActivity1) {
-        a = AudiobookCategoryListActivity1;
+    y(AudiobookCategoryListActivity audiobookCategoryListActivity) {
+        this.a = audiobookCategoryListActivity;
     }
 
+    @Override
     public final void a() {
-        AudiobookCategoryListActivity.b(a).setVisibility(0);
-        AudiobookCategoryListActivity.h(a);
+        AudiobookCategoryListActivity.b(this.a).setVisibility(0);
+        AudiobookCategoryListActivity.h(this.a);
     }
 }

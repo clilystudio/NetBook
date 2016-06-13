@@ -1,44 +1,52 @@
 package com.clilystudio.netbook.pay.a;
 
-public final class e {
+import android.text.TextUtils;
 
+public final class e {
     private String a;
     private String b;
     private String c;
-    public e(String String1) {
-        if (!android.text.TextUtils.isEmpty((CharSequence) String1)) {
-            String[] String_1darray2 = String1.split(";");
-            int int3 = String_1darray2.length;
-            int int4;
 
-            for (int4 = 0; int4 < int3; ++int4) {
-                String String5 = String_1darray2[int4];
-
-                if (String5.startsWith("resultStatus"))
-                    a = a(String5, "resultStatus");
-                if (String5.startsWith("result"))
-                    b = a(String5, "result");
-                if (String5.startsWith("memo"))
-                    c = a(String5, "memo");
+    /*
+     * Enabled force condition propagation
+     * Lifted jumps to return sites
+     */
+    public e(String string) {
+        if (TextUtils.isEmpty(string)) {
+            return;
+        }
+        String[] arrstring = string.split(";");
+        int n = arrstring.length;
+        int n2 = 0;
+        while (n2 < n) {
+            String string2 = arrstring[n2];
+            if (string2.startsWith("resultStatus")) {
+                this.a = e.a(string2, "resultStatus");
             }
+            if (string2.startsWith("result")) {
+                this.b = e.a(string2, "result");
+            }
+            if (string2.startsWith("memo")) {
+                this.c = e.a(string2, "memo");
+            }
+            ++n2;
         }
     }
 
-    private static String a(String String1, String String2) {
-        String String3 = new StringBuilder().append(String2).append("={").toString();
-
-        return String1.substring(String1.indexOf(String3) + String3.length(), String1.lastIndexOf("}"));
+    private static String a(String string, String string2) {
+        String string3 = string2 + "={";
+        return string.substring(string.indexOf(string3) + string3.length(), string.lastIndexOf("}"));
     }
 
     public final String a() {
-        return a;
+        return this.a;
     }
 
     public final String b() {
-        return b;
+        return this.b;
     }
 
     public final String toString() {
-        return new StringBuilder("resultStatus={").append(a).append("};memo={").append(c).append("};result={").append(b).append("}").toString();
+        return "resultStatus={" + this.a + "};memo={" + this.c + "};result={" + this.b + "}";
     }
 }

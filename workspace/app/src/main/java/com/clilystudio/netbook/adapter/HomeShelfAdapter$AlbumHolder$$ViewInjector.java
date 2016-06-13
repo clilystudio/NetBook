@@ -10,24 +10,23 @@ import com.clilystudio.netbook.widget.CoverView;
 import butterknife.ButterKnife$Finder;
 
 public class HomeShelfAdapter$AlbumHolder$$ViewInjector {
-
-    public static void inject(ButterKnife$Finder Finder1, HomeShelfAdapter$AlbumHolder AlbumHolder2, Object Object3) {
-        AlbumHolder2.title = (TextView) Finder1.findRequiredView(Object3, 2131492936, "field 'title'");
-        AlbumHolder2.desc = (TextView) Finder1.findRequiredView(Object3, 2131493481, "field 'desc'");
-        AlbumHolder2.flag = (BookShelfFlagView) Finder1.findRequiredView(Object3, 2131493754, "field 'flag'");
-        AlbumHolder2.top = Finder1.findRequiredView(Object3, 2131492978, "field 'top'");
-        AlbumHolder2.cover = (CoverView) Finder1.findRequiredView(Object3, 2131493604, "field 'cover'");
-        AlbumHolder2.coverLoadingLayer = (CoverLoadingLayer) Finder1.findRequiredView(Object3, 2131492906, "field 'coverLoadingLayer'");
-        AlbumHolder2.check = (CheckBox) Finder1.findRequiredView(Object3, 2131492900, "field 'check'");
+    public static void inject(ButterKnife$Finder butterKnife$Finder, HomeShelfAdapter$AlbumHolder homeShelfAdapter$AlbumHolder, Object object) {
+        homeShelfAdapter$AlbumHolder.title = (TextView) butterKnife$Finder.findRequiredView(object, 2131492936, "field 'title'");
+        homeShelfAdapter$AlbumHolder.desc = (TextView) butterKnife$Finder.findRequiredView(object, 2131493481, "field 'desc'");
+        homeShelfAdapter$AlbumHolder.flag = (BookShelfFlagView) butterKnife$Finder.findRequiredView(object, 2131493754, "field 'flag'");
+        homeShelfAdapter$AlbumHolder.top = butterKnife$Finder.findRequiredView(object, 2131492978, "field 'top'");
+        homeShelfAdapter$AlbumHolder.cover = (CoverView) butterKnife$Finder.findRequiredView(object, 2131493604, "field 'cover'");
+        homeShelfAdapter$AlbumHolder.coverLoadingLayer = (CoverLoadingLayer) butterKnife$Finder.findRequiredView(object, 2131492906, "field 'coverLoadingLayer'");
+        homeShelfAdapter$AlbumHolder.check = (CheckBox) butterKnife$Finder.findRequiredView(object, 2131492900, "field 'check'");
     }
 
-    public static void reset(HomeShelfAdapter$AlbumHolder AlbumHolder1) {
-        AlbumHolder1.title = null;
-        AlbumHolder1.desc = null;
-        AlbumHolder1.flag = null;
-        AlbumHolder1.top = null;
-        AlbumHolder1.cover = null;
-        AlbumHolder1.coverLoadingLayer = null;
-        AlbumHolder1.check = null;
+    public static void reset(HomeShelfAdapter$AlbumHolder homeShelfAdapter$AlbumHolder) {
+        homeShelfAdapter$AlbumHolder.title = null;
+        homeShelfAdapter$AlbumHolder.desc = null;
+        homeShelfAdapter$AlbumHolder.flag = null;
+        homeShelfAdapter$AlbumHolder.top = null;
+        homeShelfAdapter$AlbumHolder.cover = null;
+        homeShelfAdapter$AlbumHolder.coverLoadingLayer = null;
+        homeShelfAdapter$AlbumHolder.check = null;
     }
 }

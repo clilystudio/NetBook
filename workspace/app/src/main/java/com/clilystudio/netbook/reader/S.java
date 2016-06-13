@@ -2,18 +2,19 @@ package com.clilystudio.netbook.reader;
 
 import java.util.Iterator;
 
-final class S implements Runnable {
+final class S
+        implements Runnable {
+    private /* synthetic */ Reader a;
 
-    private Reader a;
-
-    S(Reader Reader1) {
-        a = Reader1;
+    S(Reader reader) {
+        this.a = reader;
     }
 
+    @Override
     public final void run() {
-        Iterator Iterator1 = Reader.c(a).iterator();
-
-        while (Iterator1.hasNext())
-            ((ae) Iterator1.next()).b();
+        Iterator iterator = Reader.c(this.a).iterator();
+        while (iterator.hasNext()) {
+            ((ae) iterator.next()).b();
+        }
     }
 }

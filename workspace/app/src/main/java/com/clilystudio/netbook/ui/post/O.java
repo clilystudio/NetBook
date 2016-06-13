@@ -1,18 +1,18 @@
 package com.clilystudio.netbook.ui.post;
 
 import android.content.DialogInterface;
-import android.content.DialogInterface$OnClickListener;
 
-final class O implements DialogInterface$OnClickListener {
+final class O
+        implements DialogInterface.OnClickListener {
+    private /* synthetic */ AddVoteActivity a;
 
-    private AddVoteActivity a;
-
-    O(AddVoteActivity AddVoteActivity1) {
-        a = AddVoteActivity1;
+    O(AddVoteActivity addVoteActivity) {
+        this.a = addVoteActivity;
     }
 
-    public final void onClick(DialogInterface DialogInterface1, int int2) {
-        DialogInterface1.dismiss();
-        a.finish();
+    @Override
+    public final void onClick(DialogInterface dialogInterface, int n) {
+        dialogInterface.dismiss();
+        this.a.finish();
     }
 }

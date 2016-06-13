@@ -2,76 +2,77 @@ package com.clilystudio.netbook.db;
 
 import com.activeandroid.ActiveAndroid;
 import com.activeandroid.Model;
+import com.activeandroid.annotation.Column;
+import com.activeandroid.annotation.Table;
+import com.activeandroid.query.Delete;
+import com.activeandroid.query.Select;
 
 import java.util.Iterator;
 import java.util.List;
 
-public class RetweenRecord extends Model {
-
+@Table(name = "RetweenRecord")
+public class RetweenRecord
+        extends Model {
+    @Column(name = "tweetId")
     private String tweetId;
+    @Column(name = "userId")
     private String userId;
-// Error: Internal #201: 
-// The following method may not be correct.
 
-    public static void cancelRetween(String String1, String String2) {
-    }
-// Error: Internal #201: 
-// The following method may not be correct.
-
-    public static void clear(String String1) {
-    }
-// Error: Internal #201: 
-// The following method may not be correct.
-
-    public static List findAll(String String1) {
-    }
-// Error: Internal #201: 
-// The following method may not be correct.
-
-    public static boolean isRetweened(String String1, String String2) {
+    public static void cancelRetween(String string, String string2) {
+        new Delete().from(RetweenRecord.class).where(" userId = ? and tweetId = ? ", string, string2).execute();
     }
 
-    public static void save2DB(String String1, String String2) {
-        RetweenRecord RetweenRecord3 = new RetweenRecord();
-
-        RetweenRecord3.setUserId(String1);
-        RetweenRecord3.setTweetId(String2);
-        RetweenRecord3.save();
+    public static void clear(String string) {
+        new Delete().from(RetweenRecord.class).where(" userId = ? ", string).execute();
     }
 
-    public static void save2DB(List List1) {
+    public static List<RetweenRecord> findAll(String string) {
+        return new Select().distinct().from(RetweenRecord.class).where(" userId = ? ").execute();
+    }
+
+    public static boolean isRetweened(String string, String string2) {
+        return new Select().from(RetweenRecord.class).where(" userId = ? and tweetId = ?", string, string2).exists();
+    }
+
+    public static void save2DB(String string, String string2) {
+        RetweenRecord retweenRecord = new RetweenRecord();
+        retweenRecord.setUserId(string);
+        retweenRecord.setTweetId(string2);
+        retweenRecord.save();
+    }
+
+    /*
+     * Enabled aggressive block sorting
+     * Enabled unnecessary exception pruning
+     * Enabled aggressive exception aggregation
+     */
+    public static void save2DB(List<RetweenRecord> list) {
         ActiveAndroid.beginTransaction();
         try {
-            Iterator Iterator3 = List1.iterator();
-
-            while (Iterator3.hasNext())
-                ((RetweenRecord) Iterator3.next()).save();
-        } finally {
-            ActiveAndroid.endTransaction();
-            throw Object2;
-        }
-        try {
+            Iterator<RetweenRecord> iterator = list.iterator();
+            while (iterator.hasNext()) {
+                iterator.next().save();
+            }
             ActiveAndroid.setTransactionSuccessful();
+            return;
         } finally {
             ActiveAndroid.endTransaction();
-            throw Object2;
         }
-        ActiveAndroid.endTransaction();
     }
 
     public String getTweetId() {
-        return tweetId;
+        return this.tweetId;
     }
 
-    public void setTweetId(String String1) {
-        tweetId = String1;
+    public void setTweetId(String string) {
+        this.tweetId = string;
     }
 
     public String getUserId() {
-        return userId;
+        return this.userId;
     }
 
-    public void setUserId(String String1) {
-        userId = String1;
+    public void setUserId(String string) {
+        this.userId = string;
     }
 }

@@ -1,7 +1,6 @@
 package com.clilystudio.netbook.model;
 
 public class WXPayOrder$PayOrder {
-
     private String appid;
     private String noncestr;
     private String partnerid;
@@ -11,62 +10,62 @@ public class WXPayOrder$PayOrder {
     private String xpackage;
 
     public String getAppid() {
-        return appid;
+        return this.appid;
     }
 
-    public void setAppid(String String1) {
-        appid = String1;
+    public void setAppid(String string) {
+        this.appid = string;
     }
 
     public String getNoncestr() {
-        return noncestr;
+        return this.noncestr;
     }
 
-    public void setNoncestr(String String1) {
-        noncestr = String1;
+    public void setNoncestr(String string) {
+        this.noncestr = string;
     }
 
     public String getPartnerid() {
-        return partnerid;
+        return this.partnerid;
     }
 
-    public void setPartnerid(String String1) {
-        partnerid = String1;
+    public void setPartnerid(String string) {
+        this.partnerid = string;
     }
 
     public String getPrepayid() {
-        return prepayid;
+        return this.prepayid;
     }
 
-    public void setPrepayid(String String1) {
-        prepayid = String1;
+    public void setPrepayid(String string) {
+        this.prepayid = string;
     }
 
     public String getSign() {
-        return sign;
+        return this.sign;
     }
 
-    public void setSign(String String1) {
-        sign = String1;
+    public void setSign(String string) {
+        this.sign = string;
     }
 
     public String getTimestamp() {
-        return timestamp;
+        return this.timestamp;
     }
 
-    public void setTimestamp(String String1) {
-        timestamp = String1;
+    public void setTimestamp(String string) {
+        this.timestamp = string;
     }
 
     public String getXpackage() {
-        return xpackage;
+        return this.xpackage;
     }
 
-    public void setXpackage(String String1) {
-        xpackage = String1;
+    public void setXpackage(String string) {
+        this.xpackage = string;
     }
 
     public String toString() {
-        return new StringBuilder("PayOrder{appid='").append(appid).append('\'').append(", partnerid='").append(partnerid).append('\'').append(", prepayid='").append(prepayid).append('\'').append(", xpackage='").append(xpackage).append('\'').append(", timestamp='").append(timestamp).append('\'').append(", noncestr='").append(noncestr).append('\'').append(", sign='").append(sign).append('\'').append('}').toString();
+        return "PayOrder{appid='" + this.appid + '\'' + ", partnerid='" + this.partnerid + '\'' + ", prepayid='" + this.prepayid + '\'' + ", xpackage='" + this.xpackage + '\'' + ", timestamp='" + this.timestamp + '\'' + ", noncestr='" + this.noncestr + '\'' + ", sign='" + this.sign + '\'' + '}';
     }
 }

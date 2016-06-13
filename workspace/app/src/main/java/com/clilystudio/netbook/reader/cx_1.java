@@ -2,23 +2,25 @@ package com.clilystudio.netbook.reader;
 
 import android.database.DataSetObserver;
 
-final class cx extends DataSetObserver {
+final class cx
+        extends DataSetObserver {
+    private /* synthetic */ ReaderViewPager a;
 
-    private ReaderViewPager a;
-
-    cx(ReaderViewPager ReaderViewPager1, byte byte2) {
-        this(ReaderViewPager1);
+    private cx(ReaderViewPager readerViewPager) {
+        this.a = readerViewPager;
     }
 
-    private cx(ReaderViewPager ReaderViewPager1) {
-        a = ReaderViewPager1;
+    /* synthetic */ cx(ReaderViewPager readerViewPager, byte by) {
+        this(readerViewPager);
     }
 
+    @Override
     public final void onChanged() {
-        a.a();
+        this.a.a();
     }
 
+    @Override
     public final void onInvalidated() {
-        a.a();
+        this.a.a();
     }
 }

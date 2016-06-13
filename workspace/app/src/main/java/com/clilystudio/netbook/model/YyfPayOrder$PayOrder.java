@@ -1,41 +1,40 @@
 package com.clilystudio.netbook.model;
 
 public class YyfPayOrder$PayOrder {
-
     private int amount;
     private String appOrderid;
     private String payName;
     private String spPayCode;
 
     public int getAmount() {
-        return amount;
+        return this.amount;
     }
 
-    public void setAmount(int int1) {
-        amount = int1;
+    public void setAmount(int n) {
+        this.amount = n;
     }
 
     public String getAppOrderid() {
-        return appOrderid;
+        return this.appOrderid;
     }
 
-    public void setAppOrderid(String String1) {
-        appOrderid = String1;
+    public void setAppOrderid(String string) {
+        this.appOrderid = string;
     }
 
     public String getPayName() {
-        return payName;
+        return this.payName;
     }
 
-    public void setPayName(String String1) {
-        payName = String1;
+    public void setPayName(String string) {
+        this.payName = string;
     }
 
     public String getSpPayCode() {
-        return spPayCode;
+        return this.spPayCode;
     }
 
-    public void setSpPayCode(String String1) {
-        spPayCode = String1;
+    public void setSpPayCode(String string) {
+        this.spPayCode = string;
     }
 }

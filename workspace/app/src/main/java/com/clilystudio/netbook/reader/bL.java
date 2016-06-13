@@ -2,25 +2,25 @@ package com.clilystudio.netbook.reader;
 
 import android.content.Context;
 import android.support.v7.widget.SwitchCompat;
-import android.view.View;
 import android.widget.CompoundButton;
-import android.widget.CompoundButton$OnCheckedChangeListener;
 
 import com.clilystudio.netbook.event.i;
 import com.clilystudio.netbook.event.j;
 
-final class bL implements CompoundButton$OnCheckedChangeListener {
+final class bL
+        implements CompoundButton.OnCheckedChangeListener {
+    private /* synthetic */ SwitchCompat a;
+    private /* synthetic */ ReaderOptionActivity b;
 
-    private SwitchCompat a;
-    private ReaderOptionActivity b;
-    bL(ReaderOptionActivity ReaderOptionActivity1, SwitchCompat SwitchCompat2) {
-        b = ReaderOptionActivity1;
-        a = SwitchCompat2;
+    bL(ReaderOptionActivity readerOptionActivity, SwitchCompat switchCompat) {
+        this.b = readerOptionActivity;
+        this.a = switchCompat;
     }
 
-    public final void onCheckedChanged(CompoundButton CompoundButton1, boolean boolean2) {
-        com.clilystudio.netbook.hpay100.a.a.b((Context) b, "convert_t", boolean2);
+    @Override
+    public final void onCheckedChanged(CompoundButton compoundButton, boolean bl) {
+        a.b((Context) this.b, "convert_t", bl);
         i.a().c(new j());
-        ReaderOptionActivity.a(b, (View) a, boolean2);
+        ReaderOptionActivity.a(this.b, this.a, bl);
     }
 }

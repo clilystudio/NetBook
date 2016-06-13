@@ -1,13 +1,12 @@
 package com.clilystudio.netbook.event;
 
 public final class v {
-
     private int a = 1;
 
-    public v(int int1) {
+    public v(int n) {
     }
 
     public final int a() {
-        return a;
+        return this.a;
     }
 }

@@ -3,34 +3,37 @@ package com.clilystudio.netbook.reader;
 import android.support.design.widget.am;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.AdapterView$OnItemClickListener;
 
 import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.event.i;
 import com.clilystudio.netbook.event.v;
 import com.clilystudio.netbook.model.TocSummary;
 
-final class bC implements AdapterView$OnItemClickListener {
+final class bC
+        implements AdapterView.OnItemClickListener {
+    private /* synthetic */ ReaderMixActivity a;
 
-    private ReaderMixActivity a;
-
-    bC(ReaderMixActivity ReaderMixActivity1) {
-        a = ReaderMixActivity1;
+    bC(ReaderMixActivity readerMixActivity) {
+        this.a = readerMixActivity;
     }
 
-    public final void onItemClick(AdapterView AdapterView1, View View2, int int3, long long4) {
-        int int6 = int3 - ReaderMixActivity.c(a).getHeaderViewsCount();
-        TocSummary TocSummary7 = (TocSummary) ReaderMixActivity.d(a).getItem(int6);
-
-        if (!TocSummary7.getHost().equals(ReaderMixActivity.a(a))) {
-            MyApplication.a().c(ReaderMixActivity.b(a));
-            if ("vip.zhuishushenqi.com".equals(ReaderMixActivity.a(a)))
-                am.c(ReaderMixActivity.b(a), 9);
-            else
-                am.c(ReaderMixActivity.b(a), 10);
+    /*
+     * Enabled aggressive block sorting
+     */
+    @Override
+    public final void onItemClick(AdapterView<?> adapterView, View view, int n, long l2) {
+        int n2 = n - ReaderMixActivity.c(this.a).getHeaderViewsCount();
+        TocSummary tocSummary = (TocSummary) ReaderMixActivity.d(this.a).getItem(n2);
+        if (!tocSummary.getHost().equals(ReaderMixActivity.a(this.a))) {
+            MyApplication.a().c(ReaderMixActivity.b(this.a));
+            if ("vip.zhuishushenqi.com".equals(ReaderMixActivity.a(this.a))) {
+                am.c((String) ReaderMixActivity.b(this.a), (int) 9);
+            } else {
+                am.c((String) ReaderMixActivity.b(this.a), (int) 10);
+            }
             i.a().c(new v(1));
-            ReaderMixActivity.a(a, TocSummary7.get_id());
+            ReaderMixActivity.a(this.a, tocSummary.get_id());
         }
-        a.finish();
+        this.a.finish();
     }
 }

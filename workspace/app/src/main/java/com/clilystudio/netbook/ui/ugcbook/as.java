@@ -2,79 +2,87 @@ package com.clilystudio.netbook.ui.ugcbook;
 
 import android.app.Activity;
 
+import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.model.UGCBookListRoot;
 import com.clilystudio.netbook.model.UGCBookListRoot$UGCBook;
+import com.clilystudio.netbook.util.e;
 
 import java.util.Arrays;
-import java.util.Collection;
+import java.util.List;
 
-final class as extends com.clilystudio.netbook.a.e {
+final class as
+        extends com.clilystudio.netbook.a.e<String, Void, UGCBookListRoot> {
+    private /* synthetic */ UGCMainListFragment a;
 
-    private UGCMainListFragment a;
-
-    as(UGCMainListFragment UGCMainListFragment1, byte byte2) {
-        this(UGCMainListFragment1);
+    private as(UGCMainListFragment uGCMainListFragment) {
+        this.a = uGCMainListFragment;
     }
 
-    private as(UGCMainListFragment UGCMainListFragment1) {
-        a = UGCMainListFragment1;
+    /* synthetic */ as(UGCMainListFragment uGCMainListFragment, byte by) {
+        this(uGCMainListFragment);
     }
 
-    private transient UGCBookListRoot a() {
-        if (!isCancelled()) {
+    private /* varargs */ UGCBookListRoot a() {
+        if (!this.isCancelled()) {
             try {
-                UGCBookListRoot UGCBookListRoot3;
-
-                com.clilystudio.netbook.api.b.a();
-                UGCBookListRoot3 = com.clilystudio.netbook.api.b.b().a(a.getArguments().getString("duration"), a.getArguments().getString("sort"), UGCMainListFragment.h(a).getCount(), 20, a.b());
-            } catch (Exception Exception1) {
-                Exception1.printStackTrace();
+                b.a();
+                UGCBookListRoot uGCBookListRoot = b.b().a(this.a.getArguments().getString("duration"), this.a.getArguments().getString("sort"), UGCMainListFragment.h(this.a).getCount(), 20, this.a.b());
+                return uGCBookListRoot;
+            } catch (Exception var1_2) {
+                var1_2.printStackTrace();
             }
         }
         return null;
     }
 
-    protected final Object doInBackground(Object[] Object_1darray1) {
-        return a();
+    /*
+     * Exception decompiling
+     */
+    @Override
+    protected final /* synthetic */ Object doInBackground(Object[] var1_1) {
+        // This method has failed to decompile.  When submitting a bug report, please provide this stack trace, and (if you hold appropriate legal rights) the relevant class file.
+        // java.lang.ArrayIndexOutOfBoundsException
+        throw new IllegalStateException("Decompilation failed");
     }
 
-    protected final void onPostExecute(Object Object1) {
-        Object Object2 = (UGCBookListRoot) Object1;
-
-        super.onPostExecute(Object2);
-        UGCMainListFragment.a(a).setVisibility(8);
-        UGCMainListFragment.c(a).setVisibility(8);
-        UGCMainListFragment.d(a).setVisibility(8);
-        UGCMainListFragment.e(a).n();
-        if (!isCancelled()) {
-            if (Object2 != null) {
-                if (((UGCBookListRoot) Object2).isOk()) {
-                    UGCBookListRoot$UGCBook[] UGCBook_1darray3 = ((UGCBookListRoot) Object2).getBookLists();
-                    int int4 = UGCBook_1darray3.length;
-                    Object Object5 = Arrays.asList(UGCBook_1darray3);
-
-                    UGCMainListFragment.g(a).addAll((Collection) Object5);
-                    UGCMainListFragment.h(a).a((Collection) UGCMainListFragment.g(a));
-                    if (int4 > 0) {
-                        if (int4 >= 20) {
-                            if (int4 == 20)
-                                UGCMainListFragment.e(a).setOnLastItemVisibleListener(UGCMainListFragment.f(a));
-                            return;
-                        }
-                    } else if (UGCMainListFragment.h(a).getCount() == 0) {
-                        UGCMainListFragment.a(a).setVisibility(0);
-                        UGCMainListFragment.a(a).setText((CharSequence) "\u8FD9\u91CC\u8FD8\u6CA1\u6709\u5E16\u5B50\uFF0C\u53BB\u53D1\u5E03\u4E00\u4E2A\u5427");
+    /*
+     * Enabled force condition propagation
+     * Lifted jumps to return sites
+     */
+    @Override
+    protected final /* synthetic */ void onPostExecute(Object object) {
+        UGCBookListRoot uGCBookListRoot = (UGCBookListRoot) object;
+        super.onPostExecute(uGCBookListRoot);
+        UGCMainListFragment.a(this.a).setVisibility(8);
+        UGCMainListFragment.c(this.a).setVisibility(8);
+        UGCMainListFragment.d(this.a).setVisibility(8);
+        UGCMainListFragment.e(this.a).n();
+        if (this.isCancelled()) return;
+        if (uGCBookListRoot != null) {
+            if (uGCBookListRoot.isOk()) {
+                UGCBookListRoot$UGCBook[] arruGCBookListRoot$UGCBook = uGCBookListRoot.getBookLists();
+                int n = arruGCBookListRoot$UGCBook.length;
+                List<UGCBookListRoot$UGCBook> list = Arrays.asList(arruGCBookListRoot$UGCBook);
+                UGCMainListFragment.g(this.a).addAll(list);
+                UGCMainListFragment.h(this.a).a(UGCMainListFragment.g(this.a));
+                if (n > 0) {
+                    if (n >= 20) {
+                        if (n != 20) return;
+                        UGCMainListFragment.e(this.a).setOnLastItemVisibleListener(UGCMainListFragment.f(this.a));
+                        return;
                     }
-                    UGCMainListFragment.e(a).setOnLastItemVisibleListener(null);
-                } else {
-                    UGCMainListFragment.e(a).setOnLastItemVisibleListener(UGCMainListFragment.f(a));
-                    com.clilystudio.netbook.util.e.a((Activity) a.getActivity(), "\u52A0\u8F7D\u5931\u8D25\uFF0C\u4E0A\u62C9\u53EF\u91CD\u65B0\u52A0\u8F7D");
+                } else if (UGCMainListFragment.h(this.a).getCount() == 0) {
+                    UGCMainListFragment.a(this.a).setVisibility(0);
+                    UGCMainListFragment.a(this.a).setText("\u8fd9\u91cc\u8fd8\u6ca1\u6709\u5e16\u5b50\uff0c\u53bb\u53d1\u5e03\u4e00\u4e2a\u5427");
                 }
-            } else {
-                UGCMainListFragment.e(a).setOnLastItemVisibleListener(UGCMainListFragment.f(a));
-                com.clilystudio.netbook.util.e.a((Activity) a.getActivity(), "\u52A0\u8F7D\u5931\u8D25\uFF0C\u8BF7\u68C0\u67E5\u7F51\u7EDC\u6216\u7A0D\u540E\u518D\u8BD5");
+                UGCMainListFragment.e(this.a).setOnLastItemVisibleListener(null);
+                return;
             }
+            UGCMainListFragment.e(this.a).setOnLastItemVisibleListener(UGCMainListFragment.f(this.a));
+            e.a((Activity) this.a.getActivity(), (String) "\u52a0\u8f7d\u5931\u8d25\uff0c\u4e0a\u62c9\u53ef\u91cd\u65b0\u52a0\u8f7d");
             return;
         }
+        UGCMainListFragment.e(this.a).setOnLastItemVisibleListener(UGCMainListFragment.f(this.a));
+        e.a((Activity) this.a.getActivity(), (String) "\u52a0\u8f7d\u5931\u8d25\uff0c\u8bf7\u68c0\u67e5\u7f51\u7edc\u6216\u7a0d\u540e\u518d\u8bd5");
     }
 }

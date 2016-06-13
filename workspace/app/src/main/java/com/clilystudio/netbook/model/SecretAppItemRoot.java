@@ -1,23 +1,22 @@
 package com.clilystudio.netbook.model;
 
 public class SecretAppItemRoot {
-
-    private boolean ok;
     private AppItem[] apps = new AppItem[0];
+    private boolean ok;
 
     public AppItem[] getApps() {
-        return apps;
+        return this.apps;
     }
 
-    public void setApps(AppItem[] AppItem_1darray1) {
-        apps = AppItem_1darray1;
+    public void setApps(AppItem[] arrappItem) {
+        this.apps = arrappItem;
     }
 
     public boolean isOk() {
-        return ok;
+        return this.ok;
     }
 
-    public void setOk(boolean boolean1) {
-        ok = boolean1;
+    public void setOk(boolean bl) {
+        this.ok = bl;
     }
 }

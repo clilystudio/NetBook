@@ -4,15 +4,15 @@ import com.clilystudio.netbook.model.Advert;
 
 import java.util.Comparator;
 
-final class d implements Comparator {
-
-    d(c c1) {
+final class d
+        implements Comparator<Advert> {
+    d(c c2) {
     }
 
-    public final int compare(Object Object1, Object Object2) {
-        Advert Advert3 = (Advert) Object1;
-        Advert Advert4 = (Advert) Object2;
-
-        return Advert3.getPriority() - Advert4.getPriority();
+    @Override
+    public final /* synthetic */ int compare(Object object, Object object2) {
+        Advert advert = (Advert) object;
+        Advert advert2 = (Advert) object2;
+        return advert.getPriority() - advert2.getPriority();
     }
 }

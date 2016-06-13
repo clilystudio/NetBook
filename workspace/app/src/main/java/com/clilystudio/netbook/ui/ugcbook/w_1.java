@@ -1,30 +1,35 @@
 package com.clilystudio.netbook.ui.ugcbook;
 
+import com.clilystudio.netbook.model.BookSummary;
+
 import java.util.List;
 
-final class w extends A {
+final class w
+        extends A {
+    private /* synthetic */ UGCGuideAddBookActivity b;
 
-    private UGCGuideAddBookActivity b;
-
-    w(UGCGuideAddBookActivity UGCGuideAddBookActivity1, byte byte2) {
-        this(UGCGuideAddBookActivity1);
+    private w(UGCGuideAddBookActivity uGCGuideAddBookActivity) {
+        this.b = uGCGuideAddBookActivity;
+        super(uGCGuideAddBookActivity, 0);
     }
 
-    private w(UGCGuideAddBookActivity UGCGuideAddBookActivity1) {
-        super(UGCGuideAddBookActivity1, (byte) 0);
-        b = UGCGuideAddBookActivity1;
+    /* synthetic */ w(UGCGuideAddBookActivity uGCGuideAddBookActivity, byte by) {
+        this(uGCGuideAddBookActivity);
     }
 
-    protected final void a(List List1) {
-        super.a(List1);
+    @Override
+    protected final void a(List<BookSummary> list) {
+        super.a(list);
     }
 
-    protected final void onPostExecute(Object Object1) {
-        super.a((List) Object1);
+    @Override
+    protected final /* synthetic */ void onPostExecute(Object object) {
+        super.a((List) object);
     }
 
+    @Override
     protected final void onPreExecute() {
         super.onPreExecute();
-        UGCGuideAddBookActivity.a(b, UGCGuideAddBookActivity.a(b).getText().toString());
+        UGCGuideAddBookActivity.a(this.b, UGCGuideAddBookActivity.a(this.b).getText().toString());
     }
 }

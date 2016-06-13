@@ -1,19 +1,21 @@
 package com.clilystudio.netbook.ui.post;
 
-import android.os.AsyncTask$Status;
+import android.os.AsyncTask;
 
 import com.clilystudio.netbook.widget.av;
 
-final class cr implements av {
+final class cr
+        implements av {
+    private /* synthetic */ PostDetailActivity a;
 
-    private PostDetailActivity a;
-
-    cr(PostDetailActivity PostDetailActivity1) {
-        a = PostDetailActivity1;
+    cr(PostDetailActivity postDetailActivity) {
+        this.a = postDetailActivity;
     }
 
+    @Override
     public final void a() {
-        if (PostDetailActivity.j(a) == null || PostDetailActivity.j(a).getStatus() == AsyncTask$Status.FINISHED)
-            PostDetailActivity.b(a);
+        if (PostDetailActivity.j(this.a) == null || PostDetailActivity.j(this.a).getStatus() == AsyncTask.Status.FINISHED) {
+            PostDetailActivity.b(this.a);
+        }
     }
 }

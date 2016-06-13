@@ -1,18 +1,19 @@
 package com.clilystudio.netbook.widget;
 
 import android.view.View;
-import android.view.View$OnClickListener;
 
-final class aA implements View$OnClickListener {
+final class aA
+        implements View.OnClickListener {
+    private /* synthetic */ ShareWarningView a;
 
-    private ShareWarningView a;
-
-    aA(ShareWarningView ShareWarningView1) {
-        a = ShareWarningView1;
+    aA(ShareWarningView shareWarningView) {
+        this.a = shareWarningView;
     }
 
-    public final void onClick(View View1) {
-        if (ShareWarningView.a(a) != null)
-            ShareWarningView.a(a).a();
+    @Override
+    public final void onClick(View view) {
+        if (ShareWarningView.a(this.a) != null) {
+            ShareWarningView.a(this.a).a();
+        }
     }
 }

@@ -1,51 +1,56 @@
 package com.clilystudio.netbook.ui.user;
 
 import com.clilystudio.netbook.a.e;
-import com.clilystudio.netbook.model.Game;
+import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.model.GameRoot;
 
-final class j extends e {
+final class j
+        extends e<Void, Void, GameRoot> {
+    private /* synthetic */ ChargeActivity a;
 
-    private ChargeActivity a;
-
-    j(ChargeActivity ChargeActivity1, byte byte2) {
-        this(ChargeActivity1);
+    private j(ChargeActivity chargeActivity) {
+        this.a = chargeActivity;
     }
 
-    private j(ChargeActivity ChargeActivity1) {
-        a = ChargeActivity1;
+    /* synthetic */ j(ChargeActivity chargeActivity, byte by) {
+        this(chargeActivity);
     }
 
-    private static transient GameRoot a() {
-        GameRoot GameRoot3;
-
+    private static /* varargs */ GameRoot a() {
         try {
-            com.clilystudio.netbook.api.b.a();
-            GameRoot3 = com.clilystudio.netbook.api.b.b().p();
-        } catch (Exception Exception1) {
-            Exception1.printStackTrace();
+            b.a();
+            GameRoot gameRoot = b.b().p();
+            return gameRoot;
+        } catch (Exception var0_1) {
+            var0_1.printStackTrace();
             return null;
         }
-        return GameRoot3;
     }
 
-    protected final Object doInBackground(Object[] Object_1darray1) {
-        return a();
+    /*
+     * Exception decompiling
+     */
+    @Override
+    protected final /* synthetic */ Object doInBackground(Object[] var1_1) {
+        // This method has failed to decompile.  When submitting a bug report, please provide this stack trace, and (if you hold appropriate legal rights) the relevant class file.
+        // java.lang.ArrayIndexOutOfBoundsException
+        throw new IllegalStateException("Decompilation failed");
     }
 
-    protected final void onPostExecute(Object Object1) {
-        Object Object2 = (GameRoot) Object1;
-
-        super.onPostExecute(Object2);
-        if (Object2 != null && ((GameRoot) Object2).isOk()) {
-            Game[] Game_1darray3 = ((GameRoot) Object2).getGames();
-
-            ChargeActivity.b(a).a(Game_1darray3);
-            if (Game_1darray3.length > 0)
-                a.f();
-            else
-                a.g();
-        } else
-            a.h();
+    @Override
+    protected final /* synthetic */ void onPostExecute(Object object) {
+        GameRoot gameRoot = (GameRoot) object;
+        super.onPostExecute(gameRoot);
+        if (gameRoot != null && gameRoot.isOk()) {
+            Object[] arrobject = gameRoot.getGames();
+            ChargeActivity.b(this.a).a(arrobject);
+            if (arrobject.length > 0) {
+                this.a.f();
+                return;
+            }
+            this.a.g();
+            return;
+        }
+        this.a.h();
     }
 }

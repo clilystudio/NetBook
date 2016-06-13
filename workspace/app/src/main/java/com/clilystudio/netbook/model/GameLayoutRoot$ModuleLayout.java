@@ -1,62 +1,53 @@
 package com.clilystudio.netbook.model;
 
 public class GameLayoutRoot$ModuleLayout {
-
-    private GameLayoutRoot$ModuleLayout$ActivityItem activity;
+    private ActivityItem activity;
     private GameGroupItem gameGroup;
     private String id;
     private String module;
     private String title;
 
-    public GameLayoutRoot$ModuleLayout$ActivityItem getActivity() {
-        return activity;
+    public ActivityItem getActivity() {
+        return this.activity;
     }
 
     public GameGroupItem getGameGroup() {
-        return gameGroup;
+        return this.gameGroup;
     }
 
-    public void setGameGroup(GameGroupItem GameGroupItem1) {
-        gameGroup = GameGroupItem1;
+    public void setGameGroup(GameGroupItem gameGroupItem) {
+        this.gameGroup = gameGroupItem;
     }
 
     public String getId() {
-        return id;
+        return this.id;
     }
 
-    public void setId(String String1) {
-        id = String1;
+    public void setId(String string) {
+        this.id = string;
     }
 
     public String getModule() {
-        return module;
+        return this.module;
     }
 
-    public void setModule(String String1) {
-        module = String1;
+    public void setModule(String string) {
+        this.module = string;
     }
 
     public String getTitle() {
-        return title;
+        return this.title;
     }
 
-    public void setTitle(String String1) {
-        title = String1;
+    public void setTitle(String string) {
+        this.title = string;
     }
 
     public ModuleType getType() {
-        ModuleType[] ModuleType_1darray1 = ModuleType.values();
-        int int2 = ModuleType_1darray1.length;
-        int int3 = 0;
-
-        while (int3 < int2) {
-            ModuleType ModuleType4 = ModuleType_1darray1[int3];
-
-            if (ModuleType4.getName().equals(module))
-                return ModuleType4;
-            else
-                ++int3;
+        for (ModuleType moduleType : ModuleType.values()) {
+            if (!moduleType.getName().equals(this.module)) continue;
+            return moduleType;
         }
-        throw new RuntimeException(new StringBuilder("module ").append(module).append(" not valid").toString());
+        throw new RuntimeException("module " + this.module + " not valid");
     }
 }

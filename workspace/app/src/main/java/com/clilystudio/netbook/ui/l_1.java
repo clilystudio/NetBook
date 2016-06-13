@@ -1,19 +1,20 @@
 package com.clilystudio.netbook.ui;
 
-final class l implements Runnable {
+final class l
+        implements Runnable {
+    private /* synthetic */ AudioBookPlayActivity a;
 
-    private AudioBookPlayActivity a;
-
-    l(AudioBookPlayActivity AudioBookPlayActivity1) {
-        a = AudioBookPlayActivity1;
+    l(AudioBookPlayActivity audioBookPlayActivity) {
+        this.a = audioBookPlayActivity;
     }
 
+    @Override
     public final void run() {
-        int int1 = AudioBookPlayActivity.s(a).getFirstVisiblePosition();
-
-        if (int1 >= AudioBookPlayActivity.k(a))
-            AudioBookPlayActivity.s(a).smoothScrollToPosition(AudioBookPlayActivity.k(a));
-        else
-            AudioBookPlayActivity.s(a).smoothScrollToPosition(AudioBookPlayActivity.k(a) + (AudioBookPlayActivity.s(a).getLastVisiblePosition() - int1) / 2);
+        int n = AudioBookPlayActivity.s(this.a).getFirstVisiblePosition();
+        if (n >= AudioBookPlayActivity.k(this.a)) {
+            AudioBookPlayActivity.s(this.a).smoothScrollToPosition(AudioBookPlayActivity.k(this.a));
+            return;
+        }
+        AudioBookPlayActivity.s(this.a).smoothScrollToPosition(AudioBookPlayActivity.k(this.a) + (AudioBookPlayActivity.s(this.a).getLastVisiblePosition() - n) / 2);
     }
 }

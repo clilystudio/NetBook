@@ -3,32 +3,31 @@ package com.clilystudio.netbook.model;
 import java.util.Date;
 
 public class UserVipInfo {
-
     private long dueInMs;
     private boolean ok;
     private Date vipExpire;
 
     public long getDueInMs() {
-        return dueInMs;
+        return this.dueInMs;
     }
 
-    public void setDueInMs(long long1) {
-        dueInMs = long1;
+    public void setDueInMs(long l) {
+        this.dueInMs = l;
     }
 
     public Date getVipExpire() {
-        return vipExpire;
+        return this.vipExpire;
     }
 
-    public void setVipExpire(Date Date1) {
-        vipExpire = Date1;
+    public void setVipExpire(Date date) {
+        this.vipExpire = date;
     }
 
     public boolean isOk() {
-        return ok;
+        return this.ok;
     }
 
-    public void setOk(boolean boolean1) {
-        ok = boolean1;
+    public void setOk(boolean bl) {
+        this.ok = bl;
     }
 }

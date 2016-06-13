@@ -1,17 +1,16 @@
 package com.clilystudio.netbook.reader.txt;
 
-import java.util.Collection;
+final class P
+        implements Runnable {
+    private /* synthetic */ ScanTxtFileActivity a;
 
-final class P implements Runnable {
-
-    private ScanTxtFileActivity a;
-
-    P(ScanTxtFileActivity ScanTxtFileActivity1) {
-        a = ScanTxtFileActivity1;
+    P(ScanTxtFileActivity scanTxtFileActivity) {
+        this.a = scanTxtFileActivity;
     }
 
+    @Override
     public final void run() {
-        ScanTxtFileActivity.a(a).a((Collection) ScanTxtFileActivity.b(a));
-        ScanTxtFileActivity.a(a, ScanTxtFileActivity.b(a).size());
+        ScanTxtFileActivity.a(this.a).a(ScanTxtFileActivity.b(this.a));
+        ScanTxtFileActivity.a(this.a, ScanTxtFileActivity.b(this.a).size());
     }
 }

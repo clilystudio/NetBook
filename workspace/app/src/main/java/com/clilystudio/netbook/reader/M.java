@@ -1,16 +1,16 @@
 package com.clilystudio.netbook.reader;
 
 import android.content.Context;
-import android.view.animation.Interpolator;
 import android.widget.Scroller;
 
-public final class M extends Scroller {
-
-    public M(PagerWidget PagerWidget1, Context Context2) {
-        super(Context2, (Interpolator) new N(PagerWidget1));
+public final class M
+        extends Scroller {
+    public M(PagerWidget pagerWidget, Context context) {
+        super(context, new N(pagerWidget));
     }
 
-    public final void startScroll(int int1, int int2, int int3, int int4, int int5) {
-        super.startScroll(int1, int2, int3, int4, 400);
+    @Override
+    public final void startScroll(int n, int n2, int n3, int n4, int n5) {
+        super.startScroll(n, n2, n3, n4, 400);
     }
 }

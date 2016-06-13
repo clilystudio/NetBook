@@ -5,22 +5,17 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View$MeasureSpec;
-import android.view.View$OnClickListener;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
-public class AutoFlowView extends LinearLayout implements View$OnClickListener {
-// Error: Internal #201: 
-// The following method may not be correct.
-
-    private static final String a = null;
+public class AutoFlowView
+        extends LinearLayout
+        implements View.OnClickListener {
+    private static final String a = AutoFlowView.class.getSimpleName();
     private static int b;
     private static int c;
     private static int d;
@@ -29,225 +24,192 @@ public class AutoFlowView extends LinearLayout implements View$OnClickListener {
     private static int g;
     private static i h;
     private static int i;
-
-    static {
-    }
-
-    private List j;
-    private List k;
+    private List<AutoFlowView$Word> j;
+    private List<View> k;
     private int[] l;
-    public AutoFlowView(Context Context1, AttributeSet AttributeSet2) {
-        super(Context1, AttributeSet2);
-        b();
+
+    public AutoFlowView(Context context) {
+        super(context);
+        this.b();
     }
 
-    public AutoFlowView(Context Context1) {
-        super(Context1);
-        b();
+    public AutoFlowView(Context context, AttributeSet attributeSet) {
+        super(context, attributeSet);
+        this.b();
     }
 
-    private void a(List List1, int int2) {
-        if (j.size() > int2 << 2) {
-            Object Object3 = new h(this);
-
-            ((h) Object3).a(e);
-            ((h) Object3).a.addAll((Collection) j.subList(int2 << 2, Math.min(4 + (int2 << 2), j.size())));
-            ((h) Object3).a(e);
-            List1.add(Object3);
+    private void a(List<h> list, int n) {
+        if (this.j.size() > n << 2) {
+            h h2 = new h(this);
+            h2.a(e);
+            h2.a.addAll(this.j.subList(n << 2, Math.min(4 + (n << 2), this.j.size())));
+            h2.a(e);
+            list.add(h2);
         }
     }
 
     private void b() {
-        setOrientation(0);
-        j = (List) new ArrayList();
-        k = (List) new ArrayList();
-        g = com.clilystudio.netbook.hpay100.a.a.a(getContext(), 12.0F);
-        b = com.clilystudio.netbook.hpay100.a.a.a(getContext(), 6.0F);
-        c = com.clilystudio.netbook.hpay100.a.a.a(getContext(), 12.0F);
-        d = com.clilystudio.netbook.hpay100.a.a.a(getContext(), 12.0F);
-        e = com.clilystudio.netbook.hpay100.a.a.a(getContext(), 16.0F);
-        f = com.clilystudio.netbook.hpay100.a.a.a(getContext(), 4.0F);
-        if (com.clilystudio.netbook.hpay100.a.a.a(getContext(), "customer_night_theme", false))
-            l = new int[]{2130837623, 2130837625, 2130837627, 2130837629, 2130837631, 2130837633, 2130837635};
-        else
-            l = new int[]{2130837622, 2130837624, 2130837626, 2130837628, 2130837630, 2130837632, 2130837634};
+        this.setOrientation(0);
+        this.j = new ArrayList<AutoFlowView$Word>();
+        this.k = new ArrayList<View>();
+        g = a.a(this.getContext(), 12.0f);
+        b = a.a(this.getContext(), 6.0f);
+        c = a.a(this.getContext(), 12.0f);
+        d = a.a(this.getContext(), 12.0f);
+        e = a.a(this.getContext(), 16.0f);
+        f = a.a(this.getContext(), 4.0f);
+        if (a.a(this.getContext(), "customer_night_theme", false)) {
+            this.l = new int[]{2130837623, 2130837625, 2130837627, 2130837629, 2130837631, 2130837633, 2130837635};
+            return;
+        }
+        this.l = new int[]{2130837622, 2130837624, 2130837626, 2130837628, 2130837630, 2130837632, 2130837634};
     }
 
+    /*
+     * Enabled aggressive block sorting
+     */
     public final void a() {
-        LayoutInflater LayoutInflater1;
-        List List2;
-        Object Object3;
-        int int4;
-        Object Object6;
-        int int7;
-        int int8;
-        int int11;
-
-        Collections.sort(j, (Comparator) new g(this));
-        removeAllViews();
-        k.clear();
-        LayoutInflater1 = LayoutInflater.from(getContext());
-        List2 = j;
-        Object3 = new ArrayList();
-        int4 = getMeasuredWidth();
-        if (int4 == 0) {
-            Object Object5 = new ArrayList();
-
-            a((List) Object5, 0);
-            a((List) Object5, 1);
-            a((List) Object5, 2);
-            Object6 = Object5;
+        List list;
+        Collections.sort(this.j, new g(this));
+        this.removeAllViews();
+        this.k.clear();
+        LayoutInflater layoutInflater = LayoutInflater.from(this.getContext());
+        List<AutoFlowView$Word> list2 = this.j;
+        ArrayList<h> arrayList = new ArrayList<h>();
+        int n = this.getMeasuredWidth();
+        if (n == 0) {
+            ArrayList<h> arrayList2 = new ArrayList<h>();
+            this.a(arrayList2, 0);
+            this.a(arrayList2, 1);
+            this.a(arrayList2, 2);
+            list = arrayList2;
         } else {
-            Object Object16 = new h(this);
-            int int17 = 0;
-            Object Object18 = Object16;
-            int int19 = 0;
-            int int20 = 0;
-
-            while (int17 < List2.size()) {
-                Object Object21 = (AutoFlowView$Word) List2.get(int17);
-                int int22 = ((AutoFlowView$Word) Object21).content.length() * g + (c << 1) + e;
-
-                int19 += int22;
-                if (int19 >= int4 - f) {
-                    ++int20;
-                    ((h) Object18).a(e);
-                    ((List) Object3).add(Object18);
-                    Object18 = new h(this);
-                    int19 = int22;
+            h h2 = new h(this);
+            h h3 = h2;
+            int n2 = 0;
+            int n3 = 0;
+            for (int j = 0; j < list2.size(); ++j) {
+                AutoFlowView$Word autoFlowView$Word = list2.get(j);
+                int n4 = autoFlowView$Word.content.length() * g + (c << 1) + e;
+                if ((n2 += n4) >= n - f) {
+                    ++n3;
+                    h3.a(e);
+                    arrayList.add(h3);
+                    h3 = new h(this);
+                    n2 = n4;
                 }
-                if (int20 == 3)
-                    break;
-                ((h) Object18).a.add(Object21);
-                ++int17;
+                if (n3 == 3) break;
+                h3.a.add(autoFlowView$Word);
             }
-            Object6 = Object3;
+            list = arrayList;
         }
-        int7 = 0;
-        for (int8 = 0; int7 < ((List) Object6).size(); int8 = int11) {
-            h h9 = (h) ((List) Object6).get(int7);
-            int int10 = 0;
-            int int15;
-
-            for (int11 = int8; int10 < h9.a.size(); int11 = int15) {
-                AutoFlowView$Word Word12 = (AutoFlowView$Word) h9.a.get(int10);
-                Object Object13 = (TextView) LayoutInflater1.inflate(2130903154, null, false);
-
-                ((TextView) Object13).setTextSize(12.0F);
-                ((TextView) Object13).setBackgroundResource(2130837844);
-                ((TextView) Object13).setPadding(c, b, c, b);
-                ((TextView) Object13).setText((CharSequence) Word12.content);
-                ((TextView) Object13).setOnClickListener(this);
-                ((TextView) Object13).setTag(Integer.valueOf(Word12.leftMargin));
-                ((TextView) Object13).setBackgroundResource(l[int11 % l.length]);
-                k.add(Object13);
-                addView((View) Object13);
-                Word12.show = 1 + Word12.show;
-                int15 = int11 + 1;
-                ++int10;
+        int n5 = 0;
+        int n6 = 0;
+        do {
+            if (n5 >= list.size()) {
+                a.a(this.j, c.e, "search_hotword.txt");
+                return;
             }
-            ++int7;
-        }
-        com.clilystudio.netbook.hpay100.a.a.a(j, com.clilystudio.netbook.c.e, "search_hotword.txt");
+            h h4 = (h) list.get(n5);
+            int n7 = n6;
+            for (int n8 = 0; n8 < h4.a.size(); autoFlowView$Word.show = 1 + autoFlowView$Word.show, ++n8) {
+                AutoFlowView$Word autoFlowView$Word = (AutoFlowView$Word) h4.a.get(n8);
+                TextView textView = (TextView) layoutInflater.inflate(2130903154, null, false);
+                textView.setTextSize(12.0f);
+                textView.setBackgroundResource(2130837844);
+                textView.setPadding(c, b, c, b);
+                textView.setText(autoFlowView$Word.content);
+                textView.setOnClickListener(this);
+                textView.setTag(autoFlowView$Word.leftMargin);
+                textView.setBackgroundResource(this.l[n7 % this.l.length]);
+                this.k.add(textView);
+                this.addView(textView);
+                int n9 = n7 + 1;
+                n7 = n9;
+            }
+            ++n5;
+            n6 = n7;
+        } while (true);
     }
 
-    public void onClick(View View1) {
+    @Override
+    public void onClick(View view) {
         if (h != null) {
             i i2 = h;
-
-            k.indexOf(View1);
-            i2.a(((TextView) View1).getText().toString());
+            this.k.indexOf(view);
+            i2.a(((TextView) view).getText().toString());
         }
     }
 
-    protected void onLayout(boolean boolean1, int int2, int int3, int int4, int int5) {
-        int int6 = int4 - c;
-        int int8;
-        int int9;
-        int int10;
-        int int11;
-
-        Log.d(a, new StringBuilder("changed = ").append(boolean1).append(" left = 0").append(" top = 0").append(" right = ").append(int6).append(" botom = ").append(int5).toString());
-        int8 = getChildCount();
-        int9 = 0;
-        int10 = 0;
-        int11 = 0;
-        while (int9 < int8) {
-            View View12 = getChildAt(int9);
-            int int13 = View12.getMeasuredWidth();
-            int int14 = View12.getMeasuredHeight();
-            int int15 = ((Integer) View12.getTag()).intValue();
-            int int16;
-
-            int10 += int13 + int15;
-            if (int11 == 0)
-                int16 = int14;
-            else
-                int16 = int14 + int11 * (int14 + d);
-            if (int10 >= int6) {
-                int10 = int13 + int15;
-                ++int11;
-                int16 = int14 + int11 * (int14 + d);
+    /*
+     * Enabled aggressive block sorting
+     */
+    @Override
+    protected void onLayout(boolean bl, int n, int n2, int n3, int n4) {
+        int n5 = n3 - c;
+        Log.d(a, "changed = " + bl + " left = 0" + " top = 0" + " right = " + n5 + " botom = " + n4);
+        int n6 = this.getChildCount();
+        int n7 = 0;
+        int n8 = 0;
+        int n9 = 0;
+        while (n7 < n6) {
+            View view = this.getChildAt(n7);
+            int n10 = view.getMeasuredWidth();
+            int n11 = view.getMeasuredHeight();
+            int n12 = (Integer) view.getTag();
+            int n13 = n9 == 0 ? n11 : n11 + n9 * (n11 + d);
+            if ((n8 += n10 + n12) >= n5) {
+                n8 = n10 + n12;
+                n13 = n11 + ++n9 * (n11 + d);
             }
-            View12.layout(int10 - int13, int16 - int14, int10, int16);
-            ++int9;
+            view.layout(n8 - n10, n13 - n11, n8, n13);
+            ++n7;
         }
     }
 
-    protected void onMeasure(int int1, int int2) {
-        int int3 = getChildCount();
-        int int4;
-
-        for (int4 = 0; int4 < int3; ++int4) {
-            View View6 = getChildAt(int4);
-
-            View6.measure(0, 0);
-            if (int4 == 0)
-                i = 3 * (View6.getMeasuredHeight() + d);
+    @Override
+    protected void onMeasure(int n, int n2) {
+        int n3 = this.getChildCount();
+        for (int j = 0; j < n3; ++j) {
+            View view = this.getChildAt(j);
+            view.measure(0, 0);
+            if (j != 0) continue;
+            i = 3 * (view.getMeasuredHeight() + d);
         }
-        View$MeasureSpec.getSize(int1);
-        setMeasuredDimension(View$MeasureSpec.getSize(int1), i);
+        View.MeasureSpec.getSize(n);
+        this.setMeasuredDimension(View.MeasureSpec.getSize(n), i);
     }
 
-    public void setOnItemClickListener(i i1) {
-        h = i1;
+    public void setOnItemClickListener(i i2) {
+        h = i2;
     }
 
-    public void setWords(List List1) {
-        j.clear();
-        if (List1 != null && List1.size() != 0) {
-            int int2 = ((AutoFlowView$Word) List1.get(0)).show;
-            int int3;
-            int int4;
-
-            for (int3 = 1; int3 < List1.size(); ++int3) {
-                if (((AutoFlowView$Word) List1.get(int3)).show < int2)
-                    int2 = ((AutoFlowView$Word) List1.get(int3)).show;
-            }
-            for (int4 = 0; int4 < List1.size(); ++int4) {
-                Object Object5 = new AutoFlowView$Word();
-
-                ((AutoFlowView$Word) Object5).content = ((AutoFlowView$Word) List1.get(int4)).content;
-                ((AutoFlowView$Word) Object5).show = ((AutoFlowView$Word) List1.get(int4)).show - int2;
-                j.add(Object5);
-            }
-            a();
+    public void setWords(List<AutoFlowView$Word> list) {
+        this.j.clear();
+        if (list == null || list.size() == 0) {
+            return;
         }
+        int n = list.get((int) 0).show;
+        for (int j = 1; j < list.size(); ++j) {
+            if (list.get((int) j).show >= n) continue;
+            n = list.get((int) j).show;
+        }
+        for (int k = 0; k < list.size(); ++k) {
+            AutoFlowView$Word autoFlowView$Word = new AutoFlowView$Word();
+            autoFlowView$Word.content = list.get((int) k).content;
+            autoFlowView$Word.show = list.get((int) k).show - n;
+            this.j.add(autoFlowView$Word);
+        }
+        this.a();
     }
 
-    public void setWords(String[] String_1darray1) {
-        int int2;
-        int int3;
-
-        j.clear();
-        int2 = String_1darray1.length;
-        for (int3 = 0; int3 < int2; ++int3) {
-            String String4 = String_1darray1[int3];
-            Object Object5 = new AutoFlowView$Word();
-
-            ((AutoFlowView$Word) Object5).content = String4;
-            j.add(Object5);
+    public void setWords(String[] arrstring) {
+        this.j.clear();
+        for (String string : arrstring) {
+            AutoFlowView$Word autoFlowView$Word = new AutoFlowView$Word();
+            autoFlowView$Word.content = string;
+            this.j.add(autoFlowView$Word);
         }
-        a();
+        this.a();
     }
 }

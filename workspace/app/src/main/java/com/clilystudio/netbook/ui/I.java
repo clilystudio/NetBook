@@ -1,24 +1,24 @@
 package com.clilystudio.netbook.ui;
 
 import android.graphics.Bitmap;
-import android.view.ViewGroup$LayoutParams;
+import android.view.ViewGroup;
 
-final class I implements com.nostra13.universalimageloader.core.d.a {
+final class I
+        implements a {
+    private /* synthetic */ AutoScaleImageView a;
 
-    private AutoScaleImageView a;
-
-    I(AutoScaleImageView AutoScaleImageView1) {
-        a = AutoScaleImageView1;
+    I(AutoScaleImageView autoScaleImageView) {
+        this.a = autoScaleImageView;
     }
 
-    public final void a(Bitmap Bitmap1) {
-        float float2 = (float) Bitmap1.getHeight() / (float) Bitmap1.getWidth() * (float) AutoScaleImageView.a(a);
-        ViewGroup$LayoutParams LayoutParams3 = a.getLayoutParams();
-
-        if (LayoutParams3 != null) {
-            LayoutParams3.height = (int) float2;
-            LayoutParams3.width = AutoScaleImageView.a(a);
-            a.requestLayout();
+    @Override
+    public final void a(Bitmap bitmap) {
+        float f = (float) bitmap.getHeight() / (float) bitmap.getWidth() * (float) AutoScaleImageView.a(this.a);
+        ViewGroup.LayoutParams layoutParams = this.a.getLayoutParams();
+        if (layoutParams != null) {
+            layoutParams.height = (int) f;
+            layoutParams.width = AutoScaleImageView.a(this.a);
+            this.a.requestLayout();
         }
     }
 }

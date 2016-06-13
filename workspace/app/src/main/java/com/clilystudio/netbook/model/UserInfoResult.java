@@ -1,23 +1,23 @@
 package com.clilystudio.netbook.model;
 
-public class UserInfoResult extends User {
-
+public class UserInfoResult
+        extends User {
     private int followers;
     private int followings;
 
     public int getFollowers() {
-        return followers;
+        return this.followers;
     }
 
-    public void setFollowers(int int1) {
-        followers = int1;
+    public void setFollowers(int n) {
+        this.followers = n;
     }
 
     public int getFollowings() {
-        return followings;
+        return this.followings;
     }
 
-    public void setFollowings(int int1) {
-        followings = int1;
+    public void setFollowings(int n) {
+        this.followings = n;
     }
 }

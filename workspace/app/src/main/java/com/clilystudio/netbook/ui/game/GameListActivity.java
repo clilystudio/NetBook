@@ -6,100 +6,112 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
-import android.widget.AdapterView$OnItemClickListener;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 
+import com.clilystudio.netbook.d;
+import com.clilystudio.netbook.model.Game;
 import com.clilystudio.netbook.model.GameCat;
 import com.clilystudio.netbook.ui.BaseLoadingActivity;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.List;
 
-public class GameListActivity extends BaseLoadingActivity {
-
+public class GameListActivity
+        extends BaseLoadingActivity {
     private Q a;
-    private boolean e;
-    private List b = new ArrayList();
+    private List<Game> b = new ArrayList<Game>();
     private GameCat c = null;
-    private BroadcastReceiver f = new P(this);
-// Error: Internal #201: 
-// The following method may not be correct.
+    private boolean e;
+    private BroadcastReceiver f;
 
-    public static Intent a(Context Context1, GameCat GameCat2) {
+    public GameListActivity() {
+        this.f = new P(this);
     }
 
-    static List a(GameListActivity GameListActivity1) {
-        return GameListActivity1.b;
+    public static Intent a(Context context, GameCat gameCat) {
+        return new d().a(context, GameListActivity.class).a("game_cat_list", gameCat).a();
     }
 
-    static void a(GameListActivity GameListActivity1, List List2) {
-        GameListActivity1.a(List2);
+    static /* synthetic */ List a(GameListActivity gameListActivity) {
+        return gameListActivity.b;
     }
 
-    static boolean b(GameListActivity GameListActivity1) {
-        return GameListActivity1.e;
+    static /* synthetic */ void a(GameListActivity gameListActivity, List list) {
+        gameListActivity.a(list);
     }
 
-    static void c(GameListActivity GameListActivity1) {
-        GameListActivity1.j();
+    static /* synthetic */ boolean b(GameListActivity gameListActivity) {
+        return gameListActivity.e;
     }
 
-    private void a(List List1) {
-        b = List1;
-        a.a((Collection) List1);
-        j();
+    static /* synthetic */ void c(GameListActivity gameListActivity) {
+        gameListActivity.j();
     }
 
+    private void a(List<Game> list) {
+        this.b = list;
+        this.a.a(list);
+        this.j();
+    }
+
+    /*
+     * Enabled aggressive block sorting
+     */
     private void j() {
-        if (!e && b != null && b.size() > 0) {
-            s.a((Activity) this, b);
-            a.a((Collection) b);
+        if (this.e || this.b == null || this.b.size() <= 0) {
+            return;
         }
+        s.a((Activity) this, this.b);
+        this.a.a(this.b);
     }
 
+    @Override
     protected final void b() {
-        i();
-        if (c != null) {
-            f();
-            a(Arrays.asList(c.getGames()));
-        } else
-            new S(this, (byte) 0).b(new String[0]);
+        this.i();
+        if (this.c != null) {
+            this.f();
+            this.a(Arrays.asList(this.c.getGames()));
+            return;
+        }
+        new S(this, 0).b(new String[0]);
     }
 
-    protected void onCreate(Bundle Bundle1) {
-        Intent Intent2;
-        String String3;
-        ListView ListView4;
-
-        super.onCreate(Bundle1);
-        a(2130903321);
-        Intent2 = getIntent();
-        e = Intent2.getBooleanExtra("micro_game", false);
-        if (Intent2.hasExtra("game_cat_list")) {
-            c = (GameCat) getIntent().getSerializableExtra("game_cat_list");
-            String3 = c.get_id();
-        } else
-            String3 = Intent2.getStringExtra("game_list_title");
-        b(String3);
-        ListView4 = (ListView) findViewById(2131493135);
-        ListView4.setDividerHeight(0);
-        ListView4.setOnItemClickListener((AdapterView$OnItemClickListener) new O(this));
-        a = new Q(this, getLayoutInflater());
-        ListView4.setAdapter((ListAdapter) a);
-        b();
+    /*
+     * Enabled aggressive block sorting
+     */
+    @Override
+    protected void onCreate(Bundle bundle) {
+        String string;
+        super.onCreate(bundle);
+        this.a(2130903321);
+        Intent intent = this.getIntent();
+        this.e = intent.getBooleanExtra("micro_game", false);
+        if (intent.hasExtra("game_cat_list")) {
+            this.c = (GameCat) this.getIntent().getSerializableExtra("game_cat_list");
+            string = this.c.get_id();
+        } else {
+            string = intent.getStringExtra("game_list_title");
+        }
+        this.b(string);
+        ListView listView = (ListView) this.findViewById(2131493135);
+        listView.setDividerHeight(0);
+        listView.setOnItemClickListener(new O(this));
+        this.a = new Q(this, this.getLayoutInflater());
+        listView.setAdapter(this.a);
+        this.b();
     }
 
+    @Override
     public void onPause() {
         super.onPause();
-        unregisterReceiver(f);
+        this.unregisterReceiver(this.f);
     }
 
+    @Override
     public void onResume() {
         super.onResume();
-        registerReceiver(f, new IntentFilter("update_game_item_status"));
-        j();
+        this.registerReceiver(this.f, new IntentFilter("update_game_item_status"));
+        this.j();
     }
 }

@@ -1,14 +1,15 @@
 package com.clilystudio.netbook.reader;
 
-final class cR implements cc {
+final class cR
+        implements cc {
+    private /* synthetic */ SettingWidget a;
 
-    private SettingWidget a;
-
-    cR(SettingWidget SettingWidget1) {
-        a = SettingWidget1;
+    cR(SettingWidget settingWidget) {
+        this.a = settingWidget;
     }
 
+    @Override
     public final void a() {
-        SettingWidget.a(a);
+        SettingWidget.a(this.a);
     }
 }

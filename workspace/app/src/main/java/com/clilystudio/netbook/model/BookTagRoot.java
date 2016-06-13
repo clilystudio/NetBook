@@ -1,23 +1,22 @@
 package com.clilystudio.netbook.model;
 
 public class BookTagRoot {
-
     private BookSummary[] books;
     private boolean ok;
 
     public BookSummary[] getBooks() {
-        return books;
+        return this.books;
     }
 
-    public void setBooks(BookSummary[] BookSummary_1darray1) {
-        books = BookSummary_1darray1;
+    public void setBooks(BookSummary[] arrbookSummary) {
+        this.books = arrbookSummary;
     }
 
     public boolean isOk() {
-        return ok;
+        return this.ok;
     }
 
-    public void setOk(boolean boolean1) {
-        ok = boolean1;
+    public void setOk(boolean bl) {
+        this.ok = bl;
     }
 }

@@ -2,54 +2,57 @@ package com.clilystudio.netbook.ui;
 
 import android.content.Context;
 
+import com.clilystudio.netbook.a.e;
+import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.model.BookInfo;
 
 import java.io.IOException;
 
-final class aI extends com.clilystudio.netbook.a.e {
+final class aI
+        extends e<String, Void, BookInfo> {
+    private /* synthetic */ BookInfoActivity a;
 
-    private BookInfoActivity a;
-
-    aI(BookInfoActivity BookInfoActivity1, byte byte2) {
-        this(BookInfoActivity1);
+    private aI(BookInfoActivity bookInfoActivity) {
+        this.a = bookInfoActivity;
     }
 
-    private aI(BookInfoActivity BookInfoActivity1) {
-        a = BookInfoActivity1;
+    /* synthetic */ aI(BookInfoActivity bookInfoActivity, byte by) {
+        this(bookInfoActivity);
     }
 
-    private transient BookInfo a(String[] String_1darray1) {
-        BookInfo BookInfo3;
-
+    private /* varargs */ BookInfo a(String... arrstring) {
         try {
-            BookInfo3 = com.clilystudio.netbook.api.b.b().r(String_1darray1[0]);
-        } catch (IOException IOException2) {
-            IOException2.printStackTrace();
+            BookInfo bookInfo = b.b().r(arrstring[0]);
+            return bookInfo;
+        } catch (IOException var2_3) {
+            var2_3.printStackTrace();
             return null;
         }
-        return BookInfo3;
     }
 
-    protected final Object doInBackground(Object[] Object_1darray1) {
-        return a((String[]) Object_1darray1);
+    @Override
+    protected final /* synthetic */ Object doInBackground(Object[] arrobject) {
+        return this.a((String[]) arrobject);
     }
 
-    protected final void onPostExecute(Object Object1) {
-        Object Object2 = (BookInfo) Object1;
-
-        super.onPostExecute(Object2);
-        if (!a.isFinishing()) {
-            if (Object2 != null) {
-                BookInfoActivity.b(a, 1);
-                BookInfoActivity.a(a, (BookInfo) Object2);
-                BookInfoActivity.d(a);
-                BookInfoActivity.e(a);
-                BookInfoActivity.f(a);
-                com.clilystudio.netbook.hpay100.a.a.a((Context) a, (BookInfo) Object2);
-            } else {
-                BookInfoActivity.b(a, 2);
-                return;
-            }
+    /*
+     * Enabled force condition propagation
+     * Lifted jumps to return sites
+     */
+    @Override
+    protected final /* synthetic */ void onPostExecute(Object object) {
+        BookInfo bookInfo = (BookInfo) object;
+        super.onPostExecute(bookInfo);
+        if (this.a.isFinishing()) return;
+        if (bookInfo != null) {
+            BookInfoActivity.b(this.a, 1);
+            BookInfoActivity.a(this.a, bookInfo);
+            BookInfoActivity.d(this.a);
+            BookInfoActivity.e(this.a);
+            BookInfoActivity.f(this.a);
+            a.a((Context) this.a, bookInfo);
+            return;
         }
+        BookInfoActivity.b(this.a, 2);
     }
 }

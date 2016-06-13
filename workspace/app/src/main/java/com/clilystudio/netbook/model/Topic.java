@@ -1,23 +1,22 @@
 package com.clilystudio.netbook.model;
 
 public class Topic {
-
     private boolean ok;
     private TopicPost[] posts;
 
     public TopicPost[] getPosts() {
-        return posts;
+        return this.posts;
     }
 
-    public void setPosts(TopicPost[] TopicPost_1darray1) {
-        posts = TopicPost_1darray1;
+    public void setPosts(TopicPost[] arrtopicPost) {
+        this.posts = arrtopicPost;
     }
 
     public boolean isOk() {
-        return ok;
+        return this.ok;
     }
 
-    public void setOk(boolean boolean1) {
-        ok = boolean1;
+    public void setOk(boolean bl) {
+        this.ok = bl;
     }
 }

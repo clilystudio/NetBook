@@ -1,33 +1,38 @@
 package com.clilystudio.netbook.util;
 
+import android.app.Activity;
 import android.content.DialogInterface;
-import android.content.DialogInterface$OnClickListener;
 
-final class O implements DialogInterface$OnClickListener {
+final class O
+        implements DialogInterface.OnClickListener {
+    private /* synthetic */ boolean a;
+    private /* synthetic */ String b;
+    private /* synthetic */ String c;
+    private /* synthetic */ N d;
 
-    private boolean a;
-    private String b;
-    private String c;
-    private N d;
-    O(N N1, boolean boolean2, String String3, String String4) {
-        d = N1;
-        a = boolean2;
-        b = String3;
-        c = String4;
+    O(N n, boolean bl, String string, String string2) {
+        this.d = n;
+        this.a = bl;
+        this.b = string;
+        this.c = string2;
     }
 
-    public final void onClick(DialogInterface DialogInterface1, int int2) {
-        String String3 = String.valueOf(int2 + 1);
-
-        e.a(N.a(d), 2131034431);
-        if (!a) {
-            if (b == null)
-                new an(c, String3).start();
-            else
-                new ao(c, b, String3).start();
-        } else if (b == null)
-            new ap(c, String3).start();
-        else
-            new aq(c, b, String3).start();
+    @Override
+    public final void onClick(DialogInterface dialogInterface, int n) {
+        String string = String.valueOf(n + 1);
+        e.a((Activity) N.a(this.d), (int) 2131034431);
+        if (!this.a) {
+            if (this.b == null) {
+                new an(this.c, string).start();
+                return;
+            }
+            new ao(this.c, this.b, string).start();
+            return;
+        }
+        if (this.b == null) {
+            new ap(this.c, string).start();
+            return;
+        }
+        new aq(this.c, this.b, string).start();
     }
 }

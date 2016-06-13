@@ -1,14 +1,15 @@
 package com.clilystudio.netbook.ui.user;
 
-final class h implements Runnable {
+final class h
+        implements Runnable {
+    private /* synthetic */ ChargeActivity a;
 
-    private ChargeActivity a;
-
-    h(ChargeActivity ChargeActivity1) {
-        a = ChargeActivity1;
+    h(ChargeActivity chargeActivity) {
+        this.a = chargeActivity;
     }
 
+    @Override
     public final void run() {
-        ChargeActivity.a(a);
+        ChargeActivity.a(this.a);
     }
 }

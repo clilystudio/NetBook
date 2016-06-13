@@ -1,17 +1,17 @@
 package com.clilystudio.netbook.ui;
 
 import android.content.DialogInterface;
-import android.content.DialogInterface$OnClickListener;
 
-final class bZ implements DialogInterface$OnClickListener {
+final class bZ
+        implements DialogInterface.OnClickListener {
+    private /* synthetic */ SettingsActivity a;
 
-    private SettingsActivity a;
-
-    bZ(SettingsActivity SettingsActivity1) {
-        a = SettingsActivity1;
+    bZ(SettingsActivity settingsActivity) {
+        this.a = settingsActivity;
     }
 
-    public final void onClick(DialogInterface DialogInterface1, int int2) {
-        SettingsActivity.c(a);
+    @Override
+    public final void onClick(DialogInterface dialogInterface, int n) {
+        SettingsActivity.c(this.a);
     }
 }

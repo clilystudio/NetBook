@@ -2,10 +2,8 @@ package com.clilystudio.netbook.ui.user;
 
 import android.content.Context;
 import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View$OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
@@ -18,156 +16,150 @@ import com.clilystudio.netbook.util.t;
 import com.clilystudio.netbook.widget.PayRecordCollapseItem;
 
 import java.util.ArrayList;
-import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 
-final class S extends BaseAdapter {
-
-    PayConsumeActivity a;     // final access specifier removed
+final class S
+        extends BaseAdapter {
+    final /* synthetic */ PayConsumeActivity a;
     private LayoutInflater b;
-    private List c;
+    private List<PayConsumeRecord$Order> c;
     private boolean[] d;
-    public S(PayConsumeActivity PayConsumeActivity1, LayoutInflater LayoutInflater2) {
-        a = PayConsumeActivity1;
-        b = LayoutInflater2;
-        c = (List) new ArrayList();
-        d = new boolean[0];
+
+    public S(PayConsumeActivity payConsumeActivity, LayoutInflater layoutInflater) {
+        this.a = payConsumeActivity;
+        this.b = layoutInflater;
+        this.c = new ArrayList<PayConsumeRecord$Order>();
+        this.d = new boolean[0];
     }
 
-    static void a(S S1, PayConsumeRecord$Order Order2, View View3, View View4, int int5) {
-        View View6 = S1.b.inflate(2130903347, null);
-        PopupWindow PopupWindow7 = new PopupWindow(View6, S1.a.getResources().getDimensionPixelSize(2131099902), -2);
-        View View8;
-        View View9;
-        View View10;
-        TextView TextView11;
-        Object Object12;
-
-        PopupWindow7.setFocusable(true);
-        PopupWindow7.setOutsideTouchable(true);
-        PopupWindow7.setBackgroundDrawable((Drawable) new ColorDrawable(0));
-        PopupWindow7.getContentView().setFocusableInTouchMode(true);
-        PopupWindow7.getContentView().setFocusable(true);
-        View8 = View6.findViewById(2131493835);
-        View9 = View6.findViewById(2131493836);
-        View10 = View6.findViewById(2131493837);
-        TextView11 = (TextView) View10;
-        if (S1.d[int5])
-            Object12 = "\u6536\u8D77\u8BE6\u60C5";
-        else
-            Object12 = "\u5C55\u5F00\u8BE6\u60C5";
-        TextView11.setText((CharSequence) Object12);
-        View8.setOnClickListener((View$OnClickListener) new V(S1, Order2, PopupWindow7));
-        View10.setOnClickListener((View$OnClickListener) new W(S1, int5, PopupWindow7));
-        if (Order2.getPayType() == PayConsumeRecord$PayType.MULTIPLE_CHAPTERS) {
-            View9.setVisibility(0);
-            View10.setVisibility(0);
+    /*
+     * Enabled aggressive block sorting
+     */
+    static /* synthetic */ void a(S s, PayConsumeRecord$Order payConsumeRecord$Order, View view, View view2, int n) {
+        View view3 = s.b.inflate(2130903347, null);
+        PopupWindow popupWindow = new PopupWindow(view3, s.a.getResources().getDimensionPixelSize(2131099902), -2);
+        popupWindow.setFocusable(true);
+        popupWindow.setOutsideTouchable(true);
+        popupWindow.setBackgroundDrawable(new ColorDrawable(0));
+        popupWindow.getContentView().setFocusableInTouchMode(true);
+        popupWindow.getContentView().setFocusable(true);
+        View view4 = view3.findViewById(2131493835);
+        View view5 = view3.findViewById(2131493836);
+        View view6 = view3.findViewById(2131493837);
+        TextView textView = (TextView) view6;
+        String string = s.d[n] ? "\u6536\u8d77\u8be6\u60c5" : "\u5c55\u5f00\u8be6\u60c5";
+        textView.setText(string);
+        view4.setOnClickListener(new V(s, payConsumeRecord$Order, popupWindow));
+        view6.setOnClickListener(new W(s, n, popupWindow));
+        if (payConsumeRecord$Order.getPayType() == PayConsumeRecord$PayType.MULTIPLE_CHAPTERS) {
+            view5.setVisibility(0);
+            view6.setVisibility(0);
         } else {
-            View9.setVisibility(8);
-            View10.setVisibility(8);
+            view5.setVisibility(8);
+            view6.setVisibility(8);
         }
-        if (com.clilystudio.netbook.hpay100.a.a.i())
-            PopupWindow7.showAsDropDown(View3, com.clilystudio.netbook.hpay100.a.a.a((Context) S1.a, 0.0F), 0, 53);
-        else
-            PopupWindow7.showAsDropDown(View3, com.clilystudio.netbook.hpay100.a.a.a((Context) S1.a, 160.0F), 0);
+        if (a.i()) {
+            popupWindow.showAsDropDown(view, a.a((Context) s.a, 0.0f), 0, 53);
+            return;
+        }
+        popupWindow.showAsDropDown(view, a.a((Context) s.a, 160.0f), 0);
     }
 
-    static boolean[] a(S S1) {
-        return S1.d;
+    static /* synthetic */ boolean[] a(S s) {
+        return s.d;
     }
 
-    public final void a(List List1) {
-        c.clear();
-        c.addAll((Collection) List1);
-        d = new boolean[c.size()];
-        notifyDataSetChanged();
+    public final void a(List<PayConsumeRecord$Order> list) {
+        this.c.clear();
+        this.c.addAll(list);
+        this.d = new boolean[this.c.size()];
+        this.notifyDataSetChanged();
     }
 
+    @Override
     public final int getCount() {
-        return c.size();
+        return this.c.size();
     }
 
-    public final Object getItem(int int1) {
-        return c.get(int1);
+    @Override
+    public final Object getItem(int n) {
+        return this.c.get(n);
     }
 
-    public final long getItemId(int int1) {
-        return (long) int1;
+    @Override
+    public final long getItemId(int n) {
+        return n;
     }
 
-    public final View getView(int int1, View View2, ViewGroup ViewGroup3) {
-        Object Object4;
-        View View5;
-        PayConsumeRecord$Order Order6;
-        PayConsumeRecord$PayType PayType7;
-        Object Object8;
-        ImageView ImageView9;
-
-        if (View2 == null) {
-            View5 = b.inflate(2130903249, ViewGroup3, false);
-            Object4 = new Y(this);
-            ((Y) Object4).a = (TextView) View5.findViewById(2131493639);
-            ((Y) Object4).b = (TextView) View5.findViewById(2131493640);
-            ((Y) Object4).c = (TextView) View5.findViewById(2131493641);
-            ((Y) Object4).d = (TextView) View5.findViewById(2131493642);
-            ((Y) Object4).e = (TextView) View5.findViewById(2131493644);
-            ((Y) Object4).f = (TextView) View5.findViewById(2131493646);
-            ((Y) Object4).g = View5.findViewById(2131493645);
-            ((Y) Object4).h = View5.findViewById(2131493578);
-            ((Y) Object4).i = (ImageView) View5.findViewById(2131493643);
-            View5.setTag(Object4);
+    /*
+     * Enabled aggressive block sorting
+     */
+    @Override
+    public final View getView(int n, View view, ViewGroup viewGroup) {
+        View view2;
+        Y y2;
+        if (view == null) {
+            view2 = this.b.inflate(2130903249, viewGroup, false);
+            y2 = new Y(this);
+            y2.a = (TextView) view2.findViewById(2131493639);
+            y2.b = (TextView) view2.findViewById(2131493640);
+            y2.c = (TextView) view2.findViewById(2131493641);
+            y2.d = (TextView) view2.findViewById(2131493642);
+            y2.e = (TextView) view2.findViewById(2131493644);
+            y2.f = (TextView) view2.findViewById(2131493646);
+            y2.g = view2.findViewById(2131493645);
+            y2.h = view2.findViewById(2131493578);
+            y2.i = (ImageView) view2.findViewById(2131493643);
+            view2.setTag(y2);
         } else {
-            Object4 = (Y) View2.getTag();
-            View5 = View2;
+            y2 = (Y) view.getTag();
+            view2 = view;
         }
-        Order6 = (PayConsumeRecord$Order) c.get(int1);
-        PayType7 = Order6.getPayType();
-        Object8 = Order6.getBookName();
-        if (((String) Object8).length() > 8)
-            Object8 = new StringBuilder().append(((String) Object8).substring(0, 8)).append("...").toString();
-        ((Y) Object4).a.setText((CharSequence) Object8);
-        ((Y) Object4).e.setText((CharSequence) new StringBuilder().append(Order6.getUseCurrency()).toString());
-        if (Order6.getUseVoucher() > 0) {
-            ((Y) Object4).g.setVisibility(0);
-            ((Y) Object4).f.setText((CharSequence) new StringBuilder().append(Order6.getUseVoucher()).toString());
-        } else
-            ((Y) Object4).g.setVisibility(8);
-        ((Y) Object4).d.setText((CharSequence) t.e(Order6.getCreated()));
-        ((Y) Object4).c.setText((CharSequence) Order6.getPayTypeString());
-        if (PayType7 == PayConsumeRecord$PayType.WHOLE_BOOK || PayType7 == PayConsumeRecord$PayType.MULTIPLE_CHAPTERS)
-            ((Y) Object4).b.setVisibility(8);
-        else {
-            ((Y) Object4).b.setVisibility(0);
-            if (PayType7 == PayConsumeRecord$PayType.VIP_SERVICE) {
-                ((Y) Object4).a.setText((CharSequence) Order6.getBookName());
-                ((Y) Object4).c.setText((CharSequence) Order6.getChapterTitle());
-                ((Y) Object4).b.setText((CharSequence) "");
-                ((Y) Object4).d.setText((CharSequence) "");
+        PayConsumeRecord$Order payConsumeRecord$Order = this.c.get(n);
+        PayConsumeRecord$PayType payConsumeRecord$PayType = payConsumeRecord$Order.getPayType();
+        String string = payConsumeRecord$Order.getBookName();
+        if (string.length() > 8) {
+            string = string.substring(0, 8) + "...";
+        }
+        y2.a.setText(string);
+        y2.e.setText("" + payConsumeRecord$Order.getUseCurrency());
+        if (payConsumeRecord$Order.getUseVoucher() > 0) {
+            y2.g.setVisibility(0);
+            y2.f.setText("" + payConsumeRecord$Order.getUseVoucher());
+        } else {
+            y2.g.setVisibility(8);
+        }
+        y2.d.setText(t.e((Date) payConsumeRecord$Order.getCreated()));
+        y2.c.setText(payConsumeRecord$Order.getPayTypeString());
+        if (payConsumeRecord$PayType == PayConsumeRecord$PayType.WHOLE_BOOK || payConsumeRecord$PayType == PayConsumeRecord$PayType.MULTIPLE_CHAPTERS) {
+            y2.b.setVisibility(8);
+        } else {
+            y2.b.setVisibility(0);
+            if (payConsumeRecord$PayType == PayConsumeRecord$PayType.VIP_SERVICE) {
+                y2.a.setText(payConsumeRecord$Order.getBookName());
+                y2.c.setText(payConsumeRecord$Order.getChapterTitle());
+                y2.b.setText("");
+                y2.d.setText("");
             } else {
-                Object Object12;
-
-                ((Y) Object4).a.setVisibility(0);
-                Object12 = Order6.getChapterTitle();
-                if (((String) Object12).length() > 10)
-                    Object12 = new StringBuilder().append(((String) Object12).substring(0, 10)).append("...").toString();
-                ((Y) Object4).b.setText((CharSequence) Object12);
+                y2.a.setVisibility(0);
+                String string2 = payConsumeRecord$Order.getChapterTitle();
+                if (string2.length() > 10) {
+                    string2 = string2.substring(0, 10) + "...";
+                }
+                y2.b.setText(string2);
             }
         }
-        if (PayType7 == PayConsumeRecord$PayType.MULTIPLE_CHAPTERS) {
-            View View10;
-            int int11;
-
-            ((PayRecordCollapseItem) View5).a(Order6.getTitles(), int1);
-            View10 = ((Y) Object4).h;
-            if (d[int1])
-                int11 = 0;
-            else
-                int11 = 8;
-            View10.setVisibility(int11);
-        } else
-            ((Y) Object4).h.setVisibility(8);
-        ImageView9 = ((Y) Object4).i;
-        ImageView9.setOnClickListener((View$OnClickListener) new T(this, int1, Order6, ImageView9, View5));
-        return View5;
+        if (payConsumeRecord$PayType == PayConsumeRecord$PayType.MULTIPLE_CHAPTERS) {
+            ((PayRecordCollapseItem) view2).a(payConsumeRecord$Order.getTitles(), n);
+            View view3 = y2.h;
+            int n2 = this.d[n] ? 0 : 8;
+            view3.setVisibility(n2);
+        } else {
+            y2.h.setVisibility(8);
+        }
+        ImageView imageView = y2.i;
+        imageView.setOnClickListener(new T(this, n, payConsumeRecord$Order, imageView, view2));
+        return view2;
     }
 }

@@ -1,21 +1,22 @@
 package com.clilystudio.netbook.ui.post;
 
 import android.view.View;
-import android.view.View$OnClickListener;
 import android.widget.TextView;
 
-final class bn implements View$OnClickListener {
+final class bn
+        implements View.OnClickListener {
+    private /* synthetic */ TextView a;
+    private /* synthetic */ GirlTopicActivity b;
 
-    private TextView a;
-    private GirlTopicActivity b;
-    bn(GirlTopicActivity GirlTopicActivity1, TextView TextView2) {
-        b = GirlTopicActivity1;
-        a = TextView2;
+    bn(GirlTopicActivity girlTopicActivity, TextView textView) {
+        this.b = girlTopicActivity;
+        this.a = textView;
     }
 
-    public final void onClick(View View1) {
-        GirlTopicActivity.e(b).findViewById(2131493085).setVisibility(0);
-        a.setText((CharSequence) "\u52A0\u8F7D\u4E2D...");
-        GirlTopicActivity.b(b);
+    @Override
+    public final void onClick(View view) {
+        GirlTopicActivity.e(this.b).findViewById(2131493085).setVisibility(0);
+        this.a.setText("\u52a0\u8f7d\u4e2d...");
+        GirlTopicActivity.b(this.b);
     }
 }

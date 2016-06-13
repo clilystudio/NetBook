@@ -4,15 +4,15 @@ import com.clilystudio.netbook.model.MenuAd;
 
 import java.util.Comparator;
 
-final class b implements Comparator {
-
-    b(a a1) {
+final class b
+        implements Comparator<MenuAd> {
+    b(a a2) {
     }
 
-    public final int compare(Object Object1, Object Object2) {
-        MenuAd MenuAd3 = (MenuAd) Object1;
-        MenuAd MenuAd4 = (MenuAd) Object2;
-
-        return MenuAd3.getSettings().getReaderMenuPriority() - MenuAd4.getSettings().getReaderMenuPriority();
+    @Override
+    public final /* synthetic */ int compare(Object object, Object object2) {
+        MenuAd menuAd = (MenuAd) object;
+        MenuAd menuAd2 = (MenuAd) object2;
+        return menuAd.getSettings().getReaderMenuPriority() - menuAd2.getSettings().getReaderMenuPriority();
     }
 }

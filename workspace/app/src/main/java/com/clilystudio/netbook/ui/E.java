@@ -2,45 +2,49 @@ package com.clilystudio.netbook.ui;
 
 import android.view.MenuItem;
 
-final class E implements android.support.v7.widget.m {
+final class E
+        implements m {
+    private /* synthetic */ AudiobookInfoActivity a;
 
-    private AudiobookInfoActivity a;
-
-    E(AudiobookInfoActivity AudiobookInfoActivity1) {
-        a = AudiobookInfoActivity1;
+    E(AudiobookInfoActivity audiobookInfoActivity) {
+        this.a = audiobookInfoActivity;
     }
 
-    public final boolean a(MenuItem MenuItem1) {
-        switch (MenuItem1.getItemId()) {
-            case 1193:
-                if (!com.clilystudio.netbook.ui.AudiobookInfoActivity.f(a)) {
-                    AudiobookInfoActivity.e(a, true);
-                    AudiobookInfoActivity.h(a).a(AudiobookInfoActivity.f(a));
-                    AudiobookInfoActivity.o(a).setText((CharSequence) a.getResources().getString(2131034311));
-                    AudiobookInfoActivity.c(a, 1 + (AudiobookInfoActivity.j(a) - AudiobookInfoActivity.m(a)));
-                    if (AudiobookInfoActivity.p(a)) {
-                        AudiobookInfoActivity.h(a).a(AudiobookInfoActivity.m(a), AudiobookInfoActivity.l(a));
+    /*
+     * Enabled aggressive block sorting
+     */
+    public final boolean a(MenuItem menuItem) {
+        switch (menuItem.getItemId()) {
+            case 2131494057: {
+                if (AudiobookInfoActivity.f(this.a)) return true;
+                {
+                    AudiobookInfoActivity.e(this.a, true);
+                    AudiobookInfoActivity.h(this.a).a(AudiobookInfoActivity.f(this.a));
+                    AudiobookInfoActivity.o(this.a).setText(this.a.getResources().getString(2131034311));
+                    AudiobookInfoActivity.c(this.a, 1 + (AudiobookInfoActivity.j(this.a) - AudiobookInfoActivity.m(this.a)));
+                    if (!AudiobookInfoActivity.p(this.a)) return true;
+                    {
+                        AudiobookInfoActivity.h(this.a).a(AudiobookInfoActivity.m(this.a), AudiobookInfoActivity.l(this.a));
                         return true;
                     }
-                    break;
                 }
-                break;
-            case 1194:
-                if (AudiobookInfoActivity.f(a)) {
-                    AudiobookInfoActivity.e(a, false);
-                    AudiobookInfoActivity.h(a).a(AudiobookInfoActivity.f(a));
-                    AudiobookInfoActivity.o(a).setText((CharSequence) a.getResources().getString(2131034312));
-                    AudiobookInfoActivity.c(a, 1 + (AudiobookInfoActivity.j(a) - AudiobookInfoActivity.m(a)));
-                    if (AudiobookInfoActivity.p(a)) {
-                        AudiobookInfoActivity.h(a).a(AudiobookInfoActivity.m(a), AudiobookInfoActivity.l(a));
-                        return true;
-                    }
-                    break;
-                }
-                break;
-            default:
-                break;
+            }
+            default: {
+                return true;
+            }
+            case 2131494058:
         }
-        return true;
+        if (!AudiobookInfoActivity.f(this.a)) return true;
+        {
+            AudiobookInfoActivity.e(this.a, false);
+            AudiobookInfoActivity.h(this.a).a(AudiobookInfoActivity.f(this.a));
+            AudiobookInfoActivity.o(this.a).setText(this.a.getResources().getString(2131034312));
+            AudiobookInfoActivity.c(this.a, 1 + (AudiobookInfoActivity.j(this.a) - AudiobookInfoActivity.m(this.a)));
+            if (!AudiobookInfoActivity.p(this.a)) return true;
+            {
+                AudiobookInfoActivity.h(this.a).a(AudiobookInfoActivity.m(this.a), AudiobookInfoActivity.l(this.a));
+                return true;
+            }
+        }
     }
 }

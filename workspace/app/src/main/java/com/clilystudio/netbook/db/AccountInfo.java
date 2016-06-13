@@ -1,55 +1,67 @@
 package com.clilystudio.netbook.db;
 
 import com.activeandroid.Model;
+import com.activeandroid.annotation.Column;
+import com.activeandroid.annotation.Table;
+import com.activeandroid.query.Select;
 
-public class AccountInfo extends Model {
+import java.util.List;
 
+@Table(name = "AccountInfo")
+public class AccountInfo
+        extends Model {
+    @Column(name = "prev_unimp_notif")
     private int prevUnimpNotif;
+    @Column(name = "token", unique = 1)
     private String token;
-    public AccountInfo(String String1, int int2) {
-        token = String1;
-        prevUnimpNotif = int2;
-    }
 
     public AccountInfo() {
     }
-// Error: Internal #201: 
-// The following method may not be correct.
 
-    public static AccountInfo getByToken(String String1) {
+    public AccountInfo(String string, int n) {
+        this.token = string;
+        this.prevUnimpNotif = n;
     }
 
-    public static AccountInfo getOrCreate(String String1) {
-        AccountInfo AccountInfo2 = getByToken(String1);
-
-        if (AccountInfo2 != null)
-            return AccountInfo2;
-        else {
-            AccountInfo AccountInfo3 = new AccountInfo();
-
-            AccountInfo3.setToken(String1);
-            return AccountInfo3;
+    public static AccountInfo getByToken(String string) {
+        List list = new Select().from(AccountInfo.class).where("token = ?", string).execute();
+        if (list.size() == 0) {
+            return null;
         }
+        return (AccountInfo) list.get(0);
     }
-// Error: Internal #201: 
-// The following method may not be correct.
 
-    public static int getPreUnimpCount(String String1) {
+    public static AccountInfo getOrCreate(String string) {
+        AccountInfo accountInfo = AccountInfo.getByToken(string);
+        if (accountInfo != null) {
+            return accountInfo;
+        }
+        AccountInfo accountInfo2 = new AccountInfo();
+        accountInfo2.setToken(string);
+        return accountInfo2;
+    }
+
+    public static int getPreUnimpCount(String string) {
+        List list = new Select().from(AccountInfo.class).where("token = ?", string).execute();
+        if (list.size() == 0) {
+            return 0;
+        }
+        return ((AccountInfo) list.get(0)).getPrevUnimpNotif();
     }
 
     public int getPrevUnimpNotif() {
-        return prevUnimpNotif;
+        return this.prevUnimpNotif;
     }
 
-    public void setPrevUnimpNotif(int int1) {
-        prevUnimpNotif = int1;
+    public void setPrevUnimpNotif(int n) {
+        this.prevUnimpNotif = n;
     }
 
     public String getToken() {
-        return token;
+        return this.token;
     }
 
-    public void setToken(String String1) {
-        token = String1;
+    public void setToken(String string) {
+        this.token = string;
     }
 }

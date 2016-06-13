@@ -1,40 +1,34 @@
 package com.clilystudio.netbook.ui.post;
 
 import android.os.AsyncTask;
-import android.os.AsyncTask$Status;
 import android.support.design.widget.am;
 
 import com.clilystudio.netbook.model.Tweet;
 
-final class dZ implements com.handmark.pulltorefresh.library.j {
+final class dZ
+        implements j {
+    private /* synthetic */ TweetTimelineFragment a;
 
-    private TweetTimelineFragment a;
-
-    dZ(TweetTimelineFragment TweetTimelineFragment1) {
-        a = TweetTimelineFragment1;
+    dZ(TweetTimelineFragment tweetTimelineFragment) {
+        this.a = tweetTimelineFragment;
     }
 
+    @Override
     public final void a() {
-        if (TweetTimelineFragment.b(a) == null || TweetTimelineFragment.b(a).getStatus() == AsyncTask$Status.FINISHED) {
-            int int2;
-            String String3;
-            ea ea4;
-            String[] String_1darray5;
-
-            TweetTimelineFragment.j(a).setVisibility(0);
-            if (!android.support.design.widget.am.a((AsyncTask) TweetTimelineFragment.k(a)))
-                TweetTimelineFragment.k(a).cancel(true);
-            TweetTimelineFragment.a(a, new ea(a, (byte) 0));
-            int2 = TweetTimelineFragment.h(a).size();
-            String3 = null;
-            if (int2 > 0)
-                String3 = ((Tweet) TweetTimelineFragment.h(a).get(-1 + TweetTimelineFragment.h(a).size())).get_id();
-            ea4 = TweetTimelineFragment.b(a);
-            String_1darray5 = new String[3];
-            String_1darray5[0] = am.e().getToken();
-            String_1darray5[1] = am.e().getUser().getId();
-            String_1darray5[2] = String3;
-            ea4.b(String_1darray5);
+        if (TweetTimelineFragment.b(this.a) == null || TweetTimelineFragment.b(this.a).getStatus() == AsyncTask.Status.FINISHED) {
+            TweetTimelineFragment.j(this.a).setVisibility(0);
+            if (!am.a((AsyncTask) TweetTimelineFragment.k(this.a))) {
+                TweetTimelineFragment.k(this.a).cancel(true);
+            }
+            TweetTimelineFragment.a(this.a, new ea(this.a, 0));
+            int n = TweetTimelineFragment.h(this.a).size();
+            String string = null;
+            if (n > 0) {
+                string = ((Tweet) TweetTimelineFragment.h(this.a).get(-1 + TweetTimelineFragment.h(this.a).size())).get_id();
+            }
+            ea ea2 = TweetTimelineFragment.b(this.a);
+            String[] arrstring = new String[]{am.e().getToken(), am.e().getUser().getId(), string};
+            ea2.b(arrstring);
         }
     }
 }

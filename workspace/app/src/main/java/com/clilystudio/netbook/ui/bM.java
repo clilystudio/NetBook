@@ -1,66 +1,64 @@
 package com.clilystudio.netbook.ui;
 
 import android.app.Activity;
-import android.view.View$OnClickListener;
 
+import com.clilystudio.netbook.c;
 import com.clilystudio.netbook.model.HotKeywordResult;
+import com.clilystudio.netbook.util.e;
 import com.clilystudio.netbook.widget.AutoFlowView$Word;
-import com.clilystudio.netbook.widget.i;
 
 import java.util.ArrayList;
-import java.util.List;
 
-final class bM extends com.clilystudio.netbook.a.e {
+final class bM
+        extends com.clilystudio.netbook.a.e<String, Void, HotKeywordResult> {
+    final /* synthetic */ SearchActivity a;
 
-    final SearchActivity a = null;
-
-    bM(SearchActivity SearchActivity1, byte byte2) {
-        this(SearchActivity1);
+    private bM(SearchActivity searchActivity) {
+        this.a = searchActivity;
     }
 
-    private bM(SearchActivity SearchActivity1) {
-        a = SearchActivity1;
+    /* synthetic */ bM(SearchActivity searchActivity, byte by) {
+        this(searchActivity);
     }
 
-    private transient HotKeywordResult a() {
-        HotKeywordResult HotKeywordResult2;
-
+    private /* varargs */ HotKeywordResult a() {
         try {
-            HotKeywordResult2 = c().b();
-        } catch (Throwable Throwable1) {
-            Throwable1.printStackTrace();
+            HotKeywordResult hotKeywordResult = this.c().b();
+            return hotKeywordResult;
+        } catch (Throwable var1_2) {
+            var1_2.printStackTrace();
             return null;
         }
-        return HotKeywordResult2;
     }
 
-    protected final Object doInBackground(Object[] Object_1darray1) {
-        return a();
+    /*
+     * Exception decompiling
+     */
+    @Override
+    protected final /* synthetic */ Object doInBackground(Object[] var1_1) {
+        // This method has failed to decompile.  When submitting a bug report, please provide this stack trace, and (if you hold appropriate legal rights) the relevant class file.
+        // java.lang.ArrayIndexOutOfBoundsException
+        throw new IllegalStateException("Decompilation failed");
     }
 
-    protected final void onPostExecute(Object Object1) {
-        HotKeywordResult HotKeywordResult2 = (HotKeywordResult) Object1;
-
-        if (HotKeywordResult2 != null) {
-            Object Object3 = new ArrayList();
-            String[] String_1darray4 = HotKeywordResult2.getHotWords();
-            int int5 = String_1darray4.length;
-            int int6;
-
-            for (int6 = 0; int6 < int5; ++int6) {
-                String String7 = String_1darray4[int6];
-                Object Object8 = new AutoFlowView$Word();
-
-                ((AutoFlowView$Word) Object8).show = 0;
-                ((AutoFlowView$Word) Object8).content = String7;
-                ((List) Object3).add(Object8);
+    @Override
+    protected final /* synthetic */ void onPostExecute(Object object) {
+        HotKeywordResult hotKeywordResult = (HotKeywordResult) object;
+        if (hotKeywordResult != null) {
+            ArrayList<AutoFlowView$Word> arrayList = new ArrayList<AutoFlowView$Word>();
+            for (String string : hotKeywordResult.getHotWords()) {
+                AutoFlowView$Word autoFlowView$Word = new AutoFlowView$Word();
+                autoFlowView$Word.show = 0;
+                autoFlowView$Word.content = string;
+                arrayList.add(autoFlowView$Word);
             }
-            com.clilystudio.netbook.hpay100.a.a.a(Object3, com.clilystudio.netbook.c.e, "search_hotword.txt");
-            SearchActivity.g(a).setVisibility(0);
-            SearchActivity.e(a).setWords(HotKeywordResult2.getHotWords());
-            SearchActivity.e(a).setOnItemClickListener((i) new bN(this));
-            SearchActivity.h(a).setOnClickListener((View$OnClickListener) new bO(this));
-        } else
-            com.clilystudio.netbook.util.e.a((Activity) a, "\u7F51\u7EDC\u4E0D\u7ED9\u529B\uFF01");
+            a.a(arrayList, c.e, "search_hotword.txt");
+            SearchActivity.g(this.a).setVisibility(0);
+            SearchActivity.e(this.a).setWords(hotKeywordResult.getHotWords());
+            SearchActivity.e(this.a).setOnItemClickListener(new bN(this));
+            SearchActivity.h(this.a).setOnClickListener(new bO(this));
+            return;
+        }
+        e.a((Activity) this.a, (String) "\u7f51\u7edc\u4e0d\u7ed9\u529b\uff01");
     }
 }

@@ -2,31 +2,18 @@ package com.clilystudio.netbook.model;
 
 import android.text.TextUtils;
 
-public class ChangeGenderRoot extends Root {
-
-    private String[][] codeMap = {
-            {"TOKEN_INVALID", "\u8EAB\u4EFD\u8FC7\u671F,\u8BF7\u91CD\u65B0\u767B\u5F55!"},
-            {"INVALID_GENDER", "\u6027\u522B\u4FE1\u606F\u9519\u8BEF"},
-            {"CHANGED", "\u5DF2\u7ECF\u4FEE\u6539\u8FC7\u4E86!"}
-    };
+public class ChangeGenderRoot
+        extends Root {
+    private String[][] codeMap = new String[][]{{"TOKEN_INVALID", "\u8eab\u4efd\u8fc7\u671f,\u8bf7\u91cd\u65b0\u767b\u5f55!"}, {"INVALID_GENDER", "\u6027\u522b\u4fe1\u606f\u9519\u8bef"}, {"CHANGED", "\u5df2\u7ecf\u4fee\u6539\u8fc7\u4e86!"}};
 
     public String getErrorMessage() {
-        if (TextUtils.isEmpty((CharSequence) getCode()))
+        if (TextUtils.isEmpty(this.getCode())) {
             return "";
-        else {
-            String[][] String_2darray1 = codeMap;
-            int int2 = String_2darray1.length;
-            int int3 = 0;
-
-            while (int3 < int2) {
-                String[] String_1darray4 = String_2darray1[int3];
-
-                if (String_1darray4[0].equals(getCode()))
-                    return String_1darray4[1];
-                else
-                    ++int3;
-            }
-            return "\u66F4\u65B0\u5931\u8D25";
         }
+        for (String[] arrstring : this.codeMap) {
+            if (!arrstring[0].equals(this.getCode())) continue;
+            return arrstring[1];
+        }
+        return "\u66f4\u65b0\u5931\u8d25";
     }
 }

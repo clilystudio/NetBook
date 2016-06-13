@@ -1,50 +1,49 @@
 package com.clilystudio.netbook.ui.post;
 
 import com.clilystudio.netbook.a.e;
+import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.model.Tweet;
 import com.clilystudio.netbook.model.TweetResult;
 
-final class cG extends e {
+final class cG
+        extends e<String, Void, TweetResult> {
+    private /* synthetic */ ReviewActivity a;
 
-    private ReviewActivity a;
-
-    cG(ReviewActivity ReviewActivity1, byte byte2) {
-        this(ReviewActivity1);
+    private cG(ReviewActivity reviewActivity) {
+        this.a = reviewActivity;
     }
 
-    private cG(ReviewActivity ReviewActivity1) {
-        a = ReviewActivity1;
+    /* synthetic */ cG(ReviewActivity reviewActivity, byte by) {
+        this(reviewActivity);
     }
 
-    private transient TweetResult a(String[] String_1darray1) {
-        TweetResult TweetResult3;
-
+    private /* varargs */ TweetResult a(String... arrstring) {
         try {
-            TweetResult3 = com.clilystudio.netbook.api.b.b().l(String_1darray1[0]);
-        } catch (Exception Exception2) {
-            Exception2.printStackTrace();
+            TweetResult tweetResult = b.b().l(arrstring[0]);
+            return tweetResult;
+        } catch (Exception var2_3) {
+            var2_3.printStackTrace();
             return null;
         }
-        return TweetResult3;
     }
 
-    protected final Object doInBackground(Object[] Object_1darray1) {
-        return a((String[]) Object_1darray1);
+    @Override
+    protected final /* synthetic */ Object doInBackground(Object[] arrobject) {
+        return this.a((String[]) arrobject);
     }
 
-    protected final void onPostExecute(Object Object1) {
-        Object Object2 = (TweetResult) Object1;
-
-        super.onPostExecute(Object2);
-        if (Object2 != null && ((TweetResult) Object2).getTweet() != null) {
-            Tweet Tweet3;
-
-            a.f();
-            Tweet3 = ((TweetResult) Object2).getTweet();
-            Tweet3.setUser(((TweetResult) Object2).getUser());
-            ReviewActivity.a(a, Tweet3);
-            ReviewActivity.b(a);
-        } else
-            a.h();
+    @Override
+    protected final /* synthetic */ void onPostExecute(Object object) {
+        TweetResult tweetResult = (TweetResult) object;
+        super.onPostExecute(tweetResult);
+        if (tweetResult != null && tweetResult.getTweet() != null) {
+            this.a.f();
+            Tweet tweet = tweetResult.getTweet();
+            tweet.setUser(tweetResult.getUser());
+            ReviewActivity.a(this.a, tweet);
+            ReviewActivity.b(this.a);
+            return;
+        }
+        this.a.h();
     }
 }

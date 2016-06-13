@@ -1,21 +1,23 @@
 package com.clilystudio.netbook.adapter;
 
 import android.widget.CompoundButton;
-import android.widget.CompoundButton$OnCheckedChangeListener;
 
-final class q implements CompoundButton$OnCheckedChangeListener {
+final class q
+        implements CompoundButton.OnCheckedChangeListener {
+    private /* synthetic */ int a;
+    private /* synthetic */ HomeShelfAdapter b;
 
-    private int a;
-    private HomeShelfAdapter b;
-    q(HomeShelfAdapter HomeShelfAdapter1, int int2) {
-        b = HomeShelfAdapter1;
-        a = int2;
+    q(HomeShelfAdapter homeShelfAdapter, int n) {
+        this.b = homeShelfAdapter;
+        this.a = n;
     }
 
-    public final void onCheckedChanged(CompoundButton CompoundButton1, boolean boolean2) {
-        if (!com.clilystudio.netbook.adapter.HomeShelfAdapter.a(b)) {
-            HomeShelfAdapter.b(b)[a] = boolean2;
-            HomeShelfAdapter.a(b, a);
+    @Override
+    public final void onCheckedChanged(CompoundButton compoundButton, boolean bl) {
+        if (HomeShelfAdapter.a(this.b)) {
+            return;
         }
+        HomeShelfAdapter.b((HomeShelfAdapter) this.b)[this.a] = bl;
+        HomeShelfAdapter.a(this.b, this.a);
     }
 }

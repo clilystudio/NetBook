@@ -1,14 +1,14 @@
 package com.clilystudio.netbook.model;
 
-public class ReviewBook extends PostBook {
-
+public class ReviewBook
+        extends PostBook {
     private String type;
 
     public String getType() {
-        return type;
+        return this.type;
     }
 
-    public void setType(String String1) {
-        type = String1;
+    public void setType(String string) {
+        this.type = string;
     }
 }

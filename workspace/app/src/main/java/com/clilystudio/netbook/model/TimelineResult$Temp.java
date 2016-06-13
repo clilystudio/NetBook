@@ -1,27 +1,27 @@
 package com.clilystudio.netbook.model;
 
 public class TimelineResult$Temp {
-
-    TimelineResult this$0;     // final access specifier removed
+    final /* synthetic */ TimelineResult this$0;
     private Tweet tweet;
     private User user;
-    public TimelineResult$Temp(TimelineResult TimelineResult1) {
-        this$0 = TimelineResult1;
+
+    public TimelineResult$Temp(TimelineResult timelineResult) {
+        this.this$0 = timelineResult;
     }
 
     public Tweet getTweet() {
-        return tweet;
+        return this.tweet;
     }
 
-    public void setTweet(Tweet Tweet1) {
-        tweet = Tweet1;
+    public void setTweet(Tweet tweet) {
+        this.tweet = tweet;
     }
 
     public User getUser() {
-        return user;
+        return this.user;
     }
 
-    public void setUser(User User1) {
-        user = User1;
+    public void setUser(User user) {
+        this.user = user;
     }
 }

@@ -3,37 +3,35 @@ package com.clilystudio.netbook.reader;
 import android.content.Context;
 
 public final class cM {
-
     private cQ a;
     private Context b;
     private String[] c = new String[20];
-    public cM(Context Context1, cQ cQ2) {
-        a = cQ2;
-        b = Context1;
+
+    public cM(Context context, cQ cQ2) {
+        this.a = cQ2;
+        this.b = context;
     }
 
-    static String[] a(cM cM1) {
-        return cM1.c;
+    static /* synthetic */ String[] a(cM cM2) {
+        return cM2.c;
     }
 
-    static cQ b(cM cM1) {
-        return cM1.a;
+    static /* synthetic */ cQ b(cM cM2) {
+        return cM2.a;
     }
 
-    public final boolean a(String String1) {
-        float float2 = com.clilystudio.netbook.hpay100.a.a.H(b);
-        float float3 = com.clilystudio.netbook.hpay100.a.a.a(b, "BFD_RANDOM_RATE", 2.0F);
-
-        if (float3 == 2.0F) {
-            float3 = (float) Math.random();
-            com.clilystudio.netbook.hpay100.a.a.b(b, "BFD_RANDOM_RATE", float3);
+    public final boolean a(String string) {
+        float f2 = a.H(this.b);
+        float f3 = a.a(this.b, "BFD_RANDOM_RATE", 2.0f);
+        if (f3 == 2.0f) {
+            f3 = (float) Math.random();
+            a.b(this.b, "BFD_RANDOM_RATE", f3);
         }
-        if (float2 > float3) {
-            com.a.a.a.a(b, "rec_C6613205_93B6_61A6_9FEC_180B70F91B94", com.clilystudio.netbook.hpay100.a.a.a(b, 20, String1), (com.a.a.c) new cN(this, String1));
+        if (f2 > f3) {
+            com.a.a.a.a(this.b, "rec_C6613205_93B6_61A6_9FEC_180B70F91B94", a.a(this.b, 20, string), (c) ((Object) new cN(this, string)));
             return true;
-        } else {
-            new cO(this).b(new String[]{String1});
-            return false;
         }
+        new cO(this).b(string);
+        return false;
     }
 }

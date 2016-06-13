@@ -2,34 +2,40 @@ package com.clilystudio.netbook.ui.user;
 
 import android.support.design.widget.am;
 
+import com.clilystudio.netbook.a.e;
+import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.model.DeleteResult;
 
-final class i extends com.clilystudio.netbook.a.e {
+final class i
+        extends e<Void, Void, DeleteResult> {
+    private /* synthetic */ ChargeActivity a;
 
-    private ChargeActivity a;
-
-    i(ChargeActivity ChargeActivity1, byte byte2) {
-        this(ChargeActivity1);
+    private i(ChargeActivity chargeActivity) {
+        this.a = chargeActivity;
     }
 
-    private i(ChargeActivity ChargeActivity1) {
-        a = ChargeActivity1;
+    /* synthetic */ i(ChargeActivity chargeActivity, byte by) {
+        this(chargeActivity);
     }
 
-    private transient DeleteResult a() {
-        DeleteResult DeleteResult3;
-
+    private /* varargs */ DeleteResult a() {
         try {
-            com.clilystudio.netbook.api.b.a();
-            DeleteResult3 = com.clilystudio.netbook.api.b.b().e(ChargeActivity.c(a), am.e().getToken());
-        } catch (Exception Exception1) {
-            Exception1.printStackTrace();
+            b.a();
+            DeleteResult deleteResult = b.b().e(ChargeActivity.c(this.a), am.e().getToken());
+            return deleteResult;
+        } catch (Exception var1_2) {
+            var1_2.printStackTrace();
             return null;
         }
-        return DeleteResult3;
     }
 
-    protected final Object doInBackground(Object[] Object_1darray1) {
-        return a();
+    /*
+     * Exception decompiling
+     */
+    @Override
+    protected final /* synthetic */ Object doInBackground(Object[] var1_1) {
+        // This method has failed to decompile.  When submitting a bug report, please provide this stack trace, and (if you hold appropriate legal rights) the relevant class file.
+        // java.lang.ArrayIndexOutOfBoundsException
+        throw new IllegalStateException("Decompilation failed");
     }
 }

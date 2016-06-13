@@ -2,27 +2,43 @@ package com.clilystudio.netbook.adapter;
 
 import android.app.Activity;
 import android.view.LayoutInflater;
+import android.view.View;
 
+import com.clilystudio.netbook.model.ChargePlan;
 import com.clilystudio.netbook.util.W;
 
-public final class x extends W {
-
+public final class x
+        extends W<ChargePlan> {
     private Activity a;
 
-    public x(Activity Activity1, LayoutInflater LayoutInflater2) {
-        super(LayoutInflater2, 2130903345);
-        a = Activity1;
+    public x(Activity activity, LayoutInflater layoutInflater) {
+        super(layoutInflater, 2130903345);
+        this.a = activity;
     }
 
-    static Activity a(x x1) {
-        return x1.a;
-    }
-// Error: Internal #201: 
-// The following method may not be correct.
-
-    protected final void a(int int1, Object Object2) {
+    static /* synthetic */ Activity a(x x2) {
+        return x2.a;
     }
 
+    /*
+     * Enabled aggressive block sorting
+     */
+    @Override
+    protected final /* synthetic */ void a(int n, Object object) {
+        boolean bl = true;
+        ChargePlan chargePlan = (ChargePlan) object;
+        View view = (View) this.a(0, View.class);
+        this.a((int) bl ? 1 : 0, chargePlan.getPriceDsc() + "\u5143");
+        this.a(2, "" + chargePlan.getCurrency() + "\u8ffd\u4e66\u5e01");
+        if (chargePlan.getVoucher() > 0) {
+            bl = false;
+        }
+        this.a(3, bl);
+        this.a(3, "+" + chargePlan.getVoucher() + "\u8ffd\u4e66\u5238");
+        view.setOnClickListener(new y(this, chargePlan));
+    }
+
+    @Override
     protected final int[] a() {
         return new int[]{2131493831, 2131493832, 2131493833, 2131493834};
     }

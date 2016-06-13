@@ -3,28 +3,31 @@ package com.clilystudio.netbook.ui;
 import android.content.Context;
 import android.util.AttributeSet;
 
-public class AutoScaleImageView extends SmartImageView {
+public class AutoScaleImageView
+        extends SmartImageView {
+    private final int b;
 
-    private int b;     // final access specifier removed
-
-    public AutoScaleImageView(Context Context1, AttributeSet AttributeSet2) {
-        super(Context1, AttributeSet2);
-        b = Context1.getResources().getDisplayMetrics().widthPixels;
+    public AutoScaleImageView(Context context, AttributeSet attributeSet) {
+        super(context, attributeSet);
+        this.b = context.getResources().getDisplayMetrics().widthPixels;
     }
 
-    static int a(AutoScaleImageView AutoScaleImageView1) {
-        return AutoScaleImageView1.b;
+    static /* synthetic */ int a(AutoScaleImageView autoScaleImageView) {
+        return autoScaleImageView.b;
     }
 
-    public void setImageUrl(String String1) {
-        setImageUrl(String1, 0, (a) new I(this));
+    @Override
+    public void setImageUrl(String string) {
+        this.setImageUrl(string, 0, new I(this));
     }
 
-    public final void setImageUrl(String String1, int int2) {
-        super.setImageUrl(String1, int2);
+    @Override
+    public final void setImageUrl(String string, int n) {
+        super.setImageUrl(string, n);
     }
 
-    public final void setImageUrl(String String1, int int2, a a3) {
-        super.setImageUrl(String1, int2, a3);
+    @Override
+    public final void setImageUrl(String string, int n, a a2) {
+        super.setImageUrl(string, n, a2);
     }
 }

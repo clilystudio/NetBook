@@ -2,16 +2,18 @@ package com.clilystudio.netbook.ui.post;
 
 import com.clilystudio.netbook.ui.aa;
 
-final class u implements aa {
+final class u
+        implements aa {
+    private /* synthetic */ AddGirlTopicActivity a;
 
-    private AddGirlTopicActivity a;
-
-    u(AddGirlTopicActivity AddGirlTopicActivity1) {
-        a = AddGirlTopicActivity1;
+    u(AddGirlTopicActivity addGirlTopicActivity) {
+        this.a = addGirlTopicActivity;
     }
 
+    @Override
     public final void a() {
-        if (AddGirlTopicActivity.a(a))
-            AddGirlTopicActivity.b(a);
+        if (AddGirlTopicActivity.a(this.a)) {
+            AddGirlTopicActivity.b(this.a);
+        }
     }
 }

@@ -1,14 +1,13 @@
 package com.clilystudio.netbook.event;
 
 public final class D {
-
     private String[] a;
 
-    public D(String[] String_1darray1) {
-        a = String_1darray1;
+    public D(String[] arrstring) {
+        this.a = arrstring;
     }
 
     public final String[] a() {
-        return a;
+        return this.a;
     }
 }

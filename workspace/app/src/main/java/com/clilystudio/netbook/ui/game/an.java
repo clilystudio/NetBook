@@ -8,81 +8,75 @@ import com.clilystudio.netbook.ui.home.ZssqFragmentPagerAdapter;
 
 import java.util.List;
 
-final class an extends ZssqFragmentPagerAdapter {
-
+final class an
+        extends ZssqFragmentPagerAdapter {
     private String[] a;
-    private GameTabActivity b;
-    public an(GameTabActivity GameTabActivity1, FragmentManager FragmentManager2) {
-        super(FragmentManager2);
-        FragmentTransaction FragmentTransaction16;
-        GameMicroFragment GameMicroFragment15;
-        String String14;
-        List List13;
-        GameCatListFragment GameCatListFragment12;
-        String String11;
-        List List10;
-        GameRankListFragment GameRankListFragment9;
-        String String8;
-        List List7;
-        GameLayoutFragment GameLayoutFragment6;
-        String String5;
-        List List4;
-        int int3;
+    private /* synthetic */ GameTabActivity b;
 
-        int3 = 0;
-        b = GameTabActivity1;
-        a = new String[]{"tabTag0", "tabTag1", "tabTag2", "tabTag3"};
-        List4 = GameTabActivity.a(GameTabActivity1);
-        String5 = a[0];
-        GameLayoutFragment6 = (GameLayoutFragment) GameTabActivity1.getSupportFragmentManager().findFragmentByTag(String5);
-        if (GameLayoutFragment6 == null)
-            GameLayoutFragment6 = new GameLayoutFragment();
-        List4.add(0, GameLayoutFragment6);
-        List7 = GameTabActivity.a(GameTabActivity1);
-        String8 = a[1];
-        GameRankListFragment9 = (GameRankListFragment) GameTabActivity1.getSupportFragmentManager().findFragmentByTag(String8);
-        if (GameRankListFragment9 == null)
-            GameRankListFragment9 = new GameRankListFragment();
-        List7.add(1, GameRankListFragment9);
-        List10 = GameTabActivity.a(GameTabActivity1);
-        String11 = a[2];
-        GameCatListFragment12 = (GameCatListFragment) GameTabActivity1.getSupportFragmentManager().findFragmentByTag(String11);
-        if (GameCatListFragment12 == null)
-            GameCatListFragment12 = new GameCatListFragment();
-        List10.add(2, GameCatListFragment12);
-        List13 = GameTabActivity.a(GameTabActivity1);
-        String14 = a[3];
-        GameMicroFragment15 = (GameMicroFragment) GameTabActivity1.getSupportFragmentManager().findFragmentByTag(String14);
-        if (GameMicroFragment15 == null)
-            GameMicroFragment15 = new GameMicroFragment();
-        List13.add(3, GameMicroFragment15);
-        FragmentTransaction16 = FragmentManager2.beginTransaction();
-        while (int3 < 4) {
-            Fragment Fragment19 = (Fragment) GameTabActivity.a(GameTabActivity1).get(int3);
-
-            if (!Fragment19.isAdded())
-                FragmentTransaction16.add(GameTabActivity.b(GameTabActivity1).getId(), Fragment19, a[int3]);
-            ++int3;
+    public an(GameTabActivity gameTabActivity, FragmentManager fragmentManager) {
+        int n = 0;
+        this.b = gameTabActivity;
+        super(fragmentManager);
+        this.a = new String[]{"tabTag0", "tabTag1", "tabTag2", "tabTag3"};
+        List list = GameTabActivity.a(gameTabActivity);
+        String string = this.a[0];
+        GameLayoutFragment gameLayoutFragment = (GameLayoutFragment) gameTabActivity.getSupportFragmentManager().findFragmentByTag(string);
+        if (gameLayoutFragment == null) {
+            gameLayoutFragment = new GameLayoutFragment();
         }
-        if (!FragmentTransaction16.isEmpty()) {
-            FragmentTransaction16.commit();
-            FragmentManager2.executePendingTransactions();
+        list.add(0, gameLayoutFragment);
+        List list2 = GameTabActivity.a(gameTabActivity);
+        String string2 = this.a[1];
+        GameRankListFragment gameRankListFragment = (GameRankListFragment) gameTabActivity.getSupportFragmentManager().findFragmentByTag(string2);
+        if (gameRankListFragment == null) {
+            gameRankListFragment = new GameRankListFragment();
+        }
+        list2.add(1, gameRankListFragment);
+        List list3 = GameTabActivity.a(gameTabActivity);
+        String string3 = this.a[2];
+        GameCatListFragment gameCatListFragment = (GameCatListFragment) gameTabActivity.getSupportFragmentManager().findFragmentByTag(string3);
+        if (gameCatListFragment == null) {
+            gameCatListFragment = new GameCatListFragment();
+        }
+        list3.add(2, gameCatListFragment);
+        List list4 = GameTabActivity.a(gameTabActivity);
+        String string4 = this.a[3];
+        GameMicroFragment gameMicroFragment = (GameMicroFragment) gameTabActivity.getSupportFragmentManager().findFragmentByTag(string4);
+        if (gameMicroFragment == null) {
+            gameMicroFragment = new GameMicroFragment();
+        }
+        list4.add(3, gameMicroFragment);
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        while (n < 4) {
+            Fragment fragment = (Fragment) GameTabActivity.a(gameTabActivity).get(n);
+            if (!fragment.isAdded()) {
+                fragmentTransaction.add(GameTabActivity.b(gameTabActivity).getId(), fragment, this.a[n]);
+            }
+            ++n;
+        }
+        if (!fragmentTransaction.isEmpty()) {
+            fragmentTransaction.commit();
+            fragmentManager.executePendingTransactions();
         }
     }
 
-    public final Fragment a(int int1) {
-        return (Fragment) GameTabActivity.a(b).get(int1);
+    @Override
+    public final Fragment a(int n) {
+        return (Fragment) GameTabActivity.a(this.b).get(n);
     }
 
-    protected final String b(int int1) {
-        return a[int1];
+    @Override
+    protected final String b(int n) {
+        return this.a[n];
     }
 
+    @Override
     public final int getCount() {
         return 4;
     }
 
-    public final CharSequence getPageTitle(int int1) {
-        return (CharSequence) b.getResources().getStringArray(2131361796)[int1];
+    @Override
+    public final CharSequence getPageTitle(int n) {
+        return this.b.getResources().getStringArray(2131361796)[n];
     }
 }

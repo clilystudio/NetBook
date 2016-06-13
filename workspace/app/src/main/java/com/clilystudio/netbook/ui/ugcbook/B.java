@@ -1,15 +1,17 @@
 package com.clilystudio.netbook.ui.ugcbook;
 
-final class B implements Runnable {
+final class B
+        implements Runnable {
+    private /* synthetic */ A a;
 
-    private A a;
-
-    B(A A1) {
-        a = A1;
+    B(A a) {
+        this.a = a;
     }
 
+    @Override
     public final void run() {
-        if (UGCGuideAddBookActivity.d(a.a) != null)
-            UGCGuideAddBookActivity.d(a.a).setSelection(0);
+        if (UGCGuideAddBookActivity.d(this.a.a) != null) {
+            UGCGuideAddBookActivity.d(this.a.a).setSelection(0);
+        }
     }
 }

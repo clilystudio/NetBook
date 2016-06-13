@@ -1,26 +1,22 @@
 package com.clilystudio.netbook.ui;
 
-import android.content.Context;
 import android.content.DialogInterface;
-import android.content.DialogInterface$OnClickListener;
 import android.content.Intent;
 import android.net.Uri;
 
-import com.umeng.a.b;
+final class s
+        implements DialogInterface.OnClickListener {
+    private /* synthetic */ AudiobookCategoryActivity a;
 
-final class s implements DialogInterface$OnClickListener {
-
-    private AudiobookCategoryActivity a;
-
-    s(AudiobookCategoryActivity AudiobookCategoryActivity1) {
-        a = AudiobookCategoryActivity1;
+    s(AudiobookCategoryActivity audiobookCategoryActivity) {
+        this.a = audiobookCategoryActivity;
     }
 
-    public final void onClick(DialogInterface DialogInterface1, int int2) {
-        Intent Intent3 = new Intent("android.intent.action.VIEW");
-
-        Intent3.setData(Uri.parse("http://m.ximalaya.com/?from=alex-04"));
-        a.startActivity(Intent3);
-        b.a((Context) a, "ximalaya_url_click");
+    @Override
+    public final void onClick(DialogInterface dialogInterface, int n) {
+        Intent intent = new Intent("android.intent.action.VIEW");
+        intent.setData(Uri.parse("http://m.ximalaya.com/?from=alex-04"));
+        this.a.startActivity(intent);
+        b.a(this.a, "ximalaya_url_click");
     }
 }

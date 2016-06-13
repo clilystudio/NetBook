@@ -2,8 +2,8 @@ package com.clilystudio.netbook.model;
 
 import java.io.Serializable;
 
-public class Account implements Serializable {
-
+public class Account
+        implements Serializable {
     private static final long serialVersionUID = 7268031855566891017L;
     private String code;
     private boolean ok;
@@ -11,34 +11,34 @@ public class Account implements Serializable {
     private User user;
 
     public String getCode() {
-        return code;
+        return this.code;
     }
 
-    public void setCode(String String1) {
-        code = String1;
+    public void setCode(String string) {
+        this.code = string;
     }
 
     public String getToken() {
-        return token;
+        return this.token;
     }
 
-    public void setToken(String String1) {
-        token = String1;
+    public void setToken(String string) {
+        this.token = string;
     }
 
     public User getUser() {
-        return user;
+        return this.user;
     }
 
-    public void setUser(User User1) {
-        user = User1;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public boolean isOk() {
-        return ok;
+        return this.ok;
     }
 
-    public void setOk(boolean boolean1) {
-        ok = boolean1;
+    public void setOk(boolean bl) {
+        this.ok = bl;
     }
 }

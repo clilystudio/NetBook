@@ -3,8 +3,8 @@ package com.clilystudio.netbook.model;
 import java.io.Serializable;
 import java.text.DecimalFormat;
 
-public class ChargePlan implements Serializable {
-
+public class ChargePlan
+        implements Serializable {
     private static final long serialVersionUID = -8138264341542713200L;
     private String _id;
     private int currency;
@@ -12,46 +12,46 @@ public class ChargePlan implements Serializable {
     private int voucher;
 
     public int getCurrency() {
-        return currency;
+        return this.currency;
     }
 
-    public void setCurrency(int int1) {
-        currency = int1;
+    public void setCurrency(int n) {
+        this.currency = n;
     }
 
     public float getPrice() {
-        return price;
+        return this.price;
     }
 
-    public void setPrice(float float1) {
-        price = float1;
+    public void setPrice(float f) {
+        this.price = f;
     }
 
     public String getPriceDsc() {
-        return new DecimalFormat("##.##").format((double) price);
+        return new DecimalFormat("##.##").format(this.price);
     }
 
     public String getString() {
-        String String1 = new StringBuilder().append(currency).append("\u8FFD\u4E66\u5E01").toString();
-
-        if (voucher > 0)
-            String1 = new StringBuilder().append(String1).append("+").append(voucher).append("\u8FFD\u4E66\u5238").toString();
-        return String1;
+        String string = "" + this.currency + "\u8ffd\u4e66\u5e01";
+        if (this.voucher > 0) {
+            string = string + "+" + this.voucher + "\u8ffd\u4e66\u5238";
+        }
+        return string;
     }
 
     public int getVoucher() {
-        return voucher;
+        return this.voucher;
     }
 
-    public void setVoucher(int int1) {
-        voucher = int1;
+    public void setVoucher(int n) {
+        this.voucher = n;
     }
 
     public String get_id() {
-        return _id;
+        return this._id;
     }
 
-    public void set_id(String String1) {
-        _id = String1;
+    public void set_id(String string) {
+        this._id = string;
     }
 }

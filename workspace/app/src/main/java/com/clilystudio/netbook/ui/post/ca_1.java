@@ -1,18 +1,20 @@
 package com.clilystudio.netbook.ui.post;
 
-import android.os.AsyncTask;
+import android.support.design.widget.am;
 
-final class ca implements Runnable {
+final class ca
+        implements Runnable {
+    private /* synthetic */ bZ a;
 
-    private bZ a;
-
-    ca(bZ bZ1) {
-        a = bZ1;
+    ca(bZ bZ2) {
+        this.a = bZ2;
     }
 
+    @Override
     public final void run() {
-        if (!android.support.design.widget.am.a((AsyncTask) OtherUserActivity.b(a.a)))
-            OtherUserActivity.b(a.a).cancel(true);
-        OtherUserActivity.c(a.a);
+        if (!am.a(OtherUserActivity.b(this.a.a))) {
+            OtherUserActivity.b(this.a.a).cancel(true);
+        }
+        OtherUserActivity.c(this.a.a);
     }
 }

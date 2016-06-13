@@ -1,20 +1,19 @@
 package com.clilystudio.netbook.ui.post;
 
-import android.content.Context;
 import android.view.View;
-import android.view.View$OnClickListener;
 
 import com.clilystudio.netbook.ui.user.AuthLoginActivity;
 
-final class dW implements View$OnClickListener {
+final class dW
+        implements View.OnClickListener {
+    private /* synthetic */ TweetTimelineFragment a;
 
-    private TweetTimelineFragment a;
-
-    dW(TweetTimelineFragment TweetTimelineFragment1) {
-        a = TweetTimelineFragment1;
+    dW(TweetTimelineFragment tweetTimelineFragment) {
+        this.a = tweetTimelineFragment;
     }
 
-    public final void onClick(View View1) {
-        a.startActivity(AuthLoginActivity.a((Context) a.getActivity()));
+    @Override
+    public final void onClick(View view) {
+        this.a.startActivity(AuthLoginActivity.a(this.a.getActivity()));
     }
 }

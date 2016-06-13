@@ -2,7 +2,6 @@ package com.clilystudio.netbook.ui.game;
 
 import android.app.Activity;
 import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -14,122 +13,121 @@ import com.clilystudio.netbook.model.GameGroupItem;
 import com.clilystudio.netbook.model.GameLayoutRoot$ModuleLayout;
 import com.clilystudio.netbook.model.ModuleType;
 import com.clilystudio.netbook.ui.BaseLoadingFragment;
+import com.umeng.a.b;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
 
-public class GameLayoutFragment extends BaseLoadingFragment {
-
+public class GameLayoutFragment
+        extends BaseLoadingFragment {
     public static int a = 3;
     private RecyclerView b;
-    private List c;
+    private List<GameLayoutRoot$ModuleLayout> c;
     private GameLayoutFragment$LayoutAdapter d;
     private Game e;
-    private BroadcastReceiver f = new G(this);
+    private BroadcastReceiver f;
 
-    static Game a(GameLayoutFragment GameLayoutFragment1, Game Game2) {
-        GameLayoutFragment1.e = Game2;
-        return Game2;
+    public GameLayoutFragment() {
+        this.f = new G(this);
     }
 
-    static List a(GameLayoutFragment GameLayoutFragment1, List List2) {
-        GameLayoutFragment1.c = List2;
-        return List2;
+    static /* synthetic */ Game a(GameLayoutFragment gameLayoutFragment, Game game) {
+        gameLayoutFragment.e = game;
+        return game;
     }
 
-    static void a(GameLayoutFragment GameLayoutFragment1) {
-        GameLayoutFragment1.h();
+    static /* synthetic */ List a(GameLayoutFragment gameLayoutFragment, List list) {
+        gameLayoutFragment.c = list;
+        return list;
     }
 
-    static Game b(GameLayoutFragment GameLayoutFragment1) {
-        return GameLayoutFragment1.e;
+    static /* synthetic */ void a(GameLayoutFragment gameLayoutFragment) {
+        gameLayoutFragment.h();
     }
 
-    static List c(GameLayoutFragment GameLayoutFragment1) {
-        return GameLayoutFragment1.c;
+    static /* synthetic */ Game b(GameLayoutFragment gameLayoutFragment) {
+        return gameLayoutFragment.e;
+    }
+
+    static /* synthetic */ List c(GameLayoutFragment gameLayoutFragment) {
+        return gameLayoutFragment.c;
     }
 
     public static GameLayoutRoot$ModuleLayout g() {
-        int int1 = 0;
-        String[] String_1darray2 = {"\u76D7\u5893\u82F1\u96C4", "\u53EB\u6211\u6076\u9B54\u5927\u4EBA", "\u5973\u795E\u51B2\u6211\u6765"};
-        int[] int_1darray3 = {2130837581, 2130837582, 2130837583};
-        String[] String_1darray4 = {"mge://aHR0cDovL3dnZS5tYXh0aG9uLmNuLz9wYWNrYWdlX2lkPWRhb211eWluZ3hpYW9uZyZyZXNvdXJjZV90eXBlPTQmZ2FtZWxpc3RfdHlwZT1zaW5nbGVfZ2FtZV9zZXR0aW5nJmZyb209c2luZ2xlX2dhbWU=", "wge://aHR0cDovL3dnZS5tYXh0aG9uLmNuLz9wYWNrYWdlX2lkPWppYW93b2Vtb2RhcmVuJnJlc291cmNlX3R5cGU9NCZnYW1lbGlzdF90eXBlPXNpbmdsZV9nYW1lX3NldHRpbmcmZnJvbT1zaW5nbGVfZ2FtZQ==", "mge://aHR0cDovL3dnZS5tYXh0aG9uLmNuLz9wYWNrYWdlX2lkPW52c2hlbmNob25nd2xhaSZyZXNvdXJjZV90eXBlPTQmZ2FtZWxpc3RfdHlwZT1zaW5nbGVfZ2FtZV9zZXR0aW5nJmZyb209c2luZ2xlX2dhbWU="};
-        GameLayoutRoot$ModuleLayout ModuleLayout5 = new GameLayoutRoot$ModuleLayout();
-        GameGroupItem GameGroupItem6;
-        Object Object7;
-
-        ModuleLayout5.setModule("aoyou");
-        ModuleLayout5.setTitle("H5\u6E38\u620F\u4E13\u533A");
-        GameGroupItem6 = new GameGroupItem();
-        GameGroupItem6.setName("H5\u6E38\u620F\u4E13\u533A");
-        Object7 = new ArrayList();
-        while (int1 < a) {
-            Object Object8 = new Game();
-
-            ((Game) Object8).setName(String_1darray2[int1]);
-            ((Game) Object8).setIconId(int_1darray3[int1]);
-            ((Game) Object8).setAndroidLink(String_1darray4[int1]);
-            ((List) Object7).add(Object8);
-            ++int1;
+        String[] arrstring = new String[]{"\u76d7\u5893\u82f1\u96c4", "\u53eb\u6211\u6076\u9b54\u5927\u4eba", "\u5973\u795e\u51b2\u6211\u6765"};
+        int[] arrn = new int[]{2130837581, 2130837582, 2130837583};
+        String[] arrstring2 = new String[]{"mge://aHR0cDovL3dnZS5tYXh0aG9uLmNuLz9wYWNrYWdlX2lkPWRhb211eWluZ3hpYW9uZyZyZXNvdXJjZV90eXBlPTQmZ2FtZWxpc3RfdHlwZT1zaW5nbGVfZ2FtZV9zZXR0aW5nJmZyb209c2luZ2xlX2dhbWU=", "wge://aHR0cDovL3dnZS5tYXh0aG9uLmNuLz9wYWNrYWdlX2lkPWppYW93b2Vtb2RhcmVuJnJlc291cmNlX3R5cGU9NCZnYW1lbGlzdF90eXBlPXNpbmdsZV9nYW1lX3NldHRpbmcmZnJvbT1zaW5nbGVfZ2FtZQ==", "mge://aHR0cDovL3dnZS5tYXh0aG9uLmNuLz9wYWNrYWdlX2lkPW52c2hlbmNob25nd2xhaSZyZXNvdXJjZV90eXBlPTQmZ2FtZWxpc3RfdHlwZT1zaW5nbGVfZ2FtZV9zZXR0aW5nJmZyb209c2luZ2xlX2dhbWU="};
+        GameLayoutRoot$ModuleLayout gameLayoutRoot$ModuleLayout = new GameLayoutRoot$ModuleLayout();
+        gameLayoutRoot$ModuleLayout.setModule("aoyou");
+        gameLayoutRoot$ModuleLayout.setTitle("H5\u6e38\u620f\u4e13\u533a");
+        GameGroupItem gameGroupItem = new GameGroupItem();
+        gameGroupItem.setName("H5\u6e38\u620f\u4e13\u533a");
+        ArrayList<Game> arrayList = new ArrayList<Game>();
+        for (int i = 0; i < a; ++i) {
+            Game game = new Game();
+            game.setName(arrstring[i]);
+            game.setIconId(arrn[i]);
+            game.setAndroidLink(arrstring2[i]);
+            arrayList.add(game);
         }
-        GameGroupItem6.setGames((List) Object7);
-        ModuleLayout5.setGameGroup(GameGroupItem6);
-        return ModuleLayout5;
+        gameGroupItem.setGames(arrayList);
+        gameLayoutRoot$ModuleLayout.setGameGroup(gameGroupItem);
+        return gameLayoutRoot$ModuleLayout;
     }
 
     private void h() {
-        if (c != null) {
-            Iterator Iterator1 = c.iterator();
-
-            while (Iterator1.hasNext()) {
-                GameLayoutRoot$ModuleLayout ModuleLayout2 = (GameLayoutRoot$ModuleLayout) Iterator1.next();
-                Object Object3;
-
-                if (ModuleLayout2.getType() != ModuleType.GAME_GROUP)
-                    continue;
-                Object3 = new ArrayList((Collection) ModuleLayout2.getGameGroup().getGames());
-                if (e != null)
-                    ((List) Object3).add(e);
-                s.a((Activity) getActivity(), (List) Object3);
-            }
-            d.b();
+        if (this.c == null) {
+            return;
         }
+        for (GameLayoutRoot$ModuleLayout gameLayoutRoot$ModuleLayout : this.c) {
+            if (gameLayoutRoot$ModuleLayout.getType() != ModuleType.GAME_GROUP) continue;
+            ArrayList<Game> arrayList = new ArrayList<Game>(gameLayoutRoot$ModuleLayout.getGameGroup().getGames());
+            if (this.e != null) {
+                arrayList.add(this.e);
+            }
+            s.a((Activity) this.getActivity(), arrayList);
+        }
+        this.d.b();
     }
 
+    @Override
     protected final int a() {
         return 2130903102;
     }
 
+    @Override
     protected final void b() {
-        f();
-        new H(this, (byte) 0).b(new String[0]);
+        this.f();
+        new H(this, 0).b(new String[0]);
     }
 
-    public void onActivityCreated(Bundle Bundle1) {
-        super.onActivityCreated(Bundle1);
-        b.setLayoutManager((ao) new LinearLayoutManager((Context) getActivity()));
-        d = new GameLayoutFragment$LayoutAdapter(this);
-        b.setAdapter((ah) d);
-        b();
+    @Override
+    public void onActivityCreated(Bundle bundle) {
+        super.onActivityCreated(bundle);
+        this.b.setLayoutManager(new LinearLayoutManager(this.getActivity()));
+        this.d = new GameLayoutFragment$LayoutAdapter(this);
+        this.b.setAdapter(this.d);
+        this.b();
     }
 
+    @Override
     public void onPause() {
         super.onPause();
-        getActivity().unregisterReceiver(f);
-        com.umeng.a.b.b("game_layout");
+        this.getActivity().unregisterReceiver(this.f);
+        b.b("game_layout");
     }
 
+    @Override
     public void onResume() {
         super.onResume();
-        getActivity().registerReceiver(f, new IntentFilter("update_game_item_status"));
-        h();
-        com.umeng.a.b.a("game_layout");
+        this.getActivity().registerReceiver(this.f, new IntentFilter("update_game_item_status"));
+        this.h();
+        b.a("game_layout");
     }
 
-    public void onViewCreated(View View1, Bundle Bundle2) {
-        super.onViewCreated(View1, Bundle2);
-        b = (RecyclerView) View1.findViewById(2131493133);
+    @Override
+    public void onViewCreated(View view, Bundle bundle) {
+        super.onViewCreated(view, bundle);
+        this.b = (RecyclerView) view.findViewById(2131493133);
     }
 }

@@ -1,30 +1,35 @@
 package com.clilystudio.netbook.ui;
 
+import com.clilystudio.netbook.model.BookSummary;
+
 import java.util.List;
 
-final class bP extends bR {
+final class bP
+        extends bR {
+    private /* synthetic */ SearchActivity b;
 
-    private SearchActivity b;
-
-    bP(SearchActivity SearchActivity1, byte byte2) {
-        this(SearchActivity1);
+    private bP(SearchActivity searchActivity) {
+        this.b = searchActivity;
+        super(searchActivity, 0);
     }
 
-    private bP(SearchActivity SearchActivity1) {
-        super(SearchActivity1, (byte) 0);
-        b = SearchActivity1;
+    /* synthetic */ bP(SearchActivity searchActivity, byte by) {
+        this(searchActivity);
     }
 
-    protected final void a(List List1) {
-        super.a(List1);
+    @Override
+    protected final void a(List<BookSummary> list) {
+        super.a(list);
     }
 
-    protected final void onPostExecute(Object Object1) {
-        super.a((List) Object1);
+    @Override
+    protected final /* synthetic */ void onPostExecute(Object object) {
+        super.a((List) object);
     }
 
+    @Override
     protected final void onPreExecute() {
         super.onPreExecute();
-        SearchActivity.b(b, SearchActivity.f(b).getText().toString());
+        SearchActivity.b(this.b, SearchActivity.f(this.b).getText().toString());
     }
 }

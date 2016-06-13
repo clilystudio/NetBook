@@ -1,15 +1,17 @@
 package com.clilystudio.netbook.ui;
 
-final class ci implements Runnable {
+final class ci
+        implements Runnable {
+    private /* synthetic */ cl a;
+    private /* synthetic */ long b;
 
-    private cl a;
-    private long b;
-    ci(SplashActivity SplashActivity1, cl cl2, long long3) {
-        a = cl2;
-        b = long3;
+    ci(SplashActivity splashActivity, cl cl2, long l) {
+        this.a = cl2;
+        this.b = l;
     }
 
+    @Override
     public final void run() {
-        a.a(b);
+        this.a.a(this.b);
     }
 }

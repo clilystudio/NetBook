@@ -3,7 +3,6 @@ package com.clilystudio.netbook.model;
 import com.clilystudio.netbook.api.ApiService;
 
 public class BookRankSummary {
-
     private String _id;
     private boolean collapse;
     private String cover;
@@ -12,63 +11,59 @@ public class BookRankSummary {
     private String totalRank;
 
     public String getCover() {
-        return cover;
+        return this.cover;
     }
 
-    public void setCover(String String1) {
-        cover = String1;
+    public void setCover(String string) {
+        this.cover = string;
     }
 
     public String getFullCover() {
-        return new StringBuilder().append(ApiService.a).append(cover).toString();
+        return ApiService.a + this.cover;
     }
 
     public String[] getIds() {
-        String[] String_1darray1 = new String[3];
-
-        String_1darray1[0] = _id;
-        String_1darray1[1] = monthRank;
-        String_1darray1[2] = totalRank;
-        return String_1darray1;
+        String[] arrstring = new String[]{this._id, this.monthRank, this.totalRank};
+        return arrstring;
     }
 
     public String getMonthRank() {
-        return monthRank;
+        return this.monthRank;
     }
 
-    public void setMonthRank(String String1) {
-        monthRank = String1;
+    public void setMonthRank(String string) {
+        this.monthRank = string;
     }
 
     public String getTitle() {
-        return title;
+        return this.title;
     }
 
-    public void setTitle(String String1) {
-        title = String1;
+    public void setTitle(String string) {
+        this.title = string;
     }
 
     public String getTotalRank() {
-        return totalRank;
+        return this.totalRank;
     }
 
-    public void setTotalRank(String String1) {
-        totalRank = String1;
+    public void setTotalRank(String string) {
+        this.totalRank = string;
     }
 
     public String get_id() {
-        return _id;
+        return this._id;
     }
 
-    public void set_id(String String1) {
-        _id = String1;
+    public void set_id(String string) {
+        this._id = string;
     }
 
     public boolean isCollapse() {
-        return collapse;
+        return this.collapse;
     }
 
-    public void setCollapse(boolean boolean1) {
-        collapse = boolean1;
+    public void setCollapse(boolean bl) {
+        this.collapse = bl;
     }
 }

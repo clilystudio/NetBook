@@ -2,25 +2,28 @@ package com.clilystudio.netbook.ui.feed;
 
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.AdapterView$OnItemClickListener;
 
 import com.clilystudio.netbook.db.BookReadRecord;
 
-final class b implements AdapterView$OnItemClickListener {
+final class b
+        implements AdapterView.OnItemClickListener {
+    private /* synthetic */ FeedAddActivity a;
 
-    private FeedAddActivity a;
-
-    b(FeedAddActivity FeedAddActivity1) {
-        a = FeedAddActivity1;
+    b(FeedAddActivity feedAddActivity) {
+        this.a = feedAddActivity;
     }
 
-    public final void onItemClick(AdapterView AdapterView1, View View2, int int3, long long4) {
-        BookReadRecord BookReadRecord6 = (BookReadRecord) FeedAddActivity.b(a).getItem(int3);
-
-        if (FeedAddActivity.c(a).contains(BookReadRecord6))
-            FeedAddActivity.c(a).remove(BookReadRecord6);
-        else
-            FeedAddActivity.c(a).add(BookReadRecord6);
-        FeedAddActivity.b(a).notifyDataSetChanged();
+    /*
+     * Enabled aggressive block sorting
+     */
+    @Override
+    public final void onItemClick(AdapterView<?> adapterView, View view, int n, long l) {
+        BookReadRecord bookReadRecord = (BookReadRecord) FeedAddActivity.b(this.a).getItem(n);
+        if (FeedAddActivity.c(this.a).contains(bookReadRecord)) {
+            FeedAddActivity.c(this.a).remove(bookReadRecord);
+        } else {
+            FeedAddActivity.c(this.a).add(bookReadRecord);
+        }
+        FeedAddActivity.b(this.a).notifyDataSetChanged();
     }
 }

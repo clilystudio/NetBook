@@ -2,14 +2,14 @@ package com.clilystudio.netbook.reader;
 
 import android.view.animation.Interpolator;
 
-final class N implements Interpolator {
-
-    N(PagerWidget PagerWidget1) {
+final class N
+        implements Interpolator {
+    N(PagerWidget pagerWidget) {
     }
 
-    public final float getInterpolation(float float1) {
-        float float2 = float1 - 1.0F;
-
-        return 1.0F + float2 * (float2 * (float2 * (float2 * float2)));
+    @Override
+    public final float getInterpolation(float f) {
+        float f2 = f - 1.0f;
+        return 1.0f + f2 * (f2 * (f2 * (f2 * f2)));
     }
 }

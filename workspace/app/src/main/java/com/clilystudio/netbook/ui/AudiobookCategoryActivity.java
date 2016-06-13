@@ -1,166 +1,155 @@
 package com.clilystudio.netbook.ui;
 
 import android.content.Context;
-import android.content.DialogInterface$OnClickListener;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.am;
 import android.text.SpannableString;
 import android.text.style.ForegroundColorSpan;
 import android.view.View;
-import android.view.View$OnClickListener;
-import android.view.ViewGroup$LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
-import android.widget.TableRow$LayoutParams;
 import android.widget.TextView;
 
+import com.clilystudio.netbook.d;
 import com.clilystudio.netbook.util.as;
 import com.ximalaya.ting.android.opensdk.datatrasfer.CommonRequest;
-import com.ximalaya.ting.android.opensdk.datatrasfer.IDataCallBack;
 import com.ximalaya.ting.android.opensdk.model.tag.Tag;
 import com.ximalaya.ting.android.opensdk.model.tag.TagList;
 
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-public class AudiobookCategoryActivity extends BaseActivity {
-
+public class AudiobookCategoryActivity
+        extends BaseActivity {
     private CommonRequest a;
     private View b;
     private View c;
     private View e;
-// Error: Internal #201: 
-// The following method may not be correct.
 
-    public static Intent a(Context Context1) {
+    public static Intent a(Context context) {
+        return new d().a(context, AudiobookCategoryActivity.class).a();
     }
 
-    static void a(AudiobookCategoryActivity AudiobookCategoryActivity1) {
-        AudiobookCategoryActivity1.b();
+    static /* synthetic */ void a(AudiobookCategoryActivity audiobookCategoryActivity) {
+        audiobookCategoryActivity.b();
     }
 
-    static void a(AudiobookCategoryActivity AudiobookCategoryActivity1, int int2) {
-        AudiobookCategoryActivity1.a(int2);
+    static /* synthetic */ void a(AudiobookCategoryActivity audiobookCategoryActivity, int n) {
+        audiobookCategoryActivity.a(n);
     }
 
-    static void a(AudiobookCategoryActivity AudiobookCategoryActivity1, TagList TagList2) {
-        List List3 = TagList2.getTagList();
-
-        if (List3.size() != 0) {
-            int int4 = AudiobookCategoryActivity1.getResources().getDisplayMetrics().widthPixels / 3;
-            int int5 = com.clilystudio.netbook.hpay100.a.a.a((Context) AudiobookCategoryActivity1, 56.0F);
-            TableLayout TableLayout6 = (TableLayout) AudiobookCategoryActivity1.findViewById(2131493079);
-            Object Object7 = new TableRow$LayoutParams(-1, -2);
-            int int8 = am.b((Context) AudiobookCategoryActivity1, 2130771969);
-            int int9;
-            Object Object10;
-            int int11;
-            int int12;
-
-            for (int9 = 0; int9 < List3.size(); ++int9) {
-                String String16 = ((Tag) List3.get(int9)).getTagName();
-
-                if (String16.equals("QQ\u9605\u8BFB") || String16.equals("\u901F\u64AD\u4E13\u533A") || String16.equals("\u63A8\u7406\u4E16\u754C")) {
-                    List3.remove(int9);
-                    --int9;
-                }
+    /*
+     * Enabled aggressive block sorting
+     */
+    static /* synthetic */ void a(AudiobookCategoryActivity audiobookCategoryActivity, TagList tagList) {
+        List<Tag> list = tagList.getTagList();
+        if (list.size() == 0) {
+            return;
+        }
+        int n = audiobookCategoryActivity.getResources().getDisplayMetrics().widthPixels / 3;
+        int n2 = a.a((Context) audiobookCategoryActivity, 56.0f);
+        TableLayout tableLayout = (TableLayout) audiobookCategoryActivity.findViewById(2131493079);
+        TableRow.LayoutParams layoutParams = new TableRow.LayoutParams(-1, -2);
+        int n3 = am.b((Context) audiobookCategoryActivity, (int) 2130771969);
+        for (int j = 0; j < list.size(); ++j) {
+            String string = list.get(j).getTagName();
+            if (!string.equals("QQ\u9605\u8bfb") && !string.equals("\u901f\u64ad\u4e13\u533a") && !string.equals("\u63a8\u7406\u4e16\u754c")) continue;
+            list.remove(j);
+            --j;
+        }
+        TableRow tableRow = null;
+        int n4 = 0;
+        int n5 = 0;
+        while (n5 < list.size()) {
+            Tag tag = list.get(n5);
+            if (n5 % 3 == 0) {
+                tableRow = new TableRow(audiobookCategoryActivity);
+                tableLayout.addView((View) tableRow, layoutParams);
+                ++n4;
             }
-            Object10 = null;
-            int11 = 0;
-            for (int12 = 0; int12 < List3.size(); ++int12) {
-                Tag Tag13 = (Tag) List3.get(int12);
-                Object Object14;
-                Object Object15;
-
-                if (int12 % 3 == 0) {
-                    Object10 = new TableRow((Context) AudiobookCategoryActivity1);
-                    TableLayout6.addView((View) Object10, (ViewGroup$LayoutParams) Object7);
-                    ++int11;
+            TableRow.LayoutParams layoutParams2 = new TableRow.LayoutParams(n, n2);
+            if (n4 == 1) {
+                if (n5 % 3 == 1) {
+                    layoutParams2.setMargins(-1, 0, -1, 0);
+                } else {
+                    layoutParams2.setMargins(0, 0, 0, 0);
                 }
-                Object14 = new TableRow$LayoutParams(int4, int5);
-                if (int11 == 1) {
-                    if (int12 % 3 == 1)
-                        ((TableRow$LayoutParams) Object14).setMargins(-1, 0, -1, 0);
-                    else
-                        ((TableRow$LayoutParams) Object14).setMargins(0, 0, 0, 0);
-                } else if (int12 % 3 == 1)
-                    ((TableRow$LayoutParams) Object14).setMargins(-1, -1, -1, 0);
-                else
-                    ((TableRow$LayoutParams) Object14).setMargins(0, -1, 0, 0);
-                Object15 = new TextView((Context) AudiobookCategoryActivity1);
-                ((TextView) Object15).setText((CharSequence) Tag13.getTagName());
-                ((TextView) Object15).setGravity(17);
-                ((TextView) Object15).setTextAppearance((Context) AudiobookCategoryActivity1, 2131165621);
-                ((TextView) Object15).setBackgroundResource(int8);
-                ((TextView) Object15).setOnClickListener((View$OnClickListener) new v(AudiobookCategoryActivity1, Tag13));
-                ((TableRow) Object10).addView((View) Object15, (ViewGroup$LayoutParams) Object14);
+            } else if (n5 % 3 == 1) {
+                layoutParams2.setMargins(-1, -1, -1, 0);
+            } else {
+                layoutParams2.setMargins(0, -1, 0, 0);
             }
+            TextView textView = new TextView(audiobookCategoryActivity);
+            textView.setText(tag.getTagName());
+            textView.setGravity(17);
+            textView.setTextAppearance(audiobookCategoryActivity, 2131165621);
+            textView.setBackgroundResource(n3);
+            textView.setOnClickListener(new v(audiobookCategoryActivity, tag));
+            tableRow.addView((View) textView, layoutParams2);
+            ++n5;
         }
     }
 
-    static void b(AudiobookCategoryActivity AudiobookCategoryActivity1) {
-        h h2 = new h((Context) AudiobookCategoryActivity1).a(true);
-
-        h2.e = "\u662F\u5426\u6253\u5F00\u559C\u9A6C\u62C9\u96C5FM\u4E0B\u8F7D\u9875";
-        h2.b("\u53D6\u6D88", (DialogInterface$OnClickListener) new t(AudiobookCategoryActivity1)).a("\u786E\u5B9A", (DialogInterface$OnClickListener) new s(AudiobookCategoryActivity1)).b();
+    static /* synthetic */ void b(AudiobookCategoryActivity audiobookCategoryActivity) {
+        h h2 = new h(audiobookCategoryActivity).a(true);
+        h2.e = "\u662f\u5426\u6253\u5f00\u559c\u9a6c\u62c9\u96c5FM\u4e0b\u8f7d\u9875";
+        h2.b("\u53d6\u6d88", (DialogInterface.OnClickListener) ((Object) new t(audiobookCategoryActivity))).a("\u786e\u5b9a", (DialogInterface.OnClickListener) ((Object) new s(audiobookCategoryActivity))).b();
     }
 
-    private void a(int int1) {
-        switch (int1) {
-            default:
+    private void a(int n) {
+        switch (n) {
+            default: {
                 return;
-            case 1:
-                e.setVisibility(0);
-                b.setVisibility(8);
-                c.setVisibility(8);
+            }
+            case 1: {
+                this.e.setVisibility(0);
+                this.b.setVisibility(8);
+                this.c.setVisibility(8);
                 return;
-            case 0:
-                e.setVisibility(8);
-                b.setVisibility(0);
-                c.setVisibility(8);
+            }
+            case 0: {
+                this.e.setVisibility(8);
+                this.b.setVisibility(0);
+                this.c.setVisibility(8);
                 return;
+            }
             case 2:
-                e.setVisibility(8);
-                b.setVisibility(8);
-                c.setVisibility(0);
-                return;
         }
+        this.e.setVisibility(8);
+        this.b.setVisibility(8);
+        this.c.setVisibility(0);
     }
 
     private void b() {
-        Object Object1;
-
-        a(0);
-        Object1 = new HashMap();
-        ((Map) Object1).put("category_id", "3");
-        ((Map) Object1).put("type", "0");
-        CommonRequest.getTags((Map) Object1, (IDataCallBack) new u(this));
+        this.a(0);
+        HashMap<String, String> hashMap = new HashMap<String, String>();
+        hashMap.put("category_id", "3");
+        hashMap.put("type", "0");
+        CommonRequest.getTags(hashMap, new u(this));
     }
 
-    protected void onCreate(Bundle Bundle1) {
-        TextView TextView3;
-        Object Object4;
-
-        super.onCreate(Bundle1);
-        setContentView(2130903080);
-        b(getResources().getString(2131034314));
+    @Override
+    protected void onCreate(Bundle bundle) {
+        super.onCreate(bundle);
+        this.setContentView(2130903080);
+        this.b(this.getResources().getString(2131034314));
         as.a();
-        a = as.b();
-        e = findViewById(2131493078);
-        b = findViewById(2131493081);
-        c = findViewById(2131493082);
-        c.setOnClickListener((View$OnClickListener) new q(this));
-        b();
-        ((RelativeLayout) findViewById(2131493083)).setBackgroundResource(am.b((Context) this, 2130771970));
-        TextView3 = (TextView) findViewById(2131493084);
-        Object4 = new SpannableString((CharSequence) getResources().getString(2131034591));
-        ((SpannableString) Object4).setSpan(new ForegroundColorSpan(getResources().getColor(2131427543)), 0, 5, 33);
-        ((SpannableString) Object4).setSpan(new ForegroundColorSpan(getResources().getColor(2131427340)), 5, 11, 33);
-        ((SpannableString) Object4).setSpan(new ForegroundColorSpan(getResources().getColor(2131427543)), 11, 13, 33);
-        TextView3.setText((CharSequence) Object4);
-        TextView3.setOnClickListener((View$OnClickListener) new r(this));
+        this.a = as.b();
+        this.e = this.findViewById(2131493078);
+        this.b = this.findViewById(2131493081);
+        this.c = this.findViewById(2131493082);
+        this.c.setOnClickListener(new q(this));
+        this.b();
+        ((RelativeLayout) this.findViewById(2131493083)).setBackgroundResource(am.b((Context) this, (int) 2130771970));
+        TextView textView = (TextView) this.findViewById(2131493084);
+        SpannableString spannableString = new SpannableString(this.getResources().getString(2131034591));
+        spannableString.setSpan(new ForegroundColorSpan(this.getResources().getColor(2131427543)), 0, 5, 33);
+        spannableString.setSpan(new ForegroundColorSpan(this.getResources().getColor(2131427340)), 5, 11, 33);
+        spannableString.setSpan(new ForegroundColorSpan(this.getResources().getColor(2131427543)), 11, 13, 33);
+        textView.setText(spannableString);
+        textView.setOnClickListener(new r(this));
     }
 }

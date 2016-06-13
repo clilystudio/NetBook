@@ -1,21 +1,22 @@
 package com.clilystudio.netbook.widget;
 
 import android.widget.CompoundButton;
-import android.widget.CompoundButton$OnCheckedChangeListener;
 
-final class az implements CompoundButton$OnCheckedChangeListener {
+final class az
+        implements CompoundButton.OnCheckedChangeListener {
+    private /* synthetic */ SettingCheckBox a;
 
-    private SettingCheckBox a;
-
-    az(SettingCheckBox SettingCheckBox1) {
-        a = SettingCheckBox1;
+    az(SettingCheckBox settingCheckBox) {
+        this.a = settingCheckBox;
     }
 
-    public final void onCheckedChanged(CompoundButton CompoundButton1, boolean boolean2) {
-        com.clilystudio.netbook.hpay100.a.a.b(a.getContext(), SettingCheckBox.a(a), boolean2);
-        if (boolean2)
-            CompoundButton1.setContentDescription((CharSequence) "\u5DF2\u5F00\u542F");
-        else
-            CompoundButton1.setContentDescription((CharSequence) "\u5DF2\u5173\u95ED");
+    @Override
+    public final void onCheckedChanged(CompoundButton compoundButton, boolean bl) {
+        a.b(this.a.getContext(), SettingCheckBox.a(this.a), bl);
+        if (bl) {
+            compoundButton.setContentDescription("\u5df2\u5f00\u542f");
+            return;
+        }
+        compoundButton.setContentDescription("\u5df2\u5173\u95ed");
     }
 }

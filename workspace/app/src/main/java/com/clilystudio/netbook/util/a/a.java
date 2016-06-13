@@ -7,17 +7,14 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public final class a {
-
-    public static InsideLink a(String String1) {
-        if (String1 == null || String1.length() < 4)
-            throw new IllegalArgumentException(new StringBuilder().append(String1).append(" must have length above 4").toString());
-        else {
-            Matcher Matcher2 = Pattern.compile("^\\[\\[(.+?):(.+?) (.+)\\]\\]$").matcher((CharSequence) String1);
-
-            if (!Matcher2.find())
-                throw new IllegalArgumentException(new StringBuilder().append(String1).append(" is in wrong format").toString());
-            else
-                return InsideLinkFactory.create(Matcher2.group(1), Matcher2.group(2), Matcher2.group(3));
+    public static InsideLink a(String string) {
+        if (string == null || string.length() < 4) {
+            throw new IllegalArgumentException(string + " must have length above 4");
         }
+        Matcher matcher = Pattern.compile("^\\[\\[(.+?):(.+?) (.+)\\]\\]$").matcher(string);
+        if (!matcher.find()) {
+            throw new IllegalArgumentException(string + " is in wrong format");
+        }
+        return InsideLinkFactory.create(matcher.group(1), matcher.group(2), matcher.group(3));
     }
 }

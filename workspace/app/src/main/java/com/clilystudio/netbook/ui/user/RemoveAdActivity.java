@@ -1,42 +1,44 @@
 package com.clilystudio.netbook.ui.user;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
-import android.view.View$OnClickListener;
 
+import com.clilystudio.netbook.event.i;
 import com.clilystudio.netbook.ui.BaseLoadingActivity;
 import com.clilystudio.netbook.util.D;
 
-public class RemoveAdActivity extends BaseLoadingActivity {
-
+public class RemoveAdActivity
+        extends BaseLoadingActivity {
     al a;
     private RecyclerView b;
 
+    @Override
     protected final void b() {
-        i();
-        new aj(this, (byte) 0).b(new Void[0]);
+        this.i();
+        new aj(this, 0).b((Object[]) new Void[0]);
     }
 
-    public void onCreate(Bundle Bundle1) {
-        super.onCreate(Bundle1);
-        a(2130903125);
-        b("\u514D\u5E7F\u544A");
-        b = (RecyclerView) findViewById(2131493175);
-        b.setLayoutManager((ao) new D((Context) this));
-        a = new al(this);
-        b.setAdapter((ah) a);
-        com.clilystudio.netbook.event.i.a().a(this);
-        b();
-        if (com.clilystudio.netbook.hpay100.a.a.r((Context) this, "switch_share_remove_ad")) {
-            findViewById(2131493176).setVisibility(0);
-            findViewById(2131493177).setVisibility(0);
-            findViewById(2131493179).setOnClickListener((View$OnClickListener) new ai(this));
+    @Override
+    public void onCreate(Bundle bundle) {
+        super.onCreate(bundle);
+        this.a(2130903125);
+        this.b("\u514d\u5e7f\u544a");
+        this.b = (RecyclerView) this.findViewById(2131493175);
+        this.b.setLayoutManager(new D(this));
+        this.a = new al(this);
+        this.b.setAdapter((ah) ((Object) this.a));
+        i.a().a(this);
+        this.b();
+        if (a.r(this, "switch_share_remove_ad")) {
+            this.findViewById(2131493176).setVisibility(0);
+            this.findViewById(2131493177).setVisibility(0);
+            this.findViewById(2131493179).setOnClickListener(new ai(this));
         }
     }
 
+    @Override
     protected void onDestroy() {
         super.onDestroy();
-        com.clilystudio.netbook.event.i.a().b(this);
+        i.a().b(this);
     }
 }

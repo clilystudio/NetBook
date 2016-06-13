@@ -3,32 +3,31 @@ package com.clilystudio.netbook.model;
 import java.util.Date;
 
 public class BookShelfSyncTime {
-
     private Date bookshelfUpdated;
     private String code;
     private boolean ok;
 
     public Date getBookshelfUpdated() {
-        return bookshelfUpdated;
+        return this.bookshelfUpdated;
     }
 
-    public void setBookshelfUpdated(Date Date1) {
-        bookshelfUpdated = Date1;
+    public void setBookshelfUpdated(Date date) {
+        this.bookshelfUpdated = date;
     }
 
     public String getCode() {
-        return code;
+        return this.code;
     }
 
-    public void setCode(String String1) {
-        code = String1;
+    public void setCode(String string) {
+        this.code = string;
     }
 
     public boolean isOk() {
-        return ok;
+        return this.ok;
     }
 
-    public void setOk(boolean boolean1) {
-        ok = boolean1;
+    public void setOk(boolean bl) {
+        this.ok = bl;
     }
 }

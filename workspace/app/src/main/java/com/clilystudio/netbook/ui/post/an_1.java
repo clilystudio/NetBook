@@ -1,19 +1,21 @@
 package com.clilystudio.netbook.ui.post;
 
 import android.os.Handler;
+import android.widget.ListView;
 
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 
-final class an implements k {
+final class an
+        implements k<ListView> {
+    final /* synthetic */ BookHelpListActivity a;
 
-    BookHelpListActivity a;     // final access specifier removed
-
-    an(BookHelpListActivity BookHelpListActivity1) {
-        a = BookHelpListActivity1;
+    an(BookHelpListActivity bookHelpListActivity) {
+        this.a = bookHelpListActivity;
     }
 
-    public final void a(PullToRefreshBase PullToRefreshBase1) {
-        BookHelpListActivity.d(a).setVisibility(8);
-        new Handler().postDelayed((Runnable) new ao(this), 1000L);
+    @Override
+    public final void a(PullToRefreshBase<ListView> pullToRefreshBase) {
+        BookHelpListActivity.d(this.a).setVisibility(8);
+        new Handler().postDelayed(new ao(this), 1000);
     }
 }

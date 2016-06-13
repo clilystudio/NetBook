@@ -1,41 +1,41 @@
 package com.clilystudio.netbook.adapter;
 
 import com.clilystudio.netbook.a.e;
+import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.model.PostPublish;
 
-final class S extends e {
+final class S
+        extends e<String, Void, PostPublish> {
+    private /* synthetic */ G a;
 
-    private G a;
-
-    S(G G1) {
-        a = G1;
+    S(G g) {
+        this.a = g;
     }
 
-    private static transient PostPublish a(String[] String_1darray1) {
-        PostPublish PostPublish4;
-
+    private static /* varargs */ PostPublish a(String... arrstring) {
         try {
-            com.clilystudio.netbook.api.b.a();
-            PostPublish4 = com.clilystudio.netbook.api.b.b().k(String_1darray1[0], String_1darray1[1]);
-        } catch (Exception Exception2) {
-            Exception2.printStackTrace();
+            b.a();
+            PostPublish postPublish = b.b().k(arrstring[0], arrstring[1]);
+            return postPublish;
+        } catch (Exception var1_2) {
+            var1_2.printStackTrace();
             return null;
         }
-        return PostPublish4;
     }
 
-    protected final Object doInBackground(Object[] Object_1darray1) {
-        return a((String[]) Object_1darray1);
+    @Override
+    protected final /* synthetic */ Object doInBackground(Object[] arrobject) {
+        return S.a((String[]) arrobject);
     }
 
-    protected final void onPostExecute(Object Object1) {
-        PostPublish PostPublish2 = (PostPublish) Object1;
-
-        if (PostPublish2 != null && PostPublish2.isOk() && G.b(a) != null) {
-            a.f().remove(G.c(a));
-            a.notifyDataSetChanged();
-            G.a(a, null);
-            G.d(a, null);
+    @Override
+    protected final /* synthetic */ void onPostExecute(Object object) {
+        PostPublish postPublish = (PostPublish) object;
+        if (postPublish != null && postPublish.isOk() && G.b(this.a) != null) {
+            this.a.f().remove(G.c(this.a));
+            this.a.notifyDataSetChanged();
+            G.a(this.a, null);
+            G.d(this.a, null);
         }
     }
 }

@@ -2,8 +2,8 @@ package com.clilystudio.netbook.model;
 
 import java.io.Serializable;
 
-public class Game implements Serializable {
-
+public class Game
+        implements Serializable {
     private static final long serialVersionUID = -8334205226470939171L;
     private String _id;
     private boolean activityFlag;
@@ -24,201 +24,201 @@ public class Game implements Serializable {
     private String intro;
     private String localFileUri;
     private boolean mainPromo;
-    private Game$MainPromoInfo mainPromoInfo;
+    private MainPromoInfo mainPromoInfo;
     private String name;
     private String[] pictures;
     private boolean recommend;
     private String shortIntro;
 
     public String getAndroidLink() {
-        return androidLink;
+        return this.androidLink;
     }
 
-    public void setAndroidLink(String String1) {
-        androidLink = String1;
+    public void setAndroidLink(String string) {
+        this.androidLink = string;
     }
 
     public String getAndroidPackageName() {
-        return androidPackageName;
+        return this.androidPackageName;
     }
 
-    public void setAndroidPackageName(String String1) {
-        androidPackageName = String1;
+    public void setAndroidPackageName(String string) {
+        this.androidPackageName = string;
     }
 
     public int getAndroidSize() {
-        return androidSize;
+        return this.androidSize;
     }
 
-    public void setAndroidSize(int int1) {
-        androidSize = int1;
+    public void setAndroidSize(int n) {
+        this.androidSize = n;
     }
 
     public String getBanner() {
-        return banner;
+        return this.banner;
     }
 
-    public void setBanner(String String1) {
-        banner = String1;
+    public void setBanner(String string) {
+        this.banner = string;
     }
 
     public String getCat() {
-        return cat;
+        return this.cat;
     }
 
-    public void setCat(String String1) {
-        cat = String1;
+    public void setCat(String string) {
+        this.cat = string;
     }
 
     public String getCover() {
-        return cover;
+        return this.cover;
     }
 
-    public void setCover(String String1) {
-        cover = String1;
+    public void setCover(String string) {
+        this.cover = string;
     }
 
     public int getDownloadStatus() {
-        return downloadStatus;
+        return this.downloadStatus;
     }
 
-    public void setDownloadStatus(int int1) {
-        downloadStatus = int1;
+    public void setDownloadStatus(int n) {
+        this.downloadStatus = n;
     }
 
     public int getFollowers() {
-        return followers;
+        return this.followers;
     }
 
-    public void setFollowers(int int1) {
-        followers = int1;
+    public void setFollowers(int n) {
+        this.followers = n;
     }
 
     public String getIcon() {
-        return icon;
+        return this.icon;
     }
 
-    public void setIcon(String String1) {
-        icon = String1;
+    public void setIcon(String string) {
+        this.icon = string;
     }
 
     public int getIconId() {
-        return iconId;
+        return this.iconId;
     }
 
-    public void setIconId(int int1) {
-        iconId = int1;
+    public void setIconId(int n) {
+        this.iconId = n;
     }
 
     public String getIntro() {
-        return intro;
+        return this.intro;
     }
 
-    public void setIntro(String String1) {
-        intro = String1;
+    public void setIntro(String string) {
+        this.intro = string;
     }
 
     public String getLocalFileUri() {
-        return localFileUri;
+        return this.localFileUri;
     }
 
-    public void setLocalFileUri(String String1) {
-        localFileUri = String1;
+    public void setLocalFileUri(String string) {
+        this.localFileUri = string;
     }
 
-    public Game$MainPromoInfo getMainPromoInfo() {
-        return mainPromoInfo;
+    public MainPromoInfo getMainPromoInfo() {
+        return this.mainPromoInfo;
     }
 
-    public void setMainPromoInfo(Game$MainPromoInfo MainPromoInfo1) {
-        mainPromoInfo = MainPromoInfo1;
+    public void setMainPromoInfo(MainPromoInfo mainPromoInfo) {
+        this.mainPromoInfo = mainPromoInfo;
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
-    public void setName(String String1) {
-        name = String1;
+    public void setName(String string) {
+        this.name = string;
     }
 
     public String[] getPictures() {
-        return pictures;
+        return this.pictures;
     }
 
-    public void setPictures(String[] String_1darray1) {
-        pictures = String_1darray1;
+    public void setPictures(String[] arrstring) {
+        this.pictures = arrstring;
     }
 
     public String getShortIntro() {
-        return shortIntro;
+        return this.shortIntro;
     }
 
-    public void setShortIntro(String String1) {
-        shortIntro = String1;
+    public void setShortIntro(String string) {
+        this.shortIntro = string;
     }
 
     public String get_id() {
-        return _id;
+        return this._id;
     }
 
-    public void set_id(String String1) {
-        _id = String1;
+    public void set_id(String string) {
+        this._id = string;
     }
 
     public boolean isActivityFlag() {
-        return activityFlag;
+        return this.activityFlag;
     }
 
-    public void setActivityFlag(boolean boolean1) {
-        activityFlag = boolean1;
+    public void setActivityFlag(boolean bl) {
+        this.activityFlag = bl;
     }
 
     public boolean isFirsthand() {
-        return firsthand;
+        return this.firsthand;
     }
 
-    public void setFirsthand(boolean boolean1) {
-        firsthand = boolean1;
+    public void setFirsthand(boolean bl) {
+        this.firsthand = bl;
     }
 
     public boolean isGiftFlag() {
-        return giftFlag;
+        return this.giftFlag;
     }
 
-    public void setGiftFlag(boolean boolean1) {
-        giftFlag = boolean1;
+    public void setGiftFlag(boolean bl) {
+        this.giftFlag = bl;
     }
 
     public boolean isH5MainPromo() {
-        return h5MainPromo;
+        return this.h5MainPromo;
     }
 
-    public void setH5MainPromo(boolean boolean1) {
-        h5MainPromo = boolean1;
+    public void setH5MainPromo(boolean bl) {
+        this.h5MainPromo = bl;
     }
 
     public boolean isHotFlag() {
-        return hotFlag;
+        return this.hotFlag;
     }
 
-    public void setHotFlag(boolean boolean1) {
-        hotFlag = boolean1;
+    public void setHotFlag(boolean bl) {
+        this.hotFlag = bl;
     }
 
     public boolean isMainPromo() {
-        return mainPromo;
+        return this.mainPromo;
     }
 
-    public void setMainPromo(boolean boolean1) {
-        mainPromo = boolean1;
+    public void setMainPromo(boolean bl) {
+        this.mainPromo = bl;
     }
 
     public boolean isRecommend() {
-        return recommend;
+        return this.recommend;
     }
 
-    public void setRecommend(boolean boolean1) {
-        recommend = boolean1;
+    public void setRecommend(boolean bl) {
+        this.recommend = bl;
     }
 }

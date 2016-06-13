@@ -1,18 +1,19 @@
 package com.clilystudio.netbook.ui;
 
+import android.content.Intent;
 import android.view.View;
-import android.view.View$OnClickListener;
 
-final class bb implements View$OnClickListener {
+final class bb
+        implements View.OnClickListener {
+    private /* synthetic */ ImportantNotificationFragment a;
 
-    private ImportantNotificationFragment a;
-
-    bb(ImportantNotificationFragment ImportantNotificationFragment1) {
-        a = ImportantNotificationFragment1;
+    bb(ImportantNotificationFragment importantNotificationFragment) {
+        this.a = importantNotificationFragment;
     }
-// Error: Internal #201: 
-// The following method may not be correct.
 
-    public final void onClick(View View1) {
+    @Override
+    public final void onClick(View view) {
+        Intent intent = new Intent(this.a.getActivity(), UnimportantNotificationActivity.class);
+        this.a.startActivity(intent);
     }
 }

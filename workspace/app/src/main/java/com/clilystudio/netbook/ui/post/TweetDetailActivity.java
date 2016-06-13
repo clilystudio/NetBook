@@ -1,5 +1,6 @@
 package com.clilystudio.netbook.ui.post;
 
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -8,14 +9,14 @@ import android.os.Bundle;
 import android.support.design.widget.am;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View$OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.ListAdapter;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.clilystudio.netbook.adapter.G;
+import com.clilystudio.netbook.adapter.z;
+import com.clilystudio.netbook.d;
 import com.clilystudio.netbook.db.VoteRecord;
 import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.model.Author;
@@ -39,20 +40,26 @@ import com.clilystudio.netbook.widget.SendView;
 import com.clilystudio.netbook.widget.av;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
 import cn.sharesdk.framework.PlatformActionListener;
 
-public class TweetDetailActivity extends AbsPostActivity {
-
-    private com.clilystudio.netbook.adapter.z f;
+public class TweetDetailActivity
+        extends AbsPostActivity {
+    private av A;
+    private z f;
+    private List<PostComment> g = new ArrayList<PostComment>();
     private dy h;
     private View i;
     private View j;
     private PostAgreeView k;
     private TextView l;
+    private View[] m = new View[7];
+    private ImageView[] n = new ImageView[7];
+    private ProgressBar[] o = new ProgressBar[7];
+    private TextView[] p = new TextView[7];
+    private TextView[] q = new TextView[7];
     private TextView r;
     private Account s;
     private TweetResult t;
@@ -60,531 +67,501 @@ public class TweetDetailActivity extends AbsPostActivity {
     private SendView v;
     private int w;
     private String x;
-    private List g = new ArrayList();
-    private View[] m = new View[7];
-    private ImageView[] n = new ImageView[7];
-    private ProgressBar[] o = new ProgressBar[7];
-    private TextView[] p = new TextView[7];
-    private TextView[] q = new TextView[7];
     private boolean y = false;
-    private View$OnClickListener z = new dt(this);
-    private av A = new dv(this);
+    private View.OnClickListener z;
 
-    static int a(TweetDetailActivity TweetDetailActivity1, int int2) {
-        TweetDetailActivity1.w = int2;
-        return int2;
-    }
-// Error: Internal #201: 
-// The following method may not be correct.
-
-    public static Intent a(Context Context1, String String2) {
-    }
-// Error: Internal #201: 
-// The following method may not be correct.
-
-    public static Intent a(Context Context1, String String2, String String3) {
+    public TweetDetailActivity() {
+        this.z = new dt(this);
+        this.A = new dv(this);
     }
 
-    static TweetResult a(TweetDetailActivity TweetDetailActivity1, TweetResult TweetResult2) {
-        TweetDetailActivity1.t = TweetResult2;
-        return TweetResult2;
+    static /* synthetic */ int a(TweetDetailActivity tweetDetailActivity, int n) {
+        tweetDetailActivity.w = n;
+        return n;
     }
 
-    static String a(TweetDetailActivity TweetDetailActivity1, String String2) {
-        TweetDetailActivity1.x = String2;
-        return String2;
+    public static Intent a(Context context, String string) {
+        return new d().a(context, TweetDetailActivity.class).a("TWEET_ID", string).a();
     }
 
-    static void a(TweetDetailActivity TweetDetailActivity1, int int2, boolean boolean3) {
-        TweetDetailActivity1.a(int2, false);
+    public static Intent a(Context context, String string, String string2) {
+        return new d().a(context, TweetDetailActivity.class).a("TWEET_ID", string).a("TWEET_TYPE", string2).a();
     }
 
-    static void a(TweetDetailActivity TweetDetailActivity1, Tweet$VoteOption[] VoteOption_1darray2) {
-        if (VoteOption_1darray2 != null && VoteOption_1darray2.length != 0) {
-            int[] int_1darray3 = {2131492940, 2131492941, 2131492942, 2131492943, 2131492944, 2131492945, 2131492946};
-            View[] View_1darray4 = new View[7];
-            ImageView[] ImageView_1darray5 = new ImageView[7];
-            TextView[] TextView_1darray6 = new TextView[7];
-            int int7;
-            Account Account8;
-            int int9;
-            List List10;
-            int int11;
+    static /* synthetic */ TweetResult a(TweetDetailActivity tweetDetailActivity, TweetResult tweetResult) {
+        tweetDetailActivity.t = tweetResult;
+        return tweetResult;
+    }
 
-            for (int7 = 0; int7 < 7; ++int7) {
-                View_1darray4[int7] = TweetDetailActivity1.c.findViewById(int_1darray3[int7]);
-                TweetDetailActivity1.m[int7] = View_1darray4[int7].findViewById(2131493732);
-                TweetDetailActivity1.o[int7] = (ProgressBar) View_1darray4[int7].findViewById(2131493734);
-                TweetDetailActivity1.p[int7] = (TextView) View_1darray4[int7].findViewById(2131493733);
-                TweetDetailActivity1.q[int7] = (TextView) View_1darray4[int7].findViewById(2131493735);
-                ImageView_1darray5[int7] = (ImageView) View_1darray4[int7].findViewById(2131493728);
-                TweetDetailActivity1.n[int7] = (ImageView) View_1darray4[int7].findViewById(2131493730);
-                TweetDetailActivity1.n[int7].setTag(Integer.valueOf(int7));
-                TweetDetailActivity1.n[int7].setOnClickListener(TweetDetailActivity1.z);
-                TextView_1darray6[int7] = (TextView) View_1darray4[int7].findViewById(2131493729);
-            }
-            Account8 = am.e();
-            if (Account8 != null) {
-                List10 = VoteRecord.getVoteRecords(Account8.getUser().getId(), TweetDetailActivity1.t.getTweet().get_id());
-                if (List10 != null && !List10.isEmpty())
-                    int9 = 1;
-                else
-                    int9 = 0;
-            } else {
-                int9 = 0;
-                List10 = null;
-            }
-            int11 = VoteOption_1darray2.length;
-            TweetDetailActivity1.c.a(int11);
-            switch (int11) {
-                case 2:
-                    int int17;
+    static /* synthetic */ String a(TweetDetailActivity tweetDetailActivity, String string) {
+        tweetDetailActivity.x = string;
+        return string;
+    }
 
-                    for (int17 = 0; int17 < int11; ++int17)
-                        TextView_1darray6[int17].setText((CharSequence) VoteOption_1darray2[int17].content);
-                    ImageView_1darray5[1].setImageResource(2130838049);
-                    break;
-                case 3:
-                    int int16;
+    static /* synthetic */ void a(TweetDetailActivity tweetDetailActivity, int n, boolean bl) {
+        tweetDetailActivity.a(n, false);
+    }
 
-                    for (int16 = 0; int16 < int11; ++int16)
-                        TextView_1darray6[int16].setText((CharSequence) VoteOption_1darray2[int16].content);
-                    ImageView_1darray5[1].setImageResource(2130838049);
-                    ImageView_1darray5[2].setImageResource(2130838050);
-                    break;
-                case 4:
-                    int int15;
-
-                    for (int15 = 0; int15 < int11; ++int15)
-                        TextView_1darray6[int15].setText((CharSequence) VoteOption_1darray2[int15].content);
-                    ImageView_1darray5[1].setImageResource(2130838049);
-                    ImageView_1darray5[2].setImageResource(2130838050);
-                    ImageView_1darray5[3].setImageResource(2130838051);
-                    break;
-                case 5:
-                    int int14;
-
-                    for (int14 = 0; int14 < int11; ++int14)
-                        TextView_1darray6[int14].setText((CharSequence) VoteOption_1darray2[int14].content);
-                    ImageView_1darray5[1].setImageResource(2130838049);
-                    ImageView_1darray5[2].setImageResource(2130838050);
-                    ImageView_1darray5[3].setImageResource(2130838051);
-                    ImageView_1darray5[4].setImageResource(2130838052);
-                    break;
-                case 6:
-                    int int13;
-
-                    for (int13 = 0; int13 < int11; ++int13)
-                        TextView_1darray6[int13].setText((CharSequence) VoteOption_1darray2[int13].content);
-                    ImageView_1darray5[1].setImageResource(2130838049);
-                    ImageView_1darray5[2].setImageResource(2130838050);
-                    ImageView_1darray5[3].setImageResource(2130838051);
-                    ImageView_1darray5[4].setImageResource(2130838052);
-                    ImageView_1darray5[5].setImageResource(2130838053);
-                    break;
-                case 7:
-                    int int12;
-
-                    for (int12 = 0; int12 < int11; ++int12)
-                        TextView_1darray6[int12].setText((CharSequence) VoteOption_1darray2[int12].content);
-                    ImageView_1darray5[1].setImageResource(2130838049);
-                    ImageView_1darray5[2].setImageResource(2130838050);
-                    ImageView_1darray5[3].setImageResource(2130838051);
-                    ImageView_1darray5[4].setImageResource(2130838052);
-                    ImageView_1darray5[5].setImageResource(2130838053);
-                    ImageView_1darray5[6].setImageResource(2130838054);
-                    break;
-                default:
-                    break;
-            }
-            if (int9 != 0) {
-                TweetDetailActivity1.a(((VoteRecord) List10.get(0)).vote_item_index, true);
-                return;
-            }
+    /*
+     * Unable to fully structure code
+     * Enabled aggressive block sorting
+     * Lifted jumps to return sites
+     */
+    static /* synthetic */ void a(TweetDetailActivity var0, Tweet$VoteOption[] var1_1) {
+        if (var1_1 == null) return;
+        if (var1_1.length == 0) {
+            return;
         }
+        var2_2 = new int[]{2131492940, 2131492941, 2131492942, 2131492943, 2131492944, 2131492945, 2131492946};
+        var3_3 = new View[7];
+        var4_4 = new ImageView[7];
+        var5_5 = new TextView[7];
+        for (var6_6 = 0; var6_6 < 7; ++var6_6) {
+            var3_3[var6_6] = var0.c.findViewById(var2_2[var6_6]);
+            var0.m[var6_6] = var3_3[var6_6].findViewById(2131493732);
+            var0.o[var6_6] = (ProgressBar) var3_3[var6_6].findViewById(2131493734);
+            var0.p[var6_6] = (TextView) var3_3[var6_6].findViewById(2131493733);
+            var0.q[var6_6] = (TextView) var3_3[var6_6].findViewById(2131493735);
+            var4_4[var6_6] = (ImageView) var3_3[var6_6].findViewById(2131493728);
+            var0.n[var6_6] = (ImageView) var3_3[var6_6].findViewById(2131493730);
+            var0.n[var6_6].setTag(var6_6);
+            var0.n[var6_6].setOnClickListener(var0.z);
+            var5_5[var6_6] = (TextView) var3_3[var6_6].findViewById(2131493729);
+        }
+        var7_7 = am.e();
+        if (var7_7 != null) {
+            var9_8 = VoteRecord.getVoteRecords(var7_7.getUser().getId(), var0.t.getTweet().get_id());
+            var8_9 = var9_8 != null && !var9_8.isEmpty();
+        } else {
+            var8_9 = false;
+            var9_8 = null;
+        }
+        var10_10 = var1_1.length;
+        var0.c.a(var10_10);
+        switch (var10_10) {
+            case 2: {
+                for (var16_11 = 0; var16_11 < var10_10; ++var16_11) {
+                    var5_5[var16_11].setText(var1_1[var16_11].content);
+                }
+                var4_4[1].setImageResource(2130838049);
+                **break;
+            }
+            case 3: {
+                for (var15_12 = 0; var15_12 < var10_10; ++var15_12) {
+                    var5_5[var15_12].setText(var1_1[var15_12].content);
+                }
+                var4_4[1].setImageResource(2130838049);
+                var4_4[2].setImageResource(2130838050);
+                **break;
+            }
+            case 4: {
+                for (var14_13 = 0; var14_13 < var10_10; ++var14_13) {
+                    var5_5[var14_13].setText(var1_1[var14_13].content);
+                }
+                var4_4[1].setImageResource(2130838049);
+                var4_4[2].setImageResource(2130838050);
+                var4_4[3].setImageResource(2130838051);
+                **break;
+            }
+            case 5: {
+                for (var13_14 = 0; var13_14 < var10_10; ++var13_14) {
+                    var5_5[var13_14].setText(var1_1[var13_14].content);
+                }
+                var4_4[1].setImageResource(2130838049);
+                var4_4[2].setImageResource(2130838050);
+                var4_4[3].setImageResource(2130838051);
+                var4_4[4].setImageResource(2130838052);
+                **break;
+            }
+            case 6: {
+                for (var12_15 = 0; var12_15 < var10_10; ++var12_15) {
+                    var5_5[var12_15].setText(var1_1[var12_15].content);
+                }
+                var4_4[1].setImageResource(2130838049);
+                var4_4[2].setImageResource(2130838050);
+                var4_4[3].setImageResource(2130838051);
+                var4_4[4].setImageResource(2130838052);
+                var4_4[5].setImageResource(2130838053);
+            }
+            lbl69:
+            // 6 sources:
+            default:
+            {
+                **GOTO lbl81
+            }
+            case 7:
+        }
+        for (var11_16 = 0; var11_16 < var10_10; ++var11_16) {
+            var5_5[var11_16].setText(var1_1[var11_16].content);
+        }
+        var4_4[1].setImageResource(2130838049);
+        var4_4[2].setImageResource(2130838050);
+        var4_4[3].setImageResource(2130838051);
+        var4_4[4].setImageResource(2130838052);
+        var4_4[5].setImageResource(2130838053);
+        var4_4[6].setImageResource(2130838054);
+        lbl81:
+        // 2 sources:
+        if (var8_9 == false) return;
+        var0.a(var9_8.get((int) 0).vote_item_index, true);
     }
 
-    static boolean a(TweetDetailActivity TweetDetailActivity1) {
-        return TweetDetailActivity1.q();
+    static /* synthetic */ boolean a(TweetDetailActivity tweetDetailActivity) {
+        return tweetDetailActivity.q();
     }
 
-    static Account b(TweetDetailActivity TweetDetailActivity1) {
-        return TweetDetailActivity1.s;
+    static /* synthetic */ Account b(TweetDetailActivity tweetDetailActivity) {
+        return tweetDetailActivity.s;
     }
 
-    static String b(TweetDetailActivity TweetDetailActivity1, String String2) {
-        TweetDetailActivity1.u = String2;
-        return String2;
+    static /* synthetic */ String b(TweetDetailActivity tweetDetailActivity, String string) {
+        tweetDetailActivity.u = string;
+        return string;
     }
 
-    static void b(TweetDetailActivity TweetDetailActivity1, TweetResult TweetResult2) {
-        User User3 = TweetResult2.getUser();
-        Tweet Tweet4 = TweetResult2.getTweet();
-        SmartImageView SmartImageView5 = (SmartImageView) TweetDetailActivity1.c.findViewById(2131492899);
-        TextView TextView6;
-        ImageView ImageView7;
-
-        if (am.m((Context) TweetDetailActivity1))
-            SmartImageView5.setImageResource(2130837614);
-        else
-            SmartImageView5.setImageUrl(User3.getFullAvatar());
-        SmartImageView5.setOnClickListener((View$OnClickListener) new dw(TweetDetailActivity1, User3));
-        ((TextView) TweetDetailActivity1.c.findViewById(2131492928)).setText((CharSequence) User3.getNickname());
-        ((TextView) TweetDetailActivity1.c.findViewById(2131493631)).setText((CharSequence) new StringBuilder("lv.").append(User3.getLv()).toString());
-        ((TextView) TweetDetailActivity1.c.findViewById(2131492935)).setText((CharSequence) com.clilystudio.netbook.util.t.e(Tweet4.getCreated()));
-        TextView6 = (TextView) TweetDetailActivity1.c.findViewById(2131492936);
-        TweetDetailActivity1.r = (TextView) TweetDetailActivity1.c.findViewById(2131492947);
-        TweetDetailActivity1.r.setText((CharSequence) new StringBuilder("\u5171").append(TweetDetailActivity1.t.getTweet().getVoteCount()).append("\u4EBA\u6295\u7968").toString());
-        if (TweetDetailActivity1.u.equals("ARTICLE")) {
-            TextView6.setVisibility(0);
-            TextView6.setText((CharSequence) Tweet4.getTitle());
-        } else
-            TextView6.setVisibility(8);
-        ((LinkifyTextView) TweetDetailActivity1.c.findViewById(2131492905)).setLinkifyText(Tweet4.getContent(), User3.isOfficial());
-        ((TextView) TweetDetailActivity1.findViewById(2131493519)).setText((CharSequence) new StringBuilder("\u5171").append(TweetDetailActivity1.t.getTweet().getCommented()).append("\u6761\u8BC4\u8BBA").toString());
-        ImageView7 = (ImageView) TweetDetailActivity1.c.findViewById(2131493629);
-        if (TweetDetailActivity1.y) {
-            String String9 = User3.getGender();
-
-            if ("male".equals(String9)) {
-                ImageView7.setVisibility(0);
-                ImageView7.setImageLevel(2);
-            } else if ("female".equals(String9)) {
-                ImageView7.setVisibility(0);
-                ImageView7.setImageLevel(3);
+    /*
+     * Enabled aggressive block sorting
+     */
+    static /* synthetic */ void b(TweetDetailActivity tweetDetailActivity, TweetResult tweetResult) {
+        User user = tweetResult.getUser();
+        Tweet tweet = tweetResult.getTweet();
+        SmartImageView smartImageView = (SmartImageView) tweetDetailActivity.c.findViewById(2131492899);
+        if (am.m((Context) tweetDetailActivity)) {
+            smartImageView.setImageResource(2130837614);
+        } else {
+            smartImageView.setImageUrl(user.getFullAvatar());
+        }
+        smartImageView.setOnClickListener(new dw(tweetDetailActivity, user));
+        ((TextView) tweetDetailActivity.c.findViewById(2131492928)).setText(user.getNickname());
+        ((TextView) tweetDetailActivity.c.findViewById(2131493631)).setText("lv." + user.getLv());
+        ((TextView) tweetDetailActivity.c.findViewById(2131492935)).setText(t.e((Date) tweet.getCreated()));
+        TextView textView = (TextView) tweetDetailActivity.c.findViewById(2131492936);
+        tweetDetailActivity.r = (TextView) tweetDetailActivity.c.findViewById(2131492947);
+        tweetDetailActivity.r.setText("\u5171" + tweetDetailActivity.t.getTweet().getVoteCount() + "\u4eba\u6295\u7968");
+        if (tweetDetailActivity.u.equals("ARTICLE")) {
+            textView.setVisibility(0);
+            textView.setText(tweet.getTitle());
+        } else {
+            textView.setVisibility(8);
+        }
+        ((LinkifyTextView) tweetDetailActivity.c.findViewById(2131492905)).setLinkifyText(tweet.getContent(), user.isOfficial());
+        ((TextView) tweetDetailActivity.findViewById(2131493519)).setText("\u5171" + tweetDetailActivity.t.getTweet().getCommented() + "\u6761\u8bc4\u8bba");
+        ImageView imageView = (ImageView) tweetDetailActivity.c.findViewById(2131493629);
+        if (tweetDetailActivity.y) {
+            String string = user.getGender();
+            if ("male".equals(string)) {
+                imageView.setVisibility(0);
+                imageView.setImageLevel(2);
+            } else if ("female".equals(string)) {
+                imageView.setVisibility(0);
+                imageView.setImageLevel(3);
             } else {
-                ImageView7.setVisibility(0);
-                ImageView7.setImageLevel(4);
+                imageView.setVisibility(0);
+                imageView.setImageLevel(4);
             }
         } else {
-            String String8 = User3.getType();
-
-            if ("official".equals(String8)) {
-                ImageView7.setVisibility(0);
-                ImageView7.setImageLevel(0);
-                com.clilystudio.netbook.hpay100.a.a.s((Context) TweetDetailActivity1, Tweet4.get_id());
-            } else if ("doyen".equals(String8)) {
-                ImageView7.setVisibility(0);
-                ImageView7.setImageLevel(1);
-            } else
-                ImageView7.setVisibility(8);
+            String string = user.getType();
+            if ("official".equals(string)) {
+                imageView.setVisibility(0);
+                imageView.setImageLevel(0);
+                a.s(tweetDetailActivity, tweet.get_id());
+            } else if ("doyen".equals(string)) {
+                imageView.setVisibility(0);
+                imageView.setImageLevel(1);
+            } else {
+                imageView.setVisibility(8);
+            }
         }
-        ((PostAgreeView) TweetDetailActivity1.c.findViewById(2131493840)).setPostId(TweetDetailActivity1.a);
-        TweetDetailActivity1.c.a();
-        TweetDetailActivity1.c.b();
+        ((PostAgreeView) tweetDetailActivity.c.findViewById(2131493840)).setPostId(tweetDetailActivity.a);
+        tweetDetailActivity.c.a();
+        tweetDetailActivity.c.b();
     }
 
-    static TweetResult c(TweetDetailActivity TweetDetailActivity1) {
-        return TweetDetailActivity1.t;
+    static /* synthetic */ TweetResult c(TweetDetailActivity tweetDetailActivity) {
+        return tweetDetailActivity.t;
     }
 
-    static int d(TweetDetailActivity TweetDetailActivity1) {
-        return TweetDetailActivity1.w;
+    static /* synthetic */ int d(TweetDetailActivity tweetDetailActivity) {
+        return tweetDetailActivity.w;
     }
 
-    static void e(TweetDetailActivity TweetDetailActivity1) {
-        TweetDetailActivity1.p();
+    static /* synthetic */ void e(TweetDetailActivity tweetDetailActivity) {
+        tweetDetailActivity.p();
     }
 
-    static void f(TweetDetailActivity TweetDetailActivity1) {
-        TweetDetailActivity1.v.a();
+    static /* synthetic */ void f(TweetDetailActivity tweetDetailActivity) {
+        tweetDetailActivity.v.a();
     }
 
-    static void g(TweetDetailActivity TweetDetailActivity1) {
-        if (TweetDetailActivity1.t != null) {
-            dy dy2;
-            String[] String_1darray3;
-
-            TweetDetailActivity1.g.clear();
-            TweetDetailActivity1.j.setVisibility(0);
-            TweetDetailActivity1.h = new dy(TweetDetailActivity1, (byte) 0);
-            dy2 = TweetDetailActivity1.h;
-            String_1darray3 = new String[1];
-            String_1darray3[0] = TweetDetailActivity1.t.getTweet().get_id();
-            dy2.execute(String_1darray3);
+    static /* synthetic */ void g(TweetDetailActivity tweetDetailActivity) {
+        if (tweetDetailActivity.t != null) {
+            tweetDetailActivity.g.clear();
+            tweetDetailActivity.j.setVisibility(0);
+            dy dy2 = tweetDetailActivity.h = new dy(tweetDetailActivity, 0);
+            Object[] arrobject = new String[]{tweetDetailActivity.t.getTweet().get_id()};
+            dy2.execute(arrobject);
         }
     }
 
-    static void h(TweetDetailActivity TweetDetailActivity1) {
-        Account Account2 = am.e();
-
-        if (Account2 != null && G.a(Account2, TweetDetailActivity1.t.getTweet().get_id()))
-            TweetDetailActivity1.p();
-    }
-
-    static av i(TweetDetailActivity TweetDetailActivity1) {
-        return TweetDetailActivity1.A;
-    }
-
-    static View j(TweetDetailActivity TweetDetailActivity1) {
-        return TweetDetailActivity1.j;
-    }
-
-    static List k(TweetDetailActivity TweetDetailActivity1) {
-        return TweetDetailActivity1.g;
-    }
-
-    static com.clilystudio.netbook.adapter.z l(TweetDetailActivity TweetDetailActivity1) {
-        return TweetDetailActivity1.f;
-    }
-
-    static dy m(TweetDetailActivity TweetDetailActivity1) {
-        return TweetDetailActivity1.h;
-    }
-
-    static void n(TweetDetailActivity TweetDetailActivity1) {
-        if (TweetDetailActivity1.t != null) {
-            String String2;
-            dy dy3;
-            String[] String_1darray4;
-
-            TweetDetailActivity1.j.setVisibility(0);
-            TweetDetailActivity1.h = new dy(TweetDetailActivity1, (byte) 0);
-            String2 = "";
-            if (TweetDetailActivity1.g.size() > 0)
-                String2 = ((PostComment) TweetDetailActivity1.g.get(-1 + TweetDetailActivity1.g.size())).get_id();
-            dy3 = TweetDetailActivity1.h;
-            String_1darray4 = new String[2];
-            String_1darray4[0] = TweetDetailActivity1.t.getTweet().get_id();
-            String_1darray4[1] = String2;
-            dy3.execute(String_1darray4);
+    static /* synthetic */ void h(TweetDetailActivity tweetDetailActivity) {
+        Account account = am.e();
+        if (account != null && G.a(account, tweetDetailActivity.t.getTweet().get_id())) {
+            tweetDetailActivity.p();
         }
     }
 
-    private void a(int int1, boolean boolean2) {
-        int int3 = t.getTweet().getVoteCount();
-        Tweet$VoteOption[] VoteOption_1darray4;
-        int int5;
-        int[] int_1darray6;
-        float[] float_1darray7;
-        int int8;
-        int int9;
+    static /* synthetic */ av i(TweetDetailActivity tweetDetailActivity) {
+        return tweetDetailActivity.A;
+    }
 
-        if (!boolean2)
-            ++int3;
-        r.setText((CharSequence) new StringBuilder("\u5171").append(int3).append("\u4EBA\u6295\u7968").toString());
-        VoteOption_1darray4 = t.getTweet().getVotes();
-        int5 = VoteOption_1darray4.length;
-        int_1darray6 = new int[7];
-        float_1darray7 = new float[7];
-        for (int8 = 0; int8 < 7; ++int8) {
-            if (int8 < int5)
-                int_1darray6[int8] = VoteOption_1darray4[int8].count;
-            else
-                int_1darray6[int8] = 0;
+    static /* synthetic */ View j(TweetDetailActivity tweetDetailActivity) {
+        return tweetDetailActivity.j;
+    }
+
+    static /* synthetic */ List k(TweetDetailActivity tweetDetailActivity) {
+        return tweetDetailActivity.g;
+    }
+
+    static /* synthetic */ z l(TweetDetailActivity tweetDetailActivity) {
+        return tweetDetailActivity.f;
+    }
+
+    static /* synthetic */ dy m(TweetDetailActivity tweetDetailActivity) {
+        return tweetDetailActivity.h;
+    }
+
+    static /* synthetic */ void n(TweetDetailActivity tweetDetailActivity) {
+        if (tweetDetailActivity.t != null) {
+            tweetDetailActivity.j.setVisibility(0);
+            tweetDetailActivity.h = new dy(tweetDetailActivity, 0);
+            String string = "";
+            if (tweetDetailActivity.g.size() > 0) {
+                string = tweetDetailActivity.g.get(-1 + tweetDetailActivity.g.size()).get_id();
+            }
+            dy dy2 = tweetDetailActivity.h;
+            Object[] arrobject = new String[]{tweetDetailActivity.t.getTweet().get_id(), string};
+            dy2.execute(arrobject);
         }
-        if (!boolean2)
-            int_1darray6[int1] = 1 + int_1darray6[int1];
-        for (int9 = 0; int9 < 7; ++int9) {
-            String String10;
+    }
 
-            n[int9].setEnabled(false);
-            m[int9].setVisibility(0);
-            if (int9 == int1)
-                n[int9].setImageResource(2130838056);
-            else
-                n[int9].setImageResource(2130838055);
-            if (int3 != 0 && int9 < int5)
-                float_1darray7[int9] = (float) int_1darray6[int9] / (float) int3;
-            else
-                float_1darray7[int9] = 0.0F;
-            String10 = String.valueOf((int) (0.5F + 100.0F * float_1darray7[int9]));
-            p[int9].setText((CharSequence) new StringBuilder().append(int_1darray6[int9]).append(" \u7968").toString());
-            q[int9].setText((CharSequence) new StringBuilder().append(String10).append("%").toString());
-            o[int9].setProgress((int) (100.0F * float_1darray7[int9]));
+    /*
+     * Enabled aggressive block sorting
+     */
+    private void a(int n, boolean bl) {
+        int n2 = this.t.getTweet().getVoteCount();
+        if (!bl) {
+            ++n2;
+        }
+        this.r.setText("\u5171" + n2 + "\u4eba\u6295\u7968");
+        Tweet$VoteOption[] arrtweet$VoteOption = this.t.getTweet().getVotes();
+        int n3 = arrtweet$VoteOption.length;
+        int[] arrn = new int[7];
+        float[] arrf = new float[7];
+        for (int i = 0; i < 7; ++i) {
+            arrn[i] = i < n3 ? arrtweet$VoteOption[i].count : 0;
+        }
+        if (!bl) {
+            arrn[n] = 1 + arrn[n];
+        }
+        int n4 = 0;
+        while (n4 < 7) {
+            this.n[n4].setEnabled(false);
+            this.m[n4].setVisibility(0);
+            if (n4 == n) {
+                this.n[n4].setImageResource(2130838056);
+            } else {
+                this.n[n4].setImageResource(2130838055);
+            }
+            arrf[n4] = n2 != 0 && n4 < n3 ? (float) arrn[n4] / (float) n2 : 0.0f;
+            String string = String.valueOf((int) (0.5f + 100.0f * arrf[n4]));
+            this.p[n4].setText("" + arrn[n4] + " \u7968");
+            this.q[n4].setText(string + "%");
+            this.o[n4].setProgress((int) (100.0f * arrf[n4]));
+            ++n4;
         }
     }
 
     private void p() {
-        Drawable Drawable1;
-
-        k.setAgree(true);
-        Drawable1 = getResources().getDrawable(2130838111);
-        Drawable1.setBounds(0, 0, Drawable1.getMinimumWidth(), Drawable1.getMinimumHeight());
-        l.setCompoundDrawables(Drawable1, null, null, null);
+        this.k.setAgree(true);
+        Drawable drawable = this.getResources().getDrawable(2130838111);
+        drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
+        this.l.setCompoundDrawables(drawable, null, null, null);
     }
 
     private boolean q() {
-        if (s != null && s.getToken() != null)
+        if (this.s != null && this.s.getToken() != null) {
             return true;
-        else {
-            Account Account1 = am.e();
-
-            if (Account1 == null) {
-                com.clilystudio.netbook.util.e.a((Activity) this, "\u8BF7\u767B\u5F55\u540E\u518D\u64CD\u4F5C");
-                startActivity(AuthLoginActivity.a((Context) this));
-                return false;
-            } else {
-                s = Account1;
-                return true;
-            }
         }
-    }
-
-    protected final void a(Account Account1, String String2) {
-        dD dD3 = new dD(this, (Activity) this, 2131034430);
-        String[] String_1darray4 = new String[3];
-
-        String_1darray4[0] = Account1.getToken();
-        String_1darray4[1] = a;
-        String_1darray4[2] = String2;
-        dD3.b(String_1darray4);
-    }
-
-    protected final void a(ReplyeeInfo ReplyeeInfo1, String String2) {
-        Account Account3;
-
-        g(String2);
-        Account3 = am.a((Activity) this);
-        if (Account3 != null) {
-            if (String2.length() > 512)
-                com.clilystudio.netbook.util.e.a((Activity) this, 2131034305);
-            else {
-                dB dB4 = new dB(this, (Activity) this, 2131034430);
-                String[] String_1darray5 = new String[4];
-
-                String_1darray5[0] = Account3.getToken();
-                String_1darray5[1] = a;
-                String_1darray5[2] = ReplyeeInfo1.getCommentId();
-                String_1darray5[3] = String2;
-                dB4.b(String_1darray5);
-            }
+        Account account = am.e();
+        if (account == null) {
+            e.a((Activity) this, (String) "\u8bf7\u767b\u5f55\u540e\u518d\u64cd\u4f5c");
+            this.startActivity(AuthLoginActivity.a(this));
+            return false;
         }
+        this.s = account;
+        return true;
     }
 
-    public final void a(String String1) {
-        new N((Activity) this).a(t.getTweet().get_id(), String1, true);
+    @Override
+    protected final void a(Account account, String string) {
+        dD dD2 = new dD(this, this, 2131034430);
+        String[] arrstring = new String[]{account.getToken(), this.a, string};
+        dD2.b(arrstring);
     }
 
+    @Override
+    protected final void a(ReplyeeInfo replyeeInfo, String string) {
+        this.g(string);
+        Account account = am.a((Activity) this);
+        if (account == null) {
+            return;
+        }
+        if (string.length() > 512) {
+            e.a((Activity) this, (int) 2131034305);
+            return;
+        }
+        dB dB2 = new dB(this, this, 2131034430);
+        String[] arrstring = new String[]{account.getToken(), this.a, replyeeInfo.getCommentId(), string};
+        dB2.b(arrstring);
+    }
+
+    @Override
+    public final void a(String string) {
+        new N(this).a(this.t.getTweet().get_id(), string, true);
+    }
+
+    @Override
     protected final void b() {
-        dz dz1;
-        String[] String_1darray2;
-
-        i();
-        dz1 = new dz(this, (byte) 0);
-        String_1darray2 = new String[1];
-        String_1darray2[0] = a;
-        dz1.b(String_1darray2);
+        this.i();
+        dz dz2 = new dz(this, 0);
+        Object[] arrobject = new String[]{this.a};
+        dz2.b(arrobject);
     }
 
-    public final void e(int int1) {
-        if (t != null) {
-            if (int1 == 0) {
-                if (q()) {
-                    new N((Activity) this).a(s.getToken(), t.getTweet().get_id());
-                    return;
-                }
-            } else if (int1 == 1) {
-                a(null);
+    /*
+     * Enabled aggressive block sorting
+     */
+    @Override
+    public final void e(int n) {
+        if (this.t == null) return;
+        if (n == 0) {
+            if (!this.q()) return;
+            {
+                new N(this).a(this.s.getToken(), this.t.getTweet().get_id());
                 return;
             }
         }
+        if (n != 1) {
+            return;
+        }
+        this.a(null);
     }
 
+    @Override
     public final void f() {
         super.f();
-        i.setVisibility(0);
+        this.i.setVisibility(0);
     }
 
-    public final void f(int int1) {
-        if (t == null)
-            com.clilystudio.netbook.util.e.a((Activity) this, "\u64CD\u4F5C\u5931\u8D25\uFF0C\u8BF7\u91CD\u8BD5");
-        else {
-            Tweet Tweet2 = t.getTweet();
-            String String3;
-            String String4;
-
-            if ("ARTICLE".equals(u))
-                String3 = Tweet2.getTitle();
-            else
-                String3 = null;
-            String4 = Tweet2.getShareLinkUrl();
-            T.a((Context) this, String3, new StringBuilder("\u52A8\u6001\uFF1A\u300C").append(String3).append("\u300D\uFF0C\u86EE\u6709\u610F\u601D\u7684\uFF0C\u4F60\u600E\u4E48\u770B\uFF1F").toString(), String4, null, int1, (PlatformActionListener) new dx(this));
+    /*
+     * Enabled aggressive block sorting
+     */
+    @Override
+    public final void f(int n) {
+        if (this.t == null) {
+            e.a((Activity) this, (String) "\u64cd\u4f5c\u5931\u8d25\uff0c\u8bf7\u91cd\u8bd5");
+            return;
         }
+        Tweet tweet = this.t.getTweet();
+        String string = "ARTICLE".equals(this.u) ? tweet.getTitle() : null;
+        String string2 = tweet.getShareLinkUrl();
+        T.a(this, string, "\u52a8\u6001\uff1a\u300c" + string + "\u300d\uff0c\u86ee\u6709\u610f\u601d\u7684\uff0c\u4f60\u600e\u4e48\u770b\uff1f", string2, null, n, (PlatformActionListener) ((Object) new dx(this)));
     }
 
+    @Override
     public final void j() {
     }
 
+    @Override
     public final String n() {
-        return a;
+        return this.a;
     }
 
+    /*
+     * Enabled aggressive block sorting
+     */
+    @TargetApi(value = 11)
+    @Override
     protected final void o() {
-        List List1 = g;
-        PostComment PostComment2 = null;
-        User User3;
-        Author Author4;
-        Object Object5;
-
-        if (List1 != null) {
-            int int7 = g.size();
-
-            PostComment2 = null;
-            if (int7 > 0)
-                PostComment2 = (PostComment) g.get(0);
+        List<PostComment> list = this.g;
+        PostComment postComment = null;
+        if (list != null) {
+            int n = this.g.size();
+            postComment = null;
+            if (n > 0) {
+                postComment = this.g.get(0);
+            }
         }
-        User3 = am.e().getUser();
-        Author4 = new Author();
-        Author4.setAvatar(User3.getAvatar());
-        Author4.setNickname(User3.getNickname());
-        Author4.setLv(User3.getLv());
-        Object5 = new PostComment();
-        ((PostComment) Object5).setAuthor(Author4);
-        ((PostComment) Object5).setContent(l());
-        ((PostComment) Object5).setCreated(new Date());
-        if (e != null) {
-            PostComment$PostCommentReply PostCommentReply6 = new PostComment$PostCommentReply();
-
-            PostCommentReply6.setFloor(e.getFloor());
-            PostCommentReply6.setAuthor(e.getAuthor());
-            ((PostComment) Object5).setReplyTo(PostCommentReply6);
+        User user = am.e().getUser();
+        Author author = new Author();
+        author.setAvatar(user.getAvatar());
+        author.setNickname(user.getNickname());
+        author.setLv(user.getLv());
+        PostComment postComment2 = new PostComment();
+        postComment2.setAuthor(author);
+        postComment2.setContent(this.l());
+        postComment2.setCreated(new Date());
+        if (this.e != null) {
+            PostComment$PostCommentReply postComment$PostCommentReply = new PostComment$PostCommentReply();
+            postComment$PostCommentReply.setFloor(this.e.getFloor());
+            postComment$PostCommentReply.setAuthor(this.e.getAuthor());
+            postComment2.setReplyTo(postComment$PostCommentReply);
         }
-        if (PostComment2 != null)
-            ((PostComment) Object5).setFloor(1 + PostComment2.getFloor());
-        else
-            ((PostComment) Object5).setFloor(1);
-        ((PostComment) Object5).set_id(x);
-        g.add(0, Object5);
-        f.a((Collection) g);
-        if (com.clilystudio.netbook.hpay100.a.a.g())
-            b.smoothScrollToPositionFromTop(2, 60);
-        else
-            b.setSelection(2);
+        if (postComment != null) {
+            postComment2.setFloor(1 + postComment.getFloor());
+        } else {
+            postComment2.setFloor(1);
+        }
+        postComment2.set_id(this.x);
+        this.g.add(0, postComment2);
+        this.f.a(this.g);
+        if (a.g()) {
+            this.b.smoothScrollToPositionFromTop(2, 60);
+            return;
+        }
+        this.b.setSelection(2);
     }
 
-    public void onCreate(Bundle Bundle1) {
-        Drawable Drawable2;
-        Object Object3;
-
-        super.onCreate(Bundle1);
-        a(2130903350);
-        b("\u52A8\u6001\u8BE6\u60C5");
-        a = getIntent().getStringExtra("TWEET_ID");
-        u = getIntent().getStringExtra("TWEET_TYPE");
-        i = findViewById(2131493838);
-        a(true);
-        b = (ScrollLoadListView) findViewById(2131493135);
-        c = new PostHeader((Context) this);
-        c.a(false);
-        b.addHeaderView((View) c, null, false);
-        k = (PostAgreeView) c.findViewById(2131493840);
-        l = (TextView) c.findViewById(2131493841);
-        Drawable2 = getResources().getDrawable(2130838109);
-        Drawable2.setBounds(0, 0, Drawable2.getMinimumWidth(), Drawable2.getMinimumHeight());
-        l.setCompoundDrawables(Drawable2, null, null, null);
-        l.setText((CharSequence) "\u8F6C\u53D1");
-        k.setOnClickListener((View$OnClickListener) new du(this));
-        Object3 = (HotCommentView) LayoutInflater.from((Context) this).inflate(2130903235, (ViewGroup) b, false);
-        b.addHeaderView((View) Object3, null, false);
-        ((HotCommentView) Object3).a(a);
-        j = LayoutInflater.from((Context) this).inflate(2130903325, null);
-        b.addFooterView(j);
-        j.setVisibility(8);
-        f = new com.clilystudio.netbook.adapter.z(getLayoutInflater());
-        b.setAdapter((ListAdapter) f);
-        v = (SendView) findViewById(2131494003);
-        b();
-        y = com.clilystudio.netbook.hpay100.a.a.r((Context) this, "community_user_gender_icon_toggle");
+    @Override
+    public void onCreate(Bundle bundle) {
+        super.onCreate(bundle);
+        this.a(2130903350);
+        this.b("\u52a8\u6001\u8be6\u60c5");
+        this.a = this.getIntent().getStringExtra("TWEET_ID");
+        this.u = this.getIntent().getStringExtra("TWEET_TYPE");
+        this.i = this.findViewById(2131493838);
+        this.a(true);
+        this.b = (ScrollLoadListView) this.findViewById(2131493135);
+        this.c = new PostHeader(this);
+        this.c.a(false);
+        this.b.addHeaderView(this.c, null, false);
+        this.k = (PostAgreeView) this.c.findViewById(2131493840);
+        this.l = (TextView) this.c.findViewById(2131493841);
+        Drawable drawable = this.getResources().getDrawable(2130838109);
+        drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
+        this.l.setCompoundDrawables(drawable, null, null, null);
+        this.l.setText("\u8f6c\u53d1");
+        this.k.setOnClickListener((View.OnClickListener) ((Object) new du(this)));
+        HotCommentView hotCommentView = (HotCommentView) LayoutInflater.from(this).inflate(2130903235, (ViewGroup) this.b, false);
+        this.b.addHeaderView(hotCommentView, null, false);
+        hotCommentView.a(this.a);
+        this.j = LayoutInflater.from(this).inflate(2130903325, null);
+        this.b.addFooterView(this.j);
+        this.j.setVisibility(8);
+        this.f = new z(this.getLayoutInflater());
+        this.b.setAdapter(this.f);
+        this.v = (SendView) this.findViewById(2131494003);
+        this.b();
+        this.y = a.r(this, "community_user_gender_icon_toggle");
     }
 }

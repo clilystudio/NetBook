@@ -4,22 +4,23 @@ import com.ximalaya.ting.android.opensdk.datatrasfer.IDataCallBack;
 import com.ximalaya.ting.android.opensdk.datatrasfer.XimalayaResponse;
 import com.ximalaya.ting.android.opensdk.model.tag.TagList;
 
-final class u implements IDataCallBack {
+final class u
+        implements IDataCallBack<TagList> {
+    private /* synthetic */ AudiobookCategoryActivity a;
 
-    private AudiobookCategoryActivity a;
-
-    u(AudiobookCategoryActivity AudiobookCategoryActivity1) {
-        a = AudiobookCategoryActivity1;
+    u(AudiobookCategoryActivity audiobookCategoryActivity) {
+        this.a = audiobookCategoryActivity;
     }
 
-    public final void onError(int int1, String String2) {
-        AudiobookCategoryActivity.a(a, 2);
+    @Override
+    public final void onError(int n, String string) {
+        AudiobookCategoryActivity.a(this.a, 2);
     }
 
-    public final void onSuccess(XimalayaResponse XimalayaResponse1) {
-        TagList TagList2 = (TagList) XimalayaResponse1;
-
-        AudiobookCategoryActivity.a(a, 1);
-        AudiobookCategoryActivity.a(a, TagList2);
+    @Override
+    public final /* synthetic */ void onSuccess(XimalayaResponse ximalayaResponse) {
+        TagList tagList = (TagList) ximalayaResponse;
+        AudiobookCategoryActivity.a(this.a, 1);
+        AudiobookCategoryActivity.a(this.a, tagList);
     }
 }

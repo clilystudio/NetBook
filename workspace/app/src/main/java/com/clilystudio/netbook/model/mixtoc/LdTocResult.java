@@ -1,23 +1,22 @@
 package com.clilystudio.netbook.model.mixtoc;
 
 public class LdTocResult {
-
     private String src;
     private String title;
 
     public String getSrc() {
-        return src;
+        return this.src;
     }
 
-    public void setSrc(String String1) {
-        src = String1;
+    public void setSrc(String string) {
+        this.src = string;
     }
 
     public String getTitle() {
-        return title;
+        return this.title;
     }
 
-    public void setTitle(String String1) {
-        title = String1;
+    public void setTitle(String string) {
+        this.title = string;
     }
 }

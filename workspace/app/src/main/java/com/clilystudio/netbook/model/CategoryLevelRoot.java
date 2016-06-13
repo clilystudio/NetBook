@@ -2,33 +2,33 @@ package com.clilystudio.netbook.model;
 
 import java.io.Serializable;
 
-public class CategoryLevelRoot implements Serializable {
-
+public class CategoryLevelRoot
+        implements Serializable {
     private CategoryLevelRoot$CategoryLevel[] female;
     private CategoryLevelRoot$CategoryLevel[] male;
     private boolean ok;
 
     public CategoryLevelRoot$CategoryLevel[] getFemale() {
-        return female;
+        return this.female;
     }
 
-    public void setFemale(CategoryLevelRoot$CategoryLevel[] CategoryLevel_1darray1) {
-        female = CategoryLevel_1darray1;
+    public void setFemale(CategoryLevelRoot$CategoryLevel[] arrcategoryLevelRoot$CategoryLevel) {
+        this.female = arrcategoryLevelRoot$CategoryLevel;
     }
 
     public CategoryLevelRoot$CategoryLevel[] getMale() {
-        return male;
+        return this.male;
     }
 
-    public void setMale(CategoryLevelRoot$CategoryLevel[] CategoryLevel_1darray1) {
-        male = CategoryLevel_1darray1;
+    public void setMale(CategoryLevelRoot$CategoryLevel[] arrcategoryLevelRoot$CategoryLevel) {
+        this.male = arrcategoryLevelRoot$CategoryLevel;
     }
 
     public boolean isOk() {
-        return ok;
+        return this.ok;
     }
 
-    public void setOk(boolean boolean1) {
-        ok = boolean1;
+    public void setOk(boolean bl) {
+        this.ok = bl;
     }
 }

@@ -5,19 +5,20 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView$OnItemClickListener;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.clilystudio.netbook.adapter.j;
+import com.clilystudio.netbook.model.TopicPost;
 import com.handmark.pulltorefresh.library.PullToRefreshBase$Mode;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class TweetListFragment extends Fragment {
-
+public class TweetListFragment
+        extends Fragment {
     private dO a;
     private dN b;
     private PullToRefreshListView c;
@@ -25,93 +26,99 @@ public class TweetListFragment extends Fragment {
     private View e;
     private View f;
     private TextView g;
-    private com.clilystudio.netbook.adapter.j h;
-    private List i = new ArrayList();
-    private com.handmark.pulltorefresh.library.j j = new dM(this);
+    private j h;
+    private List<TopicPost> i = new ArrayList<TopicPost>();
+    private com.handmark.pulltorefresh.library.j j;
 
-    static TextView a(TweetListFragment TweetListFragment1) {
-        return TweetListFragment1.g;
+    public TweetListFragment() {
+        this.j = new dM(this);
     }
 
-    static dN a(TweetListFragment TweetListFragment1, dN dN2) {
-        TweetListFragment1.b = dN2;
+    static /* synthetic */ TextView a(TweetListFragment tweetListFragment) {
+        return tweetListFragment.g;
+    }
+
+    static /* synthetic */ dN a(TweetListFragment tweetListFragment, dN dN2) {
+        tweetListFragment.b = dN2;
         return dN2;
     }
 
-    static dN b(TweetListFragment TweetListFragment1) {
-        return TweetListFragment1.b;
+    static /* synthetic */ dN b(TweetListFragment tweetListFragment) {
+        return tweetListFragment.b;
     }
 
-    static void c(TweetListFragment TweetListFragment1) {
-        TweetListFragment1.a();
+    static /* synthetic */ void c(TweetListFragment tweetListFragment) {
+        tweetListFragment.a();
     }
 
-    static ListView d(TweetListFragment TweetListFragment1) {
-        return TweetListFragment1.d;
+    static /* synthetic */ ListView d(TweetListFragment tweetListFragment) {
+        return tweetListFragment.d;
     }
 
-    static List e(TweetListFragment TweetListFragment1) {
-        return TweetListFragment1.i;
+    static /* synthetic */ List e(TweetListFragment tweetListFragment) {
+        return tweetListFragment.i;
     }
 
-    static void f(TweetListFragment TweetListFragment1) {
-        TweetListFragment1.g.setVisibility(8);
-        TweetListFragment1.f.setVisibility(8);
-        TweetListFragment1.e.setVisibility(8);
-        TweetListFragment1.c.n();
+    static /* synthetic */ void f(TweetListFragment tweetListFragment) {
+        tweetListFragment.g.setVisibility(8);
+        tweetListFragment.f.setVisibility(8);
+        tweetListFragment.e.setVisibility(8);
+        tweetListFragment.c.n();
     }
 
-    static com.clilystudio.netbook.adapter.j g(TweetListFragment TweetListFragment1) {
-        return TweetListFragment1.h;
+    static /* synthetic */ j g(TweetListFragment tweetListFragment) {
+        return tweetListFragment.h;
     }
 
-    static PullToRefreshListView h(TweetListFragment TweetListFragment1) {
-        return TweetListFragment1.c;
+    static /* synthetic */ PullToRefreshListView h(TweetListFragment tweetListFragment) {
+        return tweetListFragment.c;
     }
 
-    static com.handmark.pulltorefresh.library.j i(TweetListFragment TweetListFragment1) {
-        return TweetListFragment1.j;
+    static /* synthetic */ com.handmark.pulltorefresh.library.j i(TweetListFragment tweetListFragment) {
+        return tweetListFragment.j;
     }
 
-    static void j(TweetListFragment TweetListFragment1) {
-        TweetListFragment1.g.setVisibility(0);
-        TweetListFragment1.g.setText((CharSequence) "\u8FD9\u91CC\u8FD8\u6CA1\u6709\u8BDD\u9898\uFF0C\u53BB\u53D1\u5E03\u4E00\u4E2A\u5427");
+    static /* synthetic */ void j(TweetListFragment tweetListFragment) {
+        tweetListFragment.g.setVisibility(0);
+        tweetListFragment.g.setText("\u8fd9\u91cc\u8fd8\u6ca1\u6709\u8bdd\u9898\uff0c\u53bb\u53d1\u5e03\u4e00\u4e2a\u5427");
     }
 
-    static View k(TweetListFragment TweetListFragment1) {
-        return TweetListFragment1.e;
+    static /* synthetic */ View k(TweetListFragment tweetListFragment) {
+        return tweetListFragment.e;
     }
 
-    static dO l(TweetListFragment TweetListFragment1) {
-        return TweetListFragment1.a;
+    static /* synthetic */ dO l(TweetListFragment tweetListFragment) {
+        return tweetListFragment.a;
     }
 
     private void a() {
-        a = new dO(this, (byte) 0);
-        a.b(new String[]{"50bff3ec209793513100001c", "updated"});
+        this.a = new dO(this, 0);
+        this.a.b("50bff3ec209793513100001c", "updated");
     }
 
-    public void onActivityCreated(Bundle Bundle1) {
-        super.onActivityCreated(Bundle1);
-        a();
+    @Override
+    public void onActivityCreated(Bundle bundle) {
+        super.onActivityCreated(bundle);
+        this.a();
     }
 
-    public View onCreateView(LayoutInflater LayoutInflater1, ViewGroup ViewGroup2, Bundle Bundle3) {
-        View View4 = LayoutInflater1.inflate(2130903211, ViewGroup2, false);
-
-        f = View4.findViewById(2131493085);
-        g = (TextView) View4.findViewById(2131493100);
-        c = (PullToRefreshListView) View4.findViewById(2131493099);
-        c.setMode(PullToRefreshBase$Mode.PULL_FROM_START);
-        d = (ListView) c.h();
-        e = LayoutInflater1.inflate(2130903325, null);
-        d.addFooterView(e);
-        if (com.clilystudio.netbook.hpay100.a.a.j())
-            d.setFooterDividersEnabled(false);
-        c.setOnRefreshListener((k) new dJ(this));
-        d.setOnItemClickListener((AdapterView$OnItemClickListener) new dL(this));
-        h = new com.clilystudio.netbook.adapter.j(LayoutInflater1);
-        d.setAdapter((ListAdapter) h);
-        return View4;
+    @Override
+    public View onCreateView(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
+        View view = layoutInflater.inflate(2130903211, viewGroup, false);
+        this.f = view.findViewById(2131493085);
+        this.g = (TextView) view.findViewById(2131493100);
+        this.c = (PullToRefreshListView) view.findViewById(2131493099);
+        this.c.setMode(PullToRefreshBase$Mode.PULL_FROM_START);
+        this.d = (ListView) this.c.h();
+        this.e = layoutInflater.inflate(2130903325, null);
+        this.d.addFooterView(this.e);
+        if (a.j()) {
+            this.d.setFooterDividersEnabled(false);
+        }
+        this.c.setOnRefreshListener(new dJ(this));
+        this.d.setOnItemClickListener(new dL(this));
+        this.h = new j(layoutInflater);
+        this.d.setAdapter((ListAdapter) ((Object) this.h));
+        return view;
     }
 }

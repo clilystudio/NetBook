@@ -2,71 +2,37 @@ package com.clilystudio.netbook.util;
 
 import android.content.Context;
 import android.support.v7.widget.LinearLayoutManager;
-import android.view.View;
-import android.view.View$MeasureSpec;
 
-public class D extends LinearLayoutManager {
-// Error: Internal #201: 
-// The following method may not be correct.
-
+public class D
+        extends LinearLayoutManager {
     static {
+        D.class.getSimpleName();
     }
 
     private int[] d = new int[2];
 
-    public D(Context Context1) {
-        super(Context1);
+    public D(Context context) {
+        super(context);
     }
 
-    public final void a(ar ar1, int int2, int int3) {
-        int int4 = View$MeasureSpec.getMode(int2);
-        int int5 = View$MeasureSpec.getMode(int3);
-        int int6 = View$MeasureSpec.getSize(int2);
-        int int7 = View$MeasureSpec.getSize(int3);
-        int int8 = 0;
-        int int9 = 0;
-        int int10;
-
-        for (int10 = 0; int10 < o(); ++int10) {
-            int int11 = View$MeasureSpec.makeMeasureSpec(int10, 0);
-            int int12 = View$MeasureSpec.makeMeasureSpec(int10, 0);
-            int[] int_1darray13 = d;
-
-            try {
-                View View16 = ar1.b(0);
-            } catch (Exception Exception15) {
-                try {
-                    Exception15.printStackTrace();
-                } finally {
-                    throw Object14;
-                }
-            } finally {
-                throw Object14;
-            }
-            if (e() == 0) {
-                int8 += d[0];
-                if (int10 == 0)
-                    int9 = d[1];
-            } else {
-                int9 += d[1];
-                if (int10 == 0)
-                    int8 = d[0];
-            }
-        }
-        switch (int4) {
-            case 0:
-                int8 = int6;
-                break;
-            default:
-                break;
-        }
-        switch (int5) {
-            case 0:
-                int9 = int7;
-                break;
-            default:
-                break;
-        }
-        e(int8, int9);
+    /*
+     * Exception decompiling
+     */
+    @Override
+    public final void a(ar var1_1, int var2_2, int var3_3) {
+        // This method has failed to decompile.  When submitting a bug report, please provide this stack trace, and (if you hold appropriate legal rights) the relevant class file.
+        // org.benf.cfr.reader.util.ConfusedCFRException: Extractable last case doesn't follow previous
+        // org.benf.cfr.reader.bytecode.analysis.opgraph.op3rewriters.SwitchReplacer.examineSwitchContiguity(SwitchReplacer.java:486)
+        // org.benf.cfr.reader.bytecode.analysis.opgraph.op3rewriters.SwitchReplacer.replaceRawSwitches(SwitchReplacer.java:65)
+        // org.benf.cfr.reader.bytecode.CodeAnalyser.getAnalysisInner(CodeAnalyser.java:425)
+        // org.benf.cfr.reader.bytecode.CodeAnalyser.getAnalysisOrWrapFail(CodeAnalyser.java:220)
+        // org.benf.cfr.reader.bytecode.CodeAnalyser.getAnalysis(CodeAnalyser.java:165)
+        // org.benf.cfr.reader.entities.attributes.AttributeCode.analyse(AttributeCode.java:91)
+        // org.benf.cfr.reader.entities.Method.analyse(Method.java:354)
+        // org.benf.cfr.reader.entities.ClassFile.analyseMid(ClassFile.java:751)
+        // org.benf.cfr.reader.entities.ClassFile.analyseTop(ClassFile.java:683)
+        // org.benf.cfr.reader.Main.doClass(Main.java:46)
+        // org.benf.cfr.reader.Main.main(Main.java:183)
+        throw new IllegalStateException("Decompilation failed");
     }
 }

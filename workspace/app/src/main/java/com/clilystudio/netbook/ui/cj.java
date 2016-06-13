@@ -1,39 +1,48 @@
 package com.clilystudio.netbook.ui;
 
 import android.content.Context;
-import android.content.Intent;
+import android.text.TextUtils;
 import android.view.View;
-import android.view.View$OnClickListener;
 
 import com.clilystudio.netbook.exception.UnImplementException;
 import com.clilystudio.netbook.model.SplashAdvert;
 import com.clilystudio.netbook.util.InsideLinkIntent;
 
-final class cj implements View$OnClickListener {
+final class cj
+        implements View.OnClickListener {
+    private /* synthetic */ SplashAdvert a;
+    private /* synthetic */ String b;
+    private /* synthetic */ SplashActivity c;
 
-    private SplashAdvert a;
-    private String b;
-    private SplashActivity c;
-    cj(SplashActivity SplashActivity1, SplashAdvert SplashAdvert2, String String3) {
-        c = SplashActivity1;
-        a = SplashAdvert2;
-        b = String3;
+    cj(SplashActivity splashActivity, SplashAdvert splashAdvert, String string) {
+        this.c = splashActivity;
+        this.a = splashAdvert;
+        this.b = string;
     }
 
-    public final void onClick(View View1) {
-        Object Object3;
-
-        SplashActivity.a(c, true);
-        c.a();
-        Object3 = a.getSplashRecord().insideLink;
-        if (!android.text.TextUtils.isEmpty((CharSequence) Object3)) {
-            try {
-                c.startActivity((Intent) new InsideLinkIntent((Context) c, (String) Object3));
-                c.finish();
-            } catch (UnImplementException UnImplementException4) {
+    /*
+     * Enabled aggressive block sorting
+     * Enabled unnecessary exception pruning
+     * Enabled aggressive exception aggregation
+     */
+    @Override
+    public final void onClick(View view) {
+        block3:
+        {
+            SplashActivity.a(this.c, true);
+            this.c.a();
+            String string = this.a.getSplashRecord().insideLink;
+            if (!TextUtils.isEmpty(string)) {
+                try {
+                    this.c.startActivity(new InsideLinkIntent((Context) this.c, string));
+                    this.c.finish();
+                    break block3;
+                } catch (UnImplementException var4_3) {
+                    // empty catch block
+                }
             }
+            SplashActivity.a(this.c, this.b);
         }
-        SplashActivity.a(c, b);
-        com.clilystudio.netbook.hpay100.a.a.o((Context) c, b);
+        a.o(this.c, this.b);
     }
 }

@@ -4,31 +4,43 @@ import android.content.Context;
 
 import com.clilystudio.netbook.ui.cd;
 
-final class n implements cd {
+final class n
+        implements cd {
+    private /* synthetic */ UGCDetailActivity a;
 
-    private UGCDetailActivity a;
-
-    n(UGCDetailActivity UGCDetailActivity1) {
-        a = UGCDetailActivity1;
+    n(UGCDetailActivity uGCDetailActivity) {
+        this.a = uGCDetailActivity;
     }
 
-    public final void a(int int1) {
-        switch (int1) {
-            case 0:
-                UGCDetailActivity.a(a, new StringBuilder("\u9009\u5BF9\u59FF\u52BF\u770B\u5C0F\u8BF4\uFF0C\u4E66\u8352886~").append(UGCDetailActivity.i(a)).append("\uFF0C\u7CFB\u5217\u597D\u4E66\u6253\u5305\u63A8\u8350\uFF1A").append(UGCDetailActivity.j(a)).toString());
-                break;
-            case 3:
-            case 4:
+    /*
+     * Unable to fully structure code
+     * Enabled aggressive block sorting
+     * Lifted jumps to return sites
+     */
+    @Override
+    public final void a(int var1_1) {
+        switch (var1_1) {
+            case 0: {
+                UGCDetailActivity.a(this.a, "\u9009\u5bf9\u59ff\u52bf\u770b\u5c0f\u8bf4\uff0c\u4e66\u8352886~" + UGCDetailActivity.i(this.a) + "\uff0c\u7cfb\u5217\u597d\u4e66\u6253\u5305\u63a8\u8350\uff1a" + UGCDetailActivity.j(this.a));
+                **break;
+            }
             case 1:
-                UGCDetailActivity.a(a, new StringBuilder("\u7CFB\u5217\u597D\u4E66\u6253\u5305\u63A8\u8350\uFF1A").append(UGCDetailActivity.j(a)).toString());
-                break;
-            case 2:
-                UGCDetailActivity.a(a, UGCDetailActivity.i(a));
-                break;
+            case 3:
+            case 4: {
+                UGCDetailActivity.a(this.a, "\u7cfb\u5217\u597d\u4e66\u6253\u5305\u63a8\u8350\uff1a" + UGCDetailActivity.j(this.a));
+            }
+            lbl7:
+            // 3 sources:
             default:
-                break;
+            {
+                **GOTO lbl11
+            }
+            case 2:
         }
-        a.a(int1);
-        com.clilystudio.netbook.hpay100.a.a.a((Context) a, int1, 3);
+        UGCDetailActivity.a(this.a, UGCDetailActivity.i(this.a));
+        lbl11:
+        // 2 sources:
+        this.a.a(var1_1);
+        a.a((Context) this.a, var1_1, 3);
     }
 }

@@ -5,68 +5,68 @@ import android.content.Context;
 import android.support.design.widget.am;
 import android.util.AttributeSet;
 
+import com.clilystudio.netbook.hpay100.a.a;
 import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.ui.LuckyGameWebActivity;
+import com.umeng.a.b;
 
-public class HomeFindLuckyGameItem extends HomeFindItem {
-
-    public HomeFindLuckyGameItem(Context Context1, AttributeSet AttributeSet2) {
-        super(Context1, AttributeSet2);
+public class HomeFindLuckyGameItem
+        extends HomeFindItem {
+    public HomeFindLuckyGameItem(Activity activity) {
+        super(activity, "\u53ec\u5524\u795e\u5668", 2130837827, null);
     }
 
-    public HomeFindLuckyGameItem(Activity Activity1) {
-        super((Context) Activity1, "\u53EC\u5524\u795E\u5668", 2130837827, null);
+    public HomeFindLuckyGameItem(Context context, AttributeSet attributeSet) {
+        super(context, attributeSet);
     }
 
     private void b() {
-        setVisibility(0);
-        mSubFlag.setVisibility(8);
-        mSubText.setVisibility(8);
+        this.setVisibility(0);
+        this.mSubFlag.setVisibility(8);
+        this.mSubText.setVisibility(8);
     }
 
+    /*
+     * Enabled aggressive block sorting
+     */
     public final void a() {
-        int int1 = 1;
-        Context Context2 = getContext();
-        String String3 = am.n(Context2);
-        String String4 = com.umeng.a.b.b(Context2, "home_lucky_game_channel");
-        int int5;
-
-        label_37:
-        {
-            if (String4 != null && String4.length() > 0) {
-                String[] String_1darray8 = String4.split(",");
-                int int9 = String_1darray8.length;
-                int int10 = 0;
-
-                while (int10 < int9) {
-                    if (String_1darray8[int10].equals(String3)) {
-                        int5 = int1;
-                        break label_37;
-                    } else
-                        ++int10;
-                }
+        boolean bl;
+        boolean bl2 = true;
+        Context context = this.getContext();
+        String string = am.n((Context) context);
+        String string2 = b.b(context, "home_lucky_game_channel");
+        if (string2 != null && string2.length() > 0) {
+            String[] arrstring = string2.split(",");
+            int n = arrstring.length;
+            for (int j = 0; j < n; ++j) {
+                if (!arrstring[j].equals(string)) continue;
+                bl = bl2;
+                break;
             }
-            int5 = 0;
+        } else {
+            bl = false;
         }
-        if (int5 != 0)
-            b();
-        else {
-            Context Context6 = getContext();
-            int int7 = com.clilystudio.netbook.hpay100.a.a.b(com.umeng.a.b.b(Context6, "home_lucky_game_toggle"), 0);
-
-            if (am.f(Context6) >= int7)
-                int1 = 0;
-            if (int1 != 0)
-                b();
-            else
-                setVisibility(8);
+        if (bl) {
+            this.b();
+            return;
         }
+        Context context2 = this.getContext();
+        int n = a.b(b.b(context2, "home_lucky_game_toggle"), 0);
+        if (am.f((Context) context2) >= n) {
+            bl2 = false;
+        }
+        if (bl2) {
+            this.b();
+            return;
+        }
+        this.setVisibility(8);
     }
 
-    protected final void a(Context Context1, String String2) {
-        Account Account3 = am.a((Activity) Context1);
-
-        if (Account3 != null)
-            Context1.startActivity(LuckyGameWebActivity.a(Context1, String2, String.format("http://share.zhuishushenqi.com/game/index?token=%s", new Object[]{Account3.getToken()})));
+    @Override
+    protected final void a(Context context, String string) {
+        Account account = am.a((Activity) ((Activity) context));
+        if (account != null) {
+            context.startActivity(LuckyGameWebActivity.a(context, string, String.format("http://share.zhuishushenqi.com/game/index?token=%s", account.getToken())));
+        }
     }
 }

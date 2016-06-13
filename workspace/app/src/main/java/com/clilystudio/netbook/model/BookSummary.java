@@ -5,8 +5,8 @@ import com.clilystudio.netbook.api.ApiService;
 import java.io.Serializable;
 import java.util.Date;
 
-public class BookSummary implements Serializable {
-
+public class BookSummary
+        implements Serializable {
     private static final long serialVersionUID = -2648695569160810325L;
     private String _id;
     private String appendComment;
@@ -25,126 +25,126 @@ public class BookSummary implements Serializable {
     private int wordCount;
 
     public String getAppendComment() {
-        return appendComment;
+        return this.appendComment;
     }
 
-    public void setAppendComment(String String1) {
-        appendComment = String1;
+    public void setAppendComment(String string) {
+        this.appendComment = string;
     }
 
     public String getAuthor() {
-        return author;
+        return this.author;
     }
 
-    public void setAuthor(String String1) {
-        author = String1;
+    public void setAuthor(String string) {
+        this.author = string;
     }
 
     public String getCat() {
-        return cat;
+        return this.cat;
     }
 
-    public void setCat(String String1) {
-        cat = String1;
+    public void setCat(String string) {
+        this.cat = string;
     }
 
     public String getCover() {
-        return cover;
+        return this.cover;
     }
 
-    public void setCover(String String1) {
-        cover = String1;
+    public void setCover(String string) {
+        this.cover = string;
     }
 
     public String getFullCover() {
-        return new StringBuilder().append(ApiService.a).append(cover).append("-covers").toString();
+        return ApiService.a + this.cover + "-covers";
     }
 
     public String getFullCoverLarge() {
-        return new StringBuilder().append(ApiService.a).append(cover).append("-coverl").toString();
+        return ApiService.a + this.cover + "-coverl";
     }
 
     public String getId() {
-        return _id;
+        return this._id;
     }
 
-    public void setId(String String1) {
-        _id = String1;
+    public void setId(String string) {
+        this._id = string;
     }
 
     public String getLastChapter() {
-        return lastChapter;
+        return this.lastChapter;
     }
 
-    public void setLastChapter(String String1) {
-        lastChapter = String1;
+    public void setLastChapter(String string) {
+        this.lastChapter = string;
     }
 
     public int getLatelyFollower() {
-        return latelyFollower;
+        return this.latelyFollower;
     }
 
-    public void setLatelyFollower(int int1) {
-        latelyFollower = int1;
+    public void setLatelyFollower(int n) {
+        this.latelyFollower = n;
     }
 
     public String getPromLink() {
-        return promLink;
+        return this.promLink;
     }
 
     public float getRetentionRatio() {
-        return retentionRatio;
+        return this.retentionRatio;
     }
 
-    public void setRetentionRatio(float float1) {
-        retentionRatio = float1;
+    public void setRetentionRatio(float f2) {
+        this.retentionRatio = f2;
     }
 
     public String getShortIntro() {
-        return shortIntro;
+        return this.shortIntro;
     }
 
-    public void setShortIntro(String String1) {
-        shortIntro = String1;
+    public void setShortIntro(String string) {
+        this.shortIntro = string;
     }
 
     public String[] getTags() {
-        return tags;
+        return this.tags;
     }
 
-    public void setTags(String[] String_1darray1) {
-        tags = String_1darray1;
+    public void setTags(String[] arrstring) {
+        this.tags = arrstring;
     }
 
     public String getTitle() {
-        return title;
+        return this.title;
     }
 
-    public void setTitle(String String1) {
-        title = String1;
+    public void setTitle(String string) {
+        this.title = string;
     }
 
     public Date getUpdated() {
-        return updated;
+        return this.updated;
     }
 
-    public void setUpdated(Date Date1) {
-        updated = Date1;
+    public void setUpdated(Date date) {
+        this.updated = date;
     }
 
     public int getWordCount() {
-        return wordCount;
+        return this.wordCount;
     }
 
-    public void setWordCount(int int1) {
-        wordCount = int1;
+    public void setWordCount(int n) {
+        this.wordCount = n;
     }
 
     public boolean isSelected() {
-        return isSelected;
+        return this.isSelected;
     }
 
-    public void setSelected(boolean boolean1) {
-        isSelected = boolean1;
+    public void setSelected(boolean bl) {
+        this.isSelected = bl;
     }
 }

@@ -3,30 +3,31 @@ package com.clilystudio.netbook.ui;
 import com.clilystudio.netbook.model.AlbumSerialized;
 import com.ximalaya.ting.android.opensdk.datatrasfer.IDataCallBack;
 import com.ximalaya.ting.android.opensdk.datatrasfer.XimalayaResponse;
-import com.ximalaya.ting.android.opensdk.model.album.Album;
 import com.ximalaya.ting.android.opensdk.model.album.BatchAlbumList;
 
-final class C implements IDataCallBack {
+final class C
+        implements IDataCallBack<BatchAlbumList> {
+    private /* synthetic */ AudiobookInfoActivity a;
 
-    private AudiobookInfoActivity a;
-
-    C(AudiobookInfoActivity AudiobookInfoActivity1) {
-        a = AudiobookInfoActivity1;
+    C(AudiobookInfoActivity audiobookInfoActivity) {
+        this.a = audiobookInfoActivity;
     }
 
-    public final void onError(int int1, String String2) {
-        AudiobookInfoActivity.a(a, 2);
+    @Override
+    public final void onError(int n, String string) {
+        AudiobookInfoActivity.a(this.a, 2);
     }
 
-    public final void onSuccess(XimalayaResponse XimalayaResponse1) {
-        BatchAlbumList BatchAlbumList2 = (BatchAlbumList) XimalayaResponse1;
-
-        if (BatchAlbumList2.getAlbums().size() > 0) {
-            AudiobookInfoActivity.a(a, new AlbumSerialized((Album) BatchAlbumList2.getAlbums().get(0)));
-            AudiobookInfoActivity.b(a, (int) AudiobookInfoActivity.c(a).getTotalCount());
-            a.b(AudiobookInfoActivity.c(a).getTitle());
-            AudiobookInfoActivity.d(a);
-        } else
-            AudiobookInfoActivity.a(a, 2);
+    @Override
+    public final /* synthetic */ void onSuccess(XimalayaResponse ximalayaResponse) {
+        BatchAlbumList batchAlbumList = (BatchAlbumList) ximalayaResponse;
+        if (batchAlbumList.getAlbums().size() > 0) {
+            AudiobookInfoActivity.a(this.a, new AlbumSerialized(batchAlbumList.getAlbums().get(0)));
+            AudiobookInfoActivity.b(this.a, (int) AudiobookInfoActivity.c(this.a).getTotalCount());
+            this.a.b(AudiobookInfoActivity.c(this.a).getTitle());
+            AudiobookInfoActivity.d(this.a);
+            return;
+        }
+        AudiobookInfoActivity.a(this.a, 2);
     }
 }

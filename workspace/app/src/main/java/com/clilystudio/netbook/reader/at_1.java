@@ -1,22 +1,24 @@
 package com.clilystudio.netbook.reader;
 
-final class at implements ad {
+final class at
+        implements ad {
+    private /* synthetic */ ReaderActivity a;
 
-    private ReaderActivity a;
-
-    at(ReaderActivity ReaderActivity1) {
-        a = ReaderActivity1;
+    at(ReaderActivity readerActivity) {
+        this.a = readerActivity;
     }
 
+    @Override
     public final void a() {
-        ReaderActivity.d(a, false);
-        ReaderActivity.Q(a);
+        ReaderActivity.d(this.a, false);
+        ReaderActivity.Q(this.a);
     }
 
+    @Override
     public final void b() {
-        ReaderActivity.d(a, true);
-        ReaderActivity.P(a);
-        ReaderActivity.R(a);
-        ReaderActivity.f(a, -4);
+        ReaderActivity.d(this.a, true);
+        ReaderActivity.P(this.a);
+        ReaderActivity.R(this.a);
+        ReaderActivity.f(this.a, -4);
     }
 }

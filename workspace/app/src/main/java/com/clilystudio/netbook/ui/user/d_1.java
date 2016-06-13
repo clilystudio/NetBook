@@ -2,21 +2,26 @@ package com.clilystudio.netbook.ui.user;
 
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.View$OnTouchListener;
 
-final class d implements View$OnTouchListener {
+final class d
+        implements View.OnTouchListener {
+    private /* synthetic */ AuthLoginActivity a;
 
-    private AuthLoginActivity a;
-
-    d(AuthLoginActivity AuthLoginActivity1) {
-        a = AuthLoginActivity1;
+    d(AuthLoginActivity authLoginActivity) {
+        this.a = authLoginActivity;
     }
 
-    public final boolean onTouch(View View1, MotionEvent MotionEvent2) {
-        if (MotionEvent2.getAction() == 0)
-            AuthLoginActivity.a(a, View1);
-        else if (MotionEvent2.getAction() == 1)
-            View1.clearAnimation();
+    /*
+     * Enabled aggressive block sorting
+     */
+    @Override
+    public final boolean onTouch(View view, MotionEvent motionEvent) {
+        if (motionEvent.getAction() == 0) {
+            AuthLoginActivity.a(this.a, view);
+            return false;
+        }
+        if (motionEvent.getAction() != 1) return false;
+        view.clearAnimation();
         return false;
     }
 }

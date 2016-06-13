@@ -1,17 +1,17 @@
 package com.clilystudio.netbook.reader.random;
 
 import android.content.DialogInterface;
-import android.content.DialogInterface$OnCancelListener;
 
-final class p implements DialogInterface$OnCancelListener {
+final class p
+        implements DialogInterface.OnCancelListener {
+    private /* synthetic */ ReaderRandomActivity a;
 
-    private ReaderRandomActivity a;
-
-    p(ReaderRandomActivity ReaderRandomActivity1) {
-        a = ReaderRandomActivity1;
+    p(ReaderRandomActivity readerRandomActivity) {
+        this.a = readerRandomActivity;
     }
 
-    public final void onCancel(DialogInterface DialogInterface1) {
-        a.finish();
+    @Override
+    public final void onCancel(DialogInterface dialogInterface) {
+        this.a.finish();
     }
 }

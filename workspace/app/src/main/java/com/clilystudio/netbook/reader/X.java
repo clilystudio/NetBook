@@ -2,17 +2,20 @@ package com.clilystudio.netbook.reader;
 
 import java.util.List;
 
-final class X implements e {
+final class X
+        implements e<ReaderChapter> {
+    private /* synthetic */ List a;
+    private /* synthetic */ Reader b;
 
-    private List a;
-    private Reader b;
-    X(Reader Reader1, List List2) {
-        b = Reader1;
-        a = List2;
+    X(Reader reader, List list) {
+        this.b = reader;
+        this.a = list;
     }
 
-    public final void a(Object Object1) {
-        if (a.size() > 1)
-            Reader.a(b, a.subList(1, a.size()));
+    @Override
+    public final /* synthetic */ void a(Object object) {
+        if (this.a.size() > 1) {
+            Reader.a(this.b, this.a.subList(1, this.a.size()));
+        }
     }
 }

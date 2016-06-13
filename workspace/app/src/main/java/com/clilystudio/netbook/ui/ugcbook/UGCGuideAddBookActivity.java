@@ -1,18 +1,14 @@
 package com.clilystudio.netbook.ui.ugcbook;
 
 import android.app.Activity;
-import android.content.Context;
 import android.os.Bundle;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View$OnClickListener;
-import android.view.View$OnFocusChangeListener;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.AdapterView$OnItemClickListener;
 import android.widget.ListAdapter;
 import android.widget.ListView;
-import android.widget.TextView$OnEditorActionListener;
+import android.widget.TextView;
 
 import com.clilystudio.netbook.model.BookSummary;
 import com.clilystudio.netbook.model.UGCNewCollection;
@@ -23,8 +19,9 @@ import com.clilystudio.netbook.widget.ax;
 
 import butterknife.ButterKnife;
 
-public class UGCGuideAddBookActivity extends BaseActivity implements View$OnClickListener {
-
+public class UGCGuideAddBookActivity
+        extends BaseActivity
+        implements View.OnClickListener {
     private InputMethodManager a;
     private String b;
     private SearchEditText c;
@@ -39,228 +36,227 @@ public class UGCGuideAddBookActivity extends BaseActivity implements View$OnClic
     private String m;
     private boolean n;
 
-    static SearchEditText a(UGCGuideAddBookActivity UGCGuideAddBookActivity1) {
-        return UGCGuideAddBookActivity1.c;
+    static /* synthetic */ SearchEditText a(UGCGuideAddBookActivity uGCGuideAddBookActivity) {
+        return uGCGuideAddBookActivity.c;
     }
 
-    static String a(UGCGuideAddBookActivity UGCGuideAddBookActivity1, String String2) {
-        UGCGuideAddBookActivity1.m = String2;
-        return String2;
+    static /* synthetic */ String a(UGCGuideAddBookActivity uGCGuideAddBookActivity, String string) {
+        uGCGuideAddBookActivity.m = string;
+        return string;
     }
 
-    static void a(UGCGuideAddBookActivity UGCGuideAddBookActivity1, int int2) {
-        if (int2 >= 0 && int2 < UGCGuideAddBookActivity1.k.getCount()) {
-            BookSummary BookSummary3 = (BookSummary) UGCGuideAddBookActivity1.k.getItem(int2);
-
-            e().addBook(BookSummary3);
-            BookSummary3.setSelected(true);
+    static /* synthetic */ void a(UGCGuideAddBookActivity uGCGuideAddBookActivity, int n) {
+        if (n >= 0 && n < uGCGuideAddBookActivity.k.getCount()) {
+            BookSummary bookSummary = (BookSummary) uGCGuideAddBookActivity.k.getItem(n);
+            UGCGuideAddBookActivity.e().addBook(bookSummary);
+            bookSummary.setSelected(true);
         }
     }
 
-    static boolean a(UGCGuideAddBookActivity UGCGuideAddBookActivity1, boolean boolean2) {
-        UGCGuideAddBookActivity1.n = boolean2;
-        return boolean2;
+    static /* synthetic */ boolean a(UGCGuideAddBookActivity uGCGuideAddBookActivity, boolean bl) {
+        uGCGuideAddBookActivity.n = bl;
+        return bl;
     }
 
-    static UGCNewCollection b(UGCGuideAddBookActivity UGCGuideAddBookActivity1) {
-        return e();
+    static /* synthetic */ UGCNewCollection b(UGCGuideAddBookActivity uGCGuideAddBookActivity) {
+        return UGCGuideAddBookActivity.e();
     }
 
-    static void b(UGCGuideAddBookActivity UGCGuideAddBookActivity1, int int2) {
-        UGCGuideAddBookActivity1.a(int2);
+    static /* synthetic */ void b(UGCGuideAddBookActivity uGCGuideAddBookActivity, int n) {
+        uGCGuideAddBookActivity.a(n);
     }
 
-    static void b(UGCGuideAddBookActivity UGCGuideAddBookActivity1, boolean boolean2) {
-        UGCGuideAddBookActivity1.a(true);
+    static /* synthetic */ void b(UGCGuideAddBookActivity uGCGuideAddBookActivity, boolean bl) {
+        uGCGuideAddBookActivity.a(true);
     }
 
-    static boolean b(UGCGuideAddBookActivity UGCGuideAddBookActivity1, String String2) {
-        if (!UGCGuideAddBookActivity1.c.getText().toString().equals(String2) && !String2.equals(UGCGuideAddBookActivity1.m))
+    static /* synthetic */ boolean b(UGCGuideAddBookActivity uGCGuideAddBookActivity, String string) {
+        if (!uGCGuideAddBookActivity.c.getText().toString().equals(string) && !string.equals(uGCGuideAddBookActivity.m)) {
             return true;
-        else
-            return false;
-    }
-
-    static y c(UGCGuideAddBookActivity UGCGuideAddBookActivity1) {
-        return UGCGuideAddBookActivity1.k;
-    }
-
-    static void c(UGCGuideAddBookActivity UGCGuideAddBookActivity1, boolean boolean2) {
-        View View3;
-        int int4;
-
-        UGCGuideAddBookActivity1.e.setEnabled(boolean2);
-        UGCGuideAddBookActivity1.f.setEnabled(boolean2);
-        View3 = UGCGuideAddBookActivity1.f;
-        if (boolean2 && UGCGuideAddBookActivity1.c.isFocused())
-            int4 = 0;
-        else
-            int4 = 4;
-        View3.setVisibility(int4);
-    }
-
-    static ListView d(UGCGuideAddBookActivity UGCGuideAddBookActivity1) {
-        return UGCGuideAddBookActivity1.g;
-    }
-
-    static boolean e(UGCGuideAddBookActivity UGCGuideAddBookActivity1) {
-        return UGCGuideAddBookActivity1.n;
-    }
-
-    static SearchFixListView f(UGCGuideAddBookActivity UGCGuideAddBookActivity1) {
-        return UGCGuideAddBookActivity1.h;
-    }
-
-    static void g(UGCGuideAddBookActivity UGCGuideAddBookActivity1) {
-        UGCGuideAddBookActivity1.a(false);
-    }
-
-    private void a(int int1) {
-        switch (int1) {
-            default:
-                return;
-            case 1:
-                i.setVisibility(8);
-                j.setVisibility(8);
-                g.setVisibility(0);
-                return;
-            case 0:
-                i.setVisibility(0);
-                j.setVisibility(8);
-                g.setVisibility(8);
-                return;
-            case 3:
-                i.setVisibility(8);
-                j.setVisibility(0);
-                g.setVisibility(8);
-                return;
-            case 2:
-                i.setVisibility(8);
-                j.setVisibility(8);
-                g.setVisibility(8);
-                return;
         }
+        return false;
     }
 
-    private void a(boolean boolean1) {
-        h.setVisibility(8);
-        b = c.getText().toString().trim();
-        f();
-        if (com.clilystudio.netbook.hpay100.a.a.t((Context) this)) {
-            a(0);
-            if (boolean1) {
-                w w2 = new w(this, (byte) 0);
-                String[] String_1darray3 = new String[1];
+    static /* synthetic */ y c(UGCGuideAddBookActivity uGCGuideAddBookActivity) {
+        return uGCGuideAddBookActivity.k;
+    }
 
-                String_1darray3[0] = b;
-                w2.b(String_1darray3);
-            } else {
-                A A5 = new A(this, (byte) 0);
-                String[] String_1darray6 = new String[1];
+    /*
+     * Enabled aggressive block sorting
+     */
+    static /* synthetic */ void c(UGCGuideAddBookActivity uGCGuideAddBookActivity, boolean bl) {
+        uGCGuideAddBookActivity.e.setEnabled(bl);
+        uGCGuideAddBookActivity.f.setEnabled(bl);
+        View view = uGCGuideAddBookActivity.f;
+        int n = bl && uGCGuideAddBookActivity.c.isFocused() ? 0 : 4;
+        view.setVisibility(n);
+    }
 
-                String_1darray6[0] = b;
-                A5.b(String_1darray6);
+    static /* synthetic */ ListView d(UGCGuideAddBookActivity uGCGuideAddBookActivity) {
+        return uGCGuideAddBookActivity.g;
+    }
+
+    static /* synthetic */ boolean e(UGCGuideAddBookActivity uGCGuideAddBookActivity) {
+        return uGCGuideAddBookActivity.n;
+    }
+
+    static /* synthetic */ SearchFixListView f(UGCGuideAddBookActivity uGCGuideAddBookActivity) {
+        return uGCGuideAddBookActivity.h;
+    }
+
+    static /* synthetic */ void g(UGCGuideAddBookActivity uGCGuideAddBookActivity) {
+        uGCGuideAddBookActivity.a(false);
+    }
+
+    private void a(int n) {
+        switch (n) {
+            default: {
+                return;
             }
-        } else
-            com.clilystudio.netbook.util.e.a((Activity) this, 2131034418);
+            case 1: {
+                this.i.setVisibility(8);
+                this.j.setVisibility(8);
+                this.g.setVisibility(0);
+                return;
+            }
+            case 0: {
+                this.i.setVisibility(0);
+                this.j.setVisibility(8);
+                this.g.setVisibility(8);
+                return;
+            }
+            case 3: {
+                this.i.setVisibility(8);
+                this.j.setVisibility(0);
+                this.g.setVisibility(8);
+                return;
+            }
+            case 2:
+        }
+        this.i.setVisibility(8);
+        this.j.setVisibility(8);
+        this.g.setVisibility(8);
+    }
+
+    private void a(boolean bl) {
+        this.h.setVisibility(8);
+        this.b = this.c.getText().toString().trim();
+        this.f();
+        if (a.t(this)) {
+            this.a(0);
+            if (bl) {
+                w w2 = new w(this, 0);
+                Object[] arrobject = new String[]{this.b};
+                w2.b(arrobject);
+                return;
+            }
+            A a2 = new A(this, 0);
+            String[] arrstring = new String[]{this.b};
+            a2.b(arrstring);
+            return;
+        }
+        e.a((Activity) this, (int) 2131034418);
     }
 
     private void b() {
-        l.setVisibility(0);
-        getWindow().setSoftInputMode(21);
-        c.requestFocus();
+        this.l.setVisibility(0);
+        this.getWindow().setSoftInputMode(21);
+        this.c.requestFocus();
     }
 
     private void f() {
-        l.setVisibility(8);
-        c.clearFocus();
-        if (a == null)
-            a = (InputMethodManager) getSystemService("input_method");
-        a.hideSoftInputFromWindow(c.getWindowToken(), 0);
-        getWindow().setSoftInputMode(2);
+        this.l.setVisibility(8);
+        this.c.clearFocus();
+        if (this.a == null) {
+            this.a = (InputMethodManager) this.getSystemService("input_method");
+        }
+        this.a.hideSoftInputFromWindow(this.c.getWindowToken(), 0);
+        this.getWindow().setSoftInputMode(2);
     }
 
+    /*
+     * Enabled aggressive block sorting
+     */
+    @Override
     public void onBackPressed() {
-        int int1;
-
-        if (h.getVisibility() == 0)
-            int1 = 1;
-        else
-            int1 = 0;
-        if (int1 != 0)
-            h.setVisibility(8);
-        else
-            super.onBackPressed();
-    }
-
-    public void onClick(View View1) {
-        switch (View1.getId()) {
-            case 150:
-            default:
-                return;
-            case 152:
-                a(true);
-                f();
-                n = false;
-                return;
-            case 151:
-                b = "";
-                c.setTextByCode(b);
-                b();
-                return;
-            case 149:
-                f();
-                finish();
-                return;
+        boolean bl = this.h.getVisibility() == 0;
+        if (bl) {
+            this.h.setVisibility(8);
+            return;
         }
+        super.onBackPressed();
     }
 
-    public void onCreate(Bundle Bundle1) {
-        LayoutInflater LayoutInflater2;
-        View View3;
-        Object Object4;
-
-        super.onCreate(Bundle1);
-        setContentView(2130903127);
-        ButterKnife.inject((Activity) this);
-        LayoutInflater2 = LayoutInflater.from((Context) this);
-        View3 = LayoutInflater2.inflate(2130903042, null, false);
-        View3.findViewById(2131493013).setOnClickListener(this);
-        setCustomActionBar(View3);
-        findViewById(2131493186).setVisibility(8);
-        n = true;
-        Object4 = new UGCGuideAddBookActivity$SearchPromptAdapter(this);
-        h = (SearchFixListView) findViewById(2131493193);
-        h.setAdapter((ListAdapter) Object4);
-        h.setOnItemClickListener((AdapterView$OnItemClickListener) Object4);
-        c = (SearchEditText) View3.findViewById(2131493014);
-        c.setOnUserInputListener((ax) new s(this, (UGCGuideAddBookActivity$SearchPromptAdapter) Object4));
-        e = View3.findViewById(2131493016);
-        f = View3.findViewById(2131493015);
-        i = findViewById(2131493085);
-        j = findViewById(2131493184);
-        l = findViewById(2131493183);
-        findViewById(2131493982).setVisibility(8);
-        e.setOnClickListener(this);
-        f.setOnClickListener(this);
-        e.setEnabled(false);
-        g = (ListView) findViewById(2131493185);
-        k = new y(this, LayoutInflater2);
-        g.setAdapter((ListAdapter) k);
-        if (Bundle1 != null) {
-            b = Bundle1.getString("saved_keyword");
-            if (b != null)
-                c.setTextByCode(b);
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            default: {
+                return;
+            }
+            case 2131493016: {
+                this.a(true);
+                this.f();
+                this.n = false;
+                return;
+            }
+            case 2131493015: {
+                this.b = "";
+                this.c.setTextByCode(this.b);
+                this.b();
+                return;
+            }
+            case 2131493013:
         }
-        c.setOnEditorActionListener((TextView$OnEditorActionListener) new t(this));
-        c.addTextChangedListener((TextWatcher) new u(this));
-        c.setOnFocusChangeListener((View$OnFocusChangeListener) new v(this));
-        b();
+        this.f();
+        this.finish();
     }
 
-    protected void onSaveInstanceState(Bundle Bundle1) {
-        super.onSaveInstanceState(Bundle1);
-        if (b != null)
-            Bundle1.putString("saved_keyword", b);
+    @Override
+    public void onCreate(Bundle bundle) {
+        super.onCreate(bundle);
+        this.setContentView(2130903127);
+        ButterKnife.inject(this);
+        LayoutInflater layoutInflater = LayoutInflater.from(this);
+        View view = layoutInflater.inflate(2130903042, null, false);
+        view.findViewById(2131493013).setOnClickListener(this);
+        this.setCustomActionBar(view);
+        this.findViewById(2131493186).setVisibility(8);
+        this.n = true;
+        UGCGuideAddBookActivity$SearchPromptAdapter uGCGuideAddBookActivity$SearchPromptAdapter = new UGCGuideAddBookActivity$SearchPromptAdapter(this);
+        this.h = (SearchFixListView) this.findViewById(2131493193);
+        this.h.setAdapter(uGCGuideAddBookActivity$SearchPromptAdapter);
+        this.h.setOnItemClickListener(uGCGuideAddBookActivity$SearchPromptAdapter);
+        this.c = (SearchEditText) view.findViewById(2131493014);
+        this.c.setOnUserInputListener((ax) ((Object) new s(this, uGCGuideAddBookActivity$SearchPromptAdapter)));
+        this.e = view.findViewById(2131493016);
+        this.f = view.findViewById(2131493015);
+        this.i = this.findViewById(2131493085);
+        this.j = this.findViewById(2131493184);
+        this.l = this.findViewById(2131493183);
+        this.findViewById(2131493982).setVisibility(8);
+        this.e.setOnClickListener(this);
+        this.f.setOnClickListener(this);
+        this.e.setEnabled(false);
+        this.g = (ListView) this.findViewById(2131493185);
+        this.k = new y(this, layoutInflater);
+        this.g.setAdapter((ListAdapter) ((Object) this.k));
+        if (bundle != null) {
+            this.b = bundle.getString("saved_keyword");
+            if (this.b != null) {
+                this.c.setTextByCode(this.b);
+            }
+        }
+        this.c.setOnEditorActionListener((TextView.OnEditorActionListener) ((Object) new t(this)));
+        this.c.addTextChangedListener((TextWatcher) ((Object) new u(this)));
+        this.c.setOnFocusChangeListener((View.OnFocusChangeListener) ((Object) new v(this)));
+        this.b();
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle bundle) {
+        super.onSaveInstanceState(bundle);
+        if (this.b != null) {
+            bundle.putString("saved_keyword", this.b);
+        }
     }
 }

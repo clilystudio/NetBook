@@ -1,18 +1,17 @@
 package com.clilystudio.netbook.ui.post;
 
-import android.view.View;
-
 import com.clilystudio.netbook.ui.aa;
 
-final class K implements aa {
+final class K
+        implements aa {
+    private /* synthetic */ AddVoteActivity a;
 
-    private AddVoteActivity a;
-
-    K(AddVoteActivity AddVoteActivity1) {
-        a = AddVoteActivity1;
+    K(AddVoteActivity addVoteActivity) {
+        this.a = addVoteActivity;
     }
 
+    @Override
     public final void a() {
-        AddVoteActivity.a(a, (View) AddVoteActivity.a(a));
+        AddVoteActivity.a(this.a, AddVoteActivity.a(this.a));
     }
 }

@@ -9,94 +9,103 @@ import com.iflytek.cloud.SpeechUtility;
 
 import java.util.LinkedList;
 
-final class ak implements com.umeng.update.a {
+final class ak
+        implements com.umeng.update.a {
+    private /* synthetic */ ReaderActivity a;
 
-    private ReaderActivity a;
-
-    ak(ReaderActivity ReaderActivity1) {
-        a = ReaderActivity1;
+    ak(ReaderActivity readerActivity) {
+        this.a = readerActivity;
     }
 
-    public final void a(int int1) {
-        switch (int1) {
-            default:
+    /*
+     * Enabled aggressive block sorting
+     */
+    @Override
+    public final void a(int n2) {
+        switch (n2) {
+            default: {
                 return;
-            case 2131493890:
-                SettingWidget SettingWidget8 = ReaderActivity.w(a);
-                boolean boolean9;
-
-                if (!a.j())
-                    boolean9 = true;
-                else
-                    boolean9 = false;
-                SettingWidget8.setReadOptionEnable(boolean9);
-                ReaderActivity.w(a).a();
+            }
+            case 2131493890: {
+                SettingWidget settingWidget = ReaderActivity.w(this.a);
+                boolean bl = !this.a.j();
+                settingWidget.setReadOptionEnable(bl);
+                ReaderActivity.w(this.a).a();
                 return;
-            case 2131493892:
-                ReaderActivity.w(a).setVisibility(8);
-                ReaderActivity.x(a);
+            }
+            case 2131493892: {
+                ReaderActivity.w(this.a).setVisibility(8);
+                ReaderActivity.x(this.a);
                 return;
-            case 2131493881:
-                ReaderActivity.w(a).setVisibility(8);
-                a.onBackPressed();
+            }
+            case 2131493881: {
+                ReaderActivity.w(this.a).setVisibility(8);
+                this.a.onBackPressed();
                 return;
-            case 2131493893:
-                ReaderActivity.w(a).setVisibility(8);
-                ReaderActivity.y(a);
+            }
+            case 2131493893: {
+                ReaderActivity.w(this.a).setVisibility(8);
+                ReaderActivity.y(this.a);
                 return;
-            case 2131493861:
-                ReaderActivity.w(a).setVisibility(8);
-                ReaderActivity.z(a);
-                ReaderActivity.A(a).f(false);
-                com.umeng.a.b.a((Context) a, "reader_activity_topic");
+            }
+            case 2131493861: {
+                ReaderActivity.w(this.a).setVisibility(8);
+                ReaderActivity.z(this.a);
+                ReaderActivity.A(this.a).f(false);
+                b.a(this.a, "reader_activity_topic");
                 return;
-            case 2131493862:
-                ReaderActivity.w(a).setVisibility(8);
-                a.i();
+            }
+            case 2131493862: {
+                ReaderActivity.w(this.a).setVisibility(8);
+                this.a.i();
                 return;
-            case 2131493860:
-                View View7;
-
-                ReaderActivity.w(a).setVisibility(8);
-                View7 = ReaderActivity.A(a).findViewById(2131493860);
-                if (com.clilystudio.netbook.hpay100.a.a.i())
-                    ReaderActivity.a(a, View7);
-                else
-                    ReaderActivity.b(a, View7);
+            }
+            case 2131493860: {
+                ReaderActivity.w(this.a).setVisibility(8);
+                View view = ReaderActivity.A(this.a).findViewById(2131493860);
+                if (a.i()) {
+                    ReaderActivity.a(this.a, view);
+                    return;
+                }
+                ReaderActivity.b(this.a, view);
                 return;
-            case 2131493888:
-                ReaderActivity.w(a).setVisibility(8);
-                ReaderActivity.b(a, true);
-                ReaderActivity.B(a);
+            }
+            case 2131493888: {
+                ReaderActivity.w(this.a).setVisibility(8);
+                ReaderActivity.b(this.a, true);
+                ReaderActivity.B(this.a);
                 return;
-            case 2131493891:
-                ReaderActivity.w(a).setVisibility(8);
-                ReaderActivity.C(a);
+            }
+            case 2131493891: {
+                ReaderActivity.w(this.a).setVisibility(8);
+                ReaderActivity.C(this.a);
                 return;
+            }
             case 2131493859:
-                if (SpeechUtility.getUtility().checkServiceInstalled()) {
-                    Object[] Object_1darray3;
-
-                    ReaderActivity.f(a);
-                    ReaderActivity.a(a, 2);
-                    ReaderActivity.h(a).setReadMode(ReaderActivity.g(a));
-                    Object_1darray3 = ReaderActivity.m(a).d();
-                    if (Object_1darray3 != null) {
-                        ReaderActivity.a(a, (String[]) Object_1darray3[0]);
-                        ReaderActivity.a(a, (LinkedList) Object_1darray3[1]);
-                        ReaderActivity.c(a, false);
-                        ReaderActivity.o(a);
-                        com.umeng.a.b.a((Context) a, "tts_start_speaking", ReaderActivity.D(a));
-                        com.umeng.a.b.a((Context) a, "tts_start_speaking_message", null, 1);
-                        com.clilystudio.netbook.hpay100.a.a.J((Context) a);
-                        ReaderActivity.E(a);
-                    } else
-                        e.a((Activity) a, "\u83B7\u53D6\u7AE0\u8282\u5185\u5BB9\u5931\u8D25,\u8BF7\u9000\u51FA\u540E\u91CD\u8BD5");
-                } else if (ReaderActivity.a == null || "".equals(ReaderActivity.a))
-                    ReaderActivity.F(a);
-                else
-                    com.clilystudio.netbook.hpay100.a.a.a(ReaderActivity.a, (Activity) a, "\u8FFD\u4E66\u795E\u5668\u6717\u8BFB\u63D2\u4EF6");
-                return;
         }
+        if (SpeechUtility.getUtility().checkServiceInstalled()) {
+            ReaderActivity.f(this.a);
+            ReaderActivity.a(this.a, 2);
+            ReaderActivity.h(this.a).setReadMode(ReaderActivity.g(this.a));
+            Object[] arrobject = ReaderActivity.m(this.a).d();
+            if (arrobject != null) {
+                ReaderActivity.a(this.a, (String[]) arrobject[0]);
+                ReaderActivity.a(this.a, (LinkedList) arrobject[1]);
+                ReaderActivity.c(this.a, false);
+                ReaderActivity.o(this.a);
+                b.a(this.a, "tts_start_speaking", ReaderActivity.D(this.a));
+                b.a((Context) this.a, "tts_start_speaking_message", null, 1);
+                a.J(this.a);
+                ReaderActivity.E(this.a);
+                return;
+            }
+            e.a((Activity) this.a, "\u83b7\u53d6\u7ae0\u8282\u5185\u5bb9\u5931\u8d25,\u8bf7\u9000\u51fa\u540e\u91cd\u8bd5");
+            return;
+        }
+        if (ReaderActivity.a != null && !"".equals(ReaderActivity.a)) {
+            a.a(ReaderActivity.a, this.a, "\u8ffd\u4e66\u795e\u5668\u6717\u8bfb\u63d2\u4ef6");
+            return;
+        }
+        ReaderActivity.F(this.a);
     }
 }

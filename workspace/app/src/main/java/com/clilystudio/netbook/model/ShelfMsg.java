@@ -5,7 +5,6 @@ import android.text.TextUtils;
 import java.util.Date;
 
 public class ShelfMsg {
-
     public String _id;
     public Date end;
     public boolean highlight;
@@ -13,20 +12,18 @@ public class ShelfMsg {
     public String postLink;
     public Date start;
 
-    public boolean equals(Object Object1) {
-        if (Object1 == null || !(Object1 instanceof ShelfMsg))
+    public boolean equals(Object object) {
+        if (object == null || !(object instanceof ShelfMsg)) {
             return false;
-        else {
-            ShelfMsg ShelfMsg2 = (ShelfMsg) Object1;
-
-            return TextUtils.equals((CharSequence) _id, (CharSequence) ShelfMsg2._id);
         }
+        ShelfMsg shelfMsg = (ShelfMsg) object;
+        return TextUtils.equals(this._id, shelfMsg._id);
     }
 
     public int hashCode() {
-        if (_id == null)
+        if (this._id == null) {
             return 0;
-        else
-            return _id.hashCode();
+        }
+        return this._id.hashCode();
     }
 }

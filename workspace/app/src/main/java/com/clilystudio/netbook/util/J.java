@@ -7,93 +7,96 @@ import com.clilystudio.netbook.db.AccountInfo;
 import com.clilystudio.netbook.model.Account;
 
 public class J {
-
     private static J a;
     private int b;
     private int c;
     private Context d;
-    private J(Context Context1) {
-        d = Context1;
+
+    private J(Context context) {
+        this.d = context;
     }
 
-    static int a(J J1, int int2) {
-        J1.b = int2;
-        return int2;
+    static /* synthetic */ int a(J j, int n) {
+        j.b = n;
+        return n;
     }
 
-    static Context a(J J1) {
-        return J1.d;
-    }
-// Error: Internal #201: 
-// The following method may not be correct.
-
-    public static J a(Context Context1) {
+    static /* synthetic */ Context a(J j) {
+        return j.d;
     }
 
-    static int b(J J1, int int2) {
-        J1.c = int2;
-        return int2;
+    /*
+     * Enabled aggressive block sorting
+     * Enabled unnecessary exception pruning
+     * Enabled aggressive exception aggregation
+     */
+    public static J a(Context context) {
+        synchronized (J.class) {
+            if (a != null) return a;
+            a = new J(context);
+            return a;
+        }
+    }
+
+    static /* synthetic */ int b(J j, int n) {
+        j.c = n;
+        return n;
     }
 
     public final int a() {
-        return b;
+        return this.b;
     }
 
-    public final void a(int int1) {
-        b = 0;
+    public final void a(int n) {
+        this.b = 0;
     }
 
-    public final void a(Account Account1) {
-        if (Account1 != null) {
-            K K2 = new K(this);
-            String[] String_1darray3 = new String[1];
-
-            String_1darray3[0] = Account1.getToken();
-            K2.b(String_1darray3);
+    public final void a(Account account) {
+        if (account != null) {
+            K k = new K(this);
+            String[] arrstring = new String[]{account.getToken()};
+            k.b(arrstring);
         }
     }
 
     public final int b() {
-        return c;
+        return this.c;
     }
 
-    public final void b(int int1) {
-        c = 0;
+    public final void b(int n) {
+        this.c = 0;
     }
 
     public final void c() {
-        Account Account1 = am.e();
-
-        if (Account1 != null) {
-            L L2 = new L(this);
-            String[] String_1darray3 = new String[1];
-
-            String_1darray3[0] = Account1.getToken();
-            L2.b(String_1darray3);
+        Account account = am.e();
+        if (account != null) {
+            L l = new L(this);
+            String[] arrstring = new String[]{account.getToken()};
+            l.b(arrstring);
         }
     }
 
     public final void d() {
-        Account Account1 = am.e();
-
-        if (Account1 != null) {
-            M M2 = new M(this);
-            String[] String_1darray3 = new String[1];
-
-            String_1darray3[0] = Account1.getToken();
-            M2.b(String_1darray3);
+        Account account = am.e();
+        if (account != null) {
+            M m = new M(this);
+            String[] arrstring = new String[]{account.getToken()};
+            m.b(arrstring);
         }
     }
 
+    /*
+     * Enabled aggressive block sorting
+     * Lifted jumps to return sites
+     */
     public final int e() {
-        Account Account1 = am.e();
-
-        if (Account1 != null) {
-            if (b != 0 || c == 0)
-                return b;
-            if (AccountInfo.getPreUnimpCount(Account1.getToken()) < c)
-                return -1;
+        Account account = am.e();
+        if (account == null) {
+            return 0;
         }
-        return 0;
+        if (this.b != 0) return this.b;
+        if (this.c == 0) return this.b;
+        if (AccountInfo.getPreUnimpCount(account.getToken()) >= this.c) return 0;
+        return -1;
     }
 }

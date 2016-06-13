@@ -2,20 +2,20 @@ package com.clilystudio.netbook.widget;
 
 import android.app.Activity;
 import android.content.DialogInterface;
-import android.content.DialogInterface$OnClickListener;
 
 import com.clilystudio.netbook.util.e;
 
-final class a implements DialogInterface$OnClickListener {
+final class a
+        implements DialogInterface.OnClickListener {
+    private /* synthetic */ AbsDownloadButton a;
 
-    private AbsDownloadButton a;
-
-    a(AbsDownloadButton AbsDownloadButton1) {
-        a = AbsDownloadButton1;
+    a(AbsDownloadButton absDownloadButton) {
+        this.a = absDownloadButton;
     }
 
-    public final void onClick(DialogInterface DialogInterface1, int int2) {
-        e.a((Activity) a.getContext(), "\u5F00\u59CB\u4E0B\u8F7D...");
-        a.b();
+    @Override
+    public final void onClick(DialogInterface dialogInterface, int n) {
+        e.a((Activity) this.a.getContext(), "\u5f00\u59cb\u4e0b\u8f7d...");
+        this.a.b();
     }
 }

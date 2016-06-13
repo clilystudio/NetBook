@@ -1,110 +1,114 @@
 package com.clilystudio.netbook.ui;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
-import android.view.View$OnClickListener;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 
 import com.clilystudio.netbook.adapter.BookRankAdapter;
 import com.clilystudio.netbook.event.i;
+import com.clilystudio.netbook.event.k;
 import com.clilystudio.netbook.event.x;
 import com.clilystudio.netbook.model.BookRankSummary;
+import com.umeng.a.b;
 
-public class BookRankListActivity extends BaseActivity {
-
+public class BookRankListActivity
+        extends BaseActivity {
     private View a;
     private View b;
     private BookRankAdapter c;
     private ListView e;
     private Handler f;
 
-    static void a(BookRankListActivity BookRankListActivity1) {
-        BookRankListActivity1.b();
+    static /* synthetic */ void a(BookRankListActivity bookRankListActivity) {
+        bookRankListActivity.b();
     }
 
-    static void a(BookRankListActivity BookRankListActivity1, int int2) {
-        BookRankListActivity1.a(int2);
+    static /* synthetic */ void a(BookRankListActivity bookRankListActivity, int n) {
+        bookRankListActivity.a(n);
     }
 
-    static ListView b(BookRankListActivity BookRankListActivity1) {
-        return BookRankListActivity1.e;
+    static /* synthetic */ ListView b(BookRankListActivity bookRankListActivity) {
+        return bookRankListActivity.e;
     }
 
-    static BookRankAdapter c(BookRankListActivity BookRankListActivity1) {
-        return BookRankListActivity1.c;
+    static /* synthetic */ BookRankAdapter c(BookRankListActivity bookRankListActivity) {
+        return bookRankListActivity.c;
     }
 
-    private void a(int int1) {
-        switch (int1) {
-            default:
+    private void a(int n) {
+        switch (n) {
+            default: {
                 return;
-            case 1:
-                a.setVisibility(8);
-                b.setVisibility(8);
+            }
+            case 1: {
+                this.a.setVisibility(8);
+                this.b.setVisibility(8);
                 return;
-            case 0:
-                a.setVisibility(0);
-                b.setVisibility(8);
+            }
+            case 0: {
+                this.a.setVisibility(0);
+                this.b.setVisibility(8);
                 return;
+            }
             case 2:
-                a.setVisibility(8);
-                b.setVisibility(0);
-                return;
         }
+        this.a.setVisibility(8);
+        this.b.setVisibility(0);
     }
 
     private void b() {
-        a(0);
-        new aO(this, (byte) 0).b(new Void[0]);
+        this.a(0);
+        new aO(this, 0).b(new Void[0]);
     }
 
-    public void clickListItem(x x1) {
-        BookRankSummary BookRankSummary2 = x1.b();
-        String String3;
-        Intent Intent4;
-        String String5;
-
-        if (x1.a())
-            String3 = "male";
-        else
-            String3 = "female";
-        if (!BookRankSummary2.isCollapse() && com.clilystudio.netbook.hpay100.a.a.r((Context) this, "rank_revision_switch"))
-            Intent4 = BookRankMainActivity.a((Context) this, BookRankSummary2.getIds(), BookRankSummary2.getTitle(), String3);
-        else
-            Intent4 = BookRankDetailActivity.a((Context) this, BookRankSummary2.get_id(), BookRankSummary2.getTitle());
-        startActivity(Intent4);
-        String5 = BookRankSummary2.getTitle();
-        com.umeng.a.b.a((Context) this, "book_rank_list_item", new StringBuilder().append(String5).append("_").append(String3).toString());
+    /*
+     * Enabled aggressive block sorting
+     */
+    @l
+    public void clickListItem(x x2) {
+        BookRankSummary bookRankSummary = x2.b();
+        String string = x2.a() ? "male" : "female";
+        Intent intent = !bookRankSummary.isCollapse() && a.r(this, "rank_revision_switch") ? BookRankMainActivity.a(this, bookRankSummary.getIds(), bookRankSummary.getTitle(), string) : BookRankDetailActivity.a(this, bookRankSummary.get_id(), bookRankSummary.getTitle());
+        this.startActivity(intent);
+        String string2 = bookRankSummary.getTitle();
+        b.a(this, "book_rank_list_item", string2 + "_" + string);
     }
 
-    public void onCreate(Bundle Bundle1) {
-        super.onCreate(Bundle1);
-        setContentView(2130903088);
-        b(2131034450);
-        f = new Handler();
-        e = (ListView) findViewById(2131493101);
-        a = findViewById(2131493102);
-        b = findViewById(2131493103);
-        b.setOnClickListener((View$OnClickListener) new aM(this));
-        c = new BookRankAdapter(getLayoutInflater());
-        e.setAdapter((ListAdapter) c);
-        b();
+    @Override
+    public void onCreate(Bundle bundle) {
+        super.onCreate(bundle);
+        this.setContentView(2130903088);
+        this.b(2131034450);
+        this.f = new Handler();
+        this.e = (ListView) this.findViewById(2131493101);
+        this.a = this.findViewById(2131493102);
+        this.b = this.findViewById(2131493103);
+        this.b.setOnClickListener(new aM(this));
+        this.c = new BookRankAdapter(this.getLayoutInflater());
+        this.e.setAdapter(this.c);
+        this.b();
     }
 
-    public void onExpand(com.clilystudio.netbook.event.k k1) {
-        if (com.clilystudio.netbook.hpay100.a.a.g() && !com.clilystudio.netbook.hpay100.a.a.k() && k1.a() == e.getLastVisiblePosition())
-            f.postDelayed((Runnable) new aN(this, k1), 50L);
+    /*
+     * Enabled aggressive block sorting
+     */
+    @l
+    public void onExpand(k k2) {
+        if (!a.g() || a.k() || k2.a() != this.e.getLastVisiblePosition()) {
+            return;
+        }
+        this.f.postDelayed(new aN(this, k2), 50);
     }
 
+    @Override
     public void onPause() {
         super.onPause();
         i.a().b(this);
     }
 
+    @Override
     public void onResume() {
         super.onResume();
         i.a().a(this);

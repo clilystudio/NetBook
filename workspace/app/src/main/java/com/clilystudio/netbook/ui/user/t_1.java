@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.net.Uri;
 import android.support.design.widget.am;
 
+import com.clilystudio.netbook.a.c;
 import com.clilystudio.netbook.event.K;
 import com.clilystudio.netbook.event.i;
 import com.clilystudio.netbook.model.Root;
@@ -11,40 +12,36 @@ import com.clilystudio.netbook.util.e;
 
 import java.io.IOException;
 
-final class t extends com.clilystudio.netbook.a.c {
-
+final class t
+        extends c<String, Root> {
     private Uri a;
-    private ModifyUserInfoActivity b;
-    public t(ModifyUserInfoActivity ModifyUserInfoActivity1, ModifyUserInfoActivity ModifyUserInfoActivity2, String String3, Uri Uri4) {
-        super((Activity) ModifyUserInfoActivity2, String3);
-        b = ModifyUserInfoActivity1;
-        a = Uri4;
+    private /* synthetic */ ModifyUserInfoActivity b;
+
+    public t(ModifyUserInfoActivity modifyUserInfoActivity, ModifyUserInfoActivity modifyUserInfoActivity2, String string, Uri uri) {
+        this.b = modifyUserInfoActivity;
+        super((Activity) modifyUserInfoActivity2, string);
+        this.a = uri;
     }
 
-    private transient Root a() {
-        Root Root2;
-
+    private /* varargs */ Root a() {
         try {
-            Root2 = com.clilystudio.netbook.api.b.b().a(am.a((Activity) b).getToken(), a);
-        } catch (IOException IOException1) {
-            IOException1.printStackTrace();
+            Root root = b.b().a(am.a(this.b).getToken(), this.a);
+            return root;
+        } catch (IOException var1_2) {
+            var1_2.printStackTrace();
             return null;
         }
-        return Root2;
     }
 
-    public final volatile Object a(Object[] Object_1darray1) {
-        return a();
-    }
-
-    public final void a(Object Object1) {
-        Root Root2 = (Root) Object1;
-
-        if (Root2 != null && Root2.isOk()) {
-            e.a((Activity) b, "\u4FEE\u6539\u6210\u529F");
+    @Override
+    public final /* synthetic */ void a(Object object) {
+        Root root = (Root) object;
+        if (root != null && root.isOk()) {
+            e.a((Activity) this.b, "\u4fee\u6539\u6210\u529f");
             i.a().c(new K());
-            b.mPortrait.setImageURI(a);
-        } else
-            e.a((Activity) b, "\u4E0A\u4F20\u5931\u8D25");
+            this.b.mPortrait.setImageURI(this.a);
+            return;
+        }
+        e.a((Activity) this.b, "\u4e0a\u4f20\u5931\u8d25");
     }
 }

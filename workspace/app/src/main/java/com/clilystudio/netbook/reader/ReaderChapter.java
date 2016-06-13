@@ -1,11 +1,12 @@
 package com.clilystudio.netbook.reader;
 
+import com.clilystudio.netbook.hpay100.a.a;
 import com.clilystudio.netbook.model.Chapter;
 import com.clilystudio.netbook.model.ChapterLink;
 import com.clilystudio.netbook.util.CipherUtil;
 
-public class ReaderChapter extends Chapter {
-
+public class ReaderChapter
+        extends Chapter {
     public static final int STATUS_CHAPTER_EMPTY = -3;
     public static final int STATUS_CHAPTER_NOT_AVAILABLE = -2;
     public static final int STATUS_CONNECTION_ERROR = -1;
@@ -18,119 +19,116 @@ public class ReaderChapter extends Chapter {
     private String key;
     private int mIndex;
     private int mMaxIndex;
-    private String mTitle;
     private int mStatus = 0;
+    private String mTitle;
 
-    public static ReaderChapter create(ChapterLink ChapterLink1, int int2, int int3) {
-        ReaderChapter ReaderChapter4 = new ReaderChapter();
-
-        ReaderChapter4.setIsVip(ChapterLink1.isVip());
-        ReaderChapter4.setTitle(ChapterLink1.getTitle());
-        ReaderChapter4.setLink(ChapterLink1.getLink());
-        ReaderChapter4.mMaxIndex = int2;
-        ReaderChapter4.mIndex = int3;
-        return ReaderChapter4;
+    public static ReaderChapter create(ChapterLink chapterLink, int n2, int n3) {
+        ReaderChapter readerChapter = new ReaderChapter();
+        readerChapter.setIsVip(chapterLink.isVip());
+        readerChapter.setTitle(chapterLink.getTitle());
+        readerChapter.setLink(chapterLink.getLink());
+        readerChapter.mMaxIndex = n2;
+        readerChapter.mIndex = n3;
+        return readerChapter;
     }
 
+    /*
+     * Enabled aggressive block sorting
+     */
+    @Override
     public String getBody() {
-        if (getContent() != null && key != null) {
-            if (clearContent == null) {
-                clearContent = CipherUtil.a(key, getContent());
-                clearContent = com.clilystudio.netbook.hpay100.a.a.y(clearContent);
+        if (this.getContent() != null && this.key != null) {
+            if (this.clearContent == null) {
+                this.clearContent = CipherUtil.a(this.key, this.getContent());
+                this.clearContent = a.y(this.clearContent);
             }
-            if (clearContent == null)
-                return "  \u89E3\u6790\u9519\u8BEF\uFF0C\u8BF7\u9000\u51FA\u540E\u91CD\u65B0\u8FDB\u5165\u9605\u8BFB\u3002";
-            else
-                return clearContent;
-        } else {
-            String String1;
-
-            if (getContent() == null || isVip() && key == null)
-                String1 = super.getBody();
-            else
-                String1 = getContent();
-            if (formattedBody == null)
-                formattedBody = com.clilystudio.netbook.hpay100.a.a.y(String1);
-            return formattedBody;
+            if (this.clearContent == null) {
+                return "  \u89e3\u6790\u9519\u8bef\uff0c\u8bf7\u9000\u51fa\u540e\u91cd\u65b0\u8fdb\u5165\u9605\u8bfb\u3002";
+            }
+            return this.clearContent;
         }
+        String string = this.getContent() == null || this.isVip() && this.key == null ? super.getBody() : this.getContent();
+        if (this.formattedBody == null) {
+            this.formattedBody = a.y(string);
+        }
+        return this.formattedBody;
     }
 
-    public void setBody(String String1) {
-        super.setBody(String1);
-        mStatus = 1;
+    @Override
+    public void setBody(String string) {
+        super.setBody(string);
+        this.mStatus = 1;
     }
 
-    public String getBody(n n1) {
-        if (getContent() != null && key != null) {
-            if (clearContent == null) {
-                clearContent = CipherUtil.a(key, getContent());
-                clearContent = com.clilystudio.netbook.hpay100.a.a.y(clearContent);
-                n1.a(clearContent);
+    /*
+     * Enabled aggressive block sorting
+     */
+    public String getBody(n n2) {
+        if (this.getContent() != null && this.key != null) {
+            if (this.clearContent == null) {
+                this.clearContent = CipherUtil.a(this.key, this.getContent());
+                this.clearContent = a.y(this.clearContent);
+                n2.a(this.clearContent);
             }
-            if (clearContent == null)
-                return "  \u89E3\u6790\u9519\u8BEF\uFF0C\u8BF7\u9000\u51FA\u540E\u91CD\u65B0\u8FDB\u5165\u9605\u8BFB\u3002";
-            else
-                return clearContent;
-        } else {
-            String String2;
-
-            if (getContent() == null || isVip() && key == null)
-                String2 = super.getBody();
-            else
-                String2 = getContent();
-            if (formattedBody == null)
-                formattedBody = com.clilystudio.netbook.hpay100.a.a.y(String2);
-            return formattedBody;
+            if (this.clearContent == null) {
+                return "  \u89e3\u6790\u9519\u8bef\uff0c\u8bf7\u9000\u51fa\u540e\u91cd\u65b0\u8fdb\u5165\u9605\u8bfb\u3002";
+            }
+            return this.clearContent;
         }
+        String string = this.getContent() == null || this.isVip() && this.key == null ? super.getBody() : this.getContent();
+        if (this.formattedBody == null) {
+            this.formattedBody = a.y(string);
+        }
+        return this.formattedBody;
     }
 
     public int getIndex() {
-        return mIndex;
+        return this.mIndex;
     }
 
     public String getKey() {
-        return key;
+        return this.key;
     }
 
-    public void setKey(String String1) {
-        key = String1;
+    public void setKey(String string) {
+        this.key = string;
     }
 
     public int getMaxIndex() {
-        return mMaxIndex;
+        return this.mMaxIndex;
     }
 
-    public void setMaxIndex(int int1) {
-        mMaxIndex = int1;
+    public void setMaxIndex(int n2) {
+        this.mMaxIndex = n2;
     }
 
     public int getStatus() {
-        return mStatus;
+        return this.mStatus;
     }
 
-    public void setStatus(int int1) {
-        mStatus = int1;
+    public void setStatus(int n2) {
+        this.mStatus = n2;
     }
 
     public String getTitle() {
-        return mTitle;
+        return this.mTitle;
     }
 
-    public void setTitle(String String1) {
-        mTitle = String1;
+    public void setTitle(String string) {
+        this.mTitle = string;
     }
 
     public boolean hasNext() {
-        if (mIndex < mMaxIndex)
+        if (this.mIndex < this.mMaxIndex) {
             return true;
-        else
-            return false;
+        }
+        return false;
     }
 
     public boolean hasPrevious() {
-        if (mIndex != 0)
+        if (this.mIndex != 0) {
             return true;
-        else
-            return false;
+        }
+        return false;
     }
 }

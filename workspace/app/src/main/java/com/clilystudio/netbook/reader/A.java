@@ -1,19 +1,19 @@
 package com.clilystudio.netbook.reader;
 
 import android.view.View;
-import android.view.View$OnClickListener;
 
 import com.clilystudio.netbook.model.Advert;
 
-final class A implements View$OnClickListener {
+final class A
+        implements View.OnClickListener {
+    private /* synthetic */ Advert a;
 
-    private Advert a;
-
-    A(o o1, Advert Advert2) {
-        a = Advert2;
+    A(o o2, Advert advert) {
+        this.a = advert;
     }
 
-    public final void onClick(View View1) {
-        a.processClick(View1);
+    @Override
+    public final void onClick(View view) {
+        this.a.processClick(view);
     }
 }

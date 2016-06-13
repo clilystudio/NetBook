@@ -5,31 +5,37 @@ import android.content.Intent;
 
 import com.clilystudio.netbook.model.NotificationItem;
 
-public class PostHotBinder extends OfficialNotifBinder {
-
+public class PostHotBinder
+        extends OfficialNotifBinder {
     public static final String LABEL = "post_hot";
-    public static final String MAIN_TEXT = "\u4F60\u7684\u5E16\u5B50\u88AB\u8BBE\u4E3A\u70ED\u95E8\u5566\uFF0C\u793E\u533A\u79BB\u7A7A\u865A\u5BC2\u5BDE\u51B7\u66F4\u8FDC\u4E86\u4E00\u70B9~";
-    public PostHotBinder(NotificationItem NotificationItem1) {
-        super(NotificationItem1);
+    public static final String MAIN_TEXT = "\u4f60\u7684\u5e16\u5b50\u88ab\u8bbe\u4e3a\u70ed\u95e8\u5566\uff0c\u793e\u533a\u79bb\u7a7a\u865a\u5bc2\u5bde\u51b7\u66f4\u8fdc\u4e86\u4e00\u70b9~";
+
+    public PostHotBinder(NotificationItem notificationItem) {
+        super(notificationItem);
     }
 
+    @Override
     protected int getIconRes() {
-        return getPostIcon();
+        return this.getPostIcon();
     }
 
-    public Intent getIntent(Context Context1) {
-        return getPostIntent(Context1, getItem().getMyPost());
+    @Override
+    public Intent getIntent(Context context) {
+        return this.getPostIntent(context, this.getItem().getMyPost());
     }
 
+    @Override
     public String getLabel() {
         return "post_hot";
     }
 
+    @Override
     public String getMainText() {
-        return "\u4F60\u7684\u5E16\u5B50\u88AB\u8BBE\u4E3A\u70ED\u95E8\u5566\uFF0C\u793E\u533A\u79BB\u7A7A\u865A\u5BC2\u5BDE\u51B7\u66F4\u8FDC\u4E86\u4E00\u70B9~";
+        return "\u4f60\u7684\u5e16\u5b50\u88ab\u8bbe\u4e3a\u70ed\u95e8\u5566\uff0c\u793e\u533a\u79bb\u7a7a\u865a\u5bc2\u5bde\u51b7\u66f4\u8fdc\u4e86\u4e00\u70b9~";
     }
 
+    @Override
     public String getSubText() {
-        return getItem().getMyPost().getTitle();
+        return this.getItem().getMyPost().getTitle();
     }
 }

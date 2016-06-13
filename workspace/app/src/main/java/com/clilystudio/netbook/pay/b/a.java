@@ -8,35 +8,30 @@ import com.clilystudio.netbook.model.ChargePlan;
 import com.clilystudio.netbook.model.User;
 
 public final class a {
-
     static {
         System.loadLibrary("mgpbase");
     }
 
     private Context a;
 
-    public a(Context Context1) {
-        String String2;
-        String String3;
-
-        a = Context1;
-        com.clilystudio.netbook.hpay100.a.a((Activity) Context1, "2000048", "35ea1842762811e5a076be3c3fd80617", "test_channel", "\u8FFD\u4E66\u795E\u5668", "4006502098");
-        String2 = "";
-        String3 = "";
+    public a(Context context) {
+        this.a = context;
+        com.clilystudio.netbook.hpay100.a.a((Activity) context, "2000048", "35ea1842762811e5a076be3c3fd80617", "test_channel", "\u8ffd\u4e66\u795e\u5668", "4006502098");
+        String string = "";
+        String string2 = "";
         if (am.e() != null && am.e().getUser() != null) {
-            User User4 = am.e().getUser();
-
-            String2 = User4.getId();
-            String3 = new StringBuilder().append(User4.getLv()).toString();
+            User user = am.e().getUser();
+            string = user.getId();
+            string2 = "" + user.getLv();
         }
-        com.clilystudio.netbook.hpay100.a.a(String2, "", String3);
+        com.clilystudio.netbook.hpay100.a.a(string, "", string2);
     }
 
-    static Context a(a a1) {
-        return a1.a;
+    static /* synthetic */ Context a(a a2) {
+        return a2.a;
     }
 
-    public final void a(ChargePlan ChargePlan1) {
-        new c(this, (Activity) a).b(new ChargePlan[]{ChargePlan1});
+    public final void a(ChargePlan chargePlan) {
+        new c(this, (Activity) this.a).b(chargePlan);
     }
 }

@@ -1,16 +1,17 @@
 package com.clilystudio.netbook.ui.ugcbook;
 
-import android.widget.PopupWindow$OnDismissListener;
+import android.widget.PopupWindow;
 
-final class ah implements PopupWindow$OnDismissListener {
+final class ah
+        implements PopupWindow.OnDismissListener {
+    private /* synthetic */ UGCMainActivity a;
 
-    private UGCMainActivity a;
-
-    ah(UGCMainActivity UGCMainActivity1) {
-        a = UGCMainActivity1;
+    ah(UGCMainActivity uGCMainActivity) {
+        this.a = uGCMainActivity;
     }
 
+    @Override
     public final void onDismiss() {
-        a.e("\u7B5B\u9009");
+        this.a.e("\u7b5b\u9009");
     }
 }

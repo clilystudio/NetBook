@@ -1,84 +1,83 @@
 package com.clilystudio.netbook.ui;
 
+import android.text.TextUtils;
 import android.widget.Filter;
-import android.widget.Filter$FilterResults;
 
+import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.model.AutoCompleteRoot;
 import com.clilystudio.netbook.widget.SearchFixListView;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
-final class bQ extends Filter {
+final class bQ
+        extends Filter {
+    private /* synthetic */ SearchActivity$SearchPromptAdapter a;
 
-    private SearchActivity$SearchPromptAdapter a;
-
-    bQ(SearchActivity$SearchPromptAdapter SearchPromptAdapter1, byte byte2) {
-        this(SearchPromptAdapter1);
+    private bQ(SearchActivity$SearchPromptAdapter searchPromptAdapter) {
+        this.a = searchPromptAdapter;
     }
 
-    private bQ(SearchActivity$SearchPromptAdapter SearchPromptAdapter1) {
-        a = SearchPromptAdapter1;
+    /* synthetic */ bQ(SearchActivity$SearchPromptAdapter searchPromptAdapter, byte by) {
+        this(searchPromptAdapter);
     }
 
-    protected final Filter$FilterResults performFiltering(CharSequence CharSequence1) {
-        Object Object2 = SearchActivity.f(a.a).getText().toString();
-        Object Object3 = new ArrayList();
-        Filter$FilterResults FilterResults6;
-
-        ((List) Object3).add(Object2);
-        ((List) Object3).add(CharSequence1.toString());
-        if (!android.text.TextUtils.isEmpty((CharSequence) Object2)) {
-            AutoCompleteRoot AutoCompleteRoot8;
-
+    /*
+     * Enabled aggressive block sorting
+     * Enabled unnecessary exception pruning
+     * Enabled aggressive exception aggregation
+     */
+    @Override
+    protected final Filter.FilterResults performFiltering(CharSequence charSequence) {
+        String string = SearchActivity.f(this.a.a).getText().toString();
+        ArrayList<String> arrayList = new ArrayList<String>();
+        arrayList.add(string);
+        arrayList.add(charSequence.toString());
+        if (!TextUtils.isEmpty(string)) {
+            AutoCompleteRoot autoCompleteRoot;
             try {
-                AutoCompleteRoot AutoCompleteRoot11;
-
-                com.clilystudio.netbook.api.b.a();
-                AutoCompleteRoot11 = com.clilystudio.netbook.api.b.b().N((String) Object2);
-            } catch (Exception Exception7) {
-                Exception7.printStackTrace();
-                AutoCompleteRoot8 = null;
+                AutoCompleteRoot autoCompleteRoot2;
+                b.a();
+                autoCompleteRoot = autoCompleteRoot2 = b.b().N(string);
+            } catch (Exception var7_7) {
+                var7_7.printStackTrace();
+                autoCompleteRoot = null;
             }
-            if (AutoCompleteRoot8 != null && AutoCompleteRoot8.getKeywords() != null)
-                ((List) Object3).addAll(0, (Collection) AutoCompleteRoot8.getKeywords());
+            if (autoCompleteRoot != null && autoCompleteRoot.getKeywords() != null) {
+                arrayList.addAll(0, autoCompleteRoot.getKeywords());
+            }
         }
-        FilterResults6 = new Filter$FilterResults();
-        FilterResults6.values = Object3;
-        FilterResults6.count = ((List) Object3).size();
-        return FilterResults6;
+        Filter.FilterResults filterResults = new Filter.FilterResults();
+        filterResults.values = arrayList;
+        filterResults.count = arrayList.size();
+        return filterResults;
     }
 
-    protected final void publishResults(CharSequence CharSequence1, Filter$FilterResults FilterResults2) {
-        List List3 = (List) FilterResults2.values;
-
-        if (List3 != null) {
-            int int4 = List3.size();
-
-            if (int4 >= 2) {
-                String String5 = (String) List3.get(int4 - 2);
-                Object Object6;
-                SearchFixListView SearchFixListView8;
-                int int9;
-
-                if (int4 > 2 && !com.clilystudio.netbook.ui.SearchActivity.c(a.a, String5))
-                    Object6 = List3.subList(0, int4 - 2);
-                else
-                    Object6 = new ArrayList();
-                SearchActivity$SearchPromptAdapter.a(a, (List) Object6);
-                if (SearchActivity$SearchPromptAdapter.a(a).isEmpty())
-                    a.notifyDataSetInvalidated();
-                else
-                    a.notifyDataSetChanged();
-                SearchFixListView8 = SearchActivity.k(a.a);
-                if (SearchActivity$SearchPromptAdapter.a(a).isEmpty())
-                    int9 = 8;
-                else
-                    int9 = 0;
-                SearchFixListView8.setVisibility(int9);
-                return;
-            }
+    /*
+     * Enabled aggressive block sorting
+     */
+    @Override
+    protected final void publishResults(CharSequence charSequence, Filter.FilterResults filterResults) {
+        void var6_7;
+        int n;
+        List list = (List) filterResults.values;
+        if (list == null || (n = list.size()) < 2) {
+            return;
         }
+        String string = (String) list.get(n - 2);
+        if (n > 2 && !SearchActivity.c(this.a.a, string)) {
+            List list2 = list.subList(0, n - 2);
+        } else {
+            ArrayList arrayList = new ArrayList();
+        }
+        SearchActivity$SearchPromptAdapter.a(this.a, (List) var6_7);
+        if (SearchActivity$SearchPromptAdapter.a(this.a).isEmpty()) {
+            this.a.notifyDataSetInvalidated();
+        } else {
+            this.a.notifyDataSetChanged();
+        }
+        SearchFixListView searchFixListView = SearchActivity.k(this.a.a);
+        int n2 = SearchActivity$SearchPromptAdapter.a(this.a).isEmpty() ? 8 : 0;
+        searchFixListView.setVisibility(n2);
     }
 }

@@ -3,46 +3,50 @@ package com.clilystudio.netbook.util.adutil;
 import android.content.Context;
 import android.view.View;
 
-import com.umeng.a.b;
+import com.clilystudio.netbook.hpay100.a.a;
 
-public class BaiduShelfAdContainer$BaiduAdvert extends BaseShelfAd {
-// Error: Internal #201: 
-// The following method may not be correct.
-
-    public void baiduRecord(View View1) {
+public class BaiduShelfAdContainer$BaiduAdvert
+        extends BaseShelfAd {
+    public void baiduRecord(View view) {
+        k.a(BaiduShelfAdContainer.a(), "recordImpression", View.class, this.response, view);
     }
 
-    public String getDownloadTitle(Context Context1) {
-        String String2 = (String) k.a(BaiduShelfAdContainer.a(), "getTitle", null, response, new Object[0]);
-
-        if (com.clilystudio.netbook.hpay100.a.a.s(Context1))
-            return String.format(Context1.getString(2131034507), new Object[]{String2});
-        else
-            return String.format(Context1.getString(2131034506), new Object[]{String2});
+    @Override
+    public String getDownloadTitle(Context context) {
+        String string = (String) k.a(BaiduShelfAdContainer.a(), "getTitle", null, this.response, new Object[0]);
+        if (a.s(context)) {
+            return String.format(context.getString(2131034507), string);
+        }
+        return String.format(context.getString(2131034506), string);
     }
 
+    @Override
     public String getFullImg() {
-        return getImg();
+        return this.getImg();
     }
 
+    @Override
     public boolean isApk() {
-        return ((Boolean) k.a(BaiduShelfAdContainer.a(), "isDownloadApp", null, response, new Object[0])).booleanValue();
-    }
-// Error: Internal #201: 
-// The following method may not be correct.
-
-    public void onAdClick(View View1) {
+        return (Boolean) k.a(BaiduShelfAdContainer.a(), "isDownloadApp", null, this.response, new Object[0]);
     }
 
-    public void recordClick(View View1) {
-        b.a(View1.getContext(), "ad_baidu_shelf_confirm", getPosition());
+    @Override
+    public void onAdClick(View view) {
+        k.a(BaiduShelfAdContainer.a(), "handleClick", View.class, this.response, view);
     }
 
-    public void recordDownload(Context Context1) {
-        b.a(Context1, "ad_baidu_shelf_download", getPosition());
+    @Override
+    public void recordClick(View view) {
+        b.a(view.getContext(), "ad_baidu_shelf_confirm", this.getPosition());
     }
 
-    public void recordShow(Context Context1) {
-        b.a(Context1, "ad_baidu_shelf_show", getPosition());
+    @Override
+    public void recordDownload(Context context) {
+        b.a(context, "ad_baidu_shelf_download", this.getPosition());
+    }
+
+    @Override
+    public void recordShow(Context context) {
+        b.a(context, "ad_baidu_shelf_show", this.getPosition());
     }
 }

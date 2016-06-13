@@ -3,46 +3,48 @@ package com.clilystudio.netbook.widget;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.AbsListView;
-import android.widget.AbsListView$OnScrollListener;
 import android.widget.ListView;
 
-public class ScrollLoadListView extends ListView implements AbsListView$OnScrollListener {
-
+public class ScrollLoadListView
+        extends ListView
+        implements AbsListView.OnScrollListener {
     private av a;
     private boolean b;
-    public ScrollLoadListView(Context Context1, AttributeSet AttributeSet2, int int3) {
-        super(Context1, AttributeSet2, int3);
-        setOnScrollListener(this);
+
+    public ScrollLoadListView(Context context) {
+        super(context);
+        this.setOnScrollListener(this);
     }
 
-    public ScrollLoadListView(Context Context1) {
-        super(Context1);
-        setOnScrollListener(this);
+    public ScrollLoadListView(Context context, AttributeSet attributeSet) {
+        super(context, attributeSet);
+        this.setOnScrollListener(this);
     }
 
-    public ScrollLoadListView(Context Context1, AttributeSet AttributeSet2) {
-        super(Context1, AttributeSet2);
-        setOnScrollListener(this);
+    public ScrollLoadListView(Context context, AttributeSet attributeSet, int n) {
+        super(context, attributeSet, n);
+        this.setOnScrollListener(this);
     }
 
-    public void onScroll(AbsListView AbsListView1, int int2, int int3, int int4) {
-        if (a != null) {
-            boolean boolean5;
-
-            if (int4 > 0 && int2 + int3 >= int4 - 1)
-                boolean5 = true;
-            else
-                boolean5 = false;
-            b = boolean5;
+    /*
+     * Enabled aggressive block sorting
+     */
+    @Override
+    public void onScroll(AbsListView absListView, int n, int n2, int n3) {
+        if (this.a != null) {
+            boolean bl = n3 > 0 && n + n2 >= n3 - 1;
+            this.b = bl;
         }
     }
 
-    public void onScrollStateChanged(AbsListView AbsListView1, int int2) {
-        if (a != null && b && int2 == 0)
-            a.a();
+    @Override
+    public void onScrollStateChanged(AbsListView absListView, int n) {
+        if (this.a != null && this.b && n == 0) {
+            this.a.a();
+        }
     }
 
-    public void setOnLastItemListener(av av1) {
-        a = av1;
+    public void setOnLastItemListener(av av2) {
+        this.a = av2;
     }
 }

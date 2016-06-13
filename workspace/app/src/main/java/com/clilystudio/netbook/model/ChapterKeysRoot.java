@@ -2,49 +2,52 @@ package com.clilystudio.netbook.model;
 
 import java.io.Serializable;
 
-public class ChapterKeysRoot implements Serializable {
-
+public class ChapterKeysRoot
+        implements Serializable {
     private ChapterKeysRoot$ChapterKey[] keys;
     private boolean ok;
 
-    public String getKey(String String1) {
-        if (keys != null && keys.length != 0) {
-            ChapterKeysRoot$ChapterKey[] ChapterKey_1darray2 = keys;
-            int int3 = ChapterKey_1darray2.length;
-            int int4 = 0;
-
-            while (int4 < int3) {
-                ChapterKeysRoot$ChapterKey ChapterKey5 = ChapterKey_1darray2[int4];
-
-                if (ChapterKey5.get_id().equals(String1))
-                    return ChapterKey5.getKey();
-                else
-                    ++int4;
+    /*
+     * Enabled force condition propagation
+     * Lifted jumps to return sites
+     */
+    public String getKey(String string) {
+        if (this.keys == null || this.keys.length == 0) {
+            return null;
+        }
+        ChapterKeysRoot$ChapterKey[] arrchapterKeysRoot$ChapterKey = this.keys;
+        int n = arrchapterKeysRoot$ChapterKey.length;
+        int n2 = 0;
+        while (n2 < n) {
+            ChapterKeysRoot$ChapterKey chapterKeysRoot$ChapterKey = arrchapterKeysRoot$ChapterKey[n2];
+            if (chapterKeysRoot$ChapterKey.get_id().equals(string)) {
+                return chapterKeysRoot$ChapterKey.getKey();
             }
+            ++n2;
         }
         return null;
     }
 
     public int getKeyLength() {
-        if (keys == null)
+        if (this.keys == null) {
             return 0;
-        else
-            return keys.length;
+        }
+        return this.keys.length;
     }
 
     public ChapterKeysRoot$ChapterKey[] getKeys() {
-        return keys;
+        return this.keys;
     }
 
-    public void setKeys(ChapterKeysRoot$ChapterKey[] ChapterKey_1darray1) {
-        keys = ChapterKey_1darray1;
+    public void setKeys(ChapterKeysRoot$ChapterKey[] arrchapterKeysRoot$ChapterKey) {
+        this.keys = arrchapterKeysRoot$ChapterKey;
     }
 
     public boolean isOk() {
-        return ok;
+        return this.ok;
     }
 
-    public void setOk(boolean boolean1) {
-        ok = boolean1;
+    public void setOk(boolean bl) {
+        this.ok = bl;
     }
 }

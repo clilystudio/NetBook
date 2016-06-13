@@ -6,33 +6,36 @@ import android.view.ViewGroup;
 
 import com.clilystudio.netbook.reader.o;
 
-final class h extends PagerAdapter {
+final class h
+        extends PagerAdapter {
+    private /* synthetic */ ReaderRandomActivity a;
 
-    private ReaderRandomActivity a;
-
-    h(ReaderRandomActivity ReaderRandomActivity1) {
-        a = ReaderRandomActivity1;
+    h(ReaderRandomActivity readerRandomActivity) {
+        this.a = readerRandomActivity;
     }
 
-    public final void destroyItem(ViewGroup ViewGroup1, int int2, Object Object3) {
-        ViewGroup1.removeView((View) Object3);
+    @Override
+    public final void destroyItem(ViewGroup viewGroup, int n, Object object) {
+        viewGroup.removeView((View) object);
     }
 
+    @Override
     public final int getCount() {
         return 3;
     }
 
-    public final Object instantiateItem(ViewGroup ViewGroup1, int int2) {
-        o o3 = ReaderRandomActivity.i(a)[int2];
-
-        ViewGroup1.addView(o3.i());
-        return o3.i();
+    @Override
+    public final Object instantiateItem(ViewGroup viewGroup, int n2) {
+        o o2 = ReaderRandomActivity.i(this.a)[n2];
+        viewGroup.addView(o2.i());
+        return o2.i();
     }
 
-    public final boolean isViewFromObject(View View1, Object Object2) {
-        if (View1 == Object2)
+    @Override
+    public final boolean isViewFromObject(View view, Object object) {
+        if (view == object) {
             return true;
-        else
-            return false;
+        }
+        return false;
     }
 }

@@ -1,18 +1,18 @@
 package com.clilystudio.netbook.reader;
 
 import android.view.View;
-import android.view.View$OnClickListener;
 
-final class cU implements View$OnClickListener {
+final class cU
+        implements View.OnClickListener {
+    private /* synthetic */ SettingWidget a;
 
-    private SettingWidget a;
-
-    cU(SettingWidget SettingWidget1) {
-        a = SettingWidget1;
+    cU(SettingWidget settingWidget) {
+        this.a = settingWidget;
     }
 
-    public final void onClick(View View1) {
-        SettingWidget.b(a).e();
-        SettingWidget.a(a);
+    @Override
+    public final void onClick(View view) {
+        SettingWidget.b(this.a).e();
+        SettingWidget.a(this.a);
     }
 }

@@ -5,31 +5,36 @@ import android.content.Intent;
 
 import com.clilystudio.netbook.model.NotificationItem;
 
-public class PostLikeBinder extends NotifBinder {
-
+public class PostLikeBinder
+        extends NotifBinder {
     public static final String LABEL = "post_like";
 
-    public PostLikeBinder(NotificationItem NotificationItem1) {
-        super(NotificationItem1);
+    public PostLikeBinder(NotificationItem notificationItem) {
+        super(notificationItem);
     }
 
+    @Override
     protected int getIconRes() {
-        return getPostIcon();
+        return this.getPostIcon();
     }
 
-    public Intent getIntent(Context Context1) {
-        return getPostIntent(Context1, getItem().getMyPost());
+    @Override
+    public Intent getIntent(Context context) {
+        return this.getPostIntent(context, this.getItem().getMyPost());
     }
 
+    @Override
     public String getLabel() {
         return "post_like";
     }
 
+    @Override
     public String getMainText() {
-        return new StringBuilder().append(getItem().getTrigger().getNickname()).append(" \u540C\u611F\u4E86\u4F60\u7684\u8BDD\u9898").toString();
+        return this.getItem().getTrigger().getNickname() + " \u540c\u611f\u4e86\u4f60\u7684\u8bdd\u9898";
     }
 
+    @Override
     public String getSubText() {
-        return getItem().getMyPost().getTitle();
+        return this.getItem().getMyPost().getTitle();
     }
 }

@@ -9,72 +9,76 @@ import com.clilystudio.netbook.model.UGCBookListRoot$UGCBook;
 import com.clilystudio.netbook.ui.BaseActivity;
 
 import java.util.Arrays;
-import java.util.Collection;
-import java.util.Iterator;
 
-final class e extends com.clilystudio.netbook.a.e {
+final class e
+        extends com.clilystudio.netbook.a.e<String, Void, UGCBookListRoot> {
+    private /* synthetic */ AbsUGCListFragment a;
 
-    private AbsUGCListFragment a;
-
-    e(AbsUGCListFragment AbsUGCListFragment1, byte byte2) {
-        this(AbsUGCListFragment1);
+    private e(AbsUGCListFragment absUGCListFragment) {
+        this.a = absUGCListFragment;
     }
 
-    private e(AbsUGCListFragment AbsUGCListFragment1) {
-        a = AbsUGCListFragment1;
+    /* synthetic */ e(AbsUGCListFragment absUGCListFragment, byte by) {
+        this(absUGCListFragment);
     }
 
-    private transient UGCBookListRoot a() {
+    /*
+     * Enabled force condition propagation
+     * Lifted jumps to return sites
+     */
+    private /* varargs */ UGCBookListRoot a() {
+        Account account = am.a((BaseActivity) this.a.getActivity());
+        if (account == null) return null;
         try {
-            Account Account2 = am.a((Activity) (BaseActivity) a.getActivity());
-        } catch (Exception Exception1) {
-            Exception1.printStackTrace();
+            return this.a.a(account, 0);
+        } catch (Exception var1_3) {
+            var1_3.printStackTrace();
         }
         return null;
     }
 
-    protected final Object doInBackground(Object[] Object_1darray1) {
-        return a();
+    /*
+     * Exception decompiling
+     */
+    @Override
+    protected final /* synthetic */ Object doInBackground(Object[] var1_1) {
+        // This method has failed to decompile.  When submitting a bug report, please provide this stack trace, and (if you hold appropriate legal rights) the relevant class file.
+        // java.lang.ArrayIndexOutOfBoundsException
+        throw new IllegalStateException("Decompilation failed");
     }
 
-    protected final void onPostExecute(Object Object1) {
-        Object Object2 = (UGCBookListRoot) Object1;
-
-        super.onPostExecute(Object2);
-        a.j.setVisibility(8);
-        a.d.setVisibility(8);
-        a.e.setVisibility(8);
-        a.a.n();
-        a.a.setOnLastItemVisibleListener(AbsUGCListFragment.a(a));
-        if (Object2 != null) {
-            if (((UGCBookListRoot) Object2).isOk()) {
-                UGCBookListRoot$UGCBook[] UGCBook_1darray3;
-                int int4;
-                Iterator Iterator5;
-
-                a.i.clear();
-                UGCBook_1darray3 = ((UGCBookListRoot) Object2).getBookLists();
-                int4 = UGCBook_1darray3.length;
-                Iterator5 = Arrays.asList(UGCBook_1darray3).iterator();
-                while (Iterator5.hasNext()) {
-                    UGCBookListRoot$UGCBook UGCBook6 = (UGCBookListRoot$UGCBook) Iterator5.next();
-
-                    if (UGCBook6 == null)
-                        continue;
-                    a.i.add(UGCBook6);
+    @Override
+    protected final /* synthetic */ void onPostExecute(Object object) {
+        UGCBookListRoot uGCBookListRoot = (UGCBookListRoot) object;
+        super.onPostExecute(uGCBookListRoot);
+        this.a.j.setVisibility(8);
+        this.a.d.setVisibility(8);
+        this.a.e.setVisibility(8);
+        this.a.a.n();
+        this.a.a.setOnLastItemVisibleListener(AbsUGCListFragment.a(this.a));
+        if (uGCBookListRoot != null) {
+            if (uGCBookListRoot.isOk()) {
+                this.a.i.clear();
+                UGCBookListRoot$UGCBook[] arruGCBookListRoot$UGCBook = uGCBookListRoot.getBookLists();
+                int n = arruGCBookListRoot$UGCBook.length;
+                for (UGCBookListRoot$UGCBook uGCBookListRoot$UGCBook : Arrays.asList(arruGCBookListRoot$UGCBook)) {
+                    if (uGCBookListRoot$UGCBook == null) continue;
+                    this.a.i.add(uGCBookListRoot$UGCBook);
                 }
-                a.c.a((Collection) a.i);
-                AbsUGCListFragment.a(a, int4);
-                if (int4 < 10) {
-                    a.a.setOnLastItemVisibleListener(null);
-                    if (int4 == 0) {
-                        a.j.setVisibility(0);
-                        a.j.setText((CharSequence) a.c());
+                this.a.c.a(this.a.i);
+                AbsUGCListFragment.a(this.a, n);
+                if (n < 10) {
+                    this.a.a.setOnLastItemVisibleListener(null);
+                    if (n == 0) {
+                        this.a.j.setVisibility(0);
+                        this.a.j.setText(this.a.c());
                     }
                 }
-            } else
-                com.clilystudio.netbook.util.e.a((Activity) a.getActivity(), "\u52A0\u8F7D\u5931\u8D25\uFF0C\u8BF7\u4E0B\u62C9\u5237\u65B0\u91CD\u8BD5");
-        } else
-            com.clilystudio.netbook.util.e.a((Activity) a.getActivity(), "\u52A0\u8F7D\u5931\u8D25\uFF0C\u8BF7\u68C0\u67E5\u7F51\u7EDC\u6216\u4E0B\u62C9\u5237\u65B0\u91CD\u8BD5");
+                return;
+            }
+            com.clilystudio.netbook.util.e.a((Activity) this.a.getActivity(), "\u52a0\u8f7d\u5931\u8d25\uff0c\u8bf7\u4e0b\u62c9\u5237\u65b0\u91cd\u8bd5");
+            return;
+        }
+        com.clilystudio.netbook.util.e.a((Activity) this.a.getActivity(), "\u52a0\u8f7d\u5931\u8d25\uff0c\u8bf7\u68c0\u67e5\u7f51\u7edc\u6216\u4e0b\u62c9\u5237\u65b0\u91cd\u8bd5");
     }
 }

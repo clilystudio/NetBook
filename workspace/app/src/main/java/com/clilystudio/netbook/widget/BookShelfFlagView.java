@@ -4,71 +4,77 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
-import android.view.ViewGroup$LayoutParams;
+import android.view.ViewGroup;
 import android.widget.TextView;
 
-public class BookShelfFlagView extends TextView {
-
+public class BookShelfFlagView
+        extends TextView {
+    private final Drawable b;
     private int a;
-    private Drawable b;     // final access specifier removed
-    public BookShelfFlagView(Context Context1, AttributeSet AttributeSet2) {
-        super(Context1, AttributeSet2);
-        setVisibility(8);
-        setTextColor(-1);
-        setGravity(17);
-        setTextSize((float) getResources().getDimensionPixelSize(2131099774));
-        b = getResources().getDrawable(2130838154);
+
+    public BookShelfFlagView(Context context, AttributeSet attributeSet) {
+        super(context, attributeSet);
+        this.setVisibility(8);
+        this.setTextColor(-1);
+        this.setGravity(17);
+        this.setTextSize(this.getResources().getDimensionPixelSize(2131099774));
+        this.b = this.getResources().getDrawable(2130838154);
     }
 
     private void a() {
-        Resources Resources1 = getResources();
-        int int2 = Resources1.getDimensionPixelSize(2131099697);
-        int int3 = Resources1.getDimensionPixelSize(2131099696);
-        ViewGroup$LayoutParams LayoutParams4 = getLayoutParams();
-
-        LayoutParams4.width = int2;
-        LayoutParams4.height = int3;
+        Resources resources = this.getResources();
+        int n = resources.getDimensionPixelSize(2131099697);
+        int n2 = resources.getDimensionPixelSize(2131099696);
+        ViewGroup.LayoutParams layoutParams = this.getLayoutParams();
+        layoutParams.width = n;
+        layoutParams.height = n2;
     }
 
-    protected void onMeasure(int int1, int int2) {
-        if (a != 3)
-            super.onMeasure(int1, int2);
-        else
-            setMeasuredDimension(b.getIntrinsicWidth(), b.getIntrinsicHeight());
-    }
-
-    public void setType(int int1) {
-        a = int1;
-        switch (a) {
-            case 1:
-                a();
-                setBackgroundResource(2130838153);
-                setText((CharSequence) "\u63A8\u5E7F");
-                break;
-            case 2:
-                a();
-                setBackgroundResource(2130838142);
-                setText((CharSequence) "\u516C\u544A");
-                break;
-            case 3:
-                ViewGroup$LayoutParams LayoutParams2 = getLayoutParams();
-
-                LayoutParams2.width = -2;
-                LayoutParams2.height = -2;
-                setText((CharSequence) "");
-                setBackgroundResource(2130838154);
-                break;
-            case 4:
-                a();
-                setBackgroundResource(2130838152);
-                setText((CharSequence) "\u5F85\u6740");
-                break;
-            default:
-                break;
+    @Override
+    protected void onMeasure(int n, int n2) {
+        if (this.a != 3) {
+            super.onMeasure(n, n2);
+            return;
         }
-        if (a == 0)
-            setVisibility(4);
-        else
-            setVisibility(0);
+        this.setMeasuredDimension(this.b.getIntrinsicWidth(), this.b.getIntrinsicHeight());
+    }
+
+    /*
+     * Enabled aggressive block sorting
+     */
+    public void setType(int n) {
+        this.a = n;
+        switch (this.a) {
+            case 1: {
+                this.a();
+                this.setBackgroundResource(2130838153);
+                this.setText("\u63a8\u5e7f");
+                break;
+            }
+            case 2: {
+                this.a();
+                this.setBackgroundResource(2130838142);
+                this.setText("\u516c\u544a");
+                break;
+            }
+            case 3: {
+                ViewGroup.LayoutParams layoutParams = this.getLayoutParams();
+                layoutParams.width = -2;
+                layoutParams.height = -2;
+                this.setText("");
+                this.setBackgroundResource(2130838154);
+                break;
+            }
+            case 4: {
+                this.a();
+                this.setBackgroundResource(2130838152);
+                this.setText("\u5f85\u6740");
+            }
+        }
+        if (this.a == 0) {
+            this.setVisibility(4);
+            return;
+        }
+        this.setVisibility(0);
     }
 }

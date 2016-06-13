@@ -1,24 +1,26 @@
 package com.clilystudio.netbook.ui.home;
 
 import android.os.Handler;
+import android.widget.ListView;
 
 import com.clilystudio.netbook.adapter.HomeShelfAdapter;
 import com.clilystudio.netbook.event.BookShelfRefreshEvent;
 import com.clilystudio.netbook.event.i;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 
-final class E implements k {
+final class E
+        implements k<ListView> {
+    final /* synthetic */ HomeShelfFragment a;
 
-    HomeShelfFragment a;     // final access specifier removed
-
-    E(HomeShelfFragment HomeShelfFragment1) {
-        a = HomeShelfFragment1;
+    E(HomeShelfFragment homeShelfFragment) {
+        this.a = homeShelfFragment;
     }
 
-    public final void a(PullToRefreshBase PullToRefreshBase1) {
+    @Override
+    public final void a(PullToRefreshBase<ListView> pullToRefreshBase) {
         i.a().c(new BookShelfRefreshEvent());
-        HomeShelfFragment.e(a);
+        HomeShelfFragment.e(this.a);
         HomeShelfAdapter.a = true;
-        new Handler().postDelayed((Runnable) new F(this), 1000L);
+        new Handler().postDelayed(new F(this), 1000);
     }
 }

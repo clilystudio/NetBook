@@ -1,26 +1,22 @@
 package com.clilystudio.netbook.ui;
 
+import com.koushikdutta.async.http.a.a;
+
 import org.apache.http.NameValuePair;
 
-import java.util.Iterator;
+final class cq
+        implements r {
+    private /* synthetic */ String[] a;
 
-final class cq implements r {
-
-    private String[] a;
-
-    cq(WifiActivity WifiActivity1, String[] String_1darray2) {
-        a = String_1darray2;
+    cq(WifiActivity wifiActivity, String[] arrstring) {
+        this.a = arrstring;
     }
 
-    public final void a(h h1, l l2) {
-        Iterator Iterator3 = ((k) h1.b_()).b().iterator();
-
-        while (Iterator3.hasNext()) {
-            NameValuePair NameValuePair4 = (NameValuePair) Iterator3.next();
-
-            if (!"filename".equals(NameValuePair4.getName()))
-                continue;
-            a[0] = NameValuePair4.getValue();
+    @Override
+    public final void a(h h2, l l2) {
+        for (NameValuePair nameValuePair : ((k) h2.b_()).b()) {
+            if (!"filename".equals(nameValuePair.getName())) continue;
+            this.a[0] = nameValuePair.getValue();
         }
         l2.a("finish");
     }

@@ -6,20 +6,20 @@ import android.content.Intent;
 
 import com.clilystudio.netbook.reader.o;
 
-final class F extends BroadcastReceiver {
+final class F
+        extends BroadcastReceiver {
+    private /* synthetic */ ReaderRandomActivity a;
 
-    private ReaderRandomActivity a;
-
-    F(ReaderRandomActivity ReaderRandomActivity1) {
-        a = ReaderRandomActivity1;
+    F(ReaderRandomActivity readerRandomActivity) {
+        this.a = readerRandomActivity;
     }
 
-    public final void onReceive(Context Context1, Intent Intent2) {
-        o[] o_1darray3 = ReaderRandomActivity.i(a);
-        int int4 = o_1darray3.length;
-        int int5;
-
-        for (int5 = 0; int5 < int4; ++int5)
-            o_1darray3[int5].k();
+    @Override
+    public final void onReceive(Context context, Intent intent) {
+        o[] arro = ReaderRandomActivity.i(this.a);
+        int n2 = arro.length;
+        for (int i = 0; i < n2; ++i) {
+            arro[i].k();
+        }
     }
 }

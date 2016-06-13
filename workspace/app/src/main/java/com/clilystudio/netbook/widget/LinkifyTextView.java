@@ -9,19 +9,19 @@ import com.clilystudio.netbook.ui.bd;
 import com.clilystudio.netbook.ui.be;
 import com.clilystudio.netbook.ui.by;
 
-public class LinkifyTextView extends TextView {
-
-    public LinkifyTextView(Context Context1, AttributeSet AttributeSet2) {
-        super(Context1, AttributeSet2);
+public class LinkifyTextView
+        extends TextView {
+    public LinkifyTextView(Context context, AttributeSet attributeSet) {
+        super(context, attributeSet);
     }
 
-    public void setLinkifyText(String String1, boolean boolean2) {
-        if (boolean2) {
-            setText((CharSequence) ((be) new by(getContext(), String1)).b());
-            setMovementMethod((MovementMethod) new bd());
-        } else {
-            setText((CharSequence) new be(getContext(), String1).b());
-            setMovementMethod((MovementMethod) new bd());
+    public void setLinkifyText(String string, boolean bl) {
+        if (bl) {
+            this.setText(new by(this.getContext(), string).b());
+            this.setMovementMethod((MovementMethod) ((Object) new bd()));
+            return;
         }
+        this.setText(new be(this.getContext(), string).b());
+        this.setMovementMethod((MovementMethod) ((Object) new bd()));
     }
 }

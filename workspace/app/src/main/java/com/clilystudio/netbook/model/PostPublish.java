@@ -1,7 +1,6 @@
 package com.clilystudio.netbook.model;
 
 public class PostPublish {
-
     private String _id;
     private String code;
     private String msg;
@@ -9,42 +8,42 @@ public class PostPublish {
     private String postId;
 
     public String getCode() {
-        return code;
+        return this.code;
     }
 
-    public void setCode(String String1) {
-        code = String1;
+    public void setCode(String string) {
+        this.code = string;
     }
 
     public String getMsg() {
-        return msg;
+        return this.msg;
     }
 
-    public void setMsg(String String1) {
-        msg = String1;
+    public void setMsg(String string) {
+        this.msg = string;
     }
 
     public String getPostId() {
-        return postId;
+        return this.postId;
     }
 
-    public void setPostId(String String1) {
-        postId = String1;
+    public void setPostId(String string) {
+        this.postId = string;
     }
 
     public String get_id() {
-        return _id;
+        return this._id;
     }
 
-    public void set_id(String String1) {
-        _id = String1;
+    public void set_id(String string) {
+        this._id = string;
     }
 
     public boolean isOk() {
-        return ok;
+        return this.ok;
     }
 
-    public void setOk(boolean boolean1) {
-        ok = boolean1;
+    public void setOk(boolean bl) {
+        this.ok = bl;
     }
 }

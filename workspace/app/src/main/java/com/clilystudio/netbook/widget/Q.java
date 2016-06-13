@@ -1,25 +1,31 @@
 package com.clilystudio.netbook.widget;
 
+import android.content.Context;
 import android.support.design.widget.am;
 import android.view.View;
-import android.view.View$OnClickListener;
 
 import com.clilystudio.netbook.model.Game;
 
-final class Q implements View$OnClickListener {
+final class Q
+        implements View.OnClickListener {
+    private /* synthetic */ Game a;
+    private /* synthetic */ GameMicroLayoutItemView b;
 
-    private Game a;
-    private GameMicroLayoutItemView b;
-    Q(GameMicroLayoutItemView GameMicroLayoutItemView1, Game Game2) {
-        b = GameMicroLayoutItemView1;
-        a = Game2;
+    Q(GameMicroLayoutItemView gameMicroLayoutItemView, Game game) {
+        this.b = gameMicroLayoutItemView;
+        this.a = game;
     }
 
-    public final void onClick(View View1) {
-        if (b.a)
-            com.umeng.a.b.a(b.getContext(), "micro_game_continue_click", a.getName());
-        else
-            com.umeng.a.b.a(b.getContext(), "micro_game_play_click", a.getName());
-        am.a(b.getContext(), a);
+    /*
+     * Enabled aggressive block sorting
+     */
+    @Override
+    public final void onClick(View view) {
+        if (this.b.a) {
+            b.a(this.b.getContext(), "micro_game_continue_click", this.a.getName());
+        } else {
+            b.a(this.b.getContext(), "micro_game_play_click", this.a.getName());
+        }
+        am.a((Context) this.b.getContext(), (Game) this.a);
     }
 }

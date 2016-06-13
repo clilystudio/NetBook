@@ -2,48 +2,54 @@ package com.clilystudio.netbook.ui;
 
 import android.app.Activity;
 
+import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.model.BookRankRoot;
+import com.clilystudio.netbook.util.e;
 
 import java.io.IOException;
 
-final class aO extends com.clilystudio.netbook.a.e {
+final class aO
+        extends com.clilystudio.netbook.a.e<Void, Void, BookRankRoot> {
+    private /* synthetic */ BookRankListActivity a;
 
-    private BookRankListActivity a;
-
-    aO(BookRankListActivity BookRankListActivity1, byte byte2) {
-        this(BookRankListActivity1);
+    private aO(BookRankListActivity bookRankListActivity) {
+        this.a = bookRankListActivity;
     }
 
-    private aO(BookRankListActivity BookRankListActivity1) {
-        a = BookRankListActivity1;
+    /* synthetic */ aO(BookRankListActivity bookRankListActivity, byte by) {
+        this(bookRankListActivity);
     }
 
-    private transient BookRankRoot a() {
-        BookRankRoot BookRankRoot2;
-
+    private /* varargs */ BookRankRoot a() {
         try {
-            BookRankRoot2 = com.clilystudio.netbook.api.b.b().d();
-        } catch (IOException IOException1) {
-            IOException1.printStackTrace();
+            BookRankRoot bookRankRoot = b.b().d();
+            return bookRankRoot;
+        } catch (IOException var1_2) {
+            var1_2.printStackTrace();
             return null;
         }
-        return BookRankRoot2;
     }
 
-    protected final Object doInBackground(Object[] Object_1darray1) {
-        return a();
+    /*
+     * Exception decompiling
+     */
+    @Override
+    protected final /* synthetic */ Object doInBackground(Object[] var1_1) {
+        // This method has failed to decompile.  When submitting a bug report, please provide this stack trace, and (if you hold appropriate legal rights) the relevant class file.
+        // java.lang.ArrayIndexOutOfBoundsException
+        throw new IllegalStateException("Decompilation failed");
     }
 
-    protected final void onPostExecute(Object Object1) {
-        Object Object2 = (BookRankRoot) Object1;
-
-        super.onPostExecute(Object2);
-        if (Object2 != null && ((BookRankRoot) Object2).isOk()) {
-            BookRankListActivity.a(a, 1);
-            BookRankListActivity.c(a).a((BookRankRoot) Object2);
-        } else {
-            BookRankListActivity.a(a, 2);
-            com.clilystudio.netbook.util.e.a((Activity) a, 2131034408);
+    @Override
+    protected final /* synthetic */ void onPostExecute(Object object) {
+        BookRankRoot bookRankRoot = (BookRankRoot) object;
+        super.onPostExecute(bookRankRoot);
+        if (bookRankRoot != null && bookRankRoot.isOk()) {
+            BookRankListActivity.a(this.a, 1);
+            BookRankListActivity.c(this.a).a(bookRankRoot);
+            return;
         }
+        BookRankListActivity.a(this.a, 2);
+        e.a((Activity) this.a, (int) 2131034408);
     }
 }

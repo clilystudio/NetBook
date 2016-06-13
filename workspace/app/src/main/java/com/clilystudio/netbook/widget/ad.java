@@ -1,6 +1,5 @@
 package com.clilystudio.netbook.widget;
 
 public interface ad {
-
-    void a(int int1, boolean boolean2);
+    public void a(int var1, boolean var2);
 }

@@ -2,65 +2,69 @@ package com.clilystudio.netbook.ui.post;
 
 import android.app.Activity;
 
+import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.model.HotTweetResult;
+import com.clilystudio.netbook.util.e;
 
-final class dI extends com.clilystudio.netbook.a.e {
+final class dI
+        extends com.clilystudio.netbook.a.e<String, Void, HotTweetResult> {
+    private /* synthetic */ TweetHotFragment a;
 
-    private TweetHotFragment a;
-
-    dI(TweetHotFragment TweetHotFragment1, byte byte2) {
-        this(TweetHotFragment1);
+    private dI(TweetHotFragment tweetHotFragment) {
+        this.a = tweetHotFragment;
     }
 
-    private dI(TweetHotFragment TweetHotFragment1) {
-        a = TweetHotFragment1;
+    /* synthetic */ dI(TweetHotFragment tweetHotFragment, byte by) {
+        this(tweetHotFragment);
     }
 
-    private static transient HotTweetResult a() {
-        HotTweetResult HotTweetResult3;
-
+    private static /* varargs */ HotTweetResult a() {
         try {
-            com.clilystudio.netbook.api.b.a();
-            HotTweetResult3 = com.clilystudio.netbook.api.b.b().j(null);
-        } catch (Exception Exception1) {
-            Exception1.printStackTrace();
+            b.a();
+            HotTweetResult hotTweetResult = b.b().j(null);
+            return hotTweetResult;
+        } catch (Exception var0_1) {
+            var0_1.printStackTrace();
             return null;
         }
-        return HotTweetResult3;
     }
 
-    protected final Object doInBackground(Object[] Object_1darray1) {
-        return a();
+    /*
+     * Exception decompiling
+     */
+    @Override
+    protected final /* synthetic */ Object doInBackground(Object[] var1_1) {
+        // This method has failed to decompile.  When submitting a bug report, please provide this stack trace, and (if you hold appropriate legal rights) the relevant class file.
+        // java.lang.ArrayIndexOutOfBoundsException
+        throw new IllegalStateException("Decompilation failed");
     }
 
-    protected final void onPostExecute(Object Object1) {
-        Object Object2 = (HotTweetResult) Object1;
-
-        super.onPostExecute(Object2);
-        if (a.getActivity() != null) {
-            TweetHotFragment.d(a);
-            if (Object2 != null && ((HotTweetResult) Object2).isOk()) {
-                int int3;
-
-                TweetHotFragment.e(a).clear();
-                int3 = ((HotTweetResult) Object2).getTweets().length;
-                if (int3 > 0) {
-                    TweetHotFragment.a(a, (HotTweetResult) Object2);
-                    TweetHotFragment.b(a, (HotTweetResult) Object2);
-                    if (int3 < 10)
-                        TweetHotFragment.f(a).setOnLastItemVisibleListener(null);
-                    else {
-                        TweetHotFragment.f(a).setOnLastItemVisibleListener(TweetHotFragment.g(a));
-                        return;
-                    }
-                } else {
-                    TweetHotFragment.h(a);
+    /*
+     * Enabled force condition propagation
+     * Lifted jumps to return sites
+     */
+    @Override
+    protected final /* synthetic */ void onPostExecute(Object object) {
+        HotTweetResult hotTweetResult = (HotTweetResult) object;
+        super.onPostExecute(hotTweetResult);
+        if (this.a.getActivity() == null) return;
+        TweetHotFragment.d(this.a);
+        if (hotTweetResult != null && hotTweetResult.isOk()) {
+            TweetHotFragment.e(this.a).clear();
+            int n = hotTweetResult.getTweets().length;
+            if (n > 0) {
+                TweetHotFragment.a(this.a, hotTweetResult);
+                TweetHotFragment.b(this.a, hotTweetResult);
+                if (n < 10) {
+                    TweetHotFragment.f(this.a).setOnLastItemVisibleListener(null);
                     return;
                 }
-            } else {
-                com.clilystudio.netbook.util.e.a((Activity) a.getActivity(), "\u52A0\u8F7D\u5931\u8D25\uFF0C\u8BF7\u68C0\u67E5\u7F51\u7EDC\u6216\u7A0D\u540E\u518D\u8BD5");
+                TweetHotFragment.f(this.a).setOnLastItemVisibleListener(TweetHotFragment.g(this.a));
                 return;
             }
+            TweetHotFragment.h(this.a);
+            return;
         }
+        e.a((Activity) this.a.getActivity(), (String) "\u52a0\u8f7d\u5931\u8d25\uff0c\u8bf7\u68c0\u67e5\u7f51\u7edc\u6216\u7a0d\u540e\u518d\u8bd5");
     }
 }

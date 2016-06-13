@@ -1,9 +1,7 @@
 package com.clilystudio.netbook.ui.game;
 
-import android.content.Context;
 import android.support.v7.widget.ay;
 import android.view.LayoutInflater;
-import android.view.View$OnClickListener;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
@@ -15,116 +13,113 @@ import com.clilystudio.netbook.widget.GameItemSection;
 
 import java.util.List;
 
-final class GameLayoutFragment$LayoutAdapter extends ah {
+final class GameLayoutFragment$LayoutAdapter
+        extends ah {
+    final /* synthetic */ GameLayoutFragment a;
 
-    GameLayoutFragment a;     // final access specifier removed
-
-    GameLayoutFragment$LayoutAdapter(GameLayoutFragment GameLayoutFragment1) {
-        a = GameLayoutFragment1;
+    GameLayoutFragment$LayoutAdapter(GameLayoutFragment gameLayoutFragment) {
+        this.a = gameLayoutFragment;
     }
 
-    private GameLayoutRoot$ModuleLayout d(int int1) {
-        List List2 = GameLayoutFragment.c(a);
-
-        if (GameLayoutFragment.b(a) != null)
-            --int1;
-        return (GameLayoutRoot$ModuleLayout) List2.get(int1);
+    private GameLayoutRoot$ModuleLayout d(int n) {
+        List list = GameLayoutFragment.c(this.a);
+        if (GameLayoutFragment.b(this.a) != null) {
+            --n;
+        }
+        return (GameLayoutRoot$ModuleLayout) list.get(n);
     }
 
     public final int a() {
-        int int1;
-
-        if (GameLayoutFragment.c(a) == null)
-            return 0;
-        int1 = GameLayoutFragment.c(a).size();
-        if (GameLayoutFragment.b(a) != null)
-            ++int1;
-        return int1;
-    }
-
-    public final int a(int int1) {
-        if (GameLayoutFragment.b(a) != null && int1 == 0)
-            return 0;
-        else {
-            GameLayoutRoot$ModuleLayout ModuleLayout2 = d(int1);
-            ModuleType ModuleType3 = ModuleLayout2.getType();
-
-            if (ModuleType3 == ModuleType.GAME_GROUP)
-                return 1 + (ModuleLayout2.getGameGroup().getRowCount() << 4);
-            else if (ModuleType3 == ModuleType.ACTIVITY)
-                return 2;
-            else if (ModuleType3 == ModuleType.AOYOU)
-                return 3;
-            else
-                return -1;
+        if (GameLayoutFragment.c(this.a) != null) {
+            int n = GameLayoutFragment.c(this.a).size();
+            if (GameLayoutFragment.b(this.a) != null) {
+                ++n;
+            }
+            return n;
         }
+        return 0;
     }
 
-    public final ay a(ViewGroup ViewGroup1, int int2) {
-        N N3 = com.clilystudio.netbook.hpay100.a.a.b(int2);
-        LayoutInflater LayoutInflater4 = LayoutInflater.from((Context) a.getActivity());
+    public final int a(int n) {
+        if (GameLayoutFragment.b(this.a) != null && n == 0) {
+            return 0;
+        }
+        GameLayoutRoot$ModuleLayout gameLayoutRoot$ModuleLayout = this.d(n);
+        ModuleType moduleType = gameLayoutRoot$ModuleLayout.getType();
+        if (moduleType == ModuleType.GAME_GROUP) {
+            return 1 + (gameLayoutRoot$ModuleLayout.getGameGroup().getRowCount() << 4);
+        }
+        if (moduleType == ModuleType.ACTIVITY) {
+            return 2;
+        }
+        if (moduleType == ModuleType.AOYOU) {
+            return 3;
+        }
+        return -1;
+    }
 
-        switch (N3.a()) {
-            default:
+    public final ay a(ViewGroup viewGroup, int n) {
+        N n2 = a.b(n);
+        LayoutInflater layoutInflater = LayoutInflater.from(this.a.getActivity());
+        switch (n2.a()) {
+            default: {
                 return null;
-            case 0:
-                return (ay) new GameLayoutFragment$LayoutAdapter$PromotionViewHolder(this, LayoutInflater4.inflate(2130903224, ViewGroup1, false));
-            case 1:
-                GameItemSection GameItemSection6 = (GameItemSection) LayoutInflater4.inflate(2130903246, ViewGroup1, false);
-
-                GameItemSection6.a(N3.b());
-                return (ay) new M(this, GameItemSection6);
-            case 2:
-                return (ay) new K(this, LayoutInflater4.inflate(2130903244, ViewGroup1, false));
+            }
+            case 0: {
+                return new GameLayoutFragment$LayoutAdapter$PromotionViewHolder(this, layoutInflater.inflate(2130903224, viewGroup, false));
+            }
+            case 1: {
+                GameItemSection gameItemSection = (GameItemSection) layoutInflater.inflate(2130903246, viewGroup, false);
+                gameItemSection.a(n2.b());
+                return new M(this, gameItemSection);
+            }
+            case 2: {
+                return new K(this, layoutInflater.inflate(2130903244, viewGroup, false));
+            }
             case 3:
-                GameItemSection GameItemSection5 = (GameItemSection) LayoutInflater4.inflate(2130903246, ViewGroup1, false);
-
-                GameItemSection5.a((2 + GameLayoutFragment.a) / 3);
-                return (ay) new M(this, GameItemSection5);
         }
+        GameItemSection gameItemSection = (GameItemSection) layoutInflater.inflate(2130903246, viewGroup, false);
+        gameItemSection.a((2 + GameLayoutFragment.a) / 3);
+        return new M(this, gameItemSection);
     }
 
-    public final void a(ay ay1, int int2) {
-        switch (com.clilystudio.netbook.hpay100.a.a.b(a(int2)).a()) {
-            default:
+    public final void a(ay ay2, int n) {
+        switch (a.b(this.a(n)).a()) {
+            default: {
                 return;
-            case 0:
-                GameLayoutFragment$LayoutAdapter$PromotionViewHolder PromotionViewHolder9 = (GameLayoutFragment$LayoutAdapter$PromotionViewHolder) ay1;
-                TextView TextView10;
-                Object[] Object_1darray11;
-
-                PromotionViewHolder9.mName.setText((CharSequence) GameLayoutFragment.b(a).getName());
-                PromotionViewHolder9.mDownload.setGame(GameLayoutFragment.b(a));
-                PromotionViewHolder9.mDownload.a(GameLayoutFragment.b(a).getDownloadStatus());
-                TextView10 = PromotionViewHolder9.mPlayingCount;
-                Object_1darray11 = new Object[1];
-                Object_1darray11[0] = Integer.valueOf(GameLayoutFragment.b(a).getMainPromoInfo().getPlayingCount());
-                TextView10.setText((CharSequence) String.format("%d\u4EBA\u5728\u73A9", Object_1darray11));
-                PromotionViewHolder9.mDesc.setText((CharSequence) GameLayoutFragment.b(a).getMainPromoInfo().getDesc());
-                PromotionViewHolder9.mIcon.setImageUrl(GameLayoutFragment.b(a).getIcon());
-                PromotionViewHolder9.mIcon.setOnClickListener((View$OnClickListener) new I(this));
+            }
+            case 0: {
+                GameLayoutFragment$LayoutAdapter$PromotionViewHolder gameLayoutFragment$LayoutAdapter$PromotionViewHolder = (GameLayoutFragment$LayoutAdapter$PromotionViewHolder) ay2;
+                gameLayoutFragment$LayoutAdapter$PromotionViewHolder.mName.setText(GameLayoutFragment.b(this.a).getName());
+                gameLayoutFragment$LayoutAdapter$PromotionViewHolder.mDownload.setGame(GameLayoutFragment.b(this.a));
+                gameLayoutFragment$LayoutAdapter$PromotionViewHolder.mDownload.a(GameLayoutFragment.b(this.a).getDownloadStatus());
+                TextView textView = gameLayoutFragment$LayoutAdapter$PromotionViewHolder.mPlayingCount;
+                Object[] arrobject = new Object[]{GameLayoutFragment.b(this.a).getMainPromoInfo().getPlayingCount()};
+                textView.setText(String.format("%d\u4eba\u5728\u73a9", arrobject));
+                gameLayoutFragment$LayoutAdapter$PromotionViewHolder.mDesc.setText(GameLayoutFragment.b(this.a).getMainPromoInfo().getDesc());
+                gameLayoutFragment$LayoutAdapter$PromotionViewHolder.mIcon.setImageUrl(GameLayoutFragment.b(this.a).getIcon());
+                gameLayoutFragment$LayoutAdapter$PromotionViewHolder.mIcon.setOnClickListener(new I(this));
                 return;
-            case 1:
-                GameLayoutRoot$ModuleLayout ModuleLayout8 = d(int2);
-
-                ((GameItemSection) ay1.a).a(ModuleLayout8);
-                ay1.a.findViewById(2131493432).setOnClickListener((View$OnClickListener) new J(this, ModuleLayout8));
+            }
+            case 1: {
+                GameLayoutRoot$ModuleLayout gameLayoutRoot$ModuleLayout = this.d(n);
+                ((GameItemSection) ((Object) ay2.a)).a(gameLayoutRoot$ModuleLayout);
+                ay2.a.findViewById(2131493432).setOnClickListener(new J(this, gameLayoutRoot$ModuleLayout));
                 return;
-            case 2:
-                K K4 = (K) ay1;
-                GameLayoutRoot$ModuleLayout ModuleLayout5 = d(int2);
-                SmartImageView SmartImageView6 = (SmartImageView) K4.a.findViewById(2131493025);
-                GameLayoutRoot$ModuleLayout$ActivityItem ActivityItem7 = ModuleLayout5.getActivity();
-
-                SmartImageView6.setImageUrl(ActivityItem7.getBannerImage());
-                SmartImageView6.setOnClickListener((View$OnClickListener) new L(K4, ActivityItem7));
+            }
+            case 2: {
+                K k = (K) ay2;
+                GameLayoutRoot$ModuleLayout gameLayoutRoot$ModuleLayout = this.d(n);
+                SmartImageView smartImageView = (SmartImageView) k.a.findViewById(2131493025);
+                GameLayoutRoot$ModuleLayout$ActivityItem gameLayoutRoot$ModuleLayout$ActivityItem = gameLayoutRoot$ModuleLayout.getActivity();
+                smartImageView.setImageUrl(gameLayoutRoot$ModuleLayout$ActivityItem.getBannerImage());
+                smartImageView.setOnClickListener(new L(k, gameLayoutRoot$ModuleLayout$ActivityItem));
                 return;
+            }
             case 3:
-                GameLayoutRoot$ModuleLayout ModuleLayout3 = d(int2);
-
-                ((GameItemSection) ay1.a).b(ModuleLayout3);
-                ay1.a.findViewById(2131493432).setVisibility(8);
-                return;
         }
+        GameLayoutRoot$ModuleLayout gameLayoutRoot$ModuleLayout = this.d(n);
+        ((GameItemSection) ((Object) ay2.a)).b(gameLayoutRoot$ModuleLayout);
+        ay2.a.findViewById(2131493432).setVisibility(8);
     }
 }

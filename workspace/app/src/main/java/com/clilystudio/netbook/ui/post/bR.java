@@ -2,29 +2,27 @@ package com.clilystudio.netbook.ui.post;
 
 import android.support.design.widget.am;
 import android.view.View;
-import android.view.View$OnClickListener;
 
-final class bR implements View$OnClickListener {
+final class bR
+        implements View.OnClickListener {
+    final /* synthetic */ MyTweetFragment a;
 
-    MyTweetFragment a;     // final access specifier removed
-
-    bR(MyTweetFragment MyTweetFragment1) {
-        a = MyTweetFragment1;
+    bR(MyTweetFragment myTweetFragment) {
+        this.a = myTweetFragment;
     }
 
-    public final void onClick(View View1) {
-        if (MyTweetFragment.j(a) == null && MyTweetFragment.k(a) != 0) {
-            bV bV3;
-            String[] String_1darray4;
-
-            if (MyTweetFragment.l(a) != null)
-                MyTweetFragment.l(a).cancel(true);
-            MyTweetFragment.a(a, new bV(a, (Runnable) new bS(this)));
-            bV3 = MyTweetFragment.l(a);
-            String_1darray4 = new String[1];
-            String_1darray4[0] = am.e().getUser().getId();
-            bV3.b(String_1darray4);
-        } else
-            MyTweetFragment.m(a);
+    @Override
+    public final void onClick(View view) {
+        if (MyTweetFragment.j(this.a) == null && MyTweetFragment.k(this.a) != 0) {
+            if (MyTweetFragment.l(this.a) != null) {
+                MyTweetFragment.l(this.a).cancel(true);
+            }
+            MyTweetFragment.a(this.a, new bV(this.a, new bS(this)));
+            bV bV2 = MyTweetFragment.l(this.a);
+            String[] arrstring = new String[]{am.e().getUser().getId()};
+            bV2.b(arrstring);
+            return;
+        }
+        MyTweetFragment.m(this.a);
     }
 }

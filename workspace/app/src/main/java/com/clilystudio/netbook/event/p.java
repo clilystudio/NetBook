@@ -3,26 +3,25 @@ package com.clilystudio.netbook.event;
 import com.clilystudio.netbook.db.AudioRecord;
 
 public final class p {
-
     private int a;
     private AudioRecord b;
 
-    public final void a(int int1) {
-        a = int1;
+    public final void a(int n) {
+        this.a = n;
     }
 
-    public final void a(AudioRecord AudioRecord1) {
-        b = AudioRecord1;
+    public final void a(AudioRecord audioRecord) {
+        this.b = audioRecord;
     }
 
     public final boolean a() {
-        if (1 == a)
+        if (1 == this.a) {
             return true;
-        else
-            return false;
+        }
+        return false;
     }
 
     public final AudioRecord b() {
-        return b;
+        return this.b;
     }
 }

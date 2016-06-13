@@ -4,85 +4,83 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.FrameLayout;
 
-public class ThemeLoadingView extends FrameLayout {
-
+public class ThemeLoadingView
+        extends FrameLayout {
     private LoadingProgressView a;
     private LoadingProgressView b;
     private ThemeLoadingView$Mode c = ThemeLoadingView$Mode.LIGHT;
     private boolean d = true;
-    public ThemeLoadingView(Context Context1, AttributeSet AttributeSet2) {
-        super(Context1, AttributeSet2);
+
+    public ThemeLoadingView(Context context, AttributeSet attributeSet) {
+        super(context, attributeSet);
     }
 
-    static boolean a(ThemeLoadingView ThemeLoadingView1, boolean boolean2) {
-        ThemeLoadingView1.d = true;
+    static /* synthetic */ boolean a(ThemeLoadingView themeLoadingView, boolean bl) {
+        themeLoadingView.d = true;
         return true;
     }
 
     private void c() {
-        if (c == ThemeLoadingView$Mode.LIGHT)
-            setBackgroundResource(2130837696);
-        else
-            setBackgroundResource(2130837695);
+        if (this.c == ThemeLoadingView$Mode.LIGHT) {
+            this.setBackgroundResource(2130837696);
+            return;
+        }
+        this.setBackgroundResource(2130837695);
     }
 
     private LoadingProgressView d() {
-        if (c == ThemeLoadingView$Mode.LIGHT)
-            return a;
-        else
-            return b;
+        if (this.c == ThemeLoadingView$Mode.LIGHT) {
+            return this.a;
+        }
+        return this.b;
     }
 
     public final void a() {
-        LoadingProgressView LoadingProgressView1 = d();
-
-        if (d) {
-            d = false;
-            setVisibility(0);
-            LoadingProgressView1.a();
+        LoadingProgressView loadingProgressView = this.d();
+        if (this.d) {
+            this.d = false;
+            this.setVisibility(0);
+            loadingProgressView.a();
         }
     }
 
-    public final void a(boolean boolean1) {
-        ThemeLoadingView$Mode Mode2;
-        int int3;
-
-        if (boolean1)
-            Mode2 = ThemeLoadingView$Mode.DARK;
-        else
-            Mode2 = ThemeLoadingView$Mode.LIGHT;
-        c = Mode2;
-        if (c == ThemeLoadingView$Mode.LIGHT) {
-            a.setVisibility(0);
-            b.setVisibility(8);
+    /*
+     * Enabled aggressive block sorting
+     */
+    public final void a(boolean bl) {
+        ThemeLoadingView$Mode themeLoadingView$Mode = bl ? ThemeLoadingView$Mode.DARK : ThemeLoadingView$Mode.LIGHT;
+        this.c = themeLoadingView$Mode;
+        if (this.c == ThemeLoadingView$Mode.LIGHT) {
+            this.a.setVisibility(0);
+            this.b.setVisibility(8);
         } else {
-            b.setVisibility(0);
-            a.setVisibility(8);
+            this.b.setVisibility(0);
+            this.a.setVisibility(8);
         }
-        c();
-        if (!d().b())
-            int3 = 1;
-        else
-            int3 = 0;
-        if (int3 != 0)
-            a();
+        this.c();
+        if (this.d().b()) {
+            return;
+        }
+        boolean bl2 = true;
+        if (bl2) {
+            this.a();
+        }
     }
 
     public final void b() {
-        LoadingProgressView LoadingProgressView1 = d();
-
-        if (!d)
-            LoadingProgressView1.a((ah) new aC(this));
+        LoadingProgressView loadingProgressView = this.d();
+        if (!this.d) {
+            loadingProgressView.a(new aC(this));
+        }
     }
 
+    @Override
     protected void onFinishInflate() {
-        int int1;
-
         super.onFinishInflate();
-        int1 = getResources().getDimensionPixelSize(2131099927);
-        setPadding(int1, int1, int1, int1);
-        a = (LoadingProgressView) findViewById(2131493168);
-        b = (LoadingProgressView) findViewById(2131493169);
-        c();
+        int n = this.getResources().getDimensionPixelSize(2131099927);
+        this.setPadding(n, n, n, n);
+        this.a = (LoadingProgressView) this.findViewById(2131493168);
+        this.b = (LoadingProgressView) this.findViewById(2131493169);
+        this.c();
     }
 }

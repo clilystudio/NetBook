@@ -1,18 +1,19 @@
 package com.clilystudio.netbook.ui.game;
 
+import android.content.Intent;
 import android.view.View;
-import android.view.View$OnClickListener;
 
-final class Y implements View$OnClickListener {
+final class Y
+        implements View.OnClickListener {
+    private /* synthetic */ GameMicroFragment$LayoutAdapter a;
 
-    private GameMicroFragment$LayoutAdapter a;
-
-    Y(GameMicroFragment$LayoutAdapter LayoutAdapter1) {
-        a = LayoutAdapter1;
+    Y(GameMicroFragment$LayoutAdapter layoutAdapter) {
+        this.a = layoutAdapter;
     }
-// Error: Internal #201: 
-// The following method may not be correct.
 
-    public final void onClick(View View1) {
+    @Override
+    public final void onClick(View view) {
+        Intent intent = new Intent(this.a.a.getActivity(), GameLocalListActivity.class);
+        this.a.a.startActivity(intent);
     }
 }

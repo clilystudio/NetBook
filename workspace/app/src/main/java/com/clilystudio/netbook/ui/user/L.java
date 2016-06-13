@@ -2,22 +2,19 @@ package com.clilystudio.netbook.ui.user;
 
 import com.clilystudio.netbook.widget.av;
 
-final class L implements av {
+final class L
+        implements av {
+    private /* synthetic */ PayChargeActivity a;
 
-    private PayChargeActivity a;
-
-    L(PayChargeActivity PayChargeActivity1) {
-        a = PayChargeActivity1;
+    L(PayChargeActivity payChargeActivity) {
+        this.a = payChargeActivity;
     }
 
+    @Override
     public final void a() {
-        O O1;
-        String[] String_1darray2;
-
-        PayChargeActivity.b(a).setVisibility(0);
-        O1 = new O(a, (byte) 0);
-        String_1darray2 = new String[1];
-        String_1darray2[0] = PayChargeActivity.h(a);
-        O1.b(String_1darray2);
+        PayChargeActivity.b(this.a).setVisibility(0);
+        O o = new O(this.a, 0);
+        String[] arrstring = new String[]{PayChargeActivity.h(this.a)};
+        o.b(arrstring);
     }
 }

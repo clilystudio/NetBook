@@ -1,19 +1,16 @@
 package com.clilystudio.netbook.event;
 
 public final class A {
-
-    private int a;
-
-    public A(int int1) {
-        a = 1;
-        a = int1;
-    }
+    private int a = 1;
 
     public A() {
-        a = 1;
+    }
+
+    public A(int n) {
+        this.a = n;
     }
 
     public final int a() {
-        return a;
+        return this.a;
     }
 }

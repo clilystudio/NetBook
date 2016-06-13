@@ -1,17 +1,17 @@
 package com.clilystudio.netbook.ui.post;
 
 import android.view.View;
-import android.view.View$OnClickListener;
 
-final class cb implements View$OnClickListener {
+final class cb
+        implements View.OnClickListener {
+    private /* synthetic */ OtherUserActivity a;
 
-    private OtherUserActivity a;
-
-    cb(OtherUserActivity OtherUserActivity1) {
-        a = OtherUserActivity1;
+    cb(OtherUserActivity otherUserActivity) {
+        this.a = otherUserActivity;
     }
 
-    public final void onClick(View View1) {
-        OtherUserActivity.d(a);
+    @Override
+    public final void onClick(View view) {
+        OtherUserActivity.d(this.a);
     }
 }

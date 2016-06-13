@@ -14,80 +14,89 @@ import com.clilystudio.netbook.util.t;
 import java.util.ArrayList;
 import java.util.List;
 
-final class ag extends BaseAdapter {
-
-    private List a;
+final class ag
+        extends BaseAdapter {
+    private List<PayVoucherRecord$Voucher> a;
     private LayoutInflater b;
     private int c;
     private int d;
     private String e;
-    private PayVoucherFragment f;
-    public ag(PayVoucherFragment PayVoucherFragment1, LayoutInflater LayoutInflater2) {
-        f = PayVoucherFragment1;
-        b = LayoutInflater2;
-        a = (List) new ArrayList();
-        switch (PayVoucherFragment1.getArguments().getInt("tag_index_key")) {
-            default:
+    private /* synthetic */ PayVoucherFragment f;
+
+    public ag(PayVoucherFragment payVoucherFragment, LayoutInflater layoutInflater) {
+        this.f = payVoucherFragment;
+        this.b = layoutInflater;
+        this.a = new ArrayList<PayVoucherRecord$Voucher>();
+        switch (payVoucherFragment.getArguments().getInt("tag_index_key")) {
+            default: {
                 return;
-            case 0:
-                c = am.b((Context) PayVoucherFragment1.getActivity(), 2130772009);
-                d = 2131427467;
-                e = "\u53EF\n\u4F7F\n\u7528";
+            }
+            case 0: {
+                this.c = am.b((Context) payVoucherFragment.getActivity(), 2130772009);
+                this.d = 2131427467;
+                this.e = "\u53ef\n\u4f7f\n\u7528";
                 return;
-            case 1:
-                c = am.b((Context) PayVoucherFragment1.getActivity(), 2130772008);
-                d = 2131427466;
-                e = "\u5DF2\n\u7528\n\u5B8C";
+            }
+            case 1: {
+                this.c = am.b((Context) payVoucherFragment.getActivity(), 2130772008);
+                this.d = 2131427466;
+                this.e = "\u5df2\n\u7528\n\u5b8c";
                 return;
+            }
             case 2:
-                c = am.b((Context) PayVoucherFragment1.getActivity(), 2130772008);
-                d = 2131427466;
-                e = "\u5DF2\n\u8FC7\n\u671F";
-                return;
         }
+        this.c = am.b((Context) payVoucherFragment.getActivity(), 2130772008);
+        this.d = 2131427466;
+        this.e = "\u5df2\n\u8fc7\n\u671f";
     }
 
-    public final void a(List List1) {
-        a = List1;
-        notifyDataSetChanged();
+    public final void a(List<PayVoucherRecord$Voucher> list) {
+        this.a = list;
+        this.notifyDataSetChanged();
     }
 
+    @Override
     public final int getCount() {
-        return a.size();
+        return this.a.size();
     }
 
-    public final Object getItem(int int1) {
-        return a.get(int1);
+    @Override
+    public final Object getItem(int n) {
+        return this.a.get(n);
     }
 
-    public final long getItemId(int int1) {
-        return (long) int1;
+    @Override
+    public final long getItemId(int n) {
+        return n;
     }
 
-    public final View getView(int int1, View View2, ViewGroup ViewGroup3) {
-        PayVoucherRecord$Voucher Voucher4 = (PayVoucherRecord$Voucher) a.get(int1);
-        Object Object6;
-
-        if (View2 == null) {
-            Object Object5 = new ah(this);
-
-            View2 = b.inflate(2130903320, null);
-            ((ah) Object5).a = (TextView) View2.findViewById(2131493794);
-            ((ah) Object5).b = (TextView) View2.findViewById(2131493797);
-            ((ah) Object5).c = (TextView) View2.findViewById(2131493795);
-            ((ah) Object5).d = (TextView) View2.findViewById(2131493796);
-            ((ah) Object5).e = (TextView) View2.findViewById(2131493793);
-            View2.setTag(Object5);
-            Object6 = Object5;
-        } else
-            Object6 = (ah) View2.getTag();
-        ((ah) Object6).a.setText((CharSequence) new StringBuilder().append(Voucher4.getAmount()).toString());
-        ((ah) Object6).b.setText((CharSequence) Voucher4.getFrom());
-        ((ah) Object6).c.setText((CharSequence) new StringBuilder("\u4F59\u989D\uFF1A").append(Voucher4.getBalance()).toString());
-        ((ah) Object6).d.setText((CharSequence) new StringBuilder("\u6709\u6548\u671F\u81F3").append(t.c(Voucher4.getExpired())).toString());
-        ((ah) Object6).e.setText((CharSequence) e);
-        ((ah) Object6).e.setTextColor(f.getResources().getColor(d));
-        ((ah) Object6).e.setBackgroundResource(c);
-        return View2;
+    /*
+     * Enabled aggressive block sorting
+     */
+    @Override
+    public final View getView(int n, View view, ViewGroup viewGroup) {
+        ah ah2;
+        PayVoucherRecord$Voucher payVoucherRecord$Voucher = this.a.get(n);
+        if (view == null) {
+            ah ah3 = new ah(this);
+            view = this.b.inflate(2130903320, null);
+            ah3.a = (TextView) view.findViewById(2131493794);
+            ah3.b = (TextView) view.findViewById(2131493797);
+            ah3.c = (TextView) view.findViewById(2131493795);
+            ah3.d = (TextView) view.findViewById(2131493796);
+            ah3.e = (TextView) view.findViewById(2131493793);
+            view.setTag(ah3);
+            ah2 = ah3;
+        } else {
+            ah2 = (ah) view.getTag();
+        }
+        ah2.a.setText("" + payVoucherRecord$Voucher.getAmount());
+        ah2.b.setText(payVoucherRecord$Voucher.getFrom());
+        ah2.c.setText("\u4f59\u989d\uff1a" + payVoucherRecord$Voucher.getBalance());
+        ah2.d.setText("\u6709\u6548\u671f\u81f3" + t.c(payVoucherRecord$Voucher.getExpired()));
+        ah2.e.setText(this.e);
+        ah2.e.setTextColor(this.f.getResources().getColor(this.d));
+        ah2.e.setBackgroundResource(this.c);
+        return view;
     }
 }

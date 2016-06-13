@@ -1,17 +1,20 @@
 package com.clilystudio.netbook.ui.user;
 
+import android.content.Intent;
+
 import com.clilystudio.netbook.ui.aa;
 
-final class g implements aa {
+final class g
+        implements aa {
+    private /* synthetic */ ChargeActivity a;
 
-    private ChargeActivity a;
-
-    g(ChargeActivity ChargeActivity1) {
-        a = ChargeActivity1;
+    g(ChargeActivity chargeActivity) {
+        this.a = chargeActivity;
     }
-// Error: Internal #201: 
-// The following method may not be correct.
 
+    @Override
     public final void a() {
+        Intent intent = new Intent(this.a, ChargeHelperActivity.class);
+        this.a.startActivity(intent);
     }
 }

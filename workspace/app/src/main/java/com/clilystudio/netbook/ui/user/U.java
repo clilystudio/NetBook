@@ -1,16 +1,15 @@
 package com.clilystudio.netbook.ui.user;
 
-import android.view.View;
+final class U
+        implements Runnable {
+    private /* synthetic */ T a;
 
-final class U implements Runnable {
-
-    private T a;
-
-    U(T T1) {
-        a = T1;
+    U(T t) {
+        this.a = t;
     }
 
+    @Override
     public final void run() {
-        S.a(a.e, a.b, (View) a.c, a.d, a.a);
+        S.a(this.a.e, this.a.b, this.a.c, this.a.d, this.a.a);
     }
 }

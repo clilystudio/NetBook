@@ -1,21 +1,21 @@
 package com.clilystudio.netbook.reader;
 
 import android.view.View;
-import android.view.View$OnClickListener;
 
 import com.iflytek.cloud.SpeechUtility;
 
-final class cg implements View$OnClickListener {
+final class cg
+        implements View.OnClickListener {
+    private /* synthetic */ ReaderTtsSetWidget a;
 
-    private ReaderTtsSetWidget a;
-
-    cg(ReaderTtsSetWidget ReaderTtsSetWidget1) {
-        a = ReaderTtsSetWidget1;
+    cg(ReaderTtsSetWidget readerTtsSetWidget) {
+        this.a = readerTtsSetWidget;
     }
 
-    public final void onClick(View View1) {
-        a.setVisibility(8);
-        ReaderTtsSetWidget.a(a).b();
+    @Override
+    public final void onClick(View view) {
+        this.a.setVisibility(8);
+        ReaderTtsSetWidget.a(this.a).b();
         SpeechUtility.getUtility().openEngineSettings("tts");
     }
 }

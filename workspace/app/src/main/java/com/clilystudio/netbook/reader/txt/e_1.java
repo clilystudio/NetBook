@@ -4,16 +4,18 @@ import android.app.Activity;
 
 import com.iflytek.cloud.InitListener;
 
-final class e implements InitListener {
+final class e
+        implements InitListener {
+    private /* synthetic */ ReaderTxtActivity a;
 
-    private ReaderTxtActivity a;
-
-    e(ReaderTxtActivity ReaderTxtActivity1) {
-        a = ReaderTxtActivity1;
+    e(ReaderTxtActivity readerTxtActivity) {
+        this.a = readerTxtActivity;
     }
 
-    public final void onInit(int int1) {
-        if (int1 != 0)
-            com.clilystudio.netbook.util.e.a((Activity) a, "\u521D\u59CB\u5316\u8BED\u97F3\u7EC4\u4EF6\u5931\u8D25,\u8BF7\u9000\u51FA\u540E\u91CD\u8BD5");
+    @Override
+    public final void onInit(int n2) {
+        if (n2 != 0) {
+            com.clilystudio.netbook.util.e.a((Activity) this.a, "\u521d\u59cb\u5316\u8bed\u97f3\u7ec4\u4ef6\u5931\u8d25,\u8bf7\u9000\u51fa\u540e\u91cd\u8bd5");
+        }
     }
 }

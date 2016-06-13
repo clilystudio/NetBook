@@ -1,14 +1,14 @@
 package com.clilystudio.netbook.ui.user;
 
 import android.content.DialogInterface;
-import android.content.DialogInterface$OnClickListener;
 
-final class az implements DialogInterface$OnClickListener {
-
-    az(UserFollowWeixinActivity UserFollowWeixinActivity1) {
+final class az
+        implements DialogInterface.OnClickListener {
+    az(UserFollowWeixinActivity userFollowWeixinActivity) {
     }
 
-    public final void onClick(DialogInterface DialogInterface1, int int2) {
-        DialogInterface1.dismiss();
+    @Override
+    public final void onClick(DialogInterface dialogInterface, int n) {
+        dialogInterface.dismiss();
     }
 }

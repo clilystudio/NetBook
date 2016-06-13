@@ -5,23 +5,25 @@ import android.app.Activity;
 import com.clilystudio.netbook.ui.ab;
 import com.clilystudio.netbook.util.e;
 
-final class H implements ab {
+final class H
+        implements ab {
+    private /* synthetic */ UGCGuideEditBooksActivity a;
 
-    private UGCGuideEditBooksActivity a;
-
-    H(UGCGuideEditBooksActivity UGCGuideEditBooksActivity1) {
-        a = UGCGuideEditBooksActivity1;
+    H(UGCGuideEditBooksActivity uGCGuideEditBooksActivity) {
+        this.a = uGCGuideEditBooksActivity;
     }
 
     public final void a() {
-        if (UGCGuideEditBooksActivity.a(a).getBooks().size() == 0)
-            e.a((Activity) a, "\u81F3\u5C11\u8981\u6DFB\u52A0\u4E00\u672C\u4E66\u7C4D\u624D\u80FD\u4FDD\u5B58\u54E6");
-        else
-            new P(a).b(new Void[0]);
+        if (UGCGuideEditBooksActivity.a(this.a).getBooks().size() == 0) {
+            e.a((Activity) this.a, (String) "\u81f3\u5c11\u8981\u6dfb\u52a0\u4e00\u672c\u4e66\u7c4d\u624d\u80fd\u4fdd\u5b58\u54e6");
+            return;
+        }
+        new P(this.a).b(new Void[0]);
     }
 
     public final void b() {
-        if (UGCGuideEditBooksActivity.b(a))
-            new O(a).b(new Void[0]);
+        if (UGCGuideEditBooksActivity.b(this.a)) {
+            new O(this.a).b(new Void[0]);
+        }
     }
 }

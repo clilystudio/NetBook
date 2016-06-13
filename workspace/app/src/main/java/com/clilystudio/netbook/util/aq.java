@@ -2,23 +2,26 @@ package com.clilystudio.netbook.util;
 
 import android.support.design.widget.am;
 
-final class aq extends Thread {
+final class aq
+        extends Thread {
+    private /* synthetic */ String a;
+    private /* synthetic */ String b;
+    private /* synthetic */ String c;
 
-    private String a;
-    private String b;
-    private String c;
-    aq(String String1, String String2, String String3) {
-        a = String1;
-        b = String2;
-        c = String3;
+    aq(String string, String string2, String string3) {
+        this.a = string;
+        this.b = string2;
+        this.c = string3;
     }
 
+    @Override
     public final void run() {
         try {
-            com.clilystudio.netbook.api.b.a();
-            com.clilystudio.netbook.api.b.b().b(am.e().getToken(), a, b, c);
-        } catch (Exception Exception1) {
-            Exception1.printStackTrace();
+            b.a();
+            b.b().b(am.e().getToken(), this.a, this.b, this.c);
+            return;
+        } catch (Exception var1_1) {
+            var1_1.printStackTrace();
             return;
         }
     }

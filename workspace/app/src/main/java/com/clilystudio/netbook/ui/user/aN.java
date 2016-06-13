@@ -3,45 +3,51 @@ package com.clilystudio.netbook.ui.user;
 import android.app.Activity;
 import android.support.design.widget.am;
 
+import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.model.ResultStatus;
+import com.clilystudio.netbook.util.e;
 
 import java.io.IOException;
 
-final class aN extends com.clilystudio.netbook.a.e {
+final class aN
+        extends com.clilystudio.netbook.a.e<String, Void, ResultStatus> {
+    private /* synthetic */ UserTaskActivity a;
 
-    private UserTaskActivity a;
-
-    aN(UserTaskActivity UserTaskActivity1, byte byte2) {
-        this(UserTaskActivity1);
+    private aN(UserTaskActivity userTaskActivity) {
+        this.a = userTaskActivity;
     }
 
-    private aN(UserTaskActivity UserTaskActivity1) {
-        a = UserTaskActivity1;
+    /* synthetic */ aN(UserTaskActivity userTaskActivity, byte by) {
+        this(userTaskActivity);
     }
 
-    private transient ResultStatus a() {
-        ResultStatus ResultStatus2;
-
+    private /* varargs */ ResultStatus a() {
         try {
-            ResultStatus2 = com.clilystudio.netbook.api.b.b().W(am.e().getToken());
-        } catch (IOException IOException1) {
-            IOException1.printStackTrace();
+            ResultStatus resultStatus = b.b().W(am.e().getToken());
+            return resultStatus;
+        } catch (IOException var1_2) {
+            var1_2.printStackTrace();
             return null;
         }
-        return ResultStatus2;
     }
 
-    protected final Object doInBackground(Object[] Object_1darray1) {
-        return a();
+    /*
+     * Exception decompiling
+     */
+    @Override
+    protected final /* synthetic */ Object doInBackground(Object[] var1_1) {
+        // This method has failed to decompile.  When submitting a bug report, please provide this stack trace, and (if you hold appropriate legal rights) the relevant class file.
+        // java.lang.ArrayIndexOutOfBoundsException
+        throw new IllegalStateException("Decompilation failed");
     }
 
-    protected final void onPostExecute(Object Object1) {
-        Object Object2 = (ResultStatus) Object1;
-
-        super.onPostExecute(Object2);
-        if (Object2 != null && !((ResultStatus) Object2).isOk()) {
-            UserTaskActivity.a(a, true);
-            com.clilystudio.netbook.util.e.a((Activity) a, "\u4F60\u5DF2\u7ECF\u5B8C\u6210\u8FD9\u4E2A\u4EFB\u52A1");
+    @Override
+    protected final /* synthetic */ void onPostExecute(Object object) {
+        ResultStatus resultStatus = (ResultStatus) object;
+        super.onPostExecute(resultStatus);
+        if (resultStatus != null && !resultStatus.isOk()) {
+            UserTaskActivity.a(this.a, true);
+            e.a((Activity) this.a, (String) "\u4f60\u5df2\u7ecf\u5b8c\u6210\u8fd9\u4e2a\u4efb\u52a1");
         }
     }
 }

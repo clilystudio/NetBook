@@ -1,23 +1,22 @@
 package com.clilystudio.netbook.model;
 
 public class BookRankDetailRoot {
-
     private boolean ok;
     private BookRankDetailList ranking;
 
     public BookRankDetailList getRanking() {
-        return ranking;
+        return this.ranking;
     }
 
-    public void setRanking(BookRankDetailList BookRankDetailList1) {
-        ranking = BookRankDetailList1;
+    public void setRanking(BookRankDetailList bookRankDetailList) {
+        this.ranking = bookRankDetailList;
     }
 
     public boolean isOk() {
-        return ok;
+        return this.ok;
     }
 
-    public void setOk(boolean boolean1) {
-        ok = boolean1;
+    public void setOk(boolean bl) {
+        this.ok = bl;
     }
 }

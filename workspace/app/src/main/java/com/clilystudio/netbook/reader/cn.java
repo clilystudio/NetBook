@@ -1,16 +1,15 @@
 package com.clilystudio.netbook.reader;
 
 public interface cn {
+    public void a();
 
-    void a();
+    public void a(int var1);
 
-    void a(int int1);
+    public void a(boolean var1);
 
-    void a(boolean boolean1);
+    public void b();
 
-    void b();
+    public void c();
 
-    void c();
-
-    void d();
+    public void d();
 }

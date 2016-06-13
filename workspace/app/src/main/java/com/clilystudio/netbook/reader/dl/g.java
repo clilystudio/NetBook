@@ -1,36 +1,40 @@
 package com.clilystudio.netbook.reader.dl;
 
+import android.content.Context;
+
 import com.clilystudio.netbook.model.Toc;
+import com.clilystudio.netbook.util.e;
 
-final class g extends com.clilystudio.netbook.a.e {
+final class g
+        extends com.clilystudio.netbook.a.e<Void, Void, Toc> {
+    private /* synthetic */ BookDownloadService a;
 
-    private BookDownloadService a;
-
-    g(BookDownloadService BookDownloadService1, byte byte2) {
-        this(BookDownloadService1);
+    private g(BookDownloadService bookDownloadService) {
+        this.a = bookDownloadService;
     }
 
-    private g(BookDownloadService BookDownloadService1) {
-        a = BookDownloadService1;
+    /* synthetic */ g(BookDownloadService bookDownloadService, byte by) {
+        this(bookDownloadService);
     }
 
-    protected final Object doInBackground(Object[] Object_1darray1) {
-        return BookDownloadService.f(a).a();
+    @Override
+    protected final /* synthetic */ Object doInBackground(Object[] arrobject) {
+        return BookDownloadService.f(this.a).a();
     }
 
-    protected final void onPostExecute(Object Object1) {
-        Object Object2 = (Toc) Object1;
-
-        super.onPostExecute(Object2);
-        if (Object2 != null && ((Toc) Object2).getChapters() != null) {
-            com.clilystudio.netbook.hpay100.a.a.a(BookDownloadService.d(a), ((Toc) Object2).get_id(), "toc", (Toc) Object2);
-            BookDownloadService.a(a, ((Toc) Object2).getChapters());
-            BookDownloadService.e(a, BookDownloadService.p(a).length);
-            BookDownloadService.f(a, BookDownloadService.h(a));
-            BookDownloadService.q(a);
-        } else {
-            com.clilystudio.netbook.util.e.a(a.getApplicationContext(), "\u83B7\u53D6\u76EE\u5F55\u5931\u8D25\uFF0C\u6682\u65F6\u65E0\u6CD5\u7F13\u5B58");
-            BookDownloadService.r(a);
+    @Override
+    protected final /* synthetic */ void onPostExecute(Object object) {
+        Toc toc = (Toc) object;
+        super.onPostExecute(toc);
+        if (toc != null && toc.getChapters() != null) {
+            a.a(BookDownloadService.d(this.a), toc.get_id(), "toc", toc);
+            BookDownloadService.a(this.a, toc.getChapters());
+            BookDownloadService.e(this.a, BookDownloadService.p(this.a).length);
+            BookDownloadService.f(this.a, BookDownloadService.h(this.a));
+            BookDownloadService.q(this.a);
+            return;
         }
+        e.a((Context) this.a.getApplicationContext(), (String) "\u83b7\u53d6\u76ee\u5f55\u5931\u8d25\uff0c\u6682\u65f6\u65e0\u6cd5\u7f13\u5b58");
+        BookDownloadService.r(this.a);
     }
 }

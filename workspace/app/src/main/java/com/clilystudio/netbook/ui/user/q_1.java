@@ -5,76 +5,65 @@ import android.support.design.widget.am;
 import android.widget.TextView;
 
 import com.clilystudio.netbook.MyApplication;
+import com.clilystudio.netbook.a.c;
+import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.event.K;
 import com.clilystudio.netbook.event.i;
 import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.model.ChangeGenderRoot;
 import com.clilystudio.netbook.model.UserInfo;
+import com.clilystudio.netbook.util.e;
 
 import java.io.IOException;
-import java.io.Serializable;
 
-final class q extends com.clilystudio.netbook.a.c {
+final class q
+        extends c<String, ChangeGenderRoot> {
+    private /* synthetic */ ModifyUserInfoActivity a;
 
-    private ModifyUserInfoActivity a;
-
-    public q(ModifyUserInfoActivity ModifyUserInfoActivity1, Activity Activity2, int int3) {
-        super(Activity2, 2131034218);
-        a = ModifyUserInfoActivity1;
+    public q(ModifyUserInfoActivity modifyUserInfoActivity, Activity activity, int n) {
+        this.a = modifyUserInfoActivity;
+        super(activity, 2131034218);
     }
 
-    private transient ChangeGenderRoot a(String[] String_1darray1) {
-        Account Account2 = am.e();
-
-        if (Account2 != null) {
+    private /* varargs */ ChangeGenderRoot a(String... arrstring) {
+        Account account = am.e();
+        if (account != null) {
             try {
-                ChangeGenderRoot ChangeGenderRoot4 = com.clilystudio.netbook.api.b.b().v(Account2.getToken(), String_1darray1[0]);
-            } catch (IOException IOException3) {
-                IOException3.printStackTrace();
+                ChangeGenderRoot changeGenderRoot = b.b().v(account.getToken(), arrstring[0]);
+                return changeGenderRoot;
+            } catch (IOException var3_4) {
+                var3_4.printStackTrace();
             }
         }
         return null;
     }
 
-    public final volatile Object a(Object[] Object_1darray1) {
-        return a((String[]) Object_1darray1);
-    }
-
-    public final void a(Object Object1) {
-        ChangeGenderRoot ChangeGenderRoot2 = (ChangeGenderRoot) Object1;
-
-        if (ChangeGenderRoot2 != null) {
-            if (ChangeGenderRoot2.isOk()) {
-                Object Object3 = (UserInfo) MyApplication.a().b("savedObject_userinfo");
-                String String4;
-                Account Account6;
-                TextView TextView7;
-                Object Object8;
-
-                if (ModifyUserInfoActivity.a(a).getGender().equals("male"))
-                    String4 = "female";
-                else
-                    String4 = "male";
-                ((UserInfo) Object3).setGender(String4);
-                MyApplication.a().a((Serializable) Object3, "savedObject_userinfo");
-                Account6 = am.a((Activity) a);
-                if (Account6 != null) {
-                    ModifyUserInfoActivity.a(a).setGender(String4);
-                    Account6.setUser(ModifyUserInfoActivity.a(a));
-                    MyApplication.a().a(Account6);
-                }
-                TextView7 = a.mGenderView;
-                if (String4.equals("male"))
-                    Object8 = "\u7537";
-                else
-                    Object8 = "\u5973";
-                TextView7.setText((CharSequence) Object8);
-                com.clilystudio.netbook.util.e.a((Activity) a, "\u4FEE\u6539\u6210\u529F");
-                i.a().c(new K());
-            } else {
-                com.clilystudio.netbook.util.e.a((Activity) a, ChangeGenderRoot2.getErrorMessage());
+    /*
+     * Enabled aggressive block sorting
+     */
+    @Override
+    public final /* synthetic */ void a(Object object) {
+        ChangeGenderRoot changeGenderRoot = (ChangeGenderRoot) object;
+        if (changeGenderRoot != null) {
+            if (!changeGenderRoot.isOk()) {
+                e.a((Activity) this.a, changeGenderRoot.getErrorMessage());
                 return;
             }
+            UserInfo userInfo = (UserInfo) MyApplication.a().b("savedObject_userinfo");
+            String string = ModifyUserInfoActivity.a(this.a).getGender().equals("male") ? "female" : "male";
+            userInfo.setGender(string);
+            MyApplication.a().a(userInfo, "savedObject_userinfo");
+            Account account = am.a(this.a);
+            if (account != null) {
+                ModifyUserInfoActivity.a(this.a).setGender(string);
+                account.setUser(ModifyUserInfoActivity.a(this.a));
+                MyApplication.a().a(account);
+            }
+            TextView textView = this.a.mGenderView;
+            String string2 = string.equals("male") ? "\u7537" : "\u5973";
+            textView.setText(string2);
+            e.a((Activity) this.a, "\u4fee\u6539\u6210\u529f");
+            i.a().c(new K());
         }
     }
 }

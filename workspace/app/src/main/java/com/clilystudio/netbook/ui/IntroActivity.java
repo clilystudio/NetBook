@@ -1,141 +1,146 @@
 package com.clilystudio.netbook.ui;
 
 import android.app.Activity;
-import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager$OnPageChangeListener;
 import android.view.View;
-import android.view.View$OnClickListener;
-import android.view.ViewGroup$LayoutParams;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.ImageView$ScaleType;
 import android.widget.LinearLayout;
-import android.widget.LinearLayout$LayoutParams;
 
+import com.clilystudio.netbook.ui.home.HomeActivity;
 import com.clilystudio.netbook.ui.user.AuthLoginActivity;
 
 import java.util.ArrayList;
 
-public class IntroActivity extends Activity implements ViewPager$OnPageChangeListener, View$OnClickListener {
-
-    private static final int[] f = {2130837667, 2130837668};
+public class IntroActivity
+        extends Activity
+        implements ViewPager$OnPageChangeListener,
+        View.OnClickListener {
+    private static final int[] f = new int[]{2130837667, 2130837668};
     private ViewPager a;
     private bc b;
     private Button c;
     private Button d;
-    private ArrayList e;
+    private ArrayList<View> e;
     private ImageView[] g;
     private int h;
     private boolean i = false;
 
-    static ArrayList a(IntroActivity IntroActivity1) {
-        return IntroActivity1.e;
+    static /* synthetic */ ArrayList a(IntroActivity introActivity) {
+        return introActivity.e;
     }
 
-    private static void a(ImageView ImageView1, boolean boolean2) {
-        if (boolean2)
-            ImageView1.setImageResource(2130837927);
-        else
-            ImageView1.setImageResource(2130837926);
+    private static void a(ImageView imageView, boolean bl) {
+        if (bl) {
+            imageView.setImageResource(2130837927);
+            return;
+        }
+        imageView.setImageResource(2130837926);
     }
 
     private void a() {
-        Object Object1 = new LinearLayout$LayoutParams(-1, -1);
-        int int2;
-
-        for (int2 = 0; int2 < 2; ++int2) {
-            Object Object3 = new ImageView((Context) this);
-
-            ((ImageView) Object3).setLayoutParams((ViewGroup$LayoutParams) Object1);
-            ((ImageView) Object3).setImageResource(f[int2]);
-            ((ImageView) Object3).setScaleType(ImageView$ScaleType.FIT_XY);
-            e.add(Object3);
+        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(-1, -1);
+        for (int i = 0; i < 2; ++i) {
+            ImageView imageView = new ImageView(this);
+            imageView.setLayoutParams(layoutParams);
+            imageView.setImageResource(f[i]);
+            imageView.setScaleType(ImageView.ScaleType.FIT_XY);
+            this.e.add(imageView);
         }
-        a.setAdapter((PagerAdapter) b);
-        a.addOnPageChangeListener(this);
-        b();
+        this.a.setAdapter((PagerAdapter) ((Object) this.b));
+        this.a.addOnPageChangeListener(this);
+        this.b();
     }
 
     private void b() {
-        LinearLayout LinearLayout1 = (LinearLayout) findViewById(2131493997);
-        int int2;
-
-        g = new ImageView[2];
-        for (int2 = 0; int2 < 2; ++int2) {
-            g[int2] = (ImageView) LinearLayout1.getChildAt(int2);
-            a(g[int2], false);
-            g[int2].setTag(Integer.valueOf(int2));
+        LinearLayout linearLayout = (LinearLayout) this.findViewById(2131493997);
+        this.g = new ImageView[2];
+        for (int i = 0; i < 2; ++i) {
+            this.g[i] = (ImageView) linearLayout.getChildAt(i);
+            IntroActivity.a(this.g[i], false);
+            this.g[i].setTag(i);
         }
-        h = 0;
-        a(g[h], true);
+        this.h = 0;
+        IntroActivity.a(this.g[this.h], true);
     }
-// Error: Internal #201: 
-// The following method may not be correct.
 
     private void c() {
+        this.startActivity(new Intent(this, HomeActivity.class));
+        this.finish();
     }
 
-    public void onClick(View View1) {
-        switch (View1.getId()) {
-            default:
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            default: {
                 return;
-            case 1137:
-                startActivity(AuthLoginActivity.a((Context) this));
-                com.umeng.a.b.a((Context) this, "intro_quick_login");
-                return;
-            case 1138:
-                c();
-                com.umeng.a.b.a((Context) this, "intro_entry_app");
-                return;
-        }
-    }
-
-    protected void onCreate(Bundle Bundle1) {
-        super.onCreate(Bundle1);
-        setContentView(2130903398);
-        e = new ArrayList();
-        a = (ViewPager) findViewById(2131493996);
-        b = new bc(this);
-        c = (Button) findViewById(2131494001);
-        c.setOnClickListener(this);
-        d = (Button) findViewById(2131494002);
-        d.setOnClickListener(this);
-        a();
-        com.umeng.a.b.a((Context) this, "intro_show_count");
-    }
-
-    public void onPageScrollStateChanged(int int1) {
-    }
-
-    public void onPageScrolled(int int1, float float2, int int3) {
-    }
-
-    public void onPageSelected(int int1) {
-        if (int1 >= 0 && int1 <= 1 && h != int1) {
-            a(g[int1], true);
-            a(g[h], false);
-            h = int1;
-            if (h == 0) {
-                d.setTextColor(getResources().getColor(2131427440));
-                c.setTextColor(getResources().getColor(2131427440));
-            } else {
-                d.setTextColor(getResources().getColor(2131427441));
-                c.setTextColor(getResources().getColor(2131427441));
             }
+            case 2131494001: {
+                this.startActivity(AuthLoginActivity.a(this));
+                b.a(this, "intro_quick_login");
+                return;
+            }
+            case 2131494002:
         }
+        this.c();
+        b.a(this, "intro_entry_app");
     }
 
+    @Override
+    protected void onCreate(Bundle bundle) {
+        super.onCreate(bundle);
+        this.setContentView(2130903398);
+        this.e = new ArrayList();
+        this.a = (ViewPager) this.findViewById(2131493996);
+        this.b = new bc(this);
+        this.c = (Button) this.findViewById(2131494001);
+        this.c.setOnClickListener(this);
+        this.d = (Button) this.findViewById(2131494002);
+        this.d.setOnClickListener(this);
+        this.a();
+        b.a(this, "intro_show_count");
+    }
+
+    @Override
+    public void onPageScrollStateChanged(int n) {
+    }
+
+    @Override
+    public void onPageScrolled(int n, float f, int n2) {
+    }
+
+    @Override
+    public void onPageSelected(int n) {
+        if (n < 0 || n > 1 || this.h == n) {
+            return;
+        }
+        IntroActivity.a(this.g[n], true);
+        IntroActivity.a(this.g[this.h], false);
+        this.h = n;
+        if (this.h == 0) {
+            this.d.setTextColor(this.getResources().getColor(2131427440));
+            this.c.setTextColor(this.getResources().getColor(2131427440));
+            return;
+        }
+        this.d.setTextColor(this.getResources().getColor(2131427441));
+        this.c.setTextColor(this.getResources().getColor(2131427441));
+    }
+
+    @Override
     protected void onResume() {
         super.onResume();
-        if (i)
-            c();
+        if (this.i) {
+            this.c();
+        }
     }
 
+    @Override
     protected void onStop() {
         super.onStop();
-        i = true;
+        this.i = true;
     }
 }

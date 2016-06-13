@@ -3,56 +3,64 @@ package com.clilystudio.netbook.reader;
 import android.content.Context;
 import android.content.Intent;
 import android.view.View;
-import android.view.View$OnClickListener;
 
+import com.clilystudio.netbook.a.f;
 import com.clilystudio.netbook.exception.UnImplementException;
 import com.clilystudio.netbook.ui.post.BookPostTabActivity;
 import com.clilystudio.netbook.util.InsideLinkIntent;
 
-final class bs implements View$OnClickListener {
+final class bs
+        implements View.OnClickListener {
+    private /* synthetic */ ReaderMenuFragment a;
 
-    private ReaderMenuFragment a;
-
-    bs(ReaderMenuFragment ReaderMenuFragment1) {
-        a = ReaderMenuFragment1;
+    bs(ReaderMenuFragment readerMenuFragment) {
+        this.a = readerMenuFragment;
     }
 
-    public final void onClick(View View1) {
-        switch (View1.getId()) {
-            case 2131492933:
+    /*
+     * Enabled aggressive block sorting
+     * Enabled unnecessary exception pruning
+     * Enabled aggressive exception aggregation
+     */
+    @Override
+    public final void onClick(View view) {
+        switch (view.getId()) {
+            default: {
+                return;
+            }
             case 2131492916:
-                if (ReaderMenuFragment.a(a)) {
-                    try {
-                        a.startActivity((Intent) new InsideLinkIntent((Context) a.getActivity(), ReaderMenuFragment.b(a)));
-                    } catch (UnImplementException UnImplementException6) {
-                        UnImplementException6.printStackTrace();
-                        return;
-                    }
-                } else
-                    ReaderMenuFragment.a(a, ReaderMenuFragment.c(a), ReaderMenuFragment.d(a), ReaderMenuFragment.e(a));
-                return;
-            case 2131493452:
-                Intent Intent3;
-
-                com.umeng.a.b.a((Context) a.getActivity(), "reader_menu_topic");
-                Intent3 = BookPostTabActivity.a((Context) a.getActivity(), ReaderMenuFragment.f(a), ReaderMenuFragment.g(a));
-                Intent3.putExtra("extra_sort_type", "created");
-                a.startActivity(Intent3);
-                new com.clilystudio.netbook.a.f(ReaderMenuFragment.f(a)).b(new Void[0]);
-                ReaderMenuFragment.h(a);
-                return;
-            case 2131493455:
-                ReaderMenuFragment.i(a);
-                return;
-            case 2131493459:
-                ReaderActivity ReaderActivity2 = (ReaderActivity) a.getActivity();
-
-                if (ReaderActivity2 != null) {
-                    ReaderActivity2.i();
+            case 2131492933: {
+                if (!ReaderMenuFragment.a(this.a)) {
+                    ReaderMenuFragment.a(this.a, ReaderMenuFragment.c(this.a), ReaderMenuFragment.d(this.a), ReaderMenuFragment.e(this.a));
                     return;
                 }
-            default:
+                try {
+                    this.a.startActivity(new InsideLinkIntent((Context) this.a.getActivity(), ReaderMenuFragment.b(this.a)));
+                    return;
+                } catch (UnImplementException var6_2) {
+                    var6_2.printStackTrace();
+                    return;
+                }
+            }
+            case 2131493452: {
+                b.a(this.a.getActivity(), "reader_menu_topic");
+                Intent intent = BookPostTabActivity.a(this.a.getActivity(), ReaderMenuFragment.f(this.a), ReaderMenuFragment.g(this.a));
+                intent.putExtra("extra_sort_type", "created");
+                this.a.startActivity(intent);
+                new f(ReaderMenuFragment.f(this.a)).b(new Void[0]);
+                ReaderMenuFragment.h(this.a);
                 return;
+            }
+            case 2131493455: {
+                ReaderMenuFragment.i(this.a);
+                return;
+            }
+            case 2131493459: {
+                ReaderActivity readerActivity = (ReaderActivity) this.a.getActivity();
+                if (readerActivity == null) return;
+                readerActivity.i();
+                return;
+            }
         }
     }
 }

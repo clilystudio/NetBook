@@ -2,48 +2,41 @@ package com.clilystudio.netbook.ui.home;
 
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.AdapterView$OnItemLongClickListener;
 
 import com.clilystudio.netbook.model.BookShelf;
 
-final class q implements AdapterView$OnItemLongClickListener {
+final class q
+        implements AdapterView.OnItemLongClickListener {
+    private /* synthetic */ HomeShelfFragment a;
 
-    private HomeShelfFragment a;
-
-    q(HomeShelfFragment HomeShelfFragment1) {
-        a = HomeShelfFragment1;
+    q(HomeShelfFragment homeShelfFragment) {
+        this.a = homeShelfFragment;
     }
 
-    public final boolean onItemLongClick(AdapterView AdapterView1, View View2, int int3, long long4) {
-        BookShelf BookShelf6 = HomeShelfFragment.a(a, int3);
-
-        if (BookShelf6 != null) {
-            int int7 = BookShelf6.getType();
-            Object[] Object_1darray8;
-
-            if (int7 == 1)
-                Object_1darray8 = new String[]{"\u5220\u9664", "\u53BB\u5E7F\u544A"};
-            else if (int7 == 0) {
-                if (BookShelf6.isTop())
-                    Object_1darray8 = new String[]{"\u53D6\u6D88\u7F6E\u9876", "\u4E66\u7C4D\u8BE6\u60C5", "\u79FB\u5165\u517B\u80A5\u533A", "\u7F13\u5B58\u5168\u672C", "\u5220\u9664", "\u6279\u91CF\u7BA1\u7406"};
-                else
-                    Object_1darray8 = new String[]{"\u7F6E\u9876", "\u4E66\u7C4D\u8BE6\u60C5", "\u79FB\u5165\u517B\u80A5\u533A", "\u7F13\u5B58\u5168\u672C", "\u5220\u9664", "\u6279\u91CF\u7BA1\u7406"};
-            } else if (int7 == 2) {
-                if (BookShelf6.isTop())
-                    Object_1darray8 = new String[]{"\u53D6\u6D88\u7F6E\u9876", "\u5220\u9664", "\u6279\u91CF\u7BA1\u7406"};
-                else
-                    Object_1darray8 = new String[]{"\u7F6E\u9876", "\u5220\u9664", "\u6279\u91CF\u7BA1\u7406"};
-            } else {
-                Object_1darray8 = null;
-                if (int7 == 4) {
-                    if (BookShelf6.isTop())
-                        Object_1darray8 = new String[]{"\u53D6\u6D88\u7F6E\u9876", "\u4E66\u7C4D\u8BE6\u60C5", "\u5220\u9664", "\u6279\u91CF\u7BA1\u7406"};
-                    else
-                        Object_1darray8 = new String[]{"\u7F6E\u9876", "\u4E66\u7C4D\u8BE6\u60C5", "\u5220\u9664", "\u6279\u91CF\u7BA1\u7406"};
-                }
-            }
-            HomeShelfFragment.a(a, (CharSequence[]) Object_1darray8, BookShelf6);
+    /*
+     * Enabled aggressive block sorting
+     */
+    @Override
+    public final boolean onItemLongClick(AdapterView<?> adapterView, View view, int n2, long l2) {
+        CharSequence[] arrcharSequence;
+        BookShelf bookShelf = HomeShelfFragment.a(this.a, n2);
+        if (bookShelf == null) {
+            return true;
         }
+        int n3 = bookShelf.getType();
+        if (n3 == 1) {
+            arrcharSequence = new String[]{"\u5220\u9664", "\u53bb\u5e7f\u544a"};
+        } else if (n3 == 0) {
+            arrcharSequence = bookShelf.isTop() ? new String[]{"\u53d6\u6d88\u7f6e\u9876", "\u4e66\u7c4d\u8be6\u60c5", "\u79fb\u5165\u517b\u80a5\u533a", "\u7f13\u5b58\u5168\u672c", "\u5220\u9664", "\u6279\u91cf\u7ba1\u7406"} : new String[]{"\u7f6e\u9876", "\u4e66\u7c4d\u8be6\u60c5", "\u79fb\u5165\u517b\u80a5\u533a", "\u7f13\u5b58\u5168\u672c", "\u5220\u9664", "\u6279\u91cf\u7ba1\u7406"};
+        } else if (n3 == 2) {
+            arrcharSequence = bookShelf.isTop() ? new String[]{"\u53d6\u6d88\u7f6e\u9876", "\u5220\u9664", "\u6279\u91cf\u7ba1\u7406"} : new String[]{"\u7f6e\u9876", "\u5220\u9664", "\u6279\u91cf\u7ba1\u7406"};
+        } else {
+            arrcharSequence = null;
+            if (n3 == 4) {
+                arrcharSequence = bookShelf.isTop() ? new String[]{"\u53d6\u6d88\u7f6e\u9876", "\u4e66\u7c4d\u8be6\u60c5", "\u5220\u9664", "\u6279\u91cf\u7ba1\u7406"} : new String[]{"\u7f6e\u9876", "\u4e66\u7c4d\u8be6\u60c5", "\u5220\u9664", "\u6279\u91cf\u7ba1\u7406"};
+            }
+        }
+        HomeShelfFragment.a(this.a, arrcharSequence, bookShelf);
         return true;
     }
 }

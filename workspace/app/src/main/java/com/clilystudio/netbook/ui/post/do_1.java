@@ -1,84 +1,66 @@
 package com.clilystudio.netbook.ui.post;
 
-final class do extends com.clilystudio.netbook.a.e{
+final class do
+        extends com.clilystudio.netbook.a.e<String, Void, ReviewList>{
+private /* synthetic */ ReviewListActivity a;
 
-        do(ReviewListActivity ReviewListActivity1,byte byte2)
-        {
-        this(ReviewListActivity1);
+private do(ReviewListActivity reviewListActivity){
+        this.a=reviewListActivity;
         }
 
-private ReviewListActivity a;
-
-private do(ReviewListActivity ReviewListActivity1)
-        {
-        a=ReviewListActivity1;
+    /* synthetic */ do(ReviewListActivity reviewListActivity,byte by){
+        this(reviewListActivity);
         }
 
-private transient ReviewList a(String[]String_1darray1)
-        {
-        if(!isCancelled())
-        {
-        try
-        {
-        ReviewList ReviewList4;
-
-        ReviewListActivity.w(a);
-        ReviewList4=com.clilystudio.netbook.api.b.b().a(String_1darray1[0],String_1darray1[1],String_1darray1[2],ReviewListActivity.l(a).size(),20,ReviewListActivity.p(a));
+private /* varargs */ ReviewList a(String...arrstring){
+        if(!this.isCancelled()){
+        try{
+        ReviewListActivity.w(this.a);
+        ReviewList reviewList=b.b().a(arrstring[0],arrstring[1],arrstring[2],ReviewListActivity.l(this.a).size(),20,ReviewListActivity.p(this.a));
+        return reviewList;
         }
-        catch(Exception Exception2)
-        {
-        Exception2.printStackTrace();
+        catch(Exception var2_3){
+        var2_3.printStackTrace();
         }
         }
         return null;
         }
 
-protected final Object doInBackground(Object[]Object_1darray1)
-        {
-        return a((String[])Object_1darray1);
+@Override
+protected final /* synthetic */ Object doInBackground(Object[]arrobject){
+        return this.a((String[])arrobject);
         }
 
-protected final void onPostExecute(Object Object1)
-        {
-        Object Object2=(ReviewList)Object1;
-
-        super.onPostExecute(Object2);
-        ReviewListActivity.e(a).setVisibility(8);
-        ReviewListActivity.r(a).setVisibility(8);
-        ReviewListActivity.s(a).setVisibility(8);
-        ReviewListActivity.n(a).n();
-        if(!isCancelled())
-        {
-        if(Object2!=null&&((ReviewList)Object2).getReviews()!=null)
-        {
-        ReviewSummary[]ReviewSummary_1darray3=((ReviewList)Object2).getReviews();
-        int int4=ReviewSummary_1darray3.length;
-
-        if(int4>0)
-        {
-        Object Object5=Arrays.asList(ReviewSummary_1darray3);
-
-        ReviewListActivity.l(a).addAll((Collection)Object5);
-        ReviewListActivity.t(a).a((Collection)ReviewListActivity.l(a));
-        if(int4<20)
-        ReviewListActivity.n(a).setOnLastItemVisibleListener(null);
-        else
-        {
-        ReviewListActivity.n(a).setOnLastItemVisibleListener(ReviewListActivity.u(a));
+    /*
+     * Enabled force condition propagation
+     * Lifted jumps to return sites
+     */
+@Override
+protected final /* synthetic */ void onPostExecute(Object object){
+        ReviewList reviewList=(ReviewList)object;
+        super.onPostExecute(reviewList);
+        ReviewListActivity.e(this.a).setVisibility(8);
+        ReviewListActivity.r(this.a).setVisibility(8);
+        ReviewListActivity.s(this.a).setVisibility(8);
+        ReviewListActivity.n(this.a).n();
+        if(this.isCancelled())return;
+        if(reviewList!=null&&reviewList.getReviews()!=null){
+        ReviewSummary[]arrreviewSummary=reviewList.getReviews();
+        int n=arrreviewSummary.length;
+        if(n>0){
+        List<ReviewSummary>list=Arrays.asList(arrreviewSummary);
+        ReviewListActivity.l(this.a).addAll(list);
+        ReviewListActivity.t(this.a).a(ReviewListActivity.l(this.a));
+        if(n<20){
+        ReviewListActivity.n(this.a).setOnLastItemVisibleListener(null);
         return;
         }
-        }
-        else
-        {
-        ReviewListActivity.n(a).setOnLastItemVisibleListener(null);
+        ReviewListActivity.n(this.a).setOnLastItemVisibleListener(ReviewListActivity.u(this.a));
         return;
         }
-        }
-        else
-        {
-        com.clilystudio.netbook.util.e.a((Activity)a,"\u52A0\u8F7D\u5931\u8D25\uFF0C\u8BF7\u68C0\u67E5\u7F51\u7EDC\u6216\u7A0D\u540E\u518D\u8BD5");
+        ReviewListActivity.n(this.a).setOnLastItemVisibleListener(null);
         return;
         }
-        }
+        e.a((Activity)this.a,"\u52a0\u8f7d\u5931\u8d25\uff0c\u8bf7\u68c0\u67e5\u7f51\u7edc\u6216\u7a0d\u540e\u518d\u8bd5");
         }
         }

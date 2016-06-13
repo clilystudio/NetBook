@@ -1,21 +1,22 @@
 package com.clilystudio.netbook.model;
 
-public class UshaqiOnlineConfig {
+import android.text.TextUtils;
 
+public class UshaqiOnlineConfig {
     private String serverError;
 
     public String getServerError() {
-        return serverError;
+        return this.serverError;
     }
 
     public boolean isServerError() {
-        if (!android.text.TextUtils.isEmpty((CharSequence) serverError))
+        if (!TextUtils.isEmpty(this.serverError)) {
             return true;
-        else
-            return false;
+        }
+        return false;
     }
 
-    public void setServerError(String String1) {
-        serverError = String1;
+    public void setServerError(String string) {
+        this.serverError = string;
     }
 }

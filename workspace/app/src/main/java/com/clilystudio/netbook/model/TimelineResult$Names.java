@@ -1,27 +1,27 @@
 package com.clilystudio.netbook.model;
 
 public class TimelineResult$Names {
-
-    TimelineResult this$0;     // final access specifier removed
+    final /* synthetic */ TimelineResult this$0;
     private String id;
     private String[] names;
-    public TimelineResult$Names(TimelineResult TimelineResult1) {
-        this$0 = TimelineResult1;
+
+    public TimelineResult$Names(TimelineResult timelineResult) {
+        this.this$0 = timelineResult;
     }
 
     public String getId() {
-        return id;
+        return this.id;
     }
 
-    public void setId(String String1) {
-        id = String1;
+    public void setId(String string) {
+        this.id = string;
     }
 
     public String[] getNames() {
-        return names;
+        return this.names;
     }
 
-    public void setNames(String[] String_1darray1) {
-        names = String_1darray1;
+    public void setNames(String[] arrstring) {
+        this.names = arrstring;
     }
 }

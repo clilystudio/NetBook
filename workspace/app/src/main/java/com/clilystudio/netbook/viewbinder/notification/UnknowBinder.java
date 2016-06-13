@@ -2,25 +2,29 @@ package com.clilystudio.netbook.viewbinder.notification;
 
 import com.clilystudio.netbook.model.NotificationItem;
 
-public class UnknowBinder extends OfficialNotifBinder {
-
-    public UnknowBinder(NotificationItem NotificationItem1) {
-        super(NotificationItem1);
+public class UnknowBinder
+        extends OfficialNotifBinder {
+    public UnknowBinder(NotificationItem notificationItem) {
+        super(notificationItem);
     }
 
+    @Override
     protected int getIconRes() {
         return 2130837916;
     }
 
+    @Override
     public String getLabel() {
         return "unknown";
     }
 
+    @Override
     public String getMainText() {
-        return "\u4F60\u6709\u4E00\u6761\u65B0\u6D88\u606F\uFF0C\u5F53\u524D\u7248\u672C\u65E0\u529B\u6253\u5F00\uFF0C\u8BF7\u5B89\u88C5\u6700\u65B0\u7248\u672C";
+        return "\u4f60\u6709\u4e00\u6761\u65b0\u6d88\u606f\uff0c\u5f53\u524d\u7248\u672c\u65e0\u529b\u6253\u5f00\uff0c\u8bf7\u5b89\u88c5\u6700\u65b0\u7248\u672c";
     }
 
+    @Override
     public String getSubText() {
-        return "\u5F53\u524D\u7248\u672C\u4E0D\u652F\u6301\u67E5\u770B\u8BE5\u6D88\u606F";
+        return "\u5f53\u524d\u7248\u672c\u4e0d\u652f\u6301\u67e5\u770b\u8be5\u6d88\u606f";
     }
 }

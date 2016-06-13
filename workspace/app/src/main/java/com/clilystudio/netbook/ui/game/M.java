@@ -5,9 +5,9 @@ import android.view.View;
 
 import com.clilystudio.netbook.widget.GameItemSection;
 
-final class M extends ay {
-
-    public M(GameLayoutFragment$LayoutAdapter LayoutAdapter1, GameItemSection GameItemSection2) {
-        super((View) GameItemSection2);
+final class M
+        extends ay {
+    public M(GameLayoutFragment.LayoutAdapter layoutAdapter, GameItemSection gameItemSection) {
+        super((View) gameItemSection);
     }
 }

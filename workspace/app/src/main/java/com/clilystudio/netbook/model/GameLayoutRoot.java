@@ -2,33 +2,33 @@ package com.clilystudio.netbook.model;
 
 import java.util.List;
 
-public class GameLayoutRoot extends Root {
-
-    private List layout;
+public class GameLayoutRoot
+        extends Root {
+    private List<ModuleLayout> layout;
     private Game promotion;
     private Game[] promotions;
 
-    public List getLayout() {
-        return layout;
+    public List<ModuleLayout> getLayout() {
+        return this.layout;
     }
 
-    public void setLayout(List List1) {
-        layout = List1;
+    public void setLayout(List<ModuleLayout> list) {
+        this.layout = list;
     }
 
     public Game getPromotion() {
-        return promotion;
+        return this.promotion;
     }
 
-    public void setPromotion(Game Game1) {
-        promotion = Game1;
+    public void setPromotion(Game game) {
+        this.promotion = game;
     }
 
     public Game[] getPromotions() {
-        return promotions;
+        return this.promotions;
     }
 
-    public void setPromotions(Game[] Game_1darray1) {
-        promotions = Game_1darray1;
+    public void setPromotions(Game[] arrgame) {
+        this.promotions = arrgame;
     }
 }

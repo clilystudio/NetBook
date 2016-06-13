@@ -3,41 +3,38 @@ package com.clilystudio.netbook.ui.post;
 import android.app.Activity;
 import android.support.design.widget.am;
 
+import com.clilystudio.netbook.a.c;
+import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.db.RetweenRecord;
 import com.clilystudio.netbook.model.PostPublish;
+import com.clilystudio.netbook.util.e;
 
-final class dC extends com.clilystudio.netbook.a.c {
+final class dC
+        extends c<String, PostPublish> {
+    private /* synthetic */ TweetDetailActivity a;
 
-    private TweetDetailActivity a;
-
-    public dC(TweetDetailActivity TweetDetailActivity1, Activity Activity2, int int3) {
-        super(Activity2, 2131034473);
-        a = TweetDetailActivity1;
+    public dC(TweetDetailActivity tweetDetailActivity, Activity activity, int n) {
+        this.a = tweetDetailActivity;
+        super(activity, 2131034473);
     }
 
-    private transient PostPublish a(String[] String_1darray1) {
-        PostPublish PostPublish3;
-
+    private /* varargs */ PostPublish a(String... arrstring) {
         try {
-            PostPublish3 = com.clilystudio.netbook.api.b.b().m(String_1darray1[0], String_1darray1[1]);
-        } catch (Exception Exception2) {
-            Exception2.printStackTrace();
+            PostPublish postPublish = b.b().m(arrstring[0], arrstring[1]);
+            return postPublish;
+        } catch (Exception var2_3) {
+            var2_3.printStackTrace();
             return null;
         }
-        return PostPublish3;
     }
 
-    public final volatile Object a(Object[] Object_1darray1) {
-        return a((String[]) Object_1darray1);
-    }
-
-    public final void a(Object Object1) {
-        PostPublish PostPublish2 = (PostPublish) Object1;
-
-        if (PostPublish2 != null && PostPublish2.isOk()) {
-            com.clilystudio.netbook.util.e.a((Activity) a, "\u8F6C\u53D1\u6210\u529F");
-            TweetDetailActivity.e(a);
-            RetweenRecord.save2DB(am.a((Activity) a).getUser().getId(), TweetDetailActivity.c(a).getTweet().get_id());
+    @Override
+    public final /* synthetic */ void a(Object object) {
+        PostPublish postPublish = (PostPublish) object;
+        if (postPublish != null && postPublish.isOk()) {
+            e.a((Activity) this.a, (String) "\u8f6c\u53d1\u6210\u529f");
+            TweetDetailActivity.e(this.a);
+            RetweenRecord.save2DB(am.a((Activity) this.a).getUser().getId(), TweetDetailActivity.c(this.a).getTweet().get_id());
         }
     }
 }

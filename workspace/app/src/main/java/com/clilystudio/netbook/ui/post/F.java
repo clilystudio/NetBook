@@ -1,39 +1,73 @@
 package com.clilystudio.netbook.ui.post;
 
 import android.app.Activity;
+import android.content.Intent;
 
+import com.clilystudio.netbook.a.c;
+import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.model.PostPublish;
+import com.clilystudio.netbook.util.e;
 
-final class F extends com.clilystudio.netbook.a.c {
+final class F
+        extends c<String, PostPublish> {
+    private /* synthetic */ AddReviewContentActivity a;
 
-    private AddReviewContentActivity a;
-
-    public F(AddReviewContentActivity AddReviewContentActivity1, Activity Activity2, int int3) {
-        super(Activity2, 2131034430);
-        a = AddReviewContentActivity1;
+    public F(AddReviewContentActivity addReviewContentActivity, Activity activity, int n) {
+        this.a = addReviewContentActivity;
+        super(activity, 2131034430);
     }
 
-    private transient PostPublish a(String[] String_1darray1) {
-        PostPublish PostPublish3;
-
+    private /* varargs */ PostPublish a(String... arrstring) {
         try {
-            if (!com.clilystudio.netbook.ui.post.AddReviewContentActivity.g(a))
-                return com.clilystudio.netbook.api.b.b().a(String_1darray1[0], String_1darray1[1], String_1darray1[2], String_1darray1[3], String_1darray1[4], AddReviewContentActivity.h(a));
-            else
-                PostPublish3 = com.clilystudio.netbook.api.b.b().c(String_1darray1[0], String_1darray1[1], String_1darray1[2], String_1darray1[3], String_1darray1[4]);
-        } catch (Exception Exception2) {
-            Exception2.printStackTrace();
+            if (!AddReviewContentActivity.g(this.a)) {
+                return b.b().a(arrstring[0], arrstring[1], arrstring[2], arrstring[3], arrstring[4], AddReviewContentActivity.h(this.a));
+            }
+            PostPublish postPublish = b.b().c(arrstring[0], arrstring[1], arrstring[2], arrstring[3], arrstring[4]);
+            return postPublish;
+        } catch (Exception var2_3) {
+            var2_3.printStackTrace();
             return null;
         }
-        return PostPublish3;
     }
 
-    public final volatile Object a(Object[] Object_1darray1) {
-        return a((String[]) Object_1darray1);
-    }
-// Error: Internal #201: 
-// The following method may not be correct.
-
-    public final void a(Object Object1) {
+    /*
+     * Enabled aggressive block sorting
+     */
+    @Override
+    public final /* synthetic */ void a(Object object) {
+        PostPublish postPublish = (PostPublish) object;
+        if (postPublish == null) {
+            e.a((Activity) this.a, (String) "\u53d1\u5e03\u5f02\u5e38\uff0c\u8bf7\u68c0\u67e5\u7f51\u7edc\u6216\u8005\u7a0d\u540e\u518d\u8bd5");
+            return;
+        }
+        if (postPublish.isOk()) {
+            e.a((Activity) this.a, (String) "\u53d1\u5e03\u6210\u529f");
+            AddReviewContentActivity.i(this.a);
+            if (!AddReviewContentActivity.g(this.a)) {
+                Intent intent = AddReviewContentActivity.h(this.a) ? new Intent(this.a, BookPostTabActivity.class) : new Intent(this.a, ReviewListActivity.class);
+                this.a.startActivity(intent);
+            }
+            this.a.setResult(256);
+            this.a.finish();
+            return;
+        }
+        if ("TOKEN_INVALID".equals(postPublish.getCode())) {
+            this.a.d();
+            return;
+        }
+        if ("LV_NOT_ENOUGH".equals(postPublish.getCode())) {
+            e.a((Activity) this.a, (String) "\u5f88\u62b1\u6b49\uff0c\u60a8\u7684\u7b49\u7ea7\u4e0d\u591f");
+            return;
+        }
+        if (!"FORBIDDEN".equals(postPublish.getCode())) {
+            e.a((Activity) this.a, (String) "\u53d1\u5e03\u5931\u8d25\uff0c\u8bf7\u91cd\u8bd5");
+            return;
+        }
+        String string = postPublish.getMsg();
+        if (string != null) {
+            e.a((Activity) this.a, (String) string);
+            return;
+        }
+        e.a((Activity) this.a, (int) 2131034388);
     }
 }

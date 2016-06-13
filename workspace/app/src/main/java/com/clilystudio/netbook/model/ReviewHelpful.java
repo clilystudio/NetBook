@@ -1,23 +1,22 @@
 package com.clilystudio.netbook.model;
 
 public class ReviewHelpful {
-
     private int no;
     private int yes;
 
     public int getNo() {
-        return no;
+        return this.no;
     }
 
-    public void setNo(int int1) {
-        no = int1;
+    public void setNo(int n) {
+        this.no = n;
     }
 
     public int getYes() {
-        return yes;
+        return this.yes;
     }
 
-    public void setYes(int int1) {
-        yes = int1;
+    public void setYes(int n) {
+        this.yes = n;
     }
 }

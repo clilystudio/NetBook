@@ -1,9 +1,7 @@
 package com.clilystudio.netbook.ui;
 
 import android.app.Activity;
-import android.content.Context;
 
-import com.umeng.a.b;
 import com.clilystudio.netbook.util.e;
 
 import java.util.HashMap;
@@ -11,22 +9,25 @@ import java.util.HashMap;
 import cn.sharesdk.framework.Platform;
 import cn.sharesdk.framework.PlatformActionListener;
 
-final class cg implements PlatformActionListener {
+final class cg
+        implements PlatformActionListener {
+    private /* synthetic */ ShareRemoveAdActivity a;
 
-    private ShareRemoveAdActivity a;
-
-    cg(ShareRemoveAdActivity ShareRemoveAdActivity1) {
-        a = ShareRemoveAdActivity1;
+    cg(ShareRemoveAdActivity shareRemoveAdActivity) {
+        this.a = shareRemoveAdActivity;
     }
 
-    public final void onCancel(Platform Platform1, int int2) {
+    @Override
+    public final void onCancel(Platform platform, int n) {
     }
 
-    public final void onComplete(Platform Platform1, int int2, HashMap HashMap3) {
-        e.a((Activity) a, "\u5206\u4EAB\u5B8C\u6210!");
-        b.a((Context) a, "share_remove_ad_count");
+    @Override
+    public final void onComplete(Platform platform, int n, HashMap<String, Object> hashMap) {
+        e.a((Activity) this.a, (String) "\u5206\u4eab\u5b8c\u6210!");
+        b.a(this.a, "share_remove_ad_count");
     }
 
-    public final void onError(Platform Platform1, int int2, Throwable Throwable3) {
+    @Override
+    public final void onError(Platform platform, int n, Throwable throwable) {
     }
 }

@@ -1,32 +1,31 @@
 package com.clilystudio.netbook.model;
 
 public class CategoryRoot {
-
     private CategoryRoot$Category[] female;
     private CategoryRoot$Category[] male;
     private boolean ok;
 
     public CategoryRoot$Category[] getFemale() {
-        return female;
+        return this.female;
     }
 
-    public void setFemale(CategoryRoot$Category[] Category_1darray1) {
-        female = Category_1darray1;
+    public void setFemale(CategoryRoot$Category[] arrcategoryRoot$Category) {
+        this.female = arrcategoryRoot$Category;
     }
 
     public CategoryRoot$Category[] getMale() {
-        return male;
+        return this.male;
     }
 
-    public void setMale(CategoryRoot$Category[] Category_1darray1) {
-        male = Category_1darray1;
+    public void setMale(CategoryRoot$Category[] arrcategoryRoot$Category) {
+        this.male = arrcategoryRoot$Category;
     }
 
     public boolean isOk() {
-        return ok;
+        return this.ok;
     }
 
-    public void setOk(boolean boolean1) {
-        ok = boolean1;
+    public void setOk(boolean bl) {
+        this.ok = bl;
     }
 }

@@ -1,65 +1,70 @@
 package com.clilystudio.netbook.model;
 
+import com.activeandroid.query.Delete;
+import com.activeandroid.query.From;
+import com.activeandroid.query.Select;
 import com.clilystudio.netbook.db.BookFile;
 
 import java.util.Iterator;
 import java.util.List;
 
 public class TxtFileObject {
-// Error: Internal #201: 
-// The following method may not be correct.
-
-    public static boolean add(BookFile BookFile1) {
+    public static boolean add(BookFile bookFile) {
+        Object[] arrobject;
+        From from = new Select().from(BookFile.class);
+        if (!from.where("name = ?", arrobject = new Object[]{bookFile.getName()}).execute().isEmpty()) {
+            return false;
+        }
+        bookFile.save();
+        return true;
     }
-// Error: Internal #201: 
-// The following method may not be correct.
 
-    public static void delete(BookFile BookFile1) {
+    public static void delete(BookFile bookFile) {
+        From from = new Delete().from(BookFile.class);
+        Object[] arrobject = new Object[]{bookFile.getFilePath()};
+        from.where("file_path = ?", arrobject).execute();
     }
 
-    public static BookFile getProgress(String String1) {
-        Iterator Iterator2 = getTxtFiles().iterator();
-
-        while (Iterator2.hasNext()) {
-            BookFile BookFile3 = (BookFile) Iterator2.next();
-
-            if (!BookFile3.filePath.equals(String1))
-                continue;
-            return BookFile3;
+    public static BookFile getProgress(String string) {
+        for (BookFile bookFile : TxtFileObject.getTxtFiles()) {
+            if (!bookFile.filePath.equals(string)) continue;
+            return bookFile;
         }
         return null;
     }
-// Error: Internal #201: 
-// The following method may not be correct.
 
-    public static BookFile getTxtFile(String String1) {
-    }
-// Error: Internal #201: 
-// The following method may not be correct.
-
-    public static List getTxtFiles() {
-    }
-// Error: Internal #201: 
-// The following method may not be correct.
-
-    public static void remove(BookFile BookFile1) {
+    public static BookFile getTxtFile(String string) {
+        List list = new Select().from(BookFile.class).where("file_path = ?", string).execute();
+        if (!list.isEmpty()) {
+            return (BookFile) list.get(0);
+        }
+        return null;
     }
 
-    public static void saveTxtFiles(List List1) {
-        Iterator Iterator2 = List1.iterator();
-
-        while (Iterator2.hasNext())
-            ((BookFile) Iterator2.next()).save();
+    public static List<BookFile> getTxtFiles() {
+        return new Select().from(BookFile.class).execute();
     }
 
-    public static void updateProgress(BookFile BookFile1) {
-        BookFile BookFile2 = getTxtFile(BookFile1.getFilePath());
+    public static void remove(BookFile bookFile) {
+        From from = new Delete().from(BookFile.class);
+        Object[] arrobject = new Object[]{bookFile.getName()};
+        from.where("name = ?", arrobject).execute();
+    }
 
-        if (BookFile2 != null) {
-            BookFile2.progress = BookFile1.getProgress();
-            BookFile2.setProgressChapterIndex(BookFile1.getProgressChapterIndex());
-            BookFile2.setProgressCharOffset(BookFile1.getProgressCharOffset());
-            BookFile2.save();
+    public static void saveTxtFiles(List<BookFile> list) {
+        Iterator<BookFile> iterator = list.iterator();
+        while (iterator.hasNext()) {
+            iterator.next().save();
+        }
+    }
+
+    public static void updateProgress(BookFile bookFile) {
+        BookFile bookFile2 = TxtFileObject.getTxtFile(bookFile.getFilePath());
+        if (bookFile2 != null) {
+            bookFile2.progress = bookFile.getProgress();
+            bookFile2.setProgressChapterIndex(bookFile.getProgressChapterIndex());
+            bookFile2.setProgressCharOffset(bookFile.getProgressCharOffset());
+            bookFile2.save();
         }
     }
 }

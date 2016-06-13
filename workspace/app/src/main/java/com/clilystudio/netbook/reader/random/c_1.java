@@ -1,17 +1,17 @@
 package com.clilystudio.netbook.reader.random;
 
 import android.view.View;
-import android.view.View$OnClickListener;
 
-final class c implements View$OnClickListener {
+final class c
+        implements View.OnClickListener {
+    private /* synthetic */ ReaderRandomActionBar a;
 
-    private ReaderRandomActionBar a;
-
-    c(ReaderRandomActionBar ReaderRandomActionBar1) {
-        a = ReaderRandomActionBar1;
+    c(ReaderRandomActionBar readerRandomActionBar) {
+        this.a = readerRandomActionBar;
     }
 
-    public final void onClick(View View1) {
-        ReaderRandomActionBar.a(a, View1.getId());
+    @Override
+    public final void onClick(View view) {
+        ReaderRandomActionBar.a(this.a, view.getId());
     }
 }

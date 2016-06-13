@@ -2,54 +2,63 @@ package com.clilystudio.netbook.ui.game;
 
 import android.app.Activity;
 
+import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.model.GamePostRoot;
+import com.clilystudio.netbook.util.e;
 
-import java.util.Collection;
+import java.util.Arrays;
 import java.util.List;
 
-final class r extends com.clilystudio.netbook.a.e {
+final class r
+        extends com.clilystudio.netbook.a.e<String, Void, List<GamePostRoot.GamePost>> {
+    private /* synthetic */ GameDetailActivity a;
 
-    private GameDetailActivity a;
-
-    r(GameDetailActivity GameDetailActivity1, byte byte2) {
-        this(GameDetailActivity1);
+    private r(GameDetailActivity gameDetailActivity) {
+        this.a = gameDetailActivity;
     }
 
-    private r(GameDetailActivity GameDetailActivity1) {
-        a = GameDetailActivity1;
+    /* synthetic */ r(GameDetailActivity gameDetailActivity, byte by) {
+        this(gameDetailActivity);
     }
 
-    private transient List a(String[] String_1darray1) {
+    /*
+     * Enabled force condition propagation
+     * Lifted jumps to return sites
+     */
+    private /* varargs */ List<GamePostRoot.GamePost> a(String... arrstring) {
+        GamePostRoot gamePostRoot = b.b().d(arrstring[0], GameDetailActivity.c(this.a).size(), 10);
+        if (gamePostRoot == null) return null;
         try {
-            GamePostRoot GamePostRoot3 = com.clilystudio.netbook.api.b.b().d(String_1darray1[0], GameDetailActivity.c(a).size(), 10);
-        } catch (Exception Exception2) {
-            Exception2.printStackTrace();
+            if (gamePostRoot.getPosts() == null) return null;
+            return Arrays.asList(gamePostRoot.getPosts());
+        } catch (Exception var2_4) {
+            var2_4.printStackTrace();
         }
         return null;
     }
 
-    protected final Object doInBackground(Object[] Object_1darray1) {
-        return a((String[]) Object_1darray1);
+    @Override
+    protected final /* synthetic */ Object doInBackground(Object[] arrobject) {
+        return this.a((String[]) arrobject);
     }
 
-    protected final void onPostExecute(Object Object1) {
-        Object Object2 = (List) Object1;
-
-        super.onPostExecute(Object2);
-        GameDetailActivity.i(a).setVisibility(8);
-        GameDetailActivity.b(a).setOnLastItemListener(GameDetailActivity.j(a));
-        if (Object2 != null) {
-            int int3 = ((List) Object2).size();
-
-            GameDetailActivity.c(a).addAll((Collection) Object2);
-            GameDetailActivity.k(a).a((Collection) GameDetailActivity.c(a));
-            if (int3 < 10) {
-                GameDetailActivity.b(a).removeFooterView(GameDetailActivity.i(a));
-                GameDetailActivity.b(a).setOnLastItemListener(null);
+    @Override
+    protected final /* synthetic */ void onPostExecute(Object object) {
+        List list = (List) object;
+        super.onPostExecute(list);
+        GameDetailActivity.i(this.a).setVisibility(8);
+        GameDetailActivity.b(this.a).setOnLastItemListener(GameDetailActivity.j(this.a));
+        if (list != null) {
+            int n2 = list.size();
+            GameDetailActivity.c(this.a).addAll(list);
+            GameDetailActivity.k(this.a).a(GameDetailActivity.c(this.a));
+            if (n2 < 10) {
+                GameDetailActivity.b(this.a).removeFooterView(GameDetailActivity.i(this.a));
+                GameDetailActivity.b(this.a).setOnLastItemListener(null);
             }
-        } else {
-            GameDetailActivity.l(a);
-            com.clilystudio.netbook.util.e.a((Activity) a, "\u52A0\u8F7D\u5931\u8D25\uFF0C\u8BF7\u68C0\u67E5\u7F51\u7EDC\u6216\u8005\u7A0D\u540E\u518D\u8BD5");
+            return;
         }
+        GameDetailActivity.l(this.a);
+        e.a((Activity) this.a, "\u52a0\u8f7d\u5931\u8d25\uff0c\u8bf7\u68c0\u67e5\u7f51\u7edc\u6216\u8005\u7a0d\u540e\u518d\u8bd5");
     }
 }

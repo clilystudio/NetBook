@@ -5,25 +5,30 @@ import android.text.TextWatcher;
 import android.widget.Button;
 import android.widget.EditText;
 
-final class W implements TextWatcher {
+final class W
+        implements TextWatcher {
+    private /* synthetic */ EditText a;
+    private /* synthetic */ Button b;
 
-    private EditText a;
-    private Button b;
-    W(AddVoteItemActivity AddVoteItemActivity1, EditText EditText2, Button Button3) {
-        a = EditText2;
-        b = Button3;
+    W(AddVoteItemActivity addVoteItemActivity, EditText editText, Button button) {
+        this.a = editText;
+        this.b = button;
     }
 
-    public final void afterTextChanged(Editable Editable1) {
+    @Override
+    public final void afterTextChanged(Editable editable) {
     }
 
-    public final void beforeTextChanged(CharSequence CharSequence1, int int2, int int3, int int4) {
+    @Override
+    public final void beforeTextChanged(CharSequence charSequence, int n, int n2, int n3) {
     }
 
-    public final void onTextChanged(CharSequence CharSequence1, int int2, int int3, int int4) {
-        if (com.clilystudio.netbook.hpay100.a.a.Q(a.getText().toString()))
-            b.setEnabled(false);
-        else
-            b.setEnabled(true);
+    @Override
+    public final void onTextChanged(CharSequence charSequence, int n, int n2, int n3) {
+        if (a.Q(this.a.getText().toString())) {
+            this.b.setEnabled(false);
+            return;
+        }
+        this.b.setEnabled(true);
     }
 }

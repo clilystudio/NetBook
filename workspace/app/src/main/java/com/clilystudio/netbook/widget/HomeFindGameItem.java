@@ -2,56 +2,65 @@ package com.clilystudio.netbook.widget;
 
 import android.app.Activity;
 import android.content.Context;
+import android.text.TextUtils;
 import android.util.AttributeSet;
 
 import com.clilystudio.netbook.ui.game.GameTabActivity;
+import com.umeng.a.b;
 
-public class HomeFindGameItem extends HomeFindItem {
-
+public class HomeFindGameItem
+        extends HomeFindItem {
     private String a;
 
-    public HomeFindGameItem(Context Context1, AttributeSet AttributeSet2) {
-        super(Context1, AttributeSet2);
+    public HomeFindGameItem(Activity activity) {
+        super(activity, "\u6e38\u620f\u4e2d\u5fc3", 2130837824, null);
     }
 
-    public HomeFindGameItem(Activity Activity1) {
-        super((Context) Activity1, "\u6E38\u620F\u4E2D\u5FC3", 2130837824, null);
+    public HomeFindGameItem(Context context, AttributeSet attributeSet) {
+        super(context, attributeSet);
     }
 
+    /*
+     * Enabled aggressive block sorting
+     */
     public final void a() {
-        if (com.clilystudio.netbook.hpay100.a.a.w(getContext())) {
-            setVisibility(0);
-            mSubFlag.setVisibility(8);
-            mSubText.setVisibility(8);
-            a = com.umeng.a.b.b(getContext(), "home_game_center_value");
-            if ("1".equals(a)) {
-                if (com.clilystudio.netbook.hpay100.a.a.l(getContext(), "sp_find_item_game_dot")) {
-                    mSubFlag.setVisibility(0);
-                    mSubText.setVisibility(8);
-                    mSubFlag.setImageResource(2130838025);
-                }
-            } else if (!android.text.TextUtils.isEmpty((CharSequence) a) && !"0".equals(a)) {
-                String String1 = com.clilystudio.netbook.hpay100.a.a.d(getContext(), "sp_find_item_game_tips", null);
-
-                if (!a.equals(String1)) {
-                    mSubFlag.setVisibility(8);
-                    mSubText.setVisibility(0);
-                    mSubText.setText((CharSequence) a);
-                    return;
-                }
+        if (!a.w(this.getContext())) {
+            this.setVisibility(8);
+            return;
+        }
+        this.setVisibility(0);
+        this.mSubFlag.setVisibility(8);
+        this.mSubText.setVisibility(8);
+        this.a = b.b(this.getContext(), "home_game_center_value");
+        if ("1".equals(this.a)) {
+            if (!a.l(this.getContext(), "sp_find_item_game_dot")) return;
+            {
+                this.mSubFlag.setVisibility(0);
+                this.mSubText.setVisibility(8);
+                this.mSubFlag.setImageResource(2130838025);
+                return;
             }
-        } else
-            setVisibility(8);
+        } else {
+            String string;
+            if (TextUtils.isEmpty(this.a) || "0".equals(this.a) || this.a.equals(string = a.d(this.getContext(), "sp_find_item_game_tips", null))) return;
+            {
+                this.mSubFlag.setVisibility(8);
+                this.mSubText.setVisibility(0);
+                this.mSubText.setText(this.a);
+                return;
+            }
+        }
     }
 
-    protected final void a(Context Context1, String String2) {
-        Context1.startActivity(GameTabActivity.a(Context1));
-        if (!android.text.TextUtils.isEmpty((CharSequence) a)) {
-            com.clilystudio.netbook.hpay100.a.a.b(Context1, "sp_find_item_game_dot", false);
-            com.clilystudio.netbook.hpay100.a.a.e(Context1, "sp_find_item_game_tips", a);
-            mSubFlag.setVisibility(8);
-            mSubText.setVisibility(8);
+    @Override
+    protected final void a(Context context, String string) {
+        context.startActivity(GameTabActivity.a(context));
+        if (!TextUtils.isEmpty(this.a)) {
+            a.b(context, "sp_find_item_game_dot", false);
+            a.e(context, "sp_find_item_game_tips", this.a);
+            this.mSubFlag.setVisibility(8);
+            this.mSubText.setVisibility(8);
         }
-        com.umeng.a.b.a(Context1, "GameCenterActivity_open");
+        b.a(context, "GameCenterActivity_open");
     }
 }

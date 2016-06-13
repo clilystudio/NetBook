@@ -1,64 +1,61 @@
 package com.clilystudio.netbook.pay.b;
 
 import android.app.Activity;
+import android.content.Context;
 import android.support.design.widget.am;
 
 import com.clilystudio.netbook.event.i;
+import com.clilystudio.netbook.event.y;
 import com.clilystudio.netbook.event.z;
 import com.clilystudio.netbook.model.ChargePlan;
 import com.clilystudio.netbook.model.YyfPayOrder;
 import com.clilystudio.netbook.model.YyfPayOrder$PayOrder;
+import com.clilystudio.netbook.util.e;
 
 import java.io.IOException;
 
-public final class c extends com.clilystudio.netbook.a.c {
+public final class c
+        extends com.clilystudio.netbook.a.c<ChargePlan, YyfPayOrder> {
+    private /* synthetic */ a a;
 
-    private a a;
-
-    public c(a a1, Activity Activity2) {
-        super(Activity2);
-        a = a1;
+    public c(a a2, Activity activity) {
+        this.a = a2;
+        super(activity);
     }
 
-    private static transient YyfPayOrder a(ChargePlan[] ChargePlan_1darray1) {
-        String String2 = am.e().getToken();
-        YyfPayOrder YyfPayOrder5;
-
+    private static /* varargs */ YyfPayOrder a(ChargePlan... arrchargePlan) {
+        String string = am.e().getToken();
         try {
             com.clilystudio.netbook.api.b.a();
-            YyfPayOrder5 = com.clilystudio.netbook.api.b.b().c(String2, ChargePlan_1darray1[0].get_id());
-        } catch (IOException IOException3) {
+            YyfPayOrder yyfPayOrder = com.clilystudio.netbook.api.b.b().c(string, arrchargePlan[0].get_id());
+            return yyfPayOrder;
+        } catch (IOException var2_3) {
             return null;
         }
-        return YyfPayOrder5;
     }
 
-    public final volatile Object a(Object[] Object_1darray1) {
-        return a((ChargePlan[]) Object_1darray1);
-    }
-
-    public final void a(Object Object1) {
-        YyfPayOrder YyfPayOrder2 = (YyfPayOrder) Object1;
-
-        if (YyfPayOrder2 != null && YyfPayOrder2.isOk()) {
-            YyfPayOrder$PayOrder PayOrder3 = YyfPayOrder2.getPayOrder();
-
+    @Override
+    public final /* synthetic */ void a(Object object) {
+        YyfPayOrder yyfPayOrder = (YyfPayOrder) object;
+        if (yyfPayOrder != null && yyfPayOrder.isOk()) {
+            YyfPayOrder$PayOrder yyfPayOrder$PayOrder = yyfPayOrder.getPayOrder();
             try {
-                com.clilystudio.netbook.hpay100.a.a((Activity) a.a(a), 0, YyfPayOrder2.getOrderId(), PayOrder3.getSpPayCode(), PayOrder3.getAmount(), PayOrder3.getPayName(), (com.clilystudio.netbook.hpay100.y) new b(a, (byte) 0));
-                i.a().c(new z(YyfPayOrder2.getOrderId()));
-            } catch (Exception Exception4) {
-                i.a().c(new com.clilystudio.netbook.event.y(false));
-                com.clilystudio.netbook.util.e.a(a.a(a), "\u53D1\u8D77\u652F\u4ED8\u5931\u8D25\uFF0C\u8BF7\u91CD\u8BD5\u6216\u68C0\u67E5\u7F51\u7EDC\uFF01");
+                com.clilystudio.netbook.hpay100.a.a((Activity) a.a(this.a), 0, yyfPayOrder.getOrderId(), yyfPayOrder$PayOrder.getSpPayCode(), yyfPayOrder$PayOrder.getAmount(), yyfPayOrder$PayOrder.getPayName(), new b(this.a, 0));
+                i.a().c(new z(yyfPayOrder.getOrderId()));
+                return;
+            } catch (Exception var4_4) {
+                i.a().c(new y(false));
+                e.a((Context) a.a(this.a), (String) "\u53d1\u8d77\u652f\u4ed8\u5931\u8d25\uff0c\u8bf7\u91cd\u8bd5\u6216\u68c0\u67e5\u7f51\u7edc\uff01");
                 return;
             }
-        } else {
-            i.a().c(new com.clilystudio.netbook.event.y(false));
-            com.clilystudio.netbook.util.e.a(a.a(a), "\u53D1\u8D77\u652F\u4ED8\u5931\u8D25\uFF0C\u8BF7\u91CD\u8BD5\u6216\u68C0\u67E5\u7F51\u7EDC\uFF01");
         }
+        i.a().c(new y(false));
+        e.a((Context) a.a(this.a), (String) "\u53d1\u8d77\u652f\u4ed8\u5931\u8d25\uff0c\u8bf7\u91cd\u8bd5\u6216\u68c0\u67e5\u7f51\u7edc\uff01");
     }
 
+    @Override
     public final void onCancelled() {
         super.onCancelled();
-        i.a().c(new com.clilystudio.netbook.event.y(false));
+        i.a().c(new y(false));
     }
 }

@@ -2,7 +2,6 @@ package com.clilystudio.netbook.util;
 
 import android.app.Activity;
 import android.app.Dialog;
-import android.content.Context;
 import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,104 +9,105 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 public final class A {
-
     private Activity a;
     private ProgressBar b;
     private TextView c;
     private Dialog d;
+    private String e = "";
+    private String f = "";
     private String g;
     private String h;
     private int i;
-    private String e = "";
-    private String f = "";
-    private Runnable j = new B(this);
-    private Handler k = new C(this);
-    public A(Activity Activity1) {
-        a = Activity1;
+    private Runnable j;
+    private Handler k;
+
+    public A(Activity activity) {
+        this.j = new B(this);
+        this.k = new C(this);
+        this.a = activity;
     }
 
-    static int a(A A1, int int2) {
-        A1.i = int2;
-        return int2;
+    static /* synthetic */ int a(A a, int n) {
+        a.i = n;
+        return n;
     }
 
-    static String a(A A1) {
-        return A1.e;
+    static /* synthetic */ String a(A a) {
+        return a.e;
     }
 
-    static String a(A A1, String String2) {
-        A1.e = String2;
-        return String2;
+    static /* synthetic */ String a(A a, String string) {
+        a.e = string;
+        return string;
     }
 
-    static Handler b(A A1) {
-        return A1.k;
+    static /* synthetic */ Handler b(A a) {
+        return a.k;
     }
 
-    static String b(A A1, String String2) {
-        A1.f = String2;
-        return String2;
+    static /* synthetic */ String b(A a, String string) {
+        a.f = string;
+        return string;
     }
 
-    static String c(A A1) {
-        return A1.f;
+    static /* synthetic */ String c(A a) {
+        return a.f;
     }
 
-    static String c(A A1, String String2) {
-        A1.g = String2;
-        return String2;
+    static /* synthetic */ String c(A a, String string) {
+        a.g = string;
+        return string;
     }
 
-    static int d(A A1) {
-        return A1.i;
+    static /* synthetic */ int d(A a) {
+        return a.i;
     }
 
-    static String d(A A1, String String2) {
-        A1.h = String2;
-        return String2;
+    static /* synthetic */ String d(A a, String string) {
+        a.h = string;
+        return string;
     }
 
-    static ProgressBar e(A A1) {
-        return A1.b;
+    static /* synthetic */ ProgressBar e(A a) {
+        return a.b;
     }
 
-    static String f(A A1) {
-        return A1.h;
+    static /* synthetic */ String f(A a) {
+        return a.h;
     }
 
-    static String g(A A1) {
-        return A1.g;
+    static /* synthetic */ String g(A a) {
+        return a.g;
     }
 
-    static TextView h(A A1) {
-        return A1.c;
+    static /* synthetic */ TextView h(A a) {
+        return a.c;
     }
 
-    static void i(A A1) {
+    static /* synthetic */ void i(A a) {
         try {
-            A1.d.dismiss();
-        } catch (Exception Exception2) {
-            Exception2.printStackTrace();
+            a.d.dismiss();
+            return;
+        } catch (Exception var1_1) {
+            var1_1.printStackTrace();
             return;
         }
     }
 
-    static Activity j(A A1) {
-        return A1.a;
+    static /* synthetic */ Activity j(A a) {
+        return a.a;
     }
 
     public final void a() {
-        uk.me.lewisdeane.ldialogs.h h1 = new uk.me.lewisdeane.ldialogs.h((Context) a);
-        View View2;
-
-        h1.d = "\u6B63\u5728\u4E0B\u8F7D";
-        View2 = LayoutInflater.from((Context) a).inflate(2130903328, null);
-        b = (ProgressBar) View2.findViewById(2131493800);
-        c = (TextView) View2.findViewById(2131493801);
-        h1.a(View2);
-        d = (Dialog) h1.a();
-        d.setCanceledOnTouchOutside(false);
-        d.show();
-        new Thread(j).start();
+        h h2 = new h(this.a);
+        h2.d = "\u6b63\u5728\u4e0b\u8f7d";
+        View view = LayoutInflater.from(this.a).inflate(2130903328, null);
+        this.b = (ProgressBar) view.findViewById(2131493800);
+        this.c = (TextView) view.findViewById(2131493801);
+        h2.a(view);
+        this.d = h2.a();
+        this.d.setCanceledOnTouchOutside(false);
+        this.d.show();
+        new Thread(this.j).start();
     }
 }

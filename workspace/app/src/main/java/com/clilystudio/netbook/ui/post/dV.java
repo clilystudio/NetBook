@@ -8,72 +8,68 @@ import com.clilystudio.netbook.ui.home.ZssqFragmentPagerAdapter;
 
 import java.util.List;
 
-final class dV extends ZssqFragmentPagerAdapter {
-
+final class dV
+        extends ZssqFragmentPagerAdapter {
     private String[] a;
-    private TweetTabActivity b;
-    public dV(TweetTabActivity TweetTabActivity1, FragmentManager FragmentManager2) {
-        super(FragmentManager2);
-        FragmentTransaction FragmentTransaction13;
-        MyTweetFragment MyTweetFragment12;
-        String String11;
-        List List10;
-        TweetHotFragment TweetHotFragment9;
-        String String8;
-        List List7;
-        TweetTimelineFragment TweetTimelineFragment6;
-        String String5;
-        List List4;
-        int int3;
+    private /* synthetic */ TweetTabActivity b;
 
-        int3 = 0;
-        b = TweetTabActivity1;
-        a = new String[]{"tabTag0", "tabTag1", "tabTag2"};
-        List4 = TweetTabActivity.a(TweetTabActivity1);
-        String5 = a[0];
-        TweetTimelineFragment6 = (TweetTimelineFragment) TweetTabActivity1.getSupportFragmentManager().findFragmentByTag(String5);
-        if (TweetTimelineFragment6 == null)
-            TweetTimelineFragment6 = new TweetTimelineFragment();
-        List4.add(0, TweetTimelineFragment6);
-        List7 = TweetTabActivity.a(TweetTabActivity1);
-        String8 = a[1];
-        TweetHotFragment9 = (TweetHotFragment) TweetTabActivity1.getSupportFragmentManager().findFragmentByTag(String8);
-        if (TweetHotFragment9 == null)
-            TweetHotFragment9 = new TweetHotFragment();
-        List7.add(1, TweetHotFragment9);
-        List10 = TweetTabActivity.a(TweetTabActivity1);
-        String11 = a[2];
-        MyTweetFragment12 = (MyTweetFragment) TweetTabActivity1.getSupportFragmentManager().findFragmentByTag(String11);
-        if (MyTweetFragment12 == null)
-            MyTweetFragment12 = new MyTweetFragment();
-        List10.add(2, MyTweetFragment12);
-        FragmentTransaction13 = FragmentManager2.beginTransaction();
-        while (int3 < 3) {
-            Fragment Fragment16 = (Fragment) TweetTabActivity.a(TweetTabActivity1).get(int3);
-
-            if (!Fragment16.isAdded())
-                FragmentTransaction13.add(TweetTabActivity.b(TweetTabActivity1).getId(), Fragment16, a[int3]);
-            ++int3;
+    public dV(TweetTabActivity tweetTabActivity, FragmentManager fragmentManager) {
+        int n = 0;
+        this.b = tweetTabActivity;
+        super(fragmentManager);
+        this.a = new String[]{"tabTag0", "tabTag1", "tabTag2"};
+        List list = TweetTabActivity.a(tweetTabActivity);
+        String string = this.a[0];
+        TweetTimelineFragment tweetTimelineFragment = (TweetTimelineFragment) tweetTabActivity.getSupportFragmentManager().findFragmentByTag(string);
+        if (tweetTimelineFragment == null) {
+            tweetTimelineFragment = new TweetTimelineFragment();
         }
-        if (!FragmentTransaction13.isEmpty()) {
-            FragmentTransaction13.commit();
-            FragmentManager2.executePendingTransactions();
+        list.add(0, tweetTimelineFragment);
+        List list2 = TweetTabActivity.a(tweetTabActivity);
+        String string2 = this.a[1];
+        TweetHotFragment tweetHotFragment = (TweetHotFragment) tweetTabActivity.getSupportFragmentManager().findFragmentByTag(string2);
+        if (tweetHotFragment == null) {
+            tweetHotFragment = new TweetHotFragment();
+        }
+        list2.add(1, tweetHotFragment);
+        List list3 = TweetTabActivity.a(tweetTabActivity);
+        String string3 = this.a[2];
+        MyTweetFragment myTweetFragment = (MyTweetFragment) tweetTabActivity.getSupportFragmentManager().findFragmentByTag(string3);
+        if (myTweetFragment == null) {
+            myTweetFragment = new MyTweetFragment();
+        }
+        list3.add(2, myTweetFragment);
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        while (n < 3) {
+            Fragment fragment = (Fragment) TweetTabActivity.a(tweetTabActivity).get(n);
+            if (!fragment.isAdded()) {
+                fragmentTransaction.add(TweetTabActivity.b(tweetTabActivity).getId(), fragment, this.a[n]);
+            }
+            ++n;
+        }
+        if (!fragmentTransaction.isEmpty()) {
+            fragmentTransaction.commit();
+            fragmentManager.executePendingTransactions();
         }
     }
 
-    public final Fragment a(int int1) {
-        return (Fragment) TweetTabActivity.a(b).get(int1);
+    @Override
+    public final Fragment a(int n) {
+        return (Fragment) TweetTabActivity.a(this.b).get(n);
     }
 
-    protected final String b(int int1) {
-        return a[int1];
+    @Override
+    protected final String b(int n) {
+        return this.a[n];
     }
 
+    @Override
     public final int getCount() {
         return 3;
     }
 
-    public final CharSequence getPageTitle(int int1) {
-        return (CharSequence) b.getResources().getStringArray(2131361809)[int1];
+    @Override
+    public final CharSequence getPageTitle(int n) {
+        return this.b.getResources().getStringArray(2131361809)[n];
     }
 }

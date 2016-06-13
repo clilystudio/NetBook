@@ -5,16 +5,17 @@ import android.content.Context;
 import com.clilystudio.netbook.ui.cd;
 import com.clilystudio.netbook.ui.post.AbsPostActivity;
 
-final class ap implements cd {
+final class ap
+        implements cd {
+    private /* synthetic */ AbsPostActivity a;
 
-    private AbsPostActivity a;
-
-    ap(ao ao1, AbsPostActivity AbsPostActivity2) {
-        a = AbsPostActivity2;
+    ap(ao ao2, AbsPostActivity absPostActivity) {
+        this.a = absPostActivity;
     }
 
-    public final void a(int int1) {
-        a.f(int1);
-        com.clilystudio.netbook.hpay100.a.a.a((Context) a, int1, 2);
+    @Override
+    public final void a(int n) {
+        this.a.f(n);
+        a.a((Context) this.a, n, 2);
     }
 }

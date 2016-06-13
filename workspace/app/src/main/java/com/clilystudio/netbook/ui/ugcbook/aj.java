@@ -6,46 +6,47 @@ import android.support.v4.app.FragmentTransaction;
 
 import com.clilystudio.netbook.ui.home.ZssqFragmentPagerAdapter;
 
-final class aj extends ZssqFragmentPagerAdapter {
-
+final class aj
+        extends ZssqFragmentPagerAdapter {
     private String[] a;
-    private UGCMainActivity b;
-    public aj(UGCMainActivity UGCMainActivity1, FragmentManager FragmentManager2) {
-        super(FragmentManager2);
-        int int4;
-        FragmentTransaction FragmentTransaction3;
+    private /* synthetic */ UGCMainActivity b;
 
-        b = UGCMainActivity1;
-        a = new String[]{"ugcTag0", "ugcTag1", "ugcTag2"};
-        UGCMainActivity.e(UGCMainActivity1).add(0, UGCMainActivity1.a(a[0], "collectorCount", "last-seven-days"));
-        UGCMainActivity.e(UGCMainActivity1).add(1, UGCMainActivity1.a(a[1], "created", "all"));
-        UGCMainActivity.e(UGCMainActivity1).add(2, UGCMainActivity1.a(a[2], "collectorCount", "all"));
-        FragmentTransaction3 = FragmentManager2.beginTransaction();
-        for (int4 = 0; int4 < 3; ++int4) {
-            Fragment Fragment7 = (Fragment) UGCMainActivity.e(UGCMainActivity1).get(int4);
-
-            if (!Fragment7.isAdded())
-                FragmentTransaction3.add(UGCMainActivity.f(UGCMainActivity1).getId(), Fragment7, a[int4]);
+    public aj(UGCMainActivity uGCMainActivity, FragmentManager fragmentManager) {
+        this.b = uGCMainActivity;
+        super(fragmentManager);
+        this.a = new String[]{"ugcTag0", "ugcTag1", "ugcTag2"};
+        UGCMainActivity.e(uGCMainActivity).add(0, uGCMainActivity.a(this.a[0], "collectorCount", "last-seven-days"));
+        UGCMainActivity.e(uGCMainActivity).add(1, uGCMainActivity.a(this.a[1], "created", "all"));
+        UGCMainActivity.e(uGCMainActivity).add(2, uGCMainActivity.a(this.a[2], "collectorCount", "all"));
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        for (int i = 0; i < 3; ++i) {
+            Fragment fragment = (Fragment) UGCMainActivity.e(uGCMainActivity).get(i);
+            if (fragment.isAdded()) continue;
+            fragmentTransaction.add(UGCMainActivity.f(uGCMainActivity).getId(), fragment, this.a[i]);
         }
-        if (!FragmentTransaction3.isEmpty()) {
-            FragmentTransaction3.commit();
-            FragmentManager2.executePendingTransactions();
+        if (!fragmentTransaction.isEmpty()) {
+            fragmentTransaction.commit();
+            fragmentManager.executePendingTransactions();
         }
     }
 
-    public final Fragment a(int int1) {
-        return (Fragment) UGCMainActivity.e(b).get(int1);
+    @Override
+    public final Fragment a(int n) {
+        return (Fragment) UGCMainActivity.e(this.b).get(n);
     }
 
-    protected final String b(int int1) {
-        return a[int1];
+    @Override
+    protected final String b(int n) {
+        return this.a[n];
     }
 
+    @Override
     public final int getCount() {
         return 3;
     }
 
-    public final CharSequence getPageTitle(int int1) {
-        return (CharSequence) b.getResources().getStringArray(2131361810)[int1];
+    @Override
+    public final CharSequence getPageTitle(int n) {
+        return this.b.getResources().getStringArray(2131361810)[n];
     }
 }

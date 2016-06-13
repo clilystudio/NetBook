@@ -1,20 +1,20 @@
 package com.clilystudio.netbook.adapter;
 
 import android.view.View;
-import android.view.View$OnClickListener;
 
 import com.clilystudio.netbook.model.TopicPost;
 import com.clilystudio.netbook.util.e;
 
-final class k implements View$OnClickListener {
+final class k
+        implements View.OnClickListener {
+    private /* synthetic */ TopicPost a;
 
-    private TopicPost a;
-
-    k(j j1, TopicPost TopicPost2) {
-        a = TopicPost2;
+    k(j j2, TopicPost topicPost) {
+        this.a = topicPost;
     }
 
-    public final void onClick(View View1) {
-        View1.getContext().startActivity(e.a(View1.getContext(), a.getAuthor()));
+    @Override
+    public final void onClick(View view) {
+        view.getContext().startActivity(e.a(view.getContext(), this.a.getAuthor()));
     }
 }

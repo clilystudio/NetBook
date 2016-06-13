@@ -1,30 +1,27 @@
 package com.clilystudio.netbook.ui.post;
 
 import android.os.AsyncTask;
-import android.os.AsyncTask$Status;
+import android.support.design.widget.am;
 
-final class by implements j {
+final class by
+        implements j {
+    private /* synthetic */ GirlTopicListActivity a;
 
-    private GirlTopicListActivity a;
-
-    by(GirlTopicListActivity GirlTopicListActivity1) {
-        a = GirlTopicListActivity1;
+    by(GirlTopicListActivity girlTopicListActivity) {
+        this.a = girlTopicListActivity;
     }
 
+    @Override
     public final void a() {
-        if (GirlTopicListActivity.e(a) == null || GirlTopicListActivity.e(a).getStatus() == AsyncTask$Status.FINISHED) {
-            bI bI2;
-            String[] String_1darray3;
-
-            GirlTopicListActivity.p(a).setVisibility(0);
-            if (!android.support.design.widget.am.a((AsyncTask) GirlTopicListActivity.h(a)))
-                GirlTopicListActivity.h(a).cancel(true);
-            GirlTopicListActivity.a(a, new bI(a, (byte) 0));
-            bI2 = GirlTopicListActivity.e(a);
-            String_1darray3 = new String[2];
-            String_1darray3[0] = GirlTopicListActivity.f(a);
-            String_1darray3[1] = GirlTopicListActivity.g(a);
-            bI2.b(String_1darray3);
+        if (GirlTopicListActivity.e(this.a) == null || GirlTopicListActivity.e(this.a).getStatus() == AsyncTask.Status.FINISHED) {
+            GirlTopicListActivity.p(this.a).setVisibility(0);
+            if (!am.a(GirlTopicListActivity.h(this.a))) {
+                GirlTopicListActivity.h(this.a).cancel(true);
+            }
+            GirlTopicListActivity.a(this.a, new bI(this.a, 0));
+            bI bI2 = GirlTopicListActivity.e(this.a);
+            String[] arrstring = new String[]{GirlTopicListActivity.f(this.a), GirlTopicListActivity.g(this.a)};
+            bI2.b(arrstring);
         }
     }
 }

@@ -2,27 +2,27 @@ package com.clilystudio.netbook.reader;
 
 import android.support.design.widget.am;
 import android.view.View;
-import android.view.View$OnClickListener;
 
 import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.event.i;
 import com.clilystudio.netbook.event.v;
 
-final class bB implements View$OnClickListener {
+final class bB
+        implements View.OnClickListener {
+    private /* synthetic */ ReaderMixActivity a;
 
-    private ReaderMixActivity a;
-
-    bB(ReaderMixActivity ReaderMixActivity1) {
-        a = ReaderMixActivity1;
+    bB(ReaderMixActivity readerMixActivity) {
+        this.a = readerMixActivity;
     }
 
-    public final void onClick(View View1) {
-        if (!"mix".equals(ReaderMixActivity.a(a))) {
-            MyApplication.a().c(ReaderMixActivity.b(a));
-            am.c(ReaderMixActivity.b(a), 5);
+    @Override
+    public final void onClick(View view) {
+        if (!"mix".equals(ReaderMixActivity.a(this.a))) {
+            MyApplication.a().c(ReaderMixActivity.b(this.a));
+            am.c((String) ReaderMixActivity.b(this.a), (int) 5);
             i.a().c(new v(1));
-            ReaderMixActivity.a(a, "MIX_TOC_ID");
+            ReaderMixActivity.a(this.a, "MIX_TOC_ID");
         }
-        a.finish();
+        this.a.finish();
     }
 }

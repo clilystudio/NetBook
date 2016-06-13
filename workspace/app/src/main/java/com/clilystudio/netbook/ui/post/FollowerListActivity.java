@@ -9,49 +9,48 @@ import android.widget.RelativeLayout;
 import com.clilystudio.netbook.model.Follower;
 import com.clilystudio.netbook.ui.BaseActivity;
 
-public class FollowerListActivity extends BaseActivity {
-
+public class FollowerListActivity
+        extends BaseActivity {
     private Follower[] a;
     private ListView b;
     private RelativeLayout c;
 
-    static Follower[] a(FollowerListActivity FollowerListActivity1) {
-        return FollowerListActivity1.a;
+    static /* synthetic */ Follower[] a(FollowerListActivity followerListActivity) {
+        return followerListActivity.a;
     }
 
-    public void onCreate(Bundle Bundle1) {
-        super.onCreate(Bundle1);
-        setContentView(2130903101);
+    @Override
+    public void onCreate(Bundle bundle) {
+        super.onCreate(bundle);
+        this.setContentView(2130903101);
     }
 
+    /*
+     * Enabled aggressive block sorting
+     */
+    @Override
     protected void onStart() {
-        Bundle Bundle1;
-        String String2;
-        Parcelable[] Parcelable_1darray3;
-
         super.onStart();
-        Bundle1 = getIntent().getExtras();
-        if (Bundle1.getString("type").equals("TYPE_FOLLOWINGS"))
-            String2 = "\u5173\u6CE8";
-        else
-            String2 = "\u7C89\u4E1D";
-        b(String2);
-        c = (RelativeLayout) findViewById(2131493132);
-        b = (ListView) findViewById(2131493131);
-        b.setDivider(getResources().getDrawable(2130838151));
-        Parcelable_1darray3 = Bundle1.getParcelableArray("follows");
-        if (Parcelable_1darray3 != null) {
-            int int4;
-
-            a = new Follower[Parcelable_1darray3.length];
-            for (int4 = 0; int4 < Parcelable_1darray3.length; ++int4)
-                a[int4] = (Follower) Parcelable_1darray3[int4];
-        } else
-            a = new Follower[0];
-        b.setAdapter((ListAdapter) new bj(this));
-        if (a.length > 0)
-            c.setVisibility(8);
-        else
-            c.setVisibility(0);
+        Bundle bundle = this.getIntent().getExtras();
+        String string = bundle.getString("type").equals("TYPE_FOLLOWINGS") ? "\u5173\u6ce8" : "\u7c89\u4e1d";
+        this.b(string);
+        this.c = (RelativeLayout) this.findViewById(2131493132);
+        this.b = (ListView) this.findViewById(2131493131);
+        this.b.setDivider(this.getResources().getDrawable(2130838151));
+        Parcelable[] arrparcelable = bundle.getParcelableArray("follows");
+        if (arrparcelable != null) {
+            this.a = new Follower[arrparcelable.length];
+            for (int i = 0; i < arrparcelable.length; ++i) {
+                this.a[i] = (Follower) arrparcelable[i];
+            }
+        } else {
+            this.a = new Follower[0];
+        }
+        this.b.setAdapter((ListAdapter) ((Object) new bj(this)));
+        if (this.a.length > 0) {
+            this.c.setVisibility(8);
+            return;
+        }
+        this.c.setVisibility(0);
     }
 }

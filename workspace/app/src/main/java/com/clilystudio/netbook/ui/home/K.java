@@ -3,64 +3,76 @@ package com.clilystudio.netbook.ui.home;
 import android.app.Activity;
 
 import com.clilystudio.netbook.db.BookReadRecord;
+import com.clilystudio.netbook.model.BookUpdate;
+import com.clilystudio.netbook.util.e;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-final class K extends com.clilystudio.netbook.a.e {
+final class K
+        extends com.clilystudio.netbook.a.e<Void, Void, List<BookUpdate>> {
+    private List<BookReadRecord> a;
+    private /* synthetic */ HomeShelfFragment b;
 
-    private List a;
-    private HomeShelfFragment b;
-    K(HomeShelfFragment HomeShelfFragment1, byte byte2) {
-        this(HomeShelfFragment1);
+    private K(HomeShelfFragment homeShelfFragment) {
+        this.b = homeShelfFragment;
     }
 
-    private K(HomeShelfFragment HomeShelfFragment1) {
-        b = HomeShelfFragment1;
+    /* synthetic */ K(HomeShelfFragment homeShelfFragment, byte by) {
+        this(homeShelfFragment);
     }
 
-    private transient List a() {
-        Object Object1;
-        List List5;
-
-        a = BookReadRecord.getAll();
+    /*
+     * Enabled aggressive block sorting
+     * Enabled unnecessary exception pruning
+     * Enabled aggressive exception aggregation
+     */
+    private /* varargs */ List<BookUpdate> a() {
+        this.a = BookReadRecord.getAll();
         try {
-            Iterator Iterator3;
-
-            Object1 = new ArrayList();
-            Iterator3 = a.iterator();
-            while (Iterator3.hasNext())
-                ((List) Object1).add(((BookReadRecord) Iterator3.next()).getBookId());
-        } catch (Exception Exception2) {
-            Exception2.printStackTrace();
+            ArrayList<String> arrayList = new ArrayList<String>();
+            Iterator<BookReadRecord> iterator = this.a.iterator();
+            while (iterator.hasNext()) {
+                arrayList.add(iterator.next().getBookId());
+            }
+            b.a();
+            return b.b().a(arrayList);
+        } catch (Exception var2_3) {
+            var2_3.printStackTrace();
             return null;
         }
-        try {
-            com.clilystudio.netbook.api.b.a();
-            List5 = com.clilystudio.netbook.api.b.b().a((List) Object1);
-        } catch (Exception Exception6) {
-            Exception6.printStackTrace();
-            return null;
-        }
-        return List5;
     }
 
-    protected final Object doInBackground(Object[] Object_1darray1) {
-        return a();
+    /*
+     * Exception decompiling
+     */
+    @Override
+    protected final /* synthetic */ Object doInBackground(Object[] var1_1) {
+        // This method has failed to decompile.  When submitting a bug report, please provide this stack trace, and (if you hold appropriate legal rights) the relevant class file.
+        // java.lang.ArrayIndexOutOfBoundsException
+        throw new IllegalStateException("Decompilation failed");
     }
 
-    protected final void onPostExecute(Object Object1) {
-        Object Object2 = (List) Object1;
-
-        super.onPostExecute(Object2);
-        if (b.getActivity() != null) {
-            HomeShelfFragment.g(b);
-            if (Object2 != null && !((List) Object2).isEmpty())
-                HomeShelfFragment.a(b, (List) Object2, a);
-            else if (HomeShelfFragment.i(b) == 0) {
-                com.clilystudio.netbook.util.e.a((Activity) b.getActivity(), 2131034417);
+    /*
+     * Enabled aggressive block sorting
+     */
+    @Override
+    protected final /* synthetic */ void onPostExecute(Object object) {
+        List list = (List) object;
+        super.onPostExecute(list);
+        if (this.b.getActivity() == null) return;
+        {
+            HomeShelfFragment.g(this.b);
+            if (list != null && !list.isEmpty()) {
+                HomeShelfFragment.a(this.b, list, this.a);
                 return;
+            } else {
+                if (HomeShelfFragment.i(this.b) != 0) return;
+                {
+                    e.a((Activity) this.b.getActivity(), (int) 2131034417);
+                    return;
+                }
             }
         }
     }

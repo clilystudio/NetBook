@@ -2,18 +2,21 @@ package com.clilystudio.netbook.ui.post;
 
 import com.clilystudio.netbook.ui.aa;
 
-final class aw implements aa {
+final class aw
+        implements aa {
+    private /* synthetic */ BookPostTabActivity a;
 
-    private BookPostTabActivity a;
-
-    aw(BookPostTabActivity BookPostTabActivity1) {
-        a = BookPostTabActivity1;
+    aw(BookPostTabActivity bookPostTabActivity) {
+        this.a = bookPostTabActivity;
     }
 
+    @Override
     public final void a() {
-        if (BookPostTabActivity.a(a) != null && a.g())
-            BookPostTabActivity.a(a).a();
-        if (BookPostTabActivity.b(a) != null && !a.g())
-            BookPostTabActivity.b(a).a();
+        if (BookPostTabActivity.a(this.a) != null && this.a.g()) {
+            BookPostTabActivity.a(this.a).a();
+        }
+        if (BookPostTabActivity.b(this.a) != null && !this.a.g()) {
+            BookPostTabActivity.b(this.a).a();
+        }
     }
 }

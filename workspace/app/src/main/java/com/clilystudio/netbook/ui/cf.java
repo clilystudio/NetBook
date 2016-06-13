@@ -1,19 +1,16 @@
 package com.clilystudio.netbook.ui;
 
-import android.content.Context;
+final class cf
+        implements cd {
+    private /* synthetic */ ShareRemoveAdActivity a;
 
-import com.umeng.a.b;
-
-final class cf implements cd {
-
-    private ShareRemoveAdActivity a;
-
-    cf(ShareRemoveAdActivity ShareRemoveAdActivity1) {
-        a = ShareRemoveAdActivity1;
+    cf(ShareRemoveAdActivity shareRemoveAdActivity) {
+        this.a = shareRemoveAdActivity;
     }
 
-    public final void a(int int1) {
-        ShareRemoveAdActivity.a(a, int1);
-        b.a((Context) a, "share_remove_channel_click", new StringBuilder().append(int1).toString());
+    @Override
+    public final void a(int n) {
+        ShareRemoveAdActivity.a(this.a, n);
+        b.a(this.a, "share_remove_channel_click", "" + n);
     }
 }

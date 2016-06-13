@@ -4,8 +4,8 @@ import com.clilystudio.netbook.api.ApiService;
 
 import java.io.Serializable;
 
-public class Author implements Serializable {
-
+public class Author
+        implements Serializable {
     private static final long serialVersionUID = 4660498853182934697L;
     private String _id;
     private String avatar;
@@ -15,69 +15,69 @@ public class Author implements Serializable {
     private String type;
 
     public String getAvatar() {
-        return avatar;
+        return this.avatar;
     }
 
-    public void setAvatar(String String1) {
-        avatar = String1;
+    public void setAvatar(String string) {
+        this.avatar = string;
     }
 
     public String getFullAvatar() {
-        return new StringBuilder().append(ApiService.a).append(avatar).toString();
+        return ApiService.a + this.avatar;
     }
 
     public String getGender() {
-        return gender;
+        return this.gender;
     }
 
-    public void setGender(String String1) {
-        gender = String1;
+    public void setGender(String string) {
+        this.gender = string;
     }
 
     public int getLv() {
-        return lv;
+        return this.lv;
     }
 
-    public void setLv(int int1) {
-        lv = int1;
+    public void setLv(int n) {
+        this.lv = n;
     }
 
     public String getNickname() {
-        return nickname;
+        return this.nickname;
     }
 
-    public void setNickname(String String1) {
-        nickname = String1;
+    public void setNickname(String string) {
+        this.nickname = string;
     }
 
     public String getScaleAvatar() {
-        return getScaleAvatar(1);
+        return this.getScaleAvatar(1);
     }
 
-    public String getScaleAvatar(int int1) {
-        if (int1 == 1)
-            return new StringBuilder().append(ApiService.a).append(avatar).append("-avatars").toString();
-        else
-            return new StringBuilder().append(ApiService.a).append(avatar).append("-avatarl").toString();
+    public String getScaleAvatar(int n) {
+        if (n == 1) {
+            return ApiService.a + this.avatar + "-avatars";
+        }
+        return ApiService.a + this.avatar + "-avatarl";
     }
 
     public String getType() {
-        return type;
+        return this.type;
     }
 
-    public void setType(String String1) {
-        type = String1;
+    public void setType(String string) {
+        this.type = string;
     }
 
     public String get_id() {
-        return _id;
+        return this._id;
     }
 
-    public void set_id(String String1) {
-        _id = String1;
+    public void set_id(String string) {
+        this._id = string;
     }
 
     public boolean isOfficial() {
-        return "official".equals(getType());
+        return "official".equals(this.getType());
     }
 }

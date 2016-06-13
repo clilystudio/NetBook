@@ -2,24 +2,29 @@ package com.clilystudio.netbook.reader;
 
 import android.content.Context;
 
-final class aJ implements dc {
+final class aJ
+        implements dc {
+    private /* synthetic */ ReaderActivity a;
 
-    private ReaderActivity a;
-
-    aJ(ReaderActivity ReaderActivity1) {
-        a = ReaderActivity1;
+    aJ(ReaderActivity readerActivity) {
+        this.a = readerActivity;
     }
 
+    /*
+     * Enabled aggressive block sorting
+     */
+    @Override
     public final void a() {
-        ReaderActivity.f(a);
-        ReaderActivity.a(a, 1);
-        ReaderActivity.h(a).setReadMode(ReaderActivity.g(a));
-        ReaderActivity.k(a).setTotalHeight(ReaderActivity.i(a)[ReaderActivity.j(a)].d());
-        if (ReaderActivity.l(a).i())
-            ReaderActivity.k(a).setText((CharSequence) ReaderActivity.m(a).a((Context) a));
-        else
-            ReaderActivity.k(a).setText((CharSequence) ReaderActivity.m(a).c());
-        ReaderActivity.k(a).f();
-        ReaderActivity.n(a);
+        ReaderActivity.f(this.a);
+        ReaderActivity.a(this.a, 1);
+        ReaderActivity.h(this.a).setReadMode(ReaderActivity.g(this.a));
+        ReaderActivity.k(this.a).setTotalHeight(ReaderActivity.i(this.a)[ReaderActivity.j(this.a)].d());
+        if (ReaderActivity.l(this.a).i()) {
+            ReaderActivity.k(this.a).setText(ReaderActivity.m(this.a).a((Context) this.a));
+        } else {
+            ReaderActivity.k(this.a).setText(ReaderActivity.m(this.a).c());
+        }
+        ReaderActivity.k(this.a).f();
+        ReaderActivity.n(this.a);
     }
 }

@@ -2,22 +2,25 @@ package com.clilystudio.netbook.ui.game;
 
 import android.support.v4.view.ViewPager$OnPageChangeListener;
 
-final class ad implements ViewPager$OnPageChangeListener {
+final class ad
+        implements ViewPager$OnPageChangeListener {
+    private /* synthetic */ GameMicroFragment$LayoutAdapter$PromotionViewPager a;
 
-    private GameMicroFragment$LayoutAdapter$PromotionViewPager a;
-
-    ad(GameMicroFragment$LayoutAdapter$PromotionViewPager PromotionViewPager1) {
-        a = PromotionViewPager1;
+    ad(GameMicroFragment$LayoutAdapter$PromotionViewPager promotionViewPager) {
+        this.a = promotionViewPager;
     }
 
-    public final void onPageScrollStateChanged(int int1) {
+    @Override
+    public final void onPageScrollStateChanged(int n) {
     }
 
-    public final void onPageScrolled(int int1, float float2, int int3) {
+    @Override
+    public final void onPageScrolled(int n, float f, int n2) {
     }
 
-    public final void onPageSelected(int int1) {
-        a.k.a.c = int1;
-        GameMicroFragment$LayoutAdapter$PromotionViewPager.a(a, int1);
+    @Override
+    public final void onPageSelected(int n) {
+        this.a.k.a.c = n;
+        GameMicroFragment$LayoutAdapter$PromotionViewPager.a(this.a, n);
     }
 }

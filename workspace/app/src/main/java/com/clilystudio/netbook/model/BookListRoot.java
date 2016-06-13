@@ -1,23 +1,22 @@
 package com.clilystudio.netbook.model;
 
 public class BookListRoot {
-
     private CategoryBook[] books;
     private boolean ok;
 
     public CategoryBook[] getBooks() {
-        return books;
+        return this.books;
     }
 
-    public void setBooks(CategoryBook[] CategoryBook_1darray1) {
-        books = CategoryBook_1darray1;
+    public void setBooks(CategoryBook[] arrcategoryBook) {
+        this.books = arrcategoryBook;
     }
 
     public boolean isOk() {
-        return ok;
+        return this.ok;
     }
 
-    public void setOk(boolean boolean1) {
-        ok = boolean1;
+    public void setOk(boolean bl) {
+        this.ok = bl;
     }
 }

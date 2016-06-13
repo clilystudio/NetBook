@@ -1,23 +1,22 @@
 package com.clilystudio.netbook.model;
 
 public class PayVoucherRecord {
-
     private boolean ok;
     private PayVoucherRecord$Voucher[] vouchers;
 
     public PayVoucherRecord$Voucher[] getVouchers() {
-        return vouchers;
+        return this.vouchers;
     }
 
-    public void setVouchers(PayVoucherRecord$Voucher[] Voucher_1darray1) {
-        vouchers = Voucher_1darray1;
+    public void setVouchers(PayVoucherRecord$Voucher[] arrpayVoucherRecord$Voucher) {
+        this.vouchers = arrpayVoucherRecord$Voucher;
     }
 
     public boolean isOk() {
-        return ok;
+        return this.ok;
     }
 
-    public void setOk(boolean boolean1) {
-        ok = boolean1;
+    public void setOk(boolean bl) {
+        this.ok = bl;
     }
 }

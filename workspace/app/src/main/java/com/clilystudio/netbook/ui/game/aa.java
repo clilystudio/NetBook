@@ -1,33 +1,32 @@
 package com.clilystudio.netbook.ui.game;
 
-import android.content.Context;
-import android.content.Intent;
 import android.view.View;
-import android.view.View$OnClickListener;
 
 import com.clilystudio.netbook.exception.UnImplementException;
 import com.clilystudio.netbook.model.GameLayoutRoot$ModuleLayout$ActivityItem;
 import com.clilystudio.netbook.util.InsideLinkIntent;
 
-final class aa implements View$OnClickListener {
+final class aa
+        implements View.OnClickListener {
+    private /* synthetic */ GameLayoutRoot$ModuleLayout$ActivityItem a;
+    private /* synthetic */ Z b;
 
-    private GameLayoutRoot$ModuleLayout$ActivityItem a;
-    private Z b;
-    aa(Z Z1, GameLayoutRoot$ModuleLayout$ActivityItem ActivityItem2) {
-        b = Z1;
-        a = ActivityItem2;
+    aa(Z z, GameLayoutRoot$ModuleLayout$ActivityItem activityItem) {
+        this.b = z;
+        this.a = activityItem;
     }
 
-    public final void onClick(View View1) {
+    @Override
+    public final void onClick(View view) {
         try {
-            Object Object3;
-
-            if (GameMicroFragment.e(b.i.a) != null && GameMicroFragment.e(b.i.a).indexOf(a.getBannerImage()) >= 0)
-                com.umeng.a.b.a((Context) b.i.a.getActivity(), "micro_game_banner_click", new StringBuilder("Banner ").append(GameMicroFragment.e(b.i.a).indexOf(a.getBannerImage())).toString());
-            Object3 = new InsideLinkIntent((Context) b.i.a.getActivity(), a.getLink(), true);
-            b.i.a.startActivity((Intent) Object3);
-        } catch (UnImplementException UnImplementException2) {
-            UnImplementException2.printStackTrace();
+            if (GameMicroFragment.e(this.b.i.a) != null && GameMicroFragment.e(this.b.i.a).indexOf(this.a.getBannerImage()) >= 0) {
+                b.a(this.b.i.a.getActivity(), "micro_game_banner_click", "Banner " + GameMicroFragment.e(this.b.i.a).indexOf(this.a.getBannerImage()));
+            }
+            InsideLinkIntent insideLinkIntent = new InsideLinkIntent(this.b.i.a.getActivity(), this.a.getLink(), true);
+            this.b.i.a.startActivity(insideLinkIntent);
+            return;
+        } catch (UnImplementException var2_3) {
+            var2_3.printStackTrace();
             return;
         }
     }

@@ -1,28 +1,26 @@
 package com.clilystudio.netbook.ui.user;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.DialogInterface;
-import android.content.DialogInterface$OnClickListener;
 import android.content.Intent;
 
 import com.clilystudio.netbook.util.e;
 
-final class ay implements DialogInterface$OnClickListener {
+final class ay
+        implements DialogInterface.OnClickListener {
+    private /* synthetic */ UserFollowWeixinActivity a;
 
-    private UserFollowWeixinActivity a;
-
-    ay(UserFollowWeixinActivity UserFollowWeixinActivity1) {
-        a = UserFollowWeixinActivity1;
+    ay(UserFollowWeixinActivity userFollowWeixinActivity) {
+        this.a = userFollowWeixinActivity;
     }
 
-    public final void onClick(DialogInterface DialogInterface1, int int2) {
-        if (!com.clilystudio.netbook.pay.weixin.a.a((Context) a))
-            e.a((Activity) a, 2131034303);
-        else {
-            Intent Intent3 = a.getPackageManager().getLaunchIntentForPackage("com.tencent.mm");
-
-            a.startActivity(Intent3);
+    @Override
+    public final void onClick(DialogInterface dialogInterface, int n) {
+        if (!a.a(this.a)) {
+            e.a((Activity) this.a, (int) 2131034303);
+            return;
         }
+        Intent intent = this.a.getPackageManager().getLaunchIntentForPackage("com.tencent.mm");
+        this.a.startActivity(intent);
     }
 }

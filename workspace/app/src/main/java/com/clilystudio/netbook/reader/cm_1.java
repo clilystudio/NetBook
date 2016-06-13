@@ -1,19 +1,21 @@
 package com.clilystudio.netbook.reader;
 
 import android.view.View;
-import android.view.View$OnClickListener;
 
-final class cm implements View$OnClickListener {
+final class cm
+        implements View.OnClickListener {
+    private /* synthetic */ int a;
+    private /* synthetic */ ReaderTtsSetWidget b;
 
-    private int a;
-    private ReaderTtsSetWidget b;
-    cm(ReaderTtsSetWidget ReaderTtsSetWidget1, int int2) {
-        b = ReaderTtsSetWidget1;
-        a = int2;
+    cm(ReaderTtsSetWidget readerTtsSetWidget, int n) {
+        this.b = readerTtsSetWidget;
+        this.a = n;
     }
 
-    public final void onClick(View View1) {
-        if (!com.clilystudio.netbook.reader.ReaderTtsSetWidget.a(b, ReaderTtsSetWidget.h(b)[a]))
-            ReaderTtsSetWidget.c(b, a);
+    @Override
+    public final void onClick(View view) {
+        if (!ReaderTtsSetWidget.a(this.b, ReaderTtsSetWidget.h(this.b)[this.a])) {
+            ReaderTtsSetWidget.c(this.b, this.a);
+        }
     }
 }

@@ -3,7 +3,6 @@ package com.clilystudio.netbook.model;
 import java.util.Date;
 
 public class Tweet {
-
     public static final String TYPE_ARTICLE = "ARTICLE";
     public static final String TYPE_COMMENT = "REVIEW";
     public static final String TYPE_RETWEET = "RETWEET";
@@ -17,7 +16,7 @@ public class Tweet {
     private boolean deleted;
     private User from;
     private boolean isHot;
-    private Tweet$Post post;
+    private Post post;
     private Tweet refTweet;
     private int retweeted;
     private int score;
@@ -26,189 +25,194 @@ public class Tweet {
     private String type;
     private User user;
     private Tweet$VoteOption[] votes;
-// Error: Internal #201: 
-// The following method may not be correct.
 
-    public boolean equals(Object Object1) {
+    /*
+     * Enabled aggressive block sorting
+     */
+    public boolean equals(Object object) {
+        if (object == null || !object.getClass().equals(Tweet.class)) {
+            return false;
+        }
+        return this._id.equals(((Tweet) object).get_id());
     }
 
     public Book getBook() {
-        return book;
+        return this.book;
     }
 
-    public void setBook(Book Book1) {
-        book = Book1;
+    public void setBook(Book book) {
+        this.book = book;
     }
 
     public int getCommented() {
-        return commented;
+        return this.commented;
     }
 
-    public void setCommented(int int1) {
-        commented = int1;
+    public void setCommented(int n) {
+        this.commented = n;
     }
 
     public String getContent() {
-        return content;
+        return this.content;
     }
 
-    public void setContent(String String1) {
-        content = String1;
+    public void setContent(String string) {
+        this.content = string;
     }
 
     public Date getCreated() {
-        return created;
+        return this.created;
     }
 
-    public void setCreated(Date Date1) {
-        created = Date1;
+    public void setCreated(Date date) {
+        this.created = date;
     }
 
     public User getFrom() {
-        return from;
+        return this.from;
     }
 
-    public void setFrom(User User1) {
-        from = User1;
+    public void setFrom(User user) {
+        this.from = user;
     }
 
     public String[] getNames() {
-        return names;
+        return this.names;
     }
 
-    public void setNames(String[] String_1darray1) {
-        names = String_1darray1;
+    public void setNames(String[] arrstring) {
+        this.names = arrstring;
     }
 
-    public Tweet$Post getPost() {
-        return post;
+    public Post getPost() {
+        return this.post;
     }
 
-    public void setPost(Tweet$Post Post1) {
-        post = Post1;
+    public void setPost(Post post) {
+        this.post = post;
     }
 
     public Tweet getRefTweet() {
-        return refTweet;
+        return this.refTweet;
     }
 
-    public void setRefTweet(Tweet Tweet1) {
-        refTweet = Tweet1;
+    public void setRefTweet(Tweet tweet) {
+        this.refTweet = tweet;
     }
 
     public int getRetweeted() {
-        return retweeted;
+        return this.retweeted;
     }
 
-    public void setRetweeted(int int1) {
-        retweeted = int1;
+    public void setRetweeted(int n) {
+        this.retweeted = n;
     }
 
     public int getScore() {
-        return score;
+        return this.score;
     }
 
-    public void setScore(int int1) {
-        score = int1;
+    public void setScore(int n) {
+        this.score = n;
     }
 
     public String getShareLinkUrl() {
-        return shareLinkUrl;
+        return this.shareLinkUrl;
     }
 
-    public void setShareLinkUrl(String String1) {
-        shareLinkUrl = String1;
+    public void setShareLinkUrl(String string) {
+        this.shareLinkUrl = string;
     }
 
     public String getTitle() {
-        return title;
+        return this.title;
     }
 
-    public void setTitle(String String1) {
-        title = String1;
+    public void setTitle(String string) {
+        this.title = string;
     }
 
     public String getType() {
-        return type;
+        return this.type;
     }
 
-    public void setType(String String1) {
-        type = String1;
+    public void setType(String string) {
+        this.type = string;
     }
 
     public User getUser() {
-        return user;
+        return this.user;
     }
 
-    public void setUser(User User1) {
-        user = User1;
+    public void setUser(User user) {
+        this.user = user;
     }
 
+    /*
+     * Enabled force condition propagation
+     * Lifted jumps to return sites
+     */
     public int getVoteCount() {
-        Tweet$VoteOption[] VoteOption_1darray1 = votes;
-        int int2 = 0;
-
-        if (VoteOption_1darray1 != null) {
-            int int3 = votes.length;
-
-            int2 = 0;
-            if (int3 != 0) {
-                Tweet$VoteOption[] VoteOption_1darray4 = votes;
-                int int5 = VoteOption_1darray4.length;
-                int int6 = 0;
-
-                while (int6 < int5) {
-                    int int7 = int2 + VoteOption_1darray4[int6].count;
-
-                    ++int6;
-                    int2 = int7;
-                }
-            }
+        Tweet$VoteOption[] arrtweet$VoteOption = this.votes;
+        int n = 0;
+        if (arrtweet$VoteOption == null) return n;
+        int n2 = this.votes.length;
+        n = 0;
+        if (n2 == 0) {
+            return n;
         }
-        return int2;
+        Tweet$VoteOption[] arrtweet$VoteOption2 = this.votes;
+        int n3 = arrtweet$VoteOption2.length;
+        int n4 = 0;
+        while (n4 < n3) {
+            int n5 = n + arrtweet$VoteOption2[n4].count;
+            ++n4;
+            n = n5;
+        }
+        return n;
     }
 
     public Tweet$VoteOption[] getVotes() {
-        return votes;
+        return this.votes;
     }
 
-    public void setVotes(Tweet$VoteOption[] VoteOption_1darray1) {
-        votes = VoteOption_1darray1;
+    public void setVotes(Tweet$VoteOption[] arrtweet$VoteOption) {
+        this.votes = arrtweet$VoteOption;
     }
 
     public String get_id() {
-        return _id;
+        return this._id;
     }
 
-    public void set_id(String String1) {
-        _id = String1;
+    public void set_id(String string) {
+        this._id = string;
     }
 
     public boolean isArticle() {
-        return "ARTICLE".equals(type);
+        return "ARTICLE".equals(this.type);
     }
 
     public boolean isDeleted() {
-        return deleted;
+        return this.deleted;
     }
 
-    public void setDeleted(boolean boolean1) {
-        deleted = boolean1;
+    public void setDeleted(boolean bl) {
+        this.deleted = bl;
     }
 
     public boolean isHot() {
-        return isHot;
+        return this.isHot;
     }
 
     public boolean isRetween() {
-        return getType().equals("RETWEET");
+        return this.getType().equals("RETWEET");
     }
 
     public boolean isTweet() {
-        return "TWEET".equals(type);
+        return "TWEET".equals(this.type);
     }
 
-    public void setIsHot(boolean boolean1) {
-        isHot = boolean1;
+    public void setIsHot(boolean bl) {
+        this.isHot = bl;
     }
 }

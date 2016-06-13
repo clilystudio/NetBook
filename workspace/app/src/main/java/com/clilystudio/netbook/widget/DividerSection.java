@@ -5,49 +5,49 @@ import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.View;
-import android.view.ViewGroup$LayoutParams;
 import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
-import android.widget.RelativeLayout$LayoutParams;
 
 import com.clilystudio.netbook.R$styleable;
 
-public class DividerSection extends RelativeLayout {
+public class DividerSection
+        extends RelativeLayout {
+    private final FrameLayout a;
+    private final View b;
+    private final Drawable c;
 
-    private FrameLayout a;     // final access specifier removed
-    private View b;     // final access specifier removed
-    private Drawable c;     // final access specifier removed
-    public DividerSection(Context Context1, AttributeSet AttributeSet2) {
-        super(Context1, AttributeSet2);
-        Object Object4;
-        TypedArray TypedArray3;
-
-        b = new View(Context1);
-        TypedArray3 = Context1.obtainStyledAttributes(AttributeSet2, R$styleable.DividerSection);
-        c = TypedArray3.getDrawable(0);
-        if (c != null)
-            b.setBackgroundDrawable(c);
-        else if (com.clilystudio.netbook.hpay100.a.a.a(getContext(), "customer_night_theme", false))
-            b.setBackgroundResource(2130838147);
-        else
-            b.setBackgroundResource(2130838151);
-        TypedArray3.recycle();
-        Object4 = new RelativeLayout$LayoutParams(-1, 1);
-        ((RelativeLayout$LayoutParams) Object4).addRule(12);
-        b.setLayoutParams((ViewGroup$LayoutParams) Object4);
-        addView(b);
-        a = new FrameLayout(Context1);
-        a.setLayoutParams((ViewGroup$LayoutParams) new RelativeLayout$LayoutParams(-1, -1));
-        addView((View) a);
-        a.setVisibility(8);
+    /*
+     * Enabled aggressive block sorting
+     */
+    public DividerSection(Context context, AttributeSet attributeSet) {
+        super(context, attributeSet);
+        this.b = new View(context);
+        TypedArray typedArray = context.obtainStyledAttributes(attributeSet, R$styleable.DividerSection);
+        this.c = typedArray.getDrawable(0);
+        if (this.c != null) {
+            this.b.setBackgroundDrawable(this.c);
+        } else if (a.a(this.getContext(), "customer_night_theme", false)) {
+            this.b.setBackgroundResource(2130838147);
+        } else {
+            this.b.setBackgroundResource(2130838151);
+        }
+        typedArray.recycle();
+        RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(-1, 1);
+        layoutParams.addRule(12);
+        this.b.setLayoutParams(layoutParams);
+        this.addView(this.b);
+        this.a = new FrameLayout(context);
+        this.a.setLayoutParams(new RelativeLayout.LayoutParams(-1, -1));
+        this.addView(this.a);
+        this.a.setVisibility(8);
     }
 
     public final FrameLayout a() {
-        a.setVisibility(0);
-        return a;
+        this.a.setVisibility(0);
+        return this.a;
     }
 
     public void setDividerMatchParent() {
-        b.setBackgroundColor(getResources().getColor(2131427454));
+        this.b.setBackgroundColor(this.getResources().getColor(2131427454));
     }
 }

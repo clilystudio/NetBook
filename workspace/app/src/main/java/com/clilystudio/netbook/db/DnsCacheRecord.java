@@ -1,43 +1,49 @@
 package com.clilystudio.netbook.db;
 
 import com.activeandroid.Model;
+import com.activeandroid.annotation.Column;
+import com.activeandroid.annotation.Table;
 
 import java.util.Date;
 
-public class DnsCacheRecord extends Model {
-
+@Table(name = "DnsCache")
+public class DnsCacheRecord
+        extends Model {
+    @Column(name = "expiredTime")
     private Date expiredTime;
+    @Column(name = "host")
     private String host;
+    @Column(name = "ip")
     private String ip;
 
     public Date getExpiredTime() {
-        return expiredTime;
+        return this.expiredTime;
     }
 
-    public void setExpiredTime(Date Date1) {
-        expiredTime = Date1;
+    public void setExpiredTime(Date date) {
+        this.expiredTime = date;
     }
 
     public String getHost() {
-        return host;
+        return this.host;
     }
 
-    public void setHost(String String1) {
-        host = String1;
+    public void setHost(String string) {
+        this.host = string;
     }
 
     public String getIp() {
-        return ip;
+        return this.ip;
     }
 
-    public void setIp(String String1) {
-        ip = String1;
+    public void setIp(String string) {
+        this.ip = string;
     }
 
     public boolean isExpired() {
-        if (new Date().getTime() > expiredTime.getTime())
+        if (new Date().getTime() > this.expiredTime.getTime()) {
             return true;
-        else
-            return false;
+        }
+        return false;
     }
 }

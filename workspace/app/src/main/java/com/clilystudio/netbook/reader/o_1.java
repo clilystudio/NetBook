@@ -1,32 +1,32 @@
 package com.clilystudio.netbook.reader;
 
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
 import android.support.design.widget.am;
 import android.view.View;
-import android.view.View$OnClickListener;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.clilystudio.netbook.MyApplication;
+import com.clilystudio.netbook.hpay100.a.a;
 import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.model.Advert;
-import com.clilystudio.netbook.model.Chapter;
 import com.clilystudio.netbook.model.ChapterLink;
 import com.clilystudio.netbook.model.PurchaseChapterResult;
 import com.clilystudio.netbook.ui.SmartImageView;
+import com.umeng.a.b;
 
 import java.text.SimpleDateFormat;
 
 import me.biubiubiu.justifytext.library.JustifyTextView;
 
 public final class o {
-
     private static final SimpleDateFormat a = new SimpleDateFormat("HH:mm");
-    private Activity b;     // final access specifier removed
-    private bZ c;     // final access specifier removed
+    private final Activity b;
+    private final bZ c;
     private n d;
     private boolean e;
     private View f;
@@ -43,671 +43,648 @@ public final class o {
     private G q;
     private H r;
     private F s;
-    private Button u;
     private boolean t = false;
-    public o(Activity Activity1, bZ bZ2) {
-        b = Activity1;
-        c = bZ2;
-        f = b.getLayoutInflater().inflate(2130903367, null);
-        g = (TextView) f.findViewById(2131493605);
-        h = (TextView) f.findViewById(2131493913);
-        i = (TextView) f.findViewById(2131493915);
-        j = f.findViewById(2131493916);
-        k = (ImageView) f.findViewById(2131493917);
-        l = (TextView) f.findViewById(2131493918);
-        m = (TextView) f.findViewById(2131493919);
-        n = (TextView) f.findViewById(2131493920);
-        o = (TextView) f.findViewById(2131493921);
-        f.setPadding(c.c, c.d, c.c, c.d);
-        l();
-        m();
-        k();
-        com.clilystudio.netbook.event.i.a().a(this);
+    private Button u;
+
+    public o(Activity activity, bZ bZ2) {
+        this.b = activity;
+        this.c = bZ2;
+        this.f = this.b.getLayoutInflater().inflate(2130903367, null);
+        this.g = (TextView) this.f.findViewById(2131493605);
+        this.h = (TextView) this.f.findViewById(2131493913);
+        this.i = (TextView) this.f.findViewById(2131493915);
+        this.j = this.f.findViewById(2131493916);
+        this.k = (ImageView) this.f.findViewById(2131493917);
+        this.l = (TextView) this.f.findViewById(2131493918);
+        this.m = (TextView) this.f.findViewById(2131493919);
+        this.n = (TextView) this.f.findViewById(2131493920);
+        this.o = (TextView) this.f.findViewById(2131493921);
+        this.f.setPadding(this.c.c, this.c.d, this.c.c, this.c.d);
+        this.l();
+        this.m();
+        this.k();
+        i.a().a(this);
     }
 
-    static Activity a(o o1) {
-        return o1.b;
+    static /* synthetic */ Activity a(o o2) {
+        return o2.b;
     }
 
-    static void a(o o1, PurchaseChapterResult PurchaseChapterResult2, boolean boolean3) {
-        if (PurchaseChapterResult2 == null)
-            com.clilystudio.netbook.util.e.a(o1.b, "\u652F\u4ED8\u5931\u8D25\uFF0C\u8BF7\u91CD\u8BD5");
-        else if (PurchaseChapterResult2.isOk()) {
-            String String9;
-
-            o1.d.q().a().e().put(PurchaseChapterResult2.getChapterId(), PurchaseChapterResult2.getKey());
-            com.clilystudio.netbook.hpay100.a.a.a(((ReaderActivity) o1.b).l(), o1.d.q().a().e());
-            String9 = (String) o1.d.q().a().e().get(o1.d.a().getId());
-            if (String9 != null) {
-                o1.d.a().setKey(String9);
-                o1.d.g();
-                o1.d.a(0);
-                com.clilystudio.netbook.hpay100.a.a.a(((ReaderActivity) o1.b).l(), ((ReaderActivity) o1.b).f(), am.e(o1.d.a().getLink()), (Chapter) o1.d.a());
+    static /* synthetic */ void a(o o2, PurchaseChapterResult purchaseChapterResult, boolean bl) {
+        if (purchaseChapterResult == null) {
+            com.clilystudio.netbook.util.e.a(o2.b, "\u652f\u4ed8\u5931\u8d25\uff0c\u8bf7\u91cd\u8bd5");
+            return;
+        }
+        if (purchaseChapterResult.isOk()) {
+            o2.d.q().a().e().put(purchaseChapterResult.getChapterId(), purchaseChapterResult.getKey());
+            a.a(((ReaderActivity) o2.b).l(), o2.d.q().a().e());
+            String string = o2.d.q().a().e().get(o2.d.a().getId());
+            if (string != null) {
+                o2.d.a().setKey(string);
+                o2.d.g();
+                o2.d.a(0);
+                a.a(((ReaderActivity) o2.b).l(), ((ReaderActivity) o2.b).f(), am.e(o2.d.a().getLink()), o2.d.a());
             }
-            if (o1.e)
-                ;
-            if (o1.b instanceof ReaderActivity)
-                ((ReaderActivity) o1.b).g();
-            else
-                o1.e();
-        } else if (PurchaseChapterResult2.getCode().equals("ITEM_ALREADY_PURCHASED")) {
-            String String4 = (String) o1.d.q().a().e().get(o1.d.a().getId());
-
-            if (String4 != null) {
-                o1.d.a().setKey(String4);
-                o1.d.g();
-                o1.d.a(0);
-                if (o1.b instanceof ReaderActivity)
-                    ((ReaderActivity) o1.b).g();
-                else
-                    o1.e();
-            } else {
-                E E5 = new E(o1, o1.b, 2131034218, false);
-                String[] String_1darray6 = new String[1];
-
-                String_1darray6[0] = o1.d.a().getId();
-                E5.b(String_1darray6);
+            if (o2.e) {
+                // empty if block
             }
-        } else if (PurchaseChapterResult2.getCode().equals("BALANCE_NOT_ENOUGH")) {
-            com.clilystudio.netbook.util.e.a(o1.b, "\u4F59\u989D\u4E0D\u8DB3\uFF0C\u8BF7\u5145\u503C");
-            com.clilystudio.netbook.event.i.a().c(new com.clilystudio.netbook.event.G());
-            o1.e();
-        } else
-            com.clilystudio.netbook.util.e.a(o1.b, "\u652F\u4ED8\u5931\u8D25\uFF0C\u8BF7\u91CD\u8BD5");
+            if (o2.b instanceof ReaderActivity) {
+                ((ReaderActivity) o2.b).g();
+                return;
+            }
+            o2.e();
+            return;
+        }
+        if (purchaseChapterResult.getCode().equals("ITEM_ALREADY_PURCHASED")) {
+            String string = o2.d.q().a().e().get(o2.d.a().getId());
+            if (string != null) {
+                o2.d.a().setKey(string);
+                o2.d.g();
+                o2.d.a(0);
+                if (o2.b instanceof ReaderActivity) {
+                    ((ReaderActivity) o2.b).g();
+                    return;
+                }
+                o2.e();
+                return;
+            }
+            E e2 = new E(o2, o2.b, 2131034218, false);
+            String[] arrstring = new String[]{o2.d.a().getId()};
+            e2.b(arrstring);
+            return;
+        }
+        if (purchaseChapterResult.getCode().equals("BALANCE_NOT_ENOUGH")) {
+            com.clilystudio.netbook.util.e.a(o2.b, "\u4f59\u989d\u4e0d\u8db3\uff0c\u8bf7\u5145\u503c");
+            i.a().c(new com.clilystudio.netbook.event.G());
+            o2.e();
+            return;
+        }
+        com.clilystudio.netbook.util.e.a(o2.b, "\u652f\u4ed8\u5931\u8d25\uff0c\u8bf7\u91cd\u8bd5");
     }
 
-    static void a(o o1, boolean boolean2) {
-        if (o1.u != null) {
-            o1.u.setClickable(boolean2);
-            o1.u.setEnabled(boolean2);
+    static /* synthetic */ void a(o o2, boolean bl) {
+        if (o2.u != null) {
+            o2.u.setClickable(bl);
+            o2.u.setEnabled(bl);
         }
     }
 
-    static n b(o o1) {
-        return o1.d;
+    static /* synthetic */ n b(o o2) {
+        return o2.d;
     }
 
-    static boolean b(o o1, boolean boolean2) {
-        o1.t = boolean2;
-        return boolean2;
+    static /* synthetic */ boolean b(o o2, boolean bl) {
+        o2.t = bl;
+        return bl;
     }
 
-    static View c(o o1) {
-        return o1.j;
+    static /* synthetic */ View c(o o2) {
+        return o2.j;
     }
 
-    static G d(o o1) {
-        return o1.q;
+    static /* synthetic */ G d(o o2) {
+        return o2.q;
     }
 
-    static H e(o o1) {
-        return o1.r;
+    static /* synthetic */ H e(o o2) {
+        return o2.r;
     }
 
-    static F f(o o1) {
-        return o1.s;
+    static /* synthetic */ F f(o o2) {
+        return o2.s;
     }
 
+    /*
+     * Enabled aggressive block sorting
+     */
     private static boolean o() {
-        if (am.e() == null || !com.clilystudio.netbook.hpay100.a.a.a((Context) MyApplication.a(), new StringBuilder("auto_buy_chapter").append(com.clilystudio.netbook.util.I.a).toString(), false))
+        if (am.e() == null || !a.a((Context) MyApplication.a(), "auto_buy_chapter" + com.clilystudio.netbook.util.I.a, false)) {
             return false;
-        else
-            return true;
-    }
-
-    private void a(View View1, Advert Advert2) {
-        if (View1 != null && Advert2 != null) {
-            SmartImageView SmartImageView3;
-            TextView TextView4;
-            TextView TextView5;
-            Button Button6;
-
-            Advert2.setPosition("read_page");
-            Advert2.recordShow((Context) b);
-            SmartImageView3 = (SmartImageView) View1.findViewById(2131493908);
-            TextView4 = (TextView) View1.findViewById(2131493910);
-            TextView5 = (TextView) View1.findViewById(2131493911);
-            Button6 = (Button) View1.findViewById(2131493909);
-            if (com.clilystudio.netbook.hpay100.a.a.y((Context) b))
-                Button6.setVisibility(0);
-            if (com.clilystudio.netbook.hpay100.a.a.a((Context) b, "customer_night_theme", false)) {
-                View1.setBackgroundResource(2130838073);
-                TextView4.setTextColor(b.getResources().getColor(2131427396));
-                TextView5.setTextColor(b.getResources().getColor(2131427397));
-                Button6.setTextColor(b.getResources().getColor(2131427396));
-                SmartImageView3.setAlpha(0.20000000298023224F);
-            } else {
-                View1.setBackgroundResource(2130838072);
-                TextView4.setTextColor(b.getResources().getColor(2131427393));
-                TextView5.setTextColor(b.getResources().getColor(2131427394));
-                Button6.setTextColor(b.getResources().getColor(2131427548));
-                SmartImageView3.setAlpha(1.0F);
-            }
-            SmartImageView3.setImageBitmap(null);
-            SmartImageView3.setImageUrl(Advert2.getFullImg());
-            TextView4.setText((CharSequence) Advert2.getTitle());
-            TextView5.setText((CharSequence) Advert2.getDesc());
-            Button6.setOnClickListener((View$OnClickListener) new z(this));
-            View1.setOnClickListener((View$OnClickListener) new A(this, Advert2));
-            com.clilystudio.netbook.util.adutil.n.a(Advert2, View1);
         }
+        return true;
     }
 
-    private void a(boolean boolean1) {
-        View View2 = f.findViewById(2131493912);
-        View View3 = f.findViewById(2131493922);
-
-        if (boolean1) {
-            View View4;
-            View View5;
-
-            View2.setVisibility(8);
-            View3.setVisibility(0);
-            View4 = f.findViewById(2131493924);
-            View5 = f.findViewById(2131493929);
-            ((TextView) View3.findViewById(2131493923)).setText((CharSequence) d.i());
-            if (am.g()) {
-                TextView TextView6;
-                ChapterLink[] ChapterLink_1darray7;
-                int int8;
-                CheckBox CheckBox9;
-                Button Button10;
-
-                View4.setVisibility(0);
-                View5.setVisibility(8);
-                TextView6 = (TextView) f.findViewById(2131493925);
-                ChapterLink_1darray7 = MyApplication.a().b().d();
-                if (ChapterLink_1darray7 == null || ChapterLink_1darray7.length == 0)
-                    int8 = 0;
-                else {
-                    int int11 = d.l();
-
-                    if (int11 < 0)
-                        int11 = 0;
-                    else if (int11 >= ChapterLink_1darray7.length)
-                        int11 = -1 + ChapterLink_1darray7.length;
-                    int8 = ChapterLink_1darray7[int11].getCurrency();
-                }
-                TextView6.setText((CharSequence) new StringBuilder().append(int8).toString());
-                CheckBox9 = (CheckBox) View4.findViewById(2131493926);
-                u = (Button) View4.findViewById(2131493927);
-                if (com.clilystudio.netbook.hpay100.a.a.a((Context) b, "user_account_balance", 0) > d.a().getCurrency() || t) {
-                    CheckBox9.setVisibility(0);
-                    CheckBox9.setChecked(com.clilystudio.netbook.hpay100.a.a.a((Context) b, new StringBuilder("auto_buy_chapter").append(com.clilystudio.netbook.util.I.a).toString(), false));
-                    u.setText((CharSequence) "\u8D2D\u4E70\uFF0C\u7EE7\u7EED\u9605\u8BFB");
-                    u.setOnClickListener((View$OnClickListener) new s(this, CheckBox9));
-                    CheckBox9.setOnClickListener((View$OnClickListener) new t(this));
-                } else {
-                    CheckBox9.setVisibility(4);
-                    u.setText((CharSequence) "\u4F59\u989D\u4E0D\u8DB3\uFF0C\u8BF7\u5145\u503C");
-                    u.setOnClickListener((View$OnClickListener) new v(this));
-                }
-                Button10 = (Button) View4.findViewById(2131493928);
-                Button10.setOnClickListener((View$OnClickListener) new x(this));
-                if (b instanceof ReaderActivity && !((ReaderActivity) b).m())
-                    Button10.setVisibility(8);
-            } else {
-                View4.setVisibility(8);
-                View5.setVisibility(0);
-                View5.findViewById(2131493930).setOnClickListener((View$OnClickListener) new y(this));
-            }
+    /*
+     * Enabled aggressive block sorting
+     */
+    @TargetApi(value = 11)
+    private void a(View view, Advert advert) {
+        if (view == null || advert == null) {
+            return;
+        }
+        advert.setPosition("read_page");
+        advert.recordShow(this.b);
+        SmartImageView smartImageView = (SmartImageView) view.findViewById(2131493908);
+        TextView textView = (TextView) view.findViewById(2131493910);
+        TextView textView2 = (TextView) view.findViewById(2131493911);
+        Button button = (Button) view.findViewById(2131493909);
+        if (a.y(this.b)) {
+            button.setVisibility(0);
+        }
+        if (a.a((Context) this.b, "customer_night_theme", false)) {
+            view.setBackgroundResource(2130838073);
+            textView.setTextColor(this.b.getResources().getColor(2131427396));
+            textView2.setTextColor(this.b.getResources().getColor(2131427397));
+            button.setTextColor(this.b.getResources().getColor(2131427396));
+            smartImageView.setAlpha(0.2f);
         } else {
-            View2.setVisibility(0);
-            View3.setVisibility(8);
-            r();
+            view.setBackgroundResource(2130838072);
+            textView.setTextColor(this.b.getResources().getColor(2131427393));
+            textView2.setTextColor(this.b.getResources().getColor(2131427394));
+            button.setTextColor(this.b.getResources().getColor(2131427548));
+            smartImageView.setAlpha(1.0f);
+        }
+        smartImageView.setImageBitmap(null);
+        smartImageView.setImageUrl(advert.getFullImg());
+        textView.setText(advert.getTitle());
+        textView2.setText(advert.getDesc());
+        button.setOnClickListener(new z(this));
+        view.setOnClickListener(new A(this, advert));
+        com.clilystudio.netbook.util.adutil.n.a(advert, view);
+    }
+
+    /*
+     * Enabled aggressive block sorting
+     */
+    private void a(boolean bl) {
+        int n2;
+        View view = this.f.findViewById(2131493912);
+        View view2 = this.f.findViewById(2131493922);
+        if (!bl) {
+            view.setVisibility(0);
+            view2.setVisibility(8);
+            this.r();
+            return;
+        }
+        view.setVisibility(8);
+        view2.setVisibility(0);
+        View view3 = this.f.findViewById(2131493924);
+        View view4 = this.f.findViewById(2131493929);
+        ((TextView) view2.findViewById(2131493923)).setText(this.d.i());
+        if (!am.g()) {
+            view3.setVisibility(8);
+            view4.setVisibility(0);
+            view4.findViewById(2131493930).setOnClickListener(new y(this));
+            return;
+        }
+        view3.setVisibility(0);
+        view4.setVisibility(8);
+        TextView textView = (TextView) this.f.findViewById(2131493925);
+        ChapterLink[] arrchapterLink = MyApplication.a().b().d();
+        if (arrchapterLink == null || arrchapterLink.length == 0) {
+            n2 = 0;
+        } else {
+            int n3 = this.d.l();
+            if (n3 < 0) {
+                n3 = 0;
+            } else if (n3 >= arrchapterLink.length) {
+                n3 = -1 + arrchapterLink.length;
+            }
+            n2 = arrchapterLink[n3].getCurrency();
+        }
+        textView.setText("" + n2);
+        CheckBox checkBox = (CheckBox) view3.findViewById(2131493926);
+        this.u = (Button) view3.findViewById(2131493927);
+        if (a.a((Context) this.b, "user_account_balance", 0) > this.d.a().getCurrency() || this.t) {
+            checkBox.setVisibility(0);
+            checkBox.setChecked(a.a((Context) this.b, "auto_buy_chapter" + com.clilystudio.netbook.util.I.a, false));
+            this.u.setText("\u8d2d\u4e70\uff0c\u7ee7\u7eed\u9605\u8bfb");
+            this.u.setOnClickListener(new s(this, checkBox));
+            checkBox.setOnClickListener(new t(this));
+        } else {
+            checkBox.setVisibility(4);
+            this.u.setText("\u4f59\u989d\u4e0d\u8db3\uff0c\u8bf7\u5145\u503c");
+            this.u.setOnClickListener(new v(this));
+        }
+        Button button = (Button) view3.findViewById(2131493928);
+        button.setOnClickListener(new x(this));
+        if (this.b instanceof ReaderActivity && !((ReaderActivity) this.b).m()) {
+            button.setVisibility(8);
         }
     }
 
-    private boolean a(View View1) {
+    private boolean a(View view) {
         try {
-            int int3 = h.getLayout().getHeight() + View1.getLayoutParams().height;
-            int int4 = c.e;
-        } catch (Exception Exception2) {
+            int n2 = this.h.getLayout().getHeight() + view.getLayoutParams().height;
+            int n3 = this.c.e;
+            if (n2 < n3) {
+                return true;
+            }
+        } catch (Exception var2_4) {
+            // empty catch block
         }
         return false;
     }
 
-    private void b(int int1) {
-        if (k != null)
-            k.setImageResource(int1);
+    private void b(int n2) {
+        if (this.k != null) {
+            this.k.setImageResource(n2);
+        }
     }
 
-    private void b(n n1) {
-        if (n1 != null && n1.o() == -1) {
-            Reader Reader2 = MyApplication.a().b();
-
-            if (Reader2 != null) {
-                String String3 = Reader2.i();
-
-                com.umeng.a.b.a((Context) b, "chapter_load_error", String3);
-            }
+    private void b(n n2) {
+        Reader reader;
+        if (n2 != null && n2.o() == -1 && (reader = MyApplication.a().b()) != null) {
+            String string = reader.i();
+            b.a(this.b, "chapter_load_error", string);
         }
     }
 
     private void l() {
-        TextView TextView1;
-
-        f.setBackgroundResource(c.h);
-        g.setTextColor(c.i);
-        h.setTextColor(c.g);
-        i.setTextColor(c.i);
-        TextView1 = (TextView) f.findViewById(2131493914);
-        TextView1.setTextColor(c.i);
-        TextView1.setBackgroundResource(c.j);
-        ((TextView) f.findViewById(2131493606)).setTextColor(c.i);
+        this.f.setBackgroundResource(this.c.h);
+        this.g.setTextColor(this.c.i);
+        this.h.setTextColor(this.c.g);
+        this.i.setTextColor(this.c.i);
+        TextView textView = (TextView) this.f.findViewById(2131493914);
+        textView.setTextColor(this.c.i);
+        textView.setBackgroundResource(this.c.j);
+        ((TextView) this.f.findViewById(2131493606)).setTextColor(this.c.i);
     }
 
     private void m() {
-        h.setHeight(c.e);
-        h.setTextSize(0, (float) c.a);
-        h.setLineSpacing((float) c.b, 1.0F);
+        this.h.setHeight(this.c.e);
+        this.h.setTextSize(0, this.c.a);
+        this.h.setLineSpacing(this.c.b, 1.0f);
     }
 
     private void n() {
-        if (d == null)
+        if (this.d == null) {
             return;
-        else {
-            switch (d.o()) {
-                default:
-                    return;
-                case -5:
-                    p();
-                    n.setVisibility(8);
-                    l.setText((CharSequence) "\u672C\u6765\u6E90\u6682\u65E0\u8BE5\u5C0F\u8BF4");
-                    m.setText((CharSequence) "\u8BF7\u5207\u6362\u5230\u5176\u4ED6\u6765\u6E90");
-                    b(2130837937);
-                    u();
-                    a(false);
-                    return;
-                case 1:
-                    e();
-                    return;
-                case -1:
-                    p();
-                    n.setVisibility(0);
-                    t();
-                    a(false);
-                    if (com.clilystudio.netbook.hpay100.a.a.t((Context) b)) {
-                        l.setText((CharSequence) "\u8FDE\u63A5\u8D85\u65F6\uFF0C\u518D\u8BD5\u8BD5\uFF1F");
-                        m.setText((CharSequence) "\u8BF7\u5237\u65B0\u91CD\u8BD5\u6216\u5207\u6362\u6765\u6E90");
-                        b(2130837937);
-                        u();
-                    } else {
-                        l.setText((CharSequence) "\u6CA1\u7F51\uFF0C\u8FDE\u4E0D\u4E0A\u5440");
-                        m.setText((CharSequence) "\u8BF7\u68C0\u67E5\u7F51\u7EDC\u540E\u91CD\u8BD5");
-                        b(2130837938);
-                        o.setVisibility(8);
-                        n.setText(2131034471);
-                    }
-                    return;
-                case -3:
-                    p();
-                    n.setVisibility(0);
-                    l.setText((CharSequence) "\u672C\u7AE0\u6682\u65E0\u6587\u5B57");
-                    m.setText((CharSequence) "\u672A\u627E\u5230\u672C\u7AE0\u7684\u6587\u5B57\u5185\u5BB9");
-                    b(2130837937);
-                    t();
-                    u();
-                    a(false);
-                    return;
-                case -2:
-                    p();
-                    l.setText((CharSequence) "\u6B64\u6765\u6E90\u5C1A\u672A\u66F4\u65B0\uFF0C\u8BF7\u7A0D\u540E\u518D\u8BD5");
-                    m.setText((CharSequence) "");
-                    b(2130837939);
-                    u();
-                    a(false);
-                    return;
-                case -4:
-                    p();
-                    n.setVisibility(0);
-                    l.setText((CharSequence) "\u8FDE\u63A5\u8D85\u65F6\uFF0C\u518D\u8BD5\u8BD5\uFF1F");
-                    m.setText((CharSequence) "\u8BF7\u5237\u65B0\u91CD\u8BD5\u6216\u5207\u6362\u6765\u6E90");
-                    b(2130837937);
-                    n.setOnClickListener((View$OnClickListener) new q(this));
-                    u();
-                    a(false);
-                    return;
-                case 0:
-                    j.setVisibility(8);
-                    g.setText((CharSequence) "");
-                    h.setText((CharSequence) "");
-                    i.setText((CharSequence) "");
-                    a(false);
-                    return;
-            }
         }
+        switch (this.d.o()) {
+            default: {
+                return;
+            }
+            case -5: {
+                this.p();
+                this.n.setVisibility(8);
+                this.l.setText("\u672c\u6765\u6e90\u6682\u65e0\u8be5\u5c0f\u8bf4");
+                this.m.setText("\u8bf7\u5207\u6362\u5230\u5176\u4ed6\u6765\u6e90");
+                this.b(2130837937);
+                this.u();
+                this.a(false);
+                return;
+            }
+            case 1: {
+                this.e();
+                return;
+            }
+            case -1: {
+                this.p();
+                this.n.setVisibility(0);
+                this.t();
+                this.a(false);
+                if (a.t(this.b)) {
+                    this.l.setText("\u8fde\u63a5\u8d85\u65f6\uff0c\u518d\u8bd5\u8bd5\uff1f");
+                    this.m.setText("\u8bf7\u5237\u65b0\u91cd\u8bd5\u6216\u5207\u6362\u6765\u6e90");
+                    this.b(2130837937);
+                    this.u();
+                    return;
+                }
+                this.l.setText("\u6ca1\u7f51\uff0c\u8fde\u4e0d\u4e0a\u5440");
+                this.m.setText("\u8bf7\u68c0\u67e5\u7f51\u7edc\u540e\u91cd\u8bd5");
+                this.b(2130837938);
+                this.o.setVisibility(8);
+                this.n.setText(2131034471);
+                return;
+            }
+            case -3: {
+                this.p();
+                this.n.setVisibility(0);
+                this.l.setText("\u672c\u7ae0\u6682\u65e0\u6587\u5b57");
+                this.m.setText("\u672a\u627e\u5230\u672c\u7ae0\u7684\u6587\u5b57\u5185\u5bb9");
+                this.b(2130837937);
+                this.t();
+                this.u();
+                this.a(false);
+                return;
+            }
+            case -2: {
+                this.p();
+                this.l.setText("\u6b64\u6765\u6e90\u5c1a\u672a\u66f4\u65b0\uff0c\u8bf7\u7a0d\u540e\u518d\u8bd5");
+                this.m.setText("");
+                this.b(2130837939);
+                this.u();
+                this.a(false);
+                return;
+            }
+            case -4: {
+                this.p();
+                this.n.setVisibility(0);
+                this.l.setText("\u8fde\u63a5\u8d85\u65f6\uff0c\u518d\u8bd5\u8bd5\uff1f");
+                this.m.setText("\u8bf7\u5237\u65b0\u91cd\u8bd5\u6216\u5207\u6362\u6765\u6e90");
+                this.b(2130837937);
+                this.n.setOnClickListener(new q(this));
+                this.u();
+                this.a(false);
+                return;
+            }
+            case 0:
+        }
+        this.j.setVisibility(8);
+        this.g.setText("");
+        this.h.setText("");
+        this.i.setText("");
+        this.a(false);
     }
 
     private void p() {
-        j.setVisibility(0);
-        g.setText((CharSequence) d.i());
-        h.setText((CharSequence) "");
-        i.setText((CharSequence) "");
+        this.j.setVisibility(0);
+        this.g.setText(this.d.i());
+        this.h.setText("");
+        this.i.setText("");
     }
 
+    /*
+     * Enabled aggressive block sorting
+     */
     private boolean q() {
-        int int1;
-
-        if (MyApplication.a().d() == 9)
-            int1 = 1;
-        else
-            int1 = 0;
-        if (int1 == 0 && d != null && d.l() % 5 == 4 && d.h())
-            return true;
-        else
+        if (MyApplication.a().d() == 9) {
             return false;
-    }
-
-    private void r() {
-        if (e) {
-            View View1 = f.findViewById(2131493907);
-
-            if (View1 != null) {
-                if (am.q((Context) b) && com.clilystudio.netbook.hpay100.a.a.F((Context) b) && q() && a(View1) && b instanceof ReaderActivity) {
-                    Advert Advert2 = com.clilystudio.netbook.util.adutil.n.b((Context) b, "page");
-
-                    if (Advert2 != null && com.clilystudio.netbook.hpay100.a.a.w((Context) b, "rate_zssq_advert_reader_bookinfo")) {
-                        View1.setVisibility(0);
-                        a(View1, Advert2);
-                    } else
-                        View1.setVisibility(8);
-                    return;
-                } else {
-                    View1.setVisibility(8);
-                    if (e && !com.clilystudio.netbook.hpay100.a.a.a((Context) b, new StringBuilder("remove_ad_toast_showed").append(com.clilystudio.netbook.util.I.a).toString(), false) && q() && a(View1) && !android.support.design.widget.am.r((Context) b)) {
-                        com.clilystudio.netbook.util.e.a(b, "\u5DF2\u4E3A\u60A8\u81EA\u52A8\u514D\u9664\u5E7F\u544A");
-                        com.clilystudio.netbook.hpay100.a.a.b((Context) b, new StringBuilder("remove_ad_toast_showed").append(com.clilystudio.netbook.util.I.a).toString(), true);
-                        return;
-                    }
-                }
-            }
         }
-    }
-
-    private void s() {
-        View View1 = f.findViewById(2131493907);
-
-        if (View1 != null)
-            View1.setVisibility(8);
-    }
-
-    private void t() {
-        n.setOnClickListener((View$OnClickListener) new B(this));
-    }
-
-    private void u() {
-        o.setVisibility(0);
-        o.setText((CharSequence) "\u66F4\u6362\u6765\u6E90");
-        o.setOnClickListener((View$OnClickListener) new r(this));
-    }
-
-    public final void a() {
-        p = true;
-    }
-
-    public final void a(int int1) {
-        ((TextView) f.findViewById(2131493914)).setText((CharSequence) String.valueOf(int1));
-    }
-
-    public final void a(int int1, int int2) {
-        if (h instanceof JustifyTextView)
-            ((JustifyTextView) h).setHighLight(int1, int2);
-    }
-
-    public final void a(F F1) {
-        s = F1;
-    }
-
-    public final void a(G G1) {
-        q = G1;
-    }
-
-    public final void a(H H1) {
-        r = H1;
-    }
-
-    public final void a(n n1) {
-        d = n1;
-        e = false;
-        n();
-        b(n1);
-        s();
-    }
-
-    public final void a(n n1, boolean boolean2) {
-        d = n1;
-        e = true;
-        n();
-        b(n1);
-        if (a(n1.a())) {
-            I I5;
-            String[] String_1darray6;
-
-            com.umeng.a.b.a((Context) b, "paying_page_auto_purchase", com.clilystudio.netbook.util.I.b);
-            I5 = new I(this, b, "\u81EA\u52A8\u8D2D\u4E70\u4E2D...");
-            String_1darray6 = new String[2];
-            String_1darray6[0] = am.e().getToken();
-            String_1darray6[1] = n1.a().getId();
-            I5.b(String_1darray6);
-        }
-        if (n1.j() == 0) {
-            int int3 = n1.l();
-            Reader Reader4 = MyApplication.a().b();
-
-            if (o())
-                Reader4.a(int3 + 1, (e) new p(this), true, false);
-        }
-    }
-
-    public final boolean a(ReaderChapter ReaderChapter1) {
-        if (!o())
-            return false;
-        else if (ReaderChapter1 == null || !ReaderChapter1.isVip())
-            return false;
-        else if (com.clilystudio.netbook.hpay100.a.a.a((Context) b, "user_account_balance", 0) < ReaderChapter1.getCurrency())
-            return false;
-        else {
-            String String2 = ReaderChapter1.getKey();
-
-            if (String2 == null)
-                String2 = (String) d.q().a().e().get(ReaderChapter1.getId());
-            if (String2 == null)
+        boolean bl = false;
+        if (!bl) {
+            if (this.d == null) return false;
+            if (this.d.l() % 5 == 4 && this.d.h()) {
                 return true;
-            else
-                return false;
-        }
-    }
-
-    public final void b() {
-        l();
-    }
-
-    public final void c() {
-        l();
-    }
-
-    public final int d() {
-        return h.getHeight();
-    }
-
-    public final void e() {
-        if (d != null) {
-            if (f()) {
-                if (e)
-                    com.umeng.a.b.a((Context) b, "paying_page_show", com.clilystudio.netbook.util.I.b);
-                a(true);
-            } else {
-                TextView TextView1;
-                Object[] Object_1darray2;
-
-                if (p)
-                    m();
-                j.setVisibility(8);
-                g.setText((CharSequence) d.i());
-                if (c.i())
-                    h.setText((CharSequence) d.a((Context) b));
-                else
-                    h.setText((CharSequence) d.c());
-                TextView1 = i;
-                Object_1darray2 = new Object[2];
-                Object_1darray2[0] = Integer.valueOf(1 + d.j());
-                Object_1darray2[1] = Integer.valueOf(d.k());
-                TextView1.setText((CharSequence) String.format("%s/%s", Object_1darray2));
-                a(false);
             }
-        }
-    }
-
-    public final boolean f() {
-        ChapterLink[] ChapterLink_1darray2;
-
-        try {
-            if (d == null)
-                return false;
-        } catch (Exception Exception1) {
-            com.umeng.a.b.a((Context) b, "zhuishu_catch_exception", new StringBuilder("PageBinder_needPay:").append(Exception1.getMessage()).toString());
-            return false;
-        }
-        try {
-            ChapterLink_1darray2 = MyApplication.a().b().d();
-        } catch (Exception Exception5) {
-            com.umeng.a.b.a((Context) b, "zhuishu_catch_exception", new StringBuilder("PageBinder_needPay:").append(Exception5.getMessage()).toString());
-            return false;
-        }
-        if (ChapterLink_1darray2 == null || ChapterLink_1darray2.length == 0)
-            return false;
-        else {
-            int int3;
-            String String4;
-
-            try {
-                int3 = d.l();
-            } catch (Exception Exception6) {
-                com.umeng.a.b.a((Context) b, "zhuishu_catch_exception", new StringBuilder("PageBinder_needPay:").append(Exception6.getMessage()).toString());
-                return false;
-            }
-            if (int3 < 0)
-                int3 = 0;
-            else {
-                try {
-                    if (int3 >= ChapterLink_1darray2.length)
-                        int3 = -1 + ChapterLink_1darray2.length;
-                } catch (Exception Exception7) {
-                    com.umeng.a.b.a((Context) b, "zhuishu_catch_exception", new StringBuilder("PageBinder_needPay:").append(Exception7.getMessage()).toString());
-                    return false;
-                }
-            }
-            try {
-                if (!ChapterLink_1darray2[int3].isVip())
-                    return false;
-            } catch (Exception Exception8) {
-                com.umeng.a.b.a((Context) b, "zhuishu_catch_exception", new StringBuilder("PageBinder_needPay:").append(Exception8.getMessage()).toString());
-                return false;
-            }
-            try {
-                String4 = d.a().getKey();
-            } catch (Exception Exception9) {
-                com.umeng.a.b.a((Context) b, "zhuishu_catch_exception", new StringBuilder("PageBinder_needPay:").append(Exception9.getMessage()).toString());
-                return false;
-            }
-            if (String4 == null) {
-                try {
-                    String4 = (String) d.q().a().e().get(d.a().getId());
-                } catch (Exception Exception10) {
-                    com.umeng.a.b.a((Context) b, "zhuishu_catch_exception", new StringBuilder("PageBinder_needPay:").append(Exception10.getMessage()).toString());
-                    return false;
-                }
-                if (String4 != null) {
-                    try {
-                        d.a().setKey(String4);
-                    } catch (Exception Exception11) {
-                        com.umeng.a.b.a((Context) b, "zhuishu_catch_exception", new StringBuilder("PageBinder_needPay:").append(Exception11.getMessage()).toString());
-                        return false;
-                    }
-                }
-            }
-            if (String4 == null)
-                return true;
-            else
-                return false;
         }
         return false;
     }
 
-    public final void g() {
-        if (e)
-            com.umeng.a.b.a((Context) b, "paying_page_cancel", com.clilystudio.netbook.util.I.b);
-    }
-
-    public final void h() {
-        if (!e) {
-            View View1 = f.findViewById(2131493907);
-
-            if (View1 != null) {
-                View1.setVisibility(8);
+    /*
+     * Enabled aggressive block sorting
+     * Lifted jumps to return sites
+     */
+    private void r() {
+        if (!this.e) {
+            return;
+        }
+        View view = this.f.findViewById(2131493907);
+        if (view == null) return;
+        if (am.q(this.b) && a.F(this.b) && this.q() && this.a(view) && this.b instanceof ReaderActivity) {
+            Advert advert = com.clilystudio.netbook.util.adutil.n.b(this.b, "page");
+            if (advert != null && a.w(this.b, "rate_zssq_advert_reader_bookinfo")) {
+                view.setVisibility(0);
+                this.a(view, advert);
                 return;
             }
+            view.setVisibility(8);
+            return;
         }
+        view.setVisibility(8);
+        if (!this.e) return;
+        if (a.a((Context) this.b, "remove_ad_toast_showed" + com.clilystudio.netbook.util.I.a, false)) return;
+        if (!this.q()) return;
+        if (!this.a(view)) return;
+        if (am.r(this.b)) return;
+        com.clilystudio.netbook.util.e.a(this.b, "\u5df2\u4e3a\u60a8\u81ea\u52a8\u514d\u9664\u5e7f\u544a");
+        a.b((Context) this.b, "remove_ad_toast_showed" + com.clilystudio.netbook.util.I.a, true);
+    }
+
+    private void s() {
+        View view = this.f.findViewById(2131493907);
+        if (view != null) {
+            view.setVisibility(8);
+        }
+    }
+
+    private void t() {
+        this.n.setOnClickListener(new B(this));
+    }
+
+    private void u() {
+        this.o.setVisibility(0);
+        this.o.setText("\u66f4\u6362\u6765\u6e90");
+        this.o.setOnClickListener(new r(this));
+    }
+
+    public final void a() {
+        this.p = true;
+    }
+
+    public final void a(int n2) {
+        ((TextView) this.f.findViewById(2131493914)).setText(String.valueOf(n2));
+    }
+
+    public final void a(int n2, int n3) {
+        if (this.h instanceof JustifyTextView) {
+            ((JustifyTextView) this.h).setHighLight(n2, n3);
+        }
+    }
+
+    public final void a(F f2) {
+        this.s = f2;
+    }
+
+    public final void a(G g2) {
+        this.q = g2;
+    }
+
+    public final void a(H h2) {
+        this.r = h2;
+    }
+
+    public final void a(n n2) {
+        this.d = n2;
+        this.e = false;
+        this.n();
+        this.b(n2);
+        this.s();
+    }
+
+    public final void a(n n2, boolean bl) {
+        this.d = n2;
+        this.e = true;
+        this.n();
+        this.b(n2);
+        if (this.a(n2.a())) {
+            b.a(this.b, "paying_page_auto_purchase", com.clilystudio.netbook.util.I.b);
+            I i2 = new I(this, this.b, "\u81ea\u52a8\u8d2d\u4e70\u4e2d...");
+            String[] arrstring = new String[]{am.e().getToken(), n2.a().getId()};
+            i2.b(arrstring);
+        }
+        if (n2.j() == 0) {
+            int n3 = n2.l();
+            Reader reader = MyApplication.a().b();
+            if (o.o()) {
+                reader.a(n3 + 1, new p(this), true, false);
+            }
+        }
+    }
+
+    public final boolean a(ReaderChapter readerChapter) {
+        if (!o.o()) {
+            return false;
+        }
+        if (readerChapter == null || !readerChapter.isVip()) {
+            return false;
+        }
+        if (a.a((Context) this.b, "user_account_balance", 0) < readerChapter.getCurrency()) {
+            return false;
+        }
+        String string = readerChapter.getKey();
+        if (string == null) {
+            string = this.d.q().a().e().get(readerChapter.getId());
+        }
+        if (string == null) {
+            return true;
+        }
+        return false;
+    }
+
+    public final void b() {
+        this.l();
+    }
+
+    public final void c() {
+        this.l();
+    }
+
+    public final int d() {
+        return this.h.getHeight();
+    }
+
+    /*
+     * Enabled aggressive block sorting
+     */
+    public final void e() {
+        if (this.d == null) {
+            return;
+        }
+        if (this.f()) {
+            if (this.e) {
+                b.a(this.b, "paying_page_show", com.clilystudio.netbook.util.I.b);
+            }
+            this.a(true);
+            return;
+        }
+        if (this.p) {
+            this.m();
+        }
+        this.j.setVisibility(8);
+        this.g.setText(this.d.i());
+        if (this.c.i()) {
+            this.h.setText(this.d.a(this.b));
+        } else {
+            this.h.setText(this.d.c());
+        }
+        TextView textView = this.i;
+        Object[] arrobject = new Object[]{1 + this.d.j(), this.d.k()};
+        textView.setText(String.format("%s/%s", arrobject));
+        this.a(false);
+    }
+
+    /*
+     * Enabled aggressive block sorting
+     * Enabled unnecessary exception pruning
+     * Enabled aggressive exception aggregation
+     */
+    public final boolean f() {
+        try {
+            if (this.d == null) {
+                return false;
+            }
+            ChapterLink[] arrchapterLink = MyApplication.a().b().d();
+            if (arrchapterLink == null) return false;
+            if (arrchapterLink.length == 0) {
+                return false;
+            }
+            int n2 = this.d.l();
+            if (n2 < 0) {
+                n2 = 0;
+            } else if (n2 >= arrchapterLink.length) {
+                n2 = -1 + arrchapterLink.length;
+            }
+            if (!arrchapterLink[n2].isVip()) {
+                return false;
+            }
+            String string = this.d.a().getKey();
+            if (string == null && (string = this.d.q().a().e().get(this.d.a().getId())) != null) {
+                this.d.a().setKey(string);
+            }
+            if (string != null) return false;
+            return true;
+        } catch (Exception var1_4) {
+            b.a(this.b, "zhuishu_catch_exception", "PageBinder_needPay:" + var1_4.getMessage());
+            return false;
+        }
+    }
+
+    public final void g() {
+        if (this.e) {
+            b.a(this.b, "paying_page_cancel", com.clilystudio.netbook.util.I.b);
+        }
+    }
+
+    /*
+     * Enabled aggressive block sorting
+     */
+    public final void h() {
+        View view;
+        if (this.e || (view = this.f.findViewById(2131493907)) == null) {
+            return;
+        }
+        view.setVisibility(8);
     }
 
     public final View i() {
-        return f;
+        return this.f;
     }
 
     public final n j() {
-        return d;
+        return this.d;
     }
 
     public final void k() {
-        ((TextView) f.findViewById(2131493606)).setText((CharSequence) a.format(Long.valueOf(System.currentTimeMillis())));
+        ((TextView) this.f.findViewById(2131493606)).setText(a.format(System.currentTimeMillis()));
     }
 
-    public final void onHideAdEvent(com.clilystudio.netbook.event.s s1) {
-        s();
+    @l
+    public final void onHideAdEvent(com.clilystudio.netbook.event.s s2) {
+        this.s();
     }
 
-    public final void onLoginEvent(com.clilystudio.netbook.event.t t1) {
-        if (e) {
-            Account Account2 = t1.a();
-
-            if (Account2 != null)
-                new D(this, b, "\u6B63\u5728\u83B7\u53D6\u8D44\u4EA7\u4FE1\u606F...", Account2.getToken()).b(new Void[0]);
+    @l
+    public final void onLoginEvent(com.clilystudio.netbook.event.t t2) {
+        Account account;
+        if (this.e && (account = t2.a()) != null) {
+            new D(this, this.b, "\u6b63\u5728\u83b7\u53d6\u8d44\u4ea7\u4fe1\u606f...", account.getToken()).b(new Void[0]);
         }
     }
 
-    public final void onPayFinish(com.clilystudio.netbook.event.y y1) {
-        if (e && y1.a()) {
-            C C2 = new C(this, b, "\u6B63\u5728\u66F4\u65B0\u8D44\u4EA7\u4FE1\u606F...");
-            String[] String_1darray3 = new String[1];
-
-            String_1darray3[0] = am.e().getToken();
-            C2.b(String_1darray3);
+    @l
+    public final void onPayFinish(com.clilystudio.netbook.event.y y2) {
+        if (this.e && y2.a()) {
+            C c2 = new C(this, this.b, "\u6b63\u5728\u66f4\u65b0\u8d44\u4ea7\u4fe1\u606f...");
+            String[] arrstring = new String[]{am.e().getToken()};
+            c2.b(arrstring);
         }
     }
 
-    public final void onRemoveAdEvent$2234193(com.clilystudio.netbook.hpay100.a.a a1) {
-        if (e)
-            f.findViewById(2131493907).setVisibility(8);
-    }
-
-    public final void onShowThirdAd(com.clilystudio.netbook.event.B B1) {
-        if (B1 != null && am.q((Context) b) && B1.b().equals("page")) {
-            View View2 = f.findViewById(2131493907);
-
-            if (View2 != null && com.clilystudio.netbook.hpay100.a.a.F((Context) b) && q() && a(View2) && b instanceof ReaderActivity) {
-                Advert Advert3 = B1.a();
-
-                if (Advert3 != null) {
-                    View2.setVisibility(0);
-                    a(View2, Advert3);
-                    return;
-                }
-            }
+    @l
+    public final void onRemoveAdEvent$2234193(a a2) {
+        if (this.e) {
+            this.f.findViewById(2131493907).setVisibility(8);
         }
     }
 
-    public final void onThemeChanged(com.clilystudio.netbook.event.C C1) {
-        r();
+    /*
+     * Enabled aggressive block sorting
+     */
+    @l
+    public final void onShowThirdAd(com.clilystudio.netbook.event.B b2) {
+        View view;
+        Advert advert;
+        if (!(b2 != null && am.q(this.b) && b2.b().equals("page") && (view = this.f.findViewById(2131493907)) != null && a.F(this.b) && this.q() && this.a(view) && this.b instanceof ReaderActivity && (advert = b2.a()) != null)) {
+            return;
+        }
+        view.setVisibility(0);
+        this.a(view, advert);
+    }
+
+    @l
+    public final void onThemeChanged(com.clilystudio.netbook.event.C c2) {
+        this.r();
     }
 }

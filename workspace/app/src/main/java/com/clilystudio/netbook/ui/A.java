@@ -1,21 +1,22 @@
 package com.clilystudio.netbook.ui;
 
-import android.view.View$OnClickListener;
 import android.widget.TextView;
 
-final class A implements Runnable {
+final class A
+        implements Runnable {
+    final /* synthetic */ TextView a;
+    final /* synthetic */ AudiobookInfoActivity b;
 
-    TextView a;     // final access specifier removed
-    AudiobookInfoActivity b;     // final access specifier removed
-    A(AudiobookInfoActivity AudiobookInfoActivity1, TextView TextView2) {
-        b = AudiobookInfoActivity1;
-        a = TextView2;
+    A(AudiobookInfoActivity audiobookInfoActivity, TextView textView) {
+        this.b = audiobookInfoActivity;
+        this.a = textView;
     }
 
+    @Override
     public final void run() {
-        if (a.getLineCount() > 4) {
-            a.setMaxLines(4);
-            a.setOnClickListener((View$OnClickListener) new B(this));
+        if (this.a.getLineCount() > 4) {
+            this.a.setMaxLines(4);
+            this.a.setOnClickListener(new B(this));
         }
     }
 }

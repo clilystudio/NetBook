@@ -3,7 +3,6 @@ package com.clilystudio.netbook.model;
 import java.util.Date;
 
 public class GamePostRoot$GamePost {
-
     private String _id;
     private Author author;
     private String block;
@@ -15,74 +14,74 @@ public class GamePostRoot$GamePost {
     private String type;
 
     public Author getAuthor() {
-        return author;
+        return this.author;
     }
 
-    public void setAuthor(Author Author1) {
-        author = Author1;
+    public void setAuthor(Author author) {
+        this.author = author;
     }
 
     public String getBlock() {
-        return block;
+        return this.block;
     }
 
-    public void setBlock(String String1) {
-        block = String1;
+    public void setBlock(String string) {
+        this.block = string;
     }
 
     public int getCommentCount() {
-        return commentCount;
+        return this.commentCount;
     }
 
-    public void setCommentCount(int int1) {
-        commentCount = int1;
+    public void setCommentCount(int n) {
+        this.commentCount = n;
     }
 
     public String getContent() {
-        return content;
+        return this.content;
     }
 
-    public void setContent(String String1) {
-        content = String1;
+    public void setContent(String string) {
+        this.content = string;
     }
 
     public Date getCreated() {
-        return created;
+        return this.created;
     }
 
-    public void setCreated(Date Date1) {
-        created = Date1;
+    public void setCreated(Date date) {
+        this.created = date;
     }
 
     public int getLikeCount() {
-        return likeCount;
+        return this.likeCount;
     }
 
-    public void setLikeCount(int int1) {
-        likeCount = int1;
+    public void setLikeCount(int n) {
+        this.likeCount = n;
     }
 
     public String getState() {
-        return state;
+        return this.state;
     }
 
-    public void setState(String String1) {
-        state = String1;
+    public void setState(String string) {
+        this.state = string;
     }
 
     public String getType() {
-        return type;
+        return this.type;
     }
 
-    public void setType(String String1) {
-        type = String1;
+    public void setType(String string) {
+        this.type = string;
     }
 
     public String get_id() {
-        return _id;
+        return this._id;
     }
 
-    public void set_id(String String1) {
-        _id = String1;
+    public void set_id(String string) {
+        this._id = string;
     }
 }

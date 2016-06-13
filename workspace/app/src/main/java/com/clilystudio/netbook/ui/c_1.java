@@ -2,20 +2,21 @@ package com.clilystudio.netbook.ui;
 
 import android.view.KeyEvent;
 import android.view.View;
-import android.view.View$OnKeyListener;
 
-final class c implements View$OnKeyListener {
+final class c
+        implements View.OnKeyListener {
+    private /* synthetic */ AdWebViewActivity a;
 
-    private AdWebViewActivity a;
-
-    c(AdWebViewActivity AdWebViewActivity1) {
-        a = AdWebViewActivity1;
+    c(AdWebViewActivity adWebViewActivity) {
+        this.a = adWebViewActivity;
     }
 
-    public final boolean onKey(View View1, int int2, KeyEvent KeyEvent3) {
-        if (int2 != 4 || !com.clilystudio.netbook.ui.AdWebViewActivity.e(a).canGoBack())
-            return false;
-        AdWebViewActivity.e(a).goBack();
-        return true;
+    @Override
+    public final boolean onKey(View view, int n, KeyEvent keyEvent) {
+        if (n == 4 && AdWebViewActivity.e(this.a).canGoBack()) {
+            AdWebViewActivity.e(this.a).goBack();
+            return true;
+        }
+        return false;
     }
 }

@@ -2,49 +2,51 @@ package com.clilystudio.netbook.ui.post;
 
 import android.app.Activity;
 
+import com.clilystudio.netbook.model.Follower;
 import com.clilystudio.netbook.model.FollowingsResult;
+import com.clilystudio.netbook.util.e;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
-import java.util.List;
 
-final class ck extends com.clilystudio.netbook.a.e {
-
+final class ck
+        extends com.clilystudio.netbook.a.e<String, Void, FollowingsResult> {
     private Runnable a;
-    private OtherUserActivity b;
-    public ck(OtherUserActivity OtherUserActivity1, Runnable Runnable2) {
-        b = OtherUserActivity1;
-        a = Runnable2;
+    private /* synthetic */ OtherUserActivity b;
+
+    public ck(OtherUserActivity otherUserActivity, Runnable runnable) {
+        this.b = otherUserActivity;
+        this.a = runnable;
     }
 
-    private static transient FollowingsResult a(String[] String_1darray1) {
-        FollowingsResult FollowingsResult4;
-
+    private static /* varargs */ FollowingsResult a(String... arrstring) {
         try {
-            com.clilystudio.netbook.api.b.a();
-            FollowingsResult4 = com.clilystudio.netbook.api.b.b().h(String_1darray1[0]);
-        } catch (Exception Exception2) {
-            Exception2.printStackTrace();
+            b.a();
+            FollowingsResult followingsResult = b.b().h(arrstring[0]);
+            return followingsResult;
+        } catch (Exception var1_2) {
+            var1_2.printStackTrace();
             return null;
         }
-        return FollowingsResult4;
     }
 
-    protected final Object doInBackground(Object[] Object_1darray1) {
-        return a((String[]) Object_1darray1);
+    @Override
+    protected final /* synthetic */ Object doInBackground(Object[] arrobject) {
+        return ck.a((String[]) arrobject);
     }
 
-    protected final void onPostExecute(Object Object1) {
-        Object Object2 = (FollowingsResult) Object1;
-
-        super.onPostExecute(Object2);
-        if (Object2 != null && ((FollowingsResult) Object2).getFollowings() != null) {
-            OtherUserActivity.a(b, (List) new ArrayList((Collection) Arrays.asList(((FollowingsResult) Object2).getFollowings())));
-            OtherUserActivity.f(b);
-            if (a != null)
-                a.run();
-        } else
-            com.clilystudio.netbook.util.e.a((Activity) b, "\u52A0\u8F7D\u5931\u8D25\uFF0C\u8BF7\u68C0\u67E5\u7F51\u7EDC\u6216\u7A0D\u540E\u518D\u8BD5");
+    @Override
+    protected final /* synthetic */ void onPostExecute(Object object) {
+        FollowingsResult followingsResult = (FollowingsResult) object;
+        super.onPostExecute(followingsResult);
+        if (followingsResult != null && followingsResult.getFollowings() != null) {
+            OtherUserActivity.a(this.b, new ArrayList<Follower>(Arrays.asList(followingsResult.getFollowings())));
+            OtherUserActivity.f(this.b);
+            if (this.a != null) {
+                this.a.run();
+            }
+            return;
+        }
+        e.a((Activity) this.b, "\u52a0\u8f7d\u5931\u8d25\uff0c\u8bf7\u68c0\u67e5\u7f51\u7edc\u6216\u7a0d\u540e\u518d\u8bd5");
     }
 }

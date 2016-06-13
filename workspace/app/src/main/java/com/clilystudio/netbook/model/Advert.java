@@ -9,119 +9,122 @@ import com.clilystudio.netbook.api.ApiService;
 import java.io.Serializable;
 import java.util.Arrays;
 
-public abstract class Advert implements Serializable {
-
+public abstract class Advert
+        implements Serializable {
     private static final long serialVersionUID = 5914392892334299329L;
     private AdvertData data;
     private String position;
     private boolean read;
     private String type;
 
-    public boolean canShowAtPosition(String String1) {
-        if (data == null || data.getShowAt() == null)
+    public boolean canShowAtPosition(String string) {
+        if (this.data == null || this.data.getShowAt() == null) {
             return false;
-        else
-            return Arrays.asList(data.getShowAt()).contains(String1);
+        }
+        return Arrays.asList(this.data.getShowAt()).contains(string);
     }
 
-    public boolean equals(Object Object1) {
-        if (Object1 == null || !(Object1 instanceof Advert))
+    public boolean equals(Object object) {
+        if (object == null || !(object instanceof Advert)) {
             return false;
-        else {
-            Advert Advert2 = (Advert) Object1;
-
-            return TextUtils.equals((CharSequence) data.get_id(), (CharSequence) Advert2.get_id());
         }
+        Advert advert = (Advert) object;
+        return TextUtils.equals(this.data.get_id(), advert.get_id());
     }
 
     public int getApkSize() {
-        return data.getApkSize();
+        return this.data.getApkSize();
     }
 
     public String getDesc() {
-        return data.getDesc();
+        return this.data.getDesc();
     }
 
+    /*
+     * Enabled aggressive block sorting
+     * Lifted jumps to return sites
+     */
     public int getFlagType() {
-        if (!isRead()) {
-            if ("promotion".equals(getType()))
-                return 1;
-            else if ("notice".equals(getType()))
-                return 2;
+        if (this.isRead()) {
+            return 0;
         }
-        return 0;
+        if ("promotion".equals(this.getType())) {
+            return 1;
+        }
+        if (!"notice".equals(this.getType())) return 0;
+        return 2;
     }
 
     public String getFullImg() {
-        return new StringBuilder().append(ApiService.a).append(data.getImg()).toString();
+        return ApiService.a + this.data.getImg();
     }
 
     public String getImg() {
-        return data.getImg();
+        return this.data.getImg();
     }
 
     public String getInsideLink() {
-        return data.getInsideLink();
+        return this.data.getInsideLink();
     }
 
     public String getPosition() {
-        return position;
+        return this.position;
     }
 
-    public void setPosition(String String1) {
-        position = String1;
+    public void setPosition(String string) {
+        this.position = string;
     }
 
     public int getPriority() {
-        return data.getPriority();
+        return this.data.getPriority();
     }
 
     public String getTitle() {
-        return data.getTitle();
+        return this.data.getTitle();
     }
 
     public String getType() {
-        return type;
+        return this.type;
     }
 
-    public void setType(String String1) {
-        type = String1;
+    public void setType(String string) {
+        this.type = string;
     }
 
     public String getUrl() {
-        return data.getUrl();
+        return this.data.getUrl();
     }
 
     public String get_id() {
-        return data.get_id();
+        return this.data.get_id();
     }
 
     public int hashCode() {
-        if (data.get_id() == null)
+        if (this.data.get_id() == null) {
             return 0;
-        else
-            return data.get_id().hashCode();
+        }
+        return this.data.get_id().hashCode();
     }
 
     public boolean isApk() {
-        return data.isApk();
+        return this.data.isApk();
     }
 
     public boolean isRead() {
-        return read;
+        return this.read;
     }
 
-    public void setRead(boolean boolean1) {
-        read = boolean1;
+    public void setRead(boolean bl) {
+        this.read = bl;
     }
 
-    public abstract void processClick(View View1);
+    public abstract void processClick(View var1);
 
-    public abstract void recordClick(View View1);
+    public abstract void recordClick(View var1);
 
-    public abstract void recordShow(Context Context1);
+    public abstract void recordShow(Context var1);
 
-    public void setData(AdvertData AdvertData1) {
-        data = AdvertData1;
+    public void setData(AdvertData advertData) {
+        this.data = advertData;
     }
 }

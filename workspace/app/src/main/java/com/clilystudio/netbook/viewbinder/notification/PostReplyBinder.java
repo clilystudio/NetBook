@@ -6,45 +6,44 @@ import android.content.Intent;
 import com.clilystudio.netbook.model.CommonReplyeeInfo;
 import com.clilystudio.netbook.model.NotificationItem;
 
-import java.io.Serializable;
-
-public class PostReplyBinder extends UnimportatntNotifBinder {
-
+public class PostReplyBinder
+        extends UnimportatntNotifBinder {
     public static final String LABEL = "post_reply";
 
-    public PostReplyBinder(NotificationItem NotificationItem1) {
-        super(NotificationItem1);
+    public PostReplyBinder(NotificationItem notificationItem) {
+        super(notificationItem);
     }
 
+    @Override
     protected int getIconRes() {
-        return getPostIcon();
+        return this.getPostIcon();
     }
 
-    public Intent getIntent(Context Context1) {
-        Intent Intent2 = getPostIntent(Context1, getItem().getMyPost());
-        Object Object3 = new CommonReplyeeInfo();
-        NotificationItem NotificationItem4 = getItem();
-
-        ((CommonReplyeeInfo) Object3).setAuthor(NotificationItem4.getTrigger().toAuthor());
-        ((CommonReplyeeInfo) Object3).setFloor(NotificationItem4.getComment().getFloor());
-        ((CommonReplyeeInfo) Object3).setCommentId(NotificationItem4.getComment().get_id());
-        Intent2.putExtra("KEY_POST_REPLIER_INFO", (Serializable) Object3);
-        return Intent2;
+    @Override
+    public Intent getIntent(Context context) {
+        Intent intent = this.getPostIntent(context, this.getItem().getMyPost());
+        CommonReplyeeInfo commonReplyeeInfo = new CommonReplyeeInfo();
+        NotificationItem notificationItem = this.getItem();
+        commonReplyeeInfo.setAuthor(notificationItem.getTrigger().toAuthor());
+        commonReplyeeInfo.setFloor(notificationItem.getComment().getFloor());
+        commonReplyeeInfo.setCommentId(notificationItem.getComment().get_id());
+        intent.putExtra("KEY_POST_REPLIER_INFO", commonReplyeeInfo);
+        return intent;
     }
 
+    @Override
     public String getLabel() {
         return "post_reply";
     }
 
+    @Override
     public String getMainText() {
-        Object[] Object_1darray1 = new Object[2];
-
-        Object_1darray1[0] = getItem().getTrigger().getNickname();
-        Object_1darray1[1] = getItem().getComment().getContent();
-        return String.format("%s\uFF1A%s", Object_1darray1);
+        Object[] arrobject = new Object[]{this.getItem().getTrigger().getNickname(), this.getItem().getComment().getContent()};
+        return String.format("%s\uff1a%s", arrobject);
     }
 
+    @Override
     public String getSubText() {
-        return getItem().getMyPost().getTitle();
+        return this.getItem().getMyPost().getTitle();
     }
 }

@@ -1,32 +1,30 @@
 package com.clilystudio.netbook.db;
 
-public final class BookSyncRecord$BookModifyType extends Enum {
-
-    public static final BookSyncRecord$BookModifyType SHELF_ADD = new BookSyncRecord$BookModifyType("SHELF_ADD", 0);
-    public static final BookSyncRecord$BookModifyType SHELF_REMOVE = new BookSyncRecord$BookModifyType("SHELF_REMOVE", 1);
-    public static final BookSyncRecord$BookModifyType FEED_ADD = new BookSyncRecord$BookModifyType("FEED_ADD", 2);
-    public static final BookSyncRecord$BookModifyType FEED_REMOVE = new BookSyncRecord$BookModifyType("FEED_REMOVE", 3);
-    public static final BookSyncRecord$BookModifyType SYNC_SUCCESS = new BookSyncRecord$BookModifyType("SYNC_SUCCESS", 4);
-    private static BookSyncRecord$BookModifyType[] a;     // final access specifier removed
+public final class BookSyncRecord$BookModifyType
+        extends Enum<BookSyncRecord$BookModifyType> {
+    public static final /* enum */ BookSyncRecord$BookModifyType FEED_ADD;
+    public static final /* enum */ BookSyncRecord$BookModifyType FEED_REMOVE;
+    public static final /* enum */ BookSyncRecord$BookModifyType SHELF_ADD;
+    public static final /* enum */ BookSyncRecord$BookModifyType SHELF_REMOVE;
+    public static final /* enum */ BookSyncRecord$BookModifyType SYNC_SUCCESS;
+    private static final /* synthetic */ BookSyncRecord$BookModifyType[] a;
 
     static {
-        BookSyncRecord$BookModifyType[] BookModifyType_1darray1 = new BookSyncRecord$BookModifyType[5];
-
-        BookModifyType_1darray1[0] = SHELF_ADD;
-        BookModifyType_1darray1[1] = SHELF_REMOVE;
-        BookModifyType_1darray1[2] = FEED_ADD;
-        BookModifyType_1darray1[3] = FEED_REMOVE;
-        BookModifyType_1darray1[4] = SYNC_SUCCESS;
-        a = BookModifyType_1darray1;
-    }
-// Error: Internal #201: 
-// The following method may not be correct.
-
-    private BookSyncRecord$BookModifyType(String String1, int int2) {
-        super(String1, int2);
+        SHELF_ADD = new BookSyncRecord$BookModifyType();
+        SHELF_REMOVE = new BookSyncRecord$BookModifyType();
+        FEED_ADD = new BookSyncRecord$BookModifyType();
+        FEED_REMOVE = new BookSyncRecord$BookModifyType();
+        SYNC_SUCCESS = new BookSyncRecord$BookModifyType();
+        BookSyncRecord$BookModifyType[] arrbookSyncRecord$BookModifyType = new BookSyncRecord$BookModifyType[]{SHELF_ADD, SHELF_REMOVE, FEED_ADD, FEED_REMOVE, SYNC_SUCCESS};
+        a = arrbookSyncRecord$BookModifyType;
     }
 
-    public static BookSyncRecord$BookModifyType valueOf(String String1) {
+    private BookSyncRecord$BookModifyType() {
+        super(string, n);
+    }
+
+    public static BookSyncRecord$BookModifyType valueOf(String string) {
+        return (BookSyncRecord$BookModifyType) ((Object) Enum.valueOf(BookSyncRecord$BookModifyType.class, string));
     }
 
     public static BookSyncRecord$BookModifyType[] values() {

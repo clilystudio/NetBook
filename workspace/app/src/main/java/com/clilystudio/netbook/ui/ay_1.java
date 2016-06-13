@@ -1,25 +1,22 @@
 package com.clilystudio.netbook.ui;
 
-import android.app.Activity;
-import android.content.Context;
+final class ay
+        implements ab {
+    final /* synthetic */ BookInfoActivity a;
 
-import com.umeng.a.b;
-
-final class ay implements ab {
-
-    BookInfoActivity a;     // final access specifier removed
-
-    ay(BookInfoActivity BookInfoActivity1) {
-        a = BookInfoActivity1;
+    ay(BookInfoActivity bookInfoActivity) {
+        this.a = bookInfoActivity;
     }
 
+    @Override
     public final void a() {
-        BookInfoActivity.a(a);
-        b.a((Context) a, "book_info_download");
+        BookInfoActivity.a(this.a);
+        b.a(this.a, "book_info_download");
     }
 
+    @Override
     public final void b() {
-        new cb((Activity) a, (cd) new az(this)).a().show();
-        b.a((Context) a, "share_book_info_ab");
+        new cb(this.a, new az(this)).a().show();
+        b.a(this.a, "share_book_info_ab");
     }
 }

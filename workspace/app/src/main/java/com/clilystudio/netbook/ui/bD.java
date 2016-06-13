@@ -4,17 +4,17 @@ import com.clilystudio.netbook.widget.ax;
 
 import java.util.Calendar;
 
-final class bD implements ax {
+final class bD
+        implements ax {
+    private /* synthetic */ SearchActivity$SearchPromptAdapter a;
 
-    private SearchActivity$SearchPromptAdapter a;
-
-    bD(SearchActivity SearchActivity1, SearchActivity$SearchPromptAdapter SearchPromptAdapter2) {
-        a = SearchPromptAdapter2;
+    bD(SearchActivity searchActivity, SearchActivity$SearchPromptAdapter searchPromptAdapter) {
+        this.a = searchPromptAdapter;
     }
 
+    @Override
     public final void a() {
-        Object Object1 = String.valueOf(Calendar.getInstance().getTimeInMillis());
-
-        a.getFilter().filter((CharSequence) Object1);
+        String string = String.valueOf(Calendar.getInstance().getTimeInMillis());
+        this.a.getFilter().filter(string);
     }
 }

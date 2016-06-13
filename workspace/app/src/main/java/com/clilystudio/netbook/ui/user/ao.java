@@ -4,15 +4,16 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-final class ao extends ay {
-
+final class ao
+        extends ay {
     TextView i;
     Button j;
     View k;
-    public ao(RemoveAdActivity RemoveAdActivity1, View View2) {
-        super(View2);
-        i = (TextView) View2.findViewById(2131493178);
-        j = (Button) View2.findViewById(2131493737);
-        k = View2.findViewById(2131493098);
+
+    public ao(RemoveAdActivity removeAdActivity, View view) {
+        super(view);
+        this.i = (TextView) view.findViewById(2131493178);
+        this.j = (Button) view.findViewById(2131493737);
+        this.k = view.findViewById(2131493098);
     }
 }

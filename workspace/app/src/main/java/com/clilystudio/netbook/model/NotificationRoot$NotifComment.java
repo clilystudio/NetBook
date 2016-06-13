@@ -1,36 +1,36 @@
 package com.clilystudio.netbook.model;
 
 public class NotificationRoot$NotifComment {
-
-    NotificationRoot this$0;     // final access specifier removed
+    final /* synthetic */ NotificationRoot this$0;
     private String _id;
     private String content;
     private int floor;
-    public NotificationRoot$NotifComment(NotificationRoot NotificationRoot1) {
-        this$0 = NotificationRoot1;
+
+    public NotificationRoot$NotifComment(NotificationRoot notificationRoot) {
+        this.this$0 = notificationRoot;
     }
 
     public String getContent() {
-        return content;
+        return this.content;
     }
 
-    public void setContent(String String1) {
-        content = String1;
+    public void setContent(String string) {
+        this.content = string;
     }
 
     public int getFloor() {
-        return floor;
+        return this.floor;
     }
 
-    public void setFloor(int int1) {
-        floor = int1;
+    public void setFloor(int n) {
+        this.floor = n;
     }
 
     public String get_id() {
-        return _id;
+        return this._id;
     }
 
-    public void set_id(String String1) {
-        _id = String1;
+    public void set_id(String string) {
+        this._id = string;
     }
 }

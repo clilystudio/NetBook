@@ -9,156 +9,94 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class SsChapterJson {
-
-    public static ChapterRoot getChapterRoot(String String1) {
-        ChapterRoot ChapterRoot4;
-        JSONException JSONException5;
-        JSONArray JSONArray6;
-        JSONObject JSONObject7;
-        Chapter Chapter8;
-        String String9;
-        String String10;
-
+    /*
+     * Loose catch block
+     * Enabled aggressive block sorting
+     * Enabled unnecessary exception pruning
+     * Enabled aggressive exception aggregation
+     * Lifted jumps to return sites
+     */
+    public static ChapterRoot getChapterRoot(String string) {
+        Chapter chapter;
+        ChapterRoot chapterRoot;
         try {
-            JSONArray JSONArray2 = new JSONArray(new JSONObject(String1).getString("rows"));
-
-            if (JSONArray2.length() <= 0)
-                return null;
-            JSONArray6 = JSONArray2.getJSONArray(0);
-        } catch (JSONException JSONException3) {
-            ChapterRoot4 = null;
-            JSONException5 = JSONException3;
-            JSONException5.printStackTrace();
-            return ChapterRoot4;
+            JSONArray jSONArray = new JSONArray(new JSONObject(string).getString("rows"));
+            if (jSONArray.length() <= 0) return null;
+            JSONArray jSONArray2 = jSONArray.getJSONArray(0);
+            if (jSONArray2 == null) return null;
+            if (jSONArray2.length() <= 0) return null;
+            JSONObject jSONObject = jSONArray2.getJSONObject(0);
+            chapter = new Chapter();
+            String string2 = jSONObject.getString("serialcontent");
+            String string3 = string2 != null ? string2.replaceAll("<br>", "\n") : null;
+            chapter.setBody(a.z(string3));
+            String string4 = jSONObject.getString("serialid");
+            String string5 = jSONObject.getString("serialurl");
+            chapter.setLink(string4 + "_" + string5);
+            chapterRoot = new ChapterRoot();
+        } catch (JSONException var2_10) {
+            chapterRoot = null;
+            JSONException jSONException = var2_10;
+            jSONException.printStackTrace();
+            return chapterRoot;
         }
-        if (JSONArray6 == null || JSONArray6.length() <= 0)
-            return null;
-        JSONObject7 = JSONArray6.getJSONObject(0);
-        Chapter8 = new Chapter();
-        String9 = JSONObject7.getString("serialcontent");
-        if (String9 != null) {
-            try {
-                String String11;
-                String String12;
-
-                String10 = String9.replaceAll("<br>", "\n");
-                Chapter8.setBody(a.z(String10));
-                String11 = JSONObject7.getString("serialid");
-                String12 = JSONObject7.getString("serialurl");
-                Chapter8.setLink(new StringBuilder().append(String11).append("_").append(String12).toString());
-                ChapterRoot4 = new ChapterRoot();
-            } catch (JSONException JSONException13) {
-                ChapterRoot4 = null;
-                JSONException5 = JSONException13;
-                JSONException5.printStackTrace();
-                return ChapterRoot4;
-            }
-        } else
-            String10 = null;
-        try {
-            ChapterRoot4.setChapter(Chapter8);
-        } catch (JSONException JSONException14) {
-            JSONException14.printStackTrace();
-            return ChapterRoot4;
+        chapterRoot.setChapter(chapter);
+        return chapterRoot;
+        {
+            catch(JSONException jSONException){
         }
-        return ChapterRoot4;
+        }
     }
 
-    public static String getChapterUrl(String String1) {
-        JSONArray JSONArray2;
-        int int4;
-        String String5;
-
-        try {
-            JSONArray2 = new JSONArray(new JSONObject(String1).getString("rows"));
-            int4 = JSONArray2.length();
-        } catch (JSONException JSONException3) {
-            JSONException3.printStackTrace();
-            return null;
-        }
-        String5 = null;
-        if (int4 > 0) {
-            JSONArray JSONArray6;
-
+    public static String getChapterUrl(String string) {
+        String string2;
+        block5:
+        {
+            String string3;
+            JSONArray jSONArray;
             try {
-                JSONArray6 = JSONArray2.getJSONArray(0);
-            } catch (JSONException JSONException9) {
-                JSONException9.printStackTrace();
+                jSONArray = new JSONArray(new JSONObject(string).getString("rows"));
+                int n = jSONArray.length();
+                string2 = null;
+                if (n <= 0) break block5;
+            } catch (JSONException var2_7) {
+                var2_7.printStackTrace();
                 return null;
             }
-            String5 = null;
-            if (JSONArray6 != null) {
-                int int7;
-
-                try {
-                    int7 = JSONArray6.length();
-                } catch (JSONException JSONException10) {
-                    JSONException10.printStackTrace();
-                    return null;
-                }
-                String5 = null;
-                if (int7 > 0) {
-                    String String8;
-
-                    try {
-                        String8 = JSONArray6.getJSONObject(0).getString("serialurl");
-                    } catch (JSONException JSONException11) {
-                        JSONException11.printStackTrace();
-                        return null;
-                    }
-                    String5 = String8;
-                }
-            }
+            JSONArray jSONArray2 = jSONArray.getJSONArray(0);
+            string2 = null;
+            if (jSONArray2 == null) break block5;
+            int n = jSONArray2.length();
+            string2 = null;
+            if (n <= 0) break block5;
+            string2 = string3 = jSONArray2.getJSONObject(0).getString("serialurl");
         }
-        return String5;
+        return string2;
     }
 
-    public static int getTocCount(String String1) {
-        JSONArray JSONArray2;
-        int int4;
-        int int5;
-
-        try {
-            JSONArray2 = new JSONArray(new JSONObject(String1).getString("rows"));
-            int4 = JSONArray2.length();
-        } catch (JSONException JSONException3) {
-            JSONException3.printStackTrace();
-            return 0;
-        }
-        int5 = 0;
-        if (int4 > 0) {
-            JSONArray JSONArray6;
-
+    public static int getTocCount(String string) {
+        int n;
+        block5:
+        {
+            int n2;
+            JSONArray jSONArray;
             try {
-                JSONArray6 = JSONArray2.getJSONArray(0);
-            } catch (JSONException JSONException9) {
-                JSONException9.printStackTrace();
+                jSONArray = new JSONArray(new JSONObject(string).getString("rows"));
+                int n3 = jSONArray.length();
+                n = 0;
+                if (n3 <= 0) break block5;
+            } catch (JSONException var2_7) {
+                var2_7.printStackTrace();
                 return 0;
             }
-            int5 = 0;
-            if (JSONArray6 != null) {
-                int int7;
-
-                try {
-                    int7 = JSONArray6.length();
-                } catch (JSONException JSONException10) {
-                    JSONException10.printStackTrace();
-                    return 0;
-                }
-                int5 = 0;
-                if (int7 > 0) {
-                    int int8;
-
-                    try {
-                        int8 = JSONArray6.getJSONObject(0).getInt("serialnum");
-                    } catch (JSONException JSONException11) {
-                        JSONException11.printStackTrace();
-                        return 0;
-                    }
-                    int5 = int8;
-                }
-            }
+            JSONArray jSONArray2 = jSONArray.getJSONArray(0);
+            n = 0;
+            if (jSONArray2 == null) break block5;
+            int n4 = jSONArray2.length();
+            n = 0;
+            if (n4 <= 0) break block5;
+            n = n2 = jSONArray2.getJSONObject(0).getInt("serialnum");
         }
-        return int5;
+        return n;
     }
 }

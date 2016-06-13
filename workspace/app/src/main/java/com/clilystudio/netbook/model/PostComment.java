@@ -3,7 +3,6 @@ package com.clilystudio.netbook.model;
 import java.util.Date;
 
 public class PostComment {
-
     private String _id;
     private Author author;
     private String content;
@@ -11,73 +10,74 @@ public class PostComment {
     private int floor;
     private int likeCount;
     private boolean likedInView;
-    private PostComment$PostCommentReply replyTo;
+    private PostCommentReply replyTo;
 
     public Author getAuthor() {
-        return author;
+        return this.author;
     }
 
-    public void setAuthor(Author Author1) {
-        author = Author1;
+    public void setAuthor(Author author) {
+        this.author = author;
     }
 
     public String getContent() {
-        return content;
+        return this.content;
     }
 
-    public void setContent(String String1) {
-        content = String1;
+    public void setContent(String string) {
+        this.content = string;
     }
 
     public Date getCreated() {
-        return created;
+        return this.created;
     }
 
-    public void setCreated(Date Date1) {
-        created = Date1;
+    public void setCreated(Date date) {
+        this.created = date;
     }
 
     public int getFloor() {
-        return floor;
+        return this.floor;
     }
 
-    public void setFloor(int int1) {
-        floor = int1;
+    public void setFloor(int n) {
+        this.floor = n;
     }
 
     public int getLikeCount() {
-        return likeCount;
+        return this.likeCount;
     }
 
-    public void setLikeCount(int int1) {
-        likeCount = int1;
+    public void setLikeCount(int n) {
+        this.likeCount = n;
     }
 
-    public PostComment$PostCommentReply getReplyTo() {
-        return replyTo;
+    @Deprecated
+    public PostCommentReply getReplyTo() {
+        return this.replyTo;
     }
 
-    public void setReplyTo(PostComment$PostCommentReply PostCommentReply1) {
-        replyTo = PostCommentReply1;
+    public void setReplyTo(PostCommentReply postCommentReply) {
+        this.replyTo = postCommentReply;
     }
 
     public String get_id() {
-        return _id;
+        return this._id;
     }
 
-    public void set_id(String String1) {
-        _id = String1;
+    public void set_id(String string) {
+        this._id = string;
     }
 
     public boolean isLikedInView() {
-        return likedInView;
+        return this.likedInView;
     }
 
-    public void setLikedInView(boolean boolean1) {
-        likedInView = boolean1;
+    public void setLikedInView(boolean bl) {
+        this.likedInView = bl;
     }
 
     public ReplyeeInfo toRepliedInfo() {
-        return (ReplyeeInfo) new CommonReplyeeInfo(get_id(), getAuthor(), getFloor());
+        return new CommonReplyeeInfo(this.get_id(), this.getAuthor(), this.getFloor());
     }
 }

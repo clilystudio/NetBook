@@ -2,75 +2,77 @@ package com.clilystudio.netbook.ui.post;
 
 import android.app.Activity;
 
+import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.model.BookReview;
 import com.clilystudio.netbook.model.BookReviewRoot;
+import com.clilystudio.netbook.util.e;
 
 import java.util.Collection;
 
-final class aI extends com.clilystudio.netbook.a.e {
+final class aI
+        extends com.clilystudio.netbook.a.e<String, Void, BookReview[]> {
+    private /* synthetic */ BookReviewListFragment a;
 
-    private BookReviewListFragment a;
-
-    aI(BookReviewListFragment BookReviewListFragment1, byte byte2) {
-        this(BookReviewListFragment1);
+    private aI(BookReviewListFragment bookReviewListFragment) {
+        this.a = bookReviewListFragment;
     }
 
-    private aI(BookReviewListFragment BookReviewListFragment1) {
-        a = BookReviewListFragment1;
+    /* synthetic */ aI(BookReviewListFragment bookReviewListFragment, byte by) {
+        this(bookReviewListFragment);
     }
 
-    private static transient BookReview[] a(String[] String_1darray1) {
+    /*
+     * Enabled force condition propagation
+     * Lifted jumps to return sites
+     */
+    private static /* varargs */ BookReview[] a(String... arrstring) {
+        b.a();
+        BookReviewRoot bookReviewRoot = b.b().c(arrstring[0], arrstring[1], 0, 20);
+        if (bookReviewRoot == null) return null;
         try {
-            BookReviewRoot BookReviewRoot4;
-
-            com.clilystudio.netbook.api.b.a();
-            BookReviewRoot4 = com.clilystudio.netbook.api.b.b().c(String_1darray1[0], String_1darray1[1], 0, 20);
-        } catch (Exception Exception2) {
-            Exception2.printStackTrace();
+            if (!bookReviewRoot.ok) return null;
+            if (bookReviewRoot.reviews == null) return null;
+            return bookReviewRoot.reviews;
+        } catch (Exception var1_3) {
+            var1_3.printStackTrace();
         }
         return null;
     }
 
-    protected final Object doInBackground(Object[] Object_1darray1) {
-        return a((String[]) Object_1darray1);
+    @Override
+    protected final /* synthetic */ Object doInBackground(Object[] arrobject) {
+        return aI.a((String[]) arrobject);
     }
 
-    protected final void onPostExecute(Object Object1) {
-        BookReview[] BookReview_1darray2 = (BookReview[]) Object1;
-
-        super.onPostExecute(BookReview_1darray2);
-        if (a.getActivity() != null) {
-            a.c();
-            if (BookReview_1darray2 != null) {
-                int int3;
-
-                BookReviewListFragment.g(a);
-                BookReviewListFragment.d(a).clear();
-                int3 = BookReview_1darray2.length;
-                if (int3 > 0) {
-                    int int4 = BookReview_1darray2.length;
-                    int int5;
-
-                    for (int5 = 0; int5 < int4; ++int5) {
-                        BookReview BookReview6 = BookReview_1darray2[int5];
-
-                        BookReviewListFragment.d(a).add(BookReview6);
-                    }
-                    BookReviewListFragment.h(a).a((Collection) BookReviewListFragment.d(a));
-                    if (int3 < 20)
-                        a.a.setOnLastItemVisibleListener(null);
-                    else {
-                        a.a.setOnLastItemVisibleListener(BookReviewListFragment.i(a));
-                        return;
-                    }
-                } else {
-                    a.b();
+    /*
+     * Enabled force condition propagation
+     * Lifted jumps to return sites
+     */
+    @Override
+    protected final /* synthetic */ void onPostExecute(Object object) {
+        BookReview[] arrbookReview = (BookReview[]) object;
+        super.onPostExecute(arrbookReview);
+        if (this.a.getActivity() == null) return;
+        this.a.c();
+        if (arrbookReview != null) {
+            BookReviewListFragment.g(this.a);
+            BookReviewListFragment.d(this.a).clear();
+            int n = arrbookReview.length;
+            if (n > 0) {
+                for (BookReview bookReview : arrbookReview) {
+                    BookReviewListFragment.d(this.a).add(bookReview);
+                }
+                BookReviewListFragment.h(this.a).a((Collection) BookReviewListFragment.d(this.a));
+                if (n < 20) {
+                    this.a.a.setOnLastItemVisibleListener(null);
                     return;
                 }
-            } else {
-                com.clilystudio.netbook.util.e.a((Activity) a.getActivity(), "\u52A0\u8F7D\u5931\u8D25\uFF0C\u8BF7\u68C0\u67E5\u7F51\u7EDC\u6216\u7A0D\u540E\u518D\u8BD5");
+                this.a.a.setOnLastItemVisibleListener(BookReviewListFragment.i(this.a));
                 return;
             }
+            this.a.b();
+            return;
         }
+        e.a((Activity) this.a.getActivity(), (String) "\u52a0\u8f7d\u5931\u8d25\uff0c\u8bf7\u68c0\u67e5\u7f51\u7edc\u6216\u7a0d\u540e\u518d\u8bd5");
     }
 }

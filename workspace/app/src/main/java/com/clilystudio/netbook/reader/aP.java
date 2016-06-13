@@ -1,18 +1,19 @@
 package com.clilystudio.netbook.reader;
 
 import android.content.DialogInterface;
-import android.content.DialogInterface$OnCancelListener;
 
-final class aP implements DialogInterface$OnCancelListener {
+final class aP
+        implements DialogInterface.OnCancelListener {
+    private /* synthetic */ ReaderActivity a;
 
-    private ReaderActivity a;
-
-    aP(ReaderActivity ReaderActivity1) {
-        a = ReaderActivity1;
+    aP(ReaderActivity readerActivity) {
+        this.a = readerActivity;
     }
 
-    public final void onCancel(DialogInterface DialogInterface1) {
-        if (ReaderActivity.O(a) && !com.clilystudio.netbook.reader.ReaderActivity.ac(a))
-            a.finish();
+    @Override
+    public final void onCancel(DialogInterface dialogInterface) {
+        if (ReaderActivity.O(this.a) && !ReaderActivity.ac(this.a)) {
+            this.a.finish();
+        }
     }
 }

@@ -4,18 +4,18 @@ import android.os.Message;
 
 import java.util.TimerTask;
 
-final class af extends TimerTask {
+final class af
+        extends TimerTask {
+    private /* synthetic */ GameMicroFragment$LayoutAdapter$PromotionViewPager a;
 
-    private GameMicroFragment$LayoutAdapter$PromotionViewPager a;
-
-    af(GameMicroFragment$LayoutAdapter$PromotionViewPager PromotionViewPager1) {
-        a = PromotionViewPager1;
+    af(GameMicroFragment$LayoutAdapter$PromotionViewPager promotionViewPager) {
+        this.a = promotionViewPager;
     }
 
+    @Override
     public final void run() {
-        Message Message1 = new Message();
-
-        Message1.what = 1;
-        a.j.sendMessage(Message1);
+        Message message = new Message();
+        message.what = 1;
+        this.a.j.sendMessage(message);
     }
 }

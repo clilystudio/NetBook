@@ -1,17 +1,17 @@
 package com.clilystudio.netbook.a;
 
 import android.content.DialogInterface;
-import android.content.DialogInterface$OnCancelListener;
 
-final class d implements DialogInterface$OnCancelListener {
+final class d
+        implements DialogInterface.OnCancelListener {
+    private /* synthetic */ c a;
 
-    private c a;
-
-    d(c c1) {
-        a = c1;
+    d(c c2) {
+        this.a = c2;
     }
 
-    public final void onCancel(DialogInterface DialogInterface1) {
-        a.cancel(true);
+    @Override
+    public final void onCancel(DialogInterface dialogInterface) {
+        this.a.cancel(true);
     }
 }

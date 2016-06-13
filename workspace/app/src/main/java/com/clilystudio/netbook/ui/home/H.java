@@ -1,50 +1,59 @@
 package com.clilystudio.netbook.ui.home;
 
 import com.clilystudio.netbook.a.e;
+import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.model.AdsResult;
 import com.clilystudio.netbook.model.AdvertData;
 import com.clilystudio.netbook.util.c;
 
-final class H extends e {
+final class H
+        extends e<Void, Void, AdsResult> {
+    private /* synthetic */ HomeShelfFragment a;
 
-    private HomeShelfFragment a;
-
-    H(HomeShelfFragment HomeShelfFragment1, byte byte2) {
-        this(HomeShelfFragment1);
+    private H(HomeShelfFragment homeShelfFragment) {
+        this.a = homeShelfFragment;
     }
 
-    private H(HomeShelfFragment HomeShelfFragment1) {
-        a = HomeShelfFragment1;
+    /* synthetic */ H(HomeShelfFragment homeShelfFragment, byte by) {
+        this(homeShelfFragment);
     }
 
-    private static transient AdsResult a() {
-        AdsResult AdsResult3;
-
+    private static /* varargs */ AdsResult a() {
         try {
-            com.clilystudio.netbook.api.b.a();
-            AdsResult3 = com.clilystudio.netbook.api.b.b().J("all");
-        } catch (Exception Exception1) {
-            Exception1.printStackTrace();
+            b.a();
+            AdsResult adsResult = b.b().J("all");
+            return adsResult;
+        } catch (Exception var0_1) {
+            var0_1.printStackTrace();
             return null;
         }
-        return AdsResult3;
     }
 
-    protected final Object doInBackground(Object[] Object_1darray1) {
-        return a();
+    /*
+     * Exception decompiling
+     */
+    @Override
+    protected final /* synthetic */ Object doInBackground(Object[] var1_1) {
+        // This method has failed to decompile.  When submitting a bug report, please provide this stack trace, and (if you hold appropriate legal rights) the relevant class file.
+        // java.lang.ArrayIndexOutOfBoundsException
+        throw new IllegalStateException("Decompilation failed");
     }
 
-    protected final void onPostExecute(Object Object1) {
-        Object Object2 = (AdsResult) Object1;
-
-        super.onPostExecute(Object2);
-        if (a.getActivity() != null && Object2 != null && ((AdsResult) Object2).isOk()) {
-            AdvertData[] AdvertData_1darray3 = ((AdsResult) Object2).getAdverts();
-
-            if (c.a().a(AdvertData_1darray3)) {
-                HomeShelfFragment.l(a);
-                return;
-            }
+    /*
+     * Enabled aggressive block sorting
+     * Lifted jumps to return sites
+     */
+    @Override
+    protected final /* synthetic */ void onPostExecute(Object object) {
+        AdsResult adsResult = (AdsResult) object;
+        super.onPostExecute(adsResult);
+        if (this.a.getActivity() == null) return;
+        if (adsResult == null) return;
+        if (!adsResult.isOk()) {
+            return;
         }
+        AdvertData[] arradvertData = adsResult.getAdverts();
+        if (!c.a().a(arradvertData)) return;
+        HomeShelfFragment.l(this.a);
     }
 }

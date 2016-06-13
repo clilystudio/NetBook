@@ -3,8 +3,8 @@ package com.clilystudio.netbook.model;
 import java.io.Serializable;
 import java.util.Date;
 
-public class TocSource implements Serializable {
-
+public class TocSource
+        implements Serializable {
     private static final long serialVersionUID = -2930289815391625653L;
     private String _id;
     private String book;
@@ -16,70 +16,70 @@ public class TocSource implements Serializable {
     private Date updated;
 
     public String getBook() {
-        return book;
+        return this.book;
     }
 
-    public void setBook(String String1) {
-        book = String1;
+    public void setBook(String string) {
+        this.book = string;
     }
 
     public int getChapterCount() {
-        return chapterCount;
+        return this.chapterCount;
     }
 
-    public void setChapterCount(int int1) {
-        chapterCount = int1;
+    public void setChapterCount(int n) {
+        this.chapterCount = n;
     }
 
     public String getFullSource() {
-        return new StringBuilder().append(source).append(".com").toString();
+        return this.source + ".com";
     }
 
     public String getId() {
-        return _id;
+        return this._id;
     }
 
-    public void setId(String String1) {
-        _id = String1;
+    public void setId(String string) {
+        this._id = string;
     }
 
     public String getLastChapter() {
-        return lastChapter;
+        return this.lastChapter;
     }
 
-    public void setLastChapter(String String1) {
-        lastChapter = String1;
+    public void setLastChapter(String string) {
+        this.lastChapter = string;
     }
 
     public String getSource() {
-        return source;
+        return this.source;
     }
 
-    public void setSource(String String1) {
-        source = String1;
+    public void setSource(String string) {
+        this.source = string;
     }
 
     public String getSourceId() {
-        return sourceId;
+        return this.sourceId;
     }
 
-    public void setSourceId(String String1) {
-        sourceId = String1;
+    public void setSourceId(String string) {
+        this.sourceId = string;
     }
 
     public Date getUpdated() {
-        return updated;
+        return this.updated;
     }
 
-    public void setUpdated(Date Date1) {
-        updated = Date1;
+    public void setUpdated(Date date) {
+        this.updated = date;
     }
 
     public boolean isPriority() {
-        return priority;
+        return this.priority;
     }
 
-    public void setPriority(boolean boolean1) {
-        priority = boolean1;
+    public void setPriority(boolean bl) {
+        this.priority = bl;
     }
 }

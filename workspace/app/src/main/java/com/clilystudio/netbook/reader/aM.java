@@ -1,14 +1,15 @@
 package com.clilystudio.netbook.reader;
 
-final class aM implements H {
+final class aM
+        implements H {
+    private /* synthetic */ ReaderActivity a;
 
-    private ReaderActivity a;
-
-    aM(ReaderActivity ReaderActivity1) {
-        a = ReaderActivity1;
+    aM(ReaderActivity readerActivity) {
+        this.a = readerActivity;
     }
 
+    @Override
     public final void a() {
-        ReaderActivity.Z(a);
+        ReaderActivity.Z(this.a);
     }
 }

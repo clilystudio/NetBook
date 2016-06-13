@@ -1,26 +1,28 @@
 package com.clilystudio.netbook.reader;
 
 import android.widget.SeekBar;
-import android.widget.SeekBar$OnSeekBarChangeListener;
 
-final class ch implements SeekBar$OnSeekBarChangeListener {
+final class ch
+        implements SeekBar.OnSeekBarChangeListener {
+    private /* synthetic */ ReaderTtsSetWidget a;
 
-    private ReaderTtsSetWidget a;
-
-    ch(ReaderTtsSetWidget ReaderTtsSetWidget1) {
-        a = ReaderTtsSetWidget1;
+    ch(ReaderTtsSetWidget readerTtsSetWidget) {
+        this.a = readerTtsSetWidget;
     }
 
-    public final void onProgressChanged(SeekBar SeekBar1, int int2, boolean boolean3) {
+    @Override
+    public final void onProgressChanged(SeekBar seekBar, int n, boolean bl) {
     }
 
-    public final void onStartTrackingTouch(SeekBar SeekBar1) {
+    @Override
+    public final void onStartTrackingTouch(SeekBar seekBar) {
     }
 
-    public final void onStopTrackingTouch(SeekBar SeekBar1) {
-        ReaderTtsSetWidget.a(a, false);
-        ReaderTtsSetWidget.a(a).a(false);
-        ReaderTtsSetWidget.a(a).a(SeekBar1.getProgress());
-        ReaderTtsSetWidget.a(a).a();
+    @Override
+    public final void onStopTrackingTouch(SeekBar seekBar) {
+        ReaderTtsSetWidget.a(this.a, false);
+        ReaderTtsSetWidget.a(this.a).a(false);
+        ReaderTtsSetWidget.a(this.a).a(seekBar.getProgress());
+        ReaderTtsSetWidget.a(this.a).a();
     }
 }

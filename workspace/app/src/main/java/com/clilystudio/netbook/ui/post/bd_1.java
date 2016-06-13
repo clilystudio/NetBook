@@ -2,20 +2,21 @@ package com.clilystudio.netbook.ui.post;
 
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.View$OnTouchListener;
 import android.widget.PopupWindow;
 
-final class bd implements View$OnTouchListener {
+final class bd
+        implements View.OnTouchListener {
+    private /* synthetic */ PopupWindow a;
 
-    private PopupWindow a;
-
-    bd(CommonPostListActivity CommonPostListActivity1, PopupWindow PopupWindow2) {
-        a = PopupWindow2;
+    bd(CommonPostListActivity commonPostListActivity, PopupWindow popupWindow) {
+        this.a = popupWindow;
     }
 
-    public final boolean onTouch(View View1, MotionEvent MotionEvent2) {
-        if (a != null && a.isShowing())
-            a.dismiss();
+    @Override
+    public final boolean onTouch(View view, MotionEvent motionEvent) {
+        if (this.a != null && this.a.isShowing()) {
+            this.a.dismiss();
+        }
         return true;
     }
 }

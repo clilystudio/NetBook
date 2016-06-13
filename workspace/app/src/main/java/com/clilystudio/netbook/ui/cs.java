@@ -1,21 +1,24 @@
 package com.clilystudio.netbook.ui;
 
-final class cs implements r {
+import com.koushikdutta.async.http.a.a;
 
+final class cs
+        implements r {
+    final /* synthetic */ String[] b;
+    final /* synthetic */ WifiActivity c;
     int a;
-    String[] b;     // final access specifier removed
-    WifiActivity c;     // final access specifier removed
-    cs(WifiActivity WifiActivity1, String[] String_1darray2) {
-        c = WifiActivity1;
-        b = String_1darray2;
-        a = 0;
+
+    cs(WifiActivity wifiActivity, String[] arrstring) {
+        this.c = wifiActivity;
+        this.b = arrstring;
+        this.a = 0;
     }
 
-    public final void a(h h1, l l2) {
-        d d3 = (d) h1.b_();
-
-        a = 0;
-        d3.a((g) new ct(this, d3, new Boolean[]{null}));
-        h1.b((com.koushikdutta.async.a.a) new cv(this, l2));
+    @Override
+    public final void a(h h2, l l2) {
+        d d2 = (d) h2.b_();
+        this.a = 0;
+        d2.a(new ct(this, d2, new Boolean[]{null}));
+        h2.b(new cv(this, l2));
     }
 }

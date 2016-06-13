@@ -1,62 +1,59 @@
 package com.clilystudio.netbook.ui.ugcbook;
 
-import android.app.Activity;
 import android.support.design.widget.am;
 
 import com.clilystudio.netbook.a.e;
+import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.model.UGCBookDetail;
 import com.clilystudio.netbook.model.UGCBookDetailRoot;
 
 import java.io.IOException;
 
-final class r extends e {
+final class r
+        extends e<String, Void, UGCBookDetailRoot> {
+    private /* synthetic */ UGCDetailActivity a;
 
-    private UGCDetailActivity a;
-
-    r(UGCDetailActivity UGCDetailActivity1, byte byte2) {
-        this(UGCDetailActivity1);
+    private r(UGCDetailActivity uGCDetailActivity) {
+        this.a = uGCDetailActivity;
     }
 
-    private r(UGCDetailActivity UGCDetailActivity1) {
-        a = UGCDetailActivity1;
+    /* synthetic */ r(UGCDetailActivity uGCDetailActivity, byte by) {
+        this(uGCDetailActivity);
     }
 
-    private transient UGCBookDetailRoot a(String[] String_1darray1) {
-        UGCBookDetailRoot UGCBookDetailRoot3;
-
-        label_18:
-        {
-            try {
-                Account Account4;
-
-                if (!com.clilystudio.netbook.ui.ugcbook.UGCDetailActivity.k(a))
-                    break label_18;
-                Account4 = am.a((Activity) a);
-            } catch (IOException IOException2) {
-                IOException2.printStackTrace();
-            }
-            return null;
+    /*
+     * Enabled force condition propagation
+     * Lifted jumps to return sites
+     */
+    private /* varargs */ UGCBookDetailRoot a(String... arrstring) {
+        if (!UGCDetailActivity.k(this.a)) return b.b().U(arrstring[0]);
+        Account account = am.a(this.a);
+        if (account == null) return null;
+        try {
+            return b.b().C(account.getToken(), arrstring[0]);
+        } catch (IOException var2_4) {
+            var2_4.printStackTrace();
         }
-        UGCBookDetailRoot3 = com.clilystudio.netbook.api.b.b().U(String_1darray1[0]);
-        return UGCBookDetailRoot3;
+        return null;
     }
 
-    protected final Object doInBackground(Object[] Object_1darray1) {
-        return a((String[]) Object_1darray1);
+    @Override
+    protected final /* synthetic */ Object doInBackground(Object[] arrobject) {
+        return this.a((String[]) arrobject);
     }
 
-    protected final void onPostExecute(Object Object1) {
-        Object Object2 = (UGCBookDetailRoot) Object1;
-
-        super.onPostExecute(Object2);
-        if (Object2 != null && ((UGCBookDetailRoot) Object2).isOk() && ((UGCBookDetailRoot) Object2).getBookList() != null) {
-            UGCBookDetail UGCBookDetail3 = ((UGCBookDetailRoot) Object2).getBookList();
-
-            UGCDetailActivity.a(a, UGCBookDetail3);
-            UGCDetailActivity.a(a, UGCBookDetail3.getAuthor());
-            UGCDetailActivity.b(a, UGCBookDetail3);
-        } else
-            UGCDetailActivity.a(a, 2);
+    @Override
+    protected final /* synthetic */ void onPostExecute(Object object) {
+        UGCBookDetailRoot uGCBookDetailRoot = (UGCBookDetailRoot) object;
+        super.onPostExecute(uGCBookDetailRoot);
+        if (uGCBookDetailRoot != null && uGCBookDetailRoot.isOk() && uGCBookDetailRoot.getBookList() != null) {
+            UGCBookDetail uGCBookDetail = uGCBookDetailRoot.getBookList();
+            UGCDetailActivity.a(this.a, uGCBookDetail);
+            UGCDetailActivity.a(this.a, uGCBookDetail.getAuthor());
+            UGCDetailActivity.b(this.a, uGCBookDetail);
+            return;
+        }
+        UGCDetailActivity.a(this.a, 2);
     }
 }

@@ -1,19 +1,18 @@
 package com.clilystudio.netbook.ui;
 
-import android.content.Context;
-
 import com.clilystudio.netbook.widget.i;
 
-final class bN implements i {
+final class bN
+        implements i {
+    private /* synthetic */ bM a;
 
-    private bM a;
-
-    bN(bM bM1) {
-        a = bM1;
+    bN(bM bM2) {
+        this.a = bM2;
     }
 
-    public final void a(String String1) {
-        com.clilystudio.netbook.hpay100.a.a.t((Context) a.a, String1);
-        SearchActivity.a(a.a, String1);
+    @Override
+    public final void a(String string) {
+        a.t(this.a.a, string);
+        SearchActivity.a(this.a.a, string);
     }
 }

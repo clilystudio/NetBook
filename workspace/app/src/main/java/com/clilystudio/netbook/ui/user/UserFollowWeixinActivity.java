@@ -2,30 +2,28 @@ package com.clilystudio.netbook.ui.user;
 
 import android.content.ClipData;
 import android.content.ClipboardManager;
-import android.content.Context;
-import android.content.DialogInterface$OnClickListener;
+import android.content.DialogInterface;
 import android.os.Bundle;
-import android.view.View$OnClickListener;
 
 import com.clilystudio.netbook.ui.BaseActivity;
 
-public class UserFollowWeixinActivity extends BaseActivity {
-
-    static void a(UserFollowWeixinActivity UserFollowWeixinActivity1) {
-        ((ClipboardManager) UserFollowWeixinActivity1.getSystemService("clipboard")).setPrimaryClip(ClipData.newPlainText((CharSequence) "simple text", (CharSequence) "\u8FFD\u4E66\u795E\u5668"));
+public class UserFollowWeixinActivity
+        extends BaseActivity {
+    static /* synthetic */ void a(UserFollowWeixinActivity userFollowWeixinActivity) {
+        ((ClipboardManager) userFollowWeixinActivity.getSystemService("clipboard")).setPrimaryClip(ClipData.newPlainText("simple text", "\u8ffd\u4e66\u795e\u5668"));
     }
 
-    static void b(UserFollowWeixinActivity UserFollowWeixinActivity1) {
-        h h2 = new h((Context) UserFollowWeixinActivity1);
-
-        h2.e = UserFollowWeixinActivity1.getString(2131034575);
-        h2.b("\u53D6\u6D88", (DialogInterface$OnClickListener) new az(UserFollowWeixinActivity1)).a("\u786E\u5B9A", (DialogInterface$OnClickListener) new ay(UserFollowWeixinActivity1)).b();
+    static /* synthetic */ void b(UserFollowWeixinActivity userFollowWeixinActivity) {
+        h h2 = new h(userFollowWeixinActivity);
+        h2.e = userFollowWeixinActivity.getString(2131034575);
+        h2.b("\u53d6\u6d88", (DialogInterface.OnClickListener) new az(userFollowWeixinActivity)).a("\u786e\u5b9a", (DialogInterface.OnClickListener) new ay(userFollowWeixinActivity)).b();
     }
 
-    protected void onCreate(Bundle Bundle1) {
-        super.onCreate(Bundle1);
-        setContentView(2130903140);
-        b(2131034576);
-        findViewById(2131493232).setOnClickListener((View$OnClickListener) new ax(this));
+    @Override
+    protected void onCreate(Bundle bundle) {
+        super.onCreate(bundle);
+        this.setContentView(2130903140);
+        this.b(2131034576);
+        this.findViewById(2131493232).setOnClickListener(new ax(this));
     }
 }

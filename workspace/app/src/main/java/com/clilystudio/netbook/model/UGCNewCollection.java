@@ -5,45 +5,43 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class UGCNewCollection implements Serializable {
-
-    List books = new ArrayList();
+public class UGCNewCollection
+        implements Serializable {
+    List<BookSummary> books = new ArrayList<BookSummary>();
     private String desc;
     private String title;
 
-    public void addBook(BookSummary BookSummary1) {
-        String String2 = BookSummary1.getId();
-        Iterator Iterator3 = books.iterator();
-
-        while (Iterator3.hasNext()) {
-            if (!String2.equals(((BookSummary) Iterator3.next()).getId()))
-                continue;
+    public void addBook(BookSummary bookSummary) {
+        String string = bookSummary.getId();
+        Iterator<BookSummary> iterator = this.books.iterator();
+        while (iterator.hasNext()) {
+            if (!string.equals(iterator.next().getId())) continue;
             return;
         }
-        books.add(BookSummary1);
+        this.books.add(bookSummary);
     }
 
-    public List getBooks() {
-        return books;
+    public List<BookSummary> getBooks() {
+        return this.books;
     }
 
-    public void setBooks(List List1) {
-        books = List1;
+    public void setBooks(List<BookSummary> list) {
+        this.books = list;
     }
 
     public String getDesc() {
-        return desc;
+        return this.desc;
     }
 
-    public void setDesc(String String1) {
-        desc = String1;
+    public void setDesc(String string) {
+        this.desc = string;
     }
 
     public String getTitle() {
-        return title;
+        return this.title;
     }
 
-    public void setTitle(String String1) {
-        title = String1;
+    public void setTitle(String string) {
+        this.title = string;
     }
 }

@@ -9,56 +9,59 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public final class aw extends BaseAdapter {
-
+public final class aw
+        extends BaseAdapter {
     private LayoutInflater a;
     private String[] b;
-    private BookCategoryListActivity c;
-    public aw(BookCategoryListActivity BookCategoryListActivity1, Context Context2, String[] String_1darray3) {
-        c = BookCategoryListActivity1;
-        a = LayoutInflater.from(Context2);
-        b = String_1darray3;
+    private /* synthetic */ BookCategoryListActivity c;
+
+    public aw(BookCategoryListActivity bookCategoryListActivity, Context context, String[] arrstring) {
+        this.c = bookCategoryListActivity;
+        this.a = LayoutInflater.from(context);
+        this.b = arrstring;
     }
 
+    @Override
     public final int getCount() {
-        return b.length;
+        return this.b.length;
     }
 
-    public final Object getItem(int int1) {
-        return b[int1];
+    @Override
+    public final Object getItem(int n) {
+        return this.b[n];
     }
 
-    public final long getItemId(int int1) {
-        return (long) int1;
+    @Override
+    public final long getItemId(int n) {
+        return n;
     }
 
-    public final View getView(int int1, View View2, ViewGroup ViewGroup3) {
-        View View5;
-        Object Object6;
-
-        if (View2 == null) {
-            Object Object4 = new ax(this);
-
-            if (int1 == 0)
-                View5 = a.inflate(2130903176, null);
-            else
-                View5 = a.inflate(2130903174, null);
-            ((ax) Object4).a = (TextView) View5.findViewById(2131493370);
-            ((ax) Object4).b = (ImageView) View5.findViewById(2131493371);
-            View5.setTag(Object4);
-            Object6 = Object4;
+    /*
+     * Enabled aggressive block sorting
+     */
+    @Override
+    public final View getView(int n, View view, ViewGroup viewGroup) {
+        ax ax2;
+        View view2;
+        if (view == null) {
+            ax ax3 = new ax(this);
+            view2 = n == 0 ? this.a.inflate(2130903176, null) : this.a.inflate(2130903174, null);
+            ax3.a = (TextView) view2.findViewById(2131493370);
+            ax3.b = (ImageView) view2.findViewById(2131493371);
+            view2.setTag(ax3);
+            ax2 = ax3;
         } else {
-            Object6 = (ax) View2.getTag();
-            View5 = View2;
+            ax2 = (ax) view.getTag();
+            view2 = view;
         }
-        ((ax) Object6).a.setText((CharSequence) b[int1]);
-        if (BookCategoryListActivity.f(c).equals(b[int1])) {
-            ((ax) Object6).a.setTextColor(c.getResources().getColor(2131427485));
-            ((ax) Object6).b.setVisibility(0);
-        } else {
-            ((ax) Object6).a.setTextColor(am.a((Context) c, 16842904));
-            ((ax) Object6).b.setVisibility(8);
+        ax2.a.setText(this.b[n]);
+        if (BookCategoryListActivity.f(this.c).equals(this.b[n])) {
+            ax2.a.setTextColor(this.c.getResources().getColor(2131427485));
+            ax2.b.setVisibility(0);
+            return view2;
         }
-        return View5;
+        ax2.a.setTextColor(am.a((Context) this.c, 16842904));
+        ax2.b.setVisibility(8);
+        return view2;
     }
 }

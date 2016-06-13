@@ -3,47 +3,44 @@ package com.clilystudio.netbook.ui.user;
 import android.app.Activity;
 
 import com.clilystudio.netbook.a.c;
+import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.model.ResultStatus;
 import com.clilystudio.netbook.util.e;
 
 import java.io.IOException;
 
-final class y extends c {
+final class y
+        extends c<String, ResultStatus> {
+    private /* synthetic */ MyFavTopicFragment a;
 
-    private MyFavTopicFragment a;
-
-    public y(MyFavTopicFragment MyFavTopicFragment1, Activity Activity2, int int3) {
-        super(Activity2, 2131034218);
-        a = MyFavTopicFragment1;
+    public y(MyFavTopicFragment myFavTopicFragment, Activity activity, int n) {
+        this.a = myFavTopicFragment;
+        super(activity, 2131034218);
     }
 
-    private static transient ResultStatus a(String[] String_1darray1) {
-        ResultStatus ResultStatus4;
-
+    private static /* varargs */ ResultStatus a(String... arrstring) {
         try {
-            com.clilystudio.netbook.api.b.a();
-            ResultStatus4 = com.clilystudio.netbook.api.b.b().z(String_1darray1[0], String_1darray1[1]);
-        } catch (IOException IOException2) {
-            IOException2.printStackTrace();
+            b.a();
+            ResultStatus resultStatus = b.b().z(arrstring[0], arrstring[1]);
+            return resultStatus;
+        } catch (IOException var1_2) {
+            var1_2.printStackTrace();
             return null;
         }
-        return ResultStatus4;
     }
 
-    public final volatile Object a(Object[] Object_1darray1) {
-        return a((String[]) Object_1darray1);
-    }
-
-    public final void a(Object Object1) {
-        ResultStatus ResultStatus2 = (ResultStatus) Object1;
-
-        if (ResultStatus2 != null) {
-            if (ResultStatus2.isOk()) {
-                e.a(b(), "\u5220\u9664\u6210\u529F");
-                MyFavTopicFragment.d(a).setRefreshing();
-            } else
-                e.a(b(), "\u5220\u9664\u5931\u8D25\uFF0C\u8BF7\u7A0D\u540E\u518D\u8BD5");
-        } else
-            e.a(b(), "\u5220\u9664\u5931\u8D25\uFF0C\u8BF7\u68C0\u67E5\u7F51\u7EDC\u6216\u7A0D\u540E\u518D\u8BD5");
+    @Override
+    public final /* synthetic */ void a(Object object) {
+        ResultStatus resultStatus = (ResultStatus) object;
+        if (resultStatus != null) {
+            if (resultStatus.isOk()) {
+                e.a(this.b(), "\u5220\u9664\u6210\u529f");
+                MyFavTopicFragment.d(this.a).setRefreshing();
+                return;
+            }
+            e.a(this.b(), "\u5220\u9664\u5931\u8d25\uff0c\u8bf7\u7a0d\u540e\u518d\u8bd5");
+            return;
+        }
+        e.a(this.b(), "\u5220\u9664\u5931\u8d25\uff0c\u8bf7\u68c0\u67e5\u7f51\u7edc\u6216\u7a0d\u540e\u518d\u8bd5");
     }
 }

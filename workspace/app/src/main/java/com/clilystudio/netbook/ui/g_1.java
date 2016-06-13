@@ -2,14 +2,14 @@ package com.clilystudio.netbook.ui;
 
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.View$OnTouchListener;
 
-final class g implements View$OnTouchListener {
-
-    g(AudioBookPlayActivity AudioBookPlayActivity1) {
+final class g
+        implements View.OnTouchListener {
+    g(AudioBookPlayActivity audioBookPlayActivity) {
     }
 
-    public final boolean onTouch(View View1, MotionEvent MotionEvent2) {
+    @Override
+    public final boolean onTouch(View view, MotionEvent motionEvent) {
         return true;
     }
 }

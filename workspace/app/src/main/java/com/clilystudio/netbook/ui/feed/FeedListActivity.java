@@ -2,91 +2,103 @@ package com.clilystudio.netbook.ui.feed;
 
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.View$OnClickListener;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import com.clilystudio.netbook.db.BookReadRecord;
 import com.clilystudio.netbook.event.i;
-import com.clilystudio.netbook.event.l;
 import com.clilystudio.netbook.event.m;
 import com.clilystudio.netbook.ui.BaseActivity;
+import com.squareup.a.l;
 
-import java.util.Collection;
+import java.util.List;
 
-public class FeedListActivity extends BaseActivity {
-
+public class FeedListActivity
+        extends BaseActivity {
     private f a;
     private int b;
 
-    static int a(FeedListActivity FeedListActivity1) {
-        return FeedListActivity1.b;
+    static /* synthetic */ int a(FeedListActivity feedListActivity) {
+        return feedListActivity.b;
     }
 
-    private void a(int int1) {
-        int int2 = 0;
-        int int3 = com.clilystudio.netbook.hpay100.a.a.d(int1);
-        int[] int_1darray4 = {2131493425, 2131493426, 2131493427, 2131493428, 2131493429};
-        View View5 = getLayoutInflater().inflate(2130903206, null, false);
-        h h6 = new h((Context) this);
-        AlertDialog AlertDialog7;
-
-        h6.d = "\u9009\u62E9\u517B\u80A5\u7AE0\u8282\u6570";
-        AlertDialog7 = h6.a(View5).b("\u53D6\u6D88", null).a();
-        ((RadioGroup) View5.findViewById(2131493424)).check(int_1darray4[int3]);
-        while (int2 < 5) {
-            ((RadioButton) View5.findViewById(int_1darray4[int2])).setOnClickListener((View$OnClickListener) new e(this, AlertDialog7, int2, int3));
-            ++int2;
+    private void a(int n) {
+        int n2 = a.d(n);
+        int[] arrn = new int[]{2131493425, 2131493426, 2131493427, 2131493428, 2131493429};
+        View view = this.getLayoutInflater().inflate(2130903206, null, false);
+        h h2 = new h(this);
+        h2.d = "\u9009\u62e9\u517b\u80a5\u7ae0\u8282\u6570";
+        AlertDialog alertDialog = h2.a(view).b("\u53d6\u6d88", null).a();
+        ((RadioGroup) view.findViewById(2131493424)).check(arrn[n2]);
+        for (int j = 0; j < 5; ++j) {
+            ((RadioButton) view.findViewById(arrn[j])).setOnClickListener(new e(this, alertDialog, j, n2));
         }
-        AlertDialog7.show();
+        alertDialog.show();
     }
 
     private void b() {
-        Object Object1 = BookReadRecord.getAllFeedingOrderByCount();
-
-        b = com.clilystudio.netbook.hpay100.a.a.a((Context) this, "feed_chapter_count", 50);
-        a.a((Collection) Object1);
+        List<BookReadRecord> list = BookReadRecord.getAllFeedingOrderByCount();
+        this.b = a.a((Context) this, "feed_chapter_count", 50);
+        this.a.a(list);
     }
 
-    public void onBookAddedEvent(l l1) {
-        b();
+    @l
+    public void onBookAddedEvent(com.clilystudio.netbook.event.l l2) {
+        this.b();
     }
 
-    public void onChapterCountEvent(m m1) {
-        b();
+    @l
+    public void onChapterCountEvent(m m2) {
+        this.b();
     }
 
-    public void onCreate(Bundle Bundle1) {
-        ListView ListView2;
-
-        super.onCreate(Bundle1);
-        setContentView(2130903099);
-        b(2131034374);
+    @Override
+    public void onCreate(Bundle bundle) {
+        super.onCreate(bundle);
+        this.setContentView(2130903099);
+        this.b(2131034374);
         i.a().a(this);
-        ListView2 = (ListView) findViewById(2131493127);
-        a = new f(this, getLayoutInflater());
-        ListView2.setAdapter((ListAdapter) a);
-        b();
+        ListView listView = (ListView) this.findViewById(2131493127);
+        this.a = new f(this, this.getLayoutInflater());
+        listView.setAdapter(this.a);
+        this.b();
     }
 
-    public boolean onCreateOptionsMenu(Menu Menu1) {
-        getMenuInflater().inflate(2131558400, Menu1);
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        this.getMenuInflater().inflate(2131558400, menu);
         return true;
     }
 
+    @Override
     protected void onDestroy() {
         super.onDestroy();
         i.a().b(this);
     }
-// Error: Internal #201: 
-// The following method may not be correct.
 
-    public boolean onOptionsItemSelected(MenuItem MenuItem1) {
+    @Override
+    public boolean onOptionsItemSelected(MenuItem menuItem) {
+        switch (menuItem.getItemId()) {
+            default: {
+                return super.onOptionsItemSelected(menuItem);
+            }
+            case 16908332: {
+                this.onBackPressed();
+                return true;
+            }
+            case 2131494054: {
+                this.startActivity(new Intent(this, FeedAddActivity.class));
+                return true;
+            }
+            case 2131494055:
+        }
+        this.a(a.a((Context) this, "feed_chapter_count", 50));
+        return true;
     }
 }

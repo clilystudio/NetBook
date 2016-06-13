@@ -3,7 +3,6 @@ package com.clilystudio.netbook.ui;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.AdapterView$OnItemClickListener;
 import android.widget.BaseAdapter;
 import android.widget.Filter;
 import android.widget.Filterable;
@@ -11,62 +10,71 @@ import android.widget.Filterable;
 import java.util.ArrayList;
 import java.util.List;
 
-public final class SearchActivity$SearchPromptAdapter extends BaseAdapter implements AdapterView$OnItemClickListener, Filterable {
-
-    SearchActivity a;     // final access specifier removed
-    private List b;
+public final class SearchActivity$SearchPromptAdapter
+        extends BaseAdapter
+        implements AdapterView.OnItemClickListener,
+        Filterable {
+    final /* synthetic */ SearchActivity a;
+    private List<String> b;
     private bQ c;
-    public SearchActivity$SearchPromptAdapter(SearchActivity SearchActivity1) {
-        a = SearchActivity1;
-        b = (List) new ArrayList();
+
+    public SearchActivity$SearchPromptAdapter(SearchActivity searchActivity) {
+        this.a = searchActivity;
+        this.b = new ArrayList<String>();
     }
 
-    static List a(SearchActivity$SearchPromptAdapter SearchPromptAdapter1) {
-        return SearchPromptAdapter1.b;
+    static /* synthetic */ List a(SearchActivity$SearchPromptAdapter searchActivity$SearchPromptAdapter) {
+        return searchActivity$SearchPromptAdapter.b;
     }
 
-    static List a(SearchActivity$SearchPromptAdapter SearchPromptAdapter1, List List2) {
-        SearchPromptAdapter1.b = List2;
-        return List2;
+    static /* synthetic */ List a(SearchActivity$SearchPromptAdapter searchActivity$SearchPromptAdapter, List list) {
+        searchActivity$SearchPromptAdapter.b = list;
+        return list;
     }
 
+    @Override
     public final int getCount() {
-        return b.size();
+        return this.b.size();
     }
 
+    @Override
     public final Filter getFilter() {
-        if (c == null)
-            c = new bQ(this, (byte) 0);
-        return (Filter) c;
+        if (this.c == null) {
+            this.c = new bQ(this, 0);
+        }
+        return this.c;
     }
 
-    public final Object getItem(int int1) {
-        if (int1 >= 0 && int1 < b.size())
-            return b.get(int1);
-        else
-            return null;
+    @Override
+    public final Object getItem(int n) {
+        if (n >= 0 && n < this.b.size()) {
+            return this.b.get(n);
+        }
+        return null;
     }
 
-    public final long getItemId(int int1) {
-        return (long) int1;
+    @Override
+    public final long getItemId(int n) {
+        return n;
     }
 
-    public final View getView(int int1, View View2, ViewGroup ViewGroup3) {
-        View View4 = a.getLayoutInflater().inflate(2130903303, ViewGroup3, false);
-        SearchActivity$SearchPromptAdapter$ViewHolder ViewHolder5 = new SearchActivity$SearchPromptAdapter$ViewHolder(this, View4);
-
-        if (int1 >= 0 && int1 < b.size())
-            ViewHolder5.label.setText((CharSequence) b.get(int1));
-        return View4;
+    @Override
+    public final View getView(int n, View view, ViewGroup viewGroup) {
+        View view2 = this.a.getLayoutInflater().inflate(2130903303, viewGroup, false);
+        SearchActivity$SearchPromptAdapter$ViewHolder searchActivity$SearchPromptAdapter$ViewHolder = new SearchActivity$SearchPromptAdapter$ViewHolder(this, view2);
+        if (n >= 0 && n < this.b.size()) {
+            searchActivity$SearchPromptAdapter$ViewHolder.label.setText(this.b.get(n));
+        }
+        return view2;
     }
 
-    public final void onItemClick(AdapterView AdapterView1, View View2, int int3, long long4) {
-        SearchActivity.k(a).setVisibility(8);
-        if (int3 >= 0 && int3 < b.size()) {
-            String String6 = (String) b.get(int3);
-
-            SearchActivity.f(a).setTextByCode(String6);
-            SearchActivity.b(a, true);
+    @Override
+    public final void onItemClick(AdapterView<?> adapterView, View view, int n, long l2) {
+        SearchActivity.k(this.a).setVisibility(8);
+        if (n >= 0 && n < this.b.size()) {
+            String string = this.b.get(n);
+            SearchActivity.f(this.a).setTextByCode(string);
+            SearchActivity.b(this.a, true);
         }
     }
 }

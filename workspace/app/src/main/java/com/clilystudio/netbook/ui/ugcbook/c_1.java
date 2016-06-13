@@ -1,19 +1,21 @@
 package com.clilystudio.netbook.ui.ugcbook;
 
-import android.os.AsyncTask$Status;
+import android.os.AsyncTask;
 
-final class c implements Runnable {
+final class c
+        implements Runnable {
+    private /* synthetic */ b a;
 
-    private b a;
-
-    c(b b1) {
-        a = b1;
+    c(b b2) {
+        this.a = b2;
     }
 
+    @Override
     public final void run() {
-        if (a.a.g != null && a.a.g.getStatus() != AsyncTask$Status.FINISHED && !a.a.g.isCancelled())
-            a.a.g.cancel(true);
-        a.a.g = new e(a.a, (byte) 0);
-        a.a.g.b(new String[0]);
+        if (this.a.a.g != null && this.a.a.g.getStatus() != AsyncTask.Status.FINISHED && !this.a.a.g.isCancelled()) {
+            this.a.a.g.cancel(true);
+        }
+        this.a.a.g = new e(this.a.a, 0);
+        this.a.a.g.b(new String[0]);
     }
 }

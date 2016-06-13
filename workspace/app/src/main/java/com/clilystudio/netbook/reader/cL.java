@@ -4,33 +4,35 @@ import com.clilystudio.netbook.a.b;
 import com.clilystudio.netbook.db.BookTopicEnterRecord;
 import com.clilystudio.netbook.model.TopicCount;
 
-final class cL extends b {
+final class cL
+        extends b {
+    private /* synthetic */ ReaderWebActivity a;
 
-    private ReaderWebActivity a;
-
-    cL(ReaderWebActivity ReaderWebActivity1, byte byte2) {
-        this(ReaderWebActivity1);
+    private cL(ReaderWebActivity readerWebActivity) {
+        this.a = readerWebActivity;
     }
 
-    private cL(ReaderWebActivity ReaderWebActivity1) {
-        a = ReaderWebActivity1;
+    /* synthetic */ cL(ReaderWebActivity readerWebActivity, byte by) {
+        this(readerWebActivity);
     }
 
-    protected final void a(TopicCount TopicCount1) {
-        int int2 = 99;
-        int int4;
-
-        ReaderWebActivity.a(a, TopicCount1.getCount());
-        int4 = ReaderWebActivity.d(a) - BookTopicEnterRecord.get(ReaderWebActivity.e(a)).getVisitCount();
-        if (int4 > 0) {
-            ReaderWebActionBar ReaderWebActionBar5;
-
-            ReaderWebActivity.a(a).a(true);
-            ReaderWebActionBar5 = ReaderWebActivity.a(a);
-            if (int4 <= int2)
-                int2 = int4;
-            ReaderWebActionBar5.setTopicCount(String.valueOf(int2));
-        } else
-            ReaderWebActivity.a(a).a(false);
+    /*
+     * Enabled aggressive block sorting
+     */
+    @Override
+    protected final void a(TopicCount topicCount) {
+        int n = 99;
+        ReaderWebActivity.a(this.a, topicCount.getCount());
+        int n2 = ReaderWebActivity.d(this.a) - BookTopicEnterRecord.get(ReaderWebActivity.e(this.a)).getVisitCount();
+        if (n2 <= 0) {
+            ReaderWebActivity.a(this.a).a(false);
+            return;
+        }
+        ReaderWebActivity.a(this.a).a(true);
+        ReaderWebActionBar readerWebActionBar = ReaderWebActivity.a(this.a);
+        if (n2 <= n) {
+            n = n2;
+        }
+        readerWebActionBar.setTopicCount(String.valueOf(n));
     }
 }

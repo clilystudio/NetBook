@@ -1,23 +1,22 @@
 package com.clilystudio.netbook.model;
 
 public class BookGenderRecommend {
-
     private BookGenderRecommend$RecommendBook[] books;
     private boolean ok;
 
     public BookGenderRecommend$RecommendBook[] getBooks() {
-        return books;
+        return this.books;
     }
 
-    public void setBooks(BookGenderRecommend$RecommendBook[] RecommendBook_1darray1) {
-        books = RecommendBook_1darray1;
+    public void setBooks(BookGenderRecommend$RecommendBook[] arrbookGenderRecommend$RecommendBook) {
+        this.books = arrbookGenderRecommend$RecommendBook;
     }
 
     public boolean isOk() {
-        return ok;
+        return this.ok;
     }
 
-    public void setOk(boolean boolean1) {
-        ok = boolean1;
+    public void setOk(boolean bl) {
+        this.ok = bl;
     }
 }

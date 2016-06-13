@@ -1,19 +1,23 @@
 package com.clilystudio.netbook.widget;
 
-final class u implements b {
-
-    u(CoverLoadingLayer CoverLoadingLayer1) {
+final class u
+        implements b {
+    u(CoverLoadingLayer coverLoadingLayer) {
     }
 
-    public final void a(a a1) {
+    @Override
+    public final void a(a a2) {
     }
 
-    public final void b(a a1) {
+    @Override
+    public final void b(a a2) {
     }
 
-    public final void c(a a1) {
+    @Override
+    public final void c(a a2) {
     }
 
-    public final void d(a a1) {
+    @Override
+    public final void d(a a2) {
     }
 }

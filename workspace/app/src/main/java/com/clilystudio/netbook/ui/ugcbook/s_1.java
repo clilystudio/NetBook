@@ -4,20 +4,20 @@ import com.clilystudio.netbook.widget.ax;
 
 import java.util.Calendar;
 
-final class s implements ax {
+final class s
+        implements ax {
+    private /* synthetic */ UGCGuideAddBookActivity$SearchPromptAdapter a;
+    private /* synthetic */ UGCGuideAddBookActivity b;
 
-    private UGCGuideAddBookActivity$SearchPromptAdapter a;
-    private UGCGuideAddBookActivity b;
-    s(UGCGuideAddBookActivity UGCGuideAddBookActivity1, UGCGuideAddBookActivity$SearchPromptAdapter SearchPromptAdapter2) {
-        b = UGCGuideAddBookActivity1;
-        a = SearchPromptAdapter2;
+    s(UGCGuideAddBookActivity uGCGuideAddBookActivity, UGCGuideAddBookActivity$SearchPromptAdapter searchPromptAdapter) {
+        this.b = uGCGuideAddBookActivity;
+        this.a = searchPromptAdapter;
     }
 
+    @Override
     public final void a() {
-        Object Object2;
-
-        UGCGuideAddBookActivity.a(b, true);
-        Object2 = String.valueOf(Calendar.getInstance().getTimeInMillis());
-        a.getFilter().filter((CharSequence) Object2);
+        UGCGuideAddBookActivity.a(this.b, true);
+        String string = String.valueOf(Calendar.getInstance().getTimeInMillis());
+        this.a.getFilter().filter(string);
     }
 }

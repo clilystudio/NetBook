@@ -4,55 +4,60 @@ import android.content.Context;
 import android.support.v7.widget.SwitchCompat;
 import android.util.AttributeSet;
 import android.view.View;
-import android.view.View$OnClickListener;
 import android.widget.Checkable;
 import android.widget.CompoundButton;
-import android.widget.CompoundButton$OnCheckedChangeListener;
 import android.widget.RelativeLayout;
 
-public class SettingItem extends RelativeLayout implements View$OnClickListener, Checkable {
-
+public class SettingItem
+        extends RelativeLayout
+        implements View.OnClickListener,
+        Checkable {
     private boolean a;
     private SwitchCompat b;
-    private CompoundButton$OnCheckedChangeListener c;
-    public SettingItem(Context Context1, AttributeSet AttributeSet2) {
-        super(Context1, AttributeSet2);
+    private CompoundButton.OnCheckedChangeListener c;
+
+    public SettingItem(Context context, AttributeSet attributeSet) {
+        super(context, attributeSet);
     }
 
+    @Override
     public boolean isChecked() {
-        return a;
+        return this.a;
     }
 
-    public void setChecked(boolean boolean1) {
-        if (a != boolean1) {
-            a = boolean1;
-            b.setChecked(boolean1);
-            if (c != null)
-                c.onCheckedChanged((CompoundButton) b, a);
+    @Override
+    public void setChecked(boolean bl) {
+        if (this.a != bl) {
+            this.a = bl;
+            this.b.setChecked(bl);
+            if (this.c != null) {
+                this.c.onCheckedChanged(this.b, this.a);
+            }
         }
     }
 
-    public void onClick(View View1) {
-        toggle();
+    @Override
+    public void onClick(View view) {
+        this.toggle();
     }
 
+    @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
-        setOnClickListener(this);
-        b = (SwitchCompat) findViewById(2131493902);
+        this.setOnClickListener(this);
+        this.b = (SwitchCompat) this.findViewById(2131493902);
     }
 
-    public void setCheckListener(CompoundButton$OnCheckedChangeListener OnCheckedChangeListener1) {
-        c = OnCheckedChangeListener1;
+    public void setCheckListener(CompoundButton.OnCheckedChangeListener onCheckedChangeListener) {
+        this.c = onCheckedChangeListener;
     }
 
+    /*
+     * Enabled aggressive block sorting
+     */
+    @Override
     public void toggle() {
-        boolean boolean1;
-
-        if (!a)
-            boolean1 = true;
-        else
-            boolean1 = false;
-        setChecked(boolean1);
+        boolean bl = !this.a;
+        this.setChecked(bl);
     }
 }

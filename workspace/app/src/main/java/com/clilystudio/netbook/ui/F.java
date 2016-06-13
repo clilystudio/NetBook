@@ -3,52 +3,64 @@ package com.clilystudio.netbook.ui;
 import com.ximalaya.ting.android.opensdk.player.service.IXmPlayerStatusListener;
 import com.ximalaya.ting.android.opensdk.player.service.XmPlayerException;
 
-final class F implements IXmPlayerStatusListener {
+final class F
+        implements IXmPlayerStatusListener {
+    private /* synthetic */ AudiobookInfoActivity a;
 
-    private AudiobookInfoActivity a;
-
-    F(AudiobookInfoActivity AudiobookInfoActivity1) {
-        a = AudiobookInfoActivity1;
+    F(AudiobookInfoActivity audiobookInfoActivity) {
+        this.a = audiobookInfoActivity;
     }
 
-    public final void onBufferProgress(int int1) {
+    @Override
+    public final void onBufferProgress(int n) {
     }
 
+    @Override
     public final void onBufferingStart() {
     }
 
+    @Override
     public final void onBufferingStop() {
     }
 
-    public final boolean onError(XmPlayerException XmPlayerException1) {
+    @Override
+    public final boolean onError(XmPlayerException xmPlayerException) {
         return false;
     }
 
+    @Override
     public final void onPlayPause() {
     }
 
-    public final void onPlayProgress(int int1, int int2) {
+    @Override
+    public final void onPlayProgress(int n, int n2) {
     }
 
+    @Override
     public final void onPlayStart() {
     }
 
+    @Override
     public final void onPlayStop() {
     }
 
+    @Override
     public final void onSoundPlayComplete() {
     }
 
+    @Override
     public final void onSoundPrepared() {
     }
 
-    public final void onSoundSwitch(int int1, int int2, int int3) {
-        if (AudiobookInfoActivity.q(a)) {
-            AudiobookInfoActivity.h(a).setPlayButtonDefault(AudiobookInfoActivity.m(a));
-            AudiobookInfoActivity.c(a, 1 + AudiobookInfoActivity.m(a));
-            AudiobookInfoActivity.h(a).a(AudiobookInfoActivity.m(a), true);
-            AudiobookInfoActivity.r(a);
-        } else
-            AudiobookInfoActivity.f(a, true);
+    @Override
+    public final void onSoundSwitch(int n, int n2, int n3) {
+        if (AudiobookInfoActivity.q(this.a)) {
+            AudiobookInfoActivity.h(this.a).setPlayButtonDefault(AudiobookInfoActivity.m(this.a));
+            AudiobookInfoActivity.c(this.a, 1 + AudiobookInfoActivity.m(this.a));
+            AudiobookInfoActivity.h(this.a).a(AudiobookInfoActivity.m(this.a), true);
+            AudiobookInfoActivity.r(this.a);
+            return;
+        }
+        AudiobookInfoActivity.f(this.a, true);
     }
 }

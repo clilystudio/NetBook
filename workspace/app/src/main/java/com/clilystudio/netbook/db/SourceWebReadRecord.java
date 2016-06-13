@@ -1,67 +1,79 @@
 package com.clilystudio.netbook.db;
 
 import com.activeandroid.Model;
+import com.activeandroid.annotation.Column;
+import com.activeandroid.annotation.Table;
+import com.activeandroid.query.From;
+import com.activeandroid.query.Select;
 
-public class SourceWebReadRecord extends Model {
-
+@Table(name = "SourceWebReadRecord")
+public class SourceWebReadRecord
+        extends Model {
+    @Column(name = "_id", unique = 1)
     private String _id;
+    @Column(name = "bookId")
     private String bookId;
+    @Column(name = "chapterIndex")
     private int chapterIndex;
+    @Column(name = "cmd")
     private String cmd;
+    @Column(name = "readMode")
     private int readMode = -1;
 
-    public static void create(String String1, int int2, int int3) {
-        SourceWebReadRecord SourceWebReadRecord4 = new SourceWebReadRecord();
-
-        SourceWebReadRecord4.bookId = String1;
-        SourceWebReadRecord4.readMode = int2;
-        SourceWebReadRecord4.chapterIndex = int3;
-        SourceWebReadRecord4.save();
+    public static void create(String string, int n, int n2) {
+        SourceWebReadRecord sourceWebReadRecord = new SourceWebReadRecord();
+        sourceWebReadRecord.bookId = string;
+        sourceWebReadRecord.readMode = n;
+        sourceWebReadRecord.chapterIndex = n2;
+        sourceWebReadRecord.save();
     }
 
-    public static void create(String String1, int int2, String String3) {
-        SourceWebReadRecord SourceWebReadRecord4 = new SourceWebReadRecord();
-
-        SourceWebReadRecord4.bookId = String1;
-        SourceWebReadRecord4.readMode = int2;
-        SourceWebReadRecord4.cmd = String3;
-        SourceWebReadRecord4.save();
+    public static void create(String string, int n, String string2) {
+        SourceWebReadRecord sourceWebReadRecord = new SourceWebReadRecord();
+        sourceWebReadRecord.bookId = string;
+        sourceWebReadRecord.readMode = n;
+        sourceWebReadRecord.cmd = string2;
+        sourceWebReadRecord.save();
     }
-// Error: Internal #201: 
-// The following method may not be correct.
 
-    public static SourceWebReadRecord get(String String1, int int2) {
+    public static SourceWebReadRecord get(String string, int n) {
+        if (string == null) {
+            return null;
+        }
+        From from = new Select().from(SourceWebReadRecord.class);
+        Object[] arrobject = new Object[]{string, n};
+        return (SourceWebReadRecord) from.where("(bookId = ?) AND (readMode = ?)", arrobject).executeSingle();
     }
 
     public String getBookId() {
-        return bookId;
+        return this.bookId;
     }
 
-    public void setBookId(String String1) {
-        bookId = String1;
+    public void setBookId(String string) {
+        this.bookId = string;
     }
 
     public int getChapterIndex() {
-        return chapterIndex;
+        return this.chapterIndex;
     }
 
-    public void setChapterIndex(int int1) {
-        chapterIndex = int1;
+    public void setChapterIndex(int n) {
+        this.chapterIndex = n;
     }
 
     public String getCmd() {
-        return cmd;
+        return this.cmd;
     }
 
-    public void setCmd(String String1) {
-        cmd = String1;
+    public void setCmd(String string) {
+        this.cmd = string;
     }
 
     public int getReadMode() {
-        return readMode;
+        return this.readMode;
     }
 
-    public void setReadMode(int int1) {
-        readMode = int1;
+    public void setReadMode(int n) {
+        this.readMode = n;
     }
 }

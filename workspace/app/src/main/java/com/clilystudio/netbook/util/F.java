@@ -1,19 +1,19 @@
 package com.clilystudio.netbook.util;
 
 public final class F {
-
     private int a;
     private float b;
-    public F(int int1, float float2) {
-        a = int1;
-        b = float2;
+
+    public F(int n, float f) {
+        this.a = n;
+        this.b = f;
     }
 
     public final float a() {
-        return b;
+        return this.b;
     }
 
     public final int b() {
-        return a;
+        return this.a;
     }
 }

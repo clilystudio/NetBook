@@ -1,17 +1,18 @@
 package com.clilystudio.netbook.widget;
 
-final class ae implements D {
+final class ae
+        implements D {
+    private /* synthetic */ LoadingProgressView a;
 
-    private LoadingProgressView a;
-
-    ae(LoadingProgressView LoadingProgressView1) {
-        a = LoadingProgressView1;
+    ae(LoadingProgressView loadingProgressView) {
+        this.a = loadingProgressView;
     }
 
-    public final void a(w w1) {
-        if (!com.clilystudio.netbook.widget.LoadingProgressView.a(a)) {
-            LoadingProgressView.a(a, ((Float) w1.f()).floatValue());
-            a.setProgress(LoadingProgressView.b(a));
+    @Override
+    public final void a(w w2) {
+        if (!LoadingProgressView.a(this.a)) {
+            LoadingProgressView.a(this.a, ((Float) w2.f()).floatValue());
+            this.a.setProgress(LoadingProgressView.b(this.a));
         }
     }
 }

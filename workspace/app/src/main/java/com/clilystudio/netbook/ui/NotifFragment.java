@@ -1,20 +1,20 @@
 package com.clilystudio.netbook.ui;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.design.widget.am;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View$OnClickListener;
 import android.view.ViewGroup;
-import android.widget.AdapterView$OnItemClickListener;
-import android.widget.ListAdapter;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.clilystudio.netbook.adapter.NotificationAdapter;
+import com.clilystudio.netbook.api.b;
+import com.clilystudio.netbook.hpay100.a.a;
 import com.clilystudio.netbook.model.Account;
+import com.clilystudio.netbook.model.NotificationItem;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 
 import java.util.ArrayList;
@@ -22,8 +22,8 @@ import java.util.List;
 
 import butterknife.ButterKnife;
 
-public abstract class NotifFragment extends Fragment {
-
+public abstract class NotifFragment
+        extends Fragment {
     private bw b;
     private bx c;
     private PullToRefreshListView d;
@@ -33,160 +33,159 @@ public abstract class NotifFragment extends Fragment {
     private TextView h;
     private View i;
     private NotificationAdapter j;
+    private List<NotificationItem> k = new ArrayList<NotificationItem>();
+    private b a = b.a();
     private int l;
     private Account m;
-    private com.clilystudio.netbook.api.b a = com.clilystudio.netbook.api.b.a();
-    private List k = new ArrayList();
-    private com.handmark.pulltorefresh.library.j n = new bv(this);
+    private j n;
 
-    static int a(NotifFragment NotifFragment1, int int2) {
-        NotifFragment1.l = int2;
-        return int2;
+    public NotifFragment() {
+        this.n = new bv(this);
     }
 
-    static TextView a(NotifFragment NotifFragment1) {
-        return NotifFragment1.h;
+    static /* synthetic */ int a(NotifFragment notifFragment, int n) {
+        notifFragment.l = n;
+        return n;
     }
 
-    static bw a(NotifFragment NotifFragment1, bw bw2) {
-        NotifFragment1.b = bw2;
+    static /* synthetic */ TextView a(NotifFragment notifFragment) {
+        return notifFragment.h;
+    }
+
+    static /* synthetic */ bw a(NotifFragment notifFragment, bw bw2) {
+        notifFragment.b = bw2;
         return bw2;
     }
 
-    static void a(NotifFragment NotifFragment1, boolean boolean2) {
-        NotifFragment1.a(false);
+    static /* synthetic */ void a(NotifFragment notifFragment, boolean bl) {
+        notifFragment.a(false);
     }
 
-    static View b(NotifFragment NotifFragment1) {
-        return NotifFragment1.i;
+    static /* synthetic */ View b(NotifFragment notifFragment) {
+        return notifFragment.i;
     }
 
-    static Account c(NotifFragment NotifFragment1) {
-        return NotifFragment1.m;
+    static /* synthetic */ Account c(NotifFragment notifFragment) {
+        return notifFragment.m;
     }
 
-    static PullToRefreshListView d(NotifFragment NotifFragment1) {
-        return NotifFragment1.d;
+    static /* synthetic */ PullToRefreshListView d(NotifFragment notifFragment) {
+        return notifFragment.d;
     }
 
-    static ListView e(NotifFragment NotifFragment1) {
-        return NotifFragment1.e;
+    static /* synthetic */ ListView e(NotifFragment notifFragment) {
+        return notifFragment.e;
     }
 
-    static NotificationAdapter f(NotifFragment NotifFragment1) {
-        return NotifFragment1.j;
+    static /* synthetic */ NotificationAdapter f(NotifFragment notifFragment) {
+        return notifFragment.j;
     }
 
-    static com.clilystudio.netbook.api.b g(NotifFragment NotifFragment1) {
-        return NotifFragment1.a;
+    static /* synthetic */ b g(NotifFragment notifFragment) {
+        return notifFragment.a;
     }
 
-    static View h(NotifFragment NotifFragment1) {
-        return NotifFragment1.g;
+    static /* synthetic */ View h(NotifFragment notifFragment) {
+        return notifFragment.g;
     }
 
-    static View i(NotifFragment NotifFragment1) {
-        return NotifFragment1.f;
+    static /* synthetic */ View i(NotifFragment notifFragment) {
+        return notifFragment.f;
     }
 
-    static com.handmark.pulltorefresh.library.j j(NotifFragment NotifFragment1) {
-        return NotifFragment1.n;
+    static /* synthetic */ j j(NotifFragment notifFragment) {
+        return notifFragment.n;
     }
 
-    static List k(NotifFragment NotifFragment1) {
-        return NotifFragment1.k;
+    static /* synthetic */ List k(NotifFragment notifFragment) {
+        return notifFragment.k;
     }
 
-    static int l(NotifFragment NotifFragment1) {
-        return NotifFragment1.l;
+    static /* synthetic */ int l(NotifFragment notifFragment) {
+        return notifFragment.l;
     }
 
-    static void m(NotifFragment NotifFragment1) {
-        NotifFragment1.i.setVisibility(0);
+    static /* synthetic */ void m(NotifFragment notifFragment) {
+        notifFragment.i.setVisibility(0);
     }
 
-    static bw n(NotifFragment NotifFragment1) {
-        return NotifFragment1.b;
+    static /* synthetic */ bw n(NotifFragment notifFragment) {
+        return notifFragment.b;
     }
 
-    static bx o(NotifFragment NotifFragment1) {
-        return NotifFragment1.c;
+    static /* synthetic */ bx o(NotifFragment notifFragment) {
+        return notifFragment.c;
     }
 
-    private void a(boolean boolean1) {
-        if (g != null)
-            g.setVisibility(8);
-        if (h != null) {
-            h.setVisibility(0);
-            h.setText((CharSequence) "\u8BF7\u767B\u5F55\u540E\u67E5\u770B");
+    private void a(boolean bl) {
+        if (this.g != null) {
+            this.g.setVisibility(8);
         }
-        i.setVisibility(8);
-        if (boolean1 && k != null && j != null) {
-            k.clear();
-            j.a(k);
+        if (this.h != null) {
+            this.h.setVisibility(0);
+            this.h.setText("\u8bf7\u767b\u5f55\u540e\u67e5\u770b");
+        }
+        this.i.setVisibility(8);
+        if (bl && this.k != null && this.j != null) {
+            this.k.clear();
+            this.j.a(this.k);
         }
     }
 
-    protected abstract NotifFragment$Type a();
+    protected abstract Type a();
 
-    protected void a(ListView ListView1) {
+    protected void a(ListView listView) {
     }
 
     protected abstract NotificationAdapter b();
 
     protected final void c() {
-        bx bx1;
-        String[] String_1darray2;
-
-        c = new bx(this, (byte) 0);
-        bx1 = c;
-        String_1darray2 = new String[1];
-        String_1darray2[0] = m.getToken();
-        bx1.b(String_1darray2);
+        bx bx2 = this.c = new bx(this, 0);
+        Object[] arrobject = new String[]{this.m.getToken()};
+        bx2.b(arrobject);
     }
 
-    public void onActivityCreated(Bundle Bundle1) {
-        super.onActivityCreated(Bundle1);
-        m = am.e();
-        f = LayoutInflater.from((Context) getActivity()).inflate(2130903325, null);
-        e = (ListView) d.h();
-        if (com.clilystudio.netbook.hpay100.a.a.i())
-            e.setFooterDividersEnabled(false);
-        e.addFooterView(f);
-        f.setVisibility(8);
-        d.setOnRefreshListener((com.handmark.pulltorefresh.library.k) new bs(this));
-        e.setOnItemClickListener((AdapterView$OnItemClickListener) new bu(this));
-        j = b();
-        a(e);
-        e.setAdapter((ListAdapter) j);
-        if (m == null)
-            a(false);
-        else {
-            bx bx2;
-            String[] String_1darray3;
-
-            c = new bx(this, (byte) 0);
-            bx2 = c;
-            String_1darray3 = new String[1];
-            String_1darray3[0] = m.getToken();
-            bx2.b(String_1darray3);
+    @Override
+    public void onActivityCreated(Bundle bundle) {
+        super.onActivityCreated(bundle);
+        this.m = am.e();
+        this.f = LayoutInflater.from(this.getActivity()).inflate(2130903325, null);
+        this.e = (ListView) this.d.h();
+        if (a.i()) {
+            this.e.setFooterDividersEnabled(false);
         }
+        this.e.addFooterView(this.f);
+        this.f.setVisibility(8);
+        this.d.setOnRefreshListener(new bs(this));
+        this.e.setOnItemClickListener((AdapterView.OnItemClickListener) ((Object) new bu(this)));
+        this.j = this.b();
+        this.a(this.e);
+        this.e.setAdapter(this.j);
+        if (this.m == null) {
+            this.a(false);
+            return;
+        }
+        bx bx2 = this.c = new bx(this, 0);
+        Object[] arrobject = new String[]{this.m.getToken()};
+        bx2.b(arrobject);
     }
 
-    public View onCreateView(LayoutInflater LayoutInflater1, ViewGroup ViewGroup2, Bundle Bundle3) {
-        View View4 = LayoutInflater1.inflate(2130903333, ViewGroup2, false);
-
-        ButterKnife.inject(this, View4);
-        d = (PullToRefreshListView) View4.findViewById(2131493099);
-        g = View4.findViewById(2131493085);
-        h = (TextView) View4.findViewById(2131493100);
-        i = View4.findViewById(2131493086);
-        i.setOnClickListener((View$OnClickListener) new br(this));
-        return View4;
+    @Override
+    public View onCreateView(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
+        View view = layoutInflater.inflate(2130903333, viewGroup, false);
+        ButterKnife.inject((Object) this, view);
+        this.d = (PullToRefreshListView) view.findViewById(2131493099);
+        this.g = view.findViewById(2131493085);
+        this.h = (TextView) view.findViewById(2131493100);
+        this.i = view.findViewById(2131493086);
+        this.i.setOnClickListener((View.OnClickListener) ((Object) new br(this)));
+        return view;
     }
 
-    public void onNewMsgClickEvent$154ad029(com.clilystudio.netbook.hpay100.a.a a1) {
-        if (d != null && l > 0)
-            d.setRefreshing();
+    @l
+    public void onNewMsgClickEvent$154ad029(a a2) {
+        if (this.d != null && this.l > 0) {
+            this.d.setRefreshing();
+        }
     }
 }

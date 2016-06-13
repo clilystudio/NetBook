@@ -1,23 +1,24 @@
 package com.clilystudio.netbook.ui.post;
 
 import android.view.View;
-import android.view.View$OnClickListener;
 import android.widget.PopupWindow;
 
-final class aV implements View$OnClickListener {
+final class aV
+        implements View.OnClickListener {
+    private /* synthetic */ PopupWindow a;
+    private /* synthetic */ CommonPostListActivity b;
 
-    private PopupWindow a;
-    private CommonPostListActivity b;
-    aV(CommonPostListActivity CommonPostListActivity1, PopupWindow PopupWindow2) {
-        b = CommonPostListActivity1;
-        a = PopupWindow2;
+    aV(CommonPostListActivity commonPostListActivity, PopupWindow popupWindow) {
+        this.b = commonPostListActivity;
+        this.a = popupWindow;
     }
 
-    public final void onClick(View View1) {
-        a.dismiss();
-        CommonPostListActivity.k(b).setText((CharSequence) "\u6700\u591A\u8BC4\u8BBA");
-        CommonPostListActivity.b(b, "comment-count");
-        CommonPostListActivity.j(b).setVisibility(0);
-        CommonPostListActivity.j(b).setRefreshing();
+    @Override
+    public final void onClick(View view) {
+        this.a.dismiss();
+        CommonPostListActivity.k(this.b).setText("\u6700\u591a\u8bc4\u8bba");
+        CommonPostListActivity.b(this.b, "comment-count");
+        CommonPostListActivity.j(this.b).setVisibility(0);
+        CommonPostListActivity.j(this.b).setRefreshing();
     }
 }

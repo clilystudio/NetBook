@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -13,34 +12,39 @@ import android.widget.TextView;
 import com.clilystudio.netbook.R$styleable;
 
 import butterknife.ButterKnife;
+import butterknife.InjectView;
 
-public class UserInfoTaskView extends FrameLayout {
-
+public class UserInfoTaskView
+        extends FrameLayout {
+    private final int a;
+    private final String b;
+    @InjectView(value = 2131493234)
     ExpView mExp;
+    @InjectView(value = 2131493028)
     ImageView mIcon;
+    @InjectView(value = 2131492936)
     TextView mTitle;
-    private int a;     // final access specifier removed
-    private String b;     // final access specifier removed
-    public UserInfoTaskView(Context Context1, AttributeSet AttributeSet2) {
-        super(Context1, AttributeSet2);
-        TypedArray TypedArray3;
 
-        TypedArray3 = Context1.obtainStyledAttributes(AttributeSet2, R$styleable.UserInfoTaskView);
-        a = TypedArray3.getResourceId(0, 2130838241);
-        b = TypedArray3.getString(1);
-        TypedArray3.recycle();
-        LayoutInflater.from(Context1).inflate(2130903418, (ViewGroup) this);
+    public UserInfoTaskView(Context context, AttributeSet attributeSet) {
+        super(context, attributeSet);
+        TypedArray typedArray = context.obtainStyledAttributes(attributeSet, R$styleable.UserInfoTaskView);
+        this.a = typedArray.getResourceId(0, 2130838241);
+        this.b = typedArray.getString(1);
+        typedArray.recycle();
+        LayoutInflater.from(context).inflate(2130903418, (ViewGroup) this);
     }
 
+    @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
-        ButterKnife.inject((View) this);
-        mIcon.setImageResource(a);
-        mTitle.setText((CharSequence) b);
+        ButterKnife.inject(this);
+        this.mIcon.setImageResource(this.a);
+        this.mTitle.setText(this.b);
     }
 
-    public void setExp(String String1) {
-        if (mExp != null)
-            mExp.setText((CharSequence) String1);
+    public void setExp(String string) {
+        if (this.mExp != null) {
+            this.mExp.setText(string);
+        }
     }
 }

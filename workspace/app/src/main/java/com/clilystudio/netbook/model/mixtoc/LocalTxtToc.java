@@ -1,33 +1,36 @@
 package com.clilystudio.netbook.model.mixtoc;
 
+import com.clilystudio.netbook.model.ChapterLink;
+
 import java.io.Serializable;
 import java.util.List;
 
-public class LocalTxtToc implements Serializable {
-
-    private List mChapterLinks;
+public class LocalTxtToc
+        implements Serializable {
+    private List<ChapterLink> mChapterLinks;
     private long txtFileLength;
-    public LocalTxtToc(long long1, List List3) {
-        txtFileLength = long1;
-        mChapterLinks = List3;
-    }
 
     public LocalTxtToc() {
     }
 
-    public List getChapterLinks() {
-        return mChapterLinks;
+    public LocalTxtToc(long l, List<ChapterLink> list) {
+        this.txtFileLength = l;
+        this.mChapterLinks = list;
     }
 
-    public void setChapterLinks(List List1) {
-        mChapterLinks = List1;
+    public List<ChapterLink> getChapterLinks() {
+        return this.mChapterLinks;
+    }
+
+    public void setChapterLinks(List<ChapterLink> list) {
+        this.mChapterLinks = list;
     }
 
     public long getTxtFileLength() {
-        return txtFileLength;
+        return this.txtFileLength;
     }
 
-    public void setTxtFileLength(long long1) {
-        txtFileLength = long1;
+    public void setTxtFileLength(long l) {
+        this.txtFileLength = l;
     }
 }

@@ -1,27 +1,22 @@
 package com.clilystudio.netbook.ui.post;
 
-import android.app.Activity;
 import android.view.View;
-import android.view.View$OnClickListener;
 
-final class bm implements View$OnClickListener {
+final class bm
+        implements View.OnClickListener {
+    private /* synthetic */ GirlTopicActivity a;
 
-    private GirlTopicActivity a;
-
-    bm(GirlTopicActivity GirlTopicActivity1) {
-        a = GirlTopicActivity1;
+    bm(GirlTopicActivity girlTopicActivity) {
+        this.a = girlTopicActivity;
     }
 
-    public final void onClick(View View1) {
-        GirlTopicActivity.a(a, ((Integer) View1.getTag()).intValue());
-        if (GirlTopicActivity.h(a)) {
-            bs bs3 = new bs(a, (Activity) a, 2131034584);
-            String[] String_1darray4 = new String[3];
-
-            String_1darray4[0] = GirlTopicActivity.a(a).get_id();
-            String_1darray4[1] = GirlTopicActivity.i(a).getToken();
-            String_1darray4[2] = String.valueOf(GirlTopicActivity.j(a));
-            bs3.b(String_1darray4);
+    @Override
+    public final void onClick(View view) {
+        GirlTopicActivity.a(this.a, (Integer) view.getTag());
+        if (GirlTopicActivity.h(this.a)) {
+            bs bs2 = new bs(this.a, this.a, 2131034584);
+            String[] arrstring = new String[]{GirlTopicActivity.a(this.a).get_id(), GirlTopicActivity.i(this.a).getToken(), String.valueOf(GirlTopicActivity.j(this.a))};
+            bs2.b(arrstring);
         }
     }
 }

@@ -1,38 +1,38 @@
 package com.clilystudio.netbook.reader;
 
 import com.clilystudio.netbook.a.e;
+import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.model.RelateBookRoot;
 
 import java.io.IOException;
 
-public final class cP extends e {
+public final class cP
+        extends e<String, Void, RelateBookRoot> {
+    private /* synthetic */ cM a;
 
-    private cM a;
-
-    public cP(cM cM1) {
-        a = cM1;
+    public cP(cM cM2) {
+        this.a = cM2;
     }
 
-    private static transient RelateBookRoot a(String[] String_1darray1) {
-        RelateBookRoot RelateBookRoot4;
-
+    private static /* varargs */ RelateBookRoot a(String... arrstring) {
         try {
-            com.clilystudio.netbook.api.b.a();
-            RelateBookRoot4 = com.clilystudio.netbook.api.b.b().V(String_1darray1[0]);
-        } catch (IOException IOException2) {
-            IOException2.printStackTrace();
+            b.a();
+            RelateBookRoot relateBookRoot = b.b().V(arrstring[0]);
+            return relateBookRoot;
+        } catch (IOException var1_2) {
+            var1_2.printStackTrace();
             return null;
         }
-        return RelateBookRoot4;
     }
 
-    protected final Object doInBackground(Object[] Object_1darray1) {
-        return a((String[]) Object_1darray1);
+    @Override
+    protected final /* synthetic */ Object doInBackground(Object[] arrobject) {
+        return cP.a((String[]) arrobject);
     }
 
-    protected final void onPostExecute(Object Object1) {
-        RelateBookRoot RelateBookRoot2 = (RelateBookRoot) Object1;
-
-        cM.b(a).a(RelateBookRoot2, cM.a(a));
+    @Override
+    protected final /* synthetic */ void onPostExecute(Object object) {
+        RelateBookRoot relateBookRoot = (RelateBookRoot) object;
+        cM.b(this.a).a(relateBookRoot, cM.a(this.a));
     }
 }

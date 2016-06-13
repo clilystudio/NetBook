@@ -4,20 +4,22 @@ import com.clilystudio.netbook.reader.e;
 import com.clilystudio.netbook.reader.n;
 import com.clilystudio.netbook.reader.o;
 
-final class k implements e {
+final class k
+        implements e<n> {
+    private /* synthetic */ o a;
+    private /* synthetic */ ReaderRandomActivity b;
 
-    private o a;
-    private ReaderRandomActivity b;
-    k(ReaderRandomActivity ReaderRandomActivity1, o o2) {
-        b = ReaderRandomActivity1;
-        a = o2;
+    k(ReaderRandomActivity readerRandomActivity, o o2) {
+        this.b = readerRandomActivity;
+        this.a = o2;
     }
 
-    public final void a(Object Object1) {
-        n n2 = (n) Object1;
-
-        if (n2.l() > ReaderRandomActivity.g(b))
-            ReaderRandomActivity.a(b, n2.l());
-        a.a(n2);
+    @Override
+    public final /* synthetic */ void a(Object object) {
+        n n2 = (n) object;
+        if (n2.l() > ReaderRandomActivity.g(this.b)) {
+            ReaderRandomActivity.a(this.b, n2.l());
+        }
+        this.a.a(n2);
     }
 }

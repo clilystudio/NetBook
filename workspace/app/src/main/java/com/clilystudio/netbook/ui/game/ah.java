@@ -4,31 +4,35 @@ import android.support.v4.view.PagerAdapter;
 import android.view.View;
 import android.view.ViewGroup;
 
-final class ah extends PagerAdapter {
+final class ah
+        extends PagerAdapter {
+    private /* synthetic */ GameMicroFragment$LayoutAdapter$PromotionViewPager a;
 
-    private GameMicroFragment$LayoutAdapter$PromotionViewPager a;
-
-    ah(GameMicroFragment$LayoutAdapter$PromotionViewPager PromotionViewPager1) {
-        a = PromotionViewPager1;
+    ah(GameMicroFragment$LayoutAdapter$PromotionViewPager promotionViewPager) {
+        this.a = promotionViewPager;
     }
 
-    public final void destroyItem(ViewGroup ViewGroup1, int int2, Object Object3) {
-        ViewGroup1.removeView((View) a.i.get(int2));
+    @Override
+    public final void destroyItem(ViewGroup viewGroup, int n, Object object) {
+        viewGroup.removeView(this.a.i.get(n));
     }
 
+    @Override
     public final int getCount() {
-        return a.i.size();
+        return this.a.i.size();
     }
 
-    public final Object instantiateItem(ViewGroup ViewGroup1, int int2) {
-        ViewGroup1.addView((View) a.i.get(int2), 0);
-        return a.i.get(int2);
+    @Override
+    public final Object instantiateItem(ViewGroup viewGroup, int n) {
+        viewGroup.addView(this.a.i.get(n), 0);
+        return this.a.i.get(n);
     }
 
-    public final boolean isViewFromObject(View View1, Object Object2) {
-        if (View1 == Object2)
+    @Override
+    public final boolean isViewFromObject(View view, Object object) {
+        if (view == object) {
             return true;
-        else
-            return false;
+        }
+        return false;
     }
 }

@@ -8,87 +8,98 @@ import android.support.v4.view.PagerAdapter;
 import android.view.View;
 import android.view.ViewGroup;
 
-public abstract class ZssqFragmentPagerAdapter extends PagerAdapter {
-
-    private FragmentManager a;     // final access specifier removed
+public abstract class ZssqFragmentPagerAdapter
+        extends PagerAdapter {
+    private final FragmentManager a;
     private FragmentTransaction b = null;
     private Fragment c = null;
-    public ZssqFragmentPagerAdapter(FragmentManager FragmentManager1) {
-        a = FragmentManager1;
+
+    public ZssqFragmentPagerAdapter(FragmentManager fragmentManager) {
+        this.a = fragmentManager;
     }
 
-    public abstract Fragment a(int int1);
+    public abstract Fragment a(int var1);
 
-    protected abstract String b(int int1);
+    protected abstract String b(int var1);
 
-    public void destroyItem(ViewGroup ViewGroup1, int int2, Object Object3) {
-        if (b == null)
-            b = a.beginTransaction();
-        b.detach((Fragment) Object3);
+    @Override
+    public void destroyItem(ViewGroup viewGroup, int n, Object object) {
+        if (this.b == null) {
+            this.b = this.a.beginTransaction();
+        }
+        this.b.detach((Fragment) object);
     }
 
-    public void finishUpdate(ViewGroup ViewGroup1) {
-        if (b != null) {
-            b.commitAllowingStateLoss();
-            b = null;
-            a.executePendingTransactions();
+    @Override
+    public void finishUpdate(ViewGroup viewGroup) {
+        if (this.b != null) {
+            this.b.commitAllowingStateLoss();
+            this.b = null;
+            this.a.executePendingTransactions();
         }
     }
 
-    public Object instantiateItem(ViewGroup ViewGroup1, int int2) {
-        String String3;
-        Object Object4;
-
-        if (b == null)
-            b = a.beginTransaction();
-        String3 = b(int2);
-        Object4 = a.findFragmentByTag(String3);
-        if (Object4 != null)
-            b.attach((Fragment) Object4);
-        else {
-            Object4 = a(int2);
-            if (!((Fragment) Object4).isAdded())
-                b.add(ViewGroup1.getId(), (Fragment) Object4, b(int2));
-            else
-                b.show((Fragment) Object4);
+    /*
+     * Enabled aggressive block sorting
+     */
+    @Override
+    public Object instantiateItem(ViewGroup viewGroup, int n) {
+        String string;
+        Fragment fragment;
+        if (this.b == null) {
+            this.b = this.a.beginTransaction();
         }
-        if (Object4 != c) {
-            ((Fragment) Object4).setMenuVisibility(false);
-            ((Fragment) Object4).setUserVisibleHint(false);
+        if ((fragment = this.a.findFragmentByTag(string = this.b(n))) != null) {
+            this.b.attach(fragment);
+        } else {
+            fragment = this.a(n);
+            if (!fragment.isAdded()) {
+                this.b.add(viewGroup.getId(), fragment, this.b(n));
+            } else {
+                this.b.show(fragment);
+            }
         }
-        return Object4;
+        if (fragment != this.c) {
+            fragment.setMenuVisibility(false);
+            fragment.setUserVisibleHint(false);
+        }
+        return fragment;
     }
 
-    public boolean isViewFromObject(View View1, Object Object2) {
-        if (((Fragment) Object2).getView() == View1)
+    @Override
+    public boolean isViewFromObject(View view, Object object) {
+        if (((Fragment) object).getView() == view) {
             return true;
-        else
-            return false;
+        }
+        return false;
     }
 
-    public void restoreState(Parcelable Parcelable1, ClassLoader ClassLoader2) {
+    @Override
+    public void restoreState(Parcelable parcelable, ClassLoader classLoader) {
     }
 
+    @Override
     public Parcelable saveState() {
         return null;
     }
 
-    public void setPrimaryItem(ViewGroup ViewGroup1, int int2, Object Object3) {
-        Fragment Fragment4 = (Fragment) Object3;
-
-        if (Fragment4 != c) {
-            if (c != null) {
-                c.setMenuVisibility(false);
-                c.setUserVisibleHint(false);
+    @Override
+    public void setPrimaryItem(ViewGroup viewGroup, int n, Object object) {
+        Fragment fragment = (Fragment) object;
+        if (fragment != this.c) {
+            if (this.c != null) {
+                this.c.setMenuVisibility(false);
+                this.c.setUserVisibleHint(false);
             }
-            if (Fragment4 != null) {
-                Fragment4.setMenuVisibility(true);
-                Fragment4.setUserVisibleHint(true);
+            if (fragment != null) {
+                fragment.setMenuVisibility(true);
+                fragment.setUserVisibleHint(true);
             }
-            c = Fragment4;
+            this.c = fragment;
         }
     }
 
-    public void startUpdate(ViewGroup ViewGroup1) {
+    @Override
+    public void startUpdate(ViewGroup viewGroup) {
     }
 }

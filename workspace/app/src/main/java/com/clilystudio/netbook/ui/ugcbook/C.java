@@ -2,15 +2,16 @@ package com.clilystudio.netbook.ui.ugcbook;
 
 import com.clilystudio.netbook.ui.aa;
 
-final class C implements aa {
+final class C
+        implements aa {
+    private /* synthetic */ UGCGuideAddCollectionActivity a;
 
-    private UGCGuideAddCollectionActivity a;
-
-    C(UGCGuideAddCollectionActivity UGCGuideAddCollectionActivity1) {
-        a = UGCGuideAddCollectionActivity1;
+    C(UGCGuideAddCollectionActivity uGCGuideAddCollectionActivity) {
+        this.a = uGCGuideAddCollectionActivity;
     }
 
+    @Override
     public final void a() {
-        UGCGuideAddCollectionActivity.a(a);
+        UGCGuideAddCollectionActivity.a(this.a);
     }
 }

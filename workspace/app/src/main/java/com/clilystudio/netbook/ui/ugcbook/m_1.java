@@ -1,19 +1,28 @@
 package com.clilystudio.netbook.ui.ugcbook;
 
+import android.content.Intent;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.AdapterView$OnItemClickListener;
 
-final class m implements AdapterView$OnItemClickListener {
+import com.clilystudio.netbook.model.UGCBookDetail$UGCBookContainer;
+import com.clilystudio.netbook.ui.BookInfoActivity;
 
-    private UGCDetailActivity a;
+final class m
+        implements AdapterView.OnItemClickListener {
+    private /* synthetic */ UGCDetailActivity a;
 
-    m(UGCDetailActivity UGCDetailActivity1) {
-        a = UGCDetailActivity1;
+    m(UGCDetailActivity uGCDetailActivity) {
+        this.a = uGCDetailActivity;
     }
-// Error: Internal #201: 
-// The following method may not be correct.
 
-    public final void onItemClick(AdapterView AdapterView1, View View2, int int3, long long4) {
+    @Override
+    public final void onItemClick(AdapterView<?> adapterView, View view, int n, long l2) {
+        UGCBookDetail$UGCBookContainer uGCBookDetail$UGCBookContainer;
+        int n2 = n - UGCDetailActivity.g(this.a).getHeaderViewsCount();
+        if (n2 >= 0 && n2 < UGCDetailActivity.h(this.a).getCount() && (uGCBookDetail$UGCBookContainer = (UGCBookDetail$UGCBookContainer) UGCDetailActivity.h(this.a).getItem(n2)) != null && uGCBookDetail$UGCBookContainer.getBook() != null) {
+            Intent intent = new Intent(this.a, BookInfoActivity.class);
+            intent.putExtra("book_id", uGCBookDetail$UGCBookContainer.getBook().get_id());
+            this.a.startActivity(intent);
+        }
     }
 }

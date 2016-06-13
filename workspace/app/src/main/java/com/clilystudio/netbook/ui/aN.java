@@ -1,17 +1,22 @@
 package com.clilystudio.netbook.ui;
 
+import android.annotation.TargetApi;
+
 import com.clilystudio.netbook.event.k;
 
-final class aN implements Runnable {
+final class aN
+        implements Runnable {
+    private /* synthetic */ k a;
+    private /* synthetic */ BookRankListActivity b;
 
-    private k a;
-    private BookRankListActivity b;
-    aN(BookRankListActivity BookRankListActivity1, k k2) {
-        b = BookRankListActivity1;
-        a = k2;
+    aN(BookRankListActivity bookRankListActivity, k k2) {
+        this.b = bookRankListActivity;
+        this.a = k2;
     }
 
+    @TargetApi(value = 11)
+    @Override
     public final void run() {
-        BookRankListActivity.b(b).smoothScrollToPositionFromTop(a.a(), 0);
+        BookRankListActivity.b(this.b).smoothScrollToPositionFromTop(this.a.a(), 0);
     }
 }

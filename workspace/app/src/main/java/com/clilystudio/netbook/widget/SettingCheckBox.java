@@ -4,31 +4,30 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.support.v7.widget.SwitchCompat;
 import android.util.AttributeSet;
-import android.widget.CompoundButton$OnCheckedChangeListener;
 
 import com.clilystudio.netbook.R$styleable;
 
-public class SettingCheckBox extends SwitchCompat {
+public class SettingCheckBox
+        extends SwitchCompat {
+    private final String a;
+    private final boolean b;
 
-    private String a;     // final access specifier removed
-    private boolean b;     // final access specifier removed
-    public SettingCheckBox(Context Context1, AttributeSet AttributeSet2) {
-        super(Context1, AttributeSet2);
-        TypedArray TypedArray3;
-
-        TypedArray3 = Context1.obtainStyledAttributes(AttributeSet2, R$styleable.SettingCheckBox);
-        a = TypedArray3.getString(0);
-        b = TypedArray3.getBoolean(1, false);
-        TypedArray3.recycle();
+    public SettingCheckBox(Context context, AttributeSet attributeSet) {
+        super(context, attributeSet);
+        TypedArray typedArray = context.obtainStyledAttributes(attributeSet, R$styleable.SettingCheckBox);
+        this.a = typedArray.getString(0);
+        this.b = typedArray.getBoolean(1, false);
+        typedArray.recycle();
     }
 
-    static String a(SettingCheckBox SettingCheckBox1) {
-        return SettingCheckBox1.a;
+    static /* synthetic */ String a(SettingCheckBox settingCheckBox) {
+        return settingCheckBox.a;
     }
 
+    @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
-        setChecked(com.clilystudio.netbook.hpay100.a.a.a(getContext(), a, b));
-        setOnCheckedChangeListener((CompoundButton$OnCheckedChangeListener) new az(this));
+        this.setChecked(a.a(this.getContext(), this.a, this.b));
+        this.setOnCheckedChangeListener(new az(this));
     }
 }

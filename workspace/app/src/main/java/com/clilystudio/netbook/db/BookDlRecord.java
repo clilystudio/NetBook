@@ -1,186 +1,211 @@
 package com.clilystudio.netbook.db;
 
+import android.text.TextUtils;
+
 import com.activeandroid.Model;
+import com.activeandroid.annotation.Column;
+import com.activeandroid.annotation.Table;
+import com.activeandroid.query.Delete;
+import com.activeandroid.query.From;
+import com.activeandroid.query.Select;
 
 import java.util.Date;
 import java.util.List;
 
-public class BookDlRecord extends Model {
-
+@Table(name = "BookDlRecord")
+public class BookDlRecord
+        extends Model {
     public static final int END = 4;
     public static final int IDLE = 0;
     public static final int PAUSE = 3;
     public static final int PENDING = 1;
     public static final int PREPARE = 5;
     public static final int RUN = 2;
+    @Column(name = "author")
     private String author;
+    @Column(name = "bookId", unique = 1)
     private String bookId;
+    @Column(name = "bookTitle")
     private String bookTitle;
+    @Column(name = "created")
     private Date created;
-    private int start;
-    private String tocId;
-    private int total;
+    @Column(name = "mode")
     private int mode = -1;
+    @Column(name = "progress")
     private int progress = 0;
+    @Column(name = "start")
+    private int start;
+    @Column(name = "status")
     private int status = 0;
+    @Column(name = "tocId")
+    private String tocId;
+    @Column(name = "total")
+    private int total;
 
-    public static boolean containsTocInfo(BookDlRecord BookDlRecord1) {
-        if (!android.text.TextUtils.isEmpty((CharSequence) BookDlRecord1.getBookTitle()) && !android.text.TextUtils.isEmpty((CharSequence) BookDlRecord1.getBookId()))
+    public static boolean containsTocInfo(BookDlRecord bookDlRecord) {
+        if (!TextUtils.isEmpty(bookDlRecord.getBookTitle()) && !TextUtils.isEmpty(bookDlRecord.getBookId())) {
             return true;
-        else
-            return false;
+        }
+        return false;
     }
 
-    public static void create(String String1, String String2, String String3, String String4, int int5, int int6, int int7, int int8) {
-        BookDlRecord BookDlRecord9 = new BookDlRecord();
-
-        BookDlRecord9.bookId = String1;
-        BookDlRecord9.bookTitle = String2;
-        BookDlRecord9.author = String3;
-        BookDlRecord9.tocId = String4;
-        BookDlRecord9.mode = int5;
-        BookDlRecord9.start = int6;
-        BookDlRecord9.total = int7;
-        BookDlRecord9.status = int8;
-        BookDlRecord9.created = new Date();
-        BookDlRecord9.save();
-    }
-// Error: Internal #201: 
-// The following method may not be correct.
-
-    public static void delete(String String1) {
-    }
-// Error: Internal #201: 
-// The following method may not be correct.
-
-    public static BookDlRecord get(String String1) {
-    }
-// Error: Internal #201: 
-// The following method may not be correct.
-
-    public static BookDlRecord get(String String1, int int2) {
-    }
-// Error: Internal #201: 
-// The following method may not be correct.
-
-    public static List getAll() {
-    }
-// Error: Internal #201: 
-// The following method may not be correct.
-
-    public static List getAllPause() {
-    }
-// Error: Internal #201: 
-// The following method may not be correct.
-
-    public static List getAllPending() {
-    }
-// Error: Internal #201: 
-// The following method may not be correct.
-
-    public static List getAllPrepareAsc() {
-    }
-// Error: Internal #201: 
-// The following method may not be correct.
-
-    public static List getAllRun() {
+    public static void create(String string, String string2, String string3, String string4, int n, int n2, int n3, int n4) {
+        BookDlRecord bookDlRecord = new BookDlRecord();
+        bookDlRecord.bookId = string;
+        bookDlRecord.bookTitle = string2;
+        bookDlRecord.author = string3;
+        bookDlRecord.tocId = string4;
+        bookDlRecord.mode = n;
+        bookDlRecord.start = n2;
+        bookDlRecord.total = n3;
+        bookDlRecord.status = n4;
+        bookDlRecord.created = new Date();
+        bookDlRecord.save();
     }
 
-    public static void reset(BookDlRecord BookDlRecord1, int int2, int int3) {
-        BookDlRecord1.start = int2;
-        BookDlRecord1.total = int3;
-        BookDlRecord1.status = 1;
-        BookDlRecord1.created = new Date();
-        BookDlRecord1.save();
+    public static void delete(String string) {
+        new Delete().from(BookDlRecord.class).where("bookId = ?", string).execute();
     }
 
-    public static void update(BookDlRecord BookDlRecord1, String String2, int int3, int int4, int int5, int int6) {
-        BookDlRecord1.tocId = String2;
-        BookDlRecord1.mode = int3;
-        BookDlRecord1.start = int4;
-        BookDlRecord1.total = int5;
-        BookDlRecord1.status = int6;
-        BookDlRecord1.created = new Date();
-        BookDlRecord1.save();
+    public static BookDlRecord get(String string) {
+        if (string == null) {
+            return null;
+        }
+        return (BookDlRecord) new Select().from(BookDlRecord.class).where("bookId = ?", string).executeSingle();
+    }
+
+    public static BookDlRecord get(String string, int n) {
+        if (string == null) {
+            return null;
+        }
+        From from = new Select().from(BookDlRecord.class);
+        Object[] arrobject = new Object[]{string, n};
+        return (BookDlRecord) from.where("bookId = ? AND mode = ?", arrobject).executeSingle();
+    }
+
+    public static List<BookDlRecord> getAll() {
+        return new Select().from(BookDlRecord.class).orderBy("created ASC").execute();
+    }
+
+    public static List<BookDlRecord> getAllPause() {
+        From from = new Select().from(BookDlRecord.class);
+        Object[] arrobject = new Object[]{3};
+        return from.where("status = ? ", arrobject).execute();
+    }
+
+    public static List<BookDlRecord> getAllPending() {
+        From from = new Select().from(BookDlRecord.class);
+        Object[] arrobject = new Object[]{1};
+        return from.where("status = ? ", arrobject).orderBy("created ASC").execute();
+    }
+
+    public static List<BookDlRecord> getAllPrepareAsc() {
+        From from = new Select().from(BookDlRecord.class);
+        Object[] arrobject = new Object[]{5};
+        return from.where("status = ? ", arrobject).orderBy("created ASC").execute();
+    }
+
+    public static List<BookDlRecord> getAllRun() {
+        From from = new Select().from(BookDlRecord.class);
+        Object[] arrobject = new Object[]{2};
+        return from.where("status = ? ", arrobject).execute();
+    }
+
+    public static void reset(BookDlRecord bookDlRecord, int n, int n2) {
+        bookDlRecord.start = n;
+        bookDlRecord.total = n2;
+        bookDlRecord.status = 1;
+        bookDlRecord.created = new Date();
+        bookDlRecord.save();
+    }
+
+    public static void update(BookDlRecord bookDlRecord, String string, int n, int n2, int n3, int n4) {
+        bookDlRecord.tocId = string;
+        bookDlRecord.mode = n;
+        bookDlRecord.start = n2;
+        bookDlRecord.total = n3;
+        bookDlRecord.status = n4;
+        bookDlRecord.created = new Date();
+        bookDlRecord.save();
     }
 
     public String getAuthor() {
-        return author;
+        return this.author;
     }
 
-    public void setAuthor(String String1) {
-        author = String1;
+    public void setAuthor(String string) {
+        this.author = string;
     }
 
     public String getBookId() {
-        return bookId;
+        return this.bookId;
     }
 
-    public void setBookId(String String1) {
-        bookId = String1;
+    public void setBookId(String string) {
+        this.bookId = string;
     }
 
     public String getBookTitle() {
-        return bookTitle;
+        return this.bookTitle;
     }
 
-    public void setBookTitle(String String1) {
-        bookTitle = String1;
+    public void setBookTitle(String string) {
+        this.bookTitle = string;
     }
 
     public Date getCreated() {
-        return created;
+        return this.created;
     }
 
-    public void setCreated(Date Date1) {
-        created = Date1;
+    public void setCreated(Date date) {
+        this.created = date;
     }
 
     public int getMode() {
-        return mode;
+        return this.mode;
     }
 
-    public void setMode(int int1) {
-        mode = int1;
+    public void setMode(int n) {
+        this.mode = n;
     }
 
     public int getProgress() {
-        return progress;
+        return this.progress;
     }
 
-    public void setProgress(int int1) {
-        progress = int1;
+    public void setProgress(int n) {
+        this.progress = n;
     }
 
     public int getStart() {
-        return start;
+        return this.start;
     }
 
-    public void setStart(int int1) {
-        start = int1;
+    public void setStart(int n) {
+        this.start = n;
     }
 
     public int getStatus() {
-        return status;
+        return this.status;
     }
 
-    public void setStatus(int int1) {
-        status = int1;
+    public void setStatus(int n) {
+        this.status = n;
     }
 
     public String getTocId() {
-        return tocId;
+        return this.tocId;
     }
 
-    public void setTocId(String String1) {
-        tocId = String1;
+    public void setTocId(String string) {
+        this.tocId = string;
     }
 
     public int getTotal() {
-        return total;
+        return this.total;
     }
 
-    public void setTotal(int int1) {
-        total = int1;
+    public void setTotal(int n) {
+        this.total = n;
     }
 }

@@ -4,33 +4,35 @@ import com.clilystudio.netbook.api.ApiService;
 import com.clilystudio.netbook.model.GameGroupRoot;
 import com.clilystudio.netbook.model.Root;
 
-final class S extends com.clilystudio.netbook.util.S {
+final class S
+        extends com.clilystudio.netbook.util.S<GameGroupRoot> {
+    private /* synthetic */ GameListActivity a;
 
-    private GameListActivity a;
-
-    S(GameListActivity GameListActivity1, byte byte2) {
-        this(GameListActivity1);
+    private S(GameListActivity gameListActivity) {
+        this.a = gameListActivity;
     }
 
-    private S(GameListActivity GameListActivity1) {
-        a = GameListActivity1;
+    /* synthetic */ S(GameListActivity gameListActivity, byte by) {
+        this(gameListActivity);
     }
 
-    protected final Root a(ApiService ApiService1, String[] String_1darray2) {
-        return (Root) ApiService1.Z(a.getIntent().getStringExtra("game_list_id"));
+    @Override
+    protected final /* synthetic */ Root a(ApiService apiService, String[] arrstring) {
+        return apiService.Z(this.a.getIntent().getStringExtra("game_list_id"));
     }
 
-    protected final void a(Root Root1) {
-        super.a((Root) (GameGroupRoot) Root1);
-        a.h();
+    @Override
+    protected final /* synthetic */ void a(Root root) {
+        super.a((GameGroupRoot) root);
+        this.a.h();
     }
 
-    protected final void b(Root Root1) {
-        GameGroupRoot GameGroupRoot2 = (GameGroupRoot) Root1;
-
-        if (GameGroupRoot2.getGameGroup() != null) {
-            a.f();
-            GameListActivity.a(a, GameGroupRoot2.getGameGroup().getGames());
+    @Override
+    protected final /* synthetic */ void b(Root root) {
+        GameGroupRoot gameGroupRoot = (GameGroupRoot) root;
+        if (gameGroupRoot.getGameGroup() != null) {
+            this.a.f();
+            GameListActivity.a(this.a, gameGroupRoot.getGameGroup().getGames());
         }
     }
 }

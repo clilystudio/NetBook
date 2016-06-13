@@ -1,26 +1,29 @@
 package com.clilystudio.netbook.reader.random;
 
-final class j implements com.umeng.update.a {
+final class j
+        implements a {
+    private /* synthetic */ ReaderRandomActivity a;
 
-    private ReaderRandomActivity a;
-
-    j(ReaderRandomActivity ReaderRandomActivity1) {
-        a = ReaderRandomActivity1;
+    j(ReaderRandomActivity readerRandomActivity) {
+        this.a = readerRandomActivity;
     }
 
-    public final void a(int int1) {
-        switch (int1) {
-            default:
+    @Override
+    public final void a(int n2) {
+        switch (n2) {
+            default: {
                 return;
-            case 1:
-                ReaderRandomActivity.q(a);
+            }
+            case 1: {
+                ReaderRandomActivity.q(this.a);
                 return;
-            case 2:
-                ReaderRandomActivity.r(a);
+            }
+            case 2: {
+                ReaderRandomActivity.r(this.a);
                 return;
+            }
             case 0:
-                ReaderRandomActivity.s(a);
-                return;
         }
+        ReaderRandomActivity.s(this.a);
     }
 }

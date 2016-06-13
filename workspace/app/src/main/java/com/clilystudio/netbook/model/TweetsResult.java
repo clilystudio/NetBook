@@ -1,41 +1,40 @@
 package com.clilystudio.netbook.model;
 
 public class TweetsResult {
-
     private String code;
     private boolean ok;
     private Tweet[] tweets;
     private User user;
 
     public String getCode() {
-        return code;
+        return this.code;
     }
 
-    public void setCode(String String1) {
-        code = String1;
+    public void setCode(String string) {
+        this.code = string;
     }
 
     public Tweet[] getTweets() {
-        return tweets;
+        return this.tweets;
     }
 
-    public void setTweets(Tweet[] Tweet_1darray1) {
-        tweets = Tweet_1darray1;
+    public void setTweets(Tweet[] arrtweet) {
+        this.tweets = arrtweet;
     }
 
     public User getUser() {
-        return user;
+        return this.user;
     }
 
-    public void setUser(User User1) {
-        user = User1;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public boolean isOk() {
-        return ok;
+        return this.ok;
     }
 
-    public void setOk(boolean boolean1) {
-        ok = boolean1;
+    public void setOk(boolean bl) {
+        this.ok = bl;
     }
 }

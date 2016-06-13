@@ -4,91 +4,80 @@ import android.support.design.widget.am;
 
 import com.activeandroid.ActiveAndroid;
 import com.activeandroid.Model;
+import com.activeandroid.annotation.Column;
+import com.activeandroid.annotation.Table;
+import com.activeandroid.query.Delete;
+import com.activeandroid.query.Select;
 import com.clilystudio.netbook.model.Follower;
 import com.clilystudio.netbook.model.User;
 
 import java.util.List;
 
-public class FollowRecord extends Model {
-
+@Table(name = "FollowRecord")
+public class FollowRecord
+        extends Model {
+    @Column(name = "followedId")
     private String followedId;
+    @Column(name = "userId")
     private String userId;
-// Error: Internal #201: 
-// The following method may not be correct.
 
-    public static void cancelFollow(String String1, String String2) {
-    }
-// Error: Internal #201: 
-// The following method may not be correct.
-
-    public static void clear(String String1) {
-    }
-// Error: Internal #201: 
-// The following method may not be correct.
-
-    public static List findAll(String String1) {
-    }
-// Error: Internal #201: 
-// The following method may not be correct.
-
-    public static boolean isFollowed(String String1, String String2) {
+    public static void cancelFollow(String string, String string2) {
+        new Delete().from(FollowRecord.class).where(" userId = ? and followedId = ? ", string, string2).execute();
     }
 
-    public static void save2DB(String String1, String String2) {
-        FollowRecord FollowRecord3 = new FollowRecord();
-
-        FollowRecord3.setUserId(String1);
-        FollowRecord3.setFollowedId(String2);
-        FollowRecord3.save();
+    public static void clear(String string) {
+        new Delete().from(FollowRecord.class).where(" userId = ? ", string).execute();
     }
 
-    public static void save2DB(Follower[] Follower_1darray1) {
-        User User2 = am.e().getUser();
-        int int4;
-        int int5;
+    public static List<FollowRecord> findAll(String string) {
+        return new Select().distinct().from(FollowRecord.class).where(" userId = ? ").execute();
+    }
 
+    public static boolean isFollowed(String string, String string2) {
+        return new Select().from(FollowRecord.class).where(" userId = ? and followedId = ?", string, string2).exists();
+    }
+
+    public static void save2DB(String string, String string2) {
+        FollowRecord followRecord = new FollowRecord();
+        followRecord.setUserId(string);
+        followRecord.setFollowedId(string2);
+        followRecord.save();
+    }
+
+    public static void save2DB(Follower[] arrfollower) {
+        User user = am.e().getUser();
         ActiveAndroid.beginTransaction();
-        try {
-            int4 = Follower_1darray1.length;
-        } finally {
-            ActiveAndroid.endTransaction();
-            throw Object3;
-        }
-        for (int5 = 0; int5 < int4; ++int5) {
-            try {
-                Follower Follower6 = Follower_1darray1[int5];
-                FollowRecord FollowRecord7 = new FollowRecord();
-
-                FollowRecord7.setUserId(User2.getId());
-                FollowRecord7.setFollowedId(Follower6.get_id());
-                FollowRecord7.save();
-            } finally {
-                ActiveAndroid.endTransaction();
-                throw Object3;
-            }
+        int n = arrfollower.length;
+        for (int i = 0; i < n; ++i) {
+            Follower follower = arrfollower[i];
+            FollowRecord followRecord = new FollowRecord();
+            followRecord.setUserId(user.getId());
+            followRecord.setFollowedId(follower.get_id());
+            followRecord.save();
         }
         try {
             ActiveAndroid.setTransactionSuccessful();
+            return;
+        } catch (Throwable var2_6) {
+            throw var2_6;
         } finally {
             ActiveAndroid.endTransaction();
-            throw Object3;
         }
-        ActiveAndroid.endTransaction();
     }
 
     public String getFollowedId() {
-        return followedId;
+        return this.followedId;
     }
 
-    public void setFollowedId(String String1) {
-        followedId = String1;
+    public void setFollowedId(String string) {
+        this.followedId = string;
     }
 
     public String getUserId() {
-        return userId;
+        return this.userId;
     }
 
-    public void setUserId(String String1) {
-        userId = String1;
+    public void setUserId(String string) {
+        this.userId = string;
     }
 }

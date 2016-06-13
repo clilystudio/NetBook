@@ -1,40 +1,47 @@
 package com.clilystudio.netbook.model;
 
-public class CommonReplyeeInfo implements ReplyeeInfo {
-
+public class CommonReplyeeInfo
+        implements ReplyeeInfo {
     private String _id;
     private Author author;
     private int floor;
-    public CommonReplyeeInfo(String String1, Author Author2, int int3) {
-        _id = String1;
-        author = Author2;
-        floor = int3;
-    }
 
     public CommonReplyeeInfo() {
     }
 
+    public CommonReplyeeInfo(String string, Author author, int n) {
+        this._id = string;
+        this.author = author;
+        this.floor = n;
+    }
+
+    @Override
     public Author getAuthor() {
-        return author;
+        return this.author;
     }
 
-    public void setAuthor(Author Author1) {
-        author = Author1;
+    @Override
+    public void setAuthor(Author author) {
+        this.author = author;
     }
 
+    @Override
     public String getCommentId() {
-        return _id;
+        return this._id;
     }
 
-    public void setCommentId(String String1) {
-        _id = String1;
+    @Override
+    public void setCommentId(String string) {
+        this._id = string;
     }
 
+    @Override
     public int getFloor() {
-        return floor;
+        return this.floor;
     }
 
-    public void setFloor(int int1) {
-        floor = int1;
+    @Override
+    public void setFloor(int n) {
+        this.floor = n;
     }
 }

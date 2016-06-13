@@ -6,55 +6,55 @@ import android.text.SpannableString;
 import com.clilystudio.netbook.b.c;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 public class be {
-
     protected Context a;
     protected SpannableString b;
-    public be(Context Context1, String String2) {
-        a = Context1;
-        b = new SpannableString((CharSequence) String2);
-        a();
+
+    public be(Context context, String string) {
+        this.a = context;
+        this.b = new SpannableString(string);
+        this.a();
     }
 
-    private void a(List List1) {
-        Iterator Iterator2 = List1.iterator();
-
-        while (Iterator2.hasNext()) {
-            bf bf3 = (bf) Iterator2.next();
-
-            b.setSpan(new c(a, bf3), bf3.a(), 1 + bf3.b(), 18);
+    private void a(List<bf> list) {
+        for (bf bf2 : list) {
+            this.b.setSpan(new c(this.a, bf2), bf2.a(), 1 + bf2.b(), 18);
         }
     }
 
+    /*
+     * Enabled aggressive block sorting
+     */
     protected void a() {
-        Object Object1 = new ArrayList();
-        int int2 = 0;
-        int int3 = 0;
-        int int4 = 0;
-
-        while (int2 < b.length()) {
-            char char5 = b.charAt(int2);
-
-            if (int4 == 0) {
-                if (char5 == 12298) {
-                    int3 = int2;
-                    int4 = 12298;
-                }
-            } else if (char5 == 12299) {
-                if (int2 - int3 < 20)
-                    ((List) Object1).add(new bf(this, b.toString().substring(int3 + 1, int2), int3, int2));
-                int3 = 0;
-                int4 = 0;
+        ArrayList<bf> arrayList = new ArrayList<bf>();
+        int n = 0;
+        int n2 = 0;
+        int n3 = 0;
+        do {
+            if (n >= this.b.length()) {
+                this.a(arrayList);
+                return;
             }
-            ++int2;
-        }
-        a((List) Object1);
+            char c2 = this.b.charAt(n);
+            if (n3 == 0) {
+                if (c2 == '\u300a') {
+                    n2 = n;
+                    n3 = 12298;
+                }
+            } else if (c2 == '\u300b') {
+                if (n - n2 < 20) {
+                    arrayList.add(new bf(this, this.b.toString().substring(n2 + 1, n), n2, n));
+                }
+                n2 = 0;
+                n3 = 0;
+            }
+            ++n;
+        } while (true);
     }
 
     public final SpannableString b() {
-        return b;
+        return this.b;
     }
 }

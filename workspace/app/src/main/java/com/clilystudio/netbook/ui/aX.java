@@ -1,56 +1,74 @@
 package com.clilystudio.netbook.ui;
 
+import com.clilystudio.netbook.a.e;
+import com.clilystudio.netbook.api.b;
+import com.clilystudio.netbook.model.BookSummary;
 import com.clilystudio.netbook.model.BookTagRoot;
 
 import java.io.IOException;
-import java.util.Collection;
+import java.util.Arrays;
 import java.util.List;
 
-final class aX extends com.clilystudio.netbook.a.e {
+final class aX
+        extends e<String, Void, List<BookSummary>> {
+    private /* synthetic */ BookTagListActivity a;
 
-    private BookTagListActivity a;
-
-    aX(BookTagListActivity BookTagListActivity1, byte byte2) {
-        this(BookTagListActivity1);
+    private aX(BookTagListActivity bookTagListActivity) {
+        this.a = bookTagListActivity;
     }
 
-    private aX(BookTagListActivity BookTagListActivity1) {
-        a = BookTagListActivity1;
+    /* synthetic */ aX(BookTagListActivity bookTagListActivity, byte by) {
+        this(bookTagListActivity);
     }
 
-    private transient List a() {
+    /*
+     * Enabled force condition propagation
+     * Lifted jumps to return sites
+     */
+    private /* varargs */ List<BookSummary> a() {
+        BookTagRoot bookTagRoot = b.b().c(BookTagListActivity.b(this.a), 0, 50);
+        if (bookTagRoot == null) return null;
         try {
-            BookTagRoot BookTagRoot2 = com.clilystudio.netbook.api.b.b().c(BookTagListActivity.b(a), 0, 50);
-        } catch (IOException IOException1) {
-            IOException1.printStackTrace();
+            if (bookTagRoot.getBooks() == null) return null;
+            return Arrays.asList(bookTagRoot.getBooks());
+        } catch (IOException var1_3) {
+            var1_3.printStackTrace();
         }
         return null;
     }
 
-    protected final Object doInBackground(Object[] Object_1darray1) {
-        return a();
+    /*
+     * Exception decompiling
+     */
+    @Override
+    protected final /* synthetic */ Object doInBackground(Object[] var1_1) {
+        // This method has failed to decompile.  When submitting a bug report, please provide this stack trace, and (if you hold appropriate legal rights) the relevant class file.
+        // java.lang.ArrayIndexOutOfBoundsException
+        throw new IllegalStateException("Decompilation failed");
     }
 
-    protected final void onPostExecute(Object Object1) {
-        Object Object2 = (List) Object1;
-
-        super.onPostExecute(Object2);
-        BookTagListActivity.c(a).setVisibility(8);
-        if (Object2 != null) {
-            int int3 = ((List) Object2).size();
-
-            if (int3 > 0) {
-                a.f();
-                BookTagListActivity.a(a).clear();
-                BookTagListActivity.a(a).addAll((Collection) Object2);
-                BookTagListActivity.d(a).a((Collection) BookTagListActivity.a(a));
-                if (int3 < 50)
-                    BookTagListActivity.e(a).setOnLastItemListener(null);
-                else
-                    BookTagListActivity.e(a).setOnLastItemListener(BookTagListActivity.f(a));
-            } else
-                a.g();
-        } else
-            a.h();
+    @Override
+    protected final /* synthetic */ void onPostExecute(Object object) {
+        List list = (List) object;
+        super.onPostExecute(list);
+        BookTagListActivity.c(this.a).setVisibility(8);
+        if (list != null) {
+            int n = list.size();
+            if (n > 0) {
+                this.a.f();
+                BookTagListActivity.a(this.a).clear();
+                BookTagListActivity.a(this.a).addAll(list);
+                BookTagListActivity.d(this.a).a(BookTagListActivity.a(this.a));
+                if (n < 50) {
+                    BookTagListActivity.e(this.a).setOnLastItemListener(null);
+                    return;
+                }
+                BookTagListActivity.e(this.a).setOnLastItemListener(BookTagListActivity.f(this.a));
+                return;
+            }
+            this.a.g();
+            return;
+        }
+        this.a.h();
     }
 }

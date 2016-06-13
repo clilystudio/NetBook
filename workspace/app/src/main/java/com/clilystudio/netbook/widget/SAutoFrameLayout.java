@@ -5,21 +5,22 @@ import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.widget.FrameLayout;
 
-public class SAutoFrameLayout extends FrameLayout {
-
-    public SAutoFrameLayout(Context Context1, AttributeSet AttributeSet2, int int3) {
-        super(Context1, AttributeSet2, int3);
+public class SAutoFrameLayout
+        extends FrameLayout {
+    public SAutoFrameLayout(Context context) {
+        super(context);
     }
 
-    public SAutoFrameLayout(Context Context1) {
-        super(Context1);
+    public SAutoFrameLayout(Context context, AttributeSet attributeSet) {
+        super(context, attributeSet);
     }
 
-    public SAutoFrameLayout(Context Context1, AttributeSet AttributeSet2) {
-        super(Context1, AttributeSet2);
+    public SAutoFrameLayout(Context context, AttributeSet attributeSet, int n) {
+        super(context, attributeSet, n);
     }
 
-    public void setBackgroundDrawable(Drawable Drawable1) {
-        super.setBackgroundDrawable((Drawable) new au(Drawable1));
+    @Override
+    public void setBackgroundDrawable(Drawable drawable) {
+        super.setBackgroundDrawable(new au(drawable));
     }
 }

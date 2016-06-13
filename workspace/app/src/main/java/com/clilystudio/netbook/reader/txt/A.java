@@ -3,18 +3,18 @@ package com.clilystudio.netbook.reader.txt;
 import com.clilystudio.netbook.reader.e;
 import com.clilystudio.netbook.reader.n;
 
-final class A implements e {
+final class A
+        implements e<n> {
+    final /* synthetic */ ReaderTxtActivity a;
 
-    ReaderTxtActivity a;     // final access specifier removed
-
-    A(ReaderTxtActivity ReaderTxtActivity1) {
-        a = ReaderTxtActivity1;
+    A(ReaderTxtActivity readerTxtActivity) {
+        this.a = readerTxtActivity;
     }
 
-    public final void a(Object Object1) {
-        n n2 = (n) Object1;
-
-        ReaderTxtActivity.d(a)[1].a(n2);
+    @Override
+    public final /* synthetic */ void a(Object object) {
+        n n2 = (n) object;
+        ReaderTxtActivity.d(this.a)[1].a(n2);
         n2.b((e) new B(this));
     }
 }

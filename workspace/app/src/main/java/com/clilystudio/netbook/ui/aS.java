@@ -6,41 +6,41 @@ import android.support.v4.app.FragmentTransaction;
 
 import com.clilystudio.netbook.ui.home.ZssqFragmentPagerAdapter;
 
-final class aS extends ZssqFragmentPagerAdapter {
-
+final class aS
+        extends ZssqFragmentPagerAdapter {
     private String[] a;
-    private BookRankMainActivity b;
-    public aS(BookRankMainActivity BookRankMainActivity1, FragmentManager FragmentManager2) {
-        super(FragmentManager2);
-        int int5;
-        FragmentTransaction FragmentTransaction4;
-        int int3;
+    private /* synthetic */ BookRankMainActivity b;
 
-        b = BookRankMainActivity1;
-        a = new String[]{"weekly", "monthly", "all"};
-        for (int3 = 0; int3 < 3; ++int3)
-            BookRankMainActivity.b(BookRankMainActivity1).add(int3, BookRankMainActivity.a(BookRankMainActivity1, BookRankMainActivity.a(BookRankMainActivity1)[int3], a[int3], a[int3]));
-        FragmentTransaction4 = FragmentManager2.beginTransaction();
-        for (int5 = 0; int5 < 3; ++int5) {
-            Fragment Fragment8 = (Fragment) BookRankMainActivity.b(BookRankMainActivity1).get(int5);
-
-            if (!Fragment8.isAdded())
-                FragmentTransaction4.add(BookRankMainActivity.c(BookRankMainActivity1).getId(), Fragment8, a[int5]);
+    public aS(BookRankMainActivity bookRankMainActivity, FragmentManager fragmentManager) {
+        this.b = bookRankMainActivity;
+        super(fragmentManager);
+        this.a = new String[]{"weekly", "monthly", "all"};
+        for (int i = 0; i < 3; ++i) {
+            BookRankMainActivity.b(bookRankMainActivity).add(i, BookRankMainActivity.a(bookRankMainActivity, BookRankMainActivity.a(bookRankMainActivity)[i], this.a[i], this.a[i]));
         }
-        if (!FragmentTransaction4.isEmpty()) {
-            FragmentTransaction4.commit();
-            FragmentManager2.executePendingTransactions();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        for (int j = 0; j < 3; ++j) {
+            Fragment fragment = (Fragment) BookRankMainActivity.b(bookRankMainActivity).get(j);
+            if (fragment.isAdded()) continue;
+            fragmentTransaction.add(BookRankMainActivity.c(bookRankMainActivity).getId(), fragment, this.a[j]);
+        }
+        if (!fragmentTransaction.isEmpty()) {
+            fragmentTransaction.commit();
+            fragmentManager.executePendingTransactions();
         }
     }
 
-    public final Fragment a(int int1) {
-        return (Fragment) BookRankMainActivity.b(b).get(int1);
+    @Override
+    public final Fragment a(int n) {
+        return (Fragment) BookRankMainActivity.b(this.b).get(n);
     }
 
-    protected final String b(int int1) {
-        return a[int1];
+    @Override
+    protected final String b(int n) {
+        return this.a[n];
     }
 
+    @Override
     public final int getCount() {
         return 3;
     }

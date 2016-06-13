@@ -1,15 +1,16 @@
 package com.clilystudio.netbook.widget;
 
-final class t implements D {
+final class t
+        implements D {
+    private /* synthetic */ CoverLoadingLayer a;
 
-    private CoverLoadingLayer a;
-
-    t(CoverLoadingLayer CoverLoadingLayer1) {
-        a = CoverLoadingLayer1;
+    t(CoverLoadingLayer coverLoadingLayer) {
+        this.a = coverLoadingLayer;
     }
 
-    public final void a(w w1) {
-        CoverLoadingLayer.b(a, CoverLoadingLayer.d(a) * ((Float) w1.f()).floatValue());
-        a.invalidate();
+    @Override
+    public final void a(w w2) {
+        CoverLoadingLayer.b(this.a, CoverLoadingLayer.d(this.a) * ((Float) w2.f()).floatValue());
+        this.a.invalidate();
     }
 }

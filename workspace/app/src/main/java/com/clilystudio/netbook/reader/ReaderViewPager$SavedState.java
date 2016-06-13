@@ -2,37 +2,38 @@ package com.clilystudio.netbook.reader;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.os.Parcelable$Creator;
 import android.support.v4.os.ParcelableCompat;
-import android.support.v4.os.ParcelableCompatCreatorCallbacks;
-import android.view.View$BaseSavedState;
+import android.view.View;
 
-public class ReaderViewPager$SavedState extends View$BaseSavedState {
-
-    public static final Parcelable$Creator CREATOR = ParcelableCompat.newCreator((ParcelableCompatCreatorCallbacks) new cy());
+public class ReaderViewPager$SavedState
+        extends View.BaseSavedState {
+    public static final Parcelable.Creator<ReaderViewPager$SavedState> CREATOR = ParcelableCompat.newCreator(new cy());
     int a;
     Parcelable b;
     ClassLoader c;
-    public ReaderViewPager$SavedState(Parcelable Parcelable1) {
-        super(Parcelable1);
+
+    ReaderViewPager$SavedState(Parcel parcel, ClassLoader classLoader) {
+        super(parcel);
+        if (classLoader == null) {
+            classLoader = this.getClass().getClassLoader();
+        }
+        this.a = parcel.readInt();
+        this.b = parcel.readParcelable(classLoader);
+        this.c = classLoader;
     }
 
-    ReaderViewPager$SavedState(Parcel Parcel1, ClassLoader ClassLoader2) {
-        super(Parcel1);
-        if (ClassLoader2 == null)
-            ClassLoader2 = getClass().getClassLoader();
-        a = Parcel1.readInt();
-        b = Parcel1.readParcelable(ClassLoader2);
-        c = ClassLoader2;
+    public ReaderViewPager$SavedState(Parcelable parcelable) {
+        super(parcelable);
     }
 
     public String toString() {
-        return new StringBuilder("FragmentPager.SavedState{").append(Integer.toHexString(System.identityHashCode(this))).append(" position=").append(a).append("}").toString();
+        return "FragmentPager.SavedState{" + Integer.toHexString(System.identityHashCode(this)) + " position=" + this.a + "}";
     }
 
-    public void writeToParcel(Parcel Parcel1, int int2) {
-        super.writeToParcel(Parcel1, int2);
-        Parcel1.writeInt(a);
-        Parcel1.writeParcelable(b, int2);
+    @Override
+    public void writeToParcel(Parcel parcel, int n) {
+        super.writeToParcel(parcel, n);
+        parcel.writeInt(this.a);
+        parcel.writeParcelable(this.b, n);
     }
 }

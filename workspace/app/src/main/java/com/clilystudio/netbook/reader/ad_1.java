@@ -1,8 +1,7 @@
 package com.clilystudio.netbook.reader;
 
 public interface ad {
+    public void a();
 
-    void a();
-
-    void b();
+    public void b();
 }

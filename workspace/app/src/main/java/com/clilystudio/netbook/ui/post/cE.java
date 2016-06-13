@@ -1,46 +1,47 @@
 package com.clilystudio.netbook.ui.post;
 
 import com.clilystudio.netbook.a.e;
+import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.model.ReviewResult;
 
-final class cE extends e {
+final class cE
+        extends e<String, Void, ReviewResult> {
+    private /* synthetic */ ReviewActivity a;
 
-    private ReviewActivity a;
-
-    cE(ReviewActivity ReviewActivity1, byte byte2) {
-        this(ReviewActivity1);
+    private cE(ReviewActivity reviewActivity) {
+        this.a = reviewActivity;
     }
 
-    private cE(ReviewActivity ReviewActivity1) {
-        a = ReviewActivity1;
+    /* synthetic */ cE(ReviewActivity reviewActivity, byte by) {
+        this(reviewActivity);
     }
 
-    private transient ReviewResult a(String[] String_1darray1) {
-        ReviewResult ReviewResult3;
-
+    private /* varargs */ ReviewResult a(String... arrstring) {
         try {
-            ReviewResult3 = com.clilystudio.netbook.api.b.b().D(String_1darray1[0]);
-        } catch (Exception Exception2) {
-            Exception2.printStackTrace();
+            ReviewResult reviewResult = b.b().D(arrstring[0]);
+            return reviewResult;
+        } catch (Exception var2_3) {
+            var2_3.printStackTrace();
             return null;
         }
-        return ReviewResult3;
     }
 
-    protected final Object doInBackground(Object[] Object_1darray1) {
-        return a((String[]) Object_1darray1);
+    @Override
+    protected final /* synthetic */ Object doInBackground(Object[] arrobject) {
+        return this.a((String[]) arrobject);
     }
 
-    protected final void onPostExecute(Object Object1) {
-        Object Object2 = (ReviewResult) Object1;
-
-        super.onPostExecute(Object2);
-        if (Object2 != null && ((ReviewResult) Object2).getReview() != null) {
-            a.f();
-            ReviewActivity.a(a, ((ReviewResult) Object2).getReview());
-            ReviewActivity.b(a, ReviewActivity.h(a));
-            ReviewActivity.b(a);
-        } else
-            a.h();
+    @Override
+    protected final /* synthetic */ void onPostExecute(Object object) {
+        ReviewResult reviewResult = (ReviewResult) object;
+        super.onPostExecute(reviewResult);
+        if (reviewResult != null && reviewResult.getReview() != null) {
+            this.a.f();
+            ReviewActivity.a(this.a, reviewResult.getReview());
+            ReviewActivity.b(this.a, ReviewActivity.h(this.a));
+            ReviewActivity.b(this.a);
+            return;
+        }
+        this.a.h();
     }
 }

@@ -1,23 +1,22 @@
 package com.clilystudio.netbook.model.mixtoc;
 
 public class EsChapterRoot {
-
     private String content;
     private boolean success;
 
     public String getContent() {
-        return content;
+        return this.content;
     }
 
-    public void setContent(String String1) {
-        content = String1;
+    public void setContent(String string) {
+        this.content = string;
     }
 
     public boolean isSuccess() {
-        return success;
+        return this.success;
     }
 
-    public void setSuccess(boolean boolean1) {
-        success = boolean1;
+    public void setSuccess(boolean bl) {
+        this.success = bl;
     }
 }

@@ -2,20 +2,21 @@ package com.clilystudio.netbook.widget;
 
 import android.content.Context;
 import android.view.View;
-import android.view.View$OnClickListener;
 
-final class Z implements View$OnClickListener {
+final class Z
+        implements View.OnClickListener {
+    private /* synthetic */ Context a;
+    private /* synthetic */ String b;
+    private /* synthetic */ HomeFindItem c;
 
-    private Context a;
-    private String b;
-    private HomeFindItem c;
-    Z(HomeFindItem HomeFindItem1, Context Context2, String String3) {
-        c = HomeFindItem1;
-        a = Context2;
-        b = String3;
+    Z(HomeFindItem homeFindItem, Context context, String string) {
+        this.c = homeFindItem;
+        this.a = context;
+        this.b = string;
     }
 
-    public final void onClick(View View1) {
-        c.a(a, b);
+    @Override
+    public final void onClick(View view) {
+        this.c.a(this.a, this.b);
     }
 }

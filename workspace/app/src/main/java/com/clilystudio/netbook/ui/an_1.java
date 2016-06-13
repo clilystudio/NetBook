@@ -1,19 +1,21 @@
 package com.clilystudio.netbook.ui;
 
 import android.os.Handler;
+import android.widget.ListView;
 
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 
-final class an implements k {
+final class an
+        implements k<ListView> {
+    final /* synthetic */ BookCategoryFragment a;
 
-    BookCategoryFragment a;     // final access specifier removed
-
-    an(BookCategoryFragment BookCategoryFragment1) {
-        a = BookCategoryFragment1;
+    an(BookCategoryFragment bookCategoryFragment) {
+        this.a = bookCategoryFragment;
     }
 
-    public final void a(PullToRefreshBase PullToRefreshBase1) {
-        BookCategoryFragment.c(a).setVisibility(8);
-        new Handler().postDelayed((Runnable) new ao(this), 1000L);
+    @Override
+    public final void a(PullToRefreshBase<ListView> pullToRefreshBase) {
+        BookCategoryFragment.c(this.a).setVisibility(8);
+        new Handler().postDelayed(new ao(this), 1000);
     }
 }

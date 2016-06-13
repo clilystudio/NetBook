@@ -1,6 +1,7 @@
 package com.clilystudio.netbook.ui.ugcbook;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
@@ -8,99 +9,108 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.AdapterView$OnItemClickListener;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.clilystudio.netbook.adapter.X;
 import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.model.UGCBookListRoot;
+import com.clilystudio.netbook.model.UGCBookListRoot$UGCBook;
 import com.clilystudio.netbook.util.W;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class AbsUGCListFragment extends Fragment implements AdapterView$OnItemClickListener {
-
+public abstract class AbsUGCListFragment
+        extends Fragment
+        implements AdapterView.OnItemClickListener {
     protected PullToRefreshListView a;
     protected ListView b;
     protected X c;
     protected View d;
     protected View e;
+    protected Handler f = new Handler();
     protected e g;
     protected d h;
+    protected List<UGCBookListRoot$UGCBook> i = new ArrayList<UGCBookListRoot$UGCBook>();
     protected TextView j;
-    protected Handler f = new Handler();
-    protected List i = new ArrayList();
     private TextView k;
-    private String l = "\u5171%d\u4E2A\u4E66\u5355";
-    private com.handmark.pulltorefresh.library.j m = new a(this);
+    private String l = "\u5171%d\u4e2a\u4e66\u5355";
+    private j m;
 
-    static com.handmark.pulltorefresh.library.j a(AbsUGCListFragment AbsUGCListFragment1) {
-        return AbsUGCListFragment1.m;
+    public AbsUGCListFragment() {
+        this.m = new a(this);
     }
 
-    static void a(AbsUGCListFragment AbsUGCListFragment1, int int2) {
-        TextView TextView3 = AbsUGCListFragment1.k;
-        String String4 = AbsUGCListFragment1.l;
-        Object[] Object_1darray5 = new Object[1];
-
-        Object_1darray5[0] = Integer.valueOf(int2);
-        TextView3.setText((CharSequence) String.format(String4, Object_1darray5));
-        if (int2 == 0)
-            AbsUGCListFragment1.k.setVisibility(8);
-        else
-            AbsUGCListFragment1.k.setVisibility(0);
+    static /* synthetic */ j a(AbsUGCListFragment absUGCListFragment) {
+        return absUGCListFragment.m;
     }
 
-    protected abstract UGCBookListRoot a(Account Account1, int int2);
+    static /* synthetic */ void a(AbsUGCListFragment absUGCListFragment, int n) {
+        TextView textView = absUGCListFragment.k;
+        String string = absUGCListFragment.l;
+        Object[] arrobject = new Object[]{n};
+        textView.setText(String.format(string, arrobject));
+        if (n == 0) {
+            absUGCListFragment.k.setVisibility(8);
+            return;
+        }
+        absUGCListFragment.k.setVisibility(0);
+    }
+
+    protected abstract UGCBookListRoot a(Account var1, int var2);
 
     public final void a() {
-        new e(this, (byte) 0).b(new String[0]);
+        new e(this, 0).b((Object[]) new String[0]);
     }
 
     public final W b() {
-        return (W) c;
+        return this.c;
     }
 
     protected abstract String c();
 
-    public void onActivityCreated(Bundle Bundle1) {
-        super.onActivityCreated(Bundle1);
-        a();
+    @Override
+    public void onActivityCreated(Bundle bundle) {
+        super.onActivityCreated(bundle);
+        this.a();
     }
 
-    public View onCreateView(LayoutInflater LayoutInflater1, ViewGroup ViewGroup2, Bundle Bundle3) {
-        View View5;
-        View View6;
-
-        super.onCreateView(LayoutInflater1, ViewGroup2, Bundle3);
-        View5 = LayoutInflater1.inflate(2130903207, ViewGroup2, false);
-        a = (PullToRefreshListView) View5.findViewById(2131493099);
-        b = (ListView) a.h();
-        b.setOnItemClickListener(this);
-        com.clilystudio.netbook.hpay100.a.a.a((Context) getActivity(), b);
-        View6 = LayoutInflater1.inflate(2130903330, (ViewGroup) b, false);
-        k = (TextView) View6.findViewById(2131492905);
-        k.setVisibility(8);
-        b.addHeaderView(View6, null, false);
-        d = View5.findViewById(2131493085);
-        j = (TextView) View5.findViewById(2131493100);
-        e = LayoutInflater.from((Context) getActivity()).inflate(2130903325, null);
-        if (com.clilystudio.netbook.hpay100.a.a.i())
-            b.setFooterDividersEnabled(false);
-        b.addFooterView(e);
-        e.setVisibility(8);
-        a.setOnRefreshListener((com.handmark.pulltorefresh.library.k) new b(this));
-        c = new X(getActivity().getLayoutInflater());
-        b.setAdapter((ListAdapter) c);
-        return View5;
+    @Override
+    public View onCreateView(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
+        super.onCreateView(layoutInflater, viewGroup, bundle);
+        View view = layoutInflater.inflate(2130903207, viewGroup, false);
+        this.a = (PullToRefreshListView) view.findViewById(2131493099);
+        this.b = (ListView) this.a.h();
+        this.b.setOnItemClickListener(this);
+        com.clilystudio.netbook.hpay100.a.a.a((Context) this.getActivity(), this.b);
+        View view2 = layoutInflater.inflate(2130903330, (ViewGroup) this.b, false);
+        this.k = (TextView) view2.findViewById(2131492905);
+        this.k.setVisibility(8);
+        this.b.addHeaderView(view2, null, false);
+        this.d = view.findViewById(2131493085);
+        this.j = (TextView) view.findViewById(2131493100);
+        this.e = LayoutInflater.from(this.getActivity()).inflate(2130903325, null);
+        if (com.clilystudio.netbook.hpay100.a.a.i()) {
+            this.b.setFooterDividersEnabled(false);
+        }
+        this.b.addFooterView(this.e);
+        this.e.setVisibility(8);
+        this.a.setOnRefreshListener(new b(this));
+        this.c = new X(this.getActivity().getLayoutInflater());
+        this.b.setAdapter(this.c);
+        return view;
     }
-// Error: Internal #201: 
-// The following method may not be correct.
 
-    public void onItemClick(AdapterView AdapterView1, View View2, int int3, long long4) {
+    @Override
+    public void onItemClick(AdapterView<?> adapterView, View view, int n, long l2) {
+        UGCBookListRoot$UGCBook uGCBookListRoot$UGCBook;
+        int n2 = n - this.b.getHeaderViewsCount();
+        if (n2 >= 0 && n2 < this.i.size() && (uGCBookListRoot$UGCBook = this.i.get(n2)) != null) {
+            Intent intent = new Intent(this.getActivity(), UGCDetailActivity.class);
+            intent.putExtra("book_id", uGCBookListRoot$UGCBook.get_id());
+            this.startActivity(intent);
+        }
     }
 }

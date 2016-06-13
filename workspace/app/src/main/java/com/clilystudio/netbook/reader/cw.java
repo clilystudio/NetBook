@@ -1,8 +1,7 @@
 package com.clilystudio.netbook.reader;
 
 public interface cw {
+    public void a(int var1);
 
-    void a(int int1);
-
-    void b(int int1);
+    public void b(int var1);
 }

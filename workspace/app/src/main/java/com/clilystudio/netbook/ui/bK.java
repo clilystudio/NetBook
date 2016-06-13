@@ -3,29 +3,30 @@ package com.clilystudio.netbook.ui;
 import android.text.Editable;
 import android.text.TextWatcher;
 
-final class bK implements TextWatcher {
+final class bK
+        implements TextWatcher {
+    private /* synthetic */ SearchActivity a;
 
-    private SearchActivity a;
-
-    bK(SearchActivity SearchActivity1) {
-        a = SearchActivity1;
+    bK(SearchActivity searchActivity) {
+        this.a = searchActivity;
     }
 
-    public final void afterTextChanged(Editable Editable1) {
-        SearchActivity SearchActivity2 = a;
-        boolean boolean3;
-
-        if (!com.clilystudio.netbook.hpay100.a.a.Q(Editable1.toString()))
-            boolean3 = true;
-        else
-            boolean3 = false;
-        SearchActivity.a(SearchActivity2, boolean3);
+    /*
+     * Enabled aggressive block sorting
+     */
+    @Override
+    public final void afterTextChanged(Editable editable) {
+        SearchActivity searchActivity = this.a;
+        boolean bl = !a.Q(editable.toString());
+        SearchActivity.a(searchActivity, bl);
     }
 
-    public final void beforeTextChanged(CharSequence CharSequence1, int int2, int int3, int int4) {
+    @Override
+    public final void beforeTextChanged(CharSequence charSequence, int n, int n2, int n3) {
     }
 
-    public final void onTextChanged(CharSequence CharSequence1, int int2, int int3, int int4) {
-        SearchActivity.b(a, null);
+    @Override
+    public final void onTextChanged(CharSequence charSequence, int n, int n2, int n3) {
+        SearchActivity.b(this.a, null);
     }
 }

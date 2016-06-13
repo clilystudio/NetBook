@@ -1,14 +1,11 @@
 package com.clilystudio.netbook.ui.post;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.support.design.widget.am;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View$OnClickListener;
 import android.view.ViewGroup;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -26,16 +23,15 @@ import com.clilystudio.netbook.model.User;
 import com.google.gson.Gson;
 import com.handmark.pulltorefresh.library.PullToRefreshBase$Mode;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
+import com.handmark.pulltorefresh.library.j;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
-public class TweetTimelineFragment extends Fragment {
-// Error: Internal #201: 
-// The following method may not be correct.
-
+public class TweetTimelineFragment
+        extends Fragment {
     static {
+        TweetTimelineFragment.class.getSimpleName();
     }
 
     private eb a;
@@ -48,269 +44,258 @@ public class TweetTimelineFragment extends Fragment {
     private RelativeLayout h;
     private TextView i;
     private G j;
-    private List k = new ArrayList();
-    private com.handmark.pulltorefresh.library.j l = new dZ(this);
+    private List<Tweet> k = new ArrayList<Tweet>();
+    private j l;
 
-    static TextView a(TweetTimelineFragment TweetTimelineFragment1) {
-        return TweetTimelineFragment1.g;
+    public TweetTimelineFragment() {
+        this.l = new dZ(this);
     }
 
-    static ea a(TweetTimelineFragment TweetTimelineFragment1, ea ea2) {
-        TweetTimelineFragment1.b = ea2;
+    static /* synthetic */ TextView a(TweetTimelineFragment tweetTimelineFragment) {
+        return tweetTimelineFragment.g;
+    }
+
+    static /* synthetic */ ea a(TweetTimelineFragment tweetTimelineFragment, ea ea2) {
+        tweetTimelineFragment.b = ea2;
         return ea2;
     }
 
-    static List a(TweetTimelineFragment TweetTimelineFragment1, List List2, TimelineResult TimelineResult3) {
-        return TweetTimelineFragment1.a(List2, TimelineResult3);
+    static /* synthetic */ List a(TweetTimelineFragment tweetTimelineFragment, List list, TimelineResult timelineResult) {
+        return tweetTimelineFragment.a(list, timelineResult);
     }
 
-    static void a(TweetTimelineFragment TweetTimelineFragment1, TimelineResult TimelineResult2) {
-        TweetTimelineFragment1.a(TimelineResult2);
+    static /* synthetic */ void a(TweetTimelineFragment tweetTimelineFragment, TimelineResult timelineResult) {
+        tweetTimelineFragment.a(timelineResult);
     }
 
-    private static boolean a(Tweet Tweet1) {
-        User User2 = am.e().getUser();
-
-        if (Tweet1.getNames() != null) {
-            String[] String_1darray3 = Tweet1.getNames();
-            int int4 = String_1darray3.length;
-            int int5 = 0;
-
-            while (int5 < int4) {
-                if (String_1darray3[int5].equals(User2.getNickname()))
-                    return true;
-                else
-                    ++int5;
+    /*
+     * Enabled force condition propagation
+     * Lifted jumps to return sites
+     */
+    private static boolean a(Tweet tweet) {
+        User user = am.e().getUser();
+        if (tweet.getNames() == null) {
+            return false;
+        }
+        String[] arrstring = tweet.getNames();
+        int n = arrstring.length;
+        int n2 = 0;
+        while (n2 < n) {
+            if (arrstring[n2].equals(user.getNickname())) {
+                return true;
             }
+            ++n2;
         }
         return false;
     }
 
-    private static boolean a(List List1, Tweet Tweet2) {
-        Iterator Iterator3 = List1.iterator();
-
-        while (Iterator3.hasNext()) {
-            Tweet Tweet4 = (Tweet) Iterator3.next();
-
-            if (!Tweet2.isRetween() || !Tweet2.getRefTweet().equals(Tweet4.getRefTweet())) {
-                if (Tweet2.isRetween() || !Tweet2.equals(Tweet4.getRefTweet()))
-                    continue;
+    private static boolean a(List<Tweet> list, Tweet tweet) {
+        for (Tweet tweet2 : list) {
+            if (tweet.isRetween() && tweet.getRefTweet().equals(tweet2.getRefTweet())) {
+                return true;
             }
+            if (tweet.isRetween() || !tweet.equals(tweet2.getRefTweet())) continue;
             return true;
         }
         return false;
     }
 
-    private static String[] a(TimelineResult$Names[] Names_1darray1, String String2) {
-        if (Names_1darray1 != null) {
-            int int3 = Names_1darray1.length;
-            int int4 = 0;
-
-            while (int4 < int3) {
-                TimelineResult$Names Names5 = Names_1darray1[int4];
-
-                if (Names5.getId().equals(String2))
-                    return Names5.getNames();
-                else
-                    ++int4;
+    /*
+     * Enabled force condition propagation
+     * Lifted jumps to return sites
+     */
+    private static String[] a(TimelineResult$Names[] arrtimelineResult$Names, String string) {
+        if (arrtimelineResult$Names == null) {
+            return null;
+        }
+        int n = arrtimelineResult$Names.length;
+        int n2 = 0;
+        while (n2 < n) {
+            TimelineResult$Names timelineResult$Names = arrtimelineResult$Names[n2];
+            if (timelineResult$Names.getId().equals(string)) {
+                return timelineResult$Names.getNames();
             }
+            ++n2;
         }
         return null;
     }
 
-    static ea b(TweetTimelineFragment TweetTimelineFragment1) {
-        return TweetTimelineFragment1.b;
+    static /* synthetic */ ea b(TweetTimelineFragment tweetTimelineFragment) {
+        return tweetTimelineFragment.b;
     }
 
-    static void b(TweetTimelineFragment TweetTimelineFragment1, TimelineResult TimelineResult2) {
-        User User3 = am.e().getUser();
-        String String4;
-
-        TweetCache.delete(User3.getId(), 1);
-        String4 = new Gson().toJson(TimelineResult2);
-        TweetCache.save2DB(User3.getId(), 1, String4);
-        RetweenRecord.clear(User3.getId());
-        TweetTimelineFragment1.b(TimelineResult2);
+    static /* synthetic */ void b(TweetTimelineFragment tweetTimelineFragment, TimelineResult timelineResult) {
+        User user = am.e().getUser();
+        TweetCache.delete(user.getId(), 1);
+        String string = new Gson().toJson(timelineResult);
+        TweetCache.save2DB(user.getId(), 1, string);
+        RetweenRecord.clear(user.getId());
+        tweetTimelineFragment.b(timelineResult);
     }
 
-    static void c(TweetTimelineFragment TweetTimelineFragment1) {
-        TweetTimelineFragment1.a();
+    static /* synthetic */ void c(TweetTimelineFragment tweetTimelineFragment) {
+        tweetTimelineFragment.a();
     }
 
-    static void c(TweetTimelineFragment TweetTimelineFragment1, TimelineResult TimelineResult2) {
-        TweetTimelineFragment1.b(TimelineResult2);
+    static /* synthetic */ void c(TweetTimelineFragment tweetTimelineFragment, TimelineResult timelineResult) {
+        tweetTimelineFragment.b(timelineResult);
     }
 
-    static void d(TweetTimelineFragment TweetTimelineFragment1) {
-        TweetTimelineFragment1.c();
+    static /* synthetic */ void d(TweetTimelineFragment tweetTimelineFragment) {
+        tweetTimelineFragment.c();
     }
 
-    static PullToRefreshListView e(TweetTimelineFragment TweetTimelineFragment1) {
-        return TweetTimelineFragment1.c;
+    static /* synthetic */ PullToRefreshListView e(TweetTimelineFragment tweetTimelineFragment) {
+        return tweetTimelineFragment.c;
     }
 
-    static com.handmark.pulltorefresh.library.j f(TweetTimelineFragment TweetTimelineFragment1) {
-        return TweetTimelineFragment1.l;
+    static /* synthetic */ j f(TweetTimelineFragment tweetTimelineFragment) {
+        return tweetTimelineFragment.l;
     }
 
-    static void g(TweetTimelineFragment TweetTimelineFragment1) {
-        TweetTimelineFragment1.b();
+    static /* synthetic */ void g(TweetTimelineFragment tweetTimelineFragment) {
+        tweetTimelineFragment.b();
     }
 
-    static List h(TweetTimelineFragment TweetTimelineFragment1) {
-        return TweetTimelineFragment1.k;
+    static /* synthetic */ List h(TweetTimelineFragment tweetTimelineFragment) {
+        return tweetTimelineFragment.k;
     }
 
-    static G i(TweetTimelineFragment TweetTimelineFragment1) {
-        return TweetTimelineFragment1.j;
+    static /* synthetic */ G i(TweetTimelineFragment tweetTimelineFragment) {
+        return tweetTimelineFragment.j;
     }
 
-    static View j(TweetTimelineFragment TweetTimelineFragment1) {
-        return TweetTimelineFragment1.e;
+    static /* synthetic */ View j(TweetTimelineFragment tweetTimelineFragment) {
+        return tweetTimelineFragment.e;
     }
 
-    static eb k(TweetTimelineFragment TweetTimelineFragment1) {
-        return TweetTimelineFragment1.a;
+    static /* synthetic */ eb k(TweetTimelineFragment tweetTimelineFragment) {
+        return tweetTimelineFragment.a;
     }
 
-    private List a(List List1, TimelineResult TimelineResult2) {
-        Object Object3 = new ArrayList();
-        TimelineResult$Temp[] Temp_1darray4 = TimelineResult2.getTweets();
-        int int5 = Temp_1darray4.length;
-        int int6;
-        Iterator Iterator7;
-
-        for (int6 = 0; int6 < int5; ++int6)
-            ((List) Object3).add(Temp_1darray4[int6].getTweet());
-        Iterator7 = ((List) Object3).iterator();
-        while (Iterator7.hasNext()) {
-            Object Object8 = (Tweet) Iterator7.next();
-
-            if (a(List1, (Tweet) Object8))
-                continue;
-            if (((Tweet) Object8).isRetween())
-                ((Tweet) Object8).names = a(TimelineResult2.getRetweetNames(), ((Tweet) Object8).getRefTweet().get_id());
-            List1.add(Object8);
+    private List<Tweet> a(List<Tweet> list, TimelineResult timelineResult) {
+        ArrayList<Tweet> arrayList = new ArrayList<Tweet>();
+        TimelineResult$Temp[] arrtimelineResult$Temp = timelineResult.getTweets();
+        int n = arrtimelineResult$Temp.length;
+        for (int i = 0; i < n; ++i) {
+            arrayList.add(arrtimelineResult$Temp[i].getTweet());
         }
-        return List1;
+        for (Tweet tweet : arrayList) {
+            if (TweetTimelineFragment.a(list, tweet)) continue;
+            if (tweet.isRetween()) {
+                tweet.names = TweetTimelineFragment.a(timelineResult.getRetweetNames(), tweet.getRefTweet().get_id());
+            }
+            list.add(tweet);
+        }
+        return list;
     }
 
     private void a() {
         if (am.e() != null) {
-            Account Account1;
-            eb eb2;
-            String[] String_1darray3;
-
-            h.setVisibility(8);
-            Account1 = am.e();
-            a = new eb(this, (byte) 0);
-            eb2 = a;
-            String_1darray3 = new String[2];
-            String_1darray3[0] = Account1.getToken();
-            String_1darray3[1] = am.e().getUser().getId();
-            eb2.b(String_1darray3);
-        } else {
-            c();
-            b();
+            this.h.setVisibility(8);
+            Account account = am.e();
+            eb eb2 = this.a = new eb(this, 0);
+            String[] arrstring = new String[]{account.getToken(), am.e().getUser().getId()};
+            eb2.b(arrstring);
+            return;
         }
+        this.c();
+        this.b();
     }
 
-    private void a(TimelineResult TimelineResult1) {
-        TimelineResult$Temp[] Temp_1darray2 = TimelineResult1.getTweets();
-
-        if (Temp_1darray2.length > 0) {
-            int int3;
-            int int4;
-
-            k.clear();
-            int3 = Temp_1darray2.length;
-            for (int4 = 0; int4 < int3; ++int4) {
-                TimelineResult$Temp Temp5 = Temp_1darray2[int4];
-
-                Temp5.getTweet().setUser(Temp5.getUser());
+    private void a(TimelineResult timelineResult) {
+        TimelineResult$Temp[] arrtimelineResult$Temp = timelineResult.getTweets();
+        if (arrtimelineResult$Temp.length > 0) {
+            this.k.clear();
+            for (TimelineResult$Temp timelineResult$Temp : arrtimelineResult$Temp) {
+                timelineResult$Temp.getTweet().setUser(timelineResult$Temp.getUser());
             }
-            k = a((List) new ArrayList(), TimelineResult1);
-            j.a(k);
+            this.k = this.a(new ArrayList<Tweet>(), timelineResult);
+            this.j.a(this.k);
         }
     }
 
     private void b() {
-        if (am.e() == null)
-            h.setVisibility(0);
-        else {
-            g.setVisibility(0);
-            g.setText((CharSequence) "\u8FD9\u91CC\u8FD8\u6CA1\u6709\u8BDD\u9898\uFF0C\u53BB\u53D1\u5E03\u4E00\u4E2A\u5427");
+        if (am.e() == null) {
+            this.h.setVisibility(0);
+            return;
         }
+        this.g.setVisibility(0);
+        this.g.setText("\u8fd9\u91cc\u8fd8\u6ca1\u6709\u8bdd\u9898\uff0c\u53bb\u53d1\u5e03\u4e00\u4e2a\u5427");
     }
 
-    private void b(TimelineResult TimelineResult1) {
-        TimelineResult$Temp[] Temp_1darray2 = TimelineResult1.getTweets();
-        User User3 = am.e().getUser();
-        Object Object4 = new ArrayList();
-        int int5 = Temp_1darray2.length;
-        int int6;
-
-        for (int6 = 0; int6 < int5; ++int6) {
-            TimelineResult$Temp Temp7 = Temp_1darray2[int6];
-
-            if (Temp7.getTweet().isRetween() && a(Temp7.getTweet())) {
-                Object Object8 = new RetweenRecord();
-
-                ((RetweenRecord) Object8).setUserId(User3.getId());
-                ((RetweenRecord) Object8).setTweetId(Temp7.getTweet().getRefTweet().get_id());
-                ((List) Object4).add(Object8);
-            }
+    private void b(TimelineResult timelineResult) {
+        TimelineResult$Temp[] arrtimelineResult$Temp = timelineResult.getTweets();
+        User user = am.e().getUser();
+        ArrayList<RetweenRecord> arrayList = new ArrayList<RetweenRecord>();
+        for (TimelineResult$Temp timelineResult$Temp : arrtimelineResult$Temp) {
+            if (!timelineResult$Temp.getTweet().isRetween() || !TweetTimelineFragment.a(timelineResult$Temp.getTweet())) continue;
+            RetweenRecord retweenRecord = new RetweenRecord();
+            retweenRecord.setUserId(user.getId());
+            retweenRecord.setTweetId(timelineResult$Temp.getTweet().getRefTweet().get_id());
+            arrayList.add(retweenRecord);
         }
-        RetweenRecord.save2DB((List) Object4);
+        RetweenRecord.save2DB(arrayList);
     }
 
     private void c() {
-        g.setVisibility(8);
-        f.setVisibility(8);
-        e.setVisibility(8);
-        c.n();
-    }
-// Error: Internal #201: 
-// The following method may not be correct.
-
-    public void onActivityCreated(Bundle Bundle1) {
+        this.g.setVisibility(8);
+        this.f.setVisibility(8);
+        this.e.setVisibility(8);
+        this.c.n();
     }
 
-    public void onCreate(Bundle Bundle1) {
-        super.onCreate(Bundle1);
-        com.clilystudio.netbook.event.i.a().a(this);
+    @Override
+    public void onActivityCreated(Bundle bundle) {
+        List<TweetCache> list;
+        super.onActivityCreated(bundle);
+        Account account = am.e();
+        if (account != null && (list = TweetCache.find(account.getUser().getId(), 1)) != null && list.size() > 0) {
+            TweetCache tweetCache = list.get(0);
+            this.a((TimelineResult) new Gson().fromJson(tweetCache.getContent(), TimelineResult.class));
+        }
+        this.a();
     }
 
-    public View onCreateView(LayoutInflater LayoutInflater1, ViewGroup ViewGroup2, Bundle Bundle3) {
-        View View4 = LayoutInflater1.inflate(2130903211, ViewGroup2, false);
-
-        f = View4.findViewById(2131493085);
-        f.setVisibility(8);
-        g = (TextView) View4.findViewById(2131493100);
-        c = (PullToRefreshListView) View4.findViewById(2131493099);
-        c.setMode(PullToRefreshBase$Mode.PULL_FROM_START);
-        h = (RelativeLayout) View4.findViewById(2131493438);
-        i = (TextView) View4.findViewById(2131493589);
-        i.setOnClickListener((View$OnClickListener) new dW(this));
-        d = (ListView) c.h();
-        e = LayoutInflater1.inflate(2130903325, null);
-        d.addFooterView(e);
-        if (com.clilystudio.netbook.hpay100.a.a.j())
-            d.setFooterDividersEnabled(false);
-        c.setEnabled(false);
-        c.setOnRefreshListener((com.handmark.pulltorefresh.library.k) new dX(this));
-        j = new G((Activity) getActivity(), false, false);
-        j.a(k);
-        d.setAdapter((ListAdapter) j);
-        return View4;
+    @Override
+    public void onCreate(Bundle bundle) {
+        super.onCreate(bundle);
+        i.a().a(this);
     }
 
+    @Override
+    public View onCreateView(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
+        View view = layoutInflater.inflate(2130903211, viewGroup, false);
+        this.f = view.findViewById(2131493085);
+        this.f.setVisibility(8);
+        this.g = (TextView) view.findViewById(2131493100);
+        this.c = (PullToRefreshListView) view.findViewById(2131493099);
+        this.c.setMode(PullToRefreshBase$Mode.PULL_FROM_START);
+        this.h = (RelativeLayout) view.findViewById(2131493438);
+        this.i = (TextView) view.findViewById(2131493589);
+        this.i.setOnClickListener(new dW(this));
+        this.d = (ListView) this.c.h();
+        this.e = layoutInflater.inflate(2130903325, null);
+        this.d.addFooterView(this.e);
+        if (a.j()) {
+            this.d.setFooterDividersEnabled(false);
+        }
+        this.c.setEnabled(false);
+        this.c.setOnRefreshListener(new dX(this));
+        this.j = new G(this.getActivity(), false, false);
+        this.j.a(this.k);
+        this.d.setAdapter(this.j);
+        return view;
+    }
+
+    @Override
     public void onDestroy() {
         super.onDestroy();
-        com.clilystudio.netbook.event.i.a().b(this);
+        i.a().b(this);
     }
 
-    public void onLogin(t t1) {
-        a();
+    @l
+    public void onLogin(t t2) {
+        this.a();
     }
 }

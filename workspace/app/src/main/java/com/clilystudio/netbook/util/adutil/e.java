@@ -1,18 +1,18 @@
 package com.clilystudio.netbook.util.adutil;
 
 import android.content.DialogInterface;
-import android.content.DialogInterface$OnClickListener;
 
-final class e implements DialogInterface$OnClickListener {
+final class e
+        implements DialogInterface.OnClickListener {
+    private /* synthetic */ b a;
 
-    private b a;
-
-    e(b b1) {
-        a = b1;
+    e(b b2) {
+        this.a = b2;
     }
 
-    public final void onClick(DialogInterface DialogInterface1, int int2) {
-        DialogInterface1.dismiss();
-        AdSplashImp.a(a.b).d();
+    @Override
+    public final void onClick(DialogInterface dialogInterface, int n) {
+        dialogInterface.dismiss();
+        AdSplashImp.a(this.a.b).d();
     }
 }

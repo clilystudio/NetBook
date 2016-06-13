@@ -1,14 +1,14 @@
 package com.clilystudio.netbook.ui;
 
 import android.content.DialogInterface;
-import android.content.DialogInterface$OnClickListener;
 
-final class t implements DialogInterface$OnClickListener {
-
-    t(AudiobookCategoryActivity AudiobookCategoryActivity1) {
+final class t
+        implements DialogInterface.OnClickListener {
+    t(AudiobookCategoryActivity audiobookCategoryActivity) {
     }
 
-    public final void onClick(DialogInterface DialogInterface1, int int2) {
-        DialogInterface1.dismiss();
+    @Override
+    public final void onClick(DialogInterface dialogInterface, int n) {
+        dialogInterface.dismiss();
     }
 }

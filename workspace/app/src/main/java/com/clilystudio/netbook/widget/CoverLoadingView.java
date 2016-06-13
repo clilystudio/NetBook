@@ -3,34 +3,30 @@ package com.clilystudio.netbook.widget;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
-import android.view.View;
-import android.view.ViewGroup$LayoutParams;
-import android.widget.RelativeLayout$LayoutParams;
+import android.widget.RelativeLayout;
 
 import com.clilystudio.netbook.R$styleable;
 
-public class CoverLoadingView extends CoverView {
-
-    private float a;     // final access specifier removed
+public class CoverLoadingView
+        extends CoverView {
+    private final float a;
     private CoverLoadingLayer b;
-    public CoverLoadingView(Context Context1, AttributeSet AttributeSet2) {
-        super(Context1, AttributeSet2);
-        TypedArray TypedArray3;
 
-        TypedArray3 = Context1.obtainStyledAttributes(AttributeSet2, R$styleable.CoverLoadingView);
-        a = TypedArray3.getDimension(0, 0.0F);
-        TypedArray3.recycle();
+    public CoverLoadingView(Context context, AttributeSet attributeSet) {
+        super(context, attributeSet);
+        TypedArray typedArray = context.obtainStyledAttributes(attributeSet, R$styleable.CoverLoadingView);
+        this.a = typedArray.getDimension(0, 0.0f);
+        typedArray.recycle();
     }
 
+    @Override
     protected void onFinishInflate() {
-        Object Object1;
-
         super.onFinishInflate();
-        b = new CoverLoadingLayer(getContext());
-        b.setCornerRadius(a);
-        Object1 = new RelativeLayout$LayoutParams(-1, -1);
-        b.setLayoutParams((ViewGroup$LayoutParams) Object1);
-        b.setId(2131492906);
-        addView((View) b);
+        this.b = new CoverLoadingLayer(this.getContext());
+        this.b.setCornerRadius(this.a);
+        RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(-1, -1);
+        this.b.setLayoutParams(layoutParams);
+        this.b.setId(2131492906);
+        this.addView(this.b);
     }
 }

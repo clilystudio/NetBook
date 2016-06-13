@@ -1,22 +1,23 @@
 package com.clilystudio.netbook.ui.post;
 
 import android.view.View;
-import android.view.View$OnClickListener;
 import android.widget.PopupWindow;
 
-final class dc implements View$OnClickListener {
+final class dc
+        implements View.OnClickListener {
+    private /* synthetic */ PopupWindow a;
+    private /* synthetic */ ReviewListActivity b;
 
-    private PopupWindow a;
-    private ReviewListActivity b;
-    dc(ReviewListActivity ReviewListActivity1, PopupWindow PopupWindow2) {
-        b = ReviewListActivity1;
-        a = PopupWindow2;
+    dc(ReviewListActivity reviewListActivity, PopupWindow popupWindow) {
+        this.b = reviewListActivity;
+        this.a = popupWindow;
     }
 
-    public final void onClick(View View1) {
-        a.dismiss();
-        ReviewListActivity.o(b).setText(2131034436);
-        ReviewListActivity.b(b, "helpful");
-        ReviewListActivity.n(b).setRefreshing();
+    @Override
+    public final void onClick(View view) {
+        this.a.dismiss();
+        ReviewListActivity.o(this.b).setText(2131034436);
+        ReviewListActivity.b(this.b, "helpful");
+        ReviewListActivity.n(this.b).setRefreshing();
     }
 }

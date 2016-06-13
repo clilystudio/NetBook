@@ -2,15 +2,16 @@ package com.clilystudio.netbook.widget;
 
 import android.graphics.Bitmap;
 
-final class aD implements com.nostra13.universalimageloader.core.d.a {
+final class aD
+        implements a {
+    private /* synthetic */ UserInfoPortraitView a;
 
-    private UserInfoPortraitView a;
-
-    aD(UserInfoPortraitView UserInfoPortraitView1) {
-        a = UserInfoPortraitView1;
+    aD(UserInfoPortraitView userInfoPortraitView) {
+        this.a = userInfoPortraitView;
     }
 
-    public final void a(Bitmap Bitmap1) {
-        UserInfoPortraitView.a(a).setImageBitmap(com.clilystudio.netbook.hpay100.a.a.a(Bitmap1));
+    @Override
+    public final void a(Bitmap bitmap) {
+        UserInfoPortraitView.a(this.a).setImageBitmap(com.clilystudio.netbook.hpay100.a.a.a(bitmap));
     }
 }

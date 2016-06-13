@@ -1,27 +1,27 @@
 package com.clilystudio.netbook.reader;
 
 import android.content.DialogInterface;
-import android.content.DialogInterface$OnClickListener;
+
+import com.clilystudio.netbook.c;
 
 import java.io.File;
 
-final class k implements DialogInterface$OnClickListener {
+final class k
+        implements DialogInterface.OnClickListener {
+    private /* synthetic */ String a;
+    private /* synthetic */ LocalChapterListActivity b;
 
-    private String a;
-    private LocalChapterListActivity b;
-    k(LocalChapterListActivity LocalChapterListActivity1, String String2) {
-        b = LocalChapterListActivity1;
-        a = String2;
+    k(LocalChapterListActivity localChapterListActivity, String string) {
+        this.b = localChapterListActivity;
+        this.a = string;
     }
 
-    public final void onClick(DialogInterface DialogInterface1, int int2) {
-        String String3;
-        String String4;
-
-        DialogInterface1.dismiss();
-        String3 = LocalChapterListActivity.c(b);
-        String4 = a;
-        com.clilystudio.netbook.hpay100.a.a.E(new StringBuilder().append(com.clilystudio.netbook.c.b).append(File.separator).append(String3).append(File.separator).append(String4).toString());
-        LocalChapterListActivity.e(b);
+    @Override
+    public final void onClick(DialogInterface dialogInterface, int n) {
+        dialogInterface.dismiss();
+        String string = LocalChapterListActivity.c(this.b);
+        String string2 = this.a;
+        a.E(c.b + File.separator + string + File.separator + string2);
+        LocalChapterListActivity.e(this.b);
     }
 }

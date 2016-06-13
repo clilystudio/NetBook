@@ -1,91 +1,89 @@
 package com.clilystudio.netbook.reader.txt;
 
+import android.support.v7.app.a;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.AdapterView$OnItemClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.clilystudio.netbook.ui.BaseActivity;
+import com.clilystudio.netbook.db.BookFile;
 import com.clilystudio.netbook.util.W;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-final class R extends W implements AdapterView$OnItemClickListener {
+final class R
+        extends W<T>
+        implements AdapterView.OnItemClickListener {
+    private /* synthetic */ ScanTxtFileActivity a;
 
-    private ScanTxtFileActivity a;
-
-    public R(ScanTxtFileActivity ScanTxtFileActivity1, LayoutInflater LayoutInflater2) {
-        super(LayoutInflater2, 2130903266);
-        a = ScanTxtFileActivity1;
+    public R(ScanTxtFileActivity scanTxtFileActivity, LayoutInflater layoutInflater) {
+        this.a = scanTxtFileActivity;
+        super(layoutInflater, 2130903266);
     }
 
-    private static void a(ImageView ImageView1, boolean boolean2) {
-        if (boolean2) {
-            ImageView1.setImageResource(2130837820);
-            ImageView1.setContentDescription((CharSequence) "\u9009\u4E2D");
-        } else {
-            ImageView1.setImageResource(2130837818);
-            ImageView1.setContentDescription((CharSequence) "\u672A\u9009\u4E2D");
+    private static void a(ImageView imageView, boolean bl) {
+        if (bl) {
+            imageView.setImageResource(2130837820);
+            imageView.setContentDescription("\u9009\u4e2d");
+            return;
         }
+        imageView.setImageResource(2130837818);
+        imageView.setContentDescription("\u672a\u9009\u4e2d");
     }
 
-    static void a(R R1) {
-        Iterator Iterator2 = R1.c().iterator();
-        ScanTxtFileActivity ScanTxtFileActivity3;
-        boolean boolean4;
-        TextView TextView6;
-        Object Object7;
-
-        while (Iterator2.hasNext())
-            ((T) Iterator2.next()).a(ScanTxtFileActivity.c(R1.a));
-        ScanTxtFileActivity3 = R1.a;
-        if (!com.clilystudio.netbook.reader.txt.ScanTxtFileActivity.c(R1.a))
-            boolean4 = true;
-        else
-            boolean4 = false;
-        ScanTxtFileActivity.a(ScanTxtFileActivity3, boolean4);
-        TextView6 = (TextView) ((BaseActivity) R1.a).a().a().findViewById(2131493008);
-        if (ScanTxtFileActivity.c(R1.a))
-            Object7 = "\u5168\u9009";
-        else
-            Object7 = "\u5168\u4E0D\u9009";
-        TextView6.setText((CharSequence) Object7);
-        R1.notifyDataSetChanged();
-    }
-
-    static void a(R R1, ImageView ImageView2, boolean boolean3) {
-        a(ImageView2, boolean3);
-    }
-
-    static List b(R R1) {
-        Object Object2 = new ArrayList();
-        Iterator Iterator3 = R1.c().iterator();
-
-        while (Iterator3.hasNext()) {
-            T T4 = (T) Iterator3.next();
-
-            if (!T4.b())
-                continue;
-            ((ArrayList) Object2).add(T4.a());
+    /*
+     * Enabled aggressive block sorting
+     */
+    static /* synthetic */ void a(R r) {
+        Iterator iterator = r.c().iterator();
+        while (iterator.hasNext()) {
+            ((T) iterator.next()).a(ScanTxtFileActivity.c(r.a));
         }
-        return (List) Object2;
+        ScanTxtFileActivity scanTxtFileActivity = r.a;
+        boolean bl = !ScanTxtFileActivity.c(r.a);
+        ScanTxtFileActivity.a(scanTxtFileActivity, bl);
+        TextView textView = (TextView) r.a.a().a().findViewById(2131493008);
+        String string = ScanTxtFileActivity.c(r.a) ? "\u5168\u9009" : "\u5168\u4e0d\u9009";
+        textView.setText(string);
+        r.notifyDataSetChanged();
     }
-// Error: Internal #201: 
-// The following method may not be correct.
 
-    protected final void a(int int1, Object Object2) {
+    static /* synthetic */ void a(R r, ImageView imageView, boolean bl) {
+        R.a(imageView, bl);
     }
 
+    static /* synthetic */ List b(R r) {
+        ArrayList<BookFile> arrayList = new ArrayList<BookFile>();
+        for (T t : r.c()) {
+            if (!t.b()) continue;
+            arrayList.add(t.a());
+        }
+        return arrayList;
+    }
+
+    @Override
+    protected final /* synthetic */ void a(int n, Object object) {
+        T t = (T) object;
+        BookFile bookFile = t.a();
+        boolean bl = t.b();
+        this.a(0, bookFile.getName());
+        ImageView imageView = (ImageView) this.a(1, ImageView.class);
+        R.a(imageView, bl);
+        imageView.setOnClickListener(new S(this, t, imageView));
+        this.a(2, bookFile.getSize());
+    }
+
+    @Override
     protected final int[] a() {
         return new int[]{2131492936, 2131493040, 2131493625};
     }
 
-    public final void onItemClick(AdapterView AdapterView1, View View2, int int3, long long4) {
-        ((T) c().get(int3)).c();
-        ScanTxtFileActivity.a(a).notifyDataSetChanged();
+    @Override
+    public final void onItemClick(AdapterView<?> adapterView, View view, int n, long l2) {
+        ((T) this.c().get(n)).c();
+        ScanTxtFileActivity.a(this.a).notifyDataSetChanged();
     }
 }

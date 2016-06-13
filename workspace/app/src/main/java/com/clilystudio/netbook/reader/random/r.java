@@ -1,23 +1,22 @@
 package com.clilystudio.netbook.reader.random;
 
-import android.view.View$OnSystemUiVisibilityChangeListener;
+import android.view.View;
 
-final class r implements View$OnSystemUiVisibilityChangeListener {
+final class r
+        implements View.OnSystemUiVisibilityChangeListener {
+    private /* synthetic */ ReaderRandomActivity a;
 
-    private ReaderRandomActivity a;
-
-    r(ReaderRandomActivity ReaderRandomActivity1) {
-        a = ReaderRandomActivity1;
+    r(ReaderRandomActivity readerRandomActivity) {
+        this.a = readerRandomActivity;
     }
 
-    public final void onSystemUiVisibilityChange(int int1) {
-        ReaderRandomActivity ReaderRandomActivity2 = a;
-        boolean boolean3;
-
-        if ((int1 & 0x1) == 0)
-            boolean3 = true;
-        else
-            boolean3 = false;
-        ReaderRandomActivity.b(ReaderRandomActivity2, boolean3);
+    /*
+     * Enabled aggressive block sorting
+     */
+    @Override
+    public final void onSystemUiVisibilityChange(int n2) {
+        ReaderRandomActivity readerRandomActivity = this.a;
+        boolean bl = (n2 & 1) == 0;
+        ReaderRandomActivity.b(readerRandomActivity, bl);
     }
 }

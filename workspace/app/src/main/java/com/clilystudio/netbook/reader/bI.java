@@ -2,21 +2,21 @@ package com.clilystudio.netbook.reader;
 
 import android.content.Context;
 import android.support.v7.widget.SwitchCompat;
-import android.view.View;
 import android.widget.CompoundButton;
-import android.widget.CompoundButton$OnCheckedChangeListener;
 
-final class bI implements CompoundButton$OnCheckedChangeListener {
+final class bI
+        implements CompoundButton.OnCheckedChangeListener {
+    private /* synthetic */ SwitchCompat a;
+    private /* synthetic */ ReaderOptionActivity b;
 
-    private SwitchCompat a;
-    private ReaderOptionActivity b;
-    bI(ReaderOptionActivity ReaderOptionActivity1, SwitchCompat SwitchCompat2) {
-        b = ReaderOptionActivity1;
-        a = SwitchCompat2;
+    bI(ReaderOptionActivity readerOptionActivity, SwitchCompat switchCompat) {
+        this.b = readerOptionActivity;
+        this.a = switchCompat;
     }
 
-    public final void onCheckedChanged(CompoundButton CompoundButton1, boolean boolean2) {
-        com.clilystudio.netbook.hpay100.a.a.b((Context) b, "volume_keys_flip", boolean2);
-        ReaderOptionActivity.a(b, (View) a, boolean2);
+    @Override
+    public final void onCheckedChanged(CompoundButton compoundButton, boolean bl) {
+        a.b((Context) this.b, "volume_keys_flip", bl);
+        ReaderOptionActivity.a(this.b, this.a, bl);
     }
 }

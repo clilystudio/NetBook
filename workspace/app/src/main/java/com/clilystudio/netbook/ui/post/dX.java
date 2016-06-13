@@ -1,19 +1,21 @@
 package com.clilystudio.netbook.ui.post;
 
 import android.os.Handler;
+import android.widget.ListView;
 
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 
-final class dX implements k {
+final class dX
+        implements k<ListView> {
+    final /* synthetic */ TweetTimelineFragment a;
 
-    TweetTimelineFragment a;     // final access specifier removed
-
-    dX(TweetTimelineFragment TweetTimelineFragment1) {
-        a = TweetTimelineFragment1;
+    dX(TweetTimelineFragment tweetTimelineFragment) {
+        this.a = tweetTimelineFragment;
     }
 
-    public final void a(PullToRefreshBase PullToRefreshBase1) {
-        TweetTimelineFragment.a(a).setVisibility(8);
-        new Handler().postDelayed((Runnable) new dY(this), 1000L);
+    @Override
+    public final void a(PullToRefreshBase<ListView> pullToRefreshBase) {
+        TweetTimelineFragment.a(this.a).setVisibility(8);
+        new Handler().postDelayed(new dY(this), 1000);
     }
 }

@@ -8,60 +8,72 @@ import android.widget.TextView;
 import com.clilystudio.netbook.model.NotificationItem;
 import com.clilystudio.netbook.model.NotificationItem$NotifPost;
 import com.clilystudio.netbook.ui.SmartImageView;
+import com.clilystudio.netbook.ui.post.BookHelpActivity;
+import com.clilystudio.netbook.ui.post.PostDetailActivity;
+import com.clilystudio.netbook.ui.post.ReviewActivity;
 
 public abstract class NotifBinder {
-
     protected NotificationItem mItem;
 
-    public NotifBinder(NotificationItem NotificationItem1) {
-        mItem = NotificationItem1;
+    public NotifBinder(NotificationItem notificationItem) {
+        this.mItem = notificationItem;
     }
 
-    public void fillIcon(TextView TextView1) {
-        TextView1.setCompoundDrawablesWithIntrinsicBounds(getIconRes(), 0, 0, 0);
+    public void fillIcon(TextView textView) {
+        textView.setCompoundDrawablesWithIntrinsicBounds(this.getIconRes(), 0, 0, 0);
     }
 
-    public void fillImageView(SmartImageView SmartImageView1) {
-        SmartImageView1.setApiImageUrl(mItem.getTrigger().getAvatar(), 2130837614);
+    public void fillImageView(SmartImageView smartImageView) {
+        smartImageView.setApiImageUrl(this.mItem.getTrigger().getAvatar(), 2130837614);
     }
 
     protected abstract int getIconRes();
 
-    public abstract Intent getIntent(Context Context1);
+    public abstract Intent getIntent(Context var1);
 
     public NotificationItem getItem() {
-        return mItem;
+        return this.mItem;
     }
 
-    public void setItem(NotificationItem NotificationItem1) {
-        mItem = NotificationItem1;
+    public void setItem(NotificationItem notificationItem) {
+        this.mItem = notificationItem;
     }
 
     public abstract String getLabel();
 
     public abstract String getMainText();
-// Error: Internal #201: 
-// The following method may not be correct.
 
+    /*
+     * Enabled aggressive block sorting
+     */
     protected int getPostIcon() {
-        NotificationItem$NotifPost NotifPost1;
-
-        if (getItem().getPost() != null)
-            NotifPost1 = getItem().getPost();
-        else
-            NotifPost1 = getItem().getMyPost();
-        if ("vote".equals(NotifPost1.getType()))
+        NotificationItem$NotifPost notificationItem$NotifPost = this.getItem().getPost() != null ? this.getItem().getPost() : this.getItem().getMyPost();
+        if ("vote".equals(notificationItem$NotifPost.getType())) {
             return 2130837917;
-        else
-            return 2130837916;
+        }
+        return 2130837916;
     }
 
-    protected Intent getPostIntent(Context Context1, NotificationItem$NotifPost NotifPost2) {
+    protected Intent getPostIntent(Context context, NotificationItem$NotifPost notificationItem$NotifPost) {
+        String string = notificationItem$NotifPost.getType();
+        if (string.equals("review")) {
+            Intent intent = new Intent(context, ReviewActivity.class);
+            intent.putExtra("extraReviewId", notificationItem$NotifPost.get_id());
+            return intent;
+        }
+        if (string.equals("help")) {
+            Intent intent = new Intent(context, BookHelpActivity.class);
+            intent.putExtra("extraBookHelpId", notificationItem$NotifPost.get_id());
+            return intent;
+        }
+        Intent intent = new Intent(context, PostDetailActivity.class);
+        intent.putExtra("PostBookId", notificationItem$NotifPost.get_id());
+        return intent;
     }
 
     public abstract String getSubText();
 
-    protected Intent getWebIntent(String String1) {
-        return new Intent("android.intent.action.VIEW", Uri.parse(String1));
+    protected Intent getWebIntent(String string) {
+        return new Intent("android.intent.action.VIEW", Uri.parse(string));
     }
 }

@@ -1,22 +1,23 @@
 package com.clilystudio.netbook.ui;
 
-import android.os.AsyncTask$Status;
+import android.os.AsyncTask;
 
 import com.clilystudio.netbook.widget.av;
 
-final class aU implements av {
+final class aU
+        implements av {
+    private /* synthetic */ BookTagListActivity a;
 
-    private BookTagListActivity a;
-
-    aU(BookTagListActivity BookTagListActivity1) {
-        a = BookTagListActivity1;
+    aU(BookTagListActivity bookTagListActivity) {
+        this.a = bookTagListActivity;
     }
 
+    @Override
     public final void a() {
-        if (BookTagListActivity.g(a) == null || BookTagListActivity.g(a).getStatus() == AsyncTask$Status.FINISHED) {
-            BookTagListActivity.c(a).setVisibility(0);
-            BookTagListActivity.a(a, new aW(a, (byte) 0));
-            BookTagListActivity.g(a).b(new String[0]);
+        if (BookTagListActivity.g(this.a) == null || BookTagListActivity.g(this.a).getStatus() == AsyncTask.Status.FINISHED) {
+            BookTagListActivity.c(this.a).setVisibility(0);
+            BookTagListActivity.a(this.a, new aW(this.a, 0));
+            BookTagListActivity.g(this.a).b(new String[0]);
         }
     }
 }

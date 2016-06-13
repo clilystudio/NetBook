@@ -3,7 +3,6 @@ package com.clilystudio.netbook.model;
 import java.util.Date;
 
 public class Post {
-
     private String _id;
     private Author author;
     private PostBook book;
@@ -17,95 +16,95 @@ public class Post {
     private Vote[] votes;
 
     public Author getAuthor() {
-        return author;
+        return this.author;
     }
 
-    public void setAuthor(Author Author1) {
-        author = Author1;
+    public void setAuthor(Author author) {
+        this.author = author;
     }
 
     public PostBook getBook() {
-        if (book == null) {
-            book = new PostBook();
-            book.set_id("");
-            book.setTitle("\u6B64\u4E66\u4E0D\u5B58\u5728");
+        if (this.book == null) {
+            this.book = new PostBook();
+            this.book.set_id("");
+            this.book.setTitle("\u6b64\u4e66\u4e0d\u5b58\u5728");
         }
-        return book;
+        return this.book;
     }
 
-    public void setBook(PostBook PostBook1) {
-        book = PostBook1;
+    public void setBook(PostBook postBook) {
+        this.book = postBook;
     }
 
     public int getCommentCount() {
-        return commentCount;
+        return this.commentCount;
     }
 
-    public void setCommentCount(int int1) {
-        commentCount = int1;
+    public void setCommentCount(int n) {
+        this.commentCount = n;
     }
 
     public String getContent() {
-        return content;
+        return this.content;
     }
 
-    public void setContent(String String1) {
-        content = String1;
+    public void setContent(String string) {
+        this.content = string;
     }
 
     public Date getCreated() {
-        return created;
+        return this.created;
     }
 
-    public void setCreated(Date Date1) {
-        created = Date1;
+    public void setCreated(Date date) {
+        this.created = date;
     }
 
     public String getShareLink() {
-        return shareLink;
+        return this.shareLink;
     }
 
-    public void setShareLink(String String1) {
-        shareLink = String1;
+    public void setShareLink(String string) {
+        this.shareLink = string;
     }
 
     public String getTitle() {
-        return title;
+        return this.title;
     }
 
-    public void setTitle(String String1) {
-        title = String1;
+    public void setTitle(String string) {
+        this.title = string;
     }
 
     public String getType() {
-        return type;
+        return this.type;
     }
 
-    public void setType(String String1) {
-        type = String1;
+    public void setType(String string) {
+        this.type = string;
     }
 
     public int getVoteCount() {
-        return voteCount;
+        return this.voteCount;
     }
 
-    public void setVoteCount(int int1) {
-        voteCount = int1;
+    public void setVoteCount(int n) {
+        this.voteCount = n;
     }
 
     public Vote[] getVotes() {
-        return votes;
+        return this.votes;
     }
 
-    public void setVotes(Vote[] Vote_1darray1) {
-        votes = Vote_1darray1;
+    public void setVotes(Vote[] arrvote) {
+        this.votes = arrvote;
     }
 
     public String get_id() {
-        return _id;
+        return this._id;
     }
 
-    public void set_id(String String1) {
-        _id = String1;
+    public void set_id(String string) {
+        this._id = string;
     }
 }

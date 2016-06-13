@@ -1,23 +1,22 @@
 package com.clilystudio.netbook.model;
 
 public class RecommendUgcRoot {
-
     private RecommendUgcRoot$RecommendUGC[] booklists;
     private boolean ok;
 
     public RecommendUgcRoot$RecommendUGC[] getBooklists() {
-        return booklists;
+        return this.booklists;
     }
 
-    public void setBooklists(RecommendUgcRoot$RecommendUGC[] RecommendUGC_1darray1) {
-        booklists = RecommendUGC_1darray1;
+    public void setBooklists(RecommendUgcRoot$RecommendUGC[] arrrecommendUgcRoot$RecommendUGC) {
+        this.booklists = arrrecommendUgcRoot$RecommendUGC;
     }
 
     public boolean isOk() {
-        return ok;
+        return this.ok;
     }
 
-    public void setOk(boolean boolean1) {
-        ok = boolean1;
+    public void setOk(boolean bl) {
+        this.ok = bl;
     }
 }

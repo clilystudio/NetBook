@@ -1,20 +1,21 @@
 package com.clilystudio.netbook.reader;
 
 import android.content.DialogInterface;
-import android.content.DialogInterface$OnClickListener;
 import android.view.View;
 
-final class bv implements DialogInterface$OnClickListener {
+final class bv
+        implements DialogInterface.OnClickListener {
+    private /* synthetic */ View a;
+    private /* synthetic */ bt b;
 
-    private View a;
-    private bt b;
-    bv(bt bt1, View View2) {
-        b = bt1;
-        a = View2;
+    bv(bt bt2, View view) {
+        this.b = bt2;
+        this.a = view;
     }
 
-    public final void onClick(DialogInterface DialogInterface1, int int2) {
-        ReaderMenuFragment.j(b.a).onAdClick(a);
-        ReaderMenuFragment.j(b.a).recordClick(a);
+    @Override
+    public final void onClick(DialogInterface dialogInterface, int n) {
+        ReaderMenuFragment.j(this.b.a).onAdClick(this.a);
+        ReaderMenuFragment.j(this.b.a).recordClick(this.a);
     }
 }

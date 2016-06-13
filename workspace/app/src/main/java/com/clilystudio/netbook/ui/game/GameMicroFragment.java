@@ -1,6 +1,5 @@
 package com.clilystudio.netbook.ui.game;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -10,119 +9,129 @@ import com.clilystudio.netbook.model.Game;
 import com.clilystudio.netbook.model.GameGroupItem;
 import com.clilystudio.netbook.model.GameLayoutRoot$ModuleLayout;
 import com.clilystudio.netbook.ui.BaseLoadingFragment;
+import com.umeng.a.b;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class GameMicroFragment extends BaseLoadingFragment {
-
+public class GameMicroFragment
+        extends BaseLoadingFragment {
     Timer a;
     TimerTask b;
     int c;
     private RecyclerView d;
-    private List e;
+    private List<GameLayoutRoot$ModuleLayout> e;
     private GameLayoutRoot$ModuleLayout f;
     private GameMicroFragment$LayoutAdapter g;
     private Game[] h;
-    private List i;
+    private List<String> i;
 
-    static List a(GameMicroFragment GameMicroFragment1, List List2) {
-        GameMicroFragment1.e = List2;
-        return List2;
+    static /* synthetic */ List a(GameMicroFragment gameMicroFragment, List list) {
+        gameMicroFragment.e = list;
+        return list;
     }
 
-    static Game[] a(GameMicroFragment GameMicroFragment1) {
-        return GameMicroFragment1.h;
+    static /* synthetic */ Game[] a(GameMicroFragment gameMicroFragment) {
+        return gameMicroFragment.h;
     }
 
-    static Game[] a(GameMicroFragment GameMicroFragment1, Game[] Game_1darray2) {
-        GameMicroFragment1.h = Game_1darray2;
-        return Game_1darray2;
+    static /* synthetic */ Game[] a(GameMicroFragment gameMicroFragment, Game[] arrgame) {
+        gameMicroFragment.h = arrgame;
+        return arrgame;
     }
 
-    static int b(GameMicroFragment GameMicroFragment1) {
-        return GameMicroFragment1.h();
+    static /* synthetic */ int b(GameMicroFragment gameMicroFragment) {
+        return gameMicroFragment.h();
     }
 
-    static List b(GameMicroFragment GameMicroFragment1, List List2) {
-        GameMicroFragment1.i = List2;
-        return List2;
+    static /* synthetic */ List b(GameMicroFragment gameMicroFragment, List list) {
+        gameMicroFragment.i = list;
+        return list;
     }
 
-    static GameLayoutRoot$ModuleLayout c(GameMicroFragment GameMicroFragment1) {
-        return GameMicroFragment1.f;
+    static /* synthetic */ GameLayoutRoot$ModuleLayout c(GameMicroFragment gameMicroFragment) {
+        return gameMicroFragment.f;
     }
 
-    static List d(GameMicroFragment GameMicroFragment1) {
-        return GameMicroFragment1.e;
+    static /* synthetic */ List d(GameMicroFragment gameMicroFragment) {
+        return gameMicroFragment.e;
     }
 
-    static List e(GameMicroFragment GameMicroFragment1) {
-        return GameMicroFragment1.i;
+    static /* synthetic */ List e(GameMicroFragment gameMicroFragment) {
+        return gameMicroFragment.i;
     }
 
     private int h() {
-        if (f == null || f.getGameGroup() == null && f.getGameGroup().getGames() == null)
+        if (this.f == null || this.f.getGameGroup() == null && this.f.getGameGroup().getGames() == null) {
             return 0;
-        else
-            return f.getGameGroup().getGames().size();
+        }
+        return this.f.getGameGroup().getGames().size();
     }
 
+    @Override
     protected final int a() {
         return 2130903102;
     }
 
+    @Override
     protected final void b() {
-        f();
-        new W(this, (byte) 0).b(new String[0]);
+        this.f();
+        new W(this, 0).b(new String[0]);
     }
 
     public final void g() {
-        GameGroupItem GameGroupItem1;
-        Object Object2;
-
-        if (f == null)
-            f = new GameLayoutRoot$ModuleLayout();
-        f.setModule("local");
-        f.setTitle("\u6211\u73A9\u8FC7\u7684");
-        GameGroupItem1 = new GameGroupItem();
-        GameGroupItem1.setName("\u6211\u73A9\u8FC7\u7684");
-        Object2 = (List) com.clilystudio.netbook.hpay100.a.a.k(c.h, "played_game.txt");
-        if (Object2 == null)
-            Object2 = new ArrayList();
-        GameGroupItem1.setGames((List) Object2);
-        f.setGameGroup(GameGroupItem1);
+        if (this.f == null) {
+            this.f = new GameLayoutRoot$ModuleLayout();
+        }
+        this.f.setModule("local");
+        this.f.setTitle("\u6211\u73a9\u8fc7\u7684");
+        GameGroupItem gameGroupItem = new GameGroupItem();
+        gameGroupItem.setName("\u6211\u73a9\u8fc7\u7684");
+        ArrayList arrayList = (ArrayList) a.k(c.h, "played_game.txt");
+        if (arrayList == null) {
+            arrayList = new ArrayList();
+        }
+        gameGroupItem.setGames(arrayList);
+        this.f.setGameGroup(gameGroupItem);
     }
 
-    public void onActivityCreated(Bundle Bundle1) {
-        super.onActivityCreated(Bundle1);
-        d.setLayoutManager((ao) new LinearLayoutManager((Context) getActivity()));
-        g = new GameMicroFragment$LayoutAdapter(this);
-        d.setAdapter((ah) g);
-        b();
+    @Override
+    public void onActivityCreated(Bundle bundle) {
+        super.onActivityCreated(bundle);
+        this.d.setLayoutManager(new LinearLayoutManager(this.getActivity()));
+        this.g = new GameMicroFragment$LayoutAdapter(this);
+        this.d.setAdapter(this.g);
+        this.b();
     }
 
+    @Override
     public void onPause() {
         super.onPause();
-        com.umeng.a.b.b("game_micro_layout");
+        b.b("game_micro_layout");
     }
 
+    /*
+     * Enabled aggressive block sorting
+     */
+    @Override
     public void onResume() {
         super.onResume();
-        if (g != null) {
-            g();
-            if (h() == 1)
-                d.setAdapter((ah) g);
-            else
-                g.b();
+        if (this.g != null) {
+            this.g();
+            if (this.h() == 1) {
+                this.d.setAdapter(this.g);
+            } else {
+                this.g.b();
+            }
         }
-        com.umeng.a.b.a("game_micro_layout");
+        b.a("game_micro_layout");
     }
 
-    public void onViewCreated(View View1, Bundle Bundle2) {
-        super.onViewCreated(View1, Bundle2);
-        d = (RecyclerView) View1.findViewById(2131493133);
+    @Override
+    public void onViewCreated(View view, Bundle bundle) {
+        super.onViewCreated(view, bundle);
+        this.d = (RecyclerView) view.findViewById(2131493133);
     }
 }

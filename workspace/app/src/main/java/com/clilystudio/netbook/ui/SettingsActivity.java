@@ -1,139 +1,168 @@
 package com.clilystudio.netbook.ui;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface$OnClickListener;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.am;
 import android.support.v7.widget.SwitchCompat;
+import android.text.TextUtils;
 import android.view.View;
-import android.view.View$OnClickListener;
-import android.view.View$OnLongClickListener;
-import android.widget.CompoundButton$OnCheckedChangeListener;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.clilystudio.netbook.MyApplication;
+import com.clilystudio.netbook.event.g;
 import com.clilystudio.netbook.event.i;
 import com.clilystudio.netbook.event.u;
+import com.clilystudio.netbook.ui.post.CommonPostListActivity;
+import com.clilystudio.netbook.util.e;
+import com.umeng.a.b;
 
-public class SettingsActivity extends BaseActivity implements View$OnClickListener {
-
+public class SettingsActivity
+        extends BaseActivity
+        implements View.OnClickListener {
     private int a;
 
-    private static void a(View View1, boolean boolean2) {
-        if (boolean2)
-            View1.setContentDescription((CharSequence) "\u5DF2\u5F00\u542F");
-        else
-            View1.setContentDescription((CharSequence) "\u5DF2\u5173\u95ED");
+    private static void a(View view, boolean bl) {
+        if (bl) {
+            view.setContentDescription("\u5df2\u5f00\u542f");
+            return;
+        }
+        view.setContentDescription("\u5df2\u5173\u95ed");
     }
 
-    static void a(SettingsActivity SettingsActivity1) {
-        h h2 = new h((Context) SettingsActivity1);
-
+    static /* synthetic */ void a(SettingsActivity settingsActivity) {
+        h h2 = new h(settingsActivity);
         h2.a(2131034580);
         h2.b(2131034581);
         h2.b(2131034129, null);
-        h2.a(2131034579, (DialogInterface$OnClickListener) new bZ(SettingsActivity1));
+        h2.a(2131034579, (DialogInterface.OnClickListener) new bZ(settingsActivity));
         h2.a().show();
     }
 
-    static void a(SettingsActivity SettingsActivity1, int int2, String String3) {
-        if (SettingsActivity1.a != int2) {
-            SettingsActivity1.a = int2;
-            com.clilystudio.netbook.hpay100.a.a.b((Context) SettingsActivity1, "key_shelf_sort", SettingsActivity1.a);
-            ((TextView) SettingsActivity1.findViewById(2131493198)).setText((CharSequence) String3);
-            i.a().c(new com.clilystudio.netbook.event.g());
+    static /* synthetic */ void a(SettingsActivity settingsActivity, int n, String string) {
+        if (settingsActivity.a != n) {
+            settingsActivity.a = n;
+            a.b((Context) settingsActivity, "key_shelf_sort", settingsActivity.a);
+            ((TextView) settingsActivity.findViewById(2131493198)).setText(string);
+            i.a().c(new g());
         }
     }
 
-    static void a(SettingsActivity SettingsActivity1, View View2, boolean boolean3) {
-        a(View2, boolean3);
+    static /* synthetic */ void a(SettingsActivity settingsActivity, View view, boolean bl) {
+        SettingsActivity.a(view, bl);
     }
 
-    static void a(SettingsActivity SettingsActivity1, boolean boolean2) {
-        if (boolean2)
-            com.xiaomi.mipush.sdk.d.a(SettingsActivity1.getApplicationContext(), "2882303761517133731", "5941713373731");
-        else
-            com.xiaomi.mipush.sdk.d.e(SettingsActivity1.getApplicationContext());
+    static /* synthetic */ void a(SettingsActivity settingsActivity, boolean bl) {
+        if (bl) {
+            d.a(settingsActivity.getApplicationContext(), "2882303761517133731", "5941713373731");
+            return;
+        }
+        d.e(settingsActivity.getApplicationContext());
     }
 
-    static void b(SettingsActivity SettingsActivity1) {
-        Object Object2 = am.n((Context) SettingsActivity1);
-
-        if (!android.text.TextUtils.isEmpty((CharSequence) Object2)) {
-            k k3 = new k((Context) SettingsActivity1);
-
-            k3.b((CharSequence) Object2);
-            k3.a((CharSequence) "OK", null);
-            k3.c();
+    static /* synthetic */ void b(SettingsActivity settingsActivity) {
+        String string = am.n((Context) settingsActivity);
+        if (!TextUtils.isEmpty(string)) {
+            k k2 = new k(settingsActivity);
+            k2.b(string);
+            k2.a("OK", null);
+            k2.c();
         }
     }
 
-    static void c(SettingsActivity SettingsActivity1) {
-        com.clilystudio.netbook.util.e.a((Activity) SettingsActivity1, "\u5DF2\u767B\u51FA");
-        new Thread((Runnable) new ca(SettingsActivity1, am.e().getToken())).start();
-        MyApplication.a().a(new String[]{"account.token", "user.id", "user.name", "user.avatar", "user.lv", "user.gender"});
-        com.clilystudio.netbook.hpay100.a.a.e((Context) SettingsActivity1, "pref_new_unimp_notif_time", "0");
-        com.clilystudio.netbook.hpay100.a.a.e((Context) SettingsActivity1, "pref_new_imp_notif_time", "0");
-        com.clilystudio.netbook.hpay100.a.a.b((Context) SettingsActivity1, "remove_ad_duration", 0L);
-        SettingsActivity1.finish();
+    static /* synthetic */ void c(SettingsActivity settingsActivity) {
+        e.a((Activity) settingsActivity, (String) "\u5df2\u767b\u51fa");
+        new Thread(new ca(settingsActivity, am.e().getToken())).start();
+        MyApplication.a().a("account.token", "user.id", "user.name", "user.avatar", "user.lv", "user.gender");
+        a.e((Context) settingsActivity, "pref_new_unimp_notif_time", "0");
+        a.e((Context) settingsActivity, "pref_new_imp_notif_time", "0");
+        a.b((Context) settingsActivity, "remove_ad_duration", 0);
+        settingsActivity.finish();
         i.a().c(new u());
     }
-// Error: Internal #201: 
-// The following method may not be correct.
 
-    public void onClick(View View1) {
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            default: {
+                return;
+            }
+            case 2131493197: {
+                h h2 = new h(this);
+                int[] arrn = new int[]{2131493985, 2131493986};
+                int[] arrn2 = new int[]{2131034484, 2131034483};
+                View view2 = this.getLayoutInflater().inflate(2130903392, null, false);
+                h2.d = "\u4e66\u67b6\u6392\u5e8f\u65b9\u5f0f";
+                AlertDialog alertDialog = h2.a(view2).b("\u53d6\u6d88", null).a();
+                ((RadioGroup) view2.findViewById(2131493984)).check(arrn[this.a]);
+                for (int i2 = 0; i2 < 2; ++i2) {
+                    ((RadioButton) view2.findViewById(arrn[i2])).setOnClickListener(new bY(this, alertDialog, i2, arrn2));
+                }
+                alertDialog.show();
+                return;
+            }
+            case 2131493202: {
+                this.startActivity(new Intent(this, DisclaimerActivity.class));
+                return;
+            }
+            case 2131493205: {
+                this.startActivity(CommonPostListActivity.a(this, "android-feedback"));
+                return;
+            }
+            case 2131493206: {
+                am.a((Activity) this, (String) ("market://details?id=" + this.getPackageName()), (String) "\u6253\u5f00\u5e94\u7528\u5e02\u573a\u5931\u8d25");
+                return;
+            }
+            case 2131493203:
+        }
+        am.a((Activity) this, (String) "http://www.lagou.com/gongsi/493.html?speedShow=true", (String) null);
     }
 
-    public void onCreate(Bundle Bundle1) {
-        TextView TextView2;
-        StringBuilder StringBuilder3;
-        String String4;
-        String String5;
-        boolean boolean6;
-        boolean boolean7;
-        Object Object8;
-        Object Object9;
-        Object Object10;
-
-        super.onCreate(Bundle1);
-        setContentView(2130903129);
-        if (getIntent().getBooleanExtra("from_user_info", false))
-            a(2131034485, "\u9000\u51FA\u767B\u5F55", (aa) new bU(this));
-        else
-            b(2131034485);
-        findViewById(2131493197).setOnClickListener(this);
-        findViewById(2131493202).setOnClickListener(this);
-        findViewById(2131493205).setOnClickListener(this);
-        findViewById(2131493206).setOnClickListener(this);
-        TextView2 = (TextView) findViewById(2131493207);
-        StringBuilder3 = new StringBuilder().append(am.g((Context) this)).append("(");
-        String4 = (String) am.c((Context) this, "COMMIT_ID");
-        if (String4 != null && String4.length() > 8)
-            String5 = String4.substring(0, 8);
-        else
-            String5 = null;
-        TextView2.setText((CharSequence) StringBuilder3.append(String5).append(")").toString());
-        TextView2.setOnLongClickListener((View$OnLongClickListener) new bV(this));
-        boolean6 = com.clilystudio.netbook.hpay100.a.a.l((Context) this, "update_notice_key");
-        boolean7 = com.clilystudio.netbook.hpay100.a.a.a((Context) this, "save_bandwidth", false);
-        Object8 = (SwitchCompat) findViewById(2131493200);
-        Object9 = (SwitchCompat) findViewById(2131493201);
-        ((SwitchCompat) Object8).setChecked(boolean6);
-        a((View) Object8, boolean6);
-        ((SwitchCompat) Object9).setChecked(boolean7);
-        a((View) Object9, boolean7);
-        ((SwitchCompat) Object8).setOnCheckedChangeListener((CompoundButton$OnCheckedChangeListener) new bW(this, (SwitchCompat) Object8));
-        ((SwitchCompat) Object9).setOnCheckedChangeListener((CompoundButton$OnCheckedChangeListener) new bX(this, (SwitchCompat) Object9));
-        if ("1".equals(com.umeng.a.b.b((Context) this, "enable_job"))) {
-            View View11 = findViewById(2131493203);
-
-            View11.setVisibility(0);
-            View11.setOnClickListener(this);
-            findViewById(2131493204).setVisibility(0);
+    /*
+     * Enabled aggressive block sorting
+     */
+    @Override
+    public void onCreate(Bundle bundle) {
+        super.onCreate(bundle);
+        this.setContentView(2130903129);
+        if (this.getIntent().getBooleanExtra("from_user_info", false)) {
+            this.a(2131034485, "\u9000\u51fa\u767b\u5f55", (aa) new bU(this));
+        } else {
+            this.b(2131034485);
         }
-        a = com.clilystudio.netbook.hpay100.a.a.a((Context) this, "key_shelf_sort", 1);
-        Object10 = getResources().getStringArray(2131361805)[a];
-        ((TextView) findViewById(2131493198)).setText((CharSequence) Object10);
+        this.findViewById(2131493197).setOnClickListener(this);
+        this.findViewById(2131493202).setOnClickListener(this);
+        this.findViewById(2131493205).setOnClickListener(this);
+        this.findViewById(2131493206).setOnClickListener(this);
+        TextView textView = (TextView) this.findViewById(2131493207);
+        StringBuilder stringBuilder = new StringBuilder().append(am.g((Context) this)).append("(");
+        String string = (String) am.c((Context) this, (String) "COMMIT_ID");
+        String string2 = string != null && string.length() > 8 ? string.substring(0, 8) : null;
+        textView.setText(stringBuilder.append(string2).append(")").toString());
+        textView.setOnLongClickListener(new bV(this));
+        boolean bl = a.l(this, "update_notice_key");
+        boolean bl2 = a.a((Context) this, "save_bandwidth", false);
+        SwitchCompat switchCompat = (SwitchCompat) this.findViewById(2131493200);
+        SwitchCompat switchCompat2 = (SwitchCompat) this.findViewById(2131493201);
+        switchCompat.setChecked(bl);
+        SettingsActivity.a(switchCompat, bl);
+        switchCompat2.setChecked(bl2);
+        SettingsActivity.a(switchCompat2, bl2);
+        switchCompat.setOnCheckedChangeListener(new bW(this, switchCompat));
+        switchCompat2.setOnCheckedChangeListener(new bX(this, switchCompat2));
+        if ("1".equals(b.b(this, "enable_job"))) {
+            View view = this.findViewById(2131493203);
+            view.setVisibility(0);
+            view.setOnClickListener(this);
+            this.findViewById(2131493204).setVisibility(0);
+        }
+        this.a = a.a((Context) this, "key_shelf_sort", 1);
+        String string3 = this.getResources().getStringArray(2131361805)[this.a];
+        ((TextView) this.findViewById(2131493198)).setText(string3);
     }
 }

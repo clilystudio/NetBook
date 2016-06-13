@@ -1,23 +1,22 @@
 package com.clilystudio.netbook.model;
 
 public class VipPlan {
-
     private boolean ok;
     private VipPlan$Plan[] plans;
 
     public VipPlan$Plan[] getPlans() {
-        return plans;
+        return this.plans;
     }
 
-    public void setPlans(VipPlan$Plan[] Plan_1darray1) {
-        plans = Plan_1darray1;
+    public void setPlans(VipPlan$Plan[] arrvipPlan$Plan) {
+        this.plans = arrvipPlan$Plan;
     }
 
     public boolean isOk() {
-        return ok;
+        return this.ok;
     }
 
-    public void setOk(boolean boolean1) {
-        ok = boolean1;
+    public void setOk(boolean bl) {
+        this.ok = bl;
     }
 }

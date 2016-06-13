@@ -4,21 +4,22 @@ import com.clilystudio.netbook.db.BookFile;
 
 import java.io.File;
 
-final class cm implements r {
+final class cm
+        implements r {
+    private /* synthetic */ BookFile a;
 
-    private BookFile a;
-
-    cm(WifiActivity WifiActivity1, BookFile BookFile2) {
-        a = BookFile2;
+    cm(WifiActivity wifiActivity, BookFile bookFile) {
+        this.a = bookFile;
     }
 
-    public final void a(com.koushikdutta.async.http.server.h h1, l l2) {
-        File File3 = com.clilystudio.netbook.hpay100.a.a.I(a.getName());
-
-        if (File3 != null) {
+    @Override
+    public final void a(h h2, l l2) {
+        File file = a.I(this.a.getName());
+        if (file != null) {
             l2.c().a().a("Content-Disposition", "attachment");
-            l2.a(File3);
-        } else
-            l2.a("error");
+            l2.a(file);
+            return;
+        }
+        l2.a("error");
     }
 }

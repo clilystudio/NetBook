@@ -2,62 +2,64 @@ package com.clilystudio.netbook.reader;
 
 import com.clilystudio.netbook.reader.txt.U;
 
-abstract class aa implements Runnable {
-
+abstract class aa
+        implements Runnable {
     private boolean a;
-    private Reader b;
-    protected aa(Reader Reader1, boolean boolean2) {
-        b = Reader1;
-        a = boolean2;
+    private /* synthetic */ Reader b;
+
+    protected aa(Reader reader, boolean bl) {
+        this.b = reader;
+        this.a = bl;
     }
 
     private void c() {
-        Reader.a(b, Reader.l(b).getHost());
-        Reader.a(b, Reader.l(b).getChapters());
-        Reader.d(b).post((Runnable) new ab(this));
+        Reader.a(this.b, Reader.l(this.b).getHost());
+        Reader.a(this.b, Reader.l(this.b).getChapters());
+        Reader.d(this.b).post((Runnable) ((Object) new ab(this)));
     }
 
     public abstract void a();
 
     public abstract void b();
 
+    /*
+     * Enabled aggressive block sorting
+     */
+    @Override
     public void run() {
-        int int4;
-
-        Reader.a(b, 0, Reader$Type.TOC);
-        if (Reader.f(b)) {
-            Reader.a(b, U.a(Reader.g(b)));
-            int4 = 0;
+        boolean bl;
+        Reader.a(this.b, 0, Reader$Type.TOC);
+        if (Reader.f(this.b)) {
+            Reader.a(this.b, U.a(Reader.g(this.b)));
+            bl = false;
         } else {
-            int int3;
-
-            Reader.a(b, Reader.a(b, Reader.h(b), Reader.i(b), Reader.j(b)));
-            Reader.a(b, Reader.k(b));
-            if (Reader.l(b) == null || a)
-                int3 = 1;
-            else
-                int3 = 0;
-            if (int3 != 0) {
-                Reader.a(b, Reader.m(b));
-                int4 = 0;
-            } else
-                int4 = 1;
+            Reader.a(this.b, Reader.a(this.b, Reader.h(this.b), Reader.i(this.b), Reader.j(this.b)));
+            Reader.a(this.b, Reader.k(this.b));
+            boolean bl2 = Reader.l(this.b) == null || this.a;
+            if (bl2) {
+                Reader.a(this.b, Reader.m(this.b));
+                bl = false;
+            } else {
+                bl = true;
+            }
         }
-        if (Reader.l(b) != null) {
-            c();
-            if (!com.clilystudio.netbook.reader.Reader.f(b) && int4 == 0)
-                Reader.b(b, Reader.l(b));
-            if (int4 != 0) {
-                Reader.a(b, new ag(b));
-                Reader.n(b).b(new String[0]);
+        if (Reader.l(this.b) != null) {
+            this.c();
+            if (!Reader.f(this.b) && !bl) {
+                Reader.b(this.b, Reader.l(this.b));
+            }
+            if (bl) {
+                Reader.a(this.b, new ag(this.b));
+                Reader.n(this.b).b(new String[0]);
             }
         } else {
-            Reader.a(b, Reader.k(b));
-            if (Reader.l(b) != null)
-                c();
-            else
-                Reader.d(b).post((Runnable) new ac(this));
+            Reader.a(this.b, Reader.k(this.b));
+            if (Reader.l(this.b) != null) {
+                this.c();
+            } else {
+                Reader.d(this.b).post((Runnable) ((Object) new ac(this)));
+            }
         }
-        Reader.a(b, 1, Reader$Type.TOC);
+        Reader.a(this.b, 1, Reader$Type.TOC);
     }
 }

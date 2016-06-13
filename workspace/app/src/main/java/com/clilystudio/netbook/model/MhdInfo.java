@@ -1,7 +1,6 @@
 package com.clilystudio.netbook.model;
 
 public class MhdInfo {
-
     private String author;
     private String bigbookid;
     private String clickrate;
@@ -11,58 +10,58 @@ public class MhdInfo {
     private int position;
 
     public String getAuthor() {
-        return author;
+        return this.author;
     }
 
-    public void setAuthor(String String1) {
-        author = String1;
+    public void setAuthor(String string) {
+        this.author = string;
     }
 
     public String getBigbookid() {
-        return bigbookid;
+        return this.bigbookid;
     }
 
-    public void setBigbookid(String String1) {
-        bigbookid = String1;
+    public void setBigbookid(String string) {
+        this.bigbookid = string;
     }
 
     public String getClickrate() {
-        return clickrate;
+        return this.clickrate;
     }
 
-    public void setClickrate(String String1) {
-        clickrate = String1;
+    public void setClickrate(String string) {
+        this.clickrate = string;
     }
 
     public String getCoverurl() {
-        return coverurl;
+        return this.coverurl;
     }
 
-    public void setCoverurl(String String1) {
-        coverurl = String1;
+    public void setCoverurl(String string) {
+        this.coverurl = string;
     }
 
     public String getDescription() {
-        return description;
+        return this.description;
     }
 
-    public void setDescription(String String1) {
-        description = String1;
+    public void setDescription(String string) {
+        this.description = string;
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
-    public void setName(String String1) {
-        name = String1;
+    public void setName(String string) {
+        this.name = string;
     }
 
     public int getPosition() {
-        return position;
+        return this.position;
     }
 
-    public void setPosition(int int1) {
-        position = int1;
+    public void setPosition(int n) {
+        this.position = n;
     }
 }

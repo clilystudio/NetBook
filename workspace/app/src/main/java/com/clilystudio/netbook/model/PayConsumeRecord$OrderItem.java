@@ -1,41 +1,40 @@
 package com.clilystudio.netbook.model;
 
 public class PayConsumeRecord$OrderItem {
-
     private String book;
     private String bookName;
     private String chapterTitle;
     private int price;
 
     public String getBook() {
-        return book;
+        return this.book;
     }
 
-    public void setBook(String String1) {
-        book = String1;
+    public void setBook(String string) {
+        this.book = string;
     }
 
     public String getBookName() {
-        return bookName;
+        return this.bookName;
     }
 
-    public void setBookName(String String1) {
-        bookName = String1;
+    public void setBookName(String string) {
+        this.bookName = string;
     }
 
     public String getChapterTitle() {
-        return chapterTitle;
+        return this.chapterTitle;
     }
 
-    public void setChapterTitle(String String1) {
-        chapterTitle = String1;
+    public void setChapterTitle(String string) {
+        this.chapterTitle = string;
     }
 
     public int getPrice() {
-        return price;
+        return this.price;
     }
 
-    public void setPrice(int int1) {
-        price = int1;
+    public void setPrice(int n) {
+        this.price = n;
     }
 }

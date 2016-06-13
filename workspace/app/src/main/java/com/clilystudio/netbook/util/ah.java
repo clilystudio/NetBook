@@ -1,19 +1,22 @@
 package com.clilystudio.netbook.util;
 
 import android.os.Bundle;
-import android.os.Handler$Callback;
+import android.os.Handler;
 import android.os.Message;
 
-final class ah implements Handler$Callback {
+final class ah
+        implements Handler.Callback {
+    ah() {
+    }
 
-    public final boolean handleMessage(Message Message1) {
-        Bundle Bundle2 = Message1.getData();
-        int int3 = Bundle2.getInt("postCount");
-        String String4 = Bundle2.getString("bookId");
-
-        if (ag.a().containsKey(String4)) {
-            ((ai) ag.a().remove(String4)).a(String4, int3);
-            ag.b().put(String4, Integer.valueOf(int3));
+    @Override
+    public final boolean handleMessage(Message message) {
+        Bundle bundle = message.getData();
+        int n = bundle.getInt("postCount");
+        String string = bundle.getString("bookId");
+        if (ag.a().containsKey(string)) {
+            ((ai) ag.a().remove(string)).a(string, n);
+            ag.b().put(string, n);
         }
         return true;
     }

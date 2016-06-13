@@ -1,19 +1,21 @@
 package com.clilystudio.netbook.reader;
 
-final class P extends aa {
+final class P
+        extends aa {
+    private /* synthetic */ ad a;
 
-    private ad a;
-
-    P(Reader Reader1, boolean boolean2, ad ad3) {
-        super(Reader1, boolean2);
-        a = ad3;
+    P(Reader reader, boolean bl, ad ad2) {
+        this.a = ad2;
+        super(reader, bl);
     }
 
+    @Override
     public final void a() {
-        a.a();
+        this.a.a();
     }
 
+    @Override
     public final void b() {
-        a.b();
+        this.a.b();
     }
 }

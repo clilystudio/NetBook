@@ -8,18 +8,17 @@ import com.clilystudio.netbook.widget.GiftGameGameButton;
 import butterknife.ButterKnife$Finder;
 
 public class GameGiftGroupAdapter$GameHolder$$ViewInjector {
-
-    public static void inject(ButterKnife$Finder Finder1, GameGiftGroupAdapter$GameHolder GameHolder2, Object Object3) {
-        GameHolder2.icon = (SmartImageView) Finder1.findRequiredView(Object3, 2131493028, "field 'icon'");
-        GameHolder2.title = (TextView) Finder1.findRequiredView(Object3, 2131492936, "field 'title'");
-        GameHolder2.desc = (TextView) Finder1.findRequiredView(Object3, 2131493481, "field 'desc'");
-        GameHolder2.button = (GiftGameGameButton) Finder1.findRequiredView(Object3, 2131492916, "field 'button'");
+    public static void inject(ButterKnife$Finder butterKnife$Finder, GameGiftGroupAdapter$GameHolder gameGiftGroupAdapter$GameHolder, Object object) {
+        gameGiftGroupAdapter$GameHolder.icon = (SmartImageView) butterKnife$Finder.findRequiredView(object, 2131493028, "field 'icon'");
+        gameGiftGroupAdapter$GameHolder.title = (TextView) butterKnife$Finder.findRequiredView(object, 2131492936, "field 'title'");
+        gameGiftGroupAdapter$GameHolder.desc = (TextView) butterKnife$Finder.findRequiredView(object, 2131493481, "field 'desc'");
+        gameGiftGroupAdapter$GameHolder.button = (GiftGameGameButton) butterKnife$Finder.findRequiredView(object, 2131492916, "field 'button'");
     }
 
-    public static void reset(GameGiftGroupAdapter$GameHolder GameHolder1) {
-        GameHolder1.icon = null;
-        GameHolder1.title = null;
-        GameHolder1.desc = null;
-        GameHolder1.button = null;
+    public static void reset(GameGiftGroupAdapter$GameHolder gameGiftGroupAdapter$GameHolder) {
+        gameGiftGroupAdapter$GameHolder.icon = null;
+        gameGiftGroupAdapter$GameHolder.title = null;
+        gameGiftGroupAdapter$GameHolder.desc = null;
+        gameGiftGroupAdapter$GameHolder.button = null;
     }
 }

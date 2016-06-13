@@ -4,7 +4,6 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 
 public class AliPayOrder$PayOrder {
-
     private String _input_charset;
     private String body;
     private String it_b_pay;
@@ -20,127 +19,134 @@ public class AliPayOrder$PayOrder {
     private String total_fee;
 
     public String getBody() {
-        return body;
+        return this.body;
     }
 
-    public void setBody(String String1) {
-        body = String1;
+    public void setBody(String string) {
+        this.body = string;
     }
 
     public String getIt_b_pay() {
-        return it_b_pay;
+        return this.it_b_pay;
     }
 
-    public void setIt_b_pay(String String1) {
-        it_b_pay = String1;
+    public void setIt_b_pay(String string) {
+        this.it_b_pay = string;
     }
 
     public String getNotify_url() {
-        return notify_url;
+        return this.notify_url;
     }
 
-    public void setNotify_url(String String1) {
-        notify_url = String1;
+    public void setNotify_url(String string) {
+        this.notify_url = string;
     }
 
     public String getOut_trade_no() {
-        return out_trade_no;
+        return this.out_trade_no;
     }
 
-    public void setOut_trade_no(String String1) {
-        out_trade_no = String1;
+    public void setOut_trade_no(String string) {
+        this.out_trade_no = string;
     }
 
     public String getPartner() {
-        return partner;
+        return this.partner;
     }
 
-    public void setPartner(String String1) {
-        partner = String1;
+    public void setPartner(String string) {
+        this.partner = string;
     }
 
+    /*
+     * Enabled force condition propagation
+     * Lifted jumps to return sites
+     */
     public String getPayString() {
-        String String1 = new StringBuilder("_input_charset=\"").append(_input_charset).append("\"").toString();
-        String String2 = new StringBuilder().append(String1).append("&body=\"").append(body).append("\"").toString();
-        String String3 = new StringBuilder().append(String2).append("&it_b_pay=\"").append(it_b_pay).append("\"").toString();
-        String String4 = new StringBuilder().append(String3).append("&notify_url=\"").append(notify_url).append("\"").toString();
-        String String5 = new StringBuilder().append(String4).append("&out_trade_no=\"").append(out_trade_no).append("\"").toString();
-        String String6 = new StringBuilder().append(String5).append("&partner=\"").append(partner).append("\"").toString();
-        String String7 = new StringBuilder().append(String6).append("&payment_type=\"").append(payment_type).append("\"").toString();
-        String String8 = new StringBuilder().append(String7).append("&seller_id=\"").append(seller_id).append("\"").toString();
-        String String9 = new StringBuilder().append(String8).append("&service=\"").append(service).append("\"").toString();
-        String String10 = new StringBuilder().append(String9).append("&subject=\"").append(subject).append("\"").toString();
-        String String11 = new StringBuilder().append(String10).append("&total_fee=\"").append(total_fee).append("\"").toString();
-
+        String string = "_input_charset=\"" + this._input_charset + "\"";
+        String string2 = string + "&body=\"" + this.body + "\"";
+        String string3 = string2 + "&it_b_pay=\"" + this.it_b_pay + "\"";
+        String string4 = string3 + "&notify_url=\"" + this.notify_url + "\"";
+        String string5 = string4 + "&out_trade_no=\"" + this.out_trade_no + "\"";
+        String string6 = string5 + "&partner=\"" + this.partner + "\"";
+        String string7 = string6 + "&payment_type=\"" + this.payment_type + "\"";
+        String string8 = string7 + "&seller_id=\"" + this.seller_id + "\"";
+        String string9 = string8 + "&service=\"" + this.service + "\"";
+        String string10 = string9 + "&subject=\"" + this.subject + "\"";
+        String string11 = string10 + "&total_fee=\"" + this.total_fee + "\"";
         try {
-            sign = URLEncoder.encode(sign, "UTF-8");
-        } catch (UnsupportedEncodingException UnsupportedEncodingException12) {
-            UnsupportedEncodingException12.printStackTrace();
+            this.sign = URLEncoder.encode(this.sign, "UTF-8");
+            do {
+                return string11 + "&sign=\"" + this.sign + "\"&sign_type=\"" + this.sign_type + "\"";
+                break;
+            } while (true);
+        } catch (UnsupportedEncodingException var12_12) {
+            var12_12.printStackTrace();
+            return string11 + "&sign=\"" + this.sign + "\"&sign_type=\"" + this.sign_type + "\"";
         }
-        return new StringBuilder().append(String11).append("&sign=\"").append(sign).append("\"&sign_type=\"").append(sign_type).append("\"").toString();
     }
 
     public String getPayment_type() {
-        return payment_type;
+        return this.payment_type;
     }
 
-    public void setPayment_type(String String1) {
-        payment_type = String1;
+    public void setPayment_type(String string) {
+        this.payment_type = string;
     }
 
     public String getSeller_id() {
-        return seller_id;
+        return this.seller_id;
     }
 
-    public void setSeller_id(String String1) {
-        seller_id = String1;
+    public void setSeller_id(String string) {
+        this.seller_id = string;
     }
 
     public String getService() {
-        return service;
+        return this.service;
     }
 
-    public void setService(String String1) {
-        service = String1;
+    public void setService(String string) {
+        this.service = string;
     }
 
     public String getSign() {
-        return sign;
+        return this.sign;
     }
 
-    public void setSign(String String1) {
-        sign = String1;
+    public void setSign(String string) {
+        this.sign = string;
     }
 
     public String getSign_type() {
-        return sign_type;
+        return this.sign_type;
     }
 
-    public void setSign_type(String String1) {
-        sign_type = String1;
+    public void setSign_type(String string) {
+        this.sign_type = string;
     }
 
     public String getSubject() {
-        return subject;
+        return this.subject;
     }
 
-    public void setSubject(String String1) {
-        subject = String1;
+    public void setSubject(String string) {
+        this.subject = string;
     }
 
     public String getTotal_fee() {
-        return total_fee;
+        return this.total_fee;
     }
 
-    public void setTotal_fee(String String1) {
-        total_fee = String1;
+    public void setTotal_fee(String string) {
+        this.total_fee = string;
     }
 
     public String get_input_charset() {
-        return _input_charset;
+        return this._input_charset;
     }
 
-    public void set_input_charset(String String1) {
-        _input_charset = String1;
+    public void set_input_charset(String string) {
+        this._input_charset = string;
     }
 }

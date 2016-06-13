@@ -2,77 +2,72 @@ package com.clilystudio.netbook.ui.user;
 
 import android.app.Activity;
 
+import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.model.Topic;
 import com.clilystudio.netbook.model.TopicPost;
+import com.clilystudio.netbook.util.e;
 
-import java.util.Collection;
+final class G
+        extends com.clilystudio.netbook.a.e<String, Void, Topic> {
+    private /* synthetic */ MyTopicFragment a;
 
-final class G extends com.clilystudio.netbook.a.e {
-
-    private MyTopicFragment a;
-
-    G(MyTopicFragment MyTopicFragment1, byte byte2) {
-        this(MyTopicFragment1);
+    private G(MyTopicFragment myTopicFragment) {
+        this.a = myTopicFragment;
     }
 
-    private G(MyTopicFragment MyTopicFragment1) {
-        a = MyTopicFragment1;
+    /* synthetic */ G(MyTopicFragment myTopicFragment, byte by) {
+        this(myTopicFragment);
     }
 
-    private static transient Topic a(String[] String_1darray1) {
-        Topic Topic4;
-
+    private static /* varargs */ Topic a(String... arrstring) {
         try {
-            com.clilystudio.netbook.api.b.a();
-            Topic4 = com.clilystudio.netbook.api.b.b().e(String_1darray1[0], 0);
-        } catch (Exception Exception2) {
-            Exception2.printStackTrace();
+            b.a();
+            Topic topic = b.b().e(arrstring[0], 0);
+            return topic;
+        } catch (Exception var1_2) {
+            var1_2.printStackTrace();
             return null;
         }
-        return Topic4;
     }
 
-    protected final Object doInBackground(Object[] Object_1darray1) {
-        return a((String[]) Object_1darray1);
+    @Override
+    protected final /* synthetic */ Object doInBackground(Object[] arrobject) {
+        return G.a((String[]) arrobject);
     }
 
-    protected final void onPostExecute(Object Object1) {
-        int int2 = 0;
-        Object Object3 = (Topic) Object1;
-
-        super.onPostExecute(Object3);
-        MyTopicFragment.a(a).setVisibility(8);
-        MyTopicFragment.c(a).setVisibility(8);
-        MyTopicFragment.i(a).setVisibility(8);
-        MyTopicFragment.d(a).n();
-        if (Object3 != null && ((Topic) Object3).getPosts() != null) {
-            Object[] Object_1darray4;
-            int int5;
-
-            MyTopicFragment.h(a).clear();
-            Object_1darray4 = ((Topic) Object3).getPosts();
-            int5 = Object_1darray4.length;
-            if (int5 > 0) {
-                int int6 = Object_1darray4.length;
-
-                while (int2 < int6) {
-                    Object Object7 = Object_1darray4[int2];
-
-                    if (((TopicPost) Object7).getBook() != null)
-                        MyTopicFragment.h(a).add(Object7);
-                    ++int2;
+    /*
+     * Enabled aggressive block sorting
+     */
+    @Override
+    protected final /* synthetic */ void onPostExecute(Object object) {
+        Topic topic = (Topic) object;
+        super.onPostExecute(topic);
+        MyTopicFragment.a(this.a).setVisibility(8);
+        MyTopicFragment.c(this.a).setVisibility(8);
+        MyTopicFragment.i(this.a).setVisibility(8);
+        MyTopicFragment.d(this.a).n();
+        if (topic != null && topic.getPosts() != null) {
+            MyTopicFragment.h(this.a).clear();
+            TopicPost[] arrtopicPost = topic.getPosts();
+            int n = arrtopicPost.length;
+            if (n > 0) {
+                for (TopicPost topicPost : arrtopicPost) {
+                    if (topicPost.getBook() == null) continue;
+                    MyTopicFragment.h(this.a).add(topicPost);
                 }
-                if (int5 < 10)
-                    MyTopicFragment.d(a).setOnLastItemVisibleListener(null);
-                else
-                    MyTopicFragment.d(a).setOnLastItemVisibleListener(MyTopicFragment.j(a));
+                if (n < 10) {
+                    MyTopicFragment.d(this.a).setOnLastItemVisibleListener(null);
+                } else {
+                    MyTopicFragment.d(this.a).setOnLastItemVisibleListener(MyTopicFragment.j(this.a));
+                }
             } else {
-                MyTopicFragment.a(a).setVisibility(0);
-                MyTopicFragment.a(a).setText((CharSequence) "\u4F60\u8FD8\u6CA1\u6709\u53D1\u5E03\u54E6\uFF0C\u5FEB\u53BB\u53D1\u5E03\u4E00\u4E2A\u5427");
+                MyTopicFragment.a(this.a).setVisibility(0);
+                MyTopicFragment.a(this.a).setText("\u4f60\u8fd8\u6ca1\u6709\u53d1\u5e03\u54e6\uff0c\u5feb\u53bb\u53d1\u5e03\u4e00\u4e2a\u5427");
             }
-            MyTopicFragment.k(a).a((Collection) MyTopicFragment.h(a));
-            MyTopicFragment.a(a, MyTopicFragment.h(a).size());
-        } else
-            com.clilystudio.netbook.util.e.a((Activity) a.getActivity(), "\u52A0\u8F7D\u5931\u8D25\uFF0C\u8BF7\u68C0\u67E5\u7F51\u7EDC\u6216\u8005\u7A0D\u540E\u518D\u8BD5");
+            MyTopicFragment.k(this.a).a(MyTopicFragment.h(this.a));
+            MyTopicFragment.a(this.a, MyTopicFragment.h(this.a).size());
+            return;
+        }
+        e.a((Activity) this.a.getActivity(), (String) "\u52a0\u8f7d\u5931\u8d25\uff0c\u8bf7\u68c0\u67e5\u7f51\u7edc\u6216\u8005\u7a0d\u540e\u518d\u8bd5");
     }
 }

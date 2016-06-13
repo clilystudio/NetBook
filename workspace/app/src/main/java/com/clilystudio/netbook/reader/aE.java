@@ -1,17 +1,17 @@
 package com.clilystudio.netbook.reader;
 
-final class aE implements e {
+final class aE
+        implements e<n> {
+    private /* synthetic */ aD a;
 
-    private aD a;
-
-    aE(aD aD1) {
-        a = aD1;
+    aE(aD aD2) {
+        this.a = aD2;
     }
 
-    public final void a(Object Object1) {
-        n n2 = (n) Object1;
-
-        ReaderActivity.i(a.a)[0].a(n2);
-        ReaderActivity.X(a.a);
+    @Override
+    public final /* synthetic */ void a(Object object) {
+        n n2 = (n) object;
+        ReaderActivity.i(this.a.a)[0].a(n2);
+        ReaderActivity.X(this.a.a);
     }
 }

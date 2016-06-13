@@ -5,33 +5,33 @@ import com.clilystudio.netbook.event.A;
 import com.clilystudio.netbook.event.i;
 import com.clilystudio.netbook.model.RemoteBookShelf;
 
-final class ab extends e {
+final class ab
+        extends e<String, Void, RemoteBookShelf> {
+    private /* synthetic */ Z a;
 
-    private Z a;
-
-    ab(Z Z1, byte byte2) {
-        this(Z1);
+    private ab(Z z) {
+        this.a = z;
     }
 
-    private ab(Z Z1) {
-        a = Z1;
+    /* synthetic */ ab(Z z, byte by) {
+        this(z);
     }
 
-    protected final Object doInBackground(Object[] Object_1darray1) {
-        String[] String_1darray2 = (String[]) Object_1darray1;
-
+    @Override
+    protected final /* synthetic */ Object doInBackground(Object[] arrobject) {
+        String[] arrstring = (String[]) arrobject;
         Z.b(true);
-        return Z.a(a, String_1darray2[0]);
+        return Z.a(this.a, arrstring[0]);
     }
 
-    protected final void onPostExecute(Object Object1) {
-        Object Object2 = (RemoteBookShelf) Object1;
-
-        super.onPostExecute(Object2);
+    @Override
+    protected final /* synthetic */ void onPostExecute(Object object) {
+        RemoteBookShelf remoteBookShelf = (RemoteBookShelf) object;
+        super.onPostExecute(remoteBookShelf);
         Z.b(false);
-        if (Object2 != null && ((RemoteBookShelf) Object2).isNeedSync() && ((RemoteBookShelf) Object2).isOk()) {
-            Z.a(a, (RemoteBookShelf) Object2);
-            i.a().c(new A(((RemoteBookShelf) Object2).getTotalBookCounts()));
+        if (remoteBookShelf != null && remoteBookShelf.isNeedSync() && remoteBookShelf.isOk()) {
+            Z.a(this.a, remoteBookShelf);
+            i.a().c(new A(remoteBookShelf.getTotalBookCounts()));
         }
     }
 }

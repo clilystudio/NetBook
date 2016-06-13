@@ -1,8 +1,6 @@
 package com.clilystudio.netbook.ui.user;
 
-import android.app.Activity;
 import android.os.Bundle;
-import android.view.View$OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -12,40 +10,36 @@ import com.clilystudio.netbook.ui.BaseActivity;
 import com.clilystudio.netbook.util.e;
 
 import butterknife.ButterKnife;
+import butterknife.InjectView;
 
-public class UserLevelActivity extends BaseActivity {
-
+public class UserLevelActivity
+        extends BaseActivity {
+    @InjectView(value = 2131493248)
     TextView mCurrentLevel;
+    @InjectView(value = 2131493253)
     Button mDoTask;
+    @InjectView(value = 2131493249)
     TextView mLevelProgress;
+    @InjectView(value = 2131493250)
     TextView mLevelRank;
 
-    public void onCreate(Bundle Bundle1) {
-        UserInfo UserInfo2;
-        int int3;
-        int int4;
-        int int5;
-        float float6;
-        TextView TextView7;
-        StringBuilder StringBuilder8;
-        Object[] Object_1darray9;
-
-        super.onCreate(Bundle1);
-        setContentView(2130903142);
-        ButterKnife.inject((Activity) this);
-        b("\u7ECF\u9A8C\u7B49\u7EA7");
-        UserInfo2 = (UserInfo) MyApplication.a().b("savedObject_userinfo");
-        int3 = UserInfo2.getLv();
-        int4 = UserInfo2.getExp();
-        int5 = e.a(int3);
-        mCurrentLevel.setText((CharSequence) new StringBuilder().append(int3).append("\u7EA7").toString());
-        mLevelProgress.setText((CharSequence) new StringBuilder().append(int4).append("/").append(int5).toString());
-        float6 = UserInfo2.getRank();
-        TextView7 = mLevelRank;
-        StringBuilder8 = new StringBuilder("\u8D85\u8FC7");
-        Object_1darray9 = new Object[1];
-        Object_1darray9[0] = Float.valueOf(float6 * 100.0F);
-        TextView7.setText((CharSequence) StringBuilder8.append(String.format("%.2f", Object_1darray9)).append("%\u7684\u8FFD\u4E66\u7528\u6237").toString());
-        mDoTask.setOnClickListener((View$OnClickListener) new aL(this));
+    @Override
+    public void onCreate(Bundle bundle) {
+        super.onCreate(bundle);
+        this.setContentView(2130903142);
+        ButterKnife.inject(this);
+        this.b("\u7ecf\u9a8c\u7b49\u7ea7");
+        UserInfo userInfo = (UserInfo) MyApplication.a().b("savedObject_userinfo");
+        int n = userInfo.getLv();
+        int n2 = userInfo.getExp();
+        int n3 = e.a((int) n);
+        this.mCurrentLevel.setText("" + n + "\u7ea7");
+        this.mLevelProgress.setText("" + n2 + "/" + n3);
+        float f = userInfo.getRank();
+        TextView textView = this.mLevelRank;
+        StringBuilder stringBuilder = new StringBuilder("\u8d85\u8fc7");
+        Object[] arrobject = new Object[]{Float.valueOf(f * 100.0f)};
+        textView.setText(stringBuilder.append(String.format("%.2f", arrobject)).append("%\u7684\u8ffd\u4e66\u7528\u6237").toString());
+        this.mDoTask.setOnClickListener(new aL(this));
     }
 }

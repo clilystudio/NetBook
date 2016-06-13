@@ -1,55 +1,62 @@
 package com.clilystudio.netbook.ui;
 
 import com.clilystudio.netbook.a.e;
+import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.model.SecretAppItemRoot;
 
 import java.io.IOException;
 import java.util.Arrays;
 
-final class bp extends e {
+final class bp
+        extends e<String, Void, SecretAppItemRoot> {
+    private /* synthetic */ MysteryActivity a;
 
-    private MysteryActivity a;
-
-    bp(MysteryActivity MysteryActivity1, byte byte2) {
-        this(MysteryActivity1);
+    private bp(MysteryActivity mysteryActivity) {
+        this.a = mysteryActivity;
     }
 
-    private bp(MysteryActivity MysteryActivity1) {
-        a = MysteryActivity1;
+    /* synthetic */ bp(MysteryActivity mysteryActivity, byte by) {
+        this(mysteryActivity);
     }
 
-    private transient SecretAppItemRoot a() {
-        SecretAppItemRoot SecretAppItemRoot3;
-
-        MysteryActivity.a(a, true);
+    private /* varargs */ SecretAppItemRoot a() {
+        MysteryActivity.a(this.a, true);
         try {
-            SecretAppItemRoot3 = com.clilystudio.netbook.api.b.b().n();
-        } catch (IOException IOException2) {
-            IOException2.printStackTrace();
+            SecretAppItemRoot secretAppItemRoot = b.b().n();
+            return secretAppItemRoot;
+        } catch (IOException var2_2) {
+            var2_2.printStackTrace();
             return null;
         }
-        return SecretAppItemRoot3;
     }
 
-    protected final Object doInBackground(Object[] Object_1darray1) {
-        return a();
+    /*
+     * Exception decompiling
+     */
+    @Override
+    protected final /* synthetic */ Object doInBackground(Object[] var1_1) {
+        // This method has failed to decompile.  When submitting a bug report, please provide this stack trace, and (if you hold appropriate legal rights) the relevant class file.
+        // java.lang.ArrayIndexOutOfBoundsException
+        throw new IllegalStateException("Decompilation failed");
     }
 
-    protected final void onPostExecute(Object Object1) {
-        Object Object2 = (SecretAppItemRoot) Object1;
-
-        super.onPostExecute(Object2);
-        MysteryActivity.b(a, true);
-        MysteryActivity.a(a, false);
-        if (Object2 != null && ((SecretAppItemRoot) Object2).getApps() != null) {
-            MysteryActivity.a(a, Arrays.asList(((SecretAppItemRoot) Object2).getApps()));
-            MysteryActivity.a(a);
-        } else
-            a.h();
+    @Override
+    protected final /* synthetic */ void onPostExecute(Object object) {
+        SecretAppItemRoot secretAppItemRoot = (SecretAppItemRoot) object;
+        super.onPostExecute(secretAppItemRoot);
+        MysteryActivity.b(this.a, true);
+        MysteryActivity.a(this.a, false);
+        if (secretAppItemRoot != null && secretAppItemRoot.getApps() != null) {
+            MysteryActivity.a(this.a, Arrays.asList(secretAppItemRoot.getApps()));
+            MysteryActivity.a(this.a);
+            return;
+        }
+        this.a.h();
     }
 
+    @Override
     protected final void onPreExecute() {
         super.onPreExecute();
-        a.i();
+        this.a.i();
     }
 }

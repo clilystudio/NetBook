@@ -1,19 +1,27 @@
 package com.clilystudio.netbook.ui.post;
 
+import android.content.Intent;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.AdapterView$OnItemClickListener;
 
-final class aM implements AdapterView$OnItemClickListener {
+import com.clilystudio.netbook.model.TopicPost;
 
-    private BookTopicListFragment a;
+final class aM
+        implements AdapterView.OnItemClickListener {
+    private /* synthetic */ BookTopicListFragment a;
 
-    aM(BookTopicListFragment BookTopicListFragment1) {
-        a = BookTopicListFragment1;
+    aM(BookTopicListFragment bookTopicListFragment) {
+        this.a = bookTopicListFragment;
     }
-// Error: Internal #201: 
-// The following method may not be correct.
 
-    public final void onItemClick(AdapterView AdapterView1, View View2, int int3, long long4) {
+    @Override
+    public final void onItemClick(AdapterView<?> adapterView, View view, int n, long l2) {
+        TopicPost topicPost;
+        int n2 = n - this.a.b.getHeaderViewsCount();
+        if (n2 >= 0 && n2 < BookTopicListFragment.d(this.a).size() && (topicPost = (TopicPost) BookTopicListFragment.d(this.a).get(n2)) != null) {
+            Intent intent = new Intent(this.a.getActivity(), PostDetailActivity.class);
+            intent.putExtra("PostBookId", topicPost.get_id());
+            this.a.startActivity(intent);
+        }
     }
 }

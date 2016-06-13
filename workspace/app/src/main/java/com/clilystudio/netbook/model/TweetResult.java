@@ -1,32 +1,31 @@
 package com.clilystudio.netbook.model;
 
 public class TweetResult {
-
     private boolean ok;
     private Tweet tweet;
     private User user;
 
     public Tweet getTweet() {
-        return tweet;
+        return this.tweet;
     }
 
-    public void setTweet(Tweet Tweet1) {
-        tweet = Tweet1;
+    public void setTweet(Tweet tweet) {
+        this.tweet = tweet;
     }
 
     public User getUser() {
-        return user;
+        return this.user;
     }
 
-    public void setUser(User User1) {
-        user = User1;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public boolean isOk() {
-        return ok;
+        return this.ok;
     }
 
-    public void setOk(boolean boolean1) {
-        ok = boolean1;
+    public void setOk(boolean bl) {
+        this.ok = bl;
     }
 }

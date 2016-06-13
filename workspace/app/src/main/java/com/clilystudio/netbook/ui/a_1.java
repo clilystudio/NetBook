@@ -2,18 +2,20 @@ package com.clilystudio.netbook.ui;
 
 import android.webkit.DownloadListener;
 
-final class a implements DownloadListener {
+final class a
+        implements DownloadListener {
+    private /* synthetic */ AdWebViewActivity a;
 
-    private AdWebViewActivity a;
-
-    a(AdWebViewActivity AdWebViewActivity1) {
-        a = AdWebViewActivity1;
+    a(AdWebViewActivity adWebViewActivity) {
+        this.a = adWebViewActivity;
     }
 
-    public final void onDownloadStart(String String1, String String2, String String3, String String4, long long5) {
-        if (AdWebViewActivity.a(a) != null)
-            AdWebViewActivity.a(a, String1);
-        else
-            AdWebViewActivity.b(a, String1);
+    @Override
+    public final void onDownloadStart(String string, String string2, String string3, String string4, long l) {
+        if (AdWebViewActivity.a(this.a) != null) {
+            AdWebViewActivity.a(this.a, string);
+            return;
+        }
+        AdWebViewActivity.b(this.a, string);
     }
 }

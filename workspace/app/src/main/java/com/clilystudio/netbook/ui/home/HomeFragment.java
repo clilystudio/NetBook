@@ -2,17 +2,21 @@ package com.clilystudio.netbook.ui.home;
 
 import android.support.v4.app.Fragment;
 
-public abstract class HomeFragment extends Fragment {
+import com.umeng.a.b;
 
+public abstract class HomeFragment
+        extends Fragment {
     public abstract String a();
 
+    @Override
     public void onPause() {
         super.onPause();
-        com.umeng.a.b.b(a());
+        b.b(this.a());
     }
 
+    @Override
     public void onResume() {
         super.onResume();
-        com.umeng.a.b.a(a());
+        b.a(this.a());
     }
 }

@@ -1,47 +1,49 @@
 package com.clilystudio.netbook.ui.post;
 
 import com.clilystudio.netbook.a.e;
+import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.model.BookHelpResult;
 
-final class ae extends e {
+final class ae
+        extends e<String, Void, BookHelpResult> {
+    private /* synthetic */ BookHelpActivity a;
 
-    private BookHelpActivity a;
-
-    ae(BookHelpActivity BookHelpActivity1, byte byte2) {
-        this(BookHelpActivity1);
+    private ae(BookHelpActivity bookHelpActivity) {
+        this.a = bookHelpActivity;
     }
 
-    private ae(BookHelpActivity BookHelpActivity1) {
-        a = BookHelpActivity1;
+    /* synthetic */ ae(BookHelpActivity bookHelpActivity, byte by) {
+        this(bookHelpActivity);
     }
 
-    private transient BookHelpResult a(String[] String_1darray1) {
-        BookHelpResult BookHelpResult3;
-
+    private /* varargs */ BookHelpResult a(String... arrstring) {
         try {
-            BookHelpResult3 = com.clilystudio.netbook.api.b.b().E(String_1darray1[0]);
-        } catch (Exception Exception2) {
-            Exception2.printStackTrace();
+            BookHelpResult bookHelpResult = b.b().E(arrstring[0]);
+            return bookHelpResult;
+        } catch (Exception var2_3) {
+            var2_3.printStackTrace();
             return null;
         }
-        return BookHelpResult3;
     }
 
-    protected final Object doInBackground(Object[] Object_1darray1) {
-        return a((String[]) Object_1darray1);
+    @Override
+    protected final /* synthetic */ Object doInBackground(Object[] arrobject) {
+        return this.a((String[]) arrobject);
     }
 
-    protected final void onPostExecute(Object Object1) {
-        Object Object2 = (BookHelpResult) Object1;
-
-        super.onPostExecute(Object2);
-        if (Object2 != null && ((BookHelpResult) Object2).getHelp() != null) {
-            a.f();
-            BookHelpActivity.a(a, ((BookHelpResult) Object2).getHelp());
-            BookHelpActivity.b(a, BookHelpActivity.a(a));
-            if (BookHelpActivity.a(a).getCommentCount() >= 0)
-                BookHelpActivity.b(a);
-        } else
-            a.h();
+    @Override
+    protected final /* synthetic */ void onPostExecute(Object object) {
+        BookHelpResult bookHelpResult = (BookHelpResult) object;
+        super.onPostExecute(bookHelpResult);
+        if (bookHelpResult != null && bookHelpResult.getHelp() != null) {
+            this.a.f();
+            BookHelpActivity.a(this.a, bookHelpResult.getHelp());
+            BookHelpActivity.b(this.a, BookHelpActivity.a(this.a));
+            if (BookHelpActivity.a(this.a).getCommentCount() >= 0) {
+                BookHelpActivity.b(this.a);
+            }
+            return;
+        }
+        this.a.h();
     }
 }

@@ -3,30 +3,30 @@ package com.clilystudio.netbook.ui.feed;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.view.View;
-import android.view.View$OnClickListener;
 
 import com.clilystudio.netbook.event.i;
 import com.clilystudio.netbook.event.m;
 
-final class e implements View$OnClickListener {
+final class e
+        implements View.OnClickListener {
+    private /* synthetic */ AlertDialog a;
+    private /* synthetic */ int b;
+    private /* synthetic */ int c;
+    private /* synthetic */ FeedListActivity d;
 
-    private AlertDialog a;
-    private int b;
-    private int c;
-    private FeedListActivity d;
-    e(FeedListActivity FeedListActivity1, AlertDialog AlertDialog2, int int3, int int4) {
-        d = FeedListActivity1;
-        a = AlertDialog2;
-        b = int3;
-        c = int4;
+    e(FeedListActivity feedListActivity, AlertDialog alertDialog, int n, int n2) {
+        this.d = feedListActivity;
+        this.a = alertDialog;
+        this.b = n;
+        this.c = n2;
     }
 
-    public final void onClick(View View1) {
-        a.dismiss();
-        if (b != c) {
-            int int2 = com.clilystudio.netbook.hpay100.a.a.e(b);
-
-            com.clilystudio.netbook.hpay100.a.a.b((Context) d, "feed_chapter_count", int2);
+    @Override
+    public final void onClick(View view) {
+        this.a.dismiss();
+        if (this.b != this.c) {
+            int n = a.e(this.b);
+            a.b((Context) this.d, "feed_chapter_count", n);
             i.a().c(new m());
         }
     }

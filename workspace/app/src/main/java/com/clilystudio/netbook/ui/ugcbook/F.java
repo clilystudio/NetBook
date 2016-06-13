@@ -1,17 +1,17 @@
 package com.clilystudio.netbook.ui.ugcbook;
 
 import android.content.DialogInterface;
-import android.content.DialogInterface$OnClickListener;
 
-final class F implements DialogInterface$OnClickListener {
+final class F
+        implements DialogInterface.OnClickListener {
+    private /* synthetic */ UGCGuideAddCollectionActivity a;
 
-    private UGCGuideAddCollectionActivity a;
-
-    F(UGCGuideAddCollectionActivity UGCGuideAddCollectionActivity1) {
-        a = UGCGuideAddCollectionActivity1;
+    F(UGCGuideAddCollectionActivity uGCGuideAddCollectionActivity) {
+        this.a = uGCGuideAddCollectionActivity;
     }
 
-    public final void onClick(DialogInterface DialogInterface1, int int2) {
-        a.finish();
+    @Override
+    public final void onClick(DialogInterface dialogInterface, int n) {
+        this.a.finish();
     }
 }

@@ -2,90 +2,88 @@ package com.clilystudio.netbook.reader.random;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.Intent;
 
 import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.model.BookInfo;
 import com.clilystudio.netbook.model.MysteryDefaultBook;
 import com.clilystudio.netbook.model.TocSummary;
+import com.clilystudio.netbook.util.e;
 
 import java.io.IOException;
 import java.util.List;
 
-public final class a extends com.clilystudio.netbook.a.e {
-
+public final class a
+        extends com.clilystudio.netbook.a.e<String, Void, MysteryDefaultBook> {
     private ProgressDialog a;
     private Activity b;
     private boolean c;
-    public a(ProgressDialog ProgressDialog1, Activity Activity2, boolean boolean3) {
-        a = ProgressDialog1;
-        b = Activity2;
-        c = boolean3;
+
+    public a(ProgressDialog progressDialog, Activity activity, boolean bl) {
+        this.a = progressDialog;
+        this.b = activity;
+        this.c = bl;
     }
 
-    private static transient MysteryDefaultBook a(String[] String_1darray1) {
-        String String2 = String_1darray1[0];
-
+    private static /* varargs */ MysteryDefaultBook a(String... arrstring) {
+        String string = arrstring[0];
         try {
-            BookInfo BookInfo5;
-            List List7;
-            MysteryDefaultBook MysteryDefaultBook8;
-
-            com.clilystudio.netbook.api.b.a();
-            BookInfo5 = com.clilystudio.netbook.api.b.b().r(String2);
-            com.clilystudio.netbook.api.b.a();
-            List7 = com.clilystudio.netbook.api.b.b().d(String2);
-            if (List7.size() <= 0)
-                return null;
-            MysteryDefaultBook8 = new MysteryDefaultBook();
-            MysteryDefaultBook8.set_id(String2);
-            MysteryDefaultBook8.setTitle(BookInfo5.getTitle());
-            MysteryDefaultBook8.setLastChapter(BookInfo5.getLastChapter());
-            MysteryDefaultBook8.setAuthor(BookInfo5.getAuthor());
-            MysteryDefaultBook8.setCover(BookInfo5.getCover());
-            MysteryDefaultBook8.setUpdated(BookInfo5.getUpdated());
-            MysteryDefaultBook8.setDefaultTocId(((TocSummary) List7.get(0)).get_id());
-        } catch (IOException IOException3) {
-            IOException3.printStackTrace();
+            b.a();
+            BookInfo bookInfo = b.b().r(string);
+            b.a();
+            List<TocSummary> list = b.b().d(string);
+            if (list.size() > 0) {
+                MysteryDefaultBook mysteryDefaultBook = new MysteryDefaultBook();
+                mysteryDefaultBook.set_id(string);
+                mysteryDefaultBook.setTitle(bookInfo.getTitle());
+                mysteryDefaultBook.setLastChapter(bookInfo.getLastChapter());
+                mysteryDefaultBook.setAuthor(bookInfo.getAuthor());
+                mysteryDefaultBook.setCover(bookInfo.getCover());
+                mysteryDefaultBook.setUpdated(bookInfo.getUpdated());
+                mysteryDefaultBook.setDefaultTocId(list.get(0).get_id());
+                return mysteryDefaultBook;
+            }
+        } catch (IOException var2_5) {
+            var2_5.printStackTrace();
         }
         return null;
     }
 
-    protected final Object doInBackground(Object[] Object_1darray1) {
-        return a((String[]) Object_1darray1);
+    @Override
+    protected final /* synthetic */ Object doInBackground(Object[] arrobject) {
+        return a.a((String[]) arrobject);
     }
 
-    protected final void onPostExecute(Object Object1) {
-        MysteryDefaultBook MysteryDefaultBook2 = (MysteryDefaultBook) Object1;
-
-        if (a != null && a.isShowing()) {
-            a.dismiss();
-            if (MysteryDefaultBook2 != null) {
-                String String3 = MysteryDefaultBook2.get_id();
-                String String4 = MysteryDefaultBook2.getTitle();
-                String String5 = MysteryDefaultBook2.getDefaultTocId();
-                BookInfo BookInfo6;
-                Intent Intent7;
-
-                if (String5 == null)
-                    String5 = "";
-                BookInfo6 = new BookInfo();
-                BookInfo6.setId(MysteryDefaultBook2.get_id());
-                BookInfo6.setTitle(MysteryDefaultBook2.getTitle());
-                BookInfo6.setLastChapter(MysteryDefaultBook2.getLastChapter());
-                BookInfo6.setUpdated(MysteryDefaultBook2.getUpdated());
-                BookInfo6.setCover(MysteryDefaultBook2.getCover());
-                BookInfo6.setAuthor(MysteryDefaultBook2.getAuthor());
-                MyApplication.a().a(BookInfo6);
-                Intent7 = ReaderRandomActivity.a((Context) b, String3, String4, String5);
-                b.startActivity(Intent7);
-                if (c)
-                    b.finish();
-            } else {
-                com.clilystudio.netbook.util.e.a(b, "\u6253\u5F00\u5931\u8D25\u6216\u6682\u65F6\u672A\u5F00\u653E");
-                return;
+    /*
+     * Enabled force condition propagation
+     * Lifted jumps to return sites
+     */
+    @Override
+    protected final /* synthetic */ void onPostExecute(Object object) {
+        MysteryDefaultBook mysteryDefaultBook = (MysteryDefaultBook) object;
+        if (this.a == null || !this.a.isShowing()) return;
+        this.a.dismiss();
+        if (mysteryDefaultBook != null) {
+            String string = mysteryDefaultBook.get_id();
+            String string2 = mysteryDefaultBook.getTitle();
+            String string3 = mysteryDefaultBook.getDefaultTocId();
+            if (string3 == null) {
+                string3 = "";
             }
+            BookInfo bookInfo = new BookInfo();
+            bookInfo.setId(mysteryDefaultBook.get_id());
+            bookInfo.setTitle(mysteryDefaultBook.getTitle());
+            bookInfo.setLastChapter(mysteryDefaultBook.getLastChapter());
+            bookInfo.setUpdated(mysteryDefaultBook.getUpdated());
+            bookInfo.setCover(mysteryDefaultBook.getCover());
+            bookInfo.setAuthor(mysteryDefaultBook.getAuthor());
+            MyApplication.a().a(bookInfo);
+            Intent intent = ReaderRandomActivity.a(this.b, string, string2, string3);
+            this.b.startActivity(intent);
+            if (!this.c) return;
+            this.b.finish();
+            return;
         }
+        e.a(this.b, "\u6253\u5f00\u5931\u8d25\u6216\u6682\u65f6\u672a\u5f00\u653e");
     }
 }

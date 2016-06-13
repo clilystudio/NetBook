@@ -5,93 +5,97 @@ import android.content.res.Resources;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.View$OnClickListener;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-public class AutoReaderSetWidget extends LinearLayout implements View$OnClickListener {
-
+public class AutoReaderSetWidget
+        extends LinearLayout
+        implements View.OnClickListener {
     private Context a;
+    private int b = 5;
     private int c;
     private TextView d;
     private Button e;
     private Button f;
     private Button g;
     private a h;
-    private int b = 5;
-    public AutoReaderSetWidget(Context Context1, AttributeSet AttributeSet2) {
-        super(Context1, AttributeSet2);
-        a = Context1;
+
+    public AutoReaderSetWidget(Context context, AttributeSet attributeSet) {
+        super(context, attributeSet);
+        this.a = context;
     }
 
     private void e() {
-        TextView TextView1 = d;
-        Resources Resources2 = getResources();
-        Object[] Object_1darray3 = new Object[1];
-
-        Object_1darray3[0] = Integer.valueOf(b);
-        TextView1.setText((CharSequence) Resources2.getString(2131034319, Object_1darray3));
+        TextView textView = this.d;
+        Resources resources = this.getResources();
+        Object[] arrobject = new Object[]{this.b};
+        textView.setText(resources.getString(2131034319, arrobject));
     }
 
     public final void a() {
-        c = b;
-        setVisibility(0);
+        this.c = this.b;
+        this.setVisibility(0);
     }
 
     public final void b() {
-        if (c != b)
-            com.umeng.a.b.a(getContext(), "auto_read_speed", null, b);
-        setVisibility(8);
+        if (this.c != this.b) {
+            b.a(this.getContext(), "auto_read_speed", null, this.b);
+        }
+        this.setVisibility(8);
     }
 
     public final void c() {
-        if (b < 10) {
-            b = 1 + b;
-            e();
-            com.clilystudio.netbook.hpay100.a.a.b(a, "auto_reader_speed", b);
+        if (this.b < 10) {
+            this.b = 1 + this.b;
+            this.e();
+            com.clilystudio.netbook.hpay100.a.a.b(this.a, "auto_reader_speed", this.b);
         }
     }
 
     public final void d() {
-        if (b > 1) {
-            b = -1 + b;
-            e();
-            com.clilystudio.netbook.hpay100.a.a.b(a, "auto_reader_speed", b);
+        if (this.b > 1) {
+            this.b = -1 + this.b;
+            this.e();
+            com.clilystudio.netbook.hpay100.a.a.b(this.a, "auto_reader_speed", this.b);
         }
     }
 
-    public void onClick(View View1) {
-        switch (View1.getId()) {
-            default:
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            default: {
                 return;
-            case 1003:
-                h.b();
+            }
+            case 2131493867: {
+                this.h.b();
                 return;
-            case 1004:
-                h.a();
+            }
+            case 2131493868: {
+                this.h.a();
                 return;
-            case 1005:
-                com.clilystudio.netbook.hpay100.a.a.E(getContext());
-                h.c();
-                return;
+            }
+            case 2131493869:
         }
+        com.clilystudio.netbook.hpay100.a.a.E(this.getContext());
+        this.h.c();
     }
 
-    public boolean onTouchEvent(MotionEvent MotionEvent1) {
-        return super.onTouchEvent(MotionEvent1);
+    @Override
+    public boolean onTouchEvent(MotionEvent motionEvent) {
+        return super.onTouchEvent(motionEvent);
     }
 
-    public void setOptionClickListener(a a1) {
-        h = a1;
-        b = com.clilystudio.netbook.hpay100.a.a.a(a, "auto_reader_speed", 5);
-        d = (TextView) findViewById(2131493865);
-        e();
-        e = (Button) findViewById(2131493867);
-        e.setOnClickListener(this);
-        f = (Button) findViewById(2131493868);
-        f.setOnClickListener(this);
-        g = (Button) findViewById(2131493869);
-        g.setOnClickListener(this);
+    public void setOptionClickListener(a a2) {
+        this.h = a2;
+        this.b = com.clilystudio.netbook.hpay100.a.a.a(this.a, "auto_reader_speed", 5);
+        this.d = (TextView) this.findViewById(2131493865);
+        this.e();
+        this.e = (Button) this.findViewById(2131493867);
+        this.e.setOnClickListener(this);
+        this.f = (Button) this.findViewById(2131493868);
+        this.f.setOnClickListener(this);
+        this.g = (Button) this.findViewById(2131493869);
+        this.g.setOnClickListener(this);
     }
 }

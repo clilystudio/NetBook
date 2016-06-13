@@ -2,35 +2,37 @@ package com.clilystudio.netbook.ui.home;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.support.design.widget.am;
 import android.view.View;
-import android.view.View$OnClickListener;
 
 import com.clilystudio.netbook.model.InsideLink;
 import com.clilystudio.netbook.model.ShelfMsg;
 import com.clilystudio.netbook.util.InsideLinkIntent;
 
-final class w implements View$OnClickListener {
+final class w
+        implements View.OnClickListener {
+    private /* synthetic */ ShelfMsg a;
+    private /* synthetic */ InsideLink b;
+    private /* synthetic */ HomeShelfFragment c;
 
-    private ShelfMsg a;
-    private InsideLink b;
-    private HomeShelfFragment c;
-    w(HomeShelfFragment HomeShelfFragment1, ShelfMsg ShelfMsg2, InsideLink InsideLink3) {
-        c = HomeShelfFragment1;
-        a = ShelfMsg2;
-        b = InsideLink3;
+    w(HomeShelfFragment homeShelfFragment, ShelfMsg shelfMsg, InsideLink insideLink) {
+        this.c = homeShelfFragment;
+        this.a = shelfMsg;
+        this.b = insideLink;
     }
 
-    public final void onClick(View View1) {
-        if (!a.login || am.a((Activity) c.getActivity()) != null) {
-            try {
-                c.startActivity((Intent) new InsideLinkIntent((Context) c.getActivity(), b));
-                com.umeng.a.b.a((Context) c.getActivity(), "shelf_msg_click", b.getLabel());
-            } catch (Exception Exception2) {
-                Exception2.printStackTrace();
-                return;
-            }
+    @Override
+    public final void onClick(View view) {
+        if (this.a.login && am.a((Activity) this.c.getActivity()) == null) {
+            return;
+        }
+        try {
+            this.c.startActivity(new InsideLinkIntent((Context) this.c.getActivity(), this.b));
+            b.a(this.c.getActivity(), "shelf_msg_click", this.b.getLabel());
+            return;
+        } catch (Exception var2_2) {
+            var2_2.printStackTrace();
+            return;
         }
     }
 }

@@ -1,70 +1,80 @@
 package com.clilystudio.netbook.ui.feed;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView$OnItemClickListener;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 
 import com.clilystudio.netbook.db.BookReadRecord;
+import com.clilystudio.netbook.event.i;
+import com.clilystudio.netbook.event.l;
 import com.clilystudio.netbook.ui.BaseActivity;
 import com.clilystudio.netbook.ui.aa;
+import com.clilystudio.netbook.util.e;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
-public class FeedAddActivity extends BaseActivity {
-
+public class FeedAddActivity
+        extends BaseActivity {
     private c a;
     private ListView b;
-    private ArrayList c = new ArrayList();
-// Error: Internal #201: 
-// The following method may not be correct.
+    private ArrayList<BookReadRecord> c = new ArrayList();
 
-    static void a(FeedAddActivity FeedAddActivity1) {
-    }
-
-    static c b(FeedAddActivity FeedAddActivity1) {
-        return FeedAddActivity1.a;
-    }
-
-    static ArrayList c(FeedAddActivity FeedAddActivity1) {
-        return FeedAddActivity1.c;
-    }
-
-    public void onCreate(Bundle Bundle1) {
-        super.onCreate(Bundle1);
-        setContentView(2130903097);
-        a(2131034383, 2131034375, (aa) new a(this));
-        b = (ListView) findViewById(2131493124);
-        b.setOnItemClickListener((AdapterView$OnItemClickListener) new b(this));
-    }
-
-    public void onResume() {
-        Object Object1;
-        int int2;
-        View View3;
-        View View4;
-
-        super.onResume();
-        a = new c(this, getLayoutInflater());
-        b.setAdapter((ListAdapter) a);
-        Object1 = BookReadRecord.getAllWithTopNoFeed();
-        a.a((Collection) Object1);
-        if (!((List) Object1).isEmpty())
-            int2 = 1;
-        else
-            int2 = 0;
-        View3 = findViewById(2131493122);
-        View4 = findViewById(2131493125);
-        if (int2 != 0) {
-            View3.setVisibility(0);
-            View4.setVisibility(8);
-        } else {
-            View3.setVisibility(8);
-            View4.setVisibility(0);
+    static /* synthetic */ void a(FeedAddActivity feedAddActivity) {
+        if (feedAddActivity.c.isEmpty()) {
+            e.a((Activity) feedAddActivity, (String) "\u4f60\u8fd8\u6ca1\u6709\u9009\u62e9\u79fb\u5165\u7684\u4e66\u7c4d");
+            return;
         }
-        c.clear();
+        for (BookReadRecord bookReadRecord : feedAddActivity.c) {
+            bookReadRecord.setFeeding(true);
+            bookReadRecord.setChapterCountAtFeed(bookReadRecord.getChapterCount());
+            bookReadRecord.save();
+            i.a().c(new l(bookReadRecord));
+        }
+        Intent intent = new Intent(feedAddActivity, FeedListActivity.class);
+        intent.addFlags(335544320);
+        feedAddActivity.startActivity(intent);
+    }
+
+    static /* synthetic */ c b(FeedAddActivity feedAddActivity) {
+        return feedAddActivity.a;
+    }
+
+    static /* synthetic */ ArrayList c(FeedAddActivity feedAddActivity) {
+        return feedAddActivity.c;
+    }
+
+    @Override
+    public void onCreate(Bundle bundle) {
+        super.onCreate(bundle);
+        this.setContentView(2130903097);
+        this.a(2131034383, 2131034375, (aa) new a(this));
+        this.b = (ListView) this.findViewById(2131493124);
+        this.b.setOnItemClickListener(new b(this));
+    }
+
+    /*
+     * Enabled aggressive block sorting
+     */
+    @Override
+    public void onResume() {
+        super.onResume();
+        this.a = new c(this, this.getLayoutInflater());
+        this.b.setAdapter(this.a);
+        List<BookReadRecord> list = BookReadRecord.getAllWithTopNoFeed();
+        this.a.a(list);
+        boolean bl = !list.isEmpty();
+        View view = this.findViewById(2131493122);
+        View view2 = this.findViewById(2131493125);
+        if (bl) {
+            view.setVisibility(0);
+            view2.setVisibility(8);
+        } else {
+            view.setVisibility(8);
+            view2.setVisibility(0);
+        }
+        this.c.clear();
     }
 }

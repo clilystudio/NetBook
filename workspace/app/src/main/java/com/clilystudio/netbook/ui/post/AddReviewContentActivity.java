@@ -1,13 +1,11 @@
 package com.clilystudio.netbook.ui.post;
 
 import android.app.Activity;
-import android.app.Dialog;
-import android.content.Context;
+import android.app.AlertDialog;
 import android.os.Bundle;
 import android.support.design.widget.am;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View$OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -18,119 +16,123 @@ import com.clilystudio.netbook.ui.BaseActivity;
 import com.clilystudio.netbook.ui.aa;
 import com.clilystudio.netbook.ui.user.AuthLoginActivity;
 
-public class AddReviewContentActivity extends BaseActivity {
-
+public class AddReviewContentActivity
+        extends BaseActivity {
     private String a;
+    private int b = 0;
     private EditText c;
     private EditText e;
     private boolean f;
     private boolean g;
-    private int b = 0;
 
-    static boolean a(AddReviewContentActivity AddReviewContentActivity1) {
-        String String2 = AddReviewContentActivity1.c.getText().toString().trim();
-        String String3 = AddReviewContentActivity1.e.getText().toString().trim();
-
-        if (com.clilystudio.netbook.hpay100.a.a.Q(String2))
-            com.clilystudio.netbook.util.e.a((Activity) AddReviewContentActivity1, "\u8BF7\u8F93\u5165\u4E66\u8BC4\u6807\u9898");
-        else if (String2.length() < 4)
-            com.clilystudio.netbook.util.e.a((Activity) AddReviewContentActivity1, "\u6807\u9898\u5B57\u6570\u4E0D\u80FD\u5C11\u4E8E4\u5B57");
-        else if (com.clilystudio.netbook.hpay100.a.a.Q(String3))
-            com.clilystudio.netbook.util.e.a((Activity) AddReviewContentActivity1, "\u8BF7\u8F93\u5165\u4E66\u8BC4\u6B63\u6587");
-        else {
-            if (com.clilystudio.netbook.hpay100.a.a.Q(String3) || String3.length() >= 50)
-                return true;
-            com.clilystudio.netbook.util.e.a((Activity) AddReviewContentActivity1, "\u5185\u5BB9\u5B57\u6570\u4E0D\u80FD\u5C11\u4E8E50\u5B57");
+    static /* synthetic */ boolean a(AddReviewContentActivity addReviewContentActivity) {
+        String string = addReviewContentActivity.c.getText().toString().trim();
+        String string2 = addReviewContentActivity.e.getText().toString().trim();
+        if (a.Q(string)) {
+            e.a((Activity) addReviewContentActivity, (String) "\u8bf7\u8f93\u5165\u4e66\u8bc4\u6807\u9898");
+            return false;
         }
-        return false;
+        if (string.length() < 4) {
+            e.a((Activity) addReviewContentActivity, (String) "\u6807\u9898\u5b57\u6570\u4e0d\u80fd\u5c11\u4e8e4\u5b57");
+            return false;
+        }
+        if (a.Q(string2)) {
+            e.a((Activity) addReviewContentActivity, (String) "\u8bf7\u8f93\u5165\u4e66\u8bc4\u6b63\u6587");
+            return false;
+        }
+        if (!a.Q(string2) && string2.length() < 50) {
+            e.a((Activity) addReviewContentActivity, (String) "\u5185\u5bb9\u5b57\u6570\u4e0d\u80fd\u5c11\u4e8e50\u5b57");
+            return false;
+        }
+        return true;
     }
 
-    static void b(AddReviewContentActivity AddReviewContentActivity1) {
-        Account Account2 = am.e();
-
-        if (Account2 == null) {
-            com.clilystudio.netbook.util.e.a((Activity) AddReviewContentActivity1, "\u8BF7\u767B\u5F55\u540E\u518D\u53D1\u5E03");
-            AddReviewContentActivity1.startActivity(AuthLoginActivity.a((Context) AddReviewContentActivity1));
-        } else if (Account2.getUser().getLv() >= 3) {
-            String String3 = Account2.getToken();
-            h h4 = new h((Context) AddReviewContentActivity1);
-            View View5 = LayoutInflater.from((Context) AddReviewContentActivity1).inflate(2130903202, null);
-            Object Object8;
-
-            ((TextView) View5.findViewById(2131493422)).setText(2131034587);
-            h4.d = "\u53D1\u5E03";
-            h4.a(2131034583, null);
-            h4.b(2131034129, null);
-            Object8 = h4.a(View5).b();
-            ((Button) ((Dialog) Object8).findViewById(16908313)).setOnClickListener((View$OnClickListener) new E(AddReviewContentActivity1, (Dialog) Object8, String3));
-        } else
-            com.clilystudio.netbook.util.e.a((Activity) AddReviewContentActivity1, "\u5F88\u62B1\u6B49\uFF0C\u60A8\u7684\u7B49\u7EA7\u4E0D\u591F");
+    static /* synthetic */ void b(AddReviewContentActivity addReviewContentActivity) {
+        Account account = am.e();
+        if (account == null) {
+            e.a((Activity) addReviewContentActivity, (String) "\u8bf7\u767b\u5f55\u540e\u518d\u53d1\u5e03");
+            addReviewContentActivity.startActivity(AuthLoginActivity.a(addReviewContentActivity));
+            return;
+        }
+        if (account.getUser().getLv() >= 3) {
+            String string = account.getToken();
+            h h2 = new h(addReviewContentActivity);
+            View view = LayoutInflater.from(addReviewContentActivity).inflate(2130903202, null);
+            ((TextView) view.findViewById(2131493422)).setText(2131034587);
+            h2.d = "\u53d1\u5e03";
+            h2.a(2131034583, null);
+            h2.b(2131034129, null);
+            AlertDialog alertDialog = h2.a(view).b();
+            ((Button) alertDialog.findViewById(16908313)).setOnClickListener(new E(addReviewContentActivity, alertDialog, string));
+            return;
+        }
+        e.a((Activity) addReviewContentActivity, (String) "\u5f88\u62b1\u6b49\uff0c\u60a8\u7684\u7b49\u7ea7\u4e0d\u591f");
     }
 
-    static EditText c(AddReviewContentActivity AddReviewContentActivity1) {
-        return AddReviewContentActivity1.c;
+    static /* synthetic */ EditText c(AddReviewContentActivity addReviewContentActivity) {
+        return addReviewContentActivity.c;
     }
 
-    static EditText d(AddReviewContentActivity AddReviewContentActivity1) {
-        return AddReviewContentActivity1.e;
+    static /* synthetic */ EditText d(AddReviewContentActivity addReviewContentActivity) {
+        return addReviewContentActivity.e;
     }
 
-    static String e(AddReviewContentActivity AddReviewContentActivity1) {
-        return AddReviewContentActivity1.a;
+    static /* synthetic */ String e(AddReviewContentActivity addReviewContentActivity) {
+        return addReviewContentActivity.a;
     }
 
-    static int f(AddReviewContentActivity AddReviewContentActivity1) {
-        return AddReviewContentActivity1.b;
+    static /* synthetic */ int f(AddReviewContentActivity addReviewContentActivity) {
+        return addReviewContentActivity.b;
     }
 
-    static boolean g(AddReviewContentActivity AddReviewContentActivity1) {
-        return AddReviewContentActivity1.g;
+    static /* synthetic */ boolean g(AddReviewContentActivity addReviewContentActivity) {
+        return addReviewContentActivity.g;
     }
 
-    static boolean h(AddReviewContentActivity AddReviewContentActivity1) {
-        return AddReviewContentActivity1.f;
+    static /* synthetic */ boolean h(AddReviewContentActivity addReviewContentActivity) {
+        return addReviewContentActivity.f;
     }
 
-    static void i(AddReviewContentActivity AddReviewContentActivity1) {
+    static /* synthetic */ void i(AddReviewContentActivity addReviewContentActivity) {
         MyApplication.a().a(new String[]{"saveToLocalReviewTitle", "saveToLocalReviewDesc"});
     }
 
+    /*
+     * Enabled aggressive block sorting
+     */
+    @Override
     public void onBackPressed() {
-        String String1 = c.getText().toString();
-        String String2 = e.getText().toString();
-        int int3;
-
-        if (!com.clilystudio.netbook.hpay100.a.a.Q(String1) || !com.clilystudio.netbook.hpay100.a.a.Q(String2))
-            int3 = 1;
-        else
-            int3 = 0;
-        if (int3 != 0) {
-            String String4 = c.getText().toString();
-            String String5 = e.getText().toString();
-
-            if (!com.clilystudio.netbook.hpay100.a.a.Q(String4))
-                MyApplication.a().a("saveToLocalReviewTitle", String4);
-            if (!com.clilystudio.netbook.hpay100.a.a.Q(String5))
-                MyApplication.a().a("saveToLocalReviewDesc", String5);
+        String string = this.c.getText().toString();
+        String string2 = this.e.getText().toString();
+        boolean bl = !a.Q(string) || !a.Q(string2);
+        if (bl) {
+            String string3 = this.c.getText().toString();
+            String string4 = this.e.getText().toString();
+            if (!a.Q(string3)) {
+                MyApplication.a().a("saveToLocalReviewTitle", string3);
+            }
+            if (!a.Q(string4)) {
+                MyApplication.a().a("saveToLocalReviewDesc", string4);
+            }
         }
         super.onBackPressed();
     }
 
-    public void onCreate(Bundle Bundle1) {
-        Bundle Bundle2;
-
-        super.onCreate(Bundle1);
-        setContentView(2130903077);
-        Bundle2 = getIntent().getExtras();
-        if (Bundle2 != null)
-            g = "BOOK_COMMENT".equals(Bundle2.getString("INTENT_TYPE_NAME"));
-        a(2131034295, 2131034448, (aa) new D(this));
-        a = getIntent().getStringExtra("bookReviewBookId");
-        b = getIntent().getIntExtra("bookReviewBookRating", 0);
-        f = getIntent().getBooleanExtra("isFromBookReviewList", false);
-        c = (EditText) findViewById(2131493070);
-        e = (EditText) findViewById(2131493071);
-        am.a(c, "saveToLocalReviewTitle");
-        am.a(e, "saveToLocalReviewDesc");
+    @Override
+    public void onCreate(Bundle bundle) {
+        super.onCreate(bundle);
+        this.setContentView(2130903077);
+        Bundle bundle2 = this.getIntent().getExtras();
+        if (bundle2 != null) {
+            this.g = "BOOK_COMMENT".equals(bundle2.getString("INTENT_TYPE_NAME"));
+        }
+        this.a(2131034295, 2131034448, (aa) new D(this));
+        this.a = this.getIntent().getStringExtra("bookReviewBookId");
+        this.b = this.getIntent().getIntExtra("bookReviewBookRating", 0);
+        this.f = this.getIntent().getBooleanExtra("isFromBookReviewList", false);
+        this.c = (EditText) this.findViewById(2131493070);
+        this.e = (EditText) this.findViewById(2131493071);
+        am.a((EditText) this.c, (String) "saveToLocalReviewTitle");
+        am.a((EditText) this.e, (String) "saveToLocalReviewDesc");
     }
 }

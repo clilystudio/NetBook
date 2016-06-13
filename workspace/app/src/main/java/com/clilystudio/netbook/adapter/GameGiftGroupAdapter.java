@@ -1,11 +1,9 @@
 package com.clilystudio.netbook.adapter;
 
 import android.app.Activity;
-import android.content.Context;
 import android.support.design.widget.am;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View$OnClickListener;
 import android.view.ViewGroup;
 
 import com.clilystudio.netbook.model.Account;
@@ -15,110 +13,125 @@ import com.clilystudio.netbook.model.GiftGameGift;
 
 import java.util.List;
 
-public final class GameGiftGroupAdapter extends u {
-
+public final class GameGiftGroupAdapter
+        extends u<GameGiftGroup> {
     private LayoutInflater a;
     private Account b;
-    public GameGiftGroupAdapter(Activity Activity1) {
-        a = LayoutInflater.from((Context) Activity1);
-        b = am.e();
+
+    public GameGiftGroupAdapter(Activity activity) {
+        this.a = LayoutInflater.from(activity);
+        this.b = am.e();
     }
 
-    static void a(GameGiftGroupAdapter GameGiftGroupAdapter1, GiftGame GiftGame2) {
-        List List3 = GameGiftGroupAdapter1.f();
-
-        if (List3 != null) {
-            GiftGameGift[] GiftGameGift_1darray4 = GiftGame2.gifts;
-
-            if (GiftGameGift_1darray4 != null && GiftGameGift_1darray4.length > 3) {
-                String String5 = GiftGame2.get_id();
-                int int6;
-
-                label_38:
-                {
-                    for (int6 = 0; int6 < List3.size(); ++int6) {
-                        GameGiftGroup GameGiftGroup11 = (GameGiftGroup) List3.get(int6);
-
-                        if (GameGiftGroup11.getType() == 0 && String5.equals(GameGiftGroup11.getGame().get_id()))
-                            break label_38;
-                    }
-                    int6 = -1;
+    /*
+     * Enabled aggressive block sorting
+     */
+    static /* synthetic */ void a(GameGiftGroupAdapter gameGiftGroupAdapter, GiftGame giftGame) {
+        GiftGameGift[] arrgiftGameGift;
+        int n;
+        List list;
+        block5:
+        {
+            list = gameGiftGroupAdapter.f();
+            if (list == null || (arrgiftGameGift = giftGame.gifts) == null || arrgiftGameGift.length <= 3) {
+                return;
+            }
+            String string = giftGame.get_id();
+            for (n = 0; n < list.size(); ++n) {
+                GameGiftGroup gameGiftGroup = (GameGiftGroup) list.get(n);
+                if (gameGiftGroup.getType() != 0 || !string.equals(gameGiftGroup.getGame().get_id())) {
+                    continue;
                 }
-                if (int6 >= 0) {
-                    int int7 = int6 + 3;
-                    int int8;
+                break block5;
+            }
+            n = -1;
+        }
+        if (n < 0) return;
+        int n2 = n + 3;
+        int n3 = 3;
+        do {
+            if (n3 >= arrgiftGameGift.length) {
+                list.remove(n2 + 1);
+                gameGiftGroupAdapter.a(list);
+                return;
+            }
+            GameGiftGroup gameGiftGroup = new GameGiftGroup();
+            gameGiftGroup.setType(1);
+            gameGiftGroup.setGift(arrgiftGameGift[n3]);
+            gameGiftGroup.setGame(giftGame);
+            list.add(++n2, (GameGiftGroup) gameGiftGroup);
+            ++n3;
+        } while (true);
+    }
 
-                    for (int8 = 3; int8 < GiftGameGift_1darray4.length; ++int8) {
-                        Object Object10;
+    @Override
+    public final int getItemViewType(int n) {
+        return ((GameGiftGroup) this.getItem(n)).getType();
+    }
 
-                        ++int7;
-                        Object10 = new GameGiftGroup();
-                        ((GameGiftGroup) Object10).setType(1);
-                        ((GameGiftGroup) Object10).setGift(GiftGameGift_1darray4[int8]);
-                        ((GameGiftGroup) Object10).setGame(GiftGame2);
-                        List3.add(int7, Object10);
+    /*
+     * Unable to fully structure code
+     * Enabled aggressive block sorting
+     * Lifted jumps to return sites
+     */
+    @Override
+    public final View getView(int var1_1, View var2_2, ViewGroup var3_3) {
+        block11:
+        {
+            var4_4 = (GameGiftGroup) this.getItem(var1_1);
+            var5_5 = var4_4.getType();
+            if (var2_2 == null) {
+                switch (var5_5) {
+                    case 0: {
+                        var2_2 = this.a.inflate(2130903280, var3_3, false);
+                        **break;
                     }
-                    List3.remove(int7 + 1);
-                    GameGiftGroupAdapter1.a(List3);
-                    return;
+                    case 1: {
+                        var2_2 = this.a.inflate(2130903281, var3_3, false);
+                    }
+                    lbl10:
+                    // 3 sources:
+                    default:
+                    {
+                        break block11;
+                    }
+                    case 2:
                 }
+                var2_2 = this.a.inflate(2130903282, var3_3, false);
             }
         }
-    }
-
-    public final int getItemViewType(int int1) {
-        return ((GameGiftGroup) getItem(int1)).getType();
-    }
-
-    public final View getView(int int1, View View2, ViewGroup ViewGroup3) {
-        GameGiftGroup GameGiftGroup4 = (GameGiftGroup) getItem(int1);
-        int int5 = GameGiftGroup4.getType();
-
-        if (View2 == null) {
-            switch (int5) {
-                case 0:
-                    View2 = a.inflate(2130903280, ViewGroup3, false);
-                    break;
-                case 1:
-                    View2 = a.inflate(2130903281, ViewGroup3, false);
-                    break;
-                case 2:
-                    View2 = a.inflate(2130903282, ViewGroup3, false);
-                    break;
-                default:
-                    break;
+        switch (var5_5) {
+            default: {
+                return var2_2;
             }
-        }
-        switch (int5) {
-            default:
-                return View2;
-            case 0:
-                GiftGame GiftGame8 = GameGiftGroup4.getGame();
-                GameGiftGroupAdapter$GameHolder GameHolder9 = new GameGiftGroupAdapter$GameHolder(View2);
-
-                GameHolder9.icon.setImageUrl(GiftGame8.icon, 2130837766);
-                GameHolder9.title.setText((CharSequence) GiftGame8.getName());
-                GameHolder9.desc.setText((CharSequence) new StringBuilder("\u6709 ").append(GiftGame8.followers).append(" \u4E2A\u5C0F\u4F19\u4F34\u5728\u73A9").toString());
-                GameHolder9.button.setGame(GiftGame8);
-                GameHolder9.button.a(GiftGame8.getDownloadStatus());
-                return View2;
-            case 1:
-                GiftGameGift GiftGameGift6 = GameGiftGroup4.getGift();
-                GameGiftGroupAdapter$GiftHolder GiftHolder7 = new GameGiftGroupAdapter$GiftHolder(View2);
-
-                GiftHolder7.title.setText((CharSequence) GiftGameGift6.title);
-                GiftHolder7.desc.setText((CharSequence) GiftGameGift6.description);
-                GiftHolder7.button.setGift(GiftGameGift6);
-                GiftHolder7.button.setGame(GameGiftGroup4.getGame());
-                GiftHolder7.button.setAccount(b);
-                GiftHolder7.button.a(GameGiftGroup4.getGame().getDownloadStatus());
-                return View2;
+            case 0: {
+                var8_6 = var4_4.getGame();
+                var9_7 = new GameGiftGroupAdapter$GameHolder(var2_2);
+                var9_7.icon.setImageUrl(var8_6.icon, 2130837766);
+                var9_7.title.setText(var8_6.getName());
+                var9_7.desc.setText("\u6709 " + var8_6.followers + " \u4e2a\u5c0f\u4f19\u4f34\u5728\u73a9");
+                var9_7.button.setGame(var8_6);
+                var9_7.button.a(var8_6.getDownloadStatus());
+                return var2_2;
+            }
+            case 1: {
+                var6_8 = var4_4.getGift();
+                var7_9 = new GameGiftGroupAdapter$GiftHolder(var2_2);
+                var7_9.title.setText(var6_8.title);
+                var7_9.desc.setText(var6_8.description);
+                var7_9.button.setGift(var6_8);
+                var7_9.button.setGame(var4_4.getGame());
+                var7_9.button.setAccount(this.b);
+                var7_9.button.a(var4_4.getGame().getDownloadStatus());
+                return var2_2;
+            }
             case 2:
-                new GameGiftGroupAdapter$MoreHolder(View2).title.setOnClickListener((View$OnClickListener) new n(this, GameGiftGroup4));
-                return View2;
         }
+        new GameGiftGroupAdapter$MoreHolder((View) var2_2).title.setOnClickListener(new n(this, var4_4));
+        return var2_2;
     }
 
+    @Override
     public final int getViewTypeCount() {
         return 3;
     }

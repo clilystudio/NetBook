@@ -3,29 +3,30 @@ package com.clilystudio.netbook.ui.ugcbook;
 import android.text.Editable;
 import android.text.TextWatcher;
 
-final class u implements TextWatcher {
+final class u
+        implements TextWatcher {
+    private /* synthetic */ UGCGuideAddBookActivity a;
 
-    private UGCGuideAddBookActivity a;
-
-    u(UGCGuideAddBookActivity UGCGuideAddBookActivity1) {
-        a = UGCGuideAddBookActivity1;
+    u(UGCGuideAddBookActivity uGCGuideAddBookActivity) {
+        this.a = uGCGuideAddBookActivity;
     }
 
-    public final void afterTextChanged(Editable Editable1) {
-        UGCGuideAddBookActivity UGCGuideAddBookActivity2 = a;
-        boolean boolean3;
-
-        if (!com.clilystudio.netbook.hpay100.a.a.Q(Editable1.toString()))
-            boolean3 = true;
-        else
-            boolean3 = false;
-        UGCGuideAddBookActivity.c(UGCGuideAddBookActivity2, boolean3);
+    /*
+     * Enabled aggressive block sorting
+     */
+    @Override
+    public final void afterTextChanged(Editable editable) {
+        UGCGuideAddBookActivity uGCGuideAddBookActivity = this.a;
+        boolean bl = !a.Q(editable.toString());
+        UGCGuideAddBookActivity.c(uGCGuideAddBookActivity, bl);
     }
 
-    public final void beforeTextChanged(CharSequence CharSequence1, int int2, int int3, int int4) {
+    @Override
+    public final void beforeTextChanged(CharSequence charSequence, int n, int n2, int n3) {
     }
 
-    public final void onTextChanged(CharSequence CharSequence1, int int2, int int3, int int4) {
-        UGCGuideAddBookActivity.a(a, null);
+    @Override
+    public final void onTextChanged(CharSequence charSequence, int n, int n2, int n3) {
+        UGCGuideAddBookActivity.a(this.a, null);
     }
 }

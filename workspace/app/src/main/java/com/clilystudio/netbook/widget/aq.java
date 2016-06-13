@@ -2,28 +2,27 @@ package com.clilystudio.netbook.widget;
 
 import android.content.Context;
 import android.view.View;
-import android.view.View$OnClickListener;
 
 import com.clilystudio.netbook.ui.post.AbsPostActivity;
+import com.koushikdutta.async.http.a;
 
-final class aq implements View$OnClickListener {
+final class aq
+        implements View.OnClickListener {
+    private /* synthetic */ PostHeader a;
 
-    private PostHeader a;
-
-    aq(PostHeader PostHeader1) {
-        a = PostHeader1;
+    aq(PostHeader postHeader) {
+        this.a = postHeader;
     }
 
-    public final void onClick(View View1) {
-        Context Context2 = a.getContext();
-
-        if (Context2 instanceof AbsPostActivity) {
-            Object Object3 = (AbsPostActivity) Context2;
-            com.koushikdutta.async.http.a a4 = new com.koushikdutta.async.http.a((Context) Object3, View1);
-
-            a4.b().inflate(2131558403, a4.a());
-            a4.a((m) new ar(this, (AbsPostActivity) Object3));
-            a4.c();
+    @Override
+    public final void onClick(View view) {
+        Context context = this.a.getContext();
+        if (context instanceof AbsPostActivity) {
+            AbsPostActivity absPostActivity = (AbsPostActivity) context;
+            a a2 = new a(absPostActivity, view);
+            a2.b().inflate(2131558403, a2.a());
+            a2.a(new ar(this, absPostActivity));
+            a2.c();
         }
     }
 }

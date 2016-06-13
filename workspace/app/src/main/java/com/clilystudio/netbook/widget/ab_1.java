@@ -5,62 +5,54 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.clilystudio.netbook.a.e;
+import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.model.HotCommentRoot;
 import com.clilystudio.netbook.model.PostComment;
 
-final class ab extends e {
+final class ab
+        extends e<String, Void, HotCommentRoot> {
+    private /* synthetic */ HotCommentView a;
 
-    private HotCommentView a;
-
-    ab(HotCommentView HotCommentView1, byte byte2) {
-        this(HotCommentView1);
+    private ab(HotCommentView hotCommentView) {
+        this.a = hotCommentView;
     }
 
-    private ab(HotCommentView HotCommentView1) {
-        a = HotCommentView1;
+    /* synthetic */ ab(HotCommentView hotCommentView, byte by) {
+        this(hotCommentView);
     }
 
-    private static transient HotCommentRoot a(String[] String_1darray1) {
-        HotCommentRoot HotCommentRoot4;
-
+    private static /* varargs */ HotCommentRoot a(String... arrstring) {
         try {
-            com.clilystudio.netbook.api.b.a();
-            HotCommentRoot4 = com.clilystudio.netbook.api.b.b().T(String_1darray1[0]);
-        } catch (Exception Exception2) {
-            Exception2.printStackTrace();
+            b.a();
+            HotCommentRoot hotCommentRoot = b.b().T(arrstring[0]);
+            return hotCommentRoot;
+        } catch (Exception var1_2) {
+            var1_2.printStackTrace();
             return null;
         }
-        return HotCommentRoot4;
     }
 
-    protected final Object doInBackground(Object[] Object_1darray1) {
-        return a((String[]) Object_1darray1);
+    @Override
+    protected final /* synthetic */ Object doInBackground(Object[] arrobject) {
+        return ab.a((String[]) arrobject);
     }
 
-    protected final void onPostExecute(Object Object1) {
-        Object Object2 = (HotCommentRoot) Object1;
-
-        super.onPostExecute(Object2);
-        if (Object2 != null && ((HotCommentRoot) Object2).getComments() != null && ((HotCommentRoot) Object2).getComments().length > 0) {
-            LayoutInflater LayoutInflater3;
-            PostComment[] PostComment_1darray4;
-            int int5;
-            int int6;
-
-            a.findViewById(2131493517).setVisibility(0);
-            a.findViewById(2131493518).setVisibility(0);
-            LayoutInflater3 = LayoutInflater.from(a.getContext());
-            PostComment_1darray4 = ((HotCommentRoot) Object2).getComments();
-            int5 = 0;
-            int6 = 2;
-            while (int5 < PostComment_1darray4.length) {
-                PostComment PostComment7 = PostComment_1darray4[int5];
-                View View8 = LayoutInflater3.inflate(2130903312, (ViewGroup) a, false);
-
-                ((CommentItemView) View8.findViewById(2131493758)).b(PostComment7, -1);
-                a.addView(View8, int6);
-                ++int6;
-                ++int5;
+    @Override
+    protected final /* synthetic */ void onPostExecute(Object object) {
+        HotCommentRoot hotCommentRoot = (HotCommentRoot) object;
+        super.onPostExecute(hotCommentRoot);
+        if (hotCommentRoot != null && hotCommentRoot.getComments() != null && hotCommentRoot.getComments().length > 0) {
+            this.a.findViewById(2131493517).setVisibility(0);
+            this.a.findViewById(2131493518).setVisibility(0);
+            LayoutInflater layoutInflater = LayoutInflater.from(this.a.getContext());
+            PostComment[] arrpostComment = hotCommentRoot.getComments();
+            int n = 2;
+            for (int i = 0; i < arrpostComment.length; ++i) {
+                PostComment postComment = arrpostComment[i];
+                View view = layoutInflater.inflate(2130903312, (ViewGroup) this.a, false);
+                ((CommentItemView) view.findViewById(2131493758)).b(postComment, -1);
+                this.a.addView(view, n);
+                ++n;
             }
         }
     }

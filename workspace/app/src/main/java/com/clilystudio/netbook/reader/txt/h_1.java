@@ -2,15 +2,16 @@ package com.clilystudio.netbook.reader.txt;
 
 import com.clilystudio.netbook.reader.G;
 
-final class h implements G {
+final class h
+        implements G {
+    private /* synthetic */ ReaderTxtActivity a;
 
-    private ReaderTxtActivity a;
-
-    h(ReaderTxtActivity ReaderTxtActivity1) {
-        a = ReaderTxtActivity1;
+    h(ReaderTxtActivity readerTxtActivity) {
+        this.a = readerTxtActivity;
     }
 
-    public final void a(int int1) {
-        ReaderTxtActivity.e(a, int1);
+    @Override
+    public final void a(int n2) {
+        ReaderTxtActivity.e(this.a, n2);
     }
 }

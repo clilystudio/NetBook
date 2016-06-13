@@ -3,76 +3,67 @@ package com.clilystudio.netbook.util;
 import android.content.Context;
 import android.util.Base64;
 
+import com.clilystudio.netbook.hpay100.a.a;
+
 import java.security.Key;
-import java.security.spec.AlgorithmParameterSpec;
 
 import javax.crypto.Cipher;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 
 public class CipherUtil {
-
     static {
         System.loadLibrary("test");
         "0123456789ABCDEF".toCharArray();
     }
 
-    public static String a(String String1, String String2) {
-        String String11;
-
+    public static String a(String string, String string2) {
         try {
-            byte[] byte_1darray4 = Base64.decode(String1.getBytes(), 0);
-            Object Object5 = new SecretKeySpec(byte_1darray4, 0, byte_1darray4.length, "AES");
-            byte[] byte_1darray6 = Base64.decode(String2, 0);
-            byte[] byte_1darray7 = com.clilystudio.netbook.hpay100.a.a.a(byte_1darray6, 0, 16);
-            byte[] byte_1darray8 = com.clilystudio.netbook.hpay100.a.a.a(byte_1darray6, 16, byte_1darray6.length);
-            Object Object9 = new IvParameterSpec(byte_1darray7);
-            Cipher Cipher10 = Cipher.getInstance("AES/CBC/PKCS5Padding");
-
-            Cipher10.init(2, (Key) Object5, (AlgorithmParameterSpec) Object9);
-            String11 = new String(Cipher10.doFinal(byte_1darray8));
-        } catch (Exception Exception3) {
-            Exception3.printStackTrace();
+            byte[] arrby = Base64.decode(string.getBytes(), 0);
+            SecretKeySpec secretKeySpec = new SecretKeySpec(arrby, 0, arrby.length, "AES");
+            byte[] arrby2 = Base64.decode(string2, 0);
+            byte[] arrby3 = a.a(arrby2, 0, 16);
+            byte[] arrby4 = a.a(arrby2, 16, arrby2.length);
+            IvParameterSpec ivParameterSpec = new IvParameterSpec(arrby3);
+            Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
+            cipher.init(2, (Key) secretKeySpec, ivParameterSpec);
+            String string3 = new String(cipher.doFinal(arrby4));
+            return string3;
+        } catch (Exception var2_10) {
+            var2_10.printStackTrace();
             return null;
         }
-        return String11;
     }
 
-    private static Key a(String String1) {
-        Object Object4;
-
+    private static Key a(String string) {
         try {
-            byte[] byte_1darray3 = String1.getBytes();
-
-            Object4 = new SecretKeySpec(byte_1darray3, 0, byte_1darray3.length, "AES");
-        } catch (Exception Exception2) {
-            Exception2.printStackTrace();
+            byte[] arrby = string.getBytes();
+            SecretKeySpec secretKeySpec = new SecretKeySpec(arrby, 0, arrby.length, "AES");
+            return secretKeySpec;
+        } catch (Exception var1_3) {
+            var1_3.printStackTrace();
             return null;
         }
-        return (Key) Object4;
     }
 
-    public static String b(String String1, String String2) {
-        String String10;
-
+    public static String b(String string, String string2) {
         try {
-            Key Key4 = a(String1);
-            byte[] byte_1darray5 = Base64.decode(String2, 0);
-            byte[] byte_1darray6 = com.clilystudio.netbook.hpay100.a.a.a(byte_1darray5, 0, 16);
-            byte[] byte_1darray7 = com.clilystudio.netbook.hpay100.a.a.a(byte_1darray5, 16, byte_1darray5.length);
-            Object Object8 = new IvParameterSpec(byte_1darray6);
-            Cipher Cipher9 = Cipher.getInstance("AES/CBC/PKCS5Padding");
-
-            Cipher9.init(2, Key4, (AlgorithmParameterSpec) Object8);
-            String10 = new String(Cipher9.doFinal(byte_1darray7));
-        } catch (Exception Exception3) {
-            Exception3.printStackTrace();
+            Key key = CipherUtil.a(string);
+            byte[] arrby = Base64.decode(string2, 0);
+            byte[] arrby2 = a.a(arrby, 0, 16);
+            byte[] arrby3 = a.a(arrby, 16, arrby.length);
+            IvParameterSpec ivParameterSpec = new IvParameterSpec(arrby2);
+            Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
+            cipher.init(2, key, ivParameterSpec);
+            String string3 = new String(cipher.doFinal(arrby3));
+            return string3;
+        } catch (Exception var2_9) {
+            var2_9.printStackTrace();
             return null;
         }
-        return String10;
     }
 
-    public static native String getNewAdvert(String String1, String String2, Context Context3);
+    public static native String getNewAdvert(String var0, String var1, Context var2);
 
-    public static native String getNewAdvertWork(String String1, long long2, String String4, Context Context5);
+    public static native String getNewAdvertWork(String var0, long var1, String var3, Context var4);
 }

@@ -3,92 +3,78 @@ package com.clilystudio.netbook.widget;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
-import android.view.View$MeasureSpec;
 import android.view.ViewGroup;
-import android.view.ViewGroup$LayoutParams;
 
-public class TagsLayout extends ViewGroup {
-
+public class TagsLayout
+        extends ViewGroup {
     private int a;
 
-    public TagsLayout(Context Context1, AttributeSet AttributeSet2) {
-        super(Context1, AttributeSet2);
+    public TagsLayout(Context context) {
+        super(context);
     }
 
-    public TagsLayout(Context Context1) {
-        super(Context1);
+    public TagsLayout(Context context, AttributeSet attributeSet) {
+        super(context, attributeSet);
     }
 
-    protected boolean checkLayoutParams(ViewGroup$LayoutParams LayoutParams1) {
-        return LayoutParams1 instanceof ViewGroup$LayoutParams;
+    @Override
+    protected boolean checkLayoutParams(ViewGroup.LayoutParams layoutParams) {
+        return layoutParams instanceof ViewGroup.LayoutParams;
     }
 
-    protected ViewGroup$LayoutParams generateDefaultLayoutParams() {
-        return new ViewGroup$LayoutParams(1, 1);
+    @Override
+    protected ViewGroup.LayoutParams generateDefaultLayoutParams() {
+        return new ViewGroup.LayoutParams(1, 1);
     }
 
-    protected void onLayout(boolean boolean1, int int2, int int3, int int4, int int5) {
-        int int6 = getChildCount();
-        int int7 = int4 - int2;
-        int int8 = getPaddingLeft();
-        int int9 = getPaddingTop();
-        int int10 = int8;
-        int int11;
-
-        for (int11 = 0; int11 < int6; ++int11) {
-            View View12 = getChildAt(int11);
-
-            if (View12.getVisibility() != 8) {
-                int int13 = View12.getMeasuredWidth();
-                int int14 = View12.getMeasuredHeight();
-                ViewGroup$LayoutParams LayoutParams15 = View12.getLayoutParams();
-
-                if (int10 + int13 > int7) {
-                    int10 = getPaddingLeft();
-                    int9 += a;
-                }
-                View12.layout(int10, int9, int10 + int13, int14 + int9);
-                int10 += int13 + LayoutParams15.width;
+    @Override
+    protected void onLayout(boolean bl, int n, int n2, int n3, int n4) {
+        int n5 = this.getChildCount();
+        int n6 = n3 - n;
+        int n7 = this.getPaddingLeft();
+        int n8 = this.getPaddingTop();
+        int n9 = n7;
+        for (int i = 0; i < n5; ++i) {
+            View view = this.getChildAt(i);
+            if (view.getVisibility() == 8) continue;
+            int n10 = view.getMeasuredWidth();
+            int n11 = view.getMeasuredHeight();
+            ViewGroup.LayoutParams layoutParams = view.getLayoutParams();
+            if (n9 + n10 > n6) {
+                n9 = this.getPaddingLeft();
+                n8 += this.a;
             }
+            view.layout(n9, n8, n9 + n10, n11 + n8);
+            n9 += n10 + layoutParams.width;
         }
     }
 
-    protected void onMeasure(int int1, int int2) {
-        int int3 = View$MeasureSpec.getSize(int1);
-        int int4 = View$MeasureSpec.getSize(int2) - getPaddingTop() - getPaddingBottom();
-        int int5 = getChildCount();
-        int int6 = getPaddingLeft();
-        int int7 = getPaddingTop();
-        int int8 = 0;
-        int int9 = 0;
-        int int10;
-
-        while (int8 < int5) {
-            View View11 = getChildAt(int8);
-
-            if (View11.getVisibility() != 8) {
-                int int12;
-                ViewGroup$LayoutParams LayoutParams13;
-
-                View11.measure(View$MeasureSpec.makeMeasureSpec(int3, -2147483648), View$MeasureSpec.makeMeasureSpec(int4, 0));
-                int12 = View11.getMeasuredWidth();
-                LayoutParams13 = View11.getLayoutParams();
-                int9 = Math.max(int9, View11.getMeasuredHeight() + LayoutParams13.height);
-                if (int6 + int12 > int3) {
-                    int6 = getPaddingLeft();
-                    int7 += int9;
-                }
-                int6 += int12 + LayoutParams13.width;
+    /*
+     * Enabled aggressive block sorting
+     */
+    @Override
+    protected void onMeasure(int n, int n2) {
+        int n3 = View.MeasureSpec.getSize(n);
+        int n4 = View.MeasureSpec.getSize(n2) - this.getPaddingTop() - this.getPaddingBottom();
+        int n5 = this.getChildCount();
+        int n6 = this.getPaddingLeft();
+        int n7 = this.getPaddingTop();
+        int n8 = 0;
+        for (int i = 0; i < n5; ++i) {
+            View view = this.getChildAt(i);
+            if (view.getVisibility() == 8) continue;
+            view.measure(View.MeasureSpec.makeMeasureSpec(n3, Integer.MIN_VALUE), View.MeasureSpec.makeMeasureSpec(n4, 0));
+            int n9 = view.getMeasuredWidth();
+            ViewGroup.LayoutParams layoutParams = view.getLayoutParams();
+            n8 = Math.max(n8, view.getMeasuredHeight() + layoutParams.height);
+            if (n6 + n9 > n3) {
+                n6 = this.getPaddingLeft();
+                n7 += n8;
             }
-            ++int8;
+            n6 += n9 + layoutParams.width;
         }
-        a = int9;
-        if (View$MeasureSpec.getMode(int2) == 0)
-            int10 = int7 + int9;
-        else if (View$MeasureSpec.getMode(int2) == -2147483648 && int7 + int9 < int4)
-            int10 = int7 + int9;
-        else
-            int10 = int4;
-        setMeasuredDimension(int3, int10);
+        this.a = n8;
+        int n10 = View.MeasureSpec.getMode(n2) == 0 ? n7 + n8 : (View.MeasureSpec.getMode(n2) == Integer.MIN_VALUE && n7 + n8 < n4 ? n7 + n8 : n4);
+        this.setMeasuredDimension(n3, n10);
     }
 }

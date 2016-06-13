@@ -6,36 +6,38 @@ import com.clilystudio.netbook.db.BookDlRecord;
 import com.clilystudio.netbook.event.I;
 import com.clilystudio.netbook.event.d;
 import com.clilystudio.netbook.event.i;
+import com.clilystudio.netbook.reader.dl.a;
 import com.clilystudio.netbook.widget.y;
 
-final class r implements y {
-
+final class r
+        implements y {
     private String a;
-    private HomeShelfAdapter b;
-    public r(HomeShelfAdapter HomeShelfAdapter1, String String2) {
-        b = HomeShelfAdapter1;
-        a = String2;
+    private /* synthetic */ HomeShelfAdapter b;
+
+    public r(HomeShelfAdapter homeShelfAdapter, String string) {
+        this.b = homeShelfAdapter;
+        this.a = string;
     }
 
+    @Override
     public final void a() {
-        String String1 = a;
-
-        i.a().c(new d(String1, 3));
+        String string = this.a;
+        i.a().c(new d(string, 3));
     }
 
+    @Override
     public final void b() {
-        Activity Activity1 = (Activity) HomeShelfAdapter.c(b);
-        String String2 = a;
-
-        new com.clilystudio.netbook.reader.dl.a(Activity1).a(String2, 0, 0);
+        Activity activity = (Activity) HomeShelfAdapter.c(this.b);
+        String string = this.a;
+        new a(activity).a(string, 0, 0);
     }
 
+    @Override
     public final void c() {
-        BookDlRecord BookDlRecord1 = BookDlRecord.get(a);
-
-        if (BookDlRecord1 != null) {
-            BookDlRecord1.setStatus(3);
-            BookDlRecord1.save();
+        BookDlRecord bookDlRecord = BookDlRecord.get(this.a);
+        if (bookDlRecord != null) {
+            bookDlRecord.setStatus(3);
+            bookDlRecord.save();
             i.a().c(new I());
         }
     }

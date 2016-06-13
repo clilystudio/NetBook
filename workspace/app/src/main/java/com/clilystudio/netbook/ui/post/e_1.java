@@ -1,23 +1,24 @@
 package com.clilystudio.netbook.ui.post;
 
 import android.view.View;
-import android.view.View$OnClickListener;
 import android.widget.EditText;
 
 import com.clilystudio.netbook.model.ReplyeeInfo;
 
-final class e implements View$OnClickListener {
+final class e
+        implements View.OnClickListener {
+    private /* synthetic */ ReplyeeInfo a;
+    private /* synthetic */ EditText b;
+    private /* synthetic */ AbsPostActivity c;
 
-    private ReplyeeInfo a;
-    private EditText b;
-    private AbsPostActivity c;
-    e(AbsPostActivity AbsPostActivity1, ReplyeeInfo ReplyeeInfo2, EditText EditText3) {
-        c = AbsPostActivity1;
-        a = ReplyeeInfo2;
-        b = EditText3;
+    e(AbsPostActivity absPostActivity, ReplyeeInfo replyeeInfo, EditText editText) {
+        this.c = absPostActivity;
+        this.a = replyeeInfo;
+        this.b = editText;
     }
 
-    public final void onClick(View View1) {
-        c.a(a, b.getText().toString());
+    @Override
+    public final void onClick(View view) {
+        this.c.a(this.a, this.b.getText().toString());
     }
 }

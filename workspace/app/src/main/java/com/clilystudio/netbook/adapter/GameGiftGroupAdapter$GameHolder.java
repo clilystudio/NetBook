@@ -7,14 +7,19 @@ import com.clilystudio.netbook.ui.SmartImageView;
 import com.clilystudio.netbook.widget.GiftGameGameButton;
 
 import butterknife.ButterKnife;
+import butterknife.InjectView;
 
 class GameGiftGroupAdapter$GameHolder {
-
+    @InjectView(value = 2131492916)
     GiftGameGameButton button;
+    @InjectView(value = 2131493481)
     TextView desc;
+    @InjectView(value = 2131493028)
     SmartImageView icon;
+    @InjectView(value = 2131492936)
     TextView title;
-    GameGiftGroupAdapter$GameHolder(View View1) {
-        ButterKnife.inject(this, View1);
+
+    GameGiftGroupAdapter$GameHolder(View view) {
+        ButterKnife.inject((Object) this, view);
     }
 }

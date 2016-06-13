@@ -6,9 +6,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.am;
 import android.view.View;
-import android.view.View$OnClickListener;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.AbsListView$OnScrollListener;
+import android.widget.AbsListView;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -21,154 +20,142 @@ import com.clilystudio.netbook.widget.PostHeader;
 import com.clilystudio.netbook.widget.ScrollLoadListView;
 import com.clilystudio.netbook.widget.SendView;
 
-public abstract class AbsPostActivity extends BaseLoadingActivity {
-
+public abstract class AbsPostActivity
+        extends BaseLoadingActivity {
     protected String a;
     protected ScrollLoadListView b;
     protected PostHeader c;
     protected ReplyeeInfo e;
     private String f;
 
-    static EditText a(AbsPostActivity AbsPostActivity1) {
-        return AbsPostActivity1.p();
+    static /* synthetic */ EditText a(AbsPostActivity absPostActivity) {
+        return absPostActivity.p();
     }
 
-    static String a(AbsPostActivity AbsPostActivity1, String String2) {
-        AbsPostActivity1.f = String2;
-        return String2;
+    static /* synthetic */ String a(AbsPostActivity absPostActivity, String string) {
+        absPostActivity.f = string;
+        return string;
     }
 
-    static boolean b(AbsPostActivity AbsPostActivity1) {
-        if (((TextView) AbsPostActivity1.findViewById(2131494004)).getText().toString().length() <= 512)
-            return true;
-        com.clilystudio.netbook.util.e.a((Activity) AbsPostActivity1, 2131034305);
-        return false;
+    static /* synthetic */ boolean b(AbsPostActivity absPostActivity) {
+        if (((TextView) absPostActivity.findViewById(2131494004)).getText().toString().length() > 512) {
+            com.clilystudio.netbook.util.e.a((Activity) absPostActivity, (int) 2131034305);
+            return false;
+        }
+        return true;
     }
 
-    static void c(AbsPostActivity AbsPostActivity1) {
-        AbsPostActivity1.p().setText((CharSequence) "");
+    static /* synthetic */ void c(AbsPostActivity absPostActivity) {
+        absPostActivity.p().setText("");
     }
 
     private EditText p() {
-        return ((SendView) findViewById(2131494003)).b();
+        return ((SendView) this.findViewById(2131494003)).b();
     }
 
-    protected void a(Account Account1, String String2) {
-        h h3 = new h(this, (Activity) this, 2131034430);
-        String[] String_1darray4 = new String[3];
-
-        String_1darray4[0] = a;
-        String_1darray4[1] = Account1.getToken();
-        String_1darray4[2] = String2;
-        h3.b(String_1darray4);
+    protected void a(Account account, String string) {
+        h h2 = new h(this, (Activity) this, 2131034430);
+        Object[] arrobject = new String[]{this.a, account.getToken(), string};
+        h2.b(arrobject);
     }
 
-    public final void a(ReplyeeInfo ReplyeeInfo1, int int2) {
-        if (ReplyeeInfo1 != null && ReplyeeInfo1.getAuthor() != null) {
-            SendView SendView3;
-            Object Object4;
-            Object[] Object_1darray5;
-
-            e = ReplyeeInfo1;
-            SendView3 = (SendView) findViewById(2131494003);
-            Object4 = SendView3.b();
-            ((EditText) Object4).setText((CharSequence) "");
-            Object_1darray5 = new Object[1];
-            Object_1darray5[0] = ReplyeeInfo1.getAuthor().getNickname();
-            ((EditText) Object4).setHint((CharSequence) String.format("\u56DE\u590D %s\uFF1A", Object_1darray5));
-            ((View) Object4).requestFocus();
-            ((InputMethodManager) ((Context) this).getSystemService("input_method")).showSoftInput((View) Object4, 0);
-            if (int2 != -1)
-                b.setSelection(int2);
-            SendView3.c().setOnClickListener((View$OnClickListener) new e(this, ReplyeeInfo1, (EditText) Object4));
-        } else
-            com.clilystudio.netbook.util.e.a((Activity) this, "\u8BF7\u91CD\u8BD5");
-    }
-
-    protected void a(ReplyeeInfo ReplyeeInfo1, String String2) {
-        Account Account3;
-
-        f = String2;
-        Account3 = am.a((Activity) this);
-        if (Account3 != null) {
-            if (f.length() > 512)
-                com.clilystudio.netbook.util.e.a((Activity) this, 2131034305);
-            else {
-                g g4 = new g(this, (Activity) this, 2131034430);
-                String[] String_1darray5 = new String[4];
-
-                String_1darray5[0] = a;
-                String_1darray5[1] = Account3.getToken();
-                String_1darray5[2] = f;
-                String_1darray5[3] = ReplyeeInfo1.getCommentId();
-                g4.b(String_1darray5);
+    public final void a(ReplyeeInfo replyeeInfo, int n) {
+        if (replyeeInfo != null && replyeeInfo.getAuthor() != null) {
+            this.e = replyeeInfo;
+            SendView sendView = (SendView) this.findViewById(2131494003);
+            EditText editText = sendView.b();
+            editText.setText("");
+            Object[] arrobject = new Object[]{replyeeInfo.getAuthor().getNickname()};
+            editText.setHint(String.format("\u56de\u590d %s\uff1a", arrobject));
+            editText.requestFocus();
+            ((InputMethodManager) this.getSystemService("input_method")).showSoftInput(editText, 0);
+            if (n != -1) {
+                this.b.setSelection(n);
             }
+            sendView.c().setOnClickListener(new e(this, replyeeInfo, editText));
+            return;
         }
+        com.clilystudio.netbook.util.e.a((Activity) this, (String) "\u8bf7\u91cd\u8bd5");
     }
 
-    public abstract void a(String String1);
-
-    protected final void a(boolean boolean1) {
-        Object Object2 = (TextView) findViewById(2131494004);
-
-        am.a((Context) this, (View) Object2);
-        if (boolean1)
-            ((TextView) Object2).setText((CharSequence) "");
-        ((TextView) Object2).setHint((CharSequence) "\u6DFB\u52A0\u8BC4\u8BBA");
-        findViewById(2131494005).setOnClickListener((View$OnClickListener) new d(this, (TextView) Object2));
+    protected void a(ReplyeeInfo replyeeInfo, String string) {
+        this.f = string;
+        Account account = am.a((Activity) this);
+        if (account == null) {
+            return;
+        }
+        if (this.f.length() > 512) {
+            com.clilystudio.netbook.util.e.a((Activity) this, (int) 2131034305);
+            return;
+        }
+        g g2 = new g(this, (Activity) this, 2131034430);
+        Object[] arrobject = new String[]{this.a, account.getToken(), this.f, replyeeInfo.getCommentId()};
+        g2.b(arrobject);
     }
 
-    public abstract void e(int int1);
+    public abstract void a(String var1);
 
-    public abstract void f(int int1);
+    protected final void a(boolean bl) {
+        TextView textView = (TextView) this.findViewById(2131494004);
+        am.a((Context) this, (View) textView);
+        if (bl) {
+            textView.setText("");
+        }
+        textView.setHint("\u6dfb\u52a0\u8bc4\u8bba");
+        this.findViewById(2131494005).setOnClickListener((View.OnClickListener) ((Object) new d(this, textView)));
+    }
 
-    public final void g(String String1) {
-        f = String1;
+    public abstract void e(int var1);
+
+    public abstract void f(int var1);
+
+    public final void g(String string) {
+        this.f = string;
     }
 
     public void j() {
-        if (getIntent().hasExtra("KEY_POST_REPLIER_INFO")) {
-            EditText EditText1 = p();
-
-            new Handler().postDelayed((Runnable) new c(this, EditText1), 200L);
-            a((ReplyeeInfo) getIntent().getSerializableExtra("KEY_POST_REPLIER_INFO"), 0);
+        if (!this.getIntent().hasExtra("KEY_POST_REPLIER_INFO")) {
+            return;
         }
+        EditText editText = this.p();
+        new Handler().postDelayed((Runnable) ((Object) new c(this, editText)), 200);
+        this.a((ReplyeeInfo) this.getIntent().getSerializableExtra("KEY_POST_REPLIER_INFO"), 0);
     }
 
     public final void k() {
-        int int1 = b.getChildCount();
-        int int2;
-
-        for (int2 = 0; int2 < int1; ++int2) {
-            View View3 = b.getChildAt(int2);
-
-            if (View3 instanceof CommentItemView)
-                ((CommentItemView) View3).a();
+        int n = this.b.getChildCount();
+        for (int i = 0; i < n; ++i) {
+            View view = this.b.getChildAt(i);
+            if (!(view instanceof CommentItemView)) continue;
+            ((CommentItemView) view).a();
         }
     }
 
     public final String l() {
-        return f;
+        return this.f;
     }
 
     public final ListView m() {
-        return (ListView) b;
+        return this.b;
     }
 
     public String n() {
-        return a;
+        return this.a;
     }
 
     protected abstract void o();
 
-    protected void onCreate(Bundle Bundle1) {
-        super.onCreate(Bundle1);
-        com.clilystudio.netbook.hpay100.a.a.u((Context) this);
+    @Override
+    protected void onCreate(Bundle bundle) {
+        super.onCreate(bundle);
+        com.clilystudio.netbook.hpay100.a.a.u(this);
     }
 
+    @Override
     public void onResume() {
         super.onResume();
-        if (b != null)
-            b.setOnScrollListener((AbsListView$OnScrollListener) new a(this));
+        if (this.b != null) {
+            this.b.setOnScrollListener((AbsListView.OnScrollListener) ((Object) new a(this)));
+        }
     }
 }

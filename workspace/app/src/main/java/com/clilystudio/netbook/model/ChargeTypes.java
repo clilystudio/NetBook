@@ -1,23 +1,22 @@
 package com.clilystudio.netbook.model;
 
 public class ChargeTypes {
-
     private boolean ok;
     private ChargeType[] products;
 
     public ChargeType[] getTypes() {
-        return products;
+        return this.products;
     }
 
-    public void setTypes(ChargeType[] ChargeType_1darray1) {
-        products = ChargeType_1darray1;
+    public void setTypes(ChargeType[] arrchargeType) {
+        this.products = arrchargeType;
     }
 
     public boolean isOk() {
-        return ok;
+        return this.ok;
     }
 
-    public void setOk(boolean boolean1) {
-        ok = boolean1;
+    public void setOk(boolean bl) {
+        this.ok = bl;
     }
 }

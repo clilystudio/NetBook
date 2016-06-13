@@ -2,55 +2,47 @@ package com.clilystudio.netbook.ui.ugcbook;
 
 import android.app.Activity;
 
+import com.clilystudio.netbook.a.c;
+import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.model.BookSummary;
 import com.clilystudio.netbook.model.UGCNewCollection;
 import com.clilystudio.netbook.util.e;
 
 import java.io.IOException;
-import java.util.Iterator;
 import java.util.List;
 
-final class N extends com.clilystudio.netbook.a.c {
+final class N
+        extends c<String[], List<BookSummary>> {
+    private /* synthetic */ UGCGuideEditBooksActivity a;
 
-    private UGCGuideEditBooksActivity a;
-
-    public N(UGCGuideEditBooksActivity UGCGuideEditBooksActivity1, Activity Activity2) {
-        super(Activity2, "\u6B63\u5728\u6DFB\u52A0\u4E66\u7C4D...");
-        a = UGCGuideEditBooksActivity1;
+    public N(UGCGuideEditBooksActivity uGCGuideEditBooksActivity, Activity activity) {
+        this.a = uGCGuideEditBooksActivity;
+        super(activity, "\u6b63\u5728\u6dfb\u52a0\u4e66\u7c4d...");
     }
 
-    private transient List a(String[][] String_2darray1) {
-        String[] String_1darray2 = String_2darray1[0];
-        List List4;
-
+    private /* varargs */ List<BookSummary> a(String[]... arrstring) {
+        String[] arrstring2 = arrstring[0];
         try {
-            List4 = com.clilystudio.netbook.api.b.b().a(String_1darray2);
-        } catch (IOException IOException3) {
-            IOException3.printStackTrace();
+            List<BookSummary> list = b.b().a(arrstring2);
+            return list;
+        } catch (IOException var3_4) {
+            var3_4.printStackTrace();
             return null;
         }
-        return List4;
     }
 
-    public final volatile Object a(Object[] Object_1darray1) {
-        return a((String[][]) Object_1darray1);
-    }
-
-    public final void a(Object Object1) {
-        List List2 = (List) Object1;
-
-        if (List2 != null) {
-            UGCNewCollection UGCNewCollection3 = UGCGuideEditBooksActivity.k(a);
-            Iterator Iterator4 = List2.iterator();
-
-            while (Iterator4.hasNext()) {
-                BookSummary BookSummary5 = (BookSummary) Iterator4.next();
-
-                UGCNewCollection3.addBook(BookSummary5);
-                BookSummary5.setSelected(true);
+    @Override
+    public final /* synthetic */ void a(Object object) {
+        List list = (List) object;
+        if (list != null) {
+            UGCNewCollection uGCNewCollection = UGCGuideEditBooksActivity.k(this.a);
+            for (BookSummary bookSummary : list) {
+                uGCNewCollection.addBook(bookSummary);
+                bookSummary.setSelected(true);
             }
-            UGCGuideEditBooksActivity.c(a);
-        } else
-            e.a((Activity) a, "\u6DFB\u52A0\u4E66\u7C4D\u5931\u8D25\uFF0C\u8BF7\u68C0\u67E5\u7F51\u7EDC\u6216\u91CD\u8BD5");
+            UGCGuideEditBooksActivity.c(this.a);
+            return;
+        }
+        e.a((Activity) this.a, (String) "\u6dfb\u52a0\u4e66\u7c4d\u5931\u8d25\uff0c\u8bf7\u68c0\u67e5\u7f51\u7edc\u6216\u91cd\u8bd5");
     }
 }

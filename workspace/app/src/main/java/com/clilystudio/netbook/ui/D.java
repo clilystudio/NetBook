@@ -5,43 +5,48 @@ import android.util.Log;
 import com.clilystudio.netbook.util.as;
 import com.ximalaya.ting.android.opensdk.datatrasfer.IDataCallBack;
 import com.ximalaya.ting.android.opensdk.datatrasfer.XimalayaResponse;
+import com.ximalaya.ting.android.opensdk.model.track.Track;
 import com.ximalaya.ting.android.opensdk.model.track.TrackList;
 
 import java.util.List;
 
-final class D implements IDataCallBack {
+final class D
+        implements IDataCallBack<TrackList> {
+    private /* synthetic */ AudiobookInfoActivity a;
 
-    private AudiobookInfoActivity a;
-
-    D(AudiobookInfoActivity AudiobookInfoActivity1) {
-        a = AudiobookInfoActivity1;
+    D(AudiobookInfoActivity audiobookInfoActivity) {
+        this.a = audiobookInfoActivity;
     }
 
-    public final void onError(int int1, String String2) {
-        AudiobookInfoActivity.a(a, 2);
+    @Override
+    public final void onError(int n, String string) {
+        AudiobookInfoActivity.a(this.a, 2);
     }
 
-    public final void onSuccess(XimalayaResponse XimalayaResponse1) {
-        TrackList TrackList2 = (TrackList) XimalayaResponse1;
-        List List4;
-
-        Log.d("AudiobookInfoActivity", new StringBuilder("success total count:").append(TrackList2.getTotalCount()).append(" title:").append(TrackList2.getAlbumTitle()).append(" smallUrl:").append(TrackList2.getCoverUrlSmall()).toString());
-        AudiobookInfoActivity.a(a, 1);
-        AudiobookInfoActivity.e(a);
-        List4 = TrackList2.getTracks();
-        AudiobookInfoActivity.h(a).setShowData(List4, AudiobookInfoActivity.f(a), AudiobookInfoActivity.g(a));
-        if (AudiobookInfoActivity.g(a) * AudiobookInfoActivity.i(a) >= AudiobookInfoActivity.j(a) && AudiobookInfoActivity.k(a)) {
-            AudiobookInfoActivity.b(a, as.c());
-            if (AudiobookInfoActivity.l(a)) {
-                AudiobookInfoActivity.c(a, AudiobookInfoActivity.l(a));
-                AudiobookInfoActivity.h(a).a(AudiobookInfoActivity.m(a), true);
-            } else
-                AudiobookInfoActivity.h(a).a(AudiobookInfoActivity.m(a), false);
-            AudiobookInfoActivity.d(a, true);
+    /*
+     * Enabled aggressive block sorting
+     */
+    @Override
+    public final /* synthetic */ void onSuccess(XimalayaResponse ximalayaResponse) {
+        TrackList trackList = (TrackList) ximalayaResponse;
+        Log.d("AudiobookInfoActivity", "success total count:" + trackList.getTotalCount() + " title:" + trackList.getAlbumTitle() + " smallUrl:" + trackList.getCoverUrlSmall());
+        AudiobookInfoActivity.a(this.a, 1);
+        AudiobookInfoActivity.e(this.a);
+        List<Track> list = trackList.getTracks();
+        AudiobookInfoActivity.h(this.a).setShowData(list, AudiobookInfoActivity.f(this.a), AudiobookInfoActivity.g(this.a));
+        if (AudiobookInfoActivity.g(this.a) * AudiobookInfoActivity.i(this.a) >= AudiobookInfoActivity.j(this.a) && AudiobookInfoActivity.k(this.a)) {
+            AudiobookInfoActivity.b(this.a, as.c());
+            if (AudiobookInfoActivity.l(this.a)) {
+                AudiobookInfoActivity.c(this.a, AudiobookInfoActivity.l(this.a));
+                AudiobookInfoActivity.h(this.a).a(AudiobookInfoActivity.m(this.a), true);
+            } else {
+                AudiobookInfoActivity.h(this.a).a(AudiobookInfoActivity.m(this.a), false);
+            }
+            AudiobookInfoActivity.d(this.a, true);
         }
-        if (AudiobookInfoActivity.g(a) * AudiobookInfoActivity.i(a) < AudiobookInfoActivity.j(a)) {
-            AudiobookInfoActivity.n(a);
-            AudiobookInfoActivity.d(a);
+        if (AudiobookInfoActivity.g(this.a) * AudiobookInfoActivity.i(this.a) < AudiobookInfoActivity.j(this.a)) {
+            AudiobookInfoActivity.n(this.a);
+            AudiobookInfoActivity.d(this.a);
         }
     }
 }

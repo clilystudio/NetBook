@@ -1,18 +1,21 @@
 package com.clilystudio.netbook.reader;
 
+import android.content.Intent;
 import android.view.View;
-import android.view.View$OnClickListener;
 
-final class z implements View$OnClickListener {
+import com.clilystudio.netbook.ui.user.RemoveAdActivity;
 
-    private o a;
+final class z
+        implements View.OnClickListener {
+    private /* synthetic */ o a;
 
-    z(o o1) {
-        a = o1;
+    z(o o2) {
+        this.a = o2;
     }
-// Error: Internal #201: 
-// The following method may not be correct.
 
-    public final void onClick(View View1) {
+    @Override
+    public final void onClick(View view) {
+        Intent intent = new Intent(o.a(this.a), RemoveAdActivity.class);
+        o.a(this.a).startActivity(intent);
     }
 }

@@ -4,91 +4,89 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View$OnClickListener;
-import android.view.View$OnKeyListener;
 import android.view.ViewGroup;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
-import android.webkit.WebViewClient;
 
-public abstract class WebPageFragment extends Fragment implements View$OnClickListener {
-
+public abstract class WebPageFragment
+        extends Fragment
+        implements View.OnClickListener {
     private WebView a;
     private View b;
     private View c;
     private View d;
 
-    static void a(WebPageFragment WebPageFragment1) {
-        boolean boolean2 = true;
-        View View3 = WebPageFragment1.c;
-        boolean boolean4;
-        View View5;
-
-        if (WebPageFragment1.a != null && WebPageFragment1.a.canGoBack())
-            boolean4 = boolean2;
-        else
-            boolean4 = false;
-        View3.setEnabled(boolean4);
-        View5 = WebPageFragment1.d;
-        if (WebPageFragment1.a == null || !WebPageFragment1.a.canGoForward())
-            boolean2 = false;
-        View5.setEnabled(boolean2);
+    /*
+     * Enabled aggressive block sorting
+     */
+    static /* synthetic */ void a(WebPageFragment webPageFragment) {
+        boolean bl = true;
+        View view = webPageFragment.c;
+        boolean bl2 = webPageFragment.a != null && webPageFragment.a.canGoBack() ? bl : false;
+        view.setEnabled(bl2);
+        View view2 = webPageFragment.d;
+        if (webPageFragment.a == null || !webPageFragment.a.canGoForward()) {
+            bl = false;
+        }
+        view2.setEnabled(bl);
     }
 
-    static void b(WebPageFragment WebPageFragment1) {
-        WebPageFragment1.b.setVisibility(0);
+    static /* synthetic */ void b(WebPageFragment webPageFragment) {
+        webPageFragment.b.setVisibility(0);
     }
 
-    static void c(WebPageFragment WebPageFragment1) {
-        WebPageFragment1.b.setVisibility(8);
+    static /* synthetic */ void c(WebPageFragment webPageFragment) {
+        webPageFragment.b.setVisibility(8);
     }
 
-    static WebView d(WebPageFragment WebPageFragment1) {
-        return WebPageFragment1.a;
+    static /* synthetic */ WebView d(WebPageFragment webPageFragment) {
+        return webPageFragment.a;
     }
 
     protected abstract String a();
 
-    public void onClick(View View1) {
-        switch (View1.getId()) {
-            default:
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            default: {
                 return;
-            case 1186:
-                a.goBack();
+            }
+            case 2131494050: {
+                this.a.goBack();
                 return;
-            case 1187:
-                a.goForward();
+            }
+            case 2131494051: {
+                this.a.goForward();
                 return;
-            case 1188:
-                a.reload();
-                return;
+            }
+            case 2131494052:
         }
+        this.a.reload();
     }
 
-    public View onCreateView(LayoutInflater LayoutInflater1, ViewGroup ViewGroup2, Bundle Bundle3) {
-        return LayoutInflater1.inflate(2130903420, ViewGroup2, false);
+    @Override
+    public View onCreateView(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
+        return layoutInflater.inflate(2130903420, viewGroup, false);
     }
 
-    public void onViewCreated(View View1, Bundle Bundle2) {
-        View View3;
-        WebSettings WebSettings4;
-
-        super.onViewCreated(View1, Bundle2);
-        b = View1.findViewById(2131493085);
-        a = (WebView) View1.findViewById(2131494048);
-        c = View1.findViewById(2131494050);
-        d = View1.findViewById(2131494051);
-        View3 = View1.findViewById(2131494052);
-        c.setOnClickListener(this);
-        d.setOnClickListener(this);
-        View3.setOnClickListener(this);
-        a.setVerticalScrollBarEnabled(false);
-        WebSettings4 = a.getSettings();
-        WebSettings4.setJavaScriptEnabled(true);
-        WebSettings4.setDomStorageEnabled(true);
-        WebSettings4.setAppCacheEnabled(true);
-        a.setWebViewClient((WebViewClient) new dd(this));
-        a.setOnKeyListener((View$OnKeyListener) new de(this));
-        a.loadUrl(a());
+    @Override
+    public void onViewCreated(View view, Bundle bundle) {
+        super.onViewCreated(view, bundle);
+        this.b = view.findViewById(2131493085);
+        this.a = (WebView) view.findViewById(2131494048);
+        this.c = view.findViewById(2131494050);
+        this.d = view.findViewById(2131494051);
+        View view2 = view.findViewById(2131494052);
+        this.c.setOnClickListener(this);
+        this.d.setOnClickListener(this);
+        view2.setOnClickListener(this);
+        this.a.setVerticalScrollBarEnabled(false);
+        WebSettings webSettings = this.a.getSettings();
+        webSettings.setJavaScriptEnabled(true);
+        webSettings.setDomStorageEnabled(true);
+        webSettings.setAppCacheEnabled(true);
+        this.a.setWebViewClient(new dd(this));
+        this.a.setOnKeyListener(new de(this));
+        this.a.loadUrl(this.a());
     }
 }

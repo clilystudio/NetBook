@@ -1,17 +1,17 @@
 package com.clilystudio.netbook.ui.home;
 
 import android.content.DialogInterface;
-import android.content.DialogInterface$OnClickListener;
 
-final class e implements DialogInterface$OnClickListener {
+final class e
+        implements DialogInterface.OnClickListener {
+    private /* synthetic */ HomeActivity a;
 
-    private HomeActivity a;
-
-    e(HomeActivity HomeActivity1) {
-        a = HomeActivity1;
+    e(HomeActivity homeActivity) {
+        this.a = homeActivity;
     }
 
-    public final void onClick(DialogInterface DialogInterface1, int int2) {
-        a.finish();
+    @Override
+    public final void onClick(DialogInterface dialogInterface, int n) {
+        this.a.finish();
     }
 }

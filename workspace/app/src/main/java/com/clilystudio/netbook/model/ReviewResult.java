@@ -1,23 +1,22 @@
 package com.clilystudio.netbook.model;
 
 public class ReviewResult {
-
     private boolean ok;
     private Review review;
 
     public Review getReview() {
-        return review;
+        return this.review;
     }
 
-    public void setReview(Review Review1) {
-        review = Review1;
+    public void setReview(Review review) {
+        this.review = review;
     }
 
     public boolean isOk() {
-        return ok;
+        return this.ok;
     }
 
-    public void setOk(boolean boolean1) {
-        ok = boolean1;
+    public void setOk(boolean bl) {
+        this.ok = bl;
     }
 }

@@ -1,50 +1,56 @@
 package com.clilystudio.netbook.util.adutil;
 
 import android.content.Context;
-import android.content.DialogInterface$OnClickListener;
+import android.content.DialogInterface;
 import android.view.View;
 
 import com.clilystudio.netbook.model.Advert;
 
-public class BaseShelfAd extends Advert {
-
+public class BaseShelfAd
+        extends Advert {
     public int showCount;
     protected Object response;
 
-    public String getDownloadTitle(Context Context1) {
+    public String getDownloadTitle(Context context) {
         return null;
     }
 
+    @Override
     public boolean isApk() {
         return false;
     }
 
-    public void onAdClick(View View1) {
+    public void onAdClick(View view) {
     }
 
-    public void processClick(View View1) {
-        Context Context2 = View1.getContext();
-
-        if (isApk()) {
-            h h3 = new h(Context2);
-
-            h3.e = getDownloadTitle(Context2);
-            h3.a(true).a("\u786E\u8BA4", (DialogInterface$OnClickListener) new j(this, View1, Context2)).b("\u53D6\u6D88", (DialogInterface$OnClickListener) new i(this)).b();
-        } else
-            onAdClick(View1);
-        recordClick(View1);
+    /*
+     * Enabled aggressive block sorting
+     */
+    @Override
+    public void processClick(View view) {
+        Context context = view.getContext();
+        if (this.isApk()) {
+            h h2 = new h(context);
+            h2.e = this.getDownloadTitle(context);
+            h2.a(true).a("\u786e\u8ba4", (DialogInterface.OnClickListener) new j(this, view, context)).b("\u53d6\u6d88", (DialogInterface.OnClickListener) new i(this)).b();
+        } else {
+            this.onAdClick(view);
+        }
+        this.recordClick(view);
     }
 
-    public void recordClick(View View1) {
+    @Override
+    public void recordClick(View view) {
     }
 
-    public void recordDownload(Context Context1) {
+    public void recordDownload(Context context) {
     }
 
-    public void recordShow(Context Context1) {
+    @Override
+    public void recordShow(Context context) {
     }
 
-    public void setResponse(Object Object1) {
-        response = Object1;
+    public void setResponse(Object object) {
+        this.response = object;
     }
 }

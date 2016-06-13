@@ -8,39 +8,44 @@ import android.net.Uri;
 import android.util.AttributeSet;
 
 import com.clilystudio.netbook.db.DownloadItem;
+import com.clilystudio.netbook.hpay100.a.a;
 import com.clilystudio.netbook.util.y;
 
 import java.io.File;
 
-public class UshaqiSecretDownloadButton extends AbsDownloadButton {
-
-    public UshaqiSecretDownloadButton(Context Context1, AttributeSet AttributeSet2) {
-        super(Context1, AttributeSet2);
+public class UshaqiSecretDownloadButton
+        extends AbsDownloadButton {
+    public UshaqiSecretDownloadButton(Context context, AttributeSet attributeSet) {
+        super(context, attributeSet);
     }
 
     private void e() {
-        if (a().getPackageName() != null)
-            new DownloadItem(a().getPackageName()).save();
+        if (this.a().getPackageName() != null) {
+            new DownloadItem(this.a().getPackageName()).save();
+        }
     }
 
+    @Override
     protected final void b() {
-        e();
-        new y((Context) (Activity) getContext(), a()).a();
+        this.e();
+        new y((Context) ((Activity) this.getContext()), this.a()).a();
     }
 
+    @Override
     protected final void c() {
-        Intent Intent1 = new Intent("android.intent.action.VIEW_DOWNLOADS");
-
-        Intent1.setFlags(268435456);
+        Intent intent = new Intent("android.intent.action.VIEW_DOWNLOADS");
+        intent.setFlags(268435456);
         try {
-            getContext().startActivity(Intent1);
-        } catch (ActivityNotFoundException ActivityNotFoundException3) {
+            this.getContext().startActivity(intent);
+            return;
+        } catch (ActivityNotFoundException var3_2) {
             return;
         }
     }
 
+    @Override
     protected final void d() {
-        e();
-        com.clilystudio.netbook.hpay100.a.a.a(getContext(), new File(Uri.parse(a().getLocalFileUri()).getPath()));
+        this.e();
+        a.a(this.getContext(), new File(Uri.parse(this.a().getLocalFileUri()).getPath()));
     }
 }

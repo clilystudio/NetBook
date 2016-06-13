@@ -1,19 +1,21 @@
 package com.clilystudio.netbook.ui.game;
 
-import android.os.AsyncTask$Status;
+import android.os.AsyncTask;
 
 import com.clilystudio.netbook.widget.av;
 
-final class l implements av {
+final class l
+        implements av {
+    private /* synthetic */ GameDetailActivity a;
 
-    private GameDetailActivity a;
-
-    l(GameDetailActivity GameDetailActivity1) {
-        a = GameDetailActivity1;
+    l(GameDetailActivity gameDetailActivity) {
+        this.a = gameDetailActivity;
     }
 
+    @Override
     public final void a() {
-        if (GameDetailActivity.n(a) == null || GameDetailActivity.n(a).getStatus() == AsyncTask$Status.FINISHED)
-            GameDetailActivity.g(a);
+        if (GameDetailActivity.n(this.a) == null || GameDetailActivity.n(this.a).getStatus() == AsyncTask.Status.FINISHED) {
+            GameDetailActivity.g(this.a);
+        }
     }
 }

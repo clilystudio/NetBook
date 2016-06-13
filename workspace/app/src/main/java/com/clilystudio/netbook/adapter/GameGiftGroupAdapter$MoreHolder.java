@@ -4,12 +4,13 @@ import android.view.View;
 import android.widget.TextView;
 
 import butterknife.ButterKnife;
+import butterknife.InjectView;
 
 class GameGiftGroupAdapter$MoreHolder {
-
+    @InjectView(value = 2131492936)
     TextView title;
 
-    GameGiftGroupAdapter$MoreHolder(View View1) {
-        ButterKnife.inject(this, View1);
+    GameGiftGroupAdapter$MoreHolder(View view) {
+        ButterKnife.inject((Object) this, view);
     }
 }

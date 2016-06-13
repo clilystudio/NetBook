@@ -5,41 +5,47 @@ import android.util.AttributeSet;
 
 import com.clilystudio.netbook.ui.game.GameDetailActivity;
 
-public class GameGiftGetButton extends GameDownloadButton {
-
+public class GameGiftGetButton
+        extends GameDownloadButton {
     private GameGiftItemView a;
 
-    public GameGiftGetButton(Context Context1, AttributeSet AttributeSet2) {
-        super(Context1, AttributeSet2);
+    public GameGiftGetButton(Context context, AttributeSet attributeSet) {
+        super(context, attributeSet);
         try {
-            ((GameDetailActivity) Context1).a(this);
-        } catch (Exception Exception3) {
-            Exception3.printStackTrace();
+            ((GameDetailActivity) context).a(this);
+            return;
+        } catch (Exception var3_3) {
+            var3_3.printStackTrace();
             return;
         }
     }
 
+    @Override
     protected final void a() {
-        setText((CharSequence) "\u4E0B\u8F7D");
-        setBackgroundResource(2131427379);
+        this.setText("\u4e0b\u8f7d");
+        this.setBackgroundResource(2131427379);
     }
 
+    @Override
     protected final void b() {
-        setText((CharSequence) "\u4E0B\u8F7D\u4E2D");
-        setBackgroundResource(2131427377);
+        this.setText("\u4e0b\u8f7d\u4e2d");
+        this.setBackgroundResource(2131427377);
     }
 
+    @Override
     protected final void c() {
-        setText((CharSequence) "\u5B89\u88C5");
-        setBackgroundResource(2131427378);
+        this.setText("\u5b89\u88c5");
+        this.setBackgroundResource(2131427378);
     }
 
+    @Override
     protected final void d() {
-        if (a != null)
-            a.a();
+        if (this.a != null) {
+            this.a.a();
+        }
     }
 
-    public void setGiftItemView(GameGiftItemView GameGiftItemView1) {
-        a = GameGiftItemView1;
+    public void setGiftItemView(GameGiftItemView gameGiftItemView) {
+        this.a = gameGiftItemView;
     }
 }

@@ -1,18 +1,18 @@
 package com.clilystudio.netbook.ui.post;
 
 import android.view.View;
-import android.view.View$OnClickListener;
 
-final class am implements View$OnClickListener {
+final class am
+        implements View.OnClickListener {
+    private /* synthetic */ BookHelpListActivity a;
 
-    private BookHelpListActivity a;
-
-    am(BookHelpListActivity BookHelpListActivity1) {
-        a = BookHelpListActivity1;
+    am(BookHelpListActivity bookHelpListActivity) {
+        this.a = bookHelpListActivity;
     }
 
-    public final void onClick(View View1) {
-        BookHelpListActivity.a(a, false).showAsDropDown(View1);
-        BookHelpListActivity.c(a).setImageDrawable(a.getResources().getDrawable(2130837722));
+    @Override
+    public final void onClick(View view) {
+        BookHelpListActivity.a(this.a, false).showAsDropDown(view);
+        BookHelpListActivity.c(this.a).setImageDrawable(this.a.getResources().getDrawable(2130837722));
     }
 }

@@ -2,33 +2,33 @@ package com.clilystudio.netbook.ui.user;
 
 import android.os.Handler;
 import android.view.View;
-import android.view.View$OnClickListener;
 import android.widget.PopupWindow;
 
-final class W implements View$OnClickListener {
+final class W
+        implements View.OnClickListener {
+    final /* synthetic */ int a;
+    final /* synthetic */ S b;
+    private /* synthetic */ PopupWindow c;
 
-    int a;     // final access specifier removed
-    S b;     // final access specifier removed
-    private PopupWindow c;
-    W(S S1, int int2, PopupWindow PopupWindow3) {
-        b = S1;
-        a = int2;
-        c = PopupWindow3;
+    W(S s, int n, PopupWindow popupWindow) {
+        this.b = s;
+        this.a = n;
+        this.c = popupWindow;
     }
 
-    public final void onClick(View View1) {
-        boolean[] boolean_1darray2 = S.a(b);
-        int int3 = a;
-        byte byte4;
-
-        if (!com.clilystudio.netbook.ui.user.S.a(b)[a])
-            byte4 = (byte) 1;
-        else
-            byte4 = (byte) 0;
-        boolean_1darray2[int3] = byte4;
-        b.notifyDataSetChanged();
-        if (S.a(b)[a])
-            new Handler().postDelayed((Runnable) new X(this), 50L);
-        c.dismiss();
+    /*
+     * Enabled aggressive block sorting
+     */
+    @Override
+    public final void onClick(View view) {
+        boolean[] arrbl = S.a(this.b);
+        int n = this.a;
+        boolean bl = !S.a(this.b)[this.a];
+        arrbl[n] = bl;
+        this.b.notifyDataSetChanged();
+        if (S.a(this.b)[this.a]) {
+            new Handler().postDelayed(new X(this), 50);
+        }
+        this.c.dismiss();
     }
 }

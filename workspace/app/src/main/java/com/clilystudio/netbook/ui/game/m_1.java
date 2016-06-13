@@ -8,31 +8,35 @@ import com.clilystudio.netbook.model.Root;
 import com.clilystudio.netbook.util.S;
 import com.clilystudio.netbook.util.e;
 
-final class m extends S {
-
+final class m
+        extends S<Root> {
     private String a;
     private String b;
-    private GameDetailActivity c;
-    m(GameDetailActivity GameDetailActivity1, byte byte2) {
-        this(GameDetailActivity1);
+    private /* synthetic */ GameDetailActivity c;
+
+    private m(GameDetailActivity gameDetailActivity) {
+        this.c = gameDetailActivity;
     }
 
-    private m(GameDetailActivity GameDetailActivity1) {
-        c = GameDetailActivity1;
+    /* synthetic */ m(GameDetailActivity gameDetailActivity, byte by) {
+        this(gameDetailActivity);
     }
 
-    protected final Root a(ApiService ApiService1, String[] String_1darray2) {
-        a = String_1darray2[0];
-        b = String_1darray2[1];
-        return ApiService1.F(a, b);
+    @Override
+    protected final Root a(ApiService apiService, String[] arrstring) {
+        this.a = arrstring[0];
+        this.b = arrstring[1];
+        return apiService.F(this.a, this.b);
     }
 
-    protected final void a(Root Root1) {
-        e.a((Activity) c, "\u5DF2\u540C\u611F");
-        PostAgreeRecord.add(b, a);
+    @Override
+    protected final void a(Root root) {
+        e.a((Activity) this.c, "\u5df2\u540c\u611f");
+        PostAgreeRecord.add(this.b, this.a);
     }
 
-    protected final void b(Root Root1) {
-        PostAgreeRecord.add(b, a);
+    @Override
+    protected final void b(Root root) {
+        PostAgreeRecord.add(this.b, this.a);
     }
 }

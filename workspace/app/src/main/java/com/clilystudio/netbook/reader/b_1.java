@@ -1,21 +1,21 @@
 package com.clilystudio.netbook.reader;
 
-import android.view.ViewGroup$LayoutParams;
 import android.view.animation.Animation;
 import android.view.animation.Transformation;
 
-final class b extends Animation {
+final class b
+        extends Animation {
+    private /* synthetic */ AutoReaderTextView a;
 
-    private AutoReaderTextView a;
-
-    b(AutoReaderTextView AutoReaderTextView1) {
-        a = AutoReaderTextView1;
+    b(AutoReaderTextView autoReaderTextView) {
+        this.a = autoReaderTextView;
     }
 
-    protected final void applyTransformation(float float1, Transformation Transformation2) {
-        if (!com.clilystudio.netbook.reader.AutoReaderTextView.a(a)) {
-            AutoReaderTextView.b(a).height = AutoReaderTextView.c(a) - (int) (float1 * (float) AutoReaderTextView.c(a));
-            a.setLayoutParams((ViewGroup$LayoutParams) AutoReaderTextView.b(a));
+    @Override
+    protected final void applyTransformation(float f, Transformation transformation) {
+        if (!AutoReaderTextView.a(this.a)) {
+            AutoReaderTextView.b((AutoReaderTextView) this.a).height = AutoReaderTextView.c(this.a) - (int) (f * (float) AutoReaderTextView.c(this.a));
+            this.a.setLayoutParams(AutoReaderTextView.b(this.a));
         }
     }
 }

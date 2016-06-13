@@ -1,80 +1,68 @@
 package com.clilystudio.netbook.model;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 public class BookRankRoot {
-
-    private List female;
-    private List male;
+    private List<BookRankSummary> female;
+    private List<BookRankSummary> male;
     private boolean ok;
 
-    private List filterMainList(List List1) {
-        Object Object2 = new ArrayList();
-        Iterator Iterator3 = List1.iterator();
-
-        while (Iterator3.hasNext()) {
-            Object Object4 = (BookRankSummary) Iterator3.next();
-
-            if (((BookRankSummary) Object4).isCollapse())
-                continue;
-            ((ArrayList) Object2).add(Object4);
+    private List<BookRankSummary> filterMainList(List<BookRankSummary> list) {
+        ArrayList<BookRankSummary> arrayList = new ArrayList<BookRankSummary>();
+        for (BookRankSummary bookRankSummary : list) {
+            if (bookRankSummary.isCollapse()) continue;
+            arrayList.add(bookRankSummary);
         }
-        return (List) Object2;
+        return arrayList;
     }
 
-    private List filterSubList(List List1) {
-        Object Object2 = new ArrayList();
-        Iterator Iterator3 = List1.iterator();
-
-        while (Iterator3.hasNext()) {
-            Object Object4 = (BookRankSummary) Iterator3.next();
-
-            if (!((BookRankSummary) Object4).isCollapse())
-                continue;
-            ((ArrayList) Object2).add(Object4);
+    private List<BookRankSummary> filterSubList(List<BookRankSummary> list) {
+        ArrayList<BookRankSummary> arrayList = new ArrayList<BookRankSummary>();
+        for (BookRankSummary bookRankSummary : list) {
+            if (!bookRankSummary.isCollapse()) continue;
+            arrayList.add(bookRankSummary);
         }
-        return (List) Object2;
+        return arrayList;
     }
 
-    public List getFemale() {
-        return female;
+    public List<BookRankSummary> getFemale() {
+        return this.female;
     }
 
-    public void setFemale(List List1) {
-        female = List1;
+    public void setFemale(List<BookRankSummary> list) {
+        this.female = list;
     }
 
-    public List getMainFemaleList() {
-        return filterMainList(female);
+    public List<BookRankSummary> getMainFemaleList() {
+        return this.filterMainList(this.female);
     }
 
-    public List getMainMaleList() {
-        return filterMainList(male);
+    public List<BookRankSummary> getMainMaleList() {
+        return this.filterMainList(this.male);
     }
 
-    public List getMale() {
-        return male;
+    public List<BookRankSummary> getMale() {
+        return this.male;
     }
 
-    public void setMale(List List1) {
-        male = List1;
+    public void setMale(List<BookRankSummary> list) {
+        this.male = list;
     }
 
-    public List getSubFemaleList() {
-        return filterSubList(female);
+    public List<BookRankSummary> getSubFemaleList() {
+        return this.filterSubList(this.female);
     }
 
-    public List getSubMaleList() {
-        return filterSubList(male);
+    public List<BookRankSummary> getSubMaleList() {
+        return this.filterSubList(this.male);
     }
 
     public boolean isOk() {
-        return ok;
+        return this.ok;
     }
 
-    public void setOk(boolean boolean1) {
-        ok = boolean1;
+    public void setOk(boolean bl) {
+        this.ok = bl;
     }
 }

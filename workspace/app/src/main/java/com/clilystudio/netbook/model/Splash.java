@@ -3,8 +3,8 @@ package com.clilystudio.netbook.model;
 import java.io.Serializable;
 import java.util.Date;
 
-public class Splash implements Serializable {
-
+public class Splash
+        implements Serializable {
     private static final long serialVersionUID = -1994127725401600755L;
     private String _id;
     private Date end;
@@ -13,68 +13,69 @@ public class Splash implements Serializable {
     private String link;
     private Date start;
 
-    public boolean equals(Object Object1) {
-        if (Object1 != null && Object1 instanceof Splash) {
-            Splash Splash2 = (Splash) Object1;
-
-            if (Splash2.get_id() != null && Splash2.get_id().equals(get_id()))
-                return true;
+    /*
+     * Enabled aggressive block sorting
+     */
+    public boolean equals(Object object) {
+        Splash splash;
+        if (object == null || !(object instanceof Splash) || (splash = (Splash) object).get_id() == null || !splash.get_id().equals(this.get_id())) {
+            return false;
         }
-        return false;
+        return true;
     }
 
     public Date getEnd() {
-        return end;
+        return this.end;
     }
 
-    public void setEnd(Date Date1) {
-        end = Date1;
+    public void setEnd(Date date) {
+        this.end = date;
     }
 
     public String getImg3x4() {
-        return img3x4;
+        return this.img3x4;
     }
 
-    public void setImg3x4(String String1) {
-        img3x4 = String1;
+    public void setImg3x4(String string) {
+        this.img3x4 = string;
     }
 
     public String getInsideLink() {
-        return insideLink;
+        return this.insideLink;
     }
 
-    public void setInsideLink(String String1) {
-        insideLink = String1;
+    public void setInsideLink(String string) {
+        this.insideLink = string;
     }
 
     public String getLink() {
-        return link;
+        return this.link;
     }
 
-    public void setLink(String String1) {
-        link = String1;
+    public void setLink(String string) {
+        this.link = string;
     }
 
     public Date getStart() {
-        return start;
+        return this.start;
     }
 
-    public void setStart(Date Date1) {
-        start = Date1;
+    public void setStart(Date date) {
+        this.start = date;
     }
 
     public String get_id() {
-        return _id;
+        return this._id;
     }
 
-    public void set_id(String String1) {
-        _id = String1;
+    public void set_id(String string) {
+        this._id = string;
     }
 
     public int hashCode() {
-        if (get_id() == null)
+        if (this.get_id() == null) {
             return 0;
-        else
-            return get_id().hashCode();
+        }
+        return this.get_id().hashCode();
     }
 }

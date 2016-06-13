@@ -4,23 +4,23 @@ import com.clilystudio.netbook.model.RelateBookRoot;
 import com.clilystudio.netbook.model.Root;
 import com.clilystudio.netbook.util.R;
 
-public final class cO extends R {
+public final class cO
+        extends R {
+    private /* synthetic */ cM a;
 
-    private cM a;
-
-    public cO(cM cM1) {
-        a = cM1;
+    public cO(cM cM2) {
+        this.a = cM2;
     }
 
-    protected final void a(Root Root1) {
-        RelateBookRoot RelateBookRoot2 = (RelateBookRoot) Root1;
-
-        cM.b(a).a(RelateBookRoot2, cM.a(a));
+    @Override
+    protected final /* synthetic */ void a(Root root) {
+        RelateBookRoot relateBookRoot = (RelateBookRoot) root;
+        cM.b(this.a).a(relateBookRoot, cM.a(this.a));
     }
 
-    protected final void b(Root Root1) {
-        RelateBookRoot RelateBookRoot2 = (RelateBookRoot) Root1;
-
-        cM.b(a).a(RelateBookRoot2, cM.a(a));
+    @Override
+    protected final /* synthetic */ void b(Root root) {
+        RelateBookRoot relateBookRoot = (RelateBookRoot) root;
+        cM.b(this.a).a(relateBookRoot, cM.a(this.a));
     }
 }

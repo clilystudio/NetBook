@@ -2,59 +2,60 @@ package com.clilystudio.netbook.ui.post;
 
 import android.app.Activity;
 
+import com.clilystudio.netbook.a.c;
+import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.db.VoteRecord;
 import com.clilystudio.netbook.model.VoteResult;
 import com.clilystudio.netbook.util.e;
 
-final class dA extends com.clilystudio.netbook.a.c {
+final class dA
+        extends c<String, VoteResult> {
+    private /* synthetic */ TweetDetailActivity a;
 
-    private TweetDetailActivity a;
-
-    public dA(TweetDetailActivity TweetDetailActivity1, Activity Activity2, int int3) {
-        super(Activity2, 2131034584);
-        a = TweetDetailActivity1;
+    public dA(TweetDetailActivity tweetDetailActivity, Activity activity, int n) {
+        this.a = tweetDetailActivity;
+        super(activity, 2131034584);
     }
 
-    private transient VoteResult a(String[] String_1darray1) {
-        VoteResult VoteResult3;
-
+    private /* varargs */ VoteResult a(String... arrstring) {
         try {
-            VoteResult3 = com.clilystudio.netbook.api.b.b().a(String_1darray1[0], String_1darray1[1], String_1darray1[2]);
-        } catch (Exception Exception2) {
-            Exception2.printStackTrace();
+            VoteResult voteResult = b.b().a(arrstring[0], arrstring[1], arrstring[2]);
+            return voteResult;
+        } catch (Exception var2_3) {
+            var2_3.printStackTrace();
             return null;
         }
-        return VoteResult3;
     }
 
-    public final volatile Object a(Object[] Object_1darray1) {
-        return a((String[]) Object_1darray1);
-    }
-
-    public final void a(Object Object1) {
-        VoteResult VoteResult2 = (VoteResult) Object1;
-
-        if (VoteResult2 != null) {
-            if (VoteResult2.isOk()) {
-                TweetDetailActivity.a(a, TweetDetailActivity.d(a), false);
-                e.a((Activity) a, "\u6210\u529F");
-                VoteRecord.create(TweetDetailActivity.b(a).getUser().getId(), TweetDetailActivity.c(a).getTweet().get_id(), TweetDetailActivity.d(a));
-            } else if ("ALREADY_VOTED".equals(VoteResult2.getCode())) {
-                int int4 = VoteResult2.getSelected();
-
-                TweetDetailActivity.a(a, int4, false);
-                VoteRecord.create(TweetDetailActivity.b(a).getUser().getId(), TweetDetailActivity.c(a).getTweet().get_id(), int4);
-                e.a((Activity) a, "\u60A8\u5DF2\u7ECF\u6295\u8FC7\u5566");
-            } else if ("FORBIDDEN".equals(VoteResult2.getCode())) {
-                String String3 = VoteResult2.getMsg();
-
-                if (String3 != null)
-                    e.a((Activity) a, String3);
-                else
-                    e.a((Activity) a, 2131034388);
-            } else
-                e.a((Activity) a, "\u6295\u7968\u5931\u8D25\uFF0C\u8BF7\u91CD\u8BD5");
-        } else
-            e.a((Activity) a, "\u6295\u7968\u5931\u8D25\uFF0C\u8BF7\u68C0\u67E5\u7F51\u7EDC\u6216\u7A0D\u540E\u518D\u8BD5");
+    @Override
+    public final /* synthetic */ void a(Object object) {
+        VoteResult voteResult = (VoteResult) object;
+        if (voteResult != null) {
+            if (voteResult.isOk()) {
+                TweetDetailActivity.a(this.a, TweetDetailActivity.d(this.a), false);
+                e.a((Activity) this.a, (String) "\u6210\u529f");
+                VoteRecord.create(TweetDetailActivity.b(this.a).getUser().getId(), TweetDetailActivity.c(this.a).getTweet().get_id(), TweetDetailActivity.d(this.a));
+                return;
+            }
+            if ("ALREADY_VOTED".equals(voteResult.getCode())) {
+                int n = voteResult.getSelected();
+                TweetDetailActivity.a(this.a, n, false);
+                VoteRecord.create(TweetDetailActivity.b(this.a).getUser().getId(), TweetDetailActivity.c(this.a).getTweet().get_id(), n);
+                e.a((Activity) this.a, (String) "\u60a8\u5df2\u7ecf\u6295\u8fc7\u5566");
+                return;
+            }
+            if ("FORBIDDEN".equals(voteResult.getCode())) {
+                String string = voteResult.getMsg();
+                if (string != null) {
+                    e.a((Activity) this.a, (String) string);
+                    return;
+                }
+                e.a((Activity) this.a, (int) 2131034388);
+                return;
+            }
+            e.a((Activity) this.a, (String) "\u6295\u7968\u5931\u8d25\uff0c\u8bf7\u91cd\u8bd5");
+            return;
+        }
+        e.a((Activity) this.a, (String) "\u6295\u7968\u5931\u8d25\uff0c\u8bf7\u68c0\u67e5\u7f51\u7edc\u6216\u7a0d\u540e\u518d\u8bd5");
     }
 }

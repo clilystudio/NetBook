@@ -1,18 +1,19 @@
 package com.clilystudio.netbook.ui.user;
 
+import android.content.Intent;
 import android.view.View;
-import android.view.View$OnClickListener;
 
-final class aG implements View$OnClickListener {
+final class aG
+        implements View.OnClickListener {
+    private /* synthetic */ UserInfoActivity a;
 
-    private UserInfoActivity a;
-
-    aG(UserInfoActivity UserInfoActivity1) {
-        a = UserInfoActivity1;
+    aG(UserInfoActivity userInfoActivity) {
+        this.a = userInfoActivity;
     }
-// Error: Internal #201: 
-// The following method may not be correct.
 
-    public final void onClick(View View1) {
+    @Override
+    public final void onClick(View view) {
+        Intent intent = new Intent(this.a, UserLevelActivity.class);
+        this.a.startActivity(intent);
     }
 }

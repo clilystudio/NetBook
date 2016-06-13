@@ -1,19 +1,19 @@
 package com.clilystudio.netbook.ui.game;
 
-import android.content.Context;
 import android.view.View;
-import android.view.View$OnClickListener;
 
-final class ac implements View$OnClickListener {
+final class ac
+        implements View.OnClickListener {
+    private /* synthetic */ String a;
+    private /* synthetic */ GameMicroFragment$LayoutAdapter$PromotionViewPager b;
 
-    private String a;
-    private GameMicroFragment$LayoutAdapter$PromotionViewPager b;
-    ac(GameMicroFragment$LayoutAdapter$PromotionViewPager PromotionViewPager1, GameMicroFragment$LayoutAdapter LayoutAdapter2, String String3) {
-        b = PromotionViewPager1;
-        a = String3;
+    ac(GameMicroFragment$LayoutAdapter$PromotionViewPager promotionViewPager, GameMicroFragment$LayoutAdapter layoutAdapter, String string) {
+        this.b = promotionViewPager;
+        this.a = string;
     }
 
-    public final void onClick(View View1) {
-        b.k.a.startActivity(GameDetailActivity.a((Context) b.k.a.getActivity(), a, true, false));
+    @Override
+    public final void onClick(View view) {
+        this.b.k.a.startActivity(GameDetailActivity.a(this.b.k.a.getActivity(), this.a, true, false));
     }
 }

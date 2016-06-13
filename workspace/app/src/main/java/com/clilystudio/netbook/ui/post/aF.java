@@ -1,30 +1,27 @@
 package com.clilystudio.netbook.ui.post;
 
 import android.os.AsyncTask;
-import android.os.AsyncTask$Status;
+import android.support.design.widget.am;
 
-final class aF implements com.handmark.pulltorefresh.library.j {
+final class aF
+        implements j {
+    private /* synthetic */ BookReviewListFragment a;
 
-    private BookReviewListFragment a;
-
-    aF(BookReviewListFragment BookReviewListFragment1) {
-        a = BookReviewListFragment1;
+    aF(BookReviewListFragment bookReviewListFragment) {
+        this.a = bookReviewListFragment;
     }
 
+    @Override
     public final void a() {
-        if (BookReviewListFragment.b(a) == null || BookReviewListFragment.b(a).getStatus() == AsyncTask$Status.FINISHED) {
-            aH aH2;
-            String[] String_1darray3;
-
-            a.c.setVisibility(0);
-            if (!android.support.design.widget.am.a((AsyncTask) BookReviewListFragment.j(a)))
-                BookReviewListFragment.j(a).cancel(true);
-            BookReviewListFragment.a(a, new aH(a, (byte) 0));
-            aH2 = BookReviewListFragment.b(a);
-            String_1darray3 = new String[2];
-            String_1darray3[0] = a.a();
-            String_1darray3[1] = a.f;
-            aH2.b(String_1darray3);
+        if (BookReviewListFragment.b(this.a) == null || BookReviewListFragment.b(this.a).getStatus() == AsyncTask.Status.FINISHED) {
+            this.a.c.setVisibility(0);
+            if (!am.a((AsyncTask) BookReviewListFragment.j(this.a))) {
+                BookReviewListFragment.j(this.a).cancel(true);
+            }
+            BookReviewListFragment.a(this.a, new aH(this.a, 0));
+            aH aH2 = BookReviewListFragment.b(this.a);
+            String[] arrstring = new String[]{this.a.a(), this.a.f};
+            aH2.b(arrstring);
         }
     }
 }

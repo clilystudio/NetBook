@@ -2,71 +2,88 @@ package com.clilystudio.netbook.ui.game;
 
 import android.app.Activity;
 
+import com.clilystudio.netbook.api.b;
+import com.clilystudio.netbook.model.Game;
 import com.clilystudio.netbook.model.GameRoot;
+import com.clilystudio.netbook.util.e;
 
 import java.io.IOException;
-import java.util.Collection;
+import java.util.Arrays;
 import java.util.List;
 
-final class am extends com.clilystudio.netbook.a.e {
+final class am
+        extends com.clilystudio.netbook.a.e<String, Void, List<Game>> {
+    private /* synthetic */ GameRankListFragment a;
 
-    private GameRankListFragment a;
-
-    am(GameRankListFragment GameRankListFragment1, byte byte2) {
-        this(GameRankListFragment1);
+    private am(GameRankListFragment gameRankListFragment) {
+        this.a = gameRankListFragment;
     }
 
-    private am(GameRankListFragment GameRankListFragment1) {
-        a = GameRankListFragment1;
+    /* synthetic */ am(GameRankListFragment gameRankListFragment, byte by) {
+        this(gameRankListFragment);
     }
 
-    private transient List a() {
+    /*
+     * Enabled force condition propagation
+     * Lifted jumps to return sites
+     */
+    private /* varargs */ List<Game> a() {
+        b.a();
+        GameRoot gameRoot = b.b().a(GameRankListFragment.b(this.a).size(), 20);
+        if (gameRoot == null) return null;
         try {
-            GameRoot GameRoot3;
-
-            com.clilystudio.netbook.api.b.a();
-            GameRoot3 = com.clilystudio.netbook.api.b.b().a(GameRankListFragment.b(a).size(), 20);
-        } catch (IOException IOException1) {
-            IOException1.printStackTrace();
+            if (!gameRoot.isOk()) return null;
+            if (gameRoot.getGames() == null) return null;
+            return Arrays.asList(gameRoot.getGames());
+        } catch (IOException var1_3) {
+            var1_3.printStackTrace();
         }
         return null;
     }
 
-    protected final Object doInBackground(Object[] Object_1darray1) {
-        return a();
+    /*
+     * Exception decompiling
+     */
+    @Override
+    protected final /* synthetic */ Object doInBackground(Object[] var1_1) {
+        // This method has failed to decompile.  When submitting a bug report, please provide this stack trace, and (if you hold appropriate legal rights) the relevant class file.
+        // java.lang.ArrayIndexOutOfBoundsException
+        throw new IllegalStateException("Decompilation failed");
     }
 
-    protected final void onPostExecute(Object Object1) {
-        Object Object2 = (List) Object1;
-
-        super.onPostExecute(Object2);
-        if (a.getActivity() != null) {
-            boolean boolean3;
-
-            GameRankListFragment.d(a).setVisibility(8);
-            boolean3 = GameRankListFragment.b(a).isEmpty();
-            if (Object2 != null) {
-                int int4 = ((List) Object2).size();
-
-                if (int4 > 0) {
-                    a.c();
-                    GameRankListFragment.b(a).addAll((Collection) Object2);
-                    GameRankListFragment.e(a).a((Collection) GameRankListFragment.b(a));
-                    GameRankListFragment.c(a);
-                    if (int4 >= 20) {
-                        GameRankListFragment.a(a).setOnLastItemListener(GameRankListFragment.f(a));
-                        return;
-                    }
-                } else if (boolean3) {
-                    a.d();
+    /*
+     * Enabled force condition propagation
+     * Lifted jumps to return sites
+     */
+    @Override
+    protected final /* synthetic */ void onPostExecute(Object object) {
+        List list = (List) object;
+        super.onPostExecute(list);
+        if (this.a.getActivity() == null) return;
+        GameRankListFragment.d(this.a).setVisibility(8);
+        boolean bl = GameRankListFragment.b(this.a).isEmpty();
+        if (list != null) {
+            int n = list.size();
+            if (n > 0) {
+                this.a.c();
+                GameRankListFragment.b(this.a).addAll(list);
+                GameRankListFragment.e(this.a).a(GameRankListFragment.b(this.a));
+                GameRankListFragment.c(this.a);
+                if (n >= 20) {
+                    GameRankListFragment.a(this.a).setOnLastItemListener(GameRankListFragment.f(this.a));
                     return;
                 }
-                GameRankListFragment.a(a).setOnLastItemListener(null);
-            } else if (boolean3)
-                a.e();
-            else
-                com.clilystudio.netbook.util.e.a((Activity) a.getActivity(), "\u52A0\u8F7D\u5931\u8D25\uFF0C\u8BF7\u68C0\u67E5\u7F51\u7EDC\u6216\u7A0D\u540E\u518D\u8BD5");
+            } else if (bl) {
+                this.a.d();
+                return;
+            }
+            GameRankListFragment.a(this.a).setOnLastItemListener(null);
             return;
         }
+        if (bl) {
+            this.a.e();
+            return;
+        }
+        e.a((Activity) this.a.getActivity(), (String) "\u52a0\u8f7d\u5931\u8d25\uff0c\u8bf7\u68c0\u67e5\u7f51\u7edc\u6216\u7a0d\u540e\u518d\u8bd5");
     }
 }

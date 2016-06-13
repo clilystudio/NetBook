@@ -1,80 +1,76 @@
 package com.clilystudio.netbook.util;
 
+import com.clilystudio.netbook.a.e;
 import com.clilystudio.netbook.api.ApiService;
 import com.clilystudio.netbook.db.BookSyncRecord;
 import com.clilystudio.netbook.db.BookSyncRecord$BookModifyType;
 import com.clilystudio.netbook.model.SyncUploadResult;
 
-import java.io.IOException;
-
-public final class X extends com.clilystudio.netbook.a.e {
-
-    private ApiService a;     // final access specifier removed
+public final class X
+        extends e<Void, Void, SyncUploadResult> {
+    private final ApiService a;
     private String b;
     private String c;
     private String[] d;
     private BookSyncRecord$BookModifyType e;
-    public transient X(String String1, String String2, BookSyncRecord$BookModifyType BookModifyType3, String[] String_1darray4) {
-        b = String1;
-        c = String2;
-        e = BookModifyType3;
-        d = String_1darray4;
-        com.clilystudio.netbook.api.b.a();
-        a = com.clilystudio.netbook.api.b.b();
+
+    public /* varargs */ X(String string, String string2, BookSyncRecord$BookModifyType bookModifyType, String... arrstring) {
+        this.b = string;
+        this.c = string2;
+        this.e = bookModifyType;
+        this.d = arrstring;
+        b.a();
+        this.a = b.b();
     }
 
     private String a() {
-        if (d == null || d.length == 0)
+        if (this.d == null || this.d.length == 0) {
             return "";
-        else {
-            StringBuffer StringBuffer1 = new StringBuffer(d[0]);
-            int int2;
-
-            for (int2 = 1; int2 < d.length; ++int2)
-                StringBuffer1.append(new StringBuilder(",").append(d[int2]).toString());
-            return StringBuffer1.toString();
         }
-    }
-
-    private transient SyncUploadResult b() {
-        try {
-            switch (Y.a[e.ordinal()]) {
-                case 1:
-                    return a.G(c, a());
-                case 2:
-                    return a.I(c, a());
-                case 3:
-                    return a.H(c, a());
-                case 4:
-                    SyncUploadResult SyncUploadResult2 = a.J(c, a());
-
-                    break;
-                default:
-                    break;
-            }
-        } catch (IOException IOException1) {
-            IOException1.printStackTrace();
+        StringBuffer stringBuffer = new StringBuffer(this.d[0]);
+        for (int i = 1; i < this.d.length; ++i) {
+            stringBuffer.append("," + this.d[i]);
         }
-        return null;
+        return stringBuffer.toString();
     }
 
-    protected final Object doInBackground(Object[] Object_1darray1) {
-        return b();
+    /*
+     * Exception decompiling
+     */
+    private /* varargs */ SyncUploadResult b() {
+        // This method has failed to decompile.  When submitting a bug report, please provide this stack trace, and (if you hold appropriate legal rights) the relevant class file.
+        // org.benf.cfr.reader.util.ConfusedCFRException: Extractable last case doesn't follow previous
+        // org.benf.cfr.reader.bytecode.analysis.opgraph.op3rewriters.SwitchReplacer.examineSwitchContiguity(SwitchReplacer.java:486)
+        // org.benf.cfr.reader.bytecode.analysis.opgraph.op3rewriters.SwitchReplacer.replaceRawSwitches(SwitchReplacer.java:65)
+        // org.benf.cfr.reader.bytecode.CodeAnalyser.getAnalysisInner(CodeAnalyser.java:425)
+        // org.benf.cfr.reader.bytecode.CodeAnalyser.getAnalysisOrWrapFail(CodeAnalyser.java:220)
+        // org.benf.cfr.reader.bytecode.CodeAnalyser.getAnalysis(CodeAnalyser.java:165)
+        // org.benf.cfr.reader.entities.attributes.AttributeCode.analyse(AttributeCode.java:91)
+        // org.benf.cfr.reader.entities.Method.analyse(Method.java:354)
+        // org.benf.cfr.reader.entities.ClassFile.analyseMid(ClassFile.java:751)
+        // org.benf.cfr.reader.entities.ClassFile.analyseTop(ClassFile.java:683)
+        // org.benf.cfr.reader.Main.doClass(Main.java:46)
+        // org.benf.cfr.reader.Main.main(Main.java:183)
+        throw new IllegalStateException("Decompilation failed");
     }
 
-    protected final void onPostExecute(Object Object1) {
-        Object Object2 = (SyncUploadResult) Object1;
+    /*
+     * Exception decompiling
+     */
+    @Override
+    protected final /* synthetic */ Object doInBackground(Object[] var1_1) {
+        // This method has failed to decompile.  When submitting a bug report, please provide this stack trace, and (if you hold appropriate legal rights) the relevant class file.
+        // java.lang.ArrayIndexOutOfBoundsException
+        throw new IllegalStateException("Decompilation failed");
+    }
 
-        super.onPostExecute(Object2);
-        if (Object2 != null && ((SyncUploadResult) Object2).isOk()) {
-            String[] String_1darray3 = d;
-            int int4 = String_1darray3.length;
-            int int5;
-
-            for (int5 = 0; int5 < int4; ++int5) {
-                String String6 = String_1darray3[int5];
-
-                BookSyncRecord.updateOrCreate(b, String6, BookSyncRecord.getTypeId(BookSyncRecord$BookModifyType.SYNC_SUCCESS));
+    @Override
+    protected final /* synthetic */ void onPostExecute(Object object) {
+        SyncUploadResult syncUploadResult = (SyncUploadResult) object;
+        super.onPostExecute(syncUploadResult);
+        if (syncUploadResult != null && syncUploadResult.isOk()) {
+            for (String string : this.d) {
+                BookSyncRecord.updateOrCreate(this.b, string, BookSyncRecord.getTypeId(BookSyncRecord$BookModifyType.SYNC_SUCCESS));
             }
         }
     }

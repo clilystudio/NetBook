@@ -8,42 +8,44 @@ import com.clilystudio.netbook.model.mixtoc.SsTocRow;
 
 import java.io.IOException;
 
-final class g implements Runnable {
+final class g
+        implements Runnable {
+    private /* synthetic */ int a;
+    private /* synthetic */ int b;
+    private /* synthetic */ ChapterLink[][] c;
+    private /* synthetic */ f d;
 
-    private int a;
-    private int b;
-    private ChapterLink[][] c;
-    private f d;
-    g(f f1, int int2, int int3, ChapterLink[][] ChapterLink_2darray4) {
-        d = f1;
-        a = int2;
-        b = int3;
-        c = ChapterLink_2darray4;
+    g(f f2, int n, int n2, ChapterLink[][] arrchapterLink) {
+        this.d = f2;
+        this.a = n;
+        this.b = n2;
+        this.c = arrchapterLink;
     }
 
+    /*
+     * Enabled force condition propagation
+     * Lifted jumps to return sites
+     */
+    @Override
     public final void run() {
-        SsTocRoot SsTocRoot2;
-
+        SsTocRow[] arrssTocRow;
         try {
-            SsTocRoot SsTocRoot8 = com.clilystudio.netbook.api.b.b().a(a, b, f.a(d));
-        } catch (IOException IOException1) {
-            IOException1.printStackTrace();
-            SsTocRoot2 = null;
+            SsTocRoot ssTocRoot;
+            SsTocRoot ssTocRoot2 = ssTocRoot = b.b().a(this.a, this.b, f.a(this.d));
+            if (ssTocRoot2 == null || ssTocRoot2.getRows() == null) return;
+            arrssTocRow = ssTocRoot2.getRows();
+        } catch (IOException var1_3) {
+            var1_3.printStackTrace();
+            return;
         }
-        if (SsTocRoot2 != null && SsTocRoot2.getRows() != null) {
-            SsTocRow[] SsTocRow_1darray3 = SsTocRoot2.getRows();
-            ChapterLink[] ChapterLink_1darray4 = new ChapterLink[SsTocRow_1darray3.length];
-            int int5;
-
-            for (int5 = 0; int5 < SsTocRow_1darray3.length; ++int5) {
-                SsTocRow SsTocRow6 = SsTocRow_1darray3[int5];
-                ChapterLink ChapterLink7 = new ChapterLink();
-
-                ChapterLink7.setTitle(String.valueOf(Html.fromHtml(SsTocRow6.getSerialname())));
-                ChapterLink7.setLink(String.valueOf(SsTocRow6.getSerialid()));
-                ChapterLink_1darray4[int5] = ChapterLink7;
-            }
-            c[-1 + a] = ChapterLink_1darray4;
+        ChapterLink[] arrchapterLink = new ChapterLink[arrssTocRow.length];
+        for (int i = 0; i < arrssTocRow.length; ++i) {
+            SsTocRow ssTocRow = arrssTocRow[i];
+            ChapterLink chapterLink = new ChapterLink();
+            chapterLink.setTitle(String.valueOf(Html.fromHtml(ssTocRow.getSerialname())));
+            chapterLink.setLink(String.valueOf(ssTocRow.getSerialid()));
+            arrchapterLink[i] = chapterLink;
         }
+        this.c[-1 + this.a] = arrchapterLink;
     }
 }

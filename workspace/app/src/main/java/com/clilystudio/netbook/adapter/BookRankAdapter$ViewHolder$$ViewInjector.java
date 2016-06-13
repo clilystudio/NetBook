@@ -7,14 +7,13 @@ import com.clilystudio.netbook.ui.SmartImageView;
 import butterknife.ButterKnife$Finder;
 
 public class BookRankAdapter$ViewHolder$$ViewInjector {
-
-    public static void inject(ButterKnife$Finder Finder1, BookRankAdapter$ViewHolder ViewHolder2, Object Object3) {
-        ViewHolder2.cover = (SmartImageView) Finder1.findRequiredView(Object3, 2131493626, "field 'cover'");
-        ViewHolder2.title = (TextView) Finder1.findRequiredView(Object3, 2131493627, "field 'title'");
+    public static void inject(ButterKnife$Finder butterKnife$Finder, BookRankAdapter$ViewHolder bookRankAdapter$ViewHolder, Object object) {
+        bookRankAdapter$ViewHolder.cover = (SmartImageView) butterKnife$Finder.findRequiredView(object, 2131493626, "field 'cover'");
+        bookRankAdapter$ViewHolder.title = (TextView) butterKnife$Finder.findRequiredView(object, 2131493627, "field 'title'");
     }
 
-    public static void reset(BookRankAdapter$ViewHolder ViewHolder1) {
-        ViewHolder1.cover = null;
-        ViewHolder1.title = null;
+    public static void reset(BookRankAdapter$ViewHolder bookRankAdapter$ViewHolder) {
+        bookRankAdapter$ViewHolder.cover = null;
+        bookRankAdapter$ViewHolder.title = null;
     }
 }

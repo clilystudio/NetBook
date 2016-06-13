@@ -1,65 +1,75 @@
 package com.clilystudio.netbook.db;
 
 import com.activeandroid.Model;
+import com.activeandroid.annotation.Column;
+import com.activeandroid.annotation.Table;
+import com.activeandroid.query.Delete;
+import com.activeandroid.query.Select;
 
-public class MixTocRecord extends Model {
-
+@Table(name = "MixTocRecords")
+public class MixTocRecord
+        extends Model {
+    @Column(name = "bookId")
     private String bookId;
-    private String chapterTitle;
-    private String tocId;
+    @Column(name = "chapterIndex")
     private int chapterIndex = -1;
+    @Column(name = "chapterTitle")
+    private String chapterTitle;
+    @Column(name = "charIndex")
     private int charIndex = 0;
+    @Column(name = "tocId", unique = 1)
+    private String tocId;
 
-    public static MixTocRecord create(String String1, String String2, int int3, int int4) {
-        MixTocRecord MixTocRecord5 = new MixTocRecord();
-
-        MixTocRecord5.setBookId(String1);
-        MixTocRecord5.setTocId(String2);
-        MixTocRecord5.setChapterIndex(int3);
-        MixTocRecord5.setCharIndex(int4);
-        MixTocRecord5.save();
-        return MixTocRecord5;
+    public static MixTocRecord create(String string, String string2, int n, int n2) {
+        MixTocRecord mixTocRecord = new MixTocRecord();
+        mixTocRecord.setBookId(string);
+        mixTocRecord.setTocId(string2);
+        mixTocRecord.setChapterIndex(n);
+        mixTocRecord.setCharIndex(n2);
+        mixTocRecord.save();
+        return mixTocRecord;
     }
-// Error: Internal #201: 
-// The following method may not be correct.
 
-    public static void deleteByBookId(String String1) {
+    public static void deleteByBookId(String string) {
+        new Delete().from(MixTocRecord.class).where("bookId = ?", string).execute();
     }
-// Error: Internal #201: 
-// The following method may not be correct.
 
-    public static MixTocRecord get(String String1) {
+    public static MixTocRecord get(String string) {
+        if (string == null) {
+            return null;
+        }
+        return (MixTocRecord) new Select().from(MixTocRecord.class).where("tocId = ?", string).executeSingle();
     }
 
     public String getBookId() {
-        return bookId;
+        return this.bookId;
     }
 
-    public void setBookId(String String1) {
-        bookId = String1;
+    public void setBookId(String string) {
+        this.bookId = string;
     }
 
     public int getChapterIndex() {
-        return chapterIndex;
+        return this.chapterIndex;
     }
 
-    public void setChapterIndex(int int1) {
-        chapterIndex = int1;
+    public void setChapterIndex(int n) {
+        this.chapterIndex = n;
     }
 
     public int getCharIndex() {
-        return charIndex;
+        return this.charIndex;
     }
 
-    public void setCharIndex(int int1) {
-        charIndex = int1;
+    public void setCharIndex(int n) {
+        this.charIndex = n;
     }
 
     public String getTocId() {
-        return tocId;
+        return this.tocId;
     }
 
-    public void setTocId(String String1) {
-        tocId = String1;
+    public void setTocId(String string) {
+        this.tocId = string;
     }
 }

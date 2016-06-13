@@ -1,73 +1,72 @@
 package com.clilystudio.netbook.model;
 
 public class NotificationItem$Trigger {
-
-    NotificationItem this$0;     // final access specifier removed
+    final /* synthetic */ NotificationItem this$0;
     private String _id;
     private String avatar;
     private String gender;
     private int lv;
     private String nickname;
     private String type;
-    public NotificationItem$Trigger(NotificationItem NotificationItem1) {
-        this$0 = NotificationItem1;
+
+    public NotificationItem$Trigger(NotificationItem notificationItem) {
+        this.this$0 = notificationItem;
     }
 
     public String getAvatar() {
-        return avatar;
+        return this.avatar;
     }
 
-    public void setAvatar(String String1) {
-        avatar = String1;
+    public void setAvatar(String string) {
+        this.avatar = string;
     }
 
     public String getGender() {
-        return gender;
+        return this.gender;
     }
 
-    public void setGender(String String1) {
-        gender = String1;
+    public void setGender(String string) {
+        this.gender = string;
     }
 
     public int getLv() {
-        return lv;
+        return this.lv;
     }
 
-    public void setLv(int int1) {
-        lv = int1;
+    public void setLv(int n) {
+        this.lv = n;
     }
 
     public String getNickname() {
-        return nickname;
+        return this.nickname;
     }
 
-    public void setNickname(String String1) {
-        nickname = String1;
+    public void setNickname(String string) {
+        this.nickname = string;
     }
 
     public String getType() {
-        return type;
+        return this.type;
     }
 
-    public void setType(String String1) {
-        type = String1;
+    public void setType(String string) {
+        this.type = string;
     }
 
     public String get_id() {
-        return _id;
+        return this._id;
     }
 
-    public void set_id(String String1) {
-        _id = String1;
+    public void set_id(String string) {
+        this._id = string;
     }
 
     public Author toAuthor() {
-        Author Author1 = new Author();
-
-        Author1.setLv(lv);
-        Author1.setAvatar(avatar);
-        Author1.setNickname(nickname);
-        Author1.setType(type);
-        return Author1;
+        Author author = new Author();
+        author.setLv(this.lv);
+        author.setAvatar(this.avatar);
+        author.setNickname(this.nickname);
+        author.setType(this.type);
+        return author;
     }
 }

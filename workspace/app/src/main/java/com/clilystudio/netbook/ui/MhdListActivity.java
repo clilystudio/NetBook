@@ -2,97 +2,97 @@ package com.clilystudio.netbook.ui;
 
 import android.content.ComponentName;
 import android.content.Context;
-import android.content.DialogInterface$OnClickListener;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.view.View$OnClickListener;
-import android.widget.AdapterView$OnItemClickListener;
+import android.widget.AdapterView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
 import com.clilystudio.netbook.adapter.v;
+import com.clilystudio.netbook.d;
+import com.umeng.a.b;
 
-public class MhdListActivity extends BaseActivity {
-
+public class MhdListActivity
+        extends BaseActivity {
     private View a;
     private View b;
     private v c;
-// Error: Internal #201: 
-// The following method may not be correct.
 
-    public static Intent a(Context Context1) {
+    public static Intent a(Context context) {
+        return new d().a(context, MhdListActivity.class).a();
     }
 
-    static void a(MhdListActivity MhdListActivity1) {
-        MhdListActivity1.b();
+    static /* synthetic */ void a(MhdListActivity mhdListActivity) {
+        mhdListActivity.b();
     }
 
-    static void a(MhdListActivity MhdListActivity1, int int2) {
-        MhdListActivity1.a(int2);
+    static /* synthetic */ void a(MhdListActivity mhdListActivity, int n) {
+        mhdListActivity.a(n);
     }
 
-    static void a(MhdListActivity MhdListActivity1, String String2) {
-        ComponentName ComponentName3 = new ComponentName("com.android.comicsisland.activity", "com.android.comicsisland.activity.BookDetailActivity");
-        Intent Intent4 = new Intent();
-
-        Intent4.putExtra("bigBookId", String2);
-        Intent4.putExtra("zhuishusdk", "zhuishusdk");
-        Intent4.setComponent(ComponentName3);
+    static /* synthetic */ void a(MhdListActivity mhdListActivity, String string) {
+        ComponentName componentName = new ComponentName("com.android.comicsisland.activity", "com.android.comicsisland.activity.BookDetailActivity");
+        Intent intent = new Intent();
+        intent.putExtra("bigBookId", string);
+        intent.putExtra("zhuishusdk", "zhuishusdk");
+        intent.setComponent(componentName);
         try {
-            MhdListActivity1.startActivity(Intent4);
-        } catch (Exception Exception8) {
-            h h9 = new h((Context) MhdListActivity1);
-
-            h9.d = "\u786E\u8BA4\u4E0B\u8F7D";
-            h9.e = "\u5373\u5C06\u5F00\u59CB\u4E0B\u8F7D\u300C\u6F2B\u753B\u5C9B\u300DAPP\uFF084.0M\uFF09\uFF0C\u6B23\u8D4F60000+\u7CBE\u5F69\u6F2B\u753B~";
-            h9.a(2131034371, (DialogInterface$OnClickListener) new bl(MhdListActivity1)).b(2131034129, null).a().show();
+            mhdListActivity.startActivity(intent);
+            return;
+        } catch (Exception var7_4) {
+            h h2 = new h(mhdListActivity);
+            h2.d = "\u786e\u8ba4\u4e0b\u8f7d";
+            h2.e = "\u5373\u5c06\u5f00\u59cb\u4e0b\u8f7d\u300c\u6f2b\u753b\u5c9b\u300dAPP\uff084.0M\uff09\uff0c\u6b23\u8d4f60000+\u7cbe\u5f69\u6f2b\u753b~";
+            h2.a(2131034371, (DialogInterface.OnClickListener) ((Object) new bl(mhdListActivity))).b(2131034129, null).a().show();
             return;
         }
     }
 
-    static v b(MhdListActivity MhdListActivity1) {
-        return MhdListActivity1.c;
+    static /* synthetic */ v b(MhdListActivity mhdListActivity) {
+        return mhdListActivity.c;
     }
 
-    private void a(int int1) {
-        switch (int1) {
-            default:
+    private void a(int n) {
+        switch (n) {
+            default: {
                 return;
-            case 1:
-                a.setVisibility(8);
-                b.setVisibility(8);
+            }
+            case 1: {
+                this.a.setVisibility(8);
+                this.b.setVisibility(8);
                 return;
-            case 0:
-                a.setVisibility(0);
-                b.setVisibility(8);
+            }
+            case 0: {
+                this.a.setVisibility(0);
+                this.b.setVisibility(8);
                 return;
+            }
             case 2:
-                a.setVisibility(8);
-                b.setVisibility(0);
-                return;
         }
+        this.a.setVisibility(8);
+        this.b.setVisibility(0);
     }
 
     private void b() {
-        a(0);
-        new bm(this, (byte) 0).b(new Void[0]);
+        this.a(0);
+        new bm(this, 0).b(new Void[0]);
     }
 
-    public void onCreate(Bundle Bundle1) {
-        ListView ListView2;
-
-        super.onCreate(Bundle1);
-        setContentView(2130903088);
-        b(2131034412);
-        ListView2 = (ListView) findViewById(2131493101);
-        a = findViewById(2131493102);
-        b = findViewById(2131493103);
-        b.setOnClickListener((View$OnClickListener) new bj(this));
-        c = new v(getLayoutInflater());
-        ListView2.setAdapter((ListAdapter) c);
-        ListView2.setOnItemClickListener((AdapterView$OnItemClickListener) new bk(this));
-        b();
-        com.umeng.a.b.a((Context) this, "mhd_open");
+    @Override
+    public void onCreate(Bundle bundle) {
+        super.onCreate(bundle);
+        this.setContentView(2130903088);
+        this.b(2131034412);
+        ListView listView = (ListView) this.findViewById(2131493101);
+        this.a = this.findViewById(2131493102);
+        this.b = this.findViewById(2131493103);
+        this.b.setOnClickListener((View.OnClickListener) ((Object) new bj(this)));
+        this.c = new v(this.getLayoutInflater());
+        listView.setAdapter((ListAdapter) ((Object) this.c));
+        listView.setOnItemClickListener((AdapterView.OnItemClickListener) ((Object) new bk(this)));
+        this.b();
+        b.a(this, "mhd_open");
     }
 }

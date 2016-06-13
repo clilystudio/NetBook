@@ -2,45 +2,40 @@ package com.clilystudio.netbook.widget;
 
 import android.app.Activity;
 import android.app.Dialog;
-import android.content.DialogInterface$OnClickListener;
 
 import com.clilystudio.netbook.model.PaySheetItem;
+import com.cocosw.bottomsheet.a;
 
-import java.util.Iterator;
 import java.util.List;
 
 public final class ak {
-
+    private final g b;
     private am a;
-    private g b;     // final access specifier removed
-    private List c;
-    public ak(Activity Activity1, am am2, List List3) {
-        a = am2;
-        b = new g(Activity1);
-        c = List3;
-        b();
+    private List<PaySheetItem> c;
+
+    public ak(Activity activity, am am2, List<PaySheetItem> list) {
+        this.a = am2;
+        this.b = new g(activity);
+        this.c = list;
+        this.b();
     }
 
-    static am a(ak ak1) {
-        return ak1.a;
+    static /* synthetic */ am a(ak ak2) {
+        return ak2.a;
     }
 
-    static List b(ak ak1) {
-        return ak1.c;
+    static /* synthetic */ List b(ak ak2) {
+        return ak2.c;
     }
 
     private void b() {
-        Iterator Iterator1 = c.iterator();
-
-        while (Iterator1.hasNext()) {
-            PaySheetItem PaySheetItem2 = (PaySheetItem) Iterator1.next();
-
-            b.a(PaySheetItem2.getId(), PaySheetItem2.getIconId(), PaySheetItem2.getTextId());
+        for (PaySheetItem paySheetItem : this.c) {
+            this.b.a(paySheetItem.getId(), paySheetItem.getIconId(), paySheetItem.getTextId());
         }
     }
 
     public final Dialog a() {
-        b.a().a((DialogInterface$OnClickListener) new al(this));
-        return (Dialog) b.b();
+        this.b.a().a(new al(this));
+        return this.b.b();
     }
 }

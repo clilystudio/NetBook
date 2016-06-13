@@ -1,26 +1,24 @@
 package com.clilystudio.netbook.ui.game;
 
-import android.content.Context;
 import android.content.Intent;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.AdapterView$OnItemClickListener;
 
 import com.clilystudio.netbook.model.Game;
 
-final class O implements AdapterView$OnItemClickListener {
+final class O
+        implements AdapterView.OnItemClickListener {
+    private /* synthetic */ GameListActivity a;
 
-    private GameListActivity a;
-
-    O(GameListActivity GameListActivity1) {
-        a = GameListActivity1;
+    O(GameListActivity gameListActivity) {
+        this.a = gameListActivity;
     }
 
-    public final void onItemClick(AdapterView AdapterView1, View View2, int int3, long long4) {
-        Game Game6 = (Game) GameListActivity.a(a).get(int3);
-        Intent Intent7 = GameDetailActivity.a((Context) a, Game6.get_id(), GameListActivity.b(a), false);
-
-        a.startActivity(Intent7);
-        com.umeng.a.b.a((Context) a, "game_pasted_item_click", Game6.getName());
+    @Override
+    public final void onItemClick(AdapterView<?> adapterView, View view, int n2, long l2) {
+        Game game = (Game) GameListActivity.a(this.a).get(n2);
+        Intent intent = GameDetailActivity.a(this.a, game.get_id(), GameListActivity.b(this.a), false);
+        this.a.startActivity(intent);
+        b.a(this.a, "game_pasted_item_click", game.getName());
     }
 }

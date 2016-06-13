@@ -1,22 +1,23 @@
 package com.clilystudio.netbook.reader.txt;
 
 import android.view.View;
-import android.view.View$OnClickListener;
 import android.widget.ImageView;
 
-final class S implements View$OnClickListener {
+final class S
+        implements View.OnClickListener {
+    private /* synthetic */ T a;
+    private /* synthetic */ ImageView b;
+    private /* synthetic */ R c;
 
-    private T a;
-    private ImageView b;
-    private R c;
-    S(R R1, T T2, ImageView ImageView3) {
-        c = R1;
-        a = T2;
-        b = ImageView3;
+    S(R r, T t, ImageView imageView) {
+        this.c = r;
+        this.a = t;
+        this.b = imageView;
     }
 
-    public final void onClick(View View1) {
-        a.c();
-        R.a(c, b, a.b());
+    @Override
+    public final void onClick(View view) {
+        this.a.c();
+        R.a(this.c, this.b, this.a.b());
     }
 }

@@ -1,20 +1,19 @@
 package com.clilystudio.netbook.util;
 
-final class aa implements Runnable {
+final class aa
+        implements Runnable {
+    private /* synthetic */ Z a;
 
-    private Z a;
-
-    aa(Z Z1) {
-        a = Z1;
+    aa(Z z) {
+        this.a = z;
     }
 
+    @Override
     public final void run() {
-        if (!com.clilystudio.netbook.util.Z.a()) {
-            ab ab1 = new ab(a, (byte) 0);
-            String[] String_1darray2 = new String[1];
-
-            String_1darray2[0] = Z.a(a);
-            ab1.b(String_1darray2);
+        if (!Z.a()) {
+            ab ab2 = new ab(this.a, 0);
+            String[] arrstring = new String[]{Z.a(this.a)};
+            ab2.b(arrstring);
         }
     }
 }

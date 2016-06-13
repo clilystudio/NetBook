@@ -1,8 +1,7 @@
 package com.clilystudio.netbook.widget;
 
 public interface f {
+    public void a();
 
-    void a();
-
-    void b();
+    public void b();
 }

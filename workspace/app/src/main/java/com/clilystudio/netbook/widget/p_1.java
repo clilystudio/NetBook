@@ -6,29 +6,31 @@ import android.graphics.Path;
 import android.graphics.RectF;
 import android.graphics.drawable.shapes.Shape;
 
-public final class p extends Shape {
-
+public final class p
+        extends Shape {
     private RectF a;
     private float b;
-    public p(float float1) {
-        b = float1;
+
+    public p(float f) {
+        this.b = f;
     }
 
-    public final void draw(Canvas Canvas1, Paint Paint2) {
-        float float3 = a.width();
-        Path Path4 = new Path();
-
-        Path4.moveTo(0.0F, 0.0F);
-        Path4.lineTo(float3 - b, 0.0F);
-        Path4.addArc(new RectF(float3 - 2.0F * b, 0.0F, float3, 2.0F * b), -90.0F, 90.0F);
-        Path4.lineTo(float3, float3);
-        Path4.lineTo(0.0F, 0.0F);
-        Path4.close();
-        Canvas1.drawPath(Path4, Paint2);
+    @Override
+    public final void draw(Canvas canvas, Paint paint) {
+        float f = this.a.width();
+        Path path = new Path();
+        path.moveTo(0.0f, 0.0f);
+        path.lineTo(f - this.b, 0.0f);
+        path.addArc(new RectF(f - 2.0f * this.b, 0.0f, f, 2.0f * this.b), -90.0f, 90.0f);
+        path.lineTo(f, f);
+        path.lineTo(0.0f, 0.0f);
+        path.close();
+        canvas.drawPath(path, paint);
     }
 
-    protected final void onResize(float float1, float float2) {
-        super.onResize(float1, float2);
-        a = new RectF(0.0F, 0.0F, float1, float2);
+    @Override
+    protected final void onResize(float f, float f2) {
+        super.onResize(f, f2);
+        this.a = new RectF(0.0f, 0.0f, f, f2);
     }
 }

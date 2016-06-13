@@ -2,21 +2,21 @@ package com.clilystudio.netbook.ui.post;
 
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.AdapterView$OnItemClickListener;
 
 import com.clilystudio.netbook.db.BookReadRecord;
 
-final class B implements AdapterView$OnItemClickListener {
+final class B
+        implements AdapterView.OnItemClickListener {
+    private /* synthetic */ AddReviewActivity a;
 
-    private AddReviewActivity a;
-
-    B(AddReviewActivity AddReviewActivity1) {
-        a = AddReviewActivity1;
+    B(AddReviewActivity addReviewActivity) {
+        this.a = addReviewActivity;
     }
 
-    public final void onItemClick(AdapterView AdapterView1, View View2, int int3, long long4) {
-        AddReviewActivity.a(a, ((BookReadRecord) AddReviewActivity.b(a).getItem(int3)).getBookId());
-        AddReviewActivity.b(a).a(int3);
-        AddReviewActivity.b(a).notifyDataSetChanged();
+    @Override
+    public final void onItemClick(AdapterView<?> adapterView, View view, int n, long l) {
+        AddReviewActivity.a(this.a, ((BookReadRecord) AddReviewActivity.b(this.a).getItem(n)).getBookId());
+        AddReviewActivity.b(this.a).a(n);
+        AddReviewActivity.b(this.a).notifyDataSetChanged();
     }
 }

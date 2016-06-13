@@ -1,30 +1,31 @@
 package com.clilystudio.netbook.ui.feed;
 
 import android.view.View;
-import android.view.View$OnClickListener;
 import android.widget.TextView;
 
 import com.clilystudio.netbook.db.BookReadRecord;
 import com.clilystudio.netbook.event.i;
 import com.clilystudio.netbook.event.n;
 
-final class g implements View$OnClickListener {
+final class g
+        implements View.OnClickListener {
+    private /* synthetic */ TextView a;
+    private /* synthetic */ BookReadRecord b;
+    private /* synthetic */ f c;
 
-    private TextView a;
-    private BookReadRecord b;
-    private f c;
-    g(f f1, TextView TextView2, BookReadRecord BookReadRecord3) {
-        c = f1;
-        a = TextView2;
-        b = BookReadRecord3;
+    g(f f2, TextView textView, BookReadRecord bookReadRecord) {
+        this.c = f2;
+        this.a = textView;
+        this.b = bookReadRecord;
     }
 
-    public final void onClick(View View1) {
-        f.a(c, a);
-        b.setFeeding(false);
-        b.setFeedFat(false);
-        BookReadRecord.addAccountInfo(b);
-        b.save();
-        i.a().c(new n(b.getBookId()));
+    @Override
+    public final void onClick(View view) {
+        f.a(this.c, this.a);
+        this.b.setFeeding(false);
+        this.b.setFeedFat(false);
+        BookReadRecord.addAccountInfo(this.b);
+        this.b.save();
+        i.a().c(new n(this.b.getBookId()));
     }
 }

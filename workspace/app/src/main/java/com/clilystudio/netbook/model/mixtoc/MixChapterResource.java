@@ -3,32 +3,31 @@ package com.clilystudio.netbook.model.mixtoc;
 import com.clilystudio.netbook.model.ChapterLink;
 
 public class MixChapterResource {
-
     private ChapterLink chapter;
     private String host;
     private String source;
 
     public ChapterLink getChapter() {
-        return chapter;
+        return this.chapter;
     }
 
-    public void setChapter(ChapterLink ChapterLink1) {
-        chapter = ChapterLink1;
+    public void setChapter(ChapterLink chapterLink) {
+        this.chapter = chapterLink;
     }
 
     public String getHost() {
-        return host;
+        return this.host;
     }
 
-    public void setHost(String String1) {
-        host = String1;
+    public void setHost(String string) {
+        this.host = string;
     }
 
     public String getSource() {
-        return source;
+        return this.source;
     }
 
-    public void setSource(String String1) {
-        source = String1;
+    public void setSource(String string) {
+        this.source = string;
     }
 }

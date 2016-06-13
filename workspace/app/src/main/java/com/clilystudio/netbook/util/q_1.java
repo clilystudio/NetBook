@@ -3,15 +3,16 @@ package com.clilystudio.netbook.util;
 import com.clilystudio.netbook.model.PaySheetItem;
 import com.clilystudio.netbook.widget.am;
 
-final class q implements am {
+final class q
+        implements am {
+    private /* synthetic */ p a;
 
-    private p a;
-
-    q(p p1) {
-        a = p1;
+    q(p p2) {
+        this.a = p2;
     }
 
-    public final void a(PaySheetItem PaySheetItem1) {
-        p.a(a, PaySheetItem1);
+    @Override
+    public final void a(PaySheetItem paySheetItem) {
+        p.a(this.a, paySheetItem);
     }
 }

@@ -5,9 +5,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.AdapterView$OnItemClickListener;
-import android.widget.ListAdapter;
 
+import com.clilystudio.netbook.d;
 import com.clilystudio.netbook.model.BookSummary;
 import com.clilystudio.netbook.widget.ScrollLoadListView;
 import com.clilystudio.netbook.widget.av;
@@ -15,79 +14,83 @@ import com.clilystudio.netbook.widget.av;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BookTagListActivity extends BaseLoadingActivity {
-
+public class BookTagListActivity
+        extends BaseLoadingActivity {
     private aW a;
     private aV b;
     private String c;
     private ScrollLoadListView e;
     private View f;
-    private List g = new ArrayList();
-    private av h = new aU(this);
-// Error: Internal #201: 
-// The following method may not be correct.
+    private List<BookSummary> g = new ArrayList<BookSummary>();
+    private av h;
 
-    public static Intent a(Context Context1, String String2) {
+    public BookTagListActivity() {
+        this.h = new aU(this);
     }
 
-    static aW a(BookTagListActivity BookTagListActivity1, aW aW2) {
-        BookTagListActivity1.a = aW2;
+    public static Intent a(Context context, String string) {
+        return new d().a(context, BookTagListActivity.class).a("TAG_LIST_KEY", string).a();
+    }
+
+    static /* synthetic */ aW a(BookTagListActivity bookTagListActivity, aW aW2) {
+        bookTagListActivity.a = aW2;
         return aW2;
     }
 
-    static List a(BookTagListActivity BookTagListActivity1) {
-        return BookTagListActivity1.g;
+    static /* synthetic */ List a(BookTagListActivity bookTagListActivity) {
+        return bookTagListActivity.g;
     }
 
-    static void a(BookTagListActivity BookTagListActivity1, BookSummary BookSummary2) {
-        if (BookSummary2 != null)
-            BookTagListActivity1.startActivity(BookInfoActivity.a((Context) BookTagListActivity1, BookSummary2.getId()));
+    static /* synthetic */ void a(BookTagListActivity bookTagListActivity, BookSummary bookSummary) {
+        if (bookSummary != null) {
+            bookTagListActivity.startActivity(BookInfoActivity.a(bookTagListActivity, bookSummary.getId()));
+        }
     }
 
-    static String b(BookTagListActivity BookTagListActivity1) {
-        return BookTagListActivity1.c;
+    static /* synthetic */ String b(BookTagListActivity bookTagListActivity) {
+        return bookTagListActivity.c;
     }
 
-    static View c(BookTagListActivity BookTagListActivity1) {
-        return BookTagListActivity1.f;
+    static /* synthetic */ View c(BookTagListActivity bookTagListActivity) {
+        return bookTagListActivity.f;
     }
 
-    static aV d(BookTagListActivity BookTagListActivity1) {
-        return BookTagListActivity1.b;
+    static /* synthetic */ aV d(BookTagListActivity bookTagListActivity) {
+        return bookTagListActivity.b;
     }
 
-    static ScrollLoadListView e(BookTagListActivity BookTagListActivity1) {
-        return BookTagListActivity1.e;
+    static /* synthetic */ ScrollLoadListView e(BookTagListActivity bookTagListActivity) {
+        return bookTagListActivity.e;
     }
 
-    static av f(BookTagListActivity BookTagListActivity1) {
-        return BookTagListActivity1.h;
+    static /* synthetic */ av f(BookTagListActivity bookTagListActivity) {
+        return bookTagListActivity.h;
     }
 
-    static aW g(BookTagListActivity BookTagListActivity1) {
-        return BookTagListActivity1.a;
+    static /* synthetic */ aW g(BookTagListActivity bookTagListActivity) {
+        return bookTagListActivity.a;
     }
 
+    @Override
     protected final void b() {
-        i();
-        new aX(this, (byte) 0).b(new String[0]);
+        this.i();
+        new aX(this, 0).b(new String[0]);
     }
 
-    public void onCreate(Bundle Bundle1) {
-        LayoutInflater LayoutInflater2;
-
-        super.onCreate(Bundle1);
-        a(2130903386);
-        c = getIntent().getStringExtra("TAG_LIST_KEY");
-        b(c);
-        LayoutInflater2 = LayoutInflater.from((Context) this);
-        f = LayoutInflater2.inflate(2130903325, null);
-        f.setVisibility(8);
-        e = (ScrollLoadListView) findViewById(2131493981);
-        e.addFooterView(f);
-        e.setOnItemClickListener((AdapterView$OnItemClickListener) new aT(this));
-        b = new aV(this, LayoutInflater2);
-        e.setAdapter((ListAdapter) b);
-        b();
+    @Override
+    public void onCreate(Bundle bundle) {
+        super.onCreate(bundle);
+        this.a(2130903386);
+        this.c = this.getIntent().getStringExtra("TAG_LIST_KEY");
+        this.b(this.c);
+        LayoutInflater layoutInflater = LayoutInflater.from(this);
+        this.f = layoutInflater.inflate(2130903325, null);
+        this.f.setVisibility(8);
+        this.e = (ScrollLoadListView) this.findViewById(2131493981);
+        this.e.addFooterView(this.f);
+        this.e.setOnItemClickListener(new aT(this));
+        this.b = new aV(this, layoutInflater);
+        this.e.setAdapter(this.b);
+        this.b();
     }
 }

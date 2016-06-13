@@ -1,23 +1,22 @@
 package com.clilystudio.netbook.model;
 
 public class YLPayOrder {
-
     private boolean ok;
-    private YLPayOrder$PayOrder payOrder;
+    private PayOrder payOrder;
 
-    public YLPayOrder$PayOrder getPayOrder() {
-        return payOrder;
+    public PayOrder getPayOrder() {
+        return this.payOrder;
     }
 
-    public void setPayOrder(YLPayOrder$PayOrder PayOrder1) {
-        payOrder = PayOrder1;
+    public void setPayOrder(PayOrder payOrder) {
+        this.payOrder = payOrder;
     }
 
     public boolean isOk() {
-        return ok;
+        return this.ok;
     }
 
-    public void setOk(boolean boolean1) {
-        ok = boolean1;
+    public void setOk(boolean bl) {
+        this.ok = bl;
     }
 }

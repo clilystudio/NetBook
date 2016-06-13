@@ -1,19 +1,18 @@
 package com.clilystudio.netbook.ui.game;
 
-import android.content.Context;
 import android.view.View;
-import android.view.View$OnClickListener;
 
-final class I implements View$OnClickListener {
+final class I
+        implements View.OnClickListener {
+    private /* synthetic */ GameLayoutFragment$LayoutAdapter a;
 
-    private GameLayoutFragment$LayoutAdapter a;
-
-    I(GameLayoutFragment$LayoutAdapter LayoutAdapter1) {
-        a = LayoutAdapter1;
+    I(GameLayoutFragment$LayoutAdapter layoutAdapter) {
+        this.a = layoutAdapter;
     }
 
-    public final void onClick(View View1) {
-        a.a.startActivity(GameDetailActivity.a((Context) a.a.getActivity(), GameLayoutFragment.b(a.a).get_id()));
-        com.umeng.a.b.a((Context) a.a.getActivity(), "game_center_layout_promotion", GameLayoutFragment.b(a.a).getName());
+    @Override
+    public final void onClick(View view) {
+        this.a.a.startActivity(GameDetailActivity.a(this.a.a.getActivity(), GameLayoutFragment.b(this.a.a).get_id()));
+        b.a(this.a.a.getActivity(), "game_center_layout_promotion", GameLayoutFragment.b(this.a.a).getName());
     }
 }

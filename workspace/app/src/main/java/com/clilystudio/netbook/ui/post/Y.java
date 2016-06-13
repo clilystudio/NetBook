@@ -1,34 +1,25 @@
 package com.clilystudio.netbook.ui.post;
 
-import android.app.Activity;
 import android.app.Dialog;
 import android.text.TextUtils;
 import android.view.View;
-import android.view.View$OnClickListener;
 
-final class Y implements View$OnClickListener {
+final class Y
+        implements View.OnClickListener {
+    private /* synthetic */ Dialog a;
+    private /* synthetic */ AddVoteItemActivity b;
 
-    private Dialog a;
-    private AddVoteItemActivity b;
-    Y(AddVoteItemActivity AddVoteItemActivity1, Dialog Dialog2) {
-        b = AddVoteItemActivity1;
-        a = Dialog2;
+    Y(AddVoteItemActivity addVoteItemActivity, Dialog dialog) {
+        this.b = addVoteItemActivity;
+        this.a = dialog;
     }
 
-    public final void onClick(View View1) {
-        String String2;
-        Z Z3;
-        String[] String_1darray4;
-
-        a.dismiss();
-        String2 = TextUtils.join((CharSequence) ",", AddVoteItemActivity.i(b).toArray());
-        Z3 = new Z(b, (Activity) b, 2131034430);
-        String_1darray4 = new String[5];
-        String_1darray4[0] = AddVoteItemActivity.j(b).getToken();
-        String_1darray4[1] = AddVoteItemActivity.k(b);
-        String_1darray4[2] = AddVoteItemActivity.l(b).trim();
-        String_1darray4[3] = AddVoteItemActivity.m(b).trim();
-        String_1darray4[4] = String2;
-        Z3.b(String_1darray4);
+    @Override
+    public final void onClick(View view) {
+        this.a.dismiss();
+        String string = TextUtils.join((CharSequence) ",", AddVoteItemActivity.i(this.b).toArray());
+        Z z = new Z(this.b, this.b, 2131034430);
+        String[] arrstring = new String[]{AddVoteItemActivity.j(this.b).getToken(), AddVoteItemActivity.k(this.b), AddVoteItemActivity.l(this.b).trim(), AddVoteItemActivity.m(this.b).trim(), string};
+        z.b(arrstring);
     }
 }

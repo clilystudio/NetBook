@@ -1,26 +1,22 @@
 package com.clilystudio.netbook.ui.user;
 
-public final class AuthLoginActivity$Source extends Enum {
-
-    public static final AuthLoginActivity$Source HOME = new AuthLoginActivity$Source("HOME", 0);
-    public static final AuthLoginActivity$Source OTHER = new AuthLoginActivity$Source("OTHER", 1);
-    private static AuthLoginActivity$Source[] a;     // final access specifier removed
+public final class AuthLoginActivity$Source
+        extends Enum<AuthLoginActivity$Source> {
+    public static final /* enum */ AuthLoginActivity$Source HOME = new AuthLoginActivity$Source();
+    public static final /* enum */ AuthLoginActivity$Source OTHER = new AuthLoginActivity$Source();
+    private static final /* synthetic */ AuthLoginActivity$Source[] a;
 
     static {
-        AuthLoginActivity$Source[] Source_1darray1 = new AuthLoginActivity$Source[2];
-
-        Source_1darray1[0] = HOME;
-        Source_1darray1[1] = OTHER;
-        a = Source_1darray1;
-    }
-// Error: Internal #201: 
-// The following method may not be correct.
-
-    private AuthLoginActivity$Source(String String1, int int2) {
-        super(String1, int2);
+        AuthLoginActivity$Source[] arrauthLoginActivity$Source = new AuthLoginActivity$Source[]{HOME, OTHER};
+        a = arrauthLoginActivity$Source;
     }
 
-    public static AuthLoginActivity$Source valueOf(String String1) {
+    private AuthLoginActivity$Source() {
+        super(string, n);
+    }
+
+    public static AuthLoginActivity$Source valueOf(String string) {
+        return (AuthLoginActivity$Source) ((Object) Enum.valueOf(AuthLoginActivity$Source.class, string));
     }
 
     public static AuthLoginActivity$Source[] values() {

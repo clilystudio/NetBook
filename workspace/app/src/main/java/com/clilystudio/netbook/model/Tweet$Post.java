@@ -1,27 +1,27 @@
 package com.clilystudio.netbook.model;
 
 public class Tweet$Post {
-
-    Tweet this$0;     // final access specifier removed
+    final /* synthetic */ Tweet this$0;
     private String _id;
     private String block;
-    public Tweet$Post(Tweet Tweet1) {
-        this$0 = Tweet1;
+
+    public Tweet$Post(Tweet tweet) {
+        this.this$0 = tweet;
     }
 
     public String getBlock() {
-        return block;
+        return this.block;
     }
 
-    public void setBlock(String String1) {
-        block = String1;
+    public void setBlock(String string) {
+        this.block = string;
     }
 
     public String getId() {
-        return _id;
+        return this._id;
     }
 
-    public void setId(String String1) {
-        _id = String1;
+    public void setId(String string) {
+        this._id = string;
     }
 }

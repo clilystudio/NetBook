@@ -1,23 +1,22 @@
 package com.clilystudio.netbook.model;
 
 public class TtsRoot$TtsResult {
-
     private TtsRoot$Tts[] tts;
     private String version;
 
     public TtsRoot$Tts[] getTts() {
-        return tts;
+        return this.tts;
     }
 
-    public void setTts(TtsRoot$Tts[] Tts_1darray1) {
-        tts = Tts_1darray1;
+    public void setTts(TtsRoot$Tts[] arrttsRoot$Tts) {
+        this.tts = arrttsRoot$Tts;
     }
 
     public String getVersion() {
-        return version;
+        return this.version;
     }
 
-    public void setVersion(String String1) {
-        version = String1;
+    public void setVersion(String string) {
+        this.version = string;
     }
 }

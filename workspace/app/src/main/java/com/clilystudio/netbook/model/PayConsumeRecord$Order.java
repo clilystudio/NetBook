@@ -3,7 +3,6 @@ package com.clilystudio.netbook.model;
 import java.util.Date;
 
 public class PayConsumeRecord$Order {
-
     PayConsumeRecord$OrderItem[] items;
     private String _id;
     private Date created;
@@ -14,112 +13,118 @@ public class PayConsumeRecord$Order {
     private int useVoucher;
 
     public String getBookName() {
-        if (items == null || items.length == 0)
+        if (this.items == null || this.items.length == 0) {
             return "";
-        else
-            return items[0].getBookName();
+        }
+        return this.items[0].getBookName();
     }
 
     public String getChapterTitle() {
-        if (items == null || items.length == 0)
+        if (this.items == null || this.items.length == 0) {
             return "";
-        else
-            return items[0].getChapterTitle();
+        }
+        return this.items[0].getChapterTitle();
     }
 
     public Date getCreated() {
-        return created;
+        return this.created;
     }
 
-    public void setCreated(Date Date1) {
-        created = Date1;
+    public void setCreated(Date date) {
+        this.created = date;
     }
 
     public PayConsumeRecord$OrderItem[] getItems() {
-        return items;
+        return this.items;
     }
 
-    public void setItems(PayConsumeRecord$OrderItem[] OrderItem_1darray1) {
-        items = OrderItem_1darray1;
+    public void setItems(PayConsumeRecord$OrderItem[] arrpayConsumeRecord$OrderItem) {
+        this.items = arrpayConsumeRecord$OrderItem;
     }
 
+    /*
+     * Enabled aggressive block sorting
+     */
     public PayConsumeRecord$PayType getPayType() {
-        if (payType == null) {
-            if (!type.equals("single")) {
-                if (type.equals("auto")) {
-                    payType = PayConsumeRecord$PayType.AUTO_PURCHASE;
-                    return payType;
-                } else if (type.equals("vip")) {
-                    payType = PayConsumeRecord$PayType.VIP_SERVICE;
-                    return payType;
-                }
+        if (this.payType != null) return this.payType;
+        if (!this.type.equals("single")) {
+            if (this.type.equals("auto")) {
+                this.payType = PayConsumeRecord$PayType.AUTO_PURCHASE;
+                return this.payType;
             }
-            payType = PayConsumeRecord$PayType.SINGLE_CHAPTER;
+            if (this.type.equals("vip")) {
+                this.payType = PayConsumeRecord$PayType.VIP_SERVICE;
+                return this.payType;
+            }
         }
-        return payType;
+        this.payType = PayConsumeRecord$PayType.SINGLE_CHAPTER;
+        return this.payType;
     }
 
     public String getPayTypeString() {
-        switch (PayConsumeRecord$1.$SwitchMap$com$ushaqi$zhuishushenqi$model$PayConsumeRecord$PayType[getPayType().ordinal()]) {
-            default:
+        switch (PayConsumeRecord$1.$SwitchMap$com$ushaqi$zhuishushenqi$model$PayConsumeRecord$PayType[this.getPayType().ordinal()]) {
+            default: {
                 return "";
-            case 1:
-                return "\u5355\u7AE0\u8D2D\u4E70";
-            case 2:
-                return "\u6279\u91CF\u8D2D\u4E70";
-            case 3:
-                return "\u81EA\u52A8\u8D2D\u4E70";
+            }
+            case 1: {
+                return "\u5355\u7ae0\u8d2d\u4e70";
+            }
+            case 2: {
+                return "\u6279\u91cf\u8d2d\u4e70";
+            }
+            case 3: {
+                return "\u81ea\u52a8\u8d2d\u4e70";
+            }
             case 4:
-                return "\u6574\u672C\u8D2D\u4E70";
         }
+        return "\u6574\u672c\u8d2d\u4e70";
     }
 
     public int getPrice() {
-        return price;
+        return this.price;
     }
 
-    public void setPrice(int int1) {
-        price = int1;
+    public void setPrice(int n) {
+        this.price = n;
     }
 
     public String[] getTitles() {
-        String[] String_1darray1 = new String[items.length];
-        int int2;
-
-        for (int2 = 0; int2 < items.length; ++int2)
-            String_1darray1[int2] = items[int2].getChapterTitle();
-        return String_1darray1;
+        String[] arrstring = new String[this.items.length];
+        for (int i = 0; i < this.items.length; ++i) {
+            arrstring[i] = this.items[i].getChapterTitle();
+        }
+        return arrstring;
     }
 
     public String getType() {
-        return type;
+        return this.type;
     }
 
-    public void setType(String String1) {
-        type = String1;
+    public void setType(String string) {
+        this.type = string;
     }
 
     public int getUseCurrency() {
-        return useCurrency;
+        return this.useCurrency;
     }
 
-    public void setUseCurrency(int int1) {
-        useCurrency = int1;
+    public void setUseCurrency(int n) {
+        this.useCurrency = n;
     }
 
     public int getUseVoucher() {
-        return useVoucher;
+        return this.useVoucher;
     }
 
-    public void setUseVoucher(int int1) {
-        useVoucher = int1;
+    public void setUseVoucher(int n) {
+        this.useVoucher = n;
     }
 
     public String get_id() {
-        return _id;
+        return this._id;
     }
 
-    public void set_id(String String1) {
-        _id = String1;
+    public void set_id(String string) {
+        this._id = string;
     }
 }

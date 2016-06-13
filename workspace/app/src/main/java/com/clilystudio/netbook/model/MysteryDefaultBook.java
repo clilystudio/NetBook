@@ -1,14 +1,14 @@
 package com.clilystudio.netbook.model;
 
-public class MysteryDefaultBook extends MysteryBook {
-
+public class MysteryDefaultBook
+        extends MysteryBook {
     private String defaultTocId;
 
     public String getDefaultTocId() {
-        return defaultTocId;
+        return this.defaultTocId;
     }
 
-    public void setDefaultTocId(String String1) {
-        defaultTocId = String1;
+    public void setDefaultTocId(String string) {
+        this.defaultTocId = string;
     }
 }

@@ -1,68 +1,70 @@
 package com.clilystudio.netbook.ui.post;
 
 import android.app.Activity;
-import android.content.Context;
 
+import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.model.TimelineResult;
 import com.clilystudio.netbook.ui.user.AuthLoginActivity;
+import com.clilystudio.netbook.util.e;
 
-final class eb extends com.clilystudio.netbook.a.e {
+final class eb
+        extends com.clilystudio.netbook.a.e<String, Void, TimelineResult> {
+    private /* synthetic */ TweetTimelineFragment a;
 
-    private TweetTimelineFragment a;
-
-    eb(TweetTimelineFragment TweetTimelineFragment1, byte byte2) {
-        this(TweetTimelineFragment1);
+    private eb(TweetTimelineFragment tweetTimelineFragment) {
+        this.a = tweetTimelineFragment;
     }
 
-    private eb(TweetTimelineFragment TweetTimelineFragment1) {
-        a = TweetTimelineFragment1;
+    /* synthetic */ eb(TweetTimelineFragment tweetTimelineFragment, byte by) {
+        this(tweetTimelineFragment);
     }
 
-    private static transient TimelineResult a(String[] String_1darray1) {
-        TimelineResult TimelineResult4;
-
+    private static /* varargs */ TimelineResult a(String... arrstring) {
         try {
-            com.clilystudio.netbook.api.b.a();
-            TimelineResult4 = com.clilystudio.netbook.api.b.b().d(String_1darray1[0], String_1darray1[1], null);
-        } catch (Exception Exception2) {
-            Exception2.printStackTrace();
+            b.a();
+            TimelineResult timelineResult = b.b().d(arrstring[0], arrstring[1], null);
+            return timelineResult;
+        } catch (Exception var1_2) {
+            var1_2.printStackTrace();
             return null;
         }
-        return TimelineResult4;
     }
 
-    protected final Object doInBackground(Object[] Object_1darray1) {
-        return a((String[]) Object_1darray1);
+    @Override
+    protected final /* synthetic */ Object doInBackground(Object[] arrobject) {
+        return eb.a((String[]) arrobject);
     }
 
-    protected final void onPostExecute(Object Object1) {
-        Object Object2 = (TimelineResult) Object1;
-
-        super.onPostExecute(Object2);
-        if (a.getActivity() != null) {
-            TweetTimelineFragment.d(a);
-            if (Object2 != null && ((TimelineResult) Object2).isOk()) {
-                int int3 = ((TimelineResult) Object2).getTweets().length;
-
-                if (int3 > 0) {
-                    TweetTimelineFragment.a(a, (TimelineResult) Object2);
-                    if (int3 < 100)
-                        TweetTimelineFragment.e(a).setOnLastItemVisibleListener(null);
-                    else
-                        TweetTimelineFragment.e(a).setOnLastItemVisibleListener(TweetTimelineFragment.f(a));
-                    TweetTimelineFragment.b(a, (TimelineResult) Object2);
-                } else {
-                    TweetTimelineFragment.g(a);
-                    return;
-                }
-            } else {
-                if (Object2 != null && "TOKEN_INVALID".equals(((TimelineResult) Object2).getCode())) {
-                    a.startActivity(AuthLoginActivity.a((Context) a.getActivity()));
-                    com.clilystudio.netbook.util.e.a((Activity) a.getActivity(), a.getString(2131034547));
-                } else
-                    com.clilystudio.netbook.util.e.a((Activity) a.getActivity(), "\u52A0\u8F7D\u5931\u8D25\uFF0C\u8BF7\u68C0\u67E5\u7F51\u7EDC\u6216\u7A0D\u540E\u518D\u8BD5");
+    /*
+     * Enabled aggressive block sorting
+     * Lifted jumps to return sites
+     */
+    @Override
+    protected final /* synthetic */ void onPostExecute(Object object) {
+        TimelineResult timelineResult = (TimelineResult) object;
+        super.onPostExecute(timelineResult);
+        if (this.a.getActivity() == null) return;
+        TweetTimelineFragment.d(this.a);
+        if (timelineResult != null && timelineResult.isOk()) {
+            int n = timelineResult.getTweets().length;
+            if (n <= 0) {
+                TweetTimelineFragment.g(this.a);
                 return;
             }
+            TweetTimelineFragment.a(this.a, timelineResult);
+            if (n < 100) {
+                TweetTimelineFragment.e(this.a).setOnLastItemVisibleListener(null);
+            } else {
+                TweetTimelineFragment.e(this.a).setOnLastItemVisibleListener(TweetTimelineFragment.f(this.a));
+            }
+            TweetTimelineFragment.b(this.a, timelineResult);
+            return;
         }
+        if (timelineResult != null && "TOKEN_INVALID".equals(timelineResult.getCode())) {
+            this.a.startActivity(AuthLoginActivity.a(this.a.getActivity()));
+            e.a((Activity) this.a.getActivity(), (String) this.a.getString(2131034547));
+            return;
+        }
+        e.a((Activity) this.a.getActivity(), (String) "\u52a0\u8f7d\u5931\u8d25\uff0c\u8bf7\u68c0\u67e5\u7f51\u7edc\u6216\u7a0d\u540e\u518d\u8bd5");
     }
 }

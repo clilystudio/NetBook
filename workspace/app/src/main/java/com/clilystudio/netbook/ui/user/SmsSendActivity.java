@@ -1,12 +1,8 @@
 package com.clilystudio.netbook.ui.user;
 
-import android.app.Activity;
-import android.content.Context;
-import android.content.DialogInterface$OnClickListener;
+import android.content.DialogInterface;
 import android.os.Bundle;
-import android.text.TextWatcher;
 import android.view.View;
-import android.view.View$OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -16,84 +12,90 @@ import com.clilystudio.netbook.ui.BaseActivity;
 import java.util.regex.Pattern;
 
 import butterknife.ButterKnife;
+import butterknife.InjectView;
 
-public class SmsSendActivity extends BaseActivity {
-
+public class SmsSendActivity
+        extends BaseActivity {
+    @InjectView(value = 2131493212)
     View mErrorLine;
+    @InjectView(value = 2131493214)
     Button mNextBtn;
+    @InjectView(value = 2131493211)
     View mNormalLine;
+    @InjectView(value = 2131493210)
     EditText mNumberText;
+    @InjectView(value = 2131493213)
     View mWrongText;
     private ChargePlan a;
     private String b = "^(0|86|17951)?(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$";
-    private String[] c = {"0", "+86", "86", "17951", ""};
+    private String[] c = new String[]{"0", "+86", "86", "17951", ""};
 
-    static void a(SmsSendActivity SmsSendActivity1) {
-        SmsSendActivity1.b();
+    static /* synthetic */ void a(SmsSendActivity smsSendActivity) {
+        smsSendActivity.b();
     }
 
-    static void a(SmsSendActivity SmsSendActivity1, boolean boolean2) {
-        SmsSendActivity1.a(boolean2);
+    static /* synthetic */ void a(SmsSendActivity smsSendActivity, boolean bl) {
+        smsSendActivity.a(bl);
     }
 
-    static boolean a(SmsSendActivity SmsSendActivity1, String String2) {
-        if (String2 == null)
+    static /* synthetic */ boolean a(SmsSendActivity smsSendActivity, String string) {
+        if (string == null) {
             return false;
-        else
-            return Pattern.compile(SmsSendActivity1.b).matcher((CharSequence) String2).matches();
+        }
+        return Pattern.compile(smsSendActivity.b).matcher(string).matches();
     }
 
-    static String[] b(SmsSendActivity SmsSendActivity1) {
-        return SmsSendActivity1.c;
+    static /* synthetic */ String[] b(SmsSendActivity smsSendActivity) {
+        return smsSendActivity.c;
     }
 
-    static ChargePlan c(SmsSendActivity SmsSendActivity1) {
-        return SmsSendActivity1.a;
+    static /* synthetic */ ChargePlan c(SmsSendActivity smsSendActivity) {
+        return smsSendActivity.a;
     }
 
-    static void d(SmsSendActivity SmsSendActivity1) {
-        SmsSendActivity1.mNormalLine.setVisibility(8);
-        SmsSendActivity1.mErrorLine.setVisibility(0);
-        SmsSendActivity1.mWrongText.setVisibility(0);
+    static /* synthetic */ void d(SmsSendActivity smsSendActivity) {
+        smsSendActivity.mNormalLine.setVisibility(8);
+        smsSendActivity.mErrorLine.setVisibility(0);
+        smsSendActivity.mWrongText.setVisibility(0);
     }
 
-    static void e(SmsSendActivity SmsSendActivity1) {
-        SmsSendActivity1.onBackPressed();
+    static /* synthetic */ void e(SmsSendActivity smsSendActivity) {
+        smsSendActivity.onBackPressed();
     }
 
-    private void a(boolean boolean1) {
-        Button Button2 = mNextBtn;
-        int int3;
-
-        if (boolean1)
-            int3 = 2130837693;
-        else
-            int3 = 2130837690;
-        Button2.setBackgroundResource(int3);
-        mNextBtn.setClickable(boolean1);
-        mNextBtn.setEnabled(boolean1);
-        mNextBtn.setTextColor(getResources().getColor(2131427548));
+    /*
+     * Enabled aggressive block sorting
+     */
+    private void a(boolean bl) {
+        Button button = this.mNextBtn;
+        int n = bl ? 2130837693 : 2130837690;
+        button.setBackgroundResource(n);
+        this.mNextBtn.setClickable(bl);
+        this.mNextBtn.setEnabled(bl);
+        this.mNextBtn.setTextColor(this.getResources().getColor(2131427548));
     }
 
     private void b() {
-        mNormalLine.setVisibility(0);
-        mErrorLine.setVisibility(8);
-        mWrongText.setVisibility(4);
+        this.mNormalLine.setVisibility(0);
+        this.mErrorLine.setVisibility(8);
+        this.mWrongText.setVisibility(4);
     }
 
+    @Override
     public void onBackPressed() {
-        new h((Context) this).a(2131034511).b(2131034510).a("\u786E\u8BA4", (DialogInterface$OnClickListener) new ar(this)).b("\u53D6\u6D88", null).b();
+        new h(this).a(2131034511).b(2131034510).a("\u786e\u8ba4", (DialogInterface.OnClickListener) new ar(this)).b("\u53d6\u6d88", null).b();
     }
 
-    protected void onCreate(Bundle Bundle1) {
-        super.onCreate(Bundle1);
-        setContentView(2130903131);
-        b("\u77ED\u4FE1\u5145\u503C");
-        ButterKnife.inject((Activity) this);
-        b();
-        a(false);
-        a = (ChargePlan) getIntent().getSerializableExtra("key_charge_plan_send");
-        mNumberText.addTextChangedListener((TextWatcher) new ap(this));
-        mNextBtn.setOnClickListener((View$OnClickListener) new aq(this));
+    @Override
+    protected void onCreate(Bundle bundle) {
+        super.onCreate(bundle);
+        this.setContentView(2130903131);
+        this.b("\u77ed\u4fe1\u5145\u503c");
+        ButterKnife.inject(this);
+        this.b();
+        this.a(false);
+        this.a = (ChargePlan) this.getIntent().getSerializableExtra("key_charge_plan_send");
+        this.mNumberText.addTextChangedListener(new ap(this));
+        this.mNextBtn.setOnClickListener(new aq(this));
     }
 }

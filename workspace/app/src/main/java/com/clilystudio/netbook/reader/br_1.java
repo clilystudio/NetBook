@@ -6,30 +6,33 @@ import com.clilystudio.netbook.model.ChapterLink;
 import com.clilystudio.netbook.model.MixChapterResource;
 import com.clilystudio.netbook.util.W;
 
-final class br extends W {
+final class br
+        extends W<MixChapterResource> {
+    private /* synthetic */ ReaderChapterDialog a;
 
-    private ReaderChapterDialog a;
-
-    public br(ReaderChapterDialog ReaderChapterDialog1, LayoutInflater LayoutInflater2) {
-        super(LayoutInflater2, 2130903271);
-        a = ReaderChapterDialog1;
+    public br(ReaderChapterDialog readerChapterDialog, LayoutInflater layoutInflater) {
+        this.a = readerChapterDialog;
+        super(layoutInflater, 2130903271);
     }
 
-    protected final void a(int int1, Object Object2) {
-        MixChapterResource MixChapterResource3 = (MixChapterResource) Object2;
-        ChapterLink ChapterLink4 = MixChapterResource3.getChapter();
-
-        if (ChapterLink4 != null) {
-            a(0, (CharSequence) MixChapterResource3.getHost());
-            if (ReaderChapterDialog.a(a) != null && ReaderChapterDialog.a(a).equals(ChapterLink4.getLink()))
-                a(1, false);
-            else {
-                a(1, true);
-                return;
-            }
+    /*
+     * Enabled force condition propagation
+     * Lifted jumps to return sites
+     */
+    @Override
+    protected final /* synthetic */ void a(int n, Object object) {
+        MixChapterResource mixChapterResource = (MixChapterResource) object;
+        ChapterLink chapterLink = mixChapterResource.getChapter();
+        if (chapterLink == null) return;
+        this.a(0, mixChapterResource.getHost());
+        if (ReaderChapterDialog.a(this.a) != null && ReaderChapterDialog.a(this.a).equals(chapterLink.getLink())) {
+            this.a(1, false);
+            return;
         }
+        this.a(1, true);
     }
 
+    @Override
     protected final int[] a() {
         return new int[]{2131493636, 2131493637};
     }

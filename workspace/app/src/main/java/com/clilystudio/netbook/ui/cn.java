@@ -3,27 +3,30 @@ package com.clilystudio.netbook.ui;
 import java.io.IOException;
 import java.io.InputStream;
 
-final class cn implements r {
+final class cn
+        implements r {
+    private /* synthetic */ String a;
+    private /* synthetic */ String b;
+    private /* synthetic */ WifiActivity c;
 
-    private String a;
-    private String b;
-    private WifiActivity c;
-    cn(WifiActivity WifiActivity1, String String2, String String3) {
-        c = WifiActivity1;
-        a = String2;
-        b = String3;
+    cn(WifiActivity wifiActivity, String string, String string2) {
+        this.c = wifiActivity;
+        this.a = string;
+        this.b = string2;
     }
 
-    public final void a(h h1, l l2) {
+    @Override
+    public final void a(h h2, l l2) {
         try {
-            InputStream InputStream4 = c.getAssets().open(a);
-
-            if (b != null)
-                l2.b(b);
-            l2.a(InputStream4, (long) InputStream4.available());
-        } catch (IOException IOException3) {
+            InputStream inputStream = this.c.getAssets().open(this.a);
+            if (this.b != null) {
+                l2.b(this.b);
+            }
+            l2.a(inputStream, inputStream.available());
+            return;
+        } catch (IOException var3_4) {
             l2.a("error!!");
-            IOException3.printStackTrace();
+            var3_4.printStackTrace();
             return;
         }
     }

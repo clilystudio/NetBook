@@ -2,45 +2,47 @@ package com.clilystudio.netbook.ui.ugcbook;
 
 import android.app.Activity;
 
+import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.model.ResultStatus;
+import com.clilystudio.netbook.util.e;
 
 import java.io.IOException;
 
-final class q extends com.clilystudio.netbook.a.e {
+final class q
+        extends com.clilystudio.netbook.a.e<String, Void, ResultStatus> {
+    private /* synthetic */ UGCDetailActivity a;
 
-    private UGCDetailActivity a;
-
-    q(UGCDetailActivity UGCDetailActivity1, byte byte2) {
-        this(UGCDetailActivity1);
+    private q(UGCDetailActivity uGCDetailActivity) {
+        this.a = uGCDetailActivity;
     }
 
-    private q(UGCDetailActivity UGCDetailActivity1) {
-        a = UGCDetailActivity1;
+    /* synthetic */ q(UGCDetailActivity uGCDetailActivity, byte by) {
+        this(uGCDetailActivity);
     }
 
-    private transient ResultStatus a(String[] String_1darray1) {
-        ResultStatus ResultStatus3;
-
+    private /* varargs */ ResultStatus a(String... arrstring) {
         try {
-            ResultStatus3 = com.clilystudio.netbook.api.b.b().D(String_1darray1[0], String_1darray1[1]);
-        } catch (IOException IOException2) {
-            IOException2.printStackTrace();
+            ResultStatus resultStatus = b.b().D(arrstring[0], arrstring[1]);
+            return resultStatus;
+        } catch (IOException var2_3) {
+            var2_3.printStackTrace();
             return null;
         }
-        return ResultStatus3;
     }
 
-    protected final Object doInBackground(Object[] Object_1darray1) {
-        return a((String[]) Object_1darray1);
+    @Override
+    protected final /* synthetic */ Object doInBackground(Object[] arrobject) {
+        return this.a((String[]) arrobject);
     }
 
-    protected final void onPostExecute(Object Object1) {
-        Object Object2 = (ResultStatus) Object1;
-
-        super.onPostExecute(Object2);
-        if (Object2 != null && ((ResultStatus) Object2).isOk())
-            com.clilystudio.netbook.util.e.a((Activity) a, "\u5DF2\u6536\u85CF");
-        else
-            com.clilystudio.netbook.util.e.a((Activity) a, "\u6536\u85CF\u5931\u8D25\uFF0C\u8BF7\u68C0\u67E5\u7F51\u7EDC\u6216\u7A0D\u540E\u518D\u8BD5");
+    @Override
+    protected final /* synthetic */ void onPostExecute(Object object) {
+        ResultStatus resultStatus = (ResultStatus) object;
+        super.onPostExecute(resultStatus);
+        if (resultStatus != null && resultStatus.isOk()) {
+            e.a((Activity) this.a, "\u5df2\u6536\u85cf");
+            return;
+        }
+        e.a((Activity) this.a, "\u6536\u85cf\u5931\u8d25\uff0c\u8bf7\u68c0\u67e5\u7f51\u7edc\u6216\u7a0d\u540e\u518d\u8bd5");
     }
 }

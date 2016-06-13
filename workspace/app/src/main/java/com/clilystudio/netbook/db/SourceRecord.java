@@ -1,72 +1,80 @@
 package com.clilystudio.netbook.db;
 
 import com.activeandroid.Model;
+import com.activeandroid.annotation.Column;
+import com.activeandroid.annotation.Table;
+import com.activeandroid.query.Delete;
+import com.activeandroid.query.Select;
 
-public class SourceRecord extends Model {
-
+@Table(name = "SourceRecord")
+public class SourceRecord
+        extends Model {
+    @Column(name = "bookId")
     private String bookId;
+    @Column(name = "sogouMd")
     private String sogouMd;
+    @Column(name = "source")
     private String source;
+    @Column(name = "sourceId")
     private String sourceId;
 
-    public static void create(String String1, String String2, String String3) {
-        SourceRecord SourceRecord4 = new SourceRecord();
-
-        SourceRecord4.bookId = String1;
-        SourceRecord4.source = String2;
-        SourceRecord4.sourceId = String3;
-        SourceRecord4.save();
+    public static void create(String string, String string2, String string3) {
+        SourceRecord sourceRecord = new SourceRecord();
+        sourceRecord.bookId = string;
+        sourceRecord.source = string2;
+        sourceRecord.sourceId = string3;
+        sourceRecord.save();
     }
 
-    public static void create(String String1, String String2, String String3, String String4) {
-        SourceRecord SourceRecord5 = new SourceRecord();
-
-        SourceRecord5.bookId = String1;
-        SourceRecord5.source = String2;
-        SourceRecord5.sourceId = String3;
-        SourceRecord5.sogouMd = String4;
-        SourceRecord5.save();
+    public static void create(String string, String string2, String string3, String string4) {
+        SourceRecord sourceRecord = new SourceRecord();
+        sourceRecord.bookId = string;
+        sourceRecord.source = string2;
+        sourceRecord.sourceId = string3;
+        sourceRecord.sogouMd = string4;
+        sourceRecord.save();
     }
-// Error: Internal #201: 
-// The following method may not be correct.
 
-    public static void delete(String String1) {
+    public static void delete(String string) {
+        new Delete().from(SourceRecord.class).where("bookId = ?", string).execute();
     }
-// Error: Internal #201: 
-// The following method may not be correct.
 
-    public static SourceRecord get(String String1, String String2) {
+    public static SourceRecord get(String string, String string2) {
+        if (string == null || string2 == null) {
+            return null;
+        }
+        return (SourceRecord) new Select().from(SourceRecord.class).where("bookId = ? AND source = ?", string, string2).executeSingle();
     }
 
     public String getBookId() {
-        return bookId;
+        return this.bookId;
     }
 
-    public void setBookId(String String1) {
-        bookId = String1;
+    public void setBookId(String string) {
+        this.bookId = string;
     }
 
     public String getSogouMd() {
-        return sogouMd;
+        return this.sogouMd;
     }
 
-    public void setSogouMd(String String1) {
-        sogouMd = String1;
+    public void setSogouMd(String string) {
+        this.sogouMd = string;
     }
 
     public String getSource() {
-        return source;
+        return this.source;
     }
 
-    public void setSource(String String1) {
-        source = String1;
+    public void setSource(String string) {
+        this.source = string;
     }
 
     public String getSourceId() {
-        return sourceId;
+        return this.sourceId;
     }
 
-    public void setSourceId(String String1) {
-        sourceId = String1;
+    public void setSourceId(String string) {
+        this.sourceId = string;
     }
 }

@@ -1,111 +1,106 @@
 package com.clilystudio.netbook.ui;
 
-import android.app.Activity;
+import android.annotation.SuppressLint;
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.view.View$OnClickListener;
-import android.view.View$OnKeyListener;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
-public class LuckyGameWebActivity extends BaseActivity implements View$OnClickListener {
-// Error: Internal #201: 
-// The following method may not be correct.
+import com.clilystudio.netbook.d;
 
-    private static final String a = null;
-
-    static {
-    }
-
+public class LuckyGameWebActivity
+        extends BaseActivity
+        implements View.OnClickListener {
+    private static final String a = LuckyGameWebActivity.class.getSimpleName();
     private WebView b;
     private View c;
     private View e;
     private View f;
-// Error: Internal #201: 
-// The following method may not be correct.
 
-    public static Intent a(Context Context1, String String2, String String3) {
+    public static Intent a(Context context, String string, String string2) {
+        return new d().a(context, LuckyGameWebActivity.class).a("extra_title", string).a("extra_url", string2).a();
     }
 
-    static void a(LuckyGameWebActivity LuckyGameWebActivity1) {
-        boolean boolean2 = true;
-        View View3 = LuckyGameWebActivity1.e;
-        boolean boolean4;
-        View View5;
-
-        if (LuckyGameWebActivity1.b != null && LuckyGameWebActivity1.b.canGoBack())
-            boolean4 = boolean2;
-        else
-            boolean4 = false;
-        View3.setEnabled(boolean4);
-        View5 = LuckyGameWebActivity1.f;
-        if (LuckyGameWebActivity1.b == null || !LuckyGameWebActivity1.b.canGoForward())
-            boolean2 = false;
-        View5.setEnabled(boolean2);
+    /*
+     * Enabled aggressive block sorting
+     */
+    static /* synthetic */ void a(LuckyGameWebActivity luckyGameWebActivity) {
+        boolean bl = true;
+        View view = luckyGameWebActivity.e;
+        boolean bl2 = luckyGameWebActivity.b != null && luckyGameWebActivity.b.canGoBack() ? bl : false;
+        view.setEnabled(bl2);
+        View view2 = luckyGameWebActivity.f;
+        if (luckyGameWebActivity.b == null || !luckyGameWebActivity.b.canGoForward()) {
+            bl = false;
+        }
+        view2.setEnabled(bl);
     }
 
-    static String b() {
+    static /* synthetic */ String b() {
         return a;
     }
 
-    static void b(LuckyGameWebActivity LuckyGameWebActivity1) {
-        LuckyGameWebActivity1.c.setVisibility(0);
+    static /* synthetic */ void b(LuckyGameWebActivity luckyGameWebActivity) {
+        luckyGameWebActivity.c.setVisibility(0);
     }
 
-    static void c(LuckyGameWebActivity LuckyGameWebActivity1) {
-        LuckyGameWebActivity1.c.setVisibility(8);
+    static /* synthetic */ void c(LuckyGameWebActivity luckyGameWebActivity) {
+        luckyGameWebActivity.c.setVisibility(8);
     }
 
-    static WebView d(LuckyGameWebActivity LuckyGameWebActivity1) {
-        return LuckyGameWebActivity1.b;
+    static /* synthetic */ WebView d(LuckyGameWebActivity luckyGameWebActivity) {
+        return luckyGameWebActivity.b;
     }
 
-    public void onClick(View View1) {
-        switch (View1.getId()) {
-            default:
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            default: {
                 return;
-            case 1186:
-                b.goBack();
+            }
+            case 2131494050: {
+                this.b.goBack();
                 return;
-            case 1187:
-                b.goForward();
+            }
+            case 2131494051: {
+                this.b.goForward();
                 return;
-            case 1188:
-                b.reload();
-                return;
+            }
+            case 2131494052:
         }
+        this.b.reload();
     }
 
-    protected void onCreate(Bundle Bundle1) {
-        View View2;
-        WebSettings WebSettings3;
-        String String4;
-
-        super.onCreate(Bundle1);
-        setContentView(2130903420);
-        c(getIntent().getStringExtra("extra_title"));
-        b = (WebView) findViewById(2131494048);
-        c = findViewById(2131493085);
-        e = findViewById(2131494050);
-        f = findViewById(2131494051);
-        View2 = findViewById(2131494052);
-        b.setVerticalScrollBarEnabled(true);
-        WebSettings3 = b.getSettings();
-        WebSettings3.setJavaScriptEnabled(true);
-        WebSettings3.setDomStorageEnabled(true);
-        WebSettings3.setAppCacheEnabled(true);
-        b.setWebChromeClient((WebChromeClient) new bg(this));
-        b.setWebViewClient((WebViewClient) new bh(this));
-        b.setOnKeyListener((View$OnKeyListener) new bi(this));
-        b.addJavascriptInterface(new cw((Activity) this, b), "ZssqAndroidApi");
-        e.setOnClickListener(this);
-        f.setOnClickListener(this);
-        View2.setOnClickListener(this);
-        String4 = getIntent().getStringExtra("extra_url");
-        b.loadUrl(String4);
+    @SuppressLint(value = {"JavascriptInterface"})
+    @TargetApi(value = 9)
+    @Override
+    protected void onCreate(Bundle bundle) {
+        super.onCreate(bundle);
+        this.setContentView(2130903420);
+        this.c(this.getIntent().getStringExtra("extra_title"));
+        this.b = (WebView) this.findViewById(2131494048);
+        this.c = this.findViewById(2131493085);
+        this.e = this.findViewById(2131494050);
+        this.f = this.findViewById(2131494051);
+        View view = this.findViewById(2131494052);
+        this.b.setVerticalScrollBarEnabled(true);
+        WebSettings webSettings = this.b.getSettings();
+        webSettings.setJavaScriptEnabled(true);
+        webSettings.setDomStorageEnabled(true);
+        webSettings.setAppCacheEnabled(true);
+        this.b.setWebChromeClient((WebChromeClient) ((Object) new bg(this)));
+        this.b.setWebViewClient((WebViewClient) ((Object) new bh(this)));
+        this.b.setOnKeyListener((View.OnKeyListener) ((Object) new bi(this)));
+        this.b.addJavascriptInterface(new cw(this, this.b), "ZssqAndroidApi");
+        this.e.setOnClickListener(this);
+        this.f.setOnClickListener(this);
+        view.setOnClickListener(this);
+        String string = this.getIntent().getStringExtra("extra_url");
+        this.b.loadUrl(string);
     }
 }

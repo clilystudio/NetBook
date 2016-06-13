@@ -1,32 +1,31 @@
 package com.clilystudio.netbook.model;
 
 public class TocDownloadSummary {
-
     private int count;
     private String hostName;
     private String tocId;
 
     public int getCount() {
-        return count;
+        return this.count;
     }
 
-    public void setCount(int int1) {
-        count = int1;
+    public void setCount(int n) {
+        this.count = n;
     }
 
     public String getHostName() {
-        return hostName;
+        return this.hostName;
     }
 
-    public void setHostName(String String1) {
-        hostName = String1;
+    public void setHostName(String string) {
+        this.hostName = string;
     }
 
     public String getTocId() {
-        return tocId;
+        return this.tocId;
     }
 
-    public void setTocId(String String1) {
-        tocId = String1;
+    public void setTocId(String string) {
+        this.tocId = string;
     }
 }

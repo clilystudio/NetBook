@@ -2,28 +2,28 @@ package com.clilystudio.netbook.widget;
 
 import android.net.Uri;
 import android.view.View;
-import android.view.View$OnClickListener;
 
 import java.io.File;
 
-final class A implements View$OnClickListener {
+final class A
+        implements View.OnClickListener {
+    private /* synthetic */ GameDownloadButton a;
 
-    private GameDownloadButton a;
-
-    A(GameDownloadButton GameDownloadButton1, byte byte2) {
-        this(GameDownloadButton1);
+    private A(GameDownloadButton gameDownloadButton) {
+        this.a = gameDownloadButton;
     }
 
-    private A(GameDownloadButton GameDownloadButton1) {
-        a = GameDownloadButton1;
+    /* synthetic */ A(GameDownloadButton gameDownloadButton, byte by) {
+        this(gameDownloadButton);
     }
 
-    public final void onClick(View View1) {
-        if (com.clilystudio.netbook.hpay100.a.a.a(a.getContext(), new File(Uri.parse(GameDownloadButton.a(a).getLocalFileUri()).getPath())))
-            GameDownloadButton.b(a);
-        else {
-            GameDownloadButton.a(a).setDownloadStatus(0);
-            a.a(0);
+    @Override
+    public final void onClick(View view) {
+        if (a.a(this.a.getContext(), new File(Uri.parse(GameDownloadButton.a(this.a).getLocalFileUri()).getPath()))) {
+            GameDownloadButton.b(this.a);
+            return;
         }
+        GameDownloadButton.a(this.a).setDownloadStatus(0);
+        this.a.a(0);
     }
 }

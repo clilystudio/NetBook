@@ -4,22 +4,22 @@ import android.os.Message;
 
 import java.util.TimerTask;
 
-final class aw extends TimerTask {
+final class aw
+        extends TimerTask {
+    private /* synthetic */ SmsVerifyActivity a;
 
-    private SmsVerifyActivity a;
-
-    aw(SmsVerifyActivity SmsVerifyActivity1) {
-        a = SmsVerifyActivity1;
+    aw(SmsVerifyActivity smsVerifyActivity) {
+        this.a = smsVerifyActivity;
     }
 
+    @Override
     public final void run() {
-        Message Message1;
-
-        if (SmsVerifyActivity.b(a) > 0)
-            SmsVerifyActivity.c(a);
-        Message1 = new Message();
-        Message1.what = 1;
-        Message1.arg1 = SmsVerifyActivity.b(a);
-        a.a.sendMessage(Message1);
+        if (SmsVerifyActivity.b(this.a) > 0) {
+            SmsVerifyActivity.c(this.a);
+        }
+        Message message = new Message();
+        message.what = 1;
+        message.arg1 = SmsVerifyActivity.b(this.a);
+        this.a.a.sendMessage(message);
     }
 }

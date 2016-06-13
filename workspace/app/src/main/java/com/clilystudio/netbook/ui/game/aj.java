@@ -4,15 +4,16 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 
-final class aj extends BroadcastReceiver {
+final class aj
+        extends BroadcastReceiver {
+    private /* synthetic */ GameRankListFragment a;
 
-    private GameRankListFragment a;
-
-    aj(GameRankListFragment GameRankListFragment1) {
-        a = GameRankListFragment1;
+    aj(GameRankListFragment gameRankListFragment) {
+        this.a = gameRankListFragment;
     }
 
-    public final void onReceive(Context Context1, Intent Intent2) {
-        GameRankListFragment.c(a);
+    @Override
+    public final void onReceive(Context context, Intent intent) {
+        GameRankListFragment.c(this.a);
     }
 }

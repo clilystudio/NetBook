@@ -1,20 +1,21 @@
 package com.clilystudio.netbook.reader;
 
-final class az implements com.umeng.update.a {
+final class az
+        implements a {
+    private /* synthetic */ ReaderActivity a;
 
-    private ReaderActivity a;
-
-    az(ReaderActivity ReaderActivity1) {
-        a = ReaderActivity1;
+    az(ReaderActivity readerActivity) {
+        this.a = readerActivity;
     }
 
-    public final void a(int int1) {
-        switch (int1) {
-            default:
+    @Override
+    public final void a(int n2) {
+        switch (n2) {
+            default: {
                 return;
+            }
             case 0:
-                ReaderActivity.W(a);
-                return;
         }
+        ReaderActivity.W(this.a);
     }
 }

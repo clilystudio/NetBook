@@ -2,24 +2,24 @@ package com.clilystudio.netbook.widget;
 
 import android.net.Uri;
 import android.view.View;
-import android.view.View$OnClickListener;
 
 import java.io.File;
 
-final class R implements View$OnClickListener {
+final class R
+        implements View.OnClickListener {
+    private /* synthetic */ GiftGameGameButton a;
 
-    private GiftGameGameButton a;
-
-    R(GiftGameGameButton GiftGameGameButton1, byte byte2) {
-        this(GiftGameGameButton1);
+    private R(GiftGameGameButton giftGameGameButton) {
+        this.a = giftGameGameButton;
     }
 
-    private R(GiftGameGameButton GiftGameGameButton1) {
-        a = GiftGameGameButton1;
+    /* synthetic */ R(GiftGameGameButton giftGameGameButton, byte by) {
+        this(giftGameGameButton);
     }
 
-    public final void onClick(View View1) {
-        GiftGameGameButton.a(a);
-        com.clilystudio.netbook.hpay100.a.a.a(a.getContext(), new File(Uri.parse(GiftGameGameButton.b(a).getLocalFileUri()).getPath()));
+    @Override
+    public final void onClick(View view) {
+        GiftGameGameButton.a(this.a);
+        a.a(this.a.getContext(), new File(Uri.parse(GiftGameGameButton.b(this.a).getLocalFileUri()).getPath()));
     }
 }

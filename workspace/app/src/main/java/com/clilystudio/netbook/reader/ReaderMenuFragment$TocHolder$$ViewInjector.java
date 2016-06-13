@@ -5,16 +5,15 @@ import android.widget.TextView;
 import butterknife.ButterKnife$Finder;
 
 public class ReaderMenuFragment$TocHolder$$ViewInjector {
-
-    public static void inject(ButterKnife$Finder Finder1, ReaderMenuFragment$TocHolder TocHolder2, Object Object3) {
-        TocHolder2.title = (TextView) Finder1.findRequiredView(Object3, 2131492936, "field 'title'");
-        TocHolder2.link = (TextView) Finder1.findRequiredView(Object3, 2131493736, "field 'link'");
-        TocHolder2.time = (TextView) Finder1.findRequiredView(Object3, 2131492935, "field 'time'");
+    public static void inject(ButterKnife$Finder butterKnife$Finder, ReaderMenuFragment$TocHolder readerMenuFragment$TocHolder, Object object) {
+        readerMenuFragment$TocHolder.title = (TextView) butterKnife$Finder.findRequiredView(object, 2131492936, "field 'title'");
+        readerMenuFragment$TocHolder.link = (TextView) butterKnife$Finder.findRequiredView(object, 2131493736, "field 'link'");
+        readerMenuFragment$TocHolder.time = (TextView) butterKnife$Finder.findRequiredView(object, 2131492935, "field 'time'");
     }
 
-    public static void reset(ReaderMenuFragment$TocHolder TocHolder1) {
-        TocHolder1.title = null;
-        TocHolder1.link = null;
-        TocHolder1.time = null;
+    public static void reset(ReaderMenuFragment$TocHolder readerMenuFragment$TocHolder) {
+        readerMenuFragment$TocHolder.title = null;
+        readerMenuFragment$TocHolder.link = null;
+        readerMenuFragment$TocHolder.time = null;
     }
 }

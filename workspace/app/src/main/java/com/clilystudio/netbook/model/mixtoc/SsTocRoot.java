@@ -1,23 +1,22 @@
 package com.clilystudio.netbook.model.mixtoc;
 
 public class SsTocRoot {
-
     private String resourceid;
     private SsTocRow[] rows;
 
     public String getResourceid() {
-        return resourceid;
+        return this.resourceid;
     }
 
-    public void setResourceid(String String1) {
-        resourceid = String1;
+    public void setResourceid(String string) {
+        this.resourceid = string;
     }
 
     public SsTocRow[] getRows() {
-        return rows;
+        return this.rows;
     }
 
-    public void setRows(SsTocRow[] SsTocRow_1darray1) {
-        rows = SsTocRow_1darray1;
+    public void setRows(SsTocRow[] arrssTocRow) {
+        this.rows = arrssTocRow;
     }
 }

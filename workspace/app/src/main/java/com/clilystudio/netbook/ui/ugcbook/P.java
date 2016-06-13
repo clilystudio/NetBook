@@ -3,52 +3,55 @@ package com.clilystudio.netbook.ui.ugcbook;
 import android.app.Activity;
 import android.support.design.widget.am;
 
+import com.clilystudio.netbook.a.c;
+import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.event.E;
 import com.clilystudio.netbook.event.J;
 import com.clilystudio.netbook.event.i;
 import com.clilystudio.netbook.model.Account;
-import com.clilystudio.netbook.model.BookSummary;
 import com.clilystudio.netbook.model.ResultStatus;
 import com.clilystudio.netbook.model.UGCNewCollection;
 import com.clilystudio.netbook.util.e;
 
 import java.io.IOException;
 
-final class P extends com.clilystudio.netbook.a.c {
+final class P
+        extends c<Void, ResultStatus> {
+    private /* synthetic */ UGCGuideEditBooksActivity a;
 
-    private UGCGuideEditBooksActivity a;
-
-    public P(UGCGuideEditBooksActivity UGCGuideEditBooksActivity1) {
-        super((Activity) UGCGuideEditBooksActivity1, "\u6B63\u5728\u4FDD\u5B58\u5230\u8349\u7A3F\u7BB1...");
-        a = UGCGuideEditBooksActivity1;
+    public P(UGCGuideEditBooksActivity uGCGuideEditBooksActivity) {
+        this.a = uGCGuideEditBooksActivity;
+        super((Activity) uGCGuideEditBooksActivity, "\u6b63\u5728\u4fdd\u5b58\u5230\u8349\u7a3f\u7bb1...");
     }
 
-    private transient ResultStatus a() {
+    /*
+     * Enabled force condition propagation
+     * Lifted jumps to return sites
+     */
+    private /* varargs */ ResultStatus a() {
+        Account account = am.a((Activity) this.a);
+        if (account == null) return null;
         try {
-            Account Account2 = am.a((Activity) a);
-        } catch (IOException IOException1) {
-            IOException1.printStackTrace();
+            if (UGCGuideEditBooksActivity.f(this.a) == null) return b.b().b(UGCGuideEditBooksActivity.m(this.a), account.getToken());
+            if (UGCGuideEditBooksActivity.f(this.a).equals("")) return b.b().b(UGCGuideEditBooksActivity.m(this.a), account.getToken());
+            return b.b().b(UGCGuideEditBooksActivity.l(this.a), account.getToken(), UGCGuideEditBooksActivity.f(this.a));
+        } catch (IOException var1_3) {
+            var1_3.printStackTrace();
         }
         return null;
     }
 
-    public final volatile Object a(Object[] Object_1darray1) {
-        return a();
-    }
-
-    public final void a(Object Object1) {
-        ResultStatus ResultStatus2 = (ResultStatus) Object1;
-
-        if (ResultStatus2 == null || !ResultStatus2.isOk())
-            e.a((Activity) a, "\u4FDD\u5B58\u5931\u8D25\uFF0C\u8BF7\u68C0\u67E5\u7F51\u7EDC\u6216\u91CD\u8BD5");
-        else {
-            UGCNewCollection UGCNewCollection3;
-
-            e.a((Activity) a, "\u5DF2\u4FDD\u5B58\u5230\u8349\u7A3F\u7BB1");
-            UGCNewCollection3 = UGCGuideEditBooksActivity.n(a);
-            i.a().c(new E());
-            i.a().c(new J(UGCGuideEditBooksActivity.f(a), UGCNewCollection3.getTitle(), UGCNewCollection3.getDesc(), UGCNewCollection3.getBooks().size(), ((BookSummary) UGCNewCollection3.getBooks().get(0)).getCover()));
-            a.finish();
+    @Override
+    public final /* synthetic */ void a(Object object) {
+        ResultStatus resultStatus = (ResultStatus) object;
+        if (resultStatus == null || !resultStatus.isOk()) {
+            e.a((Activity) this.a, (String) "\u4fdd\u5b58\u5931\u8d25\uff0c\u8bf7\u68c0\u67e5\u7f51\u7edc\u6216\u91cd\u8bd5");
+            return;
         }
+        e.a((Activity) this.a, (String) "\u5df2\u4fdd\u5b58\u5230\u8349\u7a3f\u7bb1");
+        UGCNewCollection uGCNewCollection = UGCGuideEditBooksActivity.n(this.a);
+        i.a().c(new E());
+        i.a().c(new J(UGCGuideEditBooksActivity.f(this.a), uGCNewCollection.getTitle(), uGCNewCollection.getDesc(), uGCNewCollection.getBooks().size(), uGCNewCollection.getBooks().get(0).getCover()));
+        this.a.finish();
     }
 }

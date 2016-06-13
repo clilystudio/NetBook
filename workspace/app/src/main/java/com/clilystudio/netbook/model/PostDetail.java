@@ -1,23 +1,22 @@
 package com.clilystudio.netbook.model;
 
 public class PostDetail {
-
     private boolean ok;
     private Post post;
 
     public Post getPost() {
-        return post;
+        return this.post;
     }
 
-    public void setPost(Post Post1) {
-        post = Post1;
+    public void setPost(Post post) {
+        this.post = post;
     }
 
     public boolean isOk() {
-        return ok;
+        return this.ok;
     }
 
-    public void setOk(boolean boolean1) {
-        ok = boolean1;
+    public void setOk(boolean bl) {
+        this.ok = bl;
     }
 }

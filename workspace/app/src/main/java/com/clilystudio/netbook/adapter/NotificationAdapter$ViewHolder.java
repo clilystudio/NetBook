@@ -6,13 +6,17 @@ import android.widget.TextView;
 import com.clilystudio.netbook.ui.CircularSmartImageView;
 
 import butterknife.ButterKnife;
+import butterknife.InjectView;
 
 class NotificationAdapter$ViewHolder {
-
+    @InjectView(value = 2131492899)
     CircularSmartImageView mAvatar;
+    @InjectView(value = 2131493712)
     TextView mMainText;
+    @InjectView(value = 2131493713)
     TextView mSubText;
-    NotificationAdapter$ViewHolder(View View1) {
-        ButterKnife.inject(this, View1);
+
+    NotificationAdapter$ViewHolder(View view) {
+        ButterKnife.inject((Object) this, view);
     }
 }

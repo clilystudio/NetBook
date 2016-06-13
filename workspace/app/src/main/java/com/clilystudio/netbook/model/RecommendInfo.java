@@ -1,28 +1,36 @@
 package com.clilystudio.netbook.model;
 
-public class RecommendInfo {
+import com.google.gson.Gson;
 
+public class RecommendInfo {
     private String op;
     private String recommended;
-// Error: Internal #201: 
-// The following method may not be correct.
 
-    public static RecommendInfo getInfoFromJson(String String1) {
+    public static RecommendInfo getInfoFromJson(String string) {
+        if (string == null) {
+            return null;
+        }
+        try {
+            RecommendInfo recommendInfo = (RecommendInfo) new Gson().fromJson(string, RecommendInfo.class);
+            return recommendInfo;
+        } catch (Exception var1_2) {
+            return null;
+        }
     }
 
     public String getOp() {
-        return op;
+        return this.op;
     }
 
-    public void setOp(String String1) {
-        op = String1;
+    public void setOp(String string) {
+        this.op = string;
     }
 
     public String getRecommended() {
-        return recommended;
+        return this.recommended;
     }
 
-    public void setRecommended(String String1) {
-        recommended = String1;
+    public void setRecommended(String string) {
+        this.recommended = string;
     }
 }

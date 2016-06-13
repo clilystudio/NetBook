@@ -1,33 +1,30 @@
 package com.clilystudio.netbook.ui.post;
 
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View$OnClickListener;
-import android.view.View$OnTouchListener;
-import android.widget.AdapterView$OnItemClickListener;
+import android.widget.AdapterView;
 import android.widget.ImageView;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.PopupWindow;
-import android.widget.PopupWindow$OnDismissListener;
 import android.widget.TextView;
 
 import com.clilystudio.netbook.adapter.d;
+import com.clilystudio.netbook.model.BookHelpSummary;
 import com.clilystudio.netbook.ui.BaseActivity;
 import com.clilystudio.netbook.ui.aa;
 import com.handmark.pulltorefresh.library.PullToRefreshBase$Mode;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
+import com.handmark.pulltorefresh.library.j;
+import com.umeng.a.b;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class BookHelpListActivity extends BaseActivity {
-
+public class BookHelpListActivity
+        extends BaseActivity {
     private av a;
     private au b;
     private PullToRefreshListView c;
@@ -36,6 +33,7 @@ public class BookHelpListActivity extends BaseActivity {
     private View g;
     private TextView h;
     private d i;
+    private List<BookHelpSummary> j = new ArrayList<BookHelpSummary>();
     private TextView k;
     private TextView l;
     private ImageView m;
@@ -43,247 +41,258 @@ public class BookHelpListActivity extends BaseActivity {
     private String o;
     private String p;
     private boolean q;
-    private List j = new ArrayList();
-    private com.handmark.pulltorefresh.library.j r = new ak(this);
+    private j r;
 
-    static PopupWindow a(BookHelpListActivity BookHelpListActivity1, boolean boolean2) {
-        if (boolean2) {
-            View View10 = LayoutInflater.from((Context) BookHelpListActivity1).inflate(2130903155, null);
-            TextView TextView11 = (TextView) View10.findViewById(2131493308);
-            TextView TextView12 = (TextView) View10.findViewById(2131493309);
-            PopupWindow PopupWindow13;
-
-            if (BookHelpListActivity1.q)
-                TextView12.setTextColor(BookHelpListActivity1.getResources().getColor(2131427468));
-            else if (BookHelpListActivity1.o.equals("all"))
-                TextView11.setTextColor(BookHelpListActivity1.getResources().getColor(2131427468));
-            PopupWindow13 = BookHelpListActivity1.a(View10);
-            View10.setOnTouchListener((View$OnTouchListener) new aq(BookHelpListActivity1, PopupWindow13));
-            TextView11.setOnClickListener((View$OnClickListener) new ar(BookHelpListActivity1, PopupWindow13));
-            TextView12.setOnClickListener((View$OnClickListener) new as(BookHelpListActivity1, PopupWindow13));
-            return PopupWindow13;
-        } else {
-            View View3 = LayoutInflater.from((Context) BookHelpListActivity1).inflate(2130903156, null);
-            TextView TextView4 = (TextView) View3.findViewById(2131493308);
-            TextView TextView5 = (TextView) View3.findViewById(2131493309);
-            TextView TextView6 = (TextView) View3.findViewById(2131493310);
-            String String7 = BookHelpListActivity1.p;
-            int int8 = -1;
-            PopupWindow PopupWindow9;
-
-            switch (String7.hashCode()) {
-                case -234430277:
-                    if (String7.equals("updated")) {
-                        int8 = 0;
-                        break;
-                    }
-                    break;
-                case 1028554472:
-                    if (String7.equals("created")) {
-                        int8 = 1;
-                        break;
-                    }
-                    break;
-                case 1742524449:
-                    if (String7.equals("comment-count")) {
-                        int8 = 2;
-                        break;
-                    }
-                    break;
-                default:
-                    break;
-            }
-            switch (int8) {
-                case 0:
-                    TextView4.setTextColor(BookHelpListActivity1.getResources().getColor(2131427468));
-                    break;
-                case 1:
-                    TextView5.setTextColor(BookHelpListActivity1.getResources().getColor(2131427468));
-                    break;
-                case 2:
-                    TextView6.setTextColor(BookHelpListActivity1.getResources().getColor(2131427468));
-                    break;
-                default:
-                    break;
-            }
-            PopupWindow9 = BookHelpListActivity1.a(View3);
-            View3.setOnTouchListener((View$OnTouchListener) new at(BookHelpListActivity1, PopupWindow9));
-            TextView4.setOnClickListener((View$OnClickListener) new ag(BookHelpListActivity1, PopupWindow9));
-            TextView5.setOnClickListener((View$OnClickListener) new ah(BookHelpListActivity1, PopupWindow9));
-            TextView6.setOnClickListener((View$OnClickListener) new ai(BookHelpListActivity1, PopupWindow9));
-            return PopupWindow9;
-        }
+    public BookHelpListActivity() {
+        this.r = new ak(this);
     }
 
-    static au a(BookHelpListActivity BookHelpListActivity1, au au2) {
-        BookHelpListActivity1.b = au2;
+    /*
+     * Unable to fully structure code
+     * Enabled aggressive block sorting
+     * Lifted jumps to return sites
+     */
+    static /* synthetic */ PopupWindow a(BookHelpListActivity var0, boolean var1_1) {
+        if (var1_1) {
+            var9_2 = LayoutInflater.from(var0).inflate(2130903155, null);
+            var10_3 = (TextView) var9_2.findViewById(2131493308);
+            var11_4 = (TextView) var9_2.findViewById(2131493309);
+            if (var0.q) {
+                var11_4.setTextColor(var0.getResources().getColor(2131427468));
+            } else if (var0.o.equals("all")) {
+                var10_3.setTextColor(var0.getResources().getColor(2131427468));
+            }
+            var12_5 = var0.a(var9_2);
+            var9_2.setOnTouchListener((View.OnTouchListener) new aq(var0, var12_5));
+            var10_3.setOnClickListener((View.OnClickListener) new ar(var0, var12_5));
+            var11_4.setOnClickListener((View.OnClickListener) new as(var0, var12_5));
+            return var12_5;
+        }
+        var2_6 = LayoutInflater.from(var0).inflate(2130903156, null);
+        var3_7 = (TextView) var2_6.findViewById(2131493308);
+        var4_8 = (TextView) var2_6.findViewById(2131493309);
+        var5_9 = (TextView) var2_6.findViewById(2131493310);
+        var6_10 = var0.p;
+        var7_11 = -1;
+        switch (var6_10.hashCode()) {
+            case -234430277: {
+                if (var6_10.equals("updated")) {
+                    var7_11 = 0;
+                    **break;
+                }
+                **GOTO lbl30
+            }
+            case 1028554472: {
+                if (var6_10.equals("created")) {
+                    var7_11 = 1;
+                }
+            }
+            lbl30:
+            // 6 sources:
+            default:
+            {
+                **GOTO lbl35
+            }
+            case 1742524449:
+        }
+        if (var6_10.equals("comment-count")) {
+            var7_11 = 2;
+        }
+        lbl35:
+        // 4 sources:
+        switch (var7_11) {
+            case 0: {
+                var3_7.setTextColor(var0.getResources().getColor(2131427468));
+                **break;
+            }
+            case 1: {
+                var4_8.setTextColor(var0.getResources().getColor(2131427468));
+            }
+            lbl41:
+            // 3 sources:
+            default:
+            {
+                **GOTO lbl45
+            }
+            case 2:
+        }
+        var5_9.setTextColor(var0.getResources().getColor(2131427468));
+        lbl45:
+        // 2 sources:
+        var8_12 = var0.a(var2_6);
+        var2_6.setOnTouchListener((View.OnTouchListener) new at(var0, var8_12));
+        var3_7.setOnClickListener((View.OnClickListener) new ag(var0, var8_12));
+        var4_8.setOnClickListener((View.OnClickListener) new ah(var0, var8_12));
+        var5_9.setOnClickListener((View.OnClickListener) new ai(var0, var8_12));
+        return var8_12;
+    }
+
+    static /* synthetic */ au a(BookHelpListActivity bookHelpListActivity, au au2) {
+        bookHelpListActivity.b = au2;
         return au2;
     }
 
-    static av a(BookHelpListActivity BookHelpListActivity1, av av2) {
-        BookHelpListActivity1.a = av2;
+    static /* synthetic */ av a(BookHelpListActivity bookHelpListActivity, av av2) {
+        bookHelpListActivity.a = av2;
         return av2;
     }
 
-    static String a(BookHelpListActivity BookHelpListActivity1, String String2) {
-        BookHelpListActivity1.o = String2;
-        return String2;
+    static /* synthetic */ String a(BookHelpListActivity bookHelpListActivity, String string) {
+        bookHelpListActivity.o = string;
+        return string;
     }
 
-    static void a(BookHelpListActivity BookHelpListActivity1) {
-    }
-// Error: Internal #201: 
-// The following method may not be correct.
-
-    static ImageView b(BookHelpListActivity BookHelpListActivity1) {
-        return BookHelpListActivity1.m;
+    static /* synthetic */ void a(BookHelpListActivity bookHelpListActivity) {
+        bookHelpListActivity.startActivity(new Intent(bookHelpListActivity, AddBookHelpActivity.class));
     }
 
-    static String b(BookHelpListActivity BookHelpListActivity1, String String2) {
-        BookHelpListActivity1.p = String2;
-        return String2;
+    static /* synthetic */ ImageView b(BookHelpListActivity bookHelpListActivity) {
+        return bookHelpListActivity.m;
     }
 
-    static boolean b(BookHelpListActivity BookHelpListActivity1, boolean boolean2) {
-        BookHelpListActivity1.q = boolean2;
-        return boolean2;
+    static /* synthetic */ String b(BookHelpListActivity bookHelpListActivity, String string) {
+        bookHelpListActivity.p = string;
+        return string;
     }
 
-    static ImageView c(BookHelpListActivity BookHelpListActivity1) {
-        return BookHelpListActivity1.n;
+    static /* synthetic */ boolean b(BookHelpListActivity bookHelpListActivity, boolean bl) {
+        bookHelpListActivity.q = bl;
+        return bl;
     }
 
-    static TextView d(BookHelpListActivity BookHelpListActivity1) {
-        return BookHelpListActivity1.h;
+    static /* synthetic */ ImageView c(BookHelpListActivity bookHelpListActivity) {
+        return bookHelpListActivity.n;
     }
 
-    static au e(BookHelpListActivity BookHelpListActivity1) {
-        return BookHelpListActivity1.b;
+    static /* synthetic */ TextView d(BookHelpListActivity bookHelpListActivity) {
+        return bookHelpListActivity.h;
     }
 
-    static String f(BookHelpListActivity BookHelpListActivity1) {
-        return BookHelpListActivity1.o;
+    static /* synthetic */ au e(BookHelpListActivity bookHelpListActivity) {
+        return bookHelpListActivity.b;
     }
 
-    static String g(BookHelpListActivity BookHelpListActivity1) {
-        return BookHelpListActivity1.p;
+    static /* synthetic */ String f(BookHelpListActivity bookHelpListActivity) {
+        return bookHelpListActivity.o;
     }
 
-    static av h(BookHelpListActivity BookHelpListActivity1) {
-        return BookHelpListActivity1.a;
+    static /* synthetic */ String g(BookHelpListActivity bookHelpListActivity) {
+        return bookHelpListActivity.p;
     }
 
-    static ListView i(BookHelpListActivity BookHelpListActivity1) {
-        return BookHelpListActivity1.e;
+    static /* synthetic */ av h(BookHelpListActivity bookHelpListActivity) {
+        return bookHelpListActivity.a;
     }
 
-    static List j(BookHelpListActivity BookHelpListActivity1) {
-        return BookHelpListActivity1.j;
+    static /* synthetic */ ListView i(BookHelpListActivity bookHelpListActivity) {
+        return bookHelpListActivity.e;
     }
 
-    static TextView k(BookHelpListActivity BookHelpListActivity1) {
-        return BookHelpListActivity1.k;
+    static /* synthetic */ List j(BookHelpListActivity bookHelpListActivity) {
+        return bookHelpListActivity.j;
     }
 
-    static PullToRefreshListView l(BookHelpListActivity BookHelpListActivity1) {
-        return BookHelpListActivity1.c;
+    static /* synthetic */ TextView k(BookHelpListActivity bookHelpListActivity) {
+        return bookHelpListActivity.k;
     }
 
-    static TextView m(BookHelpListActivity BookHelpListActivity1) {
-        return BookHelpListActivity1.l;
+    static /* synthetic */ PullToRefreshListView l(BookHelpListActivity bookHelpListActivity) {
+        return bookHelpListActivity.c;
     }
 
-    static boolean n(BookHelpListActivity BookHelpListActivity1) {
-        return BookHelpListActivity1.q;
+    static /* synthetic */ TextView m(BookHelpListActivity bookHelpListActivity) {
+        return bookHelpListActivity.l;
     }
 
-    static View o(BookHelpListActivity BookHelpListActivity1) {
-        return BookHelpListActivity1.g;
+    static /* synthetic */ boolean n(BookHelpListActivity bookHelpListActivity) {
+        return bookHelpListActivity.q;
     }
 
-    static View p(BookHelpListActivity BookHelpListActivity1) {
-        return BookHelpListActivity1.f;
+    static /* synthetic */ View o(BookHelpListActivity bookHelpListActivity) {
+        return bookHelpListActivity.g;
     }
 
-    static d q(BookHelpListActivity BookHelpListActivity1) {
-        return BookHelpListActivity1.i;
+    static /* synthetic */ View p(BookHelpListActivity bookHelpListActivity) {
+        return bookHelpListActivity.f;
     }
 
-    static com.handmark.pulltorefresh.library.j r(BookHelpListActivity BookHelpListActivity1) {
-        return BookHelpListActivity1.r;
+    static /* synthetic */ d q(BookHelpListActivity bookHelpListActivity) {
+        return bookHelpListActivity.i;
     }
 
-    static void s(BookHelpListActivity BookHelpListActivity1) {
-        BookHelpListActivity1.h.setVisibility(0);
-        BookHelpListActivity1.h.setText((CharSequence) "\u8FD9\u91CC\u8FD8\u6CA1\u6709\u4E66\u8352\u6C42\u52A9\uFF0C\u53BB\u53D1\u5E03\u4E00\u4E2A\u5427");
+    static /* synthetic */ j r(BookHelpListActivity bookHelpListActivity) {
+        return bookHelpListActivity.r;
     }
 
-    private PopupWindow a(View View1) {
-        PopupWindow PopupWindow2 = new PopupWindow(View1, -1, -1);
-
-        PopupWindow2.setFocusable(true);
-        PopupWindow2.setBackgroundDrawable((Drawable) new ColorDrawable(0));
-        PopupWindow2.setOutsideTouchable(true);
-        PopupWindow2.setOnDismissListener((PopupWindow$OnDismissListener) new aj(this));
-        return PopupWindow2;
+    static /* synthetic */ void s(BookHelpListActivity bookHelpListActivity) {
+        bookHelpListActivity.h.setVisibility(0);
+        bookHelpListActivity.h.setText("\u8fd9\u91cc\u8fd8\u6ca1\u6709\u4e66\u8352\u6c42\u52a9\uff0c\u53bb\u53d1\u5e03\u4e00\u4e2a\u5427");
     }
 
-    protected void onCreate(Bundle Bundle1) {
-        View View2;
-        View View3;
-        av av4;
-        String[] String_1darray5;
+    private PopupWindow a(View view) {
+        PopupWindow popupWindow = new PopupWindow(view, -1, -1);
+        popupWindow.setFocusable(true);
+        popupWindow.setBackgroundDrawable(new ColorDrawable(0));
+        popupWindow.setOutsideTouchable(true);
+        popupWindow.setOnDismissListener((PopupWindow.OnDismissListener) ((Object) new aj(this)));
+        return popupWindow;
+    }
 
-        super.onCreate(Bundle1);
-        setContentView(2130903086);
-        a("\u4E66\u8352\u533A", 2130837866, (aa) new af(this), "\u7F16\u8F91\u4E66\u8352");
-        if (Bundle1 != null) {
-            o = Bundle1.getString("savedHelpDuration");
-            p = Bundle1.getString("savedHelpSort");
+    /*
+     * Enabled aggressive block sorting
+     */
+    @Override
+    protected void onCreate(Bundle bundle) {
+        super.onCreate(bundle);
+        this.setContentView(2130903086);
+        this.a("\u4e66\u8352\u533a", 2130837866, (aa) ((Object) new af(this)), "\u7f16\u8f91\u4e66\u8352");
+        if (bundle != null) {
+            this.o = bundle.getString("savedHelpDuration");
+            this.p = bundle.getString("savedHelpSort");
         } else {
-            o = "all";
-            p = "updated";
+            this.o = "all";
+            this.p = "updated";
         }
-        g = findViewById(2131493085);
-        h = (TextView) findViewById(2131493100);
-        c = (PullToRefreshListView) findViewById(2131493099);
-        c.setMode(PullToRefreshBase$Mode.PULL_FROM_START);
-        View2 = findViewById(2131493376);
-        View3 = findViewById(2131493380);
-        k = (TextView) findViewById(2131493378);
-        l = (TextView) findViewById(2131493381);
-        m = (ImageView) findViewById(2131493379);
-        n = (ImageView) findViewById(2131493382);
-        View2.setOnClickListener((View$OnClickListener) new al(this));
-        View3.setOnClickListener((View$OnClickListener) new am(this));
-        e = (ListView) c.h();
-        if (com.clilystudio.netbook.hpay100.a.a.j())
-            e.setFooterDividersEnabled(false);
-        f = LayoutInflater.from((Context) this).inflate(2130903325, null);
-        f.setVisibility(8);
-        e.addFooterView(f);
-        c.setOnRefreshListener((com.handmark.pulltorefresh.library.k) new an(this));
-        e.setOnItemClickListener((AdapterView$OnItemClickListener) new ap(this));
-        i = new d(getLayoutInflater());
-        e.setAdapter((ListAdapter) i);
-        a = new av(this, (byte) 0);
-        av4 = a;
-        String_1darray5 = new String[2];
-        String_1darray5[0] = o;
-        String_1darray5[1] = p;
-        av4.b(String_1darray5);
-        com.clilystudio.netbook.hpay100.a.a.u((Context) this);
-        com.umeng.a.b.a((Context) this, "BookHelpListActivity_Opened");
+        this.g = this.findViewById(2131493085);
+        this.h = (TextView) this.findViewById(2131493100);
+        this.c = (PullToRefreshListView) this.findViewById(2131493099);
+        this.c.setMode(PullToRefreshBase$Mode.PULL_FROM_START);
+        View view = this.findViewById(2131493376);
+        View view2 = this.findViewById(2131493380);
+        this.k = (TextView) this.findViewById(2131493378);
+        this.l = (TextView) this.findViewById(2131493381);
+        this.m = (ImageView) this.findViewById(2131493379);
+        this.n = (ImageView) this.findViewById(2131493382);
+        view.setOnClickListener((View.OnClickListener) ((Object) new al(this)));
+        view2.setOnClickListener((View.OnClickListener) ((Object) new am(this)));
+        this.e = (ListView) this.c.h();
+        if (a.j()) {
+            this.e.setFooterDividersEnabled(false);
+        }
+        this.f = LayoutInflater.from(this).inflate(2130903325, null);
+        this.f.setVisibility(8);
+        this.e.addFooterView(this.f);
+        this.c.setOnRefreshListener(new an(this));
+        this.e.setOnItemClickListener((AdapterView.OnItemClickListener) ((Object) new ap(this)));
+        this.i = new d(this.getLayoutInflater());
+        this.e.setAdapter(this.i);
+        av av2 = this.a = new av(this, 0);
+        Object[] arrobject = new String[]{this.o, this.p};
+        av2.b(arrobject);
+        a.u(this);
+        b.a(this, "BookHelpListActivity_Opened");
     }
 
-    protected void onNewIntent(Intent Intent1) {
-        super.onNewIntent(Intent1);
-        c.setRefreshing();
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        this.c.setRefreshing();
     }
 
-    protected void onSaveInstanceState(Bundle Bundle1) {
-        super.onSaveInstanceState(Bundle1);
-        Bundle1.putString("savedHelpDuration", o);
-        Bundle1.putString("savedHelpSort", p);
+    @Override
+    protected void onSaveInstanceState(Bundle bundle) {
+        super.onSaveInstanceState(bundle);
+        bundle.putString("savedHelpDuration", this.o);
+        bundle.putString("savedHelpSort", this.p);
     }
 }

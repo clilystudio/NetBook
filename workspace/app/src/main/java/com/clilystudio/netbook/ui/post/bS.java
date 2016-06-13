@@ -1,14 +1,15 @@
 package com.clilystudio.netbook.ui.post;
 
-final class bS implements Runnable {
+final class bS
+        implements Runnable {
+    private /* synthetic */ bR a;
 
-    private bR a;
-
-    bS(bR bR1) {
-        a = bR1;
+    bS(bR bR2) {
+        this.a = bR2;
     }
 
+    @Override
     public final void run() {
-        MyTweetFragment.m(a.a);
+        MyTweetFragment.m(this.a.a);
     }
 }

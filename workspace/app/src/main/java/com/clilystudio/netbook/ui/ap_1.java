@@ -1,20 +1,21 @@
 package com.clilystudio.netbook.ui;
 
-import android.os.AsyncTask$Status;
+import android.os.AsyncTask;
 
-final class ap implements j {
+final class ap
+        implements j {
+    private /* synthetic */ BookCategoryFragment a;
 
-    private BookCategoryFragment a;
-
-    ap(BookCategoryFragment BookCategoryFragment1) {
-        a = BookCategoryFragment1;
+    ap(BookCategoryFragment bookCategoryFragment) {
+        this.a = bookCategoryFragment;
     }
 
+    @Override
     public final void a() {
-        if (BookCategoryFragment.d(a) == null || BookCategoryFragment.d(a).getStatus() == AsyncTask$Status.FINISHED) {
-            BookCategoryFragment.f(a).setVisibility(0);
-            BookCategoryFragment.a(a, new aq(a));
-            BookCategoryFragment.d(a).b(new String[0]);
+        if (BookCategoryFragment.d(this.a) == null || BookCategoryFragment.d(this.a).getStatus() == AsyncTask.Status.FINISHED) {
+            BookCategoryFragment.f(this.a).setVisibility(0);
+            BookCategoryFragment.a(this.a, new aq(this.a));
+            BookCategoryFragment.d(this.a).b(new String[0]);
         }
     }
 }

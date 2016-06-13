@@ -1,61 +1,78 @@
 package com.clilystudio.netbook.ui.user;
 
+import com.clilystudio.netbook.a.e;
+import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.model.PayChargeRecord;
 
 import java.io.IOException;
-import java.util.Collection;
+import java.util.Arrays;
 import java.util.List;
 
-final class O extends com.clilystudio.netbook.a.e {
+final class O
+        extends e<String, Void, List<PayChargeRecord.Order>> {
+    private /* synthetic */ PayChargeActivity a;
 
-    private PayChargeActivity a;
-
-    O(PayChargeActivity PayChargeActivity1, byte byte2) {
-        this(PayChargeActivity1);
+    private O(PayChargeActivity payChargeActivity) {
+        this.a = payChargeActivity;
     }
 
-    private O(PayChargeActivity PayChargeActivity1) {
-        a = PayChargeActivity1;
+    /* synthetic */ O(PayChargeActivity payChargeActivity, byte by) {
+        this(payChargeActivity);
     }
 
-    private transient List a(String[] String_1darray1) {
+    /*
+     * Enabled force condition propagation
+     * Lifted jumps to return sites
+     */
+    private /* varargs */ List<PayChargeRecord.Order> a(String... arrstring) {
+        PayChargeRecord payChargeRecord = b.b().a(arrstring[0], PayChargeActivity.a(this.a).size(), 10);
+        if (payChargeRecord == null) return null;
         try {
-            PayChargeRecord PayChargeRecord3 = com.clilystudio.netbook.api.b.b().a(String_1darray1[0], PayChargeActivity.a(a).size(), 10);
-        } catch (IOException IOException2) {
-            IOException2.printStackTrace();
+            if (!payChargeRecord.isOk()) return null;
+            if (payChargeRecord.getOrders() == null) return null;
+            return Arrays.asList(payChargeRecord.getOrders());
+        } catch (IOException var2_4) {
+            var2_4.printStackTrace();
         }
         return null;
     }
 
-    protected final Object doInBackground(Object[] Object_1darray1) {
-        return a((String[]) Object_1darray1);
+    @Override
+    protected final /* synthetic */ Object doInBackground(Object[] arrobject) {
+        return this.a((String[]) arrobject);
     }
 
-    protected final void onPostExecute(Object Object1) {
-        Object Object2 = (List) Object1;
-
-        super.onPostExecute(Object2);
-        PayChargeActivity.b(a).setVisibility(8);
-        if (Object2 != null) {
-            int int3 = ((List) Object2).size();
-
-            if (int3 > 0) {
-                a.f();
-                PayChargeActivity.a(a).addAll((Collection) Object2);
-                PayChargeActivity.c(a);
-                PayChargeActivity.e(a).a = PayChargeActivity.d(a);
-                if (int3 < 10) {
-                    PayChargeActivity.f(a).setOnLastItemListener(null);
-                    PayChargeActivity.f(a).removeFooterView(PayChargeActivity.b(a));
-                } else {
-                    PayChargeActivity.f(a).setOnLastItemListener(PayChargeActivity.g(a));
-                    return;
-                }
-            } else if (PayChargeActivity.a(a).size() == 0) {
-                a.g();
+    /*
+     * Enabled aggressive block sorting
+     */
+    @Override
+    protected final /* synthetic */ void onPostExecute(Object object) {
+        List list = (List) object;
+        super.onPostExecute(list);
+        PayChargeActivity.b(this.a).setVisibility(8);
+        if (list == null) {
+            this.a.h();
+            return;
+        }
+        int n = list.size();
+        if (n > 0) {
+            this.a.f();
+            PayChargeActivity.a(this.a).addAll(list);
+            PayChargeActivity.c(this.a);
+            PayChargeActivity.e((PayChargeActivity) this.a).a = PayChargeActivity.d(this.a);
+            if (n >= 10) {
+                PayChargeActivity.f(this.a).setOnLastItemListener(PayChargeActivity.g(this.a));
                 return;
             }
-        } else
-            a.h();
+            PayChargeActivity.f(this.a).setOnLastItemListener(null);
+            PayChargeActivity.f(this.a).removeFooterView(PayChargeActivity.b(this.a));
+            return;
+        } else {
+            if (PayChargeActivity.a(this.a).size() != 0) return;
+            {
+                this.a.g();
+                return;
+            }
+        }
     }
 }

@@ -1,27 +1,26 @@
 package com.clilystudio.netbook.ui.post;
 
-import android.content.Context;
 import android.content.Intent;
 import android.view.View;
-import android.view.View$OnClickListener;
 
 import com.clilystudio.netbook.model.Follower;
 
-final class bk implements View$OnClickListener {
+final class bk
+        implements View.OnClickListener {
+    private /* synthetic */ int a;
+    private /* synthetic */ bj b;
 
-    private int a;
-    private bj b;
-    bk(bj bj1, int int2) {
-        b = bj1;
-        a = int2;
+    bk(bj bj2, int n) {
+        this.b = bj2;
+        this.a = n;
     }
 
-    public final void onClick(View View1) {
-        Follower Follower2 = (Follower) b.getItem(a);
-        Intent Intent3 = OtherUserActivity.a((Context) b.a);
-
-        Intent3.putExtra("USER_ID", Follower2.get_id());
-        Intent3.putExtra("USER_NAME", Follower2.getNickname());
-        b.a.startActivity(Intent3);
+    @Override
+    public final void onClick(View view) {
+        Follower follower = (Follower) this.b.getItem(this.a);
+        Intent intent = OtherUserActivity.a(this.b.a);
+        intent.putExtra("USER_ID", follower.get_id());
+        intent.putExtra("USER_NAME", follower.getNickname());
+        this.b.a.startActivity(intent);
     }
 }

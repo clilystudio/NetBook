@@ -4,30 +4,35 @@ import android.graphics.Bitmap;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
-final class dd extends WebViewClient {
+final class dd
+        extends WebViewClient {
+    private /* synthetic */ WebPageFragment a;
 
-    private WebPageFragment a;
-
-    dd(WebPageFragment WebPageFragment1) {
-        a = WebPageFragment1;
+    dd(WebPageFragment webPageFragment) {
+        this.a = webPageFragment;
     }
 
-    public final void doUpdateVisitedHistory(WebView WebView1, String String2, boolean boolean3) {
-        WebPageFragment.a(a);
+    @Override
+    public final void doUpdateVisitedHistory(WebView webView, String string, boolean bl) {
+        WebPageFragment.a(this.a);
     }
 
-    public final void onPageFinished(WebView WebView1, String String2) {
-        WebPageFragment.c(a);
-        WebPageFragment.a(a);
+    @Override
+    public final void onPageFinished(WebView webView, String string) {
+        WebPageFragment.c(this.a);
+        WebPageFragment.a(this.a);
     }
 
-    public final void onPageStarted(WebView WebView1, String String2, Bitmap Bitmap3) {
-        WebPageFragment.b(a);
+    @Override
+    public final void onPageStarted(WebView webView, String string, Bitmap bitmap) {
+        WebPageFragment.b(this.a);
     }
 
-    public final boolean shouldOverrideUrlLoading(WebView WebView1, String String2) {
-        if (!"semob://hidetypesetView".equals(String2))
-            WebView1.loadUrl(String2);
+    @Override
+    public final boolean shouldOverrideUrlLoading(WebView webView, String string) {
+        if (!"semob://hidetypesetView".equals(string)) {
+            webView.loadUrl(string);
+        }
         return true;
     }
 }

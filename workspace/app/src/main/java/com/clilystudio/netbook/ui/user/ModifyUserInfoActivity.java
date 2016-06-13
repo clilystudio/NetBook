@@ -2,213 +2,221 @@ package com.clilystudio.netbook.ui.user;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.AlertDialog$Builder;
 import android.content.Context;
-import android.content.DialogInterface$OnClickListener;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.am;
 import android.view.View;
-import android.view.View$OnClickListener;
-import android.view.View$OnFocusChangeListener;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.clilystudio.netbook.d;
 import com.clilystudio.netbook.model.User;
 import com.clilystudio.netbook.ui.BaseActivity;
 import com.clilystudio.netbook.ui.CircularSmartImageView;
+import com.clilystudio.netbook.ui.CropPhotoActivity;
 
+import java.io.File;
 import java.util.Calendar;
 
 import butterknife.ButterKnife;
+import butterknife.InjectView;
 
-public class ModifyUserInfoActivity extends BaseActivity implements View$OnClickListener {
-
+public class ModifyUserInfoActivity
+        extends BaseActivity
+        implements View.OnClickListener {
+    @InjectView(value = 2131493148)
     LinearLayout mGenderSection;
+    @InjectView(value = 2131493149)
     TextView mGenderView;
+    @InjectView(value = 2131493147)
     LinearLayout mNameSection;
+    @InjectView(value = 2131492928)
     TextView mNameView;
+    @InjectView(value = 2131493146)
     CircularSmartImageView mPortrait;
+    @InjectView(value = 2131493145)
     LinearLayout mPortraitSection;
     private User a;
     private long b;
     private boolean c = true;
     private boolean e = false;
 
-    static long a(ModifyUserInfoActivity ModifyUserInfoActivity1, long long2) {
-        ModifyUserInfoActivity1.b = long2;
-        return long2;
-    }
-// Error: Internal #201: 
-// The following method may not be correct.
-
-    public static Intent a(Context Context1, long long2) {
+    static /* synthetic */ long a(ModifyUserInfoActivity modifyUserInfoActivity, long l) {
+        modifyUserInfoActivity.b = l;
+        return l;
     }
 
-    static User a(ModifyUserInfoActivity ModifyUserInfoActivity1) {
-        return ModifyUserInfoActivity1.a;
+    public static Intent a(Context context, long l) {
+        return new d().a(context, ModifyUserInfoActivity.class).a("nickname_updated_time", Long.valueOf(l)).a();
     }
 
-    static void a(ModifyUserInfoActivity ModifyUserInfoActivity1, boolean boolean2) {
-        if (ModifyUserInfoActivity1.a.getGender().equals("male") == boolean2)
-            com.clilystudio.netbook.util.e.a((Activity) ModifyUserInfoActivity1, "\u6CA1\u6709\u4FEE\u6539");
-        else {
-            Object[] Object_1darray3 = new Object[1];
-            String String4;
-            String String5;
-            h h6;
+    static /* synthetic */ User a(ModifyUserInfoActivity modifyUserInfoActivity) {
+        return modifyUserInfoActivity.a;
+    }
 
-            if (boolean2)
-                String4 = "\u7537";
-            else
-                String4 = "\u5973";
-            Object_1darray3[0] = String4;
-            String5 = String.format("\u6027\u522B\u4E00\u65E6\u786E\u5B9A\u5219\u65E0\u6CD5\u518D\u6B21\u4FEE\u6539\uFF01\u8BF7\u786E\u8BA4\u4F60\u9009\u62E9\u7684\u662F\u300C\u6027\u522B%s\u300D\u5417\uFF1F", Object_1darray3);
-            h6 = new h((Context) ModifyUserInfoActivity1);
-            h6.d = "\u63D0\u793A";
-            h6.e = String5;
-            h6.a("\u786E\u8BA4\u4FEE\u6539", (DialogInterface$OnClickListener) new m(ModifyUserInfoActivity1, boolean2)).b("\u53D6\u6D88", null).b();
+    /*
+     * Enabled aggressive block sorting
+     */
+    static /* synthetic */ void a(ModifyUserInfoActivity modifyUserInfoActivity, boolean bl) {
+        if (modifyUserInfoActivity.a.getGender().equals("male") == bl) {
+            e.a((Activity) modifyUserInfoActivity, (String) "\u6ca1\u6709\u4fee\u6539");
+            return;
         }
+        Object[] arrobject = new Object[1];
+        String string = bl ? "\u7537" : "\u5973";
+        arrobject[0] = string;
+        String string2 = String.format("\u6027\u522b\u4e00\u65e6\u786e\u5b9a\u5219\u65e0\u6cd5\u518d\u6b21\u4fee\u6539\uff01\u8bf7\u786e\u8ba4\u4f60\u9009\u62e9\u7684\u662f\u300c\u6027\u522b%s\u300d\u5417\uff1f", arrobject);
+        h h2 = new h(modifyUserInfoActivity);
+        h2.d = "\u63d0\u793a";
+        h2.e = string2;
+        h2.a("\u786e\u8ba4\u4fee\u6539", (DialogInterface.OnClickListener) ((Object) new m(modifyUserInfoActivity, bl))).b("\u53d6\u6d88", null).b();
     }
 
-    static boolean b(ModifyUserInfoActivity ModifyUserInfoActivity1, boolean boolean2) {
-        ModifyUserInfoActivity1.c = true;
+    static /* synthetic */ boolean b(ModifyUserInfoActivity modifyUserInfoActivity, boolean bl) {
+        modifyUserInfoActivity.c = true;
         return true;
     }
 
-    static boolean c(ModifyUserInfoActivity ModifyUserInfoActivity1, boolean boolean2) {
-        ModifyUserInfoActivity1.e = boolean2;
-        return boolean2;
-    }
-// Error: Internal #201: 
-// The following method may not be correct.
-
-    protected void onActivityResult(int int1, int int2, Intent Intent3) {
+    static /* synthetic */ boolean c(ModifyUserInfoActivity modifyUserInfoActivity, boolean bl) {
+        modifyUserInfoActivity.e = bl;
+        return bl;
     }
 
-    public void onClick(View View1) {
-        if (c) {
-            switch (View1.getId()) {
-                case 282:
-                default:
+    /*
+     * Enabled aggressive block sorting
+     */
+    @Override
+    protected void onActivityResult(int n, int n2, Intent intent) {
+        if (n == 9162 && n2 == -1) {
+            Uri uri = intent.getData();
+            Uri uri2 = Uri.fromFile(new File(this.getCacheDir(), "cropped"));
+            Intent intent2 = new Intent(this, CropPhotoActivity.class);
+            intent2.setData(uri);
+            intent2.putExtra("output", uri2);
+            this.startActivityForResult(intent2, 6709);
+            return;
+        } else {
+            if (n != 6709) return;
+            {
+                if (n2 == -1) {
+                    new t(this, this, "\u6b63\u5728\u4e0a\u4f20\u56fe\u7247...", (Uri) intent.getParcelableExtra("output")).b((Object[]) new String[0]);
                     return;
-                case 281:
-                    int int17;
-
-                    if (a.getLv() >= 4)
-                        int17 = 1;
-                    else
-                        int17 = 0;
-                    if (int17 == 0) {
-                        h h18 = new h((Context) this);
-
-                        h18.d = "\u7B49\u7EA7\u4E0D\u591F";
-                        h18.e = "\u9700\u8981lv4\u624D\u80FD\u6362\u5934\u50CF\uFF0C\u518D\u7528\u4E00\u6BB5\u65F6\u95F4\u8FFD\u4E66\u5427~";
-                        h18.a("\u77E5\u9053\u4E86", null).b();
-                    }
-                    if (int17 != 0) {
-                        int int20;
-
-                        if (!com.clilystudio.netbook.hpay100.a.a.a((Context) this, "EXTRA_CHANGE_AVATAR", false))
-                            int20 = 1;
-                        else
-                            int20 = 0;
-                        if (int20 != 0) {
-                            h h21 = new h((Context) this);
-
-                            h21.d = "\u63D0\u9192";
-                            h21.e = "\u82E5\u7528\u8FDD\u89C4\u56FE\u7247\u4F5C\u5934\u50CF\uFF0C\u4F1A\u88AB\u6C38\u4E45\u5C01\u53F7\u54E6\u3002";
-                            h21.a("\u77E5\u9053\u4E86", (DialogInterface$OnClickListener) new n(this)).b();
-                        } else
-                            com.clilystudio.netbook.hpay100.a.a.b((Activity) this);
-                        return;
-                    }
-                    break;
-                case 283:
-                    long long4 = b;
-                    long long6 = Calendar.getInstance().getTimeInMillis() - long4;
-
-                    if (long6 < 0L)
-                        com.clilystudio.netbook.util.e.a((Activity) this, "\u6682\u65F6\u65E0\u6CD5\u4FEE\u6539");
-                    if (long6 >= 2592000000L || b == -2L) {
-                        View View8 = getLayoutInflater().inflate(2130903201, null);
-                        EditText EditText9 = (EditText) View8.findViewById(2131493224);
-                        h h10;
-
-                        EditText9.setText((CharSequence) a.getNickname());
-                        EditText9.setSelection(a.getNickname().length());
-                        h10 = new h((Context) this);
-                        h10.d = "\u4FEE\u6539\u6635\u79F0";
-                        EditText9.setOnFocusChangeListener((View$OnFocusChangeListener) new p(this, h10.b(View8).a("\u4FDD\u5B58", (DialogInterface$OnClickListener) new o(this, EditText9)).b(17039360, null).b()));
-                    } else {
-                        long long11 = 2592000000L - long6;
-
-                        if (long11 >= 86400000L) {
-                            int int15 = (int) (long11 / 86400000L);
-                            Object[] Object_1darray16 = new Object[1];
-
-                            Object_1darray16[0] = Integer.valueOf(int15);
-                            com.clilystudio.netbook.util.e.a((Activity) this, String.format("\u518D\u8FC7%d\u5929\u624D\u80FD\u4FEE\u6539\u54E6", Object_1darray16));
-                        } else {
-                            int int13 = (int) (long11 / 3600000L);
-                            Object[] Object_1darray14;
-
-                            if (int13 == 0)
-                                int13 = 1;
-                            Object_1darray14 = new Object[1];
-                            Object_1darray14[0] = Integer.valueOf(int13);
-                            com.clilystudio.netbook.util.e.a((Activity) this, String.format("\u518D\u8FC7%d\u5C0F\u65F6\u624D\u80FD\u4FEE\u6539\u54E6", Object_1darray14));
-                        }
-                    }
+                }
+                if (n2 != 404) return;
+                {
+                    e.a((Activity) this, (String) ((Throwable) intent.getSerializableExtra("error")).getMessage());
                     return;
-                case 284:
-                    if (e)
-                        com.clilystudio.netbook.util.e.a((Activity) this, "\u53EA\u6709\u4E00\u6B21\u4FEE\u6539\u6027\u522B\u7684\u673A\u4F1A\uFF0C\u4F60\u5DF2\u7ECF\u6539\u8FC7\u4E86\u54E6");
-                    else {
-                        View View2 = getLayoutInflater().inflate(2130903196, null);
-                        AlertDialog AlertDialog3 = new AlertDialog$Builder((Context) this).create();
-
-                        AlertDialog3.setView(View2, 0, 0, 0, 0);
-                        AlertDialog3.show();
-                        View2.findViewById(2131493413).setOnClickListener((View$OnClickListener) new k(this, AlertDialog3));
-                        View2.findViewById(2131493414).setOnClickListener((View$OnClickListener) new l(this, AlertDialog3));
-                    }
-                    return;
+                }
             }
         }
     }
 
-    protected void onCreate(Bundle Bundle1) {
-        TextView TextView2;
-        Object Object3;
-
-        super.onCreate(Bundle1);
-        setContentView(2130903114);
-        b("\u7F16\u8F91\u8D44\u6599");
-        ButterKnife.inject((Activity) this);
-        a = am.a((Activity) this).getUser();
-        mPortrait.setImageUrl(a.getFullAvatar());
-        mNameView.setText((CharSequence) a.getNickname());
-        TextView2 = mGenderView;
-        if (a.getGender().equals("male"))
-            Object3 = "\u7537";
-        else
-            Object3 = "\u5973";
-        TextView2.setText((CharSequence) Object3);
-        b = getIntent().getLongExtra("nickname_updated_time", -1L);
-        if (b == -1L) {
-            r r4;
-            String[] String_1darray5;
-
-            c = false;
-            r4 = new r(this, (byte) 0);
-            String_1darray5 = new String[1];
-            String_1darray5[0] = am.e().getToken();
-            r4.execute(String_1darray5);
+    /*
+     * Enabled aggressive block sorting
+     * Lifted jumps to return sites
+     */
+    @Override
+    public void onClick(View view) {
+        if (!this.c) {
+            return;
         }
-        mPortraitSection.setOnClickListener(this);
-        mNameSection.setOnClickListener(this);
-        mGenderSection.setOnClickListener(this);
+        switch (view.getId()) {
+            default: {
+                return;
+            }
+            case 2131493145: {
+                boolean bl = this.a.getLv() >= 4;
+                if (!bl) {
+                    h h2 = new h(this);
+                    h2.d = "\u7b49\u7ea7\u4e0d\u591f";
+                    h2.e = "\u9700\u8981lv4\u624d\u80fd\u6362\u5934\u50cf\uff0c\u518d\u7528\u4e00\u6bb5\u65f6\u95f4\u8ffd\u4e66\u5427~";
+                    h2.a("\u77e5\u9053\u4e86", null).b();
+                }
+                if (!bl) return;
+                boolean bl2 = !a.a((Context) this, "EXTRA_CHANGE_AVATAR", false);
+                if (bl2) {
+                    h h3 = new h(this);
+                    h3.d = "\u63d0\u9192";
+                    h3.e = "\u82e5\u7528\u8fdd\u89c4\u56fe\u7247\u4f5c\u5934\u50cf\uff0c\u4f1a\u88ab\u6c38\u4e45\u5c01\u53f7\u54e6\u3002";
+                    h3.a("\u77e5\u9053\u4e86", (DialogInterface.OnClickListener) ((Object) new n(this))).b();
+                    return;
+                }
+                a.b(this);
+                return;
+            }
+            case 2131493147: {
+                long l2 = this.b;
+                long l3 = Calendar.getInstance().getTimeInMillis() - l2;
+                if (l3 < 0) {
+                    e.a((Activity) this, (String) "\u6682\u65f6\u65e0\u6cd5\u4fee\u6539");
+                }
+                if (l3 >= 2592000000L || this.b == -2) {
+                    View view2 = this.getLayoutInflater().inflate(2130903201, null);
+                    EditText editText = (EditText) view2.findViewById(2131493224);
+                    editText.setText(this.a.getNickname());
+                    editText.setSelection(this.a.getNickname().length());
+                    h h4 = new h(this);
+                    h4.d = "\u4fee\u6539\u6635\u79f0";
+                    editText.setOnFocusChangeListener((View.OnFocusChangeListener) ((Object) new p(this, h4.b(view2).a("\u4fdd\u5b58", (DialogInterface.OnClickListener) ((Object) new o(this, editText))).b(17039360, null).b())));
+                    return;
+                }
+                long l4 = 2592000000L - l3;
+                if (l4 >= 86400000) {
+                    int n2 = (int) (l4 / 86400000);
+                    Object[] arrobject = new Object[]{n2};
+                    e.a((Activity) this, (String) String.format("\u518d\u8fc7%d\u5929\u624d\u80fd\u4fee\u6539\u54e6", arrobject));
+                    return;
+                }
+                int n3 = (int) (l4 / 3600000);
+                if (n3 == 0) {
+                    n3 = 1;
+                }
+                Object[] arrobject = new Object[]{n3};
+                e.a((Activity) this, (String) String.format("\u518d\u8fc7%d\u5c0f\u65f6\u624d\u80fd\u4fee\u6539\u54e6", arrobject));
+                return;
+            }
+            case 2131493148:
+        }
+        if (this.e) {
+            e.a((Activity) this, (String) "\u53ea\u6709\u4e00\u6b21\u4fee\u6539\u6027\u522b\u7684\u673a\u4f1a\uff0c\u4f60\u5df2\u7ecf\u6539\u8fc7\u4e86\u54e6");
+            return;
+        }
+        View view3 = this.getLayoutInflater().inflate(2130903196, null);
+        AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+        alertDialog.setView(view3, 0, 0, 0, 0);
+        alertDialog.show();
+        view3.findViewById(2131493413).setOnClickListener((View.OnClickListener) ((Object) new k(this, alertDialog)));
+        view3.findViewById(2131493414).setOnClickListener((View.OnClickListener) ((Object) new l(this, alertDialog)));
+    }
+
+    /*
+     * Enabled aggressive block sorting
+     */
+    @Override
+    protected void onCreate(Bundle bundle) {
+        super.onCreate(bundle);
+        this.setContentView(2130903114);
+        this.b("\u7f16\u8f91\u8d44\u6599");
+        ButterKnife.inject(this);
+        this.a = am.a((Activity) this).getUser();
+        this.mPortrait.setImageUrl(this.a.getFullAvatar());
+        this.mNameView.setText(this.a.getNickname());
+        TextView textView = this.mGenderView;
+        String string = this.a.getGender().equals("male") ? "\u7537" : "\u5973";
+        textView.setText(string);
+        this.b = this.getIntent().getLongExtra("nickname_updated_time", -1);
+        if (this.b == -1) {
+            this.c = false;
+            r r2 = new r(this, 0);
+            Object[] arrobject = new String[]{am.e().getToken()};
+            r2.execute(arrobject);
+        }
+        this.mPortraitSection.setOnClickListener(this);
+        this.mNameSection.setOnClickListener(this);
+        this.mGenderSection.setOnClickListener(this);
     }
 }

@@ -4,51 +4,51 @@ import android.content.Context;
 import android.view.View;
 
 import com.clilystudio.netbook.MyApplication;
+import com.clilystudio.netbook.hpay100.a.a;
 import com.clilystudio.netbook.util.adutil.BaseShelfAd;
 import com.clilystudio.netbook.util.y;
+import com.umeng.a.b;
 
-public class MyApkAdvert extends BaseShelfAd {
-
-    public String getDownloadTitle(Context Context1) {
-        String String2 = com.clilystudio.netbook.hpay100.a.a.c(getApkSize());
-
-        if (com.clilystudio.netbook.hpay100.a.a.r((Context) MyApplication.a()) == 1) {
-            String String5 = MyApplication.a().getString(2131034503);
-            Object[] Object_1darray6 = new Object[2];
-
-            Object_1darray6[0] = getTitle();
-            Object_1darray6[1] = String2;
-            return String.format(String5, Object_1darray6);
-        } else {
-            String String3 = MyApplication.a().getString(2131034502);
-            Object[] Object_1darray4 = new Object[2];
-
-            Object_1darray4[0] = getTitle();
-            Object_1darray4[1] = String2;
-            return String.format(String3, Object_1darray4);
+public class MyApkAdvert
+        extends BaseShelfAd {
+    @Override
+    public String getDownloadTitle(Context context) {
+        String string = a.c(this.getApkSize());
+        if (a.r(MyApplication.a()) == 1) {
+            String string2 = MyApplication.a().getString(2131034503);
+            Object[] arrobject = new Object[]{this.getTitle(), string};
+            return String.format(string2, arrobject);
         }
+        String string3 = MyApplication.a().getString(2131034502);
+        Object[] arrobject = new Object[]{this.getTitle(), string};
+        return String.format(string3, arrobject);
     }
 
+    @Override
     public boolean isApk() {
         return true;
     }
 
-    public void onAdClick(View View1) {
-        AppItem AppItem2 = new AppItem((Advert) this);
-
-        new y(View1.getContext(), AppItem2).a();
+    @Override
+    public void onAdClick(View view) {
+        AppItem appItem = new AppItem(this);
+        new y(view.getContext(), appItem).a();
     }
 
-    public void recordClick(View View1) {
-        com.clilystudio.netbook.hpay100.a.a.b(View1.getContext(), (Advert) this);
+    @Override
+    public void recordClick(View view) {
+        a.b(view.getContext(), this);
     }
 
-    public void recordDownload(Context Context1) {
-        if (this != null)
-            com.umeng.a.b.a(Context1, new StringBuilder("zssq_ad_download_").append(((Advert) this).getPosition()).toString(), ((Advert) this).getTitle());
+    @Override
+    public void recordDownload(Context context) {
+        if (this != null) {
+            b.a(context, "zssq_ad_download_" + this.getPosition(), this.getTitle());
+        }
     }
 
-    public void recordShow(Context Context1) {
-        com.clilystudio.netbook.hpay100.a.a.a(Context1, (Advert) this);
+    @Override
+    public void recordShow(Context context) {
+        a.a(context, this);
     }
 }

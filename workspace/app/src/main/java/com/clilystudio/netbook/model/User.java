@@ -4,8 +4,8 @@ import com.clilystudio.netbook.api.ApiService;
 
 import java.io.Serializable;
 
-public class User implements Serializable {
-
+public class User
+        implements Serializable {
     private static final String FEMALE = "female";
     private static final String MALE = "male";
     private static final String UNKNOWN = "null";
@@ -19,109 +19,119 @@ public class User implements Serializable {
     private String type;
 
     public String getAvatar() {
-        return avatar;
+        return this.avatar;
     }
 
-    public void setAvatar(String String1) {
-        avatar = String1;
+    public void setAvatar(String string) {
+        this.avatar = string;
     }
 
     public int getExp() {
-        return exp;
+        return this.exp;
     }
 
-    public void setExp(int int1) {
-        exp = int1;
+    public void setExp(int n) {
+        this.exp = n;
     }
 
     public String getFullAvatar() {
-        return new StringBuilder().append(ApiService.a).append(avatar).toString();
+        return ApiService.a + this.avatar;
     }
 
     public String getGender() {
-        return gender;
+        return this.gender;
     }
 
-    public void setGender(String String1) {
-        gender = String1;
+    public void setGender(String string) {
+        this.gender = string;
     }
 
+    /*
+     * Unable to fully structure code
+     * Enabled aggressive block sorting
+     * Lifted jumps to return sites
+     */
     public int getGenderFlag() {
-        String String1 = gender;
-        int int2 = -1;
-
-        switch (String1.hashCode()) {
-            case 3343885:
-                if (String1.equals("male")) {
-                    int2 = 0;
-                    break;
+        var1_1 = this.gender;
+        var2_2 = -1;
+        switch (var1_1.hashCode()) {
+            case 3343885: {
+                if (var1_1.equals("male")) {
+                    var2_2 = 0;
+                    **break;
                 }
-                break;
-            case -1278174388:
-                if (String1.equals("female")) {
-                    int2 = 1;
-                    break;
+                **GOTO lbl12
+            }
+            case -1278174388: {
+                if (var1_1.equals("female")) {
+                    var2_2 = 1;
                 }
-                break;
+            }
+            lbl12:
+            // 6 sources:
+            default:
+            {
+                **GOTO lbl17
+            }
             case 3392903:
-                if (String1.equals("null")) {
-                    int2 = 2;
-                    break;
-                }
-                break;
-            default:
-                break;
         }
-        switch (int2) {
-            case 0:
-            default:
+        if (var1_1.equals("null")) {
+            var2_2 = 2;
+        }
+        lbl17:
+        // 4 sources:
+        switch (var2_2) {
+            default: {
                 return 0;
-            case 1:
+            }
+            case 1: {
                 return 1;
+            }
             case 2:
-                return 2;
         }
+        return 2;
     }
 
     public String getId() {
-        return _id;
+        return this._id;
     }
 
-    public void setId(String String1) {
-        _id = String1;
+    public void setId(String string) {
+        this._id = string;
     }
 
     public int getLv() {
-        if (lv <= 0)
-            lv = 1;
-        return lv;
+        if (this.lv <= 0) {
+            this.lv = 1;
+        }
+        return this.lv;
     }
 
-    public void setLv(int int1) {
-        lv = int1;
+    public void setLv(int n) {
+        this.lv = n;
     }
 
     public String getNickname() {
-        return nickname;
+        return this.nickname;
     }
 
-    public void setNickname(String String1) {
-        nickname = String1;
+    public void setNickname(String string) {
+        this.nickname = string;
     }
 
     public String getType() {
-        return type;
+        return this.type;
     }
 
-    public void setType(String String1) {
-        type = String1;
+    public void setType(String string) {
+        this.type = string;
     }
 
     public boolean isDoyan() {
-        return "doyen".equals(getType());
+        return "doyen".equals(this.getType());
     }
 
     public boolean isOfficial() {
-        return "official".equals(getType());
+        return "official".equals(this.getType());
     }
 }

@@ -1,101 +1,88 @@
 package com.clilystudio.netbook.reader;
 
 import android.graphics.Canvas;
-import android.text.Layout$Alignment;
+import android.text.Layout;
 import android.text.StaticLayout;
 import android.text.TextPaint;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public final class K {
-
     private Reader a;
     private bZ b;
-    public K(Reader Reader1, bZ bZ2) {
-        a = Reader1;
-        b = bZ2;
+
+    public K(Reader reader, bZ bZ2) {
+        this.a = reader;
+        this.b = bZ2;
     }
 
-    static n a(K K1, ReaderChapter ReaderChapter2, int int3) {
-        return n.a(K1, ReaderChapter2, int3);
+    static /* synthetic */ n a(K k, ReaderChapter readerChapter, int n2) {
+        return n.a((K) k, (ReaderChapter) readerChapter, (int) n2);
     }
 
-    private void a(int int1, int int2, e e3, boolean boolean4, int int5) {
-        a.a(int1, (e) new L(this, e3, int5, int2), false, boolean4);
+    private void a(int n2, int n3, e<n> e2, boolean bl, int n4) {
+        this.a.a(n2, new L(this, e2, n4, n3), false, bl);
     }
 
     public final Reader a() {
-        return a;
+        return this.a;
     }
 
-    public final void a(int int1, int int2, e e3, boolean boolean4) {
-        a(int1, int2, e3, true, 1);
+    public final void a(int n2, int n3, e<n> e2, boolean bl) {
+        this.a(n2, n3, e2, true, 1);
     }
 
-    public final void a(int int1, e e2, boolean boolean3) {
-        a(int1, -1, e2, boolean3, 2);
+    public final void a(int n2, e<n> e2, boolean bl) {
+        this.a(n2, -1, e2, bl, 2);
     }
 
-    public final void a(Reader Reader1) {
-        a = Reader1;
+    public final void a(Reader reader) {
+        this.a = reader;
     }
 
-    public final void a(e e1) {
-        a(a.k(), a.l(), e1, true, 0);
+    public final void a(e<n> e2) {
+        this.a(this.a.k(), this.a.l(), e2, true, 0);
     }
 
-    public final void a(e e1, int int2) {
-        ReaderChapter ReaderChapter3 = new ReaderChapter();
-
-        ReaderChapter3.setStatus(int2);
-        e1.a(n.a(this, ReaderChapter3, 0));
+    public final void a(e<n> e2, int n2) {
+        ReaderChapter readerChapter = new ReaderChapter();
+        readerChapter.setStatus(n2);
+        e2.a((Object) n.a((K) this, (ReaderChapter) readerChapter, (int) 0));
     }
 
-    public final int[] a(String String1) {
-        int int2 = 0;
-        TextPaint TextPaint3 = new TextPaint();
-        StaticLayout StaticLayout4;
-        int int5;
-        int int6;
-        Object Object7;
-        int int8;
-        int int10;
-        int[] int_1darray12;
-        int int13;
-
-        TextPaint3.setTextSize((float) b.a);
-        StaticLayout4 = new StaticLayout((CharSequence) String1, TextPaint3, b.f, Layout$Alignment.ALIGN_NORMAL, 1.0F, (float) b.b, false);
-        StaticLayout4.draw(new Canvas());
-        int5 = StaticLayout4.getLineCount();
-        int6 = b.e;
-        Object7 = new ArrayList();
-        int8 = 0;
+    public final int[] a(String string) {
+        int n2;
+        int n3 = 0;
+        TextPaint textPaint = new TextPaint();
+        textPaint.setTextSize(this.b.a);
+        StaticLayout staticLayout = new StaticLayout(string, textPaint, this.b.f, Layout.Alignment.ALIGN_NORMAL, 1.0f, this.b.b, false);
+        staticLayout.draw(new Canvas());
+        int n4 = staticLayout.getLineCount();
+        int n5 = this.b.e;
+        ArrayList<Integer> arrayList = new ArrayList<Integer>();
+        int n6 = 0;
         do {
-            int int9 = StaticLayout4.getLineForVertical(int8);
-            int int11;
-
-            int10 = StaticLayout4.getLineForVertical(StaticLayout4.getLineTop(int9) + b.e);
-            if (StaticLayout4.getLineBottom(int10) - StaticLayout4.getLineTop(int9) > int6)
-                --int10;
-            int11 = StaticLayout4.getLineStart(int9);
-            if (String1.substring(int11, StaticLayout4.getLineEnd(int10)).length() > 0) {
-                if (((List) Object7).isEmpty() || int11 != ((Integer) ((List) Object7).get(-1 + ((List) Object7).size())).intValue())
-                    ((List) Object7).add(Integer.valueOf(int11));
-                int8 = StaticLayout4.getLineBottom(int10);
+            int n7;
+            int n8;
+            if (staticLayout.getLineBottom(n2 = staticLayout.getLineForVertical(staticLayout.getLineTop(n7 = staticLayout.getLineForVertical(n6)) + this.b.e)) - staticLayout.getLineTop(n7) > n5) {
+                --n2;
             }
+            if (string.substring(n8 = staticLayout.getLineStart(n7), staticLayout.getLineEnd(n2)).length() <= 0) continue;
+            if (arrayList.isEmpty() || n8 != (Integer) arrayList.get(-1 + arrayList.size())) {
+                arrayList.add(n8);
+            }
+            n6 = staticLayout.getLineBottom(n2);
+        } while (n2 < n4 - 1);
+        int[] arrn = new int[arrayList.size()];
+        int n9 = arrn.length;
+        while (n3 < n9) {
+            arrn[n3] = (Integer) arrayList.get(n3);
+            ++n3;
         }
-        while (int10 < int5 - 1);
-        int_1darray12 = new int[((List) Object7).size()];
-        int13 = int_1darray12.length;
-        while (int2 < int13) {
-            int_1darray12[int2] = ((Integer) ((List) Object7).get(int2)).intValue();
-            ++int2;
-        }
-        return int_1darray12;
+        return arrn;
     }
 
-    public final void b(int int1, e e2, boolean boolean3) {
-        a(int1, 0, e2, boolean3, 1);
+    public final void b(int n2, e<n> e2, boolean bl) {
+        this.a(n2, 0, e2, bl, 1);
     }
 }

@@ -1,21 +1,19 @@
 package com.clilystudio.netbook.reader;
 
-import android.content.Context;
 import android.content.Intent;
 import android.view.View;
-import android.view.View$OnClickListener;
 
-final class bW implements View$OnClickListener {
+final class bW
+        implements View.OnClickListener {
+    private /* synthetic */ ReaderResourceFragment a;
 
-    private ReaderResourceFragment a;
-
-    bW(ReaderResourceFragment ReaderResourceFragment1) {
-        a = ReaderResourceFragment1;
+    bW(ReaderResourceFragment readerResourceFragment) {
+        this.a = readerResourceFragment;
     }
 
-    public final void onClick(View View1) {
-        Intent Intent2 = LocalChapterListActivity.a((Context) a.getActivity(), ReaderResourceFragment.a(a), ReaderResourceFragment.d(a));
-
-        a.startActivity(Intent2);
+    @Override
+    public final void onClick(View view) {
+        Intent intent = LocalChapterListActivity.a(this.a.getActivity(), ReaderResourceFragment.a(this.a), ReaderResourceFragment.d(this.a));
+        this.a.startActivity(intent);
     }
 }

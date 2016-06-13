@@ -1,23 +1,22 @@
 package com.clilystudio.netbook.reader.txt;
 
-import android.view.View$OnSystemUiVisibilityChangeListener;
+import android.view.View;
 
-final class u implements View$OnSystemUiVisibilityChangeListener {
+final class u
+        implements View.OnSystemUiVisibilityChangeListener {
+    private /* synthetic */ ReaderTxtActivity a;
 
-    private ReaderTxtActivity a;
-
-    u(ReaderTxtActivity ReaderTxtActivity1) {
-        a = ReaderTxtActivity1;
+    u(ReaderTxtActivity readerTxtActivity) {
+        this.a = readerTxtActivity;
     }
 
-    public final void onSystemUiVisibilityChange(int int1) {
-        ReaderTxtActivity ReaderTxtActivity2 = a;
-        boolean boolean3;
-
-        if ((int1 & 0x1) == 0)
-            boolean3 = true;
-        else
-            boolean3 = false;
-        ReaderTxtActivity.d(ReaderTxtActivity2, boolean3);
+    /*
+     * Enabled aggressive block sorting
+     */
+    @Override
+    public final void onSystemUiVisibilityChange(int n2) {
+        ReaderTxtActivity readerTxtActivity = this.a;
+        boolean bl = (n2 & 1) == 0;
+        ReaderTxtActivity.d(readerTxtActivity, bl);
     }
 }

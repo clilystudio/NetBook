@@ -1,8 +1,9 @@
 package com.clilystudio.netbook.ui.post;
 
-public class AddTopicActivity extends AddVoteActivity {
-
+public class AddTopicActivity
+        extends AddVoteActivity {
+    @Override
     protected final String b() {
-        return "\u8BDD\u9898";
+        return "\u8bdd\u9898";
     }
 }

@@ -1,15 +1,14 @@
 package com.clilystudio.netbook.ui.post;
 
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.design.widget.am;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View$OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.ListAdapter;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -34,432 +33,430 @@ import com.clilystudio.netbook.widget.ScrollLoadListView;
 import com.clilystudio.netbook.widget.av;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
 import cn.sharesdk.framework.PlatformActionListener;
 
-public class GirlTopicActivity extends AbsPostActivity {
-
+public class GirlTopicActivity
+        extends AbsPostActivity {
     private View f;
     private z g;
+    private List<PostComment> h = new ArrayList<PostComment>();
     private bq i;
     private TextView j;
     private View k;
     private Account l;
     private GirlTopic m;
-    private TextView s;
-    private int t;
-    private List h = new ArrayList();
     private View[] n = new View[7];
     private ImageView[] o = new ImageView[7];
     private ProgressBar[] p = new ProgressBar[7];
     private TextView[] q = new TextView[7];
     private TextView[] r = new TextView[7];
+    private TextView s;
+    private int t;
     private boolean u = false;
-    private View$OnClickListener v = new bm(this);
-    private av w = new bo(this);
+    private View.OnClickListener v;
+    private av w;
 
-    static int a(GirlTopicActivity GirlTopicActivity1, int int2) {
-        GirlTopicActivity1.t = int2;
-        return int2;
+    public GirlTopicActivity() {
+        this.v = new bm(this);
+        this.w = new bo(this);
     }
 
-    static GirlTopic a(GirlTopicActivity GirlTopicActivity1) {
-        return GirlTopicActivity1.m;
+    static /* synthetic */ int a(GirlTopicActivity girlTopicActivity, int n) {
+        girlTopicActivity.t = n;
+        return n;
     }
 
-    static GirlTopic a(GirlTopicActivity GirlTopicActivity1, GirlTopic GirlTopic2) {
-        GirlTopicActivity1.m = GirlTopic2;
-        return GirlTopic2;
+    static /* synthetic */ GirlTopic a(GirlTopicActivity girlTopicActivity) {
+        return girlTopicActivity.m;
     }
 
-    static void a(GirlTopicActivity GirlTopicActivity1, int int2, boolean boolean3) {
-        GirlTopicActivity1.a(int2, false);
+    static /* synthetic */ GirlTopic a(GirlTopicActivity girlTopicActivity, GirlTopic girlTopic) {
+        girlTopicActivity.m = girlTopic;
+        return girlTopic;
     }
 
-    static void a(GirlTopicActivity GirlTopicActivity1, Vote[] Vote_1darray2) {
-        if (Vote_1darray2 != null && Vote_1darray2.length != 0) {
-            int[] int_1darray3 = {2131492940, 2131492941, 2131492942, 2131492943, 2131492944, 2131492945, 2131492946};
-            View[] View_1darray4 = new View[7];
-            ImageView[] ImageView_1darray5 = new ImageView[7];
-            TextView[] TextView_1darray6 = new TextView[7];
-            int int7;
-            Account Account8;
-            int int9;
-            List List10;
-            int int11;
+    static /* synthetic */ void a(GirlTopicActivity girlTopicActivity, int n, boolean bl) {
+        girlTopicActivity.a(n, false);
+    }
 
-            for (int7 = 0; int7 < 7; ++int7) {
-                View_1darray4[int7] = GirlTopicActivity1.c.findViewById(int_1darray3[int7]);
-                GirlTopicActivity1.n[int7] = View_1darray4[int7].findViewById(2131493732);
-                GirlTopicActivity1.p[int7] = (ProgressBar) View_1darray4[int7].findViewById(2131493734);
-                GirlTopicActivity1.q[int7] = (TextView) View_1darray4[int7].findViewById(2131493733);
-                GirlTopicActivity1.r[int7] = (TextView) View_1darray4[int7].findViewById(2131493735);
-                ImageView_1darray5[int7] = (ImageView) View_1darray4[int7].findViewById(2131493728);
-                GirlTopicActivity1.o[int7] = (ImageView) View_1darray4[int7].findViewById(2131493730);
-                GirlTopicActivity1.o[int7].setTag(Integer.valueOf(int7));
-                GirlTopicActivity1.o[int7].setOnClickListener(GirlTopicActivity1.v);
-                TextView_1darray6[int7] = (TextView) View_1darray4[int7].findViewById(2131493729);
+    /*
+     * Unable to fully structure code
+     * Enabled aggressive block sorting
+     * Lifted jumps to return sites
+     */
+    static /* synthetic */ void a(GirlTopicActivity var0, Vote[] var1_1) {
+        if (var1_1 == null) return;
+        if (var1_1.length == 0) {
+            return;
+        }
+        var2_2 = new int[]{2131492940, 2131492941, 2131492942, 2131492943, 2131492944, 2131492945, 2131492946};
+        var3_3 = new View[7];
+        var4_4 = new ImageView[7];
+        var5_5 = new TextView[7];
+        for (var6_6 = 0; var6_6 < 7; ++var6_6) {
+            var3_3[var6_6] = var0.c.findViewById(var2_2[var6_6]);
+            var0.n[var6_6] = var3_3[var6_6].findViewById(2131493732);
+            var0.p[var6_6] = (ProgressBar) var3_3[var6_6].findViewById(2131493734);
+            var0.q[var6_6] = (TextView) var3_3[var6_6].findViewById(2131493733);
+            var0.r[var6_6] = (TextView) var3_3[var6_6].findViewById(2131493735);
+            var4_4[var6_6] = (ImageView) var3_3[var6_6].findViewById(2131493728);
+            var0.o[var6_6] = (ImageView) var3_3[var6_6].findViewById(2131493730);
+            var0.o[var6_6].setTag(var6_6);
+            var0.o[var6_6].setOnClickListener(var0.v);
+            var5_5[var6_6] = (TextView) var3_3[var6_6].findViewById(2131493729);
+        }
+        var7_7 = am.e();
+        if (var7_7 != null) {
+            var9_8 = VoteRecord.getVoteRecords(var7_7.getUser().getId(), var0.m.get_id());
+            var8_9 = var9_8 != null && !var9_8.isEmpty();
+        } else {
+            var8_9 = false;
+            var9_8 = null;
+        }
+        var10_10 = var1_1.length;
+        var0.c.a(var10_10);
+        switch (var10_10) {
+            case 2: {
+                for (var16_11 = 0; var16_11 < var10_10; ++var16_11) {
+                    var5_5[var16_11].setText(var1_1[var16_11].getContent());
+                }
+                var4_4[1].setImageResource(2130838049);
+                **break;
             }
-            Account8 = am.e();
-            if (Account8 != null) {
-                List10 = VoteRecord.getVoteRecords(Account8.getUser().getId(), GirlTopicActivity1.m.get_id());
-                if (List10 != null && !List10.isEmpty())
-                    int9 = 1;
-                else
-                    int9 = 0;
-            } else {
-                int9 = 0;
-                List10 = null;
+            case 3: {
+                for (var15_12 = 0; var15_12 < var10_10; ++var15_12) {
+                    var5_5[var15_12].setText(var1_1[var15_12].getContent());
+                }
+                var4_4[1].setImageResource(2130838049);
+                var4_4[2].setImageResource(2130838050);
+                **break;
             }
-            int11 = Vote_1darray2.length;
-            GirlTopicActivity1.c.a(int11);
-            switch (int11) {
-                case 2:
-                    int int17;
-
-                    for (int17 = 0; int17 < int11; ++int17)
-                        TextView_1darray6[int17].setText((CharSequence) Vote_1darray2[int17].getContent());
-                    ImageView_1darray5[1].setImageResource(2130838049);
-                    break;
-                case 3:
-                    int int16;
-
-                    for (int16 = 0; int16 < int11; ++int16)
-                        TextView_1darray6[int16].setText((CharSequence) Vote_1darray2[int16].getContent());
-                    ImageView_1darray5[1].setImageResource(2130838049);
-                    ImageView_1darray5[2].setImageResource(2130838050);
-                    break;
-                case 4:
-                    int int15;
-
-                    for (int15 = 0; int15 < int11; ++int15)
-                        TextView_1darray6[int15].setText((CharSequence) Vote_1darray2[int15].getContent());
-                    ImageView_1darray5[1].setImageResource(2130838049);
-                    ImageView_1darray5[2].setImageResource(2130838050);
-                    ImageView_1darray5[3].setImageResource(2130838051);
-                    break;
-                case 5:
-                    int int14;
-
-                    for (int14 = 0; int14 < int11; ++int14)
-                        TextView_1darray6[int14].setText((CharSequence) Vote_1darray2[int14].getContent());
-                    ImageView_1darray5[1].setImageResource(2130838049);
-                    ImageView_1darray5[2].setImageResource(2130838050);
-                    ImageView_1darray5[3].setImageResource(2130838051);
-                    ImageView_1darray5[4].setImageResource(2130838052);
-                    break;
-                case 6:
-                    int int13;
-
-                    for (int13 = 0; int13 < int11; ++int13)
-                        TextView_1darray6[int13].setText((CharSequence) Vote_1darray2[int13].getContent());
-                    ImageView_1darray5[1].setImageResource(2130838049);
-                    ImageView_1darray5[2].setImageResource(2130838050);
-                    ImageView_1darray5[3].setImageResource(2130838051);
-                    ImageView_1darray5[4].setImageResource(2130838052);
-                    ImageView_1darray5[5].setImageResource(2130838053);
-                    break;
-                case 7:
-                    int int12;
-
-                    for (int12 = 0; int12 < int11; ++int12)
-                        TextView_1darray6[int12].setText((CharSequence) Vote_1darray2[int12].getContent());
-                    ImageView_1darray5[1].setImageResource(2130838049);
-                    ImageView_1darray5[2].setImageResource(2130838050);
-                    ImageView_1darray5[3].setImageResource(2130838051);
-                    ImageView_1darray5[4].setImageResource(2130838052);
-                    ImageView_1darray5[5].setImageResource(2130838053);
-                    ImageView_1darray5[6].setImageResource(2130838054);
-                    break;
-                default:
-                    break;
+            case 4: {
+                for (var14_13 = 0; var14_13 < var10_10; ++var14_13) {
+                    var5_5[var14_13].setText(var1_1[var14_13].getContent());
+                }
+                var4_4[1].setImageResource(2130838049);
+                var4_4[2].setImageResource(2130838050);
+                var4_4[3].setImageResource(2130838051);
+                **break;
             }
-            if (int9 != 0) {
-                GirlTopicActivity1.a(((VoteRecord) List10.get(0)).vote_item_index, true);
-                return;
+            case 5: {
+                for (var13_14 = 0; var13_14 < var10_10; ++var13_14) {
+                    var5_5[var13_14].setText(var1_1[var13_14].getContent());
+                }
+                var4_4[1].setImageResource(2130838049);
+                var4_4[2].setImageResource(2130838050);
+                var4_4[3].setImageResource(2130838051);
+                var4_4[4].setImageResource(2130838052);
+                **break;
             }
+            case 6: {
+                for (var12_15 = 0; var12_15 < var10_10; ++var12_15) {
+                    var5_5[var12_15].setText(var1_1[var12_15].getContent());
+                }
+                var4_4[1].setImageResource(2130838049);
+                var4_4[2].setImageResource(2130838050);
+                var4_4[3].setImageResource(2130838051);
+                var4_4[4].setImageResource(2130838052);
+                var4_4[5].setImageResource(2130838053);
+            }
+            lbl69:
+            // 6 sources:
+            default:
+            {
+                **GOTO lbl81
+            }
+            case 7:
+        }
+        for (var11_16 = 0; var11_16 < var10_10; ++var11_16) {
+            var5_5[var11_16].setText(var1_1[var11_16].getContent());
+        }
+        var4_4[1].setImageResource(2130838049);
+        var4_4[2].setImageResource(2130838050);
+        var4_4[3].setImageResource(2130838051);
+        var4_4[4].setImageResource(2130838052);
+        var4_4[5].setImageResource(2130838053);
+        var4_4[6].setImageResource(2130838054);
+        lbl81:
+        // 2 sources:
+        if (var8_9 == false) return;
+        var0.a(var9_8.get((int) 0).vote_item_index, true);
+    }
+
+    static /* synthetic */ void b(GirlTopicActivity girlTopicActivity) {
+        if (girlTopicActivity.m != null) {
+            girlTopicActivity.f.setVisibility(0);
+            bq bq2 = girlTopicActivity.i = new bq(girlTopicActivity, 0);
+            Object[] arrobject = new String[]{girlTopicActivity.m.get_id()};
+            bq2.b(arrobject);
         }
     }
 
-    static void b(GirlTopicActivity GirlTopicActivity1) {
-        if (GirlTopicActivity1.m != null) {
-            bq bq2;
-            String[] String_1darray3;
-
-            GirlTopicActivity1.f.setVisibility(0);
-            GirlTopicActivity1.i = new bq(GirlTopicActivity1, (byte) 0);
-            bq2 = GirlTopicActivity1.i;
-            String_1darray3 = new String[1];
-            String_1darray3[0] = GirlTopicActivity1.m.get_id();
-            bq2.b(String_1darray3);
+    /*
+     * Enabled aggressive block sorting
+     */
+    static /* synthetic */ void b(GirlTopicActivity girlTopicActivity, GirlTopic girlTopic) {
+        Author author = girlTopic.getAuthor();
+        SmartImageView smartImageView = (SmartImageView) girlTopicActivity.c.findViewById(2131492899);
+        if (am.m((Context) girlTopicActivity)) {
+            smartImageView.setImageResource(2130837614);
+        } else {
+            smartImageView.setImageUrl(author.getScaleAvatar());
         }
-    }
-
-    static void b(GirlTopicActivity GirlTopicActivity1, GirlTopic GirlTopic2) {
-        Author Author3 = GirlTopic2.getAuthor();
-        SmartImageView SmartImageView4 = (SmartImageView) GirlTopicActivity1.c.findViewById(2131492899);
-        ImageView ImageView5;
-
-        if (am.m((Context) GirlTopicActivity1))
-            SmartImageView4.setImageResource(2130837614);
-        else
-            SmartImageView4.setImageUrl(Author3.getScaleAvatar());
-        ((TextView) GirlTopicActivity1.c.findViewById(2131492928)).setText((CharSequence) Author3.getNickname());
-        ((TextView) GirlTopicActivity1.c.findViewById(2131493631)).setText((CharSequence) new StringBuilder("lv.").append(Author3.getLv()).toString());
-        ((TextView) GirlTopicActivity1.c.findViewById(2131492935)).setText((CharSequence) com.clilystudio.netbook.util.t.e(GirlTopic2.getCreated()));
-        ((TextView) GirlTopicActivity1.c.findViewById(2131492936)).setText((CharSequence) GirlTopic2.getTitle());
-        ((LinkifyTextView) GirlTopicActivity1.c.findViewById(2131492905)).setLinkifyText(GirlTopic2.getContent(), Author3.isOfficial());
-        GirlTopicActivity1.s = (TextView) GirlTopicActivity1.c.findViewById(2131492947);
-        GirlTopicActivity1.s.setText((CharSequence) new StringBuilder("\u5171").append(GirlTopic2.getVoteCount()).append("\u4EBA\u6295\u7968").toString());
-        GirlTopicActivity1.j.setText((CharSequence) new StringBuilder("\u5171").append(GirlTopic2.getCommentCount()).append("\u6761\u8BC4\u8BBA").toString());
-        ImageView5 = (ImageView) GirlTopicActivity1.c.findViewById(2131493629);
-        if (GirlTopicActivity1.u) {
-            String String7 = Author3.getGender();
-
-            if ("male".equals(String7)) {
-                ImageView5.setVisibility(0);
-                ImageView5.setImageLevel(2);
-            } else if ("female".equals(String7)) {
-                ImageView5.setVisibility(0);
-                ImageView5.setImageLevel(3);
+        ((TextView) girlTopicActivity.c.findViewById(2131492928)).setText(author.getNickname());
+        ((TextView) girlTopicActivity.c.findViewById(2131493631)).setText("lv." + author.getLv());
+        ((TextView) girlTopicActivity.c.findViewById(2131492935)).setText(t.e((Date) girlTopic.getCreated()));
+        ((TextView) girlTopicActivity.c.findViewById(2131492936)).setText(girlTopic.getTitle());
+        ((LinkifyTextView) girlTopicActivity.c.findViewById(2131492905)).setLinkifyText(girlTopic.getContent(), author.isOfficial());
+        girlTopicActivity.s = (TextView) girlTopicActivity.c.findViewById(2131492947);
+        girlTopicActivity.s.setText("\u5171" + girlTopic.getVoteCount() + "\u4eba\u6295\u7968");
+        girlTopicActivity.j.setText("\u5171" + girlTopic.getCommentCount() + "\u6761\u8bc4\u8bba");
+        ImageView imageView = (ImageView) girlTopicActivity.c.findViewById(2131493629);
+        if (girlTopicActivity.u) {
+            String string = author.getGender();
+            if ("male".equals(string)) {
+                imageView.setVisibility(0);
+                imageView.setImageLevel(2);
+            } else if ("female".equals(string)) {
+                imageView.setVisibility(0);
+                imageView.setImageLevel(3);
             } else {
-                ImageView5.setVisibility(0);
-                ImageView5.setImageLevel(4);
+                imageView.setVisibility(0);
+                imageView.setImageLevel(4);
             }
         } else {
-            String String6 = Author3.getType();
-
-            if ("official".equals(String6)) {
-                ImageView5.setVisibility(0);
-                ImageView5.setImageLevel(0);
-                com.clilystudio.netbook.hpay100.a.a.s((Context) GirlTopicActivity1, GirlTopic2.get_id());
-            } else if ("doyen".equals(String6)) {
-                ImageView5.setVisibility(0);
-                ImageView5.setImageLevel(1);
-            } else
-                ImageView5.setVisibility(8);
+            String string = author.getType();
+            if ("official".equals(string)) {
+                imageView.setVisibility(0);
+                imageView.setImageLevel(0);
+                a.s(girlTopicActivity, girlTopic.get_id());
+            } else if ("doyen".equals(string)) {
+                imageView.setVisibility(0);
+                imageView.setImageLevel(1);
+            } else {
+                imageView.setVisibility(8);
+            }
         }
-        ((PostAgreeView) GirlTopicActivity1.c.findViewById(2131493840)).setPostId(GirlTopicActivity1.a);
-        GirlTopicActivity1.c.a();
-        GirlTopicActivity1.c.b();
+        ((PostAgreeView) girlTopicActivity.c.findViewById(2131493840)).setPostId(girlTopicActivity.a);
+        girlTopicActivity.c.a();
+        girlTopicActivity.c.b();
     }
 
-    static z c(GirlTopicActivity GirlTopicActivity1) {
-        return GirlTopicActivity1.g;
+    static /* synthetic */ z c(GirlTopicActivity girlTopicActivity) {
+        return girlTopicActivity.g;
     }
 
-    static av d(GirlTopicActivity GirlTopicActivity1) {
-        return GirlTopicActivity1.w;
+    static /* synthetic */ av d(GirlTopicActivity girlTopicActivity) {
+        return girlTopicActivity.w;
     }
 
-    static View e(GirlTopicActivity GirlTopicActivity1) {
-        return GirlTopicActivity1.f;
+    static /* synthetic */ View e(GirlTopicActivity girlTopicActivity) {
+        return girlTopicActivity.f;
     }
 
-    static List f(GirlTopicActivity GirlTopicActivity1) {
-        return GirlTopicActivity1.h;
+    static /* synthetic */ List f(GirlTopicActivity girlTopicActivity) {
+        return girlTopicActivity.h;
     }
 
-    static void g(GirlTopicActivity GirlTopicActivity1) {
-        TextView TextView2;
-
-        GirlTopicActivity1.f.setVisibility(0);
-        GirlTopicActivity1.f.findViewById(2131493085).setVisibility(8);
-        TextView2 = (TextView) GirlTopicActivity1.f.findViewById(2131493798);
-        TextView2.setText((CharSequence) "\u70B9\u51FB\u52A0\u8F7D\u8BC4\u8BBA");
-        GirlTopicActivity1.f.setOnClickListener((View$OnClickListener) new bn(GirlTopicActivity1, TextView2));
+    static /* synthetic */ void g(GirlTopicActivity girlTopicActivity) {
+        girlTopicActivity.f.setVisibility(0);
+        girlTopicActivity.f.findViewById(2131493085).setVisibility(8);
+        TextView textView = (TextView) girlTopicActivity.f.findViewById(2131493798);
+        textView.setText("\u70b9\u51fb\u52a0\u8f7d\u8bc4\u8bba");
+        girlTopicActivity.f.setOnClickListener((View.OnClickListener) ((Object) new bn(girlTopicActivity, textView)));
     }
 
-    static boolean h(GirlTopicActivity GirlTopicActivity1) {
-        return GirlTopicActivity1.p();
+    static /* synthetic */ boolean h(GirlTopicActivity girlTopicActivity) {
+        return girlTopicActivity.p();
     }
 
-    static Account i(GirlTopicActivity GirlTopicActivity1) {
-        return GirlTopicActivity1.l;
+    static /* synthetic */ Account i(GirlTopicActivity girlTopicActivity) {
+        return girlTopicActivity.l;
     }
 
-    static int j(GirlTopicActivity GirlTopicActivity1) {
-        return GirlTopicActivity1.t;
+    static /* synthetic */ int j(GirlTopicActivity girlTopicActivity) {
+        return girlTopicActivity.t;
     }
 
-    static bq k(GirlTopicActivity GirlTopicActivity1) {
-        return GirlTopicActivity1.i;
+    static /* synthetic */ bq k(GirlTopicActivity girlTopicActivity) {
+        return girlTopicActivity.i;
     }
 
-    private void a(int int1, boolean boolean2) {
-        int int3 = m.getVoteCount();
-        Vote[] Vote_1darray4;
-        int int5;
-        int[] int_1darray6;
-        float[] float_1darray7;
-        int int8;
-        int int9;
-
-        if (!boolean2)
-            ++int3;
-        s.setText((CharSequence) new StringBuilder("\u5171").append(int3).append("\u4EBA\u6295\u7968").toString());
-        Vote_1darray4 = m.getVotes();
-        int5 = Vote_1darray4.length;
-        int_1darray6 = new int[7];
-        float_1darray7 = new float[7];
-        for (int8 = 0; int8 < 7; ++int8) {
-            if (int8 < int5)
-                int_1darray6[int8] = Vote_1darray4[int8].getCount();
-            else
-                int_1darray6[int8] = 0;
+    /*
+     * Enabled aggressive block sorting
+     */
+    private void a(int n, boolean bl) {
+        int n2 = this.m.getVoteCount();
+        if (!bl) {
+            ++n2;
         }
-        if (!boolean2)
-            int_1darray6[int1] = 1 + int_1darray6[int1];
-        for (int9 = 0; int9 < 7; ++int9) {
-            String String10;
-
-            o[int9].setEnabled(false);
-            n[int9].setVisibility(0);
-            if (int9 == int1)
-                o[int9].setImageResource(2130838056);
-            else
-                o[int9].setImageResource(2130838055);
-            if (int3 != 0 && int9 < int5)
-                float_1darray7[int9] = (float) int_1darray6[int9] / (float) int3;
-            else
-                float_1darray7[int9] = 0.0F;
-            String10 = String.valueOf((int) (0.5F + 100.0F * float_1darray7[int9]));
-            q[int9].setText((CharSequence) new StringBuilder().append(int_1darray6[int9]).append(" \u7968").toString());
-            r[int9].setText((CharSequence) new StringBuilder().append(String10).append("%").toString());
-            p[int9].setProgress((int) (100.0F * float_1darray7[int9]));
+        this.s.setText("\u5171" + n2 + "\u4eba\u6295\u7968");
+        Vote[] arrvote = this.m.getVotes();
+        int n3 = arrvote.length;
+        int[] arrn = new int[7];
+        float[] arrf = new float[7];
+        for (int i = 0; i < 7; ++i) {
+            arrn[i] = i < n3 ? arrvote[i].getCount() : 0;
+        }
+        if (!bl) {
+            arrn[n] = 1 + arrn[n];
+        }
+        int n4 = 0;
+        while (n4 < 7) {
+            this.o[n4].setEnabled(false);
+            this.n[n4].setVisibility(0);
+            if (n4 == n) {
+                this.o[n4].setImageResource(2130838056);
+            } else {
+                this.o[n4].setImageResource(2130838055);
+            }
+            arrf[n4] = n2 != 0 && n4 < n3 ? (float) arrn[n4] / (float) n2 : 0.0f;
+            String string = String.valueOf((int) (0.5f + 100.0f * arrf[n4]));
+            this.q[n4].setText("" + arrn[n4] + " \u7968");
+            this.r[n4].setText(string + "%");
+            this.p[n4].setProgress((int) (100.0f * arrf[n4]));
+            ++n4;
         }
     }
 
     private boolean p() {
-        Account Account1 = am.e();
-
-        if (Account1 == null) {
-            com.clilystudio.netbook.util.e.a((Activity) this, "\u8BF7\u767B\u5F55\u540E\u518D\u64CD\u4F5C");
-            startActivity(AuthLoginActivity.a((Context) this));
+        Account account = am.e();
+        if (account == null) {
+            e.a((Activity) this, (String) "\u8bf7\u767b\u5f55\u540e\u518d\u64cd\u4f5c");
+            this.startActivity(AuthLoginActivity.a(this));
             return false;
-        } else {
-            l = Account1;
-            return true;
         }
+        this.l = account;
+        return true;
     }
 
-    public final void a(String String1) {
-        new N((Activity) this).b(m.get_id(), String1);
+    @Override
+    public final void a(String string) {
+        new N(this).b(this.m.get_id(), string);
     }
 
+    @Override
     protected final void b() {
-        br br1;
-        String[] String_1darray2;
-
-        i();
-        br1 = new br(this, (byte) 0);
-        String_1darray2 = new String[1];
-        String_1darray2[0] = a;
-        br1.b(String_1darray2);
+        this.i();
+        br br2 = new br(this, 0);
+        Object[] arrobject = new String[]{this.a};
+        br2.b(arrobject);
     }
 
-    public final void e(int int1) {
-        if (m != null) {
-            if (int1 == 1) {
-                a(null);
-                return;
-            } else if (int1 == 0 && p()) {
-                new N((Activity) this).a(l.getToken(), m.get_id());
-                return;
-            }
+    /*
+     * Enabled aggressive block sorting
+     * Lifted jumps to return sites
+     */
+    @Override
+    public final void e(int n) {
+        if (this.m == null) {
+            return;
         }
+        if (n == 1) {
+            this.a(null);
+            return;
+        }
+        if (n != 0) return;
+        if (!this.p()) return;
+        new N(this).a(this.l.getToken(), this.m.get_id());
     }
 
+    @Override
     public final void f() {
         super.f();
-        k.setVisibility(0);
+        this.k.setVisibility(0);
     }
 
-    public final void f(int int1) {
-        if (m == null)
-            com.clilystudio.netbook.util.e.a((Activity) this, "\u64CD\u4F5C\u5931\u8D25\uFF0C\u8BF7\u91CD\u8BD5");
-        else
-            T.a((Context) this, m.getTitle(), new StringBuilder("\u300C").append(m.getTitle()).append("\u300D   \u6211\u5728\u8FD9\u53D1\u73B0\u4E86\u597D\u591A\u597D\u770B\u7684\u5C0F\u8BF4\uFF0C\u4F60\u4E5F\u6765\u627E\u627E\u770B\u5427").toString(), m.getShareLink(), null, int1, (PlatformActionListener) new bp(this));
+    @Override
+    public final void f(int n) {
+        if (this.m == null) {
+            e.a((Activity) this, (String) "\u64cd\u4f5c\u5931\u8d25\uff0c\u8bf7\u91cd\u8bd5");
+            return;
+        }
+        T.a(this, this.m.getTitle(), "\u300c" + this.m.getTitle() + "\u300d   \u6211\u5728\u8fd9\u53d1\u73b0\u4e86\u597d\u591a\u597d\u770b\u7684\u5c0f\u8bf4\uff0c\u4f60\u4e5f\u6765\u627e\u627e\u770b\u5427", this.m.getShareLink(), null, n, (PlatformActionListener) ((Object) new bp(this)));
     }
 
+    @Override
     public final void h() {
         super.h();
-        k.setVisibility(8);
+        this.k.setVisibility(8);
     }
 
+    @Override
     public final void i() {
         super.i();
-        k.setVisibility(8);
+        this.k.setVisibility(8);
     }
 
+    /*
+     * Enabled aggressive block sorting
+     */
+    @TargetApi(value = 11)
+    @Override
     protected final void o() {
-        List List1 = h;
-        PostComment PostComment2 = null;
-        User User3;
-        Author Author4;
-        Object Object5;
-
-        if (List1 != null) {
-            int int7 = h.size();
-
-            PostComment2 = null;
-            if (int7 > 0)
-                PostComment2 = (PostComment) h.get(0);
+        List<PostComment> list = this.h;
+        PostComment postComment = null;
+        if (list != null) {
+            int n = this.h.size();
+            postComment = null;
+            if (n > 0) {
+                postComment = this.h.get(0);
+            }
         }
-        User3 = am.e().getUser();
-        Author4 = new Author();
-        Author4.setAvatar(User3.getAvatar());
-        Author4.setNickname(User3.getNickname());
-        Author4.setLv(User3.getLv());
-        Object5 = new PostComment();
-        ((PostComment) Object5).setAuthor(Author4);
-        ((PostComment) Object5).setContent(l());
-        ((PostComment) Object5).setCreated(new Date());
-        if (e != null) {
-            PostComment$PostCommentReply PostCommentReply6 = new PostComment$PostCommentReply();
-
-            PostCommentReply6.setFloor(e.getFloor());
-            PostCommentReply6.setAuthor(e.getAuthor());
-            ((PostComment) Object5).setReplyTo(PostCommentReply6);
+        User user = am.e().getUser();
+        Author author = new Author();
+        author.setAvatar(user.getAvatar());
+        author.setNickname(user.getNickname());
+        author.setLv(user.getLv());
+        PostComment postComment2 = new PostComment();
+        postComment2.setAuthor(author);
+        postComment2.setContent(this.l());
+        postComment2.setCreated(new Date());
+        if (this.e != null) {
+            PostComment$PostCommentReply postComment$PostCommentReply = new PostComment$PostCommentReply();
+            postComment$PostCommentReply.setFloor(this.e.getFloor());
+            postComment$PostCommentReply.setAuthor(this.e.getAuthor());
+            postComment2.setReplyTo(postComment$PostCommentReply);
         }
-        if (PostComment2 != null)
-            ((PostComment) Object5).setFloor(1 + PostComment2.getFloor());
-        else
-            ((PostComment) Object5).setFloor(1);
-        h.add(0, Object5);
-        g.a((Collection) h);
-        if (com.clilystudio.netbook.hpay100.a.a.g())
-            b.smoothScrollToPositionFromTop(2, 60);
-        else
-            b.setSelection(2);
+        if (postComment != null) {
+            postComment2.setFloor(1 + postComment.getFloor());
+        } else {
+            postComment2.setFloor(1);
+        }
+        this.h.add(0, postComment2);
+        this.g.a(this.h);
+        if (a.g()) {
+            this.b.smoothScrollToPositionFromTop(2, 60);
+            return;
+        }
+        this.b.setSelection(2);
     }
 
-    public void onCreate(Bundle Bundle1) {
-        Object Object2;
-
-        super.onCreate(Bundle1);
-        a(2130903350);
-        b("\u5973\u751F\u533A\u8BDD\u9898\u8BE6\u60C5");
-        a = getIntent().getStringExtra("extraGirlTopicId");
-        b = (ScrollLoadListView) findViewById(2131493135);
-        k = findViewById(2131493838);
-        a(true);
-        c = new PostHeader((Context) this);
-        b.addHeaderView((View) c, null, false);
-        Object2 = (HotCommentView) LayoutInflater.from((Context) this).inflate(2130903235, (ViewGroup) b, false);
-        j = (TextView) ((HotCommentView) Object2).findViewById(2131493519);
-        b.addHeaderView((View) Object2, null, false);
-        ((HotCommentView) Object2).a(a);
-        f = LayoutInflater.from((Context) this).inflate(2130903325, null);
-        b.addFooterView(f);
-        f.setVisibility(8);
-        g = new z(getLayoutInflater());
-        b.setAdapter((ListAdapter) g);
-        j();
-        b();
-        u = com.clilystudio.netbook.hpay100.a.a.r((Context) this, "community_user_gender_icon_toggle");
+    @Override
+    public void onCreate(Bundle bundle) {
+        super.onCreate(bundle);
+        this.a(2130903350);
+        this.b("\u5973\u751f\u533a\u8bdd\u9898\u8be6\u60c5");
+        this.a = this.getIntent().getStringExtra("extraGirlTopicId");
+        this.b = (ScrollLoadListView) this.findViewById(2131493135);
+        this.k = this.findViewById(2131493838);
+        this.a(true);
+        this.c = new PostHeader(this);
+        this.b.addHeaderView(this.c, null, false);
+        HotCommentView hotCommentView = (HotCommentView) LayoutInflater.from(this).inflate(2130903235, (ViewGroup) this.b, false);
+        this.j = (TextView) hotCommentView.findViewById(2131493519);
+        this.b.addHeaderView(hotCommentView, null, false);
+        hotCommentView.a(this.a);
+        this.f = LayoutInflater.from(this).inflate(2130903325, null);
+        this.b.addFooterView(this.f);
+        this.f.setVisibility(8);
+        this.g = new z(this.getLayoutInflater());
+        this.b.setAdapter(this.g);
+        this.j();
+        this.b();
+        this.u = a.r(this, "community_user_gender_icon_toggle");
     }
 }

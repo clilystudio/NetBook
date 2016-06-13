@@ -1,32 +1,31 @@
 package com.clilystudio.netbook.model;
 
 public class ChapterSingleKey {
-
     private String chapterId;
     private String key;
     private boolean ok;
 
     public String getChapterId() {
-        return chapterId;
+        return this.chapterId;
     }
 
-    public void setChapterId(String String1) {
-        chapterId = String1;
+    public void setChapterId(String string) {
+        this.chapterId = string;
     }
 
     public String getKey() {
-        return key;
+        return this.key;
     }
 
-    public void setKey(String String1) {
-        key = String1;
+    public void setKey(String string) {
+        this.key = string;
     }
 
     public boolean isOk() {
-        return ok;
+        return this.ok;
     }
 
-    public void setOk(boolean boolean1) {
-        ok = boolean1;
+    public void setOk(boolean bl) {
+        this.ok = bl;
     }
 }

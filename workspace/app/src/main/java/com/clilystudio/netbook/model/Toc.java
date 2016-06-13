@@ -2,8 +2,8 @@ package com.clilystudio.netbook.model;
 
 import java.io.Serializable;
 
-public class Toc implements Serializable {
-
+public class Toc
+        implements Serializable {
     private static final long serialVersionUID = -3277489999990478661L;
     private String _id;
     private ChapterLink[] chapters;
@@ -12,42 +12,42 @@ public class Toc implements Serializable {
     private boolean realChapter = true;
 
     public ChapterLink[] getChapters() {
-        return chapters;
+        return this.chapters;
     }
 
-    public void setChapters(ChapterLink[] ChapterLink_1darray1) {
-        chapters = ChapterLink_1darray1;
+    public void setChapters(ChapterLink[] arrchapterLink) {
+        this.chapters = arrchapterLink;
     }
 
     public String getHost() {
-        return host;
+        return this.host;
     }
 
-    public void setHost(String String1) {
-        host = String1;
+    public void setHost(String string) {
+        this.host = string;
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
-    public void setName(String String1) {
-        name = String1;
+    public void setName(String string) {
+        this.name = string;
     }
 
     public String get_id() {
-        return _id;
+        return this._id;
     }
 
-    public void set_id(String String1) {
-        _id = String1;
+    public void set_id(String string) {
+        this._id = string;
     }
 
     public boolean isRealChapter() {
-        return realChapter;
+        return this.realChapter;
     }
 
-    public void setRealChapter(boolean boolean1) {
-        realChapter = boolean1;
+    public void setRealChapter(boolean bl) {
+        this.realChapter = bl;
     }
 }

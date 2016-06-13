@@ -1,18 +1,20 @@
 package com.clilystudio.netbook.ui;
 
-final class bt implements Runnable {
+final class bt
+        implements Runnable {
+    private /* synthetic */ bs a;
 
-    private bs a;
-
-    bt(bs bs1) {
-        a = bs1;
+    bt(bs bs2) {
+        this.a = bs2;
     }
 
+    @Override
     public final void run() {
-        if (NotifFragment.c(a.a) == null) {
-            NotifFragment.a(a.a, false);
-            NotifFragment.d(a.a).n();
-        } else
-            a.a.c();
+        if (NotifFragment.c(this.a.a) == null) {
+            NotifFragment.a(this.a.a, false);
+            NotifFragment.d(this.a.a).n();
+            return;
+        }
+        this.a.a.c();
     }
 }

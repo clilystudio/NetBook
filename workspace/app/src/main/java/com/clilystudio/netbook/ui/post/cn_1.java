@@ -1,53 +1,57 @@
 package com.clilystudio.netbook.ui.post;
 
 import com.clilystudio.netbook.a.e;
-import com.clilystudio.netbook.model.User;
 import com.clilystudio.netbook.model.UserInfoResult;
 
-final class cn extends e {
-
+final class cn
+        extends e<String, Void, UserInfoResult> {
     private Runnable a;
-    private OtherUserActivity b;
-    public cn(OtherUserActivity OtherUserActivity1, Runnable Runnable2) {
-        b = OtherUserActivity1;
-        a = Runnable2;
+    private /* synthetic */ OtherUserActivity b;
+
+    public cn(OtherUserActivity otherUserActivity, Runnable runnable) {
+        this.b = otherUserActivity;
+        this.a = runnable;
     }
 
-    private static transient UserInfoResult a(String[] String_1darray1) {
-        UserInfoResult UserInfoResult4;
-
+    private static /* varargs */ UserInfoResult a(String... arrstring) {
         try {
-            com.clilystudio.netbook.api.b.a();
-            UserInfoResult4 = com.clilystudio.netbook.api.b.b().m(String_1darray1[0]);
-        } catch (Exception Exception2) {
-            Exception2.printStackTrace();
+            b.a();
+            UserInfoResult userInfoResult = b.b().m(arrstring[0]);
+            return userInfoResult;
+        } catch (Exception var1_2) {
+            var1_2.printStackTrace();
             return null;
         }
-        return UserInfoResult4;
     }
 
-    protected final Object doInBackground(Object[] Object_1darray1) {
-        return a((String[]) Object_1darray1);
+    @Override
+    protected final /* synthetic */ Object doInBackground(Object[] arrobject) {
+        return cn.a((String[]) arrobject);
     }
 
-    protected final void onPostExecute(Object Object1) {
-        Object Object2 = (UserInfoResult) Object1;
-
-        super.onPostExecute(Object2);
-        if (Object2 != null) {
-            OtherUserActivity.s(b).setImageUrl(((User) Object2).getFullAvatar());
-            OtherUserActivity.b(b, ((UserInfoResult) Object2).getFollowers());
-            OtherUserActivity.c(b, ((UserInfoResult) Object2).getFollowings());
-            if (((User) Object2).isDoyan()) {
-                OtherUserActivity.t(b).setVisibility(0);
-                OtherUserActivity.t(b).setImageResource(2130838229);
-            } else if (((User) Object2).isOfficial()) {
-                OtherUserActivity.t(b).setVisibility(0);
-                OtherUserActivity.t(b).setImageResource(2130838231);
-            } else
-                OtherUserActivity.t(b).setVisibility(8);
-            if (a != null)
-                a.run();
+    /*
+     * Enabled aggressive block sorting
+     */
+    @Override
+    protected final /* synthetic */ void onPostExecute(Object object) {
+        UserInfoResult userInfoResult = (UserInfoResult) object;
+        super.onPostExecute(userInfoResult);
+        if (userInfoResult != null) {
+            OtherUserActivity.s(this.b).setImageUrl(userInfoResult.getFullAvatar());
+            OtherUserActivity.b(this.b, userInfoResult.getFollowers());
+            OtherUserActivity.c(this.b, userInfoResult.getFollowings());
+            if (userInfoResult.isDoyan()) {
+                OtherUserActivity.t(this.b).setVisibility(0);
+                OtherUserActivity.t(this.b).setImageResource(2130838229);
+            } else if (userInfoResult.isOfficial()) {
+                OtherUserActivity.t(this.b).setVisibility(0);
+                OtherUserActivity.t(this.b).setImageResource(2130838231);
+            } else {
+                OtherUserActivity.t(this.b).setVisibility(8);
+            }
+            if (this.a != null) {
+                this.a.run();
+            }
         }
     }
 }

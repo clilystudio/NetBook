@@ -2,14 +2,14 @@ package com.clilystudio.netbook.ui.home;
 
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.View$OnTouchListener;
 
-final class y implements View$OnTouchListener {
-
-    y(HomeShelfFragment HomeShelfFragment1) {
+final class y
+        implements View.OnTouchListener {
+    y(HomeShelfFragment homeShelfFragment) {
     }
 
-    public final boolean onTouch(View View1, MotionEvent MotionEvent2) {
+    @Override
+    public final boolean onTouch(View view, MotionEvent motionEvent) {
         return true;
     }
 }

@@ -6,18 +6,17 @@ import android.widget.TextView;
 import butterknife.ButterKnife$Finder;
 
 public class HomeShelfAdapter$TxtHolder$$ViewInjector {
-
-    public static void inject(ButterKnife$Finder Finder1, HomeShelfAdapter$TxtHolder TxtHolder2, Object Object3) {
-        TxtHolder2.title = (TextView) Finder1.findRequiredView(Object3, 2131492936, "field 'title'");
-        TxtHolder2.desc = (TextView) Finder1.findRequiredView(Object3, 2131493481, "field 'desc'");
-        TxtHolder2.top = Finder1.findRequiredView(Object3, 2131492978, "field 'top'");
-        TxtHolder2.check = (CheckBox) Finder1.findRequiredView(Object3, 2131492900, "field 'check'");
+    public static void inject(ButterKnife$Finder butterKnife$Finder, HomeShelfAdapter$TxtHolder homeShelfAdapter$TxtHolder, Object object) {
+        homeShelfAdapter$TxtHolder.title = (TextView) butterKnife$Finder.findRequiredView(object, 2131492936, "field 'title'");
+        homeShelfAdapter$TxtHolder.desc = (TextView) butterKnife$Finder.findRequiredView(object, 2131493481, "field 'desc'");
+        homeShelfAdapter$TxtHolder.top = butterKnife$Finder.findRequiredView(object, 2131492978, "field 'top'");
+        homeShelfAdapter$TxtHolder.check = (CheckBox) butterKnife$Finder.findRequiredView(object, 2131492900, "field 'check'");
     }
 
-    public static void reset(HomeShelfAdapter$TxtHolder TxtHolder1) {
-        TxtHolder1.title = null;
-        TxtHolder1.desc = null;
-        TxtHolder1.top = null;
-        TxtHolder1.check = null;
+    public static void reset(HomeShelfAdapter$TxtHolder homeShelfAdapter$TxtHolder) {
+        homeShelfAdapter$TxtHolder.title = null;
+        homeShelfAdapter$TxtHolder.desc = null;
+        homeShelfAdapter$TxtHolder.top = null;
+        homeShelfAdapter$TxtHolder.check = null;
     }
 }

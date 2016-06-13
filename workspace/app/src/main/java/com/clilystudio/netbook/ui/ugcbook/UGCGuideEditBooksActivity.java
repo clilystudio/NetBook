@@ -1,19 +1,16 @@
 package com.clilystudio.netbook.ui.ugcbook;
 
 import android.app.Activity;
-import android.content.Context;
-import android.content.DialogInterface$OnClickListener;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.Editable;
 import android.text.Selection;
-import android.text.Spannable;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View$OnClickListener;
 import android.view.ViewGroup;
 import android.widget.EditText;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -27,16 +24,16 @@ import com.clilystudio.netbook.ui.aa;
 import com.clilystudio.netbook.ui.ab;
 import com.clilystudio.netbook.widget.CoverView;
 
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import cn.sharesdk.framework.ShareSDK;
 
-public class UGCGuideEditBooksActivity extends BaseActivity implements View$OnClickListener {
-
-    Map a = new HashMap();
+public class UGCGuideEditBooksActivity
+        extends BaseActivity
+        implements View.OnClickListener {
+    Map<String, String> a = new HashMap<String, String>();
     private ListView b;
     private View c;
     private Q e;
@@ -44,197 +41,205 @@ public class UGCGuideEditBooksActivity extends BaseActivity implements View$OnCl
     private Author g;
     private boolean h;
 
-    static UGCNewCollection a(UGCGuideEditBooksActivity UGCGuideEditBooksActivity1) {
-        return e();
+    static /* synthetic */ UGCNewCollection a(UGCGuideEditBooksActivity uGCGuideEditBooksActivity) {
+        return UGCGuideEditBooksActivity.e();
     }
 
-    static void a(UGCGuideEditBooksActivity UGCGuideEditBooksActivity1, int int2) {
-        List List3 = e().getBooks();
-
-        if (List3 != null && List3.size() != 0) {
-            BookSummary BookSummary4 = (BookSummary) List3.get(int2);
-            View View5 = UGCGuideEditBooksActivity1.getLayoutInflater().inflate(2130903404, null, false);
-            long long6;
-            Object Object8;
-            EditText EditText9;
-            Editable Editable10;
-
-            ((CoverView) View5.findViewById(2131492899)).setImageUrl(BookSummary4.getFullCover(), 2130837766);
-            ((TextView) View5.findViewById(2131492936)).setText((CharSequence) BookSummary4.getTitle());
-            ((TextView) View5.findViewById(2131493317)).setText((CharSequence) BookSummary4.getAuthor());
-            ((TextView) View5.findViewById(2131493775)).setText((CharSequence) new StringBuilder().append(BookSummary4.getLatelyFollower()).toString());
-            long6 = (long) BookSummary4.getWordCount();
-            if (long6 > 10000L) {
-                long6 = long6 / 10000L;
-                Object8 = " \u4E07\u5B57";
-            } else if (long6 > 100L) {
-                long6 = long6 / 100L;
-                Object8 = " \u767E\u5B57";
-            } else
-                Object8 = " \u5B57";
-            ((TextView) View5.findViewById(2131493776)).setText((CharSequence) new StringBuilder().append(long6).toString());
-            ((TextView) View5.findViewById(2131493777)).setText((CharSequence) Object8);
-            EditText9 = (EditText) View5.findViewById(2131494013);
-            if (BookSummary4.getAppendComment() != null && !BookSummary4.getAppendComment().equals(""))
-                EditText9.setText((CharSequence) BookSummary4.getAppendComment());
-            else
-                EditText9.setText((CharSequence) UGCGuideEditBooksActivity1.a.get(BookSummary4.getId()));
-            Editable10 = EditText9.getText();
-            if (Editable10 != null)
-                Selection.setSelection((Spannable) EditText9.getText(), Editable10.length());
-            new uk.me.lewisdeane.ldialogs.h((Context) UGCGuideEditBooksActivity1).a(View5).a("\u4FDD\u5B58", (DialogInterface$OnClickListener) new K(UGCGuideEditBooksActivity1, BookSummary4, EditText9)).b(2131034129, (DialogInterface$OnClickListener) new J(UGCGuideEditBooksActivity1, BookSummary4, EditText9)).a().show();
-            new Handler().postDelayed((Runnable) new L(UGCGuideEditBooksActivity1), 200L);
+    /*
+     * Enabled aggressive block sorting
+     */
+    static /* synthetic */ void a(UGCGuideEditBooksActivity uGCGuideEditBooksActivity, int n) {
+        String string;
+        Editable editable;
+        List<BookSummary> list = UGCGuideEditBooksActivity.e().getBooks();
+        if (list == null || list.size() == 0) {
+            return;
         }
-    }
-
-    static void b(UGCGuideEditBooksActivity UGCGuideEditBooksActivity1, int int2) {
-        List List3 = e().getBooks();
-
-        if (List3 != null && List3.size() != 0) {
-            BookSummary BookSummary4 = (BookSummary) List3.get(int2);
-            uk.me.lewisdeane.ldialogs.h h5 = new uk.me.lewisdeane.ldialogs.h((Context) UGCGuideEditBooksActivity1);
-
-            h5.e = "\u786E\u8BA4\u5220\u9664\u672C\u4E66\uFF1F";
-            h5.a(2131034424, (DialogInterface$OnClickListener) new M(UGCGuideEditBooksActivity1, List3, BookSummary4)).b(2131034129, null).a().show();
+        BookSummary bookSummary = list.get(n);
+        View view = uGCGuideEditBooksActivity.getLayoutInflater().inflate(2130903404, null, false);
+        ((CoverView) view.findViewById(2131492899)).setImageUrl(bookSummary.getFullCover(), 2130837766);
+        ((TextView) view.findViewById(2131492936)).setText(bookSummary.getTitle());
+        ((TextView) view.findViewById(2131493317)).setText(bookSummary.getAuthor());
+        ((TextView) view.findViewById(2131493775)).setText("" + bookSummary.getLatelyFollower());
+        long l2 = bookSummary.getWordCount();
+        if (l2 > 10000) {
+            l2 /= 10000;
+            string = " \u4e07\u5b57";
+        } else if (l2 > 100) {
+            l2 /= 100;
+            string = " \u767e\u5b57";
+        } else {
+            string = " \u5b57";
         }
+        ((TextView) view.findViewById(2131493776)).setText("" + l2);
+        ((TextView) view.findViewById(2131493777)).setText(string);
+        EditText editText = (EditText) view.findViewById(2131494013);
+        if (bookSummary.getAppendComment() != null && !bookSummary.getAppendComment().equals("")) {
+            editText.setText(bookSummary.getAppendComment());
+        } else {
+            editText.setText(uGCGuideEditBooksActivity.a.get(bookSummary.getId()));
+        }
+        if ((editable = editText.getText()) != null) {
+            Selection.setSelection(editText.getText(), editable.length());
+        }
+        new h(uGCGuideEditBooksActivity).a(view).a("\u4fdd\u5b58", (DialogInterface.OnClickListener) new K(uGCGuideEditBooksActivity, bookSummary, editText)).b(2131034129, (DialogInterface.OnClickListener) new J(uGCGuideEditBooksActivity, bookSummary, editText)).a().show();
+        new Handler().postDelayed(new L(uGCGuideEditBooksActivity), 200);
     }
 
-    static boolean b(UGCGuideEditBooksActivity UGCGuideEditBooksActivity1) {
-        Object[] Object_1darray2;
-
-        if (UGCGuideEditBooksActivity1.e.getCount() >= 8)
-            return true;
-        Object_1darray2 = new Object[1];
-        Object_1darray2[0] = Integer.valueOf(8);
-        com.clilystudio.netbook.util.e.a((Activity) UGCGuideEditBooksActivity1, String.format("\u592A\u5C11\u5566\uFF0C\u5355\u4E2A\u4E66\u5355\u81F3\u5C11\u9700\u8981%d\u672C\u5C0F\u8BF4\u54E6", Object_1darray2));
-        return false;
+    static /* synthetic */ void b(UGCGuideEditBooksActivity uGCGuideEditBooksActivity, int n) {
+        List<BookSummary> list = UGCGuideEditBooksActivity.e().getBooks();
+        if (list == null || list.size() == 0) {
+            return;
+        }
+        BookSummary bookSummary = list.get(n);
+        h h2 = new h(uGCGuideEditBooksActivity);
+        h2.e = "\u786e\u8ba4\u5220\u9664\u672c\u4e66\uff1f";
+        h2.a(2131034424, (DialogInterface.OnClickListener) new M(uGCGuideEditBooksActivity, list, bookSummary)).b(2131034129, null).a().show();
     }
 
-    static void c(UGCGuideEditBooksActivity UGCGuideEditBooksActivity1) {
-        UGCGuideEditBooksActivity1.b();
+    static /* synthetic */ boolean b(UGCGuideEditBooksActivity uGCGuideEditBooksActivity) {
+        if (uGCGuideEditBooksActivity.e.getCount() < 8) {
+            Object[] arrobject = new Object[]{8};
+            e.a((Activity) uGCGuideEditBooksActivity, (String) String.format("\u592a\u5c11\u5566\uff0c\u5355\u4e2a\u4e66\u5355\u81f3\u5c11\u9700\u8981%d\u672c\u5c0f\u8bf4\u54e6", arrobject));
+            return false;
+        }
+        return true;
     }
 
-    static boolean d(UGCGuideEditBooksActivity UGCGuideEditBooksActivity1) {
-        return UGCGuideEditBooksActivity1.h;
+    static /* synthetic */ void c(UGCGuideEditBooksActivity uGCGuideEditBooksActivity) {
+        uGCGuideEditBooksActivity.b();
     }
 
-    static UGCNewCollection e(UGCGuideEditBooksActivity UGCGuideEditBooksActivity1) {
-        return e();
+    static /* synthetic */ boolean d(UGCGuideEditBooksActivity uGCGuideEditBooksActivity) {
+        return uGCGuideEditBooksActivity.h;
     }
 
-    static String f(UGCGuideEditBooksActivity UGCGuideEditBooksActivity1) {
-        return UGCGuideEditBooksActivity1.f;
+    static /* synthetic */ UGCNewCollection e(UGCGuideEditBooksActivity uGCGuideEditBooksActivity) {
+        return UGCGuideEditBooksActivity.e();
     }
 
-    static UGCNewCollection g(UGCGuideEditBooksActivity UGCGuideEditBooksActivity1) {
-        return e();
+    static /* synthetic */ String f(UGCGuideEditBooksActivity uGCGuideEditBooksActivity) {
+        return uGCGuideEditBooksActivity.f;
     }
 
-    static UGCNewCollection h(UGCGuideEditBooksActivity UGCGuideEditBooksActivity1) {
-        return e();
+    static /* synthetic */ UGCNewCollection g(UGCGuideEditBooksActivity uGCGuideEditBooksActivity) {
+        return UGCGuideEditBooksActivity.e();
     }
 
-    static UGCNewCollection i(UGCGuideEditBooksActivity UGCGuideEditBooksActivity1) {
-        return e();
+    static /* synthetic */ UGCNewCollection h(UGCGuideEditBooksActivity uGCGuideEditBooksActivity) {
+        return UGCGuideEditBooksActivity.e();
     }
 
-    static Author j(UGCGuideEditBooksActivity UGCGuideEditBooksActivity1) {
-        return UGCGuideEditBooksActivity1.g;
+    static /* synthetic */ UGCNewCollection i(UGCGuideEditBooksActivity uGCGuideEditBooksActivity) {
+        return UGCGuideEditBooksActivity.e();
     }
 
-    static UGCNewCollection k(UGCGuideEditBooksActivity UGCGuideEditBooksActivity1) {
-        return e();
+    static /* synthetic */ Author j(UGCGuideEditBooksActivity uGCGuideEditBooksActivity) {
+        return uGCGuideEditBooksActivity.g;
     }
 
-    static UGCNewCollection l(UGCGuideEditBooksActivity UGCGuideEditBooksActivity1) {
-        return e();
+    static /* synthetic */ UGCNewCollection k(UGCGuideEditBooksActivity uGCGuideEditBooksActivity) {
+        return UGCGuideEditBooksActivity.e();
     }
 
-    static UGCNewCollection m(UGCGuideEditBooksActivity UGCGuideEditBooksActivity1) {
-        return e();
+    static /* synthetic */ UGCNewCollection l(UGCGuideEditBooksActivity uGCGuideEditBooksActivity) {
+        return UGCGuideEditBooksActivity.e();
     }
 
-    static UGCNewCollection n(UGCGuideEditBooksActivity UGCGuideEditBooksActivity1) {
-        return e();
+    static /* synthetic */ UGCNewCollection m(UGCGuideEditBooksActivity uGCGuideEditBooksActivity) {
+        return UGCGuideEditBooksActivity.e();
+    }
+
+    static /* synthetic */ UGCNewCollection n(UGCGuideEditBooksActivity uGCGuideEditBooksActivity) {
+        return UGCGuideEditBooksActivity.e();
     }
 
     private void b() {
-        UGCNewCollection UGCNewCollection1 = e();
-
-        e.a((Collection) UGCNewCollection1.getBooks());
-        if (UGCNewCollection1.getBooks() != null && UGCNewCollection1.getBooks().size() == 0)
-            c.setVisibility(0);
-        else
-            c.setVisibility(8);
-    }
-
-    public void onAddShelfBooks(D D1) {
-        N N2 = new N(this, (Activity) this);
-        String[][] String_2darray3 = new String[1][];
-
-        String_2darray3[0] = D1.a();
-        N2.b(String_2darray3);
-    }
-// Error: Internal #201: 
-// The following method may not be correct.
-
-    public void onClick(View View1) {
-    }
-
-    protected void onCreate(Bundle Bundle1) {
-        Bundle Bundle2;
-        Object Object3;
-        Object Object4;
-        UGCNewCollection UGCNewCollection5;
-        View View6;
-        TextView TextView7;
-        TextView TextView8;
-
-        super.onCreate(Bundle1);
-        setContentView(2130903401);
-        i.a().a(this);
-        Bundle2 = getIntent().getExtras();
-        if (Bundle2 != null && Bundle2.containsKey("name") && Bundle2.containsKey("desc")) {
-            Object Object9 = Bundle2.getString("name");
-
-            Object3 = Bundle2.getString("desc");
-            Object4 = Object9;
-        } else {
-            Object3 = "default_desc";
-            Object4 = "default_name";
+        UGCNewCollection uGCNewCollection = UGCGuideEditBooksActivity.e();
+        this.e.a(uGCNewCollection.getBooks());
+        if (uGCNewCollection.getBooks() != null && uGCNewCollection.getBooks().size() == 0) {
+            this.c.setVisibility(0);
+            return;
         }
-        f = Bundle2.getString("ugc_id");
-        g = (Author) Bundle2.getSerializable("my_author");
-        h = getIntent().getBooleanExtra("is_draft", false);
-        ShareSDK.initSDK((Context) this);
-        if (h || f == null || f.equals(""))
-            a("\u7F16\u8F91\u4E66\u5355", 2131034475, 2131034448, (ab) new H(this));
-        else
-            a("\u4E66\u5355\u8BE6\u60C5", 2131034448, (aa) new I(this));
-        UGCNewCollection5 = e();
-        UGCNewCollection5.setDesc((String) Object3);
-        UGCNewCollection5.setTitle((String) Object4);
-        b = (ListView) findViewById(2131492924);
-        c = findViewById(2131494006);
-        View6 = LayoutInflater.from((Context) this).inflate(2130903402, (ViewGroup) b, false);
-        TextView7 = (TextView) View6.findViewById(2131494007);
-        TextView8 = (TextView) View6.findViewById(2131494008);
-        TextView7.setText((CharSequence) Object4);
-        TextView8.setText((CharSequence) Object3);
-        b.addHeaderView(View6, null, false);
-        View6.findViewById(2131494010).setOnClickListener(this);
-        View6.findViewById(2131494009).setOnClickListener(this);
-        e = new Q(this, getLayoutInflater(), 2130903316);
-        b.setAdapter((ListAdapter) e);
+        this.c.setVisibility(8);
     }
 
+    @l
+    public void onAddShelfBooks(D d) {
+        N n = new N(this, this);
+        String[][] arrarrstring = new String[][]{d.a()};
+        n.b((Params[]) arrarrstring);
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            default: {
+                return;
+            }
+            case 2131494010: {
+                this.startActivity(new Intent(this, UGCGuideAddBookActivity.class));
+                return;
+            }
+            case 2131494009:
+        }
+        this.startActivity(new Intent(this, UGCGuideSelectBookActivity.class));
+    }
+
+    /*
+     * Enabled aggressive block sorting
+     */
+    @Override
+    protected void onCreate(Bundle bundle) {
+        String string;
+        String string2;
+        super.onCreate(bundle);
+        this.setContentView(2130903401);
+        i.a().a(this);
+        Bundle bundle2 = this.getIntent().getExtras();
+        if (bundle2 != null && bundle2.containsKey("name") && bundle2.containsKey("desc")) {
+            String string3 = bundle2.getString("name");
+            string = bundle2.getString("desc");
+            string2 = string3;
+        } else {
+            string = "default_desc";
+            string2 = "default_name";
+        }
+        this.f = bundle2.getString("ugc_id");
+        this.g = (Author) bundle2.getSerializable("my_author");
+        this.h = this.getIntent().getBooleanExtra("is_draft", false);
+        ShareSDK.initSDK(this);
+        if (this.h || this.f == null || this.f.equals("")) {
+            this.a("\u7f16\u8f91\u4e66\u5355", 2131034475, 2131034448, (ab) new H(this));
+        } else {
+            this.a("\u4e66\u5355\u8be6\u60c5", 2131034448, (aa) new I(this));
+        }
+        UGCNewCollection uGCNewCollection = UGCGuideEditBooksActivity.e();
+        uGCNewCollection.setDesc(string);
+        uGCNewCollection.setTitle(string2);
+        this.b = (ListView) this.findViewById(2131492924);
+        this.c = this.findViewById(2131494006);
+        View view = LayoutInflater.from(this).inflate(2130903402, (ViewGroup) this.b, false);
+        TextView textView = (TextView) view.findViewById(2131494007);
+        TextView textView2 = (TextView) view.findViewById(2131494008);
+        textView.setText(string2);
+        textView2.setText(string);
+        this.b.addHeaderView(view, null, false);
+        view.findViewById(2131494010).setOnClickListener(this);
+        view.findViewById(2131494009).setOnClickListener(this);
+        this.e = new Q(this, this.getLayoutInflater(), 2130903316);
+        this.b.setAdapter(this.e);
+    }
+
+    @Override
     protected void onDestroy() {
         super.onDestroy();
         i.a().b(this);
     }
 
+    @Override
     public void onResume() {
         super.onResume();
-        b();
+        this.b();
     }
 }

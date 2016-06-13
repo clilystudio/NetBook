@@ -2,77 +2,70 @@ package com.clilystudio.netbook.ui.post;
 
 import android.app.Activity;
 
+import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.model.Topic;
 import com.clilystudio.netbook.model.TopicPost;
+import com.clilystudio.netbook.util.e;
 
 import java.util.Collection;
 
-final class dO extends com.clilystudio.netbook.a.e {
+final class dO
+        extends com.clilystudio.netbook.a.e<String, Void, Topic> {
+    private /* synthetic */ TweetListFragment a;
 
-    private TweetListFragment a;
-
-    dO(TweetListFragment TweetListFragment1, byte byte2) {
-        this(TweetListFragment1);
+    private dO(TweetListFragment tweetListFragment) {
+        this.a = tweetListFragment;
     }
 
-    private dO(TweetListFragment TweetListFragment1) {
-        a = TweetListFragment1;
+    /* synthetic */ dO(TweetListFragment tweetListFragment, byte by) {
+        this(tweetListFragment);
     }
 
-    private static transient Topic a(String[] String_1darray1) {
-        Topic Topic4;
-
+    private static /* varargs */ Topic a(String... arrstring) {
         try {
-            com.clilystudio.netbook.api.b.a();
-            Topic4 = com.clilystudio.netbook.api.b.b().b(String_1darray1[0], String_1darray1[1], 0, 20);
-        } catch (Exception Exception2) {
-            Exception2.printStackTrace();
+            b.a();
+            Topic topic = b.b().b(arrstring[0], arrstring[1], 0, 20);
+            return topic;
+        } catch (Exception var1_2) {
+            var1_2.printStackTrace();
             return null;
         }
-        return Topic4;
     }
 
-    protected final Object doInBackground(Object[] Object_1darray1) {
-        return a((String[]) Object_1darray1);
+    @Override
+    protected final /* synthetic */ Object doInBackground(Object[] arrobject) {
+        return dO.a((String[]) arrobject);
     }
 
-    protected final void onPostExecute(Object Object1) {
-        Object Object2 = (Topic) Object1;
-
-        super.onPostExecute(Object2);
-        if (a.getActivity() != null) {
-            TweetListFragment.f(a);
-            if (Object2 != null && ((Topic) Object2).getPosts() != null) {
-                TopicPost[] TopicPost_1darray3;
-                int int4;
-
-                TweetListFragment.e(a).clear();
-                TopicPost_1darray3 = ((Topic) Object2).getPosts();
-                int4 = TopicPost_1darray3.length;
-                if (int4 > 0) {
-                    int int5 = TopicPost_1darray3.length;
-                    int int6;
-
-                    for (int6 = 0; int6 < int5; ++int6) {
-                        TopicPost TopicPost7 = TopicPost_1darray3[int6];
-
-                        TweetListFragment.e(a).add(TopicPost7);
-                    }
-                    TweetListFragment.g(a).a((Collection) TweetListFragment.e(a));
-                    if (int4 < 20)
-                        TweetListFragment.h(a).setOnLastItemVisibleListener(null);
-                    else {
-                        TweetListFragment.h(a).setOnLastItemVisibleListener(TweetListFragment.i(a));
-                        return;
-                    }
-                } else {
-                    TweetListFragment.j(a);
+    /*
+     * Enabled force condition propagation
+     * Lifted jumps to return sites
+     */
+    @Override
+    protected final /* synthetic */ void onPostExecute(Object object) {
+        Topic topic = (Topic) object;
+        super.onPostExecute(topic);
+        if (this.a.getActivity() == null) return;
+        TweetListFragment.f(this.a);
+        if (topic != null && topic.getPosts() != null) {
+            TweetListFragment.e(this.a).clear();
+            TopicPost[] arrtopicPost = topic.getPosts();
+            int n = arrtopicPost.length;
+            if (n > 0) {
+                for (TopicPost topicPost : arrtopicPost) {
+                    TweetListFragment.e(this.a).add(topicPost);
+                }
+                TweetListFragment.g(this.a).a((Collection) TweetListFragment.e(this.a));
+                if (n < 20) {
+                    TweetListFragment.h(this.a).setOnLastItemVisibleListener(null);
                     return;
                 }
-            } else {
-                com.clilystudio.netbook.util.e.a((Activity) a.getActivity(), "\u52A0\u8F7D\u5931\u8D25\uFF0C\u8BF7\u68C0\u67E5\u7F51\u7EDC\u6216\u7A0D\u540E\u518D\u8BD5");
+                TweetListFragment.h(this.a).setOnLastItemVisibleListener(TweetListFragment.i(this.a));
                 return;
             }
+            TweetListFragment.j(this.a);
+            return;
         }
+        e.a((Activity) this.a.getActivity(), (String) "\u52a0\u8f7d\u5931\u8d25\uff0c\u8bf7\u68c0\u67e5\u7f51\u7edc\u6216\u7a0d\u540e\u518d\u8bd5");
     }
 }

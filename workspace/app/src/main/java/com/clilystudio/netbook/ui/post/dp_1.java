@@ -2,68 +2,68 @@ package com.clilystudio.netbook.ui.post;
 
 import android.app.Activity;
 
+import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.model.ReviewList;
 import com.clilystudio.netbook.model.ReviewSummary;
+import com.clilystudio.netbook.util.e;
 
 import java.util.Arrays;
-import java.util.Collection;
+import java.util.List;
 
-final class dp extends com.clilystudio.netbook.a.e {
+final class dp
+        extends com.clilystudio.netbook.a.e<String, Void, ReviewList> {
+    private /* synthetic */ ReviewListActivity a;
 
-    private ReviewListActivity a;
-
-    dp(ReviewListActivity ReviewListActivity1, byte byte2) {
-        this(ReviewListActivity1);
+    private dp(ReviewListActivity reviewListActivity) {
+        this.a = reviewListActivity;
     }
 
-    private dp(ReviewListActivity ReviewListActivity1) {
-        a = ReviewListActivity1;
+    /* synthetic */ dp(ReviewListActivity reviewListActivity, byte by) {
+        this(reviewListActivity);
     }
 
-    private transient ReviewList a(String[] String_1darray1) {
-        ReviewList ReviewList4;
-
+    private /* varargs */ ReviewList a(String... arrstring) {
         try {
-            ReviewListActivity.q(a);
-            ReviewList4 = com.clilystudio.netbook.api.b.b().a(String_1darray1[0], String_1darray1[1], String_1darray1[2], 0, 20, ReviewListActivity.p(a));
-        } catch (Exception Exception2) {
-            Exception2.printStackTrace();
+            ReviewListActivity.q(this.a);
+            ReviewList reviewList = b.b().a(arrstring[0], arrstring[1], arrstring[2], 0, 20, ReviewListActivity.p(this.a));
+            return reviewList;
+        } catch (Exception var2_3) {
+            var2_3.printStackTrace();
             return null;
         }
-        return ReviewList4;
     }
 
-    protected final Object doInBackground(Object[] Object_1darray1) {
-        return a((String[]) Object_1darray1);
+    @Override
+    protected final /* synthetic */ Object doInBackground(Object[] arrobject) {
+        return this.a((String[]) arrobject);
     }
 
-    protected final void onPostExecute(Object Object1) {
-        Object Object2 = (ReviewList) Object1;
-
-        super.onPostExecute(Object2);
-        ReviewListActivity.e(a).setVisibility(8);
-        ReviewListActivity.r(a).setVisibility(8);
-        ReviewListActivity.s(a).setVisibility(8);
-        ReviewListActivity.n(a).n();
-        if (Object2 != null && ((ReviewList) Object2).getReviews() != null) {
-            ReviewSummary[] ReviewSummary_1darray3;
-            int int4;
-
-            ReviewListActivity.l(a).clear();
-            ReviewSummary_1darray3 = ((ReviewList) Object2).getReviews();
-            int4 = ReviewSummary_1darray3.length;
-            if (int4 > 0) {
-                Object Object5 = Arrays.asList(ReviewSummary_1darray3);
-
-                ReviewListActivity.l(a).addAll((Collection) Object5);
-                ReviewListActivity.t(a).a((Collection) ReviewListActivity.l(a));
-                if (int4 < 20)
-                    ReviewListActivity.n(a).setOnLastItemVisibleListener(null);
-                else
-                    ReviewListActivity.n(a).setOnLastItemVisibleListener(ReviewListActivity.u(a));
-            } else
-                ReviewListActivity.v(a);
-        } else
-            com.clilystudio.netbook.util.e.a((Activity) a, "\u52A0\u8F7D\u5931\u8D25\uFF0C\u8BF7\u68C0\u67E5\u7F51\u7EDC\u6216\u7A0D\u540E\u518D\u8BD5");
+    @Override
+    protected final /* synthetic */ void onPostExecute(Object object) {
+        ReviewList reviewList = (ReviewList) object;
+        super.onPostExecute(reviewList);
+        ReviewListActivity.e(this.a).setVisibility(8);
+        ReviewListActivity.r(this.a).setVisibility(8);
+        ReviewListActivity.s(this.a).setVisibility(8);
+        ReviewListActivity.n(this.a).n();
+        if (reviewList != null && reviewList.getReviews() != null) {
+            ReviewListActivity.l(this.a).clear();
+            ReviewSummary[] arrreviewSummary = reviewList.getReviews();
+            int n = arrreviewSummary.length;
+            if (n > 0) {
+                List<ReviewSummary> list = Arrays.asList(arrreviewSummary);
+                ReviewListActivity.l(this.a).addAll(list);
+                ReviewListActivity.t(this.a).a(ReviewListActivity.l(this.a));
+                if (n < 20) {
+                    ReviewListActivity.n(this.a).setOnLastItemVisibleListener(null);
+                    return;
+                }
+                ReviewListActivity.n(this.a).setOnLastItemVisibleListener(ReviewListActivity.u(this.a));
+                return;
+            }
+            ReviewListActivity.v(this.a);
+            return;
+        }
+        e.a((Activity) this.a, "\u52a0\u8f7d\u5931\u8d25\uff0c\u8bf7\u68c0\u67e5\u7f51\u7edc\u6216\u7a0d\u540e\u518d\u8bd5");
     }
 }

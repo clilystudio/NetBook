@@ -1,6 +1,5 @@
 package com.clilystudio.netbook.ui.post;
 
 public interface ax {
-
-    void a();
+    public void a();
 }

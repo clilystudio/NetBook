@@ -1,31 +1,27 @@
 package com.clilystudio.netbook.model;
 
 public class TopicSummary {
-
     private TopicSummary$TopicSummaryBook[] books;
     private boolean ok;
 
     public TopicSummary$TopicSummaryBook[] getBooks() {
-        int int1;
-
-        for (int1 = 0; int1 < books.length; ++int1) {
-            if (books[int1] == null) {
-                books[int1] = new TopicSummary$TopicSummaryBook(this);
-                books[int1].set_id("");
-            }
+        for (int i = 0; i < this.books.length; ++i) {
+            if (this.books[i] != null) continue;
+            this.books[i] = new TopicSummary$TopicSummaryBook(this);
+            this.books[i].set_id("");
         }
-        return books;
+        return this.books;
     }
 
-    public void setBooks(TopicSummary$TopicSummaryBook[] TopicSummaryBook_1darray1) {
-        books = TopicSummaryBook_1darray1;
+    public void setBooks(TopicSummary$TopicSummaryBook[] arrtopicSummary$TopicSummaryBook) {
+        this.books = arrtopicSummary$TopicSummaryBook;
     }
 
     public boolean isOk() {
-        return ok;
+        return this.ok;
     }
 
-    public void setOk(boolean boolean1) {
-        ok = boolean1;
+    public void setOk(boolean bl) {
+        this.ok = bl;
     }
 }

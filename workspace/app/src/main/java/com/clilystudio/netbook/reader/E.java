@@ -4,52 +4,51 @@ import android.app.Activity;
 import android.support.design.widget.am;
 
 import com.clilystudio.netbook.a.c;
+import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.model.ChapterSingleKey;
+import com.clilystudio.netbook.util.e;
 
 import java.io.IOException;
 
-final class E extends c {
+final class E
+        extends c<String, ChapterSingleKey> {
+    private /* synthetic */ o a;
 
-    private o a;
-
-    public E(o o1, Activity Activity2, int int3, boolean boolean4) {
-        super(Activity2, 2131034218, boolean4);
-        a = o1;
+    public E(o o2, Activity activity, int n, boolean bl) {
+        this.a = o2;
+        super(activity, 2131034218, bl);
     }
 
-    private static transient ChapterSingleKey a(String[] String_1darray1) {
-        ChapterSingleKey ChapterSingleKey4;
-
+    private static /* varargs */ ChapterSingleKey a(String... arrstring) {
         try {
-            com.clilystudio.netbook.api.b.a();
-            ChapterSingleKey4 = com.clilystudio.netbook.api.b.b().f(String_1darray1[0], am.e().getToken());
-        } catch (IOException IOException2) {
+            b.a();
+            ChapterSingleKey chapterSingleKey = b.b().f(arrstring[0], am.e().getToken());
+            return chapterSingleKey;
+        } catch (IOException var1_2) {
             return null;
         }
-        return ChapterSingleKey4;
     }
 
-    public final volatile Object a(Object[] Object_1darray1) {
-        return a((String[]) Object_1darray1);
-    }
-
-    public final void a(Object Object1) {
-        ChapterSingleKey ChapterSingleKey2 = (ChapterSingleKey) Object1;
-
-        if (ChapterSingleKey2 != null && ChapterSingleKey2.isOk() && ChapterSingleKey2.getKey() != null) {
-            o.b(a).q().a().e().put(ChapterSingleKey2.getChapterId(), ChapterSingleKey2.getKey());
-            if (o.b(a).a().getId().equals(ChapterSingleKey2.getChapterId())) {
-                o.b(a).a().setKey(ChapterSingleKey2.getKey());
-                o.b(a).g();
-                o.b(a).a(0);
-                if (o.a(a) instanceof ReaderActivity)
-                    ((ReaderActivity) o.a(a)).g();
-                else {
-                    a.e();
-                    return;
-                }
+    /*
+     * Enabled force condition propagation
+     * Lifted jumps to return sites
+     */
+    @Override
+    public final /* synthetic */ void a(Object object) {
+        ChapterSingleKey chapterSingleKey = (ChapterSingleKey) object;
+        if (chapterSingleKey != null && chapterSingleKey.isOk() && chapterSingleKey.getKey() != null) {
+            o.b((o) this.a).q().a().e().put(chapterSingleKey.getChapterId(), chapterSingleKey.getKey());
+            if (!o.b((o) this.a).a().getId().equals(chapterSingleKey.getChapterId())) return;
+            o.b((o) this.a).a().setKey(chapterSingleKey.getKey());
+            o.b((o) this.a).g();
+            o.b((o) this.a).a(0);
+            if (o.a((o) this.a) instanceof ReaderActivity) {
+                ((ReaderActivity) o.a((o) this.a)).g();
+                return;
             }
-        } else
-            com.clilystudio.netbook.util.e.a(o.a(a), "\u51FA\u73B0\u5F02\u5E38\uFF0C\u8BF7\u9000\u51FA\u9605\u8BFB\u540E\u91CD\u8BD5");
+            this.a.e();
+            return;
+        }
+        e.a((Activity) o.a((o) this.a), (String) "\u51fa\u73b0\u5f02\u5e38\uff0c\u8bf7\u9000\u51fa\u9605\u8bfb\u540e\u91cd\u8bd5");
     }
 }

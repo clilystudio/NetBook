@@ -8,16 +8,23 @@ import com.clilystudio.netbook.ui.SmartImageView;
 import com.clilystudio.netbook.widget.NewGameDownloadButton;
 
 import butterknife.ButterKnife;
+import butterknife.InjectView;
 
-public class GameLayoutFragment$LayoutAdapter$PromotionViewHolder extends ay {
-
+public class GameLayoutFragment$LayoutAdapter$PromotionViewHolder
+        extends ay {
+    @InjectView(value = 2131493481)
     TextView mDesc;
+    @InjectView(value = 2131492916)
     NewGameDownloadButton mDownload;
+    @InjectView(value = 2131493028)
     SmartImageView mIcon;
+    @InjectView(value = 2131492928)
     TextView mName;
+    @InjectView(value = 2131493482)
     TextView mPlayingCount;
-    public GameLayoutFragment$LayoutAdapter$PromotionViewHolder(GameLayoutFragment$LayoutAdapter LayoutAdapter1, View View2) {
-        super(View2);
-        ButterKnife.inject(this, View2);
+
+    public GameLayoutFragment$LayoutAdapter$PromotionViewHolder(GameLayoutFragment.LayoutAdapter layoutAdapter, View view) {
+        super(view);
+        ButterKnife.inject((Object) this, view);
     }
 }

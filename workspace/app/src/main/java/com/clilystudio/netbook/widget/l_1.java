@@ -1,30 +1,33 @@
 package com.clilystudio.netbook.widget;
 
-import android.app.Activity;
 import android.content.DialogInterface;
-import android.content.DialogInterface$OnClickListener;
 
 import com.clilystudio.netbook.model.PostComment;
 
-final class l implements DialogInterface$OnClickListener {
+final class l
+        implements DialogInterface.OnClickListener {
+    private /* synthetic */ String[] a;
+    private /* synthetic */ PostComment b;
+    private /* synthetic */ CommentItemView c;
 
-    private String[] a;
-    private PostComment b;
-    private CommentItemView c;
-    l(CommentItemView CommentItemView1, String[] String_1darray2, PostComment PostComment3) {
-        c = CommentItemView1;
-        a = String_1darray2;
-        b = PostComment3;
+    l(CommentItemView commentItemView, String[] arrstring, PostComment postComment) {
+        this.c = commentItemView;
+        this.a = arrstring;
+        this.b = postComment;
     }
 
-    public final void onClick(DialogInterface DialogInterface1, int int2) {
-        if (a.length == 2 && int2 == 0) {
-            String String3 = CommentItemView.a(c).n();
-            String String4 = b.getReplyTo().get_id();
-
-            new o(c, (Activity) CommentItemView.a(c)).b(new String[]{String3, String4});
-        } else if (a.length == 1 || int2 == 1)
-            CommentItemView.a(c).a(b.get_id());
-        CommentItemView.a(c).k();
+    /*
+     * Enabled aggressive block sorting
+     */
+    @Override
+    public final void onClick(DialogInterface dialogInterface, int n) {
+        if (this.a.length == 2 && n == 0) {
+            String string = CommentItemView.a(this.c).n();
+            String string2 = this.b.getReplyTo().get_id();
+            new o(this.c, CommentItemView.a(this.c)).b(string, string2);
+        } else if (this.a.length == 1 || n == 1) {
+            CommentItemView.a(this.c).a(this.b.get_id());
+        }
+        CommentItemView.a(this.c).k();
     }
 }

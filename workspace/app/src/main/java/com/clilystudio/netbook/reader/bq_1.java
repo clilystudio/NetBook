@@ -4,24 +4,26 @@ import com.clilystudio.netbook.a.b;
 import com.clilystudio.netbook.db.BookTopicEnterRecord;
 import com.clilystudio.netbook.model.TopicCount;
 
-final class bq extends b {
+final class bq
+        extends b {
+    private /* synthetic */ ReaderActivity a;
 
-    private ReaderActivity a;
-
-    bq(ReaderActivity ReaderActivity1, byte byte2) {
-        this(ReaderActivity1);
+    private bq(ReaderActivity readerActivity) {
+        this.a = readerActivity;
     }
 
-    private bq(ReaderActivity ReaderActivity1) {
-        a = ReaderActivity1;
+    /* synthetic */ bq(ReaderActivity readerActivity, byte by) {
+        this(readerActivity);
     }
 
-    protected final void a(TopicCount TopicCount1) {
-        ReaderActivity.i(a, TopicCount1.getCount());
-        ReaderActivity.j(a, ReaderActivity.af(a) - BookTopicEnterRecord.get(ReaderActivity.M(a)).getVisitCount());
-        if (ReaderActivity.d(a) > 0)
-            ReaderActivity.A(a).f(true);
-        else
-            ReaderActivity.A(a).f(false);
+    @Override
+    protected final void a(TopicCount topicCount) {
+        ReaderActivity.i(this.a, topicCount.getCount());
+        ReaderActivity.j(this.a, ReaderActivity.af(this.a) - BookTopicEnterRecord.get(ReaderActivity.M(this.a)).getVisitCount());
+        if (ReaderActivity.d(this.a) > 0) {
+            ReaderActivity.A(this.a).f(true);
+            return;
+        }
+        ReaderActivity.A(this.a).f(false);
     }
 }

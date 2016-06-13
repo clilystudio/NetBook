@@ -1,5 +1,6 @@
 package com.clilystudio.netbook.ui.ugcbook;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -9,55 +10,61 @@ import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.model.UGCBookListRoot;
 import com.clilystudio.netbook.model.UGCBookListRoot$UGCBook;
 
-import java.util.Collection;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.Date;
-import java.util.Iterator;
 
-public class DraftUGCListFragment extends AbsUGCListFragment {
-
-    protected final UGCBookListRoot a(Account Account1, int int2) {
-        com.clilystudio.netbook.api.b.a();
-        return com.clilystudio.netbook.api.b.b().h(Account1.getToken(), int2);
+public class DraftUGCListFragment
+        extends AbsUGCListFragment {
+    @Override
+    protected final UGCBookListRoot a(Account account, int n) {
+        b.a();
+        return b.b().h(account.getToken(), n);
     }
 
+    @Override
     protected final String c() {
-        return "\u8349\u7A3F\u7BB1\u91CC\u6CA1\u6709\u4E66\u5355";
+        return "\u8349\u7a3f\u7bb1\u91cc\u6ca1\u6709\u4e66\u5355";
     }
 
-    public void onCreate(Bundle Bundle1) {
-        super.onCreate(Bundle1);
-        com.clilystudio.netbook.event.i.a().a(this);
+    @Override
+    public void onCreate(Bundle bundle) {
+        super.onCreate(bundle);
+        i.a().a(this);
     }
 
+    @Override
     public void onDestroy() {
         super.onDestroy();
-        com.clilystudio.netbook.event.i.a().b(this);
-    }
-// Error: Internal #201: 
-// The following method may not be correct.
-
-    public void onItemClick(AdapterView AdapterView1, View View2, int int3, long long4) {
+        i.a().b(this);
     }
 
-    public void onUpdateUgcList(J J1) {
-        if (i != null && c != null) {
-            Iterator Iterator2 = i.iterator();
-
-            while (Iterator2.hasNext()) {
-                UGCBookListRoot$UGCBook UGCBook3 = (UGCBookListRoot$UGCBook) Iterator2.next();
-
-                if (!UGCBook3.get_id().equals(J1.b()))
-                    continue;
-                UGCBook3.setCover(J1.a());
-                UGCBook3.setTitle(J1.c());
-                UGCBook3.setDesc(J1.d());
-                UGCBook3.setBookCount(J1.e());
-                UGCBook3.setUpdated(new Date());
-            }
-            Collections.sort(i, (Comparator) new f(this));
-            c.a((Collection) i);
+    @Override
+    public void onItemClick(AdapterView<?> adapterView, View view, int n, long l2) {
+        UGCBookListRoot$UGCBook uGCBookListRoot$UGCBook;
+        int n2 = n - this.b.getHeaderViewsCount();
+        if (n2 >= 0 && n2 < this.i.size() && (uGCBookListRoot$UGCBook = (UGCBookListRoot$UGCBook) this.i.get(n2)) != null) {
+            Intent intent = new Intent(this.getActivity(), UGCDetailActivity.class);
+            intent.putExtra("book_id", uGCBookListRoot$UGCBook.get_id());
+            intent.putExtra("my_list", true);
+            intent.putExtra("is_draft", true);
+            this.startActivity(intent);
         }
+    }
+
+    @l
+    public void onUpdateUgcList(J j2) {
+        if (this.i == null || this.c == null) {
+            return;
+        }
+        for (UGCBookListRoot$UGCBook uGCBookListRoot$UGCBook : this.i) {
+            if (!uGCBookListRoot$UGCBook.get_id().equals(j2.b())) continue;
+            uGCBookListRoot$UGCBook.setCover(j2.a());
+            uGCBookListRoot$UGCBook.setTitle(j2.c());
+            uGCBookListRoot$UGCBook.setDesc(j2.d());
+            uGCBookListRoot$UGCBook.setBookCount(j2.e());
+            uGCBookListRoot$UGCBook.setUpdated(new Date());
+        }
+        Collections.sort(this.i, new f(this));
+        this.c.a(this.i);
     }
 }

@@ -5,31 +5,36 @@ import android.content.Intent;
 
 import com.clilystudio.netbook.model.NotificationItem;
 
-public class PostPushBinder extends OfficialNotifBinder {
-
+public class PostPushBinder
+        extends OfficialNotifBinder {
     public static final String LABEL = "post_push";
 
-    public PostPushBinder(NotificationItem NotificationItem1) {
-        super(NotificationItem1);
+    public PostPushBinder(NotificationItem notificationItem) {
+        super(notificationItem);
     }
 
+    @Override
     protected int getIconRes() {
-        return getPostIcon();
+        return this.getPostIcon();
     }
 
-    public Intent getIntent(Context Context1) {
-        return getPostIntent(Context1, getItem().getPost());
+    @Override
+    public Intent getIntent(Context context) {
+        return this.getPostIntent(context, this.getItem().getPost());
     }
 
+    @Override
     public String getLabel() {
         return "post_push";
     }
 
+    @Override
     public String getMainText() {
-        return getItem().getTitle();
+        return this.getItem().getTitle();
     }
 
+    @Override
     public String getSubText() {
-        return getItem().getPost().getTitle();
+        return this.getItem().getPost().getTitle();
     }
 }

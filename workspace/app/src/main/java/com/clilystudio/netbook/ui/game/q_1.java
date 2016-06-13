@@ -1,58 +1,58 @@
 package com.clilystudio.netbook.ui.game;
 
 import android.app.Activity;
-import android.content.Context;
 
 import com.clilystudio.netbook.model.GameDetail;
+import com.clilystudio.netbook.util.e;
 
 import java.io.IOException;
 
-final class q extends com.clilystudio.netbook.a.e {
+final class q
+        extends com.clilystudio.netbook.a.e<String, Void, GameDetail> {
+    private /* synthetic */ GameDetailActivity a;
 
-    private GameDetailActivity a;
-
-    q(GameDetailActivity GameDetailActivity1, byte byte2) {
-        this(GameDetailActivity1);
+    private q(GameDetailActivity gameDetailActivity) {
+        this.a = gameDetailActivity;
     }
 
-    private q(GameDetailActivity GameDetailActivity1) {
-        a = GameDetailActivity1;
+    /* synthetic */ q(GameDetailActivity gameDetailActivity, byte by) {
+        this(gameDetailActivity);
     }
 
-    private transient GameDetail a(String[] String_1darray1) {
-        GameDetail GameDetail3;
-
+    private /* varargs */ GameDetail a(String... arrstring) {
         try {
-            GameDetail3 = com.clilystudio.netbook.api.b.b().Y(String_1darray1[0]);
-        } catch (IOException IOException2) {
-            IOException2.printStackTrace();
+            GameDetail gameDetail = com.clilystudio.netbook.api.b.b().Y(arrstring[0]);
+            return gameDetail;
+        } catch (IOException var2_3) {
+            var2_3.printStackTrace();
             return null;
         }
-        return GameDetail3;
     }
 
-    protected final Object doInBackground(Object[] Object_1darray1) {
-        return a((String[]) Object_1darray1);
+    @Override
+    protected final /* synthetic */ Object doInBackground(Object[] arrobject) {
+        return this.a((String[]) arrobject);
     }
 
-    protected final void onPostExecute(Object Object1) {
-        Object Object2 = (GameDetail) Object1;
-
-        super.onPostExecute(Object2);
-        if (Object2 != null && ((GameDetail) Object2).isOk() && ((GameDetail) Object2).getGame() != null) {
-            a.f();
-            GameDetailActivity.a(a, ((GameDetail) Object2).getGame());
-            GameDetailActivity.f(a);
-            GameDetailActivity.b(a, GameDetailActivity.e(a));
-            GameDetailActivity.g(a);
-            com.umeng.a.b.a((Context) a, "game_detail_opened", GameDetailActivity.e(a).getName());
-            if (GameDetailActivity.h(a))
-                com.umeng.a.b.a((Context) a, "micro_game_continue_detail", GameDetailActivity.e(a).getName());
-            else
-                com.umeng.a.b.a((Context) a, "micro_game_play_detail", GameDetailActivity.e(a).getName());
-        } else {
-            a.h();
-            com.clilystudio.netbook.util.e.a((Activity) a, "\u8F7D\u5165\u5931\u8D25\uFF0C\u8BF7\u7A0D\u540E\u518D\u8BD5");
+    @Override
+    protected final /* synthetic */ void onPostExecute(Object object) {
+        GameDetail gameDetail = (GameDetail) object;
+        super.onPostExecute(gameDetail);
+        if (gameDetail != null && gameDetail.isOk() && gameDetail.getGame() != null) {
+            this.a.f();
+            GameDetailActivity.a(this.a, gameDetail.getGame());
+            GameDetailActivity.f(this.a);
+            GameDetailActivity.b(this.a, GameDetailActivity.e(this.a));
+            GameDetailActivity.g(this.a);
+            b.a(this.a, "game_detail_opened", GameDetailActivity.e(this.a).getName());
+            if (GameDetailActivity.h(this.a)) {
+                b.a(this.a, "micro_game_continue_detail", GameDetailActivity.e(this.a).getName());
+                return;
+            }
+            b.a(this.a, "micro_game_play_detail", GameDetailActivity.e(this.a).getName());
+            return;
         }
+        this.a.h();
+        e.a((Activity) this.a, "\u8f7d\u5165\u5931\u8d25\uff0c\u8bf7\u7a0d\u540e\u518d\u8bd5");
     }
 }

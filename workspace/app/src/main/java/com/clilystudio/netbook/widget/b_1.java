@@ -1,17 +1,17 @@
 package com.clilystudio.netbook.widget;
 
 import android.content.DialogInterface;
-import android.content.DialogInterface$OnClickListener;
 
-final class b implements DialogInterface$OnClickListener {
+final class b
+        implements DialogInterface.OnClickListener {
+    private /* synthetic */ AbsDownloadButton a;
 
-    private AbsDownloadButton a;
-
-    b(AbsDownloadButton AbsDownloadButton1) {
-        a = AbsDownloadButton1;
+    b(AbsDownloadButton absDownloadButton) {
+        this.a = absDownloadButton;
     }
 
-    public final void onClick(DialogInterface DialogInterface1, int int2) {
-        a.b();
+    @Override
+    public final void onClick(DialogInterface dialogInterface, int n) {
+        this.a.b();
     }
 }

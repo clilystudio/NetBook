@@ -1,23 +1,22 @@
 package com.clilystudio.netbook.model;
 
 public class IKanshuUrlResult {
-
     private String[] links;
     private boolean ok;
 
     public String[] getLinks() {
-        return links;
+        return this.links;
     }
 
-    public void setLinks(String[] String_1darray1) {
-        links = String_1darray1;
+    public void setLinks(String[] arrstring) {
+        this.links = arrstring;
     }
 
     public boolean isOk() {
-        return ok;
+        return this.ok;
     }
 
-    public void setOk(boolean boolean1) {
-        ok = boolean1;
+    public void setOk(boolean bl) {
+        this.ok = bl;
     }
 }

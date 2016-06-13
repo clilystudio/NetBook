@@ -1,14 +1,15 @@
 package com.clilystudio.netbook.reader;
 
-final class bm implements ca {
+final class bm
+        implements ca {
+    private /* synthetic */ ReaderActivity a;
 
-    private ReaderActivity a;
-
-    bm(ReaderActivity ReaderActivity1) {
-        a = ReaderActivity1;
+    bm(ReaderActivity readerActivity) {
+        this.a = readerActivity;
     }
 
+    @Override
     public final void a() {
-        ReaderActivity.v(a);
+        ReaderActivity.v(this.a);
     }
 }

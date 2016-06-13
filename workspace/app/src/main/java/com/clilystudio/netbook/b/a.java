@@ -8,34 +8,31 @@ import com.clilystudio.netbook.exception.UnImplementException;
 import com.clilystudio.netbook.model.InsideLink;
 import com.clilystudio.netbook.util.InsideLinkIntent;
 
-public final class a extends b {
-
+public final class a
+        extends b {
     private InsideLink b;
 
-    public a(Context Context1, InsideLink InsideLink2) {
-        super(Context1);
-        b = InsideLink2;
+    public a(Context context, InsideLink insideLink) {
+        super(context);
+        this.b = insideLink;
     }
 
+    @Override
     final Intent a() {
-        Object Object1;
-
         try {
-            Object1 = new InsideLinkIntent(a, b);
-        } catch (UnImplementException UnImplementException2) {
-            UnImplementException2.printStackTrace();
+            InsideLinkIntent insideLinkIntent = new InsideLinkIntent(this.a, this.b);
+            return insideLinkIntent;
+        } catch (UnImplementException var2_2) {
+            var2_2.printStackTrace();
             return null;
         }
-        return (Intent) Object1;
     }
 
-    public final void onClick(View View1) {
-        Context Context2;
-        InsideLink InsideLink3;
-
-        super.onClick(View1);
-        Context2 = a;
-        InsideLink3 = b;
-        com.umeng.a.b.a(Context2, "post_official_link_click", new StringBuilder().append(InsideLink3.getType().getName()).append("-").append(InsideLink3.getLabel()).toString());
+    @Override
+    public final void onClick(View view) {
+        super.onClick(view);
+        Context context = this.a;
+        InsideLink insideLink = this.b;
+        com.umeng.a.b.a(context, "post_official_link_click", insideLink.getType().getName() + "-" + insideLink.getLabel());
     }
 }

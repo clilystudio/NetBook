@@ -1,8 +1,6 @@
 package com.clilystudio.netbook.ui;
 
-import android.content.Context;
 import android.view.View;
-import android.view.View$OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -14,64 +12,63 @@ import com.clilystudio.netbook.event.i;
 import com.clilystudio.netbook.event.w;
 import com.clilystudio.netbook.util.J;
 
-public class ImportantNotificationFragment extends NotifFragment {
-
+public class ImportantNotificationFragment
+        extends NotifFragment {
     private LinearLayout a;
     private ImageView b;
 
-    private void a(boolean boolean1) {
-        ImageView ImageView2 = b;
-        int int3;
-
-        if (boolean1)
-            int3 = 0;
-        else
-            int3 = 8;
-        ImageView2.setVisibility(int3);
+    /*
+     * Enabled aggressive block sorting
+     */
+    private void a(boolean bl) {
+        ImageView imageView = this.b;
+        int n = bl ? 0 : 8;
+        imageView.setVisibility(n);
     }
 
+    @Override
     protected final NotifFragment$Type a() {
         return NotifFragment$Type.IMPORTANT;
     }
 
-    protected final void a(ListView ListView1) {
-        View View2 = getActivity().getLayoutInflater().inflate(2130903242, (ViewGroup) ListView1, false);
-
-        ListView1.addHeaderView(View2);
-        a = (LinearLayout) View2.findViewById(2131493571);
-        b = (ImageView) View2.findViewById(2131493572);
-        a.setOnClickListener((View$OnClickListener) new bb(this));
+    @Override
+    protected final void a(ListView listView) {
+        View view = this.getActivity().getLayoutInflater().inflate(2130903242, (ViewGroup) listView, false);
+        listView.addHeaderView(view);
+        this.a = (LinearLayout) view.findViewById(2131493571);
+        this.b = (ImageView) view.findViewById(2131493572);
+        this.a.setOnClickListener(new bb(this));
     }
 
+    @Override
     protected final NotificationAdapter b() {
-        return (NotificationAdapter) new t(getActivity().getLayoutInflater());
+        return new t(this.getActivity().getLayoutInflater());
     }
 
-    public void onNotifEvent(w w1) {
-        boolean boolean2;
-
-        if (J.a((Context) getActivity()).b() > 0)
-            boolean2 = true;
-        else
-            boolean2 = false;
-        a(boolean2);
+    /*
+     * Enabled aggressive block sorting
+     */
+    @l
+    public void onNotifEvent(w w2) {
+        boolean bl = J.a(this.getActivity()).b() > 0;
+        this.a(bl);
     }
 
+    @Override
     public void onPause() {
         super.onPause();
-        J.a((Context) getActivity()).c();
+        J.a(this.getActivity()).c();
         i.a().b(this);
     }
 
+    /*
+     * Enabled aggressive block sorting
+     */
+    @Override
     public void onResume() {
-        boolean boolean1;
-
         super.onResume();
         i.a().a(this);
-        if (J.a((Context) getActivity()).b() > 0)
-            boolean1 = true;
-        else
-            boolean1 = false;
-        a(boolean1);
+        boolean bl = J.a(this.getActivity()).b() > 0;
+        this.a(bl);
     }
 }

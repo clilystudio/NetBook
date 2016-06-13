@@ -2,53 +2,59 @@ package com.clilystudio.netbook.ui;
 
 import android.app.Activity;
 
+import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.model.BookRankDetailRoot;
+import com.clilystudio.netbook.util.e;
 
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Collection;
 
-final class aR extends com.clilystudio.netbook.a.e {
+final class aR
+        extends com.clilystudio.netbook.a.e<String, Void, BookRankDetailRoot> {
+    private /* synthetic */ BookRankListFragment a;
 
-    private BookRankListFragment a;
-
-    aR(BookRankListFragment BookRankListFragment1, byte byte2) {
-        this(BookRankListFragment1);
+    private aR(BookRankListFragment bookRankListFragment) {
+        this.a = bookRankListFragment;
     }
 
-    private aR(BookRankListFragment BookRankListFragment1) {
-        a = BookRankListFragment1;
+    /* synthetic */ aR(BookRankListFragment bookRankListFragment, byte by) {
+        this(bookRankListFragment);
     }
 
-    private transient BookRankDetailRoot a() {
-        BookRankDetailRoot BookRankDetailRoot3;
-
+    private /* varargs */ BookRankDetailRoot a() {
         try {
-            com.clilystudio.netbook.api.b.a();
-            BookRankDetailRoot3 = com.clilystudio.netbook.api.b.b().z(a.getArguments().getString("book_list_id"));
-        } catch (IOException IOException1) {
-            IOException1.printStackTrace();
+            b.a();
+            BookRankDetailRoot bookRankDetailRoot = b.b().z(this.a.getArguments().getString("book_list_id"));
+            return bookRankDetailRoot;
+        } catch (IOException var1_2) {
+            var1_2.printStackTrace();
             return null;
         }
-        return BookRankDetailRoot3;
     }
 
-    protected final Object doInBackground(Object[] Object_1darray1) {
-        return a();
+    /*
+     * Exception decompiling
+     */
+    @Override
+    protected final /* synthetic */ Object doInBackground(Object[] var1_1) {
+        // This method has failed to decompile.  When submitting a bug report, please provide this stack trace, and (if you hold appropriate legal rights) the relevant class file.
+        // java.lang.ArrayIndexOutOfBoundsException
+        throw new IllegalStateException("Decompilation failed");
     }
 
-    protected final void onPostExecute(Object Object1) {
-        Object Object2 = (BookRankDetailRoot) Object1;
-
-        super.onPostExecute(Object2);
-        BookRankListFragment.b(a).setVisibility(8);
-        if (Object2 != null && ((BookRankDetailRoot) Object2).getRanking() != null) {
-            a.b(1);
-            BookRankListFragment.c(a).addAll((Collection) Arrays.asList(((BookRankDetailRoot) Object2).getRanking().getBooks()));
-            a.a.a((Collection) BookRankListFragment.c(a));
-        } else {
-            a.b(2);
-            com.clilystudio.netbook.util.e.a((Activity) a.getActivity(), 2131034408);
+    @Override
+    protected final /* synthetic */ void onPostExecute(Object object) {
+        BookRankDetailRoot bookRankDetailRoot = (BookRankDetailRoot) object;
+        super.onPostExecute(bookRankDetailRoot);
+        BookRankListFragment.b(this.a).setVisibility(8);
+        if (bookRankDetailRoot != null && bookRankDetailRoot.getRanking() != null) {
+            this.a.b(1);
+            BookRankListFragment.c(this.a).addAll(Arrays.asList(bookRankDetailRoot.getRanking().getBooks()));
+            this.a.a.a((Collection) BookRankListFragment.c(this.a));
+            return;
         }
+        this.a.b(2);
+        e.a((Activity) this.a.getActivity(), (int) 2131034408);
     }
 }

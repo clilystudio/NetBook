@@ -1,62 +1,63 @@
 package com.clilystudio.netbook.widget;
 
 import android.content.Context;
-import android.text.TextWatcher;
 import android.util.AttributeSet;
-import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import butterknife.ButterKnife;
+import butterknife.InjectView;
 
-public class SendView extends LinearLayout {
-
+public class SendView
+        extends LinearLayout {
+    @InjectView(value = 2131494004)
     EditText mSendContent;
+    @InjectView(value = 2131494005)
     ImageView mSendView;
-    public SendView(Context Context1, AttributeSet AttributeSet2) {
-        super(Context1, AttributeSet2);
+
+    public SendView(Context context, AttributeSet attributeSet) {
+        super(context, attributeSet);
     }
 
-    static void a(SendView SendView1) {
-        SendView1.d();
+    static /* synthetic */ void a(SendView sendView) {
+        sendView.d();
     }
 
+    /*
+     * Enabled aggressive block sorting
+     */
     private void d() {
-        ImageView ImageView1 = mSendView;
-        boolean boolean2;
-
-        if (mSendContent.getText().toString().length() > 0)
-            boolean2 = true;
-        else
-            boolean2 = false;
-        ImageView1.setEnabled(boolean2);
+        ImageView imageView = this.mSendView;
+        boolean bl = this.mSendContent.getText().toString().length() > 0;
+        imageView.setEnabled(bl);
     }
 
     public final void a() {
-        mSendContent.setText((CharSequence) "");
+        this.mSendContent.setText("");
     }
 
     public final EditText b() {
-        return mSendContent;
+        return this.mSendContent;
     }
 
     public final ImageView c() {
-        return mSendView;
+        return this.mSendView;
     }
 
+    @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
-        ButterKnife.inject((View) this);
-        d();
-        mSendContent.addTextChangedListener((TextWatcher) new ay(this));
+        ButterKnife.inject(this);
+        this.d();
+        this.mSendContent.addTextChangedListener(new ay(this));
     }
 
-    public void setSendContent(EditText EditText1) {
-        mSendContent = EditText1;
+    public void setSendContent(EditText editText) {
+        this.mSendContent = editText;
     }
 
-    public void setSendView(ImageView ImageView1) {
-        mSendView = ImageView1;
+    public void setSendView(ImageView imageView) {
+        this.mSendView = imageView;
     }
 }

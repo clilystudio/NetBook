@@ -5,7 +5,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 public final class Y {
-
     TextView a;
     TextView b;
     TextView c;
@@ -15,6 +14,7 @@ public final class Y {
     View g;
     View h;
     ImageView i;
-    public Y(S S1) {
+
+    public Y(S s) {
     }
 }

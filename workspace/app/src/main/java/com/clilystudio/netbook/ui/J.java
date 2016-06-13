@@ -1,18 +1,21 @@
 package com.clilystudio.netbook.ui;
 
+import android.annotation.TargetApi;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 
-final class J extends BroadcastReceiver {
+final class J
+        extends BroadcastReceiver {
+    private /* synthetic */ BaseActivity a;
 
-    private BaseActivity a;
-
-    J(BaseActivity BaseActivity1) {
-        a = BaseActivity1;
+    J(BaseActivity baseActivity) {
+        this.a = baseActivity;
     }
 
-    public final void onReceive(Context Context1, Intent Intent2) {
-        a.recreate();
+    @TargetApi(value = 11)
+    @Override
+    public final void onReceive(Context context, Intent intent) {
+        this.a.recreate();
     }
 }

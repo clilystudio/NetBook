@@ -3,23 +3,25 @@ package com.clilystudio.netbook.ui.game;
 import android.content.Context;
 import android.support.design.widget.am;
 import android.view.View;
-import android.view.View$OnClickListener;
 
-import com.umeng.a.b;
+final class i
+        implements View.OnClickListener {
+    private /* synthetic */ GameDetailActivity a;
 
-final class i implements View$OnClickListener {
-
-    private GameDetailActivity a;
-
-    i(GameDetailActivity GameDetailActivity1) {
-        a = GameDetailActivity1;
+    i(GameDetailActivity gameDetailActivity) {
+        this.a = gameDetailActivity;
     }
 
-    public final void onClick(View View1) {
-        if (GameDetailActivity.h(a))
-            b.a((Context) a, "micro_game_continue_click", GameDetailActivity.e(a).getName());
-        else
-            b.a((Context) a, "micro_game_play_click", GameDetailActivity.e(a).getName());
-        am.a((Context) a, GameDetailActivity.e(a));
+    /*
+     * Enabled aggressive block sorting
+     */
+    @Override
+    public final void onClick(View view) {
+        if (GameDetailActivity.h(this.a)) {
+            b.a(this.a, "micro_game_continue_click", GameDetailActivity.e(this.a).getName());
+        } else {
+            b.a(this.a, "micro_game_play_click", GameDetailActivity.e(this.a).getName());
+        }
+        am.a((Context) this.a, GameDetailActivity.e(this.a));
     }
 }

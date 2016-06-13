@@ -1,23 +1,22 @@
 package com.clilystudio.netbook.model;
 
 public class PayChargeRecord {
-
     private boolean ok;
     private PayChargeRecord$Order[] orders;
 
     public PayChargeRecord$Order[] getOrders() {
-        return orders;
+        return this.orders;
     }
 
-    public void setOrders(PayChargeRecord$Order[] Order_1darray1) {
-        orders = Order_1darray1;
+    public void setOrders(PayChargeRecord$Order[] arrpayChargeRecord$Order) {
+        this.orders = arrpayChargeRecord$Order;
     }
 
     public boolean isOk() {
-        return ok;
+        return this.ok;
     }
 
-    public void setOk(boolean boolean1) {
-        ok = boolean1;
+    public void setOk(boolean bl) {
+        this.ok = bl;
     }
 }

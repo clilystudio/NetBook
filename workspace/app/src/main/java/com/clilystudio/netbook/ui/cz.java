@@ -1,15 +1,17 @@
 package com.clilystudio.netbook.ui;
 
-final class cz implements Runnable {
+final class cz
+        implements Runnable {
+    private /* synthetic */ String a;
+    private /* synthetic */ cw b;
 
-    private String a;
-    private cw b;
-    cz(cw cw1, String String2) {
-        b = cw1;
-        a = String2;
+    cz(cw cw2, String string) {
+        this.b = cw2;
+        this.a = string;
     }
 
+    @Override
     public final void run() {
-        cw.c(b).loadUrl(new StringBuilder("javascript:ZssqJsApiOnShared('").append(a).append("')").toString());
+        cw.c(this.b).loadUrl("javascript:ZssqJsApiOnShared('" + this.a + "')");
     }
 }

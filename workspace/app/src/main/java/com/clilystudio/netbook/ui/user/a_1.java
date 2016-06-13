@@ -1,21 +1,21 @@
 package com.clilystudio.netbook.ui.user;
 
 import android.view.View;
-import android.view.View$OnClickListener;
 
 import cn.sharesdk.sina.weibo.SinaWeibo;
 
-final class a implements View$OnClickListener {
+final class a
+        implements View.OnClickListener {
+    private /* synthetic */ AuthLoginActivity a;
 
-    private AuthLoginActivity a;
-
-    a(AuthLoginActivity AuthLoginActivity1) {
-        a = AuthLoginActivity1;
+    a(AuthLoginActivity authLoginActivity) {
+        this.a = authLoginActivity;
     }
 
-    public final void onClick(View View1) {
-        AuthLoginActivity.a(a, View1);
-        AuthLoginActivity.a(a, SinaWeibo.NAME);
-        AuthLoginActivity.b(a, "SinaWeibo");
+    @Override
+    public final void onClick(View view) {
+        AuthLoginActivity.a(this.a, view);
+        AuthLoginActivity.a(this.a, SinaWeibo.NAME);
+        AuthLoginActivity.b(this.a, "SinaWeibo");
     }
 }

@@ -4,7 +4,6 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View$OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -12,38 +11,45 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import butterknife.ButterKnife;
+import butterknife.InjectView;
 
-public class ShareWarningView extends RelativeLayout {
-
+public class ShareWarningView
+        extends RelativeLayout {
+    @InjectView(value = 2131493987)
     ImageView mClose;
+    @InjectView(value = 2131492905)
     TextView mContent;
+    @InjectView(value = 2131493988)
     Button mNegative;
+    @InjectView(value = 2131493989)
     Button mPositive;
     private aB a;
-    private View$OnClickListener b = new aA(this);
-    public ShareWarningView(Context Context1, AttributeSet AttributeSet2) {
-        super(Context1, AttributeSet2);
-        setPadding(0, 0, 0, com.clilystudio.netbook.hpay100.a.a.a(Context1, 22.0F));
-        setBackgroundColor(-1);
-        LayoutInflater.from(Context1).inflate(2130903393, (ViewGroup) this);
-        ButterKnife.inject((View) this);
-        mNegative.setOnClickListener(b);
-        mClose.setOnClickListener(b);
+    private View.OnClickListener b;
+
+    public ShareWarningView(Context context, AttributeSet attributeSet) {
+        super(context, attributeSet);
+        this.b = new aA(this);
+        this.setPadding(0, 0, 0, a.a(context, 22.0f));
+        this.setBackgroundColor(-1);
+        LayoutInflater.from(context).inflate(2130903393, (ViewGroup) this);
+        ButterKnife.inject(this);
+        this.mNegative.setOnClickListener(this.b);
+        this.mClose.setOnClickListener(this.b);
     }
 
-    static aB a(ShareWarningView ShareWarningView1) {
-        return ShareWarningView1.a;
+    static /* synthetic */ aB a(ShareWarningView shareWarningView) {
+        return shareWarningView.a;
     }
 
-    public void setContentText(String String1) {
-        mContent.setText((CharSequence) String1);
+    public void setContentText(String string) {
+        this.mContent.setText(string);
     }
 
-    public void setOnCloseListener(aB aB1) {
-        a = aB1;
+    public void setOnCloseListener(aB aB2) {
+        this.a = aB2;
     }
 
-    public void setPositiveListener(View$OnClickListener OnClickListener1) {
-        mPositive.setOnClickListener(OnClickListener1);
+    public void setPositiveListener(View.OnClickListener onClickListener) {
+        this.mPositive.setOnClickListener(onClickListener);
     }
 }

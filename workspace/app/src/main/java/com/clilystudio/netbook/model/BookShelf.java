@@ -5,13 +5,13 @@ import com.clilystudio.netbook.db.BookFile;
 import com.clilystudio.netbook.db.BookReadRecord;
 
 public class BookShelf {
-
     public static final int SHELF_AD = 1;
     public static final int SHELF_ALBUM = 4;
     public static final int SHELF_BOOK = 0;
     public static final int SHELF_FEED = 3;
     public static final int SHELF_TXT = 2;
     public static final int TYPE_COUNT = 5;
+    private int adIndex = -1;
     private long lastRead;
     private long lastUpdate;
     private Advert mAdvert;
@@ -20,102 +20,106 @@ public class BookShelf {
     private BookReadRecord mBookRecord;
     private BookFile mTxt;
     private int mType;
-    private int adIndex = -1;
 
     public int getAdIndex() {
-        return adIndex;
+        return this.adIndex;
     }
 
-    public void setAdIndex(int int1) {
-        adIndex = int1;
+    public void setAdIndex(int n) {
+        this.adIndex = n;
     }
 
     public Advert getAdvert() {
-        return mAdvert;
+        return this.mAdvert;
     }
 
-    public void setAdvert(Advert Advert1) {
-        mAdvert = Advert1;
-        mType = 1;
+    public void setAdvert(Advert advert) {
+        this.mAdvert = advert;
+        this.mType = 1;
     }
 
     public AudioRecord getAlbum() {
-        return mAlbum;
+        return this.mAlbum;
     }
 
-    public void setAlbum(AudioRecord AudioRecord1) {
-        mAlbum = AudioRecord1;
-        mType = 4;
+    public void setAlbum(AudioRecord audioRecord) {
+        this.mAlbum = audioRecord;
+        this.mType = 4;
     }
 
     public BookFeed getBookFeed() {
-        return mBookFeed;
+        return this.mBookFeed;
     }
 
-    public void setBookFeed(BookFeed BookFeed1) {
-        mBookFeed = BookFeed1;
-        mType = 3;
+    public void setBookFeed(BookFeed bookFeed) {
+        this.mBookFeed = bookFeed;
+        this.mType = 3;
     }
 
     public BookReadRecord getBookRecord() {
-        return mBookRecord;
+        return this.mBookRecord;
     }
 
-    public void setBookRecord(BookReadRecord BookReadRecord1) {
-        mBookRecord = BookReadRecord1;
-        mType = 0;
+    public void setBookRecord(BookReadRecord bookReadRecord) {
+        this.mBookRecord = bookReadRecord;
+        this.mType = 0;
     }
 
     public long getLastRead() {
-        return lastRead;
+        return this.lastRead;
     }
 
-    public void setLastRead(long long1) {
-        lastRead = long1;
+    public void setLastRead(long l) {
+        this.lastRead = l;
     }
 
     public long getLastUpdate() {
-        return lastUpdate;
+        return this.lastUpdate;
     }
 
-    public void setLastUpdate(long long1) {
-        lastUpdate = long1;
+    public void setLastUpdate(long l) {
+        this.lastUpdate = l;
     }
 
     public String getTitle() {
-        if (mBookRecord != null)
-            return mBookRecord.getTitle();
-        else if (mTxt != null)
-            return mTxt.getName();
-        else if (mAdvert != null)
-            return mAdvert.getTitle();
-        else if (mAlbum != null)
-            return mAlbum.getName();
-        else
-            return "";
+        if (this.mBookRecord != null) {
+            return this.mBookRecord.getTitle();
+        }
+        if (this.mTxt != null) {
+            return this.mTxt.getName();
+        }
+        if (this.mAdvert != null) {
+            return this.mAdvert.getTitle();
+        }
+        if (this.mAlbum != null) {
+            return this.mAlbum.getName();
+        }
+        return "";
     }
 
     public BookFile getTxt() {
-        return mTxt;
+        return this.mTxt;
     }
 
-    public void setTxt(BookFile BookFile1) {
-        mTxt = BookFile1;
-        mType = 2;
+    public void setTxt(BookFile bookFile) {
+        this.mTxt = bookFile;
+        this.mType = 2;
     }
 
     public int getType() {
-        return mType;
+        return this.mType;
     }
 
     public boolean isTop() {
-        if (mBookRecord != null)
-            return mBookRecord.isTop();
-        else if (mTxt != null)
-            return mTxt.isTop();
-        else if (mAlbum != null)
-            return mAlbum.isTop();
-        else
-            return false;
+        if (this.mBookRecord != null) {
+            return this.mBookRecord.isTop();
+        }
+        if (this.mTxt != null) {
+            return this.mTxt.isTop();
+        }
+        if (this.mAlbum != null) {
+            return this.mAlbum.isTop();
+        }
+        return false;
     }
 }

@@ -1,31 +1,25 @@
 package com.clilystudio.netbook.reader;
 
-import android.content.Context;
 import android.support.design.widget.am;
 
 import com.clilystudio.netbook.util.I;
 
-final class p implements e {
+final class p
+        implements e<ReaderChapter> {
+    private /* synthetic */ o a;
 
-    private o a;
-
-    p(o o1) {
-        a = o1;
+    p(o o2) {
+        this.a = o2;
     }
 
-    public final void a(Object Object1) {
-        ReaderChapter ReaderChapter2 = (ReaderChapter) Object1;
-
-        if (ReaderChapter2 != null && a.a(ReaderChapter2)) {
-            J J3;
-            String[] String_1darray4;
-
-            com.umeng.a.b.a((Context) o.a(a), "paying_page_auto_purchase", I.b);
-            J3 = new J(a, ReaderChapter2);
-            String_1darray4 = new String[2];
-            String_1darray4[0] = am.e().getToken();
-            String_1darray4[1] = ReaderChapter2.getId();
-            J3.b(String_1darray4);
+    @Override
+    public final /* synthetic */ void a(Object object) {
+        ReaderChapter readerChapter = (ReaderChapter) object;
+        if (readerChapter != null && this.a.a(readerChapter)) {
+            b.a(o.a(this.a), "paying_page_auto_purchase", I.b);
+            J j = new J(this.a, readerChapter);
+            String[] arrstring = new String[]{am.e().getToken(), readerChapter.getId()};
+            j.b(arrstring);
         }
     }
 }

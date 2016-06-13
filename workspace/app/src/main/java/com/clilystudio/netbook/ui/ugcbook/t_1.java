@@ -2,18 +2,18 @@ package com.clilystudio.netbook.ui.ugcbook;
 
 import android.view.KeyEvent;
 import android.widget.TextView;
-import android.widget.TextView$OnEditorActionListener;
 
-final class t implements TextView$OnEditorActionListener {
+final class t
+        implements TextView.OnEditorActionListener {
+    private /* synthetic */ UGCGuideAddBookActivity a;
 
-    private UGCGuideAddBookActivity a;
-
-    t(UGCGuideAddBookActivity UGCGuideAddBookActivity1) {
-        a = UGCGuideAddBookActivity1;
+    t(UGCGuideAddBookActivity uGCGuideAddBookActivity) {
+        this.a = uGCGuideAddBookActivity;
     }
 
-    public final boolean onEditorAction(TextView TextView1, int int2, KeyEvent KeyEvent3) {
-        UGCGuideAddBookActivity.b(a, true);
+    @Override
+    public final boolean onEditorAction(TextView textView, int n, KeyEvent keyEvent) {
+        UGCGuideAddBookActivity.b(this.a, true);
         return true;
     }
 }

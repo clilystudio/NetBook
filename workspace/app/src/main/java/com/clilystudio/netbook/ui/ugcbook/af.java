@@ -2,20 +2,21 @@ package com.clilystudio.netbook.ui.ugcbook;
 
 import android.view.KeyEvent;
 import android.view.View;
-import android.view.View$OnKeyListener;
 
-final class af implements View$OnKeyListener {
+final class af
+        implements View.OnKeyListener {
+    private /* synthetic */ UGCMainActivity a;
 
-    private UGCMainActivity a;
-
-    af(UGCMainActivity UGCMainActivity1) {
-        a = UGCMainActivity1;
+    af(UGCMainActivity uGCMainActivity) {
+        this.a = uGCMainActivity;
     }
 
-    public final boolean onKey(View View1, int int2, KeyEvent KeyEvent3) {
-        if (KeyEvent3.getAction() != 0 || int2 != 82 || KeyEvent3.getRepeatCount() != 0)
-            return false;
-        UGCMainActivity.h(a);
-        return true;
+    @Override
+    public final boolean onKey(View view, int n, KeyEvent keyEvent) {
+        if (keyEvent.getAction() == 0 && n == 82 && keyEvent.getRepeatCount() == 0) {
+            UGCMainActivity.h(this.a);
+            return true;
+        }
+        return false;
     }
 }

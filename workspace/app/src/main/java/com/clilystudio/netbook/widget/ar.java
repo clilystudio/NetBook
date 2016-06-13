@@ -4,24 +4,26 @@ import android.view.MenuItem;
 
 import com.clilystudio.netbook.ui.post.AbsPostActivity;
 
-final class ar implements m {
+final class ar
+        implements m {
+    private /* synthetic */ AbsPostActivity a;
 
-    private AbsPostActivity a;
-
-    ar(aq aq1, AbsPostActivity AbsPostActivity2) {
-        a = AbsPostActivity2;
+    ar(aq aq2, AbsPostActivity absPostActivity) {
+        this.a = absPostActivity;
     }
 
-    public final boolean a(MenuItem MenuItem1) {
-        switch (MenuItem1.getItemId()) {
-            default:
+    public final boolean a(MenuItem menuItem) {
+        switch (menuItem.getItemId()) {
+            default: {
                 return true;
-            case 1195:
-                a.e(0);
+            }
+            case 2131494059: {
+                this.a.e(0);
                 return true;
-            case 1196:
-                a.e(1);
-                return true;
+            }
+            case 2131494060:
         }
+        this.a.e(1);
+        return true;
     }
 }

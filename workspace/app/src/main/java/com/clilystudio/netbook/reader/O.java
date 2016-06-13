@@ -2,27 +2,28 @@ package com.clilystudio.netbook.reader;
 
 import android.support.design.widget.am;
 import android.view.View;
-import android.view.View$OnClickListener;
 
 import com.clilystudio.netbook.MyApplication;
 
-final class O implements View$OnClickListener {
+final class O
+        implements View.OnClickListener {
+    private /* synthetic */ int a;
+    private /* synthetic */ int b;
+    private /* synthetic */ ReadModeItem c;
 
-    private int a;
-    private int b;
-    private ReadModeItem c;
-    O(ReadModeItem ReadModeItem1, int int2, int int3) {
-        c = ReadModeItem1;
-        a = int2;
-        b = int3;
+    O(ReadModeItem readModeItem, int n, int n2) {
+        this.c = readModeItem;
+        this.a = n;
+        this.b = n2;
     }
 
-    public final void onClick(View View1) {
-        if (a != b) {
-            MyApplication.a().c(ReadModeItem.a(c));
-            am.c(ReadModeItem.a(c), b);
-            ReadModeItem.a(c, b);
+    @Override
+    public final void onClick(View view) {
+        if (this.a != this.b) {
+            MyApplication.a().c(ReadModeItem.a(this.c));
+            am.c((String) ReadModeItem.a(this.c), (int) this.b);
+            ReadModeItem.a(this.c, this.b);
         }
-        ReadModeItem.b(c).finish();
+        ReadModeItem.b(this.c).finish();
     }
 }

@@ -4,19 +4,21 @@ import com.clilystudio.netbook.model.User;
 
 import java.util.Properties;
 
-class MyApplication$4 extends Properties {
-
+class MyApplication$4
+        extends Properties {
     private static final long serialVersionUID = 8794384850518743201L;
-    MyApplication this$0;     // final access specifier removed
-    User val$user;     // final access specifier removed
-    MyApplication$4(MyApplication MyApplication1, User User2) {
-        this$0 = MyApplication1;
-        val$user = User2;
-        setProperty("user.id", val$user.getId());
-        setProperty("user.name", val$user.getNickname());
-        setProperty("user.avatar", val$user.getAvatar());
-        setProperty("user.lv", String.valueOf(val$user.getLv()));
-        if (val$user.getGender() != null)
-            setProperty("user.gender", val$user.getGender());
+    final /* synthetic */ MyApplication this$0;
+    final /* synthetic */ User val$user;
+
+    MyApplication$4(MyApplication myApplication, User user) {
+        this.this$0 = myApplication;
+        this.val$user = user;
+        this.setProperty("user.id", this.val$user.getId());
+        this.setProperty("user.name", this.val$user.getNickname());
+        this.setProperty("user.avatar", this.val$user.getAvatar());
+        this.setProperty("user.lv", String.valueOf(this.val$user.getLv()));
+        if (this.val$user.getGender() != null) {
+            this.setProperty("user.gender", this.val$user.getGender());
+        }
     }
 }

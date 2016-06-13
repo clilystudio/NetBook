@@ -1,17 +1,17 @@
 package com.clilystudio.netbook.ui;
 
 import android.view.View;
-import android.view.View$OnClickListener;
 
-final class aJ implements View$OnClickListener {
+final class aJ
+        implements View.OnClickListener {
+    private /* synthetic */ BookListActivity a;
 
-    private BookListActivity a;
-
-    aJ(BookListActivity BookListActivity1) {
-        a = BookListActivity1;
+    aJ(BookListActivity bookListActivity) {
+        this.a = bookListActivity;
     }
 
-    public final void onClick(View View1) {
-        a.b();
+    @Override
+    public final void onClick(View view) {
+        this.a.b();
     }
 }

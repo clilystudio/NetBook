@@ -1,29 +1,32 @@
 package com.clilystudio.netbook.ui;
 
 import android.widget.SeekBar;
-import android.widget.SeekBar$OnSeekBarChangeListener;
 
 import com.clilystudio.netbook.util.as;
 
-final class i implements SeekBar$OnSeekBarChangeListener {
+final class i
+        implements SeekBar.OnSeekBarChangeListener {
+    private /* synthetic */ AudioBookPlayActivity a;
 
-    private AudioBookPlayActivity a;
-
-    i(AudioBookPlayActivity AudioBookPlayActivity1) {
-        a = AudioBookPlayActivity1;
+    i(AudioBookPlayActivity audioBookPlayActivity) {
+        this.a = audioBookPlayActivity;
     }
 
-    public final void onProgressChanged(SeekBar SeekBar1, int int2, boolean boolean3) {
-        if (!com.clilystudio.netbook.ui.AudioBookPlayActivity.e(a)) {
-            as.a(10 * (int2 * AudioBookPlayActivity.f(a)));
-            AudioBookPlayActivity.b(a).d();
-            AudioBookPlayActivity.a(a, AudioBookPlayActivity.g(a), int2 * AudioBookPlayActivity.f(a) / 100);
+    @Override
+    public final void onProgressChanged(SeekBar seekBar, int n, boolean bl) {
+        if (AudioBookPlayActivity.e(this.a)) {
+            return;
         }
+        as.a(10 * (n * AudioBookPlayActivity.f(this.a)));
+        AudioBookPlayActivity.b(this.a).d();
+        AudioBookPlayActivity.a(this.a, AudioBookPlayActivity.g(this.a), n * AudioBookPlayActivity.f(this.a) / 100);
     }
 
-    public final void onStartTrackingTouch(SeekBar SeekBar1) {
+    @Override
+    public final void onStartTrackingTouch(SeekBar seekBar) {
     }
 
-    public final void onStopTrackingTouch(SeekBar SeekBar1) {
+    @Override
+    public final void onStopTrackingTouch(SeekBar seekBar) {
     }
 }

@@ -3,19 +3,20 @@ package com.clilystudio.netbook.reader.random;
 import com.clilystudio.netbook.reader.e;
 import com.clilystudio.netbook.reader.n;
 
-final class u implements e {
+final class u
+        implements e<n> {
+    final /* synthetic */ ReaderRandomActivity a;
 
-    ReaderRandomActivity a;     // final access specifier removed
-
-    u(ReaderRandomActivity ReaderRandomActivity1) {
-        a = ReaderRandomActivity1;
+    u(ReaderRandomActivity readerRandomActivity) {
+        this.a = readerRandomActivity;
     }
 
-    public final void a(Object Object1) {
-        n n2 = (n) Object1;
-
-        ReaderRandomActivity.i(a)[1].a(n2);
-        if (n2 != null)
+    @Override
+    public final /* synthetic */ void a(Object object) {
+        n n2 = (n) object;
+        ReaderRandomActivity.i(this.a)[1].a(n2);
+        if (n2 != null) {
             n2.a((e) new v(this));
+        }
     }
 }

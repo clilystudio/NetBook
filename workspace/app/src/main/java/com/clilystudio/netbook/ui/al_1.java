@@ -1,43 +1,50 @@
 package com.clilystudio.netbook.ui;
 
+import com.clilystudio.netbook.a.e;
+import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.model.CategoryRoot;
 
-final class al extends com.clilystudio.netbook.a.e {
+final class al
+        extends e<String, Void, CategoryRoot> {
+    private /* synthetic */ BookCategoryActivity a;
 
-    private BookCategoryActivity a;
-
-    al(BookCategoryActivity BookCategoryActivity1, byte byte2) {
-        this(BookCategoryActivity1);
+    private al(BookCategoryActivity bookCategoryActivity) {
+        this.a = bookCategoryActivity;
     }
 
-    private al(BookCategoryActivity BookCategoryActivity1) {
-        a = BookCategoryActivity1;
+    /* synthetic */ al(BookCategoryActivity bookCategoryActivity, byte by) {
+        this(bookCategoryActivity);
     }
 
-    private transient CategoryRoot a() {
-        CategoryRoot CategoryRoot2;
-
+    private /* varargs */ CategoryRoot a() {
         try {
-            CategoryRoot2 = com.clilystudio.netbook.api.b.b().e();
-        } catch (Exception Exception1) {
-            Exception1.printStackTrace();
+            CategoryRoot categoryRoot = b.b().e();
+            return categoryRoot;
+        } catch (Exception var1_2) {
+            var1_2.printStackTrace();
             return null;
         }
-        return CategoryRoot2;
     }
 
-    protected final Object doInBackground(Object[] Object_1darray1) {
-        return a();
+    /*
+     * Exception decompiling
+     */
+    @Override
+    protected final /* synthetic */ Object doInBackground(Object[] var1_1) {
+        // This method has failed to decompile.  When submitting a bug report, please provide this stack trace, and (if you hold appropriate legal rights) the relevant class file.
+        // java.lang.ArrayIndexOutOfBoundsException
+        throw new IllegalStateException("Decompilation failed");
     }
 
-    protected final void onPostExecute(Object Object1) {
-        Object Object2 = (CategoryRoot) Object1;
-
-        super.onPostExecute(Object2);
-        if (Object2 != null && ((CategoryRoot) Object2).isOk()) {
-            BookCategoryActivity.a(a, 1);
-            BookCategoryActivity.a(a, (CategoryRoot) Object2);
-        } else
-            BookCategoryActivity.a(a, 2);
+    @Override
+    protected final /* synthetic */ void onPostExecute(Object object) {
+        CategoryRoot categoryRoot = (CategoryRoot) object;
+        super.onPostExecute(categoryRoot);
+        if (categoryRoot != null && categoryRoot.isOk()) {
+            BookCategoryActivity.a(this.a, 1);
+            BookCategoryActivity.a(this.a, categoryRoot);
+            return;
+        }
+        BookCategoryActivity.a(this.a, 2);
     }
 }

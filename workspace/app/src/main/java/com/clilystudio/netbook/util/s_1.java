@@ -8,39 +8,41 @@ import com.clilystudio.netbook.model.BookTopRoot$Favorite;
 
 import java.io.IOException;
 
-public final class s extends e {
-
+public final class s
+        extends e<Void, Void, BookTopRoot> {
     private Context a;
 
-    public s(Context Context1) {
-        a = Context1;
+    public s(Context context) {
+        this.a = context;
     }
 
-    private transient BookTopRoot a() {
-        BookTopRoot BookTopRoot2;
-
+    private /* varargs */ BookTopRoot a() {
         try {
-            BookTopRoot2 = c().u();
-        } catch (IOException IOException1) {
-            IOException1.printStackTrace();
+            BookTopRoot bookTopRoot = this.c().u();
+            return bookTopRoot;
+        } catch (IOException var1_2) {
+            var1_2.printStackTrace();
             return null;
         }
-        return BookTopRoot2;
     }
 
-    protected final Object doInBackground(Object[] Object_1darray1) {
-        return a();
+    /*
+     * Exception decompiling
+     */
+    @Override
+    protected final /* synthetic */ Object doInBackground(Object[] var1_1) {
+        // This method has failed to decompile.  When submitting a bug report, please provide this stack trace, and (if you hold appropriate legal rights) the relevant class file.
+        // java.lang.ArrayIndexOutOfBoundsException
+        throw new IllegalStateException("Decompilation failed");
     }
 
-    protected final void onPostExecute(Object Object1) {
-        Object Object2 = (BookTopRoot) Object1;
-
-        super.onPostExecute(Object2);
-        if (Object2 != null) {
-            BookTopRoot$Favorite Favorite3 = ((BookTopRoot) Object2).getFavorite();
-
-            if (Favorite3 != null)
-                com.clilystudio.netbook.hpay100.a.a.b(a, Favorite3.getBookID(), Favorite3.getTocID(), Favorite3.getChecksum());
+    @Override
+    protected final /* synthetic */ void onPostExecute(Object object) {
+        BookTopRoot$Favorite bookTopRoot$Favorite;
+        BookTopRoot bookTopRoot = (BookTopRoot) object;
+        super.onPostExecute(bookTopRoot);
+        if (bookTopRoot != null && (bookTopRoot$Favorite = bookTopRoot.getFavorite()) != null) {
+            a.b(this.a, bookTopRoot$Favorite.getBookID(), bookTopRoot$Favorite.getTocID(), bookTopRoot$Favorite.getChecksum());
         }
     }
 }

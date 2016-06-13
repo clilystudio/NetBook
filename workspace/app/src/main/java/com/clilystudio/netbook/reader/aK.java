@@ -1,16 +1,10 @@
 package com.clilystudio.netbook.reader;
 
-final class aK implements e {
+final class aK
+        implements e<n> {
+    private /* synthetic */ o a;
 
-    private o a;
-
-    aK(ReaderActivity ReaderActivity1, o o2) {
-        a = o2;
-    }
-
-    public final volatile void a(Object Object1) {
-        n n2 = (n) Object1;
-
-        a.a(n2);
+    aK(ReaderActivity readerActivity, o o2) {
+        this.a = o2;
     }
 }

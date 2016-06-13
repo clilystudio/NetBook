@@ -1,26 +1,24 @@
 package com.clilystudio.netbook.ui.post;
 
 import android.os.AsyncTask;
+import android.support.design.widget.am;
 
-final class bC implements Runnable {
+final class bC
+        implements Runnable {
+    private /* synthetic */ bB a;
 
-    private bB a;
-
-    bC(bB bB1) {
-        a = bB1;
+    bC(bB bB2) {
+        this.a = bB2;
     }
 
+    @Override
     public final void run() {
-        bJ bJ2;
-        String[] String_1darray3;
-
-        if (!android.support.design.widget.am.a((AsyncTask) GirlTopicListActivity.e(a.a)))
-            GirlTopicListActivity.e(a.a).cancel(true);
-        GirlTopicListActivity.a(a.a, new bJ(a.a, (byte) 0));
-        bJ2 = GirlTopicListActivity.h(a.a);
-        String_1darray3 = new String[2];
-        String_1darray3[0] = GirlTopicListActivity.f(a.a);
-        String_1darray3[1] = GirlTopicListActivity.g(a.a);
-        bJ2.b(String_1darray3);
+        if (!am.a((AsyncTask) GirlTopicListActivity.e(this.a.a))) {
+            GirlTopicListActivity.e(this.a.a).cancel(true);
+        }
+        GirlTopicListActivity.a(this.a.a, new bJ(this.a.a, 0));
+        bJ bJ2 = GirlTopicListActivity.h(this.a.a);
+        String[] arrstring = new String[]{GirlTopicListActivity.f(this.a.a), GirlTopicListActivity.g(this.a.a)};
+        bJ2.b(arrstring);
     }
 }

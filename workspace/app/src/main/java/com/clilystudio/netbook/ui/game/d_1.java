@@ -2,15 +2,16 @@ package com.clilystudio.netbook.ui.game;
 
 import com.clilystudio.netbook.ui.aa;
 
-class d implements aa {
+class d
+        implements aa {
+    private /* synthetic */ GameDetailActivity a;
 
-    private GameDetailActivity a;
-
-    d(GameDetailActivity GameDetailActivity1) {
-        a = GameDetailActivity1;
+    d(GameDetailActivity gameDetailActivity) {
+        this.a = gameDetailActivity;
     }
 
+    @Override
     public final void a() {
-        GameDetailActivity.a(a);
+        GameDetailActivity.a(this.a);
     }
 }

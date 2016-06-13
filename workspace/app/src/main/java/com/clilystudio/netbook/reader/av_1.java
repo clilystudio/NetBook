@@ -1,16 +1,15 @@
 package com.clilystudio.netbook.reader;
 
-import android.content.Context;
+final class av
+        implements db {
+    private /* synthetic */ ReaderActivity a;
 
-final class av implements db {
-
-    private ReaderActivity a;
-
-    av(ReaderActivity ReaderActivity1) {
-        a = ReaderActivity1;
+    av(ReaderActivity readerActivity) {
+        this.a = readerActivity;
     }
 
+    @Override
     public final void a() {
-        a.startActivityForResult(ReaderOptionActivity.a((Context) a), 0);
+        this.a.startActivityForResult(ReaderOptionActivity.a(this.a), 0);
     }
 }

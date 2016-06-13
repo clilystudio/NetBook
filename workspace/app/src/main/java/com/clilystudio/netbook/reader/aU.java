@@ -2,50 +2,56 @@ package com.clilystudio.netbook.reader;
 
 import android.content.Context;
 
-final class aU implements cn {
+final class aU
+        implements cn {
+    private /* synthetic */ ReaderActivity a;
 
-    private ReaderActivity a;
-
-    aU(ReaderActivity ReaderActivity1) {
-        a = ReaderActivity1;
+    aU(ReaderActivity readerActivity) {
+        this.a = readerActivity;
     }
 
+    @Override
     public final void a() {
-        ReaderActivity.a(a, 2);
-        ReaderActivity.h(a).setReadMode(ReaderActivity.g(a));
-        ReaderActivity.o(a);
-        ReaderActivity.p(a);
+        ReaderActivity.a(this.a, 2);
+        ReaderActivity.h(this.a).setReadMode(ReaderActivity.g(this.a));
+        ReaderActivity.o(this.a);
+        ReaderActivity.p(this.a);
     }
 
-    public final void a(int int1) {
-        ReaderActivity.q(a).setParameter("speed", new StringBuilder().append(int1).toString());
-        com.clilystudio.netbook.hpay100.a.a.b((Context) a, "speech_speed", int1);
+    @Override
+    public final void a(int n2) {
+        ReaderActivity.q(this.a).setParameter("speed", "" + n2);
+        a.b((Context) this.a, "speech_speed", n2);
     }
 
-    public final void a(boolean boolean1) {
-        ReaderActivity.q(a).stopSpeaking();
-        ReaderActivity.a(a, 0);
-        ReaderActivity.h(a).setReadMode(ReaderActivity.g(a));
-        ReaderActivity.r(a);
-        if (boolean1) {
-            ReaderActivity.f(a);
-            ReaderActivity.b(a, 0);
-            ReaderActivity.c(a, 0);
-            ReaderActivity.d(a, 0);
-            ReaderActivity.s(a);
+    @Override
+    public final void a(boolean bl) {
+        ReaderActivity.q(this.a).stopSpeaking();
+        ReaderActivity.a(this.a, 0);
+        ReaderActivity.h(this.a).setReadMode(ReaderActivity.g(this.a));
+        ReaderActivity.r(this.a);
+        if (bl) {
+            ReaderActivity.f(this.a);
+            ReaderActivity.b(this.a, 0);
+            ReaderActivity.c(this.a, 0);
+            ReaderActivity.d(this.a, 0);
+            ReaderActivity.s(this.a);
         }
     }
 
+    @Override
     public final void b() {
-        ReaderActivity.q(a).pauseSpeaking();
-        ReaderActivity.a(a, true);
+        ReaderActivity.q(this.a).pauseSpeaking();
+        ReaderActivity.a(this.a, true);
     }
 
+    @Override
     public final void c() {
-        ReaderActivity.q(a).resumeSpeaking();
+        ReaderActivity.q(this.a).resumeSpeaking();
     }
 
+    @Override
     public final void d() {
-        a.e();
+        this.a.e();
     }
 }

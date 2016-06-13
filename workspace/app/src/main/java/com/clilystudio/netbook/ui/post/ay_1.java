@@ -1,14 +1,15 @@
 package com.clilystudio.netbook.ui.post;
 
-final class ay implements ax {
+final class ay
+        implements ax {
+    private /* synthetic */ BookReviewListFragment a;
 
-    private BookReviewListFragment a;
-
-    ay(BookReviewListFragment BookReviewListFragment1) {
-        a = BookReviewListFragment1;
+    ay(BookReviewListFragment bookReviewListFragment) {
+        this.a = bookReviewListFragment;
     }
 
+    @Override
     public final void a() {
-        BookReviewListFragment.a(a);
+        BookReviewListFragment.a(this.a);
     }
 }

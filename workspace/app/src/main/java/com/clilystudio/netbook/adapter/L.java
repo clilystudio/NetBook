@@ -3,56 +3,48 @@ package com.clilystudio.netbook.adapter;
 import android.app.Activity;
 import android.support.design.widget.am;
 import android.view.View;
-import android.view.View$OnClickListener;
 
 import com.clilystudio.netbook.db.RetweenRecord;
 import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.model.Tweet;
 import com.clilystudio.netbook.ui.user.AuthLoginActivity;
+import com.clilystudio.netbook.util.e;
 
-final class L implements View$OnClickListener {
+final class L
+        implements View.OnClickListener {
+    private /* synthetic */ Tweet a;
+    private /* synthetic */ R b;
+    private /* synthetic */ G c;
 
-    private Tweet a;
-    private R b;
-    private G c;
-    L(G G1, Tweet Tweet2, R R3) {
-        c = G1;
-        a = Tweet2;
-        b = R3;
+    L(G g, Tweet tweet, R r) {
+        this.c = g;
+        this.a = tweet;
+        this.b = r;
     }
 
-    public final void onClick(View View1) {
-        Account Account2 = am.e();
-
-        if (Account2 == null)
-            G.a(c).startActivity(AuthLoginActivity.a(G.a(c)));
-        else if (G.a(Account2, a)) {
-            String String5 = a.get_id();
-            String String6;
-            U U7;
-            String[] String_1darray8;
-
-            if (a.isRetween())
-                String6 = a.getRefTweet().get_id();
-            else
-                String6 = String5;
-            G.a(c, a, b);
-            com.clilystudio.netbook.util.e.a((Activity) G.a(c), "\t\t\u8F6C\u53D1\u6210\u529F\t\t");
-            RetweenRecord.save2DB(Account2.getUser().getId(), String6);
-            U7 = new U(c, a, b);
-            String_1darray8 = new String[2];
-            String_1darray8[0] = am.e().getToken();
-            String_1darray8[1] = String6;
-            U7.execute(String_1darray8);
-        } else {
-            String String3 = G.a(c).getString(2131034472);
-            String String4;
-
-            if (G.a(a, Account2) && !a.isRetween())
-                String4 = G.a(c).getString(2131034423);
-            else
-                String4 = String3;
-            com.clilystudio.netbook.util.e.a((Activity) G.a(c), new StringBuilder("\t\t").append(String4).append("\t\t").toString());
+    /*
+     * Enabled aggressive block sorting
+     */
+    @Override
+    public final void onClick(View view) {
+        Account account = am.e();
+        if (account == null) {
+            G.a(this.c).startActivity(AuthLoginActivity.a(G.a(this.c)));
+            return;
         }
+        if (G.a(account, this.a)) {
+            String string = this.a.get_id();
+            String string2 = this.a.isRetween() ? this.a.getRefTweet().get_id() : string;
+            G.a(this.c, this.a, this.b);
+            e.a((Activity) ((Activity) G.a(this.c)), (String) "\t\t\u8f6c\u53d1\u6210\u529f\t\t");
+            RetweenRecord.save2DB(account.getUser().getId(), string2);
+            U u2 = new U(this.c, this.a, this.b);
+            Object[] arrobject = new String[]{am.e().getToken(), string2};
+            u2.execute(arrobject);
+            return;
+        }
+        String string = G.a(this.c).getString(2131034472);
+        String string3 = G.a(this.a, account) && !this.a.isRetween() ? G.a(this.c).getString(2131034423) : string;
+        e.a((Activity) ((Activity) G.a(this.c)), (String) ("\t\t" + string3 + "\t\t"));
     }
 }

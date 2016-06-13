@@ -1,41 +1,41 @@
 package com.clilystudio.netbook.ui.home;
 
-import android.content.Context;
 import android.support.design.widget.am;
 
 import com.clilystudio.netbook.a.e;
+import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.model.RecommendInfo;
+import com.clilystudio.netbook.model.ResultServer;
 
-final class j extends e {
+final class j
+        extends e<String, Void, ResultServer> {
+    private /* synthetic */ HomeActivity a;
 
-    private HomeActivity a;
-
-    j(HomeActivity HomeActivity1) {
-        a = HomeActivity1;
+    j(HomeActivity homeActivity) {
+        this.a = homeActivity;
     }
 
-    protected final Object doInBackground(Object[] Object_1darray1) {
-        int int2;
-
-        if ("000000000000000".equals(am.t((Context) a)))
-            int2 = 1;
-        else
-            int2 = 0;
-        if (int2 != 0)
+    /*
+     * Enabled aggressive block sorting
+     */
+    @Override
+    protected final /* synthetic */ Object doInBackground(Object[] arrobject) {
+        if ("000000000000000".equals(am.t(this.a))) {
             return null;
-        else {
-            RecommendInfo RecommendInfo3 = RecommendInfo.getInfoFromJson(HomeActivity.g(a));
-            String String4 = "";
-            String String5 = "";
-            String String6;
-
-            if (RecommendInfo3 != null) {
-                String4 = RecommendInfo3.getRecommended();
-                String5 = RecommendInfo3.getOp();
-            }
-            String6 = am.t((Context) a);
-            HomeActivity.h(a);
-            return com.clilystudio.netbook.api.b.b().p(String6, String4, String5);
         }
+        boolean bl = false;
+        if (bl) {
+            return null;
+        }
+        RecommendInfo recommendInfo = RecommendInfo.getInfoFromJson(HomeActivity.g(this.a));
+        String string = "";
+        String string2 = "";
+        if (recommendInfo != null) {
+            string = recommendInfo.getRecommended();
+            string2 = recommendInfo.getOp();
+        }
+        String string3 = am.t(this.a);
+        HomeActivity.h(this.a);
+        return b.b().p(string3, string, string2);
     }
 }

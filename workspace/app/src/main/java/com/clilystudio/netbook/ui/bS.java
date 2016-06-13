@@ -1,17 +1,18 @@
 package com.clilystudio.netbook.ui;
 
-final class bS implements Runnable {
+final class bS
+        implements Runnable {
+    private /* synthetic */ bR a;
 
-    private bR a;
-
-    bS(bR bR1) {
-        a = bR1;
+    bS(bR bR2) {
+        this.a = bR2;
     }
 
+    @Override
     public final void run() {
-        if (SearchActivity.a(a.a) != null) {
-            SearchActivity.a(a.a).setSelectionAfterHeaderView();
-            SearchActivity.a(a.a).setSelection(0);
+        if (SearchActivity.a(this.a.a) != null) {
+            SearchActivity.a(this.a.a).setSelectionAfterHeaderView();
+            SearchActivity.a(this.a.a).setSelection(0);
         }
     }
 }

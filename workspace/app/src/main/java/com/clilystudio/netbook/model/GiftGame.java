@@ -1,7 +1,6 @@
 package com.clilystudio.netbook.model;
 
 public class GiftGame {
-
     public int androidSize;
     public int followers;
     public GiftGameGift[] gifts;
@@ -14,50 +13,50 @@ public class GiftGame {
     private String name;
 
     public String getAndroidLink() {
-        return androidLink;
+        return this.androidLink;
     }
 
-    public void setAndroidLink(String String1) {
-        androidLink = String1;
+    public void setAndroidLink(String string) {
+        this.androidLink = string;
     }
 
     public String getAndroidPackageName() {
-        return androidPackageName;
+        return this.androidPackageName;
     }
 
-    public void setAndroidPackageName(String String1) {
-        androidPackageName = String1;
+    public void setAndroidPackageName(String string) {
+        this.androidPackageName = string;
     }
 
     public int getDownloadStatus() {
-        return downloadStatus;
+        return this.downloadStatus;
     }
 
-    public void setDownloadStatus(int int1) {
-        downloadStatus = int1;
+    public void setDownloadStatus(int n) {
+        this.downloadStatus = n;
     }
 
     public String getLocalFileUri() {
-        return localFileUri;
+        return this.localFileUri;
     }
 
-    public void setLocalFileUri(String String1) {
-        localFileUri = String1;
+    public void setLocalFileUri(String string) {
+        this.localFileUri = string;
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
-    public void setName(String String1) {
-        name = String1;
+    public void setName(String string) {
+        this.name = string;
     }
 
     public String get_id() {
-        return _id;
+        return this._id;
     }
 
-    public void set_id(String String1) {
-        _id = String1;
+    public void set_id(String string) {
+        this._id = string;
     }
 }

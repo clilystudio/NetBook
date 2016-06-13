@@ -1,18 +1,21 @@
 package com.clilystudio.netbook.ui.post;
 
 import android.os.AsyncTask;
+import android.support.design.widget.am;
 
-final class dY implements Runnable {
+final class dY
+        implements Runnable {
+    private /* synthetic */ dX a;
 
-    private dX a;
-
-    dY(dX dX1) {
-        a = dX1;
+    dY(dX dX2) {
+        this.a = dX2;
     }
 
+    @Override
     public final void run() {
-        if (!android.support.design.widget.am.a((AsyncTask) TweetTimelineFragment.b(a.a)))
-            TweetTimelineFragment.b(a.a).cancel(true);
-        TweetTimelineFragment.c(a.a);
+        if (!am.a((AsyncTask) TweetTimelineFragment.b(this.a.a))) {
+            TweetTimelineFragment.b(this.a.a).cancel(true);
+        }
+        TweetTimelineFragment.c(this.a.a);
     }
 }

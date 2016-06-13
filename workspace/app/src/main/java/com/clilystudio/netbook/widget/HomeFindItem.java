@@ -4,47 +4,51 @@ import android.content.Context;
 import android.content.Intent;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View$OnClickListener;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.clilystudio.netbook.ui.MaskAbleImageView;
-import com.umeng.a.b;
 
 import butterknife.ButterKnife;
+import butterknife.InjectView;
 
-public class HomeFindItem extends FrameLayout {
-
+public class HomeFindItem
+        extends FrameLayout {
+    @InjectView(value = 2131493028)
     MaskAbleImageView mIcon;
+    @InjectView(value = 2131493681)
     ImageView mSubFlag;
+    @InjectView(value = 2131493683)
     TextView mSubText;
+    @InjectView(value = 2131492936)
     TextView mTitle;
     private Intent a;
-    public HomeFindItem(Context Context1, String String2, int int3, Intent Intent4) {
-        this(Context1, String2, int3, 0, Intent4);
+
+    public HomeFindItem(Context context, AttributeSet attributeSet) {
+        super(context, attributeSet);
     }
 
-    public HomeFindItem(Context Context1, AttributeSet AttributeSet2) {
-        super(Context1, AttributeSet2);
+    public HomeFindItem(Context context, String string, int n, int n2, Intent intent) {
+        super(context);
+        this.a = intent;
+        LayoutInflater.from(context).inflate(2130903283, (ViewGroup) this);
+        ButterKnife.inject(this);
+        this.mIcon.setImageResource(n);
+        this.mTitle.setText(string);
+        if (n2 != 0) {
+            this.mSubFlag.setImageResource(n2);
+        }
+        this.setOnClickListener(new Z(this, context, string));
     }
 
-    public HomeFindItem(Context Context1, String String2, int int3, int int4, Intent Intent5) {
-        super(Context1);
-        a = Intent5;
-        LayoutInflater.from(Context1).inflate(2130903283, (ViewGroup) this);
-        ButterKnife.inject((View) this);
-        mIcon.setImageResource(int3);
-        mTitle.setText((CharSequence) String2);
-        if (int4 != 0)
-            mSubFlag.setImageResource(int4);
-        setOnClickListener((View$OnClickListener) new Z(this, Context1, String2));
+    public HomeFindItem(Context context, String string, int n, Intent intent) {
+        this(context, string, n, 0, intent);
     }
 
-    protected void a(Context Context1, String String2) {
-        Context1.startActivity(a);
-        b.a(Context1, "home_find_item_click", String2);
+    protected void a(Context context, String string) {
+        context.startActivity(this.a);
+        b.a(context, "home_find_item_click", string);
     }
 }

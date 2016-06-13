@@ -1,19 +1,21 @@
 package com.clilystudio.netbook.ui.post;
 
-import android.os.AsyncTask$Status;
+import android.os.AsyncTask;
 
 import com.clilystudio.netbook.widget.av;
 
-final class ab implements av {
+final class ab
+        implements av {
+    private /* synthetic */ BookHelpActivity a;
 
-    private BookHelpActivity a;
-
-    ab(BookHelpActivity BookHelpActivity1) {
-        a = BookHelpActivity1;
+    ab(BookHelpActivity bookHelpActivity) {
+        this.a = bookHelpActivity;
     }
 
+    @Override
     public final void a() {
-        if (BookHelpActivity.h(a) == null || BookHelpActivity.h(a).getStatus() == AsyncTask$Status.FINISHED)
-            BookHelpActivity.b(a);
+        if (BookHelpActivity.h(this.a) == null || BookHelpActivity.h(this.a).getStatus() == AsyncTask.Status.FINISHED) {
+            BookHelpActivity.b(this.a);
+        }
     }
 }

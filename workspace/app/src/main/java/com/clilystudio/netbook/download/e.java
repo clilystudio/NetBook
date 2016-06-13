@@ -4,103 +4,89 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.content.pm.PackageManager$NameNotFoundException;
 import android.graphics.BitmapFactory;
 import android.net.ConnectivityManager;
 import android.net.Uri;
 import android.os.Environment;
-import android.os.Parcelable;
 
 import java.io.File;
 
 public final class e {
+    public static final String a = Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + "Android/data/com.manhuadao.download/file/";
+    public static final String b = Environment.getExternalStorageDirectory() + File.separator + "Android/data/com.manhuadao.download/shortcut.png";
 
-    public static final String a = new StringBuilder().append(Environment.getExternalStorageDirectory().getAbsolutePath()).append(File.separator).append("Android/data/com.manhuadao.download/file/").toString();
-    public static final String b = new StringBuilder().append(Environment.getExternalStorageDirectory()).append(File.separator).append("Android/data/com.manhuadao.download/shortcut.png").toString();
-
-    public static Boolean a(String String1, String String2) {
-        Boolean Boolean4;
-
+    public static Boolean a(String string, String string2) {
         try {
-            if (new File(String1, String2).exists())
-                return Boolean4;
-            Boolean4 = Boolean.valueOf(false);
-        } catch (Exception Exception3) {
-            Exception3.printStackTrace();
-            return Boolean.valueOf(false);
-        }
-        return Boolean4;
-    }
-
-    public static void a(Context Context1, String String2, String String3) {
-        File File4 = new File(String2, String3);
-
-        if (File4.exists()) {
-            Intent Intent5 = new Intent("com.android.launcher.action.INSTALL_SHORTCUT");
-            Object Object9;
-
-            Intent5.putExtra("duplicate", false);
-            Intent5.putExtra("android.intent.extra.shortcut.NAME", String3);
-            Intent5.putExtra("android.intent.extra.shortcut.ICON", (Parcelable) BitmapFactory.decodeFile(b));
-            Object9 = new Intent("android.intent.action.VIEW");
-            ((Intent) Object9).setDataAndType(Uri.parse(new StringBuilder("file://").append(File4.toString()).toString()), "application/vnd.android.package-archive");
-            Intent5.putExtra("android.intent.extra.shortcut.INTENT", (Parcelable) Object9);
-            Context1.sendBroadcast(Intent5);
-        }
-    }
-
-    public static boolean a(Context Context1) {
-        ConnectivityManager ConnectivityManager2 = (ConnectivityManager) Context1.getSystemService("connectivity");
-
-        if (ConnectivityManager2 == null)
-            return false;
-        else {
-            int int4;
-
-            try {
-                int4 = ConnectivityManager2.getActiveNetworkInfo().getType();
-            } catch (Exception Exception3) {
-                Exception3.printStackTrace();
-                return false;
+            if (!new File(string, string2).exists()) {
+                Boolean bl = false;
+                return bl;
             }
-            if (int4 == 1)
-                return true;
-            else
-                return false;
-        }
-    }
-
-    public static boolean a(Context Context1, String String2) {
-        PackageManager PackageManager3 = Context1.getPackageManager();
-        PackageInfo PackageInfo5;
-        boolean boolean6;
-
-        try {
-            PackageInfo5 = PackageManager3.getPackageInfo(String2, 0);
-        } catch (PackageManager$NameNotFoundException NameNotFoundException4) {
-            NameNotFoundException4.printStackTrace();
+        } catch (Exception var2_3) {
+            var2_3.printStackTrace();
             return false;
         }
-        boolean6 = false;
-        if (PackageInfo5 != null)
-            boolean6 = true;
-        return boolean6;
+        return true;
     }
 
-    public static void b(Context Context1, String String2, String String3) {
-        File File4 = new File(String2, String3);
-
-        if (File4.exists()) {
-            Intent Intent5 = new Intent("com.android.launcher.action.UNINSTALL_SHORTCUT");
-            Object Object9;
-
-            Intent5.putExtra("duplicate", false);
-            Intent5.putExtra("android.intent.extra.shortcut.NAME", String3);
-            Intent5.putExtra("android.intent.extra.shortcut.ICON", (Parcelable) BitmapFactory.decodeFile(b));
-            Object9 = new Intent("android.intent.action.VIEW");
-            ((Intent) Object9).setDataAndType(Uri.parse(new StringBuilder("file://").append(File4.toString()).toString()), "application/vnd.android.package-archive");
-            Intent5.putExtra("android.intent.extra.shortcut.INTENT", (Parcelable) Object9);
-            Context1.sendBroadcast(Intent5);
+    public static void a(Context context, String string, String string2) {
+        File file = new File(string, string2);
+        if (!file.exists()) {
+            return;
         }
+        Intent intent = new Intent("com.android.launcher.action.INSTALL_SHORTCUT");
+        intent.putExtra("duplicate", false);
+        intent.putExtra("android.intent.extra.shortcut.NAME", string2);
+        intent.putExtra("android.intent.extra.shortcut.ICON", BitmapFactory.decodeFile(b));
+        Intent intent2 = new Intent("android.intent.action.VIEW");
+        intent2.setDataAndType(Uri.parse("file://" + file.toString()), "application/vnd.android.package-archive");
+        intent.putExtra("android.intent.extra.shortcut.INTENT", intent2);
+        context.sendBroadcast(intent);
+    }
+
+    public static boolean a(Context context) {
+        ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService("connectivity");
+        if (connectivityManager == null) {
+            return false;
+        }
+        try {
+            int n = connectivityManager.getActiveNetworkInfo().getType();
+            if (n == 1) {
+                return true;
+            }
+            return false;
+        } catch (Exception var2_3) {
+            var2_3.printStackTrace();
+            return false;
+        }
+    }
+
+    public static boolean a(Context context, String string) {
+        PackageManager packageManager = context.getPackageManager();
+        try {
+            PackageInfo packageInfo = packageManager.getPackageInfo(string, 0);
+            boolean bl = false;
+            if (packageInfo != null) {
+                bl = true;
+            }
+            return bl;
+        } catch (PackageManager.NameNotFoundException var3_5) {
+            var3_5.printStackTrace();
+            return false;
+        }
+    }
+
+    public static void b(Context context, String string, String string2) {
+        File file = new File(string, string2);
+        if (!file.exists()) {
+            return;
+        }
+        Intent intent = new Intent("com.android.launcher.action.UNINSTALL_SHORTCUT");
+        intent.putExtra("duplicate", false);
+        intent.putExtra("android.intent.extra.shortcut.NAME", string2);
+        intent.putExtra("android.intent.extra.shortcut.ICON", BitmapFactory.decodeFile(b));
+        Intent intent2 = new Intent("android.intent.action.VIEW");
+        intent2.setDataAndType(Uri.parse("file://" + file.toString()), "application/vnd.android.package-archive");
+        intent.putExtra("android.intent.extra.shortcut.INTENT", intent2);
+        context.sendBroadcast(intent);
     }
 }

@@ -3,7 +3,13 @@ package com.clilystudio.netbook.db;
 import android.support.design.widget.am;
 
 import com.activeandroid.Model;
+import com.activeandroid.annotation.Column;
+import com.activeandroid.annotation.Table;
+import com.activeandroid.query.Delete;
+import com.activeandroid.query.From;
+import com.activeandroid.query.Select;
 import com.clilystudio.netbook.api.ApiService;
+import com.clilystudio.netbook.event.c;
 import com.clilystudio.netbook.event.h;
 import com.clilystudio.netbook.event.i;
 import com.clilystudio.netbook.model.Account;
@@ -15,448 +21,474 @@ import com.clilystudio.netbook.util.t;
 import java.util.Date;
 import java.util.List;
 
-public class BookReadRecord extends Model {
-
+@Table(name = "BookReadRecords")
+public class BookReadRecord
+        extends Model {
+    @Column(name = "have_cp")
     public int have_cp;
+    @Column(name = "lastActionTime")
     public long lastActionTime;
+    @Column(name = "readTime")
     public Date readTime;
+    @Column(name = "recommended")
     public boolean recommended;
+    @Column(name = "account")
     private String account;
+    @Column(name = "author")
     private String author;
+    @Column(name = "book_id", unique = 1)
     private String book_id;
+    @Column(name = "chapterCount")
     private int chapterCount;
+    @Column(name = "chapterCountAtFeed")
     private int chapterCountAtFeed;
+    @Column(name = "chapterTitle")
     private String chapterTitle;
+    @Column(name = "cover")
     private String cover;
-    private String downloadedSource;
-    private String last_chapter;
-    private Date localModifiedDate;
-    private String title;
-    private int tocIndex;
-    private String toc_id;
-    private Date updated;
-    private boolean is_unread = false;
-    private boolean is_top = false;
+    @Column(name = "deleted")
     private boolean deleted = false;
-    private boolean feeding = false;
+    @Column(name = "downloadedSource")
+    private String downloadedSource;
+    @Column(name = "feedFat")
     private boolean feedFat = false;
+    @Column(name = "feeding")
+    private boolean feeding = false;
+    @Column(name = "is_top")
+    private boolean is_top = false;
+    @Column(name = "is_unread")
+    private boolean is_unread = false;
+    @Column(name = "last_chapter")
+    private String last_chapter;
+    @Column(name = "localModifiedDate")
+    private Date localModifiedDate;
+    @Column(name = "readMode")
     private int readMode = -1;
+    @Column(name = "title")
+    private String title;
+    @Column(name = "tocIndex")
+    private int tocIndex;
+    @Column(name = "toc_id")
+    private String toc_id;
+    @Column(name = "updated")
+    private Date updated;
 
-    public static void addAccountInfo(BookReadRecord BookReadRecord1) {
-        Account Account2 = am.e();
-
-        if (Account2 != null)
-            BookReadRecord1.setAccount(Account2.getUser().getId());
-        else
-            BookReadRecord1.setAccount(null);
-        BookReadRecord1.setLocalModifiedDate(new Date());
-        BookReadRecord1.save();
-    }
-
-    public static void create(BookGenderRecommend$RecommendBook RecommendBook1) {
-        BookReadRecord BookReadRecord2 = createBookRecord(RecommendBook1);
-
-        addAccountInfo(BookReadRecord2);
-        BookReadRecord2.save();
-    }
-
-    public static void create(BookInfo BookInfo1) {
-        BookReadRecord BookReadRecord2;
-
-        trulyDelete(BookInfo1.getId());
-        BookReadRecord2 = createBookRecord(BookInfo1);
-        addAccountInfo(BookReadRecord2);
-        BookReadRecord2.save();
-        i.a().c(new com.clilystudio.netbook.event.c(BookReadRecord2.getBookId()));
-    }
-
-    public static void create(BookInfo BookInfo1, String String2, int int3, int int4, int int5) {
-        String String6 = BookInfo1.getId();
-        BookReadRecord BookReadRecord7;
-
-        trulyDelete(String6);
-        BookReadRecord7 = createBookRecord(BookInfo1);
-        BookReadRecord7.toc_id = String2;
-        BookReadRecord7.readMode = int5;
-        addAccountInfo(BookReadRecord7);
-        BookReadRecord7.save();
-        MixTocRecord.create(String6, String2, int3, int4);
-        i.a().c(new com.clilystudio.netbook.event.c(String6));
-    }
-
-    public static void create(BookInfo BookInfo1, String String2, String String3, String String4, int int5, int int6, int int7) {
-        String String8 = BookInfo1.getId();
-        BookReadRecord BookReadRecord9;
-
-        trulyDelete(String8);
-        BookReadRecord9 = createBookRecord(BookInfo1);
-        BookReadRecord9.toc_id = String2;
-        BookReadRecord9.readMode = int7;
-        addAccountInfo(BookReadRecord9);
-        BookReadRecord9.save();
-        TocReadRecord.create(String8, String2, String3, String4, int5, int6);
-        i.a().c(new com.clilystudio.netbook.event.c(String8));
-    }
-
-    public static void create(RemoteBookShelf$Book Book1, boolean boolean2) {
-        BookReadRecord BookReadRecord3 = createBookRecord(Book1);
-
-        addAccountInfo(BookReadRecord3);
-        BookReadRecord3.save();
-    }
-
-    private static BookReadRecord createBookRecord(BookGenderRecommend$RecommendBook RecommendBook1) {
-        BookReadRecord BookReadRecord2 = new BookReadRecord();
-
-        BookReadRecord2.book_id = RecommendBook1.get_id();
-        BookReadRecord2.setTitle(RecommendBook1.getTitle());
-        BookReadRecord2.setCover(RecommendBook1.getCover());
-        BookReadRecord2.last_chapter = RecommendBook1.getLastChapter();
-        BookReadRecord2.setUpdated(RecommendBook1.getUpdated());
-        BookReadRecord2.setChapterCount(RecommendBook1.getChaptersCount());
-        BookReadRecord2.setAuthor(RecommendBook1.getAuthor());
-        BookReadRecord2.setRecommended(true);
-        return BookReadRecord2;
-    }
-
-    private static BookReadRecord createBookRecord(BookInfo BookInfo1) {
-        BookReadRecord BookReadRecord2 = new BookReadRecord();
-
-        BookReadRecord2.book_id = BookInfo1.getId();
-        BookReadRecord2.setTitle(BookInfo1.getTitle());
-        BookReadRecord2.setCover(BookInfo1.getCover());
-        BookReadRecord2.last_chapter = BookInfo1.getLastChapter();
-        BookReadRecord2.setUpdated(BookInfo1.getUpdated());
-        BookReadRecord2.setChapterCount(BookInfo1.getChaptersCount());
-        BookReadRecord2.setAuthor(BookInfo1.getAuthor());
-        if (BookInfo1.isHasCp())
-            BookReadRecord2.setHave_cp(1);
-        else
-            BookReadRecord2.setHave_cp(2);
-        return BookReadRecord2;
-    }
-
-    private static BookReadRecord createBookRecord(RemoteBookShelf$Book Book1) {
-        BookReadRecord BookReadRecord2 = new BookReadRecord();
-
-        BookReadRecord2.book_id = Book1.getId();
-        BookReadRecord2.setTitle(Book1.getTitle());
-        BookReadRecord2.setCover(Book1.getCover());
-        BookReadRecord2.last_chapter = Book1.getLastChapter();
-        BookReadRecord2.setUpdated(Book1.getUpdated());
-        BookReadRecord2.setChapterCount(Book1.getChaptersCount());
-        BookReadRecord2.setAuthor(Book1.getAuthor());
-        if (Book1.isHasCp()) {
-            BookReadRecord2.setHave_cp(1);
-            BookReadRecord2.setReadMode(9);
-        } else
-            BookReadRecord2.setHave_cp(2);
-        return BookReadRecord2;
-    }
-
-    public static void createFeed(RemoteBookShelf$Book Book1) {
-        BookReadRecord BookReadRecord2 = createBookRecord(Book1);
-
-        BookReadRecord2.setFeeding(true);
-        BookReadRecord2.setChapterCountAtFeed(Book1.getChaptersCount());
-        addAccountInfo(BookReadRecord2);
-        BookReadRecord2.save();
-    }
-
-    public static void delete(BookReadRecord BookReadRecord1) {
-        if (BookReadRecord1 != null) {
-            String String3;
-
-            BookReadRecord1.setDeleted(true);
-            BookReadRecord1.setFeeding(false);
-            BookReadRecord1.setFeedFat(false);
-            addAccountInfo(BookReadRecord1);
-            BookReadRecord1.save();
-            String3 = BookReadRecord1.getBookId();
-            deleteTocRecord(String3);
-            deleteModeRecord(String3);
-            deleteDlRecord(String3);
+    /*
+     * Enabled aggressive block sorting
+     */
+    public static void addAccountInfo(BookReadRecord bookReadRecord) {
+        Account account = am.e();
+        if (account != null) {
+            bookReadRecord.setAccount(account.getUser().getId());
+        } else {
+            bookReadRecord.setAccount(null);
         }
+        bookReadRecord.setLocalModifiedDate(new Date());
+        bookReadRecord.save();
     }
 
-    public static void delete(String String1) {
-        delete(get(String1));
+    public static void create(BookGenderRecommend$RecommendBook recommendBook) {
+        BookReadRecord bookReadRecord = BookReadRecord.createBookRecord(recommendBook);
+        BookReadRecord.addAccountInfo(bookReadRecord);
+        bookReadRecord.save();
     }
 
-    public static void deleteAndSync(String String1) {
-        delete(String1);
-        i.a().c(new h(String1));
+    public static void create(BookInfo bookInfo) {
+        BookReadRecord.trulyDelete(bookInfo.getId());
+        BookReadRecord bookReadRecord = BookReadRecord.createBookRecord(bookInfo);
+        BookReadRecord.addAccountInfo(bookReadRecord);
+        bookReadRecord.save();
+        i.a().c(new c(bookReadRecord.getBookId()));
     }
 
-    private static void deleteDlRecord(String String1) {
-        BookDlRecord.delete(String1);
+    public static void create(BookInfo bookInfo, String string, int n, int n2, int n3) {
+        String string2 = bookInfo.getId();
+        BookReadRecord.trulyDelete(string2);
+        BookReadRecord bookReadRecord = BookReadRecord.createBookRecord(bookInfo);
+        bookReadRecord.toc_id = string;
+        bookReadRecord.readMode = n3;
+        BookReadRecord.addAccountInfo(bookReadRecord);
+        bookReadRecord.save();
+        MixTocRecord.create(string2, string, n, n2);
+        i.a().c(new c(string2));
     }
 
-    private static void deleteModeRecord(String String1) {
-        SourceRecord.delete(String1);
+    public static void create(BookInfo bookInfo, String string, String string2, String string3, int n, int n2, int n3) {
+        String string4 = bookInfo.getId();
+        BookReadRecord.trulyDelete(string4);
+        BookReadRecord bookReadRecord = BookReadRecord.createBookRecord(bookInfo);
+        bookReadRecord.toc_id = string;
+        bookReadRecord.readMode = n3;
+        BookReadRecord.addAccountInfo(bookReadRecord);
+        bookReadRecord.save();
+        TocReadRecord.create(string4, string, string2, string3, n, n2);
+        i.a().c(new c(string4));
     }
 
-    private static void deleteTocRecord(String String1) {
-        TocReadRecord.deleteByBookId(String1);
-        MixTocRecord.deleteByBookId(String1);
+    public static void create(RemoteBookShelf$Book book, boolean bl) {
+        BookReadRecord bookReadRecord = BookReadRecord.createBookRecord(book);
+        BookReadRecord.addAccountInfo(bookReadRecord);
+        bookReadRecord.save();
     }
-// Error: Internal #201: 
-// The following method may not be correct.
 
-    public static BookReadRecord get(String String1) {
+    private static BookReadRecord createBookRecord(BookGenderRecommend$RecommendBook bookGenderRecommend$RecommendBook) {
+        BookReadRecord bookReadRecord = new BookReadRecord();
+        bookReadRecord.book_id = bookGenderRecommend$RecommendBook.get_id();
+        bookReadRecord.setTitle(bookGenderRecommend$RecommendBook.getTitle());
+        bookReadRecord.setCover(bookGenderRecommend$RecommendBook.getCover());
+        bookReadRecord.last_chapter = bookGenderRecommend$RecommendBook.getLastChapter();
+        bookReadRecord.setUpdated(bookGenderRecommend$RecommendBook.getUpdated());
+        bookReadRecord.setChapterCount(bookGenderRecommend$RecommendBook.getChaptersCount());
+        bookReadRecord.setAuthor(bookGenderRecommend$RecommendBook.getAuthor());
+        bookReadRecord.setRecommended(true);
+        return bookReadRecord;
     }
-// Error: Internal #201: 
-// The following method may not be correct.
 
-    public static List getAll() {
+    private static BookReadRecord createBookRecord(BookInfo bookInfo) {
+        BookReadRecord bookReadRecord = new BookReadRecord();
+        bookReadRecord.book_id = bookInfo.getId();
+        bookReadRecord.setTitle(bookInfo.getTitle());
+        bookReadRecord.setCover(bookInfo.getCover());
+        bookReadRecord.last_chapter = bookInfo.getLastChapter();
+        bookReadRecord.setUpdated(bookInfo.getUpdated());
+        bookReadRecord.setChapterCount(bookInfo.getChaptersCount());
+        bookReadRecord.setAuthor(bookInfo.getAuthor());
+        if (bookInfo.isHasCp()) {
+            bookReadRecord.setHave_cp(1);
+            return bookReadRecord;
+        }
+        bookReadRecord.setHave_cp(2);
+        return bookReadRecord;
     }
-// Error: Internal #201: 
-// The following method may not be correct.
 
-    public static List getAllFeedFat() {
+    private static BookReadRecord createBookRecord(RemoteBookShelf$Book remoteBookShelf$Book) {
+        BookReadRecord bookReadRecord = new BookReadRecord();
+        bookReadRecord.book_id = remoteBookShelf$Book.getId();
+        bookReadRecord.setTitle(remoteBookShelf$Book.getTitle());
+        bookReadRecord.setCover(remoteBookShelf$Book.getCover());
+        bookReadRecord.last_chapter = remoteBookShelf$Book.getLastChapter();
+        bookReadRecord.setUpdated(remoteBookShelf$Book.getUpdated());
+        bookReadRecord.setChapterCount(remoteBookShelf$Book.getChaptersCount());
+        bookReadRecord.setAuthor(remoteBookShelf$Book.getAuthor());
+        if (remoteBookShelf$Book.isHasCp()) {
+            bookReadRecord.setHave_cp(1);
+            bookReadRecord.setReadMode(9);
+            return bookReadRecord;
+        }
+        bookReadRecord.setHave_cp(2);
+        return bookReadRecord;
     }
-// Error: Internal #201: 
-// The following method may not be correct.
 
-    public static List getAllFeeding() {
+    public static void createFeed(RemoteBookShelf$Book remoteBookShelf$Book) {
+        BookReadRecord bookReadRecord = BookReadRecord.createBookRecord(remoteBookShelf$Book);
+        bookReadRecord.setFeeding(true);
+        bookReadRecord.setChapterCountAtFeed(remoteBookShelf$Book.getChaptersCount());
+        BookReadRecord.addAccountInfo(bookReadRecord);
+        bookReadRecord.save();
     }
-// Error: Internal #201: 
-// The following method may not be correct.
 
-    public static List getAllFeedingOrderByCount() {
+    public static void delete(BookReadRecord bookReadRecord) {
+        if (bookReadRecord == null) {
+            return;
+        }
+        bookReadRecord.setDeleted(true);
+        bookReadRecord.setFeeding(false);
+        bookReadRecord.setFeedFat(false);
+        BookReadRecord.addAccountInfo(bookReadRecord);
+        bookReadRecord.save();
+        String string = bookReadRecord.getBookId();
+        BookReadRecord.deleteTocRecord(string);
+        BookReadRecord.deleteModeRecord(string);
+        BookReadRecord.deleteDlRecord(string);
     }
-// Error: Internal #201: 
-// The following method may not be correct.
 
-    public static List getAllNoFeed() {
+    public static void delete(String string) {
+        BookReadRecord.delete(BookReadRecord.get(string));
     }
-// Error: Internal #201: 
-// The following method may not be correct.
 
-    public static List getAllNotDeleted() {
+    public static void deleteAndSync(String string) {
+        BookReadRecord.delete(string);
+        i.a().c(new h(string));
     }
-// Error: Internal #201: 
-// The following method may not be correct.
 
-    public static List getAllWithDelNoFeed() {
+    private static void deleteDlRecord(String string) {
+        BookDlRecord.delete(string);
     }
-// Error: Internal #201: 
-// The following method may not be correct.
 
-    public static List getAllWithTopNoFeed() {
+    private static void deleteModeRecord(String string) {
+        SourceRecord.delete(string);
     }
-// Error: Internal #201: 
-// The following method may not be correct.
 
-    public static List getAllWithTopNoFeedByRead() {
+    private static void deleteTocRecord(String string) {
+        TocReadRecord.deleteByBookId(string);
+        MixTocRecord.deleteByBookId(string);
     }
-// Error: Internal #201: 
-// The following method may not be correct.
 
-    public static BookReadRecord getOnShelf(String String1) {
+    public static BookReadRecord get(String string) {
+        if (string == null) {
+            return null;
+        }
+        return (BookReadRecord) new Select().from(BookReadRecord.class).where("book_id = ?", string).executeSingle();
     }
-// Error: Internal #201: 
-// The following method may not be correct.
 
-    public static void trulyDelete(String String1) {
+    public static List<BookReadRecord> getAll() {
+        From from = new Select().from(BookReadRecord.class);
+        Object[] arrobject = new Object[]{0};
+        return from.where("deleted = ?", arrobject).execute();
+    }
+
+    public static List<BookReadRecord> getAllFeedFat() {
+        From from = new Select().from(BookReadRecord.class);
+        Object[] arrobject = new Object[]{1, 1};
+        return from.where("feeding = ? AND feedFat = ?", arrobject).execute();
+    }
+
+    public static List<BookReadRecord> getAllFeeding() {
+        From from = new Select().from(BookReadRecord.class);
+        Object[] arrobject = new Object[]{1};
+        return from.where("feeding = ? ", arrobject).execute();
+    }
+
+    public static List<BookReadRecord> getAllFeedingOrderByCount() {
+        From from = new Select().from(BookReadRecord.class);
+        Object[] arrobject = new Object[]{1};
+        return from.where("feeding = ? ", arrobject).orderBy("(chapterCount - chapterCountAtFeed) DESC").execute();
+    }
+
+    public static List<BookReadRecord> getAllNoFeed() {
+        From from = new Select().from(BookReadRecord.class);
+        Object[] arrobject = new Object[]{0, 0};
+        return from.where("deleted = ? AND feeding = ?", arrobject).execute();
+    }
+
+    public static List<BookReadRecord> getAllNotDeleted() {
+        From from = new Select().from(BookReadRecord.class);
+        Object[] arrobject = new Object[]{0};
+        return from.where("deleted = ?", arrobject).orderBy("is_top DESC,readTime DESC").execute();
+    }
+
+    public static List<BookReadRecord> getAllWithDelNoFeed() {
+        From from = new Select().from(BookReadRecord.class);
+        Object[] arrobject = new Object[]{0};
+        return from.where("feeding = ?", arrobject).execute();
+    }
+
+    public static List<BookReadRecord> getAllWithTopNoFeed() {
+        From from = new Select().from(BookReadRecord.class);
+        Object[] arrobject = new Object[]{0, 0};
+        return from.where("deleted = ? AND feeding = ?", arrobject).orderBy("is_top DESC,updated DESC").execute();
+    }
+
+    public static List<BookReadRecord> getAllWithTopNoFeedByRead() {
+        From from = new Select().from(BookReadRecord.class);
+        Object[] arrobject = new Object[]{0, 0};
+        return from.where("deleted = ? AND feeding = ?", arrobject).orderBy("is_top DESC,readTime DESC").execute();
+    }
+
+    public static BookReadRecord getOnShelf(String string) {
+        if (string == null) {
+            return null;
+        }
+        return (BookReadRecord) new Select().from(BookReadRecord.class).where("book_id = ? AND deleted = 0", string).executeSingle();
+    }
+
+    public static void trulyDelete(String string) {
+        new Delete().from(BookReadRecord.class).where("book_id = ?", string).execute();
     }
 
     public String buildDesc() {
-        Object[] Object_1darray1 = new Object[2];
-
-        Object_1darray1[0] = t.e(getUpdated());
-        Object_1darray1[1] = last_chapter;
-        return String.format("%s:%s", Object_1darray1);
+        Object[] arrobject = new Object[]{t.e((Date) this.getUpdated()), this.last_chapter};
+        return String.format("%s:%s", arrobject);
     }
 
     public String getAccount() {
-        return account;
+        return this.account;
     }
 
-    public void setAccount(String String1) {
-        account = String1;
+    public void setAccount(String string) {
+        this.account = string;
     }
 
     public String getAuthor() {
-        return author;
+        return this.author;
     }
 
-    public void setAuthor(String String1) {
-        author = String1;
+    public void setAuthor(String string) {
+        this.author = string;
     }
 
     public String getBookId() {
-        return book_id;
+        return this.book_id;
     }
 
-    public void setBookId(String String1) {
-        book_id = String1;
+    public void setBookId(String string) {
+        this.book_id = string;
     }
 
     public int getChapterCount() {
-        return chapterCount;
+        return this.chapterCount;
     }
 
-    public void setChapterCount(int int1) {
-        chapterCount = int1;
+    public void setChapterCount(int n) {
+        this.chapterCount = n;
     }
 
     public int getChapterCountAtFeed() {
-        return chapterCountAtFeed;
+        return this.chapterCountAtFeed;
     }
 
-    public void setChapterCountAtFeed(int int1) {
-        chapterCountAtFeed = int1;
+    public void setChapterCountAtFeed(int n) {
+        this.chapterCountAtFeed = n;
     }
 
     public String getChapterTitle() {
-        return chapterTitle;
+        return this.chapterTitle;
     }
 
-    public void setChapterTitle(String String1) {
-        chapterTitle = String1;
+    public void setChapterTitle(String string) {
+        this.chapterTitle = string;
     }
 
     public String getCover() {
-        return cover;
+        return this.cover;
     }
 
-    public void setCover(String String1) {
-        cover = String1;
+    public void setCover(String string) {
+        this.cover = string;
     }
 
     public String getDownloadedSource() {
-        return downloadedSource;
+        return this.downloadedSource;
     }
 
-    public void setDownloadedSource(String String1) {
-        downloadedSource = String1;
+    public void setDownloadedSource(String string) {
+        this.downloadedSource = string;
     }
 
     public String getFullCover() {
-        return new StringBuilder().append(ApiService.a).append(getCover()).append("-covers").toString();
+        return ApiService.a + this.getCover() + "-covers";
     }
 
     public int getHave_cp() {
-        return have_cp;
+        return this.have_cp;
     }
 
-    public void setHave_cp(int int1) {
-        have_cp = int1;
+    public void setHave_cp(int n) {
+        this.have_cp = n;
     }
 
     public long getLastActionTime() {
-        return lastActionTime;
+        return this.lastActionTime;
     }
 
-    public void setLastActionTime(long long1) {
-        lastActionTime = long1;
+    public void setLastActionTime(long l) {
+        this.lastActionTime = l;
     }
 
     public String getLastChapter() {
-        return last_chapter;
+        return this.last_chapter;
     }
 
-    public void setLastChapter(String String1) {
-        last_chapter = String1;
+    public void setLastChapter(String string) {
+        this.last_chapter = string;
     }
 
     public Date getLocalModifiedDate() {
-        if (localModifiedDate == null)
-            return new Date(0L);
-        else
-            return localModifiedDate;
+        if (this.localModifiedDate == null) {
+            return new Date(0);
+        }
+        return this.localModifiedDate;
     }
 
-    public void setLocalModifiedDate(Date Date1) {
-        localModifiedDate = Date1;
+    public void setLocalModifiedDate(Date date) {
+        this.localModifiedDate = date;
     }
 
     public int getReadMode() {
-        return readMode;
+        return this.readMode;
     }
 
-    public void setReadMode(int int1) {
-        readMode = int1;
+    public void setReadMode(int n) {
+        this.readMode = n;
     }
 
     public String getTitle() {
-        return title;
+        return this.title;
     }
 
-    public void setTitle(String String1) {
-        title = String1;
+    public void setTitle(String string) {
+        this.title = string;
     }
 
     public String getTocId() {
-        return toc_id;
+        return this.toc_id;
     }
 
-    public void setTocId(String String1) {
-        toc_id = String1;
+    public void setTocId(String string) {
+        this.toc_id = string;
     }
 
     public int getTocIndex() {
-        return tocIndex;
+        return this.tocIndex;
     }
 
-    public void setTocIndex(int int1) {
-        tocIndex = int1;
+    public void setTocIndex(int n) {
+        this.tocIndex = n;
     }
 
     public Date getUpdated() {
-        return updated;
+        return this.updated;
     }
 
-    public void setUpdated(Date Date1) {
-        updated = Date1;
+    public void setUpdated(Date date) {
+        this.updated = date;
     }
 
     public boolean isDeleted() {
-        return deleted;
+        return this.deleted;
     }
 
-    public void setDeleted(boolean boolean1) {
-        deleted = boolean1;
+    public void setDeleted(boolean bl) {
+        this.deleted = bl;
     }
 
     public boolean isFeedFat() {
-        return feedFat;
+        return this.feedFat;
     }
 
-    public void setFeedFat(boolean boolean1) {
-        feedFat = boolean1;
+    public void setFeedFat(boolean bl) {
+        this.feedFat = bl;
     }
 
     public boolean isFeeding() {
-        return feeding;
+        return this.feeding;
     }
 
-    public void setFeeding(boolean boolean1) {
-        feeding = boolean1;
+    public void setFeeding(boolean bl) {
+        this.feeding = bl;
     }
 
     public boolean isRecommended() {
-        return recommended;
+        return this.recommended;
     }
 
-    public void setRecommended(boolean boolean1) {
-        recommended = boolean1;
+    public void setRecommended(boolean bl) {
+        this.recommended = bl;
     }
 
     public boolean isTop() {
-        return is_top;
+        return this.is_top;
     }
 
-    public void setTop(boolean boolean1) {
-        is_top = boolean1;
+    public void setTop(boolean bl) {
+        this.is_top = bl;
     }
 
     public boolean isUnread() {
-        return is_unread;
+        return this.is_unread;
     }
 
-    public void setUnread(boolean boolean1) {
-        is_unread = boolean1;
+    public void setUnread(boolean bl) {
+        this.is_unread = bl;
     }
 }

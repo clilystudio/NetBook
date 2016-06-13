@@ -1,19 +1,21 @@
 package com.clilystudio.netbook.ui.post;
 
 import android.os.Handler;
+import android.widget.ListView;
 
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 
-final class az implements k {
+final class az
+        implements k<ListView> {
+    final /* synthetic */ BookReviewListFragment a;
 
-    BookReviewListFragment a;     // final access specifier removed
-
-    az(BookReviewListFragment BookReviewListFragment1) {
-        a = BookReviewListFragment1;
+    az(BookReviewListFragment bookReviewListFragment) {
+        this.a = bookReviewListFragment;
     }
 
-    public final void a(PullToRefreshBase PullToRefreshBase1) {
-        a.d.setVisibility(8);
-        new Handler().postDelayed((Runnable) new aA(this), 1000L);
+    @Override
+    public final void a(PullToRefreshBase<ListView> pullToRefreshBase) {
+        this.a.d.setVisibility(8);
+        new Handler().postDelayed(new aA(this), 1000);
     }
 }

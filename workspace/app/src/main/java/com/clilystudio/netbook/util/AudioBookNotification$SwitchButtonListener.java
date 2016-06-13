@@ -7,19 +7,23 @@ import android.os.Handler;
 
 import java.util.Date;
 
-public class AudioBookNotification$SwitchButtonListener extends BroadcastReceiver {
-
+public class AudioBookNotification$SwitchButtonListener
+        extends BroadcastReceiver {
     private Handler a = new Handler();
 
-    public void onReceive(Context Context1, Intent Intent2) {
-        long long3 = new Date().getTime();
-
-        if (long3 - e.d() >= 1000L) {
-            as.a();
-            if (as.c())
-                a.post((Runnable) new i(this));
-            else
-                a.post((Runnable) new j(this));
+    @Override
+    public void onReceive(Context context, Intent intent) {
+        long l = new Date().getTime();
+        if (l - e.d() < 1000) {
+            e.a((long) l);
+            return;
         }
+        e.a((long) l);
+        as.a();
+        if (as.c()) {
+            this.a.post((Runnable) ((Object) new i(this)));
+            return;
+        }
+        this.a.post((Runnable) ((Object) new j(this)));
     }
 }

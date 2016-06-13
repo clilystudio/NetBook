@@ -1,28 +1,24 @@
 package com.clilystudio.netbook.ui;
 
-import android.content.Context;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.AdapterView$OnItemClickListener;
 
 import com.clilystudio.netbook.model.BookSummary;
 
-final class G implements AdapterView$OnItemClickListener {
+final class G
+        implements AdapterView.OnItemClickListener {
+    private /* synthetic */ AuthorBooksActivity a;
 
-    private AuthorBooksActivity a;
-
-    G(AuthorBooksActivity AuthorBooksActivity1) {
-        a = AuthorBooksActivity1;
+    G(AuthorBooksActivity authorBooksActivity) {
+        this.a = authorBooksActivity;
     }
 
-    public final void onItemClick(AdapterView AdapterView1, View View2, int int3, long long4) {
-        int int6 = int3 - AuthorBooksActivity.a(a).getHeaderViewsCount();
-
-        if (int6 >= 0 && int6 < AuthorBooksActivity.b(a).getCount()) {
-            BookSummary BookSummary7 = (BookSummary) AuthorBooksActivity.b(a).getItem(int6);
-
-            if (BookSummary7 != null)
-                a.startActivity(BookInfoActivity.a((Context) a, BookSummary7.getId()));
+    @Override
+    public final void onItemClick(AdapterView<?> adapterView, View view, int n, long l2) {
+        BookSummary bookSummary;
+        int n2 = n - AuthorBooksActivity.a(this.a).getHeaderViewsCount();
+        if (n2 >= 0 && n2 < AuthorBooksActivity.b(this.a).getCount() && (bookSummary = (BookSummary) AuthorBooksActivity.b(this.a).getItem(n2)) != null) {
+            this.a.startActivity(BookInfoActivity.a(this.a, bookSummary.getId()));
         }
     }
 }

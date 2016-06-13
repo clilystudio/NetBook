@@ -3,54 +3,60 @@ package com.clilystudio.netbook.reader;
 import android.view.View;
 
 import com.clilystudio.netbook.a.e;
+import com.clilystudio.netbook.api.b;
+import com.clilystudio.netbook.model.MenuAd;
 
 import java.util.List;
 
-final class bz extends e {
+final class bz
+        extends e<Void, Void, List<MenuAd>> {
+    private /* synthetic */ ReaderMenuFragment a;
 
-    private ReaderMenuFragment a;
-
-    bz(ReaderMenuFragment ReaderMenuFragment1, byte byte2) {
-        this(ReaderMenuFragment1);
+    private bz(ReaderMenuFragment readerMenuFragment) {
+        this.a = readerMenuFragment;
     }
 
-    private bz(ReaderMenuFragment ReaderMenuFragment1) {
-        a = ReaderMenuFragment1;
+    /* synthetic */ bz(ReaderMenuFragment readerMenuFragment, byte by) {
+        this(readerMenuFragment);
     }
 
-    private static transient List a() {
-        List List3;
-
+    private static /* varargs */ List<MenuAd> a() {
         try {
-            com.clilystudio.netbook.api.b.a();
-            List3 = com.clilystudio.netbook.api.b.b().i();
-        } catch (Exception Exception1) {
-            Exception1.printStackTrace();
+            b.a();
+            List<MenuAd> list = b.b().i();
+            return list;
+        } catch (Exception var0_1) {
+            var0_1.printStackTrace();
             return null;
         }
-        return List3;
     }
 
-    protected final Object doInBackground(Object[] Object_1darray1) {
-        return a();
+    /*
+     * Exception decompiling
+     */
+    @Override
+    protected final /* synthetic */ Object doInBackground(Object[] var1_1) {
+        // This method has failed to decompile.  When submitting a bug report, please provide this stack trace, and (if you hold appropriate legal rights) the relevant class file.
+        // java.lang.ArrayIndexOutOfBoundsException
+        throw new IllegalStateException("Decompilation failed");
     }
 
-    protected final void onPostExecute(Object Object1) {
-        Object Object2 = (List) Object1;
-
-        super.onPostExecute(Object2);
-        if (a.getActivity() != null && a.getView() != null) {
-            if (Object2 == null || ((List) Object2).isEmpty())
-                ReaderMenuFragment.l(a);
-            else {
-                View View3 = a.getView().findViewById(2131492933);
-
-                View3.setVisibility(0);
-                View3.setOnClickListener(ReaderMenuFragment.m(a));
-                View3.findViewById(2131492916).setOnClickListener(ReaderMenuFragment.m(a));
-                com.clilystudio.netbook.util.a.a().a((List) Object2);
-                ReaderMenuFragment.n(a);
-            }
+    @Override
+    protected final /* synthetic */ void onPostExecute(Object object) {
+        List list = (List) object;
+        super.onPostExecute(list);
+        if (this.a.getActivity() == null || this.a.getView() == null) {
+            return;
         }
+        if (list == null || list.isEmpty()) {
+            ReaderMenuFragment.l(this.a);
+            return;
+        }
+        View view = this.a.getView().findViewById(2131492933);
+        view.setVisibility(0);
+        view.setOnClickListener(ReaderMenuFragment.m(this.a));
+        view.findViewById(2131492916).setOnClickListener(ReaderMenuFragment.m(this.a));
+        a.a().a(list);
+        ReaderMenuFragment.n(this.a);
     }
 }

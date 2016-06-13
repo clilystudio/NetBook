@@ -5,7 +5,6 @@ import com.clilystudio.netbook.util.t;
 import java.util.Date;
 
 public class NotificationItem {
-
     public static final String COMMENT_LIKE = "comment_like";
     public static final String COMMENT_REPLY = "comment_reply";
     public static final String COMMENT_TWEET = "comment_tweet";
@@ -28,187 +27,182 @@ public class NotificationItem {
     private String link;
     private String linkTitle;
     private NotificationRoot$NotifComment myComment;
-    private NotificationItem$NotifPost myPost;
-    private NotificationItem$NotifPost post;
+    private NotifPost myPost;
+    private NotifPost post;
     private String subTitle;
     private String title;
     private NotificationItem$Trigger trigger;
-    private String type;
+    private String type = "post_reply";
     private String user;
-    public NotificationItem(String String1) {
-        type = "post_reply";
-        type = String1;
-    }
 
     public NotificationItem() {
-        type = "post_reply";
+    }
+
+    public NotificationItem(String string) {
+        this.type = string;
     }
 
     public ReplyeeInfo buildRepliedInfoForCommentReply() {
-        if (!type.equals("comment_reply"))
+        if (!this.type.equals("comment_reply")) {
             throw new RuntimeException("Type must be comment_reply");
-        else {
-            Object Object1 = new CommonReplyeeInfo();
-
-            ((ReplyeeInfo) Object1).setFloor(getComment().getFloor());
-            ((ReplyeeInfo) Object1).setAuthor(getTrigger().toAuthor());
-            ((ReplyeeInfo) Object1).setCommentId(getComment().get_id());
-            return (ReplyeeInfo) Object1;
         }
+        CommonReplyeeInfo commonReplyeeInfo = new CommonReplyeeInfo();
+        commonReplyeeInfo.setFloor(this.getComment().getFloor());
+        commonReplyeeInfo.setAuthor(this.getTrigger().toAuthor());
+        commonReplyeeInfo.setCommentId(this.getComment().get_id());
+        return commonReplyeeInfo;
     }
 
     public ReplyeeInfo buildRepliedInfoForPostReply() {
-        if (!type.equals("post_reply"))
+        if (!this.type.equals("post_reply")) {
             throw new RuntimeException("Type must be post_reply");
-        else {
-            Object Object1 = new CommonReplyeeInfo();
-
-            ((ReplyeeInfo) Object1).setFloor(getComment().getFloor());
-            ((ReplyeeInfo) Object1).setAuthor(getTrigger().toAuthor());
-            ((ReplyeeInfo) Object1).setCommentId(getComment().get_id());
-            return (ReplyeeInfo) Object1;
         }
+        CommonReplyeeInfo commonReplyeeInfo = new CommonReplyeeInfo();
+        commonReplyeeInfo.setFloor(this.getComment().getFloor());
+        commonReplyeeInfo.setAuthor(this.getTrigger().toAuthor());
+        commonReplyeeInfo.setCommentId(this.getComment().get_id());
+        return commonReplyeeInfo;
     }
 
     public NotificationRoot$NotifComment getComment() {
-        return comment;
+        return this.comment;
     }
 
-    public void setComment(NotificationRoot$NotifComment NotifComment1) {
-        comment = NotifComment1;
+    public void setComment(NotificationRoot$NotifComment notificationRoot$NotifComment) {
+        this.comment = notificationRoot$NotifComment;
     }
 
     public String getCreated() {
-        return created;
+        return this.created;
     }
 
-    public void setCreated(String String1) {
-        created = String1;
+    public void setCreated(String string) {
+        this.created = string;
     }
 
     public String getHeader() {
-        return header;
+        return this.header;
     }
 
-    public void setHeader(String String1) {
-        header = String1;
+    public void setHeader(String string) {
+        this.header = string;
     }
 
     public String getJumpTo() {
-        return jumpTo;
+        return this.jumpTo;
     }
 
-    public void setJumpTo(String String1) {
-        jumpTo = String1;
+    public void setJumpTo(String string) {
+        this.jumpTo = string;
     }
 
     public String getLink() {
-        return link;
+        return this.link;
     }
 
-    public void setLink(String String1) {
-        link = String1;
+    public void setLink(String string) {
+        this.link = string;
     }
 
     public String getLinkTitle() {
-        return linkTitle;
+        return this.linkTitle;
     }
 
-    public void setLinkTitle(String String1) {
-        linkTitle = String1;
+    public void setLinkTitle(String string) {
+        this.linkTitle = string;
     }
 
     public NotificationRoot$NotifComment getMyComment() {
-        return myComment;
+        return this.myComment;
     }
 
-    public void setMyComment(NotificationRoot$NotifComment NotifComment1) {
-        myComment = NotifComment1;
+    public void setMyComment(NotificationRoot$NotifComment notificationRoot$NotifComment) {
+        this.myComment = notificationRoot$NotifComment;
     }
 
-    public NotificationItem$NotifPost getMyPost() {
-        return myPost;
+    public NotifPost getMyPost() {
+        return this.myPost;
     }
 
-    public void setMyPost(NotificationItem$NotifPost NotifPost1) {
-        myPost = NotifPost1;
+    public void setMyPost(NotifPost notifPost) {
+        this.myPost = notifPost;
     }
 
-    public NotificationItem$NotifPost getPost() {
-        return post;
+    public NotifPost getPost() {
+        return this.post;
     }
 
-    public void setPost(NotificationItem$NotifPost NotifPost1) {
-        post = NotifPost1;
+    public void setPost(NotifPost notifPost) {
+        this.post = notifPost;
     }
 
     public Date getServerDate() {
-        return t.b(getCreated());
+        return t.b((String) this.getCreated());
     }
 
     public String getSubTitle() {
-        return subTitle;
+        return this.subTitle;
     }
 
-    public void setSubTitle(String String1) {
-        subTitle = String1;
+    public void setSubTitle(String string) {
+        this.subTitle = string;
     }
 
     public String getTitle() {
-        return title;
+        return this.title;
     }
 
-    public void setTitle(String String1) {
-        title = String1;
+    public void setTitle(String string) {
+        this.title = string;
     }
 
     public NotificationItem$Trigger getTrigger() {
-        return trigger;
+        return this.trigger;
     }
 
-    public void setTrigger(NotificationItem$Trigger Trigger1) {
-        trigger = Trigger1;
+    public void setTrigger(NotificationItem$Trigger notificationItem$Trigger) {
+        this.trigger = notificationItem$Trigger;
     }
 
     public String getType() {
-        return type;
+        return this.type;
     }
 
-    public void setType(String String1) {
-        type = String1;
+    public void setType(String string) {
+        this.type = string;
     }
 
     public String getUser() {
-        return user;
+        return this.user;
     }
 
-    public void setUser(String String1) {
-        user = String1;
+    public void setUser(String string) {
+        this.user = string;
     }
 
     public String get_id() {
-        return _id;
+        return this._id;
     }
 
-    public void set_id(String String1) {
-        _id = String1;
+    public void set_id(String string) {
+        this._id = string;
     }
 
     public boolean isPush() {
-        if (getTrigger() == null)
+        if (this.getTrigger() == null) {
             return true;
-        else
-            return false;
+        }
+        return false;
     }
 
     public boolean isPushPost() {
-        if (isPush() && getPost() != null)
+        if (this.isPush() && this.getPost() != null) {
             return true;
-        else
-            return false;
+        }
+        return false;
     }
 
-    public boolean isType(String String1) {
-        return String1.equals(type);
+    public boolean isType(String string) {
+        return string.equals(this.type);
     }
 }

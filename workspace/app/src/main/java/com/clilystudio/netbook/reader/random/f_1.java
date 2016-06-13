@@ -2,19 +2,21 @@ package com.clilystudio.netbook.reader.random;
 
 import com.clilystudio.netbook.reader.ad;
 
-final class f implements ad {
+final class f
+        implements ad {
+    private /* synthetic */ ReaderRandomActivity a;
 
-    private ReaderRandomActivity a;
-
-    f(ReaderRandomActivity ReaderRandomActivity1) {
-        a = ReaderRandomActivity1;
+    f(ReaderRandomActivity readerRandomActivity) {
+        this.a = readerRandomActivity;
     }
 
+    @Override
     public final void a() {
-        ReaderRandomActivity.m(a);
+        ReaderRandomActivity.m(this.a);
     }
 
+    @Override
     public final void b() {
-        ReaderRandomActivity.n(a);
+        ReaderRandomActivity.n(this.a);
     }
 }

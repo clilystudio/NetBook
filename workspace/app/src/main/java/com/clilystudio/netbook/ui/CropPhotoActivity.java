@@ -1,7 +1,6 @@
 package com.clilystudio.netbook.ui;
 
 import android.graphics.Bitmap;
-import android.graphics.Bitmap$CompressFormat;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
@@ -11,77 +10,87 @@ import com.clilystudio.netbook.view.CropView;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.OutputStream;
 
-public class CropPhotoActivity extends BaseActivity {
-
+public class CropPhotoActivity
+        extends BaseActivity {
     private CropView a;
 
-    static void a(CropPhotoActivity CropPhotoActivity1) {
-        Bitmap Bitmap2 = CropPhotoActivity1.a.a();
-        Bitmap Bitmap3;
-        File File4;
-
-        if (Bitmap2.getHeight() > 200 || Bitmap2.getWidth() > 200)
-            Bitmap3 = Bitmap.createScaledBitmap(Bitmap2, 200, 200, false);
-        else
-            Bitmap3 = Bitmap2;
-        File4 = new File(((Uri) CropPhotoActivity1.getIntent().getParcelableExtra("output")).getPath());
+    /*
+     * Enabled aggressive block sorting
+     * Enabled unnecessary exception pruning
+     * Enabled aggressive exception aggregation
+     */
+    static /* synthetic */ void a(CropPhotoActivity cropPhotoActivity) {
+        Bitmap bitmap = cropPhotoActivity.a.a();
+        Bitmap bitmap2 = bitmap.getHeight() > 200 || bitmap.getWidth() > 200 ? Bitmap.createScaledBitmap(bitmap, 200, 200, false) : bitmap;
+        File file = new File(((Uri) cropPhotoActivity.getIntent().getParcelableExtra("output")).getPath());
         try {
-            Object Object5 = new FileOutputStream(File4);
-
-            Bitmap3.compress(Bitmap$CompressFormat.PNG, 100, (OutputStream) Object5);
-            ((FileOutputStream) Object5).close();
-        } catch (IOException IOException6) {
-            IOException6.printStackTrace();
+            FileOutputStream fileOutputStream = new FileOutputStream(file);
+            bitmap2.compress(Bitmap.CompressFormat.PNG, 100, fileOutputStream);
+            fileOutputStream.close();
+        } catch (IOException var5_5) {
+            var5_5.printStackTrace();
         }
-        CropPhotoActivity1.setResult(-1, CropPhotoActivity1.getIntent());
-        CropPhotoActivity1.finish();
+        cropPhotoActivity.setResult(-1, cropPhotoActivity.getIntent());
+        cropPhotoActivity.finish();
     }
 
-    protected void onCreate(Bundle Bundle1) {
-        float float2 = 2048.0F;
-        Uri Uri3;
-        Bitmap Bitmap6;
-        Bitmap Bitmap12;
-
-        super.onCreate(Bundle1);
-        setContentView(2130903093);
-        a("\u622A\u53D6\u5934\u50CF", "\u4F7F\u7528", (aa) new aY(this));
-        Uri3 = getIntent().getData();
-        try {
-            Bitmap Bitmap13 = BitmapFactory.decodeStream(getContentResolver().openInputStream(Uri3));
-        } catch (IOException IOException4) {
+    /*
+     * Unable to fully structure code
+     * Enabled aggressive block sorting
+     * Enabled unnecessary exception pruning
+     * Enabled aggressive exception aggregation
+     * Lifted jumps to return sites
+     */
+    @Override
+    protected void onCreate(Bundle var1_1) {
+        block11:
+        {
+            var2_2 = 2048.0f;
+            super.onCreate(var1_1);
+            this.setContentView(2130903093);
+            this.a("\u622a\u53d6\u5934\u50cf", "\u4f7f\u7528", (aa) new aY(this));
+            var3_3 = this.getIntent().getData();
             try {
-                ((Throwable) IOException4).printStackTrace();
-            } finally {
-                throw Object5;
+                var6_5 = var13_4 = BitmapFactory.decodeStream(this.getContentResolver().openInputStream(var3_3));
+                break block11;
+            } catch (OutOfMemoryError var4_10) {
             }
-            Bitmap6 = null;
-        } catch (OutOfMemoryError OutOfMemoryError14) {
-            ((Throwable) OutOfMemoryError14).printStackTrace();
-            Bitmap6 = null;
-        } finally {
-            throw Object5;
+            **GOTO lbl -1000
         }
-        if (Bitmap6.getHeight() >= 2048 || Bitmap6.getWidth() >= 2048) {
-            float float7 = (float) Bitmap6.getWidth();
-            float float8 = (float) Bitmap6.getHeight();
-            float float11;
-
-            if (float7 > float8)
-                float11 = float2 * (float8 / float7);
-            else {
-                float float9 = float2 * (float7 / float8);
-                float float10 = float2;
-
-                float2 = float9;
-                float11 = float10;
+        lbl12:
+        // 2 sources:
+        do {
+            if (var6_5.getHeight() >= 2048 || var6_5.getWidth() >= 2048) {
+                var7_6 = var6_5.getWidth();
+                if (var7_6 > (var8_7 = (float) var6_5.getHeight())) {
+                    var11_8 = var2_2 * (var8_7 / var7_6);
+                } else {
+                    var9_14 = var2_2 * (var7_6 / var8_7);
+                    var10_15 = var2_2;
+                    var2_2 = var9_14;
+                    var11_8 = var10_15;
+                }
+                var12_9 = Bitmap.createScaledBitmap(var6_5, (int) var2_2, (int) var11_8, false);
+            } else {
+                var12_9 = var6_5;
             }
-            Bitmap12 = Bitmap.createScaledBitmap(Bitmap6, (int) float2, (int) float11, false);
-        } else
-            Bitmap12 = Bitmap6;
-        a = (CropView) findViewById(2131493118);
-        a.setImageBitmap(Bitmap12);
+            this.a = (CropView) this.findViewById(2131493118);
+            this.a.setImageBitmap(var12_9);
+            return;
+            break;
+        } while (true);
+        lbl - 1000: // 2 sources:
+        {
+            do {
+                var4_11.printStackTrace();
+                var6_5 = null;
+                **continue;
+                break;
+            } while (true);
+        }
+        catch(IOException var4_12){
+            **continue;
+        }
     }
 }

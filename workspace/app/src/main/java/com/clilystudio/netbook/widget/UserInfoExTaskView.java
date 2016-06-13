@@ -3,14 +3,15 @@ package com.clilystudio.netbook.widget;
 import android.content.Context;
 import android.util.AttributeSet;
 
-public class UserInfoExTaskView extends UserInfoTaskView {
-
-    public UserInfoExTaskView(Context Context1, AttributeSet AttributeSet2) {
-        super(Context1, AttributeSet2);
+public class UserInfoExTaskView
+        extends UserInfoTaskView {
+    public UserInfoExTaskView(Context context, AttributeSet attributeSet) {
+        super(context, attributeSet);
     }
 
+    @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
-        setExp("\u7ECF\u9A8C+5");
+        this.setExp("\u7ecf\u9a8c+5");
     }
 }

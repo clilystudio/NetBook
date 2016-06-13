@@ -1,39 +1,44 @@
 package com.clilystudio.netbook.reader;
 
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
 import android.view.MenuItem;
-import android.widget.PopupMenu$OnMenuItemClickListener;
+import android.widget.PopupMenu;
 
 import com.clilystudio.netbook.ui.BookInfoActivity;
 import com.clilystudio.netbook.ui.cb;
-import com.clilystudio.netbook.ui.cd;
 
-final class ap implements PopupMenu$OnMenuItemClickListener {
+final class ap
+        implements PopupMenu.OnMenuItemClickListener {
+    final /* synthetic */ ReaderActivity a;
 
-    ReaderActivity a;     // final access specifier removed
-
-    ap(ReaderActivity ReaderActivity1) {
-        a = ReaderActivity1;
+    ap(ReaderActivity readerActivity) {
+        this.a = readerActivity;
     }
 
-    public final boolean onMenuItemClick(MenuItem MenuItem1) {
-        switch (MenuItem1.getItemId()) {
-            case 1067:
-                ReaderActivity.L(a);
-                break;
-            case 1068:
-                Intent Intent2 = BookInfoActivity.a((Context) a, ReaderActivity.M(a));
-
-                a.startActivity(Intent2);
-                break;
-            case 1069:
-                new cb((Activity) a, (cd) new aq(this)).a().show();
-                break;
+    /*
+     * Unable to fully structure code
+     * Enabled aggressive block sorting
+     * Lifted jumps to return sites
+     */
+    @Override
+    public final boolean onMenuItemClick(MenuItem var1_1) {
+        switch (var1_1.getItemId()) {
+            case 2131493931: {
+                ReaderActivity.L(this.a);
+                **break;
+            }
+            case 2131493932: {
+                var2_2 = BookInfoActivity.a(this.a, ReaderActivity.M(this.a));
+                this.a.startActivity(var2_2);
+            }
+            lbl8:
+            // 3 sources:
             default:
-                break;
+            {
+                return true;
+            }
+            case 2131493933:
         }
+        new cb(this.a, new aq(this)).a().show();
         return true;
     }
 }

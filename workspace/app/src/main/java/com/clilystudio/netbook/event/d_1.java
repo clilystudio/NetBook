@@ -1,15 +1,15 @@
 package com.clilystudio.netbook.event;
 
-public final class d extends e {
-
+public final class d
+        extends e {
     private int a;
 
-    public d(String String1, int int2) {
-        super(String1);
-        a = int2;
+    public d(String string, int n) {
+        super(string);
+        this.a = n;
     }
 
     public final int a() {
-        return a;
+        return this.a;
     }
 }

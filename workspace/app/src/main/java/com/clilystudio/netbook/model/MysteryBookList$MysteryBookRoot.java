@@ -1,27 +1,27 @@
 package com.clilystudio.netbook.model;
 
 public class MysteryBookList$MysteryBookRoot {
-
-    MysteryBookList this$0;     // final access specifier removed
+    final /* synthetic */ MysteryBookList this$0;
     private MysteryBook book;
     private MysteryToc toc;
-    public MysteryBookList$MysteryBookRoot(MysteryBookList MysteryBookList1) {
-        this$0 = MysteryBookList1;
+
+    public MysteryBookList$MysteryBookRoot(MysteryBookList mysteryBookList) {
+        this.this$0 = mysteryBookList;
     }
 
     public MysteryBook getBook() {
-        return book;
+        return this.book;
     }
 
-    public void setBook(MysteryBook MysteryBook1) {
-        book = MysteryBook1;
+    public void setBook(MysteryBook mysteryBook) {
+        this.book = mysteryBook;
     }
 
     public MysteryToc getToc() {
-        return toc;
+        return this.toc;
     }
 
-    public void setToc(MysteryToc MysteryToc1) {
-        toc = MysteryToc1;
+    public void setToc(MysteryToc mysteryToc) {
+        this.toc = mysteryToc;
     }
 }

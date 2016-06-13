@@ -1,23 +1,24 @@
 package com.clilystudio.netbook.ui.post;
 
-import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.am;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View$OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.clilystudio.netbook.adapter.G;
 import com.clilystudio.netbook.db.TweetCache;
+import com.clilystudio.netbook.event.q;
+import com.clilystudio.netbook.event.t;
 import com.clilystudio.netbook.model.Account;
+import com.clilystudio.netbook.model.Follower;
 import com.clilystudio.netbook.model.Tweet;
 import com.clilystudio.netbook.model.TweetsResult;
 import com.clilystudio.netbook.model.User;
@@ -25,18 +26,19 @@ import com.clilystudio.netbook.ui.SmartImageView;
 import com.google.gson.Gson;
 import com.handmark.pulltorefresh.library.PullToRefreshBase$Mode;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
+import com.handmark.pulltorefresh.library.j;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MyTweetFragment extends Fragment {
-// Error: Internal #201: 
-// The following method may not be correct.
-
+public class MyTweetFragment
+        extends Fragment {
     static {
+        MyTweetFragment.class.getSimpleName();
     }
 
-    private List A;
+    private List<Follower> A;
+    private j B;
     private bX a;
     private bW b;
     private bV c;
@@ -59,287 +61,310 @@ public class MyTweetFragment extends Fragment {
     private RelativeLayout t;
     private TextView u;
     private G v;
+    private List<Tweet> w = new ArrayList<Tweet>();
     private int x;
     private int y;
-    private List z;
-    private List w = new ArrayList();
-    private com.handmark.pulltorefresh.library.j B = new bT(this);
+    private List<Follower> z;
 
-    static int a(MyTweetFragment MyTweetFragment1, int int2) {
-        MyTweetFragment1.y = int2;
-        return int2;
+    public MyTweetFragment() {
+        this.B = new bT(this);
     }
 
-    static TextView a(MyTweetFragment MyTweetFragment1) {
-        return MyTweetFragment1.s;
+    static /* synthetic */ int a(MyTweetFragment myTweetFragment, int n) {
+        myTweetFragment.y = n;
+        return n;
     }
 
-    static bU a(MyTweetFragment MyTweetFragment1, bU bU2) {
-        MyTweetFragment1.d = bU2;
+    static /* synthetic */ TextView a(MyTweetFragment myTweetFragment) {
+        return myTweetFragment.s;
+    }
+
+    static /* synthetic */ bU a(MyTweetFragment myTweetFragment, bU bU2) {
+        myTweetFragment.d = bU2;
         return bU2;
     }
 
-    static bV a(MyTweetFragment MyTweetFragment1, bV bV2) {
-        MyTweetFragment1.c = bV2;
+    static /* synthetic */ bV a(MyTweetFragment myTweetFragment, bV bV2) {
+        myTweetFragment.c = bV2;
         return bV2;
     }
 
-    static bW a(MyTweetFragment MyTweetFragment1, bW bW2) {
-        MyTweetFragment1.b = bW2;
+    static /* synthetic */ bW a(MyTweetFragment myTweetFragment, bW bW2) {
+        myTweetFragment.b = bW2;
         return bW2;
     }
 
-    static List a(MyTweetFragment MyTweetFragment1, List List2) {
-        MyTweetFragment1.z = List2;
-        return List2;
+    static /* synthetic */ List a(MyTweetFragment myTweetFragment, List list) {
+        myTweetFragment.z = list;
+        return list;
     }
 
-    static void a(MyTweetFragment MyTweetFragment1, TweetsResult TweetsResult2) {
-        MyTweetFragment1.a(TweetsResult2);
+    static /* synthetic */ void a(MyTweetFragment myTweetFragment, TweetsResult tweetsResult) {
+        myTweetFragment.a(tweetsResult);
     }
 
-    static int b(MyTweetFragment MyTweetFragment1, int int2) {
-        MyTweetFragment1.x = int2;
-        return int2;
+    static /* synthetic */ int b(MyTweetFragment myTweetFragment, int n) {
+        myTweetFragment.x = n;
+        return n;
     }
 
-    static bW b(MyTweetFragment MyTweetFragment1) {
-        return MyTweetFragment1.b;
+    static /* synthetic */ bW b(MyTweetFragment myTweetFragment) {
+        return myTweetFragment.b;
     }
 
-    static List b(MyTweetFragment MyTweetFragment1, List List2) {
-        MyTweetFragment1.A = List2;
-        return List2;
+    static /* synthetic */ List b(MyTweetFragment myTweetFragment, List list) {
+        myTweetFragment.A = list;
+        return list;
     }
 
-    static void b(MyTweetFragment MyTweetFragment1, TweetsResult TweetsResult2) {
-        User User3 = am.e().getUser();
-        String String4;
-
-        TweetCache.delete(User3.getId(), 3);
-        String4 = new Gson().toJson(TweetsResult2);
-        TweetCache.save2DB(User3.getId(), 3, String4);
+    static /* synthetic */ void b(MyTweetFragment myTweetFragment, TweetsResult tweetsResult) {
+        User user = am.e().getUser();
+        TweetCache.delete(user.getId(), 3);
+        String string = new Gson().toJson(tweetsResult);
+        TweetCache.save2DB(user.getId(), 3, string);
     }
 
-    static void c(MyTweetFragment MyTweetFragment1) {
-        MyTweetFragment1.b();
+    static /* synthetic */ void c(MyTweetFragment myTweetFragment) {
+        myTweetFragment.b();
     }
 
-    static void d(MyTweetFragment MyTweetFragment1) {
-        int int2 = MyTweetFragment1.x;
-
-        if (MyTweetFragment1.z != null)
-            int2 = MyTweetFragment1.z.size();
-        MyTweetFragment1.j.setText((CharSequence) new StringBuilder().append(int2).toString());
+    static /* synthetic */ void d(MyTweetFragment myTweetFragment) {
+        int n = myTweetFragment.x;
+        if (myTweetFragment.z != null) {
+            n = myTweetFragment.z.size();
+        }
+        myTweetFragment.j.setText("" + n);
     }
 
-    static void e(MyTweetFragment MyTweetFragment1) {
-        int int2 = MyTweetFragment1.y;
-
-        if (MyTweetFragment1.A != null)
-            int2 = MyTweetFragment1.A.size();
-        MyTweetFragment1.k.setText((CharSequence) new StringBuilder().append(int2).toString());
+    static /* synthetic */ void e(MyTweetFragment myTweetFragment) {
+        int n = myTweetFragment.y;
+        if (myTweetFragment.A != null) {
+            n = myTweetFragment.A.size();
+        }
+        myTweetFragment.k.setText("" + n);
     }
 
-    static List f(MyTweetFragment MyTweetFragment1) {
-        return MyTweetFragment1.A;
+    static /* synthetic */ List f(MyTweetFragment myTweetFragment) {
+        return myTweetFragment.A;
     }
 
-    static int g(MyTweetFragment MyTweetFragment1) {
-        return MyTweetFragment1.y;
+    static /* synthetic */ int g(MyTweetFragment myTweetFragment) {
+        return myTweetFragment.y;
     }
 
-    static bU h(MyTweetFragment MyTweetFragment1) {
-        return MyTweetFragment1.d;
+    static /* synthetic */ bU h(MyTweetFragment myTweetFragment) {
+        return myTweetFragment.d;
     }
 
-    static void i(MyTweetFragment MyTweetFragment1) {
+    static /* synthetic */ void i(MyTweetFragment myTweetFragment) {
+        Intent intent = new Intent(myTweetFragment.getActivity(), FollowerListActivity.class);
+        intent.putExtra("type", "TYPE_FOLLOWERS");
+        List<Follower> list = myTweetFragment.A;
+        Follower[] arrfollower = null;
+        if (list != null) {
+            arrfollower = new Follower[myTweetFragment.A.size()];
+            myTweetFragment.A.toArray(arrfollower);
+        }
+        intent.putExtra("follows", arrfollower);
+        myTweetFragment.startActivity(intent);
     }
 
-    static List j(MyTweetFragment MyTweetFragment1) {
-        return MyTweetFragment1.z;
+    static /* synthetic */ List j(MyTweetFragment myTweetFragment) {
+        return myTweetFragment.z;
     }
 
-    static int k(MyTweetFragment MyTweetFragment1) {
-        return MyTweetFragment1.x;
-    }
-// Error: Internal #201: 
-// The following method may not be correct.
-
-    static bV l(MyTweetFragment MyTweetFragment1) {
-        return MyTweetFragment1.c;
+    static /* synthetic */ int k(MyTweetFragment myTweetFragment) {
+        return myTweetFragment.x;
     }
 
-    static void m(MyTweetFragment MyTweetFragment1) {
+    static /* synthetic */ bV l(MyTweetFragment myTweetFragment) {
+        return myTweetFragment.c;
     }
 
-    static SmartImageView n(MyTweetFragment MyTweetFragment1) {
-        return MyTweetFragment1.g;
+    static /* synthetic */ void m(MyTweetFragment myTweetFragment) {
+        Intent intent = new Intent(myTweetFragment.getActivity(), FollowerListActivity.class);
+        intent.putExtra("type", "TYPE_FOLLOWINGS");
+        List<Follower> list = myTweetFragment.z;
+        Follower[] arrfollower = null;
+        if (list != null) {
+            arrfollower = new Follower[myTweetFragment.z.size()];
+            myTweetFragment.z.toArray(arrfollower);
+        }
+        intent.putExtra("follows", arrfollower);
+        myTweetFragment.startActivity(intent);
     }
 
-    static ImageView o(MyTweetFragment MyTweetFragment1) {
-        return MyTweetFragment1.h;
-    }
-// Error: Internal #201: 
-// The following method may not be correct.
-
-    static void p(MyTweetFragment MyTweetFragment1) {
-        MyTweetFragment1.s.setVisibility(8);
-        MyTweetFragment1.r.setVisibility(8);
-        MyTweetFragment1.q.setVisibility(8);
-        MyTweetFragment1.e.n();
+    static /* synthetic */ SmartImageView n(MyTweetFragment myTweetFragment) {
+        return myTweetFragment.g;
     }
 
-    static List q(MyTweetFragment MyTweetFragment1) {
-        return MyTweetFragment1.w;
+    static /* synthetic */ ImageView o(MyTweetFragment myTweetFragment) {
+        return myTweetFragment.h;
     }
 
-    static PullToRefreshListView r(MyTweetFragment MyTweetFragment1) {
-        return MyTweetFragment1.e;
+    static /* synthetic */ void p(MyTweetFragment myTweetFragment) {
+        myTweetFragment.s.setVisibility(8);
+        myTweetFragment.r.setVisibility(8);
+        myTweetFragment.q.setVisibility(8);
+        myTweetFragment.e.n();
     }
 
-    static com.handmark.pulltorefresh.library.j s(MyTweetFragment MyTweetFragment1) {
-        return MyTweetFragment1.B;
+    static /* synthetic */ List q(MyTweetFragment myTweetFragment) {
+        return myTweetFragment.w;
     }
 
-    static void t(MyTweetFragment MyTweetFragment1) {
-        MyTweetFragment1.s.setVisibility(0);
-        MyTweetFragment1.s.setText((CharSequence) "\u8FD9\u91CC\u8FD8\u6CA1\u6709\u8BDD\u9898\uFF0C\u53BB\u53D1\u5E03\u4E00\u4E2A\u5427");
+    static /* synthetic */ PullToRefreshListView r(MyTweetFragment myTweetFragment) {
+        return myTweetFragment.e;
     }
 
-    static G u(MyTweetFragment MyTweetFragment1) {
-        return MyTweetFragment1.v;
+    static /* synthetic */ j s(MyTweetFragment myTweetFragment) {
+        return myTweetFragment.B;
     }
 
-    static View v(MyTweetFragment MyTweetFragment1) {
-        return MyTweetFragment1.q;
+    static /* synthetic */ void t(MyTweetFragment myTweetFragment) {
+        myTweetFragment.s.setVisibility(0);
+        myTweetFragment.s.setText("\u8fd9\u91cc\u8fd8\u6ca1\u6709\u8bdd\u9898\uff0c\u53bb\u53d1\u5e03\u4e00\u4e2a\u5427");
     }
 
-    static bX w(MyTweetFragment MyTweetFragment1) {
-        return MyTweetFragment1.a;
+    static /* synthetic */ G u(MyTweetFragment myTweetFragment) {
+        return myTweetFragment.v;
     }
 
+    static /* synthetic */ View v(MyTweetFragment myTweetFragment) {
+        return myTweetFragment.q;
+    }
+
+    static /* synthetic */ bX w(MyTweetFragment myTweetFragment) {
+        return myTweetFragment.a;
+    }
+
+    /*
+     * Enabled aggressive block sorting
+     */
     private void a() {
-        Account Account1;
-
-        g = (SmartImageView) f.findViewById(2131493591);
-        h = (ImageView) f.findViewById(2131493594);
-        i = (TextView) f.findViewById(2131493593);
-        j = (TextView) f.findViewById(2131493596);
-        k = (TextView) f.findViewById(2131493599);
-        n = (Button) f.findViewById(2131493592);
-        Account1 = am.e();
-        if (Account1 != null) {
-            User User2 = Account1.getUser();
-            bY bY3;
-            String[] String_1darray4;
-
-            g.setImageUrl(User2.getFullAvatar());
-            i.setText((CharSequence) User2.getNickname());
-            bY3 = new bY(this, (Runnable) new bN(this));
-            String_1darray4 = new String[1];
-            String_1darray4[0] = User2.getId();
-            bY3.b(String_1darray4);
-            if (User2.isDoyan()) {
-                h.setVisibility(0);
-                h.setImageResource(2130838229);
-            } else if (User2.isOfficial()) {
-                h.setVisibility(0);
-                h.setImageResource(2130838231);
-            } else
-                h.setVisibility(8);
-            n.setOnClickListener((View$OnClickListener) new bO(this));
-            m = f.findViewById(2131493598);
-            l = f.findViewById(2131493595);
-            m.setOnClickListener((View$OnClickListener) new bP(this));
-            l.setOnClickListener((View$OnClickListener) new bR(this));
+        this.g = (SmartImageView) this.f.findViewById(2131493591);
+        this.h = (ImageView) this.f.findViewById(2131493594);
+        this.i = (TextView) this.f.findViewById(2131493593);
+        this.j = (TextView) this.f.findViewById(2131493596);
+        this.k = (TextView) this.f.findViewById(2131493599);
+        this.n = (Button) this.f.findViewById(2131493592);
+        Account account = am.e();
+        if (account != null) {
+            User user = account.getUser();
+            this.g.setImageUrl(user.getFullAvatar());
+            this.i.setText(user.getNickname());
+            bY bY2 = new bY(this, new bN(this));
+            String[] arrstring = new String[]{user.getId()};
+            bY2.b(arrstring);
+            if (user.isDoyan()) {
+                this.h.setVisibility(0);
+                this.h.setImageResource(2130838229);
+            } else if (user.isOfficial()) {
+                this.h.setVisibility(0);
+                this.h.setImageResource(2130838231);
+            } else {
+                this.h.setVisibility(8);
+            }
+            this.n.setOnClickListener(new bO(this));
+            this.m = this.f.findViewById(2131493598);
+            this.l = this.f.findViewById(2131493595);
+            this.m.setOnClickListener(new bP(this));
+            this.l.setOnClickListener(new bR(this));
         }
     }
 
-    private void a(TweetsResult TweetsResult1) {
-        Object[] Object_1darray2 = TweetsResult1.getTweets();
-
-        if (Object_1darray2.length > 0) {
-            int int3 = Object_1darray2.length;
-            int int4;
-
-            for (int4 = 0; int4 < int3; ++int4) {
-                Object Object5 = Object_1darray2[int4];
-
-                ((Tweet) Object5).setUser(am.e().getUser());
-                w.add(Object5);
+    private void a(TweetsResult tweetsResult) {
+        Tweet[] arrtweet = tweetsResult.getTweets();
+        if (arrtweet.length > 0) {
+            for (Tweet tweet : arrtweet) {
+                tweet.setUser(am.e().getUser());
+                this.w.add(tweet);
             }
-            v.a(w);
+            this.v.a(this.w);
         }
     }
 
     private void b() {
         if (am.e() == null) {
-            t.setVisibility(0);
-            o.setVisibility(4);
-        } else {
-            t.setVisibility(4);
-            o.setVisibility(0);
-            a = new bX(this, (byte) 0);
-            a.b(new String[0]);
+            this.t.setVisibility(0);
+            this.o.setVisibility(4);
+            return;
         }
-    }
-// Error: Internal #201: 
-// The following method may not be correct.
-
-    public void onActivityCreated(Bundle Bundle1) {
-    }
-
-    public void onCreate(Bundle Bundle1) {
-        super.onCreate(Bundle1);
-        com.clilystudio.netbook.event.i.a().a(this);
+        this.t.setVisibility(4);
+        this.o.setVisibility(0);
+        this.a = new bX(this, 0);
+        this.a.b(new String[0]);
     }
 
-    public View onCreateView(LayoutInflater LayoutInflater1, ViewGroup ViewGroup2, Bundle Bundle3) {
-        View View4 = LayoutInflater1.inflate(2130903211, ViewGroup2, false);
-
-        o = (RelativeLayout) View4.findViewById(2131493436);
-        t = (RelativeLayout) View4.findViewById(2131493438);
-        u = (TextView) View4.findViewById(2131493589);
-        u.setOnClickListener((View$OnClickListener) new bK(this));
-        r = View4.findViewById(2131493085);
-        s = (TextView) View4.findViewById(2131493100);
-        e = (PullToRefreshListView) View4.findViewById(2131493099);
-        e.setMode(PullToRefreshBase$Mode.PULL_FROM_START);
-        p = (ListView) e.h();
-        f = LayoutInflater1.inflate(2130903253, null);
-        f.findViewById(2131493098);
-        a();
-        p.addHeaderView(f);
-        q = LayoutInflater1.inflate(2130903325, null);
-        p.addFooterView(q);
-        if (com.clilystudio.netbook.hpay100.a.a.j())
-            p.setFooterDividersEnabled(false);
-        e.setOnRefreshListener((com.handmark.pulltorefresh.library.k) new bL(this));
-        v = new G((Activity) getActivity(), true, false);
-        v.a(w);
-        p.setAdapter((ListAdapter) v);
-        return View4;
+    @Override
+    public void onActivityCreated(Bundle bundle) {
+        List<TweetCache> list;
+        super.onActivityCreated(bundle);
+        if (am.e() != null && (list = TweetCache.find(am.e().getUser().getId(), 3)) != null && list.size() > 0) {
+            TweetCache tweetCache = list.get(0);
+            this.a((TweetsResult) new Gson().fromJson(tweetCache.getContent(), TweetsResult.class));
+        }
+        this.b();
     }
 
+    @Override
+    public void onCreate(Bundle bundle) {
+        super.onCreate(bundle);
+        i.a().a(this);
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
+        View view = layoutInflater.inflate(2130903211, viewGroup, false);
+        this.o = (RelativeLayout) view.findViewById(2131493436);
+        this.t = (RelativeLayout) view.findViewById(2131493438);
+        this.u = (TextView) view.findViewById(2131493589);
+        this.u.setOnClickListener(new bK(this));
+        this.r = view.findViewById(2131493085);
+        this.s = (TextView) view.findViewById(2131493100);
+        this.e = (PullToRefreshListView) view.findViewById(2131493099);
+        this.e.setMode(PullToRefreshBase$Mode.PULL_FROM_START);
+        this.p = (ListView) this.e.h();
+        this.f = layoutInflater.inflate(2130903253, null);
+        this.f.findViewById(2131493098);
+        this.a();
+        this.p.addHeaderView(this.f);
+        this.q = layoutInflater.inflate(2130903325, null);
+        this.p.addFooterView(this.q);
+        if (a.j()) {
+            this.p.setFooterDividersEnabled(false);
+        }
+        this.e.setOnRefreshListener(new bL(this));
+        this.v = new G(this.getActivity(), true, false);
+        this.v.a(this.w);
+        this.p.setAdapter(this.v);
+        return view;
+    }
+
+    @Override
     public void onDestroy() {
         super.onDestroy();
-        com.clilystudio.netbook.event.i.a().b(this);
+        i.a().b(this);
     }
 
+    @Override
     public void onDestroyView() {
         super.onDestroyView();
-        if (d != null)
-            d.cancel(true);
-        if (c != null)
-            c.cancel(true);
+        if (this.d != null) {
+            this.d.cancel(true);
+        }
+        if (this.c != null) {
+            this.c.cancel(true);
+        }
     }
 
-    public void onFollowChangeEvent(com.clilystudio.netbook.event.q q1) {
+    @l
+    public void onFollowChangeEvent(q q2) {
     }
 
-    public void onLoginedEvent(com.clilystudio.netbook.event.t t1) {
-        b();
-        a();
+    @l
+    public void onLoginedEvent(t t2) {
+        this.b();
+        this.a();
     }
 }

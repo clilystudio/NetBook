@@ -4,28 +4,33 @@ import android.app.Activity;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
-import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Bitmap;
 import android.net.wifi.WifiManager;
+import android.support.v7.app.NotificationCompat$Builder;
 import android.widget.RemoteViews;
 import android.widget.Toast;
 
+import com.activeandroid.query.Delete;
 import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.db.SplashRecord;
 import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.model.Author;
+import com.clilystudio.netbook.model.Splash;
 import com.clilystudio.netbook.model.SplashAdvert;
+import com.clilystudio.netbook.model.SplashRoot;
+import com.clilystudio.netbook.ui.AudioBookPlayActivity;
 import com.clilystudio.netbook.ui.post.OtherUserActivity;
 
+import java.io.ByteArrayOutputStream;
+import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 public class e {
-
     private static e a;
     private static RemoteViews c;
     private static NotificationManager d;
@@ -33,231 +38,291 @@ public class e {
     private static long f;
     private static AudioBookNotification$SwitchButtonListener g;
     private Context b;
-    private e(Context Context1) {
-        b = Context1;
+
+    private e(Context context) {
+        this.b = context;
     }
 
-    public static int a(int int1) {
-        if (int1 <= 0 || int1 > 999)
+    public static int a(int n) {
+        if (n <= 0 || n > 999) {
             return 0;
-        else {
-            int int2 = int1 + 1;
-
-            if (int2 == 2)
-                return 20;
-            else if (int2 <= 10)
-                return 10 + (a(int1 - 1) << 1);
-            else
-                return 3840 + (a(int1 - 1) + 50 * (int2 - 10));
         }
+        int n2 = n + 1;
+        if (n2 == 2) {
+            return 20;
+        }
+        if (n2 <= 10) {
+            return 10 + (e.a(n - 1) << 1);
+        }
+        return 3840 + (e.a(n - 1) + 50 * (n2 - 10));
     }
 
-    static long a(long long1) {
-        f = long1;
-        return long1;
+    static /* synthetic */ long a(long l) {
+        f = l;
+        return l;
     }
 
-    public static Intent a(Context Context1, Author Author2) {
-        Intent Intent3 = OtherUserActivity.a(Context1);
-
-        Intent3.putExtra("USER_ID", Author2.get_id());
-        Intent3.putExtra("USER_NAME", Author2.getNickname());
-        return Intent3;
+    public static Intent a(Context context, Author author) {
+        Intent intent = OtherUserActivity.a(context);
+        intent.putExtra("USER_ID", author.get_id());
+        intent.putExtra("USER_NAME", author.getNickname());
+        return intent;
     }
 
-    public static e a(Context Context1) {
-        if (a == null)
-            a = new e(Context1);
+    public static e a(Context context) {
+        if (a == null) {
+            a = new e(context);
+        }
         return a;
     }
 
-    private static List a(List List1) {
-        Object Object2 = new ArrayList();
-        long long3 = System.currentTimeMillis();
-        int int5;
-
-        for (int5 = 0; int5 < List1.size(); ++int5) {
-            Object Object6 = (SplashRecord) List1.get(int5);
-
-            if (((SplashRecord) Object6).start.getTime() <= long3 && ((SplashRecord) Object6).end.getTime() >= long3)
-                ((List) Object2).add(Object6);
+    private static List<SplashRecord> a(List<SplashRecord> list) {
+        ArrayList<SplashRecord> arrayList = new ArrayList<SplashRecord>();
+        long l2 = System.currentTimeMillis();
+        for (int i = 0; i < list.size(); ++i) {
+            SplashRecord splashRecord = list.get(i);
+            if (splashRecord.start.getTime() > l2 || splashRecord.end.getTime() < l2) continue;
+            arrayList.add(splashRecord);
         }
-        return (List) Object2;
+        return arrayList;
     }
 
-    public static void a(Activity Activity1, int int2) {
-        if (Activity1 != null)
-            a(Activity1, Activity1.getString(int2), 0);
-    }
-
-    public static void a(Activity Activity1, String String2) {
-        a(Activity1, String2, 0);
-    }
-
-    private static void a(Activity Activity1, String String2, int int3) {
-        if (Activity1 != null && String2 != null)
-            Activity1.runOnUiThread((Runnable) new ad((Context) Activity1.getApplication(), String2, int3));
-    }
-// Error: Internal #201: 
-// The following method may not be correct.
-
-    public static void a(Context Context1, long long2, int int4) {
-    }
-
-    public static void a(Context Context1, String String2) {
-        if (Context1 != null && String2 != null)
-            Toast.makeText(Context1, (CharSequence) String2, 0).show();
-    }
-
-    static void a(Bitmap Bitmap1) {
-        if (Bitmap1 != null && c != null) {
-            c.setImageViewBitmap(2131493604, Bitmap1);
-            d.notify(1001, e);
+    public static void a(Activity activity, int n) {
+        if (activity == null) {
+            return;
         }
-    }
-// Error: Internal #201: 
-// The following method may not be correct.
-
-    static void a(e e1) {
+        e.a(activity, activity.getString(n), 0);
     }
 
-    public static void a(String String1) {
-        if (c != null) {
-            c.setTextViewText(2131493605, (CharSequence) String1);
-            d.notify(1001, e);
+    public static void a(Activity activity, String string) {
+        e.a(activity, string, 0);
+    }
+
+    private static void a(Activity activity, String string, int n) {
+        if (activity == null || string == null) {
+            return;
         }
+        activity.runOnUiThread(new ad(activity.getApplication(), string, n));
     }
 
-    public static void a(boolean boolean1) {
-        if (boolean1)
-            c.setImageViewResource(2131493607, 2130837584);
-        else
-            c.setImageViewResource(2131493607, 2130837925);
+    public static void a(Context context, long l2, int n) {
+        PendingIntent pendingIntent;
+        if (e == null) {
+            e = e.c();
+        }
+        Intent intent = new Intent(context, AudioBookPlayActivity.class);
+        intent.putExtra("ALBUM_ID", l2);
+        intent.putExtra("INDEX_OF_PLAYLIST", n);
+        e.e.contentIntent = pendingIntent = PendingIntent.getActivity(context, 0, intent, 134217728);
+        as.a();
+        e.a(as.c());
         d.notify(1001, e);
     }
 
-    public static void b(Activity Activity1, String String2) {
-        a(Activity1, String2, 1);
+    public static void a(Context context, String string) {
+        if (context == null || string == null) {
+            return;
+        }
+        Toast.makeText(context, string, 0).show();
     }
 
-    public static void b(Context Context1) {
+    static /* synthetic */ void a(Bitmap bitmap) {
+        if (bitmap == null || c == null) {
+            return;
+        }
+        c.setImageViewBitmap(2131493604, bitmap);
+        d.notify(1001, e);
+    }
+
+    /*
+     * Enabled aggressive block sorting
+     */
+    static /* synthetic */ void a(e e2) {
+        b.a();
+        SplashRoot splashRoot = b.b().j();
+        if (splashRoot == null || !splashRoot.isOk()) {
+            return;
+        }
+        Splash[] arrsplash = splashRoot.getSplash();
+        if (arrsplash == null || arrsplash.length == 0) {
+            new Delete().from(SplashRecord.class).execute();
+            return;
+        }
+        ArrayList<String> arrayList = new ArrayList<String>();
+        int n = arrsplash.length;
+        for (int k = 0; k < n; ++k) {
+            arrayList.add(arrsplash[k].get_id());
+        }
+        List<SplashRecord> list = SplashRecord.getAll();
+        ArrayList<String> arrayList2 = new ArrayList<String>();
+        Iterator<SplashRecord> iterator = list.iterator();
+        while (iterator.hasNext()) {
+            arrayList2.add(iterator.next().splashId);
+        }
+        for (int i2 = 0; i2 < list.size(); ++i2) {
+            String string = list.get((int) i2).splashId;
+            if (arrayList.contains(string)) continue;
+            arrayList2.remove(string);
+            SplashRecord.delete(string);
+        }
+        int n2 = arrsplash.length;
+        int n3 = 0;
+        while (n3 < n2) {
+            Splash splash = arrsplash[n3];
+            if (!arrayList2.contains(splash.get_id())) {
+                SplashRecord.create(splash);
+                String string = splash.getImg3x4();
+                Bitmap bitmap = a.L(string);
+                if (bitmap != null) {
+                    String string2 = a.K(string);
+                    Context context = e2.b;
+                    if (bitmap != null && string2 != null && context != null) {
+                        FileOutputStream fileOutputStream = context.openFileOutput(string2, 0);
+                        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+                        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
+                        fileOutputStream.write(byteArrayOutputStream.toByteArray());
+                        fileOutputStream.close();
+                    }
+                }
+            }
+            ++n3;
+        }
+    }
+
+    public static void a(String string) {
+        if (c == null) {
+            return;
+        }
+        c.setTextViewText(2131493605, string);
+        d.notify(1001, e);
+    }
+
+    /*
+     * Enabled aggressive block sorting
+     */
+    public static void a(boolean bl) {
+        if (bl) {
+            c.setImageViewResource(2131493607, 2130837584);
+        } else {
+            c.setImageViewResource(2131493607, 2130837925);
+        }
+        d.notify(1001, e);
+    }
+
+    public static void b(Activity activity, String string) {
+        e.a(activity, string, 1);
+    }
+
+    public static void b(Context context) {
         try {
             d.cancel(1001);
-            Context1.unregisterReceiver((BroadcastReceiver) g);
-        } catch (Exception Exception2) {
+            context.unregisterReceiver(g);
+            return;
+        } catch (Exception var1_1) {
             return;
         }
     }
 
-    public static void b(String String1) {
-        if (c != null) {
-            c.setTextViewText(2131493606, (CharSequence) String1);
-            d.notify(1001, e);
+    public static void b(String string) {
+        if (c == null) {
+            return;
         }
+        c.setTextViewText(2131493606, string);
+        d.notify(1001, e);
     }
 
+    /*
+     * Enabled aggressive block sorting
+     * Enabled unnecessary exception pruning
+     * Enabled aggressive exception aggregation
+     */
     public static Notification c() {
-        android.support.v7.app.NotificationCompat$Builder Builder1;
-        Intent Intent6;
-        PendingIntent PendingIntent7;
-        Notification Notification8;
-
+        NotificationCompat$Builder notificationCompat$Builder;
+        Notification notification;
         d = (NotificationManager) MyApplication.a().getSystemService("notification");
         c = new RemoteViews(MyApplication.a().getPackageName(), 2130903334);
-        Builder1 = new android.support.v7.app.NotificationCompat$Builder((Context) MyApplication.a());
-        Builder1.setSmallIcon(17301623);
-        Builder1.setContent(c);
-        Builder1.setAutoCancel(false).setOngoing(true);
+        notificationCompat$Builder = new NotificationCompat$Builder(MyApplication.a());
+        notificationCompat$Builder.setSmallIcon(17301623);
+        notificationCompat$Builder.setContent(c);
+        notificationCompat$Builder.setAutoCancel(false).setOngoing(true);
         g = new AudioBookNotification$SwitchButtonListener();
         try {
-            MyApplication.a().registerReceiver((BroadcastReceiver) g, new IntentFilter("com.clilystudio.netbook.SWITCH_AUDIO"));
-        } catch (Exception Exception5) {
+            MyApplication.a().registerReceiver(g, new IntentFilter("com.clilystudio.netbook.SWITCH_AUDIO"));
+        } catch (Exception var4_4) {
         }
-        Intent6 = new Intent("com.clilystudio.netbook.SWITCH_AUDIO");
-        PendingIntent7 = PendingIntent.getBroadcast((Context) MyApplication.a(), 0, Intent6, 0);
-        c.setOnClickPendingIntent(2131493607, PendingIntent7);
-        Notification8 = Builder1.build();
-        e = Notification8;
-        return Notification8;
+        Intent intent = new Intent("com.clilystudio.netbook.SWITCH_AUDIO");
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(MyApplication.a(), 0, intent, 0);
+        c.setOnClickPendingIntent(2131493607, pendingIntent);
+        e = notification = notificationCompat$Builder.build();
+        return notification;
     }
 
-    public static String c(Context Context1) {
-        String String2;
-
-        if (android.support.design.widget.am.e() != null)
-            return android.support.design.widget.am.e().getUser().getId();
-        String2 = ((WifiManager) Context1.getSystemService("wifi")).getConnectionInfo().getMacAddress();
-        if (String2 == null)
-            String2 = "";
-        return com.integralblue.httpresponsecache.compat.libcore.a.a.b(String2.getBytes());
+    public static String c(Context context) {
+        if (android.support.design.widget.am.e() == null) {
+            String string = ((WifiManager) context.getSystemService("wifi")).getConnectionInfo().getMacAddress();
+            if (string == null) {
+                string = "";
+            }
+            return com.integralblue.httpresponsecache.compat.libcore.a.a.b(string.getBytes());
+        }
+        return android.support.design.widget.am.e().getUser().getId();
     }
 
-    public static void c(String String1) {
-        Account Account2 = android.support.design.widget.am.e();
-
-        if (Account2 != null)
-            new am(Account2, String1).start();
+    public static void c(String string) {
+        Account account = android.support.design.widget.am.e();
+        if (account == null) {
+            return;
+        }
+        new am(account, string).start();
     }
 
-    static long d() {
+    static /* synthetic */ long d() {
         return f;
     }
 
-    static RemoteViews e() {
+    static /* synthetic */ RemoteViews e() {
         return c;
     }
 
-    static Notification f() {
+    static /* synthetic */ Notification f() {
         return e;
     }
 
-    static NotificationManager g() {
+    static /* synthetic */ NotificationManager g() {
         return d;
     }
 
     public final SplashAdvert a() {
-        List List1 = SplashRecord.getAll();
-
-        if (List1.isEmpty())
+        List<SplashRecord> list = SplashRecord.getAll();
+        if (list.isEmpty()) {
             return null;
-        else {
-            List List2 = SplashRecord.getAllNotShow();
-            List List3 = a(List2);
-            int int4 = List3.size();
-            SplashRecord SplashRecord6;
-            String String7;
-            Bitmap Bitmap8;
-
-            if (List2.isEmpty() || int4 == 0) {
-                Iterator Iterator5 = List1.iterator();
-
-                while (Iterator5.hasNext()) {
-                    SplashRecord SplashRecord11 = (SplashRecord) Iterator5.next();
-
-                    SplashRecord11.isShow = false;
-                    SplashRecord11.save();
-                }
-                List3 = a(List1);
-                int4 = List3.size();
-                if (int4 == 0)
-                    return null;
+        }
+        List<SplashRecord> list2 = SplashRecord.getAllNotShow();
+        List<SplashRecord> list3 = e.a(list2);
+        int n = list3.size();
+        if (list2.isEmpty() || n == 0) {
+            for (SplashRecord splashRecord : list) {
+                splashRecord.isShow = false;
+                splashRecord.save();
             }
-            SplashRecord6 = (SplashRecord) List3.get((int) (Math.random() * (double) int4));
-            String7 = com.clilystudio.netbook.hpay100.a.a.K(SplashRecord6.img3x4);
-            Bitmap8 = com.clilystudio.netbook.hpay100.a.a.k(b, String7);
-            if (Bitmap8 == null)
+            list3 = e.a(list);
+            n = list3.size();
+            if (n == 0) {
                 return null;
-            else {
-                SplashAdvert SplashAdvert10;
-
-                SplashRecord6.isShow = true;
-                SplashRecord6.save();
-                SplashAdvert10 = new SplashAdvert();
-                SplashAdvert10.setSplashRecord(SplashRecord6);
-                SplashAdvert10.setBitmap(Bitmap8);
-                return SplashAdvert10;
             }
         }
+        SplashRecord splashRecord = list3.get((int) (Math.random() * (double) n));
+        String string = a.K(splashRecord.img3x4);
+        Bitmap bitmap = a.k(this.b, string);
+        if (bitmap == null) {
+            return null;
+        }
+        splashRecord.isShow = true;
+        splashRecord.save();
+        SplashAdvert splashAdvert = new SplashAdvert();
+        splashAdvert.setSplashRecord(splashRecord);
+        splashAdvert.setBitmap(bitmap);
+        return splashAdvert;
     }
 
     public final void b() {

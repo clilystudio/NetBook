@@ -3,31 +3,30 @@ package com.clilystudio.netbook.reader;
 import android.content.Context;
 import android.support.design.widget.am;
 import android.view.View;
-import android.view.View$OnClickListener;
 import android.widget.CheckBox;
 
-final class s implements View$OnClickListener {
+import com.umeng.a.b;
 
-    private CheckBox a;
-    private o b;
-    s(o o1, CheckBox CheckBox2) {
-        b = o1;
-        a = CheckBox2;
+final class s
+        implements View.OnClickListener {
+    private /* synthetic */ CheckBox a;
+    private /* synthetic */ o b;
+
+    s(o o2, CheckBox checkBox) {
+        this.b = o2;
+        this.a = checkBox;
     }
 
-    public final void onClick(View View1) {
-        I I2;
-        String[] String_1darray3;
-
-        com.umeng.a.b.a((Context) o.a(b), "paying_page_purchase", com.clilystudio.netbook.util.I.b);
-        if (a.isChecked())
-            com.umeng.a.b.a((Context) o.a(b), "paying_page_auto_choose", com.clilystudio.netbook.util.I.b);
-        o.a(b, false);
-        com.clilystudio.netbook.hpay100.a.a.b((Context) o.a(b), new StringBuilder("auto_buy_chapter").append(com.clilystudio.netbook.util.I.a).toString(), a.isChecked());
-        I2 = new I(b, o.a(b), "\u8D2D\u4E70\u4E2D...");
-        String_1darray3 = new String[2];
-        String_1darray3[0] = am.e().getToken();
-        String_1darray3[1] = o.b(b).a().getId();
-        I2.b(String_1darray3);
+    @Override
+    public final void onClick(View view) {
+        b.a(o.a(this.b), "paying_page_purchase", com.clilystudio.netbook.util.I.b);
+        if (this.a.isChecked()) {
+            b.a(o.a(this.b), "paying_page_auto_choose", com.clilystudio.netbook.util.I.b);
+        }
+        o.a(this.b, false);
+        a.b((Context) o.a(this.b), "auto_buy_chapter" + com.clilystudio.netbook.util.I.a, this.a.isChecked());
+        I i2 = new I(this.b, o.a(this.b), "\u8d2d\u4e70\u4e2d...");
+        String[] arrstring = new String[]{am.e().getToken(), o.b(this.b).a().getId()};
+        i2.b(arrstring);
     }
 }

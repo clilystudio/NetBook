@@ -1,24 +1,25 @@
 package com.clilystudio.netbook.adapter;
 
 import android.view.View;
-import android.view.View$OnClickListener;
 
 import com.clilystudio.netbook.model.Tweet;
 
-final class H implements View$OnClickListener {
+final class H
+        implements View.OnClickListener {
+    private /* synthetic */ Tweet a;
+    private /* synthetic */ G b;
 
-    private Tweet a;
-    private G b;
-    H(G G1, Tweet Tweet2) {
-        b = G1;
-        a = Tweet2;
+    H(G g, Tweet tweet) {
+        this.b = g;
+        this.a = tweet;
     }
 
-    public final void onClick(View View1) {
-        Tweet Tweet2 = a;
-
-        if (a.isRetween())
-            Tweet2 = a.getRefTweet();
-        G.a(b, Tweet2);
+    @Override
+    public final void onClick(View view) {
+        Tweet tweet = this.a;
+        if (this.a.isRetween()) {
+            tweet = this.a.getRefTweet();
+        }
+        G.a(this.b, tweet);
     }
 }

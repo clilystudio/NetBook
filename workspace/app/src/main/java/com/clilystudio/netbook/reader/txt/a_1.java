@@ -1,19 +1,18 @@
 package com.clilystudio.netbook.reader.txt;
 
-import android.content.Context;
-
 import com.clilystudio.netbook.reader.ReaderOptionActivity;
 import com.clilystudio.netbook.reader.db;
 
-final class a implements db {
+final class a
+        implements db {
+    private /* synthetic */ ReaderTxtActivity a;
 
-    private ReaderTxtActivity a;
-
-    a(ReaderTxtActivity ReaderTxtActivity1) {
-        a = ReaderTxtActivity1;
+    a(ReaderTxtActivity readerTxtActivity) {
+        this.a = readerTxtActivity;
     }
 
+    @Override
     public final void a() {
-        a.startActivityForResult(ReaderOptionActivity.a((Context) a), 0);
+        this.a.startActivityForResult(ReaderOptionActivity.a(this.a), 0);
     }
 }

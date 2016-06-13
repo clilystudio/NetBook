@@ -1,14 +1,14 @@
 package com.clilystudio.netbook.ui.post;
 
 import android.content.DialogInterface;
-import android.content.DialogInterface$OnClickListener;
 
-final class l implements DialogInterface$OnClickListener {
-
-    l(AddBookHelpActivity AddBookHelpActivity1) {
+final class l
+        implements DialogInterface.OnClickListener {
+    l(AddBookHelpActivity addBookHelpActivity) {
     }
 
-    public final void onClick(DialogInterface DialogInterface1, int int2) {
-        DialogInterface1.dismiss();
+    @Override
+    public final void onClick(DialogInterface dialogInterface, int n) {
+        dialogInterface.dismiss();
     }
 }

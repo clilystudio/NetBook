@@ -4,64 +4,52 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-final class U implements Y {
+final class U
+        implements Y {
+    final /* synthetic */ Reader a;
+    private Map<Integer, ArrayList<e<ReaderChapter>>> b;
+    private Map<Integer, Integer> c;
 
-    Reader a;     // final access specifier removed
-    private Map b;
-    private Map c;
-    U(Reader Reader1) {
-        a = Reader1;
-        b = (Map) new HashMap();
-        c = (Map) new HashMap();
+    U(Reader reader) {
+        this.a = reader;
+        this.b = new HashMap<Integer, ArrayList<e<ReaderChapter>>>();
+        this.c = new HashMap<Integer, Integer>();
     }
 
-    static Map a(U U1) {
-        return U1.b;
+    static /* synthetic */ Map a(U u) {
+        return u.b;
     }
 
-    static Map b(U U1) {
-        return U1.c;
+    static /* synthetic */ Map b(U u) {
+        return u.c;
     }
 
-    public final void a(int int1, e e2, boolean boolean3) {
-        Object Object5;
-
+    /*
+     * Enabled aggressive block sorting
+     * Enabled unnecessary exception pruning
+     * Enabled aggressive exception aggregation
+     */
+    @Override
+    public final void a(int n, e<ReaderChapter> e2, boolean bl) {
         synchronized (this) {
-            Object5 = (ArrayList) b.get(Integer.valueOf(int1));
-        }
-        if (Object5 == null) {
-            try {
-                Object5 = new ArrayList();
-                b.put(Integer.valueOf(int1), Object5);
-                ((ArrayList) Object5).add(e2);
-            } finally {
-                throw Object4;
+            void var5_6;
+            ArrayList<e<ReaderChapter>> arrayList = this.b.get(n);
+            if (arrayList == null) {
+                ArrayList arrayList2 = new ArrayList();
+                this.b.put(n, arrayList2);
             }
-            ;
-        }
-        if (!boolean3) {
-            Integer Integer8;
-
-            try {
-                Reader.a(a, 0, Reader$Type.CHAPTER);
-                Integer8 = (Integer) c.get(Integer.valueOf(int1));
-            } finally {
-                throw Object4;
-            }
-            if (Integer8 == null) {
-                try {
-                    c.put(Integer.valueOf(int1), Integer.valueOf(1));
-                    Reader.e(a).execute((Runnable) new V(this, int1, int1));
-                } finally {
-                    throw Object4;
-                }
-            } else {
-                try {
-                    c.put(Integer.valueOf(int1), Integer.valueOf(1 + Integer8.intValue()));
-                } finally {
-                    throw Object4;
+            var5_6.add(e2);
+            if (!bl) {
+                Reader.a(this.a, 0, Reader$Type.CHAPTER);
+                Integer n2 = this.c.get(n);
+                if (n2 == null) {
+                    this.c.put(n, 1);
+                } else {
+                    this.c.put(n, 1 + n2);
                 }
             }
+            Reader.e(this.a).execute(new V(this, n, n));
+            return;
         }
     }
 }

@@ -1,23 +1,24 @@
 package com.clilystudio.netbook.ui;
 
-import android.content.Context;
-
+import com.clilystudio.netbook.event.b;
+import com.clilystudio.netbook.event.i;
 import com.clilystudio.netbook.util.as;
 import com.clilystudio.netbook.util.e;
 
-class f implements aa {
+class f
+        implements aa {
+    private /* synthetic */ AudioBookPlayActivity a;
 
-    private AudioBookPlayActivity a;
-
-    f(AudioBookPlayActivity AudioBookPlayActivity1) {
-        a = AudioBookPlayActivity1;
+    f(AudioBookPlayActivity audioBookPlayActivity) {
+        this.a = audioBookPlayActivity;
     }
 
+    @Override
     public final void a() {
-        as.b(AudioBookPlayActivity.a(a));
+        as.b(AudioBookPlayActivity.a(this.a));
         as.i();
-        com.clilystudio.netbook.event.i.a().c(new com.clilystudio.netbook.event.b());
-        e.b((Context) a);
-        AudioBookPlayActivity.c(a);
+        i.a().c(new b());
+        e.b(this.a);
+        AudioBookPlayActivity.c(this.a);
     }
 }

@@ -3,61 +3,61 @@ package com.clilystudio.netbook.ui.post;
 import android.app.Activity;
 import android.widget.TextView;
 
+import com.clilystudio.netbook.api.b;
+import com.clilystudio.netbook.model.PostComment;
 import com.clilystudio.netbook.model.PostDetailComment;
+import com.clilystudio.netbook.util.e;
 
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.List;
 
-final class dy extends com.clilystudio.netbook.a.e {
+final class dy
+        extends com.clilystudio.netbook.a.e<String, Void, PostDetailComment> {
+    private /* synthetic */ TweetDetailActivity a;
 
-    private TweetDetailActivity a;
-
-    dy(TweetDetailActivity TweetDetailActivity1, byte byte2) {
-        this(TweetDetailActivity1);
+    private dy(TweetDetailActivity tweetDetailActivity) {
+        this.a = tweetDetailActivity;
     }
 
-    private dy(TweetDetailActivity TweetDetailActivity1) {
-        a = TweetDetailActivity1;
+    /* synthetic */ dy(TweetDetailActivity tweetDetailActivity, byte by) {
+        this(tweetDetailActivity);
     }
 
-    private transient PostDetailComment a(String[] String_1darray1) {
-        PostDetailComment PostDetailComment3;
-
+    private /* varargs */ PostDetailComment a(String... arrstring) {
         try {
-            if (String_1darray1.length > 1)
-                return com.clilystudio.netbook.api.b.b().l(String_1darray1[0], String_1darray1[1]);
-            else
-                PostDetailComment3 = com.clilystudio.netbook.api.b.b().l(String_1darray1[0], null);
-        } catch (Exception Exception2) {
-            Exception2.printStackTrace();
+            if (arrstring.length > 1) {
+                return b.b().l(arrstring[0], arrstring[1]);
+            }
+            PostDetailComment postDetailComment = b.b().l(arrstring[0], null);
+            return postDetailComment;
+        } catch (Exception var2_3) {
+            var2_3.printStackTrace();
             return null;
         }
-        return PostDetailComment3;
     }
 
-    protected final Object doInBackground(Object[] Object_1darray1) {
-        return a((String[]) Object_1darray1);
+    @Override
+    protected final /* synthetic */ Object doInBackground(Object[] arrobject) {
+        return this.a((String[]) arrobject);
     }
 
-    protected final void onPostExecute(Object Object1) {
-        Object Object2 = (PostDetailComment) Object1;
-
-        super.onPostExecute(Object2);
-        a.b.setOnLastItemListener(TweetDetailActivity.i(a));
-        if (Object2 != null && ((PostDetailComment) Object2).isOk()) {
-            Object Object3;
-
-            TweetDetailActivity.j(a).setVisibility(8);
-            Object3 = Arrays.asList(((PostDetailComment) Object2).getComments());
-            TweetDetailActivity.k(a).addAll((Collection) Object3);
-            TweetDetailActivity.l(a).a((Collection) TweetDetailActivity.k(a));
-            if (((List) Object3).size() < 30) {
-                a.b.removeFooterView(TweetDetailActivity.j(a));
-                a.b.setOnLastItemListener(null);
+    @Override
+    protected final /* synthetic */ void onPostExecute(Object object) {
+        PostDetailComment postDetailComment = (PostDetailComment) object;
+        super.onPostExecute(postDetailComment);
+        this.a.b.setOnLastItemListener(TweetDetailActivity.i(this.a));
+        if (postDetailComment != null && postDetailComment.isOk()) {
+            TweetDetailActivity.j(this.a).setVisibility(8);
+            List<PostComment> list = Arrays.asList(postDetailComment.getComments());
+            TweetDetailActivity.k(this.a).addAll(list);
+            TweetDetailActivity.l(this.a).a(TweetDetailActivity.k(this.a));
+            if (list.size() < 30) {
+                this.a.b.removeFooterView(TweetDetailActivity.j(this.a));
+                this.a.b.setOnLastItemListener(null);
             }
-            ((TextView) a.findViewById(2131493519)).setText((CharSequence) new StringBuilder("\u5171").append(TweetDetailActivity.c(a).getTweet().getCommented()).append("\u6761\u8BC4\u8BBA").toString());
-        } else
-            com.clilystudio.netbook.util.e.a((Activity) a, "\u52A0\u8F7D\u5931\u8D25\uFF0C\u8BF7\u68C0\u67E5\u7F51\u7EDC\u6216\u8005\u7A0D\u540E\u518D\u8BD5");
+            ((TextView) this.a.findViewById(2131493519)).setText("\u5171" + TweetDetailActivity.c(this.a).getTweet().getCommented() + "\u6761\u8bc4\u8bba");
+            return;
+        }
+        e.a((Activity) this.a, "\u52a0\u8f7d\u5931\u8d25\uff0c\u8bf7\u68c0\u67e5\u7f51\u7edc\u6216\u8005\u7a0d\u540e\u518d\u8bd5");
     }
 }

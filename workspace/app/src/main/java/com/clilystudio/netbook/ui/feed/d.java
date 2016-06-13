@@ -1,18 +1,20 @@
 package com.clilystudio.netbook.ui.feed;
 
+import android.content.Intent;
 import android.view.View;
-import android.view.View$OnClickListener;
 
-final class d implements View$OnClickListener {
+final class d
+        implements View.OnClickListener {
+    private /* synthetic */ FeedIntroActivity a;
 
-    private FeedIntroActivity a;
-
-    d(FeedIntroActivity FeedIntroActivity1) {
-        a = FeedIntroActivity1;
+    d(FeedIntroActivity feedIntroActivity) {
+        this.a = feedIntroActivity;
     }
-// Error: Internal #201: 
-// The following method may not be correct.
 
-    public final void onClick(View View1) {
+    @Override
+    public final void onClick(View view) {
+        Intent intent = new Intent(this.a, FeedListActivity.class);
+        this.a.startActivity(intent);
+        this.a.finish();
     }
 }

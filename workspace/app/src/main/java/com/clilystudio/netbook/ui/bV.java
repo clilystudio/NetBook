@@ -1,18 +1,18 @@
 package com.clilystudio.netbook.ui;
 
 import android.view.View;
-import android.view.View$OnLongClickListener;
 
-final class bV implements View$OnLongClickListener {
+final class bV
+        implements View.OnLongClickListener {
+    private /* synthetic */ SettingsActivity a;
 
-    private SettingsActivity a;
-
-    bV(SettingsActivity SettingsActivity1) {
-        a = SettingsActivity1;
+    bV(SettingsActivity settingsActivity) {
+        this.a = settingsActivity;
     }
 
-    public final boolean onLongClick(View View1) {
-        SettingsActivity.b(a);
+    @Override
+    public final boolean onLongClick(View view) {
+        SettingsActivity.b(this.a);
         return true;
     }
 }

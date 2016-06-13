@@ -2,50 +2,47 @@ package com.clilystudio.netbook.widget;
 
 import android.app.Activity;
 
+import com.clilystudio.netbook.a.c;
+import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.db.GameGiftRecord;
 import com.clilystudio.netbook.model.GameGiftResponse;
 import com.clilystudio.netbook.util.e;
 
-final class Y extends com.clilystudio.netbook.a.c {
+final class Y
+        extends c<String, GameGiftResponse> {
+    private /* synthetic */ GiftGameGiftButton a;
 
-    private GiftGameGiftButton a;
-
-    public Y(GiftGameGiftButton GiftGameGiftButton1, Activity Activity2) {
-        super(Activity2);
-        a = GiftGameGiftButton1;
+    public Y(GiftGameGiftButton giftGameGiftButton, Activity activity) {
+        this.a = giftGameGiftButton;
+        super(activity);
     }
 
-    private static transient GameGiftResponse a(String[] String_1darray1) {
-        GameGiftResponse GameGiftResponse4;
-
+    private static /* varargs */ GameGiftResponse a(String... arrstring) {
         try {
-            com.clilystudio.netbook.api.b.a();
-            GameGiftResponse4 = com.clilystudio.netbook.api.b.b().K(String_1darray1[0], String_1darray1[1]);
-        } catch (Exception Exception2) {
-            Exception2.printStackTrace();
+            b.a();
+            GameGiftResponse gameGiftResponse = b.b().K(arrstring[0], arrstring[1]);
+            return gameGiftResponse;
+        } catch (Exception var1_2) {
+            var1_2.printStackTrace();
             return null;
         }
-        return GameGiftResponse4;
     }
 
-    public final volatile Object a(Object[] Object_1darray1) {
-        return a((String[]) Object_1darray1);
-    }
-
-    public final void a(Object Object1) {
-        GameGiftResponse GameGiftResponse2 = (GameGiftResponse) Object1;
-
-        if (GameGiftResponse2 != null) {
-            if (GameGiftResponse2.isOk()) {
-                String String3 = GameGiftResponse2.giftCode.code;
-
-                GameGiftRecord.create(GiftGameGiftButton.c(a).getUser().getId(), GiftGameGiftButton.d(a)._id, String3);
-                GiftGameGiftButton.a(a, String3);
-                e.a((Activity) a.getContext(), "\u9886\u53D6\u6210\u529F");
-                GiftGameGiftButton.b(a, String3);
-            } else
-                e.a((Activity) a.getContext(), GameGiftResponse2.getMsg());
-        } else
-            e.a((Activity) a.getContext(), "\u9886\u53D6\u5931\u8D25");
+    @Override
+    public final /* synthetic */ void a(Object object) {
+        GameGiftResponse gameGiftResponse = (GameGiftResponse) object;
+        if (gameGiftResponse != null) {
+            if (gameGiftResponse.isOk()) {
+                String string = gameGiftResponse.giftCode.code;
+                GameGiftRecord.create(GiftGameGiftButton.c(this.a).getUser().getId(), GiftGameGiftButton.d((GiftGameGiftButton) this.a)._id, string);
+                GiftGameGiftButton.a(this.a, string);
+                e.a((Activity) this.a.getContext(), "\u9886\u53d6\u6210\u529f");
+                GiftGameGiftButton.b(this.a, string);
+                return;
+            }
+            e.a((Activity) this.a.getContext(), gameGiftResponse.getMsg());
+            return;
+        }
+        e.a((Activity) this.a.getContext(), "\u9886\u53d6\u5931\u8d25");
     }
 }

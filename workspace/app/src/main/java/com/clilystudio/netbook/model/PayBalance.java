@@ -1,32 +1,31 @@
 package com.clilystudio.netbook.model;
 
 public class PayBalance {
-
     private int balance;
     private boolean ok;
     private int voucherBalance;
 
     public int getBalance() {
-        return balance;
+        return this.balance;
     }
 
-    public void setBalance(int int1) {
-        balance = int1;
+    public void setBalance(int n) {
+        this.balance = n;
     }
 
     public int getVoucherBalance() {
-        return voucherBalance;
+        return this.voucherBalance;
     }
 
-    public void setVoucherBalance(int int1) {
-        voucherBalance = int1;
+    public void setVoucherBalance(int n) {
+        this.voucherBalance = n;
     }
 
     public boolean isOk() {
-        return ok;
+        return this.ok;
     }
 
-    public void setOk(boolean boolean1) {
-        ok = boolean1;
+    public void setOk(boolean bl) {
+        this.ok = bl;
     }
 }

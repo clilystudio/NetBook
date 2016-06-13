@@ -1,35 +1,33 @@
 package com.clilystudio.netbook.model;
 
-public final class ModuleType extends Enum {
-
-    public static final ModuleType GAME_GROUP = new ModuleType("GAME_GROUP", 0, "gameGroup");
-    public static final ModuleType ACTIVITY = new ModuleType("ACTIVITY", 1, "activity");
-    public static final ModuleType UNKNOWN = new ModuleType("UNKNOWN", 2, "");
-    public static final ModuleType AOYOU = new ModuleType("AOYOU", 3, "aoyou");
-    public static final ModuleType LOCAL = new ModuleType("LOCAL", 4, "local");
-    private static ModuleType[] $VALUES;     // final access specifier removed
+public final class ModuleType
+        extends Enum<ModuleType> {
+    public static final /* enum */ ModuleType ACTIVITY;
+    public static final /* enum */ ModuleType AOYOU;
+    public static final /* enum */ ModuleType GAME_GROUP;
+    public static final /* enum */ ModuleType LOCAL;
+    public static final /* enum */ ModuleType UNKNOWN;
+    private static final /* synthetic */ ModuleType[] $VALUES;
 
     static {
-        ModuleType[] ModuleType_1darray1 = new ModuleType[5];
-
-        ModuleType_1darray1[0] = GAME_GROUP;
-        ModuleType_1darray1[1] = ACTIVITY;
-        ModuleType_1darray1[2] = UNKNOWN;
-        ModuleType_1darray1[3] = AOYOU;
-        ModuleType_1darray1[4] = LOCAL;
-        $VALUES = ModuleType_1darray1;
+        GAME_GROUP = new ModuleType("gameGroup");
+        ACTIVITY = new ModuleType("activity");
+        UNKNOWN = new ModuleType("");
+        AOYOU = new ModuleType("aoyou");
+        LOCAL = new ModuleType("local");
+        ModuleType[] arrmoduleType = new ModuleType[]{GAME_GROUP, ACTIVITY, UNKNOWN, AOYOU, LOCAL};
+        $VALUES = arrmoduleType;
     }
 
-    private String name;     // final access specifier removed
-// Error: Internal #201: 
-// The following method may not be correct.
+    private final String name;
 
-    private ModuleType(String String1, int int2, String String3) {
-        super(String1, int2);
-        name = String3;
+    private ModuleType(String string2) {
+        super(string, n);
+        this.name = string2;
     }
 
-    public static ModuleType valueOf(String String1) {
+    public static ModuleType valueOf(String string) {
+        return (ModuleType) ((Object) Enum.valueOf(ModuleType.class, string));
     }
 
     public static ModuleType[] values() {
@@ -37,6 +35,6 @@ public final class ModuleType extends Enum {
     }
 
     public final String getName() {
-        return name;
+        return this.name;
     }
 }

@@ -1,11 +1,10 @@
 package com.clilystudio.netbook.ui;
 
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.DownloadManager;
-import android.app.DownloadManager$Query;
-import android.app.DownloadManager$Request;
 import android.content.Context;
-import android.content.DialogInterface$OnClickListener;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
@@ -13,8 +12,6 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.support.design.widget.am;
 import android.view.View;
-import android.view.View$OnClickListener;
-import android.view.View$OnKeyListener;
 import android.webkit.DownloadListener;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
@@ -22,9 +19,11 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import com.clilystudio.netbook.MyApplication;
+import com.clilystudio.netbook.ui.home.HomeActivity;
 
-public class AdWebViewActivity extends BaseActivity implements View$OnClickListener {
-
+public class AdWebViewActivity
+        extends BaseActivity
+        implements View.OnClickListener {
     private WebView a;
     private View b;
     private View c;
@@ -32,158 +31,157 @@ public class AdWebViewActivity extends BaseActivity implements View$OnClickListe
     private String f;
     private DownloadManager g = null;
 
-    static DownloadManager a(AdWebViewActivity AdWebViewActivity1) {
-        return AdWebViewActivity1.g;
-    }
-// Error: Internal #201: 
-// The following method may not be correct.
-
-    public static Intent a(Context Context1, String String2, String String3) {
+    static /* synthetic */ DownloadManager a(AdWebViewActivity adWebViewActivity) {
+        return adWebViewActivity.g;
     }
 
-    static void a(AdWebViewActivity AdWebViewActivity1, String String2) {
-        DownloadManager$Query Query3 = new DownloadManager$Query();
-        Cursor Cursor4 = AdWebViewActivity1.g.query(Query3);
-        int int5;
+    public static Intent a(Context context, String string, String string2) {
+        return new com.clilystudio.netbook.d().a(context, AdWebViewActivity.class).a("extra_title", string).a("extra_url", string2).a();
+    }
 
-        label_38:
-        {
-            if (Cursor4 != null) {
-                while (Cursor4.moveToNext()) {
-                    String String9 = Cursor4.getString(Cursor4.getColumnIndex("uri"));
-                    int int10 = Cursor4.getInt(Cursor4.getColumnIndex("status"));
-
-                    if (!String9.equals(String2) || int10 != 1 && int10 != 2)
-                        continue;
-                    int5 = 1;
-                    break label_38;
-                }
+    /*
+     * Enabled aggressive block sorting
+     */
+    static /* synthetic */ void a(AdWebViewActivity adWebViewActivity, String string) {
+        boolean bl;
+        DownloadManager.Query query = new DownloadManager.Query();
+        Cursor cursor = adWebViewActivity.g.query(query);
+        if (cursor != null) {
+            while (cursor.moveToNext()) {
+                String string2 = cursor.getString(cursor.getColumnIndex("uri"));
+                int n = cursor.getInt(cursor.getColumnIndex("status"));
+                if (!string2.equals(string) || n != 1 && n != 2) continue;
+                bl = true;
+                break;
             }
-            int5 = 0;
+        } else {
+            bl = false;
         }
-        if (int5 == 0) {
-            if (!AdWebViewActivity1.isFinishing()) {
-                String String6;
-                uk.me.lewisdeane.ldialogs.h h7;
-
-                if (com.clilystudio.netbook.hpay100.a.a.r((Context) AdWebViewActivity1) == 1)
-                    String6 = "\u54C7\uFF0C\u4F60\u6B63\u5904\u5728 Wi-Fi \u7F51\u7EDC\u4E0B\uFF0C\u4E0B\u8F7D\u65E0\u9700\u6D41\u91CF :)";
-                else
-                    String6 = "\u5F53\u524D\u7F51\u7EDC\u4E0B\u8F7D\u9700\u6D88\u8017\u6D41\u91CF\uFF0C\u8BF7\u5C0F\u5FC3\u786E\u8BA4";
-                h7 = new uk.me.lewisdeane.ldialogs.h((Context) AdWebViewActivity1).a(2131034371);
-                h7.e = String6;
-                h7.a(2131034424, (DialogInterface$OnClickListener) new e(AdWebViewActivity1, String2)).b(2131034129, null).b();
-            }
-        } else
-            com.clilystudio.netbook.util.e.a((Activity) AdWebViewActivity1, "\u5DF2\u7ECF\u5728\u4E0B\u8F7D\u961F\u5217\u4E2D");
+        if (bl) {
+            com.clilystudio.netbook.util.e.a((Activity) adWebViewActivity, (String) "\u5df2\u7ecf\u5728\u4e0b\u8f7d\u961f\u5217\u4e2d");
+            return;
+        }
+        if (adWebViewActivity.isFinishing()) return;
+        String string3 = com.clilystudio.netbook.hpay100.a.a.r(adWebViewActivity) == 1 ? "\u54c7\uff0c\u4f60\u6b63\u5904\u5728 Wi-Fi \u7f51\u7edc\u4e0b\uff0c\u4e0b\u8f7d\u65e0\u9700\u6d41\u91cf :)" : "\u5f53\u524d\u7f51\u7edc\u4e0b\u8f7d\u9700\u6d88\u8017\u6d41\u91cf\uff0c\u8bf7\u5c0f\u5fc3\u786e\u8ba4";
+        h h2 = new h(adWebViewActivity).a(2131034371);
+        h2.e = string3;
+        h2.a(2131034424, (DialogInterface.OnClickListener) ((Object) new e(adWebViewActivity, string))).b(2131034129, null).b();
     }
 
-    static void a(AdWebViewActivity AdWebViewActivity1, String String2, String String3) {
-        DownloadManager$Request Request4 = new DownloadManager$Request(Uri.parse(String2));
-
-        Request4.setTitle((CharSequence) AdWebViewActivity1.f);
+    /*
+     * Enabled aggressive block sorting
+     * Enabled unnecessary exception pruning
+     * Enabled aggressive exception aggregation
+     */
+    static /* synthetic */ void a(AdWebViewActivity adWebViewActivity, String string, String string2) {
+        DownloadManager.Request request = new DownloadManager.Request(Uri.parse(string));
+        request.setTitle(adWebViewActivity.f);
         if (com.clilystudio.netbook.hpay100.a.a.g()) {
-            Request4.allowScanningByMediaScanner();
-            Request4.setNotificationVisibility(1);
+            request.allowScanningByMediaScanner();
+            request.setNotificationVisibility(1);
         }
-        Request4.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, String3);
+        request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, string2);
         try {
-        } catch (Exception Exception7) {
-            Exception7.printStackTrace();
+            adWebViewActivity.g.enqueue(request);
+        } catch (Exception var6_4) {
+            var6_4.printStackTrace();
         }
-        MyApplication.a().h().add(String2);
+        MyApplication.a().h().add(string);
     }
 
-    static void b(AdWebViewActivity AdWebViewActivity1) {
-        boolean boolean2 = true;
-        View View3 = AdWebViewActivity1.c;
-        boolean boolean4;
-        View View5;
-
-        if (AdWebViewActivity1.a != null && AdWebViewActivity1.a.canGoBack())
-            boolean4 = boolean2;
-        else
-            boolean4 = false;
-        View3.setEnabled(boolean4);
-        View5 = AdWebViewActivity1.e;
-        if (AdWebViewActivity1.a == null || !AdWebViewActivity1.a.canGoForward())
-            boolean2 = false;
-        View5.setEnabled(boolean2);
+    /*
+     * Enabled aggressive block sorting
+     */
+    static /* synthetic */ void b(AdWebViewActivity adWebViewActivity) {
+        boolean bl = true;
+        View view = adWebViewActivity.c;
+        boolean bl2 = adWebViewActivity.a != null && adWebViewActivity.a.canGoBack() ? bl : false;
+        view.setEnabled(bl2);
+        View view2 = adWebViewActivity.e;
+        if (adWebViewActivity.a == null || !adWebViewActivity.a.canGoForward()) {
+            bl = false;
+        }
+        view2.setEnabled(bl);
     }
 
-    static void b(AdWebViewActivity AdWebViewActivity1, String String2) {
-        am.a((Activity) AdWebViewActivity1, String2, null);
+    static /* synthetic */ void b(AdWebViewActivity adWebViewActivity, String string) {
+        am.a((Activity) adWebViewActivity, (String) string, (String) null);
     }
 
-    static String c(AdWebViewActivity AdWebViewActivity1, String String2) {
-        AdWebViewActivity1.f = String2;
-        return String2;
+    static /* synthetic */ String c(AdWebViewActivity adWebViewActivity, String string) {
+        adWebViewActivity.f = string;
+        return string;
     }
 
-    static void c(AdWebViewActivity AdWebViewActivity1) {
-        AdWebViewActivity1.b.setVisibility(0);
+    static /* synthetic */ void c(AdWebViewActivity adWebViewActivity) {
+        adWebViewActivity.b.setVisibility(0);
     }
 
-    static void d(AdWebViewActivity AdWebViewActivity1) {
-        AdWebViewActivity1.b.setVisibility(8);
+    static /* synthetic */ void d(AdWebViewActivity adWebViewActivity) {
+        adWebViewActivity.b.setVisibility(8);
     }
 
-    static WebView e(AdWebViewActivity AdWebViewActivity1) {
-        return AdWebViewActivity1.a;
+    static /* synthetic */ WebView e(AdWebViewActivity adWebViewActivity) {
+        return adWebViewActivity.a;
     }
-// Error: Internal #201: 
-// The following method may not be correct.
 
+    @Override
     public void onBackPressed() {
-    }
-
-    public void onClick(View View1) {
-        switch (View1.getId()) {
-            default:
-                return;
-            case 1186:
-                a.goBack();
-                return;
-            case 1187:
-                a.goForward();
-                return;
-            case 1188:
-                a.reload();
-                return;
+        super.onBackPressed();
+        if (this.getIntent().getBooleanExtra("from_splash", false)) {
+            this.startActivity(new Intent(this, HomeActivity.class));
         }
+        this.finish();
     }
 
-    protected void onCreate(Bundle Bundle1) {
-        View View2;
-        WebSettings WebSettings3;
-        String String4;
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            default: {
+                return;
+            }
+            case 2131494050: {
+                this.a.goBack();
+                return;
+            }
+            case 2131494051: {
+                this.a.goForward();
+                return;
+            }
+            case 2131494052:
+        }
+        this.a.reload();
+    }
 
-        super.onCreate(Bundle1);
-        setContentView(2130903420);
-        f = getIntent().getStringExtra("extra_title");
-        c(f);
-        g = (DownloadManager) getSystemService("download");
-        a = (WebView) findViewById(2131494048);
-        b = findViewById(2131493085);
-        c = findViewById(2131494050);
-        e = findViewById(2131494051);
-        View2 = findViewById(2131494052);
-        a.getSettings().setUseWideViewPort(true);
-        a.getSettings().setLoadWithOverviewMode(true);
-        a.setVerticalScrollBarEnabled(false);
-        WebSettings3 = a.getSettings();
-        WebSettings3.setJavaScriptEnabled(true);
-        WebSettings3.setDomStorageEnabled(true);
-        WebSettings3.setAppCacheEnabled(true);
-        a.setDownloadListener((DownloadListener) new a(this));
-        a.setWebViewClient((WebViewClient) new b(this));
-        a.setOnKeyListener((View$OnKeyListener) new c(this));
-        a.setWebChromeClient((WebChromeClient) new d(this));
-        a.addJavascriptInterface(new cw((Activity) this, a), "ZssqAndroidApi");
-        c.setOnClickListener(this);
-        e.setOnClickListener(this);
-        View2.setOnClickListener(this);
-        String4 = getIntent().getStringExtra("extra_url");
-        a.loadUrl(String4);
+    @TargetApi(value = 9)
+    @Override
+    protected void onCreate(Bundle bundle) {
+        super.onCreate(bundle);
+        this.setContentView(2130903420);
+        this.f = this.getIntent().getStringExtra("extra_title");
+        this.c(this.f);
+        this.g = (DownloadManager) this.getSystemService("download");
+        this.a = (WebView) this.findViewById(2131494048);
+        this.b = this.findViewById(2131493085);
+        this.c = this.findViewById(2131494050);
+        this.e = this.findViewById(2131494051);
+        View view = this.findViewById(2131494052);
+        this.a.getSettings().setUseWideViewPort(true);
+        this.a.getSettings().setLoadWithOverviewMode(true);
+        this.a.setVerticalScrollBarEnabled(false);
+        WebSettings webSettings = this.a.getSettings();
+        webSettings.setJavaScriptEnabled(true);
+        webSettings.setDomStorageEnabled(true);
+        webSettings.setAppCacheEnabled(true);
+        this.a.setDownloadListener((DownloadListener) ((Object) new a(this)));
+        this.a.setWebViewClient((WebViewClient) ((Object) new b(this)));
+        this.a.setOnKeyListener((View.OnKeyListener) ((Object) new c(this)));
+        this.a.setWebChromeClient((WebChromeClient) ((Object) new d(this)));
+        this.a.addJavascriptInterface(new cw(this, this.a), "ZssqAndroidApi");
+        this.c.setOnClickListener(this);
+        this.e.setOnClickListener(this);
+        view.setOnClickListener(this);
+        String string = this.getIntent().getStringExtra("extra_url");
+        this.a.loadUrl(string);
     }
 }

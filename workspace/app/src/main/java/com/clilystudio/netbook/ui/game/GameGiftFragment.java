@@ -5,94 +5,102 @@ import android.content.BroadcastReceiver;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView$OnItemClickListener;
-import android.widget.ListAdapter;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.clilystudio.netbook.adapter.GameGiftGroupAdapter;
 import com.clilystudio.netbook.model.GameGiftGroup;
+import com.clilystudio.netbook.model.GiftGame;
 import com.clilystudio.netbook.ui.BaseLoadingFragment;
+import com.umeng.a.b;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class GameGiftFragment extends BaseLoadingFragment {
-
+public class GameGiftFragment
+        extends BaseLoadingFragment {
     private ListView a;
     private GameGiftGroupAdapter b;
-    private List c;
-    private BroadcastReceiver d = new u(this);
+    private List<GameGiftGroup> c;
+    private BroadcastReceiver d;
 
-    static ListView a(GameGiftFragment GameGiftFragment1) {
-        return GameGiftFragment1.a;
+    public GameGiftFragment() {
+        this.d = new u(this);
     }
 
-    static List a(GameGiftFragment GameGiftFragment1, List List2) {
-        GameGiftFragment1.c = List2;
-        return List2;
+    static /* synthetic */ ListView a(GameGiftFragment gameGiftFragment) {
+        return gameGiftFragment.a;
     }
 
-    static List b(GameGiftFragment GameGiftFragment1) {
-        return GameGiftFragment1.c;
+    static /* synthetic */ List a(GameGiftFragment gameGiftFragment, List list) {
+        gameGiftFragment.c = list;
+        return list;
     }
 
-    static void c(GameGiftFragment GameGiftFragment1) {
-        GameGiftFragment1.g();
+    static /* synthetic */ List b(GameGiftFragment gameGiftFragment) {
+        return gameGiftFragment.c;
     }
 
-    static GameGiftGroupAdapter d(GameGiftFragment GameGiftFragment1) {
-        return GameGiftFragment1.b;
+    static /* synthetic */ void c(GameGiftFragment gameGiftFragment) {
+        gameGiftFragment.g();
+    }
+
+    static /* synthetic */ GameGiftGroupAdapter d(GameGiftFragment gameGiftFragment) {
+        return gameGiftFragment.b;
     }
 
     private void g() {
-        if (c != null) {
-            Object Object1 = new ArrayList();
-            int int2;
-
-            for (int2 = 0; int2 < c.size(); ++int2) {
-                GameGiftGroup GameGiftGroup3 = (GameGiftGroup) c.get(int2);
-
-                if (GameGiftGroup3.getType() == 0)
-                    ((List) Object1).add(GameGiftGroup3.getGame());
+        if (this.c != null) {
+            ArrayList<GiftGame> arrayList = new ArrayList<GiftGame>();
+            for (int i = 0; i < this.c.size(); ++i) {
+                GameGiftGroup gameGiftGroup = this.c.get(i);
+                if (gameGiftGroup.getType() != 0) continue;
+                arrayList.add(gameGiftGroup.getGame());
             }
-            ao.a((Activity) getActivity(), (List) Object1);
-            b.notifyDataSetChanged();
+            ao.a((Activity) this.getActivity(), arrayList);
+            this.b.notifyDataSetChanged();
         }
     }
 
+    @Override
     protected final int a() {
         return 2130903321;
     }
 
+    @Override
     protected final void b() {
-        f();
-        new v(this, (byte) 0).b(new String[0]);
+        this.f();
+        new v(this, 0).b((Object[]) new String[0]);
     }
 
-    public void onActivityCreated(Bundle Bundle1) {
-        super.onActivityCreated(Bundle1);
-        a.setDividerHeight(0);
-        b = new GameGiftGroupAdapter((Activity) getActivity());
-        a.setAdapter((ListAdapter) b);
-        a.setOnItemClickListener((AdapterView$OnItemClickListener) new t(this));
-        b();
+    @Override
+    public void onActivityCreated(Bundle bundle) {
+        super.onActivityCreated(bundle);
+        this.a.setDividerHeight(0);
+        this.b = new GameGiftGroupAdapter(this.getActivity());
+        this.a.setAdapter(this.b);
+        this.a.setOnItemClickListener((AdapterView.OnItemClickListener) ((Object) new t(this)));
+        this.b();
     }
 
+    @Override
     public void onPause() {
         super.onPause();
-        getActivity().unregisterReceiver(d);
-        com.umeng.a.b.b("game_gift");
+        this.getActivity().unregisterReceiver(this.d);
+        b.b("game_gift");
     }
 
+    @Override
     public void onResume() {
         super.onResume();
-        getActivity().registerReceiver(d, new IntentFilter("update_game_item_status"));
-        g();
-        com.umeng.a.b.a("game_gift");
+        this.getActivity().registerReceiver(this.d, new IntentFilter("update_game_item_status"));
+        this.g();
+        b.a("game_gift");
     }
 
-    public void onViewCreated(View View1, Bundle Bundle2) {
-        super.onViewCreated(View1, Bundle2);
-        a = (ListView) View1.findViewById(2131493135);
+    @Override
+    public void onViewCreated(View view, Bundle bundle) {
+        super.onViewCreated(view, bundle);
+        this.a = (ListView) view.findViewById(2131493135);
     }
 }

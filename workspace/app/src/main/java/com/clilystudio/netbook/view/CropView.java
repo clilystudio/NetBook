@@ -4,131 +4,119 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Paint;
-import android.graphics.Paint$Style;
 import android.graphics.RectF;
 import android.util.AttributeSet;
-import android.view.ViewTreeObserver$OnPreDrawListener;
-import android.widget.ImageView;
 
 import uk.co.senab.photoview.PhotoView;
 
-public class CropView extends PhotoView {
-
+public class CropView
+        extends PhotoView {
     private d a;
     private float b;
     private float c;
-    public CropView(Context Context1, AttributeSet AttributeSet2, int int3) {
-        super(Context1, AttributeSet2, int3);
-        b();
+
+    public CropView(Context context) {
+        super(context);
+        this.b();
     }
 
-    public CropView(Context Context1) {
-        super(Context1);
-        b();
+    public CropView(Context context, AttributeSet attributeSet) {
+        super(context, attributeSet);
+        this.b();
     }
 
-    public CropView(Context Context1, AttributeSet AttributeSet2) {
-        super(Context1, AttributeSet2);
-        b();
+    public CropView(Context context, AttributeSet attributeSet, int n) {
+        super(context, attributeSet, n);
+        this.b();
     }
 
-    static float a(CropView CropView1) {
-        return CropView1.c;
+    static /* synthetic */ float a(CropView cropView) {
+        return cropView.c;
     }
 
-    static float b(CropView CropView1) {
-        return CropView1.b;
+    static /* synthetic */ float b(CropView cropView) {
+        return cropView.b;
     }
 
-    static d c(CropView CropView1) {
-        return CropView1.a;
+    static /* synthetic */ d c(CropView cropView) {
+        return cropView.a;
     }
 
     private void b() {
-        b = getResources().getDimension(2131099867);
-        a = new d((ImageView) this);
+        this.b = this.getResources().getDimension(2131099867);
+        this.a = new d(this);
     }
 
     private RectF c() {
-        float float1 = (float) (getWidth() / 2) - b / 2.0F;
-        float float2 = (float) (getHeight() / 2) - b / 2.0F;
-        float float3 = b;
-        float float4 = b;
-
-        return new RectF(float1, float2, float3 + float1, float4 + float2);
+        float f2 = (float) (this.getWidth() / 2) - this.b / 2.0f;
+        float f3 = (float) (this.getHeight() / 2) - this.b / 2.0f;
+        float f4 = this.b;
+        float f5 = this.b;
+        return new RectF(f2, f3, f4 + f2, f5 + f3);
     }
 
     public final Bitmap a() {
-        Bitmap Bitmap1;
-        RectF RectF2;
-        Bitmap Bitmap4;
-
-        invalidate();
-        Bitmap1 = getDrawingCache();
-        RectF2 = c();
+        this.invalidate();
+        Bitmap bitmap = this.getDrawingCache();
+        RectF rectF = this.c();
         try {
-            Bitmap4 = Bitmap.createBitmap(Bitmap1, (int) RectF2.left, (int) RectF2.top, (int) RectF2.width(), (int) RectF2.height());
-        } catch (Exception Exception3) {
-            Exception3.printStackTrace();
+            Bitmap bitmap2 = Bitmap.createBitmap(bitmap, (int) rectF.left, (int) rectF.top, (int) rectF.width(), (int) rectF.height());
+            return bitmap2;
+        } catch (Exception var3_4) {
+            var3_4.printStackTrace();
             return null;
         }
-        return Bitmap4;
     }
 
-    protected void onDraw(Canvas Canvas1) {
-        RectF RectF2;
-        Paint Paint3;
-        Paint Paint4;
-        RectF RectF5;
-        RectF RectF6;
-        RectF RectF7;
-        RectF RectF8;
-
-        super.onDraw(Canvas1);
-        RectF2 = c();
-        Paint3 = new Paint();
-        Paint3.setColor(-1);
-        Paint3.setStrokeWidth(2.0F);
-        Paint3.setStyle(Paint$Style.STROKE);
-        Canvas1.drawRect(RectF2, Paint3);
-        Paint4 = new Paint();
-        Paint4.setColor(getResources().getColor(2131427387));
-        Paint4.setStyle(Paint$Style.FILL);
-        RectF5 = new RectF();
-        RectF5.left = 0.0F;
-        RectF5.top = 0.0F;
-        RectF5.right = RectF2.left - 2.0F;
-        RectF5.bottom = (float) getHeight();
-        Canvas1.drawRect(RectF5, Paint4);
-        RectF6 = new RectF();
-        RectF6.left = RectF2.left - 2.0F;
-        RectF6.top = 0.0F;
-        RectF6.right = 2.0F + RectF2.right;
-        RectF6.bottom = RectF2.top;
-        Canvas1.drawRect(RectF6, Paint4);
-        RectF7 = new RectF();
-        RectF7.left = 2.0F + RectF2.right;
-        RectF7.top = 0.0F;
-        RectF7.right = (float) getWidth();
-        RectF7.bottom = (float) getHeight();
-        Canvas1.drawRect(RectF7, Paint4);
-        RectF8 = new RectF();
-        RectF8.left = RectF2.left - 2.0F;
-        RectF8.top = RectF2.bottom;
-        RectF8.right = 2.0F + RectF2.right;
-        RectF8.bottom = (float) getHeight();
-        Canvas1.drawRect(RectF8, Paint4);
+    @Override
+    protected void onDraw(Canvas canvas) {
+        super.onDraw(canvas);
+        RectF rectF = this.c();
+        Paint paint = new Paint();
+        paint.setColor(-1);
+        paint.setStrokeWidth(2.0f);
+        paint.setStyle(Paint.Style.STROKE);
+        canvas.drawRect(rectF, paint);
+        Paint paint2 = new Paint();
+        paint2.setColor(this.getResources().getColor(2131427387));
+        paint2.setStyle(Paint.Style.FILL);
+        RectF rectF2 = new RectF();
+        rectF2.left = 0.0f;
+        rectF2.top = 0.0f;
+        rectF2.right = rectF.left - 2.0f;
+        rectF2.bottom = this.getHeight();
+        canvas.drawRect(rectF2, paint2);
+        RectF rectF3 = new RectF();
+        rectF3.left = rectF.left - 2.0f;
+        rectF3.top = 0.0f;
+        rectF3.right = 2.0f + rectF.right;
+        rectF3.bottom = rectF.top;
+        canvas.drawRect(rectF3, paint2);
+        RectF rectF4 = new RectF();
+        rectF4.left = 2.0f + rectF.right;
+        rectF4.top = 0.0f;
+        rectF4.right = this.getWidth();
+        rectF4.bottom = this.getHeight();
+        canvas.drawRect(rectF4, paint2);
+        RectF rectF5 = new RectF();
+        rectF5.left = rectF.left - 2.0f;
+        rectF5.top = rectF.bottom;
+        rectF5.right = 2.0f + rectF.right;
+        rectF5.bottom = this.getHeight();
+        canvas.drawRect(rectF5, paint2);
     }
 
+    @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
-        setBackgroundResource(17170444);
-        setDrawingCacheEnabled(true);
-        getViewTreeObserver().addOnPreDrawListener((ViewTreeObserver$OnPreDrawListener) new b(this));
+        this.setBackgroundResource(17170444);
+        this.setDrawingCacheEnabled(true);
+        this.getViewTreeObserver().addOnPreDrawListener(new b(this));
     }
 
-    public void setImageBitmap(Bitmap Bitmap1) {
-        c = (float) Bitmap1.getWidth() / (float) Bitmap1.getHeight();
-        super.setImageBitmap(Bitmap1);
+    @Override
+    public void setImageBitmap(Bitmap bitmap) {
+        this.c = (float) bitmap.getWidth() / (float) bitmap.getHeight();
+        super.setImageBitmap(bitmap);
     }
 }

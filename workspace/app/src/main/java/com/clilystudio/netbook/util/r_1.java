@@ -2,45 +2,41 @@ package com.clilystudio.netbook.util;
 
 import android.app.Activity;
 
+import com.clilystudio.netbook.a.c;
+import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.model.ChargeType;
 import com.clilystudio.netbook.model.ChargeTypes;
 
 import java.io.IOException;
 
-final class r extends com.clilystudio.netbook.a.c {
+final class r
+        extends c<Void, ChargeTypes> {
+    private /* synthetic */ p a;
 
-    private p a;
-
-    public r(p p1, Activity Activity2) {
-        super(Activity2);
-        a = p1;
+    public r(p p2, Activity activity) {
+        this.a = p2;
+        super(activity);
     }
 
-    private static transient ChargeTypes a() {
-        ChargeTypes ChargeTypes3;
-
+    private static /* varargs */ ChargeTypes a() {
         try {
-            com.clilystudio.netbook.api.b.a();
-            ChargeTypes3 = com.clilystudio.netbook.api.b.b().c();
-        } catch (IOException IOException1) {
-            IOException1.printStackTrace();
+            b.a();
+            ChargeTypes chargeTypes = b.b().c();
+            return chargeTypes;
+        } catch (IOException var0_1) {
+            var0_1.printStackTrace();
             return null;
         }
-        return ChargeTypes3;
     }
 
-    public final volatile Object a(Object[] Object_1darray1) {
-        return a();
-    }
-
-    public final void a(Object Object1) {
-        ChargeTypes ChargeTypes2 = (ChargeTypes) Object1;
-
-        if (ChargeTypes2 != null && ChargeTypes2.isOk() && ChargeTypes2.getTypes() != null) {
-            ChargeType[] ChargeType_1darray3 = ChargeTypes2.getTypes();
-
-            p.a(a, ChargeType_1darray3);
-        } else
-            e.a(p.a(a), "\u83B7\u53D6\u652F\u4ED8\u4FE1\u606F\u5931\u8D25\uFF0C\u8BF7\u91CD\u8BD5");
+    @Override
+    public final /* synthetic */ void a(Object object) {
+        ChargeTypes chargeTypes = (ChargeTypes) object;
+        if (chargeTypes != null && chargeTypes.isOk() && chargeTypes.getTypes() != null) {
+            ChargeType[] arrchargeType = chargeTypes.getTypes();
+            p.a(this.a, arrchargeType);
+            return;
+        }
+        e.a(p.a(this.a), "\u83b7\u53d6\u652f\u4ed8\u4fe1\u606f\u5931\u8d25\uff0c\u8bf7\u91cd\u8bd5");
     }
 }

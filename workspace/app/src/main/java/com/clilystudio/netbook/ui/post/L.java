@@ -1,33 +1,24 @@
 package com.clilystudio.netbook.ui.post;
 
-import android.app.Activity;
 import android.content.DialogInterface;
-import android.content.DialogInterface$OnClickListener;
 
-final class L implements DialogInterface$OnClickListener {
+final class L
+        implements DialogInterface.OnClickListener {
+    private /* synthetic */ String a;
+    private /* synthetic */ AddVoteActivity b;
 
-    private String a;
-    private AddVoteActivity b;
-    L(AddVoteActivity AddVoteActivity1, String String2) {
-        b = AddVoteActivity1;
-        a = String2;
+    L(AddVoteActivity addVoteActivity, String string) {
+        this.b = addVoteActivity;
+        this.a = string;
     }
 
-    public final void onClick(DialogInterface DialogInterface1, int int2) {
-        String String3;
-        String String4;
-        P P5;
-        String[] String_1darray6;
-
-        DialogInterface1.dismiss();
-        String3 = AddVoteActivity.a(b).getText().toString().trim();
-        String4 = AddVoteActivity.b(b).getText().toString().trim();
-        P5 = new P(b, (Activity) b, 2131034430);
-        String_1darray6 = new String[4];
-        String_1darray6[0] = a;
-        String_1darray6[1] = AddVoteActivity.c(b);
-        String_1darray6[2] = String3;
-        String_1darray6[3] = String4;
-        P5.b(String_1darray6);
+    @Override
+    public final void onClick(DialogInterface dialogInterface, int n) {
+        dialogInterface.dismiss();
+        String string = AddVoteActivity.a(this.b).getText().toString().trim();
+        String string2 = AddVoteActivity.b(this.b).getText().toString().trim();
+        P p = new P(this.b, this.b, 2131034430);
+        String[] arrstring = new String[]{this.a, AddVoteActivity.c(this.b), string, string2};
+        p.b(arrstring);
     }
 }

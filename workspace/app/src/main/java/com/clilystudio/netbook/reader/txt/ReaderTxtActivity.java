@@ -1,24 +1,22 @@
 package com.clilystudio.netbook.reader.txt;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.DialogInterface$OnCancelListener;
-import android.content.DialogInterface$OnClickListener;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.PowerManager;
-import android.os.PowerManager$WakeLock;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.PagerAdapter;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
-import android.view.View$OnSystemUiVisibilityChangeListener;
-import android.view.WindowManager$LayoutParams;
+import android.view.WindowManager;
 
 import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.db.BookFile;
@@ -32,19 +30,16 @@ import com.clilystudio.netbook.reader.ReaderActionBar;
 import com.clilystudio.netbook.reader.ReaderTocDialog;
 import com.clilystudio.netbook.reader.ReaderTtsSetWidget;
 import com.clilystudio.netbook.reader.SettingWidget;
+import com.clilystudio.netbook.reader.TtsSpeakingService;
 import com.clilystudio.netbook.reader.ad;
 import com.clilystudio.netbook.reader.ae;
 import com.clilystudio.netbook.reader.bH;
 import com.clilystudio.netbook.reader.bZ;
-import com.clilystudio.netbook.reader.ca;
-import com.clilystudio.netbook.reader.cb;
-import com.clilystudio.netbook.reader.cc;
-import com.clilystudio.netbook.reader.cd;
-import com.clilystudio.netbook.reader.ce;
-import com.clilystudio.netbook.reader.cn;
 import com.clilystudio.netbook.reader.cw;
 import com.clilystudio.netbook.reader.db;
 import com.clilystudio.netbook.reader.dc;
+import com.clilystudio.netbook.reader.n;
+import com.clilystudio.netbook.reader.o;
 import com.iflytek.cloud.InitListener;
 import com.iflytek.cloud.SpeechSynthesizer;
 import com.iflytek.cloud.SpeechUtility;
@@ -53,979 +48,1068 @@ import com.iflytek.cloud.SynthesizerListener;
 import java.io.File;
 import java.util.LinkedList;
 
-public class ReaderTxtActivity extends FragmentActivity implements com.clilystudio.netbook.reader.a, com.clilystudio.netbook.reader.d {
-
+public class ReaderTxtActivity
+        extends FragmentActivity
+        implements com.clilystudio.netbook.reader.a,
+        com.clilystudio.netbook.reader.d {
     public static String a = "";
+    private boolean A = false;
     private int B;
     private int C;
     private String[] D;
-    private LinkedList F;
+    private int E = 0;
+    private LinkedList<Integer> F;
     private SpeechSynthesizer G;
+    private PowerManager.WakeLock H = null;
+    private SynthesizerListener I;
+    private Runnable J;
+    private BroadcastReceiver K;
+    private BroadcastReceiver L;
+    private o[] b = new o[3];
     private String c;
     private Reader d;
     private bZ e;
     private bH f;
     private com.clilystudio.netbook.reader.K g;
     private ReaderTocDialog h;
+    private Handler i = new Handler();
     private PagerWidget j;
     private int k;
+    private boolean l = true;
+    private boolean m = true;
     private View n;
     private ReaderActionBar o;
     private SettingWidget p;
+    private int q = -1;
     private boolean r;
     private boolean s;
     private boolean t;
     private View u;
     private AutoReaderSetWidget v;
+    private int w = 0;
     private AutoReaderTextView x;
     private View y;
     private ReaderTtsSetWidget z;
-    private com.clilystudio.netbook.reader.o[] b = new com.clilystudio.netbook.reader.o[3];
-    private Handler i = new Handler();
-    private boolean l = true;
-    private boolean m = true;
-    private int q = -1;
-    private int w = 0;
-    private boolean A = false;
-    private int E = 0;
-    private PowerManager$WakeLock H = null;
-    private SynthesizerListener I = new d(this);
-    private Runnable J = new E(this);
-    private BroadcastReceiver K = new F(this);
-    private BroadcastReceiver L = new G(this);
 
-    static int A(ReaderTxtActivity ReaderTxtActivity1) {
-        int int2 = ReaderTxtActivity1.E;
-
-        ReaderTxtActivity1.E = int2 + 1;
-        return int2;
+    public ReaderTxtActivity() {
+        this.I = new d(this);
+        this.J = new E(this);
+        this.K = new F(this);
+        this.L = new G(this);
     }
 
-    static View B(ReaderTxtActivity ReaderTxtActivity1) {
-        return ReaderTxtActivity1.u;
+    static /* synthetic */ int A(ReaderTxtActivity readerTxtActivity) {
+        int n2 = readerTxtActivity.E;
+        readerTxtActivity.E = n2 + 1;
+        return n2;
     }
 
-    static void C(ReaderTxtActivity ReaderTxtActivity1) {
-        ReaderTxtActivity1.r();
+    static /* synthetic */ View B(ReaderTxtActivity readerTxtActivity) {
+        return readerTxtActivity.u;
     }
 
-    static void D(ReaderTxtActivity ReaderTxtActivity1) {
-        if (!ReaderTxtActivity1.isFinishing()) {
-            uk.me.lewisdeane.ldialogs.h h2 = new uk.me.lewisdeane.ldialogs.h((Context) ReaderTxtActivity1);
-            AlertDialog AlertDialog5;
-
-            h2.b(2131034528);
-            h2.a(2131034471, (DialogInterface$OnClickListener) new p(ReaderTxtActivity1)).b(2131034321, (DialogInterface$OnClickListener) new o(ReaderTxtActivity1));
-            AlertDialog5 = h2.a();
-            AlertDialog5.setCanceledOnTouchOutside(false);
-            AlertDialog5.setOnCancelListener((DialogInterface$OnCancelListener) new q(ReaderTxtActivity1));
-            try {
-                AlertDialog5.show();
-            } catch (Exception Exception6) {
-                Exception6.printStackTrace();
-                return;
-            }
-        }
+    static /* synthetic */ void C(ReaderTxtActivity readerTxtActivity) {
+        readerTxtActivity.r();
     }
 
-    static void E(ReaderTxtActivity ReaderTxtActivity1) {
-        ReaderTxtActivity1.n();
-    }
-
-    static bH F(ReaderTxtActivity ReaderTxtActivity1) {
-        return ReaderTxtActivity1.f;
-    }
-
-    static void G(ReaderTxtActivity ReaderTxtActivity1) {
-        ReaderTxtActivity1.p();
-    }
-
-    static void H(ReaderTxtActivity ReaderTxtActivity1) {
-        ReaderTxtActivity1.q();
-    }
-
-    static void I(ReaderTxtActivity ReaderTxtActivity1) {
-        ReaderTxtActivity1.s();
-    }
-
-    static void J(ReaderTxtActivity ReaderTxtActivity1) {
-        ReaderTxtActivity1.l();
-    }
-
-    static ReaderTocDialog K(ReaderTxtActivity ReaderTxtActivity1) {
-        return ReaderTxtActivity1.h;
-    }
-
-    static void L(ReaderTxtActivity ReaderTxtActivity1) {
-        ReaderTxtActivity1.o();
-    }
-
-    static void M(ReaderTxtActivity ReaderTxtActivity1) {
-        ReaderTxtActivity1.getWindow().clearFlags(128);
-    }
-
-    static int N(ReaderTxtActivity ReaderTxtActivity1) {
-        return ReaderTxtActivity1.q;
-    }
-
-    static int a(ReaderTxtActivity ReaderTxtActivity1, int int2) {
-        ReaderTxtActivity1.w = int2;
-        return int2;
-    }
-
-    static LinkedList a(ReaderTxtActivity ReaderTxtActivity1, LinkedList LinkedList2) {
-        ReaderTxtActivity1.F = LinkedList2;
-        return LinkedList2;
-    }
-
-    static void a(ReaderTxtActivity ReaderTxtActivity1) {
-        ReaderTxtActivity1.t();
-    }
-
-    static void a(ReaderTxtActivity ReaderTxtActivity1, com.clilystudio.netbook.reader.n n2) {
-        if (!n2.f()) {
-            ReaderTxtActivity1.b[0].a(n2);
-            n2.a((com.clilystudio.netbook.reader.e) new y(ReaderTxtActivity1));
-        } else if (!n2.e()) {
-            ReaderTxtActivity1.b[2].a(n2);
-            n2.b((com.clilystudio.netbook.reader.e) new A(ReaderTxtActivity1));
-        } else {
-            ReaderTxtActivity1.b[1].a(n2);
-            n2.a((com.clilystudio.netbook.reader.e) new C(ReaderTxtActivity1, n2));
-        }
-        if (ReaderTxtActivity1.w == 1) {
-            if (!ReaderTxtActivity1.x.isShown())
-                ReaderTxtActivity1.z();
-            ReaderTxtActivity1.x.a();
-        }
-    }
-
-    static boolean a(ReaderTxtActivity ReaderTxtActivity1, boolean boolean2) {
-        ReaderTxtActivity1.A = true;
-        return true;
-    }
-
-    static String[] a(ReaderTxtActivity ReaderTxtActivity1, String[] String_1darray2) {
-        ReaderTxtActivity1.D = String_1darray2;
-        return String_1darray2;
-    }
-
-    static int b(ReaderTxtActivity ReaderTxtActivity1) {
-        return ReaderTxtActivity1.w;
-    }
-
-    static int b(ReaderTxtActivity ReaderTxtActivity1, int int2) {
-        ReaderTxtActivity1.B = 0;
-        return 0;
-    }
-
-    static boolean b(ReaderTxtActivity ReaderTxtActivity1, boolean boolean2) {
-        ReaderTxtActivity1.t = true;
-        return true;
-    }
-
-    static int c(ReaderTxtActivity ReaderTxtActivity1, int int2) {
-        ReaderTxtActivity1.C = 0;
-        return 0;
-    }
-
-    static PagerWidget c(ReaderTxtActivity ReaderTxtActivity1) {
-        return ReaderTxtActivity1.j;
-    }
-
-    static void c(ReaderTxtActivity ReaderTxtActivity1, boolean boolean2) {
-        ReaderTxtActivity1.a(false);
-    }
-
-    static int d(ReaderTxtActivity ReaderTxtActivity1, int int2) {
-        ReaderTxtActivity1.E = 0;
-        return 0;
-    }
-
-    static boolean d(ReaderTxtActivity ReaderTxtActivity1, boolean boolean2) {
-        ReaderTxtActivity1.m = boolean2;
-        return boolean2;
-    }
-
-    static com.clilystudio.netbook.reader.o[] d(ReaderTxtActivity ReaderTxtActivity1) {
-        return ReaderTxtActivity1.b;
-    }
-
-    static int e(ReaderTxtActivity ReaderTxtActivity1) {
-        return ReaderTxtActivity1.k;
-    }
-
-    static void e(ReaderTxtActivity ReaderTxtActivity1, int int2) {
-        ReaderTxtActivity1.a(int2);
-    }
-
-    static int f(ReaderTxtActivity ReaderTxtActivity1, int int2) {
-        ReaderTxtActivity1.k = int2;
-        return int2;
-    }
-
-    static AutoReaderTextView f(ReaderTxtActivity ReaderTxtActivity1) {
-        return ReaderTxtActivity1.x;
-    }
-
-    static int g(ReaderTxtActivity ReaderTxtActivity1, int int2) {
-        ReaderTxtActivity1.q = int2;
-        return int2;
-    }
-
-    static bZ g(ReaderTxtActivity ReaderTxtActivity1) {
-        return ReaderTxtActivity1.e;
-    }
-
-    static com.clilystudio.netbook.reader.n h(ReaderTxtActivity ReaderTxtActivity1) {
-        return ReaderTxtActivity1.w();
-    }
-
-    static void i(ReaderTxtActivity ReaderTxtActivity1) {
-        ReaderTxtActivity1.x();
-    }
-
-    static void j(ReaderTxtActivity ReaderTxtActivity1) {
-        ReaderTxtActivity1.g();
-    }
-
-    static void k(ReaderTxtActivity ReaderTxtActivity1) {
-        if (ReaderTxtActivity1.b[ReaderTxtActivity1.k].f())
-            ReaderTxtActivity1.j();
-        else if (ReaderTxtActivity1.D != null) {
-            if (ReaderTxtActivity1.E <= -1 + ReaderTxtActivity1.D.length) {
-                ReaderTxtActivity1.b[ReaderTxtActivity1.k].a(ReaderTxtActivity1.B, ReaderTxtActivity1.C);
-                ReaderTxtActivity1.G.startSpeaking(ReaderTxtActivity1.D[ReaderTxtActivity1.E], ReaderTxtActivity1.I);
-                return;
-            }
-        } else {
-            com.clilystudio.netbook.util.e.a((Activity) ReaderTxtActivity1, "\u83B7\u53D6\u7AE0\u8282\u5185\u5BB9\u5931\u8D25,\u8BF7\u9000\u51FA\u540E\u91CD\u8BD5");
+    /*
+     * Enabled force condition propagation
+     * Lifted jumps to return sites
+     */
+    static /* synthetic */ void D(ReaderTxtActivity readerTxtActivity) {
+        if (readerTxtActivity.isFinishing()) return;
+        uk.me.lewisdeane.ldialogs.h h2 = new uk.me.lewisdeane.ldialogs.h(readerTxtActivity);
+        h2.b(2131034528);
+        h2.a(2131034471, (DialogInterface.OnClickListener) ((Object) new p(readerTxtActivity))).b(2131034321, (DialogInterface.OnClickListener) ((Object) new com.clilystudio.netbook.reader.txt.o(readerTxtActivity)));
+        AlertDialog alertDialog = h2.a();
+        alertDialog.setCanceledOnTouchOutside(false);
+        alertDialog.setOnCancelListener((DialogInterface.OnCancelListener) ((Object) new q(readerTxtActivity)));
+        try {
+            alertDialog.show();
+            return;
+        } catch (Exception var5_3) {
+            var5_3.printStackTrace();
             return;
         }
     }
-// Error: Internal #201: 
-// The following method may not be correct.
 
-    static SpeechSynthesizer l(ReaderTxtActivity ReaderTxtActivity1) {
-        return ReaderTxtActivity1.G;
+    static /* synthetic */ void E(ReaderTxtActivity readerTxtActivity) {
+        readerTxtActivity.n();
     }
 
-    static void m(ReaderTxtActivity ReaderTxtActivity1) {
-        ReaderTxtActivity1.h();
-    }
-// Error: Internal #201: 
-// The following method may not be correct.
-
-    static void n(ReaderTxtActivity ReaderTxtActivity1) {
-        ReaderTxtActivity1.i();
+    static /* synthetic */ bH F(ReaderTxtActivity readerTxtActivity) {
+        return readerTxtActivity.f;
     }
 
-    static void o(ReaderTxtActivity ReaderTxtActivity1) {
-        ReaderTxtActivity1.x.setHeight(ReaderTxtActivity1.e.e);
-        ReaderTxtActivity1.x.setTextSize(0, (float) ReaderTxtActivity1.e.a);
-        ReaderTxtActivity1.x.setLineSpacing((float) ReaderTxtActivity1.e.b, 1.0F);
+    static /* synthetic */ void G(ReaderTxtActivity readerTxtActivity) {
+        readerTxtActivity.p();
     }
 
-    static void p(ReaderTxtActivity ReaderTxtActivity1) {
-        ReaderTxtActivity1.v();
+    static /* synthetic */ void H(ReaderTxtActivity readerTxtActivity) {
+        readerTxtActivity.q();
     }
 
-    static void q(ReaderTxtActivity ReaderTxtActivity1) {
-        if (ReaderTxtActivity1.e.h == 2130838077)
-            ReaderTxtActivity1.x.setBackgroundResource(2130838076);
-        else
-            ReaderTxtActivity1.x.setBackgroundResource(ReaderTxtActivity1.e.h);
-        ReaderTxtActivity1.x.setTextColor(ReaderTxtActivity1.e.g);
+    static /* synthetic */ void I(ReaderTxtActivity readerTxtActivity) {
+        readerTxtActivity.s();
     }
 
-    static void r(ReaderTxtActivity ReaderTxtActivity1) {
-        ReaderTxtActivity1.m();
+    static /* synthetic */ void J(ReaderTxtActivity readerTxtActivity) {
+        readerTxtActivity.l();
     }
 
-    static SettingWidget s(ReaderTxtActivity ReaderTxtActivity1) {
-        return ReaderTxtActivity1.p;
+    static /* synthetic */ ReaderTocDialog K(ReaderTxtActivity readerTxtActivity) {
+        return readerTxtActivity.h;
     }
 
-    static void t(ReaderTxtActivity ReaderTxtActivity1) {
-        if (!ReaderTxtActivity1.isFinishing()) {
-            if (ReaderTxtActivity1.h == null) {
-                ReaderTxtActivity1.h = ReaderTocDialog.a();
-                ReaderTxtActivity1.h.a(ReaderTxtActivity1.d);
-                ReaderTxtActivity1.h.a((DialogInterface$OnClickListener) new s(ReaderTxtActivity1));
+    static /* synthetic */ void L(ReaderTxtActivity readerTxtActivity) {
+        readerTxtActivity.o();
+    }
+
+    static /* synthetic */ void M(ReaderTxtActivity readerTxtActivity) {
+        readerTxtActivity.getWindow().clearFlags(128);
+    }
+
+    static /* synthetic */ int N(ReaderTxtActivity readerTxtActivity) {
+        return readerTxtActivity.q;
+    }
+
+    static /* synthetic */ int a(ReaderTxtActivity readerTxtActivity, int n2) {
+        readerTxtActivity.w = n2;
+        return n2;
+    }
+
+    static /* synthetic */ LinkedList a(ReaderTxtActivity readerTxtActivity, LinkedList linkedList) {
+        readerTxtActivity.F = linkedList;
+        return linkedList;
+    }
+
+    static /* synthetic */ void a(ReaderTxtActivity readerTxtActivity) {
+        readerTxtActivity.t();
+    }
+
+    /*
+     * Enabled aggressive block sorting
+     */
+    static /* synthetic */ void a(ReaderTxtActivity readerTxtActivity, n n2) {
+        if (!n2.f()) {
+            readerTxtActivity.b[0].a(n2);
+            n2.a((com.clilystudio.netbook.reader.e) new y(readerTxtActivity));
+        } else if (!n2.e()) {
+            readerTxtActivity.b[2].a(n2);
+            n2.b((com.clilystudio.netbook.reader.e) new A(readerTxtActivity));
+        } else {
+            readerTxtActivity.b[1].a(n2);
+            n2.a((com.clilystudio.netbook.reader.e) new C(readerTxtActivity, n2));
+        }
+        if (readerTxtActivity.w == 1) {
+            if (!readerTxtActivity.x.isShown()) {
+                readerTxtActivity.z();
             }
-            com.clilystudio.netbook.hpay100.a.a.a(ReaderTxtActivity1, ReaderTxtActivity1.h);
+            readerTxtActivity.x.a();
         }
     }
 
-    static void u(ReaderTxtActivity ReaderTxtActivity1) {
-        boolean boolean2;
-
-        if (!ReaderTxtActivity1.s)
-            boolean2 = true;
-        else
-            boolean2 = false;
-        ReaderTxtActivity1.s = boolean2;
-        ReaderTxtActivity1.f();
-        com.clilystudio.netbook.hpay100.a.a.b((Context) ReaderTxtActivity1, "reader_orientation", ReaderTxtActivity1.s);
+    static /* synthetic */ boolean a(ReaderTxtActivity readerTxtActivity, boolean bl) {
+        readerTxtActivity.A = true;
+        return true;
     }
 
-    static void v(ReaderTxtActivity ReaderTxtActivity1) {
+    static /* synthetic */ String[] a(ReaderTxtActivity readerTxtActivity, String[] arrstring) {
+        readerTxtActivity.D = arrstring;
+        return arrstring;
+    }
+
+    static /* synthetic */ int b(ReaderTxtActivity readerTxtActivity) {
+        return readerTxtActivity.w;
+    }
+
+    static /* synthetic */ int b(ReaderTxtActivity readerTxtActivity, int n2) {
+        readerTxtActivity.B = 0;
+        return 0;
+    }
+
+    static /* synthetic */ boolean b(ReaderTxtActivity readerTxtActivity, boolean bl) {
+        readerTxtActivity.t = true;
+        return true;
+    }
+
+    static /* synthetic */ int c(ReaderTxtActivity readerTxtActivity, int n2) {
+        readerTxtActivity.C = 0;
+        return 0;
+    }
+
+    static /* synthetic */ PagerWidget c(ReaderTxtActivity readerTxtActivity) {
+        return readerTxtActivity.j;
+    }
+
+    static /* synthetic */ void c(ReaderTxtActivity readerTxtActivity, boolean bl) {
+        readerTxtActivity.a(false);
+    }
+
+    static /* synthetic */ int d(ReaderTxtActivity readerTxtActivity, int n2) {
+        readerTxtActivity.E = 0;
+        return 0;
+    }
+
+    static /* synthetic */ boolean d(ReaderTxtActivity readerTxtActivity, boolean bl) {
+        readerTxtActivity.m = bl;
+        return bl;
+    }
+
+    static /* synthetic */ o[] d(ReaderTxtActivity readerTxtActivity) {
+        return readerTxtActivity.b;
+    }
+
+    static /* synthetic */ int e(ReaderTxtActivity readerTxtActivity) {
+        return readerTxtActivity.k;
+    }
+
+    static /* synthetic */ void e(ReaderTxtActivity readerTxtActivity, int n2) {
+        readerTxtActivity.a(n2);
+    }
+
+    static /* synthetic */ int f(ReaderTxtActivity readerTxtActivity, int n2) {
+        readerTxtActivity.k = n2;
+        return n2;
+    }
+
+    static /* synthetic */ AutoReaderTextView f(ReaderTxtActivity readerTxtActivity) {
+        return readerTxtActivity.x;
+    }
+
+    static /* synthetic */ int g(ReaderTxtActivity readerTxtActivity, int n2) {
+        readerTxtActivity.q = n2;
+        return n2;
+    }
+
+    static /* synthetic */ bZ g(ReaderTxtActivity readerTxtActivity) {
+        return readerTxtActivity.e;
+    }
+
+    static /* synthetic */ n h(ReaderTxtActivity readerTxtActivity) {
+        return readerTxtActivity.w();
+    }
+
+    static /* synthetic */ void i(ReaderTxtActivity readerTxtActivity) {
+        readerTxtActivity.x();
+    }
+
+    static /* synthetic */ void j(ReaderTxtActivity readerTxtActivity) {
+        readerTxtActivity.g();
+    }
+
+    /*
+     * Enabled aggressive block sorting
+     */
+    static /* synthetic */ void k(ReaderTxtActivity readerTxtActivity) {
+        if (readerTxtActivity.b[readerTxtActivity.k].f()) {
+            readerTxtActivity.j();
+            return;
+        } else {
+            if (readerTxtActivity.D == null) {
+                com.clilystudio.netbook.util.e.a((Activity) readerTxtActivity, (String) "\u83b7\u53d6\u7ae0\u8282\u5185\u5bb9\u5931\u8d25,\u8bf7\u9000\u51fa\u540e\u91cd\u8bd5");
+                return;
+            }
+            if (readerTxtActivity.E > -1 + readerTxtActivity.D.length) return;
+            {
+                readerTxtActivity.b[readerTxtActivity.k].a(readerTxtActivity.B, readerTxtActivity.C);
+                readerTxtActivity.G.startSpeaking(readerTxtActivity.D[readerTxtActivity.E], readerTxtActivity.I);
+                return;
+            }
+        }
+    }
+
+    static /* synthetic */ SpeechSynthesizer l(ReaderTxtActivity readerTxtActivity) {
+        return readerTxtActivity.G;
+    }
+
+    static /* synthetic */ void m(ReaderTxtActivity readerTxtActivity) {
+        readerTxtActivity.h();
+    }
+
+    static /* synthetic */ void n(ReaderTxtActivity readerTxtActivity) {
+        readerTxtActivity.i();
+    }
+
+    static /* synthetic */ void o(ReaderTxtActivity readerTxtActivity) {
+        readerTxtActivity.x.setHeight(readerTxtActivity.e.e);
+        readerTxtActivity.x.setTextSize(0, readerTxtActivity.e.a);
+        readerTxtActivity.x.setLineSpacing(readerTxtActivity.e.b, 1.0f);
+    }
+
+    static /* synthetic */ void p(ReaderTxtActivity readerTxtActivity) {
+        readerTxtActivity.v();
+    }
+
+    /*
+     * Enabled aggressive block sorting
+     */
+    static /* synthetic */ void q(ReaderTxtActivity readerTxtActivity) {
+        if (readerTxtActivity.e.h == 2130838077) {
+            readerTxtActivity.x.setBackgroundResource(2130838076);
+        } else {
+            readerTxtActivity.x.setBackgroundResource(readerTxtActivity.e.h);
+        }
+        readerTxtActivity.x.setTextColor(readerTxtActivity.e.g);
+    }
+
+    static /* synthetic */ void r(ReaderTxtActivity readerTxtActivity) {
+        readerTxtActivity.m();
+    }
+
+    static /* synthetic */ SettingWidget s(ReaderTxtActivity readerTxtActivity) {
+        return readerTxtActivity.p;
+    }
+
+    static /* synthetic */ void t(ReaderTxtActivity readerTxtActivity) {
+        if (!readerTxtActivity.isFinishing()) {
+            if (readerTxtActivity.h == null) {
+                readerTxtActivity.h = ReaderTocDialog.a();
+                readerTxtActivity.h.a(readerTxtActivity.d);
+                readerTxtActivity.h.a((DialogInterface.OnClickListener) ((Object) new s(readerTxtActivity)));
+            }
+            com.clilystudio.netbook.hpay100.a.a.a(readerTxtActivity, readerTxtActivity.h);
+        }
+    }
+
+    /*
+     * Enabled aggressive block sorting
+     */
+    static /* synthetic */ void u(ReaderTxtActivity readerTxtActivity) {
+        boolean bl = !readerTxtActivity.s;
+        readerTxtActivity.s = bl;
+        readerTxtActivity.f();
+        com.clilystudio.netbook.hpay100.a.a.b((Context) readerTxtActivity, "reader_orientation", readerTxtActivity.s);
+    }
+
+    /*
+     * Enabled aggressive block sorting
+     */
+    static /* synthetic */ void v(ReaderTxtActivity readerTxtActivity) {
         if (SpeechUtility.getUtility().checkServiceInstalled()) {
-            Object[] Object_1darray5;
-
-            ReaderTxtActivity1.t();
-            ReaderTxtActivity1.w = 2;
-            ReaderTxtActivity1.j.setReadMode(ReaderTxtActivity1.w);
-            Object_1darray5 = ReaderTxtActivity1.w().d();
-            if (Object_1darray5 != null) {
-                ReaderTxtActivity1.D = (String[]) Object_1darray5[0];
-                ReaderTxtActivity1.F = (LinkedList) Object_1darray5[1];
-                ReaderTxtActivity1.a(false);
-                ReaderTxtActivity1.g();
-                if (ReaderTxtActivity1.H == null) {
-                    ReaderTxtActivity1.H = ((PowerManager) ReaderTxtActivity1.getSystemService("power")).newWakeLock(1, "txt_lock_tag");
-                    if (ReaderTxtActivity1.H != null)
-                        ReaderTxtActivity1.H.acquire();
+            readerTxtActivity.t();
+            readerTxtActivity.w = 2;
+            readerTxtActivity.j.setReadMode(readerTxtActivity.w);
+            Object[] arrobject = readerTxtActivity.w().d();
+            if (arrobject == null) {
+                com.clilystudio.netbook.util.e.a((Activity) readerTxtActivity, (String) "\u83b7\u53d6\u7ae0\u8282\u5185\u5bb9\u5931\u8d25,\u8bf7\u9000\u51fa\u540e\u91cd\u8bd5");
+                return;
+            }
+            readerTxtActivity.D = (String[]) arrobject[0];
+            readerTxtActivity.F = (LinkedList) arrobject[1];
+            readerTxtActivity.a(false);
+            readerTxtActivity.g();
+            if (readerTxtActivity.H == null) {
+                readerTxtActivity.H = ((PowerManager) readerTxtActivity.getSystemService("power")).newWakeLock(1, "txt_lock_tag");
+                if (readerTxtActivity.H != null) {
+                    readerTxtActivity.H.acquire();
                 }
-            } else
-                com.clilystudio.netbook.util.e.a((Activity) ReaderTxtActivity1, "\u83B7\u53D6\u7AE0\u8282\u5185\u5BB9\u5931\u8D25,\u8BF7\u9000\u51FA\u540E\u91CD\u8BD5");
-        } else if (a == null || "".equals(a)) {
-            String String2;
-            uk.me.lewisdeane.ldialogs.h h3;
-
-            if (com.clilystudio.netbook.hpay100.a.a.s((Context) ReaderTxtActivity1))
-                String2 = ReaderTxtActivity1.getString(2131034533);
-            else
-                String2 = ReaderTxtActivity1.getString(2131034531);
-            h3 = new uk.me.lewisdeane.ldialogs.h((Context) ReaderTxtActivity1);
-            h3.d = ReaderTxtActivity1.getString(2131034532);
-            h3.e = String2;
-            h3.a("\u4E0B\u8F7D", (DialogInterface$OnClickListener) new c(ReaderTxtActivity1)).b("\u53D6\u6D88", (DialogInterface$OnClickListener) new b(ReaderTxtActivity1)).b();
-        } else
-            com.clilystudio.netbook.hpay100.a.a.a(a, (Activity) ReaderTxtActivity1, "\u8FFD\u4E66\u795E\u5668\u6717\u8BFB\u63D2\u4EF6");
-    }
-
-    static int w(ReaderTxtActivity ReaderTxtActivity1) {
-        return ReaderTxtActivity1.E;
-    }
-
-    static String[] x(ReaderTxtActivity ReaderTxtActivity1) {
-        return ReaderTxtActivity1.D;
-    }
-
-    static LinkedList y(ReaderTxtActivity ReaderTxtActivity1) {
-        return ReaderTxtActivity1.F;
-    }
-
-    static void z(ReaderTxtActivity ReaderTxtActivity1) {
-        ReaderTxtActivity1.F.remove(0);
-        if (ReaderTxtActivity1.F.size() == 0) {
-            ReaderTxtActivity1.E = 0;
-            ReaderTxtActivity1.B = 0;
-            ReaderTxtActivity1.C = 0;
+            }
+            return;
         }
-        ReaderTxtActivity1.e();
-        ReaderTxtActivity1.x();
+        if (a != null && !"".equals(a)) {
+            com.clilystudio.netbook.hpay100.a.a.a(a, readerTxtActivity, "\u8ffd\u4e66\u795e\u5668\u6717\u8bfb\u63d2\u4ef6");
+            return;
+        }
+        String string = com.clilystudio.netbook.hpay100.a.a.s(readerTxtActivity) ? readerTxtActivity.getString(2131034533) : readerTxtActivity.getString(2131034531);
+        uk.me.lewisdeane.ldialogs.h h2 = new uk.me.lewisdeane.ldialogs.h(readerTxtActivity);
+        h2.d = readerTxtActivity.getString(2131034532);
+        h2.e = string;
+        h2.a("\u4e0b\u8f7d", (DialogInterface.OnClickListener) ((Object) new c(readerTxtActivity))).b("\u53d6\u6d88", (DialogInterface.OnClickListener) ((Object) new b(readerTxtActivity))).b();
+    }
+
+    static /* synthetic */ int w(ReaderTxtActivity readerTxtActivity) {
+        return readerTxtActivity.E;
+    }
+
+    static /* synthetic */ String[] x(ReaderTxtActivity readerTxtActivity) {
+        return readerTxtActivity.D;
+    }
+
+    static /* synthetic */ LinkedList y(ReaderTxtActivity readerTxtActivity) {
+        return readerTxtActivity.F;
+    }
+
+    static /* synthetic */ void z(ReaderTxtActivity readerTxtActivity) {
+        readerTxtActivity.F.remove(0);
+        if (readerTxtActivity.F.size() == 0) {
+            readerTxtActivity.E = 0;
+            readerTxtActivity.B = 0;
+            readerTxtActivity.C = 0;
+        }
+        readerTxtActivity.e();
+        readerTxtActivity.x();
     }
 
     private void A() {
-        i.removeCallbacks(J);
-        if (f.d() != 0)
-            i.postDelayed(J, (long) f.d());
+        this.i.removeCallbacks(this.J);
+        if (this.f.d() != 0) {
+            this.i.postDelayed(this.J, this.f.d());
+        }
     }
 
-    private void a(int int1) {
-        g.b(int1, (com.clilystudio.netbook.reader.e) new t(this), true);
+    @Override
+    private void a(int n2) {
+        this.g.b(n2, (com.clilystudio.netbook.reader.e<n>) ((Object) new t(this)), true);
     }
 
-    private void a(boolean boolean1) {
-        if (b[k].f())
-            j();
-        else if (D != null) {
-            if (boolean1 && !D[0].startsWith("\u3000\u3000")) {
-                B = 0;
-                C = 1 + D[0].length();
-                b[k].a(B, C);
-                return;
-            } else {
-                B = C;
-                if (E <= -1 + D.length) {
-                    C = 1 + (B + D[E].length());
-                    b[k].a(B, C);
-                    G.startSpeaking(D[E], I);
-                    return;
-                }
-            }
-        } else {
-            com.clilystudio.netbook.util.e.a((Activity) this, "\u83B7\u53D6\u7AE0\u8282\u5185\u5BB9\u5931\u8D25,\u8BF7\u9000\u51FA\u540E\u91CD\u8BD5");
+    /*
+     * Enabled aggressive block sorting
+     */
+    @Override
+    private void a(boolean bl) {
+        if (this.b[this.k].f()) {
+            this.j();
             return;
+        } else {
+            if (this.D == null) {
+                com.clilystudio.netbook.util.e.a((Activity) this, (String) "\u83b7\u53d6\u7ae0\u8282\u5185\u5bb9\u5931\u8d25,\u8bf7\u9000\u51fa\u540e\u91cd\u8bd5");
+                return;
+            }
+            if (bl && !this.D[0].startsWith("\u3000\u3000")) {
+                this.B = 0;
+                this.C = 1 + this.D[0].length();
+                this.b[this.k].a(this.B, this.C);
+                return;
+            }
+            this.B = this.C;
+            if (this.E > -1 + this.D.length) return;
+            {
+                this.C = 1 + (this.B + this.D[this.E].length());
+                this.b[this.k].a(this.B, this.C);
+                this.G.startSpeaking(this.D[this.E], this.I);
+                return;
+            }
         }
     }
 
     private void f() {
-        if (s)
-            setRequestedOrientation(1);
-        else
-            setRequestedOrientation(0);
+        if (this.s) {
+            this.setRequestedOrientation(1);
+            return;
+        }
+        this.setRequestedOrientation(0);
     }
 
     private void g() {
-    }
-
-    private void h() {
-    }
-
-    private void i() {
-        if (H != null && H.isHeld()) {
-            H.release();
-            H = null;
-        }
-    }
-
-    private void j() {
-        G.stopSpeaking();
-        w = 0;
-        j.setReadMode(w);
-        h();
-        t();
-        B = 0;
-        C = 0;
-        E = 0;
-    }
-
-    private void k() {
-        d.c((ae) new f(this));
-        l();
-    }
-
-    private void l() {
-        d.a((ad) new g(this), false);
-    }
-
-    private void m() {
-        WindowManager$LayoutParams LayoutParams1 = getWindow().getAttributes();
-        float float2;
-
-        if (e.g())
-            float2 = -1.0F;
-        else
-            float2 = (float) e.f() / 255.0F;
-        LayoutParams1.screenBrightness = float2;
-        getWindow().setAttributes(LayoutParams1);
-    }
-
-    private void n() {
-        com.clilystudio.netbook.reader.n n1 = b[k].j();
-
-        if (n1 != null && !n1.p()) {
-            if (n1.n() == 1)
-                a(n1.l());
-            else {
-                int int10 = n1.l();
-
-                g.a(int10, (com.clilystudio.netbook.reader.e) new x(this), true);
-            }
-        } else {
-            com.clilystudio.netbook.reader.o o2 = b[0];
-            com.clilystudio.netbook.reader.o o3 = b[1];
-            com.clilystudio.netbook.reader.o o4 = b[2];
-            com.clilystudio.netbook.reader.n n5 = o2.j();
-            com.clilystudio.netbook.reader.n n6 = o3.j();
-            com.clilystudio.netbook.reader.n n7 = o4.j();
-
-            if (k == 2 && n7 != null) {
-                if (n7.e()) {
-                    o2.a(n6);
-                    o3.a(n7);
-                    j.setCurrentItem(1, false);
-                    n7.a((com.clilystudio.netbook.reader.e) new m(this, o4));
-                }
-                if (w == 1) {
-                    if (!x.isShown())
-                        z();
-                    x.a();
-                }
-                if (w == 2) {
-                    if (F.size() == 0) {
-                        Object[] Object_1darray9 = n7.d();
-
-                        if (Object_1darray9 != null) {
-                            D = (String[]) Object_1darray9[0];
-                            F = (LinkedList) Object_1darray9[1];
-                            a(true);
-                        }
-                    } else
-                        b[k].a(0, 1 + n7.c().length());
-                }
-            } else if (k == 0 && n5 != null && n5.f()) {
-                o4.a(n6);
-                o3.a(n5);
-                j.setCurrentItem(1, false);
-                n5.b((com.clilystudio.netbook.reader.e) new n(this, o2));
-            } else if (k == 1) {
-                if (w == 1) {
-                    if (!x.isShown())
-                        z();
-                    x.a();
-                } else if (w == 2) {
-                    if (F.size() == 0) {
-                        Object[] Object_1darray8 = n6.d();
-
-                        if (Object_1darray8 != null) {
-                            D = (String[]) Object_1darray8[0];
-                            F = (LinkedList) Object_1darray8[1];
-                            a(true);
-                        }
-                    } else
-                        b[k].a(0, 1 + n6.c().length());
-                }
-            }
-            o();
-        }
-    }
-
-    private void o() {
-        com.clilystudio.netbook.reader.n n1 = b[k].j();
-
-        if (n1 != null) {
-            d.a(n1.l(), n1.m());
-            if (!n1.e())
-                com.clilystudio.netbook.util.e.a((Activity) this, "\u5DF2\u7ECF\u662F\u6700\u540E\u4E00\u9875\u5566");
-        }
-    }
-
-    private void p() {
-        com.clilystudio.netbook.reader.o o1 = b[k];
-
-        if (o1 != null) {
-            com.clilystudio.netbook.reader.n n2 = o1.j();
-
-            if (n2 != null) {
-                if (n2.e()) {
-                    t();
-                    if (f.c())
-                        j.a(1 + k);
-                    else {
-                        j.setCurrentItem(1 + k, false);
-                        n();
-                    }
-                } else
-                    com.clilystudio.netbook.util.e.a((Activity) this, "\u5DF2\u7ECF\u662F\u6700\u540E\u4E00\u9875\u5566");
-                return;
-            }
-        }
-    }
-
-    private void q() {
-        com.clilystudio.netbook.reader.o o1 = b[k];
-
-        if (o1 != null) {
-            com.clilystudio.netbook.reader.n n2 = o1.j();
-
-            if (n2 != null) {
-                if (n2.f()) {
-                    t();
-                    if (f.c())
-                        j.a(-1 + k);
-                    else {
-                        j.setCurrentItem(-1 + k, false);
-                        n();
-                    }
-                } else
-                    com.clilystudio.netbook.util.e.a((Activity) this, 2131034407);
-                return;
-            }
-        }
-    }
-
-    private void r() {
-        Object Object1;
-        int int2;
-        int int3;
-        BookFile BookFile7;
-        int int8;
-        int int9;
-
-        g = new com.clilystudio.netbook.reader.K(d, e);
-        Object1 = new h(this);
-        int2 = b.length;
-        for (int3 = 0; int3 < int2; ++int3) {
-            com.clilystudio.netbook.reader.o o4 = new com.clilystudio.netbook.reader.o((Activity) this, e);
-
-            b[int3] = o4;
-            o4.a((com.clilystudio.netbook.reader.G) Object1);
-        }
-        registerReceiver(K, new IntentFilter("android.intent.action.BATTERY_CHANGED"));
-        registerReceiver(L, new IntentFilter("android.intent.action.TIME_TICK"));
-        j.setAdapter((PagerAdapter) new i(this));
-        j.setOnPageChangeListener((cw) new j(this));
-        j.setOnClickListener$4b8a6d15((com.umeng.update.a) new k(this));
-        MyApplication.a().a(d);
-        BookFile7 = TxtFileObject.getProgress(c);
-        if (BookFile7 != null) {
-            int9 = BookFile7.getProgressChapterIndex();
-            int8 = BookFile7.getProgressCharOffset();
-        } else {
-            int8 = 0;
-            int9 = 0;
-        }
-        g.a(int9, int8, (com.clilystudio.netbook.reader.e) new r(this), true);
-    }
-
-    private void s() {
-        if (l)
-            t();
-        else if (!l) {
-            l = true;
-            if (w == 0) {
-                o.setVisibility(0);
-                getWindow().addFlags(2048);
-                getWindow().clearFlags(1024);
-                if (com.clilystudio.netbook.hpay100.a.a.h() && !m) {
-                    n.setSystemUiVisibility(0);
-                    return;
-                }
-            } else if (w == 1) {
-                x.clearAnimation();
-                v.a();
-                return;
-            } else if (w == 2) {
-                G.pauseSpeaking();
-                z.setPause(true);
-                z.a();
-                return;
-            }
-        }
-    }
-
-    private void t() {
-        if (l) {
-            l = false;
-            o.setVisibility(8);
-            p.setVisibility(8);
-            v.b();
-            if (w == 1)
-                x.e();
-            if (w == 2) {
-                z.setVisibility(8);
-                if (z.b()) {
-                    G.resumeSpeaking();
-                    z.setPause(false);
-                }
-            }
-            getWindow().addFlags(1024);
-            getWindow().clearFlags(2048);
-            if (r)
-                getWindow().addFlags(512);
-            else {
-                getWindow().addFlags(2048);
-                getWindow().clearFlags(1024);
-                getWindow().clearFlags(512);
-                if (com.clilystudio.netbook.hpay100.a.a.h() && m)
-                    n.setSystemUiVisibility(0);
-            }
-            com.clilystudio.netbook.hpay100.a.a.a(n);
-        }
-        if (f.f()) {
-            if (com.clilystudio.netbook.hpay100.a.a.h() && m)
-                n.setSystemUiVisibility(2055);
-        } else if (com.clilystudio.netbook.hpay100.a.a.h() && m) {
-            n.setSystemUiVisibility(1);
+        try {
+            this.startService(new Intent(this, TtsSpeakingService.class));
+            return;
+        } catch (Exception var1_1) {
             return;
         }
     }
 
-    private void u() {
-        r = com.clilystudio.netbook.hpay100.a.a.l((Context) this, "reader_opt_full_screen");
-        o.a(r);
-        t();
+    private void h() {
+        try {
+            this.stopService(new Intent(this, TtsSpeakingService.class));
+            return;
+        } catch (Exception var1_1) {
+            return;
+        }
     }
 
-    private void v() {
-        g.a((com.clilystudio.netbook.reader.e) new v(this));
+    private void i() {
+        if (this.H != null && this.H.isHeld()) {
+            this.H.release();
+            this.H = null;
+        }
     }
 
-    private com.clilystudio.netbook.reader.n w() {
-        com.clilystudio.netbook.reader.o o1 = b[k];
-
-        if (o1 != null)
-            return o1.j();
-        else
-            return null;
+    private void j() {
+        this.G.stopSpeaking();
+        this.w = 0;
+        this.j.setReadMode(this.w);
+        this.h();
+        this.t();
+        this.B = 0;
+        this.C = 0;
+        this.E = 0;
     }
 
-    private void x() {
-        com.clilystudio.netbook.reader.n n1 = w();
+    private void k() {
+        this.d.c((ae) ((Object) new f(this)));
+        this.l();
+    }
 
-        if (n1 != null) {
-            if (n1.e()) {
-                if (w == 1) {
-                    if (e.i())
-                        x.setText((CharSequence) n1.a((Context) this));
-                    else
-                        x.setText((CharSequence) n1.c());
-                    x.b();
+    private void l() {
+        this.d.a((ad) ((Object) new g(this)), false);
+    }
+
+    /*
+     * Enabled aggressive block sorting
+     */
+    private void m() {
+        WindowManager.LayoutParams layoutParams = this.getWindow().getAttributes();
+        float f2 = this.e.g() ? -1.0f : (float) this.e.f() / 255.0f;
+        layoutParams.screenBrightness = f2;
+        this.getWindow().setAttributes(layoutParams);
+    }
+
+    /*
+     * Enabled aggressive block sorting
+     */
+    private void n() {
+        n n2 = this.b[this.k].j();
+        if (n2 != null && !n2.p()) {
+            if (n2.n() == 1) {
+                this.a(n2.l());
+                return;
+            }
+            int n3 = n2.l();
+            this.g.a(n3, new x(this), true);
+            return;
+        }
+        o o2 = this.b[0];
+        o o3 = this.b[1];
+        o o4 = this.b[2];
+        n n4 = o2.j();
+        n n5 = o3.j();
+        n n6 = o4.j();
+        if (this.k == 2 && n6 != null) {
+            if (n6.e()) {
+                o2.a(n5);
+                o3.a(n6);
+                this.j.setCurrentItem(1, false);
+                n6.a((com.clilystudio.netbook.reader.e) ((Object) new m(this, o4)));
+            }
+            if (this.w == 1) {
+                if (!this.x.isShown()) {
+                    this.z();
                 }
-                j.setCurrentItem(1 + k, false);
-                n();
-            } else {
-                x.clearAnimation();
-                y();
-                w = 0;
-                j.setReadMode(0);
+                this.x.a();
+            }
+            if (this.w == 2) {
+                if (this.F.size() == 0) {
+                    Object[] arrobject = n6.d();
+                    if (arrobject != null) {
+                        this.D = (String[]) arrobject[0];
+                        this.F = (LinkedList) arrobject[1];
+                        this.a(true);
+                    }
+                } else {
+                    this.b[this.k].a(0, 1 + n6.c().length());
+                }
+            }
+        } else if (this.k == 0 && n4 != null && n4.f()) {
+            o4.a(n5);
+            o3.a(n4);
+            this.j.setCurrentItem(1, false);
+            n4.b((com.clilystudio.netbook.reader.e) ((Object) new com.clilystudio.netbook.reader.txt.n(this, o2)));
+        } else if (this.k == 1) {
+            if (this.w == 1) {
+                if (!this.x.isShown()) {
+                    this.z();
+                }
+                this.x.a();
+            } else if (this.w == 2) {
+                if (this.F.size() == 0) {
+                    Object[] arrobject = n5.d();
+                    if (arrobject != null) {
+                        this.D = (String[]) arrobject[0];
+                        this.F = (LinkedList) arrobject[1];
+                        this.a(true);
+                    }
+                } else {
+                    this.b[this.k].a(0, 1 + n5.c().length());
+                }
+            }
+        }
+        this.o();
+    }
+
+    private void o() {
+        n n2 = this.b[this.k].j();
+        if (n2 != null) {
+            this.d.a(n2.l(), n2.m());
+            if (!n2.e()) {
+                com.clilystudio.netbook.util.e.a((Activity) this, (String) "\u5df2\u7ecf\u662f\u6700\u540e\u4e00\u9875\u5566");
             }
         }
     }
 
-    private void y() {
-        x.setVisibility(8);
-        y.setVisibility(8);
+    /*
+     * Enabled aggressive block sorting
+     */
+    private void p() {
+        n n2;
+        o o2 = this.b[this.k];
+        if (o2 == null || (n2 = o2.j()) == null) {
+            return;
+        }
+        if (!n2.e()) {
+            com.clilystudio.netbook.util.e.a((Activity) this, (String) "\u5df2\u7ecf\u662f\u6700\u540e\u4e00\u9875\u5566");
+            return;
+        }
+        this.t();
+        if (this.f.c()) {
+            this.j.a(1 + this.k);
+            return;
+        }
+        this.j.setCurrentItem(1 + this.k, false);
+        this.n();
     }
 
+    /*
+     * Enabled aggressive block sorting
+     */
+    private void q() {
+        n n2;
+        o o2 = this.b[this.k];
+        if (o2 == null || (n2 = o2.j()) == null) {
+            return;
+        }
+        if (!n2.f()) {
+            com.clilystudio.netbook.util.e.a((Activity) this, (int) 2131034407);
+            return;
+        }
+        this.t();
+        if (this.f.c()) {
+            this.j.a(-1 + this.k);
+            return;
+        }
+        this.j.setCurrentItem(-1 + this.k, false);
+        this.n();
+    }
+
+    /*
+     * Enabled aggressive block sorting
+     */
+    private void r() {
+        int n2;
+        int n3;
+        this.g = new com.clilystudio.netbook.reader.K(this.d, this.e);
+        h h2 = new h(this);
+        int n4 = this.b.length;
+        for (int i2 = 0; i2 < n4; ++i2) {
+            o o2;
+            this.b[i2] = o2 = new o((Activity) this, this.e);
+            o2.a((com.clilystudio.netbook.reader.G) ((Object) h2));
+        }
+        this.registerReceiver(this.K, new IntentFilter("android.intent.action.BATTERY_CHANGED"));
+        this.registerReceiver(this.L, new IntentFilter("android.intent.action.TIME_TICK"));
+        this.j.setAdapter((PagerAdapter) ((Object) new i(this)));
+        this.j.setOnPageChangeListener((cw) ((Object) new j(this)));
+        this.j.setOnClickListener$4b8a6d15((com.umeng.update.a) ((Object) new k(this)));
+        MyApplication.a().a(this.d);
+        BookFile bookFile = TxtFileObject.getProgress(this.c);
+        if (bookFile != null) {
+            n2 = bookFile.getProgressChapterIndex();
+            n3 = bookFile.getProgressCharOffset();
+        } else {
+            n3 = 0;
+            n2 = 0;
+        }
+        this.g.a(n2, n3, (com.clilystudio.netbook.reader.e<n>) ((Object) new r(this)), true);
+    }
+
+    /*
+     * Enabled aggressive block sorting
+     */
+    private void s() {
+        if (this.l) {
+            this.t();
+            return;
+        } else {
+            if (this.l) return;
+            {
+                this.l = true;
+                if (this.w == 0) {
+                    this.o.setVisibility(0);
+                    this.getWindow().addFlags(2048);
+                    this.getWindow().clearFlags(1024);
+                    if (!com.clilystudio.netbook.hpay100.a.a.h() || this.m) return;
+                    {
+                        this.n.setSystemUiVisibility(0);
+                        return;
+                    }
+                } else {
+                    if (this.w == 1) {
+                        this.x.clearAnimation();
+                        this.v.a();
+                        return;
+                    }
+                    if (this.w != 2) return;
+                    {
+                        this.G.pauseSpeaking();
+                        this.z.setPause(true);
+                        this.z.a();
+                        return;
+                    }
+                }
+            }
+        }
+    }
+
+    /*
+     * Enabled aggressive block sorting
+     */
+    @SuppressLint(value = {"NewApi"})
+    private void t() {
+        if (this.l) {
+            this.l = false;
+            this.o.setVisibility(8);
+            this.p.setVisibility(8);
+            this.v.b();
+            if (this.w == 1) {
+                this.x.e();
+            }
+            if (this.w == 2) {
+                this.z.setVisibility(8);
+                if (this.z.b()) {
+                    this.G.resumeSpeaking();
+                    this.z.setPause(false);
+                }
+            }
+            this.getWindow().addFlags(1024);
+            this.getWindow().clearFlags(2048);
+            if (this.r) {
+                this.getWindow().addFlags(512);
+            } else {
+                this.getWindow().addFlags(2048);
+                this.getWindow().clearFlags(1024);
+                this.getWindow().clearFlags(512);
+                if (com.clilystudio.netbook.hpay100.a.a.h() && this.m) {
+                    this.n.setSystemUiVisibility(0);
+                }
+            }
+            com.clilystudio.netbook.hpay100.a.a.a(this.n);
+        }
+        if (this.f.f()) {
+            if (!com.clilystudio.netbook.hpay100.a.a.h() || !this.m) return;
+            {
+                this.n.setSystemUiVisibility(2055);
+                return;
+            }
+        } else {
+            if (!com.clilystudio.netbook.hpay100.a.a.h() || !this.m) return;
+            {
+                this.n.setSystemUiVisibility(1);
+                return;
+            }
+        }
+    }
+
+    private void u() {
+        this.r = com.clilystudio.netbook.hpay100.a.a.l(this, "reader_opt_full_screen");
+        this.o.a(this.r);
+        this.t();
+    }
+
+    private void v() {
+        this.g.a(new v(this));
+    }
+
+    private n w() {
+        o o2 = this.b[this.k];
+        if (o2 != null) {
+            return o2.j();
+        }
+        return null;
+    }
+
+    /*
+     * Enabled aggressive block sorting
+     */
+    private void x() {
+        n n2 = this.w();
+        if (n2 == null) {
+            return;
+        }
+        if (!n2.e()) {
+            this.x.clearAnimation();
+            this.y();
+            this.w = 0;
+            this.j.setReadMode(0);
+            return;
+        }
+        if (this.w == 1) {
+            if (this.e.i()) {
+                this.x.setText(n2.a((Context) this));
+            } else {
+                this.x.setText(n2.c());
+            }
+            this.x.b();
+        }
+        this.j.setCurrentItem(1 + this.k, false);
+        this.n();
+    }
+
+    private void y() {
+        this.x.setVisibility(8);
+        this.y.setVisibility(8);
+    }
+
+    /*
+     * Enabled aggressive block sorting
+     */
     private void z() {
-        x.setVisibility(0);
-        if (e.h())
-            y.setBackgroundResource(2130837612);
-        else
-            y.setBackgroundResource(2130837611);
-        y.setVisibility(0);
+        this.x.setVisibility(0);
+        if (this.e.h()) {
+            this.y.setBackgroundResource(2130837612);
+        } else {
+            this.y.setBackgroundResource(2130837611);
+        }
+        this.y.setVisibility(0);
     }
 
     public final void a() {
-        v.c();
-        x.c();
+        this.v.c();
+        this.x.c();
     }
 
     public final void b() {
-        v.d();
-        x.d();
+        this.v.d();
+        this.x.d();
     }
 
+    /*
+     * Enabled aggressive block sorting
+     */
     public final void c() {
         Log.d("tag", "stopAutoReader");
-        x.clearAnimation();
-        w = 0;
-        j.setReadMode(0);
-        t();
-        y();
-        if (l)
-            t();
-        else {
-            com.clilystudio.netbook.reader.n n2 = w();
-
-            if (n2 != null && n2.f()) {
-                j.setCurrentItem(-1 + k, false);
-                n();
+        this.x.clearAnimation();
+        this.w = 0;
+        this.j.setReadMode(0);
+        this.t();
+        this.y();
+        if (this.l) {
+            this.t();
+            return;
+        } else {
+            n n2 = this.w();
+            if (n2 == null || !n2.f()) return;
+            {
+                this.j.setCurrentItem(-1 + this.k, false);
+                this.n();
                 return;
             }
         }
     }
 
     public final void d() {
-        x();
+        this.x();
     }
 
     public final void e() {
-        int int1 = 0;
-        com.clilystudio.netbook.reader.o[] o_1darray2;
-        int int3;
-
-        B = 0;
-        C = 0;
-        o_1darray2 = b;
-        int3 = o_1darray2.length;
-        while (int1 < int3) {
-            o_1darray2[int1].a(-1, -1);
-            ++int1;
+        this.B = 0;
+        this.C = 0;
+        o[] arro = this.b;
+        int n2 = arro.length;
+        for (int i2 = 0; i2 < n2; ++i2) {
+            arro[i2].a(-1, -1);
         }
     }
 
-    protected void onActivityResult(int int1, int int2, Intent Intent3) {
-        f.a();
-        if (g != null) {
-            u();
-            e.a(r);
-            v();
+    @Override
+    protected void onActivityResult(int n2, int n3, Intent intent) {
+        this.f.a();
+        if (this.g != null) {
+            this.u();
+            this.e.a(this.r);
+            this.v();
         }
     }
 
+    /*
+     * Enabled aggressive block sorting
+     */
+    @Override
     public void onBackPressed() {
-        int int1 = 0;
-        BookFile BookFile2;
-        com.clilystudio.netbook.reader.o o3;
-
         super.onBackPressed();
-        BookFile2 = new BookFile(new File(c));
-        o3 = b[1];
-        if (o3 != null) {
-            com.clilystudio.netbook.reader.n n4 = o3.j();
-            int int5;
-            int int6;
-            ChapterLink[] ChapterLink_1darray7;
-            int int8;
-            int int9;
-
-            if (n4 == null)
-                return;
-            int5 = n4.a().getIndex();
-            BookFile2.progressChapterIndex = int5;
-            int6 = o3.j().b();
-            BookFile2.progressCharOffset = int6;
-            ChapterLink_1darray7 = d.d();
-            int8 = 0;
-            int9 = 0;
-            while (int1 < ChapterLink_1darray7.length) {
-                ChapterLink ChapterLink10 = ChapterLink_1darray7[int1];
-
-                int9 += ChapterLink10.getTxtCharLength();
-                if (int1 < int5)
-                    int8 += ChapterLink10.getTxtCharLength();
-                else if (int1 == int5)
-                    int8 += int6;
-                BookFile2.progress = (float) int8 / (float) int9;
-                ++int1;
+        BookFile bookFile = new BookFile(new File(this.c));
+        o o2 = this.b[1];
+        if (o2 != null) {
+            n n2 = o2.j();
+            if (n2 == null) return;
+            {
+                int n3;
+                int n4;
+                bookFile.progressChapterIndex = n4 = n2.a().getIndex();
+                bookFile.progressCharOffset = n3 = o2.j().b();
+                ChapterLink[] arrchapterLink = this.d.d();
+                int n5 = 0;
+                int n6 = 0;
+                for (int i2 = 0; i2 < arrchapterLink.length; ++i2) {
+                    ChapterLink chapterLink = arrchapterLink[i2];
+                    n6 += chapterLink.getTxtCharLength();
+                    if (i2 < n4) {
+                        n5 += chapterLink.getTxtCharLength();
+                    } else if (i2 == n4) {
+                        n5 += n3;
+                    }
+                    bookFile.progress = (float) n5 / (float) n6;
+                }
             }
+        } else {
+            TxtFileObject.updateProgress(bookFile);
+            com.clilystudio.netbook.event.i.a().c(new com.clilystudio.netbook.event.A());
         }
-        TxtFileObject.updateProgress(BookFile2);
-        com.clilystudio.netbook.event.i.a().c(new com.clilystudio.netbook.event.A());
     }
 
-    public void onCreate(Bundle Bundle1) {
-        super.onCreate(Bundle1);
-        getWindow().addFlags(256);
-        getWindow().addFlags(512);
-        s = com.clilystudio.netbook.hpay100.a.a.l((Context) this, "reader_orientation");
-        f();
-        setContentView(2130903123);
-        c = getIntent().getStringExtra("file_name");
-        if (Bundle1 != null) {
-            k = Bundle1.getInt("SaveSelectedPageIndex", 0);
-            t = Bundle1.getBoolean("SaveChangeOrientation");
+    /*
+     * Enabled aggressive block sorting
+     */
+    @Override
+    public void onCreate(Bundle bundle) {
+        super.onCreate(bundle);
+        this.getWindow().addFlags(256);
+        this.getWindow().addFlags(512);
+        this.s = com.clilystudio.netbook.hpay100.a.a.l(this, "reader_orientation");
+        this.f();
+        this.setContentView(2130903123);
+        this.c = this.getIntent().getStringExtra("file_name");
+        if (bundle != null) {
+            this.k = bundle.getInt("SaveSelectedPageIndex", 0);
+            this.t = bundle.getBoolean("SaveChangeOrientation");
         }
-        if (G == null) {
-            G = SpeechSynthesizer.createSynthesizer((Context) this, (InitListener) new e(this));
-            G.setParameter("engine_type", "local");
-            G.setParameter("speed", new StringBuilder().append(com.clilystudio.netbook.hpay100.a.a.a((Context) this, "speech_speed", 50)).toString());
-            G.setParameter("voice_name", com.clilystudio.netbook.hpay100.a.a.d((Context) this, "speech_voice", ""));
+        if (this.G == null) {
+            this.G = SpeechSynthesizer.createSynthesizer(this, (InitListener) ((Object) new e(this)));
+            this.G.setParameter("engine_type", "local");
+            this.G.setParameter("speed", "" + com.clilystudio.netbook.hpay100.a.a.a((Context) this, "speech_speed", 50));
+            this.G.setParameter("voice_name", com.clilystudio.netbook.hpay100.a.a.d((Context) this, "speech_voice", ""));
         }
-        j = (PagerWidget) findViewById(2131493158);
-        u = findViewById(2131493167);
-        o = (ReaderActionBar) findViewById(2131493172);
-        p = (SettingWidget) findViewById(2131493165);
-        e = new bZ((Activity) this);
-        f = new bH((Context) this);
-        d = new Reader(c);
-        z = (ReaderTtsSetWidget) findViewById(2131493164);
-        v = (AutoReaderSetWidget) findViewById(2131493163);
-        x = (AutoReaderTextView) findViewById(2131493161);
-        y = findViewById(2131493162);
-        e.a((cc) new H(this));
-        e.a((cb) new I(this));
-        e.a((ce) new J(this));
-        e.a((ca) new K(this));
-        e.a((cd) new L(this));
-        m();
-        x.setTextColor(e.g);
-        x.setHeight(e.e);
-        x.setTextSize(0, (float) e.a);
-        x.setLineSpacing((float) e.b, 1.0F);
-        if (e.h == 2130838077)
-            x.setBackgroundResource(2130838076);
-        else
-            x.setBackgroundResource(e.h);
-        o.setReaderStyle(e);
-        o.b(s);
-        o.c(false);
-        o.d(false);
-        o.e(false);
-        o.g(false);
-        o.setOnBtnClickListener$7ead76dc((com.umeng.update.a) new M(this));
-        p.setReaderStyle(e, o);
-        p.a((db) new a(this));
-        p.a((dc) new l(this));
-        v.setOptionClickListener(this);
-        x.setOnPageTurning(this);
-        j.setAutoReaderTextView(x);
-        z.a(G);
-        z.setOnPlayChangeListener((cn) new w(this));
-        n = getWindow().getDecorView();
-        if (com.clilystudio.netbook.hpay100.a.a.h())
-            n.setOnSystemUiVisibilityChangeListener((View$OnSystemUiVisibilityChangeListener) new u(this));
-        u();
-        if (t) {
-            Reader Reader2 = MyApplication.a().b();
-
-            if (Reader2 != null) {
-                d = Reader2;
-                r();
-            } else
-                k();
-        } else
-            k();
+        this.j = (PagerWidget) this.findViewById(2131493158);
+        this.u = this.findViewById(2131493167);
+        this.o = (ReaderActionBar) this.findViewById(2131493172);
+        this.p = (SettingWidget) this.findViewById(2131493165);
+        this.e = new bZ(this);
+        this.f = new bH(this);
+        this.d = new Reader(this.c);
+        this.z = (ReaderTtsSetWidget) this.findViewById(2131493164);
+        this.v = (AutoReaderSetWidget) this.findViewById(2131493163);
+        this.x = (AutoReaderTextView) this.findViewById(2131493161);
+        this.y = this.findViewById(2131493162);
+        this.e.a(new H(this));
+        this.e.a(new I(this));
+        this.e.a(new J(this));
+        this.e.a(new K(this));
+        this.e.a(new L(this));
+        this.m();
+        this.x.setTextColor(this.e.g);
+        this.x.setHeight(this.e.e);
+        this.x.setTextSize(0, this.e.a);
+        this.x.setLineSpacing(this.e.b, 1.0f);
+        if (this.e.h == 2130838077) {
+            this.x.setBackgroundResource(2130838076);
+        } else {
+            this.x.setBackgroundResource(this.e.h);
+        }
+        this.o.setReaderStyle(this.e);
+        this.o.b(this.s);
+        this.o.c(false);
+        this.o.d(false);
+        this.o.e(false);
+        this.o.g(false);
+        this.o.setOnBtnClickListener$7ead76dc(new M(this));
+        this.p.setReaderStyle(this.e, this.o);
+        this.p.a((db) ((Object) new a(this)));
+        this.p.a((dc) ((Object) new l(this)));
+        this.v.setOptionClickListener(this);
+        this.x.setOnPageTurning(this);
+        this.j.setAutoReaderTextView(this.x);
+        this.z.a(this.G);
+        this.z.setOnPlayChangeListener(new w(this));
+        this.n = this.getWindow().getDecorView();
+        if (com.clilystudio.netbook.hpay100.a.a.h()) {
+            this.n.setOnSystemUiVisibilityChangeListener((View.OnSystemUiVisibilityChangeListener) ((Object) new u(this)));
+        }
+        this.u();
+        if (!this.t) {
+            this.k();
+            return;
+        }
+        Reader reader = MyApplication.a().b();
+        if (reader != null) {
+            this.d = reader;
+            this.r();
+            return;
+        }
+        this.k();
     }
 
+    /*
+     * Enabled aggressive block sorting
+     * Enabled unnecessary exception pruning
+     * Enabled aggressive exception aggregation
+     */
+    @Override
     public void onDestroy() {
         try {
-            unregisterReceiver(K);
-            unregisterReceiver(L);
-        } catch (IllegalArgumentException IllegalArgumentException1) {
-            IllegalArgumentException1.printStackTrace();
+            this.unregisterReceiver(this.K);
+            this.unregisterReceiver(this.L);
+        } catch (IllegalArgumentException var1_1) {
+            var1_1.printStackTrace();
         }
-        if (G != null) {
-            G.stopSpeaking();
-            G.destroy();
-            com.clilystudio.netbook.hpay100.a.a.K((Context) this);
-            h();
+        if (this.G != null) {
+            this.G.stopSpeaking();
+            this.G.destroy();
+            com.clilystudio.netbook.hpay100.a.a.K(this);
+            this.h();
         }
-        i();
+        this.i();
         super.onDestroy();
     }
 
-    public boolean onKeyDown(int int1, KeyEvent KeyEvent2) {
-        switch (int1) {
-            default:
-                return super.onKeyDown(int1, KeyEvent2);
-            case 25:
-                if (!f.b() || w != 0)
-                    return false;
-                p();
-                return true;
+    @Override
+    public boolean onKeyDown(int n2, KeyEvent keyEvent) {
+        switch (n2) {
+            default: {
+                return super.onKeyDown(n2, keyEvent);
+            }
+            case 25: {
+                if (this.f.b() && this.w == 0) {
+                    this.p();
+                    return true;
+                }
+                return false;
+            }
             case 24:
-                if (!f.b() || w != 0)
-                    return false;
-                q();
-                return true;
+        }
+        if (this.f.b() && this.w == 0) {
+            this.q();
+            return true;
+        }
+        return false;
+    }
+
+    /*
+     * Enabled aggressive block sorting
+     */
+    @Override
+    public boolean onKeyUp(int n2, KeyEvent keyEvent) {
+        if (n2 == 82) {
+            this.s();
+            return true;
+        } else {
+            if (n2 == 25 || n2 == 24) return true;
+            return super.onKeyUp(n2, keyEvent);
         }
     }
 
-    public boolean onKeyUp(int int1, KeyEvent KeyEvent2) {
-        if (int1 == 82)
-            s();
-        else if (int1 != 25 && int1 != 24)
-            return super.onKeyUp(int1, KeyEvent2);
-        return true;
-    }
-
+    @Override
     public void onResume() {
         super.onResume();
-        getWindow().addFlags(128);
-        A();
-        t();
-        if (w == 2 || !"".equals(a)) {
-            z.setResetVoice(A);
-            z.setVoiceSourceView();
-            A = false;
+        this.getWindow().addFlags(128);
+        this.A();
+        this.t();
+        if (this.w == 2 || !"".equals(a)) {
+            this.z.setResetVoice(this.A);
+            this.z.setVoiceSourceView();
+            this.A = false;
         }
     }
 
-    protected void onSaveInstanceState(Bundle Bundle1) {
-        super.onSaveInstanceState(Bundle1);
-        Bundle1.putInt("SaveSelectedPageIndex", k);
-        Bundle1.putBoolean("SaveChangeOrientation", t);
+    @Override
+    protected void onSaveInstanceState(Bundle bundle) {
+        super.onSaveInstanceState(bundle);
+        bundle.putInt("SaveSelectedPageIndex", this.k);
+        bundle.putBoolean("SaveChangeOrientation", this.t);
     }
 
+    @Override
     public void onUserInteraction() {
         super.onUserInteraction();
-        A();
+        this.A();
     }
 }

@@ -1,18 +1,17 @@
 package com.clilystudio.netbook.ui;
 
-import android.content.Context;
 import android.view.View;
-import android.view.View$OnClickListener;
 
-final class h implements View$OnClickListener {
+final class h
+        implements View.OnClickListener {
+    private /* synthetic */ AudioBookPlayActivity a;
 
-    private AudioBookPlayActivity a;
-
-    h(AudioBookPlayActivity AudioBookPlayActivity1) {
-        a = AudioBookPlayActivity1;
+    h(AudioBookPlayActivity audioBookPlayActivity) {
+        this.a = audioBookPlayActivity;
     }
 
-    public final void onClick(View View1) {
-        a.startActivity(AudiobookInfoActivity.a((Context) a, AudioBookPlayActivity.d(a)));
+    @Override
+    public final void onClick(View view) {
+        this.a.startActivity(AudiobookInfoActivity.a(this.a, AudioBookPlayActivity.d(this.a)));
     }
 }

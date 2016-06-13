@@ -3,70 +3,69 @@ package com.clilystudio.netbook.widget;
 import android.content.Context;
 import android.util.AttributeSet;
 
-public class LoadingProgressView extends ProgressView {
+import com.c.a.a;
+import com.c.a.d;
 
-    private float b;
-    private com.c.a.d c;
+public class LoadingProgressView
+        extends ProgressView {
     private boolean a = true;
-    private D d = new ae(this);
-    private D e = new ag(this);
-    public LoadingProgressView(Context Context1, AttributeSet AttributeSet2) {
-        super(Context1, AttributeSet2);
+    private float b;
+    private d c;
+    private D d;
+    private D e;
+
+    public LoadingProgressView(Context context, AttributeSet attributeSet) {
+        super(context, attributeSet);
+        this.d = new ae(this);
+        this.e = new ag(this);
     }
 
-    static float a(LoadingProgressView LoadingProgressView1, float float2) {
-        LoadingProgressView1.b = float2;
-        return float2;
+    static /* synthetic */ float a(LoadingProgressView loadingProgressView, float f) {
+        loadingProgressView.b = f;
+        return f;
     }
 
-    static boolean a(LoadingProgressView LoadingProgressView1) {
-        return LoadingProgressView1.a;
+    static /* synthetic */ boolean a(LoadingProgressView loadingProgressView) {
+        return loadingProgressView.a;
     }
 
-    static float b(LoadingProgressView LoadingProgressView1) {
-        return LoadingProgressView1.b;
+    static /* synthetic */ float b(LoadingProgressView loadingProgressView) {
+        return loadingProgressView.b;
     }
 
     public final void a() {
-        Object Object1;
-        Object Object3;
-        Object Object5;
-
-        if (getVisibility() != 0)
-            setVisibility(0);
-        a = false;
-        if (c != null && c.d())
-            c.c();
-        Object1 = w.a(new float[]{0.0F, 60.0F});
-        ((w) Object1).a(5000L);
-        Object3 = w.a(new float[]{60.0F, 80.0F});
-        ((w) Object3).a(5000L);
-        Object5 = w.a(new float[]{80.0F, 90.0F});
-        ((w) Object5).a(5000L);
-        ((w) Object1).a(d);
-        ((w) Object3).a(d);
-        ((w) Object5).a(d);
-        c = new com.c.a.d();
-        c.a(new com.c.a.a[]{Object1, Object3, Object5});
-        c.a();
+        if (this.getVisibility() != 0) {
+            this.setVisibility(0);
+        }
+        this.a = false;
+        if (this.c != null && this.c.d()) {
+            this.c.c();
+        }
+        w w2 = w.a(0.0f, 60.0f);
+        w2.a(5000);
+        w w3 = w.a(60.0f, 80.0f);
+        w3.a(5000);
+        w w4 = w.a(80.0f, 90.0f);
+        w4.a(5000);
+        w2.a(this.d);
+        w3.a(this.d);
+        w4.a(this.d);
+        this.c = new d();
+        this.c.a(new a[]{w2, w3, w4});
+        this.c.a();
     }
 
-    public final void a(ah ah1) {
-        float[] float_1darray2;
-        w w3;
-
-        a = true;
-        float_1darray2 = new float[2];
-        float_1darray2[0] = b;
-        float_1darray2[1] = 100.0F;
-        w3 = w.a(float_1darray2);
-        w3.a(300L);
-        w3.a(e);
-        w3.a((com.c.a.b) new af(this, ah1));
-        w3.a();
+    public final void a(ah ah2) {
+        this.a = true;
+        float[] arrf = new float[]{this.b, 100.0f};
+        w w2 = w.a(arrf);
+        w2.a(300);
+        w2.a(this.e);
+        w2.a((b) new af(this, ah2));
+        w2.a();
     }
 
     public final boolean b() {
-        return a;
+        return this.a;
     }
 }

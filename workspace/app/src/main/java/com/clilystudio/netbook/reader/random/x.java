@@ -3,19 +3,19 @@ package com.clilystudio.netbook.reader.random;
 import com.clilystudio.netbook.reader.e;
 import com.clilystudio.netbook.reader.n;
 
-final class x implements e {
+final class x
+        implements e<n> {
+    private /* synthetic */ w a;
 
-    private w a;
-
-    x(w w1) {
-        a = w1;
+    x(w w2) {
+        this.a = w2;
     }
 
-    public final void a(Object Object1) {
-        n n2 = (n) Object1;
-
-        ReaderRandomActivity.i(a.a)[0].a(n2);
-        ReaderRandomActivity.u(a.a).setCurrentItem(2, false);
-        ReaderRandomActivity.v(a.a);
+    @Override
+    public final /* synthetic */ void a(Object object) {
+        n n2 = (n) object;
+        ReaderRandomActivity.i(this.a.a)[0].a(n2);
+        ReaderRandomActivity.u(this.a.a).setCurrentItem(2, false);
+        ReaderRandomActivity.v(this.a.a);
     }
 }

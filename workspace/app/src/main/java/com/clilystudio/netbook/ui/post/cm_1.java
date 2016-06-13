@@ -2,67 +2,64 @@ package com.clilystudio.netbook.ui.post;
 
 import android.app.Activity;
 
+import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.model.Tweet;
 import com.clilystudio.netbook.model.TweetsResult;
+import com.clilystudio.netbook.util.e;
 
-final class cm extends com.clilystudio.netbook.a.e {
+final class cm
+        extends com.clilystudio.netbook.a.e<String, Void, TweetsResult> {
+    private /* synthetic */ OtherUserActivity a;
 
-    private OtherUserActivity a;
-
-    cm(OtherUserActivity OtherUserActivity1, byte byte2) {
-        this(OtherUserActivity1);
+    private cm(OtherUserActivity otherUserActivity) {
+        this.a = otherUserActivity;
     }
 
-    private cm(OtherUserActivity OtherUserActivity1) {
-        a = OtherUserActivity1;
+    /* synthetic */ cm(OtherUserActivity otherUserActivity, byte by) {
+        this(otherUserActivity);
     }
 
-    private static transient TweetsResult a(String[] String_1darray1) {
-        TweetsResult TweetsResult4;
-
+    private static /* varargs */ TweetsResult a(String... arrstring) {
         try {
-            com.clilystudio.netbook.api.b.a();
-            TweetsResult4 = com.clilystudio.netbook.api.b.b().o(String_1darray1[0], null);
-        } catch (Exception Exception2) {
-            Exception2.printStackTrace();
+            b.a();
+            TweetsResult tweetsResult = b.b().o(arrstring[0], null);
+            return tweetsResult;
+        } catch (Exception var1_2) {
+            var1_2.printStackTrace();
             return null;
         }
-        return TweetsResult4;
     }
 
-    protected final Object doInBackground(Object[] Object_1darray1) {
-        return a((String[]) Object_1darray1);
+    @Override
+    protected final /* synthetic */ Object doInBackground(Object[] arrobject) {
+        return cm.a((String[]) arrobject);
     }
 
-    protected final void onPostExecute(Object Object1) {
-        Object Object2 = (TweetsResult) Object1;
-
-        super.onPostExecute(Object2);
-        OtherUserActivity.u(a);
-        if (Object2 != null && ((TweetsResult) Object2).getTweets() != null) {
-            Object[] Object_1darray3 = ((TweetsResult) Object2).getTweets();
-            int int4 = Object_1darray3.length;
-
-            if (int4 > 0) {
-                int int5;
-                int int6;
-
-                OtherUserActivity.r(a).clear();
-                int5 = Object_1darray3.length;
-                for (int6 = 0; int6 < int5; ++int6) {
-                    Object Object7 = Object_1darray3[int6];
-
-                    ((Tweet) Object7).setUser(((TweetsResult) Object2).getUser());
-                    OtherUserActivity.r(a).add(Object7);
+    @Override
+    protected final /* synthetic */ void onPostExecute(Object object) {
+        TweetsResult tweetsResult = (TweetsResult) object;
+        super.onPostExecute(tweetsResult);
+        OtherUserActivity.u(this.a);
+        if (tweetsResult != null && tweetsResult.getTweets() != null) {
+            Tweet[] arrtweet = tweetsResult.getTweets();
+            int n = arrtweet.length;
+            if (n > 0) {
+                OtherUserActivity.r(this.a).clear();
+                for (Tweet tweet : arrtweet) {
+                    tweet.setUser(tweetsResult.getUser());
+                    OtherUserActivity.r(this.a).add(tweet);
                 }
-                OtherUserActivity.v(a).a(OtherUserActivity.r(a));
-                if (int4 < 100)
-                    OtherUserActivity.w(a).setOnLastItemVisibleListener(null);
-                else
-                    OtherUserActivity.w(a).setOnLastItemVisibleListener(OtherUserActivity.x(a));
-            } else
-                OtherUserActivity.y(a);
-        } else
-            com.clilystudio.netbook.util.e.a((Activity) a, "\u52A0\u8F7D\u5931\u8D25\uFF0C\u8BF7\u68C0\u67E5\u7F51\u7EDC\u6216\u7A0D\u540E\u518D\u8BD5");
+                OtherUserActivity.v(this.a).a(OtherUserActivity.r(this.a));
+                if (n < 100) {
+                    OtherUserActivity.w(this.a).setOnLastItemVisibleListener(null);
+                    return;
+                }
+                OtherUserActivity.w(this.a).setOnLastItemVisibleListener(OtherUserActivity.x(this.a));
+                return;
+            }
+            OtherUserActivity.y(this.a);
+            return;
+        }
+        e.a((Activity) this.a, "\u52a0\u8f7d\u5931\u8d25\uff0c\u8bf7\u68c0\u67e5\u7f51\u7edc\u6216\u7a0d\u540e\u518d\u8bd5");
     }
 }

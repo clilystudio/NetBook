@@ -2,176 +2,132 @@ package com.clilystudio.netbook.adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View$OnClickListener;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.clilystudio.netbook.model.BookRankRoot;
 import com.clilystudio.netbook.model.BookRankSummary;
-import com.clilystudio.netbook.widget.RankCollapseItem;
 
 import java.util.List;
 
-public final class BookRankAdapter extends u {
-
+public final class BookRankAdapter
+        extends u<BookRankSummary> {
     private LayoutInflater a;
-    private List b;
-    private List c;
-    private List d;
-    private List e;
+    private List<BookRankSummary> b;
+    private List<BookRankSummary> c;
+    private List<BookRankSummary> d;
+    private List<BookRankSummary> e;
     private int f;
     private int g;
-    public BookRankAdapter(LayoutInflater LayoutInflater1) {
-        a = LayoutInflater1;
+
+    public BookRankAdapter(LayoutInflater layoutInflater) {
+        this.a = layoutInflater;
     }
 
-    static boolean a(BookRankAdapter BookRankAdapter1, int int2) {
-        return BookRankAdapter1.b(int2);
+    static /* synthetic */ boolean a(BookRankAdapter bookRankAdapter, int n) {
+        return bookRankAdapter.b(n);
     }
 
-    private BookRankSummary a(int int1) {
-        if (b(int1) && int1 - 1 < b.size())
-            return (BookRankSummary) b.get(int1 - 1);
-        else {
-            int int2 = int1 - f;
-
-            if (int2 - 1 < d.size())
-                return (BookRankSummary) d.get(int2 - 1);
-            else
-                return null;
+    private BookRankSummary a(int n) {
+        if (this.b(n) && n - 1 < this.b.size()) {
+            return this.b.get(n - 1);
         }
+        int n2 = n - this.f;
+        if (n2 - 1 < this.d.size()) {
+            return this.d.get(n2 - 1);
+        }
+        return null;
     }
 
-    private boolean b(int int1) {
-        if (int1 < f)
+    private boolean b(int n) {
+        if (n < this.f) {
             return true;
-        else
-            return false;
+        }
+        return false;
     }
 
-    public final void a(BookRankRoot BookRankRoot1) {
-        int int2 = 1;
-        int int3;
-        int int4;
-
-        if (BookRankRoot1.getMale().size() > 0)
-            int3 = int2;
-        else
-            int3 = 0;
-        b = BookRankRoot1.getMainMaleList();
-        c = BookRankRoot1.getSubMaleList();
-        if (int3 != 0) {
-            int int6 = 1 + b.size();
-            int int7;
-
-            if (c.size() > 0)
-                int7 = int2;
-            else
-                int7 = 0;
-            f = int7 + int6;
-        } else
-            f = 0;
-        if (BookRankRoot1.getFemale().size() > 0)
-            int4 = int2;
-        else
-            int4 = 0;
-        d = BookRankRoot1.getMainFemaleList();
-        e = BookRankRoot1.getSubFemaleList();
-        if (int4 != 0) {
-            int int5 = 1 + d.size();
-
-            if (e.size() <= 0)
-                int2 = 0;
-            g = int5 + int2;
-        } else
-            g = 0;
-        notifyDataSetInvalidated();
-    }
-
-    public final int getCount() {
-        return f + g;
-    }
-
-    public final Object getItem(int int1) {
-        return a(int1);
-    }
-
-    public final int getItemViewType(int int1) {
-        if (b(int1)) {
-            if (int1 != 0) {
-                if (int1 < 1 + b.size())
-                    return 1;
-                else
-                    return 2;
-            }
+    /*
+     * Enabled aggressive block sorting
+     */
+    public final void a(BookRankRoot bookRankRoot) {
+        int n = 1;
+        int n2 = bookRankRoot.getMale().size() > 0 ? n : 0;
+        this.b = bookRankRoot.getMainMaleList();
+        this.c = bookRankRoot.getSubMaleList();
+        if (n2 != 0) {
+            int n3 = 1 + this.b.size();
+            int n4 = this.c.size() > 0 ? n : 0;
+            this.f = n4 + n3;
         } else {
-            int int2 = int1 - f;
-
-            if (int2 != 0) {
-                if (int2 < 1 + d.size())
-                    return 1;
-                else
-                    return 2;
-            }
+            this.f = 0;
         }
-        return 0;
+        int n5 = bookRankRoot.getFemale().size() > 0 ? n : 0;
+        this.d = bookRankRoot.getMainFemaleList();
+        this.e = bookRankRoot.getSubFemaleList();
+        if (n5 != 0) {
+            int n6 = 1 + this.d.size();
+            if (this.e.size() <= 0) {
+                n = 0;
+            }
+            this.g = n6 + n;
+        } else {
+            this.g = 0;
+        }
+        this.notifyDataSetInvalidated();
     }
 
-    public final View getView(int int1, View View2, ViewGroup ViewGroup3) {
-        int int4 = getItemViewType(int1);
-        View View5;
-
-        label_10:
-        {
-            if (View2 == null) {
-                switch (int4) {
-                    default:
-                        break;
-                    case 0:
-                        TextView TextView9;
-                        Object Object10;
-
-                        View5 = a.inflate(2130903268, ViewGroup3, false);
-                        TextView9 = (TextView) View5;
-                        if (b(int1))
-                            Object10 = "\u7537\u751F";
-                        else
-                            Object10 = "\u5973\u751F";
-                        TextView9.setText((CharSequence) Object10);
-                        break label_10;
-                    case 1:
-                        View5 = a.inflate(2130903267, ViewGroup3, false);
-                        View5.setTag(new BookRankAdapter$ViewHolder(View5));
-                        break label_10;
-                    case 2:
-                        View5 = a.inflate(2130903254, ViewGroup3, false);
-                        break label_10;
-                }
-            }
-            View5 = View2;
-        }
-        switch (int4) {
-            default:
-                return View5;
-            case 1:
-                BookRankSummary BookRankSummary7 = a(int1);
-                BookRankAdapter$ViewHolder ViewHolder8 = (BookRankAdapter$ViewHolder) View5.getTag();
-
-                ViewHolder8.cover.setImageUrl(BookRankSummary7.getFullCover(), 2130837766);
-                ViewHolder8.title.setText((CharSequence) BookRankSummary7.getTitle());
-                View5.setOnClickListener((View$OnClickListener) new f(this, BookRankSummary7, int1));
-                return View5;
-            case 2:
-                RankCollapseItem RankCollapseItem6 = (RankCollapseItem) View5;
-
-                if (b(int1))
-                    RankCollapseItem6.a(c, int1, b(int1));
-                else
-                    RankCollapseItem6.a(e, int1, b(int1));
-                return View5;
-        }
+    @Override
+    public final int getCount() {
+        return this.f + this.g;
     }
 
+    @Override
+    public final /* synthetic */ Object getItem(int n) {
+        return this.a(n);
+    }
+
+    /*
+     * Enabled aggressive block sorting
+     */
+    @Override
+    public final int getItemViewType(int n) {
+        if (this.b(n)) {
+            if (n == 0) return 0;
+            {
+                if (n >= 1 + this.b.size()) return 2;
+                return 1;
+            }
+        }
+        int n2 = n - this.f;
+        if (n2 == 0) {
+            return 0;
+        }
+        if (n2 >= 1 + this.d.size()) return 2;
+        return 1;
+    }
+
+    /*
+     * Exception decompiling
+     */
+    @Override
+    public final View getView(int var1_1, View var2_2, ViewGroup var3_3) {
+        // This method has failed to decompile.  When submitting a bug report, please provide this stack trace, and (if you hold appropriate legal rights) the relevant class file.
+        // org.benf.cfr.reader.util.CannotPerformDecode: reachable test BLOCK was exited and re-entered.
+        // org.benf.cfr.reader.bytecode.analysis.opgraph.op3rewriters.Misc.getFarthestReachableInRange(Misc.java:143)
+        // org.benf.cfr.reader.bytecode.analysis.opgraph.op3rewriters.SwitchReplacer.examineSwitchContiguity(SwitchReplacer.java:385)
+        // org.benf.cfr.reader.bytecode.analysis.opgraph.op3rewriters.SwitchReplacer.replaceRawSwitches(SwitchReplacer.java:65)
+        // org.benf.cfr.reader.bytecode.CodeAnalyser.getAnalysisInner(CodeAnalyser.java:425)
+        // org.benf.cfr.reader.bytecode.CodeAnalyser.getAnalysisOrWrapFail(CodeAnalyser.java:220)
+        // org.benf.cfr.reader.bytecode.CodeAnalyser.getAnalysis(CodeAnalyser.java:165)
+        // org.benf.cfr.reader.entities.attributes.AttributeCode.analyse(AttributeCode.java:91)
+        // org.benf.cfr.reader.entities.Method.analyse(Method.java:354)
+        // org.benf.cfr.reader.entities.ClassFile.analyseMid(ClassFile.java:751)
+        // org.benf.cfr.reader.entities.ClassFile.analyseTop(ClassFile.java:683)
+        // org.benf.cfr.reader.Main.doClass(Main.java:46)
+        // org.benf.cfr.reader.Main.main(Main.java:183)
+        throw new IllegalStateException("Decompilation failed");
+    }
+
+    @Override
     public final int getViewTypeCount() {
         return 3;
     }

@@ -1,23 +1,24 @@
 package com.clilystudio.netbook.ui.game;
 
 import android.view.View;
-import android.view.View$OnClickListener;
 
 import com.clilystudio.netbook.model.GameGift;
 
-final class z implements View$OnClickListener {
+final class z
+        implements View.OnClickListener {
+    private /* synthetic */ GameGift a;
+    private /* synthetic */ String b;
+    private /* synthetic */ y c;
 
-    private GameGift a;
-    private String b;
-    private y c;
-    z(y y1, GameGift GameGift2, String String3) {
-        c = y1;
-        a = GameGift2;
-        b = String3;
+    z(y y2, GameGift gameGift, String string) {
+        this.c = y2;
+        this.a = gameGift;
+        this.b = string;
     }
 
-    public final void onClick(View View1) {
-        GameGiftListActivity.a(c.a, a);
-        GameGiftListActivity.a(c.a, b);
+    @Override
+    public final void onClick(View view) {
+        GameGiftListActivity.a(this.c.a, this.a);
+        GameGiftListActivity.a(this.c.a, this.b);
     }
 }

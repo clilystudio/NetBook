@@ -2,48 +2,50 @@ package com.clilystudio.netbook.reader;
 
 import android.support.design.widget.am;
 
-import com.clilystudio.netbook.model.Chapter;
+import com.clilystudio.netbook.a.e;
 import com.clilystudio.netbook.model.PurchaseChapterResult;
 
-final class J extends com.clilystudio.netbook.a.e {
-
+final class J
+        extends e<String, Void, PurchaseChapterResult> {
     private ReaderChapter a;
-    private o b;
-    public J(o o1, ReaderChapter ReaderChapter2) {
-        b = o1;
-        a = ReaderChapter2;
+    private /* synthetic */ o b;
+
+    public J(o o2, ReaderChapter readerChapter) {
+        this.b = o2;
+        this.a = readerChapter;
     }
 
-    private static transient PurchaseChapterResult a(String[] String_1darray1) {
-        PurchaseChapterResult PurchaseChapterResult4;
-
+    private static /* varargs */ PurchaseChapterResult a(String... arrstring) {
         try {
-            com.clilystudio.netbook.api.b.a();
-            PurchaseChapterResult4 = com.clilystudio.netbook.api.b.b().a(String_1darray1[0], String_1darray1[1], 1);
-        } catch (Exception Exception2) {
-            Exception2.printStackTrace();
+            b.a();
+            PurchaseChapterResult purchaseChapterResult = b.b().a(arrstring[0], arrstring[1], 1);
+            return purchaseChapterResult;
+        } catch (Exception var1_2) {
+            var1_2.printStackTrace();
             return null;
         }
-        return PurchaseChapterResult4;
     }
 
-    protected final Object doInBackground(Object[] Object_1darray1) {
-        return a((String[]) Object_1darray1);
+    @Override
+    protected final /* synthetic */ Object doInBackground(Object[] arrobject) {
+        return J.a((String[]) arrobject);
     }
 
+    @Override
     protected final void onCancelled() {
         super.onCancelled();
     }
 
-    protected final void onPostExecute(Object Object1) {
-        Object Object2 = (PurchaseChapterResult) Object1;
-
-        super.onPostExecute(Object2);
-        if (Object2 != null && ((PurchaseChapterResult) Object2).isOk()) {
-            o.b(b).q().a().e().put(((PurchaseChapterResult) Object2).getChapterId(), ((PurchaseChapterResult) Object2).getKey());
-            com.clilystudio.netbook.hpay100.a.a.a(((ReaderActivity) o.a(b)).l(), o.b(b).q().a().e());
-            if (((PurchaseChapterResult) Object2).getChapterId().equals(a.getId()))
-                com.clilystudio.netbook.hpay100.a.a.a(((ReaderActivity) o.a(b)).l(), ((ReaderActivity) o.a(b)).f(), am.e(a.getLink()), (Chapter) a);
+    @Override
+    protected final /* synthetic */ void onPostExecute(Object object) {
+        PurchaseChapterResult purchaseChapterResult = (PurchaseChapterResult) object;
+        super.onPostExecute(purchaseChapterResult);
+        if (purchaseChapterResult != null && purchaseChapterResult.isOk()) {
+            o.b((o) this.b).q().a().e().put(purchaseChapterResult.getChapterId(), purchaseChapterResult.getKey());
+            a.a(((ReaderActivity) o.a((o) this.b)).l(), o.b((o) this.b).q().a().e());
+            if (purchaseChapterResult.getChapterId().equals(this.a.getId())) {
+                a.a(((ReaderActivity) o.a((o) this.b)).l(), ((ReaderActivity) o.a((o) this.b)).f(), am.e((String) this.a.getLink()), this.a);
+            }
         }
     }
 }

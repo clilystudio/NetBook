@@ -2,23 +2,22 @@ package com.clilystudio.netbook.ui;
 
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.AdapterView$OnItemClickListener;
 
 import com.clilystudio.netbook.model.BookSummary;
 
-final class aT implements AdapterView$OnItemClickListener {
+final class aT
+        implements AdapterView.OnItemClickListener {
+    private /* synthetic */ BookTagListActivity a;
 
-    private BookTagListActivity a;
-
-    aT(BookTagListActivity BookTagListActivity1) {
-        a = BookTagListActivity1;
+    aT(BookTagListActivity bookTagListActivity) {
+        this.a = bookTagListActivity;
     }
 
-    public final void onItemClick(AdapterView AdapterView1, View View2, int int3, long long4) {
-        if (int3 >= 0 && int3 < BookTagListActivity.a(a).size()) {
-            BookSummary BookSummary6 = (BookSummary) BookTagListActivity.a(a).get(int3);
-
-            BookTagListActivity.a(a, BookSummary6);
+    @Override
+    public final void onItemClick(AdapterView<?> adapterView, View view, int n, long l) {
+        if (n >= 0 && n < BookTagListActivity.a(this.a).size()) {
+            BookSummary bookSummary = (BookSummary) BookTagListActivity.a(this.a).get(n);
+            BookTagListActivity.a(this.a, bookSummary);
         }
     }
 }

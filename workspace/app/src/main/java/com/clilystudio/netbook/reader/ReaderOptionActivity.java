@@ -6,136 +6,125 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.SwitchCompat;
 import android.view.View;
-import android.view.View$OnClickListener;
-import android.widget.CompoundButton$OnCheckedChangeListener;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
+import com.clilystudio.netbook.d;
 import com.clilystudio.netbook.ui.BaseActivity;
 import com.clilystudio.netbook.util.I;
 import com.clilystudio.netbook.widget.SettingItem;
 
-public class ReaderOptionActivity extends BaseActivity {
-
+public class ReaderOptionActivity
+        extends BaseActivity {
+    private int a = 0;
     private TextView b;
     private String[] c;
     private int[] e;
-    private int a = 0;
 
-    static int a(ReaderOptionActivity ReaderOptionActivity1, int int2) {
-        ReaderOptionActivity1.a = int2;
-        return int2;
-    }
-// Error: Internal #201: 
-// The following method may not be correct.
-
-    public static Intent a(Context Context1) {
+    static /* synthetic */ int a(ReaderOptionActivity readerOptionActivity, int n) {
+        readerOptionActivity.a = n;
+        return n;
     }
 
-    static void a(ReaderOptionActivity ReaderOptionActivity1) {
-        int int2 = 0;
-        h h3 = new h((Context) ReaderOptionActivity1);
-        int[] int_1darray4 = {2131493977, 2131493978, 2131493979, 2131493980};
-        View View5 = ReaderOptionActivity1.getLayoutInflater().inflate(2130903385, null, false);
-        AlertDialog AlertDialog6 = h3.a(2131034438).a(View5).b("\u53D6\u6D88", null).a();
+    public static Intent a(Context context) {
+        return new d().a(context, ReaderOptionActivity.class).a();
+    }
 
-        ((RadioGroup) View5.findViewById(2131493976)).check(int_1darray4[ReaderOptionActivity1.a]);
-        while (int2 < 4) {
-            ((RadioButton) View5.findViewById(int_1darray4[int2])).setOnClickListener((View$OnClickListener) new bP(ReaderOptionActivity1, AlertDialog6, int2));
-            ++int2;
+    static /* synthetic */ void a(ReaderOptionActivity readerOptionActivity) {
+        h h2 = new h(readerOptionActivity);
+        int[] arrn = new int[]{2131493977, 2131493978, 2131493979, 2131493980};
+        View view = readerOptionActivity.getLayoutInflater().inflate(2130903385, null, false);
+        AlertDialog alertDialog = h2.a(2131034438).a(view).b("\u53d6\u6d88", null).a();
+        ((RadioGroup) view.findViewById(2131493976)).check(arrn[readerOptionActivity.a]);
+        for (int i = 0; i < 4; ++i) {
+            ((RadioButton) view.findViewById(arrn[i])).setOnClickListener(new bP(readerOptionActivity, alertDialog, i));
         }
-        AlertDialog6.show();
+        alertDialog.show();
     }
 
-    static void a(ReaderOptionActivity ReaderOptionActivity1, View View2, boolean boolean3) {
-        if (boolean3)
-            View2.setContentDescription((CharSequence) "\u5DF2\u5F00\u542F");
-        else
-            View2.setContentDescription((CharSequence) "\u5DF2\u5173\u95ED");
-    }
-
-    static int b(ReaderOptionActivity ReaderOptionActivity1) {
-        return ReaderOptionActivity1.a;
-    }
-
-    static String[] c(ReaderOptionActivity ReaderOptionActivity1) {
-        return ReaderOptionActivity1.c;
-    }
-
-    static TextView d(ReaderOptionActivity ReaderOptionActivity1) {
-        return ReaderOptionActivity1.b;
-    }
-
-    static int[] e(ReaderOptionActivity ReaderOptionActivity1) {
-        return ReaderOptionActivity1.e;
-    }
-
-    public void onCreate(Bundle Bundle1) {
-        SwitchCompat SwitchCompat2;
-        SwitchCompat SwitchCompat3;
-        SwitchCompat SwitchCompat4;
-        SwitchCompat SwitchCompat5;
-        SwitchCompat SwitchCompat6;
-        View View7;
-        boolean boolean8;
-        boolean boolean9;
-        boolean boolean10;
-        boolean boolean11;
-        boolean boolean12;
-        int int13;
-        int int14;
-        SettingItem SettingItem15;
-
-        super.onCreate(Bundle1);
-        setContentView(2130903366);
-        b(2131034461);
-        if (com.clilystudio.netbook.hpay100.a.a.l((Context) this, "reader_orientation"))
-            setRequestedOrientation(1);
-        else
-            setRequestedOrientation(0);
-        SwitchCompat2 = (SwitchCompat) findViewById(2131493896);
-        SwitchCompat3 = (SwitchCompat) findViewById(2131493898);
-        SwitchCompat4 = (SwitchCompat) findViewById(2131493899);
-        SwitchCompat5 = (SwitchCompat) findViewById(2131493903);
-        SwitchCompat6 = (SwitchCompat) findViewById(2131493906);
-        View7 = findViewById(2131493904);
-        b = (TextView) findViewById(2131493905);
-        c = getResources().getStringArray(2131361803);
-        e = getResources().getIntArray(2131361804);
-        boolean8 = com.clilystudio.netbook.hpay100.a.a.l((Context) this, "volume_keys_flip");
-        boolean9 = com.clilystudio.netbook.hpay100.a.a.a((Context) this, "click_flip_animation", false);
-        boolean10 = com.clilystudio.netbook.hpay100.a.a.l((Context) this, "reader_opt_full_screen");
-        boolean11 = com.clilystudio.netbook.hpay100.a.a.a((Context) this, "convert_t", false);
-        boolean12 = com.clilystudio.netbook.hpay100.a.a.a((Context) this, new StringBuilder("auto_buy_chapter").append(I.a).toString(), false);
-        SwitchCompat2.setChecked(boolean8);
-        SwitchCompat3.setChecked(boolean9);
-        SwitchCompat4.setChecked(boolean10);
-        SwitchCompat5.setChecked(boolean11);
-        SwitchCompat6.setChecked(boolean12);
-        int13 = com.clilystudio.netbook.hpay100.a.a.a((Context) this, "reader_screen_off_time", 120000);
-        int14 = 0;
-        while (int14 < c.length) {
-            if (int13 == e[int14]) {
-                a = int14;
-                b.setText((CharSequence) c[int14]);
-                break;
-            } else
-                ++int14;
+    static /* synthetic */ void a(ReaderOptionActivity readerOptionActivity, View view, boolean bl) {
+        if (bl) {
+            view.setContentDescription("\u5df2\u5f00\u542f");
+            return;
         }
-        SwitchCompat2.setOnCheckedChangeListener((CompoundButton$OnCheckedChangeListener) new bI(this, SwitchCompat2));
-        SwitchCompat3.setOnCheckedChangeListener((CompoundButton$OnCheckedChangeListener) new bJ(this, SwitchCompat3));
-        SwitchCompat4.setOnCheckedChangeListener((CompoundButton$OnCheckedChangeListener) new bK(this, SwitchCompat4));
-        SwitchCompat5.setOnCheckedChangeListener((CompoundButton$OnCheckedChangeListener) new bL(this, SwitchCompat5));
-        View7.setOnClickListener((View$OnClickListener) new bM(this));
-        SwitchCompat6.setOnCheckedChangeListener((CompoundButton$OnCheckedChangeListener) new bN(this, SwitchCompat6));
-        SettingItem15 = (SettingItem) findViewById(2131493901);
-        if (bH.a((Context) this)) {
-            SettingItem15.setVisibility(8);
-            findViewById(2131493900).setVisibility(8);
+        view.setContentDescription("\u5df2\u5173\u95ed");
+    }
+
+    static /* synthetic */ int b(ReaderOptionActivity readerOptionActivity) {
+        return readerOptionActivity.a;
+    }
+
+    static /* synthetic */ String[] c(ReaderOptionActivity readerOptionActivity) {
+        return readerOptionActivity.c;
+    }
+
+    static /* synthetic */ TextView d(ReaderOptionActivity readerOptionActivity) {
+        return readerOptionActivity.b;
+    }
+
+    static /* synthetic */ int[] e(ReaderOptionActivity readerOptionActivity) {
+        return readerOptionActivity.e;
+    }
+
+    /*
+     * Unable to fully structure code
+     * Enabled aggressive block sorting
+     * Lifted jumps to return sites
+     */
+    @Override
+    public void onCreate(Bundle var1_1) {
+        super.onCreate(var1_1);
+        this.setContentView(2130903366);
+        this.b(2131034461);
+        if (a.l(this, "reader_orientation")) {
+            this.setRequestedOrientation(1);
         } else {
-            SettingItem15.setChecked(com.clilystudio.netbook.hpay100.a.a.a((Context) this, "key_enable_imersive_mode", false));
-            SettingItem15.setCheckListener((CompoundButton$OnCheckedChangeListener) new bO(this));
+            this.setRequestedOrientation(0);
         }
+        var2_2 = (SwitchCompat) this.findViewById(2131493896);
+        var3_3 = (SwitchCompat) this.findViewById(2131493898);
+        var4_4 = (SwitchCompat) this.findViewById(2131493899);
+        var5_5 = (SwitchCompat) this.findViewById(2131493903);
+        var6_6 = (SwitchCompat) this.findViewById(2131493906);
+        var7_7 = this.findViewById(2131493904);
+        this.b = (TextView) this.findViewById(2131493905);
+        this.c = this.getResources().getStringArray(2131361803);
+        this.e = this.getResources().getIntArray(2131361804);
+        var8_8 = a.l(this, "volume_keys_flip");
+        var9_9 = a.a((Context) this, "click_flip_animation", false);
+        var10_10 = a.l(this, "reader_opt_full_screen");
+        var11_11 = a.a((Context) this, "convert_t", false);
+        var12_12 = a.a((Context) this, "auto_buy_chapter" + I.a, false);
+        var2_2.setChecked(var8_8);
+        var3_3.setChecked(var9_9);
+        var4_4.setChecked(var10_10);
+        var5_5.setChecked(var11_11);
+        var6_6.setChecked(var12_12);
+        var13_13 = a.a((Context) this, "reader_screen_off_time", 120000);
+        var14_14 = 0;
+        do {
+            if (var14_14 >= this.c.length)**GOTO lbl34
+            if (var13_13 == this.e[var14_14]) {
+                this.a = var14_14;
+                this.b.setText(this.c[var14_14]);
+                lbl34:
+                // 2 sources:
+                var2_2.setOnCheckedChangeListener(new bI(this, var2_2));
+                var3_3.setOnCheckedChangeListener(new bJ(this, var3_3));
+                var4_4.setOnCheckedChangeListener(new bK(this, var4_4));
+                var5_5.setOnCheckedChangeListener(new bL(this, var5_5));
+                var7_7.setOnClickListener(new bM(this));
+                var6_6.setOnCheckedChangeListener(new bN(this, var6_6));
+                var15_15 = (SettingItem) this.findViewById(2131493901);
+                if (!bH.a(this)) break;
+                var15_15.setVisibility(8);
+                this.findViewById(2131493900).setVisibility(8);
+                return;
+            }
+            ++var14_14;
+        } while (true);
+        var15_15.setChecked(a.a((Context) this, "key_enable_imersive_mode", false));
+        var15_15.setCheckListener(new bO(this));
     }
 }

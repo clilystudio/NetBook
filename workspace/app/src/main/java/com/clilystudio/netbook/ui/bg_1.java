@@ -4,13 +4,14 @@ import android.util.Log;
 import android.webkit.ConsoleMessage;
 import android.webkit.WebChromeClient;
 
-final class bg extends WebChromeClient {
-
-    bg(LuckyGameWebActivity LuckyGameWebActivity1) {
+final class bg
+        extends WebChromeClient {
+    bg(LuckyGameWebActivity luckyGameWebActivity) {
     }
 
-    public final boolean onConsoleMessage(ConsoleMessage ConsoleMessage1) {
-        Log.i(LuckyGameWebActivity.b(), ConsoleMessage1.message().toString());
-        return super.onConsoleMessage(ConsoleMessage1);
+    @Override
+    public final boolean onConsoleMessage(ConsoleMessage consoleMessage) {
+        Log.i(LuckyGameWebActivity.b(), consoleMessage.message().toString());
+        return super.onConsoleMessage(consoleMessage);
     }
 }

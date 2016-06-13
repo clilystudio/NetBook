@@ -1,19 +1,21 @@
 package com.clilystudio.netbook.ui.user;
 
 import android.os.Handler;
+import android.widget.ListView;
 
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 
-final class ac implements k {
+final class ac
+        implements k<ListView> {
+    final /* synthetic */ PayVoucherFragment a;
 
-    PayVoucherFragment a;     // final access specifier removed
-
-    ac(PayVoucherFragment PayVoucherFragment1) {
-        a = PayVoucherFragment1;
+    ac(PayVoucherFragment payVoucherFragment) {
+        this.a = payVoucherFragment;
     }
 
-    public final void a(PullToRefreshBase PullToRefreshBase1) {
-        PayVoucherFragment.b(a).setVisibility(8);
-        new Handler().postDelayed((Runnable) new ad(this), 1000L);
+    @Override
+    public final void a(PullToRefreshBase<ListView> pullToRefreshBase) {
+        PayVoucherFragment.b(this.a).setVisibility(8);
+        new Handler().postDelayed(new ad(this), 1000);
     }
 }

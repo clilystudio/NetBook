@@ -2,18 +2,19 @@ package com.clilystudio.netbook.adapter;
 
 import android.content.Intent;
 import android.view.View;
-import android.view.View$OnClickListener;
 
-final class K implements View$OnClickListener {
+final class K
+        implements View.OnClickListener {
+    private /* synthetic */ Intent a;
+    private /* synthetic */ G b;
 
-    private Intent a;
-    private G b;
-    K(G G1, Intent Intent2) {
-        b = G1;
-        a = Intent2;
+    K(G g, Intent intent) {
+        this.b = g;
+        this.a = intent;
     }
 
-    public final void onClick(View View1) {
-        G.a(b).startActivity(a);
+    @Override
+    public final void onClick(View view) {
+        G.a(this.b).startActivity(this.a);
     }
 }

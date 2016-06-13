@@ -1,36 +1,35 @@
 package com.clilystudio.netbook.model;
 
 public class AliPayOrder {
-
     private boolean ok;
     private String orderId;
     private AliPayOrder$PayOrder payOrder;
 
     public String getOrderId() {
-        return orderId;
+        return this.orderId;
     }
 
-    public void setOrderId(String String1) {
-        orderId = String1;
+    public void setOrderId(String string) {
+        this.orderId = string;
     }
 
     public AliPayOrder$PayOrder getPayOrder() {
-        return payOrder;
+        return this.payOrder;
     }
 
-    public void setPayOrder(AliPayOrder$PayOrder PayOrder1) {
-        payOrder = PayOrder1;
+    public void setPayOrder(AliPayOrder$PayOrder payOrder) {
+        this.payOrder = payOrder;
     }
 
     public boolean isOk() {
-        return ok;
+        return this.ok;
     }
 
-    public void setOk(boolean boolean1) {
-        ok = boolean1;
+    public void setOk(boolean bl) {
+        this.ok = bl;
     }
 
     public String toString() {
-        return new StringBuilder("AliPayOrder{ok=").append(ok).append(", payOrder=").append(payOrder).append(", orderId='").append(orderId).append('\'').append('}').toString();
+        return "AliPayOrder{ok=" + this.ok + ", payOrder=" + this.payOrder + ", orderId='" + this.orderId + '\'' + '}';
     }
 }

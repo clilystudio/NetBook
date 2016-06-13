@@ -2,90 +2,96 @@ package com.clilystudio.netbook.reader;
 
 import android.support.design.widget.am;
 
-import com.clilystudio.netbook.model.Chapter;
 import com.clilystudio.netbook.model.ChapterLink;
-import com.clilystudio.netbook.model.ChapterRoot;
 
-abstract class Z implements Runnable {
-
+abstract class Z
+        implements Runnable {
     private int a;
-    private Reader b;
-    public Z(Reader Reader1, int int2) {
-        b = Reader1;
-        a = int2;
+    private /* synthetic */ Reader b;
+
+    public Z(Reader reader, int n) {
+        this.b = reader;
+        this.a = n;
     }
 
-    public abstract void a(ReaderChapter ReaderChapter1);
+    public abstract void a(ReaderChapter var1);
 
+    /*
+     * Unable to fully structure code
+     * Enabled aggressive block sorting
+     * Enabled unnecessary exception pruning
+     * Enabled aggressive exception aggregation
+     * Lifted jumps to return sites
+     */
+    @Override
     public void run() {
-        boolean boolean1 = true;
-        ChapterLink[] ChapterLink_1darray2 = b.d();
-        ChapterLink ChapterLink3;
-        Object Object5;
-        boolean boolean13;
-
-        if (ChapterLink_1darray2.length > 0 && a >= ChapterLink_1darray2.length)
-            a = -1 + ChapterLink_1darray2.length;
-        ChapterLink3 = ChapterLink_1darray2[a];
-        if (ChapterLink3 == null) {
-            int int4;
-
-            Object5 = new ReaderChapter();
-            int4 = boolean1;
+        var1_1 = true;
+        var2_2 = this.b.d();
+        if (var2_2.length > 0 && this.a >= var2_2.length) {
+            this.a = -1 + var2_2.length;
+        }
+        if ((var3_3 = var2_2[this.a]) == null) {
+            var5_4 = new ReaderChapter();
+            var4_5 = var1_1;
         } else {
-            boolean13 = ChapterLink3.getUnreadble();
-            Object5 = Reader.a(b, ChapterLink3, a);
+            var4_5 = var3_3.getUnreadble();
+            var5_4 = Reader.a(this.b, var3_3, this.a);
         }
-        label_48:
+        if (!var4_5)**GOTO lbl17
+        if (Reader.o(this.b) == 5 || Reader.o(this.b) == 10) {
+            var5_4.setStatus(-2);
+        } else {
+            var5_4.setStatus(-3);
+        }
+        **GOTO lbl47
+        lbl17:
+        // 1 sources:
+        if (!Reader.f(this.b))**GOTO lbl23
+        try {
+            var5_4.setBody(a.a(Reader.g(this.b), var2_2, this.a).getChapter().getBody());
+        } catch (Exception var12_6) {
+        }
+        **GOTO lbl -1000
+        lbl23:
+        // 1 sources:
+        var6_7 = Reader.b(this.b, var3_3, this.a);
+        if (var6_7 == null || var6_7.getChapter() == null)**GOTO lbl -1000
+        var7_8 = var6_7.getChapter();
+        if (var7_8.getBody() == null)**GOTO lbl46
+        var5_4.setBody(var7_8.getBody());
+        var5_4.setCpContent(var7_8.getContent());
+        var5_4.setId(var7_8.getId());
+        var5_4.setIsVip(var7_8.isVip());
+        if (var7_8.getLink() != null) {
+            var5_4.setLink(var7_8.getLink());
+        }
+        if ((var9_9 = (ChapterLink) Reader.p(this.b).get(var7_8.getId())) == null)**GOTO lbl47
+        if (!var9_9.isVip() && !var7_8.isVip())**GOTO lbl38
+        **GOTO lbl39
+        lbl - 1000: // 2 sources:
         {
-            if (boolean13) {
-                if (Reader.o(b) == 5 || Reader.o(b) == 10)
-                    ((ReaderChapter) Object5).setStatus(-2);
-                else
-                    ((ReaderChapter) Object5).setStatus(-3);
-            } else {
-                if (Reader.f(b)) {
-                    try {
-                        ((ReaderChapter) Object5).setBody(com.clilystudio.netbook.hpay100.a.a.a(Reader.g(b), ChapterLink_1darray2, a).getChapter().getBody());
-                    } catch (Exception Exception12) {
-                    }
-                } else {
-                    ChapterRoot ChapterRoot6 = Reader.b(b, ChapterLink3, a);
-
-                    if (ChapterRoot6 != null && ChapterRoot6.getChapter() != null) {
-                        Chapter Chapter7 = ChapterRoot6.getChapter();
-
-                        if (Chapter7.getBody() != null) {
-                            ChapterLink ChapterLink9;
-                            String String10;
-
-                            ((ReaderChapter) Object5).setBody(Chapter7.getBody());
-                            ((ReaderChapter) Object5).setCpContent(Chapter7.getContent());
-                            ((ReaderChapter) Object5).setId(Chapter7.getId());
-                            ((ReaderChapter) Object5).setIsVip(Chapter7.isVip());
-                            if (Chapter7.getLink() != null)
-                                ((ReaderChapter) Object5).setLink(Chapter7.getLink());
-                            ChapterLink9 = (ChapterLink) Reader.p(b).get(Chapter7.getId());
-                            if (ChapterLink9 == null)
-                                break label_48;
-                            if (!ChapterLink9.isVip() && !Chapter7.isVip())
-                                boolean1 = false;
-                            ((ReaderChapter) Object5).setIsVip(boolean1);
-                            ((ReaderChapter) Object5).setCurrency(ChapterLink9.getCurrency());
-                            String10 = (String) b.e().get(((ReaderChapter) Object5).getId());
-                            if (String10 != null) {
-                                ((ReaderChapter) Object5).setKey(String10);
-                                com.clilystudio.netbook.hpay100.a.a.a(Reader.q(b), Reader.h(b), am.e(((ReaderChapter) Object5).getLink()), (Chapter) Object5);
-                            }
-                        } else
-                            ((ReaderChapter) Object5).setStatus(ChapterRoot6.getStatus());
-                        break label_48;
-                    }
-                }
-                ((ReaderChapter) Object5).setStatus(-1);
-            }
+            var5_4.setStatus(-1);
         }
-        b.a.put(Integer.valueOf(a), Object5);
-        a((ReaderChapter) Object5);
+        **GOTO lbl47
+        lbl38:
+        // 1 sources:
+        var1_1 = false;
+        lbl39:
+        // 2 sources:
+        var5_4.setIsVip(var1_1);
+        var5_4.setCurrency(var9_9.getCurrency());
+        var10_10 = this.b.e().get(var5_4.getId());
+        if (var10_10 != null) {
+            var5_4.setKey(var10_10);
+            a.a(Reader.q(this.b), Reader.h(this.b), am.e((String) var5_4.getLink()), var5_4);
+        }
+        **GOTO lbl47
+        lbl46:
+        // 1 sources:
+        var5_4.setStatus(var6_7.getStatus());
+        lbl47:
+        // 7 sources:
+        this.b.a.put(this.a, var5_4);
+        this.a(var5_4);
     }
 }

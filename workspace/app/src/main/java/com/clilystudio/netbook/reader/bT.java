@@ -1,25 +1,28 @@
 package com.clilystudio.netbook.reader;
 
+import com.clilystudio.netbook.a.b;
 import com.clilystudio.netbook.db.BookTopicEnterRecord;
 import com.clilystudio.netbook.model.TopicCount;
 
-final class bT extends com.clilystudio.netbook.a.b {
+final class bT
+        extends b {
+    private /* synthetic */ ReaderResActivity a;
 
-    private ReaderResActivity a;
-
-    bT(ReaderResActivity ReaderResActivity1, byte byte2) {
-        this(ReaderResActivity1);
+    private bT(ReaderResActivity readerResActivity) {
+        this.a = readerResActivity;
     }
 
-    private bT(ReaderResActivity ReaderResActivity1) {
-        a = ReaderResActivity1;
+    /* synthetic */ bT(ReaderResActivity readerResActivity, byte by) {
+        this(readerResActivity);
     }
 
-    protected final void a(TopicCount TopicCount1) {
-        ReaderResActivity.a(a, TopicCount1.getCount());
-        if (Math.max(0, ReaderResActivity.a(a) - BookTopicEnterRecord.get(a.b).getVisitCount()) == 0)
-            ReaderResActivity.b(a).setVisibility(4);
-        else
-            ReaderResActivity.b(a).setVisibility(0);
+    @Override
+    protected final void a(TopicCount topicCount) {
+        ReaderResActivity.a(this.a, topicCount.getCount());
+        if (Math.max(0, ReaderResActivity.a(this.a) - BookTopicEnterRecord.get(this.a.b).getVisitCount()) == 0) {
+            ReaderResActivity.b(this.a).setVisibility(4);
+            return;
+        }
+        ReaderResActivity.b(this.a).setVisibility(0);
     }
 }

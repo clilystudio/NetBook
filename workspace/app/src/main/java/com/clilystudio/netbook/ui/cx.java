@@ -5,23 +5,26 @@ import java.util.HashMap;
 import cn.sharesdk.framework.Platform;
 import cn.sharesdk.framework.PlatformActionListener;
 
-final class cx implements PlatformActionListener {
+final class cx
+        implements PlatformActionListener {
+    private /* synthetic */ cw a;
 
-    private cw a;
-
-    cx(cw cw1) {
-        a = cw1;
+    cx(cw cw2) {
+        this.a = cw2;
     }
 
-    public final void onCancel(Platform Platform1, int int2) {
-        cw.a(a, "fail");
+    @Override
+    public final void onCancel(Platform platform, int n) {
+        cw.a(this.a, "fail");
     }
 
-    public final void onComplete(Platform Platform1, int int2, HashMap HashMap3) {
-        cw.a(a, "success");
+    @Override
+    public final void onComplete(Platform platform, int n, HashMap<String, Object> hashMap) {
+        cw.a(this.a, "success");
     }
 
-    public final void onError(Platform Platform1, int int2, Throwable Throwable3) {
-        cw.a(a, "fail");
+    @Override
+    public final void onError(Platform platform, int n, Throwable throwable) {
+        cw.a(this.a, "fail");
     }
 }

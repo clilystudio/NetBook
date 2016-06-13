@@ -1,17 +1,17 @@
 package com.clilystudio.netbook.ui.post;
 
 import android.view.View;
-import android.view.View$OnClickListener;
 
-final class aN implements View$OnClickListener {
+final class aN
+        implements View.OnClickListener {
+    private /* synthetic */ BookTopicListFragment a;
 
-    private BookTopicListFragment a;
-
-    aN(BookTopicListFragment BookTopicListFragment1) {
-        a = BookTopicListFragment1;
+    aN(BookTopicListFragment bookTopicListFragment) {
+        this.a = bookTopicListFragment;
     }
 
-    public final void onClick(View View1) {
-        BookTopicListFragment.e(a);
+    @Override
+    public final void onClick(View view) {
+        BookTopicListFragment.e(this.a);
     }
 }

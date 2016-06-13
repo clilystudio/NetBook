@@ -1,20 +1,20 @@
 package com.clilystudio.netbook.ui.post;
 
 import android.view.View;
-import android.view.View$OnClickListener;
 
-final class dT implements View$OnClickListener {
+final class dT
+        implements View.OnClickListener {
+    private /* synthetic */ TweetTabActivity a;
 
-    private TweetTabActivity a;
-
-    dT(TweetTabActivity TweetTabActivity1) {
-        a = TweetTabActivity1;
+    dT(TweetTabActivity tweetTabActivity) {
+        this.a = tweetTabActivity;
     }
 
-    public final void onClick(View View1) {
-        if (TweetTabActivity.c(a)) {
-            TweetTabActivity.d(a);
-            TweetTabActivity.a(a, false);
+    @Override
+    public final void onClick(View view) {
+        if (TweetTabActivity.c(this.a)) {
+            TweetTabActivity.d(this.a);
+            TweetTabActivity.a(this.a, false);
         }
     }
 }

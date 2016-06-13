@@ -5,18 +5,16 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View$OnClickListener;
 import android.view.ViewGroup;
-import android.widget.AdapterView$OnItemClickListener;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 
+import com.clilystudio.netbook.d;
 import com.clilystudio.netbook.model.ChineseAllPromRoot;
 import com.clilystudio.netbook.model.TocSummary;
 import com.clilystudio.netbook.ui.BaseLoadingActivity;
 
-public class ReaderMixActivity extends BaseLoadingActivity {
-
+public class ReaderMixActivity
+        extends BaseLoadingActivity {
     private String a;
     private String b;
     private String c;
@@ -27,103 +25,96 @@ public class ReaderMixActivity extends BaseLoadingActivity {
     private View i;
     private View j;
     private TocSummary k;
-// Error: Internal #201: 
-// The following method may not be correct.
 
-    public static Intent a(Context Context1, String String2, String String3, String String4) {
+    public static Intent a(Context context, String string, String string2, String string3) {
+        return new d().a(context, ReaderMixActivity.class).a("BOOK_ID", string).a("BOOK_TITLE", string2).a("SOURCE", string3).a();
     }
 
-    static ChineseAllPromRoot a(ReaderMixActivity ReaderMixActivity1, ChineseAllPromRoot ChineseAllPromRoot2) {
-        ReaderMixActivity1.h = ChineseAllPromRoot2;
-        return ChineseAllPromRoot2;
+    static /* synthetic */ ChineseAllPromRoot a(ReaderMixActivity readerMixActivity, ChineseAllPromRoot chineseAllPromRoot) {
+        readerMixActivity.h = chineseAllPromRoot;
+        return chineseAllPromRoot;
     }
 
-    static TocSummary a(ReaderMixActivity ReaderMixActivity1, TocSummary TocSummary2) {
-        ReaderMixActivity1.k = TocSummary2;
-        return TocSummary2;
+    static /* synthetic */ TocSummary a(ReaderMixActivity readerMixActivity, TocSummary tocSummary) {
+        readerMixActivity.k = tocSummary;
+        return tocSummary;
     }
 
-    static String a(ReaderMixActivity ReaderMixActivity1) {
-        return ReaderMixActivity1.c;
+    static /* synthetic */ String a(ReaderMixActivity readerMixActivity) {
+        return readerMixActivity.c;
     }
 
-    static void a(ReaderMixActivity ReaderMixActivity1, String String2) {
-        ReaderMixActivity1.startActivity(ReaderActivity.a((Context) ReaderMixActivity1, ReaderMixActivity1.a, ReaderMixActivity1.b, String2, null, true));
+    static /* synthetic */ void a(ReaderMixActivity readerMixActivity, String string) {
+        readerMixActivity.startActivity(ReaderActivity.a(readerMixActivity, readerMixActivity.a, readerMixActivity.b, string, null, true));
     }
 
-    static String b(ReaderMixActivity ReaderMixActivity1) {
-        return ReaderMixActivity1.a;
+    static /* synthetic */ String b(ReaderMixActivity readerMixActivity) {
+        return readerMixActivity.a;
     }
 
-    static ListView c(ReaderMixActivity ReaderMixActivity1) {
-        return ReaderMixActivity1.e;
+    static /* synthetic */ ListView c(ReaderMixActivity readerMixActivity) {
+        return readerMixActivity.e;
     }
 
-    static bG d(ReaderMixActivity ReaderMixActivity1) {
-        return ReaderMixActivity1.f;
+    static /* synthetic */ bG d(ReaderMixActivity readerMixActivity) {
+        return readerMixActivity.f;
     }
 
-    static void e(ReaderMixActivity ReaderMixActivity1) {
-        String String2;
-
-        ReaderMixActivity1.i.setVisibility(0);
-        ReaderMixActivity1.j.setVisibility(8);
-        String2 = ReaderMixActivity1.k.getHost();
-        if (String2.equals(ReaderMixActivity1.c))
-            ReaderMixActivity1.i.findViewById(2131493875).setVisibility(0);
-        ReaderMixActivity1.i.setOnClickListener((View$OnClickListener) new bD(ReaderMixActivity1, String2));
+    static /* synthetic */ void e(ReaderMixActivity readerMixActivity) {
+        readerMixActivity.i.setVisibility(0);
+        readerMixActivity.j.setVisibility(8);
+        String string = readerMixActivity.k.getHost();
+        if (string.equals(readerMixActivity.c)) {
+            readerMixActivity.i.findViewById(2131493875).setVisibility(0);
+        }
+        readerMixActivity.i.setOnClickListener(new bD(readerMixActivity, string));
     }
 
-    static TocSummary f(ReaderMixActivity ReaderMixActivity1) {
-        return ReaderMixActivity1.k;
+    static /* synthetic */ TocSummary f(ReaderMixActivity readerMixActivity) {
+        return readerMixActivity.k;
     }
 
-    static ChineseAllPromRoot g(ReaderMixActivity ReaderMixActivity1) {
-        return ReaderMixActivity1.h;
+    static /* synthetic */ ChineseAllPromRoot g(ReaderMixActivity readerMixActivity) {
+        return readerMixActivity.h;
     }
 
-    static View h(ReaderMixActivity ReaderMixActivity1) {
-        return ReaderMixActivity1.g;
+    static /* synthetic */ View h(ReaderMixActivity readerMixActivity) {
+        return readerMixActivity.g;
     }
 
+    @Override
     protected final void b() {
-        bE bE1;
-        String[] String_1darray2;
-
-        i();
-        bE1 = new bE(this, (byte) 0);
-        String_1darray2 = new String[1];
-        String_1darray2[0] = a;
-        bE1.b(String_1darray2);
+        this.i();
+        bE bE2 = new bE(this, 0);
+        String[] arrstring = new String[]{this.a};
+        bE2.b(arrstring);
     }
 
-    protected void onCreate(Bundle Bundle1) {
-        View View2;
-        View View3;
-        View View4;
-
-        super.onCreate(Bundle1);
-        a(2130903321);
-        c(2131034482);
-        d(2130837881);
-        a = getIntent().getStringExtra("BOOK_ID");
-        b = getIntent().getStringExtra("BOOK_TITLE");
-        c = getIntent().getStringExtra("SOURCE");
-        f = new bG(this, getLayoutInflater());
-        e = (ListView) findViewById(2131493135);
-        e.setFooterDividersEnabled(true);
-        View2 = LayoutInflater.from((Context) this).inflate(2130903364, (ViewGroup) e, false);
-        g = View2.findViewById(2131493879);
-        e.addHeaderView(View2, null, false);
-        View3 = findViewById(2131493877);
-        View4 = findViewById(2131493878);
-        if ("mix".equals(c))
-            View4.setVisibility(0);
-        View3.setOnClickListener((View$OnClickListener) new bB(this));
-        i = findViewById(2131493872);
-        j = findViewById(2131493876);
-        e.setAdapter((ListAdapter) f);
-        e.setOnItemClickListener((AdapterView$OnItemClickListener) new bC(this));
-        b();
+    @Override
+    protected void onCreate(Bundle bundle) {
+        super.onCreate(bundle);
+        this.a(2130903321);
+        this.c(2131034482);
+        this.d(2130837881);
+        this.a = this.getIntent().getStringExtra("BOOK_ID");
+        this.b = this.getIntent().getStringExtra("BOOK_TITLE");
+        this.c = this.getIntent().getStringExtra("SOURCE");
+        this.f = new bG(this, this.getLayoutInflater());
+        this.e = (ListView) this.findViewById(2131493135);
+        this.e.setFooterDividersEnabled(true);
+        View view = LayoutInflater.from(this).inflate(2130903364, (ViewGroup) this.e, false);
+        this.g = view.findViewById(2131493879);
+        this.e.addHeaderView(view, null, false);
+        View view2 = this.findViewById(2131493877);
+        View view3 = this.findViewById(2131493878);
+        if ("mix".equals(this.c)) {
+            view3.setVisibility(0);
+        }
+        view2.setOnClickListener(new bB(this));
+        this.i = this.findViewById(2131493872);
+        this.j = this.findViewById(2131493876);
+        this.e.setAdapter(this.f);
+        this.e.setOnItemClickListener(new bC(this));
+        this.b();
     }
 }

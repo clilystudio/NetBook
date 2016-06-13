@@ -1,23 +1,22 @@
 package com.clilystudio.netbook.model;
 
 public class UgcFilterRoot$FilterGroup {
-
     private String name;
     private String[] tags;
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
-    public void setName(String String1) {
-        name = String1;
+    public void setName(String string) {
+        this.name = string;
     }
 
     public String[] getTags() {
-        return tags;
+        return this.tags;
     }
 
-    public void setTags(String[] String_1darray1) {
-        tags = String_1darray1;
+    public void setTags(String[] arrstring) {
+        this.tags = arrstring;
     }
 }

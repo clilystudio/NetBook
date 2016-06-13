@@ -3,6 +3,7 @@ package com.clilystudio.netbook.ui;
 import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -13,20 +14,23 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.clilystudio.netbook.model.AppItem;
+import com.clilystudio.netbook.reader.random.ReaderRandomEntranceActivity;
+import com.clilystudio.netbook.util.g;
 import com.clilystudio.netbook.util.y;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
-public class MysteryActivity extends BaseLoadingActivity {
-
+public class MysteryActivity
+        extends BaseLoadingActivity {
     private TextView a;
     private View b;
     private bq c;
-    private List g;
+    private List<AppItem> e = new ArrayList<AppItem>();
+    private int f = 0;
+    private List<AppItem> g;
     private CountDownTimer h;
     private long i;
     private long j;
@@ -34,162 +38,150 @@ public class MysteryActivity extends BaseLoadingActivity {
     private boolean l;
     private boolean m;
     private boolean n;
-    private List e = new ArrayList();
-    private int f = 0;
-    private BroadcastReceiver o = new bn(this);
+    private BroadcastReceiver o;
 
-    static long a(MysteryActivity MysteryActivity1, long long2) {
-        MysteryActivity1.j = long2;
-        return long2;
+    public MysteryActivity() {
+        this.o = new bn(this);
     }
 
-    static List a(MysteryActivity MysteryActivity1, List List2) {
-        MysteryActivity1.e = List2;
-        return List2;
+    static /* synthetic */ long a(MysteryActivity mysteryActivity, long l) {
+        mysteryActivity.j = l;
+        return l;
     }
 
-    static void a(MysteryActivity MysteryActivity1) {
-        MysteryActivity1.l();
+    static /* synthetic */ List a(MysteryActivity mysteryActivity, List list) {
+        mysteryActivity.e = list;
+        return list;
     }
 
-    static boolean a(MysteryActivity MysteryActivity1, boolean boolean2) {
-        MysteryActivity1.k = boolean2;
-        return boolean2;
+    static /* synthetic */ void a(MysteryActivity mysteryActivity) {
+        mysteryActivity.l();
     }
 
-    static TextView b(MysteryActivity MysteryActivity1) {
-        return MysteryActivity1.a;
+    static /* synthetic */ boolean a(MysteryActivity mysteryActivity, boolean bl) {
+        mysteryActivity.k = bl;
+        return bl;
     }
 
-    static boolean b(MysteryActivity MysteryActivity1, boolean boolean2) {
-        MysteryActivity1.l = true;
+    static /* synthetic */ TextView b(MysteryActivity mysteryActivity) {
+        return mysteryActivity.a;
+    }
+
+    static /* synthetic */ boolean b(MysteryActivity mysteryActivity, boolean bl) {
+        mysteryActivity.l = true;
         return true;
     }
 
-    static void c(MysteryActivity MysteryActivity1) {
-        MysteryActivity1.k();
+    static /* synthetic */ void c(MysteryActivity mysteryActivity) {
+        mysteryActivity.k();
     }
 
-    static void d(MysteryActivity MysteryActivity1) {
-        MysteryActivity1.j();
+    static /* synthetic */ void d(MysteryActivity mysteryActivity) {
+        mysteryActivity.j();
     }
 
-    static int e(MysteryActivity MysteryActivity1) {
-        return MysteryActivity1.f;
+    static /* synthetic */ int e(MysteryActivity mysteryActivity) {
+        return mysteryActivity.f;
     }
 
     private void j() {
-        if (h != null) {
-            h.cancel();
-            h = null;
+        if (this.h != null) {
+            this.h.cancel();
+            this.h = null;
         }
     }
-// Error: Internal #201: 
-// The following method may not be correct.
 
     private void k() {
-    }
-
-    private void l() {
-        if (!e.isEmpty() && l) {
-            g = new com.clilystudio.netbook.util.g((Activity) this, e).a();
-            y.a((Activity) this, g);
-            c.a((Collection) g);
-            if (g == null || g.isEmpty()) {
-                h();
-                return;
-            } else {
-                f();
-                if (g != null) {
-                    int int1;
-
-                    if (g != null && g.isEmpty())
-                        int1 = 1;
-                    else
-                        int1 = 0;
-                    if (int1 != 0) {
-                        k();
-                        return;
-                    } else {
-                        List List2 = g;
-                        int int3;
-
-                        label_77:
-                        {
-                            if (List2 != null) {
-                                Iterator Iterator11 = List2.iterator();
-
-                                while (Iterator11.hasNext()) {
-                                    if (((AppItem) Iterator11.next()).getDownloadStatus() != 32)
-                                        continue;
-                                    int3 = 1;
-                                    break label_77;
-                                }
-                            }
-                            int3 = 0;
-                        }
-                        if (int3 != 0) {
-                            long long4;
-                            long long6;
-                            long long8;
-
-                            i = com.clilystudio.netbook.hpay100.a.a.c((Context) this, "first_tick_time", 0L);
-                            f = 1;
-                            b.setVisibility(0);
-                            long4 = new Date().getTime();
-                            if (i == 0L)
-                                long6 = 0L;
-                            else
-                                long6 = long4 - i;
-                            long8 = 180000L - long6;
-                            if (long8 <= 0L)
-                                k();
-                            else {
-                                h = (CountDownTimer) new bo(this, long8, 1000L, long6);
-                                h.start();
-                            }
-                            return;
-                        }
-                    }
-                }
-            }
+        a.b((Context) this, "KEY_SECRET_UNLOCKED", true);
+        if (this.m && !this.n) {
+            this.startActivity(new Intent(this, ReaderRandomEntranceActivity.class));
+            this.finish();
+            this.n = true;
         }
     }
 
+    /*
+     * Enabled aggressive block sorting
+     * Lifted jumps to return sites
+     */
+    private void l() {
+        if (this.e.isEmpty()) {
+            return;
+        }
+        if (!this.l) return;
+        this.g = new g((Activity) this, this.e).a();
+        y.a((Activity) this, this.g);
+        this.c.a(this.g);
+        if (this.g == null || this.g.isEmpty()) {
+            this.h();
+            return;
+        }
+        this.f();
+        if (this.g == null) return;
+        boolean bl = this.g != null && this.g.isEmpty();
+        if (bl) {
+            this.k();
+            return;
+        }
+        List<AppItem> list = this.g;
+        if (list == null) return;
+        Iterator<AppItem> iterator = list.iterator();
+        do {
+            if (!iterator.hasNext()) return;
+        } while (iterator.next().getDownloadStatus() != 32);
+        boolean bl2 = true;
+        if (!bl2) return;
+        this.i = a.c((Context) this, "first_tick_time", 0);
+        this.f = 1;
+        this.b.setVisibility(0);
+        long l2 = new Date().getTime();
+        long l3 = this.i == 0 ? 0 : l2 - this.i;
+        long l4 = 180000 - l3;
+        if (l4 <= 0) {
+            this.k();
+            return;
+        }
+        this.h = new bo(this, l4, 1000, l3);
+        this.h.start();
+    }
+
+    @Override
     protected final void b() {
     }
 
-    protected void onCreate(Bundle Bundle1) {
-        Object Object2;
-        View View3;
-
-        super.onCreate(Bundle1);
-        a(2130903117);
-        b("\u795E\u79D8\u529F\u80FD");
-        Object2 = (ListView) findViewById(2131493150);
-        View3 = getLayoutInflater().inflate(2130903331, (ViewGroup) Object2, false);
-        ((ListView) Object2).addHeaderView(View3, null, false);
-        c = new bq(this, (Activity) this);
-        ((ListView) Object2).setAdapter((ListAdapter) c);
-        a = (TextView) View3.findViewById(2131493810);
-        b = View3.findViewById(2131493809);
-        new bp(this, (byte) 0).b(new String[0]);
+    @Override
+    protected void onCreate(Bundle bundle) {
+        super.onCreate(bundle);
+        this.a(2130903117);
+        this.b("\u795e\u79d8\u529f\u80fd");
+        ListView listView = (ListView) this.findViewById(2131493150);
+        View view = this.getLayoutInflater().inflate(2130903331, (ViewGroup) listView, false);
+        listView.addHeaderView(view, null, false);
+        this.c = new bq(this, (Activity) this);
+        listView.setAdapter((ListAdapter) ((Object) this.c));
+        this.a = (TextView) view.findViewById(2131493810);
+        this.b = view.findViewById(2131493809);
+        new bp(this, 0).b(new String[0]);
     }
 
+    @Override
     public void onPause() {
         super.onPause();
-        m = false;
-        unregisterReceiver(o);
-        if (j != 0L && i == 0L)
-            com.clilystudio.netbook.hpay100.a.a.d((Context) this, "first_tick_time", j);
-        j();
+        this.m = false;
+        this.unregisterReceiver(this.o);
+        if (this.j != 0 && this.i == 0) {
+            a.d((Context) this, "first_tick_time", this.j);
+        }
+        this.j();
     }
 
+    @Override
     public void onResume() {
         super.onResume();
-        m = true;
-        registerReceiver(o, new IntentFilter("update_game_item_status"));
-        if (!k)
-            l();
+        this.m = true;
+        this.registerReceiver(this.o, new IntentFilter("update_game_item_status"));
+        if (!this.k) {
+            this.l();
+        }
     }
 }

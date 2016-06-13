@@ -1,27 +1,33 @@
 package com.clilystudio.netbook.widget;
 
-final class q implements com.c.a.b {
+import com.c.a.a;
 
-    private CoverLoadingLayer a;
+final class q
+        implements b {
+    private /* synthetic */ CoverLoadingLayer a;
 
-    q(CoverLoadingLayer CoverLoadingLayer1) {
-        a = CoverLoadingLayer1;
+    q(CoverLoadingLayer coverLoadingLayer) {
+        this.a = coverLoadingLayer;
     }
 
-    public final void a(com.c.a.a a1) {
+    @Override
+    public final void a(a a2) {
     }
 
-    public final void b(com.c.a.a a1) {
-        CoverLoadingLayer.a(a);
-        if (a.a()) {
-            CoverLoadingLayer.a(a, CoverLoadingLayer.b(a));
-            CoverLoadingLayer.c(a).a();
+    @Override
+    public final void b(a a2) {
+        CoverLoadingLayer.a(this.a);
+        if (this.a.a()) {
+            CoverLoadingLayer.a(this.a, CoverLoadingLayer.b(this.a));
+            CoverLoadingLayer.c(this.a).a();
         }
     }
 
-    public final void c(com.c.a.a a1) {
+    @Override
+    public final void c(a a2) {
     }
 
-    public final void d(com.c.a.a a1) {
+    @Override
+    public final void d(a a2) {
     }
 }

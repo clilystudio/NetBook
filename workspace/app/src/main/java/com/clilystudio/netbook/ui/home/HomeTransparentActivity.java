@@ -4,24 +4,28 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
 
-public class HomeTransparentActivity extends Activity {
-
-    protected void onCreate(Bundle Bundle1) {
-        super.onCreate(Bundle1);
-        setContentView(2130903106);
-        if (getIntent().getIntExtra("onThemeChange", 0) == 0)
-            findViewById(2131493134).setBackgroundResource(2130837644);
-        else
-            findViewById(2131493134).setBackgroundResource(2130837679);
+public class HomeTransparentActivity
+        extends Activity {
+    @Override
+    protected void onCreate(Bundle bundle) {
+        super.onCreate(bundle);
+        this.setContentView(2130903106);
+        if (this.getIntent().getIntExtra("onThemeChange", 0) == 0) {
+            this.findViewById(2131493134).setBackgroundResource(2130837644);
+            return;
+        }
+        this.findViewById(2131493134).setBackgroundResource(2130837679);
     }
 
+    @Override
     protected void onDestroy() {
         super.onDestroy();
     }
 
+    @Override
     protected void onResume() {
         super.onResume();
-        new Handler().postDelayed((Runnable) new Q(this), 500L);
-        new Handler().postDelayed((Runnable) new R(this), 1500L);
+        new Handler().postDelayed(new Q(this), 500);
+        new Handler().postDelayed(new R(this), 1500);
     }
 }

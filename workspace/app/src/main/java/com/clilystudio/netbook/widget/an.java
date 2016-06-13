@@ -8,32 +8,36 @@ import com.clilystudio.netbook.model.Root;
 import com.clilystudio.netbook.util.S;
 import com.clilystudio.netbook.util.e;
 
-final class an extends S {
-
+final class an
+        extends S<Root> {
     private String a;
     private String b;
-    private PostAgreeView c;
-    an(PostAgreeView PostAgreeView1, byte byte2) {
-        this(PostAgreeView1);
+    private /* synthetic */ PostAgreeView c;
+
+    private an(PostAgreeView postAgreeView) {
+        this.c = postAgreeView;
     }
 
-    private an(PostAgreeView PostAgreeView1) {
-        c = PostAgreeView1;
+    /* synthetic */ an(PostAgreeView postAgreeView, byte by) {
+        this(postAgreeView);
     }
 
-    protected final Root a(ApiService ApiService1, String[] String_1darray2) {
-        a = String_1darray2[0];
-        b = String_1darray2[1];
-        return ApiService1.F(a, b);
+    @Override
+    protected final Root a(ApiService apiService, String[] arrstring) {
+        this.a = arrstring[0];
+        this.b = arrstring[1];
+        return apiService.F(this.a, this.b);
     }
 
-    protected final void a(Root Root1) {
-        e.a((Activity) c.getContext(), "\u5DF2\u540C\u611F");
-        PostAgreeRecord.add(b, a);
+    @Override
+    protected final void a(Root root) {
+        e.a((Activity) ((Activity) this.c.getContext()), (String) "\u5df2\u540c\u611f");
+        PostAgreeRecord.add(this.b, this.a);
     }
 
-    protected final void b(Root Root1) {
-        c.setOnClickListener(null);
-        PostAgreeRecord.add(b, a);
+    @Override
+    protected final void b(Root root) {
+        this.c.setOnClickListener(null);
+        PostAgreeRecord.add(this.b, this.a);
     }
 }

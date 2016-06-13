@@ -4,114 +4,103 @@ import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.model.AdsConfig2;
 import com.clilystudio.netbook.model.MenuAd;
 
-import java.io.Serializable;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 
 public final class a {
-
     private static a a = null;
 
+    private a() {
+    }
+
     public static a a() {
-        if (a == null)
+        if (a == null) {
             a = new a();
+        }
         return a;
     }
 
-    private static void a(AdsConfig2 AdsConfig2_1) {
-        MyApplication.a().a((Serializable) AdsConfig2_1, "saved_adverts_reader_menu");
+    private static void a(AdsConfig2 adsConfig2) {
+        MyApplication.a().a(adsConfig2, "saved_adverts_reader_menu");
     }
 
     private static AdsConfig2 d() {
         return (AdsConfig2) MyApplication.a().b("saved_adverts_reader_menu");
     }
 
-    public final boolean a(List List1) {
-        if (List1 == null)
+    /*
+     * Enabled aggressive block sorting
+     */
+    public final boolean a(List<MenuAd> list) {
+        AdsConfig2 adsConfig2;
+        if (list == null) {
             return false;
-        else {
-            AdsConfig2 AdsConfig2_2 = d();
-
-            if (List1.size() == 0) {
-                if (AdsConfig2_2 == null)
-                    return false;
-                else {
-                    a(null);
-                    return true;
-                }
+        }
+        AdsConfig2 adsConfig22 = a.d();
+        if (list.size() == 0) {
+            if (adsConfig22 == null) {
+                return false;
+            }
+            a.a(null);
+            return true;
+        }
+        if (list == null) {
+            list = null;
+        } else {
+            Collections.sort(list, new b(this));
+        }
+        if (adsConfig22 == null) {
+            adsConfig2 = new AdsConfig2();
+        } else {
+            boolean bl;
+            List<MenuAd> list2 = adsConfig22.getAdvertList();
+            if (list == null || list2 == null) {
+                bl = false;
+            } else if (list.size() != list2.size()) {
+                bl = false;
             } else {
-                AdsConfig2 AdsConfig2_3;
-
-                if (List1 == null)
-                    List1 = null;
-                else
-                    Collections.sort(List1, (Comparator) new b(this));
-                if (AdsConfig2_2 == null)
-                    AdsConfig2_3 = new AdsConfig2();
-                else {
-                    List List4 = AdsConfig2_2.getAdvertList();
-                    int int5;
-
-                    label_53:
-                    {
-                        if (List1 == null || List4 == null)
-                            int5 = 0;
-                        else if (List1.size() != List4.size())
-                            int5 = 0;
-                        else {
-                            Iterator Iterator6 = List1.iterator();
-
-                            while (Iterator6.hasNext()) {
-                                if (List4.contains((MenuAd) Iterator6.next()))
-                                    continue;
-                                int5 = 0;
-                                break label_53;
-                            }
-                            int5 = 1;
-                        }
-                    }
-                    if (int5 != 0)
-                        return false;
-                    else
-                        AdsConfig2_3 = AdsConfig2_2;
-                }
-                AdsConfig2_3.setAdvertList(List1);
-                AdsConfig2_3.setIndex(0);
-                a(AdsConfig2_3);
-                return true;
+                Iterator<MenuAd> iterator = list.iterator();
+                do {
+                    if (iterator.hasNext()) continue;
+                    return false;
+                } while (list2.contains(iterator.next()));
+                bl = false;
             }
+            if (bl) {
+                return false;
+            }
+            adsConfig2 = adsConfig22;
         }
+        adsConfig2.setAdvertList(list);
+        adsConfig2.setIndex(0);
+        a.a(adsConfig2);
+        return true;
     }
 
+    /*
+     * Enabled aggressive block sorting
+     */
     public final MenuAd b() {
-        AdsConfig2 AdsConfig2_1 = d();
-
-        if (AdsConfig2_1 != null && AdsConfig2_1 != null) {
-            List List2 = AdsConfig2_1.getAdvertList();
-
-            if (List2 != null) {
-                int int3 = AdsConfig2_1.getIndex();
-
-                if (int3 >= 0 && int3 < List2.size())
-                    return (MenuAd) List2.get(int3);
-            }
+        List<MenuAd> list;
+        int n;
+        AdsConfig2 adsConfig2 = a.d();
+        if (adsConfig2 == null || adsConfig2 == null || (list = adsConfig2.getAdvertList()) == null || (n = adsConfig2.getIndex()) < 0 || n >= list.size()) {
+            return null;
         }
-        return null;
+        return list.get(n);
     }
 
+    /*
+     * Enabled aggressive block sorting
+     */
     public final void c() {
-        AdsConfig2 AdsConfig2_1 = d();
-
-        if (AdsConfig2_1 != null && AdsConfig2_1.getAdvertList() != null) {
-            int int2 = AdsConfig2_1.getAdvertList().size();
-
-            if (int2 >= 2) {
-                AdsConfig2_1.setIndex((1 + AdsConfig2_1.getIndex()) % int2);
-                a(AdsConfig2_1);
-                return;
-            }
+        int n;
+        AdsConfig2 adsConfig2 = a.d();
+        if (adsConfig2 == null || adsConfig2.getAdvertList() == null || (n = adsConfig2.getAdvertList().size()) < 2) {
+            return;
         }
+        adsConfig2.setIndex((1 + adsConfig2.getIndex()) % n);
+        a.a(adsConfig2);
     }
 }

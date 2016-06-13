@@ -10,53 +10,49 @@ import android.widget.FrameLayout;
 
 import com.clilystudio.netbook.R$styleable;
 
-public class LoadingContainer extends FrameLayout {
-
+public class LoadingContainer
+        extends FrameLayout {
+    private final View b;
+    private final View c;
     private View a;
-    private View b;     // final access specifier removed
-    private View c;     // final access specifier removed
-    public LoadingContainer(Context Context1, AttributeSet AttributeSet2) {
-        super(Context1, AttributeSet2);
-        int int5;
-        int int4;
-        TypedArray TypedArray3;
 
-        TypedArray3 = Context1.obtainStyledAttributes(AttributeSet2, R$styleable.LoadingContainer);
-        int4 = TypedArray3.getResourceId(0, 2130903324);
-        int5 = TypedArray3.getResourceId(1, 2130903324);
-        TypedArray3.recycle();
-        b = LayoutInflater.from(Context1).inflate(int4, (ViewGroup) this, false);
-        c = LayoutInflater.from(Context1).inflate(int5, (ViewGroup) this, false);
+    public LoadingContainer(Context context, AttributeSet attributeSet) {
+        super(context, attributeSet);
+        TypedArray typedArray = context.obtainStyledAttributes(attributeSet, R$styleable.LoadingContainer);
+        int n = typedArray.getResourceId(0, 2130903324);
+        int n2 = typedArray.getResourceId(1, 2130903324);
+        typedArray.recycle();
+        this.b = LayoutInflater.from(context).inflate(n, (ViewGroup) this, false);
+        this.c = LayoutInflater.from(context).inflate(n2, (ViewGroup) this, false);
     }
 
     public final void a() {
-        b.setVisibility(8);
-        c.setVisibility(8);
-        a.setVisibility(0);
+        this.b.setVisibility(8);
+        this.c.setVisibility(8);
+        this.a.setVisibility(0);
     }
 
     public final void b() {
-        b.setVisibility(0);
-        c.setVisibility(8);
-        a.setVisibility(8);
+        this.b.setVisibility(0);
+        this.c.setVisibility(8);
+        this.a.setVisibility(8);
     }
 
     public final void c() {
-        b.setVisibility(8);
-        c.setVisibility(0);
-        a.setVisibility(8);
+        this.b.setVisibility(8);
+        this.c.setVisibility(0);
+        this.a.setVisibility(8);
     }
 
+    @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
-        if (getChildCount() != 1)
+        if (this.getChildCount() != 1) {
             throw new RuntimeException("You must set one content child!");
-        else {
-            a = getChildAt(0);
-            addView(b);
-            addView(c);
-            a();
-            return;
         }
+        this.a = this.getChildAt(0);
+        this.addView(this.b);
+        this.addView(this.c);
+        this.a();
     }
 }

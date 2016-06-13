@@ -1,16 +1,16 @@
 package com.clilystudio.netbook.widget;
 
-final class ag implements D {
+final class ag
+        implements D {
+    private /* synthetic */ LoadingProgressView a;
 
-    private LoadingProgressView a;
-
-    ag(LoadingProgressView LoadingProgressView1) {
-        a = LoadingProgressView1;
+    ag(LoadingProgressView loadingProgressView) {
+        this.a = loadingProgressView;
     }
 
-    public final void a(w w1) {
-        float float2 = ((Float) w1.f()).floatValue();
-
-        a.setProgress(float2);
+    @Override
+    public final void a(w w2) {
+        float f = ((Float) w2.f()).floatValue();
+        this.a.setProgress(f);
     }
 }

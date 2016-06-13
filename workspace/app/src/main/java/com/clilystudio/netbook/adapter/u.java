@@ -5,44 +5,43 @@ import android.widget.BaseAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class u extends BaseAdapter {
+public abstract class u<T>
+        extends BaseAdapter {
+    private List<T> a = new ArrayList<T>();
 
-    private List a = new ArrayList();
-
-    public void a(List List1) {
-        if (List1 != null) {
-            a = List1;
-            notifyDataSetChanged();
+    public void a(List<T> list) {
+        if (list == null) {
+            return;
         }
+        this.a = list;
+        this.notifyDataSetChanged();
     }
 
-    public void a(Object[] Object_1darray1) {
-        if (Object_1darray1 != null) {
-            int int2 = Object_1darray1.length;
-            int int3;
-
-            for (int3 = 0; int3 < int2; ++int3) {
-                Object Object4 = Object_1darray1[int3];
-
-                a.add(Object4);
-            }
-            notifyDataSetChanged();
+    public void a(T[] arrT) {
+        if (arrT == null) {
+            return;
         }
+        for (T t : arrT) {
+            this.a.add(t);
+        }
+        this.notifyDataSetChanged();
     }
 
-    public final List f() {
-        return a;
+    public final List<T> f() {
+        return this.a;
     }
 
+    @Override
     public int getCount() {
-        return a.size();
+        return this.a.size();
     }
 
-    public Object getItem(int int1) {
-        return a.get(int1);
+    public T getItem(int n) {
+        return this.a.get(n);
     }
 
-    public long getItemId(int int1) {
-        return (long) int1;
+    @Override
+    public long getItemId(int n) {
+        return n;
     }
 }

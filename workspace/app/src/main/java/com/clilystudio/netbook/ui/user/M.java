@@ -1,6 +1,5 @@
 package com.clilystudio.netbook.ui.user;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,117 +14,125 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-final class M extends BaseAdapter {
+final class M
+        extends BaseAdapter {
+    List<PayChargeRecord$Order> a;
+    private /* synthetic */ PayChargeActivity b;
 
-    List a;
-    private PayChargeActivity b;
-    public M(PayChargeActivity PayChargeActivity1, List List2) {
-        b = PayChargeActivity1;
-        a = List2;
+    public M(List<PayChargeRecord$Order> var1_1) {
+        this.b = var1_1;
+        this.a = list;
     }
 
-    private static String a(Date Date1, String String2) {
-        if (Date1 == null)
+    private static String a(Date date, String string) {
+        if (date == null) {
             return "";
-        else
-            return new SimpleDateFormat(String2).format(Date1);
-    }
-
-    public final int getCount() {
-        return a.size();
-    }
-
-    public final Object getItem(int int1) {
-        return a.get(int1);
-    }
-
-    public final long getItemId(int int1) {
-        return (long) int1;
-    }
-
-    public final View getView(int int1, View View2, ViewGroup ViewGroup3) {
-        PayChargeRecord$Order Order4 = (PayChargeRecord$Order) a.get(int1);
-        Object Object6;
-
-        if (View2 == null) {
-            Object Object5 = new N(this);
-
-            View2 = LayoutInflater.from((Context) b).inflate(2130903294, null);
-            ((N) Object5).a = View2.findViewById(2131493721);
-            ((N) Object5).b = (ImageView) View2.findViewById(2131493722);
-            ((N) Object5).c = (TextView) View2.findViewById(2131493725);
-            ((N) Object5).e = (TextView) View2.findViewById(2131493724);
-            ((N) Object5).f = (TextView) View2.findViewById(2131493723);
-            ((N) Object5).d = (TextView) View2.findViewById(2131493726);
-            ((N) Object5).g = (TextView) View2.findViewById(2131493720);
-            View2.setTag(Object5);
-            Object6 = Object5;
-        } else
-            Object6 = (N) View2.getTag();
-        if (Order4.getPayType().equals("time_flag")) {
-            ((N) Object6).a.setVisibility(8);
-            ((N) Object6).g.setVisibility(0);
-            ((N) Object6).g.setText((CharSequence) Order4.getTimeflag());
-        } else {
-            TextView TextView7;
-            StringBuilder StringBuilder8;
-            float float9;
-            int int10;
-            String String11;
-            int int12;
-
-            ((N) Object6).a.setVisibility(0);
-            ((N) Object6).g.setVisibility(8);
-            ((N) Object6).e.setText((CharSequence) Order4.getChargeString());
-            TextView7 = ((N) Object6).f;
-            StringBuilder8 = new StringBuilder();
-            float9 = Order4.getPrice();
-            TextView7.setText((CharSequence) StringBuilder8.append(new DecimalFormat("0.00").format((double) float9)).append("\u5143").toString());
-            int10 = 2130838030;
-            String11 = Order4.getPayType();
-            label_138:
-            {
-                switch (String11.hashCode()) {
-                    case -1414960566:
-                        if (String11.equals("alipay")) {
-                            int12 = 0;
-                            break label_138;
-                        }
-                        break;
-                    case 1825929990:
-                        if (String11.equals("weixinpay")) {
-                            int12 = 1;
-                            break label_138;
-                        }
-                        break;
-                    case -199281814:
-                        if (String11.equals("youyifupay")) {
-                            int12 = 2;
-                            break label_138;
-                        }
-                        break;
-                    default:
-                        break;
-                }
-                int12 = -1;
-            }
-            switch (int12) {
-                case 0:
-                    int10 = 2130838031;
-                    break;
-                case 1:
-                    int10 = 2130838045;
-                    break;
-                case 2:
-                    int10 = 2130838040;
-                    break;
-                default:
-                    break;
-            }
-            ((N) Object6).c.setText((CharSequence) a(Order4.getCreated(), "MM-dd"));
-            ((N) Object6).d.setText((CharSequence) a(Order4.getCreated(), "mm:ss"));
-            ((N) Object6).b.setImageResource(int10);
         }
-        return View2;
+        return new SimpleDateFormat(string).format(date);
+    }
+
+    @Override
+    public final int getCount() {
+        return this.a.size();
+    }
+
+    @Override
+    public final Object getItem(int n) {
+        return this.a.get(n);
+    }
+
+    @Override
+    public final long getItemId(int n) {
+        return n;
+    }
+
+    /*
+     * Unable to fully structure code
+     * Enabled aggressive block sorting
+     * Lifted jumps to return sites
+     */
+    @Override
+    public final View getView(int var1_1, View var2_2, ViewGroup var3_3) {
+        var4_4 = this.a.get(var1_1);
+        if (var2_2 == null) {
+            var5_5 = new N(this);
+            var2_2 = LayoutInflater.from(this.b).inflate(2130903294, null);
+            var5_5.a = var2_2.findViewById(2131493721);
+            var5_5.b = (ImageView) var2_2.findViewById(2131493722);
+            var5_5.c = (TextView) var2_2.findViewById(2131493725);
+            var5_5.e = (TextView) var2_2.findViewById(2131493724);
+            var5_5.f = (TextView) var2_2.findViewById(2131493723);
+            var5_5.d = (TextView) var2_2.findViewById(2131493726);
+            var5_5.g = (TextView) var2_2.findViewById(2131493720);
+            var2_2.setTag(var5_5);
+            var6_6 = var5_5;
+        } else {
+            var6_6 = (N) var2_2.getTag();
+        }
+        if (var4_4.getPayType().equals("time_flag")) {
+            var6_6.a.setVisibility(8);
+            var6_6.g.setVisibility(0);
+            var6_6.g.setText(var4_4.getTimeflag());
+            return var2_2;
+        }
+        var6_6.a.setVisibility(0);
+        var6_6.g.setVisibility(8);
+        var6_6.e.setText(var4_4.getChargeString());
+        var7_7 = var6_6.f;
+        var8_8 = new StringBuilder();
+        var9_9 = var4_4.getPrice();
+        var7_7.setText(var8_8.append(new DecimalFormat("0.00").format(var9_9)).append("\u5143").toString());
+        var10_10 = 2130838030;
+        var11_11 = var4_4.getPayType();
+        switch (var11_11.hashCode()) {
+            case -1414960566: {
+                if (!var11_11.equals("alipay"))**GOTO lbl39
+                var12_12 = 0;
+                **GOTO lbl46
+            }
+            case 1825929990: {
+                if (!var11_11.equals("weixinpay"))**GOTO lbl39
+                var12_12 = 1;
+                **GOTO lbl46
+            }
+            lbl39:
+            // 3 sources:
+            default:
+            {
+                **GOTO lbl -1000
+            }
+            case -199281814:
+        }
+        if (var11_11.equals("youyifupay")) {
+            var12_12 = 2;
+        } else lbl - 1000: // 2 sources:
+        {
+            var12_12 = -1;
+        }
+        lbl46:
+        // 4 sources:
+        switch (var12_12) {
+            case 0: {
+                var10_10 = 2130838031;
+                **break;
+            }
+            case 1: {
+                var10_10 = 2130838045;
+            }
+            lbl52:
+            // 3 sources:
+            default:
+            {
+                **GOTO lbl56
+            }
+            case 2:
+        }
+        var10_10 = 2130838040;
+        lbl56:
+        // 2 sources:
+        var6_6.c.setText(M.a(var4_4.getCreated(), "MM-dd"));
+        var6_6.d.setText(M.a(var4_4.getCreated(), "mm:ss"));
+        var6_6.b.setImageResource(var10_10);
+        return var2_2;
     }
 }

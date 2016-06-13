@@ -8,28 +8,28 @@ import com.clilystudio.netbook.ui.ugcbook.DraftUGCListFragment;
 import com.clilystudio.netbook.ui.ugcbook.FavUGCListFragment;
 import com.clilystudio.netbook.ui.ugcbook.MyUGCListFragment;
 
-public class UserUGCActivity extends SimpleTabActivity {
-
+public class UserUGCActivity
+        extends SimpleTabActivity {
+    @Override
     protected final void b() {
-        b = 3;
-        c = new String[]{"fragmentTag0", "fragmentTag1", "fragmentTag2"};
+        this.b = 3;
+        this.c = new String[]{"fragmentTag0", "fragmentTag1", "fragmentTag2"};
     }
 
+    @Override
     public final String[] h() {
-        return new String[]{"\u5DF2\u53D1\u5E03", "\u8349\u7A3F\u7BB1", "\u6536\u85CF\u5939"};
+        return new String[]{"\u5df2\u53d1\u5e03", "\u8349\u7a3f\u7bb1", "\u6536\u85cf\u5939"};
     }
 
+    @Override
     public final Fragment[] i() {
-        Object[] Object_1darray1 = new Fragment[3];
-
-        Object_1darray1[0] = new MyUGCListFragment();
-        Object_1darray1[1] = new DraftUGCListFragment();
-        Object_1darray1[2] = new FavUGCListFragment();
-        return (Fragment[]) Object_1darray1;
+        Fragment[] arrfragment = new Fragment[]{new MyUGCListFragment(), new DraftUGCListFragment(), new FavUGCListFragment()};
+        return arrfragment;
     }
 
-    protected void onCreate(Bundle Bundle1) {
-        super.onCreate(Bundle1);
-        b("\u6211\u7684\u4E66\u5355");
+    @Override
+    protected void onCreate(Bundle bundle) {
+        super.onCreate(bundle);
+        this.b("\u6211\u7684\u4e66\u5355");
     }
 }

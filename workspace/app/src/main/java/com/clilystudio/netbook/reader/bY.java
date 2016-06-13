@@ -1,57 +1,58 @@
 package com.clilystudio.netbook.reader;
 
 import com.clilystudio.netbook.a.e;
+import com.clilystudio.netbook.api.b;
+import com.clilystudio.netbook.model.TocSummary;
 
-import java.util.Collection;
 import java.util.List;
 
-final class bY extends e {
+final class bY
+        extends e<String, Void, List<TocSummary>> {
+    private /* synthetic */ ReaderResourceFragment a;
 
-    private ReaderResourceFragment a;
-
-    bY(ReaderResourceFragment ReaderResourceFragment1, byte byte2) {
-        this(ReaderResourceFragment1);
+    private bY(ReaderResourceFragment readerResourceFragment) {
+        this.a = readerResourceFragment;
     }
 
-    private bY(ReaderResourceFragment ReaderResourceFragment1) {
-        a = ReaderResourceFragment1;
+    /* synthetic */ bY(ReaderResourceFragment readerResourceFragment, byte by) {
+        this(readerResourceFragment);
     }
 
-    private static transient List a(String[] String_1darray1) {
-        List List4;
-
+    private static /* varargs */ List<TocSummary> a(String... arrstring) {
         try {
-            com.clilystudio.netbook.api.b.a();
-            List4 = com.clilystudio.netbook.api.b.b().d(String_1darray1[0]);
-        } catch (Exception Exception2) {
-            Exception2.printStackTrace();
+            b.a();
+            List<TocSummary> list = b.b().d(arrstring[0]);
+            return list;
+        } catch (Exception var1_2) {
+            var1_2.printStackTrace();
             return null;
         }
-        return List4;
     }
 
-    protected final Object doInBackground(Object[] Object_1darray1) {
-        return a((String[]) Object_1darray1);
+    @Override
+    protected final /* synthetic */ Object doInBackground(Object[] arrobject) {
+        return bY.a((String[]) arrobject);
     }
 
-    protected final void onPostExecute(Object Object1) {
-        Object Object2 = (List) Object1;
-
-        super.onPostExecute(Object2);
-        if (a.getActivity() != null) {
-            if (Object2 != null) {
-                if (!((List) Object2).isEmpty()) {
-                    ReaderResourceFragment.a(a, 1);
-                    ReaderResourceFragment.a(a, (List) Object2);
-                    ReaderResourceFragment.c(a).a((Collection) Object2);
-                } else {
-                    ReaderResourceFragment.a(a, 3);
-                    return;
-                }
-            } else {
-                ReaderResourceFragment.a(a, 2);
+    /*
+     * Enabled force condition propagation
+     * Lifted jumps to return sites
+     */
+    @Override
+    protected final /* synthetic */ void onPostExecute(Object object) {
+        List list = (List) object;
+        super.onPostExecute(list);
+        if (this.a.getActivity() == null) return;
+        if (list != null) {
+            if (!list.isEmpty()) {
+                ReaderResourceFragment.a(this.a, 1);
+                ReaderResourceFragment.a(this.a, list);
+                ReaderResourceFragment.c(this.a).a(list);
                 return;
             }
+            ReaderResourceFragment.a(this.a, 3);
+            return;
         }
+        ReaderResourceFragment.a(this.a, 2);
     }
 }

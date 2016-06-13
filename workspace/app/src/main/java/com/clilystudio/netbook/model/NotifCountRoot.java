@@ -2,42 +2,42 @@ package com.clilystudio.netbook.model;
 
 import java.util.Date;
 
-public class NotifCountRoot extends Root {
-
+public class NotifCountRoot
+        extends Root {
     private int important;
     private Date lastReadImportantTime;
     private Date lastReadUnimportantTime;
     private int unimportant;
 
     public int getImportant() {
-        return important;
+        return this.important;
     }
 
-    public void setImportant(int int1) {
-        important = int1;
+    public void setImportant(int n) {
+        this.important = n;
     }
 
     public Date getLastReadImportantTime() {
-        return lastReadImportantTime;
+        return this.lastReadImportantTime;
     }
 
-    public void setLastReadImportantTime(Date Date1) {
-        lastReadImportantTime = Date1;
+    public void setLastReadImportantTime(Date date) {
+        this.lastReadImportantTime = date;
     }
 
     public Date getLastReadUnimportantTime() {
-        return lastReadUnimportantTime;
+        return this.lastReadUnimportantTime;
     }
 
-    public void setLastReadUnimportantTime(Date Date1) {
-        lastReadUnimportantTime = Date1;
+    public void setLastReadUnimportantTime(Date date) {
+        this.lastReadUnimportantTime = date;
     }
 
     public int getUnimportant() {
-        return unimportant;
+        return this.unimportant;
     }
 
-    public void setUnimportant(int int1) {
-        unimportant = int1;
+    public void setUnimportant(int n) {
+        this.unimportant = n;
     }
 }

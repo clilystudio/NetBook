@@ -5,14 +5,15 @@ import android.util.AttributeSet;
 
 import com.clilystudio.netbook.widget.UserInfoExTaskView;
 
-public class UserInfoTaskLaunchView extends UserInfoExTaskView {
-
-    public UserInfoTaskLaunchView(Context Context1, AttributeSet AttributeSet2) {
-        super(Context1, AttributeSet2);
+public class UserInfoTaskLaunchView
+        extends UserInfoExTaskView {
+    public UserInfoTaskLaunchView(Context context, AttributeSet attributeSet) {
+        super(context, attributeSet);
     }
 
+    @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
-        setExp("\u7ECF\u9A8C+10");
+        this.setExp("\u7ecf\u9a8c+10");
     }
 }

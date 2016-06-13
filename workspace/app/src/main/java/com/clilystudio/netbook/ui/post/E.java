@@ -1,37 +1,27 @@
 package com.clilystudio.netbook.ui.post;
 
-import android.app.Activity;
 import android.app.Dialog;
 import android.view.View;
-import android.view.View$OnClickListener;
 
-final class E implements View$OnClickListener {
+final class E
+        implements View.OnClickListener {
+    private /* synthetic */ Dialog a;
+    private /* synthetic */ String b;
+    private /* synthetic */ AddReviewContentActivity c;
 
-    private Dialog a;
-    private String b;
-    private AddReviewContentActivity c;
-    E(AddReviewContentActivity AddReviewContentActivity1, Dialog Dialog2, String String3) {
-        c = AddReviewContentActivity1;
-        a = Dialog2;
-        b = String3;
+    E(AddReviewContentActivity addReviewContentActivity, Dialog dialog, String string) {
+        this.c = addReviewContentActivity;
+        this.a = dialog;
+        this.b = string;
     }
 
-    public final void onClick(View View1) {
-        String String2;
-        String String3;
-        F F4;
-        String[] String_1darray5;
-
-        a.dismiss();
-        String2 = AddReviewContentActivity.c(c).getText().toString().trim();
-        String3 = AddReviewContentActivity.d(c).getText().toString().trim();
-        F4 = new F(c, (Activity) c, 2131034430);
-        String_1darray5 = new String[5];
-        String_1darray5[0] = b;
-        String_1darray5[1] = AddReviewContentActivity.e(c);
-        String_1darray5[2] = String2;
-        String_1darray5[3] = String3;
-        String_1darray5[4] = String.valueOf(AddReviewContentActivity.f(c));
-        F4.b(String_1darray5);
+    @Override
+    public final void onClick(View view) {
+        this.a.dismiss();
+        String string = AddReviewContentActivity.c(this.c).getText().toString().trim();
+        String string2 = AddReviewContentActivity.d(this.c).getText().toString().trim();
+        F f = new F(this.c, this.c, 2131034430);
+        String[] arrstring = new String[]{this.b, AddReviewContentActivity.e(this.c), string, string2, String.valueOf(AddReviewContentActivity.f(this.c))};
+        f.b(arrstring);
     }
 }

@@ -1,23 +1,24 @@
 package com.clilystudio.netbook.reader.txt;
 
 import com.clilystudio.netbook.reader.cc;
+import com.clilystudio.netbook.reader.o;
 
-final class H implements cc {
+final class H
+        implements cc {
+    private /* synthetic */ ReaderTxtActivity a;
 
-    private ReaderTxtActivity a;
-
-    H(ReaderTxtActivity ReaderTxtActivity1) {
-        a = ReaderTxtActivity1;
+    H(ReaderTxtActivity readerTxtActivity) {
+        this.a = readerTxtActivity;
     }
 
+    @Override
     public final void a() {
-        com.clilystudio.netbook.reader.o[] o_1darray1 = ReaderTxtActivity.d(a);
-        int int2 = o_1darray1.length;
-        int int3;
-
-        for (int3 = 0; int3 < int2; ++int3)
-            o_1darray1[int3].a();
-        ReaderTxtActivity.o(a);
-        ReaderTxtActivity.p(a);
+        o[] arro = ReaderTxtActivity.d(this.a);
+        int n2 = arro.length;
+        for (int i = 0; i < n2; ++i) {
+            arro[i].a();
+        }
+        ReaderTxtActivity.o(this.a);
+        ReaderTxtActivity.p(this.a);
     }
 }

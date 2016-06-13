@@ -1,60 +1,77 @@
 package com.clilystudio.netbook.db;
 
 import com.activeandroid.Model;
+import com.activeandroid.annotation.Column;
+import com.activeandroid.annotation.Table;
+import com.activeandroid.query.Select;
 
 import java.util.Date;
+import java.util.List;
 
-public class BookTopicEnterRecord extends Model {
-
+@Table(name = "BookTopicEnterRecord")
+public class BookTopicEnterRecord
+        extends Model {
+    @Column(name = "book_id")
     public String book_id;
+    @Column(name = "time")
     public Date time;
+    @Column(name = "visit_count")
     private int visitCount;
-    public BookTopicEnterRecord(String String1) {
-        this();
-        book_id = String1;
-    }
 
     public BookTopicEnterRecord() {
     }
-// Error: Internal #201: 
-// The following method may not be correct.
 
-    public static BookTopicEnterRecord get(String String1) {
+    public BookTopicEnterRecord(String string) {
+        this();
+        this.book_id = string;
     }
 
-    public static void updateCount(String String1, int int2) {
-        if (int2 != 0) {
-            BookTopicEnterRecord BookTopicEnterRecord3 = get(String1);
-
-            if (BookTopicEnterRecord3 != null && int2 > BookTopicEnterRecord3.getVisitCount()) {
-                BookTopicEnterRecord3.setVisitCount(int2);
-                BookTopicEnterRecord3.save();
-                return;
-            }
+    public static BookTopicEnterRecord get(String string) {
+        if (string == null) {
+            return null;
         }
+        List list = new Select().from(BookTopicEnterRecord.class).where("book_id = ?", string).execute();
+        if (list.size() > 0) {
+            return (BookTopicEnterRecord) list.get(0);
+        }
+        return new BookTopicEnterRecord(string);
+    }
+
+    /*
+     * Enabled aggressive block sorting
+     */
+    public static void updateCount(String string, int n) {
+        BookTopicEnterRecord bookTopicEnterRecord;
+        if (n == 0 || (bookTopicEnterRecord = BookTopicEnterRecord.get(string)) == null || n <= bookTopicEnterRecord.getVisitCount()) {
+            return;
+        }
+        bookTopicEnterRecord.setVisitCount(n);
+        bookTopicEnterRecord.save();
     }
 
     public String getBook_id() {
-        return book_id;
+        return this.book_id;
     }
 
-    public void setBook_id(String String1) {
-        book_id = String1;
+    public void setBook_id(String string) {
+        this.book_id = string;
     }
 
+    @Deprecated
     public Date getTime() {
-        return time;
+        return this.time;
     }
 
-    public void setTime(Date Date1) {
-        time = Date1;
+    @Deprecated
+    public void setTime(Date date) {
+        this.time = date;
     }
 
     public int getVisitCount() {
-        return visitCount;
+        return this.visitCount;
     }
 
-    public void setVisitCount(int int1) {
-        visitCount = int1;
+    public void setVisitCount(int n) {
+        this.visitCount = n;
     }
 }

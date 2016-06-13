@@ -4,27 +4,28 @@ import com.ximalaya.ting.android.opensdk.datatrasfer.IDataCallBack;
 import com.ximalaya.ting.android.opensdk.datatrasfer.XimalayaResponse;
 import com.ximalaya.ting.android.opensdk.model.track.TrackList;
 
-final class D implements IDataCallBack {
+final class D
+        implements IDataCallBack<TrackList> {
+    private /* synthetic */ int a;
+    private /* synthetic */ HomeShelfFragment b;
 
-    private int a;
-    private HomeShelfFragment b;
-    D(HomeShelfFragment HomeShelfFragment1, int int2) {
-        b = HomeShelfFragment1;
-        a = int2;
+    D(HomeShelfFragment homeShelfFragment, int n) {
+        this.b = homeShelfFragment;
+        this.a = n;
     }
 
-    public final void onError(int int1, String String2) {
+    @Override
+    public final void onError(int n, String string) {
     }
 
-    public final void onSuccess(XimalayaResponse XimalayaResponse1) {
-        TrackList TrackList2 = (TrackList) XimalayaResponse1;
-        int int3 = a % 100;
-        int int4;
-
-        if (int3 > 0)
-            int4 = int3 - 1;
-        else
-            int4 = 0;
-        HomeShelfFragment.d(b).a(TrackList2.getTracks(), int4);
+    /*
+     * Enabled aggressive block sorting
+     */
+    @Override
+    public final /* synthetic */ void onSuccess(XimalayaResponse ximalayaResponse) {
+        TrackList trackList = (TrackList) ximalayaResponse;
+        int n2 = this.a % 100;
+        int n3 = n2 > 0 ? n2 - 1 : 0;
+        HomeShelfFragment.d(this.b).a(trackList.getTracks(), n3);
     }
 }

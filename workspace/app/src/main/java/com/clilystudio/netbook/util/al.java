@@ -4,49 +4,55 @@ import android.view.View;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-public abstract class al extends BaseAdapter {
-
+public abstract class al
+        extends BaseAdapter {
     private ar a = new ar();
 
-    protected final View a(int int1, boolean boolean2) {
-        View View3 = a.a[int1];
-
-        if (View3 != null) {
-            if (boolean2) {
-                if (8 != View3.getVisibility())
-                    View3.setVisibility(8);
-            } else if (View3.getVisibility() != 0) {
-                View3.setVisibility(0);
-                return View3;
+    /*
+     * Enabled aggressive block sorting
+     */
+    protected final View a(int n, boolean bl) {
+        View view = this.a.a[n];
+        if (view == null) return view;
+        {
+            if (bl) {
+                if (8 == view.getVisibility()) return view;
+                {
+                    view.setVisibility(8);
+                    return view;
+                }
+            } else {
+                if (view.getVisibility() == 0) return view;
+                {
+                    view.setVisibility(0);
+                    return view;
+                }
             }
         }
-        return View3;
     }
 
-    protected final View a(View View1, int[] int_1darray2) {
-        ar ar3 = a;
-        Object[] Object_1darray4 = new View[int_1darray2.length];
-        int int5;
-
-        for (int5 = 0; int5 < int_1darray2.length; ++int5)
-            Object_1darray4[int5] = View1.findViewById(int_1darray2[int5]);
-        View1.setTag(Object_1darray4);
-        ar3.a = (View[]) Object_1darray4;
-        return View1;
+    protected final View a(View view, int[] arrn) {
+        ar ar2 = this.a;
+        View[] arrview = new View[arrn.length];
+        for (int i = 0; i < arrn.length; ++i) {
+            arrview[i] = view.findViewById(arrn[i]);
+        }
+        view.setTag(arrview);
+        ar2.a = arrview;
+        return view;
     }
 
-    protected final TextView a(int int1, CharSequence CharSequence2) {
-        TextView TextView3 = (TextView) a.a[int1];
-
-        TextView3.setText(CharSequence2);
-        return TextView3;
+    protected final TextView a(int n, CharSequence charSequence) {
+        TextView textView = (TextView) this.a.a[n];
+        textView.setText(charSequence);
+        return textView;
     }
 
-    protected final Object a(int int1, Class Class2) {
-        return a.a[int1];
+    protected final <T> T a(int n, Class<T> class_) {
+        return (T) this.a.a[n];
     }
 
-    protected final void a(View View1) {
-        a.a = (View[]) View1.getTag();
+    protected final void a(View view) {
+        this.a.a = (View[]) view.getTag();
     }
 }

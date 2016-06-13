@@ -1,23 +1,22 @@
 package com.clilystudio.netbook.model;
 
 public class FollowResult {
-
     private boolean followed;
     private boolean ok;
 
     public boolean isFollowed() {
-        return followed;
+        return this.followed;
     }
 
-    public void setFollowed(boolean boolean1) {
-        followed = boolean1;
+    public void setFollowed(boolean bl) {
+        this.followed = bl;
     }
 
     public boolean isOk() {
-        return ok;
+        return this.ok;
     }
 
-    public void setOk(boolean boolean1) {
-        ok = boolean1;
+    public void setOk(boolean bl) {
+        this.ok = bl;
     }
 }

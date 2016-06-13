@@ -1,30 +1,27 @@
 package com.clilystudio.netbook.ui.post;
 
 import android.os.AsyncTask;
-import android.os.AsyncTask$Status;
+import android.support.design.widget.am;
 
-final class ak implements j {
+final class ak
+        implements j {
+    private /* synthetic */ BookHelpListActivity a;
 
-    private BookHelpListActivity a;
-
-    ak(BookHelpListActivity BookHelpListActivity1) {
-        a = BookHelpListActivity1;
+    ak(BookHelpListActivity bookHelpListActivity) {
+        this.a = bookHelpListActivity;
     }
 
+    @Override
     public final void a() {
-        if (BookHelpListActivity.e(a) == null || BookHelpListActivity.e(a).getStatus() == AsyncTask$Status.FINISHED) {
-            au au2;
-            String[] String_1darray3;
-
-            BookHelpListActivity.p(a).setVisibility(0);
-            if (!android.support.design.widget.am.a((AsyncTask) BookHelpListActivity.h(a)))
-                BookHelpListActivity.h(a).cancel(true);
-            BookHelpListActivity.a(a, new au(a, (byte) 0));
-            au2 = BookHelpListActivity.e(a);
-            String_1darray3 = new String[2];
-            String_1darray3[0] = BookHelpListActivity.f(a);
-            String_1darray3[1] = BookHelpListActivity.g(a);
-            au2.b(String_1darray3);
+        if (BookHelpListActivity.e(this.a) == null || BookHelpListActivity.e(this.a).getStatus() == AsyncTask.Status.FINISHED) {
+            BookHelpListActivity.p(this.a).setVisibility(0);
+            if (!am.a(BookHelpListActivity.h(this.a))) {
+                BookHelpListActivity.h(this.a).cancel(true);
+            }
+            BookHelpListActivity.a(this.a, new au(this.a, 0));
+            au au2 = BookHelpListActivity.e(this.a);
+            String[] arrstring = new String[]{BookHelpListActivity.f(this.a), BookHelpListActivity.g(this.a)};
+            au2.b(arrstring);
         }
     }
 }

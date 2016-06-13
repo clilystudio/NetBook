@@ -1,7 +1,6 @@
 package com.clilystudio.netbook.model;
 
 public class TtsRoot$Tts {
-
     private String accent;
     private String age;
     private String language;
@@ -11,58 +10,58 @@ public class TtsRoot$Tts {
     private String sex;
 
     public String getAccent() {
-        return accent;
+        return this.accent;
     }
 
-    public void setAccent(String String1) {
-        accent = String1;
+    public void setAccent(String string) {
+        this.accent = string;
     }
 
     public String getAge() {
-        return age;
+        return this.age;
     }
 
-    public void setAge(String String1) {
-        age = String1;
+    public void setAge(String string) {
+        this.age = string;
     }
 
     public String getLanguage() {
-        return language;
+        return this.language;
     }
 
-    public void setLanguage(String String1) {
-        language = String1;
+    public void setLanguage(String string) {
+        this.language = string;
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
-    public void setName(String String1) {
-        name = String1;
+    public void setName(String string) {
+        this.name = string;
     }
 
     public String getNickname() {
-        return nickname;
+        return this.nickname;
     }
 
-    public void setNickname(String String1) {
-        nickname = String1;
+    public void setNickname(String string) {
+        this.nickname = string;
     }
 
     public String getSelected() {
-        return selected;
+        return this.selected;
     }
 
-    public void setSelected(String String1) {
-        selected = String1;
+    public void setSelected(String string) {
+        this.selected = string;
     }
 
     public String getSex() {
-        return sex;
+        return this.sex;
     }
 
-    public void setSex(String String1) {
-        sex = String1;
+    public void setSex(String string) {
+        this.sex = string;
     }
 }

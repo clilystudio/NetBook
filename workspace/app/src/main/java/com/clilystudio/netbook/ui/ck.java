@@ -1,19 +1,18 @@
 package com.clilystudio.netbook.ui;
 
-import android.content.Context;
 import android.view.View;
-import android.view.View$OnClickListener;
 
-final class ck implements View$OnClickListener {
+final class ck
+        implements View.OnClickListener {
+    private /* synthetic */ SplashActivity a;
 
-    private SplashActivity a;
-
-    ck(SplashActivity SplashActivity1) {
-        a = SplashActivity1;
+    ck(SplashActivity splashActivity) {
+        this.a = splashActivity;
     }
 
-    public final void onClick(View View1) {
-        a.d();
-        com.clilystudio.netbook.hpay100.a.a.o((Context) a, "SKIP");
+    @Override
+    public final void onClick(View view) {
+        this.a.d();
+        a.o(this.a, "SKIP");
     }
 }

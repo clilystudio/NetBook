@@ -1,59 +1,76 @@
 package com.clilystudio.netbook.ui.user;
 
+import com.clilystudio.netbook.a.e;
+import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.model.PayConsumeRecord;
 
 import java.io.IOException;
-import java.util.Collection;
+import java.util.Arrays;
 import java.util.List;
 
-final class Z extends com.clilystudio.netbook.a.e {
+final class Z
+        extends e<String, Void, List<PayConsumeRecord.Order>> {
+    private /* synthetic */ PayConsumeActivity a;
 
-    private PayConsumeActivity a;
-
-    Z(PayConsumeActivity PayConsumeActivity1, byte byte2) {
-        this(PayConsumeActivity1);
+    private Z(PayConsumeActivity payConsumeActivity) {
+        this.a = payConsumeActivity;
     }
 
-    private Z(PayConsumeActivity PayConsumeActivity1) {
-        a = PayConsumeActivity1;
+    /* synthetic */ Z(PayConsumeActivity payConsumeActivity, byte by) {
+        this(payConsumeActivity);
     }
 
-    private transient List a(String[] String_1darray1) {
+    /*
+     * Enabled force condition propagation
+     * Lifted jumps to return sites
+     */
+    private /* varargs */ List<PayConsumeRecord.Order> a(String... arrstring) {
+        PayConsumeRecord payConsumeRecord = b.b().b(arrstring[0], PayConsumeActivity.c(this.a).size(), 10);
+        if (payConsumeRecord == null) return null;
         try {
-            PayConsumeRecord PayConsumeRecord3 = com.clilystudio.netbook.api.b.b().b(String_1darray1[0], PayConsumeActivity.c(a).size(), 10);
-        } catch (IOException IOException2) {
-            IOException2.printStackTrace();
+            if (!payConsumeRecord.isOk()) return null;
+            if (payConsumeRecord.getOrders() == null) return null;
+            return Arrays.asList(payConsumeRecord.getOrders());
+        } catch (IOException var2_4) {
+            var2_4.printStackTrace();
         }
         return null;
     }
 
-    protected final Object doInBackground(Object[] Object_1darray1) {
-        return a((String[]) Object_1darray1);
+    @Override
+    protected final /* synthetic */ Object doInBackground(Object[] arrobject) {
+        return this.a((String[]) arrobject);
     }
 
-    protected final void onPostExecute(Object Object1) {
-        Object Object2 = (List) Object1;
-
-        super.onPostExecute(Object2);
-        PayConsumeActivity.d(a).setVisibility(8);
-        if (Object2 != null) {
-            int int3 = ((List) Object2).size();
-
-            if (int3 > 0) {
-                a.f();
-                PayConsumeActivity.c(a).addAll((Collection) Object2);
-                PayConsumeActivity.e(a).a(PayConsumeActivity.c(a));
-                if (int3 < 10)
-                    PayConsumeActivity.a(a).setOnLastItemListener(null);
-                else {
-                    PayConsumeActivity.a(a).setOnLastItemListener(PayConsumeActivity.f(a));
-                    return;
-                }
-            } else if (PayConsumeActivity.c(a).size() == 0) {
-                a.g();
+    /*
+     * Enabled aggressive block sorting
+     */
+    @Override
+    protected final /* synthetic */ void onPostExecute(Object object) {
+        List list = (List) object;
+        super.onPostExecute(list);
+        PayConsumeActivity.d(this.a).setVisibility(8);
+        if (list == null) {
+            this.a.h();
+            return;
+        }
+        int n = list.size();
+        if (n > 0) {
+            this.a.f();
+            PayConsumeActivity.c(this.a).addAll(list);
+            PayConsumeActivity.e(this.a).a(PayConsumeActivity.c(this.a));
+            if (n >= 10) {
+                PayConsumeActivity.a(this.a).setOnLastItemListener(PayConsumeActivity.f(this.a));
                 return;
             }
-        } else
-            a.h();
+            PayConsumeActivity.a(this.a).setOnLastItemListener(null);
+            return;
+        } else {
+            if (PayConsumeActivity.c(this.a).size() != 0) return;
+            {
+                this.a.g();
+                return;
+            }
+        }
     }
 }

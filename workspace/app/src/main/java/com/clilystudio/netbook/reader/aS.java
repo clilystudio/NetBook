@@ -2,26 +2,23 @@ package com.clilystudio.netbook.reader;
 
 import java.util.LinkedList;
 
-final class aS implements e {
+final class aS
+        implements e<n> {
+    private /* synthetic */ ReaderActivity a;
 
-    private ReaderActivity a;
-
-    aS(ReaderActivity ReaderActivity1) {
-        a = ReaderActivity1;
+    aS(ReaderActivity readerActivity) {
+        this.a = readerActivity;
     }
 
-    public final void a(Object Object1) {
-        n n2 = (n) Object1;
-
-        ReaderActivity.a(a, n2);
-        if (ReaderActivity.g(a) == 2 && n2 != null) {
-            Object[] Object_1darray3 = n2.d();
-
-            if (Object_1darray3 != null) {
-                ReaderActivity.a(a, (String[]) Object_1darray3[0]);
-                ReaderActivity.a(a, (LinkedList) Object_1darray3[1]);
-                ReaderActivity.c(a, false);
-            }
+    @Override
+    public final /* synthetic */ void a(Object object) {
+        Object[] arrobject;
+        n n2 = (n) object;
+        ReaderActivity.a(this.a, n2);
+        if (ReaderActivity.g(this.a) == 2 && n2 != null && (arrobject = n2.d()) != null) {
+            ReaderActivity.a(this.a, (String[]) arrobject[0]);
+            ReaderActivity.a(this.a, (LinkedList) arrobject[1]);
+            ReaderActivity.c(this.a, false);
         }
     }
 }

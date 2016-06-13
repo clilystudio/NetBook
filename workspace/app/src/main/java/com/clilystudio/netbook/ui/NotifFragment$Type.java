@@ -1,26 +1,22 @@
 package com.clilystudio.netbook.ui;
 
-public final class NotifFragment$Type extends Enum {
-
-    public static final NotifFragment$Type IMPORTANT = new NotifFragment$Type("IMPORTANT", 0);
-    public static final NotifFragment$Type UNIMPORTANT = new NotifFragment$Type("UNIMPORTANT", 1);
-    private static NotifFragment$Type[] a;     // final access specifier removed
+public final class NotifFragment$Type
+        extends Enum<NotifFragment$Type> {
+    public static final /* enum */ NotifFragment$Type IMPORTANT = new NotifFragment$Type();
+    public static final /* enum */ NotifFragment$Type UNIMPORTANT = new NotifFragment$Type();
+    private static final /* synthetic */ NotifFragment$Type[] a;
 
     static {
-        NotifFragment$Type[] Type_1darray1 = new NotifFragment$Type[2];
-
-        Type_1darray1[0] = IMPORTANT;
-        Type_1darray1[1] = UNIMPORTANT;
-        a = Type_1darray1;
-    }
-// Error: Internal #201: 
-// The following method may not be correct.
-
-    private NotifFragment$Type(String String1, int int2) {
-        super(String1, int2);
+        NotifFragment$Type[] arrnotifFragment$Type = new NotifFragment$Type[]{IMPORTANT, UNIMPORTANT};
+        a = arrnotifFragment$Type;
     }
 
-    public static NotifFragment$Type valueOf(String String1) {
+    private NotifFragment$Type() {
+        super(string, n);
+    }
+
+    public static NotifFragment$Type valueOf(String string) {
+        return (NotifFragment$Type) ((Object) Enum.valueOf(NotifFragment$Type.class, string));
     }
 
     public static NotifFragment$Type[] values() {

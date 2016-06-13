@@ -1,22 +1,23 @@
 package com.clilystudio.netbook.ui.post;
 
 import android.view.View;
-import android.view.View$OnClickListener;
 import android.widget.PopupWindow;
 
-final class ai implements View$OnClickListener {
+final class ai
+        implements View.OnClickListener {
+    private /* synthetic */ PopupWindow a;
+    private /* synthetic */ BookHelpListActivity b;
 
-    private PopupWindow a;
-    private BookHelpListActivity b;
-    ai(BookHelpListActivity BookHelpListActivity1, PopupWindow PopupWindow2) {
-        b = BookHelpListActivity1;
-        a = PopupWindow2;
+    ai(BookHelpListActivity bookHelpListActivity, PopupWindow popupWindow) {
+        this.b = bookHelpListActivity;
+        this.a = popupWindow;
     }
 
-    public final void onClick(View View1) {
-        a.dismiss();
-        BookHelpListActivity.m(b).setText(2131034434);
-        BookHelpListActivity.b(b, "comment-count");
-        BookHelpListActivity.l(b).setRefreshing();
+    @Override
+    public final void onClick(View view) {
+        this.a.dismiss();
+        BookHelpListActivity.m(this.b).setText(2131034434);
+        BookHelpListActivity.b(this.b, "comment-count");
+        BookHelpListActivity.l(this.b).setRefreshing();
     }
 }

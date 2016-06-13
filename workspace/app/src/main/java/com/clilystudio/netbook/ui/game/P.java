@@ -4,15 +4,16 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 
-final class P extends BroadcastReceiver {
+final class P
+        extends BroadcastReceiver {
+    private /* synthetic */ GameListActivity a;
 
-    private GameListActivity a;
-
-    P(GameListActivity GameListActivity1) {
-        a = GameListActivity1;
+    P(GameListActivity gameListActivity) {
+        this.a = gameListActivity;
     }
 
-    public final void onReceive(Context Context1, Intent Intent2) {
-        GameListActivity.c(a);
+    @Override
+    public final void onReceive(Context context, Intent intent) {
+        GameListActivity.c(this.a);
     }
 }

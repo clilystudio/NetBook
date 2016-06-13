@@ -1,10 +1,10 @@
 package com.clilystudio.netbook.model;
 
-public class ChineseAllPromRoot extends Root {
+public class ChineseAllPromRoot
+        extends Root {
+    Prom prom;
 
-    ChineseAllPromRoot$Prom prom;
-
-    public ChineseAllPromRoot$Prom getProm() {
-        return prom;
+    public Prom getProm() {
+        return this.prom;
     }
 }

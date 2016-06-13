@@ -1,25 +1,26 @@
 package com.clilystudio.netbook.widget;
 
-final class af implements com.c.a.b {
+final class af
+        implements b {
+    private /* synthetic */ ah a;
+    private /* synthetic */ LoadingProgressView b;
 
-    private ah a;
-    private LoadingProgressView b;
-    af(LoadingProgressView LoadingProgressView1, ah ah2) {
-        b = LoadingProgressView1;
-        a = ah2;
+    af(LoadingProgressView loadingProgressView, ah ah2) {
+        this.b = loadingProgressView;
+        this.a = ah2;
     }
 
-    public final void a(com.c.a.a a1) {
+    public final void a(a a2) {
     }
 
-    public final void b(com.c.a.a a1) {
-        b.setVisibility(8);
-        a.a();
+    public final void b(a a2) {
+        this.b.setVisibility(8);
+        this.a.a();
     }
 
-    public final void c(com.c.a.a a1) {
+    public final void c(a a2) {
     }
 
-    public final void d(com.c.a.a a1) {
+    public final void d(a a2) {
     }
 }

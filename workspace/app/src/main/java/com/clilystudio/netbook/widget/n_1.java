@@ -2,38 +2,43 @@ package com.clilystudio.netbook.widget;
 
 import android.app.Activity;
 
+import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.model.ResultStatus;
+import com.clilystudio.netbook.util.e;
 
-final class n extends com.clilystudio.netbook.a.e {
+final class n
+        extends com.clilystudio.netbook.a.e<String, Void, ResultStatus> {
+    private /* synthetic */ CommentItemView a;
 
-    private CommentItemView a;
-
-    n(CommentItemView CommentItemView1, byte byte2) {
-        this(CommentItemView1);
+    private n(CommentItemView commentItemView) {
+        this.a = commentItemView;
     }
 
-    private n(CommentItemView CommentItemView1) {
-        a = CommentItemView1;
+    /* synthetic */ n(CommentItemView commentItemView, byte by) {
+        this(commentItemView);
     }
 
-    protected final Object doInBackground(Object[] Object_1darray1) {
-        String[] String_1darray2 = (String[]) Object_1darray1;
-
-        return com.clilystudio.netbook.api.b.b().o(CommentItemView.a(a).n(), String_1darray2[0], String_1darray2[1]);
+    @Override
+    protected final /* synthetic */ Object doInBackground(Object[] arrobject) {
+        String[] arrstring = (String[]) arrobject;
+        return b.b().o(CommentItemView.a(this.a).n(), arrstring[0], arrstring[1]);
     }
 
-    protected final void onPostExecute(Object Object1) {
-        Object Object2 = (ResultStatus) Object1;
-
-        super.onPostExecute(Object2);
-        if (Object2 != null && !((ResultStatus) Object2).isOk())
-            com.clilystudio.netbook.util.e.a((Activity) CommentItemView.a(a), "\u5DF2\u540C\u611F");
+    @Override
+    protected final /* synthetic */ void onPostExecute(Object object) {
+        ResultStatus resultStatus = (ResultStatus) object;
+        super.onPostExecute(resultStatus);
+        if (resultStatus != null && !resultStatus.isOk()) {
+            e.a((Activity) CommentItemView.a(this.a), "\u5df2\u540c\u611f");
+        }
     }
 
+    @Override
     protected final void onPreExecute() {
         super.onPreExecute();
-        if (CommentItemView.b(a) != null)
-            CommentItemView.b(a).setLikedInView(true);
-        CommentItemView.c(a);
+        if (CommentItemView.b(this.a) != null) {
+            CommentItemView.b(this.a).setLikedInView(true);
+        }
+        CommentItemView.c(this.a);
     }
 }

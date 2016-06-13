@@ -1,17 +1,19 @@
 package com.clilystudio.netbook.reader;
 
-final class aN implements F {
+final class aN
+        implements F {
+    private /* synthetic */ ReaderActivity a;
 
-    private ReaderActivity a;
-
-    aN(ReaderActivity ReaderActivity1) {
-        a = ReaderActivity1;
+    aN(ReaderActivity readerActivity) {
+        this.a = readerActivity;
     }
 
+    @Override
     public final void a() {
-        if (ReaderActivity.aa(a) == 5 || ReaderActivity.aa(a) == 10)
-            a.i();
-        else
-            ReaderActivity.L(a);
+        if (ReaderActivity.aa(this.a) == 5 || ReaderActivity.aa(this.a) == 10) {
+            this.a.i();
+            return;
+        }
+        ReaderActivity.L(this.a);
     }
 }

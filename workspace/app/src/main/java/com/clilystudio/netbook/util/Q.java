@@ -7,27 +7,29 @@ import java.util.HashMap;
 import java.util.Map;
 
 public final class Q {
+    private static HashMap<ReaderChapterIdentifier, Map<Integer, ReaderChapter>> a = new HashMap();
 
-    private static HashMap a = new HashMap();
+    private Q() {
+    }
 
-    public static ReaderChapter a(String String1, String String2, int int3) {
-        ReaderChapterIdentifier ReaderChapterIdentifier4 = new ReaderChapterIdentifier(String1, String2);
-        Map Map5 = (Map) a.get(ReaderChapterIdentifier4);
-
-        if (Map5 == null)
+    public static ReaderChapter a(String string, String string2, int n) {
+        ReaderChapterIdentifier readerChapterIdentifier = new ReaderChapterIdentifier(string, string2);
+        Map<Integer, ReaderChapter> map = a.get(readerChapterIdentifier);
+        if (map == null) {
             return null;
-        else
-            return (ReaderChapter) Map5.get(Integer.valueOf(int3));
+        }
+        return map.get(n);
     }
 
     public static Q a() {
         return new Q();
     }
 
-    public static void a(String String1, String String2, Map Map3) {
-        ReaderChapterIdentifier ReaderChapterIdentifier4 = new ReaderChapterIdentifier(String1, String2);
-
-        if (a.get(ReaderChapterIdentifier4) == null)
-            a.put(ReaderChapterIdentifier4, new HashMap(Map3));
+    public static void a(String string, String string2, Map<Integer, ReaderChapter> map) {
+        ReaderChapterIdentifier readerChapterIdentifier = new ReaderChapterIdentifier(string, string2);
+        if (a.get(readerChapterIdentifier) != null) {
+            return;
+        }
+        a.put(readerChapterIdentifier, new HashMap<Integer, ReaderChapter>(map));
     }
 }

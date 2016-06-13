@@ -1,50 +1,50 @@
 package com.clilystudio.netbook.widget;
 
 import android.content.Context;
-import android.text.TextWatcher;
 import android.util.AttributeSet;
 import android.widget.EditText;
 
-public class SearchEditText extends EditText {
-
+public class SearchEditText
+        extends EditText {
     private boolean a;
     private ax b;
-    public SearchEditText(Context Context1, AttributeSet AttributeSet2) {
-        super(Context1, AttributeSet2);
-        a();
+
+    public SearchEditText(Context context) {
+        super(context);
+        this.a();
     }
 
-    public SearchEditText(Context Context1) {
-        super(Context1);
-        a();
+    public SearchEditText(Context context, AttributeSet attributeSet) {
+        super(context, attributeSet);
+        this.a();
     }
 
-    static boolean a(SearchEditText SearchEditText1) {
-        return SearchEditText1.a;
+    static /* synthetic */ boolean a(SearchEditText searchEditText) {
+        return searchEditText.a;
     }
 
-    static boolean a(SearchEditText SearchEditText1, boolean boolean2) {
-        SearchEditText1.a = false;
+    static /* synthetic */ boolean a(SearchEditText searchEditText, boolean bl) {
+        searchEditText.a = false;
         return false;
     }
 
-    static ax b(SearchEditText SearchEditText1) {
-        return SearchEditText1.b;
+    static /* synthetic */ ax b(SearchEditText searchEditText) {
+        return searchEditText.b;
     }
 
     private void a() {
-        addTextChangedListener((TextWatcher) new aw(this));
+        this.addTextChangedListener(new aw(this));
     }
 
-    public void setOnUserInputListener(ax ax1) {
-        b = ax1;
+    public void setOnUserInputListener(ax ax2) {
+        this.b = ax2;
     }
 
-    public void setTextByCode(String String1) {
-        if (String1 != null) {
-            a = true;
-            setText((CharSequence) String1);
-            setSelection(String1.length());
+    public void setTextByCode(String string) {
+        if (string != null) {
+            this.a = true;
+            this.setText(string);
+            this.setSelection(string.length());
         }
     }
 }

@@ -5,15 +5,16 @@ import android.view.View;
 import android.widget.TableLayout;
 import android.widget.TextView;
 
-public final class al extends ay {
-
+public final class al
+        extends ay {
+    final /* synthetic */ ak k;
     TextView i;
     TableLayout j;
-    ak k;     // final access specifier removed
-    public al(ak ak1, View View2) {
-        super(View2);
-        k = ak1;
-        i = (TextView) View2.findViewById(2131494015);
-        j = (TableLayout) View2.findViewById(2131494016);
+
+    public al(ak ak2, View view) {
+        this.k = ak2;
+        super(view);
+        this.i = (TextView) view.findViewById(2131494015);
+        this.j = (TableLayout) view.findViewById(2131494016);
     }
 }

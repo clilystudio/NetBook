@@ -3,7 +3,6 @@ package com.clilystudio.netbook.model;
 import java.util.Date;
 
 public class BookHelpSummary {
-
     private String _id;
     private Author author;
     private int commentCount;
@@ -12,50 +11,50 @@ public class BookHelpSummary {
     private String title;
 
     public Author getAuthor() {
-        return author;
+        return this.author;
     }
 
-    public void setAuthor(Author Author1) {
-        author = Author1;
+    public void setAuthor(Author author) {
+        this.author = author;
     }
 
     public int getCommentCount() {
-        return commentCount;
+        return this.commentCount;
     }
 
-    public void setCommentCount(int int1) {
-        commentCount = int1;
+    public void setCommentCount(int n) {
+        this.commentCount = n;
     }
 
     public Date getCreated() {
-        return created;
+        return this.created;
     }
 
-    public void setCreated(Date Date1) {
-        created = Date1;
+    public void setCreated(Date date) {
+        this.created = date;
     }
 
     public String getState() {
-        return state;
+        return this.state;
     }
 
-    public void setState(String String1) {
-        state = String1;
+    public void setState(String string) {
+        this.state = string;
     }
 
     public String getTitle() {
-        return title;
+        return this.title;
     }
 
-    public void setTitle(String String1) {
-        title = String1;
+    public void setTitle(String string) {
+        this.title = string;
     }
 
     public String get_id() {
-        return _id;
+        return this._id;
     }
 
-    public void set_id(String String1) {
-        _id = String1;
+    public void set_id(String string) {
+        this._id = string;
     }
 }

@@ -2,21 +2,22 @@ package com.clilystudio.netbook.ui.post;
 
 import android.content.Context;
 import android.view.View;
-import android.view.View$OnClickListener;
 
 import com.clilystudio.netbook.model.Author;
 import com.clilystudio.netbook.util.e;
 
-final class cA implements View$OnClickListener {
+final class cA
+        implements View.OnClickListener {
+    private /* synthetic */ Author a;
+    private /* synthetic */ ReviewActivity b;
 
-    private Author a;
-    private ReviewActivity b;
-    cA(ReviewActivity ReviewActivity1, Author Author2) {
-        b = ReviewActivity1;
-        a = Author2;
+    cA(ReviewActivity reviewActivity, Author author) {
+        this.b = reviewActivity;
+        this.a = author;
     }
 
-    public final void onClick(View View1) {
-        b.startActivity(e.a((Context) b, a));
+    @Override
+    public final void onClick(View view) {
+        this.b.startActivity(e.a((Context) this.b, (Author) this.a));
     }
 }

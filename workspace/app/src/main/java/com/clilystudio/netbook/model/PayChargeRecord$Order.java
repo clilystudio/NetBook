@@ -3,7 +3,6 @@ package com.clilystudio.netbook.model;
 import java.util.Date;
 
 public class PayChargeRecord$Order {
-
     private String _id;
     private String accountId;
     private int amount;
@@ -18,111 +17,112 @@ public class PayChargeRecord$Order {
     private int voucher;
 
     public String getAccountId() {
-        return accountId;
+        return this.accountId;
     }
 
-    public void setAccountId(String String1) {
-        accountId = String1;
+    public void setAccountId(String string) {
+        this.accountId = string;
     }
 
     public int getAmount() {
-        return amount;
+        return this.amount;
     }
 
-    public void setAmount(int int1) {
-        amount = int1;
+    public void setAmount(int n) {
+        this.amount = n;
     }
 
     public String getChargeString() {
-        if (completed == null)
-            return "\u672A\u652F\u4ED8";
-        else if (voucher > 0)
-            return new StringBuilder().append(currency).append("\u8FFD\u4E66\u5E01+").append(voucher).append("\u8FFD\u4E66\u5238").toString();
-        else
-            return new StringBuilder().append(currency).append("\u8FFD\u4E66\u5E01").toString();
+        if (this.completed == null) {
+            return "\u672a\u652f\u4ed8";
+        }
+        if (this.voucher > 0) {
+            return "" + this.currency + "\u8ffd\u4e66\u5e01+" + this.voucher + "\u8ffd\u4e66\u5238";
+        }
+        return "" + this.currency + "\u8ffd\u4e66\u5e01";
     }
 
     public Date getCompleted() {
-        return completed;
+        return this.completed;
     }
 
     public Date getCreated() {
-        return created;
+        return this.created;
     }
 
-    public void setCreated(Date Date1) {
-        created = Date1;
+    public void setCreated(Date date) {
+        this.created = date;
     }
 
     public int getCurrency() {
-        return currency;
+        return this.currency;
     }
 
-    public void setCurrency(int int1) {
-        currency = int1;
+    public void setCurrency(int n) {
+        this.currency = n;
     }
 
     public String getPayId() {
-        return payId;
+        return this.payId;
     }
 
-    public void setPayId(String String1) {
-        payId = String1;
+    public void setPayId(String string) {
+        this.payId = string;
     }
 
     public String getPayType() {
-        return payType;
+        return this.payType;
     }
 
-    public void setPayType(String String1) {
-        payType = String1;
+    public void setPayType(String string) {
+        this.payType = string;
     }
 
     public float getPrice() {
-        return price;
+        return this.price;
     }
 
-    public void setPrice(float float1) {
-        price = float1;
+    public void setPrice(float f) {
+        this.price = f;
     }
 
     public String getStat() {
-        return stat;
+        return this.stat;
     }
 
-    public void setStat(String String1) {
-        stat = String1;
+    public void setStat(String string) {
+        this.stat = string;
     }
 
     public String getTimeflag() {
-        return timeflag;
+        return this.timeflag;
     }
 
-    public void setTimeflag(String String1) {
-        timeflag = String1;
+    public void setTimeflag(String string) {
+        this.timeflag = string;
     }
 
     public int getVoucher() {
-        return voucher;
+        return this.voucher;
     }
 
-    public void setVoucher(int int1) {
-        voucher = int1;
+    public void setVoucher(int n) {
+        this.voucher = n;
     }
 
     public String get_id() {
-        return _id;
+        return this._id;
     }
 
-    public void set_id(String String1) {
-        _id = String1;
+    public void set_id(String string) {
+        this._id = string;
     }
 
     public boolean isCompleted() {
-        return "completed".equals(stat);
+        return "completed".equals(this.stat);
     }
 
-    public void setCompleted(Date Date1) {
-        completed = Date1;
+    public void setCompleted(Date date) {
+        this.completed = date;
     }
 }

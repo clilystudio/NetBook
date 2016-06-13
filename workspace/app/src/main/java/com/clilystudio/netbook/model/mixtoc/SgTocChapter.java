@@ -1,32 +1,31 @@
 package com.clilystudio.netbook.model.mixtoc;
 
 public class SgTocChapter {
-
     private String cmd;
     private String name;
     private String url;
 
     public String getCmd() {
-        return cmd;
+        return this.cmd;
     }
 
-    public void setCmd(String String1) {
-        cmd = String1;
+    public void setCmd(String string) {
+        this.cmd = string;
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
-    public void setName(String String1) {
-        name = String1;
+    public void setName(String string) {
+        this.name = string;
     }
 
     public String getUrl() {
-        return url;
+        return this.url;
     }
 
-    public void setUrl(String String1) {
-        url = String1;
+    public void setUrl(String string) {
+        this.url = string;
     }
 }

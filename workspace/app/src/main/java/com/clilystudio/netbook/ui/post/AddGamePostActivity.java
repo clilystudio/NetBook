@@ -1,92 +1,94 @@
 package com.clilystudio.netbook.ui.post;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface$OnClickListener;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.am;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View$OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.clilystudio.netbook.d;
 import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.ui.BaseActivity;
 import com.clilystudio.netbook.ui.aa;
 import com.clilystudio.netbook.ui.user.AuthLoginActivity;
+import com.clilystudio.netbook.util.e;
 
 import cn.sharesdk.framework.ShareSDK;
 
-public class AddGamePostActivity extends BaseActivity {
-
+public class AddGamePostActivity
+        extends BaseActivity {
     private EditText a;
-// Error: Internal #201: 
-// The following method may not be correct.
 
-    public static Intent a(Context Context1, String String2) {
+    public static Intent a(Context context, String string) {
+        return new d().a(context, AddGamePostActivity.class).a("post_game_id", string).a();
     }
 
-    static boolean a(AddGamePostActivity AddGamePostActivity1) {
-        if (!com.clilystudio.netbook.hpay100.a.a.Q(AddGamePostActivity1.a.getText().toString().trim()))
-            return true;
-        com.clilystudio.netbook.util.e.a((Activity) AddGamePostActivity1, "\u8BF7\u8F93\u5165\u6B63\u6587");
-        return false;
+    static /* synthetic */ boolean a(AddGamePostActivity addGamePostActivity) {
+        if (a.Q(addGamePostActivity.a.getText().toString().trim())) {
+            e.a((Activity) addGamePostActivity, (String) "\u8bf7\u8f93\u5165\u6b63\u6587");
+            return false;
+        }
+        return true;
     }
 
-    static void b(AddGamePostActivity AddGamePostActivity1) {
-        Account Account2 = am.e();
-
-        if (Account2 == null) {
-            com.clilystudio.netbook.util.e.a((Activity) AddGamePostActivity1, "\u8BF7\u767B\u5F55\u540E\u518D\u53D1\u5E03");
-            AddGamePostActivity1.startActivity(AuthLoginActivity.a((Context) AddGamePostActivity1));
-        } else if (Account2.getUser().getLv() >= 2) {
-            String String3 = Account2.getToken();
-            h h4 = new h((Context) AddGamePostActivity1);
-            View View5 = LayoutInflater.from((Context) AddGamePostActivity1).inflate(2130903202, null);
-            Object Object8;
-
-            ((TextView) View5.findViewById(2131493422)).setText(2131034585);
-            h4.d = "\u53D1\u5E03";
-            h4.a(2131034583, null);
-            h4.b(2131034129, (DialogInterface$OnClickListener) new p(AddGamePostActivity1));
-            Object8 = h4.a(View5).b();
-            ((Button) ((Dialog) Object8).findViewById(16908313)).setOnClickListener((View$OnClickListener) new q(AddGamePostActivity1, (Dialog) Object8, String3));
-        } else
-            com.clilystudio.netbook.util.e.a((Activity) AddGamePostActivity1, "\u5F88\u62B1\u6B49\uFF0C\u60A8\u7684\u7B49\u7EA7\u4E0D\u591F");
+    static /* synthetic */ void b(AddGamePostActivity addGamePostActivity) {
+        Account account = am.e();
+        if (account == null) {
+            e.a((Activity) addGamePostActivity, (String) "\u8bf7\u767b\u5f55\u540e\u518d\u53d1\u5e03");
+            addGamePostActivity.startActivity(AuthLoginActivity.a(addGamePostActivity));
+            return;
+        }
+        if (account.getUser().getLv() >= 2) {
+            String string = account.getToken();
+            h h2 = new h(addGamePostActivity);
+            View view = LayoutInflater.from(addGamePostActivity).inflate(2130903202, null);
+            ((TextView) view.findViewById(2131493422)).setText(2131034585);
+            h2.d = "\u53d1\u5e03";
+            h2.a(2131034583, null);
+            h2.b(2131034129, (DialogInterface.OnClickListener) ((Object) new p(addGamePostActivity)));
+            AlertDialog alertDialog = h2.a(view).b();
+            ((Button) alertDialog.findViewById(16908313)).setOnClickListener(new q(addGamePostActivity, (Dialog) alertDialog, string));
+            return;
+        }
+        e.a((Activity) addGamePostActivity, (String) "\u5f88\u62b1\u6b49\uff0c\u60a8\u7684\u7b49\u7ea7\u4e0d\u591f");
     }
 
-    static EditText c(AddGamePostActivity AddGamePostActivity1) {
-        return AddGamePostActivity1.a;
+    static /* synthetic */ EditText c(AddGamePostActivity addGamePostActivity) {
+        return addGamePostActivity.a;
     }
 
+    /*
+     * Enabled aggressive block sorting
+     */
+    @Override
     public void onBackPressed() {
-        int int1;
-
-        if (!com.clilystudio.netbook.hpay100.a.a.Q(a.getText().toString()))
-            int1 = 1;
-        else
-            int1 = 0;
-        if (int1 != 0) {
-            h h2 = new h((Context) this);
-
-            h2.d = "\u63D0\u793A";
-            h2.e = "\u79BB\u5F00\u5C06\u4E22\u5931\u5DF2\u8F93\u5165\u7684\u5185\u5BB9\uFF0C\u786E\u5B9A\u79BB\u5F00\uFF1F";
-            h2.b("\u7559\u5728\u6B64\u9875", (DialogInterface$OnClickListener) new r(this));
-            h2.a("\u79BB\u5F00", (DialogInterface$OnClickListener) new s(this));
+        boolean bl = !a.Q(this.a.getText().toString());
+        if (bl) {
+            h h2 = new h(this);
+            h2.d = "\u63d0\u793a";
+            h2.e = "\u79bb\u5f00\u5c06\u4e22\u5931\u5df2\u8f93\u5165\u7684\u5185\u5bb9\uff0c\u786e\u5b9a\u79bb\u5f00\uff1f";
+            h2.b("\u7559\u5728\u6b64\u9875", (DialogInterface.OnClickListener) ((Object) new r(this)));
+            h2.a("\u79bb\u5f00", (DialogInterface.OnClickListener) ((Object) new s(this)));
             h2.a().show();
-        } else
-            super.onBackPressed();
+            return;
+        }
+        super.onBackPressed();
     }
 
-    public void onCreate(Bundle Bundle1) {
-        super.onCreate(Bundle1);
-        setContentView(2130903075);
-        a(2131034293, 2131034448, (aa) new o(this));
-        ShareSDK.initSDK((Context) this);
-        a = (EditText) findViewById(2131493067);
+    @Override
+    public void onCreate(Bundle bundle) {
+        super.onCreate(bundle);
+        this.setContentView(2130903075);
+        this.a(2131034293, 2131034448, (aa) ((Object) new o(this)));
+        ShareSDK.initSDK(this);
+        this.a = (EditText) this.findViewById(2131493067);
     }
 }

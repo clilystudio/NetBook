@@ -2,64 +2,65 @@ package com.clilystudio.netbook.reader;
 
 import android.support.design.widget.am;
 
+import com.clilystudio.netbook.a.e;
+import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.model.ChapterKeysRoot;
 import com.clilystudio.netbook.model.ChapterKeysRoot$ChapterKey;
 
 import java.util.HashMap;
-import java.util.Map;
 
-final class bp extends com.clilystudio.netbook.a.e {
+final class bp
+        extends e<Void, Void, ChapterKeysRoot> {
+    private /* synthetic */ ReaderActivity a;
 
-    private ReaderActivity a;
-
-    bp(ReaderActivity ReaderActivity1, byte byte2) {
-        this(ReaderActivity1);
+    private bp(ReaderActivity readerActivity) {
+        this.a = readerActivity;
     }
 
-    private bp(ReaderActivity ReaderActivity1) {
-        a = ReaderActivity1;
+    /* synthetic */ bp(ReaderActivity readerActivity, byte by) {
+        this(readerActivity);
     }
 
-    private transient ChapterKeysRoot a() {
-        ChapterKeysRoot ChapterKeysRoot3;
-
+    private /* varargs */ ChapterKeysRoot a() {
         try {
-            com.clilystudio.netbook.api.b.a();
-            ChapterKeysRoot3 = com.clilystudio.netbook.api.b.b().g(am.e().getToken(), ReaderActivity.M(a));
-        } catch (Exception Exception1) {
-            Exception1.printStackTrace();
+            b.a();
+            ChapterKeysRoot chapterKeysRoot = b.b().g(am.e().getToken(), ReaderActivity.M(this.a));
+            return chapterKeysRoot;
+        } catch (Exception var1_2) {
+            var1_2.printStackTrace();
             return null;
         }
-        return ChapterKeysRoot3;
     }
 
-    protected final Object doInBackground(Object[] Object_1darray1) {
-        return a();
+    /*
+     * Exception decompiling
+     */
+    @Override
+    protected final /* synthetic */ Object doInBackground(Object[] var1_1) {
+        // This method has failed to decompile.  When submitting a bug report, please provide this stack trace, and (if you hold appropriate legal rights) the relevant class file.
+        // java.lang.ArrayIndexOutOfBoundsException
+        throw new IllegalStateException("Decompilation failed");
     }
 
-    protected final void onPostExecute(Object Object1) {
-        ChapterKeysRoot ChapterKeysRoot2 = (ChapterKeysRoot) Object1;
-        Object Object3;
-
-        if (ChapterKeysRoot2 != null && ChapterKeysRoot2.isOk()) {
-            ChapterKeysRoot$ChapterKey[] ChapterKey_1darray4;
-            int int5;
-            int int6;
-
-            Object3 = new HashMap((int) ((double) ChapterKeysRoot2.getKeyLength() / 0.69999999999999996));
-            ChapterKey_1darray4 = ChapterKeysRoot2.getKeys();
-            int5 = ChapterKey_1darray4.length;
-            for (int6 = 0; int6 < int5; ++int6) {
-                ChapterKeysRoot$ChapterKey ChapterKey7 = ChapterKey_1darray4[int6];
-
-                ((HashMap) Object3).put(ChapterKey7.get_id(), ChapterKey7.getKey());
+    /*
+     * Enabled aggressive block sorting
+     */
+    @Override
+    protected final /* synthetic */ void onPostExecute(Object object) {
+        HashMap hashMap;
+        ChapterKeysRoot chapterKeysRoot = (ChapterKeysRoot) object;
+        if (chapterKeysRoot != null && chapterKeysRoot.isOk()) {
+            hashMap = new HashMap((int) ((double) chapterKeysRoot.getKeyLength() / 0.7));
+            for (ChapterKeysRoot$ChapterKey chapterKeysRoot$ChapterKey : chapterKeysRoot.getKeys()) {
+                hashMap.put(chapterKeysRoot$ChapterKey.get_id(), chapterKeysRoot$ChapterKey.getKey());
             }
-            com.clilystudio.netbook.hpay100.a.a.a(ReaderActivity.M(a), (Map) Object3);
+            a.a(ReaderActivity.M(this.a), hashMap);
         } else {
-            Object3 = com.clilystudio.netbook.hpay100.a.a.M(ReaderActivity.M(a));
-            if (Object3 == null)
-                Object3 = new HashMap();
+            hashMap = a.M(ReaderActivity.M(this.a));
+            if (hashMap == null) {
+                hashMap = new HashMap();
+            }
         }
-        ReaderActivity.Y(a).a((Map) Object3);
+        ReaderActivity.Y(this.a).a(hashMap);
     }
 }

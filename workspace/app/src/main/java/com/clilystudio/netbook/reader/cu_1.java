@@ -6,42 +6,62 @@ import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
 import android.view.View;
 import android.view.accessibility.AccessibilityEvent;
 
-final class cu extends AccessibilityDelegateCompat {
+final class cu
+        extends AccessibilityDelegateCompat {
+    private /* synthetic */ ReaderViewPager a;
 
-    private ReaderViewPager a;
-
-    cu(ReaderViewPager ReaderViewPager1) {
-        a = ReaderViewPager1;
-    }
-// Error: Internal #201: 
-// The following method may not be correct.
-
-    public final void onInitializeAccessibilityEvent(View View1, AccessibilityEvent AccessibilityEvent2) {
-    }
-// Error: Internal #201: 
-// The following method may not be correct.
-
-    public final void onInitializeAccessibilityNodeInfo(View View1, AccessibilityNodeInfoCompat AccessibilityNodeInfoCompat2) {
+    cu(ReaderViewPager readerViewPager) {
+        this.a = readerViewPager;
     }
 
-    public final boolean performAccessibilityAction(View View1, int int2, Bundle Bundle3) {
-        if (super.performAccessibilityAction(View1, int2, Bundle3))
-            return true;
-        else {
-            switch (int2) {
-                default:
-                    return false;
-                case 4096:
-                    if (ReaderViewPager.a(a) == null || ReaderViewPager.b(a) < 0 || ReaderViewPager.b(a) >= -1 + ReaderViewPager.a(a).getCount())
-                        return false;
-                    a.a(1 + ReaderViewPager.b(a));
-                    return true;
-                case 8192:
-                    if (ReaderViewPager.a(a) == null || ReaderViewPager.b(a) <= 0 || ReaderViewPager.b(a) >= ReaderViewPager.a(a).getCount())
-                        return false;
-                    a.a(-1 + ReaderViewPager.b(a));
-                    return true;
-            }
+    @Override
+    public final void onInitializeAccessibilityEvent(View view, AccessibilityEvent accessibilityEvent) {
+        super.onInitializeAccessibilityEvent(view, accessibilityEvent);
+        accessibilityEvent.setClassName(ReaderViewPager.class.getName());
+    }
+
+    /*
+     * Enabled aggressive block sorting
+     */
+    @Override
+    public final void onInitializeAccessibilityNodeInfo(View view, AccessibilityNodeInfoCompat accessibilityNodeInfoCompat) {
+        int n = 1;
+        super.onInitializeAccessibilityNodeInfo(view, accessibilityNodeInfoCompat);
+        accessibilityNodeInfoCompat.setClassName(ReaderViewPager.class.getName());
+        if (ReaderViewPager.a(this.a) == null || ReaderViewPager.a(this.a).getCount() <= n) {
+            n = 0;
         }
+        accessibilityNodeInfoCompat.setScrollable((boolean) n);
+        if (ReaderViewPager.a(this.a) != null && ReaderViewPager.b(this.a) >= 0 && ReaderViewPager.b(this.a) < -1 + ReaderViewPager.a(this.a).getCount()) {
+            accessibilityNodeInfoCompat.addAction(4096);
+        }
+        if (ReaderViewPager.a(this.a) != null && ReaderViewPager.b(this.a) > 0 && ReaderViewPager.b(this.a) < ReaderViewPager.a(this.a).getCount()) {
+            accessibilityNodeInfoCompat.addAction(8192);
+        }
+    }
+
+    @Override
+    public final boolean performAccessibilityAction(View view, int n, Bundle bundle) {
+        if (super.performAccessibilityAction(view, n, bundle)) {
+            return true;
+        }
+        switch (n) {
+            default: {
+                return false;
+            }
+            case 4096: {
+                if (ReaderViewPager.a(this.a) != null && ReaderViewPager.b(this.a) >= 0 && ReaderViewPager.b(this.a) < -1 + ReaderViewPager.a(this.a).getCount()) {
+                    this.a.a(1 + ReaderViewPager.b(this.a));
+                    return true;
+                }
+                return false;
+            }
+            case 8192:
+        }
+        if (ReaderViewPager.a(this.a) != null && ReaderViewPager.b(this.a) > 0 && ReaderViewPager.b(this.a) < ReaderViewPager.a(this.a).getCount()) {
+            this.a.a(-1 + ReaderViewPager.b(this.a));
+            return true;
+        }
+        return false;
     }
 }

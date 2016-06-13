@@ -1,28 +1,31 @@
 package com.clilystudio.netbook.reader;
 
 import android.widget.SeekBar;
-import android.widget.SeekBar$OnSeekBarChangeListener;
 
-final class cV implements SeekBar$OnSeekBarChangeListener {
+final class cV
+        implements SeekBar.OnSeekBarChangeListener {
+    private /* synthetic */ SettingWidget a;
 
-    private SettingWidget a;
-
-    cV(SettingWidget SettingWidget1) {
-        a = SettingWidget1;
+    cV(SettingWidget settingWidget) {
+        this.a = settingWidget;
     }
 
-    public final void onProgressChanged(SeekBar SeekBar1, int int2, boolean boolean3) {
-        if (boolean3) {
-            if (int2 < 15)
-                int2 = 15;
-            SettingWidget.b(a).b(int2);
+    @Override
+    public final void onProgressChanged(SeekBar seekBar, int n, boolean bl) {
+        if (bl) {
+            if (n < 15) {
+                n = 15;
+            }
+            SettingWidget.b(this.a).b(n);
         }
     }
 
-    public final void onStartTrackingTouch(SeekBar SeekBar1) {
-        SettingWidget.c(a).setChecked(false);
+    @Override
+    public final void onStartTrackingTouch(SeekBar seekBar) {
+        SettingWidget.c(this.a).setChecked(false);
     }
 
-    public final void onStopTrackingTouch(SeekBar SeekBar1) {
+    @Override
+    public final void onStopTrackingTouch(SeekBar seekBar) {
     }
 }

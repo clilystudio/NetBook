@@ -1,23 +1,21 @@
 package com.clilystudio.netbook.reader.txt;
 
-import android.app.Activity;
 import android.content.DialogInterface;
-import android.content.DialogInterface$OnClickListener;
 
 import com.iflytek.cloud.SpeechUtility;
 
-final class c implements DialogInterface$OnClickListener {
+final class c
+        implements DialogInterface.OnClickListener {
+    private /* synthetic */ ReaderTxtActivity a;
 
-    private ReaderTxtActivity a;
-
-    c(ReaderTxtActivity ReaderTxtActivity1) {
-        a = ReaderTxtActivity1;
+    c(ReaderTxtActivity readerTxtActivity) {
+        this.a = readerTxtActivity;
     }
 
-    public final void onClick(DialogInterface DialogInterface1, int int2) {
-        String String3 = SpeechUtility.getUtility().getComponentUrl();
-
-        ReaderTxtActivity.a = String3;
-        com.clilystudio.netbook.hpay100.a.a.a(String3, (Activity) a, "\u6717\u8BFB\u63D2\u4EF6");
+    @Override
+    public final void onClick(DialogInterface dialogInterface, int n2) {
+        String string;
+        ReaderTxtActivity.a = string = SpeechUtility.getUtility().getComponentUrl();
+        a.a(string, this.a, "\u6717\u8bfb\u63d2\u4ef6");
     }
 }

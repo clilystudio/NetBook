@@ -3,25 +3,26 @@ package com.clilystudio.netbook.reader;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.view.View;
-import android.view.View$OnClickListener;
 
-final class bP implements View$OnClickListener {
+final class bP
+        implements View.OnClickListener {
+    private /* synthetic */ AlertDialog a;
+    private /* synthetic */ int b;
+    private /* synthetic */ ReaderOptionActivity c;
 
-    private AlertDialog a;
-    private int b;
-    private ReaderOptionActivity c;
-    bP(ReaderOptionActivity ReaderOptionActivity1, AlertDialog AlertDialog2, int int3) {
-        c = ReaderOptionActivity1;
-        a = AlertDialog2;
-        b = int3;
+    bP(ReaderOptionActivity readerOptionActivity, AlertDialog alertDialog, int n) {
+        this.c = readerOptionActivity;
+        this.a = alertDialog;
+        this.b = n;
     }
 
-    public final void onClick(View View1) {
-        a.dismiss();
-        if (ReaderOptionActivity.b(c) != b) {
-            ReaderOptionActivity.a(c, b);
-            ReaderOptionActivity.d(c).setText((CharSequence) ReaderOptionActivity.c(c)[b]);
-            com.clilystudio.netbook.hpay100.a.a.b((Context) c, "reader_screen_off_time", ReaderOptionActivity.e(c)[b]);
+    @Override
+    public final void onClick(View view) {
+        this.a.dismiss();
+        if (ReaderOptionActivity.b(this.c) != this.b) {
+            ReaderOptionActivity.a(this.c, this.b);
+            ReaderOptionActivity.d(this.c).setText(ReaderOptionActivity.c(this.c)[this.b]);
+            a.b((Context) this.c, "reader_screen_off_time", ReaderOptionActivity.e(this.c)[this.b]);
         }
     }
 }

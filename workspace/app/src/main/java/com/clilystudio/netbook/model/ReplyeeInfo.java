@@ -2,17 +2,17 @@ package com.clilystudio.netbook.model;
 
 import java.io.Serializable;
 
-public interface ReplyeeInfo extends Serializable {
+public interface ReplyeeInfo
+        extends Serializable {
+    public Author getAuthor();
 
-    Author getAuthor();
+    public void setAuthor(Author var1);
 
-    void setAuthor(Author Author1);
+    public String getCommentId();
 
-    String getCommentId();
+    public void setCommentId(String var1);
 
-    void setCommentId(String String1);
+    public int getFloor();
 
-    int getFloor();
-
-    void setFloor(int int1);
+    public void setFloor(int var1);
 }

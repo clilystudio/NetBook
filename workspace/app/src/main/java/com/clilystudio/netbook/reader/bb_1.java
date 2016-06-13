@@ -1,18 +1,18 @@
 package com.clilystudio.netbook.reader;
 
 import android.content.DialogInterface;
-import android.content.DialogInterface$OnClickListener;
 
-final class bb implements DialogInterface$OnClickListener {
+final class bb
+        implements DialogInterface.OnClickListener {
+    private /* synthetic */ ReaderActivity a;
 
-    private ReaderActivity a;
-
-    bb(ReaderActivity ReaderActivity1) {
-        a = ReaderActivity1;
+    bb(ReaderActivity readerActivity) {
+        this.a = readerActivity;
     }
 
-    public final void onClick(DialogInterface DialogInterface1, int int2) {
-        DialogInterface1.dismiss();
-        ReaderActivity.ag(a);
+    @Override
+    public final void onClick(DialogInterface dialogInterface, int n2) {
+        dialogInterface.dismiss();
+        ReaderActivity.ag(this.a);
     }
 }

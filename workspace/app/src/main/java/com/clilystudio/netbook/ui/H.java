@@ -2,49 +2,62 @@ package com.clilystudio.netbook.ui;
 
 import android.app.Activity;
 
+import com.clilystudio.netbook.api.b;
+import com.clilystudio.netbook.model.BookSummary;
 import com.clilystudio.netbook.model.SearchResultRoot;
+import com.clilystudio.netbook.util.e;
 
-import java.util.Collection;
 import java.util.List;
 
-final class H extends com.clilystudio.netbook.a.e {
+final class H
+        extends com.clilystudio.netbook.a.e<String, Void, List<BookSummary>> {
+    private /* synthetic */ AuthorBooksActivity a;
 
-    private AuthorBooksActivity a;
-
-    H(AuthorBooksActivity AuthorBooksActivity1, byte byte2) {
-        this(AuthorBooksActivity1);
+    private H(AuthorBooksActivity authorBooksActivity) {
+        this.a = authorBooksActivity;
     }
 
-    private H(AuthorBooksActivity AuthorBooksActivity1) {
-        a = AuthorBooksActivity1;
+    /* synthetic */ H(AuthorBooksActivity authorBooksActivity, byte by) {
+        this(authorBooksActivity);
     }
 
-    private transient List a(String[] String_1darray1) {
+    /*
+     * Enabled force condition propagation
+     * Lifted jumps to return sites
+     */
+    private /* varargs */ List<BookSummary> a(String... arrstring) {
+        SearchResultRoot searchResultRoot = b.b().o(arrstring[0]);
+        if (searchResultRoot == null) return null;
         try {
-            SearchResultRoot SearchResultRoot3 = com.clilystudio.netbook.api.b.b().o(String_1darray1[0]);
-        } catch (Exception Exception2) {
-            Exception2.printStackTrace();
+            return searchResultRoot.getBooks();
+        } catch (Exception var2_4) {
+            var2_4.printStackTrace();
         }
         return null;
     }
 
-    protected final Object doInBackground(Object[] Object_1darray1) {
-        return a((String[]) Object_1darray1);
+    @Override
+    protected final /* synthetic */ Object doInBackground(Object[] arrobject) {
+        return this.a((String[]) arrobject);
     }
 
-    protected final void onPostExecute(Object Object1) {
-        Object Object2 = (List) Object1;
-
-        super.onPostExecute(Object2);
-        if (Object2 != null) {
-            if (((List) Object2).size() > 0)
-                a.f();
-            else
-                a.g();
-            AuthorBooksActivity.b(a).a((Collection) Object2);
-        } else {
-            a.h();
-            com.clilystudio.netbook.util.e.a((Activity) a, 2131034478);
+    /*
+     * Enabled aggressive block sorting
+     */
+    @Override
+    protected final /* synthetic */ void onPostExecute(Object object) {
+        List list = (List) object;
+        super.onPostExecute(list);
+        if (list == null) {
+            this.a.h();
+            e.a((Activity) this.a, (int) 2131034478);
+            return;
         }
+        if (list.size() > 0) {
+            this.a.f();
+        } else {
+            this.a.g();
+        }
+        AuthorBooksActivity.b(this.a).a(list);
     }
 }

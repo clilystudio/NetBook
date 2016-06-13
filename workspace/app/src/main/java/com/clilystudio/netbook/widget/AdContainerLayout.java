@@ -5,39 +5,41 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.RelativeLayout;
 
-public class AdContainerLayout extends RelativeLayout {
-
-    private f b;
+public class AdContainerLayout
+        extends RelativeLayout {
     private boolean a = false;
-    public AdContainerLayout(Context Context1, AttributeSet AttributeSet2) {
-        super(Context1, AttributeSet2);
+    private f b;
+
+    public AdContainerLayout(Context context, AttributeSet attributeSet) {
+        super(context, attributeSet);
     }
 
-    public boolean onInterceptTouchEvent(MotionEvent MotionEvent1) {
-        switch (MotionEvent1.getAction()) {
+    /*
+     * Enabled aggressive block sorting
+     */
+    @Override
+    public boolean onInterceptTouchEvent(MotionEvent motionEvent) {
+        switch (motionEvent.getAction()) {
+            default: {
+                return super.onInterceptTouchEvent(motionEvent);
+            }
             case 0:
-                if (a) {
-                    if (b != null)
-                        b.a();
-                    return true;
-                } else {
-                    if (b != null) {
-                        b.b();
-                        break;
-                    }
-                    break;
-                }
-            default:
-                break;
         }
-        return super.onInterceptTouchEvent(MotionEvent1);
+        if (this.a) {
+            if (this.b == null) return true;
+            this.b.a();
+            return true;
+        }
+        if (this.b == null) return super.onInterceptTouchEvent(motionEvent);
+        this.b.b();
+        return super.onInterceptTouchEvent(motionEvent);
     }
 
-    public void setIsShowConfirm(boolean boolean1) {
-        a = boolean1;
+    public void setIsShowConfirm(boolean bl) {
+        this.a = bl;
     }
 
-    public void setSplashAdContainerClickListener(f f1) {
-        b = f1;
+    public void setSplashAdContainerClickListener(f f2) {
+        this.b = f2;
     }
 }

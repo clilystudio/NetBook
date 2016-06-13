@@ -1,16 +1,17 @@
 package com.clilystudio.netbook.ui;
 
-import android.widget.PopupWindow$OnDismissListener;
+import android.widget.PopupWindow;
 
-final class au implements PopupWindow$OnDismissListener {
+final class au
+        implements PopupWindow.OnDismissListener {
+    private /* synthetic */ BookCategoryListActivity a;
 
-    private BookCategoryListActivity a;
-
-    au(BookCategoryListActivity BookCategoryListActivity1) {
-        a = BookCategoryListActivity1;
+    au(BookCategoryListActivity bookCategoryListActivity) {
+        this.a = bookCategoryListActivity;
     }
 
+    @Override
     public final void onDismiss() {
-        a.e("\u7B5B\u9009");
+        this.a.e("\u7b5b\u9009");
     }
 }

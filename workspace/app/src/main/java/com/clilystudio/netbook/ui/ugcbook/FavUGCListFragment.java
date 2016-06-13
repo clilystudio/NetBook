@@ -1,11 +1,9 @@
 package com.clilystudio.netbook.ui.ugcbook;
 
-import android.content.Context;
-import android.content.DialogInterface$OnClickListener;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.AdapterView$OnItemLongClickListener;
 import android.widget.ListView;
 
 import com.clilystudio.netbook.model.Account;
@@ -14,51 +12,53 @@ import com.clilystudio.netbook.model.UGCBookListRoot$UGCBook;
 import com.clilystudio.netbook.util.W;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 
-public class FavUGCListFragment extends AbsUGCListFragment implements AdapterView$OnItemLongClickListener {
+import uk.me.lewisdeane.ldialogs.h;
 
+public class FavUGCListFragment
+        extends AbsUGCListFragment
+        implements AdapterView.OnItemLongClickListener {
     private ListView k;
     private W l;
     private PullToRefreshListView m;
 
-    static PullToRefreshListView a(FavUGCListFragment FavUGCListFragment1) {
-        return FavUGCListFragment1.m;
+    static /* synthetic */ PullToRefreshListView a(FavUGCListFragment favUGCListFragment) {
+        return favUGCListFragment.m;
     }
 
-    protected final UGCBookListRoot a(Account Account1, int int2) {
-        com.clilystudio.netbook.api.b.a();
-        return com.clilystudio.netbook.api.b.b().f(Account1.getToken(), int2);
+    @Override
+    protected final UGCBookListRoot a(Account account, int n) {
+        b.a();
+        return b.b().f(account.getToken(), n);
     }
 
+    @Override
     protected final String c() {
-        return "\u8FD9\u91CC\u8FD8\u6CA1\u6709\u4E66\u5355\uFF0C\u53BB\u6536\u85CF\u4E00\u4E2A\u5427";
+        return "\u8fd9\u91cc\u8fd8\u6ca1\u6709\u4e66\u5355\uff0c\u53bb\u6536\u85cf\u4e00\u4e2a\u5427";
     }
 
-    public void onActivityCreated(Bundle Bundle1) {
-        super.onActivityCreated(Bundle1);
-        m = (PullToRefreshListView) getView().findViewById(2131493099);
-        k = (ListView) m.h();
-        k.setOnItemLongClickListener(this);
-        l = b();
+    @Override
+    public void onActivityCreated(Bundle bundle) {
+        super.onActivityCreated(bundle);
+        this.m = (PullToRefreshListView) this.getView().findViewById(2131493099);
+        this.k = (ListView) this.m.h();
+        this.k.setOnItemLongClickListener(this);
+        this.l = this.b();
     }
 
-    public boolean onItemLongClick(AdapterView AdapterView1, View View2, int int3, long long4) {
-        int int6 = int3 - k.getHeaderViewsCount();
-
-        if (int6 < 0 || int6 >= l.getCount())
+    @Override
+    public boolean onItemLongClick(AdapterView<?> adapterView, View view, int n, long l2) {
+        int n2 = n - this.k.getHeaderViewsCount();
+        if (n2 < 0 || n2 >= this.l.getCount()) {
             return false;
-        else {
-            UGCBookListRoot$UGCBook UGCBook7 = (UGCBookListRoot$UGCBook) l.getItem(int6);
-
-            if (UGCBook7 == null)
-                return false;
-            else {
-                String String8 = UGCBook7.getTitle();
-                uk.me.lewisdeane.ldialogs.h h9 = new uk.me.lewisdeane.ldialogs.h((Context) getActivity());
-
-                h9.d = String8;
-                h9.a((CharSequence[]) new String[]{"\u5220\u9664"}, (DialogInterface$OnClickListener) new g(this, UGCBook7)).a().show();
-                return true;
-            }
         }
+        UGCBookListRoot$UGCBook uGCBookListRoot$UGCBook = (UGCBookListRoot$UGCBook) this.l.getItem(n2);
+        if (uGCBookListRoot$UGCBook == null) {
+            return false;
+        }
+        String string = uGCBookListRoot$UGCBook.getTitle();
+        h h2 = new h(this.getActivity());
+        h2.d = string;
+        h2.a(new String[]{"\u5220\u9664"}, (DialogInterface.OnClickListener) ((Object) new g(this, uGCBookListRoot$UGCBook))).a().show();
+        return true;
     }
 }

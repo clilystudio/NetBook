@@ -1,47 +1,48 @@
 package com.clilystudio.netbook.ui.post;
 
 import com.clilystudio.netbook.a.e;
+import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.model.PostDetail;
 
-final class cw extends e {
+final class cw
+        extends e<String, Void, PostDetail> {
+    private /* synthetic */ PostDetailActivity a;
 
-    private PostDetailActivity a;
-
-    cw(PostDetailActivity PostDetailActivity1, byte byte2) {
-        this(PostDetailActivity1);
+    private cw(PostDetailActivity postDetailActivity) {
+        this.a = postDetailActivity;
     }
 
-    private cw(PostDetailActivity PostDetailActivity1) {
-        a = PostDetailActivity1;
+    /* synthetic */ cw(PostDetailActivity postDetailActivity, byte by) {
+        this(postDetailActivity);
     }
 
-    private transient PostDetail a(String[] String_1darray1) {
-        PostDetail PostDetail3;
-
+    private /* varargs */ PostDetail a(String... arrstring) {
         try {
-            PostDetail3 = com.clilystudio.netbook.api.b.b().H(String_1darray1[0]);
-        } catch (Exception Exception2) {
-            Exception2.printStackTrace();
+            PostDetail postDetail = b.b().H(arrstring[0]);
+            return postDetail;
+        } catch (Exception var2_3) {
+            var2_3.printStackTrace();
             return null;
         }
-        return PostDetail3;
     }
 
-    protected final Object doInBackground(Object[] Object_1darray1) {
-        return a((String[]) Object_1darray1);
+    @Override
+    protected final /* synthetic */ Object doInBackground(Object[] arrobject) {
+        return this.a((String[]) arrobject);
     }
 
-    protected final void onPostExecute(Object Object1) {
-        Object Object2 = (PostDetail) Object1;
-
-        super.onPostExecute(Object2);
-        if (Object2 != null && ((PostDetail) Object2).getPost() != null) {
-            PostDetailActivity.a(a, ((PostDetail) Object2).getPost());
-            a.f();
-            PostDetailActivity.b(a, PostDetailActivity.a(a));
-            PostDetailActivity.a(a, PostDetailActivity.a(a).getVotes());
-            PostDetailActivity.b(a);
-        } else
-            a.h();
+    @Override
+    protected final /* synthetic */ void onPostExecute(Object object) {
+        PostDetail postDetail = (PostDetail) object;
+        super.onPostExecute(postDetail);
+        if (postDetail != null && postDetail.getPost() != null) {
+            PostDetailActivity.a(this.a, postDetail.getPost());
+            this.a.f();
+            PostDetailActivity.b(this.a, PostDetailActivity.a(this.a));
+            PostDetailActivity.a(this.a, PostDetailActivity.a(this.a).getVotes());
+            PostDetailActivity.b(this.a);
+            return;
+        }
+        this.a.h();
     }
 }

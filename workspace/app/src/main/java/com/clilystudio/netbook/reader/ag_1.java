@@ -2,55 +2,62 @@ package com.clilystudio.netbook.reader;
 
 import com.clilystudio.netbook.a.e;
 
-import java.util.Iterator;
-
-public final class ag extends e {
-
+public final class ag
+        extends e<String, Void, Boolean> {
     private af a;
-    private Reader b;
-    public ag(Reader Reader1) {
-        b = Reader1;
+    private /* synthetic */ Reader b;
+
+    public ag(Reader reader) {
+        this.b = reader;
     }
 
-    public final void a(af af1) {
-        a = af1;
+    public final void a(af af2) {
+        this.a = af2;
     }
 
-    protected final Object doInBackground(Object[] Object_1darray1) {
-        boolean boolean3;
-
-        Reader.a(b, Reader.m(b));
-        if (Reader.l(b) != null)
-            Reader.b(b, Reader.l(b));
-        if (Reader.l(b) != null)
-            boolean3 = true;
-        else
-            boolean3 = false;
-        return Boolean.valueOf(boolean3);
+    /*
+     * Enabled force condition propagation
+     * Lifted jumps to return sites
+     */
+    @Override
+    protected final /* synthetic */ Object doInBackground(Object[] arrobject) {
+        boolean bl;
+        Reader.a(this.b, Reader.m(this.b));
+        if (Reader.l(this.b) != null) {
+            Reader.b(this.b, Reader.l(this.b));
+        }
+        if (Reader.l(this.b) != null) {
+            bl = true;
+            do {
+                return bl;
+                break;
+            } while (true);
+        }
+        bl = false;
+        return bl;
     }
 
-    protected final void onPostExecute(Object Object1) {
-        Object Object2 = (Boolean) Object1;
-
-        super.onPostExecute(Object2);
-        if (((Boolean) Object2).booleanValue()) {
-            Iterator Iterator5;
-
-            Reader.a(b, Reader.l(b).getHost());
-            Reader.a(b, Reader.l(b).getChapters());
-            Iterator5 = b.a.keySet().iterator();
-            while (Iterator5.hasNext()) {
-                Integer Integer6 = (Integer) Iterator5.next();
-
-                ((ReaderChapter) b.a.get(Integer6)).setMaxIndex(b.g());
+    /*
+     * Enabled aggressive block sorting
+     */
+    @Override
+    protected final /* synthetic */ void onPostExecute(Object object) {
+        Boolean bl = (Boolean) object;
+        super.onPostExecute(bl);
+        if (bl.booleanValue()) {
+            Reader.a(this.b, Reader.l(this.b).getHost());
+            Reader.a(this.b, Reader.l(this.b).getChapters());
+            for (Integer n2 : this.b.a.keySet()) {
+                this.b.a.get(n2).setMaxIndex(this.b.g());
             }
         }
-        if (a != null) {
-            if (((Boolean) Object2).booleanValue())
-                a.a();
-            else
-                a.b();
+        if (this.a != null) {
+            if (bl.booleanValue()) {
+                this.a.a();
+            } else {
+                this.a.b();
+            }
         }
-        Reader.a(b, null);
+        Reader.a(this.b, null);
     }
 }

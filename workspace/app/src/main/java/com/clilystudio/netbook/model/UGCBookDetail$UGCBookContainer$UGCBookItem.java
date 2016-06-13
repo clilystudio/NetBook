@@ -3,7 +3,6 @@ package com.clilystudio.netbook.model;
 import com.clilystudio.netbook.api.ApiService;
 
 public class UGCBookDetail$UGCBookContainer$UGCBookItem {
-
     private String _id;
     private String author;
     private String cover;
@@ -12,54 +11,54 @@ public class UGCBookDetail$UGCBookContainer$UGCBookItem {
     private long wordCount;
 
     public String getAuthor() {
-        return author;
+        return this.author;
     }
 
-    public void setAuthor(String String1) {
-        author = String1;
+    public void setAuthor(String string) {
+        this.author = string;
     }
 
     public String getCover() {
-        return cover;
+        return this.cover;
     }
 
-    public void setCover(String String1) {
-        cover = String1;
+    public void setCover(String string) {
+        this.cover = string;
     }
 
     public String getFullCover() {
-        return new StringBuilder().append(ApiService.a).append(cover).append("-covers").toString();
+        return ApiService.a + this.cover + "-covers";
     }
 
     public int getLatelyFollower() {
-        return latelyFollower;
+        return this.latelyFollower;
     }
 
-    public void setLatelyFollower(int int1) {
-        latelyFollower = int1;
+    public void setLatelyFollower(int n) {
+        this.latelyFollower = n;
     }
 
     public String getTitle() {
-        return title;
+        return this.title;
     }
 
-    public void setTitle(String String1) {
-        title = String1;
+    public void setTitle(String string) {
+        this.title = string;
     }
 
     public long getWordCount() {
-        return wordCount;
+        return this.wordCount;
     }
 
-    public void setWordCount(long long1) {
-        wordCount = long1;
+    public void setWordCount(long l) {
+        this.wordCount = l;
     }
 
     public String get_id() {
-        return _id;
+        return this._id;
     }
 
-    public void set_id(String String1) {
-        _id = String1;
+    public void set_id(String string) {
+        this._id = string;
     }
 }

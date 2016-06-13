@@ -3,41 +3,40 @@ package com.clilystudio.netbook.model;
 import java.util.Date;
 
 public class PurchaseVipResult {
-
     private String code;
     private long dueInMs;
     private boolean ok;
     private Date vipExpire;
 
     public String getCode() {
-        return code;
+        return this.code;
     }
 
-    public void setCode(String String1) {
-        code = String1;
+    public void setCode(String string) {
+        this.code = string;
     }
 
     public long getDueInMs() {
-        return dueInMs;
+        return this.dueInMs;
     }
 
-    public void setDueInMs(long long1) {
-        dueInMs = long1;
+    public void setDueInMs(long l) {
+        this.dueInMs = l;
     }
 
     public Date getVipExpire() {
-        return vipExpire;
+        return this.vipExpire;
     }
 
-    public void setVipExpire(Date Date1) {
-        vipExpire = Date1;
+    public void setVipExpire(Date date) {
+        this.vipExpire = date;
     }
 
     public boolean isOk() {
-        return ok;
+        return this.ok;
     }
 
-    public void setOk(boolean boolean1) {
-        ok = boolean1;
+    public void setOk(boolean bl) {
+        this.ok = bl;
     }
 }

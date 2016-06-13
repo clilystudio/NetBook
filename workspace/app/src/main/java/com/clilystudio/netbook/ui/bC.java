@@ -1,21 +1,25 @@
 package com.clilystudio.netbook.ui;
 
+import android.content.Intent;
 import android.view.View;
-import android.view.View$OnClickListener;
 
 import com.clilystudio.netbook.model.RecommendUgcRoot$RecommendUGC;
+import com.clilystudio.netbook.ui.ugcbook.UGCDetailActivity;
 
-final class bC implements View$OnClickListener {
+final class bC
+        implements View.OnClickListener {
+    private /* synthetic */ RecommendUgcRoot$RecommendUGC a;
+    private /* synthetic */ RelateUgcFragment$GetUgcsTask b;
 
-    private RecommendUgcRoot$RecommendUGC a;
-    private RelateUgcFragment$GetUgcsTask b;
-    bC(RelateUgcFragment$GetUgcsTask GetUgcsTask1, RecommendUgcRoot$RecommendUGC RecommendUGC2) {
-        b = GetUgcsTask1;
-        a = RecommendUGC2;
+    bC(RelateUgcFragment$GetUgcsTask getUgcsTask, RecommendUgcRoot$RecommendUGC recommendUGC) {
+        this.b = getUgcsTask;
+        this.a = recommendUGC;
     }
-// Error: Internal #201: 
-// The following method may not be correct.
 
-    public final void onClick(View View1) {
+    @Override
+    public final void onClick(View view) {
+        Intent intent = new Intent(this.b.a.getActivity(), UGCDetailActivity.class);
+        intent.putExtra("book_id", this.a.getId());
+        this.b.a.startActivity(intent);
     }
 }

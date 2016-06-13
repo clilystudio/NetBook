@@ -1,103 +1,88 @@
 package com.clilystudio.netbook.reader;
 
 import android.content.res.Resources;
-import android.view.View$OnClickListener;
 import android.widget.TextView;
 
+import com.clilystudio.netbook.a.e;
 import com.clilystudio.netbook.api.ApiService;
+import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.model.ChineseAllPromRoot;
 import com.clilystudio.netbook.model.TocSummary;
 
-import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
-final class bE extends com.clilystudio.netbook.a.e {
+final class bE
+        extends e<String, Void, Object[]> {
+    private /* synthetic */ ReaderMixActivity a;
 
-    private ReaderMixActivity a;
-
-    bE(ReaderMixActivity ReaderMixActivity1, byte byte2) {
-        this(ReaderMixActivity1);
+    private bE(ReaderMixActivity readerMixActivity) {
+        this.a = readerMixActivity;
     }
 
-    private bE(ReaderMixActivity ReaderMixActivity1) {
-        a = ReaderMixActivity1;
+    /* synthetic */ bE(ReaderMixActivity readerMixActivity, byte by) {
+        this(readerMixActivity);
     }
 
-    private static transient Object[] a(String[] String_1darray1) {
-        Object[] Object_1darray5;
-
+    private static /* varargs */ Object[] a(String... arrstring) {
         try {
-            ApiService ApiService4;
-
-            com.clilystudio.netbook.api.b.a();
-            ApiService4 = com.clilystudio.netbook.api.b.b();
-            Object_1darray5 = new Object[2];
-            Object_1darray5[0] = ApiService4.d(String_1darray1[0]);
-            Object_1darray5[1] = ApiService4.aa(String_1darray1[0]);
-        } catch (Exception Exception2) {
-            Exception2.printStackTrace();
+            b.a();
+            ApiService apiService = b.b();
+            Object[] arrobject = new Object[]{apiService.d(arrstring[0]), apiService.aa(arrstring[0])};
+            return arrobject;
+        } catch (Exception var1_3) {
+            var1_3.printStackTrace();
             return null;
         }
-        return Object_1darray5;
     }
 
-    protected final Object doInBackground(Object[] Object_1darray1) {
-        return a((String[]) Object_1darray1);
+    @Override
+    protected final /* synthetic */ Object doInBackground(Object[] arrobject) {
+        return bE.a((String[]) arrobject);
     }
 
-    protected final void onPostExecute(Object Object1) {
-        Object[] Object_1darray2 = (Object[]) Object1;
-
-        if (Object_1darray2 != null) {
-            Object Object3 = (List) Object_1darray2[0];
-
-            if (Object3 != null) {
-                if (!((List) Object3).isEmpty()) {
-                    TextView TextView4;
-                    Resources Resources5;
-                    Object[] Object_1darray6;
-                    Iterator Iterator7;
-                    int int8;
-                    int int12;
-
-                    a.f();
-                    TextView4 = (TextView) a.findViewById(2131493880);
-                    Resources5 = a.getResources();
-                    Object_1darray6 = new Object[1];
-                    Object_1darray6[0] = Integer.valueOf(-1 + ((List) Object3).size());
-                    TextView4.setText((CharSequence) Resources5.getString(2131034520, Object_1darray6));
-                    Iterator7 = ((List) Object3).iterator();
-                    for (int8 = 0; Iterator7.hasNext(); int8 = int12) {
-                        TocSummary TocSummary11 = (TocSummary) Iterator7.next();
-
-                        if ("zhuishuvip".equals(TocSummary11.getSource())) {
-                            ReaderMixActivity.a(a, TocSummary11);
-                            int12 = 1;
-                        } else
-                            int12 = int8;
-                    }
-                    if (int8 != 0) {
-                        ReaderMixActivity.e(a);
-                        ((List) Object3).remove(ReaderMixActivity.f(a));
-                    }
-                    ReaderMixActivity.d(a).a((Collection) Object3);
-                    ReaderMixActivity.a(a, (ChineseAllPromRoot) Object_1darray2[1]);
-                    if (ReaderMixActivity.g(a) != null && ReaderMixActivity.g(a).getProm() != null) {
-                        ReaderMixActivity.h(a).setOnClickListener((View$OnClickListener) new bF(a, ReaderMixActivity.g(a)));
-                        ReaderMixActivity.h(a).setVisibility(0);
-                    } else {
-                        ReaderMixActivity.h(a).setVisibility(8);
-                        return;
-                    }
-                } else {
-                    a.g();
-                    return;
-                }
-            } else {
-                a.h();
-                return;
-            }
+    /*
+     * Enabled aggressive block sorting
+     * Lifted jumps to return sites
+     */
+    @Override
+    protected final /* synthetic */ void onPostExecute(Object object) {
+        Object[] arrobject = (Object[]) object;
+        if (arrobject == null) return;
+        List list = (List) arrobject[0];
+        if (list == null) {
+            this.a.h();
+            return;
         }
+        if (list.isEmpty()) {
+            this.a.g();
+            return;
+        }
+        this.a.f();
+        TextView textView = (TextView) this.a.findViewById(2131493880);
+        Resources resources = this.a.getResources();
+        Object[] arrobject2 = new Object[]{-1 + list.size()};
+        textView.setText(resources.getString(2131034520, arrobject2));
+        Iterator iterator = list.iterator();
+        boolean bl = false;
+        while (iterator.hasNext()) {
+            boolean bl2;
+            TocSummary tocSummary = (TocSummary) iterator.next();
+            if ("zhuishuvip".equals(tocSummary.getSource())) {
+                ReaderMixActivity.a(this.a, tocSummary);
+                bl2 = true;
+            } else {
+                bl2 = bl;
+            }
+            bl = bl2;
+        }
+        ReaderMixActivity.d(this.a).a(list);
+        ReaderMixActivity.a(this.a, (ChineseAllPromRoot) arrobject[1]);
+        if (ReaderMixActivity.g(this.a) != null && ReaderMixActivity.g(this.a).getProm() != null) {
+            ReaderMixActivity.h(this.a).setOnClickListener(new bF(this.a, ReaderMixActivity.g(this.a)));
+            ReaderMixActivity.h(this.a).setVisibility(0);
+            return;
+        }
+        ReaderMixActivity.h(this.a).setVisibility(8);
     }
 }

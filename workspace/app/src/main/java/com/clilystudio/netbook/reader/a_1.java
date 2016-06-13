@@ -1,10 +1,9 @@
 package com.clilystudio.netbook.reader;
 
 public interface a {
+    public void a();
 
-    void a();
+    public void b();
 
-    void b();
-
-    void c();
+    public void c();
 }

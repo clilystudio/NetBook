@@ -1,54 +1,49 @@
 package com.clilystudio.netbook.widget;
 
-import android.os.Build$VERSION;
+import android.annotation.TargetApi;
+import android.os.Build;
 import android.text.StaticLayout;
-import android.view.ViewGroup$LayoutParams;
 import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver$OnGlobalLayoutListener;
-import android.widget.LinearLayout$LayoutParams;
+import android.widget.LinearLayout;
 
-final class ai implements ViewTreeObserver$OnGlobalLayoutListener {
+final class ai
+        implements ViewTreeObserver.OnGlobalLayoutListener {
+    private /* synthetic */ String a;
+    private /* synthetic */ String b;
+    private /* synthetic */ MenuGameTitle c;
 
-    private String a;
-    private String b;
-    private MenuGameTitle c;
-    ai(MenuGameTitle MenuGameTitle1, String String2, String String3) {
-        c = MenuGameTitle1;
-        a = String2;
-        b = String3;
+    ai(MenuGameTitle menuGameTitle, String string, String string2) {
+        this.c = menuGameTitle;
+        this.a = string;
+        this.b = string2;
     }
 
+    /*
+     * Enabled aggressive block sorting
+     */
+    @TargetApi(value = 16)
+    @Override
     public final void onGlobalLayout() {
-        int int1 = 1;
-        int int2;
-        MenuGameTitle MenuGameTitle3;
-        int int4;
-        ViewTreeObserver ViewTreeObserver6;
-
-        if (StaticLayout.getDesiredWidth((CharSequence) a, c.mSlmReaderAppName.getPaint()) + StaticLayout.getDesiredWidth((CharSequence) b, c.mSlmReaderAppSize.getPaint()) > (float) c.getMeasuredWidth())
-            int2 = int1;
-        else
-            int2 = 0;
-        MenuGameTitle3 = c;
-        if (int2 != 0)
-            int4 = int1;
-        else
-            int4 = 0;
-        MenuGameTitle3.setOrientation(int4);
-        if (int2 != 0) {
-            Object Object5 = new LinearLayout$LayoutParams(-2, -2);
-
-            ((LinearLayout$LayoutParams) Object5).topMargin = (int) MenuGameTitle.a(c, 3);
-            c.mSlmReaderAppSize.setLayoutParams((ViewGroup$LayoutParams) Object5);
+        int n = 1;
+        int n2 = StaticLayout.getDesiredWidth(this.a, this.c.mSlmReaderAppName.getPaint()) + StaticLayout.getDesiredWidth(this.b, this.c.mSlmReaderAppSize.getPaint()) > (float) this.c.getMeasuredWidth() ? n : 0;
+        MenuGameTitle menuGameTitle = this.c;
+        int n3 = n2 != 0 ? n : 0;
+        menuGameTitle.setOrientation(n3);
+        if (n2 != 0) {
+            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(-2, -2);
+            layoutParams.topMargin = (int) MenuGameTitle.a(this.c, 3);
+            this.c.mSlmReaderAppSize.setLayoutParams(layoutParams);
         }
-        c.mSlmReaderAppName.setText((CharSequence) a);
-        c.mSlmReaderAppSize.setText((CharSequence) b);
-        ViewTreeObserver6 = c.getViewTreeObserver();
-        if (Build$VERSION.SDK_INT < 16)
-            int1 = 0;
-        if (int1 != 0)
-            ViewTreeObserver6.removeOnGlobalLayoutListener(this);
-        else
-            ViewTreeObserver6.removeGlobalOnLayoutListener(this);
+        this.c.mSlmReaderAppName.setText(this.a);
+        this.c.mSlmReaderAppSize.setText(this.b);
+        ViewTreeObserver viewTreeObserver = this.c.getViewTreeObserver();
+        if (Build.VERSION.SDK_INT < 16) {
+            n = 0;
+        }
+        if (n != 0) {
+            viewTreeObserver.removeOnGlobalLayoutListener(this);
+            return;
+        }
+        viewTreeObserver.removeGlobalOnLayoutListener(this);
     }
 }

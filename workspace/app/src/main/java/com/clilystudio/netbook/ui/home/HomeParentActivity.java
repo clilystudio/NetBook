@@ -5,36 +5,38 @@ import android.os.Bundle;
 import android.support.design.widget.am;
 
 import com.clilystudio.netbook.ui.BaseActivity;
+import com.umeng.a.b;
+import com.umeng.update.a;
 
-public class HomeParentActivity extends BaseActivity {
-
-    static void a(HomeParentActivity HomeParentActivity1, String String2) {
-        if (!HomeParentActivity1.isFinishing())
-            new android.support.v7.app.k((Context) HomeParentActivity1).a((CharSequence) "\u901A\u77E5").b((CharSequence) String2).a((CharSequence) "\u786E\u5B9A", null).c();
+public class HomeParentActivity
+        extends BaseActivity {
+    static /* synthetic */ void a(HomeParentActivity homeParentActivity, String string) {
+        if (!homeParentActivity.isFinishing()) {
+            new android.support.v7.app.k(homeParentActivity).a("\u901a\u77e5").b(string).a("\u786e\u5b9a", null).c();
+        }
     }
 
     private boolean b() {
-        int int2;
-        int int3;
-        boolean boolean4;
-
         try {
-            int2 = Integer.parseInt(com.umeng.a.b.b((Context) this, "force_update_until_version"));
-            int3 = am.f((Context) this);
-        } catch (Exception Exception1) {
-            Exception1.printStackTrace();
+            int n = Integer.parseInt(b.b(this, "force_update_until_version"));
+            int n2 = am.f((Context) this);
+            boolean bl = false;
+            if (n > n2) {
+                bl = true;
+            }
+            return bl;
+        } catch (Exception var1_4) {
+            var1_4.printStackTrace();
             return false;
         }
-        boolean4 = false;
-        if (int2 > int3)
-            boolean4 = true;
-        return boolean4;
     }
 
-    public void onCreate(Bundle Bundle1) {
-        super.onCreate(Bundle1);
-        com.umeng.update.b.a((Context) this);
-        if (b())
-            com.umeng.update.b.a((com.umeng.update.a) new k(this));
+    @Override
+    public void onCreate(Bundle bundle) {
+        super.onCreate(bundle);
+        com.umeng.update.b.a(this);
+        if (this.b()) {
+            com.umeng.update.b.a((a) ((Object) new k(this)));
+        }
     }
 }

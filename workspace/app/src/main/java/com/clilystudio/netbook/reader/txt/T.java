@@ -5,46 +5,44 @@ import com.clilystudio.netbook.db.BookFile;
 import java.io.File;
 
 final class T {
-
     private boolean a;
     private BookFile b;
     private long c;
-    T(ScanTxtFileActivity ScanTxtFileActivity1, File File2, byte byte3) {
-        this(ScanTxtFileActivity1, File2);
+
+    private T(ScanTxtFileActivity scanTxtFileActivity, BookFile bookFile) {
+        this.b = bookFile;
     }
 
-    private T(ScanTxtFileActivity ScanTxtFileActivity1, BookFile BookFile2) {
-        b = BookFile2;
+    private T(ScanTxtFileActivity scanTxtFileActivity, File file) {
+        this(scanTxtFileActivity, new BookFile(file));
+        this.c = file.lastModified();
     }
 
-    private T(ScanTxtFileActivity ScanTxtFileActivity1, File File2) {
-        this(ScanTxtFileActivity1, new BookFile(File2));
-        c = File2.lastModified();
+    /* synthetic */ T(ScanTxtFileActivity scanTxtFileActivity, File file, byte by) {
+        this(scanTxtFileActivity, file);
     }
 
     public final BookFile a() {
-        return b;
+        return this.b;
     }
 
-    public final void a(boolean boolean1) {
-        a = boolean1;
+    public final void a(boolean bl) {
+        this.a = bl;
     }
 
     public final boolean b() {
-        return a;
+        return this.a;
     }
 
+    /*
+     * Enabled aggressive block sorting
+     */
     public final void c() {
-        boolean boolean1;
-
-        if (!a)
-            boolean1 = true;
-        else
-            boolean1 = false;
-        a = boolean1;
+        boolean bl = !this.a;
+        this.a = bl;
     }
 
     public final long d() {
-        return c;
+        return this.c;
     }
 }

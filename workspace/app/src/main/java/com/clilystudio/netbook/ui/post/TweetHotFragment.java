@@ -1,12 +1,10 @@
 package com.clilystudio.netbook.ui.post;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -14,18 +12,19 @@ import com.clilystudio.netbook.adapter.G;
 import com.clilystudio.netbook.db.TweetCache;
 import com.clilystudio.netbook.model.HotTweetResult;
 import com.clilystudio.netbook.model.TimelineResult$Temp;
+import com.clilystudio.netbook.model.Tweet;
 import com.google.gson.Gson;
 import com.handmark.pulltorefresh.library.PullToRefreshBase$Mode;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
+import com.handmark.pulltorefresh.library.j;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class TweetHotFragment extends Fragment {
-// Error: Internal #201: 
-// The following method may not be correct.
-
+public class TweetHotFragment
+        extends Fragment {
     static {
+        TweetHotFragment.class.getSimpleName();
     }
 
     private dI a;
@@ -36,116 +35,121 @@ public class TweetHotFragment extends Fragment {
     private View f;
     private TextView g;
     private G h;
-    private List i = new ArrayList();
-    private com.handmark.pulltorefresh.library.j j = new dG(this);
+    private List<Tweet> i = new ArrayList<Tweet>();
+    private j j;
 
-    static TextView a(TweetHotFragment TweetHotFragment1) {
-        return TweetHotFragment1.g;
+    public TweetHotFragment() {
+        this.j = new dG(this);
     }
 
-    static dH a(TweetHotFragment TweetHotFragment1, dH dH2) {
-        TweetHotFragment1.b = dH2;
+    static /* synthetic */ TextView a(TweetHotFragment tweetHotFragment) {
+        return tweetHotFragment.g;
+    }
+
+    static /* synthetic */ dH a(TweetHotFragment tweetHotFragment, dH dH2) {
+        tweetHotFragment.b = dH2;
         return dH2;
     }
 
-    static void a(TweetHotFragment TweetHotFragment1, HotTweetResult HotTweetResult2) {
-        TweetHotFragment1.a(HotTweetResult2);
+    static /* synthetic */ void a(TweetHotFragment tweetHotFragment, HotTweetResult hotTweetResult) {
+        tweetHotFragment.a(hotTweetResult);
     }
 
-    static dH b(TweetHotFragment TweetHotFragment1) {
-        return TweetHotFragment1.b;
+    static /* synthetic */ dH b(TweetHotFragment tweetHotFragment) {
+        return tweetHotFragment.b;
     }
 
-    static void b(TweetHotFragment TweetHotFragment1, HotTweetResult HotTweetResult2) {
+    static /* synthetic */ void b(TweetHotFragment tweetHotFragment, HotTweetResult hotTweetResult) {
         TweetCache.delete("zhuishushenqi_hot_user_id", 2);
-        TweetCache.save2DB("zhuishushenqi_hot_user_id", 2, new Gson().toJson(HotTweetResult2));
+        TweetCache.save2DB("zhuishushenqi_hot_user_id", 2, new Gson().toJson(hotTweetResult));
     }
 
-    static void c(TweetHotFragment TweetHotFragment1) {
-        TweetHotFragment1.a();
+    static /* synthetic */ void c(TweetHotFragment tweetHotFragment) {
+        tweetHotFragment.a();
     }
 
-    static void d(TweetHotFragment TweetHotFragment1) {
-        TweetHotFragment1.g.setVisibility(8);
-        TweetHotFragment1.f.setVisibility(8);
-        TweetHotFragment1.e.setVisibility(8);
-        TweetHotFragment1.c.n();
+    static /* synthetic */ void d(TweetHotFragment tweetHotFragment) {
+        tweetHotFragment.g.setVisibility(8);
+        tweetHotFragment.f.setVisibility(8);
+        tweetHotFragment.e.setVisibility(8);
+        tweetHotFragment.c.n();
     }
 
-    static List e(TweetHotFragment TweetHotFragment1) {
-        return TweetHotFragment1.i;
+    static /* synthetic */ List e(TweetHotFragment tweetHotFragment) {
+        return tweetHotFragment.i;
     }
 
-    static PullToRefreshListView f(TweetHotFragment TweetHotFragment1) {
-        return TweetHotFragment1.c;
+    static /* synthetic */ PullToRefreshListView f(TweetHotFragment tweetHotFragment) {
+        return tweetHotFragment.c;
     }
 
-    static com.handmark.pulltorefresh.library.j g(TweetHotFragment TweetHotFragment1) {
-        return TweetHotFragment1.j;
+    static /* synthetic */ j g(TweetHotFragment tweetHotFragment) {
+        return tweetHotFragment.j;
     }
 
-    static void h(TweetHotFragment TweetHotFragment1) {
-        TweetHotFragment1.g.setVisibility(0);
-        TweetHotFragment1.g.setText((CharSequence) "\u70ED\u95E8\u8D44\u6E90\u9700\u8981\u4F60\u7684\u52A0\u5165,\u624D\u4F1A\u66F4\u7CBE\u5F69!");
+    static /* synthetic */ void h(TweetHotFragment tweetHotFragment) {
+        tweetHotFragment.g.setVisibility(0);
+        tweetHotFragment.g.setText("\u70ed\u95e8\u8d44\u6e90\u9700\u8981\u4f60\u7684\u52a0\u5165,\u624d\u4f1a\u66f4\u7cbe\u5f69!");
     }
 
-    static G i(TweetHotFragment TweetHotFragment1) {
-        return TweetHotFragment1.h;
+    static /* synthetic */ G i(TweetHotFragment tweetHotFragment) {
+        return tweetHotFragment.h;
     }
 
-    static View j(TweetHotFragment TweetHotFragment1) {
-        return TweetHotFragment1.e;
+    static /* synthetic */ View j(TweetHotFragment tweetHotFragment) {
+        return tweetHotFragment.e;
     }
 
-    static dI k(TweetHotFragment TweetHotFragment1) {
-        return TweetHotFragment1.a;
+    static /* synthetic */ dI k(TweetHotFragment tweetHotFragment) {
+        return tweetHotFragment.a;
     }
 
     private void a() {
-        a = new dI(this, (byte) 0);
-        a.b(new String[0]);
+        this.a = new dI(this, 0);
+        this.a.b(new String[0]);
     }
 
-    private void a(HotTweetResult HotTweetResult1) {
-        TimelineResult$Temp[] Temp_1darray2 = HotTweetResult1.getTweets();
-
-        if (Temp_1darray2.length > 0) {
-            int int3 = Temp_1darray2.length;
-            int int4;
-
-            for (int4 = 0; int4 < int3; ++int4) {
-                TimelineResult$Temp Temp5 = Temp_1darray2[int4];
-
-                Temp5.getTweet().setUser(Temp5.getUser());
-                i.add(Temp5.getTweet());
+    private void a(HotTweetResult hotTweetResult) {
+        TimelineResult$Temp[] arrtimelineResult$Temp = hotTweetResult.getTweets();
+        if (arrtimelineResult$Temp.length > 0) {
+            for (TimelineResult$Temp timelineResult$Temp : arrtimelineResult$Temp) {
+                timelineResult$Temp.getTweet().setUser(timelineResult$Temp.getUser());
+                this.i.add(timelineResult$Temp.getTweet());
             }
-            h.a(i);
+            this.h.a(this.i);
         }
     }
-// Error: Internal #201: 
-// The following method may not be correct.
 
-    public void onActivityCreated(Bundle Bundle1) {
+    @Override
+    public void onActivityCreated(Bundle bundle) {
+        super.onActivityCreated(bundle);
+        List<TweetCache> list = TweetCache.find("zhuishushenqi_hot_user_id", 2);
+        if (list != null && list.size() > 0) {
+            TweetCache tweetCache = list.get(0);
+            this.a((HotTweetResult) new Gson().fromJson(tweetCache.getContent(), HotTweetResult.class));
+        }
+        this.a();
     }
 
-    public View onCreateView(LayoutInflater LayoutInflater1, ViewGroup ViewGroup2, Bundle Bundle3) {
-        View View4 = LayoutInflater1.inflate(2130903211, ViewGroup2, false);
-
-        f = View4.findViewById(2131493085);
-        f.setVisibility(8);
-        g = (TextView) View4.findViewById(2131493100);
-        c = (PullToRefreshListView) View4.findViewById(2131493099);
-        c.setMode(PullToRefreshBase$Mode.PULL_FROM_START);
-        d = (ListView) c.h();
-        e = LayoutInflater1.inflate(2130903325, null);
-        d.addFooterView(e);
-        if (com.clilystudio.netbook.hpay100.a.a.j())
-            d.setFooterDividersEnabled(false);
-        c.setEnabled(false);
-        c.setOnRefreshListener((k) new dE(this));
-        h = new G((Activity) getActivity(), false, true);
-        h.a(i);
-        d.setAdapter((ListAdapter) h);
-        return View4;
+    @Override
+    public View onCreateView(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
+        View view = layoutInflater.inflate(2130903211, viewGroup, false);
+        this.f = view.findViewById(2131493085);
+        this.f.setVisibility(8);
+        this.g = (TextView) view.findViewById(2131493100);
+        this.c = (PullToRefreshListView) view.findViewById(2131493099);
+        this.c.setMode(PullToRefreshBase$Mode.PULL_FROM_START);
+        this.d = (ListView) this.c.h();
+        this.e = layoutInflater.inflate(2130903325, null);
+        this.d.addFooterView(this.e);
+        if (a.j()) {
+            this.d.setFooterDividersEnabled(false);
+        }
+        this.c.setEnabled(false);
+        this.c.setOnRefreshListener(new dE(this));
+        this.h = new G(this.getActivity(), false, true);
+        this.h.a(this.i);
+        this.d.setAdapter(this.h);
+        return view;
     }
 }

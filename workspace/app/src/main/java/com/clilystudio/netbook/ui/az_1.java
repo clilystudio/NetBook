@@ -2,16 +2,17 @@ package com.clilystudio.netbook.ui;
 
 import android.content.Context;
 
-final class az implements cd {
+final class az
+        implements cd {
+    private /* synthetic */ ay a;
 
-    private ay a;
-
-    az(ay ay1) {
-        a = ay1;
+    az(ay ay2) {
+        this.a = ay2;
     }
 
-    public final void a(int int1) {
-        BookInfoActivity.a(a.a, int1);
-        com.clilystudio.netbook.hpay100.a.a.a((Context) a.a, int1, 1);
+    @Override
+    public final void a(int n) {
+        BookInfoActivity.a(this.a.a, n);
+        a.a((Context) this.a.a, n, 1);
     }
 }

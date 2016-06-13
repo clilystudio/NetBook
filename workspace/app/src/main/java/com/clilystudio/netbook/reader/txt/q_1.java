@@ -1,17 +1,17 @@
 package com.clilystudio.netbook.reader.txt;
 
 import android.content.DialogInterface;
-import android.content.DialogInterface$OnCancelListener;
 
-final class q implements DialogInterface$OnCancelListener {
+final class q
+        implements DialogInterface.OnCancelListener {
+    private /* synthetic */ ReaderTxtActivity a;
 
-    private ReaderTxtActivity a;
-
-    q(ReaderTxtActivity ReaderTxtActivity1) {
-        a = ReaderTxtActivity1;
+    q(ReaderTxtActivity readerTxtActivity) {
+        this.a = readerTxtActivity;
     }
 
-    public final void onCancel(DialogInterface DialogInterface1) {
-        a.finish();
+    @Override
+    public final void onCancel(DialogInterface dialogInterface) {
+        this.a.finish();
     }
 }

@@ -1,19 +1,21 @@
 package com.clilystudio.netbook.ui.post;
 
-import android.os.AsyncTask$Status;
+import android.os.AsyncTask;
 
 import com.clilystudio.netbook.widget.av;
 
-final class dv implements av {
+final class dv
+        implements av {
+    private /* synthetic */ TweetDetailActivity a;
 
-    private TweetDetailActivity a;
-
-    dv(TweetDetailActivity TweetDetailActivity1) {
-        a = TweetDetailActivity1;
+    dv(TweetDetailActivity tweetDetailActivity) {
+        this.a = tweetDetailActivity;
     }
 
+    @Override
     public final void a() {
-        if (TweetDetailActivity.m(a) == null || TweetDetailActivity.m(a).getStatus() == AsyncTask$Status.FINISHED)
-            TweetDetailActivity.n(a);
+        if (TweetDetailActivity.m(this.a) == null || TweetDetailActivity.m(this.a).getStatus() == AsyncTask.Status.FINISHED) {
+            TweetDetailActivity.n(this.a);
+        }
     }
 }

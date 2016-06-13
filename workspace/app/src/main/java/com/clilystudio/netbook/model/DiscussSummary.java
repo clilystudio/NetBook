@@ -3,7 +3,6 @@ package com.clilystudio.netbook.model;
 import java.util.Date;
 
 public class DiscussSummary {
-
     public int likeCount;
     private String _id;
     private Author author;
@@ -16,74 +15,74 @@ public class DiscussSummary {
     private int voteCount;
 
     public Author getAuthor() {
-        return author;
+        return this.author;
     }
 
-    public void setAuthor(Author Author1) {
-        author = Author1;
+    public void setAuthor(Author author) {
+        this.author = author;
     }
 
     public int getCommentCount() {
-        return commentCount;
+        return this.commentCount;
     }
 
-    public void setCommentCount(int int1) {
-        commentCount = int1;
+    public void setCommentCount(int n) {
+        this.commentCount = n;
     }
 
     public Date getCreated() {
-        return created;
+        return this.created;
     }
 
-    public void setCreated(Date Date1) {
-        created = Date1;
+    public void setCreated(Date date) {
+        this.created = date;
     }
 
     public String getState() {
-        return state;
+        return this.state;
     }
 
-    public void setState(String String1) {
-        state = String1;
+    public void setState(String string) {
+        this.state = string;
     }
 
     public String getTitle() {
-        return title;
+        return this.title;
     }
 
-    public void setTitle(String String1) {
-        title = String1;
+    public void setTitle(String string) {
+        this.title = string;
     }
 
     public String getType() {
-        return type;
+        return this.type;
     }
 
-    public void setType(String String1) {
-        type = String1;
+    public void setType(String string) {
+        this.type = string;
     }
 
     public Date getUpdated() {
-        return updated;
+        return this.updated;
     }
 
-    public void setUpdated(Date Date1) {
-        updated = Date1;
+    public void setUpdated(Date date) {
+        this.updated = date;
     }
 
     public int getVoteCount() {
-        return voteCount;
+        return this.voteCount;
     }
 
-    public void setVoteCount(int int1) {
-        voteCount = int1;
+    public void setVoteCount(int n) {
+        this.voteCount = n;
     }
 
     public String get_id() {
-        return _id;
+        return this._id;
     }
 
-    public void set_id(String String1) {
-        _id = String1;
+    public void set_id(String string) {
+        this._id = string;
     }
 }

@@ -5,18 +5,20 @@ import android.os.Message;
 
 import com.clilystudio.netbook.util.t;
 
-final class cl extends Handler {
+final class cl
+        extends Handler {
+    private /* synthetic */ ReaderTtsSetWidget a;
 
-    private ReaderTtsSetWidget a;
-
-    cl(ReaderTtsSetWidget ReaderTtsSetWidget1) {
-        a = ReaderTtsSetWidget1;
+    cl(ReaderTtsSetWidget readerTtsSetWidget) {
+        this.a = readerTtsSetWidget;
     }
 
-    public final void handleMessage(Message Message1) {
-        if (Message1.what < ReaderTtsSetWidget.g(a).length && Message1.arg1 > 0)
-            ReaderTtsSetWidget.g(a)[Message1.what].setText((CharSequence) t.b((long) (1000 * Message1.arg1)));
-        else
-            ReaderTtsSetWidget.a(a, Message1.what, true);
+    @Override
+    public final void handleMessage(Message message) {
+        if (message.what < ReaderTtsSetWidget.g(this.a).length && message.arg1 > 0) {
+            ReaderTtsSetWidget.g(this.a)[message.what].setText(t.b(1000 * message.arg1));
+            return;
+        }
+        ReaderTtsSetWidget.a(this.a, message.what, true);
     }
 }

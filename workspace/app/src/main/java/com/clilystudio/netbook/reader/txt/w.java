@@ -4,50 +4,56 @@ import android.content.Context;
 
 import com.clilystudio.netbook.reader.cn;
 
-final class w implements cn {
+final class w
+        implements cn {
+    private /* synthetic */ ReaderTxtActivity a;
 
-    private ReaderTxtActivity a;
-
-    w(ReaderTxtActivity ReaderTxtActivity1) {
-        a = ReaderTxtActivity1;
+    w(ReaderTxtActivity readerTxtActivity) {
+        this.a = readerTxtActivity;
     }
 
+    @Override
     public final void a() {
-        ReaderTxtActivity.a(a, 2);
-        ReaderTxtActivity.c(a).setReadMode(ReaderTxtActivity.b(a));
-        ReaderTxtActivity.j(a);
-        ReaderTxtActivity.k(a);
+        ReaderTxtActivity.a(this.a, 2);
+        ReaderTxtActivity.c(this.a).setReadMode(ReaderTxtActivity.b(this.a));
+        ReaderTxtActivity.j(this.a);
+        ReaderTxtActivity.k(this.a);
     }
 
-    public final void a(int int1) {
-        ReaderTxtActivity.l(a).setParameter("speed", new StringBuilder().append(int1).toString());
-        com.clilystudio.netbook.hpay100.a.a.b((Context) a, "speech_speed", int1);
+    @Override
+    public final void a(int n2) {
+        ReaderTxtActivity.l(this.a).setParameter("speed", "" + n2);
+        a.b((Context) this.a, "speech_speed", n2);
     }
 
-    public final void a(boolean boolean1) {
-        ReaderTxtActivity.l(a).stopSpeaking();
-        ReaderTxtActivity.a(a, 0);
-        ReaderTxtActivity.c(a).setReadMode(ReaderTxtActivity.b(a));
-        ReaderTxtActivity.m(a);
-        if (boolean1) {
-            ReaderTxtActivity.a(a);
-            ReaderTxtActivity.b(a, 0);
-            ReaderTxtActivity.c(a, 0);
-            ReaderTxtActivity.d(a, 0);
-            ReaderTxtActivity.n(a);
+    @Override
+    public final void a(boolean bl) {
+        ReaderTxtActivity.l(this.a).stopSpeaking();
+        ReaderTxtActivity.a(this.a, 0);
+        ReaderTxtActivity.c(this.a).setReadMode(ReaderTxtActivity.b(this.a));
+        ReaderTxtActivity.m(this.a);
+        if (bl) {
+            ReaderTxtActivity.a(this.a);
+            ReaderTxtActivity.b(this.a, 0);
+            ReaderTxtActivity.c(this.a, 0);
+            ReaderTxtActivity.d(this.a, 0);
+            ReaderTxtActivity.n(this.a);
         }
     }
 
+    @Override
     public final void b() {
-        ReaderTxtActivity.l(a).pauseSpeaking();
-        ReaderTxtActivity.a(a, true);
+        ReaderTxtActivity.l(this.a).pauseSpeaking();
+        ReaderTxtActivity.a(this.a, true);
     }
 
+    @Override
     public final void c() {
-        ReaderTxtActivity.l(a).resumeSpeaking();
+        ReaderTxtActivity.l(this.a).resumeSpeaking();
     }
 
+    @Override
     public final void d() {
-        a.e();
+        this.a.e();
     }
 }

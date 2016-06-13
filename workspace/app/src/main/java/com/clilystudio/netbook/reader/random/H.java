@@ -2,15 +2,16 @@ package com.clilystudio.netbook.reader.random;
 
 import com.clilystudio.netbook.reader.cb;
 
-final class H implements cb {
+final class H
+        implements cb {
+    private /* synthetic */ ReaderRandomActivity a;
 
-    private ReaderRandomActivity a;
-
-    H(ReaderRandomActivity ReaderRandomActivity1) {
-        a = ReaderRandomActivity1;
+    H(ReaderRandomActivity readerRandomActivity) {
+        this.a = readerRandomActivity;
     }
 
+    @Override
     public final void a() {
-        ReaderRandomActivity.j(a);
+        ReaderRandomActivity.j(this.a);
     }
 }

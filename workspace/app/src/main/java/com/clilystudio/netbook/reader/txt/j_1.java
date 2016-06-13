@@ -2,22 +2,27 @@ package com.clilystudio.netbook.reader.txt;
 
 import com.clilystudio.netbook.reader.cw;
 
-final class j implements cw {
+final class j
+        implements cw {
+    private /* synthetic */ ReaderTxtActivity a;
 
-    private ReaderTxtActivity a;
-
-    j(ReaderTxtActivity ReaderTxtActivity1) {
-        a = ReaderTxtActivity1;
+    j(ReaderTxtActivity readerTxtActivity) {
+        this.a = readerTxtActivity;
     }
 
-    public final void a(int int1) {
-        ReaderTxtActivity.f(a, int1);
+    @Override
+    public final void a(int n2) {
+        ReaderTxtActivity.f(this.a, n2);
     }
 
-    public final void b(int int1) {
-        if (int1 == 2)
-            ReaderTxtActivity.a(a);
-        if (int1 == 0)
-            ReaderTxtActivity.E(a);
+    @Override
+    public final void b(int n2) {
+        if (n2 == 2) {
+            ReaderTxtActivity.a(this.a);
+        }
+        if (n2 != 0) {
+            return;
+        }
+        ReaderTxtActivity.E(this.a);
     }
 }

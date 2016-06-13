@@ -1,14 +1,17 @@
 package com.clilystudio.netbook.ui;
 
-final class cv implements com.koushikdutta.async.a.a {
+import com.koushikdutta.async.a.a;
 
-    private l a;
+final class cv
+        implements a {
+    private /* synthetic */ l a;
 
-    cv(cs cs1, l l2) {
-        a = l2;
+    cv(cs cs2, l l2) {
+        this.a = l2;
     }
 
-    public final void a(Exception Exception1) {
-        a.a("upload success");
+    @Override
+    public final void a(Exception exception) {
+        this.a.a("upload success");
     }
 }

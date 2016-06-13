@@ -1,90 +1,108 @@
 package com.clilystudio.netbook.ui.post;
 
-import android.content.Context;
-import android.content.DialogInterface$OnClickListener;
+import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView$OnItemClickListener;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
 import com.clilystudio.netbook.MyApplication;
+import com.clilystudio.netbook.adapter.a;
 import com.clilystudio.netbook.db.BookReadRecord;
 import com.clilystudio.netbook.ui.BaseActivity;
 import com.clilystudio.netbook.ui.aa;
+import com.clilystudio.netbook.util.e;
 
-import java.util.Collection;
 import java.util.List;
 
-public class AddReviewActivity extends BaseActivity {
-
-    private com.clilystudio.netbook.adapter.a a;
+public class AddReviewActivity
+        extends BaseActivity {
+    private a a;
     private String b;
     private int c = 0;
 
-    static String a(AddReviewActivity AddReviewActivity1, String String2) {
-        AddReviewActivity1.b = String2;
-        return String2;
-    }
-// Error: Internal #201: 
-// The following method may not be correct.
-
-    static void a(AddReviewActivity AddReviewActivity1) {
+    static /* synthetic */ String a(AddReviewActivity addReviewActivity, String string) {
+        addReviewActivity.b = string;
+        return string;
     }
 
-    static com.clilystudio.netbook.adapter.a b(AddReviewActivity AddReviewActivity1) {
-        return AddReviewActivity1.a;
+    static /* synthetic */ void a(AddReviewActivity addReviewActivity) {
+        if (addReviewActivity.a.b() == -1) {
+            e.a((Activity) addReviewActivity, (String) "\u4f60\u8fd8\u6ca1\u6709\u9009\u62e9\u8bc4\u8bba\u7684\u4e66\u7c4d");
+            return;
+        }
+        Intent intent = new Intent(addReviewActivity, AddReviewRatingActivity.class);
+        Bundle bundle = addReviewActivity.getIntent().getExtras();
+        if (bundle != null) {
+            intent.putExtras(bundle);
+        }
+        intent.putExtra("bookReviewBookId", addReviewActivity.b);
+        if (addReviewActivity.c != 0) {
+            intent.putExtra("AddBookReviewRating", addReviewActivity.c);
+        }
+        addReviewActivity.startActivityForResult(intent, 0);
     }
 
-    static void c(AddReviewActivity AddReviewActivity1) {
+    static /* synthetic */ a b(AddReviewActivity addReviewActivity) {
+        return addReviewActivity.a;
+    }
+
+    static /* synthetic */ void c(AddReviewActivity addReviewActivity) {
         MyApplication.a().a(new String[]{"saveToLocalReviewTitle", "saveToLocalReviewDesc"});
     }
 
-    protected void onActivityResult(int int1, int int2, Intent Intent3) {
-        super.onActivityResult(int1, int2, Intent3);
-        if (int1 == 0 && int2 == -1)
-            c = Intent3.getIntExtra("extraNextRating", 0);
-        if (int2 == 256)
-            finish();
+    @Override
+    protected void onActivityResult(int n, int n2, Intent intent) {
+        super.onActivityResult(n, n2, intent);
+        if (n == 0 && n2 == -1) {
+            this.c = intent.getIntExtra("extraNextRating", 0);
+        }
+        if (n2 == 256) {
+            this.finish();
+        }
     }
 
+    @Override
     public void onBackPressed() {
-        if (b != null || c != 0) {
-            h h1 = new h((Context) this);
-
-            h1.d = "\u63D0\u793A";
-            h1.e = "\u79BB\u5F00\u5C06\u4E22\u5931\u5DF2\u7F16\u8F91\u7684\u5185\u5BB9\uFF0C\u786E\u5B9A\u79BB\u5F00\uFF1F";
-            h1.b("\u7559\u5728\u6B64\u9875", null);
-            h1.a("\u79BB\u5F00", (DialogInterface$OnClickListener) new C(this));
-            h1.a().show();
-        } else
-            super.onBackPressed();
+        if (this.b != null || this.c != 0) {
+            h h2 = new h(this);
+            h2.d = "\u63d0\u793a";
+            h2.e = "\u79bb\u5f00\u5c06\u4e22\u5931\u5df2\u7f16\u8f91\u7684\u5185\u5bb9\uff0c\u786e\u5b9a\u79bb\u5f00\uff1f";
+            h2.b("\u7559\u5728\u6b64\u9875", null);
+            h2.a("\u79bb\u5f00", (DialogInterface.OnClickListener) new C(this));
+            h2.a().show();
+            return;
+        }
+        super.onBackPressed();
     }
 
-    public void onCreate(Bundle Bundle1) {
-        View View2;
-        ListView ListView3;
-        Object Object4;
-        int int5;
-
-        super.onCreate(Bundle1);
-        setContentView(2130903147);
-        a(2131034298, 2131034419, (aa) new A(this));
-        View2 = findViewById(2131493270);
-        ListView3 = (ListView) findViewById(2131493271);
-        ListView3.setOnItemClickListener((AdapterView$OnItemClickListener) new B(this));
-        a = new com.clilystudio.netbook.adapter.a(getLayoutInflater());
-        ListView3.setAdapter((ListAdapter) a);
-        Object4 = BookReadRecord.getAll();
-        if (Object4 != null && ((List) Object4).size() > 0) {
-            a.a((Collection) Object4);
-            int5 = 1;
-        } else
-            int5 = 0;
-        if (int5 != 0)
-            View2.setVisibility(8);
-        else
-            View2.setVisibility(0);
+    /*
+     * Enabled aggressive block sorting
+     */
+    @Override
+    public void onCreate(Bundle bundle) {
+        boolean bl;
+        super.onCreate(bundle);
+        this.setContentView(2130903147);
+        this.a(2131034298, 2131034419, (aa) new A(this));
+        View view = this.findViewById(2131493270);
+        ListView listView = (ListView) this.findViewById(2131493271);
+        listView.setOnItemClickListener(new B(this));
+        this.a = new a(this.getLayoutInflater());
+        listView.setAdapter((ListAdapter) ((Object) this.a));
+        List<BookReadRecord> list = BookReadRecord.getAll();
+        if (list != null && list.size() > 0) {
+            this.a.a(list);
+            bl = true;
+        } else {
+            bl = false;
+        }
+        if (bl) {
+            view.setVisibility(8);
+            return;
+        }
+        view.setVisibility(0);
     }
 }

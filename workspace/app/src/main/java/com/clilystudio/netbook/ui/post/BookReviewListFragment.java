@@ -1,166 +1,176 @@
 package com.clilystudio.netbook.ui.post;
 
 import android.app.Activity;
-import android.content.Context;
-import android.content.DialogInterface$OnClickListener;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.am;
+import android.support.v7.app.j;
 import android.view.LayoutInflater;
-import android.view.View$OnClickListener;
-import android.widget.AdapterView$OnItemClickListener;
 import android.widget.ListAdapter;
 
+import com.clilystudio.netbook.MyApplication;
+import com.clilystudio.netbook.adapter.h;
+import com.clilystudio.netbook.event.f;
 import com.clilystudio.netbook.model.Account;
+import com.clilystudio.netbook.model.BookReview;
 import com.clilystudio.netbook.model.Review;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class BookReviewListFragment extends BookPostListFragment {
-
+public class BookReviewListFragment
+        extends BookPostListFragment {
     private aI h;
     private aH i;
-    private com.clilystudio.netbook.adapter.h j;
-    private List k = new ArrayList();
-    private com.handmark.pulltorefresh.library.j l = new aF(this);
+    private h j;
+    private List<BookReview> k = new ArrayList<BookReview>();
+    private com.handmark.pulltorefresh.library.j l;
 
-    static aH a(BookReviewListFragment BookReviewListFragment1, aH aH2) {
-        BookReviewListFragment1.i = aH2;
+    public BookReviewListFragment() {
+        this.l = new aF(this);
+    }
+
+    static /* synthetic */ aH a(BookReviewListFragment bookReviewListFragment, aH aH2) {
+        bookReviewListFragment.i = aH2;
         return aH2;
     }
 
-    static void a(BookReviewListFragment BookReviewListFragment1) {
-        Object[] Object_1darray2 = {"\u9ED8\u8BA4\u6392\u5E8F", "\u6700\u65B0\u53D1\u5E03", "\u6700\u591A\u8BC4\u8BBA"};
-        android.support.v7.app.k k3 = new android.support.v7.app.k((Context) BookReviewListFragment1.getActivity());
-        android.support.v7.app.j j7;
-
-        k3.a((CharSequence) "\u6392\u5E8F");
-        k3.a((CharSequence[]) Object_1darray2, BookReviewListFragment1.g, (DialogInterface$OnClickListener) new aE(BookReviewListFragment1));
-        k3.b((CharSequence) "\u53D6\u6D88", null);
-        j7 = k3.b();
-        j7.setCanceledOnTouchOutside(true);
-        j7.show();
-    }
-// Error: Internal #201: 
-// The following method may not be correct.
-
-    static void a(BookReviewListFragment BookReviewListFragment1, Review Review2) {
+    static /* synthetic */ void a(BookReviewListFragment bookReviewListFragment) {
+        CharSequence[] arrcharSequence = new String[]{"\u9ed8\u8ba4\u6392\u5e8f", "\u6700\u65b0\u53d1\u5e03", "\u6700\u591a\u8bc4\u8bba"};
+        k k2 = new k(bookReviewListFragment.getActivity());
+        k2.a("\u6392\u5e8f");
+        k2.a(arrcharSequence, bookReviewListFragment.g, new aE(bookReviewListFragment));
+        k2.b("\u53d6\u6d88", null);
+        j j2 = k2.b();
+        j2.setCanceledOnTouchOutside(true);
+        j2.show();
     }
 
-    static aH b(BookReviewListFragment BookReviewListFragment1) {
-        return BookReviewListFragment1.i;
+    static /* synthetic */ void a(BookReviewListFragment bookReviewListFragment, Review review) {
+        MyApplication.a().a("saveToLocalReviewTitle", review.getTitle());
+        MyApplication.a().a("saveToLocalReviewDesc", review.getContent());
+        Intent intent = new Intent(bookReviewListFragment.getActivity(), AddReviewRatingActivity.class);
+        intent.putExtra("bookReviewBookId", bookReviewListFragment.a());
+        intent.putExtra("isFromBookReviewList", true);
+        intent.putExtra("AddBookReviewRating", review.getRating());
+        bookReviewListFragment.startActivity(intent);
     }
 
-    static void b(BookReviewListFragment BookReviewListFragment1, Review Review2) {
-        android.support.v7.app.k k3 = new android.support.v7.app.k((Context) BookReviewListFragment1.getActivity());
-
-        k3.a((CharSequence) "\u518D\u6B21\u7F16\u8F91");
-        k3.b((CharSequence) "\u5373\u5C06\u8F7D\u5165\u4E4B\u524D\u53D1\u5E03\u7684\u4E66\u8BC4");
-        k3.a(2131034424, (DialogInterface$OnClickListener) new aD(BookReviewListFragment1, Review2));
-        k3.c();
+    static /* synthetic */ aH b(BookReviewListFragment bookReviewListFragment) {
+        return bookReviewListFragment.i;
     }
 
-    static void c(BookReviewListFragment BookReviewListFragment1) {
-        BookReviewListFragment1.e();
+    static /* synthetic */ void b(BookReviewListFragment bookReviewListFragment, Review review) {
+        k k2 = new k(bookReviewListFragment.getActivity());
+        k2.a("\u518d\u6b21\u7f16\u8f91");
+        k2.b("\u5373\u5c06\u8f7d\u5165\u4e4b\u524d\u53d1\u5e03\u7684\u4e66\u8bc4");
+        k2.a(2131034424, (DialogInterface.OnClickListener) new aD(bookReviewListFragment, review));
+        k2.c();
+    }
+
+    static /* synthetic */ void c(BookReviewListFragment bookReviewListFragment) {
+        bookReviewListFragment.e();
     }
 
     public static BookReviewListFragment d() {
         return new BookReviewListFragment();
     }
 
-    static List d(BookReviewListFragment BookReviewListFragment1) {
-        return BookReviewListFragment1.k;
+    static /* synthetic */ List d(BookReviewListFragment bookReviewListFragment) {
+        return bookReviewListFragment.k;
     }
 
-    static void e(BookReviewListFragment BookReviewListFragment1) {
-        Account Account2 = am.e();
-
-        if (Account2 != null) {
-            aG aG3 = new aG(BookReviewListFragment1, (Activity) BookReviewListFragment1.getActivity());
-            String[] String_1darray4 = new String[2];
-
-            String_1darray4[0] = BookReviewListFragment1.a();
-            String_1darray4[1] = Account2.getToken();
-            aG3.b(String_1darray4);
-        } else
-            BookReviewListFragment1.f();
+    static /* synthetic */ void e(BookReviewListFragment bookReviewListFragment) {
+        Account account = am.e();
+        if (account != null) {
+            aG aG2 = new aG(bookReviewListFragment, bookReviewListFragment.getActivity());
+            String[] arrstring = new String[]{bookReviewListFragment.a(), account.getToken()};
+            aG2.b(arrstring);
+            return;
+        }
+        bookReviewListFragment.f();
     }
 
-    static void f(BookReviewListFragment BookReviewListFragment1) {
-        BookReviewListFragment1.f();
+    static /* synthetic */ void f(BookReviewListFragment bookReviewListFragment) {
+        bookReviewListFragment.f();
     }
-// Error: Internal #201: 
-// The following method may not be correct.
 
-    static void g(BookReviewListFragment BookReviewListFragment1) {
-        if (BookReviewListFragment1.e.getVisibility() == 8) {
-            BookReviewListFragment1.e.setVisibility(0);
-            BookReviewListFragment1.e.setImageResource(2130837883);
-            BookReviewListFragment1.e.setOnClickListener((View$OnClickListener) new aC(BookReviewListFragment1));
-            BookReviewListFragment1.e.setContentDescription((CharSequence) "\u5199\u4E66\u8BC4");
+    static /* synthetic */ void g(BookReviewListFragment bookReviewListFragment) {
+        if (bookReviewListFragment.e.getVisibility() == 8) {
+            bookReviewListFragment.e.setVisibility(0);
+            bookReviewListFragment.e.setImageResource(2130837883);
+            bookReviewListFragment.e.setOnClickListener(new aC(bookReviewListFragment));
+            bookReviewListFragment.e.setContentDescription("\u5199\u4e66\u8bc4");
         }
     }
 
-    static com.clilystudio.netbook.adapter.h h(BookReviewListFragment BookReviewListFragment1) {
-        return BookReviewListFragment1.j;
+    static /* synthetic */ h h(BookReviewListFragment bookReviewListFragment) {
+        return bookReviewListFragment.j;
     }
 
-    static com.handmark.pulltorefresh.library.j i(BookReviewListFragment BookReviewListFragment1) {
-        return BookReviewListFragment1.l;
+    static /* synthetic */ com.handmark.pulltorefresh.library.j i(BookReviewListFragment bookReviewListFragment) {
+        return bookReviewListFragment.l;
     }
 
-    static aI j(BookReviewListFragment BookReviewListFragment1) {
-        return BookReviewListFragment1.h;
+    static /* synthetic */ aI j(BookReviewListFragment bookReviewListFragment) {
+        return bookReviewListFragment.h;
     }
 
     private void e() {
-        aI aI1;
-        String[] String_1darray2;
-
-        h = new aI(this, (byte) 0);
-        aI1 = h;
-        String_1darray2 = new String[2];
-        String_1darray2[0] = a();
-        String_1darray2[1] = f;
-        aI1.b(String_1darray2);
+        aI aI2 = this.h = new aI(this, 0);
+        String[] arrstring = new String[]{this.a(), this.f};
+        aI2.b(arrstring);
     }
 
     private void f() {
+        Intent intent = new Intent(this.getActivity(), AddReviewRatingActivity.class);
+        intent.putExtra("bookReviewBookId", this.a());
+        intent.putExtra("isFromBookReviewList", true);
+        this.startActivity(intent);
     }
 
+    @Override
     public final void b() {
         super.b();
-        d.setText((CharSequence) "\u8FD9\u91CC\u8FD8\u6CA1\u6709\u4E66\u8BC4\uFF0C\u53BB\u53D1\u5E03\u4E00\u4E2A\u5427");
+        this.d.setText("\u8fd9\u91cc\u8fd8\u6ca1\u6709\u4e66\u8bc4\uff0c\u53bb\u53d1\u5e03\u4e00\u4e2a\u5427");
     }
 
-    public void onActivityCreated(Bundle Bundle1) {
-        super.onActivityCreated(Bundle1);
-        a.setOnRefreshListener((com.handmark.pulltorefresh.library.k) new az(this));
-        b.setOnItemClickListener((AdapterView$OnItemClickListener) new aB(this));
-        j = new com.clilystudio.netbook.adapter.h(LayoutInflater.from((Context) getActivity()));
-        b.setAdapter((ListAdapter) j);
-        f = ((BookPostTabActivity) getActivity()).l();
-        g = BookPostTabActivity.a(f);
-        e();
+    @Override
+    public void onActivityCreated(Bundle bundle) {
+        super.onActivityCreated(bundle);
+        this.a.setOnRefreshListener(new az(this));
+        this.b.setOnItemClickListener(new aB(this));
+        this.j = new h(LayoutInflater.from(this.getActivity()));
+        this.b.setAdapter((ListAdapter) ((Object) this.j));
+        this.f = ((BookPostTabActivity) this.getActivity()).l();
+        (BookPostTabActivity) this.getActivity();
+        this.g = BookPostTabActivity.a(this.f);
+        this.e();
     }
 
-    public void onAttach(Activity Activity1) {
-        super.onAttach(Activity1);
-        ((BookPostTabActivity) Activity1).b((ax) new ay(this));
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        ((BookPostTabActivity) activity).b((ax) ((Object) new ay(this)));
     }
 
-    public void onCreate(Bundle Bundle1) {
-        super.onCreate(Bundle1);
-        com.clilystudio.netbook.event.i.a().a(this);
+    @Override
+    public void onCreate(Bundle bundle) {
+        super.onCreate(bundle);
+        i.a().a(this);
     }
 
+    @Override
     public void onDestroy() {
         super.onDestroy();
-        com.clilystudio.netbook.event.i.a().b(this);
+        i.a().b(this);
     }
 
-    public void onRefreshEvent(com.clilystudio.netbook.event.f f1) {
-        if (a != null)
-            a.setRefreshing();
+    @l
+    public void onRefreshEvent(f f2) {
+        if (this.a != null) {
+            this.a.setRefreshing();
+        }
     }
 }

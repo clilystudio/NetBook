@@ -3,21 +3,22 @@ package com.clilystudio.netbook.ui.user;
 import android.os.Handler;
 import android.os.Message;
 
-final class av extends Handler {
+final class av
+        extends Handler {
+    private /* synthetic */ SmsVerifyActivity a;
 
-    private SmsVerifyActivity a;
-
-    av(SmsVerifyActivity SmsVerifyActivity1) {
-        a = SmsVerifyActivity1;
+    av(SmsVerifyActivity smsVerifyActivity) {
+        this.a = smsVerifyActivity;
     }
 
-    public final void handleMessage(Message Message1) {
-        switch (Message1.what) {
-            default:
+    @Override
+    public final void handleMessage(Message message) {
+        switch (message.what) {
+            default: {
                 return;
+            }
             case 1:
-                SmsVerifyActivity.a(a, Message1.arg1);
-                return;
         }
+        SmsVerifyActivity.a(this.a, message.arg1);
     }
 }

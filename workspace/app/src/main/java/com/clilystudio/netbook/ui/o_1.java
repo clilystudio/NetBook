@@ -2,33 +2,38 @@ package com.clilystudio.netbook.ui;
 
 import android.content.Context;
 import android.view.View;
-import android.view.View$OnClickListener;
 
 import com.clilystudio.netbook.util.as;
 import com.clilystudio.netbook.util.e;
 
-final class o implements View$OnClickListener {
+final class o
+        implements View.OnClickListener {
+    private /* synthetic */ int a;
+    private /* synthetic */ n b;
 
-    private int a;
-    private n b;
-    o(n n1, int int2) {
-        b = n1;
-        a = int2;
+    o(n n2, int n3) {
+        this.b = n2;
+        this.a = n3;
     }
 
-    public final void onClick(View View1) {
-        if (AudioBookPlayActivity.b(b.a) == null)
-            e.a((Context) b.a, "\u64AD\u653E\u5668\u51FA\u9519\u4E86");
-        else {
-            if (a != AudioBookPlayActivity.k(b.a)) {
-                AudioBookPlayActivity.d(b.a, true);
-                AudioBookPlayActivity.b(b.a, a);
-                AudioBookPlayActivity.c(b.a, AudioBookPlayActivity.k(b.a));
-            } else if (as.c())
-                as.h();
-            else
-                AudioBookPlayActivity.b(b.a).d();
-            b.notifyDataSetChanged();
+    /*
+     * Enabled aggressive block sorting
+     */
+    @Override
+    public final void onClick(View view) {
+        if (AudioBookPlayActivity.b(this.b.a) == null) {
+            e.a((Context) this.b.a, "\u64ad\u653e\u5668\u51fa\u9519\u4e86");
+            return;
         }
+        if (this.a != AudioBookPlayActivity.k(this.b.a)) {
+            AudioBookPlayActivity.d(this.b.a, true);
+            AudioBookPlayActivity.b(this.b.a, this.a);
+            AudioBookPlayActivity.c(this.b.a, AudioBookPlayActivity.k(this.b.a));
+        } else if (as.c()) {
+            as.h();
+        } else {
+            AudioBookPlayActivity.b(this.b.a).d();
+        }
+        this.b.notifyDataSetChanged();
     }
 }

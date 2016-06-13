@@ -2,8 +2,8 @@ package com.clilystudio.netbook.model;
 
 import java.io.Serializable;
 
-public class AdvertData implements Serializable {
-
+public class AdvertData
+        implements Serializable {
     private String _id;
     private int apkSize;
     private String desc;
@@ -17,94 +17,94 @@ public class AdvertData implements Serializable {
     private String url;
 
     public int getApkSize() {
-        return apkSize;
+        return this.apkSize;
     }
 
-    public void setApkSize(int int1) {
-        apkSize = int1;
+    public void setApkSize(int n) {
+        this.apkSize = n;
     }
 
     public String getDesc() {
-        return desc;
+        return this.desc;
     }
 
-    public void setDesc(String String1) {
-        desc = String1;
+    public void setDesc(String string) {
+        this.desc = string;
     }
 
     public String getImg() {
-        return img;
+        return this.img;
     }
 
-    public void setImg(String String1) {
-        img = String1;
+    public void setImg(String string) {
+        this.img = string;
     }
 
     public String getInsideLink() {
-        return insideLink;
+        return this.insideLink;
     }
 
-    public void setInsideLink(String String1) {
-        insideLink = String1;
+    public void setInsideLink(String string) {
+        this.insideLink = string;
     }
 
     public int getPriority() {
-        return priority;
+        return this.priority;
     }
 
-    public void setPriority(int int1) {
-        priority = int1;
+    public void setPriority(int n) {
+        this.priority = n;
     }
 
     public String[] getShowAt() {
-        return showAt;
+        return this.showAt;
     }
 
-    public void setShowAt(String[] String_1darray1) {
-        showAt = String_1darray1;
+    public void setShowAt(String[] arrstring) {
+        this.showAt = arrstring;
     }
 
     public String getTitle() {
-        return title;
+        return this.title;
     }
 
-    public void setTitle(String String1) {
-        title = String1;
+    public void setTitle(String string) {
+        this.title = string;
     }
 
     public String getType() {
-        return type;
+        return this.type;
     }
 
-    public void setType(String String1) {
-        type = String1;
+    public void setType(String string) {
+        this.type = string;
     }
 
     public String getUrl() {
-        return url;
+        return this.url;
     }
 
-    public void setUrl(String String1) {
-        url = String1;
+    public void setUrl(String string) {
+        this.url = string;
     }
 
     public String get_id() {
-        return _id;
+        return this._id;
     }
 
-    public void set_id(String String1) {
-        _id = String1;
+    public void set_id(String string) {
+        this._id = string;
     }
 
     public boolean isApk() {
-        return isApk;
+        return this.isApk;
     }
 
-    public void setApk(boolean boolean1) {
-        isApk = boolean1;
+    public void setApk(boolean bl) {
+        this.isApk = bl;
     }
 
-    public void setIsApk(boolean boolean1) {
-        isApk = boolean1;
+    public void setIsApk(boolean bl) {
+        this.isApk = bl;
     }
 }

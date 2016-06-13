@@ -1,25 +1,22 @@
 package com.clilystudio.netbook.adapter;
 
 import android.content.DialogInterface;
-import android.content.DialogInterface$OnClickListener;
 import android.support.design.widget.am;
 
-final class O implements DialogInterface$OnClickListener {
+final class O
+        implements DialogInterface.OnClickListener {
+    private /* synthetic */ N a;
 
-    private N a;
-
-    O(N N1) {
-        a = N1;
+    O(N n) {
+        this.a = n;
     }
 
-    public final void onClick(DialogInterface DialogInterface1, int int2) {
-        S S3 = new S(a.c);
-        String[] String_1darray4 = new String[2];
-
-        String_1darray4[0] = am.e().getToken();
-        String_1darray4[1] = a.b.get_id();
-        S3.execute(String_1darray4);
-        G.a(a.c, a.a.q);
-        G.d(a.c, a.b);
+    @Override
+    public final void onClick(DialogInterface dialogInterface, int n) {
+        S s = new S(this.a.c);
+        String[] arrstring = new String[]{am.e().getToken(), this.a.b.get_id()};
+        s.execute(arrstring);
+        G.a(this.a.c, this.a.a.q);
+        G.d(this.a.c, this.a.b);
     }
 }

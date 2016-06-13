@@ -2,22 +2,23 @@ package com.clilystudio.netbook.util.adutil;
 
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.DialogInterface$OnClickListener;
 import android.view.View;
 
-final class j implements DialogInterface$OnClickListener {
+final class j
+        implements DialogInterface.OnClickListener {
+    private /* synthetic */ View a;
+    private /* synthetic */ Context b;
+    private /* synthetic */ BaseShelfAd c;
 
-    private View a;
-    private Context b;
-    private BaseShelfAd c;
-    j(BaseShelfAd BaseShelfAd1, View View2, Context Context3) {
-        c = BaseShelfAd1;
-        a = View2;
-        b = Context3;
+    j(BaseShelfAd baseShelfAd, View view, Context context) {
+        this.c = baseShelfAd;
+        this.a = view;
+        this.b = context;
     }
 
-    public final void onClick(DialogInterface DialogInterface1, int int2) {
-        c.onAdClick(a);
-        c.recordDownload(b);
+    @Override
+    public final void onClick(DialogInterface dialogInterface, int n) {
+        this.c.onAdClick(this.a);
+        this.c.recordDownload(this.b);
     }
 }

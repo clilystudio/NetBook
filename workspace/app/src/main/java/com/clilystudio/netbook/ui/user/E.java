@@ -1,28 +1,26 @@
 package com.clilystudio.netbook.ui.user;
 
-import android.os.AsyncTask$Status;
+import android.os.AsyncTask;
 
-final class E implements j {
+final class E
+        implements j {
+    private /* synthetic */ MyTopicFragment a;
 
-    private MyTopicFragment a;
-
-    E(MyTopicFragment MyTopicFragment1) {
-        a = MyTopicFragment1;
+    E(MyTopicFragment myTopicFragment) {
+        this.a = myTopicFragment;
     }
 
+    @Override
     public final void a() {
-        if (MyTopicFragment.e(a) == null || MyTopicFragment.e(a).getStatus() == AsyncTask$Status.FINISHED) {
-            F F2;
-            String[] String_1darray3;
-
-            MyTopicFragment.i(a).setVisibility(0);
-            if (MyTopicFragment.f(a) != null && MyTopicFragment.f(a).getStatus() != AsyncTask$Status.FINISHED && !com.clilystudio.netbook.ui.user.MyTopicFragment.f(a).isCancelled())
-                MyTopicFragment.f(a).cancel(true);
-            MyTopicFragment.a(a, new F(a, (byte) 0));
-            F2 = MyTopicFragment.e(a);
-            String_1darray3 = new String[1];
-            String_1darray3[0] = MyTopicFragment.b(a);
-            F2.b(String_1darray3);
+        if (MyTopicFragment.e(this.a) == null || MyTopicFragment.e(this.a).getStatus() == AsyncTask.Status.FINISHED) {
+            MyTopicFragment.i(this.a).setVisibility(0);
+            if (MyTopicFragment.f(this.a) != null && MyTopicFragment.f(this.a).getStatus() != AsyncTask.Status.FINISHED && !MyTopicFragment.f(this.a).isCancelled()) {
+                MyTopicFragment.f(this.a).cancel(true);
+            }
+            MyTopicFragment.a(this.a, new F(this.a, 0));
+            F f = MyTopicFragment.e(this.a);
+            String[] arrstring = new String[]{MyTopicFragment.b(this.a)};
+            f.b(arrstring);
         }
     }
 }

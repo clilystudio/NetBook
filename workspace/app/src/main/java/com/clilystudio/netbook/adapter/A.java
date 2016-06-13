@@ -1,20 +1,22 @@
 package com.clilystudio.netbook.adapter;
 
+import android.content.Context;
 import android.view.View;
-import android.view.View$OnClickListener;
 
+import com.clilystudio.netbook.model.Author;
 import com.clilystudio.netbook.model.PostComment;
 import com.clilystudio.netbook.util.e;
 
-final class A implements View$OnClickListener {
+final class A
+        implements View.OnClickListener {
+    private /* synthetic */ PostComment a;
 
-    private PostComment a;
-
-    A(z z1, PostComment PostComment2) {
-        a = PostComment2;
+    A(z z2, PostComment postComment) {
+        this.a = postComment;
     }
 
-    public final void onClick(View View1) {
-        View1.getContext().startActivity(e.a(View1.getContext(), a.getAuthor()));
+    @Override
+    public final void onClick(View view) {
+        view.getContext().startActivity(e.a((Context) view.getContext(), (Author) this.a.getAuthor()));
     }
 }

@@ -3,16 +3,17 @@ package com.clilystudio.netbook.ui;
 import android.os.Handler;
 import android.os.Message;
 
-final class aB extends Handler {
+final class aB
+        extends Handler {
+    private /* synthetic */ BookInfoActivity a;
 
-    private BookInfoActivity a;
-
-    aB(BookInfoActivity BookInfoActivity1) {
-        a = BookInfoActivity1;
+    aB(BookInfoActivity bookInfoActivity) {
+        this.a = bookInfoActivity;
     }
 
-    public final void handleMessage(Message Message1) {
-        BookInfoActivity.a(a, true);
-        BookInfoActivity.b(a);
+    @Override
+    public final void handleMessage(Message message) {
+        BookInfoActivity.a(this.a, true);
+        BookInfoActivity.b(this.a);
     }
 }

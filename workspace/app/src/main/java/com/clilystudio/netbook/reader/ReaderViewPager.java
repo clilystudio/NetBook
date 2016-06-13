@@ -1,12 +1,12 @@
 package com.clilystudio.netbook.reader;
 
 import android.content.Context;
-import android.content.res.Resources$NotFoundException;
+import android.content.res.Resources;
 import android.database.DataSetObserver;
 import android.graphics.Canvas;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
-import android.os.Build$VERSION;
+import android.os.Build;
 import android.os.Parcelable;
 import android.support.v4.view.AccessibilityDelegateCompat;
 import android.support.v4.view.KeyEventCompat;
@@ -24,24 +24,22 @@ import android.view.MotionEvent;
 import android.view.SoundEffectConstants;
 import android.view.VelocityTracker;
 import android.view.View;
-import android.view.View$MeasureSpec;
 import android.view.ViewConfiguration;
 import android.view.ViewGroup;
-import android.view.ViewGroup$LayoutParams;
 import android.view.ViewParent;
 import android.view.accessibility.AccessibilityEvent;
 import android.view.animation.Interpolator;
 import android.widget.Scroller;
 
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.List;
 
-public class ReaderViewPager extends ViewGroup {
-
-    private static final boolean USE_CACHE = false;
+public class ReaderViewPager
+        extends ViewGroup {
     private static final int CLOSE_ENOUGH = 2;
+    private static final Comparator<cs> COMPARATOR;
     private static final boolean DEBUG = false;
     private static final int DEFAULT_GUTTER_SIZE = 16;
     private static final int DEFAULT_OFFSCREEN_PAGES = 1;
@@ -49,18 +47,27 @@ public class ReaderViewPager extends ViewGroup {
     private static final int DRAW_ORDER_FORWARD = 1;
     private static final int DRAW_ORDER_REVERSE = 2;
     private static final int INVALID_POINTER = -1;
+    private static final int[] LAYOUT_ATTRS;
     private static final int MAX_SETTLE_DURATION = 600;
     private static final int MIN_DISTANCE_FOR_FLING = 25;
     private static final int MIN_FLING_VELOCITY = 400;
     private static final String TAG = "ViewPager";
-    private static final int[] LAYOUT_ATTRS = {16842931};
-    private static final Comparator COMPARATOR = new co();
-    private static final Interpolator sInterpolator = new cp();
-    private static final cz sPositionComparator = new cz();
-    private final ArrayList mItems = new ArrayList();
+    private static final boolean USE_CACHE;
+    private static final Interpolator sInterpolator;
+    private static final cz sPositionComparator;
+
+    static {
+        LAYOUT_ATTRS = new int[]{16842931};
+        COMPARATOR = new co();
+        sInterpolator = new cp();
+        sPositionComparator = new cz();
+    }
+
+    private final Runnable mEndScrollRunnable;
+    private final ArrayList<cs> mItems = new ArrayList();
     private final cs mTempItem = new cs();
     private final Rect mTempRect = new Rect();
-    private int mActivePointerId;
+    private int mActivePointerId = -1;
     private PagerAdapter mAdapter;
     private cv mAdapterChangeListener;
     private int mBottomPageBounds;
@@ -72,13 +79,12 @@ public class ReaderViewPager extends ViewGroup {
     private int mDecorChildCount;
     private int mDefaultGutterSize;
     private int mDrawingOrder;
-    private ArrayList mDrawingOrderedChildren;
-    private Runnable mEndScrollRunnable;     // final access specifier removed
+    private ArrayList<View> mDrawingOrderedChildren;
     private int mExpectedAdapterCount;
     private long mFakeDragBeginTime;
     private boolean mFakeDragging;
-    private boolean mFirstLayout;
-    private float mFirstOffset;
+    private boolean mFirstLayout = true;
+    private float mFirstOffset = -3.4028235E38f;
     private int mFlingDistance;
     private int mGutterSize;
     private boolean mIgnoreGutter;
@@ -90,2230 +96,1976 @@ public class ReaderViewPager extends ViewGroup {
     private boolean mIsUnableToDrag;
     private float mLastMotionX;
     private float mLastMotionY;
-    private float mLastOffset;
+    private float mLastOffset = Float.MAX_VALUE;
     private EdgeEffectCompat mLeftEdge;
     private Drawable mMarginDrawable;
     private int mMaximumVelocity;
     private int mMinimumVelocity;
-    private boolean mNeedCalculatePageOffsets;
+    private boolean mNeedCalculatePageOffsets = false;
     private cx mObserver;
-    private int mOffscreenPageLimit;
+    private int mOffscreenPageLimit = 1;
     private cw mOnPageChangeListener;
     private int mPageMargin;
     private K mPageTransformer$572aa01b;
     private boolean mPopulatePending;
-    private Parcelable mRestoredAdapterState;
-    private ClassLoader mRestoredClassLoader;
-    private int mRestoredCurItem;
+    private Parcelable mRestoredAdapterState = null;
+    private ClassLoader mRestoredClassLoader = null;
+    private int mRestoredCurItem = -1;
     private EdgeEffectCompat mRightEdge;
     private int mScrollState;
     private Scroller mScroller;
     private boolean mScrollingCacheEnabled;
-    private reflect.Method mSetChildrenDrawingOrderEnabled;
+    private Method mSetChildrenDrawingOrderEnabled;
     private int mTopPageBounds;
     private int mTouchSlop;
     private VelocityTracker mVelocityTracker;
-    public ReaderViewPager(Context Context1, AttributeSet AttributeSet2) {
-        super(Context1, AttributeSet2);
-        mRestoredCurItem = -1;
-        mRestoredAdapterState = null;
-        mRestoredClassLoader = null;
-        mFirstOffset = -3.4028234663852886e+038F;
-        mLastOffset = 3.4028234663852886e+038F;
-        mOffscreenPageLimit = 1;
-        mActivePointerId = -1;
-        mFirstLayout = true;
-        mNeedCalculatePageOffsets = false;
-        mEndScrollRunnable = (Runnable) new cq(this);
-        mScrollState = 0;
-        d();
+
+    public ReaderViewPager(Context context) {
+        super(context);
+        this.mEndScrollRunnable = new cq(this);
+        this.mScrollState = 0;
+        this.d();
     }
 
-    public ReaderViewPager(Context Context1) {
-        super(Context1);
-        mRestoredCurItem = -1;
-        mRestoredAdapterState = null;
-        mRestoredClassLoader = null;
-        mFirstOffset = -3.4028234663852886e+038F;
-        mLastOffset = 3.4028234663852886e+038F;
-        mOffscreenPageLimit = 1;
-        mActivePointerId = -1;
-        mFirstLayout = true;
-        mNeedCalculatePageOffsets = false;
-        mEndScrollRunnable = (Runnable) new cq(this);
-        mScrollState = 0;
-        d();
+    public ReaderViewPager(Context context, AttributeSet attributeSet) {
+        super(context, attributeSet);
+        this.mEndScrollRunnable = new cq(this);
+        this.mScrollState = 0;
+        this.d();
     }
 
-    static PagerAdapter a(ReaderViewPager ReaderViewPager1) {
-        return ReaderViewPager1.mAdapter;
+    static /* synthetic */ PagerAdapter a(ReaderViewPager readerViewPager) {
+        return readerViewPager.mAdapter;
     }
 
-    static void a(ReaderViewPager ReaderViewPager1, int int2) {
-        ReaderViewPager1.b(0);
+    static /* synthetic */ void a(ReaderViewPager readerViewPager, int n) {
+        readerViewPager.b(0);
     }
 
-    static int b(ReaderViewPager ReaderViewPager1) {
-        return ReaderViewPager1.mCurItem;
+    static /* synthetic */ int b(ReaderViewPager readerViewPager) {
+        return readerViewPager.mCurItem;
     }
 
-    static int[] c() {
+    static /* synthetic */ int[] c() {
         return LAYOUT_ATTRS;
     }
 
-    private Rect a(Rect Rect1, View View2) {
-        Rect Rect3;
-
-        if (Rect1 == null)
-            Rect3 = new Rect();
-        else
-            Rect3 = Rect1;
-        if (View2 == null)
-            Rect3.set(0, 0, 0, 0);
-        else {
-            ViewParent ViewParent4;
-            ViewGroup ViewGroup5;
-
-            Rect3.left = View2.getLeft();
-            Rect3.right = View2.getRight();
-            Rect3.top = View2.getTop();
-            Rect3.bottom = View2.getBottom();
-            for (ViewParent4 = View2.getParent(); ViewParent4 instanceof ViewGroup && ViewParent4 != this; ViewParent4 = ViewGroup5.getParent()) {
-                ViewGroup5 = (ViewGroup) ViewParent4;
-                Rect3.left += ViewGroup5.getLeft();
-                Rect3.right += ViewGroup5.getRight();
-                Rect3.top += ViewGroup5.getTop();
-                Rect3.bottom += ViewGroup5.getBottom();
-            }
+    /*
+     * Enabled aggressive block sorting
+     */
+    private Rect a(Rect rect, View view) {
+        Rect rect2 = rect == null ? new Rect() : rect;
+        if (view == null) {
+            rect2.set(0, 0, 0, 0);
+            return rect2;
         }
-        return Rect3;
+        rect2.left = view.getLeft();
+        rect2.right = view.getRight();
+        rect2.top = view.getTop();
+        rect2.bottom = view.getBottom();
+        ViewParent viewParent = view.getParent();
+        while (viewParent instanceof ViewGroup && viewParent != this) {
+            ViewGroup viewGroup = (ViewGroup) viewParent;
+            rect2.left += viewGroup.getLeft();
+            rect2.right += viewGroup.getRight();
+            rect2.top += viewGroup.getTop();
+            rect2.bottom += viewGroup.getBottom();
+            viewParent = viewGroup.getParent();
+        }
+        return rect2;
     }
 
-    private cs a(int int1, int int2) {
-        Object Object3 = new cs();
-
-        ((cs) Object3).b = int1;
-        ((cs) Object3).a = mAdapter.instantiateItem(this, int1);
-        ((cs) Object3).d = mAdapter.getPageWidth(int1);
-        if (int2 < 0 || int2 >= mItems.size())
-            mItems.add(Object3);
-        else
-            mItems.add(int2, Object3);
-        return (cs) Object3;
+    private cs a(int n, int n2) {
+        cs cs2 = new cs();
+        cs2.b = (SettingWidget) n;
+        cs2.a = this.mAdapter.instantiateItem(this, n);
+        cs2.d = this.mAdapter.getPageWidth(n);
+        if (n2 < 0 || n2 >= this.mItems.size()) {
+            this.mItems.add(cs2);
+            return cs2;
+        }
+        this.mItems.add(n2, cs2);
+        return cs2;
     }
 
-    private cs a(View View1) {
-        int int2 = 0;
-
-        while (int2 < mItems.size()) {
-            cs cs3 = (cs) mItems.get(int2);
-
-            if (mAdapter.isViewFromObject(View1, cs3.a))
-                return cs3;
-            else
-                ++int2;
+    private cs a(View view) {
+        for (int i = 0; i < this.mItems.size(); ++i) {
+            cs cs2 = this.mItems.get(i);
+            if (!this.mAdapter.isViewFromObject(view, cs2.a)) continue;
+            return cs2;
         }
         return null;
     }
 
-    private void a(int int1, float float2, int int3) {
-        if (mDecorChildCount > 0) {
-            int int10 = getScrollX();
-            int int11 = getPaddingLeft();
-            int int12 = getPaddingRight();
-            int int13 = getWidth();
-            int int14 = getChildCount();
-            int int15 = 0;
-
-            while (int15 < int14) {
-                View View16 = getChildAt(int15);
-                ct ct17 = (ct) View16.getLayoutParams();
-                int int19;
-                int int20;
-                int int21;
-
-                if (ct17.a) {
-                    int int22;
-                    int int24;
-
-                    switch (0x7 & ct17.b) {
-                        case 2:
-                        case 4:
-                        default:
-                            int int28;
-
-                            int22 = int11;
-                            int28 = int12;
-                            int19 = int11;
-                            int20 = int28;
+    /*
+     * Enabled aggressive block sorting
+     */
+    private void a(int n, float f, int n2) {
+        if (this.mDecorChildCount > 0) {
+            int n3 = this.getScrollX();
+            int n4 = this.getPaddingLeft();
+            int n5 = this.getPaddingRight();
+            int n6 = this.getWidth();
+            int n7 = this.getChildCount();
+            for (int i = 0; i < n7; ++i) {
+                int n8;
+                int n9;
+                View view = this.getChildAt(i);
+                ct ct2 = (ct) ((Object) view.getLayoutParams());
+                if (ct2.a != false) {
+                    int n10;
+                    int n11;
+                    switch (7 & ct2.b) {
+                        default: {
+                            n10 = n4;
+                            int n12 = n5;
+                            n9 = n4;
+                            n8 = n12;
                             break;
-                        case 3:
-                            int int26 = int11 + View16.getWidth();
-                            int int27 = int11;
-
-                            int20 = int12;
-                            int19 = int26;
-                            int22 = int27;
+                        }
+                        case 3: {
+                            int n13 = n4 + view.getWidth();
+                            int n14 = n4;
+                            n8 = n5;
+                            n9 = n13;
+                            n10 = n14;
                             break;
-                        case 1:
-                            int int25;
-
-                            int22 = Math.max((int13 - View16.getMeasuredWidth()) / 2, int11);
-                            int25 = int12;
-                            int19 = int11;
-                            int20 = int25;
+                        }
+                        case 1: {
+                            n10 = Math.max((n6 - view.getMeasuredWidth()) / 2, n4);
+                            int n15 = n5;
+                            n9 = n4;
+                            n8 = n15;
                             break;
-                        case 5:
-                            int int23;
-
-                            int22 = int13 - int12 - View16.getMeasuredWidth();
-                            int23 = int12 + View16.getMeasuredWidth();
-                            int19 = int11;
-                            int20 = int23;
-                            break;
+                        }
+                        case 5: {
+                            n10 = n6 - n5 - view.getMeasuredWidth();
+                            int n16 = n5 + view.getMeasuredWidth();
+                            n9 = n4;
+                            n8 = n16;
+                        }
                     }
-                    int24 = int22 + int10 - View16.getLeft();
-                    if (int24 != 0)
-                        View16.offsetLeftAndRight(int24);
+                    if ((n11 = n10 + n3 - view.getLeft()) != 0) {
+                        view.offsetLeftAndRight(n11);
+                    }
                 } else {
-                    int int18 = int12;
-
-                    int19 = int11;
-                    int20 = int18;
+                    int n17 = n5;
+                    n9 = n4;
+                    n8 = n17;
                 }
-                ++int15;
-                int21 = int20;
-                int11 = int19;
-                int12 = int21;
+                int n18 = n8;
+                n4 = n9;
+                n5 = n18;
             }
         }
-        if (mPageTransformer$572aa01b != null) {
-            int int5;
-            int int6;
-
-            getScrollX();
-            int5 = getChildCount();
-            for (int6 = 0; int6 < int5; ++int6) {
-                View View7 = getChildAt(int6);
-
-                if (!((ct) View7.getLayoutParams()).a) {
-                    View7.getLeft();
-                    e();
-                }
+        if (this.mPageTransformer$572aa01b != null) {
+            this.getScrollX();
+            int n19 = this.getChildCount();
+            for (int i = 0; i < n19; ++i) {
+                View view = this.getChildAt(i);
+                if (((ct) view.getLayoutParams()).a != false) continue;
+                view.getLeft();
+                this.e();
             }
         }
-        mCalledSuper = true;
+        this.mCalledSuper = true;
     }
 
-    private void a(int int1, int int2, int int3, int int4) {
-        if (int2 > 0 && !mItems.isEmpty()) {
-            int int8 = int3 + (int1 - getPaddingLeft() - getPaddingRight());
-            int int9 = int4 + (int2 - getPaddingLeft() - getPaddingRight());
-            int int10 = (int) ((float) getScrollX() / (float) int9 * (float) int8);
-
-            scrollTo(int10, getScrollY());
-            if (!mScroller.isFinished()) {
-                int int11 = mScroller.getDuration() - mScroller.timePassed();
-                cs cs12 = d(mCurItem);
-
-                mScroller.startScroll(int10, 0, (int) (cs12.e * (float) int1), 0, int11);
+    /*
+     * Enabled aggressive block sorting
+     */
+    private void a(int n, int n2, int n3, int n4) {
+        if (n2 > 0 && !this.mItems.isEmpty()) {
+            int n5 = n3 + (n - this.getPaddingLeft() - this.getPaddingRight());
+            int n6 = n4 + (n2 - this.getPaddingLeft() - this.getPaddingRight());
+            int n7 = (int) ((float) this.getScrollX() / (float) n6 * (float) n5);
+            this.scrollTo(n7, this.getScrollY());
+            if (!this.mScroller.isFinished()) {
+                int n8 = this.mScroller.getDuration() - this.mScroller.timePassed();
+                cs cs2 = this.d(this.mCurItem);
+                this.mScroller.startScroll(n7, 0, (int) (cs2.e * (float) n), 0, n8);
             }
-        } else {
-            cs cs5 = d(mCurItem);
-            float float6;
-            int int7;
-
-            if (cs5 != null)
-                float6 = Math.min(cs5.e, mLastOffset);
-            else
-                float6 = 0.0F;
-            int7 = (int) (float6 * (float) (int1 - getPaddingLeft() - getPaddingRight()));
-            if (int7 != getScrollX()) {
-                a(false);
-                scrollTo(int7, getScrollY());
-                return;
-            }
-        }
-    }
-
-    private void a(int int1, boolean boolean2, int int3, boolean boolean4) {
-        cs cs5 = d(int1);
-        int int6 = 0;
-
-        if (cs5 != null)
-            int6 = (int) ((float) e() * Math.max(mFirstOffset, Math.min(cs5.e, mLastOffset)));
-        if (boolean2) {
-            if (getChildCount() == 0)
-                b(false);
-            else {
-                int int7 = getScrollX();
-                int int8 = getScrollY();
-                int int9 = int6 - int7;
-                int int10 = 0 - int8;
-
-                if (int9 == 0 && int10 == 0) {
-                    a(false);
-                    b();
-                    b(0);
-                } else {
-                    int int11;
-                    int int12;
-                    float float13;
-                    float float14;
-                    int int15;
-                    int int17;
-                    int int18;
-
-                    b(true);
-                    b(2);
-                    int11 = e();
-                    int12 = int11 / 2;
-                    float13 = Math.min(1.0F, 1.0F * (float) Math.abs(int9) / (float) int11);
-                    float14 = (float) int12 + (float) int12 * (float) Math.sin((double) (float) (0.4712389167638204 * (double) (float13 - 0.5F)));
-                    int15 = Math.abs(int3);
-                    if (int15 > 0)
-                        int17 = 4 * Math.round(1000.0F * Math.abs(float14 / (float) int15));
-                    else {
-                        float float16 = (float) int11 * mAdapter.getPageWidth(mCurItem);
-
-                        int17 = (int) (100.0F * (1.0F + (float) Math.abs(int9) / (float16 + (float) mPageMargin)));
-                    }
-                    int18 = Math.min(int17, 600);
-                    mScroller.startScroll(int7, int8, int9, int10, int18);
-                    ViewCompat.postInvalidateOnAnimation((View) this);
-                }
-            }
-            if (boolean4 && mOnPageChangeListener != null)
-                mOnPageChangeListener.a(int1);
-            if (boolean4 && mInternalPageChangeListener != null)
-                mInternalPageChangeListener.a(int1);
-        } else {
-            if (boolean4 && mOnPageChangeListener != null)
-                mOnPageChangeListener.a(int1);
-            if (boolean4 && mInternalPageChangeListener != null)
-                mInternalPageChangeListener.a(int1);
-            a(false);
-            scrollTo(int6, 0);
-        }
-    }
-
-    private void a(int int1, boolean boolean2, boolean boolean3) {
-        a(int1, boolean2, boolean3, 0);
-    }
-
-    private void a(MotionEvent MotionEvent1) {
-        int int2 = MotionEventCompat.getActionIndex(MotionEvent1);
-
-        if (MotionEventCompat.getPointerId(MotionEvent1, int2) == mActivePointerId) {
-            int int3;
-
-            if (int2 == 0)
-                int3 = 1;
-            else
-                int3 = 0;
-            mLastMotionX = MotionEventCompat.getX(MotionEvent1, int3);
-            mActivePointerId = MotionEventCompat.getPointerId(MotionEvent1, int3);
-            if (mVelocityTracker != null)
-                mVelocityTracker.clear();
-        }
-    }
-
-    private void a(cs cs1, int int2, cs cs3) {
-        int int4 = mAdapter.getCount();
-        int int5 = e();
-        float float6;
-        int int7;
-        float float8;
-        int int9;
-        float float10;
-        float float11;
-        int int12;
-        float float13;
-        int int14;
-        int int15;
-        int int17;
-        int int21;
-
-        if (int5 > 0)
-            float6 = (float) mPageMargin / (float) int5;
-        else
-            float6 = 0.0F;
-        if (cs3 != null) {
-            int int24 = cs3.b;
-
-            if (int24 < cs1.b) {
-                float float38 = float6 + (cs3.e + cs3.d);
-                int int39 = int24 + 1;
-                float float40 = float38;
-                int int41 = 0;
-                int int42;
-                int int48;
-
-                for (int42 = int39; int42 <= cs1.b && int41 < mItems.size(); int42 = int48) {
-                    cs cs43;
-                    int int44;
-                    float float45;
-                    int int46;
-                    float float47;
-
-                    for (cs43 = (cs) mItems.get(int41); int42 > cs43.b && int41 < -1 + mItems.size(); cs43 = (cs) mItems.get(int41))
-                        ++int41;
-                    int44 = int42;
-                    float45 = float40;
-                    int46 = int44;
-                    while (int46 < cs43.b) {
-                        float float49 = float45 + (float6 + mAdapter.getPageWidth(int46));
-
-                        ++int46;
-                        float45 = float49;
-                    }
-                    cs43.e = float45;
-                    float47 = float45 + (float6 + cs43.d);
-                    int48 = int46 + 1;
-                    float40 = float47;
-                }
-            } else if (int24 > cs1.b) {
-                int int25 = -1 + mItems.size();
-                float float26 = cs3.e;
-                int int27 = int24 - 1;
-                int int28 = int25;
-                float float29 = float26;
-                int int30;
-                int int36;
-
-                for (int30 = int27; int30 >= cs1.b && int28 >= 0; int30 = int36) {
-                    cs cs31;
-                    int int32;
-                    float float33;
-                    int int34;
-                    float float35;
-
-                    for (cs31 = (cs) mItems.get(int28); int30 < cs31.b && int28 > 0; cs31 = (cs) mItems.get(int28))
-                        --int28;
-                    int32 = int30;
-                    float33 = float29;
-                    int34 = int32;
-                    while (int34 > cs31.b) {
-                        float float37 = float33 - (float6 + mAdapter.getPageWidth(int34));
-
-                        --int34;
-                        float33 = float37;
-                    }
-                    float35 = float33 - (float6 + cs31.d);
-                    cs31.e = float35;
-                    int36 = int34 - 1;
-                    float29 = float35;
-                }
-            }
-        }
-        int7 = mItems.size();
-        float8 = cs1.e;
-        int9 = -1 + cs1.b;
-        if (cs1.b == 0)
-            float10 = cs1.e;
-        else
-            float10 = -3.4028234663852886e+038F;
-        mFirstOffset = float10;
-        if (cs1.b == int4 - 1)
-            float11 = cs1.e + cs1.d - 1.0F;
-        else
-            float11 = 3.4028234663852886e+038F;
-        mLastOffset = float11;
-        for (int12 = int2 - 1; int12 >= 0; int12 = int21) {
-            cs cs20 = (cs) mItems.get(int12);
-
-            while (int9 > cs20.b) {
-                PagerAdapter PagerAdapter22 = mAdapter;
-                int int23 = int9 - 1;
-
-                float8 -= float6 + PagerAdapter22.getPageWidth(int9);
-                int9 = int23;
-            }
-            float8 -= float6 + cs20.d;
-            cs20.e = float8;
-            if (cs20.b == 0)
-                mFirstOffset = float8;
-            int21 = int12 - 1;
-            --int9;
-        }
-        float13 = float6 + (cs1.e + cs1.d);
-        int14 = 1 + cs1.b;
-        for (int15 = int2 + 1; int15 < int7; int15 = int17) {
-            cs cs16 = (cs) mItems.get(int15);
-
-            while (int14 < cs16.b) {
-                PagerAdapter PagerAdapter18 = mAdapter;
-                int int19 = int14 + 1;
-
-                float13 += float6 + PagerAdapter18.getPageWidth(int14);
-                int14 = int19;
-            }
-            if (cs16.b == int4 - 1)
-                mLastOffset = float13 + cs16.d - 1.0F;
-            cs16.e = float13;
-            float13 += float6 + cs16.d;
-            int17 = int15 + 1;
-            ++int14;
-        }
-        mNeedCalculatePageOffsets = false;
-    }
-
-    private void a(boolean boolean1) {
-        int int2;
-        int int3;
-        int int4;
-
-        if (mScrollState == 2)
-            int2 = 1;
-        else
-            int2 = 0;
-        if (int2 != 0) {
-            int int6;
-            int int7;
-            int int8;
-            int int9;
-
-            b(false);
-            mScroller.abortAnimation();
-            int6 = getScrollX();
-            int7 = getScrollY();
-            int8 = mScroller.getCurrX();
-            int9 = mScroller.getCurrY();
-            if (int6 != int8 || int7 != int9)
-                scrollTo(int8, int9);
-        }
-        mPopulatePending = false;
-        int3 = 0;
-        int4 = int2;
-        while (int3 < mItems.size()) {
-            cs cs5 = (cs) mItems.get(int3);
-
-            if (cs5.c) {
-                cs5.c = false;
-                int4 = 1;
-            }
-            ++int3;
-        }
-        if (int4 != 0) {
-            if (boolean1)
-                ViewCompat.postOnAnimation((View) this, mEndScrollRunnable);
-            else {
-                mEndScrollRunnable.run();
-                return;
-            }
-        }
-    }
-
-    private boolean a(float float1) {
-        int int2 = 1;
-        float float3 = mLastMotionX - float1;
-        float float4;
-        int int5;
-        float float6;
-        float float7;
-        cs cs8;
-        cs cs9;
-        int int10;
-        float float11;
-        boolean boolean12;
-
-        mLastMotionX = float1;
-        float4 = float3 + (float) getScrollX();
-        int5 = e();
-        float6 = (float) int5 * mFirstOffset;
-        float7 = (float) int5 * mLastOffset;
-        cs8 = (cs) mItems.get(0);
-        cs9 = (cs) mItems.get(-1 + mItems.size());
-        if (cs8.b != 0) {
-            float6 = cs8.e * (float) int5;
-            int10 = 0;
-        } else
-            int10 = int2;
-        if (cs9.b != -1 + mAdapter.getCount()) {
-            float11 = cs9.e * (float) int5;
-            int2 = 0;
-        } else
-            float11 = float7;
-        if (float4 < float6) {
-            boolean12 = false;
-            if (int10 != 0) {
-                float float14 = float6 - float4;
-
-                boolean12 = mLeftEdge.onPull(Math.abs(float14) / (float) int5);
-            }
-        } else if (float4 > float11) {
-            boolean12 = false;
-            if (int2 != 0) {
-                float float15 = float4 - float11;
-
-                boolean12 = mRightEdge.onPull(Math.abs(float15) / (float) int5);
-            }
-            float6 = float11;
-        } else {
-            float6 = float4;
-            boolean12 = false;
-        }
-        mLastMotionX += float6 - (float) (int) float6;
-        scrollTo((int) float6, getScrollY());
-        e((int) float6);
-        return boolean12;
-    }
-
-    private boolean a(int int1, boolean boolean2, boolean boolean3, int int4) {
-        if (mAdapter == null || mAdapter.getCount() <= 0) {
-            b(false);
-            return false;
-        } else if (!boolean3 && mCurItem == int1 && mItems.size() != 0) {
-            b(false);
-            return false;
-        } else {
-            int int5;
-            int int7;
-            boolean boolean8;
-
-            if (int1 < 0)
-                int1 = 0;
-            else if (int1 >= mAdapter.getCount())
-                int1 = -1 + mAdapter.getCount();
-            int5 = mOffscreenPageLimit;
-            if (int1 > int5 + mCurItem || int1 < mCurItem - int5) {
-                int int6;
-
-                for (int6 = 0; int6 < mItems.size(); ++int6)
-                    ((cs) mItems.get(int6)).c = true;
-            }
-            int7 = mCurItem;
-            boolean8 = false;
-            if (int7 != int1)
-                boolean8 = true;
-            if (mFirstLayout) {
-                mCurItem = int1;
-                if (boolean8 && mOnPageChangeListener != null)
-                    mOnPageChangeListener.a(int1);
-                if (boolean8 && mInternalPageChangeListener != null)
-                    mInternalPageChangeListener.a(int1);
-                requestLayout();
-            } else {
-                c(int1);
-                a(int1, boolean2, int4, boolean8);
-            }
-            return boolean8;
-        }
-    }
-
-    private boolean a(View View1, boolean boolean2, int int3, int int4, int int5) {
-        if (View1 instanceof ViewGroup) {
-            ViewGroup ViewGroup6 = (ViewGroup) View1;
-            int int7 = View1.getScrollX();
-            int int8 = View1.getScrollY();
-            int int9;
-
-            for (int9 = -1 + ViewGroup6.getChildCount(); int9 >= 0; --int9) {
-                View View10 = ViewGroup6.getChildAt(int9);
-
-                if (int4 + int7 >= View10.getLeft() && int4 + int7 < View10.getRight() && int5 + int8 >= View10.getTop() && int5 + int8 < View10.getBottom() && a(View10, true, int3, int4 + int7 - View10.getLeft(), int5 + int8 - View10.getTop()))
-                    return true;
-            }
-        }
-        if (!boolean2 || !android.support.v4.view.ViewCompat.canScrollHorizontally(View1, -int3))
-            return false;
-        else
-            return true;
-    }
-
-    private cs b(View View1) {
-        for (; ; ) {
-            ViewParent ViewParent2 = View1.getParent();
-
-            if (ViewParent2 == this)
-                return a(View1);
-            if (ViewParent2 == null || !(ViewParent2 instanceof View))
-                return null;
-            else
-                View1 = (View) ViewParent2;
-        }
-    }
-
-    private void b(int int1) {
-        if (mScrollState != int1) {
-            mScrollState = int1;
-            if (mPageTransformer$572aa01b != null) {
-                int int2;
-                int int3;
-                int int4;
-
-                if (int1 != 0)
-                    int2 = 1;
-                else
-                    int2 = 0;
-                int3 = getChildCount();
-                for (int4 = 0; int4 < int3; ++int4) {
-                    int int5;
-
-                    if (int2 != 0)
-                        int5 = 2;
-                    else
-                        int5 = 0;
-                    ViewCompat.setLayerType(getChildAt(int4), int5, null);
-                }
-            }
-            if (mOnPageChangeListener != null) {
-                mOnPageChangeListener.b(int1);
-                return;
-            }
-        }
-    }
-
-    private void b(boolean boolean1) {
-        if (mScrollingCacheEnabled != boolean1)
-            mScrollingCacheEnabled = boolean1;
-    }
-
-    private void c(int int1) {
-        int int2;
-        cs cs3;
-
-        if (mCurItem != int1) {
-            int int53;
-            cs cs54;
-
-            if (mCurItem < int1)
-                int53 = 66;
-            else
-                int53 = 17;
-            cs54 = d(mCurItem);
-            mCurItem = int1;
-            cs3 = cs54;
-            int2 = int53;
-        } else {
-            int2 = 2;
-            cs3 = null;
-        }
-        if (mAdapter == null)
-            f();
-        else if (mPopulatePending) {
-            f();
             return;
-        } else if (getWindowToken() != null) {
-            int int4;
-            int int5;
-            int int6;
-            int int7;
+        }
+        cs cs3 = this.d(this.mCurItem);
+        float f = cs3 != null ? Math.min(cs3.e, this.mLastOffset) : 0.0f;
+        int n9 = (int) (f * (float) (n - this.getPaddingLeft() - this.getPaddingRight()));
+        if (n9 == this.getScrollX()) return;
+        this.a(false);
+        this.scrollTo(n9, this.getScrollY());
+    }
 
-            mAdapter.startUpdate(this);
-            int4 = mOffscreenPageLimit;
-            int5 = Math.max(0, mCurItem - int4);
-            int6 = mAdapter.getCount();
-            int7 = Math.min(int6 - 1, int4 + mCurItem);
-            if (int6 != mExpectedAdapterCount) {
-                String String51;
-
-                try {
-                    String String52 = getResources().getResourceName(getId());
-                } catch (Resources$NotFoundException NotFoundException50) {
-                    String51 = Integer.toHexString(getId());
-                }
-                throw new IllegalStateException(new StringBuilder("The application's PagerAdapter changed the adapter's contents without calling PagerAdapter#notifyDataSetChanged! Expected adapter item count: ").append(mExpectedAdapterCount).append(", found: ").append(int6).append(" Pager id: ").append(String51).append(" Pager class: ").append(getClass()).append(" Problematic adapter: ").append(mAdapter.getClass()).toString());
+    /*
+     * Enabled aggressive block sorting
+     */
+    private void a(int n, boolean bl, int n2, boolean bl2) {
+        cs cs2 = this.d(n);
+        int n3 = 0;
+        if (cs2 != null) {
+            n3 = (int) ((float) this.e() * Math.max(this.mFirstOffset, Math.min(cs2.e, this.mLastOffset)));
+        }
+        if (bl) {
+            if (this.getChildCount() == 0) {
+                this.b(false);
             } else {
-                int int8 = 0;
-                cs cs9;
-                cs cs10;
-                PagerAdapter PagerAdapter11;
-                int int12;
-                Object Object13;
-                int int14;
-                int int15;
-
-                label_139:
-                {
-                    while (int8 < mItems.size()) {
-                        cs9 = (cs) mItems.get(int8);
-                        if (cs9.b >= mCurItem) {
-                            if (cs9.b == mCurItem)
-                                break label_139;
-                            else
-                                break;
-                        } else {
-                            ++int8;
-                            continue;
-                        }
+                int n4 = this.getScrollX();
+                int n5 = this.getScrollY();
+                int n6 = n3 - n4;
+                int n7 = 0 - n5;
+                if (n6 == 0 && n7 == 0) {
+                    this.a(false);
+                    this.b();
+                    this.b(0);
+                } else {
+                    int n8;
+                    this.b(true);
+                    this.b(2);
+                    int n9 = this.e();
+                    int n10 = n9 / 2;
+                    float f = Math.min(1.0f, 1.0f * (float) Math.abs(n6) / (float) n9);
+                    float f2 = (float) n10 + (float) n10 * (float) Math.sin((float) (0.4712389167638204 * (double) (f - 0.5f)));
+                    int n11 = Math.abs(n2);
+                    if (n11 > 0) {
+                        n8 = 4 * Math.round(1000.0f * Math.abs(f2 / (float) n11));
+                    } else {
+                        float f3 = (float) n9 * this.mAdapter.getPageWidth(this.mCurItem);
+                        n8 = (int) (100.0f * (1.0f + (float) Math.abs(n6) / (f3 + (float) this.mPageMargin)));
                     }
-                    cs9 = null;
+                    int n12 = Math.min(n8, 600);
+                    this.mScroller.startScroll(n4, n5, n6, n7, n12);
+                    ViewCompat.postInvalidateOnAnimation(this);
                 }
-                if (cs9 == null && int6 > 0)
-                    cs10 = a(mCurItem, int8);
-                else
-                    cs10 = cs9;
-                if (cs10 != null) {
-                    int int24 = int8 - 1;
-                    cs cs25;
-                    float float26;
-                    int int27;
-                    float float28;
-                    int int29;
-                    int int30;
-                    int int31;
-                    float float32;
-                    int int33;
+            }
+            if (bl2 && this.mOnPageChangeListener != null) {
+                this.mOnPageChangeListener.a(n);
+            }
+            if (bl2 && this.mInternalPageChangeListener != null) {
+                this.mInternalPageChangeListener.a(n);
+            }
+            return;
+        }
+        if (bl2 && this.mOnPageChangeListener != null) {
+            this.mOnPageChangeListener.a(n);
+        }
+        if (bl2 && this.mInternalPageChangeListener != null) {
+            this.mInternalPageChangeListener.a(n);
+        }
+        this.a(false);
+        this.scrollTo(n3, 0);
+    }
 
-                    if (int24 >= 0)
-                        cs25 = (cs) mItems.get(int24);
-                    else
-                        cs25 = null;
-                    float26 = 2.0F - cs10.d + (float) getPaddingLeft() / (float) e();
-                    int27 = -1 + mCurItem;
-                    float28 = 0.0F;
-                    int29 = int27;
-                    int30 = int8;
-                    int31 = int24;
-                    while (int29 >= 0) {
-                        if (float28 >= float26 && int29 < int5) {
-                            if (cs25 == null)
-                                break;
-                            if (int29 == cs25.b && !cs25.c) {
-                                mItems.remove(int31);
-                                mAdapter.destroyItem(this, int29, cs25.a);
-                                --int31;
-                                --int30;
-                                if (int31 >= 0)
-                                    cs25 = (cs) mItems.get(int31);
-                                else
-                                    cs25 = null;
-                            }
-                        } else if (cs25 != null && int29 == cs25.b) {
-                            float28 += cs25.d;
-                            if (--int31 >= 0)
-                                cs25 = (cs) mItems.get(int31);
-                            else
-                                cs25 = null;
-                        } else {
-                            float28 += a(int29, int31 + 1).d;
-                            ++int30;
-                            if (int31 >= 0)
-                                cs25 = (cs) mItems.get(int31);
-                            else
-                                cs25 = null;
-                        }
-                        --int29;
-                    }
-                    float32 = cs10.d;
-                    int33 = int30 + 1;
-                    if (float32 < 2.0F) {
-                        cs cs34;
-                        float float35;
-                        int int36;
+    private void a(int n, boolean bl, boolean bl2) {
+        this.a(n, bl, bl2, 0);
+    }
 
-                        if (int33 < mItems.size())
-                            cs34 = (cs) mItems.get(int33);
-                        else
-                            cs34 = null;
-                        float35 = 2.0F + (float) getPaddingRight() / (float) e();
-                        int36 = 1 + mCurItem;
-                        while (int36 < int6) {
-                            cs cs40;
-                            float float41;
-                            float float42;
-
-                            if (float32 >= float35 && int36 > int7) {
-                                if (cs34 == null)
-                                    break;
-                                if (int36 == cs34.b && !cs34.c) {
-                                    cs cs47;
-                                    float float48;
-
-                                    mItems.remove(int33);
-                                    mAdapter.destroyItem(this, int36, cs34.a);
-                                    if (int33 < mItems.size())
-                                        cs47 = (cs) mItems.get(int33);
-                                    else
-                                        cs47 = null;
-                                    float48 = float32;
-                                    cs40 = cs47;
-                                    float41 = float48;
-                                } else {
-                                    float float45 = float32;
-
-                                    cs40 = cs34;
-                                    float41 = float45;
-                                }
-                            } else if (cs34 != null && int36 == cs34.b) {
-                                float float43 = float32 + cs34.d;
-                                cs cs44;
-
-                                if (++int33 < mItems.size())
-                                    cs44 = (cs) mItems.get(int33);
-                                else
-                                    cs44 = null;
-                                cs40 = cs44;
-                                float41 = float43;
-                            } else {
-                                cs cs37 = a(int36, int33);
-                                float float38;
-                                cs cs39;
-
-                                ++int33;
-                                float38 = float32 + cs37.d;
-                                if (int33 < mItems.size())
-                                    cs39 = (cs) mItems.get(int33);
-                                else
-                                    cs39 = null;
-                                cs40 = cs39;
-                                float41 = float38;
-                            }
-                            ++int36;
-                            float42 = float41;
-                            cs34 = cs40;
-                            float32 = float42;
-                        }
-                    }
-                    a(cs10, int30, cs3);
-                }
-                PagerAdapter11 = mAdapter;
-                int12 = mCurItem;
-                if (cs10 != null)
-                    Object13 = cs10.a;
-                else
-                    Object13 = null;
-                PagerAdapter11.setPrimaryItem(this, int12, Object13);
-                mAdapter.finishUpdate(this);
-                int14 = getChildCount();
-                for (int15 = 0; int15 < int14; ++int15) {
-                    View View21 = getChildAt(int15);
-                    ct ct22 = (ct) View21.getLayoutParams();
-
-                    ct22.f = int15;
-                    if (!ct22.a && ct22.c == 0.0F) {
-                        cs cs23 = a(View21);
-
-                        if (cs23 != null) {
-                            ct22.c = cs23.d;
-                            ct22.e = cs23.b;
-                        }
-                    }
-                }
-                f();
-                if (hasFocus()) {
-                    View View16 = findFocus();
-                    cs cs17;
-
-                    if (View16 != null)
-                        cs17 = b(View16);
-                    else
-                        cs17 = null;
-                    if (cs17 == null || cs17.b != mCurItem) {
-                        int int18;
-
-                        for (int18 = 0; int18 < getChildCount(); ++int18) {
-                            View View19 = getChildAt(int18);
-                            cs cs20 = a(View19);
-
-                            if (cs20 != null && cs20.b == mCurItem && View19.requestFocus(int2))
-                                break;
-                        }
-                    }
-                }
+    /*
+     * Enabled aggressive block sorting
+     */
+    private void a(MotionEvent motionEvent) {
+        int n = MotionEventCompat.getActionIndex(motionEvent);
+        if (MotionEventCompat.getPointerId(motionEvent, n) == this.mActivePointerId) {
+            int n2 = n == 0 ? 1 : 0;
+            this.mLastMotionX = MotionEventCompat.getX(motionEvent, n2);
+            this.mActivePointerId = MotionEventCompat.getPointerId(motionEvent, n2);
+            if (this.mVelocityTracker != null) {
+                this.mVelocityTracker.clear();
             }
         }
     }
 
-    private cs d(int int1) {
-        int int2 = 0;
+    /*
+     * Unable to fully structure code
+     * Enabled aggressive block sorting
+     * Lifted jumps to return sites
+     */
+    private void a(cs var1_1, int var2_2, cs var3_3) {
+        var4_4 = this.mAdapter.getCount();
+        var5_5 = this.e();
+        var6_6 = var5_5 > 0 ? (float) this.mPageMargin / (float) var5_5 : 0.0f;
+        if (var3_3 == null)**GOTO lbl55
+        var24_7 = var3_3.b;
+        if (var24_7 >= var1_1.b)**GOTO lbl13
+        var38_8 = var6_6 + (var3_3.e + var3_3.d);
+        var39_9 = var24_7 + true;
+        var40_10 = var38_8;
+        var41_11 = 0;
+        var42_12 = var39_9;
+        **GOTO lbl21
+        lbl13:
+        // 1 sources:
+        if (var24_7 <= var1_1.b)**GOTO lbl55
+        var25_20 = -1 + this.mItems.size();
+        var26_21 = var3_3.e;
+        var27_22 = var24_7 - true;
+        var28_23 = var25_20;
+        var29_24 = var26_21;
+        var30_25 = var27_22;
+        **GOTO lbl39
+        lbl21:
+        // 2 sources:
+        while (var42_12 <= var1_1.b && var41_11 < this.mItems.size()) {
+            var43_13 = this.mItems.get(var41_11);
+            while (var42_12 > var43_13.b && var41_11 < -1 + this.mItems.size()) {
+                var43_13 = this.mItems.get(++var41_11);
+            }
+            var44_14 = var42_12;
+            var45_15 = var40_10;
+            for (var46_16 = var44_14; var46_16 < var43_13.b; ++var46_16) {
+                var49_19 = var45_15 + (var6_6 + this.mAdapter.getPageWidth((int) var46_16));
+                var45_15 = var49_19;
+            }
+            var43_13.e = var45_15;
+            var47_17 = var45_15 + (var6_6 + var43_13.d);
+            var48_18 = var46_16 + true;
+            var40_10 = var47_17;
+            var42_12 = var48_18;
+        }
+        **GOTO lbl55
+        lbl39:
+        // 2 sources:
+        while (var30_25 >= var1_1.b && var28_23 >= 0) {
+            var31_32 = this.mItems.get(var28_23);
+            while (var30_25 < var31_32.b && var28_23 > 0) {
+                var31_32 = this.mItems.get(--var28_23);
+            }
+            var32_26 = var30_25;
+            var33_27 = var29_24;
+            for (var34_28 = var32_26; var34_28 > var31_32.b; --var34_28) {
+                var37_31 = var33_27 - (var6_6 + this.mAdapter.getPageWidth((int) var34_28));
+                var33_27 = var37_31;
+            }
+            var31_32.e = var35_29 = var33_27 - (var6_6 + var31_32.d);
+            var36_30 = var34_28 - true;
+            var29_24 = var35_29;
+            var30_25 = var36_30;
+        }
+        lbl55:
+        // 4 sources:
+        var7_33 = this.mItems.size();
+        var8_34 = var1_1.e;
+        var9_35 = -1 + var1_1.b;
+        var10_36 = var1_1.b == false ? var1_1.e : -3.4028235E38f;
+        this.mFirstOffset = var10_36;
+        var11_37 = var1_1.b == var4_4 - 1 ? var1_1.e + var1_1.d - 1.0f : Float.MAX_VALUE;
+        this.mLastOffset = var11_37;
+        var12_38 = var2_2 - 1;
+        while (var12_38 >= 0) {
+            var20_39 = this.mItems.get(var12_38);
+            while (var9_35 > var20_39.b) {
+                var22_41 = this.mAdapter;
+                var23_42 = var9_35 - 1;
+                var8_34 -= var6_6 + var22_41.getPageWidth(var9_35);
+                var9_35 = var23_42;
+            }
+            var20_39.e = var8_34 -= var6_6 + var20_39.d;
+            if (var20_39.b == false) {
+                this.mFirstOffset = var8_34;
+            }
+            var21_40 = var12_38 - 1;
+            --var9_35;
+            var12_38 = var21_40;
+        }
+        var13_43 = var6_6 + (var1_1.e + var1_1.d);
+        var14_44 = true + var1_1.b;
+        var15_45 = var2_2 + 1;
+        do {
+            if (var15_45 >= var7_33) {
+                this.mNeedCalculatePageOffsets = false;
+                return;
+            }
+            var16_46 = this.mItems.get(var15_45);
+            while (var14_44 < var16_46.b) {
+                var18_48 = this.mAdapter;
+                var19_49 = var14_44 + 1;
+                var13_43 += var6_6 + var18_48.getPageWidth(var14_44);
+                var14_44 = var19_49;
+            }
+            if (var16_46.b == var4_4 - 1) {
+                this.mLastOffset = var13_43 + var16_46.d - 1.0f;
+            }
+            var16_46.e = var13_43;
+            var13_43 += var6_6 + var16_46.d;
+            var17_47 = var15_45 + 1;
+            ++var14_44;
+            var15_45 = var17_47;
+        } while (true);
+    }
 
-        while (int2 < mItems.size()) {
-            cs cs3 = (cs) mItems.get(int2);
+    /*
+     * Enabled aggressive block sorting
+     */
+    private void a(boolean bl) {
+        boolean bl2 = this.mScrollState == 2;
+        if (bl2) {
+            this.b(false);
+            this.mScroller.abortAnimation();
+            int n = this.getScrollX();
+            int n2 = this.getScrollY();
+            int n3 = this.mScroller.getCurrX();
+            int n4 = this.mScroller.getCurrY();
+            if (n != n3 || n2 != n4) {
+                this.scrollTo(n3, n4);
+            }
+        }
+        this.mPopulatePending = false;
+        boolean bl3 = bl2;
+        for (int i = 0; i < this.mItems.size(); ++i) {
+            cs cs2 = this.mItems.get(i);
+            if (!cs2.c) continue;
+            cs2.c = false;
+            bl3 = true;
+        }
+        if (bl3) {
+            if (!bl) {
+                this.mEndScrollRunnable.run();
+                return;
+            }
+            ViewCompat.postOnAnimation(this, this.mEndScrollRunnable);
+        }
+    }
 
-            if (cs3.b == int1)
-                return cs3;
-            else
-                ++int2;
+    /*
+     * Enabled aggressive block sorting
+     */
+    private boolean a(float f) {
+        float f2;
+        boolean bl;
+        boolean bl2;
+        boolean bl3 = true;
+        float f3 = this.mLastMotionX - f;
+        this.mLastMotionX = f;
+        float f4 = f3 + (float) this.getScrollX();
+        int n = this.e();
+        float f5 = (float) n * this.mFirstOffset;
+        float f6 = (float) n * this.mLastOffset;
+        cs cs2 = this.mItems.get(0);
+        cs cs3 = this.mItems.get(-1 + this.mItems.size());
+        if (cs2.b != false) {
+            f5 = cs2.e * (float) n;
+            bl = false;
+        } else {
+            bl = bl3;
+        }
+        if (cs3.b != -1 + this.mAdapter.getCount()) {
+            f2 = cs3.e * (float) n;
+            bl3 = false;
+        } else {
+            f2 = f6;
+        }
+        if (f4 < f5) {
+            bl2 = false;
+            if (bl) {
+                float f7 = f5 - f4;
+                bl2 = this.mLeftEdge.onPull(Math.abs(f7) / (float) n);
+            }
+        } else if (f4 > f2) {
+            bl2 = false;
+            if (bl3) {
+                float f8 = f4 - f2;
+                bl2 = this.mRightEdge.onPull(Math.abs(f8) / (float) n);
+            }
+            f5 = f2;
+        } else {
+            f5 = f4;
+            bl2 = false;
+        }
+        this.mLastMotionX += f5 - (float) ((int) f5);
+        this.scrollTo((int) f5, this.getScrollY());
+        this.e((int) f5);
+        return bl2;
+    }
+
+    /*
+     * Enabled aggressive block sorting
+     */
+    private boolean a(int n, boolean bl, boolean bl2, int n2) {
+        int n3;
+        if (this.mAdapter == null || this.mAdapter.getCount() <= 0) {
+            this.b(false);
+            return false;
+        }
+        if (!bl2 && this.mCurItem == n && this.mItems.size() != 0) {
+            this.b(false);
+            return false;
+        }
+        if (n < 0) {
+            n = 0;
+        } else if (n >= this.mAdapter.getCount()) {
+            n = -1 + this.mAdapter.getCount();
+        }
+        if (n > (n3 = this.mOffscreenPageLimit) + this.mCurItem || n < this.mCurItem - n3) {
+            for (int i = 0; i < this.mItems.size(); ++i) {
+                this.mItems.get((int) i).c = true;
+            }
+        }
+        int n4 = this.mCurItem;
+        boolean bl3 = false;
+        if (n4 != n) {
+            bl3 = true;
+        }
+        if (!this.mFirstLayout) {
+            this.c(n);
+            this.a(n, bl, n2, bl3);
+            return bl3;
+        }
+        this.mCurItem = n;
+        if (bl3 && this.mOnPageChangeListener != null) {
+            this.mOnPageChangeListener.a(n);
+        }
+        if (bl3 && this.mInternalPageChangeListener != null) {
+            this.mInternalPageChangeListener.a(n);
+        }
+        this.requestLayout();
+        return bl3;
+    }
+
+    /*
+     * Enabled aggressive block sorting
+     */
+    private boolean a(View view, boolean bl, int n, int n2, int n3) {
+        if (view instanceof ViewGroup) {
+            ViewGroup viewGroup = (ViewGroup) view;
+            int n4 = view.getScrollX();
+            int n5 = view.getScrollY();
+            for (int i = -1 + viewGroup.getChildCount(); i >= 0; --i) {
+                View view2 = viewGroup.getChildAt(i);
+                if (n2 + n4 >= view2.getLeft() && n2 + n4 < view2.getRight() && n3 + n5 >= view2.getTop() && n3 + n5 < view2.getBottom() && this.a(view2, true, n, n2 + n4 - view2.getLeft(), n3 + n5 - view2.getTop()))
+                    return true;
+                {
+                    continue;
+                }
+            }
+        }
+        if (!bl || !ViewCompat.canScrollHorizontally(view, -n)) return false;
+        return true;
+    }
+
+    private cs b(View view) {
+        ViewParent viewParent;
+        while ((viewParent = view.getParent()) != this) {
+            if (viewParent == null || !(viewParent instanceof View)) {
+                return null;
+            }
+            view = (View) ((Object) viewParent);
+        }
+        return this.a(view);
+    }
+
+    /*
+     * Enabled aggressive block sorting
+     * Lifted jumps to return sites
+     */
+    private void b(int n) {
+        if (this.mScrollState == n) {
+            return;
+        }
+        this.mScrollState = n;
+        if (this.mPageTransformer$572aa01b != null) {
+            boolean bl = n != 0;
+            int n2 = this.getChildCount();
+            for (int i = 0; i < n2; ++i) {
+                int n3 = bl ? 2 : 0;
+                ViewCompat.setLayerType(this.getChildAt(i), n3, null);
+            }
+        }
+        if (this.mOnPageChangeListener == null) return;
+        this.mOnPageChangeListener.b(n);
+    }
+
+    private void b(boolean bl) {
+        if (this.mScrollingCacheEnabled != bl) {
+            this.mScrollingCacheEnabled = bl;
+        }
+    }
+
+    /*
+     * Unable to fully structure code
+     * Enabled aggressive block sorting
+     * Enabled unnecessary exception pruning
+     * Enabled aggressive exception aggregation
+     * Lifted jumps to return sites
+     */
+    private void c(int var1_1) {
+        block20:
+        {
+            if (this.mCurItem != var1_1) {
+                var53_2 = this.mCurItem < var1_1 ? 66 : 17;
+                var54_3 = this.d(this.mCurItem);
+                this.mCurItem = var1_1;
+                var3_4 = var54_3;
+                var2_5 = var53_2;
+            } else {
+                var2_5 = 2;
+                var3_4 = null;
+            }
+            if (this.mAdapter == null) {
+                this.f();
+                return;
+            }
+            if (this.mPopulatePending) {
+                this.f();
+                return;
+            }
+            if (this.getWindowToken() == null) return;
+            this.mAdapter.startUpdate(this);
+            var4_6 = this.mOffscreenPageLimit;
+            var5_7 = Math.max(0, this.mCurItem - var4_6);
+            var6_8 = this.mAdapter.getCount();
+            var7_9 = Math.min(var6_8 - 1, var4_6 + this.mCurItem);
+            if (var6_8 != this.mExpectedAdapterCount) {
+                try {
+                    var51_11 = var52_10 = this.getResources().getResourceName(this.getId());
+                    throw new IllegalStateException("The application's PagerAdapter changed the adapter's contents without calling PagerAdapter#notifyDataSetChanged! Expected adapter item count: " + this.mExpectedAdapterCount + ", found: " + var6_8 + " Pager id: " + var51_11 + " Pager class: " + this.getClass() + " Problematic adapter: " + this.mAdapter.getClass());
+                } catch (Resources.NotFoundException var50_12) {
+                    var51_11 = Integer.toHexString(this.getId());
+                    throw new IllegalStateException("The application's PagerAdapter changed the adapter's contents without calling PagerAdapter#notifyDataSetChanged! Expected adapter item count: " + this.mExpectedAdapterCount + ", found: " + var6_8 + " Pager id: " + var51_11 + " Pager class: " + this.getClass() + " Problematic adapter: " + this.mAdapter.getClass());
+                }
+            }
+            for (var8_13 = 0; var8_13 < this.mItems.size(); ++var8_13) {
+                var9_14 = this.mItems.get(var8_13);
+                if (var9_14.b < this.mCurItem) continue;
+                if (var9_14.b != this.mCurItem) break;
+                break block20;
+            }
+            var9_14 = null;
+        }
+        var10_15 = var9_14 == null && var6_8 > 0 ? this.a(this.mCurItem, var8_13) : var9_14;
+        if (var10_15 == null)**GOTO lbl104
+        var24_16 = var8_13 - 1;
+        var25_17 = var24_16 >= 0 ? this.mItems.get(var24_16) : null;
+        var26_18 = 2.0f - var10_15.d + (float) this.getPaddingLeft() / (float) this.e();
+        var27_19 = -1 + this.mCurItem;
+        var28_20 = 0.0f;
+        var30_22 = var8_13;
+        var31_23 = var24_16;
+        for (var29_21 = var27_19; var29_21 >= 0; --var29_21) {
+            if (var28_20 >= var26_18 && var29_21 < var5_7) {
+                if (var25_17 == null) break;
+                if (var29_21 != var25_17.b || var25_17.c) continue;
+                this.mItems.remove(var31_23);
+                this.mAdapter.destroyItem(this, var29_21, (Object) var25_17.a);
+                --var30_22;
+                if (--var31_23 >= 0) {
+                    var25_17 = this.mItems.get(var31_23);
+                    continue;
+                }
+                var25_17 = null;
+                continue;
+            }
+            if (var25_17 != null && var29_21 == var25_17.b) {
+                var28_20 += var25_17.d;
+                if (--var31_23 >= 0) {
+                    var25_17 = this.mItems.get(var31_23);
+                    continue;
+                }
+                var25_17 = null;
+                continue;
+            }
+            var28_20 += this.a((int) var29_21, (int) (var31_23 + 1)).d;
+            ++var30_22;
+            var25_17 = var31_23 >= 0 ? this.mItems.get(var31_23) : null;
+        }
+        var32_24 = var10_15.d;
+        var33_25 = var30_22 + 1;
+        if (var32_24 >= 2.0f)**GOTO lbl103
+        var34_26 = var33_25 < this.mItems.size() ? this.mItems.get(var33_25) : null;
+        var35_27 = 2.0f + (float) this.getPaddingRight() / (float) this.e();
+        for (var36_28 = 1 + this.mCurItem; var36_28 < var6_8; ++var36_28) {
+            if (var32_24 < var35_27 || var36_28 <= var7_9)**GOTO lbl84
+            if (var34_26 == null) break;
+            if (var36_28 != var34_26.b || var34_26.c)**GOTO lbl96
+            this.mItems.remove(var33_25);
+            this.mAdapter.destroyItem(this, var36_28, (Object) var34_26.a);
+            var47_38 = var33_25 < this.mItems.size() ? this.mItems.get(var33_25) : null;
+            var48_39 = var32_24;
+            var40_32 = var47_38;
+            var41_33 = var48_39;
+            **GOTO lbl99
+            lbl84:
+            // 1 sources:
+            if (var34_26 != null && var36_28 == var34_26.b) {
+                var43_35 = var32_24 + var34_26.d;
+                var44_36 = ++var33_25 < this.mItems.size() ? this.mItems.get(var33_25) : null;
+                var40_32 = var44_36;
+                var41_33 = var43_35;
+            } else {
+                var37_29 = this.a(var36_28, var33_25);
+                var38_30 = var32_24 + var37_29.d;
+                var39_31 = ++var33_25 < this.mItems.size() ? this.mItems.get(var33_25) : null;
+                var40_32 = var39_31;
+                var41_33 = var38_30;
+            }
+            **GOTO lbl99
+            lbl96:
+            // 1 sources:
+            var45_37 = var32_24;
+            var40_32 = var34_26;
+            var41_33 = var45_37;
+            lbl99:
+            // 4 sources:
+            var42_34 = var41_33;
+            var34_26 = var40_32;
+            var32_24 = var42_34;
+        }
+        lbl103:
+        // 3 sources:
+        this.a(var10_15, var30_22, var3_4);
+        lbl104:
+        // 2 sources:
+        var11_40 = this.mAdapter;
+        var12_41 = this.mCurItem;
+        var13_42 = var10_15 != null ? var10_15.a : null;
+        var11_40.setPrimaryItem(this, var12_41, (Object) var13_42);
+        this.mAdapter.finishUpdate(this);
+        var14_43 = this.getChildCount();
+        for (var15_44 = 0; var15_44 < var14_43; ++var15_44) {
+            var21_45 = this.getChildAt(var15_44);
+            var22_46 = (ct) var21_45.getLayoutParams();
+            var22_46.f = var15_44;
+            if (var22_46.a != false || var22_46.c != 0.0f || (var23_47 = this.a(var21_45)) == null) continue;
+            var22_46.c = var23_47.d;
+            var22_46.e = var23_47.b;
+        }
+        this.f();
+        if (this.hasFocus() == false) return;
+        var16_48 = this.findFocus();
+        var17_49 = var16_48 != null ? this.b(var16_48) : null;
+        if (var17_49 != null) {
+            if (var17_49.b == this.mCurItem) return;
+        }
+        var18_50 = 0;
+        while (var18_50 < this.getChildCount()) {
+            var19_51 = this.getChildAt(var18_50);
+            var20_52 = this.a(var19_51);
+            if (var20_52 != null && var20_52.b == this.mCurItem) {
+                if (var19_51.requestFocus(var2_5) != false) return;
+            }
+            ++var18_50;
+        }
+    }
+
+    private cs d(int n) {
+        for (int i = 0; i < this.mItems.size(); ++i) {
+            cs cs2 = this.mItems.get(i);
+            if (cs2.b != n) continue;
+            return cs2;
         }
         return null;
     }
 
     private void d() {
-        Context Context1;
-        ViewConfiguration ViewConfiguration2;
-        float float3;
-
-        setWillNotDraw(false);
-        setDescendantFocusability(262144);
-        setFocusable(true);
-        Context1 = getContext();
-        mScroller = new Scroller(Context1, sInterpolator);
-        ViewConfiguration2 = ViewConfiguration.get(Context1);
-        float3 = Context1.getResources().getDisplayMetrics().density;
-        mTouchSlop = ViewConfigurationCompat.getScaledPagingTouchSlop(ViewConfiguration2);
-        mMinimumVelocity = (int) (400.0F * float3);
-        mMaximumVelocity = ViewConfiguration2.getScaledMaximumFlingVelocity();
-        mLeftEdge = new EdgeEffectCompat(Context1);
-        mRightEdge = new EdgeEffectCompat(Context1);
-        mFlingDistance = (int) (25.0F * float3);
-        mCloseEnough = (int) (2.0F * float3);
-        mDefaultGutterSize = (int) (16.0F * float3);
-        ViewCompat.setAccessibilityDelegate((View) this, (AccessibilityDelegateCompat) new cu(this));
-        if (ViewCompat.getImportantForAccessibility((View) this) == 0)
-            ViewCompat.setImportantForAccessibility((View) this, 1);
+        this.setWillNotDraw(false);
+        this.setDescendantFocusability(262144);
+        this.setFocusable(true);
+        Context context = this.getContext();
+        this.mScroller = new Scroller(context, sInterpolator);
+        ViewConfiguration viewConfiguration = ViewConfiguration.get(context);
+        float f = context.getResources().getDisplayMetrics().density;
+        this.mTouchSlop = ViewConfigurationCompat.getScaledPagingTouchSlop(viewConfiguration);
+        this.mMinimumVelocity = (int) (400.0f * f);
+        this.mMaximumVelocity = viewConfiguration.getScaledMaximumFlingVelocity();
+        this.mLeftEdge = new EdgeEffectCompat(context);
+        this.mRightEdge = new EdgeEffectCompat(context);
+        this.mFlingDistance = (int) (25.0f * f);
+        this.mCloseEnough = (int) (2.0f * f);
+        this.mDefaultGutterSize = (int) (16.0f * f);
+        ViewCompat.setAccessibilityDelegate(this, (AccessibilityDelegateCompat) ((Object) new cu(this)));
+        if (ViewCompat.getImportantForAccessibility(this) == 0) {
+            ViewCompat.setImportantForAccessibility(this, 1);
+        }
     }
 
     private int e() {
-        return getMeasuredWidth() - getPaddingLeft() - getPaddingRight();
+        return this.getMeasuredWidth() - this.getPaddingLeft() - this.getPaddingRight();
     }
 
-    private boolean e(int int1) {
-        boolean boolean9;
-
-        if (mItems.size() == 0) {
-            boolean boolean10;
-
-            mCalledSuper = false;
-            a(0, 0.0F, 0);
-            boolean10 = mCalledSuper;
-            boolean9 = false;
-            if (!boolean10)
+    private boolean e(int n) {
+        boolean bl;
+        if (this.mItems.size() == 0) {
+            this.mCalledSuper = false;
+            this.a(0, 0.0f, 0);
+            boolean bl2 = this.mCalledSuper;
+            bl = false;
+            if (!bl2) {
                 throw new IllegalStateException("onPageScrolled did not call superclass implementation");
+            }
         } else {
-            cs cs2 = g();
-            int int3 = e();
-            int int4 = int3 + mPageMargin;
-            float float5 = (float) mPageMargin / (float) int3;
-            int int6 = cs2.b;
-            float float7 = ((float) int1 / (float) int3 - cs2.e) / (float5 + cs2.d);
-            int int8 = (int) (float7 * (float) int4);
-
-            mCalledSuper = false;
-            a(int6, float7, int8);
-            if (!mCalledSuper)
+            cs cs2 = this.g();
+            int n2 = this.e();
+            int n3 = n2 + this.mPageMargin;
+            float f = (float) this.mPageMargin / (float) n2;
+            SettingWidget settingWidget = cs2.b;
+            float f2 = ((float) n / (float) n2 - cs2.e) / (f + cs2.d);
+            int n4 = (int) (f2 * (float) n3);
+            this.mCalledSuper = false;
+            this.a((int) settingWidget, f2, n4);
+            if (!this.mCalledSuper) {
                 throw new IllegalStateException("onPageScrolled did not call superclass implementation");
-            else
-                boolean9 = true;
+            }
+            bl = true;
         }
-        return boolean9;
+        return bl;
     }
 
+    /*
+     * Enabled aggressive block sorting
+     */
     private void f() {
-        if (mDrawingOrder != 0) {
-            int int1;
-            int int2;
-
-            if (mDrawingOrderedChildren == null)
-                mDrawingOrderedChildren = new ArrayList();
-            else
-                mDrawingOrderedChildren.clear();
-            int1 = getChildCount();
-            for (int2 = 0; int2 < int1; ++int2) {
-                View View3 = getChildAt(int2);
-
-                mDrawingOrderedChildren.add(View3);
+        if (this.mDrawingOrder != 0) {
+            if (this.mDrawingOrderedChildren == null) {
+                this.mDrawingOrderedChildren = new ArrayList();
+            } else {
+                this.mDrawingOrderedChildren.clear();
             }
-            Collections.sort((List) mDrawingOrderedChildren, (Comparator) sPositionComparator);
+            int n = this.getChildCount();
+            for (int i = 0; i < n; ++i) {
+                View view = this.getChildAt(i);
+                this.mDrawingOrderedChildren.add(view);
+            }
+            Collections.sort(this.mDrawingOrderedChildren, sPositionComparator);
         }
     }
 
-    private boolean f(int int1) {
-        Object Object2 = findFocus();
-        Object Object3;
-        View View4;
-        boolean boolean5;
-
-        label_8:
+    /*
+     * Unable to fully structure code
+     * Enabled aggressive block sorting
+     * Lifted jumps to return sites
+     */
+    private boolean f(int var1_1) {
+        block8:
         {
-            if (Object2 == this)
-                Object3 = null;
-            else {
-                if (Object2 != null) {
-                    ViewParent ViewParent10 = ((View) Object2).getParent();
-                    int int11;
-
-                    label_65:
-                    {
-                        while (ViewParent10 instanceof ViewGroup) {
-                            if (ViewParent10 == this) {
-                                int11 = 1;
-                                break label_65;
-                            } else
-                                ViewParent10 = ViewParent10.getParent();
-                        }
-                        int11 = 0;
-                    }
-                    if (int11 == 0) {
-                        StringBuilder StringBuilder12 = new StringBuilder();
-                        Object Object14;
-
-                        StringBuilder12.append(Object2.getClass().getSimpleName());
-                        for (Object14 = ((View) Object2).getParent(); Object14 instanceof ViewGroup; Object14 = ((ViewParent) Object14).getParent())
-                            StringBuilder12.append(" => ").append(Object14.getClass().getSimpleName());
-                        Log.e("ViewPager", new StringBuilder("arrowScroll tried to find focus based on non-child current focused view ").append(StringBuilder12.toString()).toString());
-                        Object3 = null;
-                        break label_8;
-                    }
+            var2_2 = this.findFocus();
+            if (var2_2 != this)**GOTO lbl5
+            var3_3 = null;
+            **GOTO lbl8
+            lbl5:
+            // 1 sources:
+            if (var2_2 == null)**GOTO lbl50
+            var10_8 = var2_2.getParent();
+            **GOTO lbl31
+            lbl8:
+            // 3 sources:
+            do {
+                var4_4 = FocusFinder.getInstance().findNextFocus(this, var3_3, var1_1);
+                if (var4_4 == null || var4_4 == var3_3)**GOTO lbl21
+                if (var1_1 != 17)**GOTO lbl16
+                var8_5 = this.a((Rect) this.mTempRect, (View) var4_4).left;
+                var9_6 = this.a((Rect) this.mTempRect, (View) var3_3).left;
+                var5_7 = var3_3 != null && var8_5 >= var9_6 ? this.i() : var4_4.requestFocus();
+                **GOTO lbl28
+                lbl16:
+                // 1 sources:
+                if (var1_1 != 66)**GOTO lbl -1000
+                var6_12 = this.a((Rect) this.mTempRect, (View) var4_4).left;
+                var7_13 = this.a((Rect) this.mTempRect, (View) var3_3).left;
+                var5_7 = var3_3 != null && var6_12 <= var7_13 ? this.j() : var4_4.requestFocus();
+                **GOTO lbl28
+                lbl21:
+                // 1 sources:
+                if (var1_1 == 17 || var1_1 == 1) {
+                    var5_7 = this.i();
+                } else if (var1_1 == 66 || var1_1 == 2) {
+                    var5_7 = this.j();
+                } else lbl - 1000: // 2 sources:
+                {
+                    var5_7 = false;
                 }
-                Object3 = Object2;
-            }
-        }
-        View4 = FocusFinder.getInstance().findNextFocus(this, (View) Object3, int1);
-        label_44:
-        {
-            if (View4 != null && View4 != Object3) {
-                if (int1 == 17) {
-                    int int8 = a(mTempRect, View4).left;
-                    int int9 = a(mTempRect, (View) Object3).left;
-
-                    if (Object3 != null && int8 >= int9)
-                        boolean5 = i();
-                    else
-                        boolean5 = View4.requestFocus();
-                    break label_44;
-                } else if (int1 == 66) {
-                    int int6 = a(mTempRect, View4).left;
-                    int int7 = a(mTempRect, (View) Object3).left;
-
-                    if (Object3 != null && int6 <= int7)
-                        boolean5 = j();
-                    else
-                        boolean5 = View4.requestFocus();
-                    break label_44;
+                lbl28:
+                // 5 sources:
+                if (var5_7 == false) return var5_7;
+                this.playSoundEffect(SoundEffectConstants.getContantForFocusDirection(var1_1));
+                return var5_7;
+                break;
+            } while (true);
+            lbl31:
+            // 2 sources:
+            while (var10_8 instanceof ViewGroup) {
+                if (var10_8 == this) {
+                    var11_9 = true;
+                    break block8;
                 }
-            } else if (int1 == 17 || int1 == 1) {
-                boolean5 = i();
-                break label_44;
-            } else if (int1 == 66 || int1 == 2) {
-                boolean5 = j();
-                break label_44;
+                var10_8 = var10_8.getParent();
             }
-            boolean5 = false;
+            var11_9 = false;
         }
-        if (boolean5)
-            playSoundEffect(SoundEffectConstants.getContantForFocusDirection(int1));
-        return boolean5;
+        if (var11_9)**GOTO lbl50
+        var12_10 = new StringBuilder();
+        var12_10.append(var2_2.getClass().getSimpleName());
+        var14_11 = var2_2.getParent();
+        while (var14_11 instanceof ViewGroup) {
+            var12_10.append(" => ").append(var14_11.getClass().getSimpleName());
+            var14_11 = var14_11.getParent();
+        }
+        Log.e("ViewPager", "arrowScroll tried to find focus based on non-child current focused view " + var12_10.toString());
+        var3_3 = null;
+        **GOTO lbl8
+        lbl50:
+        // 2 sources:
+        var3_3 = var2_2;
+        **while (true)
     }
 
+    /*
+     * Enabled aggressive block sorting
+     */
     private cs g() {
-        int int1 = e();
-        float float2;
-        float float3;
-        float float4;
-        float float5;
-        int int6;
-        int int7;
-        int int8;
-        cs cs9;
-
-        if (int1 > 0)
-            float2 = (float) getScrollX() / (float) int1;
-        else
-            float2 = 0.0F;
-        if (int1 > 0)
-            float3 = (float) mPageMargin / (float) int1;
-        else
-            float3 = 0.0F;
-        float4 = 0.0F;
-        float5 = 0.0F;
-        int6 = -1;
-        int7 = 0;
-        int8 = 1;
-        cs9 = null;
-        while (int7 < mItems.size()) {
-            cs cs10 = (cs) mItems.get(int7);
-            int int11;
-            cs cs12;
-            float float13;
-            float float14;
-
-            if (int8 == 0 && cs10.b != int6 + 1) {
-                cs cs18 = mTempItem;
-
-                cs18.e = float3 + (float4 + float5);
-                cs18.b = int6 + 1;
-                cs18.d = mAdapter.getPageWidth(cs18.b);
-                int11 = int7 - 1;
-                cs12 = cs18;
+        int n = this.e();
+        float f = n > 0 ? (float) this.getScrollX() / (float) n : 0.0f;
+        float f2 = n > 0 ? (float) this.mPageMargin / (float) n : 0.0f;
+        float f3 = 0.0f;
+        float f4 = 0.0f;
+        Object object = -1;
+        int n2 = 0;
+        boolean bl = true;
+        cs cs2 = null;
+        while (n2 < this.mItems.size()) {
+            cs cs3;
+            int n3;
+            cs cs4 = this.mItems.get(n2);
+            if (!bl && cs4.b != object + 1) {
+                cs cs5 = this.mTempItem;
+                cs5.e = f2 + (f3 + f4);
+                cs5.b = (SettingWidget) (object + 1);
+                cs5.d = this.mAdapter.getPageWidth((int) cs5.b);
+                n3 = n2 - 1;
+                cs3 = cs5;
             } else {
-                int11 = int7;
-                cs12 = cs10;
+                n3 = n2;
+                cs3 = cs4;
             }
-            float13 = cs12.e;
-            float14 = float3 + (float13 + cs12.d);
-            if (int8 == 0 && float2 < float13)
-                break;
-            if (float2 < float14 || int11 == -1 + mItems.size()) {
-                cs9 = cs12;
-                break;
-            } else {
-                int int15 = cs12.b;
-                float float16 = cs12.d;
-                int int17 = int11 + 1;
-
-                float5 = float13;
-                int6 = int15;
-                float4 = float16;
-                cs9 = cs12;
-                int7 = int17;
-                int8 = 0;
+            float f5 = cs3.e;
+            float f6 = f2 + (f5 + cs3.d);
+            if (!bl) {
+                if (f < f5) return cs2;
             }
+            if (f < f6) return cs3;
+            if (n3 == -1 + this.mItems.size()) {
+                return cs3;
+            }
+            SettingWidget settingWidget = cs3.b;
+            float f7 = cs3.d;
+            int n4 = n3 + 1;
+            f4 = f5;
+            object = settingWidget;
+            f3 = f7;
+            cs2 = cs3;
+            n2 = n4;
+            bl = false;
         }
-        return cs9;
+        return cs2;
     }
 
     private void h() {
-        mIsBeingDragged = false;
-        mIsUnableToDrag = false;
-        if (mVelocityTracker != null) {
-            mVelocityTracker.recycle();
-            mVelocityTracker = null;
+        this.mIsBeingDragged = false;
+        this.mIsUnableToDrag = false;
+        if (this.mVelocityTracker != null) {
+            this.mVelocityTracker.recycle();
+            this.mVelocityTracker = null;
         }
     }
 
     private boolean i() {
-        if (mCurItem <= 0)
-            return false;
-        setCurrentItem(-1 + mCurItem, true);
-        return true;
-    }
-
-    private boolean j() {
-        if (mAdapter == null || mCurItem >= -1 + mAdapter.getCount())
-            return false;
-        setCurrentItem(1 + mCurItem, true);
-        return true;
-    }
-
-    final void a() {
-        int int1 = mAdapter.getCount();
-        int int2;
-        int int3;
-        int int4;
-        int int5;
-        int int6;
-        int int7;
-        int int17;
-
-        mExpectedAdapterCount = int1;
-        if (mItems.size() < 1 + (mOffscreenPageLimit << 1) && mItems.size() < int1)
-            int2 = 1;
-        else
-            int2 = 0;
-        int3 = mCurItem;
-        int4 = 0;
-        int5 = int3;
-        int6 = int2;
-        for (int7 = 0; int7 < mItems.size(); int7 = int17) {
-            cs cs11 = (cs) mItems.get(int7);
-            int int12 = mAdapter.getItemPosition(cs11.a);
-            int int13;
-            int int14;
-            int int15;
-            int int16;
-
-            label_105:
-            {
-                if (int12 != -1) {
-                    if (int12 == -2) {
-                        int int19;
-
-                        mItems.remove(int7);
-                        int19 = int7 - 1;
-                        if (int4 == 0) {
-                            mAdapter.startUpdate(this);
-                            int4 = 1;
-                        }
-                        mAdapter.destroyItem(this, cs11.b, cs11.a);
-                        if (mCurItem == cs11.b) {
-                            int int20 = Math.max(0, Math.min(mCurItem, int1 - 1));
-
-                            int13 = int19;
-                            int14 = int4;
-                            int15 = int20;
-                            int16 = 1;
-                        } else {
-                            int13 = int19;
-                            int14 = int4;
-                            int15 = int5;
-                            int16 = 1;
-                        }
-                        break label_105;
-                    } else if (cs11.b != int12) {
-                        if (cs11.b == mCurItem)
-                            int5 = int12;
-                        cs11.b = int12;
-                        int13 = int7;
-                        int14 = int4;
-                        int15 = int5;
-                        int16 = 1;
-                        break label_105;
-                    }
-                }
-                int13 = int7;
-                int14 = int4;
-                int15 = int5;
-                int16 = int6;
-            }
-            int17 = int13 + 1;
-            int6 = int16;
-            int5 = int15;
-            int4 = int14;
-        }
-        if (int4 != 0)
-            mAdapter.finishUpdate(this);
-        Collections.sort((List) mItems, COMPARATOR);
-        if (int6 != 0) {
-            int int8 = getChildCount();
-            int int9;
-
-            for (int9 = 0; int9 < int8; ++int9) {
-                ct ct10 = (ct) getChildAt(int9).getLayoutParams();
-
-                if (!ct10.a)
-                    ct10.c = 0.0F;
-            }
-            a(int5, false, true);
-            requestLayout();
-        }
-    }
-
-    public final boolean a(int int1) {
-        boolean boolean2;
-
-        mPopulatePending = false;
-        if (!mFirstLayout)
-            boolean2 = true;
-        else
-            boolean2 = false;
-        return a(int1, boolean2, false, 0);
-    }
-
-    public void addFocusables(ArrayList ArrayList1, int int2, int int3) {
-        int int4 = ArrayList1.size();
-        int int5 = getDescendantFocusability();
-
-        if (int5 != 393216) {
-            int int7;
-
-            for (int7 = 0; int7 < getChildCount(); ++int7) {
-                View View8 = getChildAt(int7);
-
-                if (View8.getVisibility() == 0) {
-                    cs cs9 = a(View8);
-
-                    if (cs9 != null && cs9.b == mCurItem)
-                        View8.addFocusables(ArrayList1, int2, int3);
-                }
-            }
-        }
-        if ((int5 != 262144 || int4 == ArrayList1.size()) && isFocusable() && ((int3 & 0x1) != 1 || !isInTouchMode() || isFocusableInTouchMode()) && ArrayList1 != null)
-            ArrayList1.add(this);
-    }
-
-    public void addTouchables(ArrayList ArrayList1) {
-        int int2;
-
-        for (int2 = 0; int2 < getChildCount(); ++int2) {
-            View View3 = getChildAt(int2);
-
-            if (View3.getVisibility() == 0) {
-                cs cs4 = a(View3);
-
-                if (cs4 != null && cs4.b == mCurItem)
-                    View3.addTouchables(ArrayList1);
-            }
-        }
-    }
-
-    public void addView(View View1, int int2, ViewGroup$LayoutParams LayoutParams3) {
-        ViewGroup$LayoutParams LayoutParams4;
-        ct ct5;
-
-        if (!checkLayoutParams(LayoutParams3))
-            LayoutParams4 = generateLayoutParams(LayoutParams3);
-        else
-            LayoutParams4 = LayoutParams3;
-        ct5 = (ct) LayoutParams4;
-        ct5.a = ct5.a | View1 instanceof cr;
-        if (mInLayout) {
-            if (ct5 != null && ct5.a)
-                throw new IllegalStateException("Cannot add pager decor view during layout");
-            else {
-                ct5.d = true;
-                addViewInLayout(View1, int2, LayoutParams4);
-                return;
-            }
-        } else {
-            super.addView(View1, int2, LayoutParams4);
-            return;
-        }
-    }
-
-    final void b() {
-        c(mCurItem);
-    }
-
-    protected boolean checkLayoutParams(ViewGroup$LayoutParams LayoutParams1) {
-        if (LayoutParams1 instanceof ct && super.checkLayoutParams(LayoutParams1))
+        if (this.mCurItem > 0) {
+            this.setCurrentItem(-1 + this.mCurItem, true);
             return true;
-        else
-            return false;
-    }
-
-    public void computeScroll() {
-        if (!mScroller.isFinished() && mScroller.computeScrollOffset()) {
-            int int1 = getScrollX();
-            int int2 = getScrollY();
-            int int3 = mScroller.getCurrX();
-            int int4 = mScroller.getCurrY();
-
-            if (int1 != int3 || int2 != int4) {
-                scrollTo(int3, int4);
-                if (!e(int3)) {
-                    mScroller.abortAnimation();
-                    scrollTo(0, int4);
-                }
-            }
-            ViewCompat.postInvalidateOnAnimation((View) this);
-        } else
-            a(true);
-    }
-
-    public boolean dispatchKeyEvent(KeyEvent KeyEvent1) {
-        boolean boolean2;
-
-        if (!super.dispatchKeyEvent(KeyEvent1)) {
-            int int4;
-
-            label_12:
-            {
-                if (KeyEvent1.getAction() == 0) {
-                    boolean boolean3;
-
-                    switch (KeyEvent1.getKeyCode()) {
-                        case 21:
-                            boolean3 = f(17);
-                            break label_12;
-                        case 22:
-                            boolean3 = f(66);
-                            break label_12;
-                        case 61:
-                            if (Build$VERSION.SDK_INT >= 11) {
-                                if (KeyEventCompat.hasNoModifiers(KeyEvent1)) {
-                                    boolean3 = f(2);
-                                    break label_12;
-                                } else {
-                                    if (KeyEventCompat.hasModifiers(KeyEvent1, 1)) {
-                                        boolean3 = f(1);
-                                        break label_12;
-                                    }
-                                    break;
-                                }
-                            }
-                            break;
-                        default:
-                            break;
-                    }
-                }
-                int4 = 0;
-            }
-            boolean2 = false;
-            if (int4 == 0)
-                return boolean2;
-        }
-        boolean2 = true;
-        return boolean2;
-    }
-
-    public boolean dispatchPopulateAccessibilityEvent(AccessibilityEvent AccessibilityEvent1) {
-        int int2 = getChildCount();
-        int int3 = 0;
-
-        for (; ; ) {
-            boolean boolean4 = false;
-
-            if (int3 < int2) {
-                View View5 = getChildAt(int3);
-
-                if (View5.getVisibility() == 0) {
-                    cs cs6 = a(View5);
-
-                    if (cs6 != null && cs6.b == mCurItem && View5.dispatchPopulateAccessibilityEvent(AccessibilityEvent1)) {
-                        boolean4 = true;
-                        return boolean4;
-                    }
-                }
-                ++int3;
-                continue;
-            }
-        }
-    }
-
-    public void draw(Canvas Canvas1) {
-        int int2;
-        int int4;
-
-        super.draw(Canvas1);
-        int2 = ViewCompat.getOverScrollMode((View) this);
-        if (int2 == 0 || int2 == 1 && mAdapter != null && mAdapter.getCount() > 1) {
-            boolean boolean3 = mLeftEdge.isFinished();
-
-            int4 = 0;
-            if (!boolean3) {
-                int int8 = Canvas1.save();
-                int int9 = getHeight() - getPaddingTop() - getPaddingBottom();
-                int int10 = getWidth();
-
-                Canvas1.rotate(270.0F);
-                Canvas1.translate((float) (-int9 + getPaddingTop()), mFirstOffset * (float) int10);
-                mLeftEdge.setSize(int9, int10);
-                int4 = 0x0 | mLeftEdge.draw(Canvas1);
-                Canvas1.restoreToCount(int8);
-            }
-            if (!mRightEdge.isFinished()) {
-                int int5 = Canvas1.save();
-                int int6 = getWidth();
-                int int7 = getHeight() - getPaddingTop() - getPaddingBottom();
-
-                Canvas1.rotate(90.0F);
-                Canvas1.translate((float) -(getPaddingTop()), -(1.0F + mLastOffset) * (float) int6);
-                mRightEdge.setSize(int7, int6);
-                int4 = int4 | mRightEdge.draw(Canvas1);
-                Canvas1.restoreToCount(int5);
-            }
-        } else {
-            mLeftEdge.finish();
-            mRightEdge.finish();
-            int4 = 0;
-        }
-        if (int4 != 0)
-            ViewCompat.postInvalidateOnAnimation((View) this);
-    }
-
-    protected void drawableStateChanged() {
-        Drawable Drawable1;
-
-        super.drawableStateChanged();
-        Drawable1 = mMarginDrawable;
-        if (Drawable1 != null && Drawable1.isStateful())
-            Drawable1.setState(getDrawableState());
-    }
-
-    protected ViewGroup$LayoutParams generateDefaultLayoutParams() {
-        return (ViewGroup$LayoutParams) new ct();
-    }
-
-    public ViewGroup$LayoutParams generateLayoutParams(AttributeSet AttributeSet1) {
-        return (ViewGroup$LayoutParams) new ct(getContext(), AttributeSet1);
-    }
-
-    protected ViewGroup$LayoutParams generateLayoutParams(ViewGroup$LayoutParams LayoutParams1) {
-        return generateDefaultLayoutParams();
-    }
-
-    protected int getChildDrawingOrder(int int1, int int2) {
-        if (mDrawingOrder == 2)
-            int2 = int1 - 1 - int2;
-        return ((ct) ((View) mDrawingOrderedChildren.get(int2)).getLayoutParams()).f;
-    }
-
-    protected void onAttachedToWindow() {
-        super.onAttachedToWindow();
-        mFirstLayout = true;
-    }
-
-    protected void onDetachedFromWindow() {
-        removeCallbacks(mEndScrollRunnable);
-        super.onDetachedFromWindow();
-    }
-
-    protected void onDraw(Canvas Canvas1) {
-        super.onDraw(Canvas1);
-        if (mPageMargin > 0 && mMarginDrawable != null && mItems.size() > 0 && mAdapter != null) {
-            int int2 = getScrollX();
-            int int3 = getWidth();
-            float float4 = (float) mPageMargin / (float) int3;
-            cs cs5 = (cs) mItems.get(0);
-            float float6 = cs5.e;
-            int int7 = mItems.size();
-            int int8 = cs5.b;
-            int int9 = ((cs) mItems.get(int7 - 1)).b;
-            int int10 = 0;
-            int int11;
-
-            for (int11 = int8; int11 < int9; ++int11) {
-                float float13;
-
-                while (int11 > cs5.b && int10 < int7) {
-                    ArrayList ArrayList14 = mItems;
-
-                    ++int10;
-                    cs5 = (cs) ArrayList14.get(int10);
-                }
-                if (int11 == cs5.b) {
-                    float13 = (cs5.e + cs5.d) * (float) int3;
-                    float6 = float4 + (cs5.e + cs5.d);
-                } else {
-                    float float12 = mAdapter.getPageWidth(int11);
-
-                    float13 = (float6 + float12) * (float) int3;
-                    float6 += float12 + float4;
-                }
-                if (float13 + (float) mPageMargin > (float) int2) {
-                    mMarginDrawable.setBounds((int) float13, mTopPageBounds, (int) (0.5F + (float13 + (float) mPageMargin)), mBottomPageBounds);
-                    mMarginDrawable.draw(Canvas1);
-                }
-                if (float13 > (float) (int2 + int3))
-                    break;
-            }
-        }
-    }
-
-    public boolean onInterceptTouchEvent(MotionEvent MotionEvent1) {
-        int int2 = 0xFF & MotionEvent1.getAction();
-
-        if (int2 == 3 || int2 == 1) {
-            mIsBeingDragged = false;
-            mIsUnableToDrag = false;
-            mActivePointerId = -1;
-            if (mVelocityTracker != null) {
-                mVelocityTracker.recycle();
-                mVelocityTracker = null;
-            }
-        } else {
-            if (int2 != 0) {
-                if (mIsBeingDragged)
-                    return true;
-                else if (mIsUnableToDrag)
-                    return false;
-            }
-            switch (int2) {
-                case 2:
-                    int int6 = mActivePointerId;
-
-                    if (int6 != -1) {
-                        int int7 = MotionEventCompat.findPointerIndex(MotionEvent1, int6);
-                        float float8 = MotionEventCompat.getX(MotionEvent1, int7);
-                        float float9 = float8 - mLastMotionX;
-                        float float10 = Math.abs(float9);
-                        float float11 = MotionEventCompat.getY(MotionEvent1, int7);
-                        float float12 = Math.abs(float11 - mInitialMotionY);
-
-                        if (float9 != 0.0F) {
-                            float float14 = mLastMotionX;
-                            int int15;
-
-                            if (float14 < (float) mGutterSize && float9 > 0.0F || float14 > (float) (getWidth() - mGutterSize) && float9 < 0.0F)
-                                int15 = 1;
-                            else
-                                int15 = 0;
-                            if (int15 == 0 && a((View) this, false, (int) float9, (int) float8, (int) float11)) {
-                                mLastMotionX = float8;
-                                mLastMotionY = float11;
-                                mIsUnableToDrag = true;
-                                return false;
-                            }
-                        }
-                        if (float10 > (float) mTouchSlop && 0.5F * float10 > float12) {
-                            float float13;
-
-                            mIsBeingDragged = true;
-                            b(1);
-                            if (float9 > 0.0F)
-                                float13 = mInitialMotionX + (float) mTouchSlop;
-                            else
-                                float13 = mInitialMotionX - (float) mTouchSlop;
-                            mLastMotionX = float13;
-                            mLastMotionY = float11;
-                            b(true);
-                        } else if (float12 > (float) mTouchSlop)
-                            mIsUnableToDrag = true;
-                        if (mIsBeingDragged && a(float8)) {
-                            ViewCompat.postInvalidateOnAnimation((View) this);
-                            break;
-                        }
-                        break;
-                    }
-                    break;
-                case 0:
-                    float float3 = MotionEvent1.getX();
-                    float float4;
-
-                    mInitialMotionX = float3;
-                    mLastMotionX = float3;
-                    float4 = MotionEvent1.getY();
-                    mInitialMotionY = float4;
-                    mLastMotionY = float4;
-                    mActivePointerId = MotionEventCompat.getPointerId(MotionEvent1, 0);
-                    mIsUnableToDrag = false;
-                    mScroller.computeScrollOffset();
-                    if (mScrollState != 2 || Math.abs(mScroller.getFinalX() - mScroller.getCurrX()) <= mCloseEnough) {
-                        a(false);
-                        mIsBeingDragged = false;
-                        break;
-                    }
-                    break;
-                case 6:
-                    a(MotionEvent1);
-                    break;
-                default:
-                    break;
-            }
-            if (mVelocityTracker == null)
-                mVelocityTracker = VelocityTracker.obtain();
-            mVelocityTracker.addMovement(MotionEvent1);
-            return mIsBeingDragged;
-        }
-    }
-
-    protected void onLayout(boolean boolean1, int int2, int int3, int int4, int int5) {
-        int int6 = getChildCount();
-        int int7 = int4 - int2;
-        int int8 = int5 - int3;
-        int int9 = getPaddingLeft();
-        int int10 = getPaddingTop();
-        int int11 = getPaddingRight();
-        int int12 = getPaddingBottom();
-        int int13 = getScrollX();
-        int int14 = 0;
-        int int15 = 0;
-        int int16;
-        int int17;
-
-        while (int15 < int6) {
-            View View22 = getChildAt(int15);
-            int int23;
-            int int24;
-            int int25;
-            int int26;
-
-            label_100:
-            {
-                if (View22.getVisibility() != 8) {
-                    ct ct27 = (ct) View22.getLayoutParams();
-
-                    if (ct27.a) {
-                        int int28 = 0x7 & ct27.b;
-                        int int29 = 0x70 & ct27.b;
-                        int int31;
-                        int int32;
-                        int int34;
-                        int int35;
-                        int int36;
-
-                        switch (int28) {
-                            case 2:
-                            case 4:
-                            default:
-                                int31 = int9;
-                                break;
-                            case 3:
-                                int int41 = int9 + View22.getMeasuredWidth();
-
-                                int31 = int9;
-                                int9 = int41;
-                                break;
-                            case 1:
-                                int31 = Math.max((int7 - View22.getMeasuredWidth()) / 2, int9);
-                                break;
-                            case 5:
-                                int int30 = int7 - int11 - View22.getMeasuredWidth();
-
-                                int11 += View22.getMeasuredWidth();
-                                int31 = int30;
-                                break;
-                        }
-                        switch (int29) {
-                            default:
-                                int int40;
-
-                                int32 = int10;
-                                int40 = int12;
-                                int34 = int10;
-                                int35 = int40;
-                                break;
-                            case 48:
-                                int int38 = int10 + View22.getMeasuredHeight();
-                                int int39 = int10;
-
-                                int35 = int12;
-                                int34 = int38;
-                                int32 = int39;
-                                break;
-                            case 16:
-                                int int37;
-
-                                int32 = Math.max((int8 - View22.getMeasuredHeight()) / 2, int10);
-                                int37 = int12;
-                                int34 = int10;
-                                int35 = int37;
-                                break;
-                            case 80:
-                                int int33;
-
-                                int32 = int8 - int12 - View22.getMeasuredHeight();
-                                int33 = int12 + View22.getMeasuredHeight();
-                                int34 = int10;
-                                int35 = int33;
-                                break;
-                        }
-                        int36 = int31 + int13;
-                        View22.layout(int36, int32, int36 + View22.getMeasuredWidth(), int32 + View22.getMeasuredHeight());
-                        int23 = int14 + 1;
-                        int24 = int34;
-                        int12 = int35;
-                        int25 = int11;
-                        int26 = int9;
-                        break label_100;
-                    }
-                }
-                int23 = int14;
-                int24 = int10;
-                int25 = int11;
-                int26 = int9;
-            }
-            ++int15;
-            int9 = int26;
-            int11 = int25;
-            int10 = int24;
-            int14 = int23;
-        }
-        int16 = int7 - int9 - int11;
-        for (int17 = 0; int17 < int6; ++int17) {
-            View View18 = getChildAt(int17);
-
-            if (View18.getVisibility() != 8) {
-                ct ct19 = (ct) View18.getLayoutParams();
-
-                if (!ct19.a) {
-                    cs cs20 = a(View18);
-
-                    if (cs20 != null) {
-                        int int21 = int9 + (int) ((float) int16 * cs20.e);
-
-                        if (ct19.d) {
-                            ct19.d = false;
-                            View18.measure(View$MeasureSpec.makeMeasureSpec((int) ((float) int16 * ct19.c), 1073741824), View$MeasureSpec.makeMeasureSpec(int8 - int10 - int12, 1073741824));
-                        }
-                        View18.layout(int21, int10, int21 + View18.getMeasuredWidth(), int10 + View18.getMeasuredHeight());
-                    }
-                }
-            }
-        }
-        mTopPageBounds = int10;
-        mBottomPageBounds = int8 - int12;
-        mDecorChildCount = int14;
-        if (mFirstLayout)
-            a(mCurItem, false, 0, false);
-        mFirstLayout = false;
-    }
-
-    protected void onMeasure(int int1, int int2) {
-        int int3;
-        int int4;
-        int int5;
-        int int6;
-        int int7;
-        int int8;
-        int int9;
-
-        setMeasuredDimension(getDefaultSize(0, int1), getDefaultSize(0, int2));
-        int3 = getMeasuredWidth();
-        mGutterSize = Math.min(int3 / 10, mDefaultGutterSize);
-        int4 = int3 - getPaddingLeft() - getPaddingRight();
-        int5 = getMeasuredHeight() - getPaddingTop() - getPaddingBottom();
-        int6 = getChildCount();
-        for (int7 = 0; int7 < int6; ++int7) {
-            View View12 = getChildAt(int7);
-
-            if (View12.getVisibility() != 8) {
-                ct ct13 = (ct) View12.getLayoutParams();
-
-                if (ct13 != null && ct13.a) {
-                    int int14 = 0x7 & ct13.b;
-                    int int15 = 0x70 & ct13.b;
-                    int int16 = -2147483648;
-                    int int17 = -2147483648;
-                    int int18;
-                    int int19;
-                    int int20;
-                    int int21;
-                    int int22;
-
-                    if (int15 == 48 || int15 == 80)
-                        int18 = 1;
-                    else
-                        int18 = 0;
-                    if (int14 == 3 || int14 == 5)
-                        int19 = 1;
-                    else
-                        int19 = 0;
-                    if (int18 != 0)
-                        int16 = 1073741824;
-                    else if (int19 != 0)
-                        int17 = 1073741824;
-                    if (ct13.width != -2) {
-                        int20 = 1073741824;
-                        if (ct13.width != -1)
-                            int21 = ct13.width;
-                        else
-                            int21 = int4;
-                    } else {
-                        int20 = int16;
-                        int21 = int4;
-                    }
-                    label_121:
-                    {
-                        if (ct13.height != -2) {
-                            int17 = 1073741824;
-                            if (ct13.height != -1) {
-                                int22 = ct13.height;
-                                break label_121;
-                            }
-                        }
-                        int22 = int5;
-                    }
-                    View12.measure(View$MeasureSpec.makeMeasureSpec(int21, int20), View$MeasureSpec.makeMeasureSpec(int22, int17));
-                    if (int18 != 0)
-                        int5 -= View12.getMeasuredHeight();
-                    else if (int19 != 0)
-                        int4 -= View12.getMeasuredWidth();
-                }
-            }
-        }
-        mChildWidthMeasureSpec = View$MeasureSpec.makeMeasureSpec(int4, 1073741824);
-        mChildHeightMeasureSpec = View$MeasureSpec.makeMeasureSpec(int5, 1073741824);
-        mInLayout = true;
-        b();
-        mInLayout = false;
-        int8 = getChildCount();
-        for (int9 = 0; int9 < int8; ++int9) {
-            View View10 = getChildAt(int9);
-
-            if (View10.getVisibility() != 8) {
-                ct ct11 = (ct) View10.getLayoutParams();
-
-                if (ct11 == null || !ct11.a)
-                    View10.measure(View$MeasureSpec.makeMeasureSpec((int) ((float) int4 * ct11.c), 1073741824), mChildHeightMeasureSpec);
-            }
-        }
-    }
-
-    protected boolean onRequestFocusInDescendants(int int1, Rect Rect2) {
-        int int3 = -1;
-        int int4 = getChildCount();
-        int int5;
-
-        if ((int1 & 0x2) != 0) {
-            int3 = 1;
-            int5 = 0;
-        } else {
-            int5 = int4 - 1;
-            int4 = int3;
-        }
-        while (int5 != int4) {
-            View View6 = getChildAt(int5);
-
-            if (View6.getVisibility() == 0) {
-                cs cs7 = a(View6);
-
-                if (cs7 != null && cs7.b == mCurItem && View6.requestFocus(int1, Rect2))
-                    return true;
-            }
-            int5 += int3;
         }
         return false;
     }
 
-    public void onRestoreInstanceState(Parcelable Parcelable1) {
-        if (!(Parcelable1 instanceof ReaderViewPager$SavedState))
-            super.onRestoreInstanceState(Parcelable1);
-        else {
-            ReaderViewPager$SavedState SavedState2 = (ReaderViewPager$SavedState) Parcelable1;
+    private boolean j() {
+        if (this.mAdapter != null && this.mCurItem < -1 + this.mAdapter.getCount()) {
+            this.setCurrentItem(1 + this.mCurItem, true);
+            return true;
+        }
+        return false;
+    }
 
-            super.onRestoreInstanceState(SavedState2.getSuperState());
-            if (mAdapter != null) {
-                mAdapter.restoreState(SavedState2.b, SavedState2.c);
-                a(SavedState2.a, false, true);
+    /*
+     * Unable to fully structure code
+     * Enabled aggressive block sorting
+     * Lifted jumps to return sites
+     */
+    final void a() {
+        this.mExpectedAdapterCount = var1_1 = this.mAdapter.getCount();
+        var2_2 = this.mItems.size() < 1 + (this.mOffscreenPageLimit << 1) && this.mItems.size() < var1_1;
+        var3_3 = this.mCurItem;
+        var4_4 = false;
+        var5_5 = var3_3;
+        var6_6 = var2_2;
+        var7_7 = 0;
+        do {
+            if (var7_7 >= this.mItems.size())**GOTO lbl41
+            var11_8 = this.mItems.get(var7_7);
+            var12_9 = this.mAdapter.getItemPosition(var11_8.a);
+            if (var12_9 == -1)**GOTO lbl57
+            if (var12_9 != -2)**GOTO lbl32
+            this.mItems.remove(var7_7);
+            var19_15 = var7_7 - 1;
+            if (!var4_4) {
+                this.mAdapter.startUpdate(this);
+                var4_4 = true;
+            }
+            this.mAdapter.destroyItem(this, (int) var11_8.b, (Object) var11_8.a);
+            if (this.mCurItem == var11_8.b) {
+                var20_16 = Math.max(0, Math.min(this.mCurItem, var1_1 - 1));
+                var13_10 = var19_15;
+                var14_11 = var4_4;
+                var15_12 = var20_16;
+                var16_13 = true;
             } else {
-                mRestoredCurItem = SavedState2.a;
-                mRestoredAdapterState = SavedState2.b;
-                mRestoredClassLoader = SavedState2.c;
+                var13_10 = var19_15;
+                var14_11 = var4_4;
+                var15_12 = var5_5;
+                var16_13 = true;
             }
+            **GOTO lbl61
+            lbl32:
+            // 1 sources:
+            if (var11_8.b == var12_9)**GOTO lbl57
+            if (var11_8.b == this.mCurItem) {
+                var5_5 = var12_9;
+            }
+            var11_8.b = (SettingWidget) var12_9;
+            var13_10 = var7_7;
+            var14_11 = var4_4;
+            var15_12 = var5_5;
+            var16_13 = true;
+            **GOTO lbl61
+            lbl41:
+            // 1 sources:
+            if (var4_4) {
+                this.mAdapter.finishUpdate(this);
+            }
+            Collections.sort(this.mItems, ReaderViewPager.COMPARATOR);
+            if (var6_6 == false) return;
+            var8_17 = this.getChildCount();
+            var9_18 = 0;
+            do {
+                if (var9_18 >= var8_17) {
+                    this.a(var5_5, false, true);
+                    this.requestLayout();
+                    return;
+                }
+                var10_19 = (ct) this.getChildAt(var9_18).getLayoutParams();
+                if (var10_19.a == false) {
+                    var10_19.c = 0.0f;
+                }
+                ++var9_18;
+            } while (true);
+            lbl57:
+            // 2 sources:
+            var13_10 = var7_7;
+            var14_11 = var4_4;
+            var15_12 = var5_5;
+            var16_13 = var6_6;
+            lbl61:
+            // 4 sources:
+            var17_14 = var13_10 + 1;
+            var6_6 = var16_13;
+            var5_5 = var15_12;
+            var4_4 = var14_11;
+            var7_7 = var17_14;
+        } while (true);
+    }
+
+    /*
+     * Enabled force condition propagation
+     * Lifted jumps to return sites
+     */
+    public final boolean a(int n) {
+        boolean bl;
+        this.mPopulatePending = false;
+        if (!this.mFirstLayout) {
+            bl = true;
+            do {
+                return this.a(n, bl, false, 0);
+                break;
+            } while (true);
+        }
+        bl = false;
+        return this.a(n, bl, false, 0);
+    }
+
+    /*
+     * Enabled aggressive block sorting
+     */
+    @Override
+    public void addFocusables(ArrayList<View> arrayList, int n, int n2) {
+        int n3 = arrayList.size();
+        int n4 = this.getDescendantFocusability();
+        if (n4 != 393216) {
+            for (int i = 0; i < this.getChildCount(); ++i) {
+                cs cs2;
+                View view = this.getChildAt(i);
+                if (view.getVisibility() != 0 || (cs2 = this.a(view)) == null || cs2.b != this.mCurItem) continue;
+                view.addFocusables(arrayList, n, n2);
+            }
+        }
+        if (n4 == 262144 && n3 != arrayList.size() || !this.isFocusable() || (n2 & 1) == 1 && this.isInTouchMode() && !this.isFocusableInTouchMode() || arrayList == null) {
+            return;
+        }
+        arrayList.add(this);
+    }
+
+    @Override
+    public void addTouchables(ArrayList<View> arrayList) {
+        for (int i = 0; i < this.getChildCount(); ++i) {
+            cs cs2;
+            View view = this.getChildAt(i);
+            if (view.getVisibility() != 0 || (cs2 = this.a(view)) == null || cs2.b != this.mCurItem) continue;
+            view.addTouchables(arrayList);
         }
     }
 
-    public Parcelable onSaveInstanceState() {
-        Object Object1 = new ReaderViewPager$SavedState(super.onSaveInstanceState());
-
-        ((ReaderViewPager$SavedState) Object1).a = mCurItem;
-        if (mAdapter != null)
-            ((ReaderViewPager$SavedState) Object1).b = mAdapter.saveState();
-        return (Parcelable) Object1;
+    /*
+     * Enabled aggressive block sorting
+     */
+    @Override
+    public void addView(View view, int n, ViewGroup.LayoutParams layoutParams) {
+        ViewGroup.LayoutParams layoutParams2 = !this.checkLayoutParams(layoutParams) ? this.generateLayoutParams(layoutParams) : layoutParams;
+        ct ct2 = (ct) ((Object) layoutParams2);
+        ct2.a = (SettingWidget) (ct2.a | view instanceof cr);
+        if (!this.mInLayout) {
+            super.addView(view, n, layoutParams2);
+            return;
+        }
+        if (ct2 != null && ct2.a != false) {
+            throw new IllegalStateException("Cannot add pager decor view during layout");
+        }
+        ct2.d = true;
+        this.addViewInLayout(view, n, layoutParams2);
     }
 
-    protected void onSizeChanged(int int1, int int2, int int3, int int4) {
-        super.onSizeChanged(int1, int2, int3, int4);
-        if (int1 != int3)
-            a(int1, int3, mPageMargin, mPageMargin);
+    final void b() {
+        this.c(this.mCurItem);
     }
 
-    public boolean onTouchEvent(MotionEvent MotionEvent1) {
-        if (mFakeDragging)
-            return true;
-        else if (MotionEvent1.getAction() == 0 && MotionEvent1.getEdgeFlags() != 0)
-            return false;
-        else if (mAdapter == null || mAdapter.getCount() == 0)
-            return false;
-        else {
-            int int2;
-            int int3;
-
-            if (mVelocityTracker == null)
-                mVelocityTracker = VelocityTracker.obtain();
-            mVelocityTracker.addMovement(MotionEvent1);
-            int2 = 0xFF & MotionEvent1.getAction();
-            int3 = 0;
-            switch (int2) {
-                case 0:
-                    float float26;
-                    float float27;
-
-                    mScroller.abortAnimation();
-                    mPopulatePending = false;
-                    b();
-                    mIsBeingDragged = true;
-                    b(1);
-                    float26 = MotionEvent1.getX();
-                    mInitialMotionX = float26;
-                    mLastMotionX = float26;
-                    float27 = MotionEvent1.getY();
-                    mInitialMotionY = float27;
-                    mLastMotionY = float27;
-                    mActivePointerId = MotionEventCompat.getPointerId(MotionEvent1, 0);
-                    int3 = 0;
-                    break;
-                case 2:
-                    boolean boolean19;
-
-                    if (!mIsBeingDragged) {
-                        int int20 = MotionEventCompat.findPointerIndex(MotionEvent1, mActivePointerId);
-                        float float21 = MotionEventCompat.getX(MotionEvent1, int20);
-                        float float22 = Math.abs(float21 - mLastMotionX);
-                        float float23 = MotionEventCompat.getY(MotionEvent1, int20);
-                        float float24 = Math.abs(float23 - mLastMotionY);
-
-                        if (float22 > (float) mTouchSlop && float22 > float24) {
-                            float float25;
-
-                            mIsBeingDragged = true;
-                            if (float21 - mInitialMotionX > 0.0F)
-                                float25 = mInitialMotionX + (float) mTouchSlop;
-                            else
-                                float25 = mInitialMotionX - (float) mTouchSlop;
-                            mLastMotionX = float25;
-                            mLastMotionY = float23;
-                            b(1);
-                            b(true);
-                        }
-                    }
-                    boolean19 = mIsBeingDragged;
-                    int3 = 0;
-                    if (boolean19) {
-                        int3 = 0x0 | a(MotionEventCompat.getX(MotionEvent1, MotionEventCompat.findPointerIndex(MotionEvent1, mActivePointerId)));
-                        break;
-                    }
-                    break;
-                case 1:
-                    boolean boolean6 = mIsBeingDragged;
-
-                    int3 = 0;
-                    if (boolean6) {
-                        VelocityTracker VelocityTracker7 = mVelocityTracker;
-                        int int8;
-                        int int9;
-                        int int10;
-                        cs cs11;
-                        int int12;
-                        float float13;
-                        int int15;
-
-                        VelocityTracker7.computeCurrentVelocity(1000, (float) mMaximumVelocity);
-                        int8 = (int) VelocityTrackerCompat.getXVelocity(VelocityTracker7, mActivePointerId);
-                        mPopulatePending = true;
-                        int9 = e();
-                        int10 = getScrollX();
-                        cs11 = g();
-                        int12 = cs11.b;
-                        float13 = ((float) int10 / (float) int9 - cs11.e) / cs11.d;
-                        if (Math.abs((int) (MotionEventCompat.getX(MotionEvent1, MotionEventCompat.findPointerIndex(MotionEvent1, mActivePointerId)) - mInitialMotionX)) > mFlingDistance && Math.abs(int8) > mMinimumVelocity) {
-                            if (int8 <= 0)
-                                ++int12;
-                            int15 = int12;
-                        } else {
-                            float float14;
-
-                            if (int12 >= mCurItem)
-                                float14 = 0.40000000596046448F;
-                            else
-                                float14 = 0.60000002384185791F;
-                            int15 = (int) (float14 + (float13 + (float) int12));
-                        }
-                        if (mItems.size() > 0) {
-                            cs cs17 = (cs) mItems.get(0);
-                            cs cs18 = (cs) mItems.get(-1 + mItems.size());
-
-                            int15 = Math.max(cs17.b, Math.min(int15, cs18.b));
-                        }
-                        a(int15, true, true, int8);
-                        mActivePointerId = -1;
-                        h();
-                        int3 = mLeftEdge.onRelease() | mRightEdge.onRelease();
-                        break;
-                    }
-                    break;
-                case 3:
-                    boolean boolean5 = mIsBeingDragged;
-
-                    int3 = 0;
-                    if (boolean5) {
-                        a(mCurItem, true, 0, false);
-                        mActivePointerId = -1;
-                        h();
-                        int3 = mLeftEdge.onRelease() | mRightEdge.onRelease();
-                        break;
-                    }
-                    break;
-                case 5:
-                    int int4 = MotionEventCompat.getActionIndex(MotionEvent1);
-
-                    mLastMotionX = MotionEventCompat.getX(MotionEvent1, int4);
-                    mActivePointerId = MotionEventCompat.getPointerId(MotionEvent1, int4);
-                    int3 = 0;
-                    break;
-                case 6:
-                    a(MotionEvent1);
-                    mLastMotionX = MotionEventCompat.getX(MotionEvent1, MotionEventCompat.findPointerIndex(MotionEvent1, mActivePointerId));
-                    int3 = 0;
-                    break;
-                case 4:
-                default:
-                    break;
-            }
-            if (int3 != 0)
-                ViewCompat.postInvalidateOnAnimation((View) this);
+    @Override
+    protected boolean checkLayoutParams(ViewGroup.LayoutParams layoutParams) {
+        if (layoutParams instanceof ct && super.checkLayoutParams(layoutParams)) {
             return true;
         }
+        return false;
     }
 
-    public void removeView(View View1) {
-        if (mInLayout)
-            removeViewInLayout(View1);
-        else
-            super.removeView(View1);
-    }
-
-    public void setAdapter(PagerAdapter PagerAdapter1) {
-        if (mAdapter != null) {
-            int int3;
-            int int4;
-
-            mAdapter.unregisterDataSetObserver((DataSetObserver) mObserver);
-            mAdapter.startUpdate(this);
-            for (int3 = 0; int3 < mItems.size(); ++int3) {
-                cs cs5 = (cs) mItems.get(int3);
-
-                mAdapter.destroyItem(this, cs5.b, cs5.a);
-            }
-            mAdapter.finishUpdate(this);
-            mItems.clear();
-            for (int4 = 0; int4 < getChildCount(); ++int4) {
-                if (!((ct) getChildAt(int4).getLayoutParams()).a) {
-                    removeViewAt(int4);
-                    --int4;
+    @Override
+    public void computeScroll() {
+        if (!this.mScroller.isFinished() && this.mScroller.computeScrollOffset()) {
+            int n = this.getScrollX();
+            int n2 = this.getScrollY();
+            int n3 = this.mScroller.getCurrX();
+            int n4 = this.mScroller.getCurrY();
+            if (n != n3 || n2 != n4) {
+                this.scrollTo(n3, n4);
+                if (!this.e(n3)) {
+                    this.mScroller.abortAnimation();
+                    this.scrollTo(0, n4);
                 }
             }
-            mCurItem = 0;
-            scrollTo(0, 0);
+            ViewCompat.postInvalidateOnAnimation(this);
+            return;
         }
-        mAdapter = PagerAdapter1;
-        mExpectedAdapterCount = 0;
-        if (mAdapter != null) {
-            boolean boolean2;
+        this.a(true);
+    }
 
-            if (mObserver == null)
-                mObserver = new cx(this, (byte) 0);
-            mAdapter.registerDataSetObserver((DataSetObserver) mObserver);
-            mPopulatePending = false;
-            boolean2 = mFirstLayout;
-            mFirstLayout = true;
-            mExpectedAdapterCount = mAdapter.getCount();
-            if (mRestoredCurItem >= 0) {
-                mAdapter.restoreState(mRestoredAdapterState, mRestoredClassLoader);
-                a(mRestoredCurItem, false, true);
-                mRestoredCurItem = -1;
-                mRestoredAdapterState = null;
-                mRestoredClassLoader = null;
-            } else {
-                if (!boolean2)
-                    b();
-                else
-                    requestLayout();
-                return;
+    /*
+     * Enabled aggressive block sorting
+     */
+    @Override
+    public boolean dispatchKeyEvent(KeyEvent keyEvent) {
+        boolean bl;
+        if (super.dispatchKeyEvent(keyEvent)) return true;
+        if (keyEvent.getAction() != 0) return false;
+        switch (keyEvent.getKeyCode()) {
+            default: {
+                return false;
+            }
+            case 21: {
+                bl = this.f(17);
+                break;
+            }
+            case 22: {
+                bl = this.f(66);
+                break;
+            }
+            case 61: {
+                if (Build.VERSION.SDK_INT < 11) return false;
+                if (KeyEventCompat.hasNoModifiers(keyEvent)) {
+                    bl = this.f(2);
+                } else {
+                    if (!KeyEventCompat.hasModifiers(keyEvent, 1)) return false;
+                    bl = this.f(1);
+                }
+            }
+        }
+        boolean bl2 = false;
+        if (!bl) return bl2;
+        return true;
+    }
+
+    /*
+     * Enabled force condition propagation
+     * Lifted jumps to return sites
+     */
+    @Override
+    public boolean dispatchPopulateAccessibilityEvent(AccessibilityEvent accessibilityEvent) {
+        int n = this.getChildCount();
+        int n2 = 0;
+        do {
+            cs cs2;
+            boolean bl = false;
+            if (n2 >= n) return bl;
+            View view = this.getChildAt(n2);
+            if (view.getVisibility() == 0 && (cs2 = this.a(view)) != null && cs2.b == this.mCurItem && view.dispatchPopulateAccessibilityEvent(accessibilityEvent)) {
+                return true;
+            }
+            ++n2;
+        } while (true);
+    }
+
+    /*
+     * Enabled force condition propagation
+     * Lifted jumps to return sites
+     */
+    @Override
+    public void draw(Canvas canvas) {
+        super.draw(canvas);
+        int n = ViewCompat.getOverScrollMode(this);
+        if (n == 0 || n == 1 && this.mAdapter != null && this.mAdapter.getCount() > 1) {
+            boolean bl = this.mLeftEdge.isFinished();
+            boolean bl2 = false;
+            if (!bl) {
+                int n2 = canvas.save();
+                int n3 = this.getHeight() - this.getPaddingTop() - this.getPaddingBottom();
+                int n4 = this.getWidth();
+                canvas.rotate(270.0f);
+                canvas.translate(-n3 + this.getPaddingTop(), this.mFirstOffset * (float) n4);
+                this.mLeftEdge.setSize(n3, n4);
+                bl2 = false | this.mLeftEdge.draw(canvas);
+                canvas.restoreToCount(n2);
+            }
+            if (!this.mRightEdge.isFinished()) {
+                int n5 = canvas.save();
+                int n6 = this.getWidth();
+                int n7 = this.getHeight() - this.getPaddingTop() - this.getPaddingBottom();
+                canvas.rotate(90.0f);
+                canvas.translate(-this.getPaddingTop(), (-1.0f + this.mLastOffset) * (float) n6);
+                this.mRightEdge.setSize(n7, n6);
+                bl2 |= this.mRightEdge.draw(canvas);
+                canvas.restoreToCount(n5);
+            }
+            if (!bl2) return;
+            ViewCompat.postInvalidateOnAnimation(this);
+            return;
+        }
+        this.mLeftEdge.finish();
+        this.mRightEdge.finish();
+    }
+
+    @Override
+    protected void drawableStateChanged() {
+        super.drawableStateChanged();
+        Drawable drawable = this.mMarginDrawable;
+        if (drawable != null && drawable.isStateful()) {
+            drawable.setState(this.getDrawableState());
+        }
+    }
+
+    @Override
+    protected ViewGroup.LayoutParams generateDefaultLayoutParams() {
+        return new ct();
+    }
+
+    @Override
+    public ViewGroup.LayoutParams generateLayoutParams(AttributeSet attributeSet) {
+        return new ct(this.getContext(), attributeSet);
+    }
+
+    @Override
+    protected ViewGroup.LayoutParams generateLayoutParams(ViewGroup.LayoutParams layoutParams) {
+        return this.generateDefaultLayoutParams();
+    }
+
+    @Override
+    protected int getChildDrawingOrder(int n, int n2) {
+        if (this.mDrawingOrder == 2) {
+            n2 = n - 1 - n2;
+        }
+        return ((ct) this.mDrawingOrderedChildren.get((int) n2).getLayoutParams()).f;
+    }
+
+    @Override
+    protected void onAttachedToWindow() {
+        super.onAttachedToWindow();
+        this.mFirstLayout = true;
+    }
+
+    @Override
+    protected void onDetachedFromWindow() {
+        this.removeCallbacks(this.mEndScrollRunnable);
+        super.onDetachedFromWindow();
+    }
+
+    /*
+     * Enabled aggressive block sorting
+     */
+    @Override
+    protected void onDraw(Canvas canvas) {
+        super.onDraw(canvas);
+        if (this.mPageMargin > 0 && this.mMarginDrawable != null && this.mItems.size() > 0 && this.mAdapter != null) {
+            int n = this.getScrollX();
+            int n2 = this.getWidth();
+            float f = (float) this.mPageMargin / (float) n2;
+            cs cs2 = this.mItems.get(0);
+            float f2 = cs2.e;
+            int n3 = this.mItems.size();
+            reference var8_8 = cs2.b;
+            SettingWidget settingWidget = this.mItems.get((int) (n3 - 1)).b;
+            int n4 = 0;
+            for (reference var11_11 = var8_8; var11_11 < settingWidget; ++var11_11) {
+                float f3;
+                while (var11_11 > cs2.b && n4 < n3) {
+                    ArrayList<cs> arrayList = this.mItems;
+                    cs2 = arrayList.get(++n4);
+                }
+                if (var11_11 == cs2.b) {
+                    f3 = (cs2.e + cs2.d) * (float) n2;
+                    f2 = f + (cs2.e + cs2.d);
+                } else {
+                    float f4 = this.mAdapter.getPageWidth((int) var11_11);
+                    f3 = (f2 + f4) * (float) n2;
+                    f2 += f4 + f;
+                }
+                if (f3 + (float) this.mPageMargin > (float) n) {
+                    this.mMarginDrawable.setBounds((int) f3, this.mTopPageBounds, (int) (0.5f + (f3 + (float) this.mPageMargin)), this.mBottomPageBounds);
+                    this.mMarginDrawable.draw(canvas);
+                }
+                if (f3 > (float) (n + n2)) break;
             }
         }
     }
 
-    public void setCurrentItem(int int1, boolean boolean2) {
-        mPopulatePending = false;
-        a(int1, boolean2, false);
-    }
-
-    public void setOffscreenPageLimit(int int1) {
-        if (int1 <= 0) {
-            Log.w("ViewPager", new StringBuilder("Requested offscreen page limit ").append(int1).append(" too small; defaulting to 1").toString());
-            int1 = 1;
-        }
-        if (int1 != mOffscreenPageLimit) {
-            mOffscreenPageLimit = int1;
-            b();
-        }
-    }
-
-    public void setOnPageChangeListener(cw cw1) {
-        mOnPageChangeListener = cw1;
-    }
-
-    public void setPageMargin(int int1) {
-        int int2 = mPageMargin;
-        int int3;
-
-        mPageMargin = int1;
-        int3 = getWidth();
-        a(int3, int3, int1, int2);
-        requestLayout();
-    }
-
-    public void setPageMarginDrawable(int int1) {
-        setPageMarginDrawable(getContext().getResources().getDrawable(int1));
-    }
-
-    public void setPageMarginDrawable(Drawable Drawable1) {
-        boolean boolean2;
-
-        mMarginDrawable = Drawable1;
-        if (Drawable1 != null)
-            refreshDrawableState();
-        if (Drawable1 == null)
-            boolean2 = true;
-        else
-            boolean2 = false;
-        setWillNotDraw(boolean2);
-        invalidate();
-    }
-// Error: Internal #201: 
-// The following method may not be correct.
-
-    public void setPageTransformer$7c662580(boolean boolean1, K K2) {
-    }
-
-    protected boolean verifyDrawable(Drawable Drawable1) {
-        if (super.verifyDrawable(Drawable1) || Drawable1 == mMarginDrawable)
-            return true;
-        else
+    /*
+     * Unable to fully structure code
+     * Enabled aggressive block sorting
+     * Lifted jumps to return sites
+     */
+    @Override
+    public boolean onInterceptTouchEvent(MotionEvent var1_1) {
+        var2_2 = 255 & var1_1.getAction();
+        if (var2_2 == 3 || var2_2 == 1) {
+            this.mIsBeingDragged = false;
+            this.mIsUnableToDrag = false;
+            this.mActivePointerId = -1;
+            if (this.mVelocityTracker == null) return false;
+            this.mVelocityTracker.recycle();
+            this.mVelocityTracker = null;
             return false;
+        }
+        if (var2_2 != 0) {
+            if (this.mIsBeingDragged) {
+                return true;
+            }
+            if (this.mIsUnableToDrag != false) return false;
+        }
+        switch (var2_2) {
+            case 2: {
+                var6_3 = this.mActivePointerId;
+                if (var6_3 != -1) {
+                    var7_4 = MotionEventCompat.findPointerIndex(var1_1, var6_3);
+                    var8_5 = MotionEventCompat.getX(var1_1, var7_4);
+                    var9_6 = var8_5 - this.mLastMotionX;
+                    var10_7 = Math.abs(var9_6);
+                    var11_8 = MotionEventCompat.getY(var1_1, var7_4);
+                    var12_9 = Math.abs(var11_8 - this.mInitialMotionY);
+                    if (var9_6 != 0.0f) {
+                        var14_10 = this.mLastMotionX;
+                        var15_11 = var14_10 < (float) this.mGutterSize && var9_6 > 0.0f || var14_10 > (float) (this.getWidth() - this.mGutterSize) && var9_6 < 0.0f;
+                        if (!var15_11 && this.a(this, false, (int) var9_6, (int) var8_5, (int) var11_8)) {
+                            this.mLastMotionX = var8_5;
+                            this.mLastMotionY = var11_8;
+                            this.mIsUnableToDrag = true;
+                            return false;
+                        }
+                    }
+                    if (var10_7 > (float) this.mTouchSlop && 0.5f * var10_7 > var12_9) {
+                        this.mIsBeingDragged = true;
+                        this.b(1);
+                        var13_12 = var9_6 > 0.0f ? this.mInitialMotionX + (float) this.mTouchSlop : this.mInitialMotionX - (float) this.mTouchSlop;
+                        this.mLastMotionX = var13_12;
+                        this.mLastMotionY = var11_8;
+                        this.b(true);
+                    } else if (var12_9 > (float) this.mTouchSlop) {
+                        this.mIsUnableToDrag = true;
+                    }
+                    if (this.mIsBeingDragged && this.a(var8_5)) {
+                        ViewCompat.postInvalidateOnAnimation(this);
+                        **break;
+                    }
+                }
+                **GOTO lbl57
+            }
+            case 0: {
+                this.mInitialMotionX = var3_13 = var1_1.getX();
+                this.mLastMotionX = var3_13;
+                this.mInitialMotionY = var4_14 = var1_1.getY();
+                this.mLastMotionY = var4_14;
+                this.mActivePointerId = MotionEventCompat.getPointerId(var1_1, 0);
+                this.mIsUnableToDrag = false;
+                this.mScroller.computeScrollOffset();
+                if (this.mScrollState != 2 || Math.abs(this.mScroller.getFinalX() - this.mScroller.getCurrX()) <= this.mCloseEnough) {
+                    this.a(false);
+                    this.mIsBeingDragged = false;
+                }
+            }
+            lbl57:
+            // 6 sources:
+            default:
+            {
+                **GOTO lbl61
+            }
+            case 6:
+        }
+        this.a(var1_1);
+        lbl61:
+        // 2 sources:
+        if (this.mVelocityTracker == null) {
+            this.mVelocityTracker = VelocityTracker.obtain();
+        }
+        this.mVelocityTracker.addMovement(var1_1);
+        return this.mIsBeingDragged;
+    }
+
+    /*
+     * Unable to fully structure code
+     * Enabled aggressive block sorting
+     * Lifted jumps to return sites
+     */
+    @Override
+    protected void onLayout(boolean var1_1, int var2_2, int var3_3, int var4_4, int var5_5) {
+        var6_6 = this.getChildCount();
+        var7_7 = var4_4 - var2_2;
+        var8_8 = var5_5 - var3_3;
+        var9_9 = this.getPaddingLeft();
+        var10_10 = this.getPaddingTop();
+        var11_11 = this.getPaddingRight();
+        var12_12 = this.getPaddingBottom();
+        var13_13 = this.getScrollX();
+        var14_14 = 0;
+        var15_15 = 0;
+        do {
+            if (var15_15 >= var6_6)**GOTO lbl68
+            var22_16 = this.getChildAt(var15_15);
+            if (var22_16.getVisibility() == 8)**GOTO lbl87
+            var27_21 = (ct) var22_16.getLayoutParams();
+            if (var27_21.a == false)**GOTO lbl87
+            var28_22 = 7 & var27_21.b;
+            var29_23 = 112 & var27_21.b;
+            switch (var28_22) {
+                default: {
+                    var31_25 = var9_9;
+                    break;
+                }
+                case 3: {
+                    var41_35 = var9_9 + var22_16.getMeasuredWidth();
+                    var31_25 = var9_9;
+                    var9_9 = var41_35;
+                    break;
+                }
+                case 1: {
+                    var31_25 = Math.max((var7_7 - var22_16.getMeasuredWidth()) / 2, var9_9);
+                    break;
+                }
+                case 5: {
+                    var30_24 = var7_7 - var11_11 - var22_16.getMeasuredWidth();
+                    var11_11 += var22_16.getMeasuredWidth();
+                    var31_25 = var30_24;
+                }
+            }
+            switch (var29_23) {
+                default: {
+                    var32_26 = var10_10;
+                    var40_34 = var12_12;
+                    var34_28 = var10_10;
+                    var35_29 = var40_34;
+                    break;
+                }
+                case 48: {
+                    var38_32 = var10_10 + var22_16.getMeasuredHeight();
+                    var39_33 = var10_10;
+                    var35_29 = var12_12;
+                    var34_28 = var38_32;
+                    var32_26 = var39_33;
+                    break;
+                }
+                case 16: {
+                    var32_26 = Math.max((var8_8 - var22_16.getMeasuredHeight()) / 2, var10_10);
+                    var37_31 = var12_12;
+                    var34_28 = var10_10;
+                    var35_29 = var37_31;
+                    break;
+                }
+                case 80: {
+                    var32_26 = var8_8 - var12_12 - var22_16.getMeasuredHeight();
+                    var33_27 = var12_12 + var22_16.getMeasuredHeight();
+                    var34_28 = var10_10;
+                    var35_29 = var33_27;
+                }
+            }
+            var36_30 = var31_25 + var13_13;
+            var22_16.layout(var36_30, var32_26, var36_30 + var22_16.getMeasuredWidth(), var32_26 + var22_16.getMeasuredHeight());
+            var23_17 = var14_14 + 1;
+            var24_18 = var34_28;
+            var12_12 = var35_29;
+            var25_19 = var11_11;
+            var26_20 = var9_9;
+            **GOTO lbl91
+            lbl68:
+            // 1 sources:
+            var16_36 = var7_7 - var9_9 - var11_11;
+            for (var17_37 = 0; var17_37 < var6_6; ++var17_37) {
+                var18_38 = this.getChildAt(var17_37);
+                if (var18_38.getVisibility() == 8) continue;
+                var19_39 = (ct) var18_38.getLayoutParams();
+                if (var19_39.a != false || (var20_40 = this.a(var18_38)) == null) continue;
+                var21_41 = var9_9 + (int) ((float) var16_36 * var20_40.e);
+                if (var19_39.d) {
+                    var19_39.d = false;
+                    var18_38.measure(View.MeasureSpec.makeMeasureSpec((int) ((float) var16_36 * var19_39.c), 1073741824), View.MeasureSpec.makeMeasureSpec(var8_8 - var10_10 - var12_12, 1073741824));
+                }
+                var18_38.layout(var21_41, var10_10, var21_41 + var18_38.getMeasuredWidth(), var10_10 + var18_38.getMeasuredHeight());
+            }
+            this.mTopPageBounds = var10_10;
+            this.mBottomPageBounds = var8_8 - var12_12;
+            this.mDecorChildCount = var14_14;
+            if (this.mFirstLayout) {
+                this.a(this.mCurItem, false, 0, false);
+            }
+            this.mFirstLayout = false;
+            return;
+            lbl87:
+            // 2 sources:
+            var23_17 = var14_14;
+            var24_18 = var10_10;
+            var25_19 = var11_11;
+            var26_20 = var9_9;
+            lbl91:
+            // 2 sources:
+            ++var15_15;
+            var9_9 = var26_20;
+            var11_11 = var25_19;
+            var10_10 = var24_18;
+            var14_14 = var23_17;
+        } while (true);
+    }
+
+    /*
+     * Unable to fully structure code
+     * Enabled aggressive block sorting
+     * Lifted jumps to return sites
+     */
+    @Override
+    protected void onMeasure(int var1_1, int var2_2) {
+        this.setMeasuredDimension(ReaderViewPager.getDefaultSize(0, var1_1), ReaderViewPager.getDefaultSize(0, var2_2));
+        var3_3 = this.getMeasuredWidth();
+        this.mGutterSize = Math.min(var3_3 / 10, this.mDefaultGutterSize);
+        var4_4 = var3_3 - this.getPaddingLeft() - this.getPaddingRight();
+        var5_5 = this.getMeasuredHeight() - this.getPaddingTop() - this.getPaddingBottom();
+        var6_6 = this.getChildCount();
+        var7_7 = 0;
+        do {
+            if (var7_7 >= var6_6)**GOTO lbl24
+            var12_8 = this.getChildAt(var7_7);
+            if (var12_8.getVisibility() == 8 || (var13_9 = (ct) var12_8.getLayoutParams()) == null || var13_9.a == false)**GOTO lbl52
+            var14_10 = 7 & var13_9.b;
+            var15_11 = 112 & var13_9.b;
+            var16_12 = Integer.MIN_VALUE;
+            var17_13 = Integer.MIN_VALUE;
+            var18_14 = var15_11 == 48 || var15_11 == 80;
+            var19_15 = var14_10 == 3 || var14_10 == 5;
+            if (var18_14) {
+                var16_12 = 1073741824;
+            }
+            if (var13_9.width == -2)**GOTO lbl38
+            var20_16 = 1073741824;
+            var21_17 = var13_9.width != -1 ? var13_9.width : var4_4;
+            **GOTO lbl40
+            lbl24:
+            // 1 sources:
+            this.mChildWidthMeasureSpec = View.MeasureSpec.makeMeasureSpec(var4_4, 1073741824);
+            this.mChildHeightMeasureSpec = View.MeasureSpec.makeMeasureSpec(var5_5, 1073741824);
+            this.mInLayout = true;
+            this.b();
+            this.mInLayout = false;
+            var8_19 = this.getChildCount();
+            var9_20 = 0;
+            while (var9_20 < var8_19) {
+                var10_21 = this.getChildAt(var9_20);
+                if (var10_21.getVisibility() != 8 && ((var11_22 = (ct) var10_21.getLayoutParams()) == null || var11_22.a == false)) {
+                    var10_21.measure(View.MeasureSpec.makeMeasureSpec((int) ((float) var4_4 * var11_22.c), 1073741824), this.mChildHeightMeasureSpec);
+                }
+                ++var9_20;
+            }
+            return;
+            lbl38:
+            // 1 sources:
+            var20_16 = var16_12;
+            var21_17 = var4_4;
+            lbl40:
+            // 2 sources:
+            if (var13_9.height == -2)**GOTO lbl -1000
+            var17_13 = 1073741824;
+            if (var13_9.height != -1) {
+                var22_18 = var13_9.height;
+            } else lbl - 1000: // 2 sources:
+            {
+                var22_18 = var5_5;
+            }
+            var12_8.measure(View.MeasureSpec.makeMeasureSpec(var21_17, var20_16), View.MeasureSpec.makeMeasureSpec(var22_18, var17_13));
+            if (var18_14) {
+                var5_5 -= var12_8.getMeasuredHeight();
+            } else if (var19_15) {
+                var4_4 -= var12_8.getMeasuredWidth();
+            }
+            lbl52:
+            // 5 sources:
+            ++var7_7;
+        } while (true);
+    }
+
+    /*
+     * Enabled aggressive block sorting
+     */
+    @Override
+    protected boolean onRequestFocusInDescendants(int n, Rect rect) {
+        int n2;
+        int n3 = -1;
+        int n4 = this.getChildCount();
+        if ((n & 2) != 0) {
+            n3 = 1;
+            n2 = 0;
+        } else {
+            n2 = n4 - 1;
+            n4 = n3;
+        }
+        while (n2 != n4) {
+            cs cs2;
+            View view = this.getChildAt(n2);
+            if (view.getVisibility() == 0 && (cs2 = this.a(view)) != null && cs2.b == this.mCurItem && view.requestFocus(n, rect)) {
+                return true;
+            }
+            n2 += n3;
+        }
+        return false;
+    }
+
+    @Override
+    public void onRestoreInstanceState(Parcelable parcelable) {
+        if (!(parcelable instanceof ReaderViewPager$SavedState)) {
+            super.onRestoreInstanceState(parcelable);
+            return;
+        }
+        ReaderViewPager$SavedState readerViewPager$SavedState = (ReaderViewPager$SavedState) parcelable;
+        super.onRestoreInstanceState(readerViewPager$SavedState.getSuperState());
+        if (this.mAdapter != null) {
+            this.mAdapter.restoreState(readerViewPager$SavedState.b, readerViewPager$SavedState.c);
+            this.a(readerViewPager$SavedState.a, false, true);
+            return;
+        }
+        this.mRestoredCurItem = readerViewPager$SavedState.a;
+        this.mRestoredAdapterState = readerViewPager$SavedState.b;
+        this.mRestoredClassLoader = readerViewPager$SavedState.c;
+    }
+
+    @Override
+    public Parcelable onSaveInstanceState() {
+        ReaderViewPager$SavedState readerViewPager$SavedState = new ReaderViewPager$SavedState(super.onSaveInstanceState());
+        readerViewPager$SavedState.a = this.mCurItem;
+        if (this.mAdapter != null) {
+            readerViewPager$SavedState.b = this.mAdapter.saveState();
+        }
+        return readerViewPager$SavedState;
+    }
+
+    @Override
+    protected void onSizeChanged(int n, int n2, int n3, int n4) {
+        super.onSizeChanged(n, n2, n3, n4);
+        if (n != n3) {
+            this.a(n, n3, this.mPageMargin, this.mPageMargin);
+        }
+    }
+
+    /*
+     * Unable to fully structure code
+     * Enabled aggressive block sorting
+     * Lifted jumps to return sites
+     */
+    @Override
+    public boolean onTouchEvent(MotionEvent var1_1) {
+        if (this.mFakeDragging) {
+            return true;
+        }
+        if (var1_1.getAction() == 0 && var1_1.getEdgeFlags() != 0) {
+            return false;
+        }
+        if (this.mAdapter == null) return false;
+        if (this.mAdapter.getCount() == 0) {
+            return false;
+        }
+        if (this.mVelocityTracker == null) {
+            this.mVelocityTracker = VelocityTracker.obtain();
+        }
+        this.mVelocityTracker.addMovement(var1_1);
+        var2_2 = 255 & var1_1.getAction();
+        var3_3 = false;
+        switch (var2_2) {
+            case 0: {
+                this.mScroller.abortAnimation();
+                this.mPopulatePending = false;
+                this.b();
+                this.mIsBeingDragged = true;
+                this.b(1);
+                this.mInitialMotionX = var26_4 = var1_1.getX();
+                this.mLastMotionX = var26_4;
+                this.mInitialMotionY = var27_5 = var1_1.getY();
+                this.mLastMotionY = var27_5;
+                this.mActivePointerId = MotionEventCompat.getPointerId(var1_1, 0);
+                return true;
+            }
+            case 2: {
+                if (!this.mIsBeingDragged) {
+                    var20_6 = MotionEventCompat.findPointerIndex(var1_1, this.mActivePointerId);
+                    var21_7 = MotionEventCompat.getX(var1_1, var20_6);
+                    var22_8 = Math.abs(var21_7 - this.mLastMotionX);
+                    var23_9 = MotionEventCompat.getY(var1_1, var20_6);
+                    var24_10 = Math.abs(var23_9 - this.mLastMotionY);
+                    if (var22_8 > (float) this.mTouchSlop && var22_8 > var24_10) {
+                        this.mIsBeingDragged = true;
+                        var25_11 = var21_7 - this.mInitialMotionX > 0.0f ? this.mInitialMotionX + (float) this.mTouchSlop : this.mInitialMotionX - (float) this.mTouchSlop;
+                        this.mLastMotionX = var25_11;
+                        this.mLastMotionY = var23_9;
+                        this.b(1);
+                        this.b(true);
+                    }
+                }
+                var19_12 = this.mIsBeingDragged;
+                var3_3 = false;
+                if (var19_12 == false) return true;
+                var3_3 = false | this.a(MotionEventCompat.getX(var1_1, MotionEventCompat.findPointerIndex(var1_1, this.mActivePointerId)));
+                **break;
+            }
+            case 1: {
+                var6_13 = this.mIsBeingDragged;
+                var3_3 = false;
+                if (var6_13 == false) return true;
+                var7_14 = this.mVelocityTracker;
+                var7_14.computeCurrentVelocity(1000, this.mMaximumVelocity);
+                var8_15 = (int) VelocityTrackerCompat.getXVelocity(var7_14, this.mActivePointerId);
+                this.mPopulatePending = true;
+                var9_16 = this.e();
+                var10_17 = this.getScrollX();
+                var11_18 = this.g();
+                var12_19 = var11_18.b;
+                var13_20 = ((float) var10_17 / (float) var9_16 - var11_18.e) / var11_18.d;
+                if (Math.abs((int) (MotionEventCompat.getX(var1_1, MotionEventCompat.findPointerIndex(var1_1, this.mActivePointerId)) - this.mInitialMotionX)) > this.mFlingDistance && Math.abs(var8_15) > this.mMinimumVelocity) {
+                    if (var8_15 <= 0) {
+                        ++var12_19;
+                    }
+                    var15_21 = var12_19;
+                } else {
+                    var14_24 = var12_19 >= this.mCurItem ? 0.4f : 0.6f;
+                    var15_21 = (int) (var14_24 + (var13_20 + (Object) var12_19));
+                }
+                if (this.mItems.size() > 0) {
+                    var17_22 = this.mItems.get(0);
+                    var18_23 = this.mItems.get(-1 + this.mItems.size());
+                    var15_21 = Math.max((int) var17_22.b, Math.min((int) var15_21, (int) var18_23.b));
+                }
+                this.a((int) var15_21, true, true, var8_15);
+                this.mActivePointerId = -1;
+                this.h();
+                var3_3 = this.mLeftEdge.onRelease() | this.mRightEdge.onRelease();
+                **break;
+            }
+            case 3: {
+                var5_25 = this.mIsBeingDragged;
+                var3_3 = false;
+                if (var5_25 == false) return true;
+                this.a(this.mCurItem, true, 0, false);
+                this.mActivePointerId = -1;
+                this.h();
+                var3_3 = this.mLeftEdge.onRelease() | this.mRightEdge.onRelease();
+            }
+            lbl82:
+            // 4 sources:
+            default:
+            {
+                if (var3_3 == false) return true;
+                ViewCompat.postInvalidateOnAnimation(this);
+                return true;
+            }
+            case 5: {
+                var4_26 = MotionEventCompat.getActionIndex(var1_1);
+                this.mLastMotionX = MotionEventCompat.getX(var1_1, var4_26);
+                this.mActivePointerId = MotionEventCompat.getPointerId(var1_1, var4_26);
+                return true;
+            }
+            case 6:
+        }
+        this.a(var1_1);
+        this.mLastMotionX = MotionEventCompat.getX(var1_1, MotionEventCompat.findPointerIndex(var1_1, this.mActivePointerId));
+        return true;
+    }
+
+    @Override
+    public void removeView(View view) {
+        if (this.mInLayout) {
+            this.removeViewInLayout(view);
+            return;
+        }
+        super.removeView(view);
+    }
+
+    /*
+     * Enabled force condition propagation
+     * Lifted jumps to return sites
+     */
+    public void setAdapter(PagerAdapter pagerAdapter) {
+        if (this.mAdapter != null) {
+            this.mAdapter.unregisterDataSetObserver((DataSetObserver) ((Object) this.mObserver));
+            this.mAdapter.startUpdate(this);
+            for (int i = 0; i < this.mItems.size(); ++i) {
+                cs cs2 = this.mItems.get(i);
+                this.mAdapter.destroyItem(this, (int) cs2.b, (Object) cs2.a);
+            }
+            this.mAdapter.finishUpdate(this);
+            this.mItems.clear();
+            for (int j = 0; j < this.getChildCount(); ++j) {
+                if (((ct) this.getChildAt((int) j).getLayoutParams()).a != false) continue;
+                this.removeViewAt(j);
+                --j;
+            }
+            this.mCurItem = 0;
+            this.scrollTo(0, 0);
+        }
+        this.mAdapter = pagerAdapter;
+        this.mExpectedAdapterCount = 0;
+        if (this.mAdapter == null) return;
+        if (this.mObserver == null) {
+            this.mObserver = new cx(this, 0);
+        }
+        this.mAdapter.registerDataSetObserver((DataSetObserver) ((Object) this.mObserver));
+        this.mPopulatePending = false;
+        boolean bl = this.mFirstLayout;
+        this.mFirstLayout = true;
+        this.mExpectedAdapterCount = this.mAdapter.getCount();
+        if (this.mRestoredCurItem >= 0) {
+            this.mAdapter.restoreState(this.mRestoredAdapterState, this.mRestoredClassLoader);
+            this.a(this.mRestoredCurItem, false, true);
+            this.mRestoredCurItem = -1;
+            this.mRestoredAdapterState = null;
+            this.mRestoredClassLoader = null;
+            return;
+        }
+        if (!bl) {
+            this.b();
+            return;
+        }
+        this.requestLayout();
+    }
+
+    public void setCurrentItem(int n, boolean bl) {
+        this.mPopulatePending = false;
+        this.a(n, bl, false);
+    }
+
+    public void setOffscreenPageLimit(int n) {
+        if (n <= 0) {
+            Log.w("ViewPager", "Requested offscreen page limit " + n + " too small; defaulting to 1");
+            n = 1;
+        }
+        if (n != this.mOffscreenPageLimit) {
+            this.mOffscreenPageLimit = n;
+            this.b();
+        }
+    }
+
+    public void setOnPageChangeListener(cw cw2) {
+        this.mOnPageChangeListener = cw2;
+    }
+
+    public void setPageMargin(int n) {
+        int n2 = this.mPageMargin;
+        this.mPageMargin = n;
+        int n3 = this.getWidth();
+        this.a(n3, n3, n, n2);
+        this.requestLayout();
+    }
+
+    public void setPageMarginDrawable(int n) {
+        this.setPageMarginDrawable(this.getContext().getResources().getDrawable(n));
+    }
+
+    /*
+     * Enabled aggressive block sorting
+     */
+    public void setPageMarginDrawable(Drawable drawable) {
+        this.mMarginDrawable = drawable;
+        if (drawable != null) {
+            this.refreshDrawableState();
+        }
+        boolean bl = drawable == null;
+        this.setWillNotDraw(bl);
+        this.invalidate();
+    }
+
+    /*
+     * Enabled aggressive block sorting
+     * Enabled unnecessary exception pruning
+     * Enabled aggressive exception aggregation
+     */
+    public void setPageTransformer$7c662580(boolean bl, K k) {
+        boolean bl2 = true;
+        if (Build.VERSION.SDK_INT < 11) return;
+        boolean bl3 = k != null ? bl2 : false;
+        boolean bl4 = this.mPageTransformer$572aa01b != null ? bl2 : false;
+        boolean bl5 = bl3 != bl4 ? bl2 : false;
+        this.mPageTransformer$572aa01b = k;
+        if (Build.VERSION.SDK_INT >= 7) {
+            if (this.mSetChildrenDrawingOrderEnabled == null) {
+                try {
+                    Class[] arrclass = new Class[]{Boolean.TYPE};
+                    this.mSetChildrenDrawingOrderEnabled = ViewGroup.class.getDeclaredMethod("setChildrenDrawingOrderEnabled", arrclass);
+                } catch (NoSuchMethodException var12_10) {
+                    Log.e("ViewPager", "Can't find setChildrenDrawingOrderEnabled", var12_10);
+                }
+            }
+            try {
+                Method method = this.mSetChildrenDrawingOrderEnabled;
+                Object[] arrobject = new Object[]{bl3};
+                method.invoke(this, arrobject);
+            } catch (Exception var7_11) {
+                Log.e("ViewPager", "Error changing children drawing order", var7_11);
+            }
+        }
+        if (bl3) {
+            if (bl) {
+                bl2 = BADBOOL 2;
+            }
+            this.mDrawingOrder = bl2;
+        } else {
+            this.mDrawingOrder = 0;
+        }
+        if (bl5) {
+            this.b();
+        }
+    }
+
+    @Override
+    protected boolean verifyDrawable(Drawable drawable) {
+        if (super.verifyDrawable(drawable) || drawable == this.mMarginDrawable) {
+            return true;
+        }
+        return false;
     }
 }

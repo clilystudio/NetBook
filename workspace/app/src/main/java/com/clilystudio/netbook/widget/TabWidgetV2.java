@@ -11,83 +11,64 @@ import android.widget.TabWidget;
 
 import com.clilystudio.netbook.R$styleable;
 
-public class TabWidgetV2 extends TabWidget {
-
+public class TabWidgetV2
+        extends TabWidget {
+    private final int e;
+    private final int f;
+    private final int g;
     private int a;
     private float b;
     private float c;
     private Bitmap d;
-    private int e;     // final access specifier removed
-    private int f;     // final access specifier removed
-    private int g;     // final access specifier removed
     private float h;
-    public TabWidgetV2(Context Context1, AttributeSet AttributeSet2) {
-        super(Context1, AttributeSet2);
-        TypedArray TypedArray3;
 
-        TypedArray3 = Context1.obtainStyledAttributes(AttributeSet2, R$styleable.TabWidgetV2);
-        e = TypedArray3.getDimensionPixelSize(0, 0);
-        a = TypedArray3.getInteger(1, 0);
-        if (a == 0)
+    /*
+     * Enabled aggressive block sorting
+     */
+    public TabWidgetV2(Context context, AttributeSet attributeSet) {
+        super(context, attributeSet);
+        TypedArray typedArray = context.obtainStyledAttributes(attributeSet, R$styleable.TabWidgetV2);
+        this.e = typedArray.getDimensionPixelSize(0, 0);
+        this.a = typedArray.getInteger(1, 0);
+        if (this.a == 0) {
             throw new RuntimeException("Item count can't be zero");
-        else {
-            int int4;
-            int int5;
-            int int6;
-
-            TypedArray3.recycle();
-            int4 = am.b((Activity) Context1).widthPixels;
-            int5 = (int) (2.1000000000000001 * (double) int4);
-            b = (float) int4 / (float) a;
-            g = -(int5 - int4) / 2;
-            h = (float) ((int4 - (e << 1)) / a) / b;
-            int6 = getResources().getDimensionPixelSize(2131099784);
-            if (com.clilystudio.netbook.hpay100.a.a.a(Context1, "customer_night_theme", false))
-                d = am.a(2130837642, int5, int6, getContext());
-            else
-                d = am.a(2130837694, int5, int6, getContext());
-            f = getResources().getDimensionPixelSize(2131099786);
-            return;
         }
+        typedArray.recycle();
+        int n = am.b((Activity) ((Activity) context)).widthPixels;
+        int n2 = (int) (2.1 * (double) n);
+        this.b = (float) n / (float) this.a;
+        this.g = (-n2 - n) / 2;
+        this.h = (float) ((n - (this.e << 1)) / this.a) / this.b;
+        int n3 = this.getResources().getDimensionPixelSize(2131099784);
+        this.d = a.a(context, "customer_night_theme", false) ? am.a((int) 2130837642, (int) n2, (int) n3, (Context) this.getContext()) : am.a((int) 2130837694, (int) n2, (int) n3, (Context) this.getContext());
+        this.f = this.getResources().getDimensionPixelSize(2131099786);
     }
 
-    public final void a(int int1, int int2) {
-        c = (float) int2 / (float) a + (float) int1 * b;
-        invalidate();
+    public final void a(int n, int n2) {
+        this.c = (float) n2 / (float) this.a + (float) n * this.b;
+        this.invalidate();
     }
 
-    public void dispatchDraw(Canvas Canvas1) {
-        int int2;
-        float float3;
-        float float4;
-
-        if (e != 0)
-            int2 = 1;
-        else
-            int2 = 0;
-        if (int2 != 0)
-            float3 = (float) g - b + (float) e - (float) f;
-        else if (a == 3)
-            float3 = (float) g - b;
-        else if (a == 4)
-            float3 = (float) (g - (int) (1.5 * (double) b));
-        else
-            float3 = (float) g - b / 2.0F;
-        float4 = float3 + c * h;
-        Canvas1.drawBitmap(d, float4, 0.0F, null);
-        super.dispatchDraw(Canvas1);
+    /*
+     * Enabled aggressive block sorting
+     */
+    @Override
+    public void dispatchDraw(Canvas canvas) {
+        boolean bl = this.e != 0;
+        float f2 = bl ? (float) this.g - this.b + (float) this.e - (float) this.f : (this.a == 3 ? (float) this.g - this.b : (this.a == 4 ? (float) (this.g - (int) (1.5 * (double) this.b)) : (float) this.g - this.b / 2.0f));
+        float f3 = f2 + this.c * this.h;
+        canvas.drawBitmap(this.d, f3, 0.0f, null);
+        super.dispatchDraw(canvas);
     }
 
-    public void setIndex(int int1) {
-        a(int1, 0);
+    public void setIndex(int n) {
+        this.a(n, 0);
     }
 
-    public void setItemCount(Context Context1, int int2) {
-        int int3;
-
-        a = int2;
-        int3 = am.b((Activity) Context1).widthPixels;
-        b = (float) int3 / (float) a;
-        h = (float) ((int3 - (e << 1)) / a) / b;
+    public void setItemCount(Context context, int n) {
+        this.a = n;
+        int n2 = am.b((Activity) ((Activity) context)).widthPixels;
+        this.b = (float) n2 / (float) this.a;
+        this.h = (float) ((n2 - (this.e << 1)) / this.a) / this.b;
     }
 }

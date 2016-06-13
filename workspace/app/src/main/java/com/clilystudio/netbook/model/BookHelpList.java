@@ -1,23 +1,22 @@
 package com.clilystudio.netbook.model;
 
 public class BookHelpList {
-
     private BookHelpSummary[] helps;
     private boolean ok;
 
     public BookHelpSummary[] getHelps() {
-        return helps;
+        return this.helps;
     }
 
-    public void setHelps(BookHelpSummary[] BookHelpSummary_1darray1) {
-        helps = BookHelpSummary_1darray1;
+    public void setHelps(BookHelpSummary[] arrbookHelpSummary) {
+        this.helps = arrbookHelpSummary;
     }
 
     public boolean isOk() {
-        return ok;
+        return this.ok;
     }
 
-    public void setOk(boolean boolean1) {
-        ok = boolean1;
+    public void setOk(boolean bl) {
+        this.ok = bl;
     }
 }

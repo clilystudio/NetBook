@@ -5,7 +5,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 final class N {
-
     public View a;
     public ImageView b;
     public TextView c;
@@ -13,6 +12,7 @@ final class N {
     public TextView e;
     public TextView f;
     public TextView g;
-    N(M M1) {
+
+    N(M m) {
     }
 }

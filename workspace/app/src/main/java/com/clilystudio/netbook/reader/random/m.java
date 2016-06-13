@@ -1,18 +1,18 @@
 package com.clilystudio.netbook.reader.random;
 
 import android.content.DialogInterface;
-import android.content.DialogInterface$OnClickListener;
 
-final class m implements DialogInterface$OnClickListener {
+final class m
+        implements DialogInterface.OnClickListener {
+    private /* synthetic */ ReaderRandomActivity a;
 
-    private ReaderRandomActivity a;
-
-    m(ReaderRandomActivity ReaderRandomActivity1) {
-        a = ReaderRandomActivity1;
+    m(ReaderRandomActivity readerRandomActivity) {
+        this.a = readerRandomActivity;
     }
 
-    public final void onClick(DialogInterface DialogInterface1, int int2) {
-        DialogInterface1.dismiss();
-        a.finish();
+    @Override
+    public final void onClick(DialogInterface dialogInterface, int n2) {
+        dialogInterface.dismiss();
+        this.a.finish();
     }
 }

@@ -1,32 +1,30 @@
 package com.clilystudio.netbook.ui.user;
 
-import android.os.AsyncTask$Status;
+import android.os.AsyncTask;
 
-final class v implements Runnable {
+final class v
+        implements Runnable {
+    private /* synthetic */ u a;
 
-    private u a;
-
-    v(u u1) {
-        a = u1;
+    v(u u2) {
+        this.a = u2;
     }
 
+    @Override
     public final void run() {
-        if (MyFavTopicFragment.b(a.a) == null) {
-            MyFavTopicFragment.c(a.a).setVisibility(8);
-            MyFavTopicFragment.a(a.a).setVisibility(0);
-            MyFavTopicFragment.a(a.a).setText((CharSequence) "\u8BF7\u767B\u5F55\u540E\u67E5\u770B");
-            MyFavTopicFragment.d(a.a).n();
-        } else {
-            A A2;
-            String[] String_1darray3;
-
-            if (MyFavTopicFragment.e(a.a) != null && MyFavTopicFragment.e(a.a).getStatus() != AsyncTask$Status.FINISHED && !com.clilystudio.netbook.ui.user.MyFavTopicFragment.e(a.a).isCancelled())
-                MyFavTopicFragment.e(a.a).cancel(true);
-            MyFavTopicFragment.a(a.a, new A(a.a, (byte) 0));
-            A2 = MyFavTopicFragment.f(a.a);
-            String_1darray3 = new String[1];
-            String_1darray3[0] = MyFavTopicFragment.b(a.a);
-            A2.b(String_1darray3);
+        if (MyFavTopicFragment.b(this.a.a) == null) {
+            MyFavTopicFragment.c(this.a.a).setVisibility(8);
+            MyFavTopicFragment.a(this.a.a).setVisibility(0);
+            MyFavTopicFragment.a(this.a.a).setText("\u8bf7\u767b\u5f55\u540e\u67e5\u770b");
+            MyFavTopicFragment.d(this.a.a).n();
+            return;
         }
+        if (MyFavTopicFragment.e(this.a.a) != null && MyFavTopicFragment.e(this.a.a).getStatus() != AsyncTask.Status.FINISHED && !MyFavTopicFragment.e(this.a.a).isCancelled()) {
+            MyFavTopicFragment.e(this.a.a).cancel(true);
+        }
+        MyFavTopicFragment.a(this.a.a, new A(this.a.a, 0));
+        A a2 = MyFavTopicFragment.f(this.a.a);
+        String[] arrstring = new String[]{MyFavTopicFragment.b(this.a.a)};
+        a2.b(arrstring);
     }
 }

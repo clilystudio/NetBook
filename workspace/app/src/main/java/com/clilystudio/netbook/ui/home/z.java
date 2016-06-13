@@ -1,18 +1,19 @@
 package com.clilystudio.netbook.ui.home;
 
 import android.view.View;
-import android.view.View$OnClickListener;
 
-final class z implements View$OnClickListener {
+final class z
+        implements View.OnClickListener {
+    private /* synthetic */ HomeShelfFragment a;
 
-    private HomeShelfFragment a;
-
-    z(HomeShelfFragment HomeShelfFragment1) {
-        a = HomeShelfFragment1;
+    z(HomeShelfFragment homeShelfFragment) {
+        this.a = homeShelfFragment;
     }
 
-    public final void onClick(View View1) {
-        if (HomeShelfFragment.a(a) != null)
-            HomeShelfFragment.a(a).d();
+    @Override
+    public final void onClick(View view) {
+        if (HomeShelfFragment.a(this.a) != null) {
+            HomeShelfFragment.a(this.a).d();
+        }
     }
 }

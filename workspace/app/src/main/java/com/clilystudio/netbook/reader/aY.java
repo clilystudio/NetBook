@@ -1,14 +1,15 @@
 package com.clilystudio.netbook.reader;
 
-final class aY implements Runnable {
+final class aY
+        implements Runnable {
+    private /* synthetic */ ReaderActivity a;
 
-    private ReaderActivity a;
-
-    aY(ReaderActivity ReaderActivity1) {
-        a = ReaderActivity1;
+    aY(ReaderActivity readerActivity) {
+        this.a = readerActivity;
     }
 
+    @Override
     public final void run() {
-        ReaderActivity.ae(a);
+        ReaderActivity.ae(this.a);
     }
 }

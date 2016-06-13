@@ -5,62 +5,51 @@ import android.support.design.widget.am;
 import com.clilystudio.netbook.db.BookClickRecord;
 
 import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
 
 public final class k {
-
     private String a;
     private String b;
     private BookClickRecord c;
-    public k(String String1) {
-        a = String1;
+
+    public k(String string) {
+        this.a = string;
     }
 
-    static void a(k k1, boolean boolean2) {
-        if (k1.c != null) {
-            k1.c.setSendStatus(boolean2);
-            k1.c.save();
-        } else
-            BookClickRecord.create(k1.a, k1.b, boolean2);
+    static /* synthetic */ void a(k k2, boolean bl) {
+        if (k2.c != null) {
+            k2.c.setSendStatus(bl);
+            k2.c.save();
+            return;
+        }
+        BookClickRecord.create(k2.a, k2.b, bl);
     }
 
+    /*
+     * Enabled aggressive block sorting
+     */
     public final void a() {
-        String String1;
-        List List2;
-        List List3;
-        int int10;
-
-        b = t.a(new Date());
-        String1 = am.h();
-        List2 = BookClickRecord.getBookClickRecords(a);
-        if (List2 != null && List2.size() > 0) {
-            Iterator Iterator8 = List2.iterator();
-
-            while (Iterator8.hasNext()) {
-                BookClickRecord BookClickRecord9 = (BookClickRecord) Iterator8.next();
-
-                if (com.clilystudio.netbook.hpay100.a.a.b(b, 0) <= com.clilystudio.netbook.hpay100.a.a.b(BookClickRecord9.today_time, 0))
-                    continue;
-                BookClickRecord.deleteByBookId(a);
+        boolean bl;
+        List<BookClickRecord> list;
+        this.b = t.a(new Date());
+        String string = am.h();
+        List<BookClickRecord> list2 = BookClickRecord.getBookClickRecords(this.a);
+        if (list2 != null && list2.size() > 0) {
+            for (BookClickRecord bookClickRecord : list2) {
+                if (a.b(this.b, 0) <= a.b(bookClickRecord.today_time, 0)) continue;
+                BookClickRecord.deleteByBookId(this.a);
             }
         }
-        List3 = BookClickRecord.getBookClickRecords(a, b);
-        if (List3 != null && List3.size() > 0) {
-            boolean boolean4;
-
-            c = (BookClickRecord) List3.get(0);
-            boolean4 = c.isSendStatus();
-        } else
-            int10 = 0;
-        if (int10 == 0) {
-            l l5 = new l(this, (byte) 0);
-            String[] String_1darray6 = new String[3];
-
-            String_1darray6[0] = b;
-            String_1darray6[1] = String1;
-            String_1darray6[2] = a;
-            l5.b(String_1darray6);
+        if ((list = BookClickRecord.getBookClickRecords(this.a, this.b)) != null && list.size() > 0) {
+            this.c = list.get(0);
+            bl = this.c.isSendStatus();
+        } else {
+            bl = false;
+        }
+        if (!bl) {
+            l l2 = new l(this, 0);
+            String[] arrstring = new String[]{this.b, string, this.a};
+            l2.b(arrstring);
         }
     }
 }

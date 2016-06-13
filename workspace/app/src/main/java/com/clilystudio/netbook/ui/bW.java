@@ -2,22 +2,22 @@ package com.clilystudio.netbook.ui;
 
 import android.content.Context;
 import android.support.v7.widget.SwitchCompat;
-import android.view.View;
 import android.widget.CompoundButton;
-import android.widget.CompoundButton$OnCheckedChangeListener;
 
-final class bW implements CompoundButton$OnCheckedChangeListener {
+final class bW
+        implements CompoundButton.OnCheckedChangeListener {
+    private /* synthetic */ SwitchCompat a;
+    private /* synthetic */ SettingsActivity b;
 
-    private SwitchCompat a;
-    private SettingsActivity b;
-    bW(SettingsActivity SettingsActivity1, SwitchCompat SwitchCompat2) {
-        b = SettingsActivity1;
-        a = SwitchCompat2;
+    bW(SettingsActivity settingsActivity, SwitchCompat switchCompat) {
+        this.b = settingsActivity;
+        this.a = switchCompat;
     }
 
-    public final void onCheckedChanged(CompoundButton CompoundButton1, boolean boolean2) {
-        com.clilystudio.netbook.hpay100.a.a.b((Context) b, "update_notice_key", boolean2);
-        SettingsActivity.a(b, boolean2);
-        SettingsActivity.a(b, (View) a, boolean2);
+    @Override
+    public final void onCheckedChanged(CompoundButton compoundButton, boolean bl) {
+        a.b((Context) this.b, "update_notice_key", bl);
+        SettingsActivity.a(this.b, bl);
+        SettingsActivity.a(this.b, this.a, bl);
     }
 }

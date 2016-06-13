@@ -1,7 +1,6 @@
 package com.clilystudio.netbook.model;
 
 public class GameGiftGroup {
-
     public static final int TYPE_GAME = 0;
     public static final int TYPE_GIFT = 1;
     public static final int TYPE_MORE = 2;
@@ -10,26 +9,26 @@ public class GameGiftGroup {
     private int mType;
 
     public GiftGame getGame() {
-        return mGame;
+        return this.mGame;
     }
 
-    public void setGame(GiftGame GiftGame1) {
-        mGame = GiftGame1;
+    public void setGame(GiftGame giftGame) {
+        this.mGame = giftGame;
     }
 
     public GiftGameGift getGift() {
-        return mGift;
+        return this.mGift;
     }
 
-    public void setGift(GiftGameGift GiftGameGift1) {
-        mGift = GiftGameGift1;
+    public void setGift(GiftGameGift giftGameGift) {
+        this.mGift = giftGameGift;
     }
 
     public int getType() {
-        return mType;
+        return this.mType;
     }
 
-    public void setType(int int1) {
-        mType = int1;
+    public void setType(int n) {
+        this.mType = n;
     }
 }

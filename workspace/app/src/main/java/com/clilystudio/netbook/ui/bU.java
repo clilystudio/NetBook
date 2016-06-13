@@ -1,14 +1,15 @@
 package com.clilystudio.netbook.ui;
 
-final class bU implements aa {
+final class bU
+        implements aa {
+    private /* synthetic */ SettingsActivity a;
 
-    private SettingsActivity a;
-
-    bU(SettingsActivity SettingsActivity1) {
-        a = SettingsActivity1;
+    bU(SettingsActivity settingsActivity) {
+        this.a = settingsActivity;
     }
 
+    @Override
     public final void a() {
-        SettingsActivity.a(a);
+        SettingsActivity.a(this.a);
     }
 }

@@ -4,94 +4,43 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-final class cN extends c {
+final class cN
+        extends c {
+    private /* synthetic */ String a;
+    private /* synthetic */ cM b;
 
-    private String a;
-    private cM b;
-    cN(cM cM1, String String2) {
-        b = cM1;
-        a = String2;
+    cN(cM cM2, String string) {
+        this.b = cM2;
+        this.a = string;
     }
 
-    public final void a(JSONArray JSONArray1) {
-        StringBuilder StringBuilder2;
-        int int3;
-        cO cO5;
-        String[] String_1darray6;
-
+    /*
+     * Enabled aggressive block sorting
+     * Enabled unnecessary exception pruning
+     * Enabled aggressive exception aggregation
+     */
+    @Override
+    public final void a(JSONArray jSONArray) {
+        StringBuilder stringBuilder;
         try {
-            StringBuilder2 = new StringBuilder("?");
-        } catch (JSONException JSONException4) {
-            cO5 = new cO(b);
-            String_1darray6 = new String[1];
-            String_1darray6[0] = a;
-            cO5.b(String_1darray6);
-            return;
-        }
-        int3 = 0;
-        label_72:
-        {
-            label_39:
-            for (; ; ) {
-                String String8;
-
-                try {
-                    if (int3 >= JSONArray1.length() || int3 >= 20)
-                        break label_72;
-                } catch (JSONException JSONException13) {
-                    cO5 = new cO(b);
-                    String_1darray6 = new String[1];
-                    String_1darray6[0] = a;
-                    cO5.b(String_1darray6);
-                    return;
-                }
-                try {
-                    String8 = ((JSONObject) JSONArray1.get(int3)).getString("iid");
-                } catch (JSONException JSONException14) {
-                    cO5 = new cO(b);
-                    String_1darray6 = new String[1];
-                    String_1darray6[0] = a;
-                    cO5.b(String_1darray6);
-                    return;
-                }
-                if (int3 == 0) {
-                    try {
-                        StringBuilder2.append(new StringBuilder("ids=").append(String8).toString());
-                        cM.a(b)[int3] = String8;
-                    } catch (JSONException JSONException15) {
-                        cO5 = new cO(b);
-                        String_1darray6 = new String[1];
-                        String_1darray6[0] = a;
-                        cO5.b(String_1darray6);
-                        return;
-                    }
-                    break label_39;
+            stringBuilder = new StringBuilder("?");
+            for (int i = 0; i < jSONArray.length() && i < 20; ++i) {
+                String string = ((JSONObject) jSONArray.get(i)).getString("iid");
+                if (i == 0) {
+                    stringBuilder.append("ids=" + string);
                 } else {
-                    try {
-                        StringBuilder2.append(new StringBuilder("&ids=").append(String8).toString());
-                    } catch (JSONException JSONException16) {
-                        cO5 = new cO(b);
-                        String_1darray6 = new String[1];
-                        String_1darray6[0] = a;
-                        cO5.b(String_1darray6);
-                        return;
-                    }
+                    stringBuilder.append("&ids=" + string);
                 }
+                cM.a((cM) this.b)[i] = string;
             }
-            ++int3;
-        }
-        try {
-            cP cP11 = new cP(b);
-            String[] String_1darray12 = new String[1];
-
-            String_1darray12[0] = StringBuilder2.toString();
-            cP11.b(String_1darray12);
-        } catch (JSONException JSONException17) {
-            cO5 = new cO(b);
-            String_1darray6 = new String[1];
-            String_1darray6[0] = a;
-            cO5.b(String_1darray6);
+        } catch (JSONException var4_5) {
+            cO cO2 = new cO(this.b);
+            String[] arrstring = new String[]{this.a};
+            cO2.b(arrstring);
             return;
         }
+        cP cP2 = new cP(this.b);
+        String[] arrstring = new String[]{stringBuilder.toString()};
+        cP2.b(arrstring);
     }
 }

@@ -4,16 +4,18 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 
-final class h extends BroadcastReceiver {
+final class h
+        extends BroadcastReceiver {
+    private /* synthetic */ GameDetailActivity a;
 
-    private GameDetailActivity a;
-
-    h(GameDetailActivity GameDetailActivity1) {
-        a = GameDetailActivity1;
+    h(GameDetailActivity gameDetailActivity) {
+        this.a = gameDetailActivity;
     }
 
-    public final void onReceive(Context Context1, Intent Intent2) {
-        if (GameDetailActivity.e(a) != null)
-            GameDetailActivity.f(a);
+    @Override
+    public final void onReceive(Context context, Intent intent) {
+        if (GameDetailActivity.e(this.a) != null) {
+            GameDetailActivity.f(this.a);
+        }
     }
 }

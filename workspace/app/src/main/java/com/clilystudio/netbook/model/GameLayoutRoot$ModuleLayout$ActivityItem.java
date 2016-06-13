@@ -1,23 +1,22 @@
 package com.clilystudio.netbook.model;
 
 public class GameLayoutRoot$ModuleLayout$ActivityItem {
-
     private String bannerImage;
     private String link;
 
     public String getBannerImage() {
-        return bannerImage;
+        return this.bannerImage;
     }
 
-    public void setBannerImage(String String1) {
-        bannerImage = String1;
+    public void setBannerImage(String string) {
+        this.bannerImage = string;
     }
 
     public String getLink() {
-        return link;
+        return this.link;
     }
 
-    public void setLink(String String1) {
-        link = String1;
+    public void setLink(String string) {
+        this.link = string;
     }
 }

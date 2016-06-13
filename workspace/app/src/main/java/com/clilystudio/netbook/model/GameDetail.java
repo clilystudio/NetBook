@@ -1,23 +1,22 @@
 package com.clilystudio.netbook.model;
 
 public class GameDetail {
-
     private Game game;
     private boolean ok;
 
     public Game getGame() {
-        return game;
+        return this.game;
     }
 
-    public void setGame(Game Game1) {
-        game = Game1;
+    public void setGame(Game game) {
+        this.game = game;
     }
 
     public boolean isOk() {
-        return ok;
+        return this.ok;
     }
 
-    public void setOk(boolean boolean1) {
-        ok = boolean1;
+    public void setOk(boolean bl) {
+        this.ok = bl;
     }
 }

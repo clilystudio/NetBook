@@ -2,14 +2,16 @@ package com.clilystudio.netbook.util.adutil;
 
 import android.view.View;
 
-public abstract class a implements reflect.InvocationHandler {
+import java.lang.reflect.InvocationHandler;
 
+public abstract class a
+        implements InvocationHandler {
     AdSplashImp a;
 
-    public a(AdSplashImp AdSplashImp1) {
-        a = AdSplashImp1;
-        a.a(this);
+    public a(AdSplashImp adSplashImp) {
+        this.a = adSplashImp;
+        this.a.a(this);
     }
 
-    public abstract boolean a(View View1);
+    public abstract boolean a(View var1);
 }

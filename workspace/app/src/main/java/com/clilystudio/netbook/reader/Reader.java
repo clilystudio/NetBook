@@ -24,10 +24,10 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public final class Reader {
-
-    private static final int[] b = {1, -1, 2, 3, 0};
-    public Map a;     // final access specifier removed
-    private boolean A;
+    private static final int[] b = new int[]{1, -1, 2, 3, 0};
+    public final Map<Integer, ReaderChapter> a = new HashMap<Integer, ReaderChapter>();
+    private final int y;
+    private boolean A = false;
     private ag B;
     private Y C;
     private String c;
@@ -35,519 +35,491 @@ public final class Reader {
     private String e;
     private String f;
     private ChapterLink[] g;
-    private Map h;
-    private Map i;
-    private int j;
-    private int k;
+    private Map<String, String> h;
+    private Map<String, ChapterLink> i;
+    private int j = -1;
+    private int k = 0;
     private BookReadRecord l;
     private TocReadRecord m;
     private MixTocRecord n;
-    private Handler o;
-    private ExecutorService p;
-    private ArrayList q;
+    private Handler o = new Handler();
+    private ExecutorService p = Executors.newCachedThreadPool();
+    private ArrayList<ae> q = new ArrayList();
     private ae r;
     private ae s;
-    private Integer t;
+    private Integer t = 0;
     private Toc u;
     private String v;
-    private com.clilystudio.netbook.util.Q w;
+    private com.clilystudio.netbook.util.Q w = com.clilystudio.netbook.util.Q.a();
     private String x;
-    private int y;     // final access specifier removed
     private f z;
-    public Reader(String String1, String String2, String String3, int int4) {
-        j = -1;
-        k = 0;
-        a = (Map) new HashMap();
-        o = new Handler();
-        p = Executors.newCachedThreadPool();
-        q = new ArrayList();
-        t = Integer.valueOf(0);
-        w = com.clilystudio.netbook.util.Q.a();
-        A = false;
-        C = (Y) new U(this);
-        c = String1;
-        e = String2;
-        d = String3;
-        y = int4;
-        l = BookReadRecord.get(String1);
-        if (this.l != null && e != null) {
-            l.getAuthor();
-            if (o()) {
-                n = MixTocRecord.get(e);
-                if (n == null) {
-                    n = new MixTocRecord();
-                    n.setBookId(c);
-                    n.setTocId(e);
-                } else {
-                    j = n.getChapterIndex();
-                    k = n.getCharIndex();
-                    return;
-                }
-            } else {
-                m = TocReadRecord.get(e);
-                if (m == null) {
-                    m = new TocReadRecord();
-                    m.setBookId(c);
-                    m.setTocId(e);
-                } else {
-                    j = m.getChapterIndex();
-                    k = m.getCharIndex();
-                }
+
+    public Reader(String string) {
+        this.C = new U(this);
+        this.v = string;
+        this.A = true;
+        this.y = -1;
+    }
+
+    /*
+     * Enabled force condition propagation
+     * Lifted jumps to return sites
+     */
+    public Reader(String string, String string2, String string3, int n) {
+        this.C = new U(this);
+        this.c = string;
+        this.e = string2;
+        this.d = string3;
+        this.y = n;
+        this.l = BookReadRecord.get(string);
+        if (this.l == null || this.e == null) return;
+        this.l.getAuthor();
+        if (this.o()) {
+            this.n = MixTocRecord.get(this.e);
+            if (this.n == null) {
+                this.n = new MixTocRecord();
+                this.n.setBookId(this.c);
+                this.n.setTocId(this.e);
                 return;
             }
+            this.j = this.n.getChapterIndex();
+            this.k = this.n.getCharIndex();
+            return;
         }
+        this.m = TocReadRecord.get(this.e);
+        if (this.m == null) {
+            this.m = new TocReadRecord();
+            this.m.setBookId(this.c);
+            this.m.setTocId(this.e);
+            return;
+        }
+        this.j = this.m.getChapterIndex();
+        this.k = this.m.getCharIndex();
     }
 
-    public Reader(String String1) {
-        j = -1;
-        k = 0;
-        a = (Map) new HashMap();
-        o = new Handler();
-        p = Executors.newCachedThreadPool();
-        q = new ArrayList();
-        t = Integer.valueOf(0);
-        w = com.clilystudio.netbook.util.Q.a();
-        A = false;
-        C = (Y) new U(this);
-        v = String1;
-        A = true;
-        y = -1;
+    static /* synthetic */ Toc a(Reader reader, Toc toc) {
+        reader.u = toc;
+        return toc;
     }
 
-    static Toc a(Reader Reader1, Toc Toc2) {
-        Reader1.u = Toc2;
-        return Toc2;
+    static /* synthetic */ ReaderChapter a(Reader reader, ChapterLink chapterLink, int n2) {
+        return reader.a(chapterLink, n2);
     }
 
-    static ReaderChapter a(Reader Reader1, ChapterLink ChapterLink2, int int3) {
-        return Reader1.a(ChapterLink2, int3);
+    static /* synthetic */ ae a(Reader reader) {
+        return reader.s;
     }
 
-    static ae a(Reader Reader1) {
-        return Reader1.s;
-    }
-
-    static ag a(Reader Reader1, ag ag2) {
-        Reader1.B = ag2;
+    static /* synthetic */ ag a(Reader reader, ag ag2) {
+        reader.B = ag2;
         return ag2;
     }
 
-    static f a(Reader Reader1, f f2) {
-        Reader1.z = f2;
+    static /* synthetic */ f a(Reader reader, f f2) {
+        reader.z = f2;
         return f2;
     }
 
-    static f a(Reader Reader1, String String2, String String3, String String4) {
-        f f5;
-
-        if (Reader1.l != null)
-            f5 = new f(Reader1.l);
-        else {
-            BookInfo BookInfo6 = MyApplication.a().c();
-
-            f5 = null;
-            if (BookInfo6 != null)
-                f5 = new f(BookInfo6, Reader1.y);
-        }
-        if (f5 != null)
-            f5.a(String2, String3, String4);
-        return f5;
-    }
-
-    static String a(Reader Reader1, String String2) {
-        Reader1.x = String2;
-        return String2;
-    }
-
-    static void a(Reader Reader1, int int2, Reader$Type Type3) {
-        Reader1.a(int2, Type3);
-    }
-
-    static void a(Reader Reader1, List List2) {
-        Reader1.a(List2);
-    }
-
-    static void a(Reader Reader1, ChapterLink[] ChapterLink_1darray2) {
-        int int3;
-        int int4;
-
-        Reader1.g = ChapterLink_1darray2;
-        Reader1.i = (Map) new HashMap((int) ((double) ChapterLink_1darray2.length / 0.69999999999999996));
-        int3 = ChapterLink_1darray2.length;
-        for (int4 = 0; int4 < int3; ++int4) {
-            Object Object5 = ChapterLink_1darray2[int4];
-            String String6 = ((ChapterLink) Object5).getId();
-
-            if (com.clilystudio.netbook.hpay100.a.a.Q(String6) && Object5 != null && ((ChapterLink) Object5).getLink() != null) {
-                String[] String_1darray8 = ((ChapterLink) Object5).getLink().split("/");
-
-                String6 = String_1darray8[-1 + String_1darray8.length];
-            }
-            Reader1.i.put(String6, Object5);
-        }
-    }
-
-    static ChapterRoot b(Reader Reader1, ChapterLink ChapterLink2, int int3) {
-        if (Reader1.z == null)
-            return null;
-        Reader1.z.b(I.c);
-        Reader1.z.a(I.a);
-        Reader1.z.a(I.g);
-        return Reader1.z.a(ChapterLink2, int3);
-    }
-
-    static ae b(Reader Reader1) {
-        return Reader1.r;
-    }
-
-    static void b(Reader Reader1, Toc Toc2) {
-        com.clilystudio.netbook.hpay100.a.a.a(Reader1.c, Reader1.e, "toc", Toc2);
-    }
-
-    static ArrayList c(Reader Reader1) {
-        return Reader1.q;
-    }
-
-    static Handler d(Reader Reader1) {
-        return Reader1.o;
-    }
-
-    static ExecutorService e(Reader Reader1) {
-        return Reader1.p;
-    }
-
-    static boolean f(Reader Reader1) {
-        return Reader1.A;
-    }
-
-    static String g(Reader Reader1) {
-        return Reader1.v;
-    }
-
-    static String h(Reader Reader1) {
-        return Reader1.e;
-    }
-
-    static String i(Reader Reader1) {
-        return Reader1.x;
-    }
-
-    static String j(Reader Reader1) {
-        return Reader1.f;
-    }
-
-    static Toc k(Reader Reader1) {
-        return (Toc) com.clilystudio.netbook.hpay100.a.a.b(Reader1.c, Reader1.e, "toc");
-    }
-
-    static Toc l(Reader Reader1) {
-        return Reader1.u;
-    }
-
-    static Toc m(Reader Reader1) {
-        if (Reader1.z != null)
-            return Reader1.z.a();
-        else
-            return null;
-    }
-
-    static ag n(Reader Reader1) {
-        return Reader1.B;
-    }
-
-    static int o(Reader Reader1) {
-        return Reader1.y;
-    }
-
-    static Map p(Reader Reader1) {
-        return Reader1.i;
-    }
-
-    static String q(Reader Reader1) {
-        return Reader1.c;
-    }
-
-    private ReaderChapter a(ChapterLink ChapterLink1, int int2) {
-        return ReaderChapter.create(ChapterLink1, g(), int2);
-    }
-
-    private void a(int int1, Reader$Type Type2) {
-        if (int1 == 0) {
-            if (t.intValue() == 0)
-                o.post((Runnable) new Q(this));
-            t = Integer.valueOf(1 + t.intValue());
-            o.post((Runnable) new R(this, Type2));
+    /*
+     * Enabled aggressive block sorting
+     */
+    static /* synthetic */ f a(Reader reader, String string, String string2, String string3) {
+        f f2;
+        if (reader.l != null) {
+            f2 = new f(reader.l);
         } else {
-            t = Integer.valueOf(-1 + t.intValue());
-            if (t.intValue() == 0)
-                o.post((Runnable) new S(this));
-            o.post((Runnable) new T(this, Type2));
+            BookInfo bookInfo = MyApplication.a().c();
+            f2 = null;
+            if (bookInfo != null) {
+                f2 = new f(bookInfo, reader.y);
+            }
+        }
+        if (f2 != null) {
+            f2.a(string, string2, string3);
+        }
+        return f2;
+    }
+
+    static /* synthetic */ String a(Reader reader, String string) {
+        reader.x = string;
+        return string;
+    }
+
+    static /* synthetic */ void a(Reader reader, int n2, Reader$Type reader$Type) {
+        reader.a(n2, reader$Type);
+    }
+
+    static /* synthetic */ void a(Reader reader, List list) {
+        reader.a(list);
+    }
+
+    static /* synthetic */ void a(Reader reader, ChapterLink[] arrchapterLink) {
+        reader.g = arrchapterLink;
+        reader.i = new HashMap<String, ChapterLink>((int) ((double) arrchapterLink.length / 0.7));
+        for (ChapterLink chapterLink : arrchapterLink) {
+            String string = chapterLink.getId();
+            if (a.Q(string) && chapterLink != null && chapterLink.getLink() != null) {
+                String[] arrstring = chapterLink.getLink().split("/");
+                string = arrstring[-1 + arrstring.length];
+            }
+            reader.i.put(string, chapterLink);
         }
     }
 
-    private void a(List List1) {
-        if (List1.size() != 0)
-            a(((Integer) List1.get(0)).intValue(), (e) new X(this, List1), true, false);
+    static /* synthetic */ ChapterRoot b(Reader reader, ChapterLink chapterLink, int n2) {
+        if (reader.z != null) {
+            reader.z.b(I.c);
+            reader.z.a(I.a);
+            reader.z.a(I.g);
+            return reader.z.a(chapterLink, n2);
+        }
+        return null;
+    }
+
+    static /* synthetic */ ae b(Reader reader) {
+        return reader.r;
+    }
+
+    static /* synthetic */ void b(Reader reader, Toc toc) {
+        a.a(reader.c, reader.e, "toc", toc);
+    }
+
+    static /* synthetic */ ArrayList c(Reader reader) {
+        return reader.q;
+    }
+
+    static /* synthetic */ Handler d(Reader reader) {
+        return reader.o;
+    }
+
+    static /* synthetic */ ExecutorService e(Reader reader) {
+        return reader.p;
+    }
+
+    static /* synthetic */ boolean f(Reader reader) {
+        return reader.A;
+    }
+
+    static /* synthetic */ String g(Reader reader) {
+        return reader.v;
+    }
+
+    static /* synthetic */ String h(Reader reader) {
+        return reader.e;
+    }
+
+    static /* synthetic */ String i(Reader reader) {
+        return reader.x;
+    }
+
+    static /* synthetic */ String j(Reader reader) {
+        return reader.f;
+    }
+
+    static /* synthetic */ Toc k(Reader reader) {
+        return (Toc) a.b(reader.c, reader.e, "toc");
+    }
+
+    static /* synthetic */ Toc l(Reader reader) {
+        return reader.u;
+    }
+
+    static /* synthetic */ Toc m(Reader reader) {
+        if (reader.z != null) {
+            return reader.z.a();
+        }
+        return null;
+    }
+
+    static /* synthetic */ ag n(Reader reader) {
+        return reader.B;
+    }
+
+    static /* synthetic */ int o(Reader reader) {
+        return reader.y;
+    }
+
+    static /* synthetic */ Map p(Reader reader) {
+        return reader.i;
+    }
+
+    static /* synthetic */ String q(Reader reader) {
+        return reader.c;
+    }
+
+    private ReaderChapter a(ChapterLink chapterLink, int n2) {
+        return ReaderChapter.create(chapterLink, this.g(), n2);
+    }
+
+    private void a(int n2, Reader$Type type) {
+        if (n2 == 0) {
+            if (this.t == 0) {
+                this.o.post(new Q(this));
+            }
+            this.t = 1 + this.t;
+            this.o.post(new R(this, type));
+            return;
+        }
+        this.t = -1 + this.t;
+        if (this.t == 0) {
+            this.o.post(new S(this));
+        }
+        this.o.post(new T(this, type));
+    }
+
+    private void a(List<Integer> list) {
+        if (list.size() == 0) {
+            return;
+        }
+        this.a(list.get(0), new X(this, list), true, false);
     }
 
     private boolean o() {
-        if (5 == y)
+        if (5 == this.y) {
             return true;
-        else
-            return false;
+        }
+        return false;
     }
 
     private void p() {
-        a(1, Reader$Type.CHAPTER);
+        this.a(1, Reader$Type.CHAPTER);
     }
 
     public final void a() {
-        BookInfo BookInfo1 = MyApplication.a().c();
-
-        if (BookInfo1 != null && BookInfo1.getId() != null && BookInfo1.getId().equals(c)) {
-            if (o())
-                BookReadRecord.create(BookInfo1, e, j, k, y);
-            else
-                BookReadRecord.create(BookInfo1, e, x, n(), j, k, y);
+        BookInfo bookInfo = MyApplication.a().c();
+        if (bookInfo == null || bookInfo.getId() == null || !bookInfo.getId().equals(this.c)) {
+            return;
         }
+        if (this.o()) {
+            BookReadRecord.create(bookInfo, this.e, this.j, this.k, this.y);
+            return;
+        }
+        BookReadRecord.create(bookInfo, this.e, this.x, this.n(), this.j, this.k, this.y);
     }
 
-    public final void a(int int1) {
-        j = int1;
+    public final void a(int n2) {
+        this.j = n2;
     }
 
-    public final void a(int int1, int int2) {
-        int int3 = 0;
-        int int4;
-
-        if (j != int1)
-            int4 = 1;
-        else
-            int4 = 0;
-        j = int1;
-        k = int2;
-        if (o()) {
+    /*
+     * Enabled aggressive block sorting
+     */
+    public final void a(int n2, int n3) {
+        int n4 = 0;
+        boolean bl = this.j != n2;
+        this.j = n2;
+        this.k = n3;
+        if (this.o()) {
             if (this.l != null) {
-                n.setChapterIndex(j);
-                n.setCharIndex(k);
-                n.save();
+                this.n.setChapterIndex(this.j);
+                this.n.setCharIndex(this.k);
+                this.n.save();
             }
         } else if (this.l != null) {
-            if (l.getTocId() == null || !l.getTocId().equals(e)) {
-                l.setTocId(e);
-                l.save();
+            if (this.l.getTocId() == null || !this.l.getTocId().equals(this.e)) {
+                this.l.setTocId(this.e);
+                this.l.save();
             }
-            m.setChapterIndex(j);
-            m.setCharIndex(k);
-            m.setChapterTitle(n());
-            m.setHost(x);
-            m.save();
+            this.m.setChapterIndex(this.j);
+            this.m.setCharIndex(this.k);
+            this.m.setChapterTitle(this.n());
+            this.m.setHost(this.x);
+            this.m.save();
         }
-        if (int4 != 0) {
-            Object Object7 = new ArrayList();
-            int[] int_1darray8 = b;
-            Iterator Iterator9;
-
-            while (int3 < 5) {
-                int int10 = int_1darray8[int3] + j;
-
-                if (int10 >= 0 && int10 < g.length)
-                    ((List) Object7).add(Integer.valueOf(int10));
-                ++int3;
-            }
-            Iterator9 = a.keySet().iterator();
-            while (Iterator9.hasNext()) {
-                if (((List) Object7).remove(Iterator9.next()))
-                    continue;
-                Iterator9.remove();
-            }
-            a((List) Object7);
-        }
-    }
-
-    public final void a(int int1, e e2, boolean boolean3, boolean boolean4) {
-        Object Object5 = com.clilystudio.netbook.util.Q.a(c, x, int1);
-        Object Object6;
-        ChapterLink[] ChapterLink_1darray7;
-
-        if (Object5 != null) {
-            int int14 = ((ReaderChapter) Object5).getStatus();
-
-            if (int14 != -1 && int14 != -3 && int14 != -2) {
-                e2.a(Object5);
-                p();
-                a.put(Integer.valueOf(int1), Object5);
-                return;
-            }
-        }
-        Object6 = (ReaderChapter) a.get(Integer.valueOf(int1));
-        if (Object6 != null) {
-            int int13 = ((ReaderChapter) Object6).getStatus();
-
-            if (int13 != -1 && int13 != -3 && int13 != -2 || boolean3) {
-                e2.a(Object6);
-                p();
-                return;
-            }
-        }
-        ChapterLink_1darray7 = g;
-        if (ChapterLink_1darray7 == null || ChapterLink_1darray7.length == 0) {
-            Object Object8 = new ReaderChapter();
-
-            ((ReaderChapter) Object8).setStatus(-4);
-            e2.a(Object8);
-            p();
-        } else {
-            ChapterLink ChapterLink9;
-
-            if (int1 < 0)
-                int1 = 0;
-            else if (int1 >= ChapterLink_1darray7.length)
-                int1 = -1 + ChapterLink_1darray7.length;
-            ChapterLink9 = ChapterLink_1darray7[int1];
-            if (c != null && e != null && ChapterLink9 != null && ChapterLink9.getLink() != null) {
-                String String10 = am.e(ChapterLink9.getLink());
-                Chapter Chapter11 = (Chapter) com.clilystudio.netbook.hpay100.a.a.b(c, e, String10);
-
-                if (Chapter11 != null) {
-                    Object Object12 = a(ChapterLink9, int1);
-
-                    ((ReaderChapter) Object12).setBody(Chapter11.getBody());
-                    ((ReaderChapter) Object12).setCpContent(Chapter11.getContent());
-                    ((ReaderChapter) Object12).setId(Chapter11.getId());
-                    e2.a(Object12);
-                    p();
-                    return;
+        if (bl) {
+            ArrayList<Integer> arrayList = new ArrayList<Integer>();
+            int[] arrn = b;
+            while (n4 < 5) {
+                int n5 = arrn[n4] + this.j;
+                if (n5 >= 0 && n5 < this.g.length) {
+                    arrayList.add(n5);
                 }
+                ++n4;
             }
-            if (!boolean4 && !boolean3) {
-                e2.a(a(ChapterLink9, int1));
-                p();
-            } else
-                C.a(int1, e2, boolean3);
+            Iterator<Integer> iterator = this.a.keySet().iterator();
+            while (iterator.hasNext()) {
+                if (arrayList.remove(iterator.next())) continue;
+                iterator.remove();
+            }
+            this.a(arrayList);
         }
     }
 
-    public final void a(ad ad1, boolean boolean2) {
-        new Thread((Runnable) new P(this, boolean2, ad1)).start();
+    /*
+     * Enabled aggressive block sorting
+     */
+    public final void a(int n2, e<ReaderChapter> e2, boolean bl, boolean bl2) {
+        int n3;
+        int n4;
+        String string;
+        Chapter chapter;
+        ReaderChapter readerChapter = com.clilystudio.netbook.util.Q.a(this.c, this.x, n2);
+        if (readerChapter != null && (n4 = readerChapter.getStatus()) != -1 && n4 != -3 && n4 != -2) {
+            e2.a((Object) readerChapter);
+            this.p();
+            this.a.put(n2, readerChapter);
+            return;
+        }
+        ReaderChapter readerChapter2 = this.a.get(n2);
+        if (readerChapter2 != null && ((n3 = readerChapter2.getStatus()) != -1 && n3 != -3 && n3 != -2 || bl)) {
+            e2.a((Object) readerChapter2);
+            this.p();
+            return;
+        }
+        ChapterLink[] arrchapterLink = this.g;
+        if (arrchapterLink == null || arrchapterLink.length == 0) {
+            ReaderChapter readerChapter3 = new ReaderChapter();
+            readerChapter3.setStatus(-4);
+            e2.a((Object) readerChapter3);
+            this.p();
+            return;
+        }
+        if (n2 < 0) {
+            n2 = 0;
+        } else if (n2 >= arrchapterLink.length) {
+            n2 = -1 + arrchapterLink.length;
+        }
+        ChapterLink chapterLink = arrchapterLink[n2];
+        if (this.c != null && this.e != null && chapterLink != null && chapterLink.getLink() != null && (chapter = (Chapter) a.b(this.c, this.e, string = am.e((String) chapterLink.getLink()))) != null) {
+            ReaderChapter readerChapter4 = this.a(chapterLink, n2);
+            readerChapter4.setBody(chapter.getBody());
+            readerChapter4.setCpContent(chapter.getContent());
+            readerChapter4.setId(chapter.getId());
+            e2.a((Object) readerChapter4);
+            this.p();
+            return;
+        }
+        if (!bl2 && !bl) {
+            e2.a((Object) this.a(chapterLink, n2));
+            this.p();
+            return;
+        }
+        this.C.a(n2, e2, bl);
     }
 
-    public final void a(ae ae1) {
-        r = ae1;
+    public final void a(ad ad2, boolean bl) {
+        new Thread(new P(this, bl, ad2)).start();
     }
 
-    public final void a(String String1) {
-        f = String1;
+    public final void a(ae ae2) {
+        this.r = ae2;
     }
 
-    public final void a(Map Map1) {
-        h = Map1;
+    public final void a(String string) {
+        this.f = string;
+    }
+
+    public final void a(Map<String, String> map) {
+        this.h = map;
     }
 
     public final ag b() {
-        return B;
+        return this.B;
     }
 
-    public final void b(int int1) {
-        k = 0;
+    public final void b(int n2) {
+        this.k = 0;
     }
 
-    public final void b(ae ae1) {
-        s = ae1;
+    public final void b(ae ae2) {
+        this.s = ae2;
     }
 
-    public final String c(int int1) {
-        if (g == null || int1 < 0 || int1 >= g.length)
+    public final String c(int n2) {
+        if (this.g == null || n2 < 0 || n2 >= this.g.length) {
             return null;
-        else
-            return g[int1].getTitle();
+        }
+        return this.g[n2].getTitle();
     }
 
     public final void c() {
-        if (c != null && x != null)
-            com.clilystudio.netbook.util.Q.a(c, x, a);
+        if (this.c != null && this.x != null) {
+            com.clilystudio.netbook.util.Q.a(this.c, this.x, this.a);
+        }
     }
 
-    public final void c(ae ae1) {
-        q.add(ae1);
+    @Deprecated
+    public final void c(ae ae2) {
+        this.q.add(ae2);
     }
 
     public final ChapterLink[] d() {
-        return g;
+        return this.g;
     }
 
-    public final Map e() {
-        if (h == null)
-            h = (Map) new HashMap();
-        return h;
+    public final Map<String, String> e() {
+        if (this.h == null) {
+            this.h = new HashMap<String, String>();
+        }
+        return this.h;
     }
 
     public final int f() {
-        if (g != null)
-            return g.length;
-        else
-            return 0;
+        if (this.g != null) {
+            return this.g.length;
+        }
+        return 0;
     }
 
     public final int g() {
-        int int1 = -1 + f();
-
-        if (int1 < 0)
-            int1 = 0;
-        return int1;
+        int n2 = -1 + this.f();
+        if (n2 < 0) {
+            n2 = 0;
+        }
+        return n2;
     }
 
     public final ChapterLink[] h() {
-        if (g != null)
-            return (ChapterLink[]) g.clone();
-        else
-            return null;
+        if (this.g != null) {
+            return (ChapterLink[]) this.g.clone();
+        }
+        return null;
     }
 
     public final String i() {
-        return x;
+        return this.x;
     }
 
     public final String j() {
-        if (A) {
-            if (x != null) {
-                String[] String_1darray1 = x.split(File.separator);
-
-                if (String_1darray1.length > 0)
-                    return String_1darray1[-1 + String_1darray1.length];
+        if (this.A) {
+            String[] arrstring;
+            if (this.x != null && (arrstring = this.x.split(File.separator)).length > 0) {
+                return arrstring[-1 + arrstring.length];
             }
             return "TXT";
-        } else if (x == null)
-            return d;
-        else
-            return new StringBuilder().append(x).append(" - ").append(d).toString();
+        }
+        if (this.x == null) {
+            return this.d;
+        }
+        return this.x + " - " + this.d;
     }
 
     public final int k() {
-        return j;
+        return this.j;
     }
 
     public final int l() {
-        return k;
+        return this.k;
     }
 
     public final boolean m() {
-        if (BookReadRecord.getOnShelf(c) != null)
+        if (BookReadRecord.getOnShelf(this.c) != null) {
             return true;
-        else
-            return false;
+        }
+        return false;
     }
 
+    /*
+     * Enabled aggressive block sorting
+     */
     public final String n() {
-        ChapterLink ChapterLink1;
-
-        if (g == null || j < 0 || j >= g.length)
-            ChapterLink1 = null;
-        else
-            ChapterLink1 = g[j];
-        if (ChapterLink1 != null)
-            return ChapterLink1.getTitle();
-        else
+        if (this.g == null || this.j < 0 || this.j >= this.g.length) {
             return "";
+        }
+        ChapterLink chapterLink = this.g[this.j];
+        if (chapterLink != null) {
+            return chapterLink.getTitle();
+        }
+        return "";
     }
 }

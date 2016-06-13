@@ -1,14 +1,16 @@
 package com.clilystudio.netbook.model;
 
-public class CodeRoot extends Root {
-
+public class CodeRoot
+        extends Root {
     private String code;
 
+    @Override
     public String getCode() {
-        return code;
+        return this.code;
     }
 
-    public void setCode(String String1) {
-        code = String1;
+    @Override
+    public void setCode(String string) {
+        this.code = string;
     }
 }

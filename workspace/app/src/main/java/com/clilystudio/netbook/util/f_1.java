@@ -1,18 +1,20 @@
 package com.clilystudio.netbook.util;
 
-final class f extends Thread {
+final class f
+        extends Thread {
+    private /* synthetic */ e a;
 
-    private e a;
-
-    f(e e1) {
-        a = e1;
+    f(e e2) {
+        this.a = e2;
     }
 
+    @Override
     public final void run() {
         try {
-            e.a(a);
-        } catch (Exception Exception1) {
-            Exception1.printStackTrace();
+            e.a(this.a);
+            return;
+        } catch (Exception var1_1) {
+            var1_1.printStackTrace();
             return;
         }
     }

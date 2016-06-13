@@ -1,21 +1,21 @@
 package com.clilystudio.netbook.ui;
 
-import android.content.Context;
 import android.view.View;
-import android.view.View$OnClickListener;
 
 import com.ximalaya.ting.android.opensdk.model.tag.Tag;
 
-final class v implements View$OnClickListener {
+final class v
+        implements View.OnClickListener {
+    private /* synthetic */ Tag a;
+    private /* synthetic */ AudiobookCategoryActivity b;
 
-    private Tag a;
-    private AudiobookCategoryActivity b;
-    v(AudiobookCategoryActivity AudiobookCategoryActivity1, Tag Tag2) {
-        b = AudiobookCategoryActivity1;
-        a = Tag2;
+    v(AudiobookCategoryActivity audiobookCategoryActivity, Tag tag) {
+        this.b = audiobookCategoryActivity;
+        this.a = tag;
     }
 
-    public final void onClick(View View1) {
-        b.startActivity(AudiobookCategoryListActivity.a((Context) b, a.getTagName()));
+    @Override
+    public final void onClick(View view) {
+        this.b.startActivity(AudiobookCategoryListActivity.a(this.b, this.a.getTagName()));
     }
 }

@@ -1,23 +1,22 @@
 package com.clilystudio.netbook.model;
 
 public class MixTocRoot {
-
     private Toc mixToc;
     private boolean ok;
 
     public Toc getMixToc() {
-        return mixToc;
+        return this.mixToc;
     }
 
-    public void setMixToc(Toc Toc1) {
-        mixToc = Toc1;
+    public void setMixToc(Toc toc) {
+        this.mixToc = toc;
     }
 
     public boolean isOk() {
-        return ok;
+        return this.ok;
     }
 
-    public void setOk(boolean boolean1) {
-        ok = boolean1;
+    public void setOk(boolean bl) {
+        this.ok = bl;
     }
 }

@@ -3,88 +3,96 @@ package com.clilystudio.netbook.a;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.DialogInterface$OnCancelListener;
 import android.widget.Toast;
 
-public abstract class c extends e {
-
+public abstract class c<Input, E>
+        extends e<Input, Void, E> {
     private ProgressDialog a;
     private Activity b;
     private String c;
-    private boolean d;
-    private boolean e;
-    public c(Activity Activity1, String String2) {
-        d = true;
-        e = true;
-        b = Activity1;
-        c = String2;
+    private boolean d = true;
+    private boolean e = true;
+
+    public c(Activity activity) {
+        this.b = activity;
+        this.c = activity.getString(2131034218);
     }
 
-    public c(Activity Activity1) {
-        d = true;
-        e = true;
-        b = Activity1;
-        c = Activity1.getString(2131034218);
+    public c(Activity activity, int n) {
+        this.b = activity;
+        this.c = activity.getString(n);
     }
 
-    public c(Activity Activity1, int int2) {
-        d = true;
-        e = true;
-        b = Activity1;
-        c = Activity1.getString(int2);
+    public c(Activity activity, int n, boolean bl) {
+        this(activity, n);
+        this.e = bl;
     }
 
-    public c(Activity Activity1, int int2, boolean boolean3) {
-        this(Activity1, int2);
-        e = boolean3;
+    public c(Activity activity, String string) {
+        this.b = activity;
+        this.c = string;
     }
 
-    public transient abstract Object a(Object[] Object_1darray1);
+    public /* varargs */ abstract E a(Input... var1);
 
-    public abstract void a(Object Object1);
+    public abstract void a(E var1);
 
     public final Activity b() {
-        return b;
+        return this.b;
     }
 
-    public transient Object doInBackground(Object[] Object_1darray1) {
-        Object Object3;
-
+    @Override
+    public /* varargs */ E doInBackground(Input... arrInput) {
+        E e2;
         try {
-            Object3 = a(Object_1darray1);
-        } catch (Exception Exception2) {
-            Exception2.printStackTrace();
+            e2 = this.a(arrInput);
+        } catch (Exception var2_3) {
+            var2_3.printStackTrace();
             return null;
         }
-        return Object3;
+        return e2;
     }
 
+    @Override
     public void onCancelled() {
         super.onCancelled();
-        Toast.makeText((Context) b, (CharSequence) "\u5DF2\u53D6\u6D88", 0).show();
+        Toast.makeText((Context) this.b, "\u5df2\u53d6\u6d88", 0).show();
     }
 
-    public void onPostExecute(Object Object1) {
-        super.onPostExecute(Object1);
-        try {
-            if (a != null)
-                a.dismiss();
-        } catch (Exception Exception3) {
-            a = null;
-        } finally {
-            a = null;
-            throw Object2;
+    /*
+     * Unable to fully structure code
+     * Enabled aggressive block sorting
+     * Enabled unnecessary exception pruning
+     * Enabled aggressive exception aggregation
+     * Lifted jumps to return sites
+     */
+    @Override
+    public void onPostExecute(E var1_1) {
+        block5:
+        {
+            super.onPostExecute(var1_1);
+            try {
+                if (this.a != null) {
+                    this.a.dismiss();
+                }
+                break block5;
+            } catch (Exception var3_2) {
+            }
+            **GOTO lbl10
+            finally{
+            this.a = null;
         }
-        a(Object1);
+        }
+        this.a(var1_1);
     }
 
+    @Override
     public void onPreExecute() {
-        Object Object1 = c;
-        Object Object2 = new d(this);
-
-        if (!b.isFinishing() && e) {
-            a = ProgressDialog.show((Context) b, null, (CharSequence) Object1, true, d, (DialogInterface$OnCancelListener) Object2);
-            a.setCanceledOnTouchOutside(false);
+        String string = this.c;
+        d d2 = new d(this);
+        if (!this.b.isFinishing() && this.e) {
+            this.a = ProgressDialog.show(this.b, null, string, true, this.d, d2);
+            this.a.setCanceledOnTouchOutside(false);
         }
         super.onPreExecute();
     }

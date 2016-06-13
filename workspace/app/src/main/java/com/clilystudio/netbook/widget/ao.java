@@ -1,29 +1,25 @@
 package com.clilystudio.netbook.widget;
 
-import android.app.Activity;
 import android.content.Context;
 import android.view.View;
-import android.view.View$OnClickListener;
 
 import com.clilystudio.netbook.ui.cb;
-import com.clilystudio.netbook.ui.cd;
 import com.clilystudio.netbook.ui.post.AbsPostActivity;
 
-final class ao implements View$OnClickListener {
+final class ao
+        implements View.OnClickListener {
+    private /* synthetic */ PostHeader a;
 
-    private PostHeader a;
-
-    ao(PostHeader PostHeader1) {
-        a = PostHeader1;
+    ao(PostHeader postHeader) {
+        this.a = postHeader;
     }
 
-    public final void onClick(View View1) {
-        Context Context2 = a.getContext();
-
-        if (Context2 instanceof AbsPostActivity) {
-            Object Object3 = (AbsPostActivity) Context2;
-
-            new cb((Activity) Object3, (cd) new ap(this, (AbsPostActivity) Object3)).a().show();
+    @Override
+    public final void onClick(View view) {
+        Context context = this.a.getContext();
+        if (context instanceof AbsPostActivity) {
+            AbsPostActivity absPostActivity = (AbsPostActivity) context;
+            new cb(absPostActivity, new ap(this, absPostActivity)).a().show();
         }
     }
 }

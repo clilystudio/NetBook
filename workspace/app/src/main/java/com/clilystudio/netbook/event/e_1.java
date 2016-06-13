@@ -1,14 +1,13 @@
 package com.clilystudio.netbook.event;
 
 public class e {
+    private final String a;
 
-    private String a;     // final access specifier removed
-
-    public e(String String1) {
-        a = String1;
+    public e(String string) {
+        this.a = string;
     }
 
     public final String b() {
-        return a;
+        return this.a;
     }
 }

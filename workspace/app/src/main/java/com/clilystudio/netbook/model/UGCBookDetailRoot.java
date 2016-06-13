@@ -1,23 +1,22 @@
 package com.clilystudio.netbook.model;
 
 public class UGCBookDetailRoot {
-
     private UGCBookDetail bookList;
     private boolean ok;
 
     public UGCBookDetail getBookList() {
-        return bookList;
+        return this.bookList;
     }
 
-    public void setBookList(UGCBookDetail UGCBookDetail1) {
-        bookList = UGCBookDetail1;
+    public void setBookList(UGCBookDetail uGCBookDetail) {
+        this.bookList = uGCBookDetail;
     }
 
     public boolean isOk() {
-        return ok;
+        return this.ok;
     }
 
-    public void setOk(boolean boolean1) {
-        ok = boolean1;
+    public void setOk(boolean bl) {
+        this.ok = bl;
     }
 }

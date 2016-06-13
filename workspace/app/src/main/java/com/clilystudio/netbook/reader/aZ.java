@@ -2,15 +2,16 @@ package com.clilystudio.netbook.reader;
 
 import com.clilystudio.netbook.ui.cd;
 
-final class aZ implements cd {
+final class aZ
+        implements cd {
+    private /* synthetic */ ReaderActivity a;
 
-    private ReaderActivity a;
-
-    aZ(ReaderActivity ReaderActivity1) {
-        a = ReaderActivity1;
+    aZ(ReaderActivity readerActivity) {
+        this.a = readerActivity;
     }
 
-    public final void a(int int1) {
-        ReaderActivity.e(a, int1);
+    @Override
+    public final void a(int n2) {
+        ReaderActivity.e(this.a, n2);
     }
 }

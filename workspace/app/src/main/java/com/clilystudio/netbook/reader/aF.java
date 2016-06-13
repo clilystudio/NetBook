@@ -1,18 +1,19 @@
 package com.clilystudio.netbook.reader;
 
-final class aF implements e {
+final class aF
+        implements e<n> {
+    final /* synthetic */ ReaderActivity a;
+    private /* synthetic */ n b;
 
-    ReaderActivity a;     // final access specifier removed
-    private n b;
-    aF(ReaderActivity ReaderActivity1, n n2) {
-        a = ReaderActivity1;
-        b = n2;
+    aF(ReaderActivity readerActivity, n n2) {
+        this.a = readerActivity;
+        this.b = n2;
     }
 
-    public final void a(Object Object1) {
-        n n2 = (n) Object1;
-
-        ReaderActivity.i(a)[2].a(n2);
-        b.b((e) new aG(this));
+    @Override
+    public final /* synthetic */ void a(Object object) {
+        n n2 = (n) object;
+        ReaderActivity.i(this.a)[2].a(n2);
+        this.b.b((e) new aG(this));
     }
 }

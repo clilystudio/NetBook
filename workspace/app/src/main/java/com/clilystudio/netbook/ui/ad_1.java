@@ -1,17 +1,17 @@
 package com.clilystudio.netbook.ui;
 
 import android.view.View;
-import android.view.View$OnClickListener;
 
-final class ad implements View$OnClickListener {
+final class ad
+        implements View.OnClickListener {
+    private /* synthetic */ BaseLoadingFragment a;
 
-    private BaseLoadingFragment a;
-
-    ad(BaseLoadingFragment BaseLoadingFragment1) {
-        a = BaseLoadingFragment1;
+    ad(BaseLoadingFragment baseLoadingFragment) {
+        this.a = baseLoadingFragment;
     }
 
-    public final void onClick(View View1) {
-        a.b();
+    @Override
+    public final void onClick(View view) {
+        this.a.b();
     }
 }

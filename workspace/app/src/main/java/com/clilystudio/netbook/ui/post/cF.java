@@ -2,63 +2,62 @@ package com.clilystudio.netbook.ui.post;
 
 import android.app.Activity;
 
+import com.clilystudio.netbook.api.b;
+import com.clilystudio.netbook.model.PostComment;
 import com.clilystudio.netbook.model.PostDetailComment;
+import com.clilystudio.netbook.util.e;
 
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.List;
 
-final class cF extends com.clilystudio.netbook.a.e {
+final class cF
+        extends com.clilystudio.netbook.a.e<String, Void, PostDetailComment> {
+    private /* synthetic */ ReviewActivity a;
 
-    private ReviewActivity a;
-
-    cF(ReviewActivity ReviewActivity1, byte byte2) {
-        this(ReviewActivity1);
+    private cF(ReviewActivity reviewActivity) {
+        this.a = reviewActivity;
     }
 
-    private cF(ReviewActivity ReviewActivity1) {
-        a = ReviewActivity1;
+    /* synthetic */ cF(ReviewActivity reviewActivity, byte by) {
+        this(reviewActivity);
     }
 
-    private transient PostDetailComment a(String[] String_1darray1) {
-        PostDetailComment PostDetailComment3;
-
+    private /* varargs */ PostDetailComment a(String... arrstring) {
         try {
-            if (String_1darray1.length > 1)
-                return com.clilystudio.netbook.api.b.b().l(String_1darray1[0], String_1darray1[1]);
-            else
-                PostDetailComment3 = com.clilystudio.netbook.api.b.b().l(String_1darray1[0], null);
-        } catch (Exception Exception2) {
-            Exception2.printStackTrace();
+            if (arrstring.length > 1) {
+                return b.b().l(arrstring[0], arrstring[1]);
+            }
+            PostDetailComment postDetailComment = b.b().l(arrstring[0], null);
+            return postDetailComment;
+        } catch (Exception var2_3) {
+            var2_3.printStackTrace();
             return null;
         }
-        return PostDetailComment3;
     }
 
-    protected final Object doInBackground(Object[] Object_1darray1) {
-        return a((String[]) Object_1darray1);
+    @Override
+    protected final /* synthetic */ Object doInBackground(Object[] arrobject) {
+        return this.a((String[]) arrobject);
     }
 
-    protected final void onPostExecute(Object Object1) {
-        Object Object2 = (PostDetailComment) Object1;
-
-        super.onPostExecute(Object2);
-        if (Object2 != null && ((PostDetailComment) Object2).isOk()) {
-            Object Object3;
-
-            a.b.setOnLastItemListener(ReviewActivity.c(a));
-            ReviewActivity.d(a).setVisibility(8);
-            Object3 = Arrays.asList(((PostDetailComment) Object2).getComments());
-            ReviewActivity.e(a).addAll((Collection) Object3);
-            ReviewActivity.f(a).a((Collection) ReviewActivity.e(a));
-            if (((List) Object3).size() < 30) {
-                a.b.removeFooterView(ReviewActivity.d(a));
-                a.b.setOnLastItemListener(null);
+    @Override
+    protected final /* synthetic */ void onPostExecute(Object object) {
+        PostDetailComment postDetailComment = (PostDetailComment) object;
+        super.onPostExecute(postDetailComment);
+        if (postDetailComment != null && postDetailComment.isOk()) {
+            this.a.b.setOnLastItemListener(ReviewActivity.c(this.a));
+            ReviewActivity.d(this.a).setVisibility(8);
+            List<PostComment> list = Arrays.asList(postDetailComment.getComments());
+            ReviewActivity.e(this.a).addAll(list);
+            ReviewActivity.f(this.a).a(ReviewActivity.e(this.a));
+            if (list.size() < 30) {
+                this.a.b.removeFooterView(ReviewActivity.d(this.a));
+                this.a.b.setOnLastItemListener(null);
             }
-        } else {
-            a.b.setOnLastItemListener(null);
-            ReviewActivity.g(a);
-            com.clilystudio.netbook.util.e.a((Activity) a, "\u52A0\u8F7D\u5931\u8D25\uFF0C\u8BF7\u68C0\u67E5\u7F51\u7EDC\u6216\u8005\u7A0D\u540E\u518D\u8BD5");
+            return;
         }
+        this.a.b.setOnLastItemListener(null);
+        ReviewActivity.g(this.a);
+        e.a((Activity) this.a, (String) "\u52a0\u8f7d\u5931\u8d25\uff0c\u8bf7\u68c0\u67e5\u7f51\u7edc\u6216\u8005\u7a0d\u540e\u518d\u8bd5");
     }
 }

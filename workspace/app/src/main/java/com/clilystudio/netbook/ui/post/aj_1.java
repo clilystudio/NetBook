@@ -1,17 +1,18 @@
 package com.clilystudio.netbook.ui.post;
 
-import android.widget.PopupWindow$OnDismissListener;
+import android.widget.PopupWindow;
 
-final class aj implements PopupWindow$OnDismissListener {
+final class aj
+        implements PopupWindow.OnDismissListener {
+    private /* synthetic */ BookHelpListActivity a;
 
-    private BookHelpListActivity a;
-
-    aj(BookHelpListActivity BookHelpListActivity1) {
-        a = BookHelpListActivity1;
+    aj(BookHelpListActivity bookHelpListActivity) {
+        this.a = bookHelpListActivity;
     }
 
+    @Override
     public final void onDismiss() {
-        BookHelpListActivity.b(a).setImageDrawable(a.getResources().getDrawable(2130837721));
-        BookHelpListActivity.c(a).setImageDrawable(a.getResources().getDrawable(2130837721));
+        BookHelpListActivity.b(this.a).setImageDrawable(this.a.getResources().getDrawable(2130837721));
+        BookHelpListActivity.c(this.a).setImageDrawable(this.a.getResources().getDrawable(2130837721));
     }
 }

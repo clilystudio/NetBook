@@ -4,24 +4,27 @@ import android.graphics.Bitmap;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
-final class bh extends WebViewClient {
+final class bh
+        extends WebViewClient {
+    private /* synthetic */ LuckyGameWebActivity a;
 
-    private LuckyGameWebActivity a;
-
-    bh(LuckyGameWebActivity LuckyGameWebActivity1) {
-        a = LuckyGameWebActivity1;
+    bh(LuckyGameWebActivity luckyGameWebActivity) {
+        this.a = luckyGameWebActivity;
     }
 
-    public final void doUpdateVisitedHistory(WebView WebView1, String String2, boolean boolean3) {
-        LuckyGameWebActivity.a(a);
+    @Override
+    public final void doUpdateVisitedHistory(WebView webView, String string, boolean bl) {
+        LuckyGameWebActivity.a(this.a);
     }
 
-    public final void onPageFinished(WebView WebView1, String String2) {
-        LuckyGameWebActivity.c(a);
-        LuckyGameWebActivity.a(a);
+    @Override
+    public final void onPageFinished(WebView webView, String string) {
+        LuckyGameWebActivity.c(this.a);
+        LuckyGameWebActivity.a(this.a);
     }
 
-    public final void onPageStarted(WebView WebView1, String String2, Bitmap Bitmap3) {
-        LuckyGameWebActivity.b(a);
+    @Override
+    public final void onPageStarted(WebView webView, String string, Bitmap bitmap) {
+        LuckyGameWebActivity.b(this.a);
     }
 }

@@ -1,20 +1,21 @@
 package com.clilystudio.netbook.adapter;
 
 import android.view.View;
-import android.view.View$OnClickListener;
 
 import com.clilystudio.netbook.model.GameGiftGroup;
 
-final class n implements View$OnClickListener {
+final class n
+        implements View.OnClickListener {
+    private /* synthetic */ GameGiftGroup a;
+    private /* synthetic */ GameGiftGroupAdapter b;
 
-    private GameGiftGroup a;
-    private GameGiftGroupAdapter b;
-    n(GameGiftGroupAdapter GameGiftGroupAdapter1, GameGiftGroup GameGiftGroup2) {
-        b = GameGiftGroupAdapter1;
-        a = GameGiftGroup2;
+    n(GameGiftGroupAdapter gameGiftGroupAdapter, GameGiftGroup gameGiftGroup) {
+        this.b = gameGiftGroupAdapter;
+        this.a = gameGiftGroup;
     }
 
-    public final void onClick(View View1) {
-        GameGiftGroupAdapter.a(b, a.getGame());
+    @Override
+    public final void onClick(View view) {
+        GameGiftGroupAdapter.a(this.b, this.a.getGame());
     }
 }

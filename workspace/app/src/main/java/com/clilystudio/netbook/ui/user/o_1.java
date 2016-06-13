@@ -1,24 +1,22 @@
 package com.clilystudio.netbook.ui.user;
 
-import android.app.Activity;
 import android.content.DialogInterface;
-import android.content.DialogInterface$OnClickListener;
 import android.widget.EditText;
 
-final class o implements DialogInterface$OnClickListener {
+final class o
+        implements DialogInterface.OnClickListener {
+    private /* synthetic */ EditText a;
+    private /* synthetic */ ModifyUserInfoActivity b;
 
-    private EditText a;
-    private ModifyUserInfoActivity b;
-    o(ModifyUserInfoActivity ModifyUserInfoActivity1, EditText EditText2) {
-        b = ModifyUserInfoActivity1;
-        a = EditText2;
+    o(ModifyUserInfoActivity modifyUserInfoActivity, EditText editText) {
+        this.b = modifyUserInfoActivity;
+        this.a = editText;
     }
 
-    public final void onClick(DialogInterface DialogInterface1, int int2) {
-        s s3 = new s(b, (Activity) b, 2131034218);
-        String[] String_1darray4 = new String[1];
-
-        String_1darray4[0] = a.getText().toString();
-        s3.b(String_1darray4);
+    @Override
+    public final void onClick(DialogInterface dialogInterface, int n) {
+        s s2 = new s(this.b, this.b, 2131034218);
+        String[] arrstring = new String[]{this.a.getText().toString()};
+        s2.b(arrstring);
     }
 }

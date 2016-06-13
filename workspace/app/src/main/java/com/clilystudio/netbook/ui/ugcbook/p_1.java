@@ -1,21 +1,22 @@
 package com.clilystudio.netbook.ui.ugcbook;
 
-import android.text.TextUtils$TruncateAt;
+import android.text.TextUtils;
 
-final class p implements Runnable {
+final class p
+        implements Runnable {
+    private /* synthetic */ UGCDetailActivity a;
 
-    private UGCDetailActivity a;
-
-    p(UGCDetailActivity UGCDetailActivity1) {
-        a = UGCDetailActivity1;
+    p(UGCDetailActivity uGCDetailActivity) {
+        this.a = uGCDetailActivity;
     }
 
+    @Override
     public final void run() {
-        if (UGCDetailActivity.d(a).getLineCount() > 5) {
-            UGCDetailActivity.e(a).setVisibility(0);
-            UGCDetailActivity.d(a).setEllipsize(TextUtils$TruncateAt.END);
-            UGCDetailActivity.d(a).setClickable(true);
-            UGCDetailActivity.d(a).setOnClickListener(UGCDetailActivity.l(a));
+        if (UGCDetailActivity.d(this.a).getLineCount() > 5) {
+            UGCDetailActivity.e(this.a).setVisibility(0);
+            UGCDetailActivity.d(this.a).setEllipsize(TextUtils.TruncateAt.END);
+            UGCDetailActivity.d(this.a).setClickable(true);
+            UGCDetailActivity.d(this.a).setOnClickListener(UGCDetailActivity.l(this.a));
         }
     }
 }

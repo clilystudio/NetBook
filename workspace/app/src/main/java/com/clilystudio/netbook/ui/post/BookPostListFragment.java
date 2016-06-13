@@ -11,8 +11,8 @@ import android.widget.TextView;
 
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 
-public class BookPostListFragment extends Fragment {
-
+public class BookPostListFragment
+        extends Fragment {
     protected PullToRefreshListView a;
     protected ListView b;
     protected View c;
@@ -23,35 +23,36 @@ public class BookPostListFragment extends Fragment {
     private View h;
 
     public final String a() {
-        if ((BookPostTabActivity) getActivity() != null)
-            return ((BookPostTabActivity) getActivity()).j();
-        else
-            return "";
+        if ((BookPostTabActivity) this.getActivity() != null) {
+            return ((BookPostTabActivity) this.getActivity()).j();
+        }
+        return "";
     }
 
     public void b() {
-        d.setVisibility(0);
+        this.d.setVisibility(0);
     }
 
     public final void c() {
-        d.setVisibility(8);
-        h.setVisibility(8);
-        c.setVisibility(8);
-        a.n();
+        this.d.setVisibility(8);
+        this.h.setVisibility(8);
+        this.c.setVisibility(8);
+        this.a.n();
     }
 
-    public View onCreateView(LayoutInflater LayoutInflater1, ViewGroup ViewGroup2, Bundle Bundle3) {
-        View View4 = LayoutInflater1.inflate(2130903211, ViewGroup2, false);
-
-        h = View4.findViewById(2131493085);
-        d = (TextView) View4.findViewById(2131493100);
-        c = LayoutInflater1.inflate(2130903325, null);
-        a = (PullToRefreshListView) View4.findViewById(2131493099);
-        b = (ListView) a.h();
-        b.addFooterView(c);
-        if (com.clilystudio.netbook.hpay100.a.a.j())
-            b.setFooterDividersEnabled(false);
-        e = (FloatingActionButton) View4.findViewById(2131493437);
-        return View4;
+    @Override
+    public View onCreateView(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
+        View view = layoutInflater.inflate(2130903211, viewGroup, false);
+        this.h = view.findViewById(2131493085);
+        this.d = (TextView) view.findViewById(2131493100);
+        this.c = layoutInflater.inflate(2130903325, null);
+        this.a = (PullToRefreshListView) view.findViewById(2131493099);
+        this.b = (ListView) this.a.h();
+        this.b.addFooterView(this.c);
+        if (a.j()) {
+            this.b.setFooterDividersEnabled(false);
+        }
+        this.e = (FloatingActionButton) view.findViewById(2131493437);
+        return view;
     }
 }

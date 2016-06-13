@@ -1,17 +1,17 @@
 package com.clilystudio.netbook.ui.post;
 
 import android.view.View;
-import android.view.View$OnClickListener;
 
-final class Q implements View$OnClickListener {
+final class Q
+        implements View.OnClickListener {
+    private /* synthetic */ AddVoteItemActivity a;
 
-    private AddVoteItemActivity a;
-
-    Q(AddVoteItemActivity AddVoteItemActivity1) {
-        a = AddVoteItemActivity1;
+    Q(AddVoteItemActivity addVoteItemActivity) {
+        this.a = addVoteItemActivity;
     }
 
-    public final void onClick(View View1) {
-        AddVoteItemActivity.a(a);
+    @Override
+    public final void onClick(View view) {
+        AddVoteItemActivity.a(this.a);
     }
 }

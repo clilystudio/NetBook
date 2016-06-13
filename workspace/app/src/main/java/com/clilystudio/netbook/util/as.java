@@ -1,53 +1,58 @@
 package com.clilystudio.netbook.util;
 
-import android.content.Context;
-
 import com.clilystudio.netbook.MyApplication;
 import com.ximalaya.ting.android.opensdk.datatrasfer.CommonRequest;
 import com.ximalaya.ting.android.opensdk.model.PlayableModel;
+import com.ximalaya.ting.android.opensdk.model.track.Track;
 import com.ximalaya.ting.android.opensdk.player.XmPlayerManager;
 import com.ximalaya.ting.android.opensdk.player.service.IXmPlayerStatusListener;
 
 import java.util.List;
 
 public final class as {
-
-    private static CommonRequest b;
     private static as a = new as();
-    private static XmPlayerManager c = XmPlayerManager.getInstance((Context) MyApplication.a());
-    private static boolean d = false;
+    private static CommonRequest b;
+    private static XmPlayerManager c;
+    private static boolean d;
+
+    static {
+        c = XmPlayerManager.getInstance(MyApplication.a());
+        d = false;
+    }
+
+    private as() {
+    }
 
     public static as a() {
         return a;
     }
 
-    public static void a(int int1) {
-        c.seekTo(int1);
+    public static void a(int n) {
+        c.seekTo(n);
     }
 
-    public static void a(IXmPlayerStatusListener IXmPlayerStatusListener1) {
-        c.addPlayerStatusListener(IXmPlayerStatusListener1);
+    public static void a(IXmPlayerStatusListener iXmPlayerStatusListener) {
+        c.addPlayerStatusListener(iXmPlayerStatusListener);
     }
 
     public static CommonRequest b() {
         if (b == null) {
-            CommonRequest CommonRequest1 = CommonRequest.getInstanse();
-
-            b = CommonRequest1;
-            CommonRequest1.init((Context) MyApplication.a(), "20680e0758e832acb8eb01342338cee5");
+            CommonRequest commonRequest;
+            b = commonRequest = CommonRequest.getInstanse();
+            commonRequest.init(MyApplication.a(), "20680e0758e832acb8eb01342338cee5");
         }
         return b;
     }
 
-    public static void b(IXmPlayerStatusListener IXmPlayerStatusListener1) {
-        c.removePlayerStatusListener(IXmPlayerStatusListener1);
+    public static void b(IXmPlayerStatusListener iXmPlayerStatusListener) {
+        c.removePlayerStatusListener(iXmPlayerStatusListener);
     }
 
     public static boolean c() {
-        if (c != null && c.isPlaying())
+        if (c != null && c.isPlaying()) {
             return true;
-        else
-            return false;
+        }
+        return false;
     }
 
     public static PlayableModel e() {
@@ -70,23 +75,24 @@ public final class as {
         c.release();
     }
 
-    public static List j() {
+    public static List<Track> j() {
         return c.getPlayList();
     }
 
     private static void k() {
-        if (!d)
+        if (!d) {
             c.init(1001, e.c());
+        }
         d = true;
     }
 
-    public final void a(List List1, int int2) {
-        k();
-        c.playList(List1, int2);
+    public final void a(List<Track> list, int n) {
+        as.k();
+        c.playList(list, n);
     }
 
     public final void d() {
-        k();
+        as.k();
         c.play();
     }
 }

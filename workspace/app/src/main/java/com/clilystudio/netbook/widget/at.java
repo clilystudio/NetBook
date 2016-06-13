@@ -1,22 +1,23 @@
 package com.clilystudio.netbook.widget;
 
 import android.view.View;
-import android.view.View$OnClickListener;
 
 import com.clilystudio.netbook.event.i;
 import com.clilystudio.netbook.event.x;
 import com.clilystudio.netbook.model.BookRankSummary;
 
-final class at implements View$OnClickListener {
+final class at
+        implements View.OnClickListener {
+    private /* synthetic */ BookRankSummary a;
+    private /* synthetic */ boolean b;
 
-    private BookRankSummary a;
-    private boolean b;
-    at(RankCollapseItem RankCollapseItem1, BookRankSummary BookRankSummary2, boolean boolean3) {
-        a = BookRankSummary2;
-        b = boolean3;
+    at(RankCollapseItem rankCollapseItem, BookRankSummary bookRankSummary, boolean bl) {
+        this.a = bookRankSummary;
+        this.b = bl;
     }
 
-    public final void onClick(View View1) {
-        i.a().c(new x(a, b));
+    @Override
+    public final void onClick(View view) {
+        i.a().c(new x(this.a, this.b));
     }
 }

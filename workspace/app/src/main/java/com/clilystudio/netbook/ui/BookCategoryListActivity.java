@@ -3,34 +3,31 @@ package com.clilystudio.netbook.ui;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager$OnPageChangeListener;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View$OnClickListener;
-import android.widget.AdapterView$OnItemClickListener;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.PopupWindow;
-import android.widget.PopupWindow$OnDismissListener;
 import android.widget.TabHost;
-import android.widget.TabHost$OnTabChangeListener;
-import android.widget.TabHost$TabContentFactory;
-import android.widget.TabHost$TabSpec;
 import android.widget.TabWidget;
 import android.widget.TextView;
 
+import com.clilystudio.netbook.d;
 import com.clilystudio.netbook.model.CategoryLevelRoot;
 import com.clilystudio.netbook.model.CategoryLevelRoot$CategoryLevel;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class BookCategoryListActivity extends BaseTabActivity implements ViewPager$OnPageChangeListener, TabHost$OnTabChangeListener, TabHost$TabContentFactory {
-
+public class BookCategoryListActivity
+        extends BaseTabActivity
+        implements ViewPager$OnPageChangeListener,
+        TabHost.OnTabChangeListener,
+        TabHost.TabContentFactory {
     private boolean b;
     private String c;
     private String e;
@@ -38,243 +35,226 @@ public class BookCategoryListActivity extends BaseTabActivity implements ViewPag
     private aw g;
     private boolean h;
     private String[] i;
+    private List<BookCategoryFragment> j = new ArrayList<BookCategoryFragment>();
     private ViewPager k;
     private av l;
-    private List j = new ArrayList();
-// Error: Internal #201: 
-// The following method may not be correct.
 
-    public static Intent a(Context Context1, boolean boolean2, String String3) {
+    public static Intent a(Context context, boolean bl, String string) {
+        return new d().a(context, BookCategoryListActivity.class).a("CATEGORY_GENDER", Boolean.valueOf(bl)).a("CATEGORY_KEY", string).a();
     }
 
-    static void a(BookCategoryListActivity BookCategoryListActivity1) {
-        if (BookCategoryListActivity1.f != null && BookCategoryListActivity1.f.isShowing())
-            BookCategoryListActivity1.i();
-        else {
-            if (BookCategoryListActivity1.f != null && !BookCategoryListActivity1.f.isShowing()) {
-                Object Object2 = (TextView) ((BaseActivity) BookCategoryListActivity1).a().a().findViewById(2131493008);
+    static /* synthetic */ void a(BookCategoryListActivity bookCategoryListActivity) {
+        if (bookCategoryListActivity.f != null && bookCategoryListActivity.f.isShowing()) {
+            bookCategoryListActivity.i();
+            return;
+        }
+        if (bookCategoryListActivity.f != null && !bookCategoryListActivity.f.isShowing()) {
+            TextView textView = (TextView) bookCategoryListActivity.a().a().findViewById(2131493008);
+            bookCategoryListActivity.f.showAsDropDown(textView);
+        }
+        b.a(bookCategoryListActivity, "book_category_filter_click");
+        bookCategoryListActivity.e("\u6536\u8d77");
+    }
 
-                BookCategoryListActivity1.f.showAsDropDown((View) Object2);
+    /*
+     * Enabled aggressive block sorting
+     */
+    static /* synthetic */ void a(BookCategoryListActivity bookCategoryListActivity, String string) {
+        if (!bookCategoryListActivity.e.equals(string)) {
+            bookCategoryListActivity.e = string;
+            bookCategoryListActivity.d(string);
+            bookCategoryListActivity.g.notifyDataSetChanged();
+            bookCategoryListActivity.j.get(bookCategoryListActivity.k.getCurrentItem()).a();
+            bookCategoryListActivity.j.get(bookCategoryListActivity.k.getCurrentItem()).b(bookCategoryListActivity.g());
+            String string2 = bookCategoryListActivity.b ? "\u7537\u751f - " : "\u5973\u751f - ";
+            if (string.equals(bookCategoryListActivity.c)) {
+                a.p(bookCategoryListActivity, string2 + string);
+            } else {
+                b.a(bookCategoryListActivity, "book_category_minor_click", string2 + bookCategoryListActivity.c + " - " + string);
             }
-            com.umeng.a.b.a((Context) BookCategoryListActivity1, "book_category_filter_click");
-            BookCategoryListActivity1.e("\u6536\u8D77");
         }
+        bookCategoryListActivity.i();
     }
 
-    static void a(BookCategoryListActivity BookCategoryListActivity1, String String2) {
-        if (!BookCategoryListActivity1.e.equals(String2)) {
-            String String3;
-
-            BookCategoryListActivity1.e = String2;
-            BookCategoryListActivity1.d(String2);
-            BookCategoryListActivity1.g.notifyDataSetChanged();
-            ((BookCategoryFragment) BookCategoryListActivity1.j.get(BookCategoryListActivity1.k.getCurrentItem())).a();
-            ((BookCategoryFragment) BookCategoryListActivity1.j.get(BookCategoryListActivity1.k.getCurrentItem())).b(BookCategoryListActivity1.g());
-            if (BookCategoryListActivity1.b)
-                String3 = "\u7537\u751F - ";
-            else
-                String3 = "\u5973\u751F - ";
-            if (String2.equals(BookCategoryListActivity1.c))
-                com.clilystudio.netbook.hpay100.a.a.p((Context) BookCategoryListActivity1, new StringBuilder().append(String3).append(String2).toString());
-            else
-                com.umeng.a.b.a((Context) BookCategoryListActivity1, "book_category_minor_click", new StringBuilder().append(String3).append(BookCategoryListActivity1.c).append(" - ").append(String2).toString());
-        }
-        BookCategoryListActivity1.i();
+    static /* synthetic */ List b(BookCategoryListActivity bookCategoryListActivity) {
+        return bookCategoryListActivity.j;
     }
 
-    static List b(BookCategoryListActivity BookCategoryListActivity1) {
-        return BookCategoryListActivity1.j;
+    static /* synthetic */ ViewPager c(BookCategoryListActivity bookCategoryListActivity) {
+        return bookCategoryListActivity.k;
     }
 
-    static ViewPager c(BookCategoryListActivity BookCategoryListActivity1) {
-        return BookCategoryListActivity1.k;
+    static /* synthetic */ String[] d(BookCategoryListActivity bookCategoryListActivity) {
+        return bookCategoryListActivity.i;
     }
 
-    static String[] d(BookCategoryListActivity BookCategoryListActivity1) {
-        return BookCategoryListActivity1.i;
+    static /* synthetic */ void e(BookCategoryListActivity bookCategoryListActivity) {
+        bookCategoryListActivity.i();
     }
 
-    static void e(BookCategoryListActivity BookCategoryListActivity1) {
-        BookCategoryListActivity1.i();
+    static /* synthetic */ String f(BookCategoryListActivity bookCategoryListActivity) {
+        return bookCategoryListActivity.e;
     }
 
-    static String f(BookCategoryListActivity BookCategoryListActivity1) {
-        return BookCategoryListActivity1.e;
-    }
-
-    private String[] a(CategoryLevelRoot CategoryLevelRoot1) {
-        CategoryLevelRoot$CategoryLevel[] CategoryLevel_1darray2;
-        int int3;
-        int int4;
-
-        if (b)
-            CategoryLevel_1darray2 = CategoryLevelRoot1.getMale();
-        else
-            CategoryLevel_1darray2 = CategoryLevelRoot1.getFemale();
-        int3 = CategoryLevel_1darray2.length;
-        int4 = 0;
-        while (int4 < int3) {
-            CategoryLevelRoot$CategoryLevel CategoryLevel5 = CategoryLevel_1darray2[int4];
-
-            if (CategoryLevel5.getMajor().equals(c))
-                return CategoryLevel5.getMins();
-            else
-                ++int4;
+    /*
+     * Enabled aggressive block sorting
+     */
+    private String[] a(CategoryLevelRoot categoryLevelRoot) {
+        CategoryLevelRoot$CategoryLevel[] arrcategoryLevelRoot$CategoryLevel = this.b ? categoryLevelRoot.getMale() : categoryLevelRoot.getFemale();
+        int n = arrcategoryLevelRoot$CategoryLevel.length;
+        int n2 = 0;
+        while (n2 < n) {
+            CategoryLevelRoot$CategoryLevel categoryLevelRoot$CategoryLevel = arrcategoryLevelRoot$CategoryLevel[n2];
+            if (categoryLevelRoot$CategoryLevel.getMajor().equals(this.c)) {
+                return categoryLevelRoot$CategoryLevel.getMins();
+            }
+            ++n2;
         }
         return new String[0];
     }
 
     private void h() {
-        LayoutInflater LayoutInflater1;
-        int int2;
-        int int3;
-
-        if (a.getTabWidget().getTabCount() > 0) {
-            a.setCurrentTab(0);
-            a.clearAllTabs();
+        if (this.a.getTabWidget().getTabCount() > 0) {
+            this.a.setCurrentTab(0);
+            this.a.clearAllTabs();
         }
-        LayoutInflater1 = getLayoutInflater();
-        int2 = l.getCount();
-        for (int3 = 0; int3 < int2; ++int3) {
-            TabHost$TabSpec TabSpec4 = a.newTabSpec(new StringBuilder("tab").append(int3).toString());
-            View View6;
-
-            TabSpec4.setContent(this);
-            View6 = LayoutInflater1.inflate(2130903229, null);
-            ((TextView) View6.findViewById(2131493509)).setText((CharSequence) (String) l.getPageTitle(int3));
-            TabSpec4.setIndicator(View6);
-            a.addTab(TabSpec4);
+        LayoutInflater layoutInflater = this.getLayoutInflater();
+        int n = this.l.getCount();
+        for (int k = 0; k < n; ++k) {
+            TabHost.TabSpec tabSpec = this.a.newTabSpec("tab" + k);
+            tabSpec.setContent(this);
+            View view = layoutInflater.inflate(2130903229, null);
+            ((TextView) view.findViewById(2131493509)).setText((String) this.l.getPageTitle(k));
+            tabSpec.setIndicator(view);
+            this.a.addTab(tabSpec);
         }
     }
 
     private void i() {
-        if (f != null && f.isShowing())
-            f.dismiss();
-        e("\u7B5B\u9009");
+        if (this.f != null && this.f.isShowing()) {
+            this.f.dismiss();
+        }
+        this.e("\u7b5b\u9009");
     }
 
-    public final BookCategoryFragment a(String String1) {
-        BookCategoryFragment BookCategoryFragment2 = (BookCategoryFragment) getSupportFragmentManager().findFragmentByTag(String1);
-
-        if (BookCategoryFragment2 == null)
-            BookCategoryFragment2 = BookCategoryFragment.a(String1);
-        return BookCategoryFragment2;
+    public final BookCategoryFragment a(String string) {
+        BookCategoryFragment bookCategoryFragment = (BookCategoryFragment) this.getSupportFragmentManager().findFragmentByTag(string);
+        if (bookCategoryFragment == null) {
+            bookCategoryFragment = BookCategoryFragment.a(string);
+        }
+        return bookCategoryFragment;
     }
 
     public final String b() {
-        if (b)
+        if (this.b) {
             return "male";
-        else
-            return "female";
+        }
+        return "female";
     }
 
-    public View createTabContent(String String1) {
-        View View2 = new View((Context) this);
-
-        View2.setMinimumHeight(0);
-        View2.setMinimumWidth(0);
-        return View2;
+    @Override
+    public View createTabContent(String string) {
+        View view = new View(this);
+        view.setMinimumHeight(0);
+        view.setMinimumWidth(0);
+        return view;
     }
 
     public final String f() {
-        return c;
+        return this.c;
     }
 
     public final String g() {
-        if (e.equals(c))
+        if (this.e.equals(this.c)) {
             return "";
-        else
-            return e;
+        }
+        return this.e;
     }
 
-    public void onCreate(Bundle Bundle1) {
-        View View2;
-        PopupWindow PopupWindow3;
-        String[] String_1darray4;
-        CategoryLevelRoot CategoryLevelRoot5;
-        String[] String_1darray6;
-        String[] String_1darray7;
-        int int8;
-        int int9;
-        boolean boolean10;
-        ListView ListView11;
-
-        super.onCreate(Bundle1);
-        setContentView(2130903085);
-        b = getIntent().getBooleanExtra("CATEGORY_GENDER", false);
-        c = getIntent().getStringExtra("CATEGORY_KEY");
-        e = c;
-        i = getResources().getStringArray(2131361793);
-        View2 = LayoutInflater.from((Context) this).inflate(2130903175, null);
-        PopupWindow3 = new PopupWindow(View2, -1, -1);
-        PopupWindow3.setFocusable(true);
-        PopupWindow3.setBackgroundDrawable((Drawable) new ColorDrawable(0));
-        PopupWindow3.setOutsideTouchable(true);
-        PopupWindow3.setOnDismissListener((PopupWindow$OnDismissListener) new au(this));
-        f = PopupWindow3;
-        String_1darray4 = new String[0];
-        CategoryLevelRoot5 = (CategoryLevelRoot) com.clilystudio.netbook.hpay100.a.a.k(com.clilystudio.netbook.c.f, "category_level.txt");
-        if (CategoryLevelRoot5 != null)
-            String_1darray6 = a(CategoryLevelRoot5);
-        else
-            String_1darray6 = String_1darray4;
-        String_1darray7 = new String[1 + String_1darray6.length];
-        String_1darray7[0] = c;
-        for (int8 = 0; int8 < String_1darray6.length; ++int8)
-            String_1darray7[int8 + 1] = String_1darray6[int8];
-        int9 = String_1darray7.length;
-        boolean10 = false;
-        if (int9 == 1)
-            boolean10 = true;
-        h = boolean10;
-        View2.findViewById(2131493373).setOnClickListener((View$OnClickListener) new as(this));
-        ListView11 = (ListView) View2.findViewById(2131493374);
-        g = new aw(this, (Context) this, String_1darray7);
-        ListView11.setAdapter((ListAdapter) g);
-        ListView11.setOnItemClickListener((AdapterView$OnItemClickListener) new at(this, String_1darray7));
-        if (h)
-            b(c);
-        else
-            a(c, "\u7B5B\u9009", (aa) new ar(this));
-        a = (TabHost) findViewById(2131493096);
-        k = (ViewPager) findViewById(2131493097);
-        l = new av(this, getSupportFragmentManager());
-        k.setOffscreenPageLimit(4);
-        k.setAdapter((PagerAdapter) l);
-        k.setOnPageChangeListener(this);
-        a.setup();
-        a.setOnTabChangedListener(this);
-        h();
+    /*
+     * Enabled aggressive block sorting
+     */
+    @Override
+    public void onCreate(Bundle bundle) {
+        super.onCreate(bundle);
+        this.setContentView(2130903085);
+        this.b = this.getIntent().getBooleanExtra("CATEGORY_GENDER", false);
+        this.e = this.c = this.getIntent().getStringExtra("CATEGORY_KEY");
+        this.i = this.getResources().getStringArray(2131361793);
+        View view = LayoutInflater.from(this).inflate(2130903175, null);
+        PopupWindow popupWindow = new PopupWindow(view, -1, -1);
+        popupWindow.setFocusable(true);
+        popupWindow.setBackgroundDrawable(new ColorDrawable(0));
+        popupWindow.setOutsideTouchable(true);
+        popupWindow.setOnDismissListener((PopupWindow.OnDismissListener) ((Object) new au(this)));
+        this.f = popupWindow;
+        String[] arrstring = new String[]{};
+        CategoryLevelRoot categoryLevelRoot = (CategoryLevelRoot) a.k(c.f, "category_level.txt");
+        String[] arrstring2 = categoryLevelRoot != null ? this.a(categoryLevelRoot) : arrstring;
+        String[] arrstring3 = new String[1 + arrstring2.length];
+        arrstring3[0] = this.c;
+        for (int k = 0; k < arrstring2.length; ++k) {
+            arrstring3[k + 1] = arrstring2[k];
+        }
+        int n = arrstring3.length;
+        boolean bl = false;
+        if (n == 1) {
+            bl = true;
+        }
+        this.h = bl;
+        view.findViewById(2131493373).setOnClickListener((View.OnClickListener) ((Object) new as(this)));
+        ListView listView = (ListView) view.findViewById(2131493374);
+        this.g = new aw(this, (Context) this, arrstring3);
+        listView.setAdapter((ListAdapter) ((Object) this.g));
+        listView.setOnItemClickListener(new at(this, arrstring3));
+        if (this.h) {
+            this.b(this.c);
+        } else {
+            this.a(this.c, "\u7b5b\u9009", (aa) ((Object) new ar(this)));
+        }
+        this.a = (TabHost) this.findViewById(2131493096);
+        this.k = (ViewPager) this.findViewById(2131493097);
+        this.l = new av(this, this.getSupportFragmentManager());
+        this.k.setOffscreenPageLimit(4);
+        this.k.setAdapter((PagerAdapter) ((Object) this.l));
+        this.k.setOnPageChangeListener(this);
+        this.a.setup();
+        this.a.setOnTabChangedListener(this);
+        this.h();
     }
 
-    public void onPageScrollStateChanged(int int1) {
+    @Override
+    public void onPageScrollStateChanged(int n) {
     }
 
-    public void onPageScrolled(int int1, float float2, int int3) {
-        a(int1, int3);
+    @Override
+    public void onPageScrolled(int n, float f2, int n2) {
+        this.a(n, n2);
     }
 
-    public void onPageSelected(int int1) {
-        TabWidget TabWidget2 = a.getTabWidget();
-        int int3 = TabWidget2.getDescendantFocusability();
-
-        TabWidget2.setDescendantFocusability(393216);
-        a.setCurrentTab(int1);
-        TabWidget2.setDescendantFocusability(int3);
+    @Override
+    public void onPageSelected(int n) {
+        TabWidget tabWidget = this.a.getTabWidget();
+        int n2 = tabWidget.getDescendantFocusability();
+        tabWidget.setDescendantFocusability(393216);
+        this.a.setCurrentTab(n);
+        tabWidget.setDescendantFocusability(n2);
     }
 
+    @Override
     public void onPause() {
         super.onPause();
-        if (!h)
-            i();
+        if (!this.h) {
+            this.i();
+        }
     }
 
-    public void onTabChanged(String String1) {
-        int int2 = a.getCurrentTab();
-
-        if (int2 >= 0 && int2 < l.getCount()) {
-            k.setCurrentItem(int2, true);
-            com.umeng.a.b.a((Context) this, "book_category_tab_click", i[int2]);
+    @Override
+    public void onTabChanged(String string) {
+        int n = this.a.getCurrentTab();
+        if (n >= 0 && n < this.l.getCount()) {
+            this.k.setCurrentItem(n, true);
+            b.a(this, "book_category_tab_click", this.i[n]);
         }
     }
 }

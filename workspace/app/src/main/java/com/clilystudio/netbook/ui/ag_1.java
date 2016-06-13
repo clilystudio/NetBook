@@ -1,21 +1,25 @@
 package com.clilystudio.netbook.ui;
 
+import android.content.Intent;
 import android.view.View;
-import android.view.View$OnClickListener;
 
 import com.clilystudio.netbook.model.BookReview;
+import com.clilystudio.netbook.ui.post.ReviewActivity;
 
-final class ag implements View$OnClickListener {
+final class ag
+        implements View.OnClickListener {
+    private /* synthetic */ BookReview a;
+    private /* synthetic */ BestReviewsFragment b;
 
-    private BookReview a;
-    private BestReviewsFragment b;
-    ag(BestReviewsFragment BestReviewsFragment1, BookReview BookReview2) {
-        b = BestReviewsFragment1;
-        a = BookReview2;
+    ag(BestReviewsFragment bestReviewsFragment, BookReview bookReview) {
+        this.b = bestReviewsFragment;
+        this.a = bookReview;
     }
-// Error: Internal #201: 
-// The following method may not be correct.
 
-    public final void onClick(View View1) {
+    @Override
+    public final void onClick(View view) {
+        Intent intent = new Intent(this.b.getActivity(), ReviewActivity.class);
+        intent.putExtra("extraReviewId", this.a._id);
+        this.b.startActivity(intent);
     }
 }

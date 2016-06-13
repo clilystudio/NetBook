@@ -1,18 +1,20 @@
 package com.clilystudio.netbook.ui.home;
 
 import android.os.Handler;
+import android.widget.ListView;
 
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 
-final class L implements k {
+final class L
+        implements k<ListView> {
+    final /* synthetic */ HomeTopicFragment a;
 
-    HomeTopicFragment a;     // final access specifier removed
-
-    L(HomeTopicFragment HomeTopicFragment1) {
-        a = HomeTopicFragment1;
+    L(HomeTopicFragment homeTopicFragment) {
+        this.a = homeTopicFragment;
     }
 
-    public final void a(PullToRefreshBase PullToRefreshBase1) {
-        new Handler().postDelayed((Runnable) new M(this), 1000L);
+    @Override
+    public final void a(PullToRefreshBase<ListView> pullToRefreshBase) {
+        new Handler().postDelayed(new M(this), 1000);
     }
 }

@@ -5,7 +5,6 @@ import com.clilystudio.netbook.api.ApiService;
 import java.util.Date;
 
 public class BookRankDetailList {
-
     private String _id;
     private BookRankDetail[] books;
     private String cover;
@@ -14,54 +13,54 @@ public class BookRankDetailList {
     private Date updated;
 
     public BookRankDetail[] getBooks() {
-        return books;
+        return this.books;
     }
 
-    public void setBooks(BookRankDetail[] BookRankDetail_1darray1) {
-        books = BookRankDetail_1darray1;
+    public void setBooks(BookRankDetail[] arrbookRankDetail) {
+        this.books = arrbookRankDetail;
     }
 
     public String getCover() {
-        return cover;
+        return this.cover;
     }
 
-    public void setCover(String String1) {
-        cover = String1;
+    public void setCover(String string) {
+        this.cover = string;
     }
 
     public Date getCreated() {
-        return updated;
+        return this.updated;
     }
 
-    public void setCreated(Date Date1) {
-        updated = Date1;
+    public void setCreated(Date date) {
+        this.updated = date;
     }
 
     public String getFullCover() {
-        return new StringBuilder().append(ApiService.a).append(cover).toString();
+        return ApiService.a + this.cover;
     }
 
     public String getTag() {
-        return tag;
+        return this.tag;
     }
 
-    public void setTag(String String1) {
-        tag = String1;
+    public void setTag(String string) {
+        this.tag = string;
     }
 
     public String getTitle() {
-        return title;
+        return this.title;
     }
 
-    public void setTitle(String String1) {
-        title = String1;
+    public void setTitle(String string) {
+        this.title = string;
     }
 
     public String get_id() {
-        return _id;
+        return this._id;
     }
 
-    public void set_id(String String1) {
-        _id = String1;
+    public void set_id(String string) {
+        this._id = string;
     }
 }

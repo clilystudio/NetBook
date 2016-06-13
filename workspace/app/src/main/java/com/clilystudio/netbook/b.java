@@ -5,111 +5,148 @@ import android.content.Context;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.util.Map;
 import java.util.Properties;
 
 public final class b {
-
     private static b b;
     private Context a;
 
-    public static b a(Context Context1) {
+    public static b a(Context context) {
         if (b == null) {
-            b b2 = new b();
-
-            b = b2;
-            b2.a = Context1;
+            b b2;
+            b = b2 = new b();
+            b2.a = context;
         }
         return b;
     }
 
-    private void b(Properties Properties1) {
-        Object Object2 = null;
-        Object Object3;
-
-        try {
-            Object3 = new FileOutputStream(new File(a.getDir("config", 0), "config"));
-        } catch (Exception Exception4) {
-            Object3 = null;
+    /*
+     * Unable to fully structure code
+     * Enabled aggressive exception aggregation
+     */
+    private void b(Properties var1_1) {
+        var2_2 = null;
+        var3_3 = new FileOutputStream(new File(this.a.getDir("config", 0), "config"));
+        var1_1.store(var3_3, null);
+        var3_3.flush();
+        var3_3.close();
+        do {
+            return;
+            break;
+        } while (true);
+        catch(Exception var4_4){
+            var3_3 = null;
+            lbl14:
+            // 3 sources:
+            var4_5.printStackTrace();
+            if (var3_3 == null)**continue;
             try {
-                Exception4.printStackTrace();
-            } finally {
-                Object2 = Object3;
-                if (Object2 != null) {
-                    try {
-                        ((FileOutputStream) Object2).close();
-                    } catch (Exception Exception6) {
-                    }
-                }
-                throw Object5;
-            }
-            if (Object3 != null) {
-                try {
-                    ((FileOutputStream) Object3).close();
-                } catch (Exception Exception7) {
-                    return;
-                }
+                var3_3.close();
+                return;
+            } catch (Exception var7_7) {
                 return;
             }
-        } finally {
-            if (Object2 != null)
-                ((FileOutputStream) Object2).close();
-            throw Object5;
+        }
+        catch(Throwable var5_8)lbl - 1000: // 2 sources:
+        {
+            if (var2_2 != null) {
+                var2_2.close();
+            }
+            lbl25:
+            // 4 sources:
+            do {
+                throw var5_9;
+                break;
+            } while (true);
+        }
+        catch(Exception var8_11){
+            return;
+        }
+        {
+            catch(Exception var6_12){
+            **continue;
+        }
+        }
+        {
+            catch(Throwable var5_10){
+            var2_2 = var3_3;
+            **GOTO lbl -1000
+        }
+        }
+        catch(Exception var4_6){
+            **GOTO lbl14
         }
     }
 
+    /*
+     * Unable to fully structure code
+     * Enabled aggressive block sorting
+     * Enabled unnecessary exception pruning
+     * Enabled aggressive exception aggregation
+     * Lifted jumps to return sites
+     */
     public final Properties a() {
-        Object Object1 = null;
-        Properties Properties2 = new Properties();
-        Object Object6;
-
-        try {
-            File File8 = a.getDir("config", 0);
-
-            Object6 = new FileInputStream(new StringBuilder().append(File8.getPath()).append(File.separator).append("config").toString());
-        } catch (Exception Exception5) {
-            Object6 = null;
-            if (Object6 != null) {
-                try {
-                    ((FileInputStream) Object6).close();
-                } catch (Exception Exception7) {
-                    return Properties2;
-                }
-                return Properties2;
-            }
-        } finally {
-            if (Object1 != null) {
-                try {
-                    ((FileInputStream) Object1).close();
-                } catch (Exception Exception4) {
-                }
-            }
-            throw Object3;
+        var1_1 = null;
+        var2_2 = new Properties();
+        var8_3 = this.a.getDir("config", 0);
+        var6_4 = new FileInputStream(var8_3.getPath() + File.separator + "config");
+        var2_2.load(var6_4);
+        var6_4.close();
+        return var2_2;
+        {
+            catch(Exception var11_9){
+            return var2_2;
         }
-        return Properties2;
+        }
+        catch(Exception var5_5){
+            return var2_2;
+            catch(Throwable var3_7){
+            }
+            **GOTO lbl -1000
+            catch(Throwable var10_11){
+                var1_1 = var6_4;
+                var3_8 = var10_11;
+            }
+            lbl - 1000: // 2 sources:
+            {
+                if (var1_1 == null) throw var3_8;
+                try {
+                    var1_1.close();
+                } catch (Exception var4_10) {
+                    throw var3_8;
+                }
+                throw var3_8;
+            }
+            catch(Exception var9_12){
+            }
+            if (var6_4 == null) return var2_2;
+            try {
+                var6_4.close();
+                return var2_2;
+            } catch (Exception var7_6) {
+                return var2_2;
+            }
+        }
     }
 
-    public final void a(String String1, String String2) {
-        Properties Properties3 = a();
-
-        Properties3.setProperty(String1, String2);
-        b(Properties3);
+    public final void a(String string, String string2) {
+        Properties properties = this.a();
+        properties.setProperty(string, string2);
+        this.b(properties);
     }
 
-    public final void a(Properties Properties1) {
-        Properties Properties2 = a();
-
-        Properties2.putAll((Map) Properties1);
-        b(Properties2);
+    public final void a(Properties properties) {
+        Properties properties2 = this.a();
+        properties2.putAll(properties);
+        this.b(properties2);
     }
 
-    public final transient void a(String[] String_1darray1) {
-        Properties Properties2 = a();
-        int int3 = String_1darray1.length;
-        int int4;
-
-        for (int4 = 0; int4 < int3; ++int4)
-            Properties2.remove(String_1darray1[int4]);
-        b(Properties2);
+    public final /* varargs */ void a(String... arrstring) {
+        Properties properties = this.a();
+        int n = arrstring.length;
+        for (int i = 0; i < n; ++i) {
+            properties.remove(arrstring[i]);
+        }
+        this.b(properties);
     }
 }

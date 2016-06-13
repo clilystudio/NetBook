@@ -5,23 +5,22 @@ import android.graphics.Bitmap;
 import com.clilystudio.netbook.db.SplashRecord;
 
 public class SplashAdvert {
-
     private Bitmap bitmap;
     private SplashRecord splashRecord;
 
     public Bitmap getBitmap() {
-        return bitmap;
+        return this.bitmap;
     }
 
-    public void setBitmap(Bitmap Bitmap1) {
-        bitmap = Bitmap1;
+    public void setBitmap(Bitmap bitmap) {
+        this.bitmap = bitmap;
     }
 
     public SplashRecord getSplashRecord() {
-        return splashRecord;
+        return this.splashRecord;
     }
 
-    public void setSplashRecord(SplashRecord SplashRecord1) {
-        splashRecord = SplashRecord1;
+    public void setSplashRecord(SplashRecord splashRecord) {
+        this.splashRecord = splashRecord;
     }
 }

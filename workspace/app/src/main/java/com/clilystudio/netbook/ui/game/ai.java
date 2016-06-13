@@ -1,29 +1,26 @@
 package com.clilystudio.netbook.ui.game;
 
-import android.content.Context;
 import android.content.Intent;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.AdapterView$OnItemClickListener;
 
 import com.clilystudio.netbook.model.Game;
 
-final class ai implements AdapterView$OnItemClickListener {
+final class ai
+        implements AdapterView.OnItemClickListener {
+    private /* synthetic */ GameRankListFragment a;
 
-    private GameRankListFragment a;
-
-    ai(GameRankListFragment GameRankListFragment1) {
-        a = GameRankListFragment1;
+    ai(GameRankListFragment gameRankListFragment) {
+        this.a = gameRankListFragment;
     }
 
-    public final void onItemClick(AdapterView AdapterView1, View View2, int int3, long long4) {
-        int int6 = int3 - GameRankListFragment.a(a).getHeaderViewsCount();
-
-        if (int6 >= 0 && int6 < GameRankListFragment.b(a).size()) {
-            Game Game7 = (Game) GameRankListFragment.b(a).get(int6);
-            Intent Intent8 = GameDetailActivity.a((Context) a.getActivity(), Game7.get_id());
-
-            a.startActivity(Intent8);
+    @Override
+    public final void onItemClick(AdapterView<?> adapterView, View view, int n2, long l) {
+        int n3 = n2 - GameRankListFragment.a(this.a).getHeaderViewsCount();
+        if (n3 >= 0 && n3 < GameRankListFragment.b(this.a).size()) {
+            Game game = (Game) GameRankListFragment.b(this.a).get(n3);
+            Intent intent = GameDetailActivity.a(this.a.getActivity(), game.get_id());
+            this.a.startActivity(intent);
         }
     }
 }

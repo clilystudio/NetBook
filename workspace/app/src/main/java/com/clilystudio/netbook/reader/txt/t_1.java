@@ -5,26 +5,23 @@ import com.clilystudio.netbook.reader.n;
 
 import java.util.LinkedList;
 
-final class t implements e {
+final class t
+        implements e<n> {
+    private /* synthetic */ ReaderTxtActivity a;
 
-    private ReaderTxtActivity a;
-
-    t(ReaderTxtActivity ReaderTxtActivity1) {
-        a = ReaderTxtActivity1;
+    t(ReaderTxtActivity readerTxtActivity) {
+        this.a = readerTxtActivity;
     }
 
-    public final void a(Object Object1) {
-        n n2 = (n) Object1;
-
-        ReaderTxtActivity.a(a, n2);
-        if (ReaderTxtActivity.b(a) == 2 && n2 != null) {
-            Object[] Object_1darray3 = n2.d();
-
-            if (Object_1darray3 != null) {
-                ReaderTxtActivity.a(a, (String[]) Object_1darray3[0]);
-                ReaderTxtActivity.a(a, (LinkedList) Object_1darray3[1]);
-                ReaderTxtActivity.c(a, false);
-            }
+    @Override
+    public final /* synthetic */ void a(Object object) {
+        Object[] arrobject;
+        n n2 = (n) object;
+        ReaderTxtActivity.a(this.a, n2);
+        if (ReaderTxtActivity.b(this.a) == 2 && n2 != null && (arrobject = n2.d()) != null) {
+            ReaderTxtActivity.a(this.a, (String[]) arrobject[0]);
+            ReaderTxtActivity.a(this.a, (LinkedList) arrobject[1]);
+            ReaderTxtActivity.c(this.a, false);
         }
     }
 }

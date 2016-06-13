@@ -1,30 +1,27 @@
 package com.clilystudio.netbook.ui.post;
 
 import android.os.AsyncTask;
-import android.os.AsyncTask$Status;
+import android.support.design.widget.am;
 
-final class aX implements j {
+final class aX
+        implements j {
+    private /* synthetic */ CommonPostListActivity a;
 
-    private CommonPostListActivity a;
-
-    aX(CommonPostListActivity CommonPostListActivity1) {
-        a = CommonPostListActivity1;
+    aX(CommonPostListActivity commonPostListActivity) {
+        this.a = commonPostListActivity;
     }
 
+    @Override
     public final void a() {
-        if (CommonPostListActivity.c(a) == null || CommonPostListActivity.c(a).getStatus() == AsyncTask$Status.FINISHED) {
-            bh bh2;
-            String[] String_1darray3;
-
-            CommonPostListActivity.q(a).setVisibility(0);
-            if (!android.support.design.widget.am.a((AsyncTask) CommonPostListActivity.f(a)))
-                CommonPostListActivity.f(a).cancel(true);
-            CommonPostListActivity.a(a, new bh(a, (byte) 0));
-            bh2 = CommonPostListActivity.c(a);
-            String_1darray3 = new String[2];
-            String_1darray3[0] = CommonPostListActivity.d(a);
-            String_1darray3[1] = CommonPostListActivity.e(a);
-            bh2.b(String_1darray3);
+        if (CommonPostListActivity.c(this.a) == null || CommonPostListActivity.c(this.a).getStatus() == AsyncTask.Status.FINISHED) {
+            CommonPostListActivity.q(this.a).setVisibility(0);
+            if (!am.a(CommonPostListActivity.f(this.a))) {
+                CommonPostListActivity.f(this.a).cancel(true);
+            }
+            CommonPostListActivity.a(this.a, new bh(this.a, 0));
+            bh bh2 = CommonPostListActivity.c(this.a);
+            String[] arrstring = new String[]{CommonPostListActivity.d(this.a), CommonPostListActivity.e(this.a)};
+            bh2.b(arrstring);
         }
     }
 }

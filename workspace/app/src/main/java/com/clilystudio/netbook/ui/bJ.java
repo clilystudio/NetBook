@@ -3,23 +3,24 @@ package com.clilystudio.netbook.ui;
 import android.app.Activity;
 import android.view.KeyEvent;
 import android.widget.TextView;
-import android.widget.TextView$OnEditorActionListener;
 
 import com.clilystudio.netbook.util.e;
 
-final class bJ implements TextView$OnEditorActionListener {
+final class bJ
+        implements TextView.OnEditorActionListener {
+    private /* synthetic */ SearchActivity a;
 
-    private SearchActivity a;
-
-    bJ(SearchActivity SearchActivity1) {
-        a = SearchActivity1;
+    bJ(SearchActivity searchActivity) {
+        this.a = searchActivity;
     }
 
-    public final boolean onEditorAction(TextView TextView1, int int2, KeyEvent KeyEvent3) {
-        if (SearchActivity.f(a).getText().toString().trim().equals(""))
-            e.a((Activity) a, "\u8BF7\u8F93\u5165\u8981\u641C\u7D22\u7684\u5173\u952E\u5B57");
-        else
-            SearchActivity.a(a, true, true);
+    @Override
+    public final boolean onEditorAction(TextView textView, int n, KeyEvent keyEvent) {
+        if (SearchActivity.f(this.a).getText().toString().trim().equals("")) {
+            e.a((Activity) this.a, (String) "\u8bf7\u8f93\u5165\u8981\u641c\u7d22\u7684\u5173\u952e\u5b57");
+            return true;
+        }
+        SearchActivity.a(this.a, true, true);
         return true;
     }
 }

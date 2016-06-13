@@ -8,36 +8,39 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-public class UgcFilterTextView extends RelativeLayout {
-
+public class UgcFilterTextView
+        extends RelativeLayout {
     private TextView a;
     private String b;
-    public UgcFilterTextView(Context Context1, AttributeSet AttributeSet2) {
-        super(Context1, AttributeSet2);
+
+    public UgcFilterTextView(Context context, AttributeSet attributeSet) {
+        super(context, attributeSet);
     }
 
     public final String a() {
-        return b;
+        return this.b;
     }
 
+    @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
-        LayoutInflater.from(getContext()).inflate(2130903422, (ViewGroup) this);
-        a = (TextView) findViewById(2131494012);
+        LayoutInflater.from(this.getContext()).inflate(2130903422, (ViewGroup) this);
+        this.a = (TextView) this.findViewById(2131494012);
     }
 
-    public void setSelected(boolean boolean1) {
-        if (boolean1) {
-            a.setTextColor(am.a(getContext(), 2130771972));
-            setBackgroundResource(am.b(getContext(), 2130771998));
-        } else {
-            a.setTextColor(am.a(getContext(), 16842808));
-            setBackgroundResource(am.b(getContext(), 2130771974));
+    @Override
+    public void setSelected(boolean bl) {
+        if (bl) {
+            this.a.setTextColor(am.a((Context) this.getContext(), (int) 2130771972));
+            this.setBackgroundResource(am.b((Context) this.getContext(), (int) 2130771998));
+            return;
         }
+        this.a.setTextColor(am.a((Context) this.getContext(), (int) 16842808));
+        this.setBackgroundResource(am.b((Context) this.getContext(), (int) 2130771974));
     }
 
-    public void setText(String String1) {
-        b = String1;
-        a.setText((CharSequence) String1);
+    public void setText(String string) {
+        this.b = string;
+        this.a.setText(string);
     }
 }

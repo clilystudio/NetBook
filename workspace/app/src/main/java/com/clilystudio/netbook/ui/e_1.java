@@ -2,22 +2,21 @@ package com.clilystudio.netbook.ui;
 
 import android.app.Activity;
 import android.content.DialogInterface;
-import android.content.DialogInterface$OnClickListener;
 
-final class e implements DialogInterface$OnClickListener {
+final class e
+        implements DialogInterface.OnClickListener {
+    private /* synthetic */ String a;
+    private /* synthetic */ AdWebViewActivity b;
 
-    private String a;
-    private AdWebViewActivity b;
-    e(AdWebViewActivity AdWebViewActivity1, String String2) {
-        b = AdWebViewActivity1;
-        a = String2;
+    e(AdWebViewActivity adWebViewActivity, String string) {
+        this.b = adWebViewActivity;
+        this.a = string;
     }
 
-    public final void onClick(DialogInterface DialogInterface1, int int2) {
-        String String3;
-
-        com.clilystudio.netbook.util.e.a((Activity) b, "\u5F00\u59CB\u4E0B\u8F7D");
-        String3 = com.clilystudio.netbook.hpay100.a.a.N(a);
-        AdWebViewActivity.a(b, a, String3);
+    @Override
+    public final void onClick(DialogInterface dialogInterface, int n) {
+        com.clilystudio.netbook.util.e.a((Activity) this.b, "\u5f00\u59cb\u4e0b\u8f7d");
+        String string = a.N(this.a);
+        AdWebViewActivity.a(this.b, this.a, string);
     }
 }

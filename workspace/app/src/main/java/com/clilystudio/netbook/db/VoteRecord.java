@@ -1,26 +1,31 @@
 package com.clilystudio.netbook.db;
 
 import com.activeandroid.Model;
+import com.activeandroid.annotation.Column;
+import com.activeandroid.annotation.Table;
+import com.activeandroid.query.Select;
 
 import java.util.List;
 
-public class VoteRecord extends Model {
-
+@Table(name = "VoteRecords")
+public class VoteRecord
+        extends Model {
+    @Column(name = "account_id")
     public String account_id;
+    @Column(name = "post_id")
     public String post_id;
+    @Column(name = "vote_item_index")
     public int vote_item_index = -1;
 
-    public static void create(String String1, String String2, int int3) {
-        VoteRecord VoteRecord4 = new VoteRecord();
-
-        VoteRecord4.account_id = String1;
-        VoteRecord4.post_id = String2;
-        VoteRecord4.vote_item_index = int3;
-        VoteRecord4.save();
+    public static void create(String string, String string2, int n) {
+        VoteRecord voteRecord = new VoteRecord();
+        voteRecord.account_id = string;
+        voteRecord.post_id = string2;
+        voteRecord.vote_item_index = n;
+        voteRecord.save();
     }
-// Error: Internal #201: 
-// The following method may not be correct.
 
-    public static List getVoteRecords(String String1, String String2) {
+    public static List<VoteRecord> getVoteRecords(String string, String string2) {
+        return new Select().from(VoteRecord.class).where("account_id = ? AND post_id = ?", string, string2).execute();
     }
 }

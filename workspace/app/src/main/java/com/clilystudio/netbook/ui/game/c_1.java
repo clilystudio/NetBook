@@ -1,56 +1,72 @@
 package com.clilystudio.netbook.ui.game;
 
+import com.clilystudio.netbook.a.e;
+import com.clilystudio.netbook.api.b;
+import com.clilystudio.netbook.model.GameCat;
 import com.clilystudio.netbook.model.GameCatRoot;
 
 import java.io.IOException;
-import java.util.Collection;
+import java.util.Arrays;
 import java.util.List;
 
-final class c extends com.clilystudio.netbook.a.e {
+final class c
+        extends e<String, Void, List<GameCat>> {
+    private /* synthetic */ GameCatListFragment a;
 
-    private GameCatListFragment a;
-
-    c(GameCatListFragment GameCatListFragment1, byte byte2) {
-        this(GameCatListFragment1);
+    private c(GameCatListFragment gameCatListFragment) {
+        this.a = gameCatListFragment;
     }
 
-    private c(GameCatListFragment GameCatListFragment1) {
-        a = GameCatListFragment1;
+    /* synthetic */ c(GameCatListFragment gameCatListFragment, byte by) {
+        this(gameCatListFragment);
     }
 
-    private static transient List a() {
+    /*
+     * Enabled force condition propagation
+     * Lifted jumps to return sites
+     */
+    private static /* varargs */ List<GameCat> a() {
+        b.a();
+        GameCatRoot gameCatRoot = b.b().r();
+        if (gameCatRoot == null) return null;
         try {
-            GameCatRoot GameCatRoot3;
-
-            com.clilystudio.netbook.api.b.a();
-            GameCatRoot3 = com.clilystudio.netbook.api.b.b().r();
-        } catch (IOException IOException1) {
-            IOException1.printStackTrace();
+            if (!gameCatRoot.isOk()) return null;
+            if (gameCatRoot.getGames() == null) return null;
+            return Arrays.asList(gameCatRoot.getGames());
+        } catch (IOException var0_2) {
+            var0_2.printStackTrace();
         }
         return null;
     }
 
-    protected final Object doInBackground(Object[] Object_1darray1) {
-        return a();
+    /*
+     * Exception decompiling
+     */
+    @Override
+    protected final /* synthetic */ Object doInBackground(Object[] var1_1) {
+        // This method has failed to decompile.  When submitting a bug report, please provide this stack trace, and (if you hold appropriate legal rights) the relevant class file.
+        // java.lang.ArrayIndexOutOfBoundsException
+        throw new IllegalStateException("Decompilation failed");
     }
 
-    protected final void onPostExecute(Object Object1) {
-        Object Object2 = (List) Object1;
-
-        super.onPostExecute(Object2);
-        if (a.getActivity() != null) {
-            if (Object2 != null) {
-                if (((List) Object2).size() > 0) {
-                    a.c();
-                    GameCatListFragment.b(a).a((Collection) Object2);
-                } else {
-                    a.d();
-                    return;
-                }
-            } else {
-                a.e();
+    /*
+     * Enabled force condition propagation
+     * Lifted jumps to return sites
+     */
+    @Override
+    protected final /* synthetic */ void onPostExecute(Object object) {
+        List list = (List) object;
+        super.onPostExecute(list);
+        if (this.a.getActivity() == null) return;
+        if (list != null) {
+            if (list.size() > 0) {
+                this.a.c();
+                GameCatListFragment.b(this.a).a(list);
                 return;
             }
+            this.a.d();
+            return;
         }
+        this.a.e();
     }
 }

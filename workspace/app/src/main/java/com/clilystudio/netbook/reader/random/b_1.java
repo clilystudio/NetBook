@@ -17,78 +17,63 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
-public final class b extends c {
-
+public final class b
+        extends c<String, MysteryBookList> {
     private final boolean a = true;
 
-    public b(Activity Activity1, int int2, boolean boolean3) {
-        super(Activity1, 2131034218);
+    public b(Activity activity, int n, boolean bl) {
+        super(activity, 2131034218);
     }
 
-    private static transient MysteryBookList a() {
-        MysteryBookList MysteryBookList3;
-
+    private static /* varargs */ MysteryBookList a() {
         try {
             com.clilystudio.netbook.api.b.a();
-            MysteryBookList3 = com.clilystudio.netbook.api.b.b().h();
-        } catch (IOException IOException1) {
-            IOException1.printStackTrace();
+            MysteryBookList mysteryBookList = com.clilystudio.netbook.api.b.b().h();
+            return mysteryBookList;
+        } catch (IOException var0_1) {
+            var0_1.printStackTrace();
             return null;
         }
-        return MysteryBookList3;
     }
 
-    public final volatile Object a(Object[] Object_1darray1) {
-        return a();
-    }
-
-    public final void a(Object Object1) {
-        MysteryBookList MysteryBookList2 = (MysteryBookList) Object1;
-
-        if (b() != null) {
-            if (MysteryBookList2 != null && MysteryBookList2.getBooks() != null && MysteryBookList2.getBooks().length > 0) {
-                List List3 = Arrays.asList(MysteryBookList2.getBooks());
-                int int4 = com.clilystudio.netbook.hpay100.a.a.a((Context) b(), "randomBooks", -1);
-                int int5;
-                MysteryBookList$MysteryBookRoot MysteryBookRoot6;
-                MysteryBook MysteryBook7;
-                String String8;
-                String String9;
-                MysteryToc MysteryToc10;
-                String String11;
-                BookInfo BookInfo12;
-                Intent Intent13;
-
-                if (int4 == -1)
-                    int4 = (int) (Math.random() * (double) List3.size());
-                int5 = int4 + 1;
-                if (int5 < 0 || int5 >= List3.size())
-                    int5 = 0;
-                com.clilystudio.netbook.hpay100.a.a.b((Context) b(), "randomBooks", int5);
-                MysteryBookRoot6 = (MysteryBookList$MysteryBookRoot) List3.get(int5);
-                MysteryBook7 = MysteryBookRoot6.getBook();
-                String8 = MysteryBook7.get_id();
-                String9 = MysteryBook7.getTitle();
-                MysteryToc10 = MysteryBookRoot6.getToc();
-                if (MysteryToc10 == null)
-                    String11 = "";
-                else
-                    String11 = MysteryToc10.get_id();
-                BookInfo12 = new BookInfo();
-                BookInfo12.setId(MysteryBook7.get_id());
-                BookInfo12.setTitle(MysteryBook7.getTitle());
-                BookInfo12.setLastChapter(MysteryBook7.getLastChapter());
-                BookInfo12.setUpdated(MysteryBook7.getUpdated());
-                BookInfo12.setCover(MysteryBook7.getCover());
-                MyApplication.a().a(BookInfo12);
-                Intent13 = ReaderRandomActivity.a((Context) b(), String8, String9, String11);
-                b().startActivity(Intent13);
-                if (a)
-                    b().finish();
-            } else {
-                e.a(b(), "\u6253\u5F00\u5931\u8D25\u6216\u6682\u65F6\u672A\u5F00\u653E");
-                return;
+    /*
+     * Enabled aggressive block sorting
+     * Lifted jumps to return sites
+     */
+    @Override
+    public final /* synthetic */ void a(Object object) {
+        MysteryBookList mysteryBookList = (MysteryBookList) object;
+        if (this.b() == null) return;
+        if (mysteryBookList != null && mysteryBookList.getBooks() != null && mysteryBookList.getBooks().length > 0) {
+            int n2;
+            List<MysteryBookList$MysteryBookRoot> list = Arrays.asList(mysteryBookList.getBooks());
+            int n3 = a.a((Context) this.b(), "randomBooks", -1);
+            if (n3 == -1) {
+                n3 = (int) (Math.random() * (double) list.size());
             }
+            if ((n2 = n3 + 1) < 0 || n2 >= list.size()) {
+                n2 = 0;
+            }
+            a.b((Context) this.b(), "randomBooks", n2);
+            MysteryBookList$MysteryBookRoot mysteryBookList$MysteryBookRoot = list.get(n2);
+            MysteryBook mysteryBook = mysteryBookList$MysteryBookRoot.getBook();
+            String string = mysteryBook.get_id();
+            String string2 = mysteryBook.getTitle();
+            MysteryToc mysteryToc = mysteryBookList$MysteryBookRoot.getToc();
+            String string3 = mysteryToc == null ? "" : mysteryToc.get_id();
+            BookInfo bookInfo = new BookInfo();
+            bookInfo.setId(mysteryBook.get_id());
+            bookInfo.setTitle(mysteryBook.getTitle());
+            bookInfo.setLastChapter(mysteryBook.getLastChapter());
+            bookInfo.setUpdated(mysteryBook.getUpdated());
+            bookInfo.setCover(mysteryBook.getCover());
+            MyApplication.a().a(bookInfo);
+            Intent intent = ReaderRandomActivity.a(this.b(), string, string2, string3);
+            this.b().startActivity(intent);
+            if (!this.a) return;
+            this.b().finish();
+            return;
         }
+        e.a(this.b(), "\u6253\u5f00\u5931\u8d25\u6216\u6682\u65f6\u672a\u5f00\u653e");
     }
 }

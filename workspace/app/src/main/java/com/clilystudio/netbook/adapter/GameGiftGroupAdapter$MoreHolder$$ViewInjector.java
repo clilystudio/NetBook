@@ -5,12 +5,11 @@ import android.widget.TextView;
 import butterknife.ButterKnife$Finder;
 
 public class GameGiftGroupAdapter$MoreHolder$$ViewInjector {
-
-    public static void inject(ButterKnife$Finder Finder1, GameGiftGroupAdapter$MoreHolder MoreHolder2, Object Object3) {
-        MoreHolder2.title = (TextView) Finder1.findRequiredView(Object3, 2131492936, "field 'title'");
+    public static void inject(ButterKnife$Finder butterKnife$Finder, GameGiftGroupAdapter$MoreHolder gameGiftGroupAdapter$MoreHolder, Object object) {
+        gameGiftGroupAdapter$MoreHolder.title = (TextView) butterKnife$Finder.findRequiredView(object, 2131492936, "field 'title'");
     }
 
-    public static void reset(GameGiftGroupAdapter$MoreHolder MoreHolder1) {
-        MoreHolder1.title = null;
+    public static void reset(GameGiftGroupAdapter$MoreHolder gameGiftGroupAdapter$MoreHolder) {
+        gameGiftGroupAdapter$MoreHolder.title = null;
     }
 }

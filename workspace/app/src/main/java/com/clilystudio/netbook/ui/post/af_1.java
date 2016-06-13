@@ -2,15 +2,16 @@ package com.clilystudio.netbook.ui.post;
 
 import com.clilystudio.netbook.ui.aa;
 
-final class af implements aa {
+final class af
+        implements aa {
+    private /* synthetic */ BookHelpListActivity a;
 
-    private BookHelpListActivity a;
-
-    af(BookHelpListActivity BookHelpListActivity1) {
-        a = BookHelpListActivity1;
+    af(BookHelpListActivity bookHelpListActivity) {
+        this.a = bookHelpListActivity;
     }
 
+    @Override
     public final void a() {
-        BookHelpListActivity.a(a);
+        BookHelpListActivity.a(this.a);
     }
 }

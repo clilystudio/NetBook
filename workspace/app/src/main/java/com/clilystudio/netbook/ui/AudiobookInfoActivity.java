@@ -6,27 +6,28 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.design.widget.am;
 import android.view.View;
-import android.view.View$OnClickListener;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.clilystudio.netbook.d;
 import com.clilystudio.netbook.db.AudioRecord;
+import com.clilystudio.netbook.event.p;
 import com.clilystudio.netbook.model.AlbumSerialized;
 import com.clilystudio.netbook.util.as;
 import com.clilystudio.netbook.widget.CoverView;
 import com.clilystudio.netbook.widget.LinearListView;
 import com.clilystudio.netbook.widget.ad;
 import com.ximalaya.ting.android.opensdk.datatrasfer.CommonRequest;
-import com.ximalaya.ting.android.opensdk.datatrasfer.IDataCallBack;
 import com.ximalaya.ting.android.opensdk.httputil.XimalayaException;
 import com.ximalaya.ting.android.opensdk.player.service.IXmPlayerStatusListener;
 
 import java.util.HashMap;
-import java.util.Map;
 
-public class AudiobookInfoActivity extends BaseActivity implements View$OnClickListener, ad {
-
+public class AudiobookInfoActivity
+        extends BaseActivity
+        implements View.OnClickListener,
+        ad {
     private View a;
     private View b;
     private View c;
@@ -38,402 +39,408 @@ public class AudiobookInfoActivity extends BaseActivity implements View$OnClickL
     private RelativeLayout j;
     private LinearListView k;
     private boolean l;
-    private AlbumSerialized q;
-    private as r;
-    private CommonRequest s;
-    private int v;
     private boolean m = true;
     private boolean n = false;
     private boolean o = false;
     private boolean p = false;
+    private AlbumSerialized q;
+    private as r;
+    private CommonRequest s;
     private int t = 0;
     private int u = 100;
+    private int v;
     private int w = 1;
     private int x = 1;
     private boolean y = true;
-    private IXmPlayerStatusListener z = new F(this);
-// Error: Internal #201: 
-// The following method may not be correct.
+    private IXmPlayerStatusListener z;
 
-    public static Intent a(Context Context1, long long2) {
+    public AudiobookInfoActivity() {
+        this.z = new F(this);
     }
 
-    static AlbumSerialized a(AudiobookInfoActivity AudiobookInfoActivity1, AlbumSerialized AlbumSerialized2) {
-        AudiobookInfoActivity1.q = AlbumSerialized2;
-        return AlbumSerialized2;
+    public static Intent a(Context context, long l) {
+        return new d().a(context, AudiobookInfoActivity.class).a("ALBUM_ID", Long.valueOf(l)).a();
     }
 
-    static void a(AudiobookInfoActivity AudiobookInfoActivity1) {
-        AudiobookInfoActivity1.b();
+    static /* synthetic */ AlbumSerialized a(AudiobookInfoActivity audiobookInfoActivity, AlbumSerialized albumSerialized) {
+        audiobookInfoActivity.q = albumSerialized;
+        return albumSerialized;
     }
 
-    static void a(AudiobookInfoActivity AudiobookInfoActivity1, int int2) {
-        switch (int2) {
-            default:
+    static /* synthetic */ void a(AudiobookInfoActivity audiobookInfoActivity) {
+        audiobookInfoActivity.b();
+    }
+
+    static /* synthetic */ void a(AudiobookInfoActivity audiobookInfoActivity, int n) {
+        switch (n) {
+            default: {
                 return;
-            case 1:
-                AudiobookInfoActivity1.a.setVisibility(0);
-                AudiobookInfoActivity1.b.setVisibility(8);
-                AudiobookInfoActivity1.c.setVisibility(8);
+            }
+            case 1: {
+                audiobookInfoActivity.a.setVisibility(0);
+                audiobookInfoActivity.b.setVisibility(8);
+                audiobookInfoActivity.c.setVisibility(8);
                 return;
-            case 0:
-                AudiobookInfoActivity1.a.setVisibility(8);
-                AudiobookInfoActivity1.b.setVisibility(0);
-                AudiobookInfoActivity1.c.setVisibility(8);
+            }
+            case 0: {
+                audiobookInfoActivity.a.setVisibility(8);
+                audiobookInfoActivity.b.setVisibility(0);
+                audiobookInfoActivity.c.setVisibility(8);
                 return;
+            }
             case 2:
-                AudiobookInfoActivity1.a.setVisibility(8);
-                AudiobookInfoActivity1.b.setVisibility(8);
-                AudiobookInfoActivity1.c.setVisibility(0);
-                return;
         }
+        audiobookInfoActivity.a.setVisibility(8);
+        audiobookInfoActivity.b.setVisibility(8);
+        audiobookInfoActivity.c.setVisibility(0);
     }
 
-    static boolean a(AudiobookInfoActivity AudiobookInfoActivity1, boolean boolean2) {
-        AudiobookInfoActivity1.l = boolean2;
-        return boolean2;
+    static /* synthetic */ boolean a(AudiobookInfoActivity audiobookInfoActivity, boolean bl) {
+        audiobookInfoActivity.l = bl;
+        return bl;
     }
 
-    static int b(AudiobookInfoActivity AudiobookInfoActivity1, int int2) {
-        AudiobookInfoActivity1.v = int2;
-        return int2;
+    static /* synthetic */ int b(AudiobookInfoActivity audiobookInfoActivity, int n) {
+        audiobookInfoActivity.v = n;
+        return n;
     }
 
-    static boolean b(AudiobookInfoActivity AudiobookInfoActivity1) {
-        return AudiobookInfoActivity1.l;
+    static /* synthetic */ boolean b(AudiobookInfoActivity audiobookInfoActivity) {
+        return audiobookInfoActivity.l;
     }
 
-    static boolean b(AudiobookInfoActivity AudiobookInfoActivity1, boolean boolean2) {
-        AudiobookInfoActivity1.n = boolean2;
-        return boolean2;
+    static /* synthetic */ boolean b(AudiobookInfoActivity audiobookInfoActivity, boolean bl) {
+        audiobookInfoActivity.n = bl;
+        return bl;
     }
 
-    static int c(AudiobookInfoActivity AudiobookInfoActivity1, int int2) {
-        AudiobookInfoActivity1.x = int2;
-        return int2;
+    static /* synthetic */ int c(AudiobookInfoActivity audiobookInfoActivity, int n) {
+        audiobookInfoActivity.x = n;
+        return n;
     }
 
-    static AlbumSerialized c(AudiobookInfoActivity AudiobookInfoActivity1) {
-        return AudiobookInfoActivity1.q;
+    static /* synthetic */ AlbumSerialized c(AudiobookInfoActivity audiobookInfoActivity) {
+        return audiobookInfoActivity.q;
     }
 
-    static void c(AudiobookInfoActivity AudiobookInfoActivity1, boolean boolean2) {
-        AudiobookInfoActivity1.a(boolean2);
+    static /* synthetic */ void c(AudiobookInfoActivity audiobookInfoActivity, boolean bl) {
+        audiobookInfoActivity.a(bl);
     }
 
-    static void d(AudiobookInfoActivity AudiobookInfoActivity1) {
-        Object Object2 = new HashMap();
-
-        ((Map) Object2).put("album_id", new StringBuilder().append(AudiobookInfoActivity1.q.getId()).toString());
-        if (AudiobookInfoActivity1.m)
-            ((Map) Object2).put("sort", "asc");
-        else
-            ((Map) Object2).put("sort", "desc");
-        ((Map) Object2).put("page", new StringBuilder().append(AudiobookInfoActivity1.w).toString());
-        CommonRequest.getTracks((Map) Object2, (IDataCallBack) new D(AudiobookInfoActivity1));
+    /*
+     * Enabled aggressive block sorting
+     */
+    static /* synthetic */ void d(AudiobookInfoActivity audiobookInfoActivity) {
+        HashMap<String, String> hashMap = new HashMap<String, String>();
+        hashMap.put("album_id", "" + audiobookInfoActivity.q.getId());
+        if (audiobookInfoActivity.m) {
+            hashMap.put("sort", "asc");
+        } else {
+            hashMap.put("sort", "desc");
+        }
+        hashMap.put("page", "" + audiobookInfoActivity.w);
+        CommonRequest.getTracks(hashMap, new D(audiobookInfoActivity));
     }
 
-    static boolean d(AudiobookInfoActivity AudiobookInfoActivity1, boolean boolean2) {
-        AudiobookInfoActivity1.p = true;
+    static /* synthetic */ boolean d(AudiobookInfoActivity audiobookInfoActivity, boolean bl) {
+        audiobookInfoActivity.p = true;
         return true;
     }
 
-    static void e(AudiobookInfoActivity AudiobookInfoActivity1) {
-        TextView TextView2;
-        Resources Resources3;
-        Object[] Object_1darray4;
-        TextView TextView5;
-        Object Object6;
-        AudioRecord AudioRecord7;
-
-        ((CoverView) AudiobookInfoActivity1.findViewById(2131493282)).setImageUrl(AudiobookInfoActivity1.q.getUrl(), 2130837766);
-        ((TextView) AudiobookInfoActivity1.findViewById(2131493283)).setText((CharSequence) AudiobookInfoActivity1.q.getTitle());
-        ((TextView) AudiobookInfoActivity1.findViewById(2131493285)).setText((CharSequence) AudiobookInfoActivity1.q.getAnnouncer());
-        TextView2 = (TextView) AudiobookInfoActivity1.findViewById(2131493293);
-        Resources3 = AudiobookInfoActivity1.getResources();
-        Object_1darray4 = new Object[1];
-        Object_1darray4[0] = Long.valueOf(AudiobookInfoActivity1.q.getTotalCount());
-        TextView2.setText((CharSequence) Resources3.getString(2131034530, Object_1darray4));
-        AudiobookInfoActivity1.e = (TextView) AudiobookInfoActivity1.findViewById(2131493295);
-        AudiobookInfoActivity1.e.setOnClickListener(AudiobookInfoActivity1);
-        AudiobookInfoActivity1.h = (ImageView) AudiobookInfoActivity1.findViewById(2131493294);
-        AudiobookInfoActivity1.h.setOnClickListener(AudiobookInfoActivity1);
-        AudiobookInfoActivity1.f = (TextView) AudiobookInfoActivity1.findViewById(2131493291);
-        AudiobookInfoActivity1.g = (ImageView) AudiobookInfoActivity1.findViewById(2131493290);
-        TextView5 = (TextView) AudiobookInfoActivity1.findViewById(2131493292);
-        Object6 = AudiobookInfoActivity1.q.getIntro();
-        if (Object6 != null && ((String) Object6).length() > 0) {
-            TextView5.setText((CharSequence) Object6);
-            TextView5.post((Runnable) new A(AudiobookInfoActivity1, TextView5));
-        } else
-            TextView5.setText((CharSequence) "\u6682\u65E0");
-        AudiobookInfoActivity1.i = (RelativeLayout) AudiobookInfoActivity1.findViewById(2131493289);
-        AudiobookInfoActivity1.i.setOnClickListener(AudiobookInfoActivity1);
-        AudiobookInfoActivity1.j = (RelativeLayout) AudiobookInfoActivity1.findViewById(2131493286);
-        AudiobookInfoActivity1.j.setOnClickListener(AudiobookInfoActivity1);
-        AudiobookInfoActivity1.k = (LinearListView) AudiobookInfoActivity1.findViewById(2131493296);
-        AudiobookInfoActivity1.k.setPlayTrackInterface(AudiobookInfoActivity1);
-        AudiobookInfoActivity1.k.setItemHeight(com.clilystudio.netbook.hpay100.a.a.a((Context) AudiobookInfoActivity1, 56.0F));
-        AudioRecord7 = AudioRecord.find(String.valueOf(AudiobookInfoActivity1.q.getId()));
-        if (AudioRecord7 == null)
-            AudiobookInfoActivity1.o = false;
-        else {
-            AudiobookInfoActivity1.o = true;
-            AudiobookInfoActivity1.x = AudioRecord7.getTrack();
+    /*
+     * Enabled aggressive block sorting
+     */
+    static /* synthetic */ void e(AudiobookInfoActivity audiobookInfoActivity) {
+        ((CoverView) audiobookInfoActivity.findViewById(2131493282)).setImageUrl(audiobookInfoActivity.q.getUrl(), 2130837766);
+        ((TextView) audiobookInfoActivity.findViewById(2131493283)).setText(audiobookInfoActivity.q.getTitle());
+        ((TextView) audiobookInfoActivity.findViewById(2131493285)).setText(audiobookInfoActivity.q.getAnnouncer());
+        TextView textView = (TextView) audiobookInfoActivity.findViewById(2131493293);
+        Resources resources = audiobookInfoActivity.getResources();
+        Object[] arrobject = new Object[]{audiobookInfoActivity.q.getTotalCount()};
+        textView.setText(resources.getString(2131034530, arrobject));
+        audiobookInfoActivity.e = (TextView) audiobookInfoActivity.findViewById(2131493295);
+        audiobookInfoActivity.e.setOnClickListener(audiobookInfoActivity);
+        audiobookInfoActivity.h = (ImageView) audiobookInfoActivity.findViewById(2131493294);
+        audiobookInfoActivity.h.setOnClickListener(audiobookInfoActivity);
+        audiobookInfoActivity.f = (TextView) audiobookInfoActivity.findViewById(2131493291);
+        audiobookInfoActivity.g = (ImageView) audiobookInfoActivity.findViewById(2131493290);
+        TextView textView2 = (TextView) audiobookInfoActivity.findViewById(2131493292);
+        String string = audiobookInfoActivity.q.getIntro();
+        if (string != null && string.length() > 0) {
+            textView2.setText(string);
+            textView2.post(new A(audiobookInfoActivity, textView2));
+        } else {
+            textView2.setText("\u6682\u65e0");
         }
-        AudiobookInfoActivity1.g();
+        audiobookInfoActivity.i = (RelativeLayout) audiobookInfoActivity.findViewById(2131493289);
+        audiobookInfoActivity.i.setOnClickListener(audiobookInfoActivity);
+        audiobookInfoActivity.j = (RelativeLayout) audiobookInfoActivity.findViewById(2131493286);
+        audiobookInfoActivity.j.setOnClickListener(audiobookInfoActivity);
+        audiobookInfoActivity.k = (LinearListView) audiobookInfoActivity.findViewById(2131493296);
+        audiobookInfoActivity.k.setPlayTrackInterface(audiobookInfoActivity);
+        audiobookInfoActivity.k.setItemHeight(a.a((Context) audiobookInfoActivity, 56.0f));
+        AudioRecord audioRecord = AudioRecord.find(String.valueOf(audiobookInfoActivity.q.getId()));
+        if (audioRecord == null) {
+            audiobookInfoActivity.o = false;
+        } else {
+            audiobookInfoActivity.o = true;
+            audiobookInfoActivity.x = audioRecord.getTrack();
+        }
+        audiobookInfoActivity.g();
     }
 
-    static boolean e(AudiobookInfoActivity AudiobookInfoActivity1, boolean boolean2) {
-        AudiobookInfoActivity1.m = boolean2;
-        return boolean2;
+    static /* synthetic */ boolean e(AudiobookInfoActivity audiobookInfoActivity, boolean bl) {
+        audiobookInfoActivity.m = bl;
+        return bl;
     }
 
-    static boolean f(AudiobookInfoActivity AudiobookInfoActivity1) {
-        return AudiobookInfoActivity1.m;
+    static /* synthetic */ boolean f(AudiobookInfoActivity audiobookInfoActivity) {
+        return audiobookInfoActivity.m;
     }
 
-    static boolean f(AudiobookInfoActivity AudiobookInfoActivity1, boolean boolean2) {
-        AudiobookInfoActivity1.y = true;
+    static /* synthetic */ boolean f(AudiobookInfoActivity audiobookInfoActivity, boolean bl) {
+        audiobookInfoActivity.y = true;
         return true;
     }
 
-    static int g(AudiobookInfoActivity AudiobookInfoActivity1) {
-        return AudiobookInfoActivity1.w;
+    static /* synthetic */ int g(AudiobookInfoActivity audiobookInfoActivity) {
+        return audiobookInfoActivity.w;
     }
 
-    static LinearListView h(AudiobookInfoActivity AudiobookInfoActivity1) {
-        return AudiobookInfoActivity1.k;
+    static /* synthetic */ LinearListView h(AudiobookInfoActivity audiobookInfoActivity) {
+        return audiobookInfoActivity.k;
     }
 
-    static int i(AudiobookInfoActivity AudiobookInfoActivity1) {
-        return AudiobookInfoActivity1.u;
+    static /* synthetic */ int i(AudiobookInfoActivity audiobookInfoActivity) {
+        return audiobookInfoActivity.u;
     }
 
-    static int j(AudiobookInfoActivity AudiobookInfoActivity1) {
-        return AudiobookInfoActivity1.v;
+    static /* synthetic */ int j(AudiobookInfoActivity audiobookInfoActivity) {
+        return audiobookInfoActivity.v;
     }
 
-    static boolean k(AudiobookInfoActivity AudiobookInfoActivity1) {
-        return AudiobookInfoActivity1.o;
+    static /* synthetic */ boolean k(AudiobookInfoActivity audiobookInfoActivity) {
+        return audiobookInfoActivity.o;
     }
 
-    static boolean l(AudiobookInfoActivity AudiobookInfoActivity1) {
-        return AudiobookInfoActivity1.n;
+    static /* synthetic */ boolean l(AudiobookInfoActivity audiobookInfoActivity) {
+        return audiobookInfoActivity.n;
     }
 
-    static int m(AudiobookInfoActivity AudiobookInfoActivity1) {
-        return AudiobookInfoActivity1.x;
+    static /* synthetic */ int m(AudiobookInfoActivity audiobookInfoActivity) {
+        return audiobookInfoActivity.x;
     }
 
-    static int n(AudiobookInfoActivity AudiobookInfoActivity1) {
-        int int2 = AudiobookInfoActivity1.w;
-
-        AudiobookInfoActivity1.w = int2 + 1;
-        return int2;
+    static /* synthetic */ int n(AudiobookInfoActivity audiobookInfoActivity) {
+        int n = audiobookInfoActivity.w;
+        audiobookInfoActivity.w = n + 1;
+        return n;
     }
 
-    static TextView o(AudiobookInfoActivity AudiobookInfoActivity1) {
-        return AudiobookInfoActivity1.e;
+    static /* synthetic */ TextView o(AudiobookInfoActivity audiobookInfoActivity) {
+        return audiobookInfoActivity.e;
     }
 
-    static boolean p(AudiobookInfoActivity AudiobookInfoActivity1) {
-        return AudiobookInfoActivity1.p;
+    static /* synthetic */ boolean p(AudiobookInfoActivity audiobookInfoActivity) {
+        return audiobookInfoActivity.p;
     }
 
-    static boolean q(AudiobookInfoActivity AudiobookInfoActivity1) {
-        return AudiobookInfoActivity1.y;
+    static /* synthetic */ boolean q(AudiobookInfoActivity audiobookInfoActivity) {
+        return audiobookInfoActivity.y;
     }
 
-    static void r(AudiobookInfoActivity AudiobookInfoActivity1) {
-        AudiobookInfoActivity1.h();
+    static /* synthetic */ void r(AudiobookInfoActivity audiobookInfoActivity) {
+        audiobookInfoActivity.h();
     }
 
-    private void a(int int1) {
-        int int2;
-
-        t = int1 / u * u;
-        if (t + u > k.a().size())
-            int2 = k.a().size();
-        else
-            int2 = t + u;
-        r.a(k.a().subList(t, int2), int1 - t);
+    /*
+     * Enabled aggressive block sorting
+     */
+    private void a(int n) {
+        this.t = n / this.u * this.u;
+        int n2 = this.t + this.u > this.k.a().size() ? this.k.a().size() : this.t + this.u;
+        this.r.a(this.k.a().subList(this.t, n2), n - this.t);
     }
 
-    private void a(View View1) {
-        com.koushikdutta.async.http.a a2 = new com.koushikdutta.async.http.a((Context) this, View1);
-
+    private void a(View view) {
+        com.koushikdutta.async.http.a a2 = new com.koushikdutta.async.http.a(this, view);
         a2.b().inflate(2131558402, a2.a());
-        a2.a((android.support.v7.widget.m) new E(this));
+        a2.a(new E(this));
         a2.c();
     }
 
-    private void a(boolean boolean1) {
-        if (boolean1) {
-            i.setBackgroundResource(2130837748);
-            f.setText((CharSequence) getResources().getString(2131034310));
-            f.setTextColor(getResources().getColor(2131427522));
-            g.setImageResource(2130837919);
-        } else {
-            i.setBackgroundResource(am.b((Context) this, 2130771971));
-            f.setText((CharSequence) getResources().getString(2131034313));
-            f.setTextColor(-1);
-            g.setImageResource(2130837588);
+    private void a(boolean bl) {
+        if (bl) {
+            this.i.setBackgroundResource(2130837748);
+            this.f.setText(this.getResources().getString(2131034310));
+            this.f.setTextColor(this.getResources().getColor(2131427522));
+            this.g.setImageResource(2130837919);
+            return;
         }
+        this.i.setBackgroundResource(am.b((Context) this, (int) 2130771971));
+        this.f.setText(this.getResources().getString(2131034313));
+        this.f.setTextColor(-1);
+        this.g.setImageResource(2130837588);
     }
 
     private void b() {
-        long long1 = getIntent().getLongExtra("ALBUM_ID", 0L);
-        Object Object3 = new HashMap();
-
-        ((Map) Object3).put("ids", new StringBuilder().append(long1).toString());
-        CommonRequest.getBatch((Map) Object3, (IDataCallBack) new C(this));
+        long l2 = this.getIntent().getLongExtra("ALBUM_ID", 0);
+        HashMap<String, String> hashMap = new HashMap<String, String>();
+        hashMap.put("ids", "" + l2);
+        CommonRequest.getBatch(hashMap, new C(this));
     }
 
+    /*
+     * Enabled aggressive block sorting
+     */
     private AudioRecord f() {
-        AudioRecord AudioRecord1 = new AudioRecord();
-
-        AudioRecord1.setBookId(String.valueOf(q.getId()));
-        AudioRecord1.setName(q.getTitle());
-        AudioRecord1.setDesc(q.getLastTrackTitle());
-        AudioRecord1.setImgUrl(q.getUrl());
-        if (m)
-            AudioRecord1.setTrack(x);
-        else
-            AudioRecord1.setTrack(1 + (v - x));
-        AudioRecord1.setLastUpdate(q.getUpdateAt());
-        return AudioRecord1;
+        AudioRecord audioRecord = new AudioRecord();
+        audioRecord.setBookId(String.valueOf(this.q.getId()));
+        audioRecord.setName(this.q.getTitle());
+        audioRecord.setDesc(this.q.getLastTrackTitle());
+        audioRecord.setImgUrl(this.q.getUrl());
+        if (this.m) {
+            audioRecord.setTrack(this.x);
+        } else {
+            audioRecord.setTrack(1 + (this.v - this.x));
+        }
+        audioRecord.setLastUpdate(this.q.getUpdateAt());
+        return audioRecord;
     }
 
+    /*
+     * Enabled aggressive block sorting
+     */
     private void g() {
-        int int1 = j.getPaddingLeft();
-        int int2 = j.getPaddingTop();
-        int int3 = j.getPaddingRight();
-        int int4 = j.getPaddingBottom();
-        RelativeLayout RelativeLayout5 = j;
-        int int6;
-        TextView TextView7;
-        ImageView ImageView8;
-        Object Object9;
-        int int10;
-
-        if (o)
-            int6 = 2130837711;
-        else
-            int6 = am.b((Context) this, 2130771971);
-        RelativeLayout5.setBackgroundResource(int6);
-        j.setPadding(int1, int2, int3, int4);
-        TextView7 = (TextView) findViewById(2131493288);
-        ImageView8 = (ImageView) findViewById(2131493287);
-        if (o)
-            Object9 = getString(2131034330);
-        else
-            Object9 = getString(2131034328);
-        TextView7.setText((CharSequence) Object9);
-        if (o)
-            int10 = 2130837714;
-        else
-            int10 = 2130837710;
-        ImageView8.setImageResource(int10);
+        int n = this.j.getPaddingLeft();
+        int n2 = this.j.getPaddingTop();
+        int n3 = this.j.getPaddingRight();
+        int n4 = this.j.getPaddingBottom();
+        RelativeLayout relativeLayout = this.j;
+        int n5 = this.o ? 2130837711 : am.b((Context) this, (int) 2130771971);
+        relativeLayout.setBackgroundResource(n5);
+        this.j.setPadding(n, n2, n3, n4);
+        TextView textView = (TextView) this.findViewById(2131493288);
+        ImageView imageView = (ImageView) this.findViewById(2131493287);
+        String string = this.o ? this.getString(2131034330) : this.getString(2131034328);
+        textView.setText(string);
+        int n6 = this.o ? 2130837714 : 2130837710;
+        imageView.setImageResource(n6);
     }
 
     private void h() {
-        com.clilystudio.netbook.event.F F1 = new com.clilystudio.netbook.event.F((long) q.getId(), i());
-
-        com.clilystudio.netbook.event.i.a().c(F1);
-        AudioRecord.updateTrack(String.valueOf(q.getId()), i());
+        com.clilystudio.netbook.event.F f2 = new com.clilystudio.netbook.event.F(this.q.getId(), this.i());
+        i.a().c(f2);
+        AudioRecord.updateTrack(String.valueOf(this.q.getId()), this.i());
     }
 
     private int i() {
-        if (m)
-            return x;
-        else
-            return 1 + (v - x);
+        if (this.m) {
+            return this.x;
+        }
+        return 1 + (this.v - this.x);
     }
 
-    public final void a(int int1, boolean boolean2) {
-        if (boolean2) {
-            y = false;
-            k.setPlayButtonDefault(x);
-            x = int1;
-            k.a(x, true);
-            a(int1 - 1);
-            h();
-        } else
+    /*
+     * Enabled aggressive block sorting
+     */
+    @Override
+    public final void a(int n, boolean bl) {
+        if (bl) {
+            this.y = false;
+            this.k.setPlayButtonDefault(this.x);
+            this.x = n;
+            this.k.a(this.x, true);
+            this.a(n - 1);
+            this.h();
+        } else {
             as.h();
-        n = boolean2;
-        a(boolean2);
-        p = true;
+        }
+        this.n = bl;
+        this.a(bl);
+        this.p = true;
     }
 
-    public void onClick(View View1) {
-        switch (View1.getId()) {
-            default:
+    /*
+     * Enabled aggressive block sorting
+     */
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            default: {
                 return;
-            case 2131493289:
-                boolean boolean3;
-
-                if (n)
-                    n = false;
-                else {
-                    n = true;
-                    h();
-                    y = false;
-                }
-                a(n);
-                boolean3 = n;
-                if (boolean3)
-                    a(-1 + x);
-                else
-                    as.h();
-                k.a(x, boolean3);
-                p = true;
-                return;
-            case 2131493286:
-                Object Object2 = new com.clilystudio.netbook.event.p();
-
-                if (o) {
-                    o = false;
-                    ((com.clilystudio.netbook.event.p) Object2).a(2);
-                    ((com.clilystudio.netbook.event.p) Object2).a(f());
-                    com.clilystudio.netbook.event.i.a().c(Object2);
+            }
+            case 2131493289: {
+                if (this.n) {
+                    this.n = false;
                 } else {
-                    o = true;
-                    ((com.clilystudio.netbook.event.p) Object2).a(1);
-                    ((com.clilystudio.netbook.event.p) Object2).a(f());
-                    com.clilystudio.netbook.event.i.a().c(Object2);
+                    this.n = true;
+                    this.h();
+                    this.y = false;
                 }
-                g();
+                this.a(this.n);
+                boolean bl = this.n;
+                if (bl) {
+                    this.a(-1 + this.x);
+                } else {
+                    as.h();
+                }
+                this.k.a(this.x, bl);
+                this.p = true;
                 return;
-            case 2131493295:
-                a(View1);
+            }
+            case 2131493286: {
+                p p2 = new p();
+                if (this.o) {
+                    this.o = false;
+                    p2.a(2);
+                    p2.a(this.f());
+                    i.a().c(p2);
+                } else {
+                    this.o = true;
+                    p2.a(1);
+                    p2.a(this.f());
+                    i.a().c(p2);
+                }
+                this.g();
                 return;
+            }
+            case 2131493295: {
+                this.a(view);
+                return;
+            }
             case 2131493294:
-                a(View1);
-                return;
         }
+        this.a(view);
     }
 
-    protected void onCreate(Bundle Bundle1) {
-        super.onCreate(Bundle1);
-        setContentView(2130903081);
-        r = as.a();
-        s = as.b();
+    /*
+     * Enabled aggressive block sorting
+     * Enabled unnecessary exception pruning
+     * Enabled aggressive exception aggregation
+     */
+    @Override
+    protected void onCreate(Bundle bundle) {
+        super.onCreate(bundle);
+        this.setContentView(2130903081);
+        this.r = as.a();
+        this.s = as.b();
         try {
-            s.setDefaultPagesize(u);
-        } catch (XimalayaException XimalayaException2) {
-            XimalayaException2.printStackTrace();
+            this.s.setDefaultPagesize(this.u);
+        } catch (XimalayaException var2_2) {
+            var2_2.printStackTrace();
         }
-        as.a(z);
-        a = findViewById(2131492905);
-        b = findViewById(2131493085);
-        c = findViewById(2131493086);
-        c.setOnClickListener((View$OnClickListener) new z(this));
-        b();
+        as.a(this.z);
+        this.a = this.findViewById(2131492905);
+        this.b = this.findViewById(2131493085);
+        this.c = this.findViewById(2131493086);
+        this.c.setOnClickListener(new z(this));
+        this.b();
     }
 
+    @Override
     protected void onDestroy() {
-        as.b(z);
+        as.b(this.z);
         super.onDestroy();
     }
 }

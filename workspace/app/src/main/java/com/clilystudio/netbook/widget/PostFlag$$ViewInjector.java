@@ -5,14 +5,13 @@ import android.widget.TextView;
 import butterknife.ButterKnife$Finder;
 
 public class PostFlag$$ViewInjector {
-
-    public static void inject(ButterKnife$Finder Finder1, PostFlag PostFlag2, Object Object3) {
-        PostFlag2.mHotFlag = (TextView) Finder1.findRequiredView(Object3, 2131493180, "field 'mHotFlag'");
-        PostFlag2.mDistillateFlag = (TextView) Finder1.findRequiredView(Object3, 2131493423, "field 'mDistillateFlag'");
+    public static void inject(ButterKnife$Finder butterKnife$Finder, PostFlag postFlag, Object object) {
+        postFlag.mHotFlag = (TextView) butterKnife$Finder.findRequiredView(object, 2131493180, "field 'mHotFlag'");
+        postFlag.mDistillateFlag = (TextView) butterKnife$Finder.findRequiredView(object, 2131493423, "field 'mDistillateFlag'");
     }
 
-    public static void reset(PostFlag PostFlag1) {
-        PostFlag1.mHotFlag = null;
-        PostFlag1.mDistillateFlag = null;
+    public static void reset(PostFlag postFlag) {
+        postFlag.mHotFlag = null;
+        postFlag.mDistillateFlag = null;
     }
 }

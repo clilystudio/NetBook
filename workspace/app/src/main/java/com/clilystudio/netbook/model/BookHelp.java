@@ -1,32 +1,32 @@
 package com.clilystudio.netbook.model;
 
-public class BookHelp extends BookHelpSummary {
-
+public class BookHelp
+        extends BookHelpSummary {
     private String content;
     private String shareLink;
     private String type;
 
     public String getContent() {
-        return content;
+        return this.content;
     }
 
-    public void setContent(String String1) {
-        content = String1;
+    public void setContent(String string) {
+        this.content = string;
     }
 
     public String getShareLink() {
-        return shareLink;
+        return this.shareLink;
     }
 
-    public void setShareLink(String String1) {
-        shareLink = String1;
+    public void setShareLink(String string) {
+        this.shareLink = string;
     }
 
     public String getType() {
-        return type;
+        return this.type;
     }
 
-    public void setType(String String1) {
-        type = String1;
+    public void setType(String string) {
+        this.type = string;
     }
 }

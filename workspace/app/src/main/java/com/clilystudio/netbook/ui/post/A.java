@@ -2,15 +2,16 @@ package com.clilystudio.netbook.ui.post;
 
 import com.clilystudio.netbook.ui.aa;
 
-final class A implements aa {
+final class A
+        implements aa {
+    private /* synthetic */ AddReviewActivity a;
 
-    private AddReviewActivity a;
-
-    A(AddReviewActivity AddReviewActivity1) {
-        a = AddReviewActivity1;
+    A(AddReviewActivity addReviewActivity) {
+        this.a = addReviewActivity;
     }
 
+    @Override
     public final void a() {
-        AddReviewActivity.a(a);
+        AddReviewActivity.a(this.a);
     }
 }

@@ -1,14 +1,10 @@
 package com.clilystudio.netbook.ui.ugcbook;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View$OnClickListener;
 import android.view.ViewGroup;
-import android.widget.AdapterView$OnItemClickListener;
 import android.widget.Button;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 
 import com.clilystudio.netbook.db.BookReadRecord;
@@ -20,131 +16,121 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class UGCGuideSelectBookActivity extends BaseActivity {
-
+public class UGCGuideSelectBookActivity
+        extends BaseActivity {
     private ListView a;
     private View b;
     private View c;
     private Button e;
     private Button f;
     private X g;
-    private List h;
-    private List i;
+    private List<BookReadRecord> h;
+    private List<BookReadRecord> i;
     private boolean[] j;
 
-    static UGCNewCollection a(UGCGuideSelectBookActivity UGCGuideSelectBookActivity1) {
-        return e();
+    static /* synthetic */ UGCNewCollection a(UGCGuideSelectBookActivity uGCGuideSelectBookActivity) {
+        return UGCGuideSelectBookActivity.e();
     }
 
-    static void a(UGCGuideSelectBookActivity UGCGuideSelectBookActivity1, int int2) {
-        if (UGCGuideSelectBookActivity1.j[int2]) {
-            if (!UGCGuideSelectBookActivity1.i.contains(UGCGuideSelectBookActivity1.g.getItem(int2)))
-                UGCGuideSelectBookActivity1.i.add((BookReadRecord) UGCGuideSelectBookActivity1.g.getItem(int2));
+    /*
+     * Enabled aggressive block sorting
+     */
+    static /* synthetic */ void a(UGCGuideSelectBookActivity uGCGuideSelectBookActivity, int n) {
+        if (uGCGuideSelectBookActivity.j[n]) {
+            if (!uGCGuideSelectBookActivity.i.contains(uGCGuideSelectBookActivity.g.getItem(n))) {
+                uGCGuideSelectBookActivity.i.add((BookReadRecord) uGCGuideSelectBookActivity.g.getItem(n));
+            }
         } else {
-            Object Object3 = (BookReadRecord) UGCGuideSelectBookActivity1.g.getItem(int2);
-            UGCNewCollection UGCNewCollection5;
-
-            UGCGuideSelectBookActivity1.i.remove(Object3);
-            UGCNewCollection5 = e();
-            if (UGCNewCollection5.getBooks() != null) {
-                Iterator Iterator6 = UGCNewCollection5.getBooks().iterator();
-                Object Object7;
-
-                label_74:
+            BookReadRecord bookReadRecord = (BookReadRecord) uGCGuideSelectBookActivity.g.getItem(n);
+            uGCGuideSelectBookActivity.i.remove(bookReadRecord);
+            UGCNewCollection uGCNewCollection = UGCGuideSelectBookActivity.e();
+            if (uGCNewCollection.getBooks() != null) {
+                BookSummary bookSummary2;
+                block7:
                 {
-                    while (Iterator6.hasNext()) {
-                        Object7 = (BookSummary) Iterator6.next();
-                        if (!((BookSummary) Object7).getId().equals(((BookReadRecord) Object3).getBookId()))
-                            continue;
-                        else
-                            break label_74;
+                    for (BookSummary bookSummary2 : uGCNewCollection.getBooks()) {
+                        if (!bookSummary2.getId().equals(bookReadRecord.getBookId())) continue;
+                        break block7;
                     }
-                    Object7 = null;
+                    bookSummary2 = null;
                 }
-                if (Object7 != null) {
-                    ((BookSummary) Object7).setSelected(false);
-                    UGCNewCollection5.getBooks().remove(Object7);
+                if (bookSummary2 != null) {
+                    bookSummary2.setSelected(false);
+                    uGCNewCollection.getBooks().remove(bookSummary2);
                 }
             }
         }
-        if (UGCGuideSelectBookActivity1.i.size() > 0)
-            UGCGuideSelectBookActivity1.f.setText((CharSequence) new StringBuilder("\u9009\u597D\u4E86(").append(UGCGuideSelectBookActivity1.i.size()).append(")").toString());
-        else
-            UGCGuideSelectBookActivity1.f.setText((CharSequence) "\u9009\u597D\u4E86");
-    }
-
-    static boolean[] a(UGCGuideSelectBookActivity UGCGuideSelectBookActivity1, boolean[] boolean_1darray2) {
-        UGCGuideSelectBookActivity1.j = boolean_1darray2;
-        return boolean_1darray2;
-    }
-
-    static List b(UGCGuideSelectBookActivity UGCGuideSelectBookActivity1) {
-        return UGCGuideSelectBookActivity1.i;
-    }
-
-    static boolean[] c(UGCGuideSelectBookActivity UGCGuideSelectBookActivity1) {
-        return UGCGuideSelectBookActivity1.j;
-    }
-
-    public final void a(int int1) {
-        boolean[] boolean_1darray2 = j;
-        byte byte3;
-
-        if (!j[int1])
-            byte3 = (byte) 1;
-        else
-            byte3 = (byte) 0;
-        boolean_1darray2[int1] = byte3;
-        g.notifyDataSetChanged();
-    }
-
-    public void onCreate(Bundle Bundle1) {
-        super.onCreate(Bundle1);
-        setContentView(2130903137);
-        b("\u4E66\u67B6\u6DFB\u52A0");
-        h = BookReadRecord.getAllNotDeleted();
-        a = (ListView) findViewById(2131493226);
-        e = (Button) findViewById(2131493228);
-        f = (Button) findViewById(2131493229);
-        b = findViewById(2131493100);
-        c = findViewById(2131493227);
-        if (h.size() == 0) {
-            b.setVisibility(0);
-            a.setVisibility(8);
-            c.setVisibility(8);
-        } else {
-            UGCNewCollection UGCNewCollection2;
-            LayoutInflater LayoutInflater3;
-            View View4;
-
-            i = (List) new ArrayList();
-            j = new boolean[h.size()];
-            UGCNewCollection2 = e();
-            if (UGCNewCollection2 != null && UGCNewCollection2.getBooks() != null) {
-                List List5 = UGCNewCollection2.getBooks();
-                Object Object6 = new ArrayList();
-                Iterator Iterator7 = List5.iterator();
-                int int8;
-
-                while (Iterator7.hasNext())
-                    ((List) Object6).add(((BookSummary) Iterator7.next()).getId());
-                for (int8 = 0; int8 < h.size(); ++int8) {
-                    Object Object9 = (BookReadRecord) h.get(int8);
-
-                    if (((List) Object6).contains(((BookReadRecord) Object9).getBookId())) {
-                        i.add(Object9);
-                        j[int8] = true;
-                    }
-                }
-            }
-            LayoutInflater3 = LayoutInflater.from((Context) this);
-            g = new X(this, LayoutInflater3, h);
-            a.setAdapter((ListAdapter) g);
-            a.setOnItemClickListener((AdapterView$OnItemClickListener) new U(this));
-            View4 = LayoutInflater3.inflate(2130903256, (ViewGroup) a, false);
-            a.addFooterView(View4);
-            e.setOnClickListener((View$OnClickListener) new V(this));
-            f.setOnClickListener((View$OnClickListener) new W(this));
+        if (uGCGuideSelectBookActivity.i.size() > 0) {
+            uGCGuideSelectBookActivity.f.setText("\u9009\u597d\u4e86(" + uGCGuideSelectBookActivity.i.size() + ")");
+            return;
         }
+        uGCGuideSelectBookActivity.f.setText("\u9009\u597d\u4e86");
+    }
+
+    static /* synthetic */ boolean[] a(UGCGuideSelectBookActivity uGCGuideSelectBookActivity, boolean[] arrbl) {
+        uGCGuideSelectBookActivity.j = arrbl;
+        return arrbl;
+    }
+
+    static /* synthetic */ List b(UGCGuideSelectBookActivity uGCGuideSelectBookActivity) {
+        return uGCGuideSelectBookActivity.i;
+    }
+
+    static /* synthetic */ boolean[] c(UGCGuideSelectBookActivity uGCGuideSelectBookActivity) {
+        return uGCGuideSelectBookActivity.j;
+    }
+
+    /*
+     * Enabled aggressive block sorting
+     */
+    public final void a(int n) {
+        boolean[] arrbl = this.j;
+        boolean bl = !this.j[n];
+        arrbl[n] = bl;
+        this.g.notifyDataSetChanged();
+    }
+
+    @Override
+    public void onCreate(Bundle bundle) {
+        super.onCreate(bundle);
+        this.setContentView(2130903137);
+        this.b("\u4e66\u67b6\u6dfb\u52a0");
+        this.h = BookReadRecord.getAllNotDeleted();
+        this.a = (ListView) this.findViewById(2131493226);
+        this.e = (Button) this.findViewById(2131493228);
+        this.f = (Button) this.findViewById(2131493229);
+        this.b = this.findViewById(2131493100);
+        this.c = this.findViewById(2131493227);
+        if (this.h.size() == 0) {
+            this.b.setVisibility(0);
+            this.a.setVisibility(8);
+            this.c.setVisibility(8);
+            return;
+        }
+        this.i = new ArrayList<BookReadRecord>();
+        this.j = new boolean[this.h.size()];
+        UGCNewCollection uGCNewCollection = UGCGuideSelectBookActivity.e();
+        if (uGCNewCollection != null && uGCNewCollection.getBooks() != null) {
+            List<BookSummary> list = uGCNewCollection.getBooks();
+            ArrayList<String> arrayList = new ArrayList<String>();
+            Iterator<BookSummary> iterator = list.iterator();
+            while (iterator.hasNext()) {
+                arrayList.add(iterator.next().getId());
+            }
+            for (int i = 0; i < this.h.size(); ++i) {
+                BookReadRecord bookReadRecord = this.h.get(i);
+                if (!arrayList.contains(bookReadRecord.getBookId())) continue;
+                this.i.add(bookReadRecord);
+                this.j[i] = true;
+            }
+        }
+        LayoutInflater layoutInflater = LayoutInflater.from(this);
+        this.g = new X(this, layoutInflater, this.h);
+        this.a.setAdapter(this.g);
+        this.a.setOnItemClickListener(new U(this));
+        View view = layoutInflater.inflate(2130903256, (ViewGroup) this.a, false);
+        this.a.addFooterView(view);
+        this.e.setOnClickListener(new V(this));
+        this.f.setOnClickListener(new W(this));
     }
 }

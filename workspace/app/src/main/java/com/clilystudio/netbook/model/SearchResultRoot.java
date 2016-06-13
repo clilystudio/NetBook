@@ -2,15 +2,15 @@ package com.clilystudio.netbook.model;
 
 import java.util.List;
 
-public class SearchResultRoot extends Root {
+public class SearchResultRoot
+        extends Root {
+    private List<BookSummary> books;
 
-    private List books;
-
-    public List getBooks() {
-        return books;
+    public List<BookSummary> getBooks() {
+        return this.books;
     }
 
-    public void setBooks(List List1) {
-        books = List1;
+    public void setBooks(List<BookSummary> list) {
+        this.books = list;
     }
 }
