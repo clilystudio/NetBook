@@ -13,6 +13,7 @@ import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.model.BookInfo;
 import com.clilystudio.netbook.model.ChapterLink;
 import com.clilystudio.netbook.model.UGCNewCollection;
+import com.clilystudio.netbook.model.User;
 import com.clilystudio.netbook.reader.Reader;
 import com.clilystudio.netbook.util.V;
 
@@ -69,8 +70,19 @@ public class MyApplication extends Application {
     }
 
     public final void a(Account account) {
-        this.a(new MyApplication$3(this, account));
-        this.a(new MyApplication$4(this, account.getUser()));
+        Properties tokenProperties = new Properties();
+        tokenProperties.setProperty("account.token", account.getToken());
+        this.a(tokenProperties);
+        Properties userProperties = new Properties();
+        User user = account.getUser();
+        userProperties.setProperty("user.id", user.getId());
+        userProperties.setProperty("user.name", user.getNickname());
+        userProperties.setProperty("user.avatar", user.getAvatar());
+        userProperties.setProperty("user.lv", String.valueOf(user.getLv()));
+        if (user.getGender() != null) {
+            userProperties.setProperty("user.gender", user.getGender());
+        }
+        this.a(userProperties);
     }
 
     public final void a(BookInfo bookInfo) {
