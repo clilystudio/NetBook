@@ -58,11 +58,11 @@ public class MyApplication extends Application {
     }
 
     private void a(Properties properties) {
-        b.a(this).a(properties);
+        com.clilystudio.netbook.b.a(this).a(properties);
     }
 
     public final String a(String string) {
-        return b.a(this).a().getProperty(string);
+        return com.clilystudio.netbook.b.a(this).a().getProperty(string);
     }
 
     public final void a(int n) {
@@ -94,11 +94,11 @@ public class MyApplication extends Application {
     }
 
     public final void a(String string, String string2) {
-        b.a(this).a(string, string2);
+        com.clilystudio.netbook.b.a(this).a(string, string2);
     }
 
     public final /* varargs */ void a(String... arrstring) {
-        b.a(this).a(arrstring);
+        com.clilystudio.netbook.b.a(this).a(arrstring);
     }
 
     public final boolean a(Serializable var1_1, String var2_2) {
@@ -180,14 +180,14 @@ public class MyApplication extends Application {
 
     public final Map<String, ChapterLink[]> e() {
         if (this.h == null) {
-            this.h = new HashMap<String, ChapterLink[]>();
+            this.h = new HashMap<>();
         }
         return this.h;
     }
 
     public final List<String> f() {
         if (this.g == null) {
-            this.g = new ArrayList<String>();
+            this.g = new ArrayList<>();
         }
         return this.g;
     }
@@ -198,21 +198,21 @@ public class MyApplication extends Application {
 
     public final List<String> h() {
         if (this.i == null) {
-            this.i = new ArrayList<String>();
+            this.i = new ArrayList<>();
         }
         return this.i;
     }
 
     public final List<String> i() {
         if (this.j == null) {
-            this.j = new ArrayList<String>();
+            this.j = new ArrayList<>();
         }
         return this.j;
     }
 
     public final List<Long> j() {
         if (this.k == null) {
-            this.k = new ArrayList<Long>();
+            this.k = new ArrayList<>();
         }
         return this.k;
     }
@@ -230,7 +230,7 @@ public class MyApplication extends Application {
         ActiveAndroid.initialize(this);
         String string = null;
         int n = Process.myPid();
-        for (ActivityManager.RunningAppProcessInfo runningAppProcessInfo : ((ActivityManager) this.getSystemService("activity")).getRunningAppProcesses()) {
+        for (ActivityManager.RunningAppProcessInfo runningAppProcessInfo : ((ActivityManager) this.getSystemService(Context.ACTIVITY_SERVICE)).getRunningAppProcesses()) {
             String string2 = runningAppProcessInfo.pid == n ? runningAppProcessInfo.processName : string;
             string = string2;
         }
@@ -243,7 +243,7 @@ public class MyApplication extends Application {
             boolean bl;
             block9:
             {
-                List<ActivityManager.RunningAppProcessInfo> list = ((ActivityManager) this.getSystemService("activity")).getRunningAppProcesses();
+                List<ActivityManager.RunningAppProcessInfo> list = ((ActivityManager) this.getSystemService(Context.ACTIVITY_SERVICE)).getRunningAppProcesses();
                 String string3 = this.getPackageName();
                 int n2 = Process.myPid();
                 for (ActivityManager.RunningAppProcessInfo runningAppProcessInfo2 : list) {
@@ -264,7 +264,7 @@ public class MyApplication extends Application {
             boolean bl = !new Select().from(BookReadRecord.class).execute().isEmpty();
             if (bl) {
                 Calendar calendar = Calendar.getInstance();
-                calendar.set(1, 2000);
+                calendar.set(Calendar.YEAR, 2000);
                 a.b((Context) this, "PREF_FIRST_LAUNCH_TIME", calendar.getTimeInMillis());
             } else {
                 a.b((Context) this, "PREF_FIRST_LAUNCH_TIME", Calendar.getInstance().getTimeInMillis());
