@@ -37,18 +37,15 @@ final class aX
         return null;
     }
 
-    /*
-     * Exception decompiling
-     */
     @Override
     protected final /* synthetic */ Object doInBackground(Object[] var1_1) {
-        // This method has failed to decompile.  When submitting a bug report, please provide this stack trace, and (if you hold appropriate legal rights) the relevant class file.
-        // java.lang.ArrayIndexOutOfBoundsException
-        throw new IllegalStateException("Decompilation failed");
+        return this.a();
     }
 
     @Override
-    protected final /* synthetic */ void onPostExecute(Object object) {
+    protected
+
+    final /* synthetic */ void onPostExecute(Object object) {
         List list = (List) object;
         super.onPostExecute(list);
         BookTagListActivity.c(this.a).setVisibility(8);

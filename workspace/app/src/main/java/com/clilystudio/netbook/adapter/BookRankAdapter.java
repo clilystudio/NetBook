@@ -3,9 +3,11 @@ package com.clilystudio.netbook.adapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.clilystudio.netbook.model.BookRankRoot;
 import com.clilystudio.netbook.model.BookRankSummary;
+import com.clilystudio.netbook.widget.RankCollapseItem;
 
 import java.util.List;
 
@@ -105,26 +107,47 @@ public final class BookRankAdapter
         return 1;
     }
 
-    /*
-     * Exception decompiling
-     */
-    @Override
-    public final View getView(int var1_1, View var2_2, ViewGroup var3_3) {
-        // This method has failed to decompile.  When submitting a bug report, please provide this stack trace, and (if you hold appropriate legal rights) the relevant class file.
-        // org.benf.cfr.reader.util.CannotPerformDecode: reachable test BLOCK was exited and re-entered.
-        // org.benf.cfr.reader.bytecode.analysis.opgraph.op3rewriters.Misc.getFarthestReachableInRange(Misc.java:143)
-        // org.benf.cfr.reader.bytecode.analysis.opgraph.op3rewriters.SwitchReplacer.examineSwitchContiguity(SwitchReplacer.java:385)
-        // org.benf.cfr.reader.bytecode.analysis.opgraph.op3rewriters.SwitchReplacer.replaceRawSwitches(SwitchReplacer.java:65)
-        // org.benf.cfr.reader.bytecode.CodeAnalyser.getAnalysisInner(CodeAnalyser.java:425)
-        // org.benf.cfr.reader.bytecode.CodeAnalyser.getAnalysisOrWrapFail(CodeAnalyser.java:220)
-        // org.benf.cfr.reader.bytecode.CodeAnalyser.getAnalysis(CodeAnalyser.java:165)
-        // org.benf.cfr.reader.entities.attributes.AttributeCode.analyse(AttributeCode.java:91)
-        // org.benf.cfr.reader.entities.Method.analyse(Method.java:354)
-        // org.benf.cfr.reader.entities.ClassFile.analyseMid(ClassFile.java:751)
-        // org.benf.cfr.reader.entities.ClassFile.analyseTop(ClassFile.java:683)
-        // org.benf.cfr.reader.Main.doClass(Main.java:46)
-        // org.benf.cfr.reader.Main.main(Main.java:183)
-        throw new IllegalStateException("Decompilation failed");
+    public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup) {
+        int i = getItemViewType(paramInt);
+        View localView;
+        if (paramView == null) {
+            switch (i) {
+                case 0:
+                    localView = this.a.inflate(2130903268, paramViewGroup, false);
+                    TextView localTextView = (TextView) localView;
+                    String str = "男生";
+                    if (b(paramInt)) {
+                        str = "女生";
+                    }
+                    localTextView.setText(str);
+                    break;
+                case 1:
+                    localView = this.a.inflate(2130903267, paramViewGroup, false);
+                    localView.setTag(new BookRankAdapter.ViewHolder(localView));
+                case 2:
+                    localView = this.a.inflate(2130903254, paramViewGroup, false);
+                default:
+                    localView = null;
+            }
+        }
+        switch (i) {
+            default:
+                return localView;
+            case 1:
+                BookRankSummary localBookRankSummary = a(paramInt);
+                BookRankAdapter.ViewHolder localViewHolder = (BookRankAdapter.ViewHolder) localView.getTag();
+                localViewHolder.cover.setImageUrl(localBookRankSummary.getFullCover(), 2130837766);
+                localViewHolder.title.setText(localBookRankSummary.getTitle());
+                localView.setOnClickListener(new f(this, localBookRankSummary, paramInt));
+            case 2:
+                RankCollapseItem localRankCollapseItem = (RankCollapseItem) localView;
+                if (b(paramInt)) {
+                    localRankCollapseItem.a(this.c, paramInt, b(paramInt));
+                    return localView;
+                }
+                localRankCollapseItem.a(this.e, paramInt, b(paramInt));
+        }
+        return localView;
     }
 
     @Override

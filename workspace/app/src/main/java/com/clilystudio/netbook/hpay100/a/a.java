@@ -218,25 +218,26 @@ public class a {
         a.b(context, "start_night_theme", 0);
     }
 
-    /*
-     * Exception decompiling
-     */
-    public static byte[] C(String var0) {
-        // This method has failed to decompile.  When submitting a bug report, please provide this stack trace, and (if you hold appropriate legal rights) the relevant class file.
-        // org.benf.cfr.reader.util.ConfusedCFRException: Tried to end blocks [1[TRYBLOCK]], but top level block is 5[CATCHBLOCK]
-        // org.benf.cfr.reader.bytecode.analysis.opgraph.Op04StructuredStatement.processEndingBlocks(Op04StructuredStatement.java:394)
-        // org.benf.cfr.reader.bytecode.analysis.opgraph.Op04StructuredStatement.buildNestedBlocks(Op04StructuredStatement.java:446)
-        // org.benf.cfr.reader.bytecode.analysis.opgraph.Op03SimpleStatement.createInitialStructuredBlock(Op03SimpleStatement.java:2869)
-        // org.benf.cfr.reader.bytecode.CodeAnalyser.getAnalysisInner(CodeAnalyser.java:817)
-        // org.benf.cfr.reader.bytecode.CodeAnalyser.getAnalysisOrWrapFail(CodeAnalyser.java:220)
-        // org.benf.cfr.reader.bytecode.CodeAnalyser.getAnalysis(CodeAnalyser.java:165)
-        // org.benf.cfr.reader.entities.attributes.AttributeCode.analyse(AttributeCode.java:91)
-        // org.benf.cfr.reader.entities.Method.analyse(Method.java:354)
-        // org.benf.cfr.reader.entities.ClassFile.analyseMid(ClassFile.java:751)
-        // org.benf.cfr.reader.entities.ClassFile.analyseTop(ClassFile.java:683)
-        // org.benf.cfr.reader.Main.doClass(Main.java:46)
-        // org.benf.cfr.reader.Main.main(Main.java:183)
-        throw new IllegalStateException("Decompilation failed");
+    public static byte[] C(String p0) {
+        MessageDigest v0 = null;
+        try {
+            v0 = MessageDigest.getInstance("MD5");
+            byte[] v1 = p0.getBytes("UTF-8");
+            v1 = v0.digest(v1);
+
+            StringBuilder v2 = new StringBuilder(v1.length * 2);
+            for (int v01 = 0; v01 < v1.length; v01++) {
+                byte v4 = v1[v01];
+                if ((v4 & 0xff) < 0x10) {
+                    v2.append("0");
+                }
+                v2.append(Integer.toHexString(v4 & 0xff));
+            }
+            return v2.toString().getBytes();
+        } catch (NoSuchAlgorithmException | UnsupportedEncodingException e1) {
+            e1.printStackTrace();
+            return p0.getBytes();
+        }
     }
 
     public static ArrayList<String> D(String string) {
@@ -1224,25 +1225,43 @@ public class a {
         }
     }
 
-    /*
-     * Exception decompiling
-     */
-    public static ChapterRoot a(String var0, ChapterLink[] var1_1, int var2_2) {
-        // This method has failed to decompile.  When submitting a bug report, please provide this stack trace, and (if you hold appropriate legal rights) the relevant class file.
-        // org.benf.cfr.reader.util.ConfusedCFRException: Tried to end blocks [13[CATCHBLOCK], 11[CATCHBLOCK]], but top level block is 23[UNCONDITIONALDOLOOP]
-        // org.benf.cfr.reader.bytecode.analysis.opgraph.Op04StructuredStatement.processEndingBlocks(Op04StructuredStatement.java:394)
-        // org.benf.cfr.reader.bytecode.analysis.opgraph.Op04StructuredStatement.buildNestedBlocks(Op04StructuredStatement.java:446)
-        // org.benf.cfr.reader.bytecode.analysis.opgraph.Op03SimpleStatement.createInitialStructuredBlock(Op03SimpleStatement.java:2869)
-        // org.benf.cfr.reader.bytecode.CodeAnalyser.getAnalysisInner(CodeAnalyser.java:817)
-        // org.benf.cfr.reader.bytecode.CodeAnalyser.getAnalysisOrWrapFail(CodeAnalyser.java:220)
-        // org.benf.cfr.reader.bytecode.CodeAnalyser.getAnalysis(CodeAnalyser.java:165)
-        // org.benf.cfr.reader.entities.attributes.AttributeCode.analyse(AttributeCode.java:91)
-        // org.benf.cfr.reader.entities.Method.analyse(Method.java:354)
-        // org.benf.cfr.reader.entities.ClassFile.analyseMid(ClassFile.java:751)
-        // org.benf.cfr.reader.entities.ClassFile.analyseTop(ClassFile.java:683)
-        // org.benf.cfr.reader.Main.doClass(Main.java:46)
-        // org.benf.cfr.reader.Main.main(Main.java:183)
-        throw new IllegalStateException("Decompilation failed");
+    public static ChapterRoot a(String p0, ChapterLink[] p1, int p2) {
+        BufferedReader v2 = null;
+        try {
+            ChapterLink v5 = p1[p2];
+            ChapterRoot v0 = new ChapterRoot();
+            Chapter v6 = new Chapter();
+            v2 = G(p0);
+            int v4 = v5.getTxtLineOffset();
+            for (int v3 = 0; v3 < v4; v3++) {
+                v2.readLine();
+            }
+            int v3 = -1;
+            if (p2 < p1.length - 1) {
+                v3 = p1[p2 + 1].getTxtLineOffset() - v5.getTxtLineOffset();
+            }
+            String v41 = "";
+            String v51 = v2.readLine();
+            while (v51 != null && v3 != 0) {
+                v41 = new StringBuilder().append(v41).append("\n").append(v5).toString();
+                v3--;
+                v51 = v2.readLine();
+            }
+            v6.setBody(z(v41));
+            v0.setChapter(v6);
+            return v0;
+        } catch (IOException e1) {
+            e1.printStackTrace();
+            return null;
+        } finally {
+            if (v2 != null) {
+                try {
+                    v2.close();
+                } catch (IOException e1) {
+                    e1.printStackTrace();
+                }
+            }
+        }
     }
 
     /*
@@ -1282,24 +1301,10 @@ public class a {
         throw new IllegalArgumentException("TODO");
     }
 
-    /*
-     * Exception decompiling
-     */
     public static Object a(int var0, String var1_1) {
-        // This method has failed to decompile.  When submitting a bug report, please provide this stack trace, and (if you hold appropriate legal rights) the relevant class file.
-        // org.benf.cfr.reader.util.ConfusedCFRException: Extractable last case doesn't follow previous
-        // org.benf.cfr.reader.bytecode.analysis.opgraph.op3rewriters.SwitchReplacer.examineSwitchContiguity(SwitchReplacer.java:486)
-        // org.benf.cfr.reader.bytecode.analysis.opgraph.op3rewriters.SwitchReplacer.rebuildSwitches(SwitchReplacer.java:334)
-        // org.benf.cfr.reader.bytecode.CodeAnalyser.getAnalysisInner(CodeAnalyser.java:539)
-        // org.benf.cfr.reader.bytecode.CodeAnalyser.getAnalysisOrWrapFail(CodeAnalyser.java:220)
-        // org.benf.cfr.reader.bytecode.CodeAnalyser.getAnalysis(CodeAnalyser.java:165)
-        // org.benf.cfr.reader.entities.attributes.AttributeCode.analyse(AttributeCode.java:91)
-        // org.benf.cfr.reader.entities.Method.analyse(Method.java:354)
-        // org.benf.cfr.reader.entities.ClassFile.analyseMid(ClassFile.java:751)
-        // org.benf.cfr.reader.entities.ClassFile.analyseTop(ClassFile.java:683)
-        // org.benf.cfr.reader.Main.doClass(Main.java:46)
-        // org.benf.cfr.reader.Main.main(Main.java:183)
-        throw new IllegalStateException("Decompilation failed");
+//        v0 = "MicroMsg.SDK.PluginProvider.Resolver";
+//        v1 = "unknown type";
+        return null;
     }
 
     /*
@@ -2594,25 +2599,25 @@ public class a {
         return false;
     }
 
-    /*
-     * Exception decompiling
-     */
-    public static boolean a(String var0, SQLiteDatabase var1_1) {
-        // This method has failed to decompile.  When submitting a bug report, please provide this stack trace, and (if you hold appropriate legal rights) the relevant class file.
-        // org.benf.cfr.reader.util.ConfusedCFRException: Tried to end blocks [1[TRYBLOCK]], but top level block is 5[CATCHBLOCK]
-        // org.benf.cfr.reader.bytecode.analysis.opgraph.Op04StructuredStatement.processEndingBlocks(Op04StructuredStatement.java:394)
-        // org.benf.cfr.reader.bytecode.analysis.opgraph.Op04StructuredStatement.buildNestedBlocks(Op04StructuredStatement.java:446)
-        // org.benf.cfr.reader.bytecode.analysis.opgraph.Op03SimpleStatement.createInitialStructuredBlock(Op03SimpleStatement.java:2869)
-        // org.benf.cfr.reader.bytecode.CodeAnalyser.getAnalysisInner(CodeAnalyser.java:817)
-        // org.benf.cfr.reader.bytecode.CodeAnalyser.getAnalysisOrWrapFail(CodeAnalyser.java:220)
-        // org.benf.cfr.reader.bytecode.CodeAnalyser.getAnalysis(CodeAnalyser.java:165)
-        // org.benf.cfr.reader.entities.attributes.AttributeCode.analyse(AttributeCode.java:91)
-        // org.benf.cfr.reader.entities.Method.analyse(Method.java:354)
-        // org.benf.cfr.reader.entities.ClassFile.analyseMid(ClassFile.java:751)
-        // org.benf.cfr.reader.entities.ClassFile.analyseTop(ClassFile.java:683)
-        // org.benf.cfr.reader.Main.doClass(Main.java:46)
-        // org.benf.cfr.reader.Main.main(Main.java:183)
-        throw new IllegalStateException("Decompilation failed");
+    public static boolean a(String p0, SQLiteDatabase p1) {
+        if (TextUtils.isEmpty(p0) || !p0.matches("[0-9a-zA-Z]+_[0-9a-zA-Z]+")) {
+            return false;
+        }
+        Cursor v1 = p1.query("table_schema", null, null, null, null, null, null);
+        if (!v1.moveToFirst()) {
+            v1.close();
+            return false;
+        }
+        do {
+            if (p0.equalsIgnoreCase(v1.getString(v1.getColumnIndexOrThrow("name"))) && v1.getInt(v1.getColumnIndexOrThrow("type")) == 1) {
+                v1.close();
+                return true;
+            }
+        } while (v1.moveToNext());
+        if (v1 != null) {
+            v1.close();
+        }
+        return true;
     }
 
     public static boolean a(String string2, String string3, SQLiteDatabase sQLiteDatabase) {

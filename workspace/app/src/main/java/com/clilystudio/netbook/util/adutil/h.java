@@ -11,24 +11,44 @@ final class h
         this.a = string;
     }
 
-    /*
-     * Exception decompiling
-     */
     @Override
-    public final Object invoke(Object var1_1, Method var2_2, Object[] var3_3) {
-        // This method has failed to decompile.  When submitting a bug report, please provide this stack trace, and (if you hold appropriate legal rights) the relevant class file.
-        // org.benf.cfr.reader.util.ConfusedCFRException: Extractable last case doesn't follow previous
-        // org.benf.cfr.reader.bytecode.analysis.opgraph.op3rewriters.SwitchReplacer.examineSwitchContiguity(SwitchReplacer.java:486)
-        // org.benf.cfr.reader.bytecode.analysis.opgraph.op3rewriters.SwitchReplacer.replaceRawSwitches(SwitchReplacer.java:65)
-        // org.benf.cfr.reader.bytecode.CodeAnalyser.getAnalysisInner(CodeAnalyser.java:425)
-        // org.benf.cfr.reader.bytecode.CodeAnalyser.getAnalysisOrWrapFail(CodeAnalyser.java:220)
-        // org.benf.cfr.reader.bytecode.CodeAnalyser.getAnalysis(CodeAnalyser.java:165)
-        // org.benf.cfr.reader.entities.attributes.AttributeCode.analyse(AttributeCode.java:91)
-        // org.benf.cfr.reader.entities.Method.analyse(Method.java:354)
-        // org.benf.cfr.reader.entities.ClassFile.analyseMid(ClassFile.java:751)
-        // org.benf.cfr.reader.entities.ClassFile.analyseTop(ClassFile.java:683)
-        // org.benf.cfr.reader.Main.doClass(Main.java:46)
-        // org.benf.cfr.reader.Main.main(Main.java:183)
-        throw new IllegalStateException("Decompilation failed");
+    public final Object invoke(Object paramObject, Method paramMethod, Object[] paramArrayOfObject) {
+        String str = paramMethod.getName();
+        int i = -1;
+        switch (str.hashCode()) {
+            default:
+                switch (i) {
+                    default:
+                    case 0:
+                }
+            case -2145385252:
+            case -2145577196:
+        }
+        while (true) {
+            return null;
+            if (!str.equals("onNativeLoad"))
+                break;
+            i = 0;
+            break;
+            if (!str.equals("onNativeFail"))
+                break;
+            i = 1;
+            break;
+            BaiduShelfAdContainer.a(Class.forName("com.baidu.mobad.feeds.NativeResponse"));
+            Iterator localIterator = ((List) paramArrayOfObject[0]).iterator();
+            while (localIterator.hasNext()) {
+                Object localObject = localIterator.next();
+                BaiduShelfAdContainer.BaiduAdvert localBaiduAdvert = new BaiduShelfAdContainer.BaiduAdvert();
+                AdvertData localAdvertData = new AdvertData();
+                localAdvertData.setTitle((String) k.a(BaiduShelfAdContainer.a(), "getTitle", null, localObject, new Object[0]));
+                localAdvertData.setApkSize(((Long) k.a(BaiduShelfAdContainer.a(), "getAppSize", null, localObject, new Object[0])).intValue());
+                localAdvertData.setApk(((Boolean) k.a(BaiduShelfAdContainer.a(), "isDownloadApp", null, localObject, new Object[0])).booleanValue());
+                localAdvertData.setImg((String) k.a(BaiduShelfAdContainer.a(), "getIconUrl", null, localObject, new Object[0]));
+                localAdvertData.setDesc((String) k.a(BaiduShelfAdContainer.a(), "getDesc", null, localObject, new Object[0]));
+                localBaiduAdvert.setResponse(localObject);
+                localBaiduAdvert.setData(localAdvertData);
+                i.a().c(new B(localBaiduAdvert, this.a));
+            }
+        }
     }
 }

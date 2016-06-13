@@ -1,10 +1,10 @@
 package com.clilystudio.netbook;
 
 import android.app.ActivityManager;
+import android.app.Application;
 import android.content.Context;
 import android.os.Process;
 import android.support.design.widget.am;
-import android.support.multidex.MultiDexApplication;
 
 import com.activeandroid.ActiveAndroid;
 import com.activeandroid.query.Select;
@@ -15,11 +15,13 @@ import com.clilystudio.netbook.model.ChapterLink;
 import com.clilystudio.netbook.model.UGCNewCollection;
 import com.clilystudio.netbook.reader.Reader;
 import com.clilystudio.netbook.util.V;
-import com.iflytek.cloud.SpeechUtility;
-import com.nostra13.universalimageloader.core.g;
-import com.nostra13.universalimageloader.core.i;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -28,7 +30,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 
-public class MyApplication extends MultiDexApplication {
+public class MyApplication extends Application {
     private static MyApplication b = null;
     public UGCNewCollection a;
     private Reader c;
@@ -48,11 +50,9 @@ public class MyApplication extends MultiDexApplication {
     static /* synthetic */ void a(MyApplication myApplication) {
         File file = new File(myApplication.getCacheDir(), "http2");
         try {
-            com.integralblue.httpresponsecache.a.a(file, 209715200);
-            return;
+            com.integralblue.httpresponsecache.HttpResponseCache.install(file, 209715200);
         } catch (Exception var2_2) {
             var2_2.printStackTrace();
-            return;
         }
     }
 
@@ -89,50 +89,69 @@ public class MyApplication extends MultiDexApplication {
         b.a(this).a(arrstring);
     }
 
-    /*
-     * Exception decompiling
-     */
     public final boolean a(Serializable var1_1, String var2_2) {
-        // This method has failed to decompile.  When submitting a bug report, please provide this stack trace, and (if you hold appropriate legal rights) the relevant class file.
-        // org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
-        // org.benf.cfr.reader.bytecode.analysis.opgraph.Op04StructuredStatement.getStartingBlocks(Op04StructuredStatement.java:371)
-        // org.benf.cfr.reader.bytecode.analysis.opgraph.Op04StructuredStatement.buildNestedBlocks(Op04StructuredStatement.java:449)
-        // org.benf.cfr.reader.bytecode.analysis.opgraph.Op03SimpleStatement.createInitialStructuredBlock(Op03SimpleStatement.java:2869)
-        // org.benf.cfr.reader.bytecode.CodeAnalyser.getAnalysisInner(CodeAnalyser.java:817)
-        // org.benf.cfr.reader.bytecode.CodeAnalyser.getAnalysisOrWrapFail(CodeAnalyser.java:220)
-        // org.benf.cfr.reader.bytecode.CodeAnalyser.getAnalysis(CodeAnalyser.java:165)
-        // org.benf.cfr.reader.entities.attributes.AttributeCode.analyse(AttributeCode.java:91)
-        // org.benf.cfr.reader.entities.Method.analyse(Method.java:354)
-        // org.benf.cfr.reader.entities.ClassFile.analyseMid(ClassFile.java:751)
-        // org.benf.cfr.reader.entities.ClassFile.analyseTop(ClassFile.java:683)
-        // org.benf.cfr.reader.Main.doClass(Main.java:46)
-        // org.benf.cfr.reader.Main.main(Main.java:183)
-        throw new IllegalStateException("Decompilation failed");
+        FileOutputStream fos = null;
+        ObjectOutputStream oos = null;
+        try {
+            fos = openFileOutput(var2_2, Context.MODE_PRIVATE);
+            oos = new ObjectOutputStream(fos);
+            oos.writeObject(var1_1);
+            oos.flush();
+            return true;
+        } catch (IOException e1) {
+            e1.printStackTrace();
+        } finally {
+            if (oos != null) {
+                try {
+                    oos.close();
+                } catch (IOException e1) {
+                    e1.printStackTrace();
+                }
+            }
+            if (fos != null) {
+                try {
+                    fos.close();
+                } catch (IOException e1) {
+                    e1.printStackTrace();
+                }
+            }
+        }
+        return false;
     }
 
     public final Reader b() {
         return this.c;
     }
 
-    /*
-     * Exception decompiling
-     */
     public final Serializable b(String var1_1) {
-        // This method has failed to decompile.  When submitting a bug report, please provide this stack trace, and (if you hold appropriate legal rights) the relevant class file.
-        // org.benf.cfr.reader.util.ConfusedCFRException: Started 3 blocks at once
-        // org.benf.cfr.reader.bytecode.analysis.opgraph.Op04StructuredStatement.getStartingBlocks(Op04StructuredStatement.java:371)
-        // org.benf.cfr.reader.bytecode.analysis.opgraph.Op04StructuredStatement.buildNestedBlocks(Op04StructuredStatement.java:449)
-        // org.benf.cfr.reader.bytecode.analysis.opgraph.Op03SimpleStatement.createInitialStructuredBlock(Op03SimpleStatement.java:2869)
-        // org.benf.cfr.reader.bytecode.CodeAnalyser.getAnalysisInner(CodeAnalyser.java:817)
-        // org.benf.cfr.reader.bytecode.CodeAnalyser.getAnalysisOrWrapFail(CodeAnalyser.java:220)
-        // org.benf.cfr.reader.bytecode.CodeAnalyser.getAnalysis(CodeAnalyser.java:165)
-        // org.benf.cfr.reader.entities.attributes.AttributeCode.analyse(AttributeCode.java:91)
-        // org.benf.cfr.reader.entities.Method.analyse(Method.java:354)
-        // org.benf.cfr.reader.entities.ClassFile.analyseMid(ClassFile.java:751)
-        // org.benf.cfr.reader.entities.ClassFile.analyseTop(ClassFile.java:683)
-        // org.benf.cfr.reader.Main.doClass(Main.java:46)
-        // org.benf.cfr.reader.Main.main(Main.java:183)
-        throw new IllegalStateException("Decompilation failed");
+        File file = getFileStreamPath(var1_1);
+        if (file.exists()) {
+            FileInputStream fis = null;
+            ObjectInputStream ois = null;
+            try {
+                fis = openFileInput(var1_1);
+                ois = new ObjectInputStream(fis);
+                return (Serializable) ois.readObject();
+            } catch (ClassNotFoundException | IOException e1) {
+                e1.printStackTrace();
+            } finally {
+                if (fis != null) {
+                    try {
+                        fis.close();
+                    } catch (IOException e1) {
+                        e1.printStackTrace();
+                    }
+                }
+                if (ois != null) {
+                    try {
+                        ois.close();
+                    } catch (IOException e1) {
+                        e1.printStackTrace();
+                    }
+                }
+            }
+        }
+        return null;
     }
 
     public final BookInfo c() {
@@ -243,6 +262,6 @@ public class MyApplication extends MultiDexApplication {
             v.a(Calendar.getInstance().getTimeInMillis());
         }
         am.s((Context) this);
-        SpeechUtility.createUtility(this, "appid=56655269");
+//        SpeechUtility.createUtility(this, "appid=56655269");
     }
 }

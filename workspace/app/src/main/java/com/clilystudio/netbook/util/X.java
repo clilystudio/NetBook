@@ -34,34 +34,24 @@ public final class X
         return stringBuffer.toString();
     }
 
-    /*
-     * Exception decompiling
-     */
     private /* varargs */ SyncUploadResult b() {
-        // This method has failed to decompile.  When submitting a bug report, please provide this stack trace, and (if you hold appropriate legal rights) the relevant class file.
-        // org.benf.cfr.reader.util.ConfusedCFRException: Extractable last case doesn't follow previous
-        // org.benf.cfr.reader.bytecode.analysis.opgraph.op3rewriters.SwitchReplacer.examineSwitchContiguity(SwitchReplacer.java:486)
-        // org.benf.cfr.reader.bytecode.analysis.opgraph.op3rewriters.SwitchReplacer.replaceRawSwitches(SwitchReplacer.java:65)
-        // org.benf.cfr.reader.bytecode.CodeAnalyser.getAnalysisInner(CodeAnalyser.java:425)
-        // org.benf.cfr.reader.bytecode.CodeAnalyser.getAnalysisOrWrapFail(CodeAnalyser.java:220)
-        // org.benf.cfr.reader.bytecode.CodeAnalyser.getAnalysis(CodeAnalyser.java:165)
-        // org.benf.cfr.reader.entities.attributes.AttributeCode.analyse(AttributeCode.java:91)
-        // org.benf.cfr.reader.entities.Method.analyse(Method.java:354)
-        // org.benf.cfr.reader.entities.ClassFile.analyseMid(ClassFile.java:751)
-        // org.benf.cfr.reader.entities.ClassFile.analyseTop(ClassFile.java:683)
-        // org.benf.cfr.reader.Main.doClass(Main.java:46)
-        // org.benf.cfr.reader.Main.main(Main.java:183)
-        throw new IllegalStateException("Decompilation failed");
+        switch (Y.a[this.e.ordinal()]) {
+            case 1:
+                return this.a.G(this.c, a());
+            case 2:
+                return this.a.I(this.c, a());
+            case 3:
+                return this.a.H(this.c, a());
+            case 4:
+                SyncUploadResult localSyncUploadResult = this.a.J(this.c, a());
+                return localSyncUploadResult;
+        }
+        return null;
     }
 
-    /*
-     * Exception decompiling
-     */
     @Override
     protected final /* synthetic */ Object doInBackground(Object[] var1_1) {
-        // This method has failed to decompile.  When submitting a bug report, please provide this stack trace, and (if you hold appropriate legal rights) the relevant class file.
-        // java.lang.ArrayIndexOutOfBoundsException
-        throw new IllegalStateException("Decompilation failed");
+        return this.a();
     }
 
     @Override
