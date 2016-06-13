@@ -4,7 +4,6 @@ import android.app.ActivityManager;
 import android.app.Application;
 import android.content.Context;
 import android.os.Process;
-import android.support.design.widget.am;
 
 import com.activeandroid.ActiveAndroid;
 import com.activeandroid.query.Select;
@@ -16,6 +15,11 @@ import com.clilystudio.netbook.model.UGCNewCollection;
 import com.clilystudio.netbook.model.User;
 import com.clilystudio.netbook.reader.Reader;
 import com.clilystudio.netbook.util.V;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
+import com.umeng.analytics.MobclickAgent;
+import com.xiaomi.mipush.sdk.MiPushClient;
+import com.xiaomi.mistatistic.sdk.MiStatInterface;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -225,8 +229,8 @@ public class MyApplication extends Application {
         V v;
         super.onCreate();
         b = this;
-        e.a("1".equals(com.umeng.a.b.b(b, "use_http_dns")));
-        a.q(this);
+        com.clilystudio.netbook.api.e.a("1".equals(com.umeng.a.b.b(b, "use_http_dns")));
+        com.clilystudio.netbook.hpay100.a.a.q(this);
         ActiveAndroid.initialize(this);
         String string = null;
         int n = Process.myPid();
@@ -237,9 +241,10 @@ public class MyApplication extends Application {
         if (string.equals("com.clilystudio.netbook")) {
             new com.clilystudio.netbook.e(this).start();
         }
+        MobclickAgent.onResume(this);
         com.umeng.a.b.c(this);
         com.umeng.a.b.a(new f(this));
-        if (a.l(this, "update_notice_key")) {
+        if (com.clilystudio.netbook.hpay100.a.a.l(this, "update_notice_key")) {
             boolean bl;
             block9:
             {
@@ -254,20 +259,20 @@ public class MyApplication extends Application {
                 bl = false;
             }
             if (bl) {
-                d.a(this, "2882303761517133731", "5941713373731");
+                MiPushClient.registerPush(this, "2882303761517133731", "5941713373731");
             }
         }
-        com.xiaomi.mistatistic.sdk.b.a(this, "2882303761517133731", "5941713373731", am.n((Context) this));
-        g g2 = new i(this).a();
-        com.nostra13.universalimageloader.core.f.a().a(g2);
-        if (a.c((Context) this, "PREF_FIRST_LAUNCH_TIME", 0) == 0) {
+        MiStatInterface.initialize(this, "2882303761517133731", "5941713373731", am.n((Context) this));
+        ImageLoaderConfiguration configuration = ImageLoaderConfiguration.createDefault(this);
+        ImageLoader.getInstance().init(configuration);
+        if (com.clilystudio.netbook.hpay100.a.a.c((Context) this, "PREF_FIRST_LAUNCH_TIME", 0) == 0) {
             boolean bl = !new Select().from(BookReadRecord.class).execute().isEmpty();
             if (bl) {
                 Calendar calendar = Calendar.getInstance();
                 calendar.set(Calendar.YEAR, 2000);
-                a.b((Context) this, "PREF_FIRST_LAUNCH_TIME", calendar.getTimeInMillis());
+                com.clilystudio.netbook.hpay100.a.a.b((Context) this, "PREF_FIRST_LAUNCH_TIME", calendar.getTimeInMillis());
             } else {
-                a.b((Context) this, "PREF_FIRST_LAUNCH_TIME", Calendar.getInstance().getTimeInMillis());
+                com.clilystudio.netbook.hpay100.a.a.b((Context) this, "PREF_FIRST_LAUNCH_TIME", Calendar.getInstance().getTimeInMillis());
             }
         }
         if ((v = new V(this)).a() == 0) {
