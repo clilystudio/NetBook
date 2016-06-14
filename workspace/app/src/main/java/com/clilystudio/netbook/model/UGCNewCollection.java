@@ -5,8 +5,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class UGCNewCollection
-        implements Serializable {
+public class UGCNewCollection implements Serializable {
     List<BookSummary> books = new ArrayList<BookSummary>();
     private String desc;
     private String title;

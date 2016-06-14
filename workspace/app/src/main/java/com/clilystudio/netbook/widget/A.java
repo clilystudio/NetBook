@@ -5,8 +5,7 @@ import android.view.View;
 
 import java.io.File;
 
-final class A
-        implements View.OnClickListener {
+final class A implements View.OnClickListener {
     private /* synthetic */ GameDownloadButton a;
 
     private A(GameDownloadButton gameDownloadButton) {

@@ -3,8 +3,7 @@ package com.clilystudio.netbook.ui.post;
 import android.os.AsyncTask;
 import android.support.design.widget.am;
 
-final class aA
-        implements Runnable {
+final class aA implements Runnable {
     private /* synthetic */ az a;
 
     aA(az az2) {

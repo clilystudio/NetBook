@@ -3,8 +3,7 @@ package com.clilystudio.netbook.ui.feed;
 import android.content.Intent;
 import android.view.View;
 
-final class d
-        implements View.OnClickListener {
+final class d implements View.OnClickListener {
     private /* synthetic */ FeedIntroActivity a;
 
     d(FeedIntroActivity feedIntroActivity) {

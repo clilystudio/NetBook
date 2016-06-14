@@ -5,8 +5,7 @@ import android.app.Activity;
 import com.clilystudio.netbook.util.e;
 import com.iflytek.cloud.InitListener;
 
-final class al
-        implements InitListener {
+final class al implements InitListener {
     private /* synthetic */ ReaderActivity a;
 
     al(ReaderActivity readerActivity) {

@@ -5,8 +5,7 @@ import android.widget.ListView;
 
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 
-final class ba
-        implements k<ListView> {
+final class ba implements k<ListView> {
     final /* synthetic */ CommonPostListActivity a;
 
     ba(CommonPostListActivity commonPostListActivity) {

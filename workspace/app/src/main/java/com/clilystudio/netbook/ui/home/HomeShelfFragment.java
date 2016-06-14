@@ -70,8 +70,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
-public class HomeShelfFragment extends HomeFragment
-        implements AbsListView.OnScrollListener {
+public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScrollListener {
     private static final String a = HomeShelfFragment.class.getSimpleName();
     private boolean A = false;
     private long B = 0;

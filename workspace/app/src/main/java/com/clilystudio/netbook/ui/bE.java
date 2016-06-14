@@ -7,8 +7,7 @@ import android.widget.AdapterView;
 import com.clilystudio.netbook.model.BookSummary;
 import com.clilystudio.netbook.widget.j;
 
-final class bE
-        implements AdapterView.OnItemClickListener {
+final class bE implements AdapterView.OnItemClickListener {
     private /* synthetic */ SearchActivity a;
 
     bE(SearchActivity searchActivity) {

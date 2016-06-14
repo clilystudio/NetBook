@@ -4,8 +4,7 @@ import android.content.Context;
 
 import com.clilystudio.netbook.reader.cn;
 
-final class w
-        implements cn {
+final class w implements cn {
     private /* synthetic */ ReaderTxtActivity a;
 
     w(ReaderTxtActivity readerTxtActivity) {

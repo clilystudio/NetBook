@@ -10,8 +10,7 @@ import java.util.Calendar;
 import java.util.HashSet;
 import java.util.Set;
 
-final class a
-        implements Runnable {
+final class a implements Runnable {
     private /* synthetic */ HomeActivity a;
 
     a(HomeActivity homeActivity) {

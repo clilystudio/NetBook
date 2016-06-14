@@ -4,8 +4,7 @@ import com.clilystudio.netbook.api.ApiService;
 
 import java.io.Serializable;
 
-public class User
-        implements Serializable {
+public class User implements Serializable {
     private static final String FEMALE = "female";
     private static final String MALE = "male";
     private static final String UNKNOWN = "null";

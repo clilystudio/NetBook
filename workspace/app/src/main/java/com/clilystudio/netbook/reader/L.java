@@ -1,7 +1,6 @@
 package com.clilystudio.netbook.reader;
 
-final class L
-        implements e<ReaderChapter> {
+final class L implements e<ReaderChapter> {
     private /* synthetic */ e a;
     private /* synthetic */ int b;
     private /* synthetic */ int c;

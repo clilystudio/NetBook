@@ -4,8 +4,7 @@ import com.ximalaya.ting.android.opensdk.datatrasfer.IDataCallBack;
 import com.ximalaya.ting.android.opensdk.datatrasfer.XimalayaResponse;
 import com.ximalaya.ting.android.opensdk.model.tag.TagList;
 
-final class u
-        implements IDataCallBack<TagList> {
+final class u implements IDataCallBack<TagList> {
     private /* synthetic */ AudiobookCategoryActivity a;
 
     u(AudiobookCategoryActivity audiobookCategoryActivity) {

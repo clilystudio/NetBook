@@ -4,8 +4,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 
-final class ah
-        implements Handler.Callback {
+final class ah implements Handler.Callback {
     ah() {
     }
 

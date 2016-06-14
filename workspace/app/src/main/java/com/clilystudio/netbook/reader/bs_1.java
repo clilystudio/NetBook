@@ -9,8 +9,7 @@ import com.clilystudio.netbook.exception.UnImplementException;
 import com.clilystudio.netbook.ui.post.BookPostTabActivity;
 import com.clilystudio.netbook.util.InsideLinkIntent;
 
-final class bs
-        implements View.OnClickListener {
+final class bs implements View.OnClickListener {
     private /* synthetic */ ReaderMenuFragment a;
 
     bs(ReaderMenuFragment readerMenuFragment) {

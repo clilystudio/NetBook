@@ -4,8 +4,7 @@ import android.os.AsyncTask;
 
 import com.clilystudio.netbook.widget.av;
 
-final class cz
-        implements av {
+final class cz implements av {
     private /* synthetic */ ReviewActivity a;
 
     cz(ReviewActivity reviewActivity) {

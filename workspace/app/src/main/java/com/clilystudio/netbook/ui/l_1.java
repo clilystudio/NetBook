@@ -1,7 +1,6 @@
 package com.clilystudio.netbook.ui;
 
-final class l
-        implements Runnable {
+final class l implements Runnable {
     private /* synthetic */ AudioBookPlayActivity a;
 
     l(AudioBookPlayActivity audioBookPlayActivity) {

@@ -2,8 +2,7 @@ package com.clilystudio.netbook.ui.ugcbook;
 
 import android.view.inputmethod.InputMethodManager;
 
-final class L
-        implements Runnable {
+final class L implements Runnable {
     private /* synthetic */ UGCGuideEditBooksActivity a;
 
     L(UGCGuideEditBooksActivity uGCGuideEditBooksActivity) {

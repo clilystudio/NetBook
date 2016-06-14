@@ -7,8 +7,7 @@ import com.clilystudio.netbook.model.Author;
 import com.clilystudio.netbook.model.PostComment;
 import com.clilystudio.netbook.util.e;
 
-final class A
-        implements View.OnClickListener {
+final class A implements View.OnClickListener {
     private /* synthetic */ PostComment a;
 
     A(z z2, PostComment postComment) {

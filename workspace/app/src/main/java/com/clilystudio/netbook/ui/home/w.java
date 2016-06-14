@@ -9,8 +9,7 @@ import com.clilystudio.netbook.model.InsideLink;
 import com.clilystudio.netbook.model.ShelfMsg;
 import com.clilystudio.netbook.util.InsideLinkIntent;
 
-final class w
-        implements View.OnClickListener {
+final class w implements View.OnClickListener {
     private /* synthetic */ ShelfMsg a;
     private /* synthetic */ InsideLink b;
     private /* synthetic */ HomeShelfFragment c;

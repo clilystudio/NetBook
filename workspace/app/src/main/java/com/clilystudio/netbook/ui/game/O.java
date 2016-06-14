@@ -6,8 +6,7 @@ import android.widget.AdapterView;
 
 import com.clilystudio.netbook.model.Game;
 
-final class O
-        implements AdapterView.OnItemClickListener {
+final class O implements AdapterView.OnItemClickListener {
     private /* synthetic */ GameListActivity a;
 
     O(GameListActivity gameListActivity) {

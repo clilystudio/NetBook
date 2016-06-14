@@ -2,8 +2,7 @@ package com.clilystudio.netbook.ui.ugcbook;
 
 import android.widget.PopupWindow;
 
-final class ah
-        implements PopupWindow.OnDismissListener {
+final class ah implements PopupWindow.OnDismissListener {
     private /* synthetic */ UGCMainActivity a;
 
     ah(UGCMainActivity uGCMainActivity) {

@@ -9,8 +9,7 @@ import com.ximalaya.ting.android.opensdk.model.track.Track;
 import com.ximalaya.ting.android.opensdk.player.service.IXmPlayerStatusListener;
 import com.ximalaya.ting.android.opensdk.player.service.XmPlayerException;
 
-final class x
-        implements IXmPlayerStatusListener {
+final class x implements IXmPlayerStatusListener {
     private /* synthetic */ HomeShelfFragment a;
 
     x(HomeShelfFragment homeShelfFragment) {

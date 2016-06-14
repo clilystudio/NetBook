@@ -2,8 +2,7 @@ package com.clilystudio.netbook.ui.post;
 
 import android.support.design.widget.am;
 
-final class bb
-        implements Runnable {
+final class bb implements Runnable {
     private /* synthetic */ ba a;
 
     bb(ba ba2) {

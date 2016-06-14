@@ -2,8 +2,7 @@ package com.clilystudio.netbook.ui;
 
 import com.clilystudio.netbook.widget.i;
 
-final class bN
-        implements i {
+final class bN implements i {
     private /* synthetic */ bM a;
 
     bN(bM bM2) {

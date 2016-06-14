@@ -5,8 +5,7 @@ import android.widget.AdapterView;
 
 import com.clilystudio.netbook.db.BookReadRecord;
 
-final class B
-        implements AdapterView.OnItemClickListener {
+final class B implements AdapterView.OnItemClickListener {
     private /* synthetic */ AddReviewActivity a;
 
     B(AddReviewActivity addReviewActivity) {

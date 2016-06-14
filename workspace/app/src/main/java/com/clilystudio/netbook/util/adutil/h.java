@@ -3,8 +3,7 @@ package com.clilystudio.netbook.util.adutil;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 
-final class h
-        implements InvocationHandler {
+final class h implements InvocationHandler {
     private /* synthetic */ String a;
 
     h(BaiduShelfAdContainer baiduShelfAdContainer, String string) {

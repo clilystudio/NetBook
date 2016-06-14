@@ -2,8 +2,7 @@ package com.clilystudio.netbook.ui.ugcbook;
 
 import android.text.TextUtils;
 
-final class p
-        implements Runnable {
+final class p implements Runnable {
     private /* synthetic */ UGCDetailActivity a;
 
     p(UGCDetailActivity uGCDetailActivity) {

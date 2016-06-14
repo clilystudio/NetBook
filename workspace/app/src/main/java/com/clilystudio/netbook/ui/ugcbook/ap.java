@@ -5,8 +5,7 @@ import android.widget.ListView;
 
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 
-final class ap
-        implements k<ListView> {
+final class ap implements k<ListView> {
     final /* synthetic */ UGCMainListFragment a;
 
     ap(UGCMainListFragment uGCMainListFragment) {

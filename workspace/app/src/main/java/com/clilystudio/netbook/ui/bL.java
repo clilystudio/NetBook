@@ -2,8 +2,7 @@ package com.clilystudio.netbook.ui;
 
 import android.view.View;
 
-final class bL
-        implements View.OnFocusChangeListener {
+final class bL implements View.OnFocusChangeListener {
     private /* synthetic */ SearchActivity a;
 
     bL(SearchActivity searchActivity) {

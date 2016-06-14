@@ -3,8 +3,7 @@ package com.clilystudio.netbook.util;
 import android.content.Context;
 import android.widget.Toast;
 
-final class ad
-        implements Runnable {
+final class ad implements Runnable {
     private /* synthetic */ Context a;
     private /* synthetic */ String b;
     private /* synthetic */ int c;

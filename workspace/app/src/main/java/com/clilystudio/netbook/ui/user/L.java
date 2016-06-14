@@ -2,8 +2,7 @@ package com.clilystudio.netbook.ui.user;
 
 import com.clilystudio.netbook.widget.av;
 
-final class L
-        implements av {
+final class L implements av {
     private /* synthetic */ PayChargeActivity a;
 
     L(PayChargeActivity payChargeActivity) {

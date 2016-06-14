@@ -2,8 +2,7 @@ package com.clilystudio.netbook.ui;
 
 import android.view.View;
 
-final class ad
-        implements View.OnClickListener {
+final class ad implements View.OnClickListener {
     private /* synthetic */ BaseLoadingFragment a;
 
     ad(BaseLoadingFragment baseLoadingFragment) {

@@ -1,7 +1,6 @@
 package com.clilystudio.netbook.ui.home;
 
-final class M
-        implements Runnable {
+final class M implements Runnable {
     private /* synthetic */ L a;
 
     M(L l) {

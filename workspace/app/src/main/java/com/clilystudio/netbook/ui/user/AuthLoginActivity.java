@@ -20,8 +20,7 @@ import cn.sharesdk.framework.Platform;
 import cn.sharesdk.framework.PlatformActionListener;
 import cn.sharesdk.framework.ShareSDK;
 
-public class AuthLoginActivity extends BaseActivity
-        implements Handler.Callback {
+public class AuthLoginActivity extends BaseActivity implements Handler.Callback {
     private String a;
     private Animation b = null;
     private View c = null;

@@ -9,8 +9,7 @@ import com.clilystudio.netbook.event.i;
 import com.clilystudio.netbook.event.v;
 import com.clilystudio.netbook.model.TocSummary;
 
-final class bC
-        implements AdapterView.OnItemClickListener {
+final class bC implements AdapterView.OnItemClickListener {
     private /* synthetic */ ReaderMixActivity a;
 
     bC(ReaderMixActivity readerMixActivity) {

@@ -2,8 +2,7 @@ package com.clilystudio.netbook.model;
 
 import java.io.Serializable;
 
-public class ChapterKeysRoot$ChapterKey
-        implements Serializable {
+public class ChapterKeysRoot$ChapterKey implements Serializable {
     private String _id;
     private String key;
 

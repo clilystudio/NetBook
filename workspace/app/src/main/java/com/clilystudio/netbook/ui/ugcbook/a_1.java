@@ -2,8 +2,7 @@ package com.clilystudio.netbook.ui.ugcbook;
 
 import android.os.AsyncTask;
 
-final class a
-        implements j {
+final class a implements j {
     private /* synthetic */ AbsUGCListFragment a;
 
     a(AbsUGCListFragment absUGCListFragment) {

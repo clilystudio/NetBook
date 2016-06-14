@@ -2,8 +2,7 @@ package com.clilystudio.netbook.ui.post;
 
 import android.view.View;
 
-final class dT
-        implements View.OnClickListener {
+final class dT implements View.OnClickListener {
     private /* synthetic */ TweetTabActivity a;
 
     dT(TweetTabActivity tweetTabActivity) {

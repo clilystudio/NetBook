@@ -3,8 +3,7 @@ package com.clilystudio.netbook.ui.home;
 import android.view.KeyEvent;
 import android.view.View;
 
-final class c
-        implements View.OnKeyListener {
+final class c implements View.OnKeyListener {
     private /* synthetic */ HomeActivity a;
 
     c(HomeActivity homeActivity) {

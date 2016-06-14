@@ -6,8 +6,7 @@ import android.widget.TextView;
 
 import com.clilystudio.netbook.util.e;
 
-final class bJ
-        implements TextView.OnEditorActionListener {
+final class bJ implements TextView.OnEditorActionListener {
     private /* synthetic */ SearchActivity a;
 
     bJ(SearchActivity searchActivity) {

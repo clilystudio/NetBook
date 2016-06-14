@@ -6,8 +6,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
-final class V
-        implements View.OnClickListener {
+final class V implements View.OnClickListener {
     private /* synthetic */ EditText a;
     private /* synthetic */ TextView b;
     private /* synthetic */ int c;

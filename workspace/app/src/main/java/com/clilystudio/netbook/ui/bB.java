@@ -6,8 +6,7 @@ import android.view.View;
 
 import com.clilystudio.netbook.model.BookSummary;
 
-final class bB
-        implements View.OnClickListener {
+final class bB implements View.OnClickListener {
     private /* synthetic */ BookSummary a;
     private /* synthetic */ RelateBooksFragment b;
 

@@ -2,8 +2,7 @@ package com.clilystudio.netbook.model;
 
 import java.io.Serializable;
 
-public class ChapterLink
-        implements Serializable {
+public class ChapterLink implements Serializable {
     private static final long serialVersionUID = -5702613650428568284L;
     private int currency;
     private String id;

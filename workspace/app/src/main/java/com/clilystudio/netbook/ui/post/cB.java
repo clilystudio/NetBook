@@ -4,8 +4,7 @@ import android.view.View;
 
 import com.clilystudio.netbook.ui.BookInfoActivity;
 
-final class cB
-        implements View.OnClickListener {
+final class cB implements View.OnClickListener {
     private /* synthetic */ ReviewActivity a;
 
     cB(ReviewActivity reviewActivity) {

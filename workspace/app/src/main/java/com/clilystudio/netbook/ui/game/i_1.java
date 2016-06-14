@@ -4,8 +4,7 @@ import android.content.Context;
 import android.support.design.widget.am;
 import android.view.View;
 
-final class i
-        implements View.OnClickListener {
+final class i implements View.OnClickListener {
     private /* synthetic */ GameDetailActivity a;
 
     i(GameDetailActivity gameDetailActivity) {

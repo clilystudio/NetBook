@@ -5,8 +5,7 @@ import com.clilystudio.netbook.api.ApiService;
 import java.io.Serializable;
 import java.util.Date;
 
-public class BookSummary
-        implements Serializable {
+public class BookSummary implements Serializable {
     private static final long serialVersionUID = -2648695569160810325L;
     private String _id;
     private String appendComment;

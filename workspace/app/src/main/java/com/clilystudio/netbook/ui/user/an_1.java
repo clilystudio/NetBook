@@ -4,8 +4,7 @@ import android.content.DialogInterface;
 
 import com.clilystudio.netbook.model.VipPlan$Plan;
 
-final class an
-        implements DialogInterface.OnClickListener {
+final class an implements DialogInterface.OnClickListener {
     private /* synthetic */ am a;
 
     an(am am2) {

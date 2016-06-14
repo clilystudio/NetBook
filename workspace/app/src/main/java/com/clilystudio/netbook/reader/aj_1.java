@@ -3,8 +3,7 @@ package com.clilystudio.netbook.reader;
 import com.clilystudio.netbook.util.UmengGameTracer;
 import com.clilystudio.netbook.util.UmengGameTracer$From;
 
-final class aj
-        implements g {
+final class aj implements g {
     private /* synthetic */ ReaderActivity a;
 
     aj(ReaderActivity readerActivity) {

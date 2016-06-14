@@ -2,8 +2,7 @@ package com.clilystudio.netbook.ui.post;
 
 import android.content.DialogInterface;
 
-final class m
-        implements DialogInterface.OnClickListener {
+final class m implements DialogInterface.OnClickListener {
     private /* synthetic */ AddBookHelpActivity a;
 
     m(AddBookHelpActivity addBookHelpActivity) {

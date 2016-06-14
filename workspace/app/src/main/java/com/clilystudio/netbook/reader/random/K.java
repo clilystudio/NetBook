@@ -3,8 +3,7 @@ package com.clilystudio.netbook.reader.random;
 import com.clilystudio.netbook.reader.cd;
 import com.clilystudio.netbook.reader.o;
 
-final class K
-        implements cd {
+final class K implements cd {
     private /* synthetic */ ReaderRandomActivity a;
 
     K(ReaderRandomActivity readerRandomActivity) {

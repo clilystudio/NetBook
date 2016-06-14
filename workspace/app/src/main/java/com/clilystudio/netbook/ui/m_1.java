@@ -7,8 +7,7 @@ import com.ximalaya.ting.android.opensdk.model.track.Track;
 import com.ximalaya.ting.android.opensdk.player.service.IXmPlayerStatusListener;
 import com.ximalaya.ting.android.opensdk.player.service.XmPlayerException;
 
-final class m
-        implements IXmPlayerStatusListener {
+final class m implements IXmPlayerStatusListener {
     private /* synthetic */ AudioBookPlayActivity a;
 
     m(AudioBookPlayActivity audioBookPlayActivity) {

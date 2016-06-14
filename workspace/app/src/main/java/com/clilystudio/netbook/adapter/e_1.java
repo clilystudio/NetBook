@@ -5,8 +5,7 @@ import android.view.View;
 import com.clilystudio.netbook.model.BookHelpSummary;
 import com.clilystudio.netbook.ui.SmartImageView;
 
-final class e
-        implements View.OnClickListener {
+final class e implements View.OnClickListener {
     private /* synthetic */ SmartImageView a;
     private /* synthetic */ BookHelpSummary b;
 

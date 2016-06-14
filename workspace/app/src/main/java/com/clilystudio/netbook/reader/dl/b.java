@@ -2,8 +2,7 @@ package com.clilystudio.netbook.reader.dl;
 
 import com.clilystudio.netbook.db.BookReadRecord;
 
-final class b
-        implements d {
+final class b implements d {
     private /* synthetic */ BookReadRecord a;
     private /* synthetic */ int b;
     private /* synthetic */ int c;

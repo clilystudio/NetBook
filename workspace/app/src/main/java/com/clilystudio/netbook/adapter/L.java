@@ -10,8 +10,7 @@ import com.clilystudio.netbook.model.Tweet;
 import com.clilystudio.netbook.ui.user.AuthLoginActivity;
 import com.clilystudio.netbook.util.e;
 
-final class L
-        implements View.OnClickListener {
+final class L implements View.OnClickListener {
     private /* synthetic */ Tweet a;
     private /* synthetic */ R b;
     private /* synthetic */ G c;

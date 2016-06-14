@@ -6,8 +6,7 @@ import android.os.Message;
 import com.alipay.sdk.app.PayTask;
 import com.clilystudio.netbook.model.AliPayOrder;
 
-final class d
-        implements Runnable {
+final class d implements Runnable {
     private /* synthetic */ AliPayOrder a;
     private /* synthetic */ c b;
 

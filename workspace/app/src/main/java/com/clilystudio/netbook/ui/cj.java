@@ -8,8 +8,7 @@ import com.clilystudio.netbook.exception.UnImplementException;
 import com.clilystudio.netbook.model.SplashAdvert;
 import com.clilystudio.netbook.util.InsideLinkIntent;
 
-final class cj
-        implements View.OnClickListener {
+final class cj implements View.OnClickListener {
     private /* synthetic */ SplashAdvert a;
     private /* synthetic */ String b;
     private /* synthetic */ SplashActivity c;

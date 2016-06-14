@@ -2,8 +2,7 @@ package com.clilystudio.netbook.ui.ugcbook;
 
 import com.clilystudio.netbook.ui.ab;
 
-final class aa
-        implements ab {
+final class aa implements ab {
     private /* synthetic */ UGCMainActivity a;
 
     aa(UGCMainActivity uGCMainActivity) {

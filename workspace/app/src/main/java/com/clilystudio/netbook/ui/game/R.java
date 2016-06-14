@@ -6,8 +6,7 @@ import android.view.View;
 
 import com.clilystudio.netbook.model.Game;
 
-final class R
-        implements View.OnClickListener {
+final class R implements View.OnClickListener {
     private /* synthetic */ Game a;
     private /* synthetic */ Q b;
 

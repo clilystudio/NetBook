@@ -6,8 +6,7 @@ import com.clilystudio.netbook.event.i;
 import com.clilystudio.netbook.event.x;
 import com.clilystudio.netbook.model.BookRankSummary;
 
-final class at
-        implements View.OnClickListener {
+final class at implements View.OnClickListener {
     private /* synthetic */ BookRankSummary a;
     private /* synthetic */ boolean b;
 

@@ -1,7 +1,6 @@
 package com.clilystudio.netbook.ui.post;
 
-final class dU
-        implements Runnable {
+final class dU implements Runnable {
     private /* synthetic */ TweetTabActivity a;
 
     dU(TweetTabActivity tweetTabActivity) {

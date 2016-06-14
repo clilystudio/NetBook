@@ -2,8 +2,7 @@ package com.clilystudio.netbook.reader;
 
 import android.view.View;
 
-final class aV
-        implements View.OnSystemUiVisibilityChangeListener {
+final class aV implements View.OnSystemUiVisibilityChangeListener {
     private /* synthetic */ ReaderActivity a;
 
     aV(ReaderActivity readerActivity) {

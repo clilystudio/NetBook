@@ -3,8 +3,7 @@ package com.clilystudio.netbook.ui;
 import android.view.KeyEvent;
 import android.view.View;
 
-final class c
-        implements View.OnKeyListener {
+final class c implements View.OnKeyListener {
     private /* synthetic */ AdWebViewActivity a;
 
     c(AdWebViewActivity adWebViewActivity) {

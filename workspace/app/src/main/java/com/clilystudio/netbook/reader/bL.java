@@ -7,8 +7,7 @@ import android.widget.CompoundButton;
 import com.clilystudio.netbook.event.i;
 import com.clilystudio.netbook.event.j;
 
-final class bL
-        implements CompoundButton.OnCheckedChangeListener {
+final class bL implements CompoundButton.OnCheckedChangeListener {
     private /* synthetic */ SwitchCompat a;
     private /* synthetic */ ReaderOptionActivity b;
 

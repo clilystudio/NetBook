@@ -6,8 +6,7 @@ import android.widget.AdapterView;
 
 import com.clilystudio.netbook.model.DiscussSummary;
 
-final class bc
-        implements AdapterView.OnItemClickListener {
+final class bc implements AdapterView.OnItemClickListener {
     private /* synthetic */ CommonPostListActivity a;
 
     bc(CommonPostListActivity commonPostListActivity) {

@@ -5,8 +5,7 @@ import android.view.View;
 
 import com.clilystudio.netbook.ui.user.RemoveAdActivity;
 
-final class z
-        implements View.OnClickListener {
+final class z implements View.OnClickListener {
     private /* synthetic */ o a;
 
     z(o o2) {

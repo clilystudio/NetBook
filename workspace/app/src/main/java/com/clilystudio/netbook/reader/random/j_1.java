@@ -1,7 +1,6 @@
 package com.clilystudio.netbook.reader.random;
 
-final class j
-        implements a {
+final class j implements a {
     private /* synthetic */ ReaderRandomActivity a;
 
     j(ReaderRandomActivity readerRandomActivity) {

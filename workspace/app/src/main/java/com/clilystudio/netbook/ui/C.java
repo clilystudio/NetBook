@@ -5,8 +5,7 @@ import com.ximalaya.ting.android.opensdk.datatrasfer.IDataCallBack;
 import com.ximalaya.ting.android.opensdk.datatrasfer.XimalayaResponse;
 import com.ximalaya.ting.android.opensdk.model.album.BatchAlbumList;
 
-final class C
-        implements IDataCallBack<BatchAlbumList> {
+final class C implements IDataCallBack<BatchAlbumList> {
     private /* synthetic */ AudiobookInfoActivity a;
 
     C(AudiobookInfoActivity audiobookInfoActivity) {

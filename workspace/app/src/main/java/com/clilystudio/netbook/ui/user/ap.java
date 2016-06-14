@@ -3,8 +3,7 @@ package com.clilystudio.netbook.ui.user;
 import android.text.Editable;
 import android.text.TextWatcher;
 
-final class ap
-        implements TextWatcher {
+final class ap implements TextWatcher {
     private /* synthetic */ SmsSendActivity a;
 
     ap(SmsSendActivity smsSendActivity) {

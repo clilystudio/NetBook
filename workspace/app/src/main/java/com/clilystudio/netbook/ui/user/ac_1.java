@@ -5,8 +5,7 @@ import android.widget.ListView;
 
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 
-final class ac
-        implements k<ListView> {
+final class ac implements k<ListView> {
     final /* synthetic */ PayVoucherFragment a;
 
     ac(PayVoucherFragment payVoucherFragment) {

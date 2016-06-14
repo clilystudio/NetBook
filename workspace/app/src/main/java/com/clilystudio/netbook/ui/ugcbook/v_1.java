@@ -2,8 +2,7 @@ package com.clilystudio.netbook.ui.ugcbook;
 
 import android.view.View;
 
-final class v
-        implements View.OnFocusChangeListener {
+final class v implements View.OnFocusChangeListener {
     private /* synthetic */ UGCGuideAddBookActivity a;
 
     v(UGCGuideAddBookActivity uGCGuideAddBookActivity) {

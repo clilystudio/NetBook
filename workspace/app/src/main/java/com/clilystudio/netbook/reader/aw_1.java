@@ -1,7 +1,6 @@
 package com.clilystudio.netbook.reader;
 
-final class aw
-        implements cw {
+final class aw implements cw {
     private /* synthetic */ ReaderActivity a;
 
     aw(ReaderActivity readerActivity) {

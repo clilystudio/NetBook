@@ -2,8 +2,7 @@ package com.clilystudio.netbook.ui.user;
 
 import android.os.AsyncTask;
 
-final class ae
-        implements j {
+final class ae implements j {
     private /* synthetic */ PayVoucherFragment a;
 
     ae(PayVoucherFragment payVoucherFragment) {

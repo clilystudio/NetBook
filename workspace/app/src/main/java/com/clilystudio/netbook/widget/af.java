@@ -1,7 +1,6 @@
 package com.clilystudio.netbook.widget;
 
-final class af
-        implements b {
+final class af implements b {
     private /* synthetic */ ah a;
     private /* synthetic */ LoadingProgressView b;
 

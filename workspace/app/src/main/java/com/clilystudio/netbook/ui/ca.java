@@ -2,8 +2,7 @@ package com.clilystudio.netbook.ui;
 
 import java.io.IOException;
 
-final class ca
-        implements Runnable {
+final class ca implements Runnable {
     private /* synthetic */ String a;
     private /* synthetic */ SettingsActivity b;
 

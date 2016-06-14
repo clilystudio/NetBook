@@ -3,8 +3,7 @@ package com.clilystudio.netbook.reader;
 import android.app.AlertDialog;
 import android.view.View;
 
-final class cF
-        implements View.OnClickListener {
+final class cF implements View.OnClickListener {
     private /* synthetic */ AlertDialog a;
     private /* synthetic */ ReaderWebActivity b;
 

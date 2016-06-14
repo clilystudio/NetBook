@@ -2,8 +2,7 @@ package com.clilystudio.netbook.ui.post;
 
 import android.view.View;
 
-final class cf
-        implements View.OnClickListener {
+final class cf implements View.OnClickListener {
     final /* synthetic */ OtherUserActivity a;
 
     cf(OtherUserActivity otherUserActivity) {

@@ -7,8 +7,7 @@ import android.view.View;
 import com.clilystudio.netbook.model.GameGiftRoot;
 import com.clilystudio.netbook.ui.game.GameGiftListActivity;
 
-final class K
-        implements View.OnClickListener {
+final class K implements View.OnClickListener {
     private /* synthetic */ GameGiftRoot a;
     private /* synthetic */ GameGiftView b;
 

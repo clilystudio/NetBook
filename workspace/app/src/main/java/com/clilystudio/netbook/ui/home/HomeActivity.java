@@ -67,8 +67,7 @@ import java.util.zip.ZipFile;
 import butterknife.ButterKnife;
 import cn.sharesdk.framework.ShareSDK;
 
-public class HomeActivity extends HomeParentActivity
-        implements ViewPager$OnPageChangeListener,
+public class HomeActivity extends HomeParentActivity implements ViewPager$OnPageChangeListener,
         View.OnClickListener,
         TabHost.OnTabChangeListener,
         TabHost.TabContentFactory {

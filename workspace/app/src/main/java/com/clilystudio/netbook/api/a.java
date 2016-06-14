@@ -9,8 +9,7 @@ import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-final class a
-        implements JsonDeserializer<Date> {
+final class a implements JsonDeserializer<Date> {
     a() {
     }
 

@@ -8,8 +8,7 @@ import android.view.View;
 import com.clilystudio.netbook.util.e;
 import com.clilystudio.netbook.view.a;
 
-final class x
-        implements View.OnClickListener {
+final class x implements View.OnClickListener {
     private /* synthetic */ a a;
     private /* synthetic */ String b;
     private /* synthetic */ GameGiftListActivity c;

@@ -5,8 +5,7 @@ import android.widget.CheckBox;
 
 import com.clilystudio.netbook.ui.user.AuthLoginActivity;
 
-final class aH
-        implements DialogInterface.OnClickListener {
+final class aH implements DialogInterface.OnClickListener {
     private /* synthetic */ CheckBox a;
     private /* synthetic */ BookInfoActivity b;
 

@@ -3,8 +3,7 @@ package com.clilystudio.netbook.ui;
 import android.app.Activity;
 import android.content.DialogInterface;
 
-final class e
-        implements DialogInterface.OnClickListener {
+final class e implements DialogInterface.OnClickListener {
     private /* synthetic */ String a;
     private /* synthetic */ AdWebViewActivity b;
 

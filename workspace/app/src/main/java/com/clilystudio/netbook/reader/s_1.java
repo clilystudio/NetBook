@@ -7,8 +7,7 @@ import android.widget.CheckBox;
 
 import com.umeng.a.b;
 
-final class s
-        implements View.OnClickListener {
+final class s implements View.OnClickListener {
     private /* synthetic */ CheckBox a;
     private /* synthetic */ o b;
 

@@ -3,8 +3,7 @@ package com.clilystudio.netbook.ui.post;
 import android.os.AsyncTask;
 import android.support.design.widget.am;
 
-final class by
-        implements j {
+final class by implements j {
     private /* synthetic */ GirlTopicListActivity a;
 
     by(GirlTopicListActivity girlTopicListActivity) {

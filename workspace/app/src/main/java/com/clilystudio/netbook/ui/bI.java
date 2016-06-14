@@ -2,8 +2,7 @@ package com.clilystudio.netbook.ui;
 
 import android.view.View;
 
-final class bI
-        implements View.OnClickListener {
+final class bI implements View.OnClickListener {
     private /* synthetic */ SearchActivity a;
 
     bI(SearchActivity searchActivity) {

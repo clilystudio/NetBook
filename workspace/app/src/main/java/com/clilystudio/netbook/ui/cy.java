@@ -2,8 +2,7 @@ package com.clilystudio.netbook.ui;
 
 import com.clilystudio.netbook.util.T;
 
-final class cy
-        implements cd {
+final class cy implements cd {
     private /* synthetic */ String a;
     private /* synthetic */ String b;
     private /* synthetic */ String c;

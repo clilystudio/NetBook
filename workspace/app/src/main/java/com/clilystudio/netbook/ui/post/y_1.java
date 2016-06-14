@@ -2,8 +2,7 @@ package com.clilystudio.netbook.ui.post;
 
 import android.content.DialogInterface;
 
-final class y
-        implements DialogInterface.OnClickListener {
+final class y implements DialogInterface.OnClickListener {
     private /* synthetic */ AddGirlTopicActivity a;
 
     y(AddGirlTopicActivity addGirlTopicActivity) {

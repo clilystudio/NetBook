@@ -2,8 +2,7 @@ package com.clilystudio.netbook.ui.post;
 
 import android.view.View;
 
-final class dh
-        implements View.OnClickListener {
+final class dh implements View.OnClickListener {
     private /* synthetic */ ReviewListActivity a;
 
     dh(ReviewListActivity reviewListActivity) {

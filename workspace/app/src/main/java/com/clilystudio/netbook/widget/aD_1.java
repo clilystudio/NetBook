@@ -2,8 +2,7 @@ package com.clilystudio.netbook.widget;
 
 import android.graphics.Bitmap;
 
-final class aD
-        implements a {
+final class aD implements a {
     private /* synthetic */ UserInfoPortraitView a;
 
     aD(UserInfoPortraitView userInfoPortraitView) {

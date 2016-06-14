@@ -5,8 +5,7 @@ import android.widget.AdapterView;
 
 import com.ximalaya.ting.android.opensdk.model.album.Album;
 
-final class w
-        implements AdapterView.OnItemClickListener {
+final class w implements AdapterView.OnItemClickListener {
     private /* synthetic */ AudiobookCategoryListActivity a;
 
     w(AudiobookCategoryListActivity audiobookCategoryListActivity) {

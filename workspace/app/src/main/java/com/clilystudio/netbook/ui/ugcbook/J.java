@@ -5,8 +5,7 @@ import android.widget.EditText;
 
 import com.clilystudio.netbook.model.BookSummary;
 
-final class J
-        implements DialogInterface.OnClickListener {
+final class J implements DialogInterface.OnClickListener {
     private /* synthetic */ BookSummary a;
     private /* synthetic */ EditText b;
     private /* synthetic */ UGCGuideEditBooksActivity c;

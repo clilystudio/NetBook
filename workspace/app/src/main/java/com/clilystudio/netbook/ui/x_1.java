@@ -10,8 +10,7 @@ import com.ximalaya.ting.android.opensdk.model.album.AlbumList;
 
 import java.util.List;
 
-final class x
-        implements IDataCallBack<AlbumList> {
+final class x implements IDataCallBack<AlbumList> {
     private /* synthetic */ boolean a;
     private /* synthetic */ AudiobookCategoryListActivity b;
 

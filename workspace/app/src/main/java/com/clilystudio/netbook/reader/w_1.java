@@ -1,7 +1,6 @@
 package com.clilystudio.netbook.reader;
 
-final class w
-        implements Runnable {
+final class w implements Runnable {
     private /* synthetic */ v a;
 
     w(v v2) {

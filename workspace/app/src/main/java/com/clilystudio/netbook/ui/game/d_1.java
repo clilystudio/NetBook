@@ -2,8 +2,7 @@ package com.clilystudio.netbook.ui.game;
 
 import com.clilystudio.netbook.ui.aa;
 
-class d
-        implements aa {
+class d implements aa {
     private /* synthetic */ GameDetailActivity a;
 
     d(GameDetailActivity gameDetailActivity) {

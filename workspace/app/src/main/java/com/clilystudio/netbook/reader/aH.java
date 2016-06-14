@@ -2,8 +2,7 @@ package com.clilystudio.netbook.reader;
 
 import com.clilystudio.netbook.model.ChapterLink;
 
-final class aH
-        implements af {
+final class aH implements af {
     private /* synthetic */ int a;
     private /* synthetic */ ReaderActivity b;
 

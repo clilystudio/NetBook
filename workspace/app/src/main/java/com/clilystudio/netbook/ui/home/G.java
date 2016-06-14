@@ -4,8 +4,7 @@ import com.clilystudio.netbook.model.BookShelf;
 
 import java.util.Comparator;
 
-final class G
-        implements Comparator<BookShelf> {
+final class G implements Comparator<BookShelf> {
     private /* synthetic */ int a;
     private /* synthetic */ HomeShelfFragment b;
 

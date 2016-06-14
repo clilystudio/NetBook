@@ -10,8 +10,7 @@ import android.widget.Filterable;
 import java.util.ArrayList;
 import java.util.List;
 
-public final class SearchActivity$SearchPromptAdapter extends BaseAdapter
-        implements AdapterView.OnItemClickListener,
+public final class SearchActivity$SearchPromptAdapter extends BaseAdapter implements AdapterView.OnItemClickListener,
         Filterable {
     final /* synthetic */ SearchActivity a;
     private List<String> b;

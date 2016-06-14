@@ -5,8 +5,7 @@ import android.view.View;
 import com.clilystudio.netbook.model.Game;
 import com.clilystudio.netbook.ui.game.GameDetailActivity;
 
-final class P
-        implements View.OnClickListener {
+final class P implements View.OnClickListener {
     private /* synthetic */ Game a;
     private /* synthetic */ GameMicroLayoutItemView b;
 

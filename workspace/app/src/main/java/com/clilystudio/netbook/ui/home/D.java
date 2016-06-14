@@ -4,8 +4,7 @@ import com.ximalaya.ting.android.opensdk.datatrasfer.IDataCallBack;
 import com.ximalaya.ting.android.opensdk.datatrasfer.XimalayaResponse;
 import com.ximalaya.ting.android.opensdk.model.track.TrackList;
 
-final class D
-        implements IDataCallBack<TrackList> {
+final class D implements IDataCallBack<TrackList> {
     private /* synthetic */ int a;
     private /* synthetic */ HomeShelfFragment b;
 

@@ -1,7 +1,6 @@
 package com.clilystudio.netbook.reader;
 
-final class az
-        implements a {
+final class az implements a {
     private /* synthetic */ ReaderActivity a;
 
     az(ReaderActivity readerActivity) {

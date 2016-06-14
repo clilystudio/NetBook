@@ -5,8 +5,7 @@ import android.widget.AdapterView;
 
 import com.clilystudio.netbook.model.CategoryBook;
 
-final class am
-        implements AdapterView.OnItemClickListener {
+final class am implements AdapterView.OnItemClickListener {
     private /* synthetic */ BookCategoryFragment a;
 
     am(BookCategoryFragment bookCategoryFragment) {

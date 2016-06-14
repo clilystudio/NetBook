@@ -4,8 +4,7 @@ import com.clilystudio.netbook.api.ApiService;
 
 import java.io.Serializable;
 
-public class Author
-        implements Serializable {
+public class Author implements Serializable {
     private static final long serialVersionUID = 4660498853182934697L;
     private String _id;
     private String avatar;

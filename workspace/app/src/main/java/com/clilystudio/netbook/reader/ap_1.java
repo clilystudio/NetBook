@@ -6,8 +6,7 @@ import android.widget.PopupMenu;
 import com.clilystudio.netbook.ui.BookInfoActivity;
 import com.clilystudio.netbook.ui.cb;
 
-final class ap
-        implements PopupMenu.OnMenuItemClickListener {
+final class ap implements PopupMenu.OnMenuItemClickListener {
     final /* synthetic */ ReaderActivity a;
 
     ap(ReaderActivity readerActivity) {

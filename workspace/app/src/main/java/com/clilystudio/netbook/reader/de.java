@@ -3,8 +3,7 @@ package com.clilystudio.netbook.reader;
 import android.view.KeyEvent;
 import android.view.View;
 
-final class de
-        implements View.OnKeyListener {
+final class de implements View.OnKeyListener {
     private /* synthetic */ WebPageFragment a;
 
     de(WebPageFragment webPageFragment) {

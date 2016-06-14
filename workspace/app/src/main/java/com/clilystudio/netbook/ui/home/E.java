@@ -8,8 +8,7 @@ import com.clilystudio.netbook.event.BookShelfRefreshEvent;
 import com.clilystudio.netbook.event.i;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 
-final class E
-        implements k<ListView> {
+final class E implements k<ListView> {
     final /* synthetic */ HomeShelfFragment a;
 
     E(HomeShelfFragment homeShelfFragment) {

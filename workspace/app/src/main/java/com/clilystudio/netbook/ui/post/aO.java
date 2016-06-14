@@ -2,8 +2,7 @@ package com.clilystudio.netbook.ui.post;
 
 import android.content.DialogInterface;
 
-final class aO
-        implements DialogInterface.OnClickListener {
+final class aO implements DialogInterface.OnClickListener {
     private /* synthetic */ BookTopicListFragment a;
 
     aO(BookTopicListFragment bookTopicListFragment) {

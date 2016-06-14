@@ -9,8 +9,7 @@ import java.util.HashMap;
 import cn.sharesdk.framework.Platform;
 import cn.sharesdk.framework.PlatformActionListener;
 
-final class aA
-        implements PlatformActionListener {
+final class aA implements PlatformActionListener {
     aA(BookInfoActivity bookInfoActivity) {
     }
 

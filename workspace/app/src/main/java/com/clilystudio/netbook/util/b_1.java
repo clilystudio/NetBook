@@ -4,8 +4,7 @@ import com.clilystudio.netbook.model.MenuAd;
 
 import java.util.Comparator;
 
-final class b
-        implements Comparator<MenuAd> {
+final class b implements Comparator<MenuAd> {
     b(a a2) {
     }
 

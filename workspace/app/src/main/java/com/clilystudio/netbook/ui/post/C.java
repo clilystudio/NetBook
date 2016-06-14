@@ -2,8 +2,7 @@ package com.clilystudio.netbook.ui.post;
 
 import android.content.DialogInterface;
 
-final class C
-        implements DialogInterface.OnClickListener {
+final class C implements DialogInterface.OnClickListener {
     private /* synthetic */ AddReviewActivity a;
 
     C(AddReviewActivity addReviewActivity) {

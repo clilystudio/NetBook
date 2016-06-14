@@ -3,8 +3,7 @@ package com.clilystudio.netbook.ui.game;
 import android.view.MotionEvent;
 import android.view.View;
 
-final class ae
-        implements View.OnTouchListener {
+final class ae implements View.OnTouchListener {
     private /* synthetic */ GameMicroFragment$LayoutAdapter$PromotionViewPager a;
 
     ae(GameMicroFragment$LayoutAdapter$PromotionViewPager promotionViewPager) {

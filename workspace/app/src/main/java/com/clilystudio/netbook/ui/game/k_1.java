@@ -4,8 +4,7 @@ import android.view.MenuItem;
 
 import com.clilystudio.netbook.util.N;
 
-final class k
-        implements m {
+final class k implements m {
     private /* synthetic */ String a;
     private /* synthetic */ GameDetailActivity b;
 

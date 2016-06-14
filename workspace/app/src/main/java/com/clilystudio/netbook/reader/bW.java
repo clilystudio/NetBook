@@ -3,8 +3,7 @@ package com.clilystudio.netbook.reader;
 import android.content.Intent;
 import android.view.View;
 
-final class bW
-        implements View.OnClickListener {
+final class bW implements View.OnClickListener {
     private /* synthetic */ ReaderResourceFragment a;
 
     bW(ReaderResourceFragment readerResourceFragment) {

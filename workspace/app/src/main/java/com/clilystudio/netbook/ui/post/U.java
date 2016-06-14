@@ -3,8 +3,7 @@ package com.clilystudio.netbook.ui.post;
 import android.content.DialogInterface;
 import android.widget.EditText;
 
-final class U
-        implements DialogInterface.OnClickListener {
+final class U implements DialogInterface.OnClickListener {
     private /* synthetic */ EditText a;
     private /* synthetic */ AddVoteItemActivity b;
 

@@ -3,8 +3,7 @@ package com.clilystudio.netbook.ui.post;
 import android.content.Intent;
 import android.view.View;
 
-final class J
-        implements View.OnClickListener {
+final class J implements View.OnClickListener {
     private /* synthetic */ AddTopicCategoryActivity a;
 
     J(AddTopicCategoryActivity addTopicCategoryActivity) {

@@ -5,8 +5,7 @@ import android.widget.AdapterView;
 
 import com.clilystudio.netbook.db.BookReadRecord;
 
-final class b
-        implements AdapterView.OnItemClickListener {
+final class b implements AdapterView.OnItemClickListener {
     private /* synthetic */ FeedAddActivity a;
 
     b(FeedAddActivity feedAddActivity) {

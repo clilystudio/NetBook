@@ -2,8 +2,7 @@ package com.clilystudio.netbook.ui;
 
 import android.os.AsyncTask;
 
-final class bv
-        implements j {
+final class bv implements j {
     private /* synthetic */ NotifFragment a;
 
     bv(NotifFragment notifFragment) {

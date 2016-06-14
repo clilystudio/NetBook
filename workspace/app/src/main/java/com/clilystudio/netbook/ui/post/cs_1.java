@@ -2,8 +2,7 @@ package com.clilystudio.netbook.ui.post;
 
 import android.view.View;
 
-final class cs
-        implements View.OnClickListener {
+final class cs implements View.OnClickListener {
     private /* synthetic */ PostDetailActivity a;
 
     cs(PostDetailActivity postDetailActivity) {

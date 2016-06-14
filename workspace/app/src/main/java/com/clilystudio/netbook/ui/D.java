@@ -10,8 +10,7 @@ import com.ximalaya.ting.android.opensdk.model.track.TrackList;
 
 import java.util.List;
 
-final class D
-        implements IDataCallBack<TrackList> {
+final class D implements IDataCallBack<TrackList> {
     private /* synthetic */ AudiobookInfoActivity a;
 
     D(AudiobookInfoActivity audiobookInfoActivity) {

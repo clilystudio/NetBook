@@ -2,8 +2,7 @@ package com.clilystudio.netbook.ui;
 
 import com.koushikdutta.async.http.a.a;
 
-final class cs
-        implements r {
+final class cs implements r {
     final /* synthetic */ String[] b;
     final /* synthetic */ WifiActivity c;
     int a;

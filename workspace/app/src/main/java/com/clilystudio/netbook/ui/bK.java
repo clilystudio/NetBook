@@ -3,8 +3,7 @@ package com.clilystudio.netbook.ui;
 import android.text.Editable;
 import android.text.TextWatcher;
 
-final class bK
-        implements TextWatcher {
+final class bK implements TextWatcher {
     private /* synthetic */ SearchActivity a;
 
     bK(SearchActivity searchActivity) {

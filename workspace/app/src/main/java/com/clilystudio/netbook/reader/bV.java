@@ -6,8 +6,7 @@ import android.widget.AdapterView;
 
 import com.clilystudio.netbook.model.TocSummary;
 
-final class bV
-        implements AdapterView.OnItemClickListener {
+final class bV implements AdapterView.OnItemClickListener {
     private /* synthetic */ ReaderResourceFragment a;
 
     bV(ReaderResourceFragment readerResourceFragment) {

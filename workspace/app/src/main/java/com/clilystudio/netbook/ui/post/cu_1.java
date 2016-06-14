@@ -7,8 +7,7 @@ import java.util.HashMap;
 import cn.sharesdk.framework.Platform;
 import cn.sharesdk.framework.PlatformActionListener;
 
-final class cu
-        implements PlatformActionListener {
+final class cu implements PlatformActionListener {
     cu(PostDetailActivity postDetailActivity) {
     }
 

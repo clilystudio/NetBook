@@ -1,7 +1,6 @@
 package com.clilystudio.netbook.ui.user;
 
-final class U
-        implements Runnable {
+final class U implements Runnable {
     private /* synthetic */ T a;
 
     U(T t) {

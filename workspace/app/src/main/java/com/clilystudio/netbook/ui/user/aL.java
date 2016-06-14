@@ -3,8 +3,7 @@ package com.clilystudio.netbook.ui.user;
 import android.content.Intent;
 import android.view.View;
 
-final class aL
-        implements View.OnClickListener {
+final class aL implements View.OnClickListener {
     private /* synthetic */ UserLevelActivity a;
 
     aL(UserLevelActivity userLevelActivity) {

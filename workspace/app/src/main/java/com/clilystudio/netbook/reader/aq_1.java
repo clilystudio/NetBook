@@ -2,8 +2,7 @@ package com.clilystudio.netbook.reader;
 
 import com.clilystudio.netbook.ui.cd;
 
-final class aq
-        implements cd {
+final class aq implements cd {
     private /* synthetic */ ap a;
 
     aq(ap ap2) {

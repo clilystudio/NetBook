@@ -2,8 +2,7 @@ package com.clilystudio.netbook.util;
 
 import com.clilystudio.netbook.util.AudioBookNotification;
 
-final class j
-        implements Runnable {
+final class j implements Runnable {
     j(AudioBookNotification.SwitchButtonListener switchButtonListener) {
     }
 

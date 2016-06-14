@@ -1,7 +1,6 @@
 package com.clilystudio.netbook.ui.home;
 
-final class R
-        implements Runnable {
+final class R implements Runnable {
     private /* synthetic */ HomeTransparentActivity a;
 
     R(HomeTransparentActivity homeTransparentActivity) {

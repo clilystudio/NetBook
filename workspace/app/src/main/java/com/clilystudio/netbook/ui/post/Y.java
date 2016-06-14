@@ -4,8 +4,7 @@ import android.app.Dialog;
 import android.text.TextUtils;
 import android.view.View;
 
-final class Y
-        implements View.OnClickListener {
+final class Y implements View.OnClickListener {
     private /* synthetic */ Dialog a;
     private /* synthetic */ AddVoteItemActivity b;
 

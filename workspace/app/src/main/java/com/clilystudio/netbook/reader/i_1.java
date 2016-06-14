@@ -5,8 +5,7 @@ import android.widget.AdapterView;
 
 import com.clilystudio.netbook.model.TocDownloadSummary;
 
-final class i
-        implements AdapterView.OnItemLongClickListener {
+final class i implements AdapterView.OnItemLongClickListener {
     private /* synthetic */ LocalChapterListActivity a;
 
     i(LocalChapterListActivity localChapterListActivity) {

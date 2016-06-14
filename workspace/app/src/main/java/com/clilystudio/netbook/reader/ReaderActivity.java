@@ -55,8 +55,7 @@ import java.util.Map;
 
 import cn.sharesdk.framework.PlatformActionListener;
 
-public class ReaderActivity extends BaseReadSlmActivity
-        implements View.OnClickListener,
+public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickListener,
         a,
         com.clilystudio.netbook.reader.d {
     public static String a = "";

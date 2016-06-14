@@ -8,8 +8,7 @@ import org.apache.http.NameValuePair;
 
 import java.io.File;
 
-final class cr
-        implements r {
+final class cr implements r {
     cr(WifiActivity wifiActivity) {
     }
 

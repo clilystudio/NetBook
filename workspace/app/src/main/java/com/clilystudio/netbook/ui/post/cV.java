@@ -3,8 +3,7 @@ package com.clilystudio.netbook.ui.post;
 import android.view.View;
 import android.widget.PopupWindow;
 
-final class cV
-        implements View.OnClickListener {
+final class cV implements View.OnClickListener {
     private /* synthetic */ PopupWindow a;
     private /* synthetic */ ReviewListActivity b;
 

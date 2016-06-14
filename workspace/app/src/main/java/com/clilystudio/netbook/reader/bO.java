@@ -3,8 +3,7 @@ package com.clilystudio.netbook.reader;
 import android.content.Context;
 import android.widget.CompoundButton;
 
-final class bO
-        implements CompoundButton.OnCheckedChangeListener {
+final class bO implements CompoundButton.OnCheckedChangeListener {
     private /* synthetic */ ReaderOptionActivity a;
 
     bO(ReaderOptionActivity readerOptionActivity) {

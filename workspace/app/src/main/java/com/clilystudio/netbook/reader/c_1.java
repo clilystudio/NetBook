@@ -2,8 +2,7 @@ package com.clilystudio.netbook.reader;
 
 import android.view.animation.Animation;
 
-final class c
-        implements Animation.AnimationListener {
+final class c implements Animation.AnimationListener {
     private /* synthetic */ AutoReaderTextView a;
 
     c(AutoReaderTextView autoReaderTextView) {

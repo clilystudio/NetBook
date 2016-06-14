@@ -2,8 +2,7 @@ package com.clilystudio.netbook.ui;
 
 import com.clilystudio.netbook.widget.i;
 
-final class bH
-        implements i {
+final class bH implements i {
     private /* synthetic */ SearchActivity a;
 
     bH(SearchActivity searchActivity) {

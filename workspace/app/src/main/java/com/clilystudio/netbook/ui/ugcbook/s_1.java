@@ -4,8 +4,7 @@ import com.clilystudio.netbook.widget.ax;
 
 import java.util.Calendar;
 
-final class s
-        implements ax {
+final class s implements ax {
     private /* synthetic */ UGCGuideAddBookActivity$SearchPromptAdapter a;
     private /* synthetic */ UGCGuideAddBookActivity b;
 

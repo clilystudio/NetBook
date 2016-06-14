@@ -21,8 +21,7 @@ import java.util.ArrayList;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 
-public class RelateBooksFragment extends Fragment
-        implements cQ {
+public class RelateBooksFragment extends Fragment implements cQ {
     @InjectView(value = 2131493463)
     LinearLayout mBookContainer;
     @InjectView(value = 2131493432)

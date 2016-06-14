@@ -11,8 +11,7 @@ import java.net.URL;
 import java.text.DecimalFormat;
 import java.util.Calendar;
 
-final class B
-        implements Runnable {
+final class B implements Runnable {
     private /* synthetic */ A a;
 
     B(A a) {

@@ -7,8 +7,7 @@ import com.clilystudio.netbook.db.BookReadRecord;
 import com.clilystudio.netbook.event.i;
 import com.clilystudio.netbook.event.n;
 
-final class g
-        implements View.OnClickListener {
+final class g implements View.OnClickListener {
     private /* synthetic */ TextView a;
     private /* synthetic */ BookReadRecord b;
     private /* synthetic */ f c;

@@ -1,7 +1,6 @@
 package com.clilystudio.netbook.ui;
 
-final class ay
-        implements ab {
+final class ay implements ab {
     final /* synthetic */ BookInfoActivity a;
 
     ay(BookInfoActivity bookInfoActivity) {

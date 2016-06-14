@@ -5,8 +5,7 @@ import android.widget.ListView;
 
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 
-final class di
-        implements k<ListView> {
+final class di implements k<ListView> {
     final /* synthetic */ ReviewListActivity a;
 
     di(ReviewListActivity reviewListActivity) {

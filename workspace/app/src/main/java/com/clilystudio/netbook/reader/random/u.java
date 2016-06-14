@@ -3,8 +3,7 @@ package com.clilystudio.netbook.reader.random;
 import com.clilystudio.netbook.reader.e;
 import com.clilystudio.netbook.reader.n;
 
-final class u
-        implements e<n> {
+final class u implements e<n> {
     final /* synthetic */ ReaderRandomActivity a;
 
     u(ReaderRandomActivity readerRandomActivity) {

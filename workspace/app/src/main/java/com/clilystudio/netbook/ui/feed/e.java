@@ -7,8 +7,7 @@ import android.view.View;
 import com.clilystudio.netbook.event.i;
 import com.clilystudio.netbook.event.m;
 
-final class e
-        implements View.OnClickListener {
+final class e implements View.OnClickListener {
     private /* synthetic */ AlertDialog a;
     private /* synthetic */ int b;
     private /* synthetic */ int c;

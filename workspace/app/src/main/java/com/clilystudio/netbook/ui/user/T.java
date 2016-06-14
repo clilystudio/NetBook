@@ -6,8 +6,7 @@ import android.widget.ImageView;
 
 import com.clilystudio.netbook.model.PayConsumeRecord;
 
-final class T
-        implements View.OnClickListener {
+final class T implements View.OnClickListener {
     final /* synthetic */ int a;
     final /* synthetic */ PayConsumeRecord.Order b;
     final /* synthetic */ ImageView c;

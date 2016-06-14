@@ -5,8 +5,7 @@ import android.content.Intent;
 import android.support.design.widget.am;
 import android.view.View;
 
-final class ac
-        implements View.OnClickListener {
+final class ac implements View.OnClickListener {
     private /* synthetic */ UGCMainActivity a;
 
     ac(UGCMainActivity uGCMainActivity) {

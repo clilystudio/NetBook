@@ -2,8 +2,7 @@ package com.clilystudio.netbook.widget;
 
 import android.view.View;
 
-final class aA
-        implements View.OnClickListener {
+final class aA implements View.OnClickListener {
     private /* synthetic */ ShareWarningView a;
 
     aA(ShareWarningView shareWarningView) {

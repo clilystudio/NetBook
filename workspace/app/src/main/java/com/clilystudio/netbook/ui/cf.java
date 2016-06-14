@@ -1,7 +1,6 @@
 package com.clilystudio.netbook.ui;
 
-final class cf
-        implements cd {
+final class cf implements cd {
     private /* synthetic */ ShareRemoveAdActivity a;
 
     cf(ShareRemoveAdActivity shareRemoveAdActivity) {

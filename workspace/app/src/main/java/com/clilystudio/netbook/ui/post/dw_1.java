@@ -5,8 +5,7 @@ import android.view.View;
 
 import com.clilystudio.netbook.model.User;
 
-final class dw
-        implements View.OnClickListener {
+final class dw implements View.OnClickListener {
     private /* synthetic */ User a;
     private /* synthetic */ TweetDetailActivity b;
 

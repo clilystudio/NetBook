@@ -5,8 +5,7 @@ import android.widget.EditText;
 
 import com.clilystudio.netbook.model.ReplyeeInfo;
 
-final class e
-        implements View.OnClickListener {
+final class e implements View.OnClickListener {
     private /* synthetic */ ReplyeeInfo a;
     private /* synthetic */ EditText b;
     private /* synthetic */ AbsPostActivity c;

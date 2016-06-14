@@ -6,8 +6,7 @@ import android.view.View;
 import com.clilystudio.netbook.model.RecommendUgcRoot$RecommendUGC;
 import com.clilystudio.netbook.ui.ugcbook.UGCDetailActivity;
 
-final class bC
-        implements View.OnClickListener {
+final class bC implements View.OnClickListener {
     private /* synthetic */ RecommendUgcRoot$RecommendUGC a;
     private /* synthetic */ RelateUgcFragment$GetUgcsTask b;
 

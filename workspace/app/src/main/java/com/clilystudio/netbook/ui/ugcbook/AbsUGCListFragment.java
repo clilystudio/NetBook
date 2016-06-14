@@ -22,8 +22,7 @@ import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class AbsUGCListFragment extends Fragment
-        implements AdapterView.OnItemClickListener {
+public abstract class AbsUGCListFragment extends Fragment implements AdapterView.OnItemClickListener {
     protected PullToRefreshListView a;
     protected ListView b;
     protected X c;

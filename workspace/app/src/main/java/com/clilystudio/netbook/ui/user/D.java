@@ -9,8 +9,7 @@ import com.clilystudio.netbook.ui.post.BookHelpActivity;
 import com.clilystudio.netbook.ui.post.PostDetailActivity;
 import com.clilystudio.netbook.ui.post.ReviewActivity;
 
-final class D
-        implements AdapterView.OnItemClickListener {
+final class D implements AdapterView.OnItemClickListener {
     private /* synthetic */ MyTopicFragment a;
 
     D(MyTopicFragment myTopicFragment) {

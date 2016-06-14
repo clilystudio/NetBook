@@ -2,8 +2,7 @@ package com.clilystudio.netbook.widget;
 
 import android.view.View;
 
-final class U
-        implements View.OnClickListener {
+final class U implements View.OnClickListener {
     private /* synthetic */ String a;
     private /* synthetic */ GiftGameGiftButton b;
 

@@ -2,8 +2,7 @@ package com.clilystudio.netbook.ui.ugcbook;
 
 import android.os.AsyncTask;
 
-final class aq
-        implements Runnable {
+final class aq implements Runnable {
     private /* synthetic */ ap a;
 
     aq(ap ap2) {

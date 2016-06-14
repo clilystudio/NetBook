@@ -2,8 +2,7 @@ package com.clilystudio.netbook.reader;
 
 import android.content.Context;
 
-final class aJ
-        implements dc {
+final class aJ implements dc {
     private /* synthetic */ ReaderActivity a;
 
     aJ(ReaderActivity readerActivity) {

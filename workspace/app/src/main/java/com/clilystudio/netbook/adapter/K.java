@@ -3,8 +3,7 @@ package com.clilystudio.netbook.adapter;
 import android.content.Intent;
 import android.view.View;
 
-final class K
-        implements View.OnClickListener {
+final class K implements View.OnClickListener {
     private /* synthetic */ Intent a;
     private /* synthetic */ G b;
 

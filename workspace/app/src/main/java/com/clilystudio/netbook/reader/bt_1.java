@@ -3,8 +3,7 @@ package com.clilystudio.netbook.reader;
 import android.content.DialogInterface;
 import android.view.View;
 
-final class bt
-        implements View.OnClickListener {
+final class bt implements View.OnClickListener {
     final /* synthetic */ ReaderMenuFragment a;
 
     bt(ReaderMenuFragment readerMenuFragment) {

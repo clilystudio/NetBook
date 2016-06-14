@@ -3,8 +3,7 @@ package com.clilystudio.netbook.widget;
 import android.text.Editable;
 import android.text.TextWatcher;
 
-final class aw
-        implements TextWatcher {
+final class aw implements TextWatcher {
     private /* synthetic */ SearchEditText a;
 
     aw(SearchEditText searchEditText) {

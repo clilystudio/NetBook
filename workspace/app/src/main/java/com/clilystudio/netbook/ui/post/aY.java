@@ -3,8 +3,7 @@ package com.clilystudio.netbook.ui.post;
 import android.view.View;
 import android.widget.ImageView;
 
-final class aY
-        implements View.OnClickListener {
+final class aY implements View.OnClickListener {
     private /* synthetic */ ImageView a;
     private /* synthetic */ CommonPostListActivity b;
 

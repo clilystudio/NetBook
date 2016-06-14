@@ -3,8 +3,7 @@ package com.clilystudio.netbook.ui;
 import android.view.View;
 import android.widget.AdapterView;
 
-final class aQ
-        implements AdapterView.OnItemClickListener {
+final class aQ implements AdapterView.OnItemClickListener {
     private /* synthetic */ BookRankListFragment a;
 
     aQ(BookRankListFragment bookRankListFragment) {

@@ -8,8 +8,7 @@ import android.view.View;
 
 import com.clilystudio.netbook.util.e;
 
-final class aM
-        implements View.OnClickListener {
+final class aM implements View.OnClickListener {
     private /* synthetic */ UserTaskActivity a;
 
     aM(UserTaskActivity userTaskActivity) {

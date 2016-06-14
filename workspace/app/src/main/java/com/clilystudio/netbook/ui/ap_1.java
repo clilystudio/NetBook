@@ -2,8 +2,7 @@ package com.clilystudio.netbook.ui;
 
 import android.os.AsyncTask;
 
-final class ap
-        implements j {
+final class ap implements j {
     private /* synthetic */ BookCategoryFragment a;
 
     ap(BookCategoryFragment bookCategoryFragment) {

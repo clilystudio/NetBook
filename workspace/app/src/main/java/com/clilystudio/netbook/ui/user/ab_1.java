@@ -3,8 +3,7 @@ package com.clilystudio.netbook.ui.user;
 import android.view.View;
 import android.widget.AdapterView;
 
-final class ab
-        implements AdapterView.OnItemClickListener {
+final class ab implements AdapterView.OnItemClickListener {
     private /* synthetic */ PayVoucherFragment a;
 
     ab(PayVoucherFragment payVoucherFragment) {

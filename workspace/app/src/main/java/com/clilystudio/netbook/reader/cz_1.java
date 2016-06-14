@@ -4,8 +4,7 @@ import android.view.View;
 
 import java.util.Comparator;
 
-final class cz
-        implements Comparator<View> {
+final class cz implements Comparator<View> {
     cz() {
     }
 

@@ -7,8 +7,7 @@ import java.util.HashMap;
 import cn.sharesdk.framework.Platform;
 import cn.sharesdk.framework.PlatformActionListener;
 
-final class ac
-        implements PlatformActionListener {
+final class ac implements PlatformActionListener {
     ac(BookHelpActivity bookHelpActivity) {
     }
 

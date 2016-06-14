@@ -5,8 +5,7 @@ import android.content.DialogInterface;
 import com.clilystudio.netbook.model.AppItem;
 import com.clilystudio.netbook.util.y;
 
-final class by
-        implements DialogInterface.OnClickListener {
+final class by implements DialogInterface.OnClickListener {
     private /* synthetic */ String a;
     private /* synthetic */ String b;
     private /* synthetic */ ReaderMenuFragment$DownLoadDialogFragment c;

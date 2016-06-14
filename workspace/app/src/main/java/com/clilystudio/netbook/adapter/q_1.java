@@ -2,8 +2,7 @@ package com.clilystudio.netbook.adapter;
 
 import android.widget.CompoundButton;
 
-final class q
-        implements CompoundButton.OnCheckedChangeListener {
+final class q implements CompoundButton.OnCheckedChangeListener {
     private /* synthetic */ int a;
     private /* synthetic */ HomeShelfAdapter b;
 

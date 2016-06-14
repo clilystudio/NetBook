@@ -2,8 +2,7 @@ package com.clilystudio.netbook.ui;
 
 import android.view.View;
 
-final class ck
-        implements View.OnClickListener {
+final class ck implements View.OnClickListener {
     private /* synthetic */ SplashActivity a;
 
     ck(SplashActivity splashActivity) {

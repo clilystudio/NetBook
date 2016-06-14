@@ -1,7 +1,6 @@
 package com.clilystudio.netbook.widget;
 
-final class aC
-        implements ah {
+final class aC implements ah {
     private /* synthetic */ ThemeLoadingView a;
 
     aC(ThemeLoadingView themeLoadingView) {

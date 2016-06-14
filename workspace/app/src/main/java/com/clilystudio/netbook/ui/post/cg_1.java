@@ -1,7 +1,6 @@
 package com.clilystudio.netbook.ui.post;
 
-final class cg
-        implements Runnable {
+final class cg implements Runnable {
     private /* synthetic */ cf a;
 
     cg(cf cf2) {

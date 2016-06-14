@@ -4,8 +4,7 @@ import android.view.View;
 
 import java.lang.reflect.InvocationHandler;
 
-public abstract class a
-        implements InvocationHandler {
+public abstract class a implements InvocationHandler {
     AdSplashImp a;
 
     public a(AdSplashImp adSplashImp) {

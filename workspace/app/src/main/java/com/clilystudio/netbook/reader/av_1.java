@@ -1,7 +1,6 @@
 package com.clilystudio.netbook.reader;
 
-final class av
-        implements db {
+final class av implements db {
     private /* synthetic */ ReaderActivity a;
 
     av(ReaderActivity readerActivity) {

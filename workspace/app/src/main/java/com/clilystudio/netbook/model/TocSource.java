@@ -3,8 +3,7 @@ package com.clilystudio.netbook.model;
 import java.io.Serializable;
 import java.util.Date;
 
-public class TocSource
-        implements Serializable {
+public class TocSource implements Serializable {
     private static final long serialVersionUID = -2930289815391625653L;
     private String _id;
     private String book;

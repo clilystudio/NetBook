@@ -2,8 +2,7 @@ package com.clilystudio.netbook.ui.ugcbook;
 
 import android.content.DialogInterface;
 
-final class E
-        implements DialogInterface.OnClickListener {
+final class E implements DialogInterface.OnClickListener {
     private /* synthetic */ UGCGuideAddCollectionActivity a;
 
     E(UGCGuideAddCollectionActivity uGCGuideAddCollectionActivity) {

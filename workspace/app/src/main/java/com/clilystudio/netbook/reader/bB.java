@@ -7,8 +7,7 @@ import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.event.i;
 import com.clilystudio.netbook.event.v;
 
-final class bB
-        implements View.OnClickListener {
+final class bB implements View.OnClickListener {
     private /* synthetic */ ReaderMixActivity a;
 
     bB(ReaderMixActivity readerMixActivity) {

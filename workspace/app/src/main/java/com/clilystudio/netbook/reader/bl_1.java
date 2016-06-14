@@ -1,7 +1,6 @@
 package com.clilystudio.netbook.reader;
 
-final class bl
-        implements ce {
+final class bl implements ce {
     private /* synthetic */ ReaderActivity a;
 
     bl(ReaderActivity readerActivity) {

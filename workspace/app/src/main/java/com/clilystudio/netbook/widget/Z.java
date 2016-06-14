@@ -3,8 +3,7 @@ package com.clilystudio.netbook.widget;
 import android.content.Context;
 import android.view.View;
 
-final class Z
-        implements View.OnClickListener {
+final class Z implements View.OnClickListener {
     private /* synthetic */ Context a;
     private /* synthetic */ String b;
     private /* synthetic */ HomeFindItem c;

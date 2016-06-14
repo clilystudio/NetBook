@@ -2,8 +2,7 @@ package com.clilystudio.netbook.util;
 
 import java.io.IOException;
 
-final class z
-        implements Runnable {
+final class z implements Runnable {
     private /* synthetic */ String a;
     private /* synthetic */ y b;
 

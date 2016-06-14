@@ -1,7 +1,6 @@
 package com.clilystudio.netbook.reader;
 
-final class aD
-        implements e<n> {
+final class aD implements e<n> {
     final /* synthetic */ ReaderActivity a;
 
     aD(ReaderActivity readerActivity) {

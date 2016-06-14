@@ -7,8 +7,7 @@ import android.widget.EditText;
 
 import com.clilystudio.netbook.util.e;
 
-final class bT
-        implements View.OnClickListener {
+final class bT implements View.OnClickListener {
     private /* synthetic */ SecretOpWebActivity a;
 
     bT(SecretOpWebActivity secretOpWebActivity) {

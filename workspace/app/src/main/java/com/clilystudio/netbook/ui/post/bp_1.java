@@ -7,8 +7,7 @@ import java.util.HashMap;
 import cn.sharesdk.framework.Platform;
 import cn.sharesdk.framework.PlatformActionListener;
 
-final class bp
-        implements PlatformActionListener {
+final class bp implements PlatformActionListener {
     bp(GirlTopicActivity girlTopicActivity) {
     }
 

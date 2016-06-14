@@ -6,8 +6,7 @@ import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.db.BookReadRecord;
 import com.clilystudio.netbook.reader.dl.a;
 
-final class bc
-        implements DialogInterface.OnClickListener {
+final class bc implements DialogInterface.OnClickListener {
     private /* synthetic */ ReaderActivity a;
 
     bc(ReaderActivity readerActivity) {

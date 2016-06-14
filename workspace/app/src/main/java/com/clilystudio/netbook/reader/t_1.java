@@ -3,8 +3,7 @@ package com.clilystudio.netbook.reader;
 import android.content.DialogInterface;
 import android.view.View;
 
-final class t
-        implements View.OnClickListener {
+final class t implements View.OnClickListener {
     private /* synthetic */ o a;
 
     t(o o2) {

@@ -2,8 +2,7 @@ package com.clilystudio.netbook.reader.random;
 
 import android.content.DialogInterface;
 
-final class m
-        implements DialogInterface.OnClickListener {
+final class m implements DialogInterface.OnClickListener {
     private /* synthetic */ ReaderRandomActivity a;
 
     m(ReaderRandomActivity readerRandomActivity) {

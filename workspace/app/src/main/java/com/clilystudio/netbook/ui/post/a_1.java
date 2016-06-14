@@ -3,8 +3,7 @@ package com.clilystudio.netbook.ui.post;
 import android.os.Handler;
 import android.widget.AbsListView;
 
-final class a
-        implements AbsListView.OnScrollListener {
+final class a implements AbsListView.OnScrollListener {
     final /* synthetic */ AbsPostActivity a;
 
     a(AbsPostActivity absPostActivity) {

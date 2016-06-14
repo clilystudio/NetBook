@@ -5,8 +5,7 @@ import android.support.design.widget.am;
 
 import com.clilystudio.netbook.model.Tweet;
 
-final class bT
-        implements j {
+final class bT implements j {
     private /* synthetic */ MyTweetFragment a;
 
     bT(MyTweetFragment myTweetFragment) {

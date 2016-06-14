@@ -5,8 +5,7 @@ import android.support.design.widget.am;
 
 import com.clilystudio.netbook.model.Tweet;
 
-final class dG
-        implements j {
+final class dG implements j {
     private /* synthetic */ TweetHotFragment a;
 
     dG(TweetHotFragment tweetHotFragment) {

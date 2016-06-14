@@ -3,8 +3,7 @@ package com.clilystudio.netbook.ui.user;
 import android.view.View;
 import android.widget.AdapterView;
 
-final class K
-        implements AdapterView.OnItemClickListener {
+final class K implements AdapterView.OnItemClickListener {
     private /* synthetic */ PayChargeActivity a;
 
     K(PayChargeActivity payChargeActivity) {

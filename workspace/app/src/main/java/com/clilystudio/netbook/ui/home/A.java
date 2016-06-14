@@ -8,8 +8,7 @@ import com.clilystudio.netbook.util.e;
 
 import java.util.List;
 
-final class A
-        implements View.OnClickListener {
+final class A implements View.OnClickListener {
     private /* synthetic */ HomeShelfFragment a;
 
     A(HomeShelfFragment homeShelfFragment) {

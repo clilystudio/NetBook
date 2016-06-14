@@ -5,8 +5,7 @@ import android.view.View;
 
 import com.clilystudio.netbook.model.GameLayoutRoot$ModuleLayout;
 
-final class J
-        implements View.OnClickListener {
+final class J implements View.OnClickListener {
     private /* synthetic */ GameLayoutRoot$ModuleLayout a;
     private /* synthetic */ GameLayoutFragment$LayoutAdapter b;
 

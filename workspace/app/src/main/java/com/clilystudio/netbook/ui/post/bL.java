@@ -5,8 +5,7 @@ import android.widget.ListView;
 
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 
-final class bL
-        implements k<ListView> {
+final class bL implements k<ListView> {
     final /* synthetic */ MyTweetFragment a;
 
     bL(MyTweetFragment myTweetFragment) {

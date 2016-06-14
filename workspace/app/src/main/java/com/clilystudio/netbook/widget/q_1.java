@@ -2,8 +2,7 @@ package com.clilystudio.netbook.widget;
 
 import com.c.a.a;
 
-final class q
-        implements b {
+final class q implements b {
     private /* synthetic */ CoverLoadingLayer a;
 
     q(CoverLoadingLayer coverLoadingLayer) {

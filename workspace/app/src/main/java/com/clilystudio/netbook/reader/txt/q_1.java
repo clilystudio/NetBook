@@ -2,8 +2,7 @@ package com.clilystudio.netbook.reader.txt;
 
 import android.content.DialogInterface;
 
-final class q
-        implements DialogInterface.OnCancelListener {
+final class q implements DialogInterface.OnCancelListener {
     private /* synthetic */ ReaderTxtActivity a;
 
     q(ReaderTxtActivity readerTxtActivity) {

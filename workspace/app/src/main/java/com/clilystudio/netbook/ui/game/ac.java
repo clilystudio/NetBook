@@ -2,8 +2,7 @@ package com.clilystudio.netbook.ui.game;
 
 import android.view.View;
 
-final class ac
-        implements View.OnClickListener {
+final class ac implements View.OnClickListener {
     private /* synthetic */ String a;
     private /* synthetic */ GameMicroFragment$LayoutAdapter$PromotionViewPager b;
 

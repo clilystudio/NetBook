@@ -5,8 +5,7 @@ import android.content.Context;
 import com.clilystudio.netbook.ui.cd;
 import com.clilystudio.netbook.ui.post.AbsPostActivity;
 
-final class ap
-        implements cd {
+final class ap implements cd {
     private /* synthetic */ AbsPostActivity a;
 
     ap(ao ao2, AbsPostActivity absPostActivity) {

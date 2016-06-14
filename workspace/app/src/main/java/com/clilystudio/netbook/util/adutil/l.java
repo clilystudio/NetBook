@@ -10,8 +10,7 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 import java.util.List;
 
-public final class l extends a
-        implements View.OnClickListener {
+public final class l extends a implements View.OnClickListener {
     private com.androidquery.a b;
     private View c;
     private View d;

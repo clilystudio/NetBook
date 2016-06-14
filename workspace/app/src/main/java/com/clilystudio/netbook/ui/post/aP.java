@@ -3,8 +3,7 @@ package com.clilystudio.netbook.ui.post;
 import android.os.AsyncTask;
 import android.support.design.widget.am;
 
-final class aP
-        implements j {
+final class aP implements j {
     private /* synthetic */ BookTopicListFragment a;
 
     aP(BookTopicListFragment bookTopicListFragment) {

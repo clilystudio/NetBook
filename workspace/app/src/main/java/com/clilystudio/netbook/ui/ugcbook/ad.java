@@ -7,8 +7,7 @@ import android.view.View;
 
 import com.clilystudio.netbook.ui.user.UserUGCActivity;
 
-final class ad
-        implements View.OnClickListener {
+final class ad implements View.OnClickListener {
     private /* synthetic */ UGCMainActivity a;
 
     ad(UGCMainActivity uGCMainActivity) {

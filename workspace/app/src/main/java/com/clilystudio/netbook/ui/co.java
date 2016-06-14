@@ -3,8 +3,7 @@ package com.clilystudio.netbook.ui;
 import java.io.IOException;
 import java.io.InputStream;
 
-final class co
-        implements r {
+final class co implements r {
     private /* synthetic */ WifiActivity a;
 
     co(WifiActivity wifiActivity) {

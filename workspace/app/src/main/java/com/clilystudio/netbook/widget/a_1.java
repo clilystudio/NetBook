@@ -5,8 +5,7 @@ import android.content.DialogInterface;
 
 import com.clilystudio.netbook.util.e;
 
-final class a
-        implements DialogInterface.OnClickListener {
+final class a implements DialogInterface.OnClickListener {
     private /* synthetic */ AbsDownloadButton a;
 
     a(AbsDownloadButton absDownloadButton) {

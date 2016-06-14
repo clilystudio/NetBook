@@ -1,7 +1,6 @@
 package com.clilystudio.netbook.ui;
 
-final class aY
-        implements aa {
+final class aY implements aa {
     private /* synthetic */ CropPhotoActivity a;
 
     aY(CropPhotoActivity cropPhotoActivity) {

@@ -3,8 +3,7 @@ package com.clilystudio.netbook.ui;
 import java.io.IOException;
 import java.io.InputStream;
 
-final class cn
-        implements r {
+final class cn implements r {
     private /* synthetic */ String a;
     private /* synthetic */ String b;
     private /* synthetic */ WifiActivity c;

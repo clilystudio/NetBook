@@ -2,8 +2,7 @@ package com.clilystudio.netbook.ui.user;
 
 import android.annotation.TargetApi;
 
-final class X
-        implements Runnable {
+final class X implements Runnable {
     private /* synthetic */ W a;
 
     X(W w) {

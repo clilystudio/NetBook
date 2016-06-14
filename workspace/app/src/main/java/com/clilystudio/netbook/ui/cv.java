@@ -2,8 +2,7 @@ package com.clilystudio.netbook.ui;
 
 import com.koushikdutta.async.a.a;
 
-final class cv
-        implements a {
+final class cv implements a {
     private /* synthetic */ l a;
 
     cv(cs cs2, l l2) {

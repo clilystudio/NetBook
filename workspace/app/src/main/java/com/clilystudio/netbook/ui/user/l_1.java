@@ -3,8 +3,7 @@ package com.clilystudio.netbook.ui.user;
 import android.app.AlertDialog;
 import android.view.View;
 
-final class l
-        implements View.OnClickListener {
+final class l implements View.OnClickListener {
     private /* synthetic */ AlertDialog a;
     private /* synthetic */ ModifyUserInfoActivity b;
 

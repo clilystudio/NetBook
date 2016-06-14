@@ -20,8 +20,7 @@ import com.clilystudio.netbook.util.m;
 
 import java.io.File;
 
-final class p
-        implements AdapterView.OnItemClickListener {
+final class p implements AdapterView.OnItemClickListener {
     private /* synthetic */ HomeShelfFragment a;
 
     p(HomeShelfFragment homeShelfFragment) {

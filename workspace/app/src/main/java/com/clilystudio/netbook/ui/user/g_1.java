@@ -4,8 +4,7 @@ import android.content.Intent;
 
 import com.clilystudio.netbook.ui.aa;
 
-final class g
-        implements aa {
+final class g implements aa {
     private /* synthetic */ ChargeActivity a;
 
     g(ChargeActivity chargeActivity) {

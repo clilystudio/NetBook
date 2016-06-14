@@ -2,8 +2,7 @@ package com.clilystudio.netbook.reader;
 
 import android.view.View;
 
-final class bQ
-        implements View.OnClickListener {
+final class bQ implements View.OnClickListener {
     private /* synthetic */ ReaderResActivity a;
 
     bQ(ReaderResActivity readerResActivity) {

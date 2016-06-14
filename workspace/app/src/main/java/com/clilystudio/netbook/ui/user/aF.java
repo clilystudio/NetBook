@@ -2,8 +2,7 @@ package com.clilystudio.netbook.ui.user;
 
 import android.view.View;
 
-final class aF
-        implements View.OnClickListener {
+final class aF implements View.OnClickListener {
     private /* synthetic */ UserInfoActivity a;
 
     aF(UserInfoActivity userInfoActivity) {

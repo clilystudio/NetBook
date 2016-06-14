@@ -3,8 +3,7 @@ package com.clilystudio.netbook.reader.txt;
 import android.view.View;
 import android.widget.ImageView;
 
-final class S
-        implements View.OnClickListener {
+final class S implements View.OnClickListener {
     private /* synthetic */ T a;
     private /* synthetic */ ImageView b;
     private /* synthetic */ R c;

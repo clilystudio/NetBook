@@ -20,8 +20,7 @@ import com.umeng.a.b;
 import java.text.SimpleDateFormat;
 import java.util.Locale;
 
-public class PayAccountActivity extends BaseActivity
-        implements View.OnClickListener {
+public class PayAccountActivity extends BaseActivity implements View.OnClickListener {
     private String a;
     private PaySectionItem b;
     private PaySectionItem c;

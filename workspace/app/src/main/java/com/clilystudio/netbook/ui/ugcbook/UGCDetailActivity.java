@@ -36,8 +36,7 @@ import java.util.List;
 
 import cn.sharesdk.framework.PlatformActionListener;
 
-public class UGCDetailActivity extends BaseActivity
-        implements View.OnClickListener {
+public class UGCDetailActivity extends BaseActivity implements View.OnClickListener {
     private TextView a;
     private TextView b;
     private TextView c;

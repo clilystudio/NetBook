@@ -2,8 +2,7 @@ package com.clilystudio.netbook.model;
 
 import java.io.Serializable;
 
-public class Game
-        implements Serializable {
+public class Game implements Serializable {
     private static final long serialVersionUID = -8334205226470939171L;
     private String _id;
     private boolean activityFlag;

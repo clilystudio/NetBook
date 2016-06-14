@@ -6,8 +6,7 @@ import android.view.View;
 import com.clilystudio.netbook.model.ChineseAllPromRoot;
 import com.clilystudio.netbook.widget.j;
 
-final class bF
-        implements View.OnClickListener {
+final class bF implements View.OnClickListener {
     private ChineseAllPromRoot a;
     private /* synthetic */ ReaderMixActivity b;
 

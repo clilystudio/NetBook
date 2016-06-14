@@ -1,7 +1,6 @@
 package com.clilystudio.netbook.ui.user;
 
-final class h
-        implements Runnable {
+final class h implements Runnable {
     private /* synthetic */ ChargeActivity a;
 
     h(ChargeActivity chargeActivity) {

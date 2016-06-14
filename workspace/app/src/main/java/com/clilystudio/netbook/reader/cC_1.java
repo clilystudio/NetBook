@@ -4,8 +4,7 @@ import android.content.DialogInterface;
 import android.view.View;
 import android.widget.CheckBox;
 
-final class cC
-        implements DialogInterface.OnClickListener {
+final class cC implements DialogInterface.OnClickListener {
     private /* synthetic */ View a;
     private /* synthetic */ ReaderWebActivity b;
 

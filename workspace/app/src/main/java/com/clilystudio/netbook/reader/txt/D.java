@@ -3,8 +3,7 @@ package com.clilystudio.netbook.reader.txt;
 import com.clilystudio.netbook.reader.e;
 import com.clilystudio.netbook.reader.n;
 
-final class D
-        implements e<n> {
+final class D implements e<n> {
     private /* synthetic */ C a;
 
     D(C c) {

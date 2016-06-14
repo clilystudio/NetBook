@@ -4,8 +4,7 @@ import android.support.design.widget.am;
 
 import com.clilystudio.netbook.util.I;
 
-final class p
-        implements e<ReaderChapter> {
+final class p implements e<ReaderChapter> {
     private /* synthetic */ o a;
 
     p(o o2) {

@@ -2,8 +2,7 @@ package com.clilystudio.netbook.ui;
 
 import android.content.DialogInterface;
 
-final class bZ
-        implements DialogInterface.OnClickListener {
+final class bZ implements DialogInterface.OnClickListener {
     private /* synthetic */ SettingsActivity a;
 
     bZ(SettingsActivity settingsActivity) {

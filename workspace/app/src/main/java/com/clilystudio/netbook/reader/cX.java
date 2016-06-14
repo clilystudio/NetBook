@@ -2,8 +2,7 @@ package com.clilystudio.netbook.reader;
 
 import android.view.View;
 
-final class cX
-        implements View.OnClickListener {
+final class cX implements View.OnClickListener {
     private /* synthetic */ SettingWidget a;
 
     cX(SettingWidget settingWidget) {

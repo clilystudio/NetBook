@@ -16,8 +16,7 @@ import com.clilystudio.netbook.ui.user.AuthLoginActivity;
 
 import java.util.ArrayList;
 
-public class IntroActivity extends Activity
-        implements ViewPager$OnPageChangeListener,
+public class IntroActivity extends Activity implements ViewPager$OnPageChangeListener,
         View.OnClickListener {
     private static final int[] f = new int[]{2130837667, 2130837668};
     private ViewPager a;

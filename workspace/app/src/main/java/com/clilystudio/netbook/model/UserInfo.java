@@ -5,8 +5,7 @@ import com.clilystudio.netbook.api.ApiService;
 import java.io.Serializable;
 import java.util.Date;
 
-public class UserInfo
-        implements Serializable {
+public class UserInfo implements Serializable {
     private static final long serialVersionUID = 2519451769850149545L;
     private String _id;
     private String avatar;

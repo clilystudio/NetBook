@@ -2,8 +2,7 @@ package com.clilystudio.netbook.view;
 
 import android.view.ViewTreeObserver;
 
-final class b
-        implements ViewTreeObserver.OnPreDrawListener {
+final class b implements ViewTreeObserver.OnPreDrawListener {
     private /* synthetic */ CropView a;
 
     b(CropView cropView) {

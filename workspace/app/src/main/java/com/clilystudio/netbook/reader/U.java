@@ -4,8 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-final class U
-        implements Y {
+final class U implements Y {
     final /* synthetic */ Reader a;
     private Map<Integer, ArrayList<e<ReaderChapter>>> b;
     private Map<Integer, Integer> c;

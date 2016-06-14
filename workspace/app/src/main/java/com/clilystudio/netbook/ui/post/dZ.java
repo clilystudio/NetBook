@@ -5,8 +5,7 @@ import android.support.design.widget.am;
 
 import com.clilystudio.netbook.model.Tweet;
 
-final class dZ
-        implements j {
+final class dZ implements j {
     private /* synthetic */ TweetTimelineFragment a;
 
     dZ(TweetTimelineFragment tweetTimelineFragment) {

@@ -3,8 +3,7 @@ package com.clilystudio.netbook.ui;
 import android.graphics.Bitmap;
 import android.view.ViewGroup;
 
-final class I
-        implements a {
+final class I implements a {
     private /* synthetic */ AutoScaleImageView a;
 
     I(AutoScaleImageView autoScaleImageView) {

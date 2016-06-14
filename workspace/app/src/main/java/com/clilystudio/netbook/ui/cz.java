@@ -1,7 +1,6 @@
 package com.clilystudio.netbook.ui;
 
-final class cz
-        implements Runnable {
+final class cz implements Runnable {
     private /* synthetic */ String a;
     private /* synthetic */ cw b;
 

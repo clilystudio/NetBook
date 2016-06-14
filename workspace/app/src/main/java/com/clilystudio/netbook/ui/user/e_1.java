@@ -8,8 +8,7 @@ import java.util.HashMap;
 import cn.sharesdk.framework.Platform;
 import cn.sharesdk.framework.PlatformActionListener;
 
-final class e
-        implements PlatformActionListener {
+final class e implements PlatformActionListener {
     private /* synthetic */ Handler a;
 
     e(AuthLoginActivity authLoginActivity, Handler handler) {

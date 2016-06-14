@@ -2,8 +2,7 @@ package com.clilystudio.netbook.reader;
 
 import java.util.Iterator;
 
-final class S
-        implements Runnable {
+final class S implements Runnable {
     private /* synthetic */ Reader a;
 
     S(Reader reader) {

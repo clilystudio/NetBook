@@ -24,8 +24,7 @@ import com.ximalaya.ting.android.opensdk.player.service.IXmPlayerStatusListener;
 
 import java.util.HashMap;
 
-public class AudiobookInfoActivity extends BaseActivity
-        implements View.OnClickListener,
+public class AudiobookInfoActivity extends BaseActivity implements View.OnClickListener,
         ad {
     private View a;
     private View b;

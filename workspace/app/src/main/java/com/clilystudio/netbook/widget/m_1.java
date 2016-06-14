@@ -4,8 +4,7 @@ import android.content.DialogInterface;
 
 import com.clilystudio.netbook.model.PostComment;
 
-final class m
-        implements DialogInterface.OnClickListener {
+final class m implements DialogInterface.OnClickListener {
     private /* synthetic */ PostComment a;
     private /* synthetic */ CommentItemView b;
 

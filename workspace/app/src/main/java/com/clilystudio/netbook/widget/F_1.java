@@ -4,8 +4,7 @@ import android.view.View;
 
 import com.clilystudio.netbook.view.a;
 
-final class F
-        implements View.OnClickListener {
+final class F implements View.OnClickListener {
     private /* synthetic */ a a;
     private /* synthetic */ GameGiftItemView b;
 

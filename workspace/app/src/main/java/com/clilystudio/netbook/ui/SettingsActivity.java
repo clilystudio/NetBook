@@ -22,8 +22,7 @@ import com.clilystudio.netbook.ui.post.CommonPostListActivity;
 import com.clilystudio.netbook.util.e;
 import com.umeng.a.b;
 
-public class SettingsActivity extends BaseActivity
-        implements View.OnClickListener {
+public class SettingsActivity extends BaseActivity implements View.OnClickListener {
     private int a;
 
     private static void a(View view, boolean bl) {

@@ -3,8 +3,7 @@ package com.clilystudio.netbook.ui.user;
 import android.content.Intent;
 import android.view.View;
 
-final class aq
-        implements View.OnClickListener {
+final class aq implements View.OnClickListener {
     private /* synthetic */ SmsSendActivity a;
 
     aq(SmsSendActivity smsSendActivity) {

@@ -2,8 +2,7 @@ package com.clilystudio.netbook.ui.home;
 
 import android.view.View;
 
-final class B
-        implements View.OnClickListener {
+final class B implements View.OnClickListener {
     private /* synthetic */ HomeShelfFragment a;
 
     B(HomeShelfFragment homeShelfFragment) {

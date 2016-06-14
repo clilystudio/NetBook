@@ -6,8 +6,7 @@ import android.content.DialogInterface;
 import com.clilystudio.netbook.util.A;
 import com.clilystudio.netbook.util.e;
 
-final class bl
-        implements DialogInterface.OnClickListener {
+final class bl implements DialogInterface.OnClickListener {
     private /* synthetic */ MhdListActivity a;
 
     bl(MhdListActivity mhdListActivity) {

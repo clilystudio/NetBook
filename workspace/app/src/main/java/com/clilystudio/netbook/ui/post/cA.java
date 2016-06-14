@@ -6,8 +6,7 @@ import android.view.View;
 import com.clilystudio.netbook.model.Author;
 import com.clilystudio.netbook.util.e;
 
-final class cA
-        implements View.OnClickListener {
+final class cA implements View.OnClickListener {
     private /* synthetic */ Author a;
     private /* synthetic */ ReviewActivity b;
 

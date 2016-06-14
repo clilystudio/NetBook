@@ -3,8 +3,7 @@ package com.clilystudio.netbook.model;
 import java.io.Serializable;
 import java.util.Date;
 
-public class Splash
-        implements Serializable {
+public class Splash implements Serializable {
     private static final long serialVersionUID = -1994127725401600755L;
     private String _id;
     private Date end;

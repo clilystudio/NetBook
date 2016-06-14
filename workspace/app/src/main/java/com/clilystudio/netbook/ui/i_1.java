@@ -4,8 +4,7 @@ import android.widget.SeekBar;
 
 import com.clilystudio.netbook.util.as;
 
-final class i
-        implements SeekBar.OnSeekBarChangeListener {
+final class i implements SeekBar.OnSeekBarChangeListener {
     private /* synthetic */ AudioBookPlayActivity a;
 
     i(AudioBookPlayActivity audioBookPlayActivity) {

@@ -3,8 +3,7 @@ package com.clilystudio.netbook.ui.user;
 import android.content.DialogInterface;
 import android.widget.EditText;
 
-final class o
-        implements DialogInterface.OnClickListener {
+final class o implements DialogInterface.OnClickListener {
     private /* synthetic */ EditText a;
     private /* synthetic */ ModifyUserInfoActivity b;
 

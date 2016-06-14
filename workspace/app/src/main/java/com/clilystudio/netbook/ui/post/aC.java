@@ -2,8 +2,7 @@ package com.clilystudio.netbook.ui.post;
 
 import android.view.View;
 
-final class aC
-        implements View.OnClickListener {
+final class aC implements View.OnClickListener {
     private /* synthetic */ BookReviewListFragment a;
 
     aC(BookReviewListFragment bookReviewListFragment) {

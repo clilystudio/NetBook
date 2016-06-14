@@ -5,8 +5,7 @@ import android.widget.CheckBox;
 
 import com.clilystudio.netbook.model.BookShelf;
 
-final class s
-        implements DialogInterface.OnClickListener {
+final class s implements DialogInterface.OnClickListener {
     private /* synthetic */ BookShelf a;
     private /* synthetic */ CheckBox b;
     private /* synthetic */ HomeShelfFragment c;

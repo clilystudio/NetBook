@@ -1,7 +1,6 @@
 package com.clilystudio.netbook.ui.home;
 
-final class k
-        implements a {
+final class k implements a {
     private /* synthetic */ HomeParentActivity a;
 
     k(HomeParentActivity homeParentActivity) {

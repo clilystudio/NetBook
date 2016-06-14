@@ -3,8 +3,7 @@ package com.clilystudio.netbook.ui.post;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 
-final class b
-        implements Runnable {
+final class b implements Runnable {
     private /* synthetic */ a a;
 
     b(a a2) {

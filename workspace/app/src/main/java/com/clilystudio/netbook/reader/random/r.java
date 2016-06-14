@@ -2,8 +2,7 @@ package com.clilystudio.netbook.reader.random;
 
 import android.view.View;
 
-final class r
-        implements View.OnSystemUiVisibilityChangeListener {
+final class r implements View.OnSystemUiVisibilityChangeListener {
     private /* synthetic */ ReaderRandomActivity a;
 
     r(ReaderRandomActivity readerRandomActivity) {

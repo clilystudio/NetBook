@@ -4,8 +4,7 @@ import com.clilystudio.netbook.db.BookFile;
 
 import java.io.File;
 
-final class cm
-        implements r {
+final class cm implements r {
     private /* synthetic */ BookFile a;
 
     cm(WifiActivity wifiActivity, BookFile bookFile) {

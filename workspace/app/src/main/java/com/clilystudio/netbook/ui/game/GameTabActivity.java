@@ -18,8 +18,7 @@ import com.clilystudio.netbook.ui.BaseTabActivity;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GameTabActivity extends BaseTabActivity
-        implements ViewPager$OnPageChangeListener,
+public class GameTabActivity extends BaseTabActivity implements ViewPager$OnPageChangeListener,
         TabHost.OnTabChangeListener,
         TabHost.TabContentFactory {
     private final String[] b = new String[]{"recommend", "rank", "category", "micro"};

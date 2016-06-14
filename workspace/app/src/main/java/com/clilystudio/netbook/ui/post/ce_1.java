@@ -1,7 +1,6 @@
 package com.clilystudio.netbook.ui.post;
 
-final class ce
-        implements Runnable {
+final class ce implements Runnable {
     private /* synthetic */ cd a;
 
     ce(cd cd2) {

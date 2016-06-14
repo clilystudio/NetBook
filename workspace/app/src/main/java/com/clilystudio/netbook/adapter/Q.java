@@ -4,8 +4,7 @@ import android.graphics.Rect;
 import android.view.TouchDelegate;
 import android.view.View;
 
-final class Q
-        implements Runnable {
+final class Q implements Runnable {
     private /* synthetic */ View a;
     private /* synthetic */ int b;
     private /* synthetic */ int c;

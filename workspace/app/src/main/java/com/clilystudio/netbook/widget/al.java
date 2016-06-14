@@ -4,8 +4,7 @@ import android.content.DialogInterface;
 
 import com.clilystudio.netbook.model.PaySheetItem;
 
-final class al
-        implements DialogInterface.OnClickListener {
+final class al implements DialogInterface.OnClickListener {
     private /* synthetic */ ak a;
 
     al(ak ak2) {

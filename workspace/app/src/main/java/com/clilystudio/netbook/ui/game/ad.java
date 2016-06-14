@@ -2,8 +2,7 @@ package com.clilystudio.netbook.ui.game;
 
 import android.support.v4.view.ViewPager$OnPageChangeListener;
 
-final class ad
-        implements ViewPager$OnPageChangeListener {
+final class ad implements ViewPager$OnPageChangeListener {
     private /* synthetic */ GameMicroFragment$LayoutAdapter$PromotionViewPager a;
 
     ad(GameMicroFragment$LayoutAdapter$PromotionViewPager promotionViewPager) {

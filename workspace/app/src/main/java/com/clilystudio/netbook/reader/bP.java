@@ -4,8 +4,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.view.View;
 
-final class bP
-        implements View.OnClickListener {
+final class bP implements View.OnClickListener {
     private /* synthetic */ AlertDialog a;
     private /* synthetic */ int b;
     private /* synthetic */ ReaderOptionActivity c;

@@ -4,8 +4,7 @@ import android.content.DialogInterface;
 
 import com.clilystudio.netbook.model.BookShelf;
 
-final class r
-        implements DialogInterface.OnClickListener {
+final class r implements DialogInterface.OnClickListener {
     private /* synthetic */ BookShelf a;
     private /* synthetic */ HomeShelfFragment b;
 

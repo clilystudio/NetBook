@@ -2,8 +2,7 @@ package com.clilystudio.netbook.model;
 
 import java.io.Serializable;
 
-public class UserInfo$UserTodayTask
-        implements Serializable {
+public class UserInfo$UserTodayTask implements Serializable {
     private static final long serialVersionUID = 327955040176412798L;
     private boolean comment;
     private boolean launch;

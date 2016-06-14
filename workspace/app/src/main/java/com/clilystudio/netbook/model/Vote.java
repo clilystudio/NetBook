@@ -1,7 +1,6 @@
 package com.clilystudio.netbook.model;
 
-public class Vote
-        implements Comparable<Vote> {
+public class Vote implements Comparable<Vote> {
     private String content;
     private int count;
 

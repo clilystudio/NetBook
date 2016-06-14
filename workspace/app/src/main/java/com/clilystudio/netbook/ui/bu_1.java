@@ -6,8 +6,7 @@ import android.widget.AdapterView;
 
 import com.clilystudio.netbook.viewbinder.notification.NotifBinderFactory;
 
-final class bu
-        implements AdapterView.OnItemClickListener {
+final class bu implements AdapterView.OnItemClickListener {
     private /* synthetic */ NotifFragment a;
 
     bu(NotifFragment notifFragment) {

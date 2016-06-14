@@ -3,8 +3,7 @@ package com.clilystudio.netbook.model;
 import java.io.Serializable;
 import java.text.DecimalFormat;
 
-public class ChargePlan
-        implements Serializable {
+public class ChargePlan implements Serializable {
     private static final long serialVersionUID = -8138264341542713200L;
     private String _id;
     private int currency;

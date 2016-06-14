@@ -6,8 +6,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.text.TextUtils;
 
-final class k
-        implements DialogInterface.OnClickListener {
+final class k implements DialogInterface.OnClickListener {
     private /* synthetic */ String a;
     private /* synthetic */ Context b;
 

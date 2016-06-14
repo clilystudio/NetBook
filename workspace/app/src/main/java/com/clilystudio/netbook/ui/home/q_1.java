@@ -5,8 +5,7 @@ import android.widget.AdapterView;
 
 import com.clilystudio.netbook.model.BookShelf;
 
-final class q
-        implements AdapterView.OnItemLongClickListener {
+final class q implements AdapterView.OnItemLongClickListener {
     private /* synthetic */ HomeShelfFragment a;
 
     q(HomeShelfFragment homeShelfFragment) {

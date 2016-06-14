@@ -2,8 +2,7 @@ package com.clilystudio.netbook.model;
 
 import java.io.Serializable;
 
-public class AdvertData
-        implements Serializable {
+public class AdvertData implements Serializable {
     private String _id;
     private int apkSize;
     private String desc;

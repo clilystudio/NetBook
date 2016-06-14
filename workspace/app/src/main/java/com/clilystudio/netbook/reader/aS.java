@@ -2,8 +2,7 @@ package com.clilystudio.netbook.reader;
 
 import java.util.LinkedList;
 
-final class aS
-        implements e<n> {
+final class aS implements e<n> {
     private /* synthetic */ ReaderActivity a;
 
     aS(ReaderActivity readerActivity) {

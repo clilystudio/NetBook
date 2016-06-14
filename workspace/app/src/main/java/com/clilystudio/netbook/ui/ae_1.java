@@ -5,8 +5,7 @@ import android.view.View;
 
 import com.clilystudio.netbook.ui.post.BookPostTabActivity;
 
-final class ae
-        implements View.OnClickListener {
+final class ae implements View.OnClickListener {
     private /* synthetic */ BestReviewsFragment a;
 
     ae(BestReviewsFragment bestReviewsFragment) {

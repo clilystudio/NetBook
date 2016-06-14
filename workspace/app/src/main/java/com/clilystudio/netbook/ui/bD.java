@@ -4,8 +4,7 @@ import com.clilystudio.netbook.widget.ax;
 
 import java.util.Calendar;
 
-final class bD
-        implements ax {
+final class bD implements ax {
     private /* synthetic */ SearchActivity$SearchPromptAdapter a;
 
     bD(SearchActivity searchActivity, SearchActivity$SearchPromptAdapter searchPromptAdapter) {

@@ -9,8 +9,7 @@ import com.clilystudio.netbook.event.i;
 import com.clilystudio.netbook.reader.dl.a;
 import com.clilystudio.netbook.widget.y;
 
-final class r
-        implements y {
+final class r implements y {
     private String a;
     private /* synthetic */ HomeShelfAdapter b;
 

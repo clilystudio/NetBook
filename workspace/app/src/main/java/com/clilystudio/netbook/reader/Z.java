@@ -4,8 +4,7 @@ import android.support.design.widget.am;
 
 import com.clilystudio.netbook.model.ChapterLink;
 
-abstract class Z
-        implements Runnable {
+abstract class Z implements Runnable {
     private int a;
     private /* synthetic */ Reader b;
 

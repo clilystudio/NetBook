@@ -2,8 +2,7 @@ package com.clilystudio.netbook.model;
 
 import java.io.Serializable;
 
-public class CategoryLevelRoot$CategoryLevel
-        implements Serializable {
+public class CategoryLevelRoot$CategoryLevel implements Serializable {
     final /* synthetic */ CategoryLevelRoot this$0;
     private String major;
     private String[] mins;

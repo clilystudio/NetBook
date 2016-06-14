@@ -2,8 +2,7 @@ package com.clilystudio.netbook.ui.post;
 
 import android.content.DialogInterface;
 
-final class p
-        implements DialogInterface.OnClickListener {
+final class p implements DialogInterface.OnClickListener {
     p(AddGamePostActivity addGamePostActivity) {
     }
 

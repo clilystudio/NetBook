@@ -1,7 +1,6 @@
 package com.clilystudio.netbook.model;
 
-public class CommonReplyeeInfo
-        implements ReplyeeInfo {
+public class CommonReplyeeInfo implements ReplyeeInfo {
     private String _id;
     private Author author;
     private int floor;

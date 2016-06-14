@@ -5,8 +5,7 @@ import android.view.View;
 import com.clilystudio.netbook.model.TopicPost;
 import com.clilystudio.netbook.util.e;
 
-final class k
-        implements View.OnClickListener {
+final class k implements View.OnClickListener {
     private /* synthetic */ TopicPost a;
 
     k(j j2, TopicPost topicPost) {

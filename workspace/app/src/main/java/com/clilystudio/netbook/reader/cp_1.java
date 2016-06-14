@@ -2,8 +2,7 @@ package com.clilystudio.netbook.reader;
 
 import android.view.animation.Interpolator;
 
-final class cp
-        implements Interpolator {
+final class cp implements Interpolator {
     cp() {
     }
 

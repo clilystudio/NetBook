@@ -9,8 +9,7 @@ import com.iflytek.cloud.SpeechUtility;
 
 import java.util.LinkedList;
 
-final class ak
-        implements com.umeng.update.a {
+final class ak implements com.umeng.update.a {
     private /* synthetic */ ReaderActivity a;
 
     ak(ReaderActivity readerActivity) {

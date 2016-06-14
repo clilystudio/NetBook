@@ -5,8 +5,7 @@ import android.app.Activity;
 import com.clilystudio.netbook.ui.ab;
 import com.clilystudio.netbook.util.e;
 
-final class H
-        implements ab {
+final class H implements ab {
     private /* synthetic */ UGCGuideEditBooksActivity a;
 
     H(UGCGuideEditBooksActivity uGCGuideEditBooksActivity) {

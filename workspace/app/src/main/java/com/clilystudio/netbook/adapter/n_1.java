@@ -4,8 +4,7 @@ import android.view.View;
 
 import com.clilystudio.netbook.model.GameGiftGroup;
 
-final class n
-        implements View.OnClickListener {
+final class n implements View.OnClickListener {
     private /* synthetic */ GameGiftGroup a;
     private /* synthetic */ GameGiftGroupAdapter b;
 

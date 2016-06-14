@@ -4,8 +4,7 @@ import android.content.DialogInterface;
 
 import com.clilystudio.netbook.model.Review;
 
-final class aD
-        implements DialogInterface.OnClickListener {
+final class aD implements DialogInterface.OnClickListener {
     private /* synthetic */ Review a;
     private /* synthetic */ BookReviewListFragment b;
 

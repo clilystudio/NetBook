@@ -2,8 +2,7 @@ package com.clilystudio.netbook.ui.user;
 
 import android.widget.AbsListView;
 
-final class P
-        implements AbsListView.OnScrollListener {
+final class P implements AbsListView.OnScrollListener {
     private /* synthetic */ PayConsumeActivity a;
 
     P(PayConsumeActivity payConsumeActivity) {

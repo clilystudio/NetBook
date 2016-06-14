@@ -3,8 +3,7 @@ package com.clilystudio.netbook.ui.ugcbook;
 import android.text.Editable;
 import android.text.TextWatcher;
 
-final class u
-        implements TextWatcher {
+final class u implements TextWatcher {
     private /* synthetic */ UGCGuideAddBookActivity a;
 
     u(UGCGuideAddBookActivity uGCGuideAddBookActivity) {

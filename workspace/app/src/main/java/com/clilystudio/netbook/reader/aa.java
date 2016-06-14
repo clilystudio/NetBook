@@ -2,8 +2,7 @@ package com.clilystudio.netbook.reader;
 
 import com.clilystudio.netbook.reader.txt.U;
 
-abstract class aa
-        implements Runnable {
+abstract class aa implements Runnable {
     private boolean a;
     private /* synthetic */ Reader b;
 

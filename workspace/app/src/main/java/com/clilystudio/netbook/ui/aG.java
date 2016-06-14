@@ -3,8 +3,7 @@ package com.clilystudio.netbook.ui;
 import android.content.DialogInterface;
 import android.widget.CheckBox;
 
-final class aG
-        implements DialogInterface.OnClickListener {
+final class aG implements DialogInterface.OnClickListener {
     private /* synthetic */ CheckBox a;
     private /* synthetic */ BookInfoActivity b;
 

@@ -1,7 +1,6 @@
 package com.clilystudio.netbook.reader;
 
-final class cR
-        implements cc {
+final class cR implements cc {
     private /* synthetic */ SettingWidget a;
 
     cR(SettingWidget settingWidget) {

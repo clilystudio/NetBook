@@ -6,8 +6,7 @@ import android.view.View;
 
 import com.clilystudio.netbook.model.RelateBookRoot;
 
-final class bA
-        implements View.OnClickListener {
+final class bA implements View.OnClickListener {
     private /* synthetic */ RelateBookRoot a;
     private /* synthetic */ RelateBooksFragment b;
 

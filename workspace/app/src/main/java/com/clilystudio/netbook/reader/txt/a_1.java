@@ -3,8 +3,7 @@ package com.clilystudio.netbook.reader.txt;
 import com.clilystudio.netbook.reader.ReaderOptionActivity;
 import com.clilystudio.netbook.reader.db;
 
-final class a
-        implements db {
+final class a implements db {
     private /* synthetic */ ReaderTxtActivity a;
 
     a(ReaderTxtActivity readerTxtActivity) {

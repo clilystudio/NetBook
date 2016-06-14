@@ -8,8 +8,7 @@ import android.widget.Checkable;
 import android.widget.CompoundButton;
 import android.widget.RelativeLayout;
 
-public class SettingItem extends RelativeLayout
-        implements View.OnClickListener,
+public class SettingItem extends RelativeLayout implements View.OnClickListener,
         Checkable {
     private boolean a;
     private SwitchCompat b;

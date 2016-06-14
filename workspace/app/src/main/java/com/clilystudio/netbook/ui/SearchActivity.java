@@ -23,8 +23,7 @@ import java.util.List;
 
 import butterknife.ButterKnife;
 
-public class SearchActivity extends BaseActivity
-        implements View.OnClickListener {
+public class SearchActivity extends BaseActivity implements View.OnClickListener {
     private InputMethodManager a;
     private String b;
     private int c;

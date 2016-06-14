@@ -1,7 +1,6 @@
 package com.clilystudio.netbook.reader;
 
-final class aG
-        implements e<n> {
+final class aG implements e<n> {
     private /* synthetic */ aF a;
 
     aG(aF aF2) {

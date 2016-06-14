@@ -4,8 +4,7 @@ import com.clilystudio.netbook.model.UGCBookListRoot$UGCBook;
 
 import java.util.Comparator;
 
-final class f
-        implements Comparator<UGCBookListRoot$UGCBook> {
+final class f implements Comparator<UGCBookListRoot$UGCBook> {
     f(DraftUGCListFragment draftUGCListFragment) {
     }
 

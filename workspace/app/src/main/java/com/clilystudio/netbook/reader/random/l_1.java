@@ -4,8 +4,7 @@ import com.clilystudio.netbook.reader.e;
 import com.clilystudio.netbook.reader.n;
 import com.clilystudio.netbook.reader.o;
 
-final class l
-        implements e<n> {
+final class l implements e<n> {
     private /* synthetic */ o a;
 
     l(ReaderRandomActivity readerRandomActivity, o o2) {

@@ -2,8 +2,7 @@ package com.clilystudio.netbook.ui;
 
 import android.webkit.DownloadListener;
 
-final class a
-        implements DownloadListener {
+final class a implements DownloadListener {
     private /* synthetic */ AdWebViewActivity a;
 
     a(AdWebViewActivity adWebViewActivity) {

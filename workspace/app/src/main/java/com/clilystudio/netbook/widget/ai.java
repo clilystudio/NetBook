@@ -6,8 +6,7 @@ import android.text.StaticLayout;
 import android.view.ViewTreeObserver;
 import android.widget.LinearLayout;
 
-final class ai
-        implements ViewTreeObserver.OnGlobalLayoutListener {
+final class ai implements ViewTreeObserver.OnGlobalLayoutListener {
     private /* synthetic */ String a;
     private /* synthetic */ String b;
     private /* synthetic */ MenuGameTitle c;

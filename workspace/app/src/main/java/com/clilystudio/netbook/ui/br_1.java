@@ -2,8 +2,7 @@ package com.clilystudio.netbook.ui;
 
 import android.view.View;
 
-final class br
-        implements View.OnClickListener {
+final class br implements View.OnClickListener {
     private /* synthetic */ NotifFragment a;
 
     br(NotifFragment notifFragment) {

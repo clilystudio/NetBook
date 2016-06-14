@@ -3,8 +3,7 @@ package com.clilystudio.netbook.reader;
 import java.util.Iterator;
 import java.util.List;
 
-final class W
-        implements Runnable {
+final class W implements Runnable {
     private /* synthetic */ List a;
     private /* synthetic */ ReaderChapter b;
 

@@ -5,8 +5,7 @@ import com.clilystudio.netbook.event.i;
 import com.clilystudio.netbook.util.as;
 import com.clilystudio.netbook.util.e;
 
-class f
-        implements aa {
+class f implements aa {
     private /* synthetic */ AudioBookPlayActivity a;
 
     f(AudioBookPlayActivity audioBookPlayActivity) {

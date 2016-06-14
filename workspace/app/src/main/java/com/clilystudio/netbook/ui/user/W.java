@@ -4,8 +4,7 @@ import android.os.Handler;
 import android.view.View;
 import android.widget.PopupWindow;
 
-final class W
-        implements View.OnClickListener {
+final class W implements View.OnClickListener {
     final /* synthetic */ int a;
     final /* synthetic */ S b;
     private /* synthetic */ PopupWindow c;

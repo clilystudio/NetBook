@@ -2,8 +2,7 @@ package com.clilystudio.netbook.reader;
 
 import android.widget.SeekBar;
 
-final class cV
-        implements SeekBar.OnSeekBarChangeListener {
+final class cV implements SeekBar.OnSeekBarChangeListener {
     private /* synthetic */ SettingWidget a;
 
     cV(SettingWidget settingWidget) {

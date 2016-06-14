@@ -4,8 +4,7 @@ import android.content.DialogInterface;
 
 import com.iflytek.cloud.SpeechUtility;
 
-final class c
-        implements DialogInterface.OnClickListener {
+final class c implements DialogInterface.OnClickListener {
     private /* synthetic */ ReaderTxtActivity a;
 
     c(ReaderTxtActivity readerTxtActivity) {

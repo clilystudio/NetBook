@@ -1,7 +1,6 @@
 package com.clilystudio.netbook.widget;
 
-final class r
-        implements D {
+final class r implements D {
     private /* synthetic */ CoverLoadingLayer a;
 
     r(CoverLoadingLayer coverLoadingLayer) {

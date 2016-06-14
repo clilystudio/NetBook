@@ -3,8 +3,7 @@ package com.clilystudio.netbook.widget;
 import android.text.Editable;
 import android.text.TextWatcher;
 
-final class ay
-        implements TextWatcher {
+final class ay implements TextWatcher {
     private /* synthetic */ SendView a;
 
     ay(SendView sendView) {

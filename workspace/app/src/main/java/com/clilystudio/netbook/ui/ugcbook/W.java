@@ -11,8 +11,7 @@ import com.clilystudio.netbook.model.UGCNewCollection;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-final class W
-        implements View.OnClickListener {
+final class W implements View.OnClickListener {
     private /* synthetic */ UGCGuideSelectBookActivity a;
 
     W(UGCGuideSelectBookActivity uGCGuideSelectBookActivity) {

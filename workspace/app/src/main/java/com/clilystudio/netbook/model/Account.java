@@ -2,8 +2,7 @@ package com.clilystudio.netbook.model;
 
 import java.io.Serializable;
 
-public class Account
-        implements Serializable {
+public class Account implements Serializable {
     private static final long serialVersionUID = 7268031855566891017L;
     private String code;
     private boolean ok;

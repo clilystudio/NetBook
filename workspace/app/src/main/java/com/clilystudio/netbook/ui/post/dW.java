@@ -4,8 +4,7 @@ import android.view.View;
 
 import com.clilystudio.netbook.ui.user.AuthLoginActivity;
 
-final class dW
-        implements View.OnClickListener {
+final class dW implements View.OnClickListener {
     private /* synthetic */ TweetTimelineFragment a;
 
     dW(TweetTimelineFragment tweetTimelineFragment) {

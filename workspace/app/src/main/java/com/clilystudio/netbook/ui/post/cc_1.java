@@ -1,7 +1,6 @@
 package com.clilystudio.netbook.ui.post;
 
-final class cc
-        implements Runnable {
+final class cc implements Runnable {
     private /* synthetic */ OtherUserActivity a;
 
     cc(OtherUserActivity otherUserActivity) {

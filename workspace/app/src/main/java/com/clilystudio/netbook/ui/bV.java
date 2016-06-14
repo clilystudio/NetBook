@@ -2,8 +2,7 @@ package com.clilystudio.netbook.ui;
 
 import android.view.View;
 
-final class bV
-        implements View.OnLongClickListener {
+final class bV implements View.OnLongClickListener {
     private /* synthetic */ SettingsActivity a;
 
     bV(SettingsActivity settingsActivity) {

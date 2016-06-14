@@ -5,8 +5,7 @@ import com.clilystudio.netbook.model.ChapterLink;
 import java.io.Serializable;
 import java.util.List;
 
-public class LocalTxtToc
-        implements Serializable {
+public class LocalTxtToc implements Serializable {
     private List<ChapterLink> mChapterLinks;
     private long txtFileLength;
 

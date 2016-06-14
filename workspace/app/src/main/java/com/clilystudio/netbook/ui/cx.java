@@ -5,8 +5,7 @@ import java.util.HashMap;
 import cn.sharesdk.framework.Platform;
 import cn.sharesdk.framework.PlatformActionListener;
 
-final class cx
-        implements PlatformActionListener {
+final class cx implements PlatformActionListener {
     private /* synthetic */ cw a;
 
     cx(cw cw2) {

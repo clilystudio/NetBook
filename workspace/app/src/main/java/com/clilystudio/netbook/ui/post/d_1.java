@@ -6,8 +6,7 @@ import android.widget.TextView;
 
 import com.clilystudio.netbook.model.Account;
 
-final class d
-        implements View.OnClickListener {
+final class d implements View.OnClickListener {
     private /* synthetic */ TextView a;
     private /* synthetic */ AbsPostActivity b;
 

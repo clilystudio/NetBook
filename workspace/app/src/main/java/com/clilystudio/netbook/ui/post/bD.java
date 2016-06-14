@@ -6,8 +6,7 @@ import android.widget.AdapterView;
 
 import com.clilystudio.netbook.model.GirlTopicSummary;
 
-final class bD
-        implements AdapterView.OnItemClickListener {
+final class bD implements AdapterView.OnItemClickListener {
     private /* synthetic */ GirlTopicListActivity a;
 
     bD(GirlTopicListActivity girlTopicListActivity) {

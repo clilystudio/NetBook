@@ -9,8 +9,7 @@ import com.clilystudio.netbook.api.ApiService;
 import java.io.Serializable;
 import java.util.Arrays;
 
-public abstract class Advert
-        implements Serializable {
+public abstract class Advert implements Serializable {
     private static final long serialVersionUID = 5914392892334299329L;
     private AdvertData data;
     private String position;

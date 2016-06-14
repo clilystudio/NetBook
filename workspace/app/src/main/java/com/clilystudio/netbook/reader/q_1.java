@@ -4,8 +4,7 @@ import android.view.View;
 
 import com.clilystudio.netbook.util.e;
 
-final class q
-        implements View.OnClickListener {
+final class q implements View.OnClickListener {
     private /* synthetic */ o a;
 
     q(o o2) {

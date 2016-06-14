@@ -5,8 +5,7 @@ import android.view.View;
 
 import com.clilystudio.netbook.model.Tweet;
 
-final class N
-        implements View.OnClickListener {
+final class N implements View.OnClickListener {
     final /* synthetic */ R a;
     final /* synthetic */ Tweet b;
     final /* synthetic */ G c;

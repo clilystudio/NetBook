@@ -2,8 +2,7 @@ package com.clilystudio.netbook.model;
 
 import java.io.Serializable;
 
-public class TocSourceRoot
-        implements Serializable {
+public class TocSourceRoot implements Serializable {
     private static final long serialVersionUID = -1302208452678963962L;
     private boolean ok;
     private TocSource[] sources;

@@ -4,8 +4,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.PopupWindow;
 
-final class cK
-        implements View.OnTouchListener {
+final class cK implements View.OnTouchListener {
     private /* synthetic */ PopupWindow a;
 
     cK(ReviewListActivity reviewListActivity, PopupWindow popupWindow) {

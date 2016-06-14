@@ -1,7 +1,6 @@
 package com.clilystudio.netbook.reader.txt;
 
-final class P
-        implements Runnable {
+final class P implements Runnable {
     private /* synthetic */ ScanTxtFileActivity a;
 
     P(ScanTxtFileActivity scanTxtFileActivity) {

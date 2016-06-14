@@ -8,8 +8,7 @@ import android.view.ViewGroup;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 
-public abstract class WebPageFragment extends Fragment
-        implements View.OnClickListener {
+public abstract class WebPageFragment extends Fragment implements View.OnClickListener {
     private WebView a;
     private View b;
     private View c;

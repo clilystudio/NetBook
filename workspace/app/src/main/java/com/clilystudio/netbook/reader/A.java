@@ -4,8 +4,7 @@ import android.view.View;
 
 import com.clilystudio.netbook.model.Advert;
 
-final class A
-        implements View.OnClickListener {
+final class A implements View.OnClickListener {
     private /* synthetic */ Advert a;
 
     A(o o2, Advert advert) {

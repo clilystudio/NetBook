@@ -4,8 +4,7 @@ import android.view.View;
 
 import com.clilystudio.netbook.ui.user.ModifyUserInfoActivity;
 
-final class bO
-        implements View.OnClickListener {
+final class bO implements View.OnClickListener {
     private /* synthetic */ MyTweetFragment a;
 
     bO(MyTweetFragment myTweetFragment) {

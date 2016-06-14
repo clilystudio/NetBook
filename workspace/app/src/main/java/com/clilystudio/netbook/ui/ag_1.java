@@ -6,8 +6,7 @@ import android.view.View;
 import com.clilystudio.netbook.model.BookReview;
 import com.clilystudio.netbook.ui.post.ReviewActivity;
 
-final class ag
-        implements View.OnClickListener {
+final class ag implements View.OnClickListener {
     private /* synthetic */ BookReview a;
     private /* synthetic */ BestReviewsFragment b;
 

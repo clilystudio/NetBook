@@ -4,8 +4,7 @@ import android.os.AsyncTask;
 
 import com.clilystudio.netbook.widget.av;
 
-final class bo
-        implements av {
+final class bo implements av {
     private /* synthetic */ GirlTopicActivity a;
 
     bo(GirlTopicActivity girlTopicActivity) {

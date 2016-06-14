@@ -5,8 +5,7 @@ import android.text.TextWatcher;
 import android.widget.Button;
 import android.widget.EditText;
 
-final class W
-        implements TextWatcher {
+final class W implements TextWatcher {
     private /* synthetic */ EditText a;
     private /* synthetic */ Button b;
 

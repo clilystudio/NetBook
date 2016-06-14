@@ -3,8 +3,7 @@ package com.clilystudio.netbook.reader.txt;
 import com.clilystudio.netbook.reader.cc;
 import com.clilystudio.netbook.reader.o;
 
-final class H
-        implements cc {
+final class H implements cc {
     private /* synthetic */ ReaderTxtActivity a;
 
     H(ReaderTxtActivity readerTxtActivity) {

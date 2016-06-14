@@ -7,8 +7,7 @@ import java.util.HashMap;
 import cn.sharesdk.framework.Platform;
 import cn.sharesdk.framework.PlatformActionListener;
 
-final class dx
-        implements PlatformActionListener {
+final class dx implements PlatformActionListener {
     dx(TweetDetailActivity tweetDetailActivity) {
     }
 

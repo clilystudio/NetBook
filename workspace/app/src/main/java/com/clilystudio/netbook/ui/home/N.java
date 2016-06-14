@@ -8,8 +8,7 @@ import com.clilystudio.netbook.db.BookTopicEnterRecord;
 import com.clilystudio.netbook.model.BookShelfTopic;
 import com.clilystudio.netbook.ui.post.BookPostTabActivity;
 
-final class N
-        implements AdapterView.OnItemClickListener {
+final class N implements AdapterView.OnItemClickListener {
     private /* synthetic */ HomeTopicFragment a;
 
     N(HomeTopicFragment homeTopicFragment) {

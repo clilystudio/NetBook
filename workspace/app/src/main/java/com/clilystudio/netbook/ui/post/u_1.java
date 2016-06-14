@@ -2,8 +2,7 @@ package com.clilystudio.netbook.ui.post;
 
 import com.clilystudio.netbook.ui.aa;
 
-final class u
-        implements aa {
+final class u implements aa {
     private /* synthetic */ AddGirlTopicActivity a;
 
     u(AddGirlTopicActivity addGirlTopicActivity) {

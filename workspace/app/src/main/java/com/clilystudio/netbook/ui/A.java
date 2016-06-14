@@ -2,8 +2,7 @@ package com.clilystudio.netbook.ui;
 
 import android.widget.TextView;
 
-final class A
-        implements Runnable {
+final class A implements Runnable {
     final /* synthetic */ TextView a;
     final /* synthetic */ AudiobookInfoActivity b;
 

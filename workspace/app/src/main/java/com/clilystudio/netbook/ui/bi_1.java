@@ -3,8 +3,7 @@ package com.clilystudio.netbook.ui;
 import android.view.KeyEvent;
 import android.view.View;
 
-final class bi
-        implements View.OnKeyListener {
+final class bi implements View.OnKeyListener {
     private /* synthetic */ LuckyGameWebActivity a;
 
     bi(LuckyGameWebActivity luckyGameWebActivity) {

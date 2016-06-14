@@ -5,8 +5,7 @@ import android.content.DialogInterface;
 import com.clilystudio.netbook.event.d;
 import com.clilystudio.netbook.event.i;
 
-final class bd
-        implements DialogInterface.OnClickListener {
+final class bd implements DialogInterface.OnClickListener {
     private /* synthetic */ ReaderActivity a;
 
     bd(ReaderActivity readerActivity) {

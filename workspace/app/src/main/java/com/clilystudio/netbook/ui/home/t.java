@@ -5,8 +5,7 @@ import android.widget.CheckBox;
 
 import java.util.List;
 
-final class t
-        implements DialogInterface.OnClickListener {
+final class t implements DialogInterface.OnClickListener {
     private /* synthetic */ List a;
     private /* synthetic */ CheckBox b;
     private /* synthetic */ HomeShelfFragment c;

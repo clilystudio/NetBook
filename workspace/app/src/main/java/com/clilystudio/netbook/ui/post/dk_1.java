@@ -6,8 +6,7 @@ import android.widget.AdapterView;
 
 import com.clilystudio.netbook.model.ReviewSummary;
 
-final class dk
-        implements AdapterView.OnItemClickListener {
+final class dk implements AdapterView.OnItemClickListener {
     private /* synthetic */ ReviewListActivity a;
 
     dk(ReviewListActivity reviewListActivity) {

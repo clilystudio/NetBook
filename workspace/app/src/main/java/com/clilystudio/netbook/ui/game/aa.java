@@ -6,8 +6,7 @@ import com.clilystudio.netbook.exception.UnImplementException;
 import com.clilystudio.netbook.model.GameLayoutRoot$ModuleLayout$ActivityItem;
 import com.clilystudio.netbook.util.InsideLinkIntent;
 
-final class aa
-        implements View.OnClickListener {
+final class aa implements View.OnClickListener {
     private /* synthetic */ GameLayoutRoot$ModuleLayout$ActivityItem a;
     private /* synthetic */ Z b;
 

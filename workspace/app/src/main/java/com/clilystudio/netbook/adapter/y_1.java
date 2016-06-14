@@ -5,8 +5,7 @@ import android.view.View;
 import com.clilystudio.netbook.model.ChargePlan;
 import com.clilystudio.netbook.ui.user.ChargeActivity;
 
-final class y
-        implements View.OnClickListener {
+final class y implements View.OnClickListener {
     private /* synthetic */ ChargePlan a;
     private /* synthetic */ x b;
 

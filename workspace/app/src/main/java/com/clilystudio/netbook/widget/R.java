@@ -5,8 +5,7 @@ import android.view.View;
 
 import java.io.File;
 
-final class R
-        implements View.OnClickListener {
+final class R implements View.OnClickListener {
     private /* synthetic */ GiftGameGameButton a;
 
     private R(GiftGameGameButton giftGameGameButton) {

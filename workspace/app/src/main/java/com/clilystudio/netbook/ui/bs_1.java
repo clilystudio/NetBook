@@ -5,8 +5,7 @@ import android.widget.ListView;
 
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 
-final class bs
-        implements k<ListView> {
+final class bs implements k<ListView> {
     final /* synthetic */ NotifFragment a;
 
     bs(NotifFragment notifFragment) {

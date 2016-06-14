@@ -3,8 +3,7 @@ package com.clilystudio.netbook.ui;
 import com.ximalaya.ting.android.opensdk.player.service.IXmPlayerStatusListener;
 import com.ximalaya.ting.android.opensdk.player.service.XmPlayerException;
 
-final class F
-        implements IXmPlayerStatusListener {
+final class F implements IXmPlayerStatusListener {
     private /* synthetic */ AudiobookInfoActivity a;
 
     F(AudiobookInfoActivity audiobookInfoActivity) {

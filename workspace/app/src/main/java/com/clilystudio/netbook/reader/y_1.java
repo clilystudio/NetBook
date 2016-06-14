@@ -8,8 +8,7 @@ import com.clilystudio.netbook.ui.user.AuthLoginActivity$Source;
 
 import java.io.Serializable;
 
-final class y
-        implements View.OnClickListener {
+final class y implements View.OnClickListener {
     private /* synthetic */ o a;
 
     y(o o2) {

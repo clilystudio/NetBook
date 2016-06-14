@@ -5,8 +5,7 @@ import android.os.Bundle;
 import com.iflytek.cloud.SpeechError;
 import com.iflytek.cloud.SynthesizerListener;
 
-final class am
-        implements SynthesizerListener {
+final class am implements SynthesizerListener {
     private /* synthetic */ ReaderActivity a;
 
     am(ReaderActivity readerActivity) {

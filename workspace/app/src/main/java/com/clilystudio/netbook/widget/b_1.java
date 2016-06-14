@@ -2,8 +2,7 @@ package com.clilystudio.netbook.widget;
 
 import android.content.DialogInterface;
 
-final class b
-        implements DialogInterface.OnClickListener {
+final class b implements DialogInterface.OnClickListener {
     private /* synthetic */ AbsDownloadButton a;
 
     b(AbsDownloadButton absDownloadButton) {

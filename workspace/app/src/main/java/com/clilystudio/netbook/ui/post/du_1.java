@@ -8,8 +8,7 @@ import com.clilystudio.netbook.adapter.G;
 import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.util.e;
 
-final class du
-        implements View.OnClickListener {
+final class du implements View.OnClickListener {
     private /* synthetic */ TweetDetailActivity a;
 
     du(TweetDetailActivity tweetDetailActivity) {

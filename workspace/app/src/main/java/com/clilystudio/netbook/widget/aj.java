@@ -3,8 +3,7 @@ package com.clilystudio.netbook.widget;
 import android.text.InputFilter;
 import android.text.Spanned;
 
-final class aj
-        implements InputFilter {
+final class aj implements InputFilter {
     private /* synthetic */ NicknameEditText a;
 
     private aj(NicknameEditText nicknameEditText) {

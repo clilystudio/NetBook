@@ -20,8 +20,7 @@ import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UGCMainListFragment extends Fragment
-        implements AdapterView.OnItemClickListener {
+public class UGCMainListFragment extends Fragment implements AdapterView.OnItemClickListener {
     private PullToRefreshListView a;
     private ListView b;
     private View c;

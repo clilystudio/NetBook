@@ -2,8 +2,7 @@ package com.clilystudio.netbook.ui;
 
 import android.widget.PopupWindow;
 
-final class au
-        implements PopupWindow.OnDismissListener {
+final class au implements PopupWindow.OnDismissListener {
     private /* synthetic */ BookCategoryListActivity a;
 
     au(BookCategoryListActivity bookCategoryListActivity) {

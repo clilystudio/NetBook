@@ -5,8 +5,7 @@ import android.view.View;
 
 import com.clilystudio.netbook.ui.ShareRemoveAdActivity;
 
-final class ai
-        implements View.OnClickListener {
+final class ai implements View.OnClickListener {
     private /* synthetic */ RemoveAdActivity a;
 
     ai(RemoveAdActivity removeAdActivity) {

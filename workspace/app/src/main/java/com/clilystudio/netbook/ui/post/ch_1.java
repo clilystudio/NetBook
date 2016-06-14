@@ -5,8 +5,7 @@ import android.support.design.widget.am;
 
 import com.clilystudio.netbook.model.Tweet;
 
-final class ch
-        implements j {
+final class ch implements j {
     private /* synthetic */ OtherUserActivity a;
 
     ch(OtherUserActivity otherUserActivity) {

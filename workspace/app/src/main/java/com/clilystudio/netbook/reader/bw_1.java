@@ -6,8 +6,7 @@ import android.view.View;
 
 import com.clilystudio.netbook.model.TocSummary;
 
-final class bw
-        implements View.OnClickListener {
+final class bw implements View.OnClickListener {
     final /* synthetic */ Activity a;
     final /* synthetic */ TocSummary b;
     final /* synthetic */ ReaderMenuFragment c;

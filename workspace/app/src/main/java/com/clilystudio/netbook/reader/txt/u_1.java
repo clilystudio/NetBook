@@ -2,8 +2,7 @@ package com.clilystudio.netbook.reader.txt;
 
 import android.view.View;
 
-final class u
-        implements View.OnSystemUiVisibilityChangeListener {
+final class u implements View.OnSystemUiVisibilityChangeListener {
     private /* synthetic */ ReaderTxtActivity a;
 
     u(ReaderTxtActivity readerTxtActivity) {

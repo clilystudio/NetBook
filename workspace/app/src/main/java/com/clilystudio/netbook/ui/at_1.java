@@ -3,8 +3,7 @@ package com.clilystudio.netbook.ui;
 import android.view.View;
 import android.widget.AdapterView;
 
-final class at
-        implements AdapterView.OnItemClickListener {
+final class at implements AdapterView.OnItemClickListener {
     private /* synthetic */ String[] a;
     private /* synthetic */ BookCategoryListActivity b;
 

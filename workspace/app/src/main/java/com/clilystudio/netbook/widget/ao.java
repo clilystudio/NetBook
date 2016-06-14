@@ -6,8 +6,7 @@ import android.view.View;
 import com.clilystudio.netbook.ui.cb;
 import com.clilystudio.netbook.ui.post.AbsPostActivity;
 
-final class ao
-        implements View.OnClickListener {
+final class ao implements View.OnClickListener {
     private /* synthetic */ PostHeader a;
 
     ao(PostHeader postHeader) {

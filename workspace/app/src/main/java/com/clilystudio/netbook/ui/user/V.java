@@ -7,8 +7,7 @@ import android.widget.PopupWindow;
 import com.clilystudio.netbook.model.PayConsumeRecord;
 import com.clilystudio.netbook.util.e;
 
-final class V
-        implements View.OnClickListener {
+final class V implements View.OnClickListener {
     private /* synthetic */ PayConsumeRecord.Order a;
     private /* synthetic */ PopupWindow b;
     private /* synthetic */ S c;

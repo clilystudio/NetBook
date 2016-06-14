@@ -4,8 +4,7 @@ import com.koushikdutta.async.http.a.a;
 
 import org.apache.http.NameValuePair;
 
-final class cq
-        implements r {
+final class cq implements r {
     private /* synthetic */ String[] a;
 
     cq(WifiActivity wifiActivity, String[] arrstring) {

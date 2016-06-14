@@ -3,8 +3,7 @@ package com.clilystudio.netbook.ui.post;
 import android.view.View;
 import android.widget.TextView;
 
-final class cy
-        implements View.OnClickListener {
+final class cy implements View.OnClickListener {
     private /* synthetic */ TextView a;
     private /* synthetic */ ReviewActivity b;
 

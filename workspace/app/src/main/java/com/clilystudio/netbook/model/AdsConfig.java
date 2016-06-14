@@ -3,8 +3,7 @@ package com.clilystudio.netbook.model;
 import java.io.Serializable;
 import java.util.List;
 
-public class AdsConfig
-        implements Serializable {
+public class AdsConfig implements Serializable {
     private static final long serialVersionUID = 5519239417878198685L;
     private List<Advert> advertList;
     private int index;

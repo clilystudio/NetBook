@@ -3,8 +3,7 @@ package com.clilystudio.netbook.util;
 import android.app.Activity;
 import android.content.DialogInterface;
 
-final class O
-        implements DialogInterface.OnClickListener {
+final class O implements DialogInterface.OnClickListener {
     private /* synthetic */ boolean a;
     private /* synthetic */ String b;
     private /* synthetic */ String c;

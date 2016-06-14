@@ -2,8 +2,7 @@ package com.clilystudio.netbook.reader;
 
 import android.content.DialogInterface;
 
-final class bb
-        implements DialogInterface.OnClickListener {
+final class bb implements DialogInterface.OnClickListener {
     private /* synthetic */ ReaderActivity a;
 
     bb(ReaderActivity readerActivity) {

@@ -4,8 +4,7 @@ import com.ximalaya.ting.android.opensdk.model.album.Album;
 
 import java.io.Serializable;
 
-public class AlbumSerialized
-        implements Serializable {
+public class AlbumSerialized implements Serializable {
     private String announcer;
     private int id;
     private String intro;

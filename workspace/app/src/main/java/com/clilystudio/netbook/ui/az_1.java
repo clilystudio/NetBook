@@ -2,8 +2,7 @@ package com.clilystudio.netbook.ui;
 
 import android.content.Context;
 
-final class az
-        implements cd {
+final class az implements cd {
     private /* synthetic */ ay a;
 
     az(ay ay2) {

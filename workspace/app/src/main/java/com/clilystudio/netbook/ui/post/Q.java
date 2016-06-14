@@ -2,8 +2,7 @@ package com.clilystudio.netbook.ui.post;
 
 import android.view.View;
 
-final class Q
-        implements View.OnClickListener {
+final class Q implements View.OnClickListener {
     private /* synthetic */ AddVoteItemActivity a;
 
     Q(AddVoteItemActivity addVoteItemActivity) {

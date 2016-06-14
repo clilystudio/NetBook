@@ -4,8 +4,7 @@ import android.view.MenuItem;
 
 import com.clilystudio.netbook.ui.post.AbsPostActivity;
 
-final class ar
-        implements m {
+final class ar implements m {
     private /* synthetic */ AbsPostActivity a;
 
     ar(aq aq2, AbsPostActivity absPostActivity) {

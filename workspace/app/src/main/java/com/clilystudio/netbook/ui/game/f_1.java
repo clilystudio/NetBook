@@ -2,8 +2,7 @@ package com.clilystudio.netbook.ui.game;
 
 import android.view.View;
 
-final class f
-        implements View.OnClickListener {
+final class f implements View.OnClickListener {
     private /* synthetic */ GameDetailActivity a;
 
     f(GameDetailActivity gameDetailActivity) {

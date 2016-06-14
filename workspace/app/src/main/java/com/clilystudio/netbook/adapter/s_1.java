@@ -6,8 +6,7 @@ import com.clilystudio.netbook.db.BookTopicEnterRecord;
 import com.clilystudio.netbook.model.BookShelfTopic;
 import com.clilystudio.netbook.util.ai;
 
-final class s
-        implements ai {
+final class s implements ai {
     private /* synthetic */ TextView a;
     private /* synthetic */ BookShelfTopic b;
 

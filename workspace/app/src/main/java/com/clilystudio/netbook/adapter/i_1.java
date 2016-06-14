@@ -5,8 +5,7 @@ import android.view.View;
 import com.clilystudio.netbook.model.BookReview;
 import com.clilystudio.netbook.util.e;
 
-final class i
-        implements View.OnClickListener {
+final class i implements View.OnClickListener {
     private /* synthetic */ BookReview a;
 
     i(h h2, BookReview bookReview) {

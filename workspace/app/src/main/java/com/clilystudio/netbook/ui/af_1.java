@@ -5,8 +5,7 @@ import android.view.View;
 
 import com.clilystudio.netbook.ui.post.AddReviewRatingActivity;
 
-final class af
-        implements View.OnClickListener {
+final class af implements View.OnClickListener {
     private /* synthetic */ BestReviewsFragment a;
 
     af(BestReviewsFragment bestReviewsFragment) {

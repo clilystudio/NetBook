@@ -4,8 +4,7 @@ import android.view.View;
 
 import com.clilystudio.netbook.model.User;
 
-final class M
-        implements View.OnClickListener {
+final class M implements View.OnClickListener {
     private /* synthetic */ R a;
     private /* synthetic */ User b;
     private /* synthetic */ G c;

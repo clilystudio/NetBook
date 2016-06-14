@@ -3,8 +3,7 @@ package com.clilystudio.netbook.ui.user;
 import android.view.MotionEvent;
 import android.view.View;
 
-final class d
-        implements View.OnTouchListener {
+final class d implements View.OnTouchListener {
     private /* synthetic */ AuthLoginActivity a;
 
     d(AuthLoginActivity authLoginActivity) {

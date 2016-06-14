@@ -6,8 +6,7 @@ import android.widget.AdapterView;
 
 import com.clilystudio.netbook.model.GameCat;
 
-final class a
-        implements AdapterView.OnItemClickListener {
+final class a implements AdapterView.OnItemClickListener {
     private /* synthetic */ GameCatListFragment a;
 
     a(GameCatListFragment gameCatListFragment) {

@@ -4,8 +4,7 @@ import android.content.Context;
 
 import com.clilystudio.netbook.ui.cd;
 
-final class n
-        implements cd {
+final class n implements cd {
     private /* synthetic */ UGCDetailActivity a;
 
     n(UGCDetailActivity uGCDetailActivity) {

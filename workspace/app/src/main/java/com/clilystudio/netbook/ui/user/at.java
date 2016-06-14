@@ -3,8 +3,7 @@ package com.clilystudio.netbook.ui.user;
 import android.text.Editable;
 import android.text.TextWatcher;
 
-final class at
-        implements TextWatcher {
+final class at implements TextWatcher {
     private /* synthetic */ SmsVerifyActivity a;
 
     at(SmsVerifyActivity smsVerifyActivity) {

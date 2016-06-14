@@ -2,8 +2,7 @@ package com.clilystudio.netbook.ui.post;
 
 import android.content.DialogInterface;
 
-final class dr
-        implements DialogInterface.OnClickListener {
+final class dr implements DialogInterface.OnClickListener {
     private /* synthetic */ dq a;
 
     dr(dq dq2) {

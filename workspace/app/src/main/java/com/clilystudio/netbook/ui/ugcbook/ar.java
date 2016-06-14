@@ -2,8 +2,7 @@ package com.clilystudio.netbook.ui.ugcbook;
 
 import android.os.AsyncTask;
 
-final class ar
-        implements j {
+final class ar implements j {
     private /* synthetic */ UGCMainListFragment a;
 
     ar(UGCMainListFragment uGCMainListFragment) {

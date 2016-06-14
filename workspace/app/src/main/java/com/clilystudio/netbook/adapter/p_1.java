@@ -6,8 +6,7 @@ import com.clilystudio.netbook.model.GirlTopicSummary;
 import com.clilystudio.netbook.ui.SmartImageView;
 import com.clilystudio.netbook.util.e;
 
-final class p
-        implements View.OnClickListener {
+final class p implements View.OnClickListener {
     private /* synthetic */ SmartImageView a;
     private /* synthetic */ GirlTopicSummary b;
 

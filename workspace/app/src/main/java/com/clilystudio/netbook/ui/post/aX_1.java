@@ -3,8 +3,7 @@ package com.clilystudio.netbook.ui.post;
 import android.os.AsyncTask;
 import android.support.design.widget.am;
 
-final class aX
-        implements j {
+final class aX implements j {
     private /* synthetic */ CommonPostListActivity a;
 
     aX(CommonPostListActivity commonPostListActivity) {

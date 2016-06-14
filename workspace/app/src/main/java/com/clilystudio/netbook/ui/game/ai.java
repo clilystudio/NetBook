@@ -6,8 +6,7 @@ import android.widget.AdapterView;
 
 import com.clilystudio.netbook.model.Game;
 
-final class ai
-        implements AdapterView.OnItemClickListener {
+final class ai implements AdapterView.OnItemClickListener {
     private /* synthetic */ GameRankListFragment a;
 
     ai(GameRankListFragment gameRankListFragment) {

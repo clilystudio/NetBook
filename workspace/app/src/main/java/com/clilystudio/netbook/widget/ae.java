@@ -1,7 +1,6 @@
 package com.clilystudio.netbook.widget;
 
-final class ae
-        implements D {
+final class ae implements D {
     private /* synthetic */ LoadingProgressView a;
 
     ae(LoadingProgressView loadingProgressView) {

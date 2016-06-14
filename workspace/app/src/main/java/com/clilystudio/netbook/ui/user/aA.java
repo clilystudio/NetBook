@@ -2,8 +2,7 @@ package com.clilystudio.netbook.ui.user;
 
 import com.clilystudio.netbook.ui.aa;
 
-final class aA
-        implements aa {
+final class aA implements aa {
     private /* synthetic */ UserInfoActivity a;
 
     aA(UserInfoActivity userInfoActivity) {

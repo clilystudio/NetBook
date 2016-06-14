@@ -1,7 +1,6 @@
 package com.clilystudio.netbook.reader;
 
-final class cq
-        implements Runnable {
+final class cq implements Runnable {
     private /* synthetic */ ReaderViewPager a;
 
     cq(ReaderViewPager readerViewPager) {

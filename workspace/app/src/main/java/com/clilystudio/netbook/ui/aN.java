@@ -4,8 +4,7 @@ import android.annotation.TargetApi;
 
 import com.clilystudio.netbook.event.k;
 
-final class aN
-        implements Runnable {
+final class aN implements Runnable {
     private /* synthetic */ k a;
     private /* synthetic */ BookRankListActivity b;
 

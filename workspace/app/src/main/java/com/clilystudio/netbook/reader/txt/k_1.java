@@ -1,7 +1,6 @@
 package com.clilystudio.netbook.reader.txt;
 
-final class k
-        implements a {
+final class k implements a {
     private /* synthetic */ ReaderTxtActivity a;
 
     k(ReaderTxtActivity readerTxtActivity) {

@@ -4,8 +4,7 @@ import android.os.AsyncTask;
 
 import com.clilystudio.netbook.widget.av;
 
-final class ak
-        implements av {
+final class ak implements av {
     private /* synthetic */ GameRankListFragment a;
 
     ak(GameRankListFragment gameRankListFragment) {

@@ -8,8 +8,7 @@ import com.ximalaya.ting.android.opensdk.datatrasfer.XimalayaResponse;
 import com.ximalaya.ting.android.opensdk.model.track.Track;
 import com.ximalaya.ting.android.opensdk.model.track.TrackList;
 
-final class k
-        implements IDataCallBack<TrackList> {
+final class k implements IDataCallBack<TrackList> {
     private /* synthetic */ AudioBookPlayActivity a;
 
     k(AudioBookPlayActivity audioBookPlayActivity) {

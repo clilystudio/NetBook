@@ -4,8 +4,7 @@ import android.content.Context;
 import android.support.v7.widget.SwitchCompat;
 import android.widget.CompoundButton;
 
-final class bI
-        implements CompoundButton.OnCheckedChangeListener {
+final class bI implements CompoundButton.OnCheckedChangeListener {
     private /* synthetic */ SwitchCompat a;
     private /* synthetic */ ReaderOptionActivity b;
 

@@ -2,8 +2,7 @@ package com.clilystudio.netbook.ui;
 
 import android.view.View;
 
-final class bO
-        implements View.OnClickListener {
+final class bO implements View.OnClickListener {
     private /* synthetic */ bM a;
 
     bO(bM bM2) {

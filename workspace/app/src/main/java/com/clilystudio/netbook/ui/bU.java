@@ -1,7 +1,6 @@
 package com.clilystudio.netbook.ui;
 
-final class bU
-        implements aa {
+final class bU implements aa {
     private /* synthetic */ SettingsActivity a;
 
     bU(SettingsActivity settingsActivity) {

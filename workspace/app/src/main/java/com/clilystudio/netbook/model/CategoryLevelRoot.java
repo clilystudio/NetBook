@@ -2,8 +2,7 @@ package com.clilystudio.netbook.model;
 
 import java.io.Serializable;
 
-public class CategoryLevelRoot
-        implements Serializable {
+public class CategoryLevelRoot implements Serializable {
     private CategoryLevelRoot$CategoryLevel[] female;
     private CategoryLevelRoot$CategoryLevel[] male;
     private boolean ok;

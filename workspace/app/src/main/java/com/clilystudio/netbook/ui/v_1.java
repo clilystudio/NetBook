@@ -4,8 +4,7 @@ import android.view.View;
 
 import com.ximalaya.ting.android.opensdk.model.tag.Tag;
 
-final class v
-        implements View.OnClickListener {
+final class v implements View.OnClickListener {
     private /* synthetic */ Tag a;
     private /* synthetic */ AudiobookCategoryActivity b;
 

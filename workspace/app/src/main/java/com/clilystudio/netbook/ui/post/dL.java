@@ -6,8 +6,7 @@ import android.widget.AdapterView;
 
 import com.clilystudio.netbook.model.TopicPost;
 
-final class dL
-        implements AdapterView.OnItemClickListener {
+final class dL implements AdapterView.OnItemClickListener {
     private /* synthetic */ TweetListFragment a;
 
     dL(TweetListFragment tweetListFragment) {

@@ -2,8 +2,7 @@ package com.clilystudio.netbook.ui.post;
 
 import android.support.design.widget.am;
 
-final class ca
-        implements Runnable {
+final class ca implements Runnable {
     private /* synthetic */ bZ a;
 
     ca(bZ bZ2) {

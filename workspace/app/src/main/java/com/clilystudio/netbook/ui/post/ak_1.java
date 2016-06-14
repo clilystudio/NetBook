@@ -3,8 +3,7 @@ package com.clilystudio.netbook.ui.post;
 import android.os.AsyncTask;
 import android.support.design.widget.am;
 
-final class ak
-        implements j {
+final class ak implements j {
     private /* synthetic */ BookHelpListActivity a;
 
     ak(BookHelpListActivity bookHelpListActivity) {

@@ -3,8 +3,7 @@ package com.clilystudio.netbook.ui.post;
 import android.support.design.widget.am;
 import android.view.View;
 
-final class bP
-        implements View.OnClickListener {
+final class bP implements View.OnClickListener {
     final /* synthetic */ MyTweetFragment a;
 
     bP(MyTweetFragment myTweetFragment) {

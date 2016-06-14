@@ -2,8 +2,7 @@ package com.clilystudio.netbook.reader.random;
 
 import android.view.View;
 
-final class c
-        implements View.OnClickListener {
+final class c implements View.OnClickListener {
     private /* synthetic */ ReaderRandomActionBar a;
 
     c(ReaderRandomActionBar readerRandomActionBar) {

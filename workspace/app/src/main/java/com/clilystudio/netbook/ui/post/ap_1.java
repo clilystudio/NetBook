@@ -6,8 +6,7 @@ import android.widget.AdapterView;
 
 import com.clilystudio.netbook.model.BookHelpSummary;
 
-final class ap
-        implements AdapterView.OnItemClickListener {
+final class ap implements AdapterView.OnItemClickListener {
     private /* synthetic */ BookHelpListActivity a;
 
     ap(BookHelpListActivity bookHelpListActivity) {

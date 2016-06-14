@@ -9,8 +9,7 @@ import java.util.HashMap;
 import cn.sharesdk.framework.Platform;
 import cn.sharesdk.framework.PlatformActionListener;
 
-final class cg
-        implements PlatformActionListener {
+final class cg implements PlatformActionListener {
     private /* synthetic */ ShareRemoveAdActivity a;
 
     cg(ShareRemoveAdActivity shareRemoveAdActivity) {

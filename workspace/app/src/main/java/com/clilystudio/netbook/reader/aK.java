@@ -1,7 +1,6 @@
 package com.clilystudio.netbook.reader;
 
-final class aK
-        implements e<n> {
+final class aK implements e<n> {
     private /* synthetic */ o a;
 
     aK(ReaderActivity readerActivity, o o2) {

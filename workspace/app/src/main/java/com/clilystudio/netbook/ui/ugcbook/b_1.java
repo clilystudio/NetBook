@@ -4,8 +4,7 @@ import android.widget.ListView;
 
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 
-final class b
-        implements k<ListView> {
+final class b implements k<ListView> {
     final /* synthetic */ AbsUGCListFragment a;
 
     b(AbsUGCListFragment absUGCListFragment) {

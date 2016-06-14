@@ -2,8 +2,7 @@ package com.clilystudio.netbook.ui;
 
 import android.content.DialogInterface;
 
-final class t
-        implements DialogInterface.OnClickListener {
+final class t implements DialogInterface.OnClickListener {
     t(AudiobookCategoryActivity audiobookCategoryActivity) {
     }
 

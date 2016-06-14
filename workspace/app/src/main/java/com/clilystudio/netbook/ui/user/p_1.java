@@ -3,8 +3,7 @@ package com.clilystudio.netbook.ui.user;
 import android.app.AlertDialog;
 import android.view.View;
 
-final class p
-        implements View.OnFocusChangeListener {
+final class p implements View.OnFocusChangeListener {
     private /* synthetic */ AlertDialog a;
 
     p(ModifyUserInfoActivity modifyUserInfoActivity, AlertDialog alertDialog) {

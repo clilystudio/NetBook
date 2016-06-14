@@ -1,7 +1,6 @@
 package com.clilystudio.netbook.ui.ugcbook;
 
-final class B
-        implements Runnable {
+final class B implements Runnable {
     private /* synthetic */ A a;
 
     B(A a) {

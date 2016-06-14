@@ -9,8 +9,7 @@ import com.clilystudio.netbook.ui.post.BookHelpActivity;
 import com.clilystudio.netbook.ui.post.PostDetailActivity;
 import com.clilystudio.netbook.ui.post.ReviewActivity;
 
-final class w
-        implements AdapterView.OnItemClickListener {
+final class w implements AdapterView.OnItemClickListener {
     private /* synthetic */ MyFavTopicFragment a;
 
     w(MyFavTopicFragment myFavTopicFragment) {

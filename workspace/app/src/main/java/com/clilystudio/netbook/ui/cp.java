@@ -9,8 +9,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-final class cp
-        implements r {
+final class cp implements r {
     cp(WifiActivity wifiActivity) {
     }
 

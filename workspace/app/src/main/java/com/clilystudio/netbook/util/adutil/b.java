@@ -5,8 +5,7 @@ import android.content.DialogInterface;
 import com.clilystudio.netbook.widget.AdContainerLayout;
 import com.clilystudio.netbook.widget.f;
 
-final class b
-        implements f {
+final class b implements f {
     final /* synthetic */ AdContainerLayout a;
     final /* synthetic */ AdSplashImp b;
 

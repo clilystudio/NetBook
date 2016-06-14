@@ -2,8 +2,7 @@ package com.clilystudio.netbook.ui.ugcbook;
 
 import android.view.View;
 
-final class ag
-        implements View.OnClickListener {
+final class ag implements View.OnClickListener {
     private /* synthetic */ UGCMainActivity a;
 
     ag(UGCMainActivity uGCMainActivity) {

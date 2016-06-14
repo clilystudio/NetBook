@@ -2,8 +2,7 @@ package com.clilystudio.netbook.widget;
 
 import android.widget.CompoundButton;
 
-final class az
-        implements CompoundButton.OnCheckedChangeListener {
+final class az implements CompoundButton.OnCheckedChangeListener {
     private /* synthetic */ SettingCheckBox a;
 
     az(SettingCheckBox settingCheckBox) {

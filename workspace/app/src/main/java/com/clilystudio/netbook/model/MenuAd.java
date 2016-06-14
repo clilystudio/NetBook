@@ -4,8 +4,7 @@ import android.text.TextUtils;
 
 import java.io.Serializable;
 
-public class MenuAd
-        implements Serializable {
+public class MenuAd implements Serializable {
     private static final long serialVersionUID = -4422341499140051024L;
     private String _id;
     private int downloadCount;

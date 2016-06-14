@@ -2,8 +2,7 @@ package com.clilystudio.netbook.ui.post;
 
 import com.clilystudio.netbook.ui.aa;
 
-final class cJ
-        implements aa {
+final class cJ implements aa {
     private /* synthetic */ ReviewListActivity a;
 
     cJ(ReviewListActivity reviewListActivity) {

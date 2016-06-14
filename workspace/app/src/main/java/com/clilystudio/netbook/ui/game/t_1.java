@@ -11,8 +11,7 @@ import com.clilystudio.netbook.model.GiftGame;
 import com.clilystudio.netbook.ui.SmartImageView;
 import com.clilystudio.netbook.widget.GiftGameGetButton;
 
-final class t
-        implements AdapterView.OnItemClickListener {
+final class t implements AdapterView.OnItemClickListener {
     private /* synthetic */ GameGiftFragment a;
 
     t(GameGiftFragment gameGiftFragment) {

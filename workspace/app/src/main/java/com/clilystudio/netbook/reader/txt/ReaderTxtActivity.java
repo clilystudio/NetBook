@@ -48,8 +48,7 @@ import com.iflytek.cloud.SynthesizerListener;
 import java.io.File;
 import java.util.LinkedList;
 
-public class ReaderTxtActivity extends FragmentActivity
-        implements com.clilystudio.netbook.reader.a,
+public class ReaderTxtActivity extends FragmentActivity implements com.clilystudio.netbook.reader.a,
         com.clilystudio.netbook.reader.d {
     public static String a = "";
     private boolean A = false;

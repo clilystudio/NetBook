@@ -2,8 +2,7 @@ package com.clilystudio.netbook.model;
 
 import java.util.Calendar;
 
-public class ReaderChapterIdentifier
-        implements Comparable<ReaderChapterIdentifier> {
+public class ReaderChapterIdentifier implements Comparable<ReaderChapterIdentifier> {
     private String bookId;
     private long createTime;
     private String tocHost;

@@ -2,8 +2,7 @@ package com.clilystudio.netbook.ui.ugcbook;
 
 import android.widget.CompoundButton;
 
-final class Y
-        implements CompoundButton.OnCheckedChangeListener {
+final class Y implements CompoundButton.OnCheckedChangeListener {
     private /* synthetic */ int a;
     private /* synthetic */ X b;
 

@@ -4,8 +4,7 @@ import android.view.View;
 
 import cn.sharesdk.sina.weibo.SinaWeibo;
 
-final class a
-        implements View.OnClickListener {
+final class a implements View.OnClickListener {
     private /* synthetic */ AuthLoginActivity a;
 
     a(AuthLoginActivity authLoginActivity) {

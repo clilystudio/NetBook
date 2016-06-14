@@ -1,7 +1,6 @@
 package com.clilystudio.netbook.ui;
 
-final class ct
-        implements g {
+final class ct implements g {
     final /* synthetic */ Boolean[] a;
     final /* synthetic */ cs b;
     private /* synthetic */ d c;

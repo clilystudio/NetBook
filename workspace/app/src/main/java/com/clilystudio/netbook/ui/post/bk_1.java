@@ -5,8 +5,7 @@ import android.view.View;
 
 import com.clilystudio.netbook.model.Follower;
 
-final class bk
-        implements View.OnClickListener {
+final class bk implements View.OnClickListener {
     private /* synthetic */ int a;
     private /* synthetic */ bj b;
 

@@ -9,8 +9,7 @@ import com.clilystudio.netbook.model.Game;
 import com.clilystudio.netbook.util.e;
 import com.clilystudio.netbook.view.a;
 
-final class G
-        implements View.OnClickListener {
+final class G implements View.OnClickListener {
     private /* synthetic */ a a;
     private /* synthetic */ String b;
     private /* synthetic */ GameGiftItemView c;

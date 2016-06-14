@@ -7,8 +7,7 @@ import com.clilystudio.netbook.hpay100.y;
 import com.clilystudio.netbook.hpay100.z;
 import com.xiaomi.mistatistic.sdk.MiStatInterface;
 
-class b
-        implements y {
+class b implements y {
     final /* synthetic */ a a;
 
     private b(a a2) {

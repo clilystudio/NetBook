@@ -2,8 +2,7 @@ package com.clilystudio.netbook.reader;
 
 import android.content.DialogInterface;
 
-final class cG
-        implements DialogInterface.OnClickListener {
+final class cG implements DialogInterface.OnClickListener {
     cG(ReaderWebActivity readerWebActivity) {
     }
 

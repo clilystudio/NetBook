@@ -10,8 +10,7 @@ import com.clilystudio.netbook.widget.SAutoBgButton;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 
-public class ReaderRandomEntranceActivity extends BaseActivity
-        implements View.OnClickListener {
+public class ReaderRandomEntranceActivity extends BaseActivity implements View.OnClickListener {
     @InjectView(value = 2131493156)
     SAutoBgButton mReadRandomBook;
 

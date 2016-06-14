@@ -6,8 +6,7 @@ import android.content.Intent;
 
 import com.clilystudio.netbook.util.e;
 
-final class ay
-        implements DialogInterface.OnClickListener {
+final class ay implements DialogInterface.OnClickListener {
     private /* synthetic */ UserFollowWeixinActivity a;
 
     ay(UserFollowWeixinActivity userFollowWeixinActivity) {

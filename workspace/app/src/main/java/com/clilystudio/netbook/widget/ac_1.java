@@ -2,8 +2,7 @@ package com.clilystudio.netbook.widget;
 
 import android.view.View;
 
-final class ac
-        implements View.OnClickListener {
+final class ac implements View.OnClickListener {
     private /* synthetic */ int a;
     private /* synthetic */ LinearListView b;
 

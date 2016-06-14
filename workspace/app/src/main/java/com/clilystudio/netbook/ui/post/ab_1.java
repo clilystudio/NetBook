@@ -4,8 +4,7 @@ import android.os.AsyncTask;
 
 import com.clilystudio.netbook.widget.av;
 
-final class ab
-        implements av {
+final class ab implements av {
     private /* synthetic */ BookHelpActivity a;
 
     ab(BookHelpActivity bookHelpActivity) {

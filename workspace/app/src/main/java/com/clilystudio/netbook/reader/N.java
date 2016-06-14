@@ -2,8 +2,7 @@ package com.clilystudio.netbook.reader;
 
 import android.view.animation.Interpolator;
 
-final class N
-        implements Interpolator {
+final class N implements Interpolator {
     N(PagerWidget pagerWidget) {
     }
 

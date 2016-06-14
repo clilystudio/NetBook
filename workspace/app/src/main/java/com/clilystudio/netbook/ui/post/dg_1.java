@@ -5,8 +5,7 @@ import android.support.design.widget.am;
 
 do;
 
-final class dg
-        implements j {
+final class dg implements j {
     private /* synthetic */ ReviewListActivity a;
 
     dg(ReviewListActivity reviewListActivity) {

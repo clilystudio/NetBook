@@ -5,8 +5,7 @@ import android.view.View;
 
 import com.clilystudio.netbook.ui.user.AuthLoginActivity;
 
-final class ce
-        implements View.OnClickListener {
+final class ce implements View.OnClickListener {
     private /* synthetic */ ShareRemoveAdActivity a;
 
     ce(ShareRemoveAdActivity shareRemoveAdActivity) {

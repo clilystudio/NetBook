@@ -1,7 +1,6 @@
 package com.clilystudio.netbook.ui.home;
 
-final class l
-        implements Runnable {
+final class l implements Runnable {
     private /* synthetic */ HomeParentActivity a;
 
     l(HomeParentActivity homeParentActivity) {

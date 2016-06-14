@@ -2,8 +2,7 @@ package com.clilystudio.netbook.ui.post;
 
 import android.content.DialogInterface;
 
-final class L
-        implements DialogInterface.OnClickListener {
+final class L implements DialogInterface.OnClickListener {
     private /* synthetic */ String a;
     private /* synthetic */ AddVoteActivity b;
 

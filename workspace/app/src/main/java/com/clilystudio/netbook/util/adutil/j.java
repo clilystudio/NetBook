@@ -4,8 +4,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.view.View;
 
-final class j
-        implements DialogInterface.OnClickListener {
+final class j implements DialogInterface.OnClickListener {
     private /* synthetic */ View a;
     private /* synthetic */ Context b;
     private /* synthetic */ BaseShelfAd c;

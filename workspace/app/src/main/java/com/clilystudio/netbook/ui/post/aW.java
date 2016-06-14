@@ -2,8 +2,7 @@ package com.clilystudio.netbook.ui.post;
 
 import android.widget.PopupWindow;
 
-final class aW
-        implements PopupWindow.OnDismissListener {
+final class aW implements PopupWindow.OnDismissListener {
     private /* synthetic */ CommonPostListActivity a;
 
     aW(CommonPostListActivity commonPostListActivity) {

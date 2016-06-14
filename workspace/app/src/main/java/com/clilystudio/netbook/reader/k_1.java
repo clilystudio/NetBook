@@ -6,8 +6,7 @@ import com.clilystudio.netbook.c;
 
 import java.io.File;
 
-final class k
-        implements DialogInterface.OnClickListener {
+final class k implements DialogInterface.OnClickListener {
     private /* synthetic */ String a;
     private /* synthetic */ LocalChapterListActivity b;
 

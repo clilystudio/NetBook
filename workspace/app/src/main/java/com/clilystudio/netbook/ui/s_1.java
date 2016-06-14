@@ -4,8 +4,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 
-final class s
-        implements DialogInterface.OnClickListener {
+final class s implements DialogInterface.OnClickListener {
     private /* synthetic */ AudiobookCategoryActivity a;
 
     s(AudiobookCategoryActivity audiobookCategoryActivity) {

@@ -5,8 +5,7 @@ import android.widget.ListView;
 
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 
-final class az
-        implements k<ListView> {
+final class az implements k<ListView> {
     final /* synthetic */ BookReviewListFragment a;
 
     az(BookReviewListFragment bookReviewListFragment) {

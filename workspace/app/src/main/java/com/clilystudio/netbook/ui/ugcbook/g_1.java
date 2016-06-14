@@ -7,8 +7,7 @@ import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.model.UGCBookListRoot$UGCBook;
 import com.clilystudio.netbook.ui.BaseActivity;
 
-final class g
-        implements DialogInterface.OnClickListener {
+final class g implements DialogInterface.OnClickListener {
     private /* synthetic */ UGCBookListRoot$UGCBook a;
     private /* synthetic */ FavUGCListFragment b;
 

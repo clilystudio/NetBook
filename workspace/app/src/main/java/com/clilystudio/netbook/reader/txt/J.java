@@ -3,8 +3,7 @@ package com.clilystudio.netbook.reader.txt;
 import com.clilystudio.netbook.reader.ce;
 import com.clilystudio.netbook.reader.o;
 
-final class J
-        implements ce {
+final class J implements ce {
     private /* synthetic */ ReaderTxtActivity a;
 
     J(ReaderTxtActivity readerTxtActivity) {

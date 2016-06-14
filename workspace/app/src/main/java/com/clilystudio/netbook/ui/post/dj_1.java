@@ -2,8 +2,7 @@ package com.clilystudio.netbook.ui.post;
 
 import android.support.design.widget.am;
 
-final class dj
-        implements Runnable {
+final class dj implements Runnable {
     private /* synthetic */ di a;
 
     dj(di di2) {

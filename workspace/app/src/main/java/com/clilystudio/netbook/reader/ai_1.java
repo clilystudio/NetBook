@@ -2,8 +2,7 @@ package com.clilystudio.netbook.reader;
 
 import android.view.View;
 
-final class ai
-        implements View.OnClickListener {
+final class ai implements View.OnClickListener {
     private /* synthetic */ ReaderActionBar a;
 
     ai(ReaderActionBar readerActionBar) {

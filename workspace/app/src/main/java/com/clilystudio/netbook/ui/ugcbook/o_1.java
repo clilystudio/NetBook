@@ -7,8 +7,7 @@ import java.util.HashMap;
 import cn.sharesdk.framework.Platform;
 import cn.sharesdk.framework.PlatformActionListener;
 
-final class o
-        implements PlatformActionListener {
+final class o implements PlatformActionListener {
     o(UGCDetailActivity uGCDetailActivity) {
     }
 

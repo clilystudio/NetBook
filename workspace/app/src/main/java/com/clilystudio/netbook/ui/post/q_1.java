@@ -3,8 +3,7 @@ package com.clilystudio.netbook.ui.post;
 import android.app.Dialog;
 import android.view.View;
 
-final class q
-        implements View.OnClickListener {
+final class q implements View.OnClickListener {
     private /* synthetic */ Dialog a;
     private /* synthetic */ String b;
     private /* synthetic */ AddGamePostActivity c;

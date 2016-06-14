@@ -4,8 +4,7 @@ import android.view.View;
 
 import com.iflytek.cloud.SpeechUtility;
 
-final class cg
-        implements View.OnClickListener {
+final class cg implements View.OnClickListener {
     private /* synthetic */ ReaderTtsSetWidget a;
 
     cg(ReaderTtsSetWidget readerTtsSetWidget) {

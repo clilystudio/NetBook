@@ -7,8 +7,7 @@ import android.widget.AdapterView;
 import com.clilystudio.netbook.model.UGCBookDetail$UGCBookContainer;
 import com.clilystudio.netbook.ui.BookInfoActivity;
 
-final class m
-        implements AdapterView.OnItemClickListener {
+final class m implements AdapterView.OnItemClickListener {
     private /* synthetic */ UGCDetailActivity a;
 
     m(UGCDetailActivity uGCDetailActivity) {

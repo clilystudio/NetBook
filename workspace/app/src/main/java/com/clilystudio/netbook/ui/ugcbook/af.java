@@ -3,8 +3,7 @@ package com.clilystudio.netbook.ui.ugcbook;
 import android.view.KeyEvent;
 import android.view.View;
 
-final class af
-        implements View.OnKeyListener {
+final class af implements View.OnKeyListener {
     private /* synthetic */ UGCMainActivity a;
 
     af(UGCMainActivity uGCMainActivity) {

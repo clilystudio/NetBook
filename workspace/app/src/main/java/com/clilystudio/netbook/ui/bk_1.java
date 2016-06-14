@@ -5,8 +5,7 @@ import android.widget.AdapterView;
 
 import com.clilystudio.netbook.model.MhdInfo;
 
-final class bk
-        implements AdapterView.OnItemClickListener {
+final class bk implements AdapterView.OnItemClickListener {
     private /* synthetic */ MhdListActivity a;
 
     bk(MhdListActivity mhdListActivity) {

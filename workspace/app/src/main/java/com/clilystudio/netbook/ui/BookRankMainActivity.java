@@ -16,8 +16,7 @@ import com.clilystudio.netbook.d;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BookRankMainActivity extends BaseTabActivity
-        implements ViewPager$OnPageChangeListener,
+public class BookRankMainActivity extends BaseTabActivity implements ViewPager$OnPageChangeListener,
         TabHost.OnTabChangeListener,
         TabHost.TabContentFactory {
     private List<BookRankListFragment> b = new ArrayList<BookRankListFragment>();

@@ -2,8 +2,7 @@ package com.clilystudio.netbook.ui.user;
 
 import android.view.View;
 
-final class c
-        implements View.OnClickListener {
+final class c implements View.OnClickListener {
     private /* synthetic */ AuthLoginActivity a;
 
     c(AuthLoginActivity authLoginActivity) {

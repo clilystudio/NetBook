@@ -6,8 +6,7 @@ import com.clilystudio.netbook.model.TxtFileObject;
 
 import java.io.File;
 
-final class cu
-        implements b {
+final class cu implements b {
     private /* synthetic */ ct a;
 
     cu(ct ct2) {

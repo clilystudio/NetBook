@@ -5,8 +5,7 @@ import android.view.View;
 
 import com.clilystudio.netbook.ui.SettingsActivity;
 
-final class aI
-        implements View.OnClickListener {
+final class aI implements View.OnClickListener {
     private /* synthetic */ UserInfoActivity a;
 
     aI(UserInfoActivity userInfoActivity) {

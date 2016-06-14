@@ -2,8 +2,7 @@ package com.clilystudio.netbook.ui;
 
 import com.clilystudio.netbook.widget.av;
 
-final class y
-        implements av {
+final class y implements av {
     private /* synthetic */ AudiobookCategoryListActivity a;
 
     y(AudiobookCategoryListActivity audiobookCategoryListActivity) {

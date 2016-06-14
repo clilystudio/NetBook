@@ -5,8 +5,7 @@ import android.widget.TextView;
 
 import com.clilystudio.netbook.model.GamePostRoot$GamePost;
 
-final class p
-        implements View.OnClickListener {
+final class p implements View.OnClickListener {
     private /* synthetic */ TextView a;
     private /* synthetic */ GamePostRoot$GamePost b;
     private /* synthetic */ String c;

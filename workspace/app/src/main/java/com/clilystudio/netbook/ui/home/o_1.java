@@ -12,8 +12,7 @@ import com.ximalaya.ting.android.opensdk.model.album.BatchAlbumList;
 import java.util.Iterator;
 import java.util.List;
 
-final class o
-        implements IDataCallBack<BatchAlbumList> {
+final class o implements IDataCallBack<BatchAlbumList> {
     private /* synthetic */ HomeShelfFragment a;
 
     o(HomeShelfFragment homeShelfFragment) {

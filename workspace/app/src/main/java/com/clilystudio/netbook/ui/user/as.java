@@ -2,8 +2,7 @@ package com.clilystudio.netbook.ui.user;
 
 import android.view.View;
 
-final class as
-        implements View.OnClickListener {
+final class as implements View.OnClickListener {
     private /* synthetic */ SmsVerifyActivity a;
 
     as(SmsVerifyActivity smsVerifyActivity) {

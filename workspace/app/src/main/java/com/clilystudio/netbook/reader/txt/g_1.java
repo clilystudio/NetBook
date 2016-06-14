@@ -2,8 +2,7 @@ package com.clilystudio.netbook.reader.txt;
 
 import com.clilystudio.netbook.reader.ad;
 
-final class g
-        implements ad {
+final class g implements ad {
     private /* synthetic */ ReaderTxtActivity a;
 
     g(ReaderTxtActivity readerTxtActivity) {

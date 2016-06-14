@@ -2,8 +2,7 @@ package com.clilystudio.netbook.ui.user;
 
 import android.os.AsyncTask;
 
-final class x
-        implements j {
+final class x implements j {
     private /* synthetic */ MyFavTopicFragment a;
 
     x(MyFavTopicFragment myFavTopicFragment) {

@@ -2,8 +2,7 @@ package com.clilystudio.netbook.ui;
 
 import android.view.MenuItem;
 
-final class E
-        implements m {
+final class E implements m {
     private /* synthetic */ AudiobookInfoActivity a;
 
     E(AudiobookInfoActivity audiobookInfoActivity) {

@@ -2,8 +2,7 @@ package com.clilystudio.netbook.util;
 
 import cn.sharesdk.framework.PlatformActionListener;
 
-final class U
-        implements Runnable {
+final class U implements Runnable {
     private /* synthetic */ PlatformActionListener a;
 
     U(PlatformActionListener platformActionListener) {

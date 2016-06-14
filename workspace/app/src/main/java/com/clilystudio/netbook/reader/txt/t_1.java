@@ -5,8 +5,7 @@ import com.clilystudio.netbook.reader.n;
 
 import java.util.LinkedList;
 
-final class t
-        implements e<n> {
+final class t implements e<n> {
     private /* synthetic */ ReaderTxtActivity a;
 
     t(ReaderTxtActivity readerTxtActivity) {

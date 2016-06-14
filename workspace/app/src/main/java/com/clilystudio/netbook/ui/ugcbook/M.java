@@ -6,8 +6,7 @@ import com.clilystudio.netbook.model.BookSummary;
 
 import java.util.List;
 
-final class M
-        implements DialogInterface.OnClickListener {
+final class M implements DialogInterface.OnClickListener {
     private /* synthetic */ List a;
     private /* synthetic */ BookSummary b;
     private /* synthetic */ UGCGuideEditBooksActivity c;

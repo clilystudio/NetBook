@@ -8,8 +8,7 @@ import com.clilystudio.netbook.model.mixtoc.SsTocRow;
 
 import java.io.IOException;
 
-final class g
-        implements Runnable {
+final class g implements Runnable {
     private /* synthetic */ int a;
     private /* synthetic */ int b;
     private /* synthetic */ ChapterLink[][] c;

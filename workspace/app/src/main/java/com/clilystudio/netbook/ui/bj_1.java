@@ -2,8 +2,7 @@ package com.clilystudio.netbook.ui;
 
 import android.view.View;
 
-final class bj
-        implements View.OnClickListener {
+final class bj implements View.OnClickListener {
     private /* synthetic */ MhdListActivity a;
 
     bj(MhdListActivity mhdListActivity) {

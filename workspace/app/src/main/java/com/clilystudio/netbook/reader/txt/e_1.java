@@ -4,8 +4,7 @@ import android.app.Activity;
 
 import com.iflytek.cloud.InitListener;
 
-final class e
-        implements InitListener {
+final class e implements InitListener {
     private /* synthetic */ ReaderTxtActivity a;
 
     e(ReaderTxtActivity readerTxtActivity) {

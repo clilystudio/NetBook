@@ -2,8 +2,7 @@ package com.clilystudio.netbook.ui.user;
 
 import android.content.DialogInterface;
 
-final class m
-        implements DialogInterface.OnClickListener {
+final class m implements DialogInterface.OnClickListener {
     private /* synthetic */ boolean a;
     private /* synthetic */ ModifyUserInfoActivity b;
 

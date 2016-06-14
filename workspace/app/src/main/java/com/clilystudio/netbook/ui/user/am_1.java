@@ -5,8 +5,7 @@ import android.view.View;
 
 import com.clilystudio.netbook.model.VipPlan$Plan;
 
-final class am
-        implements View.OnClickListener {
+final class am implements View.OnClickListener {
     final /* synthetic */ int a;
     final /* synthetic */ al b;
 
