@@ -3,7 +3,7 @@ package com.clilystudio.netbook.ui;
 import android.content.Context;
 import android.text.SpannableString;
 
-import com.clilystudio.netbook.b.c;
+import com.clilystudio.netbook.b_pack.c;
 
 import java.util.ArrayList;
 import java.util.List;

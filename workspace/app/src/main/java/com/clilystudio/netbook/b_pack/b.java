@@ -1,4 +1,4 @@
-package com.clilystudio.netbook.b;
+package com.clilystudio.netbook.b_pack;
 
 import android.content.Context;
 import android.content.Intent;

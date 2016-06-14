@@ -7,7 +7,7 @@ import android.text.method.LinkMovementMethod;
 import android.view.MotionEvent;
 import android.widget.TextView;
 
-import com.clilystudio.netbook.b.b;
+import com.clilystudio.netbook.b_pack.b;
 
 public final class bd
         extends LinkMovementMethod {

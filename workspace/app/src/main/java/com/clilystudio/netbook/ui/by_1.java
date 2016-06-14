@@ -33,7 +33,7 @@ public final class by
 
     private void b(List<bz> list) {
         for (bz bz2 : list) {
-            this.b.setSpan(new com.clilystudio.netbook.b.a(this.a, bz2.a()), bz2.b(), bz2.c(), 17);
+            this.b.setSpan(new com.clilystudio.netbook.b_pack.a(this.a, bz2.a()), bz2.b(), bz2.c(), 17);
         }
     }
 
