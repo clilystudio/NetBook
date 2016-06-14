@@ -6,8 +6,9 @@ import android.text.TextPaint;
 import android.text.style.ClickableSpan;
 import android.view.View;
 
-public abstract class b
-        extends ClickableSpan {
+import com.clilystudio.netbook.R;
+
+public abstract class b extends ClickableSpan {
     protected Context a;
     private int b;
     private int c;
@@ -16,9 +17,9 @@ public abstract class b
 
     public b(Context context) {
         this.a = context;
-        this.b = this.a.getResources().getColor(2131427452);
-        this.d = this.a.getResources().getColor(2131427453);
-        this.c = this.a.getResources().getColor(17170445);
+        this.b = this.a.getResources().getColor(R.color.linkify_text);
+        this.d = this.a.getResources().getColor(R.color.linkify_text_pressed);
+        this.c = this.a.getResources().getColor(android.R.color.transparent);
     }
 
     abstract Intent a();

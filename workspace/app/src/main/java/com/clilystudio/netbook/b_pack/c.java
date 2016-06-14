@@ -6,8 +6,7 @@ import android.content.Intent;
 import com.clilystudio.netbook.ui.SearchActivity;
 import com.clilystudio.netbook.ui.bf;
 
-public final class c
-        extends b {
+public final class c extends b {
     private bf b;
 
     public c(Context context, bf bf2) {
