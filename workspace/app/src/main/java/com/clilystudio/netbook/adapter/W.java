@@ -2,32 +2,27 @@ package com.clilystudio.netbook.adapter;
 
 import android.view.LayoutInflater;
 
-import com.clilystudio.netbook.model.UGCBookDetail$UGCBookContainer;
-import com.clilystudio.netbook.model.UGCBookDetail$UGCBookContainer$UGCBookItem;
+import com.clilystudio.netbook.model.UGCBookDetail;
 import com.clilystudio.netbook.widget.CoverView;
 
-public final class W extends com.clilystudio.netbook.util.W<UGCBookDetail$UGCBookContainer> {
+public final class W extends com.clilystudio.netbook.util.W<UGCBookDetail.UGCBookContainer> {
     public W(LayoutInflater layoutInflater) {
         super(layoutInflater, 2130903319);
     }
 
-    /*
-     * Enabled aggressive block sorting
-     */
     @Override
-    protected final /* synthetic */ void a(int n, Object object) {
-        UGCBookDetail$UGCBookContainer$UGCBookItem uGCBookDetail$UGCBookContainer$UGCBookItem;
-        UGCBookDetail$UGCBookContainer uGCBookDetail$UGCBookContainer = (UGCBookDetail$UGCBookContainer) object;
-        if (uGCBookDetail$UGCBookContainer.getComment() != null && uGCBookDetail$UGCBookContainer.getComment().trim().length() > 6) {
-            this.a(2, uGCBookDetail$UGCBookContainer.getComment());
+    protected final /* synthetic */ void a(int n, UGCBookDetail.UGCBookContainer object) {
+        UGCBookDetail.UGCBookContainer.UGCBookItem uGCBookDetail$UGCBookContainer$UGCBookItem;
+        if (object.getComment() != null && object.getComment().trim().length() > 6) {
+            this.a(2, object.getComment());
             this.a(7, false);
         } else {
             this.a(7, true);
         }
-        if ((uGCBookDetail$UGCBookContainer$UGCBookItem = uGCBookDetail$UGCBookContainer.getBook()) != null) {
+        if ((uGCBookDetail$UGCBookContainer$UGCBookItem = object.getBook()) != null) {
             this.a(0, uGCBookDetail$UGCBookContainer$UGCBookItem.getTitle());
             this.a(1, String.valueOf(uGCBookDetail$UGCBookContainer$UGCBookItem.getLatelyFollower()));
-            ((CoverView) this.a(3, CoverView.class)).setImageUrl(uGCBookDetail$UGCBookContainer$UGCBookItem.getFullCover(), 2130837766);
+            this.a(3, CoverView.class).setImageUrl(uGCBookDetail$UGCBookContainer$UGCBookItem.getFullCover(), 2130837766);
             this.a(4, uGCBookDetail$UGCBookContainer$UGCBookItem.getAuthor());
             long l = uGCBookDetail$UGCBookContainer$UGCBookItem.getWordCount();
             if (l <= 0) {

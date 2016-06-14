@@ -20,8 +20,6 @@ import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.model.Author;
 import com.clilystudio.netbook.model.BookSummary;
 import com.clilystudio.netbook.model.UGCBookDetail;
-import com.clilystudio.netbook.model.UGCBookDetail$UGCBookContainer;
-import com.clilystudio.netbook.model.UGCBookDetail$UGCBookContainer$UGCBookItem;
 import com.clilystudio.netbook.model.UGCNewCollection;
 import com.clilystudio.netbook.ui.BaseActivity;
 import com.clilystudio.netbook.ui.SmartImageView;
@@ -97,9 +95,9 @@ public class UGCDetailActivity extends BaseActivity implements View.OnClickListe
             uGCNewCollection.setTitle(uGCBookDetail.getTitle());
             uGCNewCollection.setDesc(uGCBookDetail.getDesc());
             ArrayList<BookSummary> arrayList = new ArrayList<BookSummary>();
-            for (UGCBookDetail$UGCBookContainer uGCBookDetail$UGCBookContainer : uGCBookDetail.getBooks()) {
+            for (UGCBookDetail.UGCBookContainer uGCBookDetail$UGCBookContainer : uGCBookDetail.getBooks()) {
                 BookSummary bookSummary = new BookSummary();
-                UGCBookDetail$UGCBookContainer$UGCBookItem uGCBookDetail$UGCBookContainer$UGCBookItem = uGCBookDetail$UGCBookContainer.getBook();
+                UGCBookDetail.UGCBookContainer.UGCBookItem uGCBookDetail$UGCBookContainer$UGCBookItem = uGCBookDetail$UGCBookContainer.getBook();
                 bookSummary.setAppendComment(uGCBookDetail$UGCBookContainer.getComment());
                 bookSummary.setId(uGCBookDetail$UGCBookContainer$UGCBookItem.get_id());
                 bookSummary.setCover(uGCBookDetail$UGCBookContainer$UGCBookItem.getCover());
@@ -178,7 +176,7 @@ public class UGCDetailActivity extends BaseActivity implements View.OnClickListe
     private void a(UGCBookDetail uGCBookDetail) {
         this.e(1);
         Author author = uGCBookDetail.getAuthor();
-        UGCBookDetail$UGCBookContainer[] arruGCBookDetail$UGCBookContainer = uGCBookDetail.getBooks();
+        UGCBookDetail.UGCBookContainer[] arruGCBookDetail$UGCBookContainer = uGCBookDetail.getBooks();
         if (arruGCBookDetail$UGCBookContainer == null || arruGCBookDetail$UGCBookContainer.length == 0) {
             if (author != null) {
                 this.y = author.getScaleAvatar();
@@ -301,11 +299,11 @@ public class UGCDetailActivity extends BaseActivity implements View.OnClickListe
         uGCBookDetail.setTitle(uGCNewCollection.getTitle());
         uGCBookDetail.setDesc(uGCNewCollection.getDesc());
         List<BookSummary> list = uGCNewCollection.getBooks();
-        UGCBookDetail$UGCBookContainer[] arruGCBookDetail$UGCBookContainer = new UGCBookDetail$UGCBookContainer[list.size()];
+        UUGCBookDetail.UGCBookContainer[] arruGCBookDetail$UGCBookContainer = new UGCBookDetail.UGCBookContainer[list.size()];
         for (int i2 = 0; i2 < list.size(); ++i2) {
             BookSummary bookSummary = list.get(i2);
-            UGCBookDetail$UGCBookContainer uGCBookDetail$UGCBookContainer = new UGCBookDetail$UGCBookContainer();
-            UGCBookDetail$UGCBookContainer$UGCBookItem uGCBookDetail$UGCBookContainer$UGCBookItem = new UGCBookDetail$UGCBookContainer$UGCBookItem();
+            UGCBookDetail.UGCBookContainer uGCBookDetail$UGCBookContainer = new UGCBookDetail.UGCBookContainer();
+            UGCBookDetail.UGCBookContainer.UGCBookItem uGCBookDetail$UGCBookContainer$UGCBookItem = new UGCBookDetail.UGCBookContainer.UGCBookItem();
             uGCBookDetail$UGCBookContainer$UGCBookItem.set_id(bookSummary.getId());
             uGCBookDetail$UGCBookContainer$UGCBookItem.setCover(bookSummary.getCover());
             uGCBookDetail$UGCBookContainer$UGCBookItem.setTitle(bookSummary.getTitle());
