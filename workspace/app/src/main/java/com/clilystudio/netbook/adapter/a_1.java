@@ -19,7 +19,7 @@ public final class a extends W<BookReadRecord> {
     }
 
     @Override
-    protected final /* synthetic */ void a(int n, Object object) {
+    protected final /* synthetic */ void a(int n, BookReadRecord object) {
         BookReadRecord bookReadRecord = (BookReadRecord) object;
         ((CoverView) this.a(0, CoverView.class)).setImageUrl(bookReadRecord.getFullCover(), 2130837766);
         this.a(1, bookReadRecord.getTitle());
