@@ -53,6 +53,8 @@ import com.clilystudio.netbook.util.Z;
 import com.clilystudio.netbook.util.as;
 import com.clilystudio.netbook.util.s;
 import com.clilystudio.netbook.widget.TabWidgetV2;
+import com.umeng.onlineconfig.OnlineConfigAgent;
+import com.xiaomi.mistatistic.sdk.MiStatInterface;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -112,7 +114,7 @@ public class HomeActivity
         homeActivity.t.setWebViewClient((WebViewClient) ((Object) new b(homeActivity)));
         homeActivity.t.loadUrl(string);
         homeActivity.u = true;
-        com.umeng.a.b.a(homeActivity, "take_17k_webflow");
+        MiStatInterface.recordCountEvent("take_17k_webflow",null);
     }
 
     private static void a(List<BookReadRecord> list) {
@@ -238,7 +240,7 @@ public class HomeActivity
     }
 
     private float j() {
-        String string = com.umeng.a.b.b(this, "rate_17kflow");
+        String string = OnlineConfigAgent.getInstance().getConfigParams(this, "rate_17kflow");
         try {
             float f2 = Float.parseFloat(string);
             return f2;
@@ -470,7 +472,7 @@ public class HomeActivity
                     AccountInfo accountInfo = AccountInfo.getOrCreate(this.p.getToken());
                     accountInfo.setPrevUnimpNotif(J.a(this).b());
                     accountInfo.save();
-                    com.umeng.a.b.a(this, "view_notification");
+                    MiStatInterface.recordCountEvent("view_notification",null);
                     com.clilystudio.netbook.event.i.a().c(new w());
                     this.startActivity(new Intent(this, MyMessageActivity.class));
                     return;
@@ -505,7 +507,7 @@ public class HomeActivity
                     this.o.setImageResource(2130838180);
                     com.clilystudio.netbook.hpay100.a.a.b((Context) this, "customer_night_theme", true);
                     com.clilystudio.netbook.hpay100.a.a.b((Context) this, "night_mode", true);
-                    com.umeng.a.b.a(this, "start_night_theme_home");
+                    MiStatInterface.recordCountEvent("start_night_theme_home",null);
                     com.clilystudio.netbook.hpay100.a.a.B(this);
                     intent.putExtra("onThemeChange", 1);
                 }
@@ -787,7 +789,7 @@ public class HomeActivity
     public void onResume() {
         Account account;
         super.onResume();
-        com.clilystudio.netbook.api.e.a("1".equals(com.umeng.a.b.b(this, "use_http_dns")));
+        com.clilystudio.netbook.api.e.a("1".equals(OnlineConfigAgent.getInstance().getConfigParams(this, "use_http_dns")));
         if (com.clilystudio.netbook.hpay100.a.a.l()) {
             new s((Context) this).b(new Void[0]);
         }

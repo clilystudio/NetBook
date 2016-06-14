@@ -4,6 +4,7 @@ import android.view.MotionEvent;
 
 import com.clilystudio.netbook.ui.SplashActivity;
 import com.clilystudio.netbook.widget.AdContainerLayout;
+import com.xiaomi.mistatistic.sdk.MiStatInterface;
 
 import java.lang.reflect.InvocationHandler;
 
@@ -76,7 +77,7 @@ public final class AdSplashImp {
         // 2 sources:
         if (var4_4 == null) return;
         if (var4_4.length() <= 0) return;
-        com.umeng.a.b.a(this.a, var4_4);
+        MiStatInterface.recordCountEvent( var4_4,null);
     }
 
     public final void a() {

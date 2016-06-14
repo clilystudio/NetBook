@@ -23,12 +23,10 @@ public class BaseReadActivity
     @Override
     public void onPause() {
         super.onPause();
-        com.umeng.a.b.a(this);
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        com.umeng.a.b.b(this);
     }
 }

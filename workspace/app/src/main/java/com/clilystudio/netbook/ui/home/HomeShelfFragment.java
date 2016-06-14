@@ -54,6 +54,8 @@ import com.clilystudio.netbook.util.UmengGameTracer$From;
 import com.clilystudio.netbook.util.as;
 import com.clilystudio.netbook.widget.CoverLoadingView;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
+import com.umeng.onlineconfig.OnlineConfigAgent;
+import com.xiaomi.mistatistic.sdk.MiStatInterface;
 import com.ximalaya.ting.android.opensdk.datatrasfer.CommonRequest;
 import com.ximalaya.ting.android.opensdk.httputil.XimalayaException;
 import com.ximalaya.ting.android.opensdk.model.album.Album;
@@ -625,7 +627,7 @@ public class HomeShelfFragment
         com.clilystudio.netbook.util.c.a().b();
         a.b((Context) this.getActivity(), "DELETE_SHELF_AD_KEY" + n2, new Date().getTime());
         this.k();
-        com.umeng.a.b.a(this.getActivity(), "ad_delete_shelf");
+        MiStatInterface.recordCountEvent("ad_delete_shelf",null);
     }
 
     private void a(BookFile bookFile) {
@@ -703,7 +705,7 @@ public class HomeShelfFragment
 
     private void a(String string, String string2, boolean bl) {
         if (bl) {
-            com.umeng.a.b.a(this.getActivity(), "book_recommend_delete_click", string2);
+            MiStatInterface.recordCountEvent("book_recommend_delete_click", string2);
         }
         com.a.a.a.b(this.getActivity(), string, a.p(this.getActivity()));
     }
@@ -877,10 +879,10 @@ public class HomeShelfFragment
             list = list2 = this.j();
         } catch (Exception var3_4) {
             if (var3_4.getMessage() != null && var3_4.getMessage().contains("not attached to Activity")) {
-                com.umeng.a.b.a(this.getActivity(), "zhuishu_catch_exception", "HomeShelfFragment_loadShelf:Fragment HomeShelfFragment not attached to Activity");
-                list = null;
+                MiStatInterface.recordException(new Throwable("HomeShelfFragment_loadShelf:Fragment HomeShelfFragment not attached to Activity"));
+                 list = null;
             }
-            com.umeng.a.b.a(this.getActivity(), "zhuishu_catch_exception", "HomeShelfFragment_loadShelf:" + var3_4.getMessage());
+            MiStatInterface.recordException(new Throwable("HomeShelfFragment_loadShelf:" + var3_4.getMessage()));
             list = null;
         }
         if (list != null) {
@@ -972,7 +974,7 @@ public class HomeShelfFragment
                     if (!var9_8 && var5_5) {
                         this.a(var1_1, var4_4);
                     }
-                    if ((var10_12 = com.umeng.a.b.b(this.getActivity(), "delete_audio_on_shelf")) == null || !"1".equals(var10_12))**GOTO lbl47
+                    if ((var10_12 = OnlineConfigAgent.getInstance().getConfigParams(this.getActivity(), "delete_audio_on_shelf")) == null || !"1".equals(var10_12))**GOTO lbl47
                     var11_13 = true;
                     lbl39:
                     // 2 sources:
@@ -1008,7 +1010,7 @@ public class HomeShelfFragment
             try {
                 Collections.sort(var1_1, new G(this, var2_2));
             } catch (Exception var13_17) {
-                com.umeng.a.b.a(this.getActivity(), "zhuishu_catch_exception", "HomeShelfFragment_createShelf:" + var13_17.getMessage());
+                MiStatInterface.recordException(new Throwable("HomeShelfFragment_createShelf:" + var13_17.getMessage()));
                 **continue;
             }
             lbl62:
@@ -1033,14 +1035,14 @@ public class HomeShelfFragment
                     var19_20[var20_21] = var4_4.get(var20_21).getBookId();
                 }
             } catch (Exception var14_22) {
-                com.umeng.a.b.a(this.getActivity(), "zhuishu_catch_exception", "HomeShelfFragment_createShelf:" + var14_22.getMessage());
+                MiStatInterface.recordException(new Throwable("HomeShelfFragment_createShelf:" + var14_22.getMessage()));
                 if (!var14_22.getMessage().contains("no such table: BookSyncRecord"))**GOTO lbl95
                 try {
                     new SQLiteUtils();
                     SQLiteUtils.execSql("CREATE TABLE IF NOT EXISTS BookSyncRecord (id integer primary key AutoIncrement,userId varchar(20),bookId varchar(20), type int,updated long);");
                     **GOTO lbl95
                 } catch (Exception var16_23) {
-                    com.umeng.a.b.a(this.getActivity(), "zhuishu_catch_exception", "HomeShelfFragment_createTableBookSyncRecord:" + var14_22.getMessage());
+                    MiStatInterface.recordException(new Throwable("HomeShelfFragment_createTableBookSyncRecord:" + var14_22.getMessage()));
                     **continue;
                 }
             }
@@ -1075,7 +1077,7 @@ public class HomeShelfFragment
     }
 
     public final void d() {
-        com.umeng.a.b.a(this.getActivity(), "home_shelf_bulk_operation");
+        MiStatInterface.recordCountEvent("home_shelf_bulk_operation",null);
         if (this.r != null) {
             this.l.setVisibility(8);
         }

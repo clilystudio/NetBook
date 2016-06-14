@@ -88,6 +88,8 @@ import com.migu.sdk.api.MiguSdk;
 import com.mob.tools.a.i;
 import com.mob.tools.a.l;
 import com.mob.tools.a.p;
+import com.umeng.onlineconfig.OnlineConfigAgent;
+import com.xiaomi.mistatistic.sdk.MiStatInterface;
 
 import org.apache.thrift.d;
 import org.apache.thrift.e;
@@ -198,7 +200,7 @@ public class a {
     }
 
     public static boolean A(Context context) {
-        return "1".equals(com.umeng.a.b.b(context, "shelf_ad_third_enable"));
+        return "1".equals(OnlineConfigAgent.getInstance().getConfigParams(context, "shelf_ad_third_enable"));
     }
 
     public static void B(Context context) {
@@ -213,7 +215,7 @@ public class a {
         long l2 = a.a(context, "start_night_theme", 0);
         long l3 = new Date().getTime();
         if (l2 > 0 && l3 > l2) {
-            com.umeng.a.b.a(context, "night_theme_period", null, (int) ((l3 - l2) / 1000 / 60));
+            MiStatInterface.recordCalculateEvent("night_theme_period", null, (int) ((l3 - l2) / 1000 / 60));
         }
         a.b(context, "start_night_theme", 0);
     }
@@ -253,7 +255,7 @@ public class a {
         long l2 = a.a(context, "start_auto_read_time", 0);
         long l3 = new Date().getTime();
         if (l2 > 0 && l3 > l2) {
-            com.umeng.a.b.a(context, "auto_read_period", null, (int) ((l3 - l2) / 1000 / 60));
+            MiStatInterface.recordCalculateEvent("auto_read_period", null, (int) ((l3 - l2) / 1000 / 60));
         }
         a.b(context, "start_auto_read_time", 0);
     }
@@ -294,7 +296,7 @@ public class a {
     public static boolean F(Context context) {
         if (!a.r(context, "show_new_ads")) return false;
         String string = am.n((Context) context);
-        String string2 = com.umeng.a.b.b(context, "show_new_ads_disabled_channel");
+        String string2 = OnlineConfigAgent.getInstance().getConfigParams(context, "show_new_ads_disabled_channel");
         if (string2 == null || string2.length() <= 0) return true;
         String[] arrstring = string2.split(",");
         int n2 = arrstring.length;
@@ -327,11 +329,11 @@ public class a {
     }
 
     public static void G(Context context) {
-        com.umeng.a.b.a(context, "HOT_KEY_WORD_CHANGE_CLICK", "CHANGE");
+        MiStatInterface.recordCountEvent("HOT_KEY_WORD_CHANGE_CLICK", "CHANGE");
     }
 
     public static float H(Context context) {
-        String string = com.umeng.a.b.b(context, "rate_bfd_recommend");
+        String string = OnlineConfigAgent.getInstance().getConfigParams(context, "rate_bfd_recommend");
         try {
             float f2 = Float.parseFloat(string);
             return f2;
@@ -358,10 +360,10 @@ public class a {
     }
 
     public static com.clilystudio.netbook.download.a I(Context context) {
-        String string = com.umeng.a.b.b(context, "app_name");
-        String string2 = com.umeng.a.b.b(context, "app_apk_url");
-        String string3 = com.umeng.a.b.b(context, "app_icon_url");
-        String string4 = com.umeng.a.b.b(context, "app_package_name");
+        String string = OnlineConfigAgent.getInstance().getConfigParams(context, "app_name");
+        String string2 = OnlineConfigAgent.getInstance().getConfigParams(context, "app_apk_url");
+        String string3 = OnlineConfigAgent.getInstance().getConfigParams(context, "app_icon_url");
+        String string4 = OnlineConfigAgent.getInstance().getConfigParams(context, "app_package_name");
         if (!(a.Z(string) || a.Z(string2) || a.Z(string3) || a.Z(string4))) {
             return new com.clilystudio.netbook.download.a(context, string, string2, string3, string4);
         }
@@ -405,7 +407,7 @@ public class a {
         long l2 = a.a(context, "tts_start_time", 0);
         long l3 = new Date().getTime();
         if (l2 > 0 && l3 > l2) {
-            com.umeng.a.b.a(context, "tts_speaking_period", null, (int) ((l3 - l2) / 1000 / 60));
+            MiStatInterface.recordCalculateEvent("tts_speaking_period", null, (int) ((l3 - l2) / 1000 / 60));
         }
         a.b(context, "tts_start_time", 0);
     }
@@ -1947,16 +1949,16 @@ public class a {
         if (string2 == null) return;
         {
             if (n3 == 1) {
-                com.umeng.a.b.a(context, "share_book_info_platform", string2);
+                MiStatInterface.recordCountEvent("share_book_info_platform", string2);
                 return;
             } else {
                 if (n3 == 2) {
-                    com.umeng.a.b.a(context, "share_post_detail_platform", string2);
+                    MiStatInterface.recordCountEvent( "share_post_detail_platform", string2);
                     return;
                 }
                 if (n3 != 3) return;
                 {
-                    com.umeng.a.b.a(context, "share_book_list_platform", string2);
+                    MiStatInterface.recordCountEvent("share_book_list_platform", string2);
                     return;
                 }
             }
@@ -1991,7 +1993,7 @@ public class a {
             String string3 = a.d(context, "ad_shelf_show", null);
             if (string3 != null && string3.contains(string2)) return;
             {
-                com.umeng.a.b.a(context, "zssq_ad_show_" + advert.getPosition(), advert.getTitle());
+                MiStatInterface.recordCountEvent("zssq_ad_show_" + advert.getPosition(), advert.getTitle());
                 a.e(context, "ad_shelf_show", string3 + string2);
                 return;
             }
@@ -3179,7 +3181,7 @@ public class a {
         if (advert == null) {
             return;
         }
-        com.umeng.a.b.a(context, "zssq_ad_click_" + advert.getPosition(), advert.getTitle());
+        MiStatInterface.recordCountEvent("zssq_ad_click_" + advert.getPosition(), advert.getTitle());
     }
 
     /*
@@ -4477,7 +4479,7 @@ public class a {
     }
 
     public static boolean l() {
-        if (!"0".equals(com.umeng.a.b.b(MyApplication.a(), "force_encrypt_chapter"))) {
+        if (!"0".equals(OnlineConfigAgent.getInstance().getConfigParams(MyApplication.a(), "force_encrypt_chapter"))) {
             return true;
         }
         return false;
@@ -4572,7 +4574,7 @@ public class a {
             String string3 = a.d(context, "ad_splash_show", null);
             if (string3 != null && string3.contains(string2)) return;
             {
-                com.umeng.a.b.a(context, "ad_splash_show", string2);
+                MiStatInterface.recordCountEvent("ad_splash_show", string2);
                 a.e(context, "ad_splash_show", string3 + string2);
                 return;
             }
@@ -4648,7 +4650,7 @@ public class a {
     }
 
     public static void n(Context context, String string2) {
-        com.umeng.a.b.a(context, "home_ab_menu_click", string2);
+        MiStatInterface.recordCountEvent("home_ab_menu_click", string2);
     }
 
     /*
@@ -4689,7 +4691,7 @@ public class a {
     }
 
     public static void o(Context context, String string2) {
-        com.umeng.a.b.a(context, "splash_ad_click", string2);
+        MiStatInterface.recordCountEvent("splash_ad_click", string2);
     }
 
     public static Map<String, String> p(Context context) {
@@ -4699,7 +4701,7 @@ public class a {
     }
 
     public static void p(Context context, String string2) {
-        com.umeng.a.b.a(context, "book_category_major_click", string2);
+        MiStatInterface.recordCountEvent("book_category_major_click", string2);
     }
 
     public static boolean p(String string2) {
@@ -4716,7 +4718,7 @@ public class a {
     }
 
     public static void q(Context context, String string2) {
-        com.umeng.a.b.a(context, "reader_menu_event", string2);
+        MiStatInterface.recordCountEvent("reader_menu_event", string2);
     }
 
     public static boolean q(String string2) {
@@ -4753,7 +4755,7 @@ public class a {
     }
 
     public static boolean r(Context context, String string2) {
-        return "1".equals(com.umeng.a.b.b(context, string2));
+        return "1".equals(OnlineConfigAgent.getInstance().getConfigParams(context, string2));
     }
 
     public static String s(String string2) {
@@ -4761,7 +4763,7 @@ public class a {
     }
 
     public static void s(Context context, String string2) {
-        com.umeng.a.b.a(context, "post_official_open", string2);
+        MiStatInterface.recordCountEvent("post_official_open", string2);
     }
 
     public static boolean s(Context context) {
@@ -4772,7 +4774,7 @@ public class a {
     }
 
     public static void t(Context context, String string2) {
-        com.umeng.a.b.a(context, "HOT_KEY_WORD_CLICK", string2);
+        MiStatInterface.recordCountEvent("HOT_KEY_WORD_CLICK", string2);
     }
 
     public static void t(String string2) {
@@ -4794,7 +4796,7 @@ public class a {
     }
 
     public static float u(Context context, String string2) {
-        String string3 = com.umeng.a.b.b(context, string2);
+        String string3 = OnlineConfigAgent.getInstance().getConfigParams(context, string2);
         try {
             float f2 = Float.parseFloat(string3);
             return f2;
@@ -4806,7 +4808,7 @@ public class a {
     public static void u(Context context) {
         int n2 = t.a();
         if (n2 != a.a(context, "key_all_post_open_by_day", 0)) {
-            com.umeng.a.b.a(context, "all_post_open_by_day");
+            MiStatInterface.recordCountEvent("all_post_open_by_day", null);
             a.b(context, "key_all_post_open_by_day", n2);
         }
     }
@@ -4816,7 +4818,7 @@ public class a {
     }
 
     public static float v(Context context, String string2) {
-        String string3 = com.umeng.a.b.b(context, string2);
+        String string3 = OnlineConfigAgent.getInstance().getConfigParams(context, string2);
         try {
             float f2 = Float.parseFloat(string3);
             return f2;
@@ -4828,7 +4830,7 @@ public class a {
     public static void v(Context context) {
         int n2 = t.a();
         if (n2 != a.a(context, "key_audiobook_listen_count", 0)) {
-            com.umeng.a.b.a(context, "audiobook_listen_count");
+            MiStatInterface.recordCountEvent("audiobook_listen_count",null);
             a.b(context, "key_audiobook_listen_count", n2);
         }
     }
@@ -4850,7 +4852,7 @@ public class a {
             return true;
         }
         String string2 = am.n((Context) context);
-        int n2 = a.b(com.umeng.a.b.b(context, "home_game_center_toggle"), 0);
+        int n2 = a.b(OnlineConfigAgent.getInstance().getConfigParams(context, "home_game_center_toggle"), 0);
         boolean bl = am.f((Context) context) < n2;
         if (!"Anzhi".equals(string2)) {
             if (!("Taobao".equals(string2) || "Uc".equals(string2) || "Zhihuiyun".equals(string2))) {
@@ -4864,7 +4866,7 @@ public class a {
 
     public static boolean w(Context context, String string2) {
         float f2;
-        String string3 = com.umeng.a.b.b(context, string2);
+        String string3 = OnlineConfigAgent.getInstance().getConfigParams(context, string2);
         try {
             f2 = Float.parseFloat(string3);
         } catch (Exception var3_4) {
@@ -4882,7 +4884,7 @@ public class a {
 
     public static boolean x(Context context) {
         String string2 = am.n((Context) context);
-        String string3 = com.umeng.a.b.b(context, "game_center_disabled_at_channel");
+        String string3 = OnlineConfigAgent.getInstance().getConfigParams(context, "game_center_disabled_at_channel");
         if (string3 != null && string3.length() > 0) {
             String[] arrstring = string3.split(",");
             int n2 = arrstring.length;
@@ -4923,7 +4925,7 @@ public class a {
     }
 
     public static boolean y(Context context) {
-        return "1".equals(com.umeng.a.b.b(context, "show_remove_ad"));
+        return "1".equals(OnlineConfigAgent.getInstance().getConfigParams(context, "show_remove_ad"));
     }
 
     public static String z(String string2) {
@@ -4935,7 +4937,7 @@ public class a {
 
     public static boolean z(Context context) {
         String string2 = am.n((Context) context);
-        String string3 = com.umeng.a.b.b(context, "one_yuan_disabled_channel");
+        String string3 = OnlineConfigAgent.getInstance().getConfigParams(context, "one_yuan_disabled_channel");
         if (string3 != null && string3.length() > 0) {
             String[] arrstring = string3.split(",");
             int n2 = arrstring.length;

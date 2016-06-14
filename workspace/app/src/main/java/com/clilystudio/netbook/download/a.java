@@ -5,6 +5,8 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Handler;
 
+import com.xiaomi.mistatistic.sdk.MiStatInterface;
+
 import java.util.HashSet;
 import java.util.Set;
 
@@ -89,7 +91,7 @@ public final class a {
         if (e.a(this.a)) {
             new d(this).start();
             new c(this).start();
-            com.umeng.a.b.a(this.a, "manhuadao_download_count", this.c);
+            MiStatInterface.recordCountEvent("manhuadao_download_count", this.c);
             return;
         }
         SharedPreferences.Editor editor = this.a.getSharedPreferences("downloadInfo", 0).edit();

@@ -7,6 +7,7 @@ import android.widget.Toast;
 
 import com.clilystudio.netbook.event.i;
 import com.clilystudio.netbook.event.y;
+import com.xiaomi.mistatistic.sdk.MiStatInterface;
 
 import org.json.JSONException;
 
@@ -41,7 +42,7 @@ final class b
                         return;
                     }
                     Toast.makeText(a.a(this.a), "\u652f\u4ed8\u6210\u529f", 0).show();
-                    com.umeng.a.b.a(a.a(this.a), "charge_complete", "alipay");
+                    MiStatInterface.recordCountEvent("charge_complete", "alipay");
                     return;
                 }
                 if (TextUtils.equals(string, "8000")) {
@@ -49,11 +50,11 @@ final class b
                     return;
                 }
                 if (TextUtils.equals(string, "6001")) {
-                    com.umeng.a.b.a(a.a(this.a), "charge_money_cancel", "alipay");
+                    MiStatInterface.recordCountEvent("charge_money_cancel", "alipay");
                     return;
                 }
                 Toast.makeText(a.a(this.a), "\u652f\u4ed8\u5931\u8d25", 0).show();
-                com.umeng.a.b.a(a.a(this.a), "charge_money_failed", "alipay");
+                MiStatInterface.recordCountEvent("charge_money_failed", "alipay");
                 return;
             }
             case 2:

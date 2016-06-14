@@ -144,7 +144,6 @@ public class ApiService {
             return;
         }
         c.a(new com.xiaomi.mistatistic.sdk.b.a(string, l2 - l, n, string2));
-        b.a(MyApplication.a(), "api_http_error", string2);
     }
 
     private static String ad(String string) {

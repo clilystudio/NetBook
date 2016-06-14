@@ -7,6 +7,7 @@ import android.view.View;
 import com.clilystudio.netbook.exception.UnImplementException;
 import com.clilystudio.netbook.model.InsideLink;
 import com.clilystudio.netbook.util.InsideLinkIntent;
+import com.xiaomi.mistatistic.sdk.MiStatInterface;
 
 public final class a
         extends b {
@@ -33,6 +34,6 @@ public final class a
         super.onClick(view);
         Context context = this.a;
         InsideLink insideLink = this.b;
-        com.umeng.a.b.a(context, "post_official_link_click", insideLink.getType().getName() + "-" + insideLink.getLabel());
+        MiStatInterface.recordCountEvent("post_official_link_click", insideLink.getType().getName() + "-" + insideLink.getLabel());
     }
 }

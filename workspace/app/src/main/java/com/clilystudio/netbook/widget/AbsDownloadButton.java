@@ -8,6 +8,7 @@ import android.util.AttributeSet;
 import android.widget.Button;
 
 import com.clilystudio.netbook.model.AppItem;
+import com.xiaomi.mistatistic.sdk.MiStatInterface;
 
 public abstract class AbsDownloadButton
         extends Button {
@@ -19,7 +20,7 @@ public abstract class AbsDownloadButton
 
     static /* synthetic */ void a(AbsDownloadButton absDownloadButton) {
         String string = absDownloadButton.a.getName();
-        com.umeng.a.b.a(absDownloadButton.getContext(), "mystery_app_download", string);
+        MiStatInterface.recordCountEvent("mystery_app_download", string);
         if (com.clilystudio.netbook.hpay100.a.a.r(absDownloadButton.getContext()) == 1) {
             new k(absDownloadButton.getContext()).a("\u786e\u8ba4\u4e0b\u8f7d").b("\u5373\u5c06\u5f00\u59cb\u4e0b\u8f7d\u300a" + string + "\u300b\uff0c\u662f\u5426\u4e0b\u8f7d\uff1f").a(2131034424, (DialogInterface.OnClickListener) ((Object) new a(absDownloadButton))).b(2131034129, null).b().show();
             return;

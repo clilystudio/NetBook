@@ -10,6 +10,7 @@ import com.clilystudio.netbook.util.e;
 import com.e.a.a.d.b;
 import com.e.a.a.g.a;
 import com.e.a.a.g.c;
+import com.xiaomi.mistatistic.sdk.MiStatInterface;
 
 public class WXPayEntryActivity
         extends Activity
@@ -26,22 +27,22 @@ public class WXPayEntryActivity
         b3.c(new y(bl));
         switch (b2.a) {
             default: {
-                com.umeng.a.b.a(this, "charge_money_failed", "weixinpay");
+                MiStatInterface.recordCountEvent( "charge_money_failed", "weixinpay");
                 e.a((Activity) this, (String) "\u652f\u4ed8\u5931\u8d25\uff01");
                 break;
             }
             case 0: {
                 e.a((Activity) this, (String) "\u652f\u4ed8\u6210\u529f\uff01");
-                com.umeng.a.b.a(this, "charge_complete", "weixinpay");
+                MiStatInterface.recordCountEvent("charge_complete", "weixinpay");
                 break;
             }
             case -1: {
-                com.umeng.a.b.a(this, "charge_money_failed", "weixinpay");
+                MiStatInterface.recordCountEvent("charge_money_failed", "weixinpay");
                 e.a((Activity) this, (String) "\u7b7e\u540d\u9519\u8bef\uff01");
                 break;
             }
             case -2: {
-                com.umeng.a.b.a(this, "charge_money_cancel", "weixinpay");
+                MiStatInterface.recordCountEvent("charge_money_cancel", "weixinpay");
                 e.a((Activity) this, (String) "\u53d6\u6d88\u652f\u4ed8\uff01");
             }
         }

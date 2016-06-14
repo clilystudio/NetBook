@@ -18,6 +18,7 @@ import com.clilystudio.netbook.ui.BaseActivity;
 import com.handmark.pulltorefresh.library.PullToRefreshBase$Mode;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.handmark.pulltorefresh.library.j;
+import com.xiaomi.mistatistic.sdk.MiStatInterface;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -393,7 +394,7 @@ public class ReviewListActivity
         Object[] arrobject = new String[]{this.s, this.t, this.u};
         dp2.b(arrobject);
         a.u(this);
-        com.umeng.a.b.a(this, "BookReviewListActivity_Opened");
+        MiStatInterface.recordCountEvent("BookReviewListActivity_Opened",null);
     }
 
     @Override

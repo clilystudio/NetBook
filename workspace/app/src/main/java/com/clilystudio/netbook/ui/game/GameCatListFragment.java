@@ -11,6 +11,7 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 
 import com.clilystudio.netbook.ui.BaseLoadingFragment;
+import com.xiaomi.mistatistic.sdk.MiStatInterface;
 
 public class GameCatListFragment
         extends BaseLoadingFragment {
@@ -59,13 +60,12 @@ public class GameCatListFragment
     @Override
     public void onPause() {
         super.onPause();
-        com.umeng.a.b.b("game_cate");
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        com.umeng.a.b.a("game_cate");
+        MiStatInterface.recordCountEvent("game_cate",null);
     }
 
     @Override

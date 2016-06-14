@@ -29,6 +29,7 @@ import com.clilystudio.netbook.ui.user.AuthLoginActivity$Source;
 import com.clilystudio.netbook.widget.CommunitySection;
 import com.handmark.pulltorefresh.library.PullToRefreshBase$Mode;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
+import com.xiaomi.mistatistic.sdk.MiStatInterface;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -207,7 +208,7 @@ public class HomeTopicFragment
                 return;
             }
             case 2131493510: {
-                com.umeng.a.b.a(this.getActivity(), "enter_home_topic");
+                MiStatInterface.recordCountEvent("enter_home_topic",null);
                 Intent intent = new Intent(this.getActivity(), TweetTabActivity.class);
                 if (a.a((Context) this.getActivity(), "FRIST_RUN_POST", true)) {
                     a.b((Context) this.getActivity(), "FRIST_RUN_POST", false);

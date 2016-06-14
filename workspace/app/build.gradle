@@ -30,6 +30,7 @@ dependencies {
     compile files('libs/MiPush_SDK_Client_2_2_21.jar')
     compile files('libs/MiStats_SDK_Client_1_7_0.jar')
     compile files('libs/activeandroid-3.0.jar')
+    compile files('libs/umeng-onlineconfig_v1.0.0.jar')
     compile 'com.integralblue:httpresponsecache:1.3'
     compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
     compile 'com.squareup.okhttp:okhttp:2.7.5'
@@ -37,5 +38,4 @@ dependencies {
     compile 'com.squareup:otto:1.3.8'
     compile 'com.google.code.gson:gson:2.6.2'
     compile 'com.github.kevinsawicki:http-request:6.0'
-    compile 'com.umeng.analytics:analytics:6.0.1'
 }
