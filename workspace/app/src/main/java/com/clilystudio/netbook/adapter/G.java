@@ -64,7 +64,7 @@ public class G extends u {
     /*
      * Enabled aggressive block sorting
      */
-    static /* synthetic */ void a(G g2, R r, User user) {
+    static /* synthetic */ void a(G g2, R_ViewHolder r, User user) {
         Account account = am.e();
         if (account == null) {
             g2.a.startActivity(AuthLoginActivity.a(g2.a));
@@ -81,7 +81,7 @@ public class G extends u {
             }
         }
         g2.a(r);
-        T t = new T(g2, 0);
+        T_Task t = new T_Task(g2, 0);
         String[] arrstring = new String[]{account.getToken(), user.getId()};
         t.execute(arrstring);
     }
@@ -97,7 +97,7 @@ public class G extends u {
     /*
      * Enabled aggressive block sorting
      */
-    static /* synthetic */ void a(G g2, Tweet tweet, R r) {
+    static /* synthetic */ void a(G g2, Tweet tweet, R_ViewHolder r) {
         Tweet tweet2 = tweet.isRetween() ? tweet.getRefTweet() : tweet;
         int n = 1 + tweet2.getRetweeted();
         tweet.setRetweeted(n);
@@ -252,18 +252,18 @@ public class G extends u {
             }
             case 0: {
                 View view2 = LayoutInflater.from(viewGroup.getContext()).inflate(2130903313, viewGroup, false);
-                view2.setTag(new R(this, view2));
+                view2.setTag(new R_ViewHolder(this, view2));
                 return view2;
             }
             case 1: {
                 View view3 = LayoutInflater.from(viewGroup.getContext()).inflate(2130903315, viewGroup, false);
                 view3.findViewById(2131493348).setVisibility(View.VISIBLE);
-                view3.setTag(new R(this, view3));
+                view3.setTag(new R_ViewHolder(this, view3));
                 return view3;
             }
             case 2: {
                 View view4 = LayoutInflater.from(viewGroup.getContext()).inflate(2130903314, viewGroup, false);
-                view4.setTag(new R(this, view4));
+                view4.setTag(new R_ViewHolder(this, view4));
                 return view4;
             }
             case 3:
@@ -289,7 +289,7 @@ public class G extends u {
         view.setOnClickListener(new J(this, tweet));
     }
 
-    private void a(R r) {
+    private void a(R_ViewHolder r) {
         r.h.setText("\u5df2\u5173\u6ce8");
         r.h.setTextColor(-5822976);
         r.h.setTextSize(10.0f);
@@ -301,7 +301,7 @@ public class G extends u {
     /*
      * Enabled aggressive block sorting
      */
-    private void a(R r, Tweet tweet, User user, boolean bl) {
+    private void a(R_ViewHolder r, Tweet tweet, User user, boolean bl) {
         G.a(r.h, 15, 15, 15, 15);
         r.h.setVisibility(View.VISIBLE);
         if (bl) {
@@ -331,7 +331,7 @@ public class G extends u {
     /*
      * Enabled aggressive block sorting
      */
-    private void a(Tweet tweet, R r) {
+    private void a(Tweet tweet, R_ViewHolder r) {
         User user = tweet.isRetween() ? tweet.getFrom() : tweet.getUser();
         if (!this.b && (tweet.isHot() || tweet.isRetween() && tweet.getRefTweet().isHot())) {
             r.k.setVisibility(View.VISIBLE);
@@ -439,7 +439,7 @@ public class G extends u {
         r.p.setVisibility(View.GONE);
     }
 
-    private void b(R r) {
+    private void b(R_ViewHolder r) {
         r.h.setText("\u5173\u6ce8");
         r.h.setTextColor(this.a.getResources().getColor(2131427543));
         Drawable drawable = this.a.getResources().getDrawable(2130837803);
@@ -461,7 +461,7 @@ public class G extends u {
         int n2 = this.getItemViewType(n);
         View view2 = this.a(view, n2, viewGroup, n);
         Tweet tweet = (Tweet) this.getItem(n);
-        R r = (R) view2.getTag();
+        R_ViewHolder r = (R_ViewHolder) view2.getTag();
         switch (n2) {
             case 0: {
                 this.a(tweet, r);

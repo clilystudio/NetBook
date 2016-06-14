@@ -9,7 +9,7 @@ import com.clilystudio.netbook.widget.CoverView;
 import com.clilystudio.netbook.widget.PostFlag;
 import com.clilystudio.netbook.widget.RatingView;
 
-final class R {
+final class R_ViewHolder {
     SmartImageView a;
     TextView b;
     TextView c;
@@ -28,7 +28,7 @@ final class R {
     ImageView p;
     View q;
 
-    public R(G g, View view) {
+    public R_ViewHolder(G g, View view) {
         this.q = view;
         this.a = (SmartImageView) view.findViewById(2131492899);
         this.b = (TextView) view.findViewById(2131493630);

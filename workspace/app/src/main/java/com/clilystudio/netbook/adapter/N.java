@@ -6,11 +6,11 @@ import android.view.View;
 import com.clilystudio.netbook.model.Tweet;
 
 final class N implements View.OnClickListener {
-    final /* synthetic */ R a;
+    final /* synthetic */ R_ViewHolder a;
     final /* synthetic */ Tweet b;
     final /* synthetic */ G c;
 
-    N(G g, R r, Tweet tweet) {
+    N(G g, R_ViewHolder r, Tweet tweet) {
         this.c = g;
         this.a = r;
         this.b = tweet;

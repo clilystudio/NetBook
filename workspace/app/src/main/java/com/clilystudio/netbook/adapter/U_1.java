@@ -7,7 +7,7 @@ import com.clilystudio.netbook.model.PostPublish;
 import com.clilystudio.netbook.model.Tweet;
 
 final class U extends e<String, Void, PostPublish> {
-    public U(G g, Tweet tweet, R r) {
+    public U(G g, Tweet tweet, R_ViewHolder r) {
     }
 
     @Override

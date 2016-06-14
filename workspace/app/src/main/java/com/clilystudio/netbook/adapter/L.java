@@ -12,10 +12,10 @@ import com.clilystudio.netbook.util.e;
 
 final class L implements View.OnClickListener {
     private /* synthetic */ Tweet a;
-    private /* synthetic */ R b;
+    private /* synthetic */ R_ViewHolder b;
     private /* synthetic */ G c;
 
-    L(G g, Tweet tweet, R r) {
+    L(G g, Tweet tweet, R_ViewHolder r) {
         this.c = g;
         this.a = tweet;
         this.b = r;

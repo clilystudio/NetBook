@@ -119,7 +119,7 @@ public class AudioBookPlayActivity extends BaseActivity implements View.OnClickL
 
     static /* synthetic */ void d(AudioBookPlayActivity audioBookPlayActivity, int n2) {
         AudioRecord.updateTrack(String.valueOf(audioBookPlayActivity.c), n2);
-        com.clilystudio.netbook.event.i.a().c(new F(audioBookPlayActivity.c, n2));
+        com.clilystudio.netbook.event.i.a().register(new F(audioBookPlayActivity.c, n2));
     }
 
     static /* synthetic */ boolean d(AudioBookPlayActivity audioBookPlayActivity, boolean bl) {
