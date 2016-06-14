@@ -2,39 +2,30 @@ package com.clilystudio.netbook.a_pack;
 
 import android.app.Activity;
 
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.model.TocSourceRoot;
 
-public abstract class a
-        extends c<String, TocSourceRoot> {
+public abstract class a extends c<String, TocSourceRoot> {
     public a(Activity activity, boolean bl) {
-        super(activity, 2131034218, bl);
+        super(activity, R.string.loading, bl);
     }
 
-    private static /* varargs */ TocSourceRoot a(String... arrstring) {
-        try {
-            b.a();
-            TocSourceRoot tocSourceRoot = b.b().g(arrstring[0]);
-            return tocSourceRoot;
-        } catch (Exception var1_2) {
-            var1_2.printStackTrace();
-            return null;
-        }
+    public TocSourceRoot a(String... arrstring) {
+        b.a();
+        TocSourceRoot tocSourceRoot = b.b().g(arrstring[0]);
+        return tocSourceRoot;
     }
 
     protected void a() {
     }
 
     @Override
-    protected abstract void a(TocSourceRoot var1);
-
-    @Override
-    public final /* synthetic */ void a(Object object) {
-        TocSourceRoot tocSourceRoot = (TocSourceRoot) object;
-        if (tocSourceRoot != null && tocSourceRoot.getSources() != null) {
-            this.a(tocSourceRoot);
-            return;
+    public final void a(TocSourceRoot object) {
+        if (object != null && object.getSources() != null) {
+            this.a(object);
+        } else {
+            this.a();
         }
-        this.a();
     }
 }

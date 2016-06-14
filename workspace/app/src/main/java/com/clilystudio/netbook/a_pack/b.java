@@ -7,8 +7,7 @@ public abstract class b
     private static /* varargs */ TopicCount a(String... arrstring) {
         try {
             com.clilystudio.netbook.api.b.a();
-            TopicCount topicCount = com.clilystudio.netbook.api.b.b().I(arrstring[0]);
-            return topicCount;
+            return com.clilystudio.netbook.api.b.b().I(arrstring[0]);
         } catch (Exception var1_2) {
             var1_2.printStackTrace();
             return null;
@@ -18,16 +17,15 @@ public abstract class b
     protected abstract void a(TopicCount var1);
 
     @Override
-    protected /* synthetic */ Object doInBackground(Object[] arrobject) {
+    protected /* synthetic */ TopicCount doInBackground(String[] arrobject) {
         return b.a((String[]) arrobject);
     }
 
     @Override
-    protected /* synthetic */ void onPostExecute(Object object) {
-        TopicCount topicCount = (TopicCount) object;
-        super.onPostExecute(topicCount);
-        if (topicCount != null && topicCount.isOk()) {
-            this.a(topicCount);
+    protected /* synthetic */ void onPostExecute(TopicCount object) {
+        super.onPostExecute(object);
+        if (object != null && object.isOk()) {
+            this.a(object);
         }
     }
 }

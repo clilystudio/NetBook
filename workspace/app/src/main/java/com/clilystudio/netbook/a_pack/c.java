@@ -2,11 +2,12 @@ package com.clilystudio.netbook.a_pack;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
-import android.content.Context;
+import android.content.DialogInterface;
 import android.widget.Toast;
 
-public abstract class c<Input, E>
-        extends e<Input, Void, E> {
+import com.clilystudio.netbook.R;
+
+public abstract class c<Input, E> extends e<Input, Void, E> {
     private ProgressDialog a;
     private Activity b;
     private String c;
@@ -15,16 +16,16 @@ public abstract class c<Input, E>
 
     public c(Activity activity) {
         this.b = activity;
-        this.c = activity.getString(2131034218);
+        this.c = activity.getString(R.string.loading);
     }
 
-    public c(Activity activity, int n) {
+    public c(Activity activity, int resId) {
         this.b = activity;
-        this.c = activity.getString(n);
+        this.c = activity.getString(resId);
     }
 
-    public c(Activity activity, int n, boolean bl) {
-        this(activity, n);
+    public c(Activity activity, int resId, boolean bl) {
+        this(activity, resId);
         this.e = bl;
     }
 
@@ -56,42 +57,29 @@ public abstract class c<Input, E>
     @Override
     public void onCancelled() {
         super.onCancelled();
-        Toast.makeText((Context) this.b, "\u5df2\u53d6\u6d88", 0).show();
+        Toast.makeText(this.b, "\u5df2\u53d6\u6d88", Toast.LENGTH_SHORT).show();
     }
 
-    /*
-     * Unable to fully structure code
-     * Enabled aggressive block sorting
-     * Enabled unnecessary exception pruning
-     * Enabled aggressive exception aggregation
-     * Lifted jumps to return sites
-     */
     @Override
     public void onPostExecute(E var1_1) {
-        block5:
-        {
-            super.onPostExecute(var1_1);
-            try {
-                if (this.a != null) {
-                    this.a.dismiss();
-                }
-                break block5;
-            } catch (Exception var3_2) {
-            }
-            **GOTO lbl10
-            finally{
-            this.a = null;
-        }
+        super.onPostExecute(var1_1);
+        if (this.a != null) {
+            this.a.dismiss();
         }
         this.a(var1_1);
+        this.a = null;
     }
 
     @Override
     public void onPreExecute() {
         String string = this.c;
-        d d2 = new d(this);
         if (!this.b.isFinishing() && this.e) {
-            this.a = ProgressDialog.show(this.b, null, string, true, this.d, d2);
+            this.a = ProgressDialog.show(this.b, null, string, true, this.d, new DialogInterface.OnCancelListener() {
+                @Override
+                public void onCancel(DialogInterface dialog) {
+                    c.this.cancel(true);
+                }
+            });
             this.a.setCanceledOnTouchOutside(false);
         }
         super.onPreExecute();

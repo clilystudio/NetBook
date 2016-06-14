@@ -6,8 +6,7 @@ import android.os.Build;
 import com.clilystudio.netbook.api.ApiService;
 import com.clilystudio.netbook.api.b;
 
-public abstract class e<Params, Progress, Result>
-        extends AsyncTask<Params, Progress, Result> {
+public abstract class e<Params, Progress, Result> extends AsyncTask<Params, Progress, Result> {
     private final ApiService a;
 
     public e() {
@@ -20,8 +19,7 @@ public abstract class e<Params, Progress, Result>
             if (Build.VERSION.SDK_INT >= 11) {
                 return this.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, arrParams);
             }
-            AsyncTask asyncTask = this.execute(arrParams);
-            return asyncTask;
+            return this.execute(arrParams);
         } catch (Exception var2_3) {
             return null;
         }
