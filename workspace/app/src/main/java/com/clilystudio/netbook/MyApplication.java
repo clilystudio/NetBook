@@ -4,10 +4,13 @@ import android.app.ActivityManager;
 import android.app.Application;
 import android.content.Context;
 import android.os.Process;
+import android.text.TextUtils;
 
 import com.activeandroid.ActiveAndroid;
 import com.activeandroid.query.Select;
+import com.clilystudio.netbook.api.ApiService;
 import com.clilystudio.netbook.db.BookReadRecord;
+import com.clilystudio.netbook.event.H;
 import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.model.BookInfo;
 import com.clilystudio.netbook.model.ChapterLink;
@@ -17,9 +20,12 @@ import com.clilystudio.netbook.reader.Reader;
 import com.clilystudio.netbook.util.V;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
-import com.umeng.analytics.MobclickAgent;
+import com.umeng.onlineconfig.OnlineConfigAgent;
+import com.umeng.onlineconfig.UmengOnlineConfigureListener;
 import com.xiaomi.mipush.sdk.MiPushClient;
 import com.xiaomi.mistatistic.sdk.MiStatInterface;
+
+import org.json.JSONObject;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -55,7 +61,7 @@ public class MyApplication extends Application {
     static /* synthetic */ void a(MyApplication myApplication) {
         File file = new File(myApplication.getCacheDir(), "http2");
         try {
-            com.integralblue.httpresponsecache.HttpResponseCache.install(file, 209715200);
+            com.integralblue.httpresponsecache.HttpResponseCache.install(file, 200 * 1024 * 1024);
         } catch (Exception var2_2) {
             var2_2.printStackTrace();
         }
@@ -229,21 +235,28 @@ public class MyApplication extends Application {
         V v;
         super.onCreate();
         b = this;
-        com.clilystudio.netbook.api.e.a("1".equals(com.umeng.a.b.b(b, "use_http_dns")));
+        com.clilystudio.netbook.api.e.a("1".equals(OnlineConfigAgent.getInstance().getConfigParams(b, "use_http_dns")));
         com.clilystudio.netbook.hpay100.a.a.q(this);
         ActiveAndroid.initialize(this);
-        String string = null;
+        String string = "";
         int n = Process.myPid();
         for (ActivityManager.RunningAppProcessInfo runningAppProcessInfo : ((ActivityManager) this.getSystemService(Context.ACTIVITY_SERVICE)).getRunningAppProcesses()) {
-            String string2 = runningAppProcessInfo.pid == n ? runningAppProcessInfo.processName : string;
-            string = string2;
+            string = runningAppProcessInfo.pid == n ? runningAppProcessInfo.processName : string;
         }
         if (string.equals("com.clilystudio.netbook")) {
             new com.clilystudio.netbook.e(this).start();
         }
-        MobclickAgent.onResume(this);
-        com.umeng.a.b.c(this);
-        com.umeng.a.b.a(new f(this));
+        OnlineConfigAgent.getInstance().setOnlineConfigListener(new UmengOnlineConfigureListener() {
+            @Override
+            public void onDataReceived(JSONObject jsonObject) {
+                String string = OnlineConfigAgent.getInstance().getConfigParams(b, "set_default_api");
+                if (!TextUtils.isEmpty(string)) {
+                    ApiService.a(string);
+                }
+                ApiService.j(OnlineConfigAgent.getInstance().getConfigParams(b,"reader_web_url"), 4);
+                com.clilystudio.netbook.event.i.a().register(new H(com.clilystudio.netbook.hpay100.a.a.x(b)));
+            }
+        });
         if (com.clilystudio.netbook.hpay100.a.a.l(this, "update_notice_key")) {
             boolean bl;
             block9:
@@ -262,23 +275,23 @@ public class MyApplication extends Application {
                 MiPushClient.registerPush(this, "2882303761517133731", "5941713373731");
             }
         }
-        MiStatInterface.initialize(this, "2882303761517133731", "5941713373731", am.n((Context) this));
+        MiStatInterface.initialize(this, "2882303761517133731", "5941713373731", am.n(this));
         ImageLoaderConfiguration configuration = ImageLoaderConfiguration.createDefault(this);
         ImageLoader.getInstance().init(configuration);
-        if (com.clilystudio.netbook.hpay100.a.a.c((Context) this, "PREF_FIRST_LAUNCH_TIME", 0) == 0) {
+        if (com.clilystudio.netbook.hpay100.a.a.c(this, "PREF_FIRST_LAUNCH_TIME", 0) == 0) {
             boolean bl = !new Select().from(BookReadRecord.class).execute().isEmpty();
             if (bl) {
                 Calendar calendar = Calendar.getInstance();
                 calendar.set(Calendar.YEAR, 2000);
-                com.clilystudio.netbook.hpay100.a.a.b((Context) this, "PREF_FIRST_LAUNCH_TIME", calendar.getTimeInMillis());
+                com.clilystudio.netbook.hpay100.a.a.b(this, "PREF_FIRST_LAUNCH_TIME", calendar.getTimeInMillis());
             } else {
-                com.clilystudio.netbook.hpay100.a.a.b((Context) this, "PREF_FIRST_LAUNCH_TIME", Calendar.getInstance().getTimeInMillis());
+                com.clilystudio.netbook.hpay100.a.a.b(this, "PREF_FIRST_LAUNCH_TIME", Calendar.getInstance().getTimeInMillis());
             }
         }
         if ((v = new V(this)).a() == 0) {
             v.a(Calendar.getInstance().getTimeInMillis());
         }
-        am.s((Context) this);
+        am.s(this);
 //        SpeechUtility.createUtility(this, "appid=56655269");
     }
 }
