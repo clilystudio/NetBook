@@ -3,6 +3,8 @@ package com.clilystudio.netbook.widget;
 import android.app.Activity;
 import android.content.Context;
 import com.clilystudio.netbook.am;
+
+import android.net.Uri;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.Button;
@@ -12,6 +14,8 @@ import com.clilystudio.netbook.db.DownloadItem;
 import com.clilystudio.netbook.model.GiftGame;
 import com.clilystudio.netbook.ui.SmartImageView;
 import com.clilystudio.netbook.ui.game.ao;
+
+import java.io.File;
 
 public class GiftGameGameButton extends Button {
     private GiftGame a;
@@ -58,7 +62,13 @@ public class GiftGameGameButton extends Button {
             }
             case 8: {
                 this.c();
-                this.setOnClickListener(new R(this, 0));
+                this.setOnClickListener(new OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        h();
+                        com.clilystudio.netbook.hpay100.a.a.a(GiftGameGameButton.this.getContext(), new File(Uri.parse(GiftGameGameButton.this.a.getLocalFileUri()).getPath()));
+                    }
+                });
                 return;
             }
             case 32:

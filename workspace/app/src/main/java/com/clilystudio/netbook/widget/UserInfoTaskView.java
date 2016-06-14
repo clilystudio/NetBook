@@ -36,7 +36,9 @@ public class UserInfoTaskView extends FrameLayout {
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
-        ButterKnife.inject(this);
+        this.mIcon = (ImageView) findViewById(2131493028);
+        this.mTitle = (TextView) findViewById(2131492936);
+        this.mExp = (ExpView) findViewById( 2131493234);
         this.mIcon.setImageResource(this.a);
         this.mTitle.setText(this.b);
     }
