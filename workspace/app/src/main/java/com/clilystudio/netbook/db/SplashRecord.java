@@ -12,8 +12,7 @@ import java.util.Date;
 import java.util.List;
 
 @Table(name = "SplashRecord")
-public class SplashRecord
-        extends Model {
+public class SplashRecord extends Model {
     @Column(name = "end")
     public Date end;
     @Column(name = "img3x4")

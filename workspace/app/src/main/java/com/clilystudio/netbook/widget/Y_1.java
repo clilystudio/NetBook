@@ -8,8 +8,7 @@ import com.clilystudio.netbook.db.GameGiftRecord;
 import com.clilystudio.netbook.model.GameGiftResponse;
 import com.clilystudio.netbook.util.e;
 
-final class Y
-        extends c<String, GameGiftResponse> {
+final class Y extends c<String, GameGiftResponse> {
     private /* synthetic */ GiftGameGiftButton a;
 
     public Y(GiftGameGiftButton giftGameGiftButton, Activity activity) {

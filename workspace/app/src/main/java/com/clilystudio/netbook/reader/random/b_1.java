@@ -17,8 +17,7 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
-public final class b
-        extends c<String, MysteryBookList> {
+public final class b extends c<String, MysteryBookList> {
     private final boolean a = true;
 
     public b(Activity activity, int n, boolean bl) {

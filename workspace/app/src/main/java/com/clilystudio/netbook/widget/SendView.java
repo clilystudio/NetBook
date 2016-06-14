@@ -9,8 +9,7 @@ import android.widget.LinearLayout;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 
-public class SendView
-        extends LinearLayout {
+public class SendView extends LinearLayout {
     @InjectView(value = 2131494004)
     EditText mSendContent;
     @InjectView(value = 2131494005)

@@ -10,8 +10,7 @@ import com.clilystudio.netbook.util.e;
 
 import java.io.IOException;
 
-final class C
-        extends c<String, PayBalance> {
+final class C extends c<String, PayBalance> {
     private /* synthetic */ o a;
 
     public C(o o2, Activity activity, String string) {

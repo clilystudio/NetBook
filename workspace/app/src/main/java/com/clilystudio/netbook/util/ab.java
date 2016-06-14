@@ -5,8 +5,7 @@ import com.clilystudio.netbook.event.A;
 import com.clilystudio.netbook.event.i;
 import com.clilystudio.netbook.model.RemoteBookShelf;
 
-final class ab
-        extends e<String, Void, RemoteBookShelf> {
+final class ab extends e<String, Void, RemoteBookShelf> {
     private /* synthetic */ Z a;
 
     private ab(Z z) {

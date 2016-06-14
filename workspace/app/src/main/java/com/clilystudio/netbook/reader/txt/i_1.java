@@ -6,8 +6,7 @@ import android.view.ViewGroup;
 
 import com.clilystudio.netbook.reader.o;
 
-final class i
-        extends PagerAdapter {
+final class i extends PagerAdapter {
     private /* synthetic */ ReaderTxtActivity a;
 
     i(ReaderTxtActivity readerTxtActivity) {

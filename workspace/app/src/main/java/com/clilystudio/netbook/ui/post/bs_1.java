@@ -8,8 +8,7 @@ import com.clilystudio.netbook.db.VoteRecord;
 import com.clilystudio.netbook.model.VoteResult;
 import com.clilystudio.netbook.util.e;
 
-final class bs
-        extends c<String, VoteResult> {
+final class bs extends c<String, VoteResult> {
     private /* synthetic */ GirlTopicActivity a;
 
     public bs(GirlTopicActivity girlTopicActivity, Activity activity, int n) {

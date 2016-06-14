@@ -14,8 +14,7 @@ import com.clilystudio.netbook.util.t;
 import java.util.ArrayList;
 import java.util.List;
 
-final class ag
-        extends BaseAdapter {
+final class ag extends BaseAdapter {
     private List<PayVoucherRecord$Voucher> a;
     private LayoutInflater b;
     private int c;

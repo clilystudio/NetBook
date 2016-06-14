@@ -10,8 +10,7 @@ import com.clilystudio.netbook.util.e;
 import java.util.Arrays;
 import java.util.List;
 
-final class as
-        extends com.clilystudio.netbook.a_pack.e<String, Void, UGCBookListRoot> {
+final class as extends com.clilystudio.netbook.a_pack.e<String, Void, UGCBookListRoot> {
     private /* synthetic */ UGCMainListFragment a;
 
     private as(UGCMainListFragment uGCMainListFragment) {

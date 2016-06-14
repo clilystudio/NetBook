@@ -4,8 +4,7 @@ import android.support.v4.app.Fragment;
 
 import com.umeng.a.b;
 
-public abstract class HomeFragment
-        extends Fragment {
+public abstract class HomeFragment extends Fragment {
     public abstract String a();
 
     @Override

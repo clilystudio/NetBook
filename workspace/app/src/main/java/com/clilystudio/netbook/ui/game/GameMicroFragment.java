@@ -16,8 +16,7 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class GameMicroFragment
-        extends BaseLoadingFragment {
+public class GameMicroFragment extends BaseLoadingFragment {
     Timer a;
     TimerTask b;
     int c;

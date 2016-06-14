@@ -6,8 +6,7 @@ import com.clilystudio.netbook.model.UGCBookDetail$UGCBookContainer;
 import com.clilystudio.netbook.model.UGCBookDetail$UGCBookContainer$UGCBookItem;
 import com.clilystudio.netbook.widget.CoverView;
 
-public final class W
-        extends com.clilystudio.netbook.util.W<UGCBookDetail$UGCBookContainer> {
+public final class W extends com.clilystudio.netbook.util.W<UGCBookDetail$UGCBookContainer> {
     public W(LayoutInflater layoutInflater) {
         super(layoutInflater, 2130903319);
     }

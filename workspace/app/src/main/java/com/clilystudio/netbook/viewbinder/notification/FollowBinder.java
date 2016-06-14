@@ -7,8 +7,7 @@ import com.clilystudio.netbook.model.NotificationItem;
 import com.clilystudio.netbook.model.User;
 import com.clilystudio.netbook.ui.post.OtherUserActivity;
 
-public class FollowBinder
-        extends NotifBinder {
+public class FollowBinder extends NotifBinder {
     public static final String LABEL = "follow";
 
     public FollowBinder(NotificationItem notificationItem) {

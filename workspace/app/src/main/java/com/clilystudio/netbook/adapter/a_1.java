@@ -7,8 +7,7 @@ import com.clilystudio.netbook.db.BookReadRecord;
 import com.clilystudio.netbook.util.W;
 import com.clilystudio.netbook.widget.CoverView;
 
-public final class a
-        extends W<BookReadRecord> {
+public final class a extends W<BookReadRecord> {
     private int a = -1;
 
     public a(LayoutInflater layoutInflater) {

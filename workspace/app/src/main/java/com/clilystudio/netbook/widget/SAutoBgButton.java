@@ -5,8 +5,7 @@ import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.widget.Button;
 
-public class SAutoBgButton
-        extends Button {
+public class SAutoBgButton extends Button {
     public SAutoBgButton(Context context) {
         super(context);
     }

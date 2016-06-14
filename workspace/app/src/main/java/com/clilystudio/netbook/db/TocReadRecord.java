@@ -7,8 +7,7 @@ import com.activeandroid.query.Delete;
 import com.activeandroid.query.Select;
 
 @Table(name = "TocReadRecords")
-public class TocReadRecord
-        extends Model {
+public class TocReadRecord extends Model {
     @Column(name = "book_id")
     private String book_id;
     @Column(name = "chapter_num")

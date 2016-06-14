@@ -14,8 +14,7 @@ import com.clilystudio.netbook.util.t;
 import com.clilystudio.netbook.widget.PostFlag;
 import com.clilystudio.netbook.widget.RatingView;
 
-public final class h
-        extends W<BookReview> {
+public final class h extends W<BookReview> {
     private boolean a;
     private boolean b = false;
 

@@ -11,8 +11,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-final class W
-        extends e<String, Void, GameLayoutRoot> {
+final class W extends e<String, Void, GameLayoutRoot> {
     private /* synthetic */ GameMicroFragment a;
 
     private W(GameMicroFragment gameMicroFragment) {

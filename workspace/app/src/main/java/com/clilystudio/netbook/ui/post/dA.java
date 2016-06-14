@@ -8,8 +8,7 @@ import com.clilystudio.netbook.db.VoteRecord;
 import com.clilystudio.netbook.model.VoteResult;
 import com.clilystudio.netbook.util.e;
 
-final class dA
-        extends c<String, VoteResult> {
+final class dA extends c<String, VoteResult> {
     private /* synthetic */ TweetDetailActivity a;
 
     public dA(TweetDetailActivity tweetDetailActivity, Activity activity, int n) {

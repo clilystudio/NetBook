@@ -11,8 +11,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
-final class bJ
-        extends com.clilystudio.netbook.a_pack.e<String, Void, GirlTopicList> {
+final class bJ extends com.clilystudio.netbook.a_pack.e<String, Void, GirlTopicList> {
     private /* synthetic */ GirlTopicListActivity a;
 
     private bJ(GirlTopicListActivity girlTopicListActivity) {

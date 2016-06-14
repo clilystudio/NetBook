@@ -10,8 +10,7 @@ import android.util.AttributeSet;
 import com.clilystudio.netbook.model.Game;
 import com.clilystudio.netbook.ui.SmartImageView;
 
-public class GameImageView
-        extends SmartImageView {
+public class GameImageView extends SmartImageView {
     private final Bitmap b;
     private final Bitmap c;
     private final Bitmap e;

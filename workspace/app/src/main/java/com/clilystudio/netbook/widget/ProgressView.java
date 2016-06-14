@@ -16,8 +16,7 @@ import android.view.View;
 
 import com.clilystudio.netbook.R$styleable;
 
-public class ProgressView
-        extends View {
+public class ProgressView extends View {
     private static final int b = Color.parseColor("#d6d6d6");
     private static final int c = Color.parseColor("#5FB14D");
     private static final int d = Color.argb(235, 74, 138, 255);

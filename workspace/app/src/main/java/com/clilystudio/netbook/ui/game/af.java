@@ -4,8 +4,7 @@ import android.os.Message;
 
 import java.util.TimerTask;
 
-final class af
-        extends TimerTask {
+final class af extends TimerTask {
     private /* synthetic */ GameMicroFragment$LayoutAdapter$PromotionViewPager a;
 
     af(GameMicroFragment$LayoutAdapter$PromotionViewPager promotionViewPager) {

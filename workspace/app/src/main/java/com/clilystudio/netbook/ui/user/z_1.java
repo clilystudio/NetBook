@@ -10,8 +10,7 @@ import com.clilystudio.netbook.util.e;
 import java.util.Arrays;
 import java.util.List;
 
-final class z
-        extends com.clilystudio.netbook.a_pack.e<String, Void, Topic> {
+final class z extends com.clilystudio.netbook.a_pack.e<String, Void, Topic> {
     private /* synthetic */ MyFavTopicFragment a;
 
     private z(MyFavTopicFragment myFavTopicFragment) {

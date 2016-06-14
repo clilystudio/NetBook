@@ -12,8 +12,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Locale;
 
-final class J
-        extends e<String, Void, UserVipInfo> {
+final class J extends e<String, Void, UserVipInfo> {
     private /* synthetic */ PayAccountActivity a;
 
     J(PayAccountActivity payAccountActivity) {

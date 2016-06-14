@@ -9,8 +9,7 @@ import com.clilystudio.netbook.util.e;
 
 import java.util.Arrays;
 
-final class bh
-        extends com.clilystudio.netbook.a_pack.e<String, Void, DiscussSummary[]> {
+final class bh extends com.clilystudio.netbook.a_pack.e<String, Void, DiscussSummary[]> {
     private /* synthetic */ CommonPostListActivity a;
 
     private bh(CommonPostListActivity commonPostListActivity) {

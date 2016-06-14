@@ -11,8 +11,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public final class by
-        extends be {
+public final class by extends be {
     private a c;
 
     public by(Context context, String string) {

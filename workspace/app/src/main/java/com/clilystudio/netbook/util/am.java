@@ -2,8 +2,7 @@ package com.clilystudio.netbook.util;
 
 import com.clilystudio.netbook.model.Account;
 
-final class am
-        extends Thread {
+final class am extends Thread {
     private /* synthetic */ Account a;
     private /* synthetic */ String b;
 

@@ -16,8 +16,7 @@ import com.clilystudio.netbook.util.e;
 
 import java.io.IOException;
 
-final class O
-        extends c<Void, ResultStatus> {
+final class O extends c<Void, ResultStatus> {
     private /* synthetic */ UGCGuideEditBooksActivity a;
 
     public O(UGCGuideEditBooksActivity uGCGuideEditBooksActivity) {

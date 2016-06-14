@@ -5,8 +5,7 @@ import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.widget.FrameLayout;
 
-public class SAutoFrameLayout
-        extends FrameLayout {
+public class SAutoFrameLayout extends FrameLayout {
     public SAutoFrameLayout(Context context) {
         super(context);
     }

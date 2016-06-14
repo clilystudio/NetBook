@@ -7,8 +7,7 @@ import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-public class ReaderRandomActionBar
-        extends RelativeLayout {
+public class ReaderRandomActionBar extends RelativeLayout {
     private TextView a;
     private a b;
 

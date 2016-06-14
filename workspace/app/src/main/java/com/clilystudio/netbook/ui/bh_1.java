@@ -4,8 +4,7 @@ import android.graphics.Bitmap;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
-final class bh
-        extends WebViewClient {
+final class bh extends WebViewClient {
     private /* synthetic */ LuckyGameWebActivity a;
 
     bh(LuckyGameWebActivity luckyGameWebActivity) {

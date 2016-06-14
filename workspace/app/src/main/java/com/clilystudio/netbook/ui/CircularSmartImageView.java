@@ -10,8 +10,7 @@ import android.util.AttributeSet;
 import com.clilystudio.netbook.R$styleable;
 import com.nostra13.universalimageloader.core.b.b;
 
-public class CircularSmartImageView
-        extends CornerImageView {
+public class CircularSmartImageView extends CornerImageView {
     private final int b;
 
     public CircularSmartImageView(Context context, AttributeSet attributeSet) {

@@ -8,8 +8,7 @@ import android.widget.EditText;
 
 import com.clilystudio.netbook.util.e;
 
-public class CustomSearchActivity
-        extends BaseActivity {
+public class CustomSearchActivity extends BaseActivity {
     private EditText a;
     private EditText b;
 

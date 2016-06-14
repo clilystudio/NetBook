@@ -6,8 +6,7 @@ import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
 import android.view.View;
 import android.view.accessibility.AccessibilityEvent;
 
-final class cu
-        extends AccessibilityDelegateCompat {
+final class cu extends AccessibilityDelegateCompat {
     private /* synthetic */ ReaderViewPager a;
 
     cu(ReaderViewPager readerViewPager) {

@@ -10,8 +10,7 @@ import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.model.UGCBookListRoot;
 import com.clilystudio.netbook.model.UGCBookListRoot$UGCBook;
 
-public class MyUGCListFragment
-        extends AbsUGCListFragment {
+public class MyUGCListFragment extends AbsUGCListFragment {
     @Override
     protected final UGCBookListRoot a(Account account, int n) {
         b.a();

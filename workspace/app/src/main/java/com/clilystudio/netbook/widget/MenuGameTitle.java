@@ -10,8 +10,7 @@ import android.widget.TextView;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 
-public class MenuGameTitle
-        extends LinearLayout {
+public class MenuGameTitle extends LinearLayout {
     @InjectView(value = 2131493870)
     TextView mSlmReaderAppName;
     @InjectView(value = 2131493871)

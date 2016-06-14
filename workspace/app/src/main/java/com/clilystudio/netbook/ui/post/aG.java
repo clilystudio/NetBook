@@ -10,8 +10,7 @@ import com.clilystudio.netbook.model.ReviewHistory;
 
 import java.io.IOException;
 
-final class aG
-        extends c<String, Review> {
+final class aG extends c<String, Review> {
     private /* synthetic */ BookReviewListFragment a;
 
     public aG(BookReviewListFragment bookReviewListFragment, Activity activity) {

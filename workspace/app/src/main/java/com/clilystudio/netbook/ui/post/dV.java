@@ -8,8 +8,7 @@ import com.clilystudio.netbook.ui.home.ZssqFragmentPagerAdapter;
 
 import java.util.List;
 
-final class dV
-        extends ZssqFragmentPagerAdapter {
+final class dV extends ZssqFragmentPagerAdapter {
     private String[] a;
     private /* synthetic */ TweetTabActivity b;
 

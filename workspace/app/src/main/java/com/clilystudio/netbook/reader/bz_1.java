@@ -8,8 +8,7 @@ import com.clilystudio.netbook.model.MenuAd;
 
 import java.util.List;
 
-final class bz
-        extends e<Void, Void, List<MenuAd>> {
+final class bz extends e<Void, Void, List<MenuAd>> {
     private /* synthetic */ ReaderMenuFragment a;
 
     private bz(ReaderMenuFragment readerMenuFragment) {

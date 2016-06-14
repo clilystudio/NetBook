@@ -18,8 +18,7 @@ import com.umeng.a.b;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GameLayoutFragment
-        extends BaseLoadingFragment {
+public class GameLayoutFragment extends BaseLoadingFragment {
     public static int a = 3;
     private RecyclerView b;
     private List<GameLayoutRoot$ModuleLayout> c;

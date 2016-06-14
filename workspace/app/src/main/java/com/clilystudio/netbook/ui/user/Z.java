@@ -8,8 +8,7 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
-final class Z
-        extends e<String, Void, List<PayConsumeRecord.Order>> {
+final class Z extends e<String, Void, List<PayConsumeRecord.Order>> {
     private /* synthetic */ PayConsumeActivity a;
 
     private Z(PayConsumeActivity payConsumeActivity) {

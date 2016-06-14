@@ -5,8 +5,7 @@ import android.graphics.Canvas;
 import android.util.AttributeSet;
 import android.widget.ListView;
 
-public class SearchFixListView
-        extends ListView {
+public class SearchFixListView extends ListView {
     public SearchFixListView(Context context) {
         super(context);
     }

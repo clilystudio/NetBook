@@ -8,8 +8,7 @@ import android.widget.TextView;
 import com.clilystudio.netbook.ui.SmartImageView;
 import com.nostra13.universalimageloader.core.d.a;
 
-public class UserInfoPortraitView
-        extends RelativeLayout {
+public class UserInfoPortraitView extends RelativeLayout {
     private final float a;
     private final float b;
     private TextView c;

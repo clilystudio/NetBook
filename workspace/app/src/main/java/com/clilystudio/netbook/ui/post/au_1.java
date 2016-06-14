@@ -10,8 +10,7 @@ import com.clilystudio.netbook.util.e;
 import java.util.Arrays;
 import java.util.List;
 
-final class au
-        extends com.clilystudio.netbook.a_pack.e<String, Void, BookHelpList> {
+final class au extends com.clilystudio.netbook.a_pack.e<String, Void, BookHelpList> {
     private /* synthetic */ BookHelpListActivity a;
 
     private au(BookHelpListActivity bookHelpListActivity) {

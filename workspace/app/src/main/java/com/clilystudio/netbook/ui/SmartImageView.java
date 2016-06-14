@@ -6,8 +6,7 @@ import android.util.AttributeSet;
 import com.clilystudio.netbook.api.ApiService;
 import com.nostra13.universalimageloader.core.d.a;
 
-public class SmartImageView
-        extends MaskAbleImageView {
+public class SmartImageView extends MaskAbleImageView {
     public SmartImageView(Context context) {
         super(context);
     }

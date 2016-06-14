@@ -1,7 +1,6 @@
 package com.clilystudio.netbook.model;
 
-public class UserInfoResult
-        extends User {
+public class UserInfoResult extends User {
     private int followers;
     private int followings;
 

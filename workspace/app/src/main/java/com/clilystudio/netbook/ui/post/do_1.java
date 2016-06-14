@@ -1,7 +1,6 @@
 package com.clilystudio.netbook.ui.post;
 
-final class do
-        extends com.clilystudio.netbook.a.e<String, Void, ReviewList>{
+final class do extends com.clilystudio.netbook.a.e<String, Void, ReviewList>{
 private /* synthetic */ ReviewListActivity a;
 
 private do(ReviewListActivity reviewListActivity){

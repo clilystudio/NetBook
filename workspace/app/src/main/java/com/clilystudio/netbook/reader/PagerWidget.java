@@ -8,8 +8,7 @@ import android.view.ViewConfiguration;
 
 import org.apache.commons.lang3.a.a;
 
-public class PagerWidget
-        extends ReaderViewPager {
+public class PagerWidget extends ReaderViewPager {
     private int a;
     private com.umeng.update.a b;
     private M c;

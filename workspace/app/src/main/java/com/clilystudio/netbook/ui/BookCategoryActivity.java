@@ -15,8 +15,7 @@ import com.clilystudio.netbook.model.CategoryLevelRoot;
 import com.clilystudio.netbook.model.CategoryRoot;
 import com.clilystudio.netbook.model.CategoryRoot$Category;
 
-public class BookCategoryActivity
-        extends BaseActivity {
+public class BookCategoryActivity extends BaseActivity {
     private View a;
     private View b;
     private View c;

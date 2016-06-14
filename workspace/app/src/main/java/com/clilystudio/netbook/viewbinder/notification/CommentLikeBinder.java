@@ -5,8 +5,7 @@ import android.content.Intent;
 
 import com.clilystudio.netbook.model.NotificationItem;
 
-public class CommentLikeBinder
-        extends NotifBinder {
+public class CommentLikeBinder extends NotifBinder {
     public static final String LABEL = "comment_like";
 
     public CommentLikeBinder(NotificationItem notificationItem) {

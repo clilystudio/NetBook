@@ -6,8 +6,7 @@ import com.clilystudio.netbook.model.AppItem;
 import com.clilystudio.netbook.util.W;
 import com.clilystudio.netbook.widget.AbsDownloadButton;
 
-final class bq
-        extends W<AppItem> {
+final class bq extends W<AppItem> {
     private /* synthetic */ MysteryActivity a;
 
     public bq(MysteryActivity mysteryActivity, Activity activity) {

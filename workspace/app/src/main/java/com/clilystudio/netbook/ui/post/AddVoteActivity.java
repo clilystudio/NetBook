@@ -17,8 +17,7 @@ import com.clilystudio.netbook.ui.BaseActivity;
 import com.clilystudio.netbook.ui.aa;
 import com.clilystudio.netbook.ui.user.AuthLoginActivity;
 
-public class AddVoteActivity
-        extends BaseActivity {
+public class AddVoteActivity extends BaseActivity {
     private EditText a;
     private EditText b;
     private View c;

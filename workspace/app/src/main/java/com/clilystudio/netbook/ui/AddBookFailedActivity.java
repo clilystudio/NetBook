@@ -7,8 +7,7 @@ import android.widget.TextView;
 
 import com.clilystudio.netbook.d;
 
-public class AddBookFailedActivity
-        extends BaseActivity {
+public class AddBookFailedActivity extends BaseActivity {
     public static Intent a(Context context, String string) {
         return new d().a(context, AddBookFailedActivity.class).a("bookTitle", string).a();
     }

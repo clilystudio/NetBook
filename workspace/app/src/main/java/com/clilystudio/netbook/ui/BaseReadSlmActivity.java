@@ -5,8 +5,7 @@ import android.os.Bundle;
 import com.jeremyfeinstein.slidingmenu.lib.app.SlidingFragmentActivity;
 import com.umeng.a.b;
 
-public class BaseReadSlmActivity
-        extends SlidingFragmentActivity {
+public class BaseReadSlmActivity extends SlidingFragmentActivity {
     @Override
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);

@@ -22,8 +22,7 @@ import java.util.List;
 
 import butterknife.ButterKnife;
 
-public abstract class NotifFragment
-        extends Fragment {
+public abstract class NotifFragment extends Fragment {
     private bw b;
     private bx c;
     private PullToRefreshListView d;

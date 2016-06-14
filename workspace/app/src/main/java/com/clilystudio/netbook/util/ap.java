@@ -2,8 +2,7 @@ package com.clilystudio.netbook.util;
 
 import android.support.design.widget.am;
 
-final class ap
-        extends Thread {
+final class ap extends Thread {
     private /* synthetic */ String a;
     private /* synthetic */ String b;
 

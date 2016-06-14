@@ -9,8 +9,7 @@ import com.clilystudio.netbook.db.RetweenRecord;
 import com.clilystudio.netbook.model.PostPublish;
 import com.clilystudio.netbook.util.e;
 
-final class dC
-        extends c<String, PostPublish> {
+final class dC extends c<String, PostPublish> {
     private /* synthetic */ TweetDetailActivity a;
 
     public dC(TweetDetailActivity tweetDetailActivity, Activity activity, int n) {

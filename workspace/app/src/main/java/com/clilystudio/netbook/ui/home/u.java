@@ -5,8 +5,7 @@ import com.clilystudio.netbook.reader.txt.U;
 
 import java.io.FileNotFoundException;
 
-final class u
-        extends Thread {
+final class u extends Thread {
     private /* synthetic */ String a;
 
     u(HomeShelfFragment homeShelfFragment, String string) {

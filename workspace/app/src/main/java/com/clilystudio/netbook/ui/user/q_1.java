@@ -16,8 +16,7 @@ import com.clilystudio.netbook.util.e;
 
 import java.io.IOException;
 
-final class q
-        extends c<String, ChangeGenderRoot> {
+final class q extends c<String, ChangeGenderRoot> {
     private /* synthetic */ ModifyUserInfoActivity a;
 
     public q(ModifyUserInfoActivity modifyUserInfoActivity, Activity activity, int n) {

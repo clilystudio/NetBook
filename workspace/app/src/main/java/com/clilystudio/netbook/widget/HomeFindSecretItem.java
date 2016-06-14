@@ -15,8 +15,7 @@ import com.umeng.a.b;
 import java.util.Calendar;
 import java.util.Date;
 
-public class HomeFindSecretItem
-        extends HomeFindItem {
+public class HomeFindSecretItem extends HomeFindItem {
     private ProgressDialog a;
 
     public HomeFindSecretItem(Activity activity) {

@@ -10,8 +10,7 @@ import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.ui.LuckyGameWebActivity;
 import com.umeng.a.b;
 
-public class HomeFindLuckyGameItem
-        extends HomeFindItem {
+public class HomeFindLuckyGameItem extends HomeFindItem {
     public HomeFindLuckyGameItem(Activity activity) {
         super(activity, "\u53ec\u5524\u795e\u5668", 2130837827, null);
     }

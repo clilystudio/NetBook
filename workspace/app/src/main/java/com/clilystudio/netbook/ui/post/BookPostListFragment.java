@@ -11,8 +11,7 @@ import android.widget.TextView;
 
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 
-public class BookPostListFragment
-        extends Fragment {
+public class BookPostListFragment extends Fragment {
     protected PullToRefreshListView a;
     protected ListView b;
     protected View c;

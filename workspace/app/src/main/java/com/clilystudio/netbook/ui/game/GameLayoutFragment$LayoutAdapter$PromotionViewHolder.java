@@ -10,8 +10,7 @@ import com.clilystudio.netbook.widget.NewGameDownloadButton;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 
-public class GameLayoutFragment$LayoutAdapter$PromotionViewHolder
-        extends ay {
+public class GameLayoutFragment$LayoutAdapter$PromotionViewHolder extends ay {
     @InjectView(value = 2131493481)
     TextView mDesc;
     @InjectView(value = 2131492916)

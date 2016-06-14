@@ -6,8 +6,7 @@ import com.clilystudio.netbook.db.BookReadRecord;
 import com.clilystudio.netbook.model.TocSource;
 import com.clilystudio.netbook.model.TocSourceRoot;
 
-final class f
-        extends e<String, Void, TocSourceRoot> {
+final class f extends e<String, Void, TocSourceRoot> {
     private /* synthetic */ BookDownloadService a;
 
     private f(BookDownloadService bookDownloadService) {

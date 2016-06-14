@@ -8,8 +8,7 @@ import com.clilystudio.netbook.util.e;
 
 import java.io.IOException;
 
-final class aO
-        extends com.clilystudio.netbook.a_pack.e<Void, Void, BookRankRoot> {
+final class aO extends com.clilystudio.netbook.a_pack.e<Void, Void, BookRankRoot> {
     private /* synthetic */ BookRankListActivity a;
 
     private aO(BookRankListActivity bookRankListActivity) {

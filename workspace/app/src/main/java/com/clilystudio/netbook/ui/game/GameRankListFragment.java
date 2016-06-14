@@ -17,8 +17,7 @@ import com.umeng.a.b;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GameRankListFragment
-        extends BaseLoadingFragment {
+public class GameRankListFragment extends BaseLoadingFragment {
     private ScrollLoadListView a;
     private View b;
     private List<Game> c = new ArrayList<Game>();

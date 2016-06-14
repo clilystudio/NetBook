@@ -11,8 +11,7 @@ import com.clilystudio.netbook.util.t;
 
 import java.util.Date;
 
-public final class B
-        extends W<TocSummary> {
+public final class B extends W<TocSummary> {
     private final int a;
     private final int b;
     private int c = -1;

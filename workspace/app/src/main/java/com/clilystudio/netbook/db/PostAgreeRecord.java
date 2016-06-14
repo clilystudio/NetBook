@@ -8,8 +8,7 @@ import com.activeandroid.query.Select;
 import java.util.List;
 
 @Table(name = "PostAgreeRecord")
-public class PostAgreeRecord
-        extends Model {
+public class PostAgreeRecord extends Model {
     @Column(name = "account_id")
     public String account_id;
     @Column(name = "post_id")

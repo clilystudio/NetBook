@@ -9,8 +9,7 @@ import com.clilystudio.netbook.widget.CoverView;
 
 import java.util.Date;
 
-public final class X
-        extends W<UGCBookListRoot$UGCBook> {
+public final class X extends W<UGCBookListRoot$UGCBook> {
     private String a = "\u5171%1$d\u672c\u4e66  |  %2$d\u4eba\u6536\u85cf";
     private String b = "\u5171%1$d\u672c\u4e66";
 

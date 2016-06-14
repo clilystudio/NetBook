@@ -7,8 +7,7 @@ import android.widget.Toast;
 
 import java.io.File;
 
-final class C
-        extends Handler {
+final class C extends Handler {
     private /* synthetic */ A a;
 
     C(A a) {

@@ -8,8 +8,7 @@ import com.clilystudio.netbook.model.Root;
 import com.clilystudio.netbook.util.S;
 import com.clilystudio.netbook.util.e;
 
-final class m
-        extends S<Root> {
+final class m extends S<Root> {
     private String a;
     private String b;
     private /* synthetic */ GameDetailActivity c;

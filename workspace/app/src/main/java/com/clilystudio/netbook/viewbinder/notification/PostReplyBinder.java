@@ -6,8 +6,7 @@ import android.content.Intent;
 import com.clilystudio.netbook.model.CommonReplyeeInfo;
 import com.clilystudio.netbook.model.NotificationItem;
 
-public class PostReplyBinder
-        extends UnimportatntNotifBinder {
+public class PostReplyBinder extends UnimportatntNotifBinder {
     public static final String LABEL = "post_reply";
 
     public PostReplyBinder(NotificationItem notificationItem) {

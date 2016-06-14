@@ -6,8 +6,7 @@ import android.graphics.PorterDuff;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 
-public class MaskAbleImageView
-        extends ImageView {
+public class MaskAbleImageView extends ImageView {
     protected int a;
 
     public MaskAbleImageView(Context context) {

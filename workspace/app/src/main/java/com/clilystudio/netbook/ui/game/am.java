@@ -11,8 +11,7 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
-final class am
-        extends com.clilystudio.netbook.a_pack.e<String, Void, List<Game>> {
+final class am extends com.clilystudio.netbook.a_pack.e<String, Void, List<Game>> {
     private /* synthetic */ GameRankListFragment a;
 
     private am(GameRankListFragment gameRankListFragment) {

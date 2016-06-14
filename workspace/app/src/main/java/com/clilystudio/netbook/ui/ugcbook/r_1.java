@@ -10,8 +10,7 @@ import com.clilystudio.netbook.model.UGCBookDetailRoot;
 
 import java.io.IOException;
 
-final class r
-        extends e<String, Void, UGCBookDetailRoot> {
+final class r extends e<String, Void, UGCBookDetailRoot> {
     private /* synthetic */ UGCDetailActivity a;
 
     private r(UGCDetailActivity uGCDetailActivity) {

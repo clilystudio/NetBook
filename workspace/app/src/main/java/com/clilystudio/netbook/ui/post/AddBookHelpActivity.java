@@ -20,8 +20,7 @@ import com.clilystudio.netbook.util.e;
 
 import cn.sharesdk.framework.ShareSDK;
 
-public class AddBookHelpActivity
-        extends BaseActivity {
+public class AddBookHelpActivity extends BaseActivity {
     private EditText a;
     private EditText b;
 

@@ -8,8 +8,7 @@ import com.clilystudio.netbook.ui.home.ZssqFragmentPagerAdapter;
 
 import java.util.List;
 
-final class an
-        extends ZssqFragmentPagerAdapter {
+final class an extends ZssqFragmentPagerAdapter {
     private String[] a;
     private /* synthetic */ GameTabActivity b;
 

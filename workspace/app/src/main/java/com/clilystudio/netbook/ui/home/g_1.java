@@ -6,8 +6,7 @@ import com.clilystudio.netbook.model.IKanshuUrlResult;
 
 import java.io.IOException;
 
-final class g
-        extends e<Void, Void, IKanshuUrlResult> {
+final class g extends e<Void, Void, IKanshuUrlResult> {
     private /* synthetic */ HomeActivity a;
 
     private g(HomeActivity homeActivity) {

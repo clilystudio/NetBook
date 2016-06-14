@@ -8,8 +8,7 @@ import com.clilystudio.netbook.model.PayBalance;
 
 import java.io.IOException;
 
-final class bo
-        extends e<String, Void, PayBalance> {
+final class bo extends e<String, Void, PayBalance> {
     private /* synthetic */ ReaderActivity a;
 
     private bo(ReaderActivity readerActivity) {

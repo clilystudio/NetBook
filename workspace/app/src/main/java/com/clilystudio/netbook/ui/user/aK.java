@@ -10,8 +10,7 @@ import com.clilystudio.netbook.util.e;
 
 import java.io.IOException;
 
-final class aK
-        extends com.clilystudio.netbook.a_pack.e<String, Void, UserInfo> {
+final class aK extends com.clilystudio.netbook.a_pack.e<String, Void, UserInfo> {
     private /* synthetic */ UserInfoActivity a;
 
     private aK(UserInfoActivity userInfoActivity) {

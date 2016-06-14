@@ -19,8 +19,7 @@ import com.clilystudio.netbook.ui.home.HomeActivity;
 import com.clilystudio.netbook.ui.user.AuthLoginActivity;
 import com.clilystudio.netbook.util.e;
 
-public class BaseActivity
-        extends AppCompatActivity {
+public class BaseActivity extends AppCompatActivity {
     protected b d = b.a();
     private BroadcastReceiver a;
 

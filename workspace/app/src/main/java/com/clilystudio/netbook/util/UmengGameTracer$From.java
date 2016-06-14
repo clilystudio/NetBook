@@ -1,7 +1,6 @@
 package com.clilystudio.netbook.util;
 
-public final class UmengGameTracer$From
-        extends Enum<UmengGameTracer$From> {
+public final class UmengGameTracer$From extends Enum<UmengGameTracer$From> {
     public static final /* enum */ UmengGameTracer$From Bookshelf;
     public static final /* enum */ UmengGameTracer$From Notification;
     public static final /* enum */ UmengGameTracer$From Reader;

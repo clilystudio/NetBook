@@ -10,8 +10,7 @@ import com.clilystudio.netbook.widget.SearchFixListView;
 import java.util.ArrayList;
 import java.util.List;
 
-final class x
-        extends Filter {
+final class x extends Filter {
     private /* synthetic */ UGCGuideAddBookActivity$SearchPromptAdapter a;
 
     private x(UGCGuideAddBookActivity$SearchPromptAdapter searchPromptAdapter) {

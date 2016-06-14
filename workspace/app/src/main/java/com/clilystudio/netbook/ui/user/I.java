@@ -8,8 +8,7 @@ import com.clilystudio.netbook.model.PayBalance;
 
 import java.io.IOException;
 
-final class I
-        extends c<String, PayBalance> {
+final class I extends c<String, PayBalance> {
     private /* synthetic */ PayAccountActivity a;
 
     public I(PayAccountActivity payAccountActivity, Activity activity) {

@@ -22,8 +22,7 @@ import com.clilystudio.netbook.model.mixtoc.SgTocChapter;
 import com.clilystudio.netbook.ui.post.BookPostTabActivity;
 import com.squareup.a.l;
 
-public class ReaderWebActivity
-        extends BaseReadActivity {
+public class ReaderWebActivity extends BaseReadActivity {
     private int b;
     private String c;
     private String d;

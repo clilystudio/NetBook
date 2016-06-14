@@ -29,8 +29,7 @@ import com.umeng.a.b;
 import java.io.File;
 import java.util.Calendar;
 
-public class SplashActivity
-        extends Activity {
+public class SplashActivity extends Activity {
     private static final String a = SplashActivity.class.getSimpleName();
     private int b = 1200;
     private Handler c = new Handler();

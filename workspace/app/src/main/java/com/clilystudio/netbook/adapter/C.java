@@ -5,8 +5,7 @@ import android.view.LayoutInflater;
 import com.clilystudio.netbook.model.TocDownloadSummary;
 import com.clilystudio.netbook.util.W;
 
-public final class C
-        extends W<TocDownloadSummary> {
+public final class C extends W<TocDownloadSummary> {
     private int a = -1;
 
     public C(LayoutInflater layoutInflater) {

@@ -8,8 +8,7 @@ import com.clilystudio.netbook.ui.ugcbook.DraftUGCListFragment;
 import com.clilystudio.netbook.ui.ugcbook.FavUGCListFragment;
 import com.clilystudio.netbook.ui.ugcbook.MyUGCListFragment;
 
-public class UserUGCActivity
-        extends SimpleTabActivity {
+public class UserUGCActivity extends SimpleTabActivity {
     @Override
     protected final void b() {
         this.b = 3;

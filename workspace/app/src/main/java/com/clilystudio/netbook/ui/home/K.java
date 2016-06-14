@@ -10,8 +10,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-final class K
-        extends com.clilystudio.netbook.a_pack.e<Void, Void, List<BookUpdate>> {
+final class K extends com.clilystudio.netbook.a_pack.e<Void, Void, List<BookUpdate>> {
     private List<BookReadRecord> a;
     private /* synthetic */ HomeShelfFragment b;
 

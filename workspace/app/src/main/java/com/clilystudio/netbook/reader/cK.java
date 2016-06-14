@@ -4,8 +4,7 @@ import android.app.Activity;
 
 import com.clilystudio.netbook.a_pack.c;
 
-final class cK
-        extends c<String, String> {
+final class cK extends c<String, String> {
     private int a;
     private /* synthetic */ ReaderWebActivity b;
 

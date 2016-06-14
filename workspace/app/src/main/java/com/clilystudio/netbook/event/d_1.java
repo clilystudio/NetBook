@@ -1,7 +1,6 @@
 package com.clilystudio.netbook.event;
 
-public final class d
-        extends e {
+public final class d extends e {
     private int a;
 
     public d(String string, int n) {

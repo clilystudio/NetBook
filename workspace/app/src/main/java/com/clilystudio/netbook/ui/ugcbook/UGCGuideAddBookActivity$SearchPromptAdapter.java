@@ -10,8 +10,7 @@ import android.widget.Filterable;
 import java.util.ArrayList;
 import java.util.List;
 
-public final class UGCGuideAddBookActivity$SearchPromptAdapter
-        extends BaseAdapter
+public final class UGCGuideAddBookActivity$SearchPromptAdapter extends BaseAdapter
         implements AdapterView.OnItemClickListener,
         Filterable {
     final /* synthetic */ UGCGuideAddBookActivity a;

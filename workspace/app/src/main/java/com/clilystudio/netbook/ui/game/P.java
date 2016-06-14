@@ -4,8 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 
-final class P
-        extends BroadcastReceiver {
+final class P extends BroadcastReceiver {
     private /* synthetic */ GameListActivity a;
 
     P(GameListActivity gameListActivity) {

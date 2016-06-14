@@ -5,8 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public abstract class BaseLoadingActivity
-        extends BaseActivity {
+public abstract class BaseLoadingActivity extends BaseActivity {
     private ViewGroup a;
     private View b;
     private View c;

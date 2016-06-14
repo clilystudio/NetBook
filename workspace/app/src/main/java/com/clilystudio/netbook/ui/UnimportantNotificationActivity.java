@@ -4,8 +4,7 @@ import android.os.Bundle;
 
 import com.clilystudio.netbook.util.J;
 
-public class UnimportantNotificationActivity
-        extends BaseActivity {
+public class UnimportantNotificationActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);

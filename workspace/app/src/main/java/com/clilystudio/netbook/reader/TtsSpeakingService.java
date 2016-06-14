@@ -9,8 +9,7 @@ import android.support.v7.app.NotificationCompat$Builder;
 
 import com.clilystudio.netbook.util.I;
 
-public class TtsSpeakingService
-        extends Service {
+public class TtsSpeakingService extends Service {
     private int a = 3;
 
     @Override

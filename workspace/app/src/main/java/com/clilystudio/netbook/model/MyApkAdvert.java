@@ -9,8 +9,7 @@ import com.clilystudio.netbook.util.adutil.BaseShelfAd;
 import com.clilystudio.netbook.util.y;
 import com.umeng.a.b;
 
-public class MyApkAdvert
-        extends BaseShelfAd {
+public class MyApkAdvert extends BaseShelfAd {
     @Override
     public String getDownloadTitle(Context context) {
         String string = a.c(this.getApkSize());

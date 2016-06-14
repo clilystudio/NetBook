@@ -20,8 +20,7 @@ import com.clilystudio.netbook.widget.HomeFindItem;
 import com.clilystudio.netbook.widget.HomeFindLuckyGameItem;
 import com.clilystudio.netbook.widget.HomeFindSecretItem;
 
-public class HomeFindFragment
-        extends HomeFragment {
+public class HomeFindFragment extends HomeFragment {
     private ViewGroup a;
     private HomeFindSecretItem b;
     private HomeFindGameItem c;

@@ -8,8 +8,7 @@ import com.clilystudio.netbook.a_pack.e;
 import com.clilystudio.netbook.model.RecommendUgcRoot;
 import com.clilystudio.netbook.model.RecommendUgcRoot$RecommendUGC;
 
-public final class RelateUgcFragment$GetUgcsTask
-        extends e<String, Void, RecommendUgcRoot> {
+public final class RelateUgcFragment$GetUgcsTask extends e<String, Void, RecommendUgcRoot> {
     final /* synthetic */ RelateUgcFragment a;
     private String b;
 

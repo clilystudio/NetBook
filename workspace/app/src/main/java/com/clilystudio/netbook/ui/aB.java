@@ -3,8 +3,7 @@ package com.clilystudio.netbook.ui;
 import android.os.Handler;
 import android.os.Message;
 
-final class aB
-        extends Handler {
+final class aB extends Handler {
     private /* synthetic */ BookInfoActivity a;
 
     aB(BookInfoActivity bookInfoActivity) {

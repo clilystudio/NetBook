@@ -7,8 +7,7 @@ import com.clilystudio.netbook.model.mixtoc.EsTocItem;
 import com.clilystudio.netbook.model.mixtoc.EsTocRoot;
 import com.clilystudio.netbook.util.e;
 
-final class cI
-        extends c<String, EsTocRoot> {
+final class cI extends c<String, EsTocRoot> {
     private int a;
     private /* synthetic */ ReaderWebActivity b;
 

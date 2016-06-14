@@ -4,8 +4,7 @@ import android.support.v4.view.PagerAdapter;
 import android.view.View;
 import android.view.ViewGroup;
 
-final class bc
-        extends PagerAdapter {
+final class bc extends PagerAdapter {
     private /* synthetic */ IntroActivity a;
 
     bc(IntroActivity introActivity) {

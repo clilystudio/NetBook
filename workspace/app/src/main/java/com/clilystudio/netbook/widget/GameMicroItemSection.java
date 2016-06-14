@@ -13,8 +13,7 @@ import com.clilystudio.netbook.model.GameLayoutRoot$ModuleLayout;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 
-public class GameMicroItemSection
-        extends TableLayout {
+public class GameMicroItemSection extends TableLayout {
     @InjectView(value = 2131493577)
     TableLayout mContainer;
     private boolean a = false;

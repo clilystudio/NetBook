@@ -11,8 +11,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.SeekBar;
 
-public class SettingWidget
-        extends LinearLayout {
+public class SettingWidget extends LinearLayout {
     private bZ a;
     private ReaderActionBar b;
     private View c;

@@ -18,8 +18,7 @@ import com.clilystudio.netbook.ui.BaseTabActivity;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PayVoucherActivity
-        extends BaseTabActivity
+public class PayVoucherActivity extends BaseTabActivity
         implements ViewPager$OnPageChangeListener,
         TabHost.OnTabChangeListener,
         TabHost.TabContentFactory {

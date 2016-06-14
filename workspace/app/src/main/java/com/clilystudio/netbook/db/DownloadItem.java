@@ -8,8 +8,7 @@ import com.activeandroid.annotation.Table;
 import com.activeandroid.query.Select;
 
 @Table(name = "DownloadItem")
-public class DownloadItem
-        extends Model {
+public class DownloadItem extends Model {
     @Column(name = "package_name")
     public String packageName;
     @Column(name = "uid")

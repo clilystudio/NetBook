@@ -26,8 +26,7 @@ import java.util.regex.Pattern;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 
-public class ScanTxtFileActivity
-        extends BaseActivity {
+public class ScanTxtFileActivity extends BaseActivity {
     @InjectView(value = 2131493181)
     TextView mEmpty;
     @InjectView(value = 2131492924)

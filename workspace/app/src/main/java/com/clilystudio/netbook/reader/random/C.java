@@ -8,8 +8,7 @@ import com.clilystudio.netbook.util.e;
 import org.json.JSONArray;
 import org.json.JSONException;
 
-final class C
-        extends c {
+final class C extends c {
     private /* synthetic */ ReaderRandomActivity a;
 
     C(ReaderRandomActivity readerRandomActivity) {

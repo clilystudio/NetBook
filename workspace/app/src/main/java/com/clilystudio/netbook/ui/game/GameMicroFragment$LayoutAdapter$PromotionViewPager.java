@@ -16,8 +16,7 @@ import java.util.Timer;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 
-public class GameMicroFragment$LayoutAdapter$PromotionViewPager
-        extends ay {
+public class GameMicroFragment$LayoutAdapter$PromotionViewPager extends ay {
     final /* synthetic */ GameMicroFragment$LayoutAdapter k;
     ArrayList<View> i;
     Handler j;

@@ -13,8 +13,7 @@ import com.clilystudio.netbook.util.p;
 
 import java.io.IOException;
 
-final class ak
-        extends c<String, PurchaseVipResult> {
+final class ak extends c<String, PurchaseVipResult> {
     private /* synthetic */ RemoveAdActivity a;
 
     public ak(RemoveAdActivity removeAdActivity, Activity activity, String string) {

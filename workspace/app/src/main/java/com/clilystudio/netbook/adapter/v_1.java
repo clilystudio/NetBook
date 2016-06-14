@@ -6,8 +6,7 @@ import com.clilystudio.netbook.model.MhdInfo;
 import com.clilystudio.netbook.util.W;
 import com.clilystudio.netbook.widget.CoverView;
 
-public final class v
-        extends W<MhdInfo> {
+public final class v extends W<MhdInfo> {
     public v(LayoutInflater layoutInflater) {
         super(layoutInflater, 2130903285);
     }

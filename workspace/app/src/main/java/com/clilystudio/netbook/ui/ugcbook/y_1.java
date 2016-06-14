@@ -13,8 +13,7 @@ import com.clilystudio.netbook.widget.CoverView;
 import java.util.Iterator;
 import java.util.List;
 
-public final class y
-        extends W<BookSummary> {
+public final class y extends W<BookSummary> {
     final /* synthetic */ UGCGuideAddBookActivity a;
     private final List<BookSummary> b;
 

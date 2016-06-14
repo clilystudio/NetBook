@@ -10,8 +10,7 @@ import com.clilystudio.netbook.model.UserVipInfo;
 
 import java.io.IOException;
 
-final class h
-        extends e<String, Void, UserVipInfo> {
+final class h extends e<String, Void, UserVipInfo> {
     private /* synthetic */ HomeActivity a;
 
     h(HomeActivity homeActivity) {

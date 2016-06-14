@@ -12,8 +12,7 @@ import android.widget.TextView;
 import com.clilystudio.netbook.util.as;
 import com.ximalaya.ting.android.opensdk.model.track.Track;
 
-public final class n
-        extends BaseAdapter {
+public final class n extends BaseAdapter {
     final /* synthetic */ AudioBookPlayActivity a;
     private LayoutInflater b;
 

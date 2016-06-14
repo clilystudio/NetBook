@@ -22,8 +22,7 @@ import com.handmark.pulltorefresh.library.PullToRefreshBase$Mode;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MyFavTopicFragment
-        extends Fragment {
+public class MyFavTopicFragment extends Fragment {
     private z a;
     private A b;
     private LabelPtrListView c;

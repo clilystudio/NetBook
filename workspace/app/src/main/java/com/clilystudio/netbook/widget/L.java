@@ -9,8 +9,7 @@ import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.model.GameGift;
 import com.clilystudio.netbook.model.GameGiftRoot;
 
-final class L
-        extends e<String, Void, GameGiftRoot> {
+final class L extends e<String, Void, GameGiftRoot> {
     private /* synthetic */ GameGiftView a;
 
     private L(GameGiftView gameGiftView) {

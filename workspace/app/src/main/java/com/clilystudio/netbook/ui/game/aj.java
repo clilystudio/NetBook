@@ -4,8 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 
-final class aj
-        extends BroadcastReceiver {
+final class aj extends BroadcastReceiver {
     private /* synthetic */ GameRankListFragment a;
 
     aj(GameRankListFragment gameRankListFragment) {

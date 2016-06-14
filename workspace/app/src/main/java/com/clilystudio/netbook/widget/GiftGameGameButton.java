@@ -13,8 +13,7 @@ import com.clilystudio.netbook.model.GiftGame;
 import com.clilystudio.netbook.ui.SmartImageView;
 import com.clilystudio.netbook.ui.game.ao;
 
-public class GiftGameGameButton
-        extends Button {
+public class GiftGameGameButton extends Button {
     private GiftGame a;
 
     public GiftGameGameButton(Context context, AttributeSet attributeSet) {

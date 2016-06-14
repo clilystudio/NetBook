@@ -6,8 +6,7 @@ import android.util.AttributeSet;
 
 import com.clilystudio.netbook.R$styleable;
 
-public class NewGameDownloadButton
-        extends GameDownloadButton {
+public class NewGameDownloadButton extends GameDownloadButton {
     private final String a;
 
     public NewGameDownloadButton(Context context, AttributeSet attributeSet) {

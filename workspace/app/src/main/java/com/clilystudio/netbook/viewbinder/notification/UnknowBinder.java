@@ -2,8 +2,7 @@ package com.clilystudio.netbook.viewbinder.notification;
 
 import com.clilystudio.netbook.model.NotificationItem;
 
-public class UnknowBinder
-        extends OfficialNotifBinder {
+public class UnknowBinder extends OfficialNotifBinder {
     public UnknowBinder(NotificationItem notificationItem) {
         super(notificationItem);
     }

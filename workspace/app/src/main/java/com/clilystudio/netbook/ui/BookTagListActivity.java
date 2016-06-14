@@ -14,8 +14,7 @@ import com.clilystudio.netbook.widget.av;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BookTagListActivity
-        extends BaseLoadingActivity {
+public class BookTagListActivity extends BaseLoadingActivity {
     private aW a;
     private aV b;
     private String c;

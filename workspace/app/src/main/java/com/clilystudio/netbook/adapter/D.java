@@ -10,8 +10,7 @@ import com.clilystudio.netbook.widget.PostFlag;
 
 import java.util.Date;
 
-public final class D
-        extends W<ReviewSummary> {
+public final class D extends W<ReviewSummary> {
     public D(LayoutInflater layoutInflater) {
         super(layoutInflater, 2130903301);
     }

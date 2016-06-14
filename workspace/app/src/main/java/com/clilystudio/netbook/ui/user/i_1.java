@@ -6,8 +6,7 @@ import com.clilystudio.netbook.a_pack.e;
 import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.model.DeleteResult;
 
-final class i
-        extends e<Void, Void, DeleteResult> {
+final class i extends e<Void, Void, DeleteResult> {
     private /* synthetic */ ChargeActivity a;
 
     private i(ChargeActivity chargeActivity) {

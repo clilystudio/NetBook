@@ -8,8 +8,7 @@ import com.clilystudio.netbook.event.i;
 import com.clilystudio.netbook.event.w;
 import com.clilystudio.netbook.model.Root;
 
-final class L
-        extends S<Root> {
+final class L extends S<Root> {
     private /* synthetic */ J a;
 
     L(J j) {

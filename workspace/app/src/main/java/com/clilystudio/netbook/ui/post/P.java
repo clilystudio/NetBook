@@ -8,8 +8,7 @@ import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.model.PostPublish;
 import com.clilystudio.netbook.util.e;
 
-final class P
-        extends c<String, PostPublish> {
+final class P extends c<String, PostPublish> {
     private /* synthetic */ AddVoteActivity a;
 
     public P(AddVoteActivity addVoteActivity, Activity activity, int n) {

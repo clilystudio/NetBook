@@ -4,8 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 
-final class bg
-        extends BroadcastReceiver {
+final class bg extends BroadcastReceiver {
     private /* synthetic */ ReaderActivity a;
 
     bg(ReaderActivity readerActivity) {

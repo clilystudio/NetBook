@@ -7,8 +7,7 @@ import android.util.AttributeSet;
 import com.clilystudio.netbook.util.e;
 import com.clilystudio.netbook.view.a;
 
-public class GiftGameGetButton
-        extends GiftGameGameButton {
+public class GiftGameGetButton extends GiftGameGameButton {
     private a a;
 
     public GiftGameGetButton(Context context, AttributeSet attributeSet) {

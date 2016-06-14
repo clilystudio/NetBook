@@ -8,8 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 
-public class DialogUtil$FeedIntroDialog
-        extends DialogFragment {
+public class DialogUtil$FeedIntroDialog extends DialogFragment {
     @Override
     public Dialog onCreateDialog(Bundle bundle) {
         View view = ((LayoutInflater) this.getActivity().getSystemService("layout_inflater")).inflate(2130903190, null);

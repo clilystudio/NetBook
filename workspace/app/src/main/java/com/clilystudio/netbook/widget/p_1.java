@@ -6,8 +6,7 @@ import android.graphics.Path;
 import android.graphics.RectF;
 import android.graphics.drawable.shapes.Shape;
 
-public final class p
-        extends Shape {
+public final class p extends Shape {
     private RectF a;
     private float b;
 

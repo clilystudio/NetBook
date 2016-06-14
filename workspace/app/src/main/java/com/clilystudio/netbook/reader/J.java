@@ -5,8 +5,7 @@ import android.support.design.widget.am;
 import com.clilystudio.netbook.a_pack.e;
 import com.clilystudio.netbook.model.PurchaseChapterResult;
 
-final class J
-        extends e<String, Void, PurchaseChapterResult> {
+final class J extends e<String, Void, PurchaseChapterResult> {
     private ReaderChapter a;
     private /* synthetic */ o b;
 

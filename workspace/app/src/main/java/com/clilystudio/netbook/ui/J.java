@@ -5,8 +5,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 
-final class J
-        extends BroadcastReceiver {
+final class J extends BroadcastReceiver {
     private /* synthetic */ BaseActivity a;
 
     J(BaseActivity baseActivity) {

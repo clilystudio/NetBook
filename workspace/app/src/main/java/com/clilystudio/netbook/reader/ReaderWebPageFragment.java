@@ -5,8 +5,7 @@ import android.os.Bundle;
 import com.clilystudio.netbook.api.ApiService;
 import com.clilystudio.netbook.api.b;
 
-public class ReaderWebPageFragment
-        extends WebPageFragment {
+public class ReaderWebPageFragment extends WebPageFragment {
     private int a;
 
     public static ReaderWebPageFragment a(int n, String string) {

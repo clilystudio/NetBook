@@ -7,8 +7,7 @@ import android.util.AttributeSet;
 
 import com.clilystudio.netbook.R$styleable;
 
-public class SettingCheckBox
-        extends SwitchCompat {
+public class SettingCheckBox extends SwitchCompat {
     private final String a;
     private final boolean b;
 

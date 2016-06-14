@@ -36,8 +36,7 @@ import java.util.List;
 
 import cn.sharesdk.framework.PlatformActionListener;
 
-public class BookHelpActivity
-        extends AbsPostActivity {
+public class BookHelpActivity extends AbsPostActivity {
     private View f;
     private z g;
     private List<PostComment> h = new ArrayList<PostComment>();

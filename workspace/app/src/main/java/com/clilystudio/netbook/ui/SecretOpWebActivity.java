@@ -2,8 +2,7 @@ package com.clilystudio.netbook.ui;
 
 import android.os.Bundle;
 
-public class SecretOpWebActivity
-        extends BaseActivity {
+public class SecretOpWebActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);

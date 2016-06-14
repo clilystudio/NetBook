@@ -1,7 +1,6 @@
 package com.clilystudio.netbook.ui;
 
-public final class NotifFragment$Type
-        extends Enum<NotifFragment$Type> {
+public final class NotifFragment$Type extends Enum<NotifFragment$Type> {
     public static final /* enum */ NotifFragment$Type IMPORTANT = new NotifFragment$Type();
     public static final /* enum */ NotifFragment$Type UNIMPORTANT = new NotifFragment$Type();
     private static final /* synthetic */ NotifFragment$Type[] a;

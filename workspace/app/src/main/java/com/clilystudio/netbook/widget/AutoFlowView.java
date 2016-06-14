@@ -12,8 +12,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class AutoFlowView
-        extends LinearLayout
+public class AutoFlowView extends LinearLayout
         implements View.OnClickListener {
     private static final String a = AutoFlowView.class.getSimpleName();
     private static int b;

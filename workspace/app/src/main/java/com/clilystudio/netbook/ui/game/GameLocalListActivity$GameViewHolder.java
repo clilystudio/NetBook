@@ -10,8 +10,7 @@ import com.clilystudio.netbook.ui.SmartImageView;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 
-public class GameLocalListActivity$GameViewHolder
-        extends ay {
+public class GameLocalListActivity$GameViewHolder extends ay {
     @InjectView(value = 2131493689)
     View mContainer;
     @InjectView(value = 2131493694)

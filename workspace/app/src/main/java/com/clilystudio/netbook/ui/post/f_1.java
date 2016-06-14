@@ -8,8 +8,7 @@ import com.clilystudio.netbook.model.CommentDetail;
 
 import java.io.IOException;
 
-public abstract class f
-        extends c<String, CommentDetail> {
+public abstract class f extends c<String, CommentDetail> {
     public f(Activity activity) {
         super(activity, 2131034218);
     }

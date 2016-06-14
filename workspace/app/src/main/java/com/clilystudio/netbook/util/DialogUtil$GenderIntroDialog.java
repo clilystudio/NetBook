@@ -9,8 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
-public class DialogUtil$GenderIntroDialog
-        extends DialogFragment {
+public class DialogUtil$GenderIntroDialog extends DialogFragment {
     @Override
     public Dialog onCreateDialog(Bundle bundle) {
         View view = ((LayoutInflater) this.getActivity().getSystemService("layout_inflater")).inflate(2130903193, null);

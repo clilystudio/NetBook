@@ -12,8 +12,7 @@ import com.clilystudio.netbook.event.i;
 import com.clilystudio.netbook.event.w;
 import com.clilystudio.netbook.util.J;
 
-public class ImportantNotificationFragment
-        extends NotifFragment {
+public class ImportantNotificationFragment extends NotifFragment {
     private LinearLayout a;
     private ImageView b;
 

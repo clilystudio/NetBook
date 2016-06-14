@@ -2,8 +2,7 @@ package com.clilystudio.netbook.a_pack;
 
 import com.clilystudio.netbook.model.TopicCount;
 
-public abstract class b
-        extends e<String, Void, TopicCount> {
+public abstract class b extends e<String, Void, TopicCount> {
     private static /* varargs */ TopicCount a(String... arrstring) {
         try {
             com.clilystudio.netbook.api.b.a();

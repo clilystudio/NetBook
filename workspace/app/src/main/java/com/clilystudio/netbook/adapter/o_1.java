@@ -13,8 +13,7 @@ import com.clilystudio.netbook.util.W;
 import com.clilystudio.netbook.util.t;
 import com.clilystudio.netbook.widget.PostFlag;
 
-public final class o
-        extends W<GirlTopicSummary> {
+public final class o extends W<GirlTopicSummary> {
     private boolean a;
     private boolean b = false;
 

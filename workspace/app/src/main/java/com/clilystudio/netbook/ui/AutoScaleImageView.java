@@ -3,8 +3,7 @@ package com.clilystudio.netbook.ui;
 import android.content.Context;
 import android.util.AttributeSet;
 
-public class AutoScaleImageView
-        extends SmartImageView {
+public class AutoScaleImageView extends SmartImageView {
     private final int b;
 
     public AutoScaleImageView(Context context, AttributeSet attributeSet) {

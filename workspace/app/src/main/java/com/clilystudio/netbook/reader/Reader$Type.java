@@ -1,7 +1,6 @@
 package com.clilystudio.netbook.reader;
 
-public final class Reader$Type
-        extends Enum<Reader$Type> {
+public final class Reader$Type extends Enum<Reader$Type> {
     public static final /* enum */ Reader$Type CHAPTER = new Reader$Type(0);
     public static final /* enum */ Reader$Type TOC = new Reader$Type(1);
     private static final /* synthetic */ Reader$Type[] a;

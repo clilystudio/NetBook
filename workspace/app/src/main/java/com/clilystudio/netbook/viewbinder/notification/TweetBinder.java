@@ -6,8 +6,7 @@ import android.content.Intent;
 import com.clilystudio.netbook.model.NotificationItem;
 import com.clilystudio.netbook.ui.post.TweetDetailActivity;
 
-public abstract class TweetBinder
-        extends NotifBinder {
+public abstract class TweetBinder extends NotifBinder {
     public TweetBinder(NotificationItem notificationItem) {
         super(notificationItem);
     }

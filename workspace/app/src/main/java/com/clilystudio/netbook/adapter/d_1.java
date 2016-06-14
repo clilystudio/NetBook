@@ -12,8 +12,7 @@ import com.clilystudio.netbook.util.W;
 import com.clilystudio.netbook.util.t;
 import com.clilystudio.netbook.widget.PostFlag;
 
-public final class d
-        extends W<BookHelpSummary> {
+public final class d extends W<BookHelpSummary> {
     private boolean a;
     private boolean b = false;
 

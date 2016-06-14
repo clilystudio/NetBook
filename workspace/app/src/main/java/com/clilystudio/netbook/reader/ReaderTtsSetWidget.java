@@ -18,8 +18,7 @@ import com.iflytek.cloud.SpeechUtility;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class ReaderTtsSetWidget
-        extends LinearLayout {
+public class ReaderTtsSetWidget extends LinearLayout {
     Handler a;
     private TextView[] b;
     private TextView[] c;

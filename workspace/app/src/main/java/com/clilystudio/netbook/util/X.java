@@ -6,8 +6,7 @@ import com.clilystudio.netbook.db.BookSyncRecord;
 import com.clilystudio.netbook.db.BookSyncRecord$BookModifyType;
 import com.clilystudio.netbook.model.SyncUploadResult;
 
-public final class X
-        extends e<Void, Void, SyncUploadResult> {
+public final class X extends e<Void, Void, SyncUploadResult> {
     private final ApiService a;
     private String b;
     private String c;

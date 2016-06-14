@@ -4,8 +4,7 @@ import com.clilystudio.netbook.a_pack.e;
 import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.model.PostPublish;
 
-final class S
-        extends e<String, Void, PostPublish> {
+final class S extends e<String, Void, PostPublish> {
     private /* synthetic */ G a;
 
     S(G g) {

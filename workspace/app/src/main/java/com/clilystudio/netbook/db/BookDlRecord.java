@@ -13,8 +13,7 @@ import java.util.Date;
 import java.util.List;
 
 @Table(name = "BookDlRecord")
-public class BookDlRecord
-        extends Model {
+public class BookDlRecord extends Model {
     public static final int END = 4;
     public static final int IDLE = 0;
     public static final int PAUSE = 3;

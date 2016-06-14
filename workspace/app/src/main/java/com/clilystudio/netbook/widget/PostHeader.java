@@ -6,8 +6,7 @@ import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.LinearLayout;
 
-public class PostHeader
-        extends LinearLayout {
+public class PostHeader extends LinearLayout {
     public PostHeader(Context context) {
         super(context);
         this.setOrientation(1);

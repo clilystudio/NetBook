@@ -13,8 +13,7 @@ import com.clilystudio.netbook.R$styleable;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 
-public class TopicSectionItem
-        extends DividerSection {
+public class TopicSectionItem extends DividerSection {
     @InjectView(value = 2131493028)
     ImageView mIcon;
     @InjectView(value = 2131493515)

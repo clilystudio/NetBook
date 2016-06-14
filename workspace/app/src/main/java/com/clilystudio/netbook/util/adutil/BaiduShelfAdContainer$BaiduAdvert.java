@@ -5,8 +5,7 @@ import android.view.View;
 
 import com.clilystudio.netbook.hpay100.a.a;
 
-public class BaiduShelfAdContainer$BaiduAdvert
-        extends BaseShelfAd {
+public class BaiduShelfAdContainer$BaiduAdvert extends BaseShelfAd {
     public void baiduRecord(View view) {
         k.a(BaiduShelfAdContainer.a(), "recordImpression", View.class, this.response, view);
     }

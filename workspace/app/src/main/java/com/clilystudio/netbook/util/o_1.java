@@ -7,8 +7,7 @@ import com.clilystudio.netbook.model.TocSummary;
 
 import java.util.List;
 
-final class o
-        extends c<String, List<TocSummary>> {
+final class o extends c<String, List<TocSummary>> {
     private boolean a;
     private /* synthetic */ m b;
 

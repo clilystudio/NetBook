@@ -5,8 +5,7 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.RelativeLayout;
 
-public class AdBottomLayout
-        extends RelativeLayout {
+public class AdBottomLayout extends RelativeLayout {
     private K a;
     private float b = 0.0f;
 

@@ -33,8 +33,7 @@ import com.clilystudio.netbook.reader.bH;
 import com.clilystudio.netbook.reader.bZ;
 import com.clilystudio.netbook.reader.cw;
 
-public class ReaderRandomActivity
-        extends FragmentActivity {
+public class ReaderRandomActivity extends FragmentActivity {
     private BroadcastReceiver A;
     private BroadcastReceiver B;
     private com.clilystudio.netbook.reader.o[] a = new com.clilystudio.netbook.reader.o[3];

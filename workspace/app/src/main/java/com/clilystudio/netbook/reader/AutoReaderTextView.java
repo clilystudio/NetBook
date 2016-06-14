@@ -15,8 +15,7 @@ import com.clilystudio.netbook.hpay100.a.a;
 
 import me.biubiubiu.justifytext.library.JustifyTextView;
 
-public class AutoReaderTextView
-        extends JustifyTextView {
+public class AutoReaderTextView extends JustifyTextView {
     private int c;
     private Context d;
     private int e = 5;

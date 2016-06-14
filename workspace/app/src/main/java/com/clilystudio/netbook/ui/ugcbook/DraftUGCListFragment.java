@@ -13,8 +13,7 @@ import com.clilystudio.netbook.model.UGCBookListRoot$UGCBook;
 import java.util.Collections;
 import java.util.Date;
 
-public class DraftUGCListFragment
-        extends AbsUGCListFragment {
+public class DraftUGCListFragment extends AbsUGCListFragment {
     @Override
     protected final UGCBookListRoot a(Account account, int n) {
         b.a();

@@ -28,8 +28,7 @@ import com.handmark.pulltorefresh.library.j;
 import java.util.ArrayList;
 import java.util.List;
 
-public class OtherUserActivity
-        extends BaseActivity {
+public class OtherUserActivity extends BaseActivity {
     private ck A;
     private j B;
     private cl a;

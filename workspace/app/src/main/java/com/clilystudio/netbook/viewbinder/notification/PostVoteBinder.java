@@ -5,8 +5,7 @@ import android.content.Intent;
 
 import com.clilystudio.netbook.model.NotificationItem;
 
-public class PostVoteBinder
-        extends NotifBinder {
+public class PostVoteBinder extends NotifBinder {
     public static final String LABEL = "post_vote";
 
     public PostVoteBinder(NotificationItem notificationItem) {

@@ -25,8 +25,7 @@ import java.util.List;
 
 do;
 
-public class ReviewListActivity
-        extends BaseActivity {
+public class ReviewListActivity extends BaseActivity {
     private static final String[] q = new String[]{"all", "xhqh", "wxxx", "dsyn", "lsjs", "yxjj", "khly", "cyjk", "hmzc", "xdyq", "gdyq", "hxyq", "dmtr"};
     private static final int[] r = new int[]{2131034548, 2131034559, 2131034557, 2131034551, 2131034556, 2131034560, 2131034555, 2131034549, 2131034553, 2131034558, 2131034552, 2131034554, 2131034550};
     private dp a;

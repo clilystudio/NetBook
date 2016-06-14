@@ -4,8 +4,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-final class ao
-        extends ay {
+final class ao extends ay {
     TextView i;
     Button j;
     View k;

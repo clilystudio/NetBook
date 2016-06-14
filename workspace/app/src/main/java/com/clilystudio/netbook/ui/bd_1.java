@@ -9,8 +9,7 @@ import android.widget.TextView;
 
 import com.clilystudio.netbook.b_pack.b;
 
-public final class bd
-        extends LinkMovementMethod {
+public final class bd extends LinkMovementMethod {
     private b a;
 
     private static b a(TextView textView, Spannable spannable, MotionEvent motionEvent) {

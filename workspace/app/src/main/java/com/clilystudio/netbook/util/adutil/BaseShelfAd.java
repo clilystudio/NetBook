@@ -6,8 +6,7 @@ import android.view.View;
 
 import com.clilystudio.netbook.model.Advert;
 
-public class BaseShelfAd
-        extends Advert {
+public class BaseShelfAd extends Advert {
     public int showCount;
     protected Object response;
 

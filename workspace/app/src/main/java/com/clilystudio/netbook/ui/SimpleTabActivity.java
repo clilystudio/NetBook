@@ -15,8 +15,7 @@ import com.clilystudio.netbook.widget.TabWidgetV2;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class SimpleTabActivity
-        extends BaseTabActivity
+public abstract class SimpleTabActivity extends BaseTabActivity
         implements ViewPager$OnPageChangeListener,
         TabHost.OnTabChangeListener,
         TabHost.TabContentFactory {

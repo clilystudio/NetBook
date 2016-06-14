@@ -30,8 +30,7 @@ import java.util.Map;
 
 import cn.sharesdk.framework.ShareSDK;
 
-public class UGCGuideEditBooksActivity
-        extends BaseActivity
+public class UGCGuideEditBooksActivity extends BaseActivity
         implements View.OnClickListener {
     Map<String, String> a = new HashMap<String, String>();
     private ListView b;

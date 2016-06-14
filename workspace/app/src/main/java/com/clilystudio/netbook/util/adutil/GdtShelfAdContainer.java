@@ -2,8 +2,7 @@ package com.clilystudio.netbook.util.adutil;
 
 import android.content.Context;
 
-public final class GdtShelfAdContainer
-        extends k {
+public final class GdtShelfAdContainer extends k {
     private static Class<?> a;
 
     static /* synthetic */ Class a() {

@@ -3,8 +3,7 @@ package com.clilystudio.netbook.ui.game;
 import android.os.Handler;
 import android.os.Message;
 
-final class ag
-        extends Handler {
+final class ag extends Handler {
     private /* synthetic */ GameMicroFragment$LayoutAdapter$PromotionViewPager a;
 
     ag(GameMicroFragment$LayoutAdapter$PromotionViewPager promotionViewPager) {

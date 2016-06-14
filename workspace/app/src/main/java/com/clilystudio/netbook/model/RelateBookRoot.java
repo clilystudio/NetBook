@@ -2,8 +2,7 @@ package com.clilystudio.netbook.model;
 
 import java.util.List;
 
-public class RelateBookRoot
-        extends Root {
+public class RelateBookRoot extends Root {
     private static final long serialVersionUID = 692271766036187202L;
     private List<BookSummary> books;
 

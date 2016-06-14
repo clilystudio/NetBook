@@ -32,8 +32,7 @@ import java.text.DecimalFormat;
 import java.util.Date;
 import java.util.List;
 
-public class ReaderMenuFragment
-        extends Fragment {
+public class ReaderMenuFragment extends Fragment {
     private String a;
     private String b;
     private String c;

@@ -5,8 +5,7 @@ import android.content.Intent;
 
 import com.clilystudio.netbook.model.NotificationItem;
 
-public class PostPushBinder
-        extends OfficialNotifBinder {
+public class PostPushBinder extends OfficialNotifBinder {
     public static final String LABEL = "post_push";
 
     public PostPushBinder(NotificationItem notificationItem) {

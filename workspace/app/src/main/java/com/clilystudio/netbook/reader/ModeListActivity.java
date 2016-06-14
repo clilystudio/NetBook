@@ -8,8 +8,7 @@ import android.view.ViewGroup;
 import com.clilystudio.netbook.d;
 import com.clilystudio.netbook.ui.BaseActivity;
 
-public class ModeListActivity
-        extends BaseActivity {
+public class ModeListActivity extends BaseActivity {
     private int a;
     private String b;
     private String c;

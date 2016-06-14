@@ -12,8 +12,7 @@ import com.clilystudio.netbook.util.e;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 
-public class UserLevelActivity
-        extends BaseActivity {
+public class UserLevelActivity extends BaseActivity {
     @InjectView(value = 2131493248)
     TextView mCurrentLevel;
     @InjectView(value = 2131493253)

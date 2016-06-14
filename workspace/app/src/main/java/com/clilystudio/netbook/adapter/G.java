@@ -25,8 +25,7 @@ import com.clilystudio.netbook.util.t;
 
 import java.util.Date;
 
-public class G
-        extends u {
+public class G extends u {
     static {
         G.class.getSimpleName();
     }

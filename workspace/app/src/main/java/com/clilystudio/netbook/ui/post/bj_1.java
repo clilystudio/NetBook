@@ -8,8 +8,7 @@ import android.widget.TextView;
 
 import com.clilystudio.netbook.model.Follower;
 
-final class bj
-        extends BaseAdapter {
+final class bj extends BaseAdapter {
     final /* synthetic */ FollowerListActivity a;
 
     bj(FollowerListActivity followerListActivity) {

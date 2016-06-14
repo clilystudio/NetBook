@@ -3,8 +3,7 @@ package com.clilystudio.netbook.widget;
 import android.content.Context;
 import android.util.AttributeSet;
 
-public class GameLayoutDownloadButton
-        extends NewGameDownloadButton {
+public class GameLayoutDownloadButton extends NewGameDownloadButton {
     public GameLayoutDownloadButton(Context context, AttributeSet attributeSet) {
         super(context, attributeSet);
     }

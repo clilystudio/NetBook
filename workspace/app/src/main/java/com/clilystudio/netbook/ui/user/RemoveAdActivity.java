@@ -7,8 +7,7 @@ import com.clilystudio.netbook.event.i;
 import com.clilystudio.netbook.ui.BaseLoadingActivity;
 import com.clilystudio.netbook.util.D;
 
-public class RemoveAdActivity
-        extends BaseLoadingActivity {
+public class RemoveAdActivity extends BaseLoadingActivity {
     al a;
     private RecyclerView b;
 

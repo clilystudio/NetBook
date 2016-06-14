@@ -31,8 +31,7 @@ import com.handmark.pulltorefresh.library.j;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MyTweetFragment
-        extends Fragment {
+public class MyTweetFragment extends Fragment {
     static {
         MyTweetFragment.class.getSimpleName();
     }

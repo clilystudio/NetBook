@@ -7,8 +7,7 @@ import com.clilystudio.netbook.model.TopicSummary;
 
 import java.util.List;
 
-final class O
-        extends e<String, Void, TopicSummary> {
+final class O extends e<String, Void, TopicSummary> {
     private List<BookReadRecord> a;
     private /* synthetic */ HomeTopicFragment b;
 

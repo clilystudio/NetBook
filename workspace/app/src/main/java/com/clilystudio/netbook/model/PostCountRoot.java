@@ -1,7 +1,6 @@
 package com.clilystudio.netbook.model;
 
-public class PostCountRoot
-        extends Root {
+public class PostCountRoot extends Root {
     private int postCount;
 
     public int getPostCount() {

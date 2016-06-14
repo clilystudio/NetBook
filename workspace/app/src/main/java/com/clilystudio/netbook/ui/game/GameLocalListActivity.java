@@ -11,8 +11,7 @@ import com.clilystudio.netbook.ui.BaseActivity;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GameLocalListActivity
-        extends BaseActivity {
+public class GameLocalListActivity extends BaseActivity {
     private RecyclerView a;
     private T b;
     private List<Game> c;

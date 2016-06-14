@@ -7,8 +7,7 @@ import android.view.ViewGroup;
 
 import com.clilystudio.netbook.model.Game;
 
-final class T
-        extends ah<GameLocalListActivity$GameViewHolder> {
+final class T extends ah<GameLocalListActivity$GameViewHolder> {
     final /* synthetic */ GameLocalListActivity a;
     private LayoutInflater b;
 

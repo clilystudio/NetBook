@@ -5,8 +5,7 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class TagsLayout
-        extends ViewGroup {
+public class TagsLayout extends ViewGroup {
     private int a;
 
     public TagsLayout(Context context) {

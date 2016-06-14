@@ -7,8 +7,7 @@ import com.clilystudio.netbook.ui.SmartImageView;
 import com.clilystudio.netbook.util.W;
 import com.clilystudio.netbook.widget.GameDownloadButton;
 
-final class al
-        extends W<Game> {
+final class al extends W<Game> {
     public al(GameRankListFragment gameRankListFragment, LayoutInflater layoutInflater) {
         super(layoutInflater, 2130903277);
     }

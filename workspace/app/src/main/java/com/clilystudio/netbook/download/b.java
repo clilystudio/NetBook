@@ -3,8 +3,7 @@ package com.clilystudio.netbook.download;
 import android.os.Handler;
 import android.os.Message;
 
-final class b
-        extends Handler {
+final class b extends Handler {
     private /* synthetic */ a a;
 
     b(a a2) {

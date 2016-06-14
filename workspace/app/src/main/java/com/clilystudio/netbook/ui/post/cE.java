@@ -4,8 +4,7 @@ import com.clilystudio.netbook.a_pack.e;
 import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.model.ReviewResult;
 
-final class cE
-        extends e<String, Void, ReviewResult> {
+final class cE extends e<String, Void, ReviewResult> {
     private /* synthetic */ ReviewActivity a;
 
     private cE(ReviewActivity reviewActivity) {

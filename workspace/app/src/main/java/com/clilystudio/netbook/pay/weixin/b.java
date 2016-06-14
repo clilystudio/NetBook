@@ -15,8 +15,7 @@ import com.clilystudio.netbook.util.e;
 
 import java.io.IOException;
 
-public final class b
-        extends c<ChargePlan, WXPayOrder> {
+public final class b extends c<ChargePlan, WXPayOrder> {
     private /* synthetic */ a a;
 
     public b(a a2, Activity activity, String string) {

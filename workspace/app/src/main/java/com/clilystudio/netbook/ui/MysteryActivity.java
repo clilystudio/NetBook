@@ -23,8 +23,7 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
-public class MysteryActivity
-        extends BaseLoadingActivity {
+public class MysteryActivity extends BaseLoadingActivity {
     private TextView a;
     private View b;
     private bq c;

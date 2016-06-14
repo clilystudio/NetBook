@@ -8,8 +8,7 @@ import com.clilystudio.netbook.hpay100.a.a;
 import com.clilystudio.netbook.model.NotificationItem;
 import com.clilystudio.netbook.ui.SmartImageView;
 
-public abstract class OfficialNotifBinder
-        extends NotifBinder {
+public abstract class OfficialNotifBinder extends NotifBinder {
     public OfficialNotifBinder(NotificationItem notificationItem) {
         super(notificationItem);
     }

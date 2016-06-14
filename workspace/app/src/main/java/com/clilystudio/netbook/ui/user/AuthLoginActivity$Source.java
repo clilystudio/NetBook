@@ -1,7 +1,6 @@
 package com.clilystudio.netbook.ui.user;
 
-public final class AuthLoginActivity$Source
-        extends Enum<AuthLoginActivity$Source> {
+public final class AuthLoginActivity$Source extends Enum<AuthLoginActivity$Source> {
     public static final /* enum */ AuthLoginActivity$Source HOME = new AuthLoginActivity$Source();
     public static final /* enum */ AuthLoginActivity$Source OTHER = new AuthLoginActivity$Source();
     private static final /* synthetic */ AuthLoginActivity$Source[] a;

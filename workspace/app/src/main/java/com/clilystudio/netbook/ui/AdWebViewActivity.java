@@ -21,8 +21,7 @@ import android.webkit.WebViewClient;
 import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.ui.home.HomeActivity;
 
-public class AdWebViewActivity
-        extends BaseActivity
+public class AdWebViewActivity extends BaseActivity
         implements View.OnClickListener {
     private WebView a;
     private View b;

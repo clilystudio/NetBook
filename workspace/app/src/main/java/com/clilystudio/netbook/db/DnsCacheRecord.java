@@ -7,8 +7,7 @@ import com.activeandroid.annotation.Table;
 import java.util.Date;
 
 @Table(name = "DnsCache")
-public class DnsCacheRecord
-        extends Model {
+public class DnsCacheRecord extends Model {
     @Column(name = "expiredTime")
     private Date expiredTime;
     @Column(name = "host")

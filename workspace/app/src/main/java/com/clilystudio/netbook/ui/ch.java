@@ -6,8 +6,7 @@ import android.support.v4.app.FragmentTransaction;
 
 import com.clilystudio.netbook.ui.home.ZssqFragmentPagerAdapter;
 
-final class ch
-        extends ZssqFragmentPagerAdapter {
+final class ch extends ZssqFragmentPagerAdapter {
     private /* synthetic */ SimpleTabActivity a;
 
     public ch(SimpleTabActivity simpleTabActivity, FragmentManager fragmentManager) {

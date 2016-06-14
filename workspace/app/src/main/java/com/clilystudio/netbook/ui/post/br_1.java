@@ -4,8 +4,7 @@ import com.clilystudio.netbook.a_pack.e;
 import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.model.GirlTopicResult;
 
-final class br
-        extends e<String, Void, GirlTopicResult> {
+final class br extends e<String, Void, GirlTopicResult> {
     private /* synthetic */ GirlTopicActivity a;
 
     private br(GirlTopicActivity girlTopicActivity) {

@@ -20,8 +20,7 @@ import com.umeng.a.b;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UGCMainActivity
-        extends BaseTabActivity
+public class UGCMainActivity extends BaseTabActivity
         implements ViewPager$OnPageChangeListener,
         TabHost.OnTabChangeListener,
         TabHost.TabContentFactory {

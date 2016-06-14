@@ -1,7 +1,6 @@
 package com.clilystudio.netbook.model;
 
-public class GameGroupRoot
-        extends Root {
+public class GameGroupRoot extends Root {
     private GameGroupItem gameGroup;
 
     public GameGroupItem getGameGroup() {

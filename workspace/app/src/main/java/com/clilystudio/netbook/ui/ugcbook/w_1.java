@@ -4,8 +4,7 @@ import com.clilystudio.netbook.model.BookSummary;
 
 import java.util.List;
 
-final class w
-        extends A {
+final class w extends A {
     private /* synthetic */ UGCGuideAddBookActivity b;
 
     private w(UGCGuideAddBookActivity uGCGuideAddBookActivity) {

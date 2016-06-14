@@ -10,8 +10,7 @@ import com.clilystudio.netbook.event.q;
 import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.model.ResultStatus;
 
-final class V
-        extends e<String, Void, ResultStatus> {
+final class V extends e<String, Void, ResultStatus> {
     private String a;
     private /* synthetic */ G b;
 

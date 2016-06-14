@@ -7,8 +7,7 @@ import com.clilystudio.netbook.model.VipPlan;
 import java.io.IOException;
 import java.util.Arrays;
 
-final class aj
-        extends e<Void, Void, VipPlan> {
+final class aj extends e<Void, Void, VipPlan> {
     private /* synthetic */ RemoveAdActivity a;
 
     private aj(RemoveAdActivity removeAdActivity) {

@@ -8,8 +8,7 @@ import android.util.AttributeSet;
 import com.clilystudio.netbook.ui.game.GameTabActivity;
 import com.umeng.a.b;
 
-public class HomeFindGameItem
-        extends HomeFindItem {
+public class HomeFindGameItem extends HomeFindItem {
     private String a;
 
     public HomeFindGameItem(Activity activity) {

@@ -40,8 +40,7 @@ import java.util.Date;
 
 import cn.sharesdk.framework.PlatformActionListener;
 
-public class BookInfoActivity
-        extends BaseActivity
+public class BookInfoActivity extends BaseActivity
         implements View.OnClickListener {
     private static final String a = BookInfoActivity.class.getSimpleName();
     private View b;

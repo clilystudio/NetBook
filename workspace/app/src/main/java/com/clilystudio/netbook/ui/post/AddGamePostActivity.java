@@ -23,8 +23,7 @@ import com.clilystudio.netbook.util.e;
 
 import cn.sharesdk.framework.ShareSDK;
 
-public class AddGamePostActivity
-        extends BaseActivity {
+public class AddGamePostActivity extends BaseActivity {
     private EditText a;
 
     public static Intent a(Context context, String string) {

@@ -5,8 +5,7 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.GridView;
 
-public class ScrollGridView
-        extends GridView {
+public class ScrollGridView extends GridView {
     public ScrollGridView(Context context, AttributeSet attributeSet) {
         super(context, attributeSet);
     }

@@ -8,8 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.TextView;
 
-public class LabelPtrListView
-        extends HeaderPtrListView {
+public class LabelPtrListView extends HeaderPtrListView {
     private TextView c;
 
     public LabelPtrListView(Context context, AttributeSet attributeSet) {

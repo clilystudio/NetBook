@@ -7,8 +7,7 @@ import com.clilystudio.netbook.a_pack.a;
 import com.clilystudio.netbook.model.TocSource;
 import com.clilystudio.netbook.model.TocSourceRoot;
 
-final class n
-        extends a {
+final class n extends a {
     private /* synthetic */ m a;
 
     public n(m m2, Activity activity, boolean bl) {

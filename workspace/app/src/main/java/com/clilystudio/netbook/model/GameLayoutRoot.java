@@ -2,8 +2,7 @@ package com.clilystudio.netbook.model;
 
 import java.util.List;
 
-public class GameLayoutRoot
-        extends Root {
+public class GameLayoutRoot extends Root {
     private List<ModuleLayout> layout;
     private Game promotion;
     private Game[] promotions;

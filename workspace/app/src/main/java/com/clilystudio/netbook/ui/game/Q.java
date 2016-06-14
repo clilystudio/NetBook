@@ -7,8 +7,7 @@ import com.clilystudio.netbook.ui.SmartImageView;
 import com.clilystudio.netbook.util.W;
 import com.clilystudio.netbook.widget.GameDownloadButton;
 
-final class Q
-        extends W<Game> {
+final class Q extends W<Game> {
     final /* synthetic */ GameListActivity a;
 
     public Q(GameListActivity gameListActivity, LayoutInflater layoutInflater) {

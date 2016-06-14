@@ -4,8 +4,7 @@ import android.view.View;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-public abstract class al
-        extends BaseAdapter {
+public abstract class al extends BaseAdapter {
     private ar a = new ar();
 
     /*

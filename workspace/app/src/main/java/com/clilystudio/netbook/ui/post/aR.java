@@ -9,8 +9,7 @@ import com.clilystudio.netbook.util.e;
 
 import java.util.Collection;
 
-final class aR
-        extends com.clilystudio.netbook.a_pack.e<String, Void, Topic> {
+final class aR extends com.clilystudio.netbook.a_pack.e<String, Void, Topic> {
     private /* synthetic */ BookTopicListFragment a;
 
     private aR(BookTopicListFragment bookTopicListFragment) {

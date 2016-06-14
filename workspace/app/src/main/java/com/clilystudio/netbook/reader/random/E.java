@@ -6,8 +6,7 @@ import android.content.Intent;
 
 import com.clilystudio.netbook.reader.o;
 
-final class E
-        extends BroadcastReceiver {
+final class E extends BroadcastReceiver {
     private /* synthetic */ ReaderRandomActivity a;
 
     E(ReaderRandomActivity readerRandomActivity) {

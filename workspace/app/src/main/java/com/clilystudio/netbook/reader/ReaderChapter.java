@@ -5,8 +5,7 @@ import com.clilystudio.netbook.model.Chapter;
 import com.clilystudio.netbook.model.ChapterLink;
 import com.clilystudio.netbook.util.CipherUtil;
 
-public class ReaderChapter
-        extends Chapter {
+public class ReaderChapter extends Chapter {
     public static final int STATUS_CHAPTER_EMPTY = -3;
     public static final int STATUS_CHAPTER_NOT_AVAILABLE = -2;
     public static final int STATUS_CONNECTION_ERROR = -1;

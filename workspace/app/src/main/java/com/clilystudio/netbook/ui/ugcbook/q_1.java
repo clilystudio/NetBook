@@ -8,8 +8,7 @@ import com.clilystudio.netbook.util.e;
 
 import java.io.IOException;
 
-final class q
-        extends com.clilystudio.netbook.a_pack.e<String, Void, ResultStatus> {
+final class q extends com.clilystudio.netbook.a_pack.e<String, Void, ResultStatus> {
     private /* synthetic */ UGCDetailActivity a;
 
     private q(UGCDetailActivity uGCDetailActivity) {

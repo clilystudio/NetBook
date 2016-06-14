@@ -12,8 +12,7 @@ import com.clilystudio.netbook.ui.BaseActivity;
 import com.clilystudio.netbook.ui.aa;
 import com.clilystudio.netbook.util.e;
 
-public class AddReviewRatingActivity
-        extends BaseActivity
+public class AddReviewRatingActivity extends BaseActivity
         implements View.OnClickListener {
     private int a;
 

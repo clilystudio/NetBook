@@ -16,8 +16,7 @@ import com.clilystudio.netbook.model.UGCNewCollection;
 import com.clilystudio.netbook.ui.BaseActivity;
 import com.clilystudio.netbook.ui.aa;
 
-public class UGCGuideAddCollectionActivity
-        extends BaseActivity {
+public class UGCGuideAddCollectionActivity extends BaseActivity {
     private TextView a;
     private TextView b;
     private String c;

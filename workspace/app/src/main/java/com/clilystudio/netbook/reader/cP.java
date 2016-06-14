@@ -6,8 +6,7 @@ import com.clilystudio.netbook.model.RelateBookRoot;
 
 import java.io.IOException;
 
-public final class cP
-        extends e<String, Void, RelateBookRoot> {
+public final class cP extends e<String, Void, RelateBookRoot> {
     private /* synthetic */ cM a;
 
     public cP(cM cM2) {

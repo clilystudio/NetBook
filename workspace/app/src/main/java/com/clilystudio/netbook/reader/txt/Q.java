@@ -5,8 +5,7 @@ import com.clilystudio.netbook.event.A;
 import com.clilystudio.netbook.event.i;
 import com.clilystudio.netbook.model.TxtFileObject;
 
-public final class Q
-        extends e<Void, Void, Void> {
+public final class Q extends e<Void, Void, Void> {
     private /* synthetic */ ScanTxtFileActivity a;
 
     public Q(ScanTxtFileActivity scanTxtFileActivity) {

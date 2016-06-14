@@ -5,8 +5,7 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.RelativeLayout;
 
-public class AdContainerLayout
-        extends RelativeLayout {
+public class AdContainerLayout extends RelativeLayout {
     private boolean a = false;
     private f b;
 

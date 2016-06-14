@@ -3,8 +3,7 @@ package com.clilystudio.netbook.widget;
 import android.content.Context;
 import android.util.AttributeSet;
 
-public class UserInfoVoteView
-        extends UserInfoExTaskView {
+public class UserInfoVoteView extends UserInfoExTaskView {
     public UserInfoVoteView(Context context, AttributeSet attributeSet) {
         super(context, attributeSet);
     }

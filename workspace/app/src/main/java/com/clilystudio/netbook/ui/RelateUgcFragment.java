@@ -10,8 +10,7 @@ import android.widget.LinearLayout;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 
-public class RelateUgcFragment
-        extends Fragment {
+public class RelateUgcFragment extends Fragment {
     @InjectView(value = 2131493464)
     LinearLayout mRelateUgcRoot;
     @InjectView(value = 2131493465)

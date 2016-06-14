@@ -7,8 +7,7 @@ import com.clilystudio.netbook.model.BookRankDetail;
 import com.clilystudio.netbook.util.W;
 import com.clilystudio.netbook.widget.CoverView;
 
-public final class g
-        extends W<BookRankDetail> {
+public final class g extends W<BookRankDetail> {
     private Resources a;
 
     public g(LayoutInflater layoutInflater) {

@@ -12,8 +12,7 @@ import com.clilystudio.netbook.model.TocSummary;
 import java.util.Iterator;
 import java.util.List;
 
-final class bE
-        extends e<String, Void, Object[]> {
+final class bE extends e<String, Void, Object[]> {
     private /* synthetic */ ReaderMixActivity a;
 
     private bE(ReaderMixActivity readerMixActivity) {

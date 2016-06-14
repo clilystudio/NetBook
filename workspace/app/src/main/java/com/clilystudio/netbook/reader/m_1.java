@@ -5,8 +5,7 @@ import android.os.Message;
 
 import java.util.ArrayList;
 
-final class m
-        extends Thread {
+final class m extends Thread {
     private /* synthetic */ Handler a;
     private /* synthetic */ LocalChapterListActivity b;
 

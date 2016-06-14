@@ -11,8 +11,7 @@ import com.clilystudio.netbook.event.i;
 import com.clilystudio.netbook.ui.SimpleTabActivity;
 import com.clilystudio.netbook.ui.aa;
 
-public class BookPostTabActivity
-        extends SimpleTabActivity {
+public class BookPostTabActivity extends SimpleTabActivity {
     private ax e;
     private ax f;
     private String g;

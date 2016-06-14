@@ -17,8 +17,7 @@ import com.clilystudio.netbook.view.a;
 
 import java.util.Date;
 
-public class GiftGameGiftButton
-        extends Button {
+public class GiftGameGiftButton extends Button {
     private GiftGameGift a;
     private GiftGame b;
     private Account c;

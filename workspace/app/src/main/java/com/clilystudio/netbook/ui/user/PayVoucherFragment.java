@@ -16,8 +16,7 @@ import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PayVoucherFragment
-        extends Fragment {
+public class PayVoucherFragment extends Fragment {
     private String[] a;
     private String[] b;
     private ag c;

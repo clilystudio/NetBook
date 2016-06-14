@@ -11,8 +11,7 @@ import com.clilystudio.netbook.util.e;
 
 import java.util.HashMap;
 
-final class D
-        extends c<Void, ChapterKeysRoot> {
+final class D extends c<Void, ChapterKeysRoot> {
     private String a;
     private String b;
     private /* synthetic */ o c;

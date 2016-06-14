@@ -17,8 +17,7 @@ import com.clilystudio.netbook.util.e;
 
 import java.util.List;
 
-public class AddReviewActivity
-        extends BaseActivity {
+public class AddReviewActivity extends BaseActivity {
     private a a;
     private String b;
     private int c = 0;

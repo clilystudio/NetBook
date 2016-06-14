@@ -5,8 +5,7 @@ import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.view.ViewGroup;
 
-public final class ct
-        extends ViewGroup.LayoutParams {
+public final class ct extends ViewGroup.LayoutParams {
     public boolean a;
     public int b;
     float c = 0.0f;

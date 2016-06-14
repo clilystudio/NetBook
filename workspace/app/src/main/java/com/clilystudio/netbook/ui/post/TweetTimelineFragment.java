@@ -28,8 +28,7 @@ import com.handmark.pulltorefresh.library.j;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TweetTimelineFragment
-        extends Fragment {
+public class TweetTimelineFragment extends Fragment {
     static {
         TweetTimelineFragment.class.getSimpleName();
     }

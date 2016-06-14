@@ -9,8 +9,7 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
-final class af
-        extends com.clilystudio.netbook.a_pack.e<String, Void, List<PayVoucherRecord.Voucher>> {
+final class af extends com.clilystudio.netbook.a_pack.e<String, Void, List<PayVoucherRecord.Voucher>> {
     private boolean a;
     private /* synthetic */ PayVoucherFragment b;
 

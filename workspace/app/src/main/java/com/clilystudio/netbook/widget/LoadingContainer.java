@@ -10,8 +10,7 @@ import android.widget.FrameLayout;
 
 import com.clilystudio.netbook.R$styleable;
 
-public class LoadingContainer
-        extends FrameLayout {
+public class LoadingContainer extends FrameLayout {
     private final View b;
     private final View c;
     private View a;

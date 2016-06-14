@@ -13,8 +13,7 @@ import com.clilystudio.netbook.model.GiftGameGift;
 
 import java.util.List;
 
-public final class GameGiftGroupAdapter
-        extends u<GameGiftGroup> {
+public final class GameGiftGroupAdapter extends u<GameGiftGroup> {
     private LayoutInflater a;
     private Account b;
 

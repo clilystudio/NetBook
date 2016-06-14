@@ -11,8 +11,7 @@ import com.clilystudio.netbook.adapter.g;
 import com.clilystudio.netbook.d;
 import com.clilystudio.netbook.model.BookRankDetail;
 
-public abstract class BookListActivity
-        extends BaseActivity {
+public abstract class BookListActivity extends BaseActivity {
     protected g a;
     private View b;
     private View c;

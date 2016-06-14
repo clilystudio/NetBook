@@ -4,8 +4,7 @@ import com.clilystudio.netbook.a_pack.e;
 import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.model.FollowResult;
 
-final class ci
-        extends e<String, Void, FollowResult> {
+final class ci extends e<String, Void, FollowResult> {
     private /* synthetic */ OtherUserActivity a;
 
     private ci(OtherUserActivity otherUserActivity) {

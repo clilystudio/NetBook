@@ -5,8 +5,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 
-public final class SearchActivity$SearchHistoryAdapter
-        extends BaseAdapter
+public final class SearchActivity$SearchHistoryAdapter extends BaseAdapter
         implements AdapterView.OnItemClickListener {
     private /* synthetic */ SearchActivity a;
 

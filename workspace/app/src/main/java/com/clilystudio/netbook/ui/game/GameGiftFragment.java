@@ -17,8 +17,7 @@ import com.umeng.a.b;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GameGiftFragment
-        extends BaseLoadingFragment {
+public class GameGiftFragment extends BaseLoadingFragment {
     private ListView a;
     private GameGiftGroupAdapter b;
     private List<GameGiftGroup> c;

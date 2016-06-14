@@ -13,8 +13,7 @@ import android.widget.TextView;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 
-public class ShareWarningView
-        extends RelativeLayout {
+public class ShareWarningView extends RelativeLayout {
     @InjectView(value = 2131493987)
     ImageView mClose;
     @InjectView(value = 2131492905)

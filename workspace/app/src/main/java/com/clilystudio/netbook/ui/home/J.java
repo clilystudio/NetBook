@@ -4,8 +4,7 @@ import com.clilystudio.netbook.a_pack.e;
 import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.model.ShelfMsgRoot;
 
-final class J
-        extends e<Void, Void, ShelfMsgRoot> {
+final class J extends e<Void, Void, ShelfMsgRoot> {
     private /* synthetic */ HomeShelfFragment a;
 
     private J(HomeShelfFragment homeShelfFragment) {

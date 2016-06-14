@@ -12,8 +12,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-final class v
-        extends e<String, Void, List<GameGiftGroup>> {
+final class v extends e<String, Void, List<GameGiftGroup>> {
     private /* synthetic */ GameGiftFragment a;
 
     private v(GameGiftFragment gameGiftFragment) {

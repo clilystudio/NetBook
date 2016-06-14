@@ -10,8 +10,7 @@ import android.widget.TextView;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 
-public class GameMicroLayoutItemView
-        extends LinearLayout {
+public class GameMicroLayoutItemView extends LinearLayout {
     boolean a = false;
     @InjectView(value = 2131493705)
     GameDownloadButton mAction;

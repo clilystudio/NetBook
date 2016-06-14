@@ -7,8 +7,7 @@ import android.widget.RelativeLayout;
 
 import com.clilystudio.netbook.R$styleable;
 
-public class CoverLoadingView
-        extends CoverView {
+public class CoverLoadingView extends CoverView {
     private final float a;
     private CoverLoadingLayer b;
 

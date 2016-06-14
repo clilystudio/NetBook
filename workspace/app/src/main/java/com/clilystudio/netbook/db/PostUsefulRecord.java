@@ -8,8 +8,7 @@ import com.activeandroid.query.Select;
 import java.util.List;
 
 @Table(name = "PostUsefulRecord")
-public class PostUsefulRecord
-        extends Model {
+public class PostUsefulRecord extends Model {
     public static final int TYPE_NO = 2;
     public static final int TYPE_YES = 1;
     @Column(name = "postId")

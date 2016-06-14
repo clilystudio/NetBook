@@ -9,8 +9,7 @@ import com.clilystudio.netbook.ui.bd;
 import com.clilystudio.netbook.ui.be;
 import com.clilystudio.netbook.ui.by;
 
-public class LinkifyTextView
-        extends TextView {
+public class LinkifyTextView extends TextView {
     public LinkifyTextView(Context context, AttributeSet attributeSet) {
         super(context, attributeSet);
     }

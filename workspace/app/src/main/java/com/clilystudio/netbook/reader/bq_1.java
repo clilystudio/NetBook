@@ -4,8 +4,7 @@ import com.clilystudio.netbook.a_pack.b;
 import com.clilystudio.netbook.db.BookTopicEnterRecord;
 import com.clilystudio.netbook.model.TopicCount;
 
-final class bq
-        extends b {
+final class bq extends b {
     private /* synthetic */ ReaderActivity a;
 
     private bq(ReaderActivity readerActivity) {

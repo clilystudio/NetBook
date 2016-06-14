@@ -1,7 +1,6 @@
 package com.clilystudio.netbook.model;
 
-public class CodeRoot
-        extends Root {
+public class CodeRoot extends Root {
     private String code;
 
     @Override

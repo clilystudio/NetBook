@@ -5,8 +5,7 @@ import android.graphics.LightingColorFilter;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.LayerDrawable;
 
-final class au
-        extends LayerDrawable {
+final class au extends LayerDrawable {
     private ColorFilter a = new LightingColorFilter(-3355444, 1);
     private int b = 100;
     private int c = 255;

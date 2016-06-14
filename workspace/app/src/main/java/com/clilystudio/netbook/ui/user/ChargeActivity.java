@@ -21,8 +21,7 @@ import com.clilystudio.netbook.ui.aa;
 import com.clilystudio.netbook.widget.ScrollGridView;
 import com.umeng.a.b;
 
-public class ChargeActivity
-        extends BaseLoadingActivity {
+public class ChargeActivity extends BaseLoadingActivity {
     private ChargeType a;
     private x b;
     private boolean c = false;

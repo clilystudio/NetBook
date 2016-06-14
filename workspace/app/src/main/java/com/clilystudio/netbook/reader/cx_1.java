@@ -2,8 +2,7 @@ package com.clilystudio.netbook.reader;
 
 import android.database.DataSetObserver;
 
-final class cx
-        extends DataSetObserver {
+final class cx extends DataSetObserver {
     private /* synthetic */ ReaderViewPager a;
 
     private cx(ReaderViewPager readerViewPager) {

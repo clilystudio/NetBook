@@ -12,8 +12,7 @@ import java.util.Date;
 import java.util.List;
 
 @Table(name = "SyncAccount")
-public class SyncAccount
-        extends Model {
+public class SyncAccount extends Model {
     @Column(name = "uid")
     public String uid;
     @Column(name = "update_time")

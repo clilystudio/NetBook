@@ -6,8 +6,7 @@ import android.support.v4.app.FragmentTransaction;
 
 import com.clilystudio.netbook.ui.home.ZssqFragmentPagerAdapter;
 
-final class aa
-        extends ZssqFragmentPagerAdapter {
+final class aa extends ZssqFragmentPagerAdapter {
     private /* synthetic */ PayVoucherActivity a;
 
     public aa(PayVoucherActivity payVoucherActivity, FragmentManager fragmentManager) {

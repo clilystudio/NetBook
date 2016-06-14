@@ -19,8 +19,7 @@ import com.clilystudio.netbook.model.Review;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BookReviewListFragment
-        extends BookPostListFragment {
+public class BookReviewListFragment extends BookPostListFragment {
     private aI h;
     private aH i;
     private h j;

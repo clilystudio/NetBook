@@ -3,8 +3,7 @@ package com.clilystudio.netbook.ui.user;
 import android.os.Handler;
 import android.os.Message;
 
-final class av
-        extends Handler {
+final class av extends Handler {
     private /* synthetic */ SmsVerifyActivity a;
 
     av(SmsVerifyActivity smsVerifyActivity) {

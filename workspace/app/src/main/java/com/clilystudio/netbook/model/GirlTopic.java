@@ -1,7 +1,6 @@
 package com.clilystudio.netbook.model;
 
-public class GirlTopic
-        extends GirlTopicSummary {
+public class GirlTopic extends GirlTopicSummary {
     private String content;
     private String shareLink;
 

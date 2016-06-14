@@ -10,8 +10,7 @@ import android.widget.LinearLayout;
 
 import com.clilystudio.netbook.R$styleable;
 
-public class RatingView
-        extends LinearLayout {
+public class RatingView extends LinearLayout {
     private final String a;
     private final float b;
     private final int c;

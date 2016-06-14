@@ -10,8 +10,7 @@ import android.widget.LinearLayout;
 import com.clilystudio.netbook.db.PostAgreeRecord;
 import com.clilystudio.netbook.model.Account;
 
-public class PostAgreeView
-        extends LinearLayout
+public class PostAgreeView extends LinearLayout
         implements View.OnClickListener {
     private String a;
 

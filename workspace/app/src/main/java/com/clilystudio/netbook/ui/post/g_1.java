@@ -7,8 +7,7 @@ import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.model.ResultStatus;
 import com.clilystudio.netbook.util.e;
 
-final class g
-        extends c<String, ResultStatus> {
+final class g extends c<String, ResultStatus> {
     private /* synthetic */ AbsPostActivity a;
 
     public g(AbsPostActivity absPostActivity, Activity activity, int n) {

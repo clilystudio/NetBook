@@ -7,8 +7,7 @@ import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.model.PostPublish;
 import com.clilystudio.netbook.util.e;
 
-final class cH
-        extends c<String, PostPublish> {
+final class cH extends c<String, PostPublish> {
     private /* synthetic */ ReviewActivity a;
 
     public cH(ReviewActivity reviewActivity, Activity activity, int n) {

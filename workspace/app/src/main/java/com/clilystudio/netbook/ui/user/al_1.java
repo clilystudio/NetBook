@@ -8,8 +8,7 @@ import com.clilystudio.netbook.model.VipPlan$Plan;
 import java.util.ArrayList;
 import java.util.List;
 
-final class al
-        extends ah<ao> {
+final class al extends ah<ao> {
     final /* synthetic */ RemoveAdActivity a;
     private List<VipPlan$Plan> b;
 

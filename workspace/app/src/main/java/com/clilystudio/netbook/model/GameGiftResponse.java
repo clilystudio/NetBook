@@ -1,6 +1,5 @@
 package com.clilystudio.netbook.model;
 
-public class GameGiftResponse
-        extends ResultStatus {
+public class GameGiftResponse extends ResultStatus {
     public GiftCode giftCode;
 }

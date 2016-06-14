@@ -7,8 +7,7 @@ import com.clilystudio.netbook.model.mixtoc.SgTocChapter;
 import com.clilystudio.netbook.model.mixtoc.SgTocRoot;
 import com.clilystudio.netbook.util.e;
 
-final class cJ
-        extends c<String, SgTocRoot> {
+final class cJ extends c<String, SgTocRoot> {
     private int a;
     private String b;
     private /* synthetic */ ReaderWebActivity c;

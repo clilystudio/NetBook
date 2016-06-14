@@ -6,8 +6,7 @@ import com.clilystudio.netbook.model.TocSummary;
 
 import java.util.List;
 
-final class bY
-        extends e<String, Void, List<TocSummary>> {
+final class bY extends e<String, Void, List<TocSummary>> {
     private /* synthetic */ ReaderResourceFragment a;
 
     private bY(ReaderResourceFragment readerResourceFragment) {

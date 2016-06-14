@@ -11,8 +11,7 @@ import android.widget.TextView;
 import com.clilystudio.netbook.event.m;
 import com.clilystudio.netbook.ui.BaseActivity;
 
-public class FeedSettingActivity
-        extends BaseActivity {
+public class FeedSettingActivity extends BaseActivity {
     private TextView a;
     private int b;
 

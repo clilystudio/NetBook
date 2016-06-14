@@ -11,8 +11,7 @@ import com.nostra13.universalimageloader.core.b.b;
 
 import m.framework.utils.Utils;
 
-public class CornerImageView
-        extends SmartImageView {
+public class CornerImageView extends SmartImageView {
     private int b;
 
     public CornerImageView(Context context) {

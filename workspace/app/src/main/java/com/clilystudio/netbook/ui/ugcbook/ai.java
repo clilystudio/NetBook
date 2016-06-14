@@ -7,8 +7,7 @@ import com.clilystudio.netbook.util.D;
 
 import java.io.IOException;
 
-final class ai
-        extends e<Void, Void, UgcFilterRoot> {
+final class ai extends e<Void, Void, UgcFilterRoot> {
     private /* synthetic */ UGCMainActivity a;
 
     private ai(UGCMainActivity uGCMainActivity) {

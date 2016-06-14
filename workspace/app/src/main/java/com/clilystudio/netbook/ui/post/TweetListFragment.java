@@ -17,8 +17,7 @@ import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TweetListFragment
-        extends Fragment {
+public class TweetListFragment extends Fragment {
     private dO a;
     private dN b;
     private PullToRefreshListView c;

@@ -8,8 +8,7 @@ import android.view.ViewGroup;
 import com.clilystudio.netbook.model.UgcFilterRoot$FilterGroup;
 import com.clilystudio.netbook.widget.UgcFilterTextView;
 
-final class ak
-        extends ah {
+final class ak extends ah {
     final /* synthetic */ UGCMainActivity c;
     boolean a;
     LayoutInflater b;

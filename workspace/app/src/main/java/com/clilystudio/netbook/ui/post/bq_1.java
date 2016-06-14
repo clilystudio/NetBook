@@ -10,8 +10,7 @@ import com.clilystudio.netbook.util.e;
 import java.util.Arrays;
 import java.util.List;
 
-final class bq
-        extends com.clilystudio.netbook.a_pack.e<String, Void, PostDetailComment> {
+final class bq extends com.clilystudio.netbook.a_pack.e<String, Void, PostDetailComment> {
     private /* synthetic */ GirlTopicActivity a;
 
     private bq(GirlTopicActivity girlTopicActivity) {

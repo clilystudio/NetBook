@@ -1,7 +1,6 @@
 package com.clilystudio.netbook.util;
 
-final class f
-        extends Thread {
+final class f extends Thread {
     private /* synthetic */ e a;
 
     f(e e2) {

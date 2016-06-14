@@ -21,8 +21,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class PayConsumeActivity
-        extends BaseLoadingActivity {
+public class PayConsumeActivity extends BaseLoadingActivity {
     private S a;
     private View b;
     private RelativeLayout c;

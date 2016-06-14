@@ -8,8 +8,7 @@ import com.clilystudio.netbook.model.TweetsResult;
 import com.clilystudio.netbook.ui.user.AuthLoginActivity;
 import com.clilystudio.netbook.util.e;
 
-final class bW
-        extends com.clilystudio.netbook.a_pack.e<String, Void, TweetsResult> {
+final class bW extends com.clilystudio.netbook.a_pack.e<String, Void, TweetsResult> {
     private /* synthetic */ MyTweetFragment a;
 
     private bW(MyTweetFragment myTweetFragment) {

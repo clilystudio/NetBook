@@ -40,8 +40,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class ReviewActivity
-        extends AbsPostActivity {
+public class ReviewActivity extends AbsPostActivity {
     private View f;
     private z g;
     private List<PostComment> h = new ArrayList<PostComment>();

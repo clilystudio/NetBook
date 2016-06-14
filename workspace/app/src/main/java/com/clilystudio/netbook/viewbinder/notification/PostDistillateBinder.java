@@ -5,8 +5,7 @@ import android.content.Intent;
 
 import com.clilystudio.netbook.model.NotificationItem;
 
-public class PostDistillateBinder
-        extends OfficialNotifBinder {
+public class PostDistillateBinder extends OfficialNotifBinder {
     public static final String LABEL = "post_distillate";
     public static final String MAIN_TEXT = "\u4f60\u7684\u5e16\u5b50\u88ab\u8bbe\u4e3a\u7cbe\u534e\u5566\uff0c\u793e\u533a\u79bb\u5185\u6db5\u9ad8\u5927\u4e0a\u53c8\u8fd1\u4e86\u4e00\u70b9~";
 

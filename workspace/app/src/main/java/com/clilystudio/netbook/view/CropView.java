@@ -9,8 +9,7 @@ import android.util.AttributeSet;
 
 import uk.co.senab.photoview.PhotoView;
 
-public class CropView
-        extends PhotoView {
+public class CropView extends PhotoView {
     private d a;
     private float b;
     private float c;

@@ -9,8 +9,7 @@ import com.clilystudio.netbook.widget.AutoFlowView$Word;
 
 import java.util.ArrayList;
 
-final class bM
-        extends com.clilystudio.netbook.a_pack.e<String, Void, HotKeywordResult> {
+final class bM extends com.clilystudio.netbook.a_pack.e<String, Void, HotKeywordResult> {
     final /* synthetic */ SearchActivity a;
 
     private bM(SearchActivity searchActivity) {

@@ -5,8 +5,7 @@ import android.view.View;
 
 import com.clilystudio.netbook.ui.BaseActivity;
 
-public class AddTopicCategoryActivity
-        extends BaseActivity {
+public class AddTopicCategoryActivity extends BaseActivity {
     private String a;
     private String b;
     private String c;

@@ -7,8 +7,7 @@ import com.clilystudio.netbook.model.BookSummary;
 import com.clilystudio.netbook.util.W;
 import com.clilystudio.netbook.widget.CoverView;
 
-public final class E
-        extends W<BookSummary> {
+public final class E extends W<BookSummary> {
     public E(LayoutInflater layoutInflater) {
         super(layoutInflater, 2130903304);
     }

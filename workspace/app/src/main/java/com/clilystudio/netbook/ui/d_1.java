@@ -4,8 +4,7 @@ import android.text.TextUtils;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 
-final class d
-        extends WebChromeClient {
+final class d extends WebChromeClient {
     private /* synthetic */ AdWebViewActivity a;
 
     d(AdWebViewActivity adWebViewActivity) {

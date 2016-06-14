@@ -20,8 +20,7 @@ import java.util.List;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 
-public class RankCollapseItem
-        extends LinearLayout
+public class RankCollapseItem extends LinearLayout
         implements View.OnClickListener {
     @InjectView(value = 2131493199)
     ImageView mArrow;

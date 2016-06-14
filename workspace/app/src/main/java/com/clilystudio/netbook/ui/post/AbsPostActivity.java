@@ -20,8 +20,7 @@ import com.clilystudio.netbook.widget.PostHeader;
 import com.clilystudio.netbook.widget.ScrollLoadListView;
 import com.clilystudio.netbook.widget.SendView;
 
-public abstract class AbsPostActivity
-        extends BaseLoadingActivity {
+public abstract class AbsPostActivity extends BaseLoadingActivity {
     protected String a;
     protected ScrollLoadListView b;
     protected PostHeader c;

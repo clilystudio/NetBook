@@ -25,8 +25,7 @@ import com.umeng.a.b;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CommonPostListActivity
-        extends BaseActivity {
+public class CommonPostListActivity extends BaseActivity {
     private String a = "all";
     private String b = "updated";
     private TextView c;

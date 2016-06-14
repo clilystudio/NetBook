@@ -14,8 +14,7 @@ import java.util.regex.Pattern;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 
-public class SmsSendActivity
-        extends BaseActivity {
+public class SmsSendActivity extends BaseActivity {
     @InjectView(value = 2131493212)
     View mErrorLine;
     @InjectView(value = 2131493214)

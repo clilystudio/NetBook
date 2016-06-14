@@ -6,8 +6,7 @@ import android.support.design.widget.am;
 
 import com.clilystudio.netbook.ui.BaseActivity;
 
-public class MyMessageActivity
-        extends BaseActivity {
+public class MyMessageActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);

@@ -9,8 +9,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public final class aw
-        extends BaseAdapter {
+public final class aw extends BaseAdapter {
     private LayoutInflater a;
     private String[] b;
     private /* synthetic */ BookCategoryListActivity c;

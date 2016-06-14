@@ -24,8 +24,7 @@ import com.clilystudio.netbook.widget.GameGiftGetButton;
 
 import java.util.Date;
 
-public class GameGiftListActivity
-        extends BaseActivity {
+public class GameGiftListActivity extends BaseActivity {
     private y a;
     private Account b;
     private GameGift c;

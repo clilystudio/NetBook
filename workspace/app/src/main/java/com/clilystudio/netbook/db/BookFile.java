@@ -9,8 +9,7 @@ import java.io.File;
 import java.util.Date;
 
 @Table(name = "BookFile")
-public class BookFile
-        extends Model {
+public class BookFile extends Model {
     @Column(name = "file_path")
     public String filePath;
     @Column(name = "name")

@@ -18,8 +18,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class WifiActivity
-        extends BaseActivity {
+public class WifiActivity extends BaseActivity {
     private List<BookFile> a = new ArrayList<BookFile>();
     private com.koushikdutta.async.http.server.a b;
     private TextView c;

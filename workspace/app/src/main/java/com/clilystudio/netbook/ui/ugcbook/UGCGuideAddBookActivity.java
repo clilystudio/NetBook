@@ -19,8 +19,7 @@ import com.clilystudio.netbook.widget.ax;
 
 import butterknife.ButterKnife;
 
-public class UGCGuideAddBookActivity
-        extends BaseActivity
+public class UGCGuideAddBookActivity extends BaseActivity
         implements View.OnClickListener {
     private InputMethodManager a;
     private String b;

@@ -6,8 +6,7 @@ import com.clilystudio.netbook.model.ChapterLink;
 import com.clilystudio.netbook.model.MixChapterResource;
 import com.clilystudio.netbook.util.W;
 
-final class br
-        extends W<MixChapterResource> {
+final class br extends W<MixChapterResource> {
     private /* synthetic */ ReaderChapterDialog a;
 
     public br(ReaderChapterDialog readerChapterDialog, LayoutInflater layoutInflater) {

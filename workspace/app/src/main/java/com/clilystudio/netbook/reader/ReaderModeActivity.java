@@ -6,8 +6,7 @@ import com.clilystudio.netbook.db.BookTopicEnterRecord;
 import com.clilystudio.netbook.ui.BaseActivity;
 import com.clilystudio.netbook.ui.post.BookPostTabActivity;
 
-public class ReaderModeActivity
-        extends BaseActivity {
+public class ReaderModeActivity extends BaseActivity {
     protected int a;
     protected String b;
     protected String c;

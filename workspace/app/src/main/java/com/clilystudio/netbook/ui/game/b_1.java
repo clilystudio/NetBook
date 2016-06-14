@@ -8,8 +8,7 @@ import com.clilystudio.netbook.model.GameCat;
 import com.clilystudio.netbook.ui.SmartImageView;
 import com.clilystudio.netbook.util.W;
 
-final class b
-        extends W<GameCat> {
+final class b extends W<GameCat> {
     public b(GameCatListFragment gameCatListFragment, LayoutInflater layoutInflater) {
         super(layoutInflater, 2130903276);
     }

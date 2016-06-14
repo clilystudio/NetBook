@@ -6,8 +6,7 @@ import android.util.AttributeSet;
 
 import com.clilystudio.netbook.R$styleable;
 
-public class UserInfoLvTaskView
-        extends UserInfoTaskView {
+public class UserInfoLvTaskView extends UserInfoTaskView {
     private final boolean a;
     private final int b;
 

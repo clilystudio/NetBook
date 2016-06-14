@@ -9,8 +9,7 @@ import com.activeandroid.query.Select;
 import java.util.List;
 
 @Table(name = "BookClickRecords")
-public class BookClickRecord
-        extends Model {
+public class BookClickRecord extends Model {
     @Column(name = "book_id")
     public String book_id;
     @Column(name = "today_time")

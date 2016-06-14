@@ -10,8 +10,7 @@ import com.clilystudio.netbook.ui.BaseActivity;
 
 import java.util.Arrays;
 
-final class e
-        extends com.clilystudio.netbook.a_pack.e<String, Void, UGCBookListRoot> {
+final class e extends com.clilystudio.netbook.a_pack.e<String, Void, UGCBookListRoot> {
     private /* synthetic */ AbsUGCListFragment a;
 
     private e(AbsUGCListFragment absUGCListFragment) {

@@ -9,8 +9,7 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
-final class c
-        extends e<String, Void, List<GameCat>> {
+final class c extends e<String, Void, List<GameCat>> {
     private /* synthetic */ GameCatListFragment a;
 
     private c(GameCatListFragment gameCatListFragment) {

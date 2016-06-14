@@ -6,8 +6,7 @@ import com.clilystudio.netbook.model.GameLayoutRoot;
 
 import java.io.IOException;
 
-final class H
-        extends e<String, Void, GameLayoutRoot> {
+final class H extends e<String, Void, GameLayoutRoot> {
     private /* synthetic */ GameLayoutFragment a;
 
     private H(GameLayoutFragment gameLayoutFragment) {

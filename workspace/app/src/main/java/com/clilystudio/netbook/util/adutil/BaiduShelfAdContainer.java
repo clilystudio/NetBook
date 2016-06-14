@@ -5,8 +5,7 @@ import android.content.Context;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Proxy;
 
-public final class BaiduShelfAdContainer
-        extends k {
+public final class BaiduShelfAdContainer extends k {
     private static Class<?> a;
 
     static /* synthetic */ Class a() {

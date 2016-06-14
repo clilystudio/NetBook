@@ -7,8 +7,7 @@ import android.widget.LinearLayout;
 
 import com.clilystudio.netbook.model.GameGiftRoot;
 
-public class GameGiftView
-        extends LinearLayout {
+public class GameGiftView extends LinearLayout {
     private boolean a;
 
     public GameGiftView(Context context, AttributeSet attributeSet) {

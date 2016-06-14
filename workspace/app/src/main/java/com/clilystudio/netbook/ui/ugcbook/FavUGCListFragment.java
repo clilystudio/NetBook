@@ -14,8 +14,7 @@ import com.handmark.pulltorefresh.library.PullToRefreshListView;
 
 import uk.me.lewisdeane.ldialogs.h;
 
-public class FavUGCListFragment
-        extends AbsUGCListFragment
+public class FavUGCListFragment extends AbsUGCListFragment
         implements AdapterView.OnItemLongClickListener {
     private ListView k;
     private W l;

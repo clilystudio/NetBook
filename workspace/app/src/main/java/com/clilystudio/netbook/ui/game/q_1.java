@@ -7,8 +7,7 @@ import com.clilystudio.netbook.util.e;
 
 import java.io.IOException;
 
-final class q
-        extends com.clilystudio.netbook.a_pack.e<String, Void, GameDetail> {
+final class q extends com.clilystudio.netbook.a_pack.e<String, Void, GameDetail> {
     private /* synthetic */ GameDetailActivity a;
 
     private q(GameDetailActivity gameDetailActivity) {

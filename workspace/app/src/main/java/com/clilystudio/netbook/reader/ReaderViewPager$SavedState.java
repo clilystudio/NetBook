@@ -5,8 +5,7 @@ import android.os.Parcelable;
 import android.support.v4.os.ParcelableCompat;
 import android.view.View;
 
-public class ReaderViewPager$SavedState
-        extends View.BaseSavedState {
+public class ReaderViewPager$SavedState extends View.BaseSavedState {
     public static final Parcelable.Creator<ReaderViewPager$SavedState> CREATOR = ParcelableCompat.newCreator(new cy());
     int a;
     Parcelable b;

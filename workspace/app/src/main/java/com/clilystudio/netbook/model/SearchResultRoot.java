@@ -2,8 +2,7 @@ package com.clilystudio.netbook.model;
 
 import java.util.List;
 
-public class SearchResultRoot
-        extends Root {
+public class SearchResultRoot extends Root {
     private List<BookSummary> books;
 
     public List<BookSummary> getBooks() {

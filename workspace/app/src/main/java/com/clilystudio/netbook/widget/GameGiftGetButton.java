@@ -5,8 +5,7 @@ import android.util.AttributeSet;
 
 import com.clilystudio.netbook.ui.game.GameDetailActivity;
 
-public class GameGiftGetButton
-        extends GameDownloadButton {
+public class GameGiftGetButton extends GameDownloadButton {
     private GameGiftItemView a;
 
     public GameGiftGetButton(Context context, AttributeSet attributeSet) {

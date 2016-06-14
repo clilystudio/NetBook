@@ -8,8 +8,7 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-public class UgcFilterTextView
-        extends RelativeLayout {
+public class UgcFilterTextView extends RelativeLayout {
     private TextView a;
     private String b;
 

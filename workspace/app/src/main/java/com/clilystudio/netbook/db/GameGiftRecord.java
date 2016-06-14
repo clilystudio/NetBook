@@ -8,8 +8,7 @@ import com.activeandroid.query.Select;
 import java.util.List;
 
 @Table(name = "GameGiftRecord")
-public class GameGiftRecord
-        extends Model {
+public class GameGiftRecord extends Model {
     @Column(name = "giftCode")
     public String giftCode;
     @Column(name = "giftId")

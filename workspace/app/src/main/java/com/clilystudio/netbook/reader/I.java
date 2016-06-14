@@ -6,8 +6,7 @@ import com.clilystudio.netbook.a_pack.c;
 import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.model.PurchaseChapterResult;
 
-final class I
-        extends c<String, PurchaseChapterResult> {
+final class I extends c<String, PurchaseChapterResult> {
     private /* synthetic */ o a;
 
     public I(o o2, Activity activity, String string) {

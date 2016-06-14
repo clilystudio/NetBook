@@ -23,8 +23,7 @@ import com.umeng.a.b;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BookHelpListActivity
-        extends BaseActivity {
+public class BookHelpListActivity extends BaseActivity {
     private av a;
     private au b;
     private PullToRefreshListView c;

@@ -9,8 +9,7 @@ import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.model.HotCommentRoot;
 import com.clilystudio.netbook.model.PostComment;
 
-final class ab
-        extends e<String, Void, HotCommentRoot> {
+final class ab extends e<String, Void, HotCommentRoot> {
     private /* synthetic */ HotCommentView a;
 
     private ab(HotCommentView hotCommentView) {

@@ -4,8 +4,7 @@ import com.clilystudio.netbook.api.ApiService;
 import com.clilystudio.netbook.model.GameGroupRoot;
 import com.clilystudio.netbook.model.Root;
 
-final class S
-        extends com.clilystudio.netbook.util.S<GameGroupRoot> {
+final class S extends com.clilystudio.netbook.util.S<GameGroupRoot> {
     private /* synthetic */ GameListActivity a;
 
     private S(GameListActivity gameListActivity) {

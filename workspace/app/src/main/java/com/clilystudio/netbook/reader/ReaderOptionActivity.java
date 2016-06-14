@@ -15,8 +15,7 @@ import com.clilystudio.netbook.ui.BaseActivity;
 import com.clilystudio.netbook.util.I;
 import com.clilystudio.netbook.widget.SettingItem;
 
-public class ReaderOptionActivity
-        extends BaseActivity {
+public class ReaderOptionActivity extends BaseActivity {
     private int a = 0;
     private TextView b;
     private String[] c;

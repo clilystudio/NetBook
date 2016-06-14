@@ -12,8 +12,7 @@ import com.clilystudio.netbook.d;
 import com.clilystudio.netbook.event.i;
 import com.clilystudio.netbook.event.v;
 
-public class ReaderResActivity
-        extends ReaderModeActivity {
+public class ReaderResActivity extends ReaderModeActivity {
     private View e;
     private int f;
 

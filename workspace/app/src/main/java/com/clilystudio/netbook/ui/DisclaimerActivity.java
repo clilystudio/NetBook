@@ -3,8 +3,7 @@ package com.clilystudio.netbook.ui;
 import android.os.Bundle;
 import android.widget.TextView;
 
-public class DisclaimerActivity
-        extends BaseActivity {
+public class DisclaimerActivity extends BaseActivity {
     @Override
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);

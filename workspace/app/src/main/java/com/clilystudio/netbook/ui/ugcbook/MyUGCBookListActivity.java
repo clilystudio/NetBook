@@ -4,8 +4,7 @@ import android.os.Bundle;
 
 import com.clilystudio.netbook.ui.BaseActivity;
 
-public class MyUGCBookListActivity
-        extends BaseActivity {
+public class MyUGCBookListActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);

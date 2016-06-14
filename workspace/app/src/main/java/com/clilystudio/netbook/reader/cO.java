@@ -4,8 +4,7 @@ import com.clilystudio.netbook.model.RelateBookRoot;
 import com.clilystudio.netbook.model.Root;
 import com.clilystudio.netbook.util.R;
 
-public final class cO
-        extends R {
+public final class cO extends R {
     private /* synthetic */ cM a;
 
     public cO(cM cM2) {

@@ -10,8 +10,7 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
-public class ReaderChapterDialog
-        extends DialogFragment
+public class ReaderChapterDialog extends DialogFragment
         implements AdapterView.OnItemClickListener {
     private br a;
     private TextView b;

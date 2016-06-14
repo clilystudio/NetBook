@@ -9,8 +9,7 @@ import com.clilystudio.netbook.util.e;
 
 import java.util.Collection;
 
-final class dN
-        extends com.clilystudio.netbook.a_pack.e<String, Void, Topic> {
+final class dN extends com.clilystudio.netbook.a_pack.e<String, Void, Topic> {
     private /* synthetic */ TweetListFragment a;
 
     private dN(TweetListFragment tweetListFragment) {

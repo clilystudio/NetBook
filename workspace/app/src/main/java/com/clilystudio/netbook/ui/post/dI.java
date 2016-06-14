@@ -6,8 +6,7 @@ import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.model.HotTweetResult;
 import com.clilystudio.netbook.util.e;
 
-final class dI
-        extends com.clilystudio.netbook.a_pack.e<String, Void, HotTweetResult> {
+final class dI extends com.clilystudio.netbook.a_pack.e<String, Void, HotTweetResult> {
     private /* synthetic */ TweetHotFragment a;
 
     private dI(TweetHotFragment tweetHotFragment) {

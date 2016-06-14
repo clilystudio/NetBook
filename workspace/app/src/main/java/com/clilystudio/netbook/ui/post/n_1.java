@@ -8,8 +8,7 @@ import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.model.PostPublish;
 import com.clilystudio.netbook.util.e;
 
-final class n
-        extends c<String, PostPublish> {
+final class n extends c<String, PostPublish> {
     private /* synthetic */ AddBookHelpActivity a;
 
     public n(AddBookHelpActivity addBookHelpActivity, Activity activity, int n2) {

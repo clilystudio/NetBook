@@ -4,8 +4,7 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.TextView;
 
-public class ExpView
-        extends TextView {
+public class ExpView extends TextView {
     public ExpView(Context context, AttributeSet attributeSet) {
         super(context, attributeSet);
         this.setTextSize(9.0f);

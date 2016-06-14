@@ -14,8 +14,7 @@ import com.clilystudio.netbook.adapter.v;
 import com.clilystudio.netbook.d;
 import com.umeng.a.b;
 
-public class MhdListActivity
-        extends BaseActivity {
+public class MhdListActivity extends BaseActivity {
     private View a;
     private View b;
     private v c;

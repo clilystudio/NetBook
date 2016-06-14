@@ -1,7 +1,6 @@
 package com.clilystudio.netbook.model;
 
-public class CategoryBook
-        extends BookSummary {
+public class CategoryBook extends BookSummary {
     private String majorCate;
     private String minorCate;
 

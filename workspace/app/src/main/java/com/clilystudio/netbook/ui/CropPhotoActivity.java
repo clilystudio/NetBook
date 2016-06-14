@@ -11,8 +11,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-public class CropPhotoActivity
-        extends BaseActivity {
+public class CropPhotoActivity extends BaseActivity {
     private CropView a;
 
     /*

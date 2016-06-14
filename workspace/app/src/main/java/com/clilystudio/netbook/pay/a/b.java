@@ -11,8 +11,7 @@ import com.xiaomi.mistatistic.sdk.MiStatInterface;
 
 import org.json.JSONException;
 
-final class b
-        extends Handler {
+final class b extends Handler {
     private /* synthetic */ a a;
 
     b(a a2) {

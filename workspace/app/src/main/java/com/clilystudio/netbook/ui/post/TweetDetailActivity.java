@@ -45,8 +45,7 @@ import java.util.List;
 
 import cn.sharesdk.framework.PlatformActionListener;
 
-public class TweetDetailActivity
-        extends AbsPostActivity {
+public class TweetDetailActivity extends AbsPostActivity {
     private av A;
     private z f;
     private List<PostComment> g = new ArrayList<PostComment>();

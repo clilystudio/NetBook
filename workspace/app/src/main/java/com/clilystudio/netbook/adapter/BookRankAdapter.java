@@ -11,8 +11,7 @@ import com.clilystudio.netbook.widget.RankCollapseItem;
 
 import java.util.List;
 
-public final class BookRankAdapter
-        extends u<BookRankSummary> {
+public final class BookRankAdapter extends u<BookRankSummary> {
     private LayoutInflater a;
     private List<BookRankSummary> b;
     private List<BookRankSummary> c;

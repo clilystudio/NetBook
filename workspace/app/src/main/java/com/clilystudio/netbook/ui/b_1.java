@@ -4,8 +4,7 @@ import android.graphics.Bitmap;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
-final class b
-        extends WebViewClient {
+final class b extends WebViewClient {
     private /* synthetic */ AdWebViewActivity a;
 
     b(AdWebViewActivity adWebViewActivity) {

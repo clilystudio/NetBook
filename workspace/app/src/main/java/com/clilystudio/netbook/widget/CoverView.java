@@ -10,8 +10,7 @@ import android.widget.RelativeLayout;
 import com.clilystudio.netbook.R$styleable;
 import com.clilystudio.netbook.ui.CornerImageView;
 
-public class CoverView
-        extends RelativeLayout {
+public class CoverView extends RelativeLayout {
     private final int b;
     private CornerImageView a;
 

@@ -9,8 +9,7 @@ import com.clilystudio.netbook.util.e;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-final class cj
-        extends com.clilystudio.netbook.a_pack.e<String, Void, FollowersResult> {
+final class cj extends com.clilystudio.netbook.a_pack.e<String, Void, FollowersResult> {
     private Runnable a;
     private /* synthetic */ OtherUserActivity b;
 

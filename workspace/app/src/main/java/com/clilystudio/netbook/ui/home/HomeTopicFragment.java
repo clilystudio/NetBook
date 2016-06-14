@@ -36,8 +36,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class HomeTopicFragment
-        extends HomeFragment
+public class HomeTopicFragment extends HomeFragment
         implements View.OnClickListener {
     private PullToRefreshListView b;
     protected b a = b.a();

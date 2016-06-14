@@ -10,8 +10,7 @@ import android.widget.Button;
 import com.clilystudio.netbook.model.AppItem;
 import com.xiaomi.mistatistic.sdk.MiStatInterface;
 
-public abstract class AbsDownloadButton
-        extends Button {
+public abstract class AbsDownloadButton extends Button {
     private AppItem a;
 
     public AbsDownloadButton(Context context, AttributeSet attributeSet) {

@@ -7,8 +7,7 @@ import com.activeandroid.query.Delete;
 import com.activeandroid.query.Select;
 
 @Table(name = "MixTocRecords")
-public class MixTocRecord
-        extends Model {
+public class MixTocRecord extends Model {
     @Column(name = "bookId")
     private String bookId;
     @Column(name = "chapterIndex")

@@ -11,8 +11,7 @@ import com.clilystudio.netbook.util.e;
 import java.util.Arrays;
 import java.util.List;
 
-final class bx
-        extends com.clilystudio.netbook.a_pack.e<String, Void, NotificationRoot> {
+final class bx extends com.clilystudio.netbook.a_pack.e<String, Void, NotificationRoot> {
     private /* synthetic */ NotifFragment a;
 
     private bx(NotifFragment notifFragment) {

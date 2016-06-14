@@ -22,8 +22,7 @@ import com.ximalaya.ting.android.opensdk.model.tag.TagList;
 import java.util.HashMap;
 import java.util.List;
 
-public class AudiobookCategoryActivity
-        extends BaseActivity {
+public class AudiobookCategoryActivity extends BaseActivity {
     private CommonRequest a;
     private View b;
     private View c;

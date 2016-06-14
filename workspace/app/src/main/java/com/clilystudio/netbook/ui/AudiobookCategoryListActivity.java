@@ -20,8 +20,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class AudiobookCategoryListActivity
-        extends BaseLoadingActivity {
+public class AudiobookCategoryListActivity extends BaseLoadingActivity {
     private String a;
     private b b;
     private ScrollLoadListView c;

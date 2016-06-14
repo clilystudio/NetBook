@@ -12,8 +12,7 @@ import com.clilystudio.netbook.model.BookReview;
 
 import butterknife.ButterKnife;
 
-public class BestReviewsFragment
-        extends Fragment {
+public class BestReviewsFragment extends Fragment {
     private View a;
     private LinearLayout b;
     private boolean c = false;

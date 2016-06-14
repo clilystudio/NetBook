@@ -8,8 +8,7 @@ import com.clilystudio.netbook.model.BookTopRoot$Favorite;
 
 import java.io.IOException;
 
-public final class s
-        extends e<Void, Void, BookTopRoot> {
+public final class s extends e<Void, Void, BookTopRoot> {
     private Context a;
 
     public s(Context context) {

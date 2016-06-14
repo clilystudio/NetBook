@@ -16,8 +16,7 @@ import com.clilystudio.netbook.model.User;
 import com.clilystudio.netbook.util.T;
 import com.clilystudio.netbook.util.e;
 
-public class ShareRemoveAdActivity
-        extends BaseActivity {
+public class ShareRemoveAdActivity extends BaseActivity {
     public static Intent a(Context context, String string) {
         return new d().a(context, ShareRemoveAdActivity.class).a("entrance_type", string).a();
     }

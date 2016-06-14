@@ -14,8 +14,7 @@ import com.clilystudio.netbook.R$styleable;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 
-public class UserInfoTaskView
-        extends FrameLayout {
+public class UserInfoTaskView extends FrameLayout {
     private final int a;
     private final String b;
     @InjectView(value = 2131493234)

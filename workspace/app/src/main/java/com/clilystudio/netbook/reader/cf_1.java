@@ -10,8 +10,7 @@ import android.widget.TextView;
 import com.clilystudio.netbook.adapter.u;
 import com.clilystudio.netbook.model.ChapterLink;
 
-final class cf
-        extends u<ChapterLink> {
+final class cf extends u<ChapterLink> {
     private int a;
     private int b;
     private LayoutInflater c;

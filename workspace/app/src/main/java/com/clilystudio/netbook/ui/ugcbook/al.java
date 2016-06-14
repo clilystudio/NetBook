@@ -5,8 +5,7 @@ import android.view.View;
 import android.widget.TableLayout;
 import android.widget.TextView;
 
-public final class al
-        extends ay {
+public final class al extends ay {
     final /* synthetic */ ak k;
     TextView i;
     TableLayout j;

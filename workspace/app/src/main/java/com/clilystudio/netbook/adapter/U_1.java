@@ -6,8 +6,7 @@ import com.clilystudio.netbook.a_pack.e;
 import com.clilystudio.netbook.model.PostPublish;
 import com.clilystudio.netbook.model.Tweet;
 
-final class U
-        extends e<String, Void, PostPublish> {
+final class U extends e<String, Void, PostPublish> {
     public U(G g, Tweet tweet, R r) {
     }
 

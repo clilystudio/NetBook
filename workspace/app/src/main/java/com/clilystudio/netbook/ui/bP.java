@@ -4,8 +4,7 @@ import com.clilystudio.netbook.model.BookSummary;
 
 import java.util.List;
 
-final class bP
-        extends bR {
+final class bP extends bR {
     private /* synthetic */ SearchActivity b;
 
     private bP(SearchActivity searchActivity) {

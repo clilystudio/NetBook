@@ -7,8 +7,7 @@ import android.view.View;
 import com.clilystudio.netbook.model.ChargePlan;
 import com.clilystudio.netbook.util.W;
 
-public final class x
-        extends W<ChargePlan> {
+public final class x extends W<ChargePlan> {
     private Activity a;
 
     public x(Activity activity, LayoutInflater layoutInflater) {

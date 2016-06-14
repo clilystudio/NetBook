@@ -7,8 +7,7 @@ import android.os.Bundle;
 
 import com.clilystudio.netbook.ui.BaseActivity;
 
-public class UserFollowWeixinActivity
-        extends BaseActivity {
+public class UserFollowWeixinActivity extends BaseActivity {
     static /* synthetic */ void a(UserFollowWeixinActivity userFollowWeixinActivity) {
         ((ClipboardManager) userFollowWeixinActivity.getSystemService("clipboard")).setPrimaryClip(ClipData.newPlainText("simple text", "\u8ffd\u4e66\u795e\u5668"));
     }

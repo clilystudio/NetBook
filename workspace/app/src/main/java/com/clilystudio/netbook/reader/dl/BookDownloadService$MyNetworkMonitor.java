@@ -7,8 +7,7 @@ import android.content.Intent;
 import com.clilystudio.netbook.event.d;
 import com.clilystudio.netbook.event.i;
 
-public class BookDownloadService$MyNetworkMonitor
-        extends BroadcastReceiver {
+public class BookDownloadService$MyNetworkMonitor extends BroadcastReceiver {
     private /* synthetic */ BookDownloadService a;
 
     public BookDownloadService$MyNetworkMonitor(BookDownloadService bookDownloadService) {

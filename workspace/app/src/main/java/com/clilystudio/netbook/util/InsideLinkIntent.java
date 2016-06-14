@@ -18,8 +18,7 @@ import com.clilystudio.netbook.ui.ugcbook.UGCDetailActivity;
 import com.clilystudio.netbook.util.a.b;
 
 @SuppressLint(value = {"ParcelCreator"})
-public class InsideLinkIntent
-        extends Intent {
+public class InsideLinkIntent extends Intent {
     private final Context a;
     private boolean b;
 

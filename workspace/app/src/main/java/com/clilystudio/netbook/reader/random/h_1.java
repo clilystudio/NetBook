@@ -6,8 +6,7 @@ import android.view.ViewGroup;
 
 import com.clilystudio.netbook.reader.o;
 
-final class h
-        extends PagerAdapter {
+final class h extends PagerAdapter {
     private /* synthetic */ ReaderRandomActivity a;
 
     h(ReaderRandomActivity readerRandomActivity) {

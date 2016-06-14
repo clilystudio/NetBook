@@ -4,8 +4,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-final class cN
-        extends c {
+final class cN extends c {
     private /* synthetic */ String a;
     private /* synthetic */ cM b;
 

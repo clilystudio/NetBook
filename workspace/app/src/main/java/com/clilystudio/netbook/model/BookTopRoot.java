@@ -1,7 +1,6 @@
 package com.clilystudio.netbook.model;
 
-public class BookTopRoot
-        extends Root {
+public class BookTopRoot extends Root {
     Favorite favorite;
 
     public Favorite getFavorite() {

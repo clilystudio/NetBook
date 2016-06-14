@@ -4,8 +4,7 @@ import android.os.CountDownTimer;
 
 import java.util.Date;
 
-final class bo
-        extends CountDownTimer {
+final class bo extends CountDownTimer {
     private /* synthetic */ long a;
     private /* synthetic */ MysteryActivity b;
 

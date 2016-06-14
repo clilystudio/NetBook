@@ -17,8 +17,7 @@ import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BookCategoryFragment
-        extends Fragment {
+public class BookCategoryFragment extends Fragment {
     private PullToRefreshListView a;
     private ListView b;
     private View c;

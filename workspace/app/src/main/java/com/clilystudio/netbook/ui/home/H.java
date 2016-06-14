@@ -6,8 +6,7 @@ import com.clilystudio.netbook.model.AdsResult;
 import com.clilystudio.netbook.model.AdvertData;
 import com.clilystudio.netbook.util.c;
 
-final class H
-        extends e<Void, Void, AdsResult> {
+final class H extends e<Void, Void, AdsResult> {
     private /* synthetic */ HomeShelfFragment a;
 
     private H(HomeShelfFragment homeShelfFragment) {

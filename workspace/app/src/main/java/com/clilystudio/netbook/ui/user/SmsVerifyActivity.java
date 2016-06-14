@@ -18,8 +18,7 @@ import java.util.TimerTask;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 
-public class SmsVerifyActivity
-        extends BaseActivity {
+public class SmsVerifyActivity extends BaseActivity {
     Handler a;
     @InjectView(value = 2131493215)
     TextView mAppNameText;

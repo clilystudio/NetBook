@@ -14,8 +14,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-final class R
-        extends W<T>
+final class R extends W<T>
         implements AdapterView.OnItemClickListener {
     private /* synthetic */ ScanTxtFileActivity a;
 

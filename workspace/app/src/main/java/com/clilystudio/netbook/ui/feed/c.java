@@ -7,8 +7,7 @@ import com.clilystudio.netbook.db.BookReadRecord;
 import com.clilystudio.netbook.util.W;
 import com.clilystudio.netbook.widget.CoverView;
 
-final class c
-        extends W<BookReadRecord> {
+final class c extends W<BookReadRecord> {
     private /* synthetic */ FeedAddActivity a;
 
     public c(FeedAddActivity feedAddActivity, LayoutInflater layoutInflater) {

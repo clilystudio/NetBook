@@ -6,8 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public abstract class BaseLoadingFragment
-        extends Fragment {
+public abstract class BaseLoadingFragment extends Fragment {
     private ViewGroup a;
     private View b;
     private View c;

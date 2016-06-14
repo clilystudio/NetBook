@@ -10,8 +10,7 @@ import com.clilystudio.netbook.util.e;
 
 import java.io.IOException;
 
-final class E
-        extends c<String, ChapterSingleKey> {
+final class E extends c<String, ChapterSingleKey> {
     private /* synthetic */ o a;
 
     public E(o o2, Activity activity, int n, boolean bl) {

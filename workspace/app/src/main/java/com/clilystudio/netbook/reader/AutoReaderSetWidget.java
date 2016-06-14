@@ -9,8 +9,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-public class AutoReaderSetWidget
-        extends LinearLayout
+public class AutoReaderSetWidget extends LinearLayout
         implements View.OnClickListener {
     private Context a;
     private int b = 5;

@@ -27,8 +27,7 @@ import java.util.Date;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 
-public class UserInfoActivity
-        extends BaseActivity {
+public class UserInfoActivity extends BaseActivity {
     @InjectView(value = 2131493234)
     TextView mExp;
     @InjectView(value = 2131493235)

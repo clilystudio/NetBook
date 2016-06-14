@@ -14,8 +14,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RelateBookListActivity
-        extends BookListActivity
+public class RelateBookListActivity extends BookListActivity
         implements cQ {
     private boolean b = false;
     private int c;

@@ -4,8 +4,7 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.FrameLayout;
 
-public class ThemeLoadingView
-        extends FrameLayout {
+public class ThemeLoadingView extends FrameLayout {
     private LoadingProgressView a;
     private LoadingProgressView b;
     private ThemeLoadingView$Mode c = ThemeLoadingView$Mode.LIGHT;

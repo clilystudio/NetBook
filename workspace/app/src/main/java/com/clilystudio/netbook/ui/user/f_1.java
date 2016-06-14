@@ -10,8 +10,7 @@ import com.clilystudio.netbook.event.t;
 import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.util.e;
 
-final class f
-        extends c<String, Account> {
+final class f extends c<String, Account> {
     private /* synthetic */ AuthLoginActivity a;
 
     public f(AuthLoginActivity authLoginActivity, Activity activity, int n) {

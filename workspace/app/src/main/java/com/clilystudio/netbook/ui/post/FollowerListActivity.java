@@ -9,8 +9,7 @@ import android.widget.RelativeLayout;
 import com.clilystudio.netbook.model.Follower;
 import com.clilystudio.netbook.ui.BaseActivity;
 
-public class FollowerListActivity
-        extends BaseActivity {
+public class FollowerListActivity extends BaseActivity {
     private Follower[] a;
     private ListView b;
     private RelativeLayout c;

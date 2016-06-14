@@ -4,8 +4,7 @@ import com.clilystudio.netbook.c;
 
 import java.io.File;
 
-final class v
-        extends Thread {
+final class v extends Thread {
     private /* synthetic */ String a;
 
     v(HomeShelfFragment homeShelfFragment, String string) {

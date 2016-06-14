@@ -13,8 +13,7 @@ import com.clilystudio.netbook.util.y;
 
 import java.io.File;
 
-public class UshaqiSecretDownloadButton
-        extends AbsDownloadButton {
+public class UshaqiSecretDownloadButton extends AbsDownloadButton {
     public UshaqiSecretDownloadButton(Context context, AttributeSet attributeSet) {
         super(context, attributeSet);
     }

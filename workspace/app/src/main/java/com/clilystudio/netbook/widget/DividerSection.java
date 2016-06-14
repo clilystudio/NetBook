@@ -10,8 +10,7 @@ import android.widget.RelativeLayout;
 
 import com.clilystudio.netbook.R$styleable;
 
-public class DividerSection
-        extends RelativeLayout {
+public class DividerSection extends RelativeLayout {
     private final FrameLayout a;
     private final View b;
     private final Drawable c;

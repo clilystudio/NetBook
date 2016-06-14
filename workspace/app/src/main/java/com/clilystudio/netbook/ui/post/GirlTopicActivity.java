@@ -38,8 +38,7 @@ import java.util.List;
 
 import cn.sharesdk.framework.PlatformActionListener;
 
-public class GirlTopicActivity
-        extends AbsPostActivity {
+public class GirlTopicActivity extends AbsPostActivity {
     private View f;
     private z g;
     private List<PostComment> h = new ArrayList<PostComment>();

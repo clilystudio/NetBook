@@ -6,8 +6,7 @@ import android.support.v4.app.FragmentTransaction;
 
 import com.clilystudio.netbook.ui.home.ZssqFragmentPagerAdapter;
 
-final class aS
-        extends ZssqFragmentPagerAdapter {
+final class aS extends ZssqFragmentPagerAdapter {
     private String[] a;
     private /* synthetic */ BookRankMainActivity b;
 

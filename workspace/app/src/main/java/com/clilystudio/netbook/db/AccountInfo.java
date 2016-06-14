@@ -8,8 +8,7 @@ import com.activeandroid.query.Select;
 import java.util.List;
 
 @Table(name = "AccountInfo")
-public class AccountInfo
-        extends Model {
+public class AccountInfo extends Model {
     @Column(name = "prev_unimp_notif")
     private int prevUnimpNotif;
     @Column(name = "token", unique = 1)

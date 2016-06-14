@@ -10,8 +10,7 @@ import com.clilystudio.netbook.model.BookGenderRecommend$RecommendBook;
 
 import java.io.IOException;
 
-final class I
-        extends c<String, BookGenderRecommend> {
+final class I extends c<String, BookGenderRecommend> {
     private /* synthetic */ HomeShelfFragment a;
 
     public I(HomeShelfFragment homeShelfFragment, Activity activity) {

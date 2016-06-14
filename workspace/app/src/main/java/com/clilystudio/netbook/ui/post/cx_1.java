@@ -8,8 +8,7 @@ import com.clilystudio.netbook.db.VoteRecord;
 import com.clilystudio.netbook.model.VoteResult;
 import com.clilystudio.netbook.util.e;
 
-final class cx
-        extends c<String, VoteResult> {
+final class cx extends c<String, VoteResult> {
     private /* synthetic */ PostDetailActivity a;
 
     public cx(PostDetailActivity postDetailActivity, Activity activity, int n) {

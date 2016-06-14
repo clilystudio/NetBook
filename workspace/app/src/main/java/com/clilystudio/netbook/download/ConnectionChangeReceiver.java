@@ -11,8 +11,7 @@ import android.text.TextUtils;
 
 import java.util.Set;
 
-public class ConnectionChangeReceiver
-        extends BroadcastReceiver {
+public class ConnectionChangeReceiver extends BroadcastReceiver {
     /*
      * Enabled aggressive block sorting
      */

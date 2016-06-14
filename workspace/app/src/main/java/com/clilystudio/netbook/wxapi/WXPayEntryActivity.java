@@ -12,8 +12,7 @@ import com.e.a.a.g.a;
 import com.e.a.a.g.c;
 import com.xiaomi.mistatistic.sdk.MiStatInterface;
 
-public class WXPayEntryActivity
-        extends Activity
+public class WXPayEntryActivity extends Activity
         implements com.e.a.a.g.b {
     private a a;
 

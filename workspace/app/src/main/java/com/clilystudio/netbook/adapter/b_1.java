@@ -7,8 +7,7 @@ import com.clilystudio.netbook.util.W;
 import com.clilystudio.netbook.widget.CoverView;
 import com.ximalaya.ting.android.opensdk.model.album.Album;
 
-public final class b
-        extends W<Album> {
+public final class b extends W<Album> {
     private Resources a;
 
     public b(LayoutInflater layoutInflater) {

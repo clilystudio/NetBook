@@ -1,7 +1,6 @@
 package com.clilystudio.netbook.model;
 
-public class Review
-        extends ReviewSummary {
+public class Review extends ReviewSummary {
     private Author author;
     private int commentCount;
     private String content;

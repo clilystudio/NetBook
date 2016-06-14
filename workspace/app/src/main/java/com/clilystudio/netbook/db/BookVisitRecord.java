@@ -5,8 +5,7 @@ import com.activeandroid.annotation.Column;
 import com.activeandroid.annotation.Table;
 
 @Table(name = "BookVisitRecord")
-public class BookVisitRecord
-        extends Model {
+public class BookVisitRecord extends Model {
     @Column(name = "bookId")
     private String bookId;
     @Column(name = "hasGroup")

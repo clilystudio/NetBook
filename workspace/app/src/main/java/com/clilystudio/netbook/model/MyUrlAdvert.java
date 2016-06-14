@@ -8,8 +8,7 @@ import com.clilystudio.netbook.ui.AdWebViewActivity;
 import com.clilystudio.netbook.util.InsideLinkIntent;
 import com.clilystudio.netbook.util.adutil.BaseShelfAd;
 
-public class MyUrlAdvert
-        extends BaseShelfAd {
+public class MyUrlAdvert extends BaseShelfAd {
     private void launchAdWebView(Context context) {
         context.startActivity(AdWebViewActivity.a(context, this.getTitle(), this.getUrl()));
     }

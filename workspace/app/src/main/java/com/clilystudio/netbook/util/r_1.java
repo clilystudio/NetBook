@@ -9,8 +9,7 @@ import com.clilystudio.netbook.model.ChargeTypes;
 
 import java.io.IOException;
 
-final class r
-        extends c<Void, ChargeTypes> {
+final class r extends c<Void, ChargeTypes> {
     private /* synthetic */ p a;
 
     public r(p p2, Activity activity) {

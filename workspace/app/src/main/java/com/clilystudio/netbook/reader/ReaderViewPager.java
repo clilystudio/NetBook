@@ -36,8 +36,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
-public class ReaderViewPager
-        extends ViewGroup {
+public class ReaderViewPager extends ViewGroup {
     private static final int CLOSE_ENOUGH = 2;
     private static final Comparator<cs> COMPARATOR;
     private static final boolean DEBUG = false;

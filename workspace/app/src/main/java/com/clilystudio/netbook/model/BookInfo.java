@@ -1,7 +1,6 @@
 package com.clilystudio.netbook.model;
 
-public class BookInfo
-        extends BookSummary {
+public class BookInfo extends BookSummary {
     private static final long serialVersionUID = -8685880187278615441L;
     private int chaptersCount;
     private boolean hasCp;

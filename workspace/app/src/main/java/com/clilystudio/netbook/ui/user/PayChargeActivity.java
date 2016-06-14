@@ -18,8 +18,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class PayChargeActivity
-        extends BaseLoadingActivity {
+public class PayChargeActivity extends BaseLoadingActivity {
     private M a;
     private View b;
     private ScrollLoadListView c;

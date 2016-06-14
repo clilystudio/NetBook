@@ -12,8 +12,7 @@ import java.util.Date;
 import java.util.List;
 
 @Table(name = "AudioRecord")
-public class AudioRecord
-        extends Model {
+public class AudioRecord extends Model {
     @Column(name = "bookId")
     private String bookId;
     @Column(name = "desc")

@@ -10,8 +10,7 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.Collection;
 
-final class aR
-        extends com.clilystudio.netbook.a_pack.e<String, Void, BookRankDetailRoot> {
+final class aR extends com.clilystudio.netbook.a_pack.e<String, Void, BookRankDetailRoot> {
     private /* synthetic */ BookRankListFragment a;
 
     private aR(BookRankListFragment bookRankListFragment) {

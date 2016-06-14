@@ -7,8 +7,7 @@ import com.clilystudio.netbook.model.CategoryBook;
 import com.clilystudio.netbook.util.W;
 import com.clilystudio.netbook.widget.CoverView;
 
-public final class c
-        extends W<CategoryBook> {
+public final class c extends W<CategoryBook> {
     private Resources a;
 
     public c(LayoutInflater layoutInflater) {

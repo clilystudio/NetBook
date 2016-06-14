@@ -3,8 +3,7 @@ package com.clilystudio.netbook.reader;
 import android.os.Handler;
 import android.os.Message;
 
-final class bh
-        extends Handler {
+final class bh extends Handler {
     private /* synthetic */ ReaderActivity a;
 
     bh(ReaderActivity readerActivity) {

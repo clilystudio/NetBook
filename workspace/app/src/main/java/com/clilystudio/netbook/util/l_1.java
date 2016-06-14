@@ -4,8 +4,7 @@ import com.clilystudio.netbook.a_pack.e;
 import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.model.ResultStatus;
 
-final class l
-        extends e<String, Void, ResultStatus> {
+final class l extends e<String, Void, ResultStatus> {
     private /* synthetic */ k a;
 
     private l(k k2) {

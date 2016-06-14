@@ -14,8 +14,7 @@ import com.clilystudio.netbook.ui.MaskAbleImageView;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 
-public class HomeFindItem
-        extends FrameLayout {
+public class HomeFindItem extends FrameLayout {
     @InjectView(value = 2131493028)
     MaskAbleImageView mIcon;
     @InjectView(value = 2131493681)

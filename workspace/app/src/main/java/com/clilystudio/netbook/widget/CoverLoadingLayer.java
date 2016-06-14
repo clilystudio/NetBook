@@ -21,8 +21,7 @@ import android.widget.ImageView;
 import com.c.a.b;
 import com.clilystudio.netbook.R$styleable;
 
-public class CoverLoadingLayer
-        extends ImageView {
+public class CoverLoadingLayer extends ImageView {
     private b A;
     private int a = -1308622848;
     private float b = -1.0f;

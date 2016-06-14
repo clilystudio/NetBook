@@ -11,8 +11,7 @@ import com.clilystudio.netbook.ui.SmartImageView;
 import com.clilystudio.netbook.util.W;
 import com.clilystudio.netbook.util.t;
 
-final class n
-        extends W<GamePostRoot$GamePost> {
+final class n extends W<GamePostRoot$GamePost> {
     final /* synthetic */ GameDetailActivity a;
 
     public n(GameDetailActivity gameDetailActivity, LayoutInflater layoutInflater) {

@@ -23,8 +23,7 @@ import com.clilystudio.netbook.ui.user.AuthLoginActivity;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AddVoteItemActivity
-        extends BaseActivity {
+public class AddVoteItemActivity extends BaseActivity {
     private int a = 0;
     private RelativeLayout[] b = new RelativeLayout[7];
     private ImageView[] c = new ImageView[5];

@@ -5,8 +5,7 @@ import android.util.AttributeSet;
 
 import com.clilystudio.netbook.widget.UserInfoExTaskView;
 
-public class UserInfoTaskLaunchView
-        extends UserInfoExTaskView {
+public class UserInfoTaskLaunchView extends UserInfoExTaskView {
     public UserInfoTaskLaunchView(Context context, AttributeSet attributeSet) {
         super(context, attributeSet);
     }

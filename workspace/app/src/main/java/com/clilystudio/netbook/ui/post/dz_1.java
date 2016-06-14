@@ -4,8 +4,7 @@ import com.clilystudio.netbook.a_pack.e;
 import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.model.TweetResult;
 
-final class dz
-        extends e<String, Void, TweetResult> {
+final class dz extends e<String, Void, TweetResult> {
     private /* synthetic */ TweetDetailActivity a;
 
     private dz(TweetDetailActivity tweetDetailActivity) {

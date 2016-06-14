@@ -15,8 +15,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class LinearListView
-        extends LinearLayout {
+public class LinearListView extends LinearLayout {
     private static final Integer a = 1;
     private static final Integer b = 2;
     private static final Integer c = 0;

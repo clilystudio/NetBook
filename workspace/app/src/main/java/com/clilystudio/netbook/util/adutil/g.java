@@ -7,8 +7,7 @@ import android.view.ViewGroup;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 
-public final class g
-        extends a {
+public final class g extends a {
     public g(AdSplashImp adSplashImp) {
         super(adSplashImp);
     }

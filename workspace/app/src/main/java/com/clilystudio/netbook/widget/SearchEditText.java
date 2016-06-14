@@ -4,8 +4,7 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.EditText;
 
-public class SearchEditText
-        extends EditText {
+public class SearchEditText extends EditText {
     private boolean a;
     private ax b;
 

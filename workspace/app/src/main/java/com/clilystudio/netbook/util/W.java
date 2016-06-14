@@ -9,8 +9,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
-public abstract class W<V>
-        extends al {
+public abstract class W<V> extends al {
     private static final Object[] a = new Object[0];
     private final LayoutInflater b;
     private final int c;

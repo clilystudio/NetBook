@@ -6,8 +6,7 @@ import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-public class ReaderWebActionBar
-        extends RelativeLayout {
+public class ReaderWebActionBar extends RelativeLayout {
     private a a;
     private TextView b;
     private View c;

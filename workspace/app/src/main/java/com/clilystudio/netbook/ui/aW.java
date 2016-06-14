@@ -11,8 +11,7 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
-final class aW
-        extends com.clilystudio.netbook.a_pack.e<String, Void, List<BookSummary>> {
+final class aW extends com.clilystudio.netbook.a_pack.e<String, Void, List<BookSummary>> {
     private /* synthetic */ BookTagListActivity a;
 
     private aW(BookTagListActivity bookTagListActivity) {

@@ -6,8 +6,7 @@ import android.util.AttributeSet;
 import com.c.a.a;
 import com.c.a.d;
 
-public class LoadingProgressView
-        extends ProgressView {
+public class LoadingProgressView extends ProgressView {
     private boolean a = true;
     private float b;
     private d c;

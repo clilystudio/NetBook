@@ -1,7 +1,6 @@
 package com.clilystudio.netbook.widget;
 
-public final class ThemeLoadingView$Mode
-        extends Enum<ThemeLoadingView$Mode> {
+public final class ThemeLoadingView$Mode extends Enum<ThemeLoadingView$Mode> {
     public static final /* enum */ ThemeLoadingView$Mode DARK;
     public static final /* enum */ ThemeLoadingView$Mode LIGHT;
     private static final /* synthetic */ ThemeLoadingView$Mode[] a;

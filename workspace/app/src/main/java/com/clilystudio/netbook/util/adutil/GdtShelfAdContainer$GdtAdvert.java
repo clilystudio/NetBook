@@ -5,8 +5,7 @@ import android.view.View;
 
 import com.clilystudio.netbook.hpay100.a.a;
 
-public class GdtShelfAdContainer$GdtAdvert
-        extends BaseShelfAd {
+public class GdtShelfAdContainer$GdtAdvert extends BaseShelfAd {
     public void gdtRecord(View view) {
         k.a(GdtShelfAdContainer.a(), "onExposured", View.class, this.response, view);
     }

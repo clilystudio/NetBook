@@ -15,8 +15,7 @@ import com.maxthon.main.InitActivity;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 
-public class GameLayoutItemView
-        extends LinearLayout {
+public class GameLayoutItemView extends LinearLayout {
     @InjectView(value = 2131493705)
     GameDownloadButton mAction;
     @InjectView(value = 2131493025)

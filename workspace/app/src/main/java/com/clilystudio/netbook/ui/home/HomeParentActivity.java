@@ -8,8 +8,7 @@ import com.clilystudio.netbook.ui.BaseActivity;
 import com.umeng.a.b;
 import com.umeng.update.a;
 
-public class HomeParentActivity
-        extends BaseActivity {
+public class HomeParentActivity extends BaseActivity {
     static /* synthetic */ void a(HomeParentActivity homeParentActivity, String string) {
         if (!homeParentActivity.isFinishing()) {
             new android.support.v7.app.k(homeParentActivity).a("\u901a\u77e5").b(string).a("\u786e\u5b9a", null).c();

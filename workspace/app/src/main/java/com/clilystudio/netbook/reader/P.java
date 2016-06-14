@@ -1,7 +1,6 @@
 package com.clilystudio.netbook.reader;
 
-final class P
-        extends aa {
+final class P extends aa {
     private /* synthetic */ ad a;
 
     P(Reader reader, boolean bl, ad ad2) {

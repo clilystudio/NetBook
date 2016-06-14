@@ -26,8 +26,7 @@ import com.umeng.a.b;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GirlTopicListActivity
-        extends BaseActivity {
+public class GirlTopicListActivity extends BaseActivity {
     private bJ a;
     private bI b;
     private PullToRefreshListView c;

@@ -13,8 +13,7 @@ import com.clilystudio.netbook.widget.GameItemSection;
 
 import java.util.List;
 
-final class GameLayoutFragment$LayoutAdapter
-        extends ah {
+final class GameLayoutFragment$LayoutAdapter extends ah {
     final /* synthetic */ GameLayoutFragment a;
 
     GameLayoutFragment$LayoutAdapter(GameLayoutFragment gameLayoutFragment) {

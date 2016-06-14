@@ -10,8 +10,7 @@ import com.clilystudio.netbook.model.BookShelfTopic;
 import com.clilystudio.netbook.util.ag;
 import com.clilystudio.netbook.util.ai;
 
-public final class HomeTopicAdapter
-        extends u<BookShelfTopic> {
+public final class HomeTopicAdapter extends u<BookShelfTopic> {
     private LayoutInflater a;
     private ag b;
 

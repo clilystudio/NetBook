@@ -25,8 +25,7 @@ import java.util.Calendar;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 
-public class ModifyUserInfoActivity
-        extends BaseActivity
+public class ModifyUserInfoActivity extends BaseActivity
         implements View.OnClickListener {
     @InjectView(value = 2131493148)
     LinearLayout mGenderSection;

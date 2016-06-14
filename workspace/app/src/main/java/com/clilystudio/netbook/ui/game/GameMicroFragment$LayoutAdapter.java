@@ -13,8 +13,7 @@ import com.clilystudio.netbook.widget.GameMicroItemSection;
 
 import java.util.List;
 
-final class GameMicroFragment$LayoutAdapter
-        extends ah {
+final class GameMicroFragment$LayoutAdapter extends ah {
     final /* synthetic */ GameMicroFragment a;
 
     GameMicroFragment$LayoutAdapter(GameMicroFragment gameMicroFragment) {

@@ -3,8 +3,7 @@ package com.clilystudio.netbook.reader;
 import android.content.Context;
 import android.widget.Scroller;
 
-public final class M
-        extends Scroller {
+public final class M extends Scroller {
     public M(PagerWidget pagerWidget, Context context) {
         super(context, new N(pagerWidget));
     }

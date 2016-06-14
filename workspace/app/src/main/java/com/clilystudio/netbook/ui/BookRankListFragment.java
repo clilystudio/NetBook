@@ -14,8 +14,7 @@ import com.clilystudio.netbook.widget.ScrollLoadListView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BookRankListFragment
-        extends Fragment {
+public class BookRankListFragment extends Fragment {
     protected g a;
     private View b;
     private View c;

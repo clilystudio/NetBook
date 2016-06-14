@@ -5,8 +5,7 @@ import android.content.Intent;
 
 import com.clilystudio.netbook.model.NotificationItem;
 
-public class CommentReplyBinder
-        extends NotifBinder {
+public class CommentReplyBinder extends NotifBinder {
     public static final String LABEL = "comment_reply";
 
     public CommentReplyBinder(NotificationItem notificationItem) {

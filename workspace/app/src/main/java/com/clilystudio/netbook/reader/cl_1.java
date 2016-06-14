@@ -5,8 +5,7 @@ import android.os.Message;
 
 import com.clilystudio.netbook.util.t;
 
-final class cl
-        extends Handler {
+final class cl extends Handler {
     private /* synthetic */ ReaderTtsSetWidget a;
 
     cl(ReaderTtsSetWidget readerTtsSetWidget) {

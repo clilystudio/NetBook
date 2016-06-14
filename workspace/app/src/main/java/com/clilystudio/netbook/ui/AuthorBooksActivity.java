@@ -9,8 +9,7 @@ import android.widget.ListView;
 import com.clilystudio.netbook.adapter.E;
 import com.clilystudio.netbook.d;
 
-public class AuthorBooksActivity
-        extends BaseLoadingActivity {
+public class AuthorBooksActivity extends BaseLoadingActivity {
     private ListView a;
     private E b;
     private String c;

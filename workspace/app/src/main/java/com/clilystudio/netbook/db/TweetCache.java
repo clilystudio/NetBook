@@ -10,8 +10,7 @@ import com.activeandroid.query.Select;
 import java.util.List;
 
 @Table(name = "TweetCache")
-public class TweetCache
-        extends Model {
+public class TweetCache extends Model {
     public static final String HOT_USER_ID = "zhuishushenqi_hot_user_id";
     public static final int TYPE_HOT = 2;
     public static final int TYPE_MY = 3;

@@ -7,8 +7,7 @@ import android.support.v4.app.DialogFragment;
 
 import com.clilystudio.netbook.ui.SmartImageView;
 
-public class ReaderMenuFragment$DownLoadDialogFragment
-        extends DialogFragment {
+public class ReaderMenuFragment$DownLoadDialogFragment extends DialogFragment {
     private SmartImageView a;
 
     public static ReaderMenuFragment$DownLoadDialogFragment a(String string, String string2, String string3) {

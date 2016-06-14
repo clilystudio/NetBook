@@ -19,8 +19,7 @@ import com.clilystudio.netbook.widget.y;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HomeShelfAdapter
-        extends u<BookShelf> {
+public class HomeShelfAdapter extends u<BookShelf> {
     public static boolean a;
 
     static {

@@ -4,8 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
 
-public class HomeTransparentActivity
-        extends Activity {
+public class HomeTransparentActivity extends Activity {
     @Override
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);

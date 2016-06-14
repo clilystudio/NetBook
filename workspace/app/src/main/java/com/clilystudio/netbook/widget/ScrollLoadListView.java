@@ -5,8 +5,7 @@ import android.util.AttributeSet;
 import android.widget.AbsListView;
 import android.widget.ListView;
 
-public class ScrollLoadListView
-        extends ListView
+public class ScrollLoadListView extends ListView
         implements AbsListView.OnScrollListener {
     private av a;
     private boolean b;

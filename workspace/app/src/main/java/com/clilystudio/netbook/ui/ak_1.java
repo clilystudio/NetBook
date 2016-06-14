@@ -4,8 +4,7 @@ import com.clilystudio.netbook.a_pack.e;
 import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.model.CategoryLevelRoot;
 
-final class ak
-        extends e<String, Void, CategoryLevelRoot> {
+final class ak extends e<String, Void, CategoryLevelRoot> {
     private /* synthetic */ BookCategoryActivity a;
 
     private ak(BookCategoryActivity bookCategoryActivity) {

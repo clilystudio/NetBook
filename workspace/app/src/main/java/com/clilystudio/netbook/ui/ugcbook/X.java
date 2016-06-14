@@ -12,8 +12,7 @@ import com.clilystudio.netbook.widget.CoverView;
 
 import java.util.List;
 
-public final class X
-        extends BaseAdapter {
+public final class X extends BaseAdapter {
     final /* synthetic */ UGCGuideSelectBookActivity a;
     private LayoutInflater b;
     private List<BookReadRecord> c;

@@ -14,8 +14,7 @@ import com.clilystudio.netbook.R$styleable;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 
-public class PaySectionItem
-        extends DividerSection {
+public class PaySectionItem extends DividerSection {
     @InjectView(value = 2131493199)
     ImageView mArrow;
     @InjectView(value = 2131493823)

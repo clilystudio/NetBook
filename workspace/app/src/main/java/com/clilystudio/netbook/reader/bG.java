@@ -10,8 +10,7 @@ import com.clilystudio.netbook.util.t;
 
 import java.util.Date;
 
-public final class bG
-        extends W<TocSummary> {
+public final class bG extends W<TocSummary> {
     private /* synthetic */ ReaderMixActivity a;
 
     public bG(ReaderMixActivity readerMixActivity, LayoutInflater layoutInflater) {

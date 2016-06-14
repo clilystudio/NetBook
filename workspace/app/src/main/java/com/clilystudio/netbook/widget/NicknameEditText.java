@@ -5,8 +5,7 @@ import android.text.InputFilter;
 import android.util.AttributeSet;
 import android.widget.EditText;
 
-public class NicknameEditText
-        extends EditText {
+public class NicknameEditText extends EditText {
     public NicknameEditText(Context context, AttributeSet attributeSet) {
         super(context, attributeSet);
     }

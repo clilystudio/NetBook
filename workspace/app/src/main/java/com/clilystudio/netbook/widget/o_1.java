@@ -6,8 +6,7 @@ import com.clilystudio.netbook.model.CommentDetail;
 import com.clilystudio.netbook.ui.post.f;
 import com.clilystudio.netbook.util.e;
 
-final class o
-        extends f {
+final class o extends f {
     private /* synthetic */ CommentItemView a;
 
     public o(CommentItemView commentItemView, Activity activity) {

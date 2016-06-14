@@ -5,8 +5,7 @@ import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.model.Tweet;
 import com.clilystudio.netbook.model.TweetResult;
 
-final class cG
-        extends e<String, Void, TweetResult> {
+final class cG extends e<String, Void, TweetResult> {
     private /* synthetic */ ReviewActivity a;
 
     private cG(ReviewActivity reviewActivity) {

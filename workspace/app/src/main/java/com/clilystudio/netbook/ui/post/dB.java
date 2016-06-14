@@ -7,8 +7,7 @@ import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.model.PostPublish;
 import com.clilystudio.netbook.util.e;
 
-final class dB
-        extends c<String, PostPublish> {
+final class dB extends c<String, PostPublish> {
     private /* synthetic */ TweetDetailActivity a;
 
     public dB(TweetDetailActivity tweetDetailActivity, Activity activity, int n) {

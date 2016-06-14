@@ -1,7 +1,6 @@
 package com.clilystudio.netbook.model;
 
-public final class PayConsumeRecord$PayType
-        extends Enum<PayConsumeRecord$PayType> {
+public final class PayConsumeRecord$PayType extends Enum<PayConsumeRecord$PayType> {
     public static final /* enum */ PayConsumeRecord$PayType AUTO_PURCHASE;
     public static final /* enum */ PayConsumeRecord$PayType MULTIPLE_CHAPTERS;
     public static final /* enum */ PayConsumeRecord$PayType SINGLE_CHAPTER;

@@ -13,8 +13,7 @@ import com.clilystudio.netbook.event.x;
 import com.clilystudio.netbook.model.BookRankSummary;
 import com.umeng.a.b;
 
-public class BookRankListActivity
-        extends BaseActivity {
+public class BookRankListActivity extends BaseActivity {
     private View a;
     private View b;
     private BookRankAdapter c;

@@ -7,8 +7,7 @@ import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.model.BookReview;
 import com.clilystudio.netbook.model.BookReviewRoot;
 
-final class ah
-        extends e<String, Void, BookReview[]> {
+final class ah extends e<String, Void, BookReview[]> {
     private /* synthetic */ BestReviewsFragment a;
 
     private ah(BestReviewsFragment bestReviewsFragment) {

@@ -14,8 +14,7 @@ import com.clilystudio.netbook.util.e;
 
 import java.io.IOException;
 
-public final class c
-        extends com.clilystudio.netbook.a_pack.c<ChargePlan, AliPayOrder> {
+public final class c extends com.clilystudio.netbook.a_pack.c<ChargePlan, AliPayOrder> {
     final /* synthetic */ a a;
 
     public c(a a2, Activity activity) {

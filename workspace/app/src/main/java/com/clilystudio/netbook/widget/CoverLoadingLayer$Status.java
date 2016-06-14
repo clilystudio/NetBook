@@ -1,7 +1,6 @@
 package com.clilystudio.netbook.widget;
 
-final class CoverLoadingLayer$Status
-        extends Enum<CoverLoadingLayer$Status> {
+final class CoverLoadingLayer$Status extends Enum<CoverLoadingLayer$Status> {
     public static final /* enum */ CoverLoadingLayer$Status DOWNLOADED;
     public static final /* enum */ CoverLoadingLayer$Status NONE;
     public static final /* enum */ CoverLoadingLayer$Status PAUSE;

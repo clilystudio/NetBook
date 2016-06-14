@@ -5,8 +5,7 @@ import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-final class d
-        extends Thread {
+final class d extends Thread {
     private /* synthetic */ a a;
 
     d(a a2) {

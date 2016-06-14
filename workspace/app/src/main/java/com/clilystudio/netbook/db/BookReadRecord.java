@@ -22,8 +22,7 @@ import java.util.Date;
 import java.util.List;
 
 @Table(name = "BookReadRecords")
-public class BookReadRecord
-        extends Model {
+public class BookReadRecord extends Model {
     @Column(name = "have_cp")
     public int have_cp;
     @Column(name = "lastActionTime")

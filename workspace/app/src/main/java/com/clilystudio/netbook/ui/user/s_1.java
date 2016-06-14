@@ -12,8 +12,7 @@ import com.clilystudio.netbook.util.e;
 
 import java.io.IOException;
 
-final class s
-        extends c<String, ChangeNickNameRoot> {
+final class s extends c<String, ChangeNickNameRoot> {
     private String a;
     private /* synthetic */ ModifyUserInfoActivity b;
 

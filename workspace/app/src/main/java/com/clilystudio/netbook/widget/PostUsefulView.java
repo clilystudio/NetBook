@@ -14,8 +14,7 @@ import com.clilystudio.netbook.model.Review;
 import com.clilystudio.netbook.ui.post.AbsPostActivity;
 import com.clilystudio.netbook.ui.user.AuthLoginActivity;
 
-public class PostUsefulView
-        extends LinearLayout
+public class PostUsefulView extends LinearLayout
         implements View.OnClickListener {
     private Review a;
     private View b;

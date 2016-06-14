@@ -20,8 +20,7 @@ import com.squareup.a.l;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BookDownloadService
-        extends Service {
+public class BookDownloadService extends Service {
     private String a;
     private String b;
     private int c;

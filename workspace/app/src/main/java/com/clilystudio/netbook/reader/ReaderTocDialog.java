@@ -18,8 +18,7 @@ import com.clilystudio.netbook.model.ChapterLink;
 
 import java.util.LinkedList;
 
-public class ReaderTocDialog
-        extends DialogFragment
+public class ReaderTocDialog extends DialogFragment
         implements AdapterView.OnItemClickListener {
     private cf a;
     private ListView b;

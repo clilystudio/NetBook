@@ -9,8 +9,7 @@ import com.clilystudio.netbook.model.ChapterKeysRoot$ChapterKey;
 
 import java.util.HashMap;
 
-final class bp
-        extends e<Void, Void, ChapterKeysRoot> {
+final class bp extends e<Void, Void, ChapterKeysRoot> {
     private /* synthetic */ ReaderActivity a;
 
     private bp(ReaderActivity readerActivity) {

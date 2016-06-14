@@ -2,8 +2,7 @@ package com.clilystudio.netbook.model;
 
 import java.util.Date;
 
-public class NotifCountRoot
-        extends Root {
+public class NotifCountRoot extends Root {
     private int important;
     private Date lastReadImportantTime;
     private Date lastReadUnimportantTime;

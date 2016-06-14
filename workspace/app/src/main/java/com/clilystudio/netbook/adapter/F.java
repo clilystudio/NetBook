@@ -10,8 +10,7 @@ import com.clilystudio.netbook.widget.CoverView;
 
 import java.util.Date;
 
-public final class F
-        extends W<TopicPost> {
+public final class F extends W<TopicPost> {
     public F(LayoutInflater layoutInflater) {
         super(layoutInflater, 2130903290);
     }

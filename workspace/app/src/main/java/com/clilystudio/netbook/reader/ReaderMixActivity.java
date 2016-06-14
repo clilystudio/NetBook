@@ -13,8 +13,7 @@ import com.clilystudio.netbook.model.ChineseAllPromRoot;
 import com.clilystudio.netbook.model.TocSummary;
 import com.clilystudio.netbook.ui.BaseLoadingActivity;
 
-public class ReaderMixActivity
-        extends BaseLoadingActivity {
+public class ReaderMixActivity extends BaseLoadingActivity {
     private String a;
     private String b;
     private String c;

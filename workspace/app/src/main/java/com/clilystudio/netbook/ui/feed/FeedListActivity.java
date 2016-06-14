@@ -19,8 +19,7 @@ import com.squareup.a.l;
 
 import java.util.List;
 
-public class FeedListActivity
-        extends BaseActivity {
+public class FeedListActivity extends BaseActivity {
     private f a;
     private int b;
 

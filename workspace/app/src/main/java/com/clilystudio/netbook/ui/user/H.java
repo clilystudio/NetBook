@@ -9,8 +9,7 @@ import com.clilystudio.netbook.util.e;
 
 import java.io.IOException;
 
-final class H
-        extends c<String, PayResult> {
+final class H extends c<String, PayResult> {
     private /* synthetic */ PayAccountActivity a;
 
     public H(PayAccountActivity payAccountActivity, Activity activity, String string) {

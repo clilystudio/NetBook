@@ -8,8 +8,7 @@ import com.clilystudio.netbook.model.BookInfo;
 
 import java.io.IOException;
 
-final class aI
-        extends e<String, Void, BookInfo> {
+final class aI extends e<String, Void, BookInfo> {
     private /* synthetic */ BookInfoActivity a;
 
     private aI(BookInfoActivity bookInfoActivity) {

@@ -8,8 +8,7 @@ import android.support.v4.view.PagerAdapter;
 import android.view.View;
 import android.view.ViewGroup;
 
-public abstract class ZssqFragmentPagerAdapter
-        extends PagerAdapter {
+public abstract class ZssqFragmentPagerAdapter extends PagerAdapter {
     private final FragmentManager a;
     private FragmentTransaction b = null;
     private Fragment c = null;

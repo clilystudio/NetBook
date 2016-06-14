@@ -11,8 +11,7 @@ import java.util.Date;
 import java.util.List;
 
 @Table(name = "BookSyncRecord")
-public class BookSyncRecord
-        extends Model {
+public class BookSyncRecord extends Model {
     @Column(name = "bookId")
     private String bookId;
     @Column(name = "type")

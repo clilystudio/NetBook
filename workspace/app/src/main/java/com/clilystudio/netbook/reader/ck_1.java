@@ -4,8 +4,7 @@ import android.os.Message;
 
 import java.util.TimerTask;
 
-final class ck
-        extends TimerTask {
+final class ck extends TimerTask {
     private /* synthetic */ int a;
     private /* synthetic */ ReaderTtsSetWidget b;
 

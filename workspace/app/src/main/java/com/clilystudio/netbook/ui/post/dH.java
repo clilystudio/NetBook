@@ -7,8 +7,7 @@ import com.clilystudio.netbook.model.HotTweetResult;
 import com.clilystudio.netbook.model.TimelineResult$Temp;
 import com.clilystudio.netbook.util.e;
 
-final class dH
-        extends com.clilystudio.netbook.a_pack.e<String, Void, HotTweetResult> {
+final class dH extends com.clilystudio.netbook.a_pack.e<String, Void, HotTweetResult> {
     private /* synthetic */ TweetHotFragment a;
 
     private dH(TweetHotFragment tweetHotFragment) {

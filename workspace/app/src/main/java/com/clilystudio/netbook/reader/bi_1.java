@@ -4,8 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 
-final class bi
-        extends BroadcastReceiver {
+final class bi extends BroadcastReceiver {
     private /* synthetic */ ReaderActivity a;
 
     bi(ReaderActivity readerActivity) {

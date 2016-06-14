@@ -14,8 +14,7 @@ import com.clilystudio.netbook.util.W;
 import com.clilystudio.netbook.util.t;
 import com.clilystudio.netbook.widget.PostFlag;
 
-public final class l
-        extends W<DiscussSummary> {
+public final class l extends W<DiscussSummary> {
     private boolean a;
     private boolean b = false;
 

@@ -1,7 +1,6 @@
 package com.clilystudio.netbook.ui;
 
-public class BookRankDetailActivity
-        extends BookListActivity {
+public class BookRankDetailActivity extends BookListActivity {
     @Override
     protected final void b() {
         this.e(0);

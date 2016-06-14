@@ -14,8 +14,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public abstract class NotificationAdapter
-        extends u<NotificationItem> {
+public abstract class NotificationAdapter extends u<NotificationItem> {
     private final Context b;
     private long a;
     private List<NotificationItem> c = new ArrayList<NotificationItem>();

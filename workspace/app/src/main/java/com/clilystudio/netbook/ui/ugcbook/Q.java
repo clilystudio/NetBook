@@ -8,8 +8,7 @@ import com.clilystudio.netbook.model.BookSummary;
 import com.clilystudio.netbook.util.W;
 import com.clilystudio.netbook.widget.CoverView;
 
-final class Q
-        extends W<BookSummary> {
+final class Q extends W<BookSummary> {
     final /* synthetic */ UGCGuideEditBooksActivity a;
 
     public Q(UGCGuideEditBooksActivity uGCGuideEditBooksActivity, LayoutInflater layoutInflater, int n) {

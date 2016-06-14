@@ -5,8 +5,7 @@ import android.os.Message;
 
 import java.util.ArrayList;
 
-final class l
-        extends Handler {
+final class l extends Handler {
     private /* synthetic */ LocalChapterListActivity a;
 
     l(LocalChapterListActivity localChapterListActivity) {

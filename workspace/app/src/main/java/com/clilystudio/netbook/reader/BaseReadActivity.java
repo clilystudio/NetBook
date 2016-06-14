@@ -6,8 +6,7 @@ import android.support.v4.app.FragmentActivity;
 
 import com.clilystudio.netbook.api.b;
 
-public class BaseReadActivity
-        extends FragmentActivity {
+public class BaseReadActivity extends FragmentActivity {
     protected b a = b.a();
 
     @Override

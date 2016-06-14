@@ -8,8 +8,7 @@ import com.clilystudio.netbook.model.PostComment;
 import com.clilystudio.netbook.util.W;
 import com.clilystudio.netbook.widget.CommentItemView;
 
-public final class z
-        extends W<PostComment> {
+public final class z extends W<PostComment> {
     public z(LayoutInflater layoutInflater) {
         super(layoutInflater, 2130903312);
     }

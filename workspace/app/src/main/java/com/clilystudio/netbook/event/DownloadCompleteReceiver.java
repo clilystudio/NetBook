@@ -12,8 +12,7 @@ import com.clilystudio.netbook.hpay100.a.a;
 
 import java.io.File;
 
-public class DownloadCompleteReceiver
-        extends BroadcastReceiver {
+public class DownloadCompleteReceiver extends BroadcastReceiver {
     /*
      * Enabled force condition propagation
      * Lifted jumps to return sites

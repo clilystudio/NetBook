@@ -11,8 +11,7 @@ import com.clilystudio.netbook.util.e;
 import java.io.IOException;
 import java.util.List;
 
-final class N
-        extends c<String[], List<BookSummary>> {
+final class N extends c<String[], List<BookSummary>> {
     private /* synthetic */ UGCGuideEditBooksActivity a;
 
     public N(UGCGuideEditBooksActivity uGCGuideEditBooksActivity, Activity activity) {

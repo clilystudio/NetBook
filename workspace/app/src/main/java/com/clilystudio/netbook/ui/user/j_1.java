@@ -4,8 +4,7 @@ import com.clilystudio.netbook.a_pack.e;
 import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.model.GameRoot;
 
-final class j
-        extends e<Void, Void, GameRoot> {
+final class j extends e<Void, Void, GameRoot> {
     private /* synthetic */ ChargeActivity a;
 
     private j(ChargeActivity chargeActivity) {

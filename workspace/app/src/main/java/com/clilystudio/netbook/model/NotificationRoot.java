@@ -1,7 +1,6 @@
 package com.clilystudio.netbook.model;
 
-public class NotificationRoot
-        extends Root {
+public class NotificationRoot extends Root {
     private NotificationItem[] notifications = new NotificationItem[0];
 
     public NotificationItem[] getNotifications() {

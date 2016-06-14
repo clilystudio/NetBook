@@ -1,7 +1,6 @@
 package com.clilystudio.netbook.model;
 
-public final class InsideLinkType
-        extends Enum<InsideLinkType> {
+public final class InsideLinkType extends Enum<InsideLinkType> {
     public static final /* enum */ InsideLinkType BOOK;
     public static final /* enum */ InsideLinkType BOOKLIST;
     public static final /* enum */ InsideLinkType GAME;

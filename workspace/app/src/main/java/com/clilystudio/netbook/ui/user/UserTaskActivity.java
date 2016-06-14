@@ -15,8 +15,7 @@ import com.clilystudio.netbook.ui.BaseActivity;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 
-public class UserTaskActivity
-        extends BaseActivity {
+public class UserTaskActivity extends BaseActivity {
     @InjectView(value = 2131493254)
     TextView mExpInfo;
     @InjectView(value = 2131493255)

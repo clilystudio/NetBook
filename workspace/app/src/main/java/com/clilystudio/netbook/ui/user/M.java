@@ -14,8 +14,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-final class M
-        extends BaseAdapter {
+final class M extends BaseAdapter {
     List<PayChargeRecord$Order> a;
     private /* synthetic */ PayChargeActivity b;
 

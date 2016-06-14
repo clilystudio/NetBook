@@ -7,8 +7,7 @@ import android.util.AttributeSet;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-public class BookShelfFlagView
-        extends TextView {
+public class BookShelfFlagView extends TextView {
     private final Drawable b;
     private int a;
 

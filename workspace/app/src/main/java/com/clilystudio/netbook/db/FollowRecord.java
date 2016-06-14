@@ -14,8 +14,7 @@ import com.clilystudio.netbook.model.User;
 import java.util.List;
 
 @Table(name = "FollowRecord")
-public class FollowRecord
-        extends Model {
+public class FollowRecord extends Model {
     @Column(name = "followedId")
     private String followedId;
     @Column(name = "userId")

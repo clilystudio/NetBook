@@ -16,8 +16,7 @@ import com.clilystudio.netbook.ui.BaseActivity;
 import com.clilystudio.netbook.ui.aa;
 import com.clilystudio.netbook.ui.user.AuthLoginActivity;
 
-public class AddReviewContentActivity
-        extends BaseActivity {
+public class AddReviewContentActivity extends BaseActivity {
     private String a;
     private int b = 0;
     private EditText c;

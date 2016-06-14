@@ -13,8 +13,7 @@ import android.webkit.WebViewClient;
 
 import com.clilystudio.netbook.d;
 
-public class LuckyGameWebActivity
-        extends BaseActivity
+public class LuckyGameWebActivity extends BaseActivity
         implements View.OnClickListener {
     private static final String a = LuckyGameWebActivity.class.getSimpleName();
     private WebView b;

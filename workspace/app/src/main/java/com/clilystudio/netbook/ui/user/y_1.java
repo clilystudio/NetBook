@@ -9,8 +9,7 @@ import com.clilystudio.netbook.util.e;
 
 import java.io.IOException;
 
-final class y
-        extends c<String, ResultStatus> {
+final class y extends c<String, ResultStatus> {
     private /* synthetic */ MyFavTopicFragment a;
 
     public y(MyFavTopicFragment myFavTopicFragment, Activity activity, int n) {

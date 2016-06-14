@@ -4,8 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 
-final class u
-        extends BroadcastReceiver {
+final class u extends BroadcastReceiver {
     private /* synthetic */ GameGiftFragment a;
 
     u(GameGiftFragment gameGiftFragment) {

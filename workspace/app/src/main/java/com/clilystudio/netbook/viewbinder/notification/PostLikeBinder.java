@@ -5,8 +5,7 @@ import android.content.Intent;
 
 import com.clilystudio.netbook.model.NotificationItem;
 
-public class PostLikeBinder
-        extends NotifBinder {
+public class PostLikeBinder extends NotifBinder {
     public static final String LABEL = "post_like";
 
     public PostLikeBinder(NotificationItem notificationItem) {

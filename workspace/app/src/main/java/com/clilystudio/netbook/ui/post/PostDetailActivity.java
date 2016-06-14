@@ -40,8 +40,7 @@ import java.util.List;
 
 import cn.sharesdk.framework.PlatformActionListener;
 
-public class PostDetailActivity
-        extends AbsPostActivity {
+public class PostDetailActivity extends AbsPostActivity {
     private z f;
     private List<PostComment> g = new ArrayList<PostComment>();
     private cv h;

@@ -3,8 +3,7 @@ package com.clilystudio.netbook.reader;
 import android.view.animation.Animation;
 import android.view.animation.Transformation;
 
-final class b
-        extends Animation {
+final class b extends Animation {
     private /* synthetic */ AutoReaderTextView a;
 
     b(AutoReaderTextView autoReaderTextView) {

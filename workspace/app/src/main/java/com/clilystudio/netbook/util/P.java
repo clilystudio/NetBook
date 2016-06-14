@@ -7,8 +7,7 @@ import com.clilystudio.netbook.model.ResultStatus;
 
 import java.io.IOException;
 
-final class P
-        extends com.clilystudio.netbook.a_pack.e<String, Void, ResultStatus> {
+final class P extends com.clilystudio.netbook.a_pack.e<String, Void, ResultStatus> {
     private /* synthetic */ N a;
 
     private P(N n) {

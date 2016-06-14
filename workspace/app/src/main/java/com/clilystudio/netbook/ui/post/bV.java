@@ -11,8 +11,7 @@ import com.clilystudio.netbook.util.e;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-final class bV
-        extends com.clilystudio.netbook.a_pack.e<String, Void, FollowingsResult> {
+final class bV extends com.clilystudio.netbook.a_pack.e<String, Void, FollowingsResult> {
     private Runnable a;
     private /* synthetic */ MyTweetFragment b;
 

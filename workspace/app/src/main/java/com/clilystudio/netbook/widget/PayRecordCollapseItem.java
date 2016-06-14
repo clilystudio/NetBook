@@ -10,8 +10,7 @@ import android.widget.TextView;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 
-public class PayRecordCollapseItem
-        extends LinearLayout {
+public class PayRecordCollapseItem extends LinearLayout {
     @InjectView(value = 2131493578)
     LinearLayout mItemContainer;
 

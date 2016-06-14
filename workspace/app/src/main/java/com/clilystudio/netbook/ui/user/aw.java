@@ -4,8 +4,7 @@ import android.os.Message;
 
 import java.util.TimerTask;
 
-final class aw
-        extends TimerTask {
+final class aw extends TimerTask {
     private /* synthetic */ SmsVerifyActivity a;
 
     aw(SmsVerifyActivity smsVerifyActivity) {

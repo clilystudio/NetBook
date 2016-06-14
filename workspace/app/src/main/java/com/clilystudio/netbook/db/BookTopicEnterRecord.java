@@ -9,8 +9,7 @@ import java.util.Date;
 import java.util.List;
 
 @Table(name = "BookTopicEnterRecord")
-public class BookTopicEnterRecord
-        extends Model {
+public class BookTopicEnterRecord extends Model {
     @Column(name = "book_id")
     public String book_id;
     @Column(name = "time")

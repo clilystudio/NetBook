@@ -8,8 +8,7 @@ import com.e.a.a.d.b;
 import com.e.a.a.g.a;
 import com.e.a.a.g.c;
 
-public class WXEntryActivity
-        extends Activity
+public class WXEntryActivity extends Activity
         implements com.e.a.a.g.b {
     private a a;
 

@@ -5,8 +5,7 @@ import android.widget.BaseAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class u<T>
-        extends BaseAdapter {
+public abstract class u<T> extends BaseAdapter {
     private List<T> a = new ArrayList<T>();
 
     public void a(List<T> list) {

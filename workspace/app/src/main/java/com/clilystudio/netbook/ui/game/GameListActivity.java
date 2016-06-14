@@ -17,8 +17,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class GameListActivity
-        extends BaseLoadingActivity {
+public class GameListActivity extends BaseLoadingActivity {
     private Q a;
     private List<Game> b = new ArrayList<Game>();
     private GameCat c = null;

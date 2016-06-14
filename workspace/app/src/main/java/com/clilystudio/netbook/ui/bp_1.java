@@ -7,8 +7,7 @@ import com.clilystudio.netbook.model.SecretAppItemRoot;
 import java.io.IOException;
 import java.util.Arrays;
 
-final class bp
-        extends e<String, Void, SecretAppItemRoot> {
+final class bp extends e<String, Void, SecretAppItemRoot> {
     private /* synthetic */ MysteryActivity a;
 
     private bp(MysteryActivity mysteryActivity) {

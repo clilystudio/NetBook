@@ -13,8 +13,7 @@ import android.widget.ListView;
 import com.clilystudio.netbook.ui.BaseLoadingFragment;
 import com.xiaomi.mistatistic.sdk.MiStatInterface;
 
-public class GameCatListFragment
-        extends BaseLoadingFragment {
+public class GameCatListFragment extends BaseLoadingFragment {
     private ListView a;
     private b b;
 

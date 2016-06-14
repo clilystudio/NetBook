@@ -4,8 +4,7 @@ import com.clilystudio.netbook.a_pack.e;
 import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.model.BookHelpResult;
 
-final class ae
-        extends e<String, Void, BookHelpResult> {
+final class ae extends e<String, Void, BookHelpResult> {
     private /* synthetic */ BookHelpActivity a;
 
     private ae(BookHelpActivity bookHelpActivity) {

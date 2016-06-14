@@ -2,8 +2,7 @@ package com.clilystudio.netbook.model;
 
 import java.io.Serializable;
 
-public interface ReplyeeInfo
-        extends Serializable {
+public interface ReplyeeInfo extends Serializable {
     public Author getAuthor();
 
     public void setAuthor(Author var1);

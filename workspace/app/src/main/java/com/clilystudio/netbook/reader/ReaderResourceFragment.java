@@ -18,8 +18,7 @@ import com.clilystudio.netbook.db.TocReadRecord;
 import java.util.Iterator;
 import java.util.List;
 
-public class ReaderResourceFragment
-        extends Fragment {
+public class ReaderResourceFragment extends Fragment {
     private String a;
     private String b;
     private ListView c;

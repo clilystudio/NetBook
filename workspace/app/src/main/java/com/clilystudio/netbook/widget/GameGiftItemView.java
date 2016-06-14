@@ -19,8 +19,7 @@ import com.clilystudio.netbook.util.t;
 
 import java.util.Date;
 
-public class GameGiftItemView
-        extends RelativeLayout {
+public class GameGiftItemView extends RelativeLayout {
     private GameGift a;
     private com.clilystudio.netbook.view.a b;
     private Account c = am.e();

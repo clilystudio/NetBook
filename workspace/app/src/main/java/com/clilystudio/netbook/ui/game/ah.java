@@ -4,8 +4,7 @@ import android.support.v4.view.PagerAdapter;
 import android.view.View;
 import android.view.ViewGroup;
 
-final class ah
-        extends PagerAdapter {
+final class ah extends PagerAdapter {
     private /* synthetic */ GameMicroFragment$LayoutAdapter$PromotionViewPager a;
 
     ah(GameMicroFragment$LayoutAdapter$PromotionViewPager promotionViewPager) {

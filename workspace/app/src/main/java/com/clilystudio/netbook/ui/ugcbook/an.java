@@ -4,8 +4,7 @@ import android.support.v7.widget.ay;
 import android.view.View;
 import android.widget.TextView;
 
-public final class an
-        extends ay {
+public final class an extends ay {
     final /* synthetic */ ak k;
     TextView i;
     String j;

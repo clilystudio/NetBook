@@ -12,8 +12,7 @@ import com.clilystudio.netbook.util.e;
 import java.util.Arrays;
 import java.util.List;
 
-final class d
-        extends com.clilystudio.netbook.a_pack.e<String, Void, UGCBookListRoot> {
+final class d extends com.clilystudio.netbook.a_pack.e<String, Void, UGCBookListRoot> {
     private /* synthetic */ AbsUGCListFragment a;
 
     private d(AbsUGCListFragment absUGCListFragment) {

@@ -27,8 +27,7 @@ import com.clilystudio.netbook.util.t;
 
 import java.util.Date;
 
-public class CommentItemView
-        extends HorizontalScrollView
+public class CommentItemView extends HorizontalScrollView
         implements View.OnClickListener {
     private int a;
     private boolean b = true;

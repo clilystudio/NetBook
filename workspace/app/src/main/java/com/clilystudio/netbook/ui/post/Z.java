@@ -8,8 +8,7 @@ import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.model.PostPublish;
 import com.clilystudio.netbook.util.e;
 
-final class Z
-        extends c<String, PostPublish> {
+final class Z extends c<String, PostPublish> {
     private /* synthetic */ AddVoteItemActivity a;
 
     public Z(AddVoteItemActivity addVoteItemActivity, Activity activity, int n) {

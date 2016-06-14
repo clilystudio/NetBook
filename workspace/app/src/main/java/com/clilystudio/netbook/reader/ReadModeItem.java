@@ -16,8 +16,7 @@ import com.clilystudio.netbook.event.v;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 
-public class ReadModeItem
-        extends FrameLayout {
+public class ReadModeItem extends FrameLayout {
     @InjectView(value = 2131493702)
     TextView mChapter;
     @InjectView(value = 2131493703)

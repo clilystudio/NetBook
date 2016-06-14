@@ -9,8 +9,7 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
-final class aX
-        extends e<String, Void, List<BookSummary>> {
+final class aX extends e<String, Void, List<BookSummary>> {
     private /* synthetic */ BookTagListActivity a;
 
     private aX(BookTagListActivity bookTagListActivity) {

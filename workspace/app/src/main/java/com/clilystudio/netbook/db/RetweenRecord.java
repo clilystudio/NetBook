@@ -11,8 +11,7 @@ import java.util.Iterator;
 import java.util.List;
 
 @Table(name = "RetweenRecord")
-public class RetweenRecord
-        extends Model {
+public class RetweenRecord extends Model {
     @Column(name = "tweetId")
     private String tweetId;
     @Column(name = "userId")

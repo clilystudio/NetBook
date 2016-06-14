@@ -18,8 +18,7 @@ import com.clilystudio.netbook.ui.BaseTabActivity;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GameTabActivity
-        extends BaseTabActivity
+public class GameTabActivity extends BaseTabActivity
         implements ViewPager$OnPageChangeListener,
         TabHost.OnTabChangeListener,
         TabHost.TabContentFactory {

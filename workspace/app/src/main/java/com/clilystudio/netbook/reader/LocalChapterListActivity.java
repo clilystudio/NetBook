@@ -23,8 +23,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class LocalChapterListActivity
-        extends BaseActivity {
+public class LocalChapterListActivity extends BaseActivity {
     private TextView a;
     private ListView b;
     private C c;

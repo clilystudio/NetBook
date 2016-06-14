@@ -1,7 +1,6 @@
 package com.clilystudio.netbook.model;
 
-public class BookHelp
-        extends BookHelpSummary {
+public class BookHelp extends BookHelpSummary {
     private String content;
     private String shareLink;
     private String type;

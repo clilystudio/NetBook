@@ -16,8 +16,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class UGCGuideSelectBookActivity
-        extends BaseActivity {
+public class UGCGuideSelectBookActivity extends BaseActivity {
     private ListView a;
     private View b;
     private View c;

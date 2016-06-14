@@ -5,8 +5,7 @@ import com.clilystudio.netbook.api.ApiService;
 import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.model.Root;
 
-public abstract class S<T extends Root>
-        extends e<String, Void, T> {
+public abstract class S<T extends Root> extends e<String, Void, T> {
     private /* varargs */ T a(String... arrstring) {
         T t;
         try {

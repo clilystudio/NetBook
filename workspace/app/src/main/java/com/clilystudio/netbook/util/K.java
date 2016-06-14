@@ -11,8 +11,7 @@ import com.clilystudio.netbook.model.Root;
 
 import java.util.Date;
 
-final class K
-        extends S<NotifCountRoot> {
+final class K extends S<NotifCountRoot> {
     private /* synthetic */ J a;
 
     K(J j) {

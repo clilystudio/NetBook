@@ -7,8 +7,7 @@ import com.clilystudio.netbook.event.A;
 import com.clilystudio.netbook.event.i;
 import com.clilystudio.netbook.model.RemoteBookShelf;
 
-final class ac
-        extends c<String, RemoteBookShelf> {
+final class ac extends c<String, RemoteBookShelf> {
     private /* synthetic */ Z a;
 
     public ac(Z z, Activity activity) {

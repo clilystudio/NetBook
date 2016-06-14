@@ -4,8 +4,7 @@ import android.util.Log;
 import android.webkit.ConsoleMessage;
 import android.webkit.WebChromeClient;
 
-final class bg
-        extends WebChromeClient {
+final class bg extends WebChromeClient {
     bg(LuckyGameWebActivity luckyGameWebActivity) {
     }
 

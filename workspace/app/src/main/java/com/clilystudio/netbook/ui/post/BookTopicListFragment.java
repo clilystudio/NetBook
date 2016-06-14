@@ -14,8 +14,7 @@ import com.clilystudio.netbook.model.TopicPost;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BookTopicListFragment
-        extends BookPostListFragment {
+public class BookTopicListFragment extends BookPostListFragment {
     private aR h;
     private aQ i;
     private j j;

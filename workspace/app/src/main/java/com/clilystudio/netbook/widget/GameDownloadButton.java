@@ -15,8 +15,7 @@ import com.clilystudio.netbook.ui.game.s;
 import com.clilystudio.netbook.util.e;
 import com.umeng.a.b;
 
-public class GameDownloadButton
-        extends Button {
+public class GameDownloadButton extends Button {
     private Game a;
 
     public GameDownloadButton(Context context, AttributeSet attributeSet) {

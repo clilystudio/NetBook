@@ -36,8 +36,7 @@ import com.umeng.a.b;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GameDetailActivity
-        extends BaseLoadingActivity {
+public class GameDetailActivity extends BaseLoadingActivity {
     private TextView a;
     private Game b;
     private String c;

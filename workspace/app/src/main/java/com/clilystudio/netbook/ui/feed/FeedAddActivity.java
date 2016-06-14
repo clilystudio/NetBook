@@ -16,8 +16,7 @@ import com.clilystudio.netbook.util.e;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FeedAddActivity
-        extends BaseActivity {
+public class FeedAddActivity extends BaseActivity {
     private c a;
     private ListView b;
     private ArrayList<BookReadRecord> c = new ArrayList();

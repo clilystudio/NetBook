@@ -10,8 +10,7 @@ import com.clilystudio.netbook.event.w;
 import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.model.Root;
 
-final class M
-        extends S<Root> {
+final class M extends S<Root> {
     private /* synthetic */ J a;
 
     M(J j) {

@@ -3,8 +3,7 @@ package com.clilystudio.netbook.ui.post;
 import com.clilystudio.netbook.a_pack.e;
 import com.clilystudio.netbook.model.UserInfoResult;
 
-final class bY
-        extends e<String, Void, UserInfoResult> {
+final class bY extends e<String, Void, UserInfoResult> {
     private Runnable a;
     private /* synthetic */ MyTweetFragment b;
 

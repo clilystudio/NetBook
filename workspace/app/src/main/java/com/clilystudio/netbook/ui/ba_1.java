@@ -8,8 +8,7 @@ import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.model.BookAdd;
 import com.clilystudio.netbook.util.e;
 
-final class ba
-        extends c<String, BookAdd> {
+final class ba extends c<String, BookAdd> {
     private /* synthetic */ CustomSearchActivity a;
 
     public ba(CustomSearchActivity customSearchActivity, Activity activity, int n) {

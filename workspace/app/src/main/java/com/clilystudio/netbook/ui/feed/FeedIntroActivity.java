@@ -7,8 +7,7 @@ import android.widget.Button;
 import com.clilystudio.netbook.hpay100.a.a;
 import com.clilystudio.netbook.ui.BaseActivity;
 
-public class FeedIntroActivity
-        extends BaseActivity {
+public class FeedIntroActivity extends BaseActivity {
     @Override
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);

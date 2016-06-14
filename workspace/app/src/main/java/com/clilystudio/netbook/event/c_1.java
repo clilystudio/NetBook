@@ -1,7 +1,6 @@
 package com.clilystudio.netbook.event;
 
-public final class c
-        extends e {
+public final class c extends e {
     private boolean a = true;
 
     public c(String string) {

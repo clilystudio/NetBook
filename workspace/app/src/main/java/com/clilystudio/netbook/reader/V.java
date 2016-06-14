@@ -2,8 +2,7 @@ package com.clilystudio.netbook.reader;
 
 import java.util.List;
 
-final class V
-        extends Z {
+final class V extends Z {
     private /* synthetic */ int a;
     private /* synthetic */ U b;
 

@@ -11,8 +11,7 @@ import android.widget.TabWidget;
 
 import com.clilystudio.netbook.R$styleable;
 
-public class TabWidgetV2
-        extends TabWidget {
+public class TabWidgetV2 extends TabWidget {
     private final int e;
     private final int f;
     private final int g;

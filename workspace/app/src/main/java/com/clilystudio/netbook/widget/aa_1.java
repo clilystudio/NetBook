@@ -9,8 +9,7 @@ import com.clilystudio.netbook.util.e;
 import org.json.JSONArray;
 import org.json.JSONException;
 
-final class aa
-        extends c {
+final class aa extends c {
     private /* synthetic */ Context a;
     private /* synthetic */ HomeFindSecretItem b;
 

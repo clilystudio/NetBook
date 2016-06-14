@@ -4,8 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 
-final class G
-        extends BroadcastReceiver {
+final class G extends BroadcastReceiver {
     private /* synthetic */ GameLayoutFragment a;
 
     G(GameLayoutFragment gameLayoutFragment) {

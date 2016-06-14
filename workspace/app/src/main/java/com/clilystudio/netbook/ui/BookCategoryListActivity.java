@@ -23,8 +23,7 @@ import com.clilystudio.netbook.model.CategoryLevelRoot$CategoryLevel;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BookCategoryListActivity
-        extends BaseTabActivity
+public class BookCategoryListActivity extends BaseTabActivity
         implements ViewPager$OnPageChangeListener,
         TabHost.OnTabChangeListener,
         TabHost.TabContentFactory {

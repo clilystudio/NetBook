@@ -1,7 +1,6 @@
 package com.clilystudio.netbook.db;
 
-public final class BookSyncRecord$BookModifyType
-        extends Enum<BookSyncRecord$BookModifyType> {
+public final class BookSyncRecord$BookModifyType extends Enum<BookSyncRecord$BookModifyType> {
     public static final /* enum */ BookSyncRecord$BookModifyType FEED_ADD;
     public static final /* enum */ BookSyncRecord$BookModifyType FEED_REMOVE;
     public static final /* enum */ BookSyncRecord$BookModifyType SHELF_ADD;

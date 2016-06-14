@@ -4,8 +4,7 @@ import com.clilystudio.netbook.a_pack.e;
 import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.model.UshaqiOnlineConfig;
 
-final class m
-        extends e<Void, Void, UshaqiOnlineConfig> {
+final class m extends e<Void, Void, UshaqiOnlineConfig> {
     private /* synthetic */ HomeParentActivity a;
 
     private m(HomeParentActivity homeParentActivity) {

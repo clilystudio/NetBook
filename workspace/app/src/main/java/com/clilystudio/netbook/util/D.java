@@ -5,8 +5,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class D
-        extends LinearLayoutManager {
+public class D extends LinearLayoutManager {
     static {
         D.class.getSimpleName();
     }

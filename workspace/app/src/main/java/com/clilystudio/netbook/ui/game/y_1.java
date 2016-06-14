@@ -9,8 +9,7 @@ import com.clilystudio.netbook.model.GameGift;
 import com.clilystudio.netbook.util.W;
 import com.clilystudio.netbook.widget.GameGiftItemView;
 
-final class y
-        extends W<GameGift> {
+final class y extends W<GameGift> {
     final /* synthetic */ GameGiftListActivity a;
 
     public y(GameGiftListActivity gameGiftListActivity, LayoutInflater layoutInflater) {

@@ -8,8 +8,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-public class ReaderActionBar
-        extends RelativeLayout {
+public class ReaderActionBar extends RelativeLayout {
     private View a;
     private com.umeng.update.a b;
     private bZ c;

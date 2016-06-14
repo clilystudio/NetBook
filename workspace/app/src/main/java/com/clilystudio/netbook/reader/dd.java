@@ -4,8 +4,7 @@ import android.graphics.Bitmap;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
-final class dd
-        extends WebViewClient {
+final class dd extends WebViewClient {
     private /* synthetic */ WebPageFragment a;
 
     dd(WebPageFragment webPageFragment) {

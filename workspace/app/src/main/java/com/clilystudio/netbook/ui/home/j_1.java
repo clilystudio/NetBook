@@ -7,8 +7,7 @@ import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.model.RecommendInfo;
 import com.clilystudio.netbook.model.ResultServer;
 
-final class j
-        extends e<String, Void, ResultServer> {
+final class j extends e<String, Void, ResultServer> {
     private /* synthetic */ HomeActivity a;
 
     j(HomeActivity homeActivity) {

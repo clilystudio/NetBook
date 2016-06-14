@@ -6,8 +6,7 @@ import android.support.v4.app.FragmentTransaction;
 
 import java.util.List;
 
-final class i
-        extends ZssqFragmentPagerAdapter {
+final class i extends ZssqFragmentPagerAdapter {
     private String[] a;
     private /* synthetic */ HomeActivity b;
 

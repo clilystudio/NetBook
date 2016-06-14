@@ -1,7 +1,6 @@
 package com.clilystudio.netbook.model;
 
-public final class ModuleType
-        extends Enum<ModuleType> {
+public final class ModuleType extends Enum<ModuleType> {
     public static final /* enum */ ModuleType ACTIVITY;
     public static final /* enum */ ModuleType AOYOU;
     public static final /* enum */ ModuleType GAME_GROUP;

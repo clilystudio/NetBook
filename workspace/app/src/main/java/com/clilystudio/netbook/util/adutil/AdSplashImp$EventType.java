@@ -1,7 +1,6 @@
 package com.clilystudio.netbook.util.adutil;
 
-final class AdSplashImp$EventType
-        extends Enum<AdSplashImp$EventType> {
+final class AdSplashImp$EventType extends Enum<AdSplashImp$EventType> {
     public static final /* enum */ AdSplashImp$EventType CLICK;
     public static final /* enum */ AdSplashImp$EventType DOWNLOAD;
     public static final /* enum */ AdSplashImp$EventType PRESENT;

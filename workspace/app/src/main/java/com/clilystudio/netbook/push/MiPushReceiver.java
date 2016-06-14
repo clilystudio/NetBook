@@ -13,8 +13,7 @@ import com.xiaomi.mipush.sdk.d;
 import java.util.List;
 import java.util.regex.Pattern;
 
-public class MiPushReceiver
-        extends PushMessageReceiver {
+public class MiPushReceiver extends PushMessageReceiver {
     /*
      * Enabled force condition propagation
      * Lifted jumps to return sites

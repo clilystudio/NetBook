@@ -19,8 +19,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-final class S
-        extends BaseAdapter {
+final class S extends BaseAdapter {
     final /* synthetic */ PayConsumeActivity a;
     private LayoutInflater b;
     private List<PayConsumeRecord$Order> c;

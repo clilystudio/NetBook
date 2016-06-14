@@ -11,8 +11,7 @@ import com.clilystudio.netbook.download.e;
 import java.util.HashSet;
 import java.util.Set;
 
-public class AppInstalledReceiver
-        extends BroadcastReceiver {
+public class AppInstalledReceiver extends BroadcastReceiver {
     @TargetApi(value = 11)
     @Override
     public void onReceive(Context context, Intent intent) {

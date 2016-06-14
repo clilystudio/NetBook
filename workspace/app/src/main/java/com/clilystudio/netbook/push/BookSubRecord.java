@@ -10,8 +10,7 @@ import com.clilystudio.netbook.hpay100.a.a;
 import java.util.List;
 
 @Table(name = "BookSubRecords")
-public class BookSubRecord
-        extends Model {
+public class BookSubRecord extends Model {
     @Column(name = "pushId", unique = 1)
     public String pushId;
 
