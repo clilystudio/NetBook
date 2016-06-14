@@ -41,7 +41,7 @@ final class aR extends com.clilystudio.netbook.a_pack.e<String, Void, BookRankDe
     protected final /* synthetic */ void onPostExecute(Object object) {
         BookRankDetailRoot bookRankDetailRoot = (BookRankDetailRoot) object;
         super.onPostExecute(bookRankDetailRoot);
-        BookRankListFragment.b(this.a).setVisibility(8);
+        BookRankListFragment.b(this.a).setVisibility(View.GONE);
         if (bookRankDetailRoot != null && bookRankDetailRoot.getRanking() != null) {
             this.a.b(1);
             BookRankListFragment.c(this.a).addAll(Arrays.asList(bookRankDetailRoot.getRanking().getBooks()));

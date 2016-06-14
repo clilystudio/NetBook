@@ -47,7 +47,7 @@ final class aX extends e<String, Void, List<BookSummary>> {
     final /* synthetic */ void onPostExecute(Object object) {
         List list = (List) object;
         super.onPostExecute(list);
-        BookTagListActivity.c(this.a).setVisibility(8);
+        BookTagListActivity.c(this.a).setVisibility(View.GONE);
         if (list != null) {
             int n = list.size();
             if (n > 0) {

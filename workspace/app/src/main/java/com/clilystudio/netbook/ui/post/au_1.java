@@ -46,9 +46,9 @@ final class au extends com.clilystudio.netbook.a_pack.e<String, Void, BookHelpLi
     protected final /* synthetic */ void onPostExecute(Object object) {
         BookHelpList bookHelpList = (BookHelpList) object;
         super.onPostExecute(bookHelpList);
-        BookHelpListActivity.d(this.a).setVisibility(8);
-        BookHelpListActivity.o(this.a).setVisibility(8);
-        BookHelpListActivity.p(this.a).setVisibility(8);
+        BookHelpListActivity.d(this.a).setVisibility(View.GONE);
+        BookHelpListActivity.o(this.a).setVisibility(View.GONE);
+        BookHelpListActivity.p(this.a).setVisibility(View.GONE);
         BookHelpListActivity.l(this.a).n();
         if (this.isCancelled()) return;
         if (bookHelpList != null && bookHelpList.getHelps() != null) {

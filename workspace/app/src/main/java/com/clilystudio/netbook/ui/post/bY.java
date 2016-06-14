@@ -40,13 +40,13 @@ final class bY extends e<String, Void, UserInfoResult> {
             MyTweetFragment.a(this.b, userInfoResult.getFollowers());
             MyTweetFragment.b(this.b, userInfoResult.getFollowings());
             if (userInfoResult.isDoyan()) {
-                MyTweetFragment.o(this.b).setVisibility(0);
+                MyTweetFragment.o(this.b).setVisibility(View.VISIBLE);
                 MyTweetFragment.o(this.b).setImageResource(2130838229);
             } else if (userInfoResult.isOfficial()) {
-                MyTweetFragment.o(this.b).setVisibility(0);
+                MyTweetFragment.o(this.b).setVisibility(View.VISIBLE);
                 MyTweetFragment.o(this.b).setImageResource(2130838231);
             } else {
-                MyTweetFragment.o(this.b).setVisibility(8);
+                MyTweetFragment.o(this.b).setVisibility(View.GONE);
             }
             if (this.a != null) {
                 this.a.run();

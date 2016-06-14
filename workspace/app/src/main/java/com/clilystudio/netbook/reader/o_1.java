@@ -179,7 +179,7 @@ public final class o {
         TextView textView2 = (TextView) view.findViewById(2131493911);
         Button button = (Button) view.findViewById(2131493909);
         if (a.y(this.b)) {
-            button.setVisibility(0);
+            button.setVisibility(View.VISIBLE);
         }
         if (a.a((Context) this.b, "customer_night_theme", false)) {
             view.setBackgroundResource(2130838073);
@@ -211,24 +211,24 @@ public final class o {
         View view = this.f.findViewById(2131493912);
         View view2 = this.f.findViewById(2131493922);
         if (!bl) {
-            view.setVisibility(0);
-            view2.setVisibility(8);
+            view.setVisibility(View.VISIBLE);
+            view2.setVisibility(View.GONE);
             this.r();
             return;
         }
-        view.setVisibility(8);
-        view2.setVisibility(0);
+        view.setVisibility(View.GONE);
+        view2.setVisibility(View.VISIBLE);
         View view3 = this.f.findViewById(2131493924);
         View view4 = this.f.findViewById(2131493929);
         ((TextView) view2.findViewById(2131493923)).setText(this.d.i());
         if (!am.g()) {
-            view3.setVisibility(8);
-            view4.setVisibility(0);
+            view3.setVisibility(View.GONE);
+            view4.setVisibility(View.VISIBLE);
             view4.findViewById(2131493930).setOnClickListener(new y(this));
             return;
         }
-        view3.setVisibility(0);
-        view4.setVisibility(8);
+        view3.setVisibility(View.VISIBLE);
+        view4.setVisibility(View.GONE);
         TextView textView = (TextView) this.f.findViewById(2131493925);
         ChapterLink[] arrchapterLink = MyApplication.a().b().d();
         if (arrchapterLink == null || arrchapterLink.length == 0) {
@@ -246,7 +246,7 @@ public final class o {
         CheckBox checkBox = (CheckBox) view3.findViewById(2131493926);
         this.u = (Button) view3.findViewById(2131493927);
         if (a.a((Context) this.b, "user_account_balance", 0) > this.d.a().getCurrency() || this.t) {
-            checkBox.setVisibility(0);
+            checkBox.setVisibility(View.VISIBLE);
             checkBox.setChecked(a.a((Context) this.b, "auto_buy_chapter" + com.clilystudio.netbook.util.I.a, false));
             this.u.setText("\u8d2d\u4e70\uff0c\u7ee7\u7eed\u9605\u8bfb");
             this.u.setOnClickListener(new s(this, checkBox));
@@ -259,7 +259,7 @@ public final class o {
         Button button = (Button) view3.findViewById(2131493928);
         button.setOnClickListener(new x(this));
         if (this.b instanceof ReaderActivity && !((ReaderActivity) this.b).m()) {
-            button.setVisibility(8);
+            button.setVisibility(View.GONE);
         }
     }
 
@@ -317,7 +317,7 @@ public final class o {
             }
             case -5: {
                 this.p();
-                this.n.setVisibility(8);
+                this.n.setVisibility(View.GONE);
                 this.l.setText("\u672c\u6765\u6e90\u6682\u65e0\u8be5\u5c0f\u8bf4");
                 this.m.setText("\u8bf7\u5207\u6362\u5230\u5176\u4ed6\u6765\u6e90");
                 this.b(2130837937);
@@ -331,7 +331,7 @@ public final class o {
             }
             case -1: {
                 this.p();
-                this.n.setVisibility(0);
+                this.n.setVisibility(View.VISIBLE);
                 this.t();
                 this.a(false);
                 if (a.t(this.b)) {
@@ -344,13 +344,13 @@ public final class o {
                 this.l.setText("\u6ca1\u7f51\uff0c\u8fde\u4e0d\u4e0a\u5440");
                 this.m.setText("\u8bf7\u68c0\u67e5\u7f51\u7edc\u540e\u91cd\u8bd5");
                 this.b(2130837938);
-                this.o.setVisibility(8);
+                this.o.setVisibility(View.GONE);
                 this.n.setText(2131034471);
                 return;
             }
             case -3: {
                 this.p();
-                this.n.setVisibility(0);
+                this.n.setVisibility(View.VISIBLE);
                 this.l.setText("\u672c\u7ae0\u6682\u65e0\u6587\u5b57");
                 this.m.setText("\u672a\u627e\u5230\u672c\u7ae0\u7684\u6587\u5b57\u5185\u5bb9");
                 this.b(2130837937);
@@ -370,7 +370,7 @@ public final class o {
             }
             case -4: {
                 this.p();
-                this.n.setVisibility(0);
+                this.n.setVisibility(View.VISIBLE);
                 this.l.setText("\u8fde\u63a5\u8d85\u65f6\uff0c\u518d\u8bd5\u8bd5\uff1f");
                 this.m.setText("\u8bf7\u5237\u65b0\u91cd\u8bd5\u6216\u5207\u6362\u6765\u6e90");
                 this.b(2130837937);
@@ -381,7 +381,7 @@ public final class o {
             }
             case 0:
         }
-        this.j.setVisibility(8);
+        this.j.setVisibility(View.GONE);
         this.g.setText("");
         this.h.setText("");
         this.i.setText("");
@@ -389,7 +389,7 @@ public final class o {
     }
 
     private void p() {
-        this.j.setVisibility(0);
+        this.j.setVisibility(View.VISIBLE);
         this.g.setText(this.d.i());
         this.h.setText("");
         this.i.setText("");
@@ -425,14 +425,14 @@ public final class o {
         if (am.q(this.b) && a.F(this.b) && this.q() && this.a(view) && this.b instanceof ReaderActivity) {
             Advert advert = com.clilystudio.netbook.util.adutil.n.b(this.b, "page");
             if (advert != null && a.w(this.b, "rate_zssq_advert_reader_bookinfo")) {
-                view.setVisibility(0);
+                view.setVisibility(View.VISIBLE);
                 this.a(view, advert);
                 return;
             }
-            view.setVisibility(8);
+            view.setVisibility(View.GONE);
             return;
         }
-        view.setVisibility(8);
+        view.setVisibility(View.GONE);
         if (!this.e) return;
         if (a.a((Context) this.b, "remove_ad_toast_showed" + com.clilystudio.netbook.util.I.a, false)) return;
         if (!this.q()) return;
@@ -445,7 +445,7 @@ public final class o {
     private void s() {
         View view = this.f.findViewById(2131493907);
         if (view != null) {
-            view.setVisibility(8);
+            view.setVisibility(View.GONE);
         }
     }
 
@@ -454,7 +454,7 @@ public final class o {
     }
 
     private void u() {
-        this.o.setVisibility(0);
+        this.o.setVisibility(View.VISIBLE);
         this.o.setText("\u66f4\u6362\u6765\u6e90");
         this.o.setOnClickListener(new r(this));
     }
@@ -562,7 +562,7 @@ public final class o {
         if (this.p) {
             this.m();
         }
-        this.j.setVisibility(8);
+        this.j.setVisibility(View.GONE);
         this.g.setText(this.d.i());
         if (this.c.i()) {
             this.h.setText(this.d.a(this.b));
@@ -625,7 +625,7 @@ public final class o {
         if (this.e || (view = this.f.findViewById(2131493907)) == null) {
             return;
         }
-        view.setVisibility(8);
+        view.setVisibility(View.GONE);
     }
 
     public final View i() {
@@ -665,7 +665,7 @@ public final class o {
     @l
     public final void onRemoveAdEvent$2234193(a a2) {
         if (this.e) {
-            this.f.findViewById(2131493907).setVisibility(8);
+            this.f.findViewById(2131493907).setVisibility(View.GONE);
         }
     }
 
@@ -679,7 +679,7 @@ public final class o {
         if (!(b2 != null && am.q(this.b) && b2.b().equals("page") && (view = this.f.findViewById(2131493907)) != null && a.F(this.b) && this.q() && this.a(view) && this.b instanceof ReaderActivity && (advert = b2.a()) != null)) {
             return;
         }
-        view.setVisibility(0);
+        view.setVisibility(View.VISIBLE);
         this.a(view, advert);
     }
 

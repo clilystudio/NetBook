@@ -120,7 +120,7 @@ public class PayConsumeActivity extends BaseLoadingActivity {
         this.g = this.getIntent().getStringExtra("token_key");
         LayoutInflater layoutInflater = LayoutInflater.from(this);
         this.b = layoutInflater.inflate(2130903325, null);
-        this.b.setVisibility(8);
+        this.b.setVisibility(View.GONE);
         this.e = (ScrollLoadListView) this.findViewById(2131493981);
         this.e.addFooterView(this.b);
         this.e.setDividerHeight(0);

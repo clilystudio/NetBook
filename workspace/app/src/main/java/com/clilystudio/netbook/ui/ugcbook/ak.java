@@ -90,7 +90,7 @@ final class ak extends ah {
             for (int i = 0; i < Math.min(4, arrstring.length - (n4 << 2)); ++i) {
                 UgcFilterTextView ugcFilterTextView = (UgcFilterTextView) viewGroup.getChildAt(i);
                 String string = arrstring[i + (n4 << 2)];
-                ugcFilterTextView.setVisibility(0);
+                ugcFilterTextView.setVisibility(View.VISIBLE);
                 ugcFilterTextView.setText(string);
                 ugcFilterTextView.setSelected(UGCMainActivity.j(al2.k.c).equals(ugcFilterTextView.a()));
                 ugcFilterTextView.setOnClickListener(new am(al2, string));

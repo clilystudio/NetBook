@@ -47,7 +47,7 @@ final class bM extends com.clilystudio.netbook.a_pack.e<String, Void, HotKeyword
                 arrayList.add(autoFlowView$Word);
             }
             a.a(arrayList, c.e, "search_hotword.txt");
-            SearchActivity.g(this.a).setVisibility(0);
+            SearchActivity.g(this.a).setVisibility(View.VISIBLE);
             SearchActivity.e(this.a).setWords(hotKeywordResult.getHotWords());
             SearchActivity.e(this.a).setOnItemClickListener(new bN(this));
             SearchActivity.h(this.a).setOnClickListener(new bO(this));

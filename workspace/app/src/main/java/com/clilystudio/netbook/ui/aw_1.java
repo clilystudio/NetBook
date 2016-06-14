@@ -56,11 +56,11 @@ public final class aw extends BaseAdapter {
         ax2.a.setText(this.b[n]);
         if (BookCategoryListActivity.f(this.c).equals(this.b[n])) {
             ax2.a.setTextColor(this.c.getResources().getColor(2131427485));
-            ax2.b.setVisibility(0);
+            ax2.b.setVisibility(View.VISIBLE);
             return view2;
         }
         ax2.a.setTextColor(am.a((Context) this.c, 16842904));
-        ax2.b.setVisibility(8);
+        ax2.b.setVisibility(View.GONE);
         return view2;
     }
 }

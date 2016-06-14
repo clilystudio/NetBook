@@ -12,7 +12,7 @@ final class p implements Runnable {
     @Override
     public final void run() {
         if (UGCDetailActivity.d(this.a).getLineCount() > 5) {
-            UGCDetailActivity.e(this.a).setVisibility(0);
+            UGCDetailActivity.e(this.a).setVisibility(View.VISIBLE);
             UGCDetailActivity.d(this.a).setEllipsize(TextUtils.TruncateAt.END);
             UGCDetailActivity.d(this.a).setClickable(true);
             UGCDetailActivity.d(this.a).setOnClickListener(UGCDetailActivity.l(this.a));

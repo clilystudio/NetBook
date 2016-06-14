@@ -63,7 +63,7 @@ public class BookHelpActivity extends AbsPostActivity {
 
     static /* synthetic */ void b(BookHelpActivity bookHelpActivity) {
         if (bookHelpActivity.m != null) {
-            bookHelpActivity.f.setVisibility(0);
+            bookHelpActivity.f.setVisibility(View.VISIBLE);
             ad ad2 = bookHelpActivity.i = new ad(bookHelpActivity, 0);
             Object[] arrobject = new String[]{bookHelpActivity.m.get_id()};
             ad2.b(arrobject);
@@ -91,26 +91,26 @@ public class BookHelpActivity extends AbsPostActivity {
         if (bookHelpActivity.n) {
             String string = author.getGender();
             if ("male".equals(string)) {
-                imageView.setVisibility(0);
+                imageView.setVisibility(View.VISIBLE);
                 imageView.setImageLevel(2);
             } else if ("female".equals(string)) {
-                imageView.setVisibility(0);
+                imageView.setVisibility(View.VISIBLE);
                 imageView.setImageLevel(3);
             } else {
-                imageView.setVisibility(0);
+                imageView.setVisibility(View.VISIBLE);
                 imageView.setImageLevel(4);
             }
         } else {
             String string = author.getType();
             if ("official".equals(string)) {
-                imageView.setVisibility(0);
+                imageView.setVisibility(View.VISIBLE);
                 imageView.setImageLevel(0);
                 a.s(bookHelpActivity, bookHelp.get_id());
             } else if ("doyen".equals(string)) {
-                imageView.setVisibility(0);
+                imageView.setVisibility(View.VISIBLE);
                 imageView.setImageLevel(1);
             } else {
-                imageView.setVisibility(8);
+                imageView.setVisibility(View.GONE);
             }
         }
         ((PostAgreeView) bookHelpActivity.c.findViewById(2131493840)).setPostId(bookHelpActivity.a);
@@ -135,8 +135,8 @@ public class BookHelpActivity extends AbsPostActivity {
     }
 
     static /* synthetic */ void g(BookHelpActivity bookHelpActivity) {
-        bookHelpActivity.f.setVisibility(0);
-        bookHelpActivity.f.findViewById(2131493085).setVisibility(8);
+        bookHelpActivity.f.setVisibility(View.VISIBLE);
+        bookHelpActivity.f.findViewById(2131493085).setVisibility(View.GONE);
         TextView textView = (TextView) bookHelpActivity.f.findViewById(2131493798);
         textView.setText("\u70b9\u51fb\u52a0\u8f7d\u8bc4\u8bba");
         bookHelpActivity.f.setOnClickListener((View.OnClickListener) ((Object) new aa(bookHelpActivity, textView)));
@@ -188,7 +188,7 @@ public class BookHelpActivity extends AbsPostActivity {
     @Override
     public final void f() {
         super.f();
-        this.k.setVisibility(0);
+        this.k.setVisibility(View.VISIBLE);
     }
 
     @Override
@@ -203,13 +203,13 @@ public class BookHelpActivity extends AbsPostActivity {
     @Override
     public final void h() {
         super.h();
-        this.k.setVisibility(8);
+        this.k.setVisibility(View.GONE);
     }
 
     @Override
     public final void i() {
         super.i();
-        this.k.setVisibility(8);
+        this.k.setVisibility(View.GONE);
     }
 
     /*
@@ -273,7 +273,7 @@ public class BookHelpActivity extends AbsPostActivity {
         hotCommentView.a(this.a);
         this.f = LayoutInflater.from(this).inflate(2130903325, null);
         this.b.addFooterView(this.f);
-        this.f.setVisibility(8);
+        this.f.setVisibility(View.GONE);
         this.g = new z(this.getLayoutInflater());
         this.b.setAdapter(this.g);
         this.j();

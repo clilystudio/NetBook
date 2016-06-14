@@ -11,7 +11,7 @@ final class y implements av {
 
     @Override
     public final void a() {
-        AudiobookCategoryListActivity.b(this.a).setVisibility(0);
+        AudiobookCategoryListActivity.b(this.a).setVisibility(View.VISIBLE);
         AudiobookCategoryListActivity.h(this.a);
     }
 }

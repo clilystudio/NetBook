@@ -47,9 +47,9 @@ final class bI extends com.clilystudio.netbook.a_pack.e<String, Void, GirlTopicL
     protected final /* synthetic */ void onPostExecute(Object object) {
         GirlTopicList girlTopicList = (GirlTopicList) object;
         super.onPostExecute(girlTopicList);
-        GirlTopicListActivity.d(this.a).setVisibility(8);
-        GirlTopicListActivity.o(this.a).setVisibility(8);
-        GirlTopicListActivity.p(this.a).setVisibility(8);
+        GirlTopicListActivity.d(this.a).setVisibility(View.GONE);
+        GirlTopicListActivity.o(this.a).setVisibility(View.GONE);
+        GirlTopicListActivity.p(this.a).setVisibility(View.GONE);
         GirlTopicListActivity.l(this.a).n();
         if (this.isCancelled()) return;
         if (girlTopicList != null && girlTopicList.getPosts() != null) {

@@ -30,11 +30,11 @@ public abstract class WebPageFragment extends Fragment implements View.OnClickLi
     }
 
     static /* synthetic */ void b(WebPageFragment webPageFragment) {
-        webPageFragment.b.setVisibility(0);
+        webPageFragment.b.setVisibility(View.VISIBLE);
     }
 
     static /* synthetic */ void c(WebPageFragment webPageFragment) {
-        webPageFragment.b.setVisibility(8);
+        webPageFragment.b.setVisibility(View.GONE);
     }
 
     static /* synthetic */ WebView d(WebPageFragment webPageFragment) {

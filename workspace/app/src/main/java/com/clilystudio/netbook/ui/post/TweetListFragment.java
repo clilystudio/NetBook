@@ -59,9 +59,9 @@ public class TweetListFragment extends Fragment {
     }
 
     static /* synthetic */ void f(TweetListFragment tweetListFragment) {
-        tweetListFragment.g.setVisibility(8);
-        tweetListFragment.f.setVisibility(8);
-        tweetListFragment.e.setVisibility(8);
+        tweetListFragment.g.setVisibility(View.GONE);
+        tweetListFragment.f.setVisibility(View.GONE);
+        tweetListFragment.e.setVisibility(View.GONE);
         tweetListFragment.c.n();
     }
 
@@ -78,7 +78,7 @@ public class TweetListFragment extends Fragment {
     }
 
     static /* synthetic */ void j(TweetListFragment tweetListFragment) {
-        tweetListFragment.g.setVisibility(0);
+        tweetListFragment.g.setVisibility(View.VISIBLE);
         tweetListFragment.g.setText("\u8fd9\u91cc\u8fd8\u6ca1\u6709\u8bdd\u9898\uff0c\u53bb\u53d1\u5e03\u4e00\u4e2a\u5427");
     }
 

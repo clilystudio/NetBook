@@ -191,7 +191,7 @@ public class TweetTimelineFragment extends Fragment {
 
     private void a() {
         if (am.e() != null) {
-            this.h.setVisibility(8);
+            this.h.setVisibility(View.GONE);
             Account account = am.e();
             eb eb2 = this.a = new eb(this, 0);
             String[] arrstring = new String[]{account.getToken(), am.e().getUser().getId()};
@@ -216,10 +216,10 @@ public class TweetTimelineFragment extends Fragment {
 
     private void b() {
         if (am.e() == null) {
-            this.h.setVisibility(0);
+            this.h.setVisibility(View.VISIBLE);
             return;
         }
-        this.g.setVisibility(0);
+        this.g.setVisibility(View.VISIBLE);
         this.g.setText("\u8fd9\u91cc\u8fd8\u6ca1\u6709\u8bdd\u9898\uff0c\u53bb\u53d1\u5e03\u4e00\u4e2a\u5427");
     }
 
@@ -238,9 +238,9 @@ public class TweetTimelineFragment extends Fragment {
     }
 
     private void c() {
-        this.g.setVisibility(8);
-        this.f.setVisibility(8);
-        this.e.setVisibility(8);
+        this.g.setVisibility(View.GONE);
+        this.f.setVisibility(View.GONE);
+        this.e.setVisibility(View.GONE);
         this.c.n();
     }
 
@@ -266,7 +266,7 @@ public class TweetTimelineFragment extends Fragment {
     public View onCreateView(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
         View view = layoutInflater.inflate(2130903211, viewGroup, false);
         this.f = view.findViewById(2131493085);
-        this.f.setVisibility(8);
+        this.f.setVisibility(View.GONE);
         this.g = (TextView) view.findViewById(2131493100);
         this.c = (PullToRefreshListView) view.findViewById(2131493099);
         this.c.setMode(PullToRefreshBase$Mode.PULL_FROM_START);

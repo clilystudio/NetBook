@@ -69,13 +69,13 @@ final class M extends BaseAdapter {
             var6_6 = (N) var2_2.getTag();
         }
         if (var4_4.getPayType().equals("time_flag")) {
-            var6_6.a.setVisibility(8);
-            var6_6.g.setVisibility(0);
+            var6_6.a.setVisibility(View.GONE);
+            var6_6.g.setVisibility(View.VISIBLE);
             var6_6.g.setText(var4_4.getTimeflag());
             return var2_2;
         }
-        var6_6.a.setVisibility(0);
-        var6_6.g.setVisibility(8);
+        var6_6.a.setVisibility(View.VISIBLE);
+        var6_6.g.setVisibility(View.GONE);
         var6_6.e.setText(var4_4.getChargeString());
         var7_7 = var6_6.f;
         var8_8 = new StringBuilder();

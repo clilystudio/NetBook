@@ -22,6 +22,6 @@ final class bT extends b {
             ReaderResActivity.b(this.a).setVisibility(4);
             return;
         }
-        ReaderResActivity.b(this.a).setVisibility(0);
+        ReaderResActivity.b(this.a).setVisibility(View.VISIBLE);
     }
 }

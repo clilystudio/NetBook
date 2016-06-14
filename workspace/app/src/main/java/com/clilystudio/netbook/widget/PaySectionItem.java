@@ -50,7 +50,7 @@ public class PaySectionItem extends DividerSection {
     }
 
     public void setBalanceDefault() {
-        this.mBalance.setVisibility(0);
+        this.mBalance.setVisibility(View.VISIBLE);
         this.mBalance.setText("--");
     }
 }

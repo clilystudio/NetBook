@@ -62,9 +62,9 @@ public class HomeShelfAdapter extends u<BookShelf> {
      */
     private void a(int n, CheckBox checkBox) {
         if (this.d) {
-            checkBox.setVisibility(0);
+            checkBox.setVisibility(View.VISIBLE);
         } else {
-            checkBox.setVisibility(8);
+            checkBox.setVisibility(View.GONE);
         }
         this.g = true;
         if (this.f.length <= n) {

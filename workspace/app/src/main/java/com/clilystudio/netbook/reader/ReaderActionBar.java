@@ -80,15 +80,15 @@ public class ReaderActionBar extends RelativeLayout {
     }
 
     public final void c(boolean bl) {
-        this.a.setVisibility(8);
+        this.a.setVisibility(View.GONE);
     }
 
     public final void d(boolean bl) {
-        this.h.setVisibility(8);
+        this.h.setVisibility(View.GONE);
     }
 
     public final void e(boolean bl) {
-        this.j.setVisibility(8);
+        this.j.setVisibility(View.GONE);
     }
 
     /*
@@ -119,7 +119,7 @@ public class ReaderActionBar extends RelativeLayout {
         this.f = (TextView) this.findViewById(2131493882);
         this.g = (TextView) this.findViewById(2131493859);
         if (!a.r(this.getContext(), "switch_xunfei_read")) {
-            this.g.setVisibility(8);
+            this.g.setVisibility(View.GONE);
         }
         this.h = this.findViewById(2131493861);
         this.i = this.findViewById(2131493864);

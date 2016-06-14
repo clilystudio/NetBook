@@ -119,6 +119,6 @@ final class GameLayoutFragment$LayoutAdapter extends ah {
         }
         GameLayoutRoot$ModuleLayout gameLayoutRoot$ModuleLayout = this.d(n);
         ((GameItemSection) ((Object) ay2.a)).b(gameLayoutRoot$ModuleLayout);
-        ay2.a.findViewById(2131493432).setVisibility(8);
+        ay2.a.findViewById(2131493432).setVisibility(View.GONE);
     }
 }

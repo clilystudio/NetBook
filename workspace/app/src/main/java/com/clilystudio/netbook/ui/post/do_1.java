@@ -38,9 +38,9 @@ protected final /* synthetic */ Object doInBackground(Object[]arrobject){
 protected final /* synthetic */ void onPostExecute(Object object){
         ReviewList reviewList=(ReviewList)object;
         super.onPostExecute(reviewList);
-        ReviewListActivity.e(this.a).setVisibility(8);
-        ReviewListActivity.r(this.a).setVisibility(8);
-        ReviewListActivity.s(this.a).setVisibility(8);
+        ReviewListActivity.e(this.a).setVisibility(View.GONE);
+        ReviewListActivity.r(this.a).setVisibility(View.GONE);
+        ReviewListActivity.s(this.a).setVisibility(View.GONE);
         ReviewListActivity.n(this.a).n();
         if(this.isCancelled())return;
         if(reviewList!=null&&reviewList.getReviews()!=null){

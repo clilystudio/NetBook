@@ -9,7 +9,7 @@ final class dU implements Runnable {
 
     @Override
     public final void run() {
-        TweetTabActivity.k(this.a).setVisibility(8);
-        TweetTabActivity.l(this.a).setVisibility(8);
+        TweetTabActivity.k(this.a).setVisibility(View.GONE);
+        TweetTabActivity.l(this.a).setVisibility(View.GONE);
     }
 }

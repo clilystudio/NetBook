@@ -62,28 +62,28 @@ public class BookRankListFragment extends Fragment {
                 return;
             }
             case 1: {
-                this.c.setVisibility(8);
-                this.d.setVisibility(8);
-                this.e.setVisibility(8);
+                this.c.setVisibility(View.GONE);
+                this.d.setVisibility(View.GONE);
+                this.e.setVisibility(View.GONE);
                 return;
             }
             case 0: {
-                this.c.setVisibility(0);
-                this.d.setVisibility(8);
-                this.e.setVisibility(8);
+                this.c.setVisibility(View.VISIBLE);
+                this.d.setVisibility(View.GONE);
+                this.e.setVisibility(View.GONE);
                 return;
             }
             case 2: {
-                this.c.setVisibility(8);
-                this.d.setVisibility(0);
-                this.e.setVisibility(8);
+                this.c.setVisibility(View.GONE);
+                this.d.setVisibility(View.VISIBLE);
+                this.e.setVisibility(View.GONE);
                 return;
             }
             case 3:
         }
-        this.c.setVisibility(8);
-        this.d.setVisibility(8);
-        this.e.setVisibility(0);
+        this.c.setVisibility(View.GONE);
+        this.d.setVisibility(View.GONE);
+        this.e.setVisibility(View.VISIBLE);
     }
 
     @Override
@@ -110,7 +110,7 @@ public class BookRankListFragment extends Fragment {
         scrollLoadListView.setOnItemClickListener(new aQ(this));
         this.b = layoutInflater.inflate(2130903325, null);
         scrollLoadListView.addFooterView(this.b);
-        this.b.setVisibility(8);
+        this.b.setVisibility(View.GONE);
         return view;
     }
 }

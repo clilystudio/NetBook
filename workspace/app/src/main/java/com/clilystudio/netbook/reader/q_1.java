@@ -14,7 +14,7 @@ final class q implements View.OnClickListener {
     @Override
     public final void onClick(View view) {
         if (a.t(o.a(this.a))) {
-            o.c(this.a).setVisibility(8);
+            o.c(this.a).setVisibility(View.GONE);
             if (o.e(this.a) != null) {
                 o.e(this.a).a();
             }

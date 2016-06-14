@@ -132,7 +132,7 @@ public class MysteryActivity extends BaseLoadingActivity {
         if (!bl2) return;
         this.i = a.c((Context) this, "first_tick_time", 0);
         this.f = 1;
-        this.b.setVisibility(0);
+        this.b.setVisibility(View.VISIBLE);
         long l2 = new Date().getTime();
         long l3 = this.i == 0 ? 0 : l2 - this.i;
         long l4 = 180000 - l3;

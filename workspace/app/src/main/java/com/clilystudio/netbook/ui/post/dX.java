@@ -14,7 +14,7 @@ final class dX implements k<ListView> {
 
     @Override
     public final void a(PullToRefreshBase<ListView> pullToRefreshBase) {
-        TweetTimelineFragment.a(this.a).setVisibility(8);
+        TweetTimelineFragment.a(this.a).setVisibility(View.GONE);
         new Handler().postDelayed(new dY(this), 1000);
     }
 }

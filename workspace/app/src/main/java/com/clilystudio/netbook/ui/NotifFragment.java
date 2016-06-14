@@ -105,7 +105,7 @@ public abstract class NotifFragment extends Fragment {
     }
 
     static /* synthetic */ void m(NotifFragment notifFragment) {
-        notifFragment.i.setVisibility(0);
+        notifFragment.i.setVisibility(View.VISIBLE);
     }
 
     static /* synthetic */ bw n(NotifFragment notifFragment) {
@@ -118,13 +118,13 @@ public abstract class NotifFragment extends Fragment {
 
     private void a(boolean bl) {
         if (this.g != null) {
-            this.g.setVisibility(8);
+            this.g.setVisibility(View.GONE);
         }
         if (this.h != null) {
-            this.h.setVisibility(0);
+            this.h.setVisibility(View.VISIBLE);
             this.h.setText("\u8bf7\u767b\u5f55\u540e\u67e5\u770b");
         }
-        this.i.setVisibility(8);
+        this.i.setVisibility(View.GONE);
         if (bl && this.k != null && this.j != null) {
             this.k.clear();
             this.j.a(this.k);
@@ -154,7 +154,7 @@ public abstract class NotifFragment extends Fragment {
             this.e.setFooterDividersEnabled(false);
         }
         this.e.addFooterView(this.f);
-        this.f.setVisibility(8);
+        this.f.setVisibility(View.GONE);
         this.d.setOnRefreshListener(new bs(this));
         this.e.setOnItemClickListener((AdapterView.OnItemClickListener) ((Object) new bu(this)));
         this.j = this.b();

@@ -40,7 +40,7 @@ public class BestReviewsFragment extends Fragment {
         bestReviewsFragment$ViewHolder.avatar.setImageUrl(author.getScaleAvatar(), 2130837614);
         bestReviewsFragment$ViewHolder.user.setText(author.getNickname());
         bestReviewsFragment$ViewHolder.lv.setText("lv." + author.getLv());
-        bestReviewsFragment$ViewHolder.time.setVisibility(8);
+        bestReviewsFragment$ViewHolder.time.setVisibility(View.GONE);
         bestReviewsFragment$ViewHolder.title.setText(bookReview.title);
         bestReviewsFragment$ViewHolder.content.setText(bookReview.content);
         bestReviewsFragment$ViewHolder.helpfulCount.setText("" + bookReview.helpful.getYes());
@@ -48,25 +48,25 @@ public class BestReviewsFragment extends Fragment {
         if (bestReviewsFragment.c) {
             String string = author.getGender();
             if ("male".equals(string)) {
-                bestReviewsFragment$ViewHolder.avatarVerify.setVisibility(0);
+                bestReviewsFragment$ViewHolder.avatarVerify.setVisibility(View.VISIBLE);
                 bestReviewsFragment$ViewHolder.avatarVerify.setImageLevel(2);
             } else if ("female".equals(string)) {
-                bestReviewsFragment$ViewHolder.avatarVerify.setVisibility(0);
+                bestReviewsFragment$ViewHolder.avatarVerify.setVisibility(View.VISIBLE);
                 bestReviewsFragment$ViewHolder.avatarVerify.setImageLevel(3);
             } else {
-                bestReviewsFragment$ViewHolder.avatarVerify.setVisibility(0);
+                bestReviewsFragment$ViewHolder.avatarVerify.setVisibility(View.VISIBLE);
                 bestReviewsFragment$ViewHolder.avatarVerify.setImageLevel(4);
             }
         } else {
             String string = author.getType();
             if ("official".equals(string)) {
-                bestReviewsFragment$ViewHolder.avatarVerify.setVisibility(0);
+                bestReviewsFragment$ViewHolder.avatarVerify.setVisibility(View.VISIBLE);
                 bestReviewsFragment$ViewHolder.avatarVerify.setImageLevel(0);
             } else if ("doyen".equals(string)) {
-                bestReviewsFragment$ViewHolder.avatarVerify.setVisibility(0);
+                bestReviewsFragment$ViewHolder.avatarVerify.setVisibility(View.VISIBLE);
                 bestReviewsFragment$ViewHolder.avatarVerify.setImageLevel(1);
             } else {
-                bestReviewsFragment$ViewHolder.avatarVerify.setVisibility(8);
+                bestReviewsFragment$ViewHolder.avatarVerify.setVisibility(View.GONE);
             }
         }
         bestReviewsFragment$ViewHolder.rating.setValue(bookReview.rating);

@@ -54,9 +54,9 @@ final class af extends com.clilystudio.netbook.a_pack.e<String, Void, List<PayVo
     protected final /* synthetic */ void onPostExecute(Object object) {
         List list = (List) object;
         super.onPostExecute(list);
-        PayVoucherFragment.b(this.b).setVisibility(8);
-        PayVoucherFragment.e(this.b).setVisibility(8);
-        PayVoucherFragment.f(this.b).setVisibility(8);
+        PayVoucherFragment.b(this.b).setVisibility(View.GONE);
+        PayVoucherFragment.e(this.b).setVisibility(View.GONE);
+        PayVoucherFragment.f(this.b).setVisibility(View.GONE);
         PayVoucherFragment.g(this.b).n();
         boolean bl = PayVoucherFragment.a(this.b).isEmpty();
         if (list != null) {
@@ -72,7 +72,7 @@ final class af extends com.clilystudio.netbook.a_pack.e<String, Void, List<PayVo
                     return;
                 }
             } else if (bl) {
-                PayVoucherFragment.b(this.b).setVisibility(0);
+                PayVoucherFragment.b(this.b).setVisibility(View.VISIBLE);
                 return;
             }
             PayVoucherFragment.g(this.b).setOnLastItemVisibleListener(null);

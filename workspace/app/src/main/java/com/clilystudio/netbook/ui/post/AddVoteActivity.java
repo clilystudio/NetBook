@@ -198,8 +198,8 @@ public class AddVoteActivity extends BaseActivity {
             this.k = "\u610f\u89c1\u53cd\u9988";
         } else if ("TWEET".equals(this.l)) {
             this.j = 3;
-            this.a.setVisibility(8);
-            this.c.setVisibility(8);
+            this.a.setVisibility(View.GONE);
+            this.c.setVisibility(View.GONE);
             this.b.setHint(2131034403);
             this.k = "\u52a8\u6001";
         } else if ("ARTICLE".equals(this.l)) {

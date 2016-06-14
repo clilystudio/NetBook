@@ -51,32 +51,32 @@ public class ReaderResourceFragment extends Fragment {
                 return;
             }
             case 1: {
-                readerResourceFragment.d.setVisibility(8);
-                readerResourceFragment.e.setVisibility(8);
-                readerResourceFragment.f.setVisibility(8);
-                readerResourceFragment.j.setVisibility(0);
+                readerResourceFragment.d.setVisibility(View.GONE);
+                readerResourceFragment.e.setVisibility(View.GONE);
+                readerResourceFragment.f.setVisibility(View.GONE);
+                readerResourceFragment.j.setVisibility(View.VISIBLE);
                 return;
             }
             case 3: {
-                readerResourceFragment.d.setVisibility(8);
-                readerResourceFragment.e.setVisibility(0);
-                readerResourceFragment.f.setVisibility(8);
-                readerResourceFragment.j.setVisibility(0);
+                readerResourceFragment.d.setVisibility(View.GONE);
+                readerResourceFragment.e.setVisibility(View.VISIBLE);
+                readerResourceFragment.f.setVisibility(View.GONE);
+                readerResourceFragment.j.setVisibility(View.VISIBLE);
                 return;
             }
             case 2: {
-                readerResourceFragment.d.setVisibility(8);
-                readerResourceFragment.e.setVisibility(8);
-                readerResourceFragment.f.setVisibility(0);
-                readerResourceFragment.j.setVisibility(8);
+                readerResourceFragment.d.setVisibility(View.GONE);
+                readerResourceFragment.e.setVisibility(View.GONE);
+                readerResourceFragment.f.setVisibility(View.VISIBLE);
+                readerResourceFragment.j.setVisibility(View.GONE);
                 return;
             }
             case 0:
         }
-        readerResourceFragment.d.setVisibility(0);
-        readerResourceFragment.e.setVisibility(8);
-        readerResourceFragment.f.setVisibility(8);
-        readerResourceFragment.j.setVisibility(8);
+        readerResourceFragment.d.setVisibility(View.VISIBLE);
+        readerResourceFragment.e.setVisibility(View.GONE);
+        readerResourceFragment.f.setVisibility(View.GONE);
+        readerResourceFragment.j.setVisibility(View.GONE);
     }
 
     static /* synthetic */ void a(ReaderResourceFragment readerResourceFragment, String string) {
@@ -157,16 +157,16 @@ public class ReaderResourceFragment extends Fragment {
             super.onResume();
             BookReadRecord bookReadRecord = BookReadRecord.getOnShelf(this.a);
             if (bookReadRecord == null || bookReadRecord.getTocId() == null) {
-                this.g.setVisibility(8);
+                this.g.setVisibility(View.GONE);
             } else {
                 String string = bookReadRecord.getTocId();
                 TocReadRecord tocReadRecord = TocReadRecord.get(string);
                 if (tocReadRecord != null) {
-                    this.g.setVisibility(0);
+                    this.g.setVisibility(View.VISIBLE);
                     this.i.setText(tocReadRecord.getChapterTitle());
                     this.g.setOnClickListener(new bX(this, string));
                 } else {
-                    this.g.setVisibility(8);
+                    this.g.setVisibility(View.GONE);
                 }
             }
             String string = this.a;
@@ -184,7 +184,7 @@ public class ReaderResourceFragment extends Fragment {
             bl = false;
         }
         if (bl) {
-            this.h.setVisibility(0);
+            this.h.setVisibility(View.VISIBLE);
             int n2 = a.a((Context) this.getActivity(), 55.0f);
             int n3 = a.a((Context) this.getActivity(), 40.0f);
             if (this.g.getVisibility() == 0) {
@@ -197,7 +197,7 @@ public class ReaderResourceFragment extends Fragment {
                 this.h.setLayoutParams(layoutParams);
             }
         } else {
-            this.h.setVisibility(8);
+            this.h.setVisibility(View.GONE);
         }
         this.l.notifyDataSetChanged();
     }

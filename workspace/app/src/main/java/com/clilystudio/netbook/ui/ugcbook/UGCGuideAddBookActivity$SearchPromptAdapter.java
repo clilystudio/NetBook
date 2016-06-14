@@ -68,7 +68,7 @@ public final class UGCGuideAddBookActivity$SearchPromptAdapter extends BaseAdapt
 
     @Override
     public final void onItemClick(AdapterView<?> adapterView, View view, int n, long l2) {
-        UGCGuideAddBookActivity.f(this.a).setVisibility(8);
+        UGCGuideAddBookActivity.f(this.a).setVisibility(View.GONE);
         if (n >= 0 && n < this.b.size()) {
             String string = this.b.get(n);
             UGCGuideAddBookActivity.a(this.a).setTextByCode(string);

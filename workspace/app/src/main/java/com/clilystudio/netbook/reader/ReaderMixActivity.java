@@ -60,11 +60,11 @@ public class ReaderMixActivity extends BaseLoadingActivity {
     }
 
     static /* synthetic */ void e(ReaderMixActivity readerMixActivity) {
-        readerMixActivity.i.setVisibility(0);
-        readerMixActivity.j.setVisibility(8);
+        readerMixActivity.i.setVisibility(View.VISIBLE);
+        readerMixActivity.j.setVisibility(View.GONE);
         String string = readerMixActivity.k.getHost();
         if (string.equals(readerMixActivity.c)) {
-            readerMixActivity.i.findViewById(2131493875).setVisibility(0);
+            readerMixActivity.i.findViewById(2131493875).setVisibility(View.VISIBLE);
         }
         readerMixActivity.i.setOnClickListener(new bD(readerMixActivity, string));
     }
@@ -107,7 +107,7 @@ public class ReaderMixActivity extends BaseLoadingActivity {
         View view2 = this.findViewById(2131493877);
         View view3 = this.findViewById(2131493878);
         if ("mix".equals(this.c)) {
-            view3.setVisibility(0);
+            view3.setVisibility(View.VISIBLE);
         }
         view2.setOnClickListener(new bB(this));
         this.i = this.findViewById(2131493872);

@@ -231,7 +231,7 @@ public class GirlTopicListActivity extends BaseActivity {
     }
 
     static /* synthetic */ void s(GirlTopicListActivity girlTopicListActivity) {
-        girlTopicListActivity.h.setVisibility(0);
+        girlTopicListActivity.h.setVisibility(View.VISIBLE);
         girlTopicListActivity.h.setText("\u8fd9\u91cc\u8fd8\u6ca1\u6709\u5973\u751f\u8bdd\u9898\uff0c\u53bb\u53d1\u5e03\u4e00\u4e2a\u5427");
     }
 
@@ -276,7 +276,7 @@ public class GirlTopicListActivity extends BaseActivity {
             this.e.setFooterDividersEnabled(false);
         }
         this.f = LayoutInflater.from(this).inflate(2130903325, null);
-        this.f.setVisibility(8);
+        this.f.setVisibility(View.GONE);
         this.e.addFooterView(this.f);
         this.c.setOnRefreshListener(new bB(this));
         this.e.setOnItemClickListener(new bD(this));

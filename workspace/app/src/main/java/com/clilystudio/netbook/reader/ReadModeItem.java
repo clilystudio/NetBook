@@ -41,13 +41,13 @@ public class ReadModeItem extends FrameLayout {
         this.mIcon.setImageResource(n);
         this.mName.setText(n2);
         if (n3 == n4) {
-            this.mFlagSelect.setVisibility(0);
+            this.mFlagSelect.setVisibility(View.VISIBLE);
             this.mFlagSelect.setText("\u5f53\u524d\u9009\u62e9");
         }
         if (a.f(n3)) {
-            this.mFlagWeb.setVisibility(0);
+            this.mFlagWeb.setVisibility(View.VISIBLE);
         }
-        this.mChapter.setVisibility(8);
+        this.mChapter.setVisibility(View.GONE);
         this.setOnClickListener(new O(this, n4, n3));
     }
 

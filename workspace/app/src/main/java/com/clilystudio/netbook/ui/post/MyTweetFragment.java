@@ -202,9 +202,9 @@ public class MyTweetFragment extends Fragment {
     }
 
     static /* synthetic */ void p(MyTweetFragment myTweetFragment) {
-        myTweetFragment.s.setVisibility(8);
-        myTweetFragment.r.setVisibility(8);
-        myTweetFragment.q.setVisibility(8);
+        myTweetFragment.s.setVisibility(View.GONE);
+        myTweetFragment.r.setVisibility(View.GONE);
+        myTweetFragment.q.setVisibility(View.GONE);
         myTweetFragment.e.n();
     }
 
@@ -221,7 +221,7 @@ public class MyTweetFragment extends Fragment {
     }
 
     static /* synthetic */ void t(MyTweetFragment myTweetFragment) {
-        myTweetFragment.s.setVisibility(0);
+        myTweetFragment.s.setVisibility(View.VISIBLE);
         myTweetFragment.s.setText("\u8fd9\u91cc\u8fd8\u6ca1\u6709\u8bdd\u9898\uff0c\u53bb\u53d1\u5e03\u4e00\u4e2a\u5427");
     }
 
@@ -256,13 +256,13 @@ public class MyTweetFragment extends Fragment {
             String[] arrstring = new String[]{user.getId()};
             bY2.b(arrstring);
             if (user.isDoyan()) {
-                this.h.setVisibility(0);
+                this.h.setVisibility(View.VISIBLE);
                 this.h.setImageResource(2130838229);
             } else if (user.isOfficial()) {
-                this.h.setVisibility(0);
+                this.h.setVisibility(View.VISIBLE);
                 this.h.setImageResource(2130838231);
             } else {
-                this.h.setVisibility(8);
+                this.h.setVisibility(View.GONE);
             }
             this.n.setOnClickListener(new bO(this));
             this.m = this.f.findViewById(2131493598);
@@ -285,12 +285,12 @@ public class MyTweetFragment extends Fragment {
 
     private void b() {
         if (am.e() == null) {
-            this.t.setVisibility(0);
+            this.t.setVisibility(View.VISIBLE);
             this.o.setVisibility(4);
             return;
         }
         this.t.setVisibility(4);
-        this.o.setVisibility(0);
+        this.o.setVisibility(View.VISIBLE);
         this.a = new bX(this, 0);
         this.a.b(new String[0]);
     }

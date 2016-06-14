@@ -568,13 +568,13 @@ public class HomeActivity extends HomeParentActivity implements ViewPager$OnPage
         imageView.setOnClickListener(this);
         this.r.setOnClickListener(this);
         if (com.clilystudio.netbook.hpay100.a.a.w(this)) {
-            this.r.setVisibility(0);
+            this.r.setVisibility(View.VISIBLE);
         } else {
-            this.r.setVisibility(8);
+            this.r.setVisibility(View.GONE);
         }
         this.c = com.clilystudio.netbook.hpay100.a.a.x(this);
         if (!this.c) {
-            this.r.setVisibility(8);
+            this.r.setVisibility(View.GONE);
         }
         com.clilystudio.netbook.event.i.a().a(this);
         this.f = (TabHost) this.findViewById(2131493096);
@@ -686,7 +686,7 @@ public class HomeActivity extends HomeParentActivity implements ViewPager$OnPage
 
     @com.squareup.a.l
     public void onEnterTweet(o o2) {
-        this.s.getChildAt(1).setVisibility(8);
+        this.s.getChildAt(1).setVisibility(View.GONE);
     }
 
     @Override
@@ -730,8 +730,8 @@ public class HomeActivity extends HomeParentActivity implements ViewPager$OnPage
         View view = this.k.findViewById(2131493495);
         TextView textView = (TextView) this.k.findViewById(2131493494);
         if (n2 > 0) {
-            textView.setVisibility(0);
-            view.setVisibility(8);
+            textView.setVisibility(View.VISIBLE);
+            view.setVisibility(View.GONE);
             textView.setText(String.valueOf(n2));
             if (this.q == null) return;
             {
@@ -739,16 +739,16 @@ public class HomeActivity extends HomeParentActivity implements ViewPager$OnPage
                 return;
             }
         } else if (n2 == -1) {
-            textView.setVisibility(8);
-            view.setVisibility(0);
+            textView.setVisibility(View.GONE);
+            view.setVisibility(View.VISIBLE);
             if (this.q == null) return;
             {
                 this.q.setImageResource(2130837870);
                 return;
             }
         } else {
-            textView.setVisibility(8);
-            view.setVisibility(8);
+            textView.setVisibility(View.GONE);
+            view.setVisibility(View.GONE);
             if (this.q == null) return;
             {
                 this.q.setImageResource(2130837871);
@@ -828,7 +828,7 @@ public class HomeActivity extends HomeParentActivity implements ViewPager$OnPage
             }
             this.c = bl;
             if (this.c) {
-                this.r.setVisibility(0);
+                this.r.setVisibility(View.VISIBLE);
             } else {
                 this.r.setVisibility(4);
             }

@@ -14,7 +14,7 @@ final class ba implements k<ListView> {
 
     @Override
     public final void a(PullToRefreshBase<ListView> pullToRefreshBase) {
-        CommonPostListActivity.b(this.a).setVisibility(8);
+        CommonPostListActivity.b(this.a).setVisibility(View.GONE);
         new Handler().postDelayed(new bb(this), 1000);
     }
 }

@@ -12,7 +12,7 @@ final class a implements j {
     @Override
     public final void a() {
         if (this.a.h == null || this.a.h.getStatus() == AsyncTask.Status.FINISHED) {
-            this.a.e.setVisibility(0);
+            this.a.e.setVisibility(View.VISIBLE);
             if (this.a.g != null && this.a.g.getStatus() != AsyncTask.Status.FINISHED && !this.a.g.isCancelled()) {
                 this.a.g.cancel(true);
             }

@@ -68,9 +68,9 @@ public class TweetHotFragment extends Fragment {
     }
 
     static /* synthetic */ void d(TweetHotFragment tweetHotFragment) {
-        tweetHotFragment.g.setVisibility(8);
-        tweetHotFragment.f.setVisibility(8);
-        tweetHotFragment.e.setVisibility(8);
+        tweetHotFragment.g.setVisibility(View.GONE);
+        tweetHotFragment.f.setVisibility(View.GONE);
+        tweetHotFragment.e.setVisibility(View.GONE);
         tweetHotFragment.c.n();
     }
 
@@ -87,7 +87,7 @@ public class TweetHotFragment extends Fragment {
     }
 
     static /* synthetic */ void h(TweetHotFragment tweetHotFragment) {
-        tweetHotFragment.g.setVisibility(0);
+        tweetHotFragment.g.setVisibility(View.VISIBLE);
         tweetHotFragment.g.setText("\u70ed\u95e8\u8d44\u6e90\u9700\u8981\u4f60\u7684\u52a0\u5165,\u624d\u4f1a\u66f4\u7cbe\u5f69!");
     }
 
@@ -134,7 +134,7 @@ public class TweetHotFragment extends Fragment {
     public View onCreateView(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
         View view = layoutInflater.inflate(2130903211, viewGroup, false);
         this.f = view.findViewById(2131493085);
-        this.f.setVisibility(8);
+        this.f.setVisibility(View.GONE);
         this.g = (TextView) view.findViewById(2131493100);
         this.c = (PullToRefreshListView) view.findViewById(2131493099);
         this.c.setMode(PullToRefreshBase$Mode.PULL_FROM_START);

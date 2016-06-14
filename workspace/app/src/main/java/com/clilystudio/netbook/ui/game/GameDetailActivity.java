@@ -172,7 +172,7 @@ public class GameDetailActivity extends BaseLoadingActivity {
     }
 
     static /* synthetic */ void g(GameDetailActivity gameDetailActivity) {
-        gameDetailActivity.h.setVisibility(0);
+        gameDetailActivity.h.setVisibility(View.VISIBLE);
         r r2 = gameDetailActivity.g = new r(gameDetailActivity, 0);
         Object[] arrobject = new String[]{gameDetailActivity.b.get_id()};
         r2.b(arrobject);
@@ -195,8 +195,8 @@ public class GameDetailActivity extends BaseLoadingActivity {
     }
 
     static /* synthetic */ void l(GameDetailActivity gameDetailActivity) {
-        gameDetailActivity.h.setVisibility(0);
-        gameDetailActivity.h.findViewById(2131493085).setVisibility(8);
+        gameDetailActivity.h.setVisibility(View.VISIBLE);
+        gameDetailActivity.h.findViewById(2131493085).setVisibility(View.GONE);
         TextView textView = (TextView) gameDetailActivity.h.findViewById(2131493798);
         textView.setText("\u70b9\u51fb\u91cd\u8bd5");
         gameDetailActivity.h.setOnClickListener(new j(gameDetailActivity, textView));

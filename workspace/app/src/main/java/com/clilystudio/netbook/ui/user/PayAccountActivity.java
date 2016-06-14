@@ -89,8 +89,8 @@ public class PayAccountActivity extends BaseActivity implements View.OnClickList
         PaySectionItem paySectionItem3 = (PaySectionItem) this.findViewById(2131493807);
         TextView textView = (TextView) this.findViewById(2131493806);
         if (a.y(this)) {
-            textView.setVisibility(0);
-            paySectionItem3.setVisibility(0);
+            textView.setVisibility(View.VISIBLE);
+            paySectionItem3.setVisibility(View.VISIBLE);
         }
         this.b.setBalanceDefault();
         this.c.setBalanceDefault();
@@ -120,7 +120,7 @@ public class PayAccountActivity extends BaseActivity implements View.OnClickList
         if (this.f != null && s2.a() != null) {
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.CHINA);
             this.f.setText("\u622a\u6b62\u81f3" + simpleDateFormat.format(s2.a()));
-            this.f.setVisibility(0);
+            this.f.setVisibility(View.VISIBLE);
         }
     }
 

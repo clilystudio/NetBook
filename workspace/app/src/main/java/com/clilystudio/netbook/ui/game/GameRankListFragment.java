@@ -88,7 +88,7 @@ public class GameRankListFragment extends BaseLoadingFragment {
     public void onActivityCreated(Bundle bundle) {
         super.onActivityCreated(bundle);
         this.b = LayoutInflater.from(this.getActivity()).inflate(2130903325, null);
-        this.b.setVisibility(8);
+        this.b.setVisibility(View.GONE);
         a.a((Context) this.getActivity(), this.a);
         this.a.addFooterView(this.b);
         this.a.setDividerHeight(0);

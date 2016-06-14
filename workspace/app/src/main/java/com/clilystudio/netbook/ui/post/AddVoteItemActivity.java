@@ -48,7 +48,7 @@ public class AddVoteItemActivity extends BaseActivity {
 
     static /* synthetic */ void a(AddVoteItemActivity addVoteItemActivity) {
         if (addVoteItemActivity.i < 7) {
-            addVoteItemActivity.b[addVoteItemActivity.i].setVisibility(0);
+            addVoteItemActivity.b[addVoteItemActivity.i].setVisibility(View.VISIBLE);
             addVoteItemActivity.i = 1 + addVoteItemActivity.i;
             return;
         }
@@ -147,7 +147,7 @@ public class AddVoteItemActivity extends BaseActivity {
         var0.g[6] = "";
         lbl78:
         // 2 sources:
-        var0.b[-1 + var0.i].setVisibility(8);
+        var0.b[-1 + var0.i].setVisibility(View.GONE);
         var0.i = -1 + var0.i;
     }
 
@@ -349,7 +349,7 @@ public class AddVoteItemActivity extends BaseActivity {
                 var13_12 = this.i;
                 var14_13 = 0;
                 while (var14_13 < var13_12) {
-                    this.b[var14_13].setVisibility(0);
+                    this.b[var14_13].setVisibility(View.VISIBLE);
                     var15_14 = this.g[var14_13];
                     this.e[var14_13].setText(var15_14);
                     ++var14_13;

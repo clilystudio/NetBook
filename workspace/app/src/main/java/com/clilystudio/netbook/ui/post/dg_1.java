@@ -15,7 +15,7 @@ final class dg implements j {
     @Override
     public final void a() {
         if (ReviewListActivity.f(this.a) == null || ReviewListActivity.f(this.a).getStatus() == AsyncTask.Status.FINISHED) {
-            ReviewListActivity.s(this.a).setVisibility(0);
+            ReviewListActivity.s(this.a).setVisibility(View.VISIBLE);
             if (!am.a(ReviewListActivity.j(this.a))) {
                 ReviewListActivity.j(this.a).cancel(true);
             }

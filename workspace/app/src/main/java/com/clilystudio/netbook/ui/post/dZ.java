@@ -15,7 +15,7 @@ final class dZ implements j {
     @Override
     public final void a() {
         if (TweetTimelineFragment.b(this.a) == null || TweetTimelineFragment.b(this.a).getStatus() == AsyncTask.Status.FINISHED) {
-            TweetTimelineFragment.j(this.a).setVisibility(0);
+            TweetTimelineFragment.j(this.a).setVisibility(View.VISIBLE);
             if (!am.a((AsyncTask) TweetTimelineFragment.k(this.a))) {
                 TweetTimelineFragment.k(this.a).cancel(true);
             }

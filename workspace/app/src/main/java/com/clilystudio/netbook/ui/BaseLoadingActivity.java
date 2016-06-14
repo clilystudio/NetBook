@@ -17,10 +17,10 @@ public abstract class BaseLoadingActivity extends BaseActivity {
      */
     private void a(View view) {
         if (view != null) {
-            view.setVisibility(0);
+            view.setVisibility(View.VISIBLE);
             for (View view2 : this.f) {
                 if (view == view2) continue;
-                view2.setVisibility(8);
+                view2.setVisibility(View.GONE);
             }
         }
     }

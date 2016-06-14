@@ -13,7 +13,7 @@ final class cg implements View.OnClickListener {
 
     @Override
     public final void onClick(View view) {
-        this.a.setVisibility(8);
+        this.a.setVisibility(View.GONE);
         ReaderTtsSetWidget.a(this.a).b();
         SpeechUtility.getUtility().openEngineSettings("tts");
     }

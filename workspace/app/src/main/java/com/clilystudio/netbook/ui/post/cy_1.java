@@ -14,7 +14,7 @@ final class cy implements View.OnClickListener {
 
     @Override
     public final void onClick(View view) {
-        ReviewActivity.d(this.b).findViewById(2131493085).setVisibility(0);
+        ReviewActivity.d(this.b).findViewById(2131493085).setVisibility(View.VISIBLE);
         this.a.setText("\u52a0\u8f7d\u4e2d...");
         ReviewActivity.b(this.b);
     }

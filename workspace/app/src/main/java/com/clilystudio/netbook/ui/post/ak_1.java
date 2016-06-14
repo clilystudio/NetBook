@@ -13,7 +13,7 @@ final class ak implements j {
     @Override
     public final void a() {
         if (BookHelpListActivity.e(this.a) == null || BookHelpListActivity.e(this.a).getStatus() == AsyncTask.Status.FINISHED) {
-            BookHelpListActivity.p(this.a).setVisibility(0);
+            BookHelpListActivity.p(this.a).setVisibility(View.VISIBLE);
             if (!am.a(BookHelpListActivity.h(this.a))) {
                 BookHelpListActivity.h(this.a).cancel(true);
             }

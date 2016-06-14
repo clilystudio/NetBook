@@ -35,11 +35,11 @@ public final class D extends W<ReviewSummary> {
         String string3 = reviewSummary.getState();
         PostFlag postFlag = (PostFlag) this.a(6, PostFlag.class);
         if (postFlag.a(string3)) {
-            postFlag.setVisibility(0);
+            postFlag.setVisibility(View.VISIBLE);
             this.a(3, true);
             return;
         }
-        postFlag.setVisibility(8);
+        postFlag.setVisibility(View.GONE);
         this.a(3, false);
         this.a(3, t.e((Date) reviewSummary.getCreated()));
     }

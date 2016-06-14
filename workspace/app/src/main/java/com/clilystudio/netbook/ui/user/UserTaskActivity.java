@@ -68,7 +68,7 @@ public class UserTaskActivity extends BaseActivity {
                 this.mExpShareBook.setTextColor(this.getResources().getColor(2131427480));
             }
             if ("xiaomi".equals(am.n((Context) this).toLowerCase())) {
-                this.mVoteView.setVisibility(8);
+                this.mVoteView.setVisibility(View.GONE);
             } else {
                 this.a(userInfo.getThis_week_tasks().isRate());
             }

@@ -12,7 +12,7 @@ final class ae implements j {
     @Override
     public final void a() {
         if (PayVoucherFragment.c(this.a) == null || PayVoucherFragment.c(this.a).getStatus() == AsyncTask.Status.FINISHED) {
-            PayVoucherFragment.f(this.a).setVisibility(0);
+            PayVoucherFragment.f(this.a).setVisibility(View.VISIBLE);
             PayVoucherFragment.a(this.a, new af(this.a));
             PayVoucherFragment.c(this.a).b(new String[0]);
         }

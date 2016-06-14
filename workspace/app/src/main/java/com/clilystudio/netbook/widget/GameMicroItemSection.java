@@ -65,11 +65,11 @@ public class GameMicroItemSection extends TableLayout {
         } while (true);
         for (var7_7 = 0; var7_7 < var5_5.size(); ++var7_7) {
             var9_9 = (GameMicroLayoutItemView) var6_6.getChildAt(var7_7);
-            var9_9.setVisibility(0);
+            var9_9.setVisibility(View.VISIBLE);
             var9_9.setHasPlayed(this.a);
             var10_10 = var5_5.get(var7_7);
             var9_9.mTitle.setText(var10_10.getName());
-            var9_9.mSubTitle.setVisibility(8);
+            var9_9.mSubTitle.setVisibility(View.GONE);
             if (var9_9.a) {
                 var9_9.mAction.setPlayedView();
             } else {

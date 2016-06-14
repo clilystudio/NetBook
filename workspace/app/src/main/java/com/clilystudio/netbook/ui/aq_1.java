@@ -64,9 +64,9 @@ final class aq extends com.clilystudio.netbook.a_pack.e<String, Void, List<Categ
     protected final /* synthetic */ void onPostExecute(Object object) {
         List list = (List) object;
         super.onPostExecute(list);
-        BookCategoryFragment.c(this.b).setVisibility(8);
-        BookCategoryFragment.e(this.b).setVisibility(8);
-        BookCategoryFragment.f(this.b).setVisibility(8);
+        BookCategoryFragment.c(this.b).setVisibility(View.GONE);
+        BookCategoryFragment.e(this.b).setVisibility(View.GONE);
+        BookCategoryFragment.f(this.b).setVisibility(View.GONE);
         BookCategoryFragment.g(this.b).n();
         boolean bl = BookCategoryFragment.b(this.b).isEmpty();
         if (list != null) {
@@ -82,7 +82,7 @@ final class aq extends com.clilystudio.netbook.a_pack.e<String, Void, List<Categ
                     return;
                 }
             } else if (bl) {
-                BookCategoryFragment.c(this.b).setVisibility(0);
+                BookCategoryFragment.c(this.b).setVisibility(View.VISIBLE);
                 BookCategoryFragment.c(this.b).setText("\u6682\u65f6\u6ca1\u6709\u4e66\u7c4d\u54e6");
                 return;
             }

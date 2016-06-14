@@ -33,13 +33,13 @@ public class PostFlag extends FrameLayout {
 
     public final boolean a(String string) {
         if ("hot".equals(string) || "focus".equals(string)) {
-            this.mHotFlag.setVisibility(0);
-            this.mDistillateFlag.setVisibility(8);
+            this.mHotFlag.setVisibility(View.VISIBLE);
+            this.mDistillateFlag.setVisibility(View.GONE);
             return true;
         }
         if ("distillate".equals(string)) {
-            this.mDistillateFlag.setVisibility(0);
-            this.mHotFlag.setVisibility(8);
+            this.mDistillateFlag.setVisibility(View.VISIBLE);
+            this.mHotFlag.setVisibility(View.GONE);
             return true;
         }
         return false;

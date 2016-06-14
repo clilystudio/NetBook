@@ -101,9 +101,9 @@ public class UGCGuideSelectBookActivity extends BaseActivity {
         this.b = this.findViewById(2131493100);
         this.c = this.findViewById(2131493227);
         if (this.h.size() == 0) {
-            this.b.setVisibility(0);
-            this.a.setVisibility(8);
-            this.c.setVisibility(8);
+            this.b.setVisibility(View.VISIBLE);
+            this.a.setVisibility(View.GONE);
+            this.c.setVisibility(View.GONE);
             return;
         }
         this.i = new ArrayList<BookReadRecord>();

@@ -125,7 +125,7 @@ public class PayChargeActivity extends BaseLoadingActivity {
         this.b(this.getIntent().getStringExtra("title_key"));
         this.g = this.getIntent().getStringExtra("token_key");
         this.b = LayoutInflater.from(this).inflate(2130903325, null);
-        this.b.setVisibility(8);
+        this.b.setVisibility(View.GONE);
         this.c = (ScrollLoadListView) this.findViewById(2131493981);
         this.c.addFooterView(this.b);
         this.c.setDividerHeight(0);

@@ -54,22 +54,22 @@ public class BookCategoryActivity extends BaseActivity {
                 return;
             }
             case 1: {
-                this.c.setVisibility(0);
-                this.a.setVisibility(8);
-                this.b.setVisibility(8);
+                this.c.setVisibility(View.VISIBLE);
+                this.a.setVisibility(View.GONE);
+                this.b.setVisibility(View.GONE);
                 return;
             }
             case 0: {
-                this.c.setVisibility(8);
-                this.a.setVisibility(0);
-                this.b.setVisibility(8);
+                this.c.setVisibility(View.GONE);
+                this.a.setVisibility(View.VISIBLE);
+                this.b.setVisibility(View.GONE);
                 return;
             }
             case 2:
         }
-        this.c.setVisibility(8);
-        this.a.setVisibility(8);
-        this.b.setVisibility(0);
+        this.c.setVisibility(View.GONE);
+        this.a.setVisibility(View.GONE);
+        this.b.setVisibility(View.VISIBLE);
     }
 
     /*

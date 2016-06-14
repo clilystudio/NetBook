@@ -15,7 +15,7 @@ final class dG implements j {
     @Override
     public final void a() {
         if (TweetHotFragment.b(this.a) == null || TweetHotFragment.b(this.a).getStatus() == AsyncTask.Status.FINISHED) {
-            TweetHotFragment.j(this.a).setVisibility(0);
+            TweetHotFragment.j(this.a).setVisibility(View.VISIBLE);
             if (!am.a((AsyncTask) TweetHotFragment.k(this.a))) {
                 TweetHotFragment.k(this.a).cancel(true);
             }

@@ -11,7 +11,7 @@ final class L implements av {
 
     @Override
     public final void a() {
-        PayChargeActivity.b(this.a).setVisibility(0);
+        PayChargeActivity.b(this.a).setVisibility(View.VISIBLE);
         O o = new O(this.a, 0);
         String[] arrstring = new String[]{PayChargeActivity.h(this.a)};
         o.b(arrstring);

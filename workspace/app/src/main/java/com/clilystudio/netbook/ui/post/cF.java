@@ -45,7 +45,7 @@ final class cF extends com.clilystudio.netbook.a_pack.e<String, Void, PostDetail
         super.onPostExecute(postDetailComment);
         if (postDetailComment != null && postDetailComment.isOk()) {
             this.a.b.setOnLastItemListener(ReviewActivity.c(this.a));
-            ReviewActivity.d(this.a).setVisibility(8);
+            ReviewActivity.d(this.a).setVisibility(View.GONE);
             List<PostComment> list = Arrays.asList(postDetailComment.getComments());
             ReviewActivity.e(this.a).addAll(list);
             ReviewActivity.f(this.a).a(ReviewActivity.e(this.a));

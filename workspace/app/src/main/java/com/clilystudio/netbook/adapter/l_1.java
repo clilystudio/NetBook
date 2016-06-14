@@ -50,16 +50,16 @@ public final class l extends W<DiscussSummary> {
             textView.setCompoundDrawablesWithIntrinsicBounds(2130837902, 0, 0, 0);
         }
         TextView textView2 = (TextView) this.a(6, TextView.class);
-        textView2.setVisibility(0);
+        textView2.setVisibility(View.VISIBLE);
         textView2.setText(String.valueOf(discussSummary.likeCount));
         String string = discussSummary.getState();
         PostFlag postFlag = (PostFlag) this.a(8, PostFlag.class);
         if (PostFlag.b(string)) {
-            postFlag.setVisibility(0);
+            postFlag.setVisibility(View.VISIBLE);
             postFlag.a(string);
             this.a(3, true);
         } else {
-            postFlag.setVisibility(8);
+            postFlag.setVisibility(View.GONE);
             this.a(3, false);
             this.a(3, t.e(discussSummary.getCreated()));
         }
@@ -67,31 +67,31 @@ public final class l extends W<DiscussSummary> {
         if (this.b) {
             String string2 = author.getGender();
             if ("male".equals(string2)) {
-                imageView.setVisibility(0);
+                imageView.setVisibility(View.VISIBLE);
                 imageView.setImageLevel(2);
                 return;
             }
             if ("female".equals(string2)) {
-                imageView.setVisibility(0);
+                imageView.setVisibility(View.VISIBLE);
                 imageView.setImageLevel(3);
                 return;
             }
-            imageView.setVisibility(0);
+            imageView.setVisibility(View.VISIBLE);
             imageView.setImageLevel(4);
             return;
         }
         String string3 = author.getType();
         if ("official".equals(string3)) {
-            imageView.setVisibility(0);
+            imageView.setVisibility(View.VISIBLE);
             imageView.setImageLevel(0);
             return;
         }
         if ("doyen".equals(string3)) {
-            imageView.setVisibility(0);
+            imageView.setVisibility(View.VISIBLE);
             imageView.setImageLevel(1);
             return;
         }
-        imageView.setVisibility(8);
+        imageView.setVisibility(View.GONE);
     }
 
     @Override

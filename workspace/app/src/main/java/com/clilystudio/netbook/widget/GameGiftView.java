@@ -16,7 +16,7 @@ public class GameGiftView extends LinearLayout {
 
     static /* synthetic */ void a(GameGiftView gameGiftView, GameGiftRoot gameGiftRoot) {
         View view = gameGiftView.findViewById(2131493480);
-        view.setVisibility(0);
+        view.setVisibility(View.VISIBLE);
         view.setOnClickListener(new K(gameGiftView, gameGiftRoot));
     }
 

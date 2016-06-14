@@ -63,7 +63,7 @@ public class BookTopicListFragment extends BookPostListFragment {
 
     static /* synthetic */ void f(BookTopicListFragment bookTopicListFragment) {
         if (bookTopicListFragment.e.getVisibility() == 8) {
-            bookTopicListFragment.e.setVisibility(0);
+            bookTopicListFragment.e.setVisibility(View.VISIBLE);
             bookTopicListFragment.e.setImageResource(2130837885);
             bookTopicListFragment.e.setOnClickListener(new aN(bookTopicListFragment));
             bookTopicListFragment.e.setContentDescription("\u53d1\u5e03\u8ba8\u8bba");

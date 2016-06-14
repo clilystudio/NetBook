@@ -29,13 +29,13 @@ public class BookPostListFragment extends Fragment {
     }
 
     public void b() {
-        this.d.setVisibility(0);
+        this.d.setVisibility(View.VISIBLE);
     }
 
     public final void c() {
-        this.d.setVisibility(8);
-        this.h.setVisibility(8);
-        this.c.setVisibility(8);
+        this.d.setVisibility(View.GONE);
+        this.h.setVisibility(View.GONE);
+        this.c.setVisibility(View.GONE);
         this.a.n();
     }
 

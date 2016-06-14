@@ -14,7 +14,7 @@ final class bL implements k<ListView> {
 
     @Override
     public final void a(PullToRefreshBase<ListView> pullToRefreshBase) {
-        MyTweetFragment.a(this.a).setVisibility(8);
+        MyTweetFragment.a(this.a).setVisibility(View.GONE);
         new Handler().postDelayed(new bM(this), 1000);
     }
 }

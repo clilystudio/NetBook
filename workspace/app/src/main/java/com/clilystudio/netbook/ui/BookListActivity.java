@@ -35,28 +35,28 @@ public abstract class BookListActivity extends BaseActivity {
                 return;
             }
             case 1: {
-                this.b.setVisibility(8);
-                this.c.setVisibility(8);
-                this.e.setVisibility(8);
+                this.b.setVisibility(View.GONE);
+                this.c.setVisibility(View.GONE);
+                this.e.setVisibility(View.GONE);
                 return;
             }
             case 0: {
-                this.b.setVisibility(0);
-                this.c.setVisibility(8);
-                this.e.setVisibility(8);
+                this.b.setVisibility(View.VISIBLE);
+                this.c.setVisibility(View.GONE);
+                this.e.setVisibility(View.GONE);
                 return;
             }
             case 2: {
-                this.b.setVisibility(8);
-                this.c.setVisibility(0);
-                this.e.setVisibility(8);
+                this.b.setVisibility(View.GONE);
+                this.c.setVisibility(View.VISIBLE);
+                this.e.setVisibility(View.GONE);
                 return;
             }
             case 3:
         }
-        this.b.setVisibility(8);
-        this.c.setVisibility(8);
-        this.e.setVisibility(0);
+        this.b.setVisibility(View.GONE);
+        this.c.setVisibility(View.GONE);
+        this.e.setVisibility(View.VISIBLE);
     }
 
     @Override

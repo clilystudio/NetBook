@@ -846,11 +846,11 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         {
             this.o = true;
             if (this.M == 0) {
-                this.r.setVisibility(0);
+                this.r.setVisibility(View.VISIBLE);
                 this.getWindow().addFlags(2048);
                 this.getWindow().clearFlags(1024);
                 if (this.E) {
-                    this.B.setVisibility(0);
+                    this.B.setVisibility(View.VISIBLE);
                 }
                 n n2 = this.A();
                 String string = null;
@@ -892,20 +892,20 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
     private void H() {
         if (this.o) {
             this.o = false;
-            this.r.setVisibility(8);
-            this.s.setVisibility(8);
+            this.r.setVisibility(View.GONE);
+            this.s.setVisibility(View.GONE);
             this.t.b();
             if (this.M == 1) {
                 this.T.e();
             }
             if (this.M == 2) {
-                this.u.setVisibility(8);
+                this.u.setVisibility(View.GONE);
                 if (this.u.b()) {
                     this.V.resumeSpeaking();
                     this.u.setPause(false);
                 }
             }
-            this.B.setVisibility(8);
+            this.B.setVisibility(View.GONE);
             this.getWindow().addFlags(1024);
             this.getWindow().clearFlags(2048);
             if (this.F) {
@@ -936,8 +936,8 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
     }
 
     private void I() {
-        this.T.setVisibility(8);
-        this.U.setVisibility(8);
+        this.T.setVisibility(View.GONE);
+        this.U.setVisibility(View.GONE);
     }
 
     private void J() {
@@ -986,13 +986,13 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
             return;
         }
         if (!this.T.isShown()) {
-            this.T.setVisibility(0);
+            this.T.setVisibility(View.VISIBLE);
             if (this.h.h()) {
                 this.U.setBackgroundResource(2130837612);
             } else {
                 this.U.setBackgroundResource(2130837611);
             }
-            this.U.setVisibility(0);
+            this.U.setVisibility(View.VISIBLE);
         }
         this.T.a();
     }
@@ -1381,7 +1381,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
             return;
         }
         if (n2 > 0) {
-            textView.setVisibility(0);
+            textView.setVisibility(View.VISIBLE);
             if (n2 > 99) {
                 n2 = 99;
             }
@@ -1389,7 +1389,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
             return;
         }
         this.Q = 0;
-        textView.setVisibility(8);
+        textView.setVisibility(View.GONE);
     }
 
     public final void b() {
@@ -1596,7 +1596,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         this.U = this.findViewById(2131493162);
         this.h = new bZ(this);
         this.O = (ThemeLoadingView) this.findViewById(2131493167);
-        this.O.setVisibility(8);
+        this.O.setVisibility(View.GONE);
         this.O.a(this.h.h());
         this.i = new bH(this);
         this.h.a((cc) ((Object) new bf(this)));

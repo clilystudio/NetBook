@@ -48,7 +48,7 @@ final class O extends e<String, Void, List<PayChargeRecord.Order>> {
     protected final /* synthetic */ void onPostExecute(Object object) {
         List list = (List) object;
         super.onPostExecute(list);
-        PayChargeActivity.b(this.a).setVisibility(8);
+        PayChargeActivity.b(this.a).setVisibility(View.GONE);
         if (list == null) {
             this.a.h();
             return;

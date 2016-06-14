@@ -44,11 +44,11 @@ public class LuckyGameWebActivity extends BaseActivity implements View.OnClickLi
     }
 
     static /* synthetic */ void b(LuckyGameWebActivity luckyGameWebActivity) {
-        luckyGameWebActivity.c.setVisibility(0);
+        luckyGameWebActivity.c.setVisibility(View.VISIBLE);
     }
 
     static /* synthetic */ void c(LuckyGameWebActivity luckyGameWebActivity) {
-        luckyGameWebActivity.c.setVisibility(8);
+        luckyGameWebActivity.c.setVisibility(View.GONE);
     }
 
     static /* synthetic */ WebView d(LuckyGameWebActivity luckyGameWebActivity) {

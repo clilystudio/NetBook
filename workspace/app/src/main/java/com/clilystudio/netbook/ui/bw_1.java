@@ -57,10 +57,10 @@ final class bw extends com.clilystudio.netbook.a_pack.e<String, Void, Notificati
         NotificationRoot notificationRoot = (NotificationRoot) object;
         super.onPostExecute(notificationRoot);
         if (this.a.getActivity() == null) return;
-        NotifFragment.b(this.a).setVisibility(8);
-        NotifFragment.a(this.a).setVisibility(8);
-        NotifFragment.h(this.a).setVisibility(8);
-        NotifFragment.i(this.a).setVisibility(8);
+        NotifFragment.b(this.a).setVisibility(View.GONE);
+        NotifFragment.a(this.a).setVisibility(View.GONE);
+        NotifFragment.h(this.a).setVisibility(View.GONE);
+        NotifFragment.i(this.a).setVisibility(View.GONE);
         NotifFragment.d(this.a).n();
         if (this.isCancelled()) return;
         if (notificationRoot != null && notificationRoot.isOk()) {
@@ -76,9 +76,9 @@ final class bw extends com.clilystudio.netbook.a_pack.e<String, Void, Notificati
                     return;
                 }
             } else if (NotifFragment.l(this.a) == 0) {
-                NotifFragment.a(this.a).setVisibility(0);
+                NotifFragment.a(this.a).setVisibility(View.VISIBLE);
                 NotifFragment.a(this.a).setText("\u4f60\u8fd8\u6ca1\u6709\u6d88\u606f");
-                NotifFragment.b(this.a).setVisibility(8);
+                NotifFragment.b(this.a).setVisibility(View.GONE);
             }
             NotifFragment.d(this.a).setOnLastItemVisibleListener(null);
             return;

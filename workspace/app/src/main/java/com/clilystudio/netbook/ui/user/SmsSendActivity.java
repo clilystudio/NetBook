@@ -53,9 +53,9 @@ public class SmsSendActivity extends BaseActivity {
     }
 
     static /* synthetic */ void d(SmsSendActivity smsSendActivity) {
-        smsSendActivity.mNormalLine.setVisibility(8);
-        smsSendActivity.mErrorLine.setVisibility(0);
-        smsSendActivity.mWrongText.setVisibility(0);
+        smsSendActivity.mNormalLine.setVisibility(View.GONE);
+        smsSendActivity.mErrorLine.setVisibility(View.VISIBLE);
+        smsSendActivity.mWrongText.setVisibility(View.VISIBLE);
     }
 
     static /* synthetic */ void e(SmsSendActivity smsSendActivity) {
@@ -75,8 +75,8 @@ public class SmsSendActivity extends BaseActivity {
     }
 
     private void b() {
-        this.mNormalLine.setVisibility(0);
-        this.mErrorLine.setVisibility(8);
+        this.mNormalLine.setVisibility(View.VISIBLE);
+        this.mErrorLine.setVisibility(View.GONE);
         this.mWrongText.setVisibility(4);
     }
 

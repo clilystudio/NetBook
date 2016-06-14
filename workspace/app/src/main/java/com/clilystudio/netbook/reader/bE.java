@@ -79,9 +79,9 @@ final class bE extends e<String, Void, Object[]> {
         ReaderMixActivity.a(this.a, (ChineseAllPromRoot) arrobject[1]);
         if (ReaderMixActivity.g(this.a) != null && ReaderMixActivity.g(this.a).getProm() != null) {
             ReaderMixActivity.h(this.a).setOnClickListener(new bF(this.a, ReaderMixActivity.g(this.a)));
-            ReaderMixActivity.h(this.a).setVisibility(0);
+            ReaderMixActivity.h(this.a).setVisibility(View.VISIBLE);
             return;
         }
-        ReaderMixActivity.h(this.a).setVisibility(8);
+        ReaderMixActivity.h(this.a).setVisibility(View.GONE);
     }
 }

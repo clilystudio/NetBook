@@ -80,10 +80,10 @@ public class HomeFindSecretItem extends HomeFindItem {
             }
         }
         if (!bl) {
-            this.setVisibility(8);
+            this.setVisibility(View.GONE);
             return;
         }
-        this.setVisibility(0);
+        this.setVisibility(View.VISIBLE);
         if (this.b()) {
             this.mIcon.setImageResource(2130837832);
         } else {
@@ -95,7 +95,7 @@ public class HomeFindSecretItem extends HomeFindItem {
             return;
         }
         this.mTitle.setText("\u795e\u79d8\u529f\u80fd");
-        this.mSubFlag.setVisibility(0);
+        this.mSubFlag.setVisibility(View.VISIBLE);
     }
 
     /*

@@ -44,9 +44,9 @@ final class F extends com.clilystudio.netbook.a_pack.e<String, Void, Topic> {
     protected final /* synthetic */ void onPostExecute(Object object) {
         Topic topic = (Topic) object;
         super.onPostExecute(topic);
-        MyTopicFragment.a(this.a).setVisibility(8);
-        MyTopicFragment.c(this.a).setVisibility(8);
-        MyTopicFragment.i(this.a).setVisibility(8);
+        MyTopicFragment.a(this.a).setVisibility(View.GONE);
+        MyTopicFragment.c(this.a).setVisibility(View.GONE);
+        MyTopicFragment.i(this.a).setVisibility(View.GONE);
         MyTopicFragment.d(this.a).n();
         if (this.isCancelled()) return;
         if (topic != null && topic.getPosts() != null) {

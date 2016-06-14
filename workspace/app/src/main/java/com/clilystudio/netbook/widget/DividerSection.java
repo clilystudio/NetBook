@@ -38,11 +38,11 @@ public class DividerSection extends RelativeLayout {
         this.a = new FrameLayout(context);
         this.a.setLayoutParams(new RelativeLayout.LayoutParams(-1, -1));
         this.addView(this.a);
-        this.a.setVisibility(8);
+        this.a.setVisibility(View.GONE);
     }
 
     public final FrameLayout a() {
-        this.a.setVisibility(0);
+        this.a.setVisibility(View.VISIBLE);
         return this.a;
     }
 

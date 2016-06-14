@@ -238,10 +238,10 @@ public class TweetDetailActivity extends AbsPostActivity {
         tweetDetailActivity.r = (TextView) tweetDetailActivity.c.findViewById(2131492947);
         tweetDetailActivity.r.setText("\u5171" + tweetDetailActivity.t.getTweet().getVoteCount() + "\u4eba\u6295\u7968");
         if (tweetDetailActivity.u.equals("ARTICLE")) {
-            textView.setVisibility(0);
+            textView.setVisibility(View.VISIBLE);
             textView.setText(tweet.getTitle());
         } else {
-            textView.setVisibility(8);
+            textView.setVisibility(View.GONE);
         }
         ((LinkifyTextView) tweetDetailActivity.c.findViewById(2131492905)).setLinkifyText(tweet.getContent(), user.isOfficial());
         ((TextView) tweetDetailActivity.findViewById(2131493519)).setText("\u5171" + tweetDetailActivity.t.getTweet().getCommented() + "\u6761\u8bc4\u8bba");
@@ -249,26 +249,26 @@ public class TweetDetailActivity extends AbsPostActivity {
         if (tweetDetailActivity.y) {
             String string = user.getGender();
             if ("male".equals(string)) {
-                imageView.setVisibility(0);
+                imageView.setVisibility(View.VISIBLE);
                 imageView.setImageLevel(2);
             } else if ("female".equals(string)) {
-                imageView.setVisibility(0);
+                imageView.setVisibility(View.VISIBLE);
                 imageView.setImageLevel(3);
             } else {
-                imageView.setVisibility(0);
+                imageView.setVisibility(View.VISIBLE);
                 imageView.setImageLevel(4);
             }
         } else {
             String string = user.getType();
             if ("official".equals(string)) {
-                imageView.setVisibility(0);
+                imageView.setVisibility(View.VISIBLE);
                 imageView.setImageLevel(0);
                 a.s(tweetDetailActivity, tweet.get_id());
             } else if ("doyen".equals(string)) {
-                imageView.setVisibility(0);
+                imageView.setVisibility(View.VISIBLE);
                 imageView.setImageLevel(1);
             } else {
-                imageView.setVisibility(8);
+                imageView.setVisibility(View.GONE);
             }
         }
         ((PostAgreeView) tweetDetailActivity.c.findViewById(2131493840)).setPostId(tweetDetailActivity.a);
@@ -295,7 +295,7 @@ public class TweetDetailActivity extends AbsPostActivity {
     static /* synthetic */ void g(TweetDetailActivity tweetDetailActivity) {
         if (tweetDetailActivity.t != null) {
             tweetDetailActivity.g.clear();
-            tweetDetailActivity.j.setVisibility(0);
+            tweetDetailActivity.j.setVisibility(View.VISIBLE);
             dy dy2 = tweetDetailActivity.h = new dy(tweetDetailActivity, 0);
             Object[] arrobject = new String[]{tweetDetailActivity.t.getTweet().get_id()};
             dy2.execute(arrobject);
@@ -331,7 +331,7 @@ public class TweetDetailActivity extends AbsPostActivity {
 
     static /* synthetic */ void n(TweetDetailActivity tweetDetailActivity) {
         if (tweetDetailActivity.t != null) {
-            tweetDetailActivity.j.setVisibility(0);
+            tweetDetailActivity.j.setVisibility(View.VISIBLE);
             tweetDetailActivity.h = new dy(tweetDetailActivity, 0);
             String string = "";
             if (tweetDetailActivity.g.size() > 0) {
@@ -365,7 +365,7 @@ public class TweetDetailActivity extends AbsPostActivity {
         int n4 = 0;
         while (n4 < 7) {
             this.n[n4].setEnabled(false);
-            this.m[n4].setVisibility(0);
+            this.m[n4].setVisibility(View.VISIBLE);
             if (n4 == n) {
                 this.n[n4].setImageResource(2130838056);
             } else {
@@ -459,7 +459,7 @@ public class TweetDetailActivity extends AbsPostActivity {
     @Override
     public final void f() {
         super.f();
-        this.i.setVisibility(0);
+        this.i.setVisibility(View.VISIBLE);
     }
 
     /*
@@ -556,7 +556,7 @@ public class TweetDetailActivity extends AbsPostActivity {
         hotCommentView.a(this.a);
         this.j = LayoutInflater.from(this).inflate(2130903325, null);
         this.b.addFooterView(this.j);
-        this.j.setVisibility(8);
+        this.j.setVisibility(View.GONE);
         this.f = new z(this.getLayoutInflater());
         this.b.setAdapter(this.f);
         this.v = (SendView) this.findViewById(2131494003);

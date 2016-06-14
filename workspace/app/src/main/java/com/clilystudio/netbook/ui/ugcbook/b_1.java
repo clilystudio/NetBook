@@ -13,7 +13,7 @@ final class b implements k<ListView> {
 
     @Override
     public final void a(PullToRefreshBase<ListView> pullToRefreshBase) {
-        this.a.j.setVisibility(8);
+        this.a.j.setVisibility(View.GONE);
         this.a.f.postDelayed(new c(this), 1000);
     }
 }

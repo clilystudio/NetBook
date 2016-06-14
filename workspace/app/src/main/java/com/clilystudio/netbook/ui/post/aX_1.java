@@ -13,7 +13,7 @@ final class aX implements j {
     @Override
     public final void a() {
         if (CommonPostListActivity.c(this.a) == null || CommonPostListActivity.c(this.a).getStatus() == AsyncTask.Status.FINISHED) {
-            CommonPostListActivity.q(this.a).setVisibility(0);
+            CommonPostListActivity.q(this.a).setVisibility(View.VISIBLE);
             if (!am.a(CommonPostListActivity.f(this.a))) {
                 CommonPostListActivity.f(this.a).cancel(true);
             }

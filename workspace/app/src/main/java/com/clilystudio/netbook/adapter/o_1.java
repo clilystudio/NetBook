@@ -54,18 +54,18 @@ public final class o extends W<GirlTopicSummary> {
             textView.setCompoundDrawablesWithIntrinsicBounds(2130837902, 0, 0, 0);
         }
         TextView textView2 = (TextView) this.a(6, TextView.class);
-        textView2.setVisibility(0);
+        textView2.setVisibility(View.VISIBLE);
         textView2.setText(String.valueOf(girlTopicSummary.getLikeCount()));
         if (this.b) {
             String string = author.getGender();
             if ("male".equals(string)) {
-                ((ImageView) this.a(7, ImageView.class)).setVisibility(0);
+                ((ImageView) this.a(7, ImageView.class)).setVisibility(View.VISIBLE);
                 ((ImageView) this.a(7, ImageView.class)).setImageLevel(2);
             } else if ("female".equals(string)) {
-                ((ImageView) this.a(7, ImageView.class)).setVisibility(0);
+                ((ImageView) this.a(7, ImageView.class)).setVisibility(View.VISIBLE);
                 ((ImageView) this.a(7, ImageView.class)).setImageLevel(3);
             } else {
-                ((ImageView) this.a(7, ImageView.class)).setVisibility(0);
+                ((ImageView) this.a(7, ImageView.class)).setVisibility(View.VISIBLE);
                 ((ImageView) this.a(7, ImageView.class)).setImageLevel(4);
             }
         } else {

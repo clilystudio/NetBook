@@ -76,7 +76,7 @@ public final class HomeTopicAdapter extends u<BookShelfTopic> {
             homeTopicAdapter$ViewHolder.mCover.setImageUrl(bookShelfTopic.getFullCover(), 2130837766);
             TextView textView = homeTopicAdapter$ViewHolder.mCount;
             String string = bookShelfTopic.getBookId();
-            textView.setVisibility(8);
+            textView.setVisibility(View.GONE);
             textView.setText("");
             textView.setTag(string);
             this.b.a(string, (ai) ((Object) new s(this, textView, bookShelfTopic)));

@@ -52,9 +52,9 @@ final class d extends com.clilystudio.netbook.a_pack.e<String, Void, UGCBookList
     protected final /* synthetic */ void onPostExecute(Object object) {
         UGCBookListRoot uGCBookListRoot = (UGCBookListRoot) object;
         super.onPostExecute(uGCBookListRoot);
-        this.a.j.setVisibility(8);
-        this.a.d.setVisibility(8);
-        this.a.e.setVisibility(8);
+        this.a.j.setVisibility(View.GONE);
+        this.a.d.setVisibility(View.GONE);
+        this.a.e.setVisibility(View.GONE);
         this.a.a.n();
         if (this.isCancelled()) return;
         if (uGCBookListRoot != null) {
@@ -72,7 +72,7 @@ final class d extends com.clilystudio.netbook.a_pack.e<String, Void, UGCBookList
                         return;
                     }
                 } else if (this.a.c.getCount() == 0) {
-                    this.a.j.setVisibility(0);
+                    this.a.j.setVisibility(View.VISIBLE);
                     this.a.j.setText(this.a.c());
                 }
                 this.a.a.setOnLastItemVisibleListener(null);

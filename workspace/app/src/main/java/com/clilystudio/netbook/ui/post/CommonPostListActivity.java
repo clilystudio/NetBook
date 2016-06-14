@@ -237,8 +237,8 @@ public class CommonPostListActivity extends BaseActivity {
     }
 
     static /* synthetic */ void t(CommonPostListActivity commonPostListActivity) {
-        commonPostListActivity.f.setVisibility(8);
-        commonPostListActivity.k.setVisibility(0);
+        commonPostListActivity.f.setVisibility(View.GONE);
+        commonPostListActivity.k.setVisibility(View.VISIBLE);
         commonPostListActivity.k.setText("\u8fd9\u91cc\u8fd8\u6ca1\u6709\u5e16\u5b50\uff0c\u53bb\u53d1\u5e03\u4e00\u4e2a\u5427");
     }
 
@@ -294,7 +294,7 @@ public class CommonPostListActivity extends BaseActivity {
             this.i.setFooterDividersEnabled(false);
         }
         this.i.addFooterView(this.j);
-        this.j.setVisibility(8);
+        this.j.setVisibility(View.GONE);
         this.f.setOnRefreshListener(new ba(this));
         this.i.setOnItemClickListener((AdapterView.OnItemClickListener) ((Object) new bc(this)));
         this.p = new l(this.getLayoutInflater());

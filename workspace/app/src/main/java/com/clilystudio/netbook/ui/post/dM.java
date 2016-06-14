@@ -13,7 +13,7 @@ final class dM implements j {
     @Override
     public final void a() {
         if (TweetListFragment.b(this.a) == null || TweetListFragment.b(this.a).getStatus() == AsyncTask.Status.FINISHED) {
-            TweetListFragment.k(this.a).setVisibility(0);
+            TweetListFragment.k(this.a).setVisibility(View.VISIBLE);
             if (!am.a((AsyncTask) TweetListFragment.l(this.a))) {
                 TweetListFragment.l(this.a).cancel(true);
             }

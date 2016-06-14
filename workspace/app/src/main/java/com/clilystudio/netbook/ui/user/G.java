@@ -41,9 +41,9 @@ final class G extends com.clilystudio.netbook.a_pack.e<String, Void, Topic> {
     protected final /* synthetic */ void onPostExecute(Object object) {
         Topic topic = (Topic) object;
         super.onPostExecute(topic);
-        MyTopicFragment.a(this.a).setVisibility(8);
-        MyTopicFragment.c(this.a).setVisibility(8);
-        MyTopicFragment.i(this.a).setVisibility(8);
+        MyTopicFragment.a(this.a).setVisibility(View.GONE);
+        MyTopicFragment.c(this.a).setVisibility(View.GONE);
+        MyTopicFragment.i(this.a).setVisibility(View.GONE);
         MyTopicFragment.d(this.a).n();
         if (topic != null && topic.getPosts() != null) {
             MyTopicFragment.h(this.a).clear();
@@ -60,7 +60,7 @@ final class G extends com.clilystudio.netbook.a_pack.e<String, Void, Topic> {
                     MyTopicFragment.d(this.a).setOnLastItemVisibleListener(MyTopicFragment.j(this.a));
                 }
             } else {
-                MyTopicFragment.a(this.a).setVisibility(0);
+                MyTopicFragment.a(this.a).setVisibility(View.VISIBLE);
                 MyTopicFragment.a(this.a).setText("\u4f60\u8fd8\u6ca1\u6709\u53d1\u5e03\u54e6\uff0c\u5feb\u53bb\u53d1\u5e03\u4e00\u4e2a\u5427");
             }
             MyTopicFragment.k(this.a).a(MyTopicFragment.h(this.a));

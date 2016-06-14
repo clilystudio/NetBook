@@ -21,9 +21,9 @@ public class CommunitySection extends DividerSection {
 
     public final void a(boolean bl) {
         if (bl) {
-            this.mDot.setVisibility(0);
+            this.mDot.setVisibility(View.VISIBLE);
             return;
         }
-        this.mDot.setVisibility(8);
+        this.mDot.setVisibility(View.GONE);
     }
 }

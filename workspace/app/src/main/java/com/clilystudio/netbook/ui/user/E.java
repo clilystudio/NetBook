@@ -12,7 +12,7 @@ final class E implements j {
     @Override
     public final void a() {
         if (MyTopicFragment.e(this.a) == null || MyTopicFragment.e(this.a).getStatus() == AsyncTask.Status.FINISHED) {
-            MyTopicFragment.i(this.a).setVisibility(0);
+            MyTopicFragment.i(this.a).setVisibility(View.VISIBLE);
             if (MyTopicFragment.f(this.a) != null && MyTopicFragment.f(this.a).getStatus() != AsyncTask.Status.FINISHED && !MyTopicFragment.f(this.a).isCancelled()) {
                 MyTopicFragment.f(this.a).cancel(true);
             }

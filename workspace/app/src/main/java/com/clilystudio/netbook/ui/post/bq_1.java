@@ -42,7 +42,7 @@ final class bq extends com.clilystudio.netbook.a_pack.e<String, Void, PostDetail
         super.onPostExecute(postDetailComment);
         if (postDetailComment != null && postDetailComment.isOk()) {
             this.a.b.setOnLastItemListener(GirlTopicActivity.d(this.a));
-            GirlTopicActivity.e(this.a).setVisibility(8);
+            GirlTopicActivity.e(this.a).setVisibility(View.GONE);
             List<PostComment> list = Arrays.asList(postDetailComment.getComments());
             GirlTopicActivity.f(this.a).addAll(list);
             GirlTopicActivity.c(this.a).a(GirlTopicActivity.f(this.a));

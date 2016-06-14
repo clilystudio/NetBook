@@ -45,13 +45,13 @@ public final class d extends W<BookHelpSummary> {
         if (this.b) {
             String string = author.getGender();
             if ("male".equals(string)) {
-                ((ImageView) this.a(6, ImageView.class)).setVisibility(0);
+                ((ImageView) this.a(6, ImageView.class)).setVisibility(View.VISIBLE);
                 ((ImageView) this.a(6, ImageView.class)).setImageLevel(2);
             } else if ("female".equals(string)) {
-                ((ImageView) this.a(6, ImageView.class)).setVisibility(0);
+                ((ImageView) this.a(6, ImageView.class)).setVisibility(View.VISIBLE);
                 ((ImageView) this.a(6, ImageView.class)).setImageLevel(3);
             } else {
-                ((ImageView) this.a(6, ImageView.class)).setVisibility(0);
+                ((ImageView) this.a(6, ImageView.class)).setVisibility(View.VISIBLE);
                 ((ImageView) this.a(6, ImageView.class)).setImageLevel(4);
             }
         } else {

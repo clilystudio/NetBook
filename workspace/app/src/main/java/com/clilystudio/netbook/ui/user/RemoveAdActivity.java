@@ -29,8 +29,8 @@ public class RemoveAdActivity extends BaseLoadingActivity {
         i.a().a(this);
         this.b();
         if (a.r(this, "switch_share_remove_ad")) {
-            this.findViewById(2131493176).setVisibility(0);
-            this.findViewById(2131493177).setVisibility(0);
+            this.findViewById(2131493176).setVisibility(View.VISIBLE);
+            this.findViewById(2131493177).setVisibility(View.VISIBLE);
             this.findViewById(2131493179).setOnClickListener(new ai(this));
         }
     }

@@ -13,7 +13,7 @@ final class aP implements j {
     @Override
     public final void a() {
         if (BookTopicListFragment.b(this.a) == null || BookTopicListFragment.b(this.a).getStatus() == AsyncTask.Status.FINISHED) {
-            this.a.c.setVisibility(0);
+            this.a.c.setVisibility(View.VISIBLE);
             if (!am.a((AsyncTask) BookTopicListFragment.i(this.a))) {
                 BookTopicListFragment.i(this.a).cancel(true);
             }

@@ -16,7 +16,7 @@ public class LabelPtrListView extends HeaderPtrListView {
         ListView listView = (ListView) this.h();
         View view = LayoutInflater.from(context).inflate(2130903330, (ViewGroup) listView, false);
         this.c = (TextView) view.findViewById(2131492905);
-        this.c.setVisibility(8);
+        this.c.setVisibility(View.GONE);
         listView.addHeaderView(view, null, false);
         this.invalidate();
     }
@@ -26,9 +26,9 @@ public class LabelPtrListView extends HeaderPtrListView {
         Object[] arrobject = new Object[]{n};
         textView.setText(String.format(string, arrobject));
         if (n == 0) {
-            this.c.setVisibility(8);
+            this.c.setVisibility(View.GONE);
             return;
         }
-        this.c.setVisibility(0);
+        this.c.setVisibility(View.VISIBLE);
     }
 }

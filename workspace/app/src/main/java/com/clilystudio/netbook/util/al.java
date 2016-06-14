@@ -7,27 +7,16 @@ import android.widget.TextView;
 public abstract class al extends BaseAdapter {
     private ar a = new ar();
 
-    /*
-     * Enabled aggressive block sorting
-     */
     protected final View a(int n, boolean bl) {
         View view = this.a.a[n];
-        if (view == null) return view;
-        {
+        if (view != null) {
             if (bl) {
-                if (8 == view.getVisibility()) return view;
-                {
-                    view.setVisibility(8);
-                    return view;
-                }
+                view.setVisibility(View.GONE);
             } else {
-                if (view.getVisibility() == 0) return view;
-                {
-                    view.setVisibility(0);
-                    return view;
-                }
+                view.setVisibility(View.VISIBLE);
             }
         }
+        return view;
     }
 
     protected final View a(View view, int[] arrn) {

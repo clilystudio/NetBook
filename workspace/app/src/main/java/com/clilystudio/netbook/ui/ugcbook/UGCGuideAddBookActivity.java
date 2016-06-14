@@ -112,32 +112,32 @@ public class UGCGuideAddBookActivity extends BaseActivity implements View.OnClic
                 return;
             }
             case 1: {
-                this.i.setVisibility(8);
-                this.j.setVisibility(8);
-                this.g.setVisibility(0);
+                this.i.setVisibility(View.GONE);
+                this.j.setVisibility(View.GONE);
+                this.g.setVisibility(View.VISIBLE);
                 return;
             }
             case 0: {
-                this.i.setVisibility(0);
-                this.j.setVisibility(8);
-                this.g.setVisibility(8);
+                this.i.setVisibility(View.VISIBLE);
+                this.j.setVisibility(View.GONE);
+                this.g.setVisibility(View.GONE);
                 return;
             }
             case 3: {
-                this.i.setVisibility(8);
-                this.j.setVisibility(0);
-                this.g.setVisibility(8);
+                this.i.setVisibility(View.GONE);
+                this.j.setVisibility(View.VISIBLE);
+                this.g.setVisibility(View.GONE);
                 return;
             }
             case 2:
         }
-        this.i.setVisibility(8);
-        this.j.setVisibility(8);
-        this.g.setVisibility(8);
+        this.i.setVisibility(View.GONE);
+        this.j.setVisibility(View.GONE);
+        this.g.setVisibility(View.GONE);
     }
 
     private void a(boolean bl) {
-        this.h.setVisibility(8);
+        this.h.setVisibility(View.GONE);
         this.b = this.c.getText().toString().trim();
         this.f();
         if (a.t(this)) {
@@ -157,13 +157,13 @@ public class UGCGuideAddBookActivity extends BaseActivity implements View.OnClic
     }
 
     private void b() {
-        this.l.setVisibility(0);
+        this.l.setVisibility(View.VISIBLE);
         this.getWindow().setSoftInputMode(21);
         this.c.requestFocus();
     }
 
     private void f() {
-        this.l.setVisibility(8);
+        this.l.setVisibility(View.GONE);
         this.c.clearFocus();
         if (this.a == null) {
             this.a = (InputMethodManager) this.getSystemService("input_method");
@@ -179,7 +179,7 @@ public class UGCGuideAddBookActivity extends BaseActivity implements View.OnClic
     public void onBackPressed() {
         boolean bl = this.h.getVisibility() == 0;
         if (bl) {
-            this.h.setVisibility(8);
+            this.h.setVisibility(View.GONE);
             return;
         }
         super.onBackPressed();
@@ -218,7 +218,7 @@ public class UGCGuideAddBookActivity extends BaseActivity implements View.OnClic
         View view = layoutInflater.inflate(2130903042, null, false);
         view.findViewById(2131493013).setOnClickListener(this);
         this.setCustomActionBar(view);
-        this.findViewById(2131493186).setVisibility(8);
+        this.findViewById(2131493186).setVisibility(View.GONE);
         this.n = true;
         UGCGuideAddBookActivity$SearchPromptAdapter uGCGuideAddBookActivity$SearchPromptAdapter = new UGCGuideAddBookActivity$SearchPromptAdapter(this);
         this.h = (SearchFixListView) this.findViewById(2131493193);
@@ -231,7 +231,7 @@ public class UGCGuideAddBookActivity extends BaseActivity implements View.OnClic
         this.i = this.findViewById(2131493085);
         this.j = this.findViewById(2131493184);
         this.l = this.findViewById(2131493183);
-        this.findViewById(2131493982).setVisibility(8);
+        this.findViewById(2131493982).setVisibility(View.GONE);
         this.e.setOnClickListener(this);
         this.f.setOnClickListener(this);
         this.e.setEnabled(false);

@@ -257,7 +257,7 @@ public class G extends u {
             }
             case 1: {
                 View view3 = LayoutInflater.from(viewGroup.getContext()).inflate(2130903315, viewGroup, false);
-                view3.findViewById(2131493348).setVisibility(0);
+                view3.findViewById(2131493348).setVisibility(View.VISIBLE);
                 view3.setTag(new R(this, view3));
                 return view3;
             }
@@ -303,7 +303,7 @@ public class G extends u {
      */
     private void a(R r, Tweet tweet, User user, boolean bl) {
         G.a(r.h, 15, 15, 15, 15);
-        r.h.setVisibility(0);
+        r.h.setVisibility(View.VISIBLE);
         if (bl) {
             r.h.setOnClickListener(new N(this, r, tweet));
             r.h.setText("\u5220\u9664");
@@ -334,15 +334,15 @@ public class G extends u {
     private void a(Tweet tweet, R r) {
         User user = tweet.isRetween() ? tweet.getFrom() : tweet.getUser();
         if (!this.b && (tweet.isHot() || tweet.isRetween() && tweet.getRefTweet().isHot())) {
-            r.k.setVisibility(0);
+            r.k.setVisibility(View.VISIBLE);
             r.k.a("hot");
-            r.e.setVisibility(8);
+            r.e.setVisibility(View.GONE);
         } else {
-            r.k.setVisibility(8);
-            r.e.setVisibility(0);
+            r.k.setVisibility(View.GONE);
+            r.e.setVisibility(View.VISIBLE);
         }
         if (tweet.isRetween()) {
-            r.l.setVisibility(0);
+            r.l.setVisibility(View.VISIBLE);
             String string = tweet.getUser().getNickname();
             if (tweet.getNames() != null && tweet.names.length > 0) {
                 String string2 = "";
@@ -359,7 +359,7 @@ public class G extends u {
             tweet.getRefTweet().setUser(tweet.getFrom());
             tweet = tweet.getRefTweet();
         } else {
-            r.l.setVisibility(8);
+            r.l.setVisibility(View.GONE);
             r.e.setText(t.e((Date) tweet.getCreated()));
         }
         r.a.setImageUrl(user.getFullAvatar());
@@ -414,29 +414,29 @@ public class G extends u {
         if (this.f) {
             if (user.getGenderFlag() == 0) {
                 r.p.setImageLevel(2);
-                r.p.setVisibility(0);
+                r.p.setVisibility(View.VISIBLE);
                 return;
             }
             if (user.getGenderFlag() == 1) {
                 r.p.setImageLevel(3);
-                r.p.setVisibility(0);
+                r.p.setVisibility(View.VISIBLE);
                 return;
             }
             r.p.setImageLevel(4);
-            r.p.setVisibility(0);
+            r.p.setVisibility(View.VISIBLE);
             return;
         }
         if (user.isOfficial()) {
             r.p.setImageLevel(0);
-            r.p.setVisibility(0);
+            r.p.setVisibility(View.VISIBLE);
             return;
         }
         if (user.isDoyan()) {
             r.p.setImageLevel(1);
-            r.p.setVisibility(0);
+            r.p.setVisibility(View.VISIBLE);
             return;
         }
-        r.p.setVisibility(8);
+        r.p.setVisibility(View.GONE);
     }
 
     private void b(R r) {

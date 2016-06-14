@@ -18,10 +18,10 @@ public abstract class BaseLoadingFragment extends Fragment {
      */
     private void a(View view) {
         if (view != null) {
-            view.setVisibility(0);
+            view.setVisibility(View.VISIBLE);
             for (View view2 : this.e) {
                 if (view == view2) continue;
-                view2.setVisibility(8);
+                view2.setVisibility(View.GONE);
             }
         }
     }

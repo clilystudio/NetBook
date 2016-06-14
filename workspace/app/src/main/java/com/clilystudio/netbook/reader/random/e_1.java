@@ -11,11 +11,11 @@ final class e implements ae {
 
     @Override
     public final void a() {
-        ReaderRandomActivity.l(this.a).setVisibility(0);
+        ReaderRandomActivity.l(this.a).setVisibility(View.VISIBLE);
     }
 
     @Override
     public final void b() {
-        ReaderRandomActivity.l(this.a).setVisibility(8);
+        ReaderRandomActivity.l(this.a).setVisibility(View.GONE);
     }
 }

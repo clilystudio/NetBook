@@ -24,18 +24,18 @@ public class HomeFindGameItem extends HomeFindItem {
      */
     public final void a() {
         if (!a.w(this.getContext())) {
-            this.setVisibility(8);
+            this.setVisibility(View.GONE);
             return;
         }
-        this.setVisibility(0);
-        this.mSubFlag.setVisibility(8);
-        this.mSubText.setVisibility(8);
+        this.setVisibility(View.VISIBLE);
+        this.mSubFlag.setVisibility(View.GONE);
+        this.mSubText.setVisibility(View.GONE);
         this.a = b.b(this.getContext(), "home_game_center_value");
         if ("1".equals(this.a)) {
             if (!a.l(this.getContext(), "sp_find_item_game_dot")) return;
             {
-                this.mSubFlag.setVisibility(0);
-                this.mSubText.setVisibility(8);
+                this.mSubFlag.setVisibility(View.VISIBLE);
+                this.mSubText.setVisibility(View.GONE);
                 this.mSubFlag.setImageResource(2130838025);
                 return;
             }
@@ -43,8 +43,8 @@ public class HomeFindGameItem extends HomeFindItem {
             String string;
             if (TextUtils.isEmpty(this.a) || "0".equals(this.a) || this.a.equals(string = a.d(this.getContext(), "sp_find_item_game_tips", null))) return;
             {
-                this.mSubFlag.setVisibility(8);
-                this.mSubText.setVisibility(0);
+                this.mSubFlag.setVisibility(View.GONE);
+                this.mSubText.setVisibility(View.VISIBLE);
                 this.mSubText.setText(this.a);
                 return;
             }
@@ -57,8 +57,8 @@ public class HomeFindGameItem extends HomeFindItem {
         if (!TextUtils.isEmpty(this.a)) {
             a.b(context, "sp_find_item_game_dot", false);
             a.e(context, "sp_find_item_game_tips", this.a);
-            this.mSubFlag.setVisibility(8);
-            this.mSubText.setVisibility(8);
+            this.mSubFlag.setVisibility(View.GONE);
+            this.mSubText.setVisibility(View.GONE);
         }
         b.a(context, "GameCenterActivity_open");
     }

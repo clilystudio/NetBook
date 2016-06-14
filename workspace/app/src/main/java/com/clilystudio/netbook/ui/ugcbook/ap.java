@@ -14,7 +14,7 @@ final class ap implements k<ListView> {
 
     @Override
     public final void a(PullToRefreshBase<ListView> pullToRefreshBase) {
-        UGCMainListFragment.a(this.a).setVisibility(8);
+        UGCMainListFragment.a(this.a).setVisibility(View.GONE);
         new Handler().postDelayed(new aq(this), 1000);
     }
 }

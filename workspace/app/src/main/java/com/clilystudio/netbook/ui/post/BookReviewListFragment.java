@@ -97,7 +97,7 @@ public class BookReviewListFragment extends BookPostListFragment {
 
     static /* synthetic */ void g(BookReviewListFragment bookReviewListFragment) {
         if (bookReviewListFragment.e.getVisibility() == 8) {
-            bookReviewListFragment.e.setVisibility(0);
+            bookReviewListFragment.e.setVisibility(View.VISIBLE);
             bookReviewListFragment.e.setImageResource(2130837883);
             bookReviewListFragment.e.setOnClickListener(new aC(bookReviewListFragment));
             bookReviewListFragment.e.setContentDescription("\u5199\u4e66\u8bc4");

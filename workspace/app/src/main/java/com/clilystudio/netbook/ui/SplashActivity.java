@@ -66,7 +66,7 @@ public class SplashActivity extends Activity {
 
     private void g() {
         if ("1".equals(b.b(this, "splash_ad_third_enable"))) {
-            this.findViewById(2131493995).setVisibility(8);
+            this.findViewById(2131493995).setVisibility(View.GONE);
             this.a(3000);
             AdSplashImp adSplashImp = new AdSplashImp(this);
             if (am.i((String) "com.qq.e.ads.nativ.NativeAD")) {
@@ -103,8 +103,8 @@ public class SplashActivity extends Activity {
             this.b = 3000;
             Bitmap bitmap = splashAdvert.getBitmap();
             String string = splashAdvert.getSplashRecord().link;
-            this.findViewById(2131493263).setVisibility(0);
-            this.findViewById(2131493995).setVisibility(8);
+            this.findViewById(2131493263).setVisibility(View.VISIBLE);
+            this.findViewById(2131493995).setVisibility(View.GONE);
             ImageView imageView = (ImageView) this.findViewById(2131493264);
             imageView.setImageBitmap(bitmap);
             imageView.setOnClickListener(new cj(this, splashAdvert, string));
@@ -153,7 +153,7 @@ public class SplashActivity extends Activity {
 
     public final void c() {
         this.i();
-        this.findViewById(2131493263).setVisibility(0);
+        this.findViewById(2131493263).setVisibility(View.VISIBLE);
     }
 
     /*

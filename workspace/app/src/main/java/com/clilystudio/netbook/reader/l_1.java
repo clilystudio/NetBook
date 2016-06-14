@@ -24,12 +24,12 @@ final class l extends Handler {
         if (message.what == 1 && message.obj != null) {
             ArrayList arrayList = (ArrayList) message.obj;
             if (arrayList.size() == 0) {
-                LocalChapterListActivity.g(this.a).setVisibility(8);
-                LocalChapterListActivity.h(this.a).setVisibility(0);
+                LocalChapterListActivity.g(this.a).setVisibility(View.GONE);
+                LocalChapterListActivity.h(this.a).setVisibility(View.VISIBLE);
                 LocalChapterListActivity.h(this.a).setText("\u65e0\u9884\u8bfb\u7ae0\u8282");
             } else {
-                LocalChapterListActivity.g(this.a).setVisibility(0);
-                LocalChapterListActivity.h(this.a).setVisibility(8);
+                LocalChapterListActivity.g(this.a).setVisibility(View.VISIBLE);
+                LocalChapterListActivity.h(this.a).setVisibility(View.GONE);
             }
             LocalChapterListActivity.b(this.a).a(arrayList);
         }

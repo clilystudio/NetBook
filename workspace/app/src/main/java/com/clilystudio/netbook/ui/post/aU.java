@@ -17,7 +17,7 @@ final class aU implements View.OnClickListener {
         this.a.dismiss();
         CommonPostListActivity.k(this.b).setText("\u6700\u65b0\u53d1\u5e03");
         CommonPostListActivity.b(this.b, "created");
-        CommonPostListActivity.j(this.b).setVisibility(0);
+        CommonPostListActivity.j(this.b).setVisibility(View.VISIBLE);
         CommonPostListActivity.j(this.b).setRefreshing();
     }
 }

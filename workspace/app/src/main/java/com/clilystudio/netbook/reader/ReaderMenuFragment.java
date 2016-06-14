@@ -100,7 +100,7 @@ public class ReaderMenuFragment extends Fragment {
                 n3 = n4;
             }
             if (n3 > 0) {
-                readerMenuFragment.getView().findViewById(2131493458).setVisibility(0);
+                readerMenuFragment.getView().findViewById(2131493458).setVisibility(View.VISIBLE);
                 readerMenuFragment.getView().findViewById(2131493459).setOnClickListener(readerMenuFragment.j);
             }
         }
@@ -223,7 +223,7 @@ public class ReaderMenuFragment extends Fragment {
         } else {
             if (this.getView() == null) return;
             {
-                this.getView().findViewById(2131492933).setVisibility(8);
+                this.getView().findViewById(2131492933).setVisibility(View.GONE);
                 return;
             }
         }
@@ -263,7 +263,7 @@ public class ReaderMenuFragment extends Fragment {
         Advert advert = b2.a();
         if (advert != null && advert instanceof BaseShelfAd) {
             this.i = (BaseShelfAd) advert;
-            view.setVisibility(0);
+            view.setVisibility(View.VISIBLE);
             view.setOnClickListener(this.k);
             view.findViewById(2131492916).setOnClickListener(this.k);
             if (advert == null) return;

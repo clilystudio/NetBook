@@ -117,8 +117,8 @@ public class ReaderOptionActivity extends BaseActivity {
                 var6_6.setOnCheckedChangeListener(new bN(this, var6_6));
                 var15_15 = (SettingItem) this.findViewById(2131493901);
                 if (!bH.a(this)) break;
-                var15_15.setVisibility(8);
-                this.findViewById(2131493900).setVisibility(8);
+                var15_15.setVisibility(View.GONE);
+                this.findViewById(2131493900).setVisibility(View.GONE);
                 return;
             }
             ++var14_14;

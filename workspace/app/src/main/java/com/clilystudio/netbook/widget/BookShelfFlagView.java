@@ -13,7 +13,7 @@ public class BookShelfFlagView extends TextView {
 
     public BookShelfFlagView(Context context, AttributeSet attributeSet) {
         super(context, attributeSet);
-        this.setVisibility(8);
+        this.setVisibility(View.GONE);
         this.setTextColor(-1);
         this.setGravity(17);
         this.setTextSize(this.getResources().getDimensionPixelSize(2131099774));
@@ -74,6 +74,6 @@ public class BookShelfFlagView extends TextView {
             this.setVisibility(4);
             return;
         }
-        this.setVisibility(0);
+        this.setVisibility(View.VISIBLE);
     }
 }

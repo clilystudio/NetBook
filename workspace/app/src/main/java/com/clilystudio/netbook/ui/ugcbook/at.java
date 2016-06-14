@@ -41,9 +41,9 @@ final class at extends com.clilystudio.netbook.a_pack.e<String, Void, UGCBookLis
     protected final /* synthetic */ void onPostExecute(Object object) {
         UGCBookListRoot uGCBookListRoot = (UGCBookListRoot) object;
         super.onPostExecute(uGCBookListRoot);
-        UGCMainListFragment.a(this.a).setVisibility(8);
-        UGCMainListFragment.c(this.a).setVisibility(8);
-        UGCMainListFragment.d(this.a).setVisibility(8);
+        UGCMainListFragment.a(this.a).setVisibility(View.GONE);
+        UGCMainListFragment.c(this.a).setVisibility(View.GONE);
+        UGCMainListFragment.d(this.a).setVisibility(View.GONE);
         UGCMainListFragment.e(this.a).n();
         UGCMainListFragment.e(this.a).setOnLastItemVisibleListener(UGCMainListFragment.f(this.a));
         if (uGCBookListRoot != null) {
@@ -57,7 +57,7 @@ final class at extends com.clilystudio.netbook.a_pack.e<String, Void, UGCBookLis
                 if (n < 20) {
                     UGCMainListFragment.e(this.a).setOnLastItemVisibleListener(null);
                     if (n == 0) {
-                        UGCMainListFragment.a(this.a).setVisibility(0);
+                        UGCMainListFragment.a(this.a).setVisibility(View.VISIBLE);
                         UGCMainListFragment.a(this.a).setText("\u8fd9\u91cc\u8fd8\u6ca1\u6709\u4e66\u5355\uff0c\u53bb\u53d1\u5e03\u4e00\u4e2a\u5427");
                     }
                 }

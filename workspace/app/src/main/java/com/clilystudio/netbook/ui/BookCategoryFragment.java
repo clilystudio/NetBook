@@ -89,7 +89,7 @@ public class BookCategoryFragment extends Fragment {
     }
 
     public final void a() {
-        this.e.setVisibility(0);
+        this.e.setVisibility(View.VISIBLE);
         this.i.clear();
         this.d.a(this.i);
         this.h = new aq(this);
@@ -122,7 +122,7 @@ public class BookCategoryFragment extends Fragment {
             this.b.setFooterDividersEnabled(false);
         }
         this.b.addFooterView(this.c);
-        this.c.setVisibility(8);
+        this.c.setVisibility(View.GONE);
         this.b.setOnItemClickListener((AdapterView.OnItemClickListener) ((Object) new am(this)));
         this.a.setOnRefreshListener(new an(this));
         this.d = new c(layoutInflater2);

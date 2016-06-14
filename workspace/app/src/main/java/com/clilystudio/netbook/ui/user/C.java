@@ -12,8 +12,8 @@ final class C implements Runnable {
     @Override
     public final void run() {
         if (MyTopicFragment.b(this.a.a) == null) {
-            MyTopicFragment.c(this.a.a).setVisibility(8);
-            MyTopicFragment.a(this.a.a).setVisibility(0);
+            MyTopicFragment.c(this.a.a).setVisibility(View.GONE);
+            MyTopicFragment.a(this.a.a).setVisibility(View.VISIBLE);
             MyTopicFragment.a(this.a.a).setText("\u8bf7\u767b\u5f55\u540e\u67e5\u770b");
             MyTopicFragment.d(this.a.a).n();
             return;

@@ -26,21 +26,21 @@ public class LoadingContainer extends FrameLayout {
     }
 
     public final void a() {
-        this.b.setVisibility(8);
-        this.c.setVisibility(8);
-        this.a.setVisibility(0);
+        this.b.setVisibility(View.GONE);
+        this.c.setVisibility(View.GONE);
+        this.a.setVisibility(View.VISIBLE);
     }
 
     public final void b() {
-        this.b.setVisibility(0);
-        this.c.setVisibility(8);
-        this.a.setVisibility(8);
+        this.b.setVisibility(View.VISIBLE);
+        this.c.setVisibility(View.GONE);
+        this.a.setVisibility(View.GONE);
     }
 
     public final void c() {
-        this.b.setVisibility(8);
-        this.c.setVisibility(0);
-        this.a.setVisibility(8);
+        this.b.setVisibility(View.GONE);
+        this.c.setVisibility(View.VISIBLE);
+        this.a.setVisibility(View.GONE);
     }
 
     @Override

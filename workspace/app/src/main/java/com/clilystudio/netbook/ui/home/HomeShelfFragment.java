@@ -474,7 +474,7 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
         }
         homeShelfFragment.e.removeHeaderView(homeShelfFragment.g);
         homeShelfFragment.e.addHeaderView(homeShelfFragment.g);
-        homeShelfFragment.g.setVisibility(0);
+        homeShelfFragment.g.setVisibility(View.VISIBLE);
         TextView textView = (TextView) homeShelfFragment.g.findViewById(2131492936);
         new com.clilystudio.netbook.util.a.a();
         InsideLink insideLink = com.clilystudio.netbook.util.a.a.a(shelfMsg.postLink);
@@ -801,14 +801,14 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
                 return;
             }
             case 1: {
-                this.f.setVisibility(8);
-                this.e.setVisibility(0);
+                this.f.setVisibility(View.GONE);
+                this.e.setVisibility(View.VISIBLE);
                 return;
             }
             case 3:
         }
-        this.f.setVisibility(0);
-        this.e.setVisibility(8);
+        this.f.setVisibility(View.VISIBLE);
+        this.e.setVisibility(View.GONE);
     }
 
     private void b(String string) {
@@ -848,7 +848,7 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
     }
 
     private void g() {
-        this.l.setVisibility(0);
+        this.l.setVisibility(View.VISIBLE);
         this.e.removeFooterView(this.h);
         this.e.addFooterView(this.h);
     }
@@ -1077,10 +1077,10 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
     public final void d() {
         MiStatInterface.recordCountEvent("home_shelf_bulk_operation",null);
         if (this.r != null) {
-            this.l.setVisibility(8);
+            this.l.setVisibility(View.GONE);
         }
         this.e.removeHeaderView(this.g);
-        this.w.setVisibility(0);
+        this.w.setVisibility(View.VISIBLE);
         this.e.removeFooterView(this.h);
         this.e.addFooterView(this.h);
         this.d.setPullToRefreshEnabled(false);
@@ -1091,13 +1091,13 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
 
     public final void e() {
         if (this.r != null) {
-            this.l.setVisibility(0);
+            this.l.setVisibility(View.VISIBLE);
         }
         if (am.r((Context) this.getActivity()) || this.g != null && this.i != null && this.i.postLink != null && (!this.i.postLink.startsWith("link") || this.i.postLink.startsWith("game"))) {
             this.e.removeHeaderView(this.g);
             this.e.addHeaderView(this.g);
         }
-        this.w.setVisibility(8);
+        this.w.setVisibility(View.GONE);
         this.e.removeFooterView(this.h);
         this.d.setPullToRefreshEnabled(true);
         this.d.setPullToRefreshOverScrollEnabled(true);
@@ -1113,7 +1113,7 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
     @com.squareup.a.l
     public void onAudioBookExitEvent(b b2) {
         this.a(false);
-        this.l.setVisibility(8);
+        this.l.setVisibility(View.GONE);
         this.e.removeFooterView(this.h);
         this.r = null;
     }
@@ -1176,7 +1176,7 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
         this.e.addFooterView(view);
         a.a((Context) this.getActivity(), this.e);
         this.g = LayoutInflater.from(this.getActivity()).inflate(2130903168, (ViewGroup) this.e, false);
-        this.g.setVisibility(8);
+        this.g.setVisibility(View.GONE);
         if (am.r((Context) this.getActivity())) {
             this.e.addHeaderView(this.g);
         }

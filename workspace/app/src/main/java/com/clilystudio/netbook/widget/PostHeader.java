@@ -27,15 +27,15 @@ public class PostHeader extends LinearLayout {
             n = 7;
         }
         for (int i = 0; i < n; ++i) {
-            this.findViewById(arrn[i]).setVisibility(0);
+            this.findViewById(arrn[i]).setVisibility(View.VISIBLE);
         }
-        this.findViewById(arrn[n - 1]).findViewById(2131493098).setVisibility(8);
-        this.findViewById(2131493359).setVisibility(0);
-        this.findViewById(2131493360).setVisibility(0);
+        this.findViewById(arrn[n - 1]).findViewById(2131493098).setVisibility(View.GONE);
+        this.findViewById(2131493359).setVisibility(View.VISIBLE);
+        this.findViewById(2131493360).setVisibility(View.VISIBLE);
     }
 
     public final void a(boolean bl) {
-        this.findViewById(2131493842).setVisibility(8);
+        this.findViewById(2131493842).setVisibility(View.GONE);
     }
 
     public final void b() {

@@ -235,7 +235,7 @@ public class CommentItemView extends HorizontalScrollView implements View.OnClic
     public final void b(PostComment postComment, int n) {
         this.a(postComment, -1);
         TextView textView = (TextView) this.findViewById(2131493768);
-        textView.setVisibility(0);
+        textView.setVisibility(View.VISIBLE);
         textView.setText("" + postComment.getLikeCount() + "\u6b21\u540c\u611f");
     }
 

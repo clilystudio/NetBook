@@ -68,7 +68,7 @@ public final class SearchActivity$SearchPromptAdapter extends BaseAdapter implem
 
     @Override
     public final void onItemClick(AdapterView<?> adapterView, View view, int n, long l2) {
-        SearchActivity.k(this.a).setVisibility(8);
+        SearchActivity.k(this.a).setVisibility(View.GONE);
         if (n >= 0 && n < this.b.size()) {
             String string = this.b.get(n);
             SearchActivity.f(this.a).setTextByCode(string);

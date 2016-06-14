@@ -33,34 +33,34 @@ final class ak implements com.umeng.update.a {
                 return;
             }
             case 2131493892: {
-                ReaderActivity.w(this.a).setVisibility(8);
+                ReaderActivity.w(this.a).setVisibility(View.GONE);
                 ReaderActivity.x(this.a);
                 return;
             }
             case 2131493881: {
-                ReaderActivity.w(this.a).setVisibility(8);
+                ReaderActivity.w(this.a).setVisibility(View.GONE);
                 this.a.onBackPressed();
                 return;
             }
             case 2131493893: {
-                ReaderActivity.w(this.a).setVisibility(8);
+                ReaderActivity.w(this.a).setVisibility(View.GONE);
                 ReaderActivity.y(this.a);
                 return;
             }
             case 2131493861: {
-                ReaderActivity.w(this.a).setVisibility(8);
+                ReaderActivity.w(this.a).setVisibility(View.GONE);
                 ReaderActivity.z(this.a);
                 ReaderActivity.A(this.a).f(false);
                 b.a(this.a, "reader_activity_topic");
                 return;
             }
             case 2131493862: {
-                ReaderActivity.w(this.a).setVisibility(8);
+                ReaderActivity.w(this.a).setVisibility(View.GONE);
                 this.a.i();
                 return;
             }
             case 2131493860: {
-                ReaderActivity.w(this.a).setVisibility(8);
+                ReaderActivity.w(this.a).setVisibility(View.GONE);
                 View view = ReaderActivity.A(this.a).findViewById(2131493860);
                 if (a.i()) {
                     ReaderActivity.a(this.a, view);
@@ -70,13 +70,13 @@ final class ak implements com.umeng.update.a {
                 return;
             }
             case 2131493888: {
-                ReaderActivity.w(this.a).setVisibility(8);
+                ReaderActivity.w(this.a).setVisibility(View.GONE);
                 ReaderActivity.b(this.a, true);
                 ReaderActivity.B(this.a);
                 return;
             }
             case 2131493891: {
-                ReaderActivity.w(this.a).setVisibility(8);
+                ReaderActivity.w(this.a).setVisibility(View.GONE);
                 ReaderActivity.C(this.a);
                 return;
             }

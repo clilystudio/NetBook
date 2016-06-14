@@ -195,7 +195,7 @@ public class PostDetailActivity extends AbsPostActivity {
 
     static /* synthetic */ void b(PostDetailActivity postDetailActivity) {
         if (postDetailActivity.r != null) {
-            postDetailActivity.p.setVisibility(0);
+            postDetailActivity.p.setVisibility(View.VISIBLE);
             cv cv2 = postDetailActivity.h = new cv(postDetailActivity, 0);
             Object[] arrobject = new String[]{postDetailActivity.r.get_id()};
             cv2.b(arrobject);
@@ -219,7 +219,7 @@ public class PostDetailActivity extends AbsPostActivity {
         ((TextView) postDetailActivity.c.findViewById(2131492935)).setText(t.e((Date) post.getCreated()));
         TextView textView = (TextView) postDetailActivity.c.findViewById(2131492936);
         if ("game".equals(postDetailActivity.s)) {
-            textView.setVisibility(8);
+            textView.setVisibility(View.GONE);
         } else {
             textView.setText(post.getTitle());
         }
@@ -231,26 +231,26 @@ public class PostDetailActivity extends AbsPostActivity {
         if (postDetailActivity.v) {
             String string = author.getGender();
             if ("male".equals(string)) {
-                imageView.setVisibility(0);
+                imageView.setVisibility(View.VISIBLE);
                 imageView.setImageLevel(2);
             } else if ("female".equals(string)) {
-                imageView.setVisibility(0);
+                imageView.setVisibility(View.VISIBLE);
                 imageView.setImageLevel(3);
             } else {
-                imageView.setVisibility(0);
+                imageView.setVisibility(View.VISIBLE);
                 imageView.setImageLevel(4);
             }
         } else {
             String string = author.getType();
             if ("official".equals(string)) {
-                imageView.setVisibility(0);
+                imageView.setVisibility(View.VISIBLE);
                 imageView.setImageLevel(0);
                 a.s(postDetailActivity, post.get_id());
             } else if ("doyen".equals(string)) {
-                imageView.setVisibility(0);
+                imageView.setVisibility(View.VISIBLE);
                 imageView.setImageLevel(1);
             } else {
-                imageView.setVisibility(8);
+                imageView.setVisibility(View.GONE);
             }
         }
         ((PostAgreeView) postDetailActivity.c.findViewById(2131493840)).setPostId(postDetailActivity.a);
@@ -275,8 +275,8 @@ public class PostDetailActivity extends AbsPostActivity {
     }
 
     static /* synthetic */ void g(PostDetailActivity postDetailActivity) {
-        postDetailActivity.p.setVisibility(0);
-        postDetailActivity.p.findViewById(2131493085).setVisibility(8);
+        postDetailActivity.p.setVisibility(View.VISIBLE);
+        postDetailActivity.p.findViewById(2131493085).setVisibility(View.GONE);
         TextView textView = (TextView) postDetailActivity.p.findViewById(2131493798);
         textView.setText("\u70b9\u51fb\u91cd\u8bd5");
         postDetailActivity.p.setOnClickListener(new cq(postDetailActivity, textView));
@@ -320,7 +320,7 @@ public class PostDetailActivity extends AbsPostActivity {
         int n4 = 0;
         while (n4 < 7) {
             this.j[n4].setEnabled(false);
-            this.i[n4].setVisibility(0);
+            this.i[n4].setVisibility(View.VISIBLE);
             if (n4 == n) {
                 this.j[n4].setImageResource(2130838056);
             } else {
@@ -384,7 +384,7 @@ public class PostDetailActivity extends AbsPostActivity {
     @Override
     public final void f() {
         super.f();
-        this.o.setVisibility(0);
+        this.o.setVisibility(View.VISIBLE);
     }
 
     /*
@@ -490,7 +490,7 @@ public class PostDetailActivity extends AbsPostActivity {
         hotCommentView.a(this.a);
         this.p = LayoutInflater.from(this).inflate(2130903325, null);
         this.b.addFooterView(this.p);
-        this.p.setVisibility(8);
+        this.p.setVisibility(View.GONE);
         this.f = new z(this.getLayoutInflater());
         this.b.setAdapter(this.f);
         this.j();

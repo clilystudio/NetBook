@@ -68,11 +68,11 @@ public class FeedAddActivity extends BaseActivity {
         View view = this.findViewById(2131493122);
         View view2 = this.findViewById(2131493125);
         if (bl) {
-            view.setVisibility(0);
-            view2.setVisibility(8);
+            view.setVisibility(View.VISIBLE);
+            view2.setVisibility(View.GONE);
         } else {
-            view.setVisibility(8);
-            view2.setVisibility(0);
+            view.setVisibility(View.GONE);
+            view2.setVisibility(View.VISIBLE);
         }
         this.c.clear();
     }

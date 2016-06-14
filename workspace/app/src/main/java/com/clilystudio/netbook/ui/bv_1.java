@@ -12,7 +12,7 @@ final class bv implements j {
     @Override
     public final void a() {
         if (NotifFragment.n(this.a) == null || NotifFragment.n(this.a).getStatus() == AsyncTask.Status.FINISHED) {
-            NotifFragment.i(this.a).setVisibility(0);
+            NotifFragment.i(this.a).setVisibility(View.VISIBLE);
             if (NotifFragment.o(this.a) != null && NotifFragment.o(this.a).getStatus() != AsyncTask.Status.FINISHED && !NotifFragment.o(this.a).isCancelled()) {
                 NotifFragment.o(this.a).cancel(true);
             }

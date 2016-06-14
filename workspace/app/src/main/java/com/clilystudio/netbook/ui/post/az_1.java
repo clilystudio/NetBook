@@ -14,7 +14,7 @@ final class az implements k<ListView> {
 
     @Override
     public final void a(PullToRefreshBase<ListView> pullToRefreshBase) {
-        this.a.d.setVisibility(8);
+        this.a.d.setVisibility(View.GONE);
         new Handler().postDelayed(new aA(this), 1000);
     }
 }

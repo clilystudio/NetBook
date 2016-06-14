@@ -217,22 +217,22 @@ public class UGCDetailActivity extends BaseActivity implements View.OnClickListe
                 return;
             }
             case 1: {
-                this.j.setVisibility(0);
-                this.l.setVisibility(8);
-                this.m.setVisibility(8);
+                this.j.setVisibility(View.VISIBLE);
+                this.l.setVisibility(View.GONE);
+                this.m.setVisibility(View.GONE);
                 return;
             }
             case 0: {
-                this.j.setVisibility(8);
-                this.l.setVisibility(0);
-                this.m.setVisibility(8);
+                this.j.setVisibility(View.GONE);
+                this.l.setVisibility(View.VISIBLE);
+                this.m.setVisibility(View.GONE);
                 return;
             }
             case 2:
         }
-        this.j.setVisibility(8);
-        this.l.setVisibility(8);
-        this.m.setVisibility(0);
+        this.j.setVisibility(View.GONE);
+        this.l.setVisibility(View.GONE);
+        this.m.setVisibility(View.VISIBLE);
     }
 
     public final void a(int n2) {

@@ -14,7 +14,7 @@ final class u implements k<ListView> {
 
     @Override
     public final void a(PullToRefreshBase<ListView> pullToRefreshBase) {
-        MyFavTopicFragment.a(this.a).setVisibility(8);
+        MyFavTopicFragment.a(this.a).setVisibility(View.GONE);
         new Handler().postDelayed(new v(this), 1000);
     }
 }

@@ -51,10 +51,10 @@ public abstract class AbsUGCListFragment extends Fragment implements AdapterView
         Object[] arrobject = new Object[]{n};
         textView.setText(String.format(string, arrobject));
         if (n == 0) {
-            absUGCListFragment.k.setVisibility(8);
+            absUGCListFragment.k.setVisibility(View.GONE);
             return;
         }
-        absUGCListFragment.k.setVisibility(0);
+        absUGCListFragment.k.setVisibility(View.VISIBLE);
     }
 
     protected abstract UGCBookListRoot a(Account var1, int var2);
@@ -85,7 +85,7 @@ public abstract class AbsUGCListFragment extends Fragment implements AdapterView
         com.clilystudio.netbook.hpay100.a.a.a((Context) this.getActivity(), this.b);
         View view2 = layoutInflater.inflate(2130903330, (ViewGroup) this.b, false);
         this.k = (TextView) view2.findViewById(2131492905);
-        this.k.setVisibility(8);
+        this.k.setVisibility(View.GONE);
         this.b.addHeaderView(view2, null, false);
         this.d = view.findViewById(2131493085);
         this.j = (TextView) view.findViewById(2131493100);
@@ -94,7 +94,7 @@ public abstract class AbsUGCListFragment extends Fragment implements AdapterView
             this.b.setFooterDividersEnabled(false);
         }
         this.b.addFooterView(this.e);
-        this.e.setVisibility(8);
+        this.e.setVisibility(View.GONE);
         this.a.setOnRefreshListener(new b(this));
         this.c = new X(this.getActivity().getLayoutInflater());
         this.b.setAdapter(this.c);

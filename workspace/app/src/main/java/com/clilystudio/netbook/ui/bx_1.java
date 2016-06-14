@@ -51,10 +51,10 @@ final class bx extends com.clilystudio.netbook.a_pack.e<String, Void, Notificati
         NotificationRoot notificationRoot = (NotificationRoot) object;
         super.onPostExecute(notificationRoot);
         if (this.a.getActivity() == null) return;
-        NotifFragment.a(this.a).setVisibility(8);
-        NotifFragment.h(this.a).setVisibility(8);
-        NotifFragment.i(this.a).setVisibility(8);
-        NotifFragment.b(this.a).setVisibility(8);
+        NotifFragment.a(this.a).setVisibility(View.GONE);
+        NotifFragment.h(this.a).setVisibility(View.GONE);
+        NotifFragment.i(this.a).setVisibility(View.GONE);
+        NotifFragment.b(this.a).setVisibility(View.GONE);
         NotifFragment.d(this.a).n();
         NotifFragment.d(this.a).setOnLastItemVisibleListener(NotifFragment.j(this.a));
         if (notificationRoot != null && notificationRoot.isOk()) {
@@ -68,9 +68,9 @@ final class bx extends com.clilystudio.netbook.a_pack.e<String, Void, Notificati
             if (n >= 100) return;
             NotifFragment.d(this.a).setOnLastItemVisibleListener(null);
             if (n != 0) return;
-            NotifFragment.a(this.a).setVisibility(0);
+            NotifFragment.a(this.a).setVisibility(View.VISIBLE);
             NotifFragment.a(this.a).setText("\u6ca1\u6709\u6d88\u606f");
-            NotifFragment.b(this.a).setVisibility(8);
+            NotifFragment.b(this.a).setVisibility(View.GONE);
             return;
         }
         if (notificationRoot != null && "TOKEN_INVALID".equals(notificationRoot.getCode())) {

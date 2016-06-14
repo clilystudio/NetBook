@@ -58,7 +58,7 @@ public class GiftGameGiftButton extends Button {
     }
 
     private void a(String string) {
-        this.setVisibility(0);
+        this.setVisibility(View.VISIBLE);
         this.setText("\u67e5\u770b");
         this.setBackgroundResource(2130837819);
         this.setOnClickListener(new U(this, string));
@@ -117,18 +117,18 @@ public class GiftGameGiftButton extends Button {
         }
         switch (var1_1) {
             default: {
-                this.setVisibility(8);
+                this.setVisibility(View.GONE);
                 return;
             }
             case 1:
             case 2:
             case 8: {
-                this.setVisibility(8);
+                this.setVisibility(View.GONE);
                 return;
             }
             case 32:
         }
-        this.setVisibility(0);
+        this.setVisibility(View.VISIBLE);
         this.setText("\u9886\u53d6");
         this.setBackgroundResource(2130838100);
         this.setOnClickListener(new X(this, 0));

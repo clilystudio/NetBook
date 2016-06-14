@@ -329,7 +329,7 @@ public class ReviewListActivity extends BaseActivity {
     }
 
     static /* synthetic */ void v(ReviewListActivity reviewListActivity) {
-        reviewListActivity.h.setVisibility(0);
+        reviewListActivity.h.setVisibility(View.VISIBLE);
         reviewListActivity.h.setText("\u8fd9\u91cc\u8fd8\u6ca1\u6709\u4e66\u8bc4\uff0c\u53bb\u53d1\u5e03\u4e00\u4e2a\u5427");
     }
 

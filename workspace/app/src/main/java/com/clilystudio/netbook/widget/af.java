@@ -13,7 +13,7 @@ final class af implements b {
     }
 
     public final void b(a a2) {
-        this.b.setVisibility(8);
+        this.b.setVisibility(View.GONE);
         this.a.a();
     }
 

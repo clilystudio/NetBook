@@ -40,13 +40,13 @@ final class cn extends e<String, Void, UserInfoResult> {
             OtherUserActivity.b(this.b, userInfoResult.getFollowers());
             OtherUserActivity.c(this.b, userInfoResult.getFollowings());
             if (userInfoResult.isDoyan()) {
-                OtherUserActivity.t(this.b).setVisibility(0);
+                OtherUserActivity.t(this.b).setVisibility(View.VISIBLE);
                 OtherUserActivity.t(this.b).setImageResource(2130838229);
             } else if (userInfoResult.isOfficial()) {
-                OtherUserActivity.t(this.b).setVisibility(0);
+                OtherUserActivity.t(this.b).setVisibility(View.VISIBLE);
                 OtherUserActivity.t(this.b).setImageResource(2130838231);
             } else {
-                OtherUserActivity.t(this.b).setVisibility(8);
+                OtherUserActivity.t(this.b).setVisibility(View.GONE);
             }
             if (this.a != null) {
                 this.a.run();

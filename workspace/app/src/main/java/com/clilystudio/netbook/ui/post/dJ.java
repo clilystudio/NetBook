@@ -14,7 +14,7 @@ final class dJ implements k<ListView> {
 
     @Override
     public final void a(PullToRefreshBase<ListView> pullToRefreshBase) {
-        TweetListFragment.a(this.a).setVisibility(8);
+        TweetListFragment.a(this.a).setVisibility(View.GONE);
         new Handler().postDelayed(new dK(this), 1000);
     }
 }

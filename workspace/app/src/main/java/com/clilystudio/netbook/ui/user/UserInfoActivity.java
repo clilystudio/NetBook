@@ -63,7 +63,7 @@ public class UserInfoActivity extends BaseActivity {
 
     static /* synthetic */ void a(UserInfoActivity userInfoActivity, int n) {
         if (n > 0) {
-            userInfoActivity.mMessageCount.setVisibility(0);
+            userInfoActivity.mMessageCount.setVisibility(View.VISIBLE);
             userInfoActivity.mMessageCount.setText(String.valueOf(n));
             return;
         }
@@ -109,8 +109,8 @@ public class UserInfoActivity extends BaseActivity {
     }
 
     static /* synthetic */ void c(UserInfoActivity userInfoActivity) {
-        userInfoActivity.a.setVisibility(8);
-        userInfoActivity.b.setVisibility(0);
+        userInfoActivity.a.setVisibility(View.GONE);
+        userInfoActivity.b.setVisibility(View.VISIBLE);
     }
 
     private void b() {
@@ -142,7 +142,7 @@ public class UserInfoActivity extends BaseActivity {
         this.findViewById(2131493246).setOnClickListener(new aJ(this));
         View view = this.findViewById(2131493245);
         if (a.r(this, "switch_share_remove_ad")) {
-            view.setVisibility(0);
+            view.setVisibility(View.VISIBLE);
             view.setOnClickListener(new aB(this));
         }
         this.b();

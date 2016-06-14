@@ -347,7 +347,7 @@ public class AudioBookPlayActivity extends BaseActivity implements View.OnClickL
     }
 
     public final void a(TrackList trackList) {
-        this.y.setVisibility(8);
+        this.y.setVisibility(View.GONE);
         this.b = trackList.getTracks();
         this.g = trackList.getTotalCount();
         this.o.setImageUrl(trackList.getCoverUrlMiddle());

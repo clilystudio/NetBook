@@ -12,7 +12,7 @@ final class x implements j {
     @Override
     public final void a() {
         if (MyFavTopicFragment.e(this.a) == null || MyFavTopicFragment.e(this.a).getStatus() == AsyncTask.Status.FINISHED) {
-            MyFavTopicFragment.i(this.a).setVisibility(0);
+            MyFavTopicFragment.i(this.a).setVisibility(View.VISIBLE);
             if (MyFavTopicFragment.f(this.a) != null && MyFavTopicFragment.f(this.a).getStatus() != AsyncTask.Status.FINISHED && !MyFavTopicFragment.f(this.a).isCancelled()) {
                 MyFavTopicFragment.f(this.a).cancel(true);
             }

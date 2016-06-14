@@ -65,7 +65,7 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
     }
 
     static /* synthetic */ void a(SearchActivity searchActivity, String string) {
-        searchActivity.t.setVisibility(8);
+        searchActivity.t.setVisibility(View.GONE);
         searchActivity.e.setTextByCode(string);
         searchActivity.a(true, false);
     }
@@ -82,13 +82,13 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
         view.setVisibility(n);
         if (searchActivity.t == null) return;
         if (bl) {
-            searchActivity.t.setVisibility(8);
+            searchActivity.t.setVisibility(View.GONE);
             return;
         }
         if (!searchActivity.p) {
-            searchActivity.t.setVisibility(0);
+            searchActivity.t.setVisibility(View.VISIBLE);
         }
-        searchActivity.i.setVisibility(8);
+        searchActivity.i.setVisibility(View.GONE);
     }
 
     static /* synthetic */ void a(SearchActivity searchActivity, boolean bl, boolean bl2) {
@@ -164,28 +164,28 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
                 return;
             }
             case 1: {
-                this.j.setVisibility(8);
-                this.k.setVisibility(8);
-                this.h.setVisibility(0);
+                this.j.setVisibility(View.GONE);
+                this.k.setVisibility(View.GONE);
+                this.h.setVisibility(View.VISIBLE);
                 return;
             }
             case 0: {
-                this.j.setVisibility(0);
-                this.k.setVisibility(8);
-                this.h.setVisibility(8);
+                this.j.setVisibility(View.VISIBLE);
+                this.k.setVisibility(View.GONE);
+                this.h.setVisibility(View.GONE);
                 return;
             }
             case 3: {
-                this.j.setVisibility(8);
-                this.k.setVisibility(0);
-                this.h.setVisibility(8);
+                this.j.setVisibility(View.GONE);
+                this.k.setVisibility(View.VISIBLE);
+                this.h.setVisibility(View.GONE);
                 return;
             }
             case 2:
         }
-        this.j.setVisibility(8);
-        this.k.setVisibility(8);
-        this.h.setVisibility(8);
+        this.j.setVisibility(View.GONE);
+        this.k.setVisibility(View.GONE);
+        this.h.setVisibility(View.GONE);
     }
 
     private void a(boolean bl) {
@@ -198,7 +198,7 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
      * Enabled aggressive block sorting
      */
     private void a(boolean bl, boolean bl2) {
-        this.i.setVisibility(8);
+        this.i.setVisibility(View.GONE);
         String string = this.b = this.e.getText().toString().trim();
         int n = -1;
         switch (string.hashCode()) {
@@ -249,7 +249,7 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
             }
             if (!bl || this.m == null) return;
             {
-                this.m.setVisibility(0);
+                this.m.setVisibility(View.VISIBLE);
                 return;
             }
         }
@@ -262,13 +262,13 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
     }
 
     private void f() {
-        this.n.setVisibility(0);
+        this.n.setVisibility(View.VISIBLE);
         this.getWindow().setSoftInputMode(21);
         this.e.requestFocus();
     }
 
     private void g() {
-        this.n.setVisibility(8);
+        this.n.setVisibility(View.GONE);
         this.e.clearFocus();
         if (this.a == null) {
             this.a = (InputMethodManager) this.getSystemService("input_method");
@@ -284,7 +284,7 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
     public void onBackPressed() {
         boolean bl = this.i.getVisibility() == 0;
         if (bl) {
-            this.i.setVisibility(8);
+            this.i.setVisibility(View.GONE);
             return;
         }
         super.onBackPressed();
@@ -398,7 +398,7 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
         this.s = (TextView) this.findViewById(2131493189);
         if (a.k(c.e, "search_hotword.txt") != null && a.a((Context) this, "search_hot_words_date", 0) != 0) {
             List list = (List) a.k(c.e, "search_hotword.txt");
-            this.q.setVisibility(0);
+            this.q.setVisibility(View.VISIBLE);
             this.r.setWords(list);
             this.r.setOnItemClickListener(new bH(this));
             this.s.setOnClickListener(new bI(this));

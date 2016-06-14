@@ -34,7 +34,7 @@ public class LoadingProgressView extends ProgressView {
 
     public final void a() {
         if (this.getVisibility() != 0) {
-            this.setVisibility(0);
+            this.setVisibility(View.VISIBLE);
         }
         this.a = false;
         if (this.c != null && this.c.d()) {

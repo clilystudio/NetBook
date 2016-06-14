@@ -47,9 +47,9 @@ public class FollowerListActivity extends BaseActivity {
         }
         this.b.setAdapter((ListAdapter) ((Object) new bj(this)));
         if (this.a.length > 0) {
-            this.c.setVisibility(8);
+            this.c.setVisibility(View.GONE);
             return;
         }
-        this.c.setVisibility(0);
+        this.c.setVisibility(View.VISIBLE);
     }
 }

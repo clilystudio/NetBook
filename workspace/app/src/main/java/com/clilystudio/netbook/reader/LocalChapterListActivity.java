@@ -121,13 +121,13 @@ public class LocalChapterListActivity extends BaseActivity {
         this.b = (ListView) this.findViewById(2131493137);
         this.e = LayoutInflater.from(this).inflate(2130903381, (ViewGroup) this.b, false);
         this.b.addHeaderView(this.e, null, false);
-        this.e.setVisibility(8);
+        this.e.setVisibility(View.GONE);
         this.c = new C(this.getLayoutInflater());
         this.b.setAdapter(this.c);
         this.b.setOnItemClickListener((AdapterView.OnItemClickListener) ((Object) new h(this)));
         this.b.setOnItemLongClickListener((AdapterView.OnItemLongClickListener) ((Object) new i(this)));
         if (!a.d()) {
-            this.a.setVisibility(0);
+            this.a.setVisibility(View.VISIBLE);
             this.a.setText("\u65e0\u6cd5\u83b7\u53d6\u9884\u8bfb\u7ae0\u8282\uff0c\u8bf7\u68c0\u67e5SD\u5361");
             return;
         }

@@ -41,9 +41,9 @@ final class dp extends com.clilystudio.netbook.a_pack.e<String, Void, ReviewList
     protected final /* synthetic */ void onPostExecute(Object object) {
         ReviewList reviewList = (ReviewList) object;
         super.onPostExecute(reviewList);
-        ReviewListActivity.e(this.a).setVisibility(8);
-        ReviewListActivity.r(this.a).setVisibility(8);
-        ReviewListActivity.s(this.a).setVisibility(8);
+        ReviewListActivity.e(this.a).setVisibility(View.GONE);
+        ReviewListActivity.r(this.a).setVisibility(View.GONE);
+        ReviewListActivity.s(this.a).setVisibility(View.GONE);
         ReviewListActivity.n(this.a).n();
         if (reviewList != null && reviewList.getReviews() != null) {
             ReviewListActivity.l(this.a).clear();

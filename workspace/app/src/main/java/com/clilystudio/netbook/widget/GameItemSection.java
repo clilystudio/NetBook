@@ -38,7 +38,7 @@ public class GameItemSection extends TableLayout {
             ViewGroup viewGroup = (ViewGroup) this.mContainer.getChildAt(i / 3);
             for (int j = 0; j < list2.size(); ++j) {
                 GameLayoutItemView gameLayoutItemView = (GameLayoutItemView) viewGroup.getChildAt(j);
-                gameLayoutItemView.setVisibility(0);
+                gameLayoutItemView.setVisibility(View.VISIBLE);
                 Game game = list2.get(j);
                 gameLayoutItemView.mTitle.setText(game.getName());
                 gameLayoutItemView.mSubTitle.setText(game.getCat());
@@ -63,10 +63,10 @@ public class GameItemSection extends TableLayout {
             ViewGroup viewGroup = (ViewGroup) this.mContainer.getChildAt(i / 3);
             for (int j = 0; j < list2.size(); ++j) {
                 GameLayoutItemView gameLayoutItemView = (GameLayoutItemView) viewGroup.getChildAt(j);
-                gameLayoutItemView.setVisibility(0);
+                gameLayoutItemView.setVisibility(View.VISIBLE);
                 Game game = list2.get(j);
                 gameLayoutItemView.mTitle.setText(game.getName());
-                gameLayoutItemView.mSubTitle.setVisibility(8);
+                gameLayoutItemView.mSubTitle.setVisibility(View.GONE);
                 gameLayoutItemView.mAction.setH5View();
                 gameLayoutItemView.mImage.setImageResource(game.getIconId());
                 gameLayoutItemView.setOnClickListener(new N(gameLayoutItemView, game));

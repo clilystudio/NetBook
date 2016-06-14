@@ -104,22 +104,22 @@ public class AudiobookCategoryActivity extends BaseActivity {
                 return;
             }
             case 1: {
-                this.e.setVisibility(0);
-                this.b.setVisibility(8);
-                this.c.setVisibility(8);
+                this.e.setVisibility(View.VISIBLE);
+                this.b.setVisibility(View.GONE);
+                this.c.setVisibility(View.GONE);
                 return;
             }
             case 0: {
-                this.e.setVisibility(8);
-                this.b.setVisibility(0);
-                this.c.setVisibility(8);
+                this.e.setVisibility(View.GONE);
+                this.b.setVisibility(View.VISIBLE);
+                this.c.setVisibility(View.GONE);
                 return;
             }
             case 2:
         }
-        this.e.setVisibility(8);
-        this.b.setVisibility(8);
-        this.c.setVisibility(0);
+        this.e.setVisibility(View.GONE);
+        this.b.setVisibility(View.GONE);
+        this.c.setVisibility(View.VISIBLE);
     }
 
     private void b() {

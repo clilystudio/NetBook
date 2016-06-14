@@ -15,7 +15,7 @@ final class ch implements j {
     @Override
     public final void a() {
         if (OtherUserActivity.b(this.a) == null || OtherUserActivity.b(this.a).getStatus() == AsyncTask.Status.FINISHED) {
-            OtherUserActivity.p(this.a).setVisibility(0);
+            OtherUserActivity.p(this.a).setVisibility(View.VISIBLE);
             if (!am.a(OtherUserActivity.q(this.a))) {
                 OtherUserActivity.q(this.a).cancel(true);
             }

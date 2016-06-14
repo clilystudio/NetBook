@@ -14,7 +14,7 @@ final class ac implements k<ListView> {
 
     @Override
     public final void a(PullToRefreshBase<ListView> pullToRefreshBase) {
-        PayVoucherFragment.b(this.a).setVisibility(8);
+        PayVoucherFragment.b(this.a).setVisibility(View.GONE);
         new Handler().postDelayed(new ad(this), 1000);
     }
 }

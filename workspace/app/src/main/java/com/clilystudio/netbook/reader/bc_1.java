@@ -34,7 +34,7 @@ final class bc implements DialogInterface.OnClickListener {
         if (n3 == 0) {
             ReaderActivity.ad(this.a);
         }
-        ReaderActivity.ah(this.a).setVisibility(0);
+        ReaderActivity.ah(this.a).setVisibility(View.VISIBLE);
         a a2 = new a(this.a);
         MyApplication.a().e().put(ReaderActivity.M(this.a), ReaderActivity.Y(this.a).d());
         a2.a(ReaderActivity.M(this.a), n4, ReaderActivity.ai(this.a));

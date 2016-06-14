@@ -14,7 +14,7 @@ final class an implements k<ListView> {
 
     @Override
     public final void a(PullToRefreshBase<ListView> pullToRefreshBase) {
-        BookHelpListActivity.d(this.a).setVisibility(8);
+        BookHelpListActivity.d(this.a).setVisibility(View.GONE);
         new Handler().postDelayed(new ao(this), 1000);
     }
 }

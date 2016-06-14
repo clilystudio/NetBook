@@ -156,10 +156,10 @@ public class UGCGuideEditBooksActivity extends BaseActivity implements View.OnCl
         UGCNewCollection uGCNewCollection = UGCGuideEditBooksActivity.e();
         this.e.a(uGCNewCollection.getBooks());
         if (uGCNewCollection.getBooks() != null && uGCNewCollection.getBooks().size() == 0) {
-            this.c.setVisibility(0);
+            this.c.setVisibility(View.VISIBLE);
             return;
         }
-        this.c.setVisibility(8);
+        this.c.setVisibility(View.GONE);
     }
 
     @l

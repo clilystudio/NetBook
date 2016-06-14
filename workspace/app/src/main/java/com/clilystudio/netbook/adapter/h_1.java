@@ -43,12 +43,12 @@ public final class h extends W<BookReview> {
         TextView textView = (TextView) this.a(3, TextView.class);
         PostFlag postFlag = (PostFlag) this.a(4, PostFlag.class);
         if (postFlag.a(bookReview.state)) {
-            textView.setVisibility(8);
-            postFlag.setVisibility(0);
+            textView.setVisibility(View.GONE);
+            postFlag.setVisibility(View.VISIBLE);
         } else {
-            textView.setVisibility(0);
+            textView.setVisibility(View.VISIBLE);
             textView.setText(t.e(bookReview.created));
-            postFlag.setVisibility(8);
+            postFlag.setVisibility(View.GONE);
         }
         this.a(5, bookReview.title);
         this.a(6, bookReview.content);
@@ -57,25 +57,25 @@ public final class h extends W<BookReview> {
         if (this.b) {
             String string = author.getGender();
             if ("male".equals(string)) {
-                imageView.setVisibility(0);
+                imageView.setVisibility(View.VISIBLE);
                 imageView.setImageLevel(2);
             } else if ("female".equals(string)) {
-                imageView.setVisibility(0);
+                imageView.setVisibility(View.VISIBLE);
                 imageView.setImageLevel(3);
             } else {
-                imageView.setVisibility(0);
+                imageView.setVisibility(View.VISIBLE);
                 imageView.setImageLevel(4);
             }
         } else {
             String string = author.getType();
             if ("official".equals(string)) {
-                imageView.setVisibility(0);
+                imageView.setVisibility(View.VISIBLE);
                 imageView.setImageLevel(0);
             } else if ("doyen".equals(string)) {
-                imageView.setVisibility(0);
+                imageView.setVisibility(View.VISIBLE);
                 imageView.setImageLevel(1);
             } else {
-                imageView.setVisibility(8);
+                imageView.setVisibility(View.GONE);
             }
         }
         ((RatingView) this.a(9, RatingView.class)).setValue(bookReview.rating);

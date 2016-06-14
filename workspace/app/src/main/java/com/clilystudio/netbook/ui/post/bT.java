@@ -15,7 +15,7 @@ final class bT implements j {
     @Override
     public final void a() {
         if (MyTweetFragment.b(this.a) == null || MyTweetFragment.b(this.a).getStatus() == AsyncTask.Status.FINISHED) {
-            MyTweetFragment.v(this.a).setVisibility(0);
+            MyTweetFragment.v(this.a).setVisibility(View.VISIBLE);
             if (!am.a((AsyncTask) MyTweetFragment.w(this.a))) {
                 MyTweetFragment.w(this.a).cancel(true);
             }

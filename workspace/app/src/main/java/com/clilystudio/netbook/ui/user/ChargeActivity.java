@@ -141,7 +141,7 @@ public class ChargeActivity extends BaseLoadingActivity {
         Object[] arrobject = new Object[]{100};
         textView.setText(String.format(string, arrobject));
         textView2.setText(this.getString(2131034348));
-        view.setVisibility(8);
+        view.setVisibility(View.GONE);
     }
 
     @Override

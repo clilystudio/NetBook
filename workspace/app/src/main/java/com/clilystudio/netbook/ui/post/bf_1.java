@@ -18,7 +18,7 @@ final class bf implements View.OnClickListener {
         CommonPostListActivity.a(this.b, true);
         CommonPostListActivity.i(this.b).setText("\u7cbe\u54c1");
         CommonPostListActivity.a(this.b, "all");
-        CommonPostListActivity.j(this.b).setVisibility(0);
+        CommonPostListActivity.j(this.b).setVisibility(View.VISIBLE);
         CommonPostListActivity.j(this.b).setRefreshing();
     }
 }

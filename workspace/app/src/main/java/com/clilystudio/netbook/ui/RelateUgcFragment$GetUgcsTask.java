@@ -38,7 +38,7 @@ public final class RelateUgcFragment$GetUgcsTask extends e<String, Void, Recomme
         RecommendUgcRoot recommendUgcRoot = (RecommendUgcRoot) object;
         super.onPostExecute(recommendUgcRoot);
         if (this.a.getActivity() != null && recommendUgcRoot != null && recommendUgcRoot.getBooklists() != null && recommendUgcRoot.getBooklists().length > 0) {
-            this.a.mRelateUgcRoot.setVisibility(0);
+            this.a.mRelateUgcRoot.setVisibility(View.VISIBLE);
             for (RecommendUgcRoot$RecommendUGC recommendUgcRoot$RecommendUGC : recommendUgcRoot.getBooklists()) {
                 View view = this.a.getLayoutInflater(null).inflate(2130903317, (ViewGroup) this.a.mUgcContainer, false);
                 RelateUgcFragment$GetUgcsTask$ViewHolder relateUgcFragment$GetUgcsTask$ViewHolder = new RelateUgcFragment$GetUgcsTask$ViewHolder(this, view);

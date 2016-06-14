@@ -11,11 +11,11 @@ final class f implements ae {
 
     @Override
     public final void a() {
-        ReaderTxtActivity.B(this.a).setVisibility(0);
+        ReaderTxtActivity.B(this.a).setVisibility(View.VISIBLE);
     }
 
     @Override
     public final void b() {
-        ReaderTxtActivity.B(this.a).setVisibility(8);
+        ReaderTxtActivity.B(this.a).setVisibility(View.GONE);
     }
 }

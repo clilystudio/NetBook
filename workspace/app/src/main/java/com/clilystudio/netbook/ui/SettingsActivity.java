@@ -155,9 +155,9 @@ public class SettingsActivity extends BaseActivity implements View.OnClickListen
         switchCompat2.setOnCheckedChangeListener(new bX(this, switchCompat2));
         if ("1".equals(b.b(this, "enable_job"))) {
             View view = this.findViewById(2131493203);
-            view.setVisibility(0);
+            view.setVisibility(View.VISIBLE);
             view.setOnClickListener(this);
-            this.findViewById(2131493204).setVisibility(0);
+            this.findViewById(2131493204).setVisibility(View.VISIBLE);
         }
         this.a = a.a((Context) this, "key_shelf_sort", 1);
         String string3 = this.getResources().getStringArray(2131361805)[this.a];

@@ -46,9 +46,9 @@ final class J extends e<String, Void, UserVipInfo> {
                 if (userVipInfo.getDueInMs() > 0) {
                     SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.CHINA);
                     PayAccountActivity.d(this.a).setText("\u622a\u6b62\u81f3" + simpleDateFormat.format(userVipInfo.getVipExpire()));
-                    PayAccountActivity.d(this.a).setVisibility(0);
+                    PayAccountActivity.d(this.a).setVisibility(View.VISIBLE);
                 } else {
-                    PayAccountActivity.d(this.a).setVisibility(8);
+                    PayAccountActivity.d(this.a).setVisibility(View.GONE);
                 }
             }
             a.b((Context) this.a, "remove_ad_duration", userVipInfo.getDueInMs());

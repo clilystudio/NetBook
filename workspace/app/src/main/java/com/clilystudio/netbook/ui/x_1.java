@@ -21,7 +21,7 @@ final class x implements IDataCallBack<AlbumList> {
 
     @Override
     public final void onError(int n, String string) {
-        AudiobookCategoryListActivity.b(this.b).setVisibility(8);
+        AudiobookCategoryListActivity.b(this.b).setVisibility(View.GONE);
         if (this.a) {
             this.b.h();
             return;
@@ -32,7 +32,7 @@ final class x implements IDataCallBack<AlbumList> {
     @Override
     public final /* synthetic */ void onSuccess(XimalayaResponse ximalayaResponse) {
         AlbumList albumList = (AlbumList) ximalayaResponse;
-        AudiobookCategoryListActivity.b(this.b).setVisibility(8);
+        AudiobookCategoryListActivity.b(this.b).setVisibility(View.GONE);
         int n = albumList.getTotalPage();
         List<Album> list = albumList.getAlbums();
         if (list.size() > 0) {

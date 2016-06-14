@@ -43,7 +43,7 @@ public class ReaderResActivity extends ReaderModeActivity {
         this.setContentView(2130903179);
         this.c();
         View view = LayoutInflater.from(this).inflate(2130903071, null);
-        view.findViewById(2131493860).setVisibility(8);
+        view.findViewById(2131493860).setVisibility(View.GONE);
         view.findViewById(2131493013).setOnClickListener(new bQ(this));
         view.findViewById(2131493862).setOnClickListener(new bR(this));
         this.e = view.findViewById(2131493864);

@@ -378,8 +378,8 @@ public class ReaderRandomActivity extends FragmentActivity {
     @SuppressLint(value = {"NewApi"})
     private void h() {
         if (!this.l) {
-            this.o.setVisibility(0);
-            this.s.setVisibility(0);
+            this.o.setVisibility(View.VISIBLE);
+            this.s.setVisibility(View.VISIBLE);
             this.getWindow().addFlags(2048);
             this.getWindow().clearFlags(1024);
             this.l = true;
@@ -413,7 +413,7 @@ public class ReaderRandomActivity extends FragmentActivity {
                 this.n.setSystemUiVisibility(0);
             }
         }
-        this.s.setVisibility(8);
+        this.s.setVisibility(View.GONE);
         a.a(this.getWindow().getDecorView());
     }
 
@@ -463,7 +463,7 @@ public class ReaderRandomActivity extends FragmentActivity {
         this.o.setTitle("\u4e66\u540d\u88ab\u5c01\u5370");
         this.o.setOnBtnClickListener$3ce42dcd(new L(this));
         this.s = this.findViewById(2131493171);
-        this.s.setVisibility(0);
+        this.s.setVisibility(View.VISIBLE);
         View view = this.findViewById(2131493936);
         View view2 = this.findViewById(2131493939);
         this.t = (TextView) this.findViewById(2131493938);

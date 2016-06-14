@@ -46,7 +46,7 @@ final class dy extends com.clilystudio.netbook.a_pack.e<String, Void, PostDetail
         super.onPostExecute(postDetailComment);
         this.a.b.setOnLastItemListener(TweetDetailActivity.i(this.a));
         if (postDetailComment != null && postDetailComment.isOk()) {
-            TweetDetailActivity.j(this.a).setVisibility(8);
+            TweetDetailActivity.j(this.a).setVisibility(View.GONE);
             List<PostComment> list = Arrays.asList(postDetailComment.getComments());
             TweetDetailActivity.k(this.a).addAll(list);
             TweetDetailActivity.l(this.a).a(TweetDetailActivity.k(this.a));

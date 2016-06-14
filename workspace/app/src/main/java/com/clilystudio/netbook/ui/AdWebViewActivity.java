@@ -112,11 +112,11 @@ public class AdWebViewActivity extends BaseActivity implements View.OnClickListe
     }
 
     static /* synthetic */ void c(AdWebViewActivity adWebViewActivity) {
-        adWebViewActivity.b.setVisibility(0);
+        adWebViewActivity.b.setVisibility(View.VISIBLE);
     }
 
     static /* synthetic */ void d(AdWebViewActivity adWebViewActivity) {
-        adWebViewActivity.b.setVisibility(8);
+        adWebViewActivity.b.setVisibility(View.GONE);
     }
 
     static /* synthetic */ WebView e(AdWebViewActivity adWebViewActivity) {

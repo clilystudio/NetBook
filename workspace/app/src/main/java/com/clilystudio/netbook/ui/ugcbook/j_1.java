@@ -13,7 +13,7 @@ final class j implements View.OnClickListener {
     public final void onClick(View view) {
         UGCDetailActivity.d(this.a).setMaxLines(Integer.MAX_VALUE);
         UGCDetailActivity.d(this.a).setEllipsize(null);
-        UGCDetailActivity.e(this.a).setVisibility(8);
+        UGCDetailActivity.e(this.a).setVisibility(View.GONE);
         UGCDetailActivity.d(this.a).setClickable(false);
     }
 }

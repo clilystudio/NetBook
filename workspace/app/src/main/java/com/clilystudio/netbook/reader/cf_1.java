@@ -50,10 +50,10 @@ final class cf extends u<ChapterLink> {
             textView.setTextColor(this.a);
         }
         if (!ReaderTocDialog.a(this.d, chapterLink)) {
-            view2.findViewById(2131493757).setVisibility(0);
+            view2.findViewById(2131493757).setVisibility(View.VISIBLE);
             return view2;
         }
-        view2.findViewById(2131493757).setVisibility(8);
+        view2.findViewById(2131493757).setVisibility(View.GONE);
         return view2;
     }
 }

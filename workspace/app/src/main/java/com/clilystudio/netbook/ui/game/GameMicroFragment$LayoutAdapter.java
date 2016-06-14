@@ -124,10 +124,10 @@ final class GameMicroFragment$LayoutAdapter extends ah {
         gameMicroItemSection.a(GameMicroFragment.c(this.a));
         View view = ay2.a.findViewById(2131493432);
         if (GameMicroFragment.b(this.a) > 3) {
-            view.setVisibility(0);
+            view.setVisibility(View.VISIBLE);
             view.setOnClickListener(new Y(this));
             return;
         }
-        view.setVisibility(8);
+        view.setVisibility(View.GONE);
     }
 }

@@ -82,10 +82,10 @@ public class SettingWidget extends LinearLayout {
 
     public final void a() {
         if (this.getVisibility() != 0) {
-            this.setVisibility(0);
+            this.setVisibility(View.VISIBLE);
             return;
         }
-        this.setVisibility(8);
+        this.setVisibility(View.GONE);
     }
 
     public final void a(db db2) {

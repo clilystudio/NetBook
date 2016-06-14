@@ -41,8 +41,8 @@ final class ab extends e<String, Void, HotCommentRoot> {
         HotCommentRoot hotCommentRoot = (HotCommentRoot) object;
         super.onPostExecute(hotCommentRoot);
         if (hotCommentRoot != null && hotCommentRoot.getComments() != null && hotCommentRoot.getComments().length > 0) {
-            this.a.findViewById(2131493517).setVisibility(0);
-            this.a.findViewById(2131493518).setVisibility(0);
+            this.a.findViewById(2131493517).setVisibility(View.VISIBLE);
+            this.a.findViewById(2131493518).setVisibility(View.VISIBLE);
             LayoutInflater layoutInflater = LayoutInflater.from(this.a.getContext());
             PostComment[] arrpostComment = hotCommentRoot.getComments();
             int n = 2;

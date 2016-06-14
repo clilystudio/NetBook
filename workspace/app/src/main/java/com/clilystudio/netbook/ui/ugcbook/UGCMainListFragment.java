@@ -93,7 +93,7 @@ public class UGCMainListFragment extends Fragment implements AdapterView.OnItemC
     }
 
     public final void a() {
-        this.e.setVisibility(0);
+        this.e.setVisibility(View.VISIBLE);
         this.i.clear();
         this.d.a(this.i);
         this.g = new at(this, 0);
@@ -139,7 +139,7 @@ public class UGCMainListFragment extends Fragment implements AdapterView.OnItemC
             this.b.setFooterDividersEnabled(false);
         }
         this.b.addFooterView(this.c);
-        this.c.setVisibility(8);
+        this.c.setVisibility(View.GONE);
         this.a.setOnRefreshListener(new ap(this));
         this.d = new X(layoutInflater2);
         this.b.setAdapter(this.d);

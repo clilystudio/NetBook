@@ -75,22 +75,22 @@ public class AudiobookInfoActivity extends BaseActivity implements View.OnClickL
                 return;
             }
             case 1: {
-                audiobookInfoActivity.a.setVisibility(0);
-                audiobookInfoActivity.b.setVisibility(8);
-                audiobookInfoActivity.c.setVisibility(8);
+                audiobookInfoActivity.a.setVisibility(View.VISIBLE);
+                audiobookInfoActivity.b.setVisibility(View.GONE);
+                audiobookInfoActivity.c.setVisibility(View.GONE);
                 return;
             }
             case 0: {
-                audiobookInfoActivity.a.setVisibility(8);
-                audiobookInfoActivity.b.setVisibility(0);
-                audiobookInfoActivity.c.setVisibility(8);
+                audiobookInfoActivity.a.setVisibility(View.GONE);
+                audiobookInfoActivity.b.setVisibility(View.VISIBLE);
+                audiobookInfoActivity.c.setVisibility(View.GONE);
                 return;
             }
             case 2:
         }
-        audiobookInfoActivity.a.setVisibility(8);
-        audiobookInfoActivity.b.setVisibility(8);
-        audiobookInfoActivity.c.setVisibility(0);
+        audiobookInfoActivity.a.setVisibility(View.GONE);
+        audiobookInfoActivity.b.setVisibility(View.GONE);
+        audiobookInfoActivity.c.setVisibility(View.VISIBLE);
     }
 
     static /* synthetic */ boolean a(AudiobookInfoActivity audiobookInfoActivity, boolean bl) {

@@ -42,7 +42,7 @@ final class ad extends com.clilystudio.netbook.a_pack.e<String, Void, PostDetail
         super.onPostExecute(postDetailComment);
         if (postDetailComment != null && postDetailComment.isOk()) {
             this.a.b.setOnLastItemListener(BookHelpActivity.d(this.a));
-            BookHelpActivity.e(this.a).setVisibility(8);
+            BookHelpActivity.e(this.a).setVisibility(View.GONE);
             List<PostComment> list = Arrays.asList(postDetailComment.getComments());
             BookHelpActivity.f(this.a).addAll(list);
             BookHelpActivity.c(this.a).a(BookHelpActivity.f(this.a));

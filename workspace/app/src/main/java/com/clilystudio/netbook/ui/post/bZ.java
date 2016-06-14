@@ -14,7 +14,7 @@ final class bZ implements k<ListView> {
 
     @Override
     public final void a(PullToRefreshBase<ListView> pullToRefreshBase) {
-        OtherUserActivity.a(this.a).setVisibility(8);
+        OtherUserActivity.a(this.a).setVisibility(View.GONE);
         new Handler().postDelayed((Runnable) ((Object) new ca(this)), 1000);
     }
 }

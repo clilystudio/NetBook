@@ -84,7 +84,7 @@ public class BookTagListActivity extends BaseLoadingActivity {
         this.b(this.c);
         LayoutInflater layoutInflater = LayoutInflater.from(this);
         this.f = layoutInflater.inflate(2130903325, null);
-        this.f.setVisibility(8);
+        this.f.setVisibility(View.GONE);
         this.e = (ScrollLoadListView) this.findViewById(2131493981);
         this.e.addFooterView(this.f);
         this.e.setOnItemClickListener(new aT(this));

@@ -114,7 +114,7 @@ public class AudiobookCategoryListActivity extends BaseLoadingActivity {
         this.g = as.b();
         LayoutInflater layoutInflater = LayoutInflater.from(this);
         this.e = layoutInflater.inflate(2130903325, null);
-        this.e.setVisibility(8);
+        this.e.setVisibility(View.GONE);
         this.c = (ScrollLoadListView) this.findViewById(2131493981);
         this.c.addFooterView(this.e);
         this.c.setOnItemClickListener((AdapterView.OnItemClickListener) ((Object) new w(this)));

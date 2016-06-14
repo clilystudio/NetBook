@@ -204,7 +204,7 @@ public abstract class NotificationAdapter extends u<NotificationItem> {
         if ("follow".equals(notificationItem.getType())) {
             notificationAdapter$ViewHolder.mSubText.setVisibility(4);
         } else {
-            notificationAdapter$ViewHolder.mSubText.setVisibility(0);
+            notificationAdapter$ViewHolder.mSubText.setVisibility(View.VISIBLE);
             notificationAdapter$ViewHolder.mSubText.setText(notifBinder.getSubText());
             notifBinder.fillIcon(notificationAdapter$ViewHolder.mSubText);
         }

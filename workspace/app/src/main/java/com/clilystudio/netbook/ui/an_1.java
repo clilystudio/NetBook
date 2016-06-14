@@ -14,7 +14,7 @@ final class an implements k<ListView> {
 
     @Override
     public final void a(PullToRefreshBase<ListView> pullToRefreshBase) {
-        BookCategoryFragment.c(this.a).setVisibility(8);
+        BookCategoryFragment.c(this.a).setVisibility(View.GONE);
         new Handler().postDelayed(new ao(this), 1000);
     }
 }

@@ -38,7 +38,7 @@ public class ThemeLoadingView extends FrameLayout {
         LoadingProgressView loadingProgressView = this.d();
         if (this.d) {
             this.d = false;
-            this.setVisibility(0);
+            this.setVisibility(View.VISIBLE);
             loadingProgressView.a();
         }
     }
@@ -50,11 +50,11 @@ public class ThemeLoadingView extends FrameLayout {
         ThemeLoadingView$Mode themeLoadingView$Mode = bl ? ThemeLoadingView$Mode.DARK : ThemeLoadingView$Mode.LIGHT;
         this.c = themeLoadingView$Mode;
         if (this.c == ThemeLoadingView$Mode.LIGHT) {
-            this.a.setVisibility(0);
-            this.b.setVisibility(8);
+            this.a.setVisibility(View.VISIBLE);
+            this.b.setVisibility(View.GONE);
         } else {
-            this.b.setVisibility(0);
-            this.a.setVisibility(8);
+            this.b.setVisibility(View.VISIBLE);
+            this.a.setVisibility(View.GONE);
         }
         this.c();
         if (this.d().b()) {

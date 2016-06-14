@@ -74,10 +74,10 @@ public class TweetTabActivity extends BaseTabActivity implements ViewPager$OnPag
     static /* synthetic */ void f(TweetTabActivity tweetTabActivity) {
         int n = a.a((Context) tweetTabActivity, 18.0f);
         int n2 = a.a((Context) tweetTabActivity, 36.0f);
-        tweetTabActivity.f.setVisibility(0);
-        tweetTabActivity.n.setVisibility(0);
-        tweetTabActivity.i.setVisibility(0);
-        tweetTabActivity.h.setVisibility(0);
+        tweetTabActivity.f.setVisibility(View.VISIBLE);
+        tweetTabActivity.n.setVisibility(View.VISIBLE);
+        tweetTabActivity.i.setVisibility(View.VISIBLE);
+        tweetTabActivity.h.setVisibility(View.VISIBLE);
         com.c.b.a.a(tweetTabActivity.i).c(1.0f).b((float) (-n)).a(150).a(new DecelerateInterpolator()).b(35).a();
         com.c.b.a.a(tweetTabActivity.h).c(1.0f).b((float) (-n2)).a(150).a(new DecelerateInterpolator()).a();
         com.c.b.a.a(tweetTabActivity.j).a(135.0f).a(150).a(new AccelerateDecelerateInterpolator()).a();
@@ -218,6 +218,6 @@ public class TweetTabActivity extends BaseTabActivity implements ViewPager$OnPag
             this.g.setVisibility(4);
             return;
         }
-        this.g.setVisibility(0);
+        this.g.setVisibility(View.VISIBLE);
     }
 }

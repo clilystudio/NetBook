@@ -171,11 +171,11 @@ public class BookInfoActivity extends BaseActivity implements View.OnClickListen
         TextView textView2 = (TextView) bookInfoActivity.findViewById(2131493319);
         int n2 = bookInfoActivity.k.getWordCount();
         if (n2 > 0) {
-            textView2.setVisibility(0);
+            textView2.setVisibility(View.VISIBLE);
             Object[] arrobject = new Object[]{com.clilystudio.netbook.hpay100.a.a.i(n2)};
             textView2.setText(String.format("  |  %s\u5b57", arrobject));
         } else {
-            textView2.setVisibility(8);
+            textView2.setVisibility(View.GONE);
         }
         if (bookInfoActivity.k.getUpdated() != null) {
             String string2 = bookInfoActivity.k.getIsSerial() ? t.e((Date) bookInfoActivity.k.getUpdated()) : "\u5b8c\u7ed3";
@@ -255,7 +255,7 @@ public class BookInfoActivity extends BaseActivity implements View.OnClickListen
         SmartImageView smartImageView = (SmartImageView) view.findViewById(2131493312);
         TextView textView = (TextView) view.findViewById(2131493314);
         TextView textView2 = (TextView) view.findViewById(2131493315);
-        view.findViewById(2131493313).setVisibility(0);
+        view.findViewById(2131493313).setVisibility(View.VISIBLE);
         smartImageView.setImageUrl(advert.getFullImg());
         textView.setText(advert.getTitle());
         textView2.setText(advert.getDesc());
@@ -287,7 +287,7 @@ public class BookInfoActivity extends BaseActivity implements View.OnClickListen
         }
         LayoutInflater layoutInflater = LayoutInflater.from(this);
         View view = this.findViewById(2131493334);
-        view.setVisibility(0);
+        view.setVisibility(View.VISIBLE);
         int n2 = arrstring.length;
         int n3 = com.clilystudio.netbook.hpay100.a.a.a((Context) this, 16.0f);
         TagsLayout tagsLayout = (TagsLayout) view.findViewById(2131493335);
@@ -316,22 +316,22 @@ public class BookInfoActivity extends BaseActivity implements View.OnClickListen
                 return;
             }
             case 1: {
-                this.b.setVisibility(0);
-                this.c.setVisibility(8);
-                this.e.setVisibility(8);
+                this.b.setVisibility(View.VISIBLE);
+                this.c.setVisibility(View.GONE);
+                this.e.setVisibility(View.GONE);
                 return;
             }
             case 0: {
-                this.b.setVisibility(8);
-                this.c.setVisibility(0);
-                this.e.setVisibility(8);
+                this.b.setVisibility(View.GONE);
+                this.c.setVisibility(View.VISIBLE);
+                this.e.setVisibility(View.GONE);
                 return;
             }
             case 2:
         }
-        this.b.setVisibility(8);
-        this.c.setVisibility(8);
-        this.e.setVisibility(0);
+        this.b.setVisibility(View.GONE);
+        this.c.setVisibility(View.GONE);
+        this.e.setVisibility(View.VISIBLE);
     }
 
     private void f() {
@@ -339,14 +339,14 @@ public class BookInfoActivity extends BaseActivity implements View.OnClickListen
         if (am.q((Context) this) && com.clilystudio.netbook.hpay100.a.a.F(this)) {
             Advert advert = n.b(this, "book");
             if (advert != null && com.clilystudio.netbook.hpay100.a.a.w(this, "rate_zssq_advert_reader_bookinfo")) {
-                view.setVisibility(0);
+                view.setVisibility(View.VISIBLE);
                 this.a(view, advert);
                 return;
             }
-            view.setVisibility(8);
+            view.setVisibility(View.GONE);
             return;
         }
-        view.setVisibility(8);
+        view.setVisibility(View.GONE);
     }
 
     /*
@@ -566,7 +566,7 @@ public class BookInfoActivity extends BaseActivity implements View.OnClickListen
             return;
         }
         View view = this.findViewById(2131493311);
-        view.setVisibility(0);
+        view.setVisibility(View.VISIBLE);
         this.a(view, advert);
     }
 }

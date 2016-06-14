@@ -47,7 +47,7 @@ final class aW extends com.clilystudio.netbook.a_pack.e<String, Void, List<BookS
     protected final /* synthetic */ void onPostExecute(Object object) {
         List list = (List) object;
         super.onPostExecute(list);
-        BookTagListActivity.c(this.a).setVisibility(8);
+        BookTagListActivity.c(this.a).setVisibility(View.GONE);
         if (list != null) {
             this.a.f();
             int n = list.size();

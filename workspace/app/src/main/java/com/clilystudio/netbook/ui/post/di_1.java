@@ -14,7 +14,7 @@ final class di implements k<ListView> {
 
     @Override
     public final void a(PullToRefreshBase<ListView> pullToRefreshBase) {
-        ReviewListActivity.e(this.a).setVisibility(8);
+        ReviewListActivity.e(this.a).setVisibility(View.GONE);
         new Handler().postDelayed(new dj(this), 1000);
     }
 }

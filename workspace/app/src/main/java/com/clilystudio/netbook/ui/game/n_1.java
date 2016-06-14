@@ -64,16 +64,16 @@ final class n extends W<GamePostRoot$GamePost> {
         String string4 = gamePostRoot$GamePost.getState();
         ImageView imageView2 = (ImageView) this.a(9, ImageView.class);
         if ("distillate".equals(string4)) {
-            imageView2.setVisibility(0);
+            imageView2.setVisibility(View.VISIBLE);
             imageView2.setImageResource(2130837812);
             return;
         }
         if ("hot".equals(string4)) {
-            imageView2.setVisibility(0);
+            imageView2.setVisibility(View.VISIBLE);
             imageView2.setImageResource(2130837813);
             return;
         }
-        imageView2.setVisibility(8);
+        imageView2.setVisibility(View.GONE);
     }
 
     @Override

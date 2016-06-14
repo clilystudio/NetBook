@@ -41,10 +41,10 @@ final class al extends ah<ao> {
         ao2.j.setText("" + this.b.get(n).getCurrency() + "\u8ffd\u4e66\u5e01");
         ao2.j.setOnClickListener(new am(this, n));
         if (n >= -1 + this.b.size()) {
-            ao2.k.setVisibility(8);
+            ao2.k.setVisibility(View.GONE);
             return;
         }
-        ao2.k.setVisibility(0);
+        ao2.k.setVisibility(View.VISIBLE);
     }
 
     public final void a(List<VipPlan$Plan> list) {

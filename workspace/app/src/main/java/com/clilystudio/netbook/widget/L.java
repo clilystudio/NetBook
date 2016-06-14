@@ -46,8 +46,8 @@ final class L extends e<String, Void, GameGiftRoot> {
         GameGiftRoot gameGiftRoot = (GameGiftRoot) object;
         super.onPostExecute(gameGiftRoot);
         if (gameGiftRoot != null && gameGiftRoot.ok && gameGiftRoot.gifts != null && gameGiftRoot.gifts.length > 0) {
-            this.a.findViewById(2131493478).setVisibility(0);
-            this.a.findViewById(2131493479).setVisibility(0);
+            this.a.findViewById(2131493478).setVisibility(View.VISIBLE);
+            this.a.findViewById(2131493479).setVisibility(View.VISIBLE);
             arrgameGift = gameGiftRoot.gifts;
             n = arrgameGift.length;
             if (n > 3) {

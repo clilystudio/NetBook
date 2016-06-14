@@ -54,7 +54,7 @@ final class am extends com.clilystudio.netbook.a_pack.e<String, Void, List<Game>
         List list = (List) object;
         super.onPostExecute(list);
         if (this.a.getActivity() == null) return;
-        GameRankListFragment.d(this.a).setVisibility(8);
+        GameRankListFragment.d(this.a).setVisibility(View.GONE);
         boolean bl = GameRankListFragment.b(this.a).isEmpty();
         if (list != null) {
             int n = list.size();

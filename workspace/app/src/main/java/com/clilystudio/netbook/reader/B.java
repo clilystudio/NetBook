@@ -15,7 +15,7 @@ final class B implements View.OnClickListener {
     @Override
     public final void onClick(View view) {
         if (a.t(o.a((o) this.a))) {
-            o.c((o) this.a).setVisibility(8);
+            o.c((o) this.a).setVisibility(View.GONE);
             if (o.d((o) this.a) != null) {
                 o.d((o) this.a).a(o.b((o) this.a).l());
             }

@@ -25,10 +25,10 @@ final class s implements ai {
         this.b.setPostCount(n);
         int n2 = n - BookTopicEnterRecord.get(string).getVisitCount();
         if (n2 > 0) {
-            this.a.setVisibility(0);
+            this.a.setVisibility(View.VISIBLE);
             this.a.setText(String.valueOf(n2));
             return;
         }
-        this.a.setVisibility(8);
+        this.a.setVisibility(View.GONE);
     }
 }

@@ -148,7 +148,7 @@ public class MyFavTopicFragment extends Fragment {
             this.d.setFooterDividersEnabled(false);
         }
         this.d.addFooterView(this.e);
-        this.e.setVisibility(8);
+        this.e.setVisibility(View.GONE);
         this.registerForContextMenu(this.d);
         this.c.setOnRefreshListener(new u(this));
         this.d.setOnItemClickListener((AdapterView.OnItemClickListener) ((Object) new w(this)));
@@ -156,8 +156,8 @@ public class MyFavTopicFragment extends Fragment {
         this.d.setAdapter(this.h);
         Account account = am.e();
         if (account == null) {
-            this.f.setVisibility(8);
-            this.g.setVisibility(0);
+            this.f.setVisibility(View.GONE);
+            this.g.setVisibility(View.VISIBLE);
             this.g.setText("\u8bf7\u767b\u5f55\u540e\u67e5\u770b");
             return view;
         }

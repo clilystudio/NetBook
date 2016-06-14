@@ -33,14 +33,14 @@ public class AutoReaderSetWidget extends LinearLayout implements View.OnClickLis
 
     public final void a() {
         this.c = this.b;
-        this.setVisibility(0);
+        this.setVisibility(View.VISIBLE);
     }
 
     public final void b() {
         if (this.c != this.b) {
             b.a(this.getContext(), "auto_read_speed", null, this.b);
         }
-        this.setVisibility(8);
+        this.setVisibility(View.GONE);
     }
 
     public final void c() {

@@ -13,7 +13,7 @@ final class by implements j {
     @Override
     public final void a() {
         if (GirlTopicListActivity.e(this.a) == null || GirlTopicListActivity.e(this.a).getStatus() == AsyncTask.Status.FINISHED) {
-            GirlTopicListActivity.p(this.a).setVisibility(0);
+            GirlTopicListActivity.p(this.a).setVisibility(View.VISIBLE);
             if (!am.a(GirlTopicListActivity.h(this.a))) {
                 GirlTopicListActivity.h(this.a).cancel(true);
             }

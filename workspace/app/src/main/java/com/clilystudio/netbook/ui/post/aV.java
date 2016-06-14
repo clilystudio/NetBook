@@ -17,7 +17,7 @@ final class aV implements View.OnClickListener {
         this.a.dismiss();
         CommonPostListActivity.k(this.b).setText("\u6700\u591a\u8bc4\u8bba");
         CommonPostListActivity.b(this.b, "comment-count");
-        CommonPostListActivity.j(this.b).setVisibility(0);
+        CommonPostListActivity.j(this.b).setVisibility(View.VISIBLE);
         CommonPostListActivity.j(this.b).setRefreshing();
     }
 }

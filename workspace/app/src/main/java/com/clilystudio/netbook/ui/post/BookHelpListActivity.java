@@ -224,7 +224,7 @@ public class BookHelpListActivity extends BaseActivity {
     }
 
     static /* synthetic */ void s(BookHelpListActivity bookHelpListActivity) {
-        bookHelpListActivity.h.setVisibility(0);
+        bookHelpListActivity.h.setVisibility(View.VISIBLE);
         bookHelpListActivity.h.setText("\u8fd9\u91cc\u8fd8\u6ca1\u6709\u4e66\u8352\u6c42\u52a9\uff0c\u53bb\u53d1\u5e03\u4e00\u4e2a\u5427");
     }
 
@@ -269,7 +269,7 @@ public class BookHelpListActivity extends BaseActivity {
             this.e.setFooterDividersEnabled(false);
         }
         this.f = LayoutInflater.from(this).inflate(2130903325, null);
-        this.f.setVisibility(8);
+        this.f.setVisibility(View.GONE);
         this.e.addFooterView(this.f);
         this.c.setOnRefreshListener(new an(this));
         this.e.setOnItemClickListener((AdapterView.OnItemClickListener) ((Object) new ap(this)));

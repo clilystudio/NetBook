@@ -28,24 +28,24 @@ public final class bG extends W<TocSummary> {
         ImageView imageView = (ImageView) this.a(0, ImageView.class);
         TextView textView = (TextView) this.a(1, TextView.class);
         if (string.contains("baidu")) {
-            imageView.setVisibility(0);
-            textView.setVisibility(8);
+            imageView.setVisibility(View.VISIBLE);
+            textView.setVisibility(View.GONE);
             imageView.setImageResource(2130838009);
         } else if (string.contains("leidian")) {
-            imageView.setVisibility(0);
-            textView.setVisibility(8);
+            imageView.setVisibility(View.VISIBLE);
+            textView.setVisibility(View.GONE);
             imageView.setImageResource(2130838014);
         } else if (string.contains("sogou")) {
-            imageView.setVisibility(0);
-            textView.setVisibility(8);
+            imageView.setVisibility(View.VISIBLE);
+            textView.setVisibility(View.GONE);
             imageView.setImageResource(2130838016);
         } else if (string.contains("easou")) {
-            imageView.setVisibility(0);
-            textView.setVisibility(8);
+            imageView.setVisibility(View.VISIBLE);
+            textView.setVisibility(View.GONE);
             imageView.setImageResource(2130838011);
         } else {
-            imageView.setVisibility(8);
-            textView.setVisibility(0);
+            imageView.setVisibility(View.GONE);
+            textView.setVisibility(View.VISIBLE);
             textView.setText(string.substring(0, 1).toUpperCase());
         }
         this.a(2, string);

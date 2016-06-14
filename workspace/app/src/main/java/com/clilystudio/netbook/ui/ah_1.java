@@ -53,16 +53,16 @@ final class ah extends e<String, Void, BookReview[]> {
             return;
         }
         View view = BestReviewsFragment.a(this.a).findViewById(2131493430);
-        view.setVisibility(0);
+        view.setVisibility(View.VISIBLE);
         int n2 = arrbookReview.length;
         if (n2 == 0) {
-            view.findViewById(2131493431).setVisibility(8);
-            view.findViewById(2131493433).setVisibility(0);
+            view.findViewById(2131493431).setVisibility(View.GONE);
+            view.findViewById(2131493433).setVisibility(View.VISIBLE);
             BestReviewsFragment.b(this.a);
             return;
         }
-        view.findViewById(2131493431).setVisibility(0);
-        view.findViewById(2131493433).setVisibility(8);
+        view.findViewById(2131493431).setVisibility(View.VISIBLE);
+        view.findViewById(2131493433).setVisibility(View.GONE);
         BestReviewsFragment.c(this.a);
         if (n2 <= n) {
             n = n2;

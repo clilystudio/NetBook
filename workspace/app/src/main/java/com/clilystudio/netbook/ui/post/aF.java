@@ -13,7 +13,7 @@ final class aF implements j {
     @Override
     public final void a() {
         if (BookReviewListFragment.b(this.a) == null || BookReviewListFragment.b(this.a).getStatus() == AsyncTask.Status.FINISHED) {
-            this.a.c.setVisibility(0);
+            this.a.c.setVisibility(View.VISIBLE);
             if (!am.a((AsyncTask) BookReviewListFragment.j(this.a))) {
                 BookReviewListFragment.j(this.a).cancel(true);
             }

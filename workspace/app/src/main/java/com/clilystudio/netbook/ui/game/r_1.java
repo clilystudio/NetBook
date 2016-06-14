@@ -45,7 +45,7 @@ final class r extends com.clilystudio.netbook.a_pack.e<String, Void, List<GamePo
     protected final /* synthetic */ void onPostExecute(Object object) {
         List list = (List) object;
         super.onPostExecute(list);
-        GameDetailActivity.i(this.a).setVisibility(8);
+        GameDetailActivity.i(this.a).setVisibility(View.GONE);
         GameDetailActivity.b(this.a).setOnLastItemListener(GameDetailActivity.j(this.a));
         if (list != null) {
             int n2 = list.size();

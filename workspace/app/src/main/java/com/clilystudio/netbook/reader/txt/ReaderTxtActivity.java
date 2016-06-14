@@ -713,7 +713,7 @@ public class ReaderTxtActivity extends FragmentActivity implements com.clilystud
             {
                 this.l = true;
                 if (this.w == 0) {
-                    this.o.setVisibility(0);
+                    this.o.setVisibility(View.VISIBLE);
                     this.getWindow().addFlags(2048);
                     this.getWindow().clearFlags(1024);
                     if (!com.clilystudio.netbook.hpay100.a.a.h() || this.m) return;
@@ -746,14 +746,14 @@ public class ReaderTxtActivity extends FragmentActivity implements com.clilystud
     private void t() {
         if (this.l) {
             this.l = false;
-            this.o.setVisibility(8);
-            this.p.setVisibility(8);
+            this.o.setVisibility(View.GONE);
+            this.p.setVisibility(View.GONE);
             this.v.b();
             if (this.w == 1) {
                 this.x.e();
             }
             if (this.w == 2) {
-                this.z.setVisibility(8);
+                this.z.setVisibility(View.GONE);
                 if (this.z.b()) {
                     this.G.resumeSpeaking();
                     this.z.setPause(false);
@@ -834,21 +834,21 @@ public class ReaderTxtActivity extends FragmentActivity implements com.clilystud
     }
 
     private void y() {
-        this.x.setVisibility(8);
-        this.y.setVisibility(8);
+        this.x.setVisibility(View.GONE);
+        this.y.setVisibility(View.GONE);
     }
 
     /*
      * Enabled aggressive block sorting
      */
     private void z() {
-        this.x.setVisibility(0);
+        this.x.setVisibility(View.VISIBLE);
         if (this.e.h()) {
             this.y.setBackgroundResource(2130837612);
         } else {
             this.y.setBackgroundResource(2130837611);
         }
-        this.y.setVisibility(0);
+        this.y.setVisibility(View.VISIBLE);
     }
 
     public final void a() {

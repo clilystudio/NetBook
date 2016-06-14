@@ -55,7 +55,7 @@ public class RelateBooksFragment extends Fragment implements cQ {
         if (var1_1 == null) return;
         if (var1_1.getBooks() == null) return;
         if (var1_1.getBooks().isEmpty() != false) return;
-        this.mRelateBookRoot.setVisibility(0);
+        this.mRelateBookRoot.setVisibility(View.VISIBLE);
         if (!this.a)**GOTO lbl -1000
         var16_3 = var1_1.getBooks();
         var3_4 = new ArrayList<BookSummary>(20);
@@ -78,7 +78,7 @@ public class RelateBooksFragment extends Fragment implements cQ {
         var7_13 = new E(this.getActivity(), var6_12, this.getResources().getDimension(2131099735)).a();
         var8_14 = var3_4.size() > var7_13.b();
         if (var8_14) {
-            this.mMore.setVisibility(0);
+            this.mMore.setVisibility(View.VISIBLE);
             this.mMore.setOnClickListener(new bA(this, var1_1));
             var3_4 = var3_4.subList(0, var7_13.b());
         }

@@ -12,7 +12,7 @@ final class ar implements j {
     @Override
     public final void a() {
         if (UGCMainListFragment.i(this.a) == null || UGCMainListFragment.i(this.a).getStatus() == AsyncTask.Status.FINISHED) {
-            UGCMainListFragment.d(this.a).setVisibility(0);
+            UGCMainListFragment.d(this.a).setVisibility(View.VISIBLE);
             if (UGCMainListFragment.b(this.a) != null && UGCMainListFragment.b(this.a).getStatus() != AsyncTask.Status.FINISHED && !UGCMainListFragment.b(this.a).isCancelled()) {
                 UGCMainListFragment.b(this.a).cancel(true);
             }

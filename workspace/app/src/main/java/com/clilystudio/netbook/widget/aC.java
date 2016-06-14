@@ -9,7 +9,7 @@ final class aC implements ah {
 
     @Override
     public final void a() {
-        this.a.setVisibility(8);
+        this.a.setVisibility(View.GONE);
         ThemeLoadingView.a(this.a, true);
     }
 }

@@ -20,9 +20,9 @@ public class HomeFindLuckyGameItem extends HomeFindItem {
     }
 
     private void b() {
-        this.setVisibility(0);
-        this.mSubFlag.setVisibility(8);
-        this.mSubText.setVisibility(8);
+        this.setVisibility(View.VISIBLE);
+        this.mSubFlag.setVisibility(View.GONE);
+        this.mSubText.setVisibility(View.GONE);
     }
 
     /*
@@ -58,7 +58,7 @@ public class HomeFindLuckyGameItem extends HomeFindItem {
             this.b();
             return;
         }
-        this.setVisibility(8);
+        this.setVisibility(View.GONE);
     }
 
     @Override

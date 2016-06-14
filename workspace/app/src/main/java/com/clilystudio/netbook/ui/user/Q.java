@@ -11,7 +11,7 @@ final class Q implements av {
 
     @Override
     public final void a() {
-        PayConsumeActivity.d(this.a).setVisibility(0);
+        PayConsumeActivity.d(this.a).setVisibility(View.VISIBLE);
         Z z = new Z(this.a, 0);
         String[] arrstring = new String[]{PayConsumeActivity.g(this.a)};
         z.b(arrstring);

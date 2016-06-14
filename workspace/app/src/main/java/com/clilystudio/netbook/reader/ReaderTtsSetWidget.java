@@ -68,7 +68,7 @@ public class ReaderTtsSetWidget extends LinearLayout {
             readerTtsSetWidget.n = -1;
             readerTtsSetWidget.g.a(true);
             readerTtsSetWidget.g.d();
-            readerTtsSetWidget.setVisibility(8);
+            readerTtsSetWidget.setVisibility(View.GONE);
             a.K(readerTtsSetWidget.getContext());
         }
     }
@@ -176,7 +176,7 @@ public class ReaderTtsSetWidget extends LinearLayout {
     }
 
     public final void a() {
-        this.setVisibility(0);
+        this.setVisibility(View.VISIBLE);
         this.c();
     }
 
@@ -261,7 +261,7 @@ public class ReaderTtsSetWidget extends LinearLayout {
                     this.h = var9_4;
                     var10_10 = this.h.length > 3 ? 3 : this.h.length;
                     for (var11_11 = 0; var11_11 < var10_10; ++var11_11) {
-                        this.b[var11_11].setVisibility(0);
+                        this.b[var11_11].setVisibility(View.VISIBLE);
                         this.b[var11_11].setText(this.h[var11_11].getNickname());
                         this.b[var11_11].setTag(this.h[var11_11].getName());
                         this.b[var11_11].setOnClickListener((View.OnClickListener) new cm(this, var11_11));

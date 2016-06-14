@@ -42,7 +42,7 @@ final class cv extends com.clilystudio.netbook.a_pack.e<String, Void, PostDetail
         super.onPostExecute(postDetailComment);
         this.a.b.setOnLastItemListener(PostDetailActivity.d(this.a));
         if (postDetailComment != null && postDetailComment.isOk()) {
-            PostDetailActivity.e(this.a).setVisibility(8);
+            PostDetailActivity.e(this.a).setVisibility(View.GONE);
             List<PostComment> list = Arrays.asList(postDetailComment.getComments());
             PostDetailActivity.f(this.a).addAll(list);
             PostDetailActivity.c(this.a).a(PostDetailActivity.f(this.a));

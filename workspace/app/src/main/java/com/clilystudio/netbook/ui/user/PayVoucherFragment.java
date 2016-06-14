@@ -86,7 +86,7 @@ public class PayVoucherFragment extends Fragment {
     @Override
     public void onActivityCreated(Bundle bundle) {
         super.onActivityCreated(bundle);
-        this.g.setVisibility(0);
+        this.g.setVisibility(View.VISIBLE);
         this.j.clear();
         this.c.a(this.j);
         this.i = new af(this);
@@ -110,7 +110,7 @@ public class PayVoucherFragment extends Fragment {
             this.e.setFooterDividersEnabled(false);
         }
         this.e.addFooterView(this.f);
-        this.f.setVisibility(8);
+        this.f.setVisibility(View.GONE);
         this.e.setOnItemClickListener((AdapterView.OnItemClickListener) ((Object) new ab(this)));
         this.d.setOnRefreshListener(new ac(this));
         this.c = new ag(this, layoutInflater2);

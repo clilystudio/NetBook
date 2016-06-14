@@ -81,7 +81,7 @@ public class HomeTopicFragment extends HomeFragment implements View.OnClickListe
             communitySection.a(a.a((Context) this.getActivity(), "FRIST_RUN_POST", true));
             communitySection.setOnClickListener(this);
         } else {
-            communitySection.setVisibility(8);
+            communitySection.setVisibility(View.GONE);
         }
         view.findViewById(2131493511).setOnClickListener(this);
         view.findViewById(2131493512).setOnClickListener(this);

@@ -52,11 +52,11 @@ final class S extends BaseAdapter {
         view4.setOnClickListener(new V(s, payConsumeRecord$Order, popupWindow));
         view6.setOnClickListener(new W(s, n, popupWindow));
         if (payConsumeRecord$Order.getPayType() == PayConsumeRecord$PayType.MULTIPLE_CHAPTERS) {
-            view5.setVisibility(0);
-            view6.setVisibility(0);
+            view5.setVisibility(View.VISIBLE);
+            view6.setVisibility(View.VISIBLE);
         } else {
-            view5.setVisibility(8);
-            view6.setVisibility(8);
+            view5.setVisibility(View.GONE);
+            view6.setVisibility(View.GONE);
         }
         if (a.i()) {
             popupWindow.showAsDropDown(view, a.a((Context) s.a, 0.0f), 0, 53);
@@ -124,24 +124,24 @@ final class S extends BaseAdapter {
         y2.a.setText(string);
         y2.e.setText("" + payConsumeRecord$Order.getUseCurrency());
         if (payConsumeRecord$Order.getUseVoucher() > 0) {
-            y2.g.setVisibility(0);
+            y2.g.setVisibility(View.VISIBLE);
             y2.f.setText("" + payConsumeRecord$Order.getUseVoucher());
         } else {
-            y2.g.setVisibility(8);
+            y2.g.setVisibility(View.GONE);
         }
         y2.d.setText(t.e((Date) payConsumeRecord$Order.getCreated()));
         y2.c.setText(payConsumeRecord$Order.getPayTypeString());
         if (payConsumeRecord$PayType == PayConsumeRecord$PayType.WHOLE_BOOK || payConsumeRecord$PayType == PayConsumeRecord$PayType.MULTIPLE_CHAPTERS) {
-            y2.b.setVisibility(8);
+            y2.b.setVisibility(View.GONE);
         } else {
-            y2.b.setVisibility(0);
+            y2.b.setVisibility(View.VISIBLE);
             if (payConsumeRecord$PayType == PayConsumeRecord$PayType.VIP_SERVICE) {
                 y2.a.setText(payConsumeRecord$Order.getBookName());
                 y2.c.setText(payConsumeRecord$Order.getChapterTitle());
                 y2.b.setText("");
                 y2.d.setText("");
             } else {
-                y2.a.setVisibility(0);
+                y2.a.setVisibility(View.VISIBLE);
                 String string2 = payConsumeRecord$Order.getChapterTitle();
                 if (string2.length() > 10) {
                     string2 = string2.substring(0, 10) + "...";
@@ -155,7 +155,7 @@ final class S extends BaseAdapter {
             int n2 = this.d[n] ? 0 : 8;
             view3.setVisibility(n2);
         } else {
-            y2.h.setVisibility(8);
+            y2.h.setVisibility(View.GONE);
         }
         ImageView imageView = y2.i;
         imageView.setOnClickListener(new T(this, n, payConsumeRecord$Order, imageView, view2));

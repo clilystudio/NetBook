@@ -48,7 +48,7 @@ final class Z extends e<String, Void, List<PayConsumeRecord.Order>> {
     protected final /* synthetic */ void onPostExecute(Object object) {
         List list = (List) object;
         super.onPostExecute(list);
-        PayConsumeActivity.d(this.a).setVisibility(8);
+        PayConsumeActivity.d(this.a).setVisibility(View.GONE);
         if (list == null) {
             this.a.h();
             return;

@@ -99,9 +99,9 @@ public class AddReviewActivity extends BaseActivity {
             bl = false;
         }
         if (bl) {
-            view.setVisibility(8);
+            view.setVisibility(View.GONE);
             return;
         }
-        view.setVisibility(0);
+        view.setVisibility(View.VISIBLE);
     }
 }

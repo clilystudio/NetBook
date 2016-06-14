@@ -275,9 +275,9 @@ public class OtherUserActivity extends BaseActivity {
     }
 
     static /* synthetic */ void u(OtherUserActivity otherUserActivity) {
-        otherUserActivity.o.setVisibility(8);
-        otherUserActivity.n.setVisibility(8);
-        otherUserActivity.m.setVisibility(8);
+        otherUserActivity.o.setVisibility(View.GONE);
+        otherUserActivity.n.setVisibility(View.GONE);
+        otherUserActivity.m.setVisibility(View.GONE);
         otherUserActivity.c.n();
     }
 
@@ -294,7 +294,7 @@ public class OtherUserActivity extends BaseActivity {
     }
 
     static /* synthetic */ void y(OtherUserActivity otherUserActivity) {
-        otherUserActivity.o.setVisibility(0);
+        otherUserActivity.o.setVisibility(View.VISIBLE);
         otherUserActivity.o.setText("TA\u53ef\u80fd\u8fd8\u4e0d\u77e5\u52a8\u6001\u5427!");
     }
 

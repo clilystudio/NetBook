@@ -44,9 +44,9 @@ final class bi extends com.clilystudio.netbook.a_pack.e<String, Void, DiscussSum
     protected final /* synthetic */ void onPostExecute(Object object) {
         DiscussSummary[] arrdiscussSummary = (DiscussSummary[]) object;
         super.onPostExecute(arrdiscussSummary);
-        CommonPostListActivity.b(this.a).setVisibility(8);
-        CommonPostListActivity.p(this.a).setVisibility(8);
-        CommonPostListActivity.q(this.a).setVisibility(8);
+        CommonPostListActivity.b(this.a).setVisibility(View.GONE);
+        CommonPostListActivity.p(this.a).setVisibility(View.GONE);
+        CommonPostListActivity.q(this.a).setVisibility(View.GONE);
         CommonPostListActivity.j(this.a).n();
         if (arrdiscussSummary != null) {
             CommonPostListActivity.h(this.a).clear();
