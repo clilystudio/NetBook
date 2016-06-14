@@ -11,6 +11,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.clilystudio.netbook.d;
+import com.clilystudio.netbook.model.PayConsumeRecord;
 import com.clilystudio.netbook.model.PayConsumeRecord$Order;
 import com.clilystudio.netbook.ui.BaseLoadingActivity;
 import com.clilystudio.netbook.util.t;
@@ -49,18 +50,24 @@ public class PayConsumeActivity extends BaseLoadingActivity {
         ClipboardManager clipboardManager = (ClipboardManager) payConsumeActivity.getSystemService("clipboard");
         StringBuffer stringBuffer = new StringBuffer();
         stringBuffer.append(payConsumeRecord$Order.getBookName() + ", ");
-        switch (R.a[payConsumeRecord$Order.getPayType().ordinal()]) {
-            case 1: {
-                for (String string : payConsumeRecord$Order.getTitles()) {
-                    stringBuffer.append(string + ", ");
-                }
-                break;
+        if (payConsumeRecord$Order.getPayType() == PayConsumeRecord.PayType.SINGLE_CHAPTER) {
+            for (String string : payConsumeRecord$Order.getTitles()) {
+                stringBuffer.append(string + ", ");
             }
-            case 2:
-            case 3: {
-                stringBuffer.append(payConsumeRecord$Order.getChapterTitle() + ", ");
-            }
+        } else if (payConsumeRecord$Order.getPayType() == PayConsumeRecord.PayType.AUTO_PURCHASE) {
+            stringBuffer.append(payConsumeRecord$Order.getChapterTitle() + ", ");
+       } else if (payConsumeRecord$Order.getPayType() == PayConsumeRecord.PayType.WHOLE_BOOK) {
+            stringBuffer.append(payConsumeRecord$Order.getChapterTitle() + ", ");
         }
+//        switch (R.a[payConsumeRecord$Order.getPayType().ordinal()]) {
+//            case 1: {
+//                break;
+//            }
+//            case 2:
+//            case 3: {
+//                stringBuffer.append(payConsumeRecord$Order.getChapterTitle() + ", ");
+//            }
+//        }
         stringBuffer.append("" + payConsumeRecord$Order.getUseCurrency() + "\u8ffd\u4e66\u5e01");
         if (payConsumeRecord$Order.getUseVoucher() > 0) {
             stringBuffer.append("+" + payConsumeRecord$Order.getUseVoucher() + "\u8ffd\u4e66\u5238, ");

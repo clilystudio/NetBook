@@ -45,7 +45,7 @@ public class PayConsumeRecord$Order {
     /*
      * Enabled aggressive block sorting
      */
-    public PayConsumeRecord$PayType getPayType() {
+    public PayConsumeRecord.PayType getPayType() {
         if (this.payType != null) return this.payType;
         if (!this.type.equals("single")) {
             if (this.type.equals("auto")) {

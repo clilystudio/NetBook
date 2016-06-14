@@ -4,9 +4,9 @@ import com.clilystudio.netbook.api.ApiService;
 import com.clilystudio.netbook.model.RelateBookRoot;
 import com.clilystudio.netbook.model.Root;
 
-public abstract class R extends S<RelateBookRoot> {
+public abstract class R_Clazz extends S<RelateBookRoot> {
     @Override
-    protected final /* synthetic */ Root a(ApiService apiService, String[] arrstring) {
+    protected final /* synthetic */ RelateBookRoot a(ApiService apiService, String[] arrstring) {
         return apiService.X(arrstring[0]);
     }
 }

@@ -19,4 +19,8 @@ public class PayConsumeRecord {
     public void setOk(boolean bl) {
         this.ok = bl;
     }
+
+    public enum PayType {
+        SINGLE_CHAPTER, AUTO_PURCHASE, WHOLE_BOOK, MULTIPLE_CHAPTERS, VIP_SERVICE;
+    }
 }
