@@ -8,7 +8,7 @@ import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.Point;
 import android.preference.PreferenceManager;
-import android.support.design.widget.am;
+import com.clilystudio.netbook.am;
 import android.view.Display;
 import android.view.WindowManager;
 

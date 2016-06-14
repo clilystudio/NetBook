@@ -1,6 +1,6 @@
 package com.clilystudio.netbook.ui.post;
 
-import android.support.design.widget.am;
+import com.clilystudio.netbook.am;
 
 final class ao implements Runnable {
     private /* synthetic */ an a;

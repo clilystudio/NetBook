@@ -2,7 +2,7 @@ package com.clilystudio.netbook.ui.home;
 
 import android.app.Activity;
 import android.content.Context;
-import android.support.design.widget.am;
+import com.clilystudio.netbook.am;
 import android.view.View;
 
 import com.clilystudio.netbook.model.InsideLink;

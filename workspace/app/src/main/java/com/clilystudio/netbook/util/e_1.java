@@ -258,18 +258,18 @@ public class e {
     }
 
     public static String c(Context context) {
-        if (android.support.design.widget.am.e() == null) {
+        if (com.clilystudio.netbook.am.e() == null) {
             String string = ((WifiManager) context.getSystemService("wifi")).getConnectionInfo().getMacAddress();
             if (string == null) {
                 string = "";
             }
             return com.integralblue.httpresponsecache.compat.libcore.a.a.b(string.getBytes());
         }
-        return android.support.design.widget.am.e().getUser().getId();
+        return com.clilystudio.netbook.am.e().getUser().getId();
     }
 
     public static void c(String string) {
-        Account account = android.support.design.widget.am.e();
+        Account account = com.clilystudio.netbook.am.e();
         if (account == null) {
             return;
         }

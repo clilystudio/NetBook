@@ -2,7 +2,7 @@ package com.clilystudio.netbook.widget;
 
 import android.app.Activity;
 import android.content.Context;
-import android.support.design.widget.am;
+import com.clilystudio.netbook.am;
 import android.util.AttributeSet;
 
 import com.clilystudio.netbook.hpay100.a.a;

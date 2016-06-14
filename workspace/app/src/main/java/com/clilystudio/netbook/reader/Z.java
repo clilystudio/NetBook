@@ -1,6 +1,6 @@
 package com.clilystudio.netbook.reader;
 
-import android.support.design.widget.am;
+import com.clilystudio.netbook.am;
 
 import com.clilystudio.netbook.model.ChapterLink;
 

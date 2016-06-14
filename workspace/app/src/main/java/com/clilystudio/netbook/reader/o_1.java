@@ -3,7 +3,7 @@ package com.clilystudio.netbook.reader;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
-import android.support.design.widget.am;
+import com.clilystudio.netbook.am;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;

@@ -150,7 +150,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
             com.clilystudio.netbook.util.e.a((Activity) readerActivity, (String) "\u7f13\u5b58\u4e0d\u53ef\u7528");
             return;
         }
-        boolean bl = android.support.design.widget.am.g((String) readerActivity.c) == 2;
+        boolean bl = com.clilystudio.netbook.am.g((String) readerActivity.c) == 2;
         if (bl) {
             new h(readerActivity).a(2131034526).b(2131034340).a(2131034341, (DialogInterface.OnClickListener) ((Object) new be(readerActivity))).b(2131034523, (DialogInterface.OnClickListener) ((Object) new bd(readerActivity))).b();
             return;
@@ -356,7 +356,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
     }
 
     static /* synthetic */ void ad(ReaderActivity readerActivity) {
-        if (android.support.design.widget.am.f()) {
+        if (com.clilystudio.netbook.am.f()) {
             com.clilystudio.netbook.util.e.a((Activity) readerActivity, (String) readerActivity.getString(2131034325));
             return;
         }
@@ -378,7 +378,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
     static /* synthetic */ void ag(ReaderActivity readerActivity) {
         CharSequence charSequence = readerActivity.r.b().getText();
         if (charSequence != null) {
-            android.support.design.widget.am.a((Activity) readerActivity, (String) charSequence.toString(), (String) null);
+            com.clilystudio.netbook.am.a((Activity) readerActivity, (String) charSequence.toString(), (String) null);
         }
     }
 
@@ -440,7 +440,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         readerActivity.S.getContentView().setFocusable(true);
         int[] arrn = new int[2];
         view.getLocationOnScreen(arrn);
-        readerActivity.S.showAtLocation(view, 0, arrn[0] - readerActivity.S.getWidth() + view.getWidth(), android.support.design.widget.am.l((Context) readerActivity) + android.support.design.widget.am.k((Context) readerActivity));
+        readerActivity.S.showAtLocation(view, 0, arrn[0] - readerActivity.S.getWidth() + view.getWidth(), com.clilystudio.netbook.am.l((Context) readerActivity) + com.clilystudio.netbook.am.k((Context) readerActivity));
     }
 
     static /* synthetic */ boolean b(ReaderActivity readerActivity, boolean bl) {
@@ -1045,7 +1045,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         if (com.clilystudio.netbook.hpay100.a.a.d()) {
             Iterator<String> iterator = com.clilystudio.netbook.hpay100.a.a.j(this.c, this.e).iterator();
             while (iterator.hasNext()) {
-                String string = android.support.design.widget.am.f((String) iterator.next());
+                String string = com.clilystudio.netbook.am.f((String) iterator.next());
                 this.x.add(string);
             }
         }
@@ -1361,9 +1361,9 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
 
     @l
     public void OnUpdateBalanceEvent(com.clilystudio.netbook.event.G g2) {
-        if (android.support.design.widget.am.e() != null) {
+        if (com.clilystudio.netbook.am.e() != null) {
             bo bo2 = new bo(this, 0);
-            Object[] arrobject = new String[]{android.support.design.widget.am.e().getToken()};
+            Object[] arrobject = new String[]{com.clilystudio.netbook.am.e().getToken()};
             bo2.b(arrobject);
         }
     }
@@ -1652,9 +1652,9 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         bq bq2 = new bq(this, 0);
         Object[] arrobject = new String[]{this.c};
         bq2.b(arrobject);
-        if (android.support.design.widget.am.e() != null) {
+        if (com.clilystudio.netbook.am.e() != null) {
             bo bo2 = new bo(this, 0);
-            Object[] arrobject2 = new String[]{android.support.design.widget.am.e().getToken()};
+            Object[] arrobject2 = new String[]{com.clilystudio.netbook.am.e().getToken()};
             bo2.b(arrobject2);
             new bp(this, 0).b((Object[]) new Void[0]);
         }

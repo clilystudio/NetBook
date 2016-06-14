@@ -1,7 +1,7 @@
 package com.clilystudio.netbook.ui.user;
 
 import android.app.Activity;
-import android.support.design.widget.am;
+import com.clilystudio.netbook.am;
 import android.widget.TextView;
 
 import com.clilystudio.netbook.MyApplication;

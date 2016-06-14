@@ -1,6 +1,6 @@
 package com.clilystudio.netbook.util;
 
-import android.support.design.widget.am;
+import com.clilystudio.netbook.am;
 
 final class aq extends Thread {
     private /* synthetic */ String a;

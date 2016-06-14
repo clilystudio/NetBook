@@ -1,6 +1,6 @@
 package com.clilystudio.netbook.ui.post;
 
-import android.support.design.widget.am;
+import com.clilystudio.netbook.am;
 import android.view.View;
 
 final class bR implements View.OnClickListener {

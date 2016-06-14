@@ -2,7 +2,7 @@ package com.clilystudio.netbook.pay.weixin;
 
 import android.app.Activity;
 import android.content.Context;
-import android.support.design.widget.am;
+import com.clilystudio.netbook.am;
 
 import com.clilystudio.netbook.a_pack.c;
 import com.clilystudio.netbook.event.i;

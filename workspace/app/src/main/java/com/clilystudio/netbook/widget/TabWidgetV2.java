@@ -5,7 +5,7 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
-import android.support.design.widget.am;
+import com.clilystudio.netbook.am;
 import android.util.AttributeSet;
 import android.widget.TabWidget;
 

@@ -67,12 +67,12 @@ final class ak extends ah {
             an an2 = (an) ay2;
             an2.j = string = this.c.getString(2131034561);
             if (UGCMainActivity.j(an2.k.c).equals(string)) {
-                an2.i.setTextColor(android.support.design.widget.am.a((Context) an2.k.c, (int) 2130771972));
-                an2.i.setBackgroundResource(android.support.design.widget.am.b((Context) an2.k.c, (int) 2130771998));
+                an2.i.setTextColor(com.clilystudio.netbook.am.a((Context) an2.k.c, (int) 2130771972));
+                an2.i.setBackgroundResource(com.clilystudio.netbook.am.b((Context) an2.k.c, (int) 2130771998));
                 return;
             }
-            an2.i.setTextColor(android.support.design.widget.am.a((Context) an2.k.c, (int) 16842808));
-            an2.i.setBackgroundResource(android.support.design.widget.am.b((Context) an2.k.c, (int) 2130771974));
+            an2.i.setTextColor(com.clilystudio.netbook.am.a((Context) an2.k.c, (int) 16842808));
+            an2.i.setBackgroundResource(com.clilystudio.netbook.am.b((Context) an2.k.c, (int) 2130771974));
             return;
         }
         al al2 = (al) ay2;

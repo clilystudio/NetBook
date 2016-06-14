@@ -2,7 +2,7 @@ package com.clilystudio.netbook.util;
 
 import android.content.Context;
 import android.os.Handler;
-import android.support.design.widget.am;
+import com.clilystudio.netbook.am;
 
 import cn.sharesdk.framework.Platform;
 import cn.sharesdk.framework.PlatformActionListener;

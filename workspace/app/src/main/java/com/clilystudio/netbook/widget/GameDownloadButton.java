@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.res.Resources;
-import android.support.design.widget.am;
+import com.clilystudio.netbook.am;
 import android.util.AttributeSet;
 import android.widget.Button;
 

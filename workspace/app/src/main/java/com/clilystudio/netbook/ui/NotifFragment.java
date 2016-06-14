@@ -1,7 +1,7 @@
 package com.clilystudio.netbook.ui;
 
 import android.os.Bundle;
-import android.support.design.widget.am;
+import com.clilystudio.netbook.am;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;

@@ -1,7 +1,7 @@
 package com.clilystudio.netbook.ui.post;
 
 import android.os.AsyncTask;
-import android.support.design.widget.am;
+import com.clilystudio.netbook.am;
 
 final class dM implements j {
     private /* synthetic */ TweetListFragment a;

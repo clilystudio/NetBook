@@ -1,7 +1,7 @@
 package com.clilystudio.netbook.ui.post;
 
 import android.app.Activity;
-import android.support.design.widget.am;
+import com.clilystudio.netbook.am;
 
 import com.clilystudio.netbook.db.FollowRecord;
 import com.clilystudio.netbook.model.Follower;

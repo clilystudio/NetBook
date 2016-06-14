@@ -2,7 +2,7 @@ package com.clilystudio.netbook.ui.ugcbook;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.support.design.widget.am;
+import com.clilystudio.netbook.am;
 import android.view.View;
 
 import com.clilystudio.netbook.ui.user.UserUGCActivity;

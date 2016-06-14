@@ -7,7 +7,7 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.design.widget.am;
+import com.clilystudio.netbook.am;
 import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;

@@ -1,7 +1,7 @@
 package com.clilystudio.netbook.adapter;
 
 import android.content.DialogInterface;
-import android.support.design.widget.am;
+import com.clilystudio.netbook.am;
 
 final class O implements DialogInterface.OnClickListener {
     private /* synthetic */ N a;

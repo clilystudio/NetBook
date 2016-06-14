@@ -15,7 +15,7 @@ final class an implements DialogInterface.OnClickListener {
     public final void onClick(DialogInterface dialogInterface, int n) {
         dialogInterface.dismiss();
         ak ak2 = new ak(this.a.b.a, this.a.b.a, "\u6b63\u5728\u8d2d\u4e70");
-        String[] arrstring = new String[]{android.support.design.widget.am.e().getToken(), ((VipPlan$Plan) al.a(this.a.b).get(this.a.a)).get_id()};
+        String[] arrstring = new String[]{com.clilystudio.netbook.am.e().getToken(), ((VipPlan$Plan) al.a(this.a.b).get(this.a.a)).get_id()};
         ak2.b(arrstring);
     }
 }

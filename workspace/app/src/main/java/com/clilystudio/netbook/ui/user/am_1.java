@@ -16,7 +16,7 @@ final class am implements View.OnClickListener {
 
     @Override
     public final void onClick(View view) {
-        if (android.support.design.widget.am.a(this.b.a) != null) {
+        if (com.clilystudio.netbook.am.a(this.b.a) != null) {
             h h2 = new h(this.b.a);
             h2.e = "\u786e\u5b9a\u8d2d\u4e70 " + ((VipPlan$Plan) al.a(this.b).get(this.a)).getName() + " \u670d\u52a1\uff1f";
             h2.a(2131034424, (DialogInterface.OnClickListener) new an(this)).b(2131034129, null).b();
