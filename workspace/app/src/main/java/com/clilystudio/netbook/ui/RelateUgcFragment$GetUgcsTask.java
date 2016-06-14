@@ -4,7 +4,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.clilystudio.netbook.a.e;
+import com.clilystudio.netbook.a_pack.e;
 import com.clilystudio.netbook.model.RecommendUgcRoot;
 import com.clilystudio.netbook.model.RecommendUgcRoot$RecommendUGC;
 

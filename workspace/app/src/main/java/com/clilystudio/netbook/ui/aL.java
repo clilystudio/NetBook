@@ -9,7 +9,7 @@ import com.clilystudio.netbook.util.e;
 import java.io.IOException;
 
 final class aL
-        extends com.clilystudio.netbook.a.e<String, Void, BookRankDetailRoot> {
+        extends com.clilystudio.netbook.a_pack.e<String, Void, BookRankDetailRoot> {
     private /* synthetic */ BookRankDetailActivity a;
 
     private aL(BookRankDetailActivity bookRankDetailActivity) {

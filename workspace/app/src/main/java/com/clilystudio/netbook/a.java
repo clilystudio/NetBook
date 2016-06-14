@@ -20,7 +20,7 @@ public final class a {
 
     public static void a(Activity activity) {
         if (a == null) {
-            a = new Stack();
+            a = new Stack<>();
         }
         a.add(activity);
     }

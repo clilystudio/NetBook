@@ -2,7 +2,7 @@ package com.clilystudio.netbook.ui.post;
 
 import android.app.Activity;
 
-import com.clilystudio.netbook.a.c;
+import com.clilystudio.netbook.a_pack.c;
 import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.model.ResultStatus;
 import com.clilystudio.netbook.util.e;

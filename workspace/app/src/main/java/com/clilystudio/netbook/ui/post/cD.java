@@ -11,7 +11,7 @@ import java.util.Arrays;
 import java.util.List;
 
 final class cD
-        extends com.clilystudio.netbook.a.e<String, Void, PostDetailComment> {
+        extends com.clilystudio.netbook.a_pack.e<String, Void, PostDetailComment> {
     private /* synthetic */ ReviewActivity a;
 
     private cD(ReviewActivity reviewActivity) {

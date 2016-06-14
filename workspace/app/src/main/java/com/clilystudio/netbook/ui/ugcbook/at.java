@@ -11,7 +11,7 @@ import java.util.Arrays;
 import java.util.List;
 
 final class at
-        extends com.clilystudio.netbook.a.e<String, Void, UGCBookListRoot> {
+        extends com.clilystudio.netbook.a_pack.e<String, Void, UGCBookListRoot> {
     private /* synthetic */ UGCMainListFragment a;
 
     private at(UGCMainListFragment uGCMainListFragment) {

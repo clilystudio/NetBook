@@ -10,7 +10,7 @@ import com.clilystudio.netbook.util.e;
 import java.util.Collection;
 
 final class aQ
-        extends com.clilystudio.netbook.a.e<String, Void, Topic> {
+        extends com.clilystudio.netbook.a_pack.e<String, Void, Topic> {
     private /* synthetic */ BookTopicListFragment a;
 
     private aQ(BookTopicListFragment bookTopicListFragment) {

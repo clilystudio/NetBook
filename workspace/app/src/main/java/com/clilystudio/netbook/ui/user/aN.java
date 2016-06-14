@@ -10,7 +10,7 @@ import com.clilystudio.netbook.util.e;
 import java.io.IOException;
 
 final class aN
-        extends com.clilystudio.netbook.a.e<String, Void, ResultStatus> {
+        extends com.clilystudio.netbook.a_pack.e<String, Void, ResultStatus> {
     private /* synthetic */ UserTaskActivity a;
 
     private aN(UserTaskActivity userTaskActivity) {

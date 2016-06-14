@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 final class bV
-        extends com.clilystudio.netbook.a.e<String, Void, FollowingsResult> {
+        extends com.clilystudio.netbook.a_pack.e<String, Void, FollowingsResult> {
     private Runnable a;
     private /* synthetic */ MyTweetFragment b;
 

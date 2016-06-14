@@ -10,7 +10,7 @@ import com.clilystudio.netbook.util.e;
 import java.util.Collection;
 
 final class aH
-        extends com.clilystudio.netbook.a.e<String, Void, BookReview[]> {
+        extends com.clilystudio.netbook.a_pack.e<String, Void, BookReview[]> {
     private /* synthetic */ BookReviewListFragment a;
 
     private aH(BookReviewListFragment bookReviewListFragment) {

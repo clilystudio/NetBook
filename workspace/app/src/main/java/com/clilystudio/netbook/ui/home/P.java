@@ -12,7 +12,7 @@ import com.clilystudio.netbook.util.e;
 import java.io.IOException;
 
 final class P
-        extends com.clilystudio.netbook.a.e<String, Void, UserInfo> {
+        extends com.clilystudio.netbook.a_pack.e<String, Void, UserInfo> {
     private /* synthetic */ HomeTopicFragment a;
 
     private P(HomeTopicFragment homeTopicFragment) {

@@ -9,7 +9,7 @@ import com.clilystudio.netbook.ui.user.AuthLoginActivity;
 import com.clilystudio.netbook.util.e;
 
 final class ea
-        extends com.clilystudio.netbook.a.e<String, Void, TimelineResult> {
+        extends com.clilystudio.netbook.a_pack.e<String, Void, TimelineResult> {
     private /* synthetic */ TweetTimelineFragment a;
 
     private ea(TweetTimelineFragment tweetTimelineFragment) {

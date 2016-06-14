@@ -11,7 +11,7 @@ import java.util.Arrays;
 import java.util.List;
 
 final class av
-        extends com.clilystudio.netbook.a.e<String, Void, BookHelpList> {
+        extends com.clilystudio.netbook.a_pack.e<String, Void, BookHelpList> {
     private /* synthetic */ BookHelpListActivity a;
 
     private av(BookHelpListActivity bookHelpListActivity) {

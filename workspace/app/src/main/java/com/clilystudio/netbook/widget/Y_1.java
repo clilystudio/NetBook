@@ -2,7 +2,7 @@ package com.clilystudio.netbook.widget;
 
 import android.app.Activity;
 
-import com.clilystudio.netbook.a.c;
+import com.clilystudio.netbook.a_pack.c;
 import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.db.GameGiftRecord;
 import com.clilystudio.netbook.model.GameGiftResponse;

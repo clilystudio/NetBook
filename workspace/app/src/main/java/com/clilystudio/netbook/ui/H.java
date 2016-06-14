@@ -10,7 +10,7 @@ import com.clilystudio.netbook.util.e;
 import java.util.List;
 
 final class H
-        extends com.clilystudio.netbook.a.e<String, Void, List<BookSummary>> {
+        extends com.clilystudio.netbook.a_pack.e<String, Void, List<BookSummary>> {
     private /* synthetic */ AuthorBooksActivity a;
 
     private H(AuthorBooksActivity authorBooksActivity) {

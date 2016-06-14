@@ -5,7 +5,7 @@ import android.support.design.widget.am;
 import android.widget.TextView;
 
 import com.clilystudio.netbook.MyApplication;
-import com.clilystudio.netbook.a.c;
+import com.clilystudio.netbook.a_pack.c;
 import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.event.K;
 import com.clilystudio.netbook.event.i;

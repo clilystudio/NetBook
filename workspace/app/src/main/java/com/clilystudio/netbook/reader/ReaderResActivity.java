@@ -63,8 +63,8 @@ public class ReaderResActivity
             ReaderWebPageFragment readerWebPageFragment = this.a(this.c);
         }
         fragmentTransaction.replace(2131493174, (Fragment) var4_6).commit();
-        a.a();
-        a.a(this);
+        com.clilystudio.netbook.a.a();
+        com.clilystudio.netbook.a.a(this);
         bT bT2 = new bT(this, 0);
         String[] arrstring = new String[]{this.b};
         bT2.b(arrstring);

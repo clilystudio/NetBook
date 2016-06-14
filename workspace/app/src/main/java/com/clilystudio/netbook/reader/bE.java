@@ -3,7 +3,7 @@ package com.clilystudio.netbook.reader;
 import android.content.res.Resources;
 import android.widget.TextView;
 
-import com.clilystudio.netbook.a.e;
+import com.clilystudio.netbook.a_pack.e;
 import com.clilystudio.netbook.api.ApiService;
 import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.model.ChineseAllPromRoot;

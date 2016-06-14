@@ -5,7 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 
 import com.clilystudio.netbook.MyApplication;
-import com.clilystudio.netbook.a.c;
+import com.clilystudio.netbook.a_pack.c;
 import com.clilystudio.netbook.model.BookInfo;
 import com.clilystudio.netbook.model.MysteryBook;
 import com.clilystudio.netbook.model.MysteryBookList;

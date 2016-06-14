@@ -33,8 +33,8 @@ public class AddTopicCategoryActivity
         super.onCreate(bundle);
         this.setContentView(2130903146);
         this.b(2131034294);
-        a.a();
-        a.a(this);
+        com.clilystudio.netbook.a.a();
+        com.clilystudio.netbook.a.a(this);
         this.a = this.getIntent().getStringExtra("book_post_list_bookId");
         this.b = this.getIntent().getStringExtra("book_post_list_bookTitle");
         this.c = this.getIntent().getStringExtra("add_post_mode");

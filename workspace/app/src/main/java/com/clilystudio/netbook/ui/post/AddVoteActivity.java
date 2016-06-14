@@ -181,8 +181,8 @@ public class AddVoteActivity
         String string;
         super.onCreate(bundle);
         this.setContentView(2130903078);
-        a.a();
-        a.a(this);
+        com.clilystudio.netbook.a.a();
+        com.clilystudio.netbook.a.a(this);
         this.a = (EditText) this.findViewById(2131493072);
         this.b = (EditText) this.findViewById(2131493074);
         this.c = this.findViewById(2131493073);

@@ -3,7 +3,7 @@ package com.clilystudio.netbook.ui.post;
 import android.app.Activity;
 import android.support.design.widget.am;
 
-import com.clilystudio.netbook.a.c;
+import com.clilystudio.netbook.a_pack.c;
 import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.db.RetweenRecord;
 import com.clilystudio.netbook.model.PostPublish;

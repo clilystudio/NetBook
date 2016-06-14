@@ -8,7 +8,7 @@ import com.clilystudio.netbook.model.TopicPost;
 import com.clilystudio.netbook.util.e;
 
 final class G
-        extends com.clilystudio.netbook.a.e<String, Void, Topic> {
+        extends com.clilystudio.netbook.a_pack.e<String, Void, Topic> {
     private /* synthetic */ MyTopicFragment a;
 
     private G(MyTopicFragment myTopicFragment) {

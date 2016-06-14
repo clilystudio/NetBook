@@ -11,7 +11,7 @@ import java.util.Arrays;
 import java.util.List;
 
 final class A
-        extends com.clilystudio.netbook.a.e<String, Void, Topic> {
+        extends com.clilystudio.netbook.a_pack.e<String, Void, Topic> {
     private /* synthetic */ MyFavTopicFragment a;
 
     private A(MyFavTopicFragment myFavTopicFragment) {

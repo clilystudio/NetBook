@@ -12,7 +12,7 @@ import java.util.Collection;
 import java.util.List;
 
 final class bJ
-        extends com.clilystudio.netbook.a.e<String, Void, GirlTopicList> {
+        extends com.clilystudio.netbook.a_pack.e<String, Void, GirlTopicList> {
     private /* synthetic */ GirlTopicListActivity a;
 
     private bJ(GirlTopicListActivity girlTopicListActivity) {

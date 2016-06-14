@@ -9,7 +9,7 @@ import com.clilystudio.netbook.util.e;
 import java.io.IOException;
 
 final class bm
-        extends com.clilystudio.netbook.a.e<Void, Void, MhdListRoot> {
+        extends com.clilystudio.netbook.a_pack.e<Void, Void, MhdListRoot> {
     private /* synthetic */ MhdListActivity a;
 
     private bm(MhdListActivity mhdListActivity) {

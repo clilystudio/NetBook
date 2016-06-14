@@ -3,7 +3,7 @@ package com.clilystudio.netbook.adapter;
 import android.app.Activity;
 import android.support.design.widget.am;
 
-import com.clilystudio.netbook.a.e;
+import com.clilystudio.netbook.a_pack.e;
 import com.clilystudio.netbook.db.FollowRecord;
 import com.clilystudio.netbook.event.i;
 import com.clilystudio.netbook.event.q;

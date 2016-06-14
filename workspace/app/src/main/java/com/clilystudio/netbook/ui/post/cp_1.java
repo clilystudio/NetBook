@@ -9,7 +9,7 @@ import com.clilystudio.netbook.model.ResultStatus;
 import com.clilystudio.netbook.util.e;
 
 final class cp
-        extends com.clilystudio.netbook.a.e<String, Void, ResultStatus> {
+        extends com.clilystudio.netbook.a_pack.e<String, Void, ResultStatus> {
     private String a;
     private /* synthetic */ OtherUserActivity b;
 

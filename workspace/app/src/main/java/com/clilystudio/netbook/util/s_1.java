@@ -2,7 +2,7 @@ package com.clilystudio.netbook.util;
 
 import android.content.Context;
 
-import com.clilystudio.netbook.a.e;
+import com.clilystudio.netbook.a_pack.e;
 import com.clilystudio.netbook.model.BookTopRoot;
 import com.clilystudio.netbook.model.BookTopRoot$Favorite;
 

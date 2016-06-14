@@ -11,7 +11,7 @@ import com.clilystudio.netbook.model.ChapterRoot;
 import com.clilystudio.netbook.util.I;
 
 final class e
-        extends com.clilystudio.netbook.a.e<Void, Void, ChapterRoot> {
+        extends com.clilystudio.netbook.a_pack.e<Void, Void, ChapterRoot> {
     private ChapterLink a;
     private int b;
     private /* synthetic */ BookDownloadService c;

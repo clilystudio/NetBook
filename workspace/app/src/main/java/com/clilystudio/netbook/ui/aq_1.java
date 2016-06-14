@@ -12,7 +12,7 @@ import java.util.Arrays;
 import java.util.List;
 
 final class aq
-        extends com.clilystudio.netbook.a.e<String, Void, List<CategoryBook>> {
+        extends com.clilystudio.netbook.a_pack.e<String, Void, List<CategoryBook>> {
     private boolean a;
     private /* synthetic */ BookCategoryFragment b;
 

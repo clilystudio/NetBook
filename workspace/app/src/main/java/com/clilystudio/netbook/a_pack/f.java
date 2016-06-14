@@ -1,4 +1,4 @@
-package com.clilystudio.netbook.a;
+package com.clilystudio.netbook.a_pack;
 
 import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.db.BookTopicEnterRecord;

@@ -11,7 +11,7 @@ import java.util.Iterator;
 import java.util.List;
 
 final class K
-        extends com.clilystudio.netbook.a.e<Void, Void, List<BookUpdate>> {
+        extends com.clilystudio.netbook.a_pack.e<Void, Void, List<BookUpdate>> {
     private List<BookReadRecord> a;
     private /* synthetic */ HomeShelfFragment b;
 

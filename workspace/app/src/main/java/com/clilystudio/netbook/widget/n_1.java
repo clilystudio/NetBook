@@ -7,7 +7,7 @@ import com.clilystudio.netbook.model.ResultStatus;
 import com.clilystudio.netbook.util.e;
 
 final class n
-        extends com.clilystudio.netbook.a.e<String, Void, ResultStatus> {
+        extends com.clilystudio.netbook.a_pack.e<String, Void, ResultStatus> {
     private /* synthetic */ CommentItemView a;
 
     private n(CommentItemView commentItemView) {

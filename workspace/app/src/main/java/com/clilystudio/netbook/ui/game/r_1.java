@@ -10,7 +10,7 @@ import java.util.Arrays;
 import java.util.List;
 
 final class r
-        extends com.clilystudio.netbook.a.e<String, Void, List<GamePostRoot.GamePost>> {
+        extends com.clilystudio.netbook.a_pack.e<String, Void, List<GamePostRoot.GamePost>> {
     private /* synthetic */ GameDetailActivity a;
 
     private r(GameDetailActivity gameDetailActivity) {

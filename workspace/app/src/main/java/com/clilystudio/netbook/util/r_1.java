@@ -2,7 +2,7 @@ package com.clilystudio.netbook.util;
 
 import android.app.Activity;
 
-import com.clilystudio.netbook.a.c;
+import com.clilystudio.netbook.a_pack.c;
 import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.model.ChargeType;
 import com.clilystudio.netbook.model.ChargeTypes;

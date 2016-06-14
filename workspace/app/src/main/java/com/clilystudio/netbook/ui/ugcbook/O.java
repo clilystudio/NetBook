@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.support.design.widget.am;
 
-import com.clilystudio.netbook.a.c;
+import com.clilystudio.netbook.a_pack.c;
 import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.event.J;
 import com.clilystudio.netbook.event.i;

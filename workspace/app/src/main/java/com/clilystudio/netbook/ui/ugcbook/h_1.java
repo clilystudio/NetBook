@@ -7,7 +7,7 @@ import com.clilystudio.netbook.model.ResultStatus;
 import com.clilystudio.netbook.util.e;
 
 final class h
-        extends com.clilystudio.netbook.a.e<String, Void, ResultStatus> {
+        extends com.clilystudio.netbook.a_pack.e<String, Void, ResultStatus> {
     private /* synthetic */ FavUGCListFragment a;
 
     private h(FavUGCListFragment favUGCListFragment) {

@@ -2,7 +2,7 @@ package com.clilystudio.netbook.reader;
 
 import android.app.Activity;
 
-import com.clilystudio.netbook.a.c;
+import com.clilystudio.netbook.a_pack.c;
 
 final class cK
         extends c<String, String> {

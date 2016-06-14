@@ -11,7 +11,7 @@ import com.clilystudio.netbook.util.e;
 import java.util.List;
 
 class A
-        extends com.clilystudio.netbook.a.e<String, Void, List<BookSummary>> {
+        extends com.clilystudio.netbook.a_pack.e<String, Void, List<BookSummary>> {
     final /* synthetic */ UGCGuideAddBookActivity a;
 
     private A(UGCGuideAddBookActivity uGCGuideAddBookActivity) {

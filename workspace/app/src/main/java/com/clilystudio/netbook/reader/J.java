@@ -2,7 +2,7 @@ package com.clilystudio.netbook.reader;
 
 import android.support.design.widget.am;
 
-import com.clilystudio.netbook.a.e;
+import com.clilystudio.netbook.a_pack.e;
 import com.clilystudio.netbook.model.PurchaseChapterResult;
 
 final class J

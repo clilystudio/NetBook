@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 final class cj
-        extends com.clilystudio.netbook.a.e<String, Void, FollowersResult> {
+        extends com.clilystudio.netbook.a_pack.e<String, Void, FollowersResult> {
     private Runnable a;
     private /* synthetic */ OtherUserActivity b;
 

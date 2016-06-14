@@ -3,7 +3,7 @@ package com.clilystudio.netbook.ui.post;
 import android.app.Activity;
 
 import com.clilystudio.netbook.MyApplication;
-import com.clilystudio.netbook.a.c;
+import com.clilystudio.netbook.a_pack.c;
 import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.model.Review;
 import com.clilystudio.netbook.model.ReviewHistory;

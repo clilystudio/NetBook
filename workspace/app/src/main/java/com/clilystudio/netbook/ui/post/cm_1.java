@@ -8,7 +8,7 @@ import com.clilystudio.netbook.model.TweetsResult;
 import com.clilystudio.netbook.util.e;
 
 final class cm
-        extends com.clilystudio.netbook.a.e<String, Void, TweetsResult> {
+        extends com.clilystudio.netbook.a_pack.e<String, Void, TweetsResult> {
     private /* synthetic */ OtherUserActivity a;
 
     private cm(OtherUserActivity otherUserActivity) {

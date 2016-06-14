@@ -291,8 +291,8 @@ public class AddVoteItemActivity
     public void onCreate(Bundle var1_1) {
         super.onCreate(var1_1);
         this.setContentView(2130903079);
-        a.a();
-        a.a(this);
+        com.clilystudio.netbook.a.a();
+        com.clilystudio.netbook.a.a(this);
         var3_2 = this.getIntent().getStringExtra("block");
         if ("ramble".equals(var3_2)) {
             this.a = 1;

@@ -10,7 +10,7 @@ import java.net.URL;
 import java.net.URLConnection;
 
 public final class h
-        extends com.clilystudio.netbook.a.e<String, Void, Bitmap> {
+        extends com.clilystudio.netbook.a_pack.e<String, Void, Bitmap> {
     private static Bitmap a(String string) {
         try {
             URLConnection uRLConnection = new URL(string).openConnection();

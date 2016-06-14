@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.util.Date;
 
 final class r
-        extends com.clilystudio.netbook.a.e<String, Void, UserInfo> {
+        extends com.clilystudio.netbook.a_pack.e<String, Void, UserInfo> {
     private /* synthetic */ ModifyUserInfoActivity a;
 
     private r(ModifyUserInfoActivity modifyUserInfoActivity) {

@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Map;
 
 class bR
-        extends com.clilystudio.netbook.a.e<String, Void, List<BookSummary>> {
+        extends com.clilystudio.netbook.a_pack.e<String, Void, List<BookSummary>> {
     final /* synthetic */ SearchActivity a;
 
     private bR(SearchActivity searchActivity) {

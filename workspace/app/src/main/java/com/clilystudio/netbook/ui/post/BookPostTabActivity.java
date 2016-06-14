@@ -116,8 +116,8 @@ public class BookPostTabActivity
         }
         this.a(string, 2130837872, (aa) ((Object) new aw(this)), "\u6392\u5e8f");
         if (this.getIntent().getBooleanExtra("FROM_READER", false)) {
-            a.a();
-            a.b();
+            com.clilystudio.netbook.a.a();
+            com.clilystudio.netbook.a.b();
         }
         com.clilystudio.netbook.hpay100.a.a.u(this);
     }

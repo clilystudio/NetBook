@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.view.View;
 
-import com.clilystudio.netbook.a.f;
+import com.clilystudio.netbook.a_pack.f;
 import com.clilystudio.netbook.exception.UnImplementException;
 import com.clilystudio.netbook.ui.post.BookPostTabActivity;
 import com.clilystudio.netbook.util.InsideLinkIntent;

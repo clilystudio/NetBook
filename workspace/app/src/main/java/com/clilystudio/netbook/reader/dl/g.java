@@ -6,7 +6,7 @@ import com.clilystudio.netbook.model.Toc;
 import com.clilystudio.netbook.util.e;
 
 final class g
-        extends com.clilystudio.netbook.a.e<Void, Void, Toc> {
+        extends com.clilystudio.netbook.a_pack.e<Void, Void, Toc> {
     private /* synthetic */ BookDownloadService a;
 
     private g(BookDownloadService bookDownloadService) {

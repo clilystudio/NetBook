@@ -12,7 +12,7 @@ import java.util.Arrays;
 import java.util.List;
 
 final class am
-        extends com.clilystudio.netbook.a.e<String, Void, List<Game>> {
+        extends com.clilystudio.netbook.a_pack.e<String, Void, List<Game>> {
     private /* synthetic */ GameRankListFragment a;
 
     private am(GameRankListFragment gameRankListFragment) {
