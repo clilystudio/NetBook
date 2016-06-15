@@ -39,7 +39,12 @@ public class BaseActivity extends AppCompatActivity {
         View view = LayoutInflater.from(this).inflate(n, null);
         this.a().a(view);
         ((TextView) view.findViewById(2131492936)).setText(string);
-        view.findViewById(2131493013).setOnClickListener(new R(this));
+        view.findViewById(2131493013).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
     }
 
     public final void a(int n, int n2, aa aa2) {
