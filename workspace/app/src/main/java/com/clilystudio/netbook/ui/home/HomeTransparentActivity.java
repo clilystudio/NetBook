@@ -25,6 +25,12 @@ public class HomeTransparentActivity extends Activity {
     protected void onResume() {
         super.onResume();
         new Handler().postDelayed(new Q(this), 500);
-        new Handler().postDelayed(new R(this), 1500);
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                finish();
+                overridePendingTransition(2130968606, 2130968607);
+            }
+        }, 1500);
     }
 }
