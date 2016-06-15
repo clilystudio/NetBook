@@ -74,7 +74,7 @@ public class G extends u {
         {
             if (G.a(account, user)) {
                 g2.b(r);
-                V v = new V(g2, 0);
+                V_Clazz v = new V_Clazz(g2, 0);
                 String[] arrstring = new String[]{account.getToken(), user.getId()};
                 v.execute(arrstring);
                 return;

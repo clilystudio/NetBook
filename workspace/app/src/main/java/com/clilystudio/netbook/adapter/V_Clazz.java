@@ -10,20 +10,20 @@ import com.clilystudio.netbook.event.q;
 import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.model.ResultStatus;
 
-final class V extends e<String, Void, ResultStatus> {
+final class V_Clazz extends e<String, Void, ResultStatus> {
     private String a;
     private /* synthetic */ G b;
 
-    private V(G g) {
+    private V_Clazz(G g) {
         this.b = g;
     }
 
-    /* synthetic */ V(G g, byte by) {
+    /* synthetic */ V_Clazz(G g, byte by) {
         this(g);
     }
 
     @Override
-    protected final /* synthetic */ Object doInBackground(Object[] arrobject) {
+    protected final /* synthetic */ ResultStatus doInBackground(String[] arrobject) {
         String[] arrstring = (String[]) arrobject;
         this.a = arrstring[1];
         return this.c().i(arrstring[0], arrstring[1]);
@@ -33,7 +33,7 @@ final class V extends e<String, Void, ResultStatus> {
      * Enabled aggressive block sorting
      */
     @Override
-    protected final /* synthetic */ void onPostExecute(Object object) {
+    protected final /* synthetic */ void onPostExecute(ResultStatus object) {
         ResultStatus resultStatus = (ResultStatus) object;
         super.onPostExecute(resultStatus);
         Account account = am.e();

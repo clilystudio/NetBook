@@ -1,5 +1,6 @@
 package com.clilystudio.netbook.ui.user;
 
+import android.app.Activity;
 import android.content.Context;
 import android.graphics.drawable.ColorDrawable;
 import android.view.LayoutInflater;
@@ -10,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
+import com.clilystudio.netbook.util.*;
 import com.clilystudio.netbook.util.t;
 import com.clilystudio.netbook.widget.PayRecordCollapseItem;
 
@@ -33,9 +35,9 @@ final class S extends BaseAdapter {
     /*
      * Enabled aggressive block sorting
      */
-    static /* synthetic */ void a(S s, PayConsumeRecord$Order payConsumeRecord$Order, View view, View view2, int n) {
+    static /* synthetic */ void a(S s, final PayConsumeRecord$Order payConsumeRecord$Order, View view, View view2, int n) {
         View view3 = s.b.inflate(2130903347, null);
-        PopupWindow popupWindow = new PopupWindow(view3, s.a.getResources().getDimensionPixelSize(2131099902), -2);
+        final PopupWindow popupWindow = new PopupWindow(view3, s.a.getResources().getDimensionPixelSize(2131099902), -2);
         popupWindow.setFocusable(true);
         popupWindow.setOutsideTouchable(true);
         popupWindow.setBackgroundDrawable(new ColorDrawable(0));
@@ -47,7 +49,14 @@ final class S extends BaseAdapter {
         TextView textView = (TextView) view6;
         String string = s.d[n] ? "\u6536\u8d77\u8be6\u60c5" : "\u5c55\u5f00\u8be6\u60c5";
         textView.setText(string);
-        view4.setOnClickListener(new V(s, payConsumeRecord$Order, popupWindow));
+        view4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                PayConsumeActivity.a(S.this.a, payConsumeRecord$Order);
+                com.clilystudio.netbook.util.e.a((Activity) S.this.a, (String) "\u5df2\u590d\u5236\u5230\u7c98\u8d34\u677f");
+                popupWindow.dismiss();
+            }
+        });
         view6.setOnClickListener(new W(s, n, popupWindow));
         if (payConsumeRecord$Order.getPayType() == PayConsumeRecord$PayType.MULTIPLE_CHAPTERS) {
             view5.setVisibility(View.VISIBLE);
