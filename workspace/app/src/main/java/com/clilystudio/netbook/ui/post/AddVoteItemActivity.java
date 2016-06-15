@@ -307,25 +307,32 @@ public class AddVoteItemActivity extends BaseActivity {
         this.m = this.getIntent().getStringExtra("add_vote_desc");
         this.n = this.getIntent().getBooleanExtra("book_post_list_from_reader", false);
         this.b("\u7f16\u8f91\u6295\u7968\u9879");
-        var4_3 = new int[]{2131492890, 2131492891, 2131492892, 2131492893, 2131492894, 2131492895, 2131492896};
-        var5_4 = new int[]{2131492876, 2131492877, 2131492878, 2131492879, 2131492880, 2131492881, 2131492882};
-        var6_5 = new int[]{2131492871, 2131492872, 2131492873, 2131492874, 2131492875};
-        for (var7_6 = 0; var7_6 < 7; ++var7_6) {
+        int[] var4_3 = new int[]{2131492890, 2131492891, 2131492892, 2131492893, 2131492894, 2131492895, 2131492896};
+        int[] var5_4 = new int[]{2131492876, 2131492877, 2131492878, 2131492879, 2131492880, 2131492881, 2131492882};
+        int[] var6_5 = new int[]{2131492871, 2131492872, 2131492873, 2131492874, 2131492875};
+        for (int var7_6 = 0; var7_6 < 7; ++var7_6) {
             this.b[var7_6] = (RelativeLayout) this.findViewById(var4_3[var7_6]);
             this.b[var7_6].setTag(var7_6);
             this.b[var7_6].setOnClickListener(this.p);
             this.e[var7_6] = (TextView) this.findViewById(var5_4[var7_6]);
         }
-        for (var8_7 = 0; var8_7 < 5; ++var8_7) {
+        for (int var8_7 = 0; var8_7 < 5; ++var8_7) {
             var16_8 = var8_7 + 3;
             this.c[var8_7] = (ImageView) this.findViewById(var6_5[var8_7]);
             this.c[var8_7].setTag(var16_8);
             this.c[var8_7].setOnClickListener(this.q);
         }
-        var9_9 = this.findViewById(2131492868);
-        var10_10 = this.findViewById(2131492897);
+        View var9_9 = this.findViewById(2131492868);
+        View var10_10 = this.findViewById(2131492897);
         var9_9.setOnClickListener(new Q(this));
-        var10_10.setOnClickListener(new R(this));
+        var10_10.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (AddVoteItemActivity.b(AddVoteItemActivity.this)) {
+                    AddVoteItemActivity.c(AddVoteItemActivity.this);
+                }
+            }
+        });
         if (this.f == null) {
             this.i = 2;
             var11_15 = 0;
