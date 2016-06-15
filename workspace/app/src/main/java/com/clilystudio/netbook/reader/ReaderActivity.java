@@ -36,7 +36,7 @@ import com.clilystudio.netbook.model.ChapterLink;
 import com.clilystudio.netbook.ui.BaseReadSlmActivity;
 import com.clilystudio.netbook.ui.BookInfoActivity;
 import com.clilystudio.netbook.ui.post.BookPostTabActivity;
-import com.clilystudio.netbook.util.V;
+import com.clilystudio.netbook.util.V_Clazz;
 import com.clilystudio.netbook.util.k;
 import com.clilystudio.netbook.widget.ThemeLoadingView;
 import com.iflytek.cloud.InitListener;
@@ -424,7 +424,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
     }
 
     static /* synthetic */ void b(ReaderActivity readerActivity) {
-        new V(readerActivity);
+        new V_Clazz(readerActivity);
     }
 
     static /* synthetic */ void b(ReaderActivity readerActivity, View view) {

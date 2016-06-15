@@ -65,7 +65,7 @@ public class GiftGameGiftButton extends Button {
     }
 
     private void b(String string) {
-        a a2 = new a(this.getContext());
+        final a a2 = new a(this.getContext());
         View view = View.inflate(this.getContext(), 2130903192, null);
         ((TextView) view.findViewById(2131493395)).setText(this.a.title);
         TextView textView = (TextView) view.findViewById(2131493397);
@@ -78,7 +78,13 @@ public class GiftGameGiftButton extends Button {
             button.setText("\u9886\u53d6");
             textView.setText("\u5df2\u6709 " + (this.a.totalCount - this.a.leftCount) + " \u4eba\u9886\u53d6\uff0c\u5269\u4f59 " + this.a.leftCount + " \u4e2a");
             button.setBackgroundResource(2131427379);
-            button.setOnClickListener(new V(this, a2));
+            button.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    a2.dismiss();
+                    GiftGameGiftButton.a(GiftGameGiftButton.this);
+                }
+            });
             return;
         }
         textView.setText("\u5151\u6362\u7801\uff1a" + string);
