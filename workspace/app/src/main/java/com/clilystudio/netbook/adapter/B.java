@@ -31,7 +31,7 @@ public final class B extends W<TocSummary> {
      * Enabled aggressive block sorting
      */
     @Override
-    protected final /* synthetic */ void a(int n, Object object) {
+    protected final /* synthetic */ void a(int n, TocSummary object) {
         TocSummary tocSummary = (TocSummary) object;
         this.a(0, tocSummary.getHost());
         this.a(1, t.e((Date) tocSummary.getUpdated()));
