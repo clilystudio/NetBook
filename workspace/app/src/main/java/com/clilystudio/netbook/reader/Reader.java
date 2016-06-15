@@ -251,13 +251,21 @@ public final class Reader {
         return ReaderChapter.create(chapterLink, this.g(), n2);
     }
 
-    private void a(int n2, Reader$Type type) {
+    private void a(int n2, final Reader$Type type) {
         if (n2 == 0) {
             if (this.t == 0) {
                 this.o.post(new Q(this));
             }
             this.t = 1 + this.t;
-            this.o.post(new R(this, type));
+            this.o.post(new Runnable() {
+                @Override
+                public void run() {
+                    ae ae2 = type.getListener(Reader.this);
+                    if (ae2 != null) {
+                        ae2.a();
+                    }
+                }
+            });
             return;
         }
         this.t = -1 + this.t;
