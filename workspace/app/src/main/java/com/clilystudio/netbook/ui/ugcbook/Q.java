@@ -62,9 +62,14 @@ final class Q extends W<BookSummary> {
     }
 
     @Override
-    public final View getView(int n, View view, ViewGroup viewGroup) {
+    public final View getView(final int n, View view, ViewGroup viewGroup) {
         View view2 = super.getView(n, view, viewGroup);
-        view2.findViewById(2131493781).setOnClickListener(new R(this, n));
+        view2.findViewById(2131493781).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                UGCGuideEditBooksActivity.a(Q.this.a, n);
+            }
+        });
         view2.findViewById(2131493778).setOnClickListener(new S(this, n));
         view2.findViewById(2131493782).setOnClickListener(new T(this, n));
         this.a(n, view2, this.getItem(n));
