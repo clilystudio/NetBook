@@ -11,6 +11,6 @@ final class N implements aa {
 
     @Override
     public final void a() {
-        R.a(ScanTxtFileActivity.a(this.a));
+        R_Clazz.a(ScanTxtFileActivity.a(this.a));
     }
 }

@@ -14,13 +14,13 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-final class R extends W<T> implements AdapterView.OnItemClickListener {
+final class R_Clazz extends W<T_Clazz> implements AdapterView.OnItemClickListener {
     private /* synthetic */ ScanTxtFileActivity a;
 
-    public R(ScanTxtFileActivity scanTxtFileActivity, LayoutInflater layoutInflater) {
-        this.a = scanTxtFileActivity;
+    public R_Clazz(ScanTxtFileActivity scanTxtFileActivity, LayoutInflater layoutInflater) {
         super(layoutInflater, 2130903266);
-    }
+        this.a = scanTxtFileActivity;
+     }
 
     private static void a(ImageView imageView, boolean bl) {
         if (bl) {
@@ -35,10 +35,10 @@ final class R extends W<T> implements AdapterView.OnItemClickListener {
     /*
      * Enabled aggressive block sorting
      */
-    static /* synthetic */ void a(R r) {
+    static /* synthetic */ void a(R_Clazz r) {
         Iterator iterator = r.c().iterator();
         while (iterator.hasNext()) {
-            ((T) iterator.next()).a(ScanTxtFileActivity.c(r.a));
+            ((T_Clazz) iterator.next()).a(ScanTxtFileActivity.c(r.a));
         }
         ScanTxtFileActivity scanTxtFileActivity = r.a;
         boolean bl = !ScanTxtFileActivity.c(r.a);
@@ -49,13 +49,13 @@ final class R extends W<T> implements AdapterView.OnItemClickListener {
         r.notifyDataSetChanged();
     }
 
-    static /* synthetic */ void a(R r, ImageView imageView, boolean bl) {
-        R.a(imageView, bl);
+    static /* synthetic */ void a(R_Clazz r, ImageView imageView, boolean bl) {
+        R_Clazz.a(imageView, bl);
     }
 
-    static /* synthetic */ List b(R r) {
+    static /* synthetic */ List b(R_Clazz r) {
         ArrayList<BookFile> arrayList = new ArrayList<BookFile>();
-        for (T t : r.c()) {
+        for (T_Clazz t : r.c()) {
             if (!t.b()) continue;
             arrayList.add(t.a());
         }
@@ -63,13 +63,13 @@ final class R extends W<T> implements AdapterView.OnItemClickListener {
     }
 
     @Override
-    protected final /* synthetic */ void a(int n, Object object) {
-        T t = (T) object;
+    protected final /* synthetic */ void a(int n, T_Clazz object) {
+        T_Clazz t = (T_Clazz) object;
         BookFile bookFile = t.a();
         boolean bl = t.b();
         this.a(0, bookFile.getName());
         ImageView imageView = (ImageView) this.a(1, ImageView.class);
-        R.a(imageView, bl);
+        R_Clazz.a(imageView, bl);
         imageView.setOnClickListener(new S(this, t, imageView));
         this.a(2, bookFile.getSize());
     }
@@ -81,7 +81,7 @@ final class R extends W<T> implements AdapterView.OnItemClickListener {
 
     @Override
     public final void onItemClick(AdapterView<?> adapterView, View view, int n, long l2) {
-        ((T) this.c().get(n)).c();
+        ((T_Clazz) this.c().get(n)).c();
         ScanTxtFileActivity.a(this.a).notifyDataSetChanged();
     }
 }

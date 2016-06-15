@@ -4,11 +4,11 @@ import android.view.View;
 import android.widget.ImageView;
 
 final class S implements View.OnClickListener {
-    private /* synthetic */ T a;
+    private /* synthetic */ T_Clazz a;
     private /* synthetic */ ImageView b;
-    private /* synthetic */ R c;
+    private /* synthetic */ R_Clazz c;
 
-    S(R r, T t, ImageView imageView) {
+    S(R_Clazz r, T_Clazz t, ImageView imageView) {
         this.c = r;
         this.a = t;
         this.b = imageView;
@@ -17,6 +17,6 @@ final class S implements View.OnClickListener {
     @Override
     public final void onClick(View view) {
         this.a.c();
-        R.a(this.c, this.b, this.a.b());
+        R_Clazz.a(this.c, this.b, this.a.b());
     }
 }

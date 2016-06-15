@@ -4,21 +4,21 @@ import com.clilystudio.netbook.db.BookFile;
 
 import java.io.File;
 
-final class T {
+final class T_Clazz {
     private boolean a;
     private BookFile b;
     private long c;
 
-    private T(ScanTxtFileActivity scanTxtFileActivity, BookFile bookFile) {
+    private T_Clazz(ScanTxtFileActivity scanTxtFileActivity, BookFile bookFile) {
         this.b = bookFile;
     }
 
-    private T(ScanTxtFileActivity scanTxtFileActivity, File file) {
+    private T_Clazz(ScanTxtFileActivity scanTxtFileActivity, File file) {
         this(scanTxtFileActivity, new BookFile(file));
         this.c = file.lastModified();
     }
 
-    /* synthetic */ T(ScanTxtFileActivity scanTxtFileActivity, File file, byte by) {
+    /* synthetic */ T_Clazz(ScanTxtFileActivity scanTxtFileActivity, File file, byte by) {
         this(scanTxtFileActivity, file);
     }
 

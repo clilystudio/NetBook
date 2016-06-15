@@ -35,13 +35,13 @@ public class ScanTxtFileActivity extends BaseActivity {
     ProgressBar mPbLoading;
     @InjectView(value = 2131493180)
     TextView mStatus;
-    private R a;
-    private List<T> b = new ArrayList<T>();
+    private R_Clazz a;
+    private List<T_Clazz> b = new ArrayList<T_Clazz>();
     private int c;
     private List<BookFile> e = new ArrayList<BookFile>();
     private boolean f = true;
 
-    static /* synthetic */ R a(ScanTxtFileActivity scanTxtFileActivity) {
+    static /* synthetic */ R_Clazz a(ScanTxtFileActivity scanTxtFileActivity) {
         return scanTxtFileActivity.a;
     }
 
@@ -112,7 +112,7 @@ public class ScanTxtFileActivity extends BaseActivity {
                             bl4 = false;
                         }
                         if (!bl4) {
-                            this.b.add(new T(this, file2, 0));
+                            this.b.add(new T_Clazz(this, file2, 0));
                             Collections.sort(this.b, new O(this));
                             this.runOnUiThread(new P(this));
                         }
@@ -137,14 +137,14 @@ public class ScanTxtFileActivity extends BaseActivity {
         super.onCreate(bundle);
         this.setContentView(2130903126);
         ButterKnife.inject(this);
-        this.a = new R(this, this.getLayoutInflater());
+        this.a = new R_Clazz(this, this.getLayoutInflater());
         this.mList.setAdapter(this.a);
         this.mList.setOnItemClickListener(this.a);
         this.a("\u672c\u5730\u4e66\u7c4d", "\u5168\u9009", (aa) new N(this));
     }
 
     public void onImport(View view) {
-        List list = R.b(this.a);
+        List list = R_Clazz.b(this.a);
         if (list.size() == 0) {
             e.a((Activity) this, (String) "\u8bf7\u5148\u9009\u62e9\u5bfc\u5165\u7684\u4e66\u7c4d");
             return;
@@ -161,7 +161,7 @@ public class ScanTxtFileActivity extends BaseActivity {
     @Override
     public void onResume() {
         super.onResume();
-        this.b = new ArrayList<T>();
+        this.b = new ArrayList<T_Clazz>();
         new Q(this).b(new Void[0]);
     }
 
