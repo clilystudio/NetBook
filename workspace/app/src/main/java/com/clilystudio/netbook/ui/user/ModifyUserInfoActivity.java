@@ -26,17 +26,11 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 
 public class ModifyUserInfoActivity extends BaseActivity implements View.OnClickListener {
-    @InjectView(value = 2131493148)
     LinearLayout mGenderSection;
-    @InjectView(value = 2131493149)
     TextView mGenderView;
-    @InjectView(value = 2131493147)
     LinearLayout mNameSection;
-    @InjectView(value = 2131492928)
     TextView mNameView;
-    @InjectView(value = 2131493146)
     CircularSmartImageView mPortrait;
-    @InjectView(value = 2131493145)
     LinearLayout mPortraitSection;
     private User a;
     private long b;

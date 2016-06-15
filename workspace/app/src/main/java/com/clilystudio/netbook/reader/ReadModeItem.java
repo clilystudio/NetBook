@@ -17,15 +17,10 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 
 public class ReadModeItem extends FrameLayout {
-    @InjectView(value = 2131493702)
     TextView mChapter;
-    @InjectView(value = 2131493703)
     TextView mFlagSelect;
-    @InjectView(value = 2131493701)
     TextView mFlagWeb;
-    @InjectView(value = 2131493028)
     ImageView mIcon;
-    @InjectView(value = 2131492928)
     TextView mName;
     private Activity a;
     private String b;

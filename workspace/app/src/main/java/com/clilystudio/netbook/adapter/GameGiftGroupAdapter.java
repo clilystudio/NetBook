@@ -140,7 +140,6 @@ public final class GameGiftGroupAdapter extends u<GameGiftGroup> {
     }
 
     class MoreHolder {
-        @InjectView(value = 2131492936)
         TextView title;
 
         MoreHolder(View view) {
@@ -148,11 +147,8 @@ public final class GameGiftGroupAdapter extends u<GameGiftGroup> {
         }
     }
     class GiftHolder {
-        @InjectView(value = 2131493679)
         GiftGameGiftButton button;
-        @InjectView(value = 2131493481)
         TextView desc;
-        @InjectView(value = 2131492936)
         TextView title;
 
         GiftHolder(View view) {
@@ -162,13 +158,9 @@ public final class GameGiftGroupAdapter extends u<GameGiftGroup> {
         }
     }
     class GameHolder {
-        @InjectView(value = 2131492916)
         GiftGameGameButton button;
-        @InjectView(value = 2131493481)
         TextView desc;
-        @InjectView(value = 2131493028)
         SmartImageView icon;
-        @InjectView(value = 2131492936)
         TextView title;
 
         GameHolder(View view) {

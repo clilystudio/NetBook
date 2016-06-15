@@ -15,15 +15,10 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 
 public class SmsSendActivity extends BaseActivity {
-    @InjectView(value = 2131493212)
     View mErrorLine;
-    @InjectView(value = 2131493214)
     Button mNextBtn;
-    @InjectView(value = 2131493211)
     View mNormalLine;
-    @InjectView(value = 2131493210)
     EditText mNumberText;
-    @InjectView(value = 2131493213)
     View mWrongText;
     private ChargePlan a;
     private String b = "^(0|86|17951)?(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$";

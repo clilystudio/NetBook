@@ -15,17 +15,11 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 
 public class UserTaskActivity extends BaseActivity {
-    @InjectView(value = 2131493254)
     TextView mExpInfo;
-    @InjectView(value = 2131493255)
     TextView mExpLaunch;
-    @InjectView(value = 2131493257)
     TextView mExpShareBook;
-    @InjectView(value = 2131493256)
     TextView mExpShareTopic;
-    @InjectView(value = 2131493259)
     TextView mExpVote;
-    @InjectView(value = 2131493258)
     View mVoteView;
 
     static /* synthetic */ void a(UserTaskActivity userTaskActivity, boolean bl) {

@@ -485,7 +485,6 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
             }
         }
         class ViewHolder {
-            @InjectView(value = 2131493751)
             TextView label;
 
             ViewHolder(SearchActivity.SearchPromptAdapter searchPromptAdapter, View view) {
@@ -533,7 +532,6 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
             }
         }
         class SearchActivity$SearchHistoryAdapter$ViewHolder {
-            @InjectView(value = 2131493750)
             TextView word;
 
             SearchActivity$SearchHistoryAdapter$ViewHolder(SearchActivity.SearchHistoryAdapter searchHistoryAdapter, View view) {

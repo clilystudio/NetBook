@@ -13,13 +13,9 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 
 public class UserLevelActivity extends BaseActivity {
-    @InjectView(value = 2131493248)
     TextView mCurrentLevel;
-    @InjectView(value = 2131493253)
     Button mDoTask;
-    @InjectView(value = 2131493249)
     TextView mLevelProgress;
-    @InjectView(value = 2131493250)
     TextView mLevelRank;
 
     @Override

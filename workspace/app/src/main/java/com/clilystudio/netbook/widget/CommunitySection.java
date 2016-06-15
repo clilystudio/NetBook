@@ -11,7 +11,6 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 
 public class CommunitySection extends DividerSection {
-    @InjectView(value = 2131493375)
     ImageView mDot;
 
     public CommunitySection(Context context, AttributeSet attributeSet) {

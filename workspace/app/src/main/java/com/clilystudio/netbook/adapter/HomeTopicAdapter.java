@@ -91,11 +91,8 @@ public final class HomeTopicAdapter extends u<BookShelfTopic> {
     }
 
     class ViewHolder {
-        @InjectView(value = 2131493239)
         TextView mCount;
-        @InjectView(value = 2131493604)
         SmartImageView mCover;
-        @InjectView(value = 2131492936)
         TextView mTitle;
 
         ViewHolder(View view) {

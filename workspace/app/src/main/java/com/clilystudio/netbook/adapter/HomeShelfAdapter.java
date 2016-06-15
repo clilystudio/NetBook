@@ -383,13 +383,9 @@ public class HomeShelfAdapter extends u<BookShelf> {
     }
 
     class TxtHolder {
-        @InjectView(value = 2131492900)
         CheckBox check;
-        @InjectView(value = 2131493481)
         TextView desc;
-        @InjectView(value = 2131492936)
         TextView title;
-        @InjectView(value = 2131492978)
         View top;
 
         TxtHolder(View view) {
@@ -400,9 +396,7 @@ public class HomeShelfAdapter extends u<BookShelf> {
         }
     }
     class FeedHolder {
-        @InjectView(value = 2131493754)
         BookShelfFlagView flag;
-        @InjectView(value = 2131493481)
         TextView title;
 
         FeedHolder(View view) {
@@ -411,19 +405,12 @@ public class HomeShelfAdapter extends u<BookShelf> {
         }
     }
     class BookHolder {
-        @InjectView(value = 2131492900)
         CheckBox check;
-        @InjectView(value = 2131493604)
         CoverView cover;
-        @InjectView(value = 2131492906)
         CoverLoadingLayer coverLoadingLayer;
-        @InjectView(value = 2131493481)
         TextView desc;
-        @InjectView(value = 2131493754)
         BookShelfFlagView flag;
-        @InjectView(value = 2131492936)
         TextView title;
-        @InjectView(value = 2131492978)
         View top;
 
         BookHolder(View view) {
@@ -437,19 +424,12 @@ public class HomeShelfAdapter extends u<BookShelf> {
         }
     }
     class AlbumHolder {
-        @InjectView(value = 2131492900)
         CheckBox check;
-        @InjectView(value = 2131493604)
         CoverView cover;
-        @InjectView(value = 2131492906)
         CoverLoadingLayer coverLoadingLayer;
-        @InjectView(value = 2131493481)
         TextView desc;
-        @InjectView(value = 2131493754)
         BookShelfFlagView flag;
-        @InjectView(value = 2131492936)
         TextView title;
-        @InjectView(value = 2131492978)
         View top;
 
         AlbumHolder(View view) {
@@ -464,13 +444,9 @@ public class HomeShelfAdapter extends u<BookShelf> {
     }
 
     class AdHolder {
-        @InjectView(value = 2131493604)
         SmartImageView cover;
-        @InjectView(value = 2131493481)
         TextView desc;
-        @InjectView(value = 2131493754)
         BookShelfFlagView flag;
-        @InjectView(value = 2131492936)
         TextView title;
 
         AdHolder(View view) {

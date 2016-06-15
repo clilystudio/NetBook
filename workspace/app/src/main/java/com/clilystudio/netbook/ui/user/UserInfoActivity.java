@@ -28,17 +28,11 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 
 public class UserInfoActivity extends BaseActivity {
-    @InjectView(value = 2131493234)
     TextView mExp;
-    @InjectView(value = 2131493235)
     ProgressBar mExpProgress;
-    @InjectView(value = 2131493233)
     TextView mLevel;
-    @InjectView(value = 2131493239)
     TextView mMessageCount;
-    @InjectView(value = 2131492928)
     TextView mName;
-    @InjectView(value = 2131493146)
     CircularSmartImageView mPortrait;
     private View a;
     private View b;

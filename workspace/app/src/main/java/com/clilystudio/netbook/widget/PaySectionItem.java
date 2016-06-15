@@ -15,13 +15,9 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 
 public class PaySectionItem extends DividerSection {
-    @InjectView(value = 2131493199)
     ImageView mArrow;
-    @InjectView(value = 2131493823)
     TextView mBalance;
-    @InjectView(value = 2131493028)
     ImageView mIcon;
-    @InjectView(value = 2131493515)
     TextView mLabel;
 
     public PaySectionItem(Context context, AttributeSet attributeSet) {

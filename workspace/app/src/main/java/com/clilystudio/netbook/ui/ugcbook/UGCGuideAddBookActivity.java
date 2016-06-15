@@ -332,7 +332,6 @@ public class UGCGuideAddBookActivity extends BaseActivity implements View.OnClic
             }
         }
         class SearchPromptAdapter$ViewHolder {
-            @InjectView(value = 2131493751)
             TextView label;
 
             SearchPromptAdapter$ViewHolder(UGCGuideAddBookActivity.SearchPromptAdapter searchPromptAdapter, View view) {

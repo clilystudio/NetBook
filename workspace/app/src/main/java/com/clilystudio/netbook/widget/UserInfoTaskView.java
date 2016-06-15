@@ -17,11 +17,8 @@ import butterknife.InjectView;
 public class UserInfoTaskView extends FrameLayout {
     private final int a;
     private final String b;
-    @InjectView(value = 2131493234)
     ExpView mExp;
-    @InjectView(value = 2131493028)
     ImageView mIcon;
-    @InjectView(value = 2131492936)
     TextView mTitle;
 
     public UserInfoTaskView(Context context, AttributeSet attributeSet) {

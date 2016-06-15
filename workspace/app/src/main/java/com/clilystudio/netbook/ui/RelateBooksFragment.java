@@ -23,11 +23,8 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 
 public class RelateBooksFragment extends Fragment implements cQ {
-    @InjectView(value = 2131493463)
     LinearLayout mBookContainer;
-    @InjectView(value = 2131493432)
     TextView mMore;
-    @InjectView(value = 2131493462)
     LinearLayout mRelateBookRoot;
     private boolean a = false;
 
@@ -118,11 +115,8 @@ public class RelateBooksFragment extends Fragment implements cQ {
         this.a = new cM(this.getActivity(), this).a(this.getArguments().getString("book_id"));
     }
     public class RelateBooksFragment$ViewHolder {
-        @InjectView(value = 2131493971)
         CoverView mBook;
-        @InjectView(value = 2131493577)
         View mContainer;
-        @InjectView(value = 2131492936)
         TextView mTitle;
 
         RelateBooksFragment$ViewHolder(RelateBooksFragment relateBooksFragment, View view) {

@@ -11,7 +11,6 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 
 public class PayRecordCollapseItem extends LinearLayout {
-    @InjectView(value = 2131493578)
     LinearLayout mItemContainer;
 
     public PayRecordCollapseItem(Context context, AttributeSet attributeSet) {

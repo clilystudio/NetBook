@@ -156,9 +156,7 @@ public final class BookRankAdapter extends u<BookRankSummary> {
     }
 
     class ViewHolder {
-        @InjectView(value = 2131493626)
         SmartImageView cover;
-        @InjectView(value = 2131493627)
         TextView title;
 
        ViewHolder(View view) {

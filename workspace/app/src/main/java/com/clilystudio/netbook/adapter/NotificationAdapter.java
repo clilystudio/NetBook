@@ -221,11 +221,8 @@ public abstract class NotificationAdapter extends u<NotificationItem> {
     }
 
     class ViewHolder {
-        @InjectView(value = 2131492899)
         CircularSmartImageView mAvatar;
-        @InjectView(value = 2131493712)
         TextView mMainText;
-        @InjectView(value = 2131493713)
         TextView mSubText;
 
         ViewHolder(View view) {
@@ -236,7 +233,6 @@ public abstract class NotificationAdapter extends u<NotificationItem> {
     }
 
     class HeaderHolder {
-        @InjectView(value = 2131493711)
         TextView mLabelText;
 
         HeaderHolder(View view) {

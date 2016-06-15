@@ -20,19 +20,12 @@ import butterknife.InjectView;
 
 public class SmsVerifyActivity extends BaseActivity {
     Handler a;
-    @InjectView(value = 2131493215)
     TextView mAppNameText;
-    @InjectView(value = 2131493220)
     EditText mCodeText;
-    @InjectView(value = 2131493221)
     Button mCommitBtn;
-    @InjectView(value = 2131493216)
     TextView mGoodsText;
-    @InjectView(value = 2131493218)
     TextView mPhoneText;
-    @InjectView(value = 2131493217)
     TextView mPriceText;
-    @InjectView(value = 2131493219)
     Button mSendCodeBtn;
     private ChargePlan b;
     private Timer c;

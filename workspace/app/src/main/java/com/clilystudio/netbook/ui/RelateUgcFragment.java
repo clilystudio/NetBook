@@ -15,9 +15,7 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 
 public class RelateUgcFragment extends Fragment {
-    @InjectView(value = 2131493464)
     LinearLayout mRelateUgcRoot;
-    @InjectView(value = 2131493465)
     LinearLayout mUgcContainer;
 
     public static RelateUgcFragment a(String string) {
@@ -90,19 +88,12 @@ public class RelateUgcFragment extends Fragment {
             }
         }
         public class RelateUgcFragment$GetUgcsTask$ViewHolder {
-            @InjectView(value = 2131493317)
             TextView mAuthor;
-            @InjectView(value = 2131493577)
             View mContainer;
-            @InjectView(value = 2131493239)
             TextView mCount;
-            @InjectView(value = 2131493604)
             CoverView mCover;
-            @InjectView(value = 2131493481)
             TextView mDesc;
-            @InjectView(value = 2131492936)
             TextView mTitle;
-            @InjectView(value = 2131493783)
             TextView mUpdated;
 
             RelateUgcFragment$GetUgcsTask$ViewHolder(RelateUgcFragment.GetUgcsTask getUgcsTask, View view) {

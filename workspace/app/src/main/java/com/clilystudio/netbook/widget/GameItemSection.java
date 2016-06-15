@@ -15,7 +15,6 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 
 public class GameItemSection extends TableLayout {
-    @InjectView(value = 2131493577)
     TableLayout mContainer;
 
     public GameItemSection(Context context, AttributeSet attributeSet) {

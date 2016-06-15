@@ -16,13 +16,9 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 
 public class GameLayoutItemView extends LinearLayout {
-    @InjectView(value = 2131493705)
     GameDownloadButton mAction;
-    @InjectView(value = 2131493025)
     GameImageView mImage;
-    @InjectView(value = 2131493018)
     TextView mSubTitle;
-    @InjectView(value = 2131492936)
     TextView mTitle;
 
     public GameLayoutItemView(Context context, AttributeSet attributeSet) {

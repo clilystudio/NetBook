@@ -11,9 +11,7 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 
 public class PostFlag extends FrameLayout {
-    @InjectView(value = 2131493423)
     TextView mDistillateFlag;
-    @InjectView(value = 2131493180)
     TextView mHotFlag;
 
     public PostFlag(Context context, AttributeSet attributeSet) {

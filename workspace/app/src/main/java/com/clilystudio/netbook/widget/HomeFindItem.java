@@ -15,13 +15,9 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 
 public class HomeFindItem extends FrameLayout {
-    @InjectView(value = 2131493028)
     MaskAbleImageView mIcon;
-    @InjectView(value = 2131493681)
     ImageView mSubFlag;
-    @InjectView(value = 2131493683)
     TextView mSubText;
-    @InjectView(value = 2131492936)
     TextView mTitle;
     private Intent a;
 

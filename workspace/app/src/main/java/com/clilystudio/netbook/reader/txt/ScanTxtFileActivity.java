@@ -27,13 +27,9 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 
 public class ScanTxtFileActivity extends BaseActivity {
-    @InjectView(value = 2131493181)
     TextView mEmpty;
-    @InjectView(value = 2131492924)
     ListView mList;
-    @InjectView(value = 2131493085)
     ProgressBar mPbLoading;
-    @InjectView(value = 2131493180)
     TextView mStatus;
     private R_Clazz a;
     private List<T_Clazz> b = new ArrayList<T_Clazz>();
