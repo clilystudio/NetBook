@@ -1,7 +1,10 @@
 package com.clilystudio.netbook.ui.game;
 
+import android.content.Context;
 import android.view.LayoutInflater;
+import android.view.View;
 
+import com.clilystudio.netbook.*;
 import com.clilystudio.netbook.model.Game;
 import com.clilystudio.netbook.ui.SmartImageView;
 import com.clilystudio.netbook.util.W;
@@ -17,7 +20,7 @@ final class Q extends W<Game> {
 
     @Override
     protected final /* synthetic */ void a(int n, Object object) {
-        Game game = (Game) object;
+        final Game game = (Game) object;
         SmartImageView smartImageView = (SmartImageView) this.a(0, SmartImageView.class);
         smartImageView.setDrawingCacheEnabled(true);
         smartImageView.setImageUrl(game.getIcon(), 2130837766);
@@ -28,7 +31,12 @@ final class Q extends W<Game> {
         gameDownloadButton.setGame(game);
         if (GameListActivity.b(this.a)) {
             gameDownloadButton.setH5View();
-            gameDownloadButton.setOnClickListener(new R(this, game));
+            gameDownloadButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    com.clilystudio.netbook.am.a(Q.this.a, game);
+                }
+            });
             return;
         }
         gameDownloadButton.a(game.getDownloadStatus());
