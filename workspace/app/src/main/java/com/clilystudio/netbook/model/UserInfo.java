@@ -149,4 +149,117 @@ public class UserInfo implements Serializable {
     public void setOk(boolean bl) {
         this.ok = bl;
     }
+
+    public class UserInfo$UserTodayTask implements Serializable {
+        private static final long serialVersionUID = 327955040176412798L;
+        private boolean comment;
+        private boolean launch;
+        private boolean post;
+        private boolean share;
+        private boolean share_book;
+        private boolean vote;
+
+        public boolean isComment() {
+            return this.comment;
+        }
+
+        public void setComment(boolean bl) {
+            this.comment = bl;
+        }
+
+        public boolean isLaunch() {
+            return this.launch;
+        }
+
+        public void setLaunch(boolean bl) {
+            this.launch = bl;
+        }
+
+        public boolean isPost() {
+            return this.post;
+        }
+
+        public void setPost(boolean bl) {
+            this.post = bl;
+        }
+
+        public boolean isShare() {
+            return this.share;
+        }
+
+        public void setShare(boolean bl) {
+            this.share = bl;
+        }
+
+        public boolean isShare_book() {
+            return this.share_book;
+        }
+
+        public void setShare_book(boolean bl) {
+            this.share_book = bl;
+        }
+
+        public boolean isVote() {
+            return this.vote;
+        }
+
+        public void setVote(boolean bl) {
+            this.vote = bl;
+        }
+    }
+    public class UserInfo$UserPostCount implements Serializable {
+        private static final long serialVersionUID = 6406545074214643620L;
+        private int collected;
+        private int posted;
+
+        public int getCollected() {
+            return this.collected;
+        }
+
+        public void setCollected(int n) {
+            this.collected = n;
+        }
+
+        public int getPosted() {
+            return this.posted;
+        }
+
+        public void setPosted(int n) {
+            this.posted = n;
+        }
+    }
+    public class UserInfo$ThisWeekTasks implements Serializable {
+        private static final long serialVersionUID = 44867902917495881L;
+        private boolean rate;
+
+        public boolean isRate() {
+            return this.rate;
+        }
+
+        public void setRate(boolean bl) {
+            this.rate = bl;
+        }
+    }
+    public class UserInfo$BookListCount implements Serializable {
+        private static final long serialVersionUID = -3528347781783671315L;
+        private int collected;
+        private int posted;
+
+        public int getCollected() {
+            return this.collected;
+        }
+
+        public void setCollected(int n) {
+            this.collected = n;
+        }
+
+        public int getPosted() {
+            return this.posted;
+        }
+
+        public void setPosted(int n) {
+            this.posted = n;
+        }
+    }
+
 }

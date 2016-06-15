@@ -5,11 +5,15 @@ import com.clilystudio.netbook.am;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.model.GameGiftGroup;
 import com.clilystudio.netbook.model.GiftGame;
 import com.clilystudio.netbook.model.GiftGameGift;
+import com.clilystudio.netbook.ui.SmartImageView;
+import com.clilystudio.netbook.widget.GiftGameGameButton;
+import com.clilystudio.netbook.widget.GiftGameGiftButton;
 
 import java.util.List;
 
@@ -133,5 +137,45 @@ public final class GameGiftGroupAdapter extends u<GameGiftGroup> {
     @Override
     public final int getViewTypeCount() {
         return 3;
+    }
+
+    class GameGiftGroupAdapter$MoreHolder {
+        @InjectView(value = 2131492936)
+        TextView title;
+
+        GameGiftGroupAdapter$MoreHolder(View view) {
+            this.title = (TextView) view.findViewById(2131492936);
+        }
+    }
+    class GameGiftGroupAdapter$GiftHolder {
+        @InjectView(value = 2131493679)
+        GiftGameGiftButton button;
+        @InjectView(value = 2131493481)
+        TextView desc;
+        @InjectView(value = 2131492936)
+        TextView title;
+
+        GameGiftGroupAdapter$GiftHolder(View view) {
+            this.title = (TextView) view.findViewById(2131492936);
+            this.desc = (TextView)  view.findViewById(2131493481);
+            this.button = (GiftGameGiftButton)  view.findViewById(2131493679);
+        }
+    }
+    class GameGiftGroupAdapter$GameHolder {
+        @InjectView(value = 2131492916)
+        GiftGameGameButton button;
+        @InjectView(value = 2131493481)
+        TextView desc;
+        @InjectView(value = 2131493028)
+        SmartImageView icon;
+        @InjectView(value = 2131492936)
+        TextView title;
+
+        GameGiftGroupAdapter$GameHolder(View view) {
+            this.icon = (SmartImageView)view. findViewById(2131493028);
+            this.title = (TextView) view.findViewById(2131492936);
+            this.desc = (TextView) view.findViewById(2131493481);
+            this.button = (GiftGameGameButton) view.findViewById(2131492916);
+        }
     }
 }

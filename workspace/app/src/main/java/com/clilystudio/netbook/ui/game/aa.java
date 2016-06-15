@@ -3,7 +3,6 @@ package com.clilystudio.netbook.ui.game;
 import android.view.View;
 
 import com.clilystudio.netbook.exception.UnImplementException;
-import com.clilystudio.netbook.model.GameLayoutRoot$ModuleLayout$ActivityItem;
 import com.clilystudio.netbook.util.InsideLinkIntent;
 
 final class aa implements View.OnClickListener {

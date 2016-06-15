@@ -4,7 +4,6 @@ import android.content.DialogInterface;
 import com.clilystudio.netbook.am;
 
 import com.clilystudio.netbook.model.Account;
-import com.clilystudio.netbook.model.UGCBookListRoot$UGCBook;
 import com.clilystudio.netbook.ui.BaseActivity;
 
 final class g implements DialogInterface.OnClickListener {

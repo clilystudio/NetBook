@@ -8,7 +8,6 @@ import android.widget.AdapterView;
 import com.clilystudio.netbook.event.J;
 import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.model.UGCBookListRoot;
-import com.clilystudio.netbook.model.UGCBookListRoot$UGCBook;
 
 public class MyUGCListFragment extends AbsUGCListFragment {
     @Override

@@ -12,7 +12,6 @@ import android.widget.TabHost;
 import android.widget.TabWidget;
 import android.widget.TextView;
 
-import com.clilystudio.netbook.model.UgcFilterRoot$FilterGroup;
 import com.clilystudio.netbook.ui.BaseTabActivity;
 import com.clilystudio.netbook.util.D;
 import com.umeng.a.b;

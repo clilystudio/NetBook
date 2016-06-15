@@ -10,9 +10,7 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 
 public class SendView extends LinearLayout {
-    @InjectView(value = 2131494004)
     EditText mSendContent;
-    @InjectView(value = 2131494005)
     ImageView mSendView;
 
     public SendView(Context context, AttributeSet attributeSet) {
@@ -47,7 +45,8 @@ public class SendView extends LinearLayout {
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
-        ButterKnife.inject(this);
+        this.mSendContent = (EditText)findViewById(2131494004);
+        this.mSendView = (ImageView) findViewById( 2131494005);
         this.d();
         this.mSendContent.addTextChangedListener(new ay(this));
     }

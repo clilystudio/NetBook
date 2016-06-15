@@ -456,4 +456,8 @@
             <enum name="src_over" value="3"/>
         </attr>
     </declare-styleable>
+    <declare-styleable name="TopicSectionItem">
+        <attr name="label" format="string"/>
+        <attr name="icona" format="reference"/>
+    </declare-styleable>
 </resources>

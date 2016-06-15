@@ -11,7 +11,6 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 
 import com.clilystudio.netbook.model.TtsRoot;
-import com.clilystudio.netbook.model.TtsRoot$Tts;
 import com.iflytek.cloud.SpeechSynthesizer;
 import com.iflytek.cloud.SpeechUtility;
 

@@ -13,7 +13,7 @@ final class s implements b {
 
     @Override
     public final void b(a a2) {
-        CoverLoadingLayer.a(this.a, CoverLoadingLayer$Status.NONE);
+        CoverLoadingLayer.a(this.a, CoverLoadingLayer.Status.NONE);
     }
 
     @Override

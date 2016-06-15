@@ -4,7 +4,6 @@ import android.app.Activity;
 
 import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.model.UGCBookListRoot;
-import com.clilystudio.netbook.model.UGCBookListRoot$UGCBook;
 import com.clilystudio.netbook.util.e;
 
 import java.util.Arrays;

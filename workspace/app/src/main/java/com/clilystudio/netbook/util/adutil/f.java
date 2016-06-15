@@ -9,17 +9,17 @@ final class f {
      * Enabled aggressive exception aggregation
      */
     static {
-        a = new int[AdSplashImp$EventType.values().length];
+        a = new int[AdSplashImp.EventType.values().length];
         try {
-            f.a[AdSplashImp$EventType.PRESENT.ordinal()] = 1;
+            f.a[AdSplashImp.EventType.PRESENT.ordinal()] = 1;
         } catch (NoSuchFieldError var0_2) {
         }
         try {
-            f.a[AdSplashImp$EventType.CLICK.ordinal()] = 2;
+            f.a[AdSplashImp.EventType.CLICK.ordinal()] = 2;
         } catch (NoSuchFieldError var1_1) {
         }
         try {
-            f.a[AdSplashImp$EventType.DOWNLOAD.ordinal()] = 3;
+            f.a[AdSplashImp.EventType.DOWNLOAD.ordinal()] = 3;
             return;
         } catch (NoSuchFieldError var2) {
             return;

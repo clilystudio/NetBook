@@ -45,7 +45,6 @@ import com.clilystudio.netbook.ui.WifiActivity;
 import com.clilystudio.netbook.ui.game.GameTabActivity;
 import com.clilystudio.netbook.ui.post.CommonPostListActivity;
 import com.clilystudio.netbook.ui.user.AuthLoginActivity;
-import com.clilystudio.netbook.ui.user.AuthLoginActivity$Source;
 import com.clilystudio.netbook.ui.user.MyMessageActivity;
 import com.clilystudio.netbook.ui.user.UserInfoActivity;
 import com.clilystudio.netbook.util.J;

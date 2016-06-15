@@ -19,4 +19,35 @@ public class YLPayOrder {
     public void setOk(boolean bl) {
         this.ok = bl;
     }
+
+    public class PayOrder {
+        String SubmitUrl;
+        String orderId;
+        String resultCode;
+
+        public String getOrderId() {
+            return this.orderId;
+        }
+
+        public void setOrderId(String string) {
+            this.orderId = string;
+        }
+
+        public String getResultCode() {
+            return this.resultCode;
+        }
+
+        public void setResultCode(String string) {
+            this.resultCode = string;
+        }
+
+        public String getSubmitUrl() {
+            return this.SubmitUrl;
+        }
+
+        public void setSubmitUrl(String string) {
+            this.SubmitUrl = string;
+        }
+    }
+
 }

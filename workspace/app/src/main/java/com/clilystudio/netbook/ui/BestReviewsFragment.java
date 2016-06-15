@@ -5,10 +5,13 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.clilystudio.netbook.model.Author;
 import com.clilystudio.netbook.model.BookReview;
+import com.clilystudio.netbook.widget.RatingView;
 
 import butterknife.ButterKnife;
 
@@ -102,4 +105,38 @@ public class BestReviewsFragment extends Fragment {
         this.c = a.r(this.a.getContext(), "community_user_gender_icon_toggle");
         return this.a;
     }
-}
+    public class BestReviewsFragment$ViewHolder {
+        @InjectView(value = 2131492899)
+        SmartImageView avatar;
+        @InjectView(value = 2131493629)
+        ImageView avatarVerify;
+        @InjectView(value = 2131493628)
+        View container;
+        @InjectView(value = 2131492905)
+        TextView content;
+        @InjectView(value = 2131493634)
+        TextView helpfulCount;
+        @InjectView(value = 2131493631)
+        TextView lv;
+        @InjectView(value = 2131493633)
+        RatingView rating;
+        @InjectView(value = 2131492935)
+        TextView time;
+        @InjectView(value = 2131492936)
+        TextView title;
+        @InjectView(value = 2131493630)
+        TextView user;
+
+        BestReviewsFragment$ViewHolder(BestReviewsFragment bestReviewsFragment, View view) {
+            this.avatar = (SmartImageView) view.findViewById(2131492899);
+            this.user = (TextView) view. findViewById(2131493630);
+            this.lv = (TextView)  view.findViewById(2131493631);
+            this.time = (TextView)  view.findViewById(2131492935);
+            this.title = (TextView)  view.findViewById(2131492936);
+            this.content = (TextView)  view.findViewById(2131492905);
+            this.helpfulCount = (TextView)  view.findViewById(2131493634);
+            this.avatarVerify = (ImageView) view. findViewById(2131493629);
+            this.rating = (RatingView)  view.findViewById(2131493633);
+            this.container =  view.findViewById(2131493628);
+        }
+    }}

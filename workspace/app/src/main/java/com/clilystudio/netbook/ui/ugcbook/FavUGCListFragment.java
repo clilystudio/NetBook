@@ -8,7 +8,6 @@ import android.widget.ListView;
 
 import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.model.UGCBookListRoot;
-import com.clilystudio.netbook.model.UGCBookListRoot$UGCBook;
 import com.clilystudio.netbook.util.W;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 

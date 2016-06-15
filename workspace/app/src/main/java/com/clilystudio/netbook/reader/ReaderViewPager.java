@@ -7,7 +7,9 @@ import android.graphics.Canvas;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
+import android.os.Parcel;
 import android.os.Parcelable;
+import android.support.v4.os.ParcelableCompat;
 import android.support.v4.view.AccessibilityDelegateCompat;
 import android.support.v4.view.KeyEventCompat;
 import android.support.v4.view.MotionEventCompat;
@@ -2067,4 +2069,37 @@ public class ReaderViewPager extends ViewGroup {
         }
         return false;
     }
+
+    public class SavedState extends View.BaseSavedState {
+        public static final Parcelable.Creator<ReaderViewPager$SavedState> CREATOR = ParcelableCompat.newCreator(new cy());
+        int a;
+        Parcelable b;
+        ClassLoader c;
+
+        SavedState(Parcel parcel, ClassLoader classLoader) {
+            super(parcel);
+            if (classLoader == null) {
+                classLoader = this.getClass().getClassLoader();
+            }
+            this.a = parcel.readInt();
+            this.b = parcel.readParcelable(classLoader);
+            this.c = classLoader;
+        }
+
+        public SavedState(Parcelable parcelable) {
+            super(parcelable);
+        }
+
+        public String toString() {
+            return "FragmentPager.SavedState{" + Integer.toHexString(System.identityHashCode(this)) + " position=" + this.a + "}";
+        }
+
+        @Override
+        public void writeToParcel(Parcel parcel, int n) {
+            super.writeToParcel(parcel, n);
+            parcel.writeInt(this.a);
+            parcel.writeParcelable(this.b, n);
+        }
+    }
+
 }

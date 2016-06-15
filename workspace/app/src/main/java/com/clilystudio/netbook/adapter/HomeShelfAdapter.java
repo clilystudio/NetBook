@@ -9,11 +9,16 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.TextView;
 
 import com.clilystudio.netbook.db.BookDlRecord;
 import com.clilystudio.netbook.model.BookShelf;
+import com.clilystudio.netbook.ui.SmartImageView;
 import com.clilystudio.netbook.util.adutil.n;
 import com.clilystudio.netbook.util.t;
+import com.clilystudio.netbook.widget.BookShelfFlagView;
+import com.clilystudio.netbook.widget.CoverLoadingLayer;
+import com.clilystudio.netbook.widget.CoverView;
 import com.clilystudio.netbook.widget.y;
 
 import java.util.ArrayList;
@@ -375,5 +380,104 @@ public class HomeShelfAdapter extends u<BookShelf> {
     @Override
     public int getViewTypeCount() {
         return 5;
+    }
+
+    class HomeShelfAdapter$TxtHolder {
+        @InjectView(value = 2131492900)
+        CheckBox check;
+        @InjectView(value = 2131493481)
+        TextView desc;
+        @InjectView(value = 2131492936)
+        TextView title;
+        @InjectView(value = 2131492978)
+        View top;
+
+        HomeShelfAdapter$TxtHolder(View view) {
+            this.title = (TextView) view.findViewById(2131492936);
+            this.desc = (TextView) view.findViewById(2131493481);
+            this.top =view. findViewById(2131492978);
+            this.check = (CheckBox) view.findViewById(2131492900);
+        }
+    }
+    class HomeShelfAdapter$FeedHolder {
+        @InjectView(value = 2131493754)
+        BookShelfFlagView flag;
+        @InjectView(value = 2131493481)
+        TextView title;
+
+        HomeShelfAdapter$FeedHolder(View view) {
+            this.title = (TextView) view.findViewById(2131493481);
+            this.flag = (BookShelfFlagView) view.findViewById(2131493754);
+        }
+    }
+    class HomeShelfAdapter$BookHolder {
+        @InjectView(value = 2131492900)
+        CheckBox check;
+        @InjectView(value = 2131493604)
+        CoverView cover;
+        @InjectView(value = 2131492906)
+        CoverLoadingLayer coverLoadingLayer;
+        @InjectView(value = 2131493481)
+        TextView desc;
+        @InjectView(value = 2131493754)
+        BookShelfFlagView flag;
+        @InjectView(value = 2131492936)
+        TextView title;
+        @InjectView(value = 2131492978)
+        View top;
+
+        HomeShelfAdapter$BookHolder(View view) {
+            this.title = (TextView)view. findViewById(2131492936);
+            this.desc = (TextView) view.findViewById(2131493481);
+            this.flag = (BookShelfFlagView)view. findViewById(2131493754);
+            this.top =view. findViewById(2131492978);
+            this.cover = (CoverView)view. findViewById(2131493604);
+            this.coverLoadingLayer = (CoverLoadingLayer) view.findViewById(2131492906);
+            this.check = (CheckBox)view. findViewById(2131492900);
+        }
+    }
+    class HomeShelfAdapter$AlbumHolder {
+        @InjectView(value = 2131492900)
+        CheckBox check;
+        @InjectView(value = 2131493604)
+        CoverView cover;
+        @InjectView(value = 2131492906)
+        CoverLoadingLayer coverLoadingLayer;
+        @InjectView(value = 2131493481)
+        TextView desc;
+        @InjectView(value = 2131493754)
+        BookShelfFlagView flag;
+        @InjectView(value = 2131492936)
+        TextView title;
+        @InjectView(value = 2131492978)
+        View top;
+
+        HomeShelfAdapter$AlbumHolder(View view) {
+            this.title = (TextView)view. findViewById(2131492936);
+            this.desc = (TextView) view. findViewById(2131493481);
+            this.flag = (BookShelfFlagView)view.  findViewById(2131493754);
+            this.top =view.  findViewById(2131492978);
+            this.cover = (CoverView)view.  findViewById(2131493604);
+            this.coverLoadingLayer = (CoverLoadingLayer)view.  findViewById(2131492906);
+            this.check = (CheckBox) view. findViewById(2131492900);
+        }
+    }
+
+    class HomeShelfAdapter$AdHolder {
+        @InjectView(value = 2131493604)
+        SmartImageView cover;
+        @InjectView(value = 2131493481)
+        TextView desc;
+        @InjectView(value = 2131493754)
+        BookShelfFlagView flag;
+        @InjectView(value = 2131492936)
+        TextView title;
+
+        HomeShelfAdapter$AdHolder(View view) {
+            this.title = (TextView) view.findViewById(2131492936);
+            this.desc = (TextView)view. findViewById(2131493481);
+            this.flag = (BookShelfFlagView) view.findViewById(2131493754);
+            this.cover = (SmartImageView)view. findViewById(2131493604);
+        }
     }
 }

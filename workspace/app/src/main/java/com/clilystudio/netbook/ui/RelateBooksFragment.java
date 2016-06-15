@@ -15,6 +15,7 @@ import com.clilystudio.netbook.model.RelateBookRoot;
 import com.clilystudio.netbook.reader.cM;
 import com.clilystudio.netbook.reader.cQ;
 import com.clilystudio.netbook.util.E;
+import com.clilystudio.netbook.widget.CoverView;
 
 import java.util.ArrayList;
 
@@ -111,7 +112,23 @@ public class RelateBooksFragment extends Fragment implements cQ {
     @Override
     public void onViewCreated(View view, Bundle bundle) {
         super.onViewCreated(view, bundle);
-        ButterKnife.inject((Object) this, this.getView());
+        this.mBookContainer = (LinearLayout) this.getView().findViewById(2131493463);
+        this.mRelateBookRoot = (LinearLayout) this.getView().findViewById(2131493462);
+        this.mMore = (TextView)this.getView(). findViewById(2131493432);
         this.a = new cM(this.getActivity(), this).a(this.getArguments().getString("book_id"));
+    }
+    public class RelateBooksFragment$ViewHolder {
+        @InjectView(value = 2131493971)
+        CoverView mBook;
+        @InjectView(value = 2131493577)
+        View mContainer;
+        @InjectView(value = 2131492936)
+        TextView mTitle;
+
+        RelateBooksFragment$ViewHolder(RelateBooksFragment relateBooksFragment, View view) {
+            this.mBook = (CoverView) view.findViewById(2131493971);
+            this.mTitle = (TextView)  view.findViewById(2131492936);
+            this.mContainer =  view.findViewById(2131493577);
+        }
     }
 }

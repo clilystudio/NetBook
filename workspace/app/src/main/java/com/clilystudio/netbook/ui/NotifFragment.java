@@ -187,4 +187,8 @@ public abstract class NotifFragment extends Fragment {
             this.d.setRefreshing();
         }
     }
+
+    public enum Type {
+        IMPORTANT,UNIMPORTANT;
+    }
 }

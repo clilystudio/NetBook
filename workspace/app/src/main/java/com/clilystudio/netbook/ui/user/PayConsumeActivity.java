@@ -12,7 +12,6 @@ import android.widget.TextView;
 
 import com.clilystudio.netbook.d;
 import com.clilystudio.netbook.model.PayConsumeRecord;
-import com.clilystudio.netbook.model.PayConsumeRecord$Order;
 import com.clilystudio.netbook.ui.BaseLoadingActivity;
 import com.clilystudio.netbook.util.t;
 import com.clilystudio.netbook.widget.ScrollLoadListView;

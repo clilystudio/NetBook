@@ -9,7 +9,7 @@ final class x implements b {
 
     @Override
     public final void a(a a2) {
-        CoverLoadingLayer.a(this.a, CoverLoadingLayer$Status.PROGRESS);
+        CoverLoadingLayer.a(this.a, CoverLoadingLayer.Status.PROGRESS);
     }
 
     @Override

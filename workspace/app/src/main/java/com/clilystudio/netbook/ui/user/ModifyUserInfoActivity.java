@@ -199,7 +199,12 @@ public class ModifyUserInfoActivity extends BaseActivity implements View.OnClick
         super.onCreate(bundle);
         this.setContentView(2130903114);
         this.b("\u7f16\u8f91\u8d44\u6599");
-        ButterKnife.inject(this);
+        this.mPortrait = (CircularSmartImageView) findViewById(2131493146);
+        this.mNameView = (TextView) findViewById(2131492928);
+        this.mGenderView = (TextView) findViewById(2131493149);
+        this.mPortraitSection = (LinearLayout) findViewById(2131493145);
+        this.mNameSection = (LinearLayout) findViewById(2131493147);
+        this.mGenderSection = (LinearLayout) findViewById(2131493148);
         this.a = am.a((Activity) this).getUser();
         this.mPortrait.setImageUrl(this.a.getFullAvatar());
         this.mNameView.setText(this.a.getNickname());

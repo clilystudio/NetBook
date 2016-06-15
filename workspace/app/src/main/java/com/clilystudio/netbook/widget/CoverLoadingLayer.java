@@ -40,7 +40,7 @@ public class CoverLoadingLayer extends ImageView {
     private int o;
     private int p;
     private y q;
-    private CoverLoadingLayer$Status r;
+    private CoverLoadingLayer.Status r;
     private com.c.a.w s;
     private float t;
     private int u;
@@ -89,7 +89,7 @@ public class CoverLoadingLayer extends ImageView {
         return w2;
     }
 
-    static /* synthetic */ CoverLoadingLayer$Status a(CoverLoadingLayer coverLoadingLayer, CoverLoadingLayer$Status status) {
+    static /* synthetic */ CoverLoadingLayer.Status a(CoverLoadingLayer coverLoadingLayer, CoverLoadingLayer.Status status) {
         coverLoadingLayer.r = status;
         return status;
     }
@@ -150,7 +150,7 @@ public class CoverLoadingLayer extends ImageView {
         if (n > 100) {
             return true;
         }
-        if (this.m != null && this.m.d() || this.r == CoverLoadingLayer$Status.PAUSE) {
+        if (this.m != null && this.m.d() || this.r == CoverLoadingLayer.Status.PAUSE) {
             this.p = n;
             return true;
         }
@@ -172,7 +172,7 @@ public class CoverLoadingLayer extends ImageView {
     }
 
     private void i() {
-        this.r = CoverLoadingLayer$Status.NONE;
+        this.r = CoverLoadingLayer.Status.NONE;
         this.o = 0;
         this.p = 0;
         this.b = this.n;
@@ -194,7 +194,7 @@ public class CoverLoadingLayer extends ImageView {
     }
 
     public final void b() {
-        this.r = CoverLoadingLayer$Status.PAUSE;
+        this.r = CoverLoadingLayer.Status.PAUSE;
         this.d = this.e;
         this.invalidate();
     }
@@ -205,17 +205,17 @@ public class CoverLoadingLayer extends ImageView {
     }
 
     public final void d() {
-        this.r = CoverLoadingLayer$Status.PENDING;
+        this.r = CoverLoadingLayer.Status.PENDING;
         this.invalidate();
     }
 
     public final void e() {
-        this.r = CoverLoadingLayer$Status.PREPARE;
+        this.r = CoverLoadingLayer.Status.PREPARE;
         this.invalidate();
     }
 
     public final void f() {
-        this.r = CoverLoadingLayer$Status.DOWNLOADED;
+        this.r = CoverLoadingLayer.Status.DOWNLOADED;
         this.invalidate();
     }
 
@@ -238,10 +238,10 @@ public class CoverLoadingLayer extends ImageView {
         if (this.f == -1.0f) {
             this.f = 0.1f * (float) n;
         }
-        if (this.r == CoverLoadingLayer$Status.NONE) {
+        if (this.r == CoverLoadingLayer.Status.NONE) {
             return;
         }
-        if (this.r == CoverLoadingLayer$Status.DOWNLOADED) {
+        if (this.r == CoverLoadingLayer.Status.DOWNLOADED) {
             canvas.save();
             canvas.translate((float) this.getWidth() - this.t, 0.0f);
             ShapeDrawable shapeDrawable = new ShapeDrawable((Shape) ((Object) new p(this.f)));
@@ -270,7 +270,7 @@ public class CoverLoadingLayer extends ImageView {
         paint2.setAntiAlias(true);
         paint2.setColor(this.a);
         RectF rectF = new RectF((float) n4 - this.c, (float) n5 - this.c, (float) n4 + this.c, (float) n5 + this.c);
-        if (this.r == CoverLoadingLayer$Status.PROGRESS) {
+        if (this.r == CoverLoadingLayer.Status.PROGRESS) {
             canvas2.drawArc(rectF, this.g, 270 - this.g, true, paint2);
         }
         if (this.f != 0.0f) {
@@ -278,7 +278,7 @@ public class CoverLoadingLayer extends ImageView {
             path.addRoundRect(new RectF(0.0f, 0.0f, this.getWidth(), this.getHeight()), this.f, this.f, Path.Direction.CCW);
             canvas.clipPath(path);
         }
-        if (this.r == CoverLoadingLayer$Status.PENDING || this.r == CoverLoadingLayer$Status.PREPARE) {
+        if (this.r == CoverLoadingLayer.Status.PENDING || this.r == CoverLoadingLayer.Status.PREPARE) {
             canvas2.drawCircle(this.getWidth() / 2, this.getHeight() / 2, this.n, paint2);
             Paint paint3 = new Paint(1);
             paint3.setColor(this.getResources().getColor(2131427386));
@@ -299,7 +299,7 @@ public class CoverLoadingLayer extends ImageView {
             canvas2.restore();
         }
         canvas.drawBitmap(bitmap, 0.0f, 0.0f, null);
-        if (this.r != CoverLoadingLayer$Status.PAUSE) return;
+        if (this.r != CoverLoadingLayer.Status.PAUSE) return;
         if (2.0f * this.d <= 1.0f) return;
         canvas2.drawCircle(n4, n5, this.d, paint);
         Bitmap bitmap2 = Bitmap.createBitmap(this.getWidth(), this.getHeight(), Bitmap.Config.ARGB_8888);
@@ -337,7 +337,7 @@ public class CoverLoadingLayer extends ImageView {
         boolean bl = false;
         boolean bl2 = false;
         if (bl) return true;
-        if (this.r == CoverLoadingLayer$Status.PROGRESS) {
+        if (this.r == CoverLoadingLayer.Status.PROGRESS) {
             this.b();
             if (this.q == null) return true;
             {
@@ -345,9 +345,9 @@ public class CoverLoadingLayer extends ImageView {
                 return true;
             }
         }
-        if (this.r == CoverLoadingLayer$Status.PAUSE) {
+        if (this.r == CoverLoadingLayer.Status.PAUSE) {
             this.d = 0.0f;
-            this.r = CoverLoadingLayer$Status.PROGRESS;
+            this.r = CoverLoadingLayer.Status.PROGRESS;
             this.invalidate();
             if (this.q == null) return true;
             {
@@ -355,7 +355,7 @@ public class CoverLoadingLayer extends ImageView {
                 return true;
             }
         } else {
-            if (this.r != CoverLoadingLayer$Status.PENDING) return true;
+            if (this.r != CoverLoadingLayer.Status.PENDING) return true;
             {
                 this.b();
                 if (this.q == null) return true;
@@ -387,7 +387,7 @@ public class CoverLoadingLayer extends ImageView {
             {
                 this.o = n;
                 this.g = CoverLoadingLayer.a(this.o);
-                this.r = CoverLoadingLayer$Status.PROGRESS;
+                this.r = CoverLoadingLayer.Status.PROGRESS;
                 this.invalidate();
                 if (!this.a()) return;
                 {
@@ -396,7 +396,7 @@ public class CoverLoadingLayer extends ImageView {
                 }
             }
         }
-        this.r = CoverLoadingLayer$Status.PROGRESS;
+        this.r = CoverLoadingLayer.Status.PROGRESS;
         int n3 = this.o;
         this.o = n;
         if (this.m != null) {
@@ -419,5 +419,8 @@ public class CoverLoadingLayer extends ImageView {
         }
         if (this.j()) return;
         this.m.a();
+    }
+    enum Status {
+        NONE,PREPARE,PROGRESS,PAUSE,PENDING,DOWNLOADED;
     }
 }

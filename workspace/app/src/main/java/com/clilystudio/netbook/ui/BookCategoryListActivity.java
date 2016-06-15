@@ -18,7 +18,6 @@ import android.widget.TextView;
 
 import com.clilystudio.netbook.d;
 import com.clilystudio.netbook.model.CategoryLevelRoot;
-import com.clilystudio.netbook.model.CategoryLevelRoot$CategoryLevel;
 
 import java.util.ArrayList;
 import java.util.List;

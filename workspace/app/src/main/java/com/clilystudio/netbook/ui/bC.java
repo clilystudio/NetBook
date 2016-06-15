@@ -3,7 +3,6 @@ package com.clilystudio.netbook.ui;
 import android.content.Intent;
 import android.view.View;
 
-import com.clilystudio.netbook.model.RecommendUgcRoot$RecommendUGC;
 import com.clilystudio.netbook.ui.ugcbook.UGCDetailActivity;
 
 final class bC implements View.OnClickListener {

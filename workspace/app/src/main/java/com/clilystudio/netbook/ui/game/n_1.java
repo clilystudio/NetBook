@@ -6,7 +6,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.clilystudio.netbook.model.Author;
-import com.clilystudio.netbook.model.GamePostRoot$GamePost;
 import com.clilystudio.netbook.ui.SmartImageView;
 import com.clilystudio.netbook.util.W;
 import com.clilystudio.netbook.util.t;

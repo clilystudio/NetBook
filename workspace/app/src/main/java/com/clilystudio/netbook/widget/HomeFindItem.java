@@ -33,7 +33,10 @@ public class HomeFindItem extends FrameLayout {
         super(context);
         this.a = intent;
         LayoutInflater.from(context).inflate(2130903283, (ViewGroup) this);
-        ButterKnife.inject(this);
+        this.mIcon = (MaskAbleImageView) findViewById(2131493028);
+        this.mTitle = (TextView) findViewById(2131492936);
+        this.mSubFlag = (ImageView) findViewById(2131493681);
+        this.mSubText = (TextView) findViewById(2131493683);
         this.mIcon.setImageResource(n);
         this.mTitle.setText(string);
         if (n2 != 0) {

@@ -30,7 +30,7 @@ public class ReaderRandomEntranceActivity extends BaseActivity implements View.O
         super.onCreate(bundle);
         this.setContentView(2130903120);
         this.b("\u968f\u673a\u770b\u4e66");
-        ButterKnife.inject(this);
+        this.mReadRandomBook = (SAutoBgButton) findViewById(2131493156);
         this.mReadRandomBook.setOnClickListener(this);
     }
 }

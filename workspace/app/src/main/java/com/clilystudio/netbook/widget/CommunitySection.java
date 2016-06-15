@@ -3,6 +3,7 @@ package com.clilystudio.netbook.widget;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
@@ -16,7 +17,7 @@ public class CommunitySection extends DividerSection {
     public CommunitySection(Context context, AttributeSet attributeSet) {
         super(context, attributeSet);
         LayoutInflater.from(context).inflate(2130903177, (ViewGroup) this);
-        ButterKnife.inject(this);
+        this.mDot = (ImageView) findViewById(2131493375);
     }
 
     public final void a(boolean bl) {

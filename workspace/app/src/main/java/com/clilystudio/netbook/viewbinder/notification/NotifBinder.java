@@ -6,7 +6,6 @@ import android.net.Uri;
 import android.widget.TextView;
 
 import com.clilystudio.netbook.model.NotificationItem;
-import com.clilystudio.netbook.model.NotificationItem$NotifPost;
 import com.clilystudio.netbook.ui.SmartImageView;
 import com.clilystudio.netbook.ui.post.BookHelpActivity;
 import com.clilystudio.netbook.ui.post.PostDetailActivity;

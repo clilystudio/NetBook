@@ -20,7 +20,6 @@ import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.model.Author;
 import com.clilystudio.netbook.model.Post;
 import com.clilystudio.netbook.model.PostComment;
-import com.clilystudio.netbook.model.PostComment$PostCommentReply;
 import com.clilystudio.netbook.model.User;
 import com.clilystudio.netbook.model.Vote;
 import com.clilystudio.netbook.ui.SmartImageView;

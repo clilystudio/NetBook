@@ -127,7 +127,12 @@ public class UserInfoActivity extends BaseActivity {
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         this.setContentView(2130903141);
-        ButterKnife.inject(this);
+        this.mPortrait = (CircularSmartImageView) findViewById(2131493146);
+        this.mName = (TextView) findViewById(2131492928);
+        this.mExp = (TextView) findViewById(2131493234);
+        this.mLevel = (TextView) findViewById(2131493233);
+        this.mExpProgress = (ProgressBar) findViewById(2131493235);
+        this.mMessageCount = (TextView) findViewById(2131493239);
         this.a(2131034578, "\u7f16\u8f91\u8d44\u6599", (aa) new aA(this));
         this.c = this.getIntent().getStringExtra("account_token");
         this.a = this.findViewById(2131493085);

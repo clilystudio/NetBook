@@ -10,17 +10,10 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import butterknife.ButterKnife;
-import butterknife.InjectView;
-
 public class ShareWarningView extends RelativeLayout {
-    @InjectView(value = 2131493987)
     ImageView mClose;
-    @InjectView(value = 2131492905)
     TextView mContent;
-    @InjectView(value = 2131493988)
     Button mNegative;
-    @InjectView(value = 2131493989)
     Button mPositive;
     private aB a;
     private View.OnClickListener b;
@@ -31,7 +24,10 @@ public class ShareWarningView extends RelativeLayout {
         this.setPadding(0, 0, 0, a.a(context, 22.0f));
         this.setBackgroundColor(-1);
         LayoutInflater.from(context).inflate(2130903393, (ViewGroup) this);
-        ButterKnife.inject(this);
+        this.mClose = (ImageView) findViewById(2131493987);
+        this.mNegative = (Button) findViewById(2131493988);
+        this.mPositive = (Button) findViewById(2131493989);
+        this.mContent = (TextView) findViewById(2131492905);
         this.mNegative.setOnClickListener(this.b);
         this.mClose.setOnClickListener(this.b);
     }

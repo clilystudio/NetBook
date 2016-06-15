@@ -6,9 +6,9 @@ import com.clilystudio.netbook.event.i;
 import com.clilystudio.netbook.event.r;
 
 final class v implements View.OnClickListener {
-    private /* synthetic */ DialogUtil$GenderIntroDialog a;
+    private /* synthetic */ GenderIntroDialog a;
 
-    v(DialogUtil$GenderIntroDialog genderIntroDialog) {
+    v(GenderIntroDialog genderIntroDialog) {
         this.a = genderIntroDialog;
     }
 

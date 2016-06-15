@@ -26,7 +26,10 @@ public class UserLevelActivity extends BaseActivity {
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         this.setContentView(2130903142);
-        ButterKnife.inject(this);
+        this.mCurrentLevel = (TextView) findViewById(2131493248);
+        this.mLevelProgress = (TextView) findViewById(2131493249);
+        this.mLevelRank = (TextView) findViewById(2131493250);
+        this.mDoTask = (Button) findViewById(2131493253);
         this.b("\u7ecf\u9a8c\u7b49\u7ea7");
         UserInfo userInfo = (UserInfo) MyApplication.a().b("savedObject_userinfo");
         int n = userInfo.getLv();

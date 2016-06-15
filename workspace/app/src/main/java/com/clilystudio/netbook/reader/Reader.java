@@ -530,4 +530,20 @@ public final class Reader {
         }
         return "";
     }
+
+    public enum Type {
+        CHAPTER,TOC;
+
+        private int code;
+
+        private Type(int paramInt) {
+            this.code = paramInt;
+        }
+
+        public final ae getListener(Reader paramReader) {
+            if (this.code == 0)
+                return Reader.a(paramReader);
+            return Reader.b(paramReader);
+        }
+    }
 }

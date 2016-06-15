@@ -16,7 +16,6 @@ import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.model.Author;
 import com.clilystudio.netbook.model.BookHelp;
 import com.clilystudio.netbook.model.PostComment;
-import com.clilystudio.netbook.model.PostComment$PostCommentReply;
 import com.clilystudio.netbook.model.User;
 import com.clilystudio.netbook.ui.SmartImageView;
 import com.clilystudio.netbook.ui.user.AuthLoginActivity;

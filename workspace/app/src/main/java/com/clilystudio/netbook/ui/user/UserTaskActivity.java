@@ -9,7 +9,6 @@ import android.widget.TextView;
 
 import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.model.UserInfo;
-import com.clilystudio.netbook.model.UserInfo$UserTodayTask;
 import com.clilystudio.netbook.ui.BaseActivity;
 
 import butterknife.ButterKnife;
@@ -54,7 +53,12 @@ public class UserTaskActivity extends BaseActivity {
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         this.setContentView(2130903143);
-        ButterKnife.inject(this);
+        this.mExpInfo = (TextView) findViewById(2131493254);
+        this.mExpLaunch = (TextView) findViewById(2131493255);
+        this.mExpShareTopic = (TextView) findViewById(2131493256);
+        this.mExpShareBook = (TextView) findViewById(2131493257);
+        this.mExpVote = (TextView) findViewById(2131493259);
+        this.mVoteView = findViewById(2131493258);
         this.b("\u4efb\u52a1");
         UserInfo userInfo = (UserInfo) MyApplication.a().b("savedObject_userinfo");
         this.mExpInfo.setTextColor(this.getResources().getColor(2131427480));

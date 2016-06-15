@@ -5,7 +5,6 @@ import com.clilystudio.netbook.am;
 import com.clilystudio.netbook.a_pack.e;
 import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.model.ChapterKeysRoot;
-import com.clilystudio.netbook.model.ChapterKeysRoot$ChapterKey;
 
 import java.util.HashMap;
 

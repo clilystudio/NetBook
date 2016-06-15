@@ -5,7 +5,6 @@ import android.support.v7.widget.ay;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
-import com.clilystudio.netbook.model.UgcFilterRoot$FilterGroup;
 import com.clilystudio.netbook.widget.UgcFilterTextView;
 
 final class ak extends ah {

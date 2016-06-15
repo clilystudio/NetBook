@@ -90,7 +90,11 @@ public class SmsSendActivity extends BaseActivity {
         super.onCreate(bundle);
         this.setContentView(2130903131);
         this.b("\u77ed\u4fe1\u5145\u503c");
-        ButterKnife.inject(this);
+        this.mNumberText = (EditText) findViewById(2131493210);
+        this.mNormalLine = findViewById(2131493211);
+        this.mErrorLine = findViewById(2131493212);
+        this.mWrongText = findViewById(2131493213);
+        this.mNextBtn = (Button) findViewById(2131493214);
         this.b();
         this.a(false);
         this.a = (ChargePlan) this.getIntent().getSerializableExtra("key_charge_plan_send");

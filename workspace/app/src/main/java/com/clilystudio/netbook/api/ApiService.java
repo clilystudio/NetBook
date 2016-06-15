@@ -2790,4 +2790,13 @@ public class ApiService {
             throw var7_7.getCause();
         }
     }
+
+    class JsonException extends IOException {
+        private static final long serialVersionUID = -8247637549733902252L;
+
+        public JsonException(JsonParseException jsonParseException) {
+            super(jsonParseException.getMessage());
+            this.initCause(jsonParseException);
+        }
+    }
 }

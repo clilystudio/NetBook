@@ -59,7 +59,6 @@ import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.db.BookFile;
 import com.clilystudio.netbook.db.BookReadRecord;
 import com.clilystudio.netbook.db.BookSyncRecord;
-import com.clilystudio.netbook.db.BookSyncRecord$BookModifyType;
 import com.clilystudio.netbook.db.SourceRecord;
 import com.clilystudio.netbook.hpay100.config.HPaySMS;
 import com.clilystudio.netbook.hpay100.config.w;
@@ -77,7 +76,7 @@ import com.clilystudio.netbook.reader.ReaderActivity;
 import com.clilystudio.netbook.reader.ReaderTocDialog;
 import com.clilystudio.netbook.ui.game.N;
 import com.clilystudio.netbook.util.CipherUtil;
-import com.clilystudio.netbook.util.DialogUtil$GenderIntroDialog;
+import com.clilystudio.netbook.util.GenderIntroDialog;
 import com.clilystudio.netbook.util.I;
 import com.clilystudio.netbook.util.T;
 import com.clilystudio.netbook.util.X;
@@ -107,7 +106,6 @@ import java.io.ByteArrayOutputStream;
 import java.io.Closeable;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -2055,7 +2053,7 @@ public class a {
         if (fragment != null) {
             fragmentTransaction.remove(fragment);
         }
-        DialogUtil$GenderIntroDialog dialogUtil$GenderIntroDialog = new DialogUtil$GenderIntroDialog();
+        GenderIntroDialog dialogUtil$GenderIntroDialog = new GenderIntroDialog();
         dialogUtil$GenderIntroDialog.setCancelable(false);
         dialogUtil$GenderIntroDialog.show(fragmentTransaction, "dialog_gender_intro");
     }

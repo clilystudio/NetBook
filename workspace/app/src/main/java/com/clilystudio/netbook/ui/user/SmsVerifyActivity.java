@@ -117,7 +117,13 @@ public class SmsVerifyActivity extends BaseActivity {
         super.onCreate(bundle);
         this.setContentView(2130903132);
         this.b("\u77ed\u4fe1\u5145\u503c");
-        ButterKnife.inject(this);
+        this.mCodeText = (EditText) findViewById(2131493220);
+        this.mAppNameText = (TextView) findViewById(2131493215);
+        this.mGoodsText = (TextView) findViewById(2131493216);
+        this.mPriceText = (TextView) findViewById(2131493217);
+        this.mPhoneText = (TextView) findViewById(2131493218);
+        this.mSendCodeBtn = (Button) findViewById(2131493219);
+        this.mCommitBtn = (Button) findViewById(2131493221);
         this.b = (ChargePlan) this.getIntent().getSerializableExtra("key_charge_plan_verify");
         this.mAppNameText.setText("\u8ffd\u4e66\u795e\u5668");
         this.mGoodsText.setText(this.b.getString());

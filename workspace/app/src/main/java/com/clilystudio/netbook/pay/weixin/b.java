@@ -10,7 +10,6 @@ import com.clilystudio.netbook.event.y;
 import com.clilystudio.netbook.event.z;
 import com.clilystudio.netbook.model.ChargePlan;
 import com.clilystudio.netbook.model.WXPayOrder;
-import com.clilystudio.netbook.model.WXPayOrder$PayOrder;
 import com.clilystudio.netbook.util.e;
 
 import java.io.IOException;

@@ -2,7 +2,6 @@ package com.clilystudio.netbook.adapter;
 
 import android.view.LayoutInflater;
 
-import com.clilystudio.netbook.model.UGCBookListRoot$UGCBook;
 import com.clilystudio.netbook.util.W;
 import com.clilystudio.netbook.util.t;
 import com.clilystudio.netbook.widget.CoverView;

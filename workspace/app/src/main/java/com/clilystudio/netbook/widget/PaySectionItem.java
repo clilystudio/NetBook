@@ -27,7 +27,10 @@ public class PaySectionItem extends DividerSection {
     public PaySectionItem(Context context, AttributeSet attributeSet) {
         super(context, attributeSet);
         LayoutInflater.from(context).inflate(2130903343, (ViewGroup) this.a());
-        ButterKnife.inject(this);
+        this.mIcon = (ImageView) findViewById(2131493028);
+        this.mLabel = (TextView) findViewById(2131493515);
+        this.mBalance = (TextView) findViewById(2131493823);
+        this.mArrow = (ImageView) findViewById(2131493199);
         TypedArray typedArray = context.obtainStyledAttributes(attributeSet, R$styleable.PaySectionItem);
         String string = typedArray.getString(0);
         this.mLabel.setText(string);

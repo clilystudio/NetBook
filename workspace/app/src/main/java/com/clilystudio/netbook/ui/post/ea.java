@@ -4,7 +4,6 @@ import android.app.Activity;
 
 import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.model.TimelineResult;
-import com.clilystudio.netbook.model.TimelineResult$Temp;
 import com.clilystudio.netbook.ui.user.AuthLoginActivity;
 import com.clilystudio.netbook.util.e;
 

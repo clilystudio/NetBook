@@ -7,6 +7,7 @@ import android.widget.TextView;
 
 import com.clilystudio.netbook.model.BookRankRoot;
 import com.clilystudio.netbook.model.BookRankSummary;
+import com.clilystudio.netbook.ui.SmartImageView;
 import com.clilystudio.netbook.widget.RankCollapseItem;
 
 import java.util.List;
@@ -153,4 +154,17 @@ public final class BookRankAdapter extends u<BookRankSummary> {
     public final int getViewTypeCount() {
         return 3;
     }
+
+    class BookRankAdapter$ViewHolder {
+        @InjectView(value = 2131493626)
+        SmartImageView cover;
+        @InjectView(value = 2131493627)
+        TextView title;
+
+        BookRankAdapter$ViewHolder(View view) {
+            this.cover = (SmartImageView)view. findViewById(2131493626);
+            this.title = (TextView)view.  findViewById(2131493627);
+        }
+    }
+
 }

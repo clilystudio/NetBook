@@ -5,7 +5,8 @@ import android.app.Activity;
 import com.clilystudio.netbook.c;
 import com.clilystudio.netbook.model.HotKeywordResult;
 import com.clilystudio.netbook.util.e;
-import com.clilystudio.netbook.widget.AutoFlowView$Word;
+import com.clilystudio.netbook.widget.AutoFlowView;
+import com.clilystudio.netbook.widget.AutoFlowView.Word;
 
 import java.util.ArrayList;
 
@@ -39,9 +40,9 @@ final class bM extends com.clilystudio.netbook.a_pack.e<String, Void, HotKeyword
     protected final /* synthetic */ void onPostExecute(Object object) {
         HotKeywordResult hotKeywordResult = (HotKeywordResult) object;
         if (hotKeywordResult != null) {
-            ArrayList<AutoFlowView$Word> arrayList = new ArrayList<AutoFlowView$Word>();
+            ArrayList<AutoFlowView.Word> arrayList = new ArrayList<AutoFlowView.Word>();
             for (String string : hotKeywordResult.getHotWords()) {
-                AutoFlowView$Word autoFlowView$Word = new AutoFlowView$Word();
+                AutoFlowView.Word autoFlowView$Word = new AutoFlowView.Word();
                 autoFlowView$Word.show = 0;
                 autoFlowView$Word.content = string;
                 arrayList.add(autoFlowView$Word);

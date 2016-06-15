@@ -25,7 +25,6 @@ import com.clilystudio.netbook.ui.post.GirlTopicListActivity;
 import com.clilystudio.netbook.ui.post.ReviewListActivity;
 import com.clilystudio.netbook.ui.post.TweetTabActivity;
 import com.clilystudio.netbook.ui.user.AuthLoginActivity;
-import com.clilystudio.netbook.ui.user.AuthLoginActivity$Source;
 import com.clilystudio.netbook.widget.CommunitySection;
 import com.handmark.pulltorefresh.library.PullToRefreshBase$Mode;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;

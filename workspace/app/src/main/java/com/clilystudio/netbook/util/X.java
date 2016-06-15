@@ -3,7 +3,6 @@ package com.clilystudio.netbook.util;
 import com.clilystudio.netbook.a_pack.e;
 import com.clilystudio.netbook.api.ApiService;
 import com.clilystudio.netbook.db.BookSyncRecord;
-import com.clilystudio.netbook.db.BookSyncRecord$BookModifyType;
 import com.clilystudio.netbook.model.SyncUploadResult;
 
 public final class X extends e<Void, Void, SyncUploadResult> {

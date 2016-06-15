@@ -152,4 +152,8 @@ public class AuthLoginActivity extends BaseActivity implements Handler.Callback 
         Toast.makeText((Context) this, av2.e(), 0).show();
         this.finish();
     }
+
+    public enum Source {
+        HOME, OTHER;
+    }
 }

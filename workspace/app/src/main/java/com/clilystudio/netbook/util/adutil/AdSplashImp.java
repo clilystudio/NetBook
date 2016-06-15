@@ -36,7 +36,7 @@ public final class AdSplashImp {
         return adSplashImp.d;
     }
 
-    private void a(AdSplashImp$EventType eventType) {
+    private void a(AdSplashImp.EventType eventType) {
         if (this.b instanceof g) {
             this.a(eventType, this.a.getResources().getStringArray(2131361806));
             return;
@@ -53,7 +53,7 @@ public final class AdSplashImp {
      * Enabled aggressive block sorting
      * Lifted jumps to return sites
      */
-    private void a(AdSplashImp$EventType var1_1, String[] var2_2) {
+    private void a(AdSplashImp.EventType var1_1, String[] var2_2) {
         var3_3 = f.a[var1_1.ordinal()];
         var4_4 = null;
         switch (var3_3) {
@@ -97,7 +97,7 @@ public final class AdSplashImp {
     }
 
     public final void b() {
-        this.a(AdSplashImp$EventType.PRESENT);
+        this.a(AdSplashImp.EventType.PRESENT);
         this.a.a();
         this.a.a(3000);
         if (a.r(this.a, "ad_baidu_confirm")) {
@@ -113,10 +113,16 @@ public final class AdSplashImp {
     }
 
     public final void d() {
-        this.a(AdSplashImp$EventType.CLICK);
+        this.a(AdSplashImp.EventType.CLICK);
     }
 
     public final void e() {
-        this.a(AdSplashImp$EventType.DOWNLOAD);
+        this.a(AdSplashImp.EventType.DOWNLOAD);
     }
+
+
+    enum EventType {
+        PRESENT, CLICK, DOWNLOAD;
+    }
+
 }

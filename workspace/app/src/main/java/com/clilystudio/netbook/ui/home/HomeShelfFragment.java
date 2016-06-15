@@ -48,9 +48,8 @@ import com.clilystudio.netbook.ui.AudioBookPlayActivity;
 import com.clilystudio.netbook.ui.AudiobookInfoActivity;
 import com.clilystudio.netbook.ui.BookInfoActivity;
 import com.clilystudio.netbook.ui.user.RemoveAdActivity;
-import com.clilystudio.netbook.util.DialogUtil$FeedIntroDialog;
+import com.clilystudio.netbook.util.FeedIntroDialog;
 import com.clilystudio.netbook.util.UmengGameTracer;
-import com.clilystudio.netbook.util.UmengGameTracer$From;
 import com.clilystudio.netbook.util.as;
 import com.clilystudio.netbook.widget.CoverLoadingView;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
@@ -423,7 +422,7 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
                     if (fragment != null) {
                         fragmentTransaction.remove(fragment);
                     }
-                    new DialogUtil$FeedIntroDialog().show(fragmentTransaction, "dialog_feed_intro");
+                    new FeedIntroDialog().show(fragmentTransaction, "dialog_feed_intro");
                 }
                 a.b((Context) homeShelfFragment.getActivity(), "feed_intro_dialog", false);
             }
@@ -484,7 +483,7 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
         } else {
             textView.setTextColor(homeShelfFragment.getActivity().getResources().getColor(2131427523));
         }
-        new UmengGameTracer(homeShelfFragment.getActivity(), UmengGameTracer$From.Notification).a(shelfMsg._id);
+        new UmengGameTracer(homeShelfFragment.getActivity(), UmengGameTracer.From.Notification).a(shelfMsg._id);
         textView.setOnClickListener(new w(homeShelfFragment, shelfMsg, insideLink));
     }
 
@@ -824,7 +823,7 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
         Advert advert = com.clilystudio.netbook.util.c.a().a(string);
         if (advert != null && HomeShelfFragment.a(this.getActivity(), n2) && a.w(this.getActivity(), string2)) {
             if (this.getActivity() != null) {
-                new UmengGameTracer(this.getActivity(), UmengGameTracer$From.Bookshelf).a(advert.get_id());
+                new UmengGameTracer(this.getActivity(), UmengGameTracer.From.Bookshelf).a(advert.get_id());
             }
             advert.setType("promotion");
             this.a(list, n2, advert);

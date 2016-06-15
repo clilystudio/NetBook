@@ -3,8 +3,6 @@ package com.clilystudio.netbook.ui.user;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
-import com.clilystudio.netbook.model.VipPlan$Plan;
-
 import java.util.ArrayList;
 import java.util.List;
 

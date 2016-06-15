@@ -111,4 +111,9 @@ public class BookSyncRecord extends Model {
     public void setUserId(String string) {
         this.userId = string;
     }
+
+    public enum BookModifyType {
+        SHELF_ADD,SHELF_REMOVE,FEED_ADD,FEED_REMOVE,SYNC_SUCCESS;
+    }
+
 }

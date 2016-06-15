@@ -2,12 +2,13 @@ package com.clilystudio.netbook.widget;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.view.View;
 import android.widget.FrameLayout;
 
 public class ThemeLoadingView extends FrameLayout {
     private LoadingProgressView a;
     private LoadingProgressView b;
-    private ThemeLoadingView$Mode c = ThemeLoadingView$Mode.LIGHT;
+    private ThemeLoadingView.Mode c = ThemeLoadingView.Mode.LIGHT;
     private boolean d = true;
 
     public ThemeLoadingView(Context context, AttributeSet attributeSet) {
@@ -20,7 +21,7 @@ public class ThemeLoadingView extends FrameLayout {
     }
 
     private void c() {
-        if (this.c == ThemeLoadingView$Mode.LIGHT) {
+        if (this.c == ThemeLoadingView.Mode.LIGHT) {
             this.setBackgroundResource(2130837696);
             return;
         }
@@ -28,7 +29,7 @@ public class ThemeLoadingView extends FrameLayout {
     }
 
     private LoadingProgressView d() {
-        if (this.c == ThemeLoadingView$Mode.LIGHT) {
+        if (this.c == ThemeLoadingView.Mode.LIGHT) {
             return this.a;
         }
         return this.b;
@@ -47,9 +48,9 @@ public class ThemeLoadingView extends FrameLayout {
      * Enabled aggressive block sorting
      */
     public final void a(boolean bl) {
-        ThemeLoadingView$Mode themeLoadingView$Mode = bl ? ThemeLoadingView$Mode.DARK : ThemeLoadingView$Mode.LIGHT;
+        ThemeLoadingView.Mode themeLoadingView$Mode = bl ? ThemeLoadingView.Mode.DARK : ThemeLoadingView.Mode.LIGHT;
         this.c = themeLoadingView$Mode;
-        if (this.c == ThemeLoadingView$Mode.LIGHT) {
+        if (this.c == ThemeLoadingView.Mode.LIGHT) {
             this.a.setVisibility(View.VISIBLE);
             this.b.setVisibility(View.GONE);
         } else {
@@ -81,5 +82,9 @@ public class ThemeLoadingView extends FrameLayout {
         this.a = (LoadingProgressView) this.findViewById(2131493168);
         this.b = (LoadingProgressView) this.findViewById(2131493169);
         this.c();
+    }
+    
+    public enum Mode {
+        LIGHT, DARK;
     }
 }

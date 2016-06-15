@@ -12,12 +12,12 @@ public final class n {
 
     public static void a(Advert advert, View view) {
         try {
-            if (advert instanceof BaiduShelfAdContainer$BaiduAdvert) {
-                ((BaiduShelfAdContainer$BaiduAdvert) advert).baiduRecord(view);
+            if (advert instanceof BaiduShelfAdContainer.BaiduAdvert) {
+                ((BaiduShelfAdContainer.BaiduAdvert) advert).baiduRecord(view);
                 return;
             }
-            if (advert instanceof GdtShelfAdContainer$GdtAdvert) {
-                ((GdtShelfAdContainer$GdtAdvert) advert).gdtRecord(view);
+            if (advert instanceof GdtShelfAdContainer.GdtAdvert) {
+                ((GdtShelfAdContainer.GdtAdvert) advert).gdtRecord(view);
                 return;
             }
         } catch (Exception var2_2) {

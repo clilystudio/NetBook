@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.view.View;
 
 import com.clilystudio.netbook.ui.user.AuthLoginActivity;
-import com.clilystudio.netbook.ui.user.AuthLoginActivity$Source;
 
 import java.io.Serializable;
 

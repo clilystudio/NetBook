@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.clilystudio.netbook.model.BookShelfTopic;
+import com.clilystudio.netbook.ui.SmartImageView;
 import com.clilystudio.netbook.util.ag;
 import com.clilystudio.netbook.util.ai;
 
@@ -87,5 +88,20 @@ public final class HomeTopicAdapter extends u<BookShelfTopic> {
     @Override
     public final int getViewTypeCount() {
         return 2;
+    }
+
+    class HomeTopicAdapter$ViewHolder {
+        @InjectView(value = 2131493239)
+        TextView mCount;
+        @InjectView(value = 2131493604)
+        SmartImageView mCover;
+        @InjectView(value = 2131492936)
+        TextView mTitle;
+
+        HomeTopicAdapter$ViewHolder(View view) {
+            this.mCover = (SmartImageView) view.findViewById(2131493604);
+            this.mTitle = (TextView)view. findViewById(2131492936);
+            this.mCount = (TextView)view. findViewById(2131493239);
+        }
     }
 }

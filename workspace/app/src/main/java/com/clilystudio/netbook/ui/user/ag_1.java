@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import com.clilystudio.netbook.model.PayVoucherRecord$Voucher;
 import com.clilystudio.netbook.util.t;
 
 import java.util.ArrayList;

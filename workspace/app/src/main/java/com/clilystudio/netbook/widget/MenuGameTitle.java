@@ -36,7 +36,8 @@ public class MenuGameTitle extends LinearLayout {
 
     private void a(Context context) {
         LayoutInflater.from(context).inflate(2130903361, (ViewGroup) this);
-        ButterKnife.inject(this);
+        this.mSlmReaderAppName = (TextView) findViewById(2131493870);
+        this.mSlmReaderAppSize = (TextView) findViewById(2131493871);
     }
 
     public void setTitle(String string, String string2) {

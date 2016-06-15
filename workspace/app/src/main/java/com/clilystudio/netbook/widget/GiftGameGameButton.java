@@ -51,7 +51,12 @@ public class GiftGameGameButton extends Button {
         switch (n) {
             default: {
                 this.a();
-                this.setOnClickListener(new T(this, 0));
+                this.setOnClickListener(new OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        GiftGameGameButton.this.d();
+                    }
+                });
                 return;
             }
             case 1:

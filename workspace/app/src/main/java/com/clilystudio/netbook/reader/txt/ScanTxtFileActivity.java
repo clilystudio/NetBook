@@ -136,7 +136,10 @@ public class ScanTxtFileActivity extends BaseActivity {
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         this.setContentView(2130903126);
-        ButterKnife.inject(this);
+        this.mStatus = (TextView) findViewById(2131493180);
+        this.mList = (ListView) findViewById(2131492924);
+        this.mPbLoading = (ProgressBar) findViewById(2131493085);
+        this.mEmpty = (TextView) findViewById(2131493181);
         this.a = new R_Clazz(this, this.getLayoutInflater());
         this.mList.setAdapter(this.a);
         this.mList.setOnItemClickListener(this.a);

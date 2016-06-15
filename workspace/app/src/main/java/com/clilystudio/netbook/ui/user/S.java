@@ -10,8 +10,6 @@ import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
-import com.clilystudio.netbook.model.PayConsumeRecord$Order;
-import com.clilystudio.netbook.model.PayConsumeRecord$PayType;
 import com.clilystudio.netbook.util.t;
 import com.clilystudio.netbook.widget.PayRecordCollapseItem;
 

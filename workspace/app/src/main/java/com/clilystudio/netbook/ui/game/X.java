@@ -3,8 +3,6 @@ package com.clilystudio.netbook.ui.game;
 import android.content.Intent;
 import android.view.View;
 
-import com.clilystudio.netbook.model.GameLayoutRoot$ModuleLayout;
-
 final class X implements View.OnClickListener {
     private /* synthetic */ GameLayoutRoot$ModuleLayout a;
     private /* synthetic */ GameMicroFragment$LayoutAdapter b;

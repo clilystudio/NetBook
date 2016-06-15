@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.AdapterView;
 
-import com.clilystudio.netbook.model.GamePostRoot$GamePost;
 import com.clilystudio.netbook.ui.post.PostDetailActivity;
 
 final class e implements AdapterView.OnItemClickListener {

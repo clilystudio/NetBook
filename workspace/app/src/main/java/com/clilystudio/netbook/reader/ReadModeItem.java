@@ -37,7 +37,11 @@ public class ReadModeItem extends FrameLayout {
         this.b = string;
         this.c = string2;
         LayoutInflater.from(this.a).inflate(2130903288, (ViewGroup) this);
-        ButterKnife.inject(this);
+        this.mIcon = (ImageView) findViewById(2131493028);
+        this.mName = (TextView) findViewById(2131492928);
+        this.mFlagSelect = (TextView) findViewById(2131493703);
+        this.mFlagWeb = (TextView) findViewById(2131493701);
+        this.mChapter = (TextView) findViewById(2131493702);
         this.mIcon.setImageResource(n);
         this.mName.setText(n2);
         if (n3 == n4) {

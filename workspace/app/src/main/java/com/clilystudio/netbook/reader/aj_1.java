@@ -1,7 +1,7 @@
 package com.clilystudio.netbook.reader;
 
 import com.clilystudio.netbook.util.UmengGameTracer;
-import com.clilystudio.netbook.util.UmengGameTracer$From;
+import com.clilystudio.netbook.util.UmengGameTracer.From;
 
 final class aj implements g {
     private /* synthetic */ ReaderActivity a;
@@ -19,7 +19,7 @@ final class aj implements g {
         a.q(this.a, "\u6253\u5f00\u9875\u5c3e");
         if (ReaderActivity.e(this.a) != null && ReaderActivity.e(this.a).b() != null) {
             a.q(this.a, "\u9875\u5c3e\u5e7f\u544a-" + ReaderActivity.e(this.a).b());
-            new UmengGameTracer(this.a, UmengGameTracer$From.Reader).a(ReaderActivity.e(this.a).a());
+            new UmengGameTracer(this.a, UmengGameTracer.From.Reader).a(ReaderActivity.e(this.a).a());
         }
     }
 }

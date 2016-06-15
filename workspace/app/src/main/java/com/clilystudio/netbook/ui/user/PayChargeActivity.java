@@ -8,7 +8,6 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.clilystudio.netbook.d;
-import com.clilystudio.netbook.model.PayChargeRecord$Order;
 import com.clilystudio.netbook.ui.BaseLoadingActivity;
 import com.clilystudio.netbook.util.t;
 import com.clilystudio.netbook.widget.ScrollLoadListView;

@@ -31,6 +31,6 @@ public class PayRecordCollapseItem extends LinearLayout {
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
-        ButterKnife.inject(this);
+        this.mItemContainer = (LinearLayout) findViewById(2131493578);
     }
 }

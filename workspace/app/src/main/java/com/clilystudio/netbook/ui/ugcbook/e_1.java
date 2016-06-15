@@ -5,7 +5,6 @@ import com.clilystudio.netbook.am;
 
 import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.model.UGCBookListRoot;
-import com.clilystudio.netbook.model.UGCBookListRoot$UGCBook;
 import com.clilystudio.netbook.ui.BaseActivity;
 
 import java.util.Arrays;

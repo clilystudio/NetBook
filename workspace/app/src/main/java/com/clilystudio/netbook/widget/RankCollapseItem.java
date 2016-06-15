@@ -21,17 +21,11 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 
 public class RankCollapseItem extends LinearLayout implements View.OnClickListener {
-    @InjectView(value = 2131493199)
     ImageView mArrow;
-    @InjectView(value = 2131493603)
     View mBottomDivdier;
-    @InjectView(value = 2131493578)
     LinearLayout mItemContainer;
-    @InjectView(value = 2131493515)
     TextView mLabel;
-    @InjectView(value = 2131493601)
     RelativeLayout mLabelContainer;
-    @InjectView(value = 2131493602)
     View mTopDivdier;
     private boolean a;
     private int b;
@@ -93,7 +87,12 @@ public class RankCollapseItem extends LinearLayout implements View.OnClickListen
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
-        ButterKnife.inject(this);
+        this.mLabel = (TextView) findViewById(2131493515);
+        this.mArrow = (ImageView) findViewById(2131493199);
+        this.mItemContainer = (LinearLayout) findViewById(2131493578);
+        this.mBottomDivdier = findViewById(2131493603);
+        this.mTopDivdier = findViewById(2131493602);
+        this.mLabelContainer = (RelativeLayout) findViewById(213149360);
         this.mLabel.setText("\u522b\u4eba\u5bb6\u7684\u6392\u884c\u699c");
         this.mLabelContainer.setOnClickListener(this);
         this.a();

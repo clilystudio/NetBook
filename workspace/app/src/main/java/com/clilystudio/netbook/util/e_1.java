@@ -4,11 +4,13 @@ import android.app.Activity;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Bitmap;
 import android.net.wifi.WifiManager;
+import android.os.Handler;
 import android.support.v7.app.NotificationCompat$Builder;
 import android.widget.RemoteViews;
 import android.widget.Toast;
@@ -27,6 +29,7 @@ import com.clilystudio.netbook.ui.post.OtherUserActivity;
 import java.io.ByteArrayOutputStream;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
@@ -247,7 +250,39 @@ public class e {
         notificationCompat$Builder.setAutoCancel(false).setOngoing(true);
         g = new AudioBookNotification$SwitchButtonListener();
         try {
-            MyApplication.a().registerReceiver(g, new IntentFilter("com.clilystudio.netbook.SWITCH_AUDIO"));
+            MyApplication.a().registerReceiver(new BroadcastReceiver() {
+                @Override
+                public void onReceive(Context context, Intent intent) {
+                    long l = new Date().getTime();
+                    if (l - com.clilystudio.netbook.util.e.d() < 1000) {
+                        com.clilystudio.netbook.util.e.a((long) l);
+                        return;
+                    }
+                    com.clilystudio.netbook.util.e.a((long) l);
+                    as.a();
+                    Handler handler = new Handler();
+                    if (as.c()) {
+                        handler.post(new Runnable() {
+                            @Override
+                            public void run() {
+                                as.a();
+                                as.h();
+                                com.clilystudio.netbook.util.e.e().setImageViewResource(2131493607, 2130837925);
+                                com.clilystudio.netbook.util.e.g().notify(1001, com.clilystudio.netbook.util.e.f());
+                            }
+                        });
+                        return;
+                    }
+                    handler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            as.a().d();
+                            com.clilystudio.netbook.util.e.e().setImageViewResource(2131493607, 2130837584);
+                            com.clilystudio.netbook.util.e.g().notify(1001, com.clilystudio.netbook.util.e.f());
+                        }
+                    });
+                }
+            }, new IntentFilter("com.clilystudio.netbook.SWITCH_AUDIO"));
         } catch (Exception var4_4) {
         }
         Intent intent = new Intent("com.clilystudio.netbook.SWITCH_AUDIO");

@@ -3,7 +3,6 @@ package com.clilystudio.netbook.ui.game;
 import com.clilystudio.netbook.a_pack.e;
 import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.model.GameLayoutRoot;
-import com.clilystudio.netbook.model.GameLayoutRoot$ModuleLayout;
 import com.clilystudio.netbook.model.ModuleType;
 
 import java.io.IOException;

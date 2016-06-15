@@ -11,7 +11,6 @@ import android.widget.TextView;
 import com.clilystudio.netbook.adapter.G;
 import com.clilystudio.netbook.db.TweetCache;
 import com.clilystudio.netbook.model.HotTweetResult;
-import com.clilystudio.netbook.model.TimelineResult$Temp;
 import com.clilystudio.netbook.model.Tweet;
 import com.google.gson.Gson;
 import com.handmark.pulltorefresh.library.PullToRefreshBase$Mode;

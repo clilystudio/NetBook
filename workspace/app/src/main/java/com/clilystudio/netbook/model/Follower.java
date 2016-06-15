@@ -6,7 +6,18 @@ import android.os.Parcelable;
 import com.clilystudio.netbook.api.ApiService;
 
 public class Follower implements Parcelable {
-    public static final Parcelable.Creator<Follower> CREATOR = new Follower$1();
+    public static final Parcelable.Creator<Follower> CREATOR = new Parcelable.Creator<Follower>(){
+
+        @Override
+        public Follower createFromParcel(Parcel source) {
+            return new Follower(source);
+        }
+
+        @Override
+        public Follower[] newArray(int size) {
+            return new Follower[size];
+        }
+    };
     private String _id;
     private String avatar;
     private int followers;

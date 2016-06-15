@@ -30,7 +30,10 @@ public class GameMicroLayoutItemView extends LinearLayout {
         super.onFinishInflate();
         this.setOrientation(1);
         LayoutInflater.from(this.getContext()).inflate(2130903421, (ViewGroup) this);
-        ButterKnife.inject(this);
+        this.mImage = (GameImageView) findViewById(2131493025);
+        this.mTitle = (TextView) findViewById(2131492936);
+        this.mSubTitle = (TextView) findViewById(2131493018);
+        this.mAction = (GameDownloadButton) findViewById(2131493705);
     }
 
     public void setHasPlayed(boolean bl) {

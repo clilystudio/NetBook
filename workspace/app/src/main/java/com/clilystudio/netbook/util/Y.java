@@ -1,7 +1,5 @@
 package com.clilystudio.netbook.util;
 
-import com.clilystudio.netbook.db.BookSyncRecord$BookModifyType;
-
 final class Y {
     static final /* synthetic */ int[] a;
 

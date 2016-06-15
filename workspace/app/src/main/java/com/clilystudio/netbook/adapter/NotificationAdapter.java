@@ -4,8 +4,10 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.clilystudio.netbook.model.NotificationItem;
+import com.clilystudio.netbook.ui.CircularSmartImageView;
 import com.clilystudio.netbook.viewbinder.notification.NotifBinder;
 import com.clilystudio.netbook.viewbinder.notification.NotifBinderFactory;
 import com.clilystudio.netbook.widget.DividerSection;
@@ -216,5 +218,29 @@ public abstract class NotificationAdapter extends u<NotificationItem> {
     @Override
     public int getViewTypeCount() {
         return this.i.length;
+    }
+
+    class NotificationAdapter$ViewHolder {
+        @InjectView(value = 2131492899)
+        CircularSmartImageView mAvatar;
+        @InjectView(value = 2131493712)
+        TextView mMainText;
+        @InjectView(value = 2131493713)
+        TextView mSubText;
+
+        NotificationAdapter$ViewHolder(View view) {
+            this.mAvatar = (CircularSmartImageView) view.findViewById(2131492899);
+            this.mMainText = (TextView) view.findViewById(2131493712);
+            this.mSubText = (TextView) view.findViewById(2131493713);
+        }
+    }
+
+    class NotificationAdapter$HeaderHolder {
+        @InjectView(value = 2131493711)
+        TextView mLabelText;
+
+        NotificationAdapter$HeaderHolder(View view) {
+            this.mLabelText = (TextView) view.findViewById(2131493711);
+        }
     }
 }

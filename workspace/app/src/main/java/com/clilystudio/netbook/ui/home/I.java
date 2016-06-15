@@ -6,7 +6,6 @@ import com.clilystudio.netbook.a_pack.c;
 import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.db.BookReadRecord;
 import com.clilystudio.netbook.model.BookGenderRecommend;
-import com.clilystudio.netbook.model.BookGenderRecommend$RecommendBook;
 
 import java.io.IOException;
 

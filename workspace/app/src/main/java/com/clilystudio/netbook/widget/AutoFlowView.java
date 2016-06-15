@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -22,7 +23,7 @@ public class AutoFlowView extends LinearLayout implements View.OnClickListener {
     private static int g;
     private static i h;
     private static int i;
-    private List<AutoFlowView$Word> j;
+    private List<AutoFlowView.Word> j;
     private List<View> k;
     private int[] l;
 
@@ -48,7 +49,7 @@ public class AutoFlowView extends LinearLayout implements View.OnClickListener {
 
     private void b() {
         this.setOrientation(0);
-        this.j = new ArrayList<AutoFlowView$Word>();
+        this.j = new ArrayList<AutoFlowView.Word>();
         this.k = new ArrayList<View>();
         g = a.a(this.getContext(), 12.0f);
         b = a.a(this.getContext(), 6.0f);
@@ -72,7 +73,7 @@ public class AutoFlowView extends LinearLayout implements View.OnClickListener {
         this.removeAllViews();
         this.k.clear();
         LayoutInflater layoutInflater = LayoutInflater.from(this.getContext());
-        List<AutoFlowView$Word> list2 = this.j;
+        List<AutoFlowView.Word> list2 = this.j;
         ArrayList<h> arrayList = new ArrayList<h>();
         int n = this.getMeasuredWidth();
         if (n == 0) {
@@ -87,7 +88,7 @@ public class AutoFlowView extends LinearLayout implements View.OnClickListener {
             int n2 = 0;
             int n3 = 0;
             for (int j = 0; j < list2.size(); ++j) {
-                AutoFlowView$Word autoFlowView$Word = list2.get(j);
+                AutoFlowView.Word autoFlowView$Word = list2.get(j);
                 int n4 = autoFlowView$Word.content.length() * g + (c << 1) + e;
                 if ((n2 += n4) >= n - f) {
                     ++n3;
@@ -111,7 +112,7 @@ public class AutoFlowView extends LinearLayout implements View.OnClickListener {
             h h4 = (h) list.get(n5);
             int n7 = n6;
             for (int n8 = 0; n8 < h4.a.size(); autoFlowView$Word.show = 1 + autoFlowView$Word.show, ++n8) {
-                AutoFlowView$Word autoFlowView$Word = (AutoFlowView$Word) h4.a.get(n8);
+                AutoFlowView.Word autoFlowView$Word = (AutoFlowView.Word) h4.a.get(n8);
                 TextView textView = (TextView) layoutInflater.inflate(2130903154, null, false);
                 textView.setTextSize(12.0f);
                 textView.setBackgroundResource(2130837844);
@@ -182,7 +183,7 @@ public class AutoFlowView extends LinearLayout implements View.OnClickListener {
         h = i2;
     }
 
-    public void setWords(List<AutoFlowView$Word> list) {
+    public void setWords(List<AutoFlowView.Word> list) {
         this.j.clear();
         if (list == null || list.size() == 0) {
             return;
@@ -193,7 +194,7 @@ public class AutoFlowView extends LinearLayout implements View.OnClickListener {
             n = list.get((int) j).show;
         }
         for (int k = 0; k < list.size(); ++k) {
-            AutoFlowView$Word autoFlowView$Word = new AutoFlowView$Word();
+            AutoFlowView.Word autoFlowView$Word = new AutoFlowView.Word();
             autoFlowView$Word.content = list.get((int) k).content;
             autoFlowView$Word.show = list.get((int) k).show - n;
             this.j.add(autoFlowView$Word);
@@ -204,10 +205,17 @@ public class AutoFlowView extends LinearLayout implements View.OnClickListener {
     public void setWords(String[] arrstring) {
         this.j.clear();
         for (String string : arrstring) {
-            AutoFlowView$Word autoFlowView$Word = new AutoFlowView$Word();
+            AutoFlowView.Word autoFlowView$Word = new AutoFlowView.Word();
             autoFlowView$Word.content = string;
             this.j.add(autoFlowView$Word);
         }
         this.a();
+    }
+
+    public class Word implements Serializable {
+        public String content;
+        public int show;
+        int leftMargin;
+        int topMargin;
     }
 }

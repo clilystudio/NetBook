@@ -8,14 +8,12 @@ import com.activeandroid.query.Delete;
 import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.db.BookReadRecord;
 import com.clilystudio.netbook.db.BookSyncRecord;
-import com.clilystudio.netbook.db.BookSyncRecord$BookModifyType;
 import com.clilystudio.netbook.db.SyncAccount;
 import com.clilystudio.netbook.event.c;
 import com.clilystudio.netbook.event.i;
 import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.model.BookShelfSyncTime;
 import com.clilystudio.netbook.model.RemoteBookShelf;
-import com.clilystudio.netbook.model.RemoteBookShelf$Book;
 
 import java.util.ArrayList;
 import java.util.Date;

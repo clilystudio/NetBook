@@ -9,7 +9,6 @@ import com.clilystudio.netbook.a_pack.c;
 import com.clilystudio.netbook.model.BookInfo;
 import com.clilystudio.netbook.model.MysteryBook;
 import com.clilystudio.netbook.model.MysteryBookList;
-import com.clilystudio.netbook.model.MysteryBookList$MysteryBookRoot;
 import com.clilystudio.netbook.model.MysteryToc;
 import com.clilystudio.netbook.util.e;
 
