@@ -3,7 +3,7 @@ package com.clilystudio.netbook.model;
 public class WXPayOrder {
     private boolean ok;
     private String orderId;
-    private WXPayOrder$PayOrder payOrder;
+    private PayOrder payOrder;
 
     public String getOrderId() {
         return this.orderId;
@@ -13,11 +13,11 @@ public class WXPayOrder {
         this.orderId = string;
     }
 
-    public WXPayOrder$PayOrder getPayOrder() {
+    public PayOrder getPayOrder() {
         return this.payOrder;
     }
 
-    public void setPayOrder(WXPayOrder$PayOrder payOrder) {
+    public void setPayOrder(PayOrder payOrder) {
         this.payOrder = payOrder;
     }
 

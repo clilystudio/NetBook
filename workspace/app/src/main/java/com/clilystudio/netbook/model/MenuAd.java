@@ -112,7 +112,7 @@ public class MenuAd implements Serializable {
         return this.get_id().hashCode();
     }
 
-    public class MenuAd$Settings implements Serializable {
+    public class Settings implements Serializable {
         private static final long serialVersionUID = 2418387003302899660L;
         private int readerMenuPriority;
 

@@ -81,7 +81,7 @@ public class PostComment {
         return new CommonReplyeeInfo(this.get_id(), this.getAuthor(), this.getFloor());
     }
 
-    public class PostComment$PostCommentReply {
+    public class PostCommentReply {
         private String _id;
         private Author author;
         private int floor;

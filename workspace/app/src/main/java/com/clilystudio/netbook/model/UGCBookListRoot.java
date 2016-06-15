@@ -5,15 +5,15 @@ import com.clilystudio.netbook.api.ApiService;
 import java.util.Date;
 
 public class UGCBookListRoot {
-    private UGCBookListRoot$UGCBook[] bookLists;
+    private UGCBook[] bookLists;
     private boolean ok;
 
-    public UGCBookListRoot$UGCBook[] getBookLists() {
+    public UGCBook[] getBookLists() {
         return this.bookLists;
     }
 
-    public void setBookLists(UGCBookListRoot$UGCBook[] arruGCBookListRoot$UGCBook) {
-        this.bookLists = arruGCBookListRoot$UGCBook;
+    public void setBookLists(UGCBook[] ugcBooks) {
+        this.bookLists = ugcBooks;
     }
 
     public boolean isOk() {
@@ -24,7 +24,7 @@ public class UGCBookListRoot {
         this.ok = bl;
     }
 
-    public class UGCBookListRoot$UGCBook {
+    public class UGCBook {
         private String _id;
         private String author;
         private int bookCount;

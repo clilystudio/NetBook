@@ -3,24 +3,24 @@ package com.clilystudio.netbook.model;
 import java.io.Serializable;
 
 public class CategoryLevelRoot implements Serializable {
-    private CategoryLevelRoot$CategoryLevel[] female;
-    private CategoryLevelRoot$CategoryLevel[] male;
+    private CategoryLevel[] female;
+    private CategoryLevel[] male;
     private boolean ok;
 
-    public CategoryLevelRoot$CategoryLevel[] getFemale() {
+    public CategoryLevel[] getFemale() {
         return this.female;
     }
 
-    public void setFemale(CategoryLevelRoot$CategoryLevel[] arrcategoryLevelRoot$CategoryLevel) {
-        this.female = arrcategoryLevelRoot$CategoryLevel;
+    public void setFemale(CategoryLevel[] categoryLevels) {
+        this.female = categoryLevels;
     }
 
-    public CategoryLevelRoot$CategoryLevel[] getMale() {
+    public CategoryLevel[] getMale() {
         return this.male;
     }
 
-    public void setMale(CategoryLevelRoot$CategoryLevel[] arrcategoryLevelRoot$CategoryLevel) {
-        this.male = arrcategoryLevelRoot$CategoryLevel;
+    public void setMale(CategoryLevel[] categoryLevels) {
+        this.male = categoryLevels;
     }
 
     public boolean isOk() {
@@ -32,13 +32,8 @@ public class CategoryLevelRoot implements Serializable {
     }
 
     public class CategoryLevel implements Serializable {
-        final /* synthetic */ CategoryLevelRoot this$0;
         private String major;
         private String[] mins;
-
-        public CategoryLevel(CategoryLevelRoot categoryLevelRoot) {
-            this.this$0 = categoryLevelRoot;
-        }
 
         public String getMajor() {
             return this.major;

@@ -179,11 +179,11 @@ public class CommentItemView extends HorizontalScrollView implements View.OnClic
         textView3.setText(t.e((Date) postComment.getCreated()));
         linkifyTextView.setLinkifyText(postComment.getContent(), postComment.getAuthor().isOfficial());
         textView4.setText("" + postComment.getFloor() + "\u697c");
-        PostComment$PostCommentReply postComment$PostCommentReply = postComment.getReplyTo();
-        if (postComment$PostCommentReply != null && postComment$PostCommentReply.getAuthor() != null) {
-            Author author = postComment$PostCommentReply.getAuthor();
+        PostComment.PostCommentReply replyTo = postComment.getReplyTo();
+        if (replyTo != null && replyTo.getAuthor() != null) {
+            Author author = replyTo.getAuthor();
             CommentItemView.a(textView5, false);
-            textView5.setText("\u56de\u590d " + author.getNickname() + " (" + postComment$PostCommentReply.getFloor() + "\u697c)");
+            textView5.setText("\u56de\u590d " + author.getNickname() + " (" + replyTo.getFloor() + "\u697c)");
         } else {
             CommentItemView.a(textView5, true);
         }

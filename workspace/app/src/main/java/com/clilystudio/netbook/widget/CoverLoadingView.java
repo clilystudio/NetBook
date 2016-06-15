@@ -5,7 +5,7 @@ import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.widget.RelativeLayout;
 
-import com.clilystudio.netbook.R$styleable;
+import com.clilystudio.netbook.R;
 
 public class CoverLoadingView extends CoverView {
     private final float a;
@@ -13,8 +13,8 @@ public class CoverLoadingView extends CoverView {
 
     public CoverLoadingView(Context context, AttributeSet attributeSet) {
         super(context, attributeSet);
-        TypedArray typedArray = context.obtainStyledAttributes(attributeSet, R$styleable.CoverLoadingView);
-        this.a = typedArray.getDimension(0, 0.0f);
+        TypedArray typedArray = context.obtainStyledAttributes(attributeSet, R.styleable.CoverLoadingView);
+        this.a = typedArray.getDimension(R.styleable.CoverLoadingView_cornerRadius, 0.0f);
         typedArray.recycle();
     }
 

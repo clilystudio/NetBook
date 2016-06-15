@@ -4,14 +4,14 @@ import java.util.Date;
 
 public class PayChargeRecord {
     private boolean ok;
-    private PayChargeRecord$Order[] orders;
+    private Order[] orders;
 
-    public PayChargeRecord$Order[] getOrders() {
+    public Order[] getOrders() {
         return this.orders;
     }
 
-    public void setOrders(PayChargeRecord$Order[] arrpayChargeRecord$Order) {
-        this.orders = arrpayChargeRecord$Order;
+    public void setOrders(Order[] orders) {
+        this.orders = orders;
     }
 
     public boolean isOk() {
@@ -22,7 +22,7 @@ public class PayChargeRecord {
         this.ok = bl;
     }
 
-    public class PayChargeRecord$Order {
+    public class Order {
         private String _id;
         private String accountId;
         private int amount;

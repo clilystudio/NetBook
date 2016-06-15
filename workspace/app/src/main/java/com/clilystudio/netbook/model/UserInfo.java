@@ -150,7 +150,7 @@ public class UserInfo implements Serializable {
         this.ok = bl;
     }
 
-    public class UserInfo$UserTodayTask implements Serializable {
+    public class UserTodayTask implements Serializable {
         private static final long serialVersionUID = 327955040176412798L;
         private boolean comment;
         private boolean launch;
@@ -207,7 +207,7 @@ public class UserInfo implements Serializable {
             this.vote = bl;
         }
     }
-    public class UserInfo$UserPostCount implements Serializable {
+    public class UserPostCount implements Serializable {
         private static final long serialVersionUID = 6406545074214643620L;
         private int collected;
         private int posted;
@@ -228,7 +228,7 @@ public class UserInfo implements Serializable {
             this.posted = n;
         }
     }
-    public class UserInfo$ThisWeekTasks implements Serializable {
+    public class ThisWeekTasks implements Serializable {
         private static final long serialVersionUID = 44867902917495881L;
         private boolean rate;
 
@@ -240,7 +240,7 @@ public class UserInfo implements Serializable {
             this.rate = bl;
         }
     }
-    public class UserInfo$BookListCount implements Serializable {
+    public class BookListCount implements Serializable {
         private static final long serialVersionUID = -3528347781783671315L;
         private int collected;
         private int posted;

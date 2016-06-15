@@ -30,7 +30,7 @@ public abstract class AbsUGCListFragment extends Fragment implements AdapterView
     protected Handler f = new Handler();
     protected e g;
     protected d h;
-    protected List<UGCBookListRoot$UGCBook> i = new ArrayList<UGCBookListRoot$UGCBook>();
+    protected List<UGCBookListRoot.UGCBook> i = new ArrayList<UGCBookListRoot.UGCBook>();
     protected TextView j;
     private TextView k;
     private String l = "\u5171%d\u4e2a\u4e66\u5355";
@@ -102,11 +102,11 @@ public abstract class AbsUGCListFragment extends Fragment implements AdapterView
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int n, long l2) {
-        UGCBookListRoot$UGCBook uGCBookListRoot$UGCBook;
+        UGCBookListRoot.UGCBook ugcBook;
         int n2 = n - this.b.getHeaderViewsCount();
-        if (n2 >= 0 && n2 < this.i.size() && (uGCBookListRoot$UGCBook = this.i.get(n2)) != null) {
+        if (n2 >= 0 && n2 < this.i.size() && (ugcBook = this.i.get(n2)) != null) {
             Intent intent = new Intent(this.getActivity(), UGCDetailActivity.class);
-            intent.putExtra("book_id", uGCBookListRoot$UGCBook.get_id());
+            intent.putExtra("book_id", ugcBook.get_id());
             this.startActivity(intent);
         }
     }

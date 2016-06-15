@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.clilystudio.netbook.d;
+import com.clilystudio.netbook.model.PayChargeRecord;
 import com.clilystudio.netbook.ui.BaseLoadingActivity;
 import com.clilystudio.netbook.util.t;
 import com.clilystudio.netbook.widget.ScrollLoadListView;
@@ -21,8 +22,8 @@ public class PayChargeActivity extends BaseLoadingActivity {
     private M a;
     private View b;
     private ScrollLoadListView c;
-    private List<PayChargeRecord$Order> e = new ArrayList<PayChargeRecord$Order>();
-    private List<PayChargeRecord$Order> f = new ArrayList<PayChargeRecord$Order>();
+    private List<PayChargeRecord.Order> e = new ArrayList<PayChargeRecord.Order>();
+    private List<PayChargeRecord.Order> f = new ArrayList<PayChargeRecord.Order>();
     private String g;
     private av h;
 
@@ -90,7 +91,7 @@ public class PayChargeActivity extends BaseLoadingActivity {
             return Integer.MAX_VALUE;
         }
         if (t.a((Date) this.f.get(n).getCreated(), (Date[]) arrdate)) {
-            PayChargeRecord$Order payChargeRecord$Order = new PayChargeRecord$Order();
+            PayChargeRecord.Order payChargeRecord$Order = new PayChargeRecord.Order();
             payChargeRecord$Order.setPayType("time_flag");
             payChargeRecord$Order.setTimeflag(string);
             this.f.add(n, payChargeRecord$Order);

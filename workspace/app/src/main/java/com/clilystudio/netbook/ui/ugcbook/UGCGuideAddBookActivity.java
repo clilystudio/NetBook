@@ -228,7 +228,7 @@ public class UGCGuideAddBookActivity extends BaseActivity implements View.OnClic
         this.setCustomActionBar(view);
         this.findViewById(2131493186).setVisibility(View.GONE);
         this.n = true;
-        UGCGuideAddBookActivity$SearchPromptAdapter uGCGuideAddBookActivity$SearchPromptAdapter = new UGCGuideAddBookActivity$SearchPromptAdapter(this);
+        SearchPromptAdapter uGCGuideAddBookActivity$SearchPromptAdapter = new SearchPromptAdapter(this);
         this.h = (SearchFixListView) this.findViewById(2131493193);
         this.h.setAdapter(uGCGuideAddBookActivity$SearchPromptAdapter);
         this.h.setOnItemClickListener(uGCGuideAddBookActivity$SearchPromptAdapter);
@@ -265,22 +265,22 @@ public class UGCGuideAddBookActivity extends BaseActivity implements View.OnClic
             bundle.putString("saved_keyword", this.b);
         }
     }
-    public final class UGCGuideAddBookActivity$SearchPromptAdapter extends BaseAdapter implements AdapterView.OnItemClickListener,
+    public final class SearchPromptAdapter extends BaseAdapter implements AdapterView.OnItemClickListener,
             Filterable {
         final /* synthetic */ UGCGuideAddBookActivity a;
         private List<String> b;
         private x c;
 
-        public UGCGuideAddBookActivity$SearchPromptAdapter(UGCGuideAddBookActivity uGCGuideAddBookActivity) {
+        public SearchPromptAdapter(UGCGuideAddBookActivity uGCGuideAddBookActivity) {
             this.a = uGCGuideAddBookActivity;
             this.b = new ArrayList<String>();
         }
 
-        static /* synthetic */ List a(UGCGuideAddBookActivity$SearchPromptAdapter uGCGuideAddBookActivity$SearchPromptAdapter) {
+        static /* synthetic */ List a(SearchPromptAdapter uGCGuideAddBookActivity$SearchPromptAdapter) {
             return uGCGuideAddBookActivity$SearchPromptAdapter.b;
         }
 
-        static /* synthetic */ List a(UGCGuideAddBookActivity$SearchPromptAdapter uGCGuideAddBookActivity$SearchPromptAdapter, List list) {
+        static /* synthetic */ List a(SearchPromptAdapter uGCGuideAddBookActivity$SearchPromptAdapter, List list) {
             uGCGuideAddBookActivity$SearchPromptAdapter.b = list;
             return list;
         }
@@ -314,7 +314,7 @@ public class UGCGuideAddBookActivity extends BaseActivity implements View.OnClic
         @Override
         public final View getView(int n, View view, ViewGroup viewGroup) {
             View view2 = this.a.getLayoutInflater().inflate(2130903303, viewGroup, false);
-            UGCGuideAddBookActivity$SearchPromptAdapter$ViewHolder uGCGuideAddBookActivity$SearchPromptAdapter$ViewHolder = new UGCGuideAddBookActivity$SearchPromptAdapter$ViewHolder(this, view2);
+            SearchPromptAdapter$ViewHolder uGCGuideAddBookActivity$SearchPromptAdapter$ViewHolder = new SearchPromptAdapter$ViewHolder(this, view2);
             if (n >= 0 && n < this.b.size()) {
                 uGCGuideAddBookActivity$SearchPromptAdapter$ViewHolder.label.setText(this.b.get(n));
             }
@@ -331,11 +331,11 @@ public class UGCGuideAddBookActivity extends BaseActivity implements View.OnClic
                 UGCGuideAddBookActivity.a(this.a, false);
             }
         }
-        class UGCGuideAddBookActivity$SearchPromptAdapter$ViewHolder {
+        class SearchPromptAdapter$ViewHolder {
             @InjectView(value = 2131493751)
             TextView label;
 
-            UGCGuideAddBookActivity$SearchPromptAdapter$ViewHolder(UGCGuideAddBookActivity.SearchPromptAdapter searchPromptAdapter, View view) {
+            SearchPromptAdapter$ViewHolder(UGCGuideAddBookActivity.SearchPromptAdapter searchPromptAdapter, View view) {
                 this.label = (TextView) view.findViewById(2131493751);
             }
         }

@@ -13,7 +13,9 @@ import com.clilystudio.netbook.event.c;
 import com.clilystudio.netbook.event.h;
 import com.clilystudio.netbook.event.i;
 import com.clilystudio.netbook.model.Account;
+import com.clilystudio.netbook.model.BookGenderRecommend;
 import com.clilystudio.netbook.model.BookInfo;
+import com.clilystudio.netbook.model.RemoteBookShelf;
 import com.clilystudio.netbook.util.t;
 
 import java.util.Date;
@@ -84,7 +86,7 @@ public class BookReadRecord extends Model {
         bookReadRecord.save();
     }
 
-    public static void create(BookGenderRecommend$RecommendBook recommendBook) {
+    public static void create(BookGenderRecommend.RecommendBook recommendBook) {
         BookReadRecord bookReadRecord = BookReadRecord.createBookRecord(recommendBook);
         BookReadRecord.addAccountInfo(bookReadRecord);
         bookReadRecord.save();
@@ -122,21 +124,21 @@ public class BookReadRecord extends Model {
         i.a().c(new c(string4));
     }
 
-    public static void create(RemoteBookShelf$Book book, boolean bl) {
+    public static void create(RemoteBookShelf.Book book, boolean bl) {
         BookReadRecord bookReadRecord = BookReadRecord.createBookRecord(book);
         BookReadRecord.addAccountInfo(bookReadRecord);
         bookReadRecord.save();
     }
 
-    private static BookReadRecord createBookRecord(BookGenderRecommend$RecommendBook bookGenderRecommend$RecommendBook) {
+    private static BookReadRecord createBookRecord(BookGenderRecommend.RecommendBook recommendBook) {
         BookReadRecord bookReadRecord = new BookReadRecord();
-        bookReadRecord.book_id = bookGenderRecommend$RecommendBook.get_id();
-        bookReadRecord.setTitle(bookGenderRecommend$RecommendBook.getTitle());
-        bookReadRecord.setCover(bookGenderRecommend$RecommendBook.getCover());
-        bookReadRecord.last_chapter = bookGenderRecommend$RecommendBook.getLastChapter();
-        bookReadRecord.setUpdated(bookGenderRecommend$RecommendBook.getUpdated());
-        bookReadRecord.setChapterCount(bookGenderRecommend$RecommendBook.getChaptersCount());
-        bookReadRecord.setAuthor(bookGenderRecommend$RecommendBook.getAuthor());
+        bookReadRecord.book_id = recommendBook.get_id();
+        bookReadRecord.setTitle(recommendBook.getTitle());
+        bookReadRecord.setCover(recommendBook.getCover());
+        bookReadRecord.last_chapter = recommendBook.getLastChapter();
+        bookReadRecord.setUpdated(recommendBook.getUpdated());
+        bookReadRecord.setChapterCount(recommendBook.getChaptersCount());
+        bookReadRecord.setAuthor(recommendBook.getAuthor());
         bookReadRecord.setRecommended(true);
         return bookReadRecord;
     }
@@ -158,16 +160,16 @@ public class BookReadRecord extends Model {
         return bookReadRecord;
     }
 
-    private static BookReadRecord createBookRecord(RemoteBookShelf$Book remoteBookShelf$Book) {
+    private static BookReadRecord createBookRecord(RemoteBookShelf.Book book) {
         BookReadRecord bookReadRecord = new BookReadRecord();
-        bookReadRecord.book_id = remoteBookShelf$Book.getId();
-        bookReadRecord.setTitle(remoteBookShelf$Book.getTitle());
-        bookReadRecord.setCover(remoteBookShelf$Book.getCover());
-        bookReadRecord.last_chapter = remoteBookShelf$Book.getLastChapter();
-        bookReadRecord.setUpdated(remoteBookShelf$Book.getUpdated());
-        bookReadRecord.setChapterCount(remoteBookShelf$Book.getChaptersCount());
-        bookReadRecord.setAuthor(remoteBookShelf$Book.getAuthor());
-        if (remoteBookShelf$Book.isHasCp()) {
+        bookReadRecord.book_id = book.getId();
+        bookReadRecord.setTitle(book.getTitle());
+        bookReadRecord.setCover(book.getCover());
+        bookReadRecord.last_chapter = book.getLastChapter();
+        bookReadRecord.setUpdated(book.getUpdated());
+        bookReadRecord.setChapterCount(book.getChaptersCount());
+        bookReadRecord.setAuthor(book.getAuthor());
+        if (book.isHasCp()) {
             bookReadRecord.setHave_cp(1);
             bookReadRecord.setReadMode(9);
             return bookReadRecord;
@@ -176,10 +178,10 @@ public class BookReadRecord extends Model {
         return bookReadRecord;
     }
 
-    public static void createFeed(RemoteBookShelf$Book remoteBookShelf$Book) {
-        BookReadRecord bookReadRecord = BookReadRecord.createBookRecord(remoteBookShelf$Book);
+    public static void createFeed(RemoteBookShelf.Book book) {
+        BookReadRecord bookReadRecord = BookReadRecord.createBookRecord(book);
         bookReadRecord.setFeeding(true);
-        bookReadRecord.setChapterCountAtFeed(remoteBookShelf$Book.getChaptersCount());
+        bookReadRecord.setChapterCountAtFeed(book.getChaptersCount());
         BookReadRecord.addAccountInfo(bookReadRecord);
         bookReadRecord.save();
     }

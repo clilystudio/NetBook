@@ -3,8 +3,8 @@ package com.clilystudio.netbook.model;
 public class TimelineResult {
     private String code;
     private boolean ok;
-    private TimelineResult$Names[] retweetNames;
-    private TimelineResult$Temp[] timeline;
+    private Names[] retweetNames;
+    private Temp[] timeline;
 
     public String getCode() {
         return this.code;
@@ -14,20 +14,20 @@ public class TimelineResult {
         this.code = string;
     }
 
-    public TimelineResult$Names[] getRetweetNames() {
+    public Names[] getRetweetNames() {
         return this.retweetNames;
     }
 
-    public void setRetweetNames(TimelineResult$Names[] arrtimelineResult$Names) {
-        this.retweetNames = arrtimelineResult$Names;
+    public void setRetweetNames(Names[] names) {
+        this.retweetNames = names;
     }
 
-    public TimelineResult$Temp[] getTweets() {
+    public Temp[] getTweets() {
         return this.timeline;
     }
 
-    public void setTweets(TimelineResult$Temp[] arrtimelineResult$Temp) {
-        this.timeline = arrtimelineResult$Temp;
+    public void setTweets(Temp[] temps) {
+        this.timeline = temps;
     }
 
     public boolean isOk() {
@@ -38,14 +38,9 @@ public class TimelineResult {
         this.ok = bl;
     }
 
-    public class TimelineResult$Temp {
-        final /* synthetic */ TimelineResult this$0;
+    public class Temp {
         private Tweet tweet;
         private User user;
-
-        public TimelineResult$Temp(TimelineResult timelineResult) {
-            this.this$0 = timelineResult;
-        }
 
         public Tweet getTweet() {
             return this.tweet;
@@ -63,14 +58,9 @@ public class TimelineResult {
             this.user = user;
         }
     }
-    public class TimelineResult$Names {
-        final /* synthetic */ TimelineResult this$0;
+    public class Names {
         private String id;
         private String[] names;
-
-        public TimelineResult$Names(TimelineResult timelineResult) {
-            this.this$0 = timelineResult;
-        }
 
         public String getId() {
             return this.id;

@@ -12,19 +12,19 @@ public final class W extends com.clilystudio.netbook.util.W<UGCBookDetail.UGCBoo
 
     @Override
     protected final /* synthetic */ void a(int n, UGCBookDetail.UGCBookContainer object) {
-        UGCBookDetail.UGCBookContainer.UGCBookItem uGCBookDetail$UGCBookContainer$UGCBookItem;
+        UGCBookDetail.UGCBookContainer.UGCBookItem ugcBookItem;
         if (object.getComment() != null && object.getComment().trim().length() > 6) {
             this.a(2, object.getComment());
             this.a(7, false);
         } else {
             this.a(7, true);
         }
-        if ((uGCBookDetail$UGCBookContainer$UGCBookItem = object.getBook()) != null) {
-            this.a(0, uGCBookDetail$UGCBookContainer$UGCBookItem.getTitle());
-            this.a(1, String.valueOf(uGCBookDetail$UGCBookContainer$UGCBookItem.getLatelyFollower()));
-            this.a(3, CoverView.class).setImageUrl(uGCBookDetail$UGCBookContainer$UGCBookItem.getFullCover(), 2130837766);
-            this.a(4, uGCBookDetail$UGCBookContainer$UGCBookItem.getAuthor());
-            long l = uGCBookDetail$UGCBookContainer$UGCBookItem.getWordCount();
+        if ((ugcBookItem = object.getBook()) != null) {
+            this.a(0, ugcBookItem.getTitle());
+            this.a(1, String.valueOf(ugcBookItem.getLatelyFollower()));
+            this.a(3, CoverView.class).setImageUrl(ugcBookItem.getFullCover(), 2130837766);
+            this.a(4, ugcBookItem.getAuthor());
+            long l = ugcBookItem.getWordCount();
             if (l <= 0) {
                 this.a(5, true);
                 this.a(6, true);

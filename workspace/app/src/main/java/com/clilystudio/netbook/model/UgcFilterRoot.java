@@ -1,15 +1,15 @@
 package com.clilystudio.netbook.model;
 
 public class UgcFilterRoot {
-    private UgcFilterRoot$FilterGroup[] data;
+    private FilterGroup[] data;
     private boolean ok;
 
-    public UgcFilterRoot$FilterGroup[] getData() {
+    public FilterGroup[] getData() {
         return this.data;
     }
 
-    public void setData(UgcFilterRoot$FilterGroup[] arrugcFilterRoot$FilterGroup) {
-        this.data = arrugcFilterRoot$FilterGroup;
+    public void setData(FilterGroup[] filterGroups) {
+        this.data = filterGroups;
     }
 
     public boolean isOk() {
@@ -20,7 +20,7 @@ public class UgcFilterRoot {
         this.ok = bl;
     }
 
-    public class UgcFilterRoot$FilterGroup {
+    public class FilterGroup {
         private String name;
         private String[] tags;
 

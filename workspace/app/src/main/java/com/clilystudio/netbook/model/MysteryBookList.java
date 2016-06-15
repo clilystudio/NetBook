@@ -1,15 +1,15 @@
 package com.clilystudio.netbook.model;
 
 public class MysteryBookList {
-    private MysteryBookList$MysteryBookRoot[] books;
+    private MysteryBookRoot[] books;
     private boolean ok;
 
-    public MysteryBookList$MysteryBookRoot[] getBooks() {
+    public MysteryBookRoot[] getBooks() {
         return this.books;
     }
 
-    public void setBooks(MysteryBookList$MysteryBookRoot[] arrmysteryBookList$MysteryBookRoot) {
-        this.books = arrmysteryBookList$MysteryBookRoot;
+    public void setBooks(MysteryBookRoot[] mysteryBookRoots) {
+        this.books = mysteryBookRoots;
     }
 
     public boolean isOk() {
@@ -19,14 +19,10 @@ public class MysteryBookList {
     public void setOk(boolean bl) {
         this.ok = bl;
     }
-    public class MysteryBookList$MysteryBookRoot {
-        final /* synthetic */ MysteryBookList this$0;
-        private MysteryBook book;
+    public class MysteryBookRoot {
+         private MysteryBook book;
         private MysteryToc toc;
 
-        public MysteryBookList$MysteryBookRoot(MysteryBookList mysteryBookList) {
-            this.this$0 = mysteryBookList;
-        }
 
         public MysteryBook getBook() {
             return this.book;

@@ -25,8 +25,8 @@ public class UGCBookDetail {
         return this.books;
     }
 
-    public void setBooks(UGCBookContainer[] arruGCBookDetail$UGCBookContainer) {
-        this.books = arruGCBookDetail$UGCBookContainer;
+    public void setBooks(UGCBookContainer[] ugcBookContainers) {
+        this.books = ugcBookContainers;
     }
 
     public String getCollectorCount() {

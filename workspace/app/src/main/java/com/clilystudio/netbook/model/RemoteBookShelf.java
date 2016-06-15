@@ -3,19 +3,19 @@ package com.clilystudio.netbook.model;
 import java.util.Date;
 
 public class RemoteBookShelf {
-    private RemoteBookShelf$Book[] bookshelf;
+    private Book[] bookshelf;
     private String code;
-    private RemoteBookShelf$Book[] feedingBooks;
+    private Book[] feedingBooks;
     private boolean mNeedSync = true;
     private Date mSyncDate;
     private boolean ok;
 
-    public RemoteBookShelf$Book[] getBookShelfs() {
+    public Book[] getBookShelfs() {
         return this.bookshelf;
     }
 
-    public void setBookShelfs(RemoteBookShelf$Book[] arrremoteBookShelf$Book) {
-        this.bookshelf = arrremoteBookShelf$Book;
+    public void setBookShelfs(Book[] books) {
+        this.bookshelf = books;
     }
 
     public String getCode() {
@@ -26,12 +26,12 @@ public class RemoteBookShelf {
         this.code = string;
     }
 
-    public RemoteBookShelf$Book[] getFeedingBooks() {
+    public Book[] getFeedingBooks() {
         return this.feedingBooks;
     }
 
-    public void setFeedingBooks(RemoteBookShelf$Book[] arrremoteBookShelf$Book) {
-        this.feedingBooks = arrremoteBookShelf$Book;
+    public void setFeedingBooks(Book[] books) {
+        this.feedingBooks = books;
     }
 
     public Date getSyncDate() {
@@ -47,9 +47,9 @@ public class RemoteBookShelf {
      */
     public int getTotalBookCounts() {
         int n = this.bookshelf != null ? this.bookshelf.length : 0;
-        RemoteBookShelf$Book[] arrremoteBookShelf$Book = this.feedingBooks;
+        Book[] feedingBooks = this.feedingBooks;
         int n2 = 0;
-        if (arrremoteBookShelf$Book != null) {
+        if (feedingBooks != null) {
             n2 = this.feedingBooks.length;
         }
         return n + n2;
@@ -72,8 +72,7 @@ public class RemoteBookShelf {
     }
 
 
-    public class RemoteBookShelf$Book {
-        final /* synthetic */ RemoteBookShelf this$0;
+    public class Book {
         private String _id;
         private String author;
         private int chaptersCount;
@@ -82,10 +81,6 @@ public class RemoteBookShelf {
         private String lastChapter;
         private String title;
         private Date updated;
-
-        public RemoteBookShelf$Book(RemoteBookShelf remoteBookShelf) {
-            this.this$0 = remoteBookShelf;
-        }
 
         public String getAuthor() {
             return this.author;

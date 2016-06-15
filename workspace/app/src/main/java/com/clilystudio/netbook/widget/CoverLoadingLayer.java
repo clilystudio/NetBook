@@ -19,7 +19,7 @@ import android.view.animation.DecelerateInterpolator;
 import android.widget.ImageView;
 
 import com.c.a.b;
-import com.clilystudio.netbook.R$styleable;
+import com.clilystudio.netbook.R;
 
 public class CoverLoadingLayer extends ImageView {
     private b A;
@@ -119,8 +119,8 @@ public class CoverLoadingLayer extends ImageView {
 
     private void a(Context context, AttributeSet attributeSet) {
         if (attributeSet != null) {
-            TypedArray typedArray = context.obtainStyledAttributes(attributeSet, R$styleable.CoverLoadingLayer);
-            this.f = typedArray.getDimension(1, -1.0f);
+            TypedArray typedArray = context.obtainStyledAttributes(attributeSet, R.styleable.CoverLoadingLayer);
+            this.f = typedArray.getDimension(R.styleable.CoverLoadingLayer_scv_corner_radius, -1.0f);
             typedArray.recycle();
         }
         this.v = 0.0f;

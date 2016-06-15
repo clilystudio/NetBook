@@ -109,7 +109,7 @@ public final class GameGiftGroupAdapter extends u<GameGiftGroup> {
             }
             case 0: {
                 var8_6 = var4_4.getGame();
-                var9_7 = new GameGiftGroupAdapter$GameHolder(var2_2);
+                var9_7 = new GameHolder(var2_2);
                 var9_7.icon.setImageUrl(var8_6.icon, 2130837766);
                 var9_7.title.setText(var8_6.getName());
                 var9_7.desc.setText("\u6709 " + var8_6.followers + " \u4e2a\u5c0f\u4f19\u4f34\u5728\u73a9");
@@ -119,7 +119,7 @@ public final class GameGiftGroupAdapter extends u<GameGiftGroup> {
             }
             case 1: {
                 var6_8 = var4_4.getGift();
-                var7_9 = new GameGiftGroupAdapter$GiftHolder(var2_2);
+                var7_9 = new GiftHolder(var2_2);
                 var7_9.title.setText(var6_8.title);
                 var7_9.desc.setText(var6_8.description);
                 var7_9.button.setGift(var6_8);
@@ -130,7 +130,7 @@ public final class GameGiftGroupAdapter extends u<GameGiftGroup> {
             }
             case 2:
         }
-        new GameGiftGroupAdapter$MoreHolder((View) var2_2).title.setOnClickListener(new n(this, var4_4));
+        new MoreHolder((View) var2_2).title.setOnClickListener(new n(this, var4_4));
         return var2_2;
     }
 
@@ -139,15 +139,15 @@ public final class GameGiftGroupAdapter extends u<GameGiftGroup> {
         return 3;
     }
 
-    class GameGiftGroupAdapter$MoreHolder {
+    class MoreHolder {
         @InjectView(value = 2131492936)
         TextView title;
 
-        GameGiftGroupAdapter$MoreHolder(View view) {
+        MoreHolder(View view) {
             this.title = (TextView) view.findViewById(2131492936);
         }
     }
-    class GameGiftGroupAdapter$GiftHolder {
+    class GiftHolder {
         @InjectView(value = 2131493679)
         GiftGameGiftButton button;
         @InjectView(value = 2131493481)
@@ -155,13 +155,13 @@ public final class GameGiftGroupAdapter extends u<GameGiftGroup> {
         @InjectView(value = 2131492936)
         TextView title;
 
-        GameGiftGroupAdapter$GiftHolder(View view) {
+        GiftHolder(View view) {
             this.title = (TextView) view.findViewById(2131492936);
             this.desc = (TextView)  view.findViewById(2131493481);
             this.button = (GiftGameGiftButton)  view.findViewById(2131493679);
         }
     }
-    class GameGiftGroupAdapter$GameHolder {
+    class GameHolder {
         @InjectView(value = 2131492916)
         GiftGameGameButton button;
         @InjectView(value = 2131493481)
@@ -171,7 +171,7 @@ public final class GameGiftGroupAdapter extends u<GameGiftGroup> {
         @InjectView(value = 2131492936)
         TextView title;
 
-        GameGiftGroupAdapter$GameHolder(View view) {
+        GameHolder(View view) {
             this.icon = (SmartImageView)view. findViewById(2131493028);
             this.title = (TextView) view.findViewById(2131492936);
             this.desc = (TextView) view.findViewById(2131493481);

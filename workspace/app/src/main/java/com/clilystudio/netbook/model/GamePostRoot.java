@@ -4,14 +4,14 @@ import java.util.Date;
 
 public class GamePostRoot {
     private boolean ok;
-    private GamePostRoot$GamePost[] posts;
+    private GamePost[] posts;
 
-    public GamePostRoot$GamePost[] getPosts() {
+    public GamePost[] getPosts() {
         return this.posts;
     }
 
-    public void setPosts(GamePostRoot$GamePost[] arrgamePostRoot$GamePost) {
-        this.posts = arrgamePostRoot$GamePost;
+    public void setPosts(GamePost[] gamePosts) {
+        this.posts = gamePosts;
     }
 
     public boolean isOk() {
@@ -21,7 +21,7 @@ public class GamePostRoot {
     public void setOk(boolean bl) {
         this.ok = bl;
     }
-    public class GamePostRoot$GamePost {
+    public class GamePost {
         private String _id;
         private Author author;
         private String block;

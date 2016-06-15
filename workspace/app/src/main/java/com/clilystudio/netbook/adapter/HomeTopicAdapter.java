@@ -66,16 +66,16 @@ public final class HomeTopicAdapter extends u<BookShelfTopic> {
                 }
                 case 1: {
                     view = this.a.inflate(2130903284, viewGroup, false);
-                    view.setTag(new HomeTopicAdapter$ViewHolder(view));
+                    view.setTag(new ViewHolder(view));
                 }
             }
         }
         if (n2 == 1) {
             BookShelfTopic bookShelfTopic = this.a(n);
-            HomeTopicAdapter$ViewHolder homeTopicAdapter$ViewHolder = (HomeTopicAdapter$ViewHolder) view.getTag();
-            homeTopicAdapter$ViewHolder.mTitle.setText(bookShelfTopic.getTitle());
-            homeTopicAdapter$ViewHolder.mCover.setImageUrl(bookShelfTopic.getFullCover(), 2130837766);
-            TextView textView = homeTopicAdapter$ViewHolder.mCount;
+            ViewHolder viewHolder = (ViewHolder) view.getTag();
+            viewHolder.mTitle.setText(bookShelfTopic.getTitle());
+            viewHolder.mCover.setImageUrl(bookShelfTopic.getFullCover(), 2130837766);
+            TextView textView = viewHolder.mCount;
             String string = bookShelfTopic.getBookId();
             textView.setVisibility(View.GONE);
             textView.setText("");
@@ -90,7 +90,7 @@ public final class HomeTopicAdapter extends u<BookShelfTopic> {
         return 2;
     }
 
-    class HomeTopicAdapter$ViewHolder {
+    class ViewHolder {
         @InjectView(value = 2131493239)
         TextView mCount;
         @InjectView(value = 2131493604)
@@ -98,7 +98,7 @@ public final class HomeTopicAdapter extends u<BookShelfTopic> {
         @InjectView(value = 2131492936)
         TextView mTitle;
 
-        HomeTopicAdapter$ViewHolder(View view) {
+        ViewHolder(View view) {
             this.mCover = (SmartImageView) view.findViewById(2131493604);
             this.mTitle = (TextView)view. findViewById(2131492936);
             this.mCount = (TextView)view. findViewById(2131493239);

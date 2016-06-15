@@ -1,24 +1,24 @@
 package com.clilystudio.netbook.model;
 
 public class CategoryRoot {
-    private CategoryRoot$Category[] female;
-    private CategoryRoot$Category[] male;
+    private Category[] female;
+    private Category[] male;
     private boolean ok;
 
-    public CategoryRoot$Category[] getFemale() {
+    public Category[] getFemale() {
         return this.female;
     }
 
-    public void setFemale(CategoryRoot$Category[] arrcategoryRoot$Category) {
-        this.female = arrcategoryRoot$Category;
+    public void setFemale(Category[] categories) {
+        this.female = categories;
     }
 
-    public CategoryRoot$Category[] getMale() {
+    public Category[] getMale() {
         return this.male;
     }
 
-    public void setMale(CategoryRoot$Category[] arrcategoryRoot$Category) {
-        this.male = arrcategoryRoot$Category;
+    public void setMale(Category[] categories) {
+        this.male = categories;
     }
 
     public boolean isOk() {
@@ -28,7 +28,7 @@ public class CategoryRoot {
     public void setOk(boolean bl) {
         this.ok = bl;
     }
-    public class CategoryRoot$Category {
+    public class Category {
         private int bookCount;
         private String name;
 

@@ -5,15 +5,16 @@ import android.support.v7.widget.ay;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
+import com.clilystudio.netbook.model.UgcFilterRoot;
 import com.clilystudio.netbook.widget.UgcFilterTextView;
 
 final class ak extends ah {
     final /* synthetic */ UGCMainActivity c;
     boolean a;
     LayoutInflater b;
-    private UgcFilterRoot$FilterGroup[] d;
+    private UgcFilterRoot.FilterGroup[] d;
 
-    public ak(UGCMainActivity uGCMainActivity, Context context, UgcFilterRoot$FilterGroup[] arrfilterGroup) {
+    public ak(UGCMainActivity uGCMainActivity, Context context, UgcFilterRoot.FilterGroup[] arrfilterGroup) {
         this.c = uGCMainActivity;
         this.a = false;
         this.b = LayoutInflater.from(context);
@@ -75,9 +76,9 @@ final class ak extends ah {
             return;
         }
         al al2 = (al) ay2;
-        UgcFilterRoot$FilterGroup[] arrugcFilterRoot$FilterGroup = this.d;
+        UgcFilterRoot.FilterGroup[] arrugcFilterRoot$FilterGroup = this.d;
         int n2 = this.a ? 1 : 0;
-        UgcFilterRoot$FilterGroup ugcFilterRoot$FilterGroup = arrugcFilterRoot$FilterGroup[n - n2];
+        UgcFilterRoot.FilterGroup ugcFilterRoot$FilterGroup = arrugcFilterRoot$FilterGroup[n - n2];
         if (ugcFilterRoot$FilterGroup == null) return;
         al2.i.setText(ugcFilterRoot$FilterGroup.getName());
         int n3 = (-1 + (4 + ugcFilterRoot$FilterGroup.getTags().length)) / 4;

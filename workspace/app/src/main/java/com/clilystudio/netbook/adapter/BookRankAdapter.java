@@ -155,13 +155,13 @@ public final class BookRankAdapter extends u<BookRankSummary> {
         return 3;
     }
 
-    class BookRankAdapter$ViewHolder {
+    class ViewHolder {
         @InjectView(value = 2131493626)
         SmartImageView cover;
         @InjectView(value = 2131493627)
         TextView title;
 
-        BookRankAdapter$ViewHolder(View view) {
+       ViewHolder(View view) {
             this.cover = (SmartImageView)view. findViewById(2131493626);
             this.title = (TextView)view.  findViewById(2131493627);
         }

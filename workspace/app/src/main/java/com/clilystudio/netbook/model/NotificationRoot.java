@@ -11,15 +11,10 @@ public class NotificationRoot extends Root {
         this.notifications = arrnotificationItem;
     }
 
-    public class NotificationRoot$NotifComment {
-        final /* synthetic */ NotificationRoot this$0;
-        private String _id;
+    public class NotifComment {
+         private String _id;
         private String content;
         private int floor;
-
-        public NotificationRoot$NotifComment(NotificationRoot notificationRoot) {
-            this.this$0 = notificationRoot;
-        }
 
         public String getContent() {
             return this.content;

@@ -4,14 +4,14 @@ import java.util.Date;
 
 public class PayConsumeRecord {
     private boolean ok;
-    private PayConsumeRecord$Order[] orders;
+    private Order[] orders;
 
-    public PayConsumeRecord$Order[] getOrders() {
+    public Order[] getOrders() {
         return this.orders;
     }
 
-    public void setOrders(PayConsumeRecord$Order[] arrpayConsumeRecord$Order) {
-        this.orders = arrpayConsumeRecord$Order;
+    public void setOrders(Order[] orders) {
+        this.orders = orders;
     }
 
     public boolean isOk() {
@@ -21,7 +21,7 @@ public class PayConsumeRecord {
     public void setOk(boolean bl) {
         this.ok = bl;
     }
-    public class PayConsumeRecord$OrderItem {
+    public class OrderItem {
         private String book;
         private String bookName;
         private String chapterTitle;
@@ -59,11 +59,11 @@ public class PayConsumeRecord {
             this.price = n;
         }
     }
-    public class PayConsumeRecord$Order {
-        PayConsumeRecord$OrderItem[] items;
+    public class Order {
+        OrderItem[] items;
         private String _id;
         private Date created;
-        private PayConsumeRecord$PayType payType;
+        private PayType payType;
         private int price;
         private String type;
         private int useCurrency;
@@ -91,12 +91,12 @@ public class PayConsumeRecord {
             this.created = date;
         }
 
-        public PayConsumeRecord$OrderItem[] getItems() {
+        public OrderItem[] getItems() {
             return this.items;
         }
 
-        public void setItems(PayConsumeRecord$OrderItem[] arrpayConsumeRecord$OrderItem) {
-            this.items = arrpayConsumeRecord$OrderItem;
+        public void setItems(OrderItem[] orderItems) {
+            this.items = orderItems;
         }
 
         /*
@@ -106,20 +106,20 @@ public class PayConsumeRecord {
             if (this.payType != null) return this.payType;
             if (!this.type.equals("single")) {
                 if (this.type.equals("auto")) {
-                    this.payType = PayConsumeRecord$PayType.AUTO_PURCHASE;
+                    this.payType = PayType.AUTO_PURCHASE;
                     return this.payType;
                 }
                 if (this.type.equals("vip")) {
-                    this.payType = PayConsumeRecord$PayType.VIP_SERVICE;
+                    this.payType = PayType.VIP_SERVICE;
                     return this.payType;
                 }
             }
-            this.payType = PayConsumeRecord$PayType.SINGLE_CHAPTER;
+            this.payType = PayType.SINGLE_CHAPTER;
             return this.payType;
         }
 
         public String getPayTypeString() {
-            switch (PayConsumeRecord$1.$SwitchMap$com$ushaqi$zhuishushenqi$model$PayConsumeRecord$PayType[this.getPayType().ordinal()]) {
+            switch (1.$SwitchMap$com$ushaqi$zhuishushenqi$model$PayType[this.getPayType().ordinal()]) {
                 default: {
                     return "";
                 }

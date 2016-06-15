@@ -31,7 +31,7 @@ public class GameLayoutRoot extends Root {
         this.promotions = arrgame;
     }
 
-    public class GameLayoutRoot$ModuleLayout {
+    public class ModuleLayout {
         private ActivityItem activity;
         private GameGroupItem gameGroup;
         private String id;
@@ -82,7 +82,7 @@ public class GameLayoutRoot extends Root {
             throw new RuntimeException("module " + this.module + " not valid");
         }
 
-        public class GameLayoutRoot$ModuleLayout$ActivityItem {
+        public class ActivityItem {
             private String bannerImage;
             private String link;
 

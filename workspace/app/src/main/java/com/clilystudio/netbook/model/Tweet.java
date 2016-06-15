@@ -24,7 +24,7 @@ public class Tweet {
     private String title;
     private String type;
     private User user;
-    private Tweet$VoteOption[] votes;
+    private VoteOption[] votes;
 
     /*
      * Enabled aggressive block sorting
@@ -153,31 +153,31 @@ public class Tweet {
      * Lifted jumps to return sites
      */
     public int getVoteCount() {
-        Tweet$VoteOption[] arrtweet$VoteOption = this.votes;
+        VoteOption[] voteOptions = this.votes;
         int n = 0;
-        if (arrtweet$VoteOption == null) return n;
+        if (voteOptions == null) return n;
         int n2 = this.votes.length;
         n = 0;
         if (n2 == 0) {
             return n;
         }
-        Tweet$VoteOption[] arrtweet$VoteOption2 = this.votes;
-        int n3 = arrtweet$VoteOption2.length;
+        VoteOption[] votes = this.votes;
+        int n3 = votes.length;
         int n4 = 0;
         while (n4 < n3) {
-            int n5 = n + arrtweet$VoteOption2[n4].count;
+            int n5 = n + votes[n4].count;
             ++n4;
             n = n5;
         }
         return n;
     }
 
-    public Tweet$VoteOption[] getVotes() {
+    public VoteOption[] getVotes() {
         return this.votes;
     }
 
-    public void setVotes(Tweet$VoteOption[] arrtweet$VoteOption) {
-        this.votes = arrtweet$VoteOption;
+    public void setVotes(VoteOption[] votes) {
+        this.votes = votes;
     }
 
     public String get_id() {
@@ -216,23 +216,13 @@ public class Tweet {
         this.isHot = bl;
     }
 
-    public class Tweet$VoteOption {
-        final /* synthetic */ Tweet this$0;
+    public class VoteOption {
         public String content;
         public int count;
-
-        public Tweet$VoteOption(Tweet tweet) {
-            this.this$0 = tweet;
-        }
-    }
-    public class Tweet$Post {
-        final /* synthetic */ Tweet this$0;
-        private String _id;
+   }
+    public class Post {
+         private String _id;
         private String block;
-
-        public Tweet$Post(Tweet tweet) {
-            this.this$0 = tweet;
-        }
 
         public String getBlock() {
             return this.block;

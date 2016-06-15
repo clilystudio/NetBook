@@ -31,16 +31,16 @@ public class TtsRoot {
         this.ret = string;
     }
 
-    public class TtsRoot$TtsResult {
-        private TtsRoot$Tts[] tts;
+    public class TtsResult {
+        private Tts[] tts;
         private String version;
 
-        public TtsRoot$Tts[] getTts() {
+        public Tts[] getTts() {
             return this.tts;
         }
 
-        public void setTts(TtsRoot$Tts[] arrttsRoot$Tts) {
-            this.tts = arrttsRoot$Tts;
+        public void setTts(Tts[] tts) {
+            this.tts = tts;
         }
 
         public String getVersion() {
@@ -51,7 +51,7 @@ public class TtsRoot {
             this.version = string;
         }
     }
-    public class TtsRoot$Tts {
+    public class Tts {
         private String accent;
         private String age;
         private String language;

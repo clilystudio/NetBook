@@ -4,14 +4,14 @@ import java.util.Date;
 
 public class PayVoucherRecord {
     private boolean ok;
-    private PayVoucherRecord$Voucher[] vouchers;
+    private Voucher[] vouchers;
 
-    public PayVoucherRecord$Voucher[] getVouchers() {
+    public Voucher[] getVouchers() {
         return this.vouchers;
     }
 
-    public void setVouchers(PayVoucherRecord$Voucher[] arrpayVoucherRecord$Voucher) {
-        this.vouchers = arrpayVoucherRecord$Voucher;
+    public void setVouchers(Voucher[] vouchers) {
+        this.vouchers = vouchers;
     }
 
     public boolean isOk() {
@@ -22,7 +22,7 @@ public class PayVoucherRecord {
         this.ok = bl;
     }
 
-    public class PayVoucherRecord$Voucher {
+    public class Voucher {
         private int _id;
         private String accountId;
         private int amount;

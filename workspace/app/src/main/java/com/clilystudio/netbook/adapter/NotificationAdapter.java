@@ -42,7 +42,7 @@ public abstract class NotificationAdapter extends u<NotificationItem> {
         if (view == null) {
             view = LayoutInflater.from(this.b).inflate(2130903291, viewGroup, false);
         }
-        new NotificationAdapter$HeaderHolder((View) view).mLabelText.setText(string);
+        new HeaderHolder((View) view).mLabelText.setText(string);
         return view;
     }
 
@@ -200,17 +200,17 @@ public abstract class NotificationAdapter extends u<NotificationItem> {
             }
         }
         View view2 = view == null ? LayoutInflater.from(this.b).inflate(2130903292, viewGroup, false) : view;
-        NotificationAdapter$ViewHolder notificationAdapter$ViewHolder = new NotificationAdapter$ViewHolder(view2);
+        ViewHolder viewHolder = new ViewHolder(view2);
         NotifBinder notifBinder = NotifBinderFactory.create(notificationItem);
-        notificationAdapter$ViewHolder.mMainText.setText(notifBinder.getMainText());
+        viewHolder.mMainText.setText(notifBinder.getMainText());
         if ("follow".equals(notificationItem.getType())) {
-            notificationAdapter$ViewHolder.mSubText.setVisibility(4);
+            viewHolder.mSubText.setVisibility(4);
         } else {
-            notificationAdapter$ViewHolder.mSubText.setVisibility(View.VISIBLE);
-            notificationAdapter$ViewHolder.mSubText.setText(notifBinder.getSubText());
-            notifBinder.fillIcon(notificationAdapter$ViewHolder.mSubText);
+            viewHolder.mSubText.setVisibility(View.VISIBLE);
+            viewHolder.mSubText.setText(notifBinder.getSubText());
+            notifBinder.fillIcon(viewHolder.mSubText);
         }
-        notifBinder.fillImageView(notificationAdapter$ViewHolder.mAvatar);
+        notifBinder.fillImageView(viewHolder.mAvatar);
         ((DividerSection) view2).setDividerMatchParent();
         return view2;
     }
@@ -220,7 +220,7 @@ public abstract class NotificationAdapter extends u<NotificationItem> {
         return this.i.length;
     }
 
-    class NotificationAdapter$ViewHolder {
+    class ViewHolder {
         @InjectView(value = 2131492899)
         CircularSmartImageView mAvatar;
         @InjectView(value = 2131493712)
@@ -228,18 +228,18 @@ public abstract class NotificationAdapter extends u<NotificationItem> {
         @InjectView(value = 2131493713)
         TextView mSubText;
 
-        NotificationAdapter$ViewHolder(View view) {
+        ViewHolder(View view) {
             this.mAvatar = (CircularSmartImageView) view.findViewById(2131492899);
             this.mMainText = (TextView) view.findViewById(2131493712);
             this.mSubText = (TextView) view.findViewById(2131493713);
         }
     }
 
-    class NotificationAdapter$HeaderHolder {
+    class HeaderHolder {
         @InjectView(value = 2131493711)
         TextView mLabelText;
 
-        NotificationAdapter$HeaderHolder(View view) {
+        HeaderHolder(View view) {
             this.mLabelText = (TextView) view.findViewById(2131493711);
         }
     }

@@ -43,8 +43,8 @@ public class BookSyncRecord extends Model {
         return (BookSyncRecord) new Select().from(BookSyncRecord.class).where("bookId = ?", string).executeSingle();
     }
 
-    public static int getTypeId(BookSyncRecord$BookModifyType bookSyncRecord$BookModifyType) {
-        switch (a.a[bookSyncRecord$BookModifyType.ordinal()]) {
+    public static int getTypeId(BookModifyType bookModifyType) {
+        switch (a.a[bookModifyType.ordinal()]) {
             default: {
                 return 0;
             }

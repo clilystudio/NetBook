@@ -221,7 +221,7 @@ public class Game implements Serializable {
         this.recommend = bl;
     }
 
-    public class Game$MainPromoInfo implements Serializable {
+    public class MainPromoInfo implements Serializable {
         private static final long serialVersionUID = -6306060308396347871L;
         private String desc;
         private int playingCount;

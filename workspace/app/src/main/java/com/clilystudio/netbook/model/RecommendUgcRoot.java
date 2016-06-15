@@ -3,15 +3,15 @@ package com.clilystudio.netbook.model;
 import com.clilystudio.netbook.api.ApiService;
 
 public class RecommendUgcRoot {
-    private RecommendUgcRoot$RecommendUGC[] booklists;
+    private RecommendUGC[] booklists;
     private boolean ok;
 
-    public RecommendUgcRoot$RecommendUGC[] getBooklists() {
+    public RecommendUGC[] getBooklists() {
         return this.booklists;
     }
 
-    public void setBooklists(RecommendUgcRoot$RecommendUGC[] arrrecommendUgcRoot$RecommendUGC) {
-        this.booklists = arrrecommendUgcRoot$RecommendUGC;
+    public void setBooklists(RecommendUGC[] recommendUGCs) {
+        this.booklists = recommendUGCs;
     }
 
     public boolean isOk() {
@@ -22,7 +22,7 @@ public class RecommendUgcRoot {
         this.ok = bl;
     }
 
-    public class RecommendUgcRoot$RecommendUGC {
+    public class RecommendUGC {
         private String author;
         private int bookCount;
         private int collectorCount;

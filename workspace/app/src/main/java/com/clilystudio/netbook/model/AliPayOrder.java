@@ -6,7 +6,7 @@ import java.net.URLEncoder;
 public class AliPayOrder {
     private boolean ok;
     private String orderId;
-    private AliPayOrder$PayOrder payOrder;
+    private PayOrder payOrder;
 
     public String getOrderId() {
         return this.orderId;
@@ -16,11 +16,11 @@ public class AliPayOrder {
         this.orderId = string;
     }
 
-    public AliPayOrder$PayOrder getPayOrder() {
+    public PayOrder getPayOrder() {
         return this.payOrder;
     }
 
-    public void setPayOrder(AliPayOrder$PayOrder payOrder) {
+    public void setPayOrder(PayOrder payOrder) {
         this.payOrder = payOrder;
     }
 

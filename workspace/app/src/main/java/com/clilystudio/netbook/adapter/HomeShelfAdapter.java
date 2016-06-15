@@ -257,7 +257,7 @@ public class HomeShelfAdapter extends u<BookShelf> {
                 return var2_2;
             }
             case 0: {
-                var19_6 = new HomeShelfAdapter$BookHolder(var2_2);
+                var19_6 = new BookHolder(var2_2);
                 var20_7 = var4_4.getBookRecord();
                 var19_6.cover.setImageUrl(var20_7.getFullCover(), 2130837766);
                 var19_6.title.setText(var20_7.getTitle());
@@ -318,7 +318,7 @@ public class HomeShelfAdapter extends u<BookShelf> {
             }
             case 1: {
                 if (this.d != false) return var2_2;
-                var17_19 = new HomeShelfAdapter$AdHolder(var2_2);
+                var17_19 = new AdHolder(var2_2);
                 var18_20 = var4_4.getAdvert();
                 var17_19.title.setText(var18_20.getTitle());
                 var17_19.desc.setText(var18_20.getDesc());
@@ -329,7 +329,7 @@ public class HomeShelfAdapter extends u<BookShelf> {
                 return var2_2;
             }
             case 2: {
-                var13_21 = new HomeShelfAdapter$TxtHolder(var2_2);
+                var13_21 = new TxtHolder(var2_2);
                 var14_22 = var4_4.getTxt();
                 var13_21.title.setText(var14_22.getName());
                 var13_21.desc.setText("\u9605\u8bfb\u8fdb\u5ea6 : " + var14_22.getReadableProgress());
@@ -344,7 +344,7 @@ public class HomeShelfAdapter extends u<BookShelf> {
             }
             case 3: {
                 if (this.d != false) return var2_2;
-                var11_25 = new HomeShelfAdapter$FeedHolder(var2_2);
+                var11_25 = new FeedHolder(var2_2);
                 var12_26 = var4_4.getBookFeed();
                 var11_25.title.setText(var12_26.getTitle());
                 if (var12_26.isFat()) {
@@ -356,7 +356,7 @@ public class HomeShelfAdapter extends u<BookShelf> {
             }
             case 4:
         }
-        var6_27 = new HomeShelfAdapter$AlbumHolder(var2_2);
+        var6_27 = new AlbumHolder(var2_2);
         var7_28 = var4_4.getAlbum();
         var6_27.cover.setImageUrl(var7_28.getImgUrl(), 2130837766);
         var6_27.title.setText(var7_28.getName());
@@ -382,7 +382,7 @@ public class HomeShelfAdapter extends u<BookShelf> {
         return 5;
     }
 
-    class HomeShelfAdapter$TxtHolder {
+    class TxtHolder {
         @InjectView(value = 2131492900)
         CheckBox check;
         @InjectView(value = 2131493481)
@@ -392,25 +392,25 @@ public class HomeShelfAdapter extends u<BookShelf> {
         @InjectView(value = 2131492978)
         View top;
 
-        HomeShelfAdapter$TxtHolder(View view) {
+        TxtHolder(View view) {
             this.title = (TextView) view.findViewById(2131492936);
             this.desc = (TextView) view.findViewById(2131493481);
             this.top =view. findViewById(2131492978);
             this.check = (CheckBox) view.findViewById(2131492900);
         }
     }
-    class HomeShelfAdapter$FeedHolder {
+    class FeedHolder {
         @InjectView(value = 2131493754)
         BookShelfFlagView flag;
         @InjectView(value = 2131493481)
         TextView title;
 
-        HomeShelfAdapter$FeedHolder(View view) {
+        FeedHolder(View view) {
             this.title = (TextView) view.findViewById(2131493481);
             this.flag = (BookShelfFlagView) view.findViewById(2131493754);
         }
     }
-    class HomeShelfAdapter$BookHolder {
+    class BookHolder {
         @InjectView(value = 2131492900)
         CheckBox check;
         @InjectView(value = 2131493604)
@@ -426,7 +426,7 @@ public class HomeShelfAdapter extends u<BookShelf> {
         @InjectView(value = 2131492978)
         View top;
 
-        HomeShelfAdapter$BookHolder(View view) {
+        BookHolder(View view) {
             this.title = (TextView)view. findViewById(2131492936);
             this.desc = (TextView) view.findViewById(2131493481);
             this.flag = (BookShelfFlagView)view. findViewById(2131493754);
@@ -436,7 +436,7 @@ public class HomeShelfAdapter extends u<BookShelf> {
             this.check = (CheckBox)view. findViewById(2131492900);
         }
     }
-    class HomeShelfAdapter$AlbumHolder {
+    class AlbumHolder {
         @InjectView(value = 2131492900)
         CheckBox check;
         @InjectView(value = 2131493604)
@@ -452,7 +452,7 @@ public class HomeShelfAdapter extends u<BookShelf> {
         @InjectView(value = 2131492978)
         View top;
 
-        HomeShelfAdapter$AlbumHolder(View view) {
+        AlbumHolder(View view) {
             this.title = (TextView)view. findViewById(2131492936);
             this.desc = (TextView) view. findViewById(2131493481);
             this.flag = (BookShelfFlagView)view.  findViewById(2131493754);
@@ -463,7 +463,7 @@ public class HomeShelfAdapter extends u<BookShelf> {
         }
     }
 
-    class HomeShelfAdapter$AdHolder {
+    class AdHolder {
         @InjectView(value = 2131493604)
         SmartImageView cover;
         @InjectView(value = 2131493481)
@@ -473,7 +473,7 @@ public class HomeShelfAdapter extends u<BookShelf> {
         @InjectView(value = 2131492936)
         TextView title;
 
-        HomeShelfAdapter$AdHolder(View view) {
+        AdHolder(View view) {
             this.title = (TextView) view.findViewById(2131492936);
             this.desc = (TextView)view. findViewById(2131493481);
             this.flag = (BookShelfFlagView) view.findViewById(2131493754);

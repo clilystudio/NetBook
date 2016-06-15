@@ -3,7 +3,7 @@ package com.clilystudio.netbook.model;
 import java.io.Serializable;
 
 public class ChapterKeysRoot implements Serializable {
-    private ChapterKeysRoot$ChapterKey[] keys;
+    private ChapterKey[] keys;
     private boolean ok;
 
     /*
@@ -14,13 +14,13 @@ public class ChapterKeysRoot implements Serializable {
         if (this.keys == null || this.keys.length == 0) {
             return null;
         }
-        ChapterKeysRoot$ChapterKey[] arrchapterKeysRoot$ChapterKey = this.keys;
-        int n = arrchapterKeysRoot$ChapterKey.length;
+        ChapterKey[] chapterKeys = this.keys;
+        int n = chapterKeys.length;
         int n2 = 0;
         while (n2 < n) {
-            ChapterKeysRoot$ChapterKey chapterKeysRoot$ChapterKey = arrchapterKeysRoot$ChapterKey[n2];
-            if (chapterKeysRoot$ChapterKey.get_id().equals(string)) {
-                return chapterKeysRoot$ChapterKey.getKey();
+            ChapterKey chapterKey = chapterKeys[n2];
+            if (chapterKey.get_id().equals(string)) {
+                return chapterKey.getKey();
             }
             ++n2;
         }
@@ -34,12 +34,12 @@ public class ChapterKeysRoot implements Serializable {
         return this.keys.length;
     }
 
-    public ChapterKeysRoot$ChapterKey[] getKeys() {
+    public ChapterKey[] getKeys() {
         return this.keys;
     }
 
-    public void setKeys(ChapterKeysRoot$ChapterKey[] arrchapterKeysRoot$ChapterKey) {
-        this.keys = arrchapterKeysRoot$ChapterKey;
+    public void setKeys(ChapterKey[] chapterKeys) {
+        this.keys = chapterKeys;
     }
 
     public boolean isOk() {
@@ -51,7 +51,7 @@ public class ChapterKeysRoot implements Serializable {
     }
 
 
-    public class ChapterKeysRoot$ChapterKey implements Serializable {
+    public class ChapterKey implements Serializable {
         private String _id;
         private String key;
 

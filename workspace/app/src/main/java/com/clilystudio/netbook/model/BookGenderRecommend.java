@@ -3,15 +3,15 @@ package com.clilystudio.netbook.model;
 import java.util.Date;
 
 public class BookGenderRecommend {
-    private BookGenderRecommend$RecommendBook[] books;
+    private RecommendBook[] books;
     private boolean ok;
 
-    public BookGenderRecommend$RecommendBook[] getBooks() {
+    public RecommendBook[] getBooks() {
         return this.books;
     }
 
-    public void setBooks(BookGenderRecommend$RecommendBook[] arrbookGenderRecommend$RecommendBook) {
-        this.books = arrbookGenderRecommend$RecommendBook;
+    public void setBooks(RecommendBook[] recommendBooks) {
+        this.books = recommendBooks;
     }
 
     public boolean isOk() {
@@ -22,8 +22,7 @@ public class BookGenderRecommend {
         this.ok = bl;
     }
 
-    public class BookGenderRecommend$RecommendBook {
-        final /* synthetic */ BookGenderRecommend this$0;
+    public class RecommendBook {
         private String _id;
         private String author;
         private int chaptersCount;
@@ -34,10 +33,6 @@ public class BookGenderRecommend {
         private String shortIntro;
         private String title;
         private Date updated;
-
-        public BookGenderRecommend$RecommendBook(BookGenderRecommend bookGenderRecommend) {
-            this.this$0 = bookGenderRecommend;
-        }
 
         public String getAuthor() {
             return this.author;

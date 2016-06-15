@@ -460,4 +460,12 @@
         <attr name="label" format="string"/>
         <attr name="icona" format="reference"/>
     </declare-styleable>
+    <declare-styleable name="CoverLoadingLayer">
+        <attr name="scv_background" format="color"/>
+        <attr name="scv_corner_radius" format="dimension"/>
+    </declare-styleable>
+    <declare-styleable name="CoverLoadingView">
+         <attr name="cornerRadius" format="dimension"/>
+    </declare-styleable>
+
 </resources>

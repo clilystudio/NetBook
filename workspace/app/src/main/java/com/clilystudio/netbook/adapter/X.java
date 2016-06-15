@@ -2,13 +2,14 @@ package com.clilystudio.netbook.adapter;
 
 import android.view.LayoutInflater;
 
+import com.clilystudio.netbook.model.UGCBookListRoot;
 import com.clilystudio.netbook.util.W;
 import com.clilystudio.netbook.util.t;
 import com.clilystudio.netbook.widget.CoverView;
 
 import java.util.Date;
 
-public final class X extends W<UGCBookListRoot$UGCBook> {
+public final class X extends W<UGCBookListRoot.UGCBook> {
     private String a = "\u5171%1$d\u672c\u4e66  |  %2$d\u4eba\u6536\u85cf";
     private String b = "\u5171%1$d\u672c\u4e66";
 
@@ -22,19 +23,19 @@ public final class X extends W<UGCBookListRoot$UGCBook> {
      */
     @Override
     protected final /* synthetic */ void a(int n, Object object) {
-        UGCBookListRoot$UGCBook uGCBookListRoot$UGCBook = (UGCBookListRoot$UGCBook) object;
-        if (uGCBookListRoot$UGCBook == null) return;
-        ((CoverView) this.a(0, CoverView.class)).setImageUrl(uGCBookListRoot$UGCBook.getFullCover(), 2130837766);
-        this.a(1, uGCBookListRoot$UGCBook.getTitle());
-        this.a(4, uGCBookListRoot$UGCBook.getDesc());
-        if (uGCBookListRoot$UGCBook.isDraft()) {
+        UGCBookListRoot.UGCBook ugcBook = (UGCBookListRoot.UGCBook) object;
+        if (ugcBook == null) return;
+        ((CoverView) this.a(0, CoverView.class)).setImageUrl(ugcBook.getFullCover(), 2130837766);
+        this.a(1, ugcBook.getTitle());
+        this.a(4, ugcBook.getDesc());
+        if (ugcBook.isDraft()) {
             String string = this.b;
-            Object[] arrobject = new Object[]{uGCBookListRoot$UGCBook.getBookCount()};
+            Object[] arrobject = new Object[]{ugcBook.getBookCount()};
             this.a(2, String.format(string, arrobject));
             this.a(3, true);
-            this.a(5, t.e((Date) uGCBookListRoot$UGCBook.getUpdated()));
+            this.a(5, t.e((Date) ugcBook.getUpdated()));
             this.a(5, false);
-            if (uGCBookListRoot$UGCBook.getBookCount() >= 8) {
+            if (ugcBook.getBookCount() >= 8) {
                 this.a(6, false);
                 this.a(7, true);
                 return;
@@ -44,9 +45,9 @@ public final class X extends W<UGCBookListRoot$UGCBook> {
             return;
         }
         String string = this.a;
-        Object[] arrobject = new Object[]{uGCBookListRoot$UGCBook.getBookCount(), uGCBookListRoot$UGCBook.getCollectorCount()};
+        Object[] arrobject = new Object[]{ugcBook.getBookCount(), ugcBook.getCollectorCount()};
         this.a(2, String.format(string, arrobject));
-        this.a(3, uGCBookListRoot$UGCBook.getAuthor());
+        this.a(3, ugcBook.getAuthor());
         this.a(3, false);
         this.a(5, true);
         this.a(6, true);

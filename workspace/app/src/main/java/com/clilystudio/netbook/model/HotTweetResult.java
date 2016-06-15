@@ -3,7 +3,7 @@ package com.clilystudio.netbook.model;
 public class HotTweetResult {
     private String msg;
     private boolean ok;
-    private TimelineResult$Temp[] tweets;
+    private TimelineResult.Temp[] tweets;
 
     public String getMsg() {
         return this.msg;
@@ -13,12 +13,12 @@ public class HotTweetResult {
         this.msg = string;
     }
 
-    public TimelineResult$Temp[] getTweets() {
+    public TimelineResult.Temp[] getTweets() {
         return this.tweets;
     }
 
-    public void setTweets(TimelineResult$Temp[] arrtimelineResult$Temp) {
-        this.tweets = arrtimelineResult$Temp;
+    public void setTweets(TimelineResult.Temp[] temps) {
+        this.tweets = temps;
     }
 
     public boolean isOk() {

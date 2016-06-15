@@ -20,18 +20,18 @@ public class NotificationItem {
     public static final String RETWEET = "retweet";
     public static final String UNKNOWN = "unknown";
     private String _id;
-    private NotificationRoot$NotifComment comment;
+    private NotificationRoot.NotifComment comment;
     private String created;
     private String header;
     private String jumpTo;
     private String link;
     private String linkTitle;
-    private NotificationRoot$NotifComment myComment;
+    private NotificationRoot.NotifComment myComment;
     private NotifPost myPost;
     private NotifPost post;
     private String subTitle;
     private String title;
-    private NotificationItem$Trigger trigger;
+    private Trigger trigger;
     private String type = "post_reply";
     private String user;
 
@@ -64,12 +64,12 @@ public class NotificationItem {
         return commonReplyeeInfo;
     }
 
-    public NotificationRoot$NotifComment getComment() {
+    public NotificationRoot.NotifComment getComment() {
         return this.comment;
     }
 
-    public void setComment(NotificationRoot$NotifComment notificationRoot$NotifComment) {
-        this.comment = notificationRoot$NotifComment;
+    public void setComment(NotificationRoot.NotifComment notifComment) {
+        this.comment = notifComment;
     }
 
     public String getCreated() {
@@ -112,12 +112,12 @@ public class NotificationItem {
         this.linkTitle = string;
     }
 
-    public NotificationRoot$NotifComment getMyComment() {
+    public NotificationRoot.NotifComment getMyComment() {
         return this.myComment;
     }
 
-    public void setMyComment(NotificationRoot$NotifComment notificationRoot$NotifComment) {
-        this.myComment = notificationRoot$NotifComment;
+    public void setMyComment(NotificationRoot.NotifComment notifComment) {
+        this.myComment = notifComment;
     }
 
     public NotifPost getMyPost() {
@@ -156,12 +156,12 @@ public class NotificationItem {
         this.title = string;
     }
 
-    public NotificationItem$Trigger getTrigger() {
+    public Trigger getTrigger() {
         return this.trigger;
     }
 
-    public void setTrigger(NotificationItem$Trigger notificationItem$Trigger) {
-        this.trigger = notificationItem$Trigger;
+    public void setTrigger(Trigger trigger) {
+        this.trigger = trigger;
     }
 
     public String getType() {
@@ -205,18 +205,13 @@ public class NotificationItem {
     public boolean isType(String string) {
         return string.equals(this.type);
     }
-    public class NotificationItem$Trigger {
-        final /* synthetic */ NotificationItem this$0;
+    public class Trigger {
         private String _id;
         private String avatar;
         private String gender;
         private int lv;
         private String nickname;
         private String type;
-
-        public NotificationItem$Trigger(NotificationItem notificationItem) {
-            this.this$0 = notificationItem;
-        }
 
         public String getAvatar() {
             return this.avatar;
@@ -275,7 +270,7 @@ public class NotificationItem {
             return author;
         }
     }
-    public class NotificationItem$NotifPost {
+    public class NotifPost {
         private String _id;
         private String title;
         private String type;
