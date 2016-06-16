@@ -5,11 +5,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.clilystudio.netbook.*;
 import com.clilystudio.netbook.event.i;
 import com.clilystudio.netbook.event.v;
 
@@ -26,7 +28,7 @@ public class ReadModeItem extends FrameLayout {
     private String b;
     private String c;
 
-    public ReadModeItem(Activity activity, int n, int n2, int n3, int n4, String string, String string2) {
+    public ReadModeItem(Activity activity, int n, int n2, final int n3, final int n4, String string, String string2) {
         super(activity);
         this.a = activity;
         this.b = string;
@@ -47,7 +49,17 @@ public class ReadModeItem extends FrameLayout {
             this.mFlagWeb.setVisibility(View.VISIBLE);
         }
         this.mChapter.setVisibility(View.GONE);
-        this.setOnClickListener(new O(this, n4, n3));
+        this.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (n4 != n3) {
+                    MyApplication.a().c(ReadModeItem.a(ReadModeItem.this));
+                    com.clilystudio.netbook.am.c((String) ReadModeItem.a(ReadModeItem.this), (int) n3);
+                    ReadModeItem.a(ReadModeItem.this, n3);
+                }
+                ReadModeItem.b(ReadModeItem.this).finish();
+            }
+        });
     }
 
     public ReadModeItem(Context context, AttributeSet attributeSet) {

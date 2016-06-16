@@ -64,13 +64,19 @@ final class R_Clazz extends W<T_Clazz> implements AdapterView.OnItemClickListene
 
     @Override
     protected final /* synthetic */ void a(int n, T_Clazz object) {
-        T_Clazz t = (T_Clazz) object;
+        final T_Clazz t = (T_Clazz) object;
         BookFile bookFile = t.a();
         boolean bl = t.b();
         this.a(0, bookFile.getName());
-        ImageView imageView = (ImageView) this.a(1, ImageView.class);
+        final ImageView imageView = (ImageView) this.a(1, ImageView.class);
         R_Clazz.a(imageView, bl);
-        imageView.setOnClickListener(new S(this, t, imageView));
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                R_Clazz.this.c();
+                R_Clazz.a(R_Clazz.this, imageView, t.b());
+            }
+        });
         this.a(2, bookFile.getSize());
     }
 

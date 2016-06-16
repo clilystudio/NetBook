@@ -1,6 +1,8 @@
 package com.clilystudio.netbook.reader;
 
 import android.content.Context;
+
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.am;
 import android.util.AttributeSet;
 import android.view.View;
@@ -115,10 +117,15 @@ public class ReaderActionBar extends RelativeLayout {
         RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(-1, -1);
         layoutParams.setMargins(0, am.k((Context) this.getContext()), 0, 0);
         this.setLayoutParams(layoutParams);
-        ah ah2 = new ah(this);
+        View.OnClickListener ah2 = new View.OnClickListener() {
+           @Override
+            public void onClick(View v) {
+               ReaderActionBar.a(ReaderActionBar.this, v.getId());
+            }
+        };
         this.f = (TextView) this.findViewById(R.id.reader_oper_top_title);
         this.g = (TextView) this.findViewById(R.id.reader_ab_tts);
-        if (!a.r(this.getContext(), "switch_xunfei_read")) {
+        if (!com.clilystudio.netbook.hpay100.a.a.r(this.getContext(), "switch_xunfei_read")) {
             this.g.setVisibility(View.GONE);
         }
         this.h = this.findViewById(R.id.reader_ab_topic);
@@ -128,17 +135,23 @@ public class ReaderActionBar extends RelativeLayout {
         this.a = this.findViewById(R.id.reader_download);
         this.j = this.findViewById(R.id.reader_ab_read_mode);
         this.k = (TextView) this.findViewById(R.id.reader_ab_chapter_url);
-        this.g.setOnClickListener((View.OnClickListener) ((Object) ah2));
-        this.h.setOnClickListener((View.OnClickListener) ((Object) ah2));
-        this.j.setOnClickListener((View.OnClickListener) ((Object) ah2));
-        this.a.setOnClickListener((View.OnClickListener) ((Object) ah2));
-        this.findViewById(R.id.reader_ab_chapter_url_view).setOnClickListener((View.OnClickListener) ((Object) ah2));
-        this.findViewById(R.id.reader_oper_back).setOnClickListener((View.OnClickListener) ((Object) ah2));
-        this.findViewById(R.id.read_opt_setting).setOnClickListener((View.OnClickListener) ((Object) ah2));
-        this.findViewById(R.id.read_opt_toc).setOnClickListener((View.OnClickListener) ((Object) ah2));
-        this.findViewById(R.id.read_opt_orientation).setOnClickListener((View.OnClickListener) ((Object) ah2));
-        this.findViewById(R.id.reader_ab_more).setOnClickListener((View.OnClickListener) ((Object) ah2));
-        this.findViewById(R.id.read_opt_night).setOnClickListener((View.OnClickListener) ((Object) new ai(this)));
+        this.g.setOnClickListener(ah2);
+        this.h.setOnClickListener(ah2);
+        this.j.setOnClickListener(ah2);
+        this.a.setOnClickListener(ah2);
+        this.findViewById(R.id.reader_ab_chapter_url_view).setOnClickListener(ah2);
+        this.findViewById(R.id.reader_oper_back).setOnClickListener(ah2);
+        this.findViewById(R.id.read_opt_setting).setOnClickListener(ah2);
+        this.findViewById(R.id.read_opt_toc).setOnClickListener(ah2);
+        this.findViewById(R.id.read_opt_orientation).setOnClickListener(ah2);
+        this.findViewById(R.id.reader_ab_more).setOnClickListener(ah2);
+        this.findViewById(R.id.read_opt_night).setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ReaderActionBar.a(ReaderActionBar.this).a();
+                ReaderActionBar.this.a();
+            }
+        });
     }
 
     public void setChapterLink(String string) {

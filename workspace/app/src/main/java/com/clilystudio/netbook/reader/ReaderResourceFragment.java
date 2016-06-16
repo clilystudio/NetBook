@@ -1,6 +1,7 @@
 package com.clilystudio.netbook.reader;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -11,6 +12,7 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.adapter.B;
 import com.clilystudio.netbook.db.BookReadRecord;
 import com.clilystudio.netbook.db.TocReadRecord;
@@ -112,11 +114,17 @@ public class ReaderResourceFragment extends Fragment {
         this.j = view.findViewById(R.id.resource_count_layout);
         this.k = (TextView) view.findViewById(R.id.resource_count);
         this.h = view.findViewById(R.id.resource_header_download_layout);
-        this.h.setOnClickListener(new bW(this));
+        this.h.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = LocalChapterListActivity.a(ReaderResourceFragment.this.getActivity(), ReaderResourceFragment.a(ReaderResourceFragment.this), ReaderResourceFragment.d(ReaderResourceFragment.this));
+                ReaderResourceFragment.this.startActivity(intent);
+            }
+        });
         this.l = new B(this.getActivity().getLayoutInflater());
         this.c.setAdapter(this.l);
         this.c.setOnItemClickListener(new bV(this));
-        bY bY2 = new bY(this, 0);
+        bY bY2 = new bY(this, (byte)0);
         String[] arrstring = new String[]{this.a};
         bY2.b(arrstring);
     }
@@ -136,7 +144,15 @@ public class ReaderResourceFragment extends Fragment {
         this.e = view.findViewById(R.id.empty);
         this.f = view.findViewById(R.id.load_error_hint);
         this.c = (ListView) view.findViewById(R.id.list);
-        this.f.setOnClickListener(new bU(this));
+        this.f.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ReaderResourceFragment.a(ReaderResourceFragment.this, 0);
+                bY bY2 = new bY(ReaderResourceFragment.this, (byte)0);
+                String[] arrstring = new String[]{ReaderResourceFragment.a(ReaderResourceFragment.this)};
+                bY2.b(arrstring);
+            }
+        });
         return view;
     }
 
@@ -159,12 +175,17 @@ public class ReaderResourceFragment extends Fragment {
             if (bookReadRecord == null || bookReadRecord.getTocId() == null) {
                 this.g.setVisibility(View.GONE);
             } else {
-                String string = bookReadRecord.getTocId();
+                final String string = bookReadRecord.getTocId();
                 TocReadRecord tocReadRecord = TocReadRecord.get(string);
                 if (tocReadRecord != null) {
                     this.g.setVisibility(View.VISIBLE);
                     this.i.setText(tocReadRecord.getChapterTitle());
-                    this.g.setOnClickListener(new bX(this, string));
+                    this.g.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            ReaderResourceFragment.a(ReaderResourceFragment.this, string);
+                        }
+                    });
                 } else {
                     this.g.setVisibility(View.GONE);
                 }

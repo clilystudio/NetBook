@@ -6,6 +6,8 @@ import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.clilystudio.netbook.R;
+
 public class ReaderWebActionBar extends RelativeLayout {
     private a a;
     private TextView b;
@@ -59,7 +61,12 @@ public class ReaderWebActionBar extends RelativeLayout {
         this.e = this.findViewById(R.id.reader_ab_read_mode);
         this.f = (TextView) this.findViewById(R.id.reader_ab_chapter_url);
         View view = this.findViewById(R.id.reader_oper_back);
-        cA cA2 = new cA(this);
+        View.OnClickListener cA2 = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ReaderWebActionBar.a(ReaderWebActionBar.this, v.getId());
+            }
+        };
         this.c.setOnClickListener((View.OnClickListener) ((Object) cA2));
         this.e.setOnClickListener((View.OnClickListener) ((Object) cA2));
         this.findViewById(R.id.reader_ab_chapter_url_view).setOnClickListener((View.OnClickListener) ((Object) cA2));

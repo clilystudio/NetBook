@@ -1,6 +1,8 @@
 package com.clilystudio.netbook.adapter;
 
 import android.content.Context;
+
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.am;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +13,7 @@ import com.clilystudio.netbook.model.Author;
 import com.clilystudio.netbook.model.DiscussSummary;
 import com.clilystudio.netbook.ui.SmartImageView;
 import com.clilystudio.netbook.util.W;
+import com.clilystudio.netbook.util.e;
 import com.clilystudio.netbook.util.t;
 import com.clilystudio.netbook.widget.PostFlag;
 
@@ -29,15 +32,19 @@ public final class l extends W<DiscussSummary> {
      * Enabled aggressive block sorting
      */
     @Override
-    protected final /* synthetic */ void a(int n, Object object) {
-        DiscussSummary discussSummary = (DiscussSummary) object;
+    protected final /* synthetic */ void a(int n, final DiscussSummary discussSummary) {
         Author author = discussSummary.getAuthor();
         if (this.a) {
             ((ImageView) this.a(0, ImageView.class)).setImageResource(R.drawable.avatar_default);
         } else {
             ((SmartImageView) this.a(0, SmartImageView.class)).setImageUrl(author.getScaleAvatar(), R.drawable.avatar_default);
         }
-        ((View) this.a(0, ImageView.class)).setOnClickListener(new m(this, discussSummary));
+        ((View) this.a(0, ImageView.class)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                v.getContext().startActivity(com.clilystudio.netbook.util.e.a(v.getContext(),discussSummary.getAuthor()));
+           }
+        });
         this.a(1, author.getNickname());
         this.a(2, "lv." + author.getLv());
         this.a(4, discussSummary.getTitle());

@@ -1,13 +1,17 @@
 package com.clilystudio.netbook.reader;
 
+import android.content.Context;
 import android.content.res.Resources;
+import android.view.View;
 import android.widget.TextView;
 
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.a_pack.e;
 import com.clilystudio.netbook.api.ApiService;
 import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.model.ChineseAllPromRoot;
 import com.clilystudio.netbook.model.TocSummary;
+import com.clilystudio.netbook.widget.*;
 
 import java.util.Iterator;
 import java.util.List;
@@ -77,8 +81,17 @@ final class bE extends e<String, Void, Object[]> {
         }
         ReaderMixActivity.d(this.a).a(list);
         ReaderMixActivity.a(this.a, (ChineseAllPromRoot) arrobject[1]);
-        if (ReaderMixActivity.g(this.a) != null && ReaderMixActivity.g(this.a).getProm() != null) {
-            ReaderMixActivity.h(this.a).setOnClickListener(new bF(this.a, ReaderMixActivity.g(this.a)));
+        final ChineseAllPromRoot chineseAllPromRoot = ReaderMixActivity.g(this.a);
+        if (chineseAllPromRoot != null && chineseAllPromRoot.getProm() != null) {
+            ReaderMixActivity.h(this.a).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (chineseAllPromRoot != null && chineseAllPromRoot.getProm() != null) {
+                        String string = chineseAllPromRoot.getProm().getLink();
+                        new com.clilystudio.netbook.widget.j(bE.this.a, string).a();
+                    }
+                }
+            });
             ReaderMixActivity.h(this.a).setVisibility(View.VISIBLE);
             return;
         }

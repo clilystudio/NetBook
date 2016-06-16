@@ -5,6 +5,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.clilystudio.netbook.R;
+import com.clilystudio.netbook.event.*;
+import com.clilystudio.netbook.event.x;
 import com.clilystudio.netbook.model.BookRankRoot;
 import com.clilystudio.netbook.model.BookRankSummary;
 import com.clilystudio.netbook.ui.SmartImageView;
@@ -83,7 +86,7 @@ public final class BookRankAdapter extends u<BookRankSummary> {
     }
 
     @Override
-    public final /* synthetic */ Object getItem(int n) {
+    public final /* synthetic */ BookRankSummary getItem(int n) {
         return this.a(n);
     }
 
@@ -107,7 +110,7 @@ public final class BookRankAdapter extends u<BookRankSummary> {
         return 1;
     }
 
-    public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup) {
+    public final View getView(final int paramInt, View paramView, ViewGroup paramViewGroup) {
         int i = getItemViewType(paramInt);
         View localView;
         if (paramView == null) {
@@ -134,11 +137,16 @@ public final class BookRankAdapter extends u<BookRankSummary> {
             default:
                 return localView;
             case 1:
-                BookRankSummary localBookRankSummary = a(paramInt);
+                final BookRankSummary localBookRankSummary = a(paramInt);
                 BookRankAdapter.ViewHolder localViewHolder = (BookRankAdapter.ViewHolder) localView.getTag();
                 localViewHolder.cover.setImageUrl(localBookRankSummary.getFullCover(), R.drawable.cover_default);
                 localViewHolder.title.setText(localBookRankSummary.getTitle());
-                localView.setOnClickListener(new f(this, localBookRankSummary, paramInt));
+                localView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        com.clilystudio.netbook.event.i.a().post(new x(localBookRankSummary, BookRankAdapter.a(BookRankAdapter.this, paramInt)));
+                    }
+                });
             case 2:
                 RankCollapseItem localRankCollapseItem = (RankCollapseItem) localView;
                 if (b(paramInt)) {

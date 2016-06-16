@@ -1,10 +1,12 @@
 package com.clilystudio.netbook.adapter;
 
 import android.content.Context;
-import com.clilystudio.netbook.am;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.ImageView;
 
+import com.clilystudio.netbook.R;
+import com.clilystudio.netbook.am;
 import com.clilystudio.netbook.model.Author;
 import com.clilystudio.netbook.model.BookHelpSummary;
 import com.clilystudio.netbook.ui.SmartImageView;
@@ -20,22 +22,26 @@ public final class d extends W<BookHelpSummary> {
         super(layoutInflater, R.layout.list_item_post);
         Context context = layoutInflater.getContext();
         this.a = am.m(context);
-        this.b = a.r(context, "community_user_gender_icon_toggle");
+        this.b = com.clilystudio.netbook.hpay100.a.a.r(context, "community_user_gender_icon_toggle");
     }
 
     /*
      * Enabled aggressive block sorting
      */
     @Override
-    protected final /* synthetic */ void a(int n, Object object) {
-        BookHelpSummary bookHelpSummary = (BookHelpSummary) object;
-        Author author = bookHelpSummary.getAuthor();
-        SmartImageView smartImageView = (SmartImageView) this.a(0, SmartImageView.class);
+    protected final /* synthetic */ void a(int n, final BookHelpSummary bookHelpSummary) {
+        final Author author = bookHelpSummary.getAuthor();
+        final SmartImageView smartImageView = (SmartImageView) this.a(0, SmartImageView.class);
         if (this.a) {
             smartImageView.setImageResource(R.drawable.avatar_default);
         } else {
             smartImageView.setImageUrl(author.getScaleAvatar(), R.drawable.avatar_default);
-            smartImageView.setOnClickListener(new e(this, smartImageView, bookHelpSummary));
+            smartImageView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    smartImageView.getContext().startActivity(com.clilystudio.netbook.util.e.a(smartImageView.getContext(), bookHelpSummary.getAuthor()));
+                }
+            });
         }
         this.a(1, author.getNickname());
         this.a(2, "lv." + author.getLv());

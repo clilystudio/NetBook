@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.clilystudio.netbook.MyApplication;
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.d;
 import com.clilystudio.netbook.db.BookReadRecord;
 import com.clilystudio.netbook.db.SourceRecord;
@@ -101,14 +102,25 @@ public class ReaderWebActivity extends BaseReadActivity {
         readerWebActivity.finish();
     }
 
-    static /* synthetic */ void c(ReaderWebActivity readerWebActivity) {
+    static /* synthetic */ void c(final ReaderWebActivity readerWebActivity) {
         if (a.g()) {
-            AlertDialog alertDialog = new AlertDialog.Builder(readerWebActivity).create();
+            final AlertDialog alertDialog = new AlertDialog.Builder(readerWebActivity).create();
             View view = LayoutInflater.from(readerWebActivity).inflate(R.layout.dialog_reader_web_opt2, null);
             Button button = (Button) view.findViewById(R.id.reader_web_opt2_btn1);
             Button button2 = (Button) view.findViewById(R.id.reader_web_opt2_btn2);
-            button.setOnClickListener((View.OnClickListener) ((Object) new cE(readerWebActivity, alertDialog)));
-            button2.setOnClickListener(new cF(readerWebActivity, alertDialog));
+            button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    alertDialog.dismiss();
+                }
+            });
+            button2.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    alertDialog.dismiss();
+                    ReaderWebActivity.b(readerWebActivity);
+                }
+            });
             alertDialog.setCancelable(false);
             alertDialog.setView(view);
             alertDialog.show();

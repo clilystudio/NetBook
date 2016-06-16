@@ -80,7 +80,7 @@ public final class GameGiftGroupAdapter extends u<GameGiftGroup> {
      */
     @Override
     public final View getView(int var1_1, View var2_2, ViewGroup var3_3) {
-        GameGiftGroup var4_4 = (GameGiftGroup) this.getItem(var1_1);
+        final GameGiftGroup var4_4 = (GameGiftGroup) this.getItem(var1_1);
         int var5_5 = var4_4.getType();
         if (var2_2 == null) {
             switch (var5_5) {
@@ -118,7 +118,12 @@ public final class GameGiftGroupAdapter extends u<GameGiftGroup> {
                     var7_9.button.a(var4_4.getGame().getDownloadStatus());
                     return var2_2;
                 case 2:
-                    new MoreHolder((View) var2_2).title.setOnClickListener(new n(this, var4_4));
+                    new MoreHolder((View) var2_2).title.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            GameGiftGroupAdapter.a(GameGiftGroupAdapter.this, var4_4.getGame());
+                        }
+                    });
                     return var2_2;
                 default:
                     break;

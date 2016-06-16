@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 
 import com.clilystudio.netbook.model.ChargePlan;
+import com.clilystudio.netbook.ui.user.ChargeActivity;
 import com.clilystudio.netbook.util.W;
 
 public final class x extends W<ChargePlan> {
@@ -23,18 +24,24 @@ public final class x extends W<ChargePlan> {
      * Enabled aggressive block sorting
      */
     @Override
-    protected final /* synthetic */ void a(int n, Object object) {
+    protected final /* synthetic */ void a(int n, final ChargePlan chargePlan) {
         boolean bl = true;
-        ChargePlan chargePlan = (ChargePlan) object;
         View view = (View) this.a(0, View.class);
-        this.a((int) bl ? 1 : 0, chargePlan.getPriceDsc() + "\u5143");
+        this.a((int) (bl ? 1 : 0), chargePlan.getPriceDsc() + "\u5143");
         this.a(2, "" + chargePlan.getCurrency() + "\u8ffd\u4e66\u5e01");
         if (chargePlan.getVoucher() > 0) {
             bl = false;
         }
         this.a(3, bl);
         this.a(3, "+" + chargePlan.getVoucher() + "\u8ffd\u4e66\u5238");
-        view.setOnClickListener(new y(this, chargePlan));
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (x.a(x.this) instanceof ChargeActivity) {
+                    ((ChargeActivity) x.a(x.this)).a(chargePlan);
+                }
+            }
+        });
     }
 
     @Override

@@ -1,11 +1,13 @@
 package com.clilystudio.netbook.adapter;
 
 import android.content.Context;
-import com.clilystudio.netbook.am;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.clilystudio.netbook.R;
+import com.clilystudio.netbook.am;
 import com.clilystudio.netbook.model.Author;
 import com.clilystudio.netbook.model.BookReview;
 import com.clilystudio.netbook.ui.SmartImageView;
@@ -22,21 +24,25 @@ public final class h extends W<BookReview> {
         super(layoutInflater, R.layout.list_item_book_review);
         Context context = layoutInflater.getContext();
         this.a = am.m(context);
-        this.b = a.r(context, "community_user_gender_icon_toggle");
+        this.b = com.clilystudio.netbook.hpay100.a.a.r(context, "community_user_gender_icon_toggle");
     }
 
     /*
      * Enabled aggressive block sorting
      */
     @Override
-    protected final /* synthetic */ void a(int n, Object object) {
-        BookReview bookReview = (BookReview) object;
-        Author author = bookReview.author;
+    protected final /* synthetic */ void a(int n, final BookReview bookReview) {
+        final Author author = bookReview.author;
         if (this.a) {
             ((SmartImageView) this.a(0, SmartImageView.class)).setImageResource(R.drawable.avatar_default);
         } else {
             ((SmartImageView) this.a(0, SmartImageView.class)).setImageUrl(author.getScaleAvatar(), R.drawable.avatar_default);
-            ((SmartImageView) this.a(0, SmartImageView.class)).setOnClickListener(new i(this, bookReview));
+            ((SmartImageView) this.a(0, SmartImageView.class)).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    v.getContext().startActivity(com.clilystudio.netbook.util.e.a(v.getContext(), bookReview.author));
+                }
+            });
         }
         this.a(1, author.getNickname());
         this.a(2, "lv." + author.getLv());

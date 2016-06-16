@@ -3,7 +3,11 @@ package com.clilystudio.netbook.reader;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
+
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.am;
+
+import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -17,8 +21,14 @@ import com.clilystudio.netbook.model.Advert;
 import com.clilystudio.netbook.model.ChapterLink;
 import com.clilystudio.netbook.model.PurchaseChapterResult;
 import com.clilystudio.netbook.ui.SmartImageView;
+import com.clilystudio.netbook.ui.user.AuthLoginActivity;
+import com.clilystudio.netbook.ui.user.RemoveAdActivity;
+import com.clilystudio.netbook.util.*;
+import com.clilystudio.netbook.util.e;
 import com.umeng.a.b;
+import com.xiaomi.mistatistic.sdk.MiStatInterface;
 
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 
 import me.biubiubiu.justifytext.library.JustifyTextView;
@@ -168,7 +178,7 @@ public final class o {
      * Enabled aggressive block sorting
      */
     @TargetApi(value = 11)
-    private void a(View view, Advert advert) {
+    private void a(final View view, final Advert advert) {
         if (view == null || advert == null) {
             return;
         }
@@ -198,8 +208,19 @@ public final class o {
         smartImageView.setImageUrl(advert.getFullImg());
         textView.setText(advert.getTitle());
         textView2.setText(advert.getDesc());
-        button.setOnClickListener(new z(this));
-        view.setOnClickListener(new A(this, advert));
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(o.this.b, RemoveAdActivity.class);
+                o.this.b.startActivity(intent);
+            }
+        });
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                advert.processClick(v);
+            }
+        });
         com.clilystudio.netbook.util.adutil.n.a(advert, view);
     }
 
@@ -224,7 +245,14 @@ public final class o {
         if (!am.g()) {
             view3.setVisibility(View.GONE);
             view4.setVisibility(View.VISIBLE);
-            view4.findViewById(R.id.reader_page_pay_btn_login).setOnClickListener(new y(this));
+            view4.findViewById(R.id.reader_page_pay_btn_login).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = AuthLoginActivity.a(o.this.b);
+                    intent.putExtra("KEY_SOURCE", (Serializable)AuthLoginActivity.Source.HOME);
+                    o.this.b.startActivity(intent);
+                }
+            });
             return;
         }
         view3.setVisibility(View.VISIBLE);
@@ -243,21 +271,42 @@ public final class o {
             n2 = arrchapterLink[n3].getCurrency();
         }
         textView.setText("" + n2);
-        CheckBox checkBox = (CheckBox) view3.findViewById(R.id.reader_page_pay_checkbox);
+        final CheckBox checkBox = (CheckBox) view3.findViewById(R.id.reader_page_pay_checkbox);
         this.u = (Button) view3.findViewById(R.id.reader_page_pay_btn);
         if (a.a((Context) this.b, "user_account_balance", 0) > this.d.a().getCurrency() || this.t) {
             checkBox.setVisibility(View.VISIBLE);
             checkBox.setChecked(a.a((Context) this.b, "auto_buy_chapter" + com.clilystudio.netbook.util.I.a, false));
             this.u.setText("\u8d2d\u4e70\uff0c\u7ee7\u7eed\u9605\u8bfb");
-            this.u.setOnClickListener(new s(this, checkBox));
+            this.u.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    MiStatInterface.recordCountEvent( "paying_page_purchase", com.clilystudio.netbook.util.I.b);
+                    if (checkBox.isChecked()) {
+                        MiStatInterface.recordCountEvent( "paying_page_auto_choose", com.clilystudio.netbook.util.I.b);
+                    }
+                    o.this.a(o.this, false);
+                    com.clilystudio.netbook.hpay100.a.a.b(o.this.b, "auto_buy_chapter" + com.clilystudio.netbook.util.I.a, checkBox.isChecked());
+                    I i2 = new I(o.this, o.this.b, "\u8d2d\u4e70\u4e2d...");
+                    String[] arrstring = new String[]{am.e().getToken(), o.this.d.a().getId()};
+                    i2.b(arrstring);
+                }
+            });
             checkBox.setOnClickListener(new t(this));
         } else {
-            checkBox.setVisibility(4);
+            checkBox.setVisibility(View.INVISIBLE);
             this.u.setText("\u4f59\u989d\u4e0d\u8db3\uff0c\u8bf7\u5145\u503c");
             this.u.setOnClickListener(new v(this));
         }
         Button button = (Button) view3.findViewById(R.id.reader_page_change_btn);
-        button.setOnClickListener(new x(this));
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (o.this.b instanceof ReaderActivity) {
+                    ((ReaderActivity)o.this.b).i();
+                    MiStatInterface.recordCountEvent("paying_page_cancel", com.clilystudio.netbook.util.I.b);
+                }
+            }
+        });
         if (this.b instanceof ReaderActivity && !((ReaderActivity) this.b).m()) {
             button.setVisibility(View.GONE);
         }
@@ -374,7 +423,19 @@ public final class o {
                 this.l.setText("\u8fde\u63a5\u8d85\u65f6\uff0c\u518d\u8bd5\u8bd5\uff1f");
                 this.m.setText("\u8bf7\u5237\u65b0\u91cd\u8bd5\u6216\u5207\u6362\u6765\u6e90");
                 this.b(R.drawable.ic_reader_connection_error_network_normal);
-                this.n.setOnClickListener(new q(this));
+                this.n.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if (com.clilystudio.netbook.hpay100.a.a.t(o.this.b)) {
+                            o.this.j.setVisibility(View.GONE);
+                            if (o.this.r != null) {
+                                o.this.r.a();
+                            }
+                            return;
+                        }
+                        com.clilystudio.netbook.util.e.a(o.this.b, R.string.network_unconnected);
+                    }
+                });
                 this.u();
                 this.a(false);
                 return;
@@ -450,13 +511,32 @@ public final class o {
     }
 
     private void t() {
-        this.n.setOnClickListener(new B(this));
+        this.n.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (com.clilystudio.netbook.hpay100.a.a.t(o.this.b)) {
+                    o.this.j.setVisibility(View.GONE);
+                    if (o.this.q != null) {
+                        o.this.q.a(o.this.d.l());
+                    }
+                    return;
+                }
+                com.clilystudio.netbook.util.e.a(o.this.b, R.string.network_unconnected);
+            }
+        });
     }
 
     private void u() {
         this.o.setVisibility(View.VISIBLE);
         this.o.setText("\u66f4\u6362\u6765\u6e90");
-        this.o.setOnClickListener(new r(this));
+        this.o.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (o.this.s != null) {
+                    o.this.s.a();
+                }
+            }
+        });
     }
 
     public final void a() {

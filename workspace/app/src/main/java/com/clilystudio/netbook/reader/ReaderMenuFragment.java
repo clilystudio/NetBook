@@ -4,9 +4,8 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
-import com.clilystudio.netbook.am;
-
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -18,6 +17,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.clilystudio.netbook.MyApplication;
+import com.clilystudio.netbook.R;
+import com.clilystudio.netbook.am;
 import com.clilystudio.netbook.api.ApiService;
 import com.clilystudio.netbook.event.B;
 import com.clilystudio.netbook.event.v;
@@ -26,11 +27,14 @@ import com.clilystudio.netbook.model.MenuAd;
 import com.clilystudio.netbook.model.TocSummary;
 import com.clilystudio.netbook.ui.RelateBookListActivity;
 import com.clilystudio.netbook.ui.SmartImageView;
+import com.clilystudio.netbook.ui.post.BookPostTabActivity;
+import com.clilystudio.netbook.util.InsideLinkIntent;
 import com.clilystudio.netbook.util.adutil.BaseShelfAd;
 import com.clilystudio.netbook.util.adutil.n;
 import com.clilystudio.netbook.util.t;
 import com.clilystudio.netbook.widget.LoadingContainer;
 import com.umeng.a.b;
+import com.xiaomi.mistatistic.sdk.MiStatInterface;
 
 import java.text.DecimalFormat;
 import java.util.Date;
@@ -50,7 +54,45 @@ public class ReaderMenuFragment extends Fragment {
     private View.OnClickListener k;
 
     public ReaderMenuFragment() {
-        this.j = new bs(this);
+        this.j = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                switch (v.getId()) {
+                    default: {
+                        return;
+                    }
+                    case R.id.download:
+                    case R.id.slm_reader_layout_ad: {
+                        if (!ReaderMenuFragment.a(ReaderMenuFragment.this)) {
+                            ReaderMenuFragment.a(ReaderMenuFragment.this, ReaderMenuFragment.c(ReaderMenuFragment.this), ReaderMenuFragment.d(ReaderMenuFragment.this), ReaderMenuFragment.e(ReaderMenuFragment.this));
+                            return;
+                        }
+                        ReaderMenuFragment.this.startActivity(new InsideLinkIntent((Context) ReaderMenuFragment.this.getActivity(), ReaderMenuFragment.b(ReaderMenuFragment.this)));
+                        return;
+                    }
+                    case R.id.slm_reader_all_post: {
+                        MiStatInterface.recordCountEvent("reader_menu_topic", null);
+                         Intent intent = BookPostTabActivity.a(ReaderMenuFragment.this.getActivity(), ReaderMenuFragment.f(ReaderMenuFragment.this), ReaderMenuFragment.g(ReaderMenuFragment.this));
+                        intent.putExtra("extra_sort_type", "created");
+                        ReaderMenuFragment.this.startActivity(intent);
+                        new com.clilystudio.netbook.a_pack.f(ReaderMenuFragment.f(ReaderMenuFragment.this)).b(new Void[0]);
+                        ReaderMenuFragment.h(ReaderMenuFragment.this);
+                        return;
+                    }
+                    case R.id.slm_reader_relate_book: {
+                        ReaderMenuFragment.i(ReaderMenuFragment.this);
+                        return;
+                    }
+                    case R.id.slm_reader_more_source: {
+                        ReaderActivity readerActivity = (ReaderActivity) ReaderMenuFragment.this.getActivity();
+                        if (readerActivity == null) return;
+                        readerActivity.i();
+                        return;
+                    }
+                }
+
+            }
+        };
         this.k = new bt(this);
     }
 
@@ -294,8 +336,8 @@ public class ReaderMenuFragment extends Fragment {
 
         ReaderMenuFragment$TocHolder(View view) {
             this.title = (TextView) view.findViewById(R.id.title);
-            this.link = (TextView) view. findViewById(R.id.link);
-            this.time = (TextView) view. findViewById(R.id.time);
+            this.link = (TextView) view.findViewById(R.id.link);
+            this.time = (TextView) view.findViewById(R.id.time);
         }
     }
 

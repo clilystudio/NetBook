@@ -17,7 +17,7 @@ import com.clilystudio.netbook.model.mixtoc.SgTocRoot;
 import com.clilystudio.netbook.model.mixtoc.SsChapterJson;
 import com.clilystudio.netbook.model.mixtoc.SsTocRoot;
 import com.github.kevinsawicki.http.HttpRequest;
-import com.github.kevinsawicki.http.HttpRequest$HttpRequestException;
+import com.github.kevinsawicki.http.HttpRequest.HttpRequestException;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
@@ -156,7 +156,7 @@ public class ApiService {
         return String.format("http://book.soso.com/#!/detail/%s/%d/%s", arrobject);
     }
 
-    private static <V> List<V> b(HttpRequest httpRequest, Class<V> class_) {
+    private static <V> List<V> b(HttpRequest httpRequest, Class<V> class_) throws JsonException {
         ArrayList<V> arrayList;
         BufferedReader bufferedReader = httpRequest.e();
         try {
@@ -167,13 +167,16 @@ public class ApiService {
             }
         } catch (JsonParseException var5_7) {
             var5_7.printStackTrace();
-            throw new ApiService$JsonException(var5_7);
+            throw new JsonException(var5_7);
+        } finally{
+            try {
+                bufferedReader.close();
+            } catch (IOException e1) {
+                e1.printStackTrace();
+            }
         }
         return arrayList;
-        finally{
-            bufferedReader.close();
-        }
-    }
+     }
 
     /*
      * Enabled aggressive block sorting
@@ -234,7 +237,7 @@ public class ApiService {
             boolean bl = this.b(httpRequest).c();
             ApiService.a(httpRequest.a().toString(), l, httpRequest.b(), "");
             if (bl) return httpRequest;
-        } catch (HttpRequest$HttpRequestException var4_4) {
+        } catch (HttpRequest.HttpRequestException var4_4) {
             ApiService.a(httpRequest.a().toString(), l, httpRequest.b(), var4_4.getClass().getName());
             ApiService.v();
             throw var4_4;
@@ -247,7 +250,7 @@ public class ApiService {
             if (!this.b(httpRequest, n).c()) {
                 throw new IOException("Unexpected response code: " + httpRequest.b());
             }
-        } catch (HttpRequest$HttpRequestException var3_3) {
+        } catch (HttpRequest.HttpRequestException var3_3) {
             ApiService.v();
             throw var3_3;
         }
@@ -269,7 +272,7 @@ public class ApiService {
         } catch (IOException var3_5) {
         }
         **GOTO lbl -1000
-        catch(HttpRequest$HttpRequestException var3_7){
+        catch(HttpRequest.HttpRequestException var3_7){
         }
         lbl - 1000: // 2 sources:
         {
@@ -316,7 +319,7 @@ public class ApiService {
         try {
             BookShelfSyncTime bookShelfSyncTime = (BookShelfSyncTime) ApiService.a(this.a(HttpRequest.a(string2)), BookShelfSyncTime.class);
             return bookShelfSyncTime;
-        } catch (HttpRequest$HttpRequestException var3_4) {
+        } catch (HttpRequest.HttpRequestException var3_4) {
             throw var3_4.getCause();
         }
     }
@@ -326,7 +329,7 @@ public class ApiService {
         try {
             CommentDetail commentDetail = (CommentDetail) ApiService.a(this.a(HttpRequest.a(string3)), CommentDetail.class);
             return commentDetail;
-        } catch (HttpRequest$HttpRequestException var4_5) {
+        } catch (HttpRequest.HttpRequestException var4_5) {
             throw var4_5.getCause();
         }
     }
@@ -336,7 +339,7 @@ public class ApiService {
         try {
             RemoteBookShelf remoteBookShelf = (RemoteBookShelf) ApiService.a(this.a(HttpRequest.a(string2)), RemoteBookShelf.class);
             return remoteBookShelf;
-        } catch (HttpRequest$HttpRequestException var3_4) {
+        } catch (HttpRequest.HttpRequestException var3_4) {
             throw var3_4.getCause();
         }
     }
@@ -351,7 +354,7 @@ public class ApiService {
             httpRequest2.a(hashMap);
             ApiService.a(httpRequest2, ResultStatus.class);
             return;
-        } catch (HttpRequest$HttpRequestException var4_7) {
+        } catch (HttpRequest.HttpRequestException var4_7) {
             var4_7.printStackTrace();
             throw var4_7.getCause();
         }
@@ -362,7 +365,7 @@ public class ApiService {
         try {
             BookReviewRoot bookReviewRoot = (BookReviewRoot) ApiService.a(this.a(HttpRequest.a(string2)), BookReviewRoot.class);
             return bookReviewRoot;
-        } catch (HttpRequest$HttpRequestException var3_4) {
+        } catch (HttpRequest.HttpRequestException var3_4) {
             throw var3_4.getCause();
         }
     }
@@ -372,7 +375,7 @@ public class ApiService {
         try {
             UGCBookDetailRoot uGCBookDetailRoot = (UGCBookDetailRoot) ApiService.a(this.a(HttpRequest.a(string3)), UGCBookDetailRoot.class);
             return uGCBookDetailRoot;
-        } catch (HttpRequest$HttpRequestException var4_5) {
+        } catch (HttpRequest.HttpRequestException var4_5) {
             throw var4_5.getCause();
         }
     }
@@ -396,7 +399,7 @@ public class ApiService {
         } catch (IOException var4_7) {
         }
         **GOTO lbl -1000
-        catch(HttpRequest$HttpRequestException var4_9){
+        catch(HttpRequest.HttpRequestException var4_9){
         }
         lbl - 1000: // 2 sources:
         {
@@ -410,7 +413,7 @@ public class ApiService {
         try {
             ReviewResult reviewResult = (ReviewResult) ApiService.a(this.a(HttpRequest.a(string2)), ReviewResult.class);
             return reviewResult;
-        } catch (HttpRequest$HttpRequestException var3_4) {
+        } catch (HttpRequest.HttpRequestException var3_4) {
             throw var3_4.getCause();
         }
     }
@@ -420,7 +423,7 @@ public class ApiService {
         try {
             BookHelpResult bookHelpResult = (BookHelpResult) ApiService.a(this.a(HttpRequest.a(string2)), BookHelpResult.class);
             return bookHelpResult;
-        } catch (HttpRequest$HttpRequestException var3_4) {
+        } catch (HttpRequest.HttpRequestException var3_4) {
             throw var3_4.getCause();
         }
     }
@@ -436,7 +439,7 @@ public class ApiService {
             httpRequest2.a(hashMap);
             ResultStatus resultStatus = (ResultStatus) ApiService.a(httpRequest2, ResultStatus.class);
             return resultStatus;
-        } catch (HttpRequest$HttpRequestException var4_8) {
+        } catch (HttpRequest.HttpRequestException var4_8) {
             throw var4_8.getCause();
         }
     }
@@ -446,7 +449,7 @@ public class ApiService {
         try {
             GirlTopicResult girlTopicResult = (GirlTopicResult) ApiService.a(this.a(HttpRequest.a(string2)), GirlTopicResult.class);
             return girlTopicResult;
-        } catch (HttpRequest$HttpRequestException var3_4) {
+        } catch (HttpRequest.HttpRequestException var3_4) {
             throw var3_4.getCause();
         }
     }
@@ -461,7 +464,7 @@ public class ApiService {
             httpRequest2.a(hashMap);
             Root root = (Root) ApiService.a(httpRequest2, Root.class);
             return root;
-        } catch (HttpRequest$HttpRequestException var5_8) {
+        } catch (HttpRequest.HttpRequestException var5_8) {
             throw var5_8.getCause();
         }
     }
@@ -481,7 +484,7 @@ public class ApiService {
             httpRequest2.a(hashMap);
             SyncUploadResult syncUploadResult = (SyncUploadResult) ApiService.a(httpRequest2, SyncUploadResult.class);
             return syncUploadResult;
-        } catch (HttpRequest$HttpRequestException var4_8) {
+        } catch (HttpRequest.HttpRequestException var4_8) {
             var4_8.printStackTrace();
             return null;
         }
@@ -492,7 +495,7 @@ public class ApiService {
         try {
             PostDetail postDetail = (PostDetail) ApiService.a(this.a(HttpRequest.a(string2)), PostDetail.class);
             return postDetail;
-        } catch (HttpRequest$HttpRequestException var3_4) {
+        } catch (HttpRequest.HttpRequestException var3_4) {
             throw var3_4.getCause();
         }
     }
@@ -508,7 +511,7 @@ public class ApiService {
             httpRequest2.a(hashMap);
             SyncUploadResult syncUploadResult = (SyncUploadResult) ApiService.a(httpRequest2, SyncUploadResult.class);
             return syncUploadResult;
-        } catch (HttpRequest$HttpRequestException var4_8) {
+        } catch (HttpRequest.HttpRequestException var4_8) {
             var4_8.printStackTrace();
             return null;
         }
@@ -519,7 +522,7 @@ public class ApiService {
         try {
             SyncUploadResult syncUploadResult = (SyncUploadResult) ApiService.a(this.a(HttpRequest.d((CharSequence) string3)), SyncUploadResult.class);
             return syncUploadResult;
-        } catch (HttpRequest$HttpRequestException var4_5) {
+        } catch (HttpRequest.HttpRequestException var4_5) {
             var4_5.printStackTrace();
             return null;
         }
@@ -530,7 +533,7 @@ public class ApiService {
         try {
             TopicCount topicCount = (TopicCount) ApiService.a(this.a(HttpRequest.a(string2)), TopicCount.class);
             return topicCount;
-        } catch (HttpRequest$HttpRequestException var3_4) {
+        } catch (HttpRequest.HttpRequestException var3_4) {
             throw var3_4.getCause();
         }
     }
@@ -540,7 +543,7 @@ public class ApiService {
         try {
             AdsResult adsResult = (AdsResult) ApiService.a(this.a(HttpRequest.a(string2)), AdsResult.class);
             return adsResult;
-        } catch (HttpRequest$HttpRequestException var3_4) {
+        } catch (HttpRequest.HttpRequestException var3_4) {
             throw var3_4.getCause();
         }
     }
@@ -550,7 +553,7 @@ public class ApiService {
         try {
             SyncUploadResult syncUploadResult = (SyncUploadResult) ApiService.a(this.a(HttpRequest.d((CharSequence) string3)), SyncUploadResult.class);
             return syncUploadResult;
-        } catch (HttpRequest$HttpRequestException var4_5) {
+        } catch (HttpRequest.HttpRequestException var4_5) {
             var4_5.printStackTrace();
             return null;
         }
@@ -576,7 +579,7 @@ public class ApiService {
         } catch (IOException var4_8) {
         }
         **GOTO lbl -1000
-        catch(HttpRequest$HttpRequestException var4_10){
+        catch(HttpRequest.HttpRequestException var4_10){
         }
         lbl - 1000: // 2 sources:
         {
@@ -590,7 +593,7 @@ public class ApiService {
         try {
             UserInfo userInfo = (UserInfo) ApiService.a(this.a(HttpRequest.a(string2)), UserInfo.class);
             return userInfo;
-        } catch (HttpRequest$HttpRequestException var3_4) {
+        } catch (HttpRequest.HttpRequestException var3_4) {
             throw var3_4.getCause();
         }
     }
@@ -613,7 +616,7 @@ public class ApiService {
         try {
             AutoCompleteRoot autoCompleteRoot = (AutoCompleteRoot) ApiService.a(this.a(HttpRequest.a(string3)), AutoCompleteRoot.class);
             return autoCompleteRoot;
-        } catch (HttpRequest$HttpRequestException var4_5) {
+        } catch (HttpRequest.HttpRequestException var4_5) {
             throw var4_5.getCause();
         }
     }
@@ -623,7 +626,7 @@ public class ApiService {
         try {
             UserVipInfo userVipInfo = (UserVipInfo) ApiService.a(this.a(HttpRequest.a(string2)), UserVipInfo.class);
             return userVipInfo;
-        } catch (HttpRequest$HttpRequestException var3_4) {
+        } catch (HttpRequest.HttpRequestException var3_4) {
             throw var3_4.getCause();
         }
     }
@@ -637,7 +640,7 @@ public class ApiService {
             httpRequest.a(hashMap);
             ResultStatus resultStatus = (ResultStatus) ApiService.a(httpRequest, ResultStatus.class);
             return resultStatus;
-        } catch (HttpRequest$HttpRequestException var5_6) {
+        } catch (HttpRequest.HttpRequestException var5_6) {
             throw var5_6.getCause();
         }
     }
@@ -647,7 +650,7 @@ public class ApiService {
         try {
             HotCommentRoot hotCommentRoot = (HotCommentRoot) ApiService.a(this.a(HttpRequest.a(string2)), HotCommentRoot.class);
             return hotCommentRoot;
-        } catch (HttpRequest$HttpRequestException var3_4) {
+        } catch (HttpRequest.HttpRequestException var3_4) {
             throw var3_4.getCause();
         }
     }
@@ -657,7 +660,7 @@ public class ApiService {
         try {
             UGCBookDetailRoot uGCBookDetailRoot = (UGCBookDetailRoot) ApiService.a(this.a(HttpRequest.a(string2)), UGCBookDetailRoot.class);
             return uGCBookDetailRoot;
-        } catch (HttpRequest$HttpRequestException var3_4) {
+        } catch (HttpRequest.HttpRequestException var3_4) {
             throw var3_4.getCause();
         }
     }
@@ -667,7 +670,7 @@ public class ApiService {
         try {
             RelateBookRoot relateBookRoot = (RelateBookRoot) ApiService.a(this.a(HttpRequest.a(string2)), RelateBookRoot.class);
             return relateBookRoot;
-        } catch (HttpRequest$HttpRequestException var3_4) {
+        } catch (HttpRequest.HttpRequestException var3_4) {
             throw var3_4.getCause();
         }
     }
@@ -683,7 +686,7 @@ public class ApiService {
             httpRequest2.a(hashMap);
             ResultStatus resultStatus = (ResultStatus) ApiService.a(httpRequest2, ResultStatus.class);
             return resultStatus;
-        } catch (HttpRequest$HttpRequestException var3_7) {
+        } catch (HttpRequest.HttpRequestException var3_7) {
             throw var3_7.getCause();
         }
     }
@@ -693,7 +696,7 @@ public class ApiService {
         try {
             RelateBookRoot relateBookRoot = (RelateBookRoot) ApiService.a(this.a(HttpRequest.a(string2)), RelateBookRoot.class);
             return relateBookRoot;
-        } catch (HttpRequest$HttpRequestException var3_4) {
+        } catch (HttpRequest.HttpRequestException var3_4) {
             throw var3_4.getCause();
         }
     }
@@ -703,7 +706,7 @@ public class ApiService {
         try {
             GameDetail gameDetail = (GameDetail) ApiService.a(this.a(HttpRequest.a(string2)), GameDetail.class);
             return gameDetail;
-        } catch (HttpRequest$HttpRequestException var3_4) {
+        } catch (HttpRequest.HttpRequestException var3_4) {
             throw var3_4.getCause();
         }
     }
@@ -713,7 +716,7 @@ public class ApiService {
         try {
             GameGroupRoot gameGroupRoot = (GameGroupRoot) ApiService.a(this.a(HttpRequest.a(string2)), GameGroupRoot.class);
             return gameGroupRoot;
-        } catch (HttpRequest$HttpRequestException var3_4) {
+        } catch (HttpRequest.HttpRequestException var3_4) {
             throw var3_4.getCause();
         }
     }
@@ -728,7 +731,7 @@ public class ApiService {
         try {
             BookHelpList bookHelpList = (BookHelpList) ApiService.a(this.a(HttpRequest.a(string3)), BookHelpList.class);
             return bookHelpList;
-        } catch (HttpRequest$HttpRequestException var9_10) {
+        } catch (HttpRequest.HttpRequestException var9_10) {
             throw var9_10.getCause();
         }
     }
@@ -740,7 +743,7 @@ public class ApiService {
         try {
             BookListRoot bookListRoot = (BookListRoot) ApiService.a(this.a(HttpRequest.a(string5)), BookListRoot.class);
             return bookListRoot;
-        } catch (HttpRequest$HttpRequestException var10_11) {
+        } catch (HttpRequest.HttpRequestException var10_11) {
             throw var10_11.getCause();
         }
     }
@@ -774,7 +777,7 @@ public class ApiService {
             }
             if (esChapterRoot.isSuccess()) return null;
             return ApiService.x();
-        } catch (HttpRequest$HttpRequestException var9_17) {
+        } catch (HttpRequest.HttpRequestException var9_17) {
             throw var9_17.getCause();
         }
     }
@@ -789,7 +792,7 @@ public class ApiService {
         try {
             DiscussSummaryList discussSummaryList = (DiscussSummaryList) ApiService.a(this.a(HttpRequest.a(string4)), DiscussSummaryList.class);
             return discussSummaryList;
-        } catch (HttpRequest$HttpRequestException var10_11) {
+        } catch (HttpRequest.HttpRequestException var10_11) {
             throw var10_11.getCause();
         }
     }
@@ -801,7 +804,7 @@ public class ApiService {
         try {
             GameRoot gameRoot = (GameRoot) ApiService.a(this.a(HttpRequest.a(string)), GameRoot.class);
             return gameRoot;
-        } catch (HttpRequest$HttpRequestException var6_7) {
+        } catch (HttpRequest.HttpRequestException var6_7) {
             throw var6_7.getCause();
         }
     }
@@ -813,7 +816,7 @@ public class ApiService {
         try {
             PayChargeRecord payChargeRecord = (PayChargeRecord) ApiService.a(this.a(HttpRequest.a(string2)), PayChargeRecord.class);
             return payChargeRecord;
-        } catch (HttpRequest$HttpRequestException var7_8) {
+        } catch (HttpRequest.HttpRequestException var7_8) {
             throw var7_8.getCause();
         }
     }
@@ -823,7 +826,7 @@ public class ApiService {
         try {
             PayResult payResult = (PayResult) ApiService.a(this.a(HttpRequest.a(string3)), PayResult.class);
             return payResult;
-        } catch (HttpRequest$HttpRequestException var4_5) {
+        } catch (HttpRequest.HttpRequestException var4_5) {
             throw var4_5.getCause();
         }
     }
@@ -835,7 +838,7 @@ public class ApiService {
         try {
             PayVoucherRecord payVoucherRecord = (PayVoucherRecord) ApiService.a(this.a(HttpRequest.a(string3)), PayVoucherRecord.class);
             return payVoucherRecord;
-        } catch (HttpRequest$HttpRequestException var8_9) {
+        } catch (HttpRequest.HttpRequestException var8_9) {
             throw var8_9.getCause();
         }
     }
@@ -874,7 +877,7 @@ public class ApiService {
             HttpRequest httpRequest = this.b(HttpRequest.b(string6));
             httpRequest.a(hashMap);
             return (PostPublish) ApiService.a(httpRequest, PostPublish.class);
-        } catch (HttpRequest$HttpRequestException var16_12) {
+        } catch (HttpRequest.HttpRequestException var16_12) {
             var16_12.printStackTrace();
             throw var16_12.getCause();
         }
@@ -921,7 +924,7 @@ public class ApiService {
                 var5_4.a((Object) "comments[]", (Object) var13_7.getAppendComment());
             }
             return (ResultStatus) ApiService.a(var5_4, ResultStatus.class);
-        } catch (HttpRequest$HttpRequestException var4_8) {
+        } catch (HttpRequest.HttpRequestException var4_8) {
         }
         **GOTO lbl -1000
         catch(IOException var4_10){
@@ -956,7 +959,7 @@ public class ApiService {
                 var6_5.a((Object) "comments[]", (Object) var14_8.getAppendComment());
             }
             return (ResultStatus) ApiService.a(var6_5, ResultStatus.class);
-        } catch (HttpRequest$HttpRequestException var5_9) {
+        } catch (HttpRequest.HttpRequestException var5_9) {
         }
         **GOTO lbl -1000
         catch(IOException var5_11){
@@ -978,7 +981,7 @@ public class ApiService {
         try {
             ReviewList reviewList = (ReviewList) ApiService.a(this.a(HttpRequest.a(string4)), ReviewList.class);
             return reviewList;
-        } catch (HttpRequest$HttpRequestException var10_11) {
+        } catch (HttpRequest.HttpRequestException var10_11) {
             throw var10_11.getCause();
         }
     }
@@ -990,7 +993,7 @@ public class ApiService {
             httpRequest.a("token", null, null, string).a("avatar", uri.getPath(), "image/jpeg", new File(uri.getPath())).c();
             Root root = (Root) ApiService.a(httpRequest, Root.class);
             return root;
-        } catch (HttpRequest$HttpRequestException var4_6) {
+        } catch (HttpRequest.HttpRequestException var4_6) {
             var4_6.printStackTrace();
             throw var4_6.getCause();
         }
@@ -1003,7 +1006,7 @@ public class ApiService {
         try {
             UGCBookListRoot uGCBookListRoot = (UGCBookListRoot) ApiService.a(this.a(HttpRequest.a(string4)), UGCBookListRoot.class);
             return uGCBookListRoot;
-        } catch (HttpRequest$HttpRequestException var9_10) {
+        } catch (HttpRequest.HttpRequestException var9_10) {
             throw var9_10.getCause();
         }
     }
@@ -1034,7 +1037,7 @@ public class ApiService {
         try {
             SsTocRoot ssTocRoot = (SsTocRoot) ApiService.a(this.a(HttpRequest.a(string2), 6), SsTocRoot.class);
             return ssTocRoot;
-        } catch (HttpRequest$HttpRequestException var6_7) {
+        } catch (HttpRequest.HttpRequestException var6_7) {
             throw var6_7.getCause();
         }
     }
@@ -1048,7 +1051,7 @@ public class ApiService {
         try {
             List<BookUpdate> list2 = ApiService.b(this.a(HttpRequest.a(string2)), BookUpdate.class);
             return list2;
-        } catch (HttpRequest$HttpRequestException var4_5) {
+        } catch (HttpRequest.HttpRequestException var4_5) {
             throw var4_5.getCause();
         }
     }
@@ -1073,7 +1076,7 @@ public class ApiService {
             SearchResultRoot searchResultRoot = (SearchResultRoot) ApiService.a(this.a(HttpRequest.a(string)), SearchResultRoot.class);
             if (searchResultRoot == null) return arrayList;
             return searchResultRoot.getBooks();
-        } catch (HttpRequest$HttpRequestException var6_8) {
+        } catch (HttpRequest.HttpRequestException var6_8) {
             throw var6_8.getCause();
         }
     }
@@ -1083,7 +1086,7 @@ public class ApiService {
         try {
             ChineseAllPromRoot chineseAllPromRoot = (ChineseAllPromRoot) ApiService.a(this.a(HttpRequest.a(string2)), ChineseAllPromRoot.class);
             return chineseAllPromRoot;
-        } catch (HttpRequest$HttpRequestException var3_4) {
+        } catch (HttpRequest.HttpRequestException var3_4) {
             throw var3_4.getCause();
         }
     }
@@ -1093,7 +1096,7 @@ public class ApiService {
         try {
             GameGiftRoot gameGiftRoot = (GameGiftRoot) ApiService.a(this.a(HttpRequest.a(string2)), GameGiftRoot.class);
             return gameGiftRoot;
-        } catch (HttpRequest$HttpRequestException var3_4) {
+        } catch (HttpRequest.HttpRequestException var3_4) {
             throw var3_4.getCause();
         }
     }
@@ -1103,7 +1106,7 @@ public class ApiService {
         try {
             BookGenderRecommend bookGenderRecommend = (BookGenderRecommend) ApiService.a(this.a(HttpRequest.a(string2)), BookGenderRecommend.class);
             return bookGenderRecommend;
-        } catch (HttpRequest$HttpRequestException var3_4) {
+        } catch (HttpRequest.HttpRequestException var3_4) {
             throw var3_4.getCause();
         }
     }
@@ -1115,7 +1118,7 @@ public class ApiService {
         try {
             GamesGiftRoot gamesGiftRoot = (GamesGiftRoot) ApiService.a(this.a(HttpRequest.a(string)), GamesGiftRoot.class);
             return gamesGiftRoot;
-        } catch (HttpRequest$HttpRequestException var6_7) {
+        } catch (HttpRequest.HttpRequestException var6_7) {
             throw var6_7.getCause();
         }
     }
@@ -1130,7 +1133,7 @@ public class ApiService {
         try {
             GirlTopicList girlTopicList = (GirlTopicList) ApiService.a(this.a(HttpRequest.a(string3)), GirlTopicList.class);
             return girlTopicList;
-        } catch (HttpRequest$HttpRequestException var9_10) {
+        } catch (HttpRequest.HttpRequestException var9_10) {
             throw var9_10.getCause();
         }
     }
@@ -1150,7 +1153,7 @@ public class ApiService {
         try {
             PayBalance payBalance = (PayBalance) ApiService.a(this.a(HttpRequest.a(string2)), PayBalance.class);
             return payBalance;
-        } catch (HttpRequest$HttpRequestException var3_4) {
+        } catch (HttpRequest.HttpRequestException var3_4) {
             throw var3_4.getCause();
         }
     }
@@ -1162,7 +1165,7 @@ public class ApiService {
         try {
             PayConsumeRecord payConsumeRecord = (PayConsumeRecord) ApiService.a(this.a(HttpRequest.a(string2)), PayConsumeRecord.class);
             return payConsumeRecord;
-        } catch (HttpRequest$HttpRequestException var7_8) {
+        } catch (HttpRequest.HttpRequestException var7_8) {
             throw var7_8.getCause();
         }
     }
@@ -1211,7 +1214,7 @@ public class ApiService {
             httpRequest.a(hashMap);
             PostPublish postPublish = (PostPublish) ApiService.a(httpRequest, PostPublish.class);
             return postPublish;
-        } catch (HttpRequest$HttpRequestException var13_10) {
+        } catch (HttpRequest.HttpRequestException var13_10) {
             var13_10.printStackTrace();
             throw var13_10.getCause();
         }
@@ -1240,7 +1243,7 @@ public class ApiService {
                 var5_4.a((Object) "comments[]", (Object) var13_7.getAppendComment());
             }
             return (ResultStatus) ApiService.a(var5_4, ResultStatus.class);
-        } catch (HttpRequest$HttpRequestException var4_8) {
+        } catch (HttpRequest.HttpRequestException var4_8) {
         }
         **GOTO lbl -1000
         catch(IOException var4_10){
@@ -1275,7 +1278,7 @@ public class ApiService {
                 var6_5.a((Object) "comments[]", (Object) var14_8.getAppendComment());
             }
             return (ResultStatus) ApiService.a(var6_5, ResultStatus.class);
-        } catch (HttpRequest$HttpRequestException var5_9) {
+        } catch (HttpRequest.HttpRequestException var5_9) {
         }
         **GOTO lbl -1000
         catch(IOException var5_11){
@@ -1294,7 +1297,7 @@ public class ApiService {
         try {
             Topic topic = (Topic) ApiService.a(this.a(HttpRequest.a(string3)), Topic.class);
             return topic;
-        } catch (HttpRequest$HttpRequestException var8_9) {
+        } catch (HttpRequest.HttpRequestException var8_9) {
             throw var8_9.getCause();
         }
     }
@@ -1311,7 +1314,7 @@ public class ApiService {
             httpRequest.a(hashMap);
             WXPayOrder wXPayOrder = (WXPayOrder) ApiService.a(httpRequest, WXPayOrder.class);
             return wXPayOrder;
-        } catch (HttpRequest$HttpRequestException var9_7) {
+        } catch (HttpRequest.HttpRequestException var9_7) {
             throw var9_7.getCause();
         }
     }
@@ -1322,7 +1325,7 @@ public class ApiService {
         try {
             String string3 = SsChapterJson.getChapterUrl(this.a(HttpRequest.a(string2), 6).d());
             return string3;
-        } catch (HttpRequest$HttpRequestException var5_6) {
+        } catch (HttpRequest.HttpRequestException var5_6) {
             throw var5_6.getCause();
         }
     }
@@ -1334,7 +1337,7 @@ public class ApiService {
         try {
             BookReviewRoot bookReviewRoot = (BookReviewRoot) ApiService.a(this.a(HttpRequest.a(string3)), BookReviewRoot.class);
             return bookReviewRoot;
-        } catch (HttpRequest$HttpRequestException var8_9) {
+        } catch (HttpRequest.HttpRequestException var8_9) {
             throw var8_9.getCause();
         }
     }
@@ -1346,7 +1349,7 @@ public class ApiService {
         try {
             BookTagRoot bookTagRoot = (BookTagRoot) ApiService.a(this.a(HttpRequest.a(string2)), BookTagRoot.class);
             return bookTagRoot;
-        } catch (HttpRequest$HttpRequestException var7_8) {
+        } catch (HttpRequest.HttpRequestException var7_8) {
             throw var7_8.getCause();
         }
     }
@@ -1364,7 +1367,7 @@ public class ApiService {
             int n2 = httpRequest.b();
             if (bl) return SsChapterJson.getChapterRoot(httpRequest.d());
             if (n2 < 500) return SsChapterJson.getChapterRoot(httpRequest.d());
-        } catch (HttpRequest$HttpRequestException var5_9) {
+        } catch (HttpRequest.HttpRequestException var5_9) {
             throw var5_9.getCause();
         }
         return ApiService.x();
@@ -1401,7 +1404,7 @@ public class ApiService {
                 chapterRoot.setChapter(chapter);
                 return chapterRoot;
             }
-        } catch (HttpRequest$HttpRequestException var6_15) {
+        } catch (HttpRequest.HttpRequestException var6_15) {
             throw var6_15.getCause();
         }
     }
@@ -1411,7 +1414,7 @@ public class ApiService {
         try {
             ChargeTypes chargeTypes = (ChargeTypes) ApiService.a(this.a(HttpRequest.a(string)), ChargeTypes.class);
             return chargeTypes;
-        } catch (HttpRequest$HttpRequestException var2_3) {
+        } catch (HttpRequest.HttpRequestException var2_3) {
             throw var2_3.getCause();
         }
     }
@@ -1421,7 +1424,7 @@ public class ApiService {
         try {
             PostCountRoot postCountRoot = (PostCountRoot) ApiService.a(this.a(HttpRequest.a(string2)), PostCountRoot.class);
             return postCountRoot;
-        } catch (HttpRequest$HttpRequestException var3_4) {
+        } catch (HttpRequest.HttpRequestException var3_4) {
             throw var3_4.getCause();
         }
     }
@@ -1454,7 +1457,7 @@ public class ApiService {
             httpRequest.a(hashMap);
             PostPublish postPublish = (PostPublish) ApiService.a(httpRequest, PostPublish.class);
             return postPublish;
-        } catch (HttpRequest$HttpRequestException var12_9) {
+        } catch (HttpRequest.HttpRequestException var12_9) {
             var12_9.printStackTrace();
             throw var12_9.getCause();
         }
@@ -1502,7 +1505,7 @@ public class ApiService {
                 var6_5.a((Object) "comments[]", (Object) var14_8.getAppendComment());
             }
             return (ResultStatus) ApiService.a(var6_5, ResultStatus.class);
-        } catch (HttpRequest$HttpRequestException var5_9) {
+        } catch (HttpRequest.HttpRequestException var5_9) {
         }
         **GOTO lbl -1000
         catch(IOException var5_11){
@@ -1524,7 +1527,7 @@ public class ApiService {
             httpRequest.a(hashMap);
             YyfPayOrder yyfPayOrder = (YyfPayOrder) ApiService.a(httpRequest, YyfPayOrder.class);
             return yyfPayOrder;
-        } catch (HttpRequest$HttpRequestException var7_7) {
+        } catch (HttpRequest.HttpRequestException var7_7) {
             throw var7_7.getCause();
         }
     }
@@ -1541,7 +1544,7 @@ public class ApiService {
             Log.d("tag", "req.contentLength :" + httpRequest.f());
             Log.d("tag", "aliPayOrder :" + aliPayOrder.toString());
             return aliPayOrder;
-        } catch (HttpRequest$HttpRequestException var7_7) {
+        } catch (HttpRequest.HttpRequestException var7_7) {
             throw var7_7.getCause();
         }
     }
@@ -1551,7 +1554,7 @@ public class ApiService {
         try {
             BookRankRoot bookRankRoot = (BookRankRoot) ApiService.a(this.a(HttpRequest.a(string)), BookRankRoot.class);
             return bookRankRoot;
-        } catch (HttpRequest$HttpRequestException var2_3) {
+        } catch (HttpRequest.HttpRequestException var2_3) {
             throw var2_3.getCause();
         }
     }
@@ -1563,7 +1566,7 @@ public class ApiService {
         try {
             GamePostRoot gamePostRoot = (GamePostRoot) ApiService.a(this.a(HttpRequest.a(string2)), GamePostRoot.class);
             return gamePostRoot;
-        } catch (HttpRequest$HttpRequestException var7_8) {
+        } catch (HttpRequest.HttpRequestException var7_8) {
             throw var7_8.getCause();
         }
     }
@@ -1581,7 +1584,7 @@ public class ApiService {
             httpRequest.a(hashMap);
             PostPublish postPublish = (PostPublish) ApiService.a(httpRequest, PostPublish.class);
             return postPublish;
-        } catch (HttpRequest$HttpRequestException var12_9) {
+        } catch (HttpRequest.HttpRequestException var12_9) {
             var12_9.printStackTrace();
             throw var12_9.getCause();
         }
@@ -1617,7 +1620,7 @@ public class ApiService {
         try {
             Topic topic = (Topic) ApiService.a(this.a(HttpRequest.a(string2)), Topic.class);
             return topic;
-        } catch (HttpRequest$HttpRequestException var6_7) {
+        } catch (HttpRequest.HttpRequestException var6_7) {
             throw var6_7.getCause();
         }
     }
@@ -1627,7 +1630,7 @@ public class ApiService {
         try {
             List<TocSummary> list = ApiService.b(this.a(HttpRequest.a(string2)), TocSummary.class);
             return list;
-        } catch (HttpRequest$HttpRequestException var3_4) {
+        } catch (HttpRequest.HttpRequestException var3_4) {
             throw var3_4.getCause();
         }
     }
@@ -1637,7 +1640,7 @@ public class ApiService {
         try {
             CategoryRoot categoryRoot = (CategoryRoot) ApiService.a(this.a(HttpRequest.a(string)), CategoryRoot.class);
             return categoryRoot;
-        } catch (HttpRequest$HttpRequestException var2_3) {
+        } catch (HttpRequest.HttpRequestException var2_3) {
             throw var2_3.getCause();
         }
     }
@@ -1659,7 +1662,7 @@ public class ApiService {
         try {
             PostDetailComment postDetailComment = (PostDetailComment) ApiService.a(this.a(HttpRequest.a(string2)), PostDetailComment.class);
             return postDetailComment;
-        } catch (HttpRequest$HttpRequestException var7_8) {
+        } catch (HttpRequest.HttpRequestException var7_8) {
             throw var7_8.getCause();
         }
     }
@@ -1691,7 +1694,7 @@ public class ApiService {
             httpRequest.a(hashMap);
             PostPublish postPublish = (PostPublish) ApiService.a(httpRequest, PostPublish.class);
             return postPublish;
-        } catch (HttpRequest$HttpRequestException var11_9) {
+        } catch (HttpRequest.HttpRequestException var11_9) {
             var11_9.printStackTrace();
             throw var11_9.getCause();
         }
@@ -1702,7 +1705,7 @@ public class ApiService {
         try {
             Toc toc = (Toc) ApiService.a(this.a(HttpRequest.a(string2)), Toc.class);
             return toc;
-        } catch (HttpRequest$HttpRequestException var3_4) {
+        } catch (HttpRequest.HttpRequestException var3_4) {
             throw var3_4.getCause();
         }
     }
@@ -1714,7 +1717,7 @@ public class ApiService {
         try {
             Topic topic = (Topic) ApiService.a(this.a(HttpRequest.a(string2)), Topic.class);
             return topic;
-        } catch (HttpRequest$HttpRequestException var6_7) {
+        } catch (HttpRequest.HttpRequestException var6_7) {
             throw var6_7.getCause();
         }
     }
@@ -1730,7 +1733,7 @@ public class ApiService {
             httpRequest.a(hashMap);
             BookAdd bookAdd = (BookAdd) ApiService.a(httpRequest, BookAdd.class);
             return bookAdd;
-        } catch (HttpRequest$HttpRequestException var9_8) {
+        } catch (HttpRequest.HttpRequestException var9_8) {
             var9_8.printStackTrace();
             throw var9_8.getCause();
         }
@@ -1741,7 +1744,7 @@ public class ApiService {
         try {
             CategoryLevelRoot categoryLevelRoot = (CategoryLevelRoot) ApiService.a(this.a(HttpRequest.a(string)), CategoryLevelRoot.class);
             return categoryLevelRoot;
-        } catch (HttpRequest$HttpRequestException var2_3) {
+        } catch (HttpRequest.HttpRequestException var2_3) {
             throw var2_3.getCause();
         }
     }
@@ -1751,7 +1754,7 @@ public class ApiService {
         try {
             ChapterSingleKey chapterSingleKey = (ChapterSingleKey) ApiService.a(this.a(HttpRequest.a(string3)), ChapterSingleKey.class);
             return chapterSingleKey;
-        } catch (HttpRequest$HttpRequestException var4_5) {
+        } catch (HttpRequest.HttpRequestException var4_5) {
             throw var4_5.getCause();
         }
     }
@@ -1761,7 +1764,7 @@ public class ApiService {
         try {
             MixTocRoot mixTocRoot = (MixTocRoot) ApiService.a(this.a(HttpRequest.a(string2)), MixTocRoot.class);
             return mixTocRoot;
-        } catch (HttpRequest$HttpRequestException var3_4) {
+        } catch (HttpRequest.HttpRequestException var3_4) {
             throw var3_4.getCause();
         }
     }
@@ -1773,7 +1776,7 @@ public class ApiService {
         try {
             PostDetailComment postDetailComment = (PostDetailComment) ApiService.a(this.a(HttpRequest.a(string2)), PostDetailComment.class);
             return postDetailComment;
-        } catch (HttpRequest$HttpRequestException var7_8) {
+        } catch (HttpRequest.HttpRequestException var7_8) {
             throw var7_8.getCause();
         }
     }
@@ -1789,7 +1792,7 @@ public class ApiService {
             httpRequest.a(hashMap);
             ResultStatus resultStatus = (ResultStatus) ApiService.a(httpRequest, ResultStatus.class);
             return resultStatus;
-        } catch (HttpRequest$HttpRequestException var10_9) {
+        } catch (HttpRequest.HttpRequestException var10_9) {
             var10_9.printStackTrace();
             throw var10_9.getCause();
         }
@@ -1802,7 +1805,7 @@ public class ApiService {
         try {
             UGCBookListRoot uGCBookListRoot = (UGCBookListRoot) ApiService.a(this.a(HttpRequest.a(string2)), UGCBookListRoot.class);
             return uGCBookListRoot;
-        } catch (HttpRequest$HttpRequestException var6_7) {
+        } catch (HttpRequest.HttpRequestException var6_7) {
             throw var6_7.getCause();
         }
     }
@@ -1818,7 +1821,7 @@ public class ApiService {
             httpRequest.a(hashMap);
             Account account = (Account) ApiService.a(httpRequest, Account.class);
             return account;
-        } catch (HttpRequest$HttpRequestException var9_8) {
+        } catch (HttpRequest.HttpRequestException var9_8) {
             var9_8.printStackTrace();
             throw var9_8.getCause();
         }
@@ -1829,7 +1832,7 @@ public class ApiService {
         try {
             ChapterKeysRoot chapterKeysRoot = (ChapterKeysRoot) ApiService.a(this.a(HttpRequest.a(string3)), ChapterKeysRoot.class);
             return chapterKeysRoot;
-        } catch (HttpRequest$HttpRequestException var4_5) {
+        } catch (HttpRequest.HttpRequestException var4_5) {
             throw var4_5.getCause();
         }
     }
@@ -1838,7 +1841,7 @@ public class ApiService {
         try {
             MhdListRoot mhdListRoot = (MhdListRoot) ApiService.a(this.a(HttpRequest.a("http://mhjk.1391.com/comic/bigbooklist")), MhdListRoot.class);
             return mhdListRoot;
-        } catch (HttpRequest$HttpRequestException var1_2) {
+        } catch (HttpRequest.HttpRequestException var1_2) {
             throw var1_2.getCause();
         }
     }
@@ -1855,7 +1858,7 @@ public class ApiService {
             httpRequest.a(hashMap);
             PostPublish postPublish = (PostPublish) ApiService.a(httpRequest, PostPublish.class);
             return postPublish;
-        } catch (HttpRequest$HttpRequestException var11_9) {
+        } catch (HttpRequest.HttpRequestException var11_9) {
             var11_9.printStackTrace();
             throw var11_9.getCause();
         }
@@ -1866,7 +1869,7 @@ public class ApiService {
         try {
             TocSourceRoot tocSourceRoot = (TocSourceRoot) ApiService.a(this.a(HttpRequest.a(string2)), TocSourceRoot.class);
             return tocSourceRoot;
-        } catch (HttpRequest$HttpRequestException var3_4) {
+        } catch (HttpRequest.HttpRequestException var3_4) {
             throw var3_4.getCause();
         }
     }
@@ -1878,7 +1881,7 @@ public class ApiService {
         try {
             UGCBookListRoot uGCBookListRoot = (UGCBookListRoot) ApiService.a(this.a(HttpRequest.a(string2)), UGCBookListRoot.class);
             return uGCBookListRoot;
-        } catch (HttpRequest$HttpRequestException var6_7) {
+        } catch (HttpRequest.HttpRequestException var6_7) {
             throw var6_7.getCause();
         }
     }
@@ -1898,7 +1901,7 @@ public class ApiService {
         try {
             MysteryBookList mysteryBookList = (MysteryBookList) ApiService.a(this.a(HttpRequest.a(string)), MysteryBookList.class);
             return mysteryBookList;
-        } catch (HttpRequest$HttpRequestException var2_3) {
+        } catch (HttpRequest.HttpRequestException var2_3) {
             throw var2_3.getCause();
         }
     }
@@ -1914,7 +1917,7 @@ public class ApiService {
             httpRequest.a(hashMap);
             PostPublish postPublish = (PostPublish) ApiService.a(httpRequest, PostPublish.class);
             return postPublish;
-        } catch (HttpRequest$HttpRequestException var9_8) {
+        } catch (HttpRequest.HttpRequestException var9_8) {
             var9_8.printStackTrace();
             throw var9_8.getCause();
         }
@@ -1942,7 +1945,7 @@ public class ApiService {
         try {
             UGCBookListRoot uGCBookListRoot = (UGCBookListRoot) ApiService.a(this.a(HttpRequest.a(string2)), UGCBookListRoot.class);
             return uGCBookListRoot;
-        } catch (HttpRequest$HttpRequestException var6_7) {
+        } catch (HttpRequest.HttpRequestException var6_7) {
             throw var6_7.getCause();
         }
     }
@@ -1969,7 +1972,7 @@ public class ApiService {
             httpRequest.a(hashMap);
             PostPublish postPublish = (PostPublish) ApiService.a(httpRequest, PostPublish.class);
             return postPublish;
-        } catch (HttpRequest$HttpRequestException var10_8) {
+        } catch (HttpRequest.HttpRequestException var10_8) {
             var10_8.printStackTrace();
             throw var10_8.getCause();
         }
@@ -1982,7 +1985,7 @@ public class ApiService {
         try {
             RecommendUgcRoot recommendUgcRoot = (RecommendUgcRoot) ApiService.a(this.a(HttpRequest.a(string2)), RecommendUgcRoot.class);
             return recommendUgcRoot;
-        } catch (HttpRequest$HttpRequestException var6_7) {
+        } catch (HttpRequest.HttpRequestException var6_7) {
             throw var6_7.getCause();
         }
     }
@@ -2007,7 +2010,7 @@ public class ApiService {
         try {
             List<MenuAd> list = ApiService.b(this.a(HttpRequest.a(string)), MenuAd.class);
             return list;
-        } catch (HttpRequest$HttpRequestException var2_3) {
+        } catch (HttpRequest.HttpRequestException var2_3) {
             throw var2_3.getCause();
         }
     }
@@ -2060,7 +2063,7 @@ public class ApiService {
             httpRequest.a(hashMap);
             ResultStatus resultStatus = (ResultStatus) ApiService.a(httpRequest, ResultStatus.class);
             return resultStatus;
-        } catch (HttpRequest$HttpRequestException var8_8) {
+        } catch (HttpRequest.HttpRequestException var8_8) {
             var8_8.printStackTrace();
             throw var8_8.getCause();
         }
@@ -2071,7 +2074,7 @@ public class ApiService {
         try {
             SplashRoot splashRoot = (SplashRoot) ApiService.a(this.a(HttpRequest.a(string)), SplashRoot.class);
             return splashRoot;
-        } catch (HttpRequest$HttpRequestException var2_3) {
+        } catch (HttpRequest.HttpRequestException var2_3) {
             throw var2_3.getCause();
         }
     }
@@ -2095,7 +2098,7 @@ public class ApiService {
         try {
             TopicSummary topicSummary = (TopicSummary) ApiService.a(this.a(HttpRequest.a(string)), TopicSummary.class);
             return topicSummary;
-        } catch (HttpRequest$HttpRequestException var2_3) {
+        } catch (HttpRequest.HttpRequestException var2_3) {
             throw var2_3.getCause();
         }
     }
@@ -2134,7 +2137,7 @@ public class ApiService {
             httpRequest.a(hashMap);
             VoteResult voteResult = (VoteResult) ApiService.a(httpRequest, VoteResult.class);
             return voteResult;
-        } catch (HttpRequest$HttpRequestException var8_8) {
+        } catch (HttpRequest.HttpRequestException var8_8) {
             var8_8.printStackTrace();
             throw var8_8.getCause();
         }
@@ -2171,7 +2174,7 @@ public class ApiService {
             httpRequest.a(hashMap);
             ResultStatus resultStatus = (ResultStatus) ApiService.a(httpRequest, ResultStatus.class);
             return resultStatus;
-        } catch (HttpRequest$HttpRequestException var7_8) {
+        } catch (HttpRequest.HttpRequestException var7_8) {
             var7_8.printStackTrace();
             throw var7_8.getCause();
         }
@@ -2182,7 +2185,7 @@ public class ApiService {
         try {
             ShelfMsgRoot shelfMsgRoot = (ShelfMsgRoot) ApiService.a(this.a(HttpRequest.a(string)), ShelfMsgRoot.class);
             return shelfMsgRoot;
-        } catch (HttpRequest$HttpRequestException var2_3) {
+        } catch (HttpRequest.HttpRequestException var2_3) {
             throw var2_3.getCause();
         }
     }
@@ -2221,7 +2224,7 @@ public class ApiService {
             httpRequest.a(hashMap);
             ResultStatus resultStatus = (ResultStatus) ApiService.a(httpRequest, ResultStatus.class);
             return resultStatus;
-        } catch (HttpRequest$HttpRequestException var8_8) {
+        } catch (HttpRequest.HttpRequestException var8_8) {
             var8_8.printStackTrace();
             throw var8_8.getCause();
         }
@@ -2242,7 +2245,7 @@ public class ApiService {
         try {
             VipPlan vipPlan = (VipPlan) ApiService.a(this.a(HttpRequest.a(string)), VipPlan.class);
             return vipPlan;
-        } catch (HttpRequest$HttpRequestException var2_3) {
+        } catch (HttpRequest.HttpRequestException var2_3) {
             throw var2_3.getCause();
         }
     }
@@ -2268,7 +2271,7 @@ public class ApiService {
             httpRequest.a(hashMap);
             ResultStatus resultStatus = (ResultStatus) ApiService.a(httpRequest, ResultStatus.class);
             return resultStatus;
-        } catch (HttpRequest$HttpRequestException var9_8) {
+        } catch (HttpRequest.HttpRequestException var9_8) {
             var9_8.printStackTrace();
             throw var9_8.getCause();
         }
@@ -2279,7 +2282,7 @@ public class ApiService {
         try {
             SecretAppItemRoot secretAppItemRoot = (SecretAppItemRoot) ApiService.a(this.a(HttpRequest.a(string)), SecretAppItemRoot.class);
             return secretAppItemRoot;
-        } catch (HttpRequest$HttpRequestException var2_3) {
+        } catch (HttpRequest.HttpRequestException var2_3) {
             throw var2_3.getCause();
         }
     }
@@ -2296,7 +2299,7 @@ public class ApiService {
         try {
             searchResultRoot = (SearchResultRoot) ApiService.a(this.a(HttpRequest.a(string3)), SearchResultRoot.class);
             if (searchResultRoot == null) return arrayList;
-        } catch (HttpRequest$HttpRequestException var5_7) {
+        } catch (HttpRequest.HttpRequestException var5_7) {
             throw var5_7.getCause();
         }
         return searchResultRoot.getBooks();
@@ -2321,7 +2324,7 @@ public class ApiService {
         } catch (IOException var5_9) {
         }
         **GOTO lbl -1000
-        catch(HttpRequest$HttpRequestException var5_11){
+        catch(HttpRequest.HttpRequestException var5_11){
         }
         lbl - 1000: // 2 sources:
         {
@@ -2336,7 +2339,7 @@ public class ApiService {
         try {
             SearchResultRoot searchResultRoot = (SearchResultRoot) ApiService.a(this.a(HttpRequest.a(string3)), SearchResultRoot.class);
             return searchResultRoot;
-        } catch (HttpRequest$HttpRequestException var4_5) {
+        } catch (HttpRequest.HttpRequestException var4_5) {
             throw var4_5.getCause();
         }
     }
@@ -2368,7 +2371,7 @@ public class ApiService {
         try {
             UgcFilterRoot ugcFilterRoot = (UgcFilterRoot) ApiService.a(this.a(HttpRequest.a(string)), UgcFilterRoot.class);
             return ugcFilterRoot;
-        } catch (HttpRequest$HttpRequestException var2_3) {
+        } catch (HttpRequest.HttpRequestException var2_3) {
             throw var2_3.getCause();
         }
     }
@@ -2401,7 +2404,7 @@ public class ApiService {
                 chapterRoot.setChapter(chapter);
                 return chapterRoot;
             }
-        } catch (HttpRequest$HttpRequestException var4_11) {
+        } catch (HttpRequest.HttpRequestException var4_11) {
             throw var4_11.getCause();
         }
     }
@@ -2411,7 +2414,7 @@ public class ApiService {
         try {
             GameRoot gameRoot = (GameRoot) ApiService.a(this.a(HttpRequest.a(string)), GameRoot.class);
             return gameRoot;
-        } catch (HttpRequest$HttpRequestException var2_3) {
+        } catch (HttpRequest.HttpRequestException var2_3) {
             throw var2_3.getCause();
         }
     }
@@ -2439,7 +2442,7 @@ public class ApiService {
         try {
             SearchResultRoot searchResultRoot = (SearchResultRoot) ApiService.a(this.a(HttpRequest.a(string3)), SearchResultRoot.class);
             return searchResultRoot;
-        } catch (HttpRequest$HttpRequestException var4_5) {
+        } catch (HttpRequest.HttpRequestException var4_5) {
             throw var4_5.getCause();
         }
     }
@@ -2449,7 +2452,7 @@ public class ApiService {
         try {
             GameLayoutRoot gameLayoutRoot = (GameLayoutRoot) ApiService.a(this.a(HttpRequest.a(string)), GameLayoutRoot.class);
             return gameLayoutRoot;
-        } catch (HttpRequest$HttpRequestException var2_3) {
+        } catch (HttpRequest.HttpRequestException var2_3) {
             throw var2_3.getCause();
         }
     }
@@ -2459,7 +2462,7 @@ public class ApiService {
         try {
             ReviewHistory reviewHistory = (ReviewHistory) ApiService.a(this.a(HttpRequest.a(string3)), ReviewHistory.class);
             return reviewHistory;
-        } catch (HttpRequest$HttpRequestException var4_5) {
+        } catch (HttpRequest.HttpRequestException var4_5) {
             throw var4_5.getCause();
         }
     }
@@ -2470,7 +2473,7 @@ public class ApiService {
         try {
             SearchPromRoot searchPromRoot = (SearchPromRoot) ApiService.a(this.a(HttpRequest.a(string3)), SearchPromRoot.class);
             return searchPromRoot;
-        } catch (HttpRequest$HttpRequestException var4_5) {
+        } catch (HttpRequest.HttpRequestException var4_5) {
             throw var4_5.getCause();
         }
     }
@@ -2480,7 +2483,7 @@ public class ApiService {
         try {
             BookInfo bookInfo = (BookInfo) ApiService.a(this.a(HttpRequest.a(string2)), BookInfo.class);
             return bookInfo;
-        } catch (HttpRequest$HttpRequestException var3_4) {
+        } catch (HttpRequest.HttpRequestException var3_4) {
             throw var3_4.getCause();
         }
     }
@@ -2490,7 +2493,7 @@ public class ApiService {
         try {
             GameCatRoot gameCatRoot = (GameCatRoot) ApiService.a(this.a(HttpRequest.a(string)), GameCatRoot.class);
             return gameCatRoot;
-        } catch (HttpRequest$HttpRequestException var2_3) {
+        } catch (HttpRequest.HttpRequestException var2_3) {
             throw var2_3.getCause();
         }
     }
@@ -2505,7 +2508,7 @@ public class ApiService {
         String string4 = f + string3;
         try {
             return (NotificationRoot) ApiService.a(this.a(HttpRequest.a(string4)), NotificationRoot.class);
-        } catch (HttpRequest$HttpRequestException var5_6) {
+        } catch (HttpRequest.HttpRequestException var5_6) {
             throw var5_6.getCause();
         }
     }
@@ -2515,7 +2518,7 @@ public class ApiService {
         try {
             GameLayoutRoot gameLayoutRoot = (GameLayoutRoot) ApiService.a(this.a(HttpRequest.a(string)), GameLayoutRoot.class);
             return gameLayoutRoot;
-        } catch (HttpRequest$HttpRequestException var2_3) {
+        } catch (HttpRequest.HttpRequestException var2_3) {
             throw var2_3.getCause();
         }
     }
@@ -2530,7 +2533,7 @@ public class ApiService {
         String string4 = f + string3;
         try {
             return (NotificationRoot) ApiService.a(this.a(HttpRequest.a(string4)), NotificationRoot.class);
-        } catch (HttpRequest$HttpRequestException var5_6) {
+        } catch (HttpRequest.HttpRequestException var5_6) {
             throw var5_6.getCause();
         }
     }
@@ -2540,7 +2543,7 @@ public class ApiService {
         try {
             SgTocRoot sgTocRoot = (SgTocRoot) ApiService.a(this.a(HttpRequest.a(string2), 7), SgTocRoot.class);
             return sgTocRoot;
-        } catch (HttpRequest$HttpRequestException var3_4) {
+        } catch (HttpRequest.HttpRequestException var3_4) {
             throw var3_4.getCause();
         }
     }
@@ -2550,7 +2553,7 @@ public class ApiService {
         try {
             IKanshuUrlResult iKanshuUrlResult = (IKanshuUrlResult) ApiService.a(this.a(HttpRequest.a(string)), IKanshuUrlResult.class);
             return iKanshuUrlResult;
-        } catch (HttpRequest$HttpRequestException var2_3) {
+        } catch (HttpRequest.HttpRequestException var2_3) {
             throw var2_3.getCause();
         }
     }
@@ -2565,7 +2568,7 @@ public class ApiService {
             httpRequest.a(hashMap);
             PurchaseVipResult purchaseVipResult = (PurchaseVipResult) ApiService.a(httpRequest, PurchaseVipResult.class);
             return purchaseVipResult;
-        } catch (HttpRequest$HttpRequestException var7_7) {
+        } catch (HttpRequest.HttpRequestException var7_7) {
             throw var7_7.getCause();
         }
     }
@@ -2575,7 +2578,7 @@ public class ApiService {
         try {
             LdTocRoot ldTocRoot = (LdTocRoot) ApiService.a(this.a(HttpRequest.a(string2), 8), LdTocRoot.class);
             return ldTocRoot;
-        } catch (HttpRequest$HttpRequestException var3_4) {
+        } catch (HttpRequest.HttpRequestException var3_4) {
             throw var3_4.getCause();
         }
     }
@@ -2585,7 +2588,7 @@ public class ApiService {
         try {
             BookTopRoot bookTopRoot = (BookTopRoot) ApiService.a(this.a(HttpRequest.a(string)), BookTopRoot.class);
             return bookTopRoot;
-        } catch (HttpRequest$HttpRequestException var2_3) {
+        } catch (HttpRequest.HttpRequestException var2_3) {
             throw var2_3.getCause();
         }
     }
@@ -2600,7 +2603,7 @@ public class ApiService {
             httpRequest.a(hashMap);
             ChangeNickNameRoot changeNickNameRoot = (ChangeNickNameRoot) ApiService.a(httpRequest, ChangeNickNameRoot.class);
             return changeNickNameRoot;
-        } catch (HttpRequest$HttpRequestException var7_7) {
+        } catch (HttpRequest.HttpRequestException var7_7) {
             var7_7.printStackTrace();
             throw var7_7.getCause();
         }
@@ -2611,7 +2614,7 @@ public class ApiService {
         try {
             String string3 = this.a(HttpRequest.a(string2), 8).d();
             return string3;
-        } catch (HttpRequest$HttpRequestException var3_4) {
+        } catch (HttpRequest.HttpRequestException var3_4) {
             throw var3_4.getCause();
         }
     }
@@ -2626,7 +2629,7 @@ public class ApiService {
             httpRequest.a(hashMap);
             ChangeGenderRoot changeGenderRoot = (ChangeGenderRoot) ApiService.a(httpRequest, ChangeGenderRoot.class);
             return changeGenderRoot;
-        } catch (HttpRequest$HttpRequestException var7_7) {
+        } catch (HttpRequest.HttpRequestException var7_7) {
             var7_7.printStackTrace();
             throw var7_7.getCause();
         }
@@ -2642,7 +2645,7 @@ public class ApiService {
         try {
             EsTocRoot esTocRoot = (EsTocRoot) ApiService.a(this.a(HttpRequest.a(string2), 3), EsTocRoot.class);
             return esTocRoot;
-        } catch (HttpRequest$HttpRequestException var5_6) {
+        } catch (HttpRequest.HttpRequestException var5_6) {
             throw var5_6.getCause();
         }
     }
@@ -2652,7 +2655,7 @@ public class ApiService {
         try {
             int n = SsChapterJson.getTocCount(this.a(HttpRequest.a(string2), 6).d());
             return n;
-        } catch (HttpRequest$HttpRequestException var3_4) {
+        } catch (HttpRequest.HttpRequestException var3_4) {
             throw var3_4.getCause();
         }
     }
@@ -2666,7 +2669,7 @@ public class ApiService {
             httpRequest.a(hashMap);
             ResultStatus resultStatus = (ResultStatus) ApiService.a(httpRequest, ResultStatus.class);
             return resultStatus;
-        } catch (HttpRequest$HttpRequestException var6_7) {
+        } catch (HttpRequest.HttpRequestException var6_7) {
             var6_7.printStackTrace();
             throw var6_7.getCause();
         }
@@ -2698,7 +2701,7 @@ public class ApiService {
                 chapterRoot.getChapter().setLink(string);
                 return chapterRoot;
             }
-        } catch (HttpRequest$HttpRequestException var5_10) {
+        } catch (HttpRequest.HttpRequestException var5_10) {
             throw var5_10.getCause();
         }
     }
@@ -2713,7 +2716,7 @@ public class ApiService {
             httpRequest.a(hashMap);
             ResultStatus resultStatus = (ResultStatus) ApiService.a(httpRequest, ResultStatus.class);
             return resultStatus;
-        } catch (HttpRequest$HttpRequestException var7_7) {
+        } catch (HttpRequest.HttpRequestException var7_7) {
             var7_7.printStackTrace();
             throw var7_7.getCause();
         }
@@ -2744,7 +2747,7 @@ public class ApiService {
                 chapterRoot.getChapter().setLink(string);
                 return chapterRoot;
             }
-        } catch (HttpRequest$HttpRequestException var4_9) {
+        } catch (HttpRequest.HttpRequestException var4_9) {
             throw var4_9.getCause();
         }
     }
@@ -2759,7 +2762,7 @@ public class ApiService {
             httpRequest.a(hashMap);
             ResultStatus resultStatus = (ResultStatus) ApiService.a(httpRequest, ResultStatus.class);
             return resultStatus;
-        } catch (HttpRequest$HttpRequestException var7_7) {
+        } catch (HttpRequest.HttpRequestException var7_7) {
             var7_7.printStackTrace();
             throw var7_7.getCause();
         }
@@ -2770,7 +2773,7 @@ public class ApiService {
         try {
             BookRankDetailRoot bookRankDetailRoot = (BookRankDetailRoot) ApiService.a(this.a(HttpRequest.a(string2)), BookRankDetailRoot.class);
             return bookRankDetailRoot;
-        } catch (HttpRequest$HttpRequestException var3_4) {
+        } catch (HttpRequest.HttpRequestException var3_4) {
             throw var3_4.getCause();
         }
     }
@@ -2785,13 +2788,13 @@ public class ApiService {
             httpRequest.a(hashMap);
             ResultStatus resultStatus = (ResultStatus) ApiService.a(httpRequest, ResultStatus.class);
             return resultStatus;
-        } catch (HttpRequest$HttpRequestException var7_7) {
+        } catch (HttpRequest.HttpRequestException var7_7) {
             var7_7.printStackTrace();
             throw var7_7.getCause();
         }
     }
 
-    class JsonException extends IOException {
+    static class JsonException extends IOException {
         private static final long serialVersionUID = -8247637549733902252L;
 
         public JsonException(JsonParseException jsonParseException) {

@@ -1,8 +1,11 @@
 package com.clilystudio.netbook.adapter;
 
 import android.content.Context;
+
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.am;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -10,6 +13,7 @@ import com.clilystudio.netbook.model.Author;
 import com.clilystudio.netbook.model.GirlTopicSummary;
 import com.clilystudio.netbook.ui.SmartImageView;
 import com.clilystudio.netbook.util.W;
+import com.clilystudio.netbook.util.e;
 import com.clilystudio.netbook.util.t;
 import com.clilystudio.netbook.widget.PostFlag;
 
@@ -28,15 +32,19 @@ public final class o extends W<GirlTopicSummary> {
      * Enabled aggressive block sorting
      */
     @Override
-    protected final /* synthetic */ void a(int n, Object object) {
-        GirlTopicSummary girlTopicSummary = (GirlTopicSummary) object;
+    protected final /* synthetic */ void a(int n, final GirlTopicSummary girlTopicSummary) {
         Author author = girlTopicSummary.getAuthor();
-        SmartImageView smartImageView = (SmartImageView) this.a(0, SmartImageView.class);
+        final SmartImageView smartImageView = (SmartImageView) this.a(0, SmartImageView.class);
         if (this.a) {
             smartImageView.setImageResource(R.drawable.avatar_default);
         } else {
             smartImageView.setImageUrl(author.getScaleAvatar(), R.drawable.avatar_default);
-            smartImageView.setOnClickListener(new p(this, smartImageView, girlTopicSummary));
+            smartImageView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    smartImageView.getContext().startActivity(com.clilystudio.netbook.util.e.a(smartImageView.getContext(),girlTopicSummary.getAuthor()));
+                }
+            });
         }
         if (girlTopicSummary.getVoteCount() > 0 || girlTopicSummary.getTitle().equals("vote")) {
             girlTopicSummary.getType();

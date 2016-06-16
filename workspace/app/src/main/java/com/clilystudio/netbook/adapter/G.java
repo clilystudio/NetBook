@@ -23,6 +23,7 @@ import com.clilystudio.netbook.ui.post.PostDetailActivity;
 import com.clilystudio.netbook.ui.post.ReviewActivity;
 import com.clilystudio.netbook.ui.post.TweetDetailActivity;
 import com.clilystudio.netbook.ui.user.AuthLoginActivity;
+import com.clilystudio.netbook.util.e;
 import com.clilystudio.netbook.util.t;
 
 import java.util.Date;
@@ -227,22 +228,49 @@ public class G extends u {
         return this.a(view, this.a(((Tweet) this.getItem(n2)).getRefTweet()), viewGroup, n2);
     }
 
-    private void a(int n, View view, Tweet tweet) {
+    private void a(int n, View view, final Tweet tweet) {
         switch (n) {
             default: {
                 return;
             }
             case 0: {
-                view.setOnClickListener(new H(this, tweet));
+                view.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Tweet tweet2 = tweet;
+                        if (tweet2.isRetween()) {
+                            tweet2 = tweet2.getRefTweet();
+                        }
+                        G.a(G.this, tweet2);
+                    }
+                });
                 return;
             }
             case 2: {
-                view.setOnClickListener(new I(this, tweet));
+                view.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Tweet tweet2 = tweet;
+                        if (tweet2.isRetween()) {
+                            tweet2 = tweet2.getRefTweet();
+                        }
+                        G.b(G.this, tweet2);
+                    }
+                });
                 return;
             }
             case 1:
         }
-        view.setOnClickListener(new J(this, tweet));
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Tweet tweet2 = tweet;
+                if (tweet2.isRetween()) {
+                    tweet2 = tweet2.getRefTweet();
+                }
+                G.c(G.this, tweet2);
+            }
+        });
     }
 
     private void a(R_ViewHolder r) {
@@ -257,7 +285,7 @@ public class G extends u {
     /*
      * Enabled aggressive block sorting
      */
-    private void a(R_ViewHolder r, Tweet tweet, User user, boolean bl) {
+    private void a(final R_ViewHolder r, Tweet tweet, final User user, boolean bl) {
         G.a(r.h, 15, 15, 15, 15);
         r.h.setVisibility(View.VISIBLE);
         if (bl) {
@@ -281,7 +309,12 @@ public class G extends u {
                 this.b(r);
             }
         }
-        r.h.setOnClickListener(new M(this, r, user));
+        r.h.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                G.a(G.this, r, user);
+            }
+        });
     }
 
     /*
@@ -355,10 +388,15 @@ public class G extends u {
             string3 = "\u8f6c\u53d1";
         }
         textView.setText(string3);
-        Intent intent = OtherUserActivity.a(this.a);
+        final Intent intent = OtherUserActivity.a(this.a);
         intent.putExtra("USER_ID", tweet.getUser().getId());
         intent.putExtra("USER_NAME", tweet.getUser().getNickname());
-        r.a.setOnClickListener(new K(this, intent));
+        r.a.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                G.a(G.this).startActivity(intent);
+            }
+        });
         if (tweet != null && 1 == this.a(tweet)) {
             r.m.setText(tweet.getBook().getTitle());
             r.n.setValue(tweet.getScore());
@@ -415,8 +453,8 @@ public class G extends u {
     public View getView(int n, View view, ViewGroup viewGroup) {
         int n2 = this.getItemViewType(n);
         View view2 = this.a(view, n2, viewGroup, n);
-        Tweet tweet = (Tweet) this.getItem(n);
-        R_ViewHolder r = (R_ViewHolder) view2.getTag();
+        final Tweet tweet = (Tweet) this.getItem(n);
+        final R_ViewHolder r = (R_ViewHolder) view2.getTag();
         switch (n2) {
             case 0: {
                 this.a(tweet, r);
@@ -446,7 +484,31 @@ public class G extends u {
         }
         this.a(r, tweet, tweet.getUser(), false);
         G.a(r.g, 15, 15, 15, 15);
-        r.g.setOnClickListener(new L(this, tweet, r));
+        r.g.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Account account = am.e();
+                if (account == null) {
+                    G.a(G.this).startActivity(AuthLoginActivity.a(G.a(G.this)));
+                    return;
+                }
+                if (G.a(account, tweet)) {
+                    String string = tweet.get_id();
+                    String string2 = tweet.isRetween() ? tweet.getRefTweet().get_id() : string;
+                    G.a(G.this, tweet, r);
+                    com.clilystudio.netbook.util.e.a((Activity) ((Activity) G.a(this.c)), (String) "\t\t\u8f6c\u53d1\u6210\u529f\t\t");
+                    RetweenRecord.save2DB(account.getUser().getId(), string2);
+                    U u2 = new U(G.this, tweet, r);
+                    String[] arrobject = new String[]{am.e().getToken(), string2};
+                    u2.execute(arrobject);
+                    return;
+                }
+                String string = G.a(G.this).getString(R.string.retweeted);
+                String string3 = G.a(tweet, account) && !tweet.isRetween() ? G.a(G.this).getString(R.string.not_can_retween_self) : string;
+                com.clilystudio.netbook.util.e.a((Activity) ((Activity) G.a(G.this)), (String) ("\t\t" + string3 + "\t\t"));
+
+            }
+        });
         return view2;
     }
 

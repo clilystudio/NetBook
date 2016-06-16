@@ -8,7 +8,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
+import com.clilystudio.netbook.*;
+import com.clilystudio.netbook.am;
 import com.clilystudio.netbook.d;
+import com.clilystudio.netbook.event.*;
+import com.clilystudio.netbook.event.i;
+import com.clilystudio.netbook.event.v;
 import com.clilystudio.netbook.model.ChineseAllPromRoot;
 import com.clilystudio.netbook.model.TocSummary;
 import com.clilystudio.netbook.ui.BaseLoadingActivity;
@@ -59,14 +64,25 @@ public class ReaderMixActivity extends BaseLoadingActivity {
         return readerMixActivity.f;
     }
 
-    static /* synthetic */ void e(ReaderMixActivity readerMixActivity) {
+    static /* synthetic */ void e(final ReaderMixActivity readerMixActivity) {
         readerMixActivity.i.setVisibility(View.VISIBLE);
         readerMixActivity.j.setVisibility(View.GONE);
-        String string = readerMixActivity.k.getHost();
+        final String string = readerMixActivity.k.getHost();
         if (string.equals(readerMixActivity.c)) {
             readerMixActivity.i.findViewById(R.id.txt_cp_header_selected).setVisibility(View.VISIBLE);
         }
-        readerMixActivity.i.setOnClickListener(new bD(readerMixActivity, string));
+        readerMixActivity.i.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!string.equals(ReaderMixActivity.a(readerMixActivity))) {
+                    MyApplication.a().c(ReaderMixActivity.b(readerMixActivity));
+                    am.c((String) ReaderMixActivity.b(readerMixActivity), (int) 9);
+                    com.clilystudio.netbook.event.i.a().post(new v(1));
+                    ReaderMixActivity.a(readerMixActivity, ReaderMixActivity.f(readerMixActivity).get_id());
+                }
+                readerMixActivity.finish();
+           }
+        });
     }
 
     static /* synthetic */ TocSummary f(ReaderMixActivity readerMixActivity) {
@@ -109,7 +125,18 @@ public class ReaderMixActivity extends BaseLoadingActivity {
         if ("mix".equals(this.c)) {
             view3.setVisibility(View.VISIBLE);
         }
-        view2.setOnClickListener(new bB(this));
+        view2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!"mix".equals(ReaderMixActivity.a(ReaderMixActivity.this))) {
+                    MyApplication.a().c(ReaderMixActivity.b(ReaderMixActivity.this));
+                    com.clilystudio.netbook.am.c((String) ReaderMixActivity.b(ReaderMixActivity.this), (int) 5);
+                    com.clilystudio.netbook.event.i.a().post(new v(1));
+                    ReaderMixActivity.a(ReaderMixActivity.this, "MIX_TOC_ID");
+                }
+                ReaderMixActivity.this.finish();
+            }
+        });
         this.i = this.findViewById(R.id.reader_cp_header);
         this.j = this.findViewById(R.id.txt_label);
         this.e.setAdapter(this.f);

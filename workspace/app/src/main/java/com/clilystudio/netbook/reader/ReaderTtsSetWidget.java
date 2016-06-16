@@ -10,6 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.model.TtsRoot;
 import com.iflytek.cloud.SpeechSynthesizer;
 import com.iflytek.cloud.SpeechUtility;
@@ -194,15 +195,43 @@ public class ReaderTtsSetWidget extends LinearLayout {
         this.c[2] = (TextView) this.findViewById(R.id.tts_time3);
         this.c[3] = (TextView) this.findViewById(R.id.tts_time4);
         for (int j = 0; j < this.c.length; ++j) {
-            this.c[j].setOnClickListener((View.OnClickListener) ((Object) new cj(this, j)));
+            final int finalJ = j;
+            this.c[j].setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (ReaderTtsSetWidget.b(ReaderTtsSetWidget.this) == finalJ) {
+                        ReaderTtsSetWidget.a(ReaderTtsSetWidget.this, finalJ, false);
+                        ReaderTtsSetWidget.a(ReaderTtsSetWidget.this, -1);
+                    } else {
+                        ReaderTtsSetWidget.b(ReaderTtsSetWidget.this, finalJ);
+                        ReaderTtsSetWidget.a(ReaderTtsSetWidget.this, finalJ);
+                    }
+                    ReaderTtsSetWidget.c(ReaderTtsSetWidget.this);
+                    ReaderTtsSetWidget.a(ReaderTtsSetWidget.this).c();
+                }
+            });
         }
         this.d = (TextView) this.findViewById(R.id.tts_voice_more);
-        this.d.setOnClickListener((View.OnClickListener) ((Object) new cg(this)));
+        this.d.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ReaderTtsSetWidget.this.setVisibility(View.GONE);
+                ReaderTtsSetWidget.a(ReaderTtsSetWidget.this).b();
+//                SpeechUtility.getUtility().openEngineSettings("tts");
+            }
+        });
         this.e = (SeekBar) this.findViewById(R.id.tts_voice_speed);
         this.e.setProgress(a.a(this.getContext(), "speech_speed", 50));
         this.e.setOnSeekBarChangeListener((SeekBar.OnSeekBarChangeListener) ((Object) new ch(this)));
         this.f = (Button) this.findViewById(R.id.tts_exit);
-        this.f.setOnClickListener((View.OnClickListener) ((Object) new ci(this)));
+        this.f.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ReaderTtsSetWidget.a(ReaderTtsSetWidget.this, ReaderTtsSetWidget.b(ReaderTtsSetWidget.this), true);
+                ReaderTtsSetWidget.a(ReaderTtsSetWidget.this, true);
+                ReaderTtsSetWidget.a(ReaderTtsSetWidget.this, -1);
+            }
+        });
         this.i = new Timer();
     }
 
@@ -237,72 +266,7 @@ public class ReaderTtsSetWidget extends LinearLayout {
         this.g.a();
     }
 
-    /*
-     * Unable to fully structure code
-     * Enabled aggressive block sorting
-     * Lifted jumps to return sites
-     */
     public void setVoiceSourceView() {
-        block7:
-        {
-            var1_1 = TtsRoot.getInfoFromJson(SpeechUtility.getUtility().getParameter("tts"));
-            if (var1_1 == null) return;
-            if (var1_1.getRet().equals("0") == false) return;
-            var2_2 = var1_1.getResult();
-            if (var2_2 == null) return;
-            var3_3 = var2_2.getTts();
-            if (var3_3 == null) return;
-            if (var3_3.length <= 3) {
-                var9_4 = var3_3;
-                lbl10:
-                // 3 sources:
-                do {
-                    this.h = var9_4;
-                    var10_10 = this.h.length > 3 ? 3 : this.h.length;
-                    for (var11_11 = 0; var11_11 < var10_10; ++var11_11) {
-                        this.b[var11_11].setVisibility(View.VISIBLE);
-                        this.b[var11_11].setText(this.h[var11_11].getNickname());
-                        this.b[var11_11].setTag(this.h[var11_11].getName());
-                        this.b[var11_11].setOnClickListener((View.OnClickListener) new cm(this, var11_11));
-                        if (this.a(this.h[var11_11])) {
-                            this.b[var11_11].setBackgroundResource(R.drawable.common_red_bg_normal);
-                            if (!this.p) continue;
-                            this.setSpeechVoice(this.h[var11_11].getName());
-                            this.p = false;
-                            continue;
-                        }
-                        this.b[var11_11].setBackgroundResource(R.drawable.tts_widget_text_bg);
-                    }
-                    if (var10_10 >= 3) return;
-                    while (var10_10 < 3) {
-                        this.b[var10_10].setVisibility(4);
-                        ++var10_10;
-                    }
-                    return;
-                    break;
-                } while (true);
-            }
-            for (var4_5 = 0; var4_5 < var3_3.length; ++var4_5) {
-                if (!this.a(var3_3[var4_5])) continue;
-                var5_6 = var4_5;
-                break block7;
-            }
-            var5_6 = 0;
-        }
-        if (var5_6 >= 3)**GOTO lbl41
-        var9_4 = var3_3;
-        **GOTO lbl10
-        lbl41:
-        // 1 sources:
-        var6_7 = new TtsRoot$Tts[var3_3.length];
-        var6_7[0] = var3_3[var5_6];
-        var7_8 = 1;
-        for (var8_9 = 0; var8_9 < var3_3.length; ++var8_9) {
-            if (var8_9 == var5_6) continue;
-            var6_7[var7_8] = var3_3[var8_9];
-            ++var7_8;
-        }
-        var9_4 = var6_7;
-        **while (true)
-    }
+        return;
+     }
 }

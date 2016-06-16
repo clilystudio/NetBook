@@ -1,6 +1,8 @@
 package com.clilystudio.netbook.reader.random;
 
 import android.content.Context;
+
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.am;
 import android.util.AttributeSet;
 import android.view.View;
@@ -37,7 +39,12 @@ public class ReaderRandomActionBar extends RelativeLayout {
         this.setLayoutParams(layoutParams);
         View view = this.findViewById(R.id.reader_random_ab_back);
         this.a = (TextView) this.findViewById(R.id.reader_random_ab_title);
-        view.setOnClickListener((View.OnClickListener) ((Object) new c(this)));
+        view.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ReaderRandomActionBar.a(ReaderRandomActionBar.this, v.getId());
+            }
+        });
     }
 
     public void setOnBtnClickListener$3ce42dcd(a a2) {

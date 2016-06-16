@@ -11,6 +11,8 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
+
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.am;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.PagerAdapter;
@@ -32,6 +34,7 @@ import com.clilystudio.netbook.reader.ae;
 import com.clilystudio.netbook.reader.bH;
 import com.clilystudio.netbook.reader.bZ;
 import com.clilystudio.netbook.reader.cw;
+import com.xiaomi.mistatistic.sdk.MiStatInterface;
 
 public class ReaderRandomActivity extends FragmentActivity {
     private BroadcastReceiver A;
@@ -477,8 +480,34 @@ public class ReaderRandomActivity extends FragmentActivity {
         } else {
             this.r = false;
         }
-        view.setOnClickListener((View.OnClickListener) ((Object) new com.clilystudio.netbook.reader.random.d(this)));
-        view2.setOnClickListener(new o(this));
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (ReaderRandomActivity.a(ReaderRandomActivity.this)) {
+                    ReaderRandomActivity.b(ReaderRandomActivity.this);
+                    ReaderRandomActivity.a(ReaderRandomActivity.this, false);
+                    ReaderRandomActivity.c(ReaderRandomActivity.this).setText("\u6dfb\u52a0\u5230\u4e66\u67b6");
+                    ReaderRandomActivity.d(ReaderRandomActivity.this).setBackgroundResource(R.drawable.bg_red_button);
+                    ReaderRandomActivity.c(ReaderRandomActivity.this).setCompoundDrawablesWithIntrinsicBounds(R.drawable.secret_add_book, 0, 0, 0);
+                    return;
+                }
+                ReaderRandomActivity.e(ReaderRandomActivity.this);
+                ReaderRandomActivity.a(ReaderRandomActivity.this, true);
+                ReaderRandomActivity.d(ReaderRandomActivity.this).setBackgroundResource(R.drawable.bg_green_button);
+                ReaderRandomActivity.c(ReaderRandomActivity.this).setCompoundDrawablesWithIntrinsicBounds(R.drawable.secret_added_book, 0, 0, 0);
+                ReaderRandomActivity.c(ReaderRandomActivity.this).setText("\u5df2\u6dfb\u52a0");
+                MiStatInterface.recordCountEvent("random_rader_add_shelf", null);
+            }
+        });
+        view2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ReaderRandomActivity.f(ReaderRandomActivity.this);
+                MiStatInterface.recordCountEvent("random_reader_change_book", null);
+                MiStatInterface.recordCalculateEvent("random_reader_book_chapter_count", null, ReaderRandomActivity.g(ReaderRandomActivity.this));
+                ReaderRandomActivity.a(ReaderRandomActivity.this, 1);
+            }
+        });
         this.n = this.getWindow().getDecorView();
         if (a.h()) {
             this.n.setOnSystemUiVisibilityChangeListener(new r(this));
