@@ -11,6 +11,7 @@ import android.widget.ListAdapter;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.db.AudioRecord;
 import com.clilystudio.netbook.event.F;
 import com.clilystudio.netbook.ui.home.HomeActivity;
@@ -458,7 +459,12 @@ public class AudioBookPlayActivity extends BaseActivity implements View.OnClickL
         this.x.setOnClickListener(this);
         this.findViewById(R.id.play_layout).setOnTouchListener((View.OnTouchListener) ((Object) new g(this)));
         this.n.setClickable(true);
-        this.n.setOnClickListener((View.OnClickListener) ((Object) new h(this)));
+        this.n.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AudioBookPlayActivity.this.startActivity(AudiobookInfoActivity.a( AudioBookPlayActivity.this, AudioBookPlayActivity.d( AudioBookPlayActivity.this)));
+            }
+        });
         this.a(false);
         this.s.setThumbOffset(0);
         this.s.setOnSeekBarChangeListener((SeekBar.OnSeekBarChangeListener) ((Object) new i(this)));

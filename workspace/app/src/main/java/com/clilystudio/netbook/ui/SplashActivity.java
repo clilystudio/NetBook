@@ -7,18 +7,21 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
-import com.clilystudio.netbook.am;
+import android.text.TextUtils;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.activeandroid.ActiveAndroid;
+import com.clilystudio.netbook.R;
+import com.clilystudio.netbook.am;
 import com.clilystudio.netbook.db.BookFile;
 import com.clilystudio.netbook.model.SplashAdvert;
 import com.clilystudio.netbook.model.TxtFileObject;
 import com.clilystudio.netbook.ui.home.HomeActivity;
+import com.clilystudio.netbook.util.InsideLinkIntent;
 import com.clilystudio.netbook.util.UmengGameTracer;
-import com.clilystudio.netbook.util.UmengGameTracer.From;
 import com.clilystudio.netbook.util.adutil.AdSplashImp;
 import com.clilystudio.netbook.util.adutil.g;
 import com.clilystudio.netbook.util.adutil.l;
@@ -91,7 +94,7 @@ public class SplashActivity extends Activity {
     private boolean h() {
         boolean bl;
         e e2 = e.a((Context) this.getApplicationContext());
-        SplashAdvert splashAdvert = e2.a();
+        final SplashAdvert splashAdvert = e2.a();
         if (splashAdvert != null) {
             try {
                 new UmengGameTracer(this, UmengGameTracer.From.Splash).a(splashAdvert.getSplashRecord().splashId);
@@ -102,14 +105,31 @@ public class SplashActivity extends Activity {
             }
             this.b = 3000;
             Bitmap bitmap = splashAdvert.getBitmap();
-            String string = splashAdvert.getSplashRecord().link;
+            final String string = splashAdvert.getSplashRecord().link;
             this.findViewById(R.id.splash_ad_container).setVisibility(View.VISIBLE);
             this.findViewById(R.id.splash_bottom).setVisibility(View.GONE);
             ImageView imageView = (ImageView) this.findViewById(R.id.splash_ad_img);
             imageView.setImageBitmap(bitmap);
-            imageView.setOnClickListener(new cj(this, splashAdvert, string));
+            imageView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    block3:
+                    {
+                        SplashActivity.a(SplashActivity.this, true);
+                        SplashActivity.this.a();
+                        String string2 = splashAdvert.getSplashRecord().insideLink;
+                        if (!TextUtils.isEmpty(string2)) {
+                            SplashActivity.this.startActivity(new InsideLinkIntent((Context) SplashActivity.this, string2));
+                            SplashActivity.this.finish();
+                            break block3;
+                        }
+                        SplashActivity.a(SplashActivity.this, string);
+                    }
+                    com.clilystudio.netbook.hpay100.a.a.o(SplashActivity.this, string);
+                }
+            });
             this.i();
-            a.m(this, splashAdvert.getSplashRecord().splashId);
+            com.clilystudio.netbook.hpay100.a.a.m(this, splashAdvert.getSplashRecord().splashId);
             this.f();
         } else {
             bl = false;
@@ -119,7 +139,13 @@ public class SplashActivity extends Activity {
     }
 
     private void i() {
-        ((TextView) this.findViewById(R.id.splash_ad_skip)).setOnClickListener(new ck(this));
+        ((TextView) this.findViewById(R.id.splash_ad_skip)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SplashActivity.this.d();
+                com.clilystudio.netbook.hpay100.a.a.o(SplashActivity.this, "SKIP");
+            }
+        });
     }
 
     public final void a() {

@@ -70,4 +70,5 @@
     <color name="activate_text">#333333</color>
     <color name="main_text">#333333</color>
     <color name="list_divider">#333333</color>
+    <color name="audio_book_black">#000000</color>
 </resources>

@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
+
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.am;
 import android.view.View;
 import android.widget.ImageView;
@@ -432,7 +434,13 @@ public class AudiobookInfoActivity extends BaseActivity implements View.OnClickL
         this.a = this.findViewById(R.id.content);
         this.b = this.findViewById(R.id.pb_loading);
         this.c = this.findViewById(R.id.load_error_hint_btn);
-        this.c.setOnClickListener(new z(this));
+        this.c.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AudiobookInfoActivity.a(AudiobookInfoActivity.this, 0);
+                AudiobookInfoActivity.a(AudiobookInfoActivity.this);
+            }
+        });
         this.b();
     }
 

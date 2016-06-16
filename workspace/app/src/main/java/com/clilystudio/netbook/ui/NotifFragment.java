@@ -1,6 +1,8 @@
 package com.clilystudio.netbook.ui;
 
 import android.os.Bundle;
+
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.am;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -177,7 +179,12 @@ public abstract class NotifFragment extends Fragment {
         this.g = view.findViewById(R.id.pb_loading);
         this.h = (TextView) view.findViewById(R.id.empty_text);
         this.i = view.findViewById(R.id.load_error_hint_btn);
-        this.i.setOnClickListener((View.OnClickListener) ((Object) new br(this)));
+        this.i.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                NotifFragment.this.c();
+            }
+        });
         return view;
     }
 

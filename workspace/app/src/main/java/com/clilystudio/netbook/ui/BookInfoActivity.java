@@ -513,17 +513,32 @@ public class BookInfoActivity extends BaseActivity implements View.OnClickListen
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         this.setContentView(R.layout.activity_book_info);
-        ay ay2 = new ay(this);
+        final ay ay2 = new ay(this);
         this.c();
         View view = LayoutInflater.from(this).inflate(R.layout.ab_custom_two_text_view, null);
         ((TextView) view.findViewById(R.id.title)).setText(R.string.book_info_title);
-        view.findViewById(R.id.back).setOnClickListener(new U(this));
+        view.findViewById(R.id.back).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
         TextView textView = (TextView) view.findViewById(R.id.ab_custom_right_text);
         TextView textView2 = (TextView) view.findViewById(R.id.ab_custom_right_text_2);
         textView.setText(R.string.book_info_download);
         textView2.setText(R.string.share);
-        textView.setOnClickListener(new V(this, (ab) ((Object) ay2)));
-        textView2.setOnClickListener(new W(this, (ab) ((Object) ay2)));
+        textView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ay2.a();
+            }
+        });
+        textView2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ay2.b();
+            }
+        });
         this.a().a(view);
         this.b = this.findViewById(R.id.content);
         this.c = this.findViewById(R.id.pb_loading);

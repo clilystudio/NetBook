@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.clilystudio.netbook.MyApplication;
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.model.UGCNewCollection;
 import com.clilystudio.netbook.ui.home.HomeActivity;
@@ -51,17 +52,32 @@ public class BaseActivity extends AppCompatActivity {
         this.a(this.getString(n), this.getString(n2), aa2);
     }
 
-    public final void a(int n, String string, int n2, ab ab2) {
+    public final void a(int n, String string, int n2, final ab ab2) {
         this.c();
         View view = LayoutInflater.from(this).inflate(R.layout.ab_custom_text_icon_view, null);
         ((TextView) view.findViewById(R.id.title)).setText(R.string.ugc_list);
-        view.findViewById(R.id.back).setOnClickListener(new K(this));
+        view.findViewById(R.id.back).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
         TextView textView = (TextView) view.findViewById(R.id.actionbar_custom_right_text);
         ImageView imageView = (ImageView) view.findViewById(R.id.actionbar_custom_right_icon);
         textView.setText(string);
         imageView.setImageResource(R.drawable.ic_action_overflow);
-        textView.setOnClickListener(new L(this, ab2));
-        imageView.setOnClickListener(new M(this, ab2));
+        textView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ab2.a();
+            }
+        });
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ab2.b();
+            }
+        });
         this.a().a(view);
     }
 
@@ -69,17 +85,32 @@ public class BaseActivity extends AppCompatActivity {
         this.a(this.getString(n), string, aa2);
     }
 
-    public final void a(String string, int n, int n2, ab ab2) {
+    public final void a(String string, int n, int n2, final ab ab2) {
         this.c();
         View view = LayoutInflater.from(this).inflate(R.layout.ab_custom_two_text_view, null);
         ((TextView) view.findViewById(R.id.title)).setText(string);
-        view.findViewById(R.id.back).setOnClickListener(new X(this));
+        view.findViewById(R.id.back).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
         TextView textView = (TextView) view.findViewById(R.id.ab_custom_right_text);
         TextView textView2 = (TextView) view.findViewById(R.id.ab_custom_right_text_2);
         textView.setText(R.string.save);
         textView2.setText(R.string.publish);
-        textView.setOnClickListener(new Y(this, ab2));
-        textView2.setOnClickListener(new Z(this, ab2));
+        textView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ab2.a();
+            }
+        });
+        textView2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ab2.b();
+            }
+        });
         this.a().a(view);
     }
 
@@ -87,26 +118,46 @@ public class BaseActivity extends AppCompatActivity {
         this.a(string, this.getString(n), aa2);
     }
 
-    public final void a(String string, int n, aa aa2, String string2) {
+    public final void a(String string, int n, final aa aa2, String string2) {
         this.c();
         View view = LayoutInflater.from(this).inflate(R.layout.actionbar_custom_icon_view, null);
         ((TextView) view.findViewById(R.id.title)).setText(string);
-        view.findViewById(R.id.back).setOnClickListener(new P(this));
+        view.findViewById(R.id.back).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
         ImageView imageView = (ImageView) view.findViewById(R.id.ab_icon);
         imageView.setContentDescription(string2);
         imageView.setImageResource(n);
-        imageView.setOnClickListener(new Q(this, aa2));
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                aa2.a();
+            }
+        });
         this.a().a(view);
     }
 
-    public final void a(String string, String string2, aa aa2) {
+    public final void a(String string, String string2, final aa aa2) {
         this.c();
         View view = LayoutInflater.from(this).inflate(R.layout.actionbar_custom_text_view, null);
         ((TextView) view.findViewById(R.id.title)).setText(string);
-        view.findViewById(R.id.back).setOnClickListener(new S(this));
+        view.findViewById(R.id.back).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
         TextView textView = (TextView) view.findViewById(R.id.actionbar_custom_right_text);
         textView.setText(string2);
-        textView.setOnClickListener(new T(this, aa2));
+        textView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                aa2.a();
+            }
+        });
         this.a().a(view);
     }
 
@@ -114,15 +165,25 @@ public class BaseActivity extends AppCompatActivity {
         this.b(this.getString(n));
     }
 
-    public final void b(int n, int n2, aa aa2) {
+    public final void b(int n, int n2, final aa aa2) {
         String string = this.getString(R.string.game_detail);
         this.c();
         View view = LayoutInflater.from(this).inflate(R.layout.actionbar_custom_icon_view, null);
         ((TextView) view.findViewById(R.id.title)).setText(string);
-        view.findViewById(R.id.back).setOnClickListener(new N(this));
+        view.findViewById(R.id.back).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
         ImageView imageView = (ImageView) view.findViewById(R.id.ab_icon);
         imageView.setImageResource(R.drawable.ic_action_edit);
-        imageView.setOnClickListener(new O(this, aa2));
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                aa2.a();
+            }
+        });
         this.a().a(view);
     }
 

@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.am;
 import android.text.SpannableString;
 import android.text.style.ForegroundColorSpan;
@@ -43,7 +45,7 @@ public class AudiobookCategoryActivity extends BaseActivity {
     /*
      * Enabled aggressive block sorting
      */
-    static /* synthetic */ void a(AudiobookCategoryActivity audiobookCategoryActivity, TagList tagList) {
+    static /* synthetic */ void a(final AudiobookCategoryActivity audiobookCategoryActivity, TagList tagList) {
         List<Tag> list = tagList.getTagList();
         if (list.size() == 0) {
             return;
@@ -63,7 +65,7 @@ public class AudiobookCategoryActivity extends BaseActivity {
         int n4 = 0;
         int n5 = 0;
         while (n5 < list.size()) {
-            Tag tag = list.get(n5);
+            final Tag tag = list.get(n5);
             if (n5 % 3 == 0) {
                 tableRow = new TableRow(audiobookCategoryActivity);
                 tableLayout.addView((View) tableRow, layoutParams);
@@ -86,7 +88,12 @@ public class AudiobookCategoryActivity extends BaseActivity {
             textView.setGravity(17);
             textView.setTextAppearance(audiobookCategoryActivity, R.style.book_category_item_large);
             textView.setBackgroundResource(n3);
-            textView.setOnClickListener(new v(audiobookCategoryActivity, tag));
+            textView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    audiobookCategoryActivity.startActivity(AudiobookCategoryListActivity.a(audiobookCategoryActivity, tag.getTagName()));
+                }
+            });
             tableRow.addView((View) textView, layoutParams2);
             ++n5;
         }
@@ -140,7 +147,12 @@ public class AudiobookCategoryActivity extends BaseActivity {
         this.e = this.findViewById(R.id.content_category);
         this.b = this.findViewById(R.id.content_loading_pb);
         this.c = this.findViewById(R.id.content_load_error);
-        this.c.setOnClickListener(new q(this));
+        this.c.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AudiobookCategoryActivity.a(AudiobookCategoryActivity.this);
+            }
+        });
         this.b();
         ((RelativeLayout) this.findViewById(R.id.bottom_bg)).setBackgroundResource(am.b((Context) this, (int) R.attr.audiobookInfoBottomBg));
         TextView textView = (TextView) this.findViewById(R.id.BottomContentText);
@@ -149,6 +161,11 @@ public class AudiobookCategoryActivity extends BaseActivity {
         spannableString.setSpan(new ForegroundColorSpan(this.getResources().getColor(R.color.audio_book_black)), 5, 11, 33);
         spannableString.setSpan(new ForegroundColorSpan(this.getResources().getColor(R.color.tweet_operator_text_color)), 11, 13, 33);
         textView.setText(spannableString);
-        textView.setOnClickListener(new r(this));
+        textView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AudiobookCategoryActivity.b(AudiobookCategoryActivity.this);
+            }
+        });
     }
 }

@@ -9,7 +9,8 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.clilystudio.netbook.util.as;
+import com.clilystudio.netbook.R;
+import com.clilystudio.netbook.util.*;
 import com.ximalaya.ting.android.opensdk.model.track.Track;
 
 public final class n extends BaseAdapter {
@@ -40,7 +41,7 @@ public final class n extends BaseAdapter {
      * Enabled aggressive block sorting
      */
     @Override
-    public final View getView(int n2, View view, ViewGroup viewGroup) {
+    public final View getView(final int n2, View view, ViewGroup viewGroup) {
         p p2;
         if (view == null) {
             p2 = new p(this.a);
@@ -63,7 +64,25 @@ public final class n extends BaseAdapter {
         } else {
             p2.c.setImageResource(R.drawable.audiobook_playing0);
         }
-        view.setOnClickListener(new o(this, n2));
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (AudioBookPlayActivity.b(n.this.a) == null) {
+                    com.clilystudio.netbook.util.e.a((Context) n.this.a, "\u64ad\u653e\u5668\u51fa\u9519\u4e86");
+                    return;
+                }
+                if (n2 != AudioBookPlayActivity.k(n.this.a)) {
+                    AudioBookPlayActivity.d(n.this.a, true);
+                    AudioBookPlayActivity.b(n.this.a, n2);
+                    AudioBookPlayActivity.c(n.this.a, AudioBookPlayActivity.k(n.this.a));
+                } else if (as.c()) {
+                    as.h();
+                } else {
+                    AudioBookPlayActivity.b(n.this.a).d();
+                }
+                n.this.notifyDataSetChanged();
+            }
+        });
         return view;
     }
 }
