@@ -2,7 +2,6 @@ package com.clilystudio.netbook.adapter;
 
 import android.app.Activity;
 import android.content.Context;
-import com.clilystudio.netbook.am;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +10,14 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.TextView;
 
+import com.clilystudio.netbook.R;
+import com.clilystudio.netbook.am;
+import com.clilystudio.netbook.db.AudioRecord;
 import com.clilystudio.netbook.db.BookDlRecord;
+import com.clilystudio.netbook.db.BookFile;
+import com.clilystudio.netbook.db.BookReadRecord;
+import com.clilystudio.netbook.model.Advert;
+import com.clilystudio.netbook.model.BookFeed;
 import com.clilystudio.netbook.model.BookShelf;
 import com.clilystudio.netbook.ui.SmartImageView;
 import com.clilystudio.netbook.util.adutil.n;
@@ -201,64 +207,50 @@ public class HomeShelfAdapter extends u<BookShelf> {
      */
     @Override
     public View getView(int var1_1, View var2_2, ViewGroup var3_3) {
-        var4_4 = (BookShelf) this.getItem(var1_1);
-        var5_5 = var4_4.getType();
-        if (var2_2 != null)**GOTO lbl21
-        switch (var5_5) {
-            case 1: {
-                var2_2 = this.c.inflate(R.layout.list_item_shelf_advert, var3_3, false);
-                **break;
-            }
-            case 0: {
-                var2_2 = this.c.inflate(R.layout.list_item_shelf_book, var3_3, false);
-                **break;
-            }
-            case 2: {
-                var2_2 = this.c.inflate(R.layout.list_item_shelf_txt, var3_3, false);
-                **break;
-            }
-            case 3: {
-                var2_2 = this.c.inflate(R.layout.list_item_shelf_feed, var3_3, false);
-            }
-            lbl16:
-            // 5 sources:
-            default:
-            {
-                **GOTO lbl33
-            }
-            case 4:
-        }
-        var2_2 = this.c.inflate(R.layout.list_item_shelf_audio, var3_3, false);
-        **GOTO lbl33
-        lbl21:
-        // 1 sources:
-        if (this.d) {
-            if (var5_5 == 1 || var5_5 == 3) {
-                var2_2 = this.c.inflate(R.layout.list_item_shelf_empty, var3_3, false);
-            }
-        } else {
+        BookShelf var4_4 = (BookShelf) this.getItem(var1_1);
+        int var5_5 = var4_4.getType();
+        if (var2_2 == null) {
             switch (var5_5) {
-                default: {
-                    break;
-                }
-                case 1: {
+                case 1:
                     var2_2 = this.c.inflate(R.layout.list_item_shelf_advert, var3_3, false);
                     break;
-                }
-                case 3: {
+                case 0:
+                    var2_2 = this.c.inflate(R.layout.list_item_shelf_book, var3_3, false);
+                    break;
+                case 2:
+                    var2_2 = this.c.inflate(R.layout.list_item_shelf_txt, var3_3, false);
+                    break;
+                case 3:
                     var2_2 = this.c.inflate(R.layout.list_item_shelf_feed, var3_3, false);
+                    break;
+                case 4:
+                    var2_2 = this.c.inflate(R.layout.list_item_shelf_audio, var3_3, false);
+                    break;
+                default:
+                    break;
+            }
+        } else {
+            if (this.d) {
+                if (var5_5 == 1 || var5_5 == 3) {
+                    var2_2 = this.c.inflate(R.layout.list_item_shelf_empty, var3_3, false);
+                }
+            } else {
+                switch (var5_5) {
+                    case 1:
+                        var2_2 = this.c.inflate(R.layout.list_item_shelf_advert, var3_3, false);
+                        break;
+                    case 3:
+                        var2_2 = this.c.inflate(R.layout.list_item_shelf_feed, var3_3, false);
+                        break;
+                    default:
+                        break;
                 }
             }
         }
-        lbl33:
-        // 6 sources:
         switch (var5_5) {
-            default: {
-                return var2_2;
-            }
             case 0: {
-                var19_6 = new BookHolder(var2_2);
-                var20_7 = var4_4.getBookRecord();
+                BookHolder var19_6 = new BookHolder(var2_2);
+                BookReadRecord var20_7 = var4_4.getBookRecord();
                 var19_6.cover.setImageUrl(var20_7.getFullCover(), R.drawable.cover_default);
                 var19_6.title.setText(var20_7.getTitle());
                 var19_6.desc.setText(var20_7.buildDesc());
@@ -268,23 +260,23 @@ public class HomeShelfAdapter extends u<BookShelf> {
                     var19_6.flag.setType(0);
                 }
                 this.a(var1_1, var19_6.check);
-                var21_8 = var20_7.isTop() != false ? 0 : 8;
-                var19_6.top.setVisibility(var21_8);
-                var22_9 = var20_7.getReadMode();
-                var23_10 = false;
+                var19_6.top.setVisibility(var20_7.isTop() ? View.VISIBLE : View.GONE);
+                int var22_9 = var20_7.getReadMode();
+                boolean var23_10 = false;
                 if (var22_9 != -1) {
-                    var29_11 = var20_7.getDownloadedSource();
-                    var30_12 = a.g(var22_9);
+                    String var29_11 = var20_7.getDownloadedSource();
+                    String var30_12 = com.clilystudio.netbook.hpay100.a.a.g(var22_9);
                     var23_10 = false;
                     if (var29_11 != null) {
-                        var31_13 = var29_11.contains(var30_12);
+                        boolean var31_13 = var29_11.contains(var30_12);
                         var23_10 = false;
                         if (var31_13) {
                             var23_10 = true;
                         }
                     }
                 }
-                if (!am.h((String) (var24_14 = var20_7.getBookId()))) {
+                String var24_14 = var20_7.getBookId();
+                if (!am.h(var24_14)) {
                     if (var23_10) {
                         var19_6.coverLoadingLayer.f();
                         return var2_2;
@@ -292,17 +284,18 @@ public class HomeShelfAdapter extends u<BookShelf> {
                     var19_6.coverLoadingLayer.c();
                     return var2_2;
                 }
-                var25_15 = BookDlRecord.get(var24_14);
+                BookDlRecord var25_15 = BookDlRecord.get(var24_14);
                 if (var25_15 == null) {
                     var19_6.coverLoadingLayer.c();
                     return var2_2;
                 }
-                var26_16 = var25_15.getProgress();
-                var27_17 = var25_15.getTotal();
+                int var26_16 = var25_15.getProgress();
+                int var27_17 = var25_15.getTotal();
                 if (var27_17 > 0) {
                     var26_16 = 5 + (int) (95.0f * (float) ((int) (100.0f * ((float) var26_16 / (float) var27_17))) / 100.0f);
                 }
-                if ((var28_18 = var25_15.getStatus()) == 2) {
+                int var28_18 = var25_15.getStatus();
+                if (var28_18 == 2) {
                     var19_6.coverLoadingLayer.setProgress(var26_16);
                 } else if (var28_18 == 3) {
                     var19_6.coverLoadingLayer.b();
@@ -318,8 +311,8 @@ public class HomeShelfAdapter extends u<BookShelf> {
             }
             case 1: {
                 if (this.d != false) return var2_2;
-                var17_19 = new AdHolder(var2_2);
-                var18_20 = var4_4.getAdvert();
+                AdHolder var17_19 = new AdHolder(var2_2);
+                Advert var18_20 = var4_4.getAdvert();
                 var17_19.title.setText(var18_20.getTitle());
                 var17_19.desc.setText(var18_20.getDesc());
                 var17_19.flag.setType(var18_20.getFlagType());
@@ -329,23 +322,18 @@ public class HomeShelfAdapter extends u<BookShelf> {
                 return var2_2;
             }
             case 2: {
-                var13_21 = new TxtHolder(var2_2);
-                var14_22 = var4_4.getTxt();
+                TxtHolder var13_21 = new TxtHolder(var2_2);
+                BookFile var14_22 = var4_4.getTxt();
                 var13_21.title.setText(var14_22.getName());
                 var13_21.desc.setText("\u9605\u8bfb\u8fdb\u5ea6 : " + var14_22.getReadableProgress());
-                var15_23 = var14_22.isTop();
-                var16_24 = 0;
-                if (!var15_23) {
-                    var16_24 = 8;
-                }
-                var13_21.top.setVisibility(var16_24);
+                var13_21.top.setVisibility(var14_22.isTop() ? View.VISIBLE : View.GONE);
                 this.a(var1_1, var13_21.check);
                 return var2_2;
             }
             case 3: {
                 if (this.d != false) return var2_2;
-                var11_25 = new FeedHolder(var2_2);
-                var12_26 = var4_4.getBookFeed();
+                FeedHolder var11_25 = new FeedHolder(var2_2);
+                BookFeed var12_26 = var4_4.getBookFeed();
                 var11_25.title.setText(var12_26.getTitle());
                 if (var12_26.isFat()) {
                     var11_25.flag.setType(4);
@@ -355,25 +343,20 @@ public class HomeShelfAdapter extends u<BookShelf> {
                 return var2_2;
             }
             case 4:
+                AlbumHolder var6_27 = new AlbumHolder(var2_2);
+                AudioRecord var7_28 = var4_4.getAlbum();
+                var6_27.cover.setImageUrl(var7_28.getImgUrl(), R.drawable.cover_default);
+                var6_27.title.setText(var7_28.getName());
+                var6_27.desc.setText(t.a((long) var7_28.getLastUpdate()) + "\t\t" + var7_28.getDesc());
+                if (var7_28.isUpdateReaded() || this.d) {
+                    var6_27.flag.setType(0);
+                } else {
+                    var6_27.flag.setType(3);
+                }
+                this.a(var1_1, var6_27.check);
+                var6_27.top.setVisibility(var7_28.isTop() ? View.VISIBLE : View.GONE);
+                return var2_2;
         }
-        var6_27 = new AlbumHolder(var2_2);
-        var7_28 = var4_4.getAlbum();
-        var6_27.cover.setImageUrl(var7_28.getImgUrl(), R.drawable.cover_default);
-        var6_27.title.setText(var7_28.getName());
-        var6_27.desc.setText(t.a((long) var7_28.getLastUpdate()) + "\t\t" + var7_28.getDesc());
-        if (var7_28.isUpdateReaded() || this.d) {
-            var6_27.flag.setType(0);
-        } else {
-            var6_27.flag.setType(3);
-        }
-        this.a(var1_1, var6_27.check);
-        var8_29 = var6_27.top;
-        var9_30 = var7_28.isTop();
-        var10_31 = 0;
-        if (!var9_30) {
-            var10_31 = 8;
-        }
-        var8_29.setVisibility(var10_31);
         return var2_2;
     }
 
@@ -391,10 +374,11 @@ public class HomeShelfAdapter extends u<BookShelf> {
         TxtHolder(View view) {
             this.title = (TextView) view.findViewById(R.id.title);
             this.desc = (TextView) view.findViewById(R.id.desc);
-            this.top =view. findViewById(R.id.top);
+            this.top = view.findViewById(R.id.top);
             this.check = (CheckBox) view.findViewById(R.id.checked);
         }
     }
+
     class FeedHolder {
         BookShelfFlagView flag;
         TextView title;
@@ -404,6 +388,7 @@ public class HomeShelfAdapter extends u<BookShelf> {
             this.flag = (BookShelfFlagView) view.findViewById(R.id.flag);
         }
     }
+
     class BookHolder {
         CheckBox check;
         CoverView cover;
@@ -414,15 +399,16 @@ public class HomeShelfAdapter extends u<BookShelf> {
         View top;
 
         BookHolder(View view) {
-            this.title = (TextView)view. findViewById(R.id.title);
+            this.title = (TextView) view.findViewById(R.id.title);
             this.desc = (TextView) view.findViewById(R.id.desc);
-            this.flag = (BookShelfFlagView)view. findViewById(R.id.flag);
-            this.top =view. findViewById(R.id.top);
-            this.cover = (CoverView)view. findViewById(R.id.cover);
+            this.flag = (BookShelfFlagView) view.findViewById(R.id.flag);
+            this.top = view.findViewById(R.id.top);
+            this.cover = (CoverView) view.findViewById(R.id.cover);
             this.coverLoadingLayer = (CoverLoadingLayer) view.findViewById(R.id.cover_loading);
-            this.check = (CheckBox)view. findViewById(R.id.checked);
+            this.check = (CheckBox) view.findViewById(R.id.checked);
         }
     }
+
     class AlbumHolder {
         CheckBox check;
         CoverView cover;
@@ -433,13 +419,13 @@ public class HomeShelfAdapter extends u<BookShelf> {
         View top;
 
         AlbumHolder(View view) {
-            this.title = (TextView)view. findViewById(R.id.title);
-            this.desc = (TextView) view. findViewById(R.id.desc);
-            this.flag = (BookShelfFlagView)view.  findViewById(R.id.flag);
-            this.top =view.  findViewById(R.id.top);
-            this.cover = (CoverView)view.  findViewById(R.id.cover);
-            this.coverLoadingLayer = (CoverLoadingLayer)view.  findViewById(R.id.cover_loading);
-            this.check = (CheckBox) view. findViewById(R.id.checked);
+            this.title = (TextView) view.findViewById(R.id.title);
+            this.desc = (TextView) view.findViewById(R.id.desc);
+            this.flag = (BookShelfFlagView) view.findViewById(R.id.flag);
+            this.top = view.findViewById(R.id.top);
+            this.cover = (CoverView) view.findViewById(R.id.cover);
+            this.coverLoadingLayer = (CoverLoadingLayer) view.findViewById(R.id.cover_loading);
+            this.check = (CheckBox) view.findViewById(R.id.checked);
         }
     }
 
@@ -451,9 +437,9 @@ public class HomeShelfAdapter extends u<BookShelf> {
 
         AdHolder(View view) {
             this.title = (TextView) view.findViewById(R.id.title);
-            this.desc = (TextView)view. findViewById(R.id.desc);
+            this.desc = (TextView) view.findViewById(R.id.desc);
             this.flag = (BookShelfFlagView) view.findViewById(R.id.flag);
-            this.cover = (SmartImageView)view. findViewById(R.id.cover);
+            this.cover = (SmartImageView) view.findViewById(R.id.cover);
         }
     }
 }

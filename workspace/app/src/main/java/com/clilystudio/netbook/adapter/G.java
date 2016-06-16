@@ -5,6 +5,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
+
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.am;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -41,11 +43,11 @@ public class G extends u {
         this.a = activity;
         this.c = bl;
         this.b = bl2;
-        TypedArray typedArray = this.a.getTheme().obtainStyledAttributes(new int[]{R.attr.tweetOperatorBackground, R.attr.tweetOperatedBackground});
-        typedArray.getResourceId(0, R.drawable.tweet_operator_circle);
-        typedArray.getResourceId(1, R.drawable.tweet_operated_circle);
-        typedArray.recycle();
-        this.f = a.r(this.a, "community_user_gender_icon_toggle");
+//        TypedArray typedArray = this.a.getTheme().obtainStyledAttributes(new int[]{R.attr.tweetOperatorBackground, R.attr.tweetOperatedBackground});
+//        typedArray.getResourceId(0, R.drawable.tweet_operator_circle);
+//        typedArray.getResourceId(1, R.drawable.tweet_operated_circle);
+//        typedArray.recycle();
+        this.f =com.clilystudio.netbook.hpay100.a.a.r(this.a, "community_user_gender_icon_toggle");
     }
 
     static /* synthetic */ Context a(G g2) {
@@ -74,14 +76,14 @@ public class G extends u {
         {
             if (G.a(account, user)) {
                 g2.b(r);
-                V_Clazz v = new V_Clazz(g2, 0);
+                V_Clazz v = new V_Clazz(g2, (byte)0);
                 String[] arrstring = new String[]{account.getToken(), user.getId()};
                 v.execute(arrstring);
                 return;
             }
         }
         g2.a(r);
-        T_Task t = new T_Task(g2, 0);
+        T_Task t = new T_Task(g2, (byte)0);
         String[] arrstring = new String[]{account.getToken(), user.getId()};
         t.execute(arrstring);
     }
@@ -179,65 +181,19 @@ public class G extends u {
         return tweet;
     }
 
-    /*
-     * Unable to fully structure code
-     * Enabled aggressive block sorting
-     * Lifted jumps to return sites
-     */
     private int a(Tweet var1_1) {
-        block11:
-        do {
-            var2_2 = var1_1.getType();
-            var3_3 = -1;
-            switch (var2_2.hashCode()) {
-                case 80236113: {
-                    if (var2_2.equals("TWEET")) {
-                        var3_3 = 0;
-                        **break;
-                    }
-                    **GOTO lbl18
-                }
-                case 1816505342: {
-                    if (var2_2.equals("RETWEET")) {
-                        var3_3 = 1;
-                        **break;
-                    }
-                    **GOTO lbl18
-                }
-                case -1881019560: {
-                    if (var2_2.equals("REVIEW")) {
-                        var3_3 = 2;
-                    }
-                }
-                lbl18:
-                // 8 sources:
-                default:
-                {
-                    **GOTO lbl23
-                }
-                case -14395178:
-            }
-            if (var2_2.equals("ARTICLE")) {
-                var3_3 = 3;
-            }
-            lbl23:
-            // 4 sources:
-            switch (var3_3) {
-                default: {
-                    return 0;
-                }
-                case 1: {
-                    var1_1 = var1_1.getRefTweet();
-                    continue block11;
-                }
-                case 2: {
-                    return 1;
-                }
-                case 3:
-            }
-            break;
-        } while (true);
-        return 2;
+        String var2_2 = var1_1.getType();
+        if (var2_2.equals("TWEET")) {
+            return 0;
+        } else if (var2_2.equals("RETWEET")) {
+            return 1;
+        } else if (var2_2.equals("REVIEW")) {
+            return 2;
+        } if (var2_2.equals("ARTICLE")) {
+            return 3;
+        } else {
+            return -1;
+        }
     }
 
     /*
@@ -291,7 +247,7 @@ public class G extends u {
 
     private void a(R_ViewHolder r) {
         r.h.setText("\u5df2\u5173\u6ce8");
-        r.h.setTextColor(-5822976);
+        r.h.setTextColor(0xa72600);
         r.h.setTextSize(10.0f);
         Drawable drawable = this.a.getResources().getDrawable(R.drawable.ic_followed);
         drawable.setBounds(0, 0, 9 * drawable.getMinimumWidth() / 16, 9 * drawable.getMinimumHeight() / 16);
@@ -310,11 +266,11 @@ public class G extends u {
             Drawable drawable = r.h.getResources().getDrawable(R.drawable.ic_recycle_bin);
             drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
             r.h.setCompoundDrawables(drawable, null, null, null);
-            r.h.setTextColor(-5592406);
+            r.h.setTextColor(0xaaaaaa);
             return;
         }
         if (!this.b) {
-            r.h.setVisibility(4);
+            r.h.setVisibility(View.INVISIBLE);
             return;
         }
         Account account = am.e();
@@ -373,10 +329,10 @@ public class G extends u {
         String string3 = "" + tweet.getRetweeted();
         if (tweet.getVotes() == null || tweet.getVotes().length == 0) {
             if (tweet.getCommented() > 9999) {
-                string = a.i(tweet.getCommented());
+                string = com.clilystudio.netbook.hpay100.a.a.i(tweet.getCommented());
             }
             if (tweet.getRetweeted() > 9999) {
-                string3 = a.i(tweet.getRetweeted());
+                string3 = com.clilystudio.netbook.hpay100.a.a.i(tweet.getRetweeted());
             }
             Drawable drawable = this.a.getResources().getDrawable(R.drawable.ic_message);
             drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
@@ -408,8 +364,7 @@ public class G extends u {
             r.n.setValue(tweet.getScore());
             r.o.setImageUrl(tweet.getBook().getCover());
             View view = r.j;
-            int n = tweet.getBook() == null ? 8 : 0;
-            view.setVisibility(n);
+            view.setVisibility(tweet.getBook() == null ?View.GONE : View.VISIBLE);
         }
         if (this.f) {
             if (user.getGenderFlag() == 0) {
