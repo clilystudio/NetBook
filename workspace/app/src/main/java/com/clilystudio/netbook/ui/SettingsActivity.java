@@ -6,6 +6,8 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.am;
 import android.support.v7.widget.SwitchCompat;
 import android.text.TextUtils;
@@ -93,13 +95,20 @@ public class SettingsActivity extends BaseActivity implements View.OnClickListen
             case R.id.settings_shelf_sort: {
                 h h2 = new h(this);
                 int[] arrn = new int[]{R.id.sort_by_time, R.id.sort_by_read};
-                int[] arrn2 = new int[]{R.string.setting_sort_time, R.string.setting_sort_read};
+                final int[] arrn2 = new int[]{R.string.setting_sort_time, R.string.setting_sort_read};
                 View view2 = this.getLayoutInflater().inflate(R.layout.setting_shelf_sort, null, false);
                 h2.d = "\u4e66\u67b6\u6392\u5e8f\u65b9\u5f0f";
-                AlertDialog alertDialog = h2.a(view2).b("\u53d6\u6d88", null).a();
+                final AlertDialog alertDialog = h2.a(view2).b("\u53d6\u6d88", null).a();
                 ((RadioGroup) view2.findViewById(R.id.sort_group)).check(arrn[this.a]);
                 for (int i2 = 0; i2 < 2; ++i2) {
-                    ((RadioButton) view2.findViewById(arrn[i2])).setOnClickListener(new bY(this, alertDialog, i2, arrn2));
+                    final int finalI = i2;
+                    ((RadioButton) view2.findViewById(arrn[i2])).setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            alertDialog.dismiss();
+                            SettingsActivity.a(SettingsActivity.this, finalI, SettingsActivity.this.getResources().getString(arrn2[finalI]));
+                        }
+                    });
                 }
                 alertDialog.show();
                 return;
