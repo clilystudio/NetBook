@@ -4,7 +4,6 @@
   D:\repo\NetBook\smali_org\com\ushaqi\zhuishushenqi\reader\t.2.smali (1 hit)
    D:\repo\NetBook\smali_org\com\ushaqi\zhuishushenqi\reader\v.2.smali (1 hit)
 
-  D:\repo\NetBook\smali_org\com\ushaqi\zhuishushenqi\ui\bj.2.smali (1 hit)
   D:\repo\NetBook\smali_org\com\ushaqi\zhuishushenqi\ui\bO.smali (1 hit)
   D:\repo\NetBook\smali_org\com\ushaqi\zhuishushenqi\ui\br.2.smali (1 hit)
   D:\repo\NetBook\smali_org\com\ushaqi\zhuishushenqi\ui\bT.smali (1 hit)
