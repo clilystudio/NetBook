@@ -1,6 +1,7 @@
 package com.clilystudio.netbook.ui;
 
 import android.app.Activity;
+import android.view.View;
 
 import com.clilystudio.netbook.c;
 import com.clilystudio.netbook.model.HotKeywordResult;
@@ -51,7 +52,13 @@ final class bM extends com.clilystudio.netbook.a_pack.e<String, Void, HotKeyword
             SearchActivity.g(this.a).setVisibility(View.VISIBLE);
             SearchActivity.e(this.a).setWords(hotKeywordResult.getHotWords());
             SearchActivity.e(this.a).setOnItemClickListener(new bN(this));
-            SearchActivity.h(this.a).setOnClickListener(new bO(this));
+            SearchActivity.h(this.a).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    a.G(bM.this.a);
+                    SearchActivity.e(bM.this.a).a();
+                }
+            });
             return;
         }
         e.a((Activity) this.a, (String) "\u7f51\u7edc\u4e0d\u7ed9\u529b\uff01");

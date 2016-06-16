@@ -1,5 +1,6 @@
 package com.clilystudio.netbook.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -8,7 +9,9 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.model.RecommendUgcRoot;
+import com.clilystudio.netbook.ui.ugcbook.UGCDetailActivity;
 import com.clilystudio.netbook.widget.CoverView;
 
 import butterknife.ButterKnife;
@@ -36,15 +39,15 @@ public class RelateUgcFragment extends Fragment {
         super.onViewCreated(view, bundle);
         this.mUgcContainer = (LinearLayout) this.getView().findViewById(R.id.ugcs);
         this.mRelateUgcRoot = (LinearLayout) this.getView().findViewById(R.id.relate_ugc_root);
-        RelateUgcFragment$GetUgcsTask relateUgcFragment$GetUgcsTask = new RelateUgcFragment$GetUgcsTask(this);
+        GetUgcsTask relateUgcFragment$GetUgcsTask = new GetUgcsTask(this);
         String[] arrstring = new String[]{this.getArguments().getString("book_id")};
         relateUgcFragment$GetUgcsTask.b(arrstring);
     }
-    public final class RelateUgcFragment$GetUgcsTask extends com.clilystudio.netbook.a_pack.e<String, Void, RecommendUgcRoot> {
+    public final class GetUgcsTask extends com.clilystudio.netbook.a_pack.e<String, Void, RecommendUgcRoot> {
         final /* synthetic */ RelateUgcFragment a;
         private String b;
 
-        public RelateUgcFragment$GetUgcsTask(RelateUgcFragment relateUgcFragment) {
+        public GetUgcsTask(RelateUgcFragment relateUgcFragment) {
             this.a = relateUgcFragment;
             this.b = "\u5171%1$d\u672c\u4e66  |  %2$d\u4eba\u6536\u85cf";
         }
@@ -62,7 +65,7 @@ public class RelateUgcFragment extends Fragment {
 
         @Override
         protected final /* synthetic */ RecommendUgcRoot doInBackground(String[] arrobject) {
-            return RelateUgcFragment$GetUgcsTask.a((String[]) arrobject);
+            return GetUgcsTask.a((String[]) arrobject);
         }
 
         @Override
@@ -71,23 +74,30 @@ public class RelateUgcFragment extends Fragment {
             super.onPostExecute(recommendUgcRoot);
             if (this.a.getActivity() != null && recommendUgcRoot != null && recommendUgcRoot.getBooklists() != null && recommendUgcRoot.getBooklists().length > 0) {
                 this.a.mRelateUgcRoot.setVisibility(View.VISIBLE);
-                for (RecommendUgcRoot$RecommendUGC recommendUgcRoot$RecommendUGC : recommendUgcRoot.getBooklists()) {
+                for (final RecommendUgcRoot.RecommendUGC recommendUGC : recommendUgcRoot.getBooklists()) {
                     View view = this.a.getLayoutInflater(null).inflate(R.layout.list_item_ugc_book, (ViewGroup) this.a.mUgcContainer, false);
-                    RelateUgcFragment$GetUgcsTask$ViewHolder relateUgcFragment$GetUgcsTask$ViewHolder = new RelateUgcFragment$GetUgcsTask$ViewHolder(this, view);
-                    relateUgcFragment$GetUgcsTask$ViewHolder.mCover.setImageUrl(recommendUgcRoot$RecommendUGC.getFullCover(), R.drawable.cover_default);
-                    relateUgcFragment$GetUgcsTask$ViewHolder.mTitle.setText(recommendUgcRoot$RecommendUGC.getTitle());
-                    TextView textView = relateUgcFragment$GetUgcsTask$ViewHolder.mCount;
+                    GetUgcsTask.ViewHolder viewHolder = new GetUgcsTask.ViewHolder(this, view);
+                    viewHolder.mCover.setImageUrl(recommendUGC.getFullCover(), R.drawable.cover_default);
+                    viewHolder.mTitle.setText(recommendUGC.getTitle());
+                    TextView textView = viewHolder.mCount;
                     String string = this.b;
-                    Object[] arrobject = new Object[]{recommendUgcRoot$RecommendUGC.getBookCount(), recommendUgcRoot$RecommendUGC.getCollectorCount()};
+                    Object[] arrobject = new Object[]{recommendUGC.getBookCount(), recommendUGC.getCollectorCount()};
                     textView.setText(String.format(string, arrobject));
-                    relateUgcFragment$GetUgcsTask$ViewHolder.mAuthor.setText(recommendUgcRoot$RecommendUGC.getAuthor());
-                    relateUgcFragment$GetUgcsTask$ViewHolder.mDesc.setText(recommendUgcRoot$RecommendUGC.getDesc());
-                    relateUgcFragment$GetUgcsTask$ViewHolder.mContainer.setOnClickListener(new bC(this, recommendUgcRoot$RecommendUGC));
+                    viewHolder.mAuthor.setText(recommendUGC.getAuthor());
+                    viewHolder.mDesc.setText(recommendUGC.getDesc());
+                    viewHolder.mContainer.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Intent intent = new Intent(GetUgcsTask.this.a.getActivity(), UGCDetailActivity.class);
+                            intent.putExtra("book_id", recommendUGC.getId());
+                            GetUgcsTask.this.a.startActivity(intent);
+                        }
+                    });
                     this.a.mUgcContainer.addView(view);
                 }
             }
         }
-        public class RelateUgcFragment$GetUgcsTask$ViewHolder {
+        public class ViewHolder {
             TextView mAuthor;
             View mContainer;
             TextView mCount;
@@ -96,7 +106,7 @@ public class RelateUgcFragment extends Fragment {
             TextView mTitle;
             TextView mUpdated;
 
-            RelateUgcFragment$GetUgcsTask$ViewHolder(RelateUgcFragment.GetUgcsTask getUgcsTask, View view) {
+            ViewHolder(RelateUgcFragment.GetUgcsTask getUgcsTask, View view) {
                 this.mCover = (CoverView) view.findViewById(R.id.cover);
                 this.mTitle = (TextView)view. findViewById(R.id.title);
                 this.mCount = (TextView) view.findViewById(R.id.message_count);

@@ -6,6 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.clilystudio.netbook.R;
+
 public abstract class BaseLoadingFragment extends Fragment {
     private ViewGroup a;
     private View b;
@@ -56,7 +58,12 @@ public abstract class BaseLoadingFragment extends Fragment {
         LayoutInflater.from(this.getActivity()).inflate(this.a(), this.a);
         View[] arrview = new View[]{this.a, this.b, this.c, this.d};
         this.e = arrview;
-        this.c.setOnClickListener(new ad(this));
+        this.c.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                b();
+            }
+        });
         return view;
     }
 }

@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.adapter.g;
 import com.clilystudio.netbook.d;
 import com.clilystudio.netbook.model.BookRankDetail;
@@ -67,7 +68,12 @@ public abstract class BookListActivity extends BaseActivity {
         this.b = this.findViewById(R.id.content_loading_pb);
         this.e = (TextView) this.findViewById(R.id.content_empty_text);
         this.c = this.findViewById(R.id.content_load_error);
-        this.c.setOnClickListener(new aJ(this));
+        this.c.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                b();
+            }
+        });
         this.a = new g(this.getLayoutInflater());
         ListView listView = (ListView) this.findViewById(R.id.content_list);
         listView.setAdapter(this.a);

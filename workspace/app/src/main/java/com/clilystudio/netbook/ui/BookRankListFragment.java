@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.adapter.g;
 import com.clilystudio.netbook.model.BookRankDetail;
 import com.clilystudio.netbook.widget.ScrollLoadListView;
@@ -103,7 +104,12 @@ public class BookRankListFragment extends Fragment {
         this.c = view.findViewById(R.id.content_loading_pb);
         this.e = (TextView) view.findViewById(R.id.content_empty_text);
         this.d = view.findViewById(R.id.content_load_error);
-        this.d.setOnClickListener(new aP(this));
+        this.d.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                BookRankListFragment.a(BookRankListFragment.this);
+            }
+        });
         this.a = new g(this.getActivity().getLayoutInflater());
         ScrollLoadListView scrollLoadListView = (ScrollLoadListView) view.findViewById(R.id.content_list);
         scrollLoadListView.setAdapter(this.a);

@@ -16,11 +16,13 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.adapter.E;
 import com.clilystudio.netbook.d;
 import com.clilystudio.netbook.widget.AutoFlowView;
 import com.clilystudio.netbook.widget.SearchEditText;
 import com.clilystudio.netbook.widget.SearchFixListView;
+import com.xiaomi.mistatistic.sdk.MiStatInterface;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -378,7 +380,13 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
         this.t = this.findViewById(R.id.select_word_layout);
         this.t.setOnTouchListener(new bF(this));
         this.u = this.findViewById(R.id.clear_history);
-        this.u.setOnClickListener(new bG(this));
+        this.u.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SearchActivity.d(SearchActivity.this);
+                MiStatInterface.recordCountEvent("search_history_clear", null);
+            }
+        });
         this.v = (ListView) this.findViewById(R.id.search_history_list);
         this.x = (List) a.k(c.e, "search_history.txt");
         if (this.x == null) {
@@ -405,7 +413,13 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
             this.q.setVisibility(View.VISIBLE);
             this.r.setWords(list);
             this.r.setOnItemClickListener(new bH(this));
-            this.s.setOnClickListener(new bI(this));
+            this.s.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    com.clilystudio.netbook.hpay100.a.a.G(SearchActivity.this);
+                    SearchActivity.e(SearchActivity.this).a();
+                }
+            });
             return;
         }
         a.b((Context) this, "search_hot_words_date", 1);

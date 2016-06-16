@@ -1,11 +1,13 @@
 package com.clilystudio.netbook.ui;
 
+import android.content.Intent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.adapter.NotificationAdapter;
 import com.clilystudio.netbook.adapter.t;
 import com.clilystudio.netbook.event.i;
@@ -26,8 +28,8 @@ public class ImportantNotificationFragment extends NotifFragment {
     }
 
     @Override
-    protected final NotifFragment$Type a() {
-        return NotifFragment$Type.IMPORTANT;
+    protected final NotifFragment.Type a() {
+        return NotifFragment.Type.IMPORTANT;
     }
 
     @Override
@@ -36,7 +38,13 @@ public class ImportantNotificationFragment extends NotifFragment {
         listView.addHeaderView(view);
         this.a = (LinearLayout) view.findViewById(R.id.unimportant_section);
         this.b = (ImageView) view.findViewById(R.id.red_dot);
-        this.a.setOnClickListener(new bb(this));
+        this.a.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ImportantNotificationFragment.this.getActivity(), UnimportantNotificationActivity.class);
+                ImportantNotificationFragment.this.startActivity(intent);
+            }
+        });
     }
 
     @Override

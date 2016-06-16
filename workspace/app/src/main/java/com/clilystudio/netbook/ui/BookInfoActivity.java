@@ -6,6 +6,8 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.am;
 import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
@@ -246,7 +248,7 @@ public class BookInfoActivity extends BaseActivity implements View.OnClickListen
         textView.setTextColor(this.getResources().getColor(R.color.book_info_dl));
     }
 
-    private void a(View view, Advert advert) {
+    private void a(final View view, final Advert advert) {
         if (view == null || advert == null) {
             return;
         }
@@ -259,7 +261,12 @@ public class BookInfoActivity extends BaseActivity implements View.OnClickListen
         smartImageView.setImageUrl(advert.getFullImg());
         textView.setText(advert.getTitle());
         textView2.setText(advert.getDesc());
-        view.setOnClickListener(new aE(this, advert));
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                advert.processClick(v);
+            }
+        });
         n.a(advert, view);
     }
 
@@ -296,13 +303,18 @@ public class BookInfoActivity extends BaseActivity implements View.OnClickListen
         int n5 = 0;
         while (n5 < n2) {
             TextView textView = (TextView) layoutInflater.inflate(R.layout.book_info_tags_item, (ViewGroup) tagsLayout, false).findViewById(R.id.tag_text);
-            String string = arrstring[n5];
+            final String string = arrstring[n5];
             textView.setText(string);
             if (n4 >= 7) {
                 n4 = 0;
             }
             textView.setBackgroundResource(arrn[n4]);
-            textView.setOnClickListener(new aF(this, string));
+            textView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    BookInfoActivity.a(BookInfoActivity.this, string);
+                }
+            });
             tagsLayout.addView((View) textView, new ViewGroup.LayoutParams(n3, n3));
             int n6 = n5 + 1;
             ++n4;

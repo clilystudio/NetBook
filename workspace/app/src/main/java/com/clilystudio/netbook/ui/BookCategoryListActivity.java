@@ -16,6 +16,7 @@ import android.widget.TabHost;
 import android.widget.TabWidget;
 import android.widget.TextView;
 
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.d;
 import com.clilystudio.netbook.model.CategoryLevelRoot;
 
@@ -199,7 +200,12 @@ public class BookCategoryListActivity extends BaseTabActivity implements ViewPag
             bl = true;
         }
         this.h = bl;
-        view.findViewById(R.id.back_view).setOnClickListener((View.OnClickListener) ((Object) new as(this)));
+        view.findViewById(R.id.back_view).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                BookCategoryListActivity.e(BookCategoryListActivity.this);
+            }
+        });
         ListView listView = (ListView) view.findViewById(R.id.min_category_list);
         this.g = new aw(this, (Context) this, arrstring3);
         listView.setAdapter((ListAdapter) ((Object) this.g));

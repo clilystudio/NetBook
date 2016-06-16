@@ -3,6 +3,8 @@ package com.clilystudio.netbook.ui;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.am;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -36,8 +38,8 @@ public class BookCategoryActivity extends BaseActivity {
     }
 
     static /* synthetic */ void a(BookCategoryActivity bookCategoryActivity, CategoryRoot categoryRoot) {
-        CategoryRoot$Category[] arrcategoryRoot$Category = categoryRoot.getMale();
-        CategoryRoot$Category[] arrcategoryRoot$Category2 = categoryRoot.getFemale();
+        CategoryRoot.Category[] arrcategoryRoot$Category = categoryRoot.getMale();
+        CategoryRoot.Category[] arrcategoryRoot$Category2 = categoryRoot.getFemale();
         if (arrcategoryRoot$Category == null || arrcategoryRoot$Category2 == null) {
             return;
         }
@@ -74,7 +76,7 @@ public class BookCategoryActivity extends BaseActivity {
     /*
      * Enabled aggressive block sorting
      */
-    private void a(int n, int n2, CategoryRoot$Category[] arrcategoryRoot$Category, boolean bl) {
+    private void a(int n, int n2, CategoryRoot.Category[] arrcategoryRoot$Category, final boolean bl) {
         int n3 = 0;
         TableRow tableRow = null;
         TableRow.LayoutParams layoutParams = new TableRow.LayoutParams(-1, -2);
@@ -84,9 +86,9 @@ public class BookCategoryActivity extends BaseActivity {
         while (n5 < arrcategoryRoot$Category.length) {
             int n6;
             TableRow tableRow2;
-            CategoryRoot$Category categoryRoot$Category = arrcategoryRoot$Category[n5];
-            String string = categoryRoot$Category.getName();
-            int n7 = categoryRoot$Category.getBookCount();
+            CategoryRoot.Category category = arrcategoryRoot$Category[n5];
+            final String string = category.getName();
+            int n7 = category.getBookCount();
             TableLayout tableLayout = bl ? (TableLayout) this.findViewById(R.id.tags_layout_boy) : (TableLayout) this.findViewById(R.id.tags_layout_girl);
             if (n5 % 3 == 0) {
                 tableRow2 = new TableRow(this);
@@ -112,7 +114,14 @@ public class BookCategoryActivity extends BaseActivity {
             linearLayout.setOrientation(1);
             linearLayout.setGravity(17);
             linearLayout.setBackgroundResource(n4);
-            linearLayout.setOnClickListener(new aj(this, bl, string));
+            linearLayout.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    BookCategoryActivity.this.startActivity(BookCategoryListActivity.a(BookCategoryActivity.this, bl, string));
+                    String string1 = bl ? "\u7537\u751f - " : "\u5973\u751f - ";
+                    com.clilystudio.netbook.hpay100.a.a.p(BookCategoryActivity.this, string1 + string);
+                }
+            });
             TextView textView = new TextView(this);
             textView.setText(string);
             textView.setGravity(1);
@@ -144,7 +153,12 @@ public class BookCategoryActivity extends BaseActivity {
         this.c = this.findViewById(R.id.content_category);
         this.a = this.findViewById(R.id.content_loading_pb);
         this.b = this.findViewById(R.id.content_load_error);
-        this.b.setOnClickListener((View.OnClickListener) ((Object) new ai(this)));
+        this.b.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                BookCategoryActivity.a(BookCategoryActivity.this);
+            }
+        });
         this.b();
     }
 }

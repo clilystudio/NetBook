@@ -5,6 +5,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.clilystudio.netbook.R;
+
 public abstract class BaseLoadingActivity extends BaseActivity {
     private ViewGroup a;
     private View b;
@@ -60,6 +62,11 @@ public abstract class BaseLoadingActivity extends BaseActivity {
         this.e = this.findViewById(R.id.common_list_empty);
         View[] arrview = new View[]{this.a, this.b, this.c, this.e};
         this.f = arrview;
-        this.c.setOnClickListener((View.OnClickListener) ((Object) new ac(this)));
+        this.c.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                b();
+            }
+        });
     }
 }

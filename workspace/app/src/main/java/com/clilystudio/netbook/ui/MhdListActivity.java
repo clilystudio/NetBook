@@ -10,9 +10,11 @@ import android.widget.AdapterView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.adapter.v;
 import com.clilystudio.netbook.d;
 import com.umeng.a.b;
+import com.xiaomi.mistatistic.sdk.MiStatInterface;
 
 public class MhdListActivity extends BaseActivity {
     private View a;
@@ -87,11 +89,16 @@ public class MhdListActivity extends BaseActivity {
         ListView listView = (ListView) this.findViewById(R.id.common_list_content);
         this.a = this.findViewById(R.id.common_list_pb);
         this.b = this.findViewById(R.id.common_list_error);
-        this.b.setOnClickListener((View.OnClickListener) ((Object) new bj(this)));
+        this.b.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MhdListActivity.a(MhdListActivity.this);
+            }
+        });
         this.c = new v(this.getLayoutInflater());
         listView.setAdapter((ListAdapter) ((Object) this.c));
         listView.setOnItemClickListener((AdapterView.OnItemClickListener) ((Object) new bk(this)));
         this.b();
-        b.a(this, "mhd_open");
+        MiStatInterface.recordCountEvent("mhd_open", null);
     }
 }
