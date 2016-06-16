@@ -60,24 +60,24 @@ public class GiftGameGiftButton extends Button {
     private void a(String string) {
         this.setVisibility(View.VISIBLE);
         this.setText("\u67e5\u770b");
-        this.setBackgroundResource(2130837819);
+        this.setBackgroundResource(R.drawable.green_round_button);
         this.setOnClickListener(new U(this, string));
     }
 
     private void b(String string) {
         final a a2 = new a(this.getContext());
-        View view = View.inflate(this.getContext(), 2130903192, null);
-        ((TextView) view.findViewById(2131493395)).setText(this.a.title);
-        TextView textView = (TextView) view.findViewById(2131493397);
-        ((TextView) view.findViewById(2131493399)).setText(this.a.description);
-        ((TextView) view.findViewById(2131493401)).setText(this.a.usage);
-        ((TextView) view.findViewById(2131493400)).setText(t.b((Date) this.a.rangeFrom) + " - " + t.b((Date) this.a.rangeTo));
+        View view = View.inflate(this.getContext(), R.layout.dialog_game_gift_info, null);
+        ((TextView) view.findViewById(R.id.game_gift_name)).setText(this.a.title);
+        TextView textView = (TextView) view.findViewById(R.id.game_gift_left);
+        ((TextView) view.findViewById(R.id.game_gift_desc)).setText(this.a.description);
+        ((TextView) view.findViewById(R.id.game_gift_use)).setText(this.a.usage);
+        ((TextView) view.findViewById(R.id.game_gift_date)).setText(t.b((Date) this.a.rangeFrom) + " - " + t.b((Date) this.a.rangeTo));
         a2.a(view).show();
-        Button button = (Button) view.findViewById(2131493402);
+        Button button = (Button) view.findViewById(R.id.game_gift_btn);
         if (string == null) {
             button.setText("\u9886\u53d6");
             textView.setText("\u5df2\u6709 " + (this.a.totalCount - this.a.leftCount) + " \u4eba\u9886\u53d6\uff0c\u5269\u4f59 " + this.a.leftCount + " \u4e2a");
-            button.setBackgroundResource(2131427379);
+            button.setBackgroundResource(R.color.btn_bg_red);
             button.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -89,7 +89,7 @@ public class GiftGameGiftButton extends Button {
         }
         textView.setText("\u5151\u6362\u7801\uff1a" + string);
         button.setText("\u590d\u5236\u5151\u6362\u7801\u5e76\u6253\u5f00\u6e38\u620f");
-        button.setBackgroundResource(2131427378);
+        button.setBackgroundResource(R.color.btn_bg_green);
         button.setOnClickListener(new W(this, a2, string));
     }
 
@@ -136,7 +136,7 @@ public class GiftGameGiftButton extends Button {
         }
         this.setVisibility(View.VISIBLE);
         this.setText("\u9886\u53d6");
-        this.setBackgroundResource(2130838100);
+        this.setBackgroundResource(R.drawable.red_round_button);
         this.setOnClickListener(new X(this, 0));
     }
 

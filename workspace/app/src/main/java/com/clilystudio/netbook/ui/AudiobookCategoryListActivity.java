@@ -107,15 +107,15 @@ public class AudiobookCategoryListActivity extends BaseLoadingActivity {
     @Override
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        this.a(2130903386);
+        this.a(R.layout.scroll_listview);
         this.a = this.getIntent().getStringExtra("TAG_NAME");
         this.b(this.a);
         as.a();
         this.g = as.b();
         LayoutInflater layoutInflater = LayoutInflater.from(this);
-        this.e = layoutInflater.inflate(2130903325, null);
+        this.e = layoutInflater.inflate(R.layout.loading_item, null);
         this.e.setVisibility(View.GONE);
-        this.c = (ScrollLoadListView) this.findViewById(2131493981);
+        this.c = (ScrollLoadListView) this.findViewById(R.id.content_scroll_list);
         this.c.addFooterView(this.e);
         this.c.setOnItemClickListener((AdapterView.OnItemClickListener) ((Object) new w(this)));
         this.b = new b(layoutInflater);

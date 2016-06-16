@@ -21,7 +21,7 @@ public class FollowerListActivity extends BaseActivity {
     @Override
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        this.setContentView(2130903101);
+        this.setContentView(R.layout.activity_follower_list);
     }
 
     /*
@@ -33,9 +33,9 @@ public class FollowerListActivity extends BaseActivity {
         Bundle bundle = this.getIntent().getExtras();
         String string = bundle.getString("type").equals("TYPE_FOLLOWINGS") ? "\u5173\u6ce8" : "\u7c89\u4e1d";
         this.b(string);
-        this.c = (RelativeLayout) this.findViewById(2131493132);
-        this.b = (ListView) this.findViewById(2131493131);
-        this.b.setDivider(this.getResources().getDrawable(2130838151));
+        this.c = (RelativeLayout) this.findViewById(R.id.rl_empty_container);
+        this.b = (ListView) this.findViewById(R.id.lv_follows);
+        this.b.setDivider(this.getResources().getDrawable(R.drawable.shelf_divider));
         Parcelable[] arrparcelable = bundle.getParcelableArray("follows");
         if (arrparcelable != null) {
             this.a = new Follower[arrparcelable.length];

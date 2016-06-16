@@ -14,7 +14,7 @@ final class j implements View.OnClickListener {
 
     @Override
     public final void onClick(View view) {
-        GameDetailActivity.i(this.b).findViewById(2131493085).setVisibility(View.VISIBLE);
+        GameDetailActivity.i(this.b).findViewById(R.id.pb_loading).setVisibility(View.VISIBLE);
         this.a.setText("\u52a0\u8f7d\u4e2d...");
         GameDetailActivity.g(this.b);
     }

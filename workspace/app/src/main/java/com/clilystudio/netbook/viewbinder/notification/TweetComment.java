@@ -11,7 +11,7 @@ public class TweetComment extends TweetBinder {
 
     @Override
     protected int getIconRes() {
-        return 2130837916;
+        return R.drawable.ic_notif_post;
     }
 
     @Override

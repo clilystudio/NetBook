@@ -21,6 +21,6 @@ public final class c {
     }
 
     public final Dialog a() {
-        return new g(this.a).a(2131558406).a().a(new d(this)).b();
+        return new g(this.a).a(R.menu.share_lucky_game).a().a(new d(this)).b();
     }
 }

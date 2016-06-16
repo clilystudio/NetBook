@@ -14,7 +14,7 @@ public final class X extends W<UGCBookListRoot.UGCBook> {
     private String b = "\u5171%1$d\u672c\u4e66";
 
     public X(LayoutInflater layoutInflater) {
-        super(layoutInflater, 2130903317);
+        super(layoutInflater, R.layout.list_item_ugc_book);
     }
 
     /*
@@ -25,7 +25,7 @@ public final class X extends W<UGCBookListRoot.UGCBook> {
     protected final /* synthetic */ void a(int n, Object object) {
         UGCBookListRoot.UGCBook ugcBook = (UGCBookListRoot.UGCBook) object;
         if (ugcBook == null) return;
-        ((CoverView) this.a(0, CoverView.class)).setImageUrl(ugcBook.getFullCover(), 2130837766);
+        ((CoverView) this.a(0, CoverView.class)).setImageUrl(ugcBook.getFullCover(), R.drawable.cover_default);
         this.a(1, ugcBook.getTitle());
         this.a(4, ugcBook.getDesc());
         if (ugcBook.isDraft()) {
@@ -56,6 +56,6 @@ public final class X extends W<UGCBookListRoot.UGCBook> {
 
     @Override
     protected final int[] a() {
-        return new int[]{2131493604, 2131492936, 2131493239, 2131493317, 2131493481, 2131493783, 2131493785, 2131493786};
+        return new int[]{R.id.cover, R.id.title, R.id.message_count, R.id.author, R.id.desc, R.id.updated, R.id.can_published, R.id.cannot_published};
     }
 }

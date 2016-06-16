@@ -44,6 +44,6 @@ final class bm extends com.clilystudio.netbook.a_pack.e<Void, Void, MhdListRoot>
             return;
         }
         MhdListActivity.a(this.a, 2);
-        e.a((Activity) this.a, 2131034408);
+        e.a((Activity) this.a, R.string.load_failed_tips);
     }
 }

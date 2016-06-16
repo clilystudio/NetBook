@@ -14,11 +14,11 @@ public class MyApkAdvert extends BaseShelfAd {
     public String getDownloadTitle(Context context) {
         String string = a.c(this.getApkSize());
         if (a.r(MyApplication.a()) == 1) {
-            String string2 = MyApplication.a().getString(2131034503);
+            String string2 = MyApplication.a().getString(R.string.shelf_ad_apk_wifi);
             Object[] arrobject = new Object[]{this.getTitle(), string};
             return String.format(string2, arrobject);
         }
-        String string3 = MyApplication.a().getString(2131034502);
+        String string3 = MyApplication.a().getString(R.string.shelf_ad_apk_no_wifi);
         Object[] arrobject = new Object[]{this.getTitle(), string};
         return String.format(string3, arrobject);
     }

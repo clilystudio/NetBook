@@ -86,11 +86,11 @@ public final class GameGiftGroupAdapter extends u<GameGiftGroup> {
             if (var2_2 == null) {
                 switch (var5_5) {
                     case 0: {
-                        var2_2 = this.a.inflate(2130903280, var3_3, false);
+                        var2_2 = this.a.inflate(R.layout.list_item_gift_game_game, var3_3, false);
                         **break;
                     }
                     case 1: {
-                        var2_2 = this.a.inflate(2130903281, var3_3, false);
+                        var2_2 = this.a.inflate(R.layout.list_item_gift_game_gift, var3_3, false);
                     }
                     lbl10:
                     // 3 sources:
@@ -100,7 +100,7 @@ public final class GameGiftGroupAdapter extends u<GameGiftGroup> {
                     }
                     case 2:
                 }
-                var2_2 = this.a.inflate(2130903282, var3_3, false);
+                var2_2 = this.a.inflate(R.layout.list_item_gift_game_more, var3_3, false);
             }
         }
         switch (var5_5) {
@@ -110,7 +110,7 @@ public final class GameGiftGroupAdapter extends u<GameGiftGroup> {
             case 0: {
                 var8_6 = var4_4.getGame();
                 var9_7 = new GameHolder(var2_2);
-                var9_7.icon.setImageUrl(var8_6.icon, 2130837766);
+                var9_7.icon.setImageUrl(var8_6.icon, R.drawable.cover_default);
                 var9_7.title.setText(var8_6.getName());
                 var9_7.desc.setText("\u6709 " + var8_6.followers + " \u4e2a\u5c0f\u4f19\u4f34\u5728\u73a9");
                 var9_7.button.setGame(var8_6);
@@ -143,7 +143,7 @@ public final class GameGiftGroupAdapter extends u<GameGiftGroup> {
         TextView title;
 
         MoreHolder(View view) {
-            this.title = (TextView) view.findViewById(2131492936);
+            this.title = (TextView) view.findViewById(R.id.title);
         }
     }
     class GiftHolder {
@@ -152,9 +152,9 @@ public final class GameGiftGroupAdapter extends u<GameGiftGroup> {
         TextView title;
 
         GiftHolder(View view) {
-            this.title = (TextView) view.findViewById(2131492936);
-            this.desc = (TextView)  view.findViewById(2131493481);
-            this.button = (GiftGameGiftButton)  view.findViewById(2131493679);
+            this.title = (TextView) view.findViewById(R.id.title);
+            this.desc = (TextView)  view.findViewById(R.id.desc);
+            this.button = (GiftGameGiftButton)  view.findViewById(R.id.button);
         }
     }
     class GameHolder {
@@ -164,10 +164,10 @@ public final class GameGiftGroupAdapter extends u<GameGiftGroup> {
         TextView title;
 
         GameHolder(View view) {
-            this.icon = (SmartImageView)view. findViewById(2131493028);
-            this.title = (TextView) view.findViewById(2131492936);
-            this.desc = (TextView) view.findViewById(2131493481);
-            this.button = (GiftGameGameButton) view.findViewById(2131492916);
+            this.icon = (SmartImageView)view. findViewById(R.id.icon);
+            this.title = (TextView) view.findViewById(R.id.title);
+            this.desc = (TextView) view.findViewById(R.id.desc);
+            this.button = (GiftGameGameButton) view.findViewById(R.id.download);
         }
     }
 }

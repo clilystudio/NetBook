@@ -9,13 +9,13 @@ import com.clilystudio.netbook.widget.CoverView;
 
 final class aV extends W<BookSummary> {
     public aV(BookTagListActivity bookTagListActivity, LayoutInflater layoutInflater) {
-        super(layoutInflater, 2130903270);
+        super(layoutInflater, R.layout.list_item_book_tags);
     }
 
     @Override
     protected final /* synthetic */ void a(int n, Object object) {
         BookSummary bookSummary = (BookSummary) object;
-        ((CoverView) this.a(0, CoverView.class)).setImageUrl(bookSummary.getFullCover(), 2130837766);
+        ((CoverView) this.a(0, CoverView.class)).setImageUrl(bookSummary.getFullCover(), R.drawable.cover_default);
         this.a(1, bookSummary.getTitle());
         this.a(2, bookSummary.getShortIntro());
         Object[] arrobject = bookSummary.getTags();
@@ -30,6 +30,6 @@ final class aV extends W<BookSummary> {
 
     @Override
     protected final int[] a() {
-        return new int[]{2131493616, 2131493605, 2131493617, 2131493635};
+        return new int[]{R.id.iv_cover, R.id.tv_title, R.id.tv_short_intro, R.id.book_tags};
     }
 }

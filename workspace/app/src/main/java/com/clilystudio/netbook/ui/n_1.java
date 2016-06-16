@@ -44,10 +44,10 @@ public final class n extends BaseAdapter {
         p p2;
         if (view == null) {
             p2 = new p(this.a);
-            view = this.b.inflate(2130903150, null);
-            p2.a = (TextView) view.findViewById(2131493297);
-            p2.b = (TextView) view.findViewById(2131493299);
-            p2.c = (ImageView) view.findViewById(2131493298);
+            view = this.b.inflate(R.layout.audiobook_list_item, null);
+            p2.a = (TextView) view.findViewById(R.id.audio_item_index);
+            p2.b = (TextView) view.findViewById(R.id.audio_item_title);
+            p2.c = (ImageView) view.findViewById(R.id.audio_item_state);
             view.setTag(p2);
         } else {
             p2 = (p) view.getTag();
@@ -56,12 +56,12 @@ public final class n extends BaseAdapter {
         p2.a.setText(String.valueOf(n2 + 1));
         p2.b.setText(track.getTrackTitle());
         if (n2 != AudioBookPlayActivity.k(this.a)) {
-            p2.c.setImageResource(2130837589);
+            p2.c.setImageResource(R.drawable.audiobook_item_play);
         } else if (as.c()) {
-            p2.c.setImageResource(2130837602);
+            p2.c.setImageResource(R.drawable.audiobook_playing);
             ((AnimationDrawable) p2.c.getDrawable()).start();
         } else {
-            p2.c.setImageResource(2130837603);
+            p2.c.setImageResource(R.drawable.audiobook_playing0);
         }
         view.setOnClickListener(new o(this, n2));
         return view;

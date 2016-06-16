@@ -37,8 +37,8 @@ public abstract class AbsPostActivity extends BaseLoadingActivity {
     }
 
     static /* synthetic */ boolean b(AbsPostActivity absPostActivity) {
-        if (((TextView) absPostActivity.findViewById(2131494004)).getText().toString().length() > 512) {
-            com.clilystudio.netbook.util.e.a((Activity) absPostActivity, (int) 2131034305);
+        if (((TextView) absPostActivity.findViewById(R.id.send_content)).getText().toString().length() > 512) {
+            com.clilystudio.netbook.util.e.a((Activity) absPostActivity, (int) R.string.alert_too_many_words);
             return false;
         }
         return true;
@@ -49,11 +49,11 @@ public abstract class AbsPostActivity extends BaseLoadingActivity {
     }
 
     private EditText p() {
-        return ((SendView) this.findViewById(2131494003)).b();
+        return ((SendView) this.findViewById(R.id.bottom_container)).b();
     }
 
     protected void a(Account account, String string) {
-        h h2 = new h(this, (Activity) this, 2131034430);
+        h h2 = new h(this, (Activity) this, R.string.post_publish_loading);
         Object[] arrobject = new String[]{this.a, account.getToken(), string};
         h2.b(arrobject);
     }
@@ -61,7 +61,7 @@ public abstract class AbsPostActivity extends BaseLoadingActivity {
     public final void a(ReplyeeInfo replyeeInfo, int n) {
         if (replyeeInfo != null && replyeeInfo.getAuthor() != null) {
             this.e = replyeeInfo;
-            SendView sendView = (SendView) this.findViewById(2131494003);
+            SendView sendView = (SendView) this.findViewById(R.id.bottom_container);
             EditText editText = sendView.b();
             editText.setText("");
             Object[] arrobject = new Object[]{replyeeInfo.getAuthor().getNickname()};
@@ -84,10 +84,10 @@ public abstract class AbsPostActivity extends BaseLoadingActivity {
             return;
         }
         if (this.f.length() > 512) {
-            com.clilystudio.netbook.util.e.a((Activity) this, (int) 2131034305);
+            com.clilystudio.netbook.util.e.a((Activity) this, (int) R.string.alert_too_many_words);
             return;
         }
-        g g2 = new g(this, (Activity) this, 2131034430);
+        g g2 = new g(this, (Activity) this, R.string.post_publish_loading);
         Object[] arrobject = new String[]{this.a, account.getToken(), this.f, replyeeInfo.getCommentId()};
         g2.b(arrobject);
     }
@@ -95,13 +95,13 @@ public abstract class AbsPostActivity extends BaseLoadingActivity {
     public abstract void a(String var1);
 
     protected final void a(boolean bl) {
-        TextView textView = (TextView) this.findViewById(2131494004);
+        TextView textView = (TextView) this.findViewById(R.id.send_content);
         am.a((Context) this, (View) textView);
         if (bl) {
             textView.setText("");
         }
         textView.setHint("\u6dfb\u52a0\u8bc4\u8bba");
-        this.findViewById(2131494005).setOnClickListener((View.OnClickListener) ((Object) new d(this, textView)));
+        this.findViewById(R.id.commit).setOnClickListener((View.OnClickListener) ((Object) new d(this, textView)));
     }
 
     public abstract void e(int var1);

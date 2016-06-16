@@ -19,7 +19,7 @@ public final class y extends W<BookSummary> {
 
     public y(UGCGuideAddBookActivity uGCGuideAddBookActivity, LayoutInflater layoutInflater) {
         this.a = uGCGuideAddBookActivity;
-        super(layoutInflater, 2130903411);
+        super(layoutInflater, R.layout.ugcbook_add_search_result);
         this.b = UGCGuideAddBookActivity.b(uGCGuideAddBookActivity).getBooks();
     }
 
@@ -34,7 +34,7 @@ public final class y extends W<BookSummary> {
             }
         }
         try {
-            ((CoverView) this.a(0, CoverView.class)).setImageUrl(bookSummary.getFullCover(), 2130837766);
+            ((CoverView) this.a(0, CoverView.class)).setImageUrl(bookSummary.getFullCover(), R.drawable.cover_default);
             this.a(1, bookSummary.getTitle());
             Object[] arrobject = new Object[]{bookSummary.getLatelyFollower(), Float.valueOf(bookSummary.getRetentionRatio()), bookSummary.getAuthor()};
             this.a(2, String.format("%d\u4eba\u5728\u8ffd  |  %.1f%%\u8bfb\u8005\u7559\u5b58  |  %s\u8457", arrobject));
@@ -55,13 +55,13 @@ public final class y extends W<BookSummary> {
 
     @Override
     protected final int[] a() {
-        return new int[]{2131493616, 2131493605, 2131493617, 2131493753, 2131494021, 2131494022};
+        return new int[]{R.id.iv_cover, R.id.tv_title, R.id.tv_short_intro, R.id.prom_label, R.id.item_add_btn, R.id.item_add_text};
     }
 
     @Override
     public final View getView(int n, View view, ViewGroup viewGroup) {
         View view2 = super.getView(n, view, viewGroup);
-        ((Button) view2.findViewById(2131494021)).setOnClickListener(new z(this, n));
+        ((Button) view2.findViewById(R.id.item_add_btn)).setOnClickListener(new z(this, n));
         this.a(n, view2, this.getItem(n));
         return view2;
     }

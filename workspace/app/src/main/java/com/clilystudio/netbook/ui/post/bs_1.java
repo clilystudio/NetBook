@@ -13,7 +13,7 @@ final class bs extends c<String, VoteResult> {
 
     public bs(GirlTopicActivity girlTopicActivity, Activity activity, int n) {
         this.a = girlTopicActivity;
-        super(activity, 2131034584);
+        super(activity, R.string.vote_send_loading);
     }
 
     private /* varargs */ VoteResult a(String... arrstring) {
@@ -49,7 +49,7 @@ final class bs extends c<String, VoteResult> {
                     e.a((Activity) this.a, string);
                     return;
                 }
-                e.a((Activity) this.a, 2131034388);
+                e.a((Activity) this.a, R.string.forbidden_tips);
                 return;
             }
             e.a((Activity) this.a, "\u6295\u7968\u5931\u8d25\uff0c\u8bf7\u91cd\u8bd5");

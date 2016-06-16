@@ -15,7 +15,7 @@ final class bu implements View.OnClickListener {
     @Override
     public final void onClick(View view) {
         this.a.dismiss();
-        GirlTopicListActivity.m(this.b).setText(2131034433);
+        GirlTopicListActivity.m(this.b).setText(R.string.post_sort_default);
         GirlTopicListActivity.b(this.b, "updated");
         GirlTopicListActivity.l(this.b).setRefreshing();
     }

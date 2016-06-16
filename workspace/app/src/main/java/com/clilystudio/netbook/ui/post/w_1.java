@@ -19,7 +19,7 @@ final class w implements View.OnClickListener {
         this.a.dismiss();
         String string = AddGirlTopicActivity.c(this.c).getText().toString().trim();
         String string2 = AddGirlTopicActivity.d(this.c).getText().toString().trim();
-        z z2 = new z(this.c, this.c, 2131034430);
+        z z2 = new z(this.c, this.c, R.string.post_publish_loading);
         String[] arrstring = new String[]{this.b, string, string2};
         z2.b(arrstring);
     }

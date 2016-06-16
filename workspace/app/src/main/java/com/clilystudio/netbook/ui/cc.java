@@ -18,19 +18,19 @@ final class cc implements DialogInterface.OnClickListener {
     public final void onClick(DialogInterface var1_1, int var2_2) {
         var3_3 = 0;
         switch (var2_2) {
-            case 2131494061: {
+            case R.id.wx_friend: {
                 var3_3 = 1;
                 **break;
             }
-            case 2131494065: {
+            case R.id.wx_moments: {
                 var3_3 = 2;
                 **break;
             }
-            case 2131494062: {
+            case R.id.qq_friend: {
                 var3_3 = 3;
                 **break;
             }
-            case 2131494063: {
+            case R.id.qzone: {
                 var3_3 = 4;
             }
             lbl14:
@@ -39,7 +39,7 @@ final class cc implements DialogInterface.OnClickListener {
             {
                 **GOTO lbl18
             }
-            case 2131494066:
+            case R.id.copy:
         }
         var3_3 = 5;
         lbl18:

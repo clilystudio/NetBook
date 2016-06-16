@@ -61,7 +61,7 @@ public class ReaderTtsSetWidget extends LinearLayout {
         }
         if (n >= 0 && n < readerTtsSetWidget.c.length) {
             readerTtsSetWidget.c[n].setText(readerTtsSetWidget.l[n]);
-            readerTtsSetWidget.c[n].setBackgroundResource(2130838190);
+            readerTtsSetWidget.c[n].setBackgroundResource(R.drawable.tts_widget_text_bg);
         }
         if (bl) {
             readerTtsSetWidget.n = -1;
@@ -119,10 +119,10 @@ public class ReaderTtsSetWidget extends LinearLayout {
             }
             if (n4 == n) {
                 readerTtsSetWidget.h[n4].setSelected("1");
-                readerTtsSetWidget.b[n4].setBackgroundResource(2130837757);
+                readerTtsSetWidget.b[n4].setBackgroundResource(R.drawable.common_red_bg_normal);
             } else {
                 readerTtsSetWidget.h[n4].setSelected("0");
-                readerTtsSetWidget.b[n4].setBackgroundResource(2130838190);
+                readerTtsSetWidget.b[n4].setBackgroundResource(R.drawable.tts_widget_text_bg);
             }
             ++n4;
         } while (true);
@@ -165,9 +165,9 @@ public class ReaderTtsSetWidget extends LinearLayout {
         int n = 0;
         while (n < this.c.length) {
             if (n == this.n) {
-                this.c[n].setBackgroundResource(2130837757);
+                this.c[n].setBackgroundResource(R.drawable.common_red_bg_normal);
             } else {
-                this.c[n].setBackgroundResource(2130838190);
+                this.c[n].setBackgroundResource(R.drawable.tts_widget_text_bg);
                 this.c[n].setText(this.l[n]);
             }
             ++n;
@@ -181,27 +181,27 @@ public class ReaderTtsSetWidget extends LinearLayout {
 
     public final void a(SpeechSynthesizer speechSynthesizer) {
         this.q = speechSynthesizer;
-        String[] arrstring = new String[]{this.getContext().getString(2131034542), this.getContext().getString(2131034540), this.getContext().getString(2131034541), this.getContext().getString(2131034543)};
+        String[] arrstring = new String[]{this.getContext().getString(R.string.tts_speech_time_5), this.getContext().getString(R.string.tts_speech_time_15), this.getContext().getString(R.string.tts_speech_time_30), this.getContext().getString(R.string.tts_speech_time_60)};
         this.l = arrstring;
         this.b = new TextView[3];
-        this.b[0] = (TextView) this.findViewById(2131493962);
-        this.b[1] = (TextView) this.findViewById(2131493963);
-        this.b[2] = (TextView) this.findViewById(2131493964);
+        this.b[0] = (TextView) this.findViewById(R.id.tts_voice1);
+        this.b[1] = (TextView) this.findViewById(R.id.tts_voice2);
+        this.b[2] = (TextView) this.findViewById(R.id.tts_voice3);
         this.setVoiceSourceView();
         this.c = new TextView[4];
-        this.c[0] = (TextView) this.findViewById(2131493966);
-        this.c[1] = (TextView) this.findViewById(2131493967);
-        this.c[2] = (TextView) this.findViewById(2131493968);
-        this.c[3] = (TextView) this.findViewById(2131493969);
+        this.c[0] = (TextView) this.findViewById(R.id.tts_time1);
+        this.c[1] = (TextView) this.findViewById(R.id.tts_time2);
+        this.c[2] = (TextView) this.findViewById(R.id.tts_time3);
+        this.c[3] = (TextView) this.findViewById(R.id.tts_time4);
         for (int j = 0; j < this.c.length; ++j) {
             this.c[j].setOnClickListener((View.OnClickListener) ((Object) new cj(this, j)));
         }
-        this.d = (TextView) this.findViewById(2131493965);
+        this.d = (TextView) this.findViewById(R.id.tts_voice_more);
         this.d.setOnClickListener((View.OnClickListener) ((Object) new cg(this)));
-        this.e = (SeekBar) this.findViewById(2131493960);
+        this.e = (SeekBar) this.findViewById(R.id.tts_voice_speed);
         this.e.setProgress(a.a(this.getContext(), "speech_speed", 50));
         this.e.setOnSeekBarChangeListener((SeekBar.OnSeekBarChangeListener) ((Object) new ch(this)));
-        this.f = (Button) this.findViewById(2131493970);
+        this.f = (Button) this.findViewById(R.id.tts_exit);
         this.f.setOnClickListener((View.OnClickListener) ((Object) new ci(this)));
         this.i = new Timer();
     }
@@ -265,13 +265,13 @@ public class ReaderTtsSetWidget extends LinearLayout {
                         this.b[var11_11].setTag(this.h[var11_11].getName());
                         this.b[var11_11].setOnClickListener((View.OnClickListener) new cm(this, var11_11));
                         if (this.a(this.h[var11_11])) {
-                            this.b[var11_11].setBackgroundResource(2130837757);
+                            this.b[var11_11].setBackgroundResource(R.drawable.common_red_bg_normal);
                             if (!this.p) continue;
                             this.setSpeechVoice(this.h[var11_11].getName());
                             this.p = false;
                             continue;
                         }
-                        this.b[var11_11].setBackgroundResource(2130838190);
+                        this.b[var11_11].setBackgroundResource(R.drawable.tts_widget_text_bg);
                     }
                     if (var10_10 >= 3) return;
                     while (var10_10 < 3) {

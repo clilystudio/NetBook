@@ -48,9 +48,9 @@ public class FeedAddActivity extends BaseActivity {
     @Override
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        this.setContentView(2130903097);
-        this.a(2131034383, 2131034375, (aa) new a(this));
-        this.b = (ListView) this.findViewById(2131493124);
+        this.setContentView(R.layout.activity_feed_add);
+        this.a(R.string.feed_select_book, R.string.feed_add_ok, (aa) new a(this));
+        this.b = (ListView) this.findViewById(R.id.book_feed_add_list);
         this.b.setOnItemClickListener(new b(this));
     }
 
@@ -65,8 +65,8 @@ public class FeedAddActivity extends BaseActivity {
         List<BookReadRecord> list = BookReadRecord.getAllWithTopNoFeed();
         this.a.a(list);
         boolean bl = !list.isEmpty();
-        View view = this.findViewById(2131493122);
-        View view2 = this.findViewById(2131493125);
+        View view = this.findViewById(R.id.book_feed_add_content);
+        View view2 = this.findViewById(R.id.book_feed_add_empty);
         if (bl) {
             view.setVisibility(View.VISIBLE);
             view2.setVisibility(View.GONE);

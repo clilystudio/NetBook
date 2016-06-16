@@ -148,7 +148,7 @@ public abstract class NotifFragment extends Fragment {
     public void onActivityCreated(Bundle bundle) {
         super.onActivityCreated(bundle);
         this.m = am.e();
-        this.f = LayoutInflater.from(this.getActivity()).inflate(2130903325, null);
+        this.f = LayoutInflater.from(this.getActivity()).inflate(R.layout.loading_item, null);
         this.e = (ListView) this.d.h();
         if (a.i()) {
             this.e.setFooterDividersEnabled(false);
@@ -171,12 +171,12 @@ public abstract class NotifFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
-        View view = layoutInflater.inflate(2130903333, viewGroup, false);
+        View view = layoutInflater.inflate(R.layout.notif_fragment, viewGroup, false);
         ButterKnife.inject((Object) this, view);
-        this.d = (PullToRefreshListView) view.findViewById(2131493099);
-        this.g = view.findViewById(2131493085);
-        this.h = (TextView) view.findViewById(2131493100);
-        this.i = view.findViewById(2131493086);
+        this.d = (PullToRefreshListView) view.findViewById(R.id.ptr_list);
+        this.g = view.findViewById(R.id.pb_loading);
+        this.h = (TextView) view.findViewById(R.id.empty_text);
+        this.i = view.findViewById(R.id.load_error_hint_btn);
         this.i.setOnClickListener((View.OnClickListener) ((Object) new br(this)));
         return view;
     }

@@ -12,7 +12,7 @@ final class t extends c<String, PostPublish> {
 
     public t(AddGamePostActivity addGamePostActivity, Activity activity, int n) {
         this.a = addGamePostActivity;
-        super(activity, 2131034430);
+        super(activity, R.string.post_publish_loading);
     }
 
     private /* varargs */ PostPublish a(String... arrstring) {
@@ -48,7 +48,7 @@ final class t extends c<String, PostPublish> {
                     e.a((Activity) this.a, string);
                     return;
                 }
-                e.a((Activity) this.a, 2131034388);
+                e.a((Activity) this.a, R.string.forbidden_tips);
                 return;
             }
             e.a((Activity) this.a, "\u53d1\u5e03\u5931\u8d25\uff0c\u8bf7\u91cd\u8bd5");

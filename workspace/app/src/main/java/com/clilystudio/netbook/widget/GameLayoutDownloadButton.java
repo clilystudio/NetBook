@@ -12,6 +12,6 @@ public class GameLayoutDownloadButton extends NewGameDownloadButton {
     protected final void c() {
         this.setText("\u5b89\u88c5");
         this.setTextColor(-1);
-        this.setBackgroundResource(2130837730);
+        this.setBackgroundResource(R.drawable.btn_game_layout_install);
     }
 }

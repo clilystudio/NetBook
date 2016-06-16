@@ -12,7 +12,7 @@ final class dB extends c<String, PostPublish> {
 
     public dB(TweetDetailActivity tweetDetailActivity, Activity activity, int n) {
         this.a = tweetDetailActivity;
-        super(activity, 2131034430);
+        super(activity, R.string.post_publish_loading);
     }
 
     private /* varargs */ PostPublish a(String... arrstring) {
@@ -46,7 +46,7 @@ final class dB extends c<String, PostPublish> {
                     e.a((Activity) this.a, (String) string);
                     return;
                 }
-                e.a((Activity) this.a, (int) 2131034388);
+                e.a((Activity) this.a, (int) R.string.forbidden_tips);
                 return;
             }
             if ("HAS_BAN_KEYWORDS".equals(postPublish.getCode())) {

@@ -11,9 +11,9 @@ public class FeedIntroActivity extends BaseActivity {
     @Override
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        this.setContentView(2130903098);
-        this.b(2131034381);
-        ((Button) this.findViewById(2131493126)).setOnClickListener(new d(this));
+        this.setContentView(R.layout.activity_feed_intro);
+        this.b(R.string.feed_intro);
+        ((Button) this.findViewById(R.id.feed_intro_btn)).setOnClickListener(new d(this));
     }
 
     @Override

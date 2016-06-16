@@ -37,10 +37,10 @@ public class AuthorBooksActivity extends BaseLoadingActivity {
     @Override
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        this.a(2130903322);
+        this.a(R.layout.listview_search);
         this.c = this.getIntent().getStringExtra("keyword");
         this.b(this.c);
-        this.a = (ListView) this.findViewById(2131493185);
+        this.a = (ListView) this.findViewById(R.id.search_list);
         this.b = new E(LayoutInflater.from(this));
         this.a.setAdapter(this.b);
         this.a.setOnItemClickListener(new G(this));

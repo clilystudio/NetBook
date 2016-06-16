@@ -44,6 +44,6 @@ final class aL extends com.clilystudio.netbook.a_pack.e<String, Void, BookRankDe
             return;
         }
         this.a.e(2);
-        e.a((Activity) this.a, (int) 2131034408);
+        e.a((Activity) this.a, (int) R.string.load_failed_tips);
     }
 }

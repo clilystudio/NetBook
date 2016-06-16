@@ -13,7 +13,7 @@ final class Z extends c<String, PostPublish> {
 
     public Z(AddVoteItemActivity addVoteItemActivity, Activity activity, int n) {
         this.a = addVoteItemActivity;
-        super(activity, 2131034430);
+        super(activity, R.string.post_publish_loading);
     }
 
     private /* varargs */ PostPublish a(String... arrstring) {
@@ -76,6 +76,6 @@ final class Z extends c<String, PostPublish> {
                 return;
             }
         }
-        e.a((Activity) this.a, (int) 2131034388);
+        e.a((Activity) this.a, (int) R.string.forbidden_tips);
     }
 }

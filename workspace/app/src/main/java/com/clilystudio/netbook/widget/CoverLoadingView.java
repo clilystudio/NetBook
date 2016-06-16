@@ -25,7 +25,7 @@ public class CoverLoadingView extends CoverView {
         this.b.setCornerRadius(this.a);
         RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(-1, -1);
         this.b.setLayoutParams(layoutParams);
-        this.b.setId(2131492906);
+        this.b.setId(R.id.cover_loading);
         this.addView(this.b);
     }
 }

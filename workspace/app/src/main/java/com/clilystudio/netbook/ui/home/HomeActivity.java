@@ -208,17 +208,17 @@ public class HomeActivity extends HomeParentActivity implements ViewPager$OnPage
             default: {
                 return;
             }
-            case 2131493485: {
+            case R.id.home_action_menu_game: {
                 this.startActivity(GameTabActivity.a(this));
                 com.clilystudio.netbook.hpay100.a.a.n(this, "home_ab_game");
                 return;
             }
-            case 2131493486: {
+            case R.id.home_action_menu_search: {
                 this.startActivity(SearchActivity.a(this));
                 com.clilystudio.netbook.hpay100.a.a.n(this, "home_ab_search");
                 return;
             }
-            case 2131493487:
+            case R.id.home_action_menu_more:
         }
         this.l();
         com.clilystudio.netbook.hpay100.a.a.n(this, "home_ab_more");
@@ -248,7 +248,7 @@ public class HomeActivity extends HomeParentActivity implements ViewPager$OnPage
 
     private void k() {
         if (this.k != null) {
-            this.l.setImageResource(2130837835);
+            this.l.setImageResource(R.drawable.home_menu_0);
             this.m.setText("\u8bf7\u767b\u5f55");
         }
     }
@@ -256,13 +256,13 @@ public class HomeActivity extends HomeParentActivity implements ViewPager$OnPage
     private void l() {
         try {
             if (this.j == null || !this.j.isShowing()) {
-                this.j = new PopupWindow(this.getLayoutInflater().inflate(2130903227, null, false), -1, com.clilystudio.netbook.hpay100.a.a.L(this));
-                this.j.setAnimationStyle(2131165629);
+                this.j = new PopupWindow(this.getLayoutInflater().inflate(R.layout.home_menu_bg_popup, null, false), -1, com.clilystudio.netbook.hpay100.a.a.L(this));
+                this.j.setAnimationStyle(R.style.home_menu_bg_anim);
                 this.j.showAtLocation(this.a().a(), 0, 0, 0);
             }
-            View view = this.findViewById(2131493096);
+            View view = this.findViewById(R.id.host);
             if (this.i == null) {
-                this.i = new PopupWindow(this.k, this.getResources().getDimensionPixelSize(2131099746), -2);
+                this.i = new PopupWindow(this.k, this.getResources().getDimensionPixelSize(R.dimen.home_popup_width), -2);
                 this.i.setFocusable(true);
                 this.i.setOutsideTouchable(true);
                 this.i.setBackgroundDrawable(new ColorDrawable(0));
@@ -270,7 +270,7 @@ public class HomeActivity extends HomeParentActivity implements ViewPager$OnPage
                 this.i.getContentView().setFocusable(true);
                 this.i.getContentView().setOnKeyListener((View.OnKeyListener) ((Object) new c(this)));
             }
-            this.i.setAnimationStyle(2131165628);
+            this.i.setAnimationStyle(R.style.home_menu_anim);
             this.i.showAtLocation(view, 53, com.clilystudio.netbook.hpay100.a.a.a((Context) this, 5.0f), am.l((Context) this) + am.k((Context) this));
             this.i.setOnDismissListener((PopupWindow.OnDismissListener) ((Object) new d(this)));
             return;
@@ -428,7 +428,7 @@ public class HomeActivity extends HomeParentActivity implements ViewPager$OnPage
         }
         if (l2 - this.b > 2000) {
             this.b = l2;
-            Toast.makeText((Context) this, 2131034373, 0).show();
+            Toast.makeText((Context) this, R.string.exit_hint, 0).show();
             return;
         }
         super.onBackPressed();
@@ -451,7 +451,7 @@ public class HomeActivity extends HomeParentActivity implements ViewPager$OnPage
             default: {
                 return;
             }
-            case 2131493488: {
+            case R.id.home_menu_user: {
                 if (this.p != null) {
                     this.m();
                     this.startActivity(UserInfoActivity.a(this, this.p.getToken()));
@@ -462,7 +462,7 @@ public class HomeActivity extends HomeParentActivity implements ViewPager$OnPage
                 this.startActivityForResult(intent, 100);
                 return;
             }
-            case 2131493491: {
+            case R.id.home_menu_msg: {
                 if (this.p != null) {
                     this.m();
                     com.clilystudio.netbook.hpay100.a.a.b((Context) this, "key_enter_msg_time", System.currentTimeMillis());
@@ -477,7 +477,7 @@ public class HomeActivity extends HomeParentActivity implements ViewPager$OnPage
                 this.startActivityForResult(AuthLoginActivity.a(this), 100);
                 return;
             }
-            case 2131493496: {
+            case R.id.home_menu_sync: {
                 if (this.p != null) {
                     this.m();
                     new Z(this, this.p.getToken()).a(false);
@@ -486,22 +486,22 @@ public class HomeActivity extends HomeParentActivity implements ViewPager$OnPage
                 this.startActivityForResult(AuthLoginActivity.a(this), 100);
                 return;
             }
-            case 2131493502: {
+            case R.id.home_menu_feedback: {
                 this.startActivity(CommonPostListActivity.a(this, "android-feedback"));
                 return;
             }
-            case 2131493504: {
+            case R.id.home_menu_theme: {
                 Intent intent = new Intent(this, HomeTransparentActivity.class);
                 if (com.clilystudio.netbook.hpay100.a.a.a((Context) this, "customer_night_theme", false)) {
-                    this.n.setText(2131034366);
-                    this.o.setImageResource(2130838181);
+                    this.n.setText(R.string.custom_theme_night);
+                    this.o.setImageResource(R.drawable.theme_night);
                     com.clilystudio.netbook.hpay100.a.a.b((Context) this, "customer_night_theme", false);
                     com.clilystudio.netbook.hpay100.a.a.b((Context) this, "night_mode", false);
                     com.clilystudio.netbook.hpay100.a.a.C(this);
                     intent.putExtra("onThemeChange", 0);
                 } else {
-                    this.n.setText(2131034365);
-                    this.o.setImageResource(2130838180);
+                    this.n.setText(R.string.custom_theme_day);
+                    this.o.setImageResource(R.drawable.theme_day);
                     com.clilystudio.netbook.hpay100.a.a.b((Context) this, "customer_night_theme", true);
                     com.clilystudio.netbook.hpay100.a.a.b((Context) this, "night_mode", true);
                     MiStatInterface.recordCountEvent("start_night_theme_home",null);
@@ -509,18 +509,18 @@ public class HomeActivity extends HomeParentActivity implements ViewPager$OnPage
                     intent.putExtra("onThemeChange", 1);
                 }
                 this.startActivity(intent);
-                this.overridePendingTransition(2130968606, 2130968607);
+                this.overridePendingTransition(R.anim.shade_alpha_in, R.anim.shade_alpha_out);
                 return;
             }
-            case 2131493507: {
+            case R.id.home_menu_settings: {
                 this.startActivity(new Intent(this, SettingsActivity.class));
                 return;
             }
-            case 2131493498: {
+            case R.id.home_menu_scan: {
                 this.startActivity(new Intent(this, ScanTxtFileActivity.class));
                 return;
             }
-            case 2131493500: {
+            case R.id.home_menu_wifi_transfer: {
                 if (!com.clilystudio.netbook.hpay100.a.a.d()) {
                     com.clilystudio.netbook.util.e.a((Activity) this, (String) "\u65e0\u6cd5\u4f7f\u7528\uff0c\u8bf7\u68c0\u67e5SD\u5361\u662f\u5426\u6302\u8f7d");
                     return;
@@ -532,15 +532,15 @@ public class HomeActivity extends HomeParentActivity implements ViewPager$OnPage
                 this.startActivity(new Intent(this, WifiActivity.class));
                 return;
             }
-            case 2131493485: {
+            case R.id.home_action_menu_game: {
                 this.e(view.getId());
                 return;
             }
-            case 2131493486: {
+            case R.id.home_action_menu_search: {
                 this.e(view.getId());
                 return;
             }
-            case 2131493487:
+            case R.id.home_action_menu_more:
         }
         this.e(view.getId());
     }
@@ -552,17 +552,17 @@ public class HomeActivity extends HomeParentActivity implements ViewPager$OnPage
     public void onCreate(Bundle bundle) {
         Account account;
         super.onCreate(bundle);
-        this.setContentView(2130903105);
+        this.setContentView(R.layout.activity_home_tabhost);
         ButterKnife.inject(this);
         w = this;
         android.support.v7.app.a a2 = this.a();
         a2.c(false);
         a2.a(false);
-        a2.a(2130903226);
+        a2.a(R.layout.home_ab_custom_view);
         a2.d(true);
-        this.q = (ImageView) a2.a().findViewById(2131493487);
-        ImageView imageView = (ImageView) a2.a().findViewById(2131493486);
-        this.r = (ImageView) a2.a().findViewById(2131493485);
+        this.q = (ImageView) a2.a().findViewById(R.id.home_action_menu_more);
+        ImageView imageView = (ImageView) a2.a().findViewById(R.id.home_action_menu_search);
+        this.r = (ImageView) a2.a().findViewById(R.id.home_action_menu_game);
         this.q.setOnClickListener(this);
         imageView.setOnClickListener(this);
         this.r.setOnClickListener(this);
@@ -576,9 +576,9 @@ public class HomeActivity extends HomeParentActivity implements ViewPager$OnPage
             this.r.setVisibility(View.GONE);
         }
         com.clilystudio.netbook.event.i.a().a(this);
-        this.f = (TabHost) this.findViewById(2131493096);
+        this.f = (TabHost) this.findViewById(R.id.host);
         TabWidgetV2 tabWidgetV2 = (TabWidgetV2) this.findViewById(16908307);
-        this.g = (ViewPager) this.findViewById(2131493097);
+        this.g = (ViewPager) this.findViewById(R.id.pager);
         this.h = new i(this, this.getSupportFragmentManager());
         this.g.setOffscreenPageLimit(3);
         this.g.setAdapter((PagerAdapter) ((Object) this.h));
@@ -595,47 +595,47 @@ public class HomeActivity extends HomeParentActivity implements ViewPager$OnPage
             TabHost.TabSpec tabSpec = this.f.newTabSpec("tab" + i2);
             tabSpec.setContent(this);
             if (i2 == 1 && com.clilystudio.netbook.hpay100.a.a.a((Context) this, "FRIST_RUN_POST", true) && com.clilystudio.netbook.hpay100.a.a.r(this, "switch_news")) {
-                View view2 = layoutInflater.inflate(2130903230, null);
+                View view2 = layoutInflater.inflate(R.layout.home_tabhost_notify_item, null);
                 this.s = (ViewGroup) view2;
                 view = view2;
             } else {
-                view = layoutInflater.inflate(2130903229, null);
+                view = layoutInflater.inflate(R.layout.home_tabhost_item, null);
             }
-            ((TextView) view.findViewById(2131493509)).setText((String) this.h.getPageTitle(i2));
+            ((TextView) view.findViewById(R.id.text)).setText((String) this.h.getPageTitle(i2));
             tabSpec.setIndicator(view);
             this.f.addTab(tabSpec);
         }
         this.p = am.e();
-        this.k = this.getLayoutInflater().inflate(2130903228, null);
-        View view = this.k.findViewById(2131493488);
-        View view3 = this.k.findViewById(2131493491);
-        View view4 = this.k.findViewById(2131493496);
-        View view5 = this.k.findViewById(2131493502);
-        View view6 = this.k.findViewById(2131493507);
-        View view7 = this.k.findViewById(2131493504);
-        this.k.findViewById(2131493498).setOnClickListener(this);
-        this.k.findViewById(2131493500).setOnClickListener(this);
+        this.k = this.getLayoutInflater().inflate(R.layout.home_popupwindow_layout, null);
+        View view = this.k.findViewById(R.id.home_menu_user);
+        View view3 = this.k.findViewById(R.id.home_menu_msg);
+        View view4 = this.k.findViewById(R.id.home_menu_sync);
+        View view5 = this.k.findViewById(R.id.home_menu_feedback);
+        View view6 = this.k.findViewById(R.id.home_menu_settings);
+        View view7 = this.k.findViewById(R.id.home_menu_theme);
+        this.k.findViewById(R.id.home_menu_scan).setOnClickListener(this);
+        this.k.findViewById(R.id.home_menu_wifi_transfer).setOnClickListener(this);
         view.setOnClickListener(this);
         view3.setOnClickListener(this);
         view4.setOnClickListener(this);
         view5.setOnClickListener(this);
         view6.setOnClickListener(this);
         view7.setOnClickListener(this);
-        this.l = (SmartImageView) view.findViewById(2131493489);
-        this.m = (TextView) view.findViewById(2131493490);
+        this.l = (SmartImageView) view.findViewById(R.id.home_menu_user_avatar);
+        this.m = (TextView) view.findViewById(R.id.home_menu_user_name);
         if (this.p != null) {
             this.a(this.p.getUser());
         } else {
             this.k();
         }
-        this.n = (TextView) this.k.findViewById(2131493506);
-        this.o = (ImageView) this.k.findViewById(2131493505);
+        this.n = (TextView) this.k.findViewById(R.id.text_theme);
+        this.o = (ImageView) this.k.findViewById(R.id.icon_theme);
         if (com.clilystudio.netbook.hpay100.a.a.a((Context) this, "customer_night_theme", false)) {
-            this.n.setText(2131034365);
-            this.o.setImageResource(2130838180);
+            this.n.setText(R.string.custom_theme_day);
+            this.o.setImageResource(R.drawable.theme_day);
         } else {
-            this.n.setText(2131034366);
-            this.o.setImageResource(2130838181);
+            this.n.setText(R.string.custom_theme_night);
+            this.o.setImageResource(R.drawable.theme_night);
         }
         if (!com.clilystudio.netbook.hpay100.a.a.a((Context) this, "bookPushRecords", false)) {
             List<BookReadRecord> list = BookReadRecord.getAll();
@@ -656,8 +656,8 @@ public class HomeActivity extends HomeParentActivity implements ViewPager$OnPage
         if (bundle != null) {
             tabWidgetV2.setIndex(bundle.getInt("extra_index"));
         }
-        this.findViewById(2131493487).setOnClickListener(this);
-        this.findViewById(2131493486).setOnClickListener(this);
+        this.findViewById(R.id.home_action_menu_more).setOnClickListener(this);
+        this.findViewById(R.id.home_action_menu_search).setOnClickListener(this);
         if (this != null && (account = am.e()) != null) {
             new Z(this, account.getToken()).a(true);
         }
@@ -726,15 +726,15 @@ public class HomeActivity extends HomeParentActivity implements ViewPager$OnPage
     @com.squareup.a.l
     public void onNotifEvent(w w2) {
         int n2 = J.a(this).e();
-        View view = this.k.findViewById(2131493495);
-        TextView textView = (TextView) this.k.findViewById(2131493494);
+        View view = this.k.findViewById(R.id.msg_dot);
+        TextView textView = (TextView) this.k.findViewById(R.id.msg_count);
         if (n2 > 0) {
             textView.setVisibility(View.VISIBLE);
             view.setVisibility(View.GONE);
             textView.setText(String.valueOf(n2));
             if (this.q == null) return;
             {
-                this.q.setImageResource(2130837870);
+                this.q.setImageResource(R.drawable.ic_action_home_overflow_dot);
                 return;
             }
         } else if (n2 == -1) {
@@ -742,7 +742,7 @@ public class HomeActivity extends HomeParentActivity implements ViewPager$OnPage
             view.setVisibility(View.VISIBLE);
             if (this.q == null) return;
             {
-                this.q.setImageResource(2130837870);
+                this.q.setImageResource(R.drawable.ic_action_home_overflow_dot);
                 return;
             }
         } else {
@@ -750,7 +750,7 @@ public class HomeActivity extends HomeParentActivity implements ViewPager$OnPage
             view.setVisibility(View.GONE);
             if (this.q == null) return;
             {
-                this.q.setImageResource(2130837871);
+                this.q.setImageResource(R.drawable.ic_action_overflow);
                 return;
             }
         }

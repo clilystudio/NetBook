@@ -63,7 +63,7 @@ public class GameGiftFragment extends BaseLoadingFragment {
 
     @Override
     protected final int a() {
-        return 2130903321;
+        return R.layout.listview;
     }
 
     @Override
@@ -100,6 +100,6 @@ public class GameGiftFragment extends BaseLoadingFragment {
     @Override
     public void onViewCreated(View view, Bundle bundle) {
         super.onViewCreated(view, bundle);
-        this.a = (ListView) view.findViewById(2131493135);
+        this.a = (ListView) view.findViewById(R.id.content_list);
     }
 }

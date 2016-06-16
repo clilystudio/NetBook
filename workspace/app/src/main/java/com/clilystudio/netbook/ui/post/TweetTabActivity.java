@@ -139,27 +139,27 @@ public class TweetTabActivity extends BaseTabActivity implements ViewPager$OnPag
     @Override
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        this.setContentView(2130903134);
-        this.b(2131034546);
-        this.n = this.a().a().findViewById(2131493017);
-        this.f = (RelativeLayout) this.findViewById(2131493222);
-        this.g = (RelativeLayout) this.findViewById(2131493223);
-        this.findViewById(2131493579);
-        this.h = (LinearLayout) this.findViewById(2131493583);
-        this.findViewById(2131493585);
-        this.i = (LinearLayout) this.findViewById(2131493581);
-        this.j = (FloatingActionButton) this.findViewById(2131493580);
-        this.k = (FloatingActionButton) this.findViewById(2131493584);
-        this.l = (FloatingActionButton) this.findViewById(2131493586);
-        this.m = (FloatingActionButton) this.findViewById(2131493582);
+        this.setContentView(R.layout.activity_tweet_tab);
+        this.b(R.string.tweet);
+        this.n = this.a().a().findViewById(R.id.ll_mask);
+        this.f = (RelativeLayout) this.findViewById(R.id.fab_bg_container);
+        this.g = (RelativeLayout) this.findViewById(R.id.fab_container);
+        this.findViewById(R.id.ll_activity_container);
+        this.h = (LinearLayout) this.findViewById(R.id.ll_artics_container);
+        this.findViewById(R.id.ll_comment_container);
+        this.i = (LinearLayout) this.findViewById(R.id.ll_tweet_container);
+        this.j = (FloatingActionButton) this.findViewById(R.id.fab_activty);
+        this.k = (FloatingActionButton) this.findViewById(R.id.fab_article);
+        this.l = (FloatingActionButton) this.findViewById(R.id.fab_comment);
+        this.m = (FloatingActionButton) this.findViewById(R.id.fab_tweet);
         this.j.setOnClickListener(new dP(this));
         this.m.setOnClickListener(new dQ(this));
         this.k.setOnClickListener(new dR(this));
         this.l.setOnClickListener(new dS(this));
         this.b();
         this.f();
-        this.a = (TabHost) this.findViewById(2131493096);
-        this.c = (ViewPager) this.findViewById(2131493097);
+        this.a = (TabHost) this.findViewById(R.id.host);
+        this.c = (ViewPager) this.findViewById(R.id.pager);
         this.e = new dV(this, this.getSupportFragmentManager());
         this.c.setOffscreenPageLimit(3);
         this.c.setAdapter(this.e);
@@ -175,8 +175,8 @@ public class TweetTabActivity extends BaseTabActivity implements ViewPager$OnPag
         for (int j = 0; j < n; ++j) {
             TabHost.TabSpec tabSpec = this.a.newTabSpec("tab" + j);
             tabSpec.setContent(this);
-            View view = layoutInflater.inflate(2130903229, null);
-            ((TextView) view.findViewById(2131493509)).setText((String) this.e.getPageTitle(j));
+            View view = layoutInflater.inflate(R.layout.home_tabhost_item, null);
+            ((TextView) view.findViewById(R.id.text)).setText((String) this.e.getPageTitle(j));
             tabSpec.setIndicator(view);
             this.a.addTab(tabSpec);
         }

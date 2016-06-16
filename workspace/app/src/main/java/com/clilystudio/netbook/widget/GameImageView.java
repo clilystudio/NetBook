@@ -24,11 +24,11 @@ public class GameImageView extends SmartImageView {
 
     public GameImageView(Context context, AttributeSet attributeSet) {
         super(context, attributeSet);
-        this.e = BitmapFactory.decodeResource(this.getResources(), 2130837800);
-        this.f = BitmapFactory.decodeResource(this.getResources(), 2130837801);
-        this.d = BitmapFactory.decodeResource(this.getResources(), 2130837798);
-        this.b = BitmapFactory.decodeResource(this.getResources(), 2130837799);
-        this.c = BitmapFactory.decodeResource(this.getResources(), 2130837797);
+        this.e = BitmapFactory.decodeResource(this.getResources(), R.drawable.flag_game_recommend);
+        this.f = BitmapFactory.decodeResource(this.getResources(), R.drawable.flag_game_shoufa);
+        this.d = BitmapFactory.decodeResource(this.getResources(), R.drawable.flag_game_gift);
+        this.b = BitmapFactory.decodeResource(this.getResources(), R.drawable.flag_game_hot);
+        this.c = BitmapFactory.decodeResource(this.getResources(), R.drawable.flag_game_activity);
         ViewCompat.setElevation(this, 10.0f);
     }
 

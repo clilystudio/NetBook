@@ -8,12 +8,12 @@ public class HomeTransparentActivity extends Activity {
     @Override
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        this.setContentView(2130903106);
+        this.setContentView(R.layout.activity_home_transparent);
         if (this.getIntent().getIntExtra("onThemeChange", 0) == 0) {
-            this.findViewById(2131493134).setBackgroundResource(2130837644);
+            this.findViewById(R.id.bg_layout).setBackgroundResource(R.drawable.bg_day_theme);
             return;
         }
-        this.findViewById(2131493134).setBackgroundResource(2130837679);
+        this.findViewById(R.id.bg_layout).setBackgroundResource(R.drawable.bg_night_theme);
     }
 
     @Override
@@ -29,7 +29,7 @@ public class HomeTransparentActivity extends Activity {
             @Override
             public void run() {
                 finish();
-                overridePendingTransition(2130968606, 2130968607);
+                overridePendingTransition(R.anim.shade_alpha_in, R.anim.shade_alpha_out);
             }
         }, 1500);
     }

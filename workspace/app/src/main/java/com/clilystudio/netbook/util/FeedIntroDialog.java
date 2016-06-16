@@ -11,8 +11,8 @@ import android.widget.Button;
 public class FeedIntroDialog extends DialogFragment {
     @Override
     public Dialog onCreateDialog(Bundle bundle) {
-        View view = ((LayoutInflater) this.getActivity().getSystemService("layout_inflater")).inflate(2130903190, null);
-        ((Button) view.findViewById(2131493393)).setOnClickListener((View.OnClickListener) ((Object) new u(this)));
+        View view = ((LayoutInflater) this.getActivity().getSystemService("layout_inflater")).inflate(R.layout.dialog_feed_intro, null);
+        ((Button) view.findViewById(R.id.dialog_feed_intro_btn)).setOnClickListener((View.OnClickListener) ((Object) new u(this)));
         return new AlertDialog.Builder(this.getActivity()).setView(view).create();
     }
 }

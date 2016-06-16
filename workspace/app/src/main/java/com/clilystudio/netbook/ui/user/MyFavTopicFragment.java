@@ -113,7 +113,7 @@ public class MyFavTopicFragment extends Fragment {
             AdapterView.AdapterContextMenuInfo adapterContextMenuInfo = (AdapterView.AdapterContextMenuInfo) menuItem.getMenuInfo();
             if (menuItem.getItemId() == 0) {
                 TopicPost topicPost = (TopicPost) this.d.getAdapter().getItem(adapterContextMenuInfo.position);
-                y y2 = new y(this, (Activity) this.getActivity(), 2131034218);
+                y y2 = new y(this, (Activity) this.getActivity(), R.string.loading);
                 Object[] arrobject = new String[]{this.k, topicPost.get_id()};
                 y2.b(arrobject);
             }
@@ -131,18 +131,18 @@ public class MyFavTopicFragment extends Fragment {
             TopicPost topicPost = (TopicPost) this.d.getAdapter().getItem(adapterContextMenuInfo.position);
             String string = topicPost != null ? topicPost.getTitle() : "\u63d0\u793a";
             contextMenu.setHeaderTitle(string);
-            contextMenu.add(0, 0, 0, 2131034367);
+            contextMenu.add(0, 0, 0, R.string.delete);
         }
     }
 
     @Override
     public View onCreateView(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
-        View view = layoutInflater.inflate(2130903221, viewGroup, false);
-        this.f = view.findViewById(2131493085);
-        this.g = (TextView) view.findViewById(2131493100);
-        this.c = (LabelPtrListView) view.findViewById(2131493099);
+        View view = layoutInflater.inflate(R.layout.fragment_user_topic, viewGroup, false);
+        this.f = view.findViewById(R.id.pb_loading);
+        this.g = (TextView) view.findViewById(R.id.empty_text);
+        this.c = (LabelPtrListView) view.findViewById(R.id.ptr_list);
         this.c.setMode(PullToRefreshBase$Mode.PULL_FROM_START);
-        this.e = LayoutInflater.from(this.getActivity()).inflate(2130903325, null);
+        this.e = LayoutInflater.from(this.getActivity()).inflate(R.layout.loading_item, null);
         this.d = (ListView) this.c.h();
         if (a.i()) {
             this.d.setFooterDividersEnabled(false);

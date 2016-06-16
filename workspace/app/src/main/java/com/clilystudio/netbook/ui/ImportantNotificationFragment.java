@@ -32,10 +32,10 @@ public class ImportantNotificationFragment extends NotifFragment {
 
     @Override
     protected final void a(ListView listView) {
-        View view = this.getActivity().getLayoutInflater().inflate(2130903242, (ViewGroup) listView, false);
+        View view = this.getActivity().getLayoutInflater().inflate(R.layout.important_notif_header, (ViewGroup) listView, false);
         listView.addHeaderView(view);
-        this.a = (LinearLayout) view.findViewById(2131493571);
-        this.b = (ImageView) view.findViewById(2131493572);
+        this.a = (LinearLayout) view.findViewById(R.id.unimportant_section);
+        this.b = (ImageView) view.findViewById(R.id.red_dot);
         this.a.setOnClickListener(new bb(this));
     }
 

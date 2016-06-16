@@ -35,8 +35,8 @@ public class ReaderRandomActionBar extends RelativeLayout {
         RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(-1, -1);
         layoutParams.setMargins(0, am.k((Context) this.getContext()), 0, 0);
         this.setLayoutParams(layoutParams);
-        View view = this.findViewById(2131493934);
-        this.a = (TextView) this.findViewById(2131493935);
+        View view = this.findViewById(R.id.reader_random_ab_back);
+        this.a = (TextView) this.findViewById(R.id.reader_random_ab_title);
         view.setOnClickListener((View.OnClickListener) ((Object) new c(this)));
     }
 

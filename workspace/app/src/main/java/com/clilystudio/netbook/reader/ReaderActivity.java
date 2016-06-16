@@ -152,11 +152,11 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         }
         boolean bl = com.clilystudio.netbook.am.g((String) readerActivity.c) == 2;
         if (bl) {
-            new h(readerActivity).a(2131034526).b(2131034340).a(2131034341, (DialogInterface.OnClickListener) ((Object) new be(readerActivity))).b(2131034523, (DialogInterface.OnClickListener) ((Object) new bd(readerActivity))).b();
+            new h(readerActivity).a(R.string.tips).b(R.string.chapter_dl_doing_msg).a(R.string.chapter_dl_goon, (DialogInterface.OnClickListener) ((Object) new be(readerActivity))).b(R.string.stop, (DialogInterface.OnClickListener) ((Object) new bd(readerActivity))).b();
             return;
         }
-        CharSequence[] arrcharSequence = new String[]{readerActivity.getString(2131034337), readerActivity.getString(2131034338), readerActivity.getString(2131034306)};
-        new h(readerActivity).a(2131034343).a(arrcharSequence, (DialogInterface.OnClickListener) ((Object) new bc(readerActivity))).a().show();
+        CharSequence[] arrcharSequence = new String[]{readerActivity.getString(R.string.chapter_dl_count_50), readerActivity.getString(R.string.chapter_dl_count_after), readerActivity.getString(R.string.all)};
+        new h(readerActivity).a(R.string.chapter_dl_title).a(arrcharSequence, (DialogInterface.OnClickListener) ((Object) new bc(readerActivity))).a().show();
     }
 
     static /* synthetic */ String D(ReaderActivity readerActivity) {
@@ -176,9 +176,9 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
      * Enabled aggressive block sorting
      */
     static /* synthetic */ void F(ReaderActivity readerActivity) {
-        String string = com.clilystudio.netbook.hpay100.a.a.s(readerActivity) ? readerActivity.getString(2131034533) : readerActivity.getString(2131034531);
+        String string = com.clilystudio.netbook.hpay100.a.a.s(readerActivity) ? readerActivity.getString(R.string.tts_download_prompt_wifi) : readerActivity.getString(R.string.tts_download_prompt_no_wifi);
         h h2 = new h(readerActivity);
-        h2.d = readerActivity.getString(2131034532);
+        h2.d = readerActivity.getString(R.string.tts_download_prompt_title);
         h2.e = string;
         h2.a("\u4e0b\u8f7d", (DialogInterface.OnClickListener) new ao(readerActivity)).b("\u53d6\u6d88", (DialogInterface.OnClickListener) ((Object) new an(readerActivity))).b();
     }
@@ -305,7 +305,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
 
     static /* synthetic */ void a(ReaderActivity readerActivity, View view) {
         PopupMenu popupMenu = new PopupMenu(readerActivity, view, 53);
-        popupMenu.getMenuInflater().inflate(2131558404, popupMenu.getMenu());
+        popupMenu.getMenuInflater().inflate(R.menu.reader_more_menu, popupMenu.getMenu());
         popupMenu.setOnMenuItemClickListener((PopupMenu.OnMenuItemClickListener) ((Object) new ap(readerActivity)));
         popupMenu.show();
     }
@@ -357,12 +357,12 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
 
     static /* synthetic */ void ad(ReaderActivity readerActivity) {
         if (com.clilystudio.netbook.am.f()) {
-            com.clilystudio.netbook.util.e.a((Activity) readerActivity, (String) readerActivity.getString(2131034325));
+            com.clilystudio.netbook.util.e.a((Activity) readerActivity, (String) readerActivity.getString(R.string.book_add_overflow));
             return;
         }
         readerActivity.g.a();
         com.clilystudio.netbook.hpay100.a.a.u(readerActivity.c);
-        String string = readerActivity.getString(2131034283);
+        String string = readerActivity.getString(R.string.add_book_event);
         Object[] arrobject = new Object[]{readerActivity.d};
         com.clilystudio.netbook.util.e.a((Activity) readerActivity, (String) String.format(string, arrobject));
     }
@@ -428,11 +428,11 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
     }
 
     static /* synthetic */ void b(ReaderActivity readerActivity, View view) {
-        View view2 = readerActivity.getLayoutInflater().inflate(2130903371, null);
-        view2.findViewById(2131493931).setOnClickListener(readerActivity);
-        view2.findViewById(2131493932).setOnClickListener(readerActivity);
-        view2.findViewById(2131493933).setOnClickListener(readerActivity);
-        readerActivity.S = new PopupWindow(view2, readerActivity.getResources().getDimensionPixelSize(2131099902), -2);
+        View view2 = readerActivity.getLayoutInflater().inflate(R.layout.reader_popupwindow_layout, null);
+        view2.findViewById(R.id.menu_item_1).setOnClickListener(readerActivity);
+        view2.findViewById(R.id.menu_item_2).setOnClickListener(readerActivity);
+        view2.findViewById(R.id.menu_item_3).setOnClickListener(readerActivity);
+        readerActivity.S = new PopupWindow(view2, readerActivity.getResources().getDimensionPixelSize(R.dimen.reader_popup_width), -2);
         readerActivity.S.setFocusable(true);
         readerActivity.S.setOutsideTouchable(true);
         readerActivity.S.setBackgroundDrawable(new ColorDrawable(0));
@@ -648,8 +648,8 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
      * Enabled aggressive block sorting
      */
     static /* synthetic */ void u(ReaderActivity readerActivity) {
-        if (readerActivity.h.h == 2130838077) {
-            readerActivity.T.setBackgroundResource(2130838076);
+        if (readerActivity.h.h == R.drawable.reader_background_brown_big_img) {
+            readerActivity.T.setBackgroundResource(R.drawable.reader_background_brown_auto_img);
         } else {
             readerActivity.T.setBackgroundResource(readerActivity.h.h);
         }
@@ -675,7 +675,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
     static /* synthetic */ void y(ReaderActivity readerActivity) {
         h h2 = new h(readerActivity);
         h2.e = "\u662f\u5426\u4f7f\u7528\u539f\u7f51\u9875\u9605\u8bfb\uff1f";
-        h2.a(2131034424, (DialogInterface.OnClickListener) ((Object) new bb(readerActivity))).b(2131034129, null).b();
+        h2.a(R.string.ok, (DialogInterface.OnClickListener) ((Object) new bb(readerActivity))).b(R.string.cancel, null).b();
     }
 
     static /* synthetic */ void z(ReaderActivity readerActivity) {
@@ -988,9 +988,9 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         if (!this.T.isShown()) {
             this.T.setVisibility(View.VISIBLE);
             if (this.h.h()) {
-                this.U.setBackgroundResource(2130837612);
+                this.U.setBackgroundResource(R.drawable.auto_reader_bottom_shadow_night);
             } else {
-                this.U.setBackgroundResource(2130837611);
+                this.U.setBackgroundResource(R.drawable.auto_reader_bottom_shadow);
             }
             this.U.setVisibility(View.VISIBLE);
         }
@@ -1007,7 +1007,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         }
         this.E();
         if (!n2.e() && this.w()) {
-            com.clilystudio.netbook.util.e.a((Activity) this, (String) this.getString(2131034318));
+            com.clilystudio.netbook.util.e.a((Activity) this, (String) this.getString(R.string.auto_reader_end_notify));
             this.T.clearAnimation();
             this.I();
             this.M = 0;
@@ -1029,7 +1029,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
     private void O() {
         this.P();
         this.startActivity(ModeListActivity.a(this, this.c, this.d, this.L));
-        this.overridePendingTransition(2130968602, 2130968603);
+        this.overridePendingTransition(R.anim.mode_list_enter_in, R.anim.mode_list_enter_out);
     }
 
     private void P() {
@@ -1347,7 +1347,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         if (n2 == null) return;
         {
             if (!n2.f()) {
-                com.clilystudio.netbook.util.e.a((Activity) this, (int) 2131034407);
+                com.clilystudio.netbook.util.e.a((Activity) this, (int) R.string.is_first);
                 return;
             }
             if (this.i.c()) {
@@ -1376,7 +1376,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
     @Deprecated
     @Override
     public final void a(int n2) {
-        TextView textView = (TextView) this.findViewById(2131493454);
+        TextView textView = (TextView) this.findViewById(R.id.reader_menu_topic_count);
         if (textView == null) {
             return;
         }
@@ -1438,7 +1438,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         String string = this.g != null && this.g.i() != null ? this.g.i() : this.f;
         I.d = string;
         this.startActivity(ReaderMixActivity.a(this, this.c, this.d, string));
-        this.overridePendingTransition(2130968602, 2130968603);
+        this.overridePendingTransition(R.anim.mode_list_enter_in, R.anim.mode_list_enter_out);
     }
 
     public final boolean j() {
@@ -1483,7 +1483,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         if (this.g.m()) {
             super.onBackPressed();
         } else {
-            new h(this).a(2131034455).b(2131034287).a(2131034280, (DialogInterface.OnClickListener) new aX(this)).b(2131034281, (DialogInterface.OnClickListener) new aW(this)).a().show();
+            new h(this).a(R.string.reader_add_book_title).b(R.string.add_book_hint).a(R.string.add_book, (DialogInterface.OnClickListener) new aX(this)).b(R.string.add_book_cancel, (DialogInterface.OnClickListener) new aW(this)).a().show();
         }
         if (this.j()) {
             this.b[this.n].g();
@@ -1499,15 +1499,15 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
             default: {
                 return;
             }
-            case 2131493931: {
+            case R.id.menu_item_1: {
                 this.O();
                 return;
             }
-            case 2131493932: {
+            case R.id.menu_item_2: {
                 this.startActivity(BookInfoActivity.a(this, this.c));
                 return;
             }
-            case 2131493933:
+            case R.id.menu_item_3:
         }
         new com.clilystudio.netbook.ui.cb(this, new aZ(this)).a().show();
     }
@@ -1529,7 +1529,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         this.getWindow().addFlags(512);
         this.G = com.clilystudio.netbook.hpay100.a.a.l(this, "reader_orientation");
         this.r();
-        this.setContentView(2130903121);
+        this.setContentView(R.layout.activity_reader);
         i.a().a(this);
         Intent intent = this.getIntent();
         this.c = this.a("BOOK_ID");
@@ -1563,7 +1563,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         this.Q();
         FragmentTransaction fragmentTransaction = this.getSupportFragmentManager().beginTransaction();
         this.R = ReaderMenuFragment.a(this.c, this.d);
-        fragmentTransaction.replace(2131493799, this.R);
+        fragmentTransaction.replace(R.id.menu_frame, this.R);
         try {
             fragmentTransaction.commitAllowingStateLoss();
         } catch (IllegalStateException var8_16) {
@@ -1571,9 +1571,9 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         }
         SlidingMenu slidingMenu = this.g_();
         slidingMenu.setMode(1);
-        slidingMenu.setShadowWidthRes(2131099915);
-        slidingMenu.setShadowDrawable(2130838138);
-        slidingMenu.setBehindOffsetRes(2131099775);
+        slidingMenu.setShadowWidthRes(R.dimen.shadow_width_app_recommend);
+        slidingMenu.setShadowDrawable(R.drawable.shadowright);
+        slidingMenu.setBehindOffsetRes(R.dimen.slidingmenu_offset_reader);
         slidingMenu.setFadeDegree(0.35f);
         slidingMenu.setBehindScrollScale(0.0f);
         slidingMenu.setTouchModeAbove(1);
@@ -1585,17 +1585,17 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
             this.V.setParameter("speed", "" + com.clilystudio.netbook.hpay100.a.a.a((Context) this, "speech_speed", 50));
             this.V.setParameter("voice_name", com.clilystudio.netbook.hpay100.a.a.d((Context) this, "speech_voice", ""));
         }
-        this.m = (PagerWidget) this.findViewById(2131493158);
-        this.r = (ReaderActionBar) this.findViewById(2131493166);
-        this.s = (SettingWidget) this.findViewById(2131493165);
-        this.t = (AutoReaderSetWidget) this.findViewById(2131493163);
-        this.u = (ReaderTtsSetWidget) this.findViewById(2131493164);
-        this.B = this.findViewById(2131493159);
-        this.C = (TextView) this.findViewById(2131493160);
-        this.T = (AutoReaderTextView) this.findViewById(2131493161);
-        this.U = this.findViewById(2131493162);
+        this.m = (PagerWidget) this.findViewById(R.id.main_view);
+        this.r = (ReaderActionBar) this.findViewById(R.id.bottom_action_bar);
+        this.s = (SettingWidget) this.findViewById(R.id.setting_widget);
+        this.t = (AutoReaderSetWidget) this.findViewById(R.id.auto_reader_setting);
+        this.u = (ReaderTtsSetWidget) this.findViewById(R.id.reader_tts_setting);
+        this.B = this.findViewById(R.id.reader_download_pro);
+        this.C = (TextView) this.findViewById(R.id.reader_download_pro_current);
+        this.T = (AutoReaderTextView) this.findViewById(R.id.tv_auto_reader_body);
+        this.U = this.findViewById(R.id.view_auto_reader_shadow);
         this.h = new bZ(this);
-        this.O = (ThemeLoadingView) this.findViewById(2131493167);
+        this.O = (ThemeLoadingView) this.findViewById(R.id.reader_content_loading);
         this.O.setVisibility(View.GONE);
         this.O.a(this.h.h());
         this.i = new bH(this);
@@ -1609,13 +1609,13 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         this.T.setHeight(this.h.e);
         this.T.setTextSize(0, this.h.a);
         this.T.setLineSpacing(this.h.b, 1.0f);
-        if (this.h.h == 2130838077) {
-            this.T.setBackgroundResource(2130838076);
+        if (this.h.h == R.drawable.reader_background_brown_big_img) {
+            this.T.setBackgroundResource(R.drawable.reader_background_brown_auto_img);
         } else {
             this.T.setBackgroundResource(this.h.h);
         }
         boolean bl2 = this.L == 5 || this.L == 10 || com.clilystudio.netbook.hpay100.a.a.h(this.L) || this.L == 9;
-        View view = this.findViewById(2131493862);
+        View view = this.findViewById(R.id.reader_ab_read_mode);
         int n3 = bl2 ? 0 : 8;
         view.setVisibility(n3);
         this.r.setReaderStyle(this.h);

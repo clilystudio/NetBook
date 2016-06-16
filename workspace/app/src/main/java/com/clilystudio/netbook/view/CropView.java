@@ -42,7 +42,7 @@ public class CropView extends PhotoView {
     }
 
     private void b() {
-        this.b = this.getResources().getDimension(2131099867);
+        this.b = this.getResources().getDimension(R.dimen.crop_size);
         this.a = new d(this);
     }
 
@@ -77,7 +77,7 @@ public class CropView extends PhotoView {
         paint.setStyle(Paint.Style.STROKE);
         canvas.drawRect(rectF, paint);
         Paint paint2 = new Paint();
-        paint2.setColor(this.getResources().getColor(2131427387));
+        paint2.setColor(this.getResources().getColor(R.color.crop_outer_part));
         paint2.setStyle(Paint.Style.FILL);
         RectF rectF2 = new RectF();
         rectF2.left = 0.0f;

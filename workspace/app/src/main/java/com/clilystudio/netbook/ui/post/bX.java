@@ -62,7 +62,7 @@ final class bX extends com.clilystudio.netbook.a_pack.e<String, Void, TweetsResu
         }
         if (tweetsResult != null && "TOKEN_INVALID".equals(tweetsResult.getCode())) {
             this.a.startActivity(AuthLoginActivity.a(this.a.getActivity()));
-            e.a((Activity) this.a.getActivity(), (int) 2131034529);
+            e.a((Activity) this.a.getActivity(), (int) R.string.token_invalid);
             return;
         }
         e.a((Activity) this.a.getActivity(), (String) "\u52a0\u8f7d\u5931\u8d25\uff0c\u8bf7\u68c0\u67e5\u7f51\u7edc\u6216\u7a0d\u540e\u518d\u8bd5");

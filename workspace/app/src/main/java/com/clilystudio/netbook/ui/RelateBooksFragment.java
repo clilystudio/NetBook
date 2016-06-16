@@ -72,8 +72,8 @@ public class RelateBooksFragment extends Fragment implements cQ {
         var4_10 = this.getActivity();
         var5_11 = new DisplayMetrics();
         ((WindowManager) var4_10.getSystemService("window")).getDefaultDisplay().getMetrics(var5_11);
-        var6_12 = (int) ((float) var5_11.widthPixels - 2.0f * this.getResources().getDimension(2131099905));
-        var7_13 = new E(this.getActivity(), var6_12, this.getResources().getDimension(2131099735)).a();
+        var6_12 = (int) ((float) var5_11.widthPixels - 2.0f * this.getResources().getDimension(R.dimen.relate_book_outer_padding));
+        var7_13 = new E(this.getActivity(), var6_12, this.getResources().getDimension(R.dimen.dp_60)).a();
         var8_14 = var3_4.size() > var7_13.b();
         if (var8_14) {
             this.mMore.setVisibility(View.VISIBLE);
@@ -86,7 +86,7 @@ public class RelateBooksFragment extends Fragment implements cQ {
         while (var11_17 < var9_15) {
             var12_18 = var3_4.get(var11_17);
             var13_19 = var11_17 != var9_15 - 1;
-            var14_20 = this.getLayoutInflater(null).inflate(2130903379, (ViewGroup) this.mBookContainer, false);
+            var14_20 = this.getLayoutInflater(null).inflate(R.layout.relate_book_item, (ViewGroup) this.mBookContainer, false);
             if (var13_19) {
                 var14_20.setPadding(0, 0, var10_16, 0);
             } else {
@@ -94,7 +94,7 @@ public class RelateBooksFragment extends Fragment implements cQ {
             }
             var15_21 = new RelateBooksFragment$ViewHolder(this, var14_20);
             var15_21.mTitle.setText(var12_18.getTitle());
-            var15_21.mBook.setImageUrl(var12_18.getFullCoverLarge(), 2130837766);
+            var15_21.mBook.setImageUrl(var12_18.getFullCoverLarge(), R.drawable.cover_default);
             var15_21.mContainer.setOnClickListener(new bB(this, var12_18));
             this.mBookContainer.addView(var14_20);
             ++var11_17;
@@ -103,15 +103,15 @@ public class RelateBooksFragment extends Fragment implements cQ {
 
     @Override
     public View onCreateView(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
-        return layoutInflater.inflate(2130903217, viewGroup, false);
+        return layoutInflater.inflate(R.layout.fragment_relate_books, viewGroup, false);
     }
 
     @Override
     public void onViewCreated(View view, Bundle bundle) {
         super.onViewCreated(view, bundle);
-        this.mBookContainer = (LinearLayout) this.getView().findViewById(2131493463);
-        this.mRelateBookRoot = (LinearLayout) this.getView().findViewById(2131493462);
-        this.mMore = (TextView)this.getView(). findViewById(2131493432);
+        this.mBookContainer = (LinearLayout) this.getView().findViewById(R.id.books);
+        this.mRelateBookRoot = (LinearLayout) this.getView().findViewById(R.id.relate_book_root);
+        this.mMore = (TextView)this.getView(). findViewById(R.id.more);
         this.a = new cM(this.getActivity(), this).a(this.getArguments().getString("book_id"));
     }
     public class RelateBooksFragment$ViewHolder {
@@ -120,9 +120,9 @@ public class RelateBooksFragment extends Fragment implements cQ {
         TextView mTitle;
 
         RelateBooksFragment$ViewHolder(RelateBooksFragment relateBooksFragment, View view) {
-            this.mBook = (CoverView) view.findViewById(2131493971);
-            this.mTitle = (TextView)  view.findViewById(2131492936);
-            this.mContainer =  view.findViewById(2131493577);
+            this.mBook = (CoverView) view.findViewById(R.id.book);
+            this.mTitle = (TextView)  view.findViewById(R.id.title);
+            this.mContainer =  view.findViewById(R.id.container);
         }
     }
 }

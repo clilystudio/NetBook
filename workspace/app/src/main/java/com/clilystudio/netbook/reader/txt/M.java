@@ -13,25 +13,25 @@ final class M implements a {
             default: {
                 return;
             }
-            case 2131493890: {
+            case R.id.read_opt_setting: {
                 ReaderTxtActivity.s(this.a).a();
                 return;
             }
-            case 2131493892: {
+            case R.id.read_opt_toc: {
                 ReaderTxtActivity.a(this.a);
                 ReaderTxtActivity.t(this.a);
                 return;
             }
-            case 2131493881: {
+            case R.id.reader_oper_back: {
                 this.a.onBackPressed();
                 return;
             }
-            case 2131493888: {
+            case R.id.read_opt_orientation: {
                 ReaderTxtActivity.b(this.a, true);
                 ReaderTxtActivity.u(this.a);
                 return;
             }
-            case 2131493859:
+            case R.id.reader_ab_tts:
         }
         ReaderTxtActivity.v(this.a);
     }

@@ -19,7 +19,7 @@ public final class l extends W<DiscussSummary> {
     private boolean b = false;
 
     public l(LayoutInflater layoutInflater) {
-        super(layoutInflater, 2130903295);
+        super(layoutInflater, R.layout.list_item_post);
         Context context = layoutInflater.getContext();
         this.a = am.m(context);
         this.b = a.r(context, "community_user_gender_icon_toggle");
@@ -33,9 +33,9 @@ public final class l extends W<DiscussSummary> {
         DiscussSummary discussSummary = (DiscussSummary) object;
         Author author = discussSummary.getAuthor();
         if (this.a) {
-            ((ImageView) this.a(0, ImageView.class)).setImageResource(2130837614);
+            ((ImageView) this.a(0, ImageView.class)).setImageResource(R.drawable.avatar_default);
         } else {
-            ((SmartImageView) this.a(0, SmartImageView.class)).setImageUrl(author.getScaleAvatar(), 2130837614);
+            ((SmartImageView) this.a(0, SmartImageView.class)).setImageUrl(author.getScaleAvatar(), R.drawable.avatar_default);
         }
         ((View) this.a(0, ImageView.class)).setOnClickListener(new m(this, discussSummary));
         this.a(1, author.getNickname());
@@ -44,10 +44,10 @@ public final class l extends W<DiscussSummary> {
         TextView textView = (TextView) this.a(5, TextView.class);
         if ("vote".equals(discussSummary.getType())) {
             textView.setText(String.valueOf(discussSummary.getVoteCount()));
-            textView.setCompoundDrawablesWithIntrinsicBounds(2130837971, 0, 0, 0);
+            textView.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_vote, 0, 0, 0);
         } else {
             textView.setText(String.valueOf(discussSummary.getCommentCount()));
-            textView.setCompoundDrawablesWithIntrinsicBounds(2130837902, 0, 0, 0);
+            textView.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_message, 0, 0, 0);
         }
         TextView textView2 = (TextView) this.a(6, TextView.class);
         textView2.setVisibility(View.VISIBLE);
@@ -96,6 +96,6 @@ public final class l extends W<DiscussSummary> {
 
     @Override
     protected final int[] a() {
-        return new int[]{2131492899, 2131493630, 2131493631, 2131492935, 2131492936, 2131493519, 2131493727, 2131493629, 2131493632};
+        return new int[]{R.id.avatar, R.id.user, R.id.lv, R.id.time, R.id.title, R.id.comment_count, R.id.like_count, R.id.avatar_verify, R.id.post_flag};
     }
 }

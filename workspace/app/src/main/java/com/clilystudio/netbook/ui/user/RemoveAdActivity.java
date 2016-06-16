@@ -20,18 +20,18 @@ public class RemoveAdActivity extends BaseLoadingActivity {
     @Override
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        this.a(2130903125);
+        this.a(R.layout.activity_remove_ad);
         this.b("\u514d\u5e7f\u544a");
-        this.b = (RecyclerView) this.findViewById(2131493175);
+        this.b = (RecyclerView) this.findViewById(R.id.recycler_view);
         this.b.setLayoutManager(new D(this));
         this.a = new al(this);
         this.b.setAdapter((ah) ((Object) this.a));
         i.a().a(this);
         this.b();
         if (a.r(this, "switch_share_remove_ad")) {
-            this.findViewById(2131493176).setVisibility(View.VISIBLE);
-            this.findViewById(2131493177).setVisibility(View.VISIBLE);
-            this.findViewById(2131493179).setOnClickListener(new ai(this));
+            this.findViewById(R.id.txt_share_remove).setVisibility(View.VISIBLE);
+            this.findViewById(R.id.rl_share_remove).setVisibility(View.VISIBLE);
+            this.findViewById(R.id.btn_share_remove_ad).setOnClickListener(new ai(this));
         }
     }
 

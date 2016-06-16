@@ -28,7 +28,7 @@ public class MaskAbleImageView extends ImageView {
      * Enabled aggressive block sorting
      */
     private void a(Context context) {
-        int n = a.a(context, "customer_night_theme", false) ? this.getResources().getColor(2131427405) : -1;
+        int n = a.a(context, "customer_night_theme", false) ? this.getResources().getColor(R.color.drak_img_mask) : -1;
         this.a = n;
     }
 

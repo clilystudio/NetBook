@@ -18,8 +18,8 @@ public class LoadingContainer extends FrameLayout {
     public LoadingContainer(Context context, AttributeSet attributeSet) {
         super(context, attributeSet);
         TypedArray typedArray = context.obtainStyledAttributes(attributeSet, R$styleable.LoadingContainer);
-        int n = typedArray.getResourceId(0, 2130903324);
-        int n2 = typedArray.getResourceId(1, 2130903324);
+        int n = typedArray.getResourceId(0, R.layout.loading_container_default_layout);
+        int n2 = typedArray.getResourceId(1, R.layout.loading_container_default_layout);
         typedArray.recycle();
         this.b = LayoutInflater.from(context).inflate(n, (ViewGroup) this, false);
         this.c = LayoutInflater.from(context).inflate(n2, (ViewGroup) this, false);

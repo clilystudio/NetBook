@@ -59,10 +59,10 @@ public final class bZ {
         this.y = this.t.getBoolean("convert_t", false);
         this.z = this.t.getInt("reader_background_mode", 1);
         int n = am.b((Activity) this.m).widthPixels;
-        this.c = this.n.getDimensionPixelSize(2131099677);
-        this.d = this.n.getDimensionPixelSize(2131099680);
+        this.c = this.n.getDimensionPixelSize(R.dimen.page_horizontal_padding);
+        this.d = this.n.getDimensionPixelSize(R.dimen.page_vertical_padding);
         this.f = n - (this.c << 1);
-        this.l = this.n.getDimensionPixelSize(2131099678);
+        this.l = this.n.getDimensionPixelSize(R.dimen.page_small_text_height);
         this.a(a.l(this.m, "reader_opt_full_screen"));
         this.k();
         this.c(this.z);
@@ -77,30 +77,30 @@ public final class bZ {
      */
     private void c(int n) {
         if (this.x) {
-            this.g = this.n.getColor(2131427506);
-            this.h = 2131427505;
-            this.j = 2130838080;
+            this.g = this.n.getColor(R.color.reading_night_text_color);
+            this.h = R.color.reading_night_background_color;
+            this.j = R.drawable.reader_battery_bg_night;
         } else {
             switch (n) {
                 default: {
                     break;
                 }
                 case 1: {
-                    this.g = this.n.getColor(2131427500);
-                    this.h = 2131427494;
-                    this.j = 2130838081;
+                    this.g = this.n.getColor(R.color.reader_mode_white_text_color);
+                    this.h = R.color.reader_background_white_color;
+                    this.j = R.drawable.reader_battery_bg_normal;
                     break;
                 }
                 case 2: {
-                    this.g = this.n.getColor(2131427498);
-                    this.h = 2130838077;
-                    this.j = 2130838078;
+                    this.g = this.n.getColor(R.color.reader_mode_brown_text_color);
+                    this.h = R.drawable.reader_background_brown_big_img;
+                    this.j = R.drawable.reader_battery_bg_brown;
                     break;
                 }
                 case 3: {
-                    this.g = this.n.getColor(2131427499);
-                    this.h = 2131427495;
-                    this.j = 2130838079;
+                    this.g = this.n.getColor(R.color.reader_mode_green_text_color);
+                    this.h = R.color.reader_background_white_green;
+                    this.j = R.drawable.reader_battery_bg_green;
                 }
             }
         }
@@ -114,7 +114,7 @@ public final class bZ {
      */
     private void k() {
         var1_1 = 1.0f;
-        var2_2 = this.n.getDimensionPixelSize(2131099679);
+        var2_2 = this.n.getDimensionPixelSize(R.dimen.page_text_size);
         switch (this.u) {
             case 0: {
                 var1_1 = 0.9f;
@@ -257,7 +257,7 @@ public final class bZ {
         } else {
             n = a.L(this.m);
         }
-        int n2 = this.n.getDimensionPixelSize(2131099676);
+        int n2 = this.n.getDimensionPixelSize(R.dimen.page_body_margin);
         int n3 = n - (this.d << 1) - (this.l << 1) - (n2 << 1);
         if (bl) {
             this.e = n3;

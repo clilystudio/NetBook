@@ -88,24 +88,24 @@ public class GameGiftListActivity extends BaseActivity {
 
     private void a(String string) {
         com.clilystudio.netbook.view.a a2 = new com.clilystudio.netbook.view.a(this);
-        View view = View.inflate(this, 2130903192, null);
-        ((TextView) view.findViewById(2131493395)).setText(this.c.title);
-        TextView textView = (TextView) view.findViewById(2131493397);
-        ((TextView) view.findViewById(2131493399)).setText(this.c.description);
-        ((TextView) view.findViewById(2131493401)).setText(this.c.usage);
-        ((TextView) view.findViewById(2131493400)).setText(t.b((Date) this.c.rangeFrom) + " - " + t.b((Date) this.c.rangeTo));
+        View view = View.inflate(this, R.layout.dialog_game_gift_info, null);
+        ((TextView) view.findViewById(R.id.game_gift_name)).setText(this.c.title);
+        TextView textView = (TextView) view.findViewById(R.id.game_gift_left);
+        ((TextView) view.findViewById(R.id.game_gift_desc)).setText(this.c.description);
+        ((TextView) view.findViewById(R.id.game_gift_use)).setText(this.c.usage);
+        ((TextView) view.findViewById(R.id.game_gift_date)).setText(t.b((Date) this.c.rangeFrom) + " - " + t.b((Date) this.c.rangeTo));
         a2.a(view).show();
-        Button button = (Button) view.findViewById(2131493402);
+        Button button = (Button) view.findViewById(R.id.game_gift_btn);
         if (string == null) {
             button.setText("\u9886\u53d6");
             textView.setText("\u5df2\u6709 " + (this.c.total - this.c.left) + " \u4eba\u9886\u53d6\uff0c\u5269\u4f59 " + this.c.left + " \u4e2a");
-            button.setBackgroundResource(2130837746);
+            button.setBackgroundResource(R.drawable.common_btn_red_bg);
             button.setOnClickListener((View.OnClickListener) ((Object) new w(this, a2)));
             return;
         }
         textView.setText("\u5151\u6362\u7801\uff1a" + string);
         button.setText("\u590d\u5236\u5151\u6362\u7801\u5e76\u6253\u5f00\u6e38\u620f");
-        button.setBackgroundResource(2130837749);
+        button.setBackgroundResource(R.drawable.common_green_bg);
         button.setOnClickListener(new x(this, a2, string));
     }
 
@@ -117,12 +117,12 @@ public class GameGiftListActivity extends BaseActivity {
     public final void b() {
         if (!this.h && !a.j(this, this.c.game.getAndroidPackageName())) {
             Game game = this.c.game;
-            View view = View.inflate(this, 2130903191, null);
-            ((SmartImageView) view.findViewById(2131493394)).setImageUrl(game.getIcon());
-            ((TextView) view.findViewById(2131493397)).setText("\u5269\u4f59\u793c\u5305" + this.c.left + "\u4e2a");
-            ((TextView) view.findViewById(2131493395)).setText(this.c.title);
-            ((TextView) view.findViewById(2131493396)).setText(game.getCat() + " | " + a.c(game.getAndroidSize()));
-            GameGiftGetButton gameGiftGetButton = (GameGiftGetButton) view.findViewById(2131493398);
+            View view = View.inflate(this, R.layout.dialog_game_gift_get_dl, null);
+            ((SmartImageView) view.findViewById(R.id.game_gift_icon)).setImageUrl(game.getIcon());
+            ((TextView) view.findViewById(R.id.game_gift_left)).setText("\u5269\u4f59\u793c\u5305" + this.c.left + "\u4e2a");
+            ((TextView) view.findViewById(R.id.game_gift_name)).setText(this.c.title);
+            ((TextView) view.findViewById(R.id.game_gift_type_size)).setText(game.getCat() + " | " + a.c(game.getAndroidSize()));
+            GameGiftGetButton gameGiftGetButton = (GameGiftGetButton) view.findViewById(R.id.game_gift_download);
             s.a((Activity) this, (Game) game);
             gameGiftGetButton.setGame(game);
             gameGiftGetButton.a(game.getDownloadStatus());
@@ -147,7 +147,7 @@ public class GameGiftListActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        this.setContentView(2130903321);
+        this.setContentView(R.layout.listview);
         String string = this.getIntent().getStringExtra("title");
         this.h = this.getIntent().getBooleanExtra("is_micro_game", false);
         if (string != null) {
@@ -155,7 +155,7 @@ public class GameGiftListActivity extends BaseActivity {
         } else {
             this.b("\u5f80\u671f\u6e38\u620f");
         }
-        ListView listView = (ListView) this.findViewById(2131493135);
+        ListView listView = (ListView) this.findViewById(R.id.content_list);
         listView.setDividerHeight(0);
         this.a = new y(this, this.getLayoutInflater());
         listView.setAdapter((ListAdapter) ((Object) this.a));

@@ -11,7 +11,7 @@ public final class c extends W<CategoryBook> {
     private Resources a;
 
     public c(LayoutInflater layoutInflater) {
-        super(layoutInflater, 2130903293);
+        super(layoutInflater, R.layout.list_item_ori_book);
         this.a = layoutInflater.getContext().getResources();
     }
 
@@ -24,17 +24,17 @@ public final class c extends W<CategoryBook> {
     protected final /* synthetic */ void a(int n, Object object) {
         CategoryBook categoryBook = (CategoryBook) object;
         try {
-            ((CoverView) this.a(0, CoverView.class)).setImageUrl(categoryBook.getFullCover(), 2130837766);
+            ((CoverView) this.a(0, CoverView.class)).setImageUrl(categoryBook.getFullCover(), R.drawable.cover_default);
             this.a(1, categoryBook.getTitle());
             this.a(2, categoryBook.getShortIntro());
             Resources resources = this.a;
             Object[] arrobject = new Object[]{categoryBook.getLatelyFollower()};
-            this.a(3, resources.getString(2131034387, arrobject));
+            this.a(3, resources.getString(R.string.follower_count_format, arrobject));
             float f = categoryBook.getRetentionRatio();
             if (f > 0.0f) {
                 Resources resources2 = this.a;
                 Object[] arrobject2 = new Object[]{Float.valueOf(f)};
-                this.a(4, resources2.getString(2131034470, arrobject2));
+                this.a(4, resources2.getString(R.string.retention_ratio_format, arrobject2));
                 this.a(4, false);
                 this.a(5, false);
             } else {
@@ -52,6 +52,6 @@ public final class c extends W<CategoryBook> {
 
     @Override
     protected final int[] a() {
-        return new int[]{2131493616, 2131493605, 2131493617, 2131493717, 2131493719, 2131493718, 2131493715, 2131493716};
+        return new int[]{R.id.iv_cover, R.id.tv_title, R.id.tv_short_intro, R.id.tv_follower_count, R.id.tv_retention_ratio, R.id.tv_retention_separate, R.id.tv_author, R.id.tv_category};
     }
 }

@@ -83,7 +83,7 @@ public class GameListActivity extends BaseLoadingActivity {
     protected void onCreate(Bundle bundle) {
         String string;
         super.onCreate(bundle);
-        this.a(2130903321);
+        this.a(R.layout.listview);
         Intent intent = this.getIntent();
         this.e = intent.getBooleanExtra("micro_game", false);
         if (intent.hasExtra("game_cat_list")) {
@@ -93,7 +93,7 @@ public class GameListActivity extends BaseLoadingActivity {
             string = intent.getStringExtra("game_list_title");
         }
         this.b(string);
-        ListView listView = (ListView) this.findViewById(2131493135);
+        ListView listView = (ListView) this.findViewById(R.id.content_list);
         listView.setDividerHeight(0);
         listView.setOnItemClickListener(new O(this));
         this.a = new Q(this, this.getLayoutInflater());

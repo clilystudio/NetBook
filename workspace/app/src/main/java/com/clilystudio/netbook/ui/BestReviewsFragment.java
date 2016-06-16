@@ -37,10 +37,10 @@ public class BestReviewsFragment extends Fragment {
      * Enabled aggressive block sorting
      */
     static /* synthetic */ void a(BestReviewsFragment bestReviewsFragment, BookReview bookReview) {
-        View view = bestReviewsFragment.getLayoutInflater(null).inflate(2130903269, (ViewGroup) bestReviewsFragment.b, false);
+        View view = bestReviewsFragment.getLayoutInflater(null).inflate(R.layout.list_item_book_review, (ViewGroup) bestReviewsFragment.b, false);
         BestReviewsFragment$ViewHolder bestReviewsFragment$ViewHolder = new BestReviewsFragment$ViewHolder(bestReviewsFragment, view);
         Author author = bookReview.author;
-        bestReviewsFragment$ViewHolder.avatar.setImageUrl(author.getScaleAvatar(), 2130837614);
+        bestReviewsFragment$ViewHolder.avatar.setImageUrl(author.getScaleAvatar(), R.drawable.avatar_default);
         bestReviewsFragment$ViewHolder.user.setText(author.getNickname());
         bestReviewsFragment$ViewHolder.lv.setText("lv." + author.getLv());
         bestReviewsFragment$ViewHolder.time.setVisibility(View.GONE);
@@ -77,15 +77,15 @@ public class BestReviewsFragment extends Fragment {
     }
 
     static /* synthetic */ void b(BestReviewsFragment bestReviewsFragment) {
-        bestReviewsFragment.a.findViewById(2131493434).setOnClickListener(new af(bestReviewsFragment));
+        bestReviewsFragment.a.findViewById(R.id.best_reviews_edit).setOnClickListener(new af(bestReviewsFragment));
     }
 
     static /* synthetic */ void c(BestReviewsFragment bestReviewsFragment) {
-        bestReviewsFragment.a.findViewById(2131493432).setOnClickListener(new ae(bestReviewsFragment));
+        bestReviewsFragment.a.findViewById(R.id.more).setOnClickListener(new ae(bestReviewsFragment));
     }
 
     static /* synthetic */ void d(BestReviewsFragment bestReviewsFragment) {
-        View view = bestReviewsFragment.getLayoutInflater(null).inflate(2130903234, (ViewGroup) bestReviewsFragment.b, false);
+        View view = bestReviewsFragment.getLayoutInflater(null).inflate(R.layout.horizontal_divider, (ViewGroup) bestReviewsFragment.b, false);
         bestReviewsFragment.b.addView(view);
     }
 
@@ -99,9 +99,9 @@ public class BestReviewsFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
-        this.a = layoutInflater.inflate(2130903208, viewGroup, false);
+        this.a = layoutInflater.inflate(R.layout.fragment_best_reviews, viewGroup, false);
         ButterKnife.inject((Object) this, this.a);
-        this.b = (LinearLayout) this.a.findViewById(2131493435);
+        this.b = (LinearLayout) this.a.findViewById(R.id.reviews);
         this.c = a.r(this.a.getContext(), "community_user_gender_icon_toggle");
         return this.a;
     }
@@ -118,15 +118,15 @@ public class BestReviewsFragment extends Fragment {
         TextView user;
 
         BestReviewsFragment$ViewHolder(BestReviewsFragment bestReviewsFragment, View view) {
-            this.avatar = (SmartImageView) view.findViewById(2131492899);
-            this.user = (TextView) view. findViewById(2131493630);
-            this.lv = (TextView)  view.findViewById(2131493631);
-            this.time = (TextView)  view.findViewById(2131492935);
-            this.title = (TextView)  view.findViewById(2131492936);
-            this.content = (TextView)  view.findViewById(2131492905);
-            this.helpfulCount = (TextView)  view.findViewById(2131493634);
-            this.avatarVerify = (ImageView) view. findViewById(2131493629);
-            this.rating = (RatingView)  view.findViewById(2131493633);
-            this.container =  view.findViewById(2131493628);
+            this.avatar = (SmartImageView) view.findViewById(R.id.avatar);
+            this.user = (TextView) view. findViewById(R.id.user);
+            this.lv = (TextView)  view.findViewById(R.id.lv);
+            this.time = (TextView)  view.findViewById(R.id.time);
+            this.title = (TextView)  view.findViewById(R.id.title);
+            this.content = (TextView)  view.findViewById(R.id.content);
+            this.helpfulCount = (TextView)  view.findViewById(R.id.helpful_count);
+            this.avatarVerify = (ImageView) view. findViewById(R.id.avatar_verify);
+            this.rating = (RatingView)  view.findViewById(R.id.rating);
+            this.container =  view.findViewById(R.id.list_item_book_review_container);
         }
     }}

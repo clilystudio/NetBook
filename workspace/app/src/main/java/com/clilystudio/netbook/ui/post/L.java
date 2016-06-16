@@ -16,7 +16,7 @@ final class L implements DialogInterface.OnClickListener {
         dialogInterface.dismiss();
         String string = AddVoteActivity.a(this.b).getText().toString().trim();
         String string2 = AddVoteActivity.b(this.b).getText().toString().trim();
-        P p = new P(this.b, this.b, 2131034430);
+        P p = new P(this.b, this.b, R.string.post_publish_loading);
         String[] arrstring = new String[]{this.a, AddVoteActivity.c(this.b), string, string2};
         p.b(arrstring);
     }

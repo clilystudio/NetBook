@@ -241,12 +241,12 @@ public class MyTweetFragment extends Fragment {
      * Enabled aggressive block sorting
      */
     private void a() {
-        this.g = (SmartImageView) this.f.findViewById(2131493591);
-        this.h = (ImageView) this.f.findViewById(2131493594);
-        this.i = (TextView) this.f.findViewById(2131493593);
-        this.j = (TextView) this.f.findViewById(2131493596);
-        this.k = (TextView) this.f.findViewById(2131493599);
-        this.n = (Button) this.f.findViewById(2131493592);
+        this.g = (SmartImageView) this.f.findViewById(R.id.siv_avater);
+        this.h = (ImageView) this.f.findViewById(R.id.iv_sign);
+        this.i = (TextView) this.f.findViewById(R.id.tv_username);
+        this.j = (TextView) this.f.findViewById(R.id.tv_following);
+        this.k = (TextView) this.f.findViewById(R.id.tv_fans);
+        this.n = (Button) this.f.findViewById(R.id.btn_edit);
         Account account = am.e();
         if (account != null) {
             User user = account.getUser();
@@ -257,16 +257,16 @@ public class MyTweetFragment extends Fragment {
             bY2.b(arrstring);
             if (user.isDoyan()) {
                 this.h.setVisibility(View.VISIBLE);
-                this.h.setImageResource(2130838229);
+                this.h.setImageResource(R.drawable.user_avatar_verify_doyen);
             } else if (user.isOfficial()) {
                 this.h.setVisibility(View.VISIBLE);
-                this.h.setImageResource(2130838231);
+                this.h.setImageResource(R.drawable.user_avatar_verify_official);
             } else {
                 this.h.setVisibility(View.GONE);
             }
             this.n.setOnClickListener(new bO(this));
-            this.m = this.f.findViewById(2131493598);
-            this.l = this.f.findViewById(2131493595);
+            this.m = this.f.findViewById(R.id.ll_followers_container);
+            this.l = this.f.findViewById(R.id.ll_following_container);
             this.m.setOnClickListener(new bP(this));
             this.l.setOnClickListener(new bR(this));
         }
@@ -314,21 +314,21 @@ public class MyTweetFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
-        View view = layoutInflater.inflate(2130903211, viewGroup, false);
-        this.o = (RelativeLayout) view.findViewById(2131493436);
-        this.t = (RelativeLayout) view.findViewById(2131493438);
-        this.u = (TextView) view.findViewById(2131493589);
+        View view = layoutInflater.inflate(R.layout.fragment_book_topic, viewGroup, false);
+        this.o = (RelativeLayout) view.findViewById(R.id.rl_container);
+        this.t = (RelativeLayout) view.findViewById(R.id.fl_not_login_cover);
+        this.u = (TextView) view.findViewById(R.id.tv_login);
         this.u.setOnClickListener(new bK(this));
-        this.r = view.findViewById(2131493085);
-        this.s = (TextView) view.findViewById(2131493100);
-        this.e = (PullToRefreshListView) view.findViewById(2131493099);
+        this.r = view.findViewById(R.id.pb_loading);
+        this.s = (TextView) view.findViewById(R.id.empty_text);
+        this.e = (PullToRefreshListView) view.findViewById(R.id.ptr_list);
         this.e.setMode(PullToRefreshBase$Mode.PULL_FROM_START);
         this.p = (ListView) this.e.h();
-        this.f = layoutInflater.inflate(2130903253, null);
-        this.f.findViewById(2131493098);
+        this.f = layoutInflater.inflate(R.layout.layout_mytweet_head, null);
+        this.f.findViewById(R.id.divider);
         this.a();
         this.p.addHeaderView(this.f);
-        this.q = layoutInflater.inflate(2130903325, null);
+        this.q = layoutInflater.inflate(R.layout.loading_item, null);
         this.p.addFooterView(this.q);
         if (a.j()) {
             this.p.setFooterDividersEnabled(false);

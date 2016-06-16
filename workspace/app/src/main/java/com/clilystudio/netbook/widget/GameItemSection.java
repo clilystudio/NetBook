@@ -23,13 +23,13 @@ public class GameItemSection extends TableLayout {
 
     public final void a(int n) {
         for (int i = 0; i < n; ++i) {
-            ViewGroup viewGroup = (ViewGroup) LayoutInflater.from(this.getContext()).inflate(2130903382, (ViewGroup) this.mContainer, false);
+            ViewGroup viewGroup = (ViewGroup) LayoutInflater.from(this.getContext()).inflate(R.layout.row_game_layout_item, (ViewGroup) this.mContainer, false);
             this.mContainer.addView(viewGroup);
         }
     }
 
     public final void a(GameLayoutRoot$ModuleLayout gameLayoutRoot$ModuleLayout) {
-        ((TextView) this.findViewById(2131493576)).setText(gameLayoutRoot$ModuleLayout.getGameGroup().getName());
+        ((TextView) this.findViewById(R.id.section_name)).setText(gameLayoutRoot$ModuleLayout.getGameGroup().getName());
         List<Game> list = gameLayoutRoot$ModuleLayout.getGameGroup().getGames();
         for (int i = 0; i < list.size(); i += 3) {
             List<Game> list2 = list.subList(i, Math.min(i + 3, list.size()));
@@ -54,7 +54,7 @@ public class GameItemSection extends TableLayout {
     }
 
     public final void b(GameLayoutRoot$ModuleLayout gameLayoutRoot$ModuleLayout) {
-        ((TextView) this.findViewById(2131493576)).setText(gameLayoutRoot$ModuleLayout.getGameGroup().getName());
+        ((TextView) this.findViewById(R.id.section_name)).setText(gameLayoutRoot$ModuleLayout.getGameGroup().getName());
         List<Game> list = gameLayoutRoot$ModuleLayout.getGameGroup().getGames();
         for (int i = 0; i < list.size(); i += 3) {
             List<Game> list2 = list.subList(i, Math.min(i + 3, list.size()));
@@ -80,6 +80,6 @@ public class GameItemSection extends TableLayout {
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
-        this.mContainer = (TableLayout) findViewById(2131493577);
+        this.mContainer = (TableLayout) findViewById(R.id.container);
     }
 }

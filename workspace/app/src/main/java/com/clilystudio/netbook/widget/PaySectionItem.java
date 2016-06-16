@@ -22,11 +22,11 @@ public class PaySectionItem extends DividerSection {
 
     public PaySectionItem(Context context, AttributeSet attributeSet) {
         super(context, attributeSet);
-        LayoutInflater.from(context).inflate(2130903343, (ViewGroup) this.a());
-        this.mIcon = (ImageView) findViewById(2131493028);
-        this.mLabel = (TextView) findViewById(2131493515);
-        this.mBalance = (TextView) findViewById(2131493823);
-        this.mArrow = (ImageView) findViewById(2131493199);
+        LayoutInflater.from(context).inflate(R.layout.pay_account_item, (ViewGroup) this.a());
+        this.mIcon = (ImageView) findViewById(R.id.icon);
+        this.mLabel = (TextView) findViewById(R.id.label);
+        this.mBalance = (TextView) findViewById(R.id.balance);
+        this.mArrow = (ImageView) findViewById(R.id.arrow);
         TypedArray typedArray = context.obtainStyledAttributes(attributeSet, R$styleable.PaySectionItem);
         String string = typedArray.getString(0);
         this.mLabel.setText(string);
@@ -34,7 +34,7 @@ public class PaySectionItem extends DividerSection {
         this.mIcon.setImageResource(n);
         int n2 = typedArray.getResourceId(2, 0);
         this.mArrow.setImageResource(n2);
-        if (n2 == 2130838032) {
+        if (n2 == R.drawable.pay_charge_icon) {
             this.mArrow.setContentDescription("\u5145\u503c");
         }
         typedArray.recycle();

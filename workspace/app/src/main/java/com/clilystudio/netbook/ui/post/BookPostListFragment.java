@@ -41,17 +41,17 @@ public class BookPostListFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
-        View view = layoutInflater.inflate(2130903211, viewGroup, false);
-        this.h = view.findViewById(2131493085);
-        this.d = (TextView) view.findViewById(2131493100);
-        this.c = layoutInflater.inflate(2130903325, null);
-        this.a = (PullToRefreshListView) view.findViewById(2131493099);
+        View view = layoutInflater.inflate(R.layout.fragment_book_topic, viewGroup, false);
+        this.h = view.findViewById(R.id.pb_loading);
+        this.d = (TextView) view.findViewById(R.id.empty_text);
+        this.c = layoutInflater.inflate(R.layout.loading_item, null);
+        this.a = (PullToRefreshListView) view.findViewById(R.id.ptr_list);
         this.b = (ListView) this.a.h();
         this.b.addFooterView(this.c);
         if (a.j()) {
             this.b.setFooterDividersEnabled(false);
         }
-        this.e = (FloatingActionButton) view.findViewById(2131493437);
+        this.e = (FloatingActionButton) view.findViewById(R.id.fab);
         return view;
     }
 }

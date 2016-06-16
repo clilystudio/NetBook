@@ -33,7 +33,7 @@ public class ReaderModeActivity extends BaseActivity {
 
     public final void b() {
         this.startActivity(ModeListActivity.a(this, this.b, this.c, this.a));
-        this.overridePendingTransition(2130968602, 2130968603);
+        this.overridePendingTransition(R.anim.mode_list_enter_in, R.anim.mode_list_enter_out);
     }
 
     /*

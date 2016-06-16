@@ -46,7 +46,7 @@ public class BookCategoryListActivity extends BaseTabActivity implements ViewPag
             return;
         }
         if (bookCategoryListActivity.f != null && !bookCategoryListActivity.f.isShowing()) {
-            TextView textView = (TextView) bookCategoryListActivity.a().a().findViewById(2131493008);
+            TextView textView = (TextView) bookCategoryListActivity.a().a().findViewById(R.id.actionbar_custom_right_text);
             bookCategoryListActivity.f.showAsDropDown(textView);
         }
         b.a(bookCategoryListActivity, "book_category_filter_click");
@@ -120,8 +120,8 @@ public class BookCategoryListActivity extends BaseTabActivity implements ViewPag
         for (int k = 0; k < n; ++k) {
             TabHost.TabSpec tabSpec = this.a.newTabSpec("tab" + k);
             tabSpec.setContent(this);
-            View view = layoutInflater.inflate(2130903229, null);
-            ((TextView) view.findViewById(2131493509)).setText((String) this.l.getPageTitle(k));
+            View view = layoutInflater.inflate(R.layout.home_tabhost_item, null);
+            ((TextView) view.findViewById(R.id.text)).setText((String) this.l.getPageTitle(k));
             tabSpec.setIndicator(view);
             this.a.addTab(tabSpec);
         }
@@ -174,11 +174,11 @@ public class BookCategoryListActivity extends BaseTabActivity implements ViewPag
     @Override
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        this.setContentView(2130903085);
+        this.setContentView(R.layout.activity_book_category_tabhost);
         this.b = this.getIntent().getBooleanExtra("CATEGORY_GENDER", false);
         this.e = this.c = this.getIntent().getStringExtra("CATEGORY_KEY");
-        this.i = this.getResources().getStringArray(2131361793);
-        View view = LayoutInflater.from(this).inflate(2130903175, null);
+        this.i = this.getResources().getStringArray(R.array.book_category_tabs);
+        View view = LayoutInflater.from(this).inflate(R.layout.category_level_popupwindow, null);
         PopupWindow popupWindow = new PopupWindow(view, -1, -1);
         popupWindow.setFocusable(true);
         popupWindow.setBackgroundDrawable(new ColorDrawable(0));
@@ -199,8 +199,8 @@ public class BookCategoryListActivity extends BaseTabActivity implements ViewPag
             bl = true;
         }
         this.h = bl;
-        view.findViewById(2131493373).setOnClickListener((View.OnClickListener) ((Object) new as(this)));
-        ListView listView = (ListView) view.findViewById(2131493374);
+        view.findViewById(R.id.back_view).setOnClickListener((View.OnClickListener) ((Object) new as(this)));
+        ListView listView = (ListView) view.findViewById(R.id.min_category_list);
         this.g = new aw(this, (Context) this, arrstring3);
         listView.setAdapter((ListAdapter) ((Object) this.g));
         listView.setOnItemClickListener(new at(this, arrstring3));
@@ -209,8 +209,8 @@ public class BookCategoryListActivity extends BaseTabActivity implements ViewPag
         } else {
             this.a(this.c, "\u7b5b\u9009", (aa) ((Object) new ar(this)));
         }
-        this.a = (TabHost) this.findViewById(2131493096);
-        this.k = (ViewPager) this.findViewById(2131493097);
+        this.a = (TabHost) this.findViewById(R.id.host);
+        this.k = (ViewPager) this.findViewById(R.id.pager);
         this.l = new av(this, this.getSupportFragmentManager());
         this.k.setOffscreenPageLimit(4);
         this.k.setAdapter((PagerAdapter) ((Object) this.l));

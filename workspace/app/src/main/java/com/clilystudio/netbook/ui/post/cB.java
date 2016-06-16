@@ -20,7 +20,7 @@ final class cB implements View.OnClickListener {
             default: {
                 return;
             }
-            case 2131493348: {
+            case R.id.review_rating_container: {
                 if (ReviewActivity.h(this.a) == null || ReviewActivity.h(this.a).getBook() == null) return;
                 this.a.startActivity(BookInfoActivity.a(this.a, ReviewActivity.h(this.a).getBook().get_id()));
                 return;

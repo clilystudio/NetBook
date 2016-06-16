@@ -20,6 +20,6 @@ final class q implements View.OnClickListener {
             }
             return;
         }
-        e.a(o.a(this.a), 2131034418);
+        e.a(o.a(this.a), R.string.network_unconnected);
     }
 }

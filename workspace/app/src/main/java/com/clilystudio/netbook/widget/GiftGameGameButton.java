@@ -40,8 +40,8 @@ public class GiftGameGameButton extends Button {
 
     protected void a() {
         this.setText("\u6211\u8981\u9886");
-        this.setTextColor(this.getResources().getColor(2131427548));
-        this.setBackgroundResource(2130837819);
+        this.setTextColor(this.getResources().getColor(R.color.white));
+        this.setBackgroundResource(R.drawable.green_round_button);
     }
 
     public final void a(int n) {
@@ -79,32 +79,32 @@ public class GiftGameGameButton extends Button {
             case 32:
         }
         this.setText("\u6253\u5f00");
-        this.setTextColor(this.getResources().getColor(2131427356));
-        this.setBackgroundResource(2130837817);
+        this.setTextColor(this.getResources().getColor(R.color.black));
+        this.setBackgroundResource(R.drawable.gray_round_button);
         this.setOnClickListener(new S(this, 0));
     }
 
     protected void b() {
         this.setText("\u4e0b\u8f7d\u4e2d");
-        this.setTextColor(this.getResources().getColor(2131427356));
-        this.setBackgroundResource(2130837729);
+        this.setTextColor(this.getResources().getColor(R.color.black));
+        this.setBackgroundResource(R.drawable.btn_game_layout_downloading);
     }
 
     protected void c() {
         this.setText("\u5b89\u88c5");
-        this.setTextColor(this.getResources().getColor(2131427548));
-        this.setBackgroundResource(2130837819);
+        this.setTextColor(this.getResources().getColor(R.color.white));
+        this.setBackgroundResource(R.drawable.green_round_button);
     }
 
     protected void d() {
-        View view = View.inflate(this.getContext(), 2130903194, null);
-        ((SmartImageView) view.findViewById(2131493394)).setImageUrl(this.a.icon);
-        ((TextView) view.findViewById(2131493397)).setText("\u6709 " + this.a.followers + " \u4e2a\u5c0f\u4f19\u4f34\u6b63\u5728\u73a9");
-        ((TextView) view.findViewById(2131493395)).setText(this.a.getName());
-        ((TextView) view.findViewById(2131493396)).setText(a.c(this.a.androidSize));
+        View view = View.inflate(this.getContext(), R.layout.dialog_gift_game_get_dl, null);
+        ((SmartImageView) view.findViewById(R.id.game_gift_icon)).setImageUrl(this.a.icon);
+        ((TextView) view.findViewById(R.id.game_gift_left)).setText("\u6709 " + this.a.followers + " \u4e2a\u5c0f\u4f19\u4f34\u6b63\u5728\u73a9");
+        ((TextView) view.findViewById(R.id.game_gift_name)).setText(this.a.getName());
+        ((TextView) view.findViewById(R.id.game_gift_type_size)).setText(a.c(this.a.androidSize));
         com.clilystudio.netbook.view.a a2 = new com.clilystudio.netbook.view.a(this.getContext());
         ao.a((Activity) this.getContext(), this.a);
-        GiftGameGetButton giftGameGetButton = (GiftGameGetButton) view.findViewById(2131493398);
+        GiftGameGetButton giftGameGetButton = (GiftGameGetButton) view.findViewById(R.id.game_gift_download);
         giftGameGetButton.setGame(this.a);
         giftGameGetButton.a(this.a.getDownloadStatus());
         giftGameGetButton.setBottomDialog(a2);

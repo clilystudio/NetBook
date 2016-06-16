@@ -61,9 +61,9 @@ public class AdWebViewActivity extends BaseActivity implements View.OnClickListe
         }
         if (adWebViewActivity.isFinishing()) return;
         String string3 = com.clilystudio.netbook.hpay100.a.a.r(adWebViewActivity) == 1 ? "\u54c7\uff0c\u4f60\u6b63\u5904\u5728 Wi-Fi \u7f51\u7edc\u4e0b\uff0c\u4e0b\u8f7d\u65e0\u9700\u6d41\u91cf :)" : "\u5f53\u524d\u7f51\u7edc\u4e0b\u8f7d\u9700\u6d88\u8017\u6d41\u91cf\uff0c\u8bf7\u5c0f\u5fc3\u786e\u8ba4";
-        h h2 = new h(adWebViewActivity).a(2131034371);
+        h h2 = new h(adWebViewActivity).a(R.string.download);
         h2.e = string3;
-        h2.a(2131034424, (DialogInterface.OnClickListener) ((Object) new e(adWebViewActivity, string))).b(2131034129, null).b();
+        h2.a(R.string.ok, (DialogInterface.OnClickListener) ((Object) new e(adWebViewActivity, string))).b(R.string.cancel, null).b();
     }
 
     /*
@@ -138,15 +138,15 @@ public class AdWebViewActivity extends BaseActivity implements View.OnClickListe
             default: {
                 return;
             }
-            case 2131494050: {
+            case R.id.btn_back: {
                 this.a.goBack();
                 return;
             }
-            case 2131494051: {
+            case R.id.btn_forward: {
                 this.a.goForward();
                 return;
             }
-            case 2131494052:
+            case R.id.btn_reload:
         }
         this.a.reload();
     }
@@ -155,15 +155,15 @@ public class AdWebViewActivity extends BaseActivity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        this.setContentView(2130903420);
+        this.setContentView(R.layout.webview);
         this.f = this.getIntent().getStringExtra("extra_title");
         this.c(this.f);
         this.g = (DownloadManager) this.getSystemService("download");
-        this.a = (WebView) this.findViewById(2131494048);
-        this.b = this.findViewById(2131493085);
-        this.c = this.findViewById(2131494050);
-        this.e = this.findViewById(2131494051);
-        View view = this.findViewById(2131494052);
+        this.a = (WebView) this.findViewById(R.id.wv_web_page);
+        this.b = this.findViewById(R.id.pb_loading);
+        this.c = this.findViewById(R.id.btn_back);
+        this.e = this.findViewById(R.id.btn_forward);
+        View view = this.findViewById(R.id.btn_reload);
         this.a.getSettings().setUseWideViewPort(true);
         this.a.getSettings().setLoadWithOverviewMode(true);
         this.a.setVerticalScrollBarEnabled(false);

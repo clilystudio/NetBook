@@ -151,15 +151,15 @@ public class MysteryActivity extends BaseLoadingActivity {
     @Override
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        this.a(2130903117);
+        this.a(R.layout.activity_mystery);
         this.b("\u795e\u79d8\u529f\u80fd");
-        ListView listView = (ListView) this.findViewById(2131493150);
-        View view = this.getLayoutInflater().inflate(2130903331, (ViewGroup) listView, false);
+        ListView listView = (ListView) this.findViewById(R.id.mystery_list);
+        View view = this.getLayoutInflater().inflate(R.layout.mystery_header, (ViewGroup) listView, false);
         listView.addHeaderView(view, null, false);
         this.c = new bq(this, (Activity) this);
         listView.setAdapter((ListAdapter) ((Object) this.c));
-        this.a = (TextView) view.findViewById(2131493810);
-        this.b = view.findViewById(2131493809);
+        this.a = (TextView) view.findViewById(R.id.progress);
+        this.b = view.findViewById(R.id.progress_container);
         new bp(this, 0).b(new String[0]);
     }
 

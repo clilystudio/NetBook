@@ -14,7 +14,7 @@ public class LinkPushBinder extends OfficialNotifBinder {
 
     @Override
     protected int getIconRes() {
-        return 2130837915;
+        return R.drawable.ic_notif_link;
     }
 
     @Override

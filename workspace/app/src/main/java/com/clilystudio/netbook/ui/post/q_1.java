@@ -19,7 +19,7 @@ final class q implements View.OnClickListener {
         this.a.dismiss();
         String string = this.c.getIntent().getStringExtra("post_game_id");
         String string2 = AddGamePostActivity.c(this.c).getText().toString().trim();
-        t t2 = new t(this.c, this.c, 2131034430);
+        t t2 = new t(this.c, this.c, R.string.post_publish_loading);
         String[] arrstring = new String[]{this.b, string, string2};
         t2.b(arrstring);
     }

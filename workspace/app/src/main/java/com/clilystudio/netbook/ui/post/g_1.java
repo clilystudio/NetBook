@@ -12,7 +12,7 @@ final class g extends c<String, ResultStatus> {
 
     public g(AbsPostActivity absPostActivity, Activity activity, int n) {
         this.a = absPostActivity;
-        super(activity, 2131034430);
+        super(activity, R.string.post_publish_loading);
     }
 
     private /* varargs */ ResultStatus a(String... arrstring) {
@@ -44,7 +44,7 @@ final class g extends c<String, ResultStatus> {
                     e.a((Activity) this.a, string);
                     bl = false;
                 } else {
-                    e.a((Activity) this.a, 2131034388);
+                    e.a((Activity) this.a, R.string.forbidden_tips);
                 }
             } else {
                 e.a((Activity) this.a, "\u56de\u590d\u5931\u8d25\uff0c\u8bf7\u91cd\u8bd5");

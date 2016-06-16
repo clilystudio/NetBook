@@ -161,7 +161,7 @@ public class UGCGuideAddBookActivity extends BaseActivity implements View.OnClic
             a2.b(arrstring);
             return;
         }
-        e.a((Activity) this, (int) 2131034418);
+        e.a((Activity) this, (int) R.string.network_unconnected);
     }
 
     private void b() {
@@ -199,19 +199,19 @@ public class UGCGuideAddBookActivity extends BaseActivity implements View.OnClic
             default: {
                 return;
             }
-            case 2131493016: {
+            case R.id.search_input_search: {
                 this.a(true);
                 this.f();
                 this.n = false;
                 return;
             }
-            case 2131493015: {
+            case R.id.search_input_clean: {
                 this.b = "";
                 this.c.setTextByCode(this.b);
                 this.b();
                 return;
             }
-            case 2131493013:
+            case R.id.back:
         }
         this.f();
         this.finish();
@@ -220,30 +220,30 @@ public class UGCGuideAddBookActivity extends BaseActivity implements View.OnClic
     @Override
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        this.setContentView(2130903127);
+        this.setContentView(R.layout.activity_search);
         ButterKnife.inject(this);
         LayoutInflater layoutInflater = LayoutInflater.from(this);
-        View view = layoutInflater.inflate(2130903042, null, false);
-        view.findViewById(2131493013).setOnClickListener(this);
+        View view = layoutInflater.inflate(R.layout.ab_search, null, false);
+        view.findViewById(R.id.back).setOnClickListener(this);
         this.setCustomActionBar(view);
-        this.findViewById(2131493186).setVisibility(View.GONE);
+        this.findViewById(R.id.select_word_layout).setVisibility(View.GONE);
         this.n = true;
         SearchPromptAdapter uGCGuideAddBookActivity$SearchPromptAdapter = new SearchPromptAdapter(this);
-        this.h = (SearchFixListView) this.findViewById(2131493193);
+        this.h = (SearchFixListView) this.findViewById(R.id.search_prompt_list);
         this.h.setAdapter(uGCGuideAddBookActivity$SearchPromptAdapter);
         this.h.setOnItemClickListener(uGCGuideAddBookActivity$SearchPromptAdapter);
-        this.c = (SearchEditText) view.findViewById(2131493014);
+        this.c = (SearchEditText) view.findViewById(R.id.search_input_edit);
         this.c.setOnUserInputListener((ax) ((Object) new s(this, uGCGuideAddBookActivity$SearchPromptAdapter)));
-        this.e = view.findViewById(2131493016);
-        this.f = view.findViewById(2131493015);
-        this.i = this.findViewById(2131493085);
-        this.j = this.findViewById(2131493184);
-        this.l = this.findViewById(2131493183);
-        this.findViewById(2131493982).setVisibility(View.GONE);
+        this.e = view.findViewById(R.id.search_input_search);
+        this.f = view.findViewById(R.id.search_input_clean);
+        this.i = this.findViewById(R.id.pb_loading);
+        this.j = this.findViewById(R.id.search_empty_layout);
+        this.l = this.findViewById(R.id.focusable);
+        this.findViewById(R.id.search_empty_add).setVisibility(View.GONE);
         this.e.setOnClickListener(this);
         this.f.setOnClickListener(this);
         this.e.setEnabled(false);
-        this.g = (ListView) this.findViewById(2131493185);
+        this.g = (ListView) this.findViewById(R.id.search_list);
         this.k = new y(this, layoutInflater);
         this.g.setAdapter((ListAdapter) ((Object) this.k));
         if (bundle != null) {
@@ -313,7 +313,7 @@ public class UGCGuideAddBookActivity extends BaseActivity implements View.OnClic
 
         @Override
         public final View getView(int n, View view, ViewGroup viewGroup) {
-            View view2 = this.a.getLayoutInflater().inflate(2130903303, viewGroup, false);
+            View view2 = this.a.getLayoutInflater().inflate(R.layout.list_item_search_prompt, viewGroup, false);
             SearchPromptAdapter$ViewHolder uGCGuideAddBookActivity$SearchPromptAdapter$ViewHolder = new SearchPromptAdapter$ViewHolder(this, view2);
             if (n >= 0 && n < this.b.size()) {
                 uGCGuideAddBookActivity$SearchPromptAdapter$ViewHolder.label.setText(this.b.get(n));
@@ -335,7 +335,7 @@ public class UGCGuideAddBookActivity extends BaseActivity implements View.OnClic
             TextView label;
 
             SearchPromptAdapter$ViewHolder(UGCGuideAddBookActivity.SearchPromptAdapter searchPromptAdapter, View view) {
-                this.label = (TextView) view.findViewById(2131493751);
+                this.label = (TextView) view.findViewById(R.id.search_prompt_list_item);
             }
         }
     }}

@@ -97,7 +97,7 @@ public class GameDetailActivity extends BaseLoadingActivity {
 
     static /* synthetic */ void a(GameDetailActivity gameDetailActivity, View view, String string) {
         com.koushikdutta.async.http.a a2 = new com.koushikdutta.async.http.a(gameDetailActivity, view);
-        a2.b().inflate(2131558403, a2.a());
+        a2.b().inflate(R.menu.game_post_menu, a2.a());
         a2.a((android.support.v7.widget.m) ((Object) new k(gameDetailActivity, string)));
         a2.c();
     }
@@ -123,19 +123,19 @@ public class GameDetailActivity extends BaseLoadingActivity {
      * Enabled aggressive block sorting
      */
     static /* synthetic */ void b(GameDetailActivity gameDetailActivity, Game game) {
-        SmartImageView smartImageView = (SmartImageView) gameDetailActivity.findViewById(2131493466);
+        SmartImageView smartImageView = (SmartImageView) gameDetailActivity.findViewById(R.id.game_detail_banner);
         int n2 = am.b((Activity) gameDetailActivity).widthPixels / 2;
         ViewGroup.LayoutParams layoutParams = smartImageView.getLayoutParams();
         layoutParams.height = n2;
         smartImageView.setLayoutParams(layoutParams);
         smartImageView.setImageUrl(game.getBanner());
-        ((TextView) gameDetailActivity.findViewById(2131493471)).setText(game.getShortIntro());
-        ((SmartImageView) gameDetailActivity.findViewById(2131493468)).setImageUrl(game.getIcon());
-        ((TextView) gameDetailActivity.findViewById(2131493469)).setText(game.getName());
+        ((TextView) gameDetailActivity.findViewById(R.id.game_detail_desc)).setText(game.getShortIntro());
+        ((SmartImageView) gameDetailActivity.findViewById(R.id.game_detail_icon)).setImageUrl(game.getIcon());
+        ((TextView) gameDetailActivity.findViewById(R.id.game_detail_name)).setText(game.getName());
         String string = gameDetailActivity.m ? game.getCat() : game.getCat() + " | " + a.c(game.getAndroidSize());
-        ((TextView) gameDetailActivity.findViewById(2131493470)).setText(string);
+        ((TextView) gameDetailActivity.findViewById(R.id.game_detail_type_size)).setText(string);
         gameDetailActivity.a.setText(game.getIntro());
-        ViewGroup viewGroup = (ViewGroup) gameDetailActivity.findViewById(2131493093);
+        ViewGroup viewGroup = (ViewGroup) gameDetailActivity.findViewById(R.id.scroll_content);
         String[] arrstring = game.getPictures();
         int n3 = a.a((Context) gameDetailActivity, 8.0f);
         int n4 = 0;
@@ -196,8 +196,8 @@ public class GameDetailActivity extends BaseLoadingActivity {
 
     static /* synthetic */ void l(GameDetailActivity gameDetailActivity) {
         gameDetailActivity.h.setVisibility(View.VISIBLE);
-        gameDetailActivity.h.findViewById(2131493085).setVisibility(View.GONE);
-        TextView textView = (TextView) gameDetailActivity.h.findViewById(2131493798);
+        gameDetailActivity.h.findViewById(R.id.pb_loading).setVisibility(View.GONE);
+        TextView textView = (TextView) gameDetailActivity.h.findViewById(R.id.tv_loading);
         textView.setText("\u70b9\u51fb\u91cd\u8bd5");
         gameDetailActivity.h.setOnClickListener(new j(gameDetailActivity, textView));
     }
@@ -218,7 +218,7 @@ public class GameDetailActivity extends BaseLoadingActivity {
             GameDownloadButton gameDownloadButton = this.e;
             String string = this.n ? "\u7ee7\u7eed" : "\u8bd5\u73a9";
             gameDownloadButton.setText(string);
-            this.e.setBackgroundResource(2130838100);
+            this.e.setBackgroundResource(R.drawable.red_round_button);
             this.e.setOnClickListener(new i(this));
             return;
         } else {
@@ -258,24 +258,24 @@ public class GameDetailActivity extends BaseLoadingActivity {
     @Override
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        this.a(2130903386);
-        this.b(2131034389, 2130837866, (aa) ((Object) new com.clilystudio.netbook.ui.game.d(this)));
+        this.a(R.layout.scroll_listview);
+        this.b(R.string.game_detail, R.drawable.ic_action_edit, (aa) ((Object) new com.clilystudio.netbook.ui.game.d(this)));
         this.c = this.getIntent().getStringExtra("game_id");
         this.m = this.getIntent().getBooleanExtra("is_micro_game", false);
         this.n = this.getIntent().getBooleanExtra("HAS_PLAYED", false);
         LayoutInflater layoutInflater = LayoutInflater.from(this);
-        this.i = (ScrollLoadListView) this.findViewById(2131493981);
+        this.i = (ScrollLoadListView) this.findViewById(R.id.content_scroll_list);
         this.i.setDividerHeight(0);
-        View view = layoutInflater.inflate(2130903222, (ViewGroup) this.i, false);
-        this.a = (TextView) view.findViewById(2131493475);
-        this.e = (GameDownloadButton) view.findViewById(2131493472);
-        ImageView imageView = (ImageView) view.findViewById(2131493476);
+        View view = layoutInflater.inflate(R.layout.game_detail_header2, (ViewGroup) this.i, false);
+        this.a = (TextView) view.findViewById(R.id.game_detail_intro);
+        this.e = (GameDownloadButton) view.findViewById(R.id.game_detail_download);
+        ImageView imageView = (ImageView) view.findViewById(R.id.game_detail_intro_expand);
         this.a.setOnClickListener(new f(this));
         imageView.setOnClickListener((View.OnClickListener) ((Object) new g(this)));
         this.i.addHeaderView(view, null, false);
-        this.h = layoutInflater.inflate(2130903325, null);
+        this.h = layoutInflater.inflate(R.layout.loading_item, null);
         this.i.addFooterView(this.h);
-        GameGiftView gameGiftView = (GameGiftView) layoutInflater.inflate(2130903223, (ViewGroup) this.i, false);
+        GameGiftView gameGiftView = (GameGiftView) layoutInflater.inflate(R.layout.game_gift_view, (ViewGroup) this.i, false);
         this.i.addHeaderView(gameGiftView, null, false);
         gameGiftView.a(this.c, this.m);
         this.j = new n(this, layoutInflater);

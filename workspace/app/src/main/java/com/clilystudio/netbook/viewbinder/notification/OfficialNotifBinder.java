@@ -15,7 +15,7 @@ public abstract class OfficialNotifBinder extends NotifBinder {
 
     @Override
     public void fillImageView(SmartImageView smartImageView) {
-        smartImageView.setImageBitmap(a.a(BitmapFactory.decodeResource(smartImageView.getResources(), 2130838027)));
+        smartImageView.setImageBitmap(a.a(BitmapFactory.decodeResource(smartImageView.getResources(), R.drawable.official_avatar)));
     }
 
     @Override

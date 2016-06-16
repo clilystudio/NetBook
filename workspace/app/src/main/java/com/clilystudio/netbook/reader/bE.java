@@ -58,10 +58,10 @@ final class bE extends e<String, Void, Object[]> {
             return;
         }
         this.a.f();
-        TextView textView = (TextView) this.a.findViewById(2131493880);
+        TextView textView = (TextView) this.a.findViewById(R.id.reader_mix_header_count);
         Resources resources = this.a.getResources();
         Object[] arrobject2 = new Object[]{-1 + list.size()};
-        textView.setText(resources.getString(2131034520, arrobject2));
+        textView.setText(resources.getString(R.string.source_list_title, arrobject2));
         Iterator iterator = list.iterator();
         boolean bl = false;
         while (iterator.hasNext()) {

@@ -57,11 +57,11 @@ public class WifiActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        this.setContentView(2130903144);
+        this.setContentView(R.layout.activity_wifi);
         this.b("Wi-Fi\u4f20\u4e66");
         this.b = new com.koushikdutta.async.http.server.a();
-        this.c = (TextView) this.findViewById(2131493260);
-        this.e = (TextView) this.findViewById(2131493261);
+        this.c = (TextView) this.findViewById(R.id.ip_address);
+        this.e = (TextView) this.findViewById(R.id.wifi_name);
         this.a.clear();
         List<BookFile> list = a.f();
         this.a.addAll(list);

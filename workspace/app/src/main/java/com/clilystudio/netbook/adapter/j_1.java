@@ -18,7 +18,7 @@ public final class j extends W<TopicPost> {
     private boolean b = false;
 
     public j(LayoutInflater layoutInflater) {
-        super(layoutInflater, 2130903295);
+        super(layoutInflater, R.layout.list_item_post);
         Context context = layoutInflater.getContext();
         this.a = am.m(context);
         this.b = a.r(context, "community_user_gender_icon_toggle");
@@ -32,9 +32,9 @@ public final class j extends W<TopicPost> {
         TopicPost topicPost = (TopicPost) object;
         Author author = topicPost.getAuthor();
         if (this.a) {
-            ((SmartImageView) this.a(0, SmartImageView.class)).setImageResource(2130837614);
+            ((SmartImageView) this.a(0, SmartImageView.class)).setImageResource(R.drawable.avatar_default);
         } else {
-            ((SmartImageView) this.a(0, SmartImageView.class)).setImageUrl(author.getScaleAvatar(), 2130837614);
+            ((SmartImageView) this.a(0, SmartImageView.class)).setImageUrl(author.getScaleAvatar(), R.drawable.avatar_default);
             ((SmartImageView) this.a(0, SmartImageView.class)).setOnClickListener(new k(this, topicPost));
         }
         this.a(1, author.getNickname());
@@ -44,10 +44,10 @@ public final class j extends W<TopicPost> {
         TextView textView = (TextView) this.a(5, TextView.class);
         if ("vote".equals(string)) {
             textView.setText("" + topicPost.getVoteCount());
-            textView.setCompoundDrawablesWithIntrinsicBounds(2130837971, 0, 0, 0);
+            textView.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_vote, 0, 0, 0);
         } else {
             textView.setText("" + topicPost.getCommentCount());
-            textView.setCompoundDrawablesWithIntrinsicBounds(2130837902, 0, 0, 0);
+            textView.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_message, 0, 0, 0);
         }
         TextView textView2 = (TextView) this.a(6, TextView.class);
         textView2.setVisibility(View.VISIBLE);
@@ -89,6 +89,6 @@ public final class j extends W<TopicPost> {
 
     @Override
     protected final int[] a() {
-        return new int[]{2131492899, 2131493630, 2131493631, 2131492935, 2131492936, 2131493519, 2131493727, 2131493629, 2131493632};
+        return new int[]{R.id.avatar, R.id.user, R.id.lv, R.id.time, R.id.title, R.id.comment_count, R.id.like_count, R.id.avatar_verify, R.id.post_flag};
     }
 }

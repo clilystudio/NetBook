@@ -49,32 +49,32 @@ public abstract class WebPageFragment extends Fragment implements View.OnClickLi
             default: {
                 return;
             }
-            case 2131494050: {
+            case R.id.btn_back: {
                 this.a.goBack();
                 return;
             }
-            case 2131494051: {
+            case R.id.btn_forward: {
                 this.a.goForward();
                 return;
             }
-            case 2131494052:
+            case R.id.btn_reload:
         }
         this.a.reload();
     }
 
     @Override
     public View onCreateView(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
-        return layoutInflater.inflate(2130903420, viewGroup, false);
+        return layoutInflater.inflate(R.layout.webview, viewGroup, false);
     }
 
     @Override
     public void onViewCreated(View view, Bundle bundle) {
         super.onViewCreated(view, bundle);
-        this.b = view.findViewById(2131493085);
-        this.a = (WebView) view.findViewById(2131494048);
-        this.c = view.findViewById(2131494050);
-        this.d = view.findViewById(2131494051);
-        View view2 = view.findViewById(2131494052);
+        this.b = view.findViewById(R.id.pb_loading);
+        this.a = (WebView) view.findViewById(R.id.wv_web_page);
+        this.c = view.findViewById(R.id.btn_back);
+        this.d = view.findViewById(R.id.btn_forward);
+        View view2 = view.findViewById(R.id.btn_reload);
         this.c.setOnClickListener(this);
         this.d.setOnClickListener(this);
         view2.setOnClickListener(this);

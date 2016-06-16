@@ -75,17 +75,17 @@ public class HomeTopicFragment extends HomeFragment implements View.OnClickListe
      * Enabled aggressive block sorting
      */
     private void a(View view) {
-        CommunitySection communitySection = (CommunitySection) view.findViewById(2131493510);
+        CommunitySection communitySection = (CommunitySection) view.findViewById(R.id.community_section);
         if (a.r(this.getActivity(), "switch_news")) {
             communitySection.a(a.a((Context) this.getActivity(), "FRIST_RUN_POST", true));
             communitySection.setOnClickListener(this);
         } else {
             communitySection.setVisibility(View.GONE);
         }
-        view.findViewById(2131493511).setOnClickListener(this);
-        view.findViewById(2131493512).setOnClickListener(this);
-        view.findViewById(2131493513).setOnClickListener(this);
-        view.findViewById(2131493514).setOnClickListener(this);
+        view.findViewById(R.id.discuss_section).setOnClickListener(this);
+        view.findViewById(R.id.review_section).setOnClickListener(this);
+        view.findViewById(R.id.helper_section).setOnClickListener(this);
+        view.findViewById(R.id.girl_section).setOnClickListener(this);
     }
 
     private void a(String string) {
@@ -103,7 +103,7 @@ public class HomeTopicFragment extends HomeFragment implements View.OnClickListe
             this.startActivity(new Intent(this.getActivity(), GirlTopicListActivity.class));
             return;
         }
-        e.a((Activity) this.getActivity(), (int) 2131034395);
+        e.a((Activity) this.getActivity(), (int) R.string.girl_only);
     }
 
     private void c() {
@@ -154,7 +154,7 @@ public class HomeTopicFragment extends HomeFragment implements View.OnClickListe
         super.onActivityCreated(bundle);
         this.c = (ListView) this.b.h();
         a.a((Context) this.getActivity(), this.c);
-        this.f = LayoutInflater.from(this.getActivity()).inflate(2130903231, (ViewGroup) this.c, false);
+        this.f = LayoutInflater.from(this.getActivity()).inflate(R.layout.home_topic_header, (ViewGroup) this.c, false);
         this.c.addHeaderView(this.f, null, false);
         this.a(this.f);
         this.b.setOnRefreshListener(new L(this));
@@ -204,7 +204,7 @@ public class HomeTopicFragment extends HomeFragment implements View.OnClickListe
             default: {
                 return;
             }
-            case 2131493510: {
+            case R.id.community_section: {
                 MiStatInterface.recordCountEvent("enter_home_topic",null);
                 Intent intent = new Intent(this.getActivity(), TweetTabActivity.class);
                 if (a.a((Context) this.getActivity(), "FRIST_RUN_POST", true)) {
@@ -214,19 +214,19 @@ public class HomeTopicFragment extends HomeFragment implements View.OnClickListe
                 this.startActivity(intent);
                 return;
             }
-            case 2131493511: {
+            case R.id.discuss_section: {
                 this.startActivity(new Intent(this.getActivity(), CommonPostListActivity.class));
                 return;
             }
-            case 2131493512: {
+            case R.id.review_section: {
                 this.startActivity(new Intent(this.getActivity(), ReviewListActivity.class));
                 return;
             }
-            case 2131493513: {
+            case R.id.helper_section: {
                 this.startActivity(new Intent(this.getActivity(), BookHelpListActivity.class));
                 return;
             }
-            case 2131493514:
+            case R.id.girl_section:
         }
         if (am.g()) {
             this.b(am.e().getUser().getGender());
@@ -245,8 +245,8 @@ public class HomeTopicFragment extends HomeFragment implements View.OnClickListe
 
     @Override
     public View onCreateView(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
-        View view = layoutInflater.inflate(2130903214, viewGroup, false);
-        this.b = (PullToRefreshListView) view.findViewById(2131493443);
+        View view = layoutInflater.inflate(R.layout.fragment_home_topic, viewGroup, false);
+        this.b = (PullToRefreshListView) view.findViewById(R.id.ptr_list_home_topic);
         this.b.setMode(PullToRefreshBase$Mode.PULL_FROM_START);
         return view;
     }

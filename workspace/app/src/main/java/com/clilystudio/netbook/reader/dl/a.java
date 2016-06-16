@@ -42,7 +42,7 @@ public class a {
             return;
         }
         b b2 = new b(this, bookReadRecord, n, n2);
-        new h(this.a).a(2131034592).b(2131034342).a(2131034336, (DialogInterface.OnClickListener) new c(this, b2)).b(2131034129, null).b();
+        new h(this.a).a(R.string.zssq_tips).b(R.string.chapter_dl_net_type_msg).a(R.string.chapter_dl, (DialogInterface.OnClickListener) new c(this, b2)).b(R.string.cancel, null).b();
     }
 
     /*

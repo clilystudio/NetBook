@@ -76,6 +76,6 @@ final class an extends ZssqFragmentPagerAdapter {
 
     @Override
     public final CharSequence getPageTitle(int n) {
-        return this.b.getResources().getStringArray(2131361796)[n];
+        return this.b.getResources().getStringArray(R.array.game_center_tabs)[n];
     }
 }

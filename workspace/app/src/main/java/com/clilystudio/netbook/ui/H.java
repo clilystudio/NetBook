@@ -49,7 +49,7 @@ final class H extends com.clilystudio.netbook.a_pack.e<String, Void, List<BookSu
         super.onPostExecute(list);
         if (list == null) {
             this.a.h();
-            e.a((Activity) this.a, (int) 2131034478);
+            e.a((Activity) this.a, (int) R.string.search_failed);
             return;
         }
         if (list.size() > 0) {

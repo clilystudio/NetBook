@@ -15,7 +15,7 @@ final class ah implements View.OnClickListener {
     @Override
     public final void onClick(View view) {
         this.a.dismiss();
-        BookHelpListActivity.m(this.b).setText(2131034432);
+        BookHelpListActivity.m(this.b).setText(R.string.post_sort_create);
         BookHelpListActivity.b(this.b, "created");
         BookHelpListActivity.l(this.b).setRefreshing();
     }

@@ -19,7 +19,7 @@ final class aq implements View.OnClickListener {
         if (context instanceof AbsPostActivity) {
             AbsPostActivity absPostActivity = (AbsPostActivity) context;
             a a2 = new a(absPostActivity, view);
-            a2.b().inflate(2131558403, a2.a());
+            a2.b().inflate(R.menu.game_post_menu, a2.a());
             a2.a(new ar(this, absPostActivity));
             a2.c();
         }

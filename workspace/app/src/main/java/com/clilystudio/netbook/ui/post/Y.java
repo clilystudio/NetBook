@@ -17,7 +17,7 @@ final class Y implements View.OnClickListener {
     public final void onClick(View view) {
         this.a.dismiss();
         String string = TextUtils.join((CharSequence) ",", AddVoteItemActivity.i(this.b).toArray());
-        Z z = new Z(this.b, this.b, 2131034430);
+        Z z = new Z(this.b, this.b, R.string.post_publish_loading);
         String[] arrstring = new String[]{AddVoteItemActivity.j(this.b).getToken(), AddVoteItemActivity.k(this.b), AddVoteItemActivity.l(this.b).trim(), AddVoteItemActivity.m(this.b).trim(), string};
         z.b(arrstring);
     }

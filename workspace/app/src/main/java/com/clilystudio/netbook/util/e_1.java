@@ -133,7 +133,7 @@ public class e {
         if (bitmap == null || c == null) {
             return;
         }
-        c.setImageViewBitmap(2131493604, bitmap);
+        c.setImageViewBitmap(R.id.cover, bitmap);
         d.notify(1001, e);
     }
 
@@ -196,7 +196,7 @@ public class e {
         if (c == null) {
             return;
         }
-        c.setTextViewText(2131493605, string);
+        c.setTextViewText(R.id.tv_title, string);
         d.notify(1001, e);
     }
 
@@ -205,9 +205,9 @@ public class e {
      */
     public static void a(boolean bl) {
         if (bl) {
-            c.setImageViewResource(2131493607, 2130837584);
+            c.setImageViewResource(R.id.iv_control, R.drawable.audio_bar_pause);
         } else {
-            c.setImageViewResource(2131493607, 2130837925);
+            c.setImageViewResource(R.id.iv_control, R.drawable.ic_play_audiobook_button);
         }
         d.notify(1001, e);
     }
@@ -230,7 +230,7 @@ public class e {
         if (c == null) {
             return;
         }
-        c.setTextViewText(2131493606, string);
+        c.setTextViewText(R.id.tv_time, string);
         d.notify(1001, e);
     }
 
@@ -243,7 +243,7 @@ public class e {
         NotificationCompat$Builder notificationCompat$Builder;
         Notification notification;
         d = (NotificationManager) MyApplication.a().getSystemService("notification");
-        c = new RemoteViews(MyApplication.a().getPackageName(), 2130903334);
+        c = new RemoteViews(MyApplication.a().getPackageName(), R.layout.notification_audio_bar);
         notificationCompat$Builder = new NotificationCompat$Builder(MyApplication.a());
         notificationCompat$Builder.setSmallIcon(17301623);
         notificationCompat$Builder.setContent(c);
@@ -267,7 +267,7 @@ public class e {
                             public void run() {
                                 as.a();
                                 as.h();
-                                com.clilystudio.netbook.util.e.e().setImageViewResource(2131493607, 2130837925);
+                                com.clilystudio.netbook.util.e.e().setImageViewResource(R.id.iv_control, R.drawable.ic_play_audiobook_button);
                                 com.clilystudio.netbook.util.e.g().notify(1001, com.clilystudio.netbook.util.e.f());
                             }
                         });
@@ -277,7 +277,7 @@ public class e {
                         @Override
                         public void run() {
                             as.a().d();
-                            com.clilystudio.netbook.util.e.e().setImageViewResource(2131493607, 2130837584);
+                            com.clilystudio.netbook.util.e.e().setImageViewResource(R.id.iv_control, R.drawable.audio_bar_pause);
                             com.clilystudio.netbook.util.e.g().notify(1001, com.clilystudio.netbook.util.e.f());
                         }
                     });
@@ -287,7 +287,7 @@ public class e {
         }
         Intent intent = new Intent("com.clilystudio.netbook.SWITCH_AUDIO");
         PendingIntent pendingIntent = PendingIntent.getBroadcast(MyApplication.a(), 0, intent, 0);
-        c.setOnClickPendingIntent(2131493607, pendingIntent);
+        c.setOnClickPendingIntent(R.id.iv_control, pendingIntent);
         e = notification = notificationCompat$Builder.build();
         return notification;
     }

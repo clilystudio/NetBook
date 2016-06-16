@@ -11,7 +11,7 @@ final class br extends W<MixChapterResource> {
 
     public br(ReaderChapterDialog readerChapterDialog, LayoutInflater layoutInflater) {
         this.a = readerChapterDialog;
-        super(layoutInflater, 2130903271);
+        super(layoutInflater, R.layout.list_item_chapter);
     }
 
     /*
@@ -33,6 +33,6 @@ final class br extends W<MixChapterResource> {
 
     @Override
     protected final int[] a() {
-        return new int[]{2131493636, 2131493637};
+        return new int[]{R.id.list_item_reader_chapter_site, R.id.list_item_reader_chapter_select};
     }
 }

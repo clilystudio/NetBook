@@ -15,7 +15,7 @@ final class f extends c<String, Account> {
 
     public f(AuthLoginActivity authLoginActivity, Activity activity, int n) {
         this.a = authLoginActivity;
-        super(activity, 2131034409);
+        super(activity, R.string.login_loading);
     }
 
     private static /* varargs */ Account a(String... arrstring) {
@@ -48,7 +48,7 @@ final class f extends c<String, Account> {
             } else {
                 String string = account.getCode();
                 if ("AUTHENTICATION_FAILED".equals(string)) {
-                    e.a((Activity) this.a, 2131034315);
+                    e.a((Activity) this.a, R.string.auth_invalid);
                 } else if ("BANNED_USER".equals(string)) {
                     e.a((Activity) this.a, "\u767b\u5f55\u5931\u8d25\uff0c\u8be5\u8d26\u6237\u88ab\u5c01\u7981");
                 } else {

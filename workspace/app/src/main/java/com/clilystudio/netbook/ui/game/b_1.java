@@ -10,7 +10,7 @@ import com.clilystudio.netbook.util.W;
 
 final class b extends W<GameCat> {
     public b(GameCatListFragment gameCatListFragment, LayoutInflater layoutInflater) {
-        super(layoutInflater, 2130903276);
+        super(layoutInflater, R.layout.list_item_game_cat);
     }
 
     /*
@@ -23,7 +23,7 @@ final class b extends W<GameCat> {
         if (arrgame.length > 0) {
             SmartImageView smartImageView = (SmartImageView) this.a(0, SmartImageView.class);
             smartImageView.setDrawingCacheEnabled(true);
-            smartImageView.setImageUrl(arrgame[0].getIcon(), 2130837766);
+            smartImageView.setImageUrl(arrgame[0].getIcon(), R.drawable.cover_default);
             int n2 = arrgame.length > 3 ? 3 : arrgame.length;
             Object[] arrobject = new String[n2];
             for (int i = 0; i < n2; ++i) {
@@ -36,6 +36,6 @@ final class b extends W<GameCat> {
 
     @Override
     protected final int[] a() {
-        return new int[]{2131493655, 2131493656, 2131493657};
+        return new int[]{R.id.game_list_item_icon, R.id.game_list_item_cat, R.id.game_list_item_intro};
     }
 }

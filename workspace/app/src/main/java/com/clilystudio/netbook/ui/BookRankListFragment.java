@@ -99,16 +99,16 @@ public class BookRankListFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
         super.onCreateView(layoutInflater, viewGroup, bundle);
-        View view = layoutInflater.inflate(2130903210, viewGroup, false);
-        this.c = view.findViewById(2131493081);
-        this.e = (TextView) view.findViewById(2131493080);
-        this.d = view.findViewById(2131493082);
+        View view = layoutInflater.inflate(R.layout.fragment_book_rank_list, viewGroup, false);
+        this.c = view.findViewById(R.id.content_loading_pb);
+        this.e = (TextView) view.findViewById(R.id.content_empty_text);
+        this.d = view.findViewById(R.id.content_load_error);
         this.d.setOnClickListener(new aP(this));
         this.a = new g(this.getActivity().getLayoutInflater());
-        ScrollLoadListView scrollLoadListView = (ScrollLoadListView) view.findViewById(2131493135);
+        ScrollLoadListView scrollLoadListView = (ScrollLoadListView) view.findViewById(R.id.content_list);
         scrollLoadListView.setAdapter(this.a);
         scrollLoadListView.setOnItemClickListener(new aQ(this));
-        this.b = layoutInflater.inflate(2130903325, null);
+        this.b = layoutInflater.inflate(R.layout.loading_item, null);
         scrollLoadListView.addFooterView(this.b);
         this.b.setVisibility(View.GONE);
         return view;

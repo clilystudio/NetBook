@@ -19,7 +19,7 @@ public class TtsSpeakingService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int n, int n2) {
-        Notification notification = new NotificationCompat$Builder(this).setSmallIcon(2130837893).setContentTitle("\u6b63\u5728\u8bed\u97f3\u6717\u8bfb\u300a" + I.b + "\u300b").setContentText("\u89e6\u6478\u53ef\u8fdb\u5165\u9605\u8bfb").build();
+        Notification notification = new NotificationCompat$Builder(this).setSmallIcon(R.drawable.ic_launcher).setContentTitle("\u6b63\u5728\u8bed\u97f3\u6717\u8bfb\u300a" + I.b + "\u300b").setContentText("\u89e6\u6478\u53ef\u8fdb\u5165\u9605\u8bfb").build();
         Intent intent2 = new Intent(this, ReaderActivity.class);
         intent2.setFlags(603979776);
         notification.contentIntent = PendingIntent.getActivity(this, 0, intent2, 0);

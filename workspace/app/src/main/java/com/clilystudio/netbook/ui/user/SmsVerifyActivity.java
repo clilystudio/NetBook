@@ -68,22 +68,22 @@ public class SmsVerifyActivity extends BaseActivity {
     private void a(int n) {
         if (n > 0) {
             Button button = this.mSendCodeBtn;
-            String string = this.getString(2131034515);
+            String string = this.getString(R.string.sms_verify_input_resend);
             Object[] arrobject = new Object[]{n};
             button.setText(String.format(string, arrobject));
-            this.mSendCodeBtn.setBackgroundResource(2130837690);
+            this.mSendCodeBtn.setBackgroundResource(R.drawable.bg_sms_commit_disable);
             this.mSendCodeBtn.setClickable(false);
             this.mSendCodeBtn.setEnabled(false);
         } else {
             if (this.e != null) {
                 this.e.cancel();
             }
-            this.mSendCodeBtn.setText(2131034516);
-            this.mSendCodeBtn.setBackgroundResource(2130837745);
+            this.mSendCodeBtn.setText(R.string.sms_verify_input_send);
+            this.mSendCodeBtn.setBackgroundResource(R.drawable.common_btn_green_bg);
             this.mSendCodeBtn.setClickable(true);
             this.mSendCodeBtn.setEnabled(true);
         }
-        this.mSendCodeBtn.setTextColor(this.getResources().getColor(2131427548));
+        this.mSendCodeBtn.setTextColor(this.getResources().getColor(R.color.white));
     }
 
     /*
@@ -91,11 +91,11 @@ public class SmsVerifyActivity extends BaseActivity {
      */
     private void a(boolean bl) {
         Button button = this.mCommitBtn;
-        int n = bl ? 2130837693 : 2130837690;
+        int n = bl ? R.drawable.bg_sms_commit_selector : R.drawable.bg_sms_commit_disable;
         button.setBackgroundResource(n);
         this.mCommitBtn.setClickable(bl);
         this.mCommitBtn.setEnabled(bl);
-        this.mCommitBtn.setTextColor(this.getResources().getColor(2131427548));
+        this.mCommitBtn.setTextColor(this.getResources().getColor(R.color.white));
     }
 
     private void b() {
@@ -108,22 +108,22 @@ public class SmsVerifyActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        this.setContentView(2130903132);
+        this.setContentView(R.layout.activity_sms_verify);
         this.b("\u77ed\u4fe1\u5145\u503c");
-        this.mCodeText = (EditText) findViewById(2131493220);
-        this.mAppNameText = (TextView) findViewById(2131493215);
-        this.mGoodsText = (TextView) findViewById(2131493216);
-        this.mPriceText = (TextView) findViewById(2131493217);
-        this.mPhoneText = (TextView) findViewById(2131493218);
-        this.mSendCodeBtn = (Button) findViewById(2131493219);
-        this.mCommitBtn = (Button) findViewById(2131493221);
+        this.mCodeText = (EditText) findViewById(R.id.sms_verify_code);
+        this.mAppNameText = (TextView) findViewById(R.id.sms_verify_appname);
+        this.mGoodsText = (TextView) findViewById(R.id.sms_verify_goods);
+        this.mPriceText = (TextView) findViewById(R.id.sms_verify_price);
+        this.mPhoneText = (TextView) findViewById(R.id.sms_verify_phone);
+        this.mSendCodeBtn = (Button) findViewById(R.id.sms_verify_sendcode);
+        this.mCommitBtn = (Button) findViewById(R.id.sms_verify_commit);
         this.b = (ChargePlan) this.getIntent().getSerializableExtra("key_charge_plan_verify");
         this.mAppNameText.setText("\u8ffd\u4e66\u795e\u5668");
         this.mGoodsText.setText(this.b.getString());
         this.mPriceText.setText("" + this.b.getPrice() + "\u5143");
         this.mPhoneText.setText(this.getIntent().getStringExtra("key_charge_plan_phone"));
         Button button = this.mSendCodeBtn;
-        String string = this.getString(2131034515);
+        String string = this.getString(R.string.sms_verify_input_resend);
         Object[] arrobject = new Object[]{60};
         button.setText(String.format(string, arrobject));
         this.a(false);

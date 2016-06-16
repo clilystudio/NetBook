@@ -96,16 +96,16 @@ public class PayVoucherFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
         super.onCreateView(layoutInflater, viewGroup, bundle);
-        View view = layoutInflater.inflate(2130903215, viewGroup, false);
-        this.a = this.getActivity().getResources().getStringArray(2131361800);
-        this.b = this.getActivity().getResources().getStringArray(2131361799);
-        this.d = (PullToRefreshListView) view.findViewById(2131493099);
+        View view = layoutInflater.inflate(R.layout.fragment_pay_voucher, viewGroup, false);
+        this.a = this.getActivity().getResources().getStringArray(R.array.pay_voucher_params);
+        this.b = this.getActivity().getResources().getStringArray(R.array.pay_voucher_empty_texts);
+        this.d = (PullToRefreshListView) view.findViewById(R.id.ptr_list);
         this.e = (ListView) this.d.h();
-        this.g = view.findViewById(2131493085);
-        this.h = view.findViewById(2131493444);
-        ((TextView) view.findViewById(2131493445)).setText(this.b[this.getArguments().getInt("tag_index_key")]);
+        this.g = view.findViewById(R.id.pb_loading);
+        this.h = view.findViewById(R.id.empty_view);
+        ((TextView) view.findViewById(R.id.voucher_empty_text)).setText(this.b[this.getArguments().getInt("tag_index_key")]);
         LayoutInflater layoutInflater2 = LayoutInflater.from(this.getActivity());
-        this.f = layoutInflater2.inflate(2130903325, null);
+        this.f = layoutInflater2.inflate(R.layout.loading_item, null);
         if (a.i()) {
             this.e.setFooterDividersEnabled(false);
         }

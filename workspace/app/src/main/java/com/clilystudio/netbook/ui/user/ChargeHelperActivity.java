@@ -8,7 +8,7 @@ public class ChargeHelperActivity extends BaseActivity {
     @Override
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        this.setContentView(2130903091);
-        this.b(2131034362);
+        this.setContentView(R.layout.activity_charge_help);
+        this.b(R.string.charge_help_title);
     }
 }

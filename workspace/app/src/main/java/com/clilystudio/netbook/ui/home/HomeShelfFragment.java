@@ -187,8 +187,8 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
     }
 
     static /* synthetic */ void a(HomeShelfFragment homeShelfFragment, List list) {
-        View view = homeShelfFragment.getActivity().getLayoutInflater().inflate(2130903380, null, false);
-        CheckBox checkBox = (CheckBox) view.findViewById(2131493973);
+        View view = homeShelfFragment.getActivity().getLayoutInflater().inflate(R.layout.remove_shelf_confirm, null, false);
+        CheckBox checkBox = (CheckBox) view.findViewById(R.id.remove_shelf_cache);
         new uk.me.lewisdeane.ldialogs.h(homeShelfFragment.getActivity()).a(view).a("\u786e\u5b9a", (DialogInterface.OnClickListener) new t(homeShelfFragment, list, checkBox)).b("\u53d6\u6d88", null).a().show();
     }
 
@@ -231,7 +231,7 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
             // 1 sources:
             if (var3_3) {
                 var0.k();
-                e.a((Activity) var0.getActivity(), (int) 2131034465);
+                e.a((Activity) var0.getActivity(), (int) R.string.refurbish_changed);
                 return;
             }
             if (var4_4) {
@@ -239,7 +239,7 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
                 return;
             }
             var0.j.notifyDataSetChanged();
-            e.a((Activity) var0.getActivity(), (int) 2131034466);
+            e.a((Activity) var0.getActivity(), (int) R.string.refurbish_no_change);
             return;
             lbl39:
             // 1 sources:
@@ -474,14 +474,14 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
         homeShelfFragment.e.removeHeaderView(homeShelfFragment.g);
         homeShelfFragment.e.addHeaderView(homeShelfFragment.g);
         homeShelfFragment.g.setVisibility(View.VISIBLE);
-        TextView textView = (TextView) homeShelfFragment.g.findViewById(2131492936);
+        TextView textView = (TextView) homeShelfFragment.g.findViewById(R.id.title);
         new com.clilystudio.netbook.util.a.a();
         InsideLink insideLink = com.clilystudio.netbook.util.a.a.a(shelfMsg.postLink);
         textView.setText(insideLink.getLabel());
         if (shelfMsg.highlight) {
-            textView.setTextColor(homeShelfFragment.getActivity().getResources().getColor(2131427522));
+            textView.setTextColor(homeShelfFragment.getActivity().getResources().getColor(R.color.shelf_msg_highlight));
         } else {
-            textView.setTextColor(homeShelfFragment.getActivity().getResources().getColor(2131427523));
+            textView.setTextColor(homeShelfFragment.getActivity().getResources().getColor(R.color.shelf_msg_normal));
         }
         new UmengGameTracer(homeShelfFragment.getActivity(), UmengGameTracer.From.Notification).a(shelfMsg._id);
         textView.setOnClickListener(new w(homeShelfFragment, shelfMsg, insideLink));
@@ -534,8 +534,8 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
      * Enabled aggressive block sorting
      */
     static /* synthetic */ void c(HomeShelfFragment homeShelfFragment, BookShelf bookShelf) {
-        View view = homeShelfFragment.getActivity().getLayoutInflater().inflate(2130903380, null, false);
-        CheckBox checkBox = (CheckBox) view.findViewById(2131493973);
+        View view = homeShelfFragment.getActivity().getLayoutInflater().inflate(R.layout.remove_shelf_confirm, null, false);
+        CheckBox checkBox = (CheckBox) view.findViewById(R.id.remove_shelf_cache);
         int n2 = bookShelf.getType();
         int n3 = 0;
         if (n2 != 0) {
@@ -687,7 +687,7 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
             this.n.setText(track.getTrackTitle());
         }
         if (TextUtils.isEmpty(track.getCoverUrlSmall())) {
-            this.m.setImageResource(2130837767);
+            this.m.setImageResource(R.drawable.cover_normal);
             return;
         }
         this.m.setImageUrl(track.getCoverUrlSmall());
@@ -763,12 +763,12 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
             // 1 sources:
             if (var4_4.isEmpty()) {
                 var3_3.setFat(false);
-                var12_9 = this.getString(2131034505);
+                var12_9 = this.getString(R.string.shelf_feed_title);
                 var13_10 = new Object[]{var2_2.size()};
                 var3_3.setTitle(String.format(var12_9, var13_10));
             } else {
                 var3_3.setFat(true);
-                var8_12 = this.getString(2131034504);
+                var8_12 = this.getString(R.string.shelf_feed_fat_title);
                 var9_13 = new Object[]{var4_4.get(0).getTitle()};
                 var3_3.setTitle(String.format(var8_12, var9_13));
             }
@@ -788,10 +788,10 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
 
     private void a(boolean bl) {
         if (bl) {
-            this.p.setImageResource(2130837584);
+            this.p.setImageResource(R.drawable.audio_bar_pause);
             return;
         }
-        this.p.setImageResource(2130837925);
+        this.p.setImageResource(R.drawable.ic_play_audiobook_button);
     }
 
     private void b(int n2) {
@@ -1154,27 +1154,27 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
     public View onCreateView(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
         Log.i(a, "HomeShelfFragment onCreateView");
         60.0f * ((float) this.getActivity().getResources().getDisplayMetrics().densityDpi / 160.0f);
-        this.c = layoutInflater.inflate(2130903213, viewGroup, false);
-        this.d = (PullToRefreshListView) this.c.findViewById(2131493440);
+        this.c = layoutInflater.inflate(R.layout.fragment_home_shelf, viewGroup, false);
+        this.d = (PullToRefreshListView) this.c.findViewById(R.id.home_shelf_ptr);
         this.e = (ListView) this.d.h();
         this.d.setOnScrollListener(this);
-        this.f = this.c.findViewById(2131493361);
-        this.h = LayoutInflater.from(this.getActivity()).inflate(2130903256, (ViewGroup) this.e, false);
-        this.c.findViewById(2131493362).setOnClickListener((View.OnClickListener) ((Object) new n(this)));
-        this.w = (RelativeLayout) this.c.findViewById(2131493442);
+        this.f = this.c.findViewById(R.id.home_shelf_empty);
+        this.h = LayoutInflater.from(this.getActivity()).inflate(R.layout.layout_shelf_footer, (ViewGroup) this.e, false);
+        this.c.findViewById(R.id.add_new_book).setOnClickListener((View.OnClickListener) ((Object) new n(this)));
+        this.w = (RelativeLayout) this.c.findViewById(R.id.delete_shelf_bar);
         this.w.setOnTouchListener(new y(this));
-        this.x = (Button) this.w.findViewById(2131492907);
-        this.y = (Button) this.w.findViewById(2131493990);
+        this.x = (Button) this.w.findViewById(R.id.delete);
+        this.y = (Button) this.w.findViewById(R.id.select_all);
         this.y.setOnClickListener(new z(this));
         this.x.setOnClickListener(new A(this));
         this.d.setOnRefreshListener(new E(this));
         if (a.i()) {
             this.e.setFooterDividersEnabled(false);
         }
-        View view = LayoutInflater.from(this.getActivity()).inflate(2130903354, null);
+        View view = LayoutInflater.from(this.getActivity()).inflate(R.layout.ptr_list_footer_empty_view, null);
         this.e.addFooterView(view);
         a.a((Context) this.getActivity(), this.e);
-        this.g = LayoutInflater.from(this.getActivity()).inflate(2130903168, (ViewGroup) this.e, false);
+        this.g = LayoutInflater.from(this.getActivity()).inflate(R.layout.bookshelf_header_msg, (ViewGroup) this.e, false);
         this.g.setVisibility(View.GONE);
         if (am.r((Context) this.getActivity())) {
             this.e.addHeaderView(this.g);
@@ -1187,11 +1187,11 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
         this.i();
         this.e.getHeight();
         Log.i(a, "" + this.e.getHeight() + " ," + this.e.getMeasuredHeight());
-        this.l = (RelativeLayout) this.c.findViewById(2131493441);
-        this.m = (CoverLoadingView) this.l.findViewById(2131493604);
-        this.n = (TextView) this.l.findViewById(2131493605);
-        this.o = (TextView) this.l.findViewById(2131493606);
-        this.p = (ImageView) this.l.findViewById(2131493607);
+        this.l = (RelativeLayout) this.c.findViewById(R.id.ic_audio_bar);
+        this.m = (CoverLoadingView) this.l.findViewById(R.id.cover);
+        this.n = (TextView) this.l.findViewById(R.id.tv_title);
+        this.o = (TextView) this.l.findViewById(R.id.tv_time);
+        this.p = (ImageView) this.l.findViewById(R.id.iv_control);
         this.p.setOnClickListener(new B(this));
         if (as.c()) {
             this.h();

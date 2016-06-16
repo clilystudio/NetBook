@@ -46,10 +46,10 @@ final class bz extends e<Void, Void, List<MenuAd>> {
             ReaderMenuFragment.l(this.a);
             return;
         }
-        View view = this.a.getView().findViewById(2131492933);
+        View view = this.a.getView().findViewById(R.id.slm_reader_layout_ad);
         view.setVisibility(View.VISIBLE);
         view.setOnClickListener(ReaderMenuFragment.m(this.a));
-        view.findViewById(2131492916).setOnClickListener(ReaderMenuFragment.m(this.a));
+        view.findViewById(R.id.download).setOnClickListener(ReaderMenuFragment.m(this.a));
         a.a().a(list);
         ReaderMenuFragment.n(this.a);
     }

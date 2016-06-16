@@ -20,7 +20,7 @@ public final class b extends c<String, MysteryBookList> {
     private final boolean a = true;
 
     public b(Activity activity, int n, boolean bl) {
-        super(activity, 2131034218);
+        super(activity, R.string.loading);
     }
 
     private static /* varargs */ MysteryBookList a() {

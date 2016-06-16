@@ -14,8 +14,8 @@ public class LabelPtrListView extends HeaderPtrListView {
     public LabelPtrListView(Context context, AttributeSet attributeSet) {
         super(context, attributeSet);
         ListView listView = (ListView) this.h();
-        View view = LayoutInflater.from(context).inflate(2130903330, (ViewGroup) listView, false);
-        this.c = (TextView) view.findViewById(2131492905);
+        View view = LayoutInflater.from(context).inflate(R.layout.my_ugc_header_label, (ViewGroup) listView, false);
+        this.c = (TextView) view.findViewById(R.id.content);
         this.c.setVisibility(View.GONE);
         listView.addHeaderView(view, null, false);
         this.invalidate();

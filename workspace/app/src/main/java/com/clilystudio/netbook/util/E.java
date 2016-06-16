@@ -8,8 +8,8 @@ public final class E {
     private float c;
 
     public E(Context context, float f, float f2) {
-        context.getResources().getDimension(2131099903);
-        this.c = context.getResources().getDimension(2131099904);
+        context.getResources().getDimension(R.dimen.relate_book_max_gap);
+        this.c = context.getResources().getDimension(R.dimen.relate_book_min_gap);
         this.a = f;
         this.b = f2;
     }

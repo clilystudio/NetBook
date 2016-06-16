@@ -85,7 +85,7 @@ final class bw extends com.clilystudio.netbook.a_pack.e<String, Void, Notificati
         }
         if (notificationRoot != null && "TOKEN_INVALID".equals(notificationRoot.getCode())) {
             this.a.startActivity(AuthLoginActivity.a(this.a.getActivity()));
-            e.a((Activity) this.a.getActivity(), 2131034547);
+            e.a((Activity) this.a.getActivity(), R.string.tweet_token_invalid);
             return;
         }
         NotifFragment.d(this.a).setOnLastItemVisibleListener(NotifFragment.j(this.a));

@@ -47,7 +47,7 @@ public class CropPhotoActivity extends BaseActivity {
         {
             var2_2 = 2048.0f;
             super.onCreate(var1_1);
-            this.setContentView(2130903093);
+            this.setContentView(R.layout.activity_crop_photo);
             this.a("\u622a\u53d6\u5934\u50cf", "\u4f7f\u7528", (aa) new aY(this));
             var3_3 = this.getIntent().getData();
             try {
@@ -74,7 +74,7 @@ public class CropPhotoActivity extends BaseActivity {
             } else {
                 var12_9 = var6_5;
             }
-            this.a = (CropView) this.findViewById(2131493118);
+            this.a = (CropView) this.findViewById(R.id.crop);
             this.a.setImageBitmap(var12_9);
             return;
             break;

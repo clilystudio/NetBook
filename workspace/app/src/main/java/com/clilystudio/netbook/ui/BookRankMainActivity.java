@@ -72,11 +72,11 @@ public class BookRankMainActivity extends BaseTabActivity implements ViewPager$O
     @Override
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        this.setContentView(2130903089);
+        this.setContentView(R.layout.activity_book_rank_main);
         this.b(this.getIntent().getStringExtra("book_list_title"));
         this.f = this.getIntent().getStringArrayExtra("book_list_ids");
-        this.a = (TabHost) this.findViewById(2131493096);
-        this.c = (ViewPager) this.findViewById(2131493097);
+        this.a = (TabHost) this.findViewById(R.id.host);
+        this.c = (ViewPager) this.findViewById(R.id.pager);
         this.e = new aS(this, this.getSupportFragmentManager());
         this.c.setOffscreenPageLimit(3);
         this.c.setAdapter(this.e);
@@ -90,8 +90,8 @@ public class BookRankMainActivity extends BaseTabActivity implements ViewPager$O
         for (int i = 0; i < 3; ++i) {
             TabHost.TabSpec tabSpec = this.a.newTabSpec("tab" + i);
             tabSpec.setContent(this);
-            View view = layoutInflater.inflate(2130903229, null);
-            ((TextView) view.findViewById(2131493509)).setText(BookRankMainActivity.a(i));
+            View view = layoutInflater.inflate(R.layout.home_tabhost_item, null);
+            ((TextView) view.findViewById(R.id.text)).setText(BookRankMainActivity.a(i));
             tabSpec.setIndicator(view);
             this.a.addTab(tabSpec);
         }

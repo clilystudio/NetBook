@@ -113,7 +113,7 @@ public final class BookRankAdapter extends u<BookRankSummary> {
         if (paramView == null) {
             switch (i) {
                 case 0:
-                    localView = this.a.inflate(2130903268, paramViewGroup, false);
+                    localView = this.a.inflate(R.layout.list_item_book_rank_label, paramViewGroup, false);
                     TextView localTextView = (TextView) localView;
                     String str = "男生";
                     if (b(paramInt)) {
@@ -122,10 +122,10 @@ public final class BookRankAdapter extends u<BookRankSummary> {
                     localTextView.setText(str);
                     break;
                 case 1:
-                    localView = this.a.inflate(2130903267, paramViewGroup, false);
+                    localView = this.a.inflate(R.layout.list_item_book_rank, paramViewGroup, false);
                     localView.setTag(new BookRankAdapter.ViewHolder(localView));
                 case 2:
-                    localView = this.a.inflate(2130903254, paramViewGroup, false);
+                    localView = this.a.inflate(R.layout.layout_rank_collapse_item, paramViewGroup, false);
                 default:
                     localView = null;
             }
@@ -136,7 +136,7 @@ public final class BookRankAdapter extends u<BookRankSummary> {
             case 1:
                 BookRankSummary localBookRankSummary = a(paramInt);
                 BookRankAdapter.ViewHolder localViewHolder = (BookRankAdapter.ViewHolder) localView.getTag();
-                localViewHolder.cover.setImageUrl(localBookRankSummary.getFullCover(), 2130837766);
+                localViewHolder.cover.setImageUrl(localBookRankSummary.getFullCover(), R.drawable.cover_default);
                 localViewHolder.title.setText(localBookRankSummary.getTitle());
                 localView.setOnClickListener(new f(this, localBookRankSummary, paramInt));
             case 2:
@@ -160,8 +160,8 @@ public final class BookRankAdapter extends u<BookRankSummary> {
         TextView title;
 
        ViewHolder(View view) {
-            this.cover = (SmartImageView)view. findViewById(2131493626);
-            this.title = (TextView)view.  findViewById(2131493627);
+            this.cover = (SmartImageView)view. findViewById(R.id.list_item_book_rank_cover);
+            this.title = (TextView)view.  findViewById(R.id.list_item_book_rank_title);
         }
     }
 

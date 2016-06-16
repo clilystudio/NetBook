@@ -157,12 +157,12 @@ public class AddVoteItemActivity extends BaseActivity {
 
     static /* synthetic */ void a(AddVoteItemActivity addVoteItemActivity, TextView textView, int n) {
         h h2 = new h(addVoteItemActivity);
-        View view = LayoutInflater.from(addVoteItemActivity).inflate(2130903189, null);
-        EditText editText = (EditText) view.findViewById(2131493392);
+        View view = LayoutInflater.from(addVoteItemActivity).inflate(R.layout.dialog_edit_text, null);
+        EditText editText = (EditText) view.findViewById(R.id.dialog_edit_content);
         editText.setText("");
         h2.d = "\u6295\u7968\u9879";
-        h2.a(2131034424, null);
-        h2.b(2131034129, (DialogInterface.OnClickListener) new U(addVoteItemActivity, editText));
+        h2.a(R.string.ok, null);
+        h2.b(R.string.cancel, (DialogInterface.OnClickListener) new U(addVoteItemActivity, editText));
         AlertDialog alertDialog = h2.a(view).b();
         Button button = (Button) alertDialog.findViewById(16908313);
         button.setOnClickListener(new V(addVoteItemActivity, editText, textView, n, alertDialog));
@@ -215,16 +215,16 @@ public class AddVoteItemActivity extends BaseActivity {
      */
     static /* synthetic */ void c(AddVoteItemActivity addVoteItemActivity) {
         h h2 = new h(addVoteItemActivity);
-        View view = LayoutInflater.from(addVoteItemActivity).inflate(2130903202, null);
-        TextView textView = (TextView) view.findViewById(2131493422);
+        View view = LayoutInflater.from(addVoteItemActivity).inflate(R.layout.dialog_waring_text, null);
+        TextView textView = (TextView) view.findViewById(R.id.waring_content);
         if (addVoteItemActivity.a == 3) {
-            textView.setText(2131034589);
+            textView.setText(R.string.waring_dialog_topic_girl);
         } else {
-            textView.setText(2131034588);
+            textView.setText(R.string.waring_dialog_topic);
         }
         h2.d = "\u53d1\u5e03";
-        h2.a(2131034583, null);
-        h2.b(2131034129, (DialogInterface.OnClickListener) new X(addVoteItemActivity));
+        h2.a(R.string.vote_ok, null);
+        h2.b(R.string.cancel, (DialogInterface.OnClickListener) new X(addVoteItemActivity));
         AlertDialog alertDialog = h2.a(view).b();
         ((Button) alertDialog.findViewById(16908313)).setOnClickListener(new Y(addVoteItemActivity, alertDialog));
     }
@@ -289,7 +289,7 @@ public class AddVoteItemActivity extends BaseActivity {
     @Override
     public void onCreate(Bundle var1_1) {
         super.onCreate(var1_1);
-        this.setContentView(2130903079);
+        this.setContentView(R.layout.activity_add_vote_item);
         com.clilystudio.netbook.a.a();
         com.clilystudio.netbook.a.a(this);
         var3_2 = this.getIntent().getStringExtra("block");
@@ -307,9 +307,9 @@ public class AddVoteItemActivity extends BaseActivity {
         this.m = this.getIntent().getStringExtra("add_vote_desc");
         this.n = this.getIntent().getBooleanExtra("book_post_list_from_reader", false);
         this.b("\u7f16\u8f91\u6295\u7968\u9879");
-        int[] var4_3 = new int[]{2131492890, 2131492891, 2131492892, 2131492893, 2131492894, 2131492895, 2131492896};
-        int[] var5_4 = new int[]{2131492876, 2131492877, 2131492878, 2131492879, 2131492880, 2131492881, 2131492882};
-        int[] var6_5 = new int[]{2131492871, 2131492872, 2131492873, 2131492874, 2131492875};
+        int[] var4_3 = new int[]{R.id.add_vote_item_layout1, R.id.add_vote_item_layout2, R.id.add_vote_item_layout3, R.id.add_vote_item_layout4, R.id.add_vote_item_layout5, R.id.add_vote_item_layout6, R.id.add_vote_item_layout7};
+        int[] var5_4 = new int[]{R.id.add_vote_item_edit_1, R.id.add_vote_item_edit_2, R.id.add_vote_item_edit_3, R.id.add_vote_item_edit_4, R.id.add_vote_item_edit_5, R.id.add_vote_item_edit_6, R.id.add_vote_item_edit_7};
+        int[] var6_5 = new int[]{R.id.add_vote_item_del_3, R.id.add_vote_item_del_4, R.id.add_vote_item_del_5, R.id.add_vote_item_del_6, R.id.add_vote_item_del_7};
         for (int var7_6 = 0; var7_6 < 7; ++var7_6) {
             this.b[var7_6] = (RelativeLayout) this.findViewById(var4_3[var7_6]);
             this.b[var7_6].setTag(var7_6);
@@ -322,8 +322,8 @@ public class AddVoteItemActivity extends BaseActivity {
             this.c[var8_7].setTag(var16_8);
             this.c[var8_7].setOnClickListener(this.q);
         }
-        View var9_9 = this.findViewById(2131492868);
-        View var10_10 = this.findViewById(2131492897);
+        View var9_9 = this.findViewById(R.id.add_vote_item_add_btn);
+        View var10_10 = this.findViewById(R.id.add_vote_item_ok_btn);
         var9_9.setOnClickListener(new Q(this));
         var10_10.setOnClickListener(new View.OnClickListener() {
             @Override

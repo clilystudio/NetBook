@@ -15,7 +15,7 @@ public final class bG extends W<TocSummary> {
 
     public bG(ReaderMixActivity readerMixActivity, LayoutInflater layoutInflater) {
         this.a = readerMixActivity;
-        super(layoutInflater, 2130903287);
+        super(layoutInflater, R.layout.list_item_mix_source);
     }
 
     /*
@@ -30,19 +30,19 @@ public final class bG extends W<TocSummary> {
         if (string.contains("baidu")) {
             imageView.setVisibility(View.VISIBLE);
             textView.setVisibility(View.GONE);
-            imageView.setImageResource(2130838009);
+            imageView.setImageResource(R.drawable.mode_list_item_bd);
         } else if (string.contains("leidian")) {
             imageView.setVisibility(View.VISIBLE);
             textView.setVisibility(View.GONE);
-            imageView.setImageResource(2130838014);
+            imageView.setImageResource(R.drawable.mode_list_item_ld);
         } else if (string.contains("sogou")) {
             imageView.setVisibility(View.VISIBLE);
             textView.setVisibility(View.GONE);
-            imageView.setImageResource(2130838016);
+            imageView.setImageResource(R.drawable.mode_list_item_sg);
         } else if (string.contains("easou")) {
             imageView.setVisibility(View.VISIBLE);
             textView.setVisibility(View.GONE);
-            imageView.setImageResource(2130838011);
+            imageView.setImageResource(R.drawable.mode_list_item_es);
         } else {
             imageView.setVisibility(View.GONE);
             textView.setVisibility(View.VISIBLE);
@@ -60,6 +60,6 @@ public final class bG extends W<TocSummary> {
 
     @Override
     protected final int[] a() {
-        return new int[]{2131493696, 2131493697, 2131493698, 2131493320, 2131493700, 2131493699};
+        return new int[]{R.id.source_icon_logo, R.id.source_icon_text, R.id.source, R.id.update_time, R.id.last_chapter, R.id.selected};
     }
 }

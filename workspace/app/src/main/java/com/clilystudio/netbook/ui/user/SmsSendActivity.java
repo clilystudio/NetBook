@@ -62,11 +62,11 @@ public class SmsSendActivity extends BaseActivity {
      */
     private void a(boolean bl) {
         Button button = this.mNextBtn;
-        int n = bl ? 2130837693 : 2130837690;
+        int n = bl ? R.drawable.bg_sms_commit_selector : R.drawable.bg_sms_commit_disable;
         button.setBackgroundResource(n);
         this.mNextBtn.setClickable(bl);
         this.mNextBtn.setEnabled(bl);
-        this.mNextBtn.setTextColor(this.getResources().getColor(2131427548));
+        this.mNextBtn.setTextColor(this.getResources().getColor(R.color.white));
     }
 
     private void b() {
@@ -77,19 +77,19 @@ public class SmsSendActivity extends BaseActivity {
 
     @Override
     public void onBackPressed() {
-        new h(this).a(2131034511).b(2131034510).a("\u786e\u8ba4", (DialogInterface.OnClickListener) new ar(this)).b("\u53d6\u6d88", null).b();
+        new h(this).a(R.string.sms_pay_cacenl_title).b(R.string.sms_pay_cacenl_text).a("\u786e\u8ba4", (DialogInterface.OnClickListener) new ar(this)).b("\u53d6\u6d88", null).b();
     }
 
     @Override
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        this.setContentView(2130903131);
+        this.setContentView(R.layout.activity_sms_send);
         this.b("\u77ed\u4fe1\u5145\u503c");
-        this.mNumberText = (EditText) findViewById(2131493210);
-        this.mNormalLine = findViewById(2131493211);
-        this.mErrorLine = findViewById(2131493212);
-        this.mWrongText = findViewById(2131493213);
-        this.mNextBtn = (Button) findViewById(2131493214);
+        this.mNumberText = (EditText) findViewById(R.id.sms_number_text);
+        this.mNormalLine = findViewById(R.id.sms_normal_line);
+        this.mErrorLine = findViewById(R.id.sms_error_line);
+        this.mWrongText = findViewById(R.id.sms_wrong_text);
+        this.mNextBtn = (Button) findViewById(R.id.sms_pay_next);
         this.b();
         this.a(false);
         this.a = (ChargePlan) this.getIntent().getSerializableExtra("key_charge_plan_send");

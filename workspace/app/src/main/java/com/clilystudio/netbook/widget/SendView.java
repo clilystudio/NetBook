@@ -45,8 +45,8 @@ public class SendView extends LinearLayout {
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
-        this.mSendContent = (EditText)findViewById(2131494004);
-        this.mSendView = (ImageView) findViewById( 2131494005);
+        this.mSendContent = (EditText)findViewById(R.id.send_content);
+        this.mSendView = (ImageView) findViewById( R.id.commit);
         this.d();
         this.mSendContent.addTextChangedListener(new ay(this));
     }

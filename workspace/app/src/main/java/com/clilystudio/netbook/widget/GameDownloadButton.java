@@ -38,7 +38,7 @@ public class GameDownloadButton extends Button {
 
     protected void a() {
         this.setText("\u4e0b\u8f7d");
-        this.setBackgroundResource(2130838100);
+        this.setBackgroundResource(R.drawable.red_round_button);
     }
 
     public final void a(int n) {
@@ -70,17 +70,17 @@ public class GameDownloadButton extends Button {
 
     protected void b() {
         this.setText("\u4e0b\u8f7d\u4e2d");
-        this.setBackgroundResource(2130837817);
+        this.setBackgroundResource(R.drawable.gray_round_button);
     }
 
     protected void c() {
         this.setText("\u5b89\u88c5");
-        this.setBackgroundResource(2130837819);
+        this.setBackgroundResource(R.drawable.green_round_button);
     }
 
     protected void d() {
         this.setText("\u6253\u5f00");
-        this.setBackgroundResource(2130838116);
+        this.setBackgroundResource(R.drawable.round_button);
     }
 
     protected void e() {
@@ -97,7 +97,7 @@ public class GameDownloadButton extends Button {
         k k2 = new k(context).a("\u6d41\u91cf\u63d0\u9192");
         Resources resources = this.getResources();
         Object[] arrobject = new Object[]{a.c(this.a.getAndroidSize())};
-        k2.b(resources.getString(2131034304, arrobject)).a(2131034424, (DialogInterface.OnClickListener) ((Object) new z(this))).b(2131034129, null).b().show();
+        k2.b(resources.getString(R.string.alert_download_in_3g, arrobject)).a(R.string.ok, (DialogInterface.OnClickListener) ((Object) new z(this))).b(R.string.cancel, null).b().show();
     }
 
     protected final void f() {
@@ -119,11 +119,11 @@ public class GameDownloadButton extends Button {
 
     public void setH5View() {
         this.setText("\u8bd5\u73a9");
-        this.setBackgroundResource(2130838100);
+        this.setBackgroundResource(R.drawable.red_round_button);
     }
 
     public void setPlayedView() {
         this.setText("\u7ee7\u7eed");
-        this.setBackgroundResource(2130838100);
+        this.setBackgroundResource(R.drawable.red_round_button);
     }
 }

@@ -14,7 +14,7 @@ final class o implements DialogInterface.OnClickListener {
 
     @Override
     public final void onClick(DialogInterface dialogInterface, int n) {
-        s s2 = new s(this.b, this.b, 2131034218);
+        s s2 = new s(this.b, this.b, R.string.loading);
         String[] arrstring = new String[]{this.a.getText().toString()};
         s2.b(arrstring);
     }

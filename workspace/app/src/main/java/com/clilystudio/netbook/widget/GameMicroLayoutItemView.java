@@ -25,11 +25,11 @@ public class GameMicroLayoutItemView extends LinearLayout {
     protected void onFinishInflate() {
         super.onFinishInflate();
         this.setOrientation(1);
-        LayoutInflater.from(this.getContext()).inflate(2130903421, (ViewGroup) this);
-        this.mImage = (GameImageView) findViewById(2131493025);
-        this.mTitle = (TextView) findViewById(2131492936);
-        this.mSubTitle = (TextView) findViewById(2131493018);
-        this.mAction = (GameDownloadButton) findViewById(2131493705);
+        LayoutInflater.from(this.getContext()).inflate(R.layout.widget_game_layout_item, (ViewGroup) this);
+        this.mImage = (GameImageView) findViewById(R.id.image);
+        this.mTitle = (TextView) findViewById(R.id.title);
+        this.mSubTitle = (TextView) findViewById(R.id.sub_title);
+        this.mAction = (GameDownloadButton) findViewById(R.id.action);
     }
 
     public void setHasPlayed(boolean bl) {

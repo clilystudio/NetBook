@@ -11,8 +11,8 @@ final class ao extends ay {
 
     public ao(RemoveAdActivity removeAdActivity, View view) {
         super(view);
-        this.i = (TextView) view.findViewById(2131493178);
-        this.j = (Button) view.findViewById(2131493737);
-        this.k = view.findViewById(2131493098);
+        this.i = (TextView) view.findViewById(R.id.vip_content);
+        this.j = (Button) view.findViewById(R.id.vip_purchase);
+        this.k = view.findViewById(R.id.divider);
     }
 }

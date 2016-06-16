@@ -7,9 +7,9 @@ public class DisclaimerActivity extends BaseActivity {
     @Override
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        this.setContentView(2130903095);
-        this.b(2131034369);
-        String string = this.getString(2131034368);
-        ((TextView) this.findViewById(2131493121)).setText(string);
+        this.setContentView(R.layout.activity_disclaimer);
+        this.b(R.string.disclaimer_title);
+        String string = this.getString(R.string.disclaimer);
+        ((TextView) this.findViewById(R.id.disclaimer)).setText(string);
     }
 }

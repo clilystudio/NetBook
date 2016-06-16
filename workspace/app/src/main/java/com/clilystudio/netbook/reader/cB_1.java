@@ -13,20 +13,20 @@ final class cB implements a {
             default: {
                 return;
             }
-            case 2131493881: {
+            case R.id.reader_oper_back: {
                 this.a.onBackPressed();
                 return;
             }
-            case 2131493861: {
+            case R.id.reader_ab_topic: {
                 this.a.b();
                 ReaderWebActivity.a(this.a).a(false);
                 return;
             }
-            case 2131493862: {
+            case R.id.reader_ab_read_mode: {
                 this.a.a();
                 return;
             }
-            case 2131493893:
+            case R.id.reader_ab_chapter_url_view:
         }
         ReaderWebActivity.b(this.a);
     }

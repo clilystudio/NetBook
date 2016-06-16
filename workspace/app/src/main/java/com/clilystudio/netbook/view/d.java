@@ -16,13 +16,13 @@ final class d implements DialogInterface.OnClickListener {
     public final void onClick(DialogInterface dialogInterface, int n) {
         int n2 = 0;
         switch (n) {
-            case 2131494065: {
+            case R.id.wx_moments: {
                 n2 = 2;
             }
             default: {
                 break;
             }
-            case 2131494063: {
+            case R.id.qzone: {
                 n2 = 4;
             }
         }

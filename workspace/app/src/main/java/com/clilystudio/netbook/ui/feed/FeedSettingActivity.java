@@ -21,12 +21,12 @@ public class FeedSettingActivity extends BaseActivity {
 
     static /* synthetic */ void a(FeedSettingActivity feedSettingActivity, int n) {
         int n2 = a.d(n);
-        int[] arrn = new int[]{2131493425, 2131493426, 2131493427, 2131493428, 2131493429};
-        View view = feedSettingActivity.getLayoutInflater().inflate(2130903206, null, false);
+        int[] arrn = new int[]{R.id.feed_chapter_10, R.id.feed_chapter_20, R.id.feed_chapter_50, R.id.feed_chapter_100, R.id.feed_chapter_200};
+        View view = feedSettingActivity.getLayoutInflater().inflate(R.layout.feed_chapter_count_dialog, null, false);
         uk.me.lewisdeane.ldialogs.h h2 = new uk.me.lewisdeane.ldialogs.h(feedSettingActivity);
         h2.d = "\u9009\u62e9\u517b\u80a5\u7ae0\u8282\u6570";
         AlertDialog alertDialog = h2.a(view).b("\u53d6\u6d88", null).a();
-        ((RadioGroup) view.findViewById(2131493424)).check(arrn[n2]);
+        ((RadioGroup) view.findViewById(R.id.feed_group)).check(arrn[n2]);
         for (int j = 0; j < 5; ++j) {
             ((RadioButton) view.findViewById(arrn[j])).setOnClickListener(new i(feedSettingActivity, alertDialog, j, n2));
         }
@@ -36,7 +36,7 @@ public class FeedSettingActivity extends BaseActivity {
     static /* synthetic */ void b(FeedSettingActivity feedSettingActivity, int n) {
         feedSettingActivity.b = a.e(n);
         TextView textView = feedSettingActivity.a;
-        String string = feedSettingActivity.getString(2131034327);
+        String string = feedSettingActivity.getString(R.string.book_feed_setting_limit);
         Object[] arrobject = new Object[]{feedSettingActivity.b};
         textView.setText(String.format(string, arrobject));
         a.b((Context) feedSettingActivity, "feed_chapter_count", feedSettingActivity.b);
@@ -49,12 +49,12 @@ public class FeedSettingActivity extends BaseActivity {
     @Override
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        this.setContentView(2130903100);
-        this.b(2131034384);
+        this.setContentView(R.layout.activity_feed_settings);
+        this.b(R.string.feed_setting);
         this.b = bundle != null ? bundle.getInt("savedCurrentCount", 50) : a.a((Context) this, "feed_chapter_count", 50);
-        View view = this.findViewById(2131493128);
-        TextView textView = this.a = (TextView) this.findViewById(2131493130);
-        String string = this.getString(2131034327);
+        View view = this.findViewById(R.id.book_feed_set_chapter);
+        TextView textView = this.a = (TextView) this.findViewById(R.id.book_feed_set_chapter_count);
+        String string = this.getString(R.string.book_feed_setting_limit);
         Object[] arrobject = new Object[]{this.b};
         textView.setText(String.format(string, arrobject));
         view.setOnClickListener(new h(this));

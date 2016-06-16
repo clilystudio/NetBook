@@ -373,7 +373,7 @@ public class AudioBookPlayActivity extends BaseActivity implements View.OnClickL
             default: {
                 return;
             }
-            case 2131493305: {
+            case R.id.audiobook_playpre: {
                 if (this.b != null && this.e == 0) {
                     e.a((Context) this, (String) "\u5df2\u7ecf\u662f\u7b2c\u4e00\u9996");
                     return;
@@ -389,7 +389,7 @@ public class AudioBookPlayActivity extends BaseActivity implements View.OnClickL
                 as.f();
                 return;
             }
-            case 2131493306: {
+            case R.id.audiobook_play_pause: {
                 if (as.c()) {
                     as.h();
                     return;
@@ -397,7 +397,7 @@ public class AudioBookPlayActivity extends BaseActivity implements View.OnClickL
                 this.z.d();
                 return;
             }
-            case 2131493307:
+            case R.id.audiobook_playnext:
         }
         if (this.b != null && this.e >= -1 + this.b.size()) {
             e.a((Context) this, (String) "\u5df2\u7ecf\u662f\u6700\u540e\u4e00\u9996");
@@ -418,9 +418,9 @@ public class AudioBookPlayActivity extends BaseActivity implements View.OnClickL
     @Override
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        this.setContentView(2130903082);
+        this.setContentView(R.layout.activity_audiobook_play);
         com.clilystudio.netbook.event.i.a().a(this);
-        this.a("", 2131034372, (aa) ((Object) new f(this)));
+        this.a("", R.string.exit_autio_book, (aa) ((Object) new f(this)));
         this.a = as.b();
         as.a(this.E);
         if (this.getIntent() != null) {
@@ -436,36 +436,36 @@ public class AudioBookPlayActivity extends BaseActivity implements View.OnClickL
                 }
             }
         }
-        this.r = (ScrollLoadListView) this.findViewById(2131493091);
+        this.r = (ScrollLoadListView) this.findViewById(R.id.audiobook_listview);
         this.r.setOnLastItemListener(this.D);
-        View view = this.getLayoutInflater().inflate(2130903152, null);
+        View view = this.getLayoutInflater().inflate(R.layout.audiobook_listview_header, null);
         this.r.addHeaderView(view);
-        View view2 = this.getLayoutInflater().inflate(2130903151, null);
+        View view2 = this.getLayoutInflater().inflate(R.layout.audiobook_listview_footer, null);
         this.r.addFooterView(view2);
-        this.y = this.findViewById(2131493092);
-        this.n = this.findViewById(2131493087);
-        this.o = (CornerImageView) this.findViewById(2131493088);
-        this.p = (TextView) this.findViewById(2131493089);
-        this.q = (TextView) this.findViewById(2131493090);
-        this.s = (SeekBar) this.findViewById(2131493301);
-        this.t = (TextView) this.findViewById(2131493303);
-        this.u = (TextView) this.findViewById(2131493304);
-        this.v = (ImageButton) this.findViewById(2131493305);
-        this.w = (ImageButton) this.findViewById(2131493306);
-        this.x = (ImageButton) this.findViewById(2131493307);
+        this.y = this.findViewById(R.id.audiobook_loading);
+        this.n = this.findViewById(R.id.audio_album_info);
+        this.o = (CornerImageView) this.findViewById(R.id.audio_album_cover);
+        this.p = (TextView) this.findViewById(R.id.audio_album_title);
+        this.q = (TextView) this.findViewById(R.id.audio_chapter_title);
+        this.s = (SeekBar) this.findViewById(R.id.audiobook_seekbar);
+        this.t = (TextView) this.findViewById(R.id.audiobook_playtime);
+        this.u = (TextView) this.findViewById(R.id.audiobook_totaltime);
+        this.v = (ImageButton) this.findViewById(R.id.audiobook_playpre);
+        this.w = (ImageButton) this.findViewById(R.id.audiobook_play_pause);
+        this.x = (ImageButton) this.findViewById(R.id.audiobook_playnext);
         this.v.setOnClickListener(this);
         this.w.setOnClickListener(this);
         this.x.setOnClickListener(this);
-        this.findViewById(2131493302).setOnTouchListener((View.OnTouchListener) ((Object) new g(this)));
+        this.findViewById(R.id.play_layout).setOnTouchListener((View.OnTouchListener) ((Object) new g(this)));
         this.n.setClickable(true);
         this.n.setOnClickListener((View.OnClickListener) ((Object) new h(this)));
         this.a(false);
         this.s.setThumbOffset(0);
         this.s.setOnSeekBarChangeListener((SeekBar.OnSeekBarChangeListener) ((Object) new i(this)));
         if (as.c()) {
-            this.w.setImageResource(2130837596);
+            this.w.setImageResource(R.drawable.audiobook_pause_selector);
         } else {
-            this.w.setImageResource(2130837601);
+            this.w.setImageResource(R.drawable.audiobook_play_selector);
         }
         this.b = new ArrayList<Track>();
     }

@@ -58,10 +58,10 @@ public class AutoFlowView extends LinearLayout implements View.OnClickListener {
         e = a.a(this.getContext(), 16.0f);
         f = a.a(this.getContext(), 4.0f);
         if (a.a(this.getContext(), "customer_night_theme", false)) {
-            this.l = new int[]{2130837623, 2130837625, 2130837627, 2130837629, 2130837631, 2130837633, 2130837635};
+            this.l = new int[]{R.drawable.bg_book_info_tag0_dark, R.drawable.bg_book_info_tag1_dark, R.drawable.bg_book_info_tag2_dark, R.drawable.bg_book_info_tag3_dark, R.drawable.bg_book_info_tag4_dark, R.drawable.bg_book_info_tag5_dark, R.drawable.bg_book_info_tag6_dark};
             return;
         }
-        this.l = new int[]{2130837622, 2130837624, 2130837626, 2130837628, 2130837630, 2130837632, 2130837634};
+        this.l = new int[]{R.drawable.bg_book_info_tag0, R.drawable.bg_book_info_tag1, R.drawable.bg_book_info_tag2, R.drawable.bg_book_info_tag3, R.drawable.bg_book_info_tag4, R.drawable.bg_book_info_tag5, R.drawable.bg_book_info_tag6};
     }
 
     /*
@@ -113,9 +113,9 @@ public class AutoFlowView extends LinearLayout implements View.OnClickListener {
             int n7 = n6;
             for (int n8 = 0; n8 < h4.a.size(); autoFlowView$Word.show = 1 + autoFlowView$Word.show, ++n8) {
                 AutoFlowView.Word word = (AutoFlowView.Word) h4.a.get(n8);
-                TextView textView = (TextView) layoutInflater.inflate(2130903154, null, false);
+                TextView textView = (TextView) layoutInflater.inflate(R.layout.autoflow_hot_word, null, false);
                 textView.setTextSize(12.0f);
-                textView.setBackgroundResource(2130837844);
+                textView.setBackgroundResource(R.drawable.hot_word_bg);
                 textView.setPadding(c, b, c, b);
                 textView.setText(word.content);
                 textView.setOnClickListener(this);

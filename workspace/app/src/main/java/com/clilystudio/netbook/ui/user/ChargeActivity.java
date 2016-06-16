@@ -101,10 +101,10 @@ public class ChargeActivity extends BaseLoadingActivity {
     @Override
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        this.a(2130903118);
+        this.a(R.layout.activity_pay_gridview);
         com.clilystudio.netbook.event.i.a().a(this);
         this.b = new x((Activity) this, LayoutInflater.from(this));
-        ((ScrollGridView) this.findViewById(2131493151)).setAdapter(this.b);
+        ((ScrollGridView) this.findViewById(R.id.pay_grid_view)).setAdapter(this.b);
         this.a = (ChargeType) this.getIntent().getSerializableExtra("key_pay_type");
         if (this.a != null) {
             String string;
@@ -120,27 +120,27 @@ public class ChargeActivity extends BaseLoadingActivity {
                     string = "\u77ed\u4fe1\u652f\u4ed8";
                 }
             }
-            this.a(string, 2131034362, (aa) ((Object) new g(this)));
+            this.a(string, R.string.charge_help_title, (aa) ((Object) new g(this)));
             this.b.a(this.a.getPlan());
         } else {
             this.b();
         }
-        TextView textView = (TextView) this.findViewById(2131493152);
-        TextView textView2 = (TextView) this.findViewById(2131493153);
-        TextView textView3 = (TextView) this.findViewById(2131493155);
-        View view = this.findViewById(2131493154);
+        TextView textView = (TextView) this.findViewById(R.id.charge_declare_desc1);
+        TextView textView2 = (TextView) this.findViewById(R.id.charge_declare_desc2);
+        TextView textView3 = (TextView) this.findViewById(R.id.charge_declare_desc3);
+        View view = this.findViewById(R.id.charge_declare_desc3_row);
         if (this.a.getType().equals("youyifupay")) {
-            String string = this.getString(2131034346);
+            String string = this.getString(R.string.charge_declare_desc1_msg);
             Object[] arrobject = new Object[]{50};
             textView.setText(String.format(string, arrobject));
-            textView2.setText(2131034347);
-            textView3.setText(this.getString(2131034348));
+            textView2.setText(R.string.charge_declare_desc2);
+            textView3.setText(this.getString(R.string.charge_declare_desc3));
             return;
         }
-        String string = this.getString(2131034345);
+        String string = this.getString(R.string.charge_declare_desc1);
         Object[] arrobject = new Object[]{100};
         textView.setText(String.format(string, arrobject));
-        textView2.setText(this.getString(2131034348));
+        textView2.setText(this.getString(R.string.charge_declare_desc3));
         view.setVisibility(View.GONE);
     }
 

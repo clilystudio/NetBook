@@ -114,20 +114,20 @@ public class PayConsumeActivity extends BaseLoadingActivity {
     @Override
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        this.a(2130903386);
-        this.c = (RelativeLayout) this.findViewById(2131493136);
-        TextView textView = (TextView) this.findViewById(2131493104);
+        this.a(R.layout.scroll_listview);
+        this.c = (RelativeLayout) this.findViewById(R.id.base_layout);
+        TextView textView = (TextView) this.findViewById(R.id.common_list_empty);
         textView.setGravity(1);
         textView.setText("\u60a8\u8fd8\u6ca1\u6709\u6d88\u8d39\u8bb0\u5f55");
-        textView.setCompoundDrawablesWithIntrinsicBounds(null, this.getResources().getDrawable(2130838029), null, null);
-        textView.setTextSize(2, this.getResources().getDimension(2131099793) / 3.0f);
-        textView.setCompoundDrawablePadding((int) this.getResources().getDimension(2131099721));
+        textView.setCompoundDrawablesWithIntrinsicBounds(null, this.getResources().getDrawable(R.drawable.pay_account_empty), null, null);
+        textView.setTextSize(2, this.getResources().getDimension(R.dimen.text_size_15) / 3.0f);
+        textView.setCompoundDrawablePadding((int) this.getResources().getDimension(R.dimen.dp_24));
         this.b(this.getIntent().getStringExtra("title_key"));
         this.g = this.getIntent().getStringExtra("token_key");
         LayoutInflater layoutInflater = LayoutInflater.from(this);
-        this.b = layoutInflater.inflate(2130903325, null);
+        this.b = layoutInflater.inflate(R.layout.loading_item, null);
         this.b.setVisibility(View.GONE);
-        this.e = (ScrollLoadListView) this.findViewById(2131493981);
+        this.e = (ScrollLoadListView) this.findViewById(R.id.content_scroll_list);
         this.e.addFooterView(this.b);
         this.e.setDividerHeight(0);
         this.e.setOnScrollListener(new P(this));

@@ -14,7 +14,7 @@ final class I extends c<String, BookGenderRecommend> {
 
     public I(HomeShelfFragment homeShelfFragment, Activity activity) {
         this.a = homeShelfFragment;
-        super(activity, activity.getString(2131034464));
+        super(activity, activity.getString(R.string.recommend_loading));
     }
 
     /*

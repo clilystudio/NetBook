@@ -19,7 +19,7 @@ public class HomeFindSecretItem extends HomeFindItem {
     private ProgressDialog a;
 
     public HomeFindSecretItem(Activity activity) {
-        super(activity, "\u795e\u79d8\u529f\u80fd", 2130837831, 2130837826, null);
+        super(activity, "\u795e\u79d8\u529f\u80fd", R.drawable.home_find_secret, R.drawable.home_find_lock_flag, null);
     }
 
     public HomeFindSecretItem(Context context, AttributeSet attributeSet) {
@@ -85,9 +85,9 @@ public class HomeFindSecretItem extends HomeFindItem {
         }
         this.setVisibility(View.VISIBLE);
         if (this.b()) {
-            this.mIcon.setImageResource(2130837832);
+            this.mIcon.setImageResource(R.drawable.home_find_secret_unlocked);
         } else {
-            this.mIcon.setImageResource(2130837831);
+            this.mIcon.setImageResource(R.drawable.home_find_secret);
         }
         if (this.b()) {
             this.mTitle.setText("\u968f\u673a\u770b\u4e66");
@@ -105,7 +105,7 @@ public class HomeFindSecretItem extends HomeFindItem {
     protected final void a(Context context, String string) {
         boolean bl = this.b();
         if (bl) {
-            this.a = ProgressDialog.show(context, null, context.getString(2131034218), true, true);
+            this.a = ProgressDialog.show(context, null, context.getString(R.string.loading), true, true);
             com.a.a.a.a((Context) MyApplication.a(), "rec_F184E6D9_7F75_01C9_CCA0_2336AEB54B2B", a.o(this.getContext()), (c) ((Object) new aa(this, context)));
         } else {
             context.startActivity(new Intent(context, MysteryActivity.class));

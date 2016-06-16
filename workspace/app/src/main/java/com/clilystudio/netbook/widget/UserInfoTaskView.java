@@ -24,18 +24,18 @@ public class UserInfoTaskView extends FrameLayout {
     public UserInfoTaskView(Context context, AttributeSet attributeSet) {
         super(context, attributeSet);
         TypedArray typedArray = context.obtainStyledAttributes(attributeSet, R$styleable.UserInfoTaskView);
-        this.a = typedArray.getResourceId(0, 2130838241);
+        this.a = typedArray.getResourceId(0, R.drawable.user_info_launch);
         this.b = typedArray.getString(1);
         typedArray.recycle();
-        LayoutInflater.from(context).inflate(2130903418, (ViewGroup) this);
+        LayoutInflater.from(context).inflate(R.layout.user_info_task, (ViewGroup) this);
     }
 
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
-        this.mIcon = (ImageView) findViewById(2131493028);
-        this.mTitle = (TextView) findViewById(2131492936);
-        this.mExp = (ExpView) findViewById( 2131493234);
+        this.mIcon = (ImageView) findViewById(R.id.icon);
+        this.mTitle = (TextView) findViewById(R.id.title);
+        this.mExp = (ExpView) findViewById( R.id.exp);
         this.mIcon.setImageResource(this.a);
         this.mTitle.setText(this.b);
     }

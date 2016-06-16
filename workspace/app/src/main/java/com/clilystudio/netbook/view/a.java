@@ -12,7 +12,7 @@ public final class a extends Dialog implements DialogInterface {
     private View a;
 
     public a(Context context) {
-        super(context, 2131165376);
+        super(context, R.style.Bottom_Dialog);
     }
 
     public final a a(View view) {
@@ -25,8 +25,8 @@ public final class a extends Dialog implements DialogInterface {
         super.onCreate(bundle);
         Context context = this.getContext();
         this.setCanceledOnTouchOutside(true);
-        View view = View.inflate(context, 2130903169, null);
-        ((ViewGroup) view.findViewById(2131493363)).addView(this.a);
+        View view = View.inflate(context, R.layout.bottom_dialog, null);
+        ((ViewGroup) view.findViewById(R.id.bottom_dialog_content)).addView(this.a);
         this.setContentView(view);
         WindowManager.LayoutParams layoutParams = this.getWindow().getAttributes();
         layoutParams.height = -2;

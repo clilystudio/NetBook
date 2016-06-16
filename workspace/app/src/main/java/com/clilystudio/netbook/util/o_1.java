@@ -13,7 +13,7 @@ final class o extends c<String, List<TocSummary>> {
 
     public o(m m2, Activity activity, boolean bl, boolean bl2) {
         this.b = m2;
-        super(activity, 2131034218, bl);
+        super(activity, R.string.loading, bl);
         this.a = bl2;
     }
 

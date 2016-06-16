@@ -14,7 +14,7 @@ final class y extends W<GameGift> {
 
     public y(GameGiftListActivity gameGiftListActivity, LayoutInflater layoutInflater) {
         this.a = gameGiftListActivity;
-        super(layoutInflater, 2130903279);
+        super(layoutInflater, R.layout.list_item_game_gift);
     }
 
     /*
@@ -39,7 +39,7 @@ final class y extends W<GameGift> {
         }
         if (var8_6 != null) {
             GameGiftListActivity.e(this.a).setText("\u67e5\u770b");
-            GameGiftListActivity.e(this.a).setBackgroundResource(2130837819);
+            GameGiftListActivity.e(this.a).setBackgroundResource(R.drawable.green_round_button);
             GameGiftListActivity.f(this.a).setOnClickListener(new z(this, var3_3, var8_6));
             GameGiftListActivity.e(this.a).setOnClickListener(new A(this, var3_3, var8_6));
             return;
@@ -50,6 +50,6 @@ final class y extends W<GameGift> {
 
     @Override
     protected final int[] a() {
-        return new int[]{2131493675, 2131493677, 2131493676, 2131493673};
+        return new int[]{R.id.game_gift_item_title, R.id.game_gift_item_desc, R.id.game_gift_item_btn, R.id.game_gift_item};
     }
 }

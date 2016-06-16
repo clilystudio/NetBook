@@ -10,35 +10,35 @@ public class PostHeader extends LinearLayout {
     public PostHeader(Context context) {
         super(context);
         this.setOrientation(1);
-        LayoutInflater.from(context).inflate(2130903352, (ViewGroup) this);
+        LayoutInflater.from(context).inflate(R.layout.post_header, (ViewGroup) this);
         this.setLayoutParams(new AbsListView.LayoutParams(-1, -1));
     }
 
     public final void a() {
-        this.findViewById(2131493842).setOnClickListener(new ao(this));
+        this.findViewById(R.id.post_detail_share).setOnClickListener(new ao(this));
     }
 
     public final void a(int n) {
         if (n < 2) {
             return;
         }
-        int[] arrn = new int[]{2131492940, 2131492941, 2131492942, 2131492943, 2131492944, 2131492945, 2131492946};
+        int[] arrn = new int[]{R.id.vote_item_1, R.id.vote_item_2, R.id.vote_item_3, R.id.vote_item_4, R.id.vote_item_5, R.id.vote_item_6, R.id.vote_item_7};
         if (n >= 7) {
             n = 7;
         }
         for (int i = 0; i < n; ++i) {
             this.findViewById(arrn[i]).setVisibility(View.VISIBLE);
         }
-        this.findViewById(arrn[n - 1]).findViewById(2131493098).setVisibility(View.GONE);
-        this.findViewById(2131493359).setVisibility(View.VISIBLE);
-        this.findViewById(2131493360).setVisibility(View.VISIBLE);
+        this.findViewById(arrn[n - 1]).findViewById(R.id.divider).setVisibility(View.GONE);
+        this.findViewById(R.id.vote_total_layout).setVisibility(View.VISIBLE);
+        this.findViewById(R.id.vote_divider).setVisibility(View.VISIBLE);
     }
 
     public final void a(boolean bl) {
-        this.findViewById(2131493842).setVisibility(View.GONE);
+        this.findViewById(R.id.post_detail_share).setVisibility(View.GONE);
     }
 
     public final void b() {
-        this.findViewById(2131493843).setOnClickListener(new aq(this));
+        this.findViewById(R.id.post_detail_more).setOnClickListener(new aq(this));
     }
 }

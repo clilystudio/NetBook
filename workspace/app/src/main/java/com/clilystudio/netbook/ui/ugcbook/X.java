@@ -52,18 +52,18 @@ public final class X extends BaseAdapter {
         Z z;
         if (view == null) {
             z = new Z(this);
-            view = this.b.inflate(2130903318, null);
-            z.a = (TextView) view.findViewById(2131492936);
-            z.b = (TextView) view.findViewById(2131493481);
-            z.c = (CoverView) view.findViewById(2131493604);
-            z.d = (CheckBox) view.findViewById(2131492900);
+            view = this.b.inflate(R.layout.list_item_ugc_shelf, null);
+            z.a = (TextView) view.findViewById(R.id.title);
+            z.b = (TextView) view.findViewById(R.id.desc);
+            z.c = (CoverView) view.findViewById(R.id.cover);
+            z.d = (CheckBox) view.findViewById(R.id.checked);
             view.setTag(z);
         } else {
             z = (Z) view.getTag();
         }
         BookReadRecord bookReadRecord = this.c.get(n);
         z.a.setText(bookReadRecord.getTitle());
-        z.c.setImageUrl(bookReadRecord.getFullCover(), 2130837766);
+        z.c.setImageUrl(bookReadRecord.getFullCover(), R.drawable.cover_default);
         z.b.setText(bookReadRecord.buildDesc());
         CheckBox checkBox = z.d;
         this.d = true;

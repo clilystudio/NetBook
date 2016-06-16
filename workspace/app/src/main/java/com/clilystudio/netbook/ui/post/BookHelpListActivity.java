@@ -53,13 +53,13 @@ public class BookHelpListActivity extends BaseActivity {
      */
     static /* synthetic */ PopupWindow a(BookHelpListActivity var0, boolean var1_1) {
         if (var1_1) {
-            var9_2 = LayoutInflater.from(var0).inflate(2130903155, null);
-            var10_3 = (TextView) var9_2.findViewById(2131493308);
-            var11_4 = (TextView) var9_2.findViewById(2131493309);
+            var9_2 = LayoutInflater.from(var0).inflate(R.layout.book_help_popupwindow_left, null);
+            var10_3 = (TextView) var9_2.findViewById(R.id.text_item0);
+            var11_4 = (TextView) var9_2.findViewById(R.id.text_item1);
             if (var0.q) {
-                var11_4.setTextColor(var0.getResources().getColor(2131427468));
+                var11_4.setTextColor(var0.getResources().getColor(R.color.popup_red));
             } else if (var0.o.equals("all")) {
-                var10_3.setTextColor(var0.getResources().getColor(2131427468));
+                var10_3.setTextColor(var0.getResources().getColor(R.color.popup_red));
             }
             var12_5 = var0.a(var9_2);
             var9_2.setOnTouchListener((View.OnTouchListener) new aq(var0, var12_5));
@@ -67,10 +67,10 @@ public class BookHelpListActivity extends BaseActivity {
             var11_4.setOnClickListener((View.OnClickListener) new as(var0, var12_5));
             return var12_5;
         }
-        var2_6 = LayoutInflater.from(var0).inflate(2130903156, null);
-        var3_7 = (TextView) var2_6.findViewById(2131493308);
-        var4_8 = (TextView) var2_6.findViewById(2131493309);
-        var5_9 = (TextView) var2_6.findViewById(2131493310);
+        var2_6 = LayoutInflater.from(var0).inflate(R.layout.book_help_popupwindow_right, null);
+        var3_7 = (TextView) var2_6.findViewById(R.id.text_item0);
+        var4_8 = (TextView) var2_6.findViewById(R.id.text_item1);
+        var5_9 = (TextView) var2_6.findViewById(R.id.text_item2);
         var6_10 = var0.p;
         var7_11 = -1;
         switch (var6_10.hashCode()) {
@@ -101,11 +101,11 @@ public class BookHelpListActivity extends BaseActivity {
         // 4 sources:
         switch (var7_11) {
             case 0: {
-                var3_7.setTextColor(var0.getResources().getColor(2131427468));
+                var3_7.setTextColor(var0.getResources().getColor(R.color.popup_red));
                 **break;
             }
             case 1: {
-                var4_8.setTextColor(var0.getResources().getColor(2131427468));
+                var4_8.setTextColor(var0.getResources().getColor(R.color.popup_red));
             }
             lbl41:
             // 3 sources:
@@ -115,7 +115,7 @@ public class BookHelpListActivity extends BaseActivity {
             }
             case 2:
         }
-        var5_9.setTextColor(var0.getResources().getColor(2131427468));
+        var5_9.setTextColor(var0.getResources().getColor(R.color.popup_red));
         lbl45:
         // 2 sources:
         var8_12 = var0.a(var2_6);
@@ -243,8 +243,8 @@ public class BookHelpListActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        this.setContentView(2130903086);
-        this.a("\u4e66\u8352\u533a", 2130837866, (aa) ((Object) new af(this)), "\u7f16\u8f91\u4e66\u8352");
+        this.setContentView(R.layout.activity_book_help_list);
+        this.a("\u4e66\u8352\u533a", R.drawable.ic_action_edit, (aa) ((Object) new af(this)), "\u7f16\u8f91\u4e66\u8352");
         if (bundle != null) {
             this.o = bundle.getString("savedHelpDuration");
             this.p = bundle.getString("savedHelpSort");
@@ -252,23 +252,23 @@ public class BookHelpListActivity extends BaseActivity {
             this.o = "all";
             this.p = "updated";
         }
-        this.g = this.findViewById(2131493085);
-        this.h = (TextView) this.findViewById(2131493100);
-        this.c = (PullToRefreshListView) this.findViewById(2131493099);
+        this.g = this.findViewById(R.id.pb_loading);
+        this.h = (TextView) this.findViewById(R.id.empty_text);
+        this.c = (PullToRefreshListView) this.findViewById(R.id.ptr_list);
         this.c.setMode(PullToRefreshBase$Mode.PULL_FROM_START);
-        View view = this.findViewById(2131493376);
-        View view2 = this.findViewById(2131493380);
-        this.k = (TextView) this.findViewById(2131493378);
-        this.l = (TextView) this.findViewById(2131493381);
-        this.m = (ImageView) this.findViewById(2131493379);
-        this.n = (ImageView) this.findViewById(2131493382);
+        View view = this.findViewById(R.id.community_top_left);
+        View view2 = this.findViewById(R.id.community_top_right);
+        this.k = (TextView) this.findViewById(R.id.community_top_left_title);
+        this.l = (TextView) this.findViewById(R.id.community_top_right_title);
+        this.m = (ImageView) this.findViewById(R.id.community_top_left_arrow);
+        this.n = (ImageView) this.findViewById(R.id.community_top_right_arrow);
         view.setOnClickListener((View.OnClickListener) ((Object) new al(this)));
         view2.setOnClickListener((View.OnClickListener) ((Object) new am(this)));
         this.e = (ListView) this.c.h();
         if (a.j()) {
             this.e.setFooterDividersEnabled(false);
         }
-        this.f = LayoutInflater.from(this).inflate(2130903325, null);
+        this.f = LayoutInflater.from(this).inflate(R.layout.loading_item, null);
         this.f.setVisibility(View.GONE);
         this.e.addFooterView(this.f);
         this.c.setOnRefreshListener(new an(this));

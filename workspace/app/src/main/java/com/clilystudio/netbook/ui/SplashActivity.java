@@ -66,7 +66,7 @@ public class SplashActivity extends Activity {
 
     private void g() {
         if ("1".equals(b.b(this, "splash_ad_third_enable"))) {
-            this.findViewById(2131493995).setVisibility(View.GONE);
+            this.findViewById(R.id.splash_bottom).setVisibility(View.GONE);
             this.a(3000);
             AdSplashImp adSplashImp = new AdSplashImp(this);
             if (am.i((String) "com.qq.e.ads.nativ.NativeAD")) {
@@ -103,9 +103,9 @@ public class SplashActivity extends Activity {
             this.b = 3000;
             Bitmap bitmap = splashAdvert.getBitmap();
             String string = splashAdvert.getSplashRecord().link;
-            this.findViewById(2131493263).setVisibility(View.VISIBLE);
-            this.findViewById(2131493995).setVisibility(View.GONE);
-            ImageView imageView = (ImageView) this.findViewById(2131493264);
+            this.findViewById(R.id.splash_ad_container).setVisibility(View.VISIBLE);
+            this.findViewById(R.id.splash_bottom).setVisibility(View.GONE);
+            ImageView imageView = (ImageView) this.findViewById(R.id.splash_ad_img);
             imageView.setImageBitmap(bitmap);
             imageView.setOnClickListener(new cj(this, splashAdvert, string));
             this.i();
@@ -119,7 +119,7 @@ public class SplashActivity extends Activity {
     }
 
     private void i() {
-        ((TextView) this.findViewById(2131493265)).setOnClickListener(new ck(this));
+        ((TextView) this.findViewById(R.id.splash_ad_skip)).setOnClickListener(new ck(this));
     }
 
     public final void a() {
@@ -145,7 +145,7 @@ public class SplashActivity extends Activity {
      * Enabled aggressive block sorting
      */
     public final void b() {
-        ImageView imageView = (ImageView) this.findViewById(2131493995);
+        ImageView imageView = (ImageView) this.findViewById(R.id.splash_bottom);
         this.b = !am.o((Context) this) && imageView.getDrawable() != null ? 1200 : 0;
         this.f();
         a.m(this, null);
@@ -153,7 +153,7 @@ public class SplashActivity extends Activity {
 
     public final void c() {
         this.i();
-        this.findViewById(2131493263).setVisibility(View.VISIBLE);
+        this.findViewById(R.id.splash_ad_container).setVisibility(View.VISIBLE);
     }
 
     /*
@@ -190,10 +190,10 @@ public class SplashActivity extends Activity {
     @Override
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        this.setContentView(2130903397);
+        this.setContentView(R.layout.splash);
         a.a(this.getWindow().getDecorView());
         ActiveAndroid.initialize(this);
-        this.g = (AdContainerLayout) this.findViewById(2131493263);
+        this.g = (AdContainerLayout) this.findViewById(R.id.splash_ad_container);
         if (am.q((Context) this)) {
             double d2;
             float f2 = a.v(this, "rate_zssq_splash_ad");

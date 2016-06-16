@@ -59,7 +59,7 @@ public class GameLayoutFragment extends BaseLoadingFragment {
 
     public static GameLayoutRoot$ModuleLayout g() {
         String[] arrstring = new String[]{"\u76d7\u5893\u82f1\u96c4", "\u53eb\u6211\u6076\u9b54\u5927\u4eba", "\u5973\u795e\u51b2\u6211\u6765"};
-        int[] arrn = new int[]{2130837581, 2130837582, 2130837583};
+        int[] arrn = new int[]{R.drawable.aoyou_game_icon1, R.drawable.aoyou_game_icon2, R.drawable.aoyou_game_icon3};
         String[] arrstring2 = new String[]{"mge://aHR0cDovL3dnZS5tYXh0aG9uLmNuLz9wYWNrYWdlX2lkPWRhb211eWluZ3hpYW9uZyZyZXNvdXJjZV90eXBlPTQmZ2FtZWxpc3RfdHlwZT1zaW5nbGVfZ2FtZV9zZXR0aW5nJmZyb209c2luZ2xlX2dhbWU=", "wge://aHR0cDovL3dnZS5tYXh0aG9uLmNuLz9wYWNrYWdlX2lkPWppYW93b2Vtb2RhcmVuJnJlc291cmNlX3R5cGU9NCZnYW1lbGlzdF90eXBlPXNpbmdsZV9nYW1lX3NldHRpbmcmZnJvbT1zaW5nbGVfZ2FtZQ==", "mge://aHR0cDovL3dnZS5tYXh0aG9uLmNuLz9wYWNrYWdlX2lkPW52c2hlbmNob25nd2xhaSZyZXNvdXJjZV90eXBlPTQmZ2FtZWxpc3RfdHlwZT1zaW5nbGVfZ2FtZV9zZXR0aW5nJmZyb209c2luZ2xlX2dhbWU="};
         GameLayoutRoot$ModuleLayout gameLayoutRoot$ModuleLayout = new GameLayoutRoot$ModuleLayout();
         gameLayoutRoot$ModuleLayout.setModule("aoyou");
@@ -96,7 +96,7 @@ public class GameLayoutFragment extends BaseLoadingFragment {
 
     @Override
     protected final int a() {
-        return 2130903102;
+        return R.layout.activity_game_layout;
     }
 
     @Override
@@ -132,7 +132,7 @@ public class GameLayoutFragment extends BaseLoadingFragment {
     @Override
     public void onViewCreated(View view, Bundle bundle) {
         super.onViewCreated(view, bundle);
-        this.b = (RecyclerView) view.findViewById(2131493133);
+        this.b = (RecyclerView) view.findViewById(R.id.recycler);
     }
 
     final class GameLayoutFragment$LayoutAdapter extends ah {
@@ -187,19 +187,19 @@ public class GameLayoutFragment extends BaseLoadingFragment {
                     return null;
                 }
                 case 0: {
-                    return new GameLayoutFragment$LayoutAdapter$PromotionViewHolder(this, layoutInflater.inflate(2130903224, viewGroup, false));
+                    return new GameLayoutFragment$LayoutAdapter$PromotionViewHolder(this, layoutInflater.inflate(R.layout.game_layout_promotion_view, viewGroup, false));
                 }
                 case 1: {
-                    GameItemSection gameItemSection = (GameItemSection) layoutInflater.inflate(2130903246, viewGroup, false);
+                    GameItemSection gameItemSection = (GameItemSection) layoutInflater.inflate(R.layout.item_game_layout, viewGroup, false);
                     gameItemSection.a(n2.b());
                     return new M(this, gameItemSection);
                 }
                 case 2: {
-                    return new K(this, layoutInflater.inflate(2130903244, viewGroup, false));
+                    return new K(this, layoutInflater.inflate(R.layout.item_activity_layout, viewGroup, false));
                 }
                 case 3:
             }
-            GameItemSection gameItemSection = (GameItemSection) layoutInflater.inflate(2130903246, viewGroup, false);
+            GameItemSection gameItemSection = (GameItemSection) layoutInflater.inflate(R.layout.item_game_layout, viewGroup, false);
             gameItemSection.a((2 + GameLayoutFragment.a) / 3);
             return new M(this, gameItemSection);
         }
@@ -225,13 +225,13 @@ public class GameLayoutFragment extends BaseLoadingFragment {
                 case 1: {
                     GameLayoutRoot$ModuleLayout gameLayoutRoot$ModuleLayout = this.d(n);
                     ((GameItemSection) ((Object) ay2.a)).a(gameLayoutRoot$ModuleLayout);
-                    ay2.a.findViewById(2131493432).setOnClickListener(new J(this, gameLayoutRoot$ModuleLayout));
+                    ay2.a.findViewById(R.id.more).setOnClickListener(new J(this, gameLayoutRoot$ModuleLayout));
                     return;
                 }
                 case 2: {
                     K k = (K) ay2;
                     GameLayoutRoot$ModuleLayout gameLayoutRoot$ModuleLayout = this.d(n);
-                    SmartImageView smartImageView = (SmartImageView) k.a.findViewById(2131493025);
+                    SmartImageView smartImageView = (SmartImageView) k.a.findViewById(R.id.image);
                     GameLayoutRoot$ModuleLayout$ActivityItem gameLayoutRoot$ModuleLayout$ActivityItem = gameLayoutRoot$ModuleLayout.getActivity();
                     smartImageView.setImageUrl(gameLayoutRoot$ModuleLayout$ActivityItem.getBannerImage());
                     smartImageView.setOnClickListener(new L(k, gameLayoutRoot$ModuleLayout$ActivityItem));
@@ -241,7 +241,7 @@ public class GameLayoutFragment extends BaseLoadingFragment {
             }
             GameLayoutRoot$ModuleLayout gameLayoutRoot$ModuleLayout = this.d(n);
             ((GameItemSection) ((Object) ay2.a)).b(gameLayoutRoot$ModuleLayout);
-            ay2.a.findViewById(2131493432).setVisibility(View.GONE);
+            ay2.a.findViewById(R.id.more).setVisibility(View.GONE);
         }
         public class GameLayoutFragment$LayoutAdapter$PromotionViewHolder extends ay {
             TextView mDesc;
@@ -251,11 +251,11 @@ public class GameLayoutFragment extends BaseLoadingFragment {
             TextView mPlayingCount;
 
             public GameLayoutFragment$LayoutAdapter$PromotionViewHolder(GameLayoutFragment.LayoutAdapter layoutAdapter, View view) {
-                this.mIcon = (SmartImageView)view. findViewById(2131493028);
-                this.mName = (TextView) view.findViewById(2131492928);
-                this.mPlayingCount = (TextView) view.findViewById(2131493482);
-                this.mDownload = (NewGameDownloadButton) view.findViewById(2131492916);
-                this.mDesc = (TextView) view.findViewById(2131493481);
+                this.mIcon = (SmartImageView)view. findViewById(R.id.icon);
+                this.mName = (TextView) view.findViewById(R.id.name);
+                this.mPlayingCount = (TextView) view.findViewById(R.id.playingCount);
+                this.mDownload = (NewGameDownloadButton) view.findViewById(R.id.download);
+                this.mDesc = (TextView) view.findViewById(R.id.desc);
             }
         }
     }

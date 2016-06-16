@@ -120,7 +120,7 @@ public class ModifyUserInfoActivity extends BaseActivity implements View.OnClick
             default: {
                 return;
             }
-            case 2131493145: {
+            case R.id.portrait_section: {
                 boolean bl = this.a.getLv() >= 4;
                 if (!bl) {
                     h h2 = new h(this);
@@ -140,15 +140,15 @@ public class ModifyUserInfoActivity extends BaseActivity implements View.OnClick
                 a.b(this);
                 return;
             }
-            case 2131493147: {
+            case R.id.name_section: {
                 long l2 = this.b;
                 long l3 = Calendar.getInstance().getTimeInMillis() - l2;
                 if (l3 < 0) {
                     e.a((Activity) this, (String) "\u6682\u65f6\u65e0\u6cd5\u4fee\u6539");
                 }
                 if (l3 >= 2592000000L || this.b == -2) {
-                    View view2 = this.getLayoutInflater().inflate(2130903201, null);
-                    EditText editText = (EditText) view2.findViewById(2131493224);
+                    View view2 = this.getLayoutInflater().inflate(R.layout.dialog_user_rename, null);
+                    EditText editText = (EditText) view2.findViewById(R.id.name_field);
                     editText.setText(this.a.getNickname());
                     editText.setSelection(this.a.getNickname().length());
                     h h4 = new h(this);
@@ -171,18 +171,18 @@ public class ModifyUserInfoActivity extends BaseActivity implements View.OnClick
                 e.a((Activity) this, (String) String.format("\u518d\u8fc7%d\u5c0f\u65f6\u624d\u80fd\u4fee\u6539\u54e6", arrobject));
                 return;
             }
-            case 2131493148:
+            case R.id.gender_section:
         }
         if (this.e) {
             e.a((Activity) this, (String) "\u53ea\u6709\u4e00\u6b21\u4fee\u6539\u6027\u522b\u7684\u673a\u4f1a\uff0c\u4f60\u5df2\u7ecf\u6539\u8fc7\u4e86\u54e6");
             return;
         }
-        View view3 = this.getLayoutInflater().inflate(2130903196, null);
+        View view3 = this.getLayoutInflater().inflate(R.layout.dialog_modify_gender, null);
         AlertDialog alertDialog = new AlertDialog.Builder(this).create();
         alertDialog.setView(view3, 0, 0, 0, 0);
         alertDialog.show();
-        view3.findViewById(2131493413).setOnClickListener((View.OnClickListener) ((Object) new k(this, alertDialog)));
-        view3.findViewById(2131493414).setOnClickListener((View.OnClickListener) ((Object) new l(this, alertDialog)));
+        view3.findViewById(R.id.gender_male).setOnClickListener((View.OnClickListener) ((Object) new k(this, alertDialog)));
+        view3.findViewById(R.id.gender_female).setOnClickListener((View.OnClickListener) ((Object) new l(this, alertDialog)));
     }
 
     /*
@@ -191,14 +191,14 @@ public class ModifyUserInfoActivity extends BaseActivity implements View.OnClick
     @Override
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        this.setContentView(2130903114);
+        this.setContentView(R.layout.activity_modify_user_info);
         this.b("\u7f16\u8f91\u8d44\u6599");
-        this.mPortrait = (CircularSmartImageView) findViewById(2131493146);
-        this.mNameView = (TextView) findViewById(2131492928);
-        this.mGenderView = (TextView) findViewById(2131493149);
-        this.mPortraitSection = (LinearLayout) findViewById(2131493145);
-        this.mNameSection = (LinearLayout) findViewById(2131493147);
-        this.mGenderSection = (LinearLayout) findViewById(2131493148);
+        this.mPortrait = (CircularSmartImageView) findViewById(R.id.portrait);
+        this.mNameView = (TextView) findViewById(R.id.name);
+        this.mGenderView = (TextView) findViewById(R.id.gender);
+        this.mPortraitSection = (LinearLayout) findViewById(R.id.portrait_section);
+        this.mNameSection = (LinearLayout) findViewById(R.id.name_section);
+        this.mGenderSection = (LinearLayout) findViewById(R.id.gender_section);
         this.a = am.a((Activity) this).getUser();
         this.mPortrait.setImageUrl(this.a.getFullAvatar());
         this.mNameView.setText(this.a.getNickname());

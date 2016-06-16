@@ -36,7 +36,7 @@ public class FavUGCListFragment extends AbsUGCListFragment implements AdapterVie
     @Override
     public void onActivityCreated(Bundle bundle) {
         super.onActivityCreated(bundle);
-        this.m = (PullToRefreshListView) this.getView().findViewById(2131493099);
+        this.m = (PullToRefreshListView) this.getView().findViewById(R.id.ptr_list);
         this.k = (ListView) this.m.h();
         this.k.setOnItemLongClickListener(this);
         this.l = this.b();

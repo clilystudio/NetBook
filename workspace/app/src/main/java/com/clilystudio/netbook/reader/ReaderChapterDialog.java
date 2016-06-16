@@ -21,14 +21,14 @@ public class ReaderChapterDialog extends DialogFragment implements AdapterView.O
     @Override
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        this.setStyle(1, 2131165394);
+        this.setStyle(1, R.style.Dialog);
     }
 
     @Override
     public View onCreateView(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
-        View view = layoutInflater.inflate(2130903186, viewGroup, false);
-        ListView listView = (ListView) view.findViewById(2131493384);
-        this.b = (TextView) view.findViewById(2131493383);
+        View view = layoutInflater.inflate(R.layout.dialog_chapter, viewGroup, false);
+        ListView listView = (ListView) view.findViewById(R.id.dialog_chapter_list);
+        this.b = (TextView) view.findViewById(R.id.dialog_chapter_title);
         this.a = new br(this, this.getActivity().getLayoutInflater());
         listView.setOnItemClickListener(this);
         listView.setAdapter((ListAdapter) ((Object) this.a));

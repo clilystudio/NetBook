@@ -11,7 +11,7 @@ public final class g extends W<BookRankDetail> {
     private Resources a;
 
     public g(LayoutInflater layoutInflater) {
-        super(layoutInflater, 2130903293);
+        super(layoutInflater, R.layout.list_item_ori_book);
         this.a = layoutInflater.getContext().getResources();
     }
 
@@ -22,17 +22,17 @@ public final class g extends W<BookRankDetail> {
     protected final /* synthetic */ void a(int n, Object object) {
         boolean bl = true;
         BookRankDetail bookRankDetail = (BookRankDetail) object;
-        ((CoverView) this.a(0, CoverView.class)).setImageUrl(bookRankDetail.getFullCover(), 2130837766);
+        ((CoverView) this.a(0, CoverView.class)).setImageUrl(bookRankDetail.getFullCover(), R.drawable.cover_default);
         this.a((int) bl ? 1 : 0, bookRankDetail.getTitle());
         this.a(2, bookRankDetail.getShortIntro());
         Resources resources = this.a;
         Object[] arrobject = new Object[bl];
         arrobject[0] = bookRankDetail.getLatelyFollower();
-        this.a(3, resources.getString(2131034387, arrobject));
+        this.a(3, resources.getString(R.string.follower_count_format, arrobject));
         Resources resources2 = this.a;
         Object[] arrobject2 = new Object[bl];
         arrobject2[0] = bookRankDetail.getRetentionRatio();
-        this.a(4, resources2.getString(2131034470, arrobject2));
+        this.a(4, resources2.getString(R.string.retention_ratio_format, arrobject2));
         boolean bl2 = bookRankDetail.getRetentionRatio() == null ? bl : false;
         this.a(4, bl2);
         if (bookRankDetail.getRetentionRatio() != null) {
@@ -45,6 +45,6 @@ public final class g extends W<BookRankDetail> {
 
     @Override
     protected final int[] a() {
-        return new int[]{2131493616, 2131493605, 2131493617, 2131493717, 2131493719, 2131493718, 2131493715, 2131493716};
+        return new int[]{R.id.iv_cover, R.id.tv_title, R.id.tv_short_intro, R.id.tv_follower_count, R.id.tv_retention_ratio, R.id.tv_retention_separate, R.id.tv_author, R.id.tv_category};
     }
 }

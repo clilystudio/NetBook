@@ -24,14 +24,14 @@ final class du implements View.OnClickListener {
         if (!TweetDetailActivity.a(this.a) || TweetDetailActivity.c(this.a) == null) return;
         Account account = am.a(this.a);
         if (G.a(account, TweetDetailActivity.c(this.a).getTweet())) {
-            dC dC2 = new dC(this.a, this.a, 2131034473);
+            dC dC2 = new dC(this.a, this.a, R.string.retweeting);
             String[] arrstring = new String[]{account.getToken(), TweetDetailActivity.c(this.a).getTweet().get_id()};
             dC2.execute(arrstring);
             return;
         }
-        String string = this.a.getString(2131034472);
+        String string = this.a.getString(R.string.retweeted);
         if (G.a(TweetDetailActivity.c(this.a).getTweet(), account)) {
-            string = this.a.getString(2131034423);
+            string = this.a.getString(R.string.not_can_retween_self);
         }
         e.a((Activity) this.a, "\t\t" + string + "\t\t");
     }

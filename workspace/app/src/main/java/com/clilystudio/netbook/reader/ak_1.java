@@ -25,43 +25,43 @@ final class ak implements com.umeng.update.a {
             default: {
                 return;
             }
-            case 2131493890: {
+            case R.id.read_opt_setting: {
                 SettingWidget settingWidget = ReaderActivity.w(this.a);
                 boolean bl = !this.a.j();
                 settingWidget.setReadOptionEnable(bl);
                 ReaderActivity.w(this.a).a();
                 return;
             }
-            case 2131493892: {
+            case R.id.read_opt_toc: {
                 ReaderActivity.w(this.a).setVisibility(View.GONE);
                 ReaderActivity.x(this.a);
                 return;
             }
-            case 2131493881: {
+            case R.id.reader_oper_back: {
                 ReaderActivity.w(this.a).setVisibility(View.GONE);
                 this.a.onBackPressed();
                 return;
             }
-            case 2131493893: {
+            case R.id.reader_ab_chapter_url_view: {
                 ReaderActivity.w(this.a).setVisibility(View.GONE);
                 ReaderActivity.y(this.a);
                 return;
             }
-            case 2131493861: {
+            case R.id.reader_ab_topic: {
                 ReaderActivity.w(this.a).setVisibility(View.GONE);
                 ReaderActivity.z(this.a);
                 ReaderActivity.A(this.a).f(false);
                 b.a(this.a, "reader_activity_topic");
                 return;
             }
-            case 2131493862: {
+            case R.id.reader_ab_read_mode: {
                 ReaderActivity.w(this.a).setVisibility(View.GONE);
                 this.a.i();
                 return;
             }
-            case 2131493860: {
+            case R.id.reader_ab_more: {
                 ReaderActivity.w(this.a).setVisibility(View.GONE);
-                View view = ReaderActivity.A(this.a).findViewById(2131493860);
+                View view = ReaderActivity.A(this.a).findViewById(R.id.reader_ab_more);
                 if (a.i()) {
                     ReaderActivity.a(this.a, view);
                     return;
@@ -69,18 +69,18 @@ final class ak implements com.umeng.update.a {
                 ReaderActivity.b(this.a, view);
                 return;
             }
-            case 2131493888: {
+            case R.id.read_opt_orientation: {
                 ReaderActivity.w(this.a).setVisibility(View.GONE);
                 ReaderActivity.b(this.a, true);
                 ReaderActivity.B(this.a);
                 return;
             }
-            case 2131493891: {
+            case R.id.reader_download: {
                 ReaderActivity.w(this.a).setVisibility(View.GONE);
                 ReaderActivity.C(this.a);
                 return;
             }
-            case 2131493859:
+            case R.id.reader_ab_tts:
         }
         if (SpeechUtility.getUtility().checkServiceInstalled()) {
             ReaderActivity.f(this.a);

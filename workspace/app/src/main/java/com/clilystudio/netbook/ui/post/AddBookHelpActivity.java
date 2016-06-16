@@ -51,11 +51,11 @@ public class AddBookHelpActivity extends BaseActivity {
         }
         String string = account.getToken();
         h h2 = new h(addBookHelpActivity);
-        View view = LayoutInflater.from(addBookHelpActivity).inflate(2130903202, null);
-        ((TextView) view.findViewById(2131493422)).setText(2131034586);
+        View view = LayoutInflater.from(addBookHelpActivity).inflate(R.layout.dialog_waring_text, null);
+        ((TextView) view.findViewById(R.id.waring_content)).setText(R.string.waring_dialog_help);
         h2.d = "\u53d1\u5e03";
-        h2.a(2131034583, null);
-        h2.b(2131034129, (DialogInterface.OnClickListener) ((Object) new j(addBookHelpActivity)));
+        h2.a(R.string.vote_ok, null);
+        h2.b(R.string.cancel, (DialogInterface.OnClickListener) ((Object) new j(addBookHelpActivity)));
         AlertDialog alertDialog = h2.a(view).b();
         ((Button) alertDialog.findViewById(16908313)).setOnClickListener((View.OnClickListener) ((Object) new k(addBookHelpActivity, (Dialog) alertDialog, string)));
     }
@@ -94,10 +94,10 @@ public class AddBookHelpActivity extends BaseActivity {
     @Override
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        this.setContentView(2130903074);
-        this.a(2131034286, 2131034448, (aa) ((Object) new i(this)));
+        this.setContentView(R.layout.activity_add_book_help_content);
+        this.a(R.string.add_book_help_title, R.string.publish, (aa) ((Object) new i(this)));
         ShareSDK.initSDK(this);
-        this.a = (EditText) this.findViewById(2131493065);
-        this.b = (EditText) this.findViewById(2131493066);
+        this.a = (EditText) this.findViewById(R.id.add_book_help_content_title);
+        this.b = (EditText) this.findViewById(R.id.add_book_help_content_desc);
     }
 }

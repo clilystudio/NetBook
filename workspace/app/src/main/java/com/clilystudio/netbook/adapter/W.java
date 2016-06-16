@@ -7,7 +7,7 @@ import com.clilystudio.netbook.widget.CoverView;
 
 public final class W extends com.clilystudio.netbook.util.W<UGCBookDetail.UGCBookContainer> {
     public W(LayoutInflater layoutInflater) {
-        super(layoutInflater, 2130903319);
+        super(layoutInflater, R.layout.list_item_ugcbook_detail);
     }
 
     @Override
@@ -22,7 +22,7 @@ public final class W extends com.clilystudio.netbook.util.W<UGCBookDetail.UGCBoo
         if ((ugcBookItem = object.getBook()) != null) {
             this.a(0, ugcBookItem.getTitle());
             this.a(1, String.valueOf(ugcBookItem.getLatelyFollower()));
-            this.a(3, CoverView.class).setImageUrl(ugcBookItem.getFullCover(), 2130837766);
+            this.a(3, CoverView.class).setImageUrl(ugcBookItem.getFullCover(), R.drawable.cover_default);
             this.a(4, ugcBookItem.getAuthor());
             long l = ugcBookItem.getWordCount();
             if (l <= 0) {
@@ -49,6 +49,6 @@ public final class W extends com.clilystudio.netbook.util.W<UGCBookDetail.UGCBoo
 
     @Override
     protected final int[] a() {
-        return new int[]{2131492936, 2131493239, 2131493481, 2131492899, 2131493317, 2131493790, 2131493791, 2131493792, 2131493789};
+        return new int[]{R.id.title, R.id.message_count, R.id.desc, R.id.avatar, R.id.author, R.id.message_textcount, R.id.message_textunit, R.id.desc_layout, R.id.message_separate};
     }
 }

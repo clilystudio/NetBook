@@ -89,11 +89,11 @@ public class SettingWidget extends LinearLayout {
     }
 
     public final void a(db db2) {
-        this.findViewById(2131493957).setOnClickListener(new da(this, db2));
+        this.findViewById(R.id.reader_set_more).setOnClickListener(new da(this, db2));
     }
 
     public final void a(dc dc2) {
-        View view = this.findViewById(2131493952);
+        View view = this.findViewById(R.id.reader_auto_start);
         if (view != null) {
             view.setOnClickListener(new cS(this, dc2));
         }
@@ -105,7 +105,7 @@ public class SettingWidget extends LinearLayout {
     }
 
     public void setReadOptionEnable(boolean bl) {
-        View view = this.findViewById(2131493952);
+        View view = this.findViewById(R.id.reader_auto_start);
         this.c.setEnabled(bl);
         this.d.setEnabled(bl);
         view.setEnabled(bl);
@@ -117,20 +117,20 @@ public class SettingWidget extends LinearLayout {
     public void setReaderStyle(bZ bZ2) {
         this.a = bZ2;
         bZ2.a(new cR(this));
-        this.c = this.findViewById(2131493951);
-        this.d = this.findViewById(2131493950);
+        this.c = this.findViewById(R.id.btn_increase);
+        this.d = this.findViewById(R.id.btn_decrease);
         this.c.setOnClickListener(new cT(this));
         this.d.setOnClickListener(new cU(this));
         this.b();
-        this.e = (CheckBox) this.findViewById(2131493949);
-        SeekBar seekBar = (SeekBar) this.findViewById(2131493948);
+        this.e = (CheckBox) this.findViewById(R.id.cb_system_brightness);
+        SeekBar seekBar = (SeekBar) this.findViewById(R.id.sb_brightness);
         seekBar.setProgress(this.a.f());
         this.e.setChecked(this.a.g());
         seekBar.setOnSeekBarChangeListener(new cV(this));
         this.e.setOnCheckedChangeListener((CompoundButton.OnCheckedChangeListener) ((Object) new cW(this)));
-        this.f = (ImageView) this.findViewById(2131493954);
-        this.g = (ImageView) this.findViewById(2131493955);
-        this.h = (ImageView) this.findViewById(2131493956);
+        this.f = (ImageView) this.findViewById(R.id.reader_set_bg_1);
+        this.g = (ImageView) this.findViewById(R.id.reader_set_bg_2);
+        this.h = (ImageView) this.findViewById(R.id.reader_set_bg_3);
         int n = this.a.j();
         if (n == 1) {
             this.f.setSelected(true);

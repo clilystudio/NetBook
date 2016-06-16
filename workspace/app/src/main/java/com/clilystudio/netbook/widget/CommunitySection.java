@@ -15,8 +15,8 @@ public class CommunitySection extends DividerSection {
 
     public CommunitySection(Context context, AttributeSet attributeSet) {
         super(context, attributeSet);
-        LayoutInflater.from(context).inflate(2130903177, (ViewGroup) this);
-        this.mDot = (ImageView) findViewById(2131493375);
+        LayoutInflater.from(context).inflate(R.layout.community_section, (ViewGroup) this);
+        this.mDot = (ImageView) findViewById(R.id.dot);
     }
 
     public final void a(boolean bl) {

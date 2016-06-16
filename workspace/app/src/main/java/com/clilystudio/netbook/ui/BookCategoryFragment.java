@@ -109,15 +109,15 @@ public class BookCategoryFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
         super.onCreateView(layoutInflater, viewGroup, bundle);
-        View view = layoutInflater.inflate(2130903209, viewGroup, false);
+        View view = layoutInflater.inflate(R.layout.fragment_book_category, viewGroup, false);
         this.g = ((BookCategoryListActivity) this.getActivity()).g();
-        this.a = (PullToRefreshListView) view.findViewById(2131493099);
+        this.a = (PullToRefreshListView) view.findViewById(R.id.ptr_list);
         this.b = (ListView) this.a.h();
         a.a((Context) this.getActivity(), this.b);
-        this.e = view.findViewById(2131493085);
-        this.f = (TextView) view.findViewById(2131493100);
+        this.e = view.findViewById(R.id.pb_loading);
+        this.f = (TextView) view.findViewById(R.id.empty_text);
         LayoutInflater layoutInflater2 = LayoutInflater.from(this.getActivity());
-        this.c = layoutInflater2.inflate(2130903325, null);
+        this.c = layoutInflater2.inflate(R.layout.loading_item, null);
         if (a.i()) {
             this.b.setFooterDividersEnabled(false);
         }

@@ -14,7 +14,7 @@ final class cJ extends c<String, SgTocRoot> {
 
     public cJ(ReaderWebActivity readerWebActivity, Activity activity, int n, String string) {
         this.c = readerWebActivity;
-        super(activity, 2131034218);
+        super(activity, R.string.loading);
         this.a = n;
         this.b = string;
     }

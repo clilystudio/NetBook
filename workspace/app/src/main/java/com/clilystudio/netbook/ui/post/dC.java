@@ -14,7 +14,7 @@ final class dC extends c<String, PostPublish> {
 
     public dC(TweetDetailActivity tweetDetailActivity, Activity activity, int n) {
         this.a = tweetDetailActivity;
-        super(activity, 2131034473);
+        super(activity, R.string.retweeting);
     }
 
     private /* varargs */ PostPublish a(String... arrstring) {

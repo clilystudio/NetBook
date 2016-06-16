@@ -13,7 +13,7 @@ public class ExpView extends TextView {
     }
 
     public final void a() {
-        this.setBackgroundResource(2130837784);
-        this.setTextColor(this.getResources().getColor(2131427547));
+        this.setBackgroundResource(R.drawable.exp_task_deactive);
+        this.setTextColor(this.getResources().getColor(R.color.user_info_exp_deactive));
     }
 }

@@ -15,7 +15,7 @@ final class E extends c<String, ChapterSingleKey> {
 
     public E(o o2, Activity activity, int n, boolean bl) {
         this.a = o2;
-        super(activity, 2131034218, bl);
+        super(activity, R.string.loading, bl);
     }
 
     private static /* varargs */ ChapterSingleKey a(String... arrstring) {

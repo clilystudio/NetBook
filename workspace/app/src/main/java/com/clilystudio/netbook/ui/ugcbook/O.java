@@ -21,7 +21,7 @@ final class O extends c<Void, ResultStatus> {
 
     public O(UGCGuideEditBooksActivity uGCGuideEditBooksActivity) {
         this.a = uGCGuideEditBooksActivity;
-        super((Activity) uGCGuideEditBooksActivity, 2131034218);
+        super((Activity) uGCGuideEditBooksActivity, R.string.loading);
     }
 
     /*

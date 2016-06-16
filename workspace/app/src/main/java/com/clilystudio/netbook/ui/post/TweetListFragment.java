@@ -103,13 +103,13 @@ public class TweetListFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
-        View view = layoutInflater.inflate(2130903211, viewGroup, false);
-        this.f = view.findViewById(2131493085);
-        this.g = (TextView) view.findViewById(2131493100);
-        this.c = (PullToRefreshListView) view.findViewById(2131493099);
+        View view = layoutInflater.inflate(R.layout.fragment_book_topic, viewGroup, false);
+        this.f = view.findViewById(R.id.pb_loading);
+        this.g = (TextView) view.findViewById(R.id.empty_text);
+        this.c = (PullToRefreshListView) view.findViewById(R.id.ptr_list);
         this.c.setMode(PullToRefreshBase$Mode.PULL_FROM_START);
         this.d = (ListView) this.c.h();
-        this.e = layoutInflater.inflate(2130903325, null);
+        this.e = layoutInflater.inflate(R.layout.loading_item, null);
         this.d.addFooterView(this.e);
         if (a.j()) {
             this.d.setFooterDividersEnabled(false);

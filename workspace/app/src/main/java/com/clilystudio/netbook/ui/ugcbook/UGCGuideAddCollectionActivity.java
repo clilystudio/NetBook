@@ -119,14 +119,14 @@ public class UGCGuideAddCollectionActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        this.setContentView(2130903135);
+        this.setContentView(R.layout.activity_ucg_guide_add_collection);
         i.a().a(this);
-        this.a = (TextView) this.findViewById(2131493224);
-        this.b = (TextView) this.findViewById(2131493225);
+        this.a = (TextView) this.findViewById(R.id.name_field);
+        this.b = (TextView) this.findViewById(R.id.desc_field);
         this.c = this.getIntent().getStringExtra("ugc_id");
         this.f = this.getIntent().getBooleanExtra("is_draft", false);
         this.e = (Author) this.getIntent().getSerializableExtra("my_author");
-        int n = 2131034562;
+        int n = R.string.ugc_create;
         if (this.c != null && !this.c.equals("")) {
             UGCNewCollection uGCNewCollection = MyApplication.a().a;
             if (uGCNewCollection != null) {
@@ -134,11 +134,11 @@ public class UGCGuideAddCollectionActivity extends BaseActivity {
                 this.b.setText(uGCNewCollection.getDesc());
                 Selection.setSelection(this.a.getEditableText(), this.a.getText().length());
             }
-            n = 2131034563;
+            n = R.string.ugc_edit;
         } else {
             MyApplication.a().a = new UGCNewCollection();
         }
-        this.a(n, 2131034419, (aa) new C(this));
+        this.a(n, R.string.next, (aa) new C(this));
     }
 
     @Override

@@ -1967,13 +1967,13 @@ public class a {
      * Enabled aggressive block sorting
      */
     public static void a(Context context, ListView listView) {
-        int n2 = context.getResources().getDimensionPixelSize(2131099926);
+        int n2 = context.getResources().getDimensionPixelSize(R.dimen.tab_overlap);
         View view = new View(context);
         view.setLayoutParams(new AbsListView.LayoutParams(-2, n2));
         if (a.a(context, "customer_night_theme", false)) {
-            view.setBackgroundResource(2130837638);
+            view.setBackgroundResource(R.drawable.bg_dark_list_item);
         } else {
-            view.setBackgroundResource(2130837673);
+            view.setBackgroundResource(R.drawable.bg_list_item);
         }
         view.setEnabled(false);
         listView.addHeaderView(view);

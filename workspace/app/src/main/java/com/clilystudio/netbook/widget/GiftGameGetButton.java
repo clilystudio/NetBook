@@ -17,19 +17,19 @@ public class GiftGameGetButton extends GiftGameGameButton {
     @Override
     protected final void a() {
         this.setText("\u4e0b\u8f7d");
-        this.setBackgroundResource(2131427379);
+        this.setBackgroundResource(R.color.btn_bg_red);
     }
 
     @Override
     protected final void b() {
         this.setText("\u4e0b\u8f7d\u4e2d");
-        this.setBackgroundResource(2131427377);
+        this.setBackgroundResource(R.color.btn_bg_gray);
     }
 
     @Override
     protected final void c() {
         this.setText("\u5b89\u88c5");
-        this.setBackgroundResource(2131427378);
+        this.setBackgroundResource(R.color.btn_bg_green);
     }
 
     /*

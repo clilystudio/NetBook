@@ -12,7 +12,7 @@ final class c extends W<BookReadRecord> {
 
     public c(FeedAddActivity feedAddActivity, LayoutInflater layoutInflater) {
         this.a = feedAddActivity;
-        super(layoutInflater, 2130903274);
+        super(layoutInflater, R.layout.list_item_feed_add);
     }
 
     /*
@@ -21,7 +21,7 @@ final class c extends W<BookReadRecord> {
     @Override
     protected final /* synthetic */ void a(int n, Object object) {
         BookReadRecord bookReadRecord = (BookReadRecord) object;
-        ((CoverView) this.a(0, CoverView.class)).setImageUrl(bookReadRecord.getFullCover(), 2130837766);
+        ((CoverView) this.a(0, CoverView.class)).setImageUrl(bookReadRecord.getFullCover(), R.drawable.cover_default);
         this.a(1, bookReadRecord.getTitle());
         CheckBox checkBox = (CheckBox) this.a(2, CheckBox.class);
         checkBox.setChecked(false);
@@ -39,6 +39,6 @@ final class c extends W<BookReadRecord> {
 
     @Override
     protected final int[] a() {
-        return new int[]{2131493648, 2131493649, 2131493650};
+        return new int[]{R.id.book_feed_add_cover, R.id.book_feed_add_title, R.id.book_feed_add_checkbox};
     }
 }

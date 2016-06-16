@@ -46,8 +46,8 @@ public class ShareRemoveAdActivity extends BaseActivity {
             this.getWindow().setFlags(67108864, 67108864);
             this.a().a((Drawable) new ColorDrawable(Color.parseColor("#00000000")));
         }
-        this.setContentView(2130903130);
-        this.b(2131034493);
-        this.findViewById(2131493209).setOnClickListener(new ce(this));
+        this.setContentView(R.layout.activity_share_remove_ad);
+        this.b(R.string.share_remove_ad);
+        this.findViewById(R.id.btn_share).setOnClickListener(new ce(this));
     }
 }

@@ -13,7 +13,7 @@ final class ba extends c<String, BookAdd> {
 
     public ba(CustomSearchActivity customSearchActivity, Activity activity, int n) {
         this.a = customSearchActivity;
-        super(activity, 2131034324);
+        super(activity, R.string.book_add_loading);
     }
 
     private /* varargs */ BookAdd a(String... arrstring) {

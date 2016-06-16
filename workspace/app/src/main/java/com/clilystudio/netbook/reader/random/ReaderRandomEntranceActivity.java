@@ -19,17 +19,17 @@ public class ReaderRandomEntranceActivity extends BaseActivity implements View.O
             default: {
                 return;
             }
-            case 2131493156:
+            case R.id.read_random_book:
         }
-        new b((Activity) this, 2131034218, true).b((Object[]) new String[0]);
+        new b((Activity) this, R.string.loading, true).b((Object[]) new String[0]);
     }
 
     @Override
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        this.setContentView(2130903120);
+        this.setContentView(R.layout.activity_random_read_entrance);
         this.b("\u968f\u673a\u770b\u4e66");
-        this.mReadRandomBook = (SAutoBgButton) findViewById(2131493156);
+        this.mReadRandomBook = (SAutoBgButton) findViewById(R.id.read_random_book);
         this.mReadRandomBook.setOnClickListener(this);
     }
 }

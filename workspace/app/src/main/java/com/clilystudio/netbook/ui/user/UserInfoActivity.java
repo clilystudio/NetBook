@@ -69,7 +69,7 @@ public class UserInfoActivity extends BaseActivity {
         int n2 = userInfo.getExp();
         int n3 = e.a((int) n);
         String string = userInfo.getScaleAvatar(2);
-        userInfoActivity.mPortrait.setImageUrl(string, 2130837614);
+        userInfoActivity.mPortrait.setImageUrl(string, R.drawable.avatar_default);
         userInfoActivity.mName.setText(userInfo.getNickname());
         userInfoActivity.mLevel.setText("Lv:" + n);
         userInfoActivity.mExp.setText("\u7ecf\u9a8c\uff1a" + n2 + "/" + n3);
@@ -120,26 +120,26 @@ public class UserInfoActivity extends BaseActivity {
     @Override
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        this.setContentView(2130903141);
-        this.mPortrait = (CircularSmartImageView) findViewById(2131493146);
-        this.mName = (TextView) findViewById(2131492928);
-        this.mExp = (TextView) findViewById(2131493234);
-        this.mLevel = (TextView) findViewById(2131493233);
-        this.mExpProgress = (ProgressBar) findViewById(2131493235);
-        this.mMessageCount = (TextView) findViewById(2131493239);
-        this.a(2131034578, "\u7f16\u8f91\u8d44\u6599", (aa) new aA(this));
+        this.setContentView(R.layout.activity_user_info);
+        this.mPortrait = (CircularSmartImageView) findViewById(R.id.portrait);
+        this.mName = (TextView) findViewById(R.id.name);
+        this.mExp = (TextView) findViewById(R.id.exp);
+        this.mLevel = (TextView) findViewById(R.id.level);
+        this.mExpProgress = (ProgressBar) findViewById(R.id.exp_pregress);
+        this.mMessageCount = (TextView) findViewById(R.id.message_count);
+        this.a(R.string.user_info, "\u7f16\u8f91\u8d44\u6599", (aa) new aA(this));
         this.c = this.getIntent().getStringExtra("account_token");
-        this.a = this.findViewById(2131493085);
-        this.b = this.findViewById(2131493236);
-        this.findViewById(2131493237).setOnClickListener(new aC(this));
-        this.findViewById(2131493241).setOnClickListener(new aD(this));
-        this.findViewById(2131493240).setOnClickListener(new aE(this));
-        this.findViewById(2131493242).setOnClickListener(new aF(this));
-        this.findViewById(2131493243).setOnClickListener(new aG(this));
-        this.findViewById(2131493244).setOnClickListener(new aH(this));
-        this.findViewById(2131493247).setOnClickListener(new aI(this));
-        this.findViewById(2131493246).setOnClickListener(new aJ(this));
-        View view = this.findViewById(2131493245);
+        this.a = this.findViewById(R.id.pb_loading);
+        this.b = this.findViewById(R.id.user_info_content);
+        this.findViewById(R.id.user_message_block).setOnClickListener(new aC(this));
+        this.findViewById(R.id.user_ugc_block).setOnClickListener(new aD(this));
+        this.findViewById(R.id.user_topic_block).setOnClickListener(new aE(this));
+        this.findViewById(R.id.user_account_block).setOnClickListener(new aF(this));
+        this.findViewById(R.id.user_level_block).setOnClickListener(new aG(this));
+        this.findViewById(R.id.user_task_block).setOnClickListener(new aH(this));
+        this.findViewById(R.id.user_setting_block).setOnClickListener(new aI(this));
+        this.findViewById(R.id.user_follow_weixin).setOnClickListener(new aJ(this));
+        View view = this.findViewById(R.id.user_share_remove_ad);
         if (a.r(this, "switch_share_remove_ad")) {
             view.setVisibility(View.VISIBLE);
             view.setOnClickListener(new aB(this));

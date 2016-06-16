@@ -69,6 +69,6 @@ final class dV extends ZssqFragmentPagerAdapter {
 
     @Override
     public final CharSequence getPageTitle(int n) {
-        return this.b.getResources().getStringArray(2131361809)[n];
+        return this.b.getResources().getStringArray(R.array.tweet_tab)[n];
     }
 }

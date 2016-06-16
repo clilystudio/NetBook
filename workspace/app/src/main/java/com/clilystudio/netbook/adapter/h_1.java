@@ -19,7 +19,7 @@ public final class h extends W<BookReview> {
     private boolean b = false;
 
     public h(LayoutInflater layoutInflater) {
-        super(layoutInflater, 2130903269);
+        super(layoutInflater, R.layout.list_item_book_review);
         Context context = layoutInflater.getContext();
         this.a = am.m(context);
         this.b = a.r(context, "community_user_gender_icon_toggle");
@@ -33,9 +33,9 @@ public final class h extends W<BookReview> {
         BookReview bookReview = (BookReview) object;
         Author author = bookReview.author;
         if (this.a) {
-            ((SmartImageView) this.a(0, SmartImageView.class)).setImageResource(2130837614);
+            ((SmartImageView) this.a(0, SmartImageView.class)).setImageResource(R.drawable.avatar_default);
         } else {
-            ((SmartImageView) this.a(0, SmartImageView.class)).setImageUrl(author.getScaleAvatar(), 2130837614);
+            ((SmartImageView) this.a(0, SmartImageView.class)).setImageUrl(author.getScaleAvatar(), R.drawable.avatar_default);
             ((SmartImageView) this.a(0, SmartImageView.class)).setOnClickListener(new i(this, bookReview));
         }
         this.a(1, author.getNickname());
@@ -83,6 +83,6 @@ public final class h extends W<BookReview> {
 
     @Override
     protected final int[] a() {
-        return new int[]{2131492899, 2131493630, 2131493631, 2131492935, 2131493632, 2131492936, 2131492905, 2131493634, 2131493629, 2131493633};
+        return new int[]{R.id.avatar, R.id.user, R.id.lv, R.id.time, R.id.post_flag, R.id.title, R.id.content, R.id.helpful_count, R.id.avatar_verify, R.id.rating};
     }
 }

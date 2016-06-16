@@ -23,7 +23,7 @@ public abstract class NotifBinder {
     }
 
     public void fillImageView(SmartImageView smartImageView) {
-        smartImageView.setApiImageUrl(this.mItem.getTrigger().getAvatar(), 2130837614);
+        smartImageView.setApiImageUrl(this.mItem.getTrigger().getAvatar(), R.drawable.avatar_default);
     }
 
     protected abstract int getIconRes();
@@ -48,9 +48,9 @@ public abstract class NotifBinder {
     protected int getPostIcon() {
         NotificationItem$NotifPost notificationItem$NotifPost = this.getItem().getPost() != null ? this.getItem().getPost() : this.getItem().getMyPost();
         if ("vote".equals(notificationItem$NotifPost.getType())) {
-            return 2130837917;
+            return R.drawable.ic_notif_vote;
         }
-        return 2130837916;
+        return R.drawable.ic_notif_post;
     }
 
     protected Intent getPostIntent(Context context, NotificationItem$NotifPost notificationItem$NotifPost) {

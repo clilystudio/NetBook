@@ -105,16 +105,16 @@ public class ReaderTocDialog extends DialogFragment implements AdapterView.OnIte
     @Override
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        this.i = bZ.a(this.getActivity()) ? 2131165538 : 2131165537;
+        this.i = bZ.a(this.getActivity()) ? R.style.BaseTheme : R.style.TocDialog;
         this.setStyle(1, this.i);
     }
 
     @TargetApi(value = 11)
     @Override
     public View onCreateView(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
-        View view = layoutInflater.inflate(2130903200, viewGroup, false);
-        this.c = (TextView) view.findViewById(2131493419);
-        this.b = (ListView) view.findViewById(2131493421);
+        View view = layoutInflater.inflate(R.layout.dialog_toc, viewGroup, false);
+        this.c = (TextView) view.findViewById(R.id.dialog_toc_title);
+        this.b = (ListView) view.findViewById(R.id.dialog_toc_list);
         this.a = new cf(this, LayoutInflater.from(new ContextThemeWrapper((Context) this.getActivity(), this.i)));
         this.b.setOnItemClickListener(this);
         this.b.setAdapter((ListAdapter) ((Object) this.a));

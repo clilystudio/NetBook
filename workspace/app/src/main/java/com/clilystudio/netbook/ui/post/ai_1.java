@@ -15,7 +15,7 @@ final class ai implements View.OnClickListener {
     @Override
     public final void onClick(View view) {
         this.a.dismiss();
-        BookHelpListActivity.m(this.b).setText(2131034434);
+        BookHelpListActivity.m(this.b).setText(R.string.post_sort_reply_count);
         BookHelpListActivity.b(this.b, "comment-count");
         BookHelpListActivity.l(this.b).setRefreshing();
     }

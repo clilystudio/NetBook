@@ -131,11 +131,11 @@ public class ScanTxtFileActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        this.setContentView(2130903126);
-        this.mStatus = (TextView) findViewById(2131493180);
-        this.mList = (ListView) findViewById(2131492924);
-        this.mPbLoading = (ProgressBar) findViewById(2131493085);
-        this.mEmpty = (TextView) findViewById(2131493181);
+        this.setContentView(R.layout.activity_scan_txt_file);
+        this.mStatus = (TextView) findViewById(R.id.hot_flag);
+        this.mList = (ListView) findViewById(R.id.list);
+        this.mPbLoading = (ProgressBar) findViewById(R.id.pb_loading);
+        this.mEmpty = (TextView) findViewById(R.id.empty);
         this.a = new R_Clazz(this, this.getLayoutInflater());
         this.mList.setAdapter(this.a);
         this.mList.setOnItemClickListener(this.a);

@@ -43,7 +43,7 @@ public class UserInfoPortraitView extends RelativeLayout {
         relativeLayout.addView(this.d);
         this.addView(relativeLayout);
         this.c = new TextView(this.getContext());
-        this.c.setBackgroundResource(2130837697);
+        this.c.setBackgroundResource(R.drawable.bg_user_info_lv);
         this.c.setTextSize(12.0f);
         this.c.setGravity(17);
         this.c.setTextColor(this.getResources().getColor(17170443));

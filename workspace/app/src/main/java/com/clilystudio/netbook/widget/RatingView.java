@@ -25,7 +25,7 @@ public class RatingView extends LinearLayout {
         this.b = typedArray.getDimension(1, 0.0f);
         this.c = typedArray.getInteger(2, 0);
         typedArray.recycle();
-        LayoutInflater.from(context).inflate(2130903358, (ViewGroup) this);
+        LayoutInflater.from(context).inflate(R.layout.rating_view, (ViewGroup) this);
     }
 
     /*
@@ -35,15 +35,15 @@ public class RatingView extends LinearLayout {
     protected void onFinishInflate() {
         super.onFinishInflate();
         if ("list".equals(this.a)) {
-            this.d = 2130838069;
-            this.e = 2130838066;
+            this.d = R.drawable.rating_yes;
+            this.e = R.drawable.rating_no;
         } else if ("review".equals(this.a)) {
-            this.d = 2130838068;
-            this.e = 2130838067;
+            this.d = R.drawable.rating_star_sel;
+            this.e = R.drawable.rating_star_nor;
         }
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(-2, -2);
         layoutParams.setMargins(0, 0, (int) this.b, 0);
-        int[] arrn = new int[]{2131493854, 2131493855, 2131493856, 2131493857, 2131493858};
+        int[] arrn = new int[]{R.id.img1, R.id.img2, R.id.img3, R.id.img4, R.id.img5};
         for (int i = 0; i < 5; ++i) {
             this.f[i] = (ImageView) this.findViewById(arrn[i]);
             this.f[i].setLayoutParams(layoutParams);

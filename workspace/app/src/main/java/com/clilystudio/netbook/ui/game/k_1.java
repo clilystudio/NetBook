@@ -19,13 +19,13 @@ final class k implements m {
     @Override
     public final boolean a(MenuItem menuItem) {
         switch (menuItem.getItemId()) {
-            case 2131494059: {
+            case R.id.game_post_menu_1: {
                 new N(this.b).a(this.a);
             }
             default: {
                 return true;
             }
-            case 2131494060:
+            case R.id.game_post_menu_2:
         }
         new N(this.b).b(this.a, null);
         return true;

@@ -21,11 +21,11 @@ final class ap implements PopupMenu.OnMenuItemClickListener {
     @Override
     public final boolean onMenuItemClick(MenuItem var1_1) {
         switch (var1_1.getItemId()) {
-            case 2131493931: {
+            case R.id.menu_item_1: {
                 ReaderActivity.L(this.a);
                 **break;
             }
-            case 2131493932: {
+            case R.id.menu_item_2: {
                 var2_2 = BookInfoActivity.a(this.a, ReaderActivity.M(this.a));
                 this.a.startActivity(var2_2);
             }
@@ -35,7 +35,7 @@ final class ap implements PopupMenu.OnMenuItemClickListener {
             {
                 return true;
             }
-            case 2131493933:
+            case R.id.menu_item_3:
         }
         new cb(this.a, new aq(this)).a().show();
         return true;

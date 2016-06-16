@@ -46,6 +46,6 @@ final class aj extends ZssqFragmentPagerAdapter {
 
     @Override
     public final CharSequence getPageTitle(int n) {
-        return this.b.getResources().getStringArray(2131361810)[n];
+        return this.b.getResources().getStringArray(R.array.ucg_book_tabs)[n];
     }
 }

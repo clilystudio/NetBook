@@ -19,6 +19,6 @@ public final class cb {
     }
 
     public final Dialog a() {
-        return new g(this.a).a(2131558407).a().a(new cc(this)).b();
+        return new g(this.a).a(R.menu.share_post).a().a(new cc(this)).b();
     }
 }

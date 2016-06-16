@@ -9,7 +9,7 @@ public class UnknowBinder extends OfficialNotifBinder {
 
     @Override
     protected int getIconRes() {
-        return 2130837916;
+        return R.drawable.ic_notif_post;
     }
 
     @Override

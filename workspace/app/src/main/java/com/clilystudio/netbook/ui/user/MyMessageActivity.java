@@ -10,7 +10,7 @@ public class MyMessageActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        this.setContentView(2130903115);
+        this.setContentView(R.layout.activity_my_message);
         this.b("\u6211\u7684\u6d88\u606f");
     }
 

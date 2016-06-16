@@ -35,10 +35,10 @@ public class SettingsActivity extends BaseActivity implements View.OnClickListen
 
     static /* synthetic */ void a(SettingsActivity settingsActivity) {
         h h2 = new h(settingsActivity);
-        h2.a(2131034580);
-        h2.b(2131034581);
-        h2.b(2131034129, null);
-        h2.a(2131034579, (DialogInterface.OnClickListener) new bZ(settingsActivity));
+        h2.a(R.string.user_logout_dialog);
+        h2.b(R.string.user_logout_dialog_tips);
+        h2.b(R.string.cancel, null);
+        h2.a(R.string.user_logout, (DialogInterface.OnClickListener) new bZ(settingsActivity));
         h2.a().show();
     }
 
@@ -46,7 +46,7 @@ public class SettingsActivity extends BaseActivity implements View.OnClickListen
         if (settingsActivity.a != n) {
             settingsActivity.a = n;
             a.b((Context) settingsActivity, "key_shelf_sort", settingsActivity.a);
-            ((TextView) settingsActivity.findViewById(2131493198)).setText(string);
+            ((TextView) settingsActivity.findViewById(R.id.settings_shelf_sort_value)).setText(string);
             i.a().c(new g());
         }
     }
@@ -90,33 +90,33 @@ public class SettingsActivity extends BaseActivity implements View.OnClickListen
             default: {
                 return;
             }
-            case 2131493197: {
+            case R.id.settings_shelf_sort: {
                 h h2 = new h(this);
-                int[] arrn = new int[]{2131493985, 2131493986};
-                int[] arrn2 = new int[]{2131034484, 2131034483};
-                View view2 = this.getLayoutInflater().inflate(2130903392, null, false);
+                int[] arrn = new int[]{R.id.sort_by_time, R.id.sort_by_read};
+                int[] arrn2 = new int[]{R.string.setting_sort_time, R.string.setting_sort_read};
+                View view2 = this.getLayoutInflater().inflate(R.layout.setting_shelf_sort, null, false);
                 h2.d = "\u4e66\u67b6\u6392\u5e8f\u65b9\u5f0f";
                 AlertDialog alertDialog = h2.a(view2).b("\u53d6\u6d88", null).a();
-                ((RadioGroup) view2.findViewById(2131493984)).check(arrn[this.a]);
+                ((RadioGroup) view2.findViewById(R.id.sort_group)).check(arrn[this.a]);
                 for (int i2 = 0; i2 < 2; ++i2) {
                     ((RadioButton) view2.findViewById(arrn[i2])).setOnClickListener(new bY(this, alertDialog, i2, arrn2));
                 }
                 alertDialog.show();
                 return;
             }
-            case 2131493202: {
+            case R.id.tv_disclaimer: {
                 this.startActivity(new Intent(this, DisclaimerActivity.class));
                 return;
             }
-            case 2131493205: {
+            case R.id.tv_feedback: {
                 this.startActivity(CommonPostListActivity.a(this, "android-feedback"));
                 return;
             }
-            case 2131493206: {
+            case R.id.settings_market_assessment: {
                 am.a((Activity) this, (String) ("market://details?id=" + this.getPackageName()), (String) "\u6253\u5f00\u5e94\u7528\u5e02\u573a\u5931\u8d25");
                 return;
             }
-            case 2131493203:
+            case R.id.tv_jd:
         }
         am.a((Activity) this, (String) "http://www.lagou.com/gongsi/493.html?speedShow=true", (String) null);
     }
@@ -127,17 +127,17 @@ public class SettingsActivity extends BaseActivity implements View.OnClickListen
     @Override
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        this.setContentView(2130903129);
+        this.setContentView(R.layout.activity_setting);
         if (this.getIntent().getBooleanExtra("from_user_info", false)) {
-            this.a(2131034485, "\u9000\u51fa\u767b\u5f55", (aa) new bU(this));
+            this.a(R.string.settings, "\u9000\u51fa\u767b\u5f55", (aa) new bU(this));
         } else {
-            this.b(2131034485);
+            this.b(R.string.settings);
         }
-        this.findViewById(2131493197).setOnClickListener(this);
-        this.findViewById(2131493202).setOnClickListener(this);
-        this.findViewById(2131493205).setOnClickListener(this);
-        this.findViewById(2131493206).setOnClickListener(this);
-        TextView textView = (TextView) this.findViewById(2131493207);
+        this.findViewById(R.id.settings_shelf_sort).setOnClickListener(this);
+        this.findViewById(R.id.tv_disclaimer).setOnClickListener(this);
+        this.findViewById(R.id.tv_feedback).setOnClickListener(this);
+        this.findViewById(R.id.settings_market_assessment).setOnClickListener(this);
+        TextView textView = (TextView) this.findViewById(R.id.settings_version_name);
         StringBuilder stringBuilder = new StringBuilder().append(am.g((Context) this)).append("(");
         String string = (String) am.c((Context) this, (String) "COMMIT_ID");
         String string2 = string != null && string.length() > 8 ? string.substring(0, 8) : null;
@@ -145,8 +145,8 @@ public class SettingsActivity extends BaseActivity implements View.OnClickListen
         textView.setOnLongClickListener(new bV(this));
         boolean bl = a.l(this, "update_notice_key");
         boolean bl2 = a.a((Context) this, "save_bandwidth", false);
-        SwitchCompat switchCompat = (SwitchCompat) this.findViewById(2131493200);
-        SwitchCompat switchCompat2 = (SwitchCompat) this.findViewById(2131493201);
+        SwitchCompat switchCompat = (SwitchCompat) this.findViewById(R.id.cb_notice_update);
+        SwitchCompat switchCompat2 = (SwitchCompat) this.findViewById(R.id.cb_save_bandwidth);
         switchCompat.setChecked(bl);
         SettingsActivity.a(switchCompat, bl);
         switchCompat2.setChecked(bl2);
@@ -154,13 +154,13 @@ public class SettingsActivity extends BaseActivity implements View.OnClickListen
         switchCompat.setOnCheckedChangeListener(new bW(this, switchCompat));
         switchCompat2.setOnCheckedChangeListener(new bX(this, switchCompat2));
         if ("1".equals(b.b(this, "enable_job"))) {
-            View view = this.findViewById(2131493203);
+            View view = this.findViewById(R.id.tv_jd);
             view.setVisibility(View.VISIBLE);
             view.setOnClickListener(this);
-            this.findViewById(2131493204).setVisibility(View.VISIBLE);
+            this.findViewById(R.id.jd_divider).setVisibility(View.VISIBLE);
         }
         this.a = a.a((Context) this, "key_shelf_sort", 1);
-        String string3 = this.getResources().getStringArray(2131361805)[this.a];
-        ((TextView) this.findViewById(2131493198)).setText(string3);
+        String string3 = this.getResources().getStringArray(R.array.settings_shelf_sort)[this.a];
+        ((TextView) this.findViewById(R.id.settings_shelf_sort_value)).setText(string3);
     }
 }

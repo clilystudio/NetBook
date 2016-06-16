@@ -23,11 +23,11 @@ public class ShareWarningView extends RelativeLayout {
         this.b = new aA(this);
         this.setPadding(0, 0, 0, a.a(context, 22.0f));
         this.setBackgroundColor(-1);
-        LayoutInflater.from(context).inflate(2130903393, (ViewGroup) this);
-        this.mClose = (ImageView) findViewById(2131493987);
-        this.mNegative = (Button) findViewById(2131493988);
-        this.mPositive = (Button) findViewById(2131493989);
-        this.mContent = (TextView) findViewById(2131492905);
+        LayoutInflater.from(context).inflate(R.layout.share_warning, (ViewGroup) this);
+        this.mClose = (ImageView) findViewById(R.id.close);
+        this.mNegative = (Button) findViewById(R.id.negative);
+        this.mPositive = (Button) findViewById(R.id.positive);
+        this.mContent = (TextView) findViewById(R.id.content);
         this.mNegative.setOnClickListener(this.b);
         this.mClose.setOnClickListener(this.b);
     }

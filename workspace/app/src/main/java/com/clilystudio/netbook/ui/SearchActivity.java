@@ -249,7 +249,7 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
                     bR2.b(arrstring);
                 }
             } else {
-                e.a((Activity) this, (int) 2131034418);
+                e.a((Activity) this, (int) R.string.network_unconnected);
             }
             if (!bl || this.m == null) return;
             {
@@ -300,26 +300,26 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
             default: {
                 return;
             }
-            case 2131493016: {
+            case R.id.search_input_search: {
                 this.a(true, true);
                 this.g();
                 return;
             }
-            case 2131493015: {
+            case R.id.search_input_clean: {
                 this.b = "";
                 this.e.setTextByCode(this.b);
                 this.f();
                 return;
             }
-            case 2131493983: {
+            case R.id.advance_search_container: {
                 this.b();
                 return;
             }
-            case 2131493982: {
+            case R.id.search_empty_add: {
                 this.b();
                 return;
             }
-            case 2131493013:
+            case R.id.back:
         }
         this.finish();
     }
@@ -330,7 +330,7 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
     @Override
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        this.setContentView(2130903127);
+        this.setContentView(R.layout.activity_search);
         ButterKnife.inject(this);
         Intent intent = this.getIntent();
         this.c = intent.getIntExtra("search_mode", 1);
@@ -338,28 +338,28 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
             this.b = intent.getStringExtra("keyword");
         }
         LayoutInflater layoutInflater = LayoutInflater.from(this);
-        View view = layoutInflater.inflate(2130903042, null, false);
-        view.findViewById(2131493013).setOnClickListener(this);
+        View view = layoutInflater.inflate(R.layout.ab_search, null, false);
+        view.findViewById(R.id.back).setOnClickListener(this);
         this.setCustomActionBar(view);
         SearchActivity$SearchPromptAdapter searchActivity$SearchPromptAdapter = new SearchActivity$SearchPromptAdapter(this);
-        this.i = (SearchFixListView) this.findViewById(2131493193);
+        this.i = (SearchFixListView) this.findViewById(R.id.search_prompt_list);
         this.i.setAdapter(searchActivity$SearchPromptAdapter);
         this.i.setOnItemClickListener(searchActivity$SearchPromptAdapter);
-        this.e = (SearchEditText) view.findViewById(2131493014);
+        this.e = (SearchEditText) view.findViewById(R.id.search_input_edit);
         this.e.setOnUserInputListener(new bD(this, searchActivity$SearchPromptAdapter));
-        this.f = view.findViewById(2131493016);
-        this.g = view.findViewById(2131493015);
-        this.j = this.findViewById(2131493085);
-        this.k = this.findViewById(2131493184);
-        View view2 = this.findViewById(2131493982);
-        this.n = this.findViewById(2131493183);
+        this.f = view.findViewById(R.id.search_input_search);
+        this.g = view.findViewById(R.id.search_input_clean);
+        this.j = this.findViewById(R.id.pb_loading);
+        this.k = this.findViewById(R.id.search_empty_layout);
+        View view2 = this.findViewById(R.id.search_empty_add);
+        this.n = this.findViewById(R.id.focusable);
         this.f.setOnClickListener(this);
         this.g.setOnClickListener(this);
         view2.setOnClickListener(this);
         this.f.setEnabled(false);
-        this.h = (ListView) this.findViewById(2131493185);
+        this.h = (ListView) this.findViewById(R.id.search_list);
         if (this.c == 1) {
-            this.m = layoutInflater.inflate(2130903388, (ViewGroup) this.h, false);
+            this.m = layoutInflater.inflate(R.layout.search_header, (ViewGroup) this.h, false);
             this.h.addHeaderView(this.m, null, false);
             this.m.setOnClickListener(this);
         }
@@ -375,11 +375,11 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
         this.e.setOnEditorActionListener(new bJ(this));
         this.e.addTextChangedListener(new bK(this));
         this.e.setOnFocusChangeListener(new bL(this));
-        this.t = this.findViewById(2131493186);
+        this.t = this.findViewById(R.id.select_word_layout);
         this.t.setOnTouchListener(new bF(this));
-        this.u = this.findViewById(2131493191);
+        this.u = this.findViewById(R.id.clear_history);
         this.u.setOnClickListener(new bG(this));
-        this.v = (ListView) this.findViewById(2131493192);
+        this.v = (ListView) this.findViewById(R.id.search_history_list);
         this.x = (List) a.k(c.e, "search_history.txt");
         if (this.x == null) {
             this.x = new ArrayList<String>();
@@ -397,9 +397,9 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
         } else {
             this.f();
         }
-        this.q = (RelativeLayout) this.findViewById(2131493187);
-        this.r = (AutoFlowView) this.findViewById(2131493190);
-        this.s = (TextView) this.findViewById(2131493189);
+        this.q = (RelativeLayout) this.findViewById(R.id.ll_hot_keyword_continer);
+        this.r = (AutoFlowView) this.findViewById(R.id.afv_hots);
+        this.s = (TextView) this.findViewById(R.id.btn_change);
         if (a.k(c.e, "search_hotword.txt") != null && a.a((Context) this, "search_hot_words_date", 0) != 0) {
             List list = (List) a.k(c.e, "search_hotword.txt");
             this.q.setVisibility(View.VISIBLE);
@@ -467,7 +467,7 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
 
         @Override
         public final View getView(int n, View view, ViewGroup viewGroup) {
-            View view2 = this.a.getLayoutInflater().inflate(2130903303, viewGroup, false);
+            View view2 = this.a.getLayoutInflater().inflate(R.layout.list_item_search_prompt, viewGroup, false);
             SearchActivity$SearchPromptAdapter$ViewHolder searchActivity$SearchPromptAdapter$ViewHolder = new SearchActivity$SearchPromptAdapter$ViewHolder(this, view2);
             if (n >= 0 && n < this.b.size()) {
                 searchActivity$SearchPromptAdapter$ViewHolder.label.setText(this.b.get(n));
@@ -488,7 +488,7 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
             TextView label;
 
             ViewHolder(SearchActivity.SearchPromptAdapter searchPromptAdapter, View view) {
-                this.label = (TextView) view.findViewById(2131493751);
+                this.label = (TextView) view.findViewById(R.id.search_prompt_list_item);
             }
         }
     }
@@ -516,7 +516,7 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
 
         @Override
         public final View getView(int n, View view, ViewGroup viewGroup) {
-            View view2 = this.a.getLayoutInflater().inflate(2130903302, viewGroup, false);
+            View view2 = this.a.getLayoutInflater().inflate(R.layout.list_item_search_history, viewGroup, false);
             SearchActivity$SearchHistoryAdapter$ViewHolder searchActivity$SearchHistoryAdapter$ViewHolder = new SearchActivity$SearchHistoryAdapter$ViewHolder(this, view2);
             if (n >= 0 && n < SearchActivity.l(this.a).size()) {
                 searchActivity$SearchHistoryAdapter$ViewHolder.word.setText((CharSequence) SearchActivity.l(this.a).get(n));
@@ -535,7 +535,7 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
             TextView word;
 
             SearchActivity$SearchHistoryAdapter$ViewHolder(SearchActivity.SearchHistoryAdapter searchHistoryAdapter, View view) {
-                this.word = (TextView) view.findViewById(2131493750);
+                this.word = (TextView) view.findViewById(R.id.search_history_item);
             }
         }
     }

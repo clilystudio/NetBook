@@ -57,18 +57,18 @@ public class HomeFindFragment extends HomeFragment {
      */
     @Override
     public View onCreateView(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
-        View view = layoutInflater.inflate(2130903212, viewGroup, false);
+        View view = layoutInflater.inflate(R.layout.fragment_home_find, viewGroup, false);
         FragmentActivity fragmentActivity = this.getActivity();
-        this.a = (ViewGroup) view.findViewById(2131493439);
-        this.a.addView(new HomeFindItem(fragmentActivity, this.getString(2131034450), 2130837830, new Intent(fragmentActivity, BookRankListActivity.class)));
-        this.a.addView(new HomeFindItem(fragmentActivity, this.getString(2131034565), 2130837833, new Intent(fragmentActivity, UGCMainActivity.class)));
-        this.a.addView(new HomeFindItem(fragmentActivity, this.getString(2131034334), 2130837823, BookCategoryActivity.a(fragmentActivity)));
+        this.a = (ViewGroup) view.findViewById(R.id.home_find_container);
+        this.a.addView(new HomeFindItem(fragmentActivity, this.getString(R.string.rank_list), R.drawable.home_find_rank, new Intent(fragmentActivity, BookRankListActivity.class)));
+        this.a.addView(new HomeFindItem(fragmentActivity, this.getString(R.string.ugc_list), R.drawable.home_find_topic, new Intent(fragmentActivity, UGCMainActivity.class)));
+        this.a.addView(new HomeFindItem(fragmentActivity, this.getString(R.string.category), R.drawable.home_find_category, BookCategoryActivity.a(fragmentActivity)));
         if (a.r(this.getActivity(), "switch_audiobook")) {
-            this.a.addView(new HomeFindItem(fragmentActivity, this.getString(2131034314), 2130837825, AudiobookCategoryActivity.a(fragmentActivity)));
+            this.a.addView(new HomeFindItem(fragmentActivity, this.getString(R.string.audiobooks), R.drawable.home_find_listen, AudiobookCategoryActivity.a(fragmentActivity)));
         }
         this.b = new HomeFindSecretItem(fragmentActivity);
         this.a.addView(this.b);
-        this.a.addView(new HomeFindItem(fragmentActivity, this.getString(2131034412), 2130837828, MhdListActivity.a(fragmentActivity)));
+        this.a.addView(new HomeFindItem(fragmentActivity, this.getString(R.string.mhd_list), R.drawable.home_find_mhd, MhdListActivity.a(fragmentActivity)));
         if (this.getArguments().getBoolean("game_center_show")) {
             this.c = new HomeFindGameItem(fragmentActivity);
             this.a.addView(this.c);
@@ -78,9 +78,9 @@ public class HomeFindFragment extends HomeFragment {
             try {
                 InsideLinkIntent insideLinkIntent = new InsideLinkIntent((Context) fragmentActivity, "link:http://zssq.1yuan18.com/v/index.html");
             } catch (Exception var7_9) {
-                Intent intent = AdWebViewActivity.a(fragmentActivity, this.getString(2131034426), "http://zssq.1yuan18.com/v/index.html");
+                Intent intent = AdWebViewActivity.a(fragmentActivity, this.getString(R.string.one_yuan), "http://zssq.1yuan18.com/v/index.html");
             }
-            this.a.addView(new HomeFindItem(fragmentActivity, this.getString(2131034426), 2130837829, (Intent) var6_7));
+            this.a.addView(new HomeFindItem(fragmentActivity, this.getString(R.string.one_yuan), R.drawable.home_find_oneyuan, (Intent) var6_7));
         }
         this.d = new HomeFindLuckyGameItem(fragmentActivity);
         this.a.addView(this.d);

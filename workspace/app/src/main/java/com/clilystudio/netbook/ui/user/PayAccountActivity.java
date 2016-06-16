@@ -53,24 +53,24 @@ public class PayAccountActivity extends BaseActivity implements View.OnClickList
             default: {
                 return;
             }
-            case 2131493803: {
+            case R.id.section_pay_voucher: {
                 this.startActivity(PayVoucherActivity.a(this, this.getIntent().getStringExtra("key_token")));
                 return;
             }
-            case 2131493804: {
+            case R.id.section_pay_charge: {
                 this.startActivity(PayChargeActivity.a(this, this.getIntent().getStringExtra("key_token"), "\u5145\u503c\u8bb0\u5f55"));
                 return;
             }
-            case 2131493805: {
+            case R.id.section_pay_consume: {
                 this.startActivity(PayConsumeActivity.a(this, this.getIntent().getStringExtra("key_token"), "\u6d88\u8d39\u8bb0\u5f55"));
                 return;
             }
-            case 2131493807: {
+            case R.id.section_remove_ad: {
                 b.a(this, "user_remove_ad_click");
                 this.startActivity(new Intent(this, RemoveAdActivity.class));
                 return;
             }
-            case 2131493199:
+            case R.id.arrow:
         }
         new p((Activity) this).a();
         b.a(this, "charge_click_count");
@@ -80,14 +80,14 @@ public class PayAccountActivity extends BaseActivity implements View.OnClickList
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         i.a().a(this);
-        this.setContentView(2130903329);
+        this.setContentView(R.layout.my_pay_account);
         this.b("\u6211\u7684\u8d26\u6237");
-        this.b = (PaySectionItem) this.findViewById(2131493802);
-        this.c = (PaySectionItem) this.findViewById(2131493803);
-        PaySectionItem paySectionItem = (PaySectionItem) this.findViewById(2131493804);
-        PaySectionItem paySectionItem2 = (PaySectionItem) this.findViewById(2131493805);
-        PaySectionItem paySectionItem3 = (PaySectionItem) this.findViewById(2131493807);
-        TextView textView = (TextView) this.findViewById(2131493806);
+        this.b = (PaySectionItem) this.findViewById(R.id.section_pay_currency);
+        this.c = (PaySectionItem) this.findViewById(R.id.section_pay_voucher);
+        PaySectionItem paySectionItem = (PaySectionItem) this.findViewById(R.id.section_pay_charge);
+        PaySectionItem paySectionItem2 = (PaySectionItem) this.findViewById(R.id.section_pay_consume);
+        PaySectionItem paySectionItem3 = (PaySectionItem) this.findViewById(R.id.section_remove_ad);
+        TextView textView = (TextView) this.findViewById(R.id.label_remove_ad);
         if (a.y(this)) {
             textView.setVisibility(View.VISIBLE);
             paySectionItem3.setVisibility(View.VISIBLE);
@@ -99,7 +99,7 @@ public class PayAccountActivity extends BaseActivity implements View.OnClickList
         paySectionItem.setOnClickListener(this);
         paySectionItem2.setOnClickListener(this);
         paySectionItem3.setOnClickListener(this);
-        this.f = (TextView) paySectionItem3.findViewById(2131493481);
+        this.f = (TextView) paySectionItem3.findViewById(R.id.desc);
         this.a = this.getIntent().getStringExtra("key_token");
         I i2 = new I(this, this);
         String[] arrstring = new String[]{this.a};

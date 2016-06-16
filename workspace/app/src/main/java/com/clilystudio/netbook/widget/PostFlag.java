@@ -16,9 +16,9 @@ public class PostFlag extends FrameLayout {
 
     public PostFlag(Context context, AttributeSet attributeSet) {
         super(context, attributeSet);
-        LayoutInflater.from(context).inflate(2130903351, (ViewGroup) this);
-        this.mHotFlag = (TextView) findViewById(2131493180);
-        this.mDistillateFlag = (TextView) findViewById(2131493423);
+        LayoutInflater.from(context).inflate(R.layout.post_flags, (ViewGroup) this);
+        this.mHotFlag = (TextView) findViewById(R.id.hot_flag);
+        this.mDistillateFlag = (TextView) findViewById(R.id.distillate_flag);
     }
 
     public static boolean b(String string) {

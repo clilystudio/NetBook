@@ -44,6 +44,6 @@ final class aO extends com.clilystudio.netbook.a_pack.e<Void, Void, BookRankRoot
             return;
         }
         BookRankListActivity.a(this.a, 2);
-        e.a((Activity) this.a, (int) 2131034408);
+        e.a((Activity) this.a, (int) R.string.load_failed_tips);
     }
 }

@@ -10,7 +10,7 @@ import java.io.IOException;
 
 public abstract class f extends c<String, CommentDetail> {
     public f(Activity activity) {
-        super(activity, 2131034218);
+        super(activity, R.string.loading);
     }
 
     private static /* varargs */ CommentDetail a(String... arrstring) {

@@ -42,8 +42,8 @@ final class L implements View.OnClickListener {
             u2.execute(arrobject);
             return;
         }
-        String string = G.a(this.c).getString(2131034472);
-        String string3 = G.a(this.a, account) && !this.a.isRetween() ? G.a(this.c).getString(2131034423) : string;
+        String string = G.a(this.c).getString(R.string.retweeted);
+        String string3 = G.a(this.a, account) && !this.a.isRetween() ? G.a(this.c).getString(R.string.not_can_retween_self) : string;
         e.a((Activity) ((Activity) G.a(this.c)), (String) ("\t\t" + string3 + "\t\t"));
     }
 }

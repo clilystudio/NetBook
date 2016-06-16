@@ -21,7 +21,7 @@ final class q extends c<String, ChangeGenderRoot> {
 
     public q(ModifyUserInfoActivity modifyUserInfoActivity, Activity activity, int n) {
         this.a = modifyUserInfoActivity;
-        super(activity, 2131034218);
+        super(activity, R.string.loading);
     }
 
     private /* varargs */ ChangeGenderRoot a(String... arrstring) {

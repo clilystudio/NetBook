@@ -20,26 +20,26 @@ public class ModeListActivity extends BaseActivity {
     @Override
     public void finish() {
         super.finish();
-        this.overridePendingTransition(2130968604, 2130968605);
+        this.overridePendingTransition(R.anim.mode_list_exit_in, R.anim.mode_list_exit_out);
     }
 
     @Override
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        this.setContentView(2130903113);
-        this.c(2131034481);
-        this.d(2130837881);
+        this.setContentView(R.layout.activity_mode_list);
+        this.c(R.string.select_read_mode);
+        this.d(R.drawable.ic_close_white_24dp);
         this.a = this.getIntent().getIntExtra("BOOK_MODE", 5);
         this.b = this.getIntent().getStringExtra("BOOK_ID");
         this.c = this.getIntent().getStringExtra("BOOK_TITLE");
         if (this.a == 10) {
             this.a = 5;
         }
-        ViewGroup viewGroup = (ViewGroup) this.findViewById(2131493144);
-        viewGroup.addView(new ReadModeItem(this, 2130838015, 2131034457, 5, this.a, this.b, this.c));
-        viewGroup.addView(new ReadModeItem(this, 2130838019, 2131034458, 0, this.a, this.b, this.c));
-        viewGroup.addView(new ReadModeItem(this, 2130838017, 2131034459, 4, this.a, this.b, this.c));
-        viewGroup.addView(new ReadModeItem(this, 2130838009, 2131034456, 1, this.a, this.b, this.c));
-        viewGroup.addView(new ReadModeItem(this, 2130838018, 2131034460, 2, this.a, this.b, this.c));
+        ViewGroup viewGroup = (ViewGroup) this.findViewById(R.id.mode_list_root);
+        viewGroup.addView(new ReadModeItem(this, R.drawable.mode_list_item_mix, R.string.reader_mode_mix, 5, this.a, this.b, this.c));
+        viewGroup.addView(new ReadModeItem(this, R.drawable.mode_list_item_zg, R.string.reader_mode_res, 0, this.a, this.b, this.c));
+        viewGroup.addView(new ReadModeItem(this, R.drawable.mode_list_item_sm, R.string.reader_mode_shenma, 4, this.a, this.b, this.c));
+        viewGroup.addView(new ReadModeItem(this, R.drawable.mode_list_item_bd, R.string.reader_mode_baidu, 1, this.a, this.b, this.c));
+        viewGroup.addView(new ReadModeItem(this, R.drawable.mode_list_item_tb, R.string.reader_mode_tieba, 2, this.a, this.b, this.c));
     }
 }

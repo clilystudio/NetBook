@@ -37,14 +37,14 @@ final class t implements AdapterView.OnItemClickListener {
                 {
                     GameGiftFragment gameGiftFragment = this.a;
                     GiftGame giftGame = gameGiftGroup.getGame();
-                    View view2 = View.inflate(gameGiftFragment.getActivity(), 2130903194, null);
-                    ((SmartImageView) view2.findViewById(2131493394)).setImageUrl(giftGame.icon);
-                    ((TextView) view2.findViewById(2131493397)).setText("\u6709 " + giftGame.followers + " \u4e2a\u5c0f\u4f19\u4f34\u6b63\u5728\u73a9");
-                    ((TextView) view2.findViewById(2131493395)).setText(giftGame.getName());
-                    ((TextView) view2.findViewById(2131493396)).setText(a.c(giftGame.androidSize));
+                    View view2 = View.inflate(gameGiftFragment.getActivity(), R.layout.dialog_gift_game_get_dl, null);
+                    ((SmartImageView) view2.findViewById(R.id.game_gift_icon)).setImageUrl(giftGame.icon);
+                    ((TextView) view2.findViewById(R.id.game_gift_left)).setText("\u6709 " + giftGame.followers + " \u4e2a\u5c0f\u4f19\u4f34\u6b63\u5728\u73a9");
+                    ((TextView) view2.findViewById(R.id.game_gift_name)).setText(giftGame.getName());
+                    ((TextView) view2.findViewById(R.id.game_gift_type_size)).setText(a.c(giftGame.androidSize));
                     com.clilystudio.netbook.view.a a2 = new com.clilystudio.netbook.view.a(gameGiftFragment.getActivity());
                     ao.a((Activity) gameGiftFragment.getActivity(), giftGame);
-                    GiftGameGetButton giftGameGetButton = (GiftGameGetButton) view2.findViewById(2131493398);
+                    GiftGameGetButton giftGameGetButton = (GiftGameGetButton) view2.findViewById(R.id.game_gift_download);
                     giftGameGetButton.setGame(giftGame);
                     giftGameGetButton.a(giftGame.getDownloadStatus());
                     giftGameGetButton.setBottomDialog(a2);

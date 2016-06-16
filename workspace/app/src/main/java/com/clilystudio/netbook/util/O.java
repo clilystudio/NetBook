@@ -19,7 +19,7 @@ final class O implements DialogInterface.OnClickListener {
     @Override
     public final void onClick(DialogInterface dialogInterface, int n) {
         String string = String.valueOf(n + 1);
-        e.a((Activity) N.a(this.d), (int) 2131034431);
+        e.a((Activity) N.a(this.d), (int) R.string.post_report_successful);
         if (!this.a) {
             if (this.b == null) {
                 new an(this.c, string).start();

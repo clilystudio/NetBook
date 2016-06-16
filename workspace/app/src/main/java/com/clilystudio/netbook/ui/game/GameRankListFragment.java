@@ -73,7 +73,7 @@ public class GameRankListFragment extends BaseLoadingFragment {
 
     @Override
     protected final int a() {
-        return 2130903386;
+        return R.layout.scroll_listview;
     }
 
     @Override
@@ -87,7 +87,7 @@ public class GameRankListFragment extends BaseLoadingFragment {
     @Override
     public void onActivityCreated(Bundle bundle) {
         super.onActivityCreated(bundle);
-        this.b = LayoutInflater.from(this.getActivity()).inflate(2130903325, null);
+        this.b = LayoutInflater.from(this.getActivity()).inflate(R.layout.loading_item, null);
         this.b.setVisibility(View.GONE);
         a.a((Context) this.getActivity(), this.a);
         this.a.addFooterView(this.b);
@@ -116,6 +116,6 @@ public class GameRankListFragment extends BaseLoadingFragment {
     @Override
     public void onViewCreated(View view, Bundle bundle) {
         super.onViewCreated(view, bundle);
-        this.a = (ScrollLoadListView) view.findViewById(2131493981);
+        this.a = (ScrollLoadListView) view.findViewById(R.id.content_scroll_list);
     }
 }

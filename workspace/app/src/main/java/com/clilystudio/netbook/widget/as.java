@@ -52,7 +52,7 @@ final class as extends com.clilystudio.netbook.a_pack.e<String, Void, ResultStat
             return;
         } else {
             if ("TOKEN_INVALID".equals(resultStatus.getCode())) {
-                e.a((Activity) PostUsefulView.b(this.a), (int) 2131034529);
+                e.a((Activity) PostUsefulView.b(this.a), (int) R.string.token_invalid);
                 return;
             }
             if (!"ALREADY_SET".equals(resultStatus.getCode())) return;

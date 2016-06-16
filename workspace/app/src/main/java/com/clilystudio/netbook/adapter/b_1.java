@@ -11,14 +11,14 @@ public final class b extends W<Album> {
     private Resources a;
 
     public b(LayoutInflater layoutInflater) {
-        super(layoutInflater, 2130903264);
+        super(layoutInflater, R.layout.list_item_audio_book);
         this.a = layoutInflater.getContext().getResources();
     }
 
     @Override
     protected final /* synthetic */ void a(int n, Object object) {
         Album album = (Album) object;
-        ((CoverView) this.a(0, CoverView.class)).setImageUrl(album.getCoverUrlSmall(), 2130837766);
+        ((CoverView) this.a(0, CoverView.class)).setImageUrl(album.getCoverUrlSmall(), R.drawable.cover_default);
         this.a(1, album.getAlbumTitle());
         this.a(2, album.getAlbumIntro());
         Resources resources = this.a;
@@ -28,14 +28,14 @@ public final class b extends W<Album> {
             n2 = 1;
         }
         arrobject[0] = n2;
-        this.a(3, resources.getString(2131034387, arrobject));
+        this.a(3, resources.getString(R.string.follower_count_format, arrobject));
         Resources resources2 = this.a;
         Object[] arrobject2 = new Object[]{album.getIncludeTrackCount()};
-        this.a(4, resources2.getString(2131034530, arrobject2));
+        this.a(4, resources2.getString(R.string.total_track_count, arrobject2));
     }
 
     @Override
     protected final int[] a() {
-        return new int[]{2131493616, 2131493605, 2131493617, 2131493619, 2131493621, 2131493620};
+        return new int[]{R.id.iv_cover, R.id.tv_title, R.id.tv_short_intro, R.id.tv_favorite_count, R.id.tv_track_count, R.id.iv_track_count};
     }
 }

@@ -16,7 +16,7 @@ final class m implements DialogInterface.OnClickListener {
      */
     @Override
     public final void onClick(DialogInterface dialogInterface, int n) {
-        q q2 = new q(this.b, this.b, 2131034218);
+        q q2 = new q(this.b, this.b, R.string.loading);
         String[] arrstring = new String[1];
         String string = this.a ? "male" : "female";
         arrstring[0] = string;

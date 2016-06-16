@@ -13,7 +13,7 @@ final class L implements a {
             default: {
                 return;
             }
-            case 2131493934:
+            case R.id.reader_random_ab_back:
         }
         this.a.onBackPressed();
         b.a(this.a, "random_reader_quit");

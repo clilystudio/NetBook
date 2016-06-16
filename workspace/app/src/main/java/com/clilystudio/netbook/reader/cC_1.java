@@ -15,7 +15,7 @@ final class cC implements DialogInterface.OnClickListener {
 
     @Override
     public final void onClick(DialogInterface dialogInterface, int n) {
-        if (((CheckBox) this.a.findViewById(2131493415)).isChecked()) {
+        if (((CheckBox) this.a.findViewById(R.id.reader_web_opt_box)).isChecked()) {
             ReaderWebActivity.b(this.b);
             return;
         }

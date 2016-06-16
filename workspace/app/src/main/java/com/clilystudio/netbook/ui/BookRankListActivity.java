@@ -78,12 +78,12 @@ public class BookRankListActivity extends BaseActivity {
     @Override
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        this.setContentView(2130903088);
-        this.b(2131034450);
+        this.setContentView(R.layout.activity_book_rank_list);
+        this.b(R.string.rank_list);
         this.f = new Handler();
-        this.e = (ListView) this.findViewById(2131493101);
-        this.a = this.findViewById(2131493102);
-        this.b = this.findViewById(2131493103);
+        this.e = (ListView) this.findViewById(R.id.common_list_content);
+        this.a = this.findViewById(R.id.common_list_pb);
+        this.b = this.findViewById(R.id.common_list_error);
         this.b.setOnClickListener(new aM(this));
         this.c = new BookRankAdapter(this.getLayoutInflater());
         this.e.setAdapter(this.c);

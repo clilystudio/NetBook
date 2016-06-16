@@ -27,7 +27,7 @@ final class b implements f {
             return;
         }
         h h2 = new h(AdSplashImp.a(this.b));
-        String string = a.s(AdSplashImp.a(this.b)) ? AdSplashImp.a(this.b).getString(2131034279) : AdSplashImp.a(this.b).getString(2131034278);
+        String string = a.s(AdSplashImp.a(this.b)) ? AdSplashImp.a(this.b).getString(R.string.ad_download_prompt_wifi) : AdSplashImp.a(this.b).getString(R.string.ad_download_prompt_flow);
         h h3 = h2.a(false);
         h3.e = string;
         h3.d = "\u4e0b\u8f7d";

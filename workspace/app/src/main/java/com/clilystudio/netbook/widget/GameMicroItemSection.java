@@ -20,13 +20,13 @@ public class GameMicroItemSection extends TableLayout {
     }
 
     public final void a() {
-        View view = LayoutInflater.from(this.getContext()).inflate(2130903383, (ViewGroup) this.mContainer, false);
+        View view = LayoutInflater.from(this.getContext()).inflate(R.layout.row_micro_game_empty_item, (ViewGroup) this.mContainer, false);
         this.mContainer.addView(view);
     }
 
     public final void a(int n) {
         for (int i = 0; i < n; ++i) {
-            ViewGroup viewGroup = (ViewGroup) LayoutInflater.from(this.getContext()).inflate(2130903384, (ViewGroup) this.mContainer, false);
+            ViewGroup viewGroup = (ViewGroup) LayoutInflater.from(this.getContext()).inflate(R.layout.row_micro_game_layout_item, (ViewGroup) this.mContainer, false);
             this.mContainer.addView(viewGroup);
         }
     }
@@ -37,7 +37,7 @@ public class GameMicroItemSection extends TableLayout {
      * Lifted jumps to return sites
      */
     public final void a(GameLayoutRoot$ModuleLayout var1_1) {
-        ((TextView) this.findViewById(2131493576)).setText(var1_1.getGameGroup().getName());
+        ((TextView) this.findViewById(R.id.section_name)).setText(var1_1.getGameGroup().getName());
         var2_2 = var1_1.getGameGroup().getGames();
         var3_3 = Math.min(var2_2.size(), 9);
         var4_4 = 0;
@@ -88,7 +88,7 @@ public class GameMicroItemSection extends TableLayout {
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
-        this.mContainer = (TableLayout) findViewById(2131493577);
+        this.mContainer = (TableLayout) findViewById(R.id.container);
     }
 
     public void setHasPlayed(boolean bl) {

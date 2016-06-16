@@ -46,8 +46,8 @@ final class L extends e<String, Void, GameGiftRoot> {
         GameGiftRoot gameGiftRoot = (GameGiftRoot) object;
         super.onPostExecute(gameGiftRoot);
         if (gameGiftRoot != null && gameGiftRoot.ok && gameGiftRoot.gifts != null && gameGiftRoot.gifts.length > 0) {
-            this.a.findViewById(2131493478).setVisibility(View.VISIBLE);
-            this.a.findViewById(2131493479).setVisibility(View.VISIBLE);
+            this.a.findViewById(R.id.game_gift_line_gap).setVisibility(View.VISIBLE);
+            this.a.findViewById(R.id.game_gift_label).setVisibility(View.VISIBLE);
             arrgameGift = gameGiftRoot.gifts;
             n = arrgameGift.length;
             if (n > 3) {
@@ -63,8 +63,8 @@ final class L extends e<String, Void, GameGiftRoot> {
             int n4;
             GameGift gameGift = arrgameGift[n3];
             if (gameGift.game != null) {
-                View view = LayoutInflater.from(this.a.getContext()).inflate(2130903279, (ViewGroup) this.a, false);
-                ((GameGiftItemView) view.findViewById(2131493673)).a(gameGift, GameGiftView.a(this.a));
+                View view = LayoutInflater.from(this.a.getContext()).inflate(R.layout.list_item_game_gift, (ViewGroup) this.a, false);
+                ((GameGiftItemView) view.findViewById(R.id.game_gift_item)).a(gameGift, GameGiftView.a(this.a));
                 this.a.addView(view, n2);
                 n4 = n2 + 1;
             } else {

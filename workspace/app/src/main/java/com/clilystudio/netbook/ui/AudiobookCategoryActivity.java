@@ -50,9 +50,9 @@ public class AudiobookCategoryActivity extends BaseActivity {
         }
         int n = audiobookCategoryActivity.getResources().getDisplayMetrics().widthPixels / 3;
         int n2 = a.a((Context) audiobookCategoryActivity, 56.0f);
-        TableLayout tableLayout = (TableLayout) audiobookCategoryActivity.findViewById(2131493079);
+        TableLayout tableLayout = (TableLayout) audiobookCategoryActivity.findViewById(R.id.tags_layout_category);
         TableRow.LayoutParams layoutParams = new TableRow.LayoutParams(-1, -2);
-        int n3 = am.b((Context) audiobookCategoryActivity, (int) 2130771969);
+        int n3 = am.b((Context) audiobookCategoryActivity, (int) R.attr.audiobookCategoryItemSelector);
         for (int j = 0; j < list.size(); ++j) {
             String string = list.get(j).getTagName();
             if (!string.equals("QQ\u9605\u8bfb") && !string.equals("\u901f\u64ad\u4e13\u533a") && !string.equals("\u63a8\u7406\u4e16\u754c")) continue;
@@ -84,7 +84,7 @@ public class AudiobookCategoryActivity extends BaseActivity {
             TextView textView = new TextView(audiobookCategoryActivity);
             textView.setText(tag.getTagName());
             textView.setGravity(17);
-            textView.setTextAppearance(audiobookCategoryActivity, 2131165621);
+            textView.setTextAppearance(audiobookCategoryActivity, R.style.book_category_item_large);
             textView.setBackgroundResource(n3);
             textView.setOnClickListener(new v(audiobookCategoryActivity, tag));
             tableRow.addView((View) textView, layoutParams2);
@@ -133,21 +133,21 @@ public class AudiobookCategoryActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        this.setContentView(2130903080);
-        this.b(this.getResources().getString(2131034314));
+        this.setContentView(R.layout.activity_audiobook_category);
+        this.b(this.getResources().getString(R.string.audiobooks));
         as.a();
         this.a = as.b();
-        this.e = this.findViewById(2131493078);
-        this.b = this.findViewById(2131493081);
-        this.c = this.findViewById(2131493082);
+        this.e = this.findViewById(R.id.content_category);
+        this.b = this.findViewById(R.id.content_loading_pb);
+        this.c = this.findViewById(R.id.content_load_error);
         this.c.setOnClickListener(new q(this));
         this.b();
-        ((RelativeLayout) this.findViewById(2131493083)).setBackgroundResource(am.b((Context) this, (int) 2130771970));
-        TextView textView = (TextView) this.findViewById(2131493084);
-        SpannableString spannableString = new SpannableString(this.getResources().getString(2131034591));
-        spannableString.setSpan(new ForegroundColorSpan(this.getResources().getColor(2131427543)), 0, 5, 33);
-        spannableString.setSpan(new ForegroundColorSpan(this.getResources().getColor(2131427340)), 5, 11, 33);
-        spannableString.setSpan(new ForegroundColorSpan(this.getResources().getColor(2131427543)), 11, 13, 33);
+        ((RelativeLayout) this.findViewById(R.id.bottom_bg)).setBackgroundResource(am.b((Context) this, (int) R.attr.audiobookInfoBottomBg));
+        TextView textView = (TextView) this.findViewById(R.id.BottomContentText);
+        SpannableString spannableString = new SpannableString(this.getResources().getString(R.string.ximalaya_statement));
+        spannableString.setSpan(new ForegroundColorSpan(this.getResources().getColor(R.color.tweet_operator_text_color)), 0, 5, 33);
+        spannableString.setSpan(new ForegroundColorSpan(this.getResources().getColor(R.color.audio_book_black)), 5, 11, 33);
+        spannableString.setSpan(new ForegroundColorSpan(this.getResources().getColor(R.color.tweet_operator_text_color)), 11, 13, 33);
         textView.setText(spannableString);
         textView.setOnClickListener(new r(this));
     }

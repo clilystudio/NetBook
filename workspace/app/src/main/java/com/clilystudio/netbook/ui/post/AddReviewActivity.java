@@ -84,10 +84,10 @@ public class AddReviewActivity extends BaseActivity {
     public void onCreate(Bundle bundle) {
         boolean bl;
         super.onCreate(bundle);
-        this.setContentView(2130903147);
-        this.a(2131034298, 2131034419, (aa) new A(this));
-        View view = this.findViewById(2131493270);
-        ListView listView = (ListView) this.findViewById(2131493271);
+        this.setContentView(R.layout.add_review);
+        this.a(R.string.add_review_title, R.string.next, (aa) new A(this));
+        View view = this.findViewById(R.id.add_review_empty);
+        ListView listView = (ListView) this.findViewById(R.id.add_review_list);
         listView.setOnItemClickListener(new B(this));
         this.a = new a(this.getLayoutInflater());
         listView.setAdapter((ListAdapter) ((Object) this.a));

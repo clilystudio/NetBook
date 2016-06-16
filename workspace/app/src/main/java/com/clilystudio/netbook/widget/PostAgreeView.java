@@ -35,16 +35,16 @@ public class PostAgreeView extends LinearLayout implements View.OnClickListener 
     }
 
     public void setAgree(boolean bl) {
-        View view = this.findViewById(2131493841);
+        View view = this.findViewById(R.id.agree);
         if (bl) {
             this.setOnClickListener(null);
             view.setEnabled(false);
-            this.setBackgroundResource(2130837618);
+            this.setBackgroundResource(R.drawable.bg_agree_btn_disabled);
             return;
         }
         this.setOnClickListener(this);
         view.setEnabled(true);
-        this.setBackgroundResource(2130837617);
+        this.setBackgroundResource(R.drawable.bg_agree_btn);
     }
 
     public void setPostId(String string) {

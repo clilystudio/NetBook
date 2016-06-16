@@ -12,7 +12,7 @@ import java.util.Date;
 
 public final class F extends W<TopicPost> {
     public F(LayoutInflater layoutInflater) {
-        super(layoutInflater, 2130903290);
+        super(layoutInflater, R.layout.list_item_new_topic);
     }
 
     /*
@@ -28,11 +28,11 @@ public final class F extends W<TopicPost> {
         String string2 = topicPost.getBlock();
         CoverView coverView = (CoverView) this.a(0, CoverView.class);
         if ("help".equals(string2)) {
-            coverView.setImageResource(2130837720);
+            coverView.setImageResource(R.drawable.book_help_cover_default);
         } else if ("ramble".equals(string2)) {
-            coverView.setImageResource(2130837781);
+            coverView.setImageResource(R.drawable.discuss_cover_default);
         } else {
-            coverView.setImageUrl(topicPost.getBook().getFullCover(), 2130837766);
+            coverView.setImageUrl(topicPost.getBook().getFullCover(), R.drawable.cover_default);
         }
         if ("vote".equals(topicPost.getType())) {
             this.a(4, false);
@@ -58,6 +58,6 @@ public final class F extends W<TopicPost> {
 
     @Override
     protected final int[] a() {
-        return new int[]{2131493706, 2131493707, 2131492935, 2131492936, 2131493708, 2131493709, 2131493710};
+        return new int[]{R.id.new_topic_listitem_cover, R.id.new_topic_listitem_user, R.id.time, R.id.title, R.id.new_topic_listitem_vote, R.id.new_topic_listitem_comment, R.id.new_topic_listitem_label_status};
     }
 }

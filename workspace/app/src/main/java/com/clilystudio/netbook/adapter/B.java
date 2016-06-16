@@ -17,10 +17,10 @@ public final class B extends W<TocSummary> {
     private int c = -1;
 
     public B(LayoutInflater layoutInflater) {
-        super(layoutInflater, 2130903299);
+        super(layoutInflater, R.layout.list_item_resource);
         Resources resources = layoutInflater.getContext().getResources();
-        this.a = resources.getColor(2131427539);
-        this.b = resources.getColor(2131427399);
+        this.a = resources.getColor(R.color.third_text_normal);
+        this.b = resources.getColor(R.color.deprecated_red);
     }
 
     public final void a(int n) {
@@ -52,6 +52,6 @@ public final class B extends W<TocSummary> {
 
     @Override
     protected final int[] a() {
-        return new int[]{2131493741, 2131493743, 2131493742, 2131493738, 2131493740};
+        return new int[]{R.id.tv_name, R.id.tv_updated, R.id.iv_ic_updated, R.id.tv_last_chapter, R.id.resource_list_item_last_select};
     }
 }

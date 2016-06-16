@@ -12,7 +12,7 @@ import java.util.Date;
 
 public final class D extends W<ReviewSummary> {
     public D(LayoutInflater layoutInflater) {
-        super(layoutInflater, 2130903301);
+        super(layoutInflater, R.layout.list_item_review);
     }
 
     /*
@@ -21,7 +21,7 @@ public final class D extends W<ReviewSummary> {
     @Override
     protected final /* synthetic */ void a(int n, Object object) {
         ReviewSummary reviewSummary = (ReviewSummary) object;
-        ((CoverView) this.a(0, CoverView.class)).setImageUrl(reviewSummary.getBook().getFullCover(), 2130837766);
+        ((CoverView) this.a(0, CoverView.class)).setImageUrl(reviewSummary.getBook().getFullCover(), R.drawable.cover_default);
         this.a(1, reviewSummary.getBook().getTitle());
         this.a(4, reviewSummary.getTitle());
         Object[] arrobject = new Object[]{reviewSummary.getHelpful().getYes()};
@@ -46,6 +46,6 @@ public final class D extends W<ReviewSummary> {
 
     @Override
     protected final int[] a() {
-        return new int[]{2131493744, 2131493745, 2131493746, 2131493747, 2131493748, 2131493749, 2131493632};
+        return new int[]{R.id.book_review_listitem_cover, R.id.book_review_listitem_book, R.id.book_review_listitem_type, R.id.book_review_listitem_time, R.id.book_review_listitem_title, R.id.support_percentage, R.id.post_flag};
     }
 }

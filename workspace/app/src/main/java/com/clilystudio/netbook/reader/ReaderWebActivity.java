@@ -59,7 +59,7 @@ public class ReaderWebActivity extends BaseReadActivity {
         if (readerWebPageFragment == null) {
             readerWebPageFragment = ReaderWebPageFragment.a(readerWebActivity.b, string2, n, string);
         }
-        fragmentTransaction.replace(2131493174, readerWebPageFragment);
+        fragmentTransaction.replace(R.id.content_frame, readerWebPageFragment);
         try {
             fragmentTransaction.commitAllowingStateLoss();
             return;
@@ -76,7 +76,7 @@ public class ReaderWebActivity extends BaseReadActivity {
         if (readerWebPageFragment == null) {
             readerWebPageFragment = ReaderWebPageFragment.a(readerWebActivity.b, string, string5, string2, string3, string4);
         }
-        fragmentTransaction.replace(2131493174, readerWebPageFragment);
+        fragmentTransaction.replace(R.id.content_frame, readerWebPageFragment);
         try {
             fragmentTransaction.commitAllowingStateLoss();
             return;
@@ -104,9 +104,9 @@ public class ReaderWebActivity extends BaseReadActivity {
     static /* synthetic */ void c(ReaderWebActivity readerWebActivity) {
         if (a.g()) {
             AlertDialog alertDialog = new AlertDialog.Builder(readerWebActivity).create();
-            View view = LayoutInflater.from(readerWebActivity).inflate(2130903198, null);
-            Button button = (Button) view.findViewById(2131493417);
-            Button button2 = (Button) view.findViewById(2131493418);
+            View view = LayoutInflater.from(readerWebActivity).inflate(R.layout.dialog_reader_web_opt2, null);
+            Button button = (Button) view.findViewById(R.id.reader_web_opt2_btn1);
+            Button button2 = (Button) view.findViewById(R.id.reader_web_opt2_btn2);
             button.setOnClickListener((View.OnClickListener) ((Object) new cE(readerWebActivity, alertDialog)));
             button2.setOnClickListener(new cF(readerWebActivity, alertDialog));
             alertDialog.setCancelable(false);
@@ -114,7 +114,7 @@ public class ReaderWebActivity extends BaseReadActivity {
             alertDialog.show();
             return;
         }
-        new h(readerWebActivity).b(2131034463).a(false).a("\u8f6c\u7801\u9605\u8bfb", (DialogInterface.OnClickListener) new cH(readerWebActivity)).b("\u539f\u7f51\u9875\u9605\u8bfb", (DialogInterface.OnClickListener) new cG(readerWebActivity)).b();
+        new h(readerWebActivity).b(R.string.reader_web_opt_msg2).a(false).a("\u8f6c\u7801\u9605\u8bfb", (DialogInterface.OnClickListener) new cH(readerWebActivity)).b("\u539f\u7f51\u9875\u9605\u8bfb", (DialogInterface.OnClickListener) new cG(readerWebActivity)).b();
     }
 
     static /* synthetic */ int d(ReaderWebActivity readerWebActivity) {
@@ -132,7 +132,7 @@ public class ReaderWebActivity extends BaseReadActivity {
         if (readerWebPageFragment == null) {
             readerWebPageFragment = ReaderWebPageFragment.a(this.b, string, n);
         }
-        fragmentTransaction.replace(2131493174, readerWebPageFragment);
+        fragmentTransaction.replace(R.id.content_frame, readerWebPageFragment);
         try {
             fragmentTransaction.commitAllowingStateLoss();
             return;
@@ -144,7 +144,7 @@ public class ReaderWebActivity extends BaseReadActivity {
 
     public final void a() {
         this.startActivity(ModeListActivity.a(this, this.c, this.d, this.b));
-        this.overridePendingTransition(2130968602, 2130968603);
+        this.overridePendingTransition(R.anim.mode_list_enter_in, R.anim.mode_list_enter_out);
     }
 
     public final void b() {
@@ -159,14 +159,14 @@ public class ReaderWebActivity extends BaseReadActivity {
     @Override
     public void onCreate(Bundle var1_1) {
         super.onCreate(var1_1);
-        this.setContentView(2130903124);
+        this.setContentView(R.layout.activity_reader_web);
         i.a().a(this);
         this.c = this.getIntent().getStringExtra("BOOK_ID");
         this.d = this.getIntent().getStringExtra("BOOK_TITLE");
         this.e = this.getIntent().getStringExtra("SOURCE_ID");
         this.b = var1_1 != null ? var1_1.getInt("savedCurrentMode", 5) : this.getIntent().getIntExtra("BOOK_MODE", 5);
         this.f = a.g(this.b);
-        this.g = (ReaderWebActionBar) this.findViewById(2131493173);
+        this.g = (ReaderWebActionBar) this.findViewById(R.id.reader_web_action_bar);
         this.g.setTitle(this.d);
         this.g.setChapterLink(a.P(this.f));
         this.g.setOnBtnClickListener$74b8600c((com.umeng.update.a) new cB(this));
@@ -180,7 +180,7 @@ public class ReaderWebActivity extends BaseReadActivity {
                 if (var29_6 == null) {
                     var29_6 = ReaderWebPageFragment.a(this.b, var28_5);
                 }
-                var27_4.replace(2131493174, var29_6).commit();
+                var27_4.replace(R.id.content_frame, var29_6).commit();
                 **GOTO lbl48
             }
             case 6: {
@@ -215,11 +215,11 @@ public class ReaderWebActivity extends BaseReadActivity {
         lbl48:
         // 8 sources:
         if (a.l(this, this.f + "source_web_alert")) {
-            var10_7 = this.getString(2131034462);
-            var11_8 = LayoutInflater.from(this).inflate(2130903197, null);
+            var10_7 = this.getString(R.string.reader_web_opt_msg);
+            var11_8 = LayoutInflater.from(this).inflate(R.layout.dialog_reader_web_opt, null);
             var12_9 = new cC(this, var11_8);
             if (a.g()) {
-                ((TextView) var11_8.findViewById(2131493416)).setText(a.P(this.f));
+                ((TextView) var11_8.findViewById(R.id.reader_web_opt_url)).setText(a.P(this.f));
                 new h(this).a(var11_8).a(false).b(true).a("\u597d\u7684", (DialogInterface.OnClickListener) var12_9).b();
             } else {
                 var13_21 = new cD(this);

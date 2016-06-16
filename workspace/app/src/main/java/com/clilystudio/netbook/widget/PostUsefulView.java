@@ -60,20 +60,20 @@ public class PostUsefulView extends LinearLayout implements View.OnClickListener
         int n4;
         if (n == 1) {
             int n5 = this.a.getHelpful().getYes();
-            TextView textView3 = (TextView) this.findViewById(2131493354);
-            TextView textView4 = (TextView) this.findViewById(2131493355);
-            int n6 = this.getResources().getColor(2131427510);
-            n4 = 2130838115;
+            TextView textView3 = (TextView) this.findViewById(R.id.review_useful_yes_count);
+            TextView textView4 = (TextView) this.findViewById(R.id.review_useful_yes_label);
+            int n6 = this.getResources().getColor(R.color.review_useful_yes_pre);
+            n4 = R.drawable.review_useful_yes_pre;
             textView2 = textView4;
             n2 = n6;
             n3 = n5;
             textView = textView3;
         } else {
             int n7 = this.a.getHelpful().getNo();
-            TextView textView5 = (TextView) this.findViewById(2131493357);
-            TextView textView6 = (TextView) this.findViewById(2131493358);
-            int n8 = this.getResources().getColor(2131427509);
-            n4 = 2130838113;
+            TextView textView5 = (TextView) this.findViewById(R.id.review_useful_no_count);
+            TextView textView6 = (TextView) this.findViewById(R.id.review_useful_no_label);
+            int n8 = this.getResources().getColor(R.color.review_useful_no_pre);
+            n4 = R.drawable.review_useful_no_pre;
             textView2 = textView6;
             n2 = n8;
             n3 = n7;
@@ -102,7 +102,7 @@ public class PostUsefulView extends LinearLayout implements View.OnClickListener
             account = null;
         }
         switch (view.getId()) {
-            case 2131493353: {
+            case R.id.review_useful_yes: {
                 if (account == null) return;
                 {
                     this.e = true;
@@ -115,7 +115,7 @@ public class PostUsefulView extends LinearLayout implements View.OnClickListener
             default: {
                 return;
             }
-            case 2131493356:
+            case R.id.review_useful_no:
         }
         if (account == null) return;
         {
@@ -130,8 +130,8 @@ public class PostUsefulView extends LinearLayout implements View.OnClickListener
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
-        this.b = this.findViewById(2131493353);
-        this.c = this.findViewById(2131493356);
+        this.b = this.findViewById(R.id.review_useful_yes);
+        this.c = this.findViewById(R.id.review_useful_no);
         this.b.setOnClickListener(this);
         this.c.setOnClickListener(this);
     }
@@ -139,8 +139,8 @@ public class PostUsefulView extends LinearLayout implements View.OnClickListener
     public void setPost(Review review) {
         PostUsefulRecord postUsefulRecord;
         this.a = review;
-        ((TextView) this.findViewById(2131493354)).setText("" + this.a.getHelpful().getYes());
-        ((TextView) this.findViewById(2131493357)).setText("" + this.a.getHelpful().getNo());
+        ((TextView) this.findViewById(R.id.review_useful_yes_count)).setText("" + this.a.getHelpful().getYes());
+        ((TextView) this.findViewById(R.id.review_useful_no_count)).setText("" + this.a.getHelpful().getNo());
         Account account = am.e();
         if (account != null && (postUsefulRecord = PostUsefulRecord.get(account.getUser().getId(), this.a.get_id())) != null && postUsefulRecord.type != 0) {
             this.a(postUsefulRecord.type, false);

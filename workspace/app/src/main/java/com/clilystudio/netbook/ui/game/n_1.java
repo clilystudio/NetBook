@@ -15,7 +15,7 @@ final class n extends W<GamePostRoot$GamePost> {
 
     public n(GameDetailActivity gameDetailActivity, LayoutInflater layoutInflater) {
         this.a = gameDetailActivity;
-        super(layoutInflater, 2130903278);
+        super(layoutInflater, R.layout.list_item_game_detail);
     }
 
     /*
@@ -26,7 +26,7 @@ final class n extends W<GamePostRoot$GamePost> {
         GamePostRoot$GamePost gamePostRoot$GamePost = (GamePostRoot$GamePost) object;
         String string = gamePostRoot$GamePost.get_id();
         Author author = gamePostRoot$GamePost.getAuthor();
-        ((SmartImageView) this.a(0, SmartImageView.class)).setImageUrl(author.getScaleAvatar(), 2130837614);
+        ((SmartImageView) this.a(0, SmartImageView.class)).setImageUrl(author.getScaleAvatar(), R.drawable.avatar_default);
         if (GameDetailActivity.m(this.a)) {
             String string2 = author.getGender();
             this.a(1, false);
@@ -64,12 +64,12 @@ final class n extends W<GamePostRoot$GamePost> {
         ImageView imageView2 = (ImageView) this.a(9, ImageView.class);
         if ("distillate".equals(string4)) {
             imageView2.setVisibility(View.VISIBLE);
-            imageView2.setImageResource(2130837812);
+            imageView2.setImageResource(R.drawable.game_center_post_good);
             return;
         }
         if ("hot".equals(string4)) {
             imageView2.setVisibility(View.VISIBLE);
-            imageView2.setImageResource(2130837813);
+            imageView2.setImageResource(R.drawable.game_center_post_hot);
             return;
         }
         imageView2.setVisibility(View.GONE);
@@ -77,6 +77,6 @@ final class n extends W<GamePostRoot$GamePost> {
 
     @Override
     protected final int[] a() {
-        return new int[]{2131493662, 2131493663, 2131493664, 2131493665, 2131493666, 2131493667, 2131493670, 2131493671, 2131493672, 2131493669};
+        return new int[]{R.id.game_detail_item_avatar, R.id.game_detail_item_avatar_verify, R.id.game_detail_item_name, R.id.game_detail_item_time, R.id.game_detail_item_more, R.id.game_detail_item_content, R.id.game_detail_item_comment, R.id.game_detail_item_like_btn, R.id.game_detail_item_like, R.id.game_detail_item_flag};
     }
 }

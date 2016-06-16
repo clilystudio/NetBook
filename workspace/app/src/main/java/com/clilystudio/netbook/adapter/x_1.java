@@ -11,7 +11,7 @@ public final class x extends W<ChargePlan> {
     private Activity a;
 
     public x(Activity activity, LayoutInflater layoutInflater) {
-        super(layoutInflater, 2130903345);
+        super(layoutInflater, R.layout.pay_grid_item);
         this.a = activity;
     }
 
@@ -39,6 +39,6 @@ public final class x extends W<ChargePlan> {
 
     @Override
     protected final int[] a() {
-        return new int[]{2131493831, 2131493832, 2131493833, 2131493834};
+        return new int[]{R.id.pay_grid_item, R.id.pay_grid_price, R.id.pay_grid_currency, R.id.pay_grid_voucher};
     }
 }

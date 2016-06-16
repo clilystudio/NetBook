@@ -36,16 +36,16 @@ final class S extends BaseAdapter {
      * Enabled aggressive block sorting
      */
     static /* synthetic */ void a(S s, final PayConsumeRecord$Order payConsumeRecord$Order, View view, View view2, int n) {
-        View view3 = s.b.inflate(2130903347, null);
-        final PopupWindow popupWindow = new PopupWindow(view3, s.a.getResources().getDimensionPixelSize(2131099902), -2);
+        View view3 = s.b.inflate(R.layout.pay_record_popupwindow, null);
+        final PopupWindow popupWindow = new PopupWindow(view3, s.a.getResources().getDimensionPixelSize(R.dimen.reader_popup_width), -2);
         popupWindow.setFocusable(true);
         popupWindow.setOutsideTouchable(true);
         popupWindow.setBackgroundDrawable(new ColorDrawable(0));
         popupWindow.getContentView().setFocusableInTouchMode(true);
         popupWindow.getContentView().setFocusable(true);
-        View view4 = view3.findViewById(2131493835);
-        View view5 = view3.findViewById(2131493836);
-        View view6 = view3.findViewById(2131493837);
+        View view4 = view3.findViewById(R.id.consume_record_copy);
+        View view5 = view3.findViewById(R.id.consume_record_line);
+        View view6 = view3.findViewById(R.id.consume_record_desc);
         TextView textView = (TextView) view6;
         String string = s.d[n] ? "\u6536\u8d77\u8be6\u60c5" : "\u5c55\u5f00\u8be6\u60c5";
         textView.setText(string);
@@ -106,17 +106,17 @@ final class S extends BaseAdapter {
         View view2;
         Y y2;
         if (view == null) {
-            view2 = this.b.inflate(2130903249, viewGroup, false);
+            view2 = this.b.inflate(R.layout.layout_consume_collapse_item, viewGroup, false);
             y2 = new Y(this);
-            y2.a = (TextView) view2.findViewById(2131493639);
-            y2.b = (TextView) view2.findViewById(2131493640);
-            y2.c = (TextView) view2.findViewById(2131493641);
-            y2.d = (TextView) view2.findViewById(2131493642);
-            y2.e = (TextView) view2.findViewById(2131493644);
-            y2.f = (TextView) view2.findViewById(2131493646);
-            y2.g = view2.findViewById(2131493645);
-            y2.h = view2.findViewById(2131493578);
-            y2.i = (ImageView) view2.findViewById(2131493643);
+            y2.a = (TextView) view2.findViewById(R.id.consume_record_book);
+            y2.b = (TextView) view2.findViewById(R.id.consume_record_chapter);
+            y2.c = (TextView) view2.findViewById(R.id.consume_record_type);
+            y2.d = (TextView) view2.findViewById(R.id.consume_record_time);
+            y2.e = (TextView) view2.findViewById(R.id.consume_record_currency);
+            y2.f = (TextView) view2.findViewById(R.id.consume_record_voucher);
+            y2.g = view2.findViewById(R.id.consume_record_voucher_layout);
+            y2.h = view2.findViewById(R.id.item_container);
+            y2.i = (ImageView) view2.findViewById(R.id.consume_record_more);
             view2.setTag(y2);
         } else {
             y2 = (Y) view.getTag();

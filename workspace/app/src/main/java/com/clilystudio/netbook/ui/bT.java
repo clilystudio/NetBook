@@ -16,7 +16,7 @@ final class bT implements View.OnClickListener {
 
     @Override
     public final void onClick(View view) {
-        String string = ((EditText) this.a.findViewById(2131493194)).getText().toString().trim();
+        String string = ((EditText) this.a.findViewById(R.id.edt_test_url)).getText().toString().trim();
         if (string.startsWith("http://") || string.startsWith("https://")) {
             Intent intent = AdWebViewActivity.a(this.a, "\u6d4b\u8bd5", string);
             this.a.startActivity(intent);

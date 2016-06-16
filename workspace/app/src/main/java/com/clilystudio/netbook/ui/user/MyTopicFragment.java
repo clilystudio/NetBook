@@ -94,13 +94,13 @@ public class MyTopicFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
-        View view = layoutInflater.inflate(2130903221, viewGroup, false);
-        this.f = view.findViewById(2131493085);
-        this.g = (TextView) view.findViewById(2131493100);
+        View view = layoutInflater.inflate(R.layout.fragment_user_topic, viewGroup, false);
+        this.f = view.findViewById(R.id.pb_loading);
+        this.g = (TextView) view.findViewById(R.id.empty_text);
         LayoutInflater layoutInflater2 = LayoutInflater.from(this.getActivity());
-        this.c = (LabelPtrListView) view.findViewById(2131493099);
+        this.c = (LabelPtrListView) view.findViewById(R.id.ptr_list);
         this.c.setMode(PullToRefreshBase$Mode.PULL_FROM_START);
-        this.e = layoutInflater2.inflate(2130903325, null);
+        this.e = layoutInflater2.inflate(R.layout.loading_item, null);
         this.d = (ListView) this.c.h();
         if (a.i()) {
             this.d.setFooterDividersEnabled(false);

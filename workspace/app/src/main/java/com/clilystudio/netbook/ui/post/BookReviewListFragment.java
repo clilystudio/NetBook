@@ -64,7 +64,7 @@ public class BookReviewListFragment extends BookPostListFragment {
         k k2 = new k(bookReviewListFragment.getActivity());
         k2.a("\u518d\u6b21\u7f16\u8f91");
         k2.b("\u5373\u5c06\u8f7d\u5165\u4e4b\u524d\u53d1\u5e03\u7684\u4e66\u8bc4");
-        k2.a(2131034424, (DialogInterface.OnClickListener) new aD(bookReviewListFragment, review));
+        k2.a(R.string.ok, (DialogInterface.OnClickListener) new aD(bookReviewListFragment, review));
         k2.c();
     }
 
@@ -98,7 +98,7 @@ public class BookReviewListFragment extends BookPostListFragment {
     static /* synthetic */ void g(BookReviewListFragment bookReviewListFragment) {
         if (bookReviewListFragment.e.getVisibility() == 8) {
             bookReviewListFragment.e.setVisibility(View.VISIBLE);
-            bookReviewListFragment.e.setImageResource(2130837883);
+            bookReviewListFragment.e.setImageResource(R.drawable.ic_fab_book_review);
             bookReviewListFragment.e.setOnClickListener(new aC(bookReviewListFragment));
             bookReviewListFragment.e.setContentDescription("\u5199\u4e66\u8bc4");
         }

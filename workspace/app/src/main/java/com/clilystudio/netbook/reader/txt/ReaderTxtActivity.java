@@ -117,8 +117,8 @@ public class ReaderTxtActivity extends FragmentActivity implements com.clilystud
     static /* synthetic */ void D(ReaderTxtActivity readerTxtActivity) {
         if (readerTxtActivity.isFinishing()) return;
         uk.me.lewisdeane.ldialogs.h h2 = new uk.me.lewisdeane.ldialogs.h(readerTxtActivity);
-        h2.b(2131034528);
-        h2.a(2131034471, (DialogInterface.OnClickListener) ((Object) new p(readerTxtActivity))).b(2131034321, (DialogInterface.OnClickListener) ((Object) new com.clilystudio.netbook.reader.txt.o(readerTxtActivity)));
+        h2.b(R.string.toc_load_error);
+        h2.a(R.string.retry, (DialogInterface.OnClickListener) ((Object) new p(readerTxtActivity))).b(R.string.back, (DialogInterface.OnClickListener) ((Object) new com.clilystudio.netbook.reader.txt.o(readerTxtActivity)));
         AlertDialog alertDialog = h2.a();
         alertDialog.setCanceledOnTouchOutside(false);
         alertDialog.setOnCancelListener((DialogInterface.OnCancelListener) ((Object) new q(readerTxtActivity)));
@@ -343,8 +343,8 @@ public class ReaderTxtActivity extends FragmentActivity implements com.clilystud
      * Enabled aggressive block sorting
      */
     static /* synthetic */ void q(ReaderTxtActivity readerTxtActivity) {
-        if (readerTxtActivity.e.h == 2130838077) {
-            readerTxtActivity.x.setBackgroundResource(2130838076);
+        if (readerTxtActivity.e.h == R.drawable.reader_background_brown_big_img) {
+            readerTxtActivity.x.setBackgroundResource(R.drawable.reader_background_brown_auto_img);
         } else {
             readerTxtActivity.x.setBackgroundResource(readerTxtActivity.e.h);
         }
@@ -409,9 +409,9 @@ public class ReaderTxtActivity extends FragmentActivity implements com.clilystud
             com.clilystudio.netbook.hpay100.a.a.a(a, readerTxtActivity, "\u8ffd\u4e66\u795e\u5668\u6717\u8bfb\u63d2\u4ef6");
             return;
         }
-        String string = com.clilystudio.netbook.hpay100.a.a.s(readerTxtActivity) ? readerTxtActivity.getString(2131034533) : readerTxtActivity.getString(2131034531);
+        String string = com.clilystudio.netbook.hpay100.a.a.s(readerTxtActivity) ? readerTxtActivity.getString(R.string.tts_download_prompt_wifi) : readerTxtActivity.getString(R.string.tts_download_prompt_no_wifi);
         uk.me.lewisdeane.ldialogs.h h2 = new uk.me.lewisdeane.ldialogs.h(readerTxtActivity);
-        h2.d = readerTxtActivity.getString(2131034532);
+        h2.d = readerTxtActivity.getString(R.string.tts_download_prompt_title);
         h2.e = string;
         h2.a("\u4e0b\u8f7d", (DialogInterface.OnClickListener) ((Object) new c(readerTxtActivity))).b("\u53d6\u6d88", (DialogInterface.OnClickListener) ((Object) new b(readerTxtActivity))).b();
     }
@@ -658,7 +658,7 @@ public class ReaderTxtActivity extends FragmentActivity implements com.clilystud
             return;
         }
         if (!n2.f()) {
-            com.clilystudio.netbook.util.e.a((Activity) this, (int) 2131034407);
+            com.clilystudio.netbook.util.e.a((Activity) this, (int) R.string.is_first);
             return;
         }
         this.t();
@@ -844,9 +844,9 @@ public class ReaderTxtActivity extends FragmentActivity implements com.clilystud
     private void z() {
         this.x.setVisibility(View.VISIBLE);
         if (this.e.h()) {
-            this.y.setBackgroundResource(2130837612);
+            this.y.setBackgroundResource(R.drawable.auto_reader_bottom_shadow_night);
         } else {
-            this.y.setBackgroundResource(2130837611);
+            this.y.setBackgroundResource(R.drawable.auto_reader_bottom_shadow);
         }
         this.y.setVisibility(View.VISIBLE);
     }
@@ -955,7 +955,7 @@ public class ReaderTxtActivity extends FragmentActivity implements com.clilystud
         this.getWindow().addFlags(512);
         this.s = com.clilystudio.netbook.hpay100.a.a.l(this, "reader_orientation");
         this.f();
-        this.setContentView(2130903123);
+        this.setContentView(R.layout.activity_reader_txt);
         this.c = this.getIntent().getStringExtra("file_name");
         if (bundle != null) {
             this.k = bundle.getInt("SaveSelectedPageIndex", 0);
@@ -967,17 +967,17 @@ public class ReaderTxtActivity extends FragmentActivity implements com.clilystud
             this.G.setParameter("speed", "" + com.clilystudio.netbook.hpay100.a.a.a((Context) this, "speech_speed", 50));
             this.G.setParameter("voice_name", com.clilystudio.netbook.hpay100.a.a.d((Context) this, "speech_voice", ""));
         }
-        this.j = (PagerWidget) this.findViewById(2131493158);
-        this.u = this.findViewById(2131493167);
-        this.o = (ReaderActionBar) this.findViewById(2131493172);
-        this.p = (SettingWidget) this.findViewById(2131493165);
+        this.j = (PagerWidget) this.findViewById(R.id.main_view);
+        this.u = this.findViewById(R.id.reader_content_loading);
+        this.o = (ReaderActionBar) this.findViewById(R.id.reader_txt_action_bar);
+        this.p = (SettingWidget) this.findViewById(R.id.setting_widget);
         this.e = new bZ(this);
         this.f = new bH(this);
         this.d = new Reader(this.c);
-        this.z = (ReaderTtsSetWidget) this.findViewById(2131493164);
-        this.v = (AutoReaderSetWidget) this.findViewById(2131493163);
-        this.x = (AutoReaderTextView) this.findViewById(2131493161);
-        this.y = this.findViewById(2131493162);
+        this.z = (ReaderTtsSetWidget) this.findViewById(R.id.reader_tts_setting);
+        this.v = (AutoReaderSetWidget) this.findViewById(R.id.auto_reader_setting);
+        this.x = (AutoReaderTextView) this.findViewById(R.id.tv_auto_reader_body);
+        this.y = this.findViewById(R.id.view_auto_reader_shadow);
         this.e.a(new H(this));
         this.e.a(new I(this));
         this.e.a(new J(this));
@@ -988,8 +988,8 @@ public class ReaderTxtActivity extends FragmentActivity implements com.clilystud
         this.x.setHeight(this.e.e);
         this.x.setTextSize(0, this.e.a);
         this.x.setLineSpacing(this.e.b, 1.0f);
-        if (this.e.h == 2130838077) {
-            this.x.setBackgroundResource(2130838076);
+        if (this.e.h == R.drawable.reader_background_brown_big_img) {
+            this.x.setBackgroundResource(R.drawable.reader_background_brown_auto_img);
         } else {
             this.x.setBackgroundResource(this.e.h);
         }

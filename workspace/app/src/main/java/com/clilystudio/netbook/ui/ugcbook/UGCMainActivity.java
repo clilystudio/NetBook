@@ -39,7 +39,7 @@ public class UGCMainActivity extends BaseTabActivity implements ViewPager$OnPage
 
     static /* synthetic */ void a(UGCMainActivity uGCMainActivity) {
         if (uGCMainActivity.h != null && !uGCMainActivity.h.isShowing()) {
-            TextView textView = (TextView) uGCMainActivity.a().a().findViewById(2131493008);
+            TextView textView = (TextView) uGCMainActivity.a().a().findViewById(R.id.actionbar_custom_right_text);
             uGCMainActivity.h.showAsDropDown(textView);
         }
         uGCMainActivity.e("\u6536\u8d77");
@@ -60,12 +60,12 @@ public class UGCMainActivity extends BaseTabActivity implements ViewPager$OnPage
     static /* synthetic */ void b(UGCMainActivity uGCMainActivity) {
         if (uGCMainActivity.g != null && !uGCMainActivity.g.isShowing()) {
             if (uGCMainActivity.f == null || !uGCMainActivity.f.isShowing()) {
-                uGCMainActivity.f = new PopupWindow(uGCMainActivity.getLayoutInflater().inflate(2130903227, null, false), -1, a.L(uGCMainActivity));
-                uGCMainActivity.f.setAnimationStyle(2131165629);
+                uGCMainActivity.f = new PopupWindow(uGCMainActivity.getLayoutInflater().inflate(R.layout.home_menu_bg_popup, null, false), -1, a.L(uGCMainActivity));
+                uGCMainActivity.f.setAnimationStyle(R.style.home_menu_bg_anim);
                 uGCMainActivity.f.showAtLocation(uGCMainActivity.a().a(), 0, 0, 0);
             }
-            View view = uGCMainActivity.a().a().findViewById(2131493009);
-            uGCMainActivity.g.setAnimationStyle(2131165628);
+            View view = uGCMainActivity.a().a().findViewById(R.id.actionbar_custom_right_icon);
+            uGCMainActivity.g.setAnimationStyle(R.style.home_menu_anim);
             uGCMainActivity.g.showAsDropDown(view);
         }
     }
@@ -162,25 +162,25 @@ public class UGCMainActivity extends BaseTabActivity implements ViewPager$OnPage
     @Override
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        this.setContentView(2130903136);
-        View view = this.getLayoutInflater().inflate(2130903410, null);
+        this.setContentView(R.layout.activity_ugc_main_tabhost);
+        View view = this.getLayoutInflater().inflate(R.layout.ugc_popupwindow_layout, null);
         this.g = this.a(this.g, view);
         this.g.setOnDismissListener(new ab(this));
-        view.findViewById(2131494018).setOnClickListener(new ac(this));
-        view.findViewById(2131494019).setOnClickListener(new ad(this));
-        view.findViewById(2131493373).setOnClickListener(new ae(this));
-        View view2 = LayoutInflater.from(this).inflate(2130903405, null);
+        view.findViewById(R.id.create_ugc).setOnClickListener(new ac(this));
+        view.findViewById(R.id.my_ugc).setOnClickListener(new ad(this));
+        view.findViewById(R.id.back_view).setOnClickListener(new ae(this));
+        View view2 = LayoutInflater.from(this).inflate(R.layout.ugc_filter_popupwindow, null);
         this.h = this.a(this.h, view2);
-        view2.findViewById(2131493373).setOnClickListener(new ag(this));
-        this.i = this.getString(2131034561);
-        this.j = (RecyclerView) view2.findViewById(2131494014);
+        view2.findViewById(R.id.back_view).setOnClickListener(new ag(this));
+        this.i = this.getString(R.string.ugc_all);
+        this.j = (RecyclerView) view2.findViewById(R.id.ugc_filter_list);
         this.j.setLayoutManager(new D(this));
         this.k = new ak(this, this, new UgcFilterRoot$FilterGroup[0]);
         this.j.setAdapter(this.k);
         this.h.setOnDismissListener(new ah(this));
-        this.a(2131034565, "\u7b5b\u9009", 2130837871, (com.clilystudio.netbook.ui.ab) new aa(this));
-        this.a = (TabHost) this.findViewById(2131493096);
-        this.c = (ViewPager) this.findViewById(2131493097);
+        this.a(R.string.ugc_list, "\u7b5b\u9009", R.drawable.ic_action_overflow, (com.clilystudio.netbook.ui.ab) new aa(this));
+        this.a = (TabHost) this.findViewById(R.id.host);
+        this.c = (ViewPager) this.findViewById(R.id.pager);
         this.e = new aj(this, this.getSupportFragmentManager());
         this.c.setOffscreenPageLimit(3);
         this.c.setAdapter(this.e);
@@ -196,8 +196,8 @@ public class UGCMainActivity extends BaseTabActivity implements ViewPager$OnPage
         for (int k = 0; k < n; ++k) {
             TabHost.TabSpec tabSpec = this.a.newTabSpec("tab" + k);
             tabSpec.setContent(this);
-            View view3 = layoutInflater.inflate(2130903229, null);
-            ((TextView) view3.findViewById(2131493509)).setText((String) this.e.getPageTitle(k));
+            View view3 = layoutInflater.inflate(R.layout.home_tabhost_item, null);
+            ((TextView) view3.findViewById(R.id.text)).setText((String) this.e.getPageTitle(k));
             tabSpec.setIndicator(view3);
             this.a.addTab(tabSpec);
         }

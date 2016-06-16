@@ -92,14 +92,14 @@ public class UGCGuideSelectBookActivity extends BaseActivity {
     @Override
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        this.setContentView(2130903137);
+        this.setContentView(R.layout.activity_ugc_shelf);
         this.b("\u4e66\u67b6\u6dfb\u52a0");
         this.h = BookReadRecord.getAllNotDeleted();
-        this.a = (ListView) this.findViewById(2131493226);
-        this.e = (Button) this.findViewById(2131493228);
-        this.f = (Button) this.findViewById(2131493229);
-        this.b = this.findViewById(2131493100);
-        this.c = this.findViewById(2131493227);
+        this.a = (ListView) this.findViewById(R.id.ugc_add_shelf_list);
+        this.e = (Button) this.findViewById(R.id.select_cancel);
+        this.f = (Button) this.findViewById(R.id.select_ok);
+        this.b = this.findViewById(R.id.empty_text);
+        this.c = this.findViewById(R.id.select_bar);
         if (this.h.size() == 0) {
             this.b.setVisibility(View.VISIBLE);
             this.a.setVisibility(View.GONE);
@@ -127,7 +127,7 @@ public class UGCGuideSelectBookActivity extends BaseActivity {
         this.g = new X(this, layoutInflater, this.h);
         this.a.setAdapter(this.g);
         this.a.setOnItemClickListener(new U(this));
-        View view = layoutInflater.inflate(2130903256, (ViewGroup) this.a, false);
+        View view = layoutInflater.inflate(R.layout.layout_shelf_footer, (ViewGroup) this.a, false);
         this.a.addFooterView(view);
         this.e.setOnClickListener(new V(this));
         this.f.setOnClickListener(new W(this));

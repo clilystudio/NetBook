@@ -15,7 +15,7 @@ final class da implements View.OnClickListener {
     @Override
     public final void onClick(View view) {
         this.a.dismiss();
-        ReviewListActivity.o(this.b).setText(2131034433);
+        ReviewListActivity.o(this.b).setText(R.string.post_sort_default);
         ReviewListActivity.b(this.b, "updated");
         ReviewListActivity.n(this.b).setRefreshing();
     }

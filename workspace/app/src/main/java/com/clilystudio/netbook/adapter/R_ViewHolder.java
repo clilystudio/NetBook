@@ -30,21 +30,21 @@ final class R_ViewHolder {
 
     public R_ViewHolder(G g, View view) {
         this.q = view;
-        this.a = (SmartImageView) view.findViewById(2131492899);
-        this.b = (TextView) view.findViewById(2131493630);
-        this.c = (TextView) view.findViewById(2131492905);
-        this.d = (TextView) view.findViewById(2131493631);
-        this.e = (TextView) view.findViewById(2131492935);
-        this.f = (TextView) view.findViewById(2131493519);
-        this.g = (TextView) view.findViewById(2131493610);
-        this.h = (TextView) view.findViewById(2131493611);
-        this.i = (TextView) view.findViewById(2131492936);
-        this.j = view.findViewById(2131493348);
-        this.k = (PostFlag) view.findViewById(2131493632);
-        this.l = (TextView) view.findViewById(2131493774);
-        this.m = (TextView) view.findViewById(2131493350);
-        this.n = (RatingView) view.findViewById(2131493351);
-        this.o = (CoverView) view.findViewById(2131493349);
-        this.p = (ImageView) view.findViewById(2131493629);
+        this.a = (SmartImageView) view.findViewById(R.id.avatar);
+        this.b = (TextView) view.findViewById(R.id.user);
+        this.c = (TextView) view.findViewById(R.id.content);
+        this.d = (TextView) view.findViewById(R.id.lv);
+        this.e = (TextView) view.findViewById(R.id.time);
+        this.f = (TextView) view.findViewById(R.id.comment_count);
+        this.g = (TextView) view.findViewById(R.id.retween_count);
+        this.h = (TextView) view.findViewById(R.id.follow);
+        this.i = (TextView) view.findViewById(R.id.title);
+        this.j = view.findViewById(R.id.review_rating_container);
+        this.k = (PostFlag) view.findViewById(R.id.post_flag);
+        this.l = (TextView) view.findViewById(R.id.tv_retweet);
+        this.m = (TextView) view.findViewById(R.id.book_name);
+        this.n = (RatingView) view.findViewById(R.id.review_rating);
+        this.o = (CoverView) view.findViewById(R.id.book_cover);
+        this.p = (ImageView) view.findViewById(R.id.avatar_verify);
     }
 }

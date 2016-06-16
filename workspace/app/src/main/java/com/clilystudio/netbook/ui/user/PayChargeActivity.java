@@ -115,18 +115,18 @@ public class PayChargeActivity extends BaseLoadingActivity {
     @Override
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        this.a(2130903386);
-        TextView textView = (TextView) this.findViewById(2131493104);
+        this.a(R.layout.scroll_listview);
+        TextView textView = (TextView) this.findViewById(R.id.common_list_empty);
         textView.setGravity(1);
         textView.setText("\u60a8\u8fd8\u6ca1\u6709\u5145\u503c\u8bb0\u5f55");
-        textView.setCompoundDrawablesWithIntrinsicBounds(null, this.getResources().getDrawable(2130838029), null, null);
-        textView.setTextSize(2, this.getResources().getDimension(2131099793) / 3.0f);
-        textView.setCompoundDrawablePadding((int) this.getResources().getDimension(2131099721));
+        textView.setCompoundDrawablesWithIntrinsicBounds(null, this.getResources().getDrawable(R.drawable.pay_account_empty), null, null);
+        textView.setTextSize(2, this.getResources().getDimension(R.dimen.text_size_15) / 3.0f);
+        textView.setCompoundDrawablePadding((int) this.getResources().getDimension(R.dimen.dp_24));
         this.b(this.getIntent().getStringExtra("title_key"));
         this.g = this.getIntent().getStringExtra("token_key");
-        this.b = LayoutInflater.from(this).inflate(2130903325, null);
+        this.b = LayoutInflater.from(this).inflate(R.layout.loading_item, null);
         this.b.setVisibility(View.GONE);
-        this.c = (ScrollLoadListView) this.findViewById(2131493981);
+        this.c = (ScrollLoadListView) this.findViewById(R.id.content_scroll_list);
         this.c.addFooterView(this.b);
         this.c.setDividerHeight(0);
         this.c.setOnItemClickListener(new K(this));

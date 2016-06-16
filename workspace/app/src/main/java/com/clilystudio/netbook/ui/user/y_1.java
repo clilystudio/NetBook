@@ -14,7 +14,7 @@ final class y extends c<String, ResultStatus> {
 
     public y(MyFavTopicFragment myFavTopicFragment, Activity activity, int n) {
         this.a = myFavTopicFragment;
-        super(activity, 2131034218);
+        super(activity, R.string.loading);
     }
 
     private static /* varargs */ ResultStatus a(String... arrstring) {

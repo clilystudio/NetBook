@@ -15,7 +15,7 @@ final class db implements View.OnClickListener {
     @Override
     public final void onClick(View view) {
         this.a.dismiss();
-        ReviewListActivity.o(this.b).setText(2131034432);
+        ReviewListActivity.o(this.b).setText(R.string.post_sort_create);
         ReviewListActivity.b(this.b, "created");
         ReviewListActivity.n(this.b).setRefreshing();
     }

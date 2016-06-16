@@ -28,14 +28,14 @@ public class RelateUgcFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
-        return layoutInflater.inflate(2130903218, viewGroup, false);
+        return layoutInflater.inflate(R.layout.fragment_relate_ugcs, viewGroup, false);
     }
 
     @Override
     public void onViewCreated(View view, Bundle bundle) {
         super.onViewCreated(view, bundle);
-        this.mUgcContainer = (LinearLayout) this.getView().findViewById(2131493465);
-        this.mRelateUgcRoot = (LinearLayout) this.getView().findViewById(2131493464);
+        this.mUgcContainer = (LinearLayout) this.getView().findViewById(R.id.ugcs);
+        this.mRelateUgcRoot = (LinearLayout) this.getView().findViewById(R.id.relate_ugc_root);
         RelateUgcFragment$GetUgcsTask relateUgcFragment$GetUgcsTask = new RelateUgcFragment$GetUgcsTask(this);
         String[] arrstring = new String[]{this.getArguments().getString("book_id")};
         relateUgcFragment$GetUgcsTask.b(arrstring);
@@ -72,9 +72,9 @@ public class RelateUgcFragment extends Fragment {
             if (this.a.getActivity() != null && recommendUgcRoot != null && recommendUgcRoot.getBooklists() != null && recommendUgcRoot.getBooklists().length > 0) {
                 this.a.mRelateUgcRoot.setVisibility(View.VISIBLE);
                 for (RecommendUgcRoot$RecommendUGC recommendUgcRoot$RecommendUGC : recommendUgcRoot.getBooklists()) {
-                    View view = this.a.getLayoutInflater(null).inflate(2130903317, (ViewGroup) this.a.mUgcContainer, false);
+                    View view = this.a.getLayoutInflater(null).inflate(R.layout.list_item_ugc_book, (ViewGroup) this.a.mUgcContainer, false);
                     RelateUgcFragment$GetUgcsTask$ViewHolder relateUgcFragment$GetUgcsTask$ViewHolder = new RelateUgcFragment$GetUgcsTask$ViewHolder(this, view);
-                    relateUgcFragment$GetUgcsTask$ViewHolder.mCover.setImageUrl(recommendUgcRoot$RecommendUGC.getFullCover(), 2130837766);
+                    relateUgcFragment$GetUgcsTask$ViewHolder.mCover.setImageUrl(recommendUgcRoot$RecommendUGC.getFullCover(), R.drawable.cover_default);
                     relateUgcFragment$GetUgcsTask$ViewHolder.mTitle.setText(recommendUgcRoot$RecommendUGC.getTitle());
                     TextView textView = relateUgcFragment$GetUgcsTask$ViewHolder.mCount;
                     String string = this.b;
@@ -97,13 +97,13 @@ public class RelateUgcFragment extends Fragment {
             TextView mUpdated;
 
             RelateUgcFragment$GetUgcsTask$ViewHolder(RelateUgcFragment.GetUgcsTask getUgcsTask, View view) {
-                this.mCover = (CoverView) view.findViewById(2131493604);
-                this.mTitle = (TextView)view. findViewById(2131492936);
-                this.mCount = (TextView) view.findViewById(2131493239);
-                this.mAuthor = (TextView) view.findViewById(2131493317);
-                this.mDesc = (TextView) view.findViewById(2131493481);
-                this.mUpdated = (TextView) view.findViewById(2131493783);
-                this.mContainer = view.findViewById(2131493577);
+                this.mCover = (CoverView) view.findViewById(R.id.cover);
+                this.mTitle = (TextView)view. findViewById(R.id.title);
+                this.mCount = (TextView) view.findViewById(R.id.message_count);
+                this.mAuthor = (TextView) view.findViewById(R.id.author);
+                this.mDesc = (TextView) view.findViewById(R.id.desc);
+                this.mUpdated = (TextView) view.findViewById(R.id.updated);
+                this.mContainer = view.findViewById(R.id.container);
             }
         }
     }

@@ -15,7 +15,7 @@ final class bv implements View.OnClickListener {
     @Override
     public final void onClick(View view) {
         this.a.dismiss();
-        GirlTopicListActivity.m(this.b).setText(2131034432);
+        GirlTopicListActivity.m(this.b).setText(R.string.post_sort_create);
         GirlTopicListActivity.b(this.b, "created");
         GirlTopicListActivity.l(this.b).setRefreshing();
     }

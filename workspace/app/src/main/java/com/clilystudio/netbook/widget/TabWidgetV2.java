@@ -38,9 +38,9 @@ public class TabWidgetV2 extends TabWidget {
         this.b = (float) n / (float) this.a;
         this.g = (-n2 - n) / 2;
         this.h = (float) ((n - (this.e << 1)) / this.a) / this.b;
-        int n3 = this.getResources().getDimensionPixelSize(2131099784);
-        this.d = a.a(context, "customer_night_theme", false) ? am.a((int) 2130837642, (int) n2, (int) n3, (Context) this.getContext()) : am.a((int) 2130837694, (int) n2, (int) n3, (Context) this.getContext());
-        this.f = this.getResources().getDimensionPixelSize(2131099786);
+        int n3 = this.getResources().getDimensionPixelSize(R.dimen.tab_height);
+        this.d = a.a(context, "customer_night_theme", false) ? am.a((int) R.drawable.bg_dark_tab_widget_v3, (int) n2, (int) n3, (Context) this.getContext()) : am.a((int) R.drawable.bg_tab_widget_v3, (int) n2, (int) n3, (Context) this.getContext());
+        this.f = this.getResources().getDimensionPixelSize(R.dimen.tab_host_text);
     }
 
     public final void a(int n, int n2) {

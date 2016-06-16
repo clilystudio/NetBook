@@ -18,17 +18,17 @@ final class R_Clazz extends W<T_Clazz> implements AdapterView.OnItemClickListene
     private /* synthetic */ ScanTxtFileActivity a;
 
     public R_Clazz(ScanTxtFileActivity scanTxtFileActivity, LayoutInflater layoutInflater) {
-        super(layoutInflater, 2130903266);
+        super(layoutInflater, R.layout.list_item_book_file);
         this.a = scanTxtFileActivity;
      }
 
     private static void a(ImageView imageView, boolean bl) {
         if (bl) {
-            imageView.setImageResource(2130837820);
+            imageView.setImageResource(R.drawable.green_tick_circle);
             imageView.setContentDescription("\u9009\u4e2d");
             return;
         }
-        imageView.setImageResource(2130837818);
+        imageView.setImageResource(R.drawable.gray_tick_circle);
         imageView.setContentDescription("\u672a\u9009\u4e2d");
     }
 
@@ -43,7 +43,7 @@ final class R_Clazz extends W<T_Clazz> implements AdapterView.OnItemClickListene
         ScanTxtFileActivity scanTxtFileActivity = r.a;
         boolean bl = !ScanTxtFileActivity.c(r.a);
         ScanTxtFileActivity.a(scanTxtFileActivity, bl);
-        TextView textView = (TextView) r.a.a().a().findViewById(2131493008);
+        TextView textView = (TextView) r.a.a().a().findViewById(R.id.actionbar_custom_right_text);
         String string = ScanTxtFileActivity.c(r.a) ? "\u5168\u9009" : "\u5168\u4e0d\u9009";
         textView.setText(string);
         r.notifyDataSetChanged();
@@ -76,7 +76,7 @@ final class R_Clazz extends W<T_Clazz> implements AdapterView.OnItemClickListene
 
     @Override
     protected final int[] a() {
-        return new int[]{2131492936, 2131493040, 2131493625};
+        return new int[]{R.id.title, R.id.checkbox, R.id.size};
     }
 
     @Override

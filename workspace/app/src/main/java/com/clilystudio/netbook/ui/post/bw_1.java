@@ -15,7 +15,7 @@ final class bw implements View.OnClickListener {
     @Override
     public final void onClick(View view) {
         this.a.dismiss();
-        GirlTopicListActivity.m(this.b).setText(2131034434);
+        GirlTopicListActivity.m(this.b).setText(R.string.post_sort_reply_count);
         GirlTopicListActivity.b(this.b, "comment-count");
         GirlTopicListActivity.l(this.b).setRefreshing();
     }

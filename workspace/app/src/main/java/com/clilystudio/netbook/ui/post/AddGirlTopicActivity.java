@@ -51,11 +51,11 @@ public class AddGirlTopicActivity extends BaseActivity {
         }
         String string = account.getToken();
         h h2 = new h(addGirlTopicActivity);
-        View view = LayoutInflater.from(addGirlTopicActivity).inflate(2130903202, null);
-        ((TextView) view.findViewById(2131493422)).setText(2131034590);
+        View view = LayoutInflater.from(addGirlTopicActivity).inflate(R.layout.dialog_waring_text, null);
+        ((TextView) view.findViewById(R.id.waring_content)).setText(R.string.warning_dialog_girl_topic);
         h2.d = "\u53d1\u5e03";
-        h2.a(2131034583, null);
-        h2.b(2131034129, (DialogInterface.OnClickListener) ((Object) new v(addGirlTopicActivity)));
+        h2.a(R.string.vote_ok, null);
+        h2.b(R.string.cancel, (DialogInterface.OnClickListener) ((Object) new v(addGirlTopicActivity)));
         AlertDialog alertDialog = h2.a(view).b();
         ((Button) alertDialog.findViewById(16908313)).setOnClickListener((View.OnClickListener) ((Object) new w(addGirlTopicActivity, (Dialog) alertDialog, string)));
     }
@@ -94,10 +94,10 @@ public class AddGirlTopicActivity extends BaseActivity {
     @Override
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        this.setContentView(2130903076);
-        this.a(2131034291, 2131034448, (aa) ((Object) new u(this)));
+        this.setContentView(R.layout.activity_add_girl_topic_content);
+        this.a(R.string.add_girl_topic_title, R.string.publish, (aa) ((Object) new u(this)));
         ShareSDK.initSDK(this);
-        this.a = (EditText) this.findViewById(2131493068);
-        this.b = (EditText) this.findViewById(2131493069);
+        this.a = (EditText) this.findViewById(R.id.add_girl_topic_content_title);
+        this.b = (EditText) this.findViewById(R.id.add_girl_topic_content_desc);
     }
 }

@@ -12,7 +12,7 @@ final class dD extends c<String, PostPublish> {
 
     public dD(TweetDetailActivity tweetDetailActivity, Activity activity, int n) {
         this.a = tweetDetailActivity;
-        super(activity, 2131034430);
+        super(activity, R.string.post_publish_loading);
     }
 
     private /* varargs */ PostPublish a(String... arrstring) {
@@ -46,7 +46,7 @@ final class dD extends c<String, PostPublish> {
                     e.a((Activity) this.a, (String) string);
                     return;
                 }
-                e.a((Activity) this.a, (int) 2131034388);
+                e.a((Activity) this.a, (int) R.string.forbidden_tips);
                 return;
             }
             e.a((Activity) this.a, (String) "\u53d1\u5e03\u5931\u8d25\uff0c\u8bf7\u91cd\u8bd5");

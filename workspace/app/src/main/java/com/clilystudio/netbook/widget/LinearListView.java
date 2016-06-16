@@ -48,7 +48,7 @@ public class LinearListView extends LinearLayout {
             }
         } else {
             linearListView.f.get(-1 + linearListView.g).setExtra(c);
-            ((ImageView) linearListView.getChildAt(-1 + linearListView.g).findViewById(2131493624)).setImageResource(2130837589);
+            ((ImageView) linearListView.getChildAt(-1 + linearListView.g).findViewById(R.id.img_play_button)).setImageResource(R.drawable.audiobook_item_play);
             track.setExtra(a);
             linearListView.g = n;
             bl = true;
@@ -60,10 +60,10 @@ public class LinearListView extends LinearLayout {
     }
 
     private void a(int n, int n2) {
-        View view = LayoutInflater.from(this.d).inflate(2130903265, null);
+        View view = LayoutInflater.from(this.d).inflate(R.layout.list_item_audiobook_track, null);
         view.setOnClickListener((View.OnClickListener) ((Object) new ac(this, n)));
-        ((TextView) view.findViewById(2131493622)).setText("" + n2);
-        ((TextView) view.findViewById(2131493623)).setText(this.f.get(n - 1).getTrackTitle());
+        ((TextView) view.findViewById(R.id.tv_track_number)).setText("" + n2);
+        ((TextView) view.findViewById(R.id.tv_track_name)).setText(this.f.get(n - 1).getTrackTitle());
         this.addView(view, this.e);
     }
 
@@ -74,11 +74,11 @@ public class LinearListView extends LinearLayout {
      */
     private void b(int n, boolean bl) {
         AnimationDrawable animationDrawable;
-        ImageView imageView = (ImageView) this.getChildAt(n - 1).findViewById(2131493624);
+        ImageView imageView = (ImageView) this.getChildAt(n - 1).findViewById(R.id.img_play_button);
         try {
             animationDrawable = (AnimationDrawable) imageView.getDrawable();
         } catch (Exception var4_5) {
-            imageView.setImageResource(2130837602);
+            imageView.setImageResource(R.drawable.audiobook_playing);
             animationDrawable = (AnimationDrawable) imageView.getDrawable();
         }
         if (bl) {
@@ -127,7 +127,7 @@ public class LinearListView extends LinearLayout {
 
     public void setPlayButtonDefault(int n) {
         if (n > 0 && this.getChildAt(n - 1) != null) {
-            ((ImageView) this.getChildAt(n - 1).findViewById(2131493624)).setImageResource(2130837589);
+            ((ImageView) this.getChildAt(n - 1).findViewById(R.id.img_play_button)).setImageResource(R.drawable.audiobook_item_play);
             this.f.get(n - 1).setExtra(c);
         }
     }

@@ -41,7 +41,7 @@ public class LocalChapterListActivity extends BaseActivity {
     }
 
     static /* synthetic */ void a(LocalChapterListActivity localChapterListActivity, String string) {
-        new uk.me.lewisdeane.ldialogs.h(localChapterListActivity).b(2131034339).a(false).a(2131034367, (DialogInterface.OnClickListener) ((Object) new k(localChapterListActivity, string))).b(2131034129, (DialogInterface.OnClickListener) ((Object) new j(localChapterListActivity))).b();
+        new uk.me.lewisdeane.ldialogs.h(localChapterListActivity).b(R.string.chapter_dl_del_chapter).a(false).a(R.string.delete, (DialogInterface.OnClickListener) ((Object) new k(localChapterListActivity, string))).b(R.string.cancel, (DialogInterface.OnClickListener) ((Object) new j(localChapterListActivity))).b();
     }
 
     static /* synthetic */ C b(LocalChapterListActivity localChapterListActivity) {
@@ -113,13 +113,13 @@ public class LocalChapterListActivity extends BaseActivity {
     @Override
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        this.setContentView(2130903110);
-        this.c(2131034469);
+        this.setContentView(R.layout.activity_local_chapter_list);
+        this.c(R.string.resource_local_chapter);
         this.g = this.getIntent().getStringExtra("BOOK_ID");
         this.h = this.getIntent().getStringExtra("BOOK_TITLE");
-        this.a = (TextView) this.findViewById(2131493139);
-        this.b = (ListView) this.findViewById(2131493137);
-        this.e = LayoutInflater.from(this).inflate(2130903381, (ViewGroup) this.b, false);
+        this.a = (TextView) this.findViewById(R.id.new_topic_empty_text);
+        this.b = (ListView) this.findViewById(R.id.local_chapter_list);
+        this.e = LayoutInflater.from(this).inflate(R.layout.resource_loacl_header, (ViewGroup) this.b, false);
         this.b.addHeaderView(this.e, null, false);
         this.e.setVisibility(View.GONE);
         this.c = new C(this.getLayoutInflater());

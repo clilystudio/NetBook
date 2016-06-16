@@ -54,7 +54,7 @@ final class dy extends com.clilystudio.netbook.a_pack.e<String, Void, PostDetail
                 this.a.b.removeFooterView(TweetDetailActivity.j(this.a));
                 this.a.b.setOnLastItemListener(null);
             }
-            ((TextView) this.a.findViewById(2131493519)).setText("\u5171" + TweetDetailActivity.c(this.a).getTweet().getCommented() + "\u6761\u8bc4\u8bba");
+            ((TextView) this.a.findViewById(R.id.comment_count)).setText("\u5171" + TweetDetailActivity.c(this.a).getTweet().getCommented() + "\u6761\u8bc4\u8bba");
             return;
         }
         e.a((Activity) this.a, "\u52a0\u8f7d\u5931\u8d25\uff0c\u8bf7\u68c0\u67e5\u7f51\u7edc\u6216\u8005\u7a0d\u540e\u518d\u8bd5");

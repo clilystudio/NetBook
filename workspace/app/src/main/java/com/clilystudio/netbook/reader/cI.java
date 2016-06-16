@@ -13,7 +13,7 @@ final class cI extends c<String, EsTocRoot> {
 
     public cI(ReaderWebActivity readerWebActivity, Activity activity, int n) {
         this.b = readerWebActivity;
-        super(activity, 2131034218);
+        super(activity, R.string.loading);
         this.a = n;
     }
 

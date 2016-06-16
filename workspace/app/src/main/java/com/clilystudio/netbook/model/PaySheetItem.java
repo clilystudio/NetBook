@@ -23,21 +23,21 @@ public class PaySheetItem {
         if ("alipay".equals(string)) {
             paySheetItem = new PaySheetItem();
             paySheetItem.id = 0;
-            paySheetItem.iconId = 2130838030;
-            paySheetItem.textId = 2131034427;
+            paySheetItem.iconId = R.drawable.pay_alipay;
+            paySheetItem.textId = R.string.pay_alipay;
         } else if ("weixinpay".equals(string)) {
             paySheetItem = new PaySheetItem();
             paySheetItem.id = 1;
-            paySheetItem.iconId = a.a(context) ? 2130838044 : 2130838046;
-            paySheetItem.textId = 2131034429;
+            paySheetItem.iconId = a.a(context) ? R.drawable.pay_wechat : R.drawable.pay_wechat_uninstall;
+            paySheetItem.textId = R.string.pay_weixin;
         } else {
             boolean bl = "youyifupay".equals(string);
             paySheetItem = null;
             if (bl) {
                 paySheetItem = new PaySheetItem();
                 paySheetItem.id = 2;
-                paySheetItem.iconId = 2130838039;
-                paySheetItem.textId = 2131034428;
+                paySheetItem.iconId = R.drawable.pay_messenger;
+                paySheetItem.textId = R.string.pay_smspay;
             }
         }
         paySheetItem.chargeType = chargeType;

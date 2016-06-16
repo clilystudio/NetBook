@@ -66,11 +66,11 @@ public class CommentItemView extends HorizontalScrollView implements View.OnClic
      */
     static /* synthetic */ void a(CommentItemView commentItemView, PostComment postComment) {
         AlertDialog alertDialog;
-        View view = LayoutInflater.from(commentItemView.d).inflate(2130903353, null);
+        View view = LayoutInflater.from(commentItemView.d).inflate(R.layout.previous_comment_detail_dialog, null);
         String string = postComment.getAuthor().getNickname();
-        ((TextView) view.findViewById(2131493844)).setText(string);
+        ((TextView) view.findViewById(R.id.previous_comment_detail_title)).setText(string);
         String string2 = postComment.getContent();
-        ((TextView) view.findViewById(2131493845)).setText(string2);
+        ((TextView) view.findViewById(R.id.previous_comment_detail_content)).setText(string2);
         if (postComment.get_id() != null) {
             h h2 = new h(commentItemView.d);
             h2.d = string;
@@ -134,14 +134,14 @@ public class CommentItemView extends HorizontalScrollView implements View.OnClic
     }
 
     private void c() {
-        this.f.setCompoundDrawablesWithIntrinsicBounds(0, 2130837985, 0, 0);
+        this.f.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.like_selected, 0, 0);
         int n = 1 + this.d().getLikeCount();
         this.f.setTextColor(-2741204);
         this.a(this.f, n);
     }
 
     private PostComment d() {
-        return (PostComment) this.findViewById(2131493761).getTag();
+        return (PostComment) this.findViewById(R.id.post_comment_item_avatar).getTag();
     }
 
     public final void a() {
@@ -156,22 +156,22 @@ public class CommentItemView extends HorizontalScrollView implements View.OnClic
     public final void a(PostComment postComment, int n) {
         this.h = postComment;
         this.i = n;
-        SmartImageView smartImageView = (SmartImageView) this.findViewById(2131493761);
-        TextView textView = (TextView) this.findViewById(2131493764);
-        TextView textView2 = (TextView) this.findViewById(2131493765);
-        TextView textView3 = (TextView) this.findViewById(2131493769);
-        LinkifyTextView linkifyTextView = (LinkifyTextView) this.findViewById(2131493766);
-        TextView textView4 = (TextView) this.findViewById(2131493763);
-        TextView textView5 = (TextView) this.findViewById(2131493767);
-        View view = this.findViewById(2131493759);
-        TextView textView6 = (TextView) this.findViewById(2131493772);
-        ImageView imageView = (ImageView) this.findViewById(2131493762);
-        TextView textView7 = (TextView) this.findViewById(2131493432);
-        View view2 = this.findViewById(2131493773);
+        SmartImageView smartImageView = (SmartImageView) this.findViewById(R.id.post_comment_item_avatar);
+        TextView textView = (TextView) this.findViewById(R.id.post_comment_item_name);
+        TextView textView2 = (TextView) this.findViewById(R.id.post_comment_item_lv);
+        TextView textView3 = (TextView) this.findViewById(R.id.post_comment_item_time);
+        LinkifyTextView linkifyTextView = (LinkifyTextView) this.findViewById(R.id.post_comment_item_content);
+        TextView textView4 = (TextView) this.findViewById(R.id.post_comment_item_floor);
+        TextView textView5 = (TextView) this.findViewById(R.id.post_comment_item_reply);
+        View view = this.findViewById(R.id.visible_item);
+        TextView textView6 = (TextView) this.findViewById(R.id.like);
+        ImageView imageView = (ImageView) this.findViewById(R.id.post_comment_item_avatar_verify);
+        TextView textView7 = (TextView) this.findViewById(R.id.more);
+        View view2 = this.findViewById(R.id.more_divider);
         if (!am.m((Context) this.getContext())) {
-            smartImageView.setImageUrl(postComment.getAuthor().getScaleAvatar(), 2130837614);
+            smartImageView.setImageUrl(postComment.getAuthor().getScaleAvatar(), R.drawable.avatar_default);
         } else {
-            smartImageView.setImageResource(2130837614);
+            smartImageView.setImageResource(R.drawable.avatar_default);
         }
         smartImageView.setTag(postComment);
         textView.setText(postComment.getAuthor().getNickname());
@@ -233,7 +233,7 @@ public class CommentItemView extends HorizontalScrollView implements View.OnClic
 
     public final void b(PostComment postComment, int n) {
         this.a(postComment, -1);
-        TextView textView = (TextView) this.findViewById(2131493768);
+        TextView textView = (TextView) this.findViewById(R.id.post_comment_like_count);
         textView.setVisibility(View.VISIBLE);
         textView.setText("" + postComment.getLikeCount() + "\u6b21\u540c\u611f");
     }
@@ -244,12 +244,12 @@ public class CommentItemView extends HorizontalScrollView implements View.OnClic
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case 2131493760: {
+            case R.id.user_icon: {
                 this.d.startActivity(e.a((Context) view.getContext(), (Author) this.d().getAuthor()));
                 return;
             }
-            case 2131493759:
-            case 2131493766: {
+            case R.id.visible_item:
+            case R.id.post_comment_item_content: {
                 ListView listView = this.d.m();
                 int n2 = 0;
                 do {
@@ -264,12 +264,12 @@ public class CommentItemView extends HorizontalScrollView implements View.OnClic
                     ++n2;
                 } while (true);
             }
-            case 2131493771: {
+            case R.id.reply: {
                 PostComment postComment = this.d();
                 this.d.a(postComment.toRepliedInfo(), this.d.m().getHeaderViewsCount() + this.i);
                 return;
             }
-            case 2131493772: {
+            case R.id.like: {
                 Account account = am.e();
                 if (account == null) {
                     e.a((Activity) this.d, (String) "\u8bf7\u767b\u5f55\u540e\u518d\u64cd\u4f5c");
@@ -286,7 +286,7 @@ public class CommentItemView extends HorizontalScrollView implements View.OnClic
             default: {
                 return;
             }
-            case 2131493432:
+            case R.id.more:
         }
         PostComment postComment = this.d();
         CharSequence[] arrcharSequence = postComment.getReplyTo() == null ? new String[]{"\u4e3e\u62a5"} : new String[]{"\u67e5\u770b\u56de\u590d\u7684\u697c\u5c42", "\u4e3e\u62a5"};
@@ -298,14 +298,14 @@ public class CommentItemView extends HorizontalScrollView implements View.OnClic
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
-        this.findViewById(2131493760).setOnClickListener(this);
-        this.findViewById(2131493759).setOnClickListener(this);
-        this.e = (ViewGroup) this.findViewById(2131493770);
-        this.findViewById(2131493766).setOnClickListener(this);
-        this.findViewById(2131493771).setOnClickListener(this);
-        this.f = (TextView) this.findViewById(2131493772);
+        this.findViewById(R.id.user_icon).setOnClickListener(this);
+        this.findViewById(R.id.visible_item).setOnClickListener(this);
+        this.e = (ViewGroup) this.findViewById(R.id.invisible_item);
+        this.findViewById(R.id.post_comment_item_content).setOnClickListener(this);
+        this.findViewById(R.id.reply).setOnClickListener(this);
+        this.f = (TextView) this.findViewById(R.id.like);
         this.f.setOnClickListener(this);
-        this.findViewById(2131493432).setOnClickListener(this);
+        this.findViewById(R.id.more).setOnClickListener(this);
     }
 
     @Override

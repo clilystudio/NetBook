@@ -27,8 +27,8 @@ final class bs implements View.OnClickListener {
             default: {
                 return;
             }
-            case 2131492916:
-            case 2131492933: {
+            case R.id.download:
+            case R.id.slm_reader_layout_ad: {
                 if (!ReaderMenuFragment.a(this.a)) {
                     ReaderMenuFragment.a(this.a, ReaderMenuFragment.c(this.a), ReaderMenuFragment.d(this.a), ReaderMenuFragment.e(this.a));
                     return;
@@ -41,7 +41,7 @@ final class bs implements View.OnClickListener {
                     return;
                 }
             }
-            case 2131493452: {
+            case R.id.slm_reader_all_post: {
                 b.a(this.a.getActivity(), "reader_menu_topic");
                 Intent intent = BookPostTabActivity.a(this.a.getActivity(), ReaderMenuFragment.f(this.a), ReaderMenuFragment.g(this.a));
                 intent.putExtra("extra_sort_type", "created");
@@ -50,11 +50,11 @@ final class bs implements View.OnClickListener {
                 ReaderMenuFragment.h(this.a);
                 return;
             }
-            case 2131493455: {
+            case R.id.slm_reader_relate_book: {
                 ReaderMenuFragment.i(this.a);
                 return;
             }
-            case 2131493459: {
+            case R.id.slm_reader_more_source: {
                 ReaderActivity readerActivity = (ReaderActivity) this.a.getActivity();
                 if (readerActivity == null) return;
                 readerActivity.i();

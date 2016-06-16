@@ -51,11 +51,11 @@ final class ak extends ah {
                 return null;
             }
             case 0: {
-                return new an(this, this.b.inflate(2130903403, viewGroup, false));
+                return new an(this, this.b.inflate(R.layout.ugc_all_list_item, viewGroup, false));
             }
             case 1:
         }
-        return new al(this, this.b.inflate(2130903406, viewGroup, false));
+        return new al(this, this.b.inflate(R.layout.ugc_group_list_item, viewGroup, false));
     }
 
     /*
@@ -65,14 +65,14 @@ final class ak extends ah {
         if (n == 0 && this.a) {
             String string;
             an an2 = (an) ay2;
-            an2.j = string = this.c.getString(2131034561);
+            an2.j = string = this.c.getString(R.string.ugc_all);
             if (UGCMainActivity.j(an2.k.c).equals(string)) {
-                an2.i.setTextColor(com.clilystudio.netbook.am.a((Context) an2.k.c, (int) 2130771972));
-                an2.i.setBackgroundResource(com.clilystudio.netbook.am.b((Context) an2.k.c, (int) 2130771998));
+                an2.i.setTextColor(com.clilystudio.netbook.am.a((Context) an2.k.c, (int) R.attr.backgroundNormal));
+                an2.i.setBackgroundResource(com.clilystudio.netbook.am.b((Context) an2.k.c, (int) R.attr.redRoundBg));
                 return;
             }
             an2.i.setTextColor(com.clilystudio.netbook.am.a((Context) an2.k.c, (int) 16842808));
-            an2.i.setBackgroundResource(com.clilystudio.netbook.am.b((Context) an2.k.c, (int) 2130771974));
+            an2.i.setBackgroundResource(com.clilystudio.netbook.am.b((Context) an2.k.c, (int) R.attr.backgroundSelector));
             return;
         }
         al al2 = (al) ay2;
@@ -86,7 +86,7 @@ final class ak extends ah {
         al2.j.removeAllViews();
         int n4 = 0;
         while (n4 < n3) {
-            ViewGroup viewGroup = (ViewGroup) al2.k.b.inflate(2130903407, (ViewGroup) al2.j, false);
+            ViewGroup viewGroup = (ViewGroup) al2.k.b.inflate(R.layout.ugc_group_row, (ViewGroup) al2.j, false);
             for (int i = 0; i < Math.min(4, arrstring.length - (n4 << 2)); ++i) {
                 UgcFilterTextView ugcFilterTextView = (UgcFilterTextView) viewGroup.getChildAt(i);
                 String string = arrstring[i + (n4 << 2)];

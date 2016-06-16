@@ -12,6 +12,6 @@ final class dh implements View.OnClickListener {
     @Override
     public final void onClick(View view) {
         ReviewListActivity.a(this.a, 2).showAsDropDown(view, 0, 1);
-        ReviewListActivity.d(this.a).setImageDrawable(this.a.getResources().getDrawable(2130837722));
+        ReviewListActivity.d(this.a).setImageDrawable(this.a.getResources().getDrawable(R.drawable.book_topic_top_arrow_up));
     }
 }

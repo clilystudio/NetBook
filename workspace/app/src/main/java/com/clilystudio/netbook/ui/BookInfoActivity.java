@@ -139,9 +139,9 @@ public class BookInfoActivity extends BaseActivity implements View.OnClickListen
 
     static /* synthetic */ void d(BookInfoActivity bookInfoActivity) {
         FragmentTransaction fragmentTransaction = bookInfoActivity.getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.replace(2131493328, BestReviewsFragment.a(bookInfoActivity.h, bookInfoActivity.k.getTitle()));
-        fragmentTransaction.replace(2131493332, RelateBooksFragment.a(bookInfoActivity.h));
-        fragmentTransaction.replace(2131493333, RelateUgcFragment.a(bookInfoActivity.h));
+        fragmentTransaction.replace(R.id.content_frame_best_reviews, BestReviewsFragment.a(bookInfoActivity.h, bookInfoActivity.k.getTitle()));
+        fragmentTransaction.replace(R.id.content_frame_relate, RelateBooksFragment.a(bookInfoActivity.h));
+        fragmentTransaction.replace(R.id.content_frame_ugc, RelateUgcFragment.a(bookInfoActivity.h));
         try {
             fragmentTransaction.commitAllowingStateLoss();
             return;
@@ -160,15 +160,15 @@ public class BookInfoActivity extends BaseActivity implements View.OnClickListen
      */
     static /* synthetic */ void f(BookInfoActivity bookInfoActivity) {
         bookInfoActivity.a().a((CharSequence) bookInfoActivity.k.getTitle());
-        ((CoverView) bookInfoActivity.findViewById(2131493282)).setImageUrl(bookInfoActivity.k.getFullCoverLarge(), 2130837766);
-        ((TextView) bookInfoActivity.findViewById(2131493316)).setText(bookInfoActivity.k.getTitle());
-        TextView textView = (TextView) bookInfoActivity.findViewById(2131493317);
+        ((CoverView) bookInfoActivity.findViewById(R.id.book_detail_info_cover)).setImageUrl(bookInfoActivity.k.getFullCoverLarge(), R.drawable.cover_default);
+        ((TextView) bookInfoActivity.findViewById(R.id.book_detail_info_title)).setText(bookInfoActivity.k.getTitle());
+        TextView textView = (TextView) bookInfoActivity.findViewById(R.id.author);
         textView.setText(bookInfoActivity.k.getAuthor());
-        textView.setTextColor(bookInfoActivity.getResources().getColor(2131427413));
-        bookInfoActivity.findViewById(2131493284).setOnClickListener(bookInfoActivity);
+        textView.setTextColor(bookInfoActivity.getResources().getColor(R.color.font_orange));
+        bookInfoActivity.findViewById(R.id.author_and_type).setOnClickListener(bookInfoActivity);
         String string = bookInfoActivity.k.getCat() != null ? bookInfoActivity.k.getCat() : "-";
-        ((TextView) bookInfoActivity.findViewById(2131493318)).setText("  |  " + string);
-        TextView textView2 = (TextView) bookInfoActivity.findViewById(2131493319);
+        ((TextView) bookInfoActivity.findViewById(R.id.type)).setText("  |  " + string);
+        TextView textView2 = (TextView) bookInfoActivity.findViewById(R.id.word_count);
         int n2 = bookInfoActivity.k.getWordCount();
         if (n2 > 0) {
             textView2.setVisibility(View.VISIBLE);
@@ -179,27 +179,27 @@ public class BookInfoActivity extends BaseActivity implements View.OnClickListen
         }
         if (bookInfoActivity.k.getUpdated() != null) {
             String string2 = bookInfoActivity.k.getIsSerial() ? t.e((Date) bookInfoActivity.k.getUpdated()) : "\u5b8c\u7ed3";
-            ((TextView) bookInfoActivity.findViewById(2131493320)).setText(string2);
+            ((TextView) bookInfoActivity.findViewById(R.id.update_time)).setText(string2);
         }
-        ((TextView) bookInfoActivity.findViewById(2131493324)).setText(Integer.toString(bookInfoActivity.k.getLatelyFollower()));
-        TextView textView3 = (TextView) bookInfoActivity.findViewById(2131493325);
+        ((TextView) bookInfoActivity.findViewById(R.id.book_detail_info_followers)).setText(Integer.toString(bookInfoActivity.k.getLatelyFollower()));
+        TextView textView3 = (TextView) bookInfoActivity.findViewById(R.id.book_detail_info_retention);
         if (bookInfoActivity.k.getRetentionRatio() != 0.0f) {
             textView3.setText("" + bookInfoActivity.k.getRetentionRatio() + "%");
         } else {
             textView3.setText("-");
         }
-        TextView textView4 = (TextView) bookInfoActivity.findViewById(2131493326);
+        TextView textView4 = (TextView) bookInfoActivity.findViewById(R.id.book_detail_info_words);
         if (bookInfoActivity.k.getSerializeWordCount() >= 0) {
             textView4.setText(Integer.toString(bookInfoActivity.k.getSerializeWordCount()));
         } else {
             textView4.setText("-");
         }
-        bookInfoActivity.findViewById(2131493329).setOnClickListener(bookInfoActivity);
+        bookInfoActivity.findViewById(R.id.book_detail_info_topic_layout).setOnClickListener(bookInfoActivity);
         String string3 = bookInfoActivity.k.getTitle();
         String string4 = string3.length() > 10 ? string3.substring(0, 10) + "..." : string3;
-        ((TextView) bookInfoActivity.findViewById(2131493330)).setText(string4 + "\u7684\u793e\u533a");
-        ((TextView) bookInfoActivity.findViewById(2131493331)).setText("\u5171\u6709 " + bookInfoActivity.k.getPostCount() + " \u4e2a\u5e16\u5b50");
-        TextView textView5 = (TextView) bookInfoActivity.findViewById(2131493327);
+        ((TextView) bookInfoActivity.findViewById(R.id.book_info_topic)).setText(string4 + "\u7684\u793e\u533a");
+        ((TextView) bookInfoActivity.findViewById(R.id.topic_count)).setText("\u5171\u6709 " + bookInfoActivity.k.getPostCount() + " \u4e2a\u5e16\u5b50");
+        TextView textView5 = (TextView) bookInfoActivity.findViewById(R.id.book_detail_info_desc);
         if (bookInfoActivity.k.getLongIntro() != null) {
             textView5.setText(bookInfoActivity.k.getLongIntro());
             textView5.post(new aC(bookInfoActivity, textView5));
@@ -215,7 +215,7 @@ public class BookInfoActivity extends BaseActivity implements View.OnClickListen
         View view = this.a().a();
         TextView textView = null;
         if (view != null) {
-            textView = (TextView) view.findViewById(2131493008);
+            textView = (TextView) view.findViewById(R.id.actionbar_custom_right_text);
         }
         if (textView == null) {
             return;
@@ -228,14 +228,14 @@ public class BookInfoActivity extends BaseActivity implements View.OnClickListen
             case 3:
             case 4: {
                 textView.setEnabled(true);
-                textView.setText(2131034329);
-                textView.setTextColor(this.getResources().getColor(2131427552));
+                textView.setText(R.string.book_info_download);
+                textView.setTextColor(this.getResources().getColor(R.color.white_80));
                 return;
             }
             case 2: {
                 textView.setEnabled(false);
                 textView.setText("\u7f13\u5b58\u4e2d...");
-                textView.setTextColor(this.getResources().getColor(2131427364));
+                textView.setTextColor(this.getResources().getColor(R.color.book_info_dl));
                 return;
             }
             case 1:
@@ -243,7 +243,7 @@ public class BookInfoActivity extends BaseActivity implements View.OnClickListen
         }
         textView.setEnabled(false);
         textView.setText("\u7b49\u5f85\u4e2d...");
-        textView.setTextColor(this.getResources().getColor(2131427364));
+        textView.setTextColor(this.getResources().getColor(R.color.book_info_dl));
     }
 
     private void a(View view, Advert advert) {
@@ -252,10 +252,10 @@ public class BookInfoActivity extends BaseActivity implements View.OnClickListen
         }
         advert.setPosition("book_info");
         advert.recordShow(this);
-        SmartImageView smartImageView = (SmartImageView) view.findViewById(2131493312);
-        TextView textView = (TextView) view.findViewById(2131493314);
-        TextView textView2 = (TextView) view.findViewById(2131493315);
-        view.findViewById(2131493313).setVisibility(View.VISIBLE);
+        SmartImageView smartImageView = (SmartImageView) view.findViewById(R.id.book_info_ad_cover);
+        TextView textView = (TextView) view.findViewById(R.id.book_info_ad_title);
+        TextView textView2 = (TextView) view.findViewById(R.id.book_info_ad_desc);
+        view.findViewById(R.id.book_info_ad_flag).setVisibility(View.VISIBLE);
         smartImageView.setImageUrl(advert.getFullImg());
         textView.setText(advert.getTitle());
         textView2.setText(advert.getDesc());
@@ -267,12 +267,12 @@ public class BookInfoActivity extends BaseActivity implements View.OnClickListen
      * Enabled aggressive block sorting
      */
     private void a(boolean bl) {
-        View view = this.findViewById(2131493077);
-        TextView textView = (TextView) this.findViewById(2131493323);
+        View view = this.findViewById(R.id.dis_post_detail_talk2);
+        TextView textView = (TextView) this.findViewById(R.id.book_detail_info_search_text);
         View view2 = this.g;
-        int n2 = bl ? 2130837711 : am.b((Context) this, (int) 2130771971);
+        int n2 = bl ? R.drawable.book_detail_info_btn_gray : am.b((Context) this, (int) R.attr.audiobookRedButtonSelector);
         view2.setBackgroundResource(n2);
-        int n3 = bl ? 2131034332 : 2131034331;
+        int n3 = bl ? R.string.book_info_searching : R.string.book_info_search;
         textView.setText(n3);
         int n4 = bl ? 8 : 0;
         view.setVisibility(n4);
@@ -286,16 +286,16 @@ public class BookInfoActivity extends BaseActivity implements View.OnClickListen
             return;
         }
         LayoutInflater layoutInflater = LayoutInflater.from(this);
-        View view = this.findViewById(2131493334);
+        View view = this.findViewById(R.id.book_info_tags_root);
         view.setVisibility(View.VISIBLE);
         int n2 = arrstring.length;
         int n3 = com.clilystudio.netbook.hpay100.a.a.a((Context) this, 16.0f);
-        TagsLayout tagsLayout = (TagsLayout) view.findViewById(2131493335);
-        int[] arrn = com.clilystudio.netbook.hpay100.a.a.a((Context) this, "customer_night_theme", false) ? new int[]{2130837623, 2130837625, 2130837627, 2130837629, 2130837631, 2130837633, 2130837635} : new int[]{2130837622, 2130837624, 2130837626, 2130837628, 2130837630, 2130837632, 2130837634};
+        TagsLayout tagsLayout = (TagsLayout) view.findViewById(R.id.tags_layout);
+        int[] arrn = com.clilystudio.netbook.hpay100.a.a.a((Context) this, "customer_night_theme", false) ? new int[]{R.drawable.bg_book_info_tag0_dark, R.drawable.bg_book_info_tag1_dark, R.drawable.bg_book_info_tag2_dark, R.drawable.bg_book_info_tag3_dark, R.drawable.bg_book_info_tag4_dark, R.drawable.bg_book_info_tag5_dark, R.drawable.bg_book_info_tag6_dark} : new int[]{R.drawable.bg_book_info_tag0, R.drawable.bg_book_info_tag1, R.drawable.bg_book_info_tag2, R.drawable.bg_book_info_tag3, R.drawable.bg_book_info_tag4, R.drawable.bg_book_info_tag5, R.drawable.bg_book_info_tag6};
         int n4 = 0;
         int n5 = 0;
         while (n5 < n2) {
-            TextView textView = (TextView) layoutInflater.inflate(2130903160, (ViewGroup) tagsLayout, false).findViewById(2131493337);
+            TextView textView = (TextView) layoutInflater.inflate(R.layout.book_info_tags_item, (ViewGroup) tagsLayout, false).findViewById(R.id.tag_text);
             String string = arrstring[n5];
             textView.setText(string);
             if (n4 >= 7) {
@@ -335,7 +335,7 @@ public class BookInfoActivity extends BaseActivity implements View.OnClickListen
     }
 
     private void f() {
-        View view = this.findViewById(2131493311);
+        View view = this.findViewById(R.id.book_info_ad_view);
         if (am.q((Context) this) && com.clilystudio.netbook.hpay100.a.a.F(this)) {
             Advert advert = n.b(this, "book");
             if (advert != null && com.clilystudio.netbook.hpay100.a.a.w(this, "rate_zssq_advert_reader_bookinfo")) {
@@ -358,14 +358,14 @@ public class BookInfoActivity extends BaseActivity implements View.OnClickListen
         int n4 = this.f.getPaddingRight();
         int n5 = this.f.getPaddingBottom();
         View view = this.f;
-        int n6 = this.i ? 2130837711 : am.b((Context) this, (int) 2130771971);
+        int n6 = this.i ? R.drawable.book_detail_info_btn_gray : am.b((Context) this, (int) R.attr.audiobookRedButtonSelector);
         view.setBackgroundResource(n6);
         this.f.setPadding(n2, n3, n4, n5);
-        TextView textView = (TextView) this.findViewById(2131493288);
-        ImageView imageView = (ImageView) this.findViewById(2131493287);
-        String string = this.i ? this.getString(2131034330) : this.getString(2131034328);
+        TextView textView = (TextView) this.findViewById(R.id.book_detail_info_add_text);
+        ImageView imageView = (ImageView) this.findViewById(R.id.book_detail_info_add_iv);
+        String string = this.i ? this.getString(R.string.book_info_remove_book) : this.getString(R.string.book_info_add_book);
         textView.setText(string);
-        int n7 = this.i ? 2130837714 : 2130837710;
+        int n7 = this.i ? R.drawable.book_detail_info_del_img : R.drawable.book_detail_info_add_img;
         imageView.setImageResource(n7);
     }
 
@@ -377,24 +377,24 @@ public class BookInfoActivity extends BaseActivity implements View.OnClickListen
         if (this.i) {
             BookReadRecord.deleteAndSync(this.h);
             com.clilystudio.netbook.hpay100.a.a.v(this.h);
-            String string2 = this.getString(2131034467);
+            String string2 = this.getString(R.string.remove_book_event);
             Object[] arrobject = new Object[]{this.k.getTitle()};
             string = String.format(string2, arrobject);
         } else {
             if (am.f()) {
-                string = this.getString(2131034325);
+                string = this.getString(R.string.book_add_overflow);
             } else {
                 BookReadRecord.create(this.k);
                 com.clilystudio.netbook.hpay100.a.a.u(this.h);
-                String string3 = this.getString(2131034283);
+                String string3 = this.getString(R.string.add_book_event);
                 Object[] arrobject = new Object[]{this.k.getTitle()};
                 String string4 = String.format(string3, arrobject);
                 if (com.clilystudio.netbook.hpay100.a.a.a((Context) this, "add_update_notify_login", true) && !am.g()) {
-                    View view = this.getLayoutInflater().inflate(2130903380, null, false);
-                    CheckBox checkBox = (CheckBox) view.findViewById(2131493973);
-                    checkBox.setText(this.getString(2131034301));
+                    View view = this.getLayoutInflater().inflate(R.layout.remove_shelf_confirm, null, false);
+                    CheckBox checkBox = (CheckBox) view.findViewById(R.id.remove_shelf_cache);
+                    checkBox.setText(this.getString(R.string.add_update_not_notify));
                     checkBox.setChecked(false);
-                    ((TextView) view.findViewById(2131493972)).setText(this.getString(2131034302));
+                    ((TextView) view.findViewById(R.id.remove_shelf_text)).setText(this.getString(R.string.add_update_notify));
                     new uk.me.lewisdeane.ldialogs.h(this).a(view).a("\u5feb\u901f\u767b\u5f55", (DialogInterface.OnClickListener) new aH(this, checkBox)).b("\u4e0d\u60f3\u540c\u6b65", (DialogInterface.OnClickListener) new aG(this, checkBox)).a().show();
                 }
                 string = string4;
@@ -465,11 +465,11 @@ public class BookInfoActivity extends BaseActivity implements View.OnClickListen
             default: {
                 return;
             }
-            case 2131493321: {
+            case R.id.book_detail_info_add: {
                 this.h();
                 return;
             }
-            case 2131493322: {
+            case R.id.book_detail_info_search: {
                 BookReadRecord bookReadRecord = BookReadRecord.get(this.h);
                 if (bookReadRecord == null) {
                     this.a(true);
@@ -480,16 +480,16 @@ public class BookInfoActivity extends BaseActivity implements View.OnClickListen
                 b.a(this, "book_info_search");
                 return;
             }
-            case 2131493329: {
+            case R.id.book_detail_info_topic_layout: {
                 this.startActivity(BookPostTabActivity.a(this, this.h, this.k.getTitle()));
                 b.a(this, "book_info_post");
                 return;
             }
-            case 2131493284: {
+            case R.id.author_and_type: {
                 this.startActivity(AuthorBooksActivity.a(this, this.k.getAuthor()));
                 return;
             }
-            case 2131493138:
+            case R.id.load_error_hint:
         }
         this.j();
     }
@@ -500,24 +500,24 @@ public class BookInfoActivity extends BaseActivity implements View.OnClickListen
     @Override
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        this.setContentView(2130903087);
+        this.setContentView(R.layout.activity_book_info);
         ay ay2 = new ay(this);
         this.c();
-        View view = LayoutInflater.from(this).inflate(2130903041, null);
-        ((TextView) view.findViewById(2131492936)).setText(2131034333);
-        view.findViewById(2131493013).setOnClickListener(new U(this));
-        TextView textView = (TextView) view.findViewById(2131493010);
-        TextView textView2 = (TextView) view.findViewById(2131493011);
-        textView.setText(2131034329);
-        textView2.setText(2131034175);
+        View view = LayoutInflater.from(this).inflate(R.layout.ab_custom_two_text_view, null);
+        ((TextView) view.findViewById(R.id.title)).setText(R.string.book_info_title);
+        view.findViewById(R.id.back).setOnClickListener(new U(this));
+        TextView textView = (TextView) view.findViewById(R.id.ab_custom_right_text);
+        TextView textView2 = (TextView) view.findViewById(R.id.ab_custom_right_text_2);
+        textView.setText(R.string.book_info_download);
+        textView2.setText(R.string.share);
         textView.setOnClickListener(new V(this, (ab) ((Object) ay2)));
         textView2.setOnClickListener(new W(this, (ab) ((Object) ay2)));
         this.a().a(view);
-        this.b = this.findViewById(2131492905);
-        this.c = this.findViewById(2131493085);
-        this.e = this.findViewById(2131493086);
-        this.g = this.findViewById(2131493322);
-        this.f = this.findViewById(2131493321);
+        this.b = this.findViewById(R.id.content);
+        this.c = this.findViewById(R.id.pb_loading);
+        this.e = this.findViewById(R.id.load_error_hint_btn);
+        this.g = this.findViewById(R.id.book_detail_info_search);
+        this.f = this.findViewById(R.id.book_detail_info_add);
         this.g.setOnClickListener(this);
         this.f.setOnClickListener(this);
         this.e.setOnClickListener(this);
@@ -565,7 +565,7 @@ public class BookInfoActivity extends BaseActivity implements View.OnClickListen
         if (b2 == null || !am.q((Context) this) || !b2.b().equals("book") || (advert = b2.a()) == null) {
             return;
         }
-        View view = this.findViewById(2131493311);
+        View view = this.findViewById(R.id.book_info_ad_view);
         view.setVisibility(View.VISIBLE);
         this.a(view, advert);
     }

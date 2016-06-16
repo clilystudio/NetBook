@@ -28,7 +28,7 @@ public class UserTaskActivity extends BaseActivity {
 
     private void a(boolean bl) {
         if (bl) {
-            this.mExpVote.setTextColor(this.getResources().getColor(2131427480));
+            this.mExpVote.setTextColor(this.getResources().getColor(R.color.primary_green));
         }
     }
 
@@ -46,24 +46,24 @@ public class UserTaskActivity extends BaseActivity {
     @Override
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        this.setContentView(2130903143);
-        this.mExpInfo = (TextView) findViewById(2131493254);
-        this.mExpLaunch = (TextView) findViewById(2131493255);
-        this.mExpShareTopic = (TextView) findViewById(2131493256);
-        this.mExpShareBook = (TextView) findViewById(2131493257);
-        this.mExpVote = (TextView) findViewById(2131493259);
-        this.mVoteView = findViewById(2131493258);
+        this.setContentView(R.layout.activity_user_task);
+        this.mExpInfo = (TextView) findViewById(R.id.user_exp_info);
+        this.mExpLaunch = (TextView) findViewById(R.id.user_exp_launch);
+        this.mExpShareTopic = (TextView) findViewById(R.id.user_exp_share_topic);
+        this.mExpShareBook = (TextView) findViewById(R.id.user_exp_share_book);
+        this.mExpVote = (TextView) findViewById(R.id.user_exp_vote);
+        this.mVoteView = findViewById(R.id.user_vote_layout);
         this.b("\u4efb\u52a1");
         UserInfo userInfo = (UserInfo) MyApplication.a().b("savedObject_userinfo");
-        this.mExpInfo.setTextColor(this.getResources().getColor(2131427480));
-        this.mExpLaunch.setTextColor(this.getResources().getColor(2131427480));
+        this.mExpInfo.setTextColor(this.getResources().getColor(R.color.primary_green));
+        this.mExpLaunch.setTextColor(this.getResources().getColor(R.color.primary_green));
         if (userInfo != null) {
             UserInfo$UserTodayTask userInfo$UserTodayTask = userInfo.getToday_tasks();
             if (userInfo$UserTodayTask != null && userInfo$UserTodayTask.isShare()) {
-                this.mExpShareTopic.setTextColor(this.getResources().getColor(2131427480));
+                this.mExpShareTopic.setTextColor(this.getResources().getColor(R.color.primary_green));
             }
             if (userInfo$UserTodayTask != null && userInfo$UserTodayTask.isShare_book()) {
-                this.mExpShareBook.setTextColor(this.getResources().getColor(2131427480));
+                this.mExpShareBook.setTextColor(this.getResources().getColor(R.color.primary_green));
             }
             if ("xiaomi".equals(am.n((Context) this).toLowerCase())) {
                 this.mVoteView.setVisibility(View.GONE);

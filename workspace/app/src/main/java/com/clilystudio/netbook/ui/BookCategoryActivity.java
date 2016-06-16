@@ -79,7 +79,7 @@ public class BookCategoryActivity extends BaseActivity {
         TableRow tableRow = null;
         TableRow.LayoutParams layoutParams = new TableRow.LayoutParams(-1, -2);
         LinearLayout.LayoutParams layoutParams2 = new LinearLayout.LayoutParams(-1, -2);
-        int n4 = am.b((Context) this, (int) 2130771969);
+        int n4 = am.b((Context) this, (int) R.attr.audiobookCategoryItemSelector);
         int n5 = 0;
         while (n5 < arrcategoryRoot$Category.length) {
             int n6;
@@ -87,7 +87,7 @@ public class BookCategoryActivity extends BaseActivity {
             CategoryRoot$Category categoryRoot$Category = arrcategoryRoot$Category[n5];
             String string = categoryRoot$Category.getName();
             int n7 = categoryRoot$Category.getBookCount();
-            TableLayout tableLayout = bl ? (TableLayout) this.findViewById(2131493094) : (TableLayout) this.findViewById(2131493095);
+            TableLayout tableLayout = bl ? (TableLayout) this.findViewById(R.id.tags_layout_boy) : (TableLayout) this.findViewById(R.id.tags_layout_girl);
             if (n5 % 3 == 0) {
                 tableRow2 = new TableRow(this);
                 tableLayout.addView((View) tableRow2, layoutParams);
@@ -116,12 +116,12 @@ public class BookCategoryActivity extends BaseActivity {
             TextView textView = new TextView(this);
             textView.setText(string);
             textView.setGravity(1);
-            textView.setTextAppearance(this, 2131165621);
+            textView.setTextAppearance(this, R.style.book_category_item_large);
             linearLayout.addView((View) textView, layoutParams2);
             TextView textView2 = new TextView(this);
             textView2.setText("" + n7 + " \u672c");
             textView2.setGravity(1);
-            textView2.setTextAppearance(this, 2131165622);
+            textView2.setTextAppearance(this, R.style.book_category_item_small);
             linearLayout.addView((View) textView2, layoutParams2);
             tableRow2.addView((View) linearLayout, layoutParams3);
             ++n5;
@@ -139,11 +139,11 @@ public class BookCategoryActivity extends BaseActivity {
     @Override
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        this.setContentView(2130903084);
-        this.b(2131034335);
-        this.c = this.findViewById(2131493078);
-        this.a = this.findViewById(2131493081);
-        this.b = this.findViewById(2131493082);
+        this.setContentView(R.layout.activity_book_category_root);
+        this.b(R.string.category_title);
+        this.c = this.findViewById(R.id.content_category);
+        this.a = this.findViewById(R.id.content_loading_pb);
+        this.b = this.findViewById(R.id.content_load_error);
         this.b.setOnClickListener((View.OnClickListener) ((Object) new ai(this)));
         this.b();
     }

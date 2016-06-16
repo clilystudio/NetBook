@@ -243,7 +243,7 @@ public class UGCDetailActivity extends BaseActivity implements View.OnClickListe
             default: {
                 return;
             }
-            case 2131493230:
+            case R.id.load_error_view:
         }
         this.b();
     }
@@ -254,7 +254,7 @@ public class UGCDetailActivity extends BaseActivity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        this.setContentView(2130903138);
+        this.setContentView(R.layout.activity_ugcbook_detail);
         com.clilystudio.netbook.event.i.a().a(this);
         if (a.a(this.getIntent())) {
             List<String> list = this.getIntent().getData().getPathSegments();
@@ -266,27 +266,27 @@ public class UGCDetailActivity extends BaseActivity implements View.OnClickListe
         this.q = this.getIntent().getBooleanExtra("is_draft", false);
         String string = this.p ? "\u7f16\u8f91" : "\u6536\u85cf";
         this.a("\u4e66\u5355\u8be6\u60c5", string, (aa) new i(this));
-        this.j = (ListView) this.findViewById(2131492924);
-        this.l = this.findViewById(2131493085);
-        this.m = this.findViewById(2131493230);
+        this.j = (ListView) this.findViewById(R.id.list);
+        this.l = this.findViewById(R.id.pb_loading);
+        this.m = this.findViewById(R.id.load_error_view);
         this.m.setOnClickListener(this);
-        View view = LayoutInflater.from(this).inflate(2130903413, (ViewGroup) this.j, false);
-        this.g = (SmartImageView) view.findViewById(2131492899);
-        this.a = (TextView) view.findViewById(2131494029);
-        this.b = (TextView) view.findViewById(2131494028);
-        this.c = (TextView) view.findViewById(2131494024);
-        this.e = (TextView) view.findViewById(2131494025);
-        this.f = (TextView) view.findViewById(2131494030);
-        this.i = (ImageButton) view.findViewById(2131494026);
+        View view = LayoutInflater.from(this).inflate(R.layout.ugcbook_detail_header, (ViewGroup) this.j, false);
+        this.g = (SmartImageView) view.findViewById(R.id.avatar);
+        this.a = (TextView) view.findViewById(R.id.author_time);
+        this.b = (TextView) view.findViewById(R.id.author_info);
+        this.c = (TextView) view.findViewById(R.id.list_title);
+        this.e = (TextView) view.findViewById(R.id.list_comment);
+        this.f = (TextView) view.findViewById(R.id.list_fav_count);
+        this.i = (ImageButton) view.findViewById(R.id.ugcbook_more);
         this.i.setOnClickListener(this.t);
-        this.h = (TextView) view.findViewById(2131494027);
+        this.h = (TextView) view.findViewById(R.id.ugcbook_share);
         this.h.setOnClickListener((View.OnClickListener) ((Object) new k(this)));
-        this.n = this.findViewById(2131493231);
+        this.n = this.findViewById(R.id.share_bottom);
         this.n.setOnClickListener((View.OnClickListener) ((Object) new l(this)));
         this.j.addHeaderView(view, null, false);
         this.k = new W(this.getLayoutInflater());
         this.j.setAdapter(this.k);
-        View view2 = this.getLayoutInflater().inflate(2130903414, null);
+        View view2 = this.getLayoutInflater().inflate(R.layout.ugcbook_listview_footer, null);
         this.j.addFooterView(view2);
         this.j.setOnItemClickListener((AdapterView.OnItemClickListener) ((Object) new m(this)));
         UGCNewCollection uGCNewCollection = (UGCNewCollection) this.getIntent().getSerializableExtra("modify_update");

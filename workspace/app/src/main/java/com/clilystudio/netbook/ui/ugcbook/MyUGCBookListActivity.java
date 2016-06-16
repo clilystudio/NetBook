@@ -8,7 +8,7 @@ public class MyUGCBookListActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        this.setContentView(2130903116);
+        this.setContentView(R.layout.activity_my_ugc_book_list);
         this.b("\u6211\u7684\u4e66\u5355");
     }
 }

@@ -49,10 +49,10 @@ public class GameTabActivity extends BaseTabActivity implements ViewPager$OnPage
     @Override
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        this.setContentView(2130903103);
-        this.b(2131034214);
-        this.a = (TabHost) this.findViewById(2131493096);
-        this.e = (ViewPager) this.findViewById(2131493097);
+        this.setContentView(R.layout.activity_game_tab);
+        this.b(R.string.game_center);
+        this.a = (TabHost) this.findViewById(R.id.host);
+        this.e = (ViewPager) this.findViewById(R.id.pager);
         this.f = new an(this, this.getSupportFragmentManager());
         this.e.setOffscreenPageLimit(4);
         this.e.setAdapter(this.f);
@@ -68,8 +68,8 @@ public class GameTabActivity extends BaseTabActivity implements ViewPager$OnPage
         for (int i = 0; i < n; ++i) {
             TabHost.TabSpec tabSpec = this.a.newTabSpec("tab" + i);
             tabSpec.setContent(this);
-            View view = layoutInflater.inflate(2130903229, null);
-            ((TextView) view.findViewById(2131493509)).setText((String) this.f.getPageTitle(i));
+            View view = layoutInflater.inflate(R.layout.home_tabhost_item, null);
+            ((TextView) view.findViewById(R.id.text)).setText((String) this.f.getPageTitle(i));
             tabSpec.setIndicator(view);
             this.a.addTab(tabSpec);
         }

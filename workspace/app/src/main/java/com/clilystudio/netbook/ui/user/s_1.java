@@ -18,7 +18,7 @@ final class s extends c<String, ChangeNickNameRoot> {
 
     public s(ModifyUserInfoActivity modifyUserInfoActivity, Activity activity, int n) {
         this.b = modifyUserInfoActivity;
-        super(activity, 2131034218);
+        super(activity, R.string.loading);
     }
 
     private /* varargs */ ChangeNickNameRoot a(String... arrstring) {

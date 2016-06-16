@@ -79,13 +79,13 @@ public class BookTagListActivity extends BaseLoadingActivity {
     @Override
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        this.a(2130903386);
+        this.a(R.layout.scroll_listview);
         this.c = this.getIntent().getStringExtra("TAG_LIST_KEY");
         this.b(this.c);
         LayoutInflater layoutInflater = LayoutInflater.from(this);
-        this.f = layoutInflater.inflate(2130903325, null);
+        this.f = layoutInflater.inflate(R.layout.loading_item, null);
         this.f.setVisibility(View.GONE);
-        this.e = (ScrollLoadListView) this.findViewById(2131493981);
+        this.e = (ScrollLoadListView) this.findViewById(R.id.content_scroll_list);
         this.e.addFooterView(this.f);
         this.e.setOnItemClickListener(new aT(this));
         this.b = new aV(this, layoutInflater);

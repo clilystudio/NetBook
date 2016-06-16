@@ -40,7 +40,7 @@ public abstract class NotificationAdapter extends u<NotificationItem> {
 
     private View a(ViewGroup viewGroup, View view, String string) {
         if (view == null) {
-            view = LayoutInflater.from(this.b).inflate(2130903291, viewGroup, false);
+            view = LayoutInflater.from(this.b).inflate(R.layout.list_item_notif_header, viewGroup, false);
         }
         new HeaderHolder((View) view).mLabelText.setText(string);
         return view;
@@ -199,7 +199,7 @@ public abstract class NotificationAdapter extends u<NotificationItem> {
                 // empty if block
             }
         }
-        View view2 = view == null ? LayoutInflater.from(this.b).inflate(2130903292, viewGroup, false) : view;
+        View view2 = view == null ? LayoutInflater.from(this.b).inflate(R.layout.list_item_notification, viewGroup, false) : view;
         ViewHolder viewHolder = new ViewHolder(view2);
         NotifBinder notifBinder = NotifBinderFactory.create(notificationItem);
         viewHolder.mMainText.setText(notifBinder.getMainText());
@@ -226,9 +226,9 @@ public abstract class NotificationAdapter extends u<NotificationItem> {
         TextView mSubText;
 
         ViewHolder(View view) {
-            this.mAvatar = (CircularSmartImageView) view.findViewById(2131492899);
-            this.mMainText = (TextView) view.findViewById(2131493712);
-            this.mSubText = (TextView) view.findViewById(2131493713);
+            this.mAvatar = (CircularSmartImageView) view.findViewById(R.id.avatar);
+            this.mMainText = (TextView) view.findViewById(R.id.main_text);
+            this.mSubText = (TextView) view.findViewById(R.id.sub_text);
         }
     }
 
@@ -236,7 +236,7 @@ public abstract class NotificationAdapter extends u<NotificationItem> {
         TextView mLabelText;
 
         HeaderHolder(View view) {
-            this.mLabelText = (TextView) view.findViewById(2131493711);
+            this.mLabelText = (TextView) view.findViewById(R.id.label_text);
         }
     }
 }

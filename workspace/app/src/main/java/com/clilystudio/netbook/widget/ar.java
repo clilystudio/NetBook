@@ -16,11 +16,11 @@ final class ar implements m {
             default: {
                 return true;
             }
-            case 2131494059: {
+            case R.id.game_post_menu_1: {
                 this.a.e(0);
                 return true;
             }
-            case 2131494060:
+            case R.id.game_post_menu_2:
         }
         this.a.e(1);
         return true;

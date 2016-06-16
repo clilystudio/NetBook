@@ -13,7 +13,7 @@ final class bm implements View.OnClickListener {
     public final void onClick(View view) {
         GirlTopicActivity.a(this.a, (Integer) view.getTag());
         if (GirlTopicActivity.h(this.a)) {
-            bs bs2 = new bs(this.a, this.a, 2131034584);
+            bs bs2 = new bs(this.a, this.a, R.string.vote_send_loading);
             String[] arrstring = new String[]{GirlTopicActivity.a(this.a).get_id(), GirlTopicActivity.i(this.a).getToken(), String.valueOf(GirlTopicActivity.j(this.a))};
             bs2.b(arrstring);
         }

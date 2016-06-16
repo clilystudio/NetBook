@@ -17,7 +17,7 @@ public abstract class W<V> extends al {
     private Object[] e;
 
     public W(Activity activity, int n) {
-        this(activity.getLayoutInflater(), 2130903289);
+        this(activity.getLayoutInflater(), R.layout.list_item_mystery);
     }
 
     public W(LayoutInflater layoutInflater, int n) {

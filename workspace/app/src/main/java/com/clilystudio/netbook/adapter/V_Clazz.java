@@ -44,7 +44,7 @@ final class V_Clazz extends e<String, Void, ResultStatus> {
         } else {
             if (!"TOKEN_INVALID".equals(resultStatus.getCode())) return;
             {
-                com.clilystudio.netbook.util.e.a((Activity) ((Activity) G.a(this.b)), (String) G.a(this.b).getString(2131034547));
+                com.clilystudio.netbook.util.e.a((Activity) ((Activity) G.a(this.b)), (String) G.a(this.b).getString(R.string.tweet_token_invalid));
                 return;
             }
         }

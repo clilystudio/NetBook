@@ -34,7 +34,7 @@ final class m implements IXmPlayerStatusListener {
 
     @Override
     public final void onPlayPause() {
-        AudioBookPlayActivity.t(this.a).setImageResource(2130837601);
+        AudioBookPlayActivity.t(this.a).setImageResource(R.drawable.audiobook_play_selector);
         AudioBookPlayActivity.j(this.a);
     }
 
@@ -57,13 +57,13 @@ final class m implements IXmPlayerStatusListener {
         if (AudioBookPlayActivity.i(this.a).size() > AudioBookPlayActivity.k(this.a)) {
             AudioBookPlayActivity.b(this.a, true);
         }
-        AudioBookPlayActivity.t(this.a).setImageResource(2130837596);
+        AudioBookPlayActivity.t(this.a).setImageResource(R.drawable.audiobook_pause_selector);
         AudioBookPlayActivity.j(this.a);
     }
 
     @Override
     public final void onPlayStop() {
-        AudioBookPlayActivity.t(this.a).setImageResource(2130837601);
+        AudioBookPlayActivity.t(this.a).setImageResource(R.drawable.audiobook_play_selector);
         AudioBookPlayActivity.j(this.a);
     }
 

@@ -28,7 +28,7 @@ public class AutoReaderSetWidget extends LinearLayout implements View.OnClickLis
         TextView textView = this.d;
         Resources resources = this.getResources();
         Object[] arrobject = new Object[]{this.b};
-        textView.setText(resources.getString(2131034319, arrobject));
+        textView.setText(resources.getString(R.string.auto_reader_speed_desc, arrobject));
     }
 
     public final void a() {
@@ -65,15 +65,15 @@ public class AutoReaderSetWidget extends LinearLayout implements View.OnClickLis
             default: {
                 return;
             }
-            case 2131493867: {
+            case R.id.btn_auto_reader_dec: {
                 this.h.b();
                 return;
             }
-            case 2131493868: {
+            case R.id.btn_auto_reader_acc: {
                 this.h.a();
                 return;
             }
-            case 2131493869:
+            case R.id.btn_auto_reader_stop:
         }
         com.clilystudio.netbook.hpay100.a.a.E(this.getContext());
         this.h.c();
@@ -87,13 +87,13 @@ public class AutoReaderSetWidget extends LinearLayout implements View.OnClickLis
     public void setOptionClickListener(a a2) {
         this.h = a2;
         this.b = com.clilystudio.netbook.hpay100.a.a.a(this.a, "auto_reader_speed", 5);
-        this.d = (TextView) this.findViewById(2131493865);
+        this.d = (TextView) this.findViewById(R.id.txt_auto_turn_speed);
         this.e();
-        this.e = (Button) this.findViewById(2131493867);
+        this.e = (Button) this.findViewById(R.id.btn_auto_reader_dec);
         this.e.setOnClickListener(this);
-        this.f = (Button) this.findViewById(2131493868);
+        this.f = (Button) this.findViewById(R.id.btn_auto_reader_acc);
         this.f.setOnClickListener(this);
-        this.g = (Button) this.findViewById(2131493869);
+        this.g = (Button) this.findViewById(R.id.btn_auto_reader_stop);
         this.g.setOnClickListener(this);
     }
 }

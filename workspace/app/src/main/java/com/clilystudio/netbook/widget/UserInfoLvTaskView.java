@@ -24,8 +24,8 @@ public class UserInfoLvTaskView extends UserInfoTaskView {
         if (this.a) {
             this.mExp.setText("\u7b49\u7ea7N");
             ExpView expView = this.mExp;
-            expView.setBackgroundResource(2130837783);
-            expView.setTextColor(expView.getResources().getColor(2131427546));
+            expView.setBackgroundResource(R.drawable.exp_task_active);
+            expView.setTextColor(expView.getResources().getColor(R.color.user_info_exp_active));
             return;
         }
         this.setLv(this.b);

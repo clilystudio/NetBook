@@ -101,9 +101,9 @@ public final class A {
     public final void a() {
         h h2 = new h(this.a);
         h2.d = "\u6b63\u5728\u4e0b\u8f7d";
-        View view = LayoutInflater.from(this.a).inflate(2130903328, null);
-        this.b = (ProgressBar) view.findViewById(2131493800);
-        this.c = (TextView) view.findViewById(2131493801);
+        View view = LayoutInflater.from(this.a).inflate(R.layout.mhd_download_progress, null);
+        this.b = (ProgressBar) view.findViewById(R.id.update_progress);
+        this.c = (TextView) view.findViewById(R.id.update_progress_text);
         h2.a(view);
         this.d = h2.a();
         this.d.setCanceledOnTouchOutside(false);

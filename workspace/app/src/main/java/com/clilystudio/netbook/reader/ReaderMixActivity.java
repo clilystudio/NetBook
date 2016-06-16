@@ -64,7 +64,7 @@ public class ReaderMixActivity extends BaseLoadingActivity {
         readerMixActivity.j.setVisibility(View.GONE);
         String string = readerMixActivity.k.getHost();
         if (string.equals(readerMixActivity.c)) {
-            readerMixActivity.i.findViewById(2131493875).setVisibility(View.VISIBLE);
+            readerMixActivity.i.findViewById(R.id.txt_cp_header_selected).setVisibility(View.VISIBLE);
         }
         readerMixActivity.i.setOnClickListener(new bD(readerMixActivity, string));
     }
@@ -92,26 +92,26 @@ public class ReaderMixActivity extends BaseLoadingActivity {
     @Override
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        this.a(2130903321);
-        this.c(2131034482);
-        this.d(2130837881);
+        this.a(R.layout.listview);
+        this.c(R.string.select_read_resources);
+        this.d(R.drawable.ic_close_white_24dp);
         this.a = this.getIntent().getStringExtra("BOOK_ID");
         this.b = this.getIntent().getStringExtra("BOOK_TITLE");
         this.c = this.getIntent().getStringExtra("SOURCE");
         this.f = new bG(this, this.getLayoutInflater());
-        this.e = (ListView) this.findViewById(2131493135);
+        this.e = (ListView) this.findViewById(R.id.content_list);
         this.e.setFooterDividersEnabled(true);
-        View view = LayoutInflater.from(this).inflate(2130903364, (ViewGroup) this.e, false);
-        this.g = view.findViewById(2131493879);
+        View view = LayoutInflater.from(this).inflate(R.layout.reader_mix_header, (ViewGroup) this.e, false);
+        this.g = view.findViewById(R.id.promo_section);
         this.e.addHeaderView(view, null, false);
-        View view2 = this.findViewById(2131493877);
-        View view3 = this.findViewById(2131493878);
+        View view2 = this.findViewById(R.id.reader_mix_header_item);
+        View view3 = this.findViewById(R.id.reader_mix_header_selected);
         if ("mix".equals(this.c)) {
             view3.setVisibility(View.VISIBLE);
         }
         view2.setOnClickListener(new bB(this));
-        this.i = this.findViewById(2131493872);
-        this.j = this.findViewById(2131493876);
+        this.i = this.findViewById(R.id.reader_cp_header);
+        this.j = this.findViewById(R.id.txt_label);
         this.e.setAdapter(this.f);
         this.e.setOnItemClickListener(new bC(this));
         this.b();

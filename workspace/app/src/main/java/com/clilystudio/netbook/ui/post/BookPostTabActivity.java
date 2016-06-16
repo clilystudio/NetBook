@@ -113,7 +113,7 @@ public class BookPostTabActivity extends SimpleTabActivity {
         if (string != null && string.length() > 10) {
             string = string.substring(0, 10) + "...";
         }
-        this.a(string, 2130837872, (aa) ((Object) new aw(this)), "\u6392\u5e8f");
+        this.a(string, R.drawable.ic_action_post_sort, (aa) ((Object) new aw(this)), "\u6392\u5e8f");
         if (this.getIntent().getBooleanExtra("FROM_READER", false)) {
             com.clilystudio.netbook.a.a();
             com.clilystudio.netbook.a.b();

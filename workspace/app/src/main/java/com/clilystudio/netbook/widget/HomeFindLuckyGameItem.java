@@ -12,7 +12,7 @@ import com.umeng.a.b;
 
 public class HomeFindLuckyGameItem extends HomeFindItem {
     public HomeFindLuckyGameItem(Activity activity) {
-        super(activity, "\u53ec\u5524\u795e\u5668", 2130837827, null);
+        super(activity, "\u53ec\u5524\u795e\u5668", R.drawable.home_find_lucky_game, null);
     }
 
     public HomeFindLuckyGameItem(Context context, AttributeSet attributeSet) {

@@ -14,7 +14,7 @@ public class PostVoteBinder extends NotifBinder {
 
     @Override
     protected int getIconRes() {
-        return 2130837917;
+        return R.drawable.ic_notif_vote;
     }
 
     @Override

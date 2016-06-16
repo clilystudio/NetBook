@@ -48,11 +48,11 @@ public class AddGamePostActivity extends BaseActivity {
         if (account.getUser().getLv() >= 2) {
             String string = account.getToken();
             h h2 = new h(addGamePostActivity);
-            View view = LayoutInflater.from(addGamePostActivity).inflate(2130903202, null);
-            ((TextView) view.findViewById(2131493422)).setText(2131034585);
+            View view = LayoutInflater.from(addGamePostActivity).inflate(R.layout.dialog_waring_text, null);
+            ((TextView) view.findViewById(R.id.waring_content)).setText(R.string.waring_dialog_game_post);
             h2.d = "\u53d1\u5e03";
-            h2.a(2131034583, null);
-            h2.b(2131034129, (DialogInterface.OnClickListener) ((Object) new p(addGamePostActivity)));
+            h2.a(R.string.vote_ok, null);
+            h2.b(R.string.cancel, (DialogInterface.OnClickListener) ((Object) new p(addGamePostActivity)));
             AlertDialog alertDialog = h2.a(view).b();
             ((Button) alertDialog.findViewById(16908313)).setOnClickListener(new q(addGamePostActivity, (Dialog) alertDialog, string));
             return;
@@ -85,9 +85,9 @@ public class AddGamePostActivity extends BaseActivity {
     @Override
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        this.setContentView(2130903075);
-        this.a(2131034293, 2131034448, (aa) ((Object) new o(this)));
+        this.setContentView(R.layout.activity_add_game_post);
+        this.a(R.string.add_post, R.string.publish, (aa) ((Object) new o(this)));
         ShareSDK.initSDK(this);
-        this.a = (EditText) this.findViewById(2131493067);
+        this.a = (EditText) this.findViewById(R.id.add_game_post_content);
     }
 }

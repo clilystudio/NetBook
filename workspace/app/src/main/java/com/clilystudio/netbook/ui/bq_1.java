@@ -11,7 +11,7 @@ final class bq extends W<AppItem> {
 
     public bq(MysteryActivity mysteryActivity, Activity activity) {
         this.a = mysteryActivity;
-        super(activity, 2130903289);
+        super(activity, R.layout.list_item_mystery);
     }
 
     @Override
@@ -31,6 +31,6 @@ final class bq extends W<AppItem> {
 
     @Override
     protected final int[] a() {
-        return new int[]{2131493025, 2131492928, 2131493180, 2131493705, 2131493704};
+        return new int[]{R.id.image, R.id.name, R.id.hot_flag, R.id.action, R.id.active_require};
     }
 }

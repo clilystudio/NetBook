@@ -13,7 +13,7 @@ final class Q extends W<BookSummary> {
 
     public Q(UGCGuideEditBooksActivity uGCGuideEditBooksActivity, LayoutInflater layoutInflater, int n) {
         this.a = uGCGuideEditBooksActivity;
-        super(layoutInflater, 2130903316);
+        super(layoutInflater, R.layout.list_item_ucg_book_guide_edit);
     }
 
     /*
@@ -22,7 +22,7 @@ final class Q extends W<BookSummary> {
     @Override
     protected final /* synthetic */ void a(int n, Object object) {
         BookSummary bookSummary = (BookSummary) object;
-        ((CoverView) this.a(0, CoverView.class)).setImageUrl(bookSummary.getFullCover(), 2130837766);
+        ((CoverView) this.a(0, CoverView.class)).setImageUrl(bookSummary.getFullCover(), R.drawable.cover_default);
         this.a(1, bookSummary.getTitle());
         this.a(2, bookSummary.getAuthor());
         this.a(3, "" + bookSummary.getLatelyFollower());
@@ -58,20 +58,20 @@ final class Q extends W<BookSummary> {
 
     @Override
     protected final int[] a() {
-        return new int[]{2131492899, 2131492936, 2131493317, 2131493775, 2131493776, 2131493777, 2131493780, 2131493778, 2131493779, 2131493411};
+        return new int[]{R.id.avatar, R.id.title, R.id.author, R.id.followcount, R.id.wordcount, R.id.wordunit, R.id.comment, R.id.comment_add_layout, R.id.comment_edit_layout, R.id.separate};
     }
 
     @Override
     public final View getView(final int n, View view, ViewGroup viewGroup) {
         View view2 = super.getView(n, view, viewGroup);
-        view2.findViewById(2131493781).setOnClickListener(new View.OnClickListener() {
+        view2.findViewById(R.id.edit_comment).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 UGCGuideEditBooksActivity.a(Q.this.a, n);
             }
         });
-        view2.findViewById(2131493778).setOnClickListener(new S(this, n));
-        view2.findViewById(2131493782).setOnClickListener(new T(this, n));
+        view2.findViewById(R.id.comment_add_layout).setOnClickListener(new S(this, n));
+        view2.findViewById(R.id.delete_comment).setOnClickListener(new T(this, n));
         this.a(n, view2, this.getItem(n));
         return view2;
     }

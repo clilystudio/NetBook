@@ -38,14 +38,14 @@ public final class AdSplashImp {
 
     private void a(AdSplashImp.EventType eventType) {
         if (this.b instanceof g) {
-            this.a(eventType, this.a.getResources().getStringArray(2131361806));
+            this.a(eventType, this.a.getResources().getStringArray(R.array.splash_baidu_event));
             return;
         }
         if (this.b instanceof l) {
-            this.a(eventType, this.a.getResources().getStringArray(2131361807));
+            this.a(eventType, this.a.getResources().getStringArray(R.array.splash_gdt_event));
             return;
         }
-        this.a(eventType, this.a.getResources().getStringArray(2131361808));
+        this.a(eventType, this.a.getResources().getStringArray(R.array.splash_own_event));
     }
 
     /*
@@ -101,7 +101,7 @@ public final class AdSplashImp {
         this.a.a();
         this.a.a(3000);
         if (a.r(this.a, "ad_baidu_confirm")) {
-            AdContainerLayout adContainerLayout = (AdContainerLayout) this.a.findViewById(2131493263);
+            AdContainerLayout adContainerLayout = (AdContainerLayout) this.a.findViewById(R.id.splash_ad_container);
             adContainerLayout.setIsShowConfirm(true);
             adContainerLayout.setSplashAdContainerClickListener(new b(this, adContainerLayout));
         }

@@ -40,14 +40,14 @@ public class ReaderResActivity extends ReaderModeActivity {
     public void onCreate(Bundle bundle) {
         void var4_6;
         super.onCreate(bundle);
-        this.setContentView(2130903179);
+        this.setContentView(R.layout.content_frame);
         this.c();
-        View view = LayoutInflater.from(this).inflate(2130903071, null);
-        view.findViewById(2131493860).setVisibility(View.GONE);
-        view.findViewById(2131493013).setOnClickListener(new bQ(this));
-        view.findViewById(2131493862).setOnClickListener(new bR(this));
-        this.e = view.findViewById(2131493864);
-        view.findViewById(2131493861).setOnClickListener(new bS(this));
+        View view = LayoutInflater.from(this).inflate(R.layout.actionbar_custom_read_mode, null);
+        view.findViewById(R.id.reader_ab_more).setVisibility(View.GONE);
+        view.findViewById(R.id.back).setOnClickListener(new bQ(this));
+        view.findViewById(R.id.reader_ab_read_mode).setOnClickListener(new bR(this));
+        this.e = view.findViewById(R.id.reader_ab_topic_count);
+        view.findViewById(R.id.reader_ab_topic).setOnClickListener(new bS(this));
         this.a().a(view);
         this.a().d(true);
         i.a().a(this);
@@ -61,7 +61,7 @@ public class ReaderResActivity extends ReaderModeActivity {
         } else {
             ReaderWebPageFragment readerWebPageFragment = this.a(this.c);
         }
-        fragmentTransaction.replace(2131493174, (Fragment) var4_6).commit();
+        fragmentTransaction.replace(R.id.content_frame, (Fragment) var4_6).commit();
         com.clilystudio.netbook.a.a();
         com.clilystudio.netbook.a.a(this);
         bT bT2 = new bT(this, 0);

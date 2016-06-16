@@ -39,7 +39,7 @@ public class RankCollapseItem extends LinearLayout implements View.OnClickListen
      */
     private void a() {
         ImageView imageView = this.mArrow;
-        int n = this.a ? 2130838065 : 2130838064;
+        int n = this.a ? R.drawable.rank_arrow_up : R.drawable.rank_arrow_down;
         imageView.setImageResource(n);
         LinearLayout linearLayout = this.mItemContainer;
         int n2 = this.a ? 0 : 8;
@@ -64,7 +64,7 @@ public class RankCollapseItem extends LinearLayout implements View.OnClickListen
         this.mItemContainer.removeAllViews();
         LayoutInflater layoutInflater = LayoutInflater.from(this.getContext());
         for (BookRankSummary bookRankSummary : list) {
-            TextView textView = (TextView) layoutInflater.inflate(2130903248, (ViewGroup) this.mItemContainer, false);
+            TextView textView = (TextView) layoutInflater.inflate(R.layout.item_rank_sub_item, (ViewGroup) this.mItemContainer, false);
             textView.setText(bookRankSummary.getTitle());
             this.mItemContainer.addView(textView);
             textView.setOnClickListener(new at(this, bookRankSummary, bl));
@@ -87,11 +87,11 @@ public class RankCollapseItem extends LinearLayout implements View.OnClickListen
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
-        this.mLabel = (TextView) findViewById(2131493515);
-        this.mArrow = (ImageView) findViewById(2131493199);
-        this.mItemContainer = (LinearLayout) findViewById(2131493578);
-        this.mBottomDivdier = findViewById(2131493603);
-        this.mTopDivdier = findViewById(2131493602);
+        this.mLabel = (TextView) findViewById(R.id.label);
+        this.mArrow = (ImageView) findViewById(R.id.arrow);
+        this.mItemContainer = (LinearLayout) findViewById(R.id.item_container);
+        this.mBottomDivdier = findViewById(R.id.bottom_divider);
+        this.mTopDivdier = findViewById(R.id.top_divider);
         this.mLabelContainer = (RelativeLayout) findViewById(213149360);
         this.mLabel.setText("\u522b\u4eba\u5bb6\u7684\u6392\u884c\u699c");
         this.mLabelContainer.setOnClickListener(this);

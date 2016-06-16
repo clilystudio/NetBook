@@ -29,7 +29,7 @@ public class CustomSearchActivity extends BaseActivity {
         boolean bl = true;
         if (bl) {
             String string3 = Build.BRAND + " " + Build.MODEL;
-            ba ba2 = new ba(customSearchActivity, (Activity) customSearchActivity, 2131034324);
+            ba ba2 = new ba(customSearchActivity, (Activity) customSearchActivity, R.string.book_add_loading);
             Object[] arrobject = new String[]{customSearchActivity.a.getText().toString().trim(), customSearchActivity.b.getText().toString().trim(), string3};
             ba2.b(arrobject);
         }
@@ -42,10 +42,10 @@ public class CustomSearchActivity extends BaseActivity {
     @Override
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        this.setContentView(2130903094);
-        this.a(2131034288, 2131034282, (aa) new aZ(this));
-        this.a = (EditText) this.findViewById(2131493119);
-        this.b = (EditText) this.findViewById(2131493120);
+        this.setContentView(R.layout.activity_custom_search);
+        this.a(R.string.add_book_title, R.string.add_book_create, (aa) new aZ(this));
+        this.a = (EditText) this.findViewById(R.id.add_book_name);
+        this.b = (EditText) this.findViewById(R.id.add_book_author);
         Intent intent = this.getIntent();
         if (intent != null) {
             String string = intent.getStringExtra("AddBookKey");

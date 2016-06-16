@@ -10,7 +10,7 @@ final class cK extends c<String, String> {
 
     public cK(ReaderWebActivity readerWebActivity, Activity activity, int n) {
         this.b = readerWebActivity;
-        super(activity, 2131034218);
+        super(activity, R.string.loading);
         this.a = n;
     }
 

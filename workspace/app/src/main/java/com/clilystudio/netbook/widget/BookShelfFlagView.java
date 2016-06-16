@@ -16,14 +16,14 @@ public class BookShelfFlagView extends TextView {
         this.setVisibility(View.GONE);
         this.setTextColor(-1);
         this.setGravity(17);
-        this.setTextSize(this.getResources().getDimensionPixelSize(2131099774));
-        this.b = this.getResources().getDrawable(2130838154);
+        this.setTextSize(this.getResources().getDimensionPixelSize(R.dimen.shelf_flag_text));
+        this.b = this.getResources().getDrawable(R.drawable.shelf_red_circle);
     }
 
     private void a() {
         Resources resources = this.getResources();
-        int n = resources.getDimensionPixelSize(2131099697);
-        int n2 = resources.getDimensionPixelSize(2131099696);
+        int n = resources.getDimensionPixelSize(R.dimen.bookshelf_flag_width);
+        int n2 = resources.getDimensionPixelSize(R.dimen.bookshelf_flag_height);
         ViewGroup.LayoutParams layoutParams = this.getLayoutParams();
         layoutParams.width = n;
         layoutParams.height = n2;
@@ -46,13 +46,13 @@ public class BookShelfFlagView extends TextView {
         switch (this.a) {
             case 1: {
                 this.a();
-                this.setBackgroundResource(2130838153);
+                this.setBackgroundResource(R.drawable.shelf_prom_btn);
                 this.setText("\u63a8\u5e7f");
                 break;
             }
             case 2: {
                 this.a();
-                this.setBackgroundResource(2130838142);
+                this.setBackgroundResource(R.drawable.shelf_broadcast_btn);
                 this.setText("\u516c\u544a");
                 break;
             }
@@ -61,12 +61,12 @@ public class BookShelfFlagView extends TextView {
                 layoutParams.width = -2;
                 layoutParams.height = -2;
                 this.setText("");
-                this.setBackgroundResource(2130838154);
+                this.setBackgroundResource(R.drawable.shelf_red_circle);
                 break;
             }
             case 4: {
                 this.a();
-                this.setBackgroundResource(2130838152);
+                this.setBackgroundResource(R.drawable.shelf_feed_flag_bg);
                 this.setText("\u5f85\u6740");
             }
         }

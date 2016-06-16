@@ -8,7 +8,7 @@ public class UnimportantNotificationActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        this.setContentView(2130903139);
+        this.setContentView(R.layout.activity_unimportant_notfif);
         this.b("\u901a\u77e5");
     }
 

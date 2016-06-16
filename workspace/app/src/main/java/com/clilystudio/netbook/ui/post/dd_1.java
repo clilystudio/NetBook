@@ -15,7 +15,7 @@ final class dd implements View.OnClickListener {
     @Override
     public final void onClick(View view) {
         this.a.dismiss();
-        ReviewListActivity.o(this.b).setText(2131034434);
+        ReviewListActivity.o(this.b).setText(R.string.post_sort_reply_count);
         ReviewListActivity.b(this.b, "comment-count");
         ReviewListActivity.n(this.b).setRefreshing();
     }

@@ -77,18 +77,18 @@ public abstract class AbsUGCListFragment extends Fragment implements AdapterView
     @Override
     public View onCreateView(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
         super.onCreateView(layoutInflater, viewGroup, bundle);
-        View view = layoutInflater.inflate(2130903207, viewGroup, false);
-        this.a = (PullToRefreshListView) view.findViewById(2131493099);
+        View view = layoutInflater.inflate(R.layout.fragment_abs_ugc_list, viewGroup, false);
+        this.a = (PullToRefreshListView) view.findViewById(R.id.ptr_list);
         this.b = (ListView) this.a.h();
         this.b.setOnItemClickListener(this);
         com.clilystudio.netbook.hpay100.a.a.a((Context) this.getActivity(), this.b);
-        View view2 = layoutInflater.inflate(2130903330, (ViewGroup) this.b, false);
-        this.k = (TextView) view2.findViewById(2131492905);
+        View view2 = layoutInflater.inflate(R.layout.my_ugc_header_label, (ViewGroup) this.b, false);
+        this.k = (TextView) view2.findViewById(R.id.content);
         this.k.setVisibility(View.GONE);
         this.b.addHeaderView(view2, null, false);
-        this.d = view.findViewById(2131493085);
-        this.j = (TextView) view.findViewById(2131493100);
-        this.e = LayoutInflater.from(this.getActivity()).inflate(2130903325, null);
+        this.d = view.findViewById(R.id.pb_loading);
+        this.j = (TextView) view.findViewById(R.id.empty_text);
+        this.e = LayoutInflater.from(this.getActivity()).inflate(R.layout.loading_item, null);
         if (com.clilystudio.netbook.hpay100.a.a.i()) {
             this.b.setFooterDividersEnabled(false);
         }

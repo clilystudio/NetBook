@@ -13,10 +13,10 @@ public class BaseReadActivity extends FragmentActivity {
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         if (a.a((Context) this, "customer_night_theme", false)) {
-            this.setTheme(2131165359);
+            this.setTheme(R.style.BaseTheme_Dark);
             return;
         }
-        this.setTheme(2131165358);
+        this.setTheme(R.style.BaseTheme);
     }
 
     @Override

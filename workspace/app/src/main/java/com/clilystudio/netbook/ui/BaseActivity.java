@@ -38,8 +38,8 @@ public class BaseActivity extends AppCompatActivity {
     private void a(String string, int n) {
         View view = LayoutInflater.from(this).inflate(n, null);
         this.a().a(view);
-        ((TextView) view.findViewById(2131492936)).setText(string);
-        view.findViewById(2131493013).setOnClickListener(new View.OnClickListener() {
+        ((TextView) view.findViewById(R.id.title)).setText(string);
+        view.findViewById(R.id.back).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onBackPressed();
@@ -53,13 +53,13 @@ public class BaseActivity extends AppCompatActivity {
 
     public final void a(int n, String string, int n2, ab ab2) {
         this.c();
-        View view = LayoutInflater.from(this).inflate(2130903040, null);
-        ((TextView) view.findViewById(2131492936)).setText(2131034565);
-        view.findViewById(2131493013).setOnClickListener(new K(this));
-        TextView textView = (TextView) view.findViewById(2131493008);
-        ImageView imageView = (ImageView) view.findViewById(2131493009);
+        View view = LayoutInflater.from(this).inflate(R.layout.ab_custom_text_icon_view, null);
+        ((TextView) view.findViewById(R.id.title)).setText(R.string.ugc_list);
+        view.findViewById(R.id.back).setOnClickListener(new K(this));
+        TextView textView = (TextView) view.findViewById(R.id.actionbar_custom_right_text);
+        ImageView imageView = (ImageView) view.findViewById(R.id.actionbar_custom_right_icon);
         textView.setText(string);
-        imageView.setImageResource(2130837871);
+        imageView.setImageResource(R.drawable.ic_action_overflow);
         textView.setOnClickListener(new L(this, ab2));
         imageView.setOnClickListener(new M(this, ab2));
         this.a().a(view);
@@ -71,13 +71,13 @@ public class BaseActivity extends AppCompatActivity {
 
     public final void a(String string, int n, int n2, ab ab2) {
         this.c();
-        View view = LayoutInflater.from(this).inflate(2130903041, null);
-        ((TextView) view.findViewById(2131492936)).setText(string);
-        view.findViewById(2131493013).setOnClickListener(new X(this));
-        TextView textView = (TextView) view.findViewById(2131493010);
-        TextView textView2 = (TextView) view.findViewById(2131493011);
-        textView.setText(2131034475);
-        textView2.setText(2131034448);
+        View view = LayoutInflater.from(this).inflate(R.layout.ab_custom_two_text_view, null);
+        ((TextView) view.findViewById(R.id.title)).setText(string);
+        view.findViewById(R.id.back).setOnClickListener(new X(this));
+        TextView textView = (TextView) view.findViewById(R.id.ab_custom_right_text);
+        TextView textView2 = (TextView) view.findViewById(R.id.ab_custom_right_text_2);
+        textView.setText(R.string.save);
+        textView2.setText(R.string.publish);
         textView.setOnClickListener(new Y(this, ab2));
         textView2.setOnClickListener(new Z(this, ab2));
         this.a().a(view);
@@ -89,10 +89,10 @@ public class BaseActivity extends AppCompatActivity {
 
     public final void a(String string, int n, aa aa2, String string2) {
         this.c();
-        View view = LayoutInflater.from(this).inflate(2130903070, null);
-        ((TextView) view.findViewById(2131492936)).setText(string);
-        view.findViewById(2131493013).setOnClickListener(new P(this));
-        ImageView imageView = (ImageView) view.findViewById(2131493063);
+        View view = LayoutInflater.from(this).inflate(R.layout.actionbar_custom_icon_view, null);
+        ((TextView) view.findViewById(R.id.title)).setText(string);
+        view.findViewById(R.id.back).setOnClickListener(new P(this));
+        ImageView imageView = (ImageView) view.findViewById(R.id.ab_icon);
         imageView.setContentDescription(string2);
         imageView.setImageResource(n);
         imageView.setOnClickListener(new Q(this, aa2));
@@ -101,10 +101,10 @@ public class BaseActivity extends AppCompatActivity {
 
     public final void a(String string, String string2, aa aa2) {
         this.c();
-        View view = LayoutInflater.from(this).inflate(2130903072, null);
-        ((TextView) view.findViewById(2131492936)).setText(string);
-        view.findViewById(2131493013).setOnClickListener(new S(this));
-        TextView textView = (TextView) view.findViewById(2131493008);
+        View view = LayoutInflater.from(this).inflate(R.layout.actionbar_custom_text_view, null);
+        ((TextView) view.findViewById(R.id.title)).setText(string);
+        view.findViewById(R.id.back).setOnClickListener(new S(this));
+        TextView textView = (TextView) view.findViewById(R.id.actionbar_custom_right_text);
         textView.setText(string2);
         textView.setOnClickListener(new T(this, aa2));
         this.a().a(view);
@@ -115,20 +115,20 @@ public class BaseActivity extends AppCompatActivity {
     }
 
     public final void b(int n, int n2, aa aa2) {
-        String string = this.getString(2131034389);
+        String string = this.getString(R.string.game_detail);
         this.c();
-        View view = LayoutInflater.from(this).inflate(2130903070, null);
-        ((TextView) view.findViewById(2131492936)).setText(string);
-        view.findViewById(2131493013).setOnClickListener(new N(this));
-        ImageView imageView = (ImageView) view.findViewById(2131493063);
-        imageView.setImageResource(2130837866);
+        View view = LayoutInflater.from(this).inflate(R.layout.actionbar_custom_icon_view, null);
+        ((TextView) view.findViewById(R.id.title)).setText(string);
+        view.findViewById(R.id.back).setOnClickListener(new N(this));
+        ImageView imageView = (ImageView) view.findViewById(R.id.ab_icon);
+        imageView.setImageResource(R.drawable.ic_action_edit);
         imageView.setOnClickListener(new O(this, aa2));
         this.a().a(view);
     }
 
     public final void b(String string) {
         this.c();
-        this.a(string, 2130903043);
+        this.a(string, R.layout.ab_title);
     }
 
     public final void c() {
@@ -141,37 +141,37 @@ public class BaseActivity extends AppCompatActivity {
 
     public final void c(int n) {
         this.c();
-        this.a(this.getString(n), 2130903044);
+        this.a(this.getString(n), R.layout.ab_title_dark);
     }
 
     public final void c(String string) {
         this.c();
-        this.a(string, 2130903044);
+        this.a(string, R.layout.ab_title_dark);
     }
 
     public final void d() {
-        e.a((Activity) this, (int) 2131034529);
+        e.a((Activity) this, (int) R.string.token_invalid);
         this.startActivity(AuthLoginActivity.a(this));
     }
 
     public final void d(int n) {
         View view = this.a().a();
         if (view != null) {
-            ((ImageView) view.findViewById(2131493013)).setImageResource(2130837881);
+            ((ImageView) view.findViewById(R.id.back)).setImageResource(R.drawable.ic_close_white_24dp);
         }
     }
 
     public final void d(String string) {
-        ((TextView) this.a().a().findViewById(2131492936)).setText(string);
+        ((TextView) this.a().a().findViewById(R.id.title)).setText(string);
     }
 
     public final void e(String string) {
-        ((TextView) this.a().a().findViewById(2131493008)).setText(string);
+        ((TextView) this.a().a().findViewById(R.id.actionbar_custom_right_text)).setText(string);
     }
 
     protected final void f(String string) {
         try {
-            ((TextView) this.a().a().findViewById(2131492936)).setText(string);
+            ((TextView) this.a().a().findViewById(R.id.title)).setText(string);
             return;
         } catch (Exception var2_2) {
             var2_2.printStackTrace();
@@ -194,9 +194,9 @@ public class BaseActivity extends AppCompatActivity {
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         if (a.a((Context) this, "customer_night_theme", false)) {
-            this.setTheme(2131165359);
+            this.setTheme(R.style.BaseTheme_Dark);
         } else {
-            this.setTheme(2131165358);
+            this.setTheme(R.style.BaseTheme);
         }
         IntentFilter intentFilter = new IntentFilter();
         intentFilter.addAction("broadcastOnThemeChanged");

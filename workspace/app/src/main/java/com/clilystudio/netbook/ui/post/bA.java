@@ -12,6 +12,6 @@ final class bA implements View.OnClickListener {
     @Override
     public final void onClick(View view) {
         GirlTopicListActivity.a(this.a, false).showAsDropDown(view);
-        GirlTopicListActivity.c(this.a).setImageDrawable(this.a.getResources().getDrawable(2130837722));
+        GirlTopicListActivity.c(this.a).setImageDrawable(this.a.getResources().getDrawable(R.drawable.book_topic_top_arrow_up));
     }
 }

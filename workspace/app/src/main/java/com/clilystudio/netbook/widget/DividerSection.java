@@ -26,9 +26,9 @@ public class DividerSection extends RelativeLayout {
         if (this.c != null) {
             this.b.setBackgroundDrawable(this.c);
         } else if (a.a(this.getContext(), "customer_night_theme", false)) {
-            this.b.setBackgroundResource(2130838147);
+            this.b.setBackgroundResource(R.drawable.shelf_dark_divider);
         } else {
-            this.b.setBackgroundResource(2130838151);
+            this.b.setBackgroundResource(R.drawable.shelf_divider);
         }
         typedArray.recycle();
         RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(-1, 1);
@@ -47,6 +47,6 @@ public class DividerSection extends RelativeLayout {
     }
 
     public void setDividerMatchParent() {
-        this.b.setBackgroundColor(this.getResources().getColor(2131427454));
+        this.b.setBackgroundColor(this.getResources().getColor(R.color.list_divider));
     }
 }

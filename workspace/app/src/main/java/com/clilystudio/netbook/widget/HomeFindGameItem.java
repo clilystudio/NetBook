@@ -12,7 +12,7 @@ public class HomeFindGameItem extends HomeFindItem {
     private String a;
 
     public HomeFindGameItem(Activity activity) {
-        super(activity, "\u6e38\u620f\u4e2d\u5fc3", 2130837824, null);
+        super(activity, "\u6e38\u620f\u4e2d\u5fc3", R.drawable.home_find_game_center, null);
     }
 
     public HomeFindGameItem(Context context, AttributeSet attributeSet) {
@@ -36,7 +36,7 @@ public class HomeFindGameItem extends HomeFindItem {
             {
                 this.mSubFlag.setVisibility(View.VISIBLE);
                 this.mSubText.setVisibility(View.GONE);
-                this.mSubFlag.setImageResource(2130838025);
+                this.mSubFlag.setImageResource(R.drawable.notification_red_dot);
                 return;
             }
         } else {

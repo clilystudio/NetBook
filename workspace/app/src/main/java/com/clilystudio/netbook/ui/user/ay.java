@@ -16,7 +16,7 @@ final class ay implements DialogInterface.OnClickListener {
     @Override
     public final void onClick(DialogInterface dialogInterface, int n) {
         if (!a.a(this.a)) {
-            e.a((Activity) this.a, (int) 2131034303);
+            e.a((Activity) this.a, (int) R.string.alarm_no_install_weixin);
             return;
         }
         Intent intent = this.a.getPackageManager().getLaunchIntentForPackage("com.tencent.mm");

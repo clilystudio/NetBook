@@ -11,7 +11,7 @@ final class aj implements PopupWindow.OnDismissListener {
 
     @Override
     public final void onDismiss() {
-        BookHelpListActivity.b(this.a).setImageDrawable(this.a.getResources().getDrawable(2130837721));
-        BookHelpListActivity.c(this.a).setImageDrawable(this.a.getResources().getDrawable(2130837721));
+        BookHelpListActivity.b(this.a).setImageDrawable(this.a.getResources().getDrawable(R.drawable.book_topic_top_arrow_down));
+        BookHelpListActivity.c(this.a).setImageDrawable(this.a.getResources().getDrawable(R.drawable.book_topic_top_arrow_down));
     }
 }

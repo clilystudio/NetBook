@@ -48,11 +48,11 @@ public abstract class BaseLoadingFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
-        View view = layoutInflater.inflate(2130903109, viewGroup, false);
-        this.a = (ViewGroup) view.findViewById(2131492905);
-        this.b = view.findViewById(2131493102);
-        this.c = view.findViewById(2131493103);
-        this.d = view.findViewById(2131493104);
+        View view = layoutInflater.inflate(R.layout.activity_loading_base, viewGroup, false);
+        this.a = (ViewGroup) view.findViewById(R.id.content);
+        this.b = view.findViewById(R.id.common_list_pb);
+        this.c = view.findViewById(R.id.common_list_error);
+        this.d = view.findViewById(R.id.common_list_empty);
         LayoutInflater.from(this.getActivity()).inflate(this.a(), this.a);
         View[] arrview = new View[]{this.a, this.b, this.c, this.d};
         this.e = arrview;

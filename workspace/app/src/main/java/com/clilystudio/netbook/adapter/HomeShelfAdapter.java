@@ -206,19 +206,19 @@ public class HomeShelfAdapter extends u<BookShelf> {
         if (var2_2 != null)**GOTO lbl21
         switch (var5_5) {
             case 1: {
-                var2_2 = this.c.inflate(2130903305, var3_3, false);
+                var2_2 = this.c.inflate(R.layout.list_item_shelf_advert, var3_3, false);
                 **break;
             }
             case 0: {
-                var2_2 = this.c.inflate(2130903307, var3_3, false);
+                var2_2 = this.c.inflate(R.layout.list_item_shelf_book, var3_3, false);
                 **break;
             }
             case 2: {
-                var2_2 = this.c.inflate(2130903310, var3_3, false);
+                var2_2 = this.c.inflate(R.layout.list_item_shelf_txt, var3_3, false);
                 **break;
             }
             case 3: {
-                var2_2 = this.c.inflate(2130903309, var3_3, false);
+                var2_2 = this.c.inflate(R.layout.list_item_shelf_feed, var3_3, false);
             }
             lbl16:
             // 5 sources:
@@ -228,13 +228,13 @@ public class HomeShelfAdapter extends u<BookShelf> {
             }
             case 4:
         }
-        var2_2 = this.c.inflate(2130903306, var3_3, false);
+        var2_2 = this.c.inflate(R.layout.list_item_shelf_audio, var3_3, false);
         **GOTO lbl33
         lbl21:
         // 1 sources:
         if (this.d) {
             if (var5_5 == 1 || var5_5 == 3) {
-                var2_2 = this.c.inflate(2130903308, var3_3, false);
+                var2_2 = this.c.inflate(R.layout.list_item_shelf_empty, var3_3, false);
             }
         } else {
             switch (var5_5) {
@@ -242,11 +242,11 @@ public class HomeShelfAdapter extends u<BookShelf> {
                     break;
                 }
                 case 1: {
-                    var2_2 = this.c.inflate(2130903305, var3_3, false);
+                    var2_2 = this.c.inflate(R.layout.list_item_shelf_advert, var3_3, false);
                     break;
                 }
                 case 3: {
-                    var2_2 = this.c.inflate(2130903309, var3_3, false);
+                    var2_2 = this.c.inflate(R.layout.list_item_shelf_feed, var3_3, false);
                 }
             }
         }
@@ -259,7 +259,7 @@ public class HomeShelfAdapter extends u<BookShelf> {
             case 0: {
                 var19_6 = new BookHolder(var2_2);
                 var20_7 = var4_4.getBookRecord();
-                var19_6.cover.setImageUrl(var20_7.getFullCover(), 2130837766);
+                var19_6.cover.setImageUrl(var20_7.getFullCover(), R.drawable.cover_default);
                 var19_6.title.setText(var20_7.getTitle());
                 var19_6.desc.setText(var20_7.buildDesc());
                 if (var20_7.isUnread() && !this.d) {
@@ -358,7 +358,7 @@ public class HomeShelfAdapter extends u<BookShelf> {
         }
         var6_27 = new AlbumHolder(var2_2);
         var7_28 = var4_4.getAlbum();
-        var6_27.cover.setImageUrl(var7_28.getImgUrl(), 2130837766);
+        var6_27.cover.setImageUrl(var7_28.getImgUrl(), R.drawable.cover_default);
         var6_27.title.setText(var7_28.getName());
         var6_27.desc.setText(t.a((long) var7_28.getLastUpdate()) + "\t\t" + var7_28.getDesc());
         if (var7_28.isUpdateReaded() || this.d) {
@@ -389,10 +389,10 @@ public class HomeShelfAdapter extends u<BookShelf> {
         View top;
 
         TxtHolder(View view) {
-            this.title = (TextView) view.findViewById(2131492936);
-            this.desc = (TextView) view.findViewById(2131493481);
-            this.top =view. findViewById(2131492978);
-            this.check = (CheckBox) view.findViewById(2131492900);
+            this.title = (TextView) view.findViewById(R.id.title);
+            this.desc = (TextView) view.findViewById(R.id.desc);
+            this.top =view. findViewById(R.id.top);
+            this.check = (CheckBox) view.findViewById(R.id.checked);
         }
     }
     class FeedHolder {
@@ -400,8 +400,8 @@ public class HomeShelfAdapter extends u<BookShelf> {
         TextView title;
 
         FeedHolder(View view) {
-            this.title = (TextView) view.findViewById(2131493481);
-            this.flag = (BookShelfFlagView) view.findViewById(2131493754);
+            this.title = (TextView) view.findViewById(R.id.desc);
+            this.flag = (BookShelfFlagView) view.findViewById(R.id.flag);
         }
     }
     class BookHolder {
@@ -414,13 +414,13 @@ public class HomeShelfAdapter extends u<BookShelf> {
         View top;
 
         BookHolder(View view) {
-            this.title = (TextView)view. findViewById(2131492936);
-            this.desc = (TextView) view.findViewById(2131493481);
-            this.flag = (BookShelfFlagView)view. findViewById(2131493754);
-            this.top =view. findViewById(2131492978);
-            this.cover = (CoverView)view. findViewById(2131493604);
-            this.coverLoadingLayer = (CoverLoadingLayer) view.findViewById(2131492906);
-            this.check = (CheckBox)view. findViewById(2131492900);
+            this.title = (TextView)view. findViewById(R.id.title);
+            this.desc = (TextView) view.findViewById(R.id.desc);
+            this.flag = (BookShelfFlagView)view. findViewById(R.id.flag);
+            this.top =view. findViewById(R.id.top);
+            this.cover = (CoverView)view. findViewById(R.id.cover);
+            this.coverLoadingLayer = (CoverLoadingLayer) view.findViewById(R.id.cover_loading);
+            this.check = (CheckBox)view. findViewById(R.id.checked);
         }
     }
     class AlbumHolder {
@@ -433,13 +433,13 @@ public class HomeShelfAdapter extends u<BookShelf> {
         View top;
 
         AlbumHolder(View view) {
-            this.title = (TextView)view. findViewById(2131492936);
-            this.desc = (TextView) view. findViewById(2131493481);
-            this.flag = (BookShelfFlagView)view.  findViewById(2131493754);
-            this.top =view.  findViewById(2131492978);
-            this.cover = (CoverView)view.  findViewById(2131493604);
-            this.coverLoadingLayer = (CoverLoadingLayer)view.  findViewById(2131492906);
-            this.check = (CheckBox) view. findViewById(2131492900);
+            this.title = (TextView)view. findViewById(R.id.title);
+            this.desc = (TextView) view. findViewById(R.id.desc);
+            this.flag = (BookShelfFlagView)view.  findViewById(R.id.flag);
+            this.top =view.  findViewById(R.id.top);
+            this.cover = (CoverView)view.  findViewById(R.id.cover);
+            this.coverLoadingLayer = (CoverLoadingLayer)view.  findViewById(R.id.cover_loading);
+            this.check = (CheckBox) view. findViewById(R.id.checked);
         }
     }
 
@@ -450,10 +450,10 @@ public class HomeShelfAdapter extends u<BookShelf> {
         TextView title;
 
         AdHolder(View view) {
-            this.title = (TextView) view.findViewById(2131492936);
-            this.desc = (TextView)view. findViewById(2131493481);
-            this.flag = (BookShelfFlagView) view.findViewById(2131493754);
-            this.cover = (SmartImageView)view. findViewById(2131493604);
+            this.title = (TextView) view.findViewById(R.id.title);
+            this.desc = (TextView)view. findViewById(R.id.desc);
+            this.flag = (BookShelfFlagView) view.findViewById(R.id.flag);
+            this.cover = (SmartImageView)view. findViewById(R.id.cover);
         }
     }
 }

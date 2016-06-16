@@ -73,12 +73,12 @@ public abstract class SimpleTabActivity extends BaseTabActivity implements ViewP
     protected void onCreate(Bundle bundle) {
         int n = 0;
         super.onCreate(bundle);
-        this.setContentView(2130903133);
+        this.setContentView(R.layout.activity_tabhost);
         this.b();
-        this.a = (TabHost) this.findViewById(2131493096);
+        this.a = (TabHost) this.findViewById(R.id.host);
         TabWidgetV2 tabWidgetV2 = (TabWidgetV2) this.findViewById(16908307);
         tabWidgetV2.setItemCount(this, this.b);
-        this.e = (ViewPager) this.findViewById(2131493097);
+        this.e = (ViewPager) this.findViewById(R.id.pager);
         this.f = new ch(this, this.getSupportFragmentManager());
         this.e.setOffscreenPageLimit(this.b);
         this.e.setAdapter(this.f);
@@ -94,8 +94,8 @@ public abstract class SimpleTabActivity extends BaseTabActivity implements ViewP
         while (n < n2) {
             TabHost.TabSpec tabSpec = this.a.newTabSpec("tab" + n);
             tabSpec.setContent(this);
-            View view = layoutInflater.inflate(2130903229, null);
-            ((TextView) view.findViewById(2131493509)).setText(this.h()[n]);
+            View view = layoutInflater.inflate(R.layout.home_tabhost_item, null);
+            ((TextView) view.findViewById(R.id.text)).setText(this.h()[n]);
             tabSpec.setIndicator(view);
             this.a.addTab(tabSpec);
             ++n;

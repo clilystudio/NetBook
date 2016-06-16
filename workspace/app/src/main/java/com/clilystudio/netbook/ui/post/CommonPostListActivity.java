@@ -60,13 +60,13 @@ public class CommonPostListActivity extends BaseActivity {
      */
     static /* synthetic */ PopupWindow a(CommonPostListActivity var0, int var1_1) {
         if (var1_1 == 0) {
-            var10_2 = LayoutInflater.from(var0).inflate(2130903203, null);
-            var11_3 = (TextView) var10_2.findViewById(2131493308);
-            var12_4 = (TextView) var10_2.findViewById(2131493309);
+            var10_2 = LayoutInflater.from(var0).inflate(R.layout.discuss_popupwindow_left, null);
+            var11_3 = (TextView) var10_2.findViewById(R.id.text_item0);
+            var12_4 = (TextView) var10_2.findViewById(R.id.text_item1);
             if (var0.q) {
-                var12_4.setTextColor(var0.getResources().getColor(2131427468));
+                var12_4.setTextColor(var0.getResources().getColor(R.color.popup_red));
             } else if (var0.a.equals("all")) {
-                var11_3.setTextColor(var0.getResources().getColor(2131427468));
+                var11_3.setTextColor(var0.getResources().getColor(R.color.popup_red));
             }
             var13_5 = var0.a(var10_2);
             var10_2.setOnTouchListener((View.OnTouchListener) new bd(var0, var13_5));
@@ -76,10 +76,10 @@ public class CommonPostListActivity extends BaseActivity {
         }
         var2_6 = null;
         if (var1_1 != 1) return var2_6;
-        var3_7 = LayoutInflater.from(var0).inflate(2130903204, null);
-        var4_8 = (TextView) var3_7.findViewById(2131493308);
-        var5_9 = (TextView) var3_7.findViewById(2131493309);
-        var6_10 = (TextView) var3_7.findViewById(2131493310);
+        var3_7 = LayoutInflater.from(var0).inflate(R.layout.discuss_popupwindow_right, null);
+        var4_8 = (TextView) var3_7.findViewById(R.id.text_item0);
+        var5_9 = (TextView) var3_7.findViewById(R.id.text_item1);
+        var6_10 = (TextView) var3_7.findViewById(R.id.text_item2);
         var7_11 = var0.b;
         var8_12 = -1;
         switch (var7_11.hashCode()) {
@@ -110,11 +110,11 @@ public class CommonPostListActivity extends BaseActivity {
         // 4 sources:
         switch (var8_12) {
             case 0: {
-                var4_8.setTextColor(var0.getResources().getColor(2131427468));
+                var4_8.setTextColor(var0.getResources().getColor(R.color.popup_red));
                 **break;
             }
             case 1: {
-                var5_9.setTextColor(var0.getResources().getColor(2131427468));
+                var5_9.setTextColor(var0.getResources().getColor(R.color.popup_red));
             }
             lbl43:
             // 3 sources:
@@ -124,7 +124,7 @@ public class CommonPostListActivity extends BaseActivity {
             }
             case 2:
         }
-        var6_10.setTextColor(var0.getResources().getColor(2131427468));
+        var6_10.setTextColor(var0.getResources().getColor(R.color.popup_red));
         lbl47:
         // 2 sources:
         var9_13 = var0.a(var3_7);
@@ -259,7 +259,7 @@ public class CommonPostListActivity extends BaseActivity {
         String string;
         String string2;
         super.onCreate(bundle);
-        this.setContentView(2130903096);
+        this.setContentView(R.layout.activity_discuss_list);
         this.r = this.getIntent().getStringExtra("post_block_key");
         if (this.r == null) {
             this.r = "ramble";
@@ -271,25 +271,25 @@ public class CommonPostListActivity extends BaseActivity {
             string2 = "\u7efc\u5408\u8ba8\u8bba\u533a";
             string = "\u5199\u8bc4\u8bba";
         }
-        this.a(string2, 2130837866, new aS(this), string);
+        this.a(string2, R.drawable.ic_action_edit, new aS(this), string);
         if (bundle != null) {
             this.a = bundle.getString("savedReviewDur");
             this.b = bundle.getString("savedReviewSort");
         }
-        this.f = (PullToRefreshListView) this.findViewById(2131493099);
+        this.f = (PullToRefreshListView) this.findViewById(R.id.ptr_list);
         this.f.setMode(PullToRefreshBase$Mode.PULL_FROM_START);
-        this.n = this.findViewById(2131493085);
-        this.k = (TextView) this.findViewById(2131493100);
-        ImageView imageView = (ImageView) this.findViewById(2131493379);
-        ImageView imageView2 = (ImageView) this.findViewById(2131493382);
+        this.n = this.findViewById(R.id.pb_loading);
+        this.k = (TextView) this.findViewById(R.id.empty_text);
+        ImageView imageView = (ImageView) this.findViewById(R.id.community_top_left_arrow);
+        ImageView imageView2 = (ImageView) this.findViewById(R.id.community_top_right_arrow);
         this.g = imageView;
         this.h = imageView2;
-        this.c = (TextView) this.findViewById(2131493378);
-        this.e = (TextView) this.findViewById(2131493381);
-        this.findViewById(2131493376).setOnClickListener(new aY(this, imageView));
-        this.findViewById(2131493380).setOnClickListener(new aZ(this, imageView2));
+        this.c = (TextView) this.findViewById(R.id.community_top_left_title);
+        this.e = (TextView) this.findViewById(R.id.community_top_right_title);
+        this.findViewById(R.id.community_top_left).setOnClickListener(new aY(this, imageView));
+        this.findViewById(R.id.community_top_right).setOnClickListener(new aZ(this, imageView2));
         this.i = (ListView) this.f.h();
-        this.j = LayoutInflater.from(this).inflate(2130903325, null);
+        this.j = LayoutInflater.from(this).inflate(R.layout.loading_item, null);
         if (a.j()) {
             this.i.setFooterDividersEnabled(false);
         }

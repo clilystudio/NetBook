@@ -21,7 +21,7 @@ public class PayRecordCollapseItem extends LinearLayout {
         this.mItemContainer.removeAllViews();
         LayoutInflater layoutInflater = LayoutInflater.from(this.getContext());
         for (String string : arrstring) {
-            TextView textView = (TextView) layoutInflater.inflate(2130903348, (ViewGroup) this.mItemContainer, false);
+            TextView textView = (TextView) layoutInflater.inflate(R.layout.pay_record_sub_item, (ViewGroup) this.mItemContainer, false);
             textView.setText(string);
             this.mItemContainer.addView(textView);
         }
@@ -30,6 +30,6 @@ public class PayRecordCollapseItem extends LinearLayout {
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
-        this.mItemContainer = (LinearLayout) findViewById(2131493578);
+        this.mItemContainer = (LinearLayout) findViewById(R.id.item_container);
     }
 }

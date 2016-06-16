@@ -15,7 +15,7 @@ final class Q extends W<Game> {
 
     public Q(GameListActivity gameListActivity, LayoutInflater layoutInflater) {
         this.a = gameListActivity;
-        super(layoutInflater, 2130903277);
+        super(layoutInflater, R.layout.list_item_game_center);
     }
 
     @Override
@@ -23,7 +23,7 @@ final class Q extends W<Game> {
         final Game game = (Game) object;
         SmartImageView smartImageView = (SmartImageView) this.a(0, SmartImageView.class);
         smartImageView.setDrawingCacheEnabled(true);
-        smartImageView.setImageUrl(game.getIcon(), 2130837766);
+        smartImageView.setImageUrl(game.getIcon(), R.drawable.cover_default);
         this.a(1, game.getName());
         this.a(2, game.getShortIntro());
         this.a(3, "" + game.getFollowers() + "\u4eba\u5728\u73a9");
@@ -44,6 +44,6 @@ final class Q extends W<Game> {
 
     @Override
     protected final int[] a() {
-        return new int[]{2131493655, 2131493659, 2131493657, 2131493660, 2131493658};
+        return new int[]{R.id.game_list_item_icon, R.id.game_list_item_name, R.id.game_list_item_intro, R.id.game_list_item_count, R.id.game_list_item_download};
     }
 }

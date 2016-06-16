@@ -20,9 +20,9 @@ public class TopicSectionItem extends DividerSection {
 
     public TopicSectionItem(Context context, AttributeSet attributeSet) {
         super(context, attributeSet);
-        LayoutInflater.from(context).inflate(2130903232, (ViewGroup) this.a());
-        this.mIcon = (ImageView) findViewById( 2131493028);
-        this.mLabel = (TextView) findViewById( 2131493515);
+        LayoutInflater.from(context).inflate(R.layout.home_topic_header_item, (ViewGroup) this.a());
+        this.mIcon = (ImageView) findViewById( R.id.icon);
+        this.mLabel = (TextView) findViewById( R.id.label);
         TypedArray typedArray = context.obtainStyledAttributes(attributeSet, R.styleable.TopicSectionItem);
         String string = typedArray.getString(R.styleable.TopicSectionItem_label);
         this.mLabel.setText(string);

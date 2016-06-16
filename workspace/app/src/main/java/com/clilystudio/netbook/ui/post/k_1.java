@@ -19,7 +19,7 @@ final class k implements View.OnClickListener {
         this.a.dismiss();
         String string = AddBookHelpActivity.c(this.c).getText().toString().trim();
         String string2 = AddBookHelpActivity.d(this.c).getText().toString().trim();
-        n n2 = new n(this.c, this.c, 2131034430);
+        n n2 = new n(this.c, this.c, R.string.post_publish_loading);
         String[] arrstring = new String[]{this.b, string, string2};
         n2.b(arrstring);
     }

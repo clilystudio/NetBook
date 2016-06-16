@@ -13,7 +13,7 @@ final class dt implements View.OnClickListener {
     public final void onClick(View view) {
         TweetDetailActivity.a(this.a, (Integer) view.getTag());
         if (TweetDetailActivity.a(this.a)) {
-            dA dA2 = new dA(this.a, this.a, 2131034584);
+            dA dA2 = new dA(this.a, this.a, R.string.vote_send_loading);
             String[] arrstring = new String[]{TweetDetailActivity.b(this.a).getToken(), TweetDetailActivity.c(this.a).getTweet().get_id(), String.valueOf(TweetDetailActivity.d(this.a))};
             dA2.b(arrstring);
         }

@@ -9,7 +9,7 @@ public class BaseReadSlmActivity extends SlidingFragmentActivity {
     @Override
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        this.setBehindContentView(this.getLayoutInflater().inflate(2130903327, null));
+        this.setBehindContentView(this.getLayoutInflater().inflate(R.layout.menu_frame, null));
     }
 
     @Override

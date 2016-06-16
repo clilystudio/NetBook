@@ -124,13 +124,13 @@ public class CoverLoadingLayer extends ImageView {
             typedArray.recycle();
         }
         this.v = 0.0f;
-        this.n = this.getResources().getDimension(2131099909);
-        this.c = this.getResources().getDimension(2131099908);
-        this.j = this.getResources().getDimension(2131099910);
-        this.i = this.getResources().getDimension(2131099912);
-        this.h = this.getResources().getDimension(2131099911);
-        this.t = this.getResources().getDimension(2131099907);
-        this.u = this.getResources().getColor(2131427513);
+        this.n = this.getResources().getDimension(R.dimen.scv_outer_circle_radius);
+        this.c = this.getResources().getDimension(R.dimen.scv_inner_circle_radius);
+        this.j = this.getResources().getDimension(R.dimen.scv_pause_icon_gap);
+        this.i = this.getResources().getDimension(R.dimen.scv_pause_icon_width);
+        this.h = this.getResources().getDimension(R.dimen.scv_pause_icon_height);
+        this.t = this.getResources().getDimension(R.dimen.scv_finished_size);
+        this.u = this.getResources().getColor(R.color.scv_finished_color);
         this.e = this.c;
         this.i();
         this.k = com.c.a.w.a(0.001f, 1.0f);
@@ -281,7 +281,7 @@ public class CoverLoadingLayer extends ImageView {
         if (this.r == CoverLoadingLayer.Status.PENDING || this.r == CoverLoadingLayer.Status.PREPARE) {
             canvas2.drawCircle(this.getWidth() / 2, this.getHeight() / 2, this.n, paint2);
             Paint paint3 = new Paint(1);
-            paint3.setColor(this.getResources().getColor(2131427386));
+            paint3.setColor(this.getResources().getColor(R.color.cover_semi_transparent));
             float f = this.n - this.e;
             paint3.setStrokeWidth(f);
             paint3.setStyle(Paint.Style.STROKE);

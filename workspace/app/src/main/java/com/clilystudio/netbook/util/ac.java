@@ -12,7 +12,7 @@ final class ac extends c<String, RemoteBookShelf> {
 
     public ac(Z z, Activity activity) {
         this.a = z;
-        super(activity, 2131034524);
+        super(activity, R.string.sync_loading);
     }
 
     @Override
@@ -27,7 +27,7 @@ final class ac extends c<String, RemoteBookShelf> {
                     return remoteBookShelf;
                 }
                 if ("TOKEN_INVALID".equals(remoteBookShelf.getCode())) {
-                    e.a((Activity) Z.b(this.a), (int) 2131034525);
+                    e.a((Activity) Z.b(this.a), (int) R.string.sync_token_failed);
                     return remoteBookShelf;
                 }
                 e.a((Activity) Z.b(this.a), (String) "\u540c\u6b65\u5931\u8d25\uff0c\u8bf7\u91cd\u8bd5");

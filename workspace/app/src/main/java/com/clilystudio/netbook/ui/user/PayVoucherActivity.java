@@ -58,12 +58,12 @@ public class PayVoucherActivity extends BaseTabActivity implements ViewPager$OnP
     @Override
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        this.setContentView(2130903119);
+        this.setContentView(R.layout.activity_pay_voucher_tabhost);
         this.g = this.getIntent().getStringExtra("token_key");
-        this.b = this.getResources().getStringArray(2131361801);
+        this.b = this.getResources().getStringArray(R.array.pay_voucher_tabs);
         this.b("\u8ffd\u4e66\u5238");
-        this.a = (TabHost) this.findViewById(2131493096);
-        this.e = (ViewPager) this.findViewById(2131493097);
+        this.a = (TabHost) this.findViewById(R.id.host);
+        this.e = (ViewPager) this.findViewById(R.id.pager);
         this.f = new aa(this, this.getSupportFragmentManager());
         this.e.setOffscreenPageLimit(3);
         this.e.setAdapter((PagerAdapter) ((Object) this.f));
@@ -79,8 +79,8 @@ public class PayVoucherActivity extends BaseTabActivity implements ViewPager$OnP
         for (int i = 0; i < n; ++i) {
             TabHost.TabSpec tabSpec = this.a.newTabSpec("tab" + i);
             tabSpec.setContent(this);
-            View view = layoutInflater.inflate(2130903229, null);
-            ((TextView) view.findViewById(2131493509)).setText((String) this.f.getPageTitle(i));
+            View view = layoutInflater.inflate(R.layout.home_tabhost_item, null);
+            ((TextView) view.findViewById(R.id.text)).setText((String) this.f.getPageTitle(i));
             tabSpec.setIndicator(view);
             this.a.addTab(tabSpec);
         }

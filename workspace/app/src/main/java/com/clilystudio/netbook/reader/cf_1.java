@@ -18,8 +18,8 @@ final class cf extends u<ChapterLink> {
 
     public cf(ReaderTocDialog readerTocDialog, LayoutInflater layoutInflater) {
         this.d = readerTocDialog;
-        this.a = a.b((Context) readerTocDialog.getActivity(), 2130771984, ReaderTocDialog.a(readerTocDialog));
-        this.b = a.b((Context) readerTocDialog.getActivity(), 2130771985, ReaderTocDialog.a(readerTocDialog));
+        this.a = a.b((Context) readerTocDialog.getActivity(), R.attr.dialog_text_color, ReaderTocDialog.a(readerTocDialog));
+        this.b = a.b((Context) readerTocDialog.getActivity(), R.attr.dialog_text_color_highlight, ReaderTocDialog.a(readerTocDialog));
         this.c = layoutInflater;
     }
 
@@ -29,12 +29,12 @@ final class cf extends u<ChapterLink> {
     @Override
     public final View getView(int n, View view, ViewGroup viewGroup) {
         ChapterLink chapterLink = (ChapterLink) this.getItem(n);
-        View view2 = view == null ? this.c.inflate(2130903311, viewGroup, false) : view;
+        View view2 = view == null ? this.c.inflate(R.layout.list_item_toc, viewGroup, false) : view;
         if (chapterLink == null) {
             return view2;
         }
-        ImageView imageView = (ImageView) view2.findViewById(2131493756);
-        TextView textView = (TextView) view2.findViewById(2131493605);
+        ImageView imageView = (ImageView) view2.findViewById(R.id.iv_icon);
+        TextView textView = (TextView) view2.findViewById(R.id.tv_title);
         int n2 = ReaderTocDialog.a(this.d, n);
         textView.setText("" + (n2 + 1) + ". " + chapterLink.getTitle());
         if (n2 == ReaderTocDialog.b(this.d).k()) {
@@ -50,10 +50,10 @@ final class cf extends u<ChapterLink> {
             textView.setTextColor(this.a);
         }
         if (!ReaderTocDialog.a(this.d, chapterLink)) {
-            view2.findViewById(2131493757).setVisibility(View.VISIBLE);
+            view2.findViewById(R.id.iv_readable).setVisibility(View.VISIBLE);
             return view2;
         }
-        view2.findViewById(2131493757).setVisibility(View.GONE);
+        view2.findViewById(R.id.iv_readable).setVisibility(View.GONE);
         return view2;
     }
 }

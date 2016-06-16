@@ -11,7 +11,7 @@ public class UserInfoVoteView extends UserInfoExTaskView {
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
-        this.findViewById(2131494047).setPadding(0, 0, 0, 0);
+        this.findViewById(R.id.task_container).setPadding(0, 0, 0, 0);
         this.setExp("\u7ecf\u9a8c+15");
     }
 }

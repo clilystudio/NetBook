@@ -39,6 +39,6 @@ public class CircularSmartImageView extends CornerImageView {
 
     @Override
     public void setImageUrl(String string, int n) {
-        super.setImageUrl(string, 2130837614);
+        super.setImageUrl(string, R.drawable.avatar_default);
     }
 }

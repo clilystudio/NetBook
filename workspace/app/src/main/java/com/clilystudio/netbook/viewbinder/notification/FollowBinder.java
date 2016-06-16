@@ -16,7 +16,7 @@ public class FollowBinder extends NotifBinder {
 
     @Override
     protected int getIconRes() {
-        return 2130837914;
+        return R.drawable.ic_notif_comment;
     }
 
     @Override

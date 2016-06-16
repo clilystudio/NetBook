@@ -38,14 +38,14 @@ public class AddReviewRatingActivity extends BaseActivity implements View.OnClic
      */
     private void a(int n) {
         int n2 = 6 - n;
-        int[] arrn = new int[]{2131493273, 2131493275, 2131493277, 2131493279, 2131493281};
+        int[] arrn = new int[]{R.id.review_rating_item1_icon, R.id.review_rating_item2_icon, R.id.review_rating_item3_icon, R.id.review_rating_item4_icon, R.id.review_rating_item5_icon};
         int n3 = 0;
         while (n3 < 5) {
             ImageView imageView = (ImageView) this.findViewById(arrn[n3]);
             if (n3 == n2 - 1) {
-                imageView.setImageResource(2130837820);
+                imageView.setImageResource(R.drawable.green_tick_circle);
             } else {
-                imageView.setImageResource(2130837818);
+                imageView.setImageResource(R.drawable.gray_tick_circle);
             }
             ++n3;
         }
@@ -89,19 +89,19 @@ public class AddReviewRatingActivity extends BaseActivity implements View.OnClic
     @Override
     public void onClick(View var1_1) {
         switch (var1_1.getId()) {
-            case 2131493272: {
+            case R.id.review_rating_item1: {
                 this.a = 5;
                 **break;
             }
-            case 2131493274: {
+            case R.id.review_rating_item2: {
                 this.a = 4;
                 **break;
             }
-            case 2131493276: {
+            case R.id.review_rating_item3: {
                 this.a = 3;
                 **break;
             }
-            case 2131493278: {
+            case R.id.review_rating_item4: {
                 this.a = 2;
             }
             lbl13:
@@ -110,7 +110,7 @@ public class AddReviewRatingActivity extends BaseActivity implements View.OnClic
             {
                 **GOTO lbl17
             }
-            case 2131493280:
+            case R.id.review_rating_item5:
         }
         this.a = 1;
         lbl17:
@@ -121,9 +121,9 @@ public class AddReviewRatingActivity extends BaseActivity implements View.OnClic
     @Override
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        this.setContentView(2130903148);
-        this.a(2131034297, 2131034419, (aa) new G(this));
-        int[] arrn = new int[]{2131493272, 2131493274, 2131493276, 2131493278, 2131493280};
+        this.setContentView(R.layout.add_review_rating);
+        this.a(R.string.add_review_rating_title, R.string.next, (aa) new G(this));
+        int[] arrn = new int[]{R.id.review_rating_item1, R.id.review_rating_item2, R.id.review_rating_item3, R.id.review_rating_item4, R.id.review_rating_item5};
         for (int i = 0; i < 5; ++i) {
             this.findViewById(arrn[i]).setOnClickListener(this);
         }

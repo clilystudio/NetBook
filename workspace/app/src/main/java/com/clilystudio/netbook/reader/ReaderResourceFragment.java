@@ -87,7 +87,7 @@ public class ReaderResourceFragment extends Fragment {
         TextView textView = readerResourceFragment.k;
         Resources resources = readerResourceFragment.getResources();
         Object[] arrobject = new Object[]{list.size()};
-        textView.setText(resources.getString(2131034520, arrobject));
+        textView.setText(resources.getString(R.string.source_list_title, arrobject));
     }
 
     static /* synthetic */ ListView b(ReaderResourceFragment readerResourceFragment) {
@@ -105,13 +105,13 @@ public class ReaderResourceFragment extends Fragment {
     @Override
     public void onActivityCreated(Bundle bundle) {
         super.onActivityCreated(bundle);
-        View view = LayoutInflater.from(this.getActivity()).inflate(2130903374, (ViewGroup) this.c, false);
+        View view = LayoutInflater.from(this.getActivity()).inflate(R.layout.reader_resource_header, (ViewGroup) this.c, false);
         this.c.addHeaderView(view, null, false);
-        this.g = view.findViewById(2131493940);
-        this.i = (TextView) view.findViewById(2131493943);
-        this.j = view.findViewById(2131493946);
-        this.k = (TextView) view.findViewById(2131493947);
-        this.h = view.findViewById(2131493944);
+        this.g = view.findViewById(R.id.resource_last_read_layout);
+        this.i = (TextView) view.findViewById(R.id.resource_last_read_title);
+        this.j = view.findViewById(R.id.resource_count_layout);
+        this.k = (TextView) view.findViewById(R.id.resource_count);
+        this.h = view.findViewById(R.id.resource_header_download_layout);
         this.h.setOnClickListener(new bW(this));
         this.l = new B(this.getActivity().getLayoutInflater());
         this.c.setAdapter(this.l);
@@ -131,11 +131,11 @@ public class ReaderResourceFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
-        View view = layoutInflater.inflate(2130903219, null);
-        this.d = view.findViewById(2131493085);
-        this.e = view.findViewById(2131493181);
-        this.f = view.findViewById(2131493138);
-        this.c = (ListView) view.findViewById(2131492924);
+        View view = layoutInflater.inflate(R.layout.fragment_resource_list, null);
+        this.d = view.findViewById(R.id.pb_loading);
+        this.e = view.findViewById(R.id.empty);
+        this.f = view.findViewById(R.id.load_error_hint);
+        this.c = (ListView) view.findViewById(R.id.list);
         this.f.setOnClickListener(new bU(this));
         return view;
     }

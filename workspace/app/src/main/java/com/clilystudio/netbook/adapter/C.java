@@ -9,7 +9,7 @@ public final class C extends W<TocDownloadSummary> {
     private int a = -1;
 
     public C(LayoutInflater layoutInflater) {
-        super(layoutInflater, 2130903300);
+        super(layoutInflater, R.layout.list_item_resource_download);
     }
 
     @Override
@@ -26,6 +26,6 @@ public final class C extends W<TocDownloadSummary> {
 
     @Override
     protected final int[] a() {
-        return new int[]{2131493741, 2131493738, 2131493740};
+        return new int[]{R.id.tv_name, R.id.tv_last_chapter, R.id.resource_list_item_last_select};
     }
 }

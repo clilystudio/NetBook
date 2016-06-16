@@ -64,7 +64,7 @@ final class K extends com.clilystudio.netbook.a_pack.e<Void, Void, List<BookUpda
             } else {
                 if (HomeShelfFragment.i(this.b) != 0) return;
                 {
-                    e.a((Activity) this.b.getActivity(), (int) 2131034417);
+                    e.a((Activity) this.b.getActivity(), (int) R.string.network_failed);
                     return;
                 }
             }

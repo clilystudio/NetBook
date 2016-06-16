@@ -22,10 +22,10 @@ public class ThemeLoadingView extends FrameLayout {
 
     private void c() {
         if (this.c == ThemeLoadingView.Mode.LIGHT) {
-            this.setBackgroundResource(2130837696);
+            this.setBackgroundResource(R.drawable.bg_theme_loading_light);
             return;
         }
-        this.setBackgroundResource(2130837695);
+        this.setBackgroundResource(R.drawable.bg_theme_loading_dark);
     }
 
     private LoadingProgressView d() {
@@ -77,10 +77,10 @@ public class ThemeLoadingView extends FrameLayout {
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
-        int n = this.getResources().getDimensionPixelSize(2131099927);
+        int n = this.getResources().getDimensionPixelSize(R.dimen.theme_loading_padding);
         this.setPadding(n, n, n, n);
-        this.a = (LoadingProgressView) this.findViewById(2131493168);
-        this.b = (LoadingProgressView) this.findViewById(2131493169);
+        this.a = (LoadingProgressView) this.findViewById(R.id.light_loading);
+        this.b = (LoadingProgressView) this.findViewById(R.id.dark_loading);
         this.c();
     }
     

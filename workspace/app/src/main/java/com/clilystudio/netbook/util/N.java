@@ -29,7 +29,7 @@ public final class N {
     }
 
     public final void a(String string, String string2, boolean bl) {
-        CharSequence[] arrcharSequence = this.a.getResources().getStringArray(2131361802);
+        CharSequence[] arrcharSequence = this.a.getResources().getStringArray(R.array.post_detail_report);
         h h2 = new h(this.a);
         h2.d = "\u4e3e\u62a5";
         h2.a(arrcharSequence, (DialogInterface.OnClickListener) new O(this, bl, string2, string)).b();

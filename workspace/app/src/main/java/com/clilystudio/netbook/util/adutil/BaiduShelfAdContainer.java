@@ -71,9 +71,9 @@ public final class BaiduShelfAdContainer extends k {
         public String getDownloadTitle(Context context) {
             String string = (String) k.a(BaiduShelfAdContainer.a(), "getTitle", null, this.response, new Object[0]);
             if (com.clilystudio.netbook.hpay100.a.a.s(context)) {
-                return String.format(context.getString(2131034507), string);
+                return String.format(context.getString(R.string.shelf_third_ad_apk_wifi), string);
             }
-            return String.format(context.getString(2131034506), string);
+            return String.format(context.getString(R.string.shelf_third_ad_apk_no_wifi), string);
         }
 
         @Override

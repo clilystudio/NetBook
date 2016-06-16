@@ -27,7 +27,7 @@ public class GameCatListFragment extends BaseLoadingFragment {
 
     @Override
     protected final int a() {
-        return 2130903321;
+        return R.layout.listview;
     }
 
     @Override
@@ -40,12 +40,12 @@ public class GameCatListFragment extends BaseLoadingFragment {
     public void onActivityCreated(Bundle bundle) {
         super.onActivityCreated(bundle);
         this.a.setDividerHeight(0);
-        TypedArray typedArray = this.getActivity().getTheme().obtainStyledAttributes(new int[]{2130771972});
-        int n = typedArray.getResourceId(0, 2131427422);
+        TypedArray typedArray = this.getActivity().getTheme().obtainStyledAttributes(new int[]{R.attr.backgroundNormal});
+        int n = typedArray.getResourceId(0, R.color.home_item_hightlight);
         typedArray.recycle();
         FragmentActivity fragmentActivity = this.getActivity();
         ListView listView = this.a;
-        int n2 = fragmentActivity.getResources().getDimensionPixelSize(2131099926);
+        int n2 = fragmentActivity.getResources().getDimensionPixelSize(R.dimen.tab_overlap);
         View view = new View(fragmentActivity);
         view.setLayoutParams(new AbsListView.LayoutParams(-2, n2));
         view.setBackgroundResource(n);
@@ -70,6 +70,6 @@ public class GameCatListFragment extends BaseLoadingFragment {
     @Override
     public void onViewCreated(View view, Bundle bundle) {
         super.onViewCreated(view, bundle);
-        this.a = (ListView) view.findViewById(2131493135);
+        this.a = (ListView) view.findViewById(R.id.content_list);
     }
 }

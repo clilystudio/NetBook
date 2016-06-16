@@ -41,7 +41,7 @@ public class AddVoteActivity extends BaseActivity {
         Account account;
         boolean bl = addVoteActivity.b.getText().toString().trim().length() > 10000;
         if (bl) {
-            e.a((Activity) addVoteActivity, (int) 2131034305);
+            e.a((Activity) addVoteActivity, (int) R.string.alert_too_many_words);
             return;
         }
         if (addVoteActivity.g) {
@@ -76,16 +76,16 @@ public class AddVoteActivity extends BaseActivity {
         }
         String string = account.getToken();
         h h2 = new h(addVoteActivity);
-        View view2 = LayoutInflater.from(addVoteActivity).inflate(2130903202, null);
-        TextView textView = (TextView) view2.findViewById(2131493422);
+        View view2 = LayoutInflater.from(addVoteActivity).inflate(R.layout.dialog_waring_text, null);
+        TextView textView = (TextView) view2.findViewById(R.id.waring_content);
         if (addVoteActivity.j == 5) {
-            textView.setText(2131034589);
+            textView.setText(R.string.waring_dialog_topic_girl);
         } else {
-            textView.setText(2131034588);
+            textView.setText(R.string.waring_dialog_topic);
         }
         h2.d = "\u53d1\u5e03";
-        h2.a(2131034583, (DialogInterface.OnClickListener) new L(addVoteActivity, string));
-        h2.b(2131034129, (DialogInterface.OnClickListener) new M(addVoteActivity));
+        h2.a(R.string.vote_ok, (DialogInterface.OnClickListener) new L(addVoteActivity, string));
+        h2.b(R.string.cancel, (DialogInterface.OnClickListener) new M(addVoteActivity));
         h2.a(view2).b();
     }
 
@@ -179,38 +179,38 @@ public class AddVoteActivity extends BaseActivity {
     public void onCreate(Bundle bundle) {
         String string;
         super.onCreate(bundle);
-        this.setContentView(2130903078);
+        this.setContentView(R.layout.activity_add_vote);
         com.clilystudio.netbook.a.a();
         com.clilystudio.netbook.a.a(this);
-        this.a = (EditText) this.findViewById(2131493072);
-        this.b = (EditText) this.findViewById(2131493074);
-        this.c = this.findViewById(2131493073);
+        this.a = (EditText) this.findViewById(R.id.add_vote_title_text);
+        this.b = (EditText) this.findViewById(R.id.add_vote_desc_text);
+        this.c = this.findViewById(R.id.v_dirver);
         this.l = this.getIntent().getStringExtra("add_post_mode");
         if ("ramble".equals(this.l)) {
             this.j = 1;
-            this.a.setHint(2131034400);
-            this.b.setHint(2131034399);
+            this.a.setHint(R.string.hint_new_discuss_topic_title);
+            this.b.setHint(R.string.hint_new_discuss_topic_content);
             this.k = "\u8bdd\u9898";
         } else if ("android-feedback".equals(this.l)) {
             this.j = 2;
-            this.a.setHint(2131034402);
-            this.b.setHint(2131034401);
+            this.a.setHint(R.string.hint_new_feedback_topic_title);
+            this.b.setHint(R.string.hint_new_feedback_topic_content);
             this.k = "\u610f\u89c1\u53cd\u9988";
         } else if ("TWEET".equals(this.l)) {
             this.j = 3;
             this.a.setVisibility(View.GONE);
             this.c.setVisibility(View.GONE);
-            this.b.setHint(2131034403);
+            this.b.setHint(R.string.hint_new_tweet_content);
             this.k = "\u52a8\u6001";
         } else if ("ARTICLE".equals(this.l)) {
             this.j = 4;
-            this.a.setHint(2131034400);
-            this.b.setHint(2131034398);
+            this.a.setHint(R.string.hint_new_discuss_topic_title);
+            this.b.setHint(R.string.hint_new_article_content);
             this.k = "\u6587\u7ae0";
         } else if ("girl".equals(this.l)) {
             this.j = 5;
-            this.a.setHint(2131034292);
-            this.b.setHint(2131034290);
+            this.a.setHint(R.string.add_girl_topic_title_hint);
+            this.b.setHint(R.string.add_girl_topic_desc_hint);
             this.k = "\u5973\u751f\u533a";
         } else {
             this.e = this.getIntent().getStringExtra("book_post_list_bookId");

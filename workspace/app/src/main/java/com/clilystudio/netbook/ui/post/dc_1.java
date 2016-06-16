@@ -15,7 +15,7 @@ final class dc implements View.OnClickListener {
     @Override
     public final void onClick(View view) {
         this.a.dismiss();
-        ReviewListActivity.o(this.b).setText(2131034436);
+        ReviewListActivity.o(this.b).setText(R.string.post_sort_useful);
         ReviewListActivity.b(this.b, "helpful");
         ReviewListActivity.n(this.b).setRefreshing();
     }

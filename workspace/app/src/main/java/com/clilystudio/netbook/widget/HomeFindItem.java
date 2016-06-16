@@ -28,11 +28,11 @@ public class HomeFindItem extends FrameLayout {
     public HomeFindItem(Context context, String string, int n, int n2, Intent intent) {
         super(context);
         this.a = intent;
-        LayoutInflater.from(context).inflate(2130903283, (ViewGroup) this);
-        this.mIcon = (MaskAbleImageView) findViewById(2131493028);
-        this.mTitle = (TextView) findViewById(2131492936);
-        this.mSubFlag = (ImageView) findViewById(2131493681);
-        this.mSubText = (TextView) findViewById(2131493683);
+        LayoutInflater.from(context).inflate(R.layout.list_item_home_find, (ViewGroup) this);
+        this.mIcon = (MaskAbleImageView) findViewById(R.id.icon);
+        this.mTitle = (TextView) findViewById(R.id.title);
+        this.mSubFlag = (ImageView) findViewById(R.id.sub_flag);
+        this.mSubText = (TextView) findViewById(R.id.sub_flag_text);
         this.mIcon.setImageResource(n);
         this.mTitle.setText(string);
         if (n2 != 0) {

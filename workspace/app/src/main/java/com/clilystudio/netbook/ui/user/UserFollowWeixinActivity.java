@@ -14,15 +14,15 @@ public class UserFollowWeixinActivity extends BaseActivity {
 
     static /* synthetic */ void b(UserFollowWeixinActivity userFollowWeixinActivity) {
         h h2 = new h(userFollowWeixinActivity);
-        h2.e = userFollowWeixinActivity.getString(2131034575);
+        h2.e = userFollowWeixinActivity.getString(R.string.user_follow_prompt);
         h2.b("\u53d6\u6d88", (DialogInterface.OnClickListener) new az(userFollowWeixinActivity)).a("\u786e\u5b9a", (DialogInterface.OnClickListener) new ay(userFollowWeixinActivity)).b();
     }
 
     @Override
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        this.setContentView(2130903140);
-        this.b(2131034576);
-        this.findViewById(2131493232).setOnClickListener(new ax(this));
+        this.setContentView(R.layout.activity_user_follow_weixin);
+        this.b(R.string.user_follow_weixin);
+        this.findViewById(R.id.rl_follow_weixin).setOnClickListener(new ax(this));
     }
 }

@@ -61,15 +61,15 @@ public class LuckyGameWebActivity extends BaseActivity implements View.OnClickLi
             default: {
                 return;
             }
-            case 2131494050: {
+            case R.id.btn_back: {
                 this.b.goBack();
                 return;
             }
-            case 2131494051: {
+            case R.id.btn_forward: {
                 this.b.goForward();
                 return;
             }
-            case 2131494052:
+            case R.id.btn_reload:
         }
         this.b.reload();
     }
@@ -79,13 +79,13 @@ public class LuckyGameWebActivity extends BaseActivity implements View.OnClickLi
     @Override
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        this.setContentView(2130903420);
+        this.setContentView(R.layout.webview);
         this.c(this.getIntent().getStringExtra("extra_title"));
-        this.b = (WebView) this.findViewById(2131494048);
-        this.c = this.findViewById(2131493085);
-        this.e = this.findViewById(2131494050);
-        this.f = this.findViewById(2131494051);
-        View view = this.findViewById(2131494052);
+        this.b = (WebView) this.findViewById(R.id.wv_web_page);
+        this.c = this.findViewById(R.id.pb_loading);
+        this.e = this.findViewById(R.id.btn_back);
+        this.f = this.findViewById(R.id.btn_forward);
+        View view = this.findViewById(R.id.btn_reload);
         this.b.setVerticalScrollBarEnabled(true);
         WebSettings webSettings = this.b.getSettings();
         webSettings.setJavaScriptEnabled(true);

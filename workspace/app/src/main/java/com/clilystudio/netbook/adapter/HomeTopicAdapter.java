@@ -57,7 +57,7 @@ public final class HomeTopicAdapter extends u<BookShelfTopic> {
         if (view == null) {
             switch (n2) {
                 case 0: {
-                    TextView textView = (TextView) this.a.inflate(2130903233, viewGroup, false);
+                    TextView textView = (TextView) this.a.inflate(R.layout.home_topic_label, viewGroup, false);
                     textView.setText("\u6211\u7684\u793e\u533a");
                     view = textView;
                 }
@@ -65,7 +65,7 @@ public final class HomeTopicAdapter extends u<BookShelfTopic> {
                     break;
                 }
                 case 1: {
-                    view = this.a.inflate(2130903284, viewGroup, false);
+                    view = this.a.inflate(R.layout.list_item_home_topic, viewGroup, false);
                     view.setTag(new ViewHolder(view));
                 }
             }
@@ -74,7 +74,7 @@ public final class HomeTopicAdapter extends u<BookShelfTopic> {
             BookShelfTopic bookShelfTopic = this.a(n);
             ViewHolder viewHolder = (ViewHolder) view.getTag();
             viewHolder.mTitle.setText(bookShelfTopic.getTitle());
-            viewHolder.mCover.setImageUrl(bookShelfTopic.getFullCover(), 2130837766);
+            viewHolder.mCover.setImageUrl(bookShelfTopic.getFullCover(), R.drawable.cover_default);
             TextView textView = viewHolder.mCount;
             String string = bookShelfTopic.getBookId();
             textView.setVisibility(View.GONE);
@@ -96,9 +96,9 @@ public final class HomeTopicAdapter extends u<BookShelfTopic> {
         TextView mTitle;
 
         ViewHolder(View view) {
-            this.mCover = (SmartImageView) view.findViewById(2131493604);
-            this.mTitle = (TextView)view. findViewById(2131492936);
-            this.mCount = (TextView)view. findViewById(2131493239);
+            this.mCover = (SmartImageView) view.findViewById(R.id.cover);
+            this.mTitle = (TextView)view. findViewById(R.id.title);
+            this.mCount = (TextView)view. findViewById(R.id.message_count);
         }
     }
 }

@@ -13,7 +13,7 @@ final class F extends c<String, PostPublish> {
 
     public F(AddReviewContentActivity addReviewContentActivity, Activity activity, int n) {
         this.a = addReviewContentActivity;
-        super(activity, 2131034430);
+        super(activity, R.string.post_publish_loading);
     }
 
     private /* varargs */ PostPublish a(String... arrstring) {
@@ -67,6 +67,6 @@ final class F extends c<String, PostPublish> {
             e.a((Activity) this.a, (String) string);
             return;
         }
-        e.a((Activity) this.a, (int) 2131034388);
+        e.a((Activity) this.a, (int) R.string.forbidden_tips);
     }
 }

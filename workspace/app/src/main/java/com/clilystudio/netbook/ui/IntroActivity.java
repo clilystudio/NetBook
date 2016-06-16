@@ -18,7 +18,7 @@ import java.util.ArrayList;
 
 public class IntroActivity extends Activity implements ViewPager$OnPageChangeListener,
         View.OnClickListener {
-    private static final int[] f = new int[]{2130837667, 2130837668};
+    private static final int[] f = new int[]{R.drawable.bg_intro_1, R.drawable.bg_intro_2};
     private ViewPager a;
     private bc b;
     private Button c;
@@ -34,10 +34,10 @@ public class IntroActivity extends Activity implements ViewPager$OnPageChangeLis
 
     private static void a(ImageView imageView, boolean bl) {
         if (bl) {
-            imageView.setImageResource(2130837927);
+            imageView.setImageResource(R.drawable.ic_point_select);
             return;
         }
-        imageView.setImageResource(2130837926);
+        imageView.setImageResource(R.drawable.ic_point_normal);
     }
 
     private void a() {
@@ -55,7 +55,7 @@ public class IntroActivity extends Activity implements ViewPager$OnPageChangeLis
     }
 
     private void b() {
-        LinearLayout linearLayout = (LinearLayout) this.findViewById(2131493997);
+        LinearLayout linearLayout = (LinearLayout) this.findViewById(R.id.linear_bottom_dots);
         this.g = new ImageView[2];
         for (int i = 0; i < 2; ++i) {
             this.g[i] = (ImageView) linearLayout.getChildAt(i);
@@ -77,12 +77,12 @@ public class IntroActivity extends Activity implements ViewPager$OnPageChangeLis
             default: {
                 return;
             }
-            case 2131494001: {
+            case R.id.btnQuickLogin: {
                 this.startActivity(AuthLoginActivity.a(this));
                 b.a(this, "intro_quick_login");
                 return;
             }
-            case 2131494002:
+            case R.id.btnEntryApp:
         }
         this.c();
         b.a(this, "intro_entry_app");
@@ -91,13 +91,13 @@ public class IntroActivity extends Activity implements ViewPager$OnPageChangeLis
     @Override
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        this.setContentView(2130903398);
+        this.setContentView(R.layout.splash_intro);
         this.e = new ArrayList();
-        this.a = (ViewPager) this.findViewById(2131493996);
+        this.a = (ViewPager) this.findViewById(R.id.vp_intro);
         this.b = new bc(this);
-        this.c = (Button) this.findViewById(2131494001);
+        this.c = (Button) this.findViewById(R.id.btnQuickLogin);
         this.c.setOnClickListener(this);
-        this.d = (Button) this.findViewById(2131494002);
+        this.d = (Button) this.findViewById(R.id.btnEntryApp);
         this.d.setOnClickListener(this);
         this.a();
         b.a(this, "intro_show_count");
@@ -120,12 +120,12 @@ public class IntroActivity extends Activity implements ViewPager$OnPageChangeLis
         IntroActivity.a(this.g[this.h], false);
         this.h = n;
         if (this.h == 0) {
-            this.d.setTextColor(this.getResources().getColor(2131427440));
-            this.c.setTextColor(this.getResources().getColor(2131427440));
+            this.d.setTextColor(this.getResources().getColor(R.color.intro_blue_color));
+            this.c.setTextColor(this.getResources().getColor(R.color.intro_blue_color));
             return;
         }
-        this.d.setTextColor(this.getResources().getColor(2131427441));
-        this.c.setTextColor(this.getResources().getColor(2131427441));
+        this.d.setTextColor(this.getResources().getColor(R.color.intro_red_color));
+        this.c.setTextColor(this.getResources().getColor(R.color.intro_red_color));
     }
 
     @Override

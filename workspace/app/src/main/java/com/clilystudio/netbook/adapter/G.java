@@ -41,9 +41,9 @@ public class G extends u {
         this.a = activity;
         this.c = bl;
         this.b = bl2;
-        TypedArray typedArray = this.a.getTheme().obtainStyledAttributes(new int[]{2130772004, 2130772003});
-        typedArray.getResourceId(0, 2130838193);
-        typedArray.getResourceId(1, 2130838191);
+        TypedArray typedArray = this.a.getTheme().obtainStyledAttributes(new int[]{R.attr.tweetOperatorBackground, R.attr.tweetOperatedBackground});
+        typedArray.getResourceId(0, R.drawable.tweet_operator_circle);
+        typedArray.getResourceId(1, R.drawable.tweet_operated_circle);
         typedArray.recycle();
         this.f = a.r(this.a, "community_user_gender_icon_toggle");
     }
@@ -251,18 +251,18 @@ public class G extends u {
                 return view;
             }
             case 0: {
-                View view2 = LayoutInflater.from(viewGroup.getContext()).inflate(2130903313, viewGroup, false);
+                View view2 = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.list_item_tweet, viewGroup, false);
                 view2.setTag(new R_ViewHolder(this, view2));
                 return view2;
             }
             case 1: {
-                View view3 = LayoutInflater.from(viewGroup.getContext()).inflate(2130903315, viewGroup, false);
-                view3.findViewById(2131493348).setVisibility(View.VISIBLE);
+                View view3 = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.list_item_tweet_comment, viewGroup, false);
+                view3.findViewById(R.id.review_rating_container).setVisibility(View.VISIBLE);
                 view3.setTag(new R_ViewHolder(this, view3));
                 return view3;
             }
             case 2: {
-                View view4 = LayoutInflater.from(viewGroup.getContext()).inflate(2130903314, viewGroup, false);
+                View view4 = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.list_item_tweet_artics, viewGroup, false);
                 view4.setTag(new R_ViewHolder(this, view4));
                 return view4;
             }
@@ -293,7 +293,7 @@ public class G extends u {
         r.h.setText("\u5df2\u5173\u6ce8");
         r.h.setTextColor(-5822976);
         r.h.setTextSize(10.0f);
-        Drawable drawable = this.a.getResources().getDrawable(2130837887);
+        Drawable drawable = this.a.getResources().getDrawable(R.drawable.ic_followed);
         drawable.setBounds(0, 0, 9 * drawable.getMinimumWidth() / 16, 9 * drawable.getMinimumHeight() / 16);
         r.h.setCompoundDrawables(drawable, null, null, null);
     }
@@ -307,7 +307,7 @@ public class G extends u {
         if (bl) {
             r.h.setOnClickListener(new N(this, r, tweet));
             r.h.setText("\u5220\u9664");
-            Drawable drawable = r.h.getResources().getDrawable(2130837942);
+            Drawable drawable = r.h.getResources().getDrawable(R.drawable.ic_recycle_bin);
             drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
             r.h.setCompoundDrawables(drawable, null, null, null);
             r.h.setTextColor(-5592406);
@@ -378,7 +378,7 @@ public class G extends u {
             if (tweet.getRetweeted() > 9999) {
                 string3 = a.i(tweet.getRetweeted());
             }
-            Drawable drawable = this.a.getResources().getDrawable(2130837902);
+            Drawable drawable = this.a.getResources().getDrawable(R.drawable.ic_message);
             drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
             r.f.setCompoundDrawables(drawable, null, null, null);
             TextView textView = r.f;
@@ -387,7 +387,7 @@ public class G extends u {
             }
             textView.setText(string);
         } else {
-            Drawable drawable = this.a.getResources().getDrawable(2130837971);
+            Drawable drawable = this.a.getResources().getDrawable(R.drawable.ic_vote);
             drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
             r.f.setCompoundDrawables(drawable, null, null, null);
             TextView textView = r.f;
@@ -441,8 +441,8 @@ public class G extends u {
 
     private void b(R_ViewHolder r) {
         r.h.setText("\u5173\u6ce8");
-        r.h.setTextColor(this.a.getResources().getColor(2131427543));
-        Drawable drawable = this.a.getResources().getDrawable(2130837803);
+        r.h.setTextColor(this.a.getResources().getColor(R.color.tweet_operator_text_color));
+        Drawable drawable = this.a.getResources().getDrawable(R.drawable.follow);
         drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
         r.h.setTextSize(10.0f);
         r.h.setCompoundDrawables(drawable, null, null, null);

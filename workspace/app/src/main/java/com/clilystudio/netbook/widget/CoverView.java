@@ -18,7 +18,7 @@ public class CoverView extends RelativeLayout {
         super(context, attributeSet);
         TypedArray typedArray = context.obtainStyledAttributes(attributeSet, R$styleable.CoverView);
         this.b = typedArray.getResourceId(0, 0);
-        typedArray.getResourceId(1, 2130838144);
+        typedArray.getResourceId(1, R.drawable.shelf_cover_bg);
         typedArray.recycle();
     }
 

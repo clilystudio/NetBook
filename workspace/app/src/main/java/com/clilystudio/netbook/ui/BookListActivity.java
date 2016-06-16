@@ -62,14 +62,14 @@ public abstract class BookListActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        this.setContentView(2130903108);
+        this.setContentView(R.layout.activity_list);
         this.b(this.getIntent().getStringExtra("book_list_title"));
-        this.b = this.findViewById(2131493081);
-        this.e = (TextView) this.findViewById(2131493080);
-        this.c = this.findViewById(2131493082);
+        this.b = this.findViewById(R.id.content_loading_pb);
+        this.e = (TextView) this.findViewById(R.id.content_empty_text);
+        this.c = this.findViewById(R.id.content_load_error);
         this.c.setOnClickListener(new aJ(this));
         this.a = new g(this.getLayoutInflater());
-        ListView listView = (ListView) this.findViewById(2131493135);
+        ListView listView = (ListView) this.findViewById(R.id.content_list);
         listView.setAdapter(this.a);
         listView.setOnItemClickListener(new aK(this));
         this.b();

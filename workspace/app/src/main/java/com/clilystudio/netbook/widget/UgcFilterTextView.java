@@ -23,19 +23,19 @@ public class UgcFilterTextView extends RelativeLayout {
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
-        LayoutInflater.from(this.getContext()).inflate(2130903422, (ViewGroup) this);
-        this.a = (TextView) this.findViewById(2131494012);
+        LayoutInflater.from(this.getContext()).inflate(R.layout.widget_ugc_filter_text, (ViewGroup) this);
+        this.a = (TextView) this.findViewById(R.id.ugc_filter_name);
     }
 
     @Override
     public void setSelected(boolean bl) {
         if (bl) {
-            this.a.setTextColor(am.a((Context) this.getContext(), (int) 2130771972));
-            this.setBackgroundResource(am.b((Context) this.getContext(), (int) 2130771998));
+            this.a.setTextColor(am.a((Context) this.getContext(), (int) R.attr.backgroundNormal));
+            this.setBackgroundResource(am.b((Context) this.getContext(), (int) R.attr.redRoundBg));
             return;
         }
         this.a.setTextColor(am.a((Context) this.getContext(), (int) 16842808));
-        this.setBackgroundResource(am.b((Context) this.getContext(), (int) 2130771974));
+        this.setBackgroundResource(am.b((Context) this.getContext(), (int) R.attr.backgroundSelector));
     }
 
     public void setText(String string) {

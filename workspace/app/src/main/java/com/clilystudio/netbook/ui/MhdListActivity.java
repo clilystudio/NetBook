@@ -44,7 +44,7 @@ public class MhdListActivity extends BaseActivity {
             h h2 = new h(mhdListActivity);
             h2.d = "\u786e\u8ba4\u4e0b\u8f7d";
             h2.e = "\u5373\u5c06\u5f00\u59cb\u4e0b\u8f7d\u300c\u6f2b\u753b\u5c9b\u300dAPP\uff084.0M\uff09\uff0c\u6b23\u8d4f60000+\u7cbe\u5f69\u6f2b\u753b~";
-            h2.a(2131034371, (DialogInterface.OnClickListener) ((Object) new bl(mhdListActivity))).b(2131034129, null).a().show();
+            h2.a(R.string.download, (DialogInterface.OnClickListener) ((Object) new bl(mhdListActivity))).b(R.string.cancel, null).a().show();
             return;
         }
     }
@@ -82,11 +82,11 @@ public class MhdListActivity extends BaseActivity {
     @Override
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        this.setContentView(2130903088);
-        this.b(2131034412);
-        ListView listView = (ListView) this.findViewById(2131493101);
-        this.a = this.findViewById(2131493102);
-        this.b = this.findViewById(2131493103);
+        this.setContentView(R.layout.activity_book_rank_list);
+        this.b(R.string.mhd_list);
+        ListView listView = (ListView) this.findViewById(R.id.common_list_content);
+        this.a = this.findViewById(R.id.common_list_pb);
+        this.b = this.findViewById(R.id.common_list_error);
         this.b.setOnClickListener((View.OnClickListener) ((Object) new bj(this)));
         this.c = new v(this.getLayoutInflater());
         listView.setAdapter((ListAdapter) ((Object) this.c));

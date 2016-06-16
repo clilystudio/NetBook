@@ -18,7 +18,7 @@ public final class o extends W<GirlTopicSummary> {
     private boolean b = false;
 
     public o(LayoutInflater layoutInflater) {
-        super(layoutInflater, 2130903295);
+        super(layoutInflater, R.layout.list_item_post);
         Context context = layoutInflater.getContext();
         this.a = am.m(context);
         this.b = a.r(context, "community_user_gender_icon_toggle");
@@ -33,9 +33,9 @@ public final class o extends W<GirlTopicSummary> {
         Author author = girlTopicSummary.getAuthor();
         SmartImageView smartImageView = (SmartImageView) this.a(0, SmartImageView.class);
         if (this.a) {
-            smartImageView.setImageResource(2130837614);
+            smartImageView.setImageResource(R.drawable.avatar_default);
         } else {
-            smartImageView.setImageUrl(author.getScaleAvatar(), 2130837614);
+            smartImageView.setImageUrl(author.getScaleAvatar(), R.drawable.avatar_default);
             smartImageView.setOnClickListener(new p(this, smartImageView, girlTopicSummary));
         }
         if (girlTopicSummary.getVoteCount() > 0 || girlTopicSummary.getTitle().equals("vote")) {
@@ -48,10 +48,10 @@ public final class o extends W<GirlTopicSummary> {
         TextView textView = (TextView) this.a(5, TextView.class);
         if ("vote".equals(girlTopicSummary.getType())) {
             textView.setText(String.valueOf(girlTopicSummary.getVoteCount()));
-            textView.setCompoundDrawablesWithIntrinsicBounds(2130837971, 0, 0, 0);
+            textView.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_vote, 0, 0, 0);
         } else {
             textView.setText(String.valueOf(girlTopicSummary.getCommentCount()));
-            textView.setCompoundDrawablesWithIntrinsicBounds(2130837902, 0, 0, 0);
+            textView.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_message, 0, 0, 0);
         }
         TextView textView2 = (TextView) this.a(6, TextView.class);
         textView2.setVisibility(View.VISIBLE);
@@ -92,6 +92,6 @@ public final class o extends W<GirlTopicSummary> {
 
     @Override
     protected final int[] a() {
-        return new int[]{2131492899, 2131493630, 2131493631, 2131492935, 2131492936, 2131493519, 2131493727, 2131493629, 2131493632};
+        return new int[]{R.id.avatar, R.id.user, R.id.lv, R.id.time, R.id.title, R.id.comment_count, R.id.like_count, R.id.avatar_verify, R.id.post_flag};
     }
 }

@@ -80,7 +80,7 @@ public class ReaderMenuFragment extends Fragment {
      */
     static /* synthetic */ void a(ReaderMenuFragment readerMenuFragment, List list) {
         if (readerMenuFragment.getView() != null) {
-            ViewGroup viewGroup = (ViewGroup) readerMenuFragment.getView().findViewById(2131493461);
+            ViewGroup viewGroup = (ViewGroup) readerMenuFragment.getView().findViewById(R.id.toc_container);
             int n2 = list.size();
             ReaderActivity readerActivity = (ReaderActivity) readerMenuFragment.getActivity();
             String string = readerActivity != null ? readerActivity.h() : null;
@@ -90,7 +90,7 @@ public class ReaderMenuFragment extends Fragment {
                 TocSummary tocSummary = (TocSummary) list.get(k);
                 if (!tocSummary.getHost().equals(string)) {
                     FragmentActivity fragmentActivity = readerMenuFragment.getActivity();
-                    View view = fragmentActivity.getLayoutInflater().inflate(2130903297, viewGroup, false);
+                    View view = fragmentActivity.getLayoutInflater().inflate(R.layout.list_item_reader_menu_toc, viewGroup, false);
                     ReaderMenuFragment$TocHolder readerMenuFragment$TocHolder = new ReaderMenuFragment$TocHolder(view);
                     readerMenuFragment$TocHolder.link.setText(tocSummary.getHost());
                     readerMenuFragment$TocHolder.time.setText(t.e((Date) tocSummary.getUpdated()));
@@ -104,8 +104,8 @@ public class ReaderMenuFragment extends Fragment {
                 n3 = n4;
             }
             if (n3 > 0) {
-                readerMenuFragment.getView().findViewById(2131493458).setVisibility(View.VISIBLE);
-                readerMenuFragment.getView().findViewById(2131493459).setOnClickListener(readerMenuFragment.j);
+                readerMenuFragment.getView().findViewById(R.id.slm_reader_sources).setVisibility(View.VISIBLE);
+                readerMenuFragment.getView().findViewById(R.id.slm_reader_more_source).setOnClickListener(readerMenuFragment.j);
             }
         }
     }
@@ -172,14 +172,14 @@ public class ReaderMenuFragment extends Fragment {
     static /* synthetic */ void n(ReaderMenuFragment readerMenuFragment) {
         MenuAd menuAd = a.a().b();
         if (menuAd != null && readerMenuFragment.getView() != null) {
-            SmartImageView smartImageView = (SmartImageView) readerMenuFragment.getView().findViewById(2131493448);
-            TextView textView = (TextView) readerMenuFragment.getView().findViewById(2131493449);
-            TextView textView2 = (TextView) readerMenuFragment.getView().findViewById(2131493450);
+            SmartImageView smartImageView = (SmartImageView) readerMenuFragment.getView().findViewById(R.id.slm_reader_app_icon);
+            TextView textView = (TextView) readerMenuFragment.getView().findViewById(R.id.slm_reader_app_title);
+            TextView textView2 = (TextView) readerMenuFragment.getView().findViewById(R.id.slm_reader_app_desc);
             smartImageView.setDrawingCacheEnabled(true);
             smartImageView.setImageUrl(ApiService.a + menuAd.getIcon());
             String string = new DecimalFormat("0.00").format(menuAd.getSize() / 1024 / 1024);
             readerMenuFragment.h = menuAd.getInsideLink();
-            TextView textView3 = (TextView) readerMenuFragment.getView().findViewById(2131492916);
+            TextView textView3 = (TextView) readerMenuFragment.getView().findViewById(R.id.download);
             String string2 = readerMenuFragment.c() ? "\u67e5\u770b" : "\u5b89\u88c5";
             textView3.setText(string2);
             readerMenuFragment.c = string + "M";
@@ -216,7 +216,7 @@ public class ReaderMenuFragment extends Fragment {
         this.f = this.getArguments().getString("BOOK_TITLE");
         int n2 = am.k((Context) this.getActivity());
         if (this.getView() != null && n2 != 0) {
-            this.getView().findViewById(2131493457).setPadding(0, n2, 1, 0);
+            this.getView().findViewById(R.id.slm_frame).setPadding(0, n2, 1, 0);
         }
         bA bA2 = new bA(this, 0);
         String[] arrstring = new String[]{this.e};
@@ -227,7 +227,7 @@ public class ReaderMenuFragment extends Fragment {
         } else {
             if (this.getView() == null) return;
             {
-                this.getView().findViewById(2131492933).setVisibility(View.GONE);
+                this.getView().findViewById(R.id.slm_reader_layout_ad).setVisibility(View.GONE);
                 return;
             }
         }
@@ -235,11 +235,11 @@ public class ReaderMenuFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
-        View view = layoutInflater.inflate(2130903216, viewGroup, false);
-        ((RelativeLayout) view.findViewById(2131493446)).setPadding(0, am.k((Context) this.getActivity()), 0, 0);
-        view.findViewById(2131493452).setOnClickListener(this.j);
-        this.g = (LoadingContainer) view.findViewById(2131493460);
-        view.findViewById(2131493455).setOnClickListener(this.j);
+        View view = layoutInflater.inflate(R.layout.fragment_reader_menu, viewGroup, false);
+        ((RelativeLayout) view.findViewById(R.id.rl_ad_container)).setPadding(0, am.k((Context) this.getActivity()), 0, 0);
+        view.findViewById(R.id.slm_reader_all_post).setOnClickListener(this.j);
+        this.g = (LoadingContainer) view.findViewById(R.id.loading_container);
+        view.findViewById(R.id.slm_reader_relate_book).setOnClickListener(this.j);
         i.a().a(this);
         return view;
     }
@@ -262,22 +262,22 @@ public class ReaderMenuFragment extends Fragment {
         if (!b2.b().equals("top")) {
             return;
         }
-        View view = this.getView().findViewById(2131492933);
+        View view = this.getView().findViewById(R.id.slm_reader_layout_ad);
         if (view == null) return;
         Advert advert = b2.a();
         if (advert != null && advert instanceof BaseShelfAd) {
             this.i = (BaseShelfAd) advert;
             view.setVisibility(View.VISIBLE);
             view.setOnClickListener(this.k);
-            view.findViewById(2131492916).setOnClickListener(this.k);
+            view.findViewById(R.id.download).setOnClickListener(this.k);
             if (advert == null) return;
             if (this.getView() == null) return;
-            SmartImageView smartImageView = (SmartImageView) this.getView().findViewById(2131493448);
-            TextView textView = (TextView) this.getView().findViewById(2131493449);
-            TextView textView2 = (TextView) this.getView().findViewById(2131493450);
+            SmartImageView smartImageView = (SmartImageView) this.getView().findViewById(R.id.slm_reader_app_icon);
+            TextView textView = (TextView) this.getView().findViewById(R.id.slm_reader_app_title);
+            TextView textView2 = (TextView) this.getView().findViewById(R.id.slm_reader_app_desc);
             smartImageView.setDrawingCacheEnabled(true);
             smartImageView.setImageUrl(advert.getImg());
-            TextView textView3 = (TextView) this.getView().findViewById(2131492916);
+            TextView textView3 = (TextView) this.getView().findViewById(R.id.download);
             String string = advert.isApk() ? "\u5b89\u88c5" : "\u67e5\u770b";
             textView3.setText(string);
             textView.setText(advert.getTitle());
@@ -293,9 +293,9 @@ public class ReaderMenuFragment extends Fragment {
         TextView title;
 
         ReaderMenuFragment$TocHolder(View view) {
-            this.title = (TextView) view.findViewById(2131492936);
-            this.link = (TextView) view. findViewById(2131493736);
-            this.time = (TextView) view. findViewById(2131492935);
+            this.title = (TextView) view.findViewById(R.id.title);
+            this.link = (TextView) view. findViewById(R.id.link);
+            this.time = (TextView) view. findViewById(R.id.time);
         }
     }
 
@@ -319,7 +319,7 @@ public class ReaderMenuFragment extends Fragment {
         @Override
         public void onActivityCreated(Bundle bundle) {
             super.onActivityCreated(bundle);
-            this.a = (SmartImageView) this.getActivity().findViewById(2131493448);
+            this.a = (SmartImageView) this.getActivity().findViewById(R.id.slm_reader_app_icon);
         }
 
         @Override
@@ -327,9 +327,9 @@ public class ReaderMenuFragment extends Fragment {
             String string = this.getArguments().getString("name");
             String string2 = this.getArguments().getString("link");
             String string3 = this.getArguments().getString("size");
-            h h2 = new h(this.getActivity()).a(2131034371);
+            h h2 = new h(this.getActivity()).a(R.string.download);
             h2.e = "\u662f\u5426\u4e0b\u8f7d" + string + "(" + string3 + "\uff0c\u5efa\u8bae\u4f7f\u7528WIFI\u4e0b\u8f7d)\uff1f";
-            return h2.a(2131034371, (DialogInterface.OnClickListener) ((Object) new by(this, string, string2))).b(2131034129, null).a();
+            return h2.a(R.string.download, (DialogInterface.OnClickListener) ((Object) new by(this, string, string2))).b(R.string.cancel, null).a();
         }
     }
 

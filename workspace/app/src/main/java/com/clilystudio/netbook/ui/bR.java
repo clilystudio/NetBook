@@ -57,7 +57,7 @@ class bR extends com.clilystudio.netbook.a_pack.e<String, Void, List<BookSummary
         SearchActivity.a(this.a, true);
         if (list == null) {
             SearchActivity.a(this.a, 2);
-            e.a((Activity) this.a, (int) 2131034478);
+            e.a((Activity) this.a, (int) R.string.search_failed);
             return;
         }
         SearchActivity.b(this.a).a(list);

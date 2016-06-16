@@ -29,12 +29,12 @@ public class FeedListActivity extends BaseActivity {
 
     private void a(int n) {
         int n2 = a.d(n);
-        int[] arrn = new int[]{2131493425, 2131493426, 2131493427, 2131493428, 2131493429};
-        View view = this.getLayoutInflater().inflate(2130903206, null, false);
+        int[] arrn = new int[]{R.id.feed_chapter_10, R.id.feed_chapter_20, R.id.feed_chapter_50, R.id.feed_chapter_100, R.id.feed_chapter_200};
+        View view = this.getLayoutInflater().inflate(R.layout.feed_chapter_count_dialog, null, false);
         h h2 = new h(this);
         h2.d = "\u9009\u62e9\u517b\u80a5\u7ae0\u8282\u6570";
         AlertDialog alertDialog = h2.a(view).b("\u53d6\u6d88", null).a();
-        ((RadioGroup) view.findViewById(2131493424)).check(arrn[n2]);
+        ((RadioGroup) view.findViewById(R.id.feed_group)).check(arrn[n2]);
         for (int j = 0; j < 5; ++j) {
             ((RadioButton) view.findViewById(arrn[j])).setOnClickListener(new e(this, alertDialog, j, n2));
         }
@@ -60,10 +60,10 @@ public class FeedListActivity extends BaseActivity {
     @Override
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        this.setContentView(2130903099);
-        this.b(2131034374);
+        this.setContentView(R.layout.activity_feed_list);
+        this.b(R.string.feed);
         i.a().a(this);
-        ListView listView = (ListView) this.findViewById(2131493127);
+        ListView listView = (ListView) this.findViewById(R.id.book_feed_list);
         this.a = new f(this, this.getLayoutInflater());
         listView.setAdapter(this.a);
         this.b();
@@ -71,7 +71,7 @@ public class FeedListActivity extends BaseActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        this.getMenuInflater().inflate(2131558400, menu);
+        this.getMenuInflater().inflate(R.menu.abs_menu_feed_list, menu);
         return true;
     }
 
@@ -91,11 +91,11 @@ public class FeedListActivity extends BaseActivity {
                 this.onBackPressed();
                 return true;
             }
-            case 2131494054: {
+            case R.id.action_menu_feed_add: {
                 this.startActivity(new Intent(this, FeedAddActivity.class));
                 return true;
             }
-            case 2131494055:
+            case R.id.action_menu_feed_setting:
         }
         this.a(a.a((Context) this, "feed_chapter_count", 50));
         return true;

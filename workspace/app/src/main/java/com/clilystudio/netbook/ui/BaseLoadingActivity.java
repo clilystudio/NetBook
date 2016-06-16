@@ -53,11 +53,11 @@ public abstract class BaseLoadingActivity extends BaseActivity {
         if (a.k()) {
             this.getWindow().setUiOptions(1);
         }
-        this.setContentView(2130903109);
-        this.a = (ViewGroup) this.findViewById(2131492905);
-        this.b = this.findViewById(2131493102);
-        this.c = this.findViewById(2131493103);
-        this.e = this.findViewById(2131493104);
+        this.setContentView(R.layout.activity_loading_base);
+        this.a = (ViewGroup) this.findViewById(R.id.content);
+        this.b = this.findViewById(R.id.common_list_pb);
+        this.c = this.findViewById(R.id.common_list_error);
+        this.e = this.findViewById(R.id.common_list_empty);
         View[] arrview = new View[]{this.a, this.b, this.c, this.e};
         this.f = arrview;
         this.c.setOnClickListener((View.OnClickListener) ((Object) new ac(this)));

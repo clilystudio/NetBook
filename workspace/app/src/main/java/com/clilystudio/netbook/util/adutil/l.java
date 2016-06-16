@@ -66,7 +66,7 @@ public final class l extends a implements View.OnClickListener {
             this.a.a();
             this.b = new com.androidquery.a(view.getContext());
             this.c = view;
-            this.d = this.c.findViewById(2131493264);
+            this.d = this.c.findViewById(R.id.splash_ad_img);
             this.d.setOnClickListener(this);
             Class class_ = Class.forName("com.qq.e.ads.nativ.NativeAD$NativeAdListener");
             Object object = Proxy.newProxyInstance(class_.getClassLoader(), new Class[]{class_}, this);
@@ -157,7 +157,7 @@ public final class l extends a implements View.OnClickListener {
             default: {
                 return;
             }
-            case 2131493264: {
+            case R.id.splash_ad_img: {
                 if (!this.g) return;
                 this.a();
                 return;

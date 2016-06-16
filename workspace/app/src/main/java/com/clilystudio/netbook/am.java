@@ -931,7 +931,7 @@ public class am {
         Resources.Theme theme = context.getTheme();
         int n = 0;
         if (theme != null) {
-            boolean bl = context.getTheme().resolveAttribute(2130772247, typedValue, true);
+            boolean bl = context.getTheme().resolveAttribute(R.attr.actionBarSize, typedValue, true);
             n = 0;
             if (bl) {
                 n = TypedValue.complexToDimensionPixelSize(typedValue.data, context.getResources().getDisplayMetrics());
@@ -1017,8 +1017,8 @@ public class am {
         }
         Intent intent = new Intent("com.android.launcher.action.INSTALL_SHORTCUT");
         intent.putExtra("duplicate", false);
-        intent.putExtra("android.intent.extra.shortcut.NAME", context.getString(2131034211));
-        intent.putExtra("android.intent.extra.shortcut.ICON_RESOURCE", Intent.ShortcutIconResource.fromContext(context, 2130837893));
+        intent.putExtra("android.intent.extra.shortcut.NAME", context.getString(R.string.app_name));
+        intent.putExtra("android.intent.extra.shortcut.ICON_RESOURCE", Intent.ShortcutIconResource.fromContext(context, R.drawable.ic_launcher));
         intent.putExtra("android.intent.extra.shortcut.INTENT", new Intent(context, SplashActivity.class));
         context.sendBroadcast(intent);
         a.b(context, "key_short_cut", true);

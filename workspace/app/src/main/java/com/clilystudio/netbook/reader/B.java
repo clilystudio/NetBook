@@ -21,6 +21,6 @@ final class B implements View.OnClickListener {
             }
             return;
         }
-        e.a((Activity) o.a((o) this.a), (int) 2131034418);
+        e.a((Activity) o.a((o) this.a), (int) R.string.network_unconnected);
     }
 }

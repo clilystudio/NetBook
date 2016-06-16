@@ -30,21 +30,21 @@ final class ag extends BaseAdapter {
                 return;
             }
             case 0: {
-                this.c = am.b((Context) payVoucherFragment.getActivity(), 2130772009);
-                this.d = 2131427467;
+                this.c = am.b((Context) payVoucherFragment.getActivity(), R.attr.voucherRightNormalBg);
+                this.d = R.color.pay_voucher_red;
                 this.e = "\u53ef\n\u4f7f\n\u7528";
                 return;
             }
             case 1: {
-                this.c = am.b((Context) payVoucherFragment.getActivity(), 2130772008);
-                this.d = 2131427466;
+                this.c = am.b((Context) payVoucherFragment.getActivity(), R.attr.voucherRightDisableBg);
+                this.d = R.color.pay_voucher_gray;
                 this.e = "\u5df2\n\u7528\n\u5b8c";
                 return;
             }
             case 2:
         }
-        this.c = am.b((Context) payVoucherFragment.getActivity(), 2130772008);
-        this.d = 2131427466;
+        this.c = am.b((Context) payVoucherFragment.getActivity(), R.attr.voucherRightDisableBg);
+        this.d = R.color.pay_voucher_gray;
         this.e = "\u5df2\n\u8fc7\n\u671f";
     }
 
@@ -77,12 +77,12 @@ final class ag extends BaseAdapter {
         PayVoucherRecord$Voucher payVoucherRecord$Voucher = this.a.get(n);
         if (view == null) {
             ah ah3 = new ah(this);
-            view = this.b.inflate(2130903320, null);
-            ah3.a = (TextView) view.findViewById(2131493794);
-            ah3.b = (TextView) view.findViewById(2131493797);
-            ah3.c = (TextView) view.findViewById(2131493795);
-            ah3.d = (TextView) view.findViewById(2131493796);
-            ah3.e = (TextView) view.findViewById(2131493793);
+            view = this.b.inflate(R.layout.list_item_voucher, null);
+            ah3.a = (TextView) view.findViewById(R.id.voucher_amount);
+            ah3.b = (TextView) view.findViewById(R.id.voucher_source);
+            ah3.c = (TextView) view.findViewById(R.id.voucher_balance);
+            ah3.d = (TextView) view.findViewById(R.id.voucher_expired);
+            ah3.e = (TextView) view.findViewById(R.id.voucher_right_text);
             view.setTag(ah3);
             ah2 = ah3;
         } else {

@@ -37,7 +37,7 @@ final class D extends c<String, GameGiftResponse> {
                 GameGiftListActivity.a(this.a, string);
                 e.a((Activity) this.a, (String) "\u9886\u53d6\u6210\u529f");
                 GameGiftListActivity.e(this.a).setText("\u67e5\u770b");
-                GameGiftListActivity.e(this.a).setBackgroundResource(2130837819);
+                GameGiftListActivity.e(this.a).setBackgroundResource(R.drawable.green_round_button);
                 GameGiftListActivity.e(this.a).setOnClickListener(new E(this, string));
                 GameGiftListActivity.f(this.a).setOnClickListener(new F(this, string));
                 return;

@@ -11,8 +11,8 @@ final class bl {
     TextView c;
 
     public bl(bj bj2, View view) {
-        this.a = (CoverView) view.findViewById(2131492899);
-        this.b = (TextView) view.findViewById(2131492928);
-        this.c = (TextView) view.findViewById(2131493590);
+        this.a = (CoverView) view.findViewById(R.id.avatar);
+        this.b = (TextView) view.findViewById(R.id.name);
+        this.c = (TextView) view.findViewById(R.id.tv_desc);
     }
 }

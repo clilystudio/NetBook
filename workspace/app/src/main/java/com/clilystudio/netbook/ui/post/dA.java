@@ -13,7 +13,7 @@ final class dA extends c<String, VoteResult> {
 
     public dA(TweetDetailActivity tweetDetailActivity, Activity activity, int n) {
         this.a = tweetDetailActivity;
-        super(activity, 2131034584);
+        super(activity, R.string.vote_send_loading);
     }
 
     private /* varargs */ VoteResult a(String... arrstring) {
@@ -49,7 +49,7 @@ final class dA extends c<String, VoteResult> {
                     e.a((Activity) this.a, (String) string);
                     return;
                 }
-                e.a((Activity) this.a, (int) 2131034388);
+                e.a((Activity) this.a, (int) R.string.forbidden_tips);
                 return;
             }
             e.a((Activity) this.a, (String) "\u6295\u7968\u5931\u8d25\uff0c\u8bf7\u91cd\u8bd5");

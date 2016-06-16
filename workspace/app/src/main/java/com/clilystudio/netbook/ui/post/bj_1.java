@@ -33,7 +33,7 @@ final class bj extends BaseAdapter {
     @Override
     public final View getView(int n, View view, ViewGroup viewGroup) {
         if (view == null) {
-            view = LayoutInflater.from(viewGroup.getContext()).inflate(2130903252, viewGroup, false);
+            view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.layout_list_item_follower, viewGroup, false);
             view.setTag(new bl(this, view));
         }
         Follower follower = (Follower) this.getItem(n);

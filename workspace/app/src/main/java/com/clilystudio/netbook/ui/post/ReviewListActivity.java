@@ -27,7 +27,7 @@ do;
 
 public class ReviewListActivity extends BaseActivity {
     private static final String[] q = new String[]{"all", "xhqh", "wxxx", "dsyn", "lsjs", "yxjj", "khly", "cyjk", "hmzc", "xdyq", "gdyq", "hxyq", "dmtr"};
-    private static final int[] r = new int[]{2131034548, 2131034559, 2131034557, 2131034551, 2131034556, 2131034560, 2131034555, 2131034549, 2131034553, 2131034558, 2131034552, 2131034554, 2131034550};
+    private static final int[] r = new int[]{R.string.type_all, R.string.type_xhqh, R.string.type_wxxx, R.string.type_dsyn, R.string.type_lsjs, R.string.type_yxjj, R.string.type_khly, R.string.type_cyjk, R.string.type_hmzc, R.string.type_xdyq, R.string.type_gdyq, R.string.type_hxyq, R.string.type_dmtr};
     private dp a;
     private do b;
     private PullToRefreshListView c;
@@ -71,13 +71,13 @@ public class ReviewListActivity extends BaseActivity {
      */
     static /* synthetic */ PopupWindow a(ReviewListActivity var0, int var1_1) {
         if (var1_1 == 0) {
-            var27_2 = LayoutInflater.from(var0).inflate(2130903161, null);
-            var28_3 = (TextView) var27_2.findViewById(2131493308);
-            var29_4 = (TextView) var27_2.findViewById(2131493309);
+            var27_2 = LayoutInflater.from(var0).inflate(R.layout.book_review_popupwindow_left, null);
+            var28_3 = (TextView) var27_2.findViewById(R.id.text_item0);
+            var29_4 = (TextView) var27_2.findViewById(R.id.text_item1);
             if (var0.v) {
-                var29_4.setTextColor(var0.getResources().getColor(2131427468));
+                var29_4.setTextColor(var0.getResources().getColor(R.color.popup_red));
             } else if (var0.s.equals("all")) {
-                var28_3.setTextColor(var0.getResources().getColor(2131427468));
+                var28_3.setTextColor(var0.getResources().getColor(R.color.popup_red));
             }
             var30_5 = var0.a(var27_2);
             var27_2.setOnTouchListener((View.OnTouchListener) new dl(var0, var30_5));
@@ -86,46 +86,46 @@ public class ReviewListActivity extends BaseActivity {
             return var30_5;
         }
         if (var1_1 == 1) {
-            var10_6 = LayoutInflater.from(var0).inflate(2130903162, null);
-            var11_7 = (TextView) var10_6.findViewById(2131493308);
-            var12_8 = (TextView) var10_6.findViewById(2131493309);
-            var13_9 = (TextView) var10_6.findViewById(2131493310);
-            var14_10 = (TextView) var10_6.findViewById(2131493338);
-            var15_11 = (TextView) var10_6.findViewById(2131493339);
-            var16_12 = (TextView) var10_6.findViewById(2131493340);
-            var17_13 = (TextView) var10_6.findViewById(2131493341);
-            var18_14 = (TextView) var10_6.findViewById(2131493342);
-            var19_15 = (TextView) var10_6.findViewById(2131493343);
-            var20_16 = (TextView) var10_6.findViewById(2131493344);
-            var21_17 = (TextView) var10_6.findViewById(2131493345);
-            var22_18 = (TextView) var10_6.findViewById(2131493346);
-            var23_19 = (TextView) var10_6.findViewById(2131493347);
+            var10_6 = LayoutInflater.from(var0).inflate(R.layout.book_review_popupwindow_mid, null);
+            var11_7 = (TextView) var10_6.findViewById(R.id.text_item0);
+            var12_8 = (TextView) var10_6.findViewById(R.id.text_item1);
+            var13_9 = (TextView) var10_6.findViewById(R.id.text_item2);
+            var14_10 = (TextView) var10_6.findViewById(R.id.text_item3);
+            var15_11 = (TextView) var10_6.findViewById(R.id.text_item4);
+            var16_12 = (TextView) var10_6.findViewById(R.id.text_item5);
+            var17_13 = (TextView) var10_6.findViewById(R.id.text_item6);
+            var18_14 = (TextView) var10_6.findViewById(R.id.text_item7);
+            var19_15 = (TextView) var10_6.findViewById(R.id.text_item8);
+            var20_16 = (TextView) var10_6.findViewById(R.id.text_item9);
+            var21_17 = (TextView) var10_6.findViewById(R.id.text_item10);
+            var22_18 = (TextView) var10_6.findViewById(R.id.text_item11);
+            var23_19 = (TextView) var10_6.findViewById(R.id.text_item12);
             if (var0.t.equals(ReviewListActivity.q[0])) {
-                var11_7.setTextColor(var0.getResources().getColor(2131427468));
+                var11_7.setTextColor(var0.getResources().getColor(R.color.popup_red));
             } else if (var0.t.equals(ReviewListActivity.q[1])) {
-                var12_8.setTextColor(var0.getResources().getColor(2131427468));
+                var12_8.setTextColor(var0.getResources().getColor(R.color.popup_red));
             } else if (var0.t.equals(ReviewListActivity.q[2])) {
-                var13_9.setTextColor(var0.getResources().getColor(2131427468));
+                var13_9.setTextColor(var0.getResources().getColor(R.color.popup_red));
             } else if (var0.t.equals(ReviewListActivity.q[3])) {
-                var14_10.setTextColor(var0.getResources().getColor(2131427468));
+                var14_10.setTextColor(var0.getResources().getColor(R.color.popup_red));
             } else if (var0.t.equals(ReviewListActivity.q[4])) {
-                var15_11.setTextColor(var0.getResources().getColor(2131427468));
+                var15_11.setTextColor(var0.getResources().getColor(R.color.popup_red));
             } else if (var0.t.equals(ReviewListActivity.q[5])) {
-                var16_12.setTextColor(var0.getResources().getColor(2131427468));
+                var16_12.setTextColor(var0.getResources().getColor(R.color.popup_red));
             } else if (var0.t.equals(ReviewListActivity.q[6])) {
-                var17_13.setTextColor(var0.getResources().getColor(2131427468));
+                var17_13.setTextColor(var0.getResources().getColor(R.color.popup_red));
             } else if (var0.t.equals(ReviewListActivity.q[7])) {
-                var18_14.setTextColor(var0.getResources().getColor(2131427468));
+                var18_14.setTextColor(var0.getResources().getColor(R.color.popup_red));
             } else if (var0.t.equals(ReviewListActivity.q[8])) {
-                var19_15.setTextColor(var0.getResources().getColor(2131427468));
+                var19_15.setTextColor(var0.getResources().getColor(R.color.popup_red));
             } else if (var0.t.equals(ReviewListActivity.q[9])) {
-                var20_16.setTextColor(var0.getResources().getColor(2131427468));
+                var20_16.setTextColor(var0.getResources().getColor(R.color.popup_red));
             } else if (var0.t.equals(ReviewListActivity.q[10])) {
-                var21_17.setTextColor(var0.getResources().getColor(2131427468));
+                var21_17.setTextColor(var0.getResources().getColor(R.color.popup_red));
             } else if (var0.t.equals(ReviewListActivity.q[11])) {
-                var22_18.setTextColor(var0.getResources().getColor(2131427468));
+                var22_18.setTextColor(var0.getResources().getColor(R.color.popup_red));
             } else if (var0.t.equals(ReviewListActivity.q[12])) {
-                var23_19.setTextColor(var0.getResources().getColor(2131427468));
+                var23_19.setTextColor(var0.getResources().getColor(R.color.popup_red));
             }
             var24_20 = var0.a(var10_6);
             var25_21 = new cK(var0, var24_20);
@@ -147,11 +147,11 @@ public class ReviewListActivity extends BaseActivity {
             return var24_20;
         }
         if (var1_1 != 2) return null;
-        var2_23 = LayoutInflater.from(var0).inflate(2130903163, null);
-        var3_24 = (TextView) var2_23.findViewById(2131493308);
-        var4_25 = (TextView) var2_23.findViewById(2131493309);
-        var5_26 = (TextView) var2_23.findViewById(2131493310);
-        var6_27 = (TextView) var2_23.findViewById(2131493338);
+        var2_23 = LayoutInflater.from(var0).inflate(R.layout.book_review_popupwindow_right, null);
+        var3_24 = (TextView) var2_23.findViewById(R.id.text_item0);
+        var4_25 = (TextView) var2_23.findViewById(R.id.text_item1);
+        var5_26 = (TextView) var2_23.findViewById(R.id.text_item2);
+        var6_27 = (TextView) var2_23.findViewById(R.id.text_item3);
         var7_28 = var0.u;
         var8_29 = -1;
         switch (var7_28.hashCode()) {
@@ -189,15 +189,15 @@ public class ReviewListActivity extends BaseActivity {
         // 4 sources:
         switch (var8_29) {
             case 0: {
-                var3_24.setTextColor(var0.getResources().getColor(2131427468));
+                var3_24.setTextColor(var0.getResources().getColor(R.color.popup_red));
                 **break;
             }
             case 1: {
-                var4_25.setTextColor(var0.getResources().getColor(2131427468));
+                var4_25.setTextColor(var0.getResources().getColor(R.color.popup_red));
                 **break;
             }
             case 2: {
-                var5_26.setTextColor(var0.getResources().getColor(2131427468));
+                var5_26.setTextColor(var0.getResources().getColor(R.color.popup_red));
             }
             lbl122:
             // 4 sources:
@@ -207,7 +207,7 @@ public class ReviewListActivity extends BaseActivity {
             }
             case 3:
         }
-        var6_27.setTextColor(var0.getResources().getColor(2131427468));
+        var6_27.setTextColor(var0.getResources().getColor(R.color.popup_red));
         lbl126:
         // 2 sources:
         var9_30 = var0.a(var2_23);
@@ -352,8 +352,8 @@ public class ReviewListActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        this.setContentView(2130903090);
-        this.a("\u4e66\u8bc4\u533a", 2130837866, new cJ(this), "\u5199\u4e66\u8bc4");
+        this.setContentView(R.layout.activity_book_review_list);
+        this.a("\u4e66\u8bc4\u533a", R.drawable.ic_action_edit, new cJ(this), "\u5199\u4e66\u8bc4");
         if (bundle != null) {
             this.s = bundle.getString("savedReviewDur");
             this.t = bundle.getString("savedReviewType");
@@ -363,24 +363,24 @@ public class ReviewListActivity extends BaseActivity {
             this.t = q[0];
             this.u = "updated";
         }
-        this.g = this.findViewById(2131493085);
-        this.h = (TextView) this.findViewById(2131493100);
-        this.c = (PullToRefreshListView) this.findViewById(2131493099);
+        this.g = this.findViewById(R.id.pb_loading);
+        this.h = (TextView) this.findViewById(R.id.empty_text);
+        this.c = (PullToRefreshListView) this.findViewById(R.id.ptr_list);
         this.c.setMode(PullToRefreshBase$Mode.PULL_FROM_START);
-        View view = this.findViewById(2131493105);
-        View view2 = this.findViewById(2131493108);
-        View view3 = this.findViewById(2131493111);
-        this.k = (TextView) this.findViewById(2131493106);
-        this.l = (TextView) this.findViewById(2131493109);
-        this.m = (TextView) this.findViewById(2131493112);
-        this.n = (ImageView) this.findViewById(2131493107);
-        this.o = (ImageView) this.findViewById(2131493110);
-        this.p = (ImageView) this.findViewById(2131493113);
+        View view = this.findViewById(R.id.book_review_top_left);
+        View view2 = this.findViewById(R.id.book_review_top_mid);
+        View view3 = this.findViewById(R.id.book_review_top_right);
+        this.k = (TextView) this.findViewById(R.id.book_review_top_left_title);
+        this.l = (TextView) this.findViewById(R.id.book_review_top_mid_title);
+        this.m = (TextView) this.findViewById(R.id.book_review_top_right_title);
+        this.n = (ImageView) this.findViewById(R.id.book_review_top_left_arrow);
+        this.o = (ImageView) this.findViewById(R.id.book_review_top_mid_arrow);
+        this.p = (ImageView) this.findViewById(R.id.book_review_top_right_arrow);
         view.setOnClickListener(new cU(this));
         view2.setOnClickListener((View.OnClickListener) ((Object) new df(this)));
         view3.setOnClickListener((View.OnClickListener) ((Object) new dh(this)));
         this.e = (ListView) this.c.h();
-        this.f = LayoutInflater.from(this).inflate(2130903325, null);
+        this.f = LayoutInflater.from(this).inflate(R.layout.loading_item, null);
         if (a.j()) {
             this.e.setFooterDividersEnabled(false);
         }

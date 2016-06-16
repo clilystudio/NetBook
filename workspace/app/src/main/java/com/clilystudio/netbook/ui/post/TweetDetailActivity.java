@@ -109,21 +109,21 @@ public class TweetDetailActivity extends AbsPostActivity {
         if (var1_1.length == 0) {
             return;
         }
-        var2_2 = new int[]{2131492940, 2131492941, 2131492942, 2131492943, 2131492944, 2131492945, 2131492946};
+        var2_2 = new int[]{R.id.vote_item_1, R.id.vote_item_2, R.id.vote_item_3, R.id.vote_item_4, R.id.vote_item_5, R.id.vote_item_6, R.id.vote_item_7};
         var3_3 = new View[7];
         var4_4 = new ImageView[7];
         var5_5 = new TextView[7];
         for (var6_6 = 0; var6_6 < 7; ++var6_6) {
             var3_3[var6_6] = var0.c.findViewById(var2_2[var6_6]);
-            var0.m[var6_6] = var3_3[var6_6].findViewById(2131493732);
-            var0.o[var6_6] = (ProgressBar) var3_3[var6_6].findViewById(2131493734);
-            var0.p[var6_6] = (TextView) var3_3[var6_6].findViewById(2131493733);
-            var0.q[var6_6] = (TextView) var3_3[var6_6].findViewById(2131493735);
-            var4_4[var6_6] = (ImageView) var3_3[var6_6].findViewById(2131493728);
-            var0.n[var6_6] = (ImageView) var3_3[var6_6].findViewById(2131493730);
+            var0.m[var6_6] = var3_3[var6_6].findViewById(R.id.post_detail_vote_item_vote_result_layout);
+            var0.o[var6_6] = (ProgressBar) var3_3[var6_6].findViewById(R.id.post_detail_vote_item_percent_bar);
+            var0.p[var6_6] = (TextView) var3_3[var6_6].findViewById(R.id.post_detail_vote_item_count);
+            var0.q[var6_6] = (TextView) var3_3[var6_6].findViewById(R.id.post_detail_vote_item_percent_value);
+            var4_4[var6_6] = (ImageView) var3_3[var6_6].findViewById(R.id.post_detail_vote_item_index);
+            var0.n[var6_6] = (ImageView) var3_3[var6_6].findViewById(R.id.post_detail_vote_item_vote);
             var0.n[var6_6].setTag(var6_6);
             var0.n[var6_6].setOnClickListener(var0.z);
-            var5_5[var6_6] = (TextView) var3_3[var6_6].findViewById(2131493729);
+            var5_5[var6_6] = (TextView) var3_3[var6_6].findViewById(R.id.post_detail_vote_item_content);
         }
         var7_7 = am.e();
         if (var7_7 != null) {
@@ -140,45 +140,45 @@ public class TweetDetailActivity extends AbsPostActivity {
                 for (var16_11 = 0; var16_11 < var10_10; ++var16_11) {
                     var5_5[var16_11].setText(var1_1[var16_11].content);
                 }
-                var4_4[1].setImageResource(2130838049);
+                var4_4[1].setImageResource(R.drawable.post_detail_comment_vote_item_2);
                 **break;
             }
             case 3: {
                 for (var15_12 = 0; var15_12 < var10_10; ++var15_12) {
                     var5_5[var15_12].setText(var1_1[var15_12].content);
                 }
-                var4_4[1].setImageResource(2130838049);
-                var4_4[2].setImageResource(2130838050);
+                var4_4[1].setImageResource(R.drawable.post_detail_comment_vote_item_2);
+                var4_4[2].setImageResource(R.drawable.post_detail_comment_vote_item_3);
                 **break;
             }
             case 4: {
                 for (var14_13 = 0; var14_13 < var10_10; ++var14_13) {
                     var5_5[var14_13].setText(var1_1[var14_13].content);
                 }
-                var4_4[1].setImageResource(2130838049);
-                var4_4[2].setImageResource(2130838050);
-                var4_4[3].setImageResource(2130838051);
+                var4_4[1].setImageResource(R.drawable.post_detail_comment_vote_item_2);
+                var4_4[2].setImageResource(R.drawable.post_detail_comment_vote_item_3);
+                var4_4[3].setImageResource(R.drawable.post_detail_comment_vote_item_4);
                 **break;
             }
             case 5: {
                 for (var13_14 = 0; var13_14 < var10_10; ++var13_14) {
                     var5_5[var13_14].setText(var1_1[var13_14].content);
                 }
-                var4_4[1].setImageResource(2130838049);
-                var4_4[2].setImageResource(2130838050);
-                var4_4[3].setImageResource(2130838051);
-                var4_4[4].setImageResource(2130838052);
+                var4_4[1].setImageResource(R.drawable.post_detail_comment_vote_item_2);
+                var4_4[2].setImageResource(R.drawable.post_detail_comment_vote_item_3);
+                var4_4[3].setImageResource(R.drawable.post_detail_comment_vote_item_4);
+                var4_4[4].setImageResource(R.drawable.post_detail_comment_vote_item_5);
                 **break;
             }
             case 6: {
                 for (var12_15 = 0; var12_15 < var10_10; ++var12_15) {
                     var5_5[var12_15].setText(var1_1[var12_15].content);
                 }
-                var4_4[1].setImageResource(2130838049);
-                var4_4[2].setImageResource(2130838050);
-                var4_4[3].setImageResource(2130838051);
-                var4_4[4].setImageResource(2130838052);
-                var4_4[5].setImageResource(2130838053);
+                var4_4[1].setImageResource(R.drawable.post_detail_comment_vote_item_2);
+                var4_4[2].setImageResource(R.drawable.post_detail_comment_vote_item_3);
+                var4_4[3].setImageResource(R.drawable.post_detail_comment_vote_item_4);
+                var4_4[4].setImageResource(R.drawable.post_detail_comment_vote_item_5);
+                var4_4[5].setImageResource(R.drawable.post_detail_comment_vote_item_6);
             }
             lbl69:
             // 6 sources:
@@ -191,12 +191,12 @@ public class TweetDetailActivity extends AbsPostActivity {
         for (var11_16 = 0; var11_16 < var10_10; ++var11_16) {
             var5_5[var11_16].setText(var1_1[var11_16].content);
         }
-        var4_4[1].setImageResource(2130838049);
-        var4_4[2].setImageResource(2130838050);
-        var4_4[3].setImageResource(2130838051);
-        var4_4[4].setImageResource(2130838052);
-        var4_4[5].setImageResource(2130838053);
-        var4_4[6].setImageResource(2130838054);
+        var4_4[1].setImageResource(R.drawable.post_detail_comment_vote_item_2);
+        var4_4[2].setImageResource(R.drawable.post_detail_comment_vote_item_3);
+        var4_4[3].setImageResource(R.drawable.post_detail_comment_vote_item_4);
+        var4_4[4].setImageResource(R.drawable.post_detail_comment_vote_item_5);
+        var4_4[5].setImageResource(R.drawable.post_detail_comment_vote_item_6);
+        var4_4[6].setImageResource(R.drawable.post_detail_comment_vote_item_7);
         lbl81:
         // 2 sources:
         if (var8_9 == false) return;
@@ -222,18 +222,18 @@ public class TweetDetailActivity extends AbsPostActivity {
     static /* synthetic */ void b(TweetDetailActivity tweetDetailActivity, TweetResult tweetResult) {
         User user = tweetResult.getUser();
         Tweet tweet = tweetResult.getTweet();
-        SmartImageView smartImageView = (SmartImageView) tweetDetailActivity.c.findViewById(2131492899);
+        SmartImageView smartImageView = (SmartImageView) tweetDetailActivity.c.findViewById(R.id.avatar);
         if (am.m((Context) tweetDetailActivity)) {
-            smartImageView.setImageResource(2130837614);
+            smartImageView.setImageResource(R.drawable.avatar_default);
         } else {
             smartImageView.setImageUrl(user.getFullAvatar());
         }
         smartImageView.setOnClickListener(new dw(tweetDetailActivity, user));
-        ((TextView) tweetDetailActivity.c.findViewById(2131492928)).setText(user.getNickname());
-        ((TextView) tweetDetailActivity.c.findViewById(2131493631)).setText("lv." + user.getLv());
-        ((TextView) tweetDetailActivity.c.findViewById(2131492935)).setText(t.e((Date) tweet.getCreated()));
-        TextView textView = (TextView) tweetDetailActivity.c.findViewById(2131492936);
-        tweetDetailActivity.r = (TextView) tweetDetailActivity.c.findViewById(2131492947);
+        ((TextView) tweetDetailActivity.c.findViewById(R.id.name)).setText(user.getNickname());
+        ((TextView) tweetDetailActivity.c.findViewById(R.id.lv)).setText("lv." + user.getLv());
+        ((TextView) tweetDetailActivity.c.findViewById(R.id.time)).setText(t.e((Date) tweet.getCreated()));
+        TextView textView = (TextView) tweetDetailActivity.c.findViewById(R.id.title);
+        tweetDetailActivity.r = (TextView) tweetDetailActivity.c.findViewById(R.id.vote_total);
         tweetDetailActivity.r.setText("\u5171" + tweetDetailActivity.t.getTweet().getVoteCount() + "\u4eba\u6295\u7968");
         if (tweetDetailActivity.u.equals("ARTICLE")) {
             textView.setVisibility(View.VISIBLE);
@@ -241,9 +241,9 @@ public class TweetDetailActivity extends AbsPostActivity {
         } else {
             textView.setVisibility(View.GONE);
         }
-        ((LinkifyTextView) tweetDetailActivity.c.findViewById(2131492905)).setLinkifyText(tweet.getContent(), user.isOfficial());
-        ((TextView) tweetDetailActivity.findViewById(2131493519)).setText("\u5171" + tweetDetailActivity.t.getTweet().getCommented() + "\u6761\u8bc4\u8bba");
-        ImageView imageView = (ImageView) tweetDetailActivity.c.findViewById(2131493629);
+        ((LinkifyTextView) tweetDetailActivity.c.findViewById(R.id.content)).setLinkifyText(tweet.getContent(), user.isOfficial());
+        ((TextView) tweetDetailActivity.findViewById(R.id.comment_count)).setText("\u5171" + tweetDetailActivity.t.getTweet().getCommented() + "\u6761\u8bc4\u8bba");
+        ImageView imageView = (ImageView) tweetDetailActivity.c.findViewById(R.id.avatar_verify);
         if (tweetDetailActivity.y) {
             String string = user.getGender();
             if ("male".equals(string)) {
@@ -269,7 +269,7 @@ public class TweetDetailActivity extends AbsPostActivity {
                 imageView.setVisibility(View.GONE);
             }
         }
-        ((PostAgreeView) tweetDetailActivity.c.findViewById(2131493840)).setPostId(tweetDetailActivity.a);
+        ((PostAgreeView) tweetDetailActivity.c.findViewById(R.id.post_agree_view)).setPostId(tweetDetailActivity.a);
         tweetDetailActivity.c.a();
         tweetDetailActivity.c.b();
     }
@@ -365,9 +365,9 @@ public class TweetDetailActivity extends AbsPostActivity {
             this.n[n4].setEnabled(false);
             this.m[n4].setVisibility(View.VISIBLE);
             if (n4 == n) {
-                this.n[n4].setImageResource(2130838056);
+                this.n[n4].setImageResource(R.drawable.post_detail_comment_vote_sel);
             } else {
-                this.n[n4].setImageResource(2130838055);
+                this.n[n4].setImageResource(R.drawable.post_detail_comment_vote_nor);
             }
             arrf[n4] = n2 != 0 && n4 < n3 ? (float) arrn[n4] / (float) n2 : 0.0f;
             String string = String.valueOf((int) (0.5f + 100.0f * arrf[n4]));
@@ -380,7 +380,7 @@ public class TweetDetailActivity extends AbsPostActivity {
 
     private void p() {
         this.k.setAgree(true);
-        Drawable drawable = this.getResources().getDrawable(2130838111);
+        Drawable drawable = this.getResources().getDrawable(R.drawable.retweened);
         drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
         this.l.setCompoundDrawables(drawable, null, null, null);
     }
@@ -401,7 +401,7 @@ public class TweetDetailActivity extends AbsPostActivity {
 
     @Override
     protected final void a(Account account, String string) {
-        dD dD2 = new dD(this, this, 2131034430);
+        dD dD2 = new dD(this, this, R.string.post_publish_loading);
         String[] arrstring = new String[]{account.getToken(), this.a, string};
         dD2.b(arrstring);
     }
@@ -414,10 +414,10 @@ public class TweetDetailActivity extends AbsPostActivity {
             return;
         }
         if (string.length() > 512) {
-            e.a((Activity) this, (int) 2131034305);
+            e.a((Activity) this, (int) R.string.alert_too_many_words);
             return;
         }
-        dB dB2 = new dB(this, this, 2131034430);
+        dB dB2 = new dB(this, this, R.string.post_publish_loading);
         String[] arrstring = new String[]{account.getToken(), this.a, replyeeInfo.getCommentId(), string};
         dB2.b(arrstring);
     }
@@ -532,32 +532,32 @@ public class TweetDetailActivity extends AbsPostActivity {
     @Override
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        this.a(2130903350);
+        this.a(R.layout.post_detail_list);
         this.b("\u52a8\u6001\u8be6\u60c5");
         this.a = this.getIntent().getStringExtra("TWEET_ID");
         this.u = this.getIntent().getStringExtra("TWEET_TYPE");
-        this.i = this.findViewById(2131493838);
+        this.i = this.findViewById(R.id.topic_detail_bottom_view);
         this.a(true);
-        this.b = (ScrollLoadListView) this.findViewById(2131493135);
+        this.b = (ScrollLoadListView) this.findViewById(R.id.content_list);
         this.c = new PostHeader(this);
         this.c.a(false);
         this.b.addHeaderView(this.c, null, false);
-        this.k = (PostAgreeView) this.c.findViewById(2131493840);
-        this.l = (TextView) this.c.findViewById(2131493841);
-        Drawable drawable = this.getResources().getDrawable(2130838109);
+        this.k = (PostAgreeView) this.c.findViewById(R.id.post_agree_view);
+        this.l = (TextView) this.c.findViewById(R.id.agree);
+        Drawable drawable = this.getResources().getDrawable(R.drawable.retween_before);
         drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
         this.l.setCompoundDrawables(drawable, null, null, null);
         this.l.setText("\u8f6c\u53d1");
         this.k.setOnClickListener((View.OnClickListener) ((Object) new du(this)));
-        HotCommentView hotCommentView = (HotCommentView) LayoutInflater.from(this).inflate(2130903235, (ViewGroup) this.b, false);
+        HotCommentView hotCommentView = (HotCommentView) LayoutInflater.from(this).inflate(R.layout.hot_comment_view, (ViewGroup) this.b, false);
         this.b.addHeaderView(hotCommentView, null, false);
         hotCommentView.a(this.a);
-        this.j = LayoutInflater.from(this).inflate(2130903325, null);
+        this.j = LayoutInflater.from(this).inflate(R.layout.loading_item, null);
         this.b.addFooterView(this.j);
         this.j.setVisibility(View.GONE);
         this.f = new z(this.getLayoutInflater());
         this.b.setAdapter(this.f);
-        this.v = (SendView) this.findViewById(2131494003);
+        this.v = (SendView) this.findViewById(R.id.bottom_container);
         this.b();
         this.y = a.r(this, "community_user_gender_icon_toggle");
     }

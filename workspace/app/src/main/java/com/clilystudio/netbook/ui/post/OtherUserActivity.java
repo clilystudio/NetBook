@@ -338,18 +338,18 @@ public class OtherUserActivity extends BaseActivity {
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         i.a().a(this);
-        this.setContentView(2130903211);
+        this.setContentView(R.layout.fragment_book_topic);
         this.b = LayoutInflater.from(this);
         this.r = this.getIntent().getExtras().getString("USER_ID");
         this.s = this.getIntent().getExtras().getString("USER_NAME");
-        this.n = this.findViewById(2131493085);
-        this.o = (TextView) this.findViewById(2131493100);
-        this.c = (PullToRefreshListView) this.findViewById(2131493099);
+        this.n = this.findViewById(R.id.pb_loading);
+        this.o = (TextView) this.findViewById(R.id.empty_text);
+        this.c = (PullToRefreshListView) this.findViewById(R.id.ptr_list);
         this.c.setMode(PullToRefreshBase$Mode.PULL_FROM_START);
         this.l = (ListView) this.c.h();
-        this.e = this.b.inflate(2130903253, null);
+        this.e = this.b.inflate(R.layout.layout_mytweet_head, null);
         this.l.addHeaderView(this.e);
-        this.m = this.b.inflate(2130903325, null);
+        this.m = this.b.inflate(R.layout.loading_item, null);
         this.l.addFooterView(this.m);
         if (a.j()) {
             this.l.setFooterDividersEnabled(false);
@@ -390,12 +390,12 @@ public class OtherUserActivity extends BaseActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        this.f = (SmartImageView) this.e.findViewById(2131493591);
-        this.h = (TextView) this.e.findViewById(2131493593);
-        this.g = (ImageView) this.e.findViewById(2131493594);
-        this.i = (TextView) this.e.findViewById(2131493596);
-        this.j = (TextView) this.e.findViewById(2131493599);
-        this.k = (Button) this.e.findViewById(2131493592);
+        this.f = (SmartImageView) this.e.findViewById(R.id.siv_avater);
+        this.h = (TextView) this.e.findViewById(R.id.tv_username);
+        this.g = (ImageView) this.e.findViewById(R.id.iv_sign);
+        this.i = (TextView) this.e.findViewById(R.id.tv_following);
+        this.j = (TextView) this.e.findViewById(R.id.tv_fans);
+        this.k = (Button) this.e.findViewById(R.id.btn_edit);
         this.h.setText(this.s);
         this.f();
         this.k.setOnClickListener(new cb(this));

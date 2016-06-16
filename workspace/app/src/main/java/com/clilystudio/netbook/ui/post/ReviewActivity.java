@@ -73,22 +73,22 @@ public class ReviewActivity extends AbsPostActivity {
      */
     static /* synthetic */ void a(ReviewActivity reviewActivity, Tweet tweet) {
         User user = tweet.getUser();
-        SmartImageView smartImageView = (SmartImageView) reviewActivity.c.findViewById(2131492899);
+        SmartImageView smartImageView = (SmartImageView) reviewActivity.c.findViewById(R.id.avatar);
         if (am.m((Context) reviewActivity)) {
-            smartImageView.setImageResource(2130837614);
+            smartImageView.setImageResource(R.drawable.avatar_default);
         } else {
             smartImageView.setImageUrl(user.getFullAvatar());
         }
-        ((TextView) reviewActivity.c.findViewById(2131492928)).setText(user.getNickname());
-        ((TextView) reviewActivity.c.findViewById(2131493631)).setText("lv." + user.getLv());
-        ((TextView) reviewActivity.c.findViewById(2131492935)).setText(t.e((Date) tweet.getCreated()));
-        ((TextView) reviewActivity.c.findViewById(2131492936)).setText(tweet.getTitle());
-        ((LinkifyTextView) reviewActivity.c.findViewById(2131492905)).setLinkifyText(tweet.getContent(), false);
+        ((TextView) reviewActivity.c.findViewById(R.id.name)).setText(user.getNickname());
+        ((TextView) reviewActivity.c.findViewById(R.id.lv)).setText("lv." + user.getLv());
+        ((TextView) reviewActivity.c.findViewById(R.id.time)).setText(t.e((Date) tweet.getCreated()));
+        ((TextView) reviewActivity.c.findViewById(R.id.title)).setText(tweet.getTitle());
+        ((LinkifyTextView) reviewActivity.c.findViewById(R.id.content)).setLinkifyText(tweet.getContent(), false);
         reviewActivity.k.setText("\u5171" + tweet.getCommented() + "\u6761\u8bc4\u8bba");
-        ((CoverView) reviewActivity.c.findViewById(2131493349)).setImageUrl(tweet.getBook().getCover());
-        ((TextView) reviewActivity.c.findViewById(2131493350)).setText(tweet.getBook().getTitle());
-        ((RatingView) reviewActivity.c.findViewById(2131493351)).setValue(tweet.getScore());
-        ImageView imageView = (ImageView) reviewActivity.c.findViewById(2131493629);
+        ((CoverView) reviewActivity.c.findViewById(R.id.book_cover)).setImageUrl(tweet.getBook().getCover());
+        ((TextView) reviewActivity.c.findViewById(R.id.book_name)).setText(tweet.getBook().getTitle());
+        ((RatingView) reviewActivity.c.findViewById(R.id.review_rating)).setValue(tweet.getScore());
+        ImageView imageView = (ImageView) reviewActivity.c.findViewById(R.id.avatar_verify);
         if (reviewActivity.p) {
             String string = user.getGender();
             if ("male".equals(string)) {
@@ -115,9 +115,9 @@ public class ReviewActivity extends AbsPostActivity {
             }
         }
         if (!reviewActivity.n) {
-            ((PostUsefulView) reviewActivity.c.findViewById(2131493352)).setPost(reviewActivity.m);
+            ((PostUsefulView) reviewActivity.c.findViewById(R.id.review_useful_container)).setPost(reviewActivity.m);
         }
-        reviewActivity.c.findViewById(2131493348).setOnClickListener(reviewActivity.r);
+        reviewActivity.c.findViewById(R.id.review_rating_container).setOnClickListener(reviewActivity.r);
         reviewActivity.c.a();
         reviewActivity.c.b();
     }
@@ -153,23 +153,23 @@ public class ReviewActivity extends AbsPostActivity {
      */
     static /* synthetic */ void b(ReviewActivity reviewActivity, Review review) {
         Author author = review.getAuthor();
-        SmartImageView smartImageView = (SmartImageView) reviewActivity.c.findViewById(2131492899);
+        SmartImageView smartImageView = (SmartImageView) reviewActivity.c.findViewById(R.id.avatar);
         if (am.m((Context) reviewActivity)) {
-            smartImageView.setImageResource(2130837614);
+            smartImageView.setImageResource(R.drawable.avatar_default);
         } else {
             smartImageView.setImageUrl(author.getScaleAvatar());
             smartImageView.setOnClickListener(new cA(reviewActivity, author));
         }
-        ((TextView) reviewActivity.c.findViewById(2131492928)).setText(author.getNickname());
-        ((TextView) reviewActivity.c.findViewById(2131493631)).setText("lv." + author.getLv());
-        ((TextView) reviewActivity.c.findViewById(2131492935)).setText(t.e((Date) review.getCreated()));
-        ((TextView) reviewActivity.c.findViewById(2131492936)).setText(review.getTitle());
-        ((LinkifyTextView) reviewActivity.c.findViewById(2131492905)).setLinkifyText(review.getContent(), author.isOfficial());
+        ((TextView) reviewActivity.c.findViewById(R.id.name)).setText(author.getNickname());
+        ((TextView) reviewActivity.c.findViewById(R.id.lv)).setText("lv." + author.getLv());
+        ((TextView) reviewActivity.c.findViewById(R.id.time)).setText(t.e((Date) review.getCreated()));
+        ((TextView) reviewActivity.c.findViewById(R.id.title)).setText(review.getTitle());
+        ((LinkifyTextView) reviewActivity.c.findViewById(R.id.content)).setLinkifyText(review.getContent(), author.isOfficial());
         reviewActivity.k.setText("\u5171" + review.getCommentCount() + "\u6761\u8bc4\u8bba");
-        ((CoverView) reviewActivity.c.findViewById(2131493349)).setImageUrl(review.getBook().getFullCover());
-        ((TextView) reviewActivity.c.findViewById(2131493350)).setText(review.getBook().getTitle());
-        ((RatingView) reviewActivity.c.findViewById(2131493351)).setValue(review.getRating());
-        ImageView imageView = (ImageView) reviewActivity.c.findViewById(2131493629);
+        ((CoverView) reviewActivity.c.findViewById(R.id.book_cover)).setImageUrl(review.getBook().getFullCover());
+        ((TextView) reviewActivity.c.findViewById(R.id.book_name)).setText(review.getBook().getTitle());
+        ((RatingView) reviewActivity.c.findViewById(R.id.review_rating)).setValue(review.getRating());
+        ImageView imageView = (ImageView) reviewActivity.c.findViewById(R.id.avatar_verify);
         if (reviewActivity.p) {
             String string = author.getGender();
             if ("male".equals(string)) {
@@ -195,8 +195,8 @@ public class ReviewActivity extends AbsPostActivity {
                 imageView.setVisibility(View.GONE);
             }
         }
-        ((PostUsefulView) reviewActivity.c.findViewById(2131493352)).setPost(reviewActivity.m);
-        reviewActivity.c.findViewById(2131493348).setOnClickListener(reviewActivity.r);
+        ((PostUsefulView) reviewActivity.c.findViewById(R.id.review_useful_container)).setPost(reviewActivity.m);
+        reviewActivity.c.findViewById(R.id.review_rating_container).setOnClickListener(reviewActivity.r);
         reviewActivity.c.a();
         reviewActivity.c.b();
     }
@@ -219,8 +219,8 @@ public class ReviewActivity extends AbsPostActivity {
 
     static /* synthetic */ void g(ReviewActivity reviewActivity) {
         reviewActivity.f.setVisibility(View.VISIBLE);
-        reviewActivity.f.findViewById(2131493085).setVisibility(View.GONE);
-        TextView textView = (TextView) reviewActivity.f.findViewById(2131493798);
+        reviewActivity.f.findViewById(R.id.pb_loading).setVisibility(View.GONE);
+        TextView textView = (TextView) reviewActivity.f.findViewById(R.id.tv_loading);
         textView.setText("\u70b9\u51fb\u52a0\u8f7d\u8bc4\u8bba");
         reviewActivity.f.setOnClickListener(new cy(reviewActivity, textView));
     }
@@ -239,7 +239,7 @@ public class ReviewActivity extends AbsPostActivity {
             super.a(account, string);
             return;
         }
-        cI cI2 = new cI(this, this, 2131034430);
+        cI cI2 = new cI(this, this, R.string.post_publish_loading);
         String[] arrstring = new String[]{account.getToken(), this.a, string};
         cI2.b(arrstring);
     }
@@ -258,11 +258,11 @@ public class ReviewActivity extends AbsPostActivity {
         if (account == null) return;
         {
             if (string.length() > 512) {
-                e.a((Activity) this, (int) 2131034305);
+                e.a((Activity) this, (int) R.string.alert_too_many_words);
                 return;
             }
         }
-        cH cH2 = new cH(this, this, 2131034430);
+        cH cH2 = new cH(this, this, R.string.post_publish_loading);
         String[] arrstring = new String[]{account.getToken(), this.a, replyeeInfo.getCommentId(), string};
         cH2.b(arrstring);
     }
@@ -388,35 +388,35 @@ public class ReviewActivity extends AbsPostActivity {
     @Override
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        this.a(2130903350);
+        this.a(R.layout.post_detail_list);
         this.b("\u4e66\u8bc4\u8be6\u60c5");
         String string = this.getIntent().getStringExtra("EXTRA_TYPE_NAME");
         if (!TextUtils.isEmpty(string)) {
             this.n = string.equals("BOOK_COMMENT");
         }
         this.a = this.getIntent().getStringExtra("extraReviewId");
-        this.b = (ScrollLoadListView) this.findViewById(2131493135);
-        this.j = this.findViewById(2131493838);
+        this.b = (ScrollLoadListView) this.findViewById(R.id.content_list);
+        this.j = this.findViewById(R.id.topic_detail_bottom_view);
         this.a(true);
         this.c = new PostHeader(this);
-        this.c.findViewById(2131493348).setVisibility(View.VISIBLE);
-        this.c.findViewById(2131493352).setVisibility(View.VISIBLE);
-        this.c.findViewById(2131493840).setVisibility(View.GONE);
+        this.c.findViewById(R.id.review_rating_container).setVisibility(View.VISIBLE);
+        this.c.findViewById(R.id.review_useful_container).setVisibility(View.VISIBLE);
+        this.c.findViewById(R.id.post_agree_view).setVisibility(View.GONE);
         if (this.n) {
-            this.c.findViewById(2131493352).setVisibility(View.GONE);
+            this.c.findViewById(R.id.review_useful_container).setVisibility(View.GONE);
             this.c.a(false);
         }
         this.b.addHeaderView(this.c, null, false);
-        HotCommentView hotCommentView = (HotCommentView) LayoutInflater.from(this).inflate(2130903235, (ViewGroup) this.b, false);
-        this.k = (TextView) hotCommentView.findViewById(2131493519);
+        HotCommentView hotCommentView = (HotCommentView) LayoutInflater.from(this).inflate(R.layout.hot_comment_view, (ViewGroup) this.b, false);
+        this.k = (TextView) hotCommentView.findViewById(R.id.comment_count);
         this.b.addHeaderView(hotCommentView, null, false);
         hotCommentView.a(this.a);
-        this.f = LayoutInflater.from(this).inflate(2130903325, null);
+        this.f = LayoutInflater.from(this).inflate(R.layout.loading_item, null);
         this.b.addFooterView(this.f);
         this.f.setVisibility(View.GONE);
         this.g = new z(this.getLayoutInflater());
         this.b.setAdapter(this.g);
-        this.o = (SendView) this.findViewById(2131494003);
+        this.o = (SendView) this.findViewById(R.id.bottom_container);
         this.j();
         this.b();
         this.p = a.r(this, "community_user_gender_icon_toggle");

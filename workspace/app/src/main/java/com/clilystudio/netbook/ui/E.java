@@ -14,12 +14,12 @@ final class E implements m {
      */
     public final boolean a(MenuItem menuItem) {
         switch (menuItem.getItemId()) {
-            case 2131494057: {
+            case R.id.item_sort_asc: {
                 if (AudiobookInfoActivity.f(this.a)) return true;
                 {
                     AudiobookInfoActivity.e(this.a, true);
                     AudiobookInfoActivity.h(this.a).a(AudiobookInfoActivity.f(this.a));
-                    AudiobookInfoActivity.o(this.a).setText(this.a.getResources().getString(2131034311));
+                    AudiobookInfoActivity.o(this.a).setText(this.a.getResources().getString(R.string.audiobook_sort_asc));
                     AudiobookInfoActivity.c(this.a, 1 + (AudiobookInfoActivity.j(this.a) - AudiobookInfoActivity.m(this.a)));
                     if (!AudiobookInfoActivity.p(this.a)) return true;
                     {
@@ -31,13 +31,13 @@ final class E implements m {
             default: {
                 return true;
             }
-            case 2131494058:
+            case R.id.item_sort_desc:
         }
         if (!AudiobookInfoActivity.f(this.a)) return true;
         {
             AudiobookInfoActivity.e(this.a, false);
             AudiobookInfoActivity.h(this.a).a(AudiobookInfoActivity.f(this.a));
-            AudiobookInfoActivity.o(this.a).setText(this.a.getResources().getString(2131034312));
+            AudiobookInfoActivity.o(this.a).setText(this.a.getResources().getString(R.string.audiobook_sort_desc));
             AudiobookInfoActivity.c(this.a, 1 + (AudiobookInfoActivity.j(this.a) - AudiobookInfoActivity.m(this.a)));
             if (!AudiobookInfoActivity.p(this.a)) return true;
             {

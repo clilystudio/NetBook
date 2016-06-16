@@ -29,7 +29,7 @@ final class al extends ah<ao> {
 
     @Override
     public final /* synthetic */ ay a(ViewGroup viewGroup, int n) {
-        return new ao(this.a, LayoutInflater.from(this.a).inflate(2130903298, viewGroup, false));
+        return new ao(this.a, LayoutInflater.from(this.a).inflate(R.layout.list_item_remove_ad, viewGroup, false));
     }
 
     @Override

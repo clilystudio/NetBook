@@ -27,13 +27,13 @@ public class GameLocalListActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        this.setContentView(2130903102);
+        this.setContentView(R.layout.activity_game_layout);
         this.b("\u6211\u73a9\u8fc7\u7684\u6e38\u620f");
         this.c = (List) a.k(c.h, "played_game.txt");
         if (this.c == null) {
             this.c = new ArrayList<Game>();
         }
-        this.a = (RecyclerView) this.findViewById(2131493133);
+        this.a = (RecyclerView) this.findViewById(R.id.recycler);
         this.a.setLayoutManager(new LinearLayoutManager(this));
         this.b = new T(this, LayoutInflater.from(this));
         this.a.setAdapter(this.b);
@@ -47,12 +47,12 @@ public class GameLocalListActivity extends BaseActivity {
         Button mPlay;
 
         public GameLocalListActivity$GameViewHolder(GameLocalListActivity gameLocalListActivity, View view) {
-            this.mContainer = view.findViewById(2131493689);
-            this.mIcon = (SmartImageView)view. findViewById(2131493690);
-            this.mName = (TextView) view. findViewById(2131493692);
-            this.mCount = (TextView)view.  findViewById(2131493694);
-            this.mIntro = (TextView)view.  findViewById(2131493693);
-            this.mPlay = (Button)view.  findViewById(2131493691);
+            this.mContainer = view.findViewById(R.id.micro_game_item_container);
+            this.mIcon = (SmartImageView)view. findViewById(R.id.micro_game_item_icon);
+            this.mName = (TextView) view. findViewById(R.id.micro_game_item_name);
+            this.mCount = (TextView)view.  findViewById(R.id.micro_game_item_count);
+            this.mIntro = (TextView)view.  findViewById(R.id.micro_game_item_intro);
+            this.mPlay = (Button)view.  findViewById(R.id.micro_game_item_play);
         }
     }
 

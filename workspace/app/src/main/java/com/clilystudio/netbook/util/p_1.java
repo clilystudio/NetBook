@@ -28,7 +28,7 @@ public final class p {
     static /* synthetic */ void a(p p2, PaySheetItem paySheetItem) {
         if (paySheetItem == null) return;
         if ("weixinpay".equals(paySheetItem.getChargeType().getType()) && !a.a(p2.a)) {
-            e.a(p2.a, 2131034303);
+            e.a(p2.a, R.string.alarm_no_install_weixin);
             return;
         }
         Intent intent = ChargeActivity.a(p2.a, paySheetItem.getChargeType());

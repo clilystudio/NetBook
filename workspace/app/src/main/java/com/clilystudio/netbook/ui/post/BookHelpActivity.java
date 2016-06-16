@@ -74,19 +74,19 @@ public class BookHelpActivity extends AbsPostActivity {
      */
     static /* synthetic */ void b(BookHelpActivity bookHelpActivity, BookHelp bookHelp) {
         Author author = bookHelp.getAuthor();
-        SmartImageView smartImageView = (SmartImageView) bookHelpActivity.c.findViewById(2131492899);
+        SmartImageView smartImageView = (SmartImageView) bookHelpActivity.c.findViewById(R.id.avatar);
         if (am.m((Context) bookHelpActivity)) {
-            smartImageView.setImageResource(2130837614);
+            smartImageView.setImageResource(R.drawable.avatar_default);
         } else {
             smartImageView.setImageUrl(author.getScaleAvatar());
         }
-        ((TextView) bookHelpActivity.c.findViewById(2131492928)).setText(author.getNickname());
-        ((TextView) bookHelpActivity.c.findViewById(2131493631)).setText("lv." + author.getLv());
-        ((TextView) bookHelpActivity.c.findViewById(2131492935)).setText(t.e((Date) bookHelp.getCreated()));
-        ((TextView) bookHelpActivity.c.findViewById(2131492936)).setText(bookHelp.getTitle());
-        ((LinkifyTextView) bookHelpActivity.c.findViewById(2131492905)).setLinkifyText(bookHelp.getContent(), author.isOfficial());
+        ((TextView) bookHelpActivity.c.findViewById(R.id.name)).setText(author.getNickname());
+        ((TextView) bookHelpActivity.c.findViewById(R.id.lv)).setText("lv." + author.getLv());
+        ((TextView) bookHelpActivity.c.findViewById(R.id.time)).setText(t.e((Date) bookHelp.getCreated()));
+        ((TextView) bookHelpActivity.c.findViewById(R.id.title)).setText(bookHelp.getTitle());
+        ((LinkifyTextView) bookHelpActivity.c.findViewById(R.id.content)).setLinkifyText(bookHelp.getContent(), author.isOfficial());
         bookHelpActivity.j.setText("\u5171" + bookHelp.getCommentCount() + "\u6761\u8bc4\u8bba");
-        ImageView imageView = (ImageView) bookHelpActivity.c.findViewById(2131493629);
+        ImageView imageView = (ImageView) bookHelpActivity.c.findViewById(R.id.avatar_verify);
         if (bookHelpActivity.n) {
             String string = author.getGender();
             if ("male".equals(string)) {
@@ -112,7 +112,7 @@ public class BookHelpActivity extends AbsPostActivity {
                 imageView.setVisibility(View.GONE);
             }
         }
-        ((PostAgreeView) bookHelpActivity.c.findViewById(2131493840)).setPostId(bookHelpActivity.a);
+        ((PostAgreeView) bookHelpActivity.c.findViewById(R.id.post_agree_view)).setPostId(bookHelpActivity.a);
         bookHelpActivity.c.a();
         bookHelpActivity.c.b();
     }
@@ -135,8 +135,8 @@ public class BookHelpActivity extends AbsPostActivity {
 
     static /* synthetic */ void g(BookHelpActivity bookHelpActivity) {
         bookHelpActivity.f.setVisibility(View.VISIBLE);
-        bookHelpActivity.f.findViewById(2131493085).setVisibility(View.GONE);
-        TextView textView = (TextView) bookHelpActivity.f.findViewById(2131493798);
+        bookHelpActivity.f.findViewById(R.id.pb_loading).setVisibility(View.GONE);
+        TextView textView = (TextView) bookHelpActivity.f.findViewById(R.id.tv_loading);
         textView.setText("\u70b9\u51fb\u52a0\u8f7d\u8bc4\u8bba");
         bookHelpActivity.f.setOnClickListener((View.OnClickListener) ((Object) new aa(bookHelpActivity, textView)));
     }
@@ -258,19 +258,19 @@ public class BookHelpActivity extends AbsPostActivity {
     @Override
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        this.a(2130903350);
+        this.a(R.layout.post_detail_list);
         this.b("\u4e66\u8352\u4e92\u52a9\u533a\u8be6\u60c5");
         this.a = this.getIntent().getStringExtra("extraBookHelpId");
-        this.b = (ScrollLoadListView) this.findViewById(2131493135);
-        this.k = this.findViewById(2131493838);
+        this.b = (ScrollLoadListView) this.findViewById(R.id.content_list);
+        this.k = this.findViewById(R.id.topic_detail_bottom_view);
         this.a(true);
         this.c = new PostHeader(this);
         this.b.addHeaderView(this.c, null, false);
-        HotCommentView hotCommentView = (HotCommentView) LayoutInflater.from(this).inflate(2130903235, (ViewGroup) this.b, false);
-        this.j = (TextView) hotCommentView.findViewById(2131493519);
+        HotCommentView hotCommentView = (HotCommentView) LayoutInflater.from(this).inflate(R.layout.hot_comment_view, (ViewGroup) this.b, false);
+        this.j = (TextView) hotCommentView.findViewById(R.id.comment_count);
         this.b.addHeaderView(hotCommentView, null, false);
         hotCommentView.a(this.a);
-        this.f = LayoutInflater.from(this).inflate(2130903325, null);
+        this.f = LayoutInflater.from(this).inflate(R.layout.loading_item, null);
         this.b.addFooterView(this.f);
         this.f.setVisibility(View.GONE);
         this.g = new z(this.getLayoutInflater());

@@ -97,21 +97,21 @@ public class PostDetailActivity extends AbsPostActivity {
         if (var1_1.length == 0) {
             return;
         }
-        var2_2 = new int[]{2131492940, 2131492941, 2131492942, 2131492943, 2131492944, 2131492945, 2131492946};
+        var2_2 = new int[]{R.id.vote_item_1, R.id.vote_item_2, R.id.vote_item_3, R.id.vote_item_4, R.id.vote_item_5, R.id.vote_item_6, R.id.vote_item_7};
         var3_3 = new View[7];
         var4_4 = new ImageView[7];
         var5_5 = new TextView[7];
         for (var6_6 = 0; var6_6 < 7; ++var6_6) {
             var3_3[var6_6] = var0.c.findViewById(var2_2[var6_6]);
-            var0.i[var6_6] = var3_3[var6_6].findViewById(2131493732);
-            var0.k[var6_6] = (ProgressBar) var3_3[var6_6].findViewById(2131493734);
-            var0.l[var6_6] = (TextView) var3_3[var6_6].findViewById(2131493733);
-            var0.m[var6_6] = (TextView) var3_3[var6_6].findViewById(2131493735);
-            var4_4[var6_6] = (ImageView) var3_3[var6_6].findViewById(2131493728);
-            var0.j[var6_6] = (ImageView) var3_3[var6_6].findViewById(2131493730);
+            var0.i[var6_6] = var3_3[var6_6].findViewById(R.id.post_detail_vote_item_vote_result_layout);
+            var0.k[var6_6] = (ProgressBar) var3_3[var6_6].findViewById(R.id.post_detail_vote_item_percent_bar);
+            var0.l[var6_6] = (TextView) var3_3[var6_6].findViewById(R.id.post_detail_vote_item_count);
+            var0.m[var6_6] = (TextView) var3_3[var6_6].findViewById(R.id.post_detail_vote_item_percent_value);
+            var4_4[var6_6] = (ImageView) var3_3[var6_6].findViewById(R.id.post_detail_vote_item_index);
+            var0.j[var6_6] = (ImageView) var3_3[var6_6].findViewById(R.id.post_detail_vote_item_vote);
             var0.j[var6_6].setTag(var6_6);
             var0.j[var6_6].setOnClickListener(var0.x);
-            var5_5[var6_6] = (TextView) var3_3[var6_6].findViewById(2131493729);
+            var5_5[var6_6] = (TextView) var3_3[var6_6].findViewById(R.id.post_detail_vote_item_content);
         }
         var7_7 = am.e();
         if (var7_7 != null) {
@@ -129,45 +129,45 @@ public class PostDetailActivity extends AbsPostActivity {
                 for (var17_12 = 0; var17_12 < var10_10; ++var17_12) {
                     var5_5[var17_12].setText(var1_1[var17_12].getContent());
                 }
-                var4_4[1].setImageResource(2130838049);
+                var4_4[1].setImageResource(R.drawable.post_detail_comment_vote_item_2);
                 **break;
             }
             case 3: {
                 for (var16_13 = 0; var16_13 < var10_10; ++var16_13) {
                     var5_5[var16_13].setText(var1_1[var16_13].getContent());
                 }
-                var4_4[1].setImageResource(2130838049);
-                var4_4[2].setImageResource(2130838050);
+                var4_4[1].setImageResource(R.drawable.post_detail_comment_vote_item_2);
+                var4_4[2].setImageResource(R.drawable.post_detail_comment_vote_item_3);
                 **break;
             }
             case 4: {
                 for (var15_14 = 0; var15_14 < var10_10; ++var15_14) {
                     var5_5[var15_14].setText(var1_1[var15_14].getContent());
                 }
-                var4_4[1].setImageResource(2130838049);
-                var4_4[2].setImageResource(2130838050);
-                var4_4[3].setImageResource(2130838051);
+                var4_4[1].setImageResource(R.drawable.post_detail_comment_vote_item_2);
+                var4_4[2].setImageResource(R.drawable.post_detail_comment_vote_item_3);
+                var4_4[3].setImageResource(R.drawable.post_detail_comment_vote_item_4);
                 **break;
             }
             case 5: {
                 for (var14_15 = 0; var14_15 < var10_10; ++var14_15) {
                     var5_5[var14_15].setText(var1_1[var14_15].getContent());
                 }
-                var4_4[1].setImageResource(2130838049);
-                var4_4[2].setImageResource(2130838050);
-                var4_4[3].setImageResource(2130838051);
-                var4_4[4].setImageResource(2130838052);
+                var4_4[1].setImageResource(R.drawable.post_detail_comment_vote_item_2);
+                var4_4[2].setImageResource(R.drawable.post_detail_comment_vote_item_3);
+                var4_4[3].setImageResource(R.drawable.post_detail_comment_vote_item_4);
+                var4_4[4].setImageResource(R.drawable.post_detail_comment_vote_item_5);
                 **break;
             }
             case 6: {
                 for (var13_16 = 0; var13_16 < var10_10; ++var13_16) {
                     var5_5[var13_16].setText(var1_1[var13_16].getContent());
                 }
-                var4_4[1].setImageResource(2130838049);
-                var4_4[2].setImageResource(2130838050);
-                var4_4[3].setImageResource(2130838051);
-                var4_4[4].setImageResource(2130838052);
-                var4_4[5].setImageResource(2130838053);
+                var4_4[1].setImageResource(R.drawable.post_detail_comment_vote_item_2);
+                var4_4[2].setImageResource(R.drawable.post_detail_comment_vote_item_3);
+                var4_4[3].setImageResource(R.drawable.post_detail_comment_vote_item_4);
+                var4_4[4].setImageResource(R.drawable.post_detail_comment_vote_item_5);
+                var4_4[5].setImageResource(R.drawable.post_detail_comment_vote_item_6);
             }
             lbl70:
             // 6 sources:
@@ -180,12 +180,12 @@ public class PostDetailActivity extends AbsPostActivity {
         for (var12_17 = 0; var12_17 < var10_10; ++var12_17) {
             var5_5[var12_17].setText(var1_1[var12_17].getContent());
         }
-        var4_4[1].setImageResource(2130838049);
-        var4_4[2].setImageResource(2130838050);
-        var4_4[3].setImageResource(2130838051);
-        var4_4[4].setImageResource(2130838052);
-        var4_4[5].setImageResource(2130838053);
-        var4_4[6].setImageResource(2130838054);
+        var4_4[1].setImageResource(R.drawable.post_detail_comment_vote_item_2);
+        var4_4[2].setImageResource(R.drawable.post_detail_comment_vote_item_3);
+        var4_4[3].setImageResource(R.drawable.post_detail_comment_vote_item_4);
+        var4_4[4].setImageResource(R.drawable.post_detail_comment_vote_item_5);
+        var4_4[5].setImageResource(R.drawable.post_detail_comment_vote_item_6);
+        var4_4[6].setImageResource(R.drawable.post_detail_comment_vote_item_7);
         lbl82:
         // 2 sources:
         if (var8_9 == false) return;
@@ -206,27 +206,27 @@ public class PostDetailActivity extends AbsPostActivity {
      */
     static /* synthetic */ void b(PostDetailActivity postDetailActivity, Post post) {
         Author author = post.getAuthor();
-        SmartImageView smartImageView = (SmartImageView) postDetailActivity.c.findViewById(2131492899);
+        SmartImageView smartImageView = (SmartImageView) postDetailActivity.c.findViewById(R.id.avatar);
         if (am.m((Context) postDetailActivity)) {
-            smartImageView.setImageResource(2130837614);
+            smartImageView.setImageResource(R.drawable.avatar_default);
         } else {
             smartImageView.setImageUrl(author.getScaleAvatar());
         }
         smartImageView.setOnClickListener(new ct(postDetailActivity, author));
-        ((TextView) postDetailActivity.c.findViewById(2131492928)).setText(author.getNickname());
-        ((TextView) postDetailActivity.c.findViewById(2131493631)).setText("lv." + author.getLv());
-        ((TextView) postDetailActivity.c.findViewById(2131492935)).setText(t.e((Date) post.getCreated()));
-        TextView textView = (TextView) postDetailActivity.c.findViewById(2131492936);
+        ((TextView) postDetailActivity.c.findViewById(R.id.name)).setText(author.getNickname());
+        ((TextView) postDetailActivity.c.findViewById(R.id.lv)).setText("lv." + author.getLv());
+        ((TextView) postDetailActivity.c.findViewById(R.id.time)).setText(t.e((Date) post.getCreated()));
+        TextView textView = (TextView) postDetailActivity.c.findViewById(R.id.title);
         if ("game".equals(postDetailActivity.s)) {
             textView.setVisibility(View.GONE);
         } else {
             textView.setText(post.getTitle());
         }
-        ((LinkifyTextView) postDetailActivity.c.findViewById(2131492905)).setLinkifyText(post.getContent(), author.isOfficial());
-        postDetailActivity.n = (TextView) postDetailActivity.c.findViewById(2131492947);
+        ((LinkifyTextView) postDetailActivity.c.findViewById(R.id.content)).setLinkifyText(post.getContent(), author.isOfficial());
+        postDetailActivity.n = (TextView) postDetailActivity.c.findViewById(R.id.vote_total);
         postDetailActivity.n.setText("\u5171" + post.getVoteCount() + "\u4eba\u6295\u7968");
-        ((TextView) postDetailActivity.findViewById(2131493519)).setText("\u5171" + post.getCommentCount() + "\u6761\u8bc4\u8bba");
-        ImageView imageView = (ImageView) postDetailActivity.c.findViewById(2131493629);
+        ((TextView) postDetailActivity.findViewById(R.id.comment_count)).setText("\u5171" + post.getCommentCount() + "\u6761\u8bc4\u8bba");
+        ImageView imageView = (ImageView) postDetailActivity.c.findViewById(R.id.avatar_verify);
         if (postDetailActivity.v) {
             String string = author.getGender();
             if ("male".equals(string)) {
@@ -252,7 +252,7 @@ public class PostDetailActivity extends AbsPostActivity {
                 imageView.setVisibility(View.GONE);
             }
         }
-        ((PostAgreeView) postDetailActivity.c.findViewById(2131493840)).setPostId(postDetailActivity.a);
+        ((PostAgreeView) postDetailActivity.c.findViewById(R.id.post_agree_view)).setPostId(postDetailActivity.a);
         postDetailActivity.c.a();
         postDetailActivity.c.b();
     }
@@ -275,8 +275,8 @@ public class PostDetailActivity extends AbsPostActivity {
 
     static /* synthetic */ void g(PostDetailActivity postDetailActivity) {
         postDetailActivity.p.setVisibility(View.VISIBLE);
-        postDetailActivity.p.findViewById(2131493085).setVisibility(View.GONE);
-        TextView textView = (TextView) postDetailActivity.p.findViewById(2131493798);
+        postDetailActivity.p.findViewById(R.id.pb_loading).setVisibility(View.GONE);
+        TextView textView = (TextView) postDetailActivity.p.findViewById(R.id.tv_loading);
         textView.setText("\u70b9\u51fb\u91cd\u8bd5");
         postDetailActivity.p.setOnClickListener(new cq(postDetailActivity, textView));
     }
@@ -321,9 +321,9 @@ public class PostDetailActivity extends AbsPostActivity {
             this.j[n4].setEnabled(false);
             this.i[n4].setVisibility(View.VISIBLE);
             if (n4 == n) {
-                this.j[n4].setImageResource(2130838056);
+                this.j[n4].setImageResource(R.drawable.post_detail_comment_vote_sel);
             } else {
-                this.j[n4].setImageResource(2130838055);
+                this.j[n4].setImageResource(R.drawable.post_detail_comment_vote_nor);
             }
             arrf[n4] = n2 != 0 && n4 < n3 ? (float) arrn[n4] / (float) n2 : 0.0f;
             String string = String.valueOf((int) (0.5f + 100.0f * arrf[n4]));
@@ -469,7 +469,7 @@ public class PostDetailActivity extends AbsPostActivity {
     @Override
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        this.a(2130903350);
+        this.a(R.layout.post_detail_list);
         this.b("\u8be6\u60c5");
         if (a.a(this.getIntent())) {
             String[] arrstring = this.getIntent().getDataString().split("/");
@@ -479,15 +479,15 @@ public class PostDetailActivity extends AbsPostActivity {
             this.a = this.getIntent().getStringExtra("PostBookId");
             this.s = this.getIntent().getStringExtra("post_type_key");
         }
-        this.o = this.findViewById(2131493838);
+        this.o = this.findViewById(R.id.topic_detail_bottom_view);
         this.a(true);
-        this.b = (ScrollLoadListView) this.findViewById(2131493135);
+        this.b = (ScrollLoadListView) this.findViewById(R.id.content_list);
         this.c = new PostHeader(this);
         this.b.addHeaderView(this.c, null, false);
-        HotCommentView hotCommentView = (HotCommentView) LayoutInflater.from(this).inflate(2130903235, (ViewGroup) this.b, false);
+        HotCommentView hotCommentView = (HotCommentView) LayoutInflater.from(this).inflate(R.layout.hot_comment_view, (ViewGroup) this.b, false);
         this.b.addHeaderView(hotCommentView, null, false);
         hotCommentView.a(this.a);
-        this.p = LayoutInflater.from(this).inflate(2130903325, null);
+        this.p = LayoutInflater.from(this).inflate(R.layout.loading_item, null);
         this.b.addFooterView(this.p);
         this.p.setVisibility(View.GONE);
         this.f = new z(this.getLayoutInflater());

@@ -43,7 +43,7 @@ public class SettingItem extends RelativeLayout implements View.OnClickListener,
     protected void onFinishInflate() {
         super.onFinishInflate();
         this.setOnClickListener(this);
-        this.b = (SwitchCompat) this.findViewById(2131493902);
+        this.b = (SwitchCompat) this.findViewById(R.id.check);
     }
 
     public void setCheckListener(CompoundButton.OnCheckedChangeListener onCheckedChangeListener) {

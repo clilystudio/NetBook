@@ -149,20 +149,20 @@ public class AudiobookInfoActivity extends BaseActivity implements View.OnClickL
      * Enabled aggressive block sorting
      */
     static /* synthetic */ void e(AudiobookInfoActivity audiobookInfoActivity) {
-        ((CoverView) audiobookInfoActivity.findViewById(2131493282)).setImageUrl(audiobookInfoActivity.q.getUrl(), 2130837766);
-        ((TextView) audiobookInfoActivity.findViewById(2131493283)).setText(audiobookInfoActivity.q.getTitle());
-        ((TextView) audiobookInfoActivity.findViewById(2131493285)).setText(audiobookInfoActivity.q.getAnnouncer());
-        TextView textView = (TextView) audiobookInfoActivity.findViewById(2131493293);
+        ((CoverView) audiobookInfoActivity.findViewById(R.id.book_detail_info_cover)).setImageUrl(audiobookInfoActivity.q.getUrl(), R.drawable.cover_default);
+        ((TextView) audiobookInfoActivity.findViewById(R.id.tv_album_name)).setText(audiobookInfoActivity.q.getTitle());
+        ((TextView) audiobookInfoActivity.findViewById(R.id.tv_announcer)).setText(audiobookInfoActivity.q.getAnnouncer());
+        TextView textView = (TextView) audiobookInfoActivity.findViewById(R.id.tv_total_count);
         Resources resources = audiobookInfoActivity.getResources();
         Object[] arrobject = new Object[]{audiobookInfoActivity.q.getTotalCount()};
-        textView.setText(resources.getString(2131034530, arrobject));
-        audiobookInfoActivity.e = (TextView) audiobookInfoActivity.findViewById(2131493295);
+        textView.setText(resources.getString(R.string.total_track_count, arrobject));
+        audiobookInfoActivity.e = (TextView) audiobookInfoActivity.findViewById(R.id.tv_audiobook_sort);
         audiobookInfoActivity.e.setOnClickListener(audiobookInfoActivity);
-        audiobookInfoActivity.h = (ImageView) audiobookInfoActivity.findViewById(2131493294);
+        audiobookInfoActivity.h = (ImageView) audiobookInfoActivity.findViewById(R.id.image_arrow);
         audiobookInfoActivity.h.setOnClickListener(audiobookInfoActivity);
-        audiobookInfoActivity.f = (TextView) audiobookInfoActivity.findViewById(2131493291);
-        audiobookInfoActivity.g = (ImageView) audiobookInfoActivity.findViewById(2131493290);
-        TextView textView2 = (TextView) audiobookInfoActivity.findViewById(2131493292);
+        audiobookInfoActivity.f = (TextView) audiobookInfoActivity.findViewById(R.id.tv_play_or_pause);
+        audiobookInfoActivity.g = (ImageView) audiobookInfoActivity.findViewById(R.id.img_play_audiobook);
+        TextView textView2 = (TextView) audiobookInfoActivity.findViewById(R.id.tv_audiobook_intro);
         String string = audiobookInfoActivity.q.getIntro();
         if (string != null && string.length() > 0) {
             textView2.setText(string);
@@ -170,11 +170,11 @@ public class AudiobookInfoActivity extends BaseActivity implements View.OnClickL
         } else {
             textView2.setText("\u6682\u65e0");
         }
-        audiobookInfoActivity.i = (RelativeLayout) audiobookInfoActivity.findViewById(2131493289);
+        audiobookInfoActivity.i = (RelativeLayout) audiobookInfoActivity.findViewById(R.id.audiobook_listen);
         audiobookInfoActivity.i.setOnClickListener(audiobookInfoActivity);
-        audiobookInfoActivity.j = (RelativeLayout) audiobookInfoActivity.findViewById(2131493286);
+        audiobookInfoActivity.j = (RelativeLayout) audiobookInfoActivity.findViewById(R.id.audiobook_info_add);
         audiobookInfoActivity.j.setOnClickListener(audiobookInfoActivity);
-        audiobookInfoActivity.k = (LinearListView) audiobookInfoActivity.findViewById(2131493296);
+        audiobookInfoActivity.k = (LinearListView) audiobookInfoActivity.findViewById(R.id.linear_layout_track_list);
         audiobookInfoActivity.k.setPlayTrackInterface(audiobookInfoActivity);
         audiobookInfoActivity.k.setItemHeight(a.a((Context) audiobookInfoActivity, 56.0f));
         AudioRecord audioRecord = AudioRecord.find(String.valueOf(audiobookInfoActivity.q.getId()));
@@ -262,23 +262,23 @@ public class AudiobookInfoActivity extends BaseActivity implements View.OnClickL
 
     private void a(View view) {
         com.koushikdutta.async.http.a a2 = new com.koushikdutta.async.http.a(this, view);
-        a2.b().inflate(2131558402, a2.a());
+        a2.b().inflate(R.menu.audiobook_sort_menu, a2.a());
         a2.a(new E(this));
         a2.c();
     }
 
     private void a(boolean bl) {
         if (bl) {
-            this.i.setBackgroundResource(2130837748);
-            this.f.setText(this.getResources().getString(2131034310));
-            this.f.setTextColor(this.getResources().getColor(2131427522));
-            this.g.setImageResource(2130837919);
+            this.i.setBackgroundResource(R.drawable.common_btn_white_bg);
+            this.f.setText(this.getResources().getString(R.string.audiobook_pause));
+            this.f.setTextColor(this.getResources().getColor(R.color.shelf_msg_highlight));
+            this.g.setImageResource(R.drawable.ic_pause_play);
             return;
         }
-        this.i.setBackgroundResource(am.b((Context) this, (int) 2130771971));
-        this.f.setText(this.getResources().getString(2131034313));
+        this.i.setBackgroundResource(am.b((Context) this, (int) R.attr.audiobookRedButtonSelector));
+        this.f.setText(this.getResources().getString(R.string.audiobook_start_listen));
         this.f.setTextColor(-1);
-        this.g.setImageResource(2130837588);
+        this.g.setImageResource(R.drawable.audiobook_detail_listen);
     }
 
     private void b() {
@@ -315,14 +315,14 @@ public class AudiobookInfoActivity extends BaseActivity implements View.OnClickL
         int n3 = this.j.getPaddingRight();
         int n4 = this.j.getPaddingBottom();
         RelativeLayout relativeLayout = this.j;
-        int n5 = this.o ? 2130837711 : am.b((Context) this, (int) 2130771971);
+        int n5 = this.o ? R.drawable.book_detail_info_btn_gray : am.b((Context) this, (int) R.attr.audiobookRedButtonSelector);
         relativeLayout.setBackgroundResource(n5);
         this.j.setPadding(n, n2, n3, n4);
-        TextView textView = (TextView) this.findViewById(2131493288);
-        ImageView imageView = (ImageView) this.findViewById(2131493287);
-        String string = this.o ? this.getString(2131034330) : this.getString(2131034328);
+        TextView textView = (TextView) this.findViewById(R.id.book_detail_info_add_text);
+        ImageView imageView = (ImageView) this.findViewById(R.id.book_detail_info_add_iv);
+        String string = this.o ? this.getString(R.string.book_info_remove_book) : this.getString(R.string.book_info_add_book);
         textView.setText(string);
-        int n6 = this.o ? 2130837714 : 2130837710;
+        int n6 = this.o ? R.drawable.book_detail_info_del_img : R.drawable.book_detail_info_add_img;
         imageView.setImageResource(n6);
     }
 
@@ -368,7 +368,7 @@ public class AudiobookInfoActivity extends BaseActivity implements View.OnClickL
             default: {
                 return;
             }
-            case 2131493289: {
+            case R.id.audiobook_listen: {
                 if (this.n) {
                     this.n = false;
                 } else {
@@ -387,7 +387,7 @@ public class AudiobookInfoActivity extends BaseActivity implements View.OnClickL
                 this.p = true;
                 return;
             }
-            case 2131493286: {
+            case R.id.audiobook_info_add: {
                 p p2 = new p();
                 if (this.o) {
                     this.o = false;
@@ -403,11 +403,11 @@ public class AudiobookInfoActivity extends BaseActivity implements View.OnClickL
                 this.g();
                 return;
             }
-            case 2131493295: {
+            case R.id.tv_audiobook_sort: {
                 this.a(view);
                 return;
             }
-            case 2131493294:
+            case R.id.image_arrow:
         }
         this.a(view);
     }
@@ -420,7 +420,7 @@ public class AudiobookInfoActivity extends BaseActivity implements View.OnClickL
     @Override
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        this.setContentView(2130903081);
+        this.setContentView(R.layout.activity_audiobook_info);
         this.r = as.a();
         this.s = as.b();
         try {
@@ -429,9 +429,9 @@ public class AudiobookInfoActivity extends BaseActivity implements View.OnClickL
             var2_2.printStackTrace();
         }
         as.a(this.z);
-        this.a = this.findViewById(2131492905);
-        this.b = this.findViewById(2131493085);
-        this.c = this.findViewById(2131493086);
+        this.a = this.findViewById(R.id.content);
+        this.b = this.findViewById(R.id.pb_loading);
+        this.c = this.findViewById(R.id.load_error_hint_btn);
         this.c.setOnClickListener(new z(this));
         this.b();
     }

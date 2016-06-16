@@ -32,10 +32,10 @@ public class ReaderOptionActivity extends BaseActivity {
 
     static /* synthetic */ void a(ReaderOptionActivity readerOptionActivity) {
         h h2 = new h(readerOptionActivity);
-        int[] arrn = new int[]{2131493977, 2131493978, 2131493979, 2131493980};
-        View view = readerOptionActivity.getLayoutInflater().inflate(2130903385, null, false);
-        AlertDialog alertDialog = h2.a(2131034438).a(view).b("\u53d6\u6d88", null).a();
-        ((RadioGroup) view.findViewById(2131493976)).check(arrn[readerOptionActivity.a]);
+        int[] arrn = new int[]{R.id.time_2, R.id.time_5, R.id.time_10, R.id.time_0};
+        View view = readerOptionActivity.getLayoutInflater().inflate(R.layout.screen_offtime_dialog, null, false);
+        AlertDialog alertDialog = h2.a(R.string.pref_dialog_title_screen_off_time).a(view).b("\u53d6\u6d88", null).a();
+        ((RadioGroup) view.findViewById(R.id.time_group)).check(arrn[readerOptionActivity.a]);
         for (int i = 0; i < 4; ++i) {
             ((RadioButton) view.findViewById(arrn[i])).setOnClickListener(new bP(readerOptionActivity, alertDialog, i));
         }
@@ -74,22 +74,22 @@ public class ReaderOptionActivity extends BaseActivity {
     @Override
     public void onCreate(Bundle var1_1) {
         super.onCreate(var1_1);
-        this.setContentView(2130903366);
-        this.b(2131034461);
+        this.setContentView(R.layout.reader_option);
+        this.b(R.string.reader_option_title);
         if (a.l(this, "reader_orientation")) {
             this.setRequestedOrientation(1);
         } else {
             this.setRequestedOrientation(0);
         }
-        var2_2 = (SwitchCompat) this.findViewById(2131493896);
-        var3_3 = (SwitchCompat) this.findViewById(2131493898);
-        var4_4 = (SwitchCompat) this.findViewById(2131493899);
-        var5_5 = (SwitchCompat) this.findViewById(2131493903);
-        var6_6 = (SwitchCompat) this.findViewById(2131493906);
-        var7_7 = this.findViewById(2131493904);
-        this.b = (TextView) this.findViewById(2131493905);
-        this.c = this.getResources().getStringArray(2131361803);
-        this.e = this.getResources().getIntArray(2131361804);
+        var2_2 = (SwitchCompat) this.findViewById(R.id.reader_option_cb_volume_flip);
+        var3_3 = (SwitchCompat) this.findViewById(R.id.reader_option_cb_flip_animation);
+        var4_4 = (SwitchCompat) this.findViewById(R.id.reader_option_full_screen);
+        var5_5 = (SwitchCompat) this.findViewById(R.id.reader_option_convert);
+        var6_6 = (SwitchCompat) this.findViewById(R.id.reader_option_auto_buy);
+        var7_7 = this.findViewById(R.id.reader_option_screen_off_time);
+        this.b = (TextView) this.findViewById(R.id.reader_option_screen_off_time_value);
+        this.c = this.getResources().getStringArray(R.array.reader_screen_off_time_tags);
+        this.e = this.getResources().getIntArray(R.array.reader_screen_off_time_values);
         var8_8 = a.l(this, "volume_keys_flip");
         var9_9 = a.a((Context) this, "click_flip_animation", false);
         var10_10 = a.l(this, "reader_opt_full_screen");
@@ -115,10 +115,10 @@ public class ReaderOptionActivity extends BaseActivity {
                 var5_5.setOnCheckedChangeListener(new bL(this, var5_5));
                 var7_7.setOnClickListener(new bM(this));
                 var6_6.setOnCheckedChangeListener(new bN(this, var6_6));
-                var15_15 = (SettingItem) this.findViewById(2131493901);
+                var15_15 = (SettingItem) this.findViewById(R.id.immersive_container);
                 if (!bH.a(this)) break;
                 var15_15.setVisibility(View.GONE);
-                this.findViewById(2131493900).setVisibility(View.GONE);
+                this.findViewById(R.id.immersive_divider).setVisibility(View.GONE);
                 return;
             }
             ++var14_14;

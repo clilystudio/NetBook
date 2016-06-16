@@ -53,14 +53,14 @@ final class M extends BaseAdapter {
         var4_4 = this.a.get(var1_1);
         if (var2_2 == null) {
             var5_5 = new N(this);
-            var2_2 = LayoutInflater.from(this.b).inflate(2130903294, null);
-            var5_5.a = var2_2.findViewById(2131493721);
-            var5_5.b = (ImageView) var2_2.findViewById(2131493722);
-            var5_5.c = (TextView) var2_2.findViewById(2131493725);
-            var5_5.e = (TextView) var2_2.findViewById(2131493724);
-            var5_5.f = (TextView) var2_2.findViewById(2131493723);
-            var5_5.d = (TextView) var2_2.findViewById(2131493726);
-            var5_5.g = (TextView) var2_2.findViewById(2131493720);
+            var2_2 = LayoutInflater.from(this.b).inflate(R.layout.list_item_pay_record, null);
+            var5_5.a = var2_2.findViewById(R.id.pay_record_content_layout);
+            var5_5.b = (ImageView) var2_2.findViewById(R.id.pay_record_item_icon);
+            var5_5.c = (TextView) var2_2.findViewById(R.id.pay_record_item_date);
+            var5_5.e = (TextView) var2_2.findViewById(R.id.pay_record_item_voucher);
+            var5_5.f = (TextView) var2_2.findViewById(R.id.pay_record_item_price);
+            var5_5.d = (TextView) var2_2.findViewById(R.id.pay_record_item_time);
+            var5_5.g = (TextView) var2_2.findViewById(R.id.pay_record_item_flag);
             var2_2.setTag(var5_5);
             var6_6 = var5_5;
         } else {
@@ -79,7 +79,7 @@ final class M extends BaseAdapter {
         var8_8 = new StringBuilder();
         var9_9 = var4_4.getPrice();
         var7_7.setText(var8_8.append(new DecimalFormat("0.00").format(var9_9)).append("\u5143").toString());
-        var10_10 = 2130838030;
+        var10_10 = R.drawable.pay_alipay;
         var11_11 = var4_4.getPayType();
         switch (var11_11.hashCode()) {
             case -1414960566: {
@@ -110,11 +110,11 @@ final class M extends BaseAdapter {
         // 4 sources:
         switch (var12_12) {
             case 0: {
-                var10_10 = 2130838031;
+                var10_10 = R.drawable.pay_alipay_c;
                 **break;
             }
             case 1: {
-                var10_10 = 2130838045;
+                var10_10 = R.drawable.pay_wechat_c;
             }
             lbl52:
             // 3 sources:
@@ -124,7 +124,7 @@ final class M extends BaseAdapter {
             }
             case 2:
         }
-        var10_10 = 2130838040;
+        var10_10 = R.drawable.pay_messenger_c;
         lbl56:
         // 2 sources:
         var6_6.c.setText(M.a(var4_4.getCreated(), "MM-dd"));

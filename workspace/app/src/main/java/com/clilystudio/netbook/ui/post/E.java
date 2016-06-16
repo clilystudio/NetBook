@@ -19,7 +19,7 @@ final class E implements View.OnClickListener {
         this.a.dismiss();
         String string = AddReviewContentActivity.c(this.c).getText().toString().trim();
         String string2 = AddReviewContentActivity.d(this.c).getText().toString().trim();
-        F f = new F(this.c, this.c, 2131034430);
+        F f = new F(this.c, this.c, R.string.post_publish_loading);
         String[] arrstring = new String[]{this.b, AddReviewContentActivity.e(this.c), string, string2, String.valueOf(AddReviewContentActivity.f(this.c))};
         f.b(arrstring);
     }

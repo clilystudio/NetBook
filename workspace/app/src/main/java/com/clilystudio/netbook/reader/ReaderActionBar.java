@@ -45,12 +45,12 @@ public class ReaderActionBar extends RelativeLayout {
 
     public final void a() {
         if (this.c.h()) {
-            this.d.setText(2131034422);
-            this.e.setImageResource(2130837898);
+            this.d.setText(R.string.normal_mode);
+            this.e.setImageResource(R.drawable.ic_menu_mode_normal_normal);
             return;
         }
-        this.d.setText(2131034420);
-        this.e.setImageResource(2130837897);
+        this.d.setText(R.string.night_mode);
+        this.e.setImageResource(R.drawable.ic_menu_mode_night_normal);
     }
 
     /*
@@ -71,12 +71,12 @@ public class ReaderActionBar extends RelativeLayout {
     }
 
     public final void b(boolean bl) {
-        TextView textView = (TextView) this.findViewById(2131493889);
+        TextView textView = (TextView) this.findViewById(R.id.read_opt_orient_text);
         if (bl) {
-            textView.setText(2131034451);
+            textView.setText(R.string.read_landscape);
             return;
         }
-        textView.setText(2131034452);
+        textView.setText(R.string.read_portrait);
     }
 
     public final void c(boolean bl) {
@@ -104,7 +104,7 @@ public class ReaderActionBar extends RelativeLayout {
      * Enabled aggressive block sorting
      */
     public final void g(boolean bl) {
-        View view = this.findViewById(2131493893);
+        View view = this.findViewById(R.id.reader_ab_chapter_url_view);
         int n = bl ? 0 : 8;
         view.setVisibility(n);
     }
@@ -116,29 +116,29 @@ public class ReaderActionBar extends RelativeLayout {
         layoutParams.setMargins(0, am.k((Context) this.getContext()), 0, 0);
         this.setLayoutParams(layoutParams);
         ah ah2 = new ah(this);
-        this.f = (TextView) this.findViewById(2131493882);
-        this.g = (TextView) this.findViewById(2131493859);
+        this.f = (TextView) this.findViewById(R.id.reader_oper_top_title);
+        this.g = (TextView) this.findViewById(R.id.reader_ab_tts);
         if (!a.r(this.getContext(), "switch_xunfei_read")) {
             this.g.setVisibility(View.GONE);
         }
-        this.h = this.findViewById(2131493861);
-        this.i = this.findViewById(2131493864);
-        this.d = (TextView) this.findViewById(2131493887);
-        this.e = (ImageView) this.findViewById(2131493886);
-        this.a = this.findViewById(2131493891);
-        this.j = this.findViewById(2131493862);
-        this.k = (TextView) this.findViewById(2131493894);
+        this.h = this.findViewById(R.id.reader_ab_topic);
+        this.i = this.findViewById(R.id.reader_ab_topic_count);
+        this.d = (TextView) this.findViewById(R.id.btn_mode_text);
+        this.e = (ImageView) this.findViewById(R.id.btn_mode_image);
+        this.a = this.findViewById(R.id.reader_download);
+        this.j = this.findViewById(R.id.reader_ab_read_mode);
+        this.k = (TextView) this.findViewById(R.id.reader_ab_chapter_url);
         this.g.setOnClickListener((View.OnClickListener) ((Object) ah2));
         this.h.setOnClickListener((View.OnClickListener) ((Object) ah2));
         this.j.setOnClickListener((View.OnClickListener) ((Object) ah2));
         this.a.setOnClickListener((View.OnClickListener) ((Object) ah2));
-        this.findViewById(2131493893).setOnClickListener((View.OnClickListener) ((Object) ah2));
-        this.findViewById(2131493881).setOnClickListener((View.OnClickListener) ((Object) ah2));
-        this.findViewById(2131493890).setOnClickListener((View.OnClickListener) ((Object) ah2));
-        this.findViewById(2131493892).setOnClickListener((View.OnClickListener) ((Object) ah2));
-        this.findViewById(2131493888).setOnClickListener((View.OnClickListener) ((Object) ah2));
-        this.findViewById(2131493860).setOnClickListener((View.OnClickListener) ((Object) ah2));
-        this.findViewById(2131493885).setOnClickListener((View.OnClickListener) ((Object) new ai(this)));
+        this.findViewById(R.id.reader_ab_chapter_url_view).setOnClickListener((View.OnClickListener) ((Object) ah2));
+        this.findViewById(R.id.reader_oper_back).setOnClickListener((View.OnClickListener) ((Object) ah2));
+        this.findViewById(R.id.read_opt_setting).setOnClickListener((View.OnClickListener) ((Object) ah2));
+        this.findViewById(R.id.read_opt_toc).setOnClickListener((View.OnClickListener) ((Object) ah2));
+        this.findViewById(R.id.read_opt_orientation).setOnClickListener((View.OnClickListener) ((Object) ah2));
+        this.findViewById(R.id.reader_ab_more).setOnClickListener((View.OnClickListener) ((Object) ah2));
+        this.findViewById(R.id.read_opt_night).setOnClickListener((View.OnClickListener) ((Object) new ai(this)));
     }
 
     public void setChapterLink(String string) {

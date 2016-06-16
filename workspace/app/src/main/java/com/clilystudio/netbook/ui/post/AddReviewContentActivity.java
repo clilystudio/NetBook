@@ -56,11 +56,11 @@ public class AddReviewContentActivity extends BaseActivity {
         if (account.getUser().getLv() >= 3) {
             String string = account.getToken();
             h h2 = new h(addReviewContentActivity);
-            View view = LayoutInflater.from(addReviewContentActivity).inflate(2130903202, null);
-            ((TextView) view.findViewById(2131493422)).setText(2131034587);
+            View view = LayoutInflater.from(addReviewContentActivity).inflate(R.layout.dialog_waring_text, null);
+            ((TextView) view.findViewById(R.id.waring_content)).setText(R.string.waring_dialog_review);
             h2.d = "\u53d1\u5e03";
-            h2.a(2131034583, null);
-            h2.b(2131034129, null);
+            h2.a(R.string.vote_ok, null);
+            h2.b(R.string.cancel, null);
             AlertDialog alertDialog = h2.a(view).b();
             ((Button) alertDialog.findViewById(16908313)).setOnClickListener(new E(addReviewContentActivity, alertDialog, string));
             return;
@@ -120,17 +120,17 @@ public class AddReviewContentActivity extends BaseActivity {
     @Override
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        this.setContentView(2130903077);
+        this.setContentView(R.layout.activity_add_review_content);
         Bundle bundle2 = this.getIntent().getExtras();
         if (bundle2 != null) {
             this.g = "BOOK_COMMENT".equals(bundle2.getString("INTENT_TYPE_NAME"));
         }
-        this.a(2131034295, 2131034448, (aa) new D(this));
+        this.a(R.string.add_review_content_title, R.string.publish, (aa) new D(this));
         this.a = this.getIntent().getStringExtra("bookReviewBookId");
         this.b = this.getIntent().getIntExtra("bookReviewBookRating", 0);
         this.f = this.getIntent().getBooleanExtra("isFromBookReviewList", false);
-        this.c = (EditText) this.findViewById(2131493070);
-        this.e = (EditText) this.findViewById(2131493071);
+        this.c = (EditText) this.findViewById(R.id.add_review_content_title);
+        this.e = (EditText) this.findViewById(R.id.add_review_content_desc);
         am.a((EditText) this.c, (String) "saveToLocalReviewTitle");
         am.a((EditText) this.e, (String) "saveToLocalReviewDesc");
     }
