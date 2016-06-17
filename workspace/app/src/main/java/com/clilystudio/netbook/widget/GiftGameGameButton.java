@@ -2,6 +2,8 @@ package com.clilystudio.netbook.widget;
 
 import android.app.Activity;
 import android.content.Context;
+
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.am;
 
 import android.net.Uri;
@@ -81,7 +83,12 @@ public class GiftGameGameButton extends Button {
         this.setText("\u6253\u5f00");
         this.setTextColor(this.getResources().getColor(R.color.black));
         this.setBackgroundResource(R.drawable.gray_round_button);
-        this.setOnClickListener(new S(this, 0));
+        this.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                GiftGameGameButton.this.f();
+            }
+        });
     }
 
     protected void b() {

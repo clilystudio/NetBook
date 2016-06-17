@@ -5,8 +5,10 @@ import android.content.DialogInterface;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.util.AttributeSet;
+import android.view.View;
 import android.widget.Button;
 
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.model.AppItem;
 import com.xiaomi.mistatistic.sdk.MiStatInterface;
 
@@ -45,7 +47,12 @@ public abstract class AbsDownloadButton extends Button {
         }
         switch (n) {
             default: {
-                this.setOnClickListener(new e(this, 0));
+                this.setOnClickListener(new OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        AbsDownloadButton.a(AbsDownloadButton.this);
+                    }
+                });
                 this.setText("\u4e0b\u8f7d");
                 this.setBackgroundResource(R.drawable.red_round_button);
                 return;
@@ -65,20 +72,35 @@ public abstract class AbsDownloadButton extends Button {
             }
             case 8: {
                 this.e();
-                this.setOnClickListener(new c(this, 0));
+                this.setOnClickListener(new OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        AbsDownloadButton.this.d();
+                    }
+                });
                 return;
             }
             case 4: {
                 this.setBackgroundResource(R.color.transparent);
                 this.setTextColor(Color.parseColor("#AAAAAA"));
                 this.setText("\u5df2\u6682\u505c");
-                this.setOnClickListener(new d(this, 0));
+                this.setOnClickListener(new OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        AbsDownloadButton.this.c();
+                    }
+                });
                 return;
             }
             case 64:
         }
         this.e();
-        this.setOnClickListener(new c(this, 0));
+        this.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AbsDownloadButton.this.d();
+            }
+        });
     }
 
     protected abstract void b();

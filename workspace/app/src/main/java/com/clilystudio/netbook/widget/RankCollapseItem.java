@@ -1,6 +1,8 @@
 package com.clilystudio.netbook.widget;
 
 import android.content.Context;
+
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.am;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -11,6 +13,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.clilystudio.netbook.event.*;
 import com.clilystudio.netbook.event.i;
 import com.clilystudio.netbook.event.k;
 import com.clilystudio.netbook.model.BookRankSummary;
@@ -59,15 +62,20 @@ public class RankCollapseItem extends LinearLayout implements View.OnClickListen
         textView.setTextColor(n5);
     }
 
-    public final void a(List<BookRankSummary> list, int n, boolean bl) {
+    public final void a(List<BookRankSummary> list, int n, final boolean bl) {
         this.b = n;
         this.mItemContainer.removeAllViews();
         LayoutInflater layoutInflater = LayoutInflater.from(this.getContext());
-        for (BookRankSummary bookRankSummary : list) {
+        for (final BookRankSummary bookRankSummary : list) {
             TextView textView = (TextView) layoutInflater.inflate(R.layout.item_rank_sub_item, (ViewGroup) this.mItemContainer, false);
             textView.setText(bookRankSummary.getTitle());
             this.mItemContainer.addView(textView);
-            textView.setOnClickListener(new at(this, bookRankSummary, bl));
+            textView.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    i.a().post(new com.clilystudio.netbook.event.x(bookRankSummary, bl));
+                }
+            });
         }
     }
 

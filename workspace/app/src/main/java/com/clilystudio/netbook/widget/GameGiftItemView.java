@@ -2,6 +2,8 @@ package com.clilystudio.netbook.widget;
 
 import android.app.Activity;
 import android.content.Context;
+
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.am;
 import android.util.AttributeSet;
 import android.view.View;
@@ -15,9 +17,12 @@ import com.clilystudio.netbook.model.Game;
 import com.clilystudio.netbook.model.GameGift;
 import com.clilystudio.netbook.ui.SmartImageView;
 import com.clilystudio.netbook.ui.game.s;
+import com.clilystudio.netbook.util.*;
 import com.clilystudio.netbook.util.t;
+import com.xiaomi.mistatistic.sdk.MiStatInterface;
 
 import java.util.Date;
+import java.util.List;
 
 public class GameGiftItemView extends RelativeLayout {
     private GameGift a;
@@ -63,8 +68,8 @@ public class GameGiftItemView extends RelativeLayout {
         return gameGiftItemView.c;
     }
 
-    private void a(String string) {
-        com.clilystudio.netbook.view.a a2 = new com.clilystudio.netbook.view.a(this.getContext());
+    private void a(final String string) {
+        final com.clilystudio.netbook.view.a a2 = new com.clilystudio.netbook.view.a(this.getContext());
         View view = View.inflate(this.getContext(), R.layout.dialog_game_gift_info, null);
         ((TextView) view.findViewById(R.id.game_gift_name)).setText(this.a.title);
         TextView textView = (TextView) view.findViewById(R.id.game_gift_left);
@@ -77,20 +82,49 @@ public class GameGiftItemView extends RelativeLayout {
             button.setText("\u9886\u53d6");
             textView.setText("\u5df2\u6709 " + (this.a.total - this.a.left) + " \u4eba\u9886\u53d6\uff0c\u5269\u4f59 " + this.a.left + " \u4e2a");
             button.setBackgroundResource(R.drawable.common_btn_red_bg);
-            button.setOnClickListener((View.OnClickListener) ((Object) new F(this, a2)));
+            button.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    a2.dismiss();
+                    GameGiftItemView.a(GameGiftItemView.this);
+               }
+            });
             return;
         }
         textView.setText("\u5151\u6362\u7801\uff1a" + string);
         button.setText("\u590d\u5236\u5151\u6362\u7801\u5e76\u6253\u5f00\u6e38\u620f");
         button.setBackgroundResource(R.drawable.common_green_bg);
-        button.setOnClickListener(new G(this, a2, string));
+        button.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                a2.dismiss();
+                am.a((Context) GameGiftItemView.this.getContext(), string);
+                com.clilystudio.netbook.util.e.a((Activity) ((Activity) GameGiftItemView.this.getContext()), (String) "\u5df2\u590d\u5236");
+                if (GameGiftItemView.b(GameGiftItemView.this)) {
+                    am.a((Context) GameGiftItemView.this.getContext(), (Game) GameGiftItemView.c((GameGiftItemView) GameGiftItemView.this).game);
+                    MiStatInterface.recordCountEvent("micro_game_play_click", GameGiftItemView.c((GameGiftItemView) GameGiftItemView.this).game.getName());
+                    return;
+                }
+                am.d((Context) GameGiftItemView.this.getContext(), (String) GameGiftItemView.c((GameGiftItemView) GameGiftItemView.this).game.getAndroidPackageName());
+            }
+        });
     }
 
-    private void b(String string) {
-        this.d.setText("\u67e5\u770b");
+    private void b(final String string) {
+        this.d.setText("查看");
         this.d.setBackgroundResource(R.drawable.green_round_button);
-        this.d.setOnClickListener(new H(this, string));
-        this.e.setOnClickListener((View.OnClickListener) ((Object) new I(this, string)));
+        this.d.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                GameGiftItemView.a(GameGiftItemView.this, string);
+            }
+        });
+        this.e.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                GameGiftItemView.a(GameGiftItemView.this, string);
+            }
+        });
     }
 
     /*
@@ -137,8 +171,10 @@ public class GameGiftItemView extends RelativeLayout {
         this.d = (TextView) this.findViewById(R.id.game_gift_item_btn);
         this.e = this.findViewById(R.id.game_gift_item);
         this.a = var1_1;
-        if (this.c == null || (var4_3 = GameGiftRecord.getRecords(this.c.getUser().getId(), var1_1._id)) == null || var4_3.isEmpty())**GOTO lbl -1000
-        var5_4 = var4_3.get(0);
+        List<GameGiftRecord>  var4_3 = GameGiftRecord.getRecords(this.c.getUser().getId(), var1_1._id))
+        if (this.c == null || (var4_3 == null || var4_3.isEmpty())**GOTO lbl -1000
+        GameGiftRecord var5_4 = var4_3.get(0);
+        final String var3_5;
         if (var5_4.giftId != null && var5_4.giftId.equals(var1_1._id)) {
             var3_5 = var5_4.giftCode;
         } else lbl - 1000: // 2 sources:
@@ -147,9 +183,19 @@ public class GameGiftItemView extends RelativeLayout {
         }
         if (var3_5 != null) {
             this.b(var3_5);
-            this.e.setOnClickListener(new D(this, var3_5));
+            this.e.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    GameGiftItemView.a(GameGiftItemView.this, var3_5);
+               }
+            });
             return;
         }
-        this.e.setOnClickListener(new E(this));
+        this.e.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                GameGiftItemView.this.a();
+            }
+        });
     }
 }

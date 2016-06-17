@@ -5,7 +5,10 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.res.Resources;
 import com.clilystudio.netbook.am;
+
+import android.net.Uri;
 import android.util.AttributeSet;
+import android.view.View;
 import android.widget.Button;
 
 import com.clilystudio.netbook.db.DownloadItem;
@@ -14,6 +17,8 @@ import com.clilystudio.netbook.ui.game.GameDetailActivity;
 import com.clilystudio.netbook.ui.game.s;
 import com.clilystudio.netbook.util.e;
 import com.umeng.a.b;
+
+import java.io.File;
 
 public class GameDownloadButton extends Button {
     private Game a;
@@ -48,7 +53,12 @@ public class GameDownloadButton extends Button {
         switch (n) {
             default: {
                 this.a();
-                this.setOnClickListener(new C(this, 0));
+                this.setOnClickListener(new OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        GameDownloadButton.this.e();
+                    }
+                });
                 return;
             }
             case 1:
@@ -59,13 +69,28 @@ public class GameDownloadButton extends Button {
             }
             case 8: {
                 this.c();
-                this.setOnClickListener(new A(this, 0));
+                this.setOnClickListener(new OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if (com.clilystudio.netbook.hpay100.a.a.a(GameDownloadButton.this.getContext(), new File(Uri.parse(GameDownloadButton.a(GameDownloadButton.this).getLocalFileUri()).getPath()))) {
+                            GameDownloadButton.b(GameDownloadButton.this);
+                            return;
+                        }
+                        GameDownloadButton.a(GameDownloadButton.this).setDownloadStatus(0);
+                        GameDownloadButton.this.a(0);
+                    }
+                });
                 return;
             }
             case 32:
         }
         this.d();
-        this.setOnClickListener(new B(this, 0));
+        this.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                GameDownloadButton.this.g();
+            }
+        });
     }
 
     protected void b() {

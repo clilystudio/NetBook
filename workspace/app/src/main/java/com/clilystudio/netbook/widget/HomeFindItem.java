@@ -4,11 +4,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.ui.MaskAbleImageView;
 
 import butterknife.ButterKnife;
@@ -25,7 +27,7 @@ public class HomeFindItem extends FrameLayout {
         super(context, attributeSet);
     }
 
-    public HomeFindItem(Context context, String string, int n, int n2, Intent intent) {
+    public HomeFindItem(final Context context, final String string, int n, int n2, Intent intent) {
         super(context);
         this.a = intent;
         LayoutInflater.from(context).inflate(R.layout.list_item_home_find, (ViewGroup) this);
@@ -38,7 +40,12 @@ public class HomeFindItem extends FrameLayout {
         if (n2 != 0) {
             this.mSubFlag.setImageResource(n2);
         }
-        this.setOnClickListener(new Z(this, context, string));
+        this.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                HomeFindItem.this.a(context, string);
+            }
+        });
     }
 
     public HomeFindItem(Context context, String string, int n, Intent intent) {

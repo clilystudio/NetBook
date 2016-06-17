@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.clilystudio.netbook.R;
 import com.ximalaya.ting.android.opensdk.model.track.Track;
 
 import java.util.ArrayList;
@@ -59,9 +60,14 @@ public class LinearListView extends LinearLayout {
         }
     }
 
-    private void a(int n, int n2) {
+    private void a(final int n, int n2) {
         View view = LayoutInflater.from(this.d).inflate(R.layout.list_item_audiobook_track, null);
-        view.setOnClickListener((View.OnClickListener) ((Object) new ac(this, n)));
+        view.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                LinearListView.a(LinearListView.this, n);
+            }
+        });
         ((TextView) view.findViewById(R.id.tv_track_number)).setText("" + n2);
         ((TextView) view.findViewById(R.id.tv_track_name)).setText(this.f.get(n - 1).getTrackTitle());
         this.addView(view, this.e);

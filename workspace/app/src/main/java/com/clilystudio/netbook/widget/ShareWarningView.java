@@ -10,6 +10,8 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.clilystudio.netbook.R;
+
 public class ShareWarningView extends RelativeLayout {
     ImageView mClose;
     TextView mContent;
@@ -20,7 +22,14 @@ public class ShareWarningView extends RelativeLayout {
 
     public ShareWarningView(Context context, AttributeSet attributeSet) {
         super(context, attributeSet);
-        this.b = new aA(this);
+        this.b = new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (ShareWarningView.this.a != null) {
+                    ShareWarningView.this.a.a();
+                }
+            }
+        };
         this.setPadding(0, 0, 0, a.a(context, 22.0f));
         this.setBackgroundColor(-1);
         LayoutInflater.from(context).inflate(R.layout.share_warning, (ViewGroup) this);

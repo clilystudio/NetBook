@@ -3,11 +3,13 @@ package com.clilystudio.netbook.widget;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TableLayout;
 import android.widget.TextView;
 
 import com.clilystudio.netbook.model.Game;
+import com.clilystudio.netbook.ui.game.GameDetailActivity;
 
 import java.util.List;
 
@@ -35,16 +37,21 @@ public class GameItemSection extends TableLayout {
             List<Game> list2 = list.subList(i, Math.min(i + 3, list.size()));
             ViewGroup viewGroup = (ViewGroup) this.mContainer.getChildAt(i / 3);
             for (int j = 0; j < list2.size(); ++j) {
-                GameLayoutItemView gameLayoutItemView = (GameLayoutItemView) viewGroup.getChildAt(j);
+                final GameLayoutItemView gameLayoutItemView = (GameLayoutItemView) viewGroup.getChildAt(j);
                 gameLayoutItemView.setVisibility(View.VISIBLE);
-                Game game = list2.get(j);
+                final Game game = list2.get(j);
                 gameLayoutItemView.mTitle.setText(game.getName());
                 gameLayoutItemView.mSubTitle.setText(game.getCat());
                 gameLayoutItemView.mAction.setGame(game);
                 gameLayoutItemView.mAction.a(game.getDownloadStatus());
                 gameLayoutItemView.mImage.setImageUrl(game.getIcon());
                 gameLayoutItemView.mImage.a(game);
-                gameLayoutItemView.setOnClickListener(new M(gameLayoutItemView, game));
+                gameLayoutItemView.setOnClickListener(new OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        gameLayoutItemView.getContext().startActivity(GameDetailActivity.a(gameLayoutItemView.getContext(), game.get_id()));
+                    }
+                });
             }
             for (int k = list2.size(); k < 3; ++k) {
                 viewGroup.getChildAt(k).setVisibility(4);
@@ -60,15 +67,25 @@ public class GameItemSection extends TableLayout {
             List<Game> list2 = list.subList(i, Math.min(i + 3, list.size()));
             ViewGroup viewGroup = (ViewGroup) this.mContainer.getChildAt(i / 3);
             for (int j = 0; j < list2.size(); ++j) {
-                GameLayoutItemView gameLayoutItemView = (GameLayoutItemView) viewGroup.getChildAt(j);
+                final GameLayoutItemView gameLayoutItemView = (GameLayoutItemView) viewGroup.getChildAt(j);
                 gameLayoutItemView.setVisibility(View.VISIBLE);
-                Game game = list2.get(j);
+                final Game game = list2.get(j);
                 gameLayoutItemView.mTitle.setText(game.getName());
                 gameLayoutItemView.mSubTitle.setVisibility(View.GONE);
                 gameLayoutItemView.mAction.setH5View();
                 gameLayoutItemView.mImage.setImageResource(game.getIconId());
-                gameLayoutItemView.setOnClickListener(new N(gameLayoutItemView, game));
-                gameLayoutItemView.mAction.setOnClickListener(new O(gameLayoutItemView, game));
+                gameLayoutItemView.setOnClickListener(new OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        GameLayoutItemView.a(gameLayoutItemView, gameLayoutItemView.getContext(), game);
+                    }
+                });
+                gameLayoutItemView.mAction.setOnClickListener(new OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        GameLayoutItemView.a(gameLayoutItemView, gameLayoutItemView.getContext(), game);
+                    }
+                });
             }
             for (int k = list2.size(); k < 3; ++k) {
                 viewGroup.getChildAt(k).setVisibility(4);

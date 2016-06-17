@@ -2,6 +2,7 @@ package com.clilystudio.netbook.adapter;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
@@ -285,11 +286,32 @@ public class G extends u {
     /*
      * Enabled aggressive block sorting
      */
-    private void a(final R_ViewHolder r, Tweet tweet, final User user, boolean bl) {
+    private void a(final R_ViewHolder r, final Tweet tweet, final User user, boolean bl) {
         G.a(r.h, 15, 15, 15, 15);
         r.h.setVisibility(View.VISIBLE);
         if (bl) {
-            r.h.setOnClickListener(new N(this, r, tweet));
+            r.h.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    h h2 = new h(r.q.getContext()).a(true);
+                    h2.e = "确定删除动态？";
+                    h2.b("取消",new DialogInterface.OnClickListener(){
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    }).a("确定",new DialogInterface .OnClickListener(){
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            S s = new S(G.this);
+                            String[] arrstring = new String[]{am.e().getToken(), tweet.get_id()};
+                            s.execute(arrstring);
+                            G.a(G.this, r.q);
+                            G.d(G.this, tweet);
+                        }
+                    }).b();
+                }
+            });
             r.h.setText("\u5220\u9664");
             Drawable drawable = r.h.getResources().getDrawable(R.drawable.ic_recycle_bin);
             drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());

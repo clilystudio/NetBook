@@ -6,10 +6,10 @@ import com.clilystudio.netbook.ui.post.AbsPostActivity;
 
 final class ar implements m {
     private /* synthetic */ AbsPostActivity a;
-
-    ar(aq aq2, AbsPostActivity absPostActivity) {
-        this.a = absPostActivity;
-    }
+//
+//    ar(aq aq2, AbsPostActivity absPostActivity) {
+//        this.a = absPostActivity;
+//    }
 
     public final boolean a(MenuItem menuItem) {
         switch (menuItem.getItemId()) {

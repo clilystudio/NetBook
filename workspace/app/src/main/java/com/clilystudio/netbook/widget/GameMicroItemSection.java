@@ -8,6 +8,14 @@ import android.view.ViewGroup;
 import android.widget.TableLayout;
 import android.widget.TextView;
 
+import com.clilystudio.netbook.*;
+import com.clilystudio.netbook.model.Game;
+import com.clilystudio.netbook.model.GameLayoutRoot;
+import com.clilystudio.netbook.ui.game.GameDetailActivity;
+import com.xiaomi.mistatistic.sdk.MiStatInterface;
+
+import java.util.List;
+
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 
@@ -36,16 +44,16 @@ public class GameMicroItemSection extends TableLayout {
      * Enabled aggressive block sorting
      * Lifted jumps to return sites
      */
-    public final void a(GameLayoutRoot$ModuleLayout var1_1) {
+    public final void a(GameLayoutRoot.ModuleLayout var1_1) {
         ((TextView) this.findViewById(R.id.section_name)).setText(var1_1.getGameGroup().getName());
-        var2_2 = var1_1.getGameGroup().getGames();
-        var3_3 = Math.min(var2_2.size(), 9);
-        var4_4 = 0;
+        List<Game> var2_2 = var1_1.getGameGroup().getGames();
+        int  var3_3 = Math.min(var2_2.size(), 9);
+        int var4_4 = 0;
         block0:
         do {
             if (var4_4 < var3_3 && this.mContainer.getChildCount() > var4_4 / 3) {
-                var5_5 = var2_2.subList(var4_4, Math.min(var4_4 + 3, var2_2.size()));
-                var6_6 = (ViewGroup) this.mContainer.getChildAt(var4_4 / 3);
+                List<Game> var5_5 = var2_2.subList(var4_4, Math.min(var4_4 + 3, var2_2.size()));
+                ViewGroup  var6_6 = (ViewGroup) this.mContainer.getChildAt(var4_4 / 3);
                 if (var5_5 != null && var6_6 != null) {
                     break;
                 }
@@ -60,11 +68,11 @@ public class GameMicroItemSection extends TableLayout {
             } while (true);
             break;
         } while (true);
-        for (var7_7 = 0; var7_7 < var5_5.size(); ++var7_7) {
-            var9_9 = (GameMicroLayoutItemView) var6_6.getChildAt(var7_7);
+        for (int var7_7 = 0; var7_7 < var5_5.size(); ++var7_7) {
+            final GameMicroLayoutItemView  var9_9 = (GameMicroLayoutItemView) var6_6.getChildAt(var7_7);
             var9_9.setVisibility(View.VISIBLE);
             var9_9.setHasPlayed(this.a);
-            var10_10 = var5_5.get(var7_7);
+            final Game   var10_10 = var5_5.get(var7_7);
             var9_9.mTitle.setText(var10_10.getName());
             var9_9.mSubTitle.setVisibility(View.GONE);
             if (var9_9.a) {
@@ -74,10 +82,25 @@ public class GameMicroItemSection extends TableLayout {
             }
             var9_9.mImage.setImageUrl(var10_10.getIcon());
             var9_9.mImage.a(var10_10);
-            var9_9.setOnClickListener(new P(var9_9, var10_10));
-            var9_9.mAction.setOnClickListener(new Q(var9_9, var10_10));
+            var9_9.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    var9_9.getContext().startActivity(GameDetailActivity.a(var9_9.getContext(), var10_10.get_id(), true, var9_9.a));
+                }
+            });
+            var9_9.mAction.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (var9_9.a) {
+                        MiStatInterface.recordCountEvent("micro_game_continue_click", var10_10.getName());
+                    } else {
+                        MiStatInterface.recordCountEvent("micro_game_play_click", var10_10.getName());
+                    }
+                    com.clilystudio.netbook.am.a((Context)var9_9.getContext(),var10_10);
+                }
+            });
         }
-        var8_8 = var5_5.size();
+      int   var8_8 = var5_5.size();
         do {
             if (var8_8 >= 3)**continue;
             var6_6.getChildAt(var8_8).setVisibility(4);

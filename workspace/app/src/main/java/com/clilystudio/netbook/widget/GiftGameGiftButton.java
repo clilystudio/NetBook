@@ -2,6 +2,8 @@ package com.clilystudio.netbook.widget;
 
 import android.app.Activity;
 import android.content.Context;
+
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.am;
 import android.util.AttributeSet;
 import android.view.View;
@@ -12,6 +14,7 @@ import com.clilystudio.netbook.db.GameGiftRecord;
 import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.model.GiftGame;
 import com.clilystudio.netbook.model.GiftGameGift;
+import com.clilystudio.netbook.util.*;
 import com.clilystudio.netbook.util.t;
 import com.clilystudio.netbook.view.a;
 
@@ -57,14 +60,19 @@ public class GiftGameGiftButton extends Button {
         return giftGameGiftButton.a;
     }
 
-    private void a(String string) {
+    private void a(final String string) {
         this.setVisibility(View.VISIBLE);
         this.setText("\u67e5\u770b");
         this.setBackgroundResource(R.drawable.green_round_button);
-        this.setOnClickListener(new U(this, string));
+        this.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                GiftGameGiftButton.a(GiftGameGiftButton.this, string);
+           }
+        });
     }
 
-    private void b(String string) {
+    private void b(final String string) {
         final a a2 = new a(this.getContext());
         View view = View.inflate(this.getContext(), R.layout.dialog_game_gift_info, null);
         ((TextView) view.findViewById(R.id.game_gift_name)).setText(this.a.title);
@@ -90,7 +98,19 @@ public class GiftGameGiftButton extends Button {
         textView.setText("\u5151\u6362\u7801\uff1a" + string);
         button.setText("\u590d\u5236\u5151\u6362\u7801\u5e76\u6253\u5f00\u6e38\u620f");
         button.setBackgroundResource(R.color.btn_bg_green);
-        button.setOnClickListener(new W(this, a2, string));
+        button.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                a2.dismiss();
+                am.a((Context) GiftGameGiftButton.this.getContext(), string);
+                com.clilystudio.netbook.util.e.a((Activity) ((Activity) GiftGameGiftButton.this.getContext()), (String) "\u5df2\u590d\u5236");
+                if (GiftGameGiftButton.b(GiftGameGiftButton.this) != null) {
+                    am.d((Context) GiftGameGiftButton.this.getContext(), (String) GiftGameGiftButton.b(GiftGameGiftButton.this).getAndroidPackageName());
+                    return;
+                }
+                com.clilystudio.netbook.util.e.a((Activity) ((Activity) GiftGameGiftButton.this.getContext()), (String) "\u542f\u52a8\u6e38\u620f\u5931\u8d25");
+            }
+        });
     }
 
     protected final void a() {
@@ -137,7 +157,12 @@ public class GiftGameGiftButton extends Button {
         this.setVisibility(View.VISIBLE);
         this.setText("\u9886\u53d6");
         this.setBackgroundResource(R.drawable.red_round_button);
-        this.setOnClickListener(new X(this, 0));
+        this.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                GiftGameGiftButton.this.a();
+            }
+        });
     }
 
     public void setAccount(Account account) {
