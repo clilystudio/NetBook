@@ -6,6 +6,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.am;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,6 +29,7 @@ import com.clilystudio.netbook.model.TweetResult;
 import com.clilystudio.netbook.model.User;
 import com.clilystudio.netbook.ui.SmartImageView;
 import com.clilystudio.netbook.ui.user.AuthLoginActivity;
+import com.clilystudio.netbook.util.*;
 import com.clilystudio.netbook.util.N;
 import com.clilystudio.netbook.util.T;
 import com.clilystudio.netbook.widget.HotCommentView;
@@ -68,7 +71,17 @@ public class TweetDetailActivity extends AbsPostActivity {
     private View.OnClickListener z;
 
     public TweetDetailActivity() {
-        this.z = new dt(this);
+        this.z = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TweetDetailActivity.a(TweetDetailActivity.this, (Integer) v.getTag());
+                if (TweetDetailActivity.a(TweetDetailActivity.this)) {
+                    dA dA2 = new dA(TweetDetailActivity.this, TweetDetailActivity.this, R.string.vote_send_loading);
+                    String[] arrstring = new String[]{TweetDetailActivity.b(TweetDetailActivity.this).getToken(), TweetDetailActivity.c(TweetDetailActivity.this).getTweet().get_id(), String.valueOf(TweetDetailActivity.d(TweetDetailActivity.this))};
+                    dA2.b(arrstring);
+                }
+            }
+        };
         this.A = new dv(this);
     }
 
@@ -219,8 +232,8 @@ public class TweetDetailActivity extends AbsPostActivity {
     /*
      * Enabled aggressive block sorting
      */
-    static /* synthetic */ void b(TweetDetailActivity tweetDetailActivity, TweetResult tweetResult) {
-        User user = tweetResult.getUser();
+    static /* synthetic */ void b(final TweetDetailActivity tweetDetailActivity, TweetResult tweetResult) {
+        final User user = tweetResult.getUser();
         Tweet tweet = tweetResult.getTweet();
         SmartImageView smartImageView = (SmartImageView) tweetDetailActivity.c.findViewById(R.id.avatar);
         if (am.m((Context) tweetDetailActivity)) {
@@ -228,7 +241,15 @@ public class TweetDetailActivity extends AbsPostActivity {
         } else {
             smartImageView.setImageUrl(user.getFullAvatar());
         }
-        smartImageView.setOnClickListener(new dw(tweetDetailActivity, user));
+        smartImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = OtherUserActivity.a(tweetDetailActivity);
+                intent.putExtra("USER_ID", user.getId());
+                intent.putExtra("USER_NAME", user.getNickname());
+                tweetDetailActivity.startActivity(intent);
+            }
+        });
         ((TextView) tweetDetailActivity.c.findViewById(R.id.name)).setText(user.getNickname());
         ((TextView) tweetDetailActivity.c.findViewById(R.id.lv)).setText("lv." + user.getLv());
         ((TextView) tweetDetailActivity.c.findViewById(R.id.time)).setText(t.e((Date) tweet.getCreated()));
@@ -548,7 +569,24 @@ public class TweetDetailActivity extends AbsPostActivity {
         drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
         this.l.setCompoundDrawables(drawable, null, null, null);
         this.l.setText("\u8f6c\u53d1");
-        this.k.setOnClickListener((View.OnClickListener) ((Object) new du(this)));
+        this.k.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!TweetDetailActivity.a(TweetDetailActivity.this) || TweetDetailActivity.c(TweetDetailActivity.this) == null) return;
+                Account account = am.a(TweetDetailActivity.this);
+                if (G.a(account, TweetDetailActivity.c(TweetDetailActivity.this).getTweet())) {
+                    dC dC2 = new dC(TweetDetailActivity.this, TweetDetailActivity.this, R.string.retweeting);
+                    String[] arrstring = new String[]{account.getToken(), TweetDetailActivity.c(TweetDetailActivity.this).getTweet().get_id()};
+                    dC2.execute(arrstring);
+                    return;
+                }
+                String string = TweetDetailActivity.this.getString(R.string.retweeted);
+                if (G.a(TweetDetailActivity.c(TweetDetailActivity.this).getTweet(), account)) {
+                    string = TweetDetailActivity.this.getString(R.string.not_can_retween_self);
+                }
+                com.clilystudio.netbook.util.e.a((Activity) TweetDetailActivity.this, "\t\t" + string + "\t\t");
+            }
+        });
         HotCommentView hotCommentView = (HotCommentView) LayoutInflater.from(this).inflate(R.layout.hot_comment_view, (ViewGroup) this.b, false);
         this.b.addHeaderView(hotCommentView, null, false);
         hotCommentView.a(this.a);

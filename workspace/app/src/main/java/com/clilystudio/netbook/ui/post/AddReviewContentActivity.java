@@ -3,6 +3,8 @@ package com.clilystudio.netbook.ui.post;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.os.Bundle;
+
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.am;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -46,7 +48,7 @@ public class AddReviewContentActivity extends BaseActivity {
         return true;
     }
 
-    static /* synthetic */ void b(AddReviewContentActivity addReviewContentActivity) {
+    static /* synthetic */ void b(final AddReviewContentActivity addReviewContentActivity) {
         Account account = am.e();
         if (account == null) {
             e.a((Activity) addReviewContentActivity, (String) "\u8bf7\u767b\u5f55\u540e\u518d\u53d1\u5e03");
@@ -54,15 +56,25 @@ public class AddReviewContentActivity extends BaseActivity {
             return;
         }
         if (account.getUser().getLv() >= 3) {
-            String string = account.getToken();
+            final String token = account.getToken();
             h h2 = new h(addReviewContentActivity);
             View view = LayoutInflater.from(addReviewContentActivity).inflate(R.layout.dialog_waring_text, null);
             ((TextView) view.findViewById(R.id.waring_content)).setText(R.string.waring_dialog_review);
             h2.d = "\u53d1\u5e03";
             h2.a(R.string.vote_ok, null);
             h2.b(R.string.cancel, null);
-            AlertDialog alertDialog = h2.a(view).b();
-            ((Button) alertDialog.findViewById(16908313)).setOnClickListener(new E(addReviewContentActivity, alertDialog, string));
+            final AlertDialog alertDialog = h2.a(view).b();
+            ((Button) alertDialog.findViewById(16908313)).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    alertDialog.dismiss();
+                    String string = AddReviewContentActivity.c(addReviewContentActivity).getText().toString().trim();
+                    String string2 = AddReviewContentActivity.d(addReviewContentActivity).getText().toString().trim();
+                    F f = new F(addReviewContentActivity, addReviewContentActivity, R.string.post_publish_loading);
+                    String[] arrstring = new String[]{token, AddReviewContentActivity.e(addReviewContentActivity), string, string2, String.valueOf(AddReviewContentActivity.f(addReviewContentActivity))};
+                    f.b(arrstring);
+                }
+            });
             return;
         }
         e.a((Activity) addReviewContentActivity, (String) "\u5f88\u62b1\u6b49\uff0c\u60a8\u7684\u7b49\u7ea7\u4e0d\u591f");

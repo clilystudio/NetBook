@@ -4,9 +4,12 @@ import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.am;
 import android.support.v7.app.j;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.ListAdapter;
 
 import com.clilystudio.netbook.MyApplication;
@@ -95,11 +98,16 @@ public class BookReviewListFragment extends BookPostListFragment {
         bookReviewListFragment.f();
     }
 
-    static /* synthetic */ void g(BookReviewListFragment bookReviewListFragment) {
-        if (bookReviewListFragment.e.getVisibility() == 8) {
+    static /* synthetic */ void g(final BookReviewListFragment bookReviewListFragment) {
+        if (bookReviewListFragment.e.getVisibility() == View.GONE) {
             bookReviewListFragment.e.setVisibility(View.VISIBLE);
             bookReviewListFragment.e.setImageResource(R.drawable.ic_fab_book_review);
-            bookReviewListFragment.e.setOnClickListener(new aC(bookReviewListFragment));
+            bookReviewListFragment.e.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    BookReviewListFragment.e(bookReviewListFragment);
+                }
+            });
             bookReviewListFragment.e.setContentDescription("\u5199\u4e66\u8bc4");
         }
     }

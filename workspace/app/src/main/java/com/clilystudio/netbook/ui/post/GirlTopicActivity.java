@@ -4,6 +4,8 @@ import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
+
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.am;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -58,7 +60,17 @@ public class GirlTopicActivity extends AbsPostActivity {
     private av w;
 
     public GirlTopicActivity() {
-        this.v = new bm(this);
+        this.v = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                GirlTopicActivity.a(GirlTopicActivity.this, (Integer) v.getTag());
+                if (GirlTopicActivity.h(GirlTopicActivity.this)) {
+                    bs bs2 = new bs(GirlTopicActivity.this, GirlTopicActivity.this, R.string.vote_send_loading);
+                    String[] arrstring = new String[]{GirlTopicActivity.a(GirlTopicActivity.this).get_id(), GirlTopicActivity.i(GirlTopicActivity.this).getToken(), String.valueOf(GirlTopicActivity.j(GirlTopicActivity.this))};
+                    bs2.b(arrstring);
+                }
+            }
+        };
         this.w = new bo(this);
     }
 
@@ -259,12 +271,19 @@ public class GirlTopicActivity extends AbsPostActivity {
         return girlTopicActivity.h;
     }
 
-    static /* synthetic */ void g(GirlTopicActivity girlTopicActivity) {
+    static /* synthetic */ void g(final GirlTopicActivity girlTopicActivity) {
         girlTopicActivity.f.setVisibility(View.VISIBLE);
         girlTopicActivity.f.findViewById(R.id.pb_loading).setVisibility(View.GONE);
-        TextView textView = (TextView) girlTopicActivity.f.findViewById(R.id.tv_loading);
+        final TextView textView = (TextView) girlTopicActivity.f.findViewById(R.id.tv_loading);
         textView.setText("\u70b9\u51fb\u52a0\u8f7d\u8bc4\u8bba");
-        girlTopicActivity.f.setOnClickListener((View.OnClickListener) ((Object) new bn(girlTopicActivity, textView)));
+        girlTopicActivity.f.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                GirlTopicActivity.e(girlTopicActivity).findViewById(R.id.pb_loading).setVisibility(View.VISIBLE);
+                textView.setText("加载中...");
+                GirlTopicActivity.b(girlTopicActivity);
+           }
+        });
     }
 
     static /* synthetic */ boolean h(GirlTopicActivity girlTopicActivity) {

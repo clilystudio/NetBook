@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
+
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.am;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -58,11 +60,11 @@ public abstract class AbsPostActivity extends BaseLoadingActivity {
         h2.b(arrobject);
     }
 
-    public final void a(ReplyeeInfo replyeeInfo, int n) {
+    public final void a(final ReplyeeInfo replyeeInfo, int n) {
         if (replyeeInfo != null && replyeeInfo.getAuthor() != null) {
             this.e = replyeeInfo;
             SendView sendView = (SendView) this.findViewById(R.id.bottom_container);
-            EditText editText = sendView.b();
+            final EditText editText = sendView.b();
             editText.setText("");
             Object[] arrobject = new Object[]{replyeeInfo.getAuthor().getNickname()};
             editText.setHint(String.format("\u56de\u590d %s\uff1a", arrobject));
@@ -71,7 +73,12 @@ public abstract class AbsPostActivity extends BaseLoadingActivity {
             if (n != -1) {
                 this.b.setSelection(n);
             }
-            sendView.c().setOnClickListener(new e(this, replyeeInfo, editText));
+            sendView.c().setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    AbsPostActivity.this.a(replyeeInfo, editText.getText().toString());
+                }
+            });
             return;
         }
         com.clilystudio.netbook.util.e.a((Activity) this, (String) "\u8bf7\u91cd\u8bd5");
@@ -95,13 +102,24 @@ public abstract class AbsPostActivity extends BaseLoadingActivity {
     public abstract void a(String var1);
 
     protected final void a(boolean bl) {
-        TextView textView = (TextView) this.findViewById(R.id.send_content);
+        final TextView textView = (TextView) this.findViewById(R.id.send_content);
         am.a((Context) this, (View) textView);
         if (bl) {
             textView.setText("");
         }
         textView.setHint("\u6dfb\u52a0\u8bc4\u8bba");
-        this.findViewById(R.id.commit).setOnClickListener((View.OnClickListener) ((Object) new d(this, textView)));
+        this.findViewById(R.id.commit).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Account account = am.a(AbsPostActivity.this);
+                if (account != null && AbsPostActivity.b(AbsPostActivity.this)) {
+                    AbsPostActivity.this.e = null;
+                    String string = textView.getText().toString();
+                    AbsPostActivity.a(AbsPostActivity.this, string);
+                    AbsPostActivity.this.a(account, string);
+                }
+           }
+        });
     }
 
     public abstract void e(int var1);

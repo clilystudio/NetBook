@@ -7,6 +7,8 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.am;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -38,7 +40,7 @@ public class AddGamePostActivity extends BaseActivity {
         return true;
     }
 
-    static /* synthetic */ void b(AddGamePostActivity addGamePostActivity) {
+    static /* synthetic */ void b(final AddGamePostActivity addGamePostActivity) {
         Account account = am.e();
         if (account == null) {
             e.a((Activity) addGamePostActivity, (String) "\u8bf7\u767b\u5f55\u540e\u518d\u53d1\u5e03");
@@ -46,15 +48,25 @@ public class AddGamePostActivity extends BaseActivity {
             return;
         }
         if (account.getUser().getLv() >= 2) {
-            String string = account.getToken();
+            final String token = account.getToken();
             h h2 = new h(addGamePostActivity);
             View view = LayoutInflater.from(addGamePostActivity).inflate(R.layout.dialog_waring_text, null);
             ((TextView) view.findViewById(R.id.waring_content)).setText(R.string.waring_dialog_game_post);
             h2.d = "\u53d1\u5e03";
             h2.a(R.string.vote_ok, null);
             h2.b(R.string.cancel, (DialogInterface.OnClickListener) ((Object) new p(addGamePostActivity)));
-            AlertDialog alertDialog = h2.a(view).b();
-            ((Button) alertDialog.findViewById(16908313)).setOnClickListener(new q(addGamePostActivity, (Dialog) alertDialog, string));
+            final AlertDialog alertDialog = h2.a(view).b();
+            ((Button) alertDialog.findViewById(16908313)).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    alertDialog.dismiss();
+                    String string = addGamePostActivity.getIntent().getStringExtra("post_game_id");
+                    String string2 = AddGamePostActivity.c(addGamePostActivity).getText().toString().trim();
+                    t t2 = new t(addGamePostActivity, addGamePostActivity, R.string.post_publish_loading);
+                    String[] arrstring = new String[]{token, string, string2};
+                    t2.b(arrstring);
+                }
+            });
             return;
         }
         e.a((Activity) addGamePostActivity, (String) "\u5f88\u62b1\u6b49\uff0c\u60a8\u7684\u7b49\u7ea7\u4e0d\u591f");

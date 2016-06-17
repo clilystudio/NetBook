@@ -13,6 +13,7 @@ import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.adapter.l;
 import com.clilystudio.netbook.d;
 import com.clilystudio.netbook.model.DiscussSummary;
@@ -58,40 +59,60 @@ public class CommonPostListActivity extends BaseActivity {
      * Enabled aggressive block sorting
      * Lifted jumps to return sites
      */
-    static /* synthetic */ PopupWindow a(CommonPostListActivity var0, int var1_1) {
+    static /* synthetic */ PopupWindow a(final CommonPostListActivity var0, int var1_1) {
         if (var1_1 == 0) {
-            var10_2 = LayoutInflater.from(var0).inflate(R.layout.discuss_popupwindow_left, null);
-            var11_3 = (TextView) var10_2.findViewById(R.id.text_item0);
-            var12_4 = (TextView) var10_2.findViewById(R.id.text_item1);
+            View var10_2 = LayoutInflater.from(var0).inflate(R.layout.discuss_popupwindow_left, null);
+            TextView  var11_3 = (TextView) var10_2.findViewById(R.id.text_item0);
+            TextView var12_4 = (TextView) var10_2.findViewById(R.id.text_item1);
             if (var0.q) {
                 var12_4.setTextColor(var0.getResources().getColor(R.color.popup_red));
             } else if (var0.a.equals("all")) {
                 var11_3.setTextColor(var0.getResources().getColor(R.color.popup_red));
             }
-            var13_5 = var0.a(var10_2);
+            final PopupWindow  var13_5 = var0.a(var10_2);
             var10_2.setOnTouchListener((View.OnTouchListener) new bd(var0, var13_5));
-            var11_3.setOnClickListener((View.OnClickListener) new be(var0, var13_5));
-            var12_4.setOnClickListener(new bf(var0, var13_5));
+            var11_3.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    var13_5.dismiss();
+                    CommonPostListActivity.a(var0, false);
+                    CommonPostListActivity.i(var0).setText("全部");
+                    CommonPostListActivity.a(var0, "all");
+                    CommonPostListActivity.j(var0).setVisibility(View.VISIBLE);
+                    CommonPostListActivity.j(var0).setRefreshing();
+                }
+            });
+            var12_4.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    var13_5.dismiss();
+                    CommonPostListActivity.a(var0, true);
+                    CommonPostListActivity.i(var0).setText("精品");
+                    CommonPostListActivity.a(var0, "all");
+                    CommonPostListActivity.j(var0).setVisibility(View.VISIBLE);
+                    CommonPostListActivity.j(var0).setRefreshing();
+                }
+            });
             return var13_5;
         }
         var2_6 = null;
         if (var1_1 != 1) return var2_6;
-        var3_7 = LayoutInflater.from(var0).inflate(R.layout.discuss_popupwindow_right, null);
-        var4_8 = (TextView) var3_7.findViewById(R.id.text_item0);
-        var5_9 = (TextView) var3_7.findViewById(R.id.text_item1);
-        var6_10 = (TextView) var3_7.findViewById(R.id.text_item2);
+       View var3_7 = LayoutInflater.from(var0).inflate(R.layout.discuss_popupwindow_right, null);
+        TextView   var4_8 = (TextView) var3_7.findViewById(R.id.text_item0);
+        TextView   var5_9 = (TextView) var3_7.findViewById(R.id.text_item1);
+        TextView    var6_10 = (TextView) var3_7.findViewById(R.id.text_item2);
         var7_11 = var0.b;
-        var8_12 = -1;
-        switch (var7_11.hashCode()) {
+      int   var8_12 = -1;
+        switch ( var0.b.hashCode()) {
             case -234430277: {
-                if (var7_11.equals("updated")) {
+                if ( var0.b.equals("updated")) {
                     var8_12 = 0;
                     **break;
                 }
                 **GOTO lbl32
             }
             case 1028554472: {
-                if (var7_11.equals("created")) {
+                if ( var0.b.equals("created")) {
                     var8_12 = 1;
                 }
             }
@@ -102,11 +123,11 @@ public class CommonPostListActivity extends BaseActivity {
                 **GOTO lbl37
             }
             case 1742524449:
+                if (var0.b.equals("comment-count")) {
+                    var8_12 = 2;
+                }
         }
-        if (var7_11.equals("comment-count")) {
-            var8_12 = 2;
-        }
-        lbl37:
+         lbl37:
         // 4 sources:
         switch (var8_12) {
             case 0: {
@@ -123,16 +144,43 @@ public class CommonPostListActivity extends BaseActivity {
                 **GOTO lbl47
             }
             case 2:
+                final PopupWindow  var9_13 = var0.a(var3_7);
+                var3_7.setOnTouchListener((View.OnTouchListener) new bg(var0, var9_13));
+                var4_8.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        var9_13.dismiss();
+                        CommonPostListActivity.k(var0).setText("默认排序");
+                        CommonPostListActivity.b(var0, "updated");
+                        CommonPostListActivity.j(var0).setVisibility(View.VISIBLE);
+                        CommonPostListActivity.j(var0).setRefreshing();
+                    }
+                });
+                var5_9.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        var9_13.dismiss();
+                        CommonPostListActivity.k(var0).setText("最新发布");
+                        CommonPostListActivity.b(var0, "created");
+                        CommonPostListActivity.j(var0).setVisibility(View.VISIBLE);
+                        CommonPostListActivity.j(var0).setRefreshing();
+                    }
+                });
+                var6_10.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        var9_13.dismiss();
+                        CommonPostListActivity.k(var0).setText("最多评论");
+                        CommonPostListActivity.b(var0, "comment-count");
+                        CommonPostListActivity.j(var0).setVisibility(View.VISIBLE);
+                        CommonPostListActivity.j(var0).setRefreshing();
+                    }
+                });
+                return var9_13;
         }
         var6_10.setTextColor(var0.getResources().getColor(R.color.popup_red));
-        lbl47:
+//        lbl47:
         // 2 sources:
-        var9_13 = var0.a(var3_7);
-        var3_7.setOnTouchListener((View.OnTouchListener) new bg(var0, var9_13));
-        var4_8.setOnClickListener(new aT(var0, var9_13));
-        var5_9.setOnClickListener(new aU(var0, var9_13));
-        var6_10.setOnClickListener(new aV(var0, var9_13));
-        return var9_13;
     }
 
     static /* synthetic */ bh a(CommonPostListActivity commonPostListActivity, bh bh2) {
@@ -280,14 +328,26 @@ public class CommonPostListActivity extends BaseActivity {
         this.f.setMode(PullToRefreshBase$Mode.PULL_FROM_START);
         this.n = this.findViewById(R.id.pb_loading);
         this.k = (TextView) this.findViewById(R.id.empty_text);
-        ImageView imageView = (ImageView) this.findViewById(R.id.community_top_left_arrow);
-        ImageView imageView2 = (ImageView) this.findViewById(R.id.community_top_right_arrow);
+        final ImageView imageView = (ImageView) this.findViewById(R.id.community_top_left_arrow);
+        final ImageView imageView2 = (ImageView) this.findViewById(R.id.community_top_right_arrow);
         this.g = imageView;
         this.h = imageView2;
         this.c = (TextView) this.findViewById(R.id.community_top_left_title);
         this.e = (TextView) this.findViewById(R.id.community_top_right_title);
-        this.findViewById(R.id.community_top_left).setOnClickListener(new aY(this, imageView));
-        this.findViewById(R.id.community_top_right).setOnClickListener(new aZ(this, imageView2));
+        this.findViewById(R.id.community_top_left).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CommonPostListActivity.a(CommonPostListActivity.this, 0).showAsDropDown(v, 0, 1);
+                imageView.setImageDrawable(CommonPostListActivity.this.getResources().getDrawable(R.drawable.book_topic_top_arrow_up));
+            }
+        });
+        this.findViewById(R.id.community_top_right).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CommonPostListActivity.a(CommonPostListActivity.this, 1).showAsDropDown(v, 0, 1);
+                imageView2.setImageDrawable(CommonPostListActivity.this.getResources().getDrawable(R.drawable.book_topic_top_arrow_up));
+            }
+        });
         this.i = (ListView) this.f.h();
         this.j = LayoutInflater.from(this).inflate(R.layout.loading_item, null);
         if (a.j()) {

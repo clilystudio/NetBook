@@ -2,6 +2,8 @@ package com.clilystudio.netbook.ui.post;
 
 import android.content.Intent;
 import android.os.Bundle;
+
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.am;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -23,7 +25,10 @@ import com.clilystudio.netbook.model.Tweet;
 import com.clilystudio.netbook.model.TweetsResult;
 import com.clilystudio.netbook.model.User;
 import com.clilystudio.netbook.ui.SmartImageView;
+import com.clilystudio.netbook.ui.user.AuthLoginActivity;
+import com.clilystudio.netbook.ui.user.ModifyUserInfoActivity;
 import com.google.gson.Gson;
+import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshBase$Mode;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.handmark.pulltorefresh.library.j;
@@ -264,11 +269,56 @@ public class MyTweetFragment extends Fragment {
             } else {
                 this.h.setVisibility(View.GONE);
             }
-            this.n.setOnClickListener(new bO(this));
+            this.n.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    MyTweetFragment.this.startActivity(ModifyUserInfoActivity.a(MyTweetFragment.this.getActivity(), -1));
+                }
+            });
             this.m = this.f.findViewById(R.id.ll_followers_container);
             this.l = this.f.findViewById(R.id.ll_following_container);
-            this.m.setOnClickListener(new bP(this));
-            this.l.setOnClickListener(new bR(this));
+            this.m.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (MyTweetFragment.f(MyTweetFragment.this) == null && MyTweetFragment.g(MyTweetFragment.this) != 0) {
+                        if (MyTweetFragment.h(MyTweetFragment.this) != null) {
+                            MyTweetFragment.h(MyTweetFragment.this).cancel(true);
+                        }
+                        MyTweetFragment.a(MyTweetFragment.this, new bU(MyTweetFragment.this, new Runnable() {
+                            @Override
+                            public void run() {
+                                MyTweetFragment.i(MyTweetFragment.this);
+                            }
+                        }));
+                        bU bU2 = MyTweetFragment.h(MyTweetFragment.this);
+                        String[] arrstring = new String[]{am.e().getUser().getId()};
+                        bU2.b(arrstring);
+                        return;
+                    }
+                    MyTweetFragment.i(MyTweetFragment.this);
+                }
+            });
+            this.l.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (MyTweetFragment.j(MyTweetFragment.this) == null && MyTweetFragment.k(MyTweetFragment.this) != 0) {
+                        if (MyTweetFragment.l(MyTweetFragment.this) != null) {
+                            MyTweetFragment.l(MyTweetFragment.this).cancel(true);
+                        }
+                        MyTweetFragment.a(MyTweetFragment.this, new bV(MyTweetFragment.this, new Runnable() {
+                            @Override
+                            public void run() {
+                                MyTweetFragment.m(MyTweetFragment.this);
+                            }
+                        }));
+                        bV bV2 = MyTweetFragment.l(MyTweetFragment.this);
+                        String[] arrstring = new String[]{am.e().getUser().getId()};
+                        bV2.b(arrstring);
+                        return;
+                    }
+                    MyTweetFragment.m(MyTweetFragment.this);
+                }
+            });
         }
     }
 
@@ -318,11 +368,16 @@ public class MyTweetFragment extends Fragment {
         this.o = (RelativeLayout) view.findViewById(R.id.rl_container);
         this.t = (RelativeLayout) view.findViewById(R.id.fl_not_login_cover);
         this.u = (TextView) view.findViewById(R.id.tv_login);
-        this.u.setOnClickListener(new bK(this));
+        this.u.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MyTweetFragment.this.startActivity(AuthLoginActivity.a(MyTweetFragment.this.getActivity()));
+            }
+        });
         this.r = view.findViewById(R.id.pb_loading);
         this.s = (TextView) view.findViewById(R.id.empty_text);
         this.e = (PullToRefreshListView) view.findViewById(R.id.ptr_list);
-        this.e.setMode(PullToRefreshBase$Mode.PULL_FROM_START);
+        this.e.setMode(PullToRefreshBase.Mode.PULL_FROM_START);
         this.p = (ListView) this.e.h();
         this.f = layoutInflater.inflate(R.layout.layout_mytweet_head, null);
         this.f.findViewById(R.id.divider);

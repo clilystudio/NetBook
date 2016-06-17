@@ -11,6 +11,7 @@ import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.adapter.D;
 import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.model.ReviewSummary;
@@ -69,37 +70,55 @@ public class ReviewListActivity extends BaseActivity {
      * Enabled aggressive block sorting
      * Lifted jumps to return sites
      */
-    static /* synthetic */ PopupWindow a(ReviewListActivity var0, int var1_1) {
+    static /* synthetic */ PopupWindow a(final ReviewListActivity var0, int var1_1) {
         if (var1_1 == 0) {
-            var27_2 = LayoutInflater.from(var0).inflate(R.layout.book_review_popupwindow_left, null);
-            var28_3 = (TextView) var27_2.findViewById(R.id.text_item0);
-            var29_4 = (TextView) var27_2.findViewById(R.id.text_item1);
+            View var27_2 = LayoutInflater.from(var0).inflate(R.layout.book_review_popupwindow_left, null);
+            TextView  var28_3 = (TextView) var27_2.findViewById(R.id.text_item0);
+            TextView var29_4 = (TextView) var27_2.findViewById(R.id.text_item1);
             if (var0.v) {
                 var29_4.setTextColor(var0.getResources().getColor(R.color.popup_red));
             } else if (var0.s.equals("all")) {
                 var28_3.setTextColor(var0.getResources().getColor(R.color.popup_red));
             }
-            var30_5 = var0.a(var27_2);
+            final PopupWindow var30_5 = var0.a(var27_2);
             var27_2.setOnTouchListener((View.OnTouchListener) new dl(var0, var30_5));
-            var28_3.setOnClickListener((View.OnClickListener) new dm(var0, var30_5));
-            var29_4.setOnClickListener((View.OnClickListener) new dn(var0, var30_5));
+            var28_3.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    var30_5.dismiss();
+                    ReviewListActivity.m(var0).setText("全部");
+                    ReviewListActivity.a(var0, "all");
+                    ReviewListActivity.a(var0, false);
+                    ReviewListActivity.n(var0).setRefreshing();
+                }
+            });
+            var29_4.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    var30_5.dismiss();
+                    ReviewListActivity.m(var0).setText("精品");
+                    ReviewListActivity.a(var0, "all");
+                    ReviewListActivity.a(var0, true);
+                    ReviewListActivity.n(var0).setRefreshing();
+                }
+            });
             return var30_5;
         }
         if (var1_1 == 1) {
-            var10_6 = LayoutInflater.from(var0).inflate(R.layout.book_review_popupwindow_mid, null);
-            var11_7 = (TextView) var10_6.findViewById(R.id.text_item0);
-            var12_8 = (TextView) var10_6.findViewById(R.id.text_item1);
-            var13_9 = (TextView) var10_6.findViewById(R.id.text_item2);
-            var14_10 = (TextView) var10_6.findViewById(R.id.text_item3);
-            var15_11 = (TextView) var10_6.findViewById(R.id.text_item4);
-            var16_12 = (TextView) var10_6.findViewById(R.id.text_item5);
-            var17_13 = (TextView) var10_6.findViewById(R.id.text_item6);
-            var18_14 = (TextView) var10_6.findViewById(R.id.text_item7);
-            var19_15 = (TextView) var10_6.findViewById(R.id.text_item8);
-            var20_16 = (TextView) var10_6.findViewById(R.id.text_item9);
-            var21_17 = (TextView) var10_6.findViewById(R.id.text_item10);
-            var22_18 = (TextView) var10_6.findViewById(R.id.text_item11);
-            var23_19 = (TextView) var10_6.findViewById(R.id.text_item12);
+          View  var10_6 = LayoutInflater.from(var0).inflate(R.layout.book_review_popupwindow_mid, null);
+            TextView  var11_7 = (TextView) var10_6.findViewById(R.id.text_item0);
+            TextView   var12_8 = (TextView) var10_6.findViewById(R.id.text_item1);
+            TextView   var13_9 = (TextView) var10_6.findViewById(R.id.text_item2);
+            TextView   var14_10 = (TextView) var10_6.findViewById(R.id.text_item3);
+            TextView  var15_11 = (TextView) var10_6.findViewById(R.id.text_item4);
+            TextView  var16_12 = (TextView) var10_6.findViewById(R.id.text_item5);
+            TextView  var17_13 = (TextView) var10_6.findViewById(R.id.text_item6);
+            TextView    var18_14 = (TextView) var10_6.findViewById(R.id.text_item7);
+            TextView    var19_15 = (TextView) var10_6.findViewById(R.id.text_item8);
+            TextView    var20_16 = (TextView) var10_6.findViewById(R.id.text_item9);
+            TextView     var21_17 = (TextView) var10_6.findViewById(R.id.text_item10);
+            TextView     var22_18 = (TextView) var10_6.findViewById(R.id.text_item11);
+            TextView    var23_19 = (TextView) var10_6.findViewById(R.id.text_item12);
             if (var0.t.equals(ReviewListActivity.q[0])) {
                 var11_7.setTextColor(var0.getResources().getColor(R.color.popup_red));
             } else if (var0.t.equals(ReviewListActivity.q[1])) {
@@ -127,50 +146,113 @@ public class ReviewListActivity extends BaseActivity {
             } else if (var0.t.equals(ReviewListActivity.q[12])) {
                 var23_19.setTextColor(var0.getResources().getColor(R.color.popup_red));
             }
-            var24_20 = var0.a(var10_6);
-            var25_21 = new cK(var0, var24_20);
+            final PopupWindow  var24_20 = var0.a(var10_6);
+            cK var25_21 = new cK(var0, var24_20);
             var10_6.setOnTouchListener(var25_21);
-            var26_22 = new cL(var0, var24_20);
-            var11_7.setOnClickListener(var26_22);
-            var12_8.setOnClickListener(new cM(var0, var24_20));
-            var13_9.setOnClickListener(new cN(var0, var24_20));
-            var14_10.setOnClickListener(new cO(var0, var24_20));
-            var15_11.setOnClickListener(new cP(var0, var24_20));
-            var16_12.setOnClickListener(new cQ(var0, var24_20));
-            var17_13.setOnClickListener(new cR(var0, var24_20));
-            var18_14.setOnClickListener(new cS(var0, var24_20));
-            var19_15.setOnClickListener(new cT(var0, var24_20));
-            var20_16.setOnClickListener(new cV(var0, var24_20));
-            var21_17.setOnClickListener(new cW(var0, var24_20));
-            var22_18.setOnClickListener(new cX(var0, var24_20));
-            var23_19.setOnClickListener(new cY(var0, var24_20));
+            var11_7.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ReviewListActivity.a(var0,var24_20, 0);
+                }
+            });
+            var12_8.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ReviewListActivity.a(var0, var24_20, 1);
+                }
+            });
+            var13_9.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ReviewListActivity.a(var0, var24_20, 2);
+                }
+            });
+            var14_10.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ReviewListActivity.a(var0, var24_20, 3);
+                }
+            });
+            var15_11.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ReviewListActivity.a(var0, var24_20, 4);
+                }
+            });
+            var16_12.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ReviewListActivity.a(var0, var24_20, 5);
+                }
+            });
+            var17_13.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ReviewListActivity.a(var0, var24_20, 6);
+                }
+            });
+            var18_14.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ReviewListActivity.a(var0, var24_20, 7);
+                }
+            });
+            var19_15.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ReviewListActivity.a(var0, var24_20, 8);
+                }
+            });
+            var20_16.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ReviewListActivity.a(var0, var24_20, 9);
+                }
+            });
+            var21_17.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ReviewListActivity.a(var0, var24_20, 10);
+                }
+            });
+            var22_18.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ReviewListActivity.a(var0, var24_20, 11);
+                }
+            });
+            var23_19.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ReviewListActivity.a(var0, var24_20, 12);
+                }
+            });
             return var24_20;
         }
         if (var1_1 != 2) return null;
-        var2_23 = LayoutInflater.from(var0).inflate(R.layout.book_review_popupwindow_right, null);
-        var3_24 = (TextView) var2_23.findViewById(R.id.text_item0);
-        var4_25 = (TextView) var2_23.findViewById(R.id.text_item1);
-        var5_26 = (TextView) var2_23.findViewById(R.id.text_item2);
-        var6_27 = (TextView) var2_23.findViewById(R.id.text_item3);
-        var7_28 = var0.u;
-        var8_29 = -1;
-        switch (var7_28.hashCode()) {
+       View var2_23 = LayoutInflater.from(var0).inflate(R.layout.book_review_popupwindow_right, null);
+        TextView   var3_24 = (TextView) var2_23.findViewById(R.id.text_item0);
+        TextView  var4_25 = (TextView) var2_23.findViewById(R.id.text_item1);
+        TextView  var5_26 = (TextView) var2_23.findViewById(R.id.text_item2);
+        TextView  var6_27 = (TextView) var2_23.findViewById(R.id.text_item3);
+        int var8_29 = -1;
+        switch (var0.u.hashCode()) {
             case -234430277: {
-                if (var7_28.equals("updated")) {
+                if (var0.u.equals("updated")) {
                     var8_29 = 0;
                     **break;
                 }
                 **GOTO lbl108
             }
             case 1028554472: {
-                if (var7_28.equals("created")) {
+                if (var0.u.equals("created")) {
                     var8_29 = 1;
                     **break;
                 }
                 **GOTO lbl108
             }
             case 805825180: {
-                if (var7_28.equals("helpful")) {
+                if (var0.u.equals("helpful")) {
                     var8_29 = 2;
                 }
             }
@@ -182,7 +264,7 @@ public class ReviewListActivity extends BaseActivity {
             }
             case 1742524449:
         }
-        if (var7_28.equals("comment-count")) {
+        if (var0.u.equals("comment-count")) {
             var8_29 = 3;
         }
         lbl113:
@@ -206,16 +288,46 @@ public class ReviewListActivity extends BaseActivity {
                 **GOTO lbl126
             }
             case 3:
+                var6_27.setTextColor(var0.getResources().getColor(R.color.popup_red));
         }
-        var6_27.setTextColor(var0.getResources().getColor(R.color.popup_red));
-        lbl126:
-        // 2 sources:
-        var9_30 = var0.a(var2_23);
+        final PopupWindow  var9_30 = var0.a(var2_23);
         var2_23.setOnTouchListener(new cZ(var0, var9_30));
-        var3_24.setOnClickListener((View.OnClickListener) new da(var0, var9_30));
-        var4_25.setOnClickListener((View.OnClickListener) new db(var0, var9_30));
-        var5_26.setOnClickListener((View.OnClickListener) new dc(var0, var9_30));
-        var6_27.setOnClickListener((View.OnClickListener) new dd(var0, var9_30));
+        var3_24.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                var9_30.dismiss();
+                ReviewListActivity.o(var0).setText(R.string.post_sort_default);
+                ReviewListActivity.b(var0, "updated");
+                ReviewListActivity.n(var0).setRefreshing();
+            }
+        });
+        var4_25.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                var9_30.dismiss();
+                ReviewListActivity.o(var0).setText(R.string.post_sort_create);
+                ReviewListActivity.b(var0, "created");
+                ReviewListActivity.n(var0).setRefreshing();
+            }
+        });
+        var5_26.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                var9_30.dismiss();
+                ReviewListActivity.o(var0).setText(R.string.post_sort_useful);
+                ReviewListActivity.b(var0, "helpful");
+                ReviewListActivity.n(var0).setRefreshing();
+            }
+        });
+        var6_27.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                var9_30.dismiss();
+                ReviewListActivity.o(var0).setText(R.string.post_sort_reply_count);
+                ReviewListActivity.b(var0, "comment-count");
+                ReviewListActivity.n(var0).setRefreshing();
+            }
+        });
         return var9_30;
     }
 
@@ -377,8 +489,20 @@ public class ReviewListActivity extends BaseActivity {
         this.o = (ImageView) this.findViewById(R.id.book_review_top_mid_arrow);
         this.p = (ImageView) this.findViewById(R.id.book_review_top_right_arrow);
         view.setOnClickListener(new cU(this));
-        view2.setOnClickListener((View.OnClickListener) ((Object) new df(this)));
-        view3.setOnClickListener((View.OnClickListener) ((Object) new dh(this)));
+        view2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ReviewListActivity.a(ReviewListActivity.this, 1).showAsDropDown(v, 0, 1);
+                ReviewListActivity.c(ReviewListActivity.this).setImageDrawable(ReviewListActivity.this.getResources().getDrawable(R.drawable.book_topic_top_arrow_up));
+            }
+        });
+        view3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ReviewListActivity.a(ReviewListActivity.this, 2).showAsDropDown(v, 0, 1);
+                ReviewListActivity.c(ReviewListActivity.this).setImageDrawable(ReviewListActivity.this.getResources().getDrawable(R.drawable.book_topic_top_arrow_up));
+            }
+        });
         this.e = (ListView) this.c.h();
         this.f = LayoutInflater.from(this).inflate(R.layout.loading_item, null);
         if (a.j()) {

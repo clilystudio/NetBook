@@ -4,6 +4,8 @@ import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
+
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.am;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -133,12 +135,19 @@ public class BookHelpActivity extends AbsPostActivity {
         return bookHelpActivity.h;
     }
 
-    static /* synthetic */ void g(BookHelpActivity bookHelpActivity) {
+    static /* synthetic */ void g(final BookHelpActivity bookHelpActivity) {
         bookHelpActivity.f.setVisibility(View.VISIBLE);
         bookHelpActivity.f.findViewById(R.id.pb_loading).setVisibility(View.GONE);
-        TextView textView = (TextView) bookHelpActivity.f.findViewById(R.id.tv_loading);
+        final TextView textView = (TextView) bookHelpActivity.f.findViewById(R.id.tv_loading);
         textView.setText("\u70b9\u51fb\u52a0\u8f7d\u8bc4\u8bba");
-        bookHelpActivity.f.setOnClickListener((View.OnClickListener) ((Object) new aa(bookHelpActivity, textView)));
+        bookHelpActivity.f.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                BookHelpActivity.e(bookHelpActivity).findViewById(R.id.pb_loading).setVisibility(View.VISIBLE);
+                textView.setText("\u52a0\u8f7d\u4e2d...");
+                BookHelpActivity.b(bookHelpActivity);
+            }
+        });
     }
 
     static /* synthetic */ ad h(BookHelpActivity bookHelpActivity) {

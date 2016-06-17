@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.am;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -398,9 +400,54 @@ public class OtherUserActivity extends BaseActivity {
         this.k = (Button) this.e.findViewById(R.id.btn_edit);
         this.h.setText(this.s);
         this.f();
-        this.k.setOnClickListener(new cb(this));
-        this.i.setOnClickListener((View.OnClickListener) ((Object) new cd(this)));
-        this.j.setOnClickListener((View.OnClickListener) ((Object) new cf(this)));
+        this.k.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                OtherUserActivity.d(OtherUserActivity.this);
+            }
+        });
+        this.i.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (OtherUserActivity.g(OtherUserActivity.this) == null && OtherUserActivity.h(OtherUserActivity.this) != 0) {
+                    if (OtherUserActivity.i(OtherUserActivity.this) != null) {
+                        OtherUserActivity.i(OtherUserActivity.this).cancel(true);
+                    }
+                    OtherUserActivity.a(OtherUserActivity.this, new ck(OtherUserActivity.this, new Runnable() {
+                        @Override
+                        public void run() {
+                            OtherUserActivity.j(OtherUserActivity.this);
+                        }
+                    }));
+                    ck ck2 = OtherUserActivity.i(OtherUserActivity.this);
+                    String[] arrstring = new String[]{OtherUserActivity.k(OtherUserActivity.this)};
+                    ck2.b(arrstring);
+                    return;
+                }
+                OtherUserActivity.j(OtherUserActivity.this);
+            }
+        });
+        this.j.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (OtherUserActivity.l(OtherUserActivity.this) == null && OtherUserActivity.m(OtherUserActivity.this) != 0) {
+                    if (OtherUserActivity.n(OtherUserActivity.this) != null) {
+                        OtherUserActivity.n(OtherUserActivity.this).cancel(true);
+                    }
+                    OtherUserActivity.a(OtherUserActivity.this, new cj(OtherUserActivity.this, new Runnable() {
+                        @Override
+                        public void run() {
+                            OtherUserActivity.o(OtherUserActivity.this);
+                        }
+                    }));
+                    cj cj2 = OtherUserActivity.n(OtherUserActivity.this);
+                    String[] arrstring = new String[]{OtherUserActivity.k(OtherUserActivity.this)};
+                    cj2.b(arrstring);
+                    return;
+                }
+                OtherUserActivity.o(OtherUserActivity.this);
+            }
+        });
         cn cn2 = new cn(this, (Runnable) ((Object) new cc(this)));
         Object[] arrobject = new String[]{this.r};
         cn2.b(arrobject);

@@ -1,6 +1,8 @@
 package com.clilystudio.netbook.ui.post;
 
 import android.os.Bundle;
+
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.am;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -18,7 +20,9 @@ import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.model.TimelineResult;
 import com.clilystudio.netbook.model.Tweet;
 import com.clilystudio.netbook.model.User;
+import com.clilystudio.netbook.ui.user.AuthLoginActivity;
 import com.google.gson.Gson;
+import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshBase$Mode;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.handmark.pulltorefresh.library.j;
@@ -267,10 +271,15 @@ public class TweetTimelineFragment extends Fragment {
         this.f.setVisibility(View.GONE);
         this.g = (TextView) view.findViewById(R.id.empty_text);
         this.c = (PullToRefreshListView) view.findViewById(R.id.ptr_list);
-        this.c.setMode(PullToRefreshBase$Mode.PULL_FROM_START);
+        this.c.setMode(PullToRefreshBase.Mode.PULL_FROM_START);
         this.h = (RelativeLayout) view.findViewById(R.id.fl_not_login_cover);
         this.i = (TextView) view.findViewById(R.id.tv_login);
-        this.i.setOnClickListener(new dW(this));
+        this.i.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TweetTimelineFragment.this.startActivity(AuthLoginActivity.a( TweetTimelineFragment.this.getActivity()));
+            }
+        });
         this.d = (ListView) this.c.h();
         this.e = layoutInflater.inflate(R.layout.loading_item, null);
         this.d.addFooterView(this.e);

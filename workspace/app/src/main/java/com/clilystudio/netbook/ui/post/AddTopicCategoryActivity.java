@@ -1,8 +1,10 @@
 package com.clilystudio.netbook.ui.post;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.ui.BaseActivity;
 
 public class AddTopicCategoryActivity extends BaseActivity {
@@ -40,7 +42,28 @@ public class AddTopicCategoryActivity extends BaseActivity {
         this.e = this.getIntent().getBooleanExtra("book_post_list_from_reader", false);
         View view = this.findViewById(R.id.add_post_category_1);
         View view2 = this.findViewById(R.id.add_post_category_2);
-        view.setOnClickListener(new I(this));
-        view2.setOnClickListener(new J(this));
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(AddTopicCategoryActivity.this, AddTopicActivity.class);
+                intent.putExtra("book_post_list_bookId", AddTopicCategoryActivity.a(AddTopicCategoryActivity.this));
+                intent.putExtra("book_post_list_bookTitle", AddTopicCategoryActivity.b(AddTopicCategoryActivity.this));
+                intent.putExtra("add_post_mode", AddTopicCategoryActivity.c(AddTopicCategoryActivity.this));
+                intent.putExtra("book_post_list_from_reader", AddTopicCategoryActivity.d(AddTopicCategoryActivity.this));
+                AddTopicCategoryActivity.this.startActivity(intent);
+            }
+        });
+        view2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(AddTopicCategoryActivity.this, AddVoteActivity.class);
+                intent.putExtra("book_post_list_bookId", AddTopicCategoryActivity.a(AddTopicCategoryActivity.this));
+                intent.putExtra("book_post_list_bookTitle", AddTopicCategoryActivity.b(AddTopicCategoryActivity.this));
+                intent.putExtra("add_post_category", true);
+                intent.putExtra("add_post_mode", AddTopicCategoryActivity.c(AddTopicCategoryActivity.this));
+                intent.putExtra("book_post_list_from_reader", AddTopicCategoryActivity.d(AddTopicCategoryActivity.this));
+                AddTopicCategoryActivity.this.startActivity(intent);
+            }
+        });
     }
 }

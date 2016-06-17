@@ -4,6 +4,8 @@ import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
+
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.am;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -20,8 +22,10 @@ import com.clilystudio.netbook.model.ReplyeeInfo;
 import com.clilystudio.netbook.model.Review;
 import com.clilystudio.netbook.model.Tweet;
 import com.clilystudio.netbook.model.User;
+import com.clilystudio.netbook.ui.BookInfoActivity;
 import com.clilystudio.netbook.ui.SmartImageView;
 import com.clilystudio.netbook.ui.user.AuthLoginActivity;
+import com.clilystudio.netbook.util.*;
 import com.clilystudio.netbook.util.N;
 import com.clilystudio.netbook.util.T;
 import com.clilystudio.netbook.util.t;
@@ -56,7 +60,21 @@ public class ReviewActivity extends AbsPostActivity {
 
     public ReviewActivity() {
         this.q = new cz(this);
-        this.r = new cB(this);
+        this.r = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                switch (v.getId()) {
+                    default: {
+                        return;
+                    }
+                    case R.id.review_rating_container: {
+                        if (ReviewActivity.h(ReviewActivity.this) == null || ReviewActivity.h(ReviewActivity.this).getBook() == null) return;
+                        ReviewActivity.this.startActivity(BookInfoActivity.a(ReviewActivity.this, ReviewActivity.h(ReviewActivity.this).getBook().get_id()));
+                        return;
+                    }
+                }
+            }
+        };
     }
 
     static /* synthetic */ Review a(ReviewActivity reviewActivity, Review review) {
@@ -151,14 +169,19 @@ public class ReviewActivity extends AbsPostActivity {
     /*
      * Enabled aggressive block sorting
      */
-    static /* synthetic */ void b(ReviewActivity reviewActivity, Review review) {
-        Author author = review.getAuthor();
+    static /* synthetic */ void b(final ReviewActivity reviewActivity, Review review) {
+        final Author author = review.getAuthor();
         SmartImageView smartImageView = (SmartImageView) reviewActivity.c.findViewById(R.id.avatar);
         if (am.m((Context) reviewActivity)) {
             smartImageView.setImageResource(R.drawable.avatar_default);
         } else {
             smartImageView.setImageUrl(author.getScaleAvatar());
-            smartImageView.setOnClickListener(new cA(reviewActivity, author));
+            smartImageView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    reviewActivity.startActivity(com.clilystudio.netbook.util.e.a(reviewActivity, author));
+                }
+            });
         }
         ((TextView) reviewActivity.c.findViewById(R.id.name)).setText(author.getNickname());
         ((TextView) reviewActivity.c.findViewById(R.id.lv)).setText("lv." + author.getLv());
@@ -217,12 +240,19 @@ public class ReviewActivity extends AbsPostActivity {
         return reviewActivity.g;
     }
 
-    static /* synthetic */ void g(ReviewActivity reviewActivity) {
+    static /* synthetic */ void g(final ReviewActivity reviewActivity) {
         reviewActivity.f.setVisibility(View.VISIBLE);
         reviewActivity.f.findViewById(R.id.pb_loading).setVisibility(View.GONE);
-        TextView textView = (TextView) reviewActivity.f.findViewById(R.id.tv_loading);
+        final TextView textView = (TextView) reviewActivity.f.findViewById(R.id.tv_loading);
         textView.setText("\u70b9\u51fb\u52a0\u8f7d\u8bc4\u8bba");
-        reviewActivity.f.setOnClickListener(new cy(reviewActivity, textView));
+        reviewActivity.f.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ReviewActivity.d(reviewActivity).findViewById(R.id.pb_loading).setVisibility(View.VISIBLE);
+                textView.setText("\u52a0\u8f7d\u4e2d...");
+                ReviewActivity.b(reviewActivity);
+            }
+        });
     }
 
     static /* synthetic */ Review h(ReviewActivity reviewActivity) {

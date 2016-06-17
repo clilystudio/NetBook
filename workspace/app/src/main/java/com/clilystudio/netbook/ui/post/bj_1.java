@@ -1,5 +1,6 @@
 package com.clilystudio.netbook.ui.post;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,7 +32,7 @@ final class bj extends BaseAdapter {
     }
 
     @Override
-    public final View getView(int n, View view, ViewGroup viewGroup) {
+    public final View getView(final int n, View view, ViewGroup viewGroup) {
         if (view == null) {
             view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.layout_list_item_follower, viewGroup, false);
             view.setTag(new bl(this, view));
@@ -43,7 +44,16 @@ final class bj extends BaseAdapter {
         TextView textView = bl2.c;
         Object[] arrobject = new Object[]{follower.getTweets(), follower.getFollowings(), follower.getFollowers()};
         textView.setText(String.format("\u52a8\u6001 %d |  \u5173\u6ce8 %d |  \u7c89\u4e1d %d", arrobject));
-        view.setOnClickListener(new bk(this, n));
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Follower follower = (Follower) bj.this.getItem(n);
+                Intent intent = OtherUserActivity.a(bj.this.a);
+                intent.putExtra("USER_ID", follower.get_id());
+                intent.putExtra("USER_NAME", follower.getNickname());
+                bj.this.a.startActivity(intent);
+            }
+        });
         return view;
     }
 }

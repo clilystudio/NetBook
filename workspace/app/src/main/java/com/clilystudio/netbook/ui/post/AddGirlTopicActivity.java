@@ -5,6 +5,8 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
+
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.am;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -42,22 +44,32 @@ public class AddGirlTopicActivity extends BaseActivity {
         return true;
     }
 
-    static /* synthetic */ void b(AddGirlTopicActivity addGirlTopicActivity) {
+    static /* synthetic */ void b(final AddGirlTopicActivity addGirlTopicActivity) {
         Account account = am.e();
         if (account == null) {
             e.a((Activity) addGirlTopicActivity, (String) "\u8bf7\u767b\u5f55\u540e\u518d\u53d1\u5e03");
             addGirlTopicActivity.startActivity(AuthLoginActivity.a(addGirlTopicActivity));
             return;
         }
-        String string = account.getToken();
+        final String token = account.getToken();
         h h2 = new h(addGirlTopicActivity);
         View view = LayoutInflater.from(addGirlTopicActivity).inflate(R.layout.dialog_waring_text, null);
         ((TextView) view.findViewById(R.id.waring_content)).setText(R.string.warning_dialog_girl_topic);
         h2.d = "\u53d1\u5e03";
         h2.a(R.string.vote_ok, null);
         h2.b(R.string.cancel, (DialogInterface.OnClickListener) ((Object) new v(addGirlTopicActivity)));
-        AlertDialog alertDialog = h2.a(view).b();
-        ((Button) alertDialog.findViewById(16908313)).setOnClickListener((View.OnClickListener) ((Object) new w(addGirlTopicActivity, (Dialog) alertDialog, string)));
+        final AlertDialog alertDialog = h2.a(view).b();
+        ((Button) alertDialog.findViewById(16908313)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.dismiss();
+                String string = AddGirlTopicActivity.c(addGirlTopicActivity).getText().toString().trim();
+                String string2 = AddGirlTopicActivity.d(addGirlTopicActivity).getText().toString().trim();
+                z z2 = new z(addGirlTopicActivity, addGirlTopicActivity, R.string.post_publish_loading);
+                String[] arrstring = new String[]{token, string, string2};
+                z2.b(arrstring);
+            }
+        });
     }
 
     static /* synthetic */ EditText c(AddGirlTopicActivity addGirlTopicActivity) {

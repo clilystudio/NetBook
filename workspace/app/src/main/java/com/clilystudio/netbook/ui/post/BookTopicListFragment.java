@@ -5,8 +5,10 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.ListAdapter;
 
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.adapter.j;
 import com.clilystudio.netbook.event.f;
 import com.clilystudio.netbook.model.TopicPost;
@@ -61,11 +63,16 @@ public class BookTopicListFragment extends BookPostListFragment {
         ((BookPostTabActivity) bookTopicListFragment.getActivity()).k();
     }
 
-    static /* synthetic */ void f(BookTopicListFragment bookTopicListFragment) {
-        if (bookTopicListFragment.e.getVisibility() == 8) {
+    static /* synthetic */ void f(final BookTopicListFragment bookTopicListFragment) {
+        if (bookTopicListFragment.e.getVisibility() == View.GONE) {
             bookTopicListFragment.e.setVisibility(View.VISIBLE);
             bookTopicListFragment.e.setImageResource(R.drawable.ic_fab_post);
-            bookTopicListFragment.e.setOnClickListener(new aN(bookTopicListFragment));
+            bookTopicListFragment.e.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    BookTopicListFragment.e(bookTopicListFragment);
+                }
+            });
             bookTopicListFragment.e.setContentDescription("\u53d1\u5e03\u8ba8\u8bba");
         }
     }

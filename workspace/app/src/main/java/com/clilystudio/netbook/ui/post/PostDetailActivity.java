@@ -5,6 +5,8 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.am;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,6 +26,7 @@ import com.clilystudio.netbook.model.User;
 import com.clilystudio.netbook.model.Vote;
 import com.clilystudio.netbook.ui.SmartImageView;
 import com.clilystudio.netbook.ui.user.AuthLoginActivity;
+import com.clilystudio.netbook.util.*;
 import com.clilystudio.netbook.util.N;
 import com.clilystudio.netbook.util.T;
 import com.clilystudio.netbook.widget.HotCommentView;
@@ -62,7 +65,17 @@ public class PostDetailActivity extends AbsPostActivity {
 
     public PostDetailActivity() {
         this.w = new cr(this);
-        this.x = new cs(this);
+        this.x = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                PostDetailActivity.a(PostDetailActivity.this, (Integer) v.getTag());
+                if (PostDetailActivity.k(PostDetailActivity.this)) {
+                    cx cx2 = new cx(PostDetailActivity.this, PostDetailActivity.this, R.string.vote_send_loading);
+                    String[] arrstring = new String[]{PostDetailActivity.a(PostDetailActivity.this).get_id(), PostDetailActivity.i(PostDetailActivity.this).getToken(), String.valueOf(PostDetailActivity.h(PostDetailActivity.this))};
+                    cx2.b(arrstring);
+                }
+            }
+        };
     }
 
     static /* synthetic */ int a(PostDetailActivity postDetailActivity, int n) {
@@ -204,15 +217,20 @@ public class PostDetailActivity extends AbsPostActivity {
     /*
      * Enabled aggressive block sorting
      */
-    static /* synthetic */ void b(PostDetailActivity postDetailActivity, Post post) {
-        Author author = post.getAuthor();
+    static /* synthetic */ void b(final PostDetailActivity postDetailActivity, Post post) {
+        final Author author = post.getAuthor();
         SmartImageView smartImageView = (SmartImageView) postDetailActivity.c.findViewById(R.id.avatar);
         if (am.m((Context) postDetailActivity)) {
             smartImageView.setImageResource(R.drawable.avatar_default);
         } else {
             smartImageView.setImageUrl(author.getScaleAvatar());
         }
-        smartImageView.setOnClickListener(new ct(postDetailActivity, author));
+        smartImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                postDetailActivity.startActivity(com.clilystudio.netbook.util.e.a(postDetailActivity,author));
+            }
+        });
         ((TextView) postDetailActivity.c.findViewById(R.id.name)).setText(author.getNickname());
         ((TextView) postDetailActivity.c.findViewById(R.id.lv)).setText("lv." + author.getLv());
         ((TextView) postDetailActivity.c.findViewById(R.id.time)).setText(t.e((Date) post.getCreated()));
@@ -273,13 +291,20 @@ public class PostDetailActivity extends AbsPostActivity {
         return postDetailActivity.g;
     }
 
-    static /* synthetic */ void g(PostDetailActivity postDetailActivity) {
+    static /* synthetic */ void g(final PostDetailActivity postDetailActivity) {
         postDetailActivity.p.setVisibility(View.VISIBLE);
         postDetailActivity.p.findViewById(R.id.pb_loading).setVisibility(View.GONE);
-        TextView textView = (TextView) postDetailActivity.p.findViewById(R.id.tv_loading);
+        final TextView textView = (TextView) postDetailActivity.p.findViewById(R.id.tv_loading);
         textView.setText("\u70b9\u51fb\u91cd\u8bd5");
-        postDetailActivity.p.setOnClickListener(new cq(postDetailActivity, textView));
-    }
+        postDetailActivity.p.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                PostDetailActivity.e(postDetailActivity).findViewById(R.id.pb_loading).setVisibility(View.VISIBLE);
+                textView.setText("\u52a0\u8f7d\u4e2d...");
+                PostDetailActivity.b(postDetailActivity);
+            }
+        });
+}
 
     static /* synthetic */ int h(PostDetailActivity postDetailActivity) {
         return postDetailActivity.u;

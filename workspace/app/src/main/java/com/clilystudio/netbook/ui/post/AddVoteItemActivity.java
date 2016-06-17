@@ -5,7 +5,11 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.am;
+
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -42,8 +46,20 @@ public class AddVoteItemActivity extends BaseActivity {
     private View.OnClickListener q;
 
     public AddVoteItemActivity() {
-        this.p = new S(this);
-        this.q = new T(this);
+        this.p = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int n = (Integer) v.getTag();
+                AddVoteItemActivity.a(AddVoteItemActivity.this, AddVoteItemActivity.d(AddVoteItemActivity.this)[n], n);
+            }
+        };
+        this.q = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int n = (Integer) v.getTag();
+                AddVoteItemActivity.a(AddVoteItemActivity.this, n);
+            }
+        };
     }
 
     static /* synthetic */ void a(AddVoteItemActivity addVoteItemActivity) {
@@ -155,17 +171,32 @@ public class AddVoteItemActivity extends BaseActivity {
         ((InputMethodManager) addVoteItemActivity.getSystemService("input_method")).hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 
-    static /* synthetic */ void a(AddVoteItemActivity addVoteItemActivity, TextView textView, int n) {
+    static /* synthetic */ void a(final AddVoteItemActivity addVoteItemActivity, final TextView textView, final int n) {
         h h2 = new h(addVoteItemActivity);
         View view = LayoutInflater.from(addVoteItemActivity).inflate(R.layout.dialog_edit_text, null);
-        EditText editText = (EditText) view.findViewById(R.id.dialog_edit_content);
+        final EditText editText = (EditText) view.findViewById(R.id.dialog_edit_content);
         editText.setText("");
         h2.d = "\u6295\u7968\u9879";
         h2.a(R.string.ok, null);
         h2.b(R.string.cancel, (DialogInterface.OnClickListener) new U(addVoteItemActivity, editText));
-        AlertDialog alertDialog = h2.a(view).b();
+        final AlertDialog alertDialog = h2.a(view).b();
         Button button = (Button) alertDialog.findViewById(16908313);
-        button.setOnClickListener(new V(addVoteItemActivity, editText, textView, n, alertDialog));
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AddVoteItemActivity.a(addVoteItemActivity, editText);
+                String string = editText.getText().toString();
+                if (!com.clilystudio.netbook.hpay100.a.a.Q(string)) {
+                    if (AddVoteItemActivity.a(addVoteItemActivity, string)) {
+                        com.clilystudio.netbook.util.e.a(addVoteItemActivity, "该投票项已经存在");
+                    } else {
+                        textView.setText(string);
+                        AddVoteItemActivity.h(addVoteItemActivity)[n] = string;
+                    }
+                }
+                alertDialog.dismiss();
+            }
+        });
         if (com.clilystudio.netbook.hpay100.a.a.Q(editText.getText().toString())) {
             button.setEnabled(false);
         }
@@ -213,7 +244,7 @@ public class AddVoteItemActivity extends BaseActivity {
     /*
      * Enabled aggressive block sorting
      */
-    static /* synthetic */ void c(AddVoteItemActivity addVoteItemActivity) {
+    static /* synthetic */ void c(final AddVoteItemActivity addVoteItemActivity) {
         h h2 = new h(addVoteItemActivity);
         View view = LayoutInflater.from(addVoteItemActivity).inflate(R.layout.dialog_waring_text, null);
         TextView textView = (TextView) view.findViewById(R.id.waring_content);
@@ -225,8 +256,17 @@ public class AddVoteItemActivity extends BaseActivity {
         h2.d = "\u53d1\u5e03";
         h2.a(R.string.vote_ok, null);
         h2.b(R.string.cancel, (DialogInterface.OnClickListener) new X(addVoteItemActivity));
-        AlertDialog alertDialog = h2.a(view).b();
-        ((Button) alertDialog.findViewById(16908313)).setOnClickListener(new Y(addVoteItemActivity, alertDialog));
+        final AlertDialog alertDialog = h2.a(view).b();
+        ((Button) alertDialog.findViewById(16908313)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.dismiss();
+                String string = TextUtils.join((CharSequence) ",", AddVoteItemActivity.i(addVoteItemActivity).toArray());
+                Z z = new Z(addVoteItemActivity, addVoteItemActivity, R.string.post_publish_loading);
+                String[] arrstring = new String[]{AddVoteItemActivity.j(addVoteItemActivity).getToken(), AddVoteItemActivity.k(addVoteItemActivity), AddVoteItemActivity.l(addVoteItemActivity).trim(), AddVoteItemActivity.m(addVoteItemActivity).trim(), string};
+                z.b(arrstring);
+            }
+        });
     }
 
     static /* synthetic */ TextView[] d(AddVoteItemActivity addVoteItemActivity) {
@@ -324,7 +364,12 @@ public class AddVoteItemActivity extends BaseActivity {
         }
         View var9_9 = this.findViewById(R.id.add_vote_item_add_btn);
         View var10_10 = this.findViewById(R.id.add_vote_item_ok_btn);
-        var9_9.setOnClickListener(new Q(this));
+        var9_9.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AddVoteItemActivity.a(AddVoteItemActivity.this);
+            }
+        });
         var10_10.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

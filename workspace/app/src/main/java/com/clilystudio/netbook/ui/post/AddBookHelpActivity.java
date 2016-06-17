@@ -5,6 +5,8 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
+
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.am;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -42,22 +44,32 @@ public class AddBookHelpActivity extends BaseActivity {
         return true;
     }
 
-    static /* synthetic */ void b(AddBookHelpActivity addBookHelpActivity) {
+    static /* synthetic */ void b(final AddBookHelpActivity addBookHelpActivity) {
         Account account = am.e();
         if (account == null) {
             e.a((Activity) addBookHelpActivity, (String) "\u8bf7\u767b\u5f55\u540e\u518d\u53d1\u5e03");
             addBookHelpActivity.startActivity(AuthLoginActivity.a(addBookHelpActivity));
             return;
         }
-        String string = account.getToken();
+        final String token = account.getToken();
         h h2 = new h(addBookHelpActivity);
         View view = LayoutInflater.from(addBookHelpActivity).inflate(R.layout.dialog_waring_text, null);
         ((TextView) view.findViewById(R.id.waring_content)).setText(R.string.waring_dialog_help);
         h2.d = "\u53d1\u5e03";
         h2.a(R.string.vote_ok, null);
         h2.b(R.string.cancel, (DialogInterface.OnClickListener) ((Object) new j(addBookHelpActivity)));
-        AlertDialog alertDialog = h2.a(view).b();
-        ((Button) alertDialog.findViewById(16908313)).setOnClickListener((View.OnClickListener) ((Object) new k(addBookHelpActivity, (Dialog) alertDialog, string)));
+        final AlertDialog alertDialog = h2.a(view).b();
+        ((Button) alertDialog.findViewById(16908313)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.dismiss();
+                String string = AddBookHelpActivity.c(addBookHelpActivity).getText().toString().trim();
+                String string2 = AddBookHelpActivity.d(addBookHelpActivity).getText().toString().trim();
+                n n2 = new n(addBookHelpActivity, addBookHelpActivity, R.string.post_publish_loading);
+                String[] arrstring = new String[]{token, string, string2};
+                n2.b(arrstring);
+           }
+        });
     }
 
     static /* synthetic */ EditText c(AddBookHelpActivity addBookHelpActivity) {

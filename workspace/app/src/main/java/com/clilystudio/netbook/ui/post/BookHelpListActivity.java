@@ -11,10 +11,12 @@ import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.adapter.d;
 import com.clilystudio.netbook.model.BookHelpSummary;
 import com.clilystudio.netbook.ui.BaseActivity;
 import com.clilystudio.netbook.ui.aa;
+import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshBase$Mode;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.handmark.pulltorefresh.library.j;
@@ -51,38 +53,55 @@ public class BookHelpListActivity extends BaseActivity {
      * Enabled aggressive block sorting
      * Lifted jumps to return sites
      */
-    static /* synthetic */ PopupWindow a(BookHelpListActivity var0, boolean var1_1) {
+    static /* synthetic */ PopupWindow a(final BookHelpListActivity var0, boolean var1_1) {
         if (var1_1) {
-            var9_2 = LayoutInflater.from(var0).inflate(R.layout.book_help_popupwindow_left, null);
-            var10_3 = (TextView) var9_2.findViewById(R.id.text_item0);
-            var11_4 = (TextView) var9_2.findViewById(R.id.text_item1);
+            View var9_2 = LayoutInflater.from(var0).inflate(R.layout.book_help_popupwindow_left, null);
+            TextView  var10_3 = (TextView) var9_2.findViewById(R.id.text_item0);
+            TextView  var11_4 = (TextView) var9_2.findViewById(R.id.text_item1);
             if (var0.q) {
                 var11_4.setTextColor(var0.getResources().getColor(R.color.popup_red));
             } else if (var0.o.equals("all")) {
                 var10_3.setTextColor(var0.getResources().getColor(R.color.popup_red));
             }
-            var12_5 = var0.a(var9_2);
+            final PopupWindow  var12_5 = var0.a(var9_2);
             var9_2.setOnTouchListener((View.OnTouchListener) new aq(var0, var12_5));
-            var10_3.setOnClickListener((View.OnClickListener) new ar(var0, var12_5));
-            var11_4.setOnClickListener((View.OnClickListener) new as(var0, var12_5));
+            var10_3.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    var12_5.dismiss();
+                    BookHelpListActivity.k(var0).setText("全部");
+                    BookHelpListActivity.b(var0, false);
+                    BookHelpListActivity.a(var0, "all");
+                    BookHelpListActivity.l(var0).setRefreshing();
+                }
+            });
+            var11_4.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    var12_5.dismiss();
+                    BookHelpListActivity.k(var0).setText("精品");
+                    BookHelpListActivity.b(var0, true);
+                    BookHelpListActivity.a(var0, "all");
+                    BookHelpListActivity.l(var0).setRefreshing();
+                }
+            });
             return var12_5;
         }
-        var2_6 = LayoutInflater.from(var0).inflate(R.layout.book_help_popupwindow_right, null);
-        var3_7 = (TextView) var2_6.findViewById(R.id.text_item0);
-        var4_8 = (TextView) var2_6.findViewById(R.id.text_item1);
-        var5_9 = (TextView) var2_6.findViewById(R.id.text_item2);
-        var6_10 = var0.p;
-        var7_11 = -1;
-        switch (var6_10.hashCode()) {
+        View  var2_6 = LayoutInflater.from(var0).inflate(R.layout.book_help_popupwindow_right, null);
+        TextView  var3_7 = (TextView) var2_6.findViewById(R.id.text_item0);
+        TextView   var4_8 = (TextView) var2_6.findViewById(R.id.text_item1);
+        TextView   var5_9 = (TextView) var2_6.findViewById(R.id.text_item2);
+        int  var7_11 = -1;
+        switch (var0.p.hashCode()) {
             case -234430277: {
-                if (var6_10.equals("updated")) {
+                if (var0.p.equals("updated")) {
                     var7_11 = 0;
                     **break;
                 }
                 **GOTO lbl30
             }
             case 1028554472: {
-                if (var6_10.equals("created")) {
+                if (var0.p.equals("created")) {
                     var7_11 = 1;
                 }
             }
@@ -94,7 +113,7 @@ public class BookHelpListActivity extends BaseActivity {
             }
             case 1742524449:
         }
-        if (var6_10.equals("comment-count")) {
+        if (var0.p.equals("comment-count")) {
             var7_11 = 2;
         }
         lbl35:
@@ -114,17 +133,41 @@ public class BookHelpListActivity extends BaseActivity {
                 **GOTO lbl45
             }
             case 2:
+                final PopupWindow var8_12 = var0.a(var2_6);
+                var2_6.setOnTouchListener((View.OnTouchListener) new at(var0, var8_12));
+                var3_7.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        var8_12.dismiss();
+                        BookHelpListActivity.m(var0).setText(R.string.post_sort_default);
+                        BookHelpListActivity.b(var0, "updated");
+                        BookHelpListActivity.l(var0).setRefreshing();
+                    }
+                });
+                var4_8.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        var8_12.dismiss();
+                        BookHelpListActivity.m(var0).setText(R.string.post_sort_create);
+                        BookHelpListActivity.b(var0, "created");
+                        BookHelpListActivity.l(var0).setRefreshing();
+                    }
+                });
+                var5_9.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        var8_12.dismiss();
+                        BookHelpListActivity.m(var0).setText(R.string.post_sort_reply_count);
+                        BookHelpListActivity.b(var0, "comment");
+                        BookHelpListActivity.l(var0).setRefreshing();
+                    }
+                });
+                return var8_12;
         }
         var5_9.setTextColor(var0.getResources().getColor(R.color.popup_red));
         lbl45:
         // 2 sources:
-        var8_12 = var0.a(var2_6);
-        var2_6.setOnTouchListener((View.OnTouchListener) new at(var0, var8_12));
-        var3_7.setOnClickListener((View.OnClickListener) new ag(var0, var8_12));
-        var4_8.setOnClickListener((View.OnClickListener) new ah(var0, var8_12));
-        var5_9.setOnClickListener((View.OnClickListener) new ai(var0, var8_12));
-        return var8_12;
-    }
+     }
 
     static /* synthetic */ au a(BookHelpListActivity bookHelpListActivity, au au2) {
         bookHelpListActivity.b = au2;
@@ -255,15 +298,27 @@ public class BookHelpListActivity extends BaseActivity {
         this.g = this.findViewById(R.id.pb_loading);
         this.h = (TextView) this.findViewById(R.id.empty_text);
         this.c = (PullToRefreshListView) this.findViewById(R.id.ptr_list);
-        this.c.setMode(PullToRefreshBase$Mode.PULL_FROM_START);
+        this.c.setMode(PullToRefreshBase.Mode.PULL_FROM_START);
         View view = this.findViewById(R.id.community_top_left);
         View view2 = this.findViewById(R.id.community_top_right);
         this.k = (TextView) this.findViewById(R.id.community_top_left_title);
         this.l = (TextView) this.findViewById(R.id.community_top_right_title);
         this.m = (ImageView) this.findViewById(R.id.community_top_left_arrow);
         this.n = (ImageView) this.findViewById(R.id.community_top_right_arrow);
-        view.setOnClickListener((View.OnClickListener) ((Object) new al(this)));
-        view2.setOnClickListener((View.OnClickListener) ((Object) new am(this)));
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                BookHelpListActivity.a(BookHelpListActivity.this, true).showAsDropDown(v);
+                BookHelpListActivity.b(BookHelpListActivity.this).setImageDrawable(BookHelpListActivity.this.getResources().getDrawable(R.drawable.book_topic_top_arrow_up));
+            }
+        });
+        view2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                BookHelpListActivity.a(BookHelpListActivity.this, false).showAsDropDown(v);
+                BookHelpListActivity.b(BookHelpListActivity.this).setImageDrawable(BookHelpListActivity.this.getResources().getDrawable(R.drawable.book_topic_top_arrow_up));
+            }
+        });
         this.e = (ListView) this.c.h();
         if (a.j()) {
             this.e.setFooterDividersEnabled(false);

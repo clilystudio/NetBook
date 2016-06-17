@@ -5,6 +5,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.am;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +20,7 @@ import com.clilystudio.netbook.adapter.o;
 import com.clilystudio.netbook.model.GirlTopicSummary;
 import com.clilystudio.netbook.ui.BaseActivity;
 import com.clilystudio.netbook.ui.aa;
+import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshBase$Mode;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.handmark.pulltorefresh.library.j;
@@ -54,38 +57,55 @@ public class GirlTopicListActivity extends BaseActivity {
      * Enabled aggressive block sorting
      * Lifted jumps to return sites
      */
-    static /* synthetic */ PopupWindow a(GirlTopicListActivity var0, boolean var1_1) {
+    static /* synthetic */ PopupWindow a(final GirlTopicListActivity var0, boolean var1_1) {
         if (var1_1) {
-            var9_2 = LayoutInflater.from(var0).inflate(R.layout.book_help_popupwindow_left, null);
-            var10_3 = (TextView) var9_2.findViewById(R.id.text_item0);
-            var11_4 = (TextView) var9_2.findViewById(R.id.text_item1);
+            View var9_2 = LayoutInflater.from(var0).inflate(R.layout.book_help_popupwindow_left, null);
+            TextView  var10_3 = (TextView) var9_2.findViewById(R.id.text_item0);
+            TextView  var11_4 = (TextView) var9_2.findViewById(R.id.text_item1);
             if (var0.q) {
                 var11_4.setTextColor(var0.getResources().getColor(R.color.popup_red));
             } else if (var0.o.equals("all")) {
                 var10_3.setTextColor(var0.getResources().getColor(R.color.popup_red));
             }
-            var12_5 = var0.a(var9_2);
+            final PopupWindow  var12_5 = var0.a(var9_2);
             var9_2.setOnTouchListener(new bE(var0, var12_5));
-            var10_3.setOnClickListener(new bF(var0, var12_5));
-            var11_4.setOnClickListener(new bG(var0, var12_5));
+            var10_3.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    var12_5.dismiss();
+                    GirlTopicListActivity.k(var0).setText("全部");
+                    GirlTopicListActivity.b(var0, false);
+                    GirlTopicListActivity.a(var0, "all");
+                    GirlTopicListActivity.l(var0).setRefreshing();
+                }
+            });
+            var11_4.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    var12_5.dismiss();
+                    GirlTopicListActivity.k(var0).setText("精品");
+                    GirlTopicListActivity.b(var0, true);
+                    GirlTopicListActivity.a(var0, "all");
+                    GirlTopicListActivity.l(var0).setRefreshing();
+                }
+            });
             return var12_5;
         }
-        var2_6 = LayoutInflater.from(var0).inflate(R.layout.book_help_popupwindow_right, null);
-        var3_7 = (TextView) var2_6.findViewById(R.id.text_item0);
-        var4_8 = (TextView) var2_6.findViewById(R.id.text_item1);
-        var5_9 = (TextView) var2_6.findViewById(R.id.text_item2);
-        var6_10 = var0.p;
-        var7_11 = -1;
-        switch (var6_10.hashCode()) {
+       View var2_6 = LayoutInflater.from(var0).inflate(R.layout.book_help_popupwindow_right, null);
+        TextView   var3_7 = (TextView) var2_6.findViewById(R.id.text_item0);
+        TextView  var4_8 = (TextView) var2_6.findViewById(R.id.text_item1);
+        TextView  var5_9 = (TextView) var2_6.findViewById(R.id.text_item2);
+        int var7_11 = -1;
+        switch (var0.p.hashCode()) {
             case -234430277: {
-                if (var6_10.equals("updated")) {
+                if (var0.p.equals("updated")) {
                     var7_11 = 0;
                     **break;
                 }
                 **GOTO lbl30
             }
             case 1028554472: {
-                if (var6_10.equals("created")) {
+                if (var0.p.equals("created")) {
                     var7_11 = 1;
                 }
             }
@@ -96,9 +116,9 @@ public class GirlTopicListActivity extends BaseActivity {
                 **GOTO lbl35
             }
             case 1742524449:
-        }
-        if (var6_10.equals("comment-count")) {
-            var7_11 = 2;
+                if (var0.p.equals("comment-count")) {
+                    var7_11 = 2;
+                }
         }
         lbl35:
         // 4 sources:
@@ -117,15 +137,37 @@ public class GirlTopicListActivity extends BaseActivity {
                 **GOTO lbl45
             }
             case 2:
+                var5_9.setTextColor(var0.getResources().getColor(R.color.popup_red));
         }
-        var5_9.setTextColor(var0.getResources().getColor(R.color.popup_red));
-        lbl45:
-        // 2 sources:
-        var8_12 = var0.a(var2_6);
+        final PopupWindow var8_12 = var0.a(var2_6);
         var2_6.setOnTouchListener(new bH(var0, var8_12));
-        var3_7.setOnClickListener((View.OnClickListener) new bu(var0, var8_12));
-        var4_8.setOnClickListener((View.OnClickListener) new bv(var0, var8_12));
-        var5_9.setOnClickListener((View.OnClickListener) new bw(var0, var8_12));
+        var3_7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                var8_12.dismiss();
+                GirlTopicListActivity.m(var0).setText(R.string.post_sort_default);
+                GirlTopicListActivity.b(var0, "updated");
+                GirlTopicListActivity.l(var0).setRefreshing();
+            }
+        });
+        var4_8.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                var8_12.dismiss();
+                GirlTopicListActivity.m(var0).setText(R.string.post_sort_create);
+                GirlTopicListActivity.b(var0, "created");
+                GirlTopicListActivity.l(var0).setRefreshing();
+            }
+        });
+        var5_9.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                var8_12.dismiss();
+                GirlTopicListActivity.m(var0).setText(R.string.post_sort_reply_count);
+                GirlTopicListActivity.b(var0, "comment-count");
+                GirlTopicListActivity.l(var0).setRefreshing();
+            }
+        });
         return var8_12;
     }
 
@@ -262,15 +304,27 @@ public class GirlTopicListActivity extends BaseActivity {
         this.g = this.findViewById(R.id.pb_loading);
         this.h = (TextView) this.findViewById(R.id.empty_text);
         this.c = (PullToRefreshListView) this.findViewById(R.id.ptr_list);
-        this.c.setMode(PullToRefreshBase$Mode.PULL_FROM_START);
+        this.c.setMode(PullToRefreshBase.Mode.PULL_FROM_START);
         View view = this.findViewById(R.id.community_top_left);
         View view2 = this.findViewById(R.id.community_top_right);
         this.k = (TextView) this.findViewById(R.id.community_top_left_title);
         this.l = (TextView) this.findViewById(R.id.community_top_right_title);
         this.m = (ImageView) this.findViewById(R.id.community_top_left_arrow);
         this.n = (ImageView) this.findViewById(R.id.community_top_right_arrow);
-        view.setOnClickListener((View.OnClickListener) ((Object) new bz(this)));
-        view2.setOnClickListener(new bA(this));
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                GirlTopicListActivity.a(GirlTopicListActivity.this, true).showAsDropDown(v);
+                GirlTopicListActivity.c(GirlTopicListActivity.this).setImageDrawable(GirlTopicListActivity.this.getResources().getDrawable(R.drawable.book_topic_top_arrow_up));
+            }
+        });
+        view2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                GirlTopicListActivity.a(GirlTopicListActivity.this, false).showAsDropDown(v);
+                GirlTopicListActivity.c(GirlTopicListActivity.this).setImageDrawable(GirlTopicListActivity.this.getResources().getDrawable(R.drawable.book_topic_top_arrow_up));
+            }
+        });
         this.e = (ListView) this.c.h();
         if (a.j()) {
             this.e.setFooterDividersEnabled(false);

@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
+
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.am;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -114,7 +116,15 @@ public class TweetTabActivity extends BaseTabActivity implements ViewPager$OnPag
     }
 
     private void b() {
-        this.f.setOnClickListener(new dT(this));
+        this.f.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (TweetTabActivity.c(TweetTabActivity.this)) {
+                    TweetTabActivity.d(TweetTabActivity.this);
+                    TweetTabActivity.a(TweetTabActivity.this, false);
+                }
+            }
+        });
     }
 
     private void f() {
@@ -152,10 +162,45 @@ public class TweetTabActivity extends BaseTabActivity implements ViewPager$OnPag
         this.k = (FloatingActionButton) this.findViewById(R.id.fab_article);
         this.l = (FloatingActionButton) this.findViewById(R.id.fab_comment);
         this.m = (FloatingActionButton) this.findViewById(R.id.fab_tweet);
-        this.j.setOnClickListener(new dP(this));
-        this.m.setOnClickListener(new dQ(this));
-        this.k.setOnClickListener(new dR(this));
-        this.l.setOnClickListener(new dS(this));
+        this.j.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (TweetTabActivity.c(TweetTabActivity.this)) {
+                    TweetTabActivity.a(TweetTabActivity.this, false);
+                    TweetTabActivity.d(TweetTabActivity.this);
+                    TweetTabActivity.e(TweetTabActivity.this).setContentDescription("关闭选项");
+                    return;
+                }
+                TweetTabActivity.f(TweetTabActivity.this);
+                TweetTabActivity.a(TweetTabActivity.this, true);
+                TweetTabActivity.g(TweetTabActivity.this);
+                TweetTabActivity.e(TweetTabActivity.this).setContentDescription("展开选项");
+            }
+        });
+        this.m.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TweetTabActivity.d(TweetTabActivity.this);
+                TweetTabActivity.h(TweetTabActivity.this);
+                TweetTabActivity.a(TweetTabActivity.this, false);
+            }
+        });
+        this.k.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TweetTabActivity.d(TweetTabActivity.this);
+                TweetTabActivity.i(TweetTabActivity.this);
+                TweetTabActivity.a(TweetTabActivity.this, false);
+            }
+        });
+        this.l.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TweetTabActivity.d(TweetTabActivity.this);
+                TweetTabActivity.j(TweetTabActivity.this);
+                TweetTabActivity.a(TweetTabActivity.this, false);
+            }
+        });
         this.b();
         this.f();
         this.a = (TabHost) this.findViewById(R.id.host);
