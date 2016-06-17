@@ -7,6 +7,8 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.am;
 import android.view.View;
 import android.widget.EditText;
@@ -178,11 +180,23 @@ public class ModifyUserInfoActivity extends BaseActivity implements View.OnClick
             return;
         }
         View view3 = this.getLayoutInflater().inflate(R.layout.dialog_modify_gender, null);
-        AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+        final AlertDialog alertDialog = new AlertDialog.Builder(this).create();
         alertDialog.setView(view3, 0, 0, 0, 0);
         alertDialog.show();
-        view3.findViewById(R.id.gender_male).setOnClickListener((View.OnClickListener) ((Object) new k(this, alertDialog)));
-        view3.findViewById(R.id.gender_female).setOnClickListener((View.OnClickListener) ((Object) new l(this, alertDialog)));
+        view3.findViewById(R.id.gender_male).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.dismiss();
+                ModifyUserInfoActivity.a(ModifyUserInfoActivity.this, true);
+            }
+        });
+        view3.findViewById(R.id.gender_female).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.dismiss();
+                ModifyUserInfoActivity.a(ModifyUserInfoActivity.this, false);
+            }
+        });
     }
 
     /*

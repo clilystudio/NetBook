@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -129,8 +130,18 @@ public class SmsVerifyActivity extends BaseActivity {
         this.a(false);
         this.c = new Timer();
         this.b();
-        this.mSendCodeBtn.setOnClickListener(new as(this));
+        this.mSendCodeBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SmsVerifyActivity.a(SmsVerifyActivity.this);
+            }
+        });
         this.mCodeText.addTextChangedListener(new at(this));
-        this.mCommitBtn.setOnClickListener(new au(this));
+        this.mCommitBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // 原来就是空处理
+            }
+        });
     }
 }

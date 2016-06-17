@@ -4,7 +4,9 @@ import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.view.View;
 
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.ui.BaseActivity;
 
 public class UserFollowWeixinActivity extends BaseActivity {
@@ -23,6 +25,12 @@ public class UserFollowWeixinActivity extends BaseActivity {
         super.onCreate(bundle);
         this.setContentView(R.layout.activity_user_follow_weixin);
         this.b(R.string.user_follow_weixin);
-        this.findViewById(R.id.rl_follow_weixin).setOnClickListener(new ax(this));
+        this.findViewById(R.id.rl_follow_weixin).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                UserFollowWeixinActivity.a(UserFollowWeixinActivity.this);
+                UserFollowWeixinActivity.b(UserFollowWeixinActivity.this);
+            }
+        });
     }
 }

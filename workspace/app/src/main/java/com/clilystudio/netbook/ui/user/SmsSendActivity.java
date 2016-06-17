@@ -1,11 +1,13 @@
 package com.clilystudio.netbook.ui.user;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.model.ChargePlan;
 import com.clilystudio.netbook.ui.BaseActivity;
 
@@ -94,6 +96,16 @@ public class SmsSendActivity extends BaseActivity {
         this.a(false);
         this.a = (ChargePlan) this.getIntent().getSerializableExtra("key_charge_plan_send");
         this.mNumberText.addTextChangedListener(new ap(this));
-        this.mNextBtn.setOnClickListener(new aq(this));
+        this.mNextBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (SmsSendActivity.a(SmsSendActivity.this, SmsSendActivity.this.mNumberText.getText().toString())) {
+                    Intent intent = SmsVerifyActivity.a(SmsSendActivity.this, SmsSendActivity.c(SmsSendActivity.this), SmsSendActivity.this.mNumberText.getText().toString());
+                    SmsSendActivity.this.startActivity(intent);
+                    return;
+                }
+                SmsSendActivity.d(SmsSendActivity.this);
+            }
+        });
     }
 }

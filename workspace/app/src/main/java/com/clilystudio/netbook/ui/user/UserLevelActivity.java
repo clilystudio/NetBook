@@ -1,6 +1,8 @@
 package com.clilystudio.netbook.ui.user;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -38,6 +40,13 @@ public class UserLevelActivity extends BaseActivity {
         StringBuilder stringBuilder = new StringBuilder("\u8d85\u8fc7");
         Object[] arrobject = new Object[]{Float.valueOf(f * 100.0f)};
         textView.setText(stringBuilder.append(String.format("%.2f", arrobject)).append("%\u7684\u8ffd\u4e66\u7528\u6237").toString());
-        this.mDoTask.setOnClickListener(new aL(this));
+        this.mDoTask.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(UserLevelActivity.this, UserTaskActivity.class);
+                UserLevelActivity.this.startActivity(intent);
+                UserLevelActivity.this.finish();
+            }
+        });
     }
 }

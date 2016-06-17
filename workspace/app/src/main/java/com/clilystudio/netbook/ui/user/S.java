@@ -3,6 +3,7 @@ package com.clilystudio.netbook.ui.user;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.drawable.ColorDrawable;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
+import com.clilystudio.netbook.model.PayConsumeRecord;
 import com.clilystudio.netbook.util.*;
 import com.clilystudio.netbook.util.t;
 import com.clilystudio.netbook.widget.PayRecordCollapseItem;
@@ -22,20 +24,20 @@ import java.util.List;
 final class S extends BaseAdapter {
     final /* synthetic */ PayConsumeActivity a;
     private LayoutInflater b;
-    private List<PayConsumeRecord$Order> c;
+    private List<PayConsumeRecord.Order> c;
     private boolean[] d;
 
     public S(PayConsumeActivity payConsumeActivity, LayoutInflater layoutInflater) {
         this.a = payConsumeActivity;
         this.b = layoutInflater;
-        this.c = new ArrayList<PayConsumeRecord$Order>();
+        this.c = new ArrayList<PayConsumeRecord.Order>();
         this.d = new boolean[0];
     }
 
     /*
      * Enabled aggressive block sorting
      */
-    static /* synthetic */ void a(S s, final PayConsumeRecord$Order payConsumeRecord$Order, View view, View view2, int n) {
+    static /* synthetic */ void a(final S s, final PayConsumeRecord.Order payConsumeRecord$Order, View view, View view2, final int n) {
         View view3 = s.b.inflate(R.layout.pay_record_popupwindow, null);
         final PopupWindow popupWindow = new PopupWindow(view3, s.a.getResources().getDimensionPixelSize(R.dimen.reader_popup_width), -2);
         popupWindow.setFocusable(true);
@@ -57,8 +59,26 @@ final class S extends BaseAdapter {
                 popupWindow.dismiss();
             }
         });
-        view6.setOnClickListener(new W(s, n, popupWindow));
-        if (payConsumeRecord$Order.getPayType() == PayConsumeRecord$PayType.MULTIPLE_CHAPTERS) {
+//        W(s, n, popupWindow)
+        view6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                boolean[] arrbl = S.a(s);
+                 boolean bl = !S.a(s)[n];
+                arrbl[n] = bl;
+                s.notifyDataSetChanged();
+                if (S.a(s)[n]) {
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            PayConsumeActivity.a(s.a).smoothScrollToPositionFromTop(n, 0);
+                        }
+                    }, 50);
+                }
+                popupWindow.dismiss();
+            }
+        });
+        if (payConsumeRecord$Order.getPayType() == PayConsumeRecord.PayType.MULTIPLE_CHAPTERS) {
             view5.setVisibility(View.VISIBLE);
             view6.setVisibility(View.VISIBLE);
         } else {
@@ -76,7 +96,7 @@ final class S extends BaseAdapter {
         return s.d;
     }
 
-    public final void a(List<PayConsumeRecord$Order> list) {
+    public final void a(List<PayConsumeRecord.Order> list) {
         this.c.clear();
         this.c.addAll(list);
         this.d = new boolean[this.c.size()];
@@ -102,8 +122,8 @@ final class S extends BaseAdapter {
      * Enabled aggressive block sorting
      */
     @Override
-    public final View getView(int n, View view, ViewGroup viewGroup) {
-        View view2;
+    public final View getView(final int n, View view, ViewGroup viewGroup) {
+        final View view2;
         Y y2;
         if (view == null) {
             view2 = this.b.inflate(R.layout.layout_consume_collapse_item, viewGroup, false);
@@ -122,8 +142,8 @@ final class S extends BaseAdapter {
             y2 = (Y) view.getTag();
             view2 = view;
         }
-        PayConsumeRecord$Order payConsumeRecord$Order = this.c.get(n);
-        PayConsumeRecord$PayType payConsumeRecord$PayType = payConsumeRecord$Order.getPayType();
+        final PayConsumeRecord.Order payConsumeRecord$Order = this.c.get(n);
+        PayConsumeRecord.PayType payConsumeRecord$PayType = payConsumeRecord$Order.getPayType();
         String string = payConsumeRecord$Order.getBookName();
         if (string.length() > 8) {
             string = string.substring(0, 8) + "...";
@@ -138,11 +158,11 @@ final class S extends BaseAdapter {
         }
         y2.d.setText(t.e((Date) payConsumeRecord$Order.getCreated()));
         y2.c.setText(payConsumeRecord$Order.getPayTypeString());
-        if (payConsumeRecord$PayType == PayConsumeRecord$PayType.WHOLE_BOOK || payConsumeRecord$PayType == PayConsumeRecord$PayType.MULTIPLE_CHAPTERS) {
+        if (payConsumeRecord$PayType == PayConsumeRecord.PayType.WHOLE_BOOK || payConsumeRecord$PayType == PayConsumeRecord.PayType.MULTIPLE_CHAPTERS) {
             y2.b.setVisibility(View.GONE);
         } else {
             y2.b.setVisibility(View.VISIBLE);
-            if (payConsumeRecord$PayType == PayConsumeRecord$PayType.VIP_SERVICE) {
+            if (payConsumeRecord$PayType == PayConsumeRecord.PayType.VIP_SERVICE) {
                 y2.a.setText(payConsumeRecord$Order.getBookName());
                 y2.c.setText(payConsumeRecord$Order.getChapterTitle());
                 y2.b.setText("");
@@ -156,7 +176,7 @@ final class S extends BaseAdapter {
                 y2.b.setText(string2);
             }
         }
-        if (payConsumeRecord$PayType == PayConsumeRecord$PayType.MULTIPLE_CHAPTERS) {
+        if (payConsumeRecord$PayType == PayConsumeRecord.PayType.MULTIPLE_CHAPTERS) {
             ((PayRecordCollapseItem) view2).a(payConsumeRecord$Order.getTitles(), n);
             View view3 = y2.h;
             int n2 = this.d[n] ? 0 : 8;
@@ -164,8 +184,24 @@ final class S extends BaseAdapter {
         } else {
             y2.h.setVisibility(View.GONE);
         }
-        ImageView imageView = y2.i;
-        imageView.setOnClickListener(new T(this, n, payConsumeRecord$Order, imageView, view2));
+        final ImageView imageView = y2.i;
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int n2 = PayConsumeActivity.a(S.this.a).getLastVisiblePosition() - PayConsumeActivity.a(S.this.a).getFooterViewsCount();
+                int n3 = 0;
+                if (n >= n2) {
+                    PayConsumeActivity.a(S.this.a).smoothScrollToPosition(2 + n);
+                    n3 = 200;
+                }
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        S.a(S.this, payConsumeRecord$Order, imageView, view2, n);
+                    }
+                }, n3);
+            }
+        });
         return view2;
     }
 }

@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.am;
 import android.view.View;
 import android.widget.ProgressBar;
@@ -19,8 +21,11 @@ import com.clilystudio.netbook.model.User;
 import com.clilystudio.netbook.model.UserInfo;
 import com.clilystudio.netbook.ui.BaseActivity;
 import com.clilystudio.netbook.ui.CircularSmartImageView;
+import com.clilystudio.netbook.ui.SettingsActivity;
+import com.clilystudio.netbook.ui.ShareRemoveAdActivity;
 import com.clilystudio.netbook.ui.aa;
 import com.umeng.a.b;
+import com.xiaomi.mistatistic.sdk.MiStatInterface;
 
 import java.util.Date;
 
@@ -131,18 +136,74 @@ public class UserInfoActivity extends BaseActivity {
         this.c = this.getIntent().getStringExtra("account_token");
         this.a = this.findViewById(R.id.pb_loading);
         this.b = this.findViewById(R.id.user_info_content);
-        this.findViewById(R.id.user_message_block).setOnClickListener(new aC(this));
-        this.findViewById(R.id.user_ugc_block).setOnClickListener(new aD(this));
-        this.findViewById(R.id.user_topic_block).setOnClickListener(new aE(this));
-        this.findViewById(R.id.user_account_block).setOnClickListener(new aF(this));
-        this.findViewById(R.id.user_level_block).setOnClickListener(new aG(this));
-        this.findViewById(R.id.user_task_block).setOnClickListener(new aH(this));
-        this.findViewById(R.id.user_setting_block).setOnClickListener(new aI(this));
-        this.findViewById(R.id.user_follow_weixin).setOnClickListener(new aJ(this));
+        this.findViewById(R.id.user_message_block).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(UserInfoActivity.this, MyMessageActivity.class);
+                UserInfoActivity.this.startActivity(intent);
+            }
+        });
+        this.findViewById(R.id.user_ugc_block).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(UserInfoActivity.this, UserUGCActivity.class);
+                UserInfoActivity.this.startActivity(intent);
+            }
+        });
+        this.findViewById(R.id.user_topic_block).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(UserInfoActivity.this, UserTopicActivity.class);
+                UserInfoActivity.this.startActivity(intent);
+            }
+        });
+        this.findViewById(R.id.user_account_block).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                UserInfoActivity.b(UserInfoActivity.this);
+                MiStatInterface.recordCountEvent("my_account_click", null);
+            }
+        });
+        this.findViewById(R.id.user_level_block).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(UserInfoActivity.this, UserLevelActivity.class);
+                UserInfoActivity.this.startActivity(intent);
+            }
+        });
+        this.findViewById(R.id.user_task_block).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(UserInfoActivity.this, UserTaskActivity.class);
+                UserInfoActivity.this.startActivity(intent);
+            }
+        });
+        this.findViewById(R.id.user_setting_block).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(UserInfoActivity.this, SettingsActivity.class);
+                intent.putExtra("from_user_info", true);
+                UserInfoActivity.this.startActivity(intent);
+            }
+        });
+        this.findViewById(R.id.user_follow_weixin).setOnClickListener(new  View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(UserInfoActivity.this, UserFollowWeixinActivity.class);
+                UserInfoActivity.this.startActivity(intent);
+            }
+        });
         View view = this.findViewById(R.id.user_share_remove_ad);
         if (a.r(this, "switch_share_remove_ad")) {
             view.setVisibility(View.VISIBLE);
-            view.setOnClickListener(new aB(this));
+            view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = ShareRemoveAdActivity.a(UserInfoActivity.this, "userInfo");
+                    UserInfoActivity.this.startActivity(intent);
+                    MiStatInterface.recordCountEvent("share_remove_entrance_click", "userInfo");
+                }
+            });
         }
         this.b();
         i.a().a(this);

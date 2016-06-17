@@ -13,12 +13,15 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Toast;
 
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.event.i;
 import com.clilystudio.netbook.ui.BaseActivity;
 
 import cn.sharesdk.framework.Platform;
 import cn.sharesdk.framework.PlatformActionListener;
 import cn.sharesdk.framework.ShareSDK;
+import cn.sharesdk.sina.weibo.SinaWeibo;
+import cn.sharesdk.tencent.qzone.QZone;
 
 public class AuthLoginActivity extends BaseActivity implements Handler.Callback {
     private String a;
@@ -127,11 +130,31 @@ public class AuthLoginActivity extends BaseActivity implements Handler.Callback 
         window.setAttributes(layoutParams);
         this.b = AnimationUtils.loadAnimation(this, R.anim.login_scale);
         this.a(this.findViewById(R.id.tv_sina));
-        this.findViewById(R.id.tv_sina).setOnClickListener((View.OnClickListener) ((Object) new a(this)));
+        this.findViewById(R.id.tv_sina).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AuthLoginActivity.a(AuthLoginActivity.this, v);
+                AuthLoginActivity.a(AuthLoginActivity.this, SinaWeibo.NAME);
+                AuthLoginActivity.b(AuthLoginActivity.this, "SinaWeibo");
+            }
+        });
         this.a(this.findViewById(R.id.tv_qq));
-        this.findViewById(R.id.tv_qq).setOnClickListener((View.OnClickListener) ((Object) new b(this)));
+        this.findViewById(R.id.tv_qq).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AuthLoginActivity.a(AuthLoginActivity.this, v);
+                AuthLoginActivity.a(AuthLoginActivity.this, QZone.NAME);
+                AuthLoginActivity.b(AuthLoginActivity.this, "QQ");
+            }
+        });
         this.a(this.findViewById(R.id.tv_weixin));
-        this.findViewById(R.id.tv_weixin).setOnClickListener((View.OnClickListener) ((Object) new c(this)));
+        this.findViewById(R.id.tv_weixin).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AuthLoginActivity.a(AuthLoginActivity.this, v);
+                AuthLoginActivity.a(AuthLoginActivity.this);
+            }
+        });
         i.a().a(this);
     }
 

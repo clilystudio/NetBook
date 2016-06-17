@@ -1,11 +1,16 @@
 package com.clilystudio.netbook.ui.user;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.event.i;
 import com.clilystudio.netbook.ui.BaseLoadingActivity;
+import com.clilystudio.netbook.ui.ShareRemoveAdActivity;
 import com.clilystudio.netbook.util.D;
+import com.xiaomi.mistatistic.sdk.MiStatInterface;
 
 public class RemoveAdActivity extends BaseLoadingActivity {
     al a;
@@ -31,7 +36,14 @@ public class RemoveAdActivity extends BaseLoadingActivity {
         if (a.r(this, "switch_share_remove_ad")) {
             this.findViewById(R.id.txt_share_remove).setVisibility(View.VISIBLE);
             this.findViewById(R.id.rl_share_remove).setVisibility(View.VISIBLE);
-            this.findViewById(R.id.btn_share_remove_ad).setOnClickListener(new ai(this));
+            this.findViewById(R.id.btn_share_remove_ad).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = ShareRemoveAdActivity.a(RemoveAdActivity.this, "removeAd");
+                    RemoveAdActivity.this.startActivity(intent);
+                    MiStatInterface.recordCountEvent("share_remove_entrance_click", "removeAd");
+                }
+            });
         }
     }
 

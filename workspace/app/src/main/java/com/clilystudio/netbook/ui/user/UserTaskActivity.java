@@ -1,7 +1,10 @@
 package com.clilystudio.netbook.ui.user;
 
+import android.app.Activity;
+import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import com.clilystudio.netbook.am;
 import android.view.View;
@@ -10,6 +13,7 @@ import android.widget.TextView;
 import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.model.UserInfo;
 import com.clilystudio.netbook.ui.BaseActivity;
+import com.clilystudio.netbook.util.*;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -71,6 +75,19 @@ public class UserTaskActivity extends BaseActivity {
                 this.a(userInfo.getThis_week_tasks().isRate());
             }
         }
-        this.mVoteView.setOnClickListener(new aM(this));
+        this.mVoteView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent("android.intent.action.VIEW");
+                intent.setData(Uri.parse("market://details?id=" + UserTaskActivity.this.getPackageName()));
+                try {
+                    UserTaskActivity.this.startActivityForResult(intent, 2);
+                    return;
+                } catch (ActivityNotFoundException var4_3) {
+                    com.clilystudio.netbook.util.e.a(UserTaskActivity.this,"打开应用市场失败");
+                    return;
+                }
+            }
+        });
     }
 }
