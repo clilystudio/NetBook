@@ -1,7 +1,9 @@
 package com.clilystudio.netbook.ui.game;
 
 import android.app.Activity;
+import android.view.View;
 
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.a_pack.c;
 import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.db.GameGiftRecord;
@@ -32,14 +34,24 @@ final class D extends c<String, GameGiftResponse> {
         GameGiftResponse gameGiftResponse = (GameGiftResponse) object;
         if (gameGiftResponse != null) {
             if (gameGiftResponse.isOk()) {
-                String string = gameGiftResponse.giftCode.code;
+                final String string = gameGiftResponse.giftCode.code;
                 GameGiftRecord.create(GameGiftListActivity.d(this.a).getUser().getId(), GameGiftListActivity.c((GameGiftListActivity) this.a)._id, string);
                 GameGiftListActivity.a(this.a, string);
                 e.a((Activity) this.a, (String) "\u9886\u53d6\u6210\u529f");
                 GameGiftListActivity.e(this.a).setText("\u67e5\u770b");
                 GameGiftListActivity.e(this.a).setBackgroundResource(R.drawable.green_round_button);
-                GameGiftListActivity.e(this.a).setOnClickListener(new E(this, string));
-                GameGiftListActivity.f(this.a).setOnClickListener(new F(this, string));
+                GameGiftListActivity.e(this.a).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        GameGiftListActivity.a(D.this.a, string);
+                    }
+                });
+                GameGiftListActivity.f(this.a).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        GameGiftListActivity.a(D.this.a, string);
+                    }
+                });
                 return;
             }
             e.a((Activity) this.a, (String) gameGiftResponse.getMsg());

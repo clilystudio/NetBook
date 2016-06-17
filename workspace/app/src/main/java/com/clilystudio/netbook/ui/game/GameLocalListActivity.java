@@ -38,7 +38,7 @@ public class GameLocalListActivity extends BaseActivity {
         this.b = new T(this, LayoutInflater.from(this));
         this.a.setAdapter(this.b);
     }
-    public class GameLocalListActivity$GameViewHolder extends ay {
+    public class GameViewHolder extends ay {
         View mContainer;
         TextView mCount;
         SmartImageView mIcon;
@@ -46,7 +46,7 @@ public class GameLocalListActivity extends BaseActivity {
         TextView mName;
         Button mPlay;
 
-        public GameLocalListActivity$GameViewHolder(GameLocalListActivity gameLocalListActivity, View view) {
+        public GameViewHolder(GameLocalListActivity gameLocalListActivity, View view) {
             this.mContainer = view.findViewById(R.id.micro_game_item_container);
             this.mIcon = (SmartImageView)view. findViewById(R.id.micro_game_item_icon);
             this.mName = (TextView) view. findViewById(R.id.micro_game_item_name);

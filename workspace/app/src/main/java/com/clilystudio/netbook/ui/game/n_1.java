@@ -5,12 +5,14 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.model.Author;
+import com.clilystudio.netbook.model.GamePostRoot;
 import com.clilystudio.netbook.ui.SmartImageView;
 import com.clilystudio.netbook.util.W;
 import com.clilystudio.netbook.util.t;
 
-final class n extends W<GamePostRoot$GamePost> {
+final class n extends W<GamePostRoot.GamePost> {
     final /* synthetic */ GameDetailActivity a;
 
     public n(GameDetailActivity gameDetailActivity, LayoutInflater layoutInflater) {
@@ -22,10 +24,9 @@ final class n extends W<GamePostRoot$GamePost> {
      * Enabled aggressive block sorting
      */
     @Override
-    protected final /* synthetic */ void a(int n2, Object object) {
-        GamePostRoot$GamePost gamePostRoot$GamePost = (GamePostRoot$GamePost) object;
-        String string = gamePostRoot$GamePost.get_id();
-        Author author = gamePostRoot$GamePost.getAuthor();
+    protected final /* synthetic */ void a(int n2, final GamePostRoot.GamePost gamePost) {
+        final String string = gamePost.get_id();
+        Author author = gamePost.getAuthor();
         ((SmartImageView) this.a(0, SmartImageView.class)).setImageUrl(author.getScaleAvatar(), R.drawable.avatar_default);
         if (GameDetailActivity.m(this.a)) {
             String string2 = author.getGender();
@@ -50,17 +51,27 @@ final class n extends W<GamePostRoot$GamePost> {
             }
         }
         this.a(2, author.getNickname());
-        this.a(3, t.e(gamePostRoot$GamePost.getCreated()));
-        View view = (View) this.a(4, ImageView.class);
-        view.setOnClickListener(new o(this, view, string));
-        this.a(5, gamePostRoot$GamePost.getContent());
-        this.a(6, "" + gamePostRoot$GamePost.getCommentCount());
-        TextView textView = (TextView) this.a(8, TextView.class);
+        this.a(3, t.e(gamePost.getCreated()));
+        final View view = (View) this.a(4, ImageView.class);
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                GameDetailActivity.a(n.this.a, view, string);
+            }
+        });
+        this.a(5, gamePost.getContent());
+        this.a(6, "" + gamePost.getCommentCount());
+        final TextView textView = (TextView) this.a(8, TextView.class);
         ImageView imageView = (ImageView) this.a(7, ImageView.class);
-        textView.setText("" + gamePostRoot$GamePost.getLikeCount());
+        textView.setText("" + gamePost.getLikeCount());
         GameDetailActivity.a(this.a, string, imageView);
-        imageView.setOnClickListener(new p(this, textView, gamePostRoot$GamePost, string));
-        String string4 = gamePostRoot$GamePost.getState();
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                GameDetailActivity.a(n.this.a, view, textView, gamePost.getLikeCount(), string);
+            }
+        });
+        String string4 = gamePost.getState();
         ImageView imageView2 = (ImageView) this.a(9, ImageView.class);
         if ("distillate".equals(string4)) {
             imageView2.setVisibility(View.VISIBLE);

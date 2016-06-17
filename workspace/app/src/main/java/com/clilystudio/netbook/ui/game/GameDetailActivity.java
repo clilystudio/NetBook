@@ -6,6 +6,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
+
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.am;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -32,6 +34,7 @@ import com.clilystudio.netbook.widget.GameGiftView;
 import com.clilystudio.netbook.widget.ScrollLoadListView;
 import com.clilystudio.netbook.widget.av;
 import com.umeng.a.b;
+import com.xiaomi.mistatistic.sdk.MiStatInterface;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -194,12 +197,19 @@ public class GameDetailActivity extends BaseLoadingActivity {
         return gameDetailActivity.j;
     }
 
-    static /* synthetic */ void l(GameDetailActivity gameDetailActivity) {
+    static /* synthetic */ void l(final GameDetailActivity gameDetailActivity) {
         gameDetailActivity.h.setVisibility(View.VISIBLE);
         gameDetailActivity.h.findViewById(R.id.pb_loading).setVisibility(View.GONE);
-        TextView textView = (TextView) gameDetailActivity.h.findViewById(R.id.tv_loading);
+        final TextView textView = (TextView) gameDetailActivity.h.findViewById(R.id.tv_loading);
         textView.setText("\u70b9\u51fb\u91cd\u8bd5");
-        gameDetailActivity.h.setOnClickListener(new j(gameDetailActivity, textView));
+        gameDetailActivity.h.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                GameDetailActivity.i(gameDetailActivity).findViewById(R.id.pb_loading).setVisibility(View.VISIBLE);
+                textView.setText("\u52a0\u8f7d\u4e2d...");
+                GameDetailActivity.g(gameDetailActivity);
+            }
+        });
     }
 
     static /* synthetic */ boolean m(GameDetailActivity gameDetailActivity) {
@@ -219,7 +229,17 @@ public class GameDetailActivity extends BaseLoadingActivity {
             String string = this.n ? "\u7ee7\u7eed" : "\u8bd5\u73a9";
             gameDownloadButton.setText(string);
             this.e.setBackgroundResource(R.drawable.red_round_button);
-            this.e.setOnClickListener(new i(this));
+            this.e.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (GameDetailActivity.h(GameDetailActivity.this)) {
+                        MiStatInterface.recordCountEvent("micro_game_continue_click", GameDetailActivity.e(GameDetailActivity.this).getName());
+                    } else {
+                        MiStatInterface.recordCountEvent("micro_game_play_click", GameDetailActivity.e(GameDetailActivity.this).getName());
+                    }
+                    am.a(GameDetailActivity.this, GameDetailActivity.e(GameDetailActivity.this));
+                }
+            });
             return;
         } else {
             s.a((Activity) this, (Game) this.b);
@@ -270,8 +290,18 @@ public class GameDetailActivity extends BaseLoadingActivity {
         this.a = (TextView) view.findViewById(R.id.game_detail_intro);
         this.e = (GameDownloadButton) view.findViewById(R.id.game_detail_download);
         ImageView imageView = (ImageView) view.findViewById(R.id.game_detail_intro_expand);
-        this.a.setOnClickListener(new f(this));
-        imageView.setOnClickListener((View.OnClickListener) ((Object) new g(this)));
+        this.a.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                GameDetailActivity.d(GameDetailActivity.this);
+            }
+        });
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                GameDetailActivity.d(GameDetailActivity.this);
+            }
+        });
         this.i.addHeaderView(view, null, false);
         this.h = layoutInflater.inflate(R.layout.loading_item, null);
         this.i.addFooterView(this.h);

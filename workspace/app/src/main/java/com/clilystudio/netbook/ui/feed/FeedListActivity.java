@@ -11,11 +11,13 @@ import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.db.BookReadRecord;
 import com.clilystudio.netbook.event.i;
 import com.clilystudio.netbook.event.m;
 import com.clilystudio.netbook.ui.BaseActivity;
 import com.squareup.a.l;
+import com.xiaomi.mistatistic.sdk.MiStatInterface;
 
 import java.util.List;
 
@@ -28,15 +30,26 @@ public class FeedListActivity extends BaseActivity {
     }
 
     private void a(int n) {
-        int n2 = a.d(n);
+        final int n2 = a.d(n);
         int[] arrn = new int[]{R.id.feed_chapter_10, R.id.feed_chapter_20, R.id.feed_chapter_50, R.id.feed_chapter_100, R.id.feed_chapter_200};
         View view = this.getLayoutInflater().inflate(R.layout.feed_chapter_count_dialog, null, false);
         h h2 = new h(this);
         h2.d = "\u9009\u62e9\u517b\u80a5\u7ae0\u8282\u6570";
-        AlertDialog alertDialog = h2.a(view).b("\u53d6\u6d88", null).a();
+        final AlertDialog alertDialog = h2.a(view).b("\u53d6\u6d88", null).a();
         ((RadioGroup) view.findViewById(R.id.feed_group)).check(arrn[n2]);
         for (int j = 0; j < 5; ++j) {
-            ((RadioButton) view.findViewById(arrn[j])).setOnClickListener(new e(this, alertDialog, j, n2));
+            final int finalJ = j;
+            ((RadioButton) view.findViewById(arrn[j])).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    alertDialog.dismiss();
+                    if (finalJ != n2) {
+                        int n = com.clilystudio.netbook.hpay100.a.a.e(finalJ);
+                        MiStatInterface.recordCalculateEvent( "feed_chapter_count",null, n);
+                        i.a().post(new m());
+                    }
+                }
+            });
         }
         alertDialog.show();
     }

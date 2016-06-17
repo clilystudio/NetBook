@@ -5,6 +5,8 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.am;
 import android.view.View;
 import android.widget.Button;
@@ -19,8 +21,10 @@ import com.clilystudio.netbook.model.GameGift;
 import com.clilystudio.netbook.model.GameGiftRoot;
 import com.clilystudio.netbook.ui.BaseActivity;
 import com.clilystudio.netbook.ui.SmartImageView;
+import com.clilystudio.netbook.util.*;
 import com.clilystudio.netbook.util.t;
 import com.clilystudio.netbook.widget.GameGiftGetButton;
+import com.xiaomi.mistatistic.sdk.MiStatInterface;
 
 import java.util.Date;
 
@@ -86,8 +90,8 @@ public class GameGiftListActivity extends BaseActivity {
         return gameGiftListActivity.f;
     }
 
-    private void a(String string) {
-        com.clilystudio.netbook.view.a a2 = new com.clilystudio.netbook.view.a(this);
+    private void a(final String string) {
+        final com.clilystudio.netbook.view.a a2 = new com.clilystudio.netbook.view.a(this);
         View view = View.inflate(this, R.layout.dialog_game_gift_info, null);
         ((TextView) view.findViewById(R.id.game_gift_name)).setText(this.c.title);
         TextView textView = (TextView) view.findViewById(R.id.game_gift_left);
@@ -100,13 +104,32 @@ public class GameGiftListActivity extends BaseActivity {
             button.setText("\u9886\u53d6");
             textView.setText("\u5df2\u6709 " + (this.c.total - this.c.left) + " \u4eba\u9886\u53d6\uff0c\u5269\u4f59 " + this.c.left + " \u4e2a");
             button.setBackgroundResource(R.drawable.common_btn_red_bg);
-            button.setOnClickListener((View.OnClickListener) ((Object) new w(this, a2)));
+            button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    a2.dismiss();
+                    GameGiftListActivity.a(GameGiftListActivity.this);
+                }
+            });
             return;
         }
         textView.setText("\u5151\u6362\u7801\uff1a" + string);
         button.setText("\u590d\u5236\u5151\u6362\u7801\u5e76\u6253\u5f00\u6e38\u620f");
         button.setBackgroundResource(R.drawable.common_green_bg);
-        button.setOnClickListener(new x(this, a2, string));
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                a2.dismiss();
+                am.a(GameGiftListActivity.this, string);
+                com.clilystudio.netbook.util.e.a(GameGiftListActivity.this, "\u5df2\u590d\u5236");
+                if (GameGiftListActivity.b(GameGiftListActivity.this)) {
+                    am.a(GameGiftListActivity.this, GameGiftListActivity.c(GameGiftListActivity.this).game);
+                    MiStatInterface.recordCountEvent("micro_game_play_click", GameGiftListActivity.c(GameGiftListActivity.this).game.getName());
+                    return;
+                }
+                am.d(GameGiftListActivity.this, GameGiftListActivity.c(GameGiftListActivity.this).game.getAndroidPackageName());
+            }
+        });
     }
 
     /*

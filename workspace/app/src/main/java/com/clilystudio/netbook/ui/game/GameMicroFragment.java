@@ -1,5 +1,6 @@
 package com.clilystudio.netbook.ui.game;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.view.ViewPager;
@@ -12,11 +13,15 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.clilystudio.netbook.R;
+import com.clilystudio.netbook.exception.UnImplementException;
 import com.clilystudio.netbook.model.Game;
 import com.clilystudio.netbook.model.GameGroupItem;
+import com.clilystudio.netbook.model.GameLayoutRoot;
 import com.clilystudio.netbook.model.ModuleType;
 import com.clilystudio.netbook.ui.BaseLoadingFragment;
 import com.clilystudio.netbook.ui.SmartImageView;
+import com.clilystudio.netbook.util.InsideLinkIntent;
 import com.clilystudio.netbook.widget.GameMicroItemSection;
 import com.clilystudio.netbook.widget.NewGameDownloadButton;
 import com.umeng.a.b;
@@ -31,9 +36,9 @@ public class GameMicroFragment extends BaseLoadingFragment {
     TimerTask b;
     int c;
     private RecyclerView d;
-    private List<GameLayoutRoot$ModuleLayout> e;
-    private GameLayoutRoot$ModuleLayout f;
-    private GameMicroFragment$LayoutAdapter g;
+    private List<GameLayoutRoot.ModuleLayout> e;
+    private GameLayoutRoot.ModuleLayout f;
+    private LayoutAdapter g;
     private Game[] h;
     private List<String> i;
 
@@ -60,7 +65,7 @@ public class GameMicroFragment extends BaseLoadingFragment {
         return list;
     }
 
-    static /* synthetic */ GameLayoutRoot$ModuleLayout c(GameMicroFragment gameMicroFragment) {
+    static /* synthetic */ GameLayoutRoot.ModuleLayout c(GameMicroFragment gameMicroFragment) {
         return gameMicroFragment.f;
     }
 
@@ -92,7 +97,7 @@ public class GameMicroFragment extends BaseLoadingFragment {
 
     public final void g() {
         if (this.f == null) {
-            this.f = new GameLayoutRoot$ModuleLayout();
+            this.f = new GameLayoutRoot.ModuleLayout();
         }
         this.f.setModule("local");
         this.f.setTitle("\u6211\u73a9\u8fc7\u7684");
@@ -110,7 +115,7 @@ public class GameMicroFragment extends BaseLoadingFragment {
     public void onActivityCreated(Bundle bundle) {
         super.onActivityCreated(bundle);
         this.d.setLayoutManager(new LinearLayoutManager(this.getActivity()));
-        this.g = new GameMicroFragment$LayoutAdapter(this);
+        this.g = new LayoutAdapter(this);
         this.d.setAdapter(this.g);
         this.b();
     }
@@ -143,19 +148,19 @@ public class GameMicroFragment extends BaseLoadingFragment {
         super.onViewCreated(view, bundle);
         this.d = (RecyclerView) view.findViewById(R.id.recycler);
     }
-    final class GameMicroFragment$LayoutAdapter extends ah {
+    final class LayoutAdapter extends ah {
         final /* synthetic */ GameMicroFragment a;
 
-        GameMicroFragment$LayoutAdapter(GameMicroFragment gameMicroFragment) {
+        LayoutAdapter(GameMicroFragment gameMicroFragment) {
             this.a = gameMicroFragment;
         }
 
-        private GameLayoutRoot$ModuleLayout d(int n) {
+        private GameLayoutRoot.ModuleLayout d(int n) {
             List list = GameMicroFragment.d(this.a);
             if (GameMicroFragment.a(this.a) != null) {
                 --n;
             }
-            return (GameLayoutRoot$ModuleLayout) list.get(n);
+            return (GameLayoutRoot.ModuleLayout) list.get(n);
         }
 
         public final int a() {
@@ -173,7 +178,7 @@ public class GameMicroFragment extends BaseLoadingFragment {
             if (GameMicroFragment.a(this.a) != null && n == 0) {
                 return 0;
             }
-            GameLayoutRoot$ModuleLayout gameLayoutRoot$ModuleLayout = this.d(n);
+            GameLayoutRoot.ModuleLayout gameLayoutRoot$ModuleLayout = this.d(n);
             ModuleType moduleType = gameLayoutRoot$ModuleLayout.getType();
             if (moduleType == ModuleType.GAME_GROUP) {
                 return 1 + (gameLayoutRoot$ModuleLayout.getGameGroup().getRowCount() << 4);
@@ -199,7 +204,7 @@ public class GameMicroFragment extends BaseLoadingFragment {
                     return null;
                 }
                 case 0: {
-                    return new GameMicroFragment$LayoutAdapter$PromotionViewPager(this, layoutInflater.inflate(R.layout.game_layout_promotion_viewpager, viewGroup, false));
+                    return new PromotionViewPager(this, layoutInflater.inflate(R.layout.game_layout_promotion_viewpager, viewGroup, false));
                 }
                 case 1: {
                     GameMicroItemSection gameMicroItemSection = (GameMicroItemSection) layoutInflater.inflate(R.layout.item_micro_game_layout, viewGroup, false);
@@ -229,22 +234,46 @@ public class GameMicroFragment extends BaseLoadingFragment {
                     return;
                 }
                 case 0: {
-                    ((GameMicroFragment$LayoutAdapter$PromotionViewPager) ay2).q();
+                    ((PromotionViewPager) ay2).q();
                     return;
                 }
                 case 1: {
-                    GameLayoutRoot$ModuleLayout gameLayoutRoot$ModuleLayout = this.d(n);
-                    ((GameMicroItemSection) ((Object) ay2.a)).a(gameLayoutRoot$ModuleLayout);
-                    ay2.a.findViewById(R.id.more).setOnClickListener(new X(this, gameLayoutRoot$ModuleLayout));
+                    final GameLayoutRoot.ModuleLayout moduleLayout = this.d(n);
+                    ((GameMicroItemSection) ((Object) ay2.a)).a(moduleLayout);
+                    ay2.a.findViewById(R.id.more).setOnClickListener(new View.OnClickListener() {
+                       @Override
+                        public void onClick(View v) {
+                           Intent intent = new Intent(LayoutAdapter.this.a.getActivity(), GameListActivity.class);
+                           intent.putExtra("game_list_title", moduleLayout.getGameGroup().getName());
+                           intent.putExtra("game_list_id", moduleLayout.getGameGroup().get_id());
+                           intent.putExtra("micro_game", true);
+                           LayoutAdapter.this.a.startActivity(intent);
+                        }
+                    });
                     return;
                 }
                 case 2: {
-                    Z z = (Z) ay2;
-                    GameLayoutRoot$ModuleLayout gameLayoutRoot$ModuleLayout = this.d(n);
+                    final Z z = (Z) ay2;
+                    GameLayoutRoot.ModuleLayout gameLayoutRoot$ModuleLayout = this.d(n);
                     SmartImageView smartImageView = (SmartImageView) z.a.findViewById(R.id.image);
-                    GameLayoutRoot$ModuleLayout$ActivityItem gameLayoutRoot$ModuleLayout$ActivityItem = gameLayoutRoot$ModuleLayout.getActivity();
-                    smartImageView.setImageUrl(gameLayoutRoot$ModuleLayout$ActivityItem.getBannerImage());
-                    smartImageView.setOnClickListener(new aa(z, gameLayoutRoot$ModuleLayout$ActivityItem));
+                    final GameLayoutRoot.ModuleLayout.ActivityItem activityItem = gameLayoutRoot$ModuleLayout.getActivity();
+                    smartImageView.setImageUrl(activityItem.getBannerImage());
+                    smartImageView.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            try {
+                                if (GameMicroFragment.e(z.i.a) != null && GameMicroFragment.e(z.i.a).indexOf(activityItem.getBannerImage()) >= 0) {
+                                    b.a(z.i.a.getActivity(), "micro_game_banner_click", "Banner " + GameMicroFragment.e(z.i.a).indexOf(activityItem.getBannerImage()));
+                                }
+                                InsideLinkIntent insideLinkIntent = new InsideLinkIntent(z.i.a.getActivity(), activityItem.getLink(), true);
+                                z.i.a.startActivity(insideLinkIntent);
+                                return;
+                            } catch (UnImplementException var2_3) {
+                                var2_3.printStackTrace();
+                                return;
+                            }
+                        }
+                    });
                     return;
                 }
                 case 3:
@@ -255,13 +284,19 @@ public class GameMicroFragment extends BaseLoadingFragment {
             View view = ay2.a.findViewById(R.id.more);
             if (GameMicroFragment.b(this.a) > 3) {
                 view.setVisibility(View.VISIBLE);
-                view.setOnClickListener(new Y(this));
+                view.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(LayoutAdapter.this.a.getActivity(), GameLocalListActivity.class);
+                        LayoutAdapter.this.a.startActivity(intent);
+                    }
+                });
                 return;
             }
             view.setVisibility(View.GONE);
         }
         public class PromotionViewPager extends ay {
-            final /* synthetic */ GameMicroFragment$LayoutAdapter k;
+            final /* synthetic */ LayoutAdapter k;
             ArrayList<View> i;
             Handler j;
             LinearLayout mViewDots;
@@ -271,7 +306,7 @@ public class GameMicroFragment extends BaseLoadingFragment {
             /*
              * Enabled aggressive block sorting
              */
-            public PromotionViewPager(GameMicroFragment$LayoutAdapter gameMicroFragment$LayoutAdapter, View view) {
+            public PromotionViewPager(LayoutAdapter gameMicroFragment$LayoutAdapter, View view) {
                 this.k = gameMicroFragment$LayoutAdapter;
                 super(view);
                 this.j = new ag(this);
@@ -285,12 +320,17 @@ public class GameMicroFragment extends BaseLoadingFragment {
                 int n = arrgame.length;
                 int n2 = 0;
                 while (n2 < n) {
-                    Game game = arrgame[n2];
+                    final Game game = arrgame[n2];
                     SmartImageView smartImageView = new SmartImageView(gameMicroFragment$LayoutAdapter.a.getActivity());
                     smartImageView.setLayoutParams(layoutParams);
                     smartImageView.setImageUrl(game.getBanner());
                     smartImageView.setScaleType(ImageView.ScaleType.FIT_XY);
-                    smartImageView.setOnClickListener(new ac(this, gameMicroFragment$LayoutAdapter, game.get_id()));
+                    smartImageView.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            PromotionViewPager.this.k.a.startActivity(GameDetailActivity.a(PromotionViewPager.this.k.a.getActivity(), game.get_id(), true, false));
+                        }
+                    });
                     this.i.add(smartImageView);
                     ImageView imageView = new ImageView(gameMicroFragment$LayoutAdapter.a.getActivity());
                     int n3 = this.l.size() == 0 ? R.drawable.ic_point_select : R.drawable.ic_point_normal;
@@ -309,27 +349,27 @@ public class GameMicroFragment extends BaseLoadingFragment {
                 imageView.setImageResource(R.drawable.ic_point_normal);
             }
 
-            static /* synthetic */ void a(GameMicroFragment$LayoutAdapter$PromotionViewPager gameMicroFragment$LayoutAdapter$PromotionViewPager) {
-                gameMicroFragment$LayoutAdapter$PromotionViewPager.s();
+            static /* synthetic */ void a(PromotionViewPager gameMicroFragment$PromotionViewPager) {
+                gameMicroFragment$PromotionViewPager.s();
             }
 
             /*
              * Enabled aggressive block sorting
              */
-            static /* synthetic */ void a(GameMicroFragment$LayoutAdapter$PromotionViewPager gameMicroFragment$LayoutAdapter$PromotionViewPager, int n) {
+            static /* synthetic */ void a(PromotionViewPager gameMicroFragment$PromotionViewPager, int n) {
                 int n2 = 0;
-                while (n2 < gameMicroFragment$LayoutAdapter$PromotionViewPager.l.size()) {
+                while (n2 < gameMicroFragment$PromotionViewPager.l.size()) {
                     if (n2 == n) {
-                        GameMicroFragment$LayoutAdapter$PromotionViewPager.a(gameMicroFragment$LayoutAdapter$PromotionViewPager.l.get(n2), true);
+                        PromotionViewPager.a(gameMicroFragment$PromotionViewPager.l.get(n2), true);
                     } else {
-                        GameMicroFragment$LayoutAdapter$PromotionViewPager.a(gameMicroFragment$LayoutAdapter$PromotionViewPager.l.get(n2), false);
+                        PromotionViewPager.a(gameMicroFragment$PromotionViewPager.l.get(n2), false);
                     }
                     ++n2;
                 }
             }
 
-            static /* synthetic */ void b(GameMicroFragment$LayoutAdapter$PromotionViewPager gameMicroFragment$LayoutAdapter$PromotionViewPager) {
-                gameMicroFragment$LayoutAdapter$PromotionViewPager.r();
+            static /* synthetic */ void b(PromotionViewPager gameMicroFragment$PromotionViewPager) {
+                gameMicroFragment$PromotionViewPager.r();
             }
 
             private void r() {
@@ -356,14 +396,14 @@ public class GameMicroFragment extends BaseLoadingFragment {
                 this.r();
             }
         }
-        public class GameMicroFragment$LayoutAdapter$PromotionViewHolder extends ay {
+        public class PromotionViewHolder extends ay {
             TextView mDesc;
             NewGameDownloadButton mDownload;
             SmartImageView mIcon;
             TextView mName;
             TextView mPlayingCount;
 
-            public GameMicroFragment$LayoutAdapter$PromotionViewHolder(GameMicroFragment$LayoutAdapter gameMicroFragment$LayoutAdapter, View view) {
+            public PromotionViewHolder(LayoutAdapter gameMicroFragment$LayoutAdapter, View view) {
                 this.mIcon = (SmartImageView) view.findViewById(R.id.icon);
                 this.mName = (TextView) view. findViewById(R.id.name);
                 this.mPlayingCount = (TextView) view. findViewById(R.id.playingCount);

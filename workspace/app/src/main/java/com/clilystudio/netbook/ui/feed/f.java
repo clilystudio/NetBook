@@ -1,9 +1,12 @@
 package com.clilystudio.netbook.ui.feed;
 
 import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.TextView;
 
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.db.BookReadRecord;
+import com.clilystudio.netbook.event.*;
 import com.clilystudio.netbook.util.W;
 import com.clilystudio.netbook.widget.CoverView;
 
@@ -31,7 +34,7 @@ public final class f extends W<BookReadRecord> {
      */
     @Override
     protected final /* synthetic */ void a(int n, Object object) {
-        BookReadRecord bookReadRecord = (BookReadRecord) object;
+        final BookReadRecord bookReadRecord = (BookReadRecord) object;
         ((CoverView) this.a(0, CoverView.class)).setImageUrl(bookReadRecord.getFullCover(), R.drawable.cover_default);
         this.a(1, bookReadRecord.getTitle());
         int n2 = bookReadRecord.getChapterCount() - bookReadRecord.getChapterCountAtFeed();
@@ -40,13 +43,13 @@ public final class f extends W<BookReadRecord> {
             n3 = n2;
         }
         this.a(2, "\u517b\u4e86 " + n3 + " \u7ae0\u672a\u8bfb");
-        TextView textView = (TextView) this.a(3, TextView.class);
+        final TextView textView = (TextView) this.a(3, TextView.class);
         if (bookReadRecord.isFeeding()) {
             textView.setEnabled(true);
             textView.setText("\u79fb\u56de");
             if (n3 >= FeedListActivity.a(this.a)) {
                 textView.setBackgroundResource(R.drawable.feed_list_remove_red);
-                textView.setTextColor(this.a.getResources().getColor(R.color.white));
+                textView.setTextColor(this.a.getResources().getColor(android.R.color.white));
             } else {
                 textView.setBackgroundResource(R.drawable.feed_list_remove_light);
                 textView.setTextColor(this.a.getResources().getColor(R.color.feed_list_light));
@@ -54,7 +57,18 @@ public final class f extends W<BookReadRecord> {
         } else {
             this.a(textView);
         }
-        textView.setOnClickListener(new g(this, textView, bookReadRecord));
+//        g(this, textView, bookReadRecord)
+        textView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                f.a(f.this, textView);
+                bookReadRecord.setFeeding(false);
+                bookReadRecord.setFeedFat(false);
+                BookReadRecord.addAccountInfo(bookReadRecord);
+                bookReadRecord.save();
+                com.clilystudio.netbook.event.i.a().post(new n(bookReadRecord.getBookId()));
+            }
+        });
     }
 
     @Override
