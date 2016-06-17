@@ -5,6 +5,8 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.am;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -48,9 +50,7 @@ import com.clilystudio.netbook.ui.AudioBookPlayActivity;
 import com.clilystudio.netbook.ui.AudiobookInfoActivity;
 import com.clilystudio.netbook.ui.BookInfoActivity;
 import com.clilystudio.netbook.ui.user.RemoveAdActivity;
-import com.clilystudio.netbook.util.FeedIntroDialog;
-import com.clilystudio.netbook.util.UmengGameTracer;
-import com.clilystudio.netbook.util.as;
+import com.clilystudio.netbook.util.*;
 import com.clilystudio.netbook.widget.CoverLoadingView;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.umeng.onlineconfig.OnlineConfigAgent;
@@ -462,7 +462,7 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
     /*
      * Enabled aggressive block sorting
      */
-    static /* synthetic */ void b(HomeShelfFragment homeShelfFragment, ShelfMsg shelfMsg) {
+    static /* synthetic */ void b(final HomeShelfFragment homeShelfFragment, final ShelfMsg shelfMsg) {
         List list = homeShelfFragment.j.f();
         if (list == null || list.isEmpty()) {
             return;
@@ -476,7 +476,7 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
         homeShelfFragment.g.setVisibility(View.VISIBLE);
         TextView textView = (TextView) homeShelfFragment.g.findViewById(R.id.title);
         new com.clilystudio.netbook.util.a.a();
-        InsideLink insideLink = com.clilystudio.netbook.util.a.a.a(shelfMsg.postLink);
+        final InsideLink insideLink = com.clilystudio.netbook.util.a.a.a(shelfMsg.postLink);
         textView.setText(insideLink.getLabel());
         if (shelfMsg.highlight) {
             textView.setTextColor(homeShelfFragment.getActivity().getResources().getColor(R.color.shelf_msg_highlight));
@@ -484,7 +484,23 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
             textView.setTextColor(homeShelfFragment.getActivity().getResources().getColor(R.color.shelf_msg_normal));
         }
         new UmengGameTracer(homeShelfFragment.getActivity(), UmengGameTracer.From.Notification).a(shelfMsg._id);
-        textView.setOnClickListener(new w(homeShelfFragment, shelfMsg, insideLink));
+//        new w(homeShelfFragment, shelfMsg, insideLink)
+        textView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (shelfMsg.login && am.a(homeShelfFragment.getActivity()) == null) {
+                    return;
+                }
+                try {
+                    homeShelfFragment.startActivity(new InsideLinkIntent(homeShelfFragment.getActivity(), insideLink));
+                    MiStatInterface.recordCountEvent("shelf_msg_click", insideLink.getLabel());
+                    return;
+                } catch (Exception var2_2) {
+                    var2_2.printStackTrace();
+                    return;
+                }
+            }
+        });
     }
 
     private static boolean b(List<BookShelf> list, int n2) {
@@ -1160,13 +1176,36 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
         this.d.setOnScrollListener(this);
         this.f = this.c.findViewById(R.id.home_shelf_empty);
         this.h = LayoutInflater.from(this.getActivity()).inflate(R.layout.layout_shelf_footer, (ViewGroup) this.e, false);
-        this.c.findViewById(R.id.add_new_book).setOnClickListener((View.OnClickListener) ((Object) new n(this)));
+        this.c.findViewById(R.id.add_new_book).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ((HomeActivity) HomeShelfFragment.this.getActivity()).g();
+            }
+        });
         this.w = (RelativeLayout) this.c.findViewById(R.id.delete_shelf_bar);
         this.w.setOnTouchListener(new y(this));
         this.x = (Button) this.w.findViewById(R.id.delete);
         this.y = (Button) this.w.findViewById(R.id.select_all);
-        this.y.setOnClickListener(new z(this));
-        this.x.setOnClickListener(new A(this));
+        this.y.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (HomeShelfFragment.a(HomeShelfFragment.this) != null) {
+                    HomeShelfFragment.a(HomeShelfFragment.this).d();
+                }
+            }
+        });
+        this.x.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (HomeShelfFragment.a(HomeShelfFragment.this) == null) return;
+                List<BookShelf> list = HomeShelfFragment.a(HomeShelfFragment.this).e();
+                if (list == null || list.size() == 0) {
+                    com.clilystudio.netbook.util.e.a((Context) HomeShelfFragment.this.getActivity(), (String) "\u4f60\u6ca1\u6709\u9009\u62e9\u8981\u5220\u9664\u7684\u4e66\u54e6");
+                    return;
+                }
+                HomeShelfFragment.a(HomeShelfFragment.this, list);
+            }
+        });
         this.d.setOnRefreshListener(new E(this));
         if (a.i()) {
             this.e.setFooterDividersEnabled(false);
@@ -1192,11 +1231,21 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
         this.n = (TextView) this.l.findViewById(R.id.tv_title);
         this.o = (TextView) this.l.findViewById(R.id.tv_time);
         this.p = (ImageView) this.l.findViewById(R.id.iv_control);
-        this.p.setOnClickListener(new B(this));
+        this.p.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                HomeShelfFragment.b(HomeShelfFragment.this);
+            }
+        });
         if (as.c()) {
             this.h();
         }
-        this.l.setOnClickListener(new C(this));
+        this.l.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                HomeShelfFragment.c(HomeShelfFragment.this);
+            }
+        });
         return this.c;
     }
 
