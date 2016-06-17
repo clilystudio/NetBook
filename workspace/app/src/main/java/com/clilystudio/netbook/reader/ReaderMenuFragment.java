@@ -93,7 +93,29 @@ public class ReaderMenuFragment extends Fragment {
 
             }
         };
-        this.k = new bt(this);
+        this.k = new View.OnClickListener() {
+            @Override
+            public void onClick(final View v) {
+                if (!ReaderMenuFragment.j(ReaderMenuFragment.this).isApk()) {
+                    ReaderMenuFragment.j(ReaderMenuFragment.this).onAdClick(v);
+                    return;
+                }
+                h h2 = new h(ReaderMenuFragment.this.getActivity()).a(R.string.download);
+                h2.e = "是否下载" + ReaderMenuFragment.j(ReaderMenuFragment.this).getTitle() + "(\u5efa\u8bae\u4f7f\u7528WIFI\u4e0b\u8f7d)\uff1f";
+                h2.a(true).a("确认",new DialogInterface.OnClickListener(){
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        ReaderMenuFragment.j(ReaderMenuFragment.this).onAdClick(v);
+                        ReaderMenuFragment.j(ReaderMenuFragment.this).recordClick(v);
+                    }
+                }).b("取消",new DialogInterface.OnClickListener(){
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                   }
+                }).b();
+            }
+        };
     }
 
     public static ReaderMenuFragment a(String string, String string2) {
@@ -120,7 +142,7 @@ public class ReaderMenuFragment extends Fragment {
     /*
      * Enabled aggressive block sorting
      */
-    static /* synthetic */ void a(ReaderMenuFragment readerMenuFragment, List list) {
+    static /* synthetic */ void a(final ReaderMenuFragment readerMenuFragment, List list) {
         if (readerMenuFragment.getView() != null) {
             ViewGroup viewGroup = (ViewGroup) readerMenuFragment.getView().findViewById(R.id.toc_container);
             int n2 = list.size();
@@ -129,16 +151,31 @@ public class ReaderMenuFragment extends Fragment {
             int n3 = 0;
             for (int k = 0; k < n2 && n3 != 3; ++k) {
                 int n4;
-                TocSummary tocSummary = (TocSummary) list.get(k);
+                final TocSummary tocSummary = (TocSummary) list.get(k);
                 if (!tocSummary.getHost().equals(string)) {
-                    FragmentActivity fragmentActivity = readerMenuFragment.getActivity();
+                    final FragmentActivity fragmentActivity = readerMenuFragment.getActivity();
                     View view = fragmentActivity.getLayoutInflater().inflate(R.layout.list_item_reader_menu_toc, viewGroup, false);
                     ReaderMenuFragment$TocHolder readerMenuFragment$TocHolder = new ReaderMenuFragment$TocHolder(view);
                     readerMenuFragment$TocHolder.link.setText(tocSummary.getHost());
                     readerMenuFragment$TocHolder.time.setText(t.e((Date) tocSummary.getUpdated()));
                     readerMenuFragment$TocHolder.title.setText(tocSummary.getLastChapter());
                     viewGroup.addView(view);
-                    view.setOnClickListener(new bw(readerMenuFragment, (Activity) fragmentActivity, tocSummary));
+//                    bw(readerMenuFragment, (Activity) fragmentActivity, tocSummary)
+                    view.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            // h -> lewisjdeane/L-Dialogs DialogBuilder
+                            h h2 = new h(fragmentActivity);
+                            h2.e = "更换来源将会删除之前的预读章节，是否继续？";
+                            h2.a("更换",new DialogInterface.OnClickListener(){
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.dismiss();
+                                    ReaderMenuFragment.a(readerMenuFragment, fragmentActivity, tocSummary);
+                                }
+                            }).b("\u53d6\u6d88", null).b();
+                        }
+                    });
                     n4 = n3 + 1;
                 } else {
                     n4 = n3;

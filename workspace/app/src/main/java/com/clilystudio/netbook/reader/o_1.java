@@ -7,7 +7,9 @@ import android.content.Context;
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.am;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -291,11 +293,40 @@ public final class o {
                     i2.b(arrstring);
                 }
             });
-            checkBox.setOnClickListener(new t(this));
+            checkBox.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    // h -> lewisjdeane/L-Dialogs Builder
+                    new h(o.this.b).a(true).a(R.string.auto_buy_chapter_prompt_title).b(R.string.auto_buy_chapter_prompt_content).a("\u786e\u5b9a",new DialogInterface.OnClickListener(){
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    }).b();
+                }
+            });
         } else {
             checkBox.setVisibility(View.INVISIBLE);
             this.u.setText("\u4f59\u989d\u4e0d\u8db3\uff0c\u8bf7\u5145\u503c");
-            this.u.setOnClickListener(new v(this));
+            this.u.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (o.this.u != null) {
+                        o.this.u.setClickable(false);
+                        o.this.u.setEnabled(false);
+                    }
+                    new com.clilystudio.netbook.util.p(o.this.b).a();
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            if (o.this.u != null) {
+                                o.this.u.setClickable(true);
+                                o.this.u.setEnabled(true);
+                            }
+                        }
+                    }, 2000);
+                }
+            });
         }
         Button button = (Button) view3.findViewById(R.id.reader_page_change_btn);
         button.setOnClickListener(new View.OnClickListener() {
