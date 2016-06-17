@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.am;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -61,7 +63,15 @@ public class UGCDetailActivity extends BaseActivity implements View.OnClickListe
     private String y;
 
     public UGCDetailActivity() {
-        this.t = new j(this);
+        this.t = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                UGCDetailActivity.d(UGCDetailActivity.this).setMaxLines(Integer.MAX_VALUE);
+                UGCDetailActivity.d(UGCDetailActivity.this).setEllipsize(null);
+                UGCDetailActivity.e(UGCDetailActivity.this).setVisibility(View.GONE);
+                UGCDetailActivity.d(UGCDetailActivity.this).setClickable(false);
+            }
+        };
     }
 
     static /* synthetic */ Author a(UGCDetailActivity uGCDetailActivity, Author author) {
@@ -280,9 +290,19 @@ public class UGCDetailActivity extends BaseActivity implements View.OnClickListe
         this.i = (ImageButton) view.findViewById(R.id.ugcbook_more);
         this.i.setOnClickListener(this.t);
         this.h = (TextView) view.findViewById(R.id.ugcbook_share);
-        this.h.setOnClickListener((View.OnClickListener) ((Object) new k(this)));
+        this.h.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                UGCDetailActivity.f(UGCDetailActivity.this);
+            }
+        });
         this.n = this.findViewById(R.id.share_bottom);
-        this.n.setOnClickListener((View.OnClickListener) ((Object) new l(this)));
+        this.n.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                UGCDetailActivity.f(UGCDetailActivity.this);
+            }
+        });
         this.j.addHeaderView(view, null, false);
         this.k = new W(this.getLayoutInflater());
         this.j.setAdapter(this.k);

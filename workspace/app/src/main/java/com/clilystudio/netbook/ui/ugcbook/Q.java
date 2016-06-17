@@ -4,6 +4,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.model.BookSummary;
 import com.clilystudio.netbook.util.W;
 import com.clilystudio.netbook.widget.CoverView;
@@ -70,8 +71,18 @@ final class Q extends W<BookSummary> {
                 UGCGuideEditBooksActivity.a(Q.this.a, n);
             }
         });
-        view2.findViewById(R.id.comment_add_layout).setOnClickListener(new S(this, n));
-        view2.findViewById(R.id.delete_comment).setOnClickListener(new T(this, n));
+        view2.findViewById(R.id.comment_add_layout).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                UGCGuideEditBooksActivity.a(Q.this.a, n);
+            }
+        });
+        view2.findViewById(R.id.delete_comment).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                UGCGuideEditBooksActivity.b(Q.this.a, n);
+            }
+        });
         this.a(n, view2, this.getItem(n));
         return view2;
     }

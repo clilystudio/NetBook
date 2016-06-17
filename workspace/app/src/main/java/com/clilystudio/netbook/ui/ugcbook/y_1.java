@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.model.BookSummary;
 import com.clilystudio.netbook.util.W;
 import com.clilystudio.netbook.widget.CoverView;
@@ -59,9 +60,15 @@ public final class y extends W<BookSummary> {
     }
 
     @Override
-    public final View getView(int n, View view, ViewGroup viewGroup) {
+    public final View getView(final int n, View view, ViewGroup viewGroup) {
         View view2 = super.getView(n, view, viewGroup);
-        ((Button) view2.findViewById(R.id.item_add_btn)).setOnClickListener(new z(this, n));
+        ((Button) view2.findViewById(R.id.item_add_btn)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                UGCGuideAddBookActivity.a(y.this.a, n);
+                y.this.notifyDataSetChanged();
+            }
+        });
         this.a(n, view2, this.getItem(n));
         return view2;
     }

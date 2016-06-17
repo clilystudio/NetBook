@@ -7,7 +7,10 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ListView;
 
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.db.BookReadRecord;
+import com.clilystudio.netbook.event.*;
+import com.clilystudio.netbook.event.D;
 import com.clilystudio.netbook.model.BookSummary;
 import com.clilystudio.netbook.model.UGCNewCollection;
 import com.clilystudio.netbook.ui.BaseActivity;
@@ -129,7 +132,31 @@ public class UGCGuideSelectBookActivity extends BaseActivity {
         this.a.setOnItemClickListener(new U(this));
         View view = layoutInflater.inflate(R.layout.layout_shelf_footer, (ViewGroup) this.a, false);
         this.a.addFooterView(view);
-        this.e.setOnClickListener(new V(this));
-        this.f.setOnClickListener(new W(this));
+        this.e.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+        this.f.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                UGCNewCollection uGCNewCollection = UGCGuideSelectBookActivity.a(UGCGuideSelectBookActivity.this);
+                ArrayList<String> arrayList = new ArrayList<String>();
+                Iterator<BookSummary> iterator = uGCNewCollection.getBooks().iterator();
+                while (iterator.hasNext()) {
+                    arrayList.add(iterator.next().getId());
+                }
+                ArrayList<String> arrayList2 = new ArrayList<String>();
+                for (int j = 0; j < UGCGuideSelectBookActivity.b(UGCGuideSelectBookActivity.this).size(); ++j) {
+                    String string = ((BookReadRecord) UGCGuideSelectBookActivity.b(UGCGuideSelectBookActivity.this).get(j)).getBookId();
+                    if (arrayList.contains(string)) continue;
+                    arrayList2.add(string);
+                }
+                String[] arrstring = (String[]) com.clilystudio.netbook.hpay100.a.a.a(arrayList2, String.class);
+                com.clilystudio.netbook.event.i.a().post(new D(arrstring));
+                finish();
+            }
+        });
     }
 }

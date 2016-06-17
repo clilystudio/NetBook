@@ -3,8 +3,10 @@ package com.clilystudio.netbook.ui.ugcbook;
 import android.content.Context;
 import android.support.v7.widget.ay;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.model.UgcFilterRoot;
 import com.clilystudio.netbook.widget.UgcFilterTextView;
 
@@ -75,7 +77,7 @@ final class ak extends ah {
             an2.i.setBackgroundResource(com.clilystudio.netbook.am.b((Context) an2.k.c, (int) R.attr.backgroundSelector));
             return;
         }
-        al al2 = (al) ay2;
+        final al al2 = (al) ay2;
         UgcFilterRoot.FilterGroup[] arrugcFilterRoot$FilterGroup = this.d;
         int n2 = this.a ? 1 : 0;
         UgcFilterRoot.FilterGroup ugcFilterRoot$FilterGroup = arrugcFilterRoot$FilterGroup[n - n2];
@@ -89,11 +91,18 @@ final class ak extends ah {
             ViewGroup viewGroup = (ViewGroup) al2.k.b.inflate(R.layout.ugc_group_row, (ViewGroup) al2.j, false);
             for (int i = 0; i < Math.min(4, arrstring.length - (n4 << 2)); ++i) {
                 UgcFilterTextView ugcFilterTextView = (UgcFilterTextView) viewGroup.getChildAt(i);
-                String string = arrstring[i + (n4 << 2)];
+                final String string = arrstring[i + (n4 << 2)];
                 ugcFilterTextView.setVisibility(View.VISIBLE);
                 ugcFilterTextView.setText(string);
                 ugcFilterTextView.setSelected(UGCMainActivity.j(al2.k.c).equals(ugcFilterTextView.a()));
-                ugcFilterTextView.setOnClickListener(new am(al2, string));
+                ugcFilterTextView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        al2.k.a = true;
+                        UGCMainActivity.a(al2.k.c, string);
+                        al2.k.b(0);
+                    }
+                });
             }
             if (arrstring.length - (n4 << 2) < 4) {
                 for (int j = arrstring.length - (n4 << 2); j < 4; ++j) {

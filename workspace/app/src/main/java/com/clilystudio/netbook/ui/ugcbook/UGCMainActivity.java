@@ -1,5 +1,7 @@
 package com.clilystudio.netbook.ui.ugcbook;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
@@ -12,9 +14,13 @@ import android.widget.TabHost;
 import android.widget.TabWidget;
 import android.widget.TextView;
 
+import com.clilystudio.netbook.*;
+import com.clilystudio.netbook.am;
 import com.clilystudio.netbook.ui.BaseTabActivity;
+import com.clilystudio.netbook.ui.user.UserUGCActivity;
 import com.clilystudio.netbook.util.D;
 import com.umeng.a.b;
+import com.xiaomi.mistatistic.sdk.MiStatInterface;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -166,12 +172,42 @@ public class UGCMainActivity extends BaseTabActivity implements ViewPager$OnPage
         View view = this.getLayoutInflater().inflate(R.layout.ugc_popupwindow_layout, null);
         this.g = this.a(this.g, view);
         this.g.setOnDismissListener(new ab(this));
-        view.findViewById(R.id.create_ugc).setOnClickListener(new ac(this));
-        view.findViewById(R.id.my_ugc).setOnClickListener(new ad(this));
-        view.findViewById(R.id.back_view).setOnClickListener(new ae(this));
+        view.findViewById(R.id.create_ugc).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (com.clilystudio.netbook.am.a((Activity) UGCMainActivity.this) != null) {
+                    MiStatInterface.recordCountEvent("ugc_create", null);
+                    Intent intent = new Intent(UGCMainActivity.this, UGCGuideAddCollectionActivity.class);
+                    UGCMainActivity.this.startActivity(intent);
+                    UGCMainActivity.h(UGCMainActivity.this);
+                }
+            }
+        });
+        view.findViewById(R.id.my_ugc).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (am.a((Activity) UGCMainActivity.this) != null) {
+                    MiStatInterface.recordCountEvent("ugc_my_own", null);
+                    Intent intent = new Intent(UGCMainActivity.this, UserUGCActivity.class);
+                    UGCMainActivity.this.startActivity(intent);
+                    UGCMainActivity.h(UGCMainActivity.this);
+                }
+            }
+        });
+        view.findViewById(R.id.back_view).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                UGCMainActivity.h(UGCMainActivity.this);
+            }
+        });
         View view2 = LayoutInflater.from(this).inflate(R.layout.ugc_filter_popupwindow, null);
         this.h = this.a(this.h, view2);
-        view2.findViewById(R.id.back_view).setOnClickListener(new ag(this));
+        view2.findViewById(R.id.back_view).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                UGCMainActivity.i(UGCMainActivity.this);
+            }
+        });
         this.i = this.getString(R.string.ugc_all);
         this.j = (RecyclerView) view2.findViewById(R.id.ugc_filter_list);
         this.j.setLayoutManager(new D(this));
