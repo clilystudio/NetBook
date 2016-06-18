@@ -244,7 +244,18 @@ public class MyApplication extends Application {
             string = runningAppProcessInfo.pid == n ? runningAppProcessInfo.processName : string;
         }
         if (string.equals("com.clilystudio.netbook")) {
-            new com.clilystudio.netbook.e(this).start();
+            Thread thread = new Thread() {
+                @Override
+                public void run() {
+                    File file = new File(getCacheDir(), "http2");
+                    try {
+                        com.integralblue.httpresponsecache.HttpResponseCache.install(file, 200 * 1024 * 1024);
+                    } catch (Exception var2_2) {
+                        var2_2.printStackTrace();
+                    }
+                }
+            };
+            thread.start();
         }
         OnlineConfigAgent.getInstance().setOnlineConfigListener(new UmengOnlineConfigureListener() {
             @Override

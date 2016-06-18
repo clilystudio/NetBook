@@ -123,7 +123,16 @@ public class BookCategoryFragment extends Fragment {
         }
         this.b.addFooterView(this.c);
         this.c.setVisibility(View.GONE);
-        this.b.setOnItemClickListener((AdapterView.OnItemClickListener) ((Object) new am(this)));
+        this.b.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                int n2 = position - BookCategoryFragment.this.b.getHeaderViewsCount();
+                if (n2 >= 0 && n2 < BookCategoryFragment.this.i.size()) {
+                    CategoryBook categoryBook = BookCategoryFragment.this.i.get(n2);
+                    BookCategoryFragment.a(BookCategoryFragment.this, categoryBook);
+                }
+           }
+        });
         this.a.setOnRefreshListener(new an(this));
         this.d = new c(layoutInflater2);
         this.b.setAdapter(this.d);

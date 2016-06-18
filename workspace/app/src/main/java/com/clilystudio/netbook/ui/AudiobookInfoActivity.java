@@ -150,7 +150,7 @@ public class AudiobookInfoActivity extends BaseActivity implements View.OnClickL
     /*
      * Enabled aggressive block sorting
      */
-    static /* synthetic */ void e(AudiobookInfoActivity audiobookInfoActivity) {
+    static /* synthetic */ void e(final AudiobookInfoActivity audiobookInfoActivity) {
         ((CoverView) audiobookInfoActivity.findViewById(R.id.book_detail_info_cover)).setImageUrl(audiobookInfoActivity.q.getUrl(), R.drawable.cover_default);
         ((TextView) audiobookInfoActivity.findViewById(R.id.tv_album_name)).setText(audiobookInfoActivity.q.getTitle());
         ((TextView) audiobookInfoActivity.findViewById(R.id.tv_announcer)).setText(audiobookInfoActivity.q.getAnnouncer());
@@ -164,11 +164,29 @@ public class AudiobookInfoActivity extends BaseActivity implements View.OnClickL
         audiobookInfoActivity.h.setOnClickListener(audiobookInfoActivity);
         audiobookInfoActivity.f = (TextView) audiobookInfoActivity.findViewById(R.id.tv_play_or_pause);
         audiobookInfoActivity.g = (ImageView) audiobookInfoActivity.findViewById(R.id.img_play_audiobook);
-        TextView textView2 = (TextView) audiobookInfoActivity.findViewById(R.id.tv_audiobook_intro);
+        final TextView textView2 = (TextView) audiobookInfoActivity.findViewById(R.id.tv_audiobook_intro);
         String string = audiobookInfoActivity.q.getIntro();
         if (string != null && string.length() > 0) {
             textView2.setText(string);
-            textView2.post(new A(audiobookInfoActivity, textView2));
+            textView2.post(new Runnable() {
+                @Override
+                public void run() {
+                    if (textView2.getLineCount() > 4) {
+                        textView2.setMaxLines(4);
+                        textView2.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                if (audiobookInfoActivity.l) {
+                                    textView2.setMaxLines(4);
+                                } else {
+                                    textView2.setMaxLines(Integer.MAX_VALUE);
+                                }
+                                audiobookInfoActivity.l = !audiobookInfoActivity.l;
+                             }
+                        });
+                    }
+               }
+            });
         } else {
             textView2.setText("\u6682\u65e0");
         }

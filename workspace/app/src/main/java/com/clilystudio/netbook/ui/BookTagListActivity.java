@@ -2,10 +2,13 @@ package com.clilystudio.netbook.ui;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.AdapterView;
 
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.d;
 import com.clilystudio.netbook.model.BookSummary;
 import com.clilystudio.netbook.widget.ScrollLoadListView;
@@ -24,7 +27,16 @@ public class BookTagListActivity extends BaseLoadingActivity {
     private av h;
 
     public BookTagListActivity() {
-        this.h = new aU(this);
+        this.h = new av() {
+            @Override
+            public void a() {
+                if (BookTagListActivity.this.a == null || BookTagListActivity.this.a.getStatus() == AsyncTask.Status.FINISHED) {
+                    BookTagListActivity.this.f.setVisibility(View.VISIBLE);
+                    BookTagListActivity.this.a = new aW(BookTagListActivity.this, (byte) 0);
+                    BookTagListActivity.this.a.b(new String[0]);
+                }
+            }
+        };
     }
 
     public static Intent a(Context context, String string) {
@@ -87,7 +99,15 @@ public class BookTagListActivity extends BaseLoadingActivity {
         this.f.setVisibility(View.GONE);
         this.e = (ScrollLoadListView) this.findViewById(R.id.content_scroll_list);
         this.e.addFooterView(this.f);
-        this.e.setOnItemClickListener(new aT(this));
+        this.e.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                if (position >= 0 && position < BookTagListActivity.this.g.size()) {
+                    BookSummary bookSummary = BookTagListActivity.this.g.get(position);
+                    BookTagListActivity.a(BookTagListActivity.this, bookSummary);
+                }
+            }
+        });
         this.b = new aV(this, layoutInflater);
         this.e.setAdapter(this.b);
         this.b();

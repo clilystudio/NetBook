@@ -5,11 +5,13 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.TypedArray;
+import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.am;
 import android.view.LayoutInflater;
+import android.view.TouchDelegate;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -61,8 +63,23 @@ public class G extends u {
         return view;
     }
 
-    private static void a(View view, int n, int n2, int n3, int n4) {
-        ((View) ((Object) view.getParent())).post(new Q(view, 15, 15, 15, 15));
+    private static void a(final View view, final int n, final int n2, final int n3, final int n4) {
+        ((View) ((Object) view.getParent())).post(new Runnable() {
+            @Override
+            public void run() {
+                Rect rect = new Rect();
+                view.setEnabled(true);
+                view.getHitRect(rect);
+                rect.top -= n;
+                rect.bottom += n2;
+                rect.left -= n3;
+                rect.right += n4;
+                TouchDelegate touchDelegate = new TouchDelegate(rect, view);
+                if (View.class.isInstance(view.getParent())) {
+                    ((View) ((Object) view.getParent())).setTouchDelegate(touchDelegate);
+                }
+            }
+        });
     }
 
     /*

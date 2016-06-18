@@ -10,6 +10,8 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.am;
 import android.view.View;
 import android.webkit.DownloadListener;
@@ -171,7 +173,16 @@ public class AdWebViewActivity extends BaseActivity implements View.OnClickListe
         webSettings.setJavaScriptEnabled(true);
         webSettings.setDomStorageEnabled(true);
         webSettings.setAppCacheEnabled(true);
-        this.a.setDownloadListener((DownloadListener) ((Object) new a(this)));
+        this.a.setDownloadListener(new DownloadListener() {
+            @Override
+            public void onDownloadStart(String url, String userAgent, String contentDisposition, String mimetype, long contentLength) {
+                if (AdWebViewActivity.this.b != null) {
+                    AdWebViewActivity.a(AdWebViewActivity.this, url);
+                 } else {
+                    AdWebViewActivity.b(AdWebViewActivity.this, url);
+                }
+            }
+        });
         this.a.setWebViewClient((WebViewClient) ((Object) new b(this)));
         this.a.setOnKeyListener((View.OnKeyListener) ((Object) new c(this)));
         this.a.setWebChromeClient((WebChromeClient) ((Object) new d(this)));

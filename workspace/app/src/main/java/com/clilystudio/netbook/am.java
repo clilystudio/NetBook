@@ -74,7 +74,7 @@ public class am {
     }
 
     private static String A(Context context) {
-        String string = a.a(context, "vkeyid_profiles_v3", "deviceid", "");
+        String string = com.clilystudio.netbook.hpay100.a.a.a(context, "vkeyid_profiles_v3", "deviceid", "");
         if (am.a(string)) {
             return null;
         }
@@ -171,7 +171,7 @@ public class am {
         if (account != null) {
             return account;
         }
-        e.a(activity, "\u8bf7\u767b\u5f55\u540e\u518d\u64cd\u4f5c");
+        e.a(activity, "请登录后再操作");
         activity.startActivity(AuthLoginActivity.a(activity));
         return null;
     }

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -77,7 +78,12 @@ public abstract class BookListActivity extends BaseActivity {
         this.a = new g(this.getLayoutInflater());
         ListView listView = (ListView) this.findViewById(R.id.content_list);
         listView.setAdapter(this.a);
-        listView.setOnItemClickListener(new aK(this));
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                BookListActivity.this.a(position);
+            }
+        });
         this.b();
     }
 }

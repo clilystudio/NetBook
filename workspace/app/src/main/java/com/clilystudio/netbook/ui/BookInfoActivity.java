@@ -6,10 +6,9 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-
-import com.clilystudio.netbook.R;
-import com.clilystudio.netbook.am;
+import android.os.Message;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +17,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.clilystudio.netbook.MyApplication;
+import com.clilystudio.netbook.R;
+import com.clilystudio.netbook.am;
 import com.clilystudio.netbook.d;
 import com.clilystudio.netbook.db.BookReadRecord;
 import com.clilystudio.netbook.db.SourceRecord;
@@ -29,6 +30,7 @@ import com.clilystudio.netbook.model.Advert;
 import com.clilystudio.netbook.model.BookInfo;
 import com.clilystudio.netbook.reader.dl.a;
 import com.clilystudio.netbook.ui.post.BookPostTabActivity;
+import com.clilystudio.netbook.ui.user.AuthLoginActivity;
 import com.clilystudio.netbook.util.I;
 import com.clilystudio.netbook.util.T;
 import com.clilystudio.netbook.util.adutil.n;
@@ -39,7 +41,9 @@ import com.clilystudio.netbook.widget.TagsLayout;
 import com.umeng.a.b;
 
 import java.util.Date;
+import java.util.HashMap;
 
+import cn.sharesdk.framework.Platform;
 import cn.sharesdk.framework.PlatformActionListener;
 
 public class BookInfoActivity extends BaseActivity implements View.OnClickListener {
@@ -57,7 +61,14 @@ public class BookInfoActivity extends BaseActivity implements View.OnClickListen
     private Handler m;
 
     public BookInfoActivity() {
-        this.m = new aB(this);
+        this.m = new Handler() {
+
+            @Override
+            public void handleMessage(Message msg) {
+                BookInfoActivity.this.i = true;
+                BookInfoActivity.this.g();
+            }
+        };
     }
 
     public static Intent a(Context context, String string) {
@@ -99,7 +110,24 @@ public class BookInfoActivity extends BaseActivity implements View.OnClickListen
         if (bookInfoActivity.k != null) {
             String string = bookInfoActivity.k.getTitle();
             String string2 = bookInfoActivity.k.getFullCover();
-            T.a(bookInfoActivity, string, bookInfoActivity.k.getLongIntro(), "http://share.zhuishushenqi.com/book/" + bookInfoActivity.k.getId(), string2, n2, (PlatformActionListener) ((Object) new aA(bookInfoActivity)));
+            T.a(bookInfoActivity, string, bookInfoActivity.k.getLongIntro(), "http://share.zhuishushenqi.com/book/" + bookInfoActivity.k.getId(), string2, n2, new PlatformActionListener() {
+
+                @Override
+                public void onComplete(Platform platform, int i, HashMap<String, Object> hashMap) {
+                    com.clilystudio.netbook.util.e.c("share_book");
+                    Log.i(BookInfoActivity.b(), "onComplete");
+                }
+
+                @Override
+                public void onError(Platform platform, int i, Throwable throwable) {
+                    Log.i(BookInfoActivity.b(), "onError");
+                }
+
+                @Override
+                public void onCancel(Platform platform, int i) {
+                    Log.i(BookInfoActivity.b(), "onCancel");
+                }
+            });
         }
     }
 
@@ -160,7 +188,7 @@ public class BookInfoActivity extends BaseActivity implements View.OnClickListen
     /*
      * Enabled aggressive block sorting
      */
-    static /* synthetic */ void f(BookInfoActivity bookInfoActivity) {
+    static /* synthetic */ void f(final BookInfoActivity bookInfoActivity) {
         bookInfoActivity.a().a((CharSequence) bookInfoActivity.k.getTitle());
         ((CoverView) bookInfoActivity.findViewById(R.id.book_detail_info_cover)).setImageUrl(bookInfoActivity.k.getFullCoverLarge(), R.drawable.cover_default);
         ((TextView) bookInfoActivity.findViewById(R.id.book_detail_info_title)).setText(bookInfoActivity.k.getTitle());
@@ -201,10 +229,28 @@ public class BookInfoActivity extends BaseActivity implements View.OnClickListen
         String string4 = string3.length() > 10 ? string3.substring(0, 10) + "..." : string3;
         ((TextView) bookInfoActivity.findViewById(R.id.book_info_topic)).setText(string4 + "\u7684\u793e\u533a");
         ((TextView) bookInfoActivity.findViewById(R.id.topic_count)).setText("\u5171\u6709 " + bookInfoActivity.k.getPostCount() + " \u4e2a\u5e16\u5b50");
-        TextView textView5 = (TextView) bookInfoActivity.findViewById(R.id.book_detail_info_desc);
+        final TextView textView5 = (TextView) bookInfoActivity.findViewById(R.id.book_detail_info_desc);
         if (bookInfoActivity.k.getLongIntro() != null) {
             textView5.setText(bookInfoActivity.k.getLongIntro());
-            textView5.post(new aC(bookInfoActivity, textView5));
+            textView5.post(new Runnable() {
+                @Override
+                public void run() {
+                    if (textView5.getLineCount() > 4) {
+                        textView5.setMaxLines(4);
+                        textView5.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                if (bookInfoActivity.j) {
+                                    textView5.setMaxLines(4);
+                                } else {
+                                    textView5.setMaxLines(Integer.MAX_VALUE);
+                                }
+                                bookInfoActivity.j = !bookInfoActivity.j;
+                            }
+                        });
+                    }
+                }
+            });
         } else {
             textView5.setText("\u6682\u65e0");
         }
@@ -403,11 +449,24 @@ public class BookInfoActivity extends BaseActivity implements View.OnClickListen
                 String string4 = String.format(string3, arrobject);
                 if (com.clilystudio.netbook.hpay100.a.a.a((Context) this, "add_update_notify_login", true) && !am.g()) {
                     View view = this.getLayoutInflater().inflate(R.layout.remove_shelf_confirm, null, false);
-                    CheckBox checkBox = (CheckBox) view.findViewById(R.id.remove_shelf_cache);
+                    final CheckBox checkBox = (CheckBox) view.findViewById(R.id.remove_shelf_cache);
                     checkBox.setText(this.getString(R.string.add_update_not_notify));
                     checkBox.setChecked(false);
                     ((TextView) view.findViewById(R.id.remove_shelf_text)).setText(this.getString(R.string.add_update_notify));
-                    new uk.me.lewisdeane.ldialogs.h(this).a(view).a("\u5feb\u901f\u767b\u5f55", (DialogInterface.OnClickListener) new aH(this, checkBox)).b("\u4e0d\u60f3\u540c\u6b65", (DialogInterface.OnClickListener) new aG(this, checkBox)).a().show();
+                    new uk.me.lewisdeane.ldialogs.h(this).a(view).a("快速登录", new DialogInterface.OnClickListener(){
+
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            BookInfoActivity.c(BookInfoActivity.this, checkBox.isChecked());
+                            BookInfoActivity.this.startActivity(AuthLoginActivity.a(BookInfoActivity.this));
+                        }
+                    }).b("不想同步",new DialogInterface.OnClickListener(){
+
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            BookInfoActivity.c(BookInfoActivity.this, checkBox.isChecked());
+                        }
+                    }).a().show();
                 }
                 string = string4;
             }

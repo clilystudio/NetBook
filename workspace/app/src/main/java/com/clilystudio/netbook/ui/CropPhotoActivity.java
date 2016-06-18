@@ -5,6 +5,7 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.view.CropView;
 
 import java.io.File;
@@ -48,7 +49,12 @@ public class CropPhotoActivity extends BaseActivity {
             var2_2 = 2048.0f;
             super.onCreate(var1_1);
             this.setContentView(R.layout.activity_crop_photo);
-            this.a("\u622a\u53d6\u5934\u50cf", "\u4f7f\u7528", (aa) new aY(this));
+            this.a("截取头像", "使用", new aa() {
+                @Override
+                public void a() {
+                    CropPhotoActivity.a(CropPhotoActivity.this);
+                }
+            });
             var3_3 = this.getIntent().getData();
             try {
                 var6_5 = var13_4 = BitmapFactory.decodeStream(this.getContentResolver().openInputStream(var3_3));

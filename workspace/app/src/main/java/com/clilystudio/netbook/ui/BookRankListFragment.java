@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.TextView;
 
 import com.clilystudio.netbook.R;
@@ -113,7 +114,12 @@ public class BookRankListFragment extends Fragment {
         this.a = new g(this.getActivity().getLayoutInflater());
         ScrollLoadListView scrollLoadListView = (ScrollLoadListView) view.findViewById(R.id.content_list);
         scrollLoadListView.setAdapter(this.a);
-        scrollLoadListView.setOnItemClickListener(new aQ(this));
+        scrollLoadListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                BookRankListFragment.this.a(position);
+            }
+        });
         this.b = layoutInflater.inflate(R.layout.loading_item, null);
         scrollLoadListView.addFooterView(this.b);
         this.b.setVisibility(View.GONE);

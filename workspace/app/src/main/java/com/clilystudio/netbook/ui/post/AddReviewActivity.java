@@ -5,10 +5,12 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
 import com.clilystudio.netbook.MyApplication;
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.adapter.a;
 import com.clilystudio.netbook.db.BookReadRecord;
 import com.clilystudio.netbook.ui.BaseActivity;
@@ -88,7 +90,14 @@ public class AddReviewActivity extends BaseActivity {
         this.a(R.string.add_review_title, R.string.next, (aa) new A(this));
         View view = this.findViewById(R.id.add_review_empty);
         ListView listView = (ListView) this.findViewById(R.id.add_review_list);
-        listView.setOnItemClickListener(new B(this));
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                AddReviewActivity.this.b = AddReviewActivity.this.a.getItem(position).getBookId();
+                AddReviewActivity.this.a.a(position);
+                AddReviewActivity.this.a.notifyDataSetChanged();
+            }
+        });
         this.a = new a(this.getLayoutInflater());
         listView.setAdapter((ListAdapter) ((Object) this.a));
         List<BookReadRecord> list = BookReadRecord.getAll();

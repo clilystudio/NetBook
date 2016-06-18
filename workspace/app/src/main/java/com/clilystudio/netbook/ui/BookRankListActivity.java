@@ -100,11 +100,16 @@ public class BookRankListActivity extends BaseActivity {
      * Enabled aggressive block sorting
      */
     @l
-    public void onExpand(k k2) {
+    public void onExpand(final k k2) {
         if (!a.g() || a.k() || k2.a() != this.e.getLastVisiblePosition()) {
             return;
         }
-        this.f.postDelayed(new aN(this, k2), 50);
+        this.f.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                BookRankListActivity.this.e.smoothScrollToPositionFromTop(k2.a(), 0);
+            }
+        }, 50);
     }
 
     @Override

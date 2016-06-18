@@ -6,6 +6,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.widget.EditText;
 
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.util.e;
 
 public class CustomSearchActivity extends BaseActivity {
@@ -43,7 +44,12 @@ public class CustomSearchActivity extends BaseActivity {
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         this.setContentView(R.layout.activity_custom_search);
-        this.a(R.string.add_book_title, R.string.add_book_create, (aa) new aZ(this));
+        this.a(R.string.add_book_title, R.string.add_book_create, new aa() {
+            @Override
+            public void a() {
+                CustomSearchActivity.a(CustomSearchActivity.this);
+            }
+        });
         this.a = (EditText) this.findViewById(R.id.add_book_name);
         this.b = (EditText) this.findViewById(R.id.add_book_author);
         Intent intent = this.getIntent();

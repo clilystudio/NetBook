@@ -9,6 +9,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager$OnPageChangeListener;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.PopupWindow;
@@ -184,17 +185,22 @@ public class BookCategoryListActivity extends BaseTabActivity implements ViewPag
         popupWindow.setFocusable(true);
         popupWindow.setBackgroundDrawable(new ColorDrawable(0));
         popupWindow.setOutsideTouchable(true);
-        popupWindow.setOnDismissListener((PopupWindow.OnDismissListener) ((Object) new au(this)));
+        popupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
+            @Override
+            public void onDismiss() {
+                BookCategoryListActivity.this.e("筛选");
+            }
+        });
         this.f = popupWindow;
         String[] arrstring = new String[]{};
         CategoryLevelRoot categoryLevelRoot = (CategoryLevelRoot) a.k(c.f, "category_level.txt");
         String[] arrstring2 = categoryLevelRoot != null ? this.a(categoryLevelRoot) : arrstring;
-        String[] arrstring3 = new String[1 + arrstring2.length];
+        final String[] arrstring3 = new String[1 + arrstring2.length];
         arrstring3[0] = this.c;
         for (int k = 0; k < arrstring2.length; ++k) {
             arrstring3[k + 1] = arrstring2[k];
         }
-        int n = arrstring3.length;
+        final int n = arrstring3.length;
         boolean bl = false;
         if (n == 1) {
             bl = true;
@@ -209,11 +215,21 @@ public class BookCategoryListActivity extends BaseTabActivity implements ViewPag
         ListView listView = (ListView) view.findViewById(R.id.min_category_list);
         this.g = new aw(this, (Context) this, arrstring3);
         listView.setAdapter((ListAdapter) ((Object) this.g));
-        listView.setOnItemClickListener(new at(this, arrstring3));
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                BookCategoryListActivity.a(BookCategoryListActivity.this, arrstring3[position]);
+            }
+        });
         if (this.h) {
             this.b(this.c);
         } else {
-            this.a(this.c, "\u7b5b\u9009", (aa) ((Object) new ar(this)));
+            this.a(this.c, "筛选",new aa() {
+                @Override
+                public void a() {
+                    BookCategoryListActivity.a(BookCategoryListActivity.this);
+                }
+            });
         }
         this.a = (TabHost) this.findViewById(R.id.host);
         this.k = (ViewPager) this.findViewById(R.id.pager);
