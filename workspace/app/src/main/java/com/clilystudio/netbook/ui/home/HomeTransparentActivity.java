@@ -1,8 +1,11 @@
 package com.clilystudio.netbook.ui.home;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+
+import com.clilystudio.netbook.R;
 
 public class HomeTransparentActivity extends Activity {
     @Override
@@ -24,7 +27,14 @@ public class HomeTransparentActivity extends Activity {
     @Override
     protected void onResume() {
         super.onResume();
-        new Handler().postDelayed(new Q(this), 500);
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Intent intent = new Intent();
+                intent.setAction("broadcastOnThemeChanged");
+                HomeTransparentActivity.this.sendBroadcast(intent);
+           }
+        }, 500);
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {

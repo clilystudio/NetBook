@@ -20,6 +20,11 @@ final class E implements k<ListView> {
         i.a().c(new BookShelfRefreshEvent());
         HomeShelfFragment.e(this.a);
         HomeShelfAdapter.a = true;
-        new Handler().postDelayed(new F(this), 1000);
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                HomeShelfFragment.f(E.this.a);
+            }
+        }, 1000);
     }
 }

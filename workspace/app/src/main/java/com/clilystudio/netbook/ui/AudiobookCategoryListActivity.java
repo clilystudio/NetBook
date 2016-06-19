@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.adapter.b;
 import com.clilystudio.netbook.d;
 import com.clilystudio.netbook.util.as;
@@ -117,7 +118,15 @@ public class AudiobookCategoryListActivity extends BaseLoadingActivity {
         this.e.setVisibility(View.GONE);
         this.c = (ScrollLoadListView) this.findViewById(R.id.content_scroll_list);
         this.c.addFooterView(this.e);
-        this.c.setOnItemClickListener((AdapterView.OnItemClickListener) ((Object) new w(this)));
+        this.c.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                if (position >= 0 && position < AudiobookCategoryListActivity.this.f.size()) {
+                    Album album = (Album) AudiobookCategoryListActivity.this.f.get(position);
+                    AudiobookCategoryListActivity.a(AudiobookCategoryListActivity.this, album);
+                }
+            }
+        });
         this.b = new b(layoutInflater);
         this.c.setAdapter(this.b);
         this.b();

@@ -346,7 +346,17 @@ public class AudioBookPlayActivity extends BaseActivity implements View.OnClickL
     }
 
     private void j() {
-        new Handler().post((Runnable) ((Object) new l(this)));
+        new Handler().post(new Runnable() {
+            @Override
+            public void run() {
+                int n = AudioBookPlayActivity.this.r.getFirstVisiblePosition();
+                if (n >= AudioBookPlayActivity.this.e) {
+                    AudioBookPlayActivity.this.r.smoothScrollToPosition(AudioBookPlayActivity.this.e);
+                    return;
+                }
+                AudioBookPlayActivity.this.r.smoothScrollToPosition(AudioBookPlayActivity.this.e + (AudioBookPlayActivity.this.r.getLastVisiblePosition() - n) / 2);
+            }
+        });
     }
 
     public final void a(TrackList trackList) {

@@ -4,9 +4,12 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Handler;
+
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.am;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.PagerAdapter;
@@ -50,6 +53,7 @@ import com.clilystudio.netbook.ui.user.UserInfoActivity;
 import com.clilystudio.netbook.util.J;
 import com.clilystudio.netbook.util.Z;
 import com.clilystudio.netbook.util.as;
+import com.clilystudio.netbook.util.e;
 import com.clilystudio.netbook.util.s;
 import com.clilystudio.netbook.widget.TabWidgetV2;
 import com.umeng.onlineconfig.OnlineConfigAgent;
@@ -60,7 +64,10 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.zip.ZipFile;
 
 import butterknife.ButterKnife;
@@ -108,7 +115,14 @@ public class HomeActivity extends HomeParentActivity implements ViewPager$OnPage
         homeActivity.t = new WebView(homeActivity);
         homeActivity.t.getSettings().setJavaScriptEnabled(true);
         homeActivity.t.getSettings().setCacheMode(2);
-        homeActivity.t.setWebViewClient((WebViewClient) ((Object) new b(homeActivity)));
+        homeActivity.t.setWebViewClient(new WebViewClient(){
+
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                view.loadUrl(url);
+                return true;
+           }
+        });
         homeActivity.t.loadUrl(string);
         homeActivity.u = true;
         MiStatInterface.recordCountEvent("take_17k_webflow",null);
@@ -268,11 +282,25 @@ public class HomeActivity extends HomeParentActivity implements ViewPager$OnPage
                 this.i.setBackgroundDrawable(new ColorDrawable(0));
                 this.i.getContentView().setFocusableInTouchMode(true);
                 this.i.getContentView().setFocusable(true);
-                this.i.getContentView().setOnKeyListener((View.OnKeyListener) ((Object) new c(this)));
+                this.i.getContentView().setOnKeyListener(new View.OnKeyListener() {
+                    @Override
+                    public boolean onKey(View v, int keyCode, KeyEvent event) {
+                        if (event.getAction() == 0 && keyCode == 82 && event.getRepeatCount() == 0) {
+                            HomeActivity.this.m();
+                            return true;
+                        }
+                        return false;
+                    }
+                });
             }
             this.i.setAnimationStyle(R.style.home_menu_anim);
             this.i.showAtLocation(view, 53, com.clilystudio.netbook.hpay100.a.a.a((Context) this, 5.0f), am.l((Context) this) + am.k((Context) this));
-            this.i.setOnDismissListener((PopupWindow.OnDismissListener) ((Object) new d(this)));
+            this.i.setOnDismissListener(new PopupWindow.OnDismissListener() {
+                @Override
+                public void onDismiss() {
+                    HomeActivity.this.n();
+                }
+            });
             return;
         } catch (Exception var1_2) {
             var1_2.printStackTrace();
@@ -422,8 +450,23 @@ public class HomeActivity extends HomeParentActivity implements ViewPager$OnPage
         long l2 = System.currentTimeMillis();
         if (as.c()) {
             uk.me.lewisdeane.ldialogs.h h2 = new uk.me.lewisdeane.ldialogs.h(this);
-            h2.e = "\u5373\u5c06\u9000\u51fa\u542c\u4e66\uff0c\u6709\u58f0\u5c0f\u8bf4\u662f\u5426\u7ee7\u7eed\u64ad\u653e\uff1f";
-            h2.a("\u90fd\u5173\u4e86", (DialogInterface.OnClickListener) ((Object) new f(this))).b("\u7ee7\u7eed\u653e", (DialogInterface.OnClickListener) ((Object) new e(this))).b();
+            h2.e = "即将退出听书，有声小说是否继续播放？";
+            h2.a("都关了", new DialogInterface.OnClickListener(){
+
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    as.a();
+                    as.i();
+                    com.clilystudio.netbook.util.e.b(HomeActivity.this);
+                    HomeActivity.this.finish();
+                }
+            }).b("继续放", new DialogInterface.OnClickListener(){
+
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    HomeActivity.this.finish();
+                }
+            }).b();
             return;
         }
         if (l2 - this.b > 2000) {
@@ -646,7 +689,12 @@ public class HomeActivity extends HomeParentActivity implements ViewPager$OnPage
         }
         this.h();
         this.i();
-        new Handler().postDelayed((Runnable) ((Object) new l((HomeParentActivity) this)), 3000);
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                new m(HomeActivity.this, (byte)0).b(new Void[0]);
+            }
+        }, 3000);
         if (this.p != null) {
             com.clilystudio.netbook.util.e.c((String) "launch");
             h h2 = new h(this);
@@ -663,7 +711,39 @@ public class HomeActivity extends HomeParentActivity implements ViewPager$OnPage
         }
         this.a(this.getIntent());
         new j(this).b(new String[0]);
-        new Handler().postDelayed((Runnable) ((Object) new a(this)), 10000);
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                com.clilystudio.netbook.download.a a2;
+                boolean bl = true;
+                long l2 = com.clilystudio.netbook.hpay100.a.a.c((Context) HomeActivity.this, "PREF_FIRST_LAUNCH_TIME", 0);
+                if (Calendar.getInstance().getTimeInMillis() - l2 < 604800000) {
+                    return;
+                }
+                boolean bl2 = bl;
+                if (bl2 && (a2 = com.clilystudio.netbook.hpay100.a.a.I(HomeActivity.this)) != null) {
+                    a2.a();
+                    String string = a2.b();
+                    SharedPreferences sharedPreferences = HomeActivity.this.getSharedPreferences("downloadInfo", 0);
+                    Set<String> set = sharedPreferences.getStringSet("uninstallShortcut", new HashSet<String>());
+                    boolean bl3 = set != null && set.contains(string) ? bl : false;
+                    Set<String> set2 = sharedPreferences.getStringSet("downloadedPackage", null);
+                    if (set2 == null) return;
+                    if (!set2.contains(string)) {
+                        return;
+                    }
+                    if (bl && !bl3) {
+                        String string2 = sharedPreferences.getString("apkName", "");
+                        String string3 = sharedPreferences.getString("apkSavePath", "");
+                        com.clilystudio.netbook.download.e.b(HomeActivity.this, string3, string2);
+                        SharedPreferences.Editor editor = HomeActivity.this.getSharedPreferences("downloadInfo", 0).edit();
+                        set.add(string);
+                        editor.putStringSet("uninstallShortcut", set);
+                        editor.apply();
+                    }
+                }
+            }
+        }, 10000);
     }
 
     @Override

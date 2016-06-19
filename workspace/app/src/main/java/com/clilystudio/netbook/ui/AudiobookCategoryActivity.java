@@ -3,6 +3,7 @@ package com.clilystudio.netbook.ui;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 import com.clilystudio.netbook.R;
@@ -17,6 +18,7 @@ import android.widget.TextView;
 
 import com.clilystudio.netbook.d;
 import com.clilystudio.netbook.util.as;
+import com.xiaomi.mistatistic.sdk.MiStatInterface;
 import com.ximalaya.ting.android.opensdk.datatrasfer.CommonRequest;
 import com.ximalaya.ting.android.opensdk.model.tag.Tag;
 import com.ximalaya.ting.android.opensdk.model.tag.TagList;
@@ -99,10 +101,25 @@ public class AudiobookCategoryActivity extends BaseActivity {
         }
     }
 
-    static /* synthetic */ void b(AudiobookCategoryActivity audiobookCategoryActivity) {
+    static /* synthetic */ void b(final AudiobookCategoryActivity audiobookCategoryActivity) {
         h h2 = new h(audiobookCategoryActivity).a(true);
-        h2.e = "\u662f\u5426\u6253\u5f00\u559c\u9a6c\u62c9\u96c5FM\u4e0b\u8f7d\u9875";
-        h2.b("\u53d6\u6d88", (DialogInterface.OnClickListener) ((Object) new t(audiobookCategoryActivity))).a("\u786e\u5b9a", (DialogInterface.OnClickListener) ((Object) new s(audiobookCategoryActivity))).b();
+        h2.e = "是否打开喜马拉雅FM下载页";
+        h2.b("取消",new DialogInterface.OnClickListener(){
+
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        }).a("确定",new DialogInterface.OnClickListener(){
+
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Intent intent = new Intent("android.intent.action.VIEW");
+                intent.setData(Uri.parse("http://m.ximalaya.com/?from=alex-04"));
+                audiobookCategoryActivity.startActivity(intent);
+                MiStatInterface.recordCountEvent("ximalaya_url_click", null);
+           }
+        }).b();
     }
 
     private void a(int n) {

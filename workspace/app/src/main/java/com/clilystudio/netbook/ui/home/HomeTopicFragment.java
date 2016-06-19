@@ -4,15 +4,21 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.am;
+
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.clilystudio.netbook.adapter.HomeTopicAdapter;
 import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.db.BookReadRecord;
+import com.clilystudio.netbook.db.BookTopicEnterRecord;
 import com.clilystudio.netbook.event.BookShelfRefreshEvent;
 import com.clilystudio.netbook.event.c;
 import com.clilystudio.netbook.event.h;
@@ -20,12 +26,14 @@ import com.clilystudio.netbook.event.i;
 import com.clilystudio.netbook.event.o;
 import com.clilystudio.netbook.model.BookShelfTopic;
 import com.clilystudio.netbook.ui.post.BookHelpListActivity;
+import com.clilystudio.netbook.ui.post.BookPostTabActivity;
 import com.clilystudio.netbook.ui.post.CommonPostListActivity;
 import com.clilystudio.netbook.ui.post.GirlTopicListActivity;
 import com.clilystudio.netbook.ui.post.ReviewListActivity;
 import com.clilystudio.netbook.ui.post.TweetTabActivity;
 import com.clilystudio.netbook.ui.user.AuthLoginActivity;
 import com.clilystudio.netbook.widget.CommunitySection;
+import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshBase$Mode;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.xiaomi.mistatistic.sdk.MiStatInterface;
@@ -157,8 +165,30 @@ public class HomeTopicFragment extends HomeFragment implements View.OnClickListe
         this.f = LayoutInflater.from(this.getActivity()).inflate(R.layout.home_topic_header, (ViewGroup) this.c, false);
         this.c.addHeaderView(this.f, null, false);
         this.a(this.f);
-        this.b.setOnRefreshListener(new L(this));
-        this.c.setOnItemClickListener(new N(this));
+        this.b.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener<ListView>() {
+            @Override
+            public void onRefresh(PullToRefreshBase<ListView> refreshView) {
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        HomeTopicFragment.this.d();
+                   }
+                }, 1000);
+            }
+        });
+        this.c.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                int n2 = -1 + (position - HomeTopicFragment.this.c.getHeaderViewsCount());
+                if (n2 < 0 || n2 >= HomeTopicFragment.this.e.size()) {
+                    return;
+                }
+                BookShelfTopic bookShelfTopic = HomeTopicFragment.this.e.get(n2);
+                Intent intent = BookPostTabActivity.a(HomeTopicFragment.this.getActivity(), bookShelfTopic.getBookId(), bookShelfTopic.getTitle());
+                HomeTopicFragment.this.startActivity(intent);
+                BookTopicEnterRecord.updateCount(bookShelfTopic.getBookId(), bookShelfTopic.getPostCount());
+            }
+        });
         this.d = new HomeTopicAdapter(this.getActivity());
         this.c.setAdapter(this.d);
         List<BookReadRecord> list = BookReadRecord.getAll();
