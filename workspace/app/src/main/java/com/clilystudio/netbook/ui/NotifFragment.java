@@ -1,9 +1,13 @@
 package com.clilystudio.netbook.ui;
 
+import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.am;
+
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +21,8 @@ import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.hpay100.a.a;
 import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.model.NotificationItem;
+import com.clilystudio.netbook.viewbinder.notification.NotifBinderFactory;
+import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 
 import java.util.ArrayList;
@@ -38,10 +44,23 @@ public abstract class NotifFragment extends Fragment {
     private b a = b.a();
     private int l;
     private Account m;
-    private j n;
+    private PullToRefreshBase.OnLastItemVisibleListener n;
 
     public NotifFragment() {
-        this.n = new bv(this);
+        this.n = new PullToRefreshBase.OnLastItemVisibleListener() {
+            @Override
+            public void onLastItemVisible() {
+                if (NotifFragment.this.b == null || NotifFragment.this.b.getStatus() == AsyncTask.Status.FINISHED) {
+                    NotifFragment.this.f.setVisibility(View.VISIBLE);
+                    if (NotifFragment.this.c != null && NotifFragment.this.c.getStatus() != AsyncTask.Status.FINISHED && !NotifFragment.this.c.isCancelled()) {
+                        NotifFragment.this.c.cancel(true);
+                    }
+                    NotifFragment.a(NotifFragment.this, new bw(NotifFragment.this, (byte)0));
+                    String[] arrstring = new String[]{NotifFragment.this.m.getToken()};
+                    NotifFragment.this.b.b(arrstring);
+                }
+           }
+        };
     }
 
     static /* synthetic */ int a(NotifFragment notifFragment, int n) {
@@ -94,7 +113,7 @@ public abstract class NotifFragment extends Fragment {
         return notifFragment.f;
     }
 
-    static /* synthetic */ j j(NotifFragment notifFragment) {
+    static /* synthetic */ PullToRefreshBase.OnLastItemVisibleListener j(NotifFragment notifFragment) {
         return notifFragment.n;
     }
 
@@ -157,8 +176,43 @@ public abstract class NotifFragment extends Fragment {
         }
         this.e.addFooterView(this.f);
         this.f.setVisibility(View.GONE);
-        this.d.setOnRefreshListener(new bs(this));
-        this.e.setOnItemClickListener((AdapterView.OnItemClickListener) ((Object) new bu(this)));
+        this.d.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener<ListView>() {
+            @Override
+            public void onRefresh(PullToRefreshBase<ListView> refreshView) {
+                NotifFragment.this.h.setVisibility(View.GONE);
+                NotifFragment.this.i.setVisibility(View.GONE);
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        if (NotifFragment.this.m == null) {
+                            NotifFragment.this.a(false);
+                            NotifFragment.this.d.setRefreshing();
+                            return;
+                        }
+                        NotifFragment.this.c();
+                    }
+                }, 1000);
+            }
+        });
+        this.e.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                if (position < NotifFragment.e(NotifFragment.this).getHeaderViewsCount()) {
+                    return;
+                }
+                int n2 = position - NotifFragment.this.e.getHeaderViewsCount();
+                int n3 = NotifFragment.this.j.getItemViewType(n2);
+                if (n3 == 0) return;
+                if (n3 == 2) {
+                    return;
+                }
+                boolean bl = false;
+                if (bl) return;
+                Intent intent = NotifBinderFactory.create(NotifFragment.this.j.a(n2)).getIntent(NotifFragment.this.getActivity());
+                if (intent == null) return;
+                NotifFragment.this.startActivity(intent);
+            }
+        });
         this.j = this.b();
         this.a(this.e);
         this.e.setAdapter(this.j);

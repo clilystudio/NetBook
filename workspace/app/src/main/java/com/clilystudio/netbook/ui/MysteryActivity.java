@@ -40,7 +40,12 @@ public class MysteryActivity extends BaseLoadingActivity {
     private BroadcastReceiver o;
 
     public MysteryActivity() {
-        this.o = new bn(this);
+        this.o = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                MysteryActivity.this.l();
+            }
+        };
     }
 
     static /* synthetic */ long a(MysteryActivity mysteryActivity, long l) {

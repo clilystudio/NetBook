@@ -3,6 +3,7 @@ package com.clilystudio.netbook.ui;
 import android.app.Activity;
 import android.os.Handler;
 
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.model.BookSummary;
 import com.clilystudio.netbook.model.SearchPromRoot;
@@ -61,7 +62,15 @@ class bR extends com.clilystudio.netbook.a_pack.e<String, Void, List<BookSummary
             return;
         }
         SearchActivity.b(this.a).a(list);
-        new Handler().post(new bS(this));
+        new Handler().post(new Runnable() {
+            @Override
+            public void run() {
+                if (SearchActivity.a(bR.this.a) != null) {
+                    SearchActivity.a(bR.this.a).setSelectionAfterHeaderView();
+                    SearchActivity.a(bR.this.a).setSelection(0);
+                }
+            }
+        });
         if (list.size() > 0) {
             SearchActivity.a(this.a, 1);
             string = "1";

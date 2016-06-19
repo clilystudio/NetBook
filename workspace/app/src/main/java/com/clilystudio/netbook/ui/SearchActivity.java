@@ -4,7 +4,11 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
@@ -19,12 +23,16 @@ import android.widget.TextView;
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.adapter.E;
 import com.clilystudio.netbook.d;
-import com.clilystudio.netbook.widget.AutoFlowView;
-import com.clilystudio.netbook.widget.SearchEditText;
-import com.clilystudio.netbook.widget.SearchFixListView;
+import com.clilystudio.netbook.model.BookSummary;
+import com.clilystudio.netbook.util.*;
+import com.clilystudio.netbook.widget.*;
+import com.clilystudio.netbook.widget.ax;
+import com.clilystudio.netbook.widget.i;
+import com.clilystudio.netbook.widget.j;
 import com.xiaomi.mistatistic.sdk.MiStatInterface;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import butterknife.ButterKnife;
@@ -51,7 +59,7 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
     private View t;
     private View u;
     private ListView v;
-    private SearchActivity$SearchHistoryAdapter w;
+    private SearchHistoryAdapter w;
     private List<String> x;
 
     public static Intent a(Context context) {
@@ -343,12 +351,18 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
         View view = layoutInflater.inflate(R.layout.ab_search, null, false);
         view.findViewById(R.id.back).setOnClickListener(this);
         this.setCustomActionBar(view);
-        SearchActivity$SearchPromptAdapter searchActivity$SearchPromptAdapter = new SearchActivity$SearchPromptAdapter(this);
+        final SearchPromptAdapter searchPromptAdapter = new SearchPromptAdapter(this);
         this.i = (SearchFixListView) this.findViewById(R.id.search_prompt_list);
-        this.i.setAdapter(searchActivity$SearchPromptAdapter);
-        this.i.setOnItemClickListener(searchActivity$SearchPromptAdapter);
+        this.i.setAdapter(searchPromptAdapter);
+        this.i.setOnItemClickListener(searchPromptAdapter);
         this.e = (SearchEditText) view.findViewById(R.id.search_input_edit);
-        this.e.setOnUserInputListener(new bD(this, searchActivity$SearchPromptAdapter));
+        this.e.setOnUserInputListener(new ax() {
+            @Override
+            public void a() {
+                String string = String.valueOf(Calendar.getInstance().getTimeInMillis());
+                searchPromptAdapter.getFilter().filter(string);
+            }
+        });
         this.f = view.findViewById(R.id.search_input_search);
         this.g = view.findViewById(R.id.search_input_clean);
         this.j = this.findViewById(R.id.pb_loading);
@@ -367,18 +381,67 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
         }
         this.l = new E(layoutInflater);
         this.h.setAdapter(this.l);
-        this.h.setOnItemClickListener(new bE(this));
+        this.h.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                BookSummary bookSummary;
+                int n2 = position - SearchActivity.this.h.getHeaderViewsCount();
+                if (n2 < 0 || n2 >= SearchActivity.this.l.getCount() || (bookSummary = (BookSummary) SearchActivity.this.l.getItem(n2)) == null) return;
+                if (bookSummary.getPromLink() == null) {
+                    SearchActivity.this.startActivity(BookInfoActivity.a(SearchActivity.this, bookSummary.getId()));
+                    return;
+                }
+                new j((Context) SearchActivity.this, bookSummary.getPromLink()).a();
+           }
+        });
         if (bundle != null) {
             this.b = bundle.getString("saved_keyword");
             if (this.b != null) {
                 this.e.setTextByCode(this.b);
             }
         }
-        this.e.setOnEditorActionListener(new bJ(this));
-        this.e.addTextChangedListener(new bK(this));
-        this.e.setOnFocusChangeListener(new bL(this));
+        this.e.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (SearchActivity.this.e.getText().toString().trim().equals("")) {
+                    com.clilystudio.netbook.util.e.a((Activity) SearchActivity.this,"请输入要搜索的关键字");
+                    return true;
+                }
+                SearchActivity.this.a(true, true);
+                return true;
+            }
+        });
+        this.e.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+             }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                SearchActivity.this.o = null;
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                 boolean bl = !com.clilystudio.netbook.hpay100.a.a.Q(s.toString());
+                SearchActivity.a(SearchActivity.this, bl);
+           }
+        });
+        this.e.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                boolean bl2 = !com.clilystudio.netbook.hpay100.a.a.Q(SearchActivity.this.e.getText().toString());
+                SearchActivity.a(SearchActivity.this, bl2);
+            }
+        });
         this.t = this.findViewById(R.id.select_word_layout);
-        this.t.setOnTouchListener(new bF(this));
+        this.t.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                SearchActivity.this.g();
+                return false;
+            }
+        });
         this.u = this.findViewById(R.id.clear_history);
         this.u.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -395,7 +458,7 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
         if (this.x.size() == 0) {
             this.a(false);
         }
-        this.w = new SearchActivity$SearchHistoryAdapter(this);
+        this.w = new SearchHistoryAdapter(this);
         this.v.setAdapter(this.w);
         this.v.setOnItemClickListener(this.w);
         if (this.c != 1) {
@@ -412,7 +475,13 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
             List list = (List) a.k(c.e, "search_hotword.txt");
             this.q.setVisibility(View.VISIBLE);
             this.r.setWords(list);
-            this.r.setOnItemClickListener(new bH(this));
+            this.r.setOnItemClickListener(new i() {
+                @Override
+                public void a(String var1) {
+                    com.clilystudio.netbook.hpay100.a.a.t(SearchActivity.this, var1);
+                    SearchActivity.a(SearchActivity.this, var1);
+                }
+            });
             this.s.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -482,7 +551,7 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
         @Override
         public final View getView(int n, View view, ViewGroup viewGroup) {
             View view2 = this.a.getLayoutInflater().inflate(R.layout.list_item_search_prompt, viewGroup, false);
-            SearchActivity$SearchPromptAdapter$ViewHolder searchActivity$SearchPromptAdapter$ViewHolder = new SearchActivity$SearchPromptAdapter$ViewHolder(this, view2);
+            SearchPromptAdapter$ViewHolder searchActivity$SearchPromptAdapter$ViewHolder = new SearchPromptAdapter$ViewHolder(this, view2);
             if (n >= 0 && n < this.b.size()) {
                 searchActivity$SearchPromptAdapter$ViewHolder.label.setText(this.b.get(n));
             }
@@ -506,10 +575,10 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
             }
         }
     }
-    public final class SearchActivity$SearchHistoryAdapter extends BaseAdapter implements AdapterView.OnItemClickListener {
+    public final class SearchHistoryAdapter extends BaseAdapter implements AdapterView.OnItemClickListener {
         private /* synthetic */ SearchActivity a;
 
-        public SearchActivity$SearchHistoryAdapter(SearchActivity searchActivity) {
+        public SearchHistoryAdapter(SearchActivity searchActivity) {
             this.a = searchActivity;
         }
 
@@ -531,7 +600,7 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
         @Override
         public final View getView(int n, View view, ViewGroup viewGroup) {
             View view2 = this.a.getLayoutInflater().inflate(R.layout.list_item_search_history, viewGroup, false);
-            SearchActivity$SearchHistoryAdapter$ViewHolder searchActivity$SearchHistoryAdapter$ViewHolder = new SearchActivity$SearchHistoryAdapter$ViewHolder(this, view2);
+            SearchHistoryAdapter$ViewHolder searchActivity$SearchHistoryAdapter$ViewHolder = new SearchHistoryAdapter$ViewHolder(this, view2);
             if (n >= 0 && n < SearchActivity.l(this.a).size()) {
                 searchActivity$SearchHistoryAdapter$ViewHolder.word.setText((CharSequence) SearchActivity.l(this.a).get(n));
             }
@@ -545,10 +614,10 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
                 b.a(this.a, "search_history_word_click", (String) SearchActivity.l(this.a).get(n));
             }
         }
-        class SearchActivity$SearchHistoryAdapter$ViewHolder {
+        class SearchHistoryAdapter$ViewHolder {
             TextView word;
 
-            SearchActivity$SearchHistoryAdapter$ViewHolder(SearchActivity.SearchHistoryAdapter searchHistoryAdapter, View view) {
+            SearchHistoryAdapter$ViewHolder(SearchActivity.SearchHistoryAdapter searchHistoryAdapter, View view) {
                 this.word = (TextView) view.findViewById(R.id.search_history_item);
             }
         }

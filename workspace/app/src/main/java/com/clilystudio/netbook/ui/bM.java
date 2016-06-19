@@ -6,8 +6,9 @@ import android.view.View;
 import com.clilystudio.netbook.c;
 import com.clilystudio.netbook.model.HotKeywordResult;
 import com.clilystudio.netbook.util.e;
-import com.clilystudio.netbook.widget.AutoFlowView;
+import com.clilystudio.netbook.widget.*;
 import com.clilystudio.netbook.widget.AutoFlowView.Word;
+import com.clilystudio.netbook.widget.i;
 
 import java.util.ArrayList;
 
@@ -51,11 +52,17 @@ final class bM extends com.clilystudio.netbook.a_pack.e<String, Void, HotKeyword
             a.a(arrayList, c.e, "search_hotword.txt");
             SearchActivity.g(this.a).setVisibility(View.VISIBLE);
             SearchActivity.e(this.a).setWords(hotKeywordResult.getHotWords());
-            SearchActivity.e(this.a).setOnItemClickListener(new bN(this));
+            SearchActivity.e(this.a).setOnItemClickListener(new i() {
+                @Override
+                public void a(String var1) {
+                    a.t(bM.this.a, var1);
+                    SearchActivity.a(bM.this.a, var1);
+                }
+            });
             SearchActivity.h(this.a).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    a.G(bM.this.a);
+                    com.clilystudio.netbook.hpay100.a.a.G(bM.this.a);
                     SearchActivity.e(bM.this.a).a();
                 }
             });

@@ -4,13 +4,18 @@ import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
+import android.webkit.ConsoleMessage;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.d;
 
 public class LuckyGameWebActivity extends BaseActivity implements View.OnClickListener {
@@ -91,9 +96,41 @@ public class LuckyGameWebActivity extends BaseActivity implements View.OnClickLi
         webSettings.setJavaScriptEnabled(true);
         webSettings.setDomStorageEnabled(true);
         webSettings.setAppCacheEnabled(true);
-        this.b.setWebChromeClient((WebChromeClient) ((Object) new bg(this)));
-        this.b.setWebViewClient((WebViewClient) ((Object) new bh(this)));
-        this.b.setOnKeyListener((View.OnKeyListener) ((Object) new bi(this)));
+        this.b.setWebChromeClient(new WebChromeClient(){
+            @Override
+            public boolean onConsoleMessage(ConsoleMessage consoleMessage) {
+                Log.i(LuckyGameWebActivity.b(), consoleMessage.message().toString());
+                return super.onConsoleMessage(consoleMessage);
+            }
+        });
+        this.b.setWebViewClient(new WebViewClient(){
+
+            @Override
+            public void onPageStarted(WebView view, String url, Bitmap favicon) {
+                LuckyGameWebActivity.this.c.setVisibility(View.VISIBLE);
+            }
+
+            @Override
+            public void onPageFinished(WebView view, String url) {
+                LuckyGameWebActivity.this.c.setVisibility(View.GONE);
+                LuckyGameWebActivity.a(LuckyGameWebActivity.this);
+            }
+
+            @Override
+            public void doUpdateVisitedHistory(WebView view, String url, boolean isReload) {
+                LuckyGameWebActivity.a(LuckyGameWebActivity.this);
+            }
+        });
+        this.b.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if (keyCode == 4 && LuckyGameWebActivity.this.b.canGoBack()) {
+                    LuckyGameWebActivity.this.b.goBack();
+                    return true;
+                }
+                return false;
+            }
+        }));
         this.b.addJavascriptInterface(new cw(this, this.b), "ZssqAndroidApi");
         this.e.setOnClickListener(this);
         this.f.setOnClickListener(this);

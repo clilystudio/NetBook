@@ -12,6 +12,7 @@ import com.clilystudio.netbook.am;
 import android.support.v7.widget.SwitchCompat;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.CompoundButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -35,12 +36,18 @@ public class SettingsActivity extends BaseActivity implements View.OnClickListen
         view.setContentDescription("\u5df2\u5173\u95ed");
     }
 
-    static /* synthetic */ void a(SettingsActivity settingsActivity) {
+    static /* synthetic */ void a(final SettingsActivity settingsActivity) {
         h h2 = new h(settingsActivity);
         h2.a(R.string.user_logout_dialog);
         h2.b(R.string.user_logout_dialog_tips);
         h2.b(R.string.cancel, null);
-        h2.a(R.string.user_logout, (DialogInterface.OnClickListener) new bZ(settingsActivity));
+        h2.a(R.string.user_logout, new DialogInterface.OnClickListener(){
+
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                SettingsActivity.c(settingsActivity);
+           }
+        });
         h2.a().show();
     }
 
@@ -138,7 +145,12 @@ public class SettingsActivity extends BaseActivity implements View.OnClickListen
         super.onCreate(bundle);
         this.setContentView(R.layout.activity_setting);
         if (this.getIntent().getBooleanExtra("from_user_info", false)) {
-            this.a(R.string.settings, "\u9000\u51fa\u767b\u5f55", (aa) new bU(this));
+            this.a(R.string.settings, "退出登录", new aa() {
+                @Override
+                public void a() {
+                    SettingsActivity.a(SettingsActivity.this);
+                }
+            });
         } else {
             this.b(R.string.settings);
         }
@@ -151,17 +163,36 @@ public class SettingsActivity extends BaseActivity implements View.OnClickListen
         String string = (String) am.c((Context) this, (String) "COMMIT_ID");
         String string2 = string != null && string.length() > 8 ? string.substring(0, 8) : null;
         textView.setText(stringBuilder.append(string2).append(")").toString());
-        textView.setOnLongClickListener(new bV(this));
-        boolean bl = a.l(this, "update_notice_key");
+        textView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                SettingsActivity.b(SettingsActivity.this);
+                return true;
+            }
+        });
+        final boolean bl = a.l(this, "update_notice_key");
         boolean bl2 = a.a((Context) this, "save_bandwidth", false);
-        SwitchCompat switchCompat = (SwitchCompat) this.findViewById(R.id.cb_notice_update);
-        SwitchCompat switchCompat2 = (SwitchCompat) this.findViewById(R.id.cb_save_bandwidth);
+        final SwitchCompat switchCompat = (SwitchCompat) this.findViewById(R.id.cb_notice_update);
+        final SwitchCompat switchCompat2 = (SwitchCompat) this.findViewById(R.id.cb_save_bandwidth);
         switchCompat.setChecked(bl);
         SettingsActivity.a(switchCompat, bl);
         switchCompat2.setChecked(bl2);
         SettingsActivity.a(switchCompat2, bl2);
-        switchCompat.setOnCheckedChangeListener(new bW(this, switchCompat));
-        switchCompat2.setOnCheckedChangeListener(new bX(this, switchCompat2));
+        switchCompat.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                com.clilystudio.netbook.hpay100.a.a.b(SettingsActivity.this, "update_notice_key", isChecked);
+                SettingsActivity.a(SettingsActivity.this, isChecked);
+                SettingsActivity.a(SettingsActivity.this, switchCompat, isChecked);
+            }
+        });
+        switchCompat2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                com.clilystudio.netbook.hpay100.a.a.b(SettingsActivity.this, "save_bandwidth", isChecked);
+                SettingsActivity.a(SettingsActivity.this, switchCompat2, isChecked);
+            }
+        });
         if ("1".equals(b.b(this, "enable_job"))) {
             View view = this.findViewById(R.id.tv_jd);
             view.setVisibility(View.VISIBLE);
