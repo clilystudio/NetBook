@@ -157,13 +157,17 @@ public class SplashActivity extends Activity {
     }
 
     public final void a(long l2) {
-        cl cl2 = new cl(this);
-        Handler handler = this.c;
-        ci ci2 = new ci(this, cl2, l2);
+        final cl cl2 = new cl(this);
+        final long finalL = l2;
         if (l2 <= 0) {
             l2 = 0;
         }
-        handler.postDelayed(ci2, l2);
+        this.c.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                cl2.a(finalL);
+            }
+        }, l2);
         this.d = cl2;
     }
 

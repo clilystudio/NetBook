@@ -84,7 +84,12 @@ public class SettingsActivity extends BaseActivity implements View.OnClickListen
 
     static /* synthetic */ void c(SettingsActivity settingsActivity) {
         e.a((Activity) settingsActivity, (String) "\u5df2\u767b\u51fa");
-        new Thread(new ca(settingsActivity, am.e().getToken())).start();
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                com.clilystudio.netbook.api.b.b().P(am.e().getToken());
+            }
+        }).start();
         MyApplication.a().a("account.token", "user.id", "user.name", "user.avatar", "user.lv", "user.gender");
         a.e((Context) settingsActivity, "pref_new_unimp_notif_time", "0");
         a.e((Context) settingsActivity, "pref_new_imp_notif_time", "0");

@@ -40,7 +40,7 @@ public class ShareRemoveAdActivity extends BaseActivity {
             e.a((Activity) shareRemoveAdActivity, (String) "\u83b7\u53d6\u7528\u6237\u4fe1\u606f\u5931\u8d25,\u8bf7\u767b\u5f55\u540e\u91cd\u8bd5");
             return;
         }
-        T.a(shareRemoveAdActivity, "\u6709\u4eba@\u4f60\uff0c\u4ecb\u7ecd\u4f60\u4e2a\u65b0\u670b\u53cb", "\u6211\u5bf9\u5979\u5df2\u7ecf\u6709\u611f\u60c5\u4e86\u3002\u5168\u7f51\u5c0f\u8bf4\u514d\u8d39\u770b\uff0c\u518d\u6ca1\u6709\u5e7f\u544a\uff0c\u7b80\u76f4\u5b8c\u7f8e\uff01", "http://share.zhuishushenqi.com/invitation-card?recommended=" + string + "&op=rmad7", "http://statics.zhuishushenqi.com/android-app-icon%2Fthanks_invite.png", n, new cg(shareRemoveAdActivity));
+        T.a(shareRemoveAdActivity, "有人@你，介绍你个新朋友", "我对她已经有感情了。全网小说免费看，再没有广告，简直完美！", "http://share.zhuishushenqi.com/invitation-card?recommended=" + string + "&op=rmad7", "http://statics.zhuishushenqi.com/android-app-icon%2Fthanks_invite.png", n, new cg(shareRemoveAdActivity));
     }
 
     @Override

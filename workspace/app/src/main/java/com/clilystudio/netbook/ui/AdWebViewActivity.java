@@ -13,6 +13,9 @@ import android.os.Environment;
 
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.am;
+
+import android.text.TextUtils;
+import android.view.KeyEvent;
 import android.view.View;
 import android.webkit.DownloadListener;
 import android.webkit.WebChromeClient;
@@ -42,7 +45,7 @@ public class AdWebViewActivity extends BaseActivity implements View.OnClickListe
     /*
      * Enabled aggressive block sorting
      */
-    static /* synthetic */ void a(AdWebViewActivity adWebViewActivity, String string) {
+    static /* synthetic */ void a(final AdWebViewActivity adWebViewActivity, final String string) {
         boolean bl;
         DownloadManager.Query query = new DownloadManager.Query();
         Cursor cursor = adWebViewActivity.g.query(query);
@@ -65,7 +68,15 @@ public class AdWebViewActivity extends BaseActivity implements View.OnClickListe
         String string3 = com.clilystudio.netbook.hpay100.a.a.r(adWebViewActivity) == 1 ? "\u54c7\uff0c\u4f60\u6b63\u5904\u5728 Wi-Fi \u7f51\u7edc\u4e0b\uff0c\u4e0b\u8f7d\u65e0\u9700\u6d41\u91cf :)" : "\u5f53\u524d\u7f51\u7edc\u4e0b\u8f7d\u9700\u6d88\u8017\u6d41\u91cf\uff0c\u8bf7\u5c0f\u5fc3\u786e\u8ba4";
         h h2 = new h(adWebViewActivity).a(R.string.download);
         h2.e = string3;
-        h2.a(R.string.ok, (DialogInterface.OnClickListener) ((Object) new e(adWebViewActivity, string))).b(R.string.cancel, null).b();
+        h2.a(R.string.ok, new DialogInterface.OnClickListener(){
+
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                com.clilystudio.netbook.util.e.a(adWebViewActivity, "开始下载");
+                String string2 = com.clilystudio.netbook.hpay100.a.a.N(string);
+                AdWebViewActivity.a(adWebViewActivity, string2);
+            }
+        }).b(R.string.cancel, null).b();
     }
 
     /*
@@ -184,8 +195,27 @@ public class AdWebViewActivity extends BaseActivity implements View.OnClickListe
             }
         });
         this.a.setWebViewClient((WebViewClient) ((Object) new b(this)));
-        this.a.setOnKeyListener((View.OnKeyListener) ((Object) new c(this)));
-        this.a.setWebChromeClient((WebChromeClient) ((Object) new d(this)));
+        this.a.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if (keyCode == 4 && AdWebViewActivity.this.a.canGoBack()) {
+                    AdWebViewActivity.this.a.goBack();
+                    return true;
+                }
+                return false;
+            }
+        });
+        this.a.setWebChromeClient(new WebChromeClient(){
+
+            @Override
+            public void onReceivedTitle(WebView view, String title) {
+                super.onReceivedTitle(view, title);
+                if (!TextUtils.isEmpty(title)) {
+                    AdWebViewActivity.this.f = title;
+                    AdWebViewActivity.this.d(title);
+                }
+            }
+        });
         this.a.addJavascriptInterface(new cw(this, this.a), "ZssqAndroidApi");
         this.c.setOnClickListener(this);
         this.e.setOnClickListener(this);

@@ -1,8 +1,8 @@
 package com.clilystudio.netbook.ui;
 
-import com.koushikdutta.async.a.a;
+import com.koushikdutta.async.callback.CompletedCallback;
 
-final class cv implements a {
+final class cv implements CompletedCallback {
     private /* synthetic */ l a;
 
     cv(cs cs2, l l2) {
@@ -10,7 +10,7 @@ final class cv implements a {
     }
 
     @Override
-    public final void a(Exception exception) {
+    public final void onCompleted(Exception exception) {
         this.a.a("upload success");
     }
 }

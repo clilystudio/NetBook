@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ListAdapter;
@@ -13,9 +14,10 @@ import android.widget.TextView;
 
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.db.AudioRecord;
+import com.clilystudio.netbook.event.*;
 import com.clilystudio.netbook.event.F;
 import com.clilystudio.netbook.ui.home.HomeActivity;
-import com.clilystudio.netbook.util.as;
+import com.clilystudio.netbook.util.*;
 import com.clilystudio.netbook.widget.ScrollLoadListView;
 import com.clilystudio.netbook.widget.av;
 import com.ximalaya.ting.android.opensdk.datatrasfer.CommonRequest;
@@ -420,8 +422,17 @@ public class AudioBookPlayActivity extends BaseActivity implements View.OnClickL
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         this.setContentView(R.layout.activity_audiobook_play);
-        com.clilystudio.netbook.event.i.a().a(this);
-        this.a("", R.string.exit_autio_book, (aa) ((Object) new f(this)));
+        com.clilystudio.netbook.event.i.a().register(this);
+        this.a("", R.string.exit_autio_book, new aa() {
+            @Override
+            public void a() {
+                as.b(AudioBookPlayActivity.a(AudioBookPlayActivity.this));
+                as.i();
+                com.clilystudio.netbook.event.i.a().post(new com.clilystudio.netbook.event.b());
+                com.clilystudio.netbook.util.e.b(AudioBookPlayActivity.this);
+                AudioBookPlayActivity.this.b();
+            }
+        });
         this.a = as.b();
         as.a(this.E);
         if (this.getIntent() != null) {
@@ -457,7 +468,12 @@ public class AudioBookPlayActivity extends BaseActivity implements View.OnClickL
         this.v.setOnClickListener(this);
         this.w.setOnClickListener(this);
         this.x.setOnClickListener(this);
-        this.findViewById(R.id.play_layout).setOnTouchListener((View.OnTouchListener) ((Object) new g(this)));
+        this.findViewById(R.id.play_layout).setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                return true;
+            }
+        });
         this.n.setClickable(true);
         this.n.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -467,7 +483,27 @@ public class AudioBookPlayActivity extends BaseActivity implements View.OnClickL
         });
         this.a(false);
         this.s.setThumbOffset(0);
-        this.s.setOnSeekBarChangeListener((SeekBar.OnSeekBarChangeListener) ((Object) new i(this)));
+        this.s.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                if (AudioBookPlayActivity.this.j) {
+                    return;
+                }
+                as.a(10 * (progress * AudioBookPlayActivity.this.i));
+                AudioBookPlayActivity.this.z.d();
+                AudioBookPlayActivity.a(AudioBookPlayActivity.this, AudioBookPlayActivity.this.t, progress * AudioBookPlayActivity.this.i / 100);
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
         if (as.c()) {
             this.w.setImageResource(R.drawable.audiobook_pause_selector);
         } else {

@@ -25,7 +25,12 @@ public class BaseActivity extends AppCompatActivity {
     private BroadcastReceiver a;
 
     public BaseActivity() {
-        this.a = new J(this);
+        this.a = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                recreate();
+            }
+        };
     }
 
     protected static UGCNewCollection e() {
