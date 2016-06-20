@@ -60,18 +60,5 @@ public class PostHeader extends LinearLayout {
     }
 
     public final void b() {
-        this.findViewById(R.id.post_detail_more).setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Context context = PostHeader.this.getContext();
-                if (context instanceof AbsPostActivity) {
-                    AbsPostActivity absPostActivity = (AbsPostActivity) context;
-                    a a2 = new a(absPostActivity, v);
-                    a2.b().inflate(R.menu.game_post_menu, a2.a());
-                    a2.a(new ar(this, absPostActivity));
-                    a2.c();
-                }
-            }
-        });
     }
 }

@@ -116,8 +116,7 @@ public final class y {
         if (!a.d()) {
             return;
         }
-        this.c.sendBroadcast(new Intent("update_game_item_status"));
-        MyApplication.a().i().add(this.a.get_id());
+         MyApplication.a().i().add(this.a.get_id());
         String string = this.a.getDownload_link();
         long l = this.a(Uri.parse(string));
         MyApplication.a().j().add(l);

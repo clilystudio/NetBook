@@ -92,7 +92,6 @@ public class ChargeActivity extends BaseLoadingActivity {
     @Override
     protected final void b() {
         this.i();
-        new j(this, 0).b(new Void[0]);
     }
 
     /*

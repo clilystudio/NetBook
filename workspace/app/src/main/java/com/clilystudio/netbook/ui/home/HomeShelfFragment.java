@@ -52,7 +52,6 @@ import com.clilystudio.netbook.ui.feed.FeedListActivity;
 import com.clilystudio.netbook.ui.user.RemoveAdActivity;
 import com.clilystudio.netbook.util.FeedIntroDialog;
 import com.clilystudio.netbook.util.InsideLinkIntent;
-import com.clilystudio.netbook.util.UmengGameTracer;
 import com.clilystudio.netbook.util.as;
 import com.clilystudio.netbook.widget.CoverLoadingView;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
@@ -662,9 +661,7 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
         } else {
             textView.setTextColor(homeShelfFragment.getActivity().getResources().getColor(R.color.shelf_msg_normal));
         }
-        new UmengGameTracer(homeShelfFragment.getActivity(), UmengGameTracer.From.Notification).a(shelfMsg._id);
-//        new w(homeShelfFragment, shelfMsg, insideLink)
-        textView.setOnClickListener(new View.OnClickListener() {
+         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (shelfMsg.login && am.a(homeShelfFragment.getActivity()) == null) {
@@ -1018,9 +1015,6 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
         String string2 = n2 == 0 ? "rate_zssq_advert_bookshelf_top" : "rate_zssq_advert_bookshelf_five";
         Advert advert = com.clilystudio.netbook.util.c.a().a(string);
         if (advert != null && HomeShelfFragment.a(this.getActivity(), n2) && a.w(this.getActivity(), string2)) {
-            if (this.getActivity() != null) {
-                new UmengGameTracer(this.getActivity(), UmengGameTracer.From.Bookshelf).a(advert.get_id());
-            }
             advert.setType("promotion");
             this.a(list, n2, advert);
             return;

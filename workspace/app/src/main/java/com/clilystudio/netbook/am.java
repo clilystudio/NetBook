@@ -34,7 +34,6 @@ import android.widget.EditText;
 import com.clilystudio.netbook.db.BookDlRecord;
 import com.clilystudio.netbook.db.BookReadRecord;
 import com.clilystudio.netbook.model.Account;
-import com.clilystudio.netbook.model.Game;
 import com.clilystudio.netbook.model.User;
 import com.clilystudio.netbook.ui.AdWebViewActivity;
 import com.clilystudio.netbook.ui.SplashActivity;

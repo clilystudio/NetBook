@@ -10,7 +10,6 @@ import com.clilystudio.netbook.model.InsideLink;
 import com.clilystudio.netbook.ui.AdWebViewActivity;
 import com.clilystudio.netbook.ui.BookInfoActivity;
 import com.clilystudio.netbook.ui.SplashActivity;
-import com.clilystudio.netbook.ui.game.GameDetailActivity;
 import com.clilystudio.netbook.ui.post.BookHelpActivity;
 import com.clilystudio.netbook.ui.post.PostDetailActivity;
 import com.clilystudio.netbook.ui.post.ReviewActivity;
@@ -60,17 +59,7 @@ public class InsideLinkIntent extends Intent {
                 throw new UnImplementException("Not implement");
             }
             case 1: {
-                String string = insideLink.getValue();
-                this.setComponent(new ComponentName(this.a, GameDetailActivity.class));
-                if (string.contains("micro")) {
-                    this.b = true;
-                    string = string.substring(5);
-                }
-                this.putExtra("game_id", string);
-                if (this.b) {
-                    this.putExtra("is_micro_game", this.b);
-                }
-                this.a();
+                // GameDetailActivity
                 return;
             }
             case 2: {

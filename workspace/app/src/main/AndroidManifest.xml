@@ -133,7 +133,6 @@
         <activity android:name="com.clilystudio.netbook.ui.post.AddVoteActivity" android:screenOrientation="portrait"/>
         <activity android:name="com.clilystudio.netbook.ui.post.AddTopicActivity" android:screenOrientation="portrait"/>
         <activity android:configChanges="keyboardHidden|screenSize" android:name="com.clilystudio.netbook.ui.post.AddVoteItemActivity" android:screenOrientation="portrait"/>
-        <activity android:name="com.clilystudio.netbook.ui.post.AddGamePostActivity" android:screenOrientation="portrait"/>
         <activity android:launchMode="singleTask" android:name="com.clilystudio.netbook.ui.post.TweetTabActivity" android:screenOrientation="portrait"/>
         <activity android:name="com.clilystudio.netbook.ui.post.FollowerListActivity" android:screenOrientation="portrait"/>
         <activity android:name="com.clilystudio.netbook.ui.post.OtherUserActivity" android:screenOrientation="portrait"/>

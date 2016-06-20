@@ -21,7 +21,6 @@ import com.clilystudio.netbook.model.SplashAdvert;
 import com.clilystudio.netbook.model.TxtFileObject;
 import com.clilystudio.netbook.ui.home.HomeActivity;
 import com.clilystudio.netbook.util.InsideLinkIntent;
-import com.clilystudio.netbook.util.UmengGameTracer;
 import com.clilystudio.netbook.util.adutil.AdSplashImp;
 import com.clilystudio.netbook.util.adutil.g;
 import com.clilystudio.netbook.util.adutil.l;
@@ -97,7 +96,6 @@ public class SplashActivity extends Activity {
         final SplashAdvert splashAdvert = e2.a();
         if (splashAdvert != null) {
             try {
-                new UmengGameTracer(this, UmengGameTracer.From.Splash).a(splashAdvert.getSplashRecord().splashId);
                 bl = true;
             } catch (Exception var4_7) {
                 var4_7.printStackTrace();

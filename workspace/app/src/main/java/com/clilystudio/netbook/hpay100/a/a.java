@@ -74,7 +74,6 @@ import com.clilystudio.netbook.push.BookSubRecord;
 import com.clilystudio.netbook.push.BookUnSubRecord;
 import com.clilystudio.netbook.reader.ReaderActivity;
 import com.clilystudio.netbook.reader.ReaderTocDialog;
-import com.clilystudio.netbook.ui.game.N;
 import com.clilystudio.netbook.util.CipherUtil;
 import com.clilystudio.netbook.util.GenderIntroDialog;
 import com.clilystudio.netbook.util.I;

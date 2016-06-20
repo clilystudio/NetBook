@@ -559,35 +559,6 @@ public class ApiService {
         }
     }
 
-    /*
-     * Unable to fully structure code
-     * Enabled aggressive block sorting
-     * Enabled unnecessary exception pruning
-     * Enabled aggressive exception aggregation
-     * Lifted jumps to return sites
-     */
-    public final GameGiftResponse K(String var1_1, String var2_2) {
-        var3_3 = ApiService.f + "/gameGift/check";
-        try {
-            var5_4 = HttpRequest.b(var3_3);
-            var6_5 = new HashMap<String, String>();
-            var6_5.put("token", var2_2);
-            var6_5.put("giftId", var1_1);
-            var9_6 = this.b(var5_4);
-            var9_6.a(var6_5);
-            return (GameGiftResponse) ApiService.a(var9_6, GameGiftResponse.class);
-        } catch (IOException var4_8) {
-        }
-        **GOTO lbl -1000
-        catch(HttpRequest.HttpRequestException var4_10){
-        }
-        lbl - 1000: // 2 sources:
-        {
-            var4_9.printStackTrace();
-            return null;
-        }
-    }
-
     public final UserInfo K(String string) {
         String string2 = f + String.format("/user/detail-info?token=%s", string);
         try {
@@ -701,26 +672,6 @@ public class ApiService {
         }
     }
 
-    public final GameDetail Y(String string) {
-        String string2 = f + String.format("/game/%s", string);
-        try {
-            GameDetail gameDetail = (GameDetail) ApiService.a(this.a(HttpRequest.a(string2)), GameDetail.class);
-            return gameDetail;
-        } catch (HttpRequest.HttpRequestException var3_4) {
-            throw var3_4.getCause();
-        }
-    }
-
-    public final GameGroupRoot Z(String string) {
-        String string2 = f + String.format("/game/group/%s", string);
-        try {
-            GameGroupRoot gameGroupRoot = (GameGroupRoot) ApiService.a(this.a(HttpRequest.a(string2)), GameGroupRoot.class);
-            return gameGroupRoot;
-        } catch (HttpRequest.HttpRequestException var3_4) {
-            throw var3_4.getCause();
-        }
-    }
-
     public final BookHelpList a(String string, String string2, int n, int n2, boolean bl) {
         StringBuilder stringBuilder = new StringBuilder().append(f);
         Object[] arrobject = new Object[]{string, string2, n, 20};
@@ -794,18 +745,6 @@ public class ApiService {
             return discussSummaryList;
         } catch (HttpRequest.HttpRequestException var10_11) {
             throw var10_11.getCause();
-        }
-    }
-
-    public final GameRoot a(int n, int n2) {
-        StringBuilder stringBuilder = new StringBuilder().append(f);
-        Object[] arrobject = new Object[]{n, 20};
-        String string = stringBuilder.append(String.format("/game/ranklist?start=%d&limit=%d", arrobject)).toString();
-        try {
-            GameRoot gameRoot = (GameRoot) ApiService.a(this.a(HttpRequest.a(string)), GameRoot.class);
-            return gameRoot;
-        } catch (HttpRequest.HttpRequestException var6_7) {
-            throw var6_7.getCause();
         }
     }
 
@@ -1091,16 +1030,6 @@ public class ApiService {
         }
     }
 
-    public final GameGiftRoot ab(String string) {
-        String string2 = f + String.format("/gameGift/list?platform=android&gameId=%s", string);
-        try {
-            GameGiftRoot gameGiftRoot = (GameGiftRoot) ApiService.a(this.a(HttpRequest.a(string2)), GameGiftRoot.class);
-            return gameGiftRoot;
-        } catch (HttpRequest.HttpRequestException var3_4) {
-            throw var3_4.getCause();
-        }
-    }
-
     public final BookGenderRecommend ac(String string) {
         String string2 = f + String.format("/book/recommend?gender=%s", string);
         try {
@@ -1108,18 +1037,6 @@ public class ApiService {
             return bookGenderRecommend;
         } catch (HttpRequest.HttpRequestException var3_4) {
             throw var3_4.getCause();
-        }
-    }
-
-    public final GamesGiftRoot b(int n, int n2) {
-        StringBuilder stringBuilder = new StringBuilder().append(f);
-        Object[] arrobject = new Object[]{0, 30};
-        String string = stringBuilder.append(String.format("/game/giftCodeList?start=%d&limit=%d", arrobject)).toString();
-        try {
-            GamesGiftRoot gamesGiftRoot = (GamesGiftRoot) ApiService.a(this.a(HttpRequest.a(string)), GamesGiftRoot.class);
-            return gamesGiftRoot;
-        } catch (HttpRequest.HttpRequestException var6_7) {
-            throw var6_7.getCause();
         }
     }
 
@@ -1556,18 +1473,6 @@ public class ApiService {
             return bookRankRoot;
         } catch (HttpRequest.HttpRequestException var2_3) {
             throw var2_3.getCause();
-        }
-    }
-
-    public final GamePostRoot d(String string, int n, int n2) {
-        StringBuilder stringBuilder = new StringBuilder().append(f);
-        Object[] arrobject = new Object[]{string, n, 10};
-        String string2 = stringBuilder.append(String.format("/post/by-game?game=%s&start=%s&limit=%d", arrobject)).toString();
-        try {
-            GamePostRoot gamePostRoot = (GamePostRoot) ApiService.a(this.a(HttpRequest.a(string2)), GamePostRoot.class);
-            return gamePostRoot;
-        } catch (HttpRequest.HttpRequestException var7_8) {
-            throw var7_8.getCause();
         }
     }
 
@@ -2409,16 +2314,6 @@ public class ApiService {
         }
     }
 
-    public final GameRoot p() {
-        String string = f + "/game?platform=android";
-        try {
-            GameRoot gameRoot = (GameRoot) ApiService.a(this.a(HttpRequest.a(string)), GameRoot.class);
-            return gameRoot;
-        } catch (HttpRequest.HttpRequestException var2_3) {
-            throw var2_3.getCause();
-        }
-    }
-
     public final ResultServer p(String string, String string2, String string3) {
         String string4 = f + "/statistics/install";
         HashMap<String, String> hashMap = new HashMap<String, String>();
@@ -2444,16 +2339,6 @@ public class ApiService {
             return searchResultRoot;
         } catch (HttpRequest.HttpRequestException var4_5) {
             throw var4_5.getCause();
-        }
-    }
-
-    public final GameLayoutRoot q() {
-        String string = f + "/game/layoutv2/?platform=android";
-        try {
-            GameLayoutRoot gameLayoutRoot = (GameLayoutRoot) ApiService.a(this.a(HttpRequest.a(string)), GameLayoutRoot.class);
-            return gameLayoutRoot;
-        } catch (HttpRequest.HttpRequestException var2_3) {
-            throw var2_3.getCause();
         }
     }
 
@@ -2488,16 +2373,6 @@ public class ApiService {
         }
     }
 
-    public final GameCatRoot r() {
-        String string = f + "/game/cat/topgames";
-        try {
-            GameCatRoot gameCatRoot = (GameCatRoot) ApiService.a(this.a(HttpRequest.a(string)), GameCatRoot.class);
-            return gameCatRoot;
-        } catch (HttpRequest.HttpRequestException var2_3) {
-            throw var2_3.getCause();
-        }
-    }
-
     /*
      * Enabled aggressive block sorting
      * Enabled unnecessary exception pruning
@@ -2510,16 +2385,6 @@ public class ApiService {
             return (NotificationRoot) ApiService.a(this.a(HttpRequest.a(string4)), NotificationRoot.class);
         } catch (HttpRequest.HttpRequestException var5_6) {
             throw var5_6.getCause();
-        }
-    }
-
-    public final GameLayoutRoot s() {
-        String string = f + "/game/layoutv2/microgame";
-        try {
-            GameLayoutRoot gameLayoutRoot = (GameLayoutRoot) ApiService.a(this.a(HttpRequest.a(string)), GameLayoutRoot.class);
-            return gameLayoutRoot;
-        } catch (HttpRequest.HttpRequestException var2_3) {
-            throw var2_3.getCause();
         }
     }
 
