@@ -1,7 +1,9 @@
 package com.clilystudio.netbook.ui;
 
 import android.content.Context;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,8 +12,10 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.adapter.c;
 import com.clilystudio.netbook.model.CategoryBook;
+import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 
 import java.util.ArrayList;
@@ -133,7 +137,22 @@ public class BookCategoryFragment extends Fragment {
                 }
            }
         });
-        this.a.setOnRefreshListener(new an(this));
+        this.a.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener<ListView>() {
+            @Override
+            public void onRefresh(PullToRefreshBase<ListView> refreshView) {
+                BookCategoryFragment.this.f.setVisibility(View.GONE);
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        if (BookCategoryFragment.this.h != null && BookCategoryFragment.this.h.getStatus() != AsyncTask.Status.FINISHED && !BookCategoryFragment.this.h.isCancelled()) {
+                            BookCategoryFragment.this.h.cancel(true);
+                        }
+                        BookCategoryFragment.a(BookCategoryFragment.this, new aq(BookCategoryFragment.this, false));
+                        BookCategoryFragment.this.h.b(new String[0]);
+                    }
+                }, 1000);
+            }
+        });
         this.d = new c(layoutInflater2);
         this.b.setAdapter(this.d);
         return view;

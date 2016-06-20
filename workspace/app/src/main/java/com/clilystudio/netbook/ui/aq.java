@@ -1,6 +1,7 @@
 package com.clilystudio.netbook.ui;
 
 import android.app.Activity;
+import android.view.View;
 
 import com.clilystudio.netbook.api.ApiService;
 import com.clilystudio.netbook.model.BookListRoot;
@@ -56,18 +57,18 @@ final class aq extends com.clilystudio.netbook.a_pack.e<String, Void, List<Categ
     }
 
     @Override
-    protected final /* synthetic */ Object doInBackground(Object[] var1_1) {
+    protected final /* synthetic */ List<CategoryBook> doInBackground(String[] var1_1) {
         return this.a();
     }
 
     @Override
-    protected final /* synthetic */ void onPostExecute(Object object) {
+    protected final /* synthetic */ void onPostExecute(List<CategoryBook> object) {
         List list = (List) object;
         super.onPostExecute(list);
         BookCategoryFragment.c(this.b).setVisibility(View.GONE);
         BookCategoryFragment.e(this.b).setVisibility(View.GONE);
         BookCategoryFragment.f(this.b).setVisibility(View.GONE);
-        BookCategoryFragment.g(this.b).n();
+        BookCategoryFragment.g(this.b).postInvalidate();
         boolean bl = BookCategoryFragment.b(this.b).isEmpty();
         if (list != null) {
             int n;
@@ -83,13 +84,13 @@ final class aq extends com.clilystudio.netbook.a_pack.e<String, Void, List<Categ
                 }
             } else if (bl) {
                 BookCategoryFragment.c(this.b).setVisibility(View.VISIBLE);
-                BookCategoryFragment.c(this.b).setText("\u6682\u65f6\u6ca1\u6709\u4e66\u7c4d\u54e6");
+                BookCategoryFragment.c(this.b).setText("暂时没有书籍哦");
                 return;
             }
             BookCategoryFragment.g(this.b).setOnLastItemVisibleListener(null);
             return;
         }
         BookCategoryFragment.g(this.b).setOnLastItemVisibleListener(BookCategoryFragment.i(this.b));
-        e.a((Activity) this.b.getActivity(), "\u52a0\u8f7d\u5931\u8d25\uff0c\u8bf7\u68c0\u67e5\u7f51\u7edc\u6216\u7a0d\u540e\u518d\u8bd5");
+        e.a((Activity) this.b.getActivity(), "加载失败，请检查网络或稍后再试");
     }
 }
