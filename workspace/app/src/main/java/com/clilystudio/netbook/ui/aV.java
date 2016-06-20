@@ -3,6 +3,7 @@ package com.clilystudio.netbook.ui;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.model.BookSummary;
 import com.clilystudio.netbook.util.W;
 import com.clilystudio.netbook.widget.CoverView;
@@ -13,7 +14,7 @@ final class aV extends W<BookSummary> {
     }
 
     @Override
-    protected final /* synthetic */ void a(int n, Object object) {
+    protected final /* synthetic */ void a(int n, BookSummary object) {
         BookSummary bookSummary = (BookSummary) object;
         ((CoverView) this.a(0, CoverView.class)).setImageUrl(bookSummary.getFullCover(), R.drawable.cover_default);
         this.a(1, bookSummary.getTitle());

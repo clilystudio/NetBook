@@ -11,14 +11,16 @@ import android.widget.AdapterView;
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.d;
 import com.clilystudio.netbook.model.BookSummary;
+import com.clilystudio.netbook.model.BookTagRoot;
 import com.clilystudio.netbook.widget.ScrollLoadListView;
 import com.clilystudio.netbook.widget.av;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class BookTagListActivity extends BaseLoadingActivity {
-    private aW a;
+    private com.clilystudio.netbook.a_pack.e<String, Void, List<BookSummary>> a;
     private aV b;
     private String c;
     private ScrollLoadListView e;
@@ -32,7 +34,37 @@ public class BookTagListActivity extends BaseLoadingActivity {
             public void a() {
                 if (BookTagListActivity.this.a == null || BookTagListActivity.this.a.getStatus() == AsyncTask.Status.FINISHED) {
                     BookTagListActivity.this.f.setVisibility(View.VISIBLE);
-                    BookTagListActivity.this.a = new aW(BookTagListActivity.this, (byte) 0);
+                    BookTagListActivity.this.a = new com.clilystudio.netbook.a_pack.e<String, Void, List<BookSummary>>() {
+
+                        @Override
+                        protected List<BookSummary> doInBackground(String... params) {
+                            BookTagRoot bookTagRoot = com.clilystudio.netbook.api.b.b().c(BookTagListActivity.this.c, BookTagListActivity.this.g.size(), 50);
+                            if (bookTagRoot == null) return null;
+                            if (bookTagRoot.getBooks() == null) return null;
+                            return Arrays.asList(bookTagRoot.getBooks());
+                        }
+
+                        @Override
+                        protected void onPostExecute(List<BookSummary> bookSummaries) {
+                            super.onPostExecute(bookSummaries);
+                            BookTagListActivity.this.f.setVisibility(View.GONE);
+                            if (bookSummaries != null) {
+                                BookTagListActivity.this.f();
+                                int n = bookSummaries.size();
+                                if (n > 0) {
+                                    BookTagListActivity.this.g.addAll(bookSummaries);
+                                    BookTagListActivity.this.b.a(BookTagListActivity.this.g);
+                                    if (n >= 50) {
+                                        BookTagListActivity.this.e.setOnLastItemListener(BookTagListActivity.this.h);
+                                        return;
+                                    }
+                                }
+                                BookTagListActivity.this.e.setOnLastItemListener(null);
+                                return;
+                            }
+                            com.clilystudio.netbook.util.e.a(BookTagListActivity.this, "加载失败，请检查网络或稍后再试");
+                        }
+                    };
                     BookTagListActivity.this.a.b(new String[0]);
                 }
             }
@@ -43,7 +75,7 @@ public class BookTagListActivity extends BaseLoadingActivity {
         return new d().a(context, BookTagListActivity.class).a("TAG_LIST_KEY", string).a();
     }
 
-    static /* synthetic */ aW a(BookTagListActivity bookTagListActivity, aW aW2) {
+    static /* synthetic */ com.clilystudio.netbook.a_pack.e<String, Void, List<BookSummary>> a(BookTagListActivity bookTagListActivity, com.clilystudio.netbook.a_pack.e<String, Void, List<BookSummary>> aW2) {
         bookTagListActivity.a = aW2;
         return aW2;
     }
@@ -78,14 +110,14 @@ public class BookTagListActivity extends BaseLoadingActivity {
         return bookTagListActivity.h;
     }
 
-    static /* synthetic */ aW g(BookTagListActivity bookTagListActivity) {
+    static /* synthetic */ com.clilystudio.netbook.a_pack.e<String, Void, List<BookSummary>> g(BookTagListActivity bookTagListActivity) {
         return bookTagListActivity.a;
     }
 
     @Override
     protected final void b() {
         this.i();
-        new aX(this, 0).b(new String[0]);
+        new aX(this, (byte) 0).b(new String[0]);
     }
 
     @Override
