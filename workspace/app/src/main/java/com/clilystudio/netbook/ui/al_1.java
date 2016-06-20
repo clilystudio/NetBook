@@ -26,12 +26,12 @@ final class al extends e<String, Void, CategoryRoot> {
     }
 
     @Override
-    protected final /* synthetic */ Object doInBackground(Object[] var1_1) {
+    protected final /* synthetic */ CategoryRoot doInBackground(String[] var1_1) {
         return this.a();
     }
 
     @Override
-    protected final /* synthetic */ void onPostExecute(Object object) {
+    protected final /* synthetic */ void onPostExecute(CategoryRoot object) {
         CategoryRoot categoryRoot = (CategoryRoot) object;
         super.onPostExecute(categoryRoot);
         if (categoryRoot != null && categoryRoot.isOk()) {
