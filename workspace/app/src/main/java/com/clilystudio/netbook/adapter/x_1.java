@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.view.LayoutInflater;
 import android.view.View;
 
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.model.ChargePlan;
 import com.clilystudio.netbook.ui.user.ChargeActivity;
 import com.clilystudio.netbook.util.W;

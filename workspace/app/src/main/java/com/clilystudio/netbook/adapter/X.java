@@ -2,6 +2,7 @@ package com.clilystudio.netbook.adapter;
 
 import android.view.LayoutInflater;
 
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.model.UGCBookListRoot;
 import com.clilystudio.netbook.util.W;
 import com.clilystudio.netbook.util.t;
@@ -10,8 +11,8 @@ import com.clilystudio.netbook.widget.CoverView;
 import java.util.Date;
 
 public final class X extends W<UGCBookListRoot.UGCBook> {
-    private String a = "\u5171%1$d\u672c\u4e66  |  %2$d\u4eba\u6536\u85cf";
-    private String b = "\u5171%1$d\u672c\u4e66";
+    private String a = "共%1$d本书  |  %2$d人收藏";
+    private String b = "共%1$d本书";
 
     public X(LayoutInflater layoutInflater) {
         super(layoutInflater, R.layout.list_item_ugc_book);
@@ -22,8 +23,7 @@ public final class X extends W<UGCBookListRoot.UGCBook> {
      * Lifted jumps to return sites
      */
     @Override
-    protected final /* synthetic */ void a(int n, Object object) {
-        UGCBookListRoot.UGCBook ugcBook = (UGCBookListRoot.UGCBook) object;
+    protected final /* synthetic */ void a(int n, UGCBookListRoot.UGCBook ugcBook) {
         if (ugcBook == null) return;
         ((CoverView) this.a(0, CoverView.class)).setImageUrl(ugcBook.getFullCover(), R.drawable.cover_default);
         this.a(1, ugcBook.getTitle());

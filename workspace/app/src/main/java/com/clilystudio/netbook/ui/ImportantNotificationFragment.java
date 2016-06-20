@@ -10,6 +10,7 @@ import android.widget.ListView;
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.adapter.NotificationAdapter;
 import com.clilystudio.netbook.adapter.t;
+import com.clilystudio.netbook.am;
 import com.clilystudio.netbook.event.i;
 import com.clilystudio.netbook.event.w;
 import com.clilystudio.netbook.util.J;
@@ -49,7 +50,13 @@ public class ImportantNotificationFragment extends NotifFragment {
 
     @Override
     protected final NotificationAdapter b() {
-        return new t(this.getActivity().getLayoutInflater());
+        return new NotificationAdapter(this.getActivity().getLayoutInflater()) {
+
+            @Override
+            protected String a() {
+                return am.h(this.b());
+            }
+        };
     }
 
     /*

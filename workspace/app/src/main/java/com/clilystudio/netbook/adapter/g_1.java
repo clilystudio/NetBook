@@ -3,6 +3,7 @@ package com.clilystudio.netbook.adapter;
 import android.content.res.Resources;
 import android.view.LayoutInflater;
 
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.model.BookRankDetail;
 import com.clilystudio.netbook.util.W;
 import com.clilystudio.netbook.widget.CoverView;
@@ -19,9 +20,8 @@ public final class g extends W<BookRankDetail> {
      * Enabled aggressive block sorting
      */
     @Override
-    protected final /* synthetic */ void a(int n, Object object) {
+    protected final /* synthetic */ void a(int n, BookRankDetail bookRankDetail) {
         boolean bl = true;
-        BookRankDetail bookRankDetail = (BookRankDetail) object;
         ((CoverView) this.a(0, CoverView.class)).setImageUrl(bookRankDetail.getFullCover(), R.drawable.cover_default);
         this.a((int) bl ? 1 : 0, bookRankDetail.getTitle());
         this.a(2, bookRankDetail.getShortIntro());

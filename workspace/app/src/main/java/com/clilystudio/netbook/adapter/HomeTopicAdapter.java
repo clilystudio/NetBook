@@ -6,6 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.clilystudio.netbook.R;
+import com.clilystudio.netbook.db.BookTopicEnterRecord;
 import com.clilystudio.netbook.model.BookShelfTopic;
 import com.clilystudio.netbook.ui.SmartImageView;
 import com.clilystudio.netbook.util.ag;
@@ -52,7 +54,7 @@ public final class HomeTopicAdapter extends u<BookShelfTopic> {
      * Enabled aggressive block sorting
      */
     @Override
-    public final View getView(int n, View view, ViewGroup viewGroup) {
+    public final View getView(final int n, View view, ViewGroup viewGroup) {
         int n2 = this.getItemViewType(n);
         if (view == null) {
             switch (n2) {
@@ -71,16 +73,29 @@ public final class HomeTopicAdapter extends u<BookShelfTopic> {
             }
         }
         if (n2 == 1) {
-            BookShelfTopic bookShelfTopic = this.a(n);
+            final BookShelfTopic bookShelfTopic = this.a(n);
             ViewHolder viewHolder = (ViewHolder) view.getTag();
             viewHolder.mTitle.setText(bookShelfTopic.getTitle());
             viewHolder.mCover.setImageUrl(bookShelfTopic.getFullCover(), R.drawable.cover_default);
-            TextView textView = viewHolder.mCount;
-            String string = bookShelfTopic.getBookId();
+            final TextView textView = viewHolder.mCount;
+            final String string = bookShelfTopic.getBookId();
             textView.setVisibility(View.GONE);
             textView.setText("");
             textView.setTag(string);
-            this.b.a(string, (ai) ((Object) new s(this, textView, bookShelfTopic)));
+            this.b.a(string, new ai() {
+                @Override
+                public void a(String var1, int var2) {
+                    if (!((String) textView.getTag()).equals(var1)) return;
+                    bookShelfTopic.setPostCount(var2);
+                    int n2 = var2 - BookTopicEnterRecord.get(var1).getVisitCount();
+                    if (n2 > 0) {
+                        textView.setVisibility(View.VISIBLE);
+                        textView.setText(String.valueOf(n2));
+                        return;
+                    }
+                    textView.setVisibility(View.GONE);
+                }
+            });
         }
         return view;
     }

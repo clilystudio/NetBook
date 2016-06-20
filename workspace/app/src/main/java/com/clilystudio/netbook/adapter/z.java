@@ -1,13 +1,11 @@
 package com.clilystudio.netbook.adapter;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 
-import com.clilystudio.netbook.model.Author;
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.model.PostComment;
-import com.clilystudio.netbook.util.*;
 import com.clilystudio.netbook.util.W;
 import com.clilystudio.netbook.widget.CommentItemView;
 
@@ -17,8 +15,7 @@ public final class z extends W<PostComment> {
     }
 
     @Override
-    protected final /* synthetic */ void a(int n, Object object) {
-        final PostComment postComment = (PostComment) object;
+    protected final /* synthetic */ void a(int n, final PostComment postComment) {
         CommentItemView commentItemView = (CommentItemView) ((View) this.a(10, View.class)).getParent();
         this.a(3, false);
         ((ImageView) this.a(0, ImageView.class)).setOnClickListener(new View.OnClickListener() {

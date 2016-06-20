@@ -11,11 +11,16 @@ import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
-import com.clilystudio.netbook.R;
+import com.clilystudio.netbook.*;
 import com.clilystudio.netbook.adapter.d;
+import com.clilystudio.netbook.model.Author;
 import com.clilystudio.netbook.model.BookHelpSummary;
 import com.clilystudio.netbook.ui.BaseActivity;
+import com.clilystudio.netbook.ui.SmartImageView;
 import com.clilystudio.netbook.ui.aa;
+import com.clilystudio.netbook.util.*;
+import com.clilystudio.netbook.util.W;
+import com.clilystudio.netbook.widget.PostFlag;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshBase$Mode;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
@@ -33,7 +38,7 @@ public class BookHelpListActivity extends BaseActivity {
     private View f;
     private View g;
     private TextView h;
-    private d i;
+    private com.clilystudio.netbook.util.W<BookHelpSummary> i;
     private List<BookHelpSummary> j = new ArrayList<BookHelpSummary>();
     private TextView k;
     private TextView l;
@@ -258,7 +263,7 @@ public class BookHelpListActivity extends BaseActivity {
         return bookHelpListActivity.f;
     }
 
-    static /* synthetic */ d q(BookHelpListActivity bookHelpListActivity) {
+    static /* synthetic */ W<BookHelpSummary> q(BookHelpListActivity bookHelpListActivity) {
         return bookHelpListActivity.i;
     }
 
@@ -328,7 +333,67 @@ public class BookHelpListActivity extends BaseActivity {
         this.e.addFooterView(this.f);
         this.c.setOnRefreshListener(new an(this));
         this.e.setOnItemClickListener((AdapterView.OnItemClickListener) ((Object) new ap(this)));
-        this.i = new d(this.getLayoutInflater());
+        this.i = new W<BookHelpSummary>(getLayoutInflater(), R.layout.list_item_post){
+
+            @Override
+            protected void a(int var1, BookHelpSummary bookHelpSummary) {
+                final Author author = bookHelpSummary.getAuthor();
+                final SmartImageView smartImageView = this.a(0, SmartImageView.class);
+                if (am.m(getLayoutInflater().getContext())) {
+                    smartImageView.setImageResource(R.drawable.avatar_default);
+                } else {
+                    smartImageView.setImageUrl(author.getScaleAvatar(), R.drawable.avatar_default);
+                    smartImageView.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            smartImageView.getContext().startActivity(com.clilystudio.netbook.util.e.a(smartImageView.getContext(), author));
+                        }
+                    });
+                }
+                this.a(1, author.getNickname());
+                this.a(2, "lv." + author.getLv());
+                this.a(3, t.e(bookHelpSummary.getCreated()));
+                this.a(4, bookHelpSummary.getTitle());
+                this.a(5, String.valueOf(bookHelpSummary.getCommentCount()));
+                if (com.clilystudio.netbook.hpay100.a.a.r(getLayoutInflater().getContext(), "community_user_gender_icon_toggle")) {
+                    String string = author.getGender();
+                    if ("male".equals(string)) {
+                        ((ImageView) this.a(6, ImageView.class)).setVisibility(View.VISIBLE);
+                        ((ImageView) this.a(6, ImageView.class)).setImageLevel(2);
+                    } else if ("female".equals(string)) {
+                        ((ImageView) this.a(6, ImageView.class)).setVisibility(View.VISIBLE);
+                        ((ImageView) this.a(6, ImageView.class)).setImageLevel(3);
+                    } else {
+                        ((ImageView) this.a(6, ImageView.class)).setVisibility(View.VISIBLE);
+                        ((ImageView) this.a(6, ImageView.class)).setImageLevel(4);
+                    }
+                } else {
+                    String string = author.getType();
+                    if ("official".equals(string)) {
+                        this.a(6, false);
+                        ((ImageView) this.a(6, ImageView.class)).setImageLevel(0);
+                    } else if ("doyen".equals(string)) {
+                        this.a(6, false);
+                        ((ImageView) this.a(6, ImageView.class)).setImageLevel(1);
+                    } else {
+                        this.a(6, true);
+                    }
+                }
+                String string = bookHelpSummary.getState();
+                if (((PostFlag) this.a(7, PostFlag.class)).a(string)) {
+                    this.a(3, true);
+                    this.a(7, false);
+                    return;
+                }
+                this.a(3, false);
+                this.a(7, true);
+            }
+
+            @Override
+            protected int[] a() {
+                return new int[]{R.id.avatar, R.id.user, R.id.lv, R.id.time, R.id.title, R.id.comment_count, R.id.avatar_verify, R.id.post_flag};
+            }
+        };
         this.e.setAdapter(this.i);
         av av2 = this.a = new av(this, 0);
         Object[] arrobject = new String[]{this.o, this.p};
