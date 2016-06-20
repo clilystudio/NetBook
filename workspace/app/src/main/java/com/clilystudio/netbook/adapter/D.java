@@ -21,7 +21,7 @@ public final class D extends W<ReviewSummary> {
      * Enabled aggressive block sorting
      */
     @Override
-    protected final /* synthetic */ void a(int n, Object object) {
+    protected final /* synthetic */ void a(int n, ReviewSummary object) {
         ReviewSummary reviewSummary = (ReviewSummary) object;
         ((CoverView) this.a(0, CoverView.class)).setImageUrl(reviewSummary.getBook().getFullCover(), R.drawable.cover_default);
         this.a(1, reviewSummary.getBook().getTitle());

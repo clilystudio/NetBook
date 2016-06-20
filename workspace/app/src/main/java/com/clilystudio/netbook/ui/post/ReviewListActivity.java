@@ -3,6 +3,7 @@ package com.clilystudio.netbook.ui.post;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
@@ -13,9 +14,11 @@ import android.widget.TextView;
 
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.adapter.D;
+import com.clilystudio.netbook.am;
 import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.model.ReviewSummary;
 import com.clilystudio.netbook.ui.BaseActivity;
+import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshBase$Mode;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.handmark.pulltorefresh.library.j;
@@ -509,7 +512,24 @@ public class ReviewListActivity extends BaseActivity {
             this.e.setFooterDividersEnabled(false);
         }
         this.e.addFooterView(this.f);
-        this.c.setOnRefreshListener(new di(this));
+        this.c.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener<ListView>() {
+            @Override
+            public void onRefresh(PullToRefreshBase<ListView> refreshView) {
+                ReviewListActivity.this.h.setVisibility(View.GONE);
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        if (!am.a(ReviewListActivity.this.a)) {
+                            ReviewListActivity.this.a.cancel(true);
+                        }
+                        ReviewListActivity.a(ReviewListActivity.this, new dp(ReviewListActivity.this, (byte)0));
+                        dp dp2 = ReviewListActivity.this.a;
+                        String[] arrstring = new String[]{ReviewListActivity.this.s, ReviewListActivity.this.t, ReviewListActivity.this.u};
+                        dp2.b(arrstring);
+                   }
+                }, 1000);
+            }
+        });
         this.e.setOnItemClickListener((AdapterView.OnItemClickListener) ((Object) new dk(this)));
         this.i = new D(this.getLayoutInflater());
         this.e.setAdapter(this.i);

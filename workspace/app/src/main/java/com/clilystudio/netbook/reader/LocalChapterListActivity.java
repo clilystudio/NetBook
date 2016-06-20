@@ -13,11 +13,12 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.clilystudio.netbook.adapter.C;
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.d;
 import com.clilystudio.netbook.model.Toc;
 import com.clilystudio.netbook.model.TocDownloadSummary;
 import com.clilystudio.netbook.ui.BaseActivity;
+import com.clilystudio.netbook.util.W;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -26,7 +27,7 @@ import java.util.Iterator;
 public class LocalChapterListActivity extends BaseActivity {
     private TextView a;
     private ListView b;
-    private C c;
+    private com.clilystudio.netbook.util.W<TocDownloadSummary> c;
     private View e;
     private ProgressDialog f;
     private String g;
@@ -44,7 +45,7 @@ public class LocalChapterListActivity extends BaseActivity {
         new uk.me.lewisdeane.ldialogs.h(localChapterListActivity).b(R.string.chapter_dl_del_chapter).a(false).a(R.string.delete, (DialogInterface.OnClickListener) ((Object) new k(localChapterListActivity, string))).b(R.string.cancel, (DialogInterface.OnClickListener) ((Object) new j(localChapterListActivity))).b();
     }
 
-    static /* synthetic */ C b(LocalChapterListActivity localChapterListActivity) {
+    static /* synthetic */ W<TocDownloadSummary> b(LocalChapterListActivity localChapterListActivity) {
         return localChapterListActivity.c;
     }
 
@@ -122,7 +123,24 @@ public class LocalChapterListActivity extends BaseActivity {
         this.e = LayoutInflater.from(this).inflate(R.layout.resource_loacl_header, (ViewGroup) this.b, false);
         this.b.addHeaderView(this.e, null, false);
         this.e.setVisibility(View.GONE);
-        this.c = new C(this.getLayoutInflater());
+        this.c = new W<TocDownloadSummary>(getLayoutInflater(), R.layout.list_item_resource_download) {
+
+            @Override
+            protected void a(int var1, TocDownloadSummary tocDownloadSummary) {
+                this.a(0, tocDownloadSummary.getHostName());
+                this.a(1, "已预读" + tocDownloadSummary.getCount() + "章");
+                if (-1 == var1) {
+                    this.a(2, false);
+                    return;
+                }
+                this.a(2, true);
+            }
+
+            @Override
+            protected int[] a() {
+                return new int[]{R.id.tv_name, R.id.tv_last_chapter, R.id.resource_list_item_last_select};
+            }
+        };
         this.b.setAdapter(this.c);
         this.b.setOnItemClickListener((AdapterView.OnItemClickListener) ((Object) new h(this)));
         this.b.setOnItemLongClickListener((AdapterView.OnItemLongClickListener) ((Object) new i(this)));
