@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.AdapterView;
 
 import com.clilystudio.netbook.R;
+import com.clilystudio.netbook.a_pack.e;
 import com.clilystudio.netbook.d;
 import com.clilystudio.netbook.model.BookSummary;
 import com.clilystudio.netbook.model.BookTagRoot;
@@ -117,7 +118,39 @@ public class BookTagListActivity extends BaseLoadingActivity {
     @Override
     protected final void b() {
         this.i();
-        new aX(this, (byte) 0).b(new String[0]);
+        new e<String, Void, List<BookSummary>>() {
+            @Override
+            protected List<BookSummary> doInBackground(String... params) {
+                BookTagRoot bookTagRoot = com.clilystudio.netbook.api.b.b().c(BookTagListActivity.this.c, 0, 50);
+                if (bookTagRoot == null) return null;
+                if (bookTagRoot.getBooks() == null) return null;
+                return Arrays.asList(bookTagRoot.getBooks());
+            }
+
+            @Override
+            protected void onPostExecute(List<BookSummary> bookSummaries) {
+                super.onPostExecute(bookSummaries);
+                BookTagListActivity.this.f.setVisibility(View.GONE);
+                if (bookSummaries != null) {
+                    int n = bookSummaries.size();
+                    if (n > 0) {
+                        BookTagListActivity.this.f();
+                        BookTagListActivity.this.g.clear();
+                        BookTagListActivity.this.g.addAll(bookSummaries);
+                        BookTagListActivity.this.b.a(BookTagListActivity.this.g);
+                        if (n < 50) {
+                            BookTagListActivity.this.e.setOnLastItemListener(null);
+                            return;
+                        }
+                        BookTagListActivity.this.e.setOnLastItemListener(BookTagListActivity.this.h);
+                        return;
+                    }
+                    BookTagListActivity.this.g();
+                    return;
+                }
+                BookTagListActivity.this.h();
+            }
+        }.b(new String[0]);
     }
 
     @Override

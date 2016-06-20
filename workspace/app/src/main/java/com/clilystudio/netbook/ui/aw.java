@@ -1,6 +1,8 @@
 package com.clilystudio.netbook.ui;
 
 import android.content.Context;
+
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.am;
 import android.view.LayoutInflater;
 import android.view.View;
