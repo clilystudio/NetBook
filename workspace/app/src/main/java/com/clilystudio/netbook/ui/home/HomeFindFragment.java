@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.ui.AdWebViewActivity;
 import com.clilystudio.netbook.ui.AudiobookCategoryActivity;
 import com.clilystudio.netbook.ui.BookCategoryActivity;

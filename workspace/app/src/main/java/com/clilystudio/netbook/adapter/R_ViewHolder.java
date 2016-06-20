@@ -4,6 +4,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.ui.SmartImageView;
 import com.clilystudio.netbook.widget.CoverView;
 import com.clilystudio.netbook.widget.PostFlag;

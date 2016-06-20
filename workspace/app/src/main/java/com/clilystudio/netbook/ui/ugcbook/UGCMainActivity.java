@@ -214,7 +214,7 @@ public class UGCMainActivity extends BaseTabActivity implements ViewPager$OnPage
         this.k = new ak(this, this, new UgcFilterRoot$FilterGroup[0]);
         this.j.setAdapter(this.k);
         this.h.setOnDismissListener(new ah(this));
-        this.a(R.string.ugc_list, "\u7b5b\u9009", R.drawable.ic_action_overflow, (com.clilystudio.netbook.ui.ab) new aa(this));
+        this.a(R.string.ugc_list, "筛选", R.drawable.ic_action_overflow, (com.clilystudio.netbook.ui.ab) new aa(this));
         this.a = (TabHost) this.findViewById(R.id.host);
         this.c = (ViewPager) this.findViewById(R.id.pager);
         this.e = new aj(this, this.getSupportFragmentManager());

@@ -11,13 +11,13 @@ final class U extends e<String, Void, PostPublish> {
     }
 
     @Override
-    protected final /* synthetic */ Object doInBackground(Object[] arrobject) {
+    protected final /* synthetic */ PostPublish doInBackground(String[] arrobject) {
         String[] arrstring = (String[]) arrobject;
         return this.c().m(arrstring[0], arrstring[1]);
     }
 
     @Override
-    protected final /* synthetic */ void onPostExecute(Object object) {
+    protected final /* synthetic */ void onPostExecute(PostPublish object) {
         PostPublish postPublish = (PostPublish) object;
         super.onPostExecute(postPublish);
         am.e();
