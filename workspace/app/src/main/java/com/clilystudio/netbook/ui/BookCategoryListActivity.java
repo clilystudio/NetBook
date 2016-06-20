@@ -1,16 +1,18 @@
 package com.clilystudio.netbook.ui;
 
+import android.app.ActionBar;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.support.v4.view.PagerAdapter;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
-import android.support.v4.view.ViewPager$OnPageChangeListener;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.TabHost;
@@ -20,11 +22,13 @@ import android.widget.TextView;
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.d;
 import com.clilystudio.netbook.model.CategoryLevelRoot;
+import com.clilystudio.netbook.ui.home.ZssqFragmentPagerAdapter;
+import com.xiaomi.mistatistic.sdk.MiStatInterface;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class BookCategoryListActivity extends BaseTabActivity implements ViewPager$OnPageChangeListener,
+public class BookCategoryListActivity extends BaseTabActivity implements ViewPager.OnPageChangeListener,
         TabHost.OnTabChangeListener,
         TabHost.TabContentFactory {
     private boolean b;
@@ -34,12 +38,12 @@ public class BookCategoryListActivity extends BaseTabActivity implements ViewPag
     private aw g;
     private boolean h;
     private String[] i;
-    private List<BookCategoryFragment> j = new ArrayList<BookCategoryFragment>();
+    private List<BookCategoryFragment> j = new ArrayList<>();
     private ViewPager k;
-    private av l;
+    private avAdapter l;
 
     public static Intent a(Context context, boolean bl, String string) {
-        return new d().a(context, BookCategoryListActivity.class).a("CATEGORY_GENDER", Boolean.valueOf(bl)).a("CATEGORY_KEY", string).a();
+        return new d().a(context, BookCategoryListActivity.class).a("CATEGORY_GENDER", bl).a("CATEGORY_KEY", string).a();
     }
 
     static /* synthetic */ void a(BookCategoryListActivity bookCategoryListActivity) {
@@ -48,11 +52,15 @@ public class BookCategoryListActivity extends BaseTabActivity implements ViewPag
             return;
         }
         if (bookCategoryListActivity.f != null && !bookCategoryListActivity.f.isShowing()) {
-            TextView textView = (TextView) bookCategoryListActivity.a().a().findViewById(R.id.actionbar_custom_right_text);
-            bookCategoryListActivity.f.showAsDropDown(textView);
+            ActionBar actionBar = bookCategoryListActivity.getActionBar();
+            if (actionBar != null) {
+                View customView = actionBar.getCustomView();
+                TextView textView = (TextView) customView.findViewById(R.id.actionbar_custom_right_text);
+                bookCategoryListActivity.f.showAsDropDown(textView);
+            }
         }
-        b.a(bookCategoryListActivity, "book_category_filter_click");
-        bookCategoryListActivity.e("\u6536\u8d77");
+        MiStatInterface.recordCountEvent("book_category_filter_click", null);
+        bookCategoryListActivity.e("收起");
     }
 
     /*
@@ -67,9 +75,9 @@ public class BookCategoryListActivity extends BaseTabActivity implements ViewPag
             bookCategoryListActivity.j.get(bookCategoryListActivity.k.getCurrentItem()).b(bookCategoryListActivity.g());
             String string2 = bookCategoryListActivity.b ? "\u7537\u751f - " : "\u5973\u751f - ";
             if (string.equals(bookCategoryListActivity.c)) {
-                a.p(bookCategoryListActivity, string2 + string);
+                com.clilystudio.netbook.hpay100.a.a.p(bookCategoryListActivity, string2 + string);
             } else {
-                b.a(bookCategoryListActivity, "book_category_minor_click", string2 + bookCategoryListActivity.c + " - " + string);
+                MiStatInterface.recordCountEvent("book_category_minor_click", string2 + bookCategoryListActivity.c + " - " + string);
             }
         }
         bookCategoryListActivity.i();
@@ -99,11 +107,11 @@ public class BookCategoryListActivity extends BaseTabActivity implements ViewPag
      * Enabled aggressive block sorting
      */
     private String[] a(CategoryLevelRoot categoryLevelRoot) {
-        CategoryLevelRoot$CategoryLevel[] arrcategoryLevelRoot$CategoryLevel = this.b ? categoryLevelRoot.getMale() : categoryLevelRoot.getFemale();
+        CategoryLevelRoot.CategoryLevel[] arrcategoryLevelRoot$CategoryLevel = this.b ? categoryLevelRoot.getMale() : categoryLevelRoot.getFemale();
         int n = arrcategoryLevelRoot$CategoryLevel.length;
         int n2 = 0;
         while (n2 < n) {
-            CategoryLevelRoot$CategoryLevel categoryLevelRoot$CategoryLevel = arrcategoryLevelRoot$CategoryLevel[n2];
+            CategoryLevelRoot.CategoryLevel categoryLevelRoot$CategoryLevel = arrcategoryLevelRoot$CategoryLevel[n2];
             if (categoryLevelRoot$CategoryLevel.getMajor().equals(this.c)) {
                 return categoryLevelRoot$CategoryLevel.getMins();
             }
@@ -122,8 +130,8 @@ public class BookCategoryListActivity extends BaseTabActivity implements ViewPag
         for (int k = 0; k < n; ++k) {
             TabHost.TabSpec tabSpec = this.a.newTabSpec("tab" + k);
             tabSpec.setContent(this);
-            View view = layoutInflater.inflate(R.layout.home_tabhost_item, null);
-            ((TextView) view.findViewById(R.id.text)).setText((String) this.l.getPageTitle(k));
+            View view = layoutInflater.inflate(R.layout.home_tabhost_item, (ViewGroup) getWindow().getDecorView(), false);
+            ((TextView) view.findViewById(R.id.text)).setText(this.l.getPageTitle(k));
             tabSpec.setIndicator(view);
             this.a.addTab(tabSpec);
         }
@@ -170,9 +178,6 @@ public class BookCategoryListActivity extends BaseTabActivity implements ViewPag
         return this.e;
     }
 
-    /*
-     * Enabled aggressive block sorting
-     */
     @Override
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
@@ -180,7 +185,7 @@ public class BookCategoryListActivity extends BaseTabActivity implements ViewPag
         this.b = this.getIntent().getBooleanExtra("CATEGORY_GENDER", false);
         this.e = this.c = this.getIntent().getStringExtra("CATEGORY_KEY");
         this.i = this.getResources().getStringArray(R.array.book_category_tabs);
-        View view = LayoutInflater.from(this).inflate(R.layout.category_level_popupwindow, null);
+        View view = LayoutInflater.from(this).inflate(R.layout.category_level_popupwindow, (ViewGroup) getWindow().getDecorView(), false);
         PopupWindow popupWindow = new PopupWindow(view, -1, -1);
         popupWindow.setFocusable(true);
         popupWindow.setBackgroundDrawable(new ColorDrawable(0));
@@ -193,13 +198,11 @@ public class BookCategoryListActivity extends BaseTabActivity implements ViewPag
         });
         this.f = popupWindow;
         String[] arrstring = new String[]{};
-        CategoryLevelRoot categoryLevelRoot = (CategoryLevelRoot) a.k(c.f, "category_level.txt");
+        CategoryLevelRoot categoryLevelRoot = com.clilystudio.netbook.hpay100.a.a.k(com.clilystudio.netbook.c.f, "category_level.txt");
         String[] arrstring2 = categoryLevelRoot != null ? this.a(categoryLevelRoot) : arrstring;
         final String[] arrstring3 = new String[1 + arrstring2.length];
         arrstring3[0] = this.c;
-        for (int k = 0; k < arrstring2.length; ++k) {
-            arrstring3[k + 1] = arrstring2[k];
-        }
+        System.arraycopy(arrstring2, 0, arrstring3, 1, arrstring2.length);
         final int n = arrstring3.length;
         boolean bl = false;
         if (n == 1) {
@@ -213,8 +216,8 @@ public class BookCategoryListActivity extends BaseTabActivity implements ViewPag
             }
         });
         ListView listView = (ListView) view.findViewById(R.id.min_category_list);
-        this.g = new aw(this, (Context) this, arrstring3);
-        listView.setAdapter((ListAdapter) ((Object) this.g));
+        this.g = new aw(this, this, arrstring3);
+        listView.setAdapter(this.g);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -224,7 +227,7 @@ public class BookCategoryListActivity extends BaseTabActivity implements ViewPag
         if (this.h) {
             this.b(this.c);
         } else {
-            this.a(this.c, "筛选",new aa() {
+            this.a(this.c, "筛选", new aa() {
                 @Override
                 public void a() {
                     BookCategoryListActivity.a(BookCategoryListActivity.this);
@@ -233,13 +236,19 @@ public class BookCategoryListActivity extends BaseTabActivity implements ViewPag
         }
         this.a = (TabHost) this.findViewById(R.id.host);
         this.k = (ViewPager) this.findViewById(R.id.pager);
-        this.l = new av(this, this.getSupportFragmentManager());
+        this.l = new avAdapter(this.getSupportFragmentManager());
         this.k.setOffscreenPageLimit(4);
-        this.k.setAdapter((PagerAdapter) ((Object) this.l));
-        this.k.setOnPageChangeListener(this);
+        this.k.setAdapter(this.l);
+        this.k.addOnPageChangeListener(this);
         this.a.setup();
         this.a.setOnTabChangedListener(this);
         this.h();
+    }
+
+    @Override
+    protected void onDestroy() {
+        this.k.removeOnPageChangeListener(this);
+        super.onDestroy();
     }
 
     @Override
@@ -255,7 +264,7 @@ public class BookCategoryListActivity extends BaseTabActivity implements ViewPag
     public void onPageSelected(int n) {
         TabWidget tabWidget = this.a.getTabWidget();
         int n2 = tabWidget.getDescendantFocusability();
-        tabWidget.setDescendantFocusability(393216);
+        tabWidget.setDescendantFocusability(ViewGroup.FOCUS_BLOCK_DESCENDANTS);
         this.a.setCurrentTab(n);
         tabWidget.setDescendantFocusability(n2);
     }
@@ -273,7 +282,50 @@ public class BookCategoryListActivity extends BaseTabActivity implements ViewPag
         int n = this.a.getCurrentTab();
         if (n >= 0 && n < this.l.getCount()) {
             this.k.setCurrentItem(n, true);
-            b.a(this, "book_category_tab_click", this.i[n]);
+            MiStatInterface.recordCountEvent("book_category_tab_click", this.i[n]);
+        }
+    }
+
+    final class avAdapter extends ZssqFragmentPagerAdapter {
+        private String[] a;
+
+        public avAdapter(FragmentManager fragmentManager) {
+            super(fragmentManager);
+            this.a = new String[]{"new", "hot", "reputation", "over"};
+            BookCategoryListActivity.this.j.add(0, BookCategoryListActivity.this.a(this.a[0]));
+            BookCategoryListActivity.this.j.add(1, BookCategoryListActivity.this.a(this.a[1]));
+            BookCategoryListActivity.this.j.add(2, BookCategoryListActivity.this.a(this.a[2]));
+            BookCategoryListActivity.this.j.add(3, BookCategoryListActivity.this.a(this.a[3]));
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            for (int i = 0; i < 4; ++i) {
+                Fragment fragment = BookCategoryListActivity.this.j.get(i);
+                if (fragment.isAdded()) continue;
+                fragmentTransaction.add(BookCategoryListActivity.this.k.getId(), fragment, this.a[i]);
+            }
+            if (!fragmentTransaction.isEmpty()) {
+                fragmentTransaction.commit();
+                fragmentManager.executePendingTransactions();
+            }
+        }
+
+        @Override
+        public final Fragment a(int n) {
+            return BookCategoryListActivity.this.j.get(n);
+        }
+
+        @Override
+        protected final String b(int n) {
+            return this.a[n];
+        }
+
+        @Override
+        public final int getCount() {
+            return 4;
+        }
+
+        @Override
+        public final CharSequence getPageTitle(int n) {
+            return BookCategoryListActivity.this.i[n];
         }
     }
 }

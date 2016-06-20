@@ -177,7 +177,6 @@
         <activity android:configChanges="keyboardHidden|orientation|screenSize" android:exported="true" android:name="com.clilystudio.netbook.wxapi.WXEntryActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
         <activity android:name="com.clilystudio.netbook.ui.WifiActivity" android:screenOrientation="portrait"/>
         <activity android:name="com.clilystudio.netbook.reader.txt.ScanTxtFileActivity" android:screenOrientation="portrait"/>
-        <activity android:name="com.clilystudio.netbook.ui.MysteryActivity" android:screenOrientation="portrait"/>
         <activity android:name="com.clilystudio.netbook.reader.random.ReaderRandomEntranceActivity" android:screenOrientation="portrait"/>
         <activity android:exported="true" android:name="com.clilystudio.netbook.ui.feed.FeedAddActivity" android:screenOrientation="portrait"/>
         <activity android:exported="true" android:launchMode="singleTop" android:name="com.clilystudio.netbook.ui.feed.FeedListActivity" android:screenOrientation="portrait"/>
