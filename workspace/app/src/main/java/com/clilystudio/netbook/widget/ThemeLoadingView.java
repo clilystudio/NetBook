@@ -70,7 +70,13 @@ public class ThemeLoadingView extends FrameLayout {
     public final void b() {
         LoadingProgressView loadingProgressView = this.d();
         if (!this.d) {
-            loadingProgressView.a(new aC(this));
+            loadingProgressView.a(new ah() {
+                @Override
+                public void a() {
+                    ThemeLoadingView.this.setVisibility(View.GONE);
+                    ThemeLoadingView.this.d = true;
+                }
+            });
         }
     }
 

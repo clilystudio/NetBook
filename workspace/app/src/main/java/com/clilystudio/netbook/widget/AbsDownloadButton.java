@@ -1,5 +1,6 @@
 package com.clilystudio.netbook.widget;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.res.Resources;
@@ -10,6 +11,7 @@ import android.widget.Button;
 
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.model.AppItem;
+import com.clilystudio.netbook.util.e;
 import com.xiaomi.mistatistic.sdk.MiStatInterface;
 
 public abstract class AbsDownloadButton extends Button {
@@ -19,17 +21,30 @@ public abstract class AbsDownloadButton extends Button {
         super(context, attributeSet);
     }
 
-    static /* synthetic */ void a(AbsDownloadButton absDownloadButton) {
+    static /* synthetic */ void a(final AbsDownloadButton absDownloadButton) {
         String string = absDownloadButton.a.getName();
         MiStatInterface.recordCountEvent("mystery_app_download", string);
         if (com.clilystudio.netbook.hpay100.a.a.r(absDownloadButton.getContext()) == 1) {
-            new k(absDownloadButton.getContext()).a("\u786e\u8ba4\u4e0b\u8f7d").b("\u5373\u5c06\u5f00\u59cb\u4e0b\u8f7d\u300a" + string + "\u300b\uff0c\u662f\u5426\u4e0b\u8f7d\uff1f").a(R.string.ok, (DialogInterface.OnClickListener) ((Object) new a(absDownloadButton))).b(R.string.cancel, null).b().show();
+            new k(absDownloadButton.getContext()).a("确认下载").b("即将开始下载《" + string + "》，是否下载？").a(R.string.ok, new DialogInterface.OnClickListener() {
+
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    e.a((Activity) absDownloadButton.getContext(), "开始下载...");
+                    absDownloadButton.b();
+                }
+            }).b(R.string.cancel, null).b().show();
             return;
         }
-        k k2 = new k(absDownloadButton.getContext()).a("\u6d41\u91cf\u63d0\u9192");
+        k k2 = new k(absDownloadButton.getContext()).a("流量提醒");
         Resources resources = absDownloadButton.getResources();
         Object[] arrobject = new Object[]{absDownloadButton.a.getFormatedSize()};
-        k2.b(resources.getString(R.string.alert_download_in_3g, arrobject)).a(R.string.ok, (DialogInterface.OnClickListener) ((Object) new b(absDownloadButton))).b(R.string.cancel, null).b().show();
+        k2.b(resources.getString(R.string.alert_download_in_3g, arrobject)).a(R.string.ok,new DialogInterface.OnClickListener(){
+
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                absDownloadButton.b();
+            }
+        }).b(R.string.cancel, null).b().show();
     }
 
     private void e() {

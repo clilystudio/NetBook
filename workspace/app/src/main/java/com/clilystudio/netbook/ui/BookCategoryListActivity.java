@@ -73,7 +73,7 @@ public class BookCategoryListActivity extends BaseTabActivity implements ViewPag
             bookCategoryListActivity.g.notifyDataSetChanged();
             bookCategoryListActivity.j.get(bookCategoryListActivity.k.getCurrentItem()).a();
             bookCategoryListActivity.j.get(bookCategoryListActivity.k.getCurrentItem()).b(bookCategoryListActivity.g());
-            String string2 = bookCategoryListActivity.b ? "\u7537\u751f - " : "\u5973\u751f - ";
+            String string2 = bookCategoryListActivity.b ? "男生 - " : "女生 - ";
             if (string.equals(bookCategoryListActivity.c)) {
                 com.clilystudio.netbook.hpay100.a.a.p(bookCategoryListActivity, string2 + string);
             } else {

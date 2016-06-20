@@ -1,12 +1,21 @@
 package com.clilystudio.netbook.widget;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
+import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.ui.SmartImageView;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.assist.FailReason;
+import com.nostra13.universalimageloader.core.assist.ViewScaleType;
 import com.nostra13.universalimageloader.core.d.a;
+import com.nostra13.universalimageloader.core.imageaware.ImageAware;
+import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 
 public class UserInfoPortraitView extends RelativeLayout {
     private final float a;
@@ -56,7 +65,8 @@ public class UserInfoPortraitView extends RelativeLayout {
     }
 
     public void setAvatar(String string) {
-        f.a().a(string, (a) ((Object) new aD(this)));
+        ImageLoader imageLoader = ImageLoader.getInstance();
+        imageLoader.displayImage(string, this.d);
     }
 
     public void setExp(int n) {

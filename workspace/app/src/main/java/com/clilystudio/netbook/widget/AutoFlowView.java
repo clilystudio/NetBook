@@ -11,6 +11,7 @@ import android.widget.TextView;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class AutoFlowView extends LinearLayout implements View.OnClickListener {
@@ -69,7 +70,12 @@ public class AutoFlowView extends LinearLayout implements View.OnClickListener {
      */
     public final void a() {
         List list;
-        Collections.sort(this.j, new g(this));
+        Collections.sort(this.j, new Comparator<Word>() {
+            @Override
+            public int compare(Word lhs, Word rhs) {
+                return lhs.show - rhs.show;
+            }
+        });
         this.removeAllViews();
         this.k.clear();
         LayoutInflater layoutInflater = LayoutInflater.from(this.getContext());

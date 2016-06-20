@@ -43,9 +43,9 @@ public class GameGiftItemView extends RelativeLayout {
             gameGiftItemView.c = am.a((Activity) activity);
             return;
         }
-        J j = new J(gameGiftItemView, activity);
-        String[] arrstring = new String[]{gameGiftItemView.a._id, gameGiftItemView.c.getToken()};
-        j.b(arrstring);
+//        J j = new J(gameGiftItemView, activity);
+//        String[] arrstring = new String[]{gameGiftItemView.a._id, gameGiftItemView.c.getToken()};
+//        j.b(arrstring);
     }
 
     static /* synthetic */ void a(GameGiftItemView gameGiftItemView, String string) {
