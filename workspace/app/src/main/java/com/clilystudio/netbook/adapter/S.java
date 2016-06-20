@@ -23,12 +23,12 @@ final class S extends e<String, Void, PostPublish> {
     }
 
     @Override
-    protected final /* synthetic */ Object doInBackground(Object[] arrobject) {
+    protected final /* synthetic */ PostPublish doInBackground(String[] arrobject) {
         return S.a((String[]) arrobject);
     }
 
     @Override
-    protected final /* synthetic */ void onPostExecute(Object object) {
+    protected final /* synthetic */ void onPostExecute(PostPublish object) {
         PostPublish postPublish = (PostPublish) object;
         if (postPublish != null && postPublish.isOk() && G.b(this.a) != null) {
             this.a.f().remove(G.c(this.a));

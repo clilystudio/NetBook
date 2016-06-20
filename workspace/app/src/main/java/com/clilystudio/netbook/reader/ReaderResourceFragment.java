@@ -8,15 +8,19 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.clilystudio.netbook.R;
-import com.clilystudio.netbook.adapter.B;
 import com.clilystudio.netbook.db.BookReadRecord;
 import com.clilystudio.netbook.db.TocReadRecord;
+import com.clilystudio.netbook.model.TocSummary;
+import com.clilystudio.netbook.util.*;
+import com.clilystudio.netbook.util.W;
 
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
@@ -32,7 +36,7 @@ public class ReaderResourceFragment extends Fragment {
     private TextView i;
     private View j;
     private TextView k;
-    private B l;
+    private com.clilystudio.netbook.util.W<TocSummary> l;
 
     public static ReaderResourceFragment a(String string, String string2) {
         ReaderResourceFragment readerResourceFragment = new ReaderResourceFragment();
@@ -96,7 +100,7 @@ public class ReaderResourceFragment extends Fragment {
         return readerResourceFragment.c;
     }
 
-    static /* synthetic */ B c(ReaderResourceFragment readerResourceFragment) {
+    static /* synthetic */ W<TocSummary> c(ReaderResourceFragment readerResourceFragment) {
         return readerResourceFragment.l;
     }
 
@@ -121,7 +125,32 @@ public class ReaderResourceFragment extends Fragment {
                 ReaderResourceFragment.this.startActivity(intent);
             }
         });
-        this.l = new B(this.getActivity().getLayoutInflater());
+        this.l = new W<TocSummary>(this.getActivity().getLayoutInflater(),R.layout.list_item_resource){
+
+            @Override
+            protected void a(int var1, TocSummary tocSummary) {
+                this.a(0, tocSummary.getHost());
+                this.a(1, t.e((Date) tocSummary.getUpdated()));
+                if (new Date().getTime() - tocSummary.getUpdated().getTime() < 3600000) {
+                    this.a(1, TextView.class).setTextColor(getResources().getColor(R.color.deprecated_red));
+                    this.a(2, ImageView.class).setImageLevel(1);
+                } else {
+                    this.a(1, TextView.class).setTextColor(getResources().getColor(R.color.third_text_normal));
+                    this.a(2, ImageView.class).setImageLevel(0);
+                }
+                this.a(3, tocSummary.getLastChapter());
+                if (-1 == var1) {
+                    this.a(4, false);
+                    return;
+                }
+                this.a(4, true);
+           }
+
+            @Override
+            protected int[] a() {
+                return new int[]{R.id.tv_name, R.id.tv_updated, R.id.iv_ic_updated, R.id.tv_last_chapter, R.id.resource_list_item_last_select};
+            }
+        };
         this.c.setAdapter(this.l);
         this.c.setOnItemClickListener(new bV(this));
         bY bY2 = new bY(this, (byte)0);

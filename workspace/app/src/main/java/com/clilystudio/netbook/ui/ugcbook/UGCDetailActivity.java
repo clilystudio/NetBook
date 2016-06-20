@@ -16,7 +16,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.clilystudio.netbook.MyApplication;
-import com.clilystudio.netbook.adapter.W;
 import com.clilystudio.netbook.event.E;
 import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.model.Author;
@@ -29,6 +28,7 @@ import com.clilystudio.netbook.ui.aa;
 import com.clilystudio.netbook.ui.cb;
 import com.clilystudio.netbook.ui.cd;
 import com.clilystudio.netbook.util.T;
+import com.clilystudio.netbook.widget.CoverView;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -46,7 +46,7 @@ public class UGCDetailActivity extends BaseActivity implements View.OnClickListe
     private TextView h;
     private ImageButton i;
     private ListView j;
-    private W k;
+    private com.clilystudio.netbook.util.W<UGCBookDetail.UGCBookContainer> k;
     private View l;
     private View m;
     private View n;
@@ -160,7 +160,7 @@ public class UGCDetailActivity extends BaseActivity implements View.OnClickListe
         return uGCDetailActivity.j;
     }
 
-    static /* synthetic */ W h(UGCDetailActivity uGCDetailActivity) {
+    static /* synthetic */ com.clilystudio.netbook.util.W<UGCBookDetail.UGCBookContainer> h(UGCDetailActivity uGCDetailActivity) {
         return uGCDetailActivity.k;
     }
 
@@ -304,7 +304,50 @@ public class UGCDetailActivity extends BaseActivity implements View.OnClickListe
             }
         });
         this.j.addHeaderView(view, null, false);
-        this.k = new W(this.getLayoutInflater());
+        this.k = new com.clilystudio.netbook.util.W<UGCBookDetail.UGCBookContainer>(this.getLayoutInflater(),R.layout.list_item_ugcbook_detail){
+
+            @Override
+            protected void a(int var1, UGCBookDetail.UGCBookContainer var2) {
+                UGCBookDetail.UGCBookContainer.UGCBookItem ugcBookItem;
+                if (var2.getComment() != null && var2.getComment().trim().length() > 6) {
+                    this.a(2, var2.getComment());
+                    this.a(7, false);
+                } else {
+                    this.a(7, true);
+                }
+                if ((ugcBookItem = var2.getBook()) != null) {
+                    this.a(0, ugcBookItem.getTitle());
+                    this.a(1, String.valueOf(ugcBookItem.getLatelyFollower()));
+                    this.a(3, CoverView.class).setImageUrl(ugcBookItem.getFullCover(), R.drawable.cover_default);
+                    this.a(4, ugcBookItem.getAuthor());
+                    long l = ugcBookItem.getWordCount();
+                    if (l <= 0) {
+                        this.a(5, true);
+                        this.a(6, true);
+                        this.a(8, true);
+                        return;
+                    }
+                    String string = " \u5b57";
+                    if (l > 10000) {
+                        l /= 10000;
+                        string = " \u4e07\u5b57";
+                    } else if (l > 100) {
+                        l /= 100;
+                        string = " \u767e\u5b57";
+                    }
+                    this.a(5, "" + l);
+                    this.a(6, string);
+                    this.a(5, false);
+                    this.a(6, false);
+                    this.a(8, false);
+                }
+          }
+
+            @Override
+            protected int[] a() {
+                return new int[]{R.id.title, R.id.message_count, R.id.desc, R.id.avatar, R.id.author, R.id.message_textcount, R.id.message_textunit, R.id.desc_layout, R.id.message_separate};
+            }
+        };
         this.j.setAdapter(this.k);
         View view2 = this.getLayoutInflater().inflate(R.layout.ugcbook_listview_footer, null);
         this.j.addFooterView(view2);

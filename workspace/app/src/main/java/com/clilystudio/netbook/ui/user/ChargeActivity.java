@@ -1,6 +1,5 @@
 package com.clilystudio.netbook.ui.user;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,7 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
 
-import com.clilystudio.netbook.adapter.x;
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.d;
 import com.clilystudio.netbook.event.y;
 import com.clilystudio.netbook.event.z;
@@ -18,12 +17,13 @@ import com.clilystudio.netbook.model.ChargeType;
 import com.clilystudio.netbook.pay.b.a;
 import com.clilystudio.netbook.ui.BaseLoadingActivity;
 import com.clilystudio.netbook.ui.aa;
+import com.clilystudio.netbook.util.W;
 import com.clilystudio.netbook.widget.ScrollGridView;
 import com.umeng.a.b;
 
 public class ChargeActivity extends BaseLoadingActivity {
     private ChargeType a;
-    private x b;
+    private W<ChargePlan> b;
     private boolean c = false;
     private String e;
     private com.clilystudio.netbook.pay.a.a f;
@@ -54,7 +54,7 @@ public class ChargeActivity extends BaseLoadingActivity {
         }
     }
 
-    static /* synthetic */ x b(ChargeActivity chargeActivity) {
+    static /* synthetic */ W<ChargePlan> b(ChargeActivity chargeActivity) {
         return chargeActivity.b;
     }
 
@@ -101,8 +101,33 @@ public class ChargeActivity extends BaseLoadingActivity {
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         this.a(R.layout.activity_pay_gridview);
-        com.clilystudio.netbook.event.i.a().a(this);
-        this.b = new x((Activity) this, LayoutInflater.from(this));
+        com.clilystudio.netbook.event.i.a().register(this);
+        this.b = new W<ChargePlan>(LayoutInflater.from(this), R.layout.pay_grid_item) {
+
+            @Override
+            protected void a(int var1, final ChargePlan chargePlan) {
+                boolean bl = true;
+                View view = (View) this.a(0, View.class);
+                this.a((int) (bl ? 1 : 0), chargePlan.getPriceDsc() + "元");
+                this.a(2, "" + chargePlan.getCurrency() + "追书币");
+                if (chargePlan.getVoucher() > 0) {
+                    bl = false;
+                }
+                this.a(3, bl);
+                this.a(3, "+" + chargePlan.getVoucher() + "追书券");
+                view.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        ChargeActivity.this.a(chargePlan);
+                    }
+                });
+            }
+
+            @Override
+            protected int[] a() {
+                return new int[]{R.id.pay_grid_item, R.id.pay_grid_price, R.id.pay_grid_currency, R.id.pay_grid_voucher};
+            }
+        };
         ((ScrollGridView) this.findViewById(R.id.pay_grid_view)).setAdapter(this.b);
         this.a = (ChargeType) this.getIntent().getSerializableExtra("key_pay_type");
         if (this.a != null) {

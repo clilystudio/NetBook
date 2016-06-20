@@ -71,7 +71,7 @@ public class HomeShelfAdapter extends u<BookShelf> {
     /*
      * Enabled aggressive block sorting
      */
-    private void a(int n, CheckBox checkBox) {
+    private void a(final int n, CheckBox checkBox) {
         if (this.d) {
             checkBox.setVisibility(View.VISIBLE);
         } else {
@@ -88,7 +88,16 @@ public class HomeShelfAdapter extends u<BookShelf> {
         checkBox.setChecked(this.f[n]);
         this.b(n);
         this.g = false;
-        checkBox.setOnCheckedChangeListener((CompoundButton.OnCheckedChangeListener) ((Object) new q(this, n)));
+        checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (HomeShelfAdapter.a(HomeShelfAdapter.this)) {
+                    return;
+                }
+                HomeShelfAdapter.b(HomeShelfAdapter.this)[n] = isChecked;
+                HomeShelfAdapter.a(HomeShelfAdapter.this, n);
+            }
+        });
     }
 
     /*

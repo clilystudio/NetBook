@@ -6,21 +6,23 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
 import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.R;
-import com.clilystudio.netbook.adapter.a;
 import com.clilystudio.netbook.db.BookReadRecord;
 import com.clilystudio.netbook.ui.BaseActivity;
 import com.clilystudio.netbook.ui.aa;
-import com.clilystudio.netbook.util.e;
+import com.clilystudio.netbook.util.*;
+import com.clilystudio.netbook.util.W;
+import com.clilystudio.netbook.widget.CoverView;
 
 import java.util.List;
 
 public class AddReviewActivity extends BaseActivity {
-    private a a;
+    private com.clilystudio.netbook.util.W<BookReadRecord> a;
     private String b;
     private int c = 0;
 
@@ -46,7 +48,7 @@ public class AddReviewActivity extends BaseActivity {
         addReviewActivity.startActivityForResult(intent, 0);
     }
 
-    static /* synthetic */ a b(AddReviewActivity addReviewActivity) {
+    static /* synthetic */ W<BookReadRecord> b(AddReviewActivity addReviewActivity) {
         return addReviewActivity.a;
     }
 
@@ -98,7 +100,25 @@ public class AddReviewActivity extends BaseActivity {
                 AddReviewActivity.this.a.notifyDataSetChanged();
             }
         });
-        this.a = new a(this.getLayoutInflater());
+        this.a = new W<BookReadRecord>(this.getLayoutInflater(), R.layout.list_item_add_review){
+
+            @Override
+            protected void a(int var1, BookReadRecord bookReadRecord) {
+                 ((CoverView) this.a(0, CoverView.class)).setImageUrl(bookReadRecord.getFullCover(), R.drawable.cover_default);
+                this.a(1, bookReadRecord.getTitle());
+                ImageView imageView = (ImageView) this.a(2, ImageView.class);
+                if (-1 == var1) {
+                    imageView.setImageResource(R.drawable.green_tick_circle);
+                    return;
+                }
+                imageView.setImageResource(R.drawable.gray_tick_circle);
+           }
+
+            @Override
+            protected int[] a() {
+                return new int[]{R.id.add_review_cover, R.id.add_review_title, R.id.add_review_selected};
+            }
+        };
         listView.setAdapter((ListAdapter) ((Object) this.a));
         List<BookReadRecord> list = BookReadRecord.getAll();
         if (list != null && list.size() > 0) {

@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.model.NotificationItem;
 import com.clilystudio.netbook.ui.CircularSmartImageView;
 import com.clilystudio.netbook.viewbinder.notification.NotifBinder;
@@ -94,7 +95,7 @@ public abstract class NotificationAdapter extends u<NotificationItem> {
             this.d.add(notificationItem);
         }
         if (this.c.size() != 0) {
-            this.e.a(0, false);
+            this.e.a(0, 0);
             this.f.a(1, 1 + this.c.size());
             n = 0 + (1 + this.c.size());
         } else {
@@ -175,10 +176,10 @@ public abstract class NotificationAdapter extends u<NotificationItem> {
                 return view;
             }
             case 0: {
-                return this.a(viewGroup, view, "\u672a\u8bfb");
+                return this.a(viewGroup, view, "未读");
             }
             case 2: {
-                return this.a(viewGroup, view, "\u5df2\u8bfb");
+                return this.a(viewGroup, view, "已读");
             }
             case 1:
             case 3:
