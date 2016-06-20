@@ -145,7 +145,6 @@
         <activity android:name="com.clilystudio.netbook.ui.BookCategoryActivity" android:screenOrientation="portrait"/>
         <activity android:name="com.clilystudio.netbook.ui.BookCategoryListActivity" android:screenOrientation="portrait"/>
         <activity android:name="com.clilystudio.netbook.ui.BookTagListActivity" android:screenOrientation="portrait"/>
-        <activity android:name="com.clilystudio.netbook.ui.MhdListActivity" android:screenOrientation="portrait"/>
         <activity android:name="com.clilystudio.netbook.reader.ReaderResActivity" android:screenOrientation="portrait" android:theme="@style/BaseTheme_Dark"/>
         <activity android:name="com.clilystudio.netbook.reader.ReaderOptionActivity" android:screenOrientation="portrait"/>
         <activity android:name="com.clilystudio.netbook.reader.LocalChapterListActivity" android:screenOrientation="portrait" android:theme="@style/BaseTheme_Dark"/>
@@ -161,7 +160,6 @@
         <activity android:name="com.clilystudio.netbook.reader.ModeListActivity" android:screenOrientation="portrait" android:theme="@style/BaseTheme_Dark"/>
         <activity android:name="com.clilystudio.netbook.reader.ReaderMixActivity" android:screenOrientation="portrait" android:theme="@style/BaseTheme_Dark"/>
         <activity android:exported="true" android:name="com.clilystudio.netbook.ui.AdWebViewActivity" android:screenOrientation="portrait" android:theme="@style/BaseTheme_Dark"/>
-        <activity android:name="com.clilystudio.netbook.ui.LuckyGameWebActivity" android:screenOrientation="portrait" android:theme="@style/BaseTheme_Dark"/>
         <activity android:exported="true" android:name="com.clilystudio.netbook.ui.SearchActivity" android:screenOrientation="portrait"/>
         <activity android:exported="true" android:name="com.clilystudio.netbook.ui.AuthorBooksActivity" android:screenOrientation="portrait"/>
         <activity android:name="com.clilystudio.netbook.ui.CustomSearchActivity" android:screenOrientation="portrait"/>
@@ -217,10 +215,6 @@
         <activity android:name="com.clilystudio.netbook.ui.game.GameListActivity" android:screenOrientation="portrait"/>
         <activity android:name="com.clilystudio.netbook.ui.game.GameGiftListActivity" android:screenOrientation="portrait"/>
         <activity android:name="com.clilystudio.netbook.ui.game.GameLocalListActivity" android:screenOrientation="portrait"/>
-        <activity android:name="com.clilystudio.netbook.ui.AudiobookCategoryActivity" android:screenOrientation="portrait"/>
-        <activity android:name="com.clilystudio.netbook.ui.AudiobookCategoryListActivity" android:screenOrientation="portrait"/>
-        <activity android:name="com.clilystudio.netbook.ui.AudiobookInfoActivity" android:screenOrientation="portrait"/>
-        <activity android:name="com.clilystudio.netbook.ui.AudioBookPlayActivity" android:screenOrientation="portrait"/>
         <activity android:name="com.clilystudio.netbook.ui.home.HomeTransparentActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.NoTitleBar.Fullscreen"/>
         <activity android:launchMode="singleTop" android:name="com.clilystudio.netbook.wxapi.WXPayEntryActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.Dialog">
             <intent-filter>

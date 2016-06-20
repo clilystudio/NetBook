@@ -2,6 +2,7 @@ package com.clilystudio.netbook.ui;
 
 import android.app.Activity;
 
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.model.BookSummary;
 import com.clilystudio.netbook.model.SearchResultRoot;
@@ -36,7 +37,7 @@ final class H extends com.clilystudio.netbook.a_pack.e<String, Void, List<BookSu
     }
 
     @Override
-    protected final /* synthetic */ Object doInBackground(Object[] arrobject) {
+    protected final /* synthetic */ List<BookSummary> doInBackground(String[] arrobject) {
         return this.a((String[]) arrobject);
     }
 
@@ -44,7 +45,7 @@ final class H extends com.clilystudio.netbook.a_pack.e<String, Void, List<BookSu
      * Enabled aggressive block sorting
      */
     @Override
-    protected final /* synthetic */ void onPostExecute(Object object) {
+    protected final /* synthetic */ void onPostExecute(List<BookSummary>  object) {
         List list = (List) object;
         super.onPostExecute(list);
         if (list == null) {

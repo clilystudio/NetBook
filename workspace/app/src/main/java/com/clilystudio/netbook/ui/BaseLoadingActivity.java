@@ -52,7 +52,7 @@ public abstract class BaseLoadingActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        if (a.k()) {
+        if (com.clilystudio.netbook.hpay100.a.a.k()) {
             this.getWindow().setUiOptions(1);
         }
         this.setContentView(R.layout.activity_loading_base);
@@ -60,8 +60,7 @@ public abstract class BaseLoadingActivity extends BaseActivity {
         this.b = this.findViewById(R.id.common_list_pb);
         this.c = this.findViewById(R.id.common_list_error);
         this.e = this.findViewById(R.id.common_list_empty);
-        View[] arrview = new View[]{this.a, this.b, this.c, this.e};
-        this.f = arrview;
+        this.f = new View[]{this.a, this.b, this.c, this.e};
         this.c.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

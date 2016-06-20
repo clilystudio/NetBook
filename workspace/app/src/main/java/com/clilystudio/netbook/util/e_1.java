@@ -11,19 +11,18 @@ import android.content.IntentFilter;
 import android.graphics.Bitmap;
 import android.net.wifi.WifiManager;
 import android.os.Handler;
-import android.support.v7.app.NotificationCompat$Builder;
 import android.widget.RemoteViews;
 import android.widget.Toast;
 
 import com.activeandroid.query.Delete;
 import com.clilystudio.netbook.MyApplication;
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.db.SplashRecord;
 import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.model.Author;
 import com.clilystudio.netbook.model.Splash;
 import com.clilystudio.netbook.model.SplashAdvert;
 import com.clilystudio.netbook.model.SplashRoot;
-import com.clilystudio.netbook.ui.AudioBookPlayActivity;
 import com.clilystudio.netbook.ui.post.OtherUserActivity;
 
 import java.io.ByteArrayOutputStream;
@@ -109,17 +108,6 @@ public class e {
     }
 
     public static void a(Context context, long l2, int n) {
-        PendingIntent pendingIntent;
-        if (e == null) {
-            e = e.c();
-        }
-        Intent intent = new Intent(context, AudioBookPlayActivity.class);
-        intent.putExtra("ALBUM_ID", l2);
-        intent.putExtra("INDEX_OF_PLAYLIST", n);
-        e.e.contentIntent = pendingIntent = PendingIntent.getActivity(context, 0, intent, 134217728);
-        as.a();
-        e.a(as.c());
-        d.notify(1001, e);
     }
 
     public static void a(Context context, String string) {
@@ -240,11 +228,11 @@ public class e {
      * Enabled aggressive exception aggregation
      */
     public static Notification c() {
-        NotificationCompat$Builder notificationCompat$Builder;
+        NotificationCompat.Builder notificationCompat$Builder;
         Notification notification;
         d = (NotificationManager) MyApplication.a().getSystemService("notification");
         c = new RemoteViews(MyApplication.a().getPackageName(), R.layout.notification_audio_bar);
-        notificationCompat$Builder = new NotificationCompat$Builder(MyApplication.a());
+        notificationCompat$Builder = new NotificationCompat.Builder(MyApplication.a());
         notificationCompat$Builder.setSmallIcon(17301623);
         notificationCompat$Builder.setContent(c);
         notificationCompat$Builder.setAutoCancel(false).setOngoing(true);

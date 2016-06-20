@@ -46,8 +46,6 @@ import com.clilystudio.netbook.model.InsideLink;
 import com.clilystudio.netbook.model.ShelfMsg;
 import com.clilystudio.netbook.model.TxtFileObject;
 import com.clilystudio.netbook.reader.txt.U;
-import com.clilystudio.netbook.ui.AudioBookPlayActivity;
-import com.clilystudio.netbook.ui.AudiobookInfoActivity;
 import com.clilystudio.netbook.ui.BookInfoActivity;
 import com.clilystudio.netbook.ui.feed.FeedIntroActivity;
 import com.clilystudio.netbook.ui.feed.FeedListActivity;
@@ -583,9 +581,6 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
     }
 
     static /* synthetic */ void b(HomeShelfFragment homeShelfFragment, AudioRecord audioRecord) {
-        Intent intent = new Intent(homeShelfFragment.getActivity(), AudiobookInfoActivity.class);
-        intent.putExtra("ALBUM_ID", Long.parseLong(audioRecord.getBookId()));
-        homeShelfFragment.startActivity(intent);
     }
 
     static /* synthetic */ void b(HomeShelfFragment homeShelfFragment, BookReadRecord bookReadRecord) {
@@ -707,24 +702,7 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
      * Enabled aggressive block sorting
      */
     static /* synthetic */ void c(HomeShelfFragment homeShelfFragment) {
-        block3:
-        {
-            Intent intent = new Intent(homeShelfFragment.getActivity(), AudioBookPlayActivity.class);
-            if (homeShelfFragment.r != null) {
-                intent.putExtra("ALBUM_ID", homeShelfFragment.r.getId());
-                intent.putExtra("INDEX_OF_PLAYLIST", homeShelfFragment.s);
-                a.b((Context) homeShelfFragment.getActivity(), "album_id", homeShelfFragment.r.getId());
-                a.b((Context) homeShelfFragment.getActivity(), "index_of_playlist", homeShelfFragment.s);
-            } else {
-                long l2 = a.a((Context) homeShelfFragment.getActivity(), "album_id", 0);
-                if (l2 == 0) break block3;
-                int n2 = a.a((Context) homeShelfFragment.getActivity(), "index_of_playlist", 1);
-                intent.putExtra("ALBUM_ID", l2);
-                intent.putExtra("INDEX_OF_PLAYLIST", n2);
-            }
-            homeShelfFragment.startActivity(intent);
-        }
-    }
+     }
 
     static /* synthetic */ void c(HomeShelfFragment homeShelfFragment, BookReadRecord bookReadRecord) {
         new com.clilystudio.netbook.reader.dl.a(homeShelfFragment.getActivity()).a(bookReadRecord);

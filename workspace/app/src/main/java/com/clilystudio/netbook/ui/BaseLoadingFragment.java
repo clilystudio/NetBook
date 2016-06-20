@@ -56,8 +56,7 @@ public abstract class BaseLoadingFragment extends Fragment {
         this.c = view.findViewById(R.id.common_list_error);
         this.d = view.findViewById(R.id.common_list_empty);
         LayoutInflater.from(this.getActivity()).inflate(this.a(), this.a);
-        View[] arrview = new View[]{this.a, this.b, this.c, this.d};
-        this.e = arrview;
+        this.e = new View[]{this.a, this.b, this.c, this.d};
         this.c.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

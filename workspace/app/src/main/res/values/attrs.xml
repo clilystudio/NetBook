@@ -467,4 +467,8 @@
     <declare-styleable name="CoverLoadingView">
          <attr name="cornerRadius" format="dimension"/>
     </declare-styleable>
+    <declare-styleable name="TabWidgetV2">
+        <attr name="adjust_padding" format="dimension"/>
+        <attr name="item_count" format="integer"/>
+    </declare-styleable>
 </resources>
