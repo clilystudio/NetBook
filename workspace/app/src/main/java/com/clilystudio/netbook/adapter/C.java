@@ -2,6 +2,7 @@ package com.clilystudio.netbook.adapter;
 
 import android.view.LayoutInflater;
 
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.model.TocDownloadSummary;
 import com.clilystudio.netbook.util.W;
 
@@ -13,7 +14,7 @@ public final class C extends W<TocDownloadSummary> {
     }
 
     @Override
-    protected final /* synthetic */ void a(int n, Object object) {
+    protected final /* synthetic */ void a(int n, TocDownloadSummary object) {
         TocDownloadSummary tocDownloadSummary = (TocDownloadSummary) object;
         this.a(0, tocDownloadSummary.getHostName());
         this.a(1, "\u5df2\u9884\u8bfb" + tocDownloadSummary.getCount() + "\u7ae0");

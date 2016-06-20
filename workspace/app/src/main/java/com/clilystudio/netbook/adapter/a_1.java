@@ -3,6 +3,7 @@ package com.clilystudio.netbook.adapter;
 import android.view.LayoutInflater;
 import android.widget.ImageView;
 
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.db.BookReadRecord;
 import com.clilystudio.netbook.util.W;
 import com.clilystudio.netbook.widget.CoverView;

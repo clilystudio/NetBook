@@ -3,6 +3,7 @@ package com.clilystudio.netbook.adapter;
 import android.content.res.Resources;
 import android.view.LayoutInflater;
 
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.model.CategoryBook;
 import com.clilystudio.netbook.util.W;
 import com.clilystudio.netbook.widget.CoverView;
@@ -21,7 +22,7 @@ public final class c extends W<CategoryBook> {
      * Enabled aggressive exception aggregation
      */
     @Override
-    protected final /* synthetic */ void a(int n, Object object) {
+    protected final /* synthetic */ void a(int n, CategoryBook object) {
         CategoryBook categoryBook = (CategoryBook) object;
         try {
             ((CoverView) this.a(0, CoverView.class)).setImageUrl(categoryBook.getFullCover(), R.drawable.cover_default);

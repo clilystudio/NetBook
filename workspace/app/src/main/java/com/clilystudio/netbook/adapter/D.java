@@ -1,7 +1,9 @@
 package com.clilystudio.netbook.adapter;
 
 import android.view.LayoutInflater;
+import android.view.View;
 
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.model.ReviewSummary;
 import com.clilystudio.netbook.util.W;
 import com.clilystudio.netbook.util.t;
@@ -25,7 +27,7 @@ public final class D extends W<ReviewSummary> {
         this.a(1, reviewSummary.getBook().getTitle());
         this.a(4, reviewSummary.getTitle());
         Object[] arrobject = new Object[]{reviewSummary.getHelpful().getYes()};
-        this.a(5, String.format("%d \u4eba\u63a8\u8350", arrobject));
+        this.a(5, String.format("%d 人推荐", arrobject));
         String string = reviewSummary.getBook().getType();
         if (string == null) {
             string = "";

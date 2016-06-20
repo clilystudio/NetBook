@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.model.TocSummary;
 import com.clilystudio.netbook.util.W;
 import com.clilystudio.netbook.util.t;
