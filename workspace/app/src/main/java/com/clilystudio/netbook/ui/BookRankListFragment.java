@@ -1,5 +1,6 @@
 package com.clilystudio.netbook.ui;
 
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -11,13 +12,15 @@ import android.widget.TextView;
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.adapter.g;
 import com.clilystudio.netbook.model.BookRankDetail;
+import com.clilystudio.netbook.util.W;
+import com.clilystudio.netbook.widget.CoverView;
 import com.clilystudio.netbook.widget.ScrollLoadListView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class BookRankListFragment extends Fragment {
-    protected g a;
+    protected W<BookRankDetail> a;
     private View b;
     private View c;
     private View d;
@@ -111,7 +114,31 @@ public class BookRankListFragment extends Fragment {
                 BookRankListFragment.a(BookRankListFragment.this);
             }
         });
-        this.a = new g(this.getActivity().getLayoutInflater());
+        this.a = new W<BookRankDetail>(this.getActivity().getLayoutInflater(), R.layout.list_item_ori_book){
+
+            @Override
+            protected void a(int var1, BookRankDetail bookRankDetail) {
+                ((CoverView) this.a(0, CoverView.class)).setImageUrl(bookRankDetail.getFullCover(), R.drawable.cover_default);
+                this.a(1, bookRankDetail.getTitle());
+                this.a(2, bookRankDetail.getShortIntro());
+                Resources resources = getLayoutInflater().getContext().getResources();
+                Object[] arrobject = new Object[1];
+                arrobject[0] = bookRankDetail.getLatelyFollower();
+                this.a(3, resources.getString(R.string.follower_count_format, arrobject));
+                Object[] arrobject2 = new Object[1];
+                arrobject2[0] = bookRankDetail.getRetentionRatio();
+                this.a(4, resources.getString(R.string.retention_ratio_format, arrobject2));
+                this.a(4, bookRankDetail.getRetentionRatio() == null);
+                this.a(5, bookRankDetail.getRetentionRatio() == null);
+                this.a(6, bookRankDetail.getAuthor());
+                this.a(7, bookRankDetail.getCat());
+            }
+
+            @Override
+            protected int[] a() {
+                return new int[]{R.id.iv_cover, R.id.tv_title, R.id.tv_short_intro, R.id.tv_follower_count, R.id.tv_retention_ratio, R.id.tv_retention_separate, R.id.tv_author, R.id.tv_category};
+            }
+        };
         ScrollLoadListView scrollLoadListView = (ScrollLoadListView) view.findViewById(R.id.content_list);
         scrollLoadListView.setAdapter(this.a);
         scrollLoadListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
