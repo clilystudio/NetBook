@@ -57,11 +57,8 @@ final class D extends c<Void, ChapterKeysRoot> {
                 }
             }
             MyApplication.a().b().a(hashMap);
-            C c2 = new C(this.c, o.a((o) this.c), "\u6b63\u5728\u83b7\u53d6\u8d44\u4ea7\u4fe1\u606f...");
-            String[] arrstring = new String[]{this.b};
-            c2.b(arrstring);
             return;
         }
-        e.a((Activity) o.a((o) this.c), (String) "\u83b7\u53d6\u4e2a\u4eba\u4fe1\u606f\u5931\u8d25\uff0c\u8bf7\u68c0\u67e5\u7f51\u8def\u540e\u91cd\u8bd5");
+        e.a((Activity) o.a((o) this.c), (String) "获取个人信息失败，请检查网路后重试");
     }
 }

@@ -19,7 +19,7 @@ public class ConnectionChangeReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         NetworkInfo networkInfo;
-        ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService("connectivity");
+        ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         if (connectivityManager != null && (networkInfo = connectivityManager.getNetworkInfo(1)) != null && networkInfo.isConnected()) {
             SharedPreferences sharedPreferences = context.getSharedPreferences("downloadInfo", 0);
             String string = sharedPreferences.getString("apkName", "");

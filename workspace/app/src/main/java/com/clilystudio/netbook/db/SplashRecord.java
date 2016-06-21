@@ -23,7 +23,7 @@ public class SplashRecord extends Model {
     public boolean isShow = false;
     @Column(name = "link")
     public String link;
-    @Column(name = "splashId", unique = 1)
+    @Column(name = "splashId")
     public String splashId;
     @Column(name = "start")
     public Date start;

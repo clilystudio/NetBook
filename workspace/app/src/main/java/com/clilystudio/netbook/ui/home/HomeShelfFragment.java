@@ -28,17 +28,14 @@ import com.activeandroid.util.SQLiteUtils;
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.adapter.HomeShelfAdapter;
 import com.clilystudio.netbook.am;
-import com.clilystudio.netbook.db.AudioRecord;
 import com.clilystudio.netbook.db.BookFile;
 import com.clilystudio.netbook.db.BookReadRecord;
 import com.clilystudio.netbook.event.BookShelfRefreshEvent;
-import com.clilystudio.netbook.event.F;
 import com.clilystudio.netbook.event.b;
 import com.clilystudio.netbook.event.c;
 import com.clilystudio.netbook.event.g;
 import com.clilystudio.netbook.event.h;
 import com.clilystudio.netbook.event.l;
-import com.clilystudio.netbook.model.Advert;
 import com.clilystudio.netbook.model.BookFeed;
 import com.clilystudio.netbook.model.BookShelf;
 import com.clilystudio.netbook.model.BookUpdate;
@@ -58,11 +55,9 @@ import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.umeng.onlineconfig.OnlineConfigAgent;
 import com.xiaomi.mistatistic.sdk.MiStatInterface;
 import com.ximalaya.ting.android.opensdk.datatrasfer.CommonRequest;
-import com.ximalaya.ting.android.opensdk.httputil.XimalayaException;
 import com.ximalaya.ting.android.opensdk.model.album.Album;
 import com.ximalaya.ting.android.opensdk.model.album.SubordinatedAlbum;
 import com.ximalaya.ting.android.opensdk.model.track.Track;
-import com.ximalaya.ting.android.opensdk.player.service.IXmPlayerStatusListener;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -78,7 +73,6 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
     private long B = 0;
     private AdapterView.OnItemClickListener C;
     private AdapterView.OnItemLongClickListener D;
-    private IXmPlayerStatusListener E;
     private boolean b = true;
     private View c;
     private PullToRefreshListView d;
@@ -147,30 +141,12 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
                         com.clilystudio.netbook.event.i.a().post(new com.clilystudio.netbook.event.A());
                         return;
                     }
-                    case 1: {
-                        Advert advert = bookShelf.getAdvert();
-                        advert.processClick(view);
-                        if (advert.isRead()) {
-                            return;
-                        }
-                        HomeShelfFragment.a(HomeShelfFragment.this, advert);
-                        HomeShelfFragment.a(HomeShelfFragment.this).notifyDataSetChanged();
-                        return;
-                    }
-                    case 3: {
+                     case 3: {
                         Intent intent = com.clilystudio.netbook.hpay100.a.a.l(HomeShelfFragment.this.getActivity(), "feed_intro") ? new Intent(HomeShelfFragment.this.getActivity(), FeedIntroActivity.class) : new Intent(HomeShelfFragment.this.getActivity(), FeedListActivity.class);
                         HomeShelfFragment.this.startActivity(intent);
                         return;
                     }
-                    case 4:
                 }
-                AudioRecord audioRecord = bookShelf.getAlbum();
-                HomeShelfFragment.a(HomeShelfFragment.this, audioRecord);
-                if (!audioRecord.isUpdateReaded()) {
-                    AudioRecord.updateRecordRead(audioRecord.getBookId(), true);
-                }
-                AudioRecord.updateLastRead(audioRecord.getBookId());
-                HomeShelfFragment.c(HomeShelfFragment.this);
             }
         };
         this.D = new AdapterView.OnItemLongClickListener() {
@@ -198,7 +174,6 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
                 return true;
             }
         };
-        this.E = new x(this);
     }
 
     static /* synthetic */ long a(HomeShelfFragment homeShelfFragment, BookShelf bookShelf, int n2) {
@@ -224,47 +199,10 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
         return shelfMsg;
     }
 
-    /*
-     * Enabled aggressive block sorting
-     * Enabled unnecessary exception pruning
-     * Enabled aggressive exception aggregation
-     */
-    static /* synthetic */ void a(HomeShelfFragment homeShelfFragment, AudioRecord audioRecord) {
-        Album album = audioRecord.convert2Album();
-        int n2 = audioRecord.getTrack();
-        e.a((Context) homeShelfFragment.getActivity(), (long) album.getId(), (int) n2);
-        homeShelfFragment.s = n2;
-        as.a(homeShelfFragment.E);
-        homeShelfFragment.g();
-        String string = album.getCoverUrlSmall();
-        String string2 = album.getAlbumTitle();
-        homeShelfFragment.m.setImageUrl(string);
-        homeShelfFragment.n.setText(string2);
-        e.a((String) string2);
-        new com.clilystudio.netbook.util.h().execute((Object[]) new String[]{string});
-        homeShelfFragment.r = album;
-        homeShelfFragment.t = n2 / 100;
-        HashMap<String, String> hashMap = new HashMap<String, String>();
-        hashMap.put("album_id", "" + album.getId());
-        hashMap.put("sort", "asc");
-        hashMap.put("page", "" + (1 + homeShelfFragment.t));
-        try {
-            homeShelfFragment.q.setDefaultPagesize(100);
-        } catch (XimalayaException var11_7) {
-            var11_7.printStackTrace();
-        }
-        CommonRequest.getTracks(hashMap, new D(homeShelfFragment, n2));
-    }
-
     static /* synthetic */ void a(HomeShelfFragment homeShelfFragment, BookReadRecord bookReadRecord) {
         if (bookReadRecord != null) {
             homeShelfFragment.startActivity(BookInfoActivity.a(homeShelfFragment.getActivity(), bookReadRecord.getBookId()));
         }
-    }
-
-    static /* synthetic */ void a(HomeShelfFragment homeShelfFragment, Advert advert) {
-        advert.setRead(true);
-        com.clilystudio.netbook.util.c.a().a(advert);
     }
 
     static /* synthetic */ void a(HomeShelfFragment homeShelfFragment, BookShelf bookShelf) {
@@ -579,9 +517,6 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
         homeShelfFragment.b(3);
     }
 
-    static /* synthetic */ void b(HomeShelfFragment homeShelfFragment, AudioRecord audioRecord) {
-    }
-
     static /* synthetic */ void b(HomeShelfFragment homeShelfFragment, BookReadRecord bookReadRecord) {
         if (bookReadRecord != null) {
             long l2 = System.currentTimeMillis();
@@ -626,13 +561,6 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
             }
             bookReadRecord.setTop(bl);
             bookReadRecord.save();
-        } else if (bookShelf.getAlbum() != null) {
-            AudioRecord audioRecord = bookShelf.getAlbum();
-            if (audioRecord.isTop()) {
-                bl = false;
-            }
-            audioRecord.setTop(bl);
-            audioRecord.save();
         }
         homeShelfFragment.k();
     }
@@ -661,7 +589,7 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
         } else {
             textView.setTextColor(homeShelfFragment.getActivity().getResources().getColor(R.color.shelf_msg_normal));
         }
-         textView.setOnClickListener(new View.OnClickListener() {
+        textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (shelfMsg.login && am.a(homeShelfFragment.getActivity()) == null) {
@@ -699,7 +627,7 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
      * Enabled aggressive block sorting
      */
     static /* synthetic */ void c(HomeShelfFragment homeShelfFragment) {
-     }
+    }
 
     static /* synthetic */ void c(HomeShelfFragment homeShelfFragment, BookReadRecord bookReadRecord) {
         new com.clilystudio.netbook.reader.dl.a(homeShelfFragment.getActivity()).a(bookReadRecord);
@@ -731,9 +659,6 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
     }
 
     static /* synthetic */ void e(HomeShelfFragment homeShelfFragment) {
-        if (am.q((Context) homeShelfFragment.getActivity())) {
-            new H(homeShelfFragment, 0).b(new Void[0]);
-        }
     }
 
     static /* synthetic */ String f() {
@@ -745,18 +670,6 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
             homeShelfFragment.k();
         }
         new K(homeShelfFragment, 0).b(new Void[0]);
-        if (AudioRecord.findAll().size() > 0) {
-            List<AudioRecord> list = AudioRecord.findAll();
-            StringBuilder stringBuilder = new StringBuilder();
-            for (int j = 0; j < list.size(); ++j) {
-                stringBuilder.append(list.get(j).getBookId());
-                stringBuilder.append(",");
-            }
-            stringBuilder.deleteCharAt(-1 + stringBuilder.length());
-            HashMap<String, String> hashMap = new HashMap<String, String>();
-            hashMap.put("ids", stringBuilder.toString());
-            CommonRequest.getBatch(hashMap, new o(homeShelfFragment));
-        }
     }
 
     static /* synthetic */ void g(HomeShelfFragment homeShelfFragment) {
@@ -905,27 +818,6 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
     }
 
     /*
-     * Enabled aggressive block sorting
-     */
-    private void a(List<BookShelf> list, int n2, Advert advert) {
-        if (HomeShelfFragment.b(list, n2)) {
-            BookShelf bookShelf = list.get(n2);
-            bookShelf.setAdvert(advert);
-            bookShelf.setAdIndex(n2);
-            this.j.notifyDataSetChanged();
-        } else if (HomeShelfFragment.a(list, n2)) {
-            BookShelf bookShelf = new BookShelf();
-            bookShelf.setAdvert(advert);
-            bookShelf.setAdIndex(n2);
-            list.add(n2, bookShelf);
-            this.j.notifyDataSetChanged();
-        }
-        String string = n2 > 0 ? "shelf_five" : "shelf_top";
-        advert.setPosition(string);
-        advert.recordShow(this.getActivity());
-    }
-
-    /*
      * Unable to fully structure code
      * Enabled aggressive block sorting
      * Lifted jumps to return sites
@@ -998,11 +890,11 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
     }
 
     private void b(final String string) {
-        new Thread(){
+        new Thread() {
 
             @Override
             public void run() {
-                 com.clilystudio.netbook.hpay100.a.a.E(com.clilystudio.netbook.c.b + File.separator + string);
+                com.clilystudio.netbook.hpay100.a.a.E(com.clilystudio.netbook.c.b + File.separator + string);
             }
         }.start();
     }
@@ -1013,25 +905,18 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
     private void c(List<BookShelf> list, int n2) {
         String string = n2 == 0 ? "top" : "bookshelf";
         String string2 = n2 == 0 ? "rate_zssq_advert_bookshelf_top" : "rate_zssq_advert_bookshelf_five";
-        Advert advert = com.clilystudio.netbook.util.c.a().a(string);
-        if (advert != null && HomeShelfFragment.a(this.getActivity(), n2) && a.w(this.getActivity(), string2)) {
-            advert.setType("promotion");
-            this.a(list, n2, advert);
-            return;
-        } else {
-            if (!a.A(this.getActivity()) || !a.t(this.getActivity())) return;
+        if (!a.A(this.getActivity()) || !a.t(this.getActivity())) return;
+        {
+            this.getActivity();
+            if (!k.c() && !k.b()) {
+                return;
+            }
+            boolean bl = true;
+            if (!bl) return;
             {
-                this.getActivity();
-                if (!k.c() && !k.b()) {
-                    return;
-                }
-                boolean bl = true;
-                if (!bl) return;
-                {
-                    if (!HomeShelfFragment.a(this.getActivity(), n2)) return;
-                    new com.clilystudio.netbook.util.adutil.n().a(this.getActivity(), string);
-                    return;
-                }
+                if (!HomeShelfFragment.a(this.getActivity(), n2)) return;
+//                new com.clilystudio.netbook.util.adutil.n().a(this.getActivity(), string);
+                return;
             }
         }
     }
@@ -1165,18 +1050,18 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
                     var11_13 = true;
                     lbl39:
                     // 2 sources:
-                    do {
-                        var12_14 = AudioRecord.findAll().iterator();
-                        lbl41:
-                        // 4 sources:
-                        if (!var12_14.hasNext()) break block24;
-                        var21_15 = var12_14.next();
-                        if (!var11_13) break block25;
-                        var21_15.delete();
-                        this.k();
-                        **GOTO lbl41
-                        break;
-                    } while (true);
+//                    do {
+//                        var12_14 = AudioRecord.findAll().iterator();
+//                        lbl41:
+//                        // 4 sources:
+//                        if (!var12_14.hasNext()) break block24;
+//                        var21_15 = var12_14.next();
+//                        if (!var11_13) break block25;
+//                        var21_15.delete();
+//                        this.k();
+//                        **GOTO lbl41
+//                        break;
+//                    } while (true);
                     lbl47:
                     // 1 sources:
                     var11_13 = false;
@@ -1337,7 +1222,6 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
         if (this.q == null) {
             this.q = as.b();
         }
-        as.a(this.E);
     }
 
     @Override
@@ -1431,10 +1315,6 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
     @Override
     public void onDestroy() {
         super.onDestroy();
-        if (this.E != null) {
-            as.b(this.E);
-            this.E = null;
-        }
         i.a().b(this);
     }
 
@@ -1462,21 +1342,13 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
         this.d.setRefreshing();
     }
 
-    /*
-     * Enabled aggressive block sorting
-     */
-    @com.squareup.a.l
-    public void onFocusBookEvent(com.clilystudio.netbook.event.p p2) {
-        if (p2.a()) {
-            AudioRecord audioRecord = p2.b();
-            audioRecord.setUpdateReaded(false);
-            audioRecord.setLastRead(new Date().getTime());
-            audioRecord.save();
-        } else {
-            AudioRecord.cancelFollow(p2.b().getBookId());
-        }
-        this.i();
-    }
+//    /*
+//     * Enabled aggressive block sorting
+//     */
+//    @com.squareup.a.l
+//    public void onFocusBookEvent(com.clilystudio.netbook.event.p p2) {
+//        this.i();
+//    }
 
     /*
      * Enabled aggressive block sorting
@@ -1526,19 +1398,8 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
         List<BookShelf> list;
         super.onResume();
         if (!a.A(this.getActivity()) && (list = this.j.f()) != null && !list.isEmpty()) {
-            Advert advert = com.clilystudio.netbook.util.c.a().a("top");
-            if (advert == null || !HomeShelfFragment.a(this.getActivity(), 0)) {
+             if (!HomeShelfFragment.a(this.getActivity(), 0)) {
                 a.a((Context) this.getActivity(), null);
-            } else {
-                BookShelf bookShelf = (BookShelf) list.get(0);
-                if (bookShelf.getAdvert() == null) {
-                    this.a(list, 0, advert);
-                } else if (!advert.equals(bookShelf.getAdvert())) {
-                    advert.setPosition("shelf_top");
-                    bookShelf.setAdvert(advert);
-                }
-                this.j.notifyDataSetChanged();
-                a.a((Context) this.getActivity(), advert);
             }
         }
         this.A = false;
@@ -1568,52 +1429,6 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
             return;
         }
         this.k();
-    }
-
-    /*
-     * Enabled aggressive block sorting
-     * Lifted jumps to return sites
-     */
-    @com.squareup.a.l
-    public void onShowThirdAd(com.clilystudio.netbook.event.B b2) {
-        List<BookShelf> list;
-        if (this.getActivity() == null) return;
-        if (this.getActivity().isFinishing()) {
-            return;
-        }
-        if (b2 == null) return;
-        if (!am.q((Context) this.getActivity())) return;
-        if (!b2.b().equals("top")) {
-            if (!b2.b().equals("bookshelf")) return;
-        }
-        if ((list = this.j.f()) == null) return;
-        if (list.isEmpty()) return;
-        Advert advert = b2.a();
-        if (advert == null) return;
-        int n2 = b2.b().equals("top") ? 0 : 4;
-        advert.setType("promotion");
-        String string = n2 == 0 ? "shelf_top" : "shelf_five";
-        advert.setPosition(string);
-        if (HomeShelfFragment.a(list, n2)) {
-            this.a(list, n2, advert);
-            this.j.notifyDataSetChanged();
-            return;
-        }
-        if (!HomeShelfFragment.b(list, n2)) return;
-        list.get(n2).setAdvert(advert);
-        this.j.notifyDataSetChanged();
-    }
-
-    @com.squareup.a.l
-    public void onUpdateAlbum(F f2) {
-        this.i();
-        Log.i(a, f2.toString());
-        long l2 = f2.a();
-        if (this.r == null) {
-            this.r = new Album();
-        }
-        this.r.setId(l2);
-        this.s = f2.b();
     }
 
     /*

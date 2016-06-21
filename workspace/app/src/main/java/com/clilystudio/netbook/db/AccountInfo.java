@@ -11,7 +11,7 @@ import java.util.List;
 public class AccountInfo extends Model {
     @Column(name = "prev_unimp_notif")
     private int prevUnimpNotif;
-    @Column(name = "token", unique = 1)
+    @Column(name = "token")
     private String token;
 
     public AccountInfo() {

@@ -22,18 +22,15 @@ import com.clilystudio.netbook.am;
 import com.clilystudio.netbook.d;
 import com.clilystudio.netbook.db.BookReadRecord;
 import com.clilystudio.netbook.db.SourceRecord;
-import com.clilystudio.netbook.event.B;
 import com.clilystudio.netbook.event.c;
 import com.clilystudio.netbook.event.h;
 import com.clilystudio.netbook.event.s;
-import com.clilystudio.netbook.model.Advert;
 import com.clilystudio.netbook.model.BookInfo;
 import com.clilystudio.netbook.reader.dl.a;
 import com.clilystudio.netbook.ui.post.BookPostTabActivity;
 import com.clilystudio.netbook.ui.user.AuthLoginActivity;
 import com.clilystudio.netbook.util.I;
 import com.clilystudio.netbook.util.T;
-import com.clilystudio.netbook.util.adutil.n;
 import com.clilystudio.netbook.util.m;
 import com.clilystudio.netbook.util.t;
 import com.clilystudio.netbook.widget.CoverView;
@@ -294,28 +291,6 @@ public class BookInfoActivity extends BaseActivity implements View.OnClickListen
         textView.setTextColor(this.getResources().getColor(R.color.book_info_dl));
     }
 
-    private void a(final View view, final Advert advert) {
-        if (view == null || advert == null) {
-            return;
-        }
-        advert.setPosition("book_info");
-        advert.recordShow(this);
-        SmartImageView smartImageView = (SmartImageView) view.findViewById(R.id.book_info_ad_cover);
-        TextView textView = (TextView) view.findViewById(R.id.book_info_ad_title);
-        TextView textView2 = (TextView) view.findViewById(R.id.book_info_ad_desc);
-        view.findViewById(R.id.book_info_ad_flag).setVisibility(View.VISIBLE);
-        smartImageView.setImageUrl(advert.getFullImg());
-        textView.setText(advert.getTitle());
-        textView2.setText(advert.getDesc());
-        view.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                advert.processClick(v);
-            }
-        });
-        n.a(advert, view);
-    }
-
     /*
      * Enabled aggressive block sorting
      */
@@ -395,12 +370,6 @@ public class BookInfoActivity extends BaseActivity implements View.OnClickListen
     private void f() {
         View view = this.findViewById(R.id.book_info_ad_view);
         if (am.q((Context) this) && com.clilystudio.netbook.hpay100.a.a.F(this)) {
-            Advert advert = n.b(this, "book");
-            if (advert != null && com.clilystudio.netbook.hpay100.a.a.w(this, "rate_zssq_advert_reader_bookinfo")) {
-                view.setVisibility(View.VISIBLE);
-                this.a(view, advert);
-                return;
-            }
             view.setVisibility(View.GONE);
             return;
         }
@@ -640,19 +609,5 @@ public class BookInfoActivity extends BaseActivity implements View.OnClickListen
         this.k();
         this.a(false);
         this.a(am.g((String) this.h));
-    }
-
-    /*
-     * Enabled aggressive block sorting
-     */
-    @l
-    public void onShowThirdAd(B b2) {
-        Advert advert;
-        if (b2 == null || !am.q((Context) this) || !b2.b().equals("book") || (advert = b2.a()) == null) {
-            return;
-        }
-        View view = this.findViewById(R.id.book_info_ad_view);
-        view.setVisibility(View.VISIBLE);
-        this.a(view, advert);
     }
 }

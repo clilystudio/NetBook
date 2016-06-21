@@ -16,7 +16,7 @@ public class MixTocRecord extends Model {
     private String chapterTitle;
     @Column(name = "charIndex")
     private int charIndex = 0;
-    @Column(name = "tocId", unique = 1)
+    @Column(name = "tocId")
     private String tocId;
 
     public static MixTocRecord create(String string, String string2, int n, int n2) {

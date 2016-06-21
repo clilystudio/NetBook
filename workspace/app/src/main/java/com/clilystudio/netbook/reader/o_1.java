@@ -1,6 +1,5 @@
 package com.clilystudio.netbook.reader;
 
-import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
 
@@ -19,14 +18,9 @@ import android.widget.TextView;
 import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.hpay100.a.a;
 import com.clilystudio.netbook.model.Account;
-import com.clilystudio.netbook.model.Advert;
 import com.clilystudio.netbook.model.ChapterLink;
 import com.clilystudio.netbook.model.PurchaseChapterResult;
-import com.clilystudio.netbook.ui.SmartImageView;
 import com.clilystudio.netbook.ui.user.AuthLoginActivity;
-import com.clilystudio.netbook.ui.user.RemoveAdActivity;
-import com.clilystudio.netbook.util.*;
-import com.clilystudio.netbook.util.e;
 import com.umeng.a.b;
 import com.xiaomi.mistatistic.sdk.MiStatInterface;
 
@@ -176,59 +170,6 @@ public final class o {
         return true;
     }
 
-    /*
-     * Enabled aggressive block sorting
-     */
-    @TargetApi(value = 11)
-    private void a(final View view, final Advert advert) {
-        if (view == null || advert == null) {
-            return;
-        }
-        advert.setPosition("read_page");
-        advert.recordShow(this.b);
-        SmartImageView smartImageView = (SmartImageView) view.findViewById(R.id.reader_ad_cover);
-        TextView textView = (TextView) view.findViewById(R.id.reader_ad_title);
-        TextView textView2 = (TextView) view.findViewById(R.id.reader_ad_desc);
-        Button button = (Button) view.findViewById(R.id.reader_ad_delete);
-        if (a.y(this.b)) {
-            button.setVisibility(View.VISIBLE);
-        }
-        if (a.a((Context) this.b, "customer_night_theme", false)) {
-            view.setBackgroundResource(R.drawable.reader_ad_bg_dark);
-            textView.setTextColor(this.b.getResources().getColor(R.color.dark_window_bg));
-            textView2.setTextColor(this.b.getResources().getColor(R.color.dark_window_bg_dark));
-            button.setTextColor(this.b.getResources().getColor(R.color.dark_window_bg));
-            smartImageView.setAlpha(0.2f);
-        } else {
-            view.setBackgroundResource(R.drawable.reader_ad_bg);
-            textView.setTextColor(this.b.getResources().getColor(R.color.dark_text_color));
-            textView2.setTextColor(this.b.getResources().getColor(R.color.dark_text_secondary));
-            button.setTextColor(this.b.getResources().getColor(R.color.white));
-            smartImageView.setAlpha(1.0f);
-        }
-        smartImageView.setImageBitmap(null);
-        smartImageView.setImageUrl(advert.getFullImg());
-        textView.setText(advert.getTitle());
-        textView2.setText(advert.getDesc());
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(o.this.b, RemoveAdActivity.class);
-                o.this.b.startActivity(intent);
-            }
-        });
-        view.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                advert.processClick(v);
-            }
-        });
-        com.clilystudio.netbook.util.adutil.n.a(advert, view);
-    }
-
-    /*
-     * Enabled aggressive block sorting
-     */
     private void a(boolean bl) {
         int n2;
         View view = this.f.findViewById(R.id.reader_page_normal);
@@ -515,12 +456,6 @@ public final class o {
         View view = this.f.findViewById(R.id.reader_ad_view);
         if (view == null) return;
         if (am.q(this.b) && a.F(this.b) && this.q() && this.a(view) && this.b instanceof ReaderActivity) {
-            Advert advert = com.clilystudio.netbook.util.adutil.n.b(this.b, "page");
-            if (advert != null && a.w(this.b, "rate_zssq_advert_reader_bookinfo")) {
-                view.setVisibility(View.VISIBLE);
-                this.a(view, advert);
-                return;
-            }
             view.setVisibility(View.GONE);
             return;
         }
@@ -765,33 +700,10 @@ public final class o {
     }
 
     @l
-    public final void onPayFinish(com.clilystudio.netbook.event.y y2) {
-        if (this.e && y2.a()) {
-            C c2 = new C(this, this.b, "\u6b63\u5728\u66f4\u65b0\u8d44\u4ea7\u4fe1\u606f...");
-            String[] arrstring = new String[]{am.e().getToken()};
-            c2.b(arrstring);
-        }
-    }
-
-    @l
     public final void onRemoveAdEvent$2234193(a a2) {
         if (this.e) {
             this.f.findViewById(R.id.reader_ad_view).setVisibility(View.GONE);
         }
-    }
-
-    /*
-     * Enabled aggressive block sorting
-     */
-    @l
-    public final void onShowThirdAd(com.clilystudio.netbook.event.B b2) {
-        View view;
-        Advert advert;
-        if (!(b2 != null && am.q(this.b) && b2.b().equals("page") && (view = this.f.findViewById(R.id.reader_ad_view)) != null && a.F(this.b) && this.q() && this.a(view) && this.b instanceof ReaderActivity && (advert = b2.a()) != null)) {
-            return;
-        }
-        view.setVisibility(View.VISIBLE);
-        this.a(view, advert);
     }
 
     @l

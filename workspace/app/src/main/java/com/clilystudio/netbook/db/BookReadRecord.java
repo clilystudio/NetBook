@@ -35,7 +35,7 @@ public class BookReadRecord extends Model {
     private String account;
     @Column(name = "author")
     private String author;
-    @Column(name = "book_id", unique = 1)
+    @Column(name = "book_id")
     private String book_id;
     @Column(name = "chapterCount")
     private int chapterCount;
@@ -97,7 +97,7 @@ public class BookReadRecord extends Model {
         BookReadRecord bookReadRecord = BookReadRecord.createBookRecord(bookInfo);
         BookReadRecord.addAccountInfo(bookReadRecord);
         bookReadRecord.save();
-        i.a().c(new c(bookReadRecord.getBookId()));
+        i.a().post(new c(bookReadRecord.getBookId()));
     }
 
     public static void create(BookInfo bookInfo, String string, int n, int n2, int n3) {
@@ -109,7 +109,7 @@ public class BookReadRecord extends Model {
         BookReadRecord.addAccountInfo(bookReadRecord);
         bookReadRecord.save();
         MixTocRecord.create(string2, string, n, n2);
-        i.a().c(new c(string2));
+        i.a().post(new c(string2));
     }
 
     public static void create(BookInfo bookInfo, String string, String string2, String string3, int n, int n2, int n3) {
@@ -121,7 +121,7 @@ public class BookReadRecord extends Model {
         BookReadRecord.addAccountInfo(bookReadRecord);
         bookReadRecord.save();
         TocReadRecord.create(string4, string, string2, string3, n, n2);
-        i.a().c(new c(string4));
+        i.a().post(new c(string4));
     }
 
     public static void create(RemoteBookShelf.Book book, boolean bl) {
@@ -207,7 +207,7 @@ public class BookReadRecord extends Model {
 
     public static void deleteAndSync(String string) {
         BookReadRecord.delete(string);
-        i.a().c(new h(string));
+        i.a().post(new h(string));
     }
 
     private static void deleteDlRecord(String string) {

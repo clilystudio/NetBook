@@ -1359,15 +1359,6 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         this.v();
     }
 
-    @l
-    public void OnUpdateBalanceEvent(com.clilystudio.netbook.event.G g2) {
-        if (com.clilystudio.netbook.am.e() != null) {
-            bo bo2 = new bo(this, 0);
-            Object[] arrobject = new String[]{com.clilystudio.netbook.am.e().getToken()};
-            bo2.b(arrobject);
-        }
-    }
-
     public final void a() {
         this.t.c();
         this.T.c();
@@ -1653,9 +1644,6 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         Object[] arrobject = new String[]{this.c};
         bq2.b(arrobject);
         if (com.clilystudio.netbook.am.e() != null) {
-            bo bo2 = new bo(this, 0);
-            Object[] arrobject2 = new String[]{com.clilystudio.netbook.am.e().getToken()};
-            bo2.b(arrobject2);
             new bp(this, 0).b((Object[]) new Void[0]);
         }
         new k(this.c).a();

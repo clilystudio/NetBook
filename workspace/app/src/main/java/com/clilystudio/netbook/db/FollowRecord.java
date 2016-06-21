@@ -33,7 +33,7 @@ public class FollowRecord extends Model {
     }
 
     public static boolean isFollowed(String string, String string2) {
-        return new Select().from(FollowRecord.class).where(" userId = ? and followedId = ?", string, string2).exists();
+        return !new Select().from(FollowRecord.class).where(" userId = ? and followedId = ?", string, string2).execute().isEmpty();
     }
 
     public static void save2DB(String string, String string2) {

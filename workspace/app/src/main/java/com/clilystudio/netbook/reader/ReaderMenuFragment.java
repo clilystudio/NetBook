@@ -20,9 +20,7 @@ import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.am;
 import com.clilystudio.netbook.api.ApiService;
-import com.clilystudio.netbook.event.B;
 import com.clilystudio.netbook.event.v;
-import com.clilystudio.netbook.model.Advert;
 import com.clilystudio.netbook.model.MenuAd;
 import com.clilystudio.netbook.model.TocSummary;
 import com.clilystudio.netbook.ui.RelateBookListActivity;
@@ -30,7 +28,6 @@ import com.clilystudio.netbook.ui.SmartImageView;
 import com.clilystudio.netbook.ui.post.BookPostTabActivity;
 import com.clilystudio.netbook.util.InsideLinkIntent;
 import com.clilystudio.netbook.util.adutil.BaseShelfAd;
-import com.clilystudio.netbook.util.adutil.n;
 import com.clilystudio.netbook.util.t;
 import com.clilystudio.netbook.widget.LoadingContainer;
 import com.umeng.a.b;
@@ -136,7 +133,7 @@ public class ReaderMenuFragment extends Fragment {
     }
 
     static /* synthetic */ void a(ReaderMenuFragment readerMenuFragment, String string, String string2, String string3) {
-        ReaderMenuFragment$DownLoadDialogFragment.a(string, string2, string3).show(readerMenuFragment.getFragmentManager(), "DownloadDialog");
+        DownLoadDialogFragment.a(string, string2, string3).show(readerMenuFragment.getFragmentManager(), "DownloadDialog");
     }
 
     /*
@@ -155,10 +152,10 @@ public class ReaderMenuFragment extends Fragment {
                 if (!tocSummary.getHost().equals(string)) {
                     final FragmentActivity fragmentActivity = readerMenuFragment.getActivity();
                     View view = fragmentActivity.getLayoutInflater().inflate(R.layout.list_item_reader_menu_toc, viewGroup, false);
-                    ReaderMenuFragment$TocHolder readerMenuFragment$TocHolder = new ReaderMenuFragment$TocHolder(view);
-                    readerMenuFragment$TocHolder.link.setText(tocSummary.getHost());
-                    readerMenuFragment$TocHolder.time.setText(t.e((Date) tocSummary.getUpdated()));
-                    readerMenuFragment$TocHolder.title.setText(tocSummary.getLastChapter());
+                    TocHolder TocHolder = new TocHolder(view);
+                    TocHolder.link.setText(tocSummary.getHost());
+                    TocHolder.time.setText(t.e((Date) tocSummary.getUpdated()));
+                    TocHolder.title.setText(tocSummary.getLastChapter());
                     viewGroup.addView(view);
 //                    bw(readerMenuFragment, (Activity) fragmentActivity, tocSummary)
                     view.setOnClickListener(new View.OnClickListener() {
@@ -238,7 +235,7 @@ public class ReaderMenuFragment extends Fragment {
     }
 
     static /* synthetic */ void l(ReaderMenuFragment readerMenuFragment) {
-        new n().a(readerMenuFragment.getActivity(), "top");
+//        new n().a(readerMenuFragment.getActivity(), "top");
     }
 
     static /* synthetic */ View.OnClickListener m(ReaderMenuFragment readerMenuFragment) {
@@ -329,70 +326,33 @@ public class ReaderMenuFragment extends Fragment {
         a.a().c();
     }
 
-    /*
-     * Enabled aggressive block sorting
-     * Lifted jumps to return sites
-     */
-    @l
-    public void onShowThirdAd(B b2) {
-        if (this.getView() == null) return;
-        if (b2 == null) return;
-        if (!am.q((Context) this.getActivity())) return;
-        if (!b2.b().equals("top")) {
-            return;
-        }
-        View view = this.getView().findViewById(R.id.slm_reader_layout_ad);
-        if (view == null) return;
-        Advert advert = b2.a();
-        if (advert != null && advert instanceof BaseShelfAd) {
-            this.i = (BaseShelfAd) advert;
-            view.setVisibility(View.VISIBLE);
-            view.setOnClickListener(this.k);
-            view.findViewById(R.id.download).setOnClickListener(this.k);
-            if (advert == null) return;
-            if (this.getView() == null) return;
-            SmartImageView smartImageView = (SmartImageView) this.getView().findViewById(R.id.slm_reader_app_icon);
-            TextView textView = (TextView) this.getView().findViewById(R.id.slm_reader_app_title);
-            TextView textView2 = (TextView) this.getView().findViewById(R.id.slm_reader_app_desc);
-            smartImageView.setDrawingCacheEnabled(true);
-            smartImageView.setImageUrl(advert.getImg());
-            TextView textView3 = (TextView) this.getView().findViewById(R.id.download);
-            String string = advert.isApk() ? "\u5b89\u88c5" : "\u67e5\u770b";
-            textView3.setText(string);
-            textView.setText(advert.getTitle());
-            textView2.setText(advert.getDesc());
-            return;
-        }
-        view.setVisibility(4);
-    }
-
-    class ReaderMenuFragment$TocHolder {
+    class TocHolder {
         TextView link;
         TextView time;
         TextView title;
 
-        ReaderMenuFragment$TocHolder(View view) {
+        TocHolder(View view) {
             this.title = (TextView) view.findViewById(R.id.title);
             this.link = (TextView) view.findViewById(R.id.link);
             this.time = (TextView) view.findViewById(R.id.time);
         }
     }
 
-    public class ReaderMenuFragment$DownLoadDialogFragment extends DialogFragment {
+    public class DownLoadDialogFragment extends DialogFragment {
         private SmartImageView a;
 
-        public static ReaderMenuFragment$DownLoadDialogFragment a(String string, String string2, String string3) {
-            ReaderMenuFragment$DownLoadDialogFragment readerMenuFragment$DownLoadDialogFragment = new ReaderMenuFragment$DownLoadDialogFragment();
+        public static DownLoadDialogFragment a(String string, String string2, String string3) {
+            DownLoadDialogFragment DownLoadDialogFragment = new DownLoadDialogFragment();
             Bundle bundle = new Bundle();
             bundle.putString("name", string);
             bundle.putString("size", string2);
             bundle.putString("link", string3);
-            readerMenuFragment$DownLoadDialogFragment.setArguments(bundle);
-            return readerMenuFragment$DownLoadDialogFragment;
+            DownLoadDialogFragment.setArguments(bundle);
+            return DownLoadDialogFragment;
         }
 
-        static /* synthetic */ SmartImageView a(ReaderMenuFragment$DownLoadDialogFragment readerMenuFragment$DownLoadDialogFragment) {
-            return readerMenuFragment$DownLoadDialogFragment.a;
+        static /* synthetic */ SmartImageView a(DownLoadDialogFragment DownLoadDialogFragment) {
+            return DownLoadDialogFragment.a;
         }
 
         @Override

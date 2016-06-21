@@ -1,5 +1,6 @@
 package com.clilystudio.netbook.api;
 
+import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Build;
@@ -8,6 +9,7 @@ import android.text.TextUtils;
 
 import com.clilystudio.netbook.MyApplication;
 
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Locale;
@@ -15,9 +17,6 @@ import java.util.Locale;
 public class f {
     private static f b = null;
     private String a = null;
-    private String c = "Mozilla/5.0 (Linux; U; Android 4.4.4; zh-cn; MI 3 Build/KTU84P) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30 SogouMSE,SogouMobileBrowser/3.6.2";
-    private String d = "Mozilla/5.0 (iPad; CPU OS 7_1_2 like Mac OS X) AppleWebKit/537.51.2 (KHTML, like Gecko) Version/7.0 Mobile/11D257 Safari/9537.53";
-    private String e = "Mozilla/5.0 (Linux; U; Android 4.4.4; zh-CN; MI 3 Build/KTU84P) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 UCBrowser/9.9.7.500 U3/0.8.0 Mobile Safari/534.30";
 
     private f() {
     }
@@ -51,28 +50,20 @@ public class f {
 
     public final String a(int n) {
         switch (n) {
-            default: {
-                return null;
-            }
-            case 6: {
+            case 6:
                 return "Mozilla/5.0 (iPad; CPU OS 7_1_2 like Mac OS X) AppleWebKit/537.51.2 (KHTML, like Gecko) Version/6.0 MQQBrowser/4.3 Mobile/11D257 Safari/7534.48.3";
-            }
-            case 7: {
-                return this.c;
-            }
-            case 8: {
-                return this.d;
-            }
+            case 7:
+                return "Mozilla/5.0 (Linux; U; Android 4.4.4; zh-cn; MI 3 Build/KTU84P) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30 SogouMSE,SogouMobileBrowser/3.6.2";
+            case 8:
+                return "Mozilla/5.0 (iPad; CPU OS 7_1_2 like Mac OS X) AppleWebKit/537.51.2 (KHTML, like Gecko) Version/7.0 Mobile/11D257 Safari/9537.53";
             case 3:
+                return "Mozilla/5.0 (Linux; U; Android 4.4.4; zh-CN; MI 3 Build/KTU84P) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 UCBrowser/9.9.7.500 U3/0.8.0 Mobile Safari/534.30";
+            default:
+                return null;
+
         }
-        return this.e;
     }
 
-    /*
-     * Enabled aggressive block sorting
-     * Enabled unnecessary exception pruning
-     * Enabled aggressive exception aggregation
-     */
     public final String b() {
         if (this.a == null) {
             synchronized (f.class) {
@@ -81,22 +72,20 @@ public class f {
                 String string;
                 MyApplication myApplication = MyApplication.a();
                 try {
-                    PackageInfo packageInfo2;
-                    packageInfo = packageInfo2 = myApplication.getPackageManager().getPackageInfo(myApplication.getPackageName(), 0);
+                    packageInfo = myApplication.getPackageManager().getPackageInfo(myApplication.getPackageName(), 0);
                 } catch (PackageManager.NameNotFoundException var3_14) {
                     packageInfo = null;
                 }
                 String string2 = packageInfo != null ? packageInfo.versionName : "not-found";
-                TelephonyManager telephonyManager = (TelephonyManager) myApplication.getSystemService("phone");
+                TelephonyManager telephonyManager = (TelephonyManager) myApplication.getSystemService(Context.TELEPHONY_SERVICE);
                 try {
-                    String string3;
-                    string = string3 = telephonyManager.getSimOperatorName();
+                    string = telephonyManager.getSimOperatorName();
                 } catch (Exception var7_15) {
                     string = "not-found";
                 }
                 Object[] arrobject = new Object[]{"ZhuiShuShenQi", string2, Build.VERSION.RELEASE, f.a(Build.MANUFACTURER), f.a(Build.DEVICE), f.a(Build.BRAND), f.a(Build.MODEL), f.a(string)};
                 this.a = String.format("%s/%s (Android %s; %s %s / %s %s; %s)", arrobject);
-                arrayList = new ArrayList<String>();
+                arrayList = new ArrayList<>();
                 StringBuilder stringBuilder = new StringBuilder("preload=");
                 boolean bl = (1 & myApplication.getApplicationInfo().flags) == 1;
                 arrayList.add(stringBuilder.append(bl).toString());
@@ -105,10 +94,11 @@ public class f {
                     Class class_ = myApplication.getClassLoader().loadClass("android.os.SystemProperties");
                     Method method = class_.getMethod("get", String.class);
                     arrayList.add("clientidbase=" + method.invoke(class_, "ro.com.google.clientidbase"));
-                } catch (Exception var15_16) {
+                } catch (ClassNotFoundException | NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
+                    e.printStackTrace();
                 }
                 if (arrayList.size() > 0) {
-                    this.a = this.a + "[" + TextUtils.join((CharSequence) ";", arrayList) + "]";
+                    this.a = this.a + "[" + TextUtils.join(";", arrayList) + "]";
                 }
             }
         }

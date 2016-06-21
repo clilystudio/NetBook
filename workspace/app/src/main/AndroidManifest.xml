@@ -189,11 +189,7 @@
         <activity android:name="com.clilystudio.netbook.ui.CropPhotoActivity" android:parentActivityName="com.clilystudio.netbook.ui.BaseActivity">
             <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="com.clilystudio.netbook.ui.BaseActivity"/>
         </activity>
-        <activity android:name="com.clilystudio.netbook.ui.user.PayAccountActivity" android:screenOrientation="portrait"/>
         <activity android:name="com.clilystudio.netbook.ui.user.ChargeActivity" android:screenOrientation="portrait"/>
-        <activity android:name="com.clilystudio.netbook.ui.user.PayChargeActivity" android:screenOrientation="portrait"/>
-        <activity android:name="com.clilystudio.netbook.ui.user.PayConsumeActivity" android:screenOrientation="portrait"/>
-        <activity android:name="com.clilystudio.netbook.ui.user.PayVoucherActivity" android:screenOrientation="portrait"/>
         <activity android:name="com.clilystudio.netbook.ui.user.ChargeHelperActivity" android:screenOrientation="portrait"/>
         <activity android:name="com.clilystudio.netbook.ui.user.SmsSendActivity" android:screenOrientation="portrait"/>
         <activity android:name="com.clilystudio.netbook.ui.user.SmsVerifyActivity" android:screenOrientation="portrait"/>
@@ -222,11 +218,6 @@
             </intent-filter>
         </activity>
         <activity android:name="com.clilystudio.netbook.ui.IntroActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.NoTitleBar.Fullscreen"/>
-        <receiver android:name="com.clilystudio.netbook.pay.weixin.AppRegister">
-            <intent-filter>
-                <action android:name="com.tencent.mm.plugin.openapi.Intent.ACTION_REFRESH_WXAPP"/>
-            </intent-filter>
-        </receiver>
         <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:name="com.alipay.sdk.app.H5PayActivity" android:process="com.clilystudio.netbook.MGE_PROCESS" android:screenOrientation="behind" android:windowSoftInputMode="stateHidden|adjustResize"/>
         <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="com.arcsoft.hpay100.HPaySdkActivity"/>
         <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="com.arcsoft.hpay100.web.HPayWebActivity"/>

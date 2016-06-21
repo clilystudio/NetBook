@@ -12,19 +12,15 @@ import android.widget.TextView;
 
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.am;
-import com.clilystudio.netbook.db.AudioRecord;
 import com.clilystudio.netbook.db.BookDlRecord;
 import com.clilystudio.netbook.db.BookFile;
 import com.clilystudio.netbook.db.BookReadRecord;
 import com.clilystudio.netbook.event.I;
 import com.clilystudio.netbook.event.d;
-import com.clilystudio.netbook.model.Advert;
 import com.clilystudio.netbook.model.BookFeed;
 import com.clilystudio.netbook.model.BookShelf;
 import com.clilystudio.netbook.reader.dl.a;
 import com.clilystudio.netbook.ui.SmartImageView;
-import com.clilystudio.netbook.util.adutil.n;
-import com.clilystudio.netbook.util.t;
 import com.clilystudio.netbook.widget.BookShelfFlagView;
 import com.clilystudio.netbook.widget.CoverLoadingLayer;
 import com.clilystudio.netbook.widget.CoverView;
@@ -330,18 +326,6 @@ public class HomeShelfAdapter extends u<BookShelf> {
                 });
                 return var2_2;
             }
-            case 1: {
-                if (this.d) return var2_2;
-                AdHolder var17_19 = new AdHolder(var2_2);
-                Advert var18_20 = var4_4.getAdvert();
-                var17_19.title.setText(var18_20.getTitle());
-                var17_19.desc.setText(var18_20.getDesc());
-                var17_19.flag.setType(var18_20.getFlagType());
-                var17_19.cover.setImageUrl(var18_20.getFullImg());
-                var17_19.cover.setDrawingCacheEnabled(true);
-                n.a(var18_20, var2_2);
-                return var2_2;
-            }
             case 2: {
                 TxtHolder var13_21 = new TxtHolder(var2_2);
                 BookFile var14_22 = var4_4.getTxt();
@@ -364,22 +348,7 @@ public class HomeShelfAdapter extends u<BookShelf> {
                 var11_25.flag.setType(0);
                 return var2_2;
             }
-            case 4:
-                AlbumHolder var6_27 = new AlbumHolder(var2_2);
-                AudioRecord var7_28 = var4_4.getAlbum();
-                var6_27.cover.setImageUrl(var7_28.getImgUrl(), R.drawable.cover_default);
-                var6_27.title.setText(var7_28.getName());
-                String text = t.a(var7_28.getLastUpdate()) + "\t\t" + var7_28.getDesc();
-                var6_27.desc.setText(text);
-                if (var7_28.isUpdateReaded() || this.d) {
-                    var6_27.flag.setType(0);
-                } else {
-                    var6_27.flag.setType(3);
-                }
-                this.a(var1_1, var6_27.check);
-                var6_27.top.setVisibility(var7_28.isTop() ? View.VISIBLE : View.GONE);
-                return var2_2;
-        }
+         }
         return var2_2;
     }
 

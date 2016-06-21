@@ -82,10 +82,7 @@ public class UserInfoActivity extends BaseActivity {
     }
 
     static /* synthetic */ void b(UserInfoActivity userInfoActivity) {
-        if (userInfoActivity.c != null) {
-            userInfoActivity.startActivity(PayAccountActivity.a(userInfoActivity, userInfoActivity.c));
-        }
-    }
+     }
 
     /*
      * Enabled aggressive block sorting

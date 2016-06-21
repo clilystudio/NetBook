@@ -22,7 +22,7 @@ public class BookDlRecord extends Model {
     public static final int RUN = 2;
     @Column(name = "author")
     private String author;
-    @Column(name = "bookId", unique = 1)
+    @Column(name = "bookId")
     private String bookId;
     @Column(name = "bookTitle")
     private String bookTitle;

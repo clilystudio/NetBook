@@ -18,8 +18,7 @@ public final class e {
     public static Boolean a(String string, String string2) {
         try {
             if (!new File(string, string2).exists()) {
-                Boolean bl = false;
-                return bl;
+                return false;
             }
         } catch (Exception var2_3) {
             var2_3.printStackTrace();
@@ -44,16 +43,13 @@ public final class e {
     }
 
     public static boolean a(Context context) {
-        ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService("connectivity");
+        ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         if (connectivityManager == null) {
             return false;
         }
         try {
             int n = connectivityManager.getActiveNetworkInfo().getType();
-            if (n == 1) {
-                return true;
-            }
-            return false;
+            return n == 1;
         } catch (Exception var2_3) {
             var2_3.printStackTrace();
             return false;

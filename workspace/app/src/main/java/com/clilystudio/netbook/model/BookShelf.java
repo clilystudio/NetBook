@@ -1,6 +1,5 @@
 package com.clilystudio.netbook.model;
 
-import com.clilystudio.netbook.db.AudioRecord;
 import com.clilystudio.netbook.db.BookFile;
 import com.clilystudio.netbook.db.BookReadRecord;
 
@@ -14,8 +13,6 @@ public class BookShelf {
     private int adIndex = -1;
     private long lastRead;
     private long lastUpdate;
-    private Advert mAdvert;
-    private AudioRecord mAlbum;
     private BookFeed mBookFeed;
     private BookReadRecord mBookRecord;
     private BookFile mTxt;
@@ -27,24 +24,6 @@ public class BookShelf {
 
     public void setAdIndex(int n) {
         this.adIndex = n;
-    }
-
-    public Advert getAdvert() {
-        return this.mAdvert;
-    }
-
-    public void setAdvert(Advert advert) {
-        this.mAdvert = advert;
-        this.mType = 1;
-    }
-
-    public AudioRecord getAlbum() {
-        return this.mAlbum;
-    }
-
-    public void setAlbum(AudioRecord audioRecord) {
-        this.mAlbum = audioRecord;
-        this.mType = 4;
     }
 
     public BookFeed getBookFeed() {
@@ -88,13 +67,7 @@ public class BookShelf {
         if (this.mTxt != null) {
             return this.mTxt.getName();
         }
-        if (this.mAdvert != null) {
-            return this.mAdvert.getTitle();
-        }
-        if (this.mAlbum != null) {
-            return this.mAlbum.getName();
-        }
-        return "";
+         return "";
     }
 
     public BookFile getTxt() {
@@ -116,9 +89,6 @@ public class BookShelf {
         }
         if (this.mTxt != null) {
             return this.mTxt.isTop();
-        }
-        if (this.mAlbum != null) {
-            return this.mAlbum.isTop();
         }
         return false;
     }

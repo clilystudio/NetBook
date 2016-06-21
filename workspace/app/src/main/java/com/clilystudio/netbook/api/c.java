@@ -22,7 +22,6 @@ public final class c {
             dnsCacheRecord.setHost(string);
             dnsCacheRecord.setIp(d2.a());
             dnsCacheRecord.save();
-            return;
         }
     }
 }

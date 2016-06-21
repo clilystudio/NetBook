@@ -11,7 +11,7 @@ import java.util.List;
 
 @Table(name = "BookUnSubRecords")
 public class BookUnSubRecord extends Model {
-    @Column(name = "pushId", unique = 1)
+    @Column(name = "pushId")
     public String pushId;
 
     public static void create(String string) {

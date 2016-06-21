@@ -16,7 +16,7 @@ public class TocReadRecord extends Model {
     private String chapter_title;
     @Column(name = "character_num")
     private int character_num = 0;
-    @Column(name = "toc_id", unique = 1)
+    @Column(name = "toc_id")
     private String toc_id;
     @Column(name = "toc_name")
     private String toc_name;

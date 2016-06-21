@@ -63,7 +63,6 @@ import com.clilystudio.netbook.db.SourceRecord;
 import com.clilystudio.netbook.hpay100.config.HPaySMS;
 import com.clilystudio.netbook.hpay100.config.w;
 import com.clilystudio.netbook.hpay100.y;
-import com.clilystudio.netbook.model.Advert;
 import com.clilystudio.netbook.model.BookInfo;
 import com.clilystudio.netbook.model.Chapter;
 import com.clilystudio.netbook.model.ChapterLink;
@@ -1902,15 +1901,6 @@ public class a {
         }
     }
 
-    public static void a(Activity activity, HPaySMS hPaySMS, y y2) {
-        a.b("dalongTest", "startMgdmPay");
-        String string2 = hPaySMS.mOrderidHR;
-        String string3 = hPaySMS.mCorpFeeCode;
-        a.b("dalongTest", "oderid:" + string2);
-        a.b("dalongTest", "itemId:" + string3);
-        MiguSdk.pay((Context) activity, (String) string3, (String) "assets/billing.xml", (String) "", (String) string2, (MiguSdk.IPayCallback) new b(hPaySMS, y2, activity, string3));
-    }
-
     /*
      * Enabled aggressive block sorting
      */
@@ -1978,24 +1968,11 @@ public class a {
         listView.addHeaderView(view);
     }
 
-    /*
-     * Enabled aggressive block sorting
-     */
-    public static void a(Context context, Advert advert) {
-        if (advert == null) {
-            a.e(context, "ad_shelf_show", null);
-            return;
-        } else {
-            String string2 = advert.get_id();
-            String string3 = a.d(context, "ad_shelf_show", null);
-            if (string3 != null && string3.contains(string2)) return;
-            {
-                MiStatInterface.recordCountEvent("zssq_ad_show_" + advert.getPosition(), advert.getTitle());
-                a.e(context, "ad_shelf_show", string3 + string2);
-                return;
-            }
-        }
-    }
+//    /*
+//     * Enabled aggressive block sorting
+//     */
+//    public static void a(Context context, Advert advert) {
+//    }
 
     /*
      * Enabled aggressive block sorting
@@ -3173,13 +3150,9 @@ public class a {
             return;
         }
     }
-
-    public static void b(Context context, Advert advert) {
-        if (advert == null) {
-            return;
-        }
-        MiStatInterface.recordCountEvent("zssq_ad_click_" + advert.getPosition(), advert.getTitle());
-    }
+//
+//    public static void b(Context context, Advert advert) {
+//     }
 
     /*
      * Enabled aggressive block sorting

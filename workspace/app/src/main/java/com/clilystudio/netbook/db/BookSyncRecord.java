@@ -5,7 +5,6 @@ import com.activeandroid.annotation.Column;
 import com.activeandroid.annotation.Table;
 import com.activeandroid.query.From;
 import com.activeandroid.query.Select;
-import com.activeandroid.query.Update;
 
 import java.util.Date;
 import java.util.List;
@@ -44,40 +43,21 @@ public class BookSyncRecord extends Model {
     }
 
     public static int getTypeId(BookModifyType bookModifyType) {
-        switch (a.a[bookModifyType.ordinal()]) {
-            default: {
-                return 0;
-            }
-            case 1: {
-                return 1;
-            }
-            case 2: {
-                return 2;
-            }
-            case 3: {
-                return 3;
-            }
-            case 4: {
-                return 4;
-            }
-            case 5:
-        }
-        return 5;
+        return bookModifyType.ordinal() + 1;
     }
 
     public static void updateOrCreate(String string, String string2, int n) {
-        List list = new Select().from(BookSyncRecord.class).where(" bookId = ? ", string2).execute();
+        List<BookSyncRecord> list = new Select().from(BookSyncRecord.class).where(" bookId = ? ", string2).execute();
         if (list != null && list.size() > 0) {
-            BookSyncRecord.updateType(string, string2, n);
-            return;
+            for (BookSyncRecord bookSyncRecord : list) {
+                bookSyncRecord.setUserId(string);
+                bookSyncRecord.setType(n);
+                bookSyncRecord.setUpdated(new Date());
+                bookSyncRecord.save();
+            }
+        } else {
+            BookSyncRecord.create(string, string2, n);
         }
-        BookSyncRecord.create(string, string2, n);
-    }
-
-    public static void updateType(String string, String string2, int n) {
-        Update update = new Update(BookSyncRecord.class);
-        Object[] arrobject = new Object[]{string, n, new Date()};
-        update.set("userId = ?,type=?, updated=?", arrobject).where(" bookId = ? ", string2).execute();
     }
 
     public String getBookId() {
@@ -113,7 +93,7 @@ public class BookSyncRecord extends Model {
     }
 
     public enum BookModifyType {
-        SHELF_ADD,SHELF_REMOVE,FEED_ADD,FEED_REMOVE,SYNC_SUCCESS;
+        SHELF_ADD, SHELF_REMOVE, FEED_ADD, FEED_REMOVE, SYNC_SUCCESS;
     }
 
 }

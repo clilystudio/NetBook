@@ -10,7 +10,7 @@ public final class d {
     public d(String string, int n) {
         this.a = string;
         Calendar calendar = Calendar.getInstance();
-        calendar.add(13, n);
+        calendar.add(Calendar.SECOND, n);
         this.b = calendar.getTime();
     }
 

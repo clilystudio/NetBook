@@ -30,7 +30,7 @@ public class RetweenRecord extends Model {
     }
 
     public static boolean isRetweened(String string, String string2) {
-        return new Select().from(RetweenRecord.class).where(" userId = ? and tweetId = ?", string, string2).exists();
+        return !new Select().from(RetweenRecord.class).where(" userId = ? and tweetId = ?", string, string2).execute().isEmpty();
     }
 
     public static void save2DB(String string, String string2) {

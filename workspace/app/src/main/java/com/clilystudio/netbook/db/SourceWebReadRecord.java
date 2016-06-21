@@ -8,7 +8,7 @@ import com.activeandroid.query.Select;
 
 @Table(name = "SourceWebReadRecord")
 public class SourceWebReadRecord extends Model {
-    @Column(name = "_id", unique = 1)
+    @Column(name = "_id")
     private String _id;
     @Column(name = "bookId")
     private String bookId;

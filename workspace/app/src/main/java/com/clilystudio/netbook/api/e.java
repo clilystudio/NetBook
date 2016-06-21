@@ -17,12 +17,6 @@ public final class e {
         b = c.a();
     }
 
-    /*
-     * Enabled aggressive block sorting
-     * Enabled unnecessary exception pruning
-     * Enabled aggressive exception aggregation
-     * Lifted jumps to return sites
-     */
     public static void a(HttpRequest httpRequest) {
         URL uRL;
         String string;
@@ -32,9 +26,9 @@ public final class e {
             int n;
             String string3;
             try {
-                uRL = httpRequest.a();
+                uRL = httpRequest.getConnection().getURL();
                 string = uRL.getHost();
-                DnsCacheRecord dnsCacheRecord = (DnsCacheRecord) new Select().from(DnsCacheRecord.class).where("host = ?", string).executeSingle();
+                DnsCacheRecord dnsCacheRecord = new Select().from(DnsCacheRecord.class).where("host = ?", string).executeSingle();
                 if (dnsCacheRecord != null && dnsCacheRecord.isExpired()) {
                     dnsCacheRecord.delete();
                     string2 = null;
@@ -44,7 +38,7 @@ public final class e {
                     string2 = dnsCacheRecord.getIp();
                 }
                 if (string2 != null) break block8;
-                string3 = HttpRequest.a(String.format("http://%s/d?dn=%s&ttl=1", "119.29.29.29", string)).d();
+                string3 = HttpRequest.get(String.format("http://%s/d?dn=%s&ttl=1", "119.29.29.29", string)).body();
                 if (string3 == null) {
                     throw new DnsParseFailedException(string3 + " parse failed");
                 }

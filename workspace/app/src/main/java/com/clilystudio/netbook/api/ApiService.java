@@ -93,7 +93,7 @@ public class ApiService {
             V v = l.fromJson((Reader) bufferedReader, class_);
             return v;
         } catch (JsonParseException var5_4) {
-            throw new ApiService$JsonException(var5_4);
+            throw new JsonException(var5_4);
         } finally {
             bufferedReader.close();
         }
@@ -300,8 +300,8 @@ public class ApiService {
         f f2 = this.c;
         String string = "1".equals(b.b(MyApplication.a(), "ua-toggle")) ? f2.b() : "";
         httpRequest.a(string);
-        httpRequest.a("X-User-Agent", this.c.b());
-        httpRequest.a("X-Device-Id", am.h());
+        httpRequest.append("X-User-Agent", this.c.b());
+        httpRequest.append("X-Device-Id", am.h());
         return httpRequest;
     }
 
@@ -388,7 +388,7 @@ public class ApiService {
      * Lifted jumps to return sites
      */
     public final ResultStatus D(String var1_1, String var2_2) {
-        var3_3 = ApiService.f + "/user/collected-book-list";
+        String var3_3 = ApiService.f + "/user/collected-book-list";
         try {
             var5_4 = this.b(HttpRequest.b(var3_3));
             var6_5 = new HashMap<String, String>();
@@ -533,16 +533,6 @@ public class ApiService {
         try {
             TopicCount topicCount = (TopicCount) ApiService.a(this.a(HttpRequest.a(string2)), TopicCount.class);
             return topicCount;
-        } catch (HttpRequest.HttpRequestException var3_4) {
-            throw var3_4.getCause();
-        }
-    }
-
-    public final AdsResult J(String string) {
-        String string2 = f + String.format("/advert?platform=android&position=%s", string);
-        try {
-            AdsResult adsResult = (AdsResult) ApiService.a(this.a(HttpRequest.a(string2)), AdsResult.class);
-            return adsResult;
         } catch (HttpRequest.HttpRequestException var3_4) {
             throw var3_4.getCause();
         }
@@ -745,40 +735,6 @@ public class ApiService {
             return discussSummaryList;
         } catch (HttpRequest.HttpRequestException var10_11) {
             throw var10_11.getCause();
-        }
-    }
-
-    public final PayChargeRecord a(String string, int n, int n2) {
-        StringBuilder stringBuilder = new StringBuilder().append(f);
-        Object[] arrobject = new Object[]{string, n, 10};
-        String string2 = stringBuilder.append(String.format("/charge/order?token=%s&start=%d&limit=%d&platform=android", arrobject)).toString();
-        try {
-            PayChargeRecord payChargeRecord = (PayChargeRecord) ApiService.a(this.a(HttpRequest.a(string2)), PayChargeRecord.class);
-            return payChargeRecord;
-        } catch (HttpRequest.HttpRequestException var7_8) {
-            throw var7_8.getCause();
-        }
-    }
-
-    public final PayResult a(String string, String string2) {
-        String string3 = f + String.format("/charge/order/%s?token=%s", string, string2);
-        try {
-            PayResult payResult = (PayResult) ApiService.a(this.a(HttpRequest.a(string3)), PayResult.class);
-            return payResult;
-        } catch (HttpRequest.HttpRequestException var4_5) {
-            throw var4_5.getCause();
-        }
-    }
-
-    public final PayVoucherRecord a(String string, String string2, int n, int n2) {
-        StringBuilder stringBuilder = new StringBuilder().append(e);
-        Object[] arrobject = new Object[]{string, string2, n, 10};
-        String string3 = stringBuilder.append(String.format("/voucher?token=%s&type=%s&start=%d&limit=%d", arrobject)).toString();
-        try {
-            PayVoucherRecord payVoucherRecord = (PayVoucherRecord) ApiService.a(this.a(HttpRequest.a(string3)), PayVoucherRecord.class);
-            return payVoucherRecord;
-        } catch (HttpRequest.HttpRequestException var8_9) {
-            throw var8_9.getCause();
         }
     }
 
@@ -1065,28 +1021,6 @@ public class ApiService {
         }
     }
 
-    public final PayBalance b(String string) {
-        String string2 = f + String.format("/user/account?token=%s", string);
-        try {
-            PayBalance payBalance = (PayBalance) ApiService.a(this.a(HttpRequest.a(string2)), PayBalance.class);
-            return payBalance;
-        } catch (HttpRequest.HttpRequestException var3_4) {
-            throw var3_4.getCause();
-        }
-    }
-
-    public final PayConsumeRecord b(String string, int n, int n2) {
-        StringBuilder stringBuilder = new StringBuilder().append(f);
-        Object[] arrobject = new Object[]{string, n, 10};
-        String string2 = stringBuilder.append(String.format("/purchase/record?token=%s&start=%d&limit=%d", arrobject)).toString();
-        try {
-            PayConsumeRecord payConsumeRecord = (PayConsumeRecord) ApiService.a(this.a(HttpRequest.a(string2)), PayConsumeRecord.class);
-            return payConsumeRecord;
-        } catch (HttpRequest.HttpRequestException var7_8) {
-            throw var7_8.getCause();
-        }
-    }
-
     public final PostPublish b(String string, String string2, String string3) {
         String string4 = f + "/user/twitter/article";
         HashMap<String, String> hashMap = new HashMap<String, String>();
@@ -1216,23 +1150,6 @@ public class ApiService {
             return topic;
         } catch (HttpRequest.HttpRequestException var8_9) {
             throw var8_9.getCause();
-        }
-    }
-
-    public final WXPayOrder b(String string, String string2) {
-        String string3 = e + "/charge/weixinpay";
-        HashMap<String, String> hashMap = new HashMap<String, String>();
-        hashMap.put("token", string);
-        hashMap.put("productId", String.valueOf(string2));
-        hashMap.put("spbillCreateIp", "192.168.10.1");
-        hashMap.put("tradeType", "APP");
-        try {
-            HttpRequest httpRequest = this.b(HttpRequest.b(string3));
-            httpRequest.a(hashMap);
-            WXPayOrder wXPayOrder = (WXPayOrder) ApiService.a(httpRequest, WXPayOrder.class);
-            return wXPayOrder;
-        } catch (HttpRequest.HttpRequestException var9_7) {
-            throw var9_7.getCause();
         }
     }
 
@@ -1431,38 +1348,6 @@ public class ApiService {
         {
             var5_10.printStackTrace();
             return null;
-        }
-    }
-
-    public final YyfPayOrder c(String string, String string2) {
-        String string3 = e + "/charge/youyifupay";
-        HashMap<String, String> hashMap = new HashMap<String, String>();
-        hashMap.put("token", string);
-        hashMap.put("productId", String.valueOf(string2));
-        try {
-            HttpRequest httpRequest = this.b(HttpRequest.b(string3));
-            httpRequest.a(hashMap);
-            YyfPayOrder yyfPayOrder = (YyfPayOrder) ApiService.a(httpRequest, YyfPayOrder.class);
-            return yyfPayOrder;
-        } catch (HttpRequest.HttpRequestException var7_7) {
-            throw var7_7.getCause();
-        }
-    }
-
-    public final AliPayOrder d(String string, String string2) {
-        String string3 = e + "/charge/alipay";
-        HashMap<String, String> hashMap = new HashMap<String, String>();
-        hashMap.put("token", string);
-        hashMap.put("productId", String.valueOf(string2));
-        try {
-            HttpRequest httpRequest = this.b(HttpRequest.b(string3));
-            httpRequest.a(hashMap);
-            AliPayOrder aliPayOrder = (AliPayOrder) ApiService.a(httpRequest, AliPayOrder.class);
-            Log.d("tag", "req.contentLength :" + httpRequest.f());
-            Log.d("tag", "aliPayOrder :" + aliPayOrder.toString());
-            return aliPayOrder;
-        } catch (HttpRequest.HttpRequestException var7_7) {
-            throw var7_7.getCause();
         }
     }
 
@@ -2179,16 +2064,6 @@ public class ApiService {
         } catch (HttpRequest.HttpRequestException var9_8) {
             var9_8.printStackTrace();
             throw var9_8.getCause();
-        }
-    }
-
-    public final SecretAppItemRoot n() {
-        String string = f + "/recommend-app/android/mystery-box";
-        try {
-            SecretAppItemRoot secretAppItemRoot = (SecretAppItemRoot) ApiService.a(this.a(HttpRequest.a(string)), SecretAppItemRoot.class);
-            return secretAppItemRoot;
-        } catch (HttpRequest.HttpRequestException var2_3) {
-            throw var2_3.getCause();
         }
     }
 
