@@ -16,10 +16,14 @@ import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
-import com.clilystudio.netbook.adapter.o;
+import com.clilystudio.netbook.model.Author;
 import com.clilystudio.netbook.model.GirlTopicSummary;
 import com.clilystudio.netbook.ui.BaseActivity;
+import com.clilystudio.netbook.ui.SmartImageView;
 import com.clilystudio.netbook.ui.aa;
+import com.clilystudio.netbook.util.*;
+import com.clilystudio.netbook.util.W;
+import com.clilystudio.netbook.widget.PostFlag;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshBase$Mode;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
@@ -37,7 +41,7 @@ public class GirlTopicListActivity extends BaseActivity {
     private View f;
     private View g;
     private TextView h;
-    private o i;
+    private com.clilystudio.netbook.util.W<GirlTopicSummary> i;
     private List<GirlTopicSummary> j = new ArrayList<GirlTopicSummary>();
     private TextView k;
     private TextView l;
@@ -264,7 +268,7 @@ public class GirlTopicListActivity extends BaseActivity {
         return girlTopicListActivity.f;
     }
 
-    static /* synthetic */ o q(GirlTopicListActivity girlTopicListActivity) {
+    static /* synthetic */ W<GirlTopicSummary> q(GirlTopicListActivity girlTopicListActivity) {
         return girlTopicListActivity.i;
     }
 
@@ -334,7 +338,80 @@ public class GirlTopicListActivity extends BaseActivity {
         this.e.addFooterView(this.f);
         this.c.setOnRefreshListener(new bB(this));
         this.e.setOnItemClickListener(new bD(this));
-        this.i = new o(this.getLayoutInflater());
+        this.i = new W<GirlTopicSummary>(this.getLayoutInflater(), R.layout.list_item_post){
+
+            @Override
+            protected void a(int var1, GirlTopicSummary girlTopicSummary) {
+                Author author = girlTopicSummary.getAuthor();
+                final SmartImageView smartImageView = (SmartImageView) this.a(0, SmartImageView.class);
+                if (am.m(getLayoutInflater().getContext())) {
+                    smartImageView.setImageResource(R.drawable.avatar_default);
+                } else {
+                    smartImageView.setImageUrl(author.getScaleAvatar(), R.drawable.avatar_default);
+                    smartImageView.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            smartImageView.getContext().startActivity(com.clilystudio.netbook.util.e.a(smartImageView.getContext(),girlTopicSummary.getAuthor()));
+                        }
+                    });
+                }
+                if (girlTopicSummary.getVoteCount() > 0 || girlTopicSummary.getTitle().equals("vote")) {
+                    girlTopicSummary.getType();
+                }
+                this.a(1, author.getNickname());
+                this.a(2, "lv." + author.getLv());
+                this.a(3, t.e(girlTopicSummary.getCreated()));
+                this.a(4, girlTopicSummary.getTitle());
+                TextView textView = (TextView) this.a(5, TextView.class);
+                if ("vote".equals(girlTopicSummary.getType())) {
+                    textView.setText(String.valueOf(girlTopicSummary.getVoteCount()));
+                    textView.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_vote, 0, 0, 0);
+                } else {
+                    textView.setText(String.valueOf(girlTopicSummary.getCommentCount()));
+                    textView.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_message, 0, 0, 0);
+                }
+                TextView textView2 = (TextView) this.a(6, TextView.class);
+                textView2.setVisibility(View.VISIBLE);
+                textView2.setText(String.valueOf(girlTopicSummary.getLikeCount()));
+                if (com.clilystudio.netbook.hpay100.a.a.r(getLayoutInflater().getContext(), "community_user_gender_icon_toggle") {
+                    String string = author.getGender();
+                    if ("male".equals(string)) {
+                        ((ImageView) this.a(7, ImageView.class)).setVisibility(View.VISIBLE);
+                        ((ImageView) this.a(7, ImageView.class)).setImageLevel(2);
+                    } else if ("female".equals(string)) {
+                        ((ImageView) this.a(7, ImageView.class)).setVisibility(View.VISIBLE);
+                        ((ImageView) this.a(7, ImageView.class)).setImageLevel(3);
+                    } else {
+                        ((ImageView) this.a(7, ImageView.class)).setVisibility(View.VISIBLE);
+                        ((ImageView) this.a(7, ImageView.class)).setImageLevel(4);
+                    }
+                } else {
+                    String string = author.getType();
+                    if ("official".equals(string)) {
+                        this.a(7, false);
+                        ((ImageView) this.a(7, ImageView.class)).setImageLevel(0);
+                    } else if ("doyen".equals(string)) {
+                        this.a(7, false);
+                        ((ImageView) this.a(7, ImageView.class)).setImageLevel(1);
+                    } else {
+                        this.a(7, true);
+                    }
+                }
+                String string = girlTopicSummary.getState();
+                if (((PostFlag) this.a(8, PostFlag.class)).a(string)) {
+                    this.a(3, true);
+                    this.a(8, false);
+                    return;
+                }
+                this.a(3, false);
+                this.a(8, true);
+            }
+
+            @Override
+            protected int[] a() {
+                return new int[]{R.id.avatar, R.id.user, R.id.lv, R.id.time, R.id.title, R.id.comment_count, R.id.like_count, R.id.avatar_verify, R.id.post_flag};
+            }
+        };
         this.e.setAdapter((ListAdapter) ((Object) this.i));
         bJ bJ2 = this.a = new bJ(this, 0);
         String[] arrstring = new String[]{this.o, this.p};

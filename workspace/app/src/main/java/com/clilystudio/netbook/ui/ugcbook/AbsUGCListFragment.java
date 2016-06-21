@@ -12,19 +12,21 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.clilystudio.netbook.adapter.X;
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.model.UGCBookListRoot;
 import com.clilystudio.netbook.util.W;
+import com.clilystudio.netbook.widget.CoverView;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public abstract class AbsUGCListFragment extends Fragment implements AdapterView.OnItemClickListener {
     protected PullToRefreshListView a;
     protected ListView b;
-    protected X c;
+    protected W<UGCBookListRoot.UGCBook> c;
     protected View d;
     protected View e;
     protected Handler f = new Handler();
@@ -95,7 +97,43 @@ public abstract class AbsUGCListFragment extends Fragment implements AdapterView
         this.b.addFooterView(this.e);
         this.e.setVisibility(View.GONE);
         this.a.setOnRefreshListener(new b(this));
-        this.c = new X(this.getActivity().getLayoutInflater());
+        this.c = new W<UGCBookListRoot.UGCBook>(getActivity().getLayoutInflater(), R.layout.list_item_ugc_book){
+
+            @Override
+            protected void a(int var1, UGCBookListRoot.UGCBook ugcBook) {
+                if (ugcBook == null) return;
+                ((CoverView) this.a(0, CoverView.class)).setImageUrl(ugcBook.getFullCover(), R.drawable.cover_default);
+                this.a(1, ugcBook.getTitle());
+                this.a(4, ugcBook.getDesc());
+                if (ugcBook.isDraft()) {
+                    Object[] arrobject = new Object[]{ugcBook.getBookCount()};
+                    this.a(2, String.format("共%1$d本书", arrobject));
+                    this.a(3, true);
+                    this.a(5, com.clilystudio.netbook.util.t.e((Date) ugcBook.getUpdated()));
+                    this.a(5, false);
+                    if (ugcBook.getBookCount() >= 8) {
+                        this.a(6, false);
+                        this.a(7, true);
+                        return;
+                    }
+                    this.a(6, true);
+                    this.a(7, false);
+                    return;
+                }
+                Object[] arrobject = new Object[]{ugcBook.getBookCount(), ugcBook.getCollectorCount()};
+                this.a(2, String.format("共%1$d本书  |  %2$d人收藏", arrobject));
+                this.a(3, ugcBook.getAuthor());
+                this.a(3, false);
+                this.a(5, true);
+                this.a(6, true);
+                this.a(7, true);
+            }
+
+            @Override
+            protected int[] a() {
+                return new int[]{R.id.cover, R.id.title, R.id.message_count, R.id.author, R.id.desc, R.id.updated, R.id.can_published, R.id.cannot_published};
+            }
+        };
         this.b.setAdapter(this.c);
         return view;
     }

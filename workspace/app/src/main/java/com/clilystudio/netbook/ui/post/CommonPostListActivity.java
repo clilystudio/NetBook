@@ -13,11 +13,14 @@ import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
-import com.clilystudio.netbook.R;
-import com.clilystudio.netbook.adapter.l;
-import com.clilystudio.netbook.d;
+import com.clilystudio.netbook.*;
+import com.clilystudio.netbook.model.Author;
 import com.clilystudio.netbook.model.DiscussSummary;
 import com.clilystudio.netbook.ui.BaseActivity;
+import com.clilystudio.netbook.ui.SmartImageView;
+import com.clilystudio.netbook.util.*;
+import com.clilystudio.netbook.util.W;
+import com.clilystudio.netbook.widget.PostFlag;
 import com.handmark.pulltorefresh.library.PullToRefreshBase$Mode;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.handmark.pulltorefresh.library.j;
@@ -41,7 +44,7 @@ public class CommonPostListActivity extends BaseActivity {
     private bh m;
     private View n;
     private List<DiscussSummary> o = new ArrayList<DiscussSummary>();
-    private l p;
+    private com.clilystudio.netbook.util.W<DiscussSummary> p;
     private boolean q;
     private String r;
     private j s;
@@ -276,7 +279,7 @@ public class CommonPostListActivity extends BaseActivity {
         return commonPostListActivity.j;
     }
 
-    static /* synthetic */ l r(CommonPostListActivity commonPostListActivity) {
+    static /* synthetic */ W<DiscussSummary> r(CommonPostListActivity commonPostListActivity) {
         return commonPostListActivity.p;
     }
 
@@ -357,7 +360,83 @@ public class CommonPostListActivity extends BaseActivity {
         this.j.setVisibility(View.GONE);
         this.f.setOnRefreshListener(new ba(this));
         this.i.setOnItemClickListener((AdapterView.OnItemClickListener) ((Object) new bc(this)));
-        this.p = new l(this.getLayoutInflater());
+        this.p = new W<DiscussSummary>(this.getLayoutInflater(), R.layout.list_item_post){
+
+            @Override
+            protected void a(int var1, final DiscussSummary discussSummary) {
+                Author author = discussSummary.getAuthor();
+                if (am.m(getLayoutInflater().getContext())) {
+                    ((ImageView) this.a(0, ImageView.class)).setImageResource(R.drawable.avatar_default);
+                } else {
+                    ((SmartImageView) this.a(0, SmartImageView.class)).setImageUrl(author.getScaleAvatar(), R.drawable.avatar_default);
+                }
+                ((View) this.a(0, ImageView.class)).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        v.getContext().startActivity(com.clilystudio.netbook.util.e.a(v.getContext(),discussSummary.getAuthor()));
+                    }
+                });
+                this.a(1, author.getNickname());
+                this.a(2, "lv." + author.getLv());
+                this.a(4, discussSummary.getTitle());
+                TextView textView = (TextView) this.a(5, TextView.class);
+                if ("vote".equals(discussSummary.getType())) {
+                    textView.setText(String.valueOf(discussSummary.getVoteCount()));
+                    textView.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_vote, 0, 0, 0);
+                } else {
+                    textView.setText(String.valueOf(discussSummary.getCommentCount()));
+                    textView.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_message, 0, 0, 0);
+                }
+                TextView textView2 = (TextView) this.a(6, TextView.class);
+                textView2.setVisibility(View.VISIBLE);
+                textView2.setText(String.valueOf(discussSummary.likeCount));
+                String string = discussSummary.getState();
+                PostFlag postFlag = (PostFlag) this.a(8, PostFlag.class);
+                if (PostFlag.b(string)) {
+                    postFlag.setVisibility(View.VISIBLE);
+                    postFlag.a(string);
+                    this.a(3, true);
+                } else {
+                    postFlag.setVisibility(View.GONE);
+                    this.a(3, false);
+                    this.a(3, t.e(discussSummary.getCreated()));
+                }
+                ImageView imageView = (ImageView) this.a(7, ImageView.class);
+                if (com.clilystudio.netbook.hpay100.a.a.r(getLayoutInflater().getContext(), "community_user_gender_icon_toggle")) {
+                    String string2 = author.getGender();
+                    if ("male".equals(string2)) {
+                        imageView.setVisibility(View.VISIBLE);
+                        imageView.setImageLevel(2);
+                        return;
+                    }
+                    if ("female".equals(string2)) {
+                        imageView.setVisibility(View.VISIBLE);
+                        imageView.setImageLevel(3);
+                        return;
+                    }
+                    imageView.setVisibility(View.VISIBLE);
+                    imageView.setImageLevel(4);
+                    return;
+                }
+                String string3 = author.getType();
+                if ("official".equals(string3)) {
+                    imageView.setVisibility(View.VISIBLE);
+                    imageView.setImageLevel(0);
+                    return;
+                }
+                if ("doyen".equals(string3)) {
+                    imageView.setVisibility(View.VISIBLE);
+                    imageView.setImageLevel(1);
+                    return;
+                }
+                imageView.setVisibility(View.GONE);
+            }
+
+            @Override
+            protected int[] a() {
+                return new int[]{R.id.avatar, R.id.user, R.id.lv, R.id.time, R.id.title, R.id.comment_count, R.id.like_count, R.id.avatar_verify, R.id.post_flag};
+            }
+        };
         this.i.setAdapter((ListAdapter) ((Object) this.p));
         bi bi2 = this.l = new bi(this, 0);
         String[] arrstring = new String[]{this.a, this.b};

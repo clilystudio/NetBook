@@ -11,19 +11,23 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.clilystudio.netbook.adapter.X;
+import com.clilystudio.netbook.R;
+import com.clilystudio.netbook.model.UGCBookListRoot;
+import com.clilystudio.netbook.util.*;
+import com.clilystudio.netbook.widget.CoverView;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class UGCMainListFragment extends Fragment implements AdapterView.OnItemClickListener {
     private PullToRefreshListView a;
     private ListView b;
     private View c;
-    private X d;
+    private W<UGCBookListRoot.UGCBook> d;
     private View e;
     private TextView f;
     private at g;
@@ -83,7 +87,7 @@ public class UGCMainListFragment extends Fragment implements AdapterView.OnItemC
         return uGCMainListFragment.i;
     }
 
-    static /* synthetic */ X h(UGCMainListFragment uGCMainListFragment) {
+    static /* synthetic */ W<UGCBookListRoot.UGCBook> h(UGCMainListFragment uGCMainListFragment) {
         return uGCMainListFragment.d;
     }
 
@@ -140,7 +144,43 @@ public class UGCMainListFragment extends Fragment implements AdapterView.OnItemC
         this.b.addFooterView(this.c);
         this.c.setVisibility(View.GONE);
         this.a.setOnRefreshListener(new ap(this));
-        this.d = new X(layoutInflater2);
+        this.d = new W<UGCBookListRoot.UGCBook>(layoutInflater2, R.layout.list_item_ugc_book){
+
+            @Override
+            protected void a(int var1, UGCBookListRoot.UGCBook ugcBook) {
+                if (ugcBook == null) return;
+                ((CoverView) this.a(0, CoverView.class)).setImageUrl(ugcBook.getFullCover(), R.drawable.cover_default);
+                this.a(1, ugcBook.getTitle());
+                this.a(4, ugcBook.getDesc());
+                if (ugcBook.isDraft()) {
+                    Object[] arrobject = new Object[]{ugcBook.getBookCount()};
+                    this.a(2, String.format("共%1$d本书", arrobject));
+                    this.a(3, true);
+                    this.a(5, com.clilystudio.netbook.util.t.e((Date) ugcBook.getUpdated()));
+                    this.a(5, false);
+                    if (ugcBook.getBookCount() >= 8) {
+                        this.a(6, false);
+                        this.a(7, true);
+                        return;
+                    }
+                    this.a(6, true);
+                    this.a(7, false);
+                    return;
+                }
+                Object[] arrobject = new Object[]{ugcBook.getBookCount(), ugcBook.getCollectorCount()};
+                this.a(2, String.format("共%1$d本书  |  %2$d人收藏", arrobject));
+                this.a(3, ugcBook.getAuthor());
+                this.a(3, false);
+                this.a(5, true);
+                this.a(6, true);
+                this.a(7, true);
+            }
+
+            @Override
+            protected int[] a() {
+                return new int[]{R.id.cover, R.id.title, R.id.message_count, R.id.author, R.id.desc, R.id.updated, R.id.can_published, R.id.cannot_published};
+            }
+        };
         this.b.setAdapter(this.d);
         return view;
     }

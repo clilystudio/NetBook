@@ -1,6 +1,7 @@
 package com.clilystudio.netbook.ui;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -13,8 +14,9 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.clilystudio.netbook.R;
-import com.clilystudio.netbook.adapter.c;
 import com.clilystudio.netbook.model.CategoryBook;
+import com.clilystudio.netbook.util.W;
+import com.clilystudio.netbook.widget.CoverView;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 
@@ -25,7 +27,7 @@ public class BookCategoryFragment extends Fragment {
     private PullToRefreshListView a;
     private ListView b;
     private View c;
-    private c d;
+    private W<CategoryBook> d;
     private View e;
     private TextView f;
     private String g;
@@ -84,7 +86,7 @@ public class BookCategoryFragment extends Fragment {
         return bookCategoryFragment.a;
     }
 
-    static /* synthetic */ c h(BookCategoryFragment bookCategoryFragment) {
+    static /* synthetic */ W<CategoryBook> h(BookCategoryFragment bookCategoryFragment) {
         return bookCategoryFragment.d;
     }
 
@@ -111,7 +113,7 @@ public class BookCategoryFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
+    public View onCreateView(final LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
         super.onCreateView(layoutInflater, viewGroup, bundle);
         View view = layoutInflater.inflate(R.layout.fragment_book_category, viewGroup, false);
         this.g = ((BookCategoryListActivity) this.getActivity()).g();
@@ -120,7 +122,7 @@ public class BookCategoryFragment extends Fragment {
         a.a((Context) this.getActivity(), this.b);
         this.e = view.findViewById(R.id.pb_loading);
         this.f = (TextView) view.findViewById(R.id.empty_text);
-        LayoutInflater layoutInflater2 = LayoutInflater.from(this.getActivity());
+        final LayoutInflater layoutInflater2 = LayoutInflater.from(this.getActivity());
         this.c = layoutInflater2.inflate(R.layout.loading_item, null);
         if (a.i()) {
             this.b.setFooterDividersEnabled(false);
@@ -135,7 +137,7 @@ public class BookCategoryFragment extends Fragment {
                     CategoryBook categoryBook = BookCategoryFragment.this.i.get(n2);
                     BookCategoryFragment.a(BookCategoryFragment.this, categoryBook);
                 }
-           }
+            }
         });
         this.a.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener<ListView>() {
             @Override
@@ -153,7 +155,35 @@ public class BookCategoryFragment extends Fragment {
                 }, 1000);
             }
         });
-        this.d = new c(layoutInflater2);
+        this.d = new W<CategoryBook>(layoutInflater2, R.layout.list_item_ori_book) {
+
+            @Override
+            protected void a(int var1, CategoryBook categoryBook) {
+                ((CoverView) this.a(0, CoverView.class)).setImageUrl(categoryBook.getFullCover(), R.drawable.cover_default);
+                this.a(1, categoryBook.getTitle());
+                this.a(2, categoryBook.getShortIntro());
+                Resources resources = layoutInflater2.getContext().getResources();
+                Object[] arrobject = new Object[]{categoryBook.getLatelyFollower()};
+                this.a(3, resources.getString(R.string.follower_count_format, arrobject));
+                float f = categoryBook.getRetentionRatio();
+                if (f > 0.0f) {
+                    Object[] arrobject2 = new Object[]{Float.valueOf(f)};
+                    this.a(4, resources.getString(R.string.retention_ratio_format, arrobject2));
+                    this.a(4, false);
+                    this.a(5, false);
+                } else {
+                    this.a(4, true);
+                    this.a(5, true);
+                }
+                this.a(6, categoryBook.getAuthor());
+                this.a(7, categoryBook.getMajorCate());
+            }
+
+            @Override
+            protected int[] a() {
+                return new int[]{R.id.iv_cover, R.id.tv_title, R.id.tv_short_intro, R.id.tv_follower_count, R.id.tv_retention_ratio, R.id.tv_retention_separate, R.id.tv_author, R.id.tv_category};
+            }
+        };
         this.b.setAdapter(this.d);
         return view;
     }

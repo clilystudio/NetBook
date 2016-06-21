@@ -307,8 +307,8 @@
     <!--<attr name="tabPaddingEnd" format="dimension"/>-->
     <!--<attr name="tabPaddingBottom" format="dimension"/>-->
     <!--<attr name="tabPadding" format="dimension"/>-->
-    <attr name="adjust_padding" format="dimension"/>
-    <attr name="item_count" format="integer"/>
+    <!--<attr name="adjust_padding" format="dimension"/>-->
+    <!--<attr name="item_count" format="integer"/>-->
     <!--<attr name="hintTextAppearance" format="reference"/>-->
     <!--<attr name="errorEnabled" format="boolean"/>-->
     <!--<attr name="errorTextAppearance" format="reference"/>-->

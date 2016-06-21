@@ -20,8 +20,8 @@ import java.util.List;
 public abstract class NotificationAdapter extends u<NotificationItem> {
     private final Context b;
     private long a;
-    private List<NotificationItem> c = new ArrayList<NotificationItem>();
-    private List<NotificationItem> d = new ArrayList<NotificationItem>();
+    private List<NotificationItem> c = new ArrayList<>();
+    private List<NotificationItem> d = new ArrayList<>();
     private w e;
     private w f;
     private w g;
@@ -33,24 +33,19 @@ public abstract class NotificationAdapter extends u<NotificationItem> {
         this.f = new w(this);
         this.g = new w(this);
         this.h = new w(this);
-        w[] arrw = new w[]{this.e, this.f, this.g, this.h};
-        this.i = arrw;
+        this.i = new w[]{this.e, this.f, this.g, this.h};
         this.b = layoutInflater.getContext();
-        this.a = a.R(this.a());
+        this.a = com.clilystudio.netbook.hpay100.a.a.R(this.a());
     }
 
     private View a(ViewGroup viewGroup, View view, String string) {
         if (view == null) {
             view = LayoutInflater.from(this.b).inflate(R.layout.list_item_notif_header, viewGroup, false);
         }
-        new HeaderHolder((View) view).mLabelText.setText(string);
+        new HeaderHolder(view).mLabelText.setText(string);
         return view;
     }
 
-    /*
-     * Enabled force condition propagation
-     * Lifted jumps to return sites
-     */
     private NotificationItem a(int n, int n2) {
         int n3 = 1;
         if (n == n3) {
@@ -58,13 +53,9 @@ public abstract class NotificationAdapter extends u<NotificationItem> {
             throw new RuntimeException("unread item is 0");
         }
         if (n != 3) return null;
-        if (this.c.size() == 0) {
-            do {
-                return this.d.get(n2 - n3);
-                break;
-            } while (true);
+        if (this.c.size() != 0) {
+            n3 = 2 + this.c.size();
         }
-        n3 = 2 + this.c.size();
         return this.d.get(n2 - n3);
     }
 
@@ -97,7 +88,7 @@ public abstract class NotificationAdapter extends u<NotificationItem> {
         if (this.c.size() != 0) {
             this.e.a(0, 0);
             this.f.a(1, 1 + this.c.size());
-            n = 0 + (1 + this.c.size());
+            n = 1 + this.c.size();
         } else {
             n = 0;
         }
@@ -131,7 +122,7 @@ public abstract class NotificationAdapter extends u<NotificationItem> {
     }
 
     @Override
-    public /* synthetic */ Object getItem(int n) {
+    public /* synthetic */ NotificationItem getItem(int n) {
         return this.a(n);
     }
 
@@ -143,21 +134,15 @@ public abstract class NotificationAdapter extends u<NotificationItem> {
         int n2 = this.i.length;
         int n3 = 0;
         while (n3 < n2) {
-            boolean bl;
             w w2 = this.i[n3];
             if (w2.a == w2.b) {
                 if (n == w2.a) {
                     return n3;
                 }
-                bl = false;
             } else {
                 if (n >= w2.a && n < w2.b) {
                     return n3;
                 }
-                bl = false;
-            }
-            if (bl) {
-                return n3;
             }
             ++n3;
         }
@@ -189,23 +174,13 @@ public abstract class NotificationAdapter extends u<NotificationItem> {
             if (this.c.size() == 0) {
                 throw new RuntimeException("unread item is 0");
             }
-            if (-1 + this.c.size() == n - 1) {
-                // empty if block
-            }
-        } else if (n3 == 3) {
-            if (this.c.size() != 0) {
-                n2 = 2 + this.c.size();
-            }
-            if (-1 + this.d.size() == n - n2) {
-                // empty if block
-            }
         }
         View view2 = view == null ? LayoutInflater.from(this.b).inflate(R.layout.list_item_notification, viewGroup, false) : view;
         ViewHolder viewHolder = new ViewHolder(view2);
         NotifBinder notifBinder = NotifBinderFactory.create(notificationItem);
         viewHolder.mMainText.setText(notifBinder.getMainText());
-        if ("follow".equals(notificationItem.getType())) {
-            viewHolder.mSubText.setVisibility(4);
+        if (notificationItem !=null && "follow".equals(notificationItem.getType())) {
+            viewHolder.mSubText.setVisibility(View.INVISIBLE);
         } else {
             viewHolder.mSubText.setVisibility(View.VISIBLE);
             viewHolder.mSubText.setText(notifBinder.getSubText());
@@ -238,6 +213,19 @@ public abstract class NotificationAdapter extends u<NotificationItem> {
 
         HeaderHolder(View view) {
             this.mLabelText = (TextView) view.findViewById(R.id.label_text);
+        }
+    }
+
+    final class w {
+        int a = -1;
+        int b = -1;
+
+        w(NotificationAdapter notificationAdapter) {
+        }
+
+        final void a(int n, int n2) {
+            this.a = n;
+            this.b = n2;
         }
     }
 }

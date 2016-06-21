@@ -10,14 +10,21 @@ import com.clilystudio.netbook.am;
 import android.support.v7.app.j;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.ListAdapter;
+import android.widget.TextView;
 
 import com.clilystudio.netbook.MyApplication;
-import com.clilystudio.netbook.adapter.h;
 import com.clilystudio.netbook.event.f;
 import com.clilystudio.netbook.model.Account;
+import com.clilystudio.netbook.model.Author;
 import com.clilystudio.netbook.model.BookReview;
 import com.clilystudio.netbook.model.Review;
+import com.clilystudio.netbook.ui.SmartImageView;
+import com.clilystudio.netbook.util.*;
+import com.clilystudio.netbook.util.W;
+import com.clilystudio.netbook.widget.PostFlag;
+import com.clilystudio.netbook.widget.RatingView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +32,7 @@ import java.util.List;
 public class BookReviewListFragment extends BookPostListFragment {
     private aI h;
     private aH i;
-    private h j;
+    private com.clilystudio.netbook.util.W<BookReview> j;
     private List<BookReview> k = new ArrayList<BookReview>();
     private com.handmark.pulltorefresh.library.j l;
 
@@ -112,7 +119,7 @@ public class BookReviewListFragment extends BookPostListFragment {
         }
     }
 
-    static /* synthetic */ h h(BookReviewListFragment bookReviewListFragment) {
+    static /* synthetic */ W<BookReview> h(BookReviewListFragment bookReviewListFragment) {
         return bookReviewListFragment.j;
     }
 
@@ -148,7 +155,70 @@ public class BookReviewListFragment extends BookPostListFragment {
         super.onActivityCreated(bundle);
         this.a.setOnRefreshListener(new az(this));
         this.b.setOnItemClickListener(new aB(this));
-        this.j = new h(LayoutInflater.from(this.getActivity()));
+        this.j = new W<BookReview>(LayoutInflater.from(this.getActivity()), R.layout.list_item_book_review){
+
+            @Override
+            protected void a(int var1, final BookReview bookReview) {
+                final Author author = bookReview.author;
+                if (am.m(getContext())) {
+                    ((SmartImageView) this.a(0, SmartImageView.class)).setImageResource(R.drawable.avatar_default);
+                } else {
+                    ((SmartImageView) this.a(0, SmartImageView.class)).setImageUrl(author.getScaleAvatar(), R.drawable.avatar_default);
+                    ((SmartImageView) this.a(0, SmartImageView.class)).setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            v.getContext().startActivity(com.clilystudio.netbook.util.e.a(v.getContext(), bookReview.author));
+                        }
+                    });
+                }
+                this.a(1, author.getNickname());
+                this.a(2, "lv." + author.getLv());
+                TextView textView = (TextView) this.a(3, TextView.class);
+                PostFlag postFlag = (PostFlag) this.a(4, PostFlag.class);
+                if (postFlag.a(bookReview.state)) {
+                    textView.setVisibility(View.GONE);
+                    postFlag.setVisibility(View.VISIBLE);
+                } else {
+                    textView.setVisibility(View.VISIBLE);
+                    textView.setText(t.e(bookReview.created));
+                    postFlag.setVisibility(View.GONE);
+                }
+                this.a(5, bookReview.title);
+                this.a(6, bookReview.content);
+                this.a(7, "" + bookReview.helpful.getYes());
+                ImageView imageView = (ImageView) this.a(8, ImageView.class);
+                if (com.clilystudio.netbook.hpay100.a.a.r(getContext(), "community_user_gender_icon_toggle")) {
+                    String string = author.getGender();
+                    if ("male".equals(string)) {
+                        imageView.setVisibility(View.VISIBLE);
+                        imageView.setImageLevel(2);
+                    } else if ("female".equals(string)) {
+                        imageView.setVisibility(View.VISIBLE);
+                        imageView.setImageLevel(3);
+                    } else {
+                        imageView.setVisibility(View.VISIBLE);
+                        imageView.setImageLevel(4);
+                    }
+                } else {
+                    String string = author.getType();
+                    if ("official".equals(string)) {
+                        imageView.setVisibility(View.VISIBLE);
+                        imageView.setImageLevel(0);
+                    } else if ("doyen".equals(string)) {
+                        imageView.setVisibility(View.VISIBLE);
+                        imageView.setImageLevel(1);
+                    } else {
+                        imageView.setVisibility(View.GONE);
+                    }
+                }
+                ((RatingView) this.a(9, RatingView.class)).setValue(bookReview.rating);
+            }
+
+            @Override
+            protected int[] a() {
+                return new int[]{R.id.avatar, R.id.user, R.id.lv, R.id.time, R.id.post_flag, R.id.title, R.id.content, R.id.helpful_count, R.id.avatar_verify, R.id.rating};
+            }
+        };
         this.b.setAdapter((ListAdapter) ((Object) this.j));
         this.f = ((BookPostTabActivity) this.getActivity()).l();
         (BookPostTabActivity) this.getActivity();

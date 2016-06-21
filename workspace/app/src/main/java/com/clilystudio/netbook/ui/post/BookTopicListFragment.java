@@ -9,7 +9,6 @@ import android.view.View;
 import android.widget.ListAdapter;
 
 import com.clilystudio.netbook.R;
-import com.clilystudio.netbook.adapter.j;
 import com.clilystudio.netbook.event.f;
 import com.clilystudio.netbook.model.TopicPost;
 

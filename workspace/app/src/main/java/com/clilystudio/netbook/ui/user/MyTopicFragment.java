@@ -1,20 +1,26 @@
 package com.clilystudio.netbook.ui.user;
 
 import android.os.Bundle;
+
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.am;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.model.TopicPost;
+import com.clilystudio.netbook.util.W;
+import com.clilystudio.netbook.widget.CoverView;
 import com.clilystudio.netbook.widget.LabelPtrListView;
 import com.handmark.pulltorefresh.library.PullToRefreshBase$Mode;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class MyTopicFragment extends Fragment {
@@ -25,7 +31,7 @@ public class MyTopicFragment extends Fragment {
     private View e;
     private View f;
     private TextView g;
-    private com.clilystudio.netbook.adapter.F h;
+    private W<TopicPost> h;
     private List<TopicPost> i = new ArrayList<TopicPost>();
     private String j;
     private j k;
@@ -88,7 +94,7 @@ public class MyTopicFragment extends Fragment {
         return myTopicFragment.k;
     }
 
-    static /* synthetic */ com.clilystudio.netbook.adapter.F k(MyTopicFragment myTopicFragment) {
+    static /* synthetic */ W<TopicPost> k(MyTopicFragment myTopicFragment) {
         return myTopicFragment.h;
     }
 
@@ -109,7 +115,50 @@ public class MyTopicFragment extends Fragment {
         this.e.setVisibility(View.GONE);
         this.c.setOnRefreshListener(new B(this));
         this.d.setOnItemClickListener(new D(this));
-        this.h = new com.clilystudio.netbook.adapter.F(layoutInflater2);
+        this.h = new W<TopicPost>(layoutInflater2, R.layout.list_item_new_topic) {
+
+            @Override
+            protected void a(int var1, TopicPost topicPost) {
+                String string;
+                this.a(1, topicPost.getAuthor().getNickname());
+                this.a(2, com.clilystudio.netbook.util.t.e((Date) topicPost.getCreated()));
+                this.a(3, topicPost.getTitle());
+                String string2 = topicPost.getBlock();
+                CoverView coverView = (CoverView) this.a(0, CoverView.class);
+                if ("help".equals(string2)) {
+                    coverView.setImageResource(R.drawable.book_help_cover_default);
+                } else if ("ramble".equals(string2)) {
+                    coverView.setImageResource(R.drawable.discuss_cover_default);
+                } else {
+                    coverView.setImageUrl(topicPost.getBook().getFullCover(), R.drawable.cover_default);
+                }
+                if ("vote".equals(topicPost.getType())) {
+                    this.a(4, false);
+                    this.a(5, true);
+                    this.a(4, String.valueOf(topicPost.getVoteCount()));
+                } else {
+                    this.a(4, true);
+                    this.a(5, false);
+                    this.a(5, String.valueOf(topicPost.getCommentCount()));
+                }
+                if ("focus".equals(string = topicPost.getState())) {
+                    this.a(6, false);
+                    ((ImageView) this.a(6, ImageView.class)).setImageLevel(0);
+                    return;
+                }
+                if ("hot".equals(string)) {
+                    this.a(6, false);
+                    ((ImageView) this.a(6, ImageView.class)).setImageLevel(1);
+                    return;
+                }
+                this.a(6, true);
+            }
+
+            @Override
+            protected int[] a() {
+                return new int[]{R.id.new_topic_listitem_cover, R.id.new_topic_listitem_user, R.id.time, R.id.title, R.id.new_topic_listitem_vote, R.id.new_topic_listitem_comment, R.id.new_topic_listitem_label_status};
+            }
+        };
         this.d.setAdapter(this.h);
         Account account = am.e();
         if (account == null) {

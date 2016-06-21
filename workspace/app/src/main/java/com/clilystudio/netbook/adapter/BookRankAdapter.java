@@ -6,7 +6,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.clilystudio.netbook.R;
-import com.clilystudio.netbook.event.*;
 import com.clilystudio.netbook.event.x;
 import com.clilystudio.netbook.model.BookRankRoot;
 import com.clilystudio.netbook.model.BookRankSummary;
@@ -44,10 +43,7 @@ public final class BookRankAdapter extends u<BookRankSummary> {
     }
 
     private boolean b(int n) {
-        if (n < this.f) {
-            return true;
-        }
-        return false;
+        return n < this.f;
     }
 
     /*
@@ -112,7 +108,7 @@ public final class BookRankAdapter extends u<BookRankSummary> {
 
     public final View getView(final int paramInt, View paramView, ViewGroup paramViewGroup) {
         int i = getItemViewType(paramInt);
-        View localView;
+        View localView = null;
         if (paramView == null) {
             switch (i) {
                 case 0:
@@ -127,33 +123,31 @@ public final class BookRankAdapter extends u<BookRankSummary> {
                 case 1:
                     localView = this.a.inflate(R.layout.list_item_book_rank, paramViewGroup, false);
                     localView.setTag(new BookRankAdapter.ViewHolder(localView));
+                    final BookRankSummary localBookRankSummary = a(paramInt);
+                    BookRankAdapter.ViewHolder localViewHolder = (BookRankAdapter.ViewHolder) localView.getTag();
+                    if (localBookRankSummary != null) {
+                        localViewHolder.cover.setImageUrl(localBookRankSummary.getFullCover(), R.drawable.cover_default);
+                        localViewHolder.title.setText(localBookRankSummary.getTitle());
+                    }
+                    localView.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            com.clilystudio.netbook.event.i.a().post(new x(localBookRankSummary, BookRankAdapter.a(BookRankAdapter.this, paramInt)));
+                        }
+                    });
+                    break;
                 case 2:
                     localView = this.a.inflate(R.layout.layout_rank_collapse_item, paramViewGroup, false);
+                    RankCollapseItem localRankCollapseItem = (RankCollapseItem) localView;
+                    if (b(paramInt)) {
+                        localRankCollapseItem.a(this.c, paramInt, b(paramInt));
+                    } else {
+                        localRankCollapseItem.a(this.e, paramInt, b(paramInt));
+                    }
+                    break;
                 default:
                     localView = null;
             }
-        }
-        switch (i) {
-            default:
-                return localView;
-            case 1:
-                final BookRankSummary localBookRankSummary = a(paramInt);
-                BookRankAdapter.ViewHolder localViewHolder = (BookRankAdapter.ViewHolder) localView.getTag();
-                localViewHolder.cover.setImageUrl(localBookRankSummary.getFullCover(), R.drawable.cover_default);
-                localViewHolder.title.setText(localBookRankSummary.getTitle());
-                localView.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        com.clilystudio.netbook.event.i.a().post(new x(localBookRankSummary, BookRankAdapter.a(BookRankAdapter.this, paramInt)));
-                    }
-                });
-            case 2:
-                RankCollapseItem localRankCollapseItem = (RankCollapseItem) localView;
-                if (b(paramInt)) {
-                    localRankCollapseItem.a(this.c, paramInt, b(paramInt));
-                    return localView;
-                }
-                localRankCollapseItem.a(this.e, paramInt, b(paramInt));
         }
         return localView;
     }
@@ -167,9 +161,9 @@ public final class BookRankAdapter extends u<BookRankSummary> {
         SmartImageView cover;
         TextView title;
 
-       ViewHolder(View view) {
-            this.cover = (SmartImageView)view. findViewById(R.id.list_item_book_rank_cover);
-            this.title = (TextView)view.  findViewById(R.id.list_item_book_rank_title);
+        ViewHolder(View view) {
+            this.cover = (SmartImageView) view.findViewById(R.id.list_item_book_rank_cover);
+            this.title = (TextView) view.findViewById(R.id.list_item_book_rank_title);
         }
     }
 

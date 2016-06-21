@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -21,7 +22,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.clilystudio.netbook.R;
-import com.clilystudio.netbook.adapter.E;
 import com.clilystudio.netbook.d;
 import com.clilystudio.netbook.model.BookSummary;
 import com.clilystudio.netbook.util.*;
@@ -48,7 +48,7 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
     private SearchFixListView i;
     private View j;
     private View k;
-    private E l;
+    private  W<BookSummary> l;
     private View m;
     private View n;
     private String o;
@@ -109,7 +109,7 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
         searchActivity.a(true, true);
     }
 
-    static /* synthetic */ E b(SearchActivity searchActivity) {
+    static /* synthetic */  W<BookSummary> b(SearchActivity searchActivity) {
         return searchActivity.l;
     }
 
@@ -379,7 +379,22 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
             this.h.addHeaderView(this.m, null, false);
             this.m.setOnClickListener(this);
         }
-        this.l = new E(layoutInflater);
+        this.l = new W<BookSummary>(layoutInflater, R.layout.list_item_search_result) {
+
+            @Override
+            protected void a(int var1, BookSummary bookSummary) {
+                ((CoverView) this.a(0, CoverView.class)).setImageUrl(bookSummary.getFullCover(), R.drawable.cover_default);
+                this.a(1, bookSummary.getTitle());
+                Object[] arrobject = new Object[]{bookSummary.getLatelyFollower(), Float.valueOf(bookSummary.getRetentionRatio()), bookSummary.getAuthor()};
+                this.a(2, String.format("%d人在追  |  %.1f%%读者留存  |  %s著", arrobject));
+                this.a(3, TextUtils.isEmpty(bookSummary.getPromLink()));
+            }
+
+            @Override
+            protected int[] a() {
+                return new int[]{R.id.iv_cover, R.id.tv_title, R.id.tv_short_intro, R.id.prom_label};
+            }
+        };
         this.h.setAdapter(this.l);
         this.h.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

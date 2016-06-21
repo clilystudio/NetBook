@@ -13,11 +13,13 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import com.clilystudio.netbook.R;
-import com.clilystudio.netbook.adapter.D;
 import com.clilystudio.netbook.am;
 import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.model.ReviewSummary;
 import com.clilystudio.netbook.ui.BaseActivity;
+import com.clilystudio.netbook.util.W;
+import com.clilystudio.netbook.widget.CoverView;
+import com.clilystudio.netbook.widget.PostFlag;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshBase$Mode;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
@@ -25,6 +27,7 @@ import com.handmark.pulltorefresh.library.j;
 import com.xiaomi.mistatistic.sdk.MiStatInterface;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 do;
@@ -39,7 +42,7 @@ public class ReviewListActivity extends BaseActivity {
     private View f;
     private View g;
     private TextView h;
-    private D i;
+    private com.clilystudio.netbook.util.W<ReviewSummary> i;
     private List<ReviewSummary> j = new ArrayList<ReviewSummary>();
     private TextView k;
     private TextView l;
@@ -435,7 +438,7 @@ public class ReviewListActivity extends BaseActivity {
         return reviewListActivity.f;
     }
 
-    static /* synthetic */ D t(ReviewListActivity reviewListActivity) {
+    static /* synthetic */ W<ReviewSummary> t(ReviewListActivity reviewListActivity) {
         return reviewListActivity.i;
     }
 
@@ -531,7 +534,38 @@ public class ReviewListActivity extends BaseActivity {
             }
         });
         this.e.setOnItemClickListener((AdapterView.OnItemClickListener) ((Object) new dk(this)));
-        this.i = new D(this.getLayoutInflater());
+        this.i = new W<ReviewSummary>(this.getLayoutInflater(), R.layout.list_item_review) {
+
+            @Override
+            protected void a(int var1, ReviewSummary reviewSummary) {
+                ((CoverView) this.a(0, CoverView.class)).setImageUrl(reviewSummary.getBook().getFullCover(), R.drawable.cover_default);
+                this.a(1, reviewSummary.getBook().getTitle());
+                this.a(4, reviewSummary.getTitle());
+                Object[] arrobject = new Object[]{reviewSummary.getHelpful().getYes()};
+                this.a(5, String.format("%d 人推荐", arrobject));
+                String string = reviewSummary.getBook().getType();
+                if (string == null) {
+                    string = "";
+                }
+                String string2 = string.equals("xhqh") ? "玄幻奇幻" : (string.equals("wxxx") ? "武侠仙侠" : (string.equals("dsyn") ? "都市异能" : (string.equals("lsjs") ? "\u5386\u53f2\u519b\u4e8b" : (string.equals("yxjj") ? "游戏竞技" : (string.equals("khly") ? "科幻灵异" : (string.equals("cyjk") ? "穿越架空" : (string.equals("hmzc") ? "豪门总裁" : (string.equals("xdyq") ? "现代言情" : (string.equals("gdyq") ? "古代言情" : (string.equals("hxyq") ? "幻想言情" : (string.equals("dmtr") ? "耽美同人" : "其他")))))))))));
+                this.a(2, "[" + string2 + "]");
+                String string3 = reviewSummary.getState();
+                PostFlag postFlag = (PostFlag) this.a(6, PostFlag.class);
+                if (postFlag.a(string3)) {
+                    postFlag.setVisibility(View.VISIBLE);
+                    this.a(3, true);
+                    return;
+                }
+                postFlag.setVisibility(View.GONE);
+                this.a(3, false);
+                this.a(3, com.clilystudio.netbook.util.t.e((Date) reviewSummary.getCreated()));
+            }
+
+            @Override
+            protected int[] a() {
+                return new int[]{R.id.book_review_listitem_cover, R.id.book_review_listitem_book, R.id.book_review_listitem_type, R.id.book_review_listitem_time, R.id.book_review_listitem_title, R.id.support_percentage, R.id.post_flag};
+            }
+        };
         this.e.setAdapter(this.i);
         dp dp2 = this.a = new dp(this, 0);
         Object[] arrobject = new String[]{this.s, this.t, this.u};

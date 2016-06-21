@@ -26,7 +26,7 @@ public final class HomeTopicAdapter extends u<BookShelfTopic> {
         if (n == 0) {
             return null;
         }
-        return (BookShelfTopic) super.getItem(n - 1);
+        return super.getItem(n - 1);
     }
 
     @Override
@@ -38,7 +38,7 @@ public final class HomeTopicAdapter extends u<BookShelfTopic> {
     }
 
     @Override
-    public final /* synthetic */ Object getItem(int n) {
+    public final /* synthetic */ BookShelfTopic getItem(int n) {
         return this.a(n);
     }
 
@@ -74,28 +74,30 @@ public final class HomeTopicAdapter extends u<BookShelfTopic> {
         }
         if (n2 == 1) {
             final BookShelfTopic bookShelfTopic = this.a(n);
-            ViewHolder viewHolder = (ViewHolder) view.getTag();
-            viewHolder.mTitle.setText(bookShelfTopic.getTitle());
-            viewHolder.mCover.setImageUrl(bookShelfTopic.getFullCover(), R.drawable.cover_default);
-            final TextView textView = viewHolder.mCount;
-            final String string = bookShelfTopic.getBookId();
-            textView.setVisibility(View.GONE);
-            textView.setText("");
-            textView.setTag(string);
-            this.b.a(string, new ai() {
-                @Override
-                public void a(String var1, int var2) {
-                    if (!((String) textView.getTag()).equals(var1)) return;
-                    bookShelfTopic.setPostCount(var2);
-                    int n2 = var2 - BookTopicEnterRecord.get(var1).getVisitCount();
-                    if (n2 > 0) {
-                        textView.setVisibility(View.VISIBLE);
-                        textView.setText(String.valueOf(n2));
-                        return;
+            final ViewHolder viewHolder = (ViewHolder) view.getTag();
+            if (bookShelfTopic != null) {
+                String title = bookShelfTopic.getTitle();
+                viewHolder.mTitle.setText(title);
+                viewHolder.mCover.setImageUrl(bookShelfTopic.getFullCover(), R.drawable.cover_default);
+                final String string = bookShelfTopic.getBookId();
+                viewHolder.mCount.setVisibility(View.GONE);
+                viewHolder.mCount.setText("");
+                viewHolder.mCount.setTag(string);
+                this.b.a(string, new ai() {
+                    @Override
+                    public void a(String var1, int var2) {
+                        if (!viewHolder.mCount.getTag().equals(var1)) return;
+                        bookShelfTopic.setPostCount(var2);
+                        int n2 = var2 - BookTopicEnterRecord.get(var1).getVisitCount();
+                        if (n2 > 0) {
+                            viewHolder.mCount.setVisibility(View.VISIBLE);
+                            viewHolder.mCount.setText(String.valueOf(n2));
+                            return;
+                        }
+                        viewHolder.mCount.setVisibility(View.GONE);
                     }
-                    textView.setVisibility(View.GONE);
-                }
-            });
+                });
+            }
         }
         return view;
     }

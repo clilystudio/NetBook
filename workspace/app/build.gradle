@@ -48,4 +48,10 @@ dependencies {
     compile 'com.google.code.gson:gson:2.6.2'
     compile 'com.github.kevinsawicki:http-request:6.0'
     compile 'com.koushikdutta.async:androidasync:2.1.8'
+    compile 'uk.me.lewisdeane.ldialogs:ldialogs@aar'
+}
+repositories{
+    flatDir{
+        dirs 'libs'
+    }
 }

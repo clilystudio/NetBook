@@ -16,9 +16,12 @@ import com.clilystudio.netbook.db.AudioRecord;
 import com.clilystudio.netbook.db.BookDlRecord;
 import com.clilystudio.netbook.db.BookFile;
 import com.clilystudio.netbook.db.BookReadRecord;
+import com.clilystudio.netbook.event.I;
+import com.clilystudio.netbook.event.d;
 import com.clilystudio.netbook.model.Advert;
 import com.clilystudio.netbook.model.BookFeed;
 import com.clilystudio.netbook.model.BookShelf;
+import com.clilystudio.netbook.reader.dl.a;
 import com.clilystudio.netbook.ui.SmartImageView;
 import com.clilystudio.netbook.util.adutil.n;
 import com.clilystudio.netbook.util.t;
@@ -49,7 +52,7 @@ public class HomeShelfAdapter extends u<BookShelf> {
     public HomeShelfAdapter(Activity activity) {
         this.b = activity;
         this.c = LayoutInflater.from(this.b);
-        this.e = new ArrayList<BookShelf>();
+        this.e = new ArrayList<>();
     }
 
     static /* synthetic */ void a(HomeShelfAdapter homeShelfAdapter, int n) {
@@ -64,9 +67,9 @@ public class HomeShelfAdapter extends u<BookShelf> {
         return homeShelfAdapter.f;
     }
 
-    static /* synthetic */ Context c(HomeShelfAdapter homeShelfAdapter) {
-        return homeShelfAdapter.b;
-    }
+//    static /* synthetic */ Context c(HomeShelfAdapter homeShelfAdapter) {
+//        return homeShelfAdapter.b;
+//    }
 
     /*
      * Enabled aggressive block sorting
@@ -80,9 +83,7 @@ public class HomeShelfAdapter extends u<BookShelf> {
         this.g = true;
         if (this.f.length <= n) {
             boolean[] arrbl = new boolean[n + 1];
-            for (int i = 0; i < this.f.length; ++i) {
-                arrbl[i] = this.f[i];
-            }
+            System.arraycopy(this.f, 0, arrbl, 0, this.f.length);
             this.f = arrbl;
         }
         checkBox.setChecked(this.f[n]);
@@ -106,21 +107,22 @@ public class HomeShelfAdapter extends u<BookShelf> {
     private void b(int n) {
         if (this.f[n]) {
             if (!this.e.contains(this.getItem(n))) {
-                this.e.add((BookShelf) this.getItem(n));
+                this.e.add(this.getItem(n));
             }
         } else {
             this.e.remove(this.getItem(n));
         }
         if (this.e.size() > 0) {
-            this.h.setText("\u5220\u9664(" + this.e.size() + ")");
+            String text = "删除(" + this.e.size() + ")";
+            this.h.setText(text);
         } else {
-            this.h.setText("\u5220\u9664");
+            this.h.setText("删除");
         }
         if (this.e.size() == this.g()) {
-            this.i.setText("\u53d6\u6d88\u5168\u9009");
+            this.i.setText("取消全选");
             return;
         }
-        this.i.setText("\u5168\u9009");
+        this.i.setText("全选");
     }
 
     private int g() {
@@ -174,9 +176,8 @@ public class HomeShelfAdapter extends u<BookShelf> {
 
     public final void d() {
         boolean[] arrbl = this.f;
-        int n = arrbl.length;
-        for (int i = 0; i < n; ++i) {
-            if (arrbl[i]) continue;
+        for (boolean anArrbl : arrbl) {
+            if (anArrbl) continue;
             int n2 = 0;
             do {
                 int n3 = this.f.length;
@@ -185,7 +186,7 @@ public class HomeShelfAdapter extends u<BookShelf> {
                 ++n2;
             } while (true);
             for (int j = 0; j < this.f.length; ++j) {
-                BookShelf bookShelf = (BookShelf) this.getItem(j);
+                BookShelf bookShelf = this.getItem(j);
                 int n4 = bookShelf.getType();
                 if (n4 != 0 && n4 != 2 && n4 != 4 || this.e.contains(bookShelf)) continue;
                 this.e.add(bookShelf);
@@ -206,17 +207,12 @@ public class HomeShelfAdapter extends u<BookShelf> {
 
     @Override
     public int getItemViewType(int n) {
-        return ((BookShelf) this.getItem(n)).getType();
+        return this.getItem(n).getType();
     }
 
-    /*
-     * Unable to fully structure code
-     * Enabled aggressive block sorting
-     * Lifted jumps to return sites
-     */
     @Override
     public View getView(int var1_1, View var2_2, ViewGroup var3_3) {
-        BookShelf var4_4 = (BookShelf) this.getItem(var1_1);
+        BookShelf var4_4 = this.getItem(var1_1);
         int var5_5 = var4_4.getType();
         if (var2_2 == null) {
             switch (var5_5) {
@@ -277,14 +273,10 @@ public class HomeShelfAdapter extends u<BookShelf> {
                     String var30_12 = com.clilystudio.netbook.hpay100.a.a.g(var22_9);
                     var23_10 = false;
                     if (var29_11 != null) {
-                        boolean var31_13 = var29_11.contains(var30_12);
-                        var23_10 = false;
-                        if (var31_13) {
-                            var23_10 = true;
-                        }
+                        var23_10 = var29_11.contains(var30_12);
                     }
                 }
-                String var24_14 = var20_7.getBookId();
+                final String var24_14 = var20_7.getBookId();
                 if (!am.h(var24_14)) {
                     if (var23_10) {
                         var19_6.coverLoadingLayer.f();
@@ -315,11 +307,31 @@ public class HomeShelfAdapter extends u<BookShelf> {
                 } else if (!var19_6.coverLoadingLayer.g()) {
                     var19_6.coverLoadingLayer.c();
                 }
-                var19_6.coverLoadingLayer.setCoverListener((y) new r(this, var24_14));
+                var19_6.coverLoadingLayer.setCoverListener(new y() {
+                    @Override
+                    public void a() {
+                        com.clilystudio.netbook.event.i.a().post(new d(var24_14, 3));
+                    }
+
+                    @Override
+                    public void b() {
+                       new a((Activity)HomeShelfAdapter.this.b).a(var24_14, 0, 0);
+                   }
+
+                    @Override
+                    public void c() {
+                        BookDlRecord bookDlRecord = BookDlRecord.get(var24_14);
+                        if (bookDlRecord != null) {
+                            bookDlRecord.setStatus(3);
+                            bookDlRecord.save();
+                            com.clilystudio.netbook.event.i.a().post(new I());
+                        }
+                    }
+                });
                 return var2_2;
             }
             case 1: {
-                if (this.d != false) return var2_2;
+                if (this.d) return var2_2;
                 AdHolder var17_19 = new AdHolder(var2_2);
                 Advert var18_20 = var4_4.getAdvert();
                 var17_19.title.setText(var18_20.getTitle());
@@ -334,13 +346,14 @@ public class HomeShelfAdapter extends u<BookShelf> {
                 TxtHolder var13_21 = new TxtHolder(var2_2);
                 BookFile var14_22 = var4_4.getTxt();
                 var13_21.title.setText(var14_22.getName());
-                var13_21.desc.setText("\u9605\u8bfb\u8fdb\u5ea6 : " + var14_22.getReadableProgress());
+                String text = "阅读进度 : " + var14_22.getReadableProgress();
+                var13_21.desc.setText(text);
                 var13_21.top.setVisibility(var14_22.isTop() ? View.VISIBLE : View.GONE);
                 this.a(var1_1, var13_21.check);
                 return var2_2;
             }
             case 3: {
-                if (this.d != false) return var2_2;
+                if (this.d) return var2_2;
                 FeedHolder var11_25 = new FeedHolder(var2_2);
                 BookFeed var12_26 = var4_4.getBookFeed();
                 var11_25.title.setText(var12_26.getTitle());
@@ -356,7 +369,8 @@ public class HomeShelfAdapter extends u<BookShelf> {
                 AudioRecord var7_28 = var4_4.getAlbum();
                 var6_27.cover.setImageUrl(var7_28.getImgUrl(), R.drawable.cover_default);
                 var6_27.title.setText(var7_28.getName());
-                var6_27.desc.setText(t.a((long) var7_28.getLastUpdate()) + "\t\t" + var7_28.getDesc());
+                String text = t.a(var7_28.getLastUpdate()) + "\t\t" + var7_28.getDesc();
+                var6_27.desc.setText(text);
                 if (var7_28.isUpdateReaded() || this.d) {
                     var6_27.flag.setType(0);
                 } else {
