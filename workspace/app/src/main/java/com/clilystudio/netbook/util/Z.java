@@ -53,8 +53,8 @@ public final class Z {
         }
         if ((account = am.e()) != null) {
             String string = account.getUser().getId();
-            List<BookSyncRecord> list3 = BookSyncRecord.find(string, BookSyncRecord.getTypeId(BookSyncRecord$BookModifyType.SHELF_REMOVE));
-            list2 = BookSyncRecord.find(string, BookSyncRecord.getTypeId(BookSyncRecord$BookModifyType.FEED_REMOVE));
+            List<BookSyncRecord> list3 = BookSyncRecord.find(string, BookSyncRecord.getTypeId(BookSyncRecord.BookModifyType.SHELF_REMOVE));
+            list2 = BookSyncRecord.find(string, BookSyncRecord.getTypeId(BookSyncRecord.BookModifyType.FEED_REMOVE));
             list = list3;
         } else {
             list = null;
@@ -105,7 +105,7 @@ public final class Z {
      */
     private static boolean a(String string, RemoteBookShelf$Book[] arrremoteBookShelf$Book) {
         BookSyncRecord bookSyncRecord = BookSyncRecord.get(string);
-        if (bookSyncRecord != null && bookSyncRecord.getType() != BookSyncRecord.getTypeId(BookSyncRecord$BookModifyType.SYNC_SUCCESS)) return false;
+        if (bookSyncRecord != null && bookSyncRecord.getType() != BookSyncRecord.getTypeId(BookSyncRecord.BookModifyType.SYNC_SUCCESS)) return false;
         int n = arrremoteBookShelf$Book.length;
         int n2 = 0;
         while (n2 < n) {
@@ -136,10 +136,10 @@ public final class Z {
         if (account != null) {
             String string = account.getUser().getId();
             if (arrstring.length > 0) {
-                new X(string, account.getToken(), BookSyncRecord$BookModifyType.SHELF_ADD, arrstring).b(new Void[0]);
+                new X(string, account.getToken(), BookSyncRecord.BookModifyType.SHELF_ADD, arrstring).b(new Void[0]);
             }
             if (arrstring2.length > 0) {
-                new X(string, account.getToken(), BookSyncRecord$BookModifyType.FEED_ADD, arrstring2).b(new Void[0]);
+                new X(string, account.getToken(), BookSyncRecord.BookModifyType.FEED_ADD, arrstring2).b(new Void[0]);
             }
         }
     }

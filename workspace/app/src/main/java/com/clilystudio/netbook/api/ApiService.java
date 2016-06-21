@@ -230,8 +230,8 @@ public class ApiService {
      */
     private HttpRequest a(HttpRequest httpRequest) {
         long l = new Date().getTime();
-        if (e.a()) {
-            e.a(httpRequest);
+        if (com.clilystudio.netbook.api.e.a()) {
+            com.clilystudio.netbook.api.e.a(httpRequest);
         }
         try {
             boolean bl = this.b(httpRequest).c();
@@ -2425,9 +2425,9 @@ public class ApiService {
         String string3 = h + string2;
         String string4 = string3 + "?" + com.clilystudio.netbook.hpay100.a.a.A(string2);
         try {
-            HttpRequest httpRequest = HttpRequest.a(string4);
-            if (e.a()) {
-                e.a(httpRequest);
+            HttpRequest httpRequest = HttpRequest.get(string4);
+            if (com.clilystudio.netbook.api.e.a()) {
+                com.clilystudio.netbook.api.e.a(httpRequest);
             }
             HttpRequest httpRequest2 = this.b(httpRequest);
             boolean bl = httpRequest2.c();
@@ -2471,9 +2471,9 @@ public class ApiService {
         String string2 = am.e((String) string);
         String string3 = g + String.format("/chapter/%s", string2);
         try {
-            HttpRequest httpRequest = HttpRequest.a(string3);
-            if (e.a()) {
-                e.a(httpRequest);
+            HttpRequest httpRequest = HttpRequest.get(string3);
+            if (com.clilystudio.netbook.api.e.a()) {
+                com.clilystudio.netbook.api.e.a(httpRequest);
             }
             HttpRequest httpRequest2 = this.b(httpRequest);
             boolean bl = httpRequest2.c();

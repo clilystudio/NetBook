@@ -7,6 +7,7 @@ import com.clilystudio.netbook.db.DnsCacheRecord;
 import com.clilystudio.netbook.exception.DnsParseFailedException;
 import com.github.kevinsawicki.http.HttpRequest;
 
+import java.net.MalformedURLException;
 import java.net.URL;
 
 public final class e {
@@ -18,43 +19,45 @@ public final class e {
     }
 
     public static void a(HttpRequest httpRequest) {
-        URL uRL;
-        String string;
         String string2;
-        block8:
-        {
-            int n;
-            String string3;
-            try {
-                uRL = httpRequest.getConnection().getURL();
-                string = uRL.getHost();
-                DnsCacheRecord dnsCacheRecord = new Select().from(DnsCacheRecord.class).where("host = ?", string).executeSingle();
-                if (dnsCacheRecord != null && dnsCacheRecord.isExpired()) {
-                    dnsCacheRecord.delete();
-                    string2 = null;
-                } else if (dnsCacheRecord == null) {
-                    string2 = null;
-                } else {
-                    string2 = dnsCacheRecord.getIp();
-                }
-                if (string2 != null) break block8;
-                string3 = HttpRequest.get(String.format("http://%s/d?dn=%s&ttl=1", "119.29.29.29", string)).body();
-                if (string3 == null) {
-                    throw new DnsParseFailedException(string3 + " parse failed");
-                }
-            } catch (Exception var1_6) {
-                var1_6.printStackTrace();
-                return;
-            }
-            String[] arrstring = string3.split(",");
-            String[] arrstring2 = arrstring[0].split(";");
-            d d2 = new d(arrstring2[0], n = Integer.parseInt(arrstring[1]));
-            string2 = d2.a();
-            if (TextUtils.isEmpty(string2)) return;
-            b.a(d2, string);
+        String string3;
+        URL uRL = httpRequest.getConnection().getURL();
+        String string = uRL.getHost();
+        DnsCacheRecord dnsCacheRecord = new Select().from(DnsCacheRecord.class).where("host = ?", string).executeSingle();
+        if (dnsCacheRecord != null && dnsCacheRecord.isExpired()) {
+            dnsCacheRecord.delete();
+            string2 = null;
+        } else if (dnsCacheRecord == null) {
+            string2 = null;
+        } else {
+            string2 = dnsCacheRecord.getIp();
         }
-        httpRequest.a(new URL(uRL.toString().replace(string, string2)));
-        httpRequest.a("Host", string);
+        if (string2 != null) {
+            try {
+                httpRequest.post(new URL(uRL.toString().replace(string, string2)));
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            }
+            httpRequest.header("Host", string);
+            return;
+        }
+        string3 = HttpRequest.get(String.format("http://%s/d?dn=%s&ttl=1", "119.29.29.29", string)).body();
+        if (string3 == null) {
+            throw new DnsParseFailedException(string3 + " parse failed");
+        }
+        String[] arrstring = string3.split(",");
+        String[] arrstring2 = arrstring[0].split(";");
+        d d2 = new d(arrstring2[0], Integer.parseInt(arrstring[1]));
+        string2 = d2.a();
+        if (!TextUtils.isEmpty(string2)) {
+            b.a(d2, string);
+            try {
+                httpRequest.post(new URL(uRL.toString().replace(string, string2)));
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            }
+            httpRequest.header("Host", string);
+        }
     }
 
     public static void a(boolean bl) {

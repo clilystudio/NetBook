@@ -10,9 +10,9 @@ public final class X extends e<Void, Void, SyncUploadResult> {
     private String b;
     private String c;
     private String[] d;
-    private BookSyncRecord$BookModifyType e;
+    private BookSyncRecord.BookModifyType e;
 
-    public /* varargs */ X(String string, String string2, BookSyncRecord$BookModifyType bookModifyType, String... arrstring) {
+    public /* varargs */ X(String string, String string2, BookSyncRecord.BookModifyType bookModifyType, String... arrstring) {
         this.b = string;
         this.c = string2;
         this.e = bookModifyType;
@@ -58,7 +58,7 @@ public final class X extends e<Void, Void, SyncUploadResult> {
         super.onPostExecute(syncUploadResult);
         if (syncUploadResult != null && syncUploadResult.isOk()) {
             for (String string : this.d) {
-                BookSyncRecord.updateOrCreate(this.b, string, BookSyncRecord.getTypeId(BookSyncRecord$BookModifyType.SYNC_SUCCESS));
+                BookSyncRecord.updateOrCreate(this.b, string, BookSyncRecord.getTypeId(BookSyncRecord.BookModifyType.SYNC_SUCCESS));
             }
         }
     }
