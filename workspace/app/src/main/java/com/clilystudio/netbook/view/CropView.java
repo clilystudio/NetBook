@@ -7,10 +7,13 @@ import android.graphics.Paint;
 import android.graphics.RectF;
 import android.util.AttributeSet;
 
+import com.clilystudio.netbook.R;
+
 import uk.co.senab.photoview.PhotoView;
+import uk.co.senab.photoview.PhotoViewAttacher;
 
 public class CropView extends PhotoView {
-    private d a;
+    private PhotoViewAttacher a;
     private float b;
     private float c;
 
@@ -37,13 +40,13 @@ public class CropView extends PhotoView {
         return cropView.b;
     }
 
-    static /* synthetic */ d c(CropView cropView) {
+    static /* synthetic */ PhotoViewAttacher c(CropView cropView) {
         return cropView.a;
     }
 
     private void b() {
         this.b = this.getResources().getDimension(R.dimen.crop_size);
-        this.a = new d(this);
+        this.a = new PhotoViewAttacher(this);
     }
 
     private RectF c() {
@@ -59,8 +62,7 @@ public class CropView extends PhotoView {
         Bitmap bitmap = this.getDrawingCache();
         RectF rectF = this.c();
         try {
-            Bitmap bitmap2 = Bitmap.createBitmap(bitmap, (int) rectF.left, (int) rectF.top, (int) rectF.width(), (int) rectF.height());
-            return bitmap2;
+            return Bitmap.createBitmap(bitmap, (int) rectF.left, (int) rectF.top, (int) rectF.width(), (int) rectF.height());
         } catch (Exception var3_4) {
             var3_4.printStackTrace();
             return null;
@@ -108,7 +110,7 @@ public class CropView extends PhotoView {
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
-        this.setBackgroundResource(17170444);
+        this.setBackgroundResource(android.R.color.black);
         this.setDrawingCacheEnabled(true);
         this.getViewTreeObserver().addOnPreDrawListener(new b(this));
     }

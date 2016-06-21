@@ -8,6 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 
+import com.clilystudio.netbook.R;
+
 public final class a extends Dialog implements DialogInterface {
     private View a;
 

@@ -19,9 +19,9 @@ final class b implements ViewTreeObserver.OnPreDrawListener {
         }
         float f4 = Math.min(f2, f3);
         float f5 = CropView.b(this.a) / f4;
-        CropView.c(this.a).d(f5);
+        CropView.c(this.a).setScale(f5);
         this.a.getViewTreeObserver().removeOnPreDrawListener(this);
-        CropView.c(this.a).a(f5, false);
+        CropView.c(this.a).setScale(f5, false);
         return true;
     }
 }
