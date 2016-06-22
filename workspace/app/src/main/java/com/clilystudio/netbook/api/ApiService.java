@@ -231,7 +231,7 @@ public class ApiService {
     private HttpRequest a(HttpRequest httpRequest) {
         long l = new Date().getTime();
         if (com.clilystudio.netbook.api.e.a()) {
-            com.clilystudio.netbook.api.e.a(httpRequest);
+            httpRequest = com.clilystudio.netbook.api.e.a2(httpRequest);
         }
         try {
             boolean bl = this.b(httpRequest).c();

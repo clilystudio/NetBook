@@ -12,13 +12,9 @@ import java.net.URL;
 
 public final class e {
     private static boolean a;
-    private static c b;
+    private static c b = c.a();
 
-    static {
-        b = c.a();
-    }
-
-    public static void a(HttpRequest httpRequest) {
+    public static HttpRequest a2(HttpRequest httpRequest) {
         String string2;
         String string3;
         URL uRL = httpRequest.getConnection().getURL();
@@ -33,13 +29,14 @@ public final class e {
             string2 = dnsCacheRecord.getIp();
         }
         if (string2 != null) {
+            HttpRequest httpRequest2 = null;
             try {
-                httpRequest.post(new URL(uRL.toString().replace(string, string2)));
+                httpRequest2 = new HttpRequest(new URL(uRL.toString().replace(string, string2)), httpRequest.method());
+                httpRequest2.header("Host", string);
             } catch (MalformedURLException e) {
                 e.printStackTrace();
             }
-            httpRequest.header("Host", string);
-            return;
+            return httpRequest2;
         }
         string3 = HttpRequest.get(String.format("http://%s/d?dn=%s&ttl=1", "119.29.29.29", string)).body();
         if (string3 == null) {
@@ -49,15 +46,17 @@ public final class e {
         String[] arrstring2 = arrstring[0].split(";");
         d d2 = new d(arrstring2[0], Integer.parseInt(arrstring[1]));
         string2 = d2.a();
+        HttpRequest httpRequest2 = null;
         if (!TextUtils.isEmpty(string2)) {
             b.a(d2, string);
-            try {
-                httpRequest.post(new URL(uRL.toString().replace(string, string2)));
+             try {
+                httpRequest2 = new HttpRequest(new URL(uRL.toString().replace(string, string2)), httpRequest.method());
+                httpRequest2.header("Host", string);
             } catch (MalformedURLException e) {
                 e.printStackTrace();
             }
-            httpRequest.header("Host", string);
         }
+        return httpRequest2;
     }
 
     public static void a(boolean bl) {

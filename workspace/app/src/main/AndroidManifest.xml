@@ -173,7 +173,6 @@
         <!--<service android:exported="false" android:name="com.qq.e.comm.DownloadService"/>-->
         <!--<activity android:configChanges="keyboard|keyboardHidden|orientation|screenSize" android:name="com.qq.e.ads.ADActivity"/>-->
         <!--<activity android:configChanges="keyboardHidden|orientation" android:name="cn.sharesdk.framework.ShareSDKUIShell" android:screenOrientation="portrait" android:theme="@android:style/Theme.Translucent.NoTitleBar" android:windowSoftInputMode="stateHidden|adjustResize"/>-->
-        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:exported="true" android:name="com.clilystudio.netbook.wxapi.WXEntryActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
         <activity android:name="com.clilystudio.netbook.ui.WifiActivity" android:screenOrientation="portrait"/>
         <activity android:name="com.clilystudio.netbook.reader.txt.ScanTxtFileActivity" android:screenOrientation="portrait"/>
         <activity android:name="com.clilystudio.netbook.reader.random.ReaderRandomEntranceActivity" android:screenOrientation="portrait"/>
@@ -210,13 +209,6 @@
         <activity android:name="com.clilystudio.netbook.ui.game.GameGiftListActivity" android:screenOrientation="portrait"/>
         <activity android:name="com.clilystudio.netbook.ui.game.GameLocalListActivity" android:screenOrientation="portrait"/>
         <activity android:name="com.clilystudio.netbook.ui.home.HomeTransparentActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.NoTitleBar.Fullscreen"/>
-        <activity android:launchMode="singleTop" android:name="com.clilystudio.netbook.wxapi.WXPayEntryActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.Dialog">
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW"/>
-                <category android:name="android.intent.category.DEFAULT"/>
-                <data android:scheme="wx1e7c2477db57dc75"/>
-            </intent-filter>
-        </activity>
         <activity android:name="com.clilystudio.netbook.ui.IntroActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.NoTitleBar.Fullscreen"/>
         <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:name="com.alipay.sdk.app.H5PayActivity" android:process="com.clilystudio.netbook.MGE_PROCESS" android:screenOrientation="behind" android:windowSoftInputMode="stateHidden|adjustResize"/>
         <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="com.arcsoft.hpay100.HPaySdkActivity"/>
