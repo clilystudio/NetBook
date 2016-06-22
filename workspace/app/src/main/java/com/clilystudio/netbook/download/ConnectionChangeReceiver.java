@@ -28,8 +28,7 @@ public class ConnectionChangeReceiver extends BroadcastReceiver {
             String string4 = sharedPreferences.getString("packageName", "");
             Set<String> set = sharedPreferences.getStringSet("downloadedPackage", null);
             boolean bl = set != null && set.contains(string4);
-            if (TextUtils.isEmpty(string)) return;
-            if (!TextUtils.isEmpty(string2) && !bl) {
+            if (!TextUtils.isEmpty(string) && !TextUtils.isEmpty(string2) && !bl) {
                 new a(context, string, string2, string3, string4).a();
             }
         }
