@@ -1520,37 +1520,34 @@ public class ApiService {
         hashMap.put("title", string2);
         hashMap.put("content", string3);
         hashMap.put("block", string4);
-        try {
-            HttpRequest httpRequest = this.b(HttpRequest.post(string5));
-            httpRequest.form(hashMap);
-            PostPublish postPublish = ApiService.a(httpRequest, PostPublish.class);
-            return postPublish;
-        } catch (HttpRequest.HttpRequestException var11_9) {
-            var11_9.printStackTrace();
-            throw var11_9.getCause();
-        }
+        HttpRequest httpRequest = this.b(HttpRequest.post(string5));
+        httpRequest.form(hashMap);
+        PostPublish postPublish = ApiService.a(httpRequest, PostPublish.class);
+        return postPublish;
     }
 
     public final TocSourceRoot g(String string) {
         String string2 = f + String.format(Locale.CHINA, "/aggregation-source/by-book?book=%s&v=5", string);
+        TocSourceRoot tocSourceRoot = null;
         try {
-            TocSourceRoot tocSourceRoot = ApiService.a(this.a(HttpRequest.get(string2)), TocSourceRoot.class);
-            return tocSourceRoot;
-        } catch (HttpRequest.HttpRequestException var3_4) {
-            throw var3_4.getCause();
+            tocSourceRoot = ApiService.a(this.a(HttpRequest.get(string2)), TocSourceRoot.class);
+        } catch (IOException e1) {
+            e1.printStackTrace();
         }
+        return tocSourceRoot;
     }
 
     public final UGCBookListRoot g(String string, int n) {
         StringBuilder stringBuilder = new StringBuilder().append(f);
         Object[] arrobject = new Object[]{string, n};
         String string2 = stringBuilder.append(String.format(Locale.CHINA, "/user/posted-book-list?token=%s&start=%d", arrobject)).toString();
+        UGCBookListRoot uGCBookListRoot = null;
         try {
-            UGCBookListRoot uGCBookListRoot = ApiService.a(this.a(HttpRequest.get(string2)), UGCBookListRoot.class);
-            return uGCBookListRoot;
-        } catch (HttpRequest.HttpRequestException var6_7) {
-            throw var6_7.getCause();
+            uGCBookListRoot = ApiService.a(this.a(HttpRequest.get(string2)), UGCBookListRoot.class);
+        } catch (IOException e1) {
+            e1.printStackTrace();
         }
+        return uGCBookListRoot;
     }
 
     public final FollowingsResult h(String string) {
@@ -1565,12 +1562,13 @@ public class ApiService {
 
     public final MysteryBookList h() {
         String string = f + "/book/mystery-box";
+        MysteryBookList mysteryBookList = null;
         try {
-            MysteryBookList mysteryBookList = ApiService.a(this.a(HttpRequest.get(string)), MysteryBookList.class);
-            return mysteryBookList;
-        } catch (HttpRequest.HttpRequestException var2_3) {
-            throw var2_3.getCause();
+            mysteryBookList = ApiService.a(this.a(HttpRequest.get(string)), MysteryBookList.class);
+        } catch (IOException e1) {
+            e1.printStackTrace();
         }
+        return mysteryBookList;
     }
 
     public final PostPublish h(String string, String string2, String string3) {
@@ -1579,15 +1577,10 @@ public class ApiService {
         hashMap.put("token", string);
         hashMap.put("title", string2);
         hashMap.put("content", string3);
-        try {
-            HttpRequest httpRequest = this.b(HttpRequest.post(string4));
-            httpRequest.form(hashMap);
-            PostPublish postPublish = ApiService.a(httpRequest, PostPublish.class);
-            return postPublish;
-        } catch (HttpRequest.HttpRequestException var9_8) {
-            var9_8.printStackTrace();
-            throw var9_8.getCause();
-        }
+        HttpRequest httpRequest = this.b(HttpRequest.post(string4));
+        httpRequest.form(hashMap);
+        PostPublish postPublish = ApiService.a(httpRequest, PostPublish.class);
+        return postPublish;
     }
 
     public final ResultStatus h(String string, String string2) {
@@ -1609,12 +1602,13 @@ public class ApiService {
         StringBuilder stringBuilder = new StringBuilder().append(f);
         Object[] arrobject = new Object[]{string, n};
         String string2 = stringBuilder.append(String.format(Locale.CHINA, "/user/draft-book-list?token=%s&start=%d", arrobject)).toString();
+        UGCBookListRoot uGCBookListRoot = null;
         try {
-            UGCBookListRoot uGCBookListRoot = ApiService.a(this.a(HttpRequest.get(string2)), UGCBookListRoot.class);
-            return uGCBookListRoot;
-        } catch (HttpRequest.HttpRequestException var6_7) {
-            throw var6_7.getCause();
+            uGCBookListRoot = ApiService.a(this.a(HttpRequest.get(string2)), UGCBookListRoot.class);
+        } catch (IOException e1) {
+            e1.printStackTrace();
         }
+        return uGCBookListRoot;
     }
 
     public final FollowersResult i(String string) {
@@ -1634,27 +1628,23 @@ public class ApiService {
         hashMap.put("content", string3);
         hashMap.put("game", string2);
         hashMap.put("block", "game");
-        try {
-            HttpRequest httpRequest = this.b(HttpRequest.post(string4));
-            httpRequest.form(hashMap);
-            PostPublish postPublish = ApiService.a(httpRequest, PostPublish.class);
-            return postPublish;
-        } catch (HttpRequest.HttpRequestException var10_8) {
-            var10_8.printStackTrace();
-            throw var10_8.getCause();
-        }
+        HttpRequest httpRequest = this.b(HttpRequest.post(string4));
+        httpRequest.form(hashMap);
+        PostPublish postPublish = ApiService.a(httpRequest, PostPublish.class);
+        return postPublish;
     }
 
     public final RecommendUgcRoot i(String string, int n) {
         StringBuilder stringBuilder = new StringBuilder().append(f);
         Object[] arrobject = new Object[]{string, 3};
         String string2 = stringBuilder.append(String.format(Locale.CHINA, "/book-list/%s/recommend?limit=%s", arrobject)).toString();
+        RecommendUgcRoot recommendUgcRoot = null;
         try {
-            RecommendUgcRoot recommendUgcRoot = ApiService.a(this.a(HttpRequest.get(string2)), RecommendUgcRoot.class);
-            return recommendUgcRoot;
-        } catch (HttpRequest.HttpRequestException var6_7) {
-            throw var6_7.getCause();
+            recommendUgcRoot = ApiService.a(this.a(HttpRequest.get(string2)), RecommendUgcRoot.class);
+        } catch (IOException e1) {
+            e1.printStackTrace();
         }
+        return recommendUgcRoot;
     }
 
     public final ResultStatus i(String string, String string2) {
@@ -1710,30 +1700,26 @@ public class ApiService {
         HashMap<String, String> hashMap = new HashMap<String, String>();
         hashMap.put("token", string2);
         hashMap.put("content", string3);
-        try {
-            HttpRequest httpRequest = this.b(HttpRequest.post(string4));
-            httpRequest.form(hashMap);
-            ResultStatus resultStatus = ApiService.a(httpRequest, ResultStatus.class);
-            return resultStatus;
-        } catch (HttpRequest.HttpRequestException var8_8) {
-            var8_8.printStackTrace();
-            throw var8_8.getCause();
-        }
+        HttpRequest httpRequest = this.b(HttpRequest.post(string4));
+        httpRequest.form(hashMap);
+        ResultStatus resultStatus = ApiService.a(httpRequest, ResultStatus.class);
+        return resultStatus;
     }
 
     public final SplashRoot j() {
         String string = f + "/splashes/android";
+        SplashRoot splashRoot = null;
         try {
-            SplashRoot splashRoot = ApiService.a(this.a(HttpRequest.get(string)), SplashRoot.class);
-            return splashRoot;
-        } catch (HttpRequest.HttpRequestException var2_3) {
-            throw var2_3.getCause();
+            splashRoot = ApiService.a(this.a(HttpRequest.get(string)), SplashRoot.class);
+        } catch (IOException e1) {
+            e1.printStackTrace();
         }
+        return splashRoot;
     }
 
     public final PostPublish k(String string, String string2) {
         String string3 = f + String.format(Locale.CHINA, "/user/twitter/delete/%s", string2);
-        HashMap<String, String> hashMap = new HashMap<String, String>();
+        HashMap<String, String> hashMap = new HashMap<>();
         hashMap.put("token", string);
         try {
             HttpRequest httpRequest = this.b(HttpRequest.post(string3));
@@ -1747,19 +1733,15 @@ public class ApiService {
 
     public final TopicSummary k() {
         String string = f + "/post/post-count";
+        TopicSummary topicSummary = null;
         try {
-            TopicSummary topicSummary = ApiService.a(this.a(HttpRequest.get(string)), TopicSummary.class);
-            return topicSummary;
-        } catch (HttpRequest.HttpRequestException var2_3) {
-            throw var2_3.getCause();
+            topicSummary = ApiService.a(this.a(HttpRequest.get(string)), TopicSummary.class);
+        } catch (IOException e1) {
+            e1.printStackTrace();
         }
+        return topicSummary;
     }
 
-    /*
-     * Enabled aggressive block sorting
-     * Enabled unnecessary exception pruning
-     * Enabled aggressive exception aggregation
-     */
     public final TweetsResult k(String string) {
         HttpRequest httpRequest;
         StringBuilder stringBuilder = new StringBuilder().append(f);
@@ -1784,22 +1766,12 @@ public class ApiService {
         HashMap<String, String> hashMap = new HashMap<String, String>();
         hashMap.put("token", string2);
         hashMap.put("n", string3);
-        try {
-            HttpRequest httpRequest = this.b(HttpRequest.post(string4));
-            httpRequest.form(hashMap);
-            VoteResult voteResult = ApiService.a(httpRequest, VoteResult.class);
-            return voteResult;
-        } catch (HttpRequest.HttpRequestException var8_8) {
-            var8_8.printStackTrace();
-            throw var8_8.getCause();
-        }
+        HttpRequest httpRequest = this.b(HttpRequest.post(string4));
+        httpRequest.form(hashMap);
+        VoteResult voteResult = ApiService.a(httpRequest, VoteResult.class);
+        return voteResult;
     }
 
-    /*
-     * Enabled aggressive block sorting
-     * Enabled unnecessary exception pruning
-     * Enabled aggressive exception aggregation
-     */
     public final PostDetailComment l(String string, String string2) {
         HttpRequest httpRequest;
         String string3 = f + String.format(Locale.CHINA, "/user/twitter/%s/comments", string);
@@ -1821,35 +1793,32 @@ public class ApiService {
         String string4 = f + String.format(Locale.CHINA, "/post/%s/comment/%s/report", string, string2);
         HashMap<String, String> hashMap = new HashMap<String, String>();
         hashMap.put("reason", string3);
-        try {
-            HttpRequest httpRequest = this.b(HttpRequest.post(string4));
-            httpRequest.form(hashMap);
-            ResultStatus resultStatus = ApiService.a(httpRequest, ResultStatus.class);
-            return resultStatus;
-        } catch (HttpRequest.HttpRequestException var7_8) {
-            var7_8.printStackTrace();
-            throw var7_8.getCause();
-        }
+        HttpRequest httpRequest = this.b(HttpRequest.post(string4));
+        httpRequest.form(hashMap);
+        ResultStatus resultStatus = ApiService.a(httpRequest, ResultStatus.class);
+        return resultStatus;
     }
 
     public final ShelfMsgRoot l() {
         String string = f + "/notification/shelfMessage?platform=android";
+        ShelfMsgRoot shelfMsgRoot = null;
         try {
-            ShelfMsgRoot shelfMsgRoot = ApiService.a(this.a(HttpRequest.get(string)), ShelfMsgRoot.class);
-            return shelfMsgRoot;
-        } catch (HttpRequest.HttpRequestException var2_3) {
-            throw var2_3.getCause();
+            shelfMsgRoot = ApiService.a(this.a(HttpRequest.get(string)), ShelfMsgRoot.class);
+        } catch (IOException e1) {
+            e1.printStackTrace();
         }
+        return shelfMsgRoot;
     }
 
     public final TweetResult l(String string) {
         String string2 = f + String.format(Locale.CHINA, "/user/twitter/%s", string);
+        TweetResult tweetResult = null;
         try {
-            TweetResult tweetResult = ApiService.a(this.a(HttpRequest.get(string2)), TweetResult.class);
-            return tweetResult;
-        } catch (Exception var3_4) {
-            return null;
+            tweetResult = ApiService.a(this.a(HttpRequest.get(string2)), TweetResult.class);
+        } catch (IOException e1) {
+            e1.printStackTrace();
         }
+        return tweetResult;
     }
 
     public final PostPublish m(String string, String string2) {
@@ -1871,15 +1840,10 @@ public class ApiService {
         HashMap<String, String> hashMap = new HashMap<String, String>();
         hashMap.put("token", string);
         hashMap.put("is_helpful", string3);
-        try {
-            HttpRequest httpRequest = this.b(HttpRequest.post(string4));
-            httpRequest.form(hashMap);
-            ResultStatus resultStatus = ApiService.a(httpRequest, ResultStatus.class);
-            return resultStatus;
-        } catch (HttpRequest.HttpRequestException var8_8) {
-            var8_8.printStackTrace();
-            throw var8_8.getCause();
-        }
+        HttpRequest httpRequest = this.b(HttpRequest.post(string4));
+        httpRequest.form(hashMap);
+        ResultStatus resultStatus = ApiService.a(httpRequest, ResultStatus.class);
+        return resultStatus;
     }
 
     public final UserInfoResult m(String string) {
@@ -1894,22 +1858,19 @@ public class ApiService {
 
     public final VipPlan m() {
         String string = f + "/purchase/vip/plan";
+        VipPlan vipPlan = null;
         try {
-            VipPlan vipPlan = ApiService.a(this.a(HttpRequest.get(string)), VipPlan.class);
-            return vipPlan;
-        } catch (HttpRequest.HttpRequestException var2_3) {
-            throw var2_3.getCause();
+            vipPlan = ApiService.a(this.a(HttpRequest.get(string)), VipPlan.class);
+        } catch (IOException e1) {
+            e1.printStackTrace();
         }
+        return vipPlan;
     }
 
     public final FollowResult n(String string, String string2) {
         String string3 = f + String.format(Locale.CHINA, "/user/%s/has/followed/%s", string, string2);
-        try {
-            FollowResult followResult = ApiService.a(this.b(HttpRequest.get(string3)), FollowResult.class);
-            return followResult;
-        } catch (Exception var4_5) {
-            return null;
-        }
+        FollowResult followResult = ApiService.a(this.b(HttpRequest.get(string3)), FollowResult.class);
+        return followResult;
     }
 
     public final ResultStatus n(String string, String string2, String string3) {
@@ -1918,79 +1879,48 @@ public class ApiService {
         hashMap.put("date", string);
         hashMap.put("uuid", string2);
         hashMap.put("book", string3);
-        try {
-            HttpRequest httpRequest = this.b(HttpRequest.post(string4));
-            httpRequest.form(hashMap);
-            ResultStatus resultStatus = ApiService.a(httpRequest, ResultStatus.class);
-            return resultStatus;
-        } catch (HttpRequest.HttpRequestException var9_8) {
-            var9_8.printStackTrace();
-            throw var9_8.getCause();
-        }
+        HttpRequest httpRequest = this.b(HttpRequest.post(string4));
+        httpRequest.form(hashMap);
+        ResultStatus resultStatus = ApiService.a(httpRequest, ResultStatus.class);
+        return resultStatus;
     }
 
-    /*
-     * Enabled force condition propagation
-     * Lifted jumps to return sites
-     */
     public final List<BookSummary> n(String string) {
-        SearchResultRoot searchResultRoot;
+        SearchResultRoot searchResultRoot = null;
         ArrayList<BookSummary> arrayList = new ArrayList<BookSummary>();
         String string2 = am.e(string);
         String string3 = f + String.format(Locale.CHINA, "/book/fuzzy-search?query=%s", string2);
         try {
             searchResultRoot = ApiService.a(this.a(HttpRequest.get(string3)), SearchResultRoot.class);
-            if (searchResultRoot == null) return arrayList;
-        } catch (HttpRequest.HttpRequestException var5_7) {
-            throw var5_7.getCause();
+        } catch (IOException e1) {
+            e1.printStackTrace();
         }
+        if (searchResultRoot == null) return arrayList;
         return searchResultRoot.getBooks();
     }
 
-    /*
-     * Unable to fully structure code
-     * Enabled aggressive block sorting
-     * Enabled unnecessary exception pruning
-     * Enabled aggressive exception aggregation
-     * Lifted jumps to return sites
-     */
     public final ResultStatus o(String var1_1, String var2_2, String var3_3) {
-        var4_4 = ApiService.f + String.format(Locale.CHINA, "/post/%s/comment/%s/like", var1_1, var2_2);
-        try {
-            var6_5 = HttpRequest.post(var4_4);
-            var7_6 = new HashMap<String, String>();
-            var7_6.put("token", var3_3);
-            var9_7 = this.b(var6_5);
-            var9_7.a(var7_6);
-            return (ResultStatus) ApiService.a(var9_7, ResultStatus.class);
-        } catch (IOException var5_9) {
-        }
-        **GOTO lbl -1000
-        catch(HttpRequest.HttpRequestException var5_11){
-        }
-        lbl - 1000: // 2 sources:
-        {
-            var5_10.printStackTrace();
-            return null;
-        }
+        String var4_4 = ApiService.f + String.format(Locale.CHINA, "/post/%s/comment/%s/like", var1_1, var2_2);
+        HttpRequest var6_5 = HttpRequest.post(var4_4);
+        HashMap<String, String> var7_6 = new HashMap<String, String>();
+        var7_6.put("token", var3_3);
+        HttpRequest var9_7 = this.b(var6_5);
+        var9_7.form(var7_6);
+        return ApiService.a(var9_7, ResultStatus.class);
     }
 
     public final SearchResultRoot o(String string) {
         String string2 = am.e(string);
         String string3 = f + "/book/accurate-search?author=" + string2;
+        SearchResultRoot searchResultRoot = null;
         try {
-            SearchResultRoot searchResultRoot = ApiService.a(this.a(HttpRequest.get(string3)), SearchResultRoot.class);
-            return searchResultRoot;
-        } catch (HttpRequest.HttpRequestException var4_5) {
-            throw var4_5.getCause();
+            searchResultRoot = ApiService.a(this.a(HttpRequest.get(string3)), SearchResultRoot.class);
+        } catch (IOException e1) {
+            e1.printStackTrace();
         }
+        return searchResultRoot;
     }
 
-    /*
-     * Enabled aggressive block sorting
-     * Enabled unnecessary exception pruning
-     * Enabled aggressive exception aggregation
-     */
     public final TweetsResult o(String string, String string2) {
         HttpRequest httpRequest;
         String string3 = f + String.format(Locale.CHINA, "/user/%s/twitter", string);
@@ -2010,12 +1940,13 @@ public class ApiService {
 
     public final UgcFilterRoot o() {
         String string = f + "/book-list/tagType";
+        UgcFilterRoot ugcFilterRoot = null;
         try {
-            UgcFilterRoot ugcFilterRoot = ApiService.a(this.a(HttpRequest.get(string)), UgcFilterRoot.class);
-            return ugcFilterRoot;
-        } catch (HttpRequest.HttpRequestException var2_3) {
-            throw var2_3.getCause();
+            ugcFilterRoot = ApiService.a(this.a(HttpRequest.get(string)), UgcFilterRoot.class);
+        } catch (IOException e1) {
+            e1.printStackTrace();
         }
+        return ugcFilterRoot;
     }
 
     /*
@@ -2025,29 +1956,25 @@ public class ApiService {
      */
     public final ChapterRoot p(String string, String string2) {
         String string3 = String.format(Locale.CHINA, "http://novel.mse.sogou.com/http_interface/getContData.php?md=%s&url=%s", string2, am.e(string));
-        try {
-            HttpRequest httpRequest = this.b(HttpRequest.get(string3), 7);
-            boolean bl = httpRequest.ok();
-            int n = httpRequest.code();
-            if (!bl && n >= 500) {
-                return ApiService.x();
+        HttpRequest httpRequest = this.b(HttpRequest.get(string3), 7);
+        boolean bl = httpRequest.ok();
+        int n = httpRequest.code();
+        if (!bl && n >= 500) {
+            return ApiService.x();
+        }
+        SgChapterRoot sgChapterRoot = ApiService.a(httpRequest, SgChapterRoot.class);
+        if (sgChapterRoot == null || sgChapterRoot.getContent() == null || sgChapterRoot.getContent().length <= 0) return null;
+        {
+            ChapterRoot chapterRoot = new ChapterRoot();
+            String string4 = com.clilystudio.netbook.hpay100.a.a.z(sgChapterRoot.getContent()[0].getBlock());
+            Chapter chapter = new Chapter();
+            chapter.setLink(string);
+            if (string4 != null && string4.contains("</")) {
+                string4 = Html.fromHtml(string4.replace("\n", "<br>")).toString();
             }
-            SgChapterRoot sgChapterRoot = ApiService.a(httpRequest, SgChapterRoot.class);
-            if (sgChapterRoot == null || sgChapterRoot.getContent() == null || sgChapterRoot.getContent().length <= 0) return null;
-            {
-                ChapterRoot chapterRoot = new ChapterRoot();
-                String string4 = com.clilystudio.netbook.hpay100.a.a.z(sgChapterRoot.getContent()[0].getBlock());
-                Chapter chapter = new Chapter();
-                chapter.setLink(string);
-                if (string4 != null && string4.contains("</")) {
-                    string4 = Html.fromHtml(string4.replace("\n", "<br>")).toString();
-                }
-                chapter.setBody(string4);
-                chapterRoot.setChapter(chapter);
-                return chapterRoot;
-            }
-        } catch (HttpRequest.HttpRequestException var4_11) {
-            throw var4_11.getCause();
+            chapter.setBody(string4);
+            chapterRoot.setChapter(chapter);
+            return chapterRoot;
         }
     }
 
@@ -2071,74 +1998,72 @@ public class ApiService {
     public final SearchResultRoot p(String string) {
         String string2 = am.e(string);
         String string3 = f + String.format(Locale.CHINA, "/book/fuzzy-search?query=%s", string2) + "&onlyTitle=true";
+        SearchResultRoot searchResultRoot = null;
         try {
-            SearchResultRoot searchResultRoot = ApiService.a(this.a(HttpRequest.get(string3)), SearchResultRoot.class);
-            return searchResultRoot;
-        } catch (HttpRequest.HttpRequestException var4_5) {
-            throw var4_5.getCause();
+            searchResultRoot = ApiService.a(this.a(HttpRequest.get(string3)), SearchResultRoot.class);
+        } catch (IOException e1) {
+            e1.printStackTrace();
         }
-    }
+        return searchResultRoot;
+     }
 
     public final ReviewHistory q(String string, String string2) {
         String string3 = f + String.format(Locale.CHINA, "/post/review/one-by-book-user?book=%s&token=%s", string, string2);
+        ReviewHistory reviewHistory = null;
         try {
-            ReviewHistory reviewHistory = ApiService.a(this.a(HttpRequest.get(string3)), ReviewHistory.class);
-            return reviewHistory;
-        } catch (HttpRequest.HttpRequestException var4_5) {
-            throw var4_5.getCause();
+            reviewHistory = ApiService.a(this.a(HttpRequest.get(string3)), ReviewHistory.class);
+        } catch (IOException e1) {
+            e1.printStackTrace();
         }
-    }
+        return reviewHistory;
+     }
 
     public final SearchPromRoot q(String string) {
         String string2 = am.e(string);
         String string3 = f + String.format(Locale.CHINA, "/book/search/%s/chinese-all-promo", string2);
+        SearchPromRoot searchPromRoot = null;
         try {
-            SearchPromRoot searchPromRoot = ApiService.a(this.a(HttpRequest.get(string3)), SearchPromRoot.class);
-            return searchPromRoot;
-        } catch (HttpRequest.HttpRequestException var4_5) {
-            throw var4_5.getCause();
+            searchPromRoot = ApiService.a(this.a(HttpRequest.get(string3)), SearchPromRoot.class);
+        } catch (IOException e1) {
+            e1.printStackTrace();
         }
-    }
+        return searchPromRoot;
+     }
 
     public final BookInfo r(String string) {
         String string2 = f + String.format(Locale.CHINA, "/book/%s", string);
+        BookInfo bookInfo = null;
         try {
-            BookInfo bookInfo = ApiService.a(this.a(HttpRequest.get(string2)), BookInfo.class);
-            return bookInfo;
-        } catch (HttpRequest.HttpRequestException var3_4) {
-            throw var3_4.getCause();
+            bookInfo = ApiService.a(this.a(HttpRequest.get(string2)), BookInfo.class);
+        } catch (IOException e1) {
+            e1.printStackTrace();
         }
-    }
+        return bookInfo;
+     }
 
-    /*
-     * Enabled aggressive block sorting
-     * Enabled unnecessary exception pruning
-     * Enabled aggressive exception aggregation
-     */
     public final NotificationRoot r(String string, String string2) {
         String string3 = com.clilystudio.netbook.hpay100.a.a.Q(string2) ? String.format(Locale.CHINA, "/user/notification/important?token=%s", string) : String.format(Locale.CHINA, "/user/notification/important?token=%s&startTime=%s", string, string2);
         String string4 = f + string3;
+        NotificationRoot notificationRoot = null;
         try {
-            return ApiService.a(this.a(HttpRequest.get(string4)), NotificationRoot.class);
-        } catch (HttpRequest.HttpRequestException var5_6) {
-            throw var5_6.getCause();
+            notificationRoot = ApiService.a(this.a(HttpRequest.get(string4)), NotificationRoot.class);
+        } catch (IOException e1) {
+            e1.printStackTrace();
         }
-    }
+        return notificationRoot;
+     }
 
-    /*
-     * Enabled aggressive block sorting
-     * Enabled unnecessary exception pruning
-     * Enabled aggressive exception aggregation
-     */
     public final NotificationRoot s(String string, String string2) {
         String string3 = com.clilystudio.netbook.hpay100.a.a.Q(string2) ? String.format(Locale.CHINA, "/user/notification/unimportant?token=%s", string) : String.format(Locale.CHINA, "/user/notification/unimportant?token=%s&startTime=%s", string, string2);
         String string4 = f + string3;
+        NotificationRoot notificationRoot = null;
         try {
-            return ApiService.a(this.a(HttpRequest.get(string4)), NotificationRoot.class);
-        } catch (HttpRequest.HttpRequestException var5_6) {
-            throw var5_6.getCause();
+            notificationRoot = ApiService.a(this.a(HttpRequest.get(string4)), NotificationRoot.class);
+        } catch (IOException e1) {
+            e1.printStackTrace();
         }
-    }
+        return notificationRoot;
+     }
 
     public final SgTocRoot s(String string) {
         String string2 = String.format(Locale.CHINA, "http://novel.mse.sogou.com/http_interface/getDirData.php?md=%s", string);
