@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
 
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.hpay100.a.a;
 import com.clilystudio.netbook.model.NotificationItem;
 import com.clilystudio.netbook.ui.SmartImageView;

@@ -7,7 +7,7 @@ import com.clilystudio.netbook.model.NotificationItem;
 
 public class PostHotBinder extends OfficialNotifBinder {
     public static final String LABEL = "post_hot";
-    public static final String MAIN_TEXT = "\u4f60\u7684\u5e16\u5b50\u88ab\u8bbe\u4e3a\u70ed\u95e8\u5566\uff0c\u793e\u533a\u79bb\u7a7a\u865a\u5bc2\u5bde\u51b7\u66f4\u8fdc\u4e86\u4e00\u70b9~";
+    public static final String MAIN_TEXT = "你的帖子被设为热门啦，社区离空虚寂寞冷更远了一点~";
 
     public PostHotBinder(NotificationItem notificationItem) {
         super(notificationItem);
@@ -30,7 +30,7 @@ public class PostHotBinder extends OfficialNotifBinder {
 
     @Override
     public String getMainText() {
-        return "\u4f60\u7684\u5e16\u5b50\u88ab\u8bbe\u4e3a\u70ed\u95e8\u5566\uff0c\u793e\u533a\u79bb\u7a7a\u865a\u5bc2\u5bde\u51b7\u66f4\u8fdc\u4e86\u4e00\u70b9~";
+        return "你的帖子被设为热门啦，社区离空虚寂寞冷更远了一点~";
     }
 
     @Override

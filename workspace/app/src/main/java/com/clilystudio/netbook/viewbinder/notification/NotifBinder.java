@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.widget.TextView;
 
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.model.NotificationItem;
 import com.clilystudio.netbook.ui.SmartImageView;
 import com.clilystudio.netbook.ui.post.BookHelpActivity;
@@ -46,14 +47,14 @@ public abstract class NotifBinder {
      * Enabled aggressive block sorting
      */
     protected int getPostIcon() {
-        NotificationItem$NotifPost notificationItem$NotifPost = this.getItem().getPost() != null ? this.getItem().getPost() : this.getItem().getMyPost();
+        NotificationItem.NotifPost notificationItem$NotifPost = this.getItem().getPost() != null ? this.getItem().getPost() : this.getItem().getMyPost();
         if ("vote".equals(notificationItem$NotifPost.getType())) {
             return R.drawable.ic_notif_vote;
         }
         return R.drawable.ic_notif_post;
     }
 
-    protected Intent getPostIntent(Context context, NotificationItem$NotifPost notificationItem$NotifPost) {
+    protected Intent getPostIntent(Context context, NotificationItem.NotifPost notificationItem$NotifPost) {
         String string = notificationItem$NotifPost.getType();
         if (string.equals("review")) {
             Intent intent = new Intent(context, ReviewActivity.class);

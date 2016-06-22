@@ -2,7 +2,6 @@ package com.clilystudio.netbook.viewbinder.notification;
 
 import com.clilystudio.netbook.model.NotificationItem;
 
-import org.apache.commons.lang3.a.a;
 
 import java.lang.reflect.InvocationTargetException;
 

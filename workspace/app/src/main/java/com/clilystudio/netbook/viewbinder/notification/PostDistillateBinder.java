@@ -7,7 +7,7 @@ import com.clilystudio.netbook.model.NotificationItem;
 
 public class PostDistillateBinder extends OfficialNotifBinder {
     public static final String LABEL = "post_distillate";
-    public static final String MAIN_TEXT = "\u4f60\u7684\u5e16\u5b50\u88ab\u8bbe\u4e3a\u7cbe\u534e\u5566\uff0c\u793e\u533a\u79bb\u5185\u6db5\u9ad8\u5927\u4e0a\u53c8\u8fd1\u4e86\u4e00\u70b9~";
+    public static final String MAIN_TEXT = "你的帖子被设为精华啦，社区离内涵高大上又近了一点~";
 
     public PostDistillateBinder(NotificationItem notificationItem) {
         super(notificationItem);
@@ -30,7 +30,7 @@ public class PostDistillateBinder extends OfficialNotifBinder {
 
     @Override
     public String getMainText() {
-        return "\u4f60\u7684\u5e16\u5b50\u88ab\u8bbe\u4e3a\u7cbe\u534e\u5566\uff0c\u793e\u533a\u79bb\u5185\u6db5\u9ad8\u5927\u4e0a\u53c8\u8fd1\u4e86\u4e00\u70b9~";
+        return "你的帖子被设为精华啦，社区离内涵高大上又近了一点~";
     }
 
     @Override

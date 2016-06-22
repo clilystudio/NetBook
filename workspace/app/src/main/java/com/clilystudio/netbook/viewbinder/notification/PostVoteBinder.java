@@ -3,6 +3,7 @@ package com.clilystudio.netbook.viewbinder.notification;
 import android.content.Context;
 import android.content.Intent;
 
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.model.NotificationItem;
 
 public class PostVoteBinder extends NotifBinder {
@@ -30,7 +31,7 @@ public class PostVoteBinder extends NotifBinder {
     @Override
     public String getMainText() {
         Object[] arrobject = new Object[]{this.getItem().getTrigger().getNickname()};
-        return String.format("%s \u53c2\u4e0e\u4e86\u6295\u7968", arrobject);
+        return String.format("%s 参与了投票", arrobject);
     }
 
     @Override

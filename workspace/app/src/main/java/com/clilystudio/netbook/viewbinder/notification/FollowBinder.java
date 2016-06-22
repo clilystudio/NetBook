@@ -3,6 +3,7 @@ package com.clilystudio.netbook.viewbinder.notification;
 import android.content.Context;
 import android.content.Intent;
 
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.model.NotificationItem;
 import com.clilystudio.netbook.model.User;
 import com.clilystudio.netbook.ui.post.OtherUserActivity;

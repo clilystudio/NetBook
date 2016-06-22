@@ -3,6 +3,7 @@ package com.clilystudio.netbook.viewbinder.notification;
 import android.content.Context;
 import android.content.Intent;
 
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.model.NotificationItem;
 
 public class CommentLikeBinder extends NotifBinder {
@@ -29,7 +30,7 @@ public class CommentLikeBinder extends NotifBinder {
 
     @Override
     public String getMainText() {
-        return this.getItem().getTrigger().getNickname() + " \u540c\u611f\u4e86\u4f60\u7684\u8bc4\u8bba";
+        return this.getItem().getTrigger().getNickname() + " 同感了你的评论";
     }
 
     @Override

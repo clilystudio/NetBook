@@ -3,6 +3,7 @@ package com.clilystudio.netbook.viewbinder.notification;
 import android.content.Context;
 import android.content.Intent;
 
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.model.NotificationItem;
 
 public class CommentReplyBinder extends NotifBinder {
@@ -32,7 +33,7 @@ public class CommentReplyBinder extends NotifBinder {
     @Override
     public String getMainText() {
         NotificationItem notificationItem = this.getItem();
-        return notificationItem.getTrigger().getNickname() + "\uff1a" + notificationItem.getComment().getContent();
+        return notificationItem.getTrigger().getNickname() + "：" + notificationItem.getComment().getContent();
     }
 
     @Override
