@@ -19,9 +19,7 @@ import android.widget.TextView;
 import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.am;
-import com.clilystudio.netbook.api.ApiService;
 import com.clilystudio.netbook.event.v;
-import com.clilystudio.netbook.model.MenuAd;
 import com.clilystudio.netbook.model.TocSummary;
 import com.clilystudio.netbook.ui.RelateBookListActivity;
 import com.clilystudio.netbook.ui.SmartImageView;
@@ -33,7 +31,6 @@ import com.clilystudio.netbook.widget.LoadingContainer;
 import com.umeng.a.b;
 import com.xiaomi.mistatistic.sdk.MiStatInterface;
 
-import java.text.DecimalFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -246,25 +243,6 @@ public class ReaderMenuFragment extends Fragment {
      * Enabled aggressive block sorting
      */
     static /* synthetic */ void n(ReaderMenuFragment readerMenuFragment) {
-        MenuAd menuAd = a.a().b();
-        if (menuAd != null && readerMenuFragment.getView() != null) {
-            SmartImageView smartImageView = (SmartImageView) readerMenuFragment.getView().findViewById(R.id.slm_reader_app_icon);
-            TextView textView = (TextView) readerMenuFragment.getView().findViewById(R.id.slm_reader_app_title);
-            TextView textView2 = (TextView) readerMenuFragment.getView().findViewById(R.id.slm_reader_app_desc);
-            smartImageView.setDrawingCacheEnabled(true);
-            smartImageView.setImageUrl(ApiService.a + menuAd.getIcon());
-            String string = new DecimalFormat("0.00").format(menuAd.getSize() / 1024 / 1024);
-            readerMenuFragment.h = menuAd.getInsideLink();
-            TextView textView3 = (TextView) readerMenuFragment.getView().findViewById(R.id.download);
-            String string2 = readerMenuFragment.c() ? "\u67e5\u770b" : "\u5b89\u88c5";
-            textView3.setText(string2);
-            readerMenuFragment.c = string + "M";
-            readerMenuFragment.b = menuAd.getName();
-            readerMenuFragment.d = menuAd.get_id();
-            readerMenuFragment.a = menuAd.getDownload_link();
-            textView.setText(menuAd.getName());
-            textView2.setText(menuAd.getIntro());
-        }
     }
 
     private boolean c() {
