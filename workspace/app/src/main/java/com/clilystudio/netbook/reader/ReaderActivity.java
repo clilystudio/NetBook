@@ -337,7 +337,20 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         } else if (!n2.e()) {
             readerActivity.b[2].a(n2, true);
             readerActivity.m.setCurrentItem(2, false);
-            n2.b((e) new aD(readerActivity));
+            n2.b(new e<n>(){
+
+                @Override
+                public void a(n var1) {
+                    ReaderActivity.i(readerActivity)[1].a(var1);
+                    n2.b(new e<n>(){
+                        @Override
+                        public void a(n var11) {
+                            ReaderActivity.i(readerActivity)[0].a(var11);
+                            ReaderActivity.X(readerActivity);
+                        }
+                    });
+                }
+            });
         } else {
             readerActivity.b[1].a(n2, true);
             readerActivity.m.setCurrentItem(1, false);

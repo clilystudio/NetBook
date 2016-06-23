@@ -7,3 +7,13 @@ Lcom/nostra13/universalimageloader/core/e; ==> DisplayImageOptions?
 Lcom/nostra13/universalimageloader/core/f; ==> ImageLoader
 Lcom/nostra13/universalimageloader/core/g; ==> ImageLoaderConfiguration
 Lcom/nostra13/universalimageloader/core/i;
+
+===================================
+package wait fix
+-----------------------------------
+event
+hpay100
+reader    《==
+ui
+util
+widget
