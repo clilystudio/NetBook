@@ -145,7 +145,7 @@ public final class Reader {
         return string;
     }
 
-    static /* synthetic */ void a(Reader reader, int n2, Reader$Type reader$Type) {
+    static /* synthetic */ void a(Reader reader, int n2, Reader.Type reader$Type) {
         reader.a(n2, reader$Type);
     }
 
@@ -251,7 +251,7 @@ public final class Reader {
         return ReaderChapter.create(chapterLink, this.g(), n2);
     }
 
-    private void a(int n2, final Reader$Type type) {
+    private void a(int n2, final Reader.Type type) {
         if (n2 == 0) {
             if (this.t == 0) {
                 this.o.post(new Q(this));
@@ -283,14 +283,11 @@ public final class Reader {
     }
 
     private boolean o() {
-        if (5 == this.y) {
-            return true;
-        }
-        return false;
+        return 5 == this.y;
     }
 
     private void p() {
-        this.a(1, Reader$Type.CHAPTER);
+        this.a(1, Reader.Type.CHAPTER);
     }
 
     public final void a() {
@@ -363,14 +360,14 @@ public final class Reader {
         Chapter chapter;
         ReaderChapter readerChapter = com.clilystudio.netbook.util.Q.a(this.c, this.x, n2);
         if (readerChapter != null && (n4 = readerChapter.getStatus()) != -1 && n4 != -3 && n4 != -2) {
-            e2.a((Object) readerChapter);
+            e2.a(readerChapter);
             this.p();
             this.a.put(n2, readerChapter);
             return;
         }
         ReaderChapter readerChapter2 = this.a.get(n2);
         if (readerChapter2 != null && ((n3 = readerChapter2.getStatus()) != -1 && n3 != -3 && n3 != -2 || bl)) {
-            e2.a((Object) readerChapter2);
+            e2.a(readerChapter2);
             this.p();
             return;
         }
@@ -378,7 +375,7 @@ public final class Reader {
         if (arrchapterLink == null || arrchapterLink.length == 0) {
             ReaderChapter readerChapter3 = new ReaderChapter();
             readerChapter3.setStatus(-4);
-            e2.a((Object) readerChapter3);
+            e2.a(readerChapter3);
             this.p();
             return;
         }
@@ -388,25 +385,80 @@ public final class Reader {
             n2 = -1 + arrchapterLink.length;
         }
         ChapterLink chapterLink = arrchapterLink[n2];
-        if (this.c != null && this.e != null && chapterLink != null && chapterLink.getLink() != null && (chapter = (Chapter) a.b(this.c, this.e, string = am.e((String) chapterLink.getLink()))) != null) {
+        if (this.c != null && this.e != null && chapterLink != null && chapterLink.getLink() != null && (chapter = (Chapter) a.b(this.c, this.e, string = am.e(chapterLink.getLink()))) != null) {
             ReaderChapter readerChapter4 = this.a(chapterLink, n2);
             readerChapter4.setBody(chapter.getBody());
             readerChapter4.setCpContent(chapter.getContent());
             readerChapter4.setId(chapter.getId());
-            e2.a((Object) readerChapter4);
+            e2.a(readerChapter4);
             this.p();
             return;
         }
         if (!bl2 && !bl) {
-            e2.a((Object) this.a(chapterLink, n2));
+            e2.a(this.a(chapterLink, n2));
             this.p();
             return;
         }
         this.C.a(n2, e2, bl);
     }
 
-    public final void a(ad ad2, boolean bl) {
-        new Thread(new P(this, bl, ad2)).start();
+    public final void a(final ad ad2, final boolean bla) {
+//        P(this, bl, ad2)
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                boolean bl;
+                Reader.a(Reader.this, 0, Reader.Type.TOC);
+                if (Reader.f(Reader.this)) {
+                    Reader.a(Reader.this, com.clilystudio.netbook.reader.txt.U.a(Reader.g(Reader.this)));
+                    bl = false;
+                } else {
+                    Reader.a(Reader.this, Reader.a(Reader.this, Reader.h(Reader.this), Reader.i(Reader.this), Reader.j(Reader.this)));
+                    Reader.a(Reader.this, Reader.k(Reader.this));
+                    boolean bl2 = Reader.l(Reader.this) == null || bla;
+                    if (bl2) {
+                        Reader.a(Reader.this, Reader.m(Reader.this));
+                        bl = false;
+                    } else {
+                        bl = true;
+                    }
+                }
+                if (Reader.l(Reader.this) != null) {
+                    this.c();
+                    if (!Reader.f(Reader.this) && !bl) {
+                        Reader.b(Reader.this, Reader.l(Reader.this));
+                    }
+                    if (bl) {
+                        Reader.a(Reader.this, new ag(Reader.this));
+                        Reader.n(Reader.this).b();
+                    }
+                } else {
+                    Reader.a(Reader.this, Reader.k(Reader.this));
+                    if (Reader.l(Reader.this) != null) {
+                        this.c();
+                    } else {
+                        Reader.d(Reader.this).post(new Runnable() {
+                            @Override
+                            public void run() {
+                                ad2.b();
+                            }
+                        });
+                    }
+                }
+                Reader.a(Reader.this, 1, Reader.Type.TOC);
+           }
+
+            private void c() {
+                Reader.a(Reader.this, Reader.l(Reader.this).getHost());
+                Reader.a(Reader.this, Reader.l(Reader.this).getChapters());
+                Reader.d(Reader.this).post(new Runnable() {
+                    @Override
+                    public void run() {
+                        ad2.a();
+                    }
+                });
+            }
+        }).start();
     }
 
     public final void a(ae ae2) {
@@ -479,7 +531,7 @@ public final class Reader {
 
     public final ChapterLink[] h() {
         if (this.g != null) {
-            return (ChapterLink[]) this.g.clone();
+            return this.g.clone();
         }
         return null;
     }
@@ -511,10 +563,7 @@ public final class Reader {
     }
 
     public final boolean m() {
-        if (BookReadRecord.getOnShelf(this.c) != null) {
-            return true;
-        }
-        return false;
+        return BookReadRecord.getOnShelf(this.c) != null;
     }
 
     /*
@@ -536,7 +585,7 @@ public final class Reader {
 
         private int code;
 
-        private Type(int paramInt) {
+        Type(int paramInt) {
             this.code = paramInt;
         }
 

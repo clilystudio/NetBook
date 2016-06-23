@@ -48,7 +48,8 @@ public class ScanTxtFileActivity extends BaseActivity {
     }
 
     static /* synthetic */ void a(ScanTxtFileActivity scanTxtFileActivity, int n) {
-        scanTxtFileActivity.mStatus.setText("扫描到" + n + "个txt文件");
+        String text = "扫描到" + n + "个txt文件";
+        scanTxtFileActivity.mStatus.setText(text);
     }
 
     static /* synthetic */ boolean a(ScanTxtFileActivity scanTxtFileActivity, boolean bl) {
@@ -57,7 +58,7 @@ public class ScanTxtFileActivity extends BaseActivity {
     }
 
     static /* synthetic */ int b(ScanTxtFileActivity scanTxtFileActivity, int n) {
-        scanTxtFileActivity.c = 0;
+        scanTxtFileActivity.c = n;
         return 0;
     }
 
@@ -86,30 +87,26 @@ public class ScanTxtFileActivity extends BaseActivity {
                     stack.push(file2);
                 } else {
                     String string;
-                    boolean bl;
                     String string2;
                     String string3;
-                    boolean bl2;
-                    boolean bl3;
                     int n3 = file2.getName().lastIndexOf(".");
                     String string4 = file2.getName();
                     if (n3 == -1) {
                         n3 = 0;
                     }
-                    if (bl2 = (bl3 = (".txt".equals(string2 = string4.substring(n3)) || ".TXT".equals(string2)) && file2.length() > 300) && !(bl = (string = file2.getName()) == null ? true : (string3 = string.toLowerCase()).contains("log") || string3.contains("debug") || string3.contains("jason") || string3.contains("sig") || Pattern.compile("^.*[0-9]+(-|/| )?[0-9]+(-|/| )?[0-9]+.*$").matcher(string).matches())) {
+                    if (((".txt".equals(string2 = string4.substring(n3)) || ".TXT".equals(string2)) && file2.length() > 300) && !((string = file2.getName()) == null ? true : (string3 = string.toLowerCase()).contains("log") || string3.contains("debug") || string3.contains("jason") || string3.contains("sig") || Pattern.compile("^.*[0-9]+(-|/| )?[0-9]+(-|/| )?[0-9]+.*$").matcher(string).matches())) {
                         boolean bl4;
                         block9:
                         {
-                            Iterator<BookFile> iterator = this.e.iterator();
-                            while (iterator.hasNext()) {
-                                if (!iterator.next().getFilePath().equals(file2.getPath())) continue;
+                            for (BookFile anE : this.e) {
+                                if (!anE.getFilePath().equals(file2.getPath())) continue;
                                 bl4 = true;
                                 break block9;
                             }
                             bl4 = false;
                         }
                         if (!bl4) {
-                            this.b.add(new T_Clazz(this, file2, (byte)0));
+                            this.b.add(new T_Clazz(file2));
                             Collections.sort(this.b, new Comparator<T_Clazz>() {
                                 @Override
                                 public int compare(T_Clazz lhs, T_Clazz rhs) {

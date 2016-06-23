@@ -313,11 +313,27 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
     /*
      * Enabled aggressive block sorting
      */
-    static /* synthetic */ void a(ReaderActivity readerActivity, n n2) {
+    static /* synthetic */ void a(final ReaderActivity readerActivity, final n n2) {
         if (!n2.f()) {
             readerActivity.b[0].a(n2, true);
             readerActivity.m.setCurrentItem(0, false);
-            n2.a((e) new aB(readerActivity));
+            n2.a(new e<n>(){
+
+                @Override
+                public void a(n var1) {
+                    ReaderActivity.i(readerActivity)[1].a(var1);
+                    if (var1 != null) {
+                        var1.a(new e<n>(){
+
+                            @Override
+                            public void a(n var11) {
+                                ReaderActivity.i(readerActivity)[2].a(var11);
+                                ReaderActivity.X(readerActivity);
+                            }
+                        });
+                    }
+                }
+            });
         } else if (!n2.e()) {
             readerActivity.b[2].a(n2, true);
             readerActivity.m.setCurrentItem(2, false);

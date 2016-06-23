@@ -9,17 +9,13 @@ final class T_Clazz {
     private BookFile b;
     private long c;
 
-    private T_Clazz(ScanTxtFileActivity scanTxtFileActivity, BookFile bookFile) {
+    private T_Clazz(BookFile bookFile) {
         this.b = bookFile;
     }
 
-    private T_Clazz(ScanTxtFileActivity scanTxtFileActivity, File file) {
-        this(scanTxtFileActivity, new BookFile(file));
+    public T_Clazz(File file) {
+        this(new BookFile(file));
         this.c = file.lastModified();
-    }
-
-    /* synthetic */ T_Clazz(ScanTxtFileActivity scanTxtFileActivity, File file, byte by) {
-        this(scanTxtFileActivity, file);
     }
 
     public final BookFile a() {
@@ -34,12 +30,8 @@ final class T_Clazz {
         return this.a;
     }
 
-    /*
-     * Enabled aggressive block sorting
-     */
     public final void c() {
-        boolean bl = !this.a;
-        this.a = bl;
+        this.a = !this.a;
     }
 
     public final long d() {
