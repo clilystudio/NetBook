@@ -1,5 +1,7 @@
 package com.clilystudio.netbook.reader.txt;
 
+import android.util.Log;
+
 import com.clilystudio.netbook.c;
 import com.clilystudio.netbook.model.ChapterLink;
 import com.clilystudio.netbook.model.Toc;
@@ -8,13 +10,13 @@ import com.clilystudio.netbook.model.mixtoc.LocalTxtToc;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public final class U {
@@ -26,81 +28,66 @@ public final class U {
      * Lifted jumps to return sites
      */
     public static Toc a(String var0) {
-        block18:
-        {
-            var1_1 = new Toc();
-            var1_1.setHost(var0);
-            var3_2 = U.d(var0);
-            if (var3_2 == null)**GOTO lbl8
-            if (var3_2.size() != 0) break block18;
-            lbl8:
-            // 2 sources:
-            var4_3 = U.a;
-            block10:
-            for (var5_4 = 0; var5_4 < 2; ++var5_4) {
-                var6_5 = var4_3[var5_4];
-                var7_6 = a.G(var0);
-                var8_7 = new ArrayList<ChapterLink>();
-                var9_8 = Pattern.compile(var6_5);
-                var10_9 = 0;
-                var11_10 = 0;
-                var12_11 = 0;
-                do {
-                    block19:
-                    {
-                        var13_12 = var7_6.readLine();
-                        if (var13_12 == null) break;
-                        var14_13 = var9_8.matcher(var13_12);
-                        if (var14_13.find() && var14_13.groupCount() > 0) {
-                            if (var8_7.size() > 0) {
-                                var18_16 = var8_7.get(-1 + var8_7.size());
-                                var18_16.setTxtCharLength(var11_10 - var18_16.getTxtCharOffset());
-                            }
-                            var16_15 = new ChapterLink();
-                            var16_15.setUnreadble(false);
-                            var16_15.setTitle(var14_13.group(1));
-                            var16_15.setTxtLineOffset(var12_11);
-                            var16_15.setTxtCharOffset(var11_10);
-                            var8_7.add(var16_15);
-                            var10_9 = var12_11;
-                        }
-                        if (var12_11 - var10_9 <= 2000) break block19;
-                        var3_2 = new ArrayList<ChapterLink>();
-                        lbl38:
-                        // 2 sources:
-                        while (var3_2.size() == 0) {
-                            continue block10;
-                        }
-                        break block10;
-                    }
-                    var15_14 = var12_11 + 1;
-                    var11_10 += var13_12.length();
-                    var12_11 = var15_14;
-                    continue;
-                    break;
-                } while (true);
-                if (var8_7.size() > 0) {
-                    var19_17 = var8_7.get(-1 + var8_7.size());
-                    var19_17.setTxtCharLength(var11_10 - var19_17.getTxtCharOffset());
-                    U.a(var8_7, var0);
-                }
-                var7_6.close();
-                var3_2 = var8_7;
-                **GOTO lbl38
-            }
+        Toc var1_1 = new Toc();
+        var1_1.setHost(var0);
+        List<ChapterLink> var3_2 = U.d(var0);
+        if (var3_2 != null && var3_2.size() != 0) {
+            var1_1.setChapters(var3_2.toArray(new ChapterLink[var3_2.size()]));
+            return var1_1;
         }
-        if (var3_2 == null)**GOTO lbl -1000
         try {
-            if (var3_2.size() == 0) lbl - 1000: // 2 sources:
-            {
+            for (int var5_4 = 0; var5_4 < 2; ++var5_4) {
+                String var6_5 = U.a[var5_4];
+                BufferedReader var7_6 = com.clilystudio.netbook.hpay100.a.a.G(var0);
+                List<ChapterLink> var8_7 = new ArrayList<ChapterLink>();
+                Pattern var9_8 = Pattern.compile(var6_5);
+                int var10_9 = 0;
+                int var11_10 = 0;
+                int var12_11 = 0;
+                String var13_12 = var7_6.readLine();
+                while (var13_12 != null) {
+                    Matcher var14_13 = var9_8.matcher(var13_12);
+                    if (var14_13.find() && var14_13.groupCount() > 0) {
+                        if (var8_7.size() > 0) {
+                            ChapterLink var18_16 = var8_7.get(-1 + var8_7.size());
+                            var18_16.setTxtCharLength(var11_10 - var18_16.getTxtCharOffset());
+                        }
+                        ChapterLink var16_15 = new ChapterLink();
+                        var16_15.setUnreadble(false);
+                        var16_15.setTitle(var14_13.group(1));
+                        var16_15.setTxtLineOffset(var12_11);
+                        var16_15.setTxtCharOffset(var11_10);
+                        var8_7.add(var16_15);
+                        var10_9 = var12_11;
+                    }
+                    if (var12_11 - var10_9 > 2000) {
+                        var3_2 = new ArrayList<ChapterLink>();
+                        break;
+                    }
+                    var11_10 += var13_12.length();
+                    var12_11++;
+                    var13_12 = var7_6.readLine();
+                }
+                if (var13_12 == null) {
+                    if (var8_7.size() > 0) {
+                        ChapterLink var19_17 = var8_7.get(-1 + var8_7.size());
+                        var19_17.setTxtCharLength(var11_10 - var19_17.getTxtCharOffset());
+                        U.a(var8_7, var0);
+                    }
+                    var7_6.close();
+                    var3_2 = var8_7;
+                    var1_1.setChapters(var3_2.toArray(new ChapterLink[var3_2.size()]));
+                    return var1_1;
+                }
+            }
+            if (var3_2 == null || var3_2.size() == 0) {
                 if ((var3_2 = U.c(var0)).size() > 0) {
                     var1_1.setRealChapter(false);
                 }
             }
             var1_1.setChapters(var3_2.toArray(new ChapterLink[var3_2.size()]));
             return var1_1;
-        } catch (IOException var2_18) {
-            var2_18.printStackTrace();
+        } catch (IOException e1) {
             return null;
         }
     }
@@ -123,13 +110,12 @@ public final class U {
         int n = string2.lastIndexOf(".");
         if (n != -1) {
             return string2.substring(0, n);
+        } else {
+            Log.e("", "FileNotFoundException");
+            return null;
         }
-        throw new FileNotFoundException();
     }
 
-    /*
-     * Enabled aggressive block sorting
-     */
     private static List<ChapterLink> c(String string) {
         String string2;
         BufferedReader bufferedReader = a.G(string);

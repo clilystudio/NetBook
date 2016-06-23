@@ -399,15 +399,6 @@ public class a {
         return string.substring(1 + string.lastIndexOf(File.separator));
     }
 
-    public static void K(Context context) {
-        long l2 = a.a(context, "tts_start_time", 0);
-        long l3 = new Date().getTime();
-        if (l2 > 0 && l3 > l2) {
-            MiStatInterface.recordCalculateEvent("tts_speaking_period", null, (int) ((l3 - l2) / 1000 / 60));
-        }
-        a.b(context, "tts_start_time", 0);
-    }
-
     public static int L(Context context) {
         DisplayMetrics displayMetrics = new DisplayMetrics();
         ((WindowManager) context.getSystemService("window")).getDefaultDisplay().getMetrics(displayMetrics);
