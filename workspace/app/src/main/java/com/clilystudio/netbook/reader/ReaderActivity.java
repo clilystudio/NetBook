@@ -354,7 +354,22 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         } else {
             readerActivity.b[1].a(n2, true);
             readerActivity.m.setCurrentItem(1, false);
-            n2.a((e) new aF(readerActivity, n2));
+            n2.a(new e<n>() {
+
+                @Override
+                public void a(n var1) {
+                     ReaderActivity.i(readerActivity)[2].a(var1);
+                    n2.b(new e<n>() {
+
+                        @Override
+                        public void a(n var11) {
+                            ReaderActivity.i(readerActivity)[0].a(var11);
+                            ReaderActivity.X(readerActivity);
+                        }
+                    });
+
+                }
+            });
         }
         if (readerActivity.M == 1) {
             readerActivity.M();
@@ -1643,7 +1658,23 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         this.r.setOnBtnClickListener$7ead76dc((com.umeng.update.a) ((Object) new ak(this)));
         this.s.setReaderStyle(this.h, this.r);
         this.s.a((db) ((Object) new av(this)));
-        this.s.a(new aJ(this));
+        this.s.a(new dc() {
+            @Override
+            public void a() {
+                ReaderActivity.f(ReaderActivity.this);
+                ReaderActivity.a(ReaderActivity.this, 1);
+                ReaderActivity.h(ReaderActivity.this).setReadMode(ReaderActivity.g(ReaderActivity.this));
+                ReaderActivity.k(ReaderActivity.this).setTotalHeight(ReaderActivity.i(ReaderActivity.this)[ReaderActivity.j(ReaderActivity.this)].d());
+                if (ReaderActivity.l(ReaderActivity.this).i()) {
+                    ReaderActivity.k(ReaderActivity.this).setText(ReaderActivity.m(ReaderActivity.this).a((Context) ReaderActivity.this));
+                } else {
+                    ReaderActivity.k(ReaderActivity.this).setText(ReaderActivity.m(ReaderActivity.this).c());
+                }
+                ReaderActivity.k(ReaderActivity.this).f();
+                ReaderActivity.n(ReaderActivity.this);
+
+            }
+        });
         this.u.a(this.V);
         this.u.setOnPlayChangeListener(new aU(this));
         this.t.setOptionClickListener(this);
