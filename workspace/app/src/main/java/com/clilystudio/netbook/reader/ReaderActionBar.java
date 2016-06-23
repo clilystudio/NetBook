@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 public class ReaderActionBar extends RelativeLayout {
     private View a;
-    private com.umeng.update.a b;
+    private OnBtnClickListener b;
     private bZ c;
     private TextView d;
     private ImageView e;
@@ -93,22 +93,13 @@ public class ReaderActionBar extends RelativeLayout {
         this.j.setVisibility(View.GONE);
     }
 
-    /*
-     * Enabled aggressive block sorting
-     */
     public final void f(boolean bl) {
-        View view = this.i;
-        int n = bl ? 0 : 4;
-        view.setVisibility(n);
+         this.i.setVisibility(bl ? VISIBLE : INVISIBLE);
     }
 
-    /*
-     * Enabled aggressive block sorting
-     */
     public final void g(boolean bl) {
         View view = this.findViewById(R.id.reader_ab_chapter_url_view);
-        int n = bl ? 0 : 8;
-        view.setVisibility(n);
+        view.setVisibility(bl ? VISIBLE : GONE);
     }
 
     @Override
@@ -163,7 +154,7 @@ public class ReaderActionBar extends RelativeLayout {
         this.k.setText(string);
     }
 
-    public void setOnBtnClickListener$7ead76dc(com.umeng.update.a a2) {
+    public void setOnBtnClickListener(OnBtnClickListener a2) {
         this.b = a2;
     }
 
@@ -174,5 +165,9 @@ public class ReaderActionBar extends RelativeLayout {
 
     public void setTitle(String string) {
         this.f.setText(string);
+    }
+
+    public interface OnBtnClickListener {
+        public abstract void a(int n2);
     }
 }

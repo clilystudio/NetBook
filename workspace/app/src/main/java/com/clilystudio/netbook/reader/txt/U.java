@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 public final class U {
-    private static final String[] a = new String[]{"\b*(\u7b2c.+\u7ae0)", "(\\d{3})\\s"};
+    private static final String[] a = new String[]{"\b*(第.+章)", "(\\d{3})\\s"};
 
     /*
      * Unable to fully structure code

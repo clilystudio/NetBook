@@ -2254,7 +2254,7 @@ public class a {
                     string4 = cursor.getString(cursor.getColumnIndex("local_uri"));
                     continue;
                 }
-                com.clilystudio.netbook.util.e.a((Activity) activity, (String) "\u6b63\u5728\u4e0b\u8f7d,\u8bf7\u7a0d\u540e");
+                com.clilystudio.netbook.util.e.a((Activity) activity, (String) "正在下载,请稍后");
                 return;
             }
             cursor.close();

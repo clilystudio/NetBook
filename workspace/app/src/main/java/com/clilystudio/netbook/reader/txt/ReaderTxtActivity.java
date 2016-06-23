@@ -16,34 +16,39 @@ import android.support.v4.view.PagerAdapter;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.WindowManager;
 
 import com.clilystudio.netbook.MyApplication;
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.db.BookFile;
 import com.clilystudio.netbook.model.ChapterLink;
 import com.clilystudio.netbook.model.TxtFileObject;
 import com.clilystudio.netbook.reader.AutoReaderSetWidget;
 import com.clilystudio.netbook.reader.AutoReaderTextView;
+import com.clilystudio.netbook.reader.G;
 import com.clilystudio.netbook.reader.PagerWidget;
 import com.clilystudio.netbook.reader.Reader;
 import com.clilystudio.netbook.reader.ReaderActionBar;
+import com.clilystudio.netbook.reader.ReaderOptionActivity;
 import com.clilystudio.netbook.reader.ReaderTocDialog;
 import com.clilystudio.netbook.reader.ReaderTtsSetWidget;
 import com.clilystudio.netbook.reader.SettingWidget;
-import com.clilystudio.netbook.reader.TtsSpeakingService;
 import com.clilystudio.netbook.reader.ad;
 import com.clilystudio.netbook.reader.ae;
 import com.clilystudio.netbook.reader.bH;
 import com.clilystudio.netbook.reader.bZ;
+import com.clilystudio.netbook.reader.ca;
+import com.clilystudio.netbook.reader.cb;
+import com.clilystudio.netbook.reader.cc;
+import com.clilystudio.netbook.reader.cd;
+import com.clilystudio.netbook.reader.ce;
 import com.clilystudio.netbook.reader.cw;
 import com.clilystudio.netbook.reader.db;
 import com.clilystudio.netbook.reader.dc;
+import com.clilystudio.netbook.reader.e;
 import com.clilystudio.netbook.reader.n;
 import com.clilystudio.netbook.reader.o;
-import com.iflytek.cloud.InitListener;
-import com.iflytek.cloud.SpeechSynthesizer;
-import com.iflytek.cloud.SpeechUtility;
-import com.iflytek.cloud.SynthesizerListener;
 
 import java.io.File;
 import java.util.LinkedList;
@@ -57,9 +62,7 @@ public class ReaderTxtActivity extends FragmentActivity implements com.clilystud
     private String[] D;
     private int E = 0;
     private LinkedList<Integer> F;
-    private SpeechSynthesizer G;
     private PowerManager.WakeLock H = null;
-    private SynthesizerListener I;
     private Runnable J;
     private BroadcastReceiver K;
     private BroadcastReceiver L;
@@ -87,13 +90,38 @@ public class ReaderTxtActivity extends FragmentActivity implements com.clilystud
     private int w = 0;
     private AutoReaderTextView x;
     private View y;
-    private ReaderTtsSetWidget z;
 
     public ReaderTxtActivity() {
-        this.I = new d(this);
-        this.J = new E(this);
-        this.K = new F(this);
-        this.L = new G(this);
+        this.J = new Runnable() {
+            @Override
+            public void run() {
+                getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+            }
+        };
+        this.K = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                int n2 = intent.getIntExtra("level", 0);
+                int n3 = intent.getIntExtra("scale", 100);
+                int n4 = n2 * 100 / n3;
+                if (ReaderTxtActivity.N(ReaderTxtActivity.this) != n4) {
+                    ReaderTxtActivity.g(ReaderTxtActivity.this, n4);
+                    o[] arro = ReaderTxtActivity.d(ReaderTxtActivity.this);
+                    for (com.clilystudio.netbook.reader.o anArro : arro) {
+                        anArro.a(n4);
+                    }
+                }
+            }
+        };
+        this.L = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                o[] arro = ReaderTxtActivity.d(ReaderTxtActivity.this);
+                for (com.clilystudio.netbook.reader.o anArro : arro) {
+                    anArro.k();
+                }
+            }
+        };
     }
 
     static /* synthetic */ int A(ReaderTxtActivity readerTxtActivity) {
@@ -114,14 +142,33 @@ public class ReaderTxtActivity extends FragmentActivity implements com.clilystud
      * Enabled force condition propagation
      * Lifted jumps to return sites
      */
-    static /* synthetic */ void D(ReaderTxtActivity readerTxtActivity) {
+    static /* synthetic */ void D(final ReaderTxtActivity readerTxtActivity) {
         if (readerTxtActivity.isFinishing()) return;
         uk.me.lewisdeane.ldialogs.h h2 = new uk.me.lewisdeane.ldialogs.h(readerTxtActivity);
         h2.b(R.string.toc_load_error);
-        h2.a(R.string.retry, (DialogInterface.OnClickListener) ((Object) new p(readerTxtActivity))).b(R.string.back, (DialogInterface.OnClickListener) ((Object) new com.clilystudio.netbook.reader.txt.o(readerTxtActivity)));
+        h2.a(R.string.retry, new DialogInterface.OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+                readerTxtActivity.l();
+            }
+        }).b(R.string.back, new DialogInterface.OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+                readerTxtActivity.finish();
+            }
+        });
         AlertDialog alertDialog = h2.a();
         alertDialog.setCanceledOnTouchOutside(false);
-        alertDialog.setOnCancelListener((DialogInterface.OnCancelListener) ((Object) new q(readerTxtActivity)));
+        alertDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
+            @Override
+            public void onCancel(DialogInterface dialog) {
+                readerTxtActivity.finish();
+            }
+        });
         try {
             alertDialog.show();
             return;
@@ -188,16 +235,62 @@ public class ReaderTxtActivity extends FragmentActivity implements com.clilystud
     /*
      * Enabled aggressive block sorting
      */
-    static /* synthetic */ void a(ReaderTxtActivity readerTxtActivity, n n2) {
+    static /* synthetic */ void a(final ReaderTxtActivity readerTxtActivity, final n n2) {
         if (!n2.f()) {
             readerTxtActivity.b[0].a(n2);
-            n2.a((com.clilystudio.netbook.reader.e) new y(readerTxtActivity));
+            n2.a(new e<n>() {
+
+                @Override
+                public void a(n var1) {
+                    ReaderTxtActivity.d(readerTxtActivity)[1].a(var1);
+                    if (n2 != null) {
+                        n2.a(new e<n>() {
+                            @Override
+                            public void a(n var1) {
+                                ReaderTxtActivity.d(readerTxtActivity)[2].a(var1);
+                                ReaderTxtActivity.c(readerTxtActivity).setCurrentItem(0, false);
+                                ReaderTxtActivity.L(readerTxtActivity);
+                            }
+                        });
+                    }
+                }
+            });
         } else if (!n2.e()) {
             readerTxtActivity.b[2].a(n2);
-            n2.b((com.clilystudio.netbook.reader.e) new A(readerTxtActivity));
+            n2.b(new com.clilystudio.netbook.reader.e<n>() {
+
+                @Override
+                public void a(n var1) {
+                    ReaderTxtActivity.d(readerTxtActivity)[1].a(var1);
+                    var1.b(new com.clilystudio.netbook.reader.e<n>() {
+                        @Override
+                        public void a(n var1) {
+                            ReaderTxtActivity.d(readerTxtActivity)[0].a(var1);
+                            ReaderTxtActivity.c(readerTxtActivity).setCurrentItem(2, false);
+                            ReaderTxtActivity.L(readerTxtActivity);
+                        }
+                    });
+                }
+            });
         } else {
             readerTxtActivity.b[1].a(n2);
-            n2.a((com.clilystudio.netbook.reader.e) new C(readerTxtActivity, n2));
+            n2.a(new com.clilystudio.netbook.reader.e<n>() {
+
+                @Override
+                public void a(n var1) {
+                    ReaderTxtActivity.d(readerTxtActivity)[2].a(var1);
+                    n2.b(new com.clilystudio.netbook.reader.e<n>() {
+
+                        @Override
+                        public void a(n var1) {
+                            ReaderTxtActivity.d(readerTxtActivity)[0].a(var1);
+                            ReaderTxtActivity.c(readerTxtActivity).setCurrentItem(1, false);
+                            ReaderTxtActivity.L(readerTxtActivity);
+                        }
+                    });
+
+                }
+            });
         }
         if (readerTxtActivity.w == 1) {
             if (!readerTxtActivity.x.isShown()) {
@@ -359,12 +452,18 @@ public class ReaderTxtActivity extends FragmentActivity implements com.clilystud
         return readerTxtActivity.p;
     }
 
-    static /* synthetic */ void t(ReaderTxtActivity readerTxtActivity) {
+    static /* synthetic */ void t(final ReaderTxtActivity readerTxtActivity) {
         if (!readerTxtActivity.isFinishing()) {
             if (readerTxtActivity.h == null) {
                 readerTxtActivity.h = ReaderTocDialog.a();
                 readerTxtActivity.h.a(readerTxtActivity.d);
-                readerTxtActivity.h.a((DialogInterface.OnClickListener) ((Object) new s(readerTxtActivity)));
+                readerTxtActivity.h.a(new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        ReaderTxtActivity.e(readerTxtActivity, which);
+                        ReaderTxtActivity.K(readerTxtActivity).dismiss();
+                    }
+                });
             }
             com.clilystudio.netbook.hpay100.a.a.a(readerTxtActivity, readerTxtActivity.h);
         }
@@ -384,36 +483,7 @@ public class ReaderTxtActivity extends FragmentActivity implements com.clilystud
      * Enabled aggressive block sorting
      */
     static /* synthetic */ void v(ReaderTxtActivity readerTxtActivity) {
-        if (SpeechUtility.getUtility().checkServiceInstalled()) {
-            readerTxtActivity.t();
-            readerTxtActivity.w = 2;
-            readerTxtActivity.j.setReadMode(readerTxtActivity.w);
-            Object[] arrobject = readerTxtActivity.w().d();
-            if (arrobject == null) {
-                com.clilystudio.netbook.util.e.a((Activity) readerTxtActivity, (String) "\u83b7\u53d6\u7ae0\u8282\u5185\u5bb9\u5931\u8d25,\u8bf7\u9000\u51fa\u540e\u91cd\u8bd5");
-                return;
-            }
-            readerTxtActivity.D = (String[]) arrobject[0];
-            readerTxtActivity.F = (LinkedList) arrobject[1];
-            readerTxtActivity.a(false);
-            readerTxtActivity.g();
-            if (readerTxtActivity.H == null) {
-                readerTxtActivity.H = ((PowerManager) readerTxtActivity.getSystemService("power")).newWakeLock(1, "txt_lock_tag");
-                if (readerTxtActivity.H != null) {
-                    readerTxtActivity.H.acquire();
-                }
-            }
-            return;
-        }
-        if (a != null && !"".equals(a)) {
-            com.clilystudio.netbook.hpay100.a.a.a(a, readerTxtActivity, "\u8ffd\u4e66\u795e\u5668\u6717\u8bfb\u63d2\u4ef6");
-            return;
-        }
-        String string = com.clilystudio.netbook.hpay100.a.a.s(readerTxtActivity) ? readerTxtActivity.getString(R.string.tts_download_prompt_wifi) : readerTxtActivity.getString(R.string.tts_download_prompt_no_wifi);
-        uk.me.lewisdeane.ldialogs.h h2 = new uk.me.lewisdeane.ldialogs.h(readerTxtActivity);
-        h2.d = readerTxtActivity.getString(R.string.tts_download_prompt_title);
-        h2.e = string;
-        h2.a("\u4e0b\u8f7d", (DialogInterface.OnClickListener) ((Object) new c(readerTxtActivity))).b("\u53d6\u6d88", (DialogInterface.OnClickListener) ((Object) new b(readerTxtActivity))).b();
+        // 追书神器朗读插件
     }
 
     static /* synthetic */ int w(ReaderTxtActivity readerTxtActivity) {
@@ -448,7 +518,19 @@ public class ReaderTxtActivity extends FragmentActivity implements com.clilystud
 
     @Override
     private void a(int n2) {
-        this.g.b(n2, (com.clilystudio.netbook.reader.e<n>) ((Object) new t(this)), true);
+        this.g.b(n2, new e<n>() {
+
+            @Override
+            public void a(n var1) {
+                Object[] arrobject;
+                ReaderTxtActivity.a(ReaderTxtActivity.this, var1);
+                if (ReaderTxtActivity.b(ReaderTxtActivity.this) == 2 && var1 != null && (arrobject = var1.d()) != null) {
+                    ReaderTxtActivity.a(ReaderTxtActivity.this, (String[]) arrobject[0]);
+                    ReaderTxtActivity.a(ReaderTxtActivity.this, (LinkedList) arrobject[1]);
+                    ReaderTxtActivity.c(ReaderTxtActivity.this, false);
+                }
+            }
+        }, true);
     }
 
     /*
@@ -456,29 +538,6 @@ public class ReaderTxtActivity extends FragmentActivity implements com.clilystud
      */
     @Override
     private void a(boolean bl) {
-        if (this.b[this.k].f()) {
-            this.j();
-            return;
-        } else {
-            if (this.D == null) {
-                com.clilystudio.netbook.util.e.a((Activity) this, (String) "\u83b7\u53d6\u7ae0\u8282\u5185\u5bb9\u5931\u8d25,\u8bf7\u9000\u51fa\u540e\u91cd\u8bd5");
-                return;
-            }
-            if (bl && !this.D[0].startsWith("\u3000\u3000")) {
-                this.B = 0;
-                this.C = 1 + this.D[0].length();
-                this.b[this.k].a(this.B, this.C);
-                return;
-            }
-            this.B = this.C;
-            if (this.E > -1 + this.D.length) return;
-            {
-                this.C = 1 + (this.B + this.D[this.E].length());
-                this.b[this.k].a(this.B, this.C);
-                this.G.startSpeaking(this.D[this.E], this.I);
-                return;
-            }
-        }
     }
 
     private void f() {
@@ -490,21 +549,9 @@ public class ReaderTxtActivity extends FragmentActivity implements com.clilystud
     }
 
     private void g() {
-        try {
-            this.startService(new Intent(this, TtsSpeakingService.class));
-            return;
-        } catch (Exception var1_1) {
-            return;
-        }
     }
 
     private void h() {
-        try {
-            this.stopService(new Intent(this, TtsSpeakingService.class));
-            return;
-        } catch (Exception var1_1) {
-            return;
-        }
     }
 
     private void i() {
@@ -515,7 +562,6 @@ public class ReaderTxtActivity extends FragmentActivity implements com.clilystud
     }
 
     private void j() {
-        this.G.stopSpeaking();
         this.w = 0;
         this.j.setReadMode(this.w);
         this.h();
@@ -526,12 +572,32 @@ public class ReaderTxtActivity extends FragmentActivity implements com.clilystud
     }
 
     private void k() {
-        this.d.c((ae) ((Object) new f(this)));
+        this.d.c(new ae() {
+            @Override
+            public void a() {
+                ReaderTxtActivity.this.u.setVisibility(View.VISIBLE);
+            }
+
+            @Override
+            public void b() {
+                ReaderTxtActivity.this.u.setVisibility(View.GONE);
+            }
+        });
         this.l();
     }
 
     private void l() {
-        this.d.a((ad) ((Object) new g(this)), false);
+        this.d.a(new ad() {
+            @Override
+            public void a() {
+                ReaderTxtActivity.this.r();
+            }
+
+            @Override
+            public void b() {
+                ReaderTxtActivity.D(ReaderTxtActivity.this);
+            }
+        }, false);
     }
 
     /*
@@ -677,7 +743,12 @@ public class ReaderTxtActivity extends FragmentActivity implements com.clilystud
         int n2;
         int n3;
         this.g = new com.clilystudio.netbook.reader.K(this.d, this.e);
-        h h2 = new h(this);
+        G h2 = new G() {
+            @Override
+            public void a(int var1) {
+                ReaderTxtActivity.this.a(var1);
+            }
+        };
         int n4 = this.b.length;
         for (int i2 = 0; i2 < n4; ++i2) {
             o o2;
@@ -686,9 +757,71 @@ public class ReaderTxtActivity extends FragmentActivity implements com.clilystud
         }
         this.registerReceiver(this.K, new IntentFilter("android.intent.action.BATTERY_CHANGED"));
         this.registerReceiver(this.L, new IntentFilter("android.intent.action.TIME_TICK"));
-        this.j.setAdapter((PagerAdapter) ((Object) new i(this)));
-        this.j.setOnPageChangeListener((cw) ((Object) new j(this)));
-        this.j.setOnClickListener$4b8a6d15((com.umeng.update.a) ((Object) new k(this)));
+        this.j.setAdapter(new PagerAdapter() {
+            @Override
+            public int getCount() {
+                return 3;
+            }
+
+            @Override
+            public Object instantiateItem(ViewGroup container, int position) {
+                o o2 = ReaderTxtActivity.this.b[position];
+                container.addView(o2.i());
+                return o2.i();
+            }
+
+            @Override
+            public void destroyItem(ViewGroup container, int position, Object object) {
+                container.removeView((View) object);
+            }
+
+            @Override
+            public boolean isViewFromObject(View view, Object object) {
+                if (view == object) {
+                    return true;
+                }
+                return false;
+            }
+        });
+        this.j.setOnPageChangeListener(new cw() {
+            @Override
+            public void a(int var1) {
+                ReaderTxtActivity.f(ReaderTxtActivity.this, var1);
+            }
+
+            @Override
+            public void b(int var1) {
+                if (var1 == 2) {
+                    ReaderTxtActivity.a(ReaderTxtActivity.this);
+                } else if (var1 == 0) {
+                    ReaderTxtActivity.E(ReaderTxtActivity.this);
+                }
+            }
+        });
+        this.j.setOnPageClickListener(new PagerWidget.OnPageClickListener() {
+            @Override
+            public void a(int n2) {
+                switch (n2) {
+                    case 1: {
+                        if (ReaderTxtActivity.F(ReaderTxtActivity.this).e()) {
+                            ReaderTxtActivity.G(ReaderTxtActivity.this);
+                            return;
+                        }
+                        ReaderTxtActivity.H(ReaderTxtActivity.this);
+                        return;
+                    }
+                    case 2: {
+                        ReaderTxtActivity.G(ReaderTxtActivity.this);
+                        return;
+                    }
+                    case 0:
+                        ReaderTxtActivity.I(ReaderTxtActivity.this);
+                        return;
+                    default:
+                        return;
+                }
+            }
+        });
         MyApplication.a().a(this.d);
         BookFile bookFile = TxtFileObject.getProgress(this.c);
         if (bookFile != null) {
@@ -978,11 +1111,51 @@ public class ReaderTxtActivity extends FragmentActivity implements com.clilystud
         this.v = (AutoReaderSetWidget) this.findViewById(R.id.auto_reader_setting);
         this.x = (AutoReaderTextView) this.findViewById(R.id.tv_auto_reader_body);
         this.y = this.findViewById(R.id.view_auto_reader_shadow);
-        this.e.a(new H(this));
-        this.e.a(new I(this));
-        this.e.a(new J(this));
-        this.e.a(new K(this));
-        this.e.a(new L(this));
+        this.e.a(new cc() {
+            @Override
+            public void a() {
+                o[] arro = ReaderTxtActivity.d(ReaderTxtActivity.this);
+                for (com.clilystudio.netbook.reader.o anArro : arro) {
+                    anArro.a();
+                }
+                ReaderTxtActivity.o(ReaderTxtActivity.this);
+                ReaderTxtActivity.p(ReaderTxtActivity.this);
+            }
+        });
+        this.e.a(new cb() {
+            @Override
+            public void a() {
+                ReaderTxtActivity.p(ReaderTxtActivity.this);
+            }
+        });
+        this.e.a(new ce() {
+            @Override
+            public void a() {
+                for (o o2 : ReaderTxtActivity.d(ReaderTxtActivity.this)) {
+                    if (o2 != null) {
+                        o2.b();
+                    }
+                }
+                ReaderTxtActivity.q(ReaderTxtActivity.this);
+            }
+        });
+        this.e.a(new ca() {
+            @Override
+            public void a() {
+                ReaderTxtActivity.r(ReaderTxtActivity.this);
+            }
+        });
+        this.e.a(new cd() {
+            @Override
+            public void a() {
+                for (o o2 : ReaderTxtActivity.d(ReaderTxtActivity.this)) {
+                    if (o2 != null) {
+                        o2.c();
+                    }
+                }
+                ReaderTxtActivity.q(ReaderTxtActivity.this);
+            }
+        });
         this.m();
         this.x.setTextColor(this.e.g);
         this.x.setHeight(this.e.e);
@@ -999,18 +1172,72 @@ public class ReaderTxtActivity extends FragmentActivity implements com.clilystud
         this.o.d(false);
         this.o.e(false);
         this.o.g(false);
-        this.o.setOnBtnClickListener$7ead76dc(new M(this));
+        this.o.setOnBtnClickListener(new ReaderActionBar.OnBtnClickListener() {
+
+            @Override
+            public void a(int n2) {
+                switch (n2) {
+                    case R.id.read_opt_setting: {
+                        ReaderTxtActivity.s(ReaderTxtActivity.this).a();
+                        return;
+                    }
+                    case R.id.read_opt_toc: {
+                        ReaderTxtActivity.a(ReaderTxtActivity.this);
+                        ReaderTxtActivity.t(ReaderTxtActivity.this);
+                        return;
+                    }
+                    case R.id.reader_oper_back: {
+                        ReaderTxtActivity.this.onBackPressed();
+                        return;
+                    }
+                    case R.id.read_opt_orientation: {
+                        ReaderTxtActivity.b(ReaderTxtActivity.this, true);
+                        ReaderTxtActivity.u(ReaderTxtActivity.this);
+                        return;
+                    }
+                    case R.id.reader_ab_tts:
+                        ReaderTxtActivity.v(ReaderTxtActivity.this);
+                        return;
+                    default:
+                        return;
+                }
+            }
+        });
         this.p.setReaderStyle(this.e, this.o);
-        this.p.a((db) ((Object) new a(this)));
-        this.p.a((dc) ((Object) new l(this)));
+        this.p.a(new db() {
+            @Override
+            public void a() {
+                startActivityForResult(ReaderOptionActivity.a(ReaderTxtActivity.this), 0);
+            }
+        });
+        this.p.a(new dc() {
+            @Override
+            public void a() {
+                ReaderTxtActivity.a(ReaderTxtActivity.this);
+                ReaderTxtActivity.a(ReaderTxtActivity.this, 1);
+                ReaderTxtActivity.c(ReaderTxtActivity.this).setReadMode(ReaderTxtActivity.b(ReaderTxtActivity.this));
+                ReaderTxtActivity.f(ReaderTxtActivity.this).setTotalHeight(ReaderTxtActivity.d(ReaderTxtActivity.this)[ReaderTxtActivity.e(ReaderTxtActivity.this)].d());
+                if (ReaderTxtActivity.g(ReaderTxtActivity.this).i()) {
+                    ReaderTxtActivity.f(ReaderTxtActivity.this).setText(ReaderTxtActivity.h(ReaderTxtActivity.this).a(ReaderTxtActivity.this));
+                } else {
+                    ReaderTxtActivity.f(ReaderTxtActivity.this).setText(ReaderTxtActivity.h(ReaderTxtActivity.this).c());
+                }
+                ReaderTxtActivity.f(ReaderTxtActivity.this).f();
+                ReaderTxtActivity.i(ReaderTxtActivity.this);
+            }
+        });
         this.v.setOptionClickListener(this);
         this.x.setOnPageTurning(this);
         this.j.setAutoReaderTextView(this.x);
-        this.z.a(this.G);
-        this.z.setOnPlayChangeListener(new w(this));
         this.n = this.getWindow().getDecorView();
         if (com.clilystudio.netbook.hpay100.a.a.h()) {
-            this.n.setOnSystemUiVisibilityChangeListener((View.OnSystemUiVisibilityChangeListener) ((Object) new u(this)));
+            this.n.setOnSystemUiVisibilityChangeListener(new View.OnSystemUiVisibilityChangeListener() {
+                @Override
+                public void onSystemUiVisibilityChange(int visibility) {
+                    boolean bl = (visibility & 1) == 0;
+                    ReaderTxtActivity.d(ReaderTxtActivity.this, bl);
+                }
+            });
         }
         this.u();
         if (!this.t) {

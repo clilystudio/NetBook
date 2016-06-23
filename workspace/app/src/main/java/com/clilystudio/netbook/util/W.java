@@ -52,7 +52,7 @@ public abstract class W<V> extends al {
 
     protected abstract int[] a();
 
-    protected final List<V> c() {
+    public final List<V> c() {
         return Arrays.asList(this.e);
     }
 

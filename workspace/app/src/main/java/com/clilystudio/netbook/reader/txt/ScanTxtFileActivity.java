@@ -1,43 +1,44 @@
 package com.clilystudio.netbook.reader.txt;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.db.BookFile;
 import com.clilystudio.netbook.event.A;
 import com.clilystudio.netbook.event.i;
 import com.clilystudio.netbook.model.TxtFileObject;
 import com.clilystudio.netbook.ui.BaseActivity;
 import com.clilystudio.netbook.ui.aa;
+import com.clilystudio.netbook.util.W;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Stack;
 import java.util.regex.Pattern;
 
-import butterknife.ButterKnife;
-import butterknife.InjectView;
-
 public class ScanTxtFileActivity extends BaseActivity {
     TextView mEmpty;
     ListView mList;
     ProgressBar mPbLoading;
     TextView mStatus;
-    private R_Clazz a;
-    private List<T_Clazz> b = new ArrayList<T_Clazz>();
+    private W<T_Clazz> a;
+    private List<T_Clazz> b = new ArrayList<>();
     private int c;
-    private List<BookFile> e = new ArrayList<BookFile>();
+    private List<BookFile> e = new ArrayList<>();
     private boolean f = true;
 
-    static /* synthetic */ R_Clazz a(ScanTxtFileActivity scanTxtFileActivity) {
+    static /* synthetic */ W<T_Clazz> a(ScanTxtFileActivity scanTxtFileActivity) {
         return scanTxtFileActivity.a;
     }
 
@@ -47,7 +48,7 @@ public class ScanTxtFileActivity extends BaseActivity {
     }
 
     static /* synthetic */ void a(ScanTxtFileActivity scanTxtFileActivity, int n) {
-        scanTxtFileActivity.mStatus.setText("\u626b\u63cf\u5230" + n + "\u4e2atxt\u6587\u4ef6");
+        scanTxtFileActivity.mStatus.setText("扫描到" + n + "个txt文件");
     }
 
     static /* synthetic */ boolean a(ScanTxtFileActivity scanTxtFileActivity, boolean bl) {
@@ -108,9 +109,20 @@ public class ScanTxtFileActivity extends BaseActivity {
                             bl4 = false;
                         }
                         if (!bl4) {
-                            this.b.add(new T_Clazz(this, file2, 0));
-                            Collections.sort(this.b, new O(this));
-                            this.runOnUiThread(new P(this));
+                            this.b.add(new T_Clazz(this, file2, (byte)0));
+                            Collections.sort(this.b, new Comparator<T_Clazz>() {
+                                @Override
+                                public int compare(T_Clazz lhs, T_Clazz rhs) {
+                                    return (int) (rhs.d() - lhs.d());
+                                }
+                            });
+                            this.runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    ScanTxtFileActivity.a(ScanTxtFileActivity.this).a(ScanTxtFileActivity.b(ScanTxtFileActivity.this));
+                                    ScanTxtFileActivity.a(ScanTxtFileActivity.this, ScanTxtFileActivity.b(ScanTxtFileActivity.this).size());
+                                }
+                            });
                         }
                     }
                 }
@@ -136,16 +148,74 @@ public class ScanTxtFileActivity extends BaseActivity {
         this.mList = (ListView) findViewById(R.id.list);
         this.mPbLoading = (ProgressBar) findViewById(R.id.pb_loading);
         this.mEmpty = (TextView) findViewById(R.id.empty);
-        this.a = new R_Clazz(this, this.getLayoutInflater());
+        this.a = new W<T_Clazz>(this.getLayoutInflater(), R.layout.list_item_book_file){
+
+            @Override
+            protected void a(int var1, final T_Clazz t) {
+                BookFile bookFile = t.a();
+                boolean bl = t.b();
+                this.a(0, bookFile.getName());
+                final ImageView imageView = this.a(1, ImageView.class);
+                R_Clazz_a(imageView, bl);
+                imageView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        c();
+                        R_Clazz_a(imageView, t.b());
+                    }
+                });
+                this.a(2, bookFile.getSize());
+            }
+
+            @Override
+            protected int[] a() {
+                return new int[]{R.id.title, R.id.checkbox, R.id.size};
+            }
+        };
         this.mList.setAdapter(this.a);
-        this.mList.setOnItemClickListener(this.a);
-        this.a("\u672c\u5730\u4e66\u7c4d", "\u5168\u9009", (aa) new N(this));
+        this.mList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                ((T_Clazz)ScanTxtFileActivity.this.a.getItem(position)).c();
+                 ScanTxtFileActivity.a(ScanTxtFileActivity.this).notifyDataSetChanged();
+            }
+        });
+        this.a("本地书籍", "全选", new aa() {
+            @Override
+            public void a() {
+                Iterator iterator = ScanTxtFileActivity.this.a.c().iterator();
+                while (iterator.hasNext()) {
+                    ((T_Clazz) iterator.next()).a(ScanTxtFileActivity.c(ScanTxtFileActivity.this));
+                }
+                 boolean bl = !ScanTxtFileActivity.c(ScanTxtFileActivity.this);
+                ScanTxtFileActivity.a(ScanTxtFileActivity.this, bl);
+                TextView textView = (TextView) ScanTxtFileActivity.this.getActionBar().getCustomView().findViewById(R.id.actionbar_custom_right_text);
+                String string = ScanTxtFileActivity.c(ScanTxtFileActivity.this) ? "全选" : "全不选";
+                textView.setText(string);
+                ScanTxtFileActivity.this.a.notifyDataSetChanged();
+            }
+        });
+    }
+
+    private void R_Clazz_a(ImageView imageView, boolean bl) {
+        if (bl) {
+            imageView.setImageResource(R.drawable.green_tick_circle);
+            imageView.setContentDescription("选中");
+        } else {
+            imageView.setImageResource(R.drawable.gray_tick_circle);
+            imageView.setContentDescription("未选中");
+        }
     }
 
     public void onImport(View view) {
-        List list = R_Clazz.b(this.a);
+
+        List<BookFile> list = new ArrayList();
+        for (T_Clazz t : ScanTxtFileActivity.this.a.c()) {
+            if (!t.b()) continue;
+            list.add(t.a());
+        }
         if (list.size() == 0) {
-            e.a((Activity) this, (String) "\u8bf7\u5148\u9009\u62e9\u5bfc\u5165\u7684\u4e66\u7c4d");
+            com.clilystudio.netbook.util.e.a(this, "请先选择导入的书籍");
             return;
         }
         Iterator iterator = list.iterator();
@@ -153,7 +223,7 @@ public class ScanTxtFileActivity extends BaseActivity {
             ((BookFile) iterator.next()).setUpdated(new Date());
         }
         TxtFileObject.saveTxtFiles(list);
-        i.a().c(new A());
+        i.a().post(new A());
         this.finish();
     }
 
@@ -161,7 +231,34 @@ public class ScanTxtFileActivity extends BaseActivity {
     public void onResume() {
         super.onResume();
         this.b = new ArrayList<T_Clazz>();
-        new Q(this).b(new Void[0]);
+        new com.clilystudio.netbook.a_pack.e<Void, Void, Void>(){
+
+            @Override
+            protected Void doInBackground(Void... params) {
+                ScanTxtFileActivity.b(ScanTxtFileActivity.this, 0);
+                ScanTxtFileActivity.a(ScanTxtFileActivity.this, TxtFileObject.getTxtFiles());
+                ScanTxtFileActivity.this.b();
+                return null;
+            }
+
+            @Override
+            protected void onPreExecute() {
+                super.onPreExecute();
+                ScanTxtFileActivity.this.mPbLoading.setVisibility(View.VISIBLE);
+            }
+
+            @Override
+            protected void onPostExecute(Void aVoid) {
+                super.onPostExecute(aVoid);
+                ScanTxtFileActivity.this.mPbLoading.setVisibility(View.GONE);
+                if (ScanTxtFileActivity.b(ScanTxtFileActivity.this).size() == 0) {
+                    ScanTxtFileActivity.this.mEmpty.setVisibility(View.VISIBLE);
+                    ScanTxtFileActivity.this.mList.setVisibility(View.GONE);
+                    ScanTxtFileActivity.a(ScanTxtFileActivity.this, 0);
+                }
+                i.a().post(new A());
+            }
+        }.b();
     }
 
     @Override

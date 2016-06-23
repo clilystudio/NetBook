@@ -10,7 +10,7 @@ import org.apache.commons.lang3.a.a;
 
 public class PagerWidget extends ReaderViewPager {
     private int a;
-    private com.umeng.update.a b;
+    private OnPageClickListener b;
     private M c;
     private boolean d;
     private float e;
@@ -200,11 +200,15 @@ public class PagerWidget extends ReaderViewPager {
         this.j = autoReaderTextView;
     }
 
-    public void setOnClickListener$4b8a6d15(com.umeng.update.a a2) {
+    public void setOnPageClickListener(OnPageClickListener a2) {
         this.b = a2;
     }
 
     public void setReadMode(int n2) {
         this.i = n2;
+    }
+
+    public interface OnPageClickListener {
+        public abstract void a(int n2);
     }
 }
