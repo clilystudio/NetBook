@@ -33,7 +33,7 @@ final class E extends c<String, ChapterSingleKey> {
      * Lifted jumps to return sites
      */
     @Override
-    public final /* synthetic */ void a(Object object) {
+    public final /* synthetic */ void a(ChapterSingleKey object) {
         ChapterSingleKey chapterSingleKey = (ChapterSingleKey) object;
         if (chapterSingleKey != null && chapterSingleKey.isOk() && chapterSingleKey.getKey() != null) {
             o.b((o) this.a).q().a().e().put(chapterSingleKey.getChapterId(), chapterSingleKey.getKey());

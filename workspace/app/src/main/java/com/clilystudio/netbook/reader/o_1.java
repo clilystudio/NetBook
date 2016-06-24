@@ -546,7 +546,7 @@ public final class o {
         this.b(n2);
         if (this.a(n2.a())) {
             b.a(this.b, "paying_page_auto_purchase", com.clilystudio.netbook.util.I.b);
-            I i2 = new I(this, this.b, "\u81ea\u52a8\u8d2d\u4e70\u4e2d...");
+            I i2 = new I(this, this.b, "自动购买中...");
             String[] arrstring = new String[]{am.e().getToken(), n2.a().getId()};
             i2.b(arrstring);
         }

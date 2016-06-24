@@ -16,8 +16,8 @@ final class J extends e<String, Void, PurchaseChapterResult> {
 
     private static /* varargs */ PurchaseChapterResult a(String... arrstring) {
         try {
-            b.a();
-            PurchaseChapterResult purchaseChapterResult = b.b().a(arrstring[0], arrstring[1], 1);
+            com.clilystudio.netbook.api.b.a();
+            PurchaseChapterResult purchaseChapterResult = com.clilystudio.netbook.api.b.b().a(arrstring[0], arrstring[1], 1);
             return purchaseChapterResult;
         } catch (Exception var1_2) {
             var1_2.printStackTrace();
@@ -26,7 +26,7 @@ final class J extends e<String, Void, PurchaseChapterResult> {
     }
 
     @Override
-    protected final /* synthetic */ Object doInBackground(Object[] arrobject) {
+    protected final /* synthetic */ PurchaseChapterResult doInBackground(String[] arrobject) {
         return J.a((String[]) arrobject);
     }
 
@@ -36,7 +36,7 @@ final class J extends e<String, Void, PurchaseChapterResult> {
     }
 
     @Override
-    protected final /* synthetic */ void onPostExecute(Object object) {
+    protected final /* synthetic */ void onPostExecute(PurchaseChapterResult object) {
         PurchaseChapterResult purchaseChapterResult = (PurchaseChapterResult) object;
         super.onPostExecute(purchaseChapterResult);
         if (purchaseChapterResult != null && purchaseChapterResult.isOk()) {

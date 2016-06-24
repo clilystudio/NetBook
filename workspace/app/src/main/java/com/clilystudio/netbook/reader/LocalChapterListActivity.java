@@ -143,10 +143,20 @@ public class LocalChapterListActivity extends BaseActivity {
         };
         this.b.setAdapter(this.c);
         this.b.setOnItemClickListener((AdapterView.OnItemClickListener) ((Object) new h(this)));
-        this.b.setOnItemLongClickListener((AdapterView.OnItemLongClickListener) ((Object) new i(this)));
+        this.b.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                TocDownloadSummary tocDownloadSummary;
+                int n2 = position - LocalChapterListActivity.a(LocalChapterListActivity.this).getHeaderViewsCount();
+                if (n2 >= 0 && (tocDownloadSummary = LocalChapterListActivity.b(LocalChapterListActivity.this).getItem(n2)) != null) {
+                    LocalChapterListActivity.a(LocalChapterListActivity.this, tocDownloadSummary.getTocId());
+                }
+                return true;
+            }
+        });
         if (!a.d()) {
             this.a.setVisibility(View.VISIBLE);
-            this.a.setText("\u65e0\u6cd5\u83b7\u53d6\u9884\u8bfb\u7ae0\u8282\uff0c\u8bf7\u68c0\u67e5SD\u5361");
+            this.a.setText("无法获取预读章节，请检查SD卡");
             return;
         }
         this.b();

@@ -24,4 +24,9 @@ final class I extends c<String, PurchaseChapterResult> {
             return null;
         }
     }
+
+    @Override
+    public void a(PurchaseChapterResult var1) {
+
+    }
 }
