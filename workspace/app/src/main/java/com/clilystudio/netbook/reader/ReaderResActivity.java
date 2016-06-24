@@ -79,7 +79,7 @@ public class ReaderResActivity extends ReaderModeActivity {
         fragmentTransaction.replace(R.id.content_frame, (Fragment) var4_6).commit();
         com.clilystudio.netbook.a.a();
         com.clilystudio.netbook.a.a(this);
-        bT bT2 = new bT(this, (byte)0);
+        b bT2 = new bT(this, (byte)0);
         String[] arrstring = new String[]{this.b};
         bT2.b(arrstring);
     }

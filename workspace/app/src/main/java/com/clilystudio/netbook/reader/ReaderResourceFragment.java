@@ -8,17 +8,19 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.clilystudio.netbook.R;
+import com.clilystudio.netbook.a_pack.e;
 import com.clilystudio.netbook.db.BookReadRecord;
 import com.clilystudio.netbook.db.TocReadRecord;
 import com.clilystudio.netbook.model.TocSummary;
-import com.clilystudio.netbook.util.*;
 import com.clilystudio.netbook.util.W;
+import com.clilystudio.netbook.util.t;
 
 import java.util.Date;
 import java.util.Iterator;
@@ -37,6 +39,8 @@ public class ReaderResourceFragment extends Fragment {
     private View j;
     private TextView k;
     private com.clilystudio.netbook.util.W<TocSummary> l;
+
+    private int index = -1;
 
     public static ReaderResourceFragment a(String string, String string2) {
         ReaderResourceFragment readerResourceFragment = new ReaderResourceFragment();
@@ -125,7 +129,7 @@ public class ReaderResourceFragment extends Fragment {
                 ReaderResourceFragment.this.startActivity(intent);
             }
         });
-        this.l = new W<TocSummary>(this.getActivity().getLayoutInflater(),R.layout.list_item_resource){
+        this.l = new W<TocSummary>(this.getActivity().getLayoutInflater(), R.layout.list_item_resource) {
 
             @Override
             protected void a(int var1, TocSummary tocSummary) {
@@ -139,12 +143,12 @@ public class ReaderResourceFragment extends Fragment {
                     this.a(2, ImageView.class).setImageLevel(0);
                 }
                 this.a(3, tocSummary.getLastChapter());
-                if (-1 == var1) {
+                if (index == var1) {
                     this.a(4, false);
-                    return;
+                } else {
+                    this.a(4, true);
                 }
-                this.a(4, true);
-           }
+            }
 
             @Override
             protected int[] a() {
@@ -152,8 +156,44 @@ public class ReaderResourceFragment extends Fragment {
             }
         };
         this.c.setAdapter(this.l);
-        this.c.setOnItemClickListener(new bV(this));
-        bY bY2 = new bY(this, (byte)0);
+        this.c.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                int n3 = position - ReaderResourceFragment.b(ReaderResourceFragment.this).getHeaderViewsCount();
+                if (n3 >= 0) {
+                    TocSummary tocSummary = (TocSummary) ReaderResourceFragment.c(ReaderResourceFragment.this).getItem(n3);
+                    Intent intent = ReaderActivity.a(getActivity(), ReaderResourceFragment.a(ReaderResourceFragment.this), ReaderResourceFragment.d(ReaderResourceFragment.this), tocSummary.get_id(), null, true);
+                    startActivity(intent);
+                    index = n3;
+                }
+            }
+        });
+        com.clilystudio.netbook.a_pack.e<String, Void, List<TocSummary>> bY2 = new e<String, Void, List<TocSummary>>() {
+
+            @Override
+            protected List<TocSummary> doInBackground(String... params) {
+                com.clilystudio.netbook.api.b.a();
+                List<TocSummary> list = com.clilystudio.netbook.api.b.b().d(params[0]);
+                return list;
+            }
+
+            @Override
+            protected void onPostExecute(List<TocSummary> tocSummaries) {
+                super.onPostExecute(tocSummaries);
+                if (getActivity() == null) return;
+                if (tocSummaries != null) {
+                    if (!tocSummaries.isEmpty()) {
+                        ReaderResourceFragment.a(ReaderResourceFragment.this, 1);
+                        ReaderResourceFragment.a(ReaderResourceFragment.this, tocSummaries);
+                        ReaderResourceFragment.c(ReaderResourceFragment.this).a(tocSummaries);
+                    } else {
+                        ReaderResourceFragment.a(ReaderResourceFragment.this, 3);
+                    }
+                } else {
+                    ReaderResourceFragment.a(ReaderResourceFragment.this, 2);
+                }
+            }
+        };
         String[] arrstring = new String[]{this.a};
         bY2.b(arrstring);
     }
@@ -177,7 +217,32 @@ public class ReaderResourceFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 ReaderResourceFragment.a(ReaderResourceFragment.this, 0);
-                bY bY2 = new bY(ReaderResourceFragment.this, (byte)0);
+                com.clilystudio.netbook.a_pack.e<String, Void, List<TocSummary>> bY2 = new e<String, Void, List<TocSummary>>() {
+
+                    @Override
+                    protected List<TocSummary> doInBackground(String... params) {
+                        com.clilystudio.netbook.api.b.a();
+                        List<TocSummary> list = com.clilystudio.netbook.api.b.b().d(params[0]);
+                        return list;
+                    }
+
+                    @Override
+                    protected void onPostExecute(List<TocSummary> tocSummaries) {
+                        super.onPostExecute(tocSummaries);
+                        if (getActivity() == null) return;
+                        if (tocSummaries != null) {
+                            if (!tocSummaries.isEmpty()) {
+                                ReaderResourceFragment.a(ReaderResourceFragment.this, 1);
+                                ReaderResourceFragment.a(ReaderResourceFragment.this, tocSummaries);
+                                ReaderResourceFragment.c(ReaderResourceFragment.this).a(tocSummaries);
+                            } else {
+                                ReaderResourceFragment.a(ReaderResourceFragment.this, 3);
+                            }
+                        } else {
+                            ReaderResourceFragment.a(ReaderResourceFragment.this, 2);
+                        }
+                    }
+                };
                 String[] arrstring = new String[]{ReaderResourceFragment.a(ReaderResourceFragment.this)};
                 bY2.b(arrstring);
             }

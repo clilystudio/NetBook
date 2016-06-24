@@ -7,15 +7,19 @@ import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.v7.widget.SwitchCompat;
 import android.view.View;
+import android.widget.CompoundButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.d;
+import com.clilystudio.netbook.event.*;
+import com.clilystudio.netbook.event.j;
 import com.clilystudio.netbook.ui.BaseActivity;
 import com.clilystudio.netbook.util.I;
 import com.clilystudio.netbook.widget.SettingItem;
+import com.xiaomi.mistatistic.sdk.MiStatInterface;
 
 public class ReaderOptionActivity extends BaseActivity {
     private int a = 0;
@@ -95,11 +99,11 @@ public class ReaderOptionActivity extends BaseActivity {
         } else {
             this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         }
-        SwitchCompat var2_2 = (SwitchCompat) this.findViewById(R.id.reader_option_cb_volume_flip);
-        SwitchCompat var3_3 = (SwitchCompat) this.findViewById(R.id.reader_option_cb_flip_animation);
-        SwitchCompat var4_4 = (SwitchCompat) this.findViewById(R.id.reader_option_full_screen);
-        SwitchCompat var5_5 = (SwitchCompat) this.findViewById(R.id.reader_option_convert);
-        SwitchCompat var6_6 = (SwitchCompat) this.findViewById(R.id.reader_option_auto_buy);
+        final SwitchCompat var2_2 = (SwitchCompat) this.findViewById(R.id.reader_option_cb_volume_flip);
+        final SwitchCompat var3_3 = (SwitchCompat) this.findViewById(R.id.reader_option_cb_flip_animation);
+        final SwitchCompat var4_4 = (SwitchCompat) this.findViewById(R.id.reader_option_full_screen);
+        final SwitchCompat var5_5 = (SwitchCompat) this.findViewById(R.id.reader_option_convert);
+        final SwitchCompat var6_6 = (SwitchCompat) this.findViewById(R.id.reader_option_auto_buy);
         View var7_7 = this.findViewById(R.id.reader_option_screen_off_time);
         this.b = (TextView) this.findViewById(R.id.reader_option_screen_off_time_value);
         this.c = this.getResources().getStringArray(R.array.reader_screen_off_time_tags);
@@ -121,24 +125,61 @@ public class ReaderOptionActivity extends BaseActivity {
                 this.b.setText(this.c[var14_14]);
                 lbl34:
                 // 2 sources:
-                var2_2.setOnCheckedChangeListener(new bI(this, var2_2));
-                var3_3.setOnCheckedChangeListener(new bJ(this, var3_3));
-                var4_4.setOnCheckedChangeListener(new bK(this, var4_4));
-                var5_5.setOnCheckedChangeListener(new bL(this, var5_5));
+                var2_2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                    @Override
+                    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                        MiStatInterface.recordCountEvent("volume_keys_flip", "" + isChecked);
+                        ReaderOptionActivity.a(ReaderOptionActivity.this, var2_2, isChecked);
+                    }
+                });
+                var3_3.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                    @Override
+                    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                        MiStatInterface.recordCountEvent("click_flip_animation", "" + isChecked);
+                        ReaderOptionActivity.a(ReaderOptionActivity.this, var3_3, isChecked);
+                    }
+                });
+                var4_4.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                    @Override
+                    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                        MiStatInterface.recordCountEvent("reader_opt_full_screen", "" + isChecked);
+                        ReaderOptionActivity.a(ReaderOptionActivity.this, var4_4, isChecked);
+                    }
+                });
+                var5_5.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                    @Override
+                    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                        MiStatInterface.recordCountEvent("convert_t", "" + isChecked);
+                        com.clilystudio.netbook.event.i.a().post(new j());
+                        ReaderOptionActivity.a(ReaderOptionActivity.this, var5_5, isChecked);
+                    }
+                });
                 var7_7.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         ReaderOptionActivity.a(ReaderOptionActivity.this);
                     }
                 });
-                var6_6.setOnCheckedChangeListener(new bN(this, var6_6));
+                var6_6.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                    @Override
+                    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                        MiStatInterface.recordCountEvent("auto_buy_chapter" + I.a, "" + isChecked);
+                        ReaderOptionActivity.a(ReaderOptionActivity.this, var6_6, isChecked);
+                    }
+                });
                 SettingItem   var15_15 = (SettingItem) this.findViewById(R.id.immersive_container);
                 if (bH.a(this)) {
                     var15_15.setVisibility(View.GONE);
                     this.findViewById(R.id.immersive_divider).setVisibility(View.GONE);
                 } else {
                     var15_15.setChecked(com.clilystudio.netbook.hpay100.a.a.a((Context) this, "key_enable_imersive_mode", false));
-                    var15_15.setCheckListener(new bO(this));
+                    var15_15.setCheckListener(new CompoundButton.OnCheckedChangeListener() {
+                        @Override
+                        public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                            com.clilystudio.netbook.hpay100.a.a.b(ReaderOptionActivity.this, "key_enable_imersive_mode", isChecked);
+                            MiStatInterface.recordCountEvent("imersive_switcher", null);
+                         }
+                    });
                 }
                 return;
             }

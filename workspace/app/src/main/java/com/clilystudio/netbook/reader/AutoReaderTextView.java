@@ -29,7 +29,25 @@ public class AutoReaderTextView extends JustifyTextView {
 
     public AutoReaderTextView(Context context, AttributeSet attributeSet) {
         super(context, attributeSet);
-        this.l = new c(this);
+        this.l = new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                if (AutoReaderTextView.d(AutoReaderTextView.this) != null && AutoReaderTextView.this.getMeasuredHeight() <= 5) {
+                    AutoReaderTextView.a(AutoReaderTextView.this, true);
+                    AutoReaderTextView.d(AutoReaderTextView.this).d();
+                }
+           }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+
+            }
+        };
         this.d = context;
     }
 

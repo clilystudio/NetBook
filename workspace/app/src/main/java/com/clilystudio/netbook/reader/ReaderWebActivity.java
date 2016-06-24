@@ -9,6 +9,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 import com.clilystudio.netbook.MyApplication;
@@ -172,83 +173,117 @@ public class ReaderWebActivity extends BaseReadActivity {
     public void onCreate(Bundle var1_1) {
         super.onCreate(var1_1);
         this.setContentView(R.layout.activity_reader_web);
-        i.a().a(this);
+        i.a().register(this);
         this.c = this.getIntent().getStringExtra("BOOK_ID");
         this.d = this.getIntent().getStringExtra("BOOK_TITLE");
         this.e = this.getIntent().getStringExtra("SOURCE_ID");
         this.b = var1_1 != null ? var1_1.getInt("savedCurrentMode", 5) : this.getIntent().getIntExtra("BOOK_MODE", 5);
-        this.f = a.g(this.b);
+        this.f = com.clilystudio.netbook.hpay100.a.a.g(this.b);
         this.g = (ReaderWebActionBar) this.findViewById(R.id.reader_web_action_bar);
         this.g.setTitle(this.d);
-        this.g.setChapterLink(a.P(this.f));
-        this.g.setOnBtnClickListener$74b8600c((com.umeng.update.a) new cB(this));
-        var2_2 = SourceWebReadRecord.get(this.c, this.b);
-        var3_3 = var2_2 != null ? var2_2.getChapterIndex() : 0;
+        this.g.setChapterLink(com.clilystudio.netbook.hpay100.a.a.P(this.f));
+        this.g.setOnBtnClickListener(new ReaderWebActionBar.OnBtnClickListener() {
+            @Override
+            public void a(int n) {
+                switch (n) {
+                    default: {
+                        return;
+                    }
+                    case R.id.reader_oper_back: {
+                        onBackPressed();
+                        return;
+                    }
+                    case R.id.reader_ab_topic: {
+                        b();
+                        ReaderWebActivity.a(ReaderWebActivity.this).a(false);
+                        return;
+                    }
+                    case R.id.reader_ab_read_mode: {
+                        ReaderWebActivity.this.a();
+                        return;
+                    }
+                    case R.id.reader_ab_chapter_url_view:
+                        ReaderWebActivity.b(ReaderWebActivity.this);
+                }
+            }
+        });
+        SourceWebReadRecord var2_2 = SourceWebReadRecord.get(this.c, this.b);
+       int var3_3 = var2_2 != null ? var2_2.getChapterIndex() : 0;
+        String var17_14 = null;
         switch (this.b) {
             default: {
-                var27_4 = this.getSupportFragmentManager().beginTransaction();
-                var28_5 = this.e;
-                var29_6 = (ReaderWebPageFragment) this.getSupportFragmentManager().findFragmentByTag(ReaderWebPageFragment.class.getName());
+                FragmentTransaction var27_4 = this.getSupportFragmentManager().beginTransaction();
+                 ReaderWebPageFragment  var29_6 = (ReaderWebPageFragment) this.getSupportFragmentManager().findFragmentByTag(ReaderWebPageFragment.class.getName());
                 if (var29_6 == null) {
-                    var29_6 = ReaderWebPageFragment.a(this.b, var28_5);
+                    var29_6 = ReaderWebPageFragment.a(this.b, this.e);
                 }
                 var27_4.replace(R.id.content_frame, var29_6).commit();
-                **GOTO lbl48
+                break;
             }
             case 6: {
-                var24_12 = new cK(this, this, var3_3 + 1);
-                var25_13 = new String[]{this.e};
+                cK  var24_12 = new cK(this, this, var3_3 + 1);
+                String[]  var25_13 = new String[]{this.e};
                 var24_12.b(var25_13);
-                **GOTO lbl48
+                break;
             }
             case 7: {
                 var17_14 = var2_2 != null ? var2_2.getCmd() : null;
+                if (BookReadRecord.get(this.c) != null) {
+                    cJ  var18_15 = new cJ(this, this, var3_3, var17_14);
+                    String[]   var19_16 = new String[]{this.e};
+                    var18_15.b(var19_16);
+                } else if (MyApplication.a().c() != null) {
+                    cJ var21_17 = new cJ(this, this, var3_3, var17_14);
+                    String[]  var22_18 = new String[]{this.e};
+                    var21_17.b(var22_18);
+                }
             }
             case 8: {
                 this.a(var3_3);
-                **GOTO lbl48
+                break;
             }
             case 3: {
-                var4_19 = new cI(this, this, var3_3);
-                var5_20 = new String[]{this.e};
+                cI  var4_19 = new cI(this, this, var3_3);
+                String[] var5_20 = new String[]{this.e};
                 var4_19.b(var5_20);
-                **GOTO lbl48
+                break;
             }
-        }
-        if (BookReadRecord.get(this.c) != null) {
-            var18_15 = new cJ(this, this, var3_3, var17_14);
-            var19_16 = new String[]{this.e};
-            var18_15.b(var19_16);
-        } else if (MyApplication.a().c() != null) {
-            var21_17 = new cJ(this, this, var3_3, var17_14);
-            var22_18 = new String[]{this.e};
-            var21_17.b(var22_18);
         }
         lbl48:
         // 8 sources:
-        if (a.l(this, this.f + "source_web_alert")) {
-            var10_7 = this.getString(R.string.reader_web_opt_msg);
-            var11_8 = LayoutInflater.from(this).inflate(R.layout.dialog_reader_web_opt, null);
-            var12_9 = new cC(this, var11_8);
-            if (a.g()) {
-                ((TextView) var11_8.findViewById(R.id.reader_web_opt_url)).setText(a.P(this.f));
+        if (com.clilystudio.netbook.hpay100.a.a.l(this, this.f + "source_web_alert")) {
+            String  var10_7 = this.getString(R.string.reader_web_opt_msg);
+          final View  var11_8 = LayoutInflater.from(this).inflate(R.layout.dialog_reader_web_opt, null);
+            DialogInterface.OnClickListener  var12_9 = new DialogInterface.OnClickListener(){
+
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    if (((CheckBox) var11_8.findViewById(R.id.reader_web_opt_box)).isChecked()) {
+                        ReaderWebActivity.b(ReaderWebActivity.this);
+                    } else {
+                        ReaderWebActivity.c(ReaderWebActivity.this);
+                    }
+                }
+            };
+            if (com.clilystudio.netbook.hpay100.a.a.g()) {
+                ((TextView) var11_8.findViewById(R.id.reader_web_opt_url)).setText(com.clilystudio.netbook.hpay100.a.a.P(this.f));
                 new h(this).a(var11_8).a(false).b(true).a("\u597d\u7684", (DialogInterface.OnClickListener) var12_9).b();
             } else {
-                var13_21 = new cD(this);
-                var14_22 = new h(this);
+                cD  var13_21 = new cD(this);
+                h var14_22 = new h(this);
                 var14_22.e = var10_7;
                 var14_22.a(false).a("\u597d\u7684", (DialogInterface.OnClickListener) var12_9).b("\u4e0d\u4f7f\u7528", (DialogInterface.OnClickListener) var13_21).b();
             }
         }
-        var7_10 = new cL(this, 0);
-        var8_11 = new String[]{this.c};
+        cL  var7_10 = new cL(this, 0);
+        String[] var8_11 = new String[]{this.c};
         var7_10.b(var8_11);
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        i.a().b(this);
+        i.a().unregister(this);
     }
 
     @l

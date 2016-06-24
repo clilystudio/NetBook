@@ -2,28 +2,39 @@ package com.clilystudio.netbook.reader;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 
-import com.clilystudio.netbook.*;
+import com.clilystudio.netbook.MyApplication;
+import com.clilystudio.netbook.R;
+import com.clilystudio.netbook.a_pack.e;
 import com.clilystudio.netbook.am;
+import com.clilystudio.netbook.api.ApiService;
 import com.clilystudio.netbook.d;
-import com.clilystudio.netbook.event.*;
-import com.clilystudio.netbook.event.i;
 import com.clilystudio.netbook.event.v;
 import com.clilystudio.netbook.model.ChineseAllPromRoot;
 import com.clilystudio.netbook.model.TocSummary;
 import com.clilystudio.netbook.ui.BaseLoadingActivity;
+import com.clilystudio.netbook.util.W;
+import com.clilystudio.netbook.util.t;
+
+import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
 
 public class ReaderMixActivity extends BaseLoadingActivity {
     private String a;
     private String b;
     private String c;
     private ListView e;
-    private bG f;
+    private com.clilystudio.netbook.util.W<TocSummary> f;
     private View g;
     private ChineseAllPromRoot h;
     private View i;
@@ -60,7 +71,7 @@ public class ReaderMixActivity extends BaseLoadingActivity {
         return readerMixActivity.e;
     }
 
-    static /* synthetic */ bG d(ReaderMixActivity readerMixActivity) {
+    static /* synthetic */ W<TocSummary> d(ReaderMixActivity readerMixActivity) {
         return readerMixActivity.f;
     }
 
@@ -81,7 +92,7 @@ public class ReaderMixActivity extends BaseLoadingActivity {
                     ReaderMixActivity.a(readerMixActivity, ReaderMixActivity.f(readerMixActivity).get_id());
                 }
                 readerMixActivity.finish();
-           }
+            }
         });
     }
 
@@ -100,7 +111,65 @@ public class ReaderMixActivity extends BaseLoadingActivity {
     @Override
     protected final void b() {
         this.i();
-        bE bE2 = new bE(this, 0);
+        com.clilystudio.netbook.a_pack.e<String, Void, Object[]> bE2 = new e<String, Void, Object[]>() {
+
+            @Override
+            protected Object[] doInBackground(String... params) {
+                com.clilystudio.netbook.api.b.a();
+                ApiService apiService = com.clilystudio.netbook.api.b.b();
+                Object[] arrobject = new Object[]{apiService.d(params[0]), apiService.aa(params[0])};
+                return arrobject;
+            }
+
+            @Override
+            protected void onPostExecute(Object[] objects) {
+                if (objects == null) return;
+                List list = (List) objects[0];
+                if (list == null) {
+                    ReaderMixActivity.this.h();
+                    return;
+                }
+                if (list.isEmpty()) {
+                    ReaderMixActivity.this.g();
+                    return;
+                }
+                ReaderMixActivity.this.f();
+                TextView textView = (TextView) ReaderMixActivity.this.findViewById(R.id.reader_mix_header_count);
+                Resources resources = ReaderMixActivity.this.getResources();
+                Object[] arrobject2 = new Object[]{-1 + list.size()};
+                textView.setText(resources.getString(R.string.source_list_title, arrobject2));
+                Iterator iterator = list.iterator();
+                boolean bl = false;
+                while (iterator.hasNext()) {
+                    boolean bl2;
+                    TocSummary tocSummary = (TocSummary) iterator.next();
+                    if ("zhuishuvip".equals(tocSummary.getSource())) {
+                        ReaderMixActivity.a(ReaderMixActivity.this, tocSummary);
+                        bl2 = true;
+                    } else {
+                        bl2 = bl;
+                    }
+                    bl = bl2;
+                }
+                ReaderMixActivity.d(ReaderMixActivity.this).a(list);
+                ReaderMixActivity.a(ReaderMixActivity.this, (ChineseAllPromRoot) objects[1]);
+                final ChineseAllPromRoot chineseAllPromRoot = ReaderMixActivity.g(ReaderMixActivity.this);
+                if (chineseAllPromRoot != null && chineseAllPromRoot.getProm() != null) {
+                    ReaderMixActivity.h(ReaderMixActivity.this).setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            if (chineseAllPromRoot != null && chineseAllPromRoot.getProm() != null) {
+                                String string = chineseAllPromRoot.getProm().getLink();
+                                new com.clilystudio.netbook.widget.j(ReaderMixActivity.this, string).a();
+                            }
+                        }
+                    });
+                    ReaderMixActivity.h(ReaderMixActivity.this).setVisibility(View.VISIBLE);
+                    return;
+                }
+                ReaderMixActivity.h(ReaderMixActivity.this).setVisibility(View.GONE);
+            }
+        };
         String[] arrstring = new String[]{this.a};
         bE2.b(arrstring);
     }
@@ -114,7 +183,50 @@ public class ReaderMixActivity extends BaseLoadingActivity {
         this.a = this.getIntent().getStringExtra("BOOK_ID");
         this.b = this.getIntent().getStringExtra("BOOK_TITLE");
         this.c = this.getIntent().getStringExtra("SOURCE");
-        this.f = new bG(this, this.getLayoutInflater());
+        this.f = new W<TocSummary>(this.getLayoutInflater(), R.layout.list_item_mix_source) {
+
+            @Override
+            protected void a(int var1, TocSummary tocSummary) {
+                String string = tocSummary.getHost();
+                ImageView imageView = (ImageView) this.a(0, ImageView.class);
+                TextView textView = (TextView) this.a(1, TextView.class);
+                if (string.contains("baidu")) {
+                    imageView.setVisibility(View.VISIBLE);
+                    textView.setVisibility(View.GONE);
+                    imageView.setImageResource(R.drawable.mode_list_item_bd);
+                } else if (string.contains("leidian")) {
+                    imageView.setVisibility(View.VISIBLE);
+                    textView.setVisibility(View.GONE);
+                    imageView.setImageResource(R.drawable.mode_list_item_ld);
+                } else if (string.contains("sogou")) {
+                    imageView.setVisibility(View.VISIBLE);
+                    textView.setVisibility(View.GONE);
+                    imageView.setImageResource(R.drawable.mode_list_item_sg);
+                } else if (string.contains("easou")) {
+                    imageView.setVisibility(View.VISIBLE);
+                    textView.setVisibility(View.GONE);
+                    imageView.setImageResource(R.drawable.mode_list_item_es);
+                } else {
+                    imageView.setVisibility(View.GONE);
+                    textView.setVisibility(View.VISIBLE);
+                    textView.setText(string.substring(0, 1).toUpperCase());
+                }
+                this.a(2, string);
+                this.a(3, t.e((Date) tocSummary.getUpdated()) + "\uff1a");
+                this.a(4, tocSummary.getLastChapter());
+                if (string.equals(ReaderMixActivity.a(ReaderMixActivity.this))) {
+                    this.a(5, false);
+                    return;
+                }
+                this.a(5, true);
+
+            }
+
+            @Override
+            protected int[] a() {
+                return new int[]{R.id.source_icon_logo, R.id.source_icon_text, R.id.source, R.id.update_time, R.id.last_chapter, R.id.selected};
+            }
+        };
         this.e = (ListView) this.findViewById(R.id.content_list);
         this.e.setFooterDividersEnabled(true);
         View view = LayoutInflater.from(this).inflate(R.layout.reader_mix_header, (ViewGroup) this.e, false);
@@ -140,7 +252,24 @@ public class ReaderMixActivity extends BaseLoadingActivity {
         this.i = this.findViewById(R.id.reader_cp_header);
         this.j = this.findViewById(R.id.txt_label);
         this.e.setAdapter(this.f);
-        this.e.setOnItemClickListener(new bC(this));
+        this.e.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                int n2 = position - ReaderMixActivity.c(ReaderMixActivity.this).getHeaderViewsCount();
+                TocSummary tocSummary = (TocSummary) ReaderMixActivity.d(ReaderMixActivity.this).getItem(n2);
+                if (!tocSummary.getHost().equals(ReaderMixActivity.a(ReaderMixActivity.this))) {
+                    MyApplication.a().c(ReaderMixActivity.b(ReaderMixActivity.this));
+                    if ("vip.zhuishushenqi.com".equals(ReaderMixActivity.a(ReaderMixActivity.this))) {
+                        am.c((String) ReaderMixActivity.b(ReaderMixActivity.this), (int) 9);
+                    } else {
+                        am.c((String) ReaderMixActivity.b(ReaderMixActivity.this), (int) 10);
+                    }
+                    i.a().c(new v(1));
+                    ReaderMixActivity.a(ReaderMixActivity.this, tocSummary.get_id());
+                }
+                ReaderMixActivity.this.finish();
+            }
+        });
         this.b();
     }
 }

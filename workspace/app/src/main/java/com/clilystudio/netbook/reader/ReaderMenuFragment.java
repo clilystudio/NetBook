@@ -18,7 +18,12 @@ import android.widget.TextView;
 
 import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.R;
+import com.clilystudio.netbook.a_pack.*;
+import com.clilystudio.netbook.a_pack.e;
+import com.clilystudio.netbook.a_pack.f;
 import com.clilystudio.netbook.am;
+import com.clilystudio.netbook.api.*;
+import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.event.v;
 import com.clilystudio.netbook.model.TocSummary;
 import com.clilystudio.netbook.ui.RelateBookListActivity;
@@ -272,7 +277,33 @@ public class ReaderMenuFragment extends Fragment {
         if (this.getView() != null && n2 != 0) {
             this.getView().findViewById(R.id.slm_frame).setPadding(0, n2, 1, 0);
         }
-        bA bA2 = new bA(this, 0);
+        com.clilystudio.netbook.a_pack.e<String, Void, List<TocSummary>> bA2 = new e<String, Void, List<TocSummary>>(){
+
+            @Override
+            protected List<TocSummary> doInBackground(String... params) {
+                com.clilystudio.netbook.api.b.a();
+                List<TocSummary> list = com.clilystudio.netbook.api.b.b().d(params[0]);
+                return list;
+            }
+
+            @Override
+            protected void onPreExecute() {
+                super.onPreExecute();
+                ReaderMenuFragment.k(ReaderMenuFragment.this).c();
+            }
+
+            @Override
+            protected void onPostExecute(List<TocSummary> tocSummaries) {
+                super.onPostExecute(tocSummaries);
+                if (getActivity() == null) return;
+                if (tocSummaries != null) {
+                    ReaderMenuFragment.k(ReaderMenuFragment.this).a();
+                    ReaderMenuFragment.a(ReaderMenuFragment.this, tocSummaries);
+                } else {
+                    ReaderMenuFragment.k(ReaderMenuFragment.this).b();
+                }
+            }
+        };
         String[] arrstring = new String[]{this.e};
         bA2.b(arrstring);
         if (am.q((Context) this.getActivity())) {

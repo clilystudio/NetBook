@@ -39,13 +39,7 @@ import com.clilystudio.netbook.ui.post.BookPostTabActivity;
 import com.clilystudio.netbook.util.V_Clazz;
 import com.clilystudio.netbook.util.k;
 import com.clilystudio.netbook.widget.ThemeLoadingView;
-import com.iflytek.cloud.InitListener;
-import com.iflytek.cloud.SpeechSynthesizer;
-import com.iflytek.cloud.SynthesizerListener;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
-import com.jeremyfeinstein.slidingmenu.lib.g;
-import com.squareup.a.l;
-import com.umeng.a.b;
 
 import java.util.Date;
 import java.util.HashMap;
@@ -80,14 +74,12 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
     private PopupWindow S;
     private AutoReaderTextView T;
     private View U;
-    private SpeechSynthesizer V;
     private int W;
     private int X;
     private String[] Y;
     private int Z = 0;
     private LinkedList<Integer> aa;
     private PowerManager.WakeLock ab = null;
-    private SynthesizerListener ac;
     private Runnable ad;
     private BroadcastReceiver ae;
     private Handler af;
@@ -112,7 +104,6 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
     private ReaderActionBar r;
     private SettingWidget s;
     private AutoReaderSetWidget t;
-    private ReaderTtsSetWidget u;
     private boolean v = false;
     private int w = -1;
     private LinkedList<String> x = new LinkedList();
@@ -120,8 +111,12 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
     private int z;
 
     public ReaderActivity() {
-        this.ac = new am(this);
-        this.ad = new aY(this);
+        this.ad = new Runnable() {
+            @Override
+            public void run() {
+                getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+            }
+        };
         this.ae = new bg(this);
         this.af = new bh(this);
         this.ag = new bi(this);
@@ -317,13 +312,13 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         if (!n2.f()) {
             readerActivity.b[0].a(n2, true);
             readerActivity.m.setCurrentItem(0, false);
-            n2.a(new e<n>(){
+            n2.a(new e<n>() {
 
                 @Override
                 public void a(n var1) {
                     ReaderActivity.i(readerActivity)[1].a(var1);
                     if (var1 != null) {
-                        var1.a(new e<n>(){
+                        var1.a(new e<n>() {
 
                             @Override
                             public void a(n var11) {
@@ -337,12 +332,12 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         } else if (!n2.e()) {
             readerActivity.b[2].a(n2, true);
             readerActivity.m.setCurrentItem(2, false);
-            n2.b(new e<n>(){
+            n2.b(new e<n>() {
 
                 @Override
                 public void a(n var1) {
                     ReaderActivity.i(readerActivity)[1].a(var1);
-                    n2.b(new e<n>(){
+                    n2.b(new e<n>() {
                         @Override
                         public void a(n var11) {
                             ReaderActivity.i(readerActivity)[0].a(var11);
@@ -358,7 +353,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
 
                 @Override
                 public void a(n var1) {
-                     ReaderActivity.i(readerActivity)[2].a(var1);
+                    ReaderActivity.i(readerActivity)[2].a(var1);
                     n2.b(new e<n>() {
 
                         @Override
@@ -664,14 +659,9 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
             if (readerActivity.Z > -1 + readerActivity.Y.length) return;
             {
                 readerActivity.b[readerActivity.n].a(readerActivity.W, readerActivity.X);
-                readerActivity.V.startSpeaking(readerActivity.Y[readerActivity.Z], readerActivity.ac);
-                return;
+                 return;
             }
         }
-    }
-
-    static /* synthetic */ SpeechSynthesizer q(ReaderActivity readerActivity) {
-        return readerActivity.V;
     }
 
     static /* synthetic */ void r(ReaderActivity readerActivity) {
@@ -824,15 +814,34 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
     }
 
     private void C() {
-        aL aL2 = new aL(this);
-        aM aM2 = new aM(this);
-        aN aN2 = new aN(this);
+        G aL2 = new G() {
+            @Override
+            public void a(int var1) {
+                ReaderActivity.h(ReaderActivity.this, var1);
+            }
+        };
+        H aM2 = new H() {
+            @Override
+            public void a() {
+                ReaderActivity.Z(ReaderActivity.this);
+            }
+        };
+        F aN2 = new F() {
+            @Override
+            public void a() {
+                if (ReaderActivity.aa(ReaderActivity.this) == 5 || ReaderActivity.aa(ReaderActivity.this) == 10) {
+                    ReaderActivity.this.i();
+                } else {
+                    ReaderActivity.L(ReaderActivity.this);
+                }
+            }
+        };
         for (int k = 0; k < 3; ++k) {
             o o2;
             this.b[k] = o2 = new o((Activity) this, this.h);
-            o2.a((G) aL2);
-            o2.a((H) aM2);
-            o2.a((F) aN2);
+            o2.a(aL2);
+            o2.a(aM2);
+            o2.a(aN2);
         }
         this.registerReceiver(this.ag, new IntentFilter("android.intent.action.BATTERY_CHANGED"));
         this.registerReceiver(this.ah, new IntentFilter("android.intent.action.TIME_TICK"));
@@ -845,9 +854,27 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         if (this.k == null) {
             this.k = ReaderTocDialog.a();
             this.k.a(this.g, this.x);
-            this.k.a(new aO(this));
-            this.k.a(new aP(this));
-            this.k.a(new aQ(this));
+            this.k.a(new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    ReaderActivity.h(ReaderActivity.this, which);
+                    ReaderActivity.ab(ReaderActivity.this).dismiss();
+                }
+            });
+            this.k.a(new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    if (ReaderActivity.O(ReaderActivity.this) && !ReaderActivity.ac(ReaderActivity.this)) {
+                        ReaderActivity.this.finish();
+                    }
+                }
+            });
+            this.k.a(new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    ReaderActivity.e(ReaderActivity.this, false);
+                }
+            });
         }
         com.clilystudio.netbook.hpay100.a.a.a(this, this.k);
     }
@@ -918,14 +945,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
                     return;
                 }
                 if (this.M != 2) return;
-                {
-                    this.V.pauseSpeaking();
-                    this.u.setPause(true);
-                    this.u.a();
-                    b.a(this, "tts_pause_speaking", this.d);
-                    return;
-                }
-            }
+             }
         }
     }
 
@@ -941,13 +961,6 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
             this.t.b();
             if (this.M == 1) {
                 this.T.e();
-            }
-            if (this.M == 2) {
-                this.u.setVisibility(View.GONE);
-                if (this.u.b()) {
-                    this.V.resumeSpeaking();
-                    this.u.setPause(false);
-                }
             }
             this.B.setVisibility(View.GONE);
             this.getWindow().addFlags(1024);
@@ -1150,8 +1163,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
             {
                 this.X = 1 + (this.W + this.Y[this.Z].length());
                 this.b[this.n].a(this.W, this.X);
-                this.V.startSpeaking(this.Y[this.Z], this.ac);
-                return;
+                 return;
             }
         }
     }
@@ -1172,7 +1184,19 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
     }
 
     private void c(int n2) {
-        this.j.b(n2, new aS(this), true);
+        this.j.b(n2, new e<n>(){
+
+            @Override
+            public void a(n var1) {
+                Object[] arrobject;
+                ReaderActivity.a(ReaderActivity.this, var1);
+                if (ReaderActivity.g(ReaderActivity.this) == 2 && var1 != null && (arrobject = var1.d()) != null) {
+                    ReaderActivity.a(ReaderActivity.this, (String[]) arrobject[0]);
+                    ReaderActivity.a(ReaderActivity.this, (LinkedList) arrobject[1]);
+                    ReaderActivity.c(ReaderActivity.this, false);
+                }
+            }
+        }, true);
     }
 
     private void n() {
@@ -1185,7 +1209,6 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
     }
 
     private void o() {
-        this.V.stopSpeaking();
         this.M = 0;
         this.m.setReadMode(this.M);
         this.n();
@@ -1518,7 +1541,22 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         if (this.g.m()) {
             super.onBackPressed();
         } else {
-            new h(this).a(R.string.reader_add_book_title).b(R.string.add_book_hint).a(R.string.add_book, (DialogInterface.OnClickListener) new aX(this)).b(R.string.add_book_cancel, (DialogInterface.OnClickListener) new aW(this)).a().show();
+            new h(this).a(R.string.reader_add_book_title).b(R.string.add_book_hint).a(R.string.add_book,new DialogInterface.OnClickListener(){
+
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+                    ReaderActivity.ad(ReaderActivity.this);
+                    finish();
+                }
+            }).b(R.string.add_book_cancel, new DialogInterface.OnClickListener(){
+
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+                    finish();
+                }
+            }).a().show();
         }
         if (this.j()) {
             this.b[this.n].g();
@@ -1544,7 +1582,13 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
             }
             case R.id.menu_item_3:
         }
-        new com.clilystudio.netbook.ui.cb(this, new aZ(this)).a().show();
+        new com.clilystudio.netbook.ui.cb(this, new com.clilystudio.netbook.ui.cd() {
+            @Override
+            public void a(int var1) {
+                ReaderActivity.e(ReaderActivity.this, var1);
+
+            }
+        }).a().show();
     }
 
     @l
@@ -1614,12 +1658,6 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         slidingMenu.setTouchModeAbove(1);
         slidingMenu.setSlidingEnabled(false);
         slidingMenu.setOnOpenedListener((g) ((Object) new aj(this)));
-        if (this.V == null) {
-            this.V = SpeechSynthesizer.createSynthesizer(this, (InitListener) ((Object) new al(this)));
-            this.V.setParameter("engine_type", "local");
-            this.V.setParameter("speed", "" + com.clilystudio.netbook.hpay100.a.a.a((Context) this, "speech_speed", 50));
-            this.V.setParameter("voice_name", com.clilystudio.netbook.hpay100.a.a.d((Context) this, "speech_voice", ""));
-        }
         this.m = (PagerWidget) this.findViewById(R.id.main_view);
         this.r = (ReaderActionBar) this.findViewById(R.id.bottom_action_bar);
         this.s = (SettingWidget) this.findViewById(R.id.setting_widget);
@@ -1675,9 +1713,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
 
             }
         });
-        this.u.a(this.V);
-        this.u.setOnPlayChangeListener(new aU(this));
-        this.t.setOptionClickListener(this);
+         this.t.setOptionClickListener(this);
         this.T.setOnPageTurning(this);
         this.m.setAutoReaderTextView(this.T);
         this.j = new K(this.g, this.h);
@@ -1685,7 +1721,12 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         this.m.setAdapter((PagerAdapter) ((Object) new au(this)));
         this.q = this.getWindow().getDecorView();
         if (com.clilystudio.netbook.hpay100.a.a.h()) {
-            this.q.setOnSystemUiVisibilityChangeListener(new aV(this));
+            this.q.setOnSystemUiVisibilityChangeListener(new View.OnSystemUiVisibilityChangeListener() {
+                @Override
+                public void onSystemUiVisibilityChange(int visibility) {
+                    ReaderActivity.this.p = (visibility & 1) == 0;
+               }
+            });
         }
         this.J();
         if (this.H) {
@@ -1723,14 +1764,8 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         } catch (IllegalArgumentException var1_1) {
             var1_1.printStackTrace();
         }
-        if (this.V != null) {
-            this.V.stopSpeaking();
-            this.V.destroy();
-            com.clilystudio.netbook.hpay100.a.a.K(this);
-            this.n();
-        }
         this.p();
-        i.a().b(this);
+        i.a().(this);
         o[] arro = this.b;
         int n2 = arro.length;
         int n3 = 0;
@@ -1834,8 +1869,6 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         LocalBroadcastManager.getInstance(this).registerReceiver(this.ae, new IntentFilter("com.clilystudio.netbook.dlReceiver"));
         this.H();
         if (this.M == 2 || !"".equals(a)) {
-            this.u.setResetVoice(this.v);
-            this.u.setVoiceSourceView();
             this.v = false;
         }
     }

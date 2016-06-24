@@ -9,7 +9,7 @@ import android.widget.TextView;
 import com.clilystudio.netbook.R;
 
 public class ReaderWebActionBar extends RelativeLayout {
-    private a a;
+    private OnBtnClickListener a;
     private TextView b;
     private View c;
     private View d;
@@ -82,7 +82,7 @@ public class ReaderWebActionBar extends RelativeLayout {
         this.f.setText(string);
     }
 
-    public void setOnBtnClickListener$74b8600c(a a2) {
+    public void setOnBtnClickListener(OnBtnClickListener a2) {
         this.a = a2;
     }
 
@@ -91,5 +91,9 @@ public class ReaderWebActionBar extends RelativeLayout {
     }
 
     public void setTopicCount(String string) {
+    }
+
+    public interface OnBtnClickListener {
+        void a(int n);
     }
 }
