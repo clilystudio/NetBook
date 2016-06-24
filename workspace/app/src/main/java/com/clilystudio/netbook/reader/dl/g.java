@@ -17,23 +17,23 @@ final class g extends com.clilystudio.netbook.a_pack.e<Void, Void, Toc> {
     }
 
     @Override
-    protected final /* synthetic */ Object doInBackground(Object[] arrobject) {
+    protected final /* synthetic */ Toc doInBackground(Void[] arrobject) {
         return BookDownloadService.f(this.a).a();
     }
 
     @Override
-    protected final /* synthetic */ void onPostExecute(Object object) {
+    protected final /* synthetic */ void onPostExecute(Toc object) {
         Toc toc = (Toc) object;
         super.onPostExecute(toc);
         if (toc != null && toc.getChapters() != null) {
-            a.a(BookDownloadService.d(this.a), toc.get_id(), "toc", toc);
+            com.clilystudio.netbook.hpay100.a.a.a(BookDownloadService.d(this.a), toc.get_id(), "toc", toc);
             BookDownloadService.a(this.a, toc.getChapters());
             BookDownloadService.e(this.a, BookDownloadService.p(this.a).length);
             BookDownloadService.f(this.a, BookDownloadService.h(this.a));
             BookDownloadService.q(this.a);
             return;
         }
-        e.a((Context) this.a.getApplicationContext(), (String) "\u83b7\u53d6\u76ee\u5f55\u5931\u8d25\uff0c\u6682\u65f6\u65e0\u6cd5\u7f13\u5b58");
+        e.a(this.a.getApplicationContext(), "获取目录失败，暂时无法缓存");
         BookDownloadService.r(this.a);
     }
 }

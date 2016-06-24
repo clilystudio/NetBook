@@ -18,6 +18,7 @@ import android.support.v4.content.LocalBroadcastManager;
 import android.support.v4.view.PagerAdapter;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.PopupMenu;
 import android.widget.PopupWindow;
@@ -642,15 +643,6 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         readerActivity.N();
     }
 
-    static /* synthetic */ void o(ReaderActivity readerActivity) {
-        try {
-            readerActivity.startService(new Intent(readerActivity, TtsSpeakingService.class));
-            return;
-        } catch (Exception var1_1) {
-            return;
-        }
-    }
-
     /*
      * Enabled aggressive block sorting
      */
@@ -669,10 +661,6 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
                 return;
             }
         }
-    }
-
-    static /* synthetic */ void r(ReaderActivity readerActivity) {
-        readerActivity.n();
     }
 
     static /* synthetic */ void s(ReaderActivity readerActivity) {
@@ -1206,19 +1194,9 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         }, true);
     }
 
-    private void n() {
-        try {
-            this.stopService(new Intent(this, TtsSpeakingService.class));
-            return;
-        } catch (Exception var1_1) {
-            return;
-        }
-    }
-
     private void o() {
         this.M = 0;
         this.m.setReadMode(this.M);
-        this.n();
         this.H();
         this.W = 0;
         this.X = 0;
@@ -1805,7 +1783,32 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         this.m.setAutoReaderTextView(this.T);
         this.j = new K(this.g, this.h);
         this.C();
-        this.m.setAdapter((PagerAdapter) ((Object) new au(this)));
+        this.m.setAdapter(new PagerAdapter() {
+            @Override
+            public int getCount() {
+                return 3;
+            }
+
+            @Override
+            public Object instantiateItem(ViewGroup container, int position) {
+                o o2 = ReaderActivity.i(ReaderActivity.this)[position];
+                container.addView(o2.i());
+                return o2.i();
+            }
+
+            @Override
+            public void destroyItem(ViewGroup container, int position, Object object) {
+                container.removeView((View) object);
+            }
+
+            @Override
+            public boolean isViewFromObject(View view, Object object) {
+                if (view == object) {
+                    return true;
+                }
+                return false;
+            }
+        });
         this.q = this.getWindow().getDecorView();
         if (com.clilystudio.netbook.hpay100.a.a.h()) {
             this.q.setOnSystemUiVisibilityChangeListener(new View.OnSystemUiVisibilityChangeListener() {

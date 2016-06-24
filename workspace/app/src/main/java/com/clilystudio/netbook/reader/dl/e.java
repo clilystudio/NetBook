@@ -22,7 +22,7 @@ final class e extends com.clilystudio.netbook.a_pack.e<Void, Void, ChapterRoot> 
     }
 
     @Override
-    protected final /* synthetic */ Object doInBackground(Object[] arrobject) {
+    protected final /* synthetic */ ChapterRoot doInBackground(Void[] arrobject) {
         ChapterRoot chapterRoot = BookDownloadService.f(this.c).a(this.a, this.b);
         BookDlRecord bookDlRecord = BookDlRecord.get(BookDownloadService.d(this.c));
         if (bookDlRecord != null) {
@@ -36,7 +36,7 @@ final class e extends com.clilystudio.netbook.a_pack.e<Void, Void, ChapterRoot> 
      * Enabled aggressive block sorting
      */
     @Override
-    protected final /* synthetic */ void onPostExecute(Object object) {
+    protected final /* synthetic */ void onPostExecute(ChapterRoot object) {
         Chapter chapter;
         int n = 1;
         ChapterRoot chapterRoot = (ChapterRoot) object;
@@ -68,7 +68,7 @@ final class e extends com.clilystudio.netbook.a_pack.e<Void, Void, ChapterRoot> 
         }
         BookDownloadService.c(this.c);
         if (BookDownloadService.n(this.c) == 0 || BookDownloadService.g(this.c) == BookDownloadService.h(this.c)) {
-            i.a().c(new com.clilystudio.netbook.event.I());
+            i.a().post(new com.clilystudio.netbook.event.I());
             BookDownloadService.c(this.c, BookDownloadService.g(this.c));
             return;
         } else {
@@ -77,7 +77,7 @@ final class e extends com.clilystudio.netbook.a_pack.e<Void, Void, ChapterRoot> 
             }
             if (BookDownloadService.g(this.c) - BookDownloadService.n(this.c) < n) return;
             {
-                i.a().c(new com.clilystudio.netbook.event.I());
+                i.a().post(new com.clilystudio.netbook.event.I());
                 BookDownloadService.c(this.c, BookDownloadService.g(this.c));
                 return;
             }

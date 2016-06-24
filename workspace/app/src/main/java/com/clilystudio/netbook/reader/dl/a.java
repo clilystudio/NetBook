@@ -5,13 +5,14 @@ import android.content.DialogInterface;
 import android.content.Intent;
 
 import com.clilystudio.netbook.MyApplication;
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.db.BookDlRecord;
 import com.clilystudio.netbook.db.BookReadRecord;
 import com.clilystudio.netbook.event.I;
 import com.clilystudio.netbook.event.i;
 import com.clilystudio.netbook.util.e;
 
-import uk.me.lewisdeane.ldialogs.h;
+import uk.me.lewisdeane.ldialogs.BaseDialog;
 
 public class a {
     private Activity a;
@@ -20,29 +21,42 @@ public class a {
         this.a = activity;
     }
 
-    static /* synthetic */ void a(a a2, BookReadRecord bookReadRecord, int n, int n2) {
+    static /* synthetic */ void a1(a a2, BookReadRecord bookReadRecord, int n, int n2) {
         a2.b(bookReadRecord, n, n2);
     }
 
-    private void a(BookReadRecord bookReadRecord, int n, int n2) {
+    private void a(final BookReadRecord bookReadRecord, final int n, final int n2) {
         if (bookReadRecord == null) {
-            e.a((Activity) this.a, (String) "\u8bf7\u91cd\u8bd5");
+            e.a((Activity) this.a, (String) "请重试");
             return;
         }
         if (!com.clilystudio.netbook.hpay100.a.a.d()) {
-            e.a((Activity) this.a, (String) "\u65e0\u6cd5\u7f13\u5b58\uff0c\u8bf7\u68c0\u67e5SD\u5361\u662f\u5426\u6302\u8f7d");
+            e.a((Activity) this.a, (String) "无法缓存，请检查SD卡是否挂载");
             return;
         }
         if (com.clilystudio.netbook.hpay100.a.a.f(bookReadRecord.getReadMode())) {
-            e.b((Activity) this.a, (String) "\u6682\u4e0d\u652f\u6301\u5f53\u524d\u6a21\u5f0f\u7f13\u5b58");
+            e.b((Activity) this.a, (String) "暂不支持当前模式缓存");
             return;
         }
         if (1 == com.clilystudio.netbook.hpay100.a.a.r(this.a)) {
             this.b(bookReadRecord, n, n2);
             return;
         }
-        b b2 = new b(this, bookReadRecord, n, n2);
-        new h(this.a).a(R.string.zssq_tips).b(R.string.chapter_dl_net_type_msg).a(R.string.chapter_dl, (DialogInterface.OnClickListener) new c(this, b2)).b(R.string.cancel, null).b();
+        final d b2 = new d() {
+
+            @Override
+            public void a() {
+                a1(a.this, bookReadRecord, n, n2);
+            }
+        };
+
+        new BaseDialog.Builder(this.a).setTitle(R.string.zssq_tips).setMessage(R.string.chapter_dl_net_type_msg).setPositiveButton(R.string.chapter_dl, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+                b2.a();
+            }
+        }).setNegativeButton(R.string.cancel, null).show();
     }
 
     /*
@@ -51,8 +65,8 @@ public class a {
     private void b(BookReadRecord bookReadRecord, int n, int n2) {
         String string = bookReadRecord.getBookId();
         int n3 = bookReadRecord.getReadMode();
-        i.a().c(new com.clilystudio.netbook.event.d(string, 1));
-        e.a((Activity) this.a, (String) "\u5df2\u52a0\u5165\u7f13\u5b58\u961f\u5217");
+        i.a().post(new com.clilystudio.netbook.event.d(string, 1));
+        e.a((Activity) this.a,  "已加入缓存队列");
         MyApplication.a().f().add(string);
         int n4 = n < 0 ? 0 : n;
         BookDlRecord bookDlRecord = BookDlRecord.get(string);
@@ -63,7 +77,7 @@ public class a {
         } else {
             BookDlRecord.reset(bookDlRecord, n4, n2);
         }
-        i.a().c(new I());
+        i.a().post(new I());
         Intent intent = new Intent(this.a, BookDownloadService.class);
         this.a.startService(intent);
     }

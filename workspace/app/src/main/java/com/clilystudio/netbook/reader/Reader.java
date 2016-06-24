@@ -254,7 +254,14 @@ public final class Reader {
     private void a(int n2, final Reader.Type type) {
         if (n2 == 0) {
             if (this.t == 0) {
-                this.o.post(new Q(this));
+                this.o.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        for (ae o1 : Reader.this.q) {
+                            o1.a();
+                        }
+                    }
+                });
             }
             this.t = 1 + this.t;
             this.o.post(new Runnable() {
@@ -270,9 +277,24 @@ public final class Reader {
         }
         this.t = -1 + this.t;
         if (this.t == 0) {
-            this.o.post(new S(this));
+            this.o.post(new Runnable() {
+                @Override
+                public void run() {
+                    for (ae aQ : Reader.this.q) {
+                        aQ.b();
+                    }
+                }
+            });
         }
-        this.o.post(new T(this, type));
+        this.o.post(new Runnable() {
+            @Override
+            public void run() {
+                ae ae2 = type.getListener(Reader.this);
+                if (ae2 != null) {
+                    ae2.b();
+                }
+            }
+        });
     }
 
     private void a(List<Integer> list) {

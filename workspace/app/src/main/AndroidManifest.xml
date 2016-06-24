@@ -445,9 +445,6 @@
         <service
             android:name="com.clilystudio.netbook.reader.dl.BookDownloadService"
             android:exported="false"/>
-        <service
-            android:name="com.clilystudio.netbook.reader.TtsSpeakingService"
-            android:exported="false"/>
 
         <receiver android:name="com.clilystudio.netbook.event.DownloadCompleteReceiver">
             <intent-filter>

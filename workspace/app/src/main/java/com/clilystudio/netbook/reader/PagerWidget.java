@@ -5,13 +5,15 @@ import android.support.v4.view.MotionEventCompat;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.ViewConfiguration;
+import android.view.animation.Interpolator;
+import android.widget.Scroller;
 
 import org.apache.commons.lang3.a.a;
 
 public class PagerWidget extends ReaderViewPager {
     private int a;
     private OnPageClickListener b;
-    private M c;
+    private Scroller c;
     private boolean d;
     private float e;
     private float f;
@@ -72,7 +74,18 @@ public class PagerWidget extends ReaderViewPager {
         this.a = ViewConfiguration.get(this.getContext()).getScaledTouchSlop();
         this.a("mMinimumVelocity", 0);
         this.a("mFlingDistance", 0);
-        this.c = new M(this, this.getContext());
+        this.c = new Scroller(this.getContext(), new Interpolator() {
+            @Override
+            public float getInterpolation(float input) {
+                float f2 = input - 1.0f;
+                return 1.0f + f2 * (f2 * (f2 * (f2 * f2)));
+            }
+        }) {
+           @Override
+            public void startScroll(int startX, int startY, int dx, int dy) {
+                super.startScroll(startX, startY, dx, dy, 400);
+            }
+        };
         this.a("mScroller", this.c);
     }
 

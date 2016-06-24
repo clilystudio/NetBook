@@ -20,8 +20,38 @@ public final class K {
         return n.a((K) k, (ReaderChapter) readerChapter, (int) n2);
     }
 
-    private void a(int n2, int n3, e<n> e2, boolean bl, int n4) {
-        this.a.a(n2, new L(this, e2, n4, n3), false, bl);
+    private void a(int n2, final int n31, final e<n> e2, boolean bl, final int n4) {
+//        L(this, e2, n4, n3)
+        this.a.a(n2, new e<ReaderChapter>(){
+
+            @Override
+            public void a(ReaderChapter readerChapter) {
+                if (readerChapter.getStatus() != 1) {
+                    e2.a(K.a(K.this, readerChapter, n4));
+                    return;
+                }
+                int[] arrn = K.this.a(readerChapter.getBody());
+                int n2 = n31;
+                int n3 = 0;
+                if (n2 != 0) {
+                    if (n31 == -1) {
+                        n3 = -1 + arrn.length;
+                    } else {
+                        int n4 = -1 + arrn.length;
+                        do {
+                            n3 = 0;
+                            if (n4 == 0) break;
+                            if (n31 >= arrn[n4]) {
+                                n3 = n4;
+                                break;
+                            }
+                            --n4;
+                        } while (true);
+                    }
+                }
+                e2.a(new n(K.this, readerChapter, arrn, n3));
+            }
+        }, false, bl);
     }
 
     public final Reader a() {

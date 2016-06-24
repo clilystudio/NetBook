@@ -29,12 +29,12 @@ final class f extends e<String, Void, TocSourceRoot> {
     }
 
     @Override
-    protected final /* synthetic */ Object doInBackground(Object[] arrobject) {
+    protected final /* synthetic */ TocSourceRoot doInBackground(String[] arrobject) {
         return f.a((String[]) arrobject);
     }
 
     @Override
-    protected final /* synthetic */ void onPostExecute(Object object) {
+    protected final /* synthetic */ void onPostExecute(TocSourceRoot object) {
         TocSourceRoot tocSourceRoot = (TocSourceRoot) object;
         super.onPostExecute(tocSourceRoot);
         if (tocSourceRoot != null && tocSourceRoot.getSources() != null) {

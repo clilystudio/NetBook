@@ -545,7 +545,7 @@ public final class o {
         this.n();
         this.b(n2);
         if (this.a(n2.a())) {
-            b.a(this.b, "paying_page_auto_purchase", com.clilystudio.netbook.util.I.b);
+            MiStatInterface.recordCountEvent("paying_page_auto_purchase", com.clilystudio.netbook.util.I.b);
             I i2 = new I(this, this.b, "自动购买中...");
             String[] arrstring = new String[]{am.e().getToken(), n2.a().getId()};
             i2.b(arrstring);
@@ -554,7 +554,39 @@ public final class o {
             int n3 = n2.l();
             Reader reader = MyApplication.a().b();
             if (o.o()) {
-                reader.a(n3 + 1, new p(this), true, false);
+                reader.a(n3 + 1, new e<ReaderChapter>(){
+
+                    @Override
+                    public void a(final ReaderChapter readerChapter) {
+                        if (readerChapter != null && o.this.a(readerChapter)) {
+                            MiStatInterface.recordCountEvent("paying_page_auto_purchase", com.clilystudio.netbook.util.I.b);
+                            com.clilystudio.netbook.a_pack.e<String, Void, PurchaseChapterResult> j = new com.clilystudio.netbook.a_pack.e<String, Void, PurchaseChapterResult>(){
+
+                                @Override
+                                protected PurchaseChapterResult doInBackground(String... params) {
+                                    com.clilystudio.netbook.api.b.a();
+                                    PurchaseChapterResult purchaseChapterResult = com.clilystudio.netbook.api.b.b().a(params[0], params[1], 1);
+                                    return purchaseChapterResult;
+                                }
+
+                                @Override
+                                protected void onPostExecute(PurchaseChapterResult purchaseChapterResult) {
+                                    super.onPostExecute(purchaseChapterResult);
+                                    if (purchaseChapterResult != null && purchaseChapterResult.isOk()) {
+                                        o.b(o.this).q().a().e().put(purchaseChapterResult.getChapterId(), purchaseChapterResult.getKey());
+                                        a.a(((ReaderActivity) o.a(o.this)).l(), o.b(o.this).q().a().e());
+                                        if (purchaseChapterResult.getChapterId().equals(readerChapter.getId())) {
+                                            a.a(((ReaderActivity) o.a(o.this)).l(), ((ReaderActivity) o.a(o.this)).f(), am.e(readerChapter.getLink()), readerChapter);
+                                        }
+                                    }
+
+                                }
+                            };
+                            String[] arrstring = new String[]{am.e().getToken(), readerChapter.getId()};
+                            j.b(arrstring);
+                        }
+                    }
+                }, true, false);
             }
         }
     }
