@@ -269,7 +269,13 @@ public class ReaderWebActivity extends BaseReadActivity {
                 ((TextView) var11_8.findViewById(R.id.reader_web_opt_url)).setText(com.clilystudio.netbook.hpay100.a.a.P(this.f));
                 new h(this).a(var11_8).a(false).b(true).a("\u597d\u7684", (DialogInterface.OnClickListener) var12_9).b();
             } else {
-                cD  var13_21 = new cD(this);
+                DialogInterface.OnClickListener  var13_21 = new DialogInterface.OnClickListener(){
+
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        ReaderWebActivity.c(ReaderWebActivity.this);
+                   }
+                };
                 h var14_22 = new h(this);
                 var14_22.e = var10_7;
                 var14_22.a(false).a("\u597d\u7684", (DialogInterface.OnClickListener) var12_9).b("\u4e0d\u4f7f\u7528", (DialogInterface.OnClickListener) var13_21).b();
