@@ -11,6 +11,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Message;
 import android.os.PowerManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.LocalBroadcastManager;
@@ -118,7 +119,24 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
             }
         };
         this.ae = new bg(this);
-        this.af = new bh(this);
+        this.af = new Handler(){
+
+            @Override
+            public void handleMessage(Message msg) {
+                super.handleMessage(msg);
+                String string = "";
+                if (ReaderActivity.ak(ReaderActivity.this) == 0 && ReaderActivity.al(ReaderActivity.this) < ReaderActivity.ai(ReaderActivity.this)) {
+                    string = "\u6b63\u5728\u7f13\u5b58: " + ReaderActivity.D(ReaderActivity.this) + " ( " + ReaderActivity.al(ReaderActivity.this) + "/" + ReaderActivity.ai(ReaderActivity.this) + " )...";
+                } else if (ReaderActivity.ak(ReaderActivity.this) == -1 || ReaderActivity.al(ReaderActivity.this) >= ReaderActivity.ai(ReaderActivity.this)) {
+                    string = "\u7f13\u5b58\u5b8c\u6210: " + ReaderActivity.D(ReaderActivity.this);
+                } else if (ReaderActivity.ak(ReaderActivity.this) == -2) {
+                    string = "\u5df2\u505c\u6b62: " + ReaderActivity.D(ReaderActivity.this) + " ( " + ReaderActivity.al(ReaderActivity.this) + "/" + ReaderActivity.ai(ReaderActivity.this) + " )";
+                }
+                ReaderActivity.am(ReaderActivity.this).setText(string);
+                ReaderActivity.ao(ReaderActivity.this).add(ReaderActivity.an(ReaderActivity.this));
+
+            }
+        };
         this.ag = new bi(this);
         this.ah = new bj(this);
     }

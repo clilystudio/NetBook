@@ -2,6 +2,7 @@ package com.clilystudio.netbook.reader;
 
 import android.content.Context;
 import android.os.Handler;
+import android.os.Message;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.model.TtsRoot;
+import com.clilystudio.netbook.util.t;
 import com.iflytek.cloud.SpeechSynthesizer;
 import com.iflytek.cloud.SpeechUtility;
 
@@ -39,12 +41,30 @@ public class ReaderTtsSetWidget extends LinearLayout {
 
     public ReaderTtsSetWidget(Context context) {
         super(context);
-        this.a = new cl(this);
+        this.a = new Handler(){
+            @Override
+            public final void handleMessage(Message message) {
+                if (message.what < ReaderTtsSetWidget.g(ReaderTtsSetWidget.this).length && message.arg1 > 0) {
+                    ReaderTtsSetWidget.g(ReaderTtsSetWidget.this)[message.what].setText(t.b(1000 * message.arg1));
+                    return;
+                }
+                ReaderTtsSetWidget.a(ReaderTtsSetWidget.this, message.what, true);
+            }
+        };
     }
 
     public ReaderTtsSetWidget(Context context, AttributeSet attributeSet) {
         super(context, attributeSet);
-        this.a = new cl(this);
+        this.a = new Handler(){
+            @Override
+            public final void handleMessage(Message message) {
+                if (message.what < ReaderTtsSetWidget.g(ReaderTtsSetWidget.this).length && message.arg1 > 0) {
+                    ReaderTtsSetWidget.g(ReaderTtsSetWidget.this)[message.what].setText(t.b(1000 * message.arg1));
+                    return;
+                }
+                ReaderTtsSetWidget.a(ReaderTtsSetWidget.this, message.what, true);
+            }
+        };
     }
 
     static /* synthetic */ int a(ReaderTtsSetWidget readerTtsSetWidget, int n) {
@@ -86,13 +106,26 @@ public class ReaderTtsSetWidget extends LinearLayout {
         return readerTtsSetWidget.n;
     }
 
-    static /* synthetic */ void b(ReaderTtsSetWidget readerTtsSetWidget, int n) {
+    static /* synthetic */ void b(final ReaderTtsSetWidget readerTtsSetWidget, final int n) {
         readerTtsSetWidget.o = false;
         if (readerTtsSetWidget.j != null) {
             readerTtsSetWidget.j.cancel();
         }
         readerTtsSetWidget.m = readerTtsSetWidget.k[n];
-        readerTtsSetWidget.j = new ck(readerTtsSetWidget, n);
+        readerTtsSetWidget.j = new TimerTask() {
+            @Override
+            public void run() {
+                if (!ReaderTtsSetWidget.d(readerTtsSetWidget)) {
+                    if (ReaderTtsSetWidget.e(readerTtsSetWidget) > 0) {
+                        ReaderTtsSetWidget.f(readerTtsSetWidget);
+                    }
+                    Message message = new Message();
+                    message.what = n;
+                    message.arg1 = ReaderTtsSetWidget.e(readerTtsSetWidget);
+                    readerTtsSetWidget.a.sendMessage(message);
+                }
+            }
+        };
         readerTtsSetWidget.i.schedule(readerTtsSetWidget.j, 1000, 1000);
         readerTtsSetWidget.g.c();
     }
@@ -222,7 +255,25 @@ public class ReaderTtsSetWidget extends LinearLayout {
         });
         this.e = (SeekBar) this.findViewById(R.id.tts_voice_speed);
         this.e.setProgress(a.a(this.getContext(), "speech_speed", 50));
-        this.e.setOnSeekBarChangeListener((SeekBar.OnSeekBarChangeListener) ((Object) new ch(this)));
+        this.e.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                ReaderTtsSetWidget.a(ReaderTtsSetWidget.this, false);
+                ReaderTtsSetWidget.a(ReaderTtsSetWidget.this).a(false);
+                ReaderTtsSetWidget.a(ReaderTtsSetWidget.this).a(seekBar.getProgress());
+                ReaderTtsSetWidget.a(ReaderTtsSetWidget.this).a();
+            }
+        });
         this.f = (Button) this.findViewById(R.id.tts_exit);
         this.f.setOnClickListener(new OnClickListener() {
             @Override
