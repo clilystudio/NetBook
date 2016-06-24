@@ -1175,7 +1175,13 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
     }
 
     private void b(int n2) {
-        this.j.a((e<n>) ((Object) new aA(this)), n2);
+        this.j.a(new e<n>(){
+
+            @Override
+            public void a(n var1) {
+                ReaderActivity.a(ReaderActivity.this, var1);
+            }
+        }, n2);
     }
 
     private void c(int n2) {
@@ -1292,9 +1298,26 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
             n n6 = o4.j();
             if (this.n == 2 && n6 != null) {
                 if (!n6.e() && !this.w()) {
-                    int n7 = this.g.f();
+                    final int n7 = this.g.f();
                     this.O.a();
-                    this.g.b().a(new aH(this, n7));
+                    this.g.setaf(new af() {
+                        @Override
+                        public void a() {
+                            ReaderActivity.P(ReaderActivity.this);
+                            ChapterLink[] arrchapterLink = ReaderActivity.Y(ReaderActivity.this).d();
+                            if (arrchapterLink == null) return;
+                            if (n7 < arrchapterLink.length) {
+                                ReaderActivity.h(ReaderActivity.this, arrchapterLink.length);
+                                return;
+                            }
+                            ReaderActivity.this.toggle();
+                        }
+
+                        @Override
+                        public void b() {
+                            ReaderActivity.P(ReaderActivity.this);
+                       }
+                    });
                     return;
                 }
                 o3.a(n6, true);
@@ -1358,7 +1381,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
     }
 
     private boolean w() {
-        ag ag2 = this.g.b();
+        com.clilystudio.netbook.a_pack.e<String, Void, Boolean> ag2 = this.g.b();
         if (ag2 == null || ag2.getStatus() == AsyncTask.Status.FINISHED) {
             return true;
         }

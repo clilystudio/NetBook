@@ -28,7 +28,8 @@ public final class Reader {
     public final Map<Integer, ReaderChapter> a = new HashMap<Integer, ReaderChapter>();
     private final int y;
     private boolean A = false;
-    private ag B;
+    private com.clilystudio.netbook.a_pack.e<String, Void, Boolean> B;
+    private af af2;
     private Y C;
     private String c;
     private String d;
@@ -110,7 +111,7 @@ public final class Reader {
         return reader.s;
     }
 
-    static /* synthetic */ ag a(Reader reader, ag ag2) {
+    static /* synthetic */ com.clilystudio.netbook.a_pack.e<String, Void, Boolean> a(Reader reader, com.clilystudio.netbook.a_pack.e<String, Void, Boolean> ag2) {
         reader.B = ag2;
         return ag2;
     }
@@ -231,7 +232,7 @@ public final class Reader {
         return null;
     }
 
-    static /* synthetic */ ag n(Reader reader) {
+    static /* synthetic */ com.clilystudio.netbook.a_pack.e<String, Void, Boolean> n(Reader reader) {
         return reader.B;
     }
 
@@ -425,7 +426,6 @@ public final class Reader {
     }
 
     public final void a(final ad ad2, final boolean bla) {
-//        P(this, bl, ad2)
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -451,7 +451,39 @@ public final class Reader {
                         Reader.b(Reader.this, Reader.l(Reader.this));
                     }
                     if (bl) {
-                        Reader.a(Reader.this, new ag(Reader.this));
+                        Reader.a(Reader.this, new com.clilystudio.netbook.a_pack.e<String, Void, Boolean>(){
+                              @Override
+                            protected Boolean doInBackground(String... params) {
+                                Reader.a(Reader.this, Reader.m(Reader.this));
+                                if (Reader.l(Reader.this) != null) {
+                                    Reader.b(Reader.this, Reader.l(Reader.this));
+                                }
+                                if (Reader.l(Reader.this) != null) {
+                                    return true;
+                                }
+                                 return false;
+                            }
+
+                            @Override
+                            protected void onPostExecute(Boolean aBoolean) {
+                                super.onPostExecute(aBoolean);
+                                if (aBoolean) {
+                                    Reader.a(Reader.this, Reader.l(Reader.this).getHost());
+                                    Reader.a(Reader.this, Reader.l(Reader.this).getChapters());
+                                    for (Integer n2 : Reader.this.a.keySet()) {
+                                        Reader.this.a.get(n2).setMaxIndex(Reader.this.g());
+                                    }
+                                }
+                                if (af2 != null) {
+                                    if (aBoolean) {
+                                        af2.a();
+                                    } else {
+                                        af2.b();
+                                    }
+                                }
+                                Reader.a(Reader.this, (com.clilystudio.netbook.a_pack.e<String, Void, Boolean>)null);
+                            }
+                        });
                         Reader.n(Reader.this).b();
                     }
                 } else {
@@ -495,7 +527,7 @@ public final class Reader {
         this.h = map;
     }
 
-    public final ag b() {
+    public final com.clilystudio.netbook.a_pack.e<String, Void, Boolean> b() {
         return this.B;
     }
 
@@ -600,6 +632,10 @@ public final class Reader {
             return chapterLink.getTitle();
         }
         return "";
+    }
+
+    public void setaf(af af2) {
+        this.af2 = af2;
     }
 
     public enum Type {
