@@ -27,7 +27,7 @@ public final class bH {
         }
         try {
             boolean bl;
-            if (a.i() && !(bl = ViewConfiguration.get(context).hasPermanentMenuKey())) {
+            if (com.clilystudio.netbook.hpay100.a.a.i() && !(bl = ViewConfiguration.get(context).hasPermanentMenuKey())) {
                 return false;
             }
         } catch (Exception var1_2) {

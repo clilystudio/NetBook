@@ -10,8 +10,10 @@ import android.view.View;
 
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.d;
+import com.clilystudio.netbook.db.BookTopicEnterRecord;
 import com.clilystudio.netbook.event.i;
 import com.clilystudio.netbook.event.v;
+import com.clilystudio.netbook.model.TopicCount;
 
 public class ReaderResActivity extends ReaderModeActivity {
     private View e;
@@ -79,7 +81,27 @@ public class ReaderResActivity extends ReaderModeActivity {
         fragmentTransaction.replace(R.id.content_frame, (Fragment) var4_6).commit();
         com.clilystudio.netbook.a.a();
         com.clilystudio.netbook.a.a(this);
-        b bT2 = new bT(this, (byte)0);
+        com.clilystudio.netbook.a_pack.e<String, Void, TopicCount> bT2 = new com.clilystudio.netbook.a_pack.e<String, Void, TopicCount>(){
+
+            @Override
+            protected TopicCount doInBackground(String... params) {
+                com.clilystudio.netbook.api.b.a();
+                return com.clilystudio.netbook.api.b.b().I(params[0]);
+            }
+
+            @Override
+            protected void onPostExecute(TopicCount topicCount) {
+                super.onPostExecute(topicCount);
+                if (topicCount != null && topicCount.isOk()) {
+                    ReaderResActivity.a(ReaderResActivity.this, topicCount.getCount());
+                    if (Math.max(0, ReaderResActivity.a(ReaderResActivity.this) - BookTopicEnterRecord.get(ReaderResActivity.this.b).getVisitCount()) == 0) {
+                        ReaderResActivity.b(ReaderResActivity.this).setVisibility(View.INVISIBLE);
+                    } else {
+                        ReaderResActivity.b(ReaderResActivity.this).setVisibility(View.VISIBLE);
+                    }
+                }
+            }
+        };
         String[] arrstring = new String[]{this.b};
         bT2.b(arrstring);
     }

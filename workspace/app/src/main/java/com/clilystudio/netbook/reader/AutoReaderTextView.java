@@ -9,6 +9,7 @@ import android.text.TextPaint;
 import android.util.AttributeSet;
 import android.view.animation.Animation;
 import android.view.animation.LinearInterpolator;
+import android.view.animation.Transformation;
 import android.widget.RelativeLayout;
 
 import com.clilystudio.netbook.hpay100.a.a;
@@ -73,7 +74,16 @@ public class AutoReaderTextView extends JustifyTextView {
     }
 
     private Animation h() {
-        b b2 = new b(this);
+        Animation b2 = new Animation(){
+
+            @Override
+            protected void applyTransformation(float interpolatedTime, Transformation t) {
+                if (!AutoReaderTextView.a(AutoReaderTextView.this)) {
+                    AutoReaderTextView.b(AutoReaderTextView.this).height = AutoReaderTextView.c(AutoReaderTextView.this) - (int) (f * (float) AutoReaderTextView.c(AutoReaderTextView.this));
+                    AutoReaderTextView.this.setLayoutParams(AutoReaderTextView.b(AutoReaderTextView.this));
+                }
+            }
+        };
         b2.setDuration((long) (1000.0f * ((float) this.g / (float) this.f * (float) this.h[-1 + this.e])));
         b2.setInterpolator(new LinearInterpolator());
         b2.setAnimationListener(this.l);
