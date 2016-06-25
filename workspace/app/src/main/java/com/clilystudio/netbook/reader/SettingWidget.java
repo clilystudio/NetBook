@@ -131,7 +131,12 @@ public class SettingWidget extends LinearLayout {
      */
     public void setReaderStyle(bZ bZ2) {
         this.a = bZ2;
-        bZ2.a(new cR(this));
+        bZ2.a(new cc() {
+            @Override
+            public void a() {
+                SettingWidget.a(SettingWidget.this);
+            }
+        });
         this.c = this.findViewById(R.id.btn_increase);
         this.d = this.findViewById(R.id.btn_decrease);
         this.c.setOnClickListener(new OnClickListener() {

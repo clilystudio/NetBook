@@ -140,14 +140,26 @@ public class ReaderViewPager extends ViewGroup {
 
     public ReaderViewPager(Context context) {
         super(context);
-        this.mEndScrollRunnable = new cq(this);
+        this.mEndScrollRunnable = new Runnable() {
+            @Override
+            public void run() {
+                ReaderViewPager.a(ReaderViewPager.this, 0);
+                ReaderViewPager.this.b();
+            }
+        };
         this.mScrollState = 0;
         this.d();
     }
 
     public ReaderViewPager(Context context, AttributeSet attributeSet) {
         super(context, attributeSet);
-        this.mEndScrollRunnable = new cq(this);
+        this.mEndScrollRunnable = new new Runnable() {
+            @Override
+            public void run() {
+                ReaderViewPager.a(ReaderViewPager.this, 0);
+                ReaderViewPager.this.b();
+            }
+        };
         this.mScrollState = 0;
         this.d();
     }
