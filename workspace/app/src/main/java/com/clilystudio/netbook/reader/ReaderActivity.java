@@ -17,6 +17,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v4.view.PagerAdapter;
 import android.view.KeyEvent;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
@@ -120,7 +121,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
             }
         };
         this.ae = new bg(this);
-        this.af = new Handler(){
+        this.af = new Handler() {
 
             @Override
             public void handleMessage(Message msg) {
@@ -306,10 +307,32 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         readerActivity.G();
     }
 
-    static /* synthetic */ void a(ReaderActivity readerActivity, View view) {
+    static /* synthetic */ void a(final ReaderActivity readerActivity, View view) {
         PopupMenu popupMenu = new PopupMenu(readerActivity, view, 53);
         popupMenu.getMenuInflater().inflate(R.menu.reader_more_menu, popupMenu.getMenu());
-        popupMenu.setOnMenuItemClickListener((PopupMenu.OnMenuItemClickListener) ((Object) new ap(readerActivity)));
+        popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.menu_item_1:
+                        ReaderActivity.L(readerActivity);
+                        break;
+                    case R.id.menu_item_2:
+                        Intent var2_2 = BookInfoActivity.a(readerActivity, ReaderActivity.M(readerActivity));
+                        readerActivity.startActivity(var2_2);
+                        break;
+                    case R.id.menu_item_3:
+                        new com.clilystudio.netbook.ui.cb(readerActivity, new com.clilystudio.netbook.ui.cd() {
+                            @Override
+                            public void a(int var1) {
+                                ReaderActivity.e(readerActivity, var1);
+                            }
+                        }).a().show();
+                        break;
+                }
+                return true;
+            }
+        });
         popupMenu.show();
     }
 
@@ -730,8 +753,41 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         if (this.H) {
             this.j.a(this.g);
         }
-        this.m.setOnPageChangeListener((cw) new aw(this));
-        this.m.setOnClickListener$4b8a6d15((com.umeng.update.a) new ax(this));
+        this.m.setOnPageChangeListener(new cw() {
+            @Override
+            public void a(int var1) {
+                ReaderActivity.g(ReaderActivity.this, var1);
+            }
+
+            @Override
+            public void b(int var1) {
+                if (var1 == 2) {
+                    ReaderActivity.f(ReaderActivity.this);
+                } else if (var1 == 0) {
+                    ReaderActivity.S(ReaderActivity.this);
+                }
+            }
+        });
+        this.m.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                switch ((int) v.getTag()) {
+                    case 0:
+                        ReaderActivity.W(ReaderActivity.this);
+                        break;
+                    case 1:
+                        if (ReaderActivity.T(ReaderActivity.this).e()) {
+                            ReaderActivity.U(ReaderActivity.this);
+                        } else {
+                            ReaderActivity.V(ReaderActivity.this);
+                        }
+                        break;
+                    case 2:
+                        ReaderActivity.U(ReaderActivity.this);
+                        break;
+                }
+            }
+        });
         var2_2 = MyApplication.a().g();
         if (!this.c.equals(var2_2))**GOTO lbl25
         var3_3 = BookReadRecord.getOnShelf(this.c);
@@ -1175,7 +1231,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
     }
 
     private void b(int n2) {
-        this.j.a(new e<n>(){
+        this.j.a(new e<n>() {
 
             @Override
             public void a(n var1) {
@@ -1245,7 +1301,17 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
                 }
             }
         });
-        this.g.b((ae) ((Object) new as(this)));
+        this.g.b(new ae() {
+            @Override
+            public void a() {
+                ReaderActivity.N(ReaderActivity.this);
+            }
+
+            @Override
+            public void b() {
+                ReaderActivity.P(ReaderActivity.this);
+            }
+        });
         this.t();
     }
 
@@ -1272,8 +1338,37 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
     }
 
     private void u() {
-        this.m.setAdapter((PagerAdapter) ((Object) new ay(this)));
-        this.m.setOnClickListener$4b8a6d15((com.umeng.update.a) ((Object) new az(this)));
+        this.m.setAdapter(new PagerAdapter() {
+            @Override
+            public int getCount() {
+                return 1;
+            }
+
+            @Override
+            public Object instantiateItem(ViewGroup container, int position) {
+                o o2 = ReaderActivity.i(ReaderActivity.this)[position];
+                container.addView(o2.i());
+                return o2.i();
+            }
+
+            @Override
+            public void destroyItem(ViewGroup container, int position, Object object) {
+                container.removeView((View) object);
+            }
+
+            @Override
+            public boolean isViewFromObject(View view, Object object) {
+                return view == object;
+            }
+        });
+        this.m.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if ((int)v.getTag() == 0) {
+                    ReaderActivity.W(ReaderActivity.this);
+                }
+            }
+        });
     }
 
     /*
@@ -1284,15 +1379,20 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         if (n2 != null && !n2.p()) {
             if (n2.n() != 1) {
                 int n3 = n2.l();
-                this.j.a(n3, new aT(this), true);
+                this.j.a(n3, new e<n>() {
+                    @Override
+                    public void a(n var1) {
+                        ReaderActivity.a(ReaderActivity.this, var1);
+                    }
+                }, true);
                 return;
             }
             this.c(n2.l());
             return;
         } else {
-            o o2 = this.b[0];
+            final o o2 = this.b[0];
             o o3 = this.b[1];
-            o o4 = this.b[2];
+            final o o4 = this.b[2];
             n n4 = o2.j();
             n n5 = o3.j();
             n n6 = o4.j();
@@ -1316,14 +1416,20 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
                         @Override
                         public void b() {
                             ReaderActivity.P(ReaderActivity.this);
-                       }
+                        }
                     });
                     return;
                 }
                 o3.a(n6, true);
                 this.m.setCurrentItem(1, false);
                 o2.a(n5);
-                n6.a((e) new aK(this, o4));
+                n6.a(new e<n>() {
+
+                    @Override
+                    public void a(n var1) {
+                        o4.a(var1);
+                    }
+                });
                 this.x();
                 this.a(n2);
                 if (this.M == 1) {
@@ -1349,7 +1455,12 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
                     o3.a(n4, true);
                     this.m.setCurrentItem(1, false);
                     o4.a(n5);
-                    n4.b((e) new aI(this, o2));
+                    n4.b(new e<n>() {
+                        @Override
+                        public void a(n var1) {
+                            o2.a(var1);
+                        }
+                    });
                     this.x();
                     this.a(n2);
                     return;
@@ -1502,7 +1613,13 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
     }
 
     public final void g() {
-        this.j.a(new aR(this));
+        this.j.a(new e<n>() {
+
+            @Override
+            public void a(n var1) {
+                ReaderActivity.a(ReaderActivity.this, var1);
+            }
+        });
     }
 
     public final String h() {
@@ -1681,7 +1798,16 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         slidingMenu.setBehindScrollScale(0.0f);
         slidingMenu.setTouchModeAbove(1);
         slidingMenu.setSlidingEnabled(false);
-        slidingMenu.setOnOpenedListener((g) ((Object) new aj(this)));
+        slidingMenu.setOnOpenedListener(new SlidingMenu.OnOpenedListener() {
+            @Override
+            public void onOpened() {
+                ReaderActivity.a(ReaderActivity.this);
+                ReaderActivity.b(ReaderActivity.this);
+                ReaderActivity.c(ReaderActivity.this);
+                ReaderActivity.this.a(ReaderActivity.d(ReaderActivity.this));
+                com.clilystudio.netbook.hpay100.a.a.q(ReaderActivity.this, "打开页尾");
+            }
+        });
         this.m = (PagerWidget) this.findViewById(R.id.main_view);
         this.r = (ReaderActionBar) this.findViewById(R.id.bottom_action_bar);
         this.s = (SettingWidget) this.findViewById(R.id.setting_widget);
@@ -1783,7 +1909,12 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
             }
         });
         this.s.setReaderStyle(this.h, this.r);
-        this.s.a((db) ((Object) new av(this)));
+        this.s.a(new db() {
+            @Override
+            public void a() {
+                startActivityForResult(ReaderOptionActivity.a(ReaderActivity.this), 0);
+            }
+        });
         this.s.a(new dc() {
             @Override
             public void a() {
