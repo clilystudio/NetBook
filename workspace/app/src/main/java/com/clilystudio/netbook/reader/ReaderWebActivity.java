@@ -1,5 +1,6 @@
 package com.clilystudio.netbook.reader;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -14,15 +15,20 @@ import android.widget.TextView;
 
 import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.R;
+import com.clilystudio.netbook.a_pack.c;
 import com.clilystudio.netbook.d;
 import com.clilystudio.netbook.db.BookReadRecord;
 import com.clilystudio.netbook.db.SourceRecord;
 import com.clilystudio.netbook.db.SourceWebReadRecord;
 import com.clilystudio.netbook.event.i;
 import com.clilystudio.netbook.event.v;
+import com.clilystudio.netbook.model.mixtoc.EsTocItem;
+import com.clilystudio.netbook.model.mixtoc.EsTocRoot;
 import com.clilystudio.netbook.model.mixtoc.SgTocChapter;
 import com.clilystudio.netbook.ui.post.BookPostTabActivity;
-import com.squareup.a.l;
+import com.clilystudio.netbook.util.*;
+
+import uk.me.lewisdeane.ldialogs.BaseDialog;
 
 public class ReaderWebActivity extends BaseReadActivity {
     private int b;
@@ -127,7 +133,19 @@ public class ReaderWebActivity extends BaseReadActivity {
             alertDialog.show();
             return;
         }
-        new h(readerWebActivity).b(R.string.reader_web_opt_msg2).a(false).a("\u8f6c\u7801\u9605\u8bfb", (DialogInterface.OnClickListener) new cH(readerWebActivity)).b("\u539f\u7f51\u9875\u9605\u8bfb", (DialogInterface.OnClickListener) new cG(readerWebActivity)).b();
+        new BaseDialog.Builder(readerWebActivity).setMessage(R.string.reader_web_opt_msg2).setCancelable(false)
+                .setPositiveButton("转码阅读", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        ReaderWebActivity.b(readerWebActivity);
+                    }
+                })
+                .setNegativeButton("原网页阅读", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // Todo 原来就没处理
+                    }
+                }).show();
     }
 
     static /* synthetic */ int d(ReaderWebActivity readerWebActivity) {
@@ -208,12 +226,12 @@ public class ReaderWebActivity extends BaseReadActivity {
             }
         });
         SourceWebReadRecord var2_2 = SourceWebReadRecord.get(this.c, this.b);
-       int var3_3 = var2_2 != null ? var2_2.getChapterIndex() : 0;
+        final int[] var3_3 = {var2_2 != null ? var2_2.getChapterIndex() : 0};
         String var17_14 = null;
         switch (this.b) {
             default: {
                 FragmentTransaction var27_4 = this.getSupportFragmentManager().beginTransaction();
-                 ReaderWebPageFragment  var29_6 = (ReaderWebPageFragment) this.getSupportFragmentManager().findFragmentByTag(ReaderWebPageFragment.class.getName());
+                ReaderWebPageFragment var29_6 = (ReaderWebPageFragment) this.getSupportFragmentManager().findFragmentByTag(ReaderWebPageFragment.class.getName());
                 if (var29_6 == null) {
                     var29_6 = ReaderWebPageFragment.a(this.b, this.e);
                 }
@@ -221,29 +239,46 @@ public class ReaderWebActivity extends BaseReadActivity {
                 break;
             }
             case 6: {
-                cK  var24_12 = new cK(this, this, var3_3 + 1);
-                String[]  var25_13 = new String[]{this.e};
+                cK var24_12 = new cK(this, this, var3_3[0] + 1);
+                String[] var25_13 = new String[]{this.e};
                 var24_12.b(var25_13);
                 break;
             }
             case 7: {
                 var17_14 = var2_2 != null ? var2_2.getCmd() : null;
-                if (BookReadRecord.get(this.c) != null) {
-                    cJ  var18_15 = new cJ(this, this, var3_3, var17_14);
-                    String[]   var19_16 = new String[]{this.e};
-                    var18_15.b(var19_16);
-                } else if (MyApplication.a().c() != null) {
-                    cJ var21_17 = new cJ(this, this, var3_3, var17_14);
-                    String[]  var22_18 = new String[]{this.e};
+                if (BookReadRecord.get(this.c) != null || MyApplication.a().c() != null) {
+                    cJ var21_17 = new cJ(this, this, var3_3[0], var17_14);
+                    String[] var22_18 = new String[]{this.e};
                     var21_17.b(var22_18);
                 }
             }
             case 8: {
-                this.a(var3_3);
+                this.a(var3_3[0]);
                 break;
             }
             case 3: {
-                cI  var4_19 = new cI(this, this, var3_3);
+                com.clilystudio.netbook.a_pack.c<String, EsTocRoot> var4_19 = new c<String, EsTocRoot>(){
+
+                    @Override
+                    public EsTocRoot a(String... var1) {
+                        EsTocRoot esTocRoot = com.clilystudio.netbook.api.b.b().v(var1[0]);
+                        return esTocRoot;
+                    }
+
+                    @Override
+                    public void a(EsTocRoot esTocRoot) {
+                        if (esTocRoot != null && esTocRoot.getItems() != null && esTocRoot.getItems().length > 0) {
+                            EsTocItem[] arresTocItem = esTocRoot.getItems();
+                            if (var3_3[0] < 0 || var3_3[0] >= arresTocItem.length) {
+                                var3_3[0] = 0;
+                            }
+                            EsTocItem esTocItem = arresTocItem[var3_3[0]];
+                            ReaderWebActivity.a(ReaderWebActivity.this, 1 + var3_3[0], esTocItem.getCurl());
+                            return;
+                        }
+                        com.clilystudio.netbook.util.e.a(ReaderWebActivity.this,"载入失败");
+                    }
+                };
                 String[] var5_20 = new String[]{this.e};
                 var4_19.b(var5_20);
                 break;
@@ -252,9 +287,9 @@ public class ReaderWebActivity extends BaseReadActivity {
         lbl48:
         // 8 sources:
         if (com.clilystudio.netbook.hpay100.a.a.l(this, this.f + "source_web_alert")) {
-            String  var10_7 = this.getString(R.string.reader_web_opt_msg);
-          final View  var11_8 = LayoutInflater.from(this).inflate(R.layout.dialog_reader_web_opt, null);
-            DialogInterface.OnClickListener  var12_9 = new DialogInterface.OnClickListener(){
+            String var10_7 = this.getString(R.string.reader_web_opt_msg);
+            final View var11_8 = LayoutInflater.from(this).inflate(R.layout.dialog_reader_web_opt, null);
+            DialogInterface.OnClickListener var12_9 = new DialogInterface.OnClickListener() {
 
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
@@ -269,19 +304,19 @@ public class ReaderWebActivity extends BaseReadActivity {
                 ((TextView) var11_8.findViewById(R.id.reader_web_opt_url)).setText(com.clilystudio.netbook.hpay100.a.a.P(this.f));
                 new h(this).a(var11_8).a(false).b(true).a("\u597d\u7684", (DialogInterface.OnClickListener) var12_9).b();
             } else {
-                DialogInterface.OnClickListener  var13_21 = new DialogInterface.OnClickListener(){
+                DialogInterface.OnClickListener var13_21 = new DialogInterface.OnClickListener() {
 
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         ReaderWebActivity.c(ReaderWebActivity.this);
-                   }
+                    }
                 };
                 h var14_22 = new h(this);
                 var14_22.e = var10_7;
                 var14_22.a(false).a("\u597d\u7684", (DialogInterface.OnClickListener) var12_9).b("\u4e0d\u4f7f\u7528", (DialogInterface.OnClickListener) var13_21).b();
             }
         }
-        cL  var7_10 = new cL(this, 0);
+        cL var7_10 = new cL(this, 0);
         String[] var8_11 = new String[]{this.c};
         var7_10.b(var8_11);
     }
