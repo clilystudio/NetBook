@@ -153,8 +153,33 @@ public class SettingWidget extends LinearLayout {
         SeekBar seekBar = (SeekBar) this.findViewById(R.id.sb_brightness);
         seekBar.setProgress(this.a.f());
         this.e.setChecked(this.a.g());
-        seekBar.setOnSeekBarChangeListener(new cV(this));
-        this.e.setOnCheckedChangeListener((CompoundButton.OnCheckedChangeListener) ((Object) new cW(this)));
+        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                if (fromUser) {
+                    if (progress < 15) {
+                        progress = 15;
+                    }
+                    SettingWidget.b(SettingWidget.this).b(progress);
+                }
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+                SettingWidget.c(SettingWidget.this).setChecked(false);
+          }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+        this.e.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                SettingWidget.b(SettingWidget.this).b(isChecked);
+            }
+        });
         this.f = (ImageView) this.findViewById(R.id.reader_set_bg_1);
         this.g = (ImageView) this.findViewById(R.id.reader_set_bg_2);
         this.h = (ImageView) this.findViewById(R.id.reader_set_bg_3);

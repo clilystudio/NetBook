@@ -28,7 +28,6 @@ public final class cM {
             a.b(this.b, "BFD_RANDOM_RATE", f3);
         }
         if (f2 > f3) {
-            com.a.a.a.a(this.b, "rec_C6613205_93B6_61A6_9FEC_180B70F91B94", a.a(this.b, 20, string), (c) ((Object) new cN(this, string)));
             return true;
         }
         new cO(this).b(string);

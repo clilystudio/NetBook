@@ -15,18 +15,21 @@ import android.widget.TextView;
 
 import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.R;
-import com.clilystudio.netbook.a_pack.c;
+import com.clilystudio.netbook.a_pack.*;
 import com.clilystudio.netbook.d;
 import com.clilystudio.netbook.db.BookReadRecord;
+import com.clilystudio.netbook.db.BookTopicEnterRecord;
 import com.clilystudio.netbook.db.SourceRecord;
 import com.clilystudio.netbook.db.SourceWebReadRecord;
 import com.clilystudio.netbook.event.i;
 import com.clilystudio.netbook.event.v;
+import com.clilystudio.netbook.model.TopicCount;
 import com.clilystudio.netbook.model.mixtoc.EsTocItem;
 import com.clilystudio.netbook.model.mixtoc.EsTocRoot;
 import com.clilystudio.netbook.model.mixtoc.SgTocChapter;
 import com.clilystudio.netbook.ui.post.BookPostTabActivity;
 import com.clilystudio.netbook.util.*;
+import com.clilystudio.netbook.util.e;
 
 import uk.me.lewisdeane.ldialogs.BaseDialog;
 
@@ -316,7 +319,34 @@ public class ReaderWebActivity extends BaseReadActivity {
                 var14_22.a(false).a("\u597d\u7684", (DialogInterface.OnClickListener) var12_9).b("\u4e0d\u4f7f\u7528", (DialogInterface.OnClickListener) var13_21).b();
             }
         }
-        cL var7_10 = new cL(this, 0);
+        com.clilystudio.netbook.a_pack.e<String, Void, TopicCount> var7_10 = new com.clilystudio.netbook.a_pack.e<String, Void, TopicCount>(){
+
+            @Override
+            protected TopicCount doInBackground(String... params) {
+                com.clilystudio.netbook.api.b.a();
+                return com.clilystudio.netbook.api.b.b().I(params[0]);
+            }
+
+            @Override
+            protected void onPostExecute(TopicCount topicCount) {
+                super.onPostExecute(topicCount);
+                if (topicCount != null && topicCount.isOk()) {
+                    int n = 99;
+                    ReaderWebActivity.a(ReaderWebActivity.this, topicCount.getCount());
+                    int n2 = ReaderWebActivity.d(ReaderWebActivity.this) - BookTopicEnterRecord.get(ReaderWebActivity.e(ReaderWebActivity.this)).getVisitCount();
+                    if (n2 <= 0) {
+                        ReaderWebActivity.a(ReaderWebActivity.this).a(false);
+                        return;
+                    }
+                    ReaderWebActivity.a(ReaderWebActivity.this).a(true);
+                    ReaderWebActionBar readerWebActionBar = ReaderWebActivity.a(ReaderWebActivity.this);
+                    if (n2 <= n) {
+                        n = n2;
+                    }
+                    readerWebActionBar.setTopicCount(String.valueOf(n));
+                }
+            }
+        };
         String[] var8_11 = new String[]{this.c};
         var7_10.b(var8_11);
     }

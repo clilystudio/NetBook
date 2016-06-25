@@ -40,7 +40,12 @@ import java.util.Comparator;
 
 public class ReaderViewPager extends ViewGroup {
     private static final int CLOSE_ENOUGH = 2;
-    private static final Comparator<cs> COMPARATOR;
+    private static final Comparator<cs> COMPARATOR = new Comparator<cs>(){
+        @Override
+        public int compare(cs lhs, cs rhs) {
+            return lhs.b - rhs.b;
+        }
+    };
     private static final boolean DEBUG = false;
     private static final int DEFAULT_GUTTER_SIZE = 16;
     private static final int DEFAULT_OFFSCREEN_PAGES = 1;
@@ -48,21 +53,34 @@ public class ReaderViewPager extends ViewGroup {
     private static final int DRAW_ORDER_FORWARD = 1;
     private static final int DRAW_ORDER_REVERSE = 2;
     private static final int INVALID_POINTER = -1;
-    private static final int[] LAYOUT_ATTRS;
+    private static final int[] LAYOUT_ATTRS = new int[]{16842931};
     private static final int MAX_SETTLE_DURATION = 600;
     private static final int MIN_DISTANCE_FOR_FLING = 25;
     private static final int MIN_FLING_VELOCITY = 400;
     private static final String TAG = "ViewPager";
-    private static final boolean USE_CACHE;
-    private static final Interpolator sInterpolator;
-    private static final cz sPositionComparator;
+//    private static final boolean USE_CACHE;
+    private static final Interpolator sInterpolator = new Interpolator(){
 
-    static {
-        LAYOUT_ATTRS = new int[]{16842931};
-        COMPARATOR = new co();
-        sInterpolator = new cp();
-        sPositionComparator = new cz();
-    }
+        @Override
+        public float getInterpolation(float input) {
+            float f2 = input - 1.0f;
+            return 1.0f + f2 * (f2 * (f2 * (f2 * f2)));
+        }
+    };
+    private static final  Comparator<View> sPositionComparator = new  Comparator<View>(){
+        @Override
+        public int compare(View lhs, View rhs) {
+            ct ct2 = (ct) lhs.getLayoutParams();
+            ct ct3 = (ct) rhs.getLayoutParams();
+            if (ct2.a != ct3.a) {
+                if (ct2.a) {
+                    return 1;
+                }
+                return -1;
+            }
+            return ct2.e - ct3.e;
+        }
+    };
 
     private final Runnable mEndScrollRunnable;
     private final ArrayList<cs> mItems = new ArrayList();
@@ -70,7 +88,6 @@ public class ReaderViewPager extends ViewGroup {
     private final Rect mTempRect = new Rect();
     private int mActivePointerId = -1;
     private PagerAdapter mAdapter;
-    private cv mAdapterChangeListener;
     private int mBottomPageBounds;
     private boolean mCalledSuper;
     private int mChildHeightMeasureSpec;
@@ -103,7 +120,7 @@ public class ReaderViewPager extends ViewGroup {
     private int mMaximumVelocity;
     private int mMinimumVelocity;
     private boolean mNeedCalculatePageOffsets = false;
-    private cx mObserver;
+    private DataSetObserver mObserver;
     private int mOffscreenPageLimit = 1;
     private cw mOnPageChangeListener;
     private int mPageMargin;
@@ -1953,7 +1970,18 @@ public class ReaderViewPager extends ViewGroup {
         this.mExpectedAdapterCount = 0;
         if (this.mAdapter == null) return;
         if (this.mObserver == null) {
-            this.mObserver = new cx(this, 0);
+            this.mObserver = new DataSetObserver(){
+
+                @Override
+                public void onChanged() {
+                    ReaderViewPager.this.a();
+                }
+
+                @Override
+                public void onInvalidated() {
+                    ReaderViewPager.this.a();
+                }
+            };
         }
         this.mAdapter.registerDataSetObserver((DataSetObserver) ((Object) this.mObserver));
         this.mPopulatePending = false;
@@ -2071,7 +2099,7 @@ public class ReaderViewPager extends ViewGroup {
     }
 
     public class SavedState extends View.BaseSavedState {
-        public static final Parcelable.Creator<ReaderViewPager$SavedState> CREATOR = ParcelableCompat.newCreator(new cy());
+        public static final Parcelable.Creator<ReaderViewPager.SavedState> CREATOR = ParcelableCompat.newCreator(new cy());
         int a;
         Parcelable b;
         ClassLoader c;
