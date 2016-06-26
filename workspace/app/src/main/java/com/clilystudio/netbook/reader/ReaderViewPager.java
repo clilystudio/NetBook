@@ -7,6 +7,7 @@ import android.graphics.Canvas;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
+import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.support.v4.os.ParcelableCompat;
@@ -17,6 +18,7 @@ import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.VelocityTrackerCompat;
 import android.support.v4.view.ViewCompat;
 import android.support.v4.view.ViewConfigurationCompat;
+import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
 import android.support.v4.widget.EdgeEffectCompat;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -899,7 +901,51 @@ public class ReaderViewPager extends ViewGroup {
         this.mFlingDistance = (int) (25.0f * f);
         this.mCloseEnough = (int) (2.0f * f);
         this.mDefaultGutterSize = (int) (16.0f * f);
-        ViewCompat.setAccessibilityDelegate(this, (AccessibilityDelegateCompat) ((Object) new cu(this)));
+        ViewCompat.setAccessibilityDelegate(this, new AccessibilityDelegateCompat(){
+            @Override
+            public final void onInitializeAccessibilityEvent(View view, AccessibilityEvent accessibilityEvent) {
+                super.onInitializeAccessibilityEvent(view, accessibilityEvent);
+                accessibilityEvent.setClassName(ReaderViewPager.class.getName());
+            }
+
+            @Override
+            public final void onInitializeAccessibilityNodeInfo(View view, AccessibilityNodeInfoCompat accessibilityNodeInfoCompat) {
+                super.onInitializeAccessibilityNodeInfo(view, accessibilityNodeInfoCompat);
+                accessibilityNodeInfoCompat.setClassName(ReaderViewPager.class.getName());
+                accessibilityNodeInfoCompat.setScrollable((ReaderViewPager.a(ReaderViewPager.this) != null && ReaderViewPager.a(ReaderViewPager.this).getCount() > 1));
+                if (ReaderViewPager.a(ReaderViewPager.this) != null && ReaderViewPager.b(ReaderViewPager.this) >= 0 && ReaderViewPager.b(ReaderViewPager.this) < -1 + ReaderViewPager.a(ReaderViewPager.this).getCount()) {
+                    accessibilityNodeInfoCompat.addAction(4096);
+                }
+                if (ReaderViewPager.a(ReaderViewPager.this) != null && ReaderViewPager.b(ReaderViewPager.this) > 0 && ReaderViewPager.b(ReaderViewPager.this) < ReaderViewPager.a(ReaderViewPager.this).getCount()) {
+                    accessibilityNodeInfoCompat.addAction(8192);
+                }
+            }
+
+            @Override
+            public final boolean performAccessibilityAction(View view, int n, Bundle bundle) {
+                if (super.performAccessibilityAction(view, n, bundle)) {
+                    return true;
+                }
+                switch (n) {
+                    default: {
+                        return false;
+                    }
+                    case 4096: {
+                        if (ReaderViewPager.a(ReaderViewPager.this) != null && ReaderViewPager.b(ReaderViewPager.this) >= 0 && ReaderViewPager.b(ReaderViewPager.this) < -1 + ReaderViewPager.a(ReaderViewPager.this).getCount()) {
+                            ReaderViewPager.this.a(1 + ReaderViewPager.b(ReaderViewPager.this));
+                            return true;
+                        }
+                        return false;
+                    }
+                    case 8192:
+                }
+                if (ReaderViewPager.a(ReaderViewPager.this) != null && ReaderViewPager.b(ReaderViewPager.this) > 0 && ReaderViewPager.b(ReaderViewPager.this) < ReaderViewPager.a(ReaderViewPager.this).getCount()) {
+                    ReaderViewPager.this.a(-1 + ReaderViewPager.b(ReaderViewPager.this));
+                    return true;
+                }
+                return false;
+            }
+        });
         if (ViewCompat.getImportantForAccessibility(this) == 0) {
             ViewCompat.setImportantForAccessibility(this, 1);
         }
