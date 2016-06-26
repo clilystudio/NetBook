@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 
 import com.clilystudio.netbook.R;
+import com.clilystudio.netbook.a_pack.c;
 import com.clilystudio.netbook.am;
 
 import android.content.DialogInterface;
@@ -18,6 +19,7 @@ import android.widget.TextView;
 import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.hpay100.a.a;
 import com.clilystudio.netbook.model.Account;
+import com.clilystudio.netbook.model.ChapterKeysRoot;
 import com.clilystudio.netbook.model.ChapterLink;
 import com.clilystudio.netbook.model.PurchaseChapterResult;
 import com.clilystudio.netbook.ui.user.AuthLoginActivity;
@@ -26,6 +28,7 @@ import com.xiaomi.mistatistic.sdk.MiStatInterface;
 
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
+import java.util.HashMap;
 
 import me.biubiubiu.justifytext.library.JustifyTextView;
 
@@ -120,12 +123,12 @@ public final class o {
             return;
         }
         if (purchaseChapterResult.getCode().equals("BALANCE_NOT_ENOUGH")) {
-            com.clilystudio.netbook.util.e.a(o2.b, "\u4f59\u989d\u4e0d\u8db3\uff0c\u8bf7\u5145\u503c");
+            com.clilystudio.netbook.util.e.a(o2.b, "余额不足，请充值");
             i.a().c(new com.clilystudio.netbook.event.G());
             o2.e();
             return;
         }
-        com.clilystudio.netbook.util.e.a(o2.b, "\u652f\u4ed8\u5931\u8d25\uff0c\u8bf7\u91cd\u8bd5");
+        com.clilystudio.netbook.util.e.a(o2.b, "支付失败，请重试");
     }
 
     static /* synthetic */ void a(o o2, boolean bl) {
@@ -727,7 +730,41 @@ public final class o {
     public final void onLoginEvent(com.clilystudio.netbook.event.t t2) {
         Account account;
         if (this.e && (account = t2.a()) != null) {
-            new D(this, this.b, "\u6b63\u5728\u83b7\u53d6\u8d44\u4ea7\u4fe1\u606f...", account.getToken()).b(new Void[0]);
+            new c<Void, ChapterKeysRoot>(this.b,"正在获取资产信息..."){
+                String arg;
+                @Override
+                public ChapterKeysRoot a(Void... var1) {
+                    if (o.this.b instanceof ReaderActivity) {
+                        arg = ((ReaderActivity) o.this.b).l();
+                        com.clilystudio.netbook.api.b.a();
+                        ChapterKeysRoot chapterKeysRoot = com.clilystudio.netbook.api.b.b().g(am.e().getToken(), arg);
+                        return chapterKeysRoot;
+                    }
+                    return null;
+                }
+
+                @Override
+                public void a(ChapterKeysRoot chapterKeysRoot) {
+                    if (chapterKeysRoot != null && chapterKeysRoot.isOk()) {
+                        HashMap hashMap;
+                        if (chapterKeysRoot != null && chapterKeysRoot.isOk()) {
+                            hashMap = new HashMap((int) ((double) chapterKeysRoot.getKeyLength() / 0.7));
+                            for (ChapterKeysRoot.ChapterKey chapterKeysRoot$ChapterKey : chapterKeysRoot.getKeys()) {
+                                hashMap.put(chapterKeysRoot$ChapterKey.get_id(), chapterKeysRoot$ChapterKey.getKey());
+                            }
+                            com.clilystudio.netbook.hpay100.a.a.a(arg, hashMap);
+                        } else {
+                            hashMap = com.clilystudio.netbook.hpay100.a.a.M(arg);
+                            if (hashMap == null) {
+                                hashMap = new HashMap();
+                            }
+                        }
+                        MyApplication.a().b().a(hashMap);
+                        return;
+                    }
+                    com.clilystudio.netbook.util.e.a(o.this.b, "获取个人信息失败，请检查网路后重试");
+              }
+            }.b();
         }
     }
 
