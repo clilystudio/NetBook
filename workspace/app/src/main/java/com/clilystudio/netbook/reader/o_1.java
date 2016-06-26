@@ -2,11 +2,6 @@ package com.clilystudio.netbook.reader;
 
 import android.app.Activity;
 import android.content.Context;
-
-import com.clilystudio.netbook.R;
-import com.clilystudio.netbook.a_pack.c;
-import com.clilystudio.netbook.am;
-
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Handler;
@@ -17,10 +12,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.clilystudio.netbook.MyApplication;
+import com.clilystudio.netbook.R;
+import com.clilystudio.netbook.a_pack.c;
+import com.clilystudio.netbook.am;
 import com.clilystudio.netbook.hpay100.a.a;
 import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.model.ChapterKeysRoot;
 import com.clilystudio.netbook.model.ChapterLink;
+import com.clilystudio.netbook.model.ChapterSingleKey;
 import com.clilystudio.netbook.model.PurchaseChapterResult;
 import com.clilystudio.netbook.ui.user.AuthLoginActivity;
 import com.umeng.a.b;
@@ -79,7 +78,7 @@ public final class o {
         return o2.b;
     }
 
-    static /* synthetic */ void a(o o2, PurchaseChapterResult purchaseChapterResult, boolean bl) {
+    static /* synthetic */ void a(final o o2, PurchaseChapterResult purchaseChapterResult, boolean bl) {
         if (purchaseChapterResult == null) {
             com.clilystudio.netbook.util.e.a(o2.b, "\u652f\u4ed8\u5931\u8d25\uff0c\u8bf7\u91cd\u8bd5");
             return;
@@ -117,7 +116,33 @@ public final class o {
                 o2.e();
                 return;
             }
-            E e2 = new E(o2, o2.b, R.string.loading, false);
+            c<String, ChapterSingleKey> e2 = new c<String, ChapterSingleKey>(o2.b, R.string.loading, false) {
+
+                @Override
+                public ChapterSingleKey a(String... var1) {
+                    com.clilystudio.netbook.api.b.a();
+                    ChapterSingleKey chapterSingleKey = com.clilystudio.netbook.api.b.b().f(var1[0], am.e().getToken());
+                    return chapterSingleKey;
+                }
+
+                @Override
+                public void a(ChapterSingleKey chapterSingleKey) {
+                    if (chapterSingleKey != null && chapterSingleKey.isOk() && chapterSingleKey.getKey() != null) {
+                        com.clilystudio.netbook.reader.o.b(o2).q().a().e().put(chapterSingleKey.getChapterId(), chapterSingleKey.getKey());
+                        if (!com.clilystudio.netbook.reader.o.b(o2).a().getId().equals(chapterSingleKey.getChapterId())) return;
+                        com.clilystudio.netbook.reader.o.b(o2).a().setKey(chapterSingleKey.getKey());
+                        com.clilystudio.netbook.reader.o.b(o2).g();
+                        com.clilystudio.netbook.reader.o.b(o2).a(0);
+                        if (com.clilystudio.netbook.reader.o.a(o2) instanceof ReaderActivity) {
+                            ((ReaderActivity) com.clilystudio.netbook.reader.o.a(o2)).g();
+                            return;
+                        }
+                        o2.e();
+                        return;
+                    }
+                    com.clilystudio.netbook.util.e.a((Activity) com.clilystudio.netbook.reader.o.a(o2),"出现异常，请退出阅读后重试");
+                }
+            };
             String[] arrstring = new String[]{o2.d.a().getId()};
             e2.b(arrstring);
             return;
@@ -195,7 +220,7 @@ public final class o {
                 @Override
                 public void onClick(View v) {
                     Intent intent = AuthLoginActivity.a(o.this.b);
-                    intent.putExtra("KEY_SOURCE", (Serializable)AuthLoginActivity.Source.HOME);
+                    intent.putExtra("KEY_SOURCE", (Serializable) AuthLoginActivity.Source.HOME);
                     o.this.b.startActivity(intent);
                 }
             });
@@ -226,9 +251,9 @@ public final class o {
             this.u.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    MiStatInterface.recordCountEvent( "paying_page_purchase", com.clilystudio.netbook.util.I.b);
+                    MiStatInterface.recordCountEvent("paying_page_purchase", com.clilystudio.netbook.util.I.b);
                     if (checkBox.isChecked()) {
-                        MiStatInterface.recordCountEvent( "paying_page_auto_choose", com.clilystudio.netbook.util.I.b);
+                        MiStatInterface.recordCountEvent("paying_page_auto_choose", com.clilystudio.netbook.util.I.b);
                     }
                     o.this.a(o.this, false);
                     com.clilystudio.netbook.hpay100.a.a.b(o.this.b, "auto_buy_chapter" + com.clilystudio.netbook.util.I.a, checkBox.isChecked());
@@ -241,7 +266,7 @@ public final class o {
                 @Override
                 public void onClick(View v) {
                     // h -> lewisjdeane/L-Dialogs Builder
-                    new h(o.this.b).a(true).a(R.string.auto_buy_chapter_prompt_title).b(R.string.auto_buy_chapter_prompt_content).a("\u786e\u5b9a",new DialogInterface.OnClickListener(){
+                    new h(o.this.b).a(true).a(R.string.auto_buy_chapter_prompt_title).b(R.string.auto_buy_chapter_prompt_content).a("\u786e\u5b9a", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             dialog.dismiss();
@@ -277,7 +302,7 @@ public final class o {
             @Override
             public void onClick(View v) {
                 if (o.this.b instanceof ReaderActivity) {
-                    ((ReaderActivity)o.this.b).i();
+                    ((ReaderActivity) o.this.b).i();
                     MiStatInterface.recordCountEvent("paying_page_cancel", com.clilystudio.netbook.util.I.b);
                 }
             }
@@ -557,13 +582,13 @@ public final class o {
             int n3 = n2.l();
             Reader reader = MyApplication.a().b();
             if (o.o()) {
-                reader.a(n3 + 1, new e<ReaderChapter>(){
+                reader.a(n3 + 1, new e<ReaderChapter>() {
 
                     @Override
                     public void a(final ReaderChapter readerChapter) {
                         if (readerChapter != null && o.this.a(readerChapter)) {
                             MiStatInterface.recordCountEvent("paying_page_auto_purchase", com.clilystudio.netbook.util.I.b);
-                            com.clilystudio.netbook.a_pack.e<String, Void, PurchaseChapterResult> j = new com.clilystudio.netbook.a_pack.e<String, Void, PurchaseChapterResult>(){
+                            com.clilystudio.netbook.a_pack.e<String, Void, PurchaseChapterResult> j = new com.clilystudio.netbook.a_pack.e<String, Void, PurchaseChapterResult>() {
 
                                 @Override
                                 protected PurchaseChapterResult doInBackground(String... params) {
@@ -730,8 +755,9 @@ public final class o {
     public final void onLoginEvent(com.clilystudio.netbook.event.t t2) {
         Account account;
         if (this.e && (account = t2.a()) != null) {
-            new c<Void, ChapterKeysRoot>(this.b,"正在获取资产信息..."){
+            new c<Void, ChapterKeysRoot>(this.b, "正在获取资产信息...") {
                 String arg;
+
                 @Override
                 public ChapterKeysRoot a(Void... var1) {
                     if (o.this.b instanceof ReaderActivity) {
@@ -763,7 +789,7 @@ public final class o {
                         return;
                     }
                     com.clilystudio.netbook.util.e.a(o.this.b, "获取个人信息失败，请检查网路后重试");
-              }
+                }
             }.b();
         }
     }
