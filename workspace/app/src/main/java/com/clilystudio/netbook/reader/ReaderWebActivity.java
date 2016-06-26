@@ -27,6 +27,7 @@ import com.clilystudio.netbook.model.TopicCount;
 import com.clilystudio.netbook.model.mixtoc.EsTocItem;
 import com.clilystudio.netbook.model.mixtoc.EsTocRoot;
 import com.clilystudio.netbook.model.mixtoc.SgTocChapter;
+import com.clilystudio.netbook.model.mixtoc.SgTocRoot;
 import com.clilystudio.netbook.ui.post.BookPostTabActivity;
 import com.clilystudio.netbook.util.*;
 import com.clilystudio.netbook.util.e;
@@ -230,7 +231,7 @@ public class ReaderWebActivity extends BaseReadActivity {
         });
         SourceWebReadRecord var2_2 = SourceWebReadRecord.get(this.c, this.b);
         final int[] var3_3 = {var2_2 != null ? var2_2.getChapterIndex() : 0};
-        String var17_14 = null;
+        final String[] var17_14 = {null};
         switch (this.b) {
             default: {
                 FragmentTransaction var27_4 = this.getSupportFragmentManager().beginTransaction();
@@ -248,9 +249,44 @@ public class ReaderWebActivity extends BaseReadActivity {
                 break;
             }
             case 7: {
-                var17_14 = var2_2 != null ? var2_2.getCmd() : null;
+                var17_14[0] = var2_2 != null ? var2_2.getCmd() : null;
                 if (BookReadRecord.get(this.c) != null || MyApplication.a().c() != null) {
-                    cJ var21_17 = new cJ(this, this, var3_3[0], var17_14);
+//                    cJ(this, this, var3_3[0], var17_14);
+                    c<String, SgTocRoot> var21_17 = new c<String, SgTocRoot>(){
+
+                        @Override
+                        public SgTocRoot a(String... var1) {
+                            SgTocRoot sgTocRoot = com.clilystudio.netbook.api.b.b().s(var1[0]);
+                            return sgTocRoot;
+                       }
+
+                        @Override
+                        public void a(SgTocRoot sgTocRoot) {
+                            if (sgTocRoot != null && sgTocRoot.getBook() != null && sgTocRoot.getChapter() != null && sgTocRoot.getChapter().length > 0) {
+                                SgTocChapter sgTocChapter;
+                                String string = sgTocRoot.getBook().getMd();
+                                SgTocChapter[] arrsgTocChapter = sgTocRoot.getChapter();
+                                if (var3_3[0] < 0 || var3_3[0] >= arrsgTocChapter.length) {
+                                    var3_3[0] = 0;
+                                }
+                                if (var17_14[0] != null) {
+                                    sgTocChapter = ReaderWebActivity.a(ReaderWebActivity.this, arrsgTocChapter, var17_14[0]);
+                                } else {
+                                    sgTocChapter = arrsgTocChapter[var3_3[0]];
+                                    var17_14[0] = sgTocChapter.getCmd();
+                                }
+                                if (sgTocChapter != null) {
+                                    String string2 = sgTocChapter.getUrl();
+                                    String string3 = sgTocChapter.getName();
+                                    ReaderWebActivity.a(ReaderWebActivity.this, string, var17_14[0], string2, string3);
+                                    return;
+                                }
+                                com.clilystudio.netbook.util.e.a((Activity) ReaderWebActivity.this, (String) "载入失败");
+                                return;
+                            }
+                            com.clilystudio.netbook.util.e.a((Activity) ReaderWebActivity.this, (String) "载入失败");
+                        }
+                    };
                     String[] var22_18 = new String[]{this.e};
                     var21_17.b(var22_18);
                 }
