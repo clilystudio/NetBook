@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.support.v4.os.ParcelableCompat;
+import android.support.v4.os.ParcelableCompatCreatorCallbacks;
 import android.support.v4.view.AccessibilityDelegateCompat;
 import android.support.v4.view.KeyEventCompat;
 import android.support.v4.view.MotionEventCompat;
@@ -2157,7 +2158,17 @@ public class ReaderViewPager extends ViewGroup {
     }
 
     public class SavedState extends View.BaseSavedState {
-        public static final Parcelable.Creator<ReaderViewPager.SavedState> CREATOR = ParcelableCompat.newCreator(new cy());
+        public final Parcelable.Creator<ReaderViewPager.SavedState> CREATOR = ParcelableCompat.newCreator(new ParcelableCompatCreatorCallbacks<SavedState>() {
+            @Override
+            public SavedState createFromParcel(Parcel in, ClassLoader loader) {
+                return new ReaderViewPager.SavedState(in, loader);
+            }
+
+            @Override
+            public SavedState[] newArray(int size) {
+                return new SavedState[size];
+            }
+        });
         int a;
         Parcelable b;
         ClassLoader c;
