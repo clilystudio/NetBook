@@ -15,7 +15,7 @@ import android.widget.TextView;
 
 import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.R;
-import com.clilystudio.netbook.a_pack.*;
+import com.clilystudio.netbook.a_pack.c;
 import com.clilystudio.netbook.d;
 import com.clilystudio.netbook.db.BookReadRecord;
 import com.clilystudio.netbook.db.BookTopicEnterRecord;
@@ -29,8 +29,6 @@ import com.clilystudio.netbook.model.mixtoc.EsTocRoot;
 import com.clilystudio.netbook.model.mixtoc.SgTocChapter;
 import com.clilystudio.netbook.model.mixtoc.SgTocRoot;
 import com.clilystudio.netbook.ui.post.BookPostTabActivity;
-import com.clilystudio.netbook.util.*;
-import com.clilystudio.netbook.util.e;
 
 import uk.me.lewisdeane.ldialogs.BaseDialog;
 
@@ -243,7 +241,22 @@ public class ReaderWebActivity extends BaseReadActivity {
                 break;
             }
             case 6: {
-                cK var24_12 = new cK(this, this, var3_3[0] + 1);
+                c<String, String> var24_12 = new c<String, String>() {
+                    @Override
+                    public String a(String... var1) {
+                        String string = com.clilystudio.netbook.api.b.b().b(var1[0], var3_3[0] + 1);
+                        return string;
+                    }
+
+                    @Override
+                    public void a(String var1) {
+                        if (var1 == null) {
+                            com.clilystudio.netbook.util.e.a(ReaderWebActivity.this, "载入失败");
+                        } else {
+                            ReaderWebActivity.a(ReaderWebActivity.this, var3_3[0] + 1, var1);
+                        }
+                    }
+                };
                 String[] var25_13 = new String[]{this.e};
                 var24_12.b(var25_13);
                 break;
@@ -252,13 +265,13 @@ public class ReaderWebActivity extends BaseReadActivity {
                 var17_14[0] = var2_2 != null ? var2_2.getCmd() : null;
                 if (BookReadRecord.get(this.c) != null || MyApplication.a().c() != null) {
 //                    cJ(this, this, var3_3[0], var17_14);
-                    c<String, SgTocRoot> var21_17 = new c<String, SgTocRoot>(){
+                    c<String, SgTocRoot> var21_17 = new c<String, SgTocRoot>() {
 
                         @Override
                         public SgTocRoot a(String... var1) {
                             SgTocRoot sgTocRoot = com.clilystudio.netbook.api.b.b().s(var1[0]);
                             return sgTocRoot;
-                       }
+                        }
 
                         @Override
                         public void a(SgTocRoot sgTocRoot) {
@@ -296,7 +309,7 @@ public class ReaderWebActivity extends BaseReadActivity {
                 break;
             }
             case 3: {
-                com.clilystudio.netbook.a_pack.c<String, EsTocRoot> var4_19 = new c<String, EsTocRoot>(){
+                com.clilystudio.netbook.a_pack.c<String, EsTocRoot> var4_19 = new c<String, EsTocRoot>() {
 
                     @Override
                     public EsTocRoot a(String... var1) {
@@ -315,7 +328,7 @@ public class ReaderWebActivity extends BaseReadActivity {
                             ReaderWebActivity.a(ReaderWebActivity.this, 1 + var3_3[0], esTocItem.getCurl());
                             return;
                         }
-                        com.clilystudio.netbook.util.e.a(ReaderWebActivity.this,"载入失败");
+                        com.clilystudio.netbook.util.e.a(ReaderWebActivity.this, "载入失败");
                     }
                 };
                 String[] var5_20 = new String[]{this.e};
@@ -355,7 +368,7 @@ public class ReaderWebActivity extends BaseReadActivity {
                 var14_22.a(false).a("\u597d\u7684", (DialogInterface.OnClickListener) var12_9).b("\u4e0d\u4f7f\u7528", (DialogInterface.OnClickListener) var13_21).b();
             }
         }
-        com.clilystudio.netbook.a_pack.e<String, Void, TopicCount> var7_10 = new com.clilystudio.netbook.a_pack.e<String, Void, TopicCount>(){
+        com.clilystudio.netbook.a_pack.e<String, Void, TopicCount> var7_10 = new com.clilystudio.netbook.a_pack.e<String, Void, TopicCount>() {
 
             @Override
             protected TopicCount doInBackground(String... params) {

@@ -26,13 +26,12 @@ public abstract class S<T extends Root> extends e<String, Void, T> {
     protected abstract void b(T var1);
 
     @Override
-    protected /* synthetic */ Object doInBackground(Object[] arrobject) {
+    protected /* synthetic */ T doInBackground(String[] arrobject) {
         return this.a((String[]) arrobject);
     }
 
     @Override
-    protected /* synthetic */ void onPostExecute(Object object) {
-        Root root = (Root) object;
+    protected /* synthetic */ void onPostExecute(T root) {
         super.onPostExecute(root);
         if (root != null && root.isOk()) {
             this.b(root);

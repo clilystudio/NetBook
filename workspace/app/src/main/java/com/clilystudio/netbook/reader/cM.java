@@ -2,6 +2,8 @@ package com.clilystudio.netbook.reader;
 
 import android.content.Context;
 
+import com.clilystudio.netbook.model.RelateBookRoot;
+
 public final class cM {
     private cQ a;
     private Context b;
@@ -21,16 +23,24 @@ public final class cM {
     }
 
     public final boolean a(String string) {
-        float f2 = a.H(this.b);
-        float f3 = a.a(this.b, "BFD_RANDOM_RATE", 2.0f);
-        if (f3 == 2.0f) {
-            f3 = (float) Math.random();
-            a.b(this.b, "BFD_RANDOM_RATE", f3);
-        }
-        if (f2 > f3) {
-            return true;
-        }
-        new cO(this).b(string);
+        new com.clilystudio.netbook.a_pack.e<String, Void, RelateBookRoot>() {
+
+            @Override
+            protected RelateBookRoot doInBackground(String... params) {
+                com.clilystudio.netbook.api.b.a();
+                return com.clilystudio.netbook.api.b.b().X(params[0]);
+            }
+
+            @Override
+            protected void onPostExecute(RelateBookRoot relateBookRoot) {
+                super.onPostExecute(relateBookRoot);
+                if (relateBookRoot != null && relateBookRoot.isOk()) {
+                    cM.b(cM.this).a(relateBookRoot, cM.a(cM.this));
+                } else {
+                    cM.b(cM.this).a(relateBookRoot, cM.a(cM.this));
+                }
+            }
+        }.b(string);
         return false;
     }
 }
