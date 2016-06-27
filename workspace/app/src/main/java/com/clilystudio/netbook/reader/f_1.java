@@ -99,7 +99,6 @@ public final class f {
         final ChapterLink[][] chapterLinks = new ChapterLink[n2][];
         ArrayList<Thread> arrayList = new ArrayList<Thread>();
         for (int j = 1; j <= n2; ++j) {
-//            g(this, j, n, arrchapterLink)
             final int finalJ = j;
             Thread thread = new Thread(new Runnable() {
                 @Override

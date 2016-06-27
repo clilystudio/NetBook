@@ -1,6 +1,8 @@
 package com.clilystudio.netbook.reader;
 
 import android.os.Handler;
+import android.support.annotation.NonNull;
+
 import com.clilystudio.netbook.am;
 
 import com.clilystudio.netbook.MyApplication;
@@ -56,10 +58,121 @@ public final class Reader {
     private f z;
 
     public Reader(String string) {
-        this.C = new U(this);
+        this.C = getYClass();
         this.v = string;
         this.A = true;
         this.y = -1;
+    }
+
+    @NonNull
+    private Y getYClass() {
+        return new Y() {
+            private Map<Integer, ArrayList<e<ReaderChapter>>> map = new HashMap<>();
+            private Map<Integer, Integer> map1 = new HashMap<>();
+
+            @Override
+            public void a(final int var1, e<ReaderChapter> var2, boolean var3) {
+                synchronized (this) {
+                    ArrayList<e<ReaderChapter>> arrayList = this.map.get(var1);
+                    if (arrayList == null) {
+                        ArrayList arrayList2 = new ArrayList();
+                        this.map.put(var1, arrayList2);
+                    }
+                    arrayList.add(var2);
+                    if (!var3) {
+                        Reader.a(Reader.this, 0, Type.CHAPTER);
+                        Integer n2 = this.map1.get(var1);
+                        if (n2 == null) {
+                            this.map1.put(var1, 1);
+                        } else {
+                            this.map1.put(var1, 1 + n2);
+                        }
+                    }
+                    Reader.e(Reader.this).execute(new Runnable() {
+
+                        public final void af(final ReaderChapter readerChapter) {
+                            final List<e<ReaderChapter>> list = map.remove(var1);
+                            if (list != null) {
+                                Reader.d(Reader.this).post(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        for (e<ReaderChapter> aList : list) {
+                                            aList.a(readerChapter);
+                                        }
+                                    }
+                                });
+                            }
+                            int ny;
+                            if ((ny = map1.remove(var1)) != 0) {
+                                while (ny != 0) {
+                                    Reader.a(Reader.this, 1, Type.CHAPTER);
+                                    ny--;
+                                }
+                            }
+                        }
+
+                        @Override
+                        public void run() {
+                            int nx = var1;
+                            ChapterLink[] var2_2 = Reader.this.d();
+                            if (var2_2.length > 0 && nx >= var2_2.length) {
+                                nx = var2_2.length - 1;
+                            }
+                            ChapterLink var3_3;
+                            ReaderChapter var5_4;
+                            boolean var4_5;
+                            if ((var3_3 = var2_2[var1]) == null) {
+                                var5_4 = new ReaderChapter();
+                                var4_5 = true;
+                            } else {
+                                var4_5 = var3_3.getUnreadble();
+                                var5_4 = Reader.a(Reader.this, var3_3, nx);
+                            }
+                            if (var4_5) {
+                                if (Reader.o(Reader.this) == 5 || Reader.o(Reader.this) == 10) {
+                                    var5_4.setStatus(-2);
+                                } else {
+                                    var5_4.setStatus(-3);
+                                }
+                            } else {
+                                if (Reader.f(Reader.this)) {
+                                    var5_4.setBody(com.clilystudio.netbook.hpay100.a.a.a(Reader.g(Reader.this), var2_2, nx).getChapter().getBody());
+                                } else {
+                                    ChapterRoot var6_7 = Reader.b(Reader.this, var3_3, nx);
+                                    if (var6_7 == null || var6_7.getChapter() == null) {
+                                        var5_4.setStatus(-1);
+                                    } else if (var6_7.getChapter().getBody() == null) {
+                                        var5_4.setStatus(var6_7.getStatus());
+                                    } else {
+                                        Chapter var7_8 = var6_7.getChapter();
+                                        var5_4.setBody(var7_8.getBody());
+                                        var5_4.setCpContent(var7_8.getContent());
+                                        var5_4.setId(var7_8.getId());
+                                        var5_4.setIsVip(var7_8.isVip());
+                                        if (var7_8.getLink() != null) {
+                                            var5_4.setLink(var7_8.getLink());
+                                        }
+                                        ChapterLink var9_9 = (ChapterLink) Reader.p(Reader.this).get(var7_8.getId());
+                                        if (var9_9 != null) {
+                                            var5_4.setIsVip(var9_9.isVip() || var7_8.isVip());
+                                            var5_4.setCurrency(var9_9.getCurrency());
+                                            String var10_10 = Reader.this.e().get(var5_4.getId());
+                                            if (var10_10 != null) {
+                                                var5_4.setKey(var10_10);
+                                                com.clilystudio.netbook.hpay100.a.a.a(Reader.q(Reader.this), Reader.h(Reader.this), am.e(var5_4.getLink()), var5_4);
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            Reader.this.a.put(nx, var5_4);
+                            af(var5_4);
+                        }
+                    });
+                    return;
+                }
+            }
+        };
     }
 
     /*
@@ -67,7 +180,7 @@ public final class Reader {
      * Lifted jumps to return sites
      */
     public Reader(String string, String string2, String string3, int n) {
-        this.C = new U(this);
+        this.C = getYClass();
         this.c = string;
         this.e = string2;
         this.d = string3;
@@ -298,11 +411,18 @@ public final class Reader {
         });
     }
 
-    private void a(List<Integer> list) {
+    private void a(final List<Integer> list) {
         if (list.size() == 0) {
             return;
         }
-        this.a(list.get(0), new X(this, list), true, false);
+        this.a(list.get(0), new e<ReaderChapter>(){
+            @Override
+            public void a(ReaderChapter var1) {
+                if (list.size() > 1) {
+                    Reader.a(Reader.this, list.subList(1, list.size()));
+                }
+            }
+        }, true, false);
     }
 
     private boolean o() {

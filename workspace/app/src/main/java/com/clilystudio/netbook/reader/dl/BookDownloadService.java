@@ -5,18 +5,26 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.os.AsyncTask;
 import android.os.IBinder;
 import com.clilystudio.netbook.am;
 import android.support.v4.content.LocalBroadcastManager;
 
 import com.clilystudio.netbook.MyApplication;
+import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.db.BookDlRecord;
 import com.clilystudio.netbook.db.BookReadRecord;
 import com.clilystudio.netbook.db.SourceRecord;
 import com.clilystudio.netbook.event.d;
 import com.clilystudio.netbook.event.i;
+import com.clilystudio.netbook.model.Chapter;
 import com.clilystudio.netbook.model.ChapterLink;
+import com.clilystudio.netbook.model.ChapterRoot;
+import com.clilystudio.netbook.model.Toc;
+import com.clilystudio.netbook.model.TocSource;
+import com.clilystudio.netbook.model.TocSourceRoot;
 import com.clilystudio.netbook.util.I;
+import com.clilystudio.netbook.util.e;
 import com.squareup.a.l;
 
 import java.util.ArrayList;
@@ -229,18 +237,14 @@ public class BookDownloadService extends Service {
         String string2;
         this.k = new com.clilystudio.netbook.reader.f(bookReadRecord);
         if (this.c == -1) {
-            f f2 = new f(this, 0);
-            String[] arrstring = new String[]{this.a};
-            f2.b(arrstring);
+            getTocSourceRoot();
             return;
         }
-        if (a.h(this.c)) {
-            string2 = a.g(this.c);
+        if (com.clilystudio.netbook.hpay100.a.a.h(this.c)) {
+            string2 = com.clilystudio.netbook.hpay100.a.a.g(this.c);
             SourceRecord sourceRecord = SourceRecord.get(this.a, string2);
             if (sourceRecord == null || sourceRecord.getSourceId() == null) {
-                f f3 = new f(this, 0);
-                String[] arrstring = new String[]{this.a};
-                f3.b(arrstring);
+                getTocSourceRoot();
                 return;
             }
             string = sourceRecord.getSourceId();
@@ -248,9 +252,61 @@ public class BookDownloadService extends Service {
             string = null;
             string2 = null;
         }
-        this.b = a.a(this.a, this.c, string, this.b);
+        this.b = com.clilystudio.netbook.hpay100.a.a.a(this.a, this.c, string, this.b);
         this.k.a(this.b, string2, string);
-        new g(this, 0).b(new Void[0]);
+        new com.clilystudio.netbook.a_pack.e<Void, Void, Toc>(){
+            @Override
+            protected Toc doInBackground(Void... params) {
+                return BookDownloadService.f(BookDownloadService.this).a();
+            }
+
+            @Override
+            protected void onPostExecute(Toc toc) {
+                 super.onPostExecute(toc);
+                if (toc != null && toc.getChapters() != null) {
+                    com.clilystudio.netbook.hpay100.a.a.a(BookDownloadService.d(BookDownloadService.this), toc.get_id(), "toc", toc);
+                    BookDownloadService.a(BookDownloadService.this, toc.getChapters());
+                    BookDownloadService.e(BookDownloadService.this, BookDownloadService.p(BookDownloadService.this).length);
+                    BookDownloadService.f(BookDownloadService.this, BookDownloadService.h(BookDownloadService.this));
+                    BookDownloadService.q(BookDownloadService.this);
+                    return;
+                }
+                com.clilystudio.netbook.util.e.a(BookDownloadService.this.getApplicationContext(), "获取目录失败，暂时无法缓存");
+                BookDownloadService.r(BookDownloadService.this);
+            }
+        }.b();
+    }
+
+    private void getTocSourceRoot() {
+        new AsyncTask<String, Void, TocSourceRoot>(){
+            @Override
+            protected TocSourceRoot doInBackground(String... params) {
+                com.clilystudio.netbook.api.b.a();
+                TocSourceRoot tocSourceRoot = com.clilystudio.netbook.api.b.b().g(params[0]);
+                return tocSourceRoot;
+            }
+
+            @Override
+            protected void onPostExecute(TocSourceRoot tocSourceRoot) {
+                super.onPostExecute(tocSourceRoot);
+                if (tocSourceRoot != null && tocSourceRoot.getSources() != null) {
+                    TocSource[] arrtocSource = tocSourceRoot.getSources();
+                    int n = arrtocSource.length;
+                    for (int j = 0; j < n; ++j) {
+                        com.clilystudio.netbook.hpay100.a.a.a(arrtocSource[j], BookDownloadService.d(BookDownloadService.this));
+                    }
+                }
+                BookDownloadService.d(BookDownloadService.this, 5);
+                BookReadRecord bookReadRecord = BookReadRecord.getOnShelf(BookDownloadService.d(BookDownloadService.this));
+                if (bookReadRecord != null) {
+                    bookReadRecord.setReadMode(5);
+                    bookReadRecord.save();
+                    BookDownloadService.a(BookDownloadService.this, bookReadRecord);
+                    return;
+                }
+                BookDownloadService.o(BookDownloadService.this);
+            }
+        }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR,  new String[]{this.a});
     }
 
     private void b() {
@@ -304,7 +360,68 @@ public class BookDownloadService extends Service {
                 this.e();
                 return;
             }
-            new e(this, chapterLink, n).b(new Void[0]);
+            final ChapterLink finalChapterLink = chapterLink;
+            final int finalN = n;
+            new com.clilystudio.netbook.a_pack.e<Void, Void, ChapterRoot>(){
+                @Override
+                protected ChapterRoot doInBackground(Void... params) {
+                    ChapterRoot chapterRoot = BookDownloadService.f(BookDownloadService.this).a(finalChapterLink, finalN);
+                    BookDlRecord bookDlRecord = BookDlRecord.get(BookDownloadService.d(BookDownloadService.this));
+                    if (bookDlRecord != null) {
+                        bookDlRecord.setProgress(BookDownloadService.g(BookDownloadService.this));
+                        bookDlRecord.save();
+                    }
+                    return chapterRoot;
+                }
+
+                @Override
+                protected void onPostExecute(ChapterRoot chapterRoot) {
+                    Chapter chapter;
+                     super.onPostExecute(chapterRoot);
+                    BookDownloadService.b(BookDownloadService.this).putExtra("SerDlCurrentCount", BookDownloadService.g(BookDownloadService.this));
+                    BookDownloadService.b(BookDownloadService.this).putExtra("SerDlChapterCount", BookDownloadService.h(BookDownloadService.this));
+                    BookDownloadService.b(BookDownloadService.this).putExtra("bookId", BookDownloadService.d(BookDownloadService.this));
+                    BookDownloadService.i(BookDownloadService.this);
+                    int n2 = com.clilystudio.netbook.hpay100.a.a.r(BookDownloadService.this);
+                    if (BookDownloadService.j(BookDownloadService.this) == 1 && n2 > 1) {
+                        BookDownloadService.k(BookDownloadService.this);
+                        com.clilystudio.netbook.util.e.a((Context) BookDownloadService.this.getApplicationContext(), (String) "\u6d41\u91cf\u4e0b\u81ea\u52a8\u6682\u505c\u7f13\u5b58\uff0c\u8fde\u63a5 Wi-Fi \u7ee7\u7eed\u6216\u624b\u52a8\u5f00\u59cb\u7f13\u5b58");
+                    } else if (com.clilystudio.netbook.hpay100.a.a.t(BookDownloadService.this)) {
+                        BookDownloadService.e(BookDownloadService.this);
+                        BookDownloadService.b(BookDownloadService.this, false);
+                    } else {
+                        BookDownloadService.k(BookDownloadService.this);
+                        com.clilystudio.netbook.util.e.a((Context) BookDownloadService.this.getApplicationContext(), (String) "\u7f13\u5b58\u6682\u505c\uff0c\u8fde\u63a5\u7f51\u7edc\u540e\u7ee7\u7eed\u4e0b\u8f7d");
+                    }
+                    BookDownloadService.b(BookDownloadService.this, n2);
+                    if (chapterRoot != null && chapterRoot.getChapter() != null && (chapter = chapterRoot.getChapter()).getBody() != null) {
+                        String string = chapter.getLink();
+                        BookDownloadService.b(BookDownloadService.this).putExtra("SerDlLink", string);
+                        BookDownloadService.l(BookDownloadService.this);
+                        if (BookDownloadService.m(BookDownloadService.this) == null) {
+                            BookDownloadService.a(BookDownloadService.this, I.c);
+                        }
+                        com.clilystudio.netbook.hpay100.a.a.a(BookDownloadService.d(BookDownloadService.this), BookDownloadService.m(BookDownloadService.this), am.e((String) string), chapter);
+                    }
+                    BookDownloadService.c(BookDownloadService.this);
+                    if (BookDownloadService.n(BookDownloadService.this) == 0 || BookDownloadService.g(BookDownloadService.this) == BookDownloadService.h(BookDownloadService.this)) {
+                        com.clilystudio.netbook.event.i.a().post(new com.clilystudio.netbook.event.I());
+                        BookDownloadService.c(BookDownloadService.this, BookDownloadService.g(BookDownloadService.this));
+                        return;
+                    } else {
+                        int nx = 1;
+                        if (BookDownloadService.h(BookDownloadService.this) > 20) {
+                            nx = BookDownloadService.h(BookDownloadService.this) / 20;
+                        }
+                        if (BookDownloadService.g(BookDownloadService.this) - BookDownloadService.n(BookDownloadService.this) < nx) return;
+                        {
+                            com.clilystudio.netbook.event.i.a().post(new com.clilystudio.netbook.event.I());
+                            BookDownloadService.c(BookDownloadService.this, BookDownloadService.g(BookDownloadService.this));
+                            return;
+                        }
+                    }
+                }
+            }.b();
             return;
         }
         this.e();
@@ -321,7 +438,7 @@ public class BookDownloadService extends Service {
     private void e() {
         this.i.putExtra("SerDlStopFlag", -1);
         this.h();
-        i.a().c(new d(this.a, 4));
+        com.clilystudio.netbook.event.i.a().post(new d(this.a, 4));
         this.f();
         this.a();
     }

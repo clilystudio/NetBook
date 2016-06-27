@@ -1301,7 +1301,7 @@ public class ReaderViewPager extends ViewGroup {
     public void addView(View view, int n, ViewGroup.LayoutParams layoutParams) {
         ViewGroup.LayoutParams layoutParams2 = !this.checkLayoutParams(layoutParams) ? this.generateLayoutParams(layoutParams) : layoutParams;
         ct ct2 = (ct) ((Object) layoutParams2);
-        ct2.a = (SettingWidget) (ct2.a | view instanceof cr);
+        ct2.a = !ct2.a;
         if (!this.mInLayout) {
             super.addView(view, n, layoutParams2);
             return;
