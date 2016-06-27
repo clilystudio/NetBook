@@ -216,7 +216,6 @@ public class AdWebViewActivity extends BaseActivity implements View.OnClickListe
                 }
             }
         });
-        this.a.addJavascriptInterface(new cw(this, this.a), "ZssqAndroidApi");
         this.c.setOnClickListener(this);
         this.e.setOnClickListener(this);
         view.setOnClickListener(this);

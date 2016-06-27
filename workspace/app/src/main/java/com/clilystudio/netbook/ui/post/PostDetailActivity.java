@@ -26,9 +26,7 @@ import com.clilystudio.netbook.model.User;
 import com.clilystudio.netbook.model.Vote;
 import com.clilystudio.netbook.ui.SmartImageView;
 import com.clilystudio.netbook.ui.user.AuthLoginActivity;
-import com.clilystudio.netbook.util.*;
 import com.clilystudio.netbook.util.N;
-import com.clilystudio.netbook.util.T;
 import com.clilystudio.netbook.widget.HotCommentView;
 import com.clilystudio.netbook.widget.LinkifyTextView;
 import com.clilystudio.netbook.widget.PostAgreeView;
@@ -39,8 +37,6 @@ import com.clilystudio.netbook.widget.av;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
-import cn.sharesdk.framework.PlatformActionListener;
 
 public class PostDetailActivity extends AbsPostActivity {
     private z f;
@@ -416,27 +412,7 @@ public class PostDetailActivity extends AbsPostActivity {
      */
     @Override
     public final void f(int n) {
-        String string;
-        if (this.r == null) {
-            e.a((Activity) this, (String) "\u64cd\u4f5c\u5931\u8d25\uff0c\u8bf7\u91cd\u8bd5");
-            return;
-        }
-        String string2 = this.r.getBook().getTitle();
-        String string3 = this.r.getBook().getFullCover();
-        String string4 = this.r.getShareLink();
-        if ("ramble".equals(this.s)) {
-            string2 = this.r.getTitle();
-            string3 = null;
-            if (this.t) {
-                string = "\u6295\u7968\uff1a\u300c" + this.r.getTitle() + "\u300d\uff0c\u6211\u6295\u4e86\uff0c\u86ee\u6709\u610f\u601d\u7684\uff0c\u4f60\u600e\u4e48\u770b\uff1f";
-            } else {
-                string = "\u8bdd\u9898\uff1a\u300c" + this.r.getTitle() + "\u300d\uff0c\u86ee\u6709\u610f\u601d\u7684\uff0c\u4f60\u600e\u4e48\u770b\uff1f";
-                string3 = null;
-            }
-        } else {
-            string = this.t ? string2 + "\u7684\u6295\u7968\uff1a\u300c" + this.r.getTitle() + "\u300d\uff0c\u6211\u6295\u4e86\uff0c\u86ee\u6709\u610f\u601d\u7684\uff0c\u4f60\u600e\u4e48\u770b\uff1f" : string2 + "\u7684\u8bdd\u9898\uff1a\u300c" + this.r.getTitle() + "\u300d\uff0c\u86ee\u6709\u610f\u601d\u7684\uff0c\u4f60\u600e\u4e48\u770b\uff1f";
-        }
-        T.a(this, string2, string, string4, string3, n, (PlatformActionListener) ((Object) new cu(this)));
+        // share book
     }
 
     @Override

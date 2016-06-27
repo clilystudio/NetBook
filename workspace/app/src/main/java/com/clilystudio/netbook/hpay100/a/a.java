@@ -76,7 +76,6 @@ import com.clilystudio.netbook.reader.ReaderTocDialog;
 import com.clilystudio.netbook.util.CipherUtil;
 import com.clilystudio.netbook.util.GenderIntroDialog;
 import com.clilystudio.netbook.util.I;
-import com.clilystudio.netbook.util.T;
 import com.clilystudio.netbook.util.X;
 import com.clilystudio.netbook.util.t;
 import com.integralblue.httpresponsecache.compat.java.lang.ArrayIndexOutOfBoundsException;
@@ -1923,24 +1922,7 @@ public class a {
      * Enabled aggressive block sorting
      */
     public static void a(Context context, int n2, int n3) {
-        String string2 = T.a(n2);
-        if (string2 == null) return;
-        {
-            if (n3 == 1) {
-                MiStatInterface.recordCountEvent("share_book_info_platform", string2);
-                return;
-            } else {
-                if (n3 == 2) {
-                    MiStatInterface.recordCountEvent( "share_post_detail_platform", string2);
-                    return;
-                }
-                if (n3 != 3) return;
-                {
-                    MiStatInterface.recordCountEvent("share_book_list_platform", string2);
-                    return;
-                }
-            }
-        }
+        // share book
     }
 
     /*

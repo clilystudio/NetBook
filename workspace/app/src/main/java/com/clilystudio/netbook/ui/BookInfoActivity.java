@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.FragmentTransaction;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,7 +29,6 @@ import com.clilystudio.netbook.reader.dl.a;
 import com.clilystudio.netbook.ui.post.BookPostTabActivity;
 import com.clilystudio.netbook.ui.user.AuthLoginActivity;
 import com.clilystudio.netbook.util.I;
-import com.clilystudio.netbook.util.T;
 import com.clilystudio.netbook.util.m;
 import com.clilystudio.netbook.util.t;
 import com.clilystudio.netbook.widget.CoverView;
@@ -38,10 +36,6 @@ import com.clilystudio.netbook.widget.TagsLayout;
 import com.umeng.a.b;
 
 import java.util.Date;
-import java.util.HashMap;
-
-import cn.sharesdk.framework.Platform;
-import cn.sharesdk.framework.PlatformActionListener;
 
 public class BookInfoActivity extends BaseActivity implements View.OnClickListener {
     private static final String a = BookInfoActivity.class.getSimpleName();
@@ -104,29 +98,8 @@ public class BookInfoActivity extends BaseActivity implements View.OnClickListen
     }
 
     static /* synthetic */ void a(BookInfoActivity bookInfoActivity, int n2) {
-        if (bookInfoActivity.k != null) {
-            String string = bookInfoActivity.k.getTitle();
-            String string2 = bookInfoActivity.k.getFullCover();
-            T.a(bookInfoActivity, string, bookInfoActivity.k.getLongIntro(), "http://share.zhuishushenqi.com/book/" + bookInfoActivity.k.getId(), string2, n2, new PlatformActionListener() {
-
-                @Override
-                public void onComplete(Platform platform, int i, HashMap<String, Object> hashMap) {
-                    com.clilystudio.netbook.util.e.c("share_book");
-                    Log.i(BookInfoActivity.b(), "onComplete");
-                }
-
-                @Override
-                public void onError(Platform platform, int i, Throwable throwable) {
-                    Log.i(BookInfoActivity.b(), "onError");
-                }
-
-                @Override
-                public void onCancel(Platform platform, int i) {
-                    Log.i(BookInfoActivity.b(), "onCancel");
-                }
-            });
-        }
-    }
+        // share book
+     }
 
     static /* synthetic */ void a(BookInfoActivity bookInfoActivity, String string) {
         bookInfoActivity.startActivity(BookTagListActivity.a(bookInfoActivity, string));

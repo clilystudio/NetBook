@@ -27,14 +27,11 @@ import com.clilystudio.netbook.ui.SmartImageView;
 import com.clilystudio.netbook.ui.aa;
 import com.clilystudio.netbook.ui.cb;
 import com.clilystudio.netbook.ui.cd;
-import com.clilystudio.netbook.util.T;
 import com.clilystudio.netbook.widget.CoverView;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
-import cn.sharesdk.framework.PlatformActionListener;
 
 public class UGCDetailActivity extends BaseActivity implements View.OnClickListener {
     private TextView a;
@@ -244,7 +241,7 @@ public class UGCDetailActivity extends BaseActivity implements View.OnClickListe
     }
 
     public final void a(int n2) {
-        T.a(this, this.u, this.w, this.x, this.y, n2, (PlatformActionListener) ((Object) new o(this)));
+        // share book
     }
 
     @Override

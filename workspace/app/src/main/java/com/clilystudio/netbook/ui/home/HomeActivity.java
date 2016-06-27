@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.os.Handler;
 
 import com.clilystudio.netbook.R;
+import com.clilystudio.netbook.a_pack.e;
 import com.clilystudio.netbook.am;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.PagerAdapter;
@@ -36,6 +37,7 @@ import com.clilystudio.netbook.event.o;
 import com.clilystudio.netbook.event.t;
 import com.clilystudio.netbook.event.w;
 import com.clilystudio.netbook.model.Account;
+import com.clilystudio.netbook.model.BookTopRoot;
 import com.clilystudio.netbook.model.User;
 import com.clilystudio.netbook.push.BookSubRecord;
 import com.clilystudio.netbook.push.BookUnSubRecord;
@@ -844,7 +846,23 @@ public class HomeActivity extends HomeParentActivity implements ViewPager$OnPage
         super.onResume();
         com.clilystudio.netbook.api.e.a("1".equals(OnlineConfigAgent.getInstance().getConfigParams(this, "use_http_dns")));
         if (com.clilystudio.netbook.hpay100.a.a.l()) {
-            new s((Context) this).b(new Void[0]);
+            new e<Void, Void, BookTopRoot>(){
+
+                @Override
+                protected BookTopRoot doInBackground(Void... params) {
+                    com.clilystudio.netbook.api.b.a();
+                    return com.clilystudio.netbook.api.b.b().u();
+                }
+
+                @Override
+                protected void onPostExecute(BookTopRoot bookTopRoot) {
+                     super.onPostExecute(bookTopRoot);
+                    BookTopRoot.Favorite favorite;
+                    if (bookTopRoot != null && (favorite = bookTopRoot.getFavorite()) != null) {
+                        com.clilystudio.netbook.hpay100.a.a.b(HomeActivity.this, favorite.getBookID(), favorite.getTocID(), favorite.getChecksum());
+                    }
+                }
+            }.b();
         }
         if ((account = am.e()) != null) {
             this.p = account;

@@ -17,7 +17,6 @@ import com.clilystudio.netbook.model.ChapterLink;
 import com.clilystudio.netbook.model.UGCNewCollection;
 import com.clilystudio.netbook.model.User;
 import com.clilystudio.netbook.reader.Reader;
-import com.clilystudio.netbook.util.V_Clazz;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.umeng.onlineconfig.OnlineConfigAgent;
@@ -232,7 +231,6 @@ public class MyApplication extends Application {
      */
     @Override
     public void onCreate() {
-        V_Clazz v;
         super.onCreate();
         b = this;
         com.clilystudio.netbook.api.e.a("1".equals(OnlineConfigAgent.getInstance().getConfigParams(b, "use_http_dns")));
@@ -298,9 +296,6 @@ public class MyApplication extends Application {
             } else {
                 com.clilystudio.netbook.hpay100.a.a.b(this, "PREF_FIRST_LAUNCH_TIME", Calendar.getInstance().getTimeInMillis());
             }
-        }
-        if ((v = new V_Clazz(this)).a() == 0) {
-            v.a(Calendar.getInstance().getTimeInMillis());
         }
         am.s(this);
 //        SpeechUtility.createUtility(this, "appid=56655269");

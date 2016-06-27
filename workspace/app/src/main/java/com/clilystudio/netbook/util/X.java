@@ -33,18 +33,17 @@ public final class X extends e<Void, Void, SyncUploadResult> {
     }
 
     private /* varargs */ SyncUploadResult b() {
-        switch (Y.a[this.e.ordinal()]) {
-            case 1:
-                return this.a.G(this.c, a());
-            case 2:
-                return this.a.I(this.c, a());
-            case 3:
-                return this.a.H(this.c, a());
-            case 4:
-                SyncUploadResult localSyncUploadResult = this.a.J(this.c, a());
-                return localSyncUploadResult;
+        if (this.e == BookSyncRecord.BookModifyType.SHELF_ADD) {
+            return this.a.G(this.c, a());
+        } else if (this.e == BookSyncRecord.BookModifyType.SHELF_REMOVE) {
+            return this.a.I(this.c, a());
+        } else if (this.e == BookSyncRecord.BookModifyType.FEED_ADD) {
+            return this.a.H(this.c, a());
+        } else if (this.e == BookSyncRecord.BookModifyType.FEED_REMOVE) {
+             return this.a.J(this.c, a());
+        } else {
+            return  null;
         }
-        return null;
     }
 
     @Override

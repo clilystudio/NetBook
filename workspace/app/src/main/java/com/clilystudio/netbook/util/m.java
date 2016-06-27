@@ -192,8 +192,30 @@ public final class m {
         n2.b(arrstring);
     }
 
-    private void a(boolean bl, boolean bl2) {
-        o o2 = new o(this, this.a, bl, bl2);
+    private void a(boolean bl, final boolean bl2) {
+        c<String, List<TocSummary>> o2 = new c<String, List<TocSummary>>(m.this.a, R.string.loading, bl){
+            @Override
+            public List<TocSummary> a(String... var1) {
+                com.clilystudio.netbook.api.b.a();
+                return com.clilystudio.netbook.api.b.b().d(var1[0]);
+            }
+
+            @Override
+            public void a(List<TocSummary> list) {
+                if (list == null) {
+                    com.clilystudio.netbook.util.e.a(m.a(m.this), "获取资源站失败，请重试");
+                    return;
+                }
+                if (list.size() > 1) {
+                    m.a(m.this, true);
+                }
+                if (bl2) {
+                    m.a(m.this, list);
+                    return;
+                }
+                m.b(m.this, list);
+            }
+        };
         String[] arrstring = new String[]{this.b};
         o2.b(arrstring);
     }

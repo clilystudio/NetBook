@@ -29,9 +29,7 @@ import com.clilystudio.netbook.model.TweetResult;
 import com.clilystudio.netbook.model.User;
 import com.clilystudio.netbook.ui.SmartImageView;
 import com.clilystudio.netbook.ui.user.AuthLoginActivity;
-import com.clilystudio.netbook.util.*;
 import com.clilystudio.netbook.util.N;
-import com.clilystudio.netbook.util.T;
 import com.clilystudio.netbook.widget.HotCommentView;
 import com.clilystudio.netbook.widget.LinkifyTextView;
 import com.clilystudio.netbook.widget.PostAgreeView;
@@ -43,8 +41,6 @@ import com.clilystudio.netbook.widget.av;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
-import cn.sharesdk.framework.PlatformActionListener;
 
 public class TweetDetailActivity extends AbsPostActivity {
     private av A;
@@ -486,14 +482,7 @@ public class TweetDetailActivity extends AbsPostActivity {
      */
     @Override
     public final void f(int n) {
-        if (this.t == null) {
-            e.a((Activity) this, (String) "\u64cd\u4f5c\u5931\u8d25\uff0c\u8bf7\u91cd\u8bd5");
-            return;
-        }
-        Tweet tweet = this.t.getTweet();
-        String string = "ARTICLE".equals(this.u) ? tweet.getTitle() : null;
-        String string2 = tweet.getShareLinkUrl();
-        T.a(this, string, "\u52a8\u6001\uff1a\u300c" + string + "\u300d\uff0c\u86ee\u6709\u610f\u601d\u7684\uff0c\u4f60\u600e\u4e48\u770b\uff1f", string2, null, n, (PlatformActionListener) ((Object) new dx(this)));
+        // share book
     }
 
     @Override

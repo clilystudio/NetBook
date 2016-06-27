@@ -25,9 +25,7 @@ import com.clilystudio.netbook.model.User;
 import com.clilystudio.netbook.ui.BookInfoActivity;
 import com.clilystudio.netbook.ui.SmartImageView;
 import com.clilystudio.netbook.ui.user.AuthLoginActivity;
-import com.clilystudio.netbook.util.*;
 import com.clilystudio.netbook.util.N;
-import com.clilystudio.netbook.util.T;
 import com.clilystudio.netbook.util.t;
 import com.clilystudio.netbook.widget.CoverView;
 import com.clilystudio.netbook.widget.HotCommentView;
@@ -350,13 +348,7 @@ public class ReviewActivity extends AbsPostActivity {
 
     @Override
     public final void f(int n) {
-        if (this.m == null) {
-            e.a((Activity) this, (String) "\u64cd\u4f5c\u5931\u8d25\uff0c\u8bf7\u91cd\u8bd5");
-            return;
-        }
-        String string = this.m.getBook().getTitle();
-        String string2 = this.m.getBook().getFullCover();
-        T.a(this, string, string + "\u7684\u4e66\u8bc4\uff1a\u300c" + this.m.getTitle() + "\u300d\uff0c \u697c\u4e3b\u4f60\u5199\u7684\u8fd9\u4e48\u8d5e\uff0c\u4f60\u7684\u5c0f\u4f19\u4f34\u77e5\u9053\u5417\uff1f", this.m.getShareLink(), string2, n, new cC(this));
+        // share book
     }
 
     @Override

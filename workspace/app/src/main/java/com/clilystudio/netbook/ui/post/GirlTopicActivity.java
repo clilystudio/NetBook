@@ -25,7 +25,6 @@ import com.clilystudio.netbook.model.Vote;
 import com.clilystudio.netbook.ui.SmartImageView;
 import com.clilystudio.netbook.ui.user.AuthLoginActivity;
 import com.clilystudio.netbook.util.N;
-import com.clilystudio.netbook.util.T;
 import com.clilystudio.netbook.widget.HotCommentView;
 import com.clilystudio.netbook.widget.LinkifyTextView;
 import com.clilystudio.netbook.widget.PostAgreeView;
@@ -36,8 +35,6 @@ import com.clilystudio.netbook.widget.av;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
-import cn.sharesdk.framework.PlatformActionListener;
 
 public class GirlTopicActivity extends AbsPostActivity {
     private View f;
@@ -389,11 +386,7 @@ public class GirlTopicActivity extends AbsPostActivity {
 
     @Override
     public final void f(int n) {
-        if (this.m == null) {
-            e.a((Activity) this, (String) "\u64cd\u4f5c\u5931\u8d25\uff0c\u8bf7\u91cd\u8bd5");
-            return;
-        }
-        T.a(this, this.m.getTitle(), "\u300c" + this.m.getTitle() + "\u300d   \u6211\u5728\u8fd9\u53d1\u73b0\u4e86\u597d\u591a\u597d\u770b\u7684\u5c0f\u8bf4\uff0c\u4f60\u4e5f\u6765\u627e\u627e\u770b\u5427", this.m.getShareLink(), null, n, (PlatformActionListener) ((Object) new bp(this)));
+        // share book
     }
 
     @Override

@@ -27,24 +27,20 @@ import android.widget.TextView;
 
 import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.am;
-import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.d;
 import com.clilystudio.netbook.db.BookReadRecord;
 import com.clilystudio.netbook.db.BookTopicEnterRecord;
 import com.clilystudio.netbook.db.MixTocRecord;
 import com.clilystudio.netbook.db.TocReadRecord;
 import com.clilystudio.netbook.event.C;
-import com.clilystudio.netbook.event.i;
 import com.clilystudio.netbook.event.j;
 import com.clilystudio.netbook.event.v;
-import com.clilystudio.netbook.model.BookInfo;
 import com.clilystudio.netbook.model.ChapterKeysRoot;
 import com.clilystudio.netbook.model.ChapterLink;
 import com.clilystudio.netbook.model.TopicCount;
 import com.clilystudio.netbook.ui.BaseReadSlmActivity;
 import com.clilystudio.netbook.ui.BookInfoActivity;
 import com.clilystudio.netbook.ui.post.BookPostTabActivity;
-import com.clilystudio.netbook.util.V_Clazz;
 import com.clilystudio.netbook.util.k;
 import com.clilystudio.netbook.widget.ThemeLoadingView;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
@@ -56,8 +52,6 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Map;
 
-import cn.sharesdk.framework.Platform;
-import cn.sharesdk.framework.PlatformActionListener;
 import uk.me.lewisdeane.ldialogs.BaseDialog;
 import uk.me.lewisdeane.ldialogs.CustomDialog;
 
@@ -580,10 +574,6 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         return 0;
     }
 
-    static /* synthetic */ void b(ReaderActivity readerActivity) {
-        new V_Clazz(readerActivity);
-    }
-
     static /* synthetic */ void b(ReaderActivity readerActivity, View view) {
         View view2 = readerActivity.getLayoutInflater().inflate(R.layout.reader_popupwindow_layout, null);
         view2.findViewById(R.id.menu_item_1).setOnClickListener(readerActivity);
@@ -643,36 +633,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
      * Enabled aggressive block sorting
      */
     static /* synthetic */ void e(ReaderActivity readerActivity, int n2) {
-        String string = "";
-        String string2 = "";
-        BookReadRecord bookReadRecord = BookReadRecord.get(readerActivity.c);
-        if (bookReadRecord != null) {
-            string = bookReadRecord.getTitle();
-            string2 = bookReadRecord.getFullCover();
-        } else {
-            BookInfo bookInfo = MyApplication.a().c();
-            if (bookInfo != null && bookInfo.getId() != null && bookInfo.getId().equals(readerActivity.c)) {
-                string = bookInfo.getTitle();
-                string2 = bookInfo.getFullCover();
-            }
-        }
-        com.clilystudio.netbook.util.T.a(readerActivity, string, "这本书写的很好，你怎么看？", "http://share.zhuishushenqi.com/book/" + readerActivity.c, string2, n2,new PlatformActionListener(){
-
-            @Override
-            public void onComplete(Platform platform, int i, HashMap<String, Object> hashMap) {
-                com.clilystudio.netbook.util.e.c("share_book");
-            }
-
-            @Override
-            public void onError(Platform platform, int i, Throwable throwable) {
-
-            }
-
-            @Override
-            public void onCancel(Platform platform, int i) {
-
-            }
-        });
+        // share book
     }
 
     static /* synthetic */ boolean e(ReaderActivity readerActivity, boolean bl) {
@@ -1912,7 +1873,6 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
             @Override
             public void onOpened() {
                 ReaderActivity.a(ReaderActivity.this);
-                ReaderActivity.b(ReaderActivity.this);
                 ReaderActivity.c(ReaderActivity.this);
                 ReaderActivity.this.a(ReaderActivity.d(ReaderActivity.this));
                 com.clilystudio.netbook.hpay100.a.a.q(ReaderActivity.this, "打开页尾");
