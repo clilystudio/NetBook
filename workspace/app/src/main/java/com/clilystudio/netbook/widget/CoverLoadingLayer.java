@@ -244,7 +244,28 @@ public class CoverLoadingLayer extends ImageView {
         if (this.r == CoverLoadingLayer.Status.DOWNLOADED) {
             canvas.save();
             canvas.translate((float) this.getWidth() - this.t, 0.0f);
-            ShapeDrawable shapeDrawable = new ShapeDrawable((Shape) ((Object) new p(this.f)));
+            ShapeDrawable shapeDrawable = new ShapeDrawable(new Shape() {
+                private RectF arect;
+
+                @Override
+                public void draw(Canvas canvas, Paint paint) {
+                    float widthf = arect.width();
+                    Path path = new Path();
+                    path.moveTo(0.0f, 0.0f);
+                    path.lineTo(widthf - f, 0.0f);
+                    path.addArc(new RectF(widthf - 2.0f * f, 0.0f, widthf, 2.0f * f), -90.0f, 90.0f);
+                    path.lineTo(widthf, widthf);
+                    path.lineTo(0.0f, 0.0f);
+                    path.close();
+                    canvas.drawPath(path, paint);
+                }
+
+                @Override
+                protected void onResize(float width, float height) {
+                    super.onResize(width, height);
+                    arect = new RectF(0.0f, 0.0f, width, height);
+                }
+            });
             shapeDrawable.setBounds(0, 0, (int) this.t, (int) this.t);
             shapeDrawable.getPaint().setColor(this.u);
             shapeDrawable.draw(canvas);

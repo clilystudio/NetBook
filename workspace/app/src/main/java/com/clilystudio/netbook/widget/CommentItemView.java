@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import com.clilystudio.netbook.am;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -15,16 +14,24 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.clilystudio.netbook.R;
+import com.clilystudio.netbook.a_pack.c;
+import com.clilystudio.netbook.am;
 import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.model.Author;
+import com.clilystudio.netbook.model.CommentDetail;
 import com.clilystudio.netbook.model.PostComment;
+import com.clilystudio.netbook.model.ResultStatus;
 import com.clilystudio.netbook.ui.SmartImageView;
 import com.clilystudio.netbook.ui.post.AbsPostActivity;
 import com.clilystudio.netbook.ui.user.AuthLoginActivity;
+import com.clilystudio.netbook.util.e;
 import com.clilystudio.netbook.util.t;
 
 import java.util.Date;
+
+import uk.me.lewisdeane.ldialogs.BaseDialog;
 
 public class CommentItemView extends HorizontalScrollView implements View.OnClickListener {
     private int a;
@@ -64,7 +71,7 @@ public class CommentItemView extends HorizontalScrollView implements View.OnClic
     /*
      * Enabled aggressive block sorting
      */
-    static /* synthetic */ void a(CommentItemView commentItemView, PostComment postComment) {
+    static /* synthetic */ void a(final CommentItemView commentItemView, final PostComment postComment) {
         AlertDialog alertDialog;
         View view = LayoutInflater.from(commentItemView.d).inflate(R.layout.previous_comment_detail_dialog, null);
         String string = postComment.getAuthor().getNickname();
@@ -72,12 +79,17 @@ public class CommentItemView extends HorizontalScrollView implements View.OnClic
         String string2 = postComment.getContent();
         ((TextView) view.findViewById(R.id.previous_comment_detail_content)).setText(string2);
         if (postComment.get_id() != null) {
-            h h2 = new h(commentItemView.d);
-            h2.d = string;
-            h2.e = string2;
-            alertDialog = h2.a("\u56de\u590dTA", (DialogInterface.OnClickListener) ((Object) new m(commentItemView, postComment))).b("\u5173\u95ed", null).a();
+            BaseDialog.Builder h2 = new BaseDialog.Builder(commentItemView.d);
+            h2.setTitle(string);
+            h2.setMessage(string2);
+            alertDialog = h2.setPositiveButton("回复TA", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    CommentItemView.a(commentItemView).a(postComment.toRepliedInfo(), CommentItemView.d(commentItemView));
+                }
+            }).setNegativeButton("关闭", null).create();
         } else {
-            alertDialog = new h(commentItemView.d).a(view).b("\u5173\u95ed", null).a();
+            alertDialog = new BaseDialog.Builder(commentItemView.d).setView(view).setNegativeButton("关闭", null).create();
         }
         alertDialog.show();
     }
@@ -277,9 +289,31 @@ public class CommentItemView extends HorizontalScrollView implements View.OnClic
                     return;
                 }
                 if (account != null) {
-                    n n3 = new n(this, 0);
-                    Object[] arrobject = new String[]{this.d().get_id(), account.getToken()};
-                    n3.b(arrobject);
+                    com.clilystudio.netbook.a_pack.e<String, Void, ResultStatus> n3 = new com.clilystudio.netbook.a_pack.e<String, Void, ResultStatus>() {
+
+                        @Override
+                        protected ResultStatus doInBackground(String... params) {
+                            return com.clilystudio.netbook.api.b.b().o(CommentItemView.a(CommentItemView.this).n(), params[0], params[1]);
+                        }
+
+                        @Override
+                        protected void onPreExecute() {
+                            super.onPreExecute();
+                            if (CommentItemView.b(CommentItemView.this) != null) {
+                                CommentItemView.b(CommentItemView.this).setLikedInView(true);
+                            }
+                            CommentItemView.c(CommentItemView.this);
+                        }
+
+                        @Override
+                        protected void onPostExecute(ResultStatus resultStatus) {
+                             super.onPostExecute(resultStatus);
+                            if (resultStatus != null && !resultStatus.isOk()) {
+                                com.clilystudio.netbook.util.e.a((Activity) CommentItemView.a(CommentItemView.this), "已同感");
+                            }
+                        }
+                    };
+                    n3.b(new String[]{this.d().get_id(), account.getToken()});
                     return;
                 }
             }
@@ -288,11 +322,40 @@ public class CommentItemView extends HorizontalScrollView implements View.OnClic
             }
             case R.id.more:
         }
-        PostComment postComment = this.d();
-        CharSequence[] arrcharSequence = postComment.getReplyTo() == null ? new String[]{"\u4e3e\u62a5"} : new String[]{"\u67e5\u770b\u56de\u590d\u7684\u697c\u5c42", "\u4e3e\u62a5"};
-        h h2 = new h(this.d);
-        h2.d = "\u66f4\u591a";
-        h2.a(arrcharSequence, (DialogInterface.OnClickListener) ((Object) new l(this, (String[]) arrcharSequence, postComment))).a().show();
+        final PostComment postComment = this.d();
+        final CharSequence[] arrcharSequence = postComment.getReplyTo() == null ? new String[]{"举报"} : new String[]{"查看回复的楼层", "举报"};
+        BaseDialog.Builder h2 = new BaseDialog.Builder(this.d);
+        h2.setTitle("更多");
+        h2.setSingleChoiceItems(arrcharSequence, 0, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                if (arrcharSequence.length == 2 && which == 0) {
+                    String string = CommentItemView.a(CommentItemView.this).n();
+                    String string2 = postComment.getReplyTo().get_id();
+                    new c<String, CommentDetail>() {
+
+                        @Override
+                        public CommentDetail a(String... var1) {
+                            com.clilystudio.netbook.api.b.a();
+                            return com.clilystudio.netbook.api.b.b().A(var1[0], var1[1]);
+                        }
+
+                        @Override
+                        public void a(CommentDetail commentDetail) {
+                            if (commentDetail != null && commentDetail.getComment() != null) {
+                                CommentItemView.a(CommentItemView.this, commentDetail.getComment());
+                                return;
+                            }
+                            com.clilystudio.netbook.util.e.a((Activity) CommentItemView.this.getContext(), "楼层不存在");
+                        }
+                    }.b(string, string2);
+                } else if (arrcharSequence.length == 1 || which == 1) {
+                    CommentItemView.a(CommentItemView.this).a(postComment.get_id());
+                }
+                CommentItemView.a(CommentItemView.this).k();
+
+            }
+        }).create().show();
     }
 
     @Override
