@@ -12,7 +12,7 @@ final class X implements e<ReaderChapter> {
     }
 
     @Override
-    public final /* synthetic */ void a(Object object) {
+    public final /* synthetic */ void a(ReaderChapter object) {
         if (this.a.size() > 1) {
             Reader.a(this.b, this.a.subList(1, this.a.size()));
         }

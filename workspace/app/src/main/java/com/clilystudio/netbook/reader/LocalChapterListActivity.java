@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Message;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,6 +25,8 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import uk.me.lewisdeane.ldialogs.BaseDialog;
+
 public class LocalChapterListActivity extends BaseActivity {
     private TextView a;
     private ListView b;
@@ -41,8 +44,22 @@ public class LocalChapterListActivity extends BaseActivity {
         return localChapterListActivity.b;
     }
 
-    static /* synthetic */ void a(LocalChapterListActivity localChapterListActivity, String string) {
-        new uk.me.lewisdeane.ldialogs.h(localChapterListActivity).b(R.string.chapter_dl_del_chapter).a(false).a(R.string.delete, (DialogInterface.OnClickListener) ((Object) new k(localChapterListActivity, string))).b(R.string.cancel, (DialogInterface.OnClickListener) ((Object) new j(localChapterListActivity))).b();
+    static /* synthetic */ void a(final LocalChapterListActivity localChapterListActivity, final String string) {
+        new BaseDialog.Builder(localChapterListActivity).setMessage(R.string.chapter_dl_del_chapter).setCancelable(false).setPositiveButton(R.string.delete, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+                String string2 = LocalChapterListActivity.c(localChapterListActivity);
+                com.clilystudio.netbook.hpay100.a.a.E(com.clilystudio.netbook.c.b + File.separator + string2 + File.separator + string);
+                LocalChapterListActivity.e(localChapterListActivity);
+            }
+        }).setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        }).show();
     }
 
     static /* synthetic */ W<TocDownloadSummary> b(LocalChapterListActivity localChapterListActivity) {
@@ -105,11 +122,41 @@ public class LocalChapterListActivity extends BaseActivity {
     }
 
     private void b() {
-        l l2 = new l(this);
-        this.f = ProgressDialog.show(this, null, "\u8f7d\u5165\u4e2d...", true, true);
+        this.f = ProgressDialog.show(this, null, "载入中...", true, true);
         this.f.setCanceledOnTouchOutside(false);
-        new m(this, (Handler) ((Object) l2)).start();
-    }
+        final Handler handler = new Handler() {
+            @Override
+            public void handleMessage(Message msg) {
+                super.handleMessage(msg);
+                if (LocalChapterListActivity.f(LocalChapterListActivity.this) != null) {
+                    LocalChapterListActivity.f(LocalChapterListActivity.this).dismiss();
+                }
+                if (msg.what == 1 && msg.obj != null) {
+                    ArrayList arrayList = (ArrayList) msg.obj;
+                    if (arrayList.size() == 0) {
+                        LocalChapterListActivity.g(LocalChapterListActivity.this).setVisibility(View.GONE);
+                        LocalChapterListActivity.h(LocalChapterListActivity.this).setVisibility(View.VISIBLE);
+                        LocalChapterListActivity.h(LocalChapterListActivity.this).setText("\u65e0\u9884\u8bfb\u7ae0\u8282");
+                    } else {
+                        LocalChapterListActivity.g(LocalChapterListActivity.this).setVisibility(View.VISIBLE);
+                        LocalChapterListActivity.h(LocalChapterListActivity.this).setVisibility(View.GONE);
+                    }
+                    LocalChapterListActivity.b(LocalChapterListActivity.this).a(arrayList);
+                }
+            }
+        };
+        new Thread() {
+
+            @Override
+            public void run() {
+                Message message = new Message();
+                ArrayList arrayList = LocalChapterListActivity.i(LocalChapterListActivity.this);
+                message.what = 1;
+                message.obj = arrayList;
+                handler.sendMessage(message);
+            }
+        }.start();
+     }
 
     @Override
     public void onCreate(Bundle bundle) {
@@ -142,7 +189,17 @@ public class LocalChapterListActivity extends BaseActivity {
             }
         };
         this.b.setAdapter(this.c);
-        this.b.setOnItemClickListener((AdapterView.OnItemClickListener) ((Object) new h(this)));
+        this.b.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                int n3 = position - LocalChapterListActivity.a(LocalChapterListActivity.this).getHeaderViewsCount();
+                if (n3 >= 0) {
+                    TocDownloadSummary tocDownloadSummary = (TocDownloadSummary) LocalChapterListActivity.b(LocalChapterListActivity.this).getItem(n3);
+                    Intent intent = ReaderActivity.a(LocalChapterListActivity.this, LocalChapterListActivity.c(LocalChapterListActivity.this), LocalChapterListActivity.d(LocalChapterListActivity.this), tocDownloadSummary.getTocId(), null, true);
+                    LocalChapterListActivity.this.startActivity(intent);
+                }
+            }
+        });
         this.b.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {

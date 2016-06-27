@@ -1,5 +1,7 @@
 package com.clilystudio.netbook.reader;
 
+import android.text.Html;
+
 import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.api.ApiService;
 import com.clilystudio.netbook.api.b;
@@ -18,6 +20,8 @@ import com.clilystudio.netbook.model.mixtoc.LdTocRoot;
 import com.clilystudio.netbook.model.mixtoc.SgTocBook;
 import com.clilystudio.netbook.model.mixtoc.SgTocChapter;
 import com.clilystudio.netbook.model.mixtoc.SgTocRoot;
+import com.clilystudio.netbook.model.mixtoc.SsTocRoot;
+import com.clilystudio.netbook.model.mixtoc.SsTocRow;
 import com.clilystudio.netbook.util.I;
 
 import java.io.IOException;
@@ -90,12 +94,31 @@ public final class f {
      * Enabled force condition propagation
      * Lifted jumps to return sites
      */
-    private List<ChapterLink> a(int n, int n2) {
+    private List<ChapterLink> a(final int n, int n2) {
         void var9_12;
-        ChapterLink[][] arrchapterLink = new ChapterLink[n2][];
+        final ChapterLink[][] chapterLinks = new ChapterLink[n2][];
         ArrayList<Thread> arrayList = new ArrayList<Thread>();
         for (int j = 1; j <= n2; ++j) {
-            Thread thread = new Thread(new g(this, j, n, arrchapterLink));
+//            g(this, j, n, arrchapterLink)
+            final int finalJ = j;
+            Thread thread = new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    SsTocRow[] arrssTocRow;
+                    SsTocRoot ssTocRoot = com.clilystudio.netbook.api.b.b().a(finalJ, n, f.this.f);
+                    if (ssTocRoot == null || ssTocRoot.getRows() == null) return;
+                    arrssTocRow = ssTocRoot.getRows();
+                    ChapterLink[] arrchapterLink = new ChapterLink[arrssTocRow.length];
+                    for (int i = 0; i < arrssTocRow.length; ++i) {
+                        SsTocRow ssTocRow = arrssTocRow[i];
+                        ChapterLink chapterLink = new ChapterLink();
+                        chapterLink.setTitle(String.valueOf(Html.fromHtml(ssTocRow.getSerialname())));
+                        chapterLink.setLink(String.valueOf(ssTocRow.getSerialid()));
+                        arrchapterLink[i] = chapterLink;
+                    }
+                    chapterLinks[-1 + finalJ] = arrchapterLink;
+                }
+            });
             thread.start();
             arrayList.add(thread);
         }
@@ -107,10 +130,10 @@ public final class f {
             }
         }
         ArrayList<ChapterLink> arrayList2 = new ArrayList<ChapterLink>();
-        int n3 = arrchapterLink.length;
+        int n3 = chapterLinks.length;
         int n4 = 0;
         while (n4 < n3) {
-            ChapterLink[] arrchapterLink2 = arrchapterLink[n4];
+            ChapterLink[] arrchapterLink2 = chapterLinks[n4];
             if (arrchapterLink2 != null) {
                 for (ChapterLink chapterLink : arrchapterLink2) {
                     if (chapterLink == null) {

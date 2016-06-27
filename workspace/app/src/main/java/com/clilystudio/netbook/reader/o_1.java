@@ -15,6 +15,7 @@ import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.a_pack.c;
 import com.clilystudio.netbook.am;
+import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.hpay100.a.a;
 import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.model.ChapterKeysRoot;
@@ -80,7 +81,7 @@ public final class o {
 
     static /* synthetic */ void a(final o o2, PurchaseChapterResult purchaseChapterResult, boolean bl) {
         if (purchaseChapterResult == null) {
-            com.clilystudio.netbook.util.e.a(o2.b, "\u652f\u4ed8\u5931\u8d25\uff0c\u8bf7\u91cd\u8bd5");
+            com.clilystudio.netbook.util.e.a(o2.b, "支付失败，请重试");
             return;
         }
         if (purchaseChapterResult.isOk()) {
@@ -257,7 +258,21 @@ public final class o {
                     }
                     o.this.a(o.this, false);
                     com.clilystudio.netbook.hpay100.a.a.b(o.this.b, "auto_buy_chapter" + com.clilystudio.netbook.util.I.a, checkBox.isChecked());
-                    I i2 = new I(o.this, o.this.b, "\u8d2d\u4e70\u4e2d...");
+                    c<String, PurchaseChapterResult> i2 = new c<String, PurchaseChapterResult>(o.this.b, "购买中..."){
+
+                        @Override
+                        public PurchaseChapterResult a(String... var1) {
+                            com.clilystudio.netbook.api.b.a();
+                            PurchaseChapterResult purchaseChapterResult = com.clilystudio.netbook.api.b.b().a(var1[0], var1[1], 0);
+                            return purchaseChapterResult;
+                       }
+
+                        @Override
+                        public void a(PurchaseChapterResult var1) {
+                            o.this.a(o.this, true);
+                            o.this.a(o.this, var1, false);
+                         }
+                    };
                     String[] arrstring = new String[]{am.e().getToken(), o.this.d.a().getId()};
                     i2.b(arrstring);
                 }
@@ -574,7 +589,22 @@ public final class o {
         this.b(n2);
         if (this.a(n2.a())) {
             MiStatInterface.recordCountEvent("paying_page_auto_purchase", com.clilystudio.netbook.util.I.b);
-            I i2 = new I(this, this.b, "自动购买中...");
+            c<String, PurchaseChapterResult> i2 = new c<String, PurchaseChapterResult>(o.this.b, "自动购买中..."){
+
+                @Override
+                public PurchaseChapterResult a(String... var1) {
+                    com.clilystudio.netbook.api.b.a();
+                    PurchaseChapterResult purchaseChapterResult = com.clilystudio.netbook.api.b.b().a(var1[0], var1[1], 0);
+                    return purchaseChapterResult;
+                }
+
+                @Override
+                public void a(PurchaseChapterResult var1) {
+                    o.this.a(o.this, true);
+                    o.this.a(o.this, var1, false);
+                }
+            };
+
             String[] arrstring = new String[]{am.e().getToken(), n2.a().getId()};
             i2.b(arrstring);
         }
