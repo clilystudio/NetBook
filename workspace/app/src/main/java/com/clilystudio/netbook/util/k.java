@@ -1,8 +1,12 @@
 package com.clilystudio.netbook.util;
 
+import com.clilystudio.netbook.a_pack.*;
+import com.clilystudio.netbook.a_pack.e;
 import com.clilystudio.netbook.am;
 
+import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.db.BookClickRecord;
+import com.clilystudio.netbook.model.ResultStatus;
 
 import java.util.Date;
 import java.util.List;
@@ -47,7 +51,26 @@ public final class k {
             bl = false;
         }
         if (!bl) {
-            l l2 = new l(this, 0);
+            com.clilystudio.netbook.a_pack.e<String, Void, ResultStatus> l2 = new e<String, Void, ResultStatus>(){
+
+                @Override
+                protected ResultStatus doInBackground(String... params) {
+                    com.clilystudio.netbook.api.b.a();
+                    ResultStatus resultStatus = com.clilystudio.netbook.api.b.b().n(params[0], params[1], params[2]);
+                    return resultStatus;
+                }
+
+                @Override
+                protected void onPostExecute(ResultStatus resultStatus) {
+                    super.onPostExecute(resultStatus);
+                    if (resultStatus != null && resultStatus.isOk()) {
+                        k.a(k.this, true);
+                        return;
+                    }
+                    k.a(k.this, false);
+
+                }
+            };
             String[] arrstring = new String[]{this.b, string, this.a};
             l2.b(arrstring);
         }

@@ -3,13 +3,20 @@ package com.clilystudio.netbook.util;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+
+import com.clilystudio.netbook.R;
+import com.clilystudio.netbook.a_pack.a;
+import com.clilystudio.netbook.a_pack.c;
 import com.clilystudio.netbook.am;
 
 import com.clilystudio.netbook.MyApplication;
+import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.db.BookReadRecord;
 import com.clilystudio.netbook.db.SourceRecord;
 import com.clilystudio.netbook.event.i;
 import com.clilystudio.netbook.model.BookInfo;
+import com.clilystudio.netbook.model.TocSource;
+import com.clilystudio.netbook.model.TocSourceRoot;
 import com.clilystudio.netbook.model.TocSummary;
 import com.clilystudio.netbook.reader.ReaderActivity;
 import com.clilystudio.netbook.reader.ReaderResActivity;
@@ -144,7 +151,43 @@ public final class m {
     }
 
     private void a(boolean bl) {
-        n n2 = new n(this, this.a, bl);
+        com.clilystudio.netbook.a_pack.c<String, TocSourceRoot> n2 = new com.clilystudio.netbook.a_pack.c<String, TocSourceRoot>(this.a, R.string.loading, bl){
+
+            @Override
+            public TocSourceRoot a(String... var1) {
+                com.clilystudio.netbook.api.b.a();
+                TocSourceRoot tocSourceRoot = com.clilystudio.netbook.api.b.b().g(var1[0]);
+                return tocSourceRoot;
+            }
+
+            @Override
+            public void a(TocSourceRoot tocSourceRoot) {
+                if (tocSourceRoot != tocSourceRoot && tocSourceRoot.getSources() != null) {
+                    if (this.b() == null) {
+                        return;
+                    }
+                    TocSource[] arrtocSource = tocSourceRoot.getSources();
+                    int n2 = arrtocSource.length;
+                    int n3 = 5;
+                    for (int j = 0; j < n2; ++j) {
+                        TocSource tocSource = arrtocSource[j];
+                        com.clilystudio.netbook.hpay100.a.a.a(tocSource, m.b(m.this));
+                        if (!tocSource.isPriority()) continue;
+                        String string = tocSource.getSource();
+                        n3 = "soso".equals(string) ? 6 : ("sogou".equals(string) ? 7 : ("leidian".equals(string) ? 8 : ("easou".equals(string) ? 3 : -1)));
+                    }
+                    if (m.c(m.this) != null) {
+                        m.c(m.this).setReadMode(n3);
+                        m.c(m.this).save();
+                    } else {
+                        MyApplication.a().a(n3);
+                    }
+                    m.a(m.this, n3);
+                } else {
+                    com.clilystudio.netbook.util.e.a(m.a(m.this), "获取资源站失败，请重试");
+                }
+           }
+        };
         String[] arrstring = new String[]{this.b};
         n2.b(arrstring);
     }
