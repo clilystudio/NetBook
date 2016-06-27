@@ -9,7 +9,6 @@ import android.os.Handler;
 import android.os.Message;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -23,7 +22,6 @@ import com.clilystudio.netbook.util.W;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.Iterator;
 
 import uk.me.lewisdeane.ldialogs.BaseDialog;
 
@@ -94,16 +92,14 @@ public class LocalChapterListActivity extends BaseActivity {
      * Enabled aggressive block sorting
      */
     static /* synthetic */ ArrayList i(LocalChapterListActivity localChapterListActivity) {
-        ArrayList<String> arrayList = a.D(localChapterListActivity.g);
-        ArrayList<TocDownloadSummary> arrayList2 = new ArrayList<TocDownloadSummary>();
-        Iterator<String> iterator = arrayList.iterator();
-        while (iterator.hasNext()) {
-            String string = iterator.next();
+        ArrayList<String> arrayList = com.clilystudio.netbook.hpay100.a.a.D(localChapterListActivity.g);
+        ArrayList<TocDownloadSummary> arrayList2 = new ArrayList<>();
+        for (String string : arrayList) {
             if (string.contains("MIX_TOC_ID") || string.contains("_")) continue;
-            Toc toc = (Toc) a.b(localChapterListActivity.g, string, "toc");
+            Toc toc = (Toc) com.clilystudio.netbook.hpay100.a.a.b(localChapterListActivity.g, string, "toc");
             String string2 = localChapterListActivity.g;
             String string3 = "/ZhuiShuShenQi/Chapter" + File.separator + string2 + File.separator + string;
-            int n2 = a.b(new File(c.a, string3));
+            int n2 = com.clilystudio.netbook.hpay100.a.a.b(new File(com.clilystudio.netbook.c.a, string3));
             if (toc != null) {
                 --n2;
             }
@@ -167,7 +163,7 @@ public class LocalChapterListActivity extends BaseActivity {
         this.h = this.getIntent().getStringExtra("BOOK_TITLE");
         this.a = (TextView) this.findViewById(R.id.new_topic_empty_text);
         this.b = (ListView) this.findViewById(R.id.local_chapter_list);
-        this.e = LayoutInflater.from(this).inflate(R.layout.resource_loacl_header, (ViewGroup) this.b, false);
+        this.e = LayoutInflater.from(this).inflate(R.layout.resource_loacl_header, this.b, false);
         this.b.addHeaderView(this.e, null, false);
         this.e.setVisibility(View.GONE);
         this.c = new W<TocDownloadSummary>(getLayoutInflater(), R.layout.list_item_resource_download) {
@@ -194,7 +190,7 @@ public class LocalChapterListActivity extends BaseActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 int n3 = position - LocalChapterListActivity.a(LocalChapterListActivity.this).getHeaderViewsCount();
                 if (n3 >= 0) {
-                    TocDownloadSummary tocDownloadSummary = (TocDownloadSummary) LocalChapterListActivity.b(LocalChapterListActivity.this).getItem(n3);
+                    TocDownloadSummary tocDownloadSummary = LocalChapterListActivity.b(LocalChapterListActivity.this).getItem(n3);
                     Intent intent = ReaderActivity.a(LocalChapterListActivity.this, LocalChapterListActivity.c(LocalChapterListActivity.this), LocalChapterListActivity.d(LocalChapterListActivity.this), tocDownloadSummary.getTocId(), null, true);
                     LocalChapterListActivity.this.startActivity(intent);
                 }
@@ -211,9 +207,10 @@ public class LocalChapterListActivity extends BaseActivity {
                 return true;
             }
         });
-        if (!a.d()) {
+        if (!com.clilystudio.netbook.hpay100.a.a.d()) {
             this.a.setVisibility(View.VISIBLE);
-            this.a.setText("无法获取预读章节，请检查SD卡");
+            String text = "无法获取预读章节，请检查SD卡";
+            this.a.setText(text);
             return;
         }
         this.b();

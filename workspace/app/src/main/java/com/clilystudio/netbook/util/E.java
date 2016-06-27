@@ -2,6 +2,8 @@ package com.clilystudio.netbook.util;
 
 import android.content.Context;
 
+import com.clilystudio.netbook.R;
+
 public final class E {
     private float a;
     private float b;

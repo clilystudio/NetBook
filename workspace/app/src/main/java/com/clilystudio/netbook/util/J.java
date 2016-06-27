@@ -1,10 +1,19 @@
 package com.clilystudio.netbook.util;
 
 import android.content.Context;
+
+import com.clilystudio.netbook.a_pack.*;
 import com.clilystudio.netbook.am;
 
+import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.db.AccountInfo;
+import com.clilystudio.netbook.event.i;
+import com.clilystudio.netbook.event.w;
 import com.clilystudio.netbook.model.Account;
+import com.clilystudio.netbook.model.NotifCountRoot;
+import com.clilystudio.netbook.model.Root;
+
+import java.util.Date;
 
 public class J {
     private static J a;
@@ -53,7 +62,32 @@ public class J {
 
     public final void a(Account account) {
         if (account != null) {
-            K k = new K(this);
+            com.clilystudio.netbook.a_pack.e<String, Void, NotifCountRoot> k = new com.clilystudio.netbook.a_pack.e<String, Void, NotifCountRoot>(){
+
+                @Override
+                protected NotifCountRoot doInBackground(String... params) {
+                    com.clilystudio.netbook.api.b.a();
+                    return com.clilystudio.netbook.api.b.b().G(params[0]);
+                }
+
+                @Override
+                protected void onPostExecute(NotifCountRoot notifCountRoot) {
+                    super.onPostExecute(notifCountRoot);
+                    if (notifCountRoot != null && notifCountRoot.isOk()) {
+                        J.a(J.this, notifCountRoot.getImportant());
+                        J.b(J.this, notifCountRoot.getUnimportant());
+                        Date date = notifCountRoot.getLastReadImportantTime();
+                        Date date2 = notifCountRoot.getLastReadUnimportantTime();
+                        if (am.h((Context) J.a(J.this)).equals("0")) {
+                            am.a((Context) J.a(J.this), (long) date.getTime());
+                        }
+                        if (am.i((Context) J.a(J.this)).equals("0")) {
+                            am.b((Context) J.a(J.this), (long) date2.getTime());
+                        }
+                        i.a().post(new w());
+                     }
+                }
+            };
             String[] arrstring = new String[]{account.getToken()};
             k.b(arrstring);
         }
@@ -70,7 +104,24 @@ public class J {
     public final void c() {
         Account account = am.e();
         if (account != null) {
-            L l = new L(this);
+            com.clilystudio.netbook.a_pack.e<String, Void, Root> l = new com.clilystudio.netbook.a_pack.e<String, Void, Root>(){
+
+                @Override
+                protected Root doInBackground(String... params) {
+                    com.clilystudio.netbook.api.b.a();
+                    return com.clilystudio.netbook.api.b.b().L(params[0]);
+                }
+
+                @Override
+                protected void onPostExecute(Root root) {
+                    super.onPostExecute(root);
+                    if (root != null && root.isOk()) {
+                        J.this.a(0);
+                        i.a().post(new w());
+                        am.j((Context) J.a(J.this));
+                    }
+                }
+            };
             String[] arrstring = new String[]{account.getToken()};
             l.b(arrstring);
         }
@@ -79,7 +130,30 @@ public class J {
     public final void d() {
         Account account = am.e();
         if (account != null) {
-            M m = new M(this);
+            com.clilystudio.netbook.a_pack.e<String, Void, Root> m = new com.clilystudio.netbook.a_pack.e<String, Void, Root>(){
+
+                @Override
+                protected Root doInBackground(String... params) {
+                    com.clilystudio.netbook.api.b.a();
+                    return com.clilystudio.netbook.api.b.b().M(params[0]);
+                }
+
+                @Override
+                protected void onPostExecute(Root root) {
+                    super.onPostExecute(root);
+                    if (root != null && root.isOk()) {
+                        AccountInfo accountInfo;
+                        J.this.b(0);
+                        am.b((Context) J.a(J.this), (long) System.currentTimeMillis());
+                        Account account = am.e();
+                        if (account != null && (accountInfo = AccountInfo.getByToken(account.getToken())) != null) {
+                            accountInfo.setPrevUnimpNotif(0);
+                            accountInfo.save();
+                        }
+                        i.a().post(new w());
+                    }
+                }
+            };
             String[] arrstring = new String[]{account.getToken()};
             m.b(arrstring);
         }

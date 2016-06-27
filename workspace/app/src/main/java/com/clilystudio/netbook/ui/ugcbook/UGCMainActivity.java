@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import com.clilystudio.netbook.*;
 import com.clilystudio.netbook.am;
+import com.clilystudio.netbook.model.UgcFilterRoot;
 import com.clilystudio.netbook.ui.BaseTabActivity;
 import com.clilystudio.netbook.ui.user.UserUGCActivity;
 import com.clilystudio.netbook.util.D;
@@ -211,7 +212,7 @@ public class UGCMainActivity extends BaseTabActivity implements ViewPager$OnPage
         this.i = this.getString(R.string.ugc_all);
         this.j = (RecyclerView) view2.findViewById(R.id.ugc_filter_list);
         this.j.setLayoutManager(new D(this));
-        this.k = new ak(this, this, new UgcFilterRoot$FilterGroup[0]);
+        this.k = new ak(this, this, new UgcFilterRoot.FilterGroup[0]);
         this.j.setAdapter(this.k);
         this.h.setOnDismissListener(new ah(this));
         this.a(R.string.ugc_list, "筛选", R.drawable.ic_action_overflow, (com.clilystudio.netbook.ui.ab) new aa(this));

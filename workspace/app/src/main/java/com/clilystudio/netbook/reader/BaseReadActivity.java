@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.api.b;
 
 public class BaseReadActivity extends FragmentActivity {
@@ -12,7 +13,7 @@ public class BaseReadActivity extends FragmentActivity {
     @Override
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        if (a.a((Context) this, "customer_night_theme", false)) {
+        if (com.clilystudio.netbook.hpay100.a.a.a(this, "customer_night_theme", false)) {
             this.setTheme(R.style.BaseTheme_Dark);
             return;
         }

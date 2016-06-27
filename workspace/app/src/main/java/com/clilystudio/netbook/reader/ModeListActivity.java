@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.ViewGroup;
 
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.d;
 import com.clilystudio.netbook.ui.BaseActivity;
 

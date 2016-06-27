@@ -103,7 +103,7 @@ public final class n {
      * Lifted jumps to return sites
      */
     public final Object[] d() {
-        var1_1 = this.b.getBody(this);
+        String var1_1 = this.b.getBody(this);
         if (var1_1 == null) {
             return null;
         }

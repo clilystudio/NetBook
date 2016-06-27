@@ -11,6 +11,7 @@ import android.content.IntentFilter;
 import android.graphics.Bitmap;
 import android.net.wifi.WifiManager;
 import android.os.Handler;
+import android.support.v7.app.NotificationCompat;
 import android.widget.RemoteViews;
 import android.widget.Toast;
 
@@ -38,7 +39,6 @@ public class e {
     private static NotificationManager d;
     private static Notification e;
     private static long f;
-    private static AudioBookNotification$SwitchButtonListener g;
     private Context b;
 
     private e(Context context) {
@@ -100,11 +100,16 @@ public class e {
         e.a(activity, string, 0);
     }
 
-    private static void a(Activity activity, String string, int n) {
+    private static void a(final Activity activity, final String string, final int n) {
         if (activity == null || string == null) {
             return;
         }
-        activity.runOnUiThread(new ad(activity.getApplication(), string, n));
+        activity.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                Toast.makeText(activity.getApplication(), string, n).show();
+            }
+        });
     }
 
     public static void a(Context context, long l2, int n) {
@@ -207,8 +212,7 @@ public class e {
     public static void b(Context context) {
         try {
             d.cancel(1001);
-            context.unregisterReceiver(g);
-            return;
+             return;
         } catch (Exception var1_1) {
             return;
         }
@@ -236,46 +240,6 @@ public class e {
         notificationCompat$Builder.setSmallIcon(17301623);
         notificationCompat$Builder.setContent(c);
         notificationCompat$Builder.setAutoCancel(false).setOngoing(true);
-        g = new AudioBookNotification$SwitchButtonListener();
-        try {
-            MyApplication.a().registerReceiver(new BroadcastReceiver() {
-                @Override
-                public void onReceive(Context context, Intent intent) {
-                    long l = new Date().getTime();
-                    if (l - com.clilystudio.netbook.util.e.d() < 1000) {
-                        com.clilystudio.netbook.util.e.a((long) l);
-                        return;
-                    }
-                    com.clilystudio.netbook.util.e.a((long) l);
-                    as.a();
-                    Handler handler = new Handler();
-                    if (as.c()) {
-                        handler.post(new Runnable() {
-                            @Override
-                            public void run() {
-                                as.a();
-                                as.h();
-                                com.clilystudio.netbook.util.e.e().setImageViewResource(R.id.iv_control, R.drawable.ic_play_audiobook_button);
-                                com.clilystudio.netbook.util.e.g().notify(1001, com.clilystudio.netbook.util.e.f());
-                            }
-                        });
-                        return;
-                    }
-                    handler.post(new Runnable() {
-                        @Override
-                        public void run() {
-                            as.a().d();
-                            com.clilystudio.netbook.util.e.e().setImageViewResource(R.id.iv_control, R.drawable.audio_bar_pause);
-                            com.clilystudio.netbook.util.e.g().notify(1001, com.clilystudio.netbook.util.e.f());
-                        }
-                    });
-                }
-            }, new IntentFilter("com.clilystudio.netbook.SWITCH_AUDIO"));
-        } catch (Exception var4_4) {
-        }
-        Intent intent = new Intent("com.clilystudio.netbook.SWITCH_AUDIO");
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(MyApplication.a(), 0, intent, 0);
-        c.setOnClickPendingIntent(R.id.iv_control, pendingIntent);
         e = notification = notificationCompat$Builder.build();
         return notification;
     }
@@ -291,12 +255,18 @@ public class e {
         return com.clilystudio.netbook.am.e().getUser().getId();
     }
 
-    public static void c(String string) {
-        Account account = com.clilystudio.netbook.am.e();
+    public static void c(final String string) {
+        final Account account = com.clilystudio.netbook.am.e();
         if (account == null) {
             return;
         }
-        new am(account, string).start();
+        new Thread(){
+            @Override
+            public void run() {
+                com.clilystudio.netbook.api.b.a();
+                com.clilystudio.netbook.api.b.b().x(account.getToken(), string);
+            }
+        }.start();
     }
 
     static /* synthetic */ long d() {
@@ -349,6 +319,12 @@ public class e {
     }
 
     public final void b() {
-        new f(this).start();
+        new Thread(){
+
+            @Override
+            public void run() {
+                com.clilystudio.netbook.util.e.a(com.clilystudio.netbook.util.e.this);
+            }
+        }                .start();
     }
 }

@@ -2,7 +2,6 @@ package com.clilystudio.netbook.ui.home;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.drawable.ColorDrawable;
@@ -52,8 +51,6 @@ import com.clilystudio.netbook.ui.user.MyMessageActivity;
 import com.clilystudio.netbook.ui.user.UserInfoActivity;
 import com.clilystudio.netbook.util.J;
 import com.clilystudio.netbook.util.Z;
-import com.clilystudio.netbook.util.as;
-import com.clilystudio.netbook.util.e;
 import com.clilystudio.netbook.util.s;
 import com.clilystudio.netbook.widget.TabWidgetV2;
 import com.umeng.onlineconfig.OnlineConfigAgent;
@@ -448,27 +445,6 @@ public class HomeActivity extends HomeParentActivity implements ViewPager$OnPage
             return;
         }
         long l2 = System.currentTimeMillis();
-        if (as.c()) {
-            uk.me.lewisdeane.ldialogs.h h2 = new uk.me.lewisdeane.ldialogs.h(this);
-            h2.e = "即将退出听书，有声小说是否继续播放？";
-            h2.a("都关了", new DialogInterface.OnClickListener(){
-
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    as.a();
-                    as.i();
-                    com.clilystudio.netbook.util.e.b(HomeActivity.this);
-                    HomeActivity.this.finish();
-                }
-            }).b("继续放", new DialogInterface.OnClickListener(){
-
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    HomeActivity.this.finish();
-                }
-            }).b();
-            return;
-        }
         if (l2 - this.b > 2000) {
             this.b = l2;
             Toast.makeText((Context) this, R.string.exit_hint, 0).show();

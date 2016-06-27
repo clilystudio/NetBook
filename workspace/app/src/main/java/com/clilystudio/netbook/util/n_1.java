@@ -17,7 +17,7 @@ final class n extends a {
 
     @Override
     protected final void a() {
-        e.a(m.a(this.a), "\u83b7\u53d6\u8d44\u6e90\u7ad9\u5931\u8d25\uff0c\u8bf7\u91cd\u8bd5");
+        e.a(m.a(this.a), "获取资源站失败，请重试");
     }
 
     /*

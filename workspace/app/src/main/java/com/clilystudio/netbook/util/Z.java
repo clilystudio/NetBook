@@ -2,6 +2,10 @@ package com.clilystudio.netbook.util;
 
 import android.app.Activity;
 import android.os.Handler;
+
+import com.clilystudio.netbook.R;
+import com.clilystudio.netbook.a_pack.*;
+import com.clilystudio.netbook.a_pack.e;
 import com.clilystudio.netbook.am;
 
 import com.activeandroid.query.Delete;
@@ -9,8 +13,9 @@ import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.db.BookReadRecord;
 import com.clilystudio.netbook.db.BookSyncRecord;
 import com.clilystudio.netbook.db.SyncAccount;
+import com.clilystudio.netbook.event.*;
+import com.clilystudio.netbook.event.A;
 import com.clilystudio.netbook.event.c;
-import com.clilystudio.netbook.event.i;
 import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.model.BookShelfSyncTime;
 import com.clilystudio.netbook.model.RemoteBookShelf;
@@ -194,10 +199,69 @@ public final class Z {
             return;
         }
         if (bl) {
-            new Handler().postDelayed(new aa(this), 4000);
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    if (!Z.a()) {
+                        com.clilystudio.netbook.a_pack.e<String, Void, RemoteBookShelf> ab2 = new e<String, Void, RemoteBookShelf>(){
+                            @Override
+                            protected RemoteBookShelf doInBackground(String... params) {
+                                 Z.b(true);
+                                return Z.a(Z.this, params[0]);
+                            }
+
+                            @Override
+                            protected void onPostExecute(RemoteBookShelf remoteBookShelf) {
+                                super.onPostExecute(remoteBookShelf);
+                                Z.b(false);
+                                if (remoteBookShelf != null && remoteBookShelf.isNeedSync() && remoteBookShelf.isOk()) {
+                                    Z.a(Z.this, remoteBookShelf);
+                                    i.a().post(new com.clilystudio.netbook.event.A(remoteBookShelf.getTotalBookCounts()));
+                                }
+                            }
+                        };
+                        String[] arrstring = new String[]{Z.a(Z.this)};
+                        ab2.b(arrstring);
+                    }
+                }
+            }, 4000);
             return;
         }
-        ac ac2 = new ac(this, this.b);
+        com.clilystudio.netbook.a_pack.c<String, RemoteBookShelf> ac2 = new com.clilystudio.netbook.a_pack.c<String, RemoteBookShelf>(){
+
+            @Override
+            public RemoteBookShelf a(String... var1) {
+                RemoteBookShelf remoteBookShelf = Z.a(Z.this, var1[0]);
+                if (remoteBookShelf != null) {
+                    if (remoteBookShelf.isNeedSync()) {
+                        if (remoteBookShelf.isOk()) {
+                            Z.a(Z.this, remoteBookShelf);
+                            com.clilystudio.netbook.util.e.a((Activity) Z.b(Z.this), (String) "\u540c\u6b65\u5b8c\u6210");
+                            return remoteBookShelf;
+                        }
+                        if ("TOKEN_INVALID".equals(remoteBookShelf.getCode())) {
+                            com.clilystudio.netbook.util.e.a((Activity) Z.b(Z.this), (int) R.string.sync_token_failed);
+                            return remoteBookShelf;
+                        }
+                        com.clilystudio.netbook.util.e.a((Activity) Z.b(Z.this), (String) "同步失败，请重试");
+                        return remoteBookShelf;
+                    }
+                    com.clilystudio.netbook.util.e.a((Activity) Z.b(Z.this), (String) "同步完成");
+                    return remoteBookShelf;
+                }
+                com.clilystudio.netbook.util.e.a((Activity) Z.b(Z.this), (String) "同步失败，请检查网络或稍后再试");
+                return remoteBookShelf;
+            }
+
+            @Override
+            public void a(RemoteBookShelf remoteBookShelf) {
+                 if (remoteBookShelf != null) {
+                    i.a().post(new com.clilystudio.netbook.event.A(remoteBookShelf.getTotalBookCounts()));
+                    return;
+                }
+                i.a().post(new A(1));
+            }
+        };
         String[] arrstring = new String[]{this.c};
         ac2.b(arrstring);
     }

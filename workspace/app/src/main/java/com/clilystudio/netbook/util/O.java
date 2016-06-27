@@ -3,6 +3,9 @@ package com.clilystudio.netbook.util;
 import android.app.Activity;
 import android.content.DialogInterface;
 
+import com.clilystudio.netbook.R;
+import com.clilystudio.netbook.am;
+
 final class O implements DialogInterface.OnClickListener {
     private /* synthetic */ boolean a;
     private /* synthetic */ String b;
@@ -18,20 +21,48 @@ final class O implements DialogInterface.OnClickListener {
 
     @Override
     public final void onClick(DialogInterface dialogInterface, int n) {
-        String string = String.valueOf(n + 1);
+        final String string = String.valueOf(n + 1);
         e.a((Activity) N.a(this.d), (int) R.string.post_report_successful);
         if (!this.a) {
             if (this.b == null) {
-                new an(this.c, string).start();
+                new Thread() {
+
+                    @Override
+                    public void run() {
+                        com.clilystudio.netbook.api.b.a();
+                        com.clilystudio.netbook.api.b.b().w(O.this.c, string);
+                    }
+                }.start();
                 return;
             }
-            new ao(this.c, this.b, string).start();
+            new Thread() {
+
+                @Override
+                public void run() {
+                    com.clilystudio.netbook.api.b.a();
+                    com.clilystudio.netbook.api.b.b().l(O.this.c, O.this.b, string);
+                }
+            }.start();
             return;
         }
         if (this.b == null) {
-            new ap(this.c, string).start();
+            new Thread() {
+
+                @Override
+                public void run() {
+                    com.clilystudio.netbook.api.b.a();
+                    com.clilystudio.netbook.api.b.b().e(am.e().getToken(), O.this.c, string);
+                }
+            }.start();
             return;
         }
-        new aq(this.c, this.b, string).start();
+        new Thread() {
+
+            @Override
+            public void run() {
+                com.clilystudio.netbook.api.b.a();
+                com.clilystudio.netbook.api.b.b().b(O.this.c, O.this.b, string);
+            }
+        }.start();
     }
 }

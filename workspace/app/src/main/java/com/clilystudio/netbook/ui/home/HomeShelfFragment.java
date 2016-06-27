@@ -49,7 +49,6 @@ import com.clilystudio.netbook.ui.feed.FeedListActivity;
 import com.clilystudio.netbook.ui.user.RemoveAdActivity;
 import com.clilystudio.netbook.util.FeedIntroDialog;
 import com.clilystudio.netbook.util.InsideLinkIntent;
-import com.clilystudio.netbook.util.as;
 import com.clilystudio.netbook.widget.CoverLoadingView;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.umeng.onlineconfig.OnlineConfigAgent;
@@ -88,11 +87,8 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
     private TextView n;
     private TextView o;
     private ImageView p;
-    private CommonRequest q;
-    private Album r;
-    private int s;
+     private int s;
     private int t;
-    private as u = as.a();
     private int v = 0;
     private RelativeLayout w;
     private Button x;
@@ -506,12 +502,7 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
     }
 
     static /* synthetic */ void b(HomeShelfFragment homeShelfFragment) {
-        if (as.c()) {
-            as.h();
-            return;
-        }
-        homeShelfFragment.u.d();
-    }
+     }
 
     static /* synthetic */ void b(HomeShelfFragment homeShelfFragment, int n2) {
         homeShelfFragment.b(3);
@@ -652,10 +643,6 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
                 HomeShelfFragment.a(homeShelfFragment, bookShelf, checkBox.isChecked());
             }
         }).b("\u53d6\u6d88", null).a().show();
-    }
-
-    static /* synthetic */ as d(HomeShelfFragment homeShelfFragment) {
-        return homeShelfFragment.u;
     }
 
     static /* synthetic */ void e(HomeShelfFragment homeShelfFragment) {
@@ -930,7 +917,6 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
     private void h() {
         this.g();
         this.a(true);
-        this.a((Track) as.e());
     }
 
     /*
@@ -1150,9 +1136,6 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
 
     public final void d() {
         MiStatInterface.recordCountEvent("home_shelf_bulk_operation", null);
-        if (this.r != null) {
-            this.l.setVisibility(View.GONE);
-        }
         this.e.removeHeaderView(this.g);
         this.w.setVisibility(View.VISIBLE);
         this.e.removeFooterView(this.h);
@@ -1164,9 +1147,6 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
     }
 
     public final void e() {
-        if (this.r != null) {
-            this.l.setVisibility(View.VISIBLE);
-        }
         if (am.r((Context) this.getActivity()) || this.g != null && this.i != null && this.i.postLink != null && (!this.i.postLink.startsWith("link") || this.i.postLink.startsWith("game"))) {
             this.e.removeHeaderView(this.g);
             this.e.addHeaderView(this.g);
@@ -1189,8 +1169,7 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
         this.a(false);
         this.l.setVisibility(View.GONE);
         this.e.removeFooterView(this.h);
-        this.r = null;
-    }
+     }
 
     @com.squareup.a.l
     public void onBookAdded(c c2) {
@@ -1218,10 +1197,7 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
     @Override
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        i.a().a(this);
-        if (this.q == null) {
-            this.q = as.b();
-        }
+        com.clilystudio.netbook.event.i.a().register(this);
     }
 
     @Override
@@ -1300,9 +1276,6 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
                 HomeShelfFragment.b(HomeShelfFragment.this);
             }
         });
-        if (as.c()) {
-            this.h();
-        }
         this.l.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

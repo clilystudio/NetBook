@@ -21,12 +21,7 @@ import com.clilystudio.netbook.model.SplashAdvert;
 import com.clilystudio.netbook.model.TxtFileObject;
 import com.clilystudio.netbook.ui.home.HomeActivity;
 import com.clilystudio.netbook.util.InsideLinkIntent;
-import com.clilystudio.netbook.util.adutil.AdSplashImp;
-import com.clilystudio.netbook.util.adutil.g;
-import com.clilystudio.netbook.util.adutil.l;
 import com.clilystudio.netbook.util.e;
-import com.clilystudio.netbook.widget.AdContainerLayout;
-import com.umeng.a.b;
 
 import java.io.File;
 import java.util.Calendar;
@@ -38,7 +33,6 @@ public class SplashActivity extends Activity {
     private cl d;
     private boolean e = false;
     private boolean f = false;
-    private AdContainerLayout g;
 
     static /* synthetic */ void a(SplashActivity splashActivity, String string) {
         if (string != null) {
@@ -67,22 +61,7 @@ public class SplashActivity extends Activity {
     }
 
     private void g() {
-        if ("1".equals(b.b(this, "splash_ad_third_enable"))) {
-            this.findViewById(R.id.splash_bottom).setVisibility(View.GONE);
-            this.a(3000);
-            AdSplashImp adSplashImp = new AdSplashImp(this);
-            if (am.i((String) "com.qq.e.ads.nativ.NativeAD")) {
-                new l(adSplashImp).a(this.g);
-                return;
-            }
-            if (am.i((String) "com.baidu.mobads.SplashAd")) {
-                new g(adSplashImp).a(this.g);
-                return;
-            }
-            this.b();
-            return;
-        }
-        this.b();
+         this.b();
     }
 
     /*
@@ -221,7 +200,6 @@ public class SplashActivity extends Activity {
         this.setContentView(R.layout.splash);
         a.a(this.getWindow().getDecorView());
         ActiveAndroid.initialize(this);
-        this.g = (AdContainerLayout) this.findViewById(R.id.splash_ad_container);
         if (am.q((Context) this)) {
             double d2;
             float f2 = a.v(this, "rate_zssq_splash_ad");

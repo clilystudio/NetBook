@@ -7,6 +7,7 @@ import android.content.Intent;
 
 import com.clilystudio.netbook.exception.UnImplementException;
 import com.clilystudio.netbook.model.InsideLink;
+import com.clilystudio.netbook.model.InsideLinkType;
 import com.clilystudio.netbook.ui.AdWebViewActivity;
 import com.clilystudio.netbook.ui.BookInfoActivity;
 import com.clilystudio.netbook.ui.SplashActivity;
@@ -54,50 +55,38 @@ public class InsideLinkIntent extends Intent {
     }
 
     private void a(InsideLink insideLink) {
-        switch (G.a[insideLink.getType().ordinal()]) {
-            default: {
-                throw new UnImplementException("Not implement");
-            }
-            case 1: {
-                // GameDetailActivity
-                return;
-            }
-            case 2: {
-                this.setComponent(new ComponentName(this.a, PostDetailActivity.class));
-                this.putExtra("PostBookId", insideLink.getValue());
-                this.putExtra("post_type_key", "ramble");
-                this.a();
-                return;
-            }
-            case 3: {
-                this.setComponent(new ComponentName(this.a, AdWebViewActivity.class));
-                this.putExtra("extra_url", insideLink.getValue());
-                this.putExtra("extra_title", insideLink.getLabel());
-                this.a();
-                return;
-            }
-            case 4: {
-                this.setComponent(new ComponentName(this.a, BookInfoActivity.class));
-                this.putExtra("book_id", insideLink.getValue());
-                this.a();
-                return;
-            }
-            case 5: {
-                this.setComponent(new ComponentName(this.a, BookHelpActivity.class));
-                this.putExtra("extraBookHelpId", insideLink.getValue());
-                this.a();
-                return;
-            }
-            case 6: {
-                this.setComponent(new ComponentName(this.a, ReviewActivity.class));
-                this.putExtra("extraReviewId", insideLink.getValue());
-                this.a();
-                return;
-            }
-            case 7:
+
+        InsideLinkType type = insideLink.getType();
+        if (type == InsideLinkType.GAME) {
+            // GameDetailActivity
+        } else if (type == InsideLinkType.POST) {
+            this.setComponent(new ComponentName(this.a, PostDetailActivity.class));
+            this.putExtra("PostBookId", insideLink.getValue());
+            this.putExtra("post_type_key", "ramble");
+            this.a();
+        } else if (type == InsideLinkType.LINK) {
+            this.setComponent(new ComponentName(this.a, AdWebViewActivity.class));
+            this.putExtra("extra_url", insideLink.getValue());
+            this.putExtra("extra_title", insideLink.getLabel());
+            this.a();
+        } else if (type == InsideLinkType.BOOK) {
+            this.setComponent(new ComponentName(this.a, BookInfoActivity.class));
+            this.putExtra("book_id", insideLink.getValue());
+            this.a();
+        } else if (type == InsideLinkType.POST_HELP) {
+            this.setComponent(new ComponentName(this.a, BookHelpActivity.class));
+            this.putExtra("extraBookHelpId", insideLink.getValue());
+            this.a();
+        } else if (type == InsideLinkType.POST_REVIEW) {
+            this.setComponent(new ComponentName(this.a, ReviewActivity.class));
+            this.putExtra("extraReviewId", insideLink.getValue());
+            this.a();
+        } else if (type == InsideLinkType.BOOKLIST) {
+            this.setComponent(new ComponentName(this.a, UGCDetailActivity.class));
+            this.putExtra("book_id", insideLink.getValue());
+            this.a();
+//        } else {
+//            throw new UnImplementException("Not implement");
         }
-        this.setComponent(new ComponentName(this.a, UGCDetailActivity.class));
-        this.putExtra("book_id", insideLink.getValue());
-        this.a();
     }
 }

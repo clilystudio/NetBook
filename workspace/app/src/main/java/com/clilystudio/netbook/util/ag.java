@@ -22,7 +22,20 @@ public final class ag {
     static {
         f = new ConcurrentHashMap();
         g = new ConcurrentHashMap();
-        h = new ah();
+        h = new Handler.Callback(){
+
+            @Override
+            public boolean handleMessage(Message msg) {
+                Bundle bundle = msg.getData();
+                int n = bundle.getInt("postCount");
+                String string = bundle.getString("bookId");
+                if (ag.a().containsKey(string)) {
+                    ((ai) ag.a().remove(string)).a(string, n);
+                    ag.b().put(string, n);
+                }
+                return true;
+            }
+        };
     }
 
     private ag() {
