@@ -471,4 +471,8 @@
         <attr name="adjust_padding" format="dimension"/>
         <attr name="item_count" format="integer"/>
     </declare-styleable>
+    <declare-styleable name="SettingCheckBox">
+        <attr name="pref_name" format="string"/>
+        <attr name="pref_default" format="boolean"/>
+    </declare-styleable>
 </resources>

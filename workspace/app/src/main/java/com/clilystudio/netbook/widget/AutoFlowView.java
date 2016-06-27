@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.clilystudio.netbook.R;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;

@@ -1,6 +1,8 @@
 package com.clilystudio.netbook.widget;
 
 import android.content.Context;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.AttributeSet;
 import android.widget.EditText;
 
@@ -32,7 +34,30 @@ public class SearchEditText extends EditText {
     }
 
     private void a() {
-        this.addTextChangedListener(new aw(this));
+        this.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                if (SearchEditText.a(SearchEditText.this)) {
+                    SearchEditText.a(SearchEditText.this, false);
+                    return;
+                } else {
+                    if (SearchEditText.b(SearchEditText.this) == null) return;
+                    {
+                        SearchEditText.b(SearchEditText.this).a();
+                        return;
+                    }
+                }
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+           }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
     }
 
     public void setOnUserInputListener(ax ax2) {

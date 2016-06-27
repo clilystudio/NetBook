@@ -2,14 +2,18 @@ package com.clilystudio.netbook.widget;
 
 import android.app.Activity;
 import android.content.Context;
-import com.clilystudio.netbook.am;
+import android.support.annotation.NonNull;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.clilystudio.netbook.R;
+import com.clilystudio.netbook.a_pack.e;
+import com.clilystudio.netbook.am;
 import com.clilystudio.netbook.db.PostUsefulRecord;
 import com.clilystudio.netbook.model.Account;
+import com.clilystudio.netbook.model.ResultStatus;
 import com.clilystudio.netbook.model.Review;
 import com.clilystudio.netbook.ui.post.AbsPostActivity;
 import com.clilystudio.netbook.ui.user.AuthLoginActivity;
@@ -97,7 +101,7 @@ public class PostUsefulView extends LinearLayout implements View.OnClickListener
     public void onClick(View view) {
         Account account = am.e();
         if (account == null) {
-            e.a((Activity) this.d, (String) "\u8bf7\u767b\u5f55\u540e\u518d\u64cd\u4f5c");
+            e.a((Activity) this.d, (String) "请登录后再操作");
             this.d.startActivity(AuthLoginActivity.a(this.d));
             account = null;
         }
@@ -106,7 +110,7 @@ public class PostUsefulView extends LinearLayout implements View.OnClickListener
                 if (account == null) return;
                 {
                     this.e = true;
-                    as as2 = new as(this, 0);
+                    com.clilystudio.netbook.a_pack.e<String, Void, ResultStatus> as2 = getAsClass();
                     String[] arrstring = new String[]{account.getToken(), this.a.get_id(), "yes"};
                     as2.b(arrstring);
                     return;
@@ -120,11 +124,49 @@ public class PostUsefulView extends LinearLayout implements View.OnClickListener
         if (account == null) return;
         {
             this.e = false;
-            as as3 = new as(this, 0);
+            com.clilystudio.netbook.a_pack.e<String, Void, ResultStatus> as3 = getAsClass();
             String[] arrstring = new String[]{account.getToken(), this.a.get_id(), "no"};
             as3.b(arrstring);
             return;
         }
+    }
+
+    @NonNull
+    private com.clilystudio.netbook.a_pack.e<String, Void, ResultStatus> getAsClass() {
+        return new e<String, Void, ResultStatus>() {
+
+            @Override
+            protected ResultStatus doInBackground(String... params) {
+                com.clilystudio.netbook.api.b.a();
+                return com.clilystudio.netbook.api.b.b().m(params[0], params[1], params[2]);
+            }
+
+            @Override
+            protected void onPostExecute(ResultStatus resultStatus) {
+                super.onPostExecute(resultStatus);
+                if (resultStatus == null) {
+                    com.clilystudio.netbook.util.e.a((Activity) PostUsefulView.b(PostUsefulView.this), (String) "\u8bc4\u4ef7\u5931\u8d25");
+                    return;
+                }
+                if (resultStatus.isOk()) {
+                    int n = PostUsefulView.a(PostUsefulView.this) ? 1 : 2;
+                    PostUsefulView.a(PostUsefulView.this, n, true);
+                    PostUsefulView.a(PostUsefulView.this, n);
+                    com.clilystudio.netbook.util.e.a((Activity) PostUsefulView.b(PostUsefulView.this), (String) "\u8bc4\u4ef7\u6210\u529f");
+                    return;
+                } else {
+                    if ("TOKEN_INVALID".equals(resultStatus.getCode())) {
+                        com.clilystudio.netbook.util.e.a((Activity) PostUsefulView.b(PostUsefulView.this), (int) R.string.token_invalid);
+                        return;
+                    }
+                    if (!"ALREADY_SET".equals(resultStatus.getCode())) return;
+                    {
+                        com.clilystudio.netbook.util.e.a((Activity) PostUsefulView.b(PostUsefulView.this), (String) "\u60a8\u5df2\u7ecf\u8bc4\u4ef7\u8fc7\u5566");
+                        return;
+                    }
+                }
+            }
+        };
     }
 
     @Override

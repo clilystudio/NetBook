@@ -1,10 +1,14 @@
 package com.clilystudio.netbook.widget;
 
 import android.content.Context;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.AttributeSet;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+
+import com.clilystudio.netbook.R;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -48,7 +52,22 @@ public class SendView extends LinearLayout {
         this.mSendContent = (EditText)findViewById(R.id.send_content);
         this.mSendView = (ImageView) findViewById( R.id.commit);
         this.d();
-        this.mSendContent.addTextChangedListener(new ay(this));
+        this.mSendContent.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                SendView.a(SendView.this);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
     }
 
     public void setSendContent(EditText editText) {
