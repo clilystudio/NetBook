@@ -18,7 +18,8 @@ import android.view.animation.AccelerateInterpolator;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.ImageView;
 
-import com.c.a.b;
+import com.clilystudio.netbook.widget.comca.D;
+import com.clilystudio.netbook.widget.comca.b;
 import com.clilystudio.netbook.R;
 
 public class CoverLoadingLayer extends ImageView {
@@ -33,15 +34,15 @@ public class CoverLoadingLayer extends ImageView {
     private float h;
     private float i;
     private float j;
-    private com.c.a.w k;
-    private com.c.a.w l;
-    private com.c.a.w m;
+    private com.clilystudio.netbook.widget.comca.w k;
+    private com.clilystudio.netbook.widget.comca.w l;
+    private com.clilystudio.netbook.widget.comca.w m;
     private float n;
     private int o;
     private int p;
     private y q;
     private CoverLoadingLayer.Status r;
-    private com.c.a.w s;
+    private com.clilystudio.netbook.widget.comca.w s;
     private float t;
     private int u;
     private float v;
@@ -55,7 +56,14 @@ public class CoverLoadingLayer extends ImageView {
         this.w = new t(this);
         this.x = new u(this);
         this.y = new v(this);
-        this.z = new w(this);
+        this.z = new D(){
+            @Override
+            public void a(com.clilystudio.netbook.widget.comca.w paramw) {
+                float f = ((Float) paramw.f()).floatValue();
+                CoverLoadingLayer.b(CoverLoadingLayer.this, f * CoverLoadingLayer.d(CoverLoadingLayer.this));
+                CoverLoadingLayer.this.invalidate();
+            }
+        };
         this.A = new x(this);
         this.a(context, null);
     }
@@ -65,7 +73,14 @@ public class CoverLoadingLayer extends ImageView {
         this.w = new t(this);
         this.x = new u(this);
         this.y = new v(this);
-        this.z = new w(this);
+        this.z = new D(){
+            @Override
+            public void a(com.clilystudio.netbook.widget.comca.w paramw) {
+                float f = ((Float) paramw.f()).floatValue();
+                CoverLoadingLayer.b(CoverLoadingLayer.this, f * CoverLoadingLayer.d(CoverLoadingLayer.this));
+                CoverLoadingLayer.this.invalidate();
+            }
+        };
         this.A = new x(this);
         this.a(context, attributeSet);
     }
@@ -84,7 +99,7 @@ public class CoverLoadingLayer extends ImageView {
         return n;
     }
 
-    static /* synthetic */ com.c.a.w a(CoverLoadingLayer coverLoadingLayer, com.c.a.w w2) {
+    static /* synthetic */ com.clilystudio.netbook.widget.comca.w a(CoverLoadingLayer coverLoadingLayer, com.clilystudio.netbook.widget.comca.w w2) {
         coverLoadingLayer.s = w2;
         return w2;
     }
@@ -105,11 +120,11 @@ public class CoverLoadingLayer extends ImageView {
         return f;
     }
 
-    static /* synthetic */ com.c.a.w b(CoverLoadingLayer coverLoadingLayer) {
+    static /* synthetic */ com.clilystudio.netbook.widget.comca.w b(CoverLoadingLayer coverLoadingLayer) {
         return coverLoadingLayer.h();
     }
 
-    static /* synthetic */ com.c.a.w c(CoverLoadingLayer coverLoadingLayer) {
+    static /* synthetic */ com.clilystudio.netbook.widget.comca.w c(CoverLoadingLayer coverLoadingLayer) {
         return coverLoadingLayer.s;
     }
 
@@ -133,13 +148,13 @@ public class CoverLoadingLayer extends ImageView {
         this.u = this.getResources().getColor(R.color.scv_finished_color);
         this.e = this.c;
         this.i();
-        this.k = com.c.a.w.a(0.001f, 1.0f);
+        this.k = com.clilystudio.netbook.widget.comca.w.a(0.001f, 1.0f);
         int n = this.getResources().getInteger(17694721);
         this.k.a(n);
         this.k.a(this.z);
         this.k.a(this.x);
         this.k.a(new DecelerateInterpolator());
-        this.l = com.c.a.w.a(1.0f, 0.001f);
+        this.l = com.clilystudio.netbook.widget.comca.w.a(1.0f, 0.001f);
         this.l.a(n);
         this.l.a(this.w);
         this.l.a(this.A);
@@ -161,9 +176,9 @@ public class CoverLoadingLayer extends ImageView {
         return f * this.getResources().getDisplayMetrics().density;
     }
 
-    private com.c.a.w h() {
+    private com.clilystudio.netbook.widget.comca.w h() {
         float[] arrf = new float[]{this.n, 2.0f * this.n};
-        com.c.a.w w2 = com.c.a.w.a(arrf);
+        com.clilystudio.netbook.widget.comca.w w2 = com.clilystudio.netbook.widget.comca.w.a(arrf);
         w2.a(this.getResources().getInteger(17694721));
         w2.a(new AccelerateInterpolator());
         w2.a((D) ((Object) new r(this)));
@@ -427,7 +442,7 @@ public class CoverLoadingLayer extends ImageView {
         int[] arrn = new int[2];
         arrn[0] = CoverLoadingLayer.a(n3);
         arrn[n2] = CoverLoadingLayer.a(n);
-        com.c.a.w w2 = com.c.a.w.a(arrn);
+        com.clilystudio.netbook.widget.comca.w w2 = com.clilystudio.netbook.widget.comca.w.a(arrn);
         w2.a(300);
         w2.a(this.y);
         w2.a((b) ((Object) new q(this)));

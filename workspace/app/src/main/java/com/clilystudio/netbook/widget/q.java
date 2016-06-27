@@ -1,6 +1,6 @@
 package com.clilystudio.netbook.widget;
 
-import com.c.a.a;
+import com.clilystudio.netbook.widget.comca.a;
 
 final class q implements b {
     private /* synthetic */ CoverLoadingLayer a;

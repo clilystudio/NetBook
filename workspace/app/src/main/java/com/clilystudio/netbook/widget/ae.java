@@ -1,5 +1,7 @@
 package com.clilystudio.netbook.widget;
 
+import com.clilystudio.netbook.widget.comca.D;
+
 final class ae implements D {
     private /* synthetic */ LoadingProgressView a;
 
@@ -8,9 +10,9 @@ final class ae implements D {
     }
 
     @Override
-    public final void a(w w2) {
+    public void a(com.clilystudio.netbook.widget.comca.w paramw) {
         if (!LoadingProgressView.a(this.a)) {
-            LoadingProgressView.a(this.a, ((Float) w2.f()).floatValue());
+            LoadingProgressView.a(this.a, ((Float) paramw.f()).floatValue());
             this.a.setProgress(LoadingProgressView.b(this.a));
         }
     }
