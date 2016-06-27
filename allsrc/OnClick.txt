@@ -13,7 +13,7 @@ package wait fix
 -----------------------------------
 event
 hpay100
-reader    《==
+reader    《== T
 ui
-util
+util      《== T
 widget

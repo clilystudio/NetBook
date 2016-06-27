@@ -5,6 +5,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.clilystudio.netbook.R;
+
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
@@ -17,7 +19,7 @@ public abstract class W<V> extends al {
     private Object[] e;
 
     public W(Activity activity, int n) {
-        this(activity.getLayoutInflater(), R.layout.list_item_mystery);
+        this(activity.getLayoutInflater(), R.layout.list_item_resource_download);
     }
 
     public W(LayoutInflater layoutInflater, int n) {
