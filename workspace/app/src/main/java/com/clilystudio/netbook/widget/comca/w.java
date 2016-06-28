@@ -13,11 +13,11 @@ import java.util.Iterator;
 public final class w extends a
 {
   private static ThreadLocal<C> d = new ThreadLocal();
-  private static final ThreadLocal<ArrayList<w>> e = new x();
-  private static final ThreadLocal<ArrayList<w>> f = new y();
-  private static final ThreadLocal<ArrayList<w>> g = new z();
-  private static final ThreadLocal<ArrayList<w>> h = new A();
-  private static final ThreadLocal<ArrayList<w>> i = new B();
+  private static final ThreadLocal<ArrayList<w>> e = new ThreadLocal<>();
+  private static final ThreadLocal<ArrayList<w>> f = new ThreadLocal<>();
+  private static final ThreadLocal<ArrayList<w>> g = new ThreadLocal<>();
+  private static final ThreadLocal<ArrayList<w>> h = new ThreadLocal<>();
+  private static final ThreadLocal<ArrayList<w>> i = new ThreadLocal<>();
   private static final Interpolator j = new AccelerateDecelerateInterpolator();
   private static long v;
   private s[] A;

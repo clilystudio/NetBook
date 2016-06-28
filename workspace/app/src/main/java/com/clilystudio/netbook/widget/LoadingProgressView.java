@@ -2,9 +2,11 @@ package com.clilystudio.netbook.widget;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.view.View;
 
 import com.clilystudio.netbook.widget.comca.D;
 import com.clilystudio.netbook.widget.comca.a;
+import com.clilystudio.netbook.widget.comca.b;
 import com.clilystudio.netbook.widget.comca.d;
 import com.clilystudio.netbook.widget.comca.w;
 
@@ -17,8 +19,22 @@ public class LoadingProgressView extends ProgressView {
 
     public LoadingProgressView(Context context, AttributeSet attributeSet) {
         super(context, attributeSet);
-        this.d = new ae(this);
-        this.e = new ag(this);
+        this.d = new D() {
+            @Override
+            public void a(w paramw) {
+                if (!LoadingProgressView.a(LoadingProgressView.this)) {
+                    LoadingProgressView.a(LoadingProgressView.this, (Float) paramw.f());
+                    LoadingProgressView.this.setProgress(LoadingProgressView.b(LoadingProgressView.this));
+                }
+            }
+        };
+        this.e = new D() {
+            @Override
+            public void a(w paramw) {
+                float f = (Float) paramw.f();
+                setProgress(f);
+            }
+        };
     }
 
     static /* synthetic */ float a(LoadingProgressView loadingProgressView, float f) {
@@ -56,13 +72,34 @@ public class LoadingProgressView extends ProgressView {
         this.c.a();
     }
 
-    public final void a(ah ah2) {
+    public final void a(final ah ah2) {
         this.a = true;
         float[] arrf = new float[]{this.b, 100.0f};
         w w2 = w.a(arrf);
         w2.a(300);
         w2.a(this.e);
-        w2.a((b) new af(this, ah2));
+        w2.a(new b() {
+            @Override
+            public void a(a parama) {
+
+            }
+
+            @Override
+            public void b(a parama) {
+                setVisibility(View.GONE);
+                ah2.a();
+            }
+
+            @Override
+            public void c(a parama) {
+
+            }
+
+            @Override
+            public void d(a parama) {
+
+            }
+        });
         w2.a();
     }
 
