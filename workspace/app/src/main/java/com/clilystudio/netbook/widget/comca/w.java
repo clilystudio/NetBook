@@ -1,7 +1,4 @@
-/*
- * Decompiled with CFR 0_115.
- */
-package com.c.a;
+package com.clilystudio.netbook.widget.comca;
 
 import android.os.Looper;
 import android.util.AndroidRuntimeException;
@@ -9,30 +6,29 @@ import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.AnimationUtils;
 import android.view.animation.Interpolator;
 import android.view.animation.LinearInterpolator;
-import com.c.a.A;
-import com.c.a.B;
-import com.c.a.C;
-import com.c.a.D;
-import com.c.a.a;
-import com.c.a.b;
-import com.c.a.k;
-import com.c.a.m;
-import com.c.a.s;
-import com.c.a.x;
-import com.c.a.y;
-import com.c.a.z;
+import com.clilystudio.netbook.widget.comca.A;
+import com.clilystudio.netbook.widget.comca.B;
+import com.clilystudio.netbook.widget.comca.C;
+import com.clilystudio.netbook.widget.comca.D;
+import com.clilystudio.netbook.widget.comca.a;
+import com.clilystudio.netbook.widget.comca.b;
+import com.clilystudio.netbook.widget.comca.k;
+import com.clilystudio.netbook.widget.comca.m;
+import com.clilystudio.netbook.widget.comca.s;
+import com.clilystudio.netbook.widget.comca.x;
+import com.clilystudio.netbook.widget.comca.y;
+import com.clilystudio.netbook.widget.comca.z;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 
-public final class w
-extends a {
+public final class w extends a {
     private static ThreadLocal<C> d = new ThreadLocal();
     private static final ThreadLocal<ArrayList<w>> e = new x();
     private static final ThreadLocal<ArrayList<w>> f = new y();
     private static final ThreadLocal<ArrayList<w>> g = new z();
-    private static final ThreadLocal<ArrayList<w>> h = new A();
-    private static final ThreadLocal<ArrayList<w>> i = new B();
+    private static final ThreadLocal<ArrayList<w>> h = new ThreadLocal<>();
+    private static final ThreadLocal<ArrayList<w>> i = new ThreadLocal<>();
     private static final Interpolator j = new AccelerateDecelerateInterpolator();
     private static long v;
     private s[] A;

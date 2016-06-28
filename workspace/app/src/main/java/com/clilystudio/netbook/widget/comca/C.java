@@ -1,13 +1,9 @@
-/*
- * Decompiled with CFR 0_115.
- */
-package com.c.a;
+package com.clilystudio.netbook.widget.comca;
 
-import com.c.a.a;
-import com.c.a.b;
+import com.clilystudio.netbook.widget.comca.a;
+import com.clilystudio.netbook.widget.comca.b;
 
-public abstract class c
-implements b {
+public abstract class c implements b {
     @Override
     public final void a(a a2) {
     }

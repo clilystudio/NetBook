@@ -1,11 +1,8 @@
-/*
- * Decompiled with CFR 0_115.
- */
-package com.c.a;
+package com.clilystudio.netbook.widget.comca;
 
 import android.view.animation.Interpolator;
-import com.c.a.o;
-import com.c.a.v;
+import com.clilystudio.netbook.widget.comca.o;
+import com.clilystudio.netbook.widget.comca.v;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;

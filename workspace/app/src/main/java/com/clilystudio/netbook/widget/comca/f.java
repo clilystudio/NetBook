@@ -1,16 +1,12 @@
-/*
- * Decompiled with CFR 0_115.
- */
-package com.c.a;
+package com.clilystudio.netbook.widget.comca;
 
-import com.c.a.a;
-import com.c.a.b;
-import com.c.a.d;
-import com.c.a.j;
+import com.clilystudio.netbook.widget.comca.a;
+import com.clilystudio.netbook.widget.comca.b;
+import com.clilystudio.netbook.widget.comca.d;
+import com.clilystudio.netbook.widget.comca.j;
 import java.util.ArrayList;
 
-final class f
-implements b {
+final class f implements b {
     private d a;
     private /* synthetic */ d b;
 

@@ -1,24 +1,20 @@
-/*
- * Decompiled with CFR 0_115.
- */
-package com.c.a;
+package com.clilystudio.netbook.widget.comca;
 
-import com.c.a.a;
-import com.c.a.b;
-import com.c.a.e;
-import com.c.a.f;
-import com.c.a.g;
-import com.c.a.h;
-import com.c.a.i;
-import com.c.a.j;
-import com.c.a.w;
+import com.clilystudio.netbook.widget.comca.a;
+import com.clilystudio.netbook.widget.comca.b;
+import com.clilystudio.netbook.widget.comca.e;
+import com.clilystudio.netbook.widget.comca.f;
+import com.clilystudio.netbook.widget.comca.g;
+import com.clilystudio.netbook.widget.comca.h;
+import com.clilystudio.netbook.widget.comca.i;
+import com.clilystudio.netbook.widget.comca.j;
+import com.clilystudio.netbook.widget.comca.w;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 
-public final class d
-extends a {
+public final class d extends a {
     boolean b = false;
     private ArrayList<a> c = new ArrayList();
     private HashMap<a, j> d = new HashMap();

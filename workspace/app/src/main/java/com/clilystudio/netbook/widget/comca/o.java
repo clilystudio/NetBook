@@ -1,14 +1,10 @@
-/*
- * Decompiled with CFR 0_115.
- */
-package com.c.a;
+package com.clilystudio.netbook.widget.comca;
 
 import android.view.animation.Interpolator;
-import com.c.a.p;
-import com.c.a.q;
+import com.clilystudio.netbook.widget.comca.p;
+import com.clilystudio.netbook.widget.comca.q;
 
-public abstract class o
-implements Cloneable {
+public abstract class o implements Cloneable {
     float a;
     private Interpolator b = null;
 

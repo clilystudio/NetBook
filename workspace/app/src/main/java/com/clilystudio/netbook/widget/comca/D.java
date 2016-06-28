@@ -1,9 +1,6 @@
-/*
- * Decompiled with CFR 0_115.
- */
-package com.c.a;
+package com.clilystudio.netbook.widget.comca;
 
-import com.c.a.w;
+import com.clilystudio.netbook.widget.comca.w;
 
 public interface D {
     public void a(w var1);

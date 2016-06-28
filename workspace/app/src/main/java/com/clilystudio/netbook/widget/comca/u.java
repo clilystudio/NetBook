@@ -1,14 +1,10 @@
-/*
- * Decompiled with CFR 0_115.
- */
-package com.c.a;
+package com.clilystudio.netbook.widget.comca;
 
-import com.c.a.n;
-import com.c.a.r;
-import com.c.a.s;
+import com.clilystudio.netbook.widget.comca.n;
+import com.clilystudio.netbook.widget.comca.r;
+import com.clilystudio.netbook.widget.comca.s;
 
-final class u
-extends s {
+final class u extends s {
     private n c;
     private int d;
 

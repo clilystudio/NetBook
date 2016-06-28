@@ -1,9 +1,9 @@
 /*
  * Decompiled with CFR 0_115.
  */
-package com.c.a;
+package com.clilystudio.netbook.widget.comca;
 
-import com.c.a.v;
+import com.clilystudio.netbook.widget.comca.v;
 
 public final class k
 implements v<Number> {

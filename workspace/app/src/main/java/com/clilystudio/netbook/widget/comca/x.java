@@ -1,18 +1,14 @@
-/*
- * Decompiled with CFR 0_115.
- */
-package com.c.a;
+package com.clilystudio.netbook.widget.comca;
 
-import com.c.a.w;
+import com.clilystudio.netbook.widget.comca.w;
 import java.util.ArrayList;
 
-final class x
-extends ThreadLocal<ArrayList<w>> {
+final class x extends ThreadLocal<ArrayList<w>> {
     x() {
     }
 
     @Override
-    protected final /* synthetic */ Object initialValue() {
+    protected final /* synthetic */ ArrayList<w> initialValue() {
         return new ArrayList();
     }
 }

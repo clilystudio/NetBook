@@ -1,17 +1,14 @@
-/*
- * Decompiled with CFR 0_115.
- */
-package com.c.a;
+
+package com.clilystudio.netbook.widget.comca;
 
 import android.view.animation.Interpolator;
-import com.c.a.o;
-import com.c.a.p;
-import com.c.a.r;
-import com.c.a.v;
+import com.clilystudio.netbook.widget.comca.o;
+import com.clilystudio.netbook.widget.comca.p;
+import com.clilystudio.netbook.widget.comca.r;
+import com.clilystudio.netbook.widget.comca.v;
 import java.util.ArrayList;
 
-final class l
-extends r {
+final class l extends r {
     private float e;
     private float f;
     private float g;

@@ -1,14 +1,10 @@
-/*
- * Decompiled with CFR 0_115.
- */
-package com.c.a;
+package com.clilystudio.netbook.widget.comca;
 
-import com.c.a.v;
+import com.clilystudio.netbook.widget.comca.v;
 
-public final class m
-implements v<Integer> {
+public final class m implements v<Integer> {
     @Override
-    public final /* synthetic */ Object a(float f, Object object, Object object2) {
+    public final /* synthetic */ Integer a(float f, Integer object, Integer object2) {
         Integer n = (Integer)object;
         Integer n2 = (Integer)object2;
         int n3 = n;

@@ -1,14 +1,11 @@
-/*
- * Decompiled with CFR 0_115.
- */
-package com.c.a;
 
-import com.c.a.a;
-import com.c.a.h;
+package com.clilystudio.netbook.widget.comca;
+
+import com.clilystudio.netbook.widget.comca.a;
+import com.clilystudio.netbook.widget.comca.h;
 import java.util.ArrayList;
 
-final class j
-implements Cloneable {
+final class j implements Cloneable {
     public a a;
     public ArrayList<h> b = null;
     public ArrayList<h> c = null;

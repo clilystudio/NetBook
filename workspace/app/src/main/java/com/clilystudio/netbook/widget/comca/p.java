@@ -1,13 +1,9 @@
-/*
- * Decompiled with CFR 0_115.
- */
-package com.c.a;
+package com.clilystudio.netbook.widget.comca;
 
 import android.view.animation.Interpolator;
-import com.c.a.o;
+import com.clilystudio.netbook.widget.comca.o;
 
-final class p
-extends o {
+final class p extends o {
     float b;
 
     p(float f) {

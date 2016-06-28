@@ -1,9 +1,6 @@
-/*
- * Decompiled with CFR 0_115.
- */
-package com.c.a;
+package com.clilystudio.netbook.widget.comca;
 
-import com.c.a.b;
+import com.clilystudio.netbook.widget.comca.b;
 import java.util.ArrayList;
 
 public abstract class a

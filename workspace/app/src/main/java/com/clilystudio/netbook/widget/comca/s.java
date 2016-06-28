@@ -1,24 +1,20 @@
-/*
- * Decompiled with CFR 0_115.
- */
-package com.c.a;
+package com.clilystudio.netbook.widget.comca;
 
-import com.c.a.k;
-import com.c.a.l;
-import com.c.a.m;
-import com.c.a.n;
-import com.c.a.o;
-import com.c.a.p;
-import com.c.a.q;
-import com.c.a.r;
-import com.c.a.t;
-import com.c.a.u;
-import com.c.a.v;
+import com.clilystudio.netbook.widget.comca.k;
+import com.clilystudio.netbook.widget.comca.l;
+import com.clilystudio.netbook.widget.comca.m;
+import com.clilystudio.netbook.widget.comca.n;
+import com.clilystudio.netbook.widget.comca.o;
+import com.clilystudio.netbook.widget.comca.p;
+import com.clilystudio.netbook.widget.comca.q;
+import com.clilystudio.netbook.widget.comca.r;
+import com.clilystudio.netbook.widget.comca.t;
+import com.clilystudio.netbook.widget.comca.u;
+import com.clilystudio.netbook.widget.comca.v;
 import java.util.HashMap;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
-public class s
-implements Cloneable {
+public class s implements Cloneable {
     private static final v e = new m();
     private static final v f = new k();
     String a;
