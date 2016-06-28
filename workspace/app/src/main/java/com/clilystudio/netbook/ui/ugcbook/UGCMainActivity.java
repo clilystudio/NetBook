@@ -14,7 +14,7 @@ import android.widget.TabHost;
 import android.widget.TabWidget;
 import android.widget.TextView;
 
-import com.clilystudio.netbook.*;
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.am;
 import com.clilystudio.netbook.model.UgcFilterRoot;
 import com.clilystudio.netbook.ui.BaseTabActivity;
@@ -26,7 +26,7 @@ import com.xiaomi.mistatistic.sdk.MiStatInterface;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UGCMainActivity extends BaseTabActivity implements ViewPager$OnPageChangeListener,
+public class UGCMainActivity extends BaseTabActivity implements ViewPager.OnPageChangeListener,
         TabHost.OnTabChangeListener,
         TabHost.TabContentFactory {
     private List<UGCMainListFragment> b = new ArrayList<UGCMainListFragment>();
@@ -215,7 +215,17 @@ public class UGCMainActivity extends BaseTabActivity implements ViewPager$OnPage
         this.k = new ak(this, this, new UgcFilterRoot.FilterGroup[0]);
         this.j.setAdapter(this.k);
         this.h.setOnDismissListener(new ah(this));
-        this.a(R.string.ugc_list, "筛选", R.drawable.ic_action_overflow, (com.clilystudio.netbook.ui.ab) new aa(this));
+        this.a(R.string.ugc_list, "筛选", R.drawable.ic_action_overflow, new com.clilystudio.netbook.ui.ab() {
+            @Override
+            public void a() {
+                UGCMainActivity.a(UGCMainActivity.this);
+            }
+
+            @Override
+            public void b() {
+                UGCMainActivity.b(UGCMainActivity.this);
+            }
+        });
         this.a = (TabHost) this.findViewById(R.id.host);
         this.c = (ViewPager) this.findViewById(R.id.pager);
         this.e = new aj(this, this.getSupportFragmentManager());
