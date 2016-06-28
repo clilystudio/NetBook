@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 
@@ -129,7 +130,12 @@ public class UGCGuideSelectBookActivity extends BaseActivity {
         LayoutInflater layoutInflater = LayoutInflater.from(this);
         this.g = new X(this, layoutInflater, this.h);
         this.a.setAdapter(this.g);
-        this.a.setOnItemClickListener(new U(this));
+        this.a.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                UGCGuideSelectBookActivity.this.a(position);
+            }
+        });
         View view = layoutInflater.inflate(R.layout.layout_shelf_footer, (ViewGroup) this.a, false);
         this.a.addFooterView(view);
         this.e.setOnClickListener(new View.OnClickListener() {

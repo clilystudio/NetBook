@@ -4,6 +4,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.ui.home.ZssqFragmentPagerAdapter;
 
 final class aj extends ZssqFragmentPagerAdapter {
@@ -11,8 +12,8 @@ final class aj extends ZssqFragmentPagerAdapter {
     private /* synthetic */ UGCMainActivity b;
 
     public aj(UGCMainActivity uGCMainActivity, FragmentManager fragmentManager) {
-        this.b = uGCMainActivity;
         super(fragmentManager);
+        this.b = uGCMainActivity;
         this.a = new String[]{"ugcTag0", "ugcTag1", "ugcTag2"};
         UGCMainActivity.e(uGCMainActivity).add(0, uGCMainActivity.a(this.a[0], "collectorCount", "last-seven-days"));
         UGCMainActivity.e(uGCMainActivity).add(1, uGCMainActivity.a(this.a[1], "created", "all"));

@@ -5,8 +5,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.TextView;
 
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.db.BookReadRecord;
 import com.clilystudio.netbook.widget.CoverView;
 
@@ -18,8 +20,8 @@ public final class X extends BaseAdapter {
     private List<BookReadRecord> c;
     private boolean d;
 
-    public X(LayoutInflater var1_1, List<BookReadRecord> layoutInflater) {
-        this.a = var1_1;
+    public X(UGCGuideSelectBookActivity uGCGuideSelectBookActivity, LayoutInflater layoutInflater, List<BookReadRecord> list) {
+        this.a = uGCGuideSelectBookActivity;
         this.d = false;
         this.b = layoutInflater;
         this.c = list;
@@ -48,7 +50,7 @@ public final class X extends BaseAdapter {
      * Enabled aggressive block sorting
      */
     @Override
-    public final View getView(int n, View view, ViewGroup viewGroup) {
+    public final View getView(final int position, View view, ViewGroup viewGroup) {
         Z z;
         if (view == null) {
             z = new Z(this);
@@ -61,23 +63,42 @@ public final class X extends BaseAdapter {
         } else {
             z = (Z) view.getTag();
         }
-        BookReadRecord bookReadRecord = this.c.get(n);
+        BookReadRecord bookReadRecord = this.c.get(position);
         z.a.setText(bookReadRecord.getTitle());
         z.c.setImageUrl(bookReadRecord.getFullCover(), R.drawable.cover_default);
         z.b.setText(bookReadRecord.buildDesc());
         CheckBox checkBox = z.d;
         this.d = true;
-        if (UGCGuideSelectBookActivity.c(this.a).length <= n) {
-            boolean[] arrbl = new boolean[n + 1];
+        if (UGCGuideSelectBookActivity.c(this.a).length <= position) {
+            boolean[] arrbl = new boolean[position + 1];
             for (int i = 0; i < UGCGuideSelectBookActivity.c(this.a).length; ++i) {
                 arrbl[i] = UGCGuideSelectBookActivity.c(this.a)[i];
             }
             UGCGuideSelectBookActivity.a(this.a, arrbl);
         }
-        checkBox.setChecked(UGCGuideSelectBookActivity.c(this.a)[n]);
-        UGCGuideSelectBookActivity.a(this.a, n);
+        checkBox.setChecked(UGCGuideSelectBookActivity.c(this.a)[position]);
+        UGCGuideSelectBookActivity.a(this.a, position);
         this.d = false;
-        checkBox.setOnCheckedChangeListener(new Y(this, n));
+        checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (X.a(X.this)) {
+                    return;
+                }
+                UGCGuideSelectBookActivity.c((UGCGuideSelectBookActivity) X.this.a)[position] = isChecked;
+                UGCGuideSelectBookActivity.a(X.this.a, position);
+            }
+        });
         return view;
+    }
+
+    public final class Z {
+        TextView a;
+        TextView b;
+        CoverView c;
+        CheckBox d;
+
+        public Z(X x) {
+        }
     }
 }

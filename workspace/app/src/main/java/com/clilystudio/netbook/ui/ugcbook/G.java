@@ -1,9 +1,9 @@
 package com.clilystudio.netbook.ui.ugcbook;
 
 import android.app.Activity;
-import com.clilystudio.netbook.am;
 
 import com.clilystudio.netbook.a_pack.c;
+import com.clilystudio.netbook.am;
 import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.event.E;
 import com.clilystudio.netbook.event.J;
@@ -13,14 +13,12 @@ import com.clilystudio.netbook.model.ResultStatus;
 import com.clilystudio.netbook.model.UGCNewCollection;
 import com.clilystudio.netbook.util.e;
 
-import java.io.IOException;
-
 final class G extends c<Void, ResultStatus> {
     private /* synthetic */ UGCGuideAddCollectionActivity a;
 
     public G(UGCGuideAddCollectionActivity uGCGuideAddCollectionActivity) {
+        super((Activity) uGCGuideAddCollectionActivity, "正在保存到草稿箱...");
         this.a = uGCGuideAddCollectionActivity;
-        super((Activity) uGCGuideAddCollectionActivity, "\u6b63\u5728\u4fdd\u5b58\u5230\u8349\u7a3f\u7bb1...");
         UGCNewCollection uGCNewCollection = UGCGuideAddCollectionActivity.b(uGCGuideAddCollectionActivity);
         uGCNewCollection.setTitle(UGCGuideAddCollectionActivity.c(uGCGuideAddCollectionActivity).getText().toString());
         uGCNewCollection.setDesc(UGCGuideAddCollectionActivity.d(uGCGuideAddCollectionActivity).getText().toString());
@@ -33,27 +31,27 @@ final class G extends c<Void, ResultStatus> {
     private /* varargs */ ResultStatus a() {
         Account account = am.a((Activity) this.a);
         if (account == null) return null;
-        try {
-            if (UGCGuideAddCollectionActivity.e(this.a) == null) return b.b().b(UGCGuideAddCollectionActivity.g(this.a), account.getToken());
-            if (UGCGuideAddCollectionActivity.e(this.a).equals("")) return b.b().b(UGCGuideAddCollectionActivity.g(this.a), account.getToken());
-            return b.b().b(UGCGuideAddCollectionActivity.f(this.a), account.getToken(), UGCGuideAddCollectionActivity.e(this.a));
-        } catch (IOException var1_3) {
-            var1_3.printStackTrace();
-        }
-        return null;
+        if (UGCGuideAddCollectionActivity.e(this.a) == null) return b.b().b(UGCGuideAddCollectionActivity.g(this.a), account.getToken());
+        if (UGCGuideAddCollectionActivity.e(this.a).equals("")) return b.b().b(UGCGuideAddCollectionActivity.g(this.a), account.getToken());
+        return b.b().b(UGCGuideAddCollectionActivity.f(this.a), account.getToken(), UGCGuideAddCollectionActivity.e(this.a));
     }
 
     @Override
-    public final /* synthetic */ void a(Object object) {
+    public ResultStatus a(Void... var1) {
+        return this.a();
+    }
+
+    @Override
+    public final /* synthetic */ void a(ResultStatus object) {
         ResultStatus resultStatus = (ResultStatus) object;
         if (resultStatus == null || !resultStatus.isOk()) {
-            e.a((Activity) this.a, (String) "\u4fdd\u5b58\u5931\u8d25\uff0c\u8bf7\u68c0\u67e5\u7f51\u7edc\u6216\u91cd\u8bd5");
+            e.a((Activity) this.a, (String) "保存失败，请检查网络或重试");
             return;
         }
-        e.a((Activity) this.a, (String) "\u5df2\u4fdd\u5b58\u5230\u8349\u7a3f\u7bb1");
+        e.a((Activity) this.a, (String) "已保存到草稿箱");
         UGCNewCollection uGCNewCollection = UGCGuideAddCollectionActivity.h(this.a);
-        i.a().c(new E());
-        i.a().c(new J(UGCGuideAddCollectionActivity.e(this.a), uGCNewCollection.getTitle(), uGCNewCollection.getDesc(), uGCNewCollection.getBooks().size(), uGCNewCollection.getBooks().get(0).getCover()));
+        i.a().post(new E());
+        i.a().post(new J(UGCGuideAddCollectionActivity.e(this.a), uGCNewCollection.getTitle(), uGCNewCollection.getDesc(), uGCNewCollection.getBooks().size(), uGCNewCollection.getBooks().get(0).getCover()));
         this.a.finish();
     }
 }

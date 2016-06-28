@@ -1,8 +1,12 @@
 package com.clilystudio.netbook.ui.ugcbook;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,14 +16,18 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.clilystudio.netbook.R;
+import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.model.UGCBookListRoot;
-import com.clilystudio.netbook.util.*;
+import com.clilystudio.netbook.util.W;
+import com.clilystudio.netbook.util.e;
 import com.clilystudio.netbook.widget.CoverView;
+import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -30,14 +38,72 @@ public class UGCMainListFragment extends Fragment implements AdapterView.OnItemC
     private W<UGCBookListRoot.UGCBook> d;
     private View e;
     private TextView f;
-    private at g;
-    private as h;
+    private com.clilystudio.netbook.a_pack.e<String, Void, UGCBookListRoot> g;
+    private com.clilystudio.netbook.a_pack.e<String, Void, UGCBookListRoot> h;
     private List<UGCBookListRoot.UGCBook> i = new ArrayList<UGCBookListRoot.UGCBook>();
     private String j;
-    private j k;
+    private PullToRefreshBase.OnLastItemVisibleListener k;
 
     public UGCMainListFragment() {
-        this.k = new ar(this);
+        this.k = new PullToRefreshBase.OnLastItemVisibleListener() {
+            @Override
+            public void onLastItemVisible() {
+                if (UGCMainListFragment.i(UGCMainListFragment.this) == null || UGCMainListFragment.i(UGCMainListFragment.this).getStatus() == AsyncTask.Status.FINISHED) {
+                    UGCMainListFragment.d(UGCMainListFragment.this).setVisibility(View.VISIBLE);
+                    if (UGCMainListFragment.b(UGCMainListFragment.this) != null && UGCMainListFragment.b(UGCMainListFragment.this).getStatus() != AsyncTask.Status.FINISHED && !UGCMainListFragment.b(UGCMainListFragment.this).isCancelled()) {
+                        UGCMainListFragment.b(UGCMainListFragment.this).cancel(true);
+                    }
+                    UGCMainListFragment.this.h = new com.clilystudio.netbook.a_pack.e<String, Void, UGCBookListRoot>() {
+
+                        @Override
+                        protected UGCBookListRoot doInBackground(String... params) {
+                            if (!this.isCancelled()) {
+                                com.clilystudio.netbook.api.b.a();
+                                return com.clilystudio.netbook.api.b.b().a(UGCMainListFragment.this.getArguments().getString("duration"), UGCMainListFragment.this.getArguments().getString("sort"), UGCMainListFragment.h(UGCMainListFragment.this).getCount(), 20, UGCMainListFragment.this.b());
+                            }
+                            return null;
+                        }
+
+                        @Override
+                        protected void onPostExecute(UGCBookListRoot uGCBookListRoot) {
+                            super.onPostExecute(uGCBookListRoot);
+                            UGCMainListFragment.a(UGCMainListFragment.this).setVisibility(View.GONE);
+                            UGCMainListFragment.c(UGCMainListFragment.this).setVisibility(View.GONE);
+                            UGCMainListFragment.d(UGCMainListFragment.this).setVisibility(View.GONE);
+                            UGCMainListFragment.e(UGCMainListFragment.this).n();
+                            if (this.isCancelled()) return;
+                            if (uGCBookListRoot != null) {
+                                if (uGCBookListRoot.isOk()) {
+                                    UGCBookListRoot.UGCBook[] bookLists = uGCBookListRoot.getBookLists();
+                                    int n = bookLists.length;
+                                    List<UGCBookListRoot.UGCBook> list = Arrays.asList(bookLists);
+                                    UGCMainListFragment.g(UGCMainListFragment.this).addAll(list);
+                                    UGCMainListFragment.h(UGCMainListFragment.this).a(UGCMainListFragment.g(UGCMainListFragment.this));
+                                    if (n > 0) {
+                                        if (n >= 20) {
+                                            if (n != 20) return;
+                                            UGCMainListFragment.e(UGCMainListFragment.this).setOnLastItemVisibleListener(UGCMainListFragment.this.k);
+                                            return;
+                                        }
+                                    } else if (UGCMainListFragment.h(UGCMainListFragment.this).getCount() == 0) {
+                                        UGCMainListFragment.a(UGCMainListFragment.this).setVisibility(View.VISIBLE);
+                                        UGCMainListFragment.a(UGCMainListFragment.this).setText("这里还没有帖子，去发布一个吧");
+                                    }
+                                    UGCMainListFragment.e(UGCMainListFragment.this).setOnLastItemVisibleListener(null);
+                                    return;
+                                }
+                                UGCMainListFragment.e(UGCMainListFragment.this).setOnLastItemVisibleListener(UGCMainListFragment.this.k);
+                                com.clilystudio.netbook.util.e.a((Activity) UGCMainListFragment.this.getActivity(), (String) "加载失败，上拉可重新加载");
+                                return;
+                            }
+                            UGCMainListFragment.e(UGCMainListFragment.this).setOnLastItemVisibleListener(UGCMainListFragment.this.k);
+                            com.clilystudio.netbook.util.e.a((Activity) UGCMainListFragment.this.getActivity(), (String) "加载失败，请检查网络或稍后再试");
+                        }
+                    };
+                    UGCMainListFragment.this.h.b();
+                }
+            }
+        };
     }
 
     static /* synthetic */ TextView a(UGCMainListFragment uGCMainListFragment) {
@@ -51,20 +117,6 @@ public class UGCMainListFragment extends Fragment implements AdapterView.OnItemC
         bundle.putString("duration", string2);
         uGCMainListFragment.setArguments(bundle);
         return uGCMainListFragment;
-    }
-
-    static /* synthetic */ as a(UGCMainListFragment uGCMainListFragment, as as2) {
-        uGCMainListFragment.h = as2;
-        return as2;
-    }
-
-    static /* synthetic */ at a(UGCMainListFragment uGCMainListFragment, at at2) {
-        uGCMainListFragment.g = at2;
-        return at2;
-    }
-
-    static /* synthetic */ at b(UGCMainListFragment uGCMainListFragment) {
-        return uGCMainListFragment.g;
     }
 
     static /* synthetic */ View c(UGCMainListFragment uGCMainListFragment) {
@@ -91,16 +143,55 @@ public class UGCMainListFragment extends Fragment implements AdapterView.OnItemC
         return uGCMainListFragment.d;
     }
 
-    static /* synthetic */ as i(UGCMainListFragment uGCMainListFragment) {
-        return uGCMainListFragment.h;
-    }
-
     public final void a() {
         this.e.setVisibility(View.VISIBLE);
         this.i.clear();
         this.d.a(this.i);
-        this.g = new at(this, 0);
-        this.g.b(new String[0]);
+        this.g = getgclass();
+        this.g.b();
+    }
+
+    @NonNull
+    private com.clilystudio.netbook.a_pack.e<String, Void, UGCBookListRoot> getgclass() {
+        return new com.clilystudio.netbook.a_pack.e<String, Void, UGCBookListRoot>(){
+
+            @Override
+            protected UGCBookListRoot doInBackground(String... params) {
+                com.clilystudio.netbook.api.b.a();
+                return com.clilystudio.netbook.api.b.b().a(UGCMainListFragment.this.getArguments().getString("duration"), UGCMainListFragment.this.getArguments().getString("sort"), 0, 20, UGCMainListFragment.this.b());
+            }
+
+            @Override
+            protected void onPostExecute(UGCBookListRoot uGCBookListRoot) {
+                super.onPostExecute(uGCBookListRoot);
+                UGCMainListFragment.a(UGCMainListFragment.this).setVisibility(View.GONE);
+                UGCMainListFragment.c(UGCMainListFragment.this).setVisibility(View.GONE);
+                UGCMainListFragment.d(UGCMainListFragment.this).setVisibility(View.GONE);
+                UGCMainListFragment.e(UGCMainListFragment.this).onRefreshComplete();
+                UGCMainListFragment.e(UGCMainListFragment.this).setOnLastItemVisibleListener(UGCMainListFragment.this.k);
+                if (uGCBookListRoot != null) {
+                    if (uGCBookListRoot.isOk()) {
+                        UGCMainListFragment.g(UGCMainListFragment.this).clear();
+                        UGCBookListRoot.UGCBook[] arruGCBookListRoot$UGCBook = uGCBookListRoot.getBookLists();
+                        int n = arruGCBookListRoot$UGCBook.length;
+                        List<UGCBookListRoot.UGCBook> list = Arrays.asList(arruGCBookListRoot$UGCBook);
+                        UGCMainListFragment.g(UGCMainListFragment.this).addAll(list);
+                        UGCMainListFragment.h(UGCMainListFragment.this).a(UGCMainListFragment.g(UGCMainListFragment.this));
+                        if (n < 20) {
+                            UGCMainListFragment.e(UGCMainListFragment.this).setOnLastItemVisibleListener(null);
+                            if (n == 0) {
+                                UGCMainListFragment.a(UGCMainListFragment.this).setVisibility(View.VISIBLE);
+                                UGCMainListFragment.a(UGCMainListFragment.this).setText("这里还没有书单，去发布一个吧");
+                            }
+                        }
+                        return;
+                    }
+                    com.clilystudio.netbook.util.e.a((Activity) UGCMainListFragment.this.getActivity(), (String) "加载失败，请下拉刷新重试");
+                    return;
+                }
+                com.clilystudio.netbook.util.e.a((Activity) UGCMainListFragment.this.getActivity(), (String) "加载失败，请检查网络或稍后再试");
+            }
+        };
     }
 
     public final void a(String string) {
@@ -123,7 +214,7 @@ public class UGCMainListFragment extends Fragment implements AdapterView.OnItemC
     @Override
     public void onActivityCreated(Bundle bundle) {
         super.onActivityCreated(bundle);
-        new at(this, 0).b(new String[0]);
+        getgclass().b();
     }
 
     @Override
@@ -143,8 +234,61 @@ public class UGCMainListFragment extends Fragment implements AdapterView.OnItemC
         }
         this.b.addFooterView(this.c);
         this.c.setVisibility(View.GONE);
-        this.a.setOnRefreshListener(new ap(this));
-        this.d = new W<UGCBookListRoot.UGCBook>(layoutInflater2, R.layout.list_item_ugc_book){
+        this.a.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener<ListView>() {
+            @Override
+            public void onRefresh(PullToRefreshBase<ListView> refreshView) {
+                UGCMainListFragment.a(UGCMainListFragment.this).setVisibility(View.GONE);
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        if (UGCMainListFragment.b(UGCMainListFragment.this) != null && UGCMainListFragment.b(UGCMainListFragment.this).getStatus() != AsyncTask.Status.FINISHED && !UGCMainListFragment.b(UGCMainListFragment.this).isCancelled()) {
+                            UGCMainListFragment.b(UGCMainListFragment.this).cancel(true);
+                        }
+                        UGCMainListFragment.this.g = new com.clilystudio.netbook.a_pack.e<String, Void, UGCBookListRoot>() {
+
+                            @Override
+                            protected UGCBookListRoot doInBackground(String... params) {
+                                com.clilystudio.netbook.api.b.a();
+                                return com.clilystudio.netbook.api.b.b().a(UGCMainListFragment.this.getArguments().getString("duration"), UGCMainListFragment.this.getArguments().getString("sort"), 0, 20, UGCMainListFragment.this.b());
+                            }
+
+                            @Override
+                            protected void onPostExecute(UGCBookListRoot uGCBookListRoot) {
+                                super.onPostExecute(uGCBookListRoot);
+                                UGCMainListFragment.a(UGCMainListFragment.this).setVisibility(View.GONE);
+                                UGCMainListFragment.c(UGCMainListFragment.this).setVisibility(View.GONE);
+                                UGCMainListFragment.d(UGCMainListFragment.this).setVisibility(View.GONE);
+                                UGCMainListFragment.e(UGCMainListFragment.this).onRefreshComplete();
+                                UGCMainListFragment.e(UGCMainListFragment.this).setOnLastItemVisibleListener(UGCMainListFragment.this.k);
+                                if (uGCBookListRoot != null) {
+                                    if (uGCBookListRoot.isOk()) {
+                                        UGCMainListFragment.g(UGCMainListFragment.this).clear();
+                                        UGCBookListRoot.UGCBook[] arruGCBookListRoot$UGCBook = uGCBookListRoot.getBookLists();
+                                        int n = arruGCBookListRoot$UGCBook.length;
+                                        List<UGCBookListRoot.UGCBook> list = Arrays.asList(arruGCBookListRoot$UGCBook);
+                                        UGCMainListFragment.g(UGCMainListFragment.this).addAll(list);
+                                        UGCMainListFragment.h(UGCMainListFragment.this).a(UGCMainListFragment.g(UGCMainListFragment.this));
+                                        if (n < 20) {
+                                            UGCMainListFragment.e(UGCMainListFragment.this).setOnLastItemVisibleListener(null);
+                                            if (n == 0) {
+                                                UGCMainListFragment.a(UGCMainListFragment.this).setVisibility(View.VISIBLE);
+                                                UGCMainListFragment.a(UGCMainListFragment.this).setText("这里还没有书单，去发布一个吧");
+                                            }
+                                        }
+                                        return;
+                                    }
+                                    com.clilystudio.netbook.util.e.a((Activity) UGCMainListFragment.this.getActivity(), (String) "加载失败，请下拉刷新重试");
+                                    return;
+                                }
+                                com.clilystudio.netbook.util.e.a((Activity) UGCMainListFragment.this.getActivity(), (String) "加载失败，请检查网络或稍后再试");
+                            }
+                        };
+                        UGCMainListFragment.this.g.b();
+                    }
+                }, 1000);
+            }
+        });
+        this.d = new W<UGCBookListRoot.UGCBook>(layoutInflater2, R.layout.list_item_ugc_book) {
 
             @Override
             protected void a(int var1, UGCBookListRoot.UGCBook ugcBook) {

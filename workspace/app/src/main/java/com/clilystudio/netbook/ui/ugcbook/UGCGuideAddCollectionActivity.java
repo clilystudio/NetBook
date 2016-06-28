@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.am;
 import android.text.Selection;
 import android.widget.TextView;
@@ -15,6 +17,8 @@ import com.clilystudio.netbook.model.Author;
 import com.clilystudio.netbook.model.UGCNewCollection;
 import com.clilystudio.netbook.ui.BaseActivity;
 import com.clilystudio.netbook.ui.aa;
+
+import uk.me.lewisdeane.ldialogs.BaseDialog;
 
 public class UGCGuideAddCollectionActivity extends BaseActivity {
     private TextView a;
@@ -98,16 +102,31 @@ public class UGCGuideAddCollectionActivity extends BaseActivity {
         }
         if (bl) {
             if (!this.f && this.c != null && !this.c.equals("") || UGCGuideAddCollectionActivity.e().getBooks().size() <= 0) {
-                h h2 = new h(this);
-                h2.d = "\u63d0\u793a";
-                h2.e = "\u79bb\u5f00\u5c06\u4e22\u5931\u5df2\u8f93\u5165\u7684\u5185\u5bb9\uff0c\u786e\u5b9a\u79bb\u5f00\uff1f";
-                h2.a("\u79bb\u5f00", (DialogInterface.OnClickListener) new D(this)).b("\u7ee7\u7eed\u7f16\u8f91", null).a().show();
+                BaseDialog.Builder h2 = new BaseDialog.Builder(this);
+                h2.setTitle("提示");
+                h2.setMessage("离开将丢失已输入的内容，确定离开？");
+                h2.setPositiveButton("离开", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        finish();
+                    }
+                }).setNegativeButton("继续编辑", null).create().show();
                 return;
             }
-            h h3 = new h(this);
-            h3.d = "\u63d0\u793a";
-            h3.e = "\u79bb\u5f00\u5c06\u4e22\u5931\u5df2\u8f93\u5165\u7684\u5185\u5bb9\uff0c\u662f\u5426\u4fdd\u5b58\u4e3a\u8349\u7a3f\uff1f";
-            h3.b("\u76f4\u63a5\u79bb\u5f00", (DialogInterface.OnClickListener) new F(this)).a("\u4fdd\u5b58\u5e76\u79bb\u5f00", (DialogInterface.OnClickListener) new E(this)).a().show();
+            BaseDialog.Builder h3 = new BaseDialog.Builder(this);
+            h3.setTitle("提示");
+            h3.setMessage("离开将丢失已输入的内容，是否保存为草稿？");
+            h3.setPositiveButton("直接离开", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    finish();
+                }
+            }).setNegativeButton("保存并离开", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    new G(UGCGuideAddCollectionActivity.this).b();
+                }
+            }).create().show();
             return;
         }
         this.finish();
@@ -138,7 +157,12 @@ public class UGCGuideAddCollectionActivity extends BaseActivity {
         } else {
             MyApplication.a().a = new UGCNewCollection();
         }
-        this.a(n, R.string.next, (aa) new C(this));
+        this.a(n, R.string.next, new aa() {
+            @Override
+            public void a() {
+                UGCGuideAddCollectionActivity.a(UGCGuideAddCollectionActivity.this);
+            }
+        });
     }
 
     @Override

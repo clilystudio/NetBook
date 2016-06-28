@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager$OnPageChangeListener;
 import android.support.v7.widget.RecyclerView;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.PopupWindow;
@@ -15,9 +16,12 @@ import android.widget.TabWidget;
 import android.widget.TextView;
 
 import com.clilystudio.netbook.R;
+import com.clilystudio.netbook.a_pack.e;
 import com.clilystudio.netbook.am;
+import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.model.UgcFilterRoot;
 import com.clilystudio.netbook.ui.BaseTabActivity;
+import com.clilystudio.netbook.ui.home.ZssqFragmentPagerAdapter;
 import com.clilystudio.netbook.ui.user.UserUGCActivity;
 import com.clilystudio.netbook.util.D;
 import com.umeng.a.b;
@@ -117,7 +121,16 @@ public class UGCMainActivity extends BaseTabActivity implements ViewPager.OnPage
             popupWindow.setBackgroundDrawable(new ColorDrawable(0));
             popupWindow.getContentView().setFocusableInTouchMode(true);
             popupWindow.getContentView().setFocusable(true);
-            popupWindow.getContentView().setOnKeyListener(new af(this));
+            popupWindow.getContentView().setOnKeyListener(new View.OnKeyListener() {
+                @Override
+                public boolean onKey(View v, int keyCode, KeyEvent event) {
+                    if (event.getAction() == 0 && keyCode == 82 && event.getRepeatCount() == 0) {
+                        UGCMainActivity.h(UGCMainActivity.this);
+                        return true;
+                    }
+                    return false;
+                }
+            });
         }
         return popupWindow;
     }
@@ -172,7 +185,12 @@ public class UGCMainActivity extends BaseTabActivity implements ViewPager.OnPage
         this.setContentView(R.layout.activity_ugc_main_tabhost);
         View view = this.getLayoutInflater().inflate(R.layout.ugc_popupwindow_layout, null);
         this.g = this.a(this.g, view);
-        this.g.setOnDismissListener(new ab(this));
+        this.g.setOnDismissListener(new PopupWindow.OnDismissListener() {
+            @Override
+            public void onDismiss() {
+                UGCMainActivity.g(UGCMainActivity.this);
+           }
+        });
         view.findViewById(R.id.create_ugc).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -214,7 +232,12 @@ public class UGCMainActivity extends BaseTabActivity implements ViewPager.OnPage
         this.j.setLayoutManager(new D(this));
         this.k = new ak(this, this, new UgcFilterRoot.FilterGroup[0]);
         this.j.setAdapter(this.k);
-        this.h.setOnDismissListener(new ah(this));
+        this.h.setOnDismissListener(new PopupWindow.OnDismissListener() {
+            @Override
+            public void onDismiss() {
+                UGCMainActivity.this.e("筛选");
+            }
+        });
         this.a(R.string.ugc_list, "筛选", R.drawable.ic_action_overflow, new com.clilystudio.netbook.ui.ab() {
             @Override
             public void a() {
@@ -248,7 +271,23 @@ public class UGCMainActivity extends BaseTabActivity implements ViewPager.OnPage
             tabSpec.setIndicator(view3);
             this.a.addTab(tabSpec);
         }
-        new ai(this, 0).b(new Void[0]);
+        new e<Void, Void, UgcFilterRoot>(){
+
+            @Override
+            protected UgcFilterRoot doInBackground(Void... params) {
+                return com.clilystudio.netbook.api.b.b().o();
+            }
+
+            @Override
+            protected void onPostExecute(UgcFilterRoot ugcFilterRoot) {
+                super.onPostExecute(ugcFilterRoot);
+                if (ugcFilterRoot != null && ugcFilterRoot.isOk() && ugcFilterRoot.getData() != null) {
+                    UGCMainActivity.a(UGCMainActivity.this, new ak(UGCMainActivity.this, UGCMainActivity.this, ugcFilterRoot.getData()));
+                    UGCMainActivity.c(UGCMainActivity.this).setLayoutManager(new D(UGCMainActivity.this));
+                    UGCMainActivity.c(UGCMainActivity.this).setAdapter(UGCMainActivity.d(UGCMainActivity.this));
+                }
+            }
+        }.b();
     }
 
     @Override
