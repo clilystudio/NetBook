@@ -1,27 +1,20 @@
 package com.clilystudio.netbook.ui.user;
 
-import android.app.Activity;
 import android.content.ActivityNotFoundException;
-import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-
-import com.clilystudio.netbook.R;
-import com.clilystudio.netbook.am;
 import android.view.View;
 import android.widget.TextView;
 
 import com.clilystudio.netbook.MyApplication;
+import com.clilystudio.netbook.R;
+import com.clilystudio.netbook.am;
 import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.model.ResultStatus;
 import com.clilystudio.netbook.model.UserInfo;
 import com.clilystudio.netbook.ui.BaseActivity;
-import com.clilystudio.netbook.util.*;
 import com.clilystudio.netbook.util.e;
-
-import butterknife.ButterKnife;
-import butterknife.InjectView;
 
 public class UserTaskActivity extends BaseActivity {
     TextView mExpInfo;
@@ -32,7 +25,7 @@ public class UserTaskActivity extends BaseActivity {
     View mVoteView;
 
     static /* synthetic */ void a(UserTaskActivity userTaskActivity, boolean bl) {
-        userTaskActivity.a(true);
+        userTaskActivity.a(bl);
     }
 
     private void a(boolean bl) {
@@ -57,7 +50,7 @@ public class UserTaskActivity extends BaseActivity {
                     super.onPostExecute(resultStatus);
                     if (resultStatus != null && !resultStatus.isOk()) {
                         UserTaskActivity.a(UserTaskActivity.this, true);
-                        e.a((Activity) UserTaskActivity.this, (String) "你已经完成这个任务");
+                        e.a(UserTaskActivity.this, "你已经完成这个任务");
                     }
                 }
             }.b();
@@ -89,7 +82,7 @@ public class UserTaskActivity extends BaseActivity {
             if (userInfo$UserTodayTask != null && userInfo$UserTodayTask.isShare_book()) {
                 this.mExpShareBook.setTextColor(this.getResources().getColor(R.color.primary_green));
             }
-            if ("xiaomi".equals(am.n((Context) this).toLowerCase())) {
+            if ("xiaomi".equals(am.n(this).toLowerCase())) {
                 this.mVoteView.setVisibility(View.GONE);
             } else {
                 this.a(userInfo.getThis_week_tasks().isRate());
@@ -102,10 +95,8 @@ public class UserTaskActivity extends BaseActivity {
                 intent.setData(Uri.parse("market://details?id=" + UserTaskActivity.this.getPackageName()));
                 try {
                     UserTaskActivity.this.startActivityForResult(intent, 2);
-                    return;
                 } catch (ActivityNotFoundException var4_3) {
                     com.clilystudio.netbook.util.e.a(UserTaskActivity.this,"打开应用市场失败");
-                    return;
                 }
             }
         });

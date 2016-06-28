@@ -8,18 +8,17 @@ import com.clilystudio.netbook.ui.SimpleTabActivity;
 public class UserTopicActivity extends SimpleTabActivity {
     @Override
     public final String[] h() {
-        return new String[]{"\u53d1\u5e03\u7684\u8bdd\u9898", "\u6536\u85cf\u7684\u8bdd\u9898"};
+        return new String[]{"发布的话题", "收藏的话题"};
     }
 
     @Override
     public final Fragment[] i() {
-        Fragment[] arrfragment = new Fragment[]{new MyTopicFragment(), new MyFavTopicFragment()};
-        return arrfragment;
+        return new Fragment[]{new MyTopicFragment(), new MyFavTopicFragment()};
     }
 
     @Override
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        this.b("\u8bdd\u9898");
+        this.b("话题");
     }
 }

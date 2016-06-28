@@ -7,12 +7,12 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.clilystudio.netbook.MyApplication;
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.model.UserInfo;
 import com.clilystudio.netbook.ui.BaseActivity;
 import com.clilystudio.netbook.util.e;
 
-import butterknife.ButterKnife;
-import butterknife.InjectView;
+import java.util.Locale;
 
 public class UserLevelActivity extends BaseActivity {
     TextView mCurrentLevel;
@@ -32,14 +32,15 @@ public class UserLevelActivity extends BaseActivity {
         UserInfo userInfo = (UserInfo) MyApplication.a().b("savedObject_userinfo");
         int n = userInfo.getLv();
         int n2 = userInfo.getExp();
-        int n3 = e.a((int) n);
-        this.mCurrentLevel.setText("" + n + "\u7ea7");
-        this.mLevelProgress.setText("" + n2 + "/" + n3);
+        int n3 = e.a(n);
+        String text = "" + n + "级";
+        this.mCurrentLevel.setText(text);
+        String text1 = "" + n2 + "/" + n3;
+        this.mLevelProgress.setText(text1);
         float f = userInfo.getRank();
         TextView textView = this.mLevelRank;
         StringBuilder stringBuilder = new StringBuilder("\u8d85\u8fc7");
-        Object[] arrobject = new Object[]{Float.valueOf(f * 100.0f)};
-        textView.setText(stringBuilder.append(String.format("%.2f", arrobject)).append("%\u7684\u8ffd\u4e66\u7528\u6237").toString());
+        textView.setText(stringBuilder.append(String.format(Locale.CHINA,"%.2f", f * 100.0f)).append("%的追书用户").toString());
         this.mDoTask.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

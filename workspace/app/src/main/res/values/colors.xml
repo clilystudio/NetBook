@@ -73,4 +73,5 @@
     <color name="audio_book_black">#000000</color>
     <color name="crop_outer_part">#ff0000</color>
     <color name="feed_list_light">#ff0000</color>
+    <color name="primary_green">#00ff00</color>
 </resources>

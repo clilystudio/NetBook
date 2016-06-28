@@ -79,9 +79,6 @@ public class UserInfoActivity extends BaseActivity {
         userInfoActivity.mExpProgress.setProgress(n2 * 100 / n3);
     }
 
-    static /* synthetic */ void b(UserInfoActivity userInfoActivity) {
-    }
-
     static /* synthetic */ void b(UserInfo userInfo) {
         Account account = am.e();
         if (account != null) {
@@ -180,13 +177,13 @@ public class UserInfoActivity extends BaseActivity {
                 UserInfoActivity.this.startActivity(intent);
             }
         });
-        this.findViewById(R.id.user_account_block).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                UserInfoActivity.b(UserInfoActivity.this);
-                MiStatInterface.recordCountEvent("my_account_click", null);
-            }
-        });
+//        this.findViewById(R.id.user_account_block).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                UserInfoActivity.b(UserInfoActivity.this);
+//                MiStatInterface.recordCountEvent("my_account_click", null);
+//            }
+//        });
         this.findViewById(R.id.user_level_block).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
