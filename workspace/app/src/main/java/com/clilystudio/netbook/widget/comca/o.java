@@ -1,39 +1,38 @@
-package com.clilystudio.netbook.widget.comca;
+/*
+ * Decompiled with CFR 0_115.
+ */
+package com.c.a;
 
 import android.view.animation.Interpolator;
+import com.c.a.p;
+import com.c.a.q;
 
 public abstract class o
-  implements Cloneable
-{
-  float a;
-  private Interpolator b = null;
+implements Cloneable {
+    float a;
+    private Interpolator b = null;
 
-  public static o a(float paramFloat1, float paramFloat2)
-  {
-    return new p(paramFloat1, paramFloat2);
-  }
+    public static o a(float f, float f2) {
+        return new p(f, f2);
+    }
 
-  public static o a(float paramFloat, int paramInt)
-  {
-    return new q(paramFloat, paramInt);
-  }
+    public static o a(float f, int n) {
+        return new q(f, n);
+    }
 
-  public abstract Object a();
+    public abstract Object a();
 
-  public final void a(Interpolator paramInterpolator)
-  {
-    this.b = paramInterpolator;
-  }
+    public final void a(Interpolator interpolator) {
+        this.b = interpolator;
+    }
 
-  public final Interpolator b()
-  {
-    return this.b;
-  }
+    public final Interpolator b() {
+        return this.b;
+    }
 
-  public abstract o c();
+    public abstract o c();
+
+    public /* synthetic */ Object clone() {
+        return this.c();
+    }
 }
-
-/* Location:           E:\Progs\Dev\Android\Decompile\apktool\zssq\zssq-dex2jar.jar
- * Qualified Name:     com.clilystudio.netbook.widget.comca.o
- * JD-Core Version:    0.6.0
- */

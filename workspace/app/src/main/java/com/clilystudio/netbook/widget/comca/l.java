@@ -1,108 +1,120 @@
-package com.clilystudio.netbook.widget.comca;
+/*
+ * Decompiled with CFR 0_115.
+ */
+package com.c.a;
 
 import android.view.animation.Interpolator;
+import com.c.a.o;
+import com.c.a.p;
+import com.c.a.r;
+import com.c.a.v;
 import java.util.ArrayList;
 
-final class l extends r
-{
-  private float e;
-  private float f;
-  private float g;
-  private boolean h = true;
+final class l
+extends r {
+    private float e;
+    private float f;
+    private float g;
+    private boolean h = true;
 
-  public l(p[] paramArrayOfp)
-  {
-    super(paramArrayOfp);
-  }
+    public /* varargs */ l(p ... arrp) {
+        super(arrp);
+    }
 
-  private l b()
-  {
-    ArrayList localArrayList = this.c;
-    int i = this.c.size();
-    p[] arrayOfp = new p[i];
-    for (int j = 0; j < i; j++)
-      arrayOfp[j] = ((p)((o)localArrayList.get(j)).c());
-    return new l(arrayOfp);
-  }
+    private l b() {
+        ArrayList arrayList = this.c;
+        int n = this.c.size();
+        p[] arrp = new p[n];
+        for (int i = 0; i < n; ++i) {
+            arrp[i] = (p)((o)arrayList.get(i)).c();
+        }
+        return new l(arrp);
+    }
 
-  public final Object a(float paramFloat)
-  {
-    return Float.valueOf(b(paramFloat));
-  }
+    @Override
+    public final /* synthetic */ r a() {
+        return this.b();
+    }
 
-  public final float b(float paramFloat)
-  {
-    int i = 1;
-    if (this.a == 2)
-    {
-      if (this.h)
-      {
-        this.h = false;
-        this.e = ((p)this.c.get(0)).b;
-        this.f = ((p)this.c.get(i)).b;
-        this.g = (this.f - this.e);
-      }
-      if (this.b != null)
-        paramFloat = this.b.getInterpolation(paramFloat);
-      if (this.d == null)
-        return this.e + paramFloat * this.g;
-      return ((Number)this.d.a(paramFloat, Float.valueOf(this.e), Float.valueOf(this.f))).floatValue();
+    @Override
+    public final Object a(float f) {
+        return Float.valueOf(this.b(f));
     }
-    if (paramFloat <= 0.0F)
-    {
-      p localp4 = (p)this.c.get(0);
-      p localp5 = (p)this.c.get(i);
-      float f9 = localp4.b;
-      float f10 = localp5.b;
-      float f11 = localp4.a;
-      float f12 = localp5.a;
-      Interpolator localInterpolator3 = localp5.b();
-      if (localInterpolator3 != null)
-        paramFloat = localInterpolator3.getInterpolation(paramFloat);
-      float f13 = (paramFloat - f11) / (f12 - f11);
-      if (this.d == null)
-        return f9 + f13 * (f10 - f9);
-      return ((Number)this.d.a(f13, Float.valueOf(f9), Float.valueOf(f10))).floatValue();
+
+    public final float b(float f) {
+        int n;
+        if (this.a == 2) {
+            if (this.h) {
+                this.h = false;
+                this.e = ((p)this.c.get((int)0)).b;
+                this.f = ((p)this.c.get((int)n)).b;
+                this.g = this.f - this.e;
+            }
+            if (this.b != null) {
+                f = this.b.getInterpolation(f);
+            }
+            if (this.d == null) {
+                return this.e + f * this.g;
+            }
+            return ((Number)this.d.a(f, Float.valueOf(this.e), Float.valueOf(this.f))).floatValue();
+        }
+        if (f <= 0.0f) {
+            p p2 = (p)this.c.get(0);
+            p p3 = (p)this.c.get(n);
+            float f2 = p2.b;
+            float f3 = p3.b;
+            float f4 = p2.a;
+            float f5 = p3.a;
+            Interpolator interpolator = p3.b();
+            if (interpolator != null) {
+                f = interpolator.getInterpolation(f);
+            }
+            float f6 = (f - f4) / (f5 - f4);
+            if (this.d == null) {
+                return f2 + f6 * (f3 - f2);
+            }
+            return ((Number)this.d.a(f6, Float.valueOf(f2), Float.valueOf(f3))).floatValue();
+        }
+        if (f >= 1.0f) {
+            p p4 = (p)this.c.get(-2 + this.a);
+            p p5 = (p)this.c.get(-1 + this.a);
+            float f7 = p4.b;
+            float f8 = p5.b;
+            float f9 = p4.a;
+            float f10 = p5.a;
+            Interpolator interpolator = p5.b();
+            if (interpolator != null) {
+                f = interpolator.getInterpolation(f);
+            }
+            float f11 = (f - f9) / (f10 - f9);
+            if (this.d == null) {
+                return f7 + f11 * (f8 - f7);
+            }
+            return ((Number)this.d.a(f11, Float.valueOf(f7), Float.valueOf(f8))).floatValue();
+        }
+        p p6 = (p)this.c.get(0);
+        for (n = 1; n < this.a; ++n) {
+            p p7 = (p)this.c.get(n);
+            if (f < p7.a) {
+                Interpolator interpolator = p7.b();
+                if (interpolator != null) {
+                    f = interpolator.getInterpolation(f);
+                }
+                float f12 = (f - p6.a) / (p7.a - p6.a);
+                float f13 = p6.b;
+                float f14 = p7.b;
+                if (this.d == null) {
+                    return f13 + f12 * (f14 - f13);
+                }
+                return ((Number)this.d.a(f12, Float.valueOf(f13), Float.valueOf(f14))).floatValue();
+            }
+            p6 = p7;
+        }
+        return ((Number)((o)this.c.get(-1 + this.a)).a()).floatValue();
     }
-    if (paramFloat >= 1.0F)
-    {
-      p localp2 = (p)this.c.get(-2 + this.a);
-      p localp3 = (p)this.c.get(-1 + this.a);
-      float f4 = localp2.b;
-      float f5 = localp3.b;
-      float f6 = localp2.a;
-      float f7 = localp3.a;
-      Interpolator localInterpolator2 = localp3.b();
-      if (localInterpolator2 != null)
-        paramFloat = localInterpolator2.getInterpolation(paramFloat);
-      float f8 = (paramFloat - f6) / (f7 - f6);
-      if (this.d == null)
-        return f4 + f8 * (f5 - f4);
-      return ((Number)this.d.a(f8, Float.valueOf(f4), Float.valueOf(f5))).floatValue();
+
+    @Override
+    public final /* synthetic */ Object clone() {
+        return this.b();
     }
-    p localp1;
-    for (Object localObject = (p)this.c.get(0); i < this.a; localObject = localp1)
-    {
-      localp1 = (p)this.c.get(i);
-      if (paramFloat < localp1.a)
-      {
-        Interpolator localInterpolator1 = localp1.b();
-        if (localInterpolator1 != null)
-          paramFloat = localInterpolator1.getInterpolation(paramFloat);
-        float f1 = (paramFloat - ((o)localObject).a) / (localp1.a - ((o)localObject).a);
-        float f2 = ((p)localObject).b;
-        float f3 = localp1.b;
-        if (this.d == null)
-          return f2 + f1 * (f3 - f2);
-        return ((Number)this.d.a(f1, Float.valueOf(f2), Float.valueOf(f3))).floatValue();
-      }
-      i++;
-    }
-    return ((Number)((o)this.c.get(-1 + this.a)).a()).floatValue();
-  }
 }
-
-/* Location:           E:\Progs\Dev\Android\Decompile\apktool\zssq\zssq-dex2jar.jar
- * Qualified Name:     com.clilystudio.netbook.widget.comca.l
- * JD-Core Version:    0.6.0
- */

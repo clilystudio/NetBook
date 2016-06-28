@@ -1,169 +1,138 @@
-package com.clilystudio.netbook.widget.comca;
+/*
+ * Decompiled with CFR 0_115.
+ */
+package com.c.a;
 
+import com.c.a.k;
+import com.c.a.l;
+import com.c.a.m;
+import com.c.a.n;
+import com.c.a.o;
+import com.c.a.p;
+import com.c.a.q;
+import com.c.a.r;
+import com.c.a.t;
+import com.c.a.u;
+import com.c.a.v;
 import java.util.HashMap;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 public class s
-  implements Cloneable
-{
-  private static final v e = new m();
-  private static final v f = new k();
-  String a;
-  r b = null;
-  private com.xiaomi.mistatistic.sdk.a.r c;
-  private Class d;
-  private v g;
-  private Object h;
+implements Cloneable {
+    private static final v e = new m();
+    private static final v f = new k();
+    String a;
+    r b = null;
+    private com.xiaomi.mistatistic.sdk.a.r c;
+    private Class d;
+    private v g;
+    private Object h;
 
-  static
-  {
-    Class[] arrayOfClass1 = new Class[6];
-    arrayOfClass1[0] = Float.TYPE;
-    arrayOfClass1[1] = Float.class;
-    arrayOfClass1[2] = Double.TYPE;
-    arrayOfClass1[3] = Integer.TYPE;
-    arrayOfClass1[4] = Double.class;
-    arrayOfClass1[5] = Integer.class;
-    Class[] arrayOfClass2 = new Class[6];
-    arrayOfClass2[0] = Integer.TYPE;
-    arrayOfClass2[1] = Integer.class;
-    arrayOfClass2[2] = Float.TYPE;
-    arrayOfClass2[3] = Double.TYPE;
-    arrayOfClass2[4] = Float.class;
-    arrayOfClass2[5] = Double.class;
-    Class[] arrayOfClass3 = new Class[6];
-    arrayOfClass3[0] = Double.TYPE;
-    arrayOfClass3[1] = Double.class;
-    arrayOfClass3[2] = Float.TYPE;
-    arrayOfClass3[3] = Integer.TYPE;
-    arrayOfClass3[4] = Float.class;
-    arrayOfClass3[5] = Integer.class;
-    new HashMap();
-    new HashMap();
-  }
-
-  private s(String paramString)
-  {
-    new ReentrantReadWriteLock();
-    this.a = paramString;
-  }
-
-  public static s a(String paramString, float[] paramArrayOfFloat)
-  {
-    return new t(paramString, paramArrayOfFloat);
-  }
-
-  public static s a(String paramString, int[] paramArrayOfInt)
-  {
-    return new u(paramString, paramArrayOfInt);
-  }
-
-  public s a()
-  {
-    try
-    {
-      s locals = (s)super.clone();
-      locals.a = this.a;
-      locals.c = this.c;
-      locals.b = this.b.a();
-      locals.g = this.g;
-      return locals;
+    static {
+        Class[] arrclass = new Class[]{Float.TYPE, Float.class, Double.TYPE, Integer.TYPE, Double.class, Integer.class};
+        Class[] arrclass2 = new Class[]{Integer.TYPE, Integer.class, Float.TYPE, Double.TYPE, Float.class, Double.class};
+        Class[] arrclass3 = new Class[]{Double.TYPE, Double.class, Float.TYPE, Integer.TYPE, Float.class, Integer.class};
+        new HashMap();
+        new HashMap();
     }
-    catch (CloneNotSupportedException localCloneNotSupportedException)
-    {
-    }
-    return null;
-  }
 
-  void a(float paramFloat)
-  {
-    this.h = this.b.a(paramFloat);
-  }
+    private s(String string) {
+        new ReentrantReadWriteLock();
+        this.a = string;
+    }
 
-  public void a(float[] paramArrayOfFloat)
-  {
-    int i = 1;
-    this.d = Float.TYPE;
-    int j = paramArrayOfFloat.length;
-    p[] arrayOfp = new p[Math.max(j, 2)];
-    if (j == i)
-    {
-      arrayOfp[0] = ((p)new p(0.0F));
-      arrayOfp[i] = ((p)o.a(1.0F, paramArrayOfFloat[0]));
+    /* synthetic */ s(String string, byte by) {
+        this(string);
     }
-    while (true)
-    {
-      this.b = new l(arrayOfp);
-      return;
-      arrayOfp[0] = ((p)o.a(0.0F, paramArrayOfFloat[0]));
-      while (i < j)
-      {
-        arrayOfp[i] = ((p)o.a(i / (j - 1), paramArrayOfFloat[i]));
-        i++;
-      }
-    }
-  }
 
-  public void a(int[] paramArrayOfInt)
-  {
-    int i = 1;
-    this.d = Integer.TYPE;
-    int j = paramArrayOfInt.length;
-    q[] arrayOfq = new q[Math.max(j, 2)];
-    if (j == i)
-    {
-      arrayOfq[0] = ((q)new q(0.0F));
-      arrayOfq[i] = ((q)o.a(1.0F, paramArrayOfInt[0]));
+    public static /* varargs */ s a(String string, float ... arrf) {
+        return new t(string, arrf);
     }
-    while (true)
-    {
-      this.b = new n(arrayOfq);
-      return;
-      arrayOfq[0] = ((q)o.a(0.0F, paramArrayOfInt[0]));
-      while (i < j)
-      {
-        arrayOfq[i] = ((q)o.a(i / (j - 1), paramArrayOfInt[i]));
-        i++;
-      }
-    }
-  }
 
-  final void b()
-  {
-    v localv;
-    if (this.g == null)
-    {
-      if (this.d != Integer.class)
-        break label44;
-      localv = e;
+    public static /* varargs */ s a(String string, int ... arrn) {
+        return new u(string, arrn);
     }
-    while (true)
-    {
-      this.g = localv;
-      if (this.g != null)
-        this.b.d = this.g;
-      return;
-      label44: if (this.d == Float.class)
-      {
-        localv = f;
-        continue;
-      }
-      localv = null;
+
+    public s a() {
+        try {
+            s s2 = (s)super.clone();
+            s2.a = this.a;
+            s2.c = this.c;
+            s2.b = this.b.a();
+            s2.g = this.g;
+            return s2;
+        }
+        catch (CloneNotSupportedException var1_2) {
+            return null;
+        }
     }
-  }
 
-  Object c()
-  {
-    return this.h;
-  }
+    void a(float f) {
+        this.h = this.b.a(f);
+    }
 
-  public String toString()
-  {
-    return this.a + ": " + this.b.toString();
-  }
+    /*
+     * Enabled aggressive block sorting
+     */
+    public /* varargs */ void a(float ... arrf) {
+        int n;
+        this.d = Float.TYPE;
+        int n2 = arrf.length;
+        p[] arrp = new p[java.lang.Math.max(n2, 2)];
+        if (n2 == n) {
+            arrp[0] = new p(0.0f);
+            arrp[n] = (p)o.a(1.0f, arrf[0]);
+        } else {
+            arrp[0] = (p)o.a(0.0f, arrf[0]);
+            for (n = 1; n < n2; ++n) {
+                arrp[n] = (p)o.a((float)n / (float)(n2 - 1), arrf[n]);
+            }
+        }
+        this.b = new l(arrp);
+    }
+
+    /*
+     * Enabled aggressive block sorting
+     */
+    public /* varargs */ void a(int ... arrn) {
+        int n2;
+        this.d = Integer.TYPE;
+        int n3 = arrn.length;
+        q[] arrq = new q[java.lang.Math.max(n3, 2)];
+        if (n3 == n2) {
+            arrq[0] = new q(0.0f);
+            arrq[n2] = (q)o.a(1.0f, arrn[0]);
+        } else {
+            arrq[0] = (q)o.a(0.0f, arrn[0]);
+            for (n2 = 1; n2 < n3; ++n2) {
+                arrq[n2] = (q)o.a((float)n2 / (float)(n3 - 1), arrn[n2]);
+            }
+        }
+        this.b = new n(arrq);
+    }
+
+    /*
+     * Enabled aggressive block sorting
+     */
+    final void b() {
+        if (this.g == null) {
+            v v2 = this.d == Integer.class ? e : (this.d == Float.class ? f : null);
+            this.g = v2;
+        }
+        if (this.g != null) {
+            this.b.d = this.g;
+        }
+    }
+
+    Object c() {
+        return this.h;
+    }
+
+    public /* synthetic */ Object clone() {
+        return this.a();
+    }
+
+    public String toString() {
+        return this.a + ": " + this.b.toString();
+    }
 }
-
-/* Location:           E:\Progs\Dev\Android\Decompile\apktool\zssq\zssq-dex2jar.jar
- * Qualified Name:     com.clilystudio.netbook.widget.comca.s
- * JD-Core Version:    0.6.0
- */

@@ -1,69 +1,75 @@
-package com.clilystudio.netbook.widget.comca;
+/*
+ * Decompiled with CFR 0_115.
+ */
+package com.c.a;
 
+import com.c.a.b;
 import java.util.ArrayList;
 
 public abstract class a
-  implements Cloneable
-{
-  ArrayList<b> a = null;
+implements Cloneable {
+    ArrayList<b> a = null;
 
-  public void a()
-  {
-  }
-
-  public final void a(b paramb)
-  {
-    if (this.a == null)
-      this.a = new ArrayList();
-    this.a.add(paramb);
-  }
-
-  public void b()
-  {
-  }
-
-  public final void b(b paramb)
-  {
-    if (this.a == null);
-    do
-    {
-      return;
-      this.a.remove(paramb);
+    public void a() {
     }
-    while (this.a.size() != 0);
-    this.a = null;
-  }
 
-  public void c()
-  {
-  }
-
-  public abstract boolean d();
-
-  public a e()
-  {
-    a locala;
-    try
-    {
-      locala = (a)super.clone();
-      if (this.a != null)
-      {
-        ArrayList localArrayList = this.a;
-        locala.a = new ArrayList();
-        int i = localArrayList.size();
-        for (int j = 0; j < i; j++)
-          locala.a.add(localArrayList.get(j));
-      }
+    public final void a(b b2) {
+        if (this.a == null) {
+            this.a = new ArrayList();
+        }
+        this.a.add(b2);
     }
-    catch (CloneNotSupportedException localCloneNotSupportedException)
-    {
-      throw new AssertionError();
+
+    public void b() {
     }
-    return locala;
-  }
+
+    /*
+     * Enabled aggressive block sorting
+     * Lifted jumps to return sites
+     */
+    public final void b(b b2) {
+        if (this.a == null) {
+            return;
+        }
+        this.a.remove(b2);
+        if (this.a.size() != 0) return;
+        this.a = null;
+    }
+
+    public void c() {
+    }
+
+    public /* synthetic */ Object clone() {
+        return this.e();
+    }
+
+    public abstract boolean d();
+
+    /*
+     * Enabled force condition propagation
+     * Lifted jumps to return sites
+     */
+    public a e() {
+        ArrayList<b> arrayList;
+        a a2;
+        int n;
+        int n2;
+        try {
+            a2 = (a)super.clone();
+            if (this.a == null) return a2;
+            arrayList = this.a;
+            a2.a = new ArrayList<E>();
+            n = arrayList.size();
+            n2 = 0;
+        }
+        catch (CloneNotSupportedException var1_5) {
+            throw new AssertionError();
+        }
+        while (n2 < n) {
+            a2.a.add(arrayList.get(n2));
+            ++n2;
+            continue;
+        }
+        return a2;
+    }
 }
-
-/* Location:           E:\Progs\Dev\Android\Decompile\apktool\zssq\zssq-dex2jar.jar
- * Qualified Name:     com.clilystudio.netbook.widget.comca.a
- * JD-Core Version:    0.6.0
- */

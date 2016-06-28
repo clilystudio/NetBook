@@ -1,11 +1,10 @@
-package com.clilystudio.netbook.widget.comca;
-
-public abstract interface D
-{
-  public abstract void a(w paramw);
-}
-
-/* Location:           E:\Progs\Dev\Android\Decompile\apktool\zssq\zssq-dex2jar.jar
- * Qualified Name:     com.clilystudio.netbook.widget.comca.D
- * JD-Core Version:    0.6.0
+/*
+ * Decompiled with CFR 0_115.
  */
+package com.c.a;
+
+import com.c.a.w;
+
+public interface D {
+    public void a(w var1);
+}

@@ -1,4 +1,7 @@
-package com.clilystudio.netbook.widget.comca;
+/*
+ * Decompiled with CFR 0_115.
+ */
+package com.c.a;
 
 import android.os.Looper;
 import android.util.AndroidRuntimeException;
@@ -6,392 +9,400 @@ import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.AnimationUtils;
 import android.view.animation.Interpolator;
 import android.view.animation.LinearInterpolator;
+import com.c.a.A;
+import com.c.a.B;
+import com.c.a.C;
+import com.c.a.D;
+import com.c.a.a;
+import com.c.a.b;
+import com.c.a.k;
+import com.c.a.m;
+import com.c.a.s;
+import com.c.a.x;
+import com.c.a.y;
+import com.c.a.z;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 
-public final class w extends a
-{
-  private static ThreadLocal<C> d = new ThreadLocal();
-  private static final ThreadLocal<ArrayList<w>> e = new ThreadLocal<>();
-  private static final ThreadLocal<ArrayList<w>> f = new ThreadLocal<>();
-  private static final ThreadLocal<ArrayList<w>> g = new ThreadLocal<>();
-  private static final ThreadLocal<ArrayList<w>> h = new ThreadLocal<>();
-  private static final ThreadLocal<ArrayList<w>> i = new ThreadLocal<>();
-  private static final Interpolator j = new AccelerateDecelerateInterpolator();
-  private static long v;
-  private s[] A;
-  private HashMap<String, s> B;
-  private long b;
-  private long c = -1L;
-  private boolean k = false;
-  private int l = 0;
-  private float m = 0.0F;
-  private boolean n = false;
-  private long o;
-  private int p = 0;
-  private boolean q = false;
-  private boolean r = false;
-  private boolean s = false;
-  private long t = 300L;
-  private long u = 0L;
-  private int w = 0;
-  private int x = 1;
-  private Interpolator y = j;
-  private ArrayList<D> z = null;
+public final class w
+extends a {
+    private static ThreadLocal<C> d = new ThreadLocal();
+    private static final ThreadLocal<ArrayList<w>> e = new x();
+    private static final ThreadLocal<ArrayList<w>> f = new y();
+    private static final ThreadLocal<ArrayList<w>> g = new z();
+    private static final ThreadLocal<ArrayList<w>> h = new A();
+    private static final ThreadLocal<ArrayList<w>> i = new B();
+    private static final Interpolator j = new AccelerateDecelerateInterpolator();
+    private static long v;
+    private s[] A;
+    private HashMap<String, s> B;
+    private long b;
+    private long c = -1;
+    private boolean k = false;
+    private int l = 0;
+    private float m = 0.0f;
+    private boolean n = false;
+    private long o;
+    private int p = 0;
+    private boolean q = false;
+    private boolean r = false;
+    private boolean s = false;
+    private long t = 300;
+    private long u = 0;
+    private int w = 0;
+    private int x = 1;
+    private Interpolator y = j;
+    private ArrayList<D> z = null;
 
-  static
-  {
-    new m();
-    new k();
-    v = 10L;
-  }
+    static {
+        new m();
+        new k();
+        v = 10;
+    }
 
-  public static w a(float[] paramArrayOfFloat)
-  {
-    w localw = new w();
-    if ((paramArrayOfFloat == null) || (paramArrayOfFloat.length == 0))
-      return localw;
-    if ((localw.A == null) || (localw.A.length == 0))
-    {
-      s[] arrayOfs = new s[1];
-      arrayOfs[0] = s.a("", paramArrayOfFloat);
-      localw.a(arrayOfs);
+    static /* synthetic */ long a(w w2) {
+        return w2.u;
     }
-    while (true)
-    {
-      localw.s = false;
-      return localw;
-      localw.A[0].a(paramArrayOfFloat);
-    }
-  }
 
-  public static w a(int[] paramArrayOfInt)
-  {
-    w localw = new w();
-    if ((paramArrayOfInt == null) || (paramArrayOfInt.length == 0))
-      return localw;
-    if ((localw.A == null) || (localw.A.length == 0))
-    {
-      s[] arrayOfs = new s[1];
-      arrayOfs[0] = s.a("", paramArrayOfInt);
-      localw.a(arrayOfs);
+    /*
+     * Enabled aggressive block sorting
+     */
+    public static /* varargs */ w a(float ... arrf) {
+        w w2 = new w();
+        if (arrf == null || arrf.length == 0) {
+            return w2;
+        }
+        if (w2.A == null || w2.A.length == 0) {
+            s[] arrs = new s[]{s.a("", arrf)};
+            w2.a(arrs);
+        } else {
+            w2.A[0].a(arrf);
+        }
+        w2.s = false;
+        return w2;
     }
-    while (true)
-    {
-      localw.s = false;
-      return localw;
-      localw.A[0].a(paramArrayOfInt);
-    }
-  }
 
-  private void a(float paramFloat)
-  {
-    float f1 = this.y.getInterpolation(paramFloat);
-    this.m = f1;
-    int i1 = this.A.length;
-    for (int i2 = 0; i2 < i1; i2++)
-      this.A[i2].a(f1);
-    if (this.z != null)
-    {
-      int i3 = this.z.size();
-      for (int i4 = 0; i4 < i3; i4++)
-        ((D)this.z.get(i4)).a(this);
+    /*
+     * Enabled aggressive block sorting
+     */
+    public static /* varargs */ w a(int ... arrn) {
+        w w2 = new w();
+        if (arrn == null || arrn.length == 0) {
+            return w2;
+        }
+        if (w2.A == null || w2.A.length == 0) {
+            s[] arrs = new s[]{s.a("", arrn)};
+            w2.a(arrs);
+        } else {
+            w2.A[0].a(arrn);
+        }
+        w2.s = false;
+        return w2;
     }
-  }
 
-  private void a(s[] paramArrayOfs)
-  {
-    this.A = paramArrayOfs;
-    this.B = new HashMap(1);
-    for (int i1 = 0; i1 <= 0; i1++)
-    {
-      s locals = paramArrayOfs[0];
-      this.B.put(locals.a, locals);
+    private void a(float f) {
+        float f2;
+        this.m = f2 = this.y.getInterpolation(f);
+        int n = this.A.length;
+        for (int i = 0; i < n; ++i) {
+            this.A[i].a(f2);
+        }
+        if (this.z != null) {
+            int n2 = this.z.size();
+            for (int j = 0; j < n2; ++j) {
+                this.z.get(j).a(this);
+            }
+        }
     }
-    this.s = false;
-  }
 
-  private void d(long paramLong)
-  {
-    n();
-    long l1 = AnimationUtils.currentAnimationTimeMillis();
-    if (this.p != 1)
-    {
-      this.c = paramLong;
-      this.p = 2;
+    private /* varargs */ void a(s ... arrs) {
+        this.A = arrs;
+        this.B = new HashMap(1);
+        for (int i = 0; i <= 0; ++i) {
+            s s2 = arrs[0];
+            this.B.put(s2.a, s2);
+        }
+        this.s = false;
     }
-    this.b = (l1 - paramLong);
-    c(l1);
-  }
 
-  private void n()
-  {
-    if (!this.s)
-    {
-      int i1 = this.A.length;
-      for (int i2 = 0; i2 < i1; i2++)
-        this.A[i2].b();
-      this.s = true;
+    /*
+     * Enabled aggressive block sorting
+     */
+    static /* synthetic */ boolean a(w w2, long l) {
+        if (!w2.n) {
+            w2.n = true;
+            w2.o = l;
+            return false;
+        } else {
+            long l2 = l - w2.o;
+            if (l2 <= w2.u) return false;
+            {
+                w2.b = l - (l2 - w2.u);
+                w2.p = 1;
+                return true;
+            }
+        }
     }
-  }
 
-  private void o()
-  {
-    ((ArrayList)e.get()).remove(this);
-    ((ArrayList)f.get()).remove(this);
-    ((ArrayList)g.get()).remove(this);
-    this.p = 0;
-    if ((this.q) && (this.a != null))
-    {
-      ArrayList localArrayList = (ArrayList)this.a.clone();
-      int i1 = localArrayList.size();
-      for (int i2 = 0; i2 < i1; i2++)
-        ((b)localArrayList.get(i2)).b(this);
+    static /* synthetic */ boolean a(w w2, boolean bl) {
+        w2.q = true;
+        return true;
     }
-    this.q = false;
-    this.r = false;
-  }
 
-  private void p()
-  {
-    n();
-    ((ArrayList)e.get()).add(this);
-    if ((this.u > 0L) && (this.a != null))
-    {
-      ArrayList localArrayList = (ArrayList)this.a.clone();
-      int i1 = localArrayList.size();
-      for (int i2 = 0; i2 < i1; i2++)
-        ((b)localArrayList.get(i2)).a(this);
+    static /* synthetic */ void b(w w2) {
+        w2.p();
     }
-  }
 
-  private w q()
-  {
-    int i1 = 0;
-    w localw = (w)super.e();
-    if (this.z != null)
-    {
-      ArrayList localArrayList = this.z;
-      localw.z = new ArrayList();
-      int i3 = localArrayList.size();
-      for (int i4 = 0; i4 < i3; i4++)
-        localw.z.add(localArrayList.get(i4));
+    static /* synthetic */ void c(w w2) {
+        w2.o();
     }
-    localw.c = -1L;
-    localw.k = false;
-    localw.l = 0;
-    localw.s = false;
-    localw.p = 0;
-    localw.n = false;
-    s[] arrayOfs = this.A;
-    if (arrayOfs != null)
-    {
-      int i2 = arrayOfs.length;
-      localw.A = new s[i2];
-      localw.B = new HashMap(i2);
-      while (i1 < i2)
-      {
-        s locals = arrayOfs[i1].a();
-        localw.A[i1] = locals;
-        localw.B.put(locals.a, locals);
-        i1++;
-      }
+
+    private void d(long l) {
+        this.n();
+        long l2 = AnimationUtils.currentAnimationTimeMillis();
+        if (this.p != 1) {
+            this.c = l;
+            this.p = 2;
+        }
+        this.b = l2 - l;
+        this.c(l2);
     }
-    return localw;
-  }
 
-  public final w a(long paramLong)
-  {
-    if (paramLong < 0L)
-      throw new IllegalArgumentException("Animators cannot have negative duration: " + paramLong);
-    this.t = paramLong;
-    return this;
-  }
+    static /* synthetic */ ThreadLocal h() {
+        return e;
+    }
 
-  public final void a()
-  {
-    if (Looper.myLooper() == null)
-      throw new AndroidRuntimeException("Animators may only be run on Looper threads");
-    this.k = false;
-    this.l = 0;
-    this.p = 0;
-    this.r = true;
-    this.n = false;
-    ((ArrayList)f.get()).add(this);
-    if (this.u == 0L)
-    {
-      long l1;
-      if ((!this.s) || (this.p == 0))
-        l1 = 0L;
-      while (true)
-      {
-        d(l1);
+    static /* synthetic */ ThreadLocal i() {
+        return g;
+    }
+
+    static /* synthetic */ ThreadLocal j() {
+        return f;
+    }
+
+    static /* synthetic */ ThreadLocal k() {
+        return i;
+    }
+
+    static /* synthetic */ ThreadLocal l() {
+        return h;
+    }
+
+    static /* synthetic */ long m() {
+        return v;
+    }
+
+    private void n() {
+        if (!this.s) {
+            int n = this.A.length;
+            for (int i = 0; i < n; ++i) {
+                this.A[i].b();
+            }
+            this.s = true;
+        }
+    }
+
+    private void o() {
+        e.get().remove(this);
+        f.get().remove(this);
+        g.get().remove(this);
         this.p = 0;
-        this.q = true;
-        if (this.a == null)
-          break;
-        ArrayList localArrayList = (ArrayList)this.a.clone();
-        int i1 = localArrayList.size();
-        for (int i2 = 0; i2 < i1; i2++)
-          ((b)localArrayList.get(i2)).a(this);
-        l1 = AnimationUtils.currentAnimationTimeMillis() - this.b;
-      }
+        if (this.q && this.a != null) {
+            ArrayList arrayList = (ArrayList)this.a.clone();
+            int n = arrayList.size();
+            for (int i = 0; i < n; ++i) {
+                ((b)arrayList.get(i)).b((a)this);
+            }
+        }
+        this.q = false;
+        this.r = false;
     }
-    C localC = (C)d.get();
-    if (localC == null)
-    {
-      localC = new C(0);
-      d.set(localC);
-    }
-    localC.sendEmptyMessage(0);
-  }
 
-  public final void a(Interpolator paramInterpolator)
-  {
-    if (paramInterpolator != null)
-    {
-      this.y = paramInterpolator;
-      return;
+    private void p() {
+        this.n();
+        e.get().add(this);
+        if (this.u > 0 && this.a != null) {
+            ArrayList arrayList = (ArrayList)this.a.clone();
+            int n = arrayList.size();
+            for (int i = 0; i < n; ++i) {
+                ((b)arrayList.get(i)).a((a)this);
+            }
+        }
     }
-    this.y = new LinearInterpolator();
-  }
 
-  public final void a(D paramD)
-  {
-    if (this.z == null)
-      this.z = new ArrayList();
-    this.z.add(paramD);
-  }
-
-  public final void b()
-  {
-    if ((this.p != 0) || (((ArrayList)f.get()).contains(this)) || (((ArrayList)g.get()).contains(this)))
-    {
-      if ((this.q) && (this.a != null))
-      {
-        Iterator localIterator = ((ArrayList)this.a.clone()).iterator();
-        while (localIterator.hasNext())
-          ((b)localIterator.next()).c(this);
-      }
-      o();
+    private w q() {
+        int n = 0;
+        w w2 = (w)super.e();
+        if (this.z != null) {
+            ArrayList<D> arrayList = this.z;
+            w2.z = new ArrayList();
+            int n2 = arrayList.size();
+            for (int i = 0; i < n2; ++i) {
+                w2.z.add(arrayList.get(i));
+            }
+        }
+        w2.c = -1;
+        w2.k = false;
+        w2.l = 0;
+        w2.s = false;
+        w2.p = 0;
+        w2.n = false;
+        s[] arrs = this.A;
+        if (arrs != null) {
+            int n3 = arrs.length;
+            w2.A = new s[n3];
+            w2.B = new HashMap(n3);
+            while (n < n3) {
+                s s2;
+                w2.A[n] = s2 = arrs[n].a();
+                w2.B.put(s2.a, s2);
+                ++n;
+            }
+        }
+        return w2;
     }
-  }
 
-  public final void b(long paramLong)
-  {
-    this.u = paramLong;
-  }
+    public final w a(long l) {
+        if (l < 0) {
+            throw new IllegalArgumentException("Animators cannot have negative duration: " + l);
+        }
+        this.t = l;
+        return this;
+    }
 
-  public final void c()
-  {
-    if ((!((ArrayList)e.get()).contains(this)) && (!((ArrayList)f.get()).contains(this)))
-    {
-      this.n = false;
-      p();
+    /*
+     * Enabled aggressive block sorting
+     */
+    public final void a() {
+        C c;
+        if (Looper.myLooper() == null) {
+            throw new AndroidRuntimeException("Animators may only be run on Looper threads");
+        }
+        this.k = false;
+        this.l = 0;
+        this.p = 0;
+        this.r = true;
+        this.n = false;
+        f.get().add(this);
+        if (this.u == 0) {
+            long l = !this.s || this.p == 0 ? 0 : AnimationUtils.currentAnimationTimeMillis() - this.b;
+            this.d(l);
+            this.p = 0;
+            this.q = true;
+            if (this.a != null) {
+                ArrayList arrayList = (ArrayList)this.a.clone();
+                int n = arrayList.size();
+                for (int i = 0; i < n; ++i) {
+                    ((b)arrayList.get(i)).a((a)this);
+                }
+            }
+        }
+        if ((c = d.get()) == null) {
+            c = new C(0);
+            d.set(c);
+        }
+        c.sendEmptyMessage(0);
     }
-    while (true)
-    {
-      a(1.0F);
-      o();
-      return;
-      if (this.s)
-        continue;
-      n();
-    }
-  }
 
-  final boolean c(long paramLong)
-  {
-    if (this.p == 0)
-    {
-      this.p = 1;
-      if (this.c >= 0L)
-        break label54;
-      this.b = paramLong;
+    public final void a(Interpolator interpolator) {
+        if (interpolator != null) {
+            this.y = interpolator;
+            return;
+        }
+        this.y = new LinearInterpolator();
     }
-    while (true)
-      switch (this.p)
-      {
-      default:
+
+    public final void a(D d) {
+        if (this.z == null) {
+            this.z = new ArrayList();
+        }
+        this.z.add(d);
+    }
+
+    public final void b() {
+        if (this.p != 0 || f.get().contains(this) || g.get().contains(this)) {
+            if (this.q && this.a != null) {
+                Iterator iterator = ((ArrayList)this.a.clone()).iterator();
+                while (iterator.hasNext()) {
+                    ((b)iterator.next()).c((a)this);
+                }
+            }
+            this.o();
+        }
+    }
+
+    public final void b(long l) {
+        this.u = l;
+    }
+
+    /*
+     * Enabled aggressive block sorting
+     */
+    public final void c() {
+        if (!e.get().contains(this) && !f.get().contains(this)) {
+            this.n = false;
+            this.p();
+        } else if (!this.s) {
+            this.n();
+        }
+        this.a(1.0f);
+        this.o();
+    }
+
+    /*
+     * Exception decompiling
+     */
+    final boolean c(long var1_1) {
+        // This method has failed to decompile.  When submitting a bug report, please provide this stack trace, and (if you hold appropriate legal rights) the relevant class file.
+        // org.benf.cfr.reader.util.ConfusedCFRException: Extractable last case doesn't follow previous
+        // org.benf.cfr.reader.bytecode.analysis.opgraph.op3rewriters.SwitchReplacer.examineSwitchContiguity(SwitchReplacer.java:486)
+        // org.benf.cfr.reader.bytecode.analysis.opgraph.op3rewriters.SwitchReplacer.replaceRawSwitches(SwitchReplacer.java:65)
+        // org.benf.cfr.reader.bytecode.CodeAnalyser.getAnalysisInner(CodeAnalyser.java:425)
+        // org.benf.cfr.reader.bytecode.CodeAnalyser.getAnalysisOrWrapFail(CodeAnalyser.java:220)
+        // org.benf.cfr.reader.bytecode.CodeAnalyser.getAnalysis(CodeAnalyser.java:165)
+        // org.benf.cfr.reader.entities.attributes.AttributeCode.analyse(AttributeCode.java:91)
+        // org.benf.cfr.reader.entities.Method.analyse(Method.java:354)
+        // org.benf.cfr.reader.entities.ClassFile.analyseMid(ClassFile.java:751)
+        // org.benf.cfr.reader.entities.ClassFile.analyseTop(ClassFile.java:683)
+        // org.benf.cfr.reader.Main.doClass(Main.java:46)
+        // org.benf.cfr.reader.Main.main(Main.java:183)
+        throw new IllegalStateException("Decompilation failed");
+    }
+
+    public final /* synthetic */ Object clone() {
+        return this.q();
+    }
+
+    public final boolean d() {
+        if (this.p == 1 || this.q) {
+            return true;
+        }
         return false;
-        label54: this.b = (paramLong - this.c);
-        this.c = -1L;
-      case 1:
-      case 2:
-      }
-    float f1;
-    float f2;
-    int i1;
-    if (this.t > 0L)
-    {
-      f1 = (float)(paramLong - this.b) / (float)this.t;
-      if (f1 < 1.0F)
-        break label262;
-      if (this.l < 0)
-        break label147;
-      f2 = Math.min(f1, 1.0F);
-      i1 = 1;
     }
-    while (true)
-    {
-      if (this.k)
-        f2 = 1.0F - f2;
-      a(f2);
-      return i1;
-      f1 = 1.0F;
-      break;
-      label147: if (this.a != null)
-      {
-        int i2 = this.a.size();
-        for (int i3 = 0; i3 < i2; i3++)
-          ((b)this.a.get(i3)).d(this);
-      }
-      if (this.x == 2)
-        if (!this.k)
-          break label256;
-      label256: for (boolean bool = false; ; bool = true)
-      {
-        this.k = bool;
-        this.l += (int)f1;
-        f2 = f1 % 1.0F;
-        this.b += this.t;
-        i1 = 0;
-        break;
-      }
-      label262: f2 = f1;
-      i1 = 0;
+
+    public final /* synthetic */ a e() {
+        return this.q();
     }
-  }
 
-  public final boolean d()
-  {
-    return (this.p == 1) || (this.q);
-  }
+    public final Object f() {
+        if (this.A != null && this.A.length > 0) {
+            return this.A[0].c();
+        }
+        return null;
+    }
 
-  public final Object f()
-  {
-    if ((this.A != null) && (this.A.length > 0))
-      return this.A[0].c();
-    return null;
-  }
+    public final float g() {
+        return this.m;
+    }
 
-  public final float g()
-  {
-    return this.m;
-  }
-
-  public final String toString()
-  {
-    String str = "ValueAnimator@" + Integer.toHexString(hashCode());
-    if (this.A != null)
-      for (int i1 = 0; i1 < this.A.length; i1++)
-        str = str + "\n    " + this.A[i1].toString();
-    return str;
-  }
+    public final String toString() {
+        String string = "ValueAnimator@" + Integer.toHexString(this.hashCode());
+        if (this.A != null) {
+            for (int i = 0; i < this.A.length; ++i) {
+                string = string + "\n    " + this.A[i].toString();
+            }
+        }
+        return string;
+    }
 }
-
-/* Location:           E:\Progs\Dev\Android\Decompile\apktool\zssq\zssq-dex2jar.jar
- * Qualified Name:     com.clilystudio.netbook.widget.comca.w
- * JD-Core Version:    0.6.0
- */

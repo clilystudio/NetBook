@@ -1,101 +1,96 @@
-package com.clilystudio.netbook.widget.comca;
+/*
+ * Decompiled with CFR 0_115.
+ */
+package com.c.a;
 
 import android.view.animation.Interpolator;
+import com.c.a.o;
+import com.c.a.v;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 
-class r
-{
-  int a;
-  Interpolator b;
-  ArrayList<o> c;
-  v d;
-  private o e;
-  private o f;
+class r {
+    int a;
+    Interpolator b;
+    ArrayList<o> c;
+    v d;
+    private o e;
+    private o f;
 
-  public r(o[] paramArrayOfo)
-  {
-    this.a = paramArrayOfo.length;
-    this.c = new ArrayList();
-    this.c.addAll(Arrays.asList(paramArrayOfo));
-    this.e = ((o)this.c.get(0));
-    this.f = ((o)this.c.get(-1 + this.a));
-    this.b = this.f.b();
-  }
+    public /* varargs */ r(o ... arro) {
+        this.a = arro.length;
+        this.c = new ArrayList();
+        this.c.addAll(Arrays.asList(arro));
+        this.e = this.c.get(0);
+        this.f = this.c.get(-1 + this.a);
+        this.b = this.f.b();
+    }
 
-  public r a()
-  {
-    ArrayList localArrayList = this.c;
-    int i = this.c.size();
-    o[] arrayOfo = new o[i];
-    for (int j = 0; j < i; j++)
-      arrayOfo[j] = ((o)localArrayList.get(j)).c();
-    return new r(arrayOfo);
-  }
+    public r a() {
+        ArrayList<o> arrayList = this.c;
+        int n = this.c.size();
+        o[] arro = new o[n];
+        for (int i = 0; i < n; ++i) {
+            arro[i] = arrayList.get(i).c();
+        }
+        return new r(arro);
+    }
 
-  public Object a(float paramFloat)
-  {
-    if (this.a == 2)
-    {
-      if (this.b != null)
-        paramFloat = this.b.getInterpolation(paramFloat);
-      return this.d.a(paramFloat, this.e.a(), this.f.a());
+    public Object a(float f) {
+        if (this.a == 2) {
+            if (this.b != null) {
+                f = this.b.getInterpolation(f);
+            }
+            return this.d.a(f, this.e.a(), this.f.a());
+        }
+        if (f <= 0.0f) {
+            o o2 = this.c.get(1);
+            Interpolator interpolator = o2.b();
+            if (interpolator != null) {
+                f = interpolator.getInterpolation(f);
+            }
+            float f2 = this.e.a;
+            float f3 = (f - f2) / (o2.a - f2);
+            return this.d.a(f3, this.e.a(), o2.a());
+        }
+        if (f >= 1.0f) {
+            o o3 = this.c.get(-2 + this.a);
+            Interpolator interpolator = this.f.b();
+            if (interpolator != null) {
+                f = interpolator.getInterpolation(f);
+            }
+            float f4 = o3.a;
+            float f5 = (f - f4) / (this.f.a - f4);
+            return this.d.a(f5, o3.a(), this.f.a());
+        }
+        o o4 = this.e;
+        for (int i = 1; i < this.a; ++i) {
+            o o5 = this.c.get(i);
+            if (f < o5.a) {
+                Interpolator interpolator = o5.b();
+                if (interpolator != null) {
+                    f = interpolator.getInterpolation(f);
+                }
+                float f6 = o4.a;
+                float f7 = (f - f6) / (o5.a - f6);
+                return this.d.a(f7, o4.a(), o5.a());
+            }
+            o4 = o5;
+        }
+        return this.f.a();
     }
-    if (paramFloat <= 0.0F)
-    {
-      o localo3 = (o)this.c.get(1);
-      Interpolator localInterpolator3 = localo3.b();
-      if (localInterpolator3 != null)
-        paramFloat = localInterpolator3.getInterpolation(paramFloat);
-      float f5 = this.e.a;
-      float f6 = (paramFloat - f5) / (localo3.a - f5);
-      return this.d.a(f6, this.e.a(), localo3.a());
-    }
-    if (paramFloat >= 1.0F)
-    {
-      o localo2 = (o)this.c.get(-2 + this.a);
-      Interpolator localInterpolator2 = this.f.b();
-      if (localInterpolator2 != null)
-        paramFloat = localInterpolator2.getInterpolation(paramFloat);
-      float f3 = localo2.a;
-      float f4 = (paramFloat - f3) / (this.f.a - f3);
-      return this.d.a(f4, localo2.a(), this.f.a());
-    }
-    Object localObject = this.e;
-    int i = 1;
-    while (i < this.a)
-    {
-      o localo1 = (o)this.c.get(i);
-      if (paramFloat < localo1.a)
-      {
-        Interpolator localInterpolator1 = localo1.b();
-        if (localInterpolator1 != null)
-          paramFloat = localInterpolator1.getInterpolation(paramFloat);
-        float f1 = ((o)localObject).a;
-        float f2 = (paramFloat - f1) / (localo1.a - f1);
-        return this.d.a(f2, ((o)localObject).a(), localo1.a());
-      }
-      i++;
-      localObject = localo1;
-    }
-    return this.f.a();
-  }
 
-  public String toString()
-  {
-    Object localObject = " ";
-    int i = 0;
-    while (i < this.a)
-    {
-      String str = (String)localObject + ((o)this.c.get(i)).a() + "  ";
-      i++;
-      localObject = str;
+    public /* synthetic */ Object clone() {
+        return this.a();
     }
-    return (String)localObject;
-  }
+
+    public String toString() {
+        String string = " ";
+        for (int i = 0; i < this.a; ++i) {
+            String string2 = string + this.c.get(i).a() + "  ";
+            string = string2;
+        }
+        return string;
+    }
 }
-
-/* Location:           E:\Progs\Dev\Android\Decompile\apktool\zssq\zssq-dex2jar.jar
- * Qualified Name:     com.clilystudio.netbook.widget.comca.r
- * JD-Core Version:    0.6.0
- */

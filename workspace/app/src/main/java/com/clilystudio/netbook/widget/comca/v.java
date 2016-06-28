@@ -1,11 +1,8 @@
-package com.clilystudio.netbook.widget.comca;
-
-public abstract interface v<T>
-{
-  public abstract T a(float paramFloat, T paramT1, T paramT2);
-}
-
-/* Location:           E:\Progs\Dev\Android\Decompile\apktool\zssq\zssq-dex2jar.jar
- * Qualified Name:     com.clilystudio.netbook.widget.comca.v
- * JD-Core Version:    0.6.0
+/*
+ * Decompiled with CFR 0_115.
  */
+package com.c.a;
+
+public interface v<T> {
+    public T a(float var1, T var2, T var3);
+}
