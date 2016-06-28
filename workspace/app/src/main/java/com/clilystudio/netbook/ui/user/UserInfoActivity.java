@@ -12,6 +12,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.clilystudio.netbook.MyApplication;
+import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.d;
 import com.clilystudio.netbook.event.K;
 import com.clilystudio.netbook.event.i;
@@ -24,6 +25,8 @@ import com.clilystudio.netbook.ui.CircularSmartImageView;
 import com.clilystudio.netbook.ui.SettingsActivity;
 import com.clilystudio.netbook.ui.ShareRemoveAdActivity;
 import com.clilystudio.netbook.ui.aa;
+import com.clilystudio.netbook.util.*;
+import com.clilystudio.netbook.util.e;
 import com.umeng.a.b;
 import com.xiaomi.mistatistic.sdk.MiStatInterface;
 
@@ -111,7 +114,43 @@ public class UserInfoActivity extends BaseActivity {
 
     private void b() {
         if (this.c != null) {
-            aK aK2 = new aK(this, 0);
+            com.clilystudio.netbook.a_pack.e<String, Void, UserInfo> aK2 = new com.clilystudio.netbook.a_pack.e<String, Void, UserInfo>(){
+
+                @Override
+                protected UserInfo doInBackground(String... params) {
+                    return com.clilystudio.netbook.api.b.b().K(params[0]);
+                }
+
+                @Override
+                protected void onPostExecute(UserInfo userInfo) {
+                    super.onPostExecute(userInfo);
+                    UserInfoActivity.c(UserInfoActivity.this);
+                    if (userInfo != null) {
+                        if (userInfo.isOk()) {
+                            UserInfoActivity.a(UserInfoActivity.this, userInfo);
+                            MyApplication.a().a(userInfo, "savedObject_userinfo");
+                            UserInfoActivity.a(UserInfoActivity.this, userInfo.getNicknameUpdated());
+                            UserInfoActivity.a(UserInfoActivity.this, J.a(UserInfoActivity.this).a());
+                            UserInfoActivity.b(UserInfoActivity.this, userInfo);
+                            return;
+                        } else {
+                            if (!"TOKEN_INVALID".equals(userInfo.getCode())) return;
+                            {
+                                com.clilystudio.netbook.util.e.a((Activity) UserInfoActivity.this, (String) "帐号无效或过期，请退出登录后重试");
+                                return;
+                            }
+                        }
+                    } else {
+                        com.clilystudio.netbook.util.e.a((Activity) UserInfoActivity.this, (String) "载入失败");
+                        UserInfo userInfo2 = (UserInfo) MyApplication.a().b("savedObject_userinfo");
+                        if (userInfo2 == null) return;
+                        {
+                            UserInfoActivity.a(UserInfoActivity.this, userInfo2);
+                            return;
+                        }
+                    }
+               }
+            };
             String[] arrstring = new String[]{this.c};
             aK2.b(arrstring);
             return;
@@ -129,7 +168,12 @@ public class UserInfoActivity extends BaseActivity {
         this.mLevel = (TextView) findViewById(R.id.level);
         this.mExpProgress = (ProgressBar) findViewById(R.id.exp_pregress);
         this.mMessageCount = (TextView) findViewById(R.id.message_count);
-        this.a(R.string.user_info, "\u7f16\u8f91\u8d44\u6599", (aa) new aA(this));
+        this.a(R.string.user_info, "编辑资料", new aa() {
+            @Override
+            public void a() {
+                UserInfoActivity.a(UserInfoActivity.this);
+            }
+        });
         this.c = this.getIntent().getStringExtra("account_token");
         this.a = this.findViewById(R.id.pb_loading);
         this.b = this.findViewById(R.id.user_info_content);
@@ -180,13 +224,6 @@ public class UserInfoActivity extends BaseActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(UserInfoActivity.this, SettingsActivity.class);
                 intent.putExtra("from_user_info", true);
-                UserInfoActivity.this.startActivity(intent);
-            }
-        });
-        this.findViewById(R.id.user_follow_weixin).setOnClickListener(new  View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(UserInfoActivity.this, UserFollowWeixinActivity.class);
                 UserInfoActivity.this.startActivity(intent);
             }
         });

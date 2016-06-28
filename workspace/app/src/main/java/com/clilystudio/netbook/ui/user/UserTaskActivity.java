@@ -6,14 +6,19 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.am;
 import android.view.View;
 import android.widget.TextView;
 
 import com.clilystudio.netbook.MyApplication;
+import com.clilystudio.netbook.api.b;
+import com.clilystudio.netbook.model.ResultStatus;
 import com.clilystudio.netbook.model.UserInfo;
 import com.clilystudio.netbook.ui.BaseActivity;
 import com.clilystudio.netbook.util.*;
+import com.clilystudio.netbook.util.e;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -40,7 +45,22 @@ public class UserTaskActivity extends BaseActivity {
     protected void onActivityResult(int n, int n2, Intent intent) {
         super.onActivityResult(n, n2, intent);
         if (n == 2) {
-            new aN(this, 0).b(new String[0]);
+            new com.clilystudio.netbook.a_pack.e<String, Void, ResultStatus>(){
+
+                @Override
+                protected ResultStatus doInBackground(String... params) {
+                    return b.b().W(am.e().getToken());
+                }
+
+                @Override
+                protected void onPostExecute(ResultStatus resultStatus) {
+                    super.onPostExecute(resultStatus);
+                    if (resultStatus != null && !resultStatus.isOk()) {
+                        UserTaskActivity.a(UserTaskActivity.this, true);
+                        e.a((Activity) UserTaskActivity.this, (String) "你已经完成这个任务");
+                    }
+                }
+            }.b();
         }
     }
 
@@ -62,7 +82,7 @@ public class UserTaskActivity extends BaseActivity {
         this.mExpInfo.setTextColor(this.getResources().getColor(R.color.primary_green));
         this.mExpLaunch.setTextColor(this.getResources().getColor(R.color.primary_green));
         if (userInfo != null) {
-            UserInfo$UserTodayTask userInfo$UserTodayTask = userInfo.getToday_tasks();
+            UserInfo.UserTodayTask userInfo$UserTodayTask = userInfo.getToday_tasks();
             if (userInfo$UserTodayTask != null && userInfo$UserTodayTask.isShare()) {
                 this.mExpShareTopic.setTextColor(this.getResources().getColor(R.color.primary_green));
             }

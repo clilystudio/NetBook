@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -13,9 +14,19 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Toast;
 
+import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.R;
+import com.clilystudio.netbook.a_pack.c;
+import com.clilystudio.netbook.api.b;
+import com.clilystudio.netbook.event.*;
 import com.clilystudio.netbook.event.i;
+import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.ui.BaseActivity;
+import com.clilystudio.netbook.util.*;
+import com.clilystudio.netbook.util.e;
+import com.squareup.otto.Subscribe;
+
+import java.util.HashMap;
 
 import cn.sharesdk.framework.Platform;
 import cn.sharesdk.framework.PlatformActionListener;
@@ -71,9 +82,37 @@ public class AuthLoginActivity extends BaseActivity implements Handler.Callback 
 
     static /* synthetic */ void a(AuthLoginActivity authLoginActivity, String string) {
         authLoginActivity.findViewById(R.id.login_layout).setVisibility(4);
-        Handler handler = new Handler(authLoginActivity);
+        final Handler handler = new Handler(authLoginActivity);
         Platform platform = ShareSDK.getPlatform(authLoginActivity, string);
-        platform.setPlatformActionListener((PlatformActionListener) ((Object) new e(authLoginActivity, handler)));
+        platform.setPlatformActionListener(new PlatformActionListener() {
+            @Override
+            public void onComplete(Platform platform, int i, HashMap<String, Object> hashMap) {
+                Message message = new Message();
+                message.arg1 = 1;
+                message.arg2 = i;
+                message.obj = platform;
+                handler.sendMessage(message);
+            }
+
+            @Override
+            public void onError(Platform platform, int i, Throwable throwable) {
+                throwable.printStackTrace();
+                Message message = new Message();
+                message.arg1 = 2;
+                message.arg2 = i;
+                message.obj = platform;
+                handler.sendMessage(message);
+            }
+
+            @Override
+            public void onCancel(Platform platform, int i) {
+                Message message = new Message();
+                message.arg1 = 3;
+                message.arg2 = i;
+                message.obj = platform;
+                handler.sendMessage(message);
+            }
+        });
         platform.authorize();
     }
 
@@ -83,7 +122,18 @@ public class AuthLoginActivity extends BaseActivity implements Handler.Callback 
     }
 
     private void a(View view) {
-        view.setOnTouchListener((View.OnTouchListener) ((Object) new d(this)));
+        view.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if (event.getAction() == 0) {
+                    AuthLoginActivity.a(AuthLoginActivity.this, v);
+                    return false;
+                }
+                if (event.getAction() != 1) return false;
+                v.clearAnimation();
+                return false;
+            }
+        });
     }
 
     @Override
@@ -97,12 +147,47 @@ public class AuthLoginActivity extends BaseActivity implements Handler.Callback 
                 String string = platform.getDb().getUserId();
                 String string2 = platform.getDb().getToken();
                 if (string != null && string2 != null) {
-                    f f2 = new f(this, (Activity) this, R.string.login_loading);
+                    com.clilystudio.netbook.a_pack.c<String, Account> f2 = new c<String, Account>((Activity) this, R.string.login_loading){
+
+                        @Override
+                        public Account a(String... var1) {
+                            com.clilystudio.netbook.api.b.a();
+                            return com.clilystudio.netbook.api.b.b().g(var1[0], var1[1], var1[2]);
+                        }
+
+                        @Override
+                        public void a(Account account) {
+                            if (account != null && account.getUser() != null && account.getToken() != null) {
+                                if (account.isOk()) {
+                                    com.clilystudio.netbook.api.b.a();
+                                    com.clilystudio.netbook.api.b.b().h(account.getUser().getId());
+                                    com.clilystudio.netbook.hpay100.a.a.a(AuthLoginActivity.this, account.getUser().getId());
+                                    MyApplication.a().a(account);
+                                    com.clilystudio.netbook.event.t t2 = new com.clilystudio.netbook.event.t(account);
+                                    t2.a((AuthLoginActivity.Source) ((Object) AuthLoginActivity.this.getIntent().getSerializableExtra("KEY_SOURCE")));
+                                    i.a().post(t2);
+                                    com.clilystudio.netbook.util.e.a((Activity) AuthLoginActivity.this, "登录成功");
+                                } else {
+                                    String string = account.getCode();
+                                    if ("AUTHENTICATION_FAILED".equals(string)) {
+                                        com.clilystudio.netbook.util.e.a((Activity) AuthLoginActivity.this, R.string.auth_invalid);
+                                    } else if ("BANNED_USER".equals(string)) {
+                                        com.clilystudio.netbook.util.e.a((Activity) AuthLoginActivity.this, "登录失败，该账户被封禁");
+                                    } else {
+                                        com.clilystudio.netbook.util.e.a((Activity) AuthLoginActivity.this, "登录失败，请重试");
+                                    }
+                                }
+                            } else {
+                                com.clilystudio.netbook.util.e.a((Activity) AuthLoginActivity.this, "登录失败，请检查网络或者稍后再试");
+                            }
+                            AuthLoginActivity.this.finish();
+                       }
+                    };
                     String[] arrstring = new String[]{this.a, string, string2};
                     f2.b(arrstring);
                     return false;
                 }
-                Toast.makeText((Context) this, "\u6388\u6743\u5f02\u5e38\uff0c\u8bf7\u91cd\u65b0\u6388\u6743", 0).show();
+                Toast.makeText((Context) this, "授权异常，请重新授权", 0).show();
                 this.finish();
                 return false;
             }
@@ -155,24 +240,17 @@ public class AuthLoginActivity extends BaseActivity implements Handler.Callback 
                 AuthLoginActivity.a(AuthLoginActivity.this);
             }
         });
-        i.a().a(this);
+        i.a().register(this);
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        i.a().b(this);
+        i.a().unregister(this);
     }
 
-    @l
-    public void onWeixinAuthEvent$60b4a58a(av av2) {
-        if (av2.f()) {
-            f f2 = new f(this, (Activity) this, R.string.login_loading);
-            String[] arrstring = new String[]{av2.g(), null, av2.e()};
-            f2.b(arrstring);
-            return;
-        }
-        Toast.makeText((Context) this, av2.e(), 0).show();
+    @Subscribe
+    public void onWeixinAuthEvent() {
         this.finish();
     }
 

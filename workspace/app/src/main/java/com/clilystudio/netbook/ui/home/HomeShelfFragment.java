@@ -46,7 +46,6 @@ import com.clilystudio.netbook.reader.txt.U;
 import com.clilystudio.netbook.ui.BookInfoActivity;
 import com.clilystudio.netbook.ui.feed.FeedIntroActivity;
 import com.clilystudio.netbook.ui.feed.FeedListActivity;
-import com.clilystudio.netbook.ui.user.RemoveAdActivity;
 import com.clilystudio.netbook.util.FeedIntroDialog;
 import com.clilystudio.netbook.util.InsideLinkIntent;
 import com.clilystudio.netbook.widget.CoverLoadingView;
@@ -678,7 +677,7 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
     }
 
     static /* synthetic */ void k(HomeShelfFragment homeShelfFragment) {
-        homeShelfFragment.startActivity(new Intent(homeShelfFragment.getActivity(), RemoveAdActivity.class));
+        // RemoveAdActivity
     }
 
     static /* synthetic */ void l(HomeShelfFragment homeShelfFragment) {

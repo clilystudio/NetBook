@@ -7,25 +7,36 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-
-import com.clilystudio.netbook.R;
-import com.clilystudio.netbook.am;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.clilystudio.netbook.MyApplication;
+import com.clilystudio.netbook.R;
+import com.clilystudio.netbook.a_pack.c;
+import com.clilystudio.netbook.am;
+import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.d;
+import com.clilystudio.netbook.event.K;
+import com.clilystudio.netbook.event.i;
+import com.clilystudio.netbook.model.Account;
+import com.clilystudio.netbook.model.ChangeGenderRoot;
+import com.clilystudio.netbook.model.ChangeNickNameRoot;
+import com.clilystudio.netbook.model.Root;
 import com.clilystudio.netbook.model.User;
+import com.clilystudio.netbook.model.UserInfo;
 import com.clilystudio.netbook.ui.BaseActivity;
 import com.clilystudio.netbook.ui.CircularSmartImageView;
 import com.clilystudio.netbook.ui.CropPhotoActivity;
+import com.clilystudio.netbook.util.e;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.Calendar;
+import java.util.Date;
 
-import butterknife.ButterKnife;
-import butterknife.InjectView;
+import uk.me.lewisdeane.ldialogs.BaseDialog;
 
 public class ModifyUserInfoActivity extends BaseActivity implements View.OnClickListener {
     LinearLayout mGenderSection;
@@ -55,7 +66,7 @@ public class ModifyUserInfoActivity extends BaseActivity implements View.OnClick
     /*
      * Enabled aggressive block sorting
      */
-    static /* synthetic */ void a(ModifyUserInfoActivity modifyUserInfoActivity, boolean bl) {
+    static /* synthetic */ void a(final ModifyUserInfoActivity modifyUserInfoActivity, final boolean bl) {
         if (modifyUserInfoActivity.a.getGender().equals("male") == bl) {
             e.a((Activity) modifyUserInfoActivity, (String) "\u6ca1\u6709\u4fee\u6539");
             return;
@@ -63,11 +74,55 @@ public class ModifyUserInfoActivity extends BaseActivity implements View.OnClick
         Object[] arrobject = new Object[1];
         String string = bl ? "\u7537" : "\u5973";
         arrobject[0] = string;
-        String string2 = String.format("\u6027\u522b\u4e00\u65e6\u786e\u5b9a\u5219\u65e0\u6cd5\u518d\u6b21\u4fee\u6539\uff01\u8bf7\u786e\u8ba4\u4f60\u9009\u62e9\u7684\u662f\u300c\u6027\u522b%s\u300d\u5417\uff1f", arrobject);
-        h h2 = new h(modifyUserInfoActivity);
-        h2.d = "\u63d0\u793a";
-        h2.e = string2;
-        h2.a("\u786e\u8ba4\u4fee\u6539", (DialogInterface.OnClickListener) ((Object) new m(modifyUserInfoActivity, bl))).b("\u53d6\u6d88", null).b();
+        String string2 = String.format("性别一旦确定则无法再次修改！请确认你选择的是「性别%s」吗？", arrobject);
+        BaseDialog.Builder h2 = new BaseDialog.Builder(modifyUserInfoActivity);
+        h2.setTitle("提示");
+        h2.setMessage(string2);
+        h2.setPositiveButton("确认修改", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                com.clilystudio.netbook.a_pack.c<String, ChangeGenderRoot> q2 = new c<String, ChangeGenderRoot>(modifyUserInfoActivity, R.string.loading) {
+
+                    @Override
+                    public ChangeGenderRoot a(String... var1) {
+                        Account account = am.e();
+                        if (account != null) {
+                            return com.clilystudio.netbook.api.b.b().v(account.getToken(), var1[0]);
+                        }
+                        return  null;
+                    }
+
+                    @Override
+                    public void a(ChangeGenderRoot changeGenderRoot) {
+                        if (changeGenderRoot != null) {
+                            if (!changeGenderRoot.isOk()) {
+                                com.clilystudio.netbook.util.e.a((Activity) modifyUserInfoActivity, changeGenderRoot.getErrorMessage());
+                                return;
+                            }
+                            UserInfo userInfo = (UserInfo) MyApplication.a().b("savedObject_userinfo");
+                            String string = ModifyUserInfoActivity.a(modifyUserInfoActivity).getGender().equals("male") ? "female" : "male";
+                            userInfo.setGender(string);
+                            MyApplication.a().a(userInfo, "savedObject_userinfo");
+                            Account account = am.a(modifyUserInfoActivity);
+                            if (account != null) {
+                                ModifyUserInfoActivity.a(modifyUserInfoActivity).setGender(string);
+                                account.setUser(ModifyUserInfoActivity.a(modifyUserInfoActivity));
+                                MyApplication.a().a(account);
+                            }
+                            TextView textView = modifyUserInfoActivity.mGenderView;
+                            String string2 = string.equals("male") ? "男" : "女";
+                            textView.setText(string2);
+                            com.clilystudio.netbook.util.e.a((Activity) modifyUserInfoActivity, "修改成功");
+                            i.a().post(new K());
+                        }
+                    }
+                };
+                String[] arrstring = new String[1];
+                String string = bl ? "male" : "female";
+                arrstring[0] = string;
+                q2.b(arrstring);
+            }
+        }).setNegativeButton("取消", null).show();
     }
 
     static /* synthetic */ boolean b(ModifyUserInfoActivity modifyUserInfoActivity, boolean bl) {
@@ -97,12 +152,32 @@ public class ModifyUserInfoActivity extends BaseActivity implements View.OnClick
             if (n != 6709) return;
             {
                 if (n2 == -1) {
-                    new t(this, this, "\u6b63\u5728\u4e0a\u4f20\u56fe\u7247...", (Uri) intent.getParcelableExtra("output")).b((Object[]) new String[0]);
+                    final Uri output = intent.getParcelableExtra("output");
+                    new c<String, Root>(ModifyUserInfoActivity.this, "正在上传图片..."){
+
+                        @Override
+                        public Root a(String... var1) {
+                            return com.clilystudio.netbook.api.b.b().a(am.a(ModifyUserInfoActivity.this).getToken(), output);
+
+                        }
+
+                        @Override
+                        public void a(Root root) {
+                             if (root != null && root.isOk()) {
+                                com.clilystudio.netbook.util.e.a((Activity) ModifyUserInfoActivity.this, "修改成功");
+                                i.a().post(new K());
+                                 ModifyUserInfoActivity.this.mPortrait.setImageURI(output);
+                                return;
+                            }
+                            com.clilystudio.netbook.util.e.a((Activity) ModifyUserInfoActivity.this, "上传失败");
+                        }
+                    }.b();
+                    new t(this, this, "正在上传图片...", output).b();
                     return;
                 }
                 if (n2 != 404) return;
                 {
-                    e.a((Activity) this, (String) ((Throwable) intent.getSerializableExtra("error")).getMessage());
+                    com.clilystudio.netbook.util.e.a((Activity) this, (String) ((Throwable) intent.getSerializableExtra("error")).getMessage());
                     return;
                 }
             }
@@ -133,36 +208,82 @@ public class ModifyUserInfoActivity extends BaseActivity implements View.OnClick
                 if (!bl) return;
                 boolean bl2 = !a.a((Context) this, "EXTRA_CHANGE_AVATAR", false);
                 if (bl2) {
-                    h h3 = new h(this);
-                    h3.d = "\u63d0\u9192";
-                    h3.e = "\u82e5\u7528\u8fdd\u89c4\u56fe\u7247\u4f5c\u5934\u50cf\uff0c\u4f1a\u88ab\u6c38\u4e45\u5c01\u53f7\u54e6\u3002";
-                    h3.a("\u77e5\u9053\u4e86", (DialogInterface.OnClickListener) ((Object) new n(this))).b();
+                    BaseDialog.Builder h3 = new BaseDialog.Builder(this);
+                    h3.setTitle("提醒");
+                    h3.setMessage("若用违规图片作头像，会被永久封号哦。");
+                    h3.setPositiveButton("知道了", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            com.clilystudio.netbook.hpay100.a.a.b(ModifyUserInfoActivity.this);
+                            com.clilystudio.netbook.hpay100.a.a.b((Context) ModifyUserInfoActivity.this, "EXTRA_CHANGE_AVATAR", true);
+                        }
+                    }).show();
                     return;
                 }
-                a.b(this);
+                com.clilystudio.netbook.hpay100.a.a.b(this);
                 return;
             }
             case R.id.name_section: {
                 long l2 = this.b;
                 long l3 = Calendar.getInstance().getTimeInMillis() - l2;
                 if (l3 < 0) {
-                    e.a((Activity) this, (String) "\u6682\u65f6\u65e0\u6cd5\u4fee\u6539");
+                    com.clilystudio.netbook.util.e.a((Activity) this, (String) "暂时无法修改");
                 }
                 if (l3 >= 2592000000L || this.b == -2) {
                     View view2 = this.getLayoutInflater().inflate(R.layout.dialog_user_rename, null);
-                    EditText editText = (EditText) view2.findViewById(R.id.name_field);
+                    final EditText editText = (EditText) view2.findViewById(R.id.name_field);
                     editText.setText(this.a.getNickname());
                     editText.setSelection(this.a.getNickname().length());
-                    h h4 = new h(this);
-                    h4.d = "\u4fee\u6539\u6635\u79f0";
-                    editText.setOnFocusChangeListener((View.OnFocusChangeListener) ((Object) new p(this, h4.b(view2).a("\u4fdd\u5b58", (DialogInterface.OnClickListener) ((Object) new o(this, editText))).b(17039360, null).b())));
+                    BaseDialog.Builder h4 = new BaseDialog.Builder(this);
+                    h4.setTitle("修改昵称");
+                    final AlertDialog alertDialog = h4.setView(view2).setPositiveButton("保存", new DialogInterface.OnClickListener() {
+
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            c<String, ChangeNickNameRoot> s2 = new c<String, ChangeNickNameRoot>(ModifyUserInfoActivity.this, R.string.loading){
+                                String a;
+
+                                @Override
+                                public ChangeNickNameRoot a(String... var1) {
+                                    this.a = var1[0];
+                                    Account account = am.e();
+                                    if (account != null) {
+                                        return com.clilystudio.netbook.api.b.b().u(account.getToken(), var1[0]);
+                                    }
+                                    return null;
+                                }
+
+                                @Override
+                                public void a(ChangeNickNameRoot changeNickNameRoot) {
+                                    if (changeNickNameRoot == null) return;
+                                    if (changeNickNameRoot.isOk()) {
+                                        ModifyUserInfoActivity.this.mNameView.setText(this.a);
+                                        com.clilystudio.netbook.util.e.a((Activity) ModifyUserInfoActivity.this, "修改成功");
+                                        i.a().post(new K());
+                                        return;
+                                    }
+                                    com.clilystudio.netbook.util.e.a((Activity) ModifyUserInfoActivity.this, changeNickNameRoot.getErrorMessage());
+                                }
+                            };
+                            String[] arrstring = new String[]{editText.getText().toString()};
+                            s2.b(arrstring);
+                        }
+                    }).setNegativeButton(17039360, null).create();
+                    editText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+                        @Override
+                        public void onFocusChange(View v, boolean hasFocus) {
+                            if (hasFocus) {
+                                alertDialog.getWindow().setSoftInputMode(5);
+                            }
+                        }
+                    });
                     return;
                 }
                 long l4 = 2592000000L - l3;
                 if (l4 >= 86400000) {
                     int n2 = (int) (l4 / 86400000);
                     Object[] arrobject = new Object[]{n2};
-                    e.a((Activity) this, (String) String.format("\u518d\u8fc7%d\u5929\u624d\u80fd\u4fee\u6539\u54e6", arrobject));
+                    com.clilystudio.netbook.util.e.a((Activity) this, (String) String.format("再过%d天才能修改哦", arrobject));
                     return;
                 }
                 int n3 = (int) (l4 / 3600000);
@@ -170,13 +291,13 @@ public class ModifyUserInfoActivity extends BaseActivity implements View.OnClick
                     n3 = 1;
                 }
                 Object[] arrobject = new Object[]{n3};
-                e.a((Activity) this, (String) String.format("\u518d\u8fc7%d\u5c0f\u65f6\u624d\u80fd\u4fee\u6539\u54e6", arrobject));
+                com.clilystudio.netbook.util.e.a((Activity) this, (String) String.format("再过%d小时才能修改哦", arrobject));
                 return;
             }
             case R.id.gender_section:
         }
         if (this.e) {
-            e.a((Activity) this, (String) "\u53ea\u6709\u4e00\u6b21\u4fee\u6539\u6027\u522b\u7684\u673a\u4f1a\uff0c\u4f60\u5df2\u7ecf\u6539\u8fc7\u4e86\u54e6");
+            com.clilystudio.netbook.util.e.a((Activity) this, (String) "只有一次修改性别的机会，你已经改过了哦");
             return;
         }
         View view3 = this.getLayoutInflater().inflate(R.layout.dialog_modify_gender, null);
@@ -222,9 +343,42 @@ public class ModifyUserInfoActivity extends BaseActivity implements View.OnClick
         this.b = this.getIntent().getLongExtra("nickname_updated_time", -1);
         if (this.b == -1) {
             this.c = false;
-            r r2 = new r(this, 0);
-            Object[] arrobject = new String[]{am.e().getToken()};
-            r2.execute(arrobject);
+            com.clilystudio.netbook.a_pack.e<String, Void, UserInfo> r2 = new com.clilystudio.netbook.a_pack.e<String, Void, UserInfo>(){
+
+                @Override
+                protected UserInfo doInBackground(String... params) {
+                    return com.clilystudio.netbook.api.b.b().K(params[0]);
+                }
+
+                @Override
+                protected void onPostExecute(UserInfo userInfo) {
+                     super.onPostExecute(userInfo);
+                    if (userInfo == null) {
+                        com.clilystudio.netbook.util.e.a((Activity) ModifyUserInfoActivity.this, "载入失败");
+                        MyApplication.a().b("savedObject_userinfo");
+                        return;
+                    }
+                    if (userInfo.isOk()) {
+                        MyApplication.a().a(userInfo, "savedObject_userinfo");
+                        Date date = userInfo.getNicknameUpdated();
+                        if (date == null) {
+                            ModifyUserInfoActivity.a(ModifyUserInfoActivity.this, -2);
+                        } else {
+                            ModifyUserInfoActivity.a(ModifyUserInfoActivity.this, date.getTime());
+                        }
+                        ModifyUserInfoActivity.b(ModifyUserInfoActivity.this, true);
+                        ModifyUserInfoActivity.c(ModifyUserInfoActivity.this, userInfo.isGenderChanged());
+                        return;
+                    } else {
+                        if (!"TOKEN_INVALID".equals(userInfo.getCode())) return;
+                        {
+                            com.clilystudio.netbook.util.e.a((Activity) ModifyUserInfoActivity.this, "帐号无效或过期，请退出登录后重试");
+                            return;
+                        }
+                    }
+                }
+            };
+            r2.execute(new String[]{am.e().getToken()});
         }
         this.mPortraitSection.setOnClickListener(this);
         this.mNameSection.setOnClickListener(this);

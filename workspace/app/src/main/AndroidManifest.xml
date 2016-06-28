@@ -138,10 +138,6 @@
             android:exported="true"
             android:screenOrientation="portrait"/>
         <activity
-            android:name="com.clilystudio.netbook.ui.user.RemoveAdActivity"
-            android:exported="true"
-            android:screenOrientation="portrait"/>
-        <activity
             android:name="com.clilystudio.netbook.ui.ugcbook.UGCMainActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"/>
@@ -408,18 +404,6 @@
                 android:value="com.clilystudio.netbook.ui.BaseActivity"/>
         </activity>
         <activity
-            android:name="com.clilystudio.netbook.ui.user.ChargeActivity"
-            android:screenOrientation="portrait"/>
-        <activity
-            android:name="com.clilystudio.netbook.ui.user.ChargeHelperActivity"
-            android:screenOrientation="portrait"/>
-        <activity
-            android:name="com.clilystudio.netbook.ui.user.SmsSendActivity"
-            android:screenOrientation="portrait"/>
-        <activity
-            android:name="com.clilystudio.netbook.ui.user.SmsVerifyActivity"
-            android:screenOrientation="portrait"/>
-        <activity
             android:name="com.mob.tools.MobUIShell"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:screenOrientation="portrait"
@@ -544,7 +528,6 @@
             android:value="com.clilystudio.netbook"/>
 
         <activity android:name="com.clilystudio.netbook.ui.BookRankMainActivity"/>
-        <activity android:name="com.clilystudio.netbook.ui.user.UserFollowWeixinActivity"/>
         <activity android:name="com.clilystudio.netbook.ui.SecretOpWebActivity"/>
         <activity android:name="com.clilystudio.netbook.ui.ShareRemoveAdActivity"/>
 
