@@ -2,7 +2,10 @@ package com.clilystudio.netbook.ui.ugcbook;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.os.Handler;
+import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +18,9 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.model.BookSummary;
+import com.clilystudio.netbook.model.SearchPromRoot;
 import com.clilystudio.netbook.model.UGCNewCollection;
 import com.clilystudio.netbook.ui.BaseActivity;
 import com.clilystudio.netbook.widget.SearchEditText;
@@ -23,6 +28,7 @@ import com.clilystudio.netbook.widget.SearchFixListView;
 import com.clilystudio.netbook.widget.ax;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import butterknife.ButterKnife;
@@ -151,12 +157,95 @@ public class UGCGuideAddBookActivity extends BaseActivity implements View.OnClic
         if (a.t(this)) {
             this.a(0);
             if (bl) {
-                w w2 = new w(this, 0);
-                Object[] arrobject = new String[]{this.b};
-                w2.b(arrobject);
+                com.clilystudio.netbook.a_pack.e<String, Void, List<BookSummary>> w2 = new com.clilystudio.netbook.a_pack.e<String, Void, List<BookSummary>>() {
+
+                    @Override
+                    protected List<BookSummary> doInBackground(String... params) {
+                        List<BookSummary> list = com.clilystudio.netbook.api.b.b().n(params[0]);
+                        SearchPromRoot searchPromRoot = com.clilystudio.netbook.api.b.b().q(params[0]);
+                        if (searchPromRoot != null && searchPromRoot.getProm() != null) {
+                            list.add(0, searchPromRoot.getProm());
+                        }
+                        return list;
+                    }
+
+                    @Override
+                    protected void onPreExecute() {
+                        super.onPreExecute();
+                        UGCGuideAddBookActivity.a(UGCGuideAddBookActivity.this, UGCGuideAddBookActivity.a(UGCGuideAddBookActivity.this).getText().toString());
+                    }
+
+                    @Override
+                    protected void onPostExecute(List<BookSummary> bookSummaries) {
+                        super.onPostExecute(bookSummaries);
+                        UGCGuideAddBookActivity.c(UGCGuideAddBookActivity.this, true);
+                        if (bookSummaries != null) {
+                            UGCGuideAddBookActivity.c(UGCGuideAddBookActivity.this).a(bookSummaries);
+                            new Handler().post(new Runnable() {
+                                @Override
+                                public void run() {
+                                    if (UGCGuideAddBookActivity.d(UGCGuideAddBookActivity.this) != null) {
+                                        UGCGuideAddBookActivity.d(UGCGuideAddBookActivity.this).setSelection(0);
+                                    }
+                                }
+                            });
+                            if (bookSummaries.size() > 0) {
+                                UGCGuideAddBookActivity.b(UGCGuideAddBookActivity.this, 1);
+                                return;
+                            }
+                            UGCGuideAddBookActivity.b(UGCGuideAddBookActivity.this, 3);
+                            return;
+                        }
+                        UGCGuideAddBookActivity.b(UGCGuideAddBookActivity.this, 2);
+                        com.clilystudio.netbook.util.e.a((Activity) UGCGuideAddBookActivity.this, (int) R.string.search_failed);
+                    }
+                };
+                w2.b(this.b);
                 return;
             }
-            A a2 = new A(this, 0);
+            com.clilystudio.netbook.a_pack.e<String, Void, List<BookSummary>> a2 = new com.clilystudio.netbook.a_pack.e<String, Void, List<BookSummary>>() {
+
+                @Override
+                protected List<BookSummary> doInBackground(String... params) {
+                    List<BookSummary> list = com.clilystudio.netbook.api.b.b().n(params[0]);
+                    SearchPromRoot searchPromRoot = com.clilystudio.netbook.api.b.b().q(params[0]);
+                    if (searchPromRoot != null && searchPromRoot.getProm() != null) {
+                        list.add(0, searchPromRoot.getProm());
+                    }
+                    return list;
+                }
+
+                @Override
+                protected void onPreExecute() {
+                    super.onPreExecute();
+                    UGCGuideAddBookActivity.c(UGCGuideAddBookActivity.this, false);
+                }
+
+                @Override
+                protected void onPostExecute(List<BookSummary> bookSummaries) {
+                    super.onPostExecute(bookSummaries);
+                    UGCGuideAddBookActivity.c(UGCGuideAddBookActivity.this, true);
+                    if (bookSummaries != null) {
+                        UGCGuideAddBookActivity.c(UGCGuideAddBookActivity.this).a(bookSummaries);
+                        new Handler().post(new Runnable() {
+                            @Override
+                            public void run() {
+                                if (UGCGuideAddBookActivity.d(UGCGuideAddBookActivity.this) != null) {
+                                    UGCGuideAddBookActivity.d(UGCGuideAddBookActivity.this).setSelection(0);
+                                }
+                            }
+                        });
+                        if (bookSummaries.size() > 0) {
+                            UGCGuideAddBookActivity.b(UGCGuideAddBookActivity.this, 1);
+                            return;
+                        }
+                        UGCGuideAddBookActivity.b(UGCGuideAddBookActivity.this, 3);
+                        return;
+                    }
+                    UGCGuideAddBookActivity.b(UGCGuideAddBookActivity.this, 2);
+                    com.clilystudio.netbook.util.e.a((Activity) UGCGuideAddBookActivity.this, (int) R.string.search_failed);
+                }
+            };
             String[] arrstring = new String[]{this.b};
             a2.b(arrstring);
             return;
@@ -228,12 +317,19 @@ public class UGCGuideAddBookActivity extends BaseActivity implements View.OnClic
         this.setCustomActionBar(view);
         this.findViewById(R.id.select_word_layout).setVisibility(View.GONE);
         this.n = true;
-        SearchPromptAdapter uGCGuideAddBookActivity$SearchPromptAdapter = new SearchPromptAdapter(this);
+        final SearchPromptAdapter searchPromptAdapter = new SearchPromptAdapter(this);
         this.h = (SearchFixListView) this.findViewById(R.id.search_prompt_list);
-        this.h.setAdapter(uGCGuideAddBookActivity$SearchPromptAdapter);
-        this.h.setOnItemClickListener(uGCGuideAddBookActivity$SearchPromptAdapter);
+        this.h.setAdapter(searchPromptAdapter);
+        this.h.setOnItemClickListener(searchPromptAdapter);
         this.c = (SearchEditText) view.findViewById(R.id.search_input_edit);
-        this.c.setOnUserInputListener((ax) ((Object) new s(this, uGCGuideAddBookActivity$SearchPromptAdapter)));
+        this.c.setOnUserInputListener(new ax() {
+            @Override
+            public void a() {
+                UGCGuideAddBookActivity.a(UGCGuideAddBookActivity.this, true);
+                String string = String.valueOf(Calendar.getInstance().getTimeInMillis());
+                searchPromptAdapter.getFilter().filter(string);
+            }
+        });
         this.e = view.findViewById(R.id.search_input_search);
         this.f = view.findViewById(R.id.search_input_clean);
         this.i = this.findViewById(R.id.pb_loading);
@@ -252,9 +348,37 @@ public class UGCGuideAddBookActivity extends BaseActivity implements View.OnClic
                 this.c.setTextByCode(this.b);
             }
         }
-        this.c.setOnEditorActionListener((TextView.OnEditorActionListener) ((Object) new t(this)));
-        this.c.addTextChangedListener((TextWatcher) ((Object) new u(this)));
-        this.c.setOnFocusChangeListener((View.OnFocusChangeListener) ((Object) new v(this)));
+        this.c.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                UGCGuideAddBookActivity.b(UGCGuideAddBookActivity.this, true);
+                return true;
+            }
+        });
+        this.c.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                UGCGuideAddBookActivity.a(UGCGuideAddBookActivity.this, null);
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                boolean bl = !com.clilystudio.netbook.hpay100.a.a.Q(editable.toString());
+                UGCGuideAddBookActivity.c(UGCGuideAddBookActivity.this, bl);
+            }
+        });
+        this.c.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                boolean bl2 = !com.clilystudio.netbook.hpay100.a.a.Q(UGCGuideAddBookActivity.a(UGCGuideAddBookActivity.this).getText().toString());
+                UGCGuideAddBookActivity.c(UGCGuideAddBookActivity.this, bl2);
+            }
+        });
         this.b();
     }
 
@@ -265,6 +389,7 @@ public class UGCGuideAddBookActivity extends BaseActivity implements View.OnClic
             bundle.putString("saved_keyword", this.b);
         }
     }
+
     public final class SearchPromptAdapter extends BaseAdapter implements AdapterView.OnItemClickListener,
             Filterable {
         final /* synthetic */ UGCGuideAddBookActivity a;
@@ -331,6 +456,7 @@ public class UGCGuideAddBookActivity extends BaseActivity implements View.OnClic
                 UGCGuideAddBookActivity.a(this.a, false);
             }
         }
+
         class SearchPromptAdapter$ViewHolder {
             TextView label;
 
@@ -338,4 +464,5 @@ public class UGCGuideAddBookActivity extends BaseActivity implements View.OnClic
                 this.label = (TextView) view.findViewById(R.id.search_prompt_list_item);
             }
         }
-    }}
+    }
+}

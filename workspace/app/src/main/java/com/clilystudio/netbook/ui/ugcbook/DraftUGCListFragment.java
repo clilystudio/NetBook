@@ -10,6 +10,7 @@ import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.model.UGCBookListRoot;
 
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 
 public class DraftUGCListFragment extends AbsUGCListFragment {
@@ -62,7 +63,16 @@ public class DraftUGCListFragment extends AbsUGCListFragment {
             uGCBookListRoot$UGCBook.setBookCount(j2.e());
             uGCBookListRoot$UGCBook.setUpdated(new Date());
         }
-        Collections.sort(this.i, new f(this));
+        Collections.sort(this.i, new Comparator<UGCBookListRoot.UGCBook>(){
+
+            @Override
+            public int compare(UGCBookListRoot.UGCBook lhs, UGCBookListRoot.UGCBook rhs) {
+                if (lhs.getUpdated().before(rhs.getUpdated())) {
+                    return 1;
+                }
+                return -1;
+            }
+        });
         this.c.a(this.i);
     }
 }

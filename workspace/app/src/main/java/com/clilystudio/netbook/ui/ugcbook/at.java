@@ -48,9 +48,9 @@ final class at extends com.clilystudio.netbook.a_pack.e<String, Void, UGCBookLis
         if (uGCBookListRoot != null) {
             if (uGCBookListRoot.isOk()) {
                 UGCMainListFragment.g(this.a).clear();
-                UGCBookListRoot$UGCBook[] arruGCBookListRoot$UGCBook = uGCBookListRoot.getBookLists();
+                UGCBookListRoot.UGCBook[] arruGCBookListRoot$UGCBook = uGCBookListRoot.getBookLists();
                 int n = arruGCBookListRoot$UGCBook.length;
-                List<UGCBookListRoot$UGCBook> list = Arrays.asList(arruGCBookListRoot$UGCBook);
+                List<UGCBookListRoot.UGCBook> list = Arrays.asList(arruGCBookListRoot$UGCBook);
                 UGCMainListFragment.g(this.a).addAll(list);
                 UGCMainListFragment.h(this.a).a(UGCMainListFragment.g(this.a));
                 if (n < 20) {

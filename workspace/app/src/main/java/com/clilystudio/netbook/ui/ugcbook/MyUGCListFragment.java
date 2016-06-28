@@ -35,9 +35,9 @@ public class MyUGCListFragment extends AbsUGCListFragment {
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int n, long l2) {
-        UGCBookListRoot$UGCBook uGCBookListRoot$UGCBook;
+        UGCBookListRoot.UGCBook uGCBookListRoot$UGCBook;
         int n2 = n - this.b.getHeaderViewsCount();
-        if (n2 >= 0 && n2 < this.i.size() && (uGCBookListRoot$UGCBook = (UGCBookListRoot$UGCBook) this.i.get(n2)) != null) {
+        if (n2 >= 0 && n2 < this.i.size() && (uGCBookListRoot$UGCBook = (UGCBookListRoot.UGCBook) this.i.get(n2)) != null) {
             Intent intent = new Intent(this.getActivity(), UGCDetailActivity.class);
             intent.putExtra("book_id", uGCBookListRoot$UGCBook.get_id());
             intent.putExtra("my_list", true);
@@ -50,7 +50,7 @@ public class MyUGCListFragment extends AbsUGCListFragment {
         if (this.i == null || this.c == null) {
             return;
         }
-        for (UGCBookListRoot$UGCBook uGCBookListRoot$UGCBook : this.i) {
+        for (UGCBookListRoot.UGCBook uGCBookListRoot$UGCBook : this.i) {
             if (!uGCBookListRoot$UGCBook.get_id().equals(j2.b())) continue;
             uGCBookListRoot$UGCBook.setCover(j2.a());
             uGCBookListRoot$UGCBook.setTitle(j2.c());

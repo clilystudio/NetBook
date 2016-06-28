@@ -11,13 +11,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 final class x extends Filter {
-    private /* synthetic */ UGCGuideAddBookActivity$SearchPromptAdapter a;
+    private /* synthetic */ UGCGuideAddBookActivity.SearchPromptAdapter a;
 
-    private x(UGCGuideAddBookActivity$SearchPromptAdapter searchPromptAdapter) {
+    private x(UGCGuideAddBookActivity.SearchPromptAdapter searchPromptAdapter) {
         this.a = searchPromptAdapter;
     }
 
-    /* synthetic */ x(UGCGuideAddBookActivity$SearchPromptAdapter searchPromptAdapter, byte by) {
+    /* synthetic */ x(UGCGuideAddBookActivity.SearchPromptAdapter searchPromptAdapter, byte by) {
         this(searchPromptAdapter);
     }
 
@@ -69,14 +69,14 @@ final class x extends Filter {
         } else {
             ArrayList arrayList = new ArrayList();
         }
-        UGCGuideAddBookActivity$SearchPromptAdapter.a(this.a, (List) var6_7);
-        if (UGCGuideAddBookActivity$SearchPromptAdapter.a(this.a).isEmpty()) {
+        UGCGuideAddBookActivity.SearchPromptAdapter.a(this.a, (List) var6_7);
+        if (UGCGuideAddBookActivity.SearchPromptAdapter.a(this.a).isEmpty()) {
             this.a.notifyDataSetInvalidated();
         } else {
             this.a.notifyDataSetChanged();
         }
         SearchFixListView searchFixListView = UGCGuideAddBookActivity.f(this.a.a);
-        int n2 = UGCGuideAddBookActivity$SearchPromptAdapter.a(this.a).isEmpty() || !UGCGuideAddBookActivity.e(this.a.a) ? 8 : 0;
+        int n2 = UGCGuideAddBookActivity.SearchPromptAdapter.a(this.a).isEmpty() || !UGCGuideAddBookActivity.e(this.a.a) ? 8 : 0;
         searchFixListView.setVisibility(n2);
     }
 }

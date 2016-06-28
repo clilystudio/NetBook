@@ -32,7 +32,7 @@ public class UGCMainListFragment extends Fragment implements AdapterView.OnItemC
     private TextView f;
     private at g;
     private as h;
-    private List<UGCBookListRoot$UGCBook> i = new ArrayList<UGCBookListRoot$UGCBook>();
+    private List<UGCBookListRoot.UGCBook> i = new ArrayList<UGCBookListRoot.UGCBook>();
     private String j;
     private j k;
 
@@ -187,7 +187,7 @@ public class UGCMainListFragment extends Fragment implements AdapterView.OnItemC
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int n, long l2) {
-        UGCBookListRoot$UGCBook uGCBookListRoot$UGCBook;
+        UGCBookListRoot.UGCBook uGCBookListRoot$UGCBook;
         int n2 = n - this.b.getHeaderViewsCount();
         if (n2 >= 0 && n2 < this.i.size() && (uGCBookListRoot$UGCBook = this.i.get(n2)) != null) {
             Intent intent = new Intent(this.getActivity(), UGCDetailActivity.class);

@@ -1,16 +1,23 @@
 package com.clilystudio.netbook.ui.ugcbook;
 
+import android.app.Activity;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.clilystudio.netbook.am;
+import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.model.Account;
+import com.clilystudio.netbook.model.ResultStatus;
 import com.clilystudio.netbook.model.UGCBookListRoot;
+import com.clilystudio.netbook.ui.BaseActivity;
 import com.clilystudio.netbook.util.W;
+import com.clilystudio.netbook.util.e;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 
+import uk.me.lewisdeane.ldialogs.BaseDialog;
 import uk.me.lewisdeane.ldialogs.h;
 
 public class FavUGCListFragment extends AbsUGCListFragment implements AdapterView.OnItemLongClickListener {
@@ -48,14 +55,43 @@ public class FavUGCListFragment extends AbsUGCListFragment implements AdapterVie
         if (n2 < 0 || n2 >= this.l.getCount()) {
             return false;
         }
-        UGCBookListRoot$UGCBook uGCBookListRoot$UGCBook = (UGCBookListRoot$UGCBook) this.l.getItem(n2);
-        if (uGCBookListRoot$UGCBook == null) {
+        final UGCBookListRoot.UGCBook ugcBook = (UGCBookListRoot.UGCBook) this.l.getItem(n2);
+        if (ugcBook == null) {
             return false;
         }
-        String string = uGCBookListRoot$UGCBook.getTitle();
-        h h2 = new h(this.getActivity());
-        h2.d = string;
-        h2.a(new String[]{"\u5220\u9664"}, (DialogInterface.OnClickListener) ((Object) new g(this, uGCBookListRoot$UGCBook))).a().show();
+        String string = ugcBook.getTitle();
+        BaseDialog.Builder h2 = new BaseDialog.Builder(this.getActivity());
+        h2.setTitle(string);
+        h2.setPositiveButton("删除", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Account account = am.a((BaseActivity) FavUGCListFragment.this.getActivity());
+                if (account != null) {
+                    FavUGCListFragment.a(FavUGCListFragment.this).setRefreshing();
+                    com.clilystudio.netbook.a_pack.e<String, Void, ResultStatus> h2 = new com.clilystudio.netbook.a_pack.e<String, Void, ResultStatus>(){
+
+                        @Override
+                        protected ResultStatus doInBackground(String... params) {
+                            com.clilystudio.netbook.api.b.a();
+                            return com.clilystudio.netbook.api.b.b().E(params[0], params[1]);
+                        }
+
+                        @Override
+                        protected void onPostExecute(ResultStatus resultStatus) {
+                             super.onPostExecute(resultStatus);
+                            if (resultStatus != null && resultStatus.isOk()) {
+                                FavUGCListFragment.this.a();
+                                com.clilystudio.netbook.util.e.a((Activity) FavUGCListFragment.this.getActivity(), "删除成功");
+                                return;
+                            }
+                            com.clilystudio.netbook.util.e.a((Activity) FavUGCListFragment.this.getActivity(), "删除失败");
+                        }
+                    };
+                    String[] arrstring = new String[]{account.getToken(), ugcBook.get_id()};
+                    h2.b(arrstring);
+                }
+            }
+        }).create().show();
         return true;
     }
 }
