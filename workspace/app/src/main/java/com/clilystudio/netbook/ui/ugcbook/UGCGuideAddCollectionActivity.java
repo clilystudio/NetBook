@@ -120,7 +120,7 @@ public class UGCGuideAddCollectionActivity extends BaseActivity {
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         this.setContentView(R.layout.activity_ucg_guide_add_collection);
-        i.a().a(this);
+        i.a().register(this);
         this.a = (TextView) this.findViewById(R.id.name_field);
         this.b = (TextView) this.findViewById(R.id.desc_field);
         this.c = this.getIntent().getStringExtra("ugc_id");
@@ -144,7 +144,7 @@ public class UGCGuideAddCollectionActivity extends BaseActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        i.a().b(this);
+        i.a().unregister(this);
     }
 
     @l

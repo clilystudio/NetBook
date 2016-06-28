@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.clilystudio.netbook.R;
+
 public class LabelPtrListView extends HeaderPtrListView {
     private TextView c;
 

@@ -1,18 +1,15 @@
 package com.clilystudio.netbook.ui.user;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-
-import com.clilystudio.netbook.R;
-import com.clilystudio.netbook.am;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.clilystudio.netbook.MyApplication;
-import com.clilystudio.netbook.api.b;
+import com.clilystudio.netbook.R;
+import com.clilystudio.netbook.am;
 import com.clilystudio.netbook.d;
 import com.clilystudio.netbook.event.K;
 import com.clilystudio.netbook.event.i;
@@ -25,15 +22,11 @@ import com.clilystudio.netbook.ui.CircularSmartImageView;
 import com.clilystudio.netbook.ui.SettingsActivity;
 import com.clilystudio.netbook.ui.ShareRemoveAdActivity;
 import com.clilystudio.netbook.ui.aa;
-import com.clilystudio.netbook.util.*;
-import com.clilystudio.netbook.util.e;
-import com.umeng.a.b;
+import com.clilystudio.netbook.util.J;
+import com.squareup.otto.Subscribe;
 import com.xiaomi.mistatistic.sdk.MiStatInterface;
 
 import java.util.Date;
-
-import butterknife.ButterKnife;
-import butterknife.InjectView;
 
 public class UserInfoActivity extends BaseActivity {
     TextView mExp;
@@ -69,41 +62,35 @@ public class UserInfoActivity extends BaseActivity {
             userInfoActivity.mMessageCount.setText(String.valueOf(n));
             return;
         }
-        userInfoActivity.mMessageCount.setVisibility(4);
+        userInfoActivity.mMessageCount.setVisibility(View.INVISIBLE);
     }
 
     static /* synthetic */ void a(UserInfoActivity userInfoActivity, UserInfo userInfo) {
         int n = userInfo.getLv();
         int n2 = userInfo.getExp();
-        int n3 = e.a((int) n);
+        int n3 = com.clilystudio.netbook.util.e.a(n);
         String string = userInfo.getScaleAvatar(2);
         userInfoActivity.mPortrait.setImageUrl(string, R.drawable.avatar_default);
         userInfoActivity.mName.setText(userInfo.getNickname());
-        userInfoActivity.mLevel.setText("Lv:" + n);
-        userInfoActivity.mExp.setText("\u7ecf\u9a8c\uff1a" + n2 + "/" + n3);
+        String text = "Lv:" + n;
+        userInfoActivity.mLevel.setText(text);
+        String text1 = "经验：" + n2 + "/" + n3;
+        userInfoActivity.mExp.setText(text1);
         userInfoActivity.mExpProgress.setProgress(n2 * 100 / n3);
     }
 
     static /* synthetic */ void b(UserInfoActivity userInfoActivity) {
-     }
+    }
 
-    /*
-     * Enabled aggressive block sorting
-     * Enabled unnecessary exception pruning
-     * Enabled aggressive exception aggregation
-     */
-    static /* synthetic */ void b(UserInfoActivity userInfoActivity, UserInfo userInfo) {
+    static /* synthetic */ void b(UserInfo userInfo) {
         Account account = am.e();
         if (account != null) {
             User user = account.getUser();
             user.setNickname(userInfo.getNickname());
             user.setAvatar(userInfo.getAvatar());
             user.setLv(userInfo.getLv());
-            try {
-                MyApplication.a().a(account);
-            } catch (Exception var4_4) {
-            }
-            i.a().c(new com.clilystudio.netbook.event.a());
+            MyApplication.a().a(account);
+            i.a().post(new com.clilystudio.netbook.event.a());
         }
     }
 
@@ -114,7 +101,7 @@ public class UserInfoActivity extends BaseActivity {
 
     private void b() {
         if (this.c != null) {
-            com.clilystudio.netbook.a_pack.e<String, Void, UserInfo> aK2 = new com.clilystudio.netbook.a_pack.e<String, Void, UserInfo>(){
+            com.clilystudio.netbook.a_pack.e<String, Void, UserInfo> aK2 = new com.clilystudio.netbook.a_pack.e<String, Void, UserInfo>() {
 
                 @Override
                 protected UserInfo doInBackground(String... params) {
@@ -131,31 +118,26 @@ public class UserInfoActivity extends BaseActivity {
                             MyApplication.a().a(userInfo, "savedObject_userinfo");
                             UserInfoActivity.a(UserInfoActivity.this, userInfo.getNicknameUpdated());
                             UserInfoActivity.a(UserInfoActivity.this, J.a(UserInfoActivity.this).a());
-                            UserInfoActivity.b(UserInfoActivity.this, userInfo);
-                            return;
+                            UserInfoActivity.b(userInfo);
                         } else {
-                            if (!"TOKEN_INVALID".equals(userInfo.getCode())) return;
-                            {
-                                com.clilystudio.netbook.util.e.a((Activity) UserInfoActivity.this, (String) "帐号无效或过期，请退出登录后重试");
-                                return;
+                            if ("TOKEN_INVALID".equals(userInfo.getCode())) {
+                                com.clilystudio.netbook.util.e.a(UserInfoActivity.this, "帐号无效或过期，请退出登录后重试");
                             }
                         }
                     } else {
-                        com.clilystudio.netbook.util.e.a((Activity) UserInfoActivity.this, (String) "载入失败");
+                        com.clilystudio.netbook.util.e.a(UserInfoActivity.this, "载入失败");
                         UserInfo userInfo2 = (UserInfo) MyApplication.a().b("savedObject_userinfo");
-                        if (userInfo2 == null) return;
-                        {
+                        if (userInfo2 != null) {
                             UserInfoActivity.a(UserInfoActivity.this, userInfo2);
-                            return;
                         }
                     }
-               }
+                }
             };
             String[] arrstring = new String[]{this.c};
             aK2.b(arrstring);
             return;
         }
-        e.a((Activity) this, (String) "\u8d26\u53f7\u5f02\u5e38\uff0c\u8bf7\u91cd\u65b0\u6388\u6743\u767b\u5f55\u540e\u518d\u8bd5");
+        com.clilystudio.netbook.util.e.a(this, "账号异常，请重新授权登录后再试");
     }
 
     @Override
@@ -228,7 +210,7 @@ public class UserInfoActivity extends BaseActivity {
             }
         });
         View view = this.findViewById(R.id.user_share_remove_ad);
-        if (a.r(this, "switch_share_remove_ad")) {
+        if (com.clilystudio.netbook.hpay100.a.a.r(this, "switch_share_remove_ad")) {
             view.setVisibility(View.VISIBLE);
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -240,22 +222,22 @@ public class UserInfoActivity extends BaseActivity {
             });
         }
         this.b();
-        i.a().a(this);
-        b.a(this, "PERSONAL_PAGE_SHOW");
+        i.a().register(this);
+        MiStatInterface.recordCountEvent("PERSONAL_PAGE_SHOW", null);
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        i.a().b(this);
+        i.a().unregister(this);
     }
 
-    @l
+    @Subscribe
     public void onLogoutEvent(u u2) {
         this.finish();
     }
 
-    @l
+    @Subscribe
     public void onUserInfoChanged(K k) {
         this.b();
     }

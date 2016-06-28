@@ -596,7 +596,7 @@ public class HomeActivity extends HomeParentActivity implements ViewPager$OnPage
         if (!this.c) {
             this.r.setVisibility(View.GONE);
         }
-        com.clilystudio.netbook.event.i.a().a(this);
+        com.clilystudio.netbook.event.i.a().register(this);
         this.f = (TabHost) this.findViewById(R.id.host);
         TabWidgetV2 tabWidgetV2 = (TabWidgetV2) this.findViewById(16908307);
         this.g = (ViewPager) this.findViewById(R.id.pager);
@@ -728,7 +728,7 @@ public class HomeActivity extends HomeParentActivity implements ViewPager$OnPage
     protected void onDestroy() {
         super.onDestroy();
         ShareSDK.stopSDK(this);
-        com.clilystudio.netbook.event.i.a().b(this);
+        com.clilystudio.netbook.event.i.a().unregister(this);
         this.p = null;
         if (this.t != null) {
             this.t.clearHistory();

@@ -201,7 +201,7 @@ public class ReaderResourceFragment extends Fragment {
     @Override
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        i.a().a(this);
+        i.a().register(this);
         this.a = this.getArguments().getString("BOOK_ID");
         this.b = this.getArguments().getString("BOOK_TITLE");
     }
@@ -253,7 +253,7 @@ public class ReaderResourceFragment extends Fragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        i.a().b(this);
+        i.a().unregister(this);
     }
 
     /*

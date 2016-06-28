@@ -1287,7 +1287,7 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
     @Override
     public void onDestroy() {
         super.onDestroy();
-        i.a().b(this);
+        i.a().unregister(this);
     }
 
     @com.squareup.a.l

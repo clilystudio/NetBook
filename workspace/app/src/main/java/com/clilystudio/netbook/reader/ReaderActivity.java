@@ -1821,7 +1821,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         this.G = com.clilystudio.netbook.hpay100.a.a.l(this, "reader_orientation");
         this.r();
         this.setContentView(R.layout.activity_reader);
-        i.a().a(this);
+        i.a().register(this);
         Intent intent = this.getIntent();
         this.c = this.a("BOOK_ID");
         this.d = this.a("BOOK_TITLE");
@@ -2175,7 +2175,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
                 return;
             }
             o o2 = arro[n3];
-            i.a().b(o2);
+            i.a().unregister(o2);
             ++n3;
         } while (true);
     }

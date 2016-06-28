@@ -115,12 +115,12 @@ public class BookRankListActivity extends BaseActivity {
     @Override
     public void onPause() {
         super.onPause();
-        i.a().b(this);
+        i.a().unregister(this);
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        i.a().a(this);
+        i.a().register(this);
     }
 }

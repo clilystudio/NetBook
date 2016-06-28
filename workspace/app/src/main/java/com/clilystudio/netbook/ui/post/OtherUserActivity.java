@@ -339,7 +339,7 @@ public class OtherUserActivity extends BaseActivity {
     @Override
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        i.a().a(this);
+        i.a().register(this);
         this.setContentView(R.layout.fragment_book_topic);
         this.b = LayoutInflater.from(this);
         this.r = this.getIntent().getExtras().getString("USER_ID");
@@ -379,7 +379,7 @@ public class OtherUserActivity extends BaseActivity {
         if (this.A != null) {
             this.A.cancel(true);
         }
-        i.a().b(this);
+        i.a().unregister(this);
     }
 
     @l

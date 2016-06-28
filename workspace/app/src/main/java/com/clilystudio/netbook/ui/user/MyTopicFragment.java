@@ -1,13 +1,8 @@
 package com.clilystudio.netbook.ui.user;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-
-import com.clilystudio.netbook.R;
-import com.clilystudio.netbook.am;
-
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -19,7 +14,8 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.clilystudio.netbook.api.b;
+import com.clilystudio.netbook.R;
+import com.clilystudio.netbook.am;
 import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.model.Topic;
 import com.clilystudio.netbook.model.TopicPost;
@@ -27,14 +23,11 @@ import com.clilystudio.netbook.ui.post.BookHelpActivity;
 import com.clilystudio.netbook.ui.post.PostDetailActivity;
 import com.clilystudio.netbook.ui.post.ReviewActivity;
 import com.clilystudio.netbook.util.W;
-import com.clilystudio.netbook.util.e;
 import com.clilystudio.netbook.widget.CoverView;
 import com.clilystudio.netbook.widget.LabelPtrListView;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
-import com.handmark.pulltorefresh.library.PullToRefreshBase.Mode;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class MyTopicFragment extends Fragment {
@@ -46,7 +39,7 @@ public class MyTopicFragment extends Fragment {
     private View f;
     private TextView g;
     private W<TopicPost> h;
-    private List<TopicPost> i = new ArrayList<TopicPost>();
+    private List<TopicPost> i = new ArrayList<>();
     private String j;
     private PullToRefreshBase.OnLastItemVisibleListener k;
 
@@ -65,7 +58,7 @@ public class MyTopicFragment extends Fragment {
                         @Override
                         protected Topic doInBackground(String... params) {
                             com.clilystudio.netbook.api.b.a();
-                            return com.clilystudio.netbook.api.b.b().e(params[0], MyTopicFragment.h(MyTopicFragment.this).size());
+                            return com.clilystudio.netbook.api.b.b().e(params[0], MyTopicFragment.this.i.size());
                         }
 
                         @Override
@@ -74,7 +67,7 @@ public class MyTopicFragment extends Fragment {
                             MyTopicFragment.a(MyTopicFragment.this).setVisibility(View.GONE);
                             MyTopicFragment.c(MyTopicFragment.this).setVisibility(View.GONE);
                             MyTopicFragment.i(MyTopicFragment.this).setVisibility(View.GONE);
-                            MyTopicFragment.d(MyTopicFragment.this).n();
+                            MyTopicFragment.d(MyTopicFragment.this).onRefreshComplete();
                             if (this.isCancelled()) return;
                             if (topic != null && topic.getPosts() != null) {
                                 TopicPost[] arrtopicPost = topic.getPosts();
@@ -82,10 +75,10 @@ public class MyTopicFragment extends Fragment {
                                 if (n > 0) {
                                     for (TopicPost topicPost : arrtopicPost) {
                                         if (topicPost.getBook() == null) continue;
-                                        MyTopicFragment.h(MyTopicFragment.this).add(topicPost);
+                                        MyTopicFragment.this.i.add(topicPost);
                                     }
-                                    MyTopicFragment.k(MyTopicFragment.this).a(MyTopicFragment.h(MyTopicFragment.this));
-                                    MyTopicFragment.a(MyTopicFragment.this, MyTopicFragment.h(MyTopicFragment.this).size());
+                                    MyTopicFragment.k(MyTopicFragment.this).a(MyTopicFragment.this.i);
+                                    MyTopicFragment.a(MyTopicFragment.this, MyTopicFragment.this.i.size());
                                     if (n >= 10) {
                                         MyTopicFragment.d(MyTopicFragment.this).setOnLastItemVisibleListener(MyTopicFragment.j(MyTopicFragment.this));
                                         return;
@@ -94,7 +87,7 @@ public class MyTopicFragment extends Fragment {
                                 MyTopicFragment.d(MyTopicFragment.this).setOnLastItemVisibleListener(null);
                                 return;
                             }
-                            com.clilystudio.netbook.util.e.a((Activity) MyTopicFragment.this.getActivity(), (String) "加载失败，请检查网络或稍后再试");
+                            com.clilystudio.netbook.util.e.a(MyTopicFragment.this.getActivity(), "加载失败，请检查网络或稍后再试");
                         }
                     };
                     com.clilystudio.netbook.a_pack.e<String, Void, Topic> f = MyTopicFragment.e(MyTopicFragment.this);
@@ -107,11 +100,6 @@ public class MyTopicFragment extends Fragment {
 
     static /* synthetic */ TextView a(MyTopicFragment myTopicFragment) {
         return myTopicFragment.g;
-    }
-
-    static /* synthetic */ com.clilystudio.netbook.a_pack.e<String, Void, Topic> a(MyTopicFragment myTopicFragment, com.clilystudio.netbook.a_pack.e<String, Void, Topic> g) {
-        myTopicFragment.b = g;
-        return g;
     }
 
     static /* synthetic */ void a(MyTopicFragment myTopicFragment, int n) {
@@ -142,10 +130,6 @@ public class MyTopicFragment extends Fragment {
         return myTopicFragment.d;
     }
 
-    static /* synthetic */ List h(MyTopicFragment myTopicFragment) {
-        return myTopicFragment.i;
-    }
-
     static /* synthetic */ View i(MyTopicFragment myTopicFragment) {
         return myTopicFragment.e;
     }
@@ -166,9 +150,9 @@ public class MyTopicFragment extends Fragment {
         LayoutInflater layoutInflater2 = LayoutInflater.from(this.getActivity());
         this.c = (LabelPtrListView) view.findViewById(R.id.ptr_list);
         this.c.setMode(PullToRefreshBase.Mode.PULL_FROM_START);
-        this.e = layoutInflater2.inflate(R.layout.loading_item, null);
-        this.d = (ListView) this.c.h();
-        if (a.i()) {
+        this.e = layoutInflater2.inflate(R.layout.loading_item, (ViewGroup)getActivity().getWindow().getDecorView(), false);
+        this.d = this.c.getRefreshableView();
+        if (com.clilystudio.netbook.hpay100.a.a.i()) {
             this.d.setFooterDividersEnabled(false);
         }
         this.d.addFooterView(this.e);
@@ -184,7 +168,7 @@ public class MyTopicFragment extends Fragment {
                             MyTopicFragment.c(MyTopicFragment.this).setVisibility(View.GONE);
                             MyTopicFragment.a(MyTopicFragment.this).setVisibility(View.VISIBLE);
                             MyTopicFragment.a(MyTopicFragment.this).setText("请登录后查看");
-                            MyTopicFragment.d(MyTopicFragment.this).n();
+                            MyTopicFragment.d(MyTopicFragment.this).onRefreshComplete();
                             return;
                         }
                         if (MyTopicFragment.e(MyTopicFragment.this) != null && MyTopicFragment.e(MyTopicFragment.this).getStatus() != AsyncTask.Status.FINISHED && !MyTopicFragment.e(MyTopicFragment.this).isCancelled()) {
@@ -203,9 +187,9 @@ public class MyTopicFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 int n2 = position - MyTopicFragment.g(MyTopicFragment.this).getHeaderViewsCount();
-                if (n2 >= 0 && n2 < MyTopicFragment.h(MyTopicFragment.this).size()) {
+                if (n2 >= 0 && n2 < MyTopicFragment.this.i.size()) {
                     Intent intent;
-                    TopicPost topicPost = (TopicPost) MyTopicFragment.h(MyTopicFragment.this).get(n2);
+                    TopicPost topicPost = MyTopicFragment.this.i.get(n2);
                     String string = topicPost.getBlock();
                     if ("help".equals(string)) {
                         Intent intent2 = new Intent(MyTopicFragment.this.getActivity(), BookHelpActivity.class);
@@ -230,10 +214,10 @@ public class MyTopicFragment extends Fragment {
             protected void a(int var1, TopicPost topicPost) {
                 String string;
                 this.a(1, topicPost.getAuthor().getNickname());
-                this.a(2, com.clilystudio.netbook.util.t.e((Date) topicPost.getCreated()));
+                this.a(2, com.clilystudio.netbook.util.t.e(topicPost.getCreated()));
                 this.a(3, topicPost.getTitle());
                 String string2 = topicPost.getBlock();
-                CoverView coverView = (CoverView) this.a(0, CoverView.class);
+                CoverView coverView = this.a(0, CoverView.class);
                 if ("help".equals(string2)) {
                     coverView.setImageResource(R.drawable.book_help_cover_default);
                 } else if ("ramble".equals(string2)) {
@@ -252,12 +236,12 @@ public class MyTopicFragment extends Fragment {
                 }
                 if ("focus".equals(string = topicPost.getState())) {
                     this.a(6, false);
-                    ((ImageView) this.a(6, ImageView.class)).setImageLevel(0);
+                    this.a(6, ImageView.class).setImageLevel(0);
                     return;
                 }
                 if ("hot".equals(string)) {
                     this.a(6, false);
-                    ((ImageView) this.a(6, ImageView.class)).setImageLevel(1);
+                    this.a(6, ImageView.class).setImageLevel(1);
                     return;
                 }
                 this.a(6, true);
@@ -299,15 +283,15 @@ public class MyTopicFragment extends Fragment {
                 MyTopicFragment.a(MyTopicFragment.this).setVisibility(View.GONE);
                 MyTopicFragment.c(MyTopicFragment.this).setVisibility(View.GONE);
                 MyTopicFragment.i(MyTopicFragment.this).setVisibility(View.GONE);
-                MyTopicFragment.d(MyTopicFragment.this).n();
+                MyTopicFragment.d(MyTopicFragment.this).onRefreshComplete();
                 if (topic != null && topic.getPosts() != null) {
-                    MyTopicFragment.h(MyTopicFragment.this).clear();
+                    MyTopicFragment.this.i.clear();
                     TopicPost[] arrtopicPost = topic.getPosts();
                     int n = arrtopicPost.length;
                     if (n > 0) {
                         for (TopicPost topicPost : arrtopicPost) {
                             if (topicPost.getBook() == null) continue;
-                            MyTopicFragment.h(MyTopicFragment.this).add(topicPost);
+                            MyTopicFragment.this.i.add(topicPost);
                         }
                         if (n < 10) {
                             MyTopicFragment.d(MyTopicFragment.this).setOnLastItemVisibleListener(null);
@@ -318,11 +302,11 @@ public class MyTopicFragment extends Fragment {
                         MyTopicFragment.a(MyTopicFragment.this).setVisibility(View.VISIBLE);
                         MyTopicFragment.a(MyTopicFragment.this).setText("你还没有发布哦，快去发布一个吧");
                     }
-                    MyTopicFragment.k(MyTopicFragment.this).a(MyTopicFragment.h(MyTopicFragment.this));
-                    MyTopicFragment.a(MyTopicFragment.this, MyTopicFragment.h(MyTopicFragment.this).size());
+                    MyTopicFragment.k(MyTopicFragment.this).a(MyTopicFragment.this.i);
+                    MyTopicFragment.a(MyTopicFragment.this, MyTopicFragment.this.i.size());
                     return;
                 }
-                com.clilystudio.netbook.util.e.a((Activity) MyTopicFragment.this.getActivity(), (String) "加载失败，请检查网络或者稍后再试");
+                com.clilystudio.netbook.util.e.a(MyTopicFragment.this.getActivity(), "加载失败，请检查网络或者稍后再试");
             }
         };
     }

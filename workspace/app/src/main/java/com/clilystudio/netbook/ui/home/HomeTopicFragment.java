@@ -270,7 +270,7 @@ public class HomeTopicFragment extends HomeFragment implements View.OnClickListe
     @Override
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        i.a().a(this);
+        i.a().register(this);
     }
 
     @Override
@@ -289,13 +289,13 @@ public class HomeTopicFragment extends HomeFragment implements View.OnClickListe
     @Override
     public void onPause() {
         super.onPause();
-        i.a().b(this);
+        i.a().unregister(this);
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        i.a().a(this);
+        i.a().register(this);
         this.d.notifyDataSetChanged();
     }
 }

@@ -72,7 +72,7 @@ public final class o {
         this.l();
         this.m();
         this.k();
-        i.a().a(this);
+        i.a().register(this);
     }
 
     static /* synthetic */ Activity a(o o2) {

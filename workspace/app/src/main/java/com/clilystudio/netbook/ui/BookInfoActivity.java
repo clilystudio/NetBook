@@ -552,7 +552,7 @@ public class BookInfoActivity extends BaseActivity implements View.OnClickListen
         this.h = this.getIntent().getStringExtra("book_id");
         boolean bl = BookReadRecord.getOnShelf(this.h) != null;
         this.i = bl;
-        i.a().a(this);
+        i.a().register(this);
         this.j();
         b.a(this, "book_info_open");
         this.l = this.getIntent().getIntExtra("open_type", 0);
@@ -561,7 +561,7 @@ public class BookInfoActivity extends BaseActivity implements View.OnClickListen
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        i.a().b(this);
+        i.a().unregister(this);
     }
 
     @l

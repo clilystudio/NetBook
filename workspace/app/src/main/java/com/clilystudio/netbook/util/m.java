@@ -37,7 +37,7 @@ public final class m {
 
     public m(Activity activity) {
         this.a = activity;
-        i.a().a(this);
+        i.a().register(this);
     }
 
     static /* synthetic */ Activity a(m m2) {

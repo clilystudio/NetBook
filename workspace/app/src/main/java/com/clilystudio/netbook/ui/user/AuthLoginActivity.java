@@ -17,13 +17,9 @@ import android.widget.Toast;
 import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.a_pack.c;
-import com.clilystudio.netbook.api.b;
-import com.clilystudio.netbook.event.*;
 import com.clilystudio.netbook.event.i;
 import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.ui.BaseActivity;
-import com.clilystudio.netbook.util.*;
-import com.clilystudio.netbook.util.e;
 import com.squareup.otto.Subscribe;
 
 import java.util.HashMap;
@@ -38,50 +34,28 @@ public class AuthLoginActivity extends BaseActivity implements Handler.Callback 
     private String a;
     private Animation b = null;
     private View c = null;
-    private com.e.a.a.g.a e;
 
     public static Intent a(Context context) {
         return new com.clilystudio.netbook.d().a(context, AuthLoginActivity.class).a();
     }
 
     static /* synthetic */ void a(AuthLoginActivity authLoginActivity) {
-        authLoginActivity.findViewById(R.id.login_layout).setVisibility(4);
-        if (authLoginActivity.e == null) {
-            authLoginActivity.e = com.e.a.a.g.c.a(authLoginActivity, "wx29eb03c379f4bf24", false);
-        }
-        if (!authLoginActivity.e.a()) {
-            com.clilystudio.netbook.util.e.a((Activity) authLoginActivity, (int) R.string.alarm_no_install_weixin);
-            return;
-        }
-        authLoginActivity.e.a("wx29eb03c379f4bf24");
-        com.e.a.a.e.c c2 = new com.e.a.a.e.c();
-        c2.a = "snsapi_userinfo";
-        c2.b = "zhuishushenqi";
-        authLoginActivity.e.a(c2);
-        com.clilystudio.netbook.util.e.a((Activity) authLoginActivity, (String) "\u6b63\u5728\u8bf7\u6c42\u5fae\u4fe1\u6388\u6743...");
+        // 微信登陆 wx29eb03c379f4bf24
     }
 
-    /*
-     * Enabled aggressive block sorting
-     * Enabled unnecessary exception pruning
-     * Enabled aggressive exception aggregation
-     */
     static /* synthetic */ void a(AuthLoginActivity authLoginActivity, View view) {
-        try {
-            if (authLoginActivity.c != null) {
-                authLoginActivity.c.clearAnimation();
-            }
-            if (authLoginActivity.b == null) {
-                authLoginActivity.b = AnimationUtils.loadAnimation(authLoginActivity, R.anim.login_scale);
-            }
-            view.startAnimation(authLoginActivity.b);
-        } catch (Exception var2_2) {
+        if (authLoginActivity.c != null) {
+            authLoginActivity.c.clearAnimation();
         }
+        if (authLoginActivity.b == null) {
+            authLoginActivity.b = AnimationUtils.loadAnimation(authLoginActivity, R.anim.login_scale);
+        }
+        view.startAnimation(authLoginActivity.b);
         authLoginActivity.c = view;
     }
 
     static /* synthetic */ void a(AuthLoginActivity authLoginActivity, String string) {
-        authLoginActivity.findViewById(R.id.login_layout).setVisibility(4);
+        authLoginActivity.findViewById(R.id.login_layout).setVisibility(View.INVISIBLE);
         final Handler handler = new Handler(authLoginActivity);
         Platform platform = ShareSDK.getPlatform(authLoginActivity, string);
         platform.setPlatformActionListener(new PlatformActionListener() {
@@ -147,7 +121,7 @@ public class AuthLoginActivity extends BaseActivity implements Handler.Callback 
                 String string = platform.getDb().getUserId();
                 String string2 = platform.getDb().getToken();
                 if (string != null && string2 != null) {
-                    com.clilystudio.netbook.a_pack.c<String, Account> f2 = new c<String, Account>((Activity) this, R.string.login_loading){
+                    com.clilystudio.netbook.a_pack.c<String, Account> f2 = new c<String, Account>((Activity) this, R.string.login_loading) {
 
                         @Override
                         public Account a(String... var1) {
@@ -164,41 +138,41 @@ public class AuthLoginActivity extends BaseActivity implements Handler.Callback 
                                     com.clilystudio.netbook.hpay100.a.a.a(AuthLoginActivity.this, account.getUser().getId());
                                     MyApplication.a().a(account);
                                     com.clilystudio.netbook.event.t t2 = new com.clilystudio.netbook.event.t(account);
-                                    t2.a((AuthLoginActivity.Source) ((Object) AuthLoginActivity.this.getIntent().getSerializableExtra("KEY_SOURCE")));
+                                    t2.a((AuthLoginActivity.Source) AuthLoginActivity.this.getIntent().getSerializableExtra("KEY_SOURCE"));
                                     i.a().post(t2);
-                                    com.clilystudio.netbook.util.e.a((Activity) AuthLoginActivity.this, "登录成功");
+                                    com.clilystudio.netbook.util.e.a(AuthLoginActivity.this, "登录成功");
                                 } else {
                                     String string = account.getCode();
                                     if ("AUTHENTICATION_FAILED".equals(string)) {
-                                        com.clilystudio.netbook.util.e.a((Activity) AuthLoginActivity.this, R.string.auth_invalid);
+                                        com.clilystudio.netbook.util.e.a(AuthLoginActivity.this, R.string.auth_invalid);
                                     } else if ("BANNED_USER".equals(string)) {
-                                        com.clilystudio.netbook.util.e.a((Activity) AuthLoginActivity.this, "登录失败，该账户被封禁");
+                                        com.clilystudio.netbook.util.e.a(AuthLoginActivity.this, "登录失败，该账户被封禁");
                                     } else {
-                                        com.clilystudio.netbook.util.e.a((Activity) AuthLoginActivity.this, "登录失败，请重试");
+                                        com.clilystudio.netbook.util.e.a(AuthLoginActivity.this, "登录失败，请重试");
                                     }
                                 }
                             } else {
-                                com.clilystudio.netbook.util.e.a((Activity) AuthLoginActivity.this, "登录失败，请检查网络或者稍后再试");
+                                com.clilystudio.netbook.util.e.a(AuthLoginActivity.this, "登录失败，请检查网络或者稍后再试");
                             }
                             AuthLoginActivity.this.finish();
-                       }
+                        }
                     };
                     String[] arrstring = new String[]{this.a, string, string2};
                     f2.b(arrstring);
                     return false;
                 }
-                Toast.makeText((Context) this, "授权异常，请重新授权", 0).show();
+                Toast.makeText(this, "授权异常，请重新授权", Toast.LENGTH_SHORT).show();
                 this.finish();
                 return false;
             }
             case 2: {
-                Toast.makeText((Context) this, this.a + "\u6388\u6743\u5931\u8d25", 0).show();
+                Toast.makeText(this, this.a + "授权失败", Toast.LENGTH_SHORT).show();
                 this.finish();
                 return false;
             }
             case 3:
         }
-        Toast.makeText((Context) this, this.a + "\u6388\u6743\u88ab\u53d6\u6d88", 0).show();
+        Toast.makeText(this, this.a + "授权被取消", Toast.LENGTH_SHORT).show();
         this.finish();
         return false;
     }
@@ -255,6 +229,6 @@ public class AuthLoginActivity extends BaseActivity implements Handler.Callback 
     }
 
     public enum Source {
-        HOME, OTHER;
+        HOME, OTHER
     }
 }

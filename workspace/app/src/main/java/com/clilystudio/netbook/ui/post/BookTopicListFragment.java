@@ -122,13 +122,13 @@ public class BookTopicListFragment extends BookPostListFragment {
     @Override
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        i.a().a(this);
+        i.a().register(this);
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-        i.a().b(this);
+        i.a().unregister(this);
     }
 
     @l

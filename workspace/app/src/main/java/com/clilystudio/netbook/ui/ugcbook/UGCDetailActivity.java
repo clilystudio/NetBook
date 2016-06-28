@@ -262,7 +262,7 @@ public class UGCDetailActivity extends BaseActivity implements View.OnClickListe
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         this.setContentView(R.layout.activity_ugcbook_detail);
-        com.clilystudio.netbook.event.i.a().a(this);
+        com.clilystudio.netbook.event.i.a().register(this);
         if (a.a(this.getIntent())) {
             List<String> list = this.getIntent().getData().getPathSegments();
             this.o = list.get(-1 + list.size());
@@ -385,7 +385,7 @@ public class UGCDetailActivity extends BaseActivity implements View.OnClickListe
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        com.clilystudio.netbook.event.i.a().b(this);
+        com.clilystudio.netbook.event.i.a().unregister(this);
     }
 
     @com.squareup.a.l

@@ -193,7 +193,7 @@ public class UGCGuideEditBooksActivity extends BaseActivity implements View.OnCl
         String string2;
         super.onCreate(bundle);
         this.setContentView(R.layout.ugc_add_edit_books);
-        i.a().a(this);
+        i.a().register(this);
         Bundle bundle2 = this.getIntent().getExtras();
         if (bundle2 != null && bundle2.containsKey("name") && bundle2.containsKey("desc")) {
             String string3 = bundle2.getString("name");
@@ -232,7 +232,7 @@ public class UGCGuideEditBooksActivity extends BaseActivity implements View.OnCl
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        i.a().b(this);
+        i.a().unregister(this);
     }
 
     @Override

@@ -72,7 +72,7 @@ public class ImportantNotificationFragment extends NotifFragment {
     public void onPause() {
         super.onPause();
         J.a(this.getActivity()).c();
-        i.a().b(this);
+        i.a().unregister(this);
     }
 
     /*
@@ -81,7 +81,7 @@ public class ImportantNotificationFragment extends NotifFragment {
     @Override
     public void onResume() {
         super.onResume();
-        i.a().a(this);
+        i.a().register(this);
         boolean bl = J.a(this.getActivity()).b() > 0;
         this.a(bl);
     }

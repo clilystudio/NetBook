@@ -325,7 +325,7 @@ public class ReaderMenuFragment extends Fragment {
         view.findViewById(R.id.slm_reader_all_post).setOnClickListener(this.j);
         this.g = (LoadingContainer) view.findViewById(R.id.loading_container);
         view.findViewById(R.id.slm_reader_relate_book).setOnClickListener(this.j);
-        i.a().a(this);
+        i.a().register(this);
         return view;
     }
 
