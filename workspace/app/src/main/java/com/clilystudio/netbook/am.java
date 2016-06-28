@@ -35,7 +35,6 @@ import com.clilystudio.netbook.db.BookDlRecord;
 import com.clilystudio.netbook.db.BookReadRecord;
 import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.model.User;
-import com.clilystudio.netbook.ui.AdWebViewActivity;
 import com.clilystudio.netbook.ui.SplashActivity;
 import com.clilystudio.netbook.ui.user.AuthLoginActivity;
 import com.clilystudio.netbook.util.H;
@@ -489,20 +488,6 @@ public class am {
 
     public static void b(Context context, long l2) {
         a.e(context, "pref_new_unimp_notif_time", String.valueOf(l2));
-    }
-
-    public static void b(Context context, Game game) {
-        try {
-            context.startActivity(AdWebViewActivity.a(context, game.getName(), game.getAndroidLink()));
-            return;
-        }
-        catch (Exception var2_2) {
-            if (context instanceof Activity) {
-                e.a((Activity)context, "\u6e38\u620f\u8f7d\u5165\u51fa\u9519\uff0c\u8bf7\u7a0d\u540e\u91cd\u8bd5");
-            }
-            com.umeng.a.b.a(context, "zhuishu_catch_exception", "AppHelper_launchMicroGame:" + var2_2.getMessage());
-            return;
-        }
     }
 
     /*

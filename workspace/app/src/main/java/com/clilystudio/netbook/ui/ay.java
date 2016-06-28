@@ -1,5 +1,7 @@
 package com.clilystudio.netbook.ui;
 
+import com.xiaomi.mistatistic.sdk.MiStatInterface;
+
 final class ay implements ab {
     final /* synthetic */ BookInfoActivity a;
 
@@ -10,12 +12,12 @@ final class ay implements ab {
     @Override
     public final void a() {
         BookInfoActivity.a(this.a);
-        b.a(this.a, "book_info_download");
+        MiStatInterface.recordCountEvent("book_info_download", null);
     }
 
     @Override
     public final void b() {
         new cb(this.a, new az(this)).a().show();
-        b.a(this.a, "share_book_info_ab");
+        MiStatInterface.recordCountEvent( "share_book_info_ab", null);
     }
 }

@@ -1,5 +1,7 @@
 package com.clilystudio.netbook.ui;
 
+import com.xiaomi.mistatistic.sdk.MiStatInterface;
+
 final class cf implements cd {
     private /* synthetic */ ShareRemoveAdActivity a;
 
@@ -10,6 +12,6 @@ final class cf implements cd {
     @Override
     public final void a(int n) {
         ShareRemoveAdActivity.a(this.a, n);
-        b.a(this.a, "share_remove_channel_click", "" + n);
+        MiStatInterface.recordCountEvent( "share_remove_channel_click", "" + n);
     }
 }

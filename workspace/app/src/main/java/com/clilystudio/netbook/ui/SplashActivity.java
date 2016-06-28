@@ -35,13 +35,8 @@ public class SplashActivity extends Activity {
     private boolean f = false;
 
     static /* synthetic */ void a(SplashActivity splashActivity, String string) {
-        if (string != null) {
-            Intent intent = AdWebViewActivity.a(splashActivity, "\u63a8\u5e7f", string);
-            intent.putExtra("from_splash", true);
-            splashActivity.startActivity(intent);
-            splashActivity.finish();
-        }
-    }
+        // 首页推广
+     }
 
     static /* synthetic */ boolean a(SplashActivity splashActivity) {
         return splashActivity.e;
