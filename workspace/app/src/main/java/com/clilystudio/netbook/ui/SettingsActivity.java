@@ -24,6 +24,7 @@ import com.clilystudio.netbook.event.u;
 import com.clilystudio.netbook.ui.post.CommonPostListActivity;
 import com.clilystudio.netbook.util.e;
 import com.umeng.a.b;
+import com.umeng.onlineconfig.OnlineConfigAgent;
 
 public class SettingsActivity extends BaseActivity implements View.OnClickListener {
     private int a;
@@ -198,7 +199,7 @@ public class SettingsActivity extends BaseActivity implements View.OnClickListen
                 SettingsActivity.a(SettingsActivity.this, switchCompat2, isChecked);
             }
         });
-        if ("1".equals(b.b(this, "enable_job"))) {
+        if ("1".equals(OnlineConfigAgent.getInstance().getConfigParams(this, "enable_job"))) {
             View view = this.findViewById(R.id.tv_jd);
             view.setVisibility(View.VISIBLE);
             view.setOnClickListener(this);

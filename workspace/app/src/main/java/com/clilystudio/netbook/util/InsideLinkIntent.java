@@ -8,7 +8,6 @@ import android.content.Intent;
 import com.clilystudio.netbook.exception.UnImplementException;
 import com.clilystudio.netbook.model.InsideLink;
 import com.clilystudio.netbook.model.InsideLinkType;
-import com.clilystudio.netbook.ui.AdWebViewActivity;
 import com.clilystudio.netbook.ui.BookInfoActivity;
 import com.clilystudio.netbook.ui.SplashActivity;
 import com.clilystudio.netbook.ui.post.BookHelpActivity;
@@ -64,11 +63,11 @@ public class InsideLinkIntent extends Intent {
             this.putExtra("PostBookId", insideLink.getValue());
             this.putExtra("post_type_key", "ramble");
             this.a();
-        } else if (type == InsideLinkType.LINK) {
-            this.setComponent(new ComponentName(this.a, AdWebViewActivity.class));
-            this.putExtra("extra_url", insideLink.getValue());
-            this.putExtra("extra_title", insideLink.getLabel());
-            this.a();
+//        } else if (type == InsideLinkType.LINK) {
+//            this.setComponent(new ComponentName(this.a, AdWebViewActivity.class));
+//            this.putExtra("extra_url", insideLink.getValue());
+//            this.putExtra("extra_title", insideLink.getLabel());
+//            this.a();
         } else if (type == InsideLinkType.BOOK) {
             this.setComponent(new ComponentName(this.a, BookInfoActivity.class));
             this.putExtra("book_id", insideLink.getValue());

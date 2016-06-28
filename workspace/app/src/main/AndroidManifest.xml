@@ -324,11 +324,6 @@
             android:screenOrientation="portrait"
             android:theme="@style/BaseTheme_Dark"/>
         <activity
-            android:name="com.clilystudio.netbook.ui.AdWebViewActivity"
-            android:exported="true"
-            android:screenOrientation="portrait"
-            android:theme="@style/BaseTheme_Dark"/>
-        <activity
             android:name="com.clilystudio.netbook.ui.SearchActivity"
             android:exported="true"
             android:screenOrientation="portrait"/>

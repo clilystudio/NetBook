@@ -3,6 +3,7 @@ package com.clilystudio.netbook.ui;
 import android.app.Activity;
 
 import com.clilystudio.netbook.util.e;
+import com.xiaomi.mistatistic.sdk.MiStatInterface;
 
 import java.util.HashMap;
 
@@ -23,7 +24,7 @@ final class cg implements PlatformActionListener {
     @Override
     public final void onComplete(Platform platform, int n, HashMap<String, Object> hashMap) {
         e.a((Activity) this.a, (String) "\u5206\u4eab\u5b8c\u6210!");
-        b.a(this.a, "share_remove_ad_count");
+        MiStatInterface.recordCountEvent(  "share_remove_ad_count", null);
     }
 
     @Override
