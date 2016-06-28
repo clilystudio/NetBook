@@ -1,28 +1,33 @@
 package com.clilystudio.netbook.ui.feed;
 
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ListView;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.db.BookReadRecord;
 import com.clilystudio.netbook.event.i;
 import com.clilystudio.netbook.event.m;
+import com.clilystudio.netbook.event.n;
 import com.clilystudio.netbook.ui.BaseActivity;
-import com.squareup.a.l;
+import com.clilystudio.netbook.util.W;
+import com.clilystudio.netbook.widget.CoverView;
+import com.squareup.otto.Subscribe;
 import com.xiaomi.mistatistic.sdk.MiStatInterface;
 
 import java.util.List;
 
+import uk.me.lewisdeane.ldialogs.BaseDialog;
+
 public class FeedListActivity extends BaseActivity {
-    private f a;
+    private W<BookReadRecord> a;
     private int b;
 
     static /* synthetic */ int a(FeedListActivity feedListActivity) {
@@ -30,16 +35,16 @@ public class FeedListActivity extends BaseActivity {
     }
 
     private void a(int n) {
-        final int n2 = a.d(n);
+        final int n2 = com.clilystudio.netbook.hpay100.a.a.d(n);
         int[] arrn = new int[]{R.id.feed_chapter_10, R.id.feed_chapter_20, R.id.feed_chapter_50, R.id.feed_chapter_100, R.id.feed_chapter_200};
-        View view = this.getLayoutInflater().inflate(R.layout.feed_chapter_count_dialog, null, false);
-        h h2 = new h(this);
-        h2.d = "\u9009\u62e9\u517b\u80a5\u7ae0\u8282\u6570";
-        final AlertDialog alertDialog = h2.a(view).b("\u53d6\u6d88", null).a();
+        View view = this.getLayoutInflater().inflate(R.layout.feed_chapter_count_dialog, (ViewGroup)getWindow().getDecorView(), false);
+        BaseDialog.Builder h2 = new BaseDialog.Builder(this);
+        h2.setTitle("选择养肥章节数");
+        final AlertDialog alertDialog = h2.setView(view).setNegativeButton("取消", null).create();
         ((RadioGroup) view.findViewById(R.id.feed_group)).check(arrn[n2]);
         for (int j = 0; j < 5; ++j) {
             final int finalJ = j;
-            ((RadioButton) view.findViewById(arrn[j])).setOnClickListener(new View.OnClickListener() {
+            view.findViewById(arrn[j]).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     alertDialog.dismiss();
@@ -56,16 +61,16 @@ public class FeedListActivity extends BaseActivity {
 
     private void b() {
         List<BookReadRecord> list = BookReadRecord.getAllFeedingOrderByCount();
-        this.b = a.a((Context) this, "feed_chapter_count", 50);
+        this.b = com.clilystudio.netbook.hpay100.a.a.a(this, "feed_chapter_count", 50);
         this.a.a(list);
     }
 
-    @l
+    @Subscribe
     public void onBookAddedEvent(com.clilystudio.netbook.event.l l2) {
         this.b();
     }
 
-    @l
+    @Subscribe
     public void onChapterCountEvent(m m2) {
         this.b();
     }
@@ -75,9 +80,55 @@ public class FeedListActivity extends BaseActivity {
         super.onCreate(bundle);
         this.setContentView(R.layout.activity_feed_list);
         this.b(R.string.feed);
-        i.a().a(this);
+        i.a().register(this);
         ListView listView = (ListView) this.findViewById(R.id.book_feed_list);
-        this.a = new f(this, this.getLayoutInflater());
+        this.a = new W<BookReadRecord>(this.getLayoutInflater(), R.layout.list_item_feed_list){
+
+            @Override
+            protected void a(int var1, final BookReadRecord bookReadRecord) {
+                this.a(0, CoverView.class).setImageUrl(bookReadRecord.getFullCover(), R.drawable.cover_default);
+                this.a(1, bookReadRecord.getTitle());
+                int n2 = bookReadRecord.getChapterCount() - bookReadRecord.getChapterCountAtFeed();
+                int n3 = 0;
+                if (n2 >= 0) {
+                    n3 = n2;
+                }
+                this.a(2, "养了 " + n3 + " 章未读");
+                final TextView textView = this.a(3, TextView.class);
+                if (bookReadRecord.isFeeding()) {
+                    textView.setEnabled(true);
+                    textView.setText("\u79fb\u56de");
+                    if (n3 >= FeedListActivity.a(FeedListActivity.this)) {
+                        textView.setBackgroundResource(R.drawable.feed_list_remove_red);
+                        textView.setTextColor(FeedListActivity.this.getResources().getColor(android.R.color.white));
+                    } else {
+                        textView.setBackgroundResource(R.drawable.feed_list_remove_light);
+                        textView.setTextColor(FeedListActivity.this.getResources().getColor(R.color.feed_list_light));
+                    }
+                } else {
+                    this.a(textView);
+                }
+                textView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        textView.setEnabled(false);
+                        textView.setText("\u5df2\u79fb\u56de");
+                        textView.setBackgroundResource(R.color.transparent);
+                        textView.setTextColor(FeedListActivity.this.getResources().getColor(R.color.feed_list_light));
+                        bookReadRecord.setFeeding(false);
+                        bookReadRecord.setFeedFat(false);
+                        BookReadRecord.addAccountInfo(bookReadRecord);
+                        bookReadRecord.save();
+                        com.clilystudio.netbook.event.i.a().post(new n(bookReadRecord.getBookId()));
+                    }
+                });
+           }
+
+            @Override
+            protected int[] a() {
+                return new int[]{R.id.book_feed_list_cover, R.id.book_feed_list_title, R.id.book_feed_list_chapter, R.id.book_feed_list_remove};
+            }
+        };
         listView.setAdapter(this.a);
         this.b();
     }
@@ -91,7 +142,7 @@ public class FeedListActivity extends BaseActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        i.a().b(this);
+        i.a().unregister(this);
     }
 
     @Override
@@ -110,7 +161,7 @@ public class FeedListActivity extends BaseActivity {
             }
             case R.id.action_menu_feed_setting:
         }
-        this.a(a.a((Context) this, "feed_chapter_count", 50));
+        this.a(com.clilystudio.netbook.hpay100.a.a.a(this, "feed_chapter_count", 50));
         return true;
     }
 }
