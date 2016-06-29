@@ -1,6 +1,6 @@
 package com.clilystudio.netbook.ui.ugcbook;
 
-import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.Editable;
@@ -13,10 +13,8 @@ import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
-import android.widget.Button;
 import android.widget.Filter;
 import android.widget.Filterable;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -24,7 +22,6 @@ import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.model.AutoCompleteRoot;
 import com.clilystudio.netbook.model.BookSummary;
 import com.clilystudio.netbook.model.SearchPromRoot;
-import com.clilystudio.netbook.model.UGCNewCollection;
 import com.clilystudio.netbook.ui.BaseActivity;
 import com.clilystudio.netbook.util.W;
 import com.clilystudio.netbook.widget.CoverView;
@@ -34,10 +31,8 @@ import com.clilystudio.netbook.widget.ax;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Iterator;
 import java.util.List;
-
-import butterknife.ButterKnife;
+import java.util.Locale;
 
 public class UGCGuideAddBookActivity extends BaseActivity implements View.OnClickListener {
     private InputMethodManager a;
@@ -65,7 +60,7 @@ public class UGCGuideAddBookActivity extends BaseActivity implements View.OnClic
 
     static /* synthetic */ void a(UGCGuideAddBookActivity uGCGuideAddBookActivity, int n) {
         if (n >= 0 && n < uGCGuideAddBookActivity.k.getCount()) {
-            BookSummary bookSummary = (BookSummary) uGCGuideAddBookActivity.k.getItem(n);
+            BookSummary bookSummary = uGCGuideAddBookActivity.k.getItem(n);
             UGCGuideAddBookActivity.e().addBook(bookSummary);
             bookSummary.setSelected(true);
         }
@@ -76,23 +71,16 @@ public class UGCGuideAddBookActivity extends BaseActivity implements View.OnClic
         return bl;
     }
 
-    static /* synthetic */ UGCNewCollection b(UGCGuideAddBookActivity uGCGuideAddBookActivity) {
-        return UGCGuideAddBookActivity.e();
-    }
-
     static /* synthetic */ void b(UGCGuideAddBookActivity uGCGuideAddBookActivity, int n) {
         uGCGuideAddBookActivity.a(n);
     }
 
     static /* synthetic */ void b(UGCGuideAddBookActivity uGCGuideAddBookActivity, boolean bl) {
-        uGCGuideAddBookActivity.a(true);
+        uGCGuideAddBookActivity.a(bl);
     }
 
     static /* synthetic */ boolean b(UGCGuideAddBookActivity uGCGuideAddBookActivity, String string) {
-        if (!uGCGuideAddBookActivity.c.getText().toString().equals(string) && !string.equals(uGCGuideAddBookActivity.m)) {
-            return true;
-        }
-        return false;
+        return !uGCGuideAddBookActivity.c.getText().toString().equals(string) && !string.equals(uGCGuideAddBookActivity.m);
     }
 
     static /* synthetic */ W<BookSummary> c(UGCGuideAddBookActivity uGCGuideAddBookActivity) {
@@ -106,8 +94,7 @@ public class UGCGuideAddBookActivity extends BaseActivity implements View.OnClic
         uGCGuideAddBookActivity.e.setEnabled(bl);
         uGCGuideAddBookActivity.f.setEnabled(bl);
         View view = uGCGuideAddBookActivity.f;
-        int n = bl && uGCGuideAddBookActivity.c.isFocused() ? 0 : 4;
-        view.setVisibility(n);
+        view.setVisibility(bl && uGCGuideAddBookActivity.c.isFocused() ? View.VISIBLE : View.INVISIBLE);
     }
 
     static /* synthetic */ ListView d(UGCGuideAddBookActivity uGCGuideAddBookActivity) {
@@ -160,7 +147,7 @@ public class UGCGuideAddBookActivity extends BaseActivity implements View.OnClic
         this.h.setVisibility(View.GONE);
         this.b = this.c.getText().toString().trim();
         this.f();
-        if (a.t(this)) {
+        if (com.clilystudio.netbook.hpay100.a.a.t(this)) {
             this.a(0);
             if (bl) {
                 com.clilystudio.netbook.a_pack.e<String, Void, List<BookSummary>> w2 = new com.clilystudio.netbook.a_pack.e<String, Void, List<BookSummary>>() {
@@ -203,7 +190,7 @@ public class UGCGuideAddBookActivity extends BaseActivity implements View.OnClic
                             return;
                         }
                         UGCGuideAddBookActivity.b(UGCGuideAddBookActivity.this, 2);
-                        com.clilystudio.netbook.util.e.a((Activity) UGCGuideAddBookActivity.this, (int) R.string.search_failed);
+                        com.clilystudio.netbook.util.e.a(UGCGuideAddBookActivity.this, R.string.search_failed);
                     }
                 };
                 w2.b(this.b);
@@ -249,14 +236,14 @@ public class UGCGuideAddBookActivity extends BaseActivity implements View.OnClic
                         return;
                     }
                     UGCGuideAddBookActivity.b(UGCGuideAddBookActivity.this, 2);
-                    com.clilystudio.netbook.util.e.a((Activity) UGCGuideAddBookActivity.this, (int) R.string.search_failed);
+                    com.clilystudio.netbook.util.e.a(UGCGuideAddBookActivity.this, R.string.search_failed);
                 }
             };
             String[] arrstring = new String[]{this.b};
             a2.b(arrstring);
             return;
         }
-        e.a((Activity) this, (int) R.string.network_unconnected);
+        com.clilystudio.netbook.util.e.a(this, R.string.network_unconnected);
     }
 
     private void b() {
@@ -269,7 +256,7 @@ public class UGCGuideAddBookActivity extends BaseActivity implements View.OnClic
         this.l.setVisibility(View.GONE);
         this.c.clearFocus();
         if (this.a == null) {
-            this.a = (InputMethodManager) this.getSystemService("input_method");
+            this.a = (InputMethodManager) this.getSystemService(Context.INPUT_METHOD_SERVICE);
         }
         this.a.hideSoftInputFromWindow(this.c.getWindowToken(), 0);
         this.getWindow().setSoftInputMode(2);
@@ -280,12 +267,11 @@ public class UGCGuideAddBookActivity extends BaseActivity implements View.OnClic
      */
     @Override
     public void onBackPressed() {
-        boolean bl = this.h.getVisibility() == 0;
-        if (bl) {
+        if (this.h.getVisibility() == View.VISIBLE) {
             this.h.setVisibility(View.GONE);
-            return;
+        } else {
+            super.onBackPressed();
         }
-        super.onBackPressed();
     }
 
     @Override
@@ -316,9 +302,8 @@ public class UGCGuideAddBookActivity extends BaseActivity implements View.OnClic
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         this.setContentView(R.layout.activity_search);
-        ButterKnife.inject(this);
         LayoutInflater layoutInflater = LayoutInflater.from(this);
-        View view = layoutInflater.inflate(R.layout.ab_search, null, false);
+        View view = layoutInflater.inflate(R.layout.ab_search, (ViewGroup)getWindow().getDecorView(), false);
         view.findViewById(R.id.back).setOnClickListener(this);
         this.setCustomActionBar(view);
         this.findViewById(R.id.select_word_layout).setVisibility(View.GONE);
@@ -350,18 +335,17 @@ public class UGCGuideAddBookActivity extends BaseActivity implements View.OnClic
 
             @Override
             protected void a(int var1, BookSummary bookSummary) {
-                List<BookSummary> books =  UGCGuideAddBookActivity.b(UGCGuideAddBookActivity.this).getBooks();
+                List<BookSummary> books = UGCGuideAddBookActivity.e().getBooks();
                 if (books != null) {
-                    Iterator<BookSummary> iterator = books.iterator();
-                    while (iterator.hasNext()) {
-                        if (!iterator.next().getId().equals(bookSummary.getId())) continue;
+                    for (BookSummary book : books) {
+                        if (!book.getId().equals(bookSummary.getId())) continue;
                         UGCGuideAddBookActivity.a(UGCGuideAddBookActivity.this, var1);
                     }
                 }
-                ((CoverView) this.a(0, CoverView.class)).setImageUrl(bookSummary.getFullCover(), R.drawable.cover_default);
+                this.a(0, CoverView.class).setImageUrl(bookSummary.getFullCover(), R.drawable.cover_default);
                 this.a(1, bookSummary.getTitle());
                 Object[] arrobject = new Object[]{bookSummary.getLatelyFollower(), Float.valueOf(bookSummary.getRetentionRatio()), bookSummary.getAuthor()};
-                this.a(2, String.format("%d人在追  |  %.1f%%读者留存  |  %s著", arrobject));
+                this.a(2, String.format(Locale.CHINA,"%d人在追  |  %.1f%%读者留存  |  %s著", arrobject));
                 this.a(3, TextUtils.isEmpty(bookSummary.getPromLink()));
                 if (bookSummary.isSelected()) {
                     this.a(4, true);
@@ -391,7 +375,7 @@ public class UGCGuideAddBookActivity extends BaseActivity implements View.OnClic
                 return view2;
             }
         };
-        this.g.setAdapter((ListAdapter) ((Object) this.k));
+        this.g.setAdapter(this.k);
         if (bundle != null) {
             this.b = bundle.getString("saved_keyword");
             if (this.b != null) {
@@ -448,16 +432,7 @@ public class UGCGuideAddBookActivity extends BaseActivity implements View.OnClic
 
         public SearchPromptAdapter(UGCGuideAddBookActivity uGCGuideAddBookActivity) {
             this.a = uGCGuideAddBookActivity;
-            this.b = new ArrayList<String>();
-        }
-
-        static /* synthetic */ List a(SearchPromptAdapter uGCGuideAddBookActivity$SearchPromptAdapter) {
-            return uGCGuideAddBookActivity$SearchPromptAdapter.b;
-        }
-
-        static /* synthetic */ List a(SearchPromptAdapter uGCGuideAddBookActivity$SearchPromptAdapter, List list) {
-            uGCGuideAddBookActivity$SearchPromptAdapter.b = list;
-            return list;
+            this.b = new ArrayList<>();
         }
 
         @Override
@@ -472,20 +447,13 @@ public class UGCGuideAddBookActivity extends BaseActivity implements View.OnClic
 
                     @Override
                     protected FilterResults performFiltering(CharSequence constraint) {
-                        String string = UGCGuideAddBookActivity.a(this.a.a).getText().toString();
-                        ArrayList<String> arrayList = new ArrayList<String>();
+                        String string = UGCGuideAddBookActivity.this.c.getText().toString();
+                        ArrayList<String> arrayList = new ArrayList<>();
                         arrayList.add(string);
                         arrayList.add(constraint.toString());
                         if (!TextUtils.isEmpty(string)) {
-                            AutoCompleteRoot autoCompleteRoot;
-                            try {
-                                AutoCompleteRoot autoCompleteRoot2;
-                                com.clilystudio.netbook.api.b.a();
-                                autoCompleteRoot = autoCompleteRoot2 = com.clilystudio.netbook.api.b.b().N(string);
-                            } catch (Exception var7_7) {
-                                var7_7.printStackTrace();
-                                autoCompleteRoot = null;
-                            }
+                            com.clilystudio.netbook.api.b.a();
+                            AutoCompleteRoot autoCompleteRoot = com.clilystudio.netbook.api.b.b().N(string);
                             if (autoCompleteRoot != null && autoCompleteRoot.getKeywords() != null) {
                                 arrayList.addAll(0, autoCompleteRoot.getKeywords());
                             }
@@ -499,25 +467,23 @@ public class UGCGuideAddBookActivity extends BaseActivity implements View.OnClic
                     @Override
                     protected void publishResults(CharSequence constraint, FilterResults results) {
                         int n;
-                        List list = (List) results.values;
+                        List<String> list = (List<String>) results.values;
                         if (list == null || (n = list.size()) < 2) {
                             return;
                         }
-                        String string = (String) list.get(n - 2);
-                        List var6_7;
+                        String string = list.get(n - 2);
                         if (n > 2 && !UGCGuideAddBookActivity.b(SearchPromptAdapter.this.a, string)) {
-                            var6_7 = list.subList(0, n - 2);
+                            SearchPromptAdapter.this.b = list.subList(0, n - 2);
                         } else {
-                            var6_7 = new ArrayList();
+                            SearchPromptAdapter.this.b = new ArrayList<>();
                         }
-                        UGCGuideAddBookActivity.SearchPromptAdapter.a(SearchPromptAdapter.this, var6_7);
-                        if (UGCGuideAddBookActivity.SearchPromptAdapter.a(SearchPromptAdapter.this).isEmpty()) {
+                         if (SearchPromptAdapter.this.b.isEmpty()) {
                             SearchPromptAdapter.this.notifyDataSetInvalidated();
                         } else {
                             SearchPromptAdapter.this.notifyDataSetChanged();
                         }
                         SearchFixListView searchFixListView = UGCGuideAddBookActivity.f(SearchPromptAdapter.this.a);
-                        searchFixListView.setVisibility(UGCGuideAddBookActivity.SearchPromptAdapter.a(SearchPromptAdapter.this).isEmpty() || !UGCGuideAddBookActivity.e(SearchPromptAdapter.this.a) ? View.GONE : View.VISIBLE);
+                        searchFixListView.setVisibility(SearchPromptAdapter.this.b.isEmpty() || !UGCGuideAddBookActivity.e(SearchPromptAdapter.this.a) ? View.GONE : View.VISIBLE);
                     }
                 };
             }
@@ -540,9 +506,9 @@ public class UGCGuideAddBookActivity extends BaseActivity implements View.OnClic
         @Override
         public final View getView(int n, View view, ViewGroup viewGroup) {
             View view2 = this.a.getLayoutInflater().inflate(R.layout.list_item_search_prompt, viewGroup, false);
-            SearchPromptAdapter$ViewHolder uGCGuideAddBookActivity$SearchPromptAdapter$ViewHolder = new SearchPromptAdapter$ViewHolder(this, view2);
+            ViewHolder viewHolder = new ViewHolder(view2);
             if (n >= 0 && n < this.b.size()) {
-                uGCGuideAddBookActivity$SearchPromptAdapter$ViewHolder.label.setText(this.b.get(n));
+                viewHolder.label.setText(this.b.get(n));
             }
             return view2;
         }
@@ -558,10 +524,10 @@ public class UGCGuideAddBookActivity extends BaseActivity implements View.OnClic
             }
         }
 
-        class SearchPromptAdapter$ViewHolder {
+        class ViewHolder {
             TextView label;
 
-            SearchPromptAdapter$ViewHolder(UGCGuideAddBookActivity.SearchPromptAdapter searchPromptAdapter, View view) {
+            ViewHolder(View view) {
                 this.label = (TextView) view.findViewById(R.id.search_prompt_list_item);
             }
         }

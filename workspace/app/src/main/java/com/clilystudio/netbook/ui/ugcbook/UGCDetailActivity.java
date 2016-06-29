@@ -1,6 +1,5 @@
 package com.clilystudio.netbook.ui.ugcbook;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -28,12 +27,10 @@ import com.clilystudio.netbook.ui.BaseActivity;
 import com.clilystudio.netbook.ui.BookInfoActivity;
 import com.clilystudio.netbook.ui.SmartImageView;
 import com.clilystudio.netbook.ui.aa;
-import com.clilystudio.netbook.ui.cb;
-import com.clilystudio.netbook.ui.cd;
 import com.clilystudio.netbook.widget.CoverView;
+import com.squareup.otto.Subscribe;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class UGCDetailActivity extends BaseActivity implements View.OnClickListener {
@@ -43,24 +40,17 @@ public class UGCDetailActivity extends BaseActivity implements View.OnClickListe
     private TextView e;
     private TextView f;
     private SmartImageView g;
-    private TextView h;
     private ImageButton i;
     private ListView j;
     private com.clilystudio.netbook.util.W<UGCBookDetail.UGCBookContainer> k;
     private View l;
     private View m;
-    private View n;
     private String o;
     private boolean p;
     private boolean q;
     private UGCBookDetail r;
     private Author s;
     private View.OnClickListener t;
-    private String u;
-    private String v;
-    private String w;
-    private String x;
-    private String y;
 
     public UGCDetailActivity() {
         this.t = new View.OnClickListener() {
@@ -84,13 +74,8 @@ public class UGCDetailActivity extends BaseActivity implements View.OnClickListe
         return uGCBookDetail;
     }
 
-    static /* synthetic */ String a(UGCDetailActivity uGCDetailActivity, String string) {
-        uGCDetailActivity.w = string;
-        return string;
-    }
-
     static /* synthetic */ void a(UGCDetailActivity uGCDetailActivity, int n) {
-        uGCDetailActivity.e(2);
+        uGCDetailActivity.e(n);
     }
 
     static /* synthetic */ boolean a(UGCDetailActivity uGCDetailActivity) {
@@ -104,7 +89,7 @@ public class UGCDetailActivity extends BaseActivity implements View.OnClickListe
             UGCNewCollection uGCNewCollection = new UGCNewCollection();
             uGCNewCollection.setTitle(uGCBookDetail.getTitle());
             uGCNewCollection.setDesc(uGCBookDetail.getDesc());
-            ArrayList<BookSummary> arrayList = new ArrayList<BookSummary>();
+            ArrayList<BookSummary> arrayList = new ArrayList<>();
             for (UGCBookDetail.UGCBookContainer uGCBookDetail$UGCBookContainer : uGCBookDetail.getBooks()) {
                 BookSummary bookSummary = new BookSummary();
                 UGCBookDetail.UGCBookContainer.UGCBookItem uGCBookDetail$UGCBookContainer$UGCBookItem = uGCBookDetail$UGCBookContainer.getBook();
@@ -128,15 +113,15 @@ public class UGCDetailActivity extends BaseActivity implements View.OnClickListe
             uGCDetailActivity.startActivity(intent);
             return;
         }
-        e.a((Context) uGCDetailActivity, (String) "\u4e66\u5355\u4fe1\u606f\u672a\u52a0\u8f7d\uff0c\u8bf7\u68c0\u67e5\u7f51\u7edc\u6216\u7a0d\u540e\u518d\u8bd5");
+        com.clilystudio.netbook.util.e.a((Context) uGCDetailActivity, "书单信息未加载，请检查网络或稍后再试");
     }
 
     static /* synthetic */ void b(UGCDetailActivity uGCDetailActivity, UGCBookDetail uGCBookDetail) {
         uGCDetailActivity.a(uGCBookDetail);
     }
 
-    static /* synthetic */ void c(UGCDetailActivity uGCDetailActivity) {
-        Account account = am.a((Activity) uGCDetailActivity);
+    static /* synthetic */ void c(final UGCDetailActivity uGCDetailActivity) {
+        Account account = am.a(uGCDetailActivity);
         if (account != null) {
             com.clilystudio.netbook.a_pack.e<String, Void, ResultStatus> q2 = new com.clilystudio.netbook.a_pack.e<String, Void, ResultStatus>() {
 
@@ -149,13 +134,13 @@ public class UGCDetailActivity extends BaseActivity implements View.OnClickListe
                 protected void onPostExecute(ResultStatus resultStatus) {
                     super.onPostExecute(resultStatus);
                     if (resultStatus != null && resultStatus.isOk()) {
-                        com.clilystudio.netbook.util.e.a((Activity) UGCDetailActivity.this, "已收藏");
+                        com.clilystudio.netbook.util.e.a(uGCDetailActivity, "已收藏");
                         return;
                     }
-                    com.clilystudio.netbook.util.e.a((Activity) UGCDetailActivity.this, "收藏失败，请检查网络或稍后再试");
+                    com.clilystudio.netbook.util.e.a(uGCDetailActivity, "收藏失败，请检查网络或稍后再试");
                 }
             };
-            q2.b(new String[]{account.getToken(), uGCDetailActivity.o});
+            q2.b(account.getToken(), uGCDetailActivity.o);
         }
     }
 
@@ -167,43 +152,12 @@ public class UGCDetailActivity extends BaseActivity implements View.OnClickListe
         return uGCDetailActivity.i;
     }
 
-    static /* synthetic */ void f(final UGCDetailActivity uGCDetailActivity) {
-        new cb(uGCDetailActivity, new cd() {
-            @Override
-            public void a(int var1) {
-                switch (var1) {
-                    case 0:
-                        UGCDetailActivity.a(uGCDetailActivity, "选对姿势看小说，书荒886~" + UGCDetailActivity.i(uGCDetailActivity) + "，系列好书打包推荐：" + UGCDetailActivity.j(uGCDetailActivity));
-                        break;
-                    case 1:
-                    case 3:
-                    case 4:
-                        UGCDetailActivity.a(uGCDetailActivity, "系列好书打包推荐：" + UGCDetailActivity.j(uGCDetailActivity));
-                        break;
-                    case 2:
-                        UGCDetailActivity.a(uGCDetailActivity, UGCDetailActivity.i(uGCDetailActivity));
-                        break;
-                }
-                uGCDetailActivity.a(var1);
-                com.clilystudio.netbook.hpay100.a.a.a((Context) uGCDetailActivity, var1, 3);
-            }
-        }).a().show();
-    }
-
     static /* synthetic */ ListView g(UGCDetailActivity uGCDetailActivity) {
         return uGCDetailActivity.j;
     }
 
     static /* synthetic */ com.clilystudio.netbook.util.W<UGCBookDetail.UGCBookContainer> h(UGCDetailActivity uGCDetailActivity) {
         return uGCDetailActivity.k;
-    }
-
-    static /* synthetic */ String i(UGCDetailActivity uGCDetailActivity) {
-        return uGCDetailActivity.u;
-    }
-
-    static /* synthetic */ String j(UGCDetailActivity uGCDetailActivity) {
-        return uGCDetailActivity.v;
     }
 
     static /* synthetic */ boolean k(UGCDetailActivity uGCDetailActivity) {
@@ -220,27 +174,15 @@ public class UGCDetailActivity extends BaseActivity implements View.OnClickListe
     private void a(UGCBookDetail uGCBookDetail) {
         this.e(1);
         Author author = uGCBookDetail.getAuthor();
-        UGCBookDetail.UGCBookContainer[] arruGCBookDetail$UGCBookContainer = uGCBookDetail.getBooks();
-        if (arruGCBookDetail$UGCBookContainer == null || arruGCBookDetail$UGCBookContainer.length == 0) {
-            if (author != null) {
-                this.y = author.getScaleAvatar();
-            }
-        } else {
-            this.y = uGCBookDetail.getBooks()[0].getBook().getFullCover();
-        }
-        this.x = uGCBookDetail.getShareLink();
-        this.u = uGCBookDetail.getTitle();
-        this.v = uGCBookDetail.getDesc();
+        String u = uGCBookDetail.getTitle();
+        String v = uGCBookDetail.getDesc();
         if (author != null) {
             this.g.setImageUrl(author.getScaleAvatar());
             this.b.setText(author.getNickname());
         }
-        if (am.g()) {
-            this.x = this.x + "?sharer=" + am.e().getUser().getId();
-        }
-        this.a.setText(t.e((Date) uGCBookDetail.getCreated()));
-        this.c.setText(this.u);
-        this.e.setText(this.v);
+        this.a.setText(com.clilystudio.netbook.util.t.e(uGCBookDetail.getCreated()));
+        this.c.setText(u);
+        this.e.setText(v);
         this.e.post(new Runnable() {
             @Override
             public void run() {
@@ -308,10 +250,6 @@ public class UGCDetailActivity extends BaseActivity implements View.OnClickListe
         this.m.setVisibility(View.VISIBLE);
     }
 
-    public final void a(int n2) {
-        // share book
-    }
-
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
@@ -331,7 +269,7 @@ public class UGCDetailActivity extends BaseActivity implements View.OnClickListe
         super.onCreate(bundle);
         this.setContentView(R.layout.activity_ugcbook_detail);
         com.clilystudio.netbook.event.i.a().register(this);
-        if (a.a(this.getIntent())) {
+        if (com.clilystudio.netbook.hpay100.a.a.a(this.getIntent())) {
             List<String> list = this.getIntent().getData().getPathSegments();
             this.o = list.get(-1 + list.size());
         } else {
@@ -354,7 +292,7 @@ public class UGCDetailActivity extends BaseActivity implements View.OnClickListe
         this.l = this.findViewById(R.id.pb_loading);
         this.m = this.findViewById(R.id.load_error_view);
         this.m.setOnClickListener(this);
-        View view = LayoutInflater.from(this).inflate(R.layout.ugcbook_detail_header, (ViewGroup) this.j, false);
+        View view = LayoutInflater.from(this).inflate(R.layout.ugcbook_detail_header, this.j, false);
         this.g = (SmartImageView) view.findViewById(R.id.avatar);
         this.a = (TextView) view.findViewById(R.id.author_time);
         this.b = (TextView) view.findViewById(R.id.author_info);
@@ -363,20 +301,6 @@ public class UGCDetailActivity extends BaseActivity implements View.OnClickListe
         this.f = (TextView) view.findViewById(R.id.list_fav_count);
         this.i = (ImageButton) view.findViewById(R.id.ugcbook_more);
         this.i.setOnClickListener(this.t);
-        this.h = (TextView) view.findViewById(R.id.ugcbook_share);
-        this.h.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                UGCDetailActivity.f(UGCDetailActivity.this);
-            }
-        });
-        this.n = this.findViewById(R.id.share_bottom);
-        this.n.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                UGCDetailActivity.f(UGCDetailActivity.this);
-            }
-        });
         this.j.addHeaderView(view, null, false);
         this.k = new com.clilystudio.netbook.util.W<UGCBookDetail.UGCBookContainer>(this.getLayoutInflater(), R.layout.list_item_ugcbook_detail) {
 
@@ -423,14 +347,14 @@ public class UGCDetailActivity extends BaseActivity implements View.OnClickListe
             }
         };
         this.j.setAdapter(this.k);
-        View view2 = this.getLayoutInflater().inflate(R.layout.ugcbook_listview_footer, null);
+        View view2 = this.getLayoutInflater().inflate(R.layout.ugcbook_listview_footer, (ViewGroup)getWindow().getDecorView(), false);
         this.j.addFooterView(view2);
         this.j.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 UGCBookDetail.UGCBookContainer uGCBookDetail$UGCBookContainer;
                 int n2 = position - UGCDetailActivity.g(UGCDetailActivity.this).getHeaderViewsCount();
-                if (n2 >= 0 && n2 < UGCDetailActivity.h(UGCDetailActivity.this).getCount() && (uGCBookDetail$UGCBookContainer = (UGCBookDetail.UGCBookContainer) UGCDetailActivity.h(UGCDetailActivity.this).getItem(n2)) != null && uGCBookDetail$UGCBookContainer.getBook() != null) {
+                if (n2 >= 0 && n2 < UGCDetailActivity.h(UGCDetailActivity.this).getCount() && (uGCBookDetail$UGCBookContainer = UGCDetailActivity.h(UGCDetailActivity.this).getItem(n2)) != null && uGCBookDetail$UGCBookContainer.getBook() != null) {
                     Intent intent = new Intent(UGCDetailActivity.this, BookInfoActivity.class);
                     intent.putExtra("book_id", uGCBookDetail$UGCBookContainer.getBook().get_id());
                     UGCDetailActivity.this.startActivity(intent);
@@ -447,20 +371,20 @@ public class UGCDetailActivity extends BaseActivity implements View.OnClickListe
         uGCBookDetail.setTitle(uGCNewCollection.getTitle());
         uGCBookDetail.setDesc(uGCNewCollection.getDesc());
         List<BookSummary> list = uGCNewCollection.getBooks();
-        UUGCBookDetail.UGCBookContainer[] arruGCBookDetail$UGCBookContainer = new UGCBookDetail.UGCBookContainer[list.size()];
+        UGCBookDetail.UGCBookContainer[] arruGCBookDetail$UGCBookContainer = new UGCBookDetail.UGCBookContainer[list.size()];
         for (int i2 = 0; i2 < list.size(); ++i2) {
             BookSummary bookSummary = list.get(i2);
-            UGCBookDetail.UGCBookContainer uGCBookDetail$UGCBookContainer = new UGCBookDetail.UGCBookContainer();
-            UGCBookDetail.UGCBookContainer.UGCBookItem uGCBookDetail$UGCBookContainer$UGCBookItem = new UGCBookDetail.UGCBookContainer.UGCBookItem();
-            uGCBookDetail$UGCBookContainer$UGCBookItem.set_id(bookSummary.getId());
-            uGCBookDetail$UGCBookContainer$UGCBookItem.setCover(bookSummary.getCover());
-            uGCBookDetail$UGCBookContainer$UGCBookItem.setTitle(bookSummary.getTitle());
-            uGCBookDetail$UGCBookContainer$UGCBookItem.setAuthor(bookSummary.getAuthor());
-            uGCBookDetail$UGCBookContainer$UGCBookItem.setLatelyFollower(bookSummary.getLatelyFollower());
-            uGCBookDetail$UGCBookContainer$UGCBookItem.setWordCount(bookSummary.getWordCount());
-            uGCBookDetail$UGCBookContainer.setBook(uGCBookDetail$UGCBookContainer$UGCBookItem);
-            uGCBookDetail$UGCBookContainer.setComment(bookSummary.getAppendComment());
-            arruGCBookDetail$UGCBookContainer[i2] = uGCBookDetail$UGCBookContainer;
+            UGCBookDetail.UGCBookContainer bookContainer = new UGCBookDetail.UGCBookContainer();
+            UGCBookDetail.UGCBookContainer.UGCBookItem ugcBookItem = new UGCBookDetail.UGCBookContainer.UGCBookItem();
+            ugcBookItem.set_id(bookSummary.getId());
+            ugcBookItem.setCover(bookSummary.getCover());
+            ugcBookItem.setTitle(bookSummary.getTitle());
+            ugcBookItem.setAuthor(bookSummary.getAuthor());
+            ugcBookItem.setLatelyFollower(bookSummary.getLatelyFollower());
+            ugcBookItem.setWordCount(bookSummary.getWordCount());
+            bookContainer.setBook(ugcBookItem);
+            bookContainer.setComment(bookSummary.getAppendComment());
+            arruGCBookDetail$UGCBookContainer[i2] = bookContainer;
         }
         uGCBookDetail.setBooks(arruGCBookDetail$UGCBookContainer);
         this.r = uGCBookDetail;
@@ -476,7 +400,7 @@ public class UGCDetailActivity extends BaseActivity implements View.OnClickListe
         com.clilystudio.netbook.event.i.a().unregister(this);
     }
 
-    @com.squareup.a.l
+    @Subscribe
     public void onUgcDraftEvent(E e2) {
         this.finish();
     }

@@ -8,36 +8,37 @@ import android.widget.AdapterView;
 import com.clilystudio.netbook.event.J;
 import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.model.UGCBookListRoot;
+import com.squareup.otto.Subscribe;
 
 public class MyUGCListFragment extends AbsUGCListFragment {
     @Override
     protected final UGCBookListRoot a(Account account, int n) {
-        b.a();
-        return b.b().g(account.getToken(), n);
+        com.clilystudio.netbook.api.b.a();
+        return com.clilystudio.netbook.api.b.b().g(account.getToken(), n);
     }
 
     @Override
     protected final String c() {
-        return "\u8fd9\u91cc\u8fd8\u6ca1\u6709\u4e66\u5355\uff0c\u53bb\u53d1\u5e03\u4e00\u4e2a\u5427";
+        return "这里还没有书单，去发布一个吧";
     }
 
     @Override
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        i.a().register(this);
+        com.clilystudio.netbook.event.i.a().register(this);
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-        i.a().unregister(this);
+        com.clilystudio.netbook.event.i.a().unregister(this);
     }
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int n, long l2) {
         UGCBookListRoot.UGCBook uGCBookListRoot$UGCBook;
         int n2 = n - this.b.getHeaderViewsCount();
-        if (n2 >= 0 && n2 < this.i.size() && (uGCBookListRoot$UGCBook = (UGCBookListRoot.UGCBook) this.i.get(n2)) != null) {
+        if (n2 >= 0 && n2 < this.i.size() && (uGCBookListRoot$UGCBook = this.i.get(n2)) != null) {
             Intent intent = new Intent(this.getActivity(), UGCDetailActivity.class);
             intent.putExtra("book_id", uGCBookListRoot$UGCBook.get_id());
             intent.putExtra("my_list", true);
@@ -45,7 +46,7 @@ public class MyUGCListFragment extends AbsUGCListFragment {
         }
     }
 
-    @l
+    @Subscribe
     public void onUpdateUgcList(J j2) {
         if (this.i == null || this.c == null) {
             return;

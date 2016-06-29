@@ -1,6 +1,5 @@
 package com.clilystudio.netbook.ui.ugcbook;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
@@ -9,7 +8,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
-import android.support.v4.view.ViewPager$OnPageChangeListener;
 import android.support.v7.widget.RecyclerView;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -24,14 +22,12 @@ import android.widget.TextView;
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.a_pack.e;
 import com.clilystudio.netbook.am;
-import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.model.UgcFilterRoot;
 import com.clilystudio.netbook.ui.BaseTabActivity;
 import com.clilystudio.netbook.ui.home.ZssqFragmentPagerAdapter;
 import com.clilystudio.netbook.ui.user.UserUGCActivity;
 import com.clilystudio.netbook.util.D;
 import com.clilystudio.netbook.widget.UgcFilterTextView;
-import com.umeng.a.b;
 import com.xiaomi.mistatistic.sdk.MiStatInterface;
 
 import java.util.ArrayList;
@@ -40,7 +36,7 @@ import java.util.List;
 public class UGCMainActivity extends BaseTabActivity implements ViewPager.OnPageChangeListener,
         TabHost.OnTabChangeListener,
         TabHost.TabContentFactory {
-    private List<UGCMainListFragment> b = new ArrayList<UGCMainListFragment>();
+    private List<UGCMainListFragment> b = new ArrayList<>();
     private ViewPager c;
     private aj e;
     private PopupWindow f;
@@ -57,14 +53,14 @@ public class UGCMainActivity extends BaseTabActivity implements ViewPager.OnPage
 
     static /* synthetic */ void a(UGCMainActivity uGCMainActivity) {
         if (uGCMainActivity.h != null && !uGCMainActivity.h.isShowing()) {
-            TextView textView = (TextView) uGCMainActivity.a().a().findViewById(R.id.actionbar_custom_right_text);
+            TextView textView = (TextView) uGCMainActivity.getActionBar().getCustomView().findViewById(R.id.actionbar_custom_right_text);
             uGCMainActivity.h.showAsDropDown(textView);
         }
         uGCMainActivity.e("\u6536\u8d77");
     }
 
     static /* synthetic */ void a(UGCMainActivity uGCMainActivity, String string) {
-        b.a(uGCMainActivity, "ugc_filter", string);
+        MiStatInterface.recordCountEvent("ugc_filter", string);
         if (!uGCMainActivity.i.equals(string)) {
             uGCMainActivity.i = string;
             uGCMainActivity.d(string);
@@ -78,11 +74,11 @@ public class UGCMainActivity extends BaseTabActivity implements ViewPager.OnPage
     static /* synthetic */ void b(UGCMainActivity uGCMainActivity) {
         if (uGCMainActivity.g != null && !uGCMainActivity.g.isShowing()) {
             if (uGCMainActivity.f == null || !uGCMainActivity.f.isShowing()) {
-                uGCMainActivity.f = new PopupWindow(uGCMainActivity.getLayoutInflater().inflate(R.layout.home_menu_bg_popup, null, false), -1, a.L(uGCMainActivity));
+                uGCMainActivity.f = new PopupWindow(uGCMainActivity.getLayoutInflater().inflate(R.layout.home_menu_bg_popup, (ViewGroup)uGCMainActivity.getWindow().getDecorView(), false), -1, com.clilystudio.netbook.hpay100.a.a.L(uGCMainActivity));
                 uGCMainActivity.f.setAnimationStyle(R.style.home_menu_bg_anim);
-                uGCMainActivity.f.showAtLocation(uGCMainActivity.a().a(), 0, 0, 0);
+                uGCMainActivity.f.showAtLocation(uGCMainActivity.getActionBar().getCustomView(), 0, 0, 0);
             }
-            View view = uGCMainActivity.a().a().findViewById(R.id.actionbar_custom_right_icon);
+            View view = uGCMainActivity.getActionBar().getCustomView().findViewById(R.id.actionbar_custom_right_icon);
             uGCMainActivity.g.setAnimationStyle(R.style.home_menu_anim);
             uGCMainActivity.g.showAsDropDown(view);
         }
@@ -190,18 +186,18 @@ public class UGCMainActivity extends BaseTabActivity implements ViewPager.OnPage
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         this.setContentView(R.layout.activity_ugc_main_tabhost);
-        View view = this.getLayoutInflater().inflate(R.layout.ugc_popupwindow_layout, null);
+        View view = this.getLayoutInflater().inflate(R.layout.ugc_popupwindow_layout, (ViewGroup)getWindow().getDecorView(), false);
         this.g = this.a(this.g, view);
         this.g.setOnDismissListener(new PopupWindow.OnDismissListener() {
             @Override
             public void onDismiss() {
                 UGCMainActivity.g(UGCMainActivity.this);
-           }
+            }
         });
         view.findViewById(R.id.create_ugc).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (com.clilystudio.netbook.am.a((Activity) UGCMainActivity.this) != null) {
+                if (com.clilystudio.netbook.am.a(UGCMainActivity.this) != null) {
                     MiStatInterface.recordCountEvent("ugc_create", null);
                     Intent intent = new Intent(UGCMainActivity.this, UGCGuideAddCollectionActivity.class);
                     UGCMainActivity.this.startActivity(intent);
@@ -212,7 +208,7 @@ public class UGCMainActivity extends BaseTabActivity implements ViewPager.OnPage
         view.findViewById(R.id.my_ugc).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (am.a((Activity) UGCMainActivity.this) != null) {
+                if (am.a(UGCMainActivity.this) != null) {
                     MiStatInterface.recordCountEvent("ugc_my_own", null);
                     Intent intent = new Intent(UGCMainActivity.this, UserUGCActivity.class);
                     UGCMainActivity.this.startActivity(intent);
@@ -226,7 +222,7 @@ public class UGCMainActivity extends BaseTabActivity implements ViewPager.OnPage
                 UGCMainActivity.h(UGCMainActivity.this);
             }
         });
-        View view2 = LayoutInflater.from(this).inflate(R.layout.ugc_filter_popupwindow, null);
+        View view2 = LayoutInflater.from(this).inflate(R.layout.ugc_filter_popupwindow, (ViewGroup)getWindow().getDecorView(), false);
         this.h = this.a(this.h, view2);
         view2.findViewById(R.id.back_view).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -273,12 +269,12 @@ public class UGCMainActivity extends BaseTabActivity implements ViewPager.OnPage
         for (int k = 0; k < n; ++k) {
             TabHost.TabSpec tabSpec = this.a.newTabSpec("tab" + k);
             tabSpec.setContent(this);
-            View view3 = layoutInflater.inflate(R.layout.home_tabhost_item, null);
-            ((TextView) view3.findViewById(R.id.text)).setText((String) this.e.getPageTitle(k));
+            View view3 = layoutInflater.inflate(R.layout.home_tabhost_item, (ViewGroup)getWindow().getDecorView(), false);
+            ((TextView) view3.findViewById(R.id.text)).setText(this.e.getPageTitle(k));
             tabSpec.setIndicator(view3);
             this.a.addTab(tabSpec);
         }
-        new e<Void, Void, UgcFilterRoot>(){
+        new e<Void, Void, UgcFilterRoot>() {
 
             @Override
             protected UgcFilterRoot doInBackground(Void... params) {
@@ -310,7 +306,7 @@ public class UGCMainActivity extends BaseTabActivity implements ViewPager.OnPage
     public void onPageSelected(int n) {
         TabWidget tabWidget = this.a.getTabWidget();
         int n2 = tabWidget.getDescendantFocusability();
-        tabWidget.setDescendantFocusability(393216);
+        tabWidget.setDescendantFocusability(ViewGroup.FOCUS_BLOCK_DESCENDANTS);
         this.a.setCurrentTab(n);
         tabWidget.setDescendantFocusability(n2);
     }
@@ -337,9 +333,9 @@ public class UGCMainActivity extends BaseTabActivity implements ViewPager.OnPage
             super(fragmentManager);
             this.b = uGCMainActivity;
             this.a = new String[]{"ugcTag0", "ugcTag1", "ugcTag2"};
-            UGCMainActivity.e(uGCMainActivity).add(0, uGCMainActivity.a(this.a[0], "collectorCount", "last-seven-days"));
-            UGCMainActivity.e(uGCMainActivity).add(1, uGCMainActivity.a(this.a[1], "created", "all"));
-            UGCMainActivity.e(uGCMainActivity).add(2, uGCMainActivity.a(this.a[2], "collectorCount", "all"));
+            uGCMainActivity.b.add(0, uGCMainActivity.a(this.a[0], "collectorCount", "last-seven-days"));
+            uGCMainActivity.b.add(1, uGCMainActivity.a(this.a[1], "created", "all"));
+            uGCMainActivity.b.add(2, uGCMainActivity.a(this.a[2], "collectorCount", "all"));
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
             for (int i = 0; i < 3; ++i) {
                 Fragment fragment = (Fragment) UGCMainActivity.e(uGCMainActivity).get(i);
@@ -405,12 +401,12 @@ public class UGCMainActivity extends BaseTabActivity implements ViewPager.OnPage
                 an an2 = (an) holder;
                 an2.j = string = this.c.getString(R.string.ugc_all);
                 if (UGCMainActivity.j(ak.this.c).equals(string)) {
-                    an2.i.setTextColor(com.clilystudio.netbook.am.a((Context) ak.this.c, (int) R.attr.backgroundNormal));
-                    an2.i.setBackgroundResource(com.clilystudio.netbook.am.b((Context) ak.this.c, (int) R.attr.redRoundBg));
+                    an2.i.setTextColor(com.clilystudio.netbook.am.a(ak.this.c, R.attr.backgroundNormal));
+                    an2.i.setBackgroundResource(com.clilystudio.netbook.am.b(ak.this.c, R.attr.redRoundBg));
                     return;
                 }
-                an2.i.setTextColor(com.clilystudio.netbook.am.a((Context) ak.this.c, (int) 16842808));
-                an2.i.setBackgroundResource(com.clilystudio.netbook.am.b((Context) ak.this.c, (int) R.attr.backgroundSelector));
+                an2.i.setTextColor(com.clilystudio.netbook.am.a(ak.this.c, 16842808));
+                an2.i.setBackgroundResource(com.clilystudio.netbook.am.b(ak.this.c, R.attr.backgroundSelector));
                 return;
             }
             final al al2 = (al) holder;
@@ -424,7 +420,7 @@ public class UGCMainActivity extends BaseTabActivity implements ViewPager.OnPage
             al2.j.removeAllViews();
             int n4 = 0;
             while (n4 < n3) {
-                ViewGroup viewGroup = (ViewGroup) ak.this.b.inflate(R.layout.ugc_group_row, (ViewGroup) al2.j, false);
+                ViewGroup viewGroup = (ViewGroup) ak.this.b.inflate(R.layout.ugc_group_row, al2.j, false);
                 for (int i = 0; i < Math.min(4, arrstring.length - (n4 << 2)); ++i) {
                     UgcFilterTextView ugcFilterTextView = (UgcFilterTextView) viewGroup.getChildAt(i);
                     final String string = arrstring[i + (n4 << 2)];

@@ -1,7 +1,5 @@
 package com.clilystudio.netbook.ui.ugcbook;
 
-import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -16,10 +14,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.clilystudio.netbook.R;
-import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.model.UGCBookListRoot;
 import com.clilystudio.netbook.util.W;
-import com.clilystudio.netbook.util.e;
 import com.clilystudio.netbook.widget.CoverView;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
@@ -28,8 +24,8 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class UGCMainListFragment extends Fragment implements AdapterView.OnItemClickListener {
     private PullToRefreshListView a;
@@ -40,7 +36,7 @@ public class UGCMainListFragment extends Fragment implements AdapterView.OnItemC
     private TextView f;
     private com.clilystudio.netbook.a_pack.e<String, Void, UGCBookListRoot> g;
     private com.clilystudio.netbook.a_pack.e<String, Void, UGCBookListRoot> h;
-    private List<UGCBookListRoot.UGCBook> i = new ArrayList<UGCBookListRoot.UGCBook>();
+    private List<UGCBookListRoot.UGCBook> i = new ArrayList<>();
     private String j;
     private PullToRefreshBase.OnLastItemVisibleListener k;
 
@@ -48,10 +44,10 @@ public class UGCMainListFragment extends Fragment implements AdapterView.OnItemC
         this.k = new PullToRefreshBase.OnLastItemVisibleListener() {
             @Override
             public void onLastItemVisible() {
-                if (UGCMainListFragment.i(UGCMainListFragment.this) == null || UGCMainListFragment.i(UGCMainListFragment.this).getStatus() == AsyncTask.Status.FINISHED) {
+                if (UGCMainListFragment.this.g == null || UGCMainListFragment.this.g.getStatus() == AsyncTask.Status.FINISHED) {
                     UGCMainListFragment.d(UGCMainListFragment.this).setVisibility(View.VISIBLE);
-                    if (UGCMainListFragment.b(UGCMainListFragment.this) != null && UGCMainListFragment.b(UGCMainListFragment.this).getStatus() != AsyncTask.Status.FINISHED && !UGCMainListFragment.b(UGCMainListFragment.this).isCancelled()) {
-                        UGCMainListFragment.b(UGCMainListFragment.this).cancel(true);
+                    if (UGCMainListFragment.this.h != null && UGCMainListFragment.this.h.getStatus() != AsyncTask.Status.FINISHED && !UGCMainListFragment.this.h.isCancelled()) {
+                        UGCMainListFragment.this.h.cancel(true);
                     }
                     UGCMainListFragment.this.h = new com.clilystudio.netbook.a_pack.e<String, Void, UGCBookListRoot>() {
 
@@ -70,14 +66,14 @@ public class UGCMainListFragment extends Fragment implements AdapterView.OnItemC
                             UGCMainListFragment.a(UGCMainListFragment.this).setVisibility(View.GONE);
                             UGCMainListFragment.c(UGCMainListFragment.this).setVisibility(View.GONE);
                             UGCMainListFragment.d(UGCMainListFragment.this).setVisibility(View.GONE);
-                            UGCMainListFragment.e(UGCMainListFragment.this).n();
+                            UGCMainListFragment.e(UGCMainListFragment.this).onRefreshComplete();
                             if (this.isCancelled()) return;
                             if (uGCBookListRoot != null) {
                                 if (uGCBookListRoot.isOk()) {
                                     UGCBookListRoot.UGCBook[] bookLists = uGCBookListRoot.getBookLists();
                                     int n = bookLists.length;
                                     List<UGCBookListRoot.UGCBook> list = Arrays.asList(bookLists);
-                                    UGCMainListFragment.g(UGCMainListFragment.this).addAll(list);
+                                    UGCMainListFragment.this.i.addAll(list);
                                     UGCMainListFragment.h(UGCMainListFragment.this).a(UGCMainListFragment.g(UGCMainListFragment.this));
                                     if (n > 0) {
                                         if (n >= 20) {
@@ -93,11 +89,11 @@ public class UGCMainListFragment extends Fragment implements AdapterView.OnItemC
                                     return;
                                 }
                                 UGCMainListFragment.e(UGCMainListFragment.this).setOnLastItemVisibleListener(UGCMainListFragment.this.k);
-                                com.clilystudio.netbook.util.e.a((Activity) UGCMainListFragment.this.getActivity(), (String) "加载失败，上拉可重新加载");
+                                com.clilystudio.netbook.util.e.a(UGCMainListFragment.this.getActivity(), "加载失败，上拉可重新加载");
                                 return;
                             }
                             UGCMainListFragment.e(UGCMainListFragment.this).setOnLastItemVisibleListener(UGCMainListFragment.this.k);
-                            com.clilystudio.netbook.util.e.a((Activity) UGCMainListFragment.this.getActivity(), (String) "加载失败，请检查网络或稍后再试");
+                            com.clilystudio.netbook.util.e.a(UGCMainListFragment.this.getActivity(), "加载失败，请检查网络或稍后再试");
                         }
                     };
                     UGCMainListFragment.this.h.b();
@@ -131,10 +127,6 @@ public class UGCMainListFragment extends Fragment implements AdapterView.OnItemC
         return uGCMainListFragment.a;
     }
 
-    static /* synthetic */ j f(UGCMainListFragment uGCMainListFragment) {
-        return uGCMainListFragment.k;
-    }
-
     static /* synthetic */ List g(UGCMainListFragment uGCMainListFragment) {
         return uGCMainListFragment.i;
     }
@@ -153,7 +145,7 @@ public class UGCMainListFragment extends Fragment implements AdapterView.OnItemC
 
     @NonNull
     private com.clilystudio.netbook.a_pack.e<String, Void, UGCBookListRoot> getgclass() {
-        return new com.clilystudio.netbook.a_pack.e<String, Void, UGCBookListRoot>(){
+        return new com.clilystudio.netbook.a_pack.e<String, Void, UGCBookListRoot>() {
 
             @Override
             protected UGCBookListRoot doInBackground(String... params) {
@@ -175,7 +167,7 @@ public class UGCMainListFragment extends Fragment implements AdapterView.OnItemC
                         UGCBookListRoot.UGCBook[] arruGCBookListRoot$UGCBook = uGCBookListRoot.getBookLists();
                         int n = arruGCBookListRoot$UGCBook.length;
                         List<UGCBookListRoot.UGCBook> list = Arrays.asList(arruGCBookListRoot$UGCBook);
-                        UGCMainListFragment.g(UGCMainListFragment.this).addAll(list);
+                        UGCMainListFragment.this.i.addAll(list);
                         UGCMainListFragment.h(UGCMainListFragment.this).a(UGCMainListFragment.g(UGCMainListFragment.this));
                         if (n < 20) {
                             UGCMainListFragment.e(UGCMainListFragment.this).setOnLastItemVisibleListener(null);
@@ -186,10 +178,10 @@ public class UGCMainListFragment extends Fragment implements AdapterView.OnItemC
                         }
                         return;
                     }
-                    com.clilystudio.netbook.util.e.a((Activity) UGCMainListFragment.this.getActivity(), (String) "加载失败，请下拉刷新重试");
+                    com.clilystudio.netbook.util.e.a(UGCMainListFragment.this.getActivity(), "加载失败，请下拉刷新重试");
                     return;
                 }
-                com.clilystudio.netbook.util.e.a((Activity) UGCMainListFragment.this.getActivity(), (String) "加载失败，请检查网络或稍后再试");
+                com.clilystudio.netbook.util.e.a(UGCMainListFragment.this.getActivity(), "加载失败，请检查网络或稍后再试");
             }
         };
     }
@@ -203,8 +195,7 @@ public class UGCMainListFragment extends Fragment implements AdapterView.OnItemC
             return "";
         }
         try {
-            String string = URLEncoder.encode(this.j, "utf-8");
-            return string;
+            return URLEncoder.encode(this.j, "utf-8");
         } catch (UnsupportedEncodingException var1_2) {
             var1_2.printStackTrace();
             return this.j;
@@ -222,14 +213,14 @@ public class UGCMainListFragment extends Fragment implements AdapterView.OnItemC
         super.onCreateView(layoutInflater, viewGroup, bundle);
         View view = layoutInflater.inflate(R.layout.fragment_ugc_main, viewGroup, false);
         this.a = (PullToRefreshListView) view.findViewById(R.id.ptr_list);
-        this.b = (ListView) this.a.h();
-        a.a((Context) this.getActivity(), this.b);
+        this.b = this.a.getRefreshableView();
+        com.clilystudio.netbook.hpay100.a.a.a(this.getActivity(), this.b);
         this.b.setOnItemClickListener(this);
         this.e = view.findViewById(R.id.pb_loading);
         this.f = (TextView) view.findViewById(R.id.empty_text);
         LayoutInflater layoutInflater2 = LayoutInflater.from(this.getActivity());
-        this.c = layoutInflater2.inflate(R.layout.loading_item, null);
-        if (a.i()) {
+        this.c = layoutInflater2.inflate(R.layout.loading_item, (ViewGroup)getActivity().getWindow().getDecorView(), false);
+        if (com.clilystudio.netbook.hpay100.a.a.i()) {
             this.b.setFooterDividersEnabled(false);
         }
         this.b.addFooterView(this.c);
@@ -241,8 +232,8 @@ public class UGCMainListFragment extends Fragment implements AdapterView.OnItemC
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        if (UGCMainListFragment.b(UGCMainListFragment.this) != null && UGCMainListFragment.b(UGCMainListFragment.this).getStatus() != AsyncTask.Status.FINISHED && !UGCMainListFragment.b(UGCMainListFragment.this).isCancelled()) {
-                            UGCMainListFragment.b(UGCMainListFragment.this).cancel(true);
+                        if (UGCMainListFragment.this.g != null && UGCMainListFragment.this.g.getStatus() != AsyncTask.Status.FINISHED && !UGCMainListFragment.this.g.isCancelled()) {
+                            UGCMainListFragment.this.g.cancel(true);
                         }
                         UGCMainListFragment.this.g = new com.clilystudio.netbook.a_pack.e<String, Void, UGCBookListRoot>() {
 
@@ -266,7 +257,7 @@ public class UGCMainListFragment extends Fragment implements AdapterView.OnItemC
                                         UGCBookListRoot.UGCBook[] arruGCBookListRoot$UGCBook = uGCBookListRoot.getBookLists();
                                         int n = arruGCBookListRoot$UGCBook.length;
                                         List<UGCBookListRoot.UGCBook> list = Arrays.asList(arruGCBookListRoot$UGCBook);
-                                        UGCMainListFragment.g(UGCMainListFragment.this).addAll(list);
+                                        UGCMainListFragment.this.i.addAll(list);
                                         UGCMainListFragment.h(UGCMainListFragment.this).a(UGCMainListFragment.g(UGCMainListFragment.this));
                                         if (n < 20) {
                                             UGCMainListFragment.e(UGCMainListFragment.this).setOnLastItemVisibleListener(null);
@@ -277,10 +268,10 @@ public class UGCMainListFragment extends Fragment implements AdapterView.OnItemC
                                         }
                                         return;
                                     }
-                                    com.clilystudio.netbook.util.e.a((Activity) UGCMainListFragment.this.getActivity(), (String) "加载失败，请下拉刷新重试");
+                                    com.clilystudio.netbook.util.e.a(UGCMainListFragment.this.getActivity(), "加载失败，请下拉刷新重试");
                                     return;
                                 }
-                                com.clilystudio.netbook.util.e.a((Activity) UGCMainListFragment.this.getActivity(), (String) "加载失败，请检查网络或稍后再试");
+                                com.clilystudio.netbook.util.e.a(UGCMainListFragment.this.getActivity(), "加载失败，请检查网络或稍后再试");
                             }
                         };
                         UGCMainListFragment.this.g.b();
@@ -293,14 +284,13 @@ public class UGCMainListFragment extends Fragment implements AdapterView.OnItemC
             @Override
             protected void a(int var1, UGCBookListRoot.UGCBook ugcBook) {
                 if (ugcBook == null) return;
-                ((CoverView) this.a(0, CoverView.class)).setImageUrl(ugcBook.getFullCover(), R.drawable.cover_default);
+                this.a(0, CoverView.class).setImageUrl(ugcBook.getFullCover(), R.drawable.cover_default);
                 this.a(1, ugcBook.getTitle());
                 this.a(4, ugcBook.getDesc());
                 if (ugcBook.isDraft()) {
-                    Object[] arrobject = new Object[]{ugcBook.getBookCount()};
-                    this.a(2, String.format("共%1$d本书", arrobject));
+                    this.a(2, String.format(Locale.CHINA,"共%1$d本书", ugcBook.getBookCount()));
                     this.a(3, true);
-                    this.a(5, com.clilystudio.netbook.util.t.e((Date) ugcBook.getUpdated()));
+                    this.a(5, com.clilystudio.netbook.util.t.e(ugcBook.getUpdated()));
                     this.a(5, false);
                     if (ugcBook.getBookCount() >= 8) {
                         this.a(6, false);
@@ -311,8 +301,7 @@ public class UGCMainListFragment extends Fragment implements AdapterView.OnItemC
                     this.a(7, false);
                     return;
                 }
-                Object[] arrobject = new Object[]{ugcBook.getBookCount(), ugcBook.getCollectorCount()};
-                this.a(2, String.format("共%1$d本书  |  %2$d人收藏", arrobject));
+                this.a(2, String.format(Locale.CHINA,"共%1$d本书  |  %2$d人收藏", ugcBook.getBookCount(), ugcBook.getCollectorCount()));
                 this.a(3, ugcBook.getAuthor());
                 this.a(3, false);
                 this.a(5, true);

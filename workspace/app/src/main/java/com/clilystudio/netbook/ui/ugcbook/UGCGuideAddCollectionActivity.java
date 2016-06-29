@@ -1,18 +1,15 @@
 package com.clilystudio.netbook.ui.ugcbook;
 
-import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-
-import com.clilystudio.netbook.R;
-import com.clilystudio.netbook.a_pack.c;
-import com.clilystudio.netbook.am;
 import android.text.Selection;
 import android.widget.TextView;
 
 import com.clilystudio.netbook.MyApplication;
-import com.clilystudio.netbook.api.b;
+import com.clilystudio.netbook.R;
+import com.clilystudio.netbook.a_pack.c;
+import com.clilystudio.netbook.am;
 import com.clilystudio.netbook.event.E;
 import com.clilystudio.netbook.event.J;
 import com.clilystudio.netbook.event.i;
@@ -22,7 +19,7 @@ import com.clilystudio.netbook.model.ResultStatus;
 import com.clilystudio.netbook.model.UGCNewCollection;
 import com.clilystudio.netbook.ui.BaseActivity;
 import com.clilystudio.netbook.ui.aa;
-import com.clilystudio.netbook.util.e;
+import com.squareup.otto.Subscribe;
 
 import uk.me.lewisdeane.ldialogs.BaseDialog;
 
@@ -38,20 +35,20 @@ public class UGCGuideAddCollectionActivity extends BaseActivity {
      * Lifted jumps to return sites
      */
     static /* synthetic */ void a(UGCGuideAddCollectionActivity uGCGuideAddCollectionActivity) {
-        Account account = am.a((Activity) uGCGuideAddCollectionActivity);
+        Account account = am.a(uGCGuideAddCollectionActivity);
         if (account == null) return;
         if (account.getUser() != null && account.getUser().getLv() < 2) {
-            e.a((Activity) uGCGuideAddCollectionActivity, (String) "\u7b49\u7ea7\u4e0d\u591f");
+            com.clilystudio.netbook.util.e.a(uGCGuideAddCollectionActivity, "等级不够");
             return;
         }
         String string = uGCGuideAddCollectionActivity.a.getText().toString();
         String string2 = uGCGuideAddCollectionActivity.b.getText().toString();
-        if (a.Q(string)) {
-            e.a((Activity) uGCGuideAddCollectionActivity, (String) "\u8bf7\u8f93\u5165\u4e66\u5355\u540d");
+        if (com.clilystudio.netbook.hpay100.a.a.Q(string)) {
+            com.clilystudio.netbook.util.e.a(uGCGuideAddCollectionActivity, "请输入书单名");
             return;
         }
-        if (a.Q(string2)) {
-            e.a((Activity) uGCGuideAddCollectionActivity, (String) "\u8bf7\u8f93\u5165\u4e66\u5355\u4e3b\u9898\u4ecb\u7ecd");
+        if (com.clilystudio.netbook.hpay100.a.a.Q(string2)) {
+            com.clilystudio.netbook.util.e.a(uGCGuideAddCollectionActivity, "请输入书单主题介绍");
             return;
         }
         Intent intent = new Intent(uGCGuideAddCollectionActivity, UGCGuideEditBooksActivity.class);
@@ -62,10 +59,6 @@ public class UGCGuideAddCollectionActivity extends BaseActivity {
         intent.putExtra("is_draft", uGCGuideAddCollectionActivity.f);
         intent.putExtra("my_author", uGCGuideAddCollectionActivity.e);
         uGCGuideAddCollectionActivity.startActivity(intent);
-    }
-
-    static /* synthetic */ UGCNewCollection b(UGCGuideAddCollectionActivity uGCGuideAddCollectionActivity) {
-        return UGCGuideAddCollectionActivity.e();
     }
 
     static /* synthetic */ TextView c(UGCGuideAddCollectionActivity uGCGuideAddCollectionActivity) {
@@ -80,18 +73,6 @@ public class UGCGuideAddCollectionActivity extends BaseActivity {
         return uGCGuideAddCollectionActivity.c;
     }
 
-    static /* synthetic */ UGCNewCollection f(UGCGuideAddCollectionActivity uGCGuideAddCollectionActivity) {
-        return UGCGuideAddCollectionActivity.e();
-    }
-
-    static /* synthetic */ UGCNewCollection g(UGCGuideAddCollectionActivity uGCGuideAddCollectionActivity) {
-        return UGCGuideAddCollectionActivity.e();
-    }
-
-    static /* synthetic */ UGCNewCollection h(UGCGuideAddCollectionActivity uGCGuideAddCollectionActivity) {
-        return UGCGuideAddCollectionActivity.e();
-    }
-
     @Override
     public void onBackPressed() {
         boolean bl;
@@ -99,8 +80,8 @@ public class UGCGuideAddCollectionActivity extends BaseActivity {
         {
             String string = this.a.getText().toString();
             String string2 = this.b.getText().toString();
-            if (a.Q(string)) {
-                boolean bl2 = a.Q(string2);
+            if (com.clilystudio.netbook.hpay100.a.a.Q(string)) {
+                boolean bl2 = com.clilystudio.netbook.hpay100.a.a.Q(string2);
                 bl = false;
                 if (bl2) break block4;
             }
@@ -130,29 +111,31 @@ public class UGCGuideAddCollectionActivity extends BaseActivity {
             }).setNegativeButton("保存并离开", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                    UGCNewCollection uGCNewCollection = UGCGuideAddCollectionActivity.b(UGCGuideAddCollectionActivity.this);
+                    UGCNewCollection uGCNewCollection = UGCGuideAddCollectionActivity.e();
                     uGCNewCollection.setTitle(UGCGuideAddCollectionActivity.c(UGCGuideAddCollectionActivity.this).getText().toString());
                     uGCNewCollection.setDesc(UGCGuideAddCollectionActivity.d(UGCGuideAddCollectionActivity.this).getText().toString());
 
-                    new c<Void, ResultStatus>(UGCGuideAddCollectionActivity.this, "正在保存到草稿箱..."){
+                    new c<Void, ResultStatus>(UGCGuideAddCollectionActivity.this, "正在保存到草稿箱...") {
 
                         @Override
                         public ResultStatus a(Void... var1) {
-                            Account account = am.a((Activity) UGCGuideAddCollectionActivity.this);
+                            Account account = am.a(UGCGuideAddCollectionActivity.this);
                             if (account == null) return null;
-                            if (UGCGuideAddCollectionActivity.e(UGCGuideAddCollectionActivity.this) == null) return com.clilystudio.netbook.api.b.b().b(UGCGuideAddCollectionActivity.g(UGCGuideAddCollectionActivity.this), account.getToken());
-                            if (UGCGuideAddCollectionActivity.e(UGCGuideAddCollectionActivity.this).equals("")) return com.clilystudio.netbook.api.b.b().b(UGCGuideAddCollectionActivity.g(UGCGuideAddCollectionActivity.this), account.getToken());
-                            return com.clilystudio.netbook.api.b.b().b(UGCGuideAddCollectionActivity.f(UGCGuideAddCollectionActivity.this), account.getToken(), UGCGuideAddCollectionActivity.e(UGCGuideAddCollectionActivity.this));
+                            if (UGCGuideAddCollectionActivity.e(UGCGuideAddCollectionActivity.this) == null)
+                                return com.clilystudio.netbook.api.b.b().b(UGCGuideAddCollectionActivity.e(), account.getToken());
+                            if (UGCGuideAddCollectionActivity.e(UGCGuideAddCollectionActivity.this).equals(""))
+                                return com.clilystudio.netbook.api.b.b().b(UGCGuideAddCollectionActivity.e(), account.getToken());
+                            return com.clilystudio.netbook.api.b.b().b(UGCGuideAddCollectionActivity.e(), account.getToken(), UGCGuideAddCollectionActivity.e(UGCGuideAddCollectionActivity.this));
                         }
 
                         @Override
                         public void a(ResultStatus resultStatus) {
-                             if (resultStatus == null || !resultStatus.isOk()) {
-                                com.clilystudio.netbook.util.e.a((Activity) UGCGuideAddCollectionActivity.this, (String) "保存失败，请检查网络或重试");
+                            if (resultStatus == null || !resultStatus.isOk()) {
+                                com.clilystudio.netbook.util.e.a(UGCGuideAddCollectionActivity.this, "保存失败，请检查网络或重试");
                                 return;
                             }
-                            com.clilystudio.netbook.util.e.a((Activity) UGCGuideAddCollectionActivity.this, (String) "已保存到草稿箱");
-                            UGCNewCollection uGCNewCollection = UGCGuideAddCollectionActivity.h(UGCGuideAddCollectionActivity.this);
+                            com.clilystudio.netbook.util.e.a(UGCGuideAddCollectionActivity.this, "已保存到草稿箱");
+                            UGCNewCollection uGCNewCollection = UGCGuideAddCollectionActivity.e();
                             i.a().post(new E());
                             i.a().post(new J(UGCGuideAddCollectionActivity.e(UGCGuideAddCollectionActivity.this), uGCNewCollection.getTitle(), uGCNewCollection.getDesc(), uGCNewCollection.getBooks().size(), uGCNewCollection.getBooks().get(0).getCover()));
                             UGCGuideAddCollectionActivity.this.finish();
@@ -204,7 +187,7 @@ public class UGCGuideAddCollectionActivity extends BaseActivity {
         i.a().unregister(this);
     }
 
-    @l
+    @Subscribe
     public void onUgcDraftEvent(com.clilystudio.netbook.event.E e2) {
         this.finish();
     }

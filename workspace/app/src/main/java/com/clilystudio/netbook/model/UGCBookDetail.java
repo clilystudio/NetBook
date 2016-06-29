@@ -69,7 +69,7 @@ public class UGCBookDetail {
         this.title = string;
     }
 
-    public class UGCBookContainer {
+    public static final class UGCBookContainer {
         UGCBookItem book;
         String comment;
 
@@ -89,7 +89,7 @@ public class UGCBookDetail {
             this.comment = string;
         }
 
-        public class UGCBookItem {
+        public static final class UGCBookItem {
             private String _id;
             private String author;
             private String cover;
@@ -149,7 +149,5 @@ public class UGCBookDetail {
                 this._id = string;
             }
         }
-
     }
-
 }
