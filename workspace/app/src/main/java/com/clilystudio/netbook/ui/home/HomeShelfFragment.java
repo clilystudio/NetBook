@@ -70,7 +70,6 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
     private AdapterView.OnItemClickListener C;
     private AdapterView.OnItemLongClickListener D;
     private boolean b = true;
-    private View c;
     private PullToRefreshListView d;
     private ListView e;
     private View f;
@@ -79,15 +78,8 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
     private ShelfMsg i;
     private HomeShelfAdapter j;
     private int k = 0;
-    private RelativeLayout l;
-    private CoverLoadingView m;
-    private TextView n;
-    private TextView o;
-    private int t;
     private int v = 0;
     private RelativeLayout w;
-    private Button x;
-    private Button y;
     private boolean z = false;
 
     public HomeShelfFragment() {
@@ -167,7 +159,7 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
         };
     }
 
-    static /* synthetic */ long a(HomeShelfFragment homeShelfFragment, BookShelf bookShelf, int n2) {
+    static /* synthetic */ long a(BookShelf bookShelf, int n2) {
         if (bookShelf.getType() == 3) {
             return bookShelf.getBookFeed().getLastActionTime();
         }
@@ -205,7 +197,7 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
     }
 
     static /* synthetic */ void a(final HomeShelfFragment homeShelfFragment, final List<BookShelf> list) {
-        View view = homeShelfFragment.getActivity().getLayoutInflater().inflate(R.layout.remove_shelf_confirm, null, false);
+        View view = homeShelfFragment.getActivity().getLayoutInflater().inflate(R.layout.remove_shelf_confirm, (ViewGroup)homeShelfFragment.getActivity().getWindow().getDecorView(), false);
         final CheckBox checkBox = (CheckBox) view.findViewById(R.id.remove_shelf_cache);
         new BaseDialog.Builder(homeShelfFragment.getActivity()).setView(view).setPositiveButton("确定", new DialogInterface.OnClickListener() {
 
@@ -357,26 +349,6 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
         }).show();
     }
 
-    private static boolean a(Context context, int n2) {
-        return false;
-    }
-
-    private static boolean a(List<BookShelf> list, int n2) {
-        if (n2 >= list.size()) {
-            return false;
-        }
-        if (n2 == 0 && !list.isEmpty() && list.get(0).getType() != 1) {
-            return true;
-        }
-        if (n2 > 0 && list.size() >= 5 && list.get(0).getType() == 1 && list.get(4).getType() != 1) {
-            return true;
-        }
-        return n2 > 0 && list.size() >= 4 && list.get(0).getType() != 1 && list.get(4).getType() != 1;
-    }
-
-    /*
-     * Enabled aggressive block sorting
-     */
     private static int b(List<BookShelf> list) {
         int n2 = 0;
         List<BookFile> list2 = TxtFileObject.getTxtFiles();
@@ -384,8 +356,8 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
         if (list2.isEmpty()) {
             return 0;
         }
-        ArrayList<BookShelf> arrayList = new ArrayList<BookShelf>();
-        ArrayList<BookShelf> arrayList2 = new ArrayList<BookShelf>();
+        ArrayList<BookShelf> arrayList = new ArrayList<>();
+        ArrayList<BookShelf> arrayList2 = new ArrayList<>();
         for (BookFile bookFile : list2) {
             BookShelf bookShelf = new BookShelf();
             bookShelf.setTxt(bookFile);
@@ -466,9 +438,6 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
         }
     }
 
-    /*
-     * Enabled aggressive block sorting
-     */
     static /* synthetic */ void b(HomeShelfFragment homeShelfFragment, BookShelf bookShelf) {
         boolean bl = true;
         if (bookShelf.getTxt() != null) {
@@ -489,9 +458,6 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
         homeShelfFragment.k();
     }
 
-    /*
-     * Enabled aggressive block sorting
-     */
     static /* synthetic */ void b(final HomeShelfFragment homeShelfFragment, final ShelfMsg shelfMsg) {
         List list = homeShelfFragment.j.f();
         if (list == null || list.isEmpty()) {
@@ -516,49 +482,20 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (shelfMsg.login && am.a(homeShelfFragment.getActivity()) == null) {
-                    return;
-                }
-                try {
+                if (!shelfMsg.login || am.a(homeShelfFragment.getActivity()) != null) {
                     homeShelfFragment.startActivity(new InsideLinkIntent(homeShelfFragment.getActivity(), insideLink));
                     MiStatInterface.recordCountEvent("shelf_msg_click", insideLink.getLabel());
-                    return;
-                } catch (Exception var2_2) {
-                    var2_2.printStackTrace();
-                    return;
                 }
             }
         });
-    }
-
-    private static boolean b(List<BookShelf> list, int n2) {
-        if (n2 >= list.size()) {
-            return false;
-        }
-        if (n2 == 0 && !list.isEmpty() && list.get(0).getType() == 1) {
-            return true;
-        }
-        if (n2 > 0 && list.size() >= 5 && list.get(0).getType() == 1 && list.get(4).getType() == 1) {
-            return true;
-        }
-        return n2 > 0 && list.size() >= 4 && list.get(0).getType() != 1 && list.get(4).getType() == 1;
-    }
-
-    /*
-     * Enabled aggressive block sorting
-     */
-    static /* synthetic */ void c(HomeShelfFragment homeShelfFragment) {
     }
 
     static /* synthetic */ void c(HomeShelfFragment homeShelfFragment, BookReadRecord bookReadRecord) {
         new com.clilystudio.netbook.reader.dl.a(homeShelfFragment.getActivity()).a(bookReadRecord);
     }
 
-    /*
-     * Enabled aggressive block sorting
-     */
     static /* synthetic */ void c(final HomeShelfFragment homeShelfFragment, final BookShelf bookShelf) {
-        View view = homeShelfFragment.getActivity().getLayoutInflater().inflate(R.layout.remove_shelf_confirm, null, false);
+        View view = homeShelfFragment.getActivity().getLayoutInflater().inflate(R.layout.remove_shelf_confirm, (ViewGroup)homeShelfFragment.getActivity().getWindow().getDecorView(), false);
         final CheckBox checkBox = (CheckBox) view.findViewById(R.id.remove_shelf_cache);
         int n2 = bookShelf.getType();
         checkBox.setVisibility(n2 == 0 ? View.VISIBLE : View.GONE);
@@ -569,13 +506,6 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
                 HomeShelfFragment.a(homeShelfFragment, bookShelf, checkBox.isChecked());
             }
         }).setNegativeButton("取消", null).create().show();
-    }
-
-    static /* synthetic */ void e(HomeShelfFragment homeShelfFragment) {
-    }
-
-    static /* synthetic */ String f() {
-        return a;
     }
 
     static /* synthetic */ void f(final HomeShelfFragment homeShelfFragment) {
@@ -830,10 +760,10 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
                 if (rhs.isTop()) {
                     if (!lhs.isTop()) return 1;
                 }
-                if (HomeShelfFragment.a(HomeShelfFragment.this, lhs, v7) == HomeShelfFragment.a(HomeShelfFragment.this, rhs, v7)) {
+                if (HomeShelfFragment.a(lhs, v7) == HomeShelfFragment.a(rhs, v7)) {
                     return 0;
                 }
-                if (HomeShelfFragment.a(HomeShelfFragment.this, lhs, v7) > HomeShelfFragment.a(HomeShelfFragment.this, rhs, v7)) return -1;
+                if (HomeShelfFragment.a(lhs, v7) > HomeShelfFragment.a(rhs, v7)) return -1;
                 return 1;
             }
         });
@@ -948,28 +878,28 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
     public View onCreateView(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
         Log.i(a, "HomeShelfFragment onCreateView");
 //        60.0f * ((float) this.getActivity().getResources().getDisplayMetrics().densityDpi / 160.0f);
-        this.c = layoutInflater.inflate(R.layout.fragment_home_shelf, viewGroup, false);
-        this.d = (PullToRefreshListView) this.c.findViewById(R.id.home_shelf_ptr);
+        View c = layoutInflater.inflate(R.layout.fragment_home_shelf, viewGroup, false);
+        this.d = (PullToRefreshListView) c.findViewById(R.id.home_shelf_ptr);
         this.e = this.d.getRefreshableView();
         this.d.setOnScrollListener(this);
-        this.f = this.c.findViewById(R.id.home_shelf_empty);
+        this.f = c.findViewById(R.id.home_shelf_empty);
         this.h = LayoutInflater.from(this.getActivity()).inflate(R.layout.layout_shelf_footer, this.e, false);
-        this.c.findViewById(R.id.add_new_book).setOnClickListener(new View.OnClickListener() {
+        c.findViewById(R.id.add_new_book).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ((HomeActivity) HomeShelfFragment.this.getActivity()).g();
             }
         });
-        this.w = (RelativeLayout) this.c.findViewById(R.id.delete_shelf_bar);
+        this.w = (RelativeLayout) c.findViewById(R.id.delete_shelf_bar);
         this.w.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 return true;
             }
         });
-        this.x = (Button) this.w.findViewById(R.id.delete);
-        this.y = (Button) this.w.findViewById(R.id.select_all);
-        this.y.setOnClickListener(new View.OnClickListener() {
+        Button x = (Button) this.w.findViewById(R.id.delete);
+        Button y = (Button) this.w.findViewById(R.id.select_all);
+        y.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (HomeShelfFragment.a(HomeShelfFragment.this) != null) {
@@ -977,7 +907,7 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
                 }
             }
         });
-        this.x.setOnClickListener(new View.OnClickListener() {
+        x.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (HomeShelfFragment.a(HomeShelfFragment.this) == null) return;
@@ -993,7 +923,6 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
             @Override
             public void onRefresh(PullToRefreshBase<ListView> refreshView) {
                 com.clilystudio.netbook.event.i.a().post(new BookShelfRefreshEvent());
-                HomeShelfFragment.e(HomeShelfFragment.this);
                 HomeShelfAdapter.a = true;
                 new Handler().postDelayed(new Runnable() {
                     @Override
@@ -1018,21 +947,11 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
         this.e.setAdapter(this.j);
         this.e.setOnItemClickListener(this.C);
         this.e.setOnItemLongClickListener(this.D);
-        this.j.a(this.x, this.y);
+        this.j.a(x, y);
         this.i();
         this.e.getHeight();
         Log.i(a, "" + this.e.getHeight() + " ," + this.e.getMeasuredHeight());
-        this.l = (RelativeLayout) this.c.findViewById(R.id.ic_audio_bar);
-        this.m = (CoverLoadingView) this.l.findViewById(R.id.cover);
-        this.n = (TextView) this.l.findViewById(R.id.tv_title);
-        this.o = (TextView) this.l.findViewById(R.id.tv_time);
-        this.l.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                HomeShelfFragment.c(HomeShelfFragment.this);
-            }
-        });
-        return this.c;
+        return c;
     }
 
     @Override
