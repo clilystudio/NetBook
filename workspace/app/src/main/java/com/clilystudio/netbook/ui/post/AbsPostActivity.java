@@ -4,9 +4,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
-
-import com.clilystudio.netbook.R;
-import com.clilystudio.netbook.am;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AbsListView;
@@ -14,6 +11,8 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.clilystudio.netbook.R;
+import com.clilystudio.netbook.am;
 import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.model.ReplyeeInfo;
 import com.clilystudio.netbook.ui.BaseLoadingActivity;
@@ -118,7 +117,7 @@ public abstract class AbsPostActivity extends BaseLoadingActivity {
                     AbsPostActivity.a(AbsPostActivity.this, string);
                     AbsPostActivity.this.a(account, string);
                 }
-           }
+            }
         });
     }
 
@@ -134,8 +133,15 @@ public abstract class AbsPostActivity extends BaseLoadingActivity {
         if (!this.getIntent().hasExtra("KEY_POST_REPLIER_INFO")) {
             return;
         }
-        EditText editText = this.p();
-        new Handler().postDelayed((Runnable) ((Object) new c(this, editText)), 200);
+        final EditText editText = this.p();
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                AbsPostActivity.this.getWindow().setSoftInputMode(5);
+                editText.requestFocus();
+                ((InputMethodManager) AbsPostActivity.this.getSystemService(INPUT_METHOD_SERVICE)).showSoftInput(editText, 1);
+            }
+        }, 200);
         this.a((ReplyeeInfo) this.getIntent().getSerializableExtra("KEY_POST_REPLIER_INFO"), 0);
     }
 
@@ -172,7 +178,27 @@ public abstract class AbsPostActivity extends BaseLoadingActivity {
     public void onResume() {
         super.onResume();
         if (this.b != null) {
-            this.b.setOnScrollListener((AbsListView.OnScrollListener) ((Object) new a(this)));
+            this.b.setOnScrollListener(new AbsListView.OnScrollListener() {
+                @Override
+                public void onScrollStateChanged(AbsListView view, int scrollState) {
+                    AbsPostActivity.this.b.onScrollStateChanged(view, scrollState);
+                    if (scrollState == 1) {
+                        new Handler().post(new Runnable() {
+                            @Override
+                            public void run() {
+                                EditText editText = AbsPostActivity.a(AbsPostActivity.this);
+                                editText.clearFocus();
+                                ((InputMethodManager) AbsPostActivity.this.getSystemService(INPUT_METHOD_SERVICE)).hideSoftInputFromWindow(editText.getWindowToken(), 0);
+                            }
+                        });
+                    }
+                }
+
+                @Override
+                public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+                    AbsPostActivity.this.b.onScroll(view, firstVisibleItem, visibleItemCount, totalItemCount);
+                }
+            });
         }
     }
 }

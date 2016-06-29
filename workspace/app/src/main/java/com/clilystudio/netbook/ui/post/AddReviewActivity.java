@@ -89,7 +89,12 @@ public class AddReviewActivity extends BaseActivity {
         boolean bl;
         super.onCreate(bundle);
         this.setContentView(R.layout.add_review);
-        this.a(R.string.add_review_title, R.string.next, (aa) new A(this));
+        this.a(R.string.add_review_title, R.string.next, new aa() {
+            @Override
+            public void a() {
+                AddReviewActivity.a(AddReviewActivity.this);
+            }
+        });
         View view = this.findViewById(R.id.add_review_empty);
         ListView listView = (ListView) this.findViewById(R.id.add_review_list);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
