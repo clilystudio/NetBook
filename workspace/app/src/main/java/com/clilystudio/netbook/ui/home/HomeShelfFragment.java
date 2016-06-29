@@ -19,7 +19,6 @@ import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -32,7 +31,6 @@ import com.clilystudio.netbook.am;
 import com.clilystudio.netbook.db.BookFile;
 import com.clilystudio.netbook.db.BookReadRecord;
 import com.clilystudio.netbook.event.BookShelfRefreshEvent;
-import com.clilystudio.netbook.event.b;
 import com.clilystudio.netbook.event.g;
 import com.clilystudio.netbook.event.h;
 import com.clilystudio.netbook.event.l;
@@ -54,7 +52,6 @@ import com.clilystudio.netbook.widget.CoverLoadingView;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.squareup.otto.Subscribe;
-import com.umeng.onlineconfig.OnlineConfigAgent;
 import com.xiaomi.mistatistic.sdk.MiStatInterface;
 
 import java.io.File;
@@ -87,7 +84,6 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
     private CoverLoadingView m;
     private TextView n;
     private TextView o;
-    private ImageView p;
     private int s;
     private int t;
     private int v = 0;
@@ -133,7 +129,7 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
                             HomeShelfFragment.this.startActivity(intent);
                             return;
                         }
-                        com.clilystudio.netbook.util.e.a((Activity) HomeShelfFragment.this.getActivity(), "书籍不存在");
+                        com.clilystudio.netbook.util.e.a(HomeShelfFragment.this.getActivity(), "书籍不存在");
                         TxtFileObject.delete(bookFile);
                         com.clilystudio.netbook.event.i.a().post(new com.clilystudio.netbook.event.A());
                         return;
@@ -210,7 +206,7 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
         homeShelfFragment.a(bookShelf, bl);
     }
 
-    static /* synthetic */ void a(final HomeShelfFragment homeShelfFragment, final List list) {
+    static /* synthetic */ void a(final HomeShelfFragment homeShelfFragment, final List<BookShelf> list) {
         View view = homeShelfFragment.getActivity().getLayoutInflater().inflate(R.layout.remove_shelf_confirm, null, false);
         final CheckBox checkBox = (CheckBox) view.findViewById(R.id.remove_shelf_cache);
         new BaseDialog.Builder(homeShelfFragment.getActivity()).setView(view).setPositiveButton("确定", new DialogInterface.OnClickListener() {
@@ -223,134 +219,65 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
         }).setNegativeButton("取消", null).create().show();
     }
 
-    static /* synthetic */ void a(HomeShelfFragment var0, List var1_1, List var2_2) {
-
-        boolean v5 = false;
-        boolean v6 = false;
-        int v9 = com.clilystudio.netbook.hpay100.a.a.a(var0.getActivity(), "feed_chapter_count", 50);
-        int v4 = Math.min(var2_2.size(),var1_1.size());
-        for (int v7 = 0;v7 < v4;v7++) {
-            BookReadRecord  v3 = var2_2.get(v7);
-            BookUpdate v2 = var1_1.get(v7);
-            boolean v21;
-            if (v3 != null && v2 != null) {
-               int v10 = v2.getChaptersCount();
-               long v12 = v3.getUpdated().getTime();
-               long v14 = v2.getUpdated().getTime();
-               if (v12 < v14) {
-                    v3.setUpdated(v2.getUpdated());
-                    v3.setLastChapter(v2.getLastChapter());
-                    v3.setUnread(true);
-                    v3.setChapterCount(v10);
-                    v3.save();
-                   v21 = true;
+    static /* synthetic */ void a(HomeShelfFragment homeShelfFragment, List<BookUpdate> bookUpdates, List<BookReadRecord> bookReadRecords) {
+        boolean hasUpdate = false;
+        boolean hasFeedChange = false;
+        int feedChapterCount = com.clilystudio.netbook.hpay100.a.a.a(homeShelfFragment.getActivity(), "feed_chapter_count", 50);
+        int minSize = Math.min(bookReadRecords.size(), bookUpdates.size());
+        for (int i = 0; i < minSize; i++) {
+            BookReadRecord bookReadRecord = bookReadRecords.get(i);
+            BookUpdate bookUpdate = bookUpdates.get(i);
+            if (bookReadRecord != null && bookUpdate != null) {
+                int chaptersCount = bookUpdate.getChaptersCount();
+                if (bookReadRecord.getUpdated().getTime() < bookUpdate.getUpdated().getTime()) {
+                    bookReadRecord.setUpdated(bookUpdate.getUpdated());
+                    bookReadRecord.setLastChapter(bookUpdate.getLastChapter());
+                    bookReadRecord.setUnread(true);
+                    bookReadRecord.setChapterCount(chaptersCount);
+                    bookReadRecord.save();
+                    hasUpdate = true;
                 }
-                if (v3.isFeeding()) {
-                     if (v10 - v3.getChapterCountAtFeed() < v9) {
-                        v5 = false;
-                    } else {
-                        v5 = true;
-                    }
-                    if (v3.isFeedFat() != v5) {
-                        v3.setFeedFat(v5);
-                        v3.save();
-                        v5 = v21;
-                        v21 = true;
+                if (bookReadRecord.isFeeding()) {
+                    boolean feedFat = chaptersCount - bookReadRecord.getChapterCountAtFeed() >= feedChapterCount;
+                    if (bookReadRecord.isFeedFat() != feedFat) {
+                        bookReadRecord.setFeedFat(feedFat);
+                        bookReadRecord.save();
+                        hasFeedChange = true;
                     }
                 }
             }
-            v6 = v21;
         }
-        if (v5) {
-            p0.k();
-            v2 = p0.getActivity();
-            v3 = 0x7f050161;
-            Lcom/ushaqi/zhuishushenqi/util/e.a(v2, v3);
+        if (hasUpdate) {
+            homeShelfFragment.k();
+            com.clilystudio.netbook.util.e.a(homeShelfFragment.getActivity(), R.string.refurbish_changed);
         } else {
-            if (v6) {
-                p0.k();
-             } else {
-                v0 = p0;
-                v2 = v0.Lcom/ushaqi/zhuishushenqi/ui/home/HomeShelfFragment;->j;
-                v2.notifyDataSetChanged();
-                v2 = p0.getActivity();
-                v3 = 0x7f050162;
-                Lcom/ushaqi/zhuishushenqi/util/e.a(v2, v3);
+            if (hasFeedChange) {
+                homeShelfFragment.k();
+            } else {
+                homeShelfFragment.j.notifyDataSetChanged();
+                com.clilystudio.netbook.util.e.a(homeShelfFragment.getActivity(), R.string.refurbish_no_change);
             }
-        }
-        return;
-
-
-
-        boolean var3_3 = false;
-        boolean var4_4 = false;
-        int var5_5 = com.clilystudio.netbook.hpay100.a.a.a((Context) var0.getActivity(), "feed_chapter_count", 50);
-        int var6_6 = var2_2.size();
-        int var7_7 = var1_1.size();
-        int var8_8 = var6_6 <= var7_7 ? var6_6 : var7_7;
-        for (int var9_9 = 0; var9_9 < var8_8; var9_9++) {
-            BookReadRecord var10_10 = (BookReadRecord) var2_2.get(var9_9);
-            BookUpdate var11_11 = (BookUpdate) var1_1.get(var9_9);
-            if (var10_10 != null && var11_11 != null) {
-                int var13_13 = var11_11.getChaptersCount();
-                if (var10_10.getUpdated().getTime() < var11_11.getUpdated().getTime()) {
-                    var10_10.setUpdated(var11_11.getUpdated());
-                    var10_10.setLastChapter(var11_11.getLastChapter());
-                    var10_10.setUnread(true);
-                    var10_10.setChapterCount(var13_13);
-                    var10_10.save();
-                    var3_3 = true;
-                }
-                int var17_17 = var13_13 - var10_10.getChapterCountAtFeed();
-                if (var10_10.isFeeding()) {
-                    if (var10_10.isFeedFat() || var17_17 >= var5_5) {
-                        var3_3 = true;
-                        var10_10.setFeedFat(true);
-                        var10_10.save();
-                    }
-                } else {
-
-                }
-            }
-            if (var3_3) {
-                var0.k();
-                com.clilystudio.netbook.util.e.a((Activity) var0.getActivity(), (int) R.string.refurbish_changed);
-                return;
-            }
-            if (var4_4) {
-                var0.k();
-                return;
-            }
-            var0.j.notifyDataSetChanged();
-            com.clilystudio.netbook.util.e.a((Activity) var0.getActivity(), (int) R.string.refurbish_no_change);
-            return;
         }
     }
 
-    static /* synthetic */ void a(HomeShelfFragment homeShelfFragment, List list, boolean bl) {
+    static /* synthetic */ void a(HomeShelfFragment homeShelfFragment, List<BookShelf> list, boolean bl) {
         for (BookShelf bookShelf : list) {
             if (bookShelf.getBookRecord() != null) {
                 BookReadRecord bookReadRecord = bookShelf.getBookRecord();
                 String string = bookReadRecord.getBookId();
                 BookReadRecord.delete(bookReadRecord);
-                a.t(string);
+                com.clilystudio.netbook.hpay100.a.a.t(string);
                 if (bl) {
                     homeShelfFragment.b(string);
                 }
                 homeShelfFragment.a(string, bookReadRecord.getTitle(), bookReadRecord.isRecommended());
-                a.v(bookShelf.getBookRecord().getBookId());
+                com.clilystudio.netbook.hpay100.a.a.v(bookShelf.getBookRecord().getBookId());
             } else if (bookShelf.getTxt() != null) {
                 homeShelfFragment.a(bookShelf.getTxt());
-            } else if (bookShelf.getType() == 1) {
-                homeShelfFragment.a(bookShelf.getAdIndex());
             }
         }
         homeShelfFragment.k();
         com.clilystudio.netbook.event.i.a().post(new BookShelfRefreshEvent());
-    }
-
-    static /* synthetic */ void a(HomeShelfFragment homeShelfFragment, boolean bl) {
-        homeShelfFragment.a(bl);
     }
 
     static /* synthetic */ void a(final HomeShelfFragment homeShelfFragment, CharSequence[] arrcharSequence, final BookShelf bookShelf) {
@@ -359,7 +286,7 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
         }
         BaseDialog.Builder h2 = new BaseDialog.Builder(homeShelfFragment.getActivity());
         h2.setTitle(bookShelf.getTitle());
-        h2.setSingleChoiceItems(arrcharSequence, new DialogInterface.OnClickListener() {
+        h2.setSingleChoiceItems(arrcharSequence, 0, new DialogInterface.OnClickListener() {
 
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -367,13 +294,10 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
                     case 1: {
                         if (which == 0) {
                             HomeShelfFragment.a(homeShelfFragment, bookShelf);
-                            return;
-                        }
-                        if (which != 1) return;
-                        {
+                        } else if (which == 1) {
                             HomeShelfFragment.k(homeShelfFragment);
-                            return;
                         }
+                        return;
                     }
                     case 0: {
                         if (which == 0) {
@@ -422,10 +346,6 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
                             HomeShelfFragment.b(homeShelfFragment, bookShelf);
                             return;
                         }
-                        if (which == 1) {
-                            HomeShelfFragment.b(homeShelfFragment, bookShelf.getAlbum());
-                            return;
-                        }
                         if (which == 2) {
                             HomeShelfFragment.c(homeShelfFragment, bookShelf);
                             return;
@@ -439,7 +359,7 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
                     }
                 }
             }
-        }).b();
+        }).show();
     }
 
     private static boolean a(Context context, int n2) {
@@ -456,10 +376,7 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
         if (n2 > 0 && list.size() >= 5 && list.get(0).getType() == 1 && list.get(4).getType() != 1) {
             return true;
         }
-        if (n2 > 0 && list.size() >= 4 && list.get(0).getType() != 1 && list.get(4).getType() != 1) {
-            return true;
-        }
-        return false;
+        return n2 > 0 && list.size() >= 4 && list.get(0).getType() != 1 && list.get(4).getType() != 1;
     }
 
     /*
@@ -525,9 +442,6 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
         return new HomeShelfFragment();
     }
 
-    static /* synthetic */ void b(HomeShelfFragment homeShelfFragment) {
-    }
-
     static /* synthetic */ void b(HomeShelfFragment homeShelfFragment, int n2) {
         homeShelfFragment.b(3);
     }
@@ -535,13 +449,13 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
     static /* synthetic */ void b(HomeShelfFragment homeShelfFragment, BookReadRecord bookReadRecord) {
         if (bookReadRecord != null) {
             long l2 = System.currentTimeMillis();
-            a.d((Context) homeShelfFragment.getActivity(), "FeedUpdateTime", l2);
+            com.clilystudio.netbook.hpay100.a.a.d(homeShelfFragment.getActivity(), "FeedUpdateTime", l2);
             bookReadRecord.setFeeding(true);
             bookReadRecord.setChapterCountAtFeed(bookReadRecord.getChapterCount());
             bookReadRecord.setLastActionTime(new Date().getTime());
             bookReadRecord.save();
             homeShelfFragment.a(bookReadRecord, true);
-            if (a.a((Context) homeShelfFragment.getActivity(), "feed_intro_dialog", true)) {
+            if (com.clilystudio.netbook.hpay100.a.a.a(homeShelfFragment.getActivity(), "feed_intro_dialog", true)) {
                 FragmentActivity fragmentActivity = homeShelfFragment.getActivity();
                 if (fragmentActivity != null) {
                     FragmentManager fragmentManager = fragmentActivity.getSupportFragmentManager();
@@ -552,7 +466,7 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
                     }
                     new FeedIntroDialog().show(fragmentTransaction, "dialog_feed_intro");
                 }
-                a.b((Context) homeShelfFragment.getActivity(), "feed_intro_dialog", false);
+                com.clilystudio.netbook.hpay100.a.a.b((Context) homeShelfFragment.getActivity(), "feed_intro_dialog", false);
             }
         }
     }
@@ -588,7 +502,7 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
         if (list == null || list.isEmpty()) {
             return;
         }
-        if (!am.r((Context) homeShelfFragment.getActivity()) && shelfMsg != null && shelfMsg.postLink != null && (shelfMsg.postLink.startsWith("link") || shelfMsg.postLink.startsWith("game"))) {
+        if (!am.r(homeShelfFragment.getActivity()) && shelfMsg != null && shelfMsg.postLink != null && (shelfMsg.postLink.startsWith("link") || shelfMsg.postLink.startsWith("game"))) {
             homeShelfFragment.e.removeHeaderView(homeShelfFragment.g);
             return;
         }
@@ -632,10 +546,7 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
         if (n2 > 0 && list.size() >= 5 && list.get(0).getType() == 1 && list.get(4).getType() == 1) {
             return true;
         }
-        if (n2 > 0 && list.size() >= 4 && list.get(0).getType() != 1 && list.get(4).getType() == 1) {
-            return true;
-        }
-        return false;
+        return n2 > 0 && list.size() >= 4 && list.get(0).getType() != 1 && list.get(4).getType() == 1;
     }
 
     /*
@@ -655,18 +566,14 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
         View view = homeShelfFragment.getActivity().getLayoutInflater().inflate(R.layout.remove_shelf_confirm, null, false);
         final CheckBox checkBox = (CheckBox) view.findViewById(R.id.remove_shelf_cache);
         int n2 = bookShelf.getType();
-        int n3 = 0;
-        if (n2 != 0) {
-            n3 = 8;
-        }
-        checkBox.setVisibility(n3);
-        new uk.me.lewisdeane.ldialogs.h(homeShelfFragment.getActivity()).a(view).a("确定", new DialogInterface.OnClickListener() {
+        checkBox.setVisibility(n2 == 0 ? View.VISIBLE : View.GONE);
+        new BaseDialog.Builder(homeShelfFragment.getActivity()).setView(view).setPositiveButton("确定", new DialogInterface.OnClickListener() {
 
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 HomeShelfFragment.a(homeShelfFragment, bookShelf, checkBox.isChecked());
             }
-        }).b("\u53d6\u6d88", null).a().show();
+        }).setNegativeButton("取消", null).create().show();
     }
 
     static /* synthetic */ void e(HomeShelfFragment homeShelfFragment) {
@@ -707,7 +614,7 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
                     } else {
                         if (HomeShelfFragment.i(homeShelfFragment) != 0) return;
                         {
-                            com.clilystudio.netbook.util.e.a((Activity) homeShelfFragment.getActivity(), (int) R.string.network_failed);
+                            com.clilystudio.netbook.util.e.a(homeShelfFragment.getActivity(), R.string.network_failed);
                             return;
                         }
                     }
@@ -718,7 +625,7 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
 
     static /* synthetic */ void g(HomeShelfFragment homeShelfFragment) {
         if (homeShelfFragment.d != null) {
-            homeShelfFragment.d.n();
+            homeShelfFragment.d.onRefreshComplete();
         }
     }
 
@@ -750,19 +657,8 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
         return homeShelfFragment.i;
     }
 
-    static /* synthetic */ void o(HomeShelfFragment homeShelfFragment) {
-        homeShelfFragment.h();
-    }
-
     static /* synthetic */ TextView p(HomeShelfFragment homeShelfFragment) {
         return homeShelfFragment.o;
-    }
-
-    private void a(int n2) {
-        com.clilystudio.netbook.util.c.a().b();
-        com.clilystudio.netbook.hpay100.a.a.b((Context) this.getActivity(), "DELETE_SHELF_AD_KEY" + n2, new Date().getTime());
-        this.k();
-        MiStatInterface.recordCountEvent("ad_delete_shelf", null);
     }
 
     private void a(final BookFile bookFile) {
@@ -802,10 +698,6 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
                 this.a(bookShelf.getTxt());
                 return;
             }
-            if (bookShelf.getType() == 1) {
-                this.a(bookShelf.getAdIndex());
-                return;
-            }
         }
     }
 
@@ -823,69 +715,28 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
     }
 
     private void a(List<BookShelf> list) {
-        if (!list.isEmpty() && am.q((Context) this.getActivity())) {
-            this.c(list, 0);
-            if (a.F(this.getActivity())) {
-                com.clilystudio.netbook.util.c.a().c();
-                this.c(list, 4);
-            }
-        }
     }
 
-    /*
-     * Unable to fully structure code
-     * Enabled aggressive block sorting
-     * Lifted jumps to return sites
-     */
-    private void a(List<BookShelf> var1_1, List<BookReadRecord> var2_2) {
-        var3_3 = new BookFeed();
-        var4_4 = BookReadRecord.getAllFeedFat();
-        var5_5 = var2_2.iterator();
-        var6_6 = 0;
-        do {
-            if (!var5_5.hasNext())**GOTO lbl15
-            var14_7 = var5_5.next();
-            if (var14_7.lastActionTime == 0)**GOTO lbl30
-            var15_8 = var14_7.lastActionTime;
-            if (var6_6 == 0) {
-                var6_6 = var15_8;
-                continue;
-            }
-            if (var6_6 >= var15_8)**GOTO lbl30
-            **GOTO lbl31
-            lbl15:
-            // 1 sources:
-            if (var4_4.isEmpty()) {
-                var3_3.setFat(false);
-                var12_9 = this.getString(R.string.shelf_feed_title);
-                var13_10 = new Object[]{var2_2.size()};
-                var3_3.setTitle(String.format(var12_9, var13_10));
-            } else {
-                var3_3.setFat(true);
-                var8_12 = this.getString(R.string.shelf_feed_fat_title);
-                var9_13 = new Object[]{var4_4.get(0).getTitle()};
-                var3_3.setTitle(String.format(var8_12, var9_13));
-            }
-            var10_11 = new BookShelf();
-            var10_11.setBookFeed(var3_3);
-            var3_3.setLastActionTime(var6_6);
-            var1_1.add(var10_11);
-            return;
-            lbl30:
-            // 2 sources:
-            var15_8 = var6_6;
-            lbl31:
-            // 2 sources:
-            var6_6 = var15_8;
-        } while (true);
-    }
-
-    private void a(boolean bl) {
-        if (bl) {
-            this.p.setImageResource(R.drawable.audio_bar_pause);
-            return;
+    private void a(List<BookShelf> bookShelfs, List<BookReadRecord> bookReadRecords) {
+        BookFeed bookFeed = new BookFeed();
+        List<BookReadRecord> v5 = BookReadRecord.getAllFeedFat();
+        Iterator<BookReadRecord> v6 = bookReadRecords.iterator();
+        long v2 = 0;
+        while (v6.hasNext()) {
+            BookReadRecord v0 = v6.next();
+            v2 = Math.max(v2, v0.lastActionTime);
         }
-        this.p.setImageResource(R.drawable.ic_play_audiobook_button);
+        if (v5.isEmpty()) {
+            bookFeed.setFat(false);
+            bookFeed.setTitle(String.format(this.getString(R.string.shelf_feed_title), bookReadRecords.size()));
+        } else {
+            bookFeed.setFat(true);
+            bookFeed.setTitle(String.format(this.getString(R.string.shelf_feed_fat_title), v5.get(0).getTitle()));
+        }
+        BookShelf v0 = new BookShelf();
+        v0.setBookFeed(bookFeed);
+        bookFeed.setLastActionTime(v2);
+        bookShelfs.add(v0);
     }
 
     private void b(int n2) {
@@ -914,37 +765,10 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
         }.start();
     }
 
-    /*
-     * Enabled aggressive block sorting
-     */
-    private void c(List<BookShelf> list, int n2) {
-        String string = n2 == 0 ? "top" : "bookshelf";
-        String string2 = n2 == 0 ? "rate_zssq_advert_bookshelf_top" : "rate_zssq_advert_bookshelf_five";
-        if (!a.A(this.getActivity()) || !a.t(this.getActivity())) return;
-        {
-            this.getActivity();
-            if (!k.c() && !k.b()) {
-                return;
-            }
-            boolean bl = true;
-            if (!bl) return;
-            {
-                if (!HomeShelfFragment.a(this.getActivity(), n2)) return;
-//                new com.clilystudio.netbook.util.adutil.n().a(this.getActivity(), string);
-                return;
-            }
-        }
-    }
-
     private void g() {
         this.l.setVisibility(View.VISIBLE);
         this.e.removeFooterView(this.h);
         this.e.addFooterView(this.h);
-    }
-
-    private void h() {
-        this.g();
-        this.a(true);
     }
 
     private void i() {
@@ -997,9 +821,9 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
                 }.b();
                 return;
             }
-            if (am.p((Context) this.getActivity())) {
+            if (am.p(this.getActivity())) {
                 if (!am.g() && !this.A) {
-                    a.a(this.getActivity());
+                    com.clilystudio.netbook.hpay100.a.a.a(this.getActivity());
                     return;
                 }
                 this.z = true;
@@ -1007,175 +831,100 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
             this.b(3);
             return;
         }
-        e.a((Activity) this.getActivity(), (String) "载入书架失败，请重试");
+        com.clilystudio.netbook.util.e.a(this.getActivity(), "载入书架失败，请重试");
     }
 
-    /*
-     * Unable to fully structure code
-     * Enabled aggressive exception aggregation
-     */
     private List<BookShelf> j() {
-        block26:
-        {
-            block24:
-            {
-                block25:
-                {
-                    block23:
-                    {
-                        var1_1 = new ArrayList<BookShelf>();
-                        var2_2 = a.a((Context) this.getActivity(), "key_shelf_sort", 1);
-                        if (var2_2 != 0)**GOTO lbl29
-                        var3_3 = BookReadRecord.getAllWithTopNoFeed();
-                        lbl5:
-                        // 2 sources:
-                        while (!(var4_4 = BookReadRecord.getAllFeeding()).isEmpty()) {
-                            var5_5 = true;
-                            lbl7:
-                            // 2 sources:
-                            do {
-                                var6_6 = 0;
-                                if (var5_5) {
-                                    var6_6 = a.c((Context) this.getActivity(), "FeedUpdateTime", System.currentTimeMillis());
-                                }
-                                var8_7 = var3_3.iterator();
-                                var9_8 = false;
-                                while (var8_7.hasNext()) {
-                                    var24_9 = var8_7.next();
-                                    var25_10 = var24_9.getUpdated().getTime();
-                                    if (!var9_8 && var5_5 && var6_6 >= var25_10) {
-                                        this.a(var1_1, var4_4);
-                                        var9_8 = true;
-                                    }
-                                    var27_11 = new BookShelf();
-                                    var27_11.setBookRecord(var24_9);
-                                    if (var24_9.readTime != null) {
-                                        var27_11.setLastRead(var24_9.readTime.getTime());
-                                    }
-                                    if (var24_9.getUpdated() != null) {
-                                        var27_11.setLastUpdate(var24_9.getUpdated().getTime());
-                                    }
-                                    var1_1.add(var27_11);
-                                }
-                                break block23;
-                                break;
-                            } while (true);
-                        }
-                        **GOTO lbl31
-                        lbl29:
-                        // 1 sources:
-                        var3_3 = BookReadRecord.getAllWithTopNoFeedByRead();
-                        **GOTO lbl5
-                        lbl31:
-                        // 1 sources:
-                        var5_5 = false;
-                        **while (true)
-                    }
-                    this.v = HomeShelfFragment.b(var1_1);
-                    if (!var9_8 && var5_5) {
-                        this.a(var1_1, var4_4);
-                    }
-                    if ((var10_12 = OnlineConfigAgent.getInstance().getConfigParams(this.getActivity(), "delete_audio_on_shelf")) == null || !"1".equals(var10_12))**GOTO lbl47
-                    var11_13 = true;
-                    lbl39:
-                    // 2 sources:
-//                    do {
-//                        var12_14 = AudioRecord.findAll().iterator();
-//                        lbl41:
-//                        // 4 sources:
-//                        if (!var12_14.hasNext()) break block24;
-//                        var21_15 = var12_14.next();
-//                        if (!var11_13) break block25;
-//                        var21_15.delete();
-//                        this.k();
-//                        **GOTO lbl41
-//                        break;
-//                    } while (true);
-                    lbl47:
-                    // 1 sources:
-                    var11_13 = false;
-                    **while (true)
-                }
-                var22_16 = new BookShelf();
-                var22_16.setAlbum(var21_15);
-                var22_16.setLastRead(var21_15.getLastRead());
-                var22_16.setLastUpdate(var21_15.getLastUpdate());
-                if (!var22_16.isTop())**GOTO lbl57
-                var1_1.add(0, var22_16);
-                **GOTO lbl41
-                lbl57:
-                // 1 sources:
-                var1_1.add(var22_16);
-                **GOTO lbl41
-            }
-            try {
-                Collections.sort(var1_1, new Comparator<BookShelf>() {
-
-                    @Override
-                    public int compare(BookShelf lhs, BookShelf rhs) {
-                        if (lhs.isTop() && !rhs.isTop()) {
-                            return -1;
-                        }
-                        if (rhs.isTop()) {
-                            if (!lhs.isTop()) return 1;
-                        }
-                        if (HomeShelfFragment.a(HomeShelfFragment.this, lhs, var2_2) == HomeShelfFragment.a(HomeShelfFragment.this, rhs, var2_2)) {
-                            return 0;
-                        }
-                        if (HomeShelfFragment.a(HomeShelfFragment.this, lhs, var2_2) > HomeShelfFragment.a(HomeShelfFragment.this, rhs, var2_2)) return -1;
-                        return 1;
-                    }
-                });
-            } catch (Exception var13_17) {
-                MiStatInterface.recordException(new Throwable("HomeShelfFragment_createShelf:" + var13_17.getMessage()));
-                **continue;
-            }
-            lbl62:
-            // 2 sources:
-            do {
-                if (a.a((Context) this.getActivity(), "unsync_bookrecord_first", false)) break block26;
-                var17_18 = new String[var3_3.size()];
-                for (var18_19 = 0; var18_19 < var3_3.size(); ++var18_19) {
-                    var17_18[var18_19] = var3_3.get(var18_19).getBookId();
-                }
-                break;
-                {
-                    continue;
-                    break;
-                }
-                break;
-            } while (true);
-            try {
-                a.a(var17_18);
-                var19_20 = new String[var4_4.size()];
-                for (var20_21 = 0; var20_21 < var4_4.size(); ++var20_21) {
-                    var19_20[var20_21] = var4_4.get(var20_21).getBookId();
-                }
-            } catch (Exception var14_22) {
-                MiStatInterface.recordException(new Throwable("HomeShelfFragment_createShelf:" + var14_22.getMessage()));
-                if (!var14_22.getMessage().contains("no such table: BookSyncRecord"))**GOTO lbl95
-                try {
-                    new SQLiteUtils();
-                    SQLiteUtils.execSql("CREATE TABLE IF NOT EXISTS BookSyncRecord (id integer primary key AutoIncrement,userId varchar(20),bookId varchar(20), type int,updated long);");
-                    **GOTO lbl95
-                } catch (Exception var16_23) {
-                    MiStatInterface.recordException(new Throwable("HomeShelfFragment_createTableBookSyncRecord:" + var14_22.getMessage()));
-                    **continue;
-                }
-            }
-            {
-                continue;
-            }
-            a.b(var19_20);
-            a.b((Context) this.getActivity(), "unsync_bookrecord_first", true);
+        List<BookShelf> v6 = new ArrayList<>();
+        final int v7 = com.clilystudio.netbook.hpay100.a.a.a(getActivity(), "key_shelf_sort", 1);
+        List<BookReadRecord> v1;
+        if (v7 != 0) {
+            v1 = BookReadRecord.getAllWithTopNoFeedByRead();
+        } else {
+            v1 = BookReadRecord.getAllWithTopNoFeed();
         }
-        lbl95:
-        // 4 sources:
-        do {
-            this.a(var1_1);
-            return var1_1;
-            break;
-        } while (true);
+        List<BookReadRecord> v8 = BookReadRecord.getAllFeeding();
+        long v2 = 0x0;
+        if (!v8.isEmpty()) {
+            v2 = com.clilystudio.netbook.hpay100.a.a.c(getActivity(), "FeedUpdateTime", System.currentTimeMillis());
+        }
+        Iterator<BookReadRecord> v9 = v1.iterator();
+        int v4 = 0;
+        while (v9.hasNext()) {
+            BookReadRecord v0 = v9.next();
+            if (v4 == 0 && !v8.isEmpty() && v2 > v0.getUpdated().getTime()) {
+                this.a(v6, v8);
+                v4 = 0x1;
+            }
+            BookShelf v10 = new BookShelf();
+            v10.setBookRecord(v0);
+            if (v0.readTime != null) {
+                v10.setLastRead(v0.readTime.getTime());
+            }
+            if (v0.getUpdated() != null) {
+                v10.setLastUpdate(v0.getUpdated().getTime());
+            }
+            v6.add(v10);
+        }
+        this.v = HomeShelfFragment.b(v6);
+        if (v4 == 0 && !v8.isEmpty()) {
+            this.a(v6, v8);
+        }
+        Collections.sort(v6, new Comparator<BookShelf>() {
+
+            @Override
+            public int compare(BookShelf lhs, BookShelf rhs) {
+                if (lhs.isTop() && !rhs.isTop()) {
+                    return -1;
+                }
+                if (rhs.isTop()) {
+                    if (!lhs.isTop()) return 1;
+                }
+                if (HomeShelfFragment.a(HomeShelfFragment.this, lhs, v7) == HomeShelfFragment.a(HomeShelfFragment.this, rhs, v7)) {
+                    return 0;
+                }
+                if (HomeShelfFragment.a(HomeShelfFragment.this, lhs, v7) > HomeShelfFragment.a(HomeShelfFragment.this, rhs, v7)) return -1;
+                return 1;
+            }
+        });
+//        :goto_5
+        if (com.clilystudio.netbook.hpay100.a.a.a(getActivity(), "unsync_bookrecord_first", 0) != 0) {
+            this.a(v6);
+            return v6;
+        }
+        String[] v3 = new String[v1.size()];
+        for (int v21 = 0; v21 < v1.size(); v21++){
+            v3[v21] = v1.get(v21).getBookId();
+        }
+        com.clilystudio.netbook.hpay100.a.a.a(v3);
+        String[] v22 = new String[v8.size()];
+        for (int v11 = 0; v11 < v8.size(); v11++) {
+            v22[v11] = v8.get(v11).getBookId();
+        }
+        com.clilystudio.netbook.hpay100.a.a.b(v22);
+        com.clilystudio.netbook.hpay100.a.a.b(getActivity(), "unsync_bookrecord_first", 1);
+        this.a(v6);
+        return v6;
+//        :catch_0
+//        move-exception v0
+//        MiStatInterfaceImpl.recordCountEvent("zhuishu_catch_exception", "HomeShelfFragment_createShelf:" + v0.getMessage());
+//        goto :goto_5
+//        :catch_1
+//        move-exception v0
+//        MiStatInterfaceImpl.recordCountEvent("zhuishu_catch_exception", "HomeShelfFragment_createShelf:" + v0.getMessage());
+//        if (v0.getMessage().contains("no such table: BookSyncRecord")) {
+//            v1 = new SQLiteUtils();
+//            v1.<init>();
+//            v1 = "CREATE TABLE IF NOT EXISTS BookSyncRecord (id integer primary key AutoIncrement,userId varchar(20),bookId varchar(20), type int,updated long);";
+//            Lcom/activeandroid/util/SQLiteUtils.execSql(v1);
+//        }
+//        this.a(v6);
+//        return v6;
+//        :catch_2
+//        move-exception v1
+//        MiStatInterfaceImpl.recordCountEvent("zhuishu_catch_exception", "HomeShelfFragment_createTableBookSyncRecord:" + v0.getMessage());
+//        this.a(v6);
+//        return v6;
     }
 
     private void k() {
@@ -1199,14 +948,14 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
         this.w.setVisibility(View.VISIBLE);
         this.e.removeFooterView(this.h);
         this.e.addFooterView(this.h);
-        this.d.setPullToRefreshEnabled(false);
+        this.d.setMode(PullToRefreshBase.Mode.DISABLED);
         this.d.setPullToRefreshOverScrollEnabled(false);
         this.e.setOnItemLongClickListener(null);
         this.j.b();
     }
 
     public final void e() {
-        if (am.r((Context) this.getActivity()) || this.g != null && this.i != null && this.i.postLink != null && (!this.i.postLink.startsWith("link") || this.i.postLink.startsWith("game"))) {
+        if (am.r(this.getActivity()) || this.g != null && this.i != null && this.i.postLink != null && (!this.i.postLink.startsWith("link") || this.i.postLink.startsWith("game"))) {
             this.e.removeHeaderView(this.g);
             this.e.addHeaderView(this.g);
         }
@@ -1221,13 +970,6 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
     @Override
     public void onActivityCreated(Bundle bundle) {
         super.onActivityCreated(bundle);
-    }
-
-    @Subscribe
-    public void onAudioBookExitEvent(b b2) {
-        this.a(false);
-        this.l.setVisibility(View.GONE);
-        this.e.removeFooterView(this.h);
     }
 
     @Subscribe
@@ -1260,10 +1002,10 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
 //        60.0f * ((float) this.getActivity().getResources().getDisplayMetrics().densityDpi / 160.0f);
         this.c = layoutInflater.inflate(R.layout.fragment_home_shelf, viewGroup, false);
         this.d = (PullToRefreshListView) this.c.findViewById(R.id.home_shelf_ptr);
-        this.e = (ListView) this.d.getRefreshableView();
+        this.e = this.d.getRefreshableView();
         this.d.setOnScrollListener(this);
         this.f = this.c.findViewById(R.id.home_shelf_empty);
-        this.h = LayoutInflater.from(this.getActivity()).inflate(R.layout.layout_shelf_footer, (ViewGroup) this.e, false);
+        this.h = LayoutInflater.from(this.getActivity()).inflate(R.layout.layout_shelf_footer, this.e, false);
         this.c.findViewById(R.id.add_new_book).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -1293,7 +1035,7 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
                 if (HomeShelfFragment.a(HomeShelfFragment.this) == null) return;
                 List<BookShelf> list = HomeShelfFragment.a(HomeShelfFragment.this).e();
                 if (list == null || list.size() == 0) {
-                    com.clilystudio.netbook.util.e.a((Context) HomeShelfFragment.this.getActivity(), (String) "\u4f60\u6ca1\u6709\u9009\u62e9\u8981\u5220\u9664\u7684\u4e66\u54e6");
+                    com.clilystudio.netbook.util.e.a((Context) HomeShelfFragment.this.getActivity(), "你没有选择要删除的书哦");
                     return;
                 }
                 HomeShelfFragment.a(HomeShelfFragment.this, list);
@@ -1318,10 +1060,10 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
         }
         View view = LayoutInflater.from(this.getActivity()).inflate(R.layout.ptr_list_footer_empty_view, null);
         this.e.addFooterView(view);
-        com.clilystudio.netbook.hpay100.a.a.a((Context) this.getActivity(), this.e);
-        this.g = LayoutInflater.from(this.getActivity()).inflate(R.layout.bookshelf_header_msg, (ViewGroup) this.e, false);
+        com.clilystudio.netbook.hpay100.a.a.a(this.getActivity(), this.e);
+        this.g = LayoutInflater.from(this.getActivity()).inflate(R.layout.bookshelf_header_msg, this.e, false);
         this.g.setVisibility(View.GONE);
-        if (am.r((Context) this.getActivity())) {
+        if (am.r(this.getActivity())) {
             this.e.addHeaderView(this.g);
         }
         this.j = new HomeShelfAdapter(this.getActivity());
@@ -1336,13 +1078,6 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
         this.m = (CoverLoadingView) this.l.findViewById(R.id.cover);
         this.n = (TextView) this.l.findViewById(R.id.tv_title);
         this.o = (TextView) this.l.findViewById(R.id.tv_time);
-        this.p = (ImageView) this.l.findViewById(R.id.iv_control);
-        this.p.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                HomeShelfFragment.b(HomeShelfFragment.this);
-            }
-        });
         this.l.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -1429,7 +1164,7 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
     @Subscribe
     public void onHideAdEvent(com.clilystudio.netbook.event.s s2) {
         this.k();
-        if (!am.r((Context) this.getActivity()) && this.g != null && this.i != null && this.i.postLink != null && (this.i.postLink.startsWith("link") || this.i.postLink.startsWith("game"))) {
+        if (!am.r(this.getActivity()) && this.g != null && this.i != null && this.i.postLink != null && (this.i.postLink.startsWith("link") || this.i.postLink.startsWith("game"))) {
             this.e.removeHeaderView(this.g);
         }
     }
@@ -1465,7 +1200,7 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
 
     @Subscribe
     public void onShelfUpdated(com.clilystudio.netbook.event.A a2) {
-        if (a2.a() == 0 && this.z && am.p((Context) this.getActivity())) {
+        if (a2.a() == 0 && this.z && am.p(this.getActivity())) {
             if (!this.A) {
                 com.clilystudio.netbook.hpay100.a.a.a(this.getActivity());
             }
