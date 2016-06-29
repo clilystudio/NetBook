@@ -6,17 +6,23 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.clilystudio.netbook.R;
+import com.clilystudio.netbook.a_pack.c;
 import com.clilystudio.netbook.am;
 import android.text.Selection;
 import android.widget.TextView;
 
 import com.clilystudio.netbook.MyApplication;
+import com.clilystudio.netbook.api.b;
+import com.clilystudio.netbook.event.E;
+import com.clilystudio.netbook.event.J;
 import com.clilystudio.netbook.event.i;
 import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.model.Author;
+import com.clilystudio.netbook.model.ResultStatus;
 import com.clilystudio.netbook.model.UGCNewCollection;
 import com.clilystudio.netbook.ui.BaseActivity;
 import com.clilystudio.netbook.ui.aa;
+import com.clilystudio.netbook.util.e;
 
 import uk.me.lewisdeane.ldialogs.BaseDialog;
 
@@ -124,7 +130,34 @@ public class UGCGuideAddCollectionActivity extends BaseActivity {
             }).setNegativeButton("保存并离开", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                    new G(UGCGuideAddCollectionActivity.this).b();
+                    UGCNewCollection uGCNewCollection = UGCGuideAddCollectionActivity.b(UGCGuideAddCollectionActivity.this);
+                    uGCNewCollection.setTitle(UGCGuideAddCollectionActivity.c(UGCGuideAddCollectionActivity.this).getText().toString());
+                    uGCNewCollection.setDesc(UGCGuideAddCollectionActivity.d(UGCGuideAddCollectionActivity.this).getText().toString());
+
+                    new c<Void, ResultStatus>(UGCGuideAddCollectionActivity.this, "正在保存到草稿箱..."){
+
+                        @Override
+                        public ResultStatus a(Void... var1) {
+                            Account account = am.a((Activity) UGCGuideAddCollectionActivity.this);
+                            if (account == null) return null;
+                            if (UGCGuideAddCollectionActivity.e(UGCGuideAddCollectionActivity.this) == null) return com.clilystudio.netbook.api.b.b().b(UGCGuideAddCollectionActivity.g(UGCGuideAddCollectionActivity.this), account.getToken());
+                            if (UGCGuideAddCollectionActivity.e(UGCGuideAddCollectionActivity.this).equals("")) return com.clilystudio.netbook.api.b.b().b(UGCGuideAddCollectionActivity.g(UGCGuideAddCollectionActivity.this), account.getToken());
+                            return com.clilystudio.netbook.api.b.b().b(UGCGuideAddCollectionActivity.f(UGCGuideAddCollectionActivity.this), account.getToken(), UGCGuideAddCollectionActivity.e(UGCGuideAddCollectionActivity.this));
+                        }
+
+                        @Override
+                        public void a(ResultStatus resultStatus) {
+                             if (resultStatus == null || !resultStatus.isOk()) {
+                                com.clilystudio.netbook.util.e.a((Activity) UGCGuideAddCollectionActivity.this, (String) "保存失败，请检查网络或重试");
+                                return;
+                            }
+                            com.clilystudio.netbook.util.e.a((Activity) UGCGuideAddCollectionActivity.this, (String) "已保存到草稿箱");
+                            UGCNewCollection uGCNewCollection = UGCGuideAddCollectionActivity.h(UGCGuideAddCollectionActivity.this);
+                            i.a().post(new E());
+                            i.a().post(new J(UGCGuideAddCollectionActivity.e(UGCGuideAddCollectionActivity.this), uGCNewCollection.getTitle(), uGCNewCollection.getDesc(), uGCNewCollection.getBooks().size(), uGCNewCollection.getBooks().get(0).getCover()));
+                            UGCGuideAddCollectionActivity.this.finish();
+                        }
+                    }.b();
                 }
             }).create().show();
             return;

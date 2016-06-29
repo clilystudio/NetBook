@@ -1,18 +1,24 @@
 package com.clilystudio.netbook.ui.ugcbook;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager$OnPageChangeListener;
 import android.support.v7.widget.RecyclerView;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.PopupWindow;
 import android.widget.TabHost;
 import android.widget.TabWidget;
+import android.widget.TableLayout;
 import android.widget.TextView;
 
 import com.clilystudio.netbook.R;
@@ -24,6 +30,7 @@ import com.clilystudio.netbook.ui.BaseTabActivity;
 import com.clilystudio.netbook.ui.home.ZssqFragmentPagerAdapter;
 import com.clilystudio.netbook.ui.user.UserUGCActivity;
 import com.clilystudio.netbook.util.D;
+import com.clilystudio.netbook.widget.UgcFilterTextView;
 import com.umeng.a.b;
 import com.xiaomi.mistatistic.sdk.MiStatInterface;
 
@@ -61,7 +68,7 @@ public class UGCMainActivity extends BaseTabActivity implements ViewPager.OnPage
         if (!uGCMainActivity.i.equals(string)) {
             uGCMainActivity.i = string;
             uGCMainActivity.d(string);
-            uGCMainActivity.k.b();
+            uGCMainActivity.k.notifyDataSetChanged();
             uGCMainActivity.b.get(uGCMainActivity.c.getCurrentItem()).a();
             uGCMainActivity.b.get(uGCMainActivity.c.getCurrentItem()).a(uGCMainActivity.i);
         }
@@ -319,6 +326,179 @@ public class UGCMainActivity extends BaseTabActivity implements ViewPager.OnPage
         int n = this.a.getCurrentTab();
         if (n >= 0 && n < this.e.getCount()) {
             this.c.setCurrentItem(n, true);
+        }
+    }
+
+    final class aj extends ZssqFragmentPagerAdapter {
+        private String[] a;
+        private /* synthetic */ UGCMainActivity b;
+
+        public aj(UGCMainActivity uGCMainActivity, FragmentManager fragmentManager) {
+            super(fragmentManager);
+            this.b = uGCMainActivity;
+            this.a = new String[]{"ugcTag0", "ugcTag1", "ugcTag2"};
+            UGCMainActivity.e(uGCMainActivity).add(0, uGCMainActivity.a(this.a[0], "collectorCount", "last-seven-days"));
+            UGCMainActivity.e(uGCMainActivity).add(1, uGCMainActivity.a(this.a[1], "created", "all"));
+            UGCMainActivity.e(uGCMainActivity).add(2, uGCMainActivity.a(this.a[2], "collectorCount", "all"));
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            for (int i = 0; i < 3; ++i) {
+                Fragment fragment = (Fragment) UGCMainActivity.e(uGCMainActivity).get(i);
+                if (fragment.isAdded()) continue;
+                fragmentTransaction.add(UGCMainActivity.f(uGCMainActivity).getId(), fragment, this.a[i]);
+            }
+            if (!fragmentTransaction.isEmpty()) {
+                fragmentTransaction.commit();
+                fragmentManager.executePendingTransactions();
+            }
+        }
+
+        @Override
+        public final Fragment a(int n) {
+            return (Fragment) UGCMainActivity.e(this.b).get(n);
+        }
+
+        @Override
+        protected final String b(int n) {
+            return this.a[n];
+        }
+
+        @Override
+        public final int getCount() {
+            return 3;
+        }
+
+        @Override
+        public final CharSequence getPageTitle(int n) {
+            return this.b.getResources().getStringArray(R.array.ucg_book_tabs)[n];
+        }
+    }
+
+    final class ak extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+        final /* synthetic */ UGCMainActivity c;
+        boolean a;
+        LayoutInflater b;
+        private UgcFilterRoot.FilterGroup[] d;
+
+        public ak(UGCMainActivity uGCMainActivity, Context context, UgcFilterRoot.FilterGroup[] arrfilterGroup) {
+            this.c = uGCMainActivity;
+            this.a = false;
+            this.b = LayoutInflater.from(context);
+            this.d = arrfilterGroup;
+        }
+
+        @Override
+        public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+            switch (viewType) {
+                case 0:
+                    return new an(this.b.inflate(R.layout.ugc_all_list_item, parent, false));
+                case 1:
+                    return new al(this.b.inflate(R.layout.ugc_group_list_item, parent, false));
+                default:
+                    return null;
+            }
+        }
+
+        @Override
+        public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+            if (position == 0 && this.a) {
+                String string;
+                an an2 = (an) holder;
+                an2.j = string = this.c.getString(R.string.ugc_all);
+                if (UGCMainActivity.j(ak.this.c).equals(string)) {
+                    an2.i.setTextColor(com.clilystudio.netbook.am.a((Context) ak.this.c, (int) R.attr.backgroundNormal));
+                    an2.i.setBackgroundResource(com.clilystudio.netbook.am.b((Context) ak.this.c, (int) R.attr.redRoundBg));
+                    return;
+                }
+                an2.i.setTextColor(com.clilystudio.netbook.am.a((Context) ak.this.c, (int) 16842808));
+                an2.i.setBackgroundResource(com.clilystudio.netbook.am.b((Context) ak.this.c, (int) R.attr.backgroundSelector));
+                return;
+            }
+            final al al2 = (al) holder;
+            UgcFilterRoot.FilterGroup[] arrugcFilterRoot$FilterGroup = this.d;
+            int n2 = this.a ? 1 : 0;
+            UgcFilterRoot.FilterGroup ugcFilterRoot$FilterGroup = arrugcFilterRoot$FilterGroup[position - n2];
+            if (ugcFilterRoot$FilterGroup == null) return;
+            al2.i.setText(ugcFilterRoot$FilterGroup.getName());
+            int n3 = (-1 + (4 + ugcFilterRoot$FilterGroup.getTags().length)) / 4;
+            String[] arrstring = ugcFilterRoot$FilterGroup.getTags();
+            al2.j.removeAllViews();
+            int n4 = 0;
+            while (n4 < n3) {
+                ViewGroup viewGroup = (ViewGroup) ak.this.b.inflate(R.layout.ugc_group_row, (ViewGroup) al2.j, false);
+                for (int i = 0; i < Math.min(4, arrstring.length - (n4 << 2)); ++i) {
+                    UgcFilterTextView ugcFilterTextView = (UgcFilterTextView) viewGroup.getChildAt(i);
+                    final String string = arrstring[i + (n4 << 2)];
+                    ugcFilterTextView.setVisibility(View.VISIBLE);
+                    ugcFilterTextView.setText(string);
+                    ugcFilterTextView.setSelected(UGCMainActivity.j(ak.this.c).equals(ugcFilterTextView.a()));
+                    ugcFilterTextView.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            ak.this.a = true;
+                            UGCMainActivity.a(ak.this.c, string);
+                            ak.this.notifyItemChanged(0);
+                        }
+                    });
+                }
+                if (arrstring.length - (n4 << 2) < 4) {
+                    for (int j = arrstring.length - (n4 << 2); j < 4; ++j) {
+                        viewGroup.getChildAt(j).setVisibility(View.INVISIBLE);
+                    }
+                }
+                al2.j.addView(viewGroup);
+                ++n4;
+            }
+        }
+
+        @Override
+        public int getItemViewType(int position) {
+            if (position == 0 && this.a) {
+                return 0;
+            } else {
+                return 1;
+            }
+        }
+
+        @Override
+        public int getItemCount() {
+            if (this.a) {
+                return 1 + this.d.length;
+            } else {
+                return this.d.length;
+            }
+        }
+
+        public final class al extends RecyclerView.ViewHolder {
+            TextView i;
+            TableLayout j;
+
+            public al(View itemView) {
+                super(itemView);
+                this.i = (TextView) itemView.findViewById(R.id.group_name);
+                this.j = (TableLayout) itemView.findViewById(R.id.group_container);
+            }
+        }
+
+        public final class an extends RecyclerView.ViewHolder {
+            TextView i;
+            String j;
+
+            public an(View itemView) {
+                super(itemView);
+                this.i = (TextView) itemView.findViewById(R.id.ugc_filter_name);
+                itemView.findViewById(R.id.ugc_all_layout);
+                itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if (an.this.j == null) {
+                            return;
+                        }
+                        ak.this.a = false;
+                        UGCMainActivity.a(ak.this.c, an.this.j);
+                        ak.this.notifyItemChanged(0);
+                    }
+                });
+            }
         }
     }
 }
