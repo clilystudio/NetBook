@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -26,21 +27,24 @@ import android.widget.TextView;
 
 import com.activeandroid.util.SQLiteUtils;
 import com.clilystudio.netbook.R;
+import com.clilystudio.netbook.a_pack.c;
+import com.clilystudio.netbook.a_pack.e;
 import com.clilystudio.netbook.adapter.HomeShelfAdapter;
 import com.clilystudio.netbook.am;
 import com.clilystudio.netbook.db.BookFile;
 import com.clilystudio.netbook.db.BookReadRecord;
 import com.clilystudio.netbook.event.BookShelfRefreshEvent;
 import com.clilystudio.netbook.event.b;
-import com.clilystudio.netbook.event.c;
 import com.clilystudio.netbook.event.g;
 import com.clilystudio.netbook.event.h;
 import com.clilystudio.netbook.event.l;
 import com.clilystudio.netbook.model.BookFeed;
+import com.clilystudio.netbook.model.BookGenderRecommend;
 import com.clilystudio.netbook.model.BookShelf;
 import com.clilystudio.netbook.model.BookUpdate;
 import com.clilystudio.netbook.model.InsideLink;
 import com.clilystudio.netbook.model.ShelfMsg;
+import com.clilystudio.netbook.model.ShelfMsgRoot;
 import com.clilystudio.netbook.model.TxtFileObject;
 import com.clilystudio.netbook.reader.txt.U;
 import com.clilystudio.netbook.ui.BookInfoActivity;
@@ -49,17 +53,18 @@ import com.clilystudio.netbook.ui.feed.FeedListActivity;
 import com.clilystudio.netbook.util.FeedIntroDialog;
 import com.clilystudio.netbook.util.InsideLinkIntent;
 import com.clilystudio.netbook.widget.CoverLoadingView;
+import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
+import com.squareup.otto.Subscribe;
 import com.umeng.onlineconfig.OnlineConfigAgent;
 import com.xiaomi.mistatistic.sdk.MiStatInterface;
-import com.ximalaya.ting.android.opensdk.datatrasfer.CommonRequest;
-import com.ximalaya.ting.android.opensdk.model.album.Album;
 import com.ximalaya.ting.android.opensdk.model.album.SubordinatedAlbum;
 import com.ximalaya.ting.android.opensdk.model.track.Track;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -86,7 +91,7 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
     private TextView n;
     private TextView o;
     private ImageView p;
-     private int s;
+    private int s;
     private int t;
     private int v = 0;
     private RelativeLayout w;
@@ -136,7 +141,7 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
                         com.clilystudio.netbook.event.i.a().post(new com.clilystudio.netbook.event.A());
                         return;
                     }
-                     case 3: {
+                    case 3: {
                         Intent intent = com.clilystudio.netbook.hpay100.a.a.l(HomeShelfFragment.this.getActivity(), "feed_intro") ? new Intent(HomeShelfFragment.this.getActivity(), FeedIntroActivity.class) : new Intent(HomeShelfFragment.this.getActivity(), FeedListActivity.class);
                         HomeShelfFragment.this.startActivity(intent);
                         return;
@@ -501,7 +506,7 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
     }
 
     static /* synthetic */ void b(HomeShelfFragment homeShelfFragment) {
-     }
+    }
 
     static /* synthetic */ void b(HomeShelfFragment homeShelfFragment, int n2) {
         homeShelfFragment.b(3);
@@ -651,11 +656,44 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
         return a;
     }
 
-    static /* synthetic */ void f(HomeShelfFragment homeShelfFragment) {
+    static /* synthetic */ void f(final HomeShelfFragment homeShelfFragment) {
         if (!homeShelfFragment.b) {
             homeShelfFragment.k();
         }
-        new K(homeShelfFragment, 0).b(new Void[0]);
+        new com.clilystudio.netbook.a_pack.e<Void, Void, List<BookUpdate>>(){
+            private List<BookReadRecord> a;
+
+            @Override
+            protected List<BookUpdate> doInBackground(Void... params) {
+                this.a = BookReadRecord.getAll();
+                     ArrayList<String> arrayList = new ArrayList<String>();
+                    Iterator<BookReadRecord> iterator = this.a.iterator();
+                    while (iterator.hasNext()) {
+                        arrayList.add(iterator.next().getBookId());
+                    }
+                    com.clilystudio.netbook.api.b.a();
+                    return com.clilystudio.netbook.api.b.b().a(arrayList);
+             }
+
+            @Override
+            protected void onPostExecute(List<BookUpdate> bookUpdates) {
+                super.onPostExecute(bookUpdates);
+                if (homeShelfFragment.getActivity() == null) return;
+                {
+                    HomeShelfFragment.g(homeShelfFragment);
+                    if (bookUpdates != null && !bookUpdates.isEmpty()) {
+                        HomeShelfFragment.a(homeShelfFragment, bookUpdates, this.a);
+                        return;
+                    } else {
+                        if (HomeShelfFragment.i(homeShelfFragment) != 0) return;
+                        {
+                            com.clilystudio.netbook.util.e.a((Activity) homeShelfFragment.getActivity(), (int) R.string.network_failed);
+                            return;
+                        }
+                    }
+                }
+            }
+        }.b();
     }
 
     static /* synthetic */ void g(HomeShelfFragment homeShelfFragment) {
@@ -950,7 +988,27 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
                     this.d.setRefreshing();
                 }
                 this.b = false;
-                new J(this, 0).b(new Void[0]);
+                new e<Void, Void, ShelfMsgRoot>() {
+
+                    @Override
+                    protected ShelfMsgRoot doInBackground(Void... params) {
+                        com.clilystudio.netbook.api.b.a();
+                        return com.clilystudio.netbook.api.b.b().l();
+                    }
+
+                    @Override
+                    protected void onPostExecute(ShelfMsgRoot shelfMsgRoot) {
+                        super.onPostExecute(shelfMsgRoot);
+                        if (HomeShelfFragment.this.getActivity() == null) return;
+                        if (shelfMsgRoot == null || !shelfMsgRoot.ok || shelfMsgRoot.message == null) {
+                            HomeShelfFragment.j(HomeShelfFragment.this).removeHeaderView(HomeShelfFragment.m(HomeShelfFragment.this));
+                            HomeShelfFragment.a(HomeShelfFragment.this).notifyDataSetChanged();
+                            return;
+                        }
+                        HomeShelfFragment.a(HomeShelfFragment.this, shelfMsgRoot.message);
+                        HomeShelfFragment.b(HomeShelfFragment.this, HomeShelfFragment.n(HomeShelfFragment.this));
+                   }
+                }.b();
                 return;
             }
             if (am.p((Context) this.getActivity())) {
@@ -1065,7 +1123,23 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
                 **GOTO lbl41
             }
             try {
-                Collections.sort(var1_1, new G(this, var2_2));
+                Collections.sort(var1_1, new Comparator<BookShelf>() {
+
+                    @Override
+                    public int compare(BookShelf lhs, BookShelf rhs) {
+                        if (lhs.isTop() && !rhs.isTop()) {
+                            return -1;
+                        }
+                        if (rhs.isTop()) {
+                            if (!lhs.isTop()) return 1;
+                        }
+                        if (HomeShelfFragment.a(HomeShelfFragment.this, lhs, var2_2) == HomeShelfFragment.a(HomeShelfFragment.this, rhs, var2_2)) {
+                            return 0;
+                        }
+                        if (HomeShelfFragment.a(HomeShelfFragment.this, lhs, var2_2) > HomeShelfFragment.a(HomeShelfFragment.this, rhs, var2_2)) return -1;
+                        return 1;
+                    }
+                });
             } catch (Exception var13_17) {
                 MiStatInterface.recordException(new Throwable("HomeShelfFragment_createShelf:" + var13_17.getMessage()));
                 **continue;
@@ -1168,7 +1242,7 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
         this.a(false);
         this.l.setVisibility(View.GONE);
         this.e.removeFooterView(this.h);
-     }
+    }
 
     @com.squareup.a.l
     public void onBookAdded(c c2) {
@@ -1244,7 +1318,20 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
                 HomeShelfFragment.a(HomeShelfFragment.this, list);
             }
         });
-        this.d.setOnRefreshListener(new E(this));
+        this.d.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener<ListView>() {
+            @Override
+            public void onRefresh(PullToRefreshBase<ListView> refreshView) {
+                com.clilystudio.netbook.event.i.a().post(new BookShelfRefreshEvent());
+                HomeShelfFragment.e(HomeShelfFragment.this);
+                HomeShelfAdapter.a = true;
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        HomeShelfFragment.f(HomeShelfFragment.this);
+                    }
+                }, 1000);
+            }
+        });
         if (a.i()) {
             this.e.setFooterDividersEnabled(false);
         }
@@ -1297,50 +1384,68 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
         }
     }
 
-    @com.squareup.a.l
+    @Subscribe
     public void onFeedAdded(l l2) {
         this.a(l2.b(), l2.a());
     }
 
-    @com.squareup.a.l
+    @Subscribe
     public void onFeedRemoved(com.clilystudio.netbook.event.n n2) {
         this.k();
         a.r(n2.b());
         a.x(n2.b());
     }
 
-    @com.squareup.a.l
+    @Subscribe
     public void onFeedSettingChanged(m m2) {
         this.d.setRefreshing();
     }
 
-//    /*
-//     * Enabled aggressive block sorting
-//     */
-//    @com.squareup.a.l
-//    public void onFocusBookEvent(com.clilystudio.netbook.event.p p2) {
-//        this.i();
-//    }
+    @Subscribe
+    public void onFocusBookEvent(com.clilystudio.netbook.event.p p2) {
+        this.i();
+    }
 
-    /*
-     * Enabled aggressive block sorting
-     */
-    @com.squareup.a.l
+    @Subscribe
     public void onGenderIntroEvent(com.clilystudio.netbook.event.r r2) {
         int n2 = r2.a();
         System.out.println("type : " + n2);
         if (n2 == 0) {
             this.b(3);
-            return;
         } else {
+            com.clilystudio.netbook.a_pack.c<String, BookGenderRecommend> bookGenderRecommendc = new c<String, BookGenderRecommend>(this.getActivity(), getString(R.string.recommend_loading)) {
+
+                @Override
+                public BookGenderRecommend a(String... var1) {
+                    int n;
+                    BookGenderRecommend bookGenderRecommend;
+                    int n2 = 0;
+                    bookGenderRecommend = com.clilystudio.netbook.api.b.b().ac(var1[0]);
+                    if (!bookGenderRecommend.isOk()) return bookGenderRecommend;
+                    BookGenderRecommend.RecommendBook[] recommendBooks = bookGenderRecommend.getBooks();
+                    n = recommendBooks.length;
+                    while (n2 < n) {
+                        BookGenderRecommend.RecommendBook bookGenderRecommend$RecommendBook = recommendBooks[n2];
+                        BookReadRecord.create(bookGenderRecommend$RecommendBook);
+                        com.clilystudio.netbook.hpay100.a.a.u(bookGenderRecommend$RecommendBook.get_id());
+                        ++n2;
+                    }
+                    return bookGenderRecommend;
+                }
+
+                @Override
+                public void a(BookGenderRecommend bookGenderRecommend) {
+                    if (bookGenderRecommend != null && bookGenderRecommend.isOk()) {
+                        HomeShelfFragment.l(HomeShelfFragment.this);
+                        return;
+                    }
+                    HomeShelfFragment.b(HomeShelfFragment.this, 3);
+                }
+            };
             if (n2 == 1) {
-                new I(this, this.getActivity()).b("male");
-                return;
-            }
-            if (n2 != 2) return;
-            {
-                new I(this, this.getActivity()).b("female");
-                return;
+                bookGenderRecommendc.b("male");
+            } else if (n2 == 2) {
+                bookGenderRecommendc.b("female");
             }
         }
     }
@@ -1370,7 +1475,7 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
         List<BookShelf> list;
         super.onResume();
         if (!a.A(this.getActivity()) && (list = this.j.f()) != null && !list.isEmpty()) {
-             if (!HomeShelfFragment.a(this.getActivity(), 0)) {
+            if (!HomeShelfFragment.a(this.getActivity(), 0)) {
                 a.a((Context) this.getActivity(), null);
             }
         }

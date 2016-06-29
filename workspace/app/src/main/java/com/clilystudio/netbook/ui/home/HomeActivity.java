@@ -12,6 +12,8 @@ import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.a_pack.e;
 import com.clilystudio.netbook.am;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager$OnPageChangeListener;
@@ -29,16 +31,23 @@ import android.widget.TabWidget;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.db.AccountInfo;
 import com.clilystudio.netbook.db.BookReadRecord;
 import com.clilystudio.netbook.event.BookShelfRefreshEvent;
 import com.clilystudio.netbook.event.H;
 import com.clilystudio.netbook.event.o;
+import com.clilystudio.netbook.event.s;
 import com.clilystudio.netbook.event.t;
 import com.clilystudio.netbook.event.w;
 import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.model.BookTopRoot;
+import com.clilystudio.netbook.model.IKanshuUrlResult;
+import com.clilystudio.netbook.model.RecommendInfo;
+import com.clilystudio.netbook.model.ResultServer;
 import com.clilystudio.netbook.model.User;
+import com.clilystudio.netbook.model.UserVipInfo;
+import com.clilystudio.netbook.model.UshaqiOnlineConfig;
 import com.clilystudio.netbook.push.BookSubRecord;
 import com.clilystudio.netbook.push.BookUnSubRecord;
 import com.clilystudio.netbook.reader.txt.ScanTxtFileActivity;
@@ -55,6 +64,7 @@ import com.clilystudio.netbook.util.J;
 import com.clilystudio.netbook.util.Z;
 import com.clilystudio.netbook.util.s;
 import com.clilystudio.netbook.widget.TabWidgetV2;
+import com.squareup.otto.Subscribe;
 import com.umeng.onlineconfig.OnlineConfigAgent;
 import com.xiaomi.mistatistic.sdk.MiStatInterface;
 
@@ -178,8 +188,27 @@ public class HomeActivity extends HomeParentActivity implements ViewPager$OnPage
                 float f2 = this.j();
                 double d2 = Math.random();
                 if (bl && (double) f2 > d2 && !this.u) {
-                    new g(this, 0).b((Object[]) new Void[0]);
-                }
+                    new e<Void, Void, IKanshuUrlResult>(){
+
+                        @Override
+                        protected IKanshuUrlResult doInBackground(Void... params) {
+                            com.clilystudio.netbook.api.b.a();
+                            return com.clilystudio.netbook.api.b.b().t();
+                        }
+
+                        @Override
+                        protected void onPostExecute(IKanshuUrlResult iKanshuUrlResult) {
+                            super.onPostExecute(iKanshuUrlResult);
+                            if (iKanshuUrlResult != null && iKanshuUrlResult.isOk()) {
+                                HomeActivity.a(HomeActivity.this, iKanshuUrlResult.getLinks());
+                                String string = HomeActivity.a(HomeActivity.this);
+                                if (string != null) {
+                                    HomeActivity.a(HomeActivity.this, string);
+                                }
+                            }
+                        }
+                    }.b();
+                 }
                 this.u = true;
             }
         }
@@ -670,14 +699,26 @@ public class HomeActivity extends HomeParentActivity implements ViewPager$OnPage
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                new m(HomeActivity.this, (byte)0).b(new Void[0]);
+                new e<Void, Void, UshaqiOnlineConfig>(){
+
+                    @Override
+                    protected UshaqiOnlineConfig doInBackground(Void... params) {
+                        return com.clilystudio.netbook.api.b.b().a();
+                    }
+
+                    @Override
+                    protected void onPostExecute(UshaqiOnlineConfig ushaqiOnlineConfig) {
+                        super.onPostExecute(ushaqiOnlineConfig);
+                        if (ushaqiOnlineConfig != null && ushaqiOnlineConfig.isServerError()) {
+                            HomeParentActivity.a(HomeActivity.this, ushaqiOnlineConfig.getServerError());
+                        }
+                    }
+                }.b();
             }
         }, 3000);
         if (this.p != null) {
             com.clilystudio.netbook.util.e.c((String) "launch");
-            h h2 = new h(this);
-            String[] arrstring = new String[]{this.p.getToken()};
-            h2.b(arrstring);
+            refreshUserVipInfo();
         }
         if (bundle != null) {
             tabWidgetV2.setIndex(bundle.getInt("extra_index"));
@@ -688,6 +729,29 @@ public class HomeActivity extends HomeParentActivity implements ViewPager$OnPage
             new Z(this, account.getToken()).a(true);
         }
         this.a(this.getIntent());
+        new e<String, Void, ResultServer>(){
+
+            @Override
+            protected ResultServer doInBackground(String... params) {
+                if ("000000000000000".equals(am.t(this.a))) {
+                    return null;
+                }
+                boolean bl = false;
+                if (bl) {
+                    return null;
+                }
+                RecommendInfo recommendInfo = RecommendInfo.getInfoFromJson(HomeActivity.g(this.a));
+                String string = "";
+                String string2 = "";
+                if (recommendInfo != null) {
+                    string = recommendInfo.getRecommended();
+                    string2 = recommendInfo.getOp();
+                }
+                String string3 = am.t(HomeActivity.this);
+                HomeActivity.h(HomeActivity.this);
+                return com.clilystudio.netbook.api.b.b().p(string3, string, string2);
+            }
+        }.b();
         new j(this).b(new String[0]);
         new Handler().postDelayed(new Runnable() {
             @Override
@@ -755,21 +819,39 @@ public class HomeActivity extends HomeParentActivity implements ViewPager$OnPage
         return super.onKeyDown(n2, keyEvent);
     }
 
-    /*
-     * Enabled aggressive block sorting
-     */
-    @com.squareup.a.l
+    @Subscribe
     public void onLoginEvent(t t2) {
         this.p = t2.a();
         if (this.p != null) {
             this.a(this.p.getUser());
-            boolean bl = t2.b() != AuthLoginActivity$Source.HOME;
+            boolean bl = t2.b() != AuthLoginActivity.Source.HOME;
             new Z(this, this.p.getToken()).a(bl);
             this.a(this.p);
-            h h2 = new h(this);
-            String[] arrstring = new String[]{this.p.getToken()};
-            h2.b(arrstring);
+            refreshUserVipInfo();
         }
+    }
+
+    private void refreshUserVipInfo() {
+        e<String, Void, UserVipInfo> h2 = new e<String, Void, UserVipInfo>(){
+
+            @Override
+            protected UserVipInfo doInBackground(String... params) {
+                HomeActivity.f(HomeActivity.this);
+                return com.clilystudio.netbook.api.b.b().O(params[0]);
+            }
+
+            @Override
+            protected void onPostExecute(UserVipInfo userVipInfo) {
+                super.onPostExecute(userVipInfo);
+                if (userVipInfo != null && userVipInfo.isOk()) {
+                    MiStatInterface.recordCalculateEvent("remove_ad_duration", null, userVipInfo.getDueInMs());
+                    if (userVipInfo.getDueInMs() > 0) {
+                        com.clilystudio.netbook.event.i.a().post(new s());
+                    }
+                }
+            }
+        };
+        h2.b(this.p.getToken());
     }
 
     @Override
@@ -908,6 +990,59 @@ public class HomeActivity extends HomeParentActivity implements ViewPager$OnPage
             if ((homeFindFragment = (HomeFindFragment) this.e.get(2)) != null) {
                 homeFindFragment.a(this.c);
             }
+        }
+    }
+
+    final class i extends ZssqFragmentPagerAdapter {
+        private String[] a;
+        private /* synthetic */ HomeActivity b;
+
+        public i(HomeActivity homeActivity, FragmentManager fragmentManager) {
+            super(fragmentManager);
+            int n2 = 0;
+            this.b = homeActivity;
+            this.a = new String[]{"homeTag0", "homeTag1", "homeTag2"};
+            HomeActivity.b(homeActivity).add(homeActivity.a(this.a[0]));
+            List list = HomeActivity.b(homeActivity);
+            String string = this.a[1];
+            HomeTopicFragment homeTopicFragment = (HomeTopicFragment) homeActivity.getSupportFragmentManager().findFragmentByTag(string);
+            if (homeTopicFragment == null) {
+                homeTopicFragment = HomeTopicFragment.b();
+            }
+            list.add(homeTopicFragment);
+            HomeActivity.b(homeActivity).add(homeActivity.g(this.a[2]));
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            while (n2 < 3) {
+                Fragment fragment = (Fragment) HomeActivity.b(homeActivity).get(n2);
+                if (!fragment.isAdded()) {
+                    fragmentTransaction.add(HomeActivity.c(homeActivity).getId(), fragment, this.a[n2]);
+                }
+                ++n2;
+            }
+            if (!fragmentTransaction.isEmpty()) {
+                fragmentTransaction.commit();
+                fragmentManager.executePendingTransactions();
+            }
+        }
+
+        @Override
+        public final Fragment a(int n2) {
+            return (Fragment) HomeActivity.b(this.b).get(n2);
+        }
+
+        @Override
+        protected final String b(int n2) {
+            return this.a[n2];
+        }
+
+        @Override
+        public final int getCount() {
+            return 3;
+        }
+
+        @Override
+        public final CharSequence getPageTitle(int n2) {
+            return this.b.getResources().getStringArray(R.array.home_tabs)[n2];
         }
     }
 }

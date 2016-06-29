@@ -801,11 +801,6 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         }).setNegativeButton(R.string.cancel, null).show();
     }
 
-    static /* synthetic */ void z(ReaderActivity readerActivity) {
-        readerActivity.startActivity(BookPostTabActivity.a(readerActivity, readerActivity.c, readerActivity.d));
-        BookTopicEnterRecord.updateCount(readerActivity.c, readerActivity.P);
-    }
-
     private n A() {
         o o2 = this.b[this.n];
         if (o2 != null) {
@@ -1981,13 +1976,6 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
                     case R.id.reader_ab_chapter_url_view: {
                         ReaderActivity.w(ReaderActivity.this).setVisibility(View.GONE);
                         ReaderActivity.y(ReaderActivity.this);
-                        return;
-                    }
-                    case R.id.reader_ab_topic: {
-                        ReaderActivity.w(ReaderActivity.this).setVisibility(View.GONE);
-                        ReaderActivity.z(ReaderActivity.this);
-                        ReaderActivity.A(ReaderActivity.this).f(false);
-                        b.a(ReaderActivity.this, "reader_activity_topic");
                         return;
                     }
                     case R.id.reader_ab_read_mode: {

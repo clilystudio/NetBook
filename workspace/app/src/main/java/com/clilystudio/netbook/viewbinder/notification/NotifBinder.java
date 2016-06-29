@@ -8,9 +8,6 @@ import android.widget.TextView;
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.model.NotificationItem;
 import com.clilystudio.netbook.ui.SmartImageView;
-import com.clilystudio.netbook.ui.post.BookHelpActivity;
-import com.clilystudio.netbook.ui.post.PostDetailActivity;
-import com.clilystudio.netbook.ui.post.ReviewActivity;
 
 public abstract class NotifBinder {
     protected NotificationItem mItem;
@@ -55,20 +52,7 @@ public abstract class NotifBinder {
     }
 
     protected Intent getPostIntent(Context context, NotificationItem.NotifPost notificationItem$NotifPost) {
-        String string = notificationItem$NotifPost.getType();
-        if (string.equals("review")) {
-            Intent intent = new Intent(context, ReviewActivity.class);
-            intent.putExtra("extraReviewId", notificationItem$NotifPost.get_id());
-            return intent;
-        }
-        if (string.equals("help")) {
-            Intent intent = new Intent(context, BookHelpActivity.class);
-            intent.putExtra("extraBookHelpId", notificationItem$NotifPost.get_id());
-            return intent;
-        }
-        Intent intent = new Intent(context, PostDetailActivity.class);
-        intent.putExtra("PostBookId", notificationItem$NotifPost.get_id());
-        return intent;
+        return null;
     }
 
     public abstract String getSubText();

@@ -180,15 +180,6 @@ public class ReaderWebActivity extends BaseReadActivity {
         this.overridePendingTransition(R.anim.mode_list_enter_in, R.anim.mode_list_enter_out);
     }
 
-    public final void b() {
-        this.startActivity(BookPostTabActivity.a(this, this.c, this.d));
-    }
-
-    /*
-     * Unable to fully structure code
-     * Enabled aggressive block sorting
-     * Lifted jumps to return sites
-     */
     @Override
     public void onCreate(Bundle var1_1) {
         super.onCreate(var1_1);
@@ -211,11 +202,6 @@ public class ReaderWebActivity extends BaseReadActivity {
                     }
                     case R.id.reader_oper_back: {
                         onBackPressed();
-                        return;
-                    }
-                    case R.id.reader_ab_topic: {
-                        b();
-                        ReaderWebActivity.a(ReaderWebActivity.this).a(false);
                         return;
                     }
                     case R.id.reader_ab_read_mode: {

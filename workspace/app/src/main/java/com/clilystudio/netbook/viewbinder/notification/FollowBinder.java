@@ -5,8 +5,6 @@ import android.content.Intent;
 
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.model.NotificationItem;
-import com.clilystudio.netbook.model.User;
-import com.clilystudio.netbook.ui.post.OtherUserActivity;
 
 public class FollowBinder extends NotifBinder {
     public static final String LABEL = "follow";
@@ -22,14 +20,7 @@ public class FollowBinder extends NotifBinder {
 
     @Override
     public Intent getIntent(Context context) {
-        User user = new User();
-        user.setId(this.getItem().getJumpTo());
-        user.setNickname(this.getItem().getTrigger().getNickname());
-        Intent intent = OtherUserActivity.a(context);
-        intent.putExtra("USER_ID", user.getId());
-        intent.putExtra("USER_NAME", user.getNickname());
-        context.startActivity(intent);
-        return null;
+         return null;
     }
 
     @Override

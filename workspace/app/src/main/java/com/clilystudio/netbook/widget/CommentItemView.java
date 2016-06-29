@@ -247,7 +247,7 @@ public class CommentItemView extends HorizontalScrollView implements View.OnClic
         this.a(postComment, -1);
         TextView textView = (TextView) this.findViewById(R.id.post_comment_like_count);
         textView.setVisibility(View.VISIBLE);
-        textView.setText("" + postComment.getLikeCount() + "\u6b21\u540c\u611f");
+        textView.setText("" + postComment.getLikeCount() + "次同感");
     }
 
     /*
@@ -284,7 +284,7 @@ public class CommentItemView extends HorizontalScrollView implements View.OnClic
             case R.id.like: {
                 Account account = am.e();
                 if (account == null) {
-                    e.a((Activity) this.d, (String) "\u8bf7\u767b\u5f55\u540e\u518d\u64cd\u4f5c");
+                    e.a((Activity) this.d, (String) "请登录后再操作");
                     this.d.startActivity(AuthLoginActivity.a(this.d));
                     return;
                 }

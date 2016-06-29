@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 
 import com.clilystudio.netbook.model.NotificationItem;
-import com.clilystudio.netbook.ui.post.TweetDetailActivity;
 
 public abstract class TweetBinder extends NotifBinder {
     public TweetBinder(NotificationItem notificationItem) {
@@ -13,7 +12,7 @@ public abstract class TweetBinder extends NotifBinder {
 
     @Override
     public Intent getIntent(Context context) {
-        return TweetDetailActivity.a(context, this.getItem().getJumpTo());
+        return null;
     }
 
     @Override

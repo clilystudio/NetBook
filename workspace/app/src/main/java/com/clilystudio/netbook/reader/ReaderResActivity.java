@@ -59,12 +59,6 @@ public class ReaderResActivity extends ReaderModeActivity {
             }
         });
         this.e = view.findViewById(R.id.reader_ab_topic_count);
-        view.findViewById(R.id.reader_ab_topic).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ReaderResActivity.this.a(ReaderResActivity.a(ReaderResActivity.this));
-            }
-        });
         this.a().a(view);
         this.a().d(true);
         i.a().register(this);

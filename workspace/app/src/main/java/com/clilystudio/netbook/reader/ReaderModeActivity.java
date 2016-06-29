@@ -2,6 +2,7 @@ package com.clilystudio.netbook.reader;
 
 import android.os.Bundle;
 
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.db.BookTopicEnterRecord;
 import com.clilystudio.netbook.ui.BaseActivity;
 import com.clilystudio.netbook.ui.post.BookPostTabActivity;
@@ -24,11 +25,6 @@ public class ReaderModeActivity extends BaseActivity {
             readerWebPageFragment = ReaderWebPageFragment.a(this.a, string);
         }
         return readerWebPageFragment;
-    }
-
-    public final void a(int n) {
-        this.startActivity(BookPostTabActivity.a(this, this.b, this.c));
-        BookTopicEnterRecord.updateCount(this.b, n);
     }
 
     public final void b() {

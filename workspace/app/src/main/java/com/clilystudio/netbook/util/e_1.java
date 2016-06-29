@@ -64,13 +64,6 @@ public class e {
         return l;
     }
 
-    public static Intent a(Context context, Author author) {
-        Intent intent = OtherUserActivity.a(context);
-        intent.putExtra("USER_ID", author.get_id());
-        intent.putExtra("USER_NAME", author.getNickname());
-        return intent;
-    }
-
     public static e a(Context context) {
         if (a == null) {
             a = new e(context);

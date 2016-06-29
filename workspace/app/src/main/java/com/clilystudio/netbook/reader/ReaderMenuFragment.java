@@ -48,7 +48,6 @@ public class ReaderMenuFragment extends Fragment {
     private String f;
     private LoadingContainer g;
     private String h;
-    private BaseShelfAd i;
     private View.OnClickListener j;
     private View.OnClickListener k;
 
@@ -69,15 +68,6 @@ public class ReaderMenuFragment extends Fragment {
                         ReaderMenuFragment.this.startActivity(new InsideLinkIntent((Context) ReaderMenuFragment.this.getActivity(), ReaderMenuFragment.b(ReaderMenuFragment.this)));
                         return;
                     }
-                    case R.id.slm_reader_all_post: {
-                        MiStatInterface.recordCountEvent("reader_menu_topic", null);
-                         Intent intent = BookPostTabActivity.a(ReaderMenuFragment.this.getActivity(), ReaderMenuFragment.f(ReaderMenuFragment.this), ReaderMenuFragment.g(ReaderMenuFragment.this));
-                        intent.putExtra("extra_sort_type", "created");
-                        ReaderMenuFragment.this.startActivity(intent);
-                        new com.clilystudio.netbook.a_pack.f(ReaderMenuFragment.f(ReaderMenuFragment.this)).b(new Void[0]);
-                        ReaderMenuFragment.h(ReaderMenuFragment.this);
-                        return;
-                    }
                     case R.id.slm_reader_relate_book: {
                         ReaderMenuFragment.i(ReaderMenuFragment.this);
                         return;
@@ -90,29 +80,6 @@ public class ReaderMenuFragment extends Fragment {
                     }
                 }
 
-            }
-        };
-        this.k = new View.OnClickListener() {
-            @Override
-            public void onClick(final View v) {
-                if (!ReaderMenuFragment.j(ReaderMenuFragment.this).isApk()) {
-                    ReaderMenuFragment.j(ReaderMenuFragment.this).onAdClick(v);
-                    return;
-                }
-                h h2 = new h(ReaderMenuFragment.this.getActivity()).a(R.string.download);
-                h2.e = "是否下载" + ReaderMenuFragment.j(ReaderMenuFragment.this).getTitle() + "(\u5efa\u8bae\u4f7f\u7528WIFI\u4e0b\u8f7d)\uff1f";
-                h2.a(true).a("确认",new DialogInterface.OnClickListener(){
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        ReaderMenuFragment.j(ReaderMenuFragment.this).onAdClick(v);
-                        ReaderMenuFragment.j(ReaderMenuFragment.this).recordClick(v);
-                    }
-                }).b("取消",new DialogInterface.OnClickListener(){
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                   }
-                }).b();
             }
         };
     }
@@ -226,10 +193,6 @@ public class ReaderMenuFragment extends Fragment {
     static /* synthetic */ void i(ReaderMenuFragment readerMenuFragment) {
         readerMenuFragment.startActivity(RelateBookListActivity.a((Context) readerMenuFragment.getActivity(), null, "\u4f60\u53ef\u80fd\u611f\u5174\u8da3", readerMenuFragment.e));
         b.a(readerMenuFragment.getActivity(), "reader_menu_relate_book_a");
-    }
-
-    static /* synthetic */ BaseShelfAd j(ReaderMenuFragment readerMenuFragment) {
-        return readerMenuFragment.i;
     }
 
     static /* synthetic */ LoadingContainer k(ReaderMenuFragment readerMenuFragment) {

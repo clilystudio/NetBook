@@ -56,29 +56,9 @@ public class InsideLinkIntent extends Intent {
     private void a(InsideLink insideLink) {
 
         InsideLinkType type = insideLink.getType();
-        if (type == InsideLinkType.GAME) {
-            // GameDetailActivity
-        } else if (type == InsideLinkType.POST) {
-            this.setComponent(new ComponentName(this.a, PostDetailActivity.class));
-            this.putExtra("PostBookId", insideLink.getValue());
-            this.putExtra("post_type_key", "ramble");
-            this.a();
-//        } else if (type == InsideLinkType.LINK) {
-//            this.setComponent(new ComponentName(this.a, AdWebViewActivity.class));
-//            this.putExtra("extra_url", insideLink.getValue());
-//            this.putExtra("extra_title", insideLink.getLabel());
-//            this.a();
-        } else if (type == InsideLinkType.BOOK) {
+        if (type == InsideLinkType.BOOK) {
             this.setComponent(new ComponentName(this.a, BookInfoActivity.class));
             this.putExtra("book_id", insideLink.getValue());
-            this.a();
-        } else if (type == InsideLinkType.POST_HELP) {
-            this.setComponent(new ComponentName(this.a, BookHelpActivity.class));
-            this.putExtra("extraBookHelpId", insideLink.getValue());
-            this.a();
-        } else if (type == InsideLinkType.POST_REVIEW) {
-            this.setComponent(new ComponentName(this.a, ReviewActivity.class));
-            this.putExtra("extraReviewId", insideLink.getValue());
             this.a();
         } else if (type == InsideLinkType.BOOKLIST) {
             this.setComponent(new ComponentName(this.a, UGCDetailActivity.class));

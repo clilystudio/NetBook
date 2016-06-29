@@ -4,10 +4,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-
-import com.clilystudio.netbook.R;
-import com.clilystudio.netbook.am;
-
 import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,7 +11,11 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.clilystudio.netbook.MyApplication;
+import com.clilystudio.netbook.R;
+import com.clilystudio.netbook.a_pack.e;
 import com.clilystudio.netbook.adapter.HomeTopicAdapter;
+import com.clilystudio.netbook.am;
 import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.db.BookReadRecord;
 import com.clilystudio.netbook.db.BookTopicEnterRecord;
@@ -24,7 +24,10 @@ import com.clilystudio.netbook.event.c;
 import com.clilystudio.netbook.event.h;
 import com.clilystudio.netbook.event.i;
 import com.clilystudio.netbook.event.o;
+import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.model.BookShelfTopic;
+import com.clilystudio.netbook.model.TopicSummary;
+import com.clilystudio.netbook.model.UserInfo;
 import com.clilystudio.netbook.ui.post.BookHelpListActivity;
 import com.clilystudio.netbook.ui.post.BookPostTabActivity;
 import com.clilystudio.netbook.ui.post.CommonPostListActivity;
@@ -97,15 +100,80 @@ public class HomeTopicFragment extends HomeFragment implements View.OnClickListe
     }
 
     private void a(String string) {
-        new O(this, 0).b(string);
+        new e<String, Void, TopicSummary>() {
+            private List<BookReadRecord> a;
+
+            @Override
+            protected TopicSummary doInBackground(String... params) {
+                this.a = BookReadRecord.getAll();
+                com.clilystudio.netbook.api.b.a();
+                return com.clilystudio.netbook.api.b.b().k();
+            }
+
+            @Override
+            protected void onPostExecute(TopicSummary topicSummary) {
+                super.onPostExecute(topicSummary);
+                if (HomeTopicFragment.this.getActivity() != null) {
+                    HomeTopicFragment.d(HomeTopicFragment.this);
+                    if (topicSummary != null && topicSummary.isOk()) {
+                        HomeTopicFragment.c(HomeTopicFragment.this).clear();
+                        int n = this.a.size();
+                        for (int i = 0; i < n; ++i) {
+                            BookReadRecord bookReadRecord = this.a.get(i);
+                            String string = bookReadRecord.getBookId();
+                            BookShelfTopic bookShelfTopic = new BookShelfTopic();
+                            bookShelfTopic.setBookId(string);
+                            bookShelfTopic.setTitle(bookReadRecord.getTitle());
+                            bookShelfTopic.setFullCover(bookReadRecord.getFullCover());
+                            HomeTopicFragment.c(HomeTopicFragment.this).add(bookShelfTopic);
+                        }
+                        HomeTopicFragment.e(HomeTopicFragment.this).a(HomeTopicFragment.c(HomeTopicFragment.this));
+                    }
+                }
+
+            }
+        }.b(string);
     }
 
     private void b(String string) {
         if (string == null) {
-            P p = new P(this, 0);
-            String[] arrstring = new String[]{am.e().getToken()};
-            p.execute(arrstring);
-            return;
+            new com.clilystudio.netbook.a_pack.e<String, Void, UserInfo>(){
+
+                @Override
+                protected UserInfo doInBackground(String... params) {
+                    return com.clilystudio.netbook.api.b.b().K(params[0]);
+                }
+
+                @Override
+                protected void onPostExecute(UserInfo userInfo) {
+                    super.onPostExecute(userInfo);
+                    if (userInfo == null) {
+                        com.clilystudio.netbook.util.e.a((Activity) HomeTopicFragment.this.getActivity(), (String) "帐号无效或过期，请退出登录后重试");
+                        MyApplication.a().b("savedObject_userinfo");
+                        return;
+                    }
+                    if (userInfo.isOk()) {
+                        MyApplication.a().a(userInfo, "savedObject_userinfo");
+                        String string = userInfo.getGender();
+                        if (string == null) {
+                            com.clilystudio.netbook.util.e.a((Activity) HomeTopicFragment.this.getActivity(), (String) "无法获取性别信息，请退出登录后重试");
+                            return;
+                        }
+                        Account account = am.e();
+                        account.getUser().setGender(string);
+                        MyApplication.a().a(account);
+                        HomeTopicFragment.a(HomeTopicFragment.this, string);
+                        return;
+                    } else {
+                        if (!"TOKEN_INVALID".equals(userInfo.getCode())) return;
+                        {
+                            com.clilystudio.netbook.util.e.a((Activity) HomeTopicFragment.this.getActivity(), (String) "帐号无效或过期，请退出登录后重试");
+                            return;
+                        }
+                    }
+                }
+            }.b(am.e().getToken());
+               return;
         }
         if (string.equals("female")) {
             this.startActivity(new Intent(this.getActivity(), GirlTopicListActivity.class));
@@ -172,7 +240,7 @@ public class HomeTopicFragment extends HomeFragment implements View.OnClickListe
                     @Override
                     public void run() {
                         HomeTopicFragment.this.d();
-                   }
+                    }
                 }, 1000);
             }
         });
@@ -235,7 +303,7 @@ public class HomeTopicFragment extends HomeFragment implements View.OnClickListe
                 return;
             }
             case R.id.community_section: {
-                MiStatInterface.recordCountEvent("enter_home_topic",null);
+                MiStatInterface.recordCountEvent("enter_home_topic", null);
                 Intent intent = new Intent(this.getActivity(), TweetTabActivity.class);
                 if (a.a((Context) this.getActivity(), "FRIST_RUN_POST", true)) {
                     a.b((Context) this.getActivity(), "FRIST_RUN_POST", false);
