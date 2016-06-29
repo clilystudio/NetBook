@@ -268,7 +268,6 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
                 if (bl) {
                     homeShelfFragment.b(string);
                 }
-                homeShelfFragment.a(string, bookReadRecord.getTitle(), bookReadRecord.isRecommended());
                 com.clilystudio.netbook.hpay100.a.a.v(bookShelf.getBookRecord().getBookId());
             } else if (bookShelf.getTxt() != null) {
                 homeShelfFragment.a(bookShelf.getTxt());
@@ -292,8 +291,6 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
                     case 1: {
                         if (which == 0) {
                             HomeShelfFragment.a(homeShelfFragment, bookShelf);
-                        } else if (which == 1) {
-                            HomeShelfFragment.k(homeShelfFragment);
                         }
                         return;
                     }
@@ -591,10 +588,9 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
             @Override
             protected List<BookUpdate> doInBackground(Void... params) {
                 this.a = BookReadRecord.getAll();
-                ArrayList<String> arrayList = new ArrayList<String>();
-                Iterator<BookReadRecord> iterator = this.a.iterator();
-                while (iterator.hasNext()) {
-                    arrayList.add(iterator.next().getBookId());
+                ArrayList<String> arrayList = new ArrayList<>();
+                for (BookReadRecord anA : this.a) {
+                    arrayList.add(anA.getBookId());
                 }
                 com.clilystudio.netbook.api.b.a();
                 return com.clilystudio.netbook.api.b.b().a(arrayList);
@@ -603,17 +599,13 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
             @Override
             protected void onPostExecute(List<BookUpdate> bookUpdates) {
                 super.onPostExecute(bookUpdates);
-                if (homeShelfFragment.getActivity() == null) return;
-                {
+                if (homeShelfFragment.getActivity() != null) {
                     HomeShelfFragment.g(homeShelfFragment);
                     if (bookUpdates != null && !bookUpdates.isEmpty()) {
                         HomeShelfFragment.a(homeShelfFragment, bookUpdates, this.a);
-                        return;
                     } else {
-                        if (HomeShelfFragment.i(homeShelfFragment) != 0) return;
-                        {
+                        if (HomeShelfFragment.i(homeShelfFragment) == 0) {
                             com.clilystudio.netbook.util.e.a(homeShelfFragment.getActivity(), R.string.network_failed);
-                            return;
                         }
                     }
                 }
@@ -627,20 +619,12 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
         }
     }
 
-    static /* synthetic */ void h(HomeShelfFragment homeShelfFragment) {
-        homeShelfFragment.i();
-    }
-
     static /* synthetic */ int i(HomeShelfFragment homeShelfFragment) {
         return homeShelfFragment.v;
     }
 
     static /* synthetic */ ListView j(HomeShelfFragment homeShelfFragment) {
         return homeShelfFragment.e;
-    }
-
-    static /* synthetic */ void k(HomeShelfFragment homeShelfFragment) {
-        // RemoveAdActivity
     }
 
     static /* synthetic */ void l(HomeShelfFragment homeShelfFragment) {
@@ -653,10 +637,6 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
 
     static /* synthetic */ ShelfMsg n(HomeShelfFragment homeShelfFragment) {
         return homeShelfFragment.i;
-    }
-
-    static /* synthetic */ TextView p(HomeShelfFragment homeShelfFragment) {
-        return homeShelfFragment.o;
     }
 
     private void a(final BookFile bookFile) {
@@ -689,12 +669,9 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
             if (bl) {
                 this.b(string);
             }
-            this.a(string, bookReadRecord.getTitle(), bookReadRecord.isRecommended());
-            return;
         } else {
             if (bookShelf.getTxt() != null) {
                 this.a(bookShelf.getTxt());
-                return;
             }
         }
     }
@@ -704,12 +681,6 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
         com.clilystudio.netbook.hpay100.a.a.t(string);
         com.clilystudio.netbook.event.i.a().post(new BookShelfRefreshEvent());
         com.clilystudio.netbook.hpay100.a.a.v(string);
-    }
-
-    private void a(String string, String string2, boolean bl) {
-        if (bl) {
-            MiStatInterface.recordCountEvent("book_recommend_delete_click", string2);
-        }
     }
 
     private void a(List<BookShelf> bookShelfs, List<BookReadRecord> bookReadRecords) {
@@ -1196,6 +1167,6 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
             if (this.j.a()) {
                 this.e();
             }
-         }
+        }
     }
 }
