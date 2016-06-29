@@ -2,7 +2,7 @@ package com.clilystudio.netbook.ui.home;
 
 import android.support.v4.app.Fragment;
 
-import com.umeng.a.b;
+import com.xiaomi.mistatistic.sdk.MiStatInterfaceImpl;
 
 public abstract class HomeFragment extends Fragment {
     public abstract String a();
@@ -10,12 +10,12 @@ public abstract class HomeFragment extends Fragment {
     @Override
     public void onPause() {
         super.onPause();
-        b.b(this.a());
-    }
+        MiStatInterfaceImpl.recordPageStart(getContext(), this.a());
+     }
 
     @Override
     public void onResume() {
         super.onResume();
-        b.a(this.a());
+        MiStatInterfaceImpl.recordPageEnd(getContext(), this.a());
     }
 }

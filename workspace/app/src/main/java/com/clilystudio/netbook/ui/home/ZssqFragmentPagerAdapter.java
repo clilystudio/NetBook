@@ -43,12 +43,11 @@ public abstract class ZssqFragmentPagerAdapter extends PagerAdapter {
      */
     @Override
     public Object instantiateItem(ViewGroup viewGroup, int n) {
-        String string;
         Fragment fragment;
         if (this.b == null) {
             this.b = this.a.beginTransaction();
         }
-        if ((fragment = this.a.findFragmentByTag(string = this.b(n))) != null) {
+        if ((fragment = this.a.findFragmentByTag(this.b(n))) != null) {
             this.b.attach(fragment);
         } else {
             fragment = this.a(n);
@@ -67,10 +66,7 @@ public abstract class ZssqFragmentPagerAdapter extends PagerAdapter {
 
     @Override
     public boolean isViewFromObject(View view, Object object) {
-        if (((Fragment) object).getView() == view) {
-            return true;
-        }
-        return false;
+        return ((Fragment) object).getView() == view;
     }
 
     @Override

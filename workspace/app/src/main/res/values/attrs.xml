@@ -245,8 +245,6 @@
     <attr name="oval" format="boolean"/>
     <!--<attr name="insetForeground" format="reference|color"/>-->
     <!--<attr name="behavior_overlapTop" format="dimension"/>-->
-    <attr name="pref_name" format="string"/>
-    <attr name="pref_default" format="boolean"/>
     <!--<attr name="maxActionInlineWidth" format="dimension"/>-->
     <attr name="prompt" format="reference"/>
     <attr name="spinnerMode">

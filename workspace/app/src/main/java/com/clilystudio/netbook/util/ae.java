@@ -9,9 +9,13 @@ import java.util.regex.Pattern;
 
 public final class ae {
     private ak a = new ak();
-    private String[][] b = new String[][]{{"\uff01", "!"}, {"\uff1f", "?"}, {"\uff08", "("}, {"\uff09", ")"}, {"\u3002", "."}, {"\uff0c", ","}, {"\uff1b", ";"}, {"\uff1a", ":"}, {"\u3001", ","}, {"\u3014", "("}, {"\u3015", ")"}, {"\u3000", " "}, {"\uff10", "0"}, {"\uff11", "1"}, {"\uff12", "2"}, {"\uff13", "3"}, {"\uff14", "4"}, {"\uff15", "5"}, {"\uff16", "6"}, {"\uff17", "7"}, {"\uff18", "8"}, {"\uff19", "9"}};
-    private String[][] c = new String[][]{{"\u96f6", "0"}, {"\u4e00", "1"}, {"\u4e8c", "2"}, {"\u4e24", "2"}, {"\u4e09", "3"}, {"\u56db", "4"}, {"\u4e94", "5"}, {"\u516d", "6"}, {"\u4e03", "7"}, {"\u516b", "8"}, {"\u4e5d", "9"}};
-    private String[][] d = new String[][]{{"\u4e07", "10000"}, {"\u5343", "1000"}, {"\u767e", "100"}, {"\u5341", "10"}};
+    private String[][] b = new String[][]{{"！", "!"}, {"？", "?"}, {"（", "("}, {"）", ")"}, {"。", "."},
+            {"，", ","}, {"；", ";"}, {"：", ":"}, {"、", ","}, {"〔", "("}, {"〕", ")"},
+            {"　", " "}, {"０", "0"}, {"１", "1"}, {"２", "2"}, {"３", "3"}, {"４", "4"}, {"５", "5"},
+            {"６", "6"}, {"７", "7"}, {"８", "8"}, {"９", "9"}};
+    private String[][] c = new String[][]{{"零", "0"}, {"一", "1"}, {"二", "2"}, {"两", "2"}, {"三", "3"},
+            {"四", "4"}, {"五", "5"}, {"六", "6"}, {"七", "7"}, {"八", "8"}, {"九", "9"}};
+    private String[][] d = new String[][]{{"万", "10000"}, {"千", "1000"}, {"百", "100"}, {"十", "10"}};
     private Map<String, String> e = new HashMap<String, String>();
     private Map<String, Integer> f = new HashMap<String, Integer>();
     private Map<String, Integer> g = new HashMap<String, Integer>();
