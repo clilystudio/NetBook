@@ -17,3 +17,103 @@ reader    《== T
 ui
 util      《== T
 widget    《== T
+
+
+    v5 = 0x0;
+    v6 = 0x0;
+    v2 = p0.getActivity();
+    v3 = "feed_chapter_count";
+    v4 = 0x32;
+    v9 = Lcom/arcsoft/hpay100/a/a.a(v2, v3, v4);
+    v2 = p2.size();
+    v3 = p1.size();
+    if (v2 > v3) {
+        v4 = v3;
+    } else {
+        v4 = v2;
+    }
+    v2 = 0x0;
+    v7 = v2;
+    :goto_1
+    while (v7 < v4) {
+        v0 = p2;
+        v2 = v0.get(v7);
+        v3 = v2;
+        check-cast v3, Lcom/ushaqi/zhuishushenqi/db/BookReadRecord;
+        v0 = p1;
+        v2 = v0.get(v7);
+        check-cast v2, Lcom/ushaqi/zhuishushenqi/model/BookUpdate;
+        if (v3 == 0 || v2 == 0) {
+            v2 = v6;
+        } else {
+            v10 = v2.getChaptersCount();
+            v8 = v3.getUpdated();
+            v12 = v8.getTime();
+            v8 = v2.getUpdated();
+            v14 = v8.getTime();
+            cmp-long v8, v12, v14
+            if (v8 >= 0) {
+                v8 = 0x0;
+            } else {
+                v8 = 0x1;
+            }
+            if (v8 == 0) {
+                v2 = v5;
+            } else {
+                v5 = v2.getUpdated();
+                v3.setUpdated(v5);
+                v2 = v2.getLastChapter();
+                v3.setLastChapter(v2);
+                v2 = 0x1;
+                v3.setUnread(v2);
+                v3.setChapterCount(v10);
+                v3.save();
+                v2 = 0x1;
+            }
+            v5 = v3.isFeeding();
+            if (v5 == 0) {
+                v5 = v2;
+                v2 = v6;
+            } else {
+                v8 = v3.isFeedFat();
+                v5 = v3.getChapterCountAtFeed();
+                v5 = v10 - v5;
+                if (v5 < v9) {
+                    v5 = 0x0;
+                } else {
+                    v5 = 0x1;
+                }
+                if (v8 == v5) {
+                    v5 = v2;
+                    v2 = v6;
+                } else {
+                    v3.setFeedFat(v5);
+                    v3.save();
+                    v3 = 0x1;
+                    v5 = v2;
+                    v2 = v3;
+                }
+            }
+        }
+        v3 = v7 + 0x1;
+        v7 = v3;
+        v6 = v2;
+    }
+    if (v5 == 0) {
+        if (v6 == 0) {
+            v0 = p0;
+            v2 = v0.Lcom/ushaqi/zhuishushenqi/ui/home/HomeShelfFragment;->j;
+            v2.notifyDataSetChanged();
+            v2 = p0.getActivity();
+            v3 = 0x7f050162;
+            Lcom/ushaqi/zhuishushenqi/util/e.a(v2, v3);
+        } else {
+            p0.k();
+        }
+    } else {
+        p0.k();
+        v2 = p0.getActivity();
+        v3 = 0x7f050161;
+        Lcom/ushaqi/zhuishushenqi/util/e.a(v2, v3);
+    }
+    return;
