@@ -1,6 +1,5 @@
 package com.clilystudio.netbook.ui.home;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -84,7 +83,6 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
     private CoverLoadingView m;
     private TextView n;
     private TextView o;
-    private int s;
     private int t;
     private int v = 0;
     private RelativeLayout w;
@@ -714,9 +712,6 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
         }
     }
 
-    private void a(List<BookShelf> list) {
-    }
-
     private void a(List<BookShelf> bookShelfs, List<BookReadRecord> bookReadRecords) {
         BookFeed bookFeed = new BookFeed();
         List<BookReadRecord> v5 = BookReadRecord.getAllFeedFat();
@@ -765,12 +760,6 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
         }.start();
     }
 
-    private void g() {
-        this.l.setVisibility(View.VISIBLE);
-        this.e.removeFooterView(this.h);
-        this.e.addFooterView(this.h);
-    }
-
     private void i() {
         List<BookShelf> list;
         long l2 = new Date().getTime();
@@ -779,20 +768,10 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
             return;
         }
         this.B = l2;
-        try {
-            List<BookShelf> list2;
-            list = list2 = this.j();
-        } catch (Exception var3_4) {
-            if (var3_4.getMessage() != null && var3_4.getMessage().contains("not attached to Activity")) {
-                MiStatInterface.recordException(new Throwable("HomeShelfFragment_loadShelf:Fragment HomeShelfFragment not attached to Activity"));
-                list = null;
-            }
-            MiStatInterface.recordException(new Throwable("HomeShelfFragment_loadShelf:" + var3_4.getMessage()));
-            list = null;
-        }
+        list = this.j();
         if (list != null) {
             this.j.a(list);
-            if (list != null && !list.isEmpty()) {
+            if (!list.isEmpty()) {
                 this.b(1);
                 if (this.b) {
                     this.d.setRefreshing();
@@ -889,11 +868,10 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
         });
 //        :goto_5
         if (com.clilystudio.netbook.hpay100.a.a.a(getActivity(), "unsync_bookrecord_first", 0) != 0) {
-            this.a(v6);
             return v6;
         }
         String[] v3 = new String[v1.size()];
-        for (int v21 = 0; v21 < v1.size(); v21++){
+        for (int v21 = 0; v21 < v1.size(); v21++) {
             v3[v21] = v1.get(v21).getBookId();
         }
         com.clilystudio.netbook.hpay100.a.a.a(v3);
@@ -903,7 +881,6 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
         }
         com.clilystudio.netbook.hpay100.a.a.b(v22);
         com.clilystudio.netbook.hpay100.a.a.b(getActivity(), "unsync_bookrecord_first", 1);
-        this.a(v6);
         return v6;
 //        :catch_0
 //        move-exception v0
@@ -961,7 +938,7 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
         }
         this.w.setVisibility(View.GONE);
         this.e.removeFooterView(this.h);
-        this.d.setPullToRefreshEnabled(true);
+        this.d.setMode(PullToRefreshBase.Mode.PULL_FROM_START);
         this.d.setPullToRefreshOverScrollEnabled(true);
         this.e.setOnItemLongClickListener(this.D);
         this.j.c();
@@ -1058,7 +1035,7 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
         if (com.clilystudio.netbook.hpay100.a.a.i()) {
             this.e.setFooterDividersEnabled(false);
         }
-        View view = LayoutInflater.from(this.getActivity()).inflate(R.layout.ptr_list_footer_empty_view, null);
+        View view = LayoutInflater.from(this.getActivity()).inflate(R.layout.ptr_list_footer_empty_view, (ViewGroup) getActivity().getWindow().getDecorView(), false);
         this.e.addFooterView(view);
         com.clilystudio.netbook.hpay100.a.a.a(this.getActivity(), this.e);
         this.g = LayoutInflater.from(this.getActivity()).inflate(R.layout.bookshelf_header_msg, this.e, false);
@@ -1216,17 +1193,9 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
     public void setUserVisibleHint(boolean bl) {
         super.setUserVisibleHint(bl);
         if (!bl) {
-            if (!this.j.a()) return;
-            {
+            if (this.j.a()) {
                 this.e();
-                return;
             }
-        } else {
-            if (this.j == null || this.j.f() == null) return;
-            {
-                this.a(this.j.f());
-                return;
-            }
-        }
+         }
     }
 }
