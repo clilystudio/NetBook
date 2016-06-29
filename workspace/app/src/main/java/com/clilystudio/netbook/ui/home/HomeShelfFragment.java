@@ -47,7 +47,6 @@ import com.clilystudio.netbook.ui.feed.FeedIntroActivity;
 import com.clilystudio.netbook.ui.feed.FeedListActivity;
 import com.clilystudio.netbook.util.FeedIntroDialog;
 import com.clilystudio.netbook.util.InsideLinkIntent;
-import com.clilystudio.netbook.widget.CoverLoadingView;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.squareup.otto.Subscribe;
@@ -93,10 +92,7 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
                     return;
                 }
                 switch (bookShelf.getType()) {
-                    default: {
-                        return;
-                    }
-                    case 0: {
+                    case 0:
                         BookReadRecord bookReadRecord = bookShelf.getBookRecord();
                         new com.clilystudio.netbook.util.m(HomeShelfFragment.this.getActivity()).a(bookReadRecord);
                         if (bookReadRecord.isUnread()) {
@@ -104,31 +100,27 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
                             bookReadRecord.save();
                             HomeShelfFragment.a(HomeShelfFragment.this).notifyDataSetChanged();
                         }
-                        if (!bookReadRecord.isRecommended()) return;
-                        {
+                        if (bookReadRecord.isRecommended()) {
                             MiStatInterface.recordCountEvent("book_recommend_read_click", bookReadRecord.getTitle());
-                            return;
                         }
-                    }
-                    case 2: {
+                        break;
+                    case 2:
                         BookFile bookFile = bookShelf.getTxt();
                         if (new File(bookFile.getFilePath()).exists()) {
                             String string = bookFile.getPathAndName();
                             Intent intent = new Intent("com.clilystudio.netbook.ACTION_READ_TXT");
                             intent.putExtra("file_name", string);
                             HomeShelfFragment.this.startActivity(intent);
-                            return;
+                        } else {
+                            com.clilystudio.netbook.util.e.a(HomeShelfFragment.this.getActivity(), "书籍不存在");
+                            TxtFileObject.delete(bookFile);
+                            com.clilystudio.netbook.event.i.a().post(new com.clilystudio.netbook.event.A());
                         }
-                        com.clilystudio.netbook.util.e.a(HomeShelfFragment.this.getActivity(), "书籍不存在");
-                        TxtFileObject.delete(bookFile);
-                        com.clilystudio.netbook.event.i.a().post(new com.clilystudio.netbook.event.A());
-                        return;
-                    }
-                    case 3: {
+                        break;
+                    case 3:
                         Intent intent = com.clilystudio.netbook.hpay100.a.a.l(HomeShelfFragment.this.getActivity(), "feed_intro") ? new Intent(HomeShelfFragment.this.getActivity(), FeedIntroActivity.class) : new Intent(HomeShelfFragment.this.getActivity(), FeedListActivity.class);
                         HomeShelfFragment.this.startActivity(intent);
-                        return;
-                    }
+                        break;
                 }
             }
         };
@@ -197,7 +189,7 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
     }
 
     static /* synthetic */ void a(final HomeShelfFragment homeShelfFragment, final List<BookShelf> list) {
-        View view = homeShelfFragment.getActivity().getLayoutInflater().inflate(R.layout.remove_shelf_confirm, (ViewGroup)homeShelfFragment.getActivity().getWindow().getDecorView(), false);
+        View view = homeShelfFragment.getActivity().getLayoutInflater().inflate(R.layout.remove_shelf_confirm, (ViewGroup) homeShelfFragment.getActivity().getWindow().getDecorView(), false);
         final CheckBox checkBox = (CheckBox) view.findViewById(R.id.remove_shelf_cache);
         new BaseDialog.Builder(homeShelfFragment.getActivity()).setView(view).setPositiveButton("确定", new DialogInterface.OnClickListener() {
 
@@ -331,19 +323,12 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
                     case 4:
                         if (which == 0) {
                             HomeShelfFragment.b(homeShelfFragment, bookShelf);
-                            return;
-                        }
-                        if (which == 2) {
+                        } else if (which == 2) {
                             HomeShelfFragment.c(homeShelfFragment, bookShelf);
-                            return;
-                        }
-                        if (which == 3) {
+                        } else if (which == 3) {
                             homeShelfFragment.d();
-                            return;
                         }
-                    default: {
-                        return;
-                    }
+                        break;
                 }
             }
         }).show();
@@ -410,7 +395,7 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
     }
 
     static /* synthetic */ void b(HomeShelfFragment homeShelfFragment, int n2) {
-        homeShelfFragment.b(3);
+        homeShelfFragment.b(n2);
     }
 
     static /* synthetic */ void b(HomeShelfFragment homeShelfFragment, BookReadRecord bookReadRecord) {
@@ -433,7 +418,7 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
                     }
                     new FeedIntroDialog().show(fragmentTransaction, "dialog_feed_intro");
                 }
-                com.clilystudio.netbook.hpay100.a.a.b((Context) homeShelfFragment.getActivity(), "feed_intro_dialog", false);
+                com.clilystudio.netbook.hpay100.a.a.b(homeShelfFragment.getActivity(), "feed_intro_dialog", false);
             }
         }
     }
@@ -472,6 +457,7 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
         homeShelfFragment.g.setVisibility(View.VISIBLE);
         TextView textView = (TextView) homeShelfFragment.g.findViewById(R.id.title);
         new com.clilystudio.netbook.util.a.a();
+        assert shelfMsg != null;
         final InsideLink insideLink = com.clilystudio.netbook.util.a.a.a(shelfMsg.postLink);
         textView.setText(insideLink.getLabel());
         if (shelfMsg.highlight) {
@@ -495,7 +481,7 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
     }
 
     static /* synthetic */ void c(final HomeShelfFragment homeShelfFragment, final BookShelf bookShelf) {
-        View view = homeShelfFragment.getActivity().getLayoutInflater().inflate(R.layout.remove_shelf_confirm, (ViewGroup)homeShelfFragment.getActivity().getWindow().getDecorView(), false);
+        View view = homeShelfFragment.getActivity().getLayoutInflater().inflate(R.layout.remove_shelf_confirm, (ViewGroup) homeShelfFragment.getActivity().getWindow().getDecorView(), false);
         final CheckBox checkBox = (CheckBox) view.findViewById(R.id.remove_shelf_cache);
         int n2 = bookShelf.getType();
         checkBox.setVisibility(n2 == 0 ? View.VISIBLE : View.GONE);
