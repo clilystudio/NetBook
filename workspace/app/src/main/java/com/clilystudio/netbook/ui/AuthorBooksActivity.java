@@ -1,6 +1,5 @@
 package com.clilystudio.netbook.ui;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,10 +14,10 @@ import com.clilystudio.netbook.d;
 import com.clilystudio.netbook.model.BookSummary;
 import com.clilystudio.netbook.model.SearchResultRoot;
 import com.clilystudio.netbook.util.W;
-import com.clilystudio.netbook.util.e;
 import com.clilystudio.netbook.widget.CoverView;
 
 import java.util.List;
+import java.util.Locale;
 
 public class AuthorBooksActivity extends BaseLoadingActivity {
     private ListView a;
@@ -54,7 +53,7 @@ public class AuthorBooksActivity extends BaseLoadingActivity {
                 super.onPostExecute(bookSummaries);
                 if (bookSummaries == null) {
                     AuthorBooksActivity.this.h();
-                    com.clilystudio.netbook.util.e.a((Activity) AuthorBooksActivity.this, (int) R.string.search_failed);
+                    com.clilystudio.netbook.util.e.a(AuthorBooksActivity.this, R.string.search_failed);
                     return;
                 }
                 if (bookSummaries.size() > 0) {
@@ -78,10 +77,10 @@ public class AuthorBooksActivity extends BaseLoadingActivity {
 
             @Override
             protected void a(int var1, BookSummary bookSummary) {
-                ((CoverView) this.a(0, CoverView.class)).setImageUrl(bookSummary.getFullCover(), R.drawable.cover_default);
+                this.a(0, CoverView.class).setImageUrl(bookSummary.getFullCover(), R.drawable.cover_default);
                 this.a(1, bookSummary.getTitle());
                 Object[] arrobject = new Object[]{bookSummary.getLatelyFollower(), Float.valueOf(bookSummary.getRetentionRatio()), bookSummary.getAuthor()};
-                this.a(2, String.format("%d人在追  |  %.1f%%读者留存  |  %s著", arrobject));
+                this.a(2, String.format(Locale.CHINA, "%d人在追  |  %.1f%%读者留存  |  %s著", arrobject));
                 this.a(3, TextUtils.isEmpty(bookSummary.getPromLink()));
             }
 
@@ -96,7 +95,7 @@ public class AuthorBooksActivity extends BaseLoadingActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 BookSummary bookSummary;
                 int n2 = position - AuthorBooksActivity.this.a.getHeaderViewsCount();
-                if (n2 >= 0 && n2 < AuthorBooksActivity.this.b.getCount() && (bookSummary = (BookSummary) AuthorBooksActivity.this.b.getItem(n2)) != null) {
+                if (n2 >= 0 && n2 < AuthorBooksActivity.this.b.getCount() && (bookSummary = AuthorBooksActivity.this.b.getItem(n2)) != null) {
                     AuthorBooksActivity.this.startActivity(BookInfoActivity.a(AuthorBooksActivity.this, bookSummary.getId()));
                 }
             }

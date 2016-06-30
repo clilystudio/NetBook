@@ -7,9 +7,9 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
-import android.support.v4.view.ViewPager$OnPageChangeListener;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.TabHost;
 import android.widget.TabWidget;
 import android.widget.TextView;
@@ -17,14 +17,15 @@ import android.widget.TextView;
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.d;
 import com.clilystudio.netbook.ui.home.ZssqFragmentPagerAdapter;
+import com.xiaomi.mistatistic.sdk.MiStatInterfaceImpl;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class BookRankMainActivity extends BaseTabActivity implements ViewPager$OnPageChangeListener,
+public class BookRankMainActivity extends BaseTabActivity implements ViewPager.OnPageChangeListener,
         TabHost.OnTabChangeListener,
         TabHost.TabContentFactory {
-    private List<BookRankListFragment> b = new ArrayList<BookRankListFragment>();
+    private List<BookRankListFragment> b = new ArrayList<>();
     private ViewPager c;
     private aS e;
     private String[] f;
@@ -82,7 +83,7 @@ public class BookRankMainActivity extends BaseTabActivity implements ViewPager$O
         this.f = this.getIntent().getStringArrayExtra("book_list_ids");
         this.a = (TabHost) this.findViewById(R.id.host);
         this.c = (ViewPager) this.findViewById(R.id.pager);
-        this.e = new aS(this, this.getSupportFragmentManager());
+        this.e = new aS(this.getSupportFragmentManager());
         this.c.setOffscreenPageLimit(3);
         this.c.setAdapter(this.e);
         this.c.addOnPageChangeListener(this);
@@ -95,7 +96,7 @@ public class BookRankMainActivity extends BaseTabActivity implements ViewPager$O
         for (int i = 0; i < 3; ++i) {
             TabHost.TabSpec tabSpec = this.a.newTabSpec("tab" + i);
             tabSpec.setContent(this);
-            View view = layoutInflater.inflate(R.layout.home_tabhost_item, null);
+            View view = layoutInflater.inflate(R.layout.home_tabhost_item, (ViewGroup)getWindow().getDecorView(), false);
             ((TextView) view.findViewById(R.id.text)).setText(BookRankMainActivity.a(i));
             tabSpec.setIndicator(view);
             this.a.addTab(tabSpec);
@@ -115,14 +116,14 @@ public class BookRankMainActivity extends BaseTabActivity implements ViewPager$O
     public void onPageSelected(int n) {
         TabWidget tabWidget = this.a.getTabWidget();
         int n2 = tabWidget.getDescendantFocusability();
-        tabWidget.setDescendantFocusability(393216);
+        tabWidget.setDescendantFocusability(ViewGroup.FOCUS_BLOCK_DESCENDANTS);
         this.a.setCurrentTab(n);
         tabWidget.setDescendantFocusability(n2);
         Intent intent = this.getIntent();
         String string = intent.getStringExtra("book_list_title");
         String string2 = string + BookRankMainActivity.a(n);
         String string3 = intent.getStringExtra("rank_gender");
-        b.a(this, "book_rank_tab_click", string2 + "_" + string3);
+        MiStatInterfaceImpl.recordCountEvent("book_rank_tab_click", string2 + "_" + string3);
     }
 
     @Override
@@ -140,7 +141,7 @@ public class BookRankMainActivity extends BaseTabActivity implements ViewPager$O
             super(fragmentManager);
             this.a = new String[]{"weekly", "monthly", "all"};
             for (int i = 0; i < 3; ++i) {
-                BookRankMainActivity.b(BookRankMainActivity.this).add(i, BookRankMainActivity.a(BookRankMainActivity.this, BookRankMainActivity.a(BookRankMainActivity.this)[i], this.a[i], this.a[i]));
+                BookRankMainActivity.this.b.add(i, BookRankMainActivity.a(BookRankMainActivity.this, BookRankMainActivity.a(BookRankMainActivity.this)[i], this.a[i], this.a[i]));
             }
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
             for (int j = 0; j < 3; ++j) {

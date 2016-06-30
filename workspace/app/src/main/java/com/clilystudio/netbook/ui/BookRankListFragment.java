@@ -1,6 +1,5 @@
 package com.clilystudio.netbook.ui;
 
-import android.app.Activity;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -11,18 +10,14 @@ import android.widget.AdapterView;
 import android.widget.TextView;
 
 import com.clilystudio.netbook.R;
-import com.clilystudio.netbook.adapter.g;
-import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.model.BookRankDetail;
 import com.clilystudio.netbook.model.BookRankDetailRoot;
 import com.clilystudio.netbook.util.W;
-import com.clilystudio.netbook.util.e;
 import com.clilystudio.netbook.widget.CoverView;
 import com.clilystudio.netbook.widget.ScrollLoadListView;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.List;
 
 public class BookRankListFragment extends Fragment {
@@ -31,8 +26,7 @@ public class BookRankListFragment extends Fragment {
     private View c;
     private View d;
     private TextView e;
-    private List<BookRankDetail> f = new ArrayList<BookRankDetail>(100);
-    private com.clilystudio.netbook.a_pack.e<String, Void, BookRankDetailRoot> g;
+    private List<BookRankDetail> f = new ArrayList<>(100);
 
     public static BookRankListFragment a(String string, String string2) {
         BookRankListFragment bookRankListFragment = new BookRankListFragment();
@@ -56,7 +50,7 @@ public class BookRankListFragment extends Fragment {
     }
 
     private void a() {
-        this.g = new com.clilystudio.netbook.a_pack.e<String, Void, BookRankDetailRoot>(){
+        com.clilystudio.netbook.a_pack.e<String, Void, BookRankDetailRoot> g = new com.clilystudio.netbook.a_pack.e<String, Void, BookRankDetailRoot>() {
 
             @Override
             protected BookRankDetailRoot doInBackground(String... params) {
@@ -71,19 +65,19 @@ public class BookRankListFragment extends Fragment {
                 if (bookRankDetailRoot != null && bookRankDetailRoot.getRanking() != null) {
                     BookRankListFragment.this.b(1);
                     BookRankListFragment.this.f.addAll(Arrays.asList(bookRankDetailRoot.getRanking().getBooks()));
-                    BookRankListFragment.this.a.a((Collection) BookRankListFragment.c(BookRankListFragment.this));
+                    BookRankListFragment.this.a.a(BookRankListFragment.c(BookRankListFragment.this));
                     return;
                 }
                 BookRankListFragment.this.b(2);
-                com.clilystudio.netbook.util.e.a((Activity) BookRankListFragment.this.getActivity(), (int) R.string.load_failed_tips);
+                com.clilystudio.netbook.util.e.a(BookRankListFragment.this.getActivity(), R.string.load_failed_tips);
             }
         };
-        this.g.b();
+        g.b();
     }
 
     protected final void a(int n) {
         if (n >= 0 && n < this.a.getCount()) {
-            BookRankDetail bookRankDetail = (BookRankDetail) this.a.getItem(n);
+            BookRankDetail bookRankDetail = this.a.getItem(n);
             this.startActivity(BookInfoActivity.a(this.getActivity(), bookRankDetail.get_id()));
         }
     }
@@ -145,10 +139,10 @@ public class BookRankListFragment extends Fragment {
 
             @Override
             protected void a(int var1, BookRankDetail bookRankDetail) {
-                ((CoverView) this.a(0, CoverView.class)).setImageUrl(bookRankDetail.getFullCover(), R.drawable.cover_default);
+                this.a(0, CoverView.class).setImageUrl(bookRankDetail.getFullCover(), R.drawable.cover_default);
                 this.a(1, bookRankDetail.getTitle());
                 this.a(2, bookRankDetail.getShortIntro());
-                Resources resources = getLayoutInflater().getContext().getResources();
+                Resources resources = getActivity().getResources();
                 Object[] arrobject = new Object[1];
                 arrobject[0] = bookRankDetail.getLatelyFollower();
                 this.a(3, resources.getString(R.string.follower_count_format, arrobject));
@@ -174,7 +168,7 @@ public class BookRankListFragment extends Fragment {
                 BookRankListFragment.this.a(position);
             }
         });
-        this.b = layoutInflater.inflate(R.layout.loading_item, null);
+        this.b = layoutInflater.inflate(R.layout.loading_item, (ViewGroup)getActivity().getWindow().getDecorView(), false);
         scrollLoadListView.addFooterView(this.b);
         this.b.setVisibility(View.GONE);
         return view;

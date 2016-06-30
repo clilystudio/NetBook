@@ -473,4 +473,10 @@
         <attr name="pref_name" format="string"/>
         <attr name="pref_default" format="boolean"/>
     </declare-styleable>
-</resources>
+    <declare-styleable name="CircularSmartImageView">
+        <attr name="image_size" format="dimension"/>
+    </declare-styleable>
+    <declare-styleable name="CornerSmartImageView">
+        <attr name="radius" format="dimension"/>
+    </declare-styleable>
+ </resources>

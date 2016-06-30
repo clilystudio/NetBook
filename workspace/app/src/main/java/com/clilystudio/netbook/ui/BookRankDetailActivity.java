@@ -1,7 +1,5 @@
 package com.clilystudio.netbook.ui;
 
-import android.app.Activity;
-
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.model.BookRankDetailRoot;
 
@@ -13,8 +11,7 @@ public class BookRankDetailActivity extends BookListActivity {
 
             @Override
             protected BookRankDetailRoot doInBackground(String... params) {
-                BookRankDetailRoot bookRankDetailRoot = com.clilystudio.netbook.api.b.b().z(params[0]);
-                return bookRankDetailRoot;
+                return com.clilystudio.netbook.api.b.b().z(params[0]);
             }
 
             @Override

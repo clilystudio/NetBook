@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.support.v4.view.ViewPager$OnPageChangeListener;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -15,6 +14,7 @@ import android.widget.LinearLayout;
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.ui.home.HomeActivity;
 import com.clilystudio.netbook.ui.user.AuthLoginActivity;
+import com.xiaomi.mistatistic.sdk.MiStatInterfaceImpl;
 
 import java.util.ArrayList;
 
@@ -51,7 +51,7 @@ public class IntroActivity extends Activity implements ViewPager.OnPageChangeLis
             imageView.setScaleType(ImageView.ScaleType.FIT_XY);
             this.e.add(imageView);
         }
-        this.a.setAdapter((PagerAdapter) ((Object) this.b));
+        this.a.setAdapter(this.b);
         this.a.addOnPageChangeListener(this);
         this.b();
     }
@@ -76,27 +76,24 @@ public class IntroActivity extends Activity implements ViewPager.OnPageChangeLis
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            default: {
-                return;
-            }
-            case R.id.btnQuickLogin: {
+            case R.id.btnQuickLogin:
                 this.startActivity(AuthLoginActivity.a(this));
-                b.a(this, "intro_quick_login");
-                return;
-            }
+                MiStatInterfaceImpl.recordCountEvent("intro_quick_login", null);
+                break;
             case R.id.btnEntryApp:
+                this.c();
+                MiStatInterfaceImpl.recordCountEvent("intro_entry_app", null);
+                break;
         }
-        this.c();
-        b.a(this, "intro_entry_app");
     }
 
     @Override
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         this.setContentView(R.layout.splash_intro);
-        this.e = new ArrayList();
+        this.e = new ArrayList<>();
         this.a = (ViewPager) this.findViewById(R.id.vp_intro);
-        this.b = new PagerAdapter(){
+        this.b = new PagerAdapter() {
 
             @Override
             public int getCount() {
@@ -124,7 +121,7 @@ public class IntroActivity extends Activity implements ViewPager.OnPageChangeLis
         this.d = (Button) this.findViewById(R.id.btnEntryApp);
         this.d.setOnClickListener(this);
         this.a();
-        b.a(this, "intro_show_count");
+        MiStatInterfaceImpl.recordCountEvent("intro_show_count", null);
     }
 
     @Override

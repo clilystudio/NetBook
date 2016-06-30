@@ -10,7 +10,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.clilystudio.netbook.R;
-import com.clilystudio.netbook.adapter.g;
 import com.clilystudio.netbook.d;
 import com.clilystudio.netbook.model.BookRankDetail;
 import com.clilystudio.netbook.util.W;
@@ -28,7 +27,7 @@ public abstract class BookListActivity extends BaseActivity {
 
     protected void a(int n) {
         if (n >= 0 && n < this.a.getCount()) {
-            this.startActivity(BookInfoActivity.a(this, ((BookRankDetail) this.a.getItem(n)).get_id()));
+            this.startActivity(BookInfoActivity.a(this, this.a.getItem(n).get_id()));
         }
     }
 
@@ -82,7 +81,7 @@ public abstract class BookListActivity extends BaseActivity {
 
             @Override
             protected void a(int var1, BookRankDetail bookRankDetail) {
-                ((CoverView) this.a(0, CoverView.class)).setImageUrl(bookRankDetail.getFullCover(), R.drawable.cover_default);
+                this.a(0, CoverView.class).setImageUrl(bookRankDetail.getFullCover(), R.drawable.cover_default);
                 this.a(1, bookRankDetail.getTitle());
                 this.a(2, bookRankDetail.getShortIntro());
                 Resources resources = getLayoutInflater().getContext().getResources();

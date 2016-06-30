@@ -78,4 +78,7 @@
     <color name="shelf_msg_normal">#444444</color>
     <color name="primary_red">#ff0000</color>
     <color name="drak_img_mask">#777777</color>
+    <color name="white_80">#888888</color>
+    <color name="intro_blue_color">#0000ff</color>
+    <color name="intro_red_color">#ff0000</color>
 </resources>

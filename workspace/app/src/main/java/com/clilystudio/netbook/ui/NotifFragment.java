@@ -1,6 +1,5 @@
 package com.clilystudio.netbook.ui;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -16,22 +15,19 @@ import android.widget.TextView;
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.adapter.NotificationAdapter;
 import com.clilystudio.netbook.am;
-import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.hpay100.a.a;
 import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.model.NotificationItem;
 import com.clilystudio.netbook.model.NotificationRoot;
 import com.clilystudio.netbook.ui.user.AuthLoginActivity;
-import com.clilystudio.netbook.util.e;
 import com.clilystudio.netbook.viewbinder.notification.NotifBinderFactory;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
+import com.squareup.otto.Subscribe;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
-import butterknife.ButterKnife;
 
 public abstract class NotifFragment extends Fragment {
     private com.clilystudio.netbook.a_pack.e<String, Void, NotificationRoot> b;
@@ -43,8 +39,7 @@ public abstract class NotifFragment extends Fragment {
     private TextView h;
     private View i;
     private NotificationAdapter j;
-    private List<NotificationItem> k = new ArrayList<NotificationItem>();
-    private b a = b.a();
+    private List<NotificationItem> k = new ArrayList<>();
     private int l;
     private Account m;
     private PullToRefreshBase.OnLastItemVisibleListener n;
@@ -67,11 +62,10 @@ public abstract class NotifFragment extends Fragment {
                                 if (NotifFragment.k(NotifFragment.this) != null && NotifFragment.k(NotifFragment.this).size() > 0) {
                                     string = ((NotificationItem) NotifFragment.k(NotifFragment.this).get(-1 + NotifFragment.k(NotifFragment.this).size())).getCreated();
                                 }
+                                com.clilystudio.netbook.api.b.a();
                                 if (NotifFragment.this.a() == NotifFragment.Type.IMPORTANT) {
-                                    NotifFragment.g(NotifFragment.this);
                                     return com.clilystudio.netbook.api.b.b().r(params[0], string);
                                 }
-                                NotifFragment.g(NotifFragment.this);
                                 return com.clilystudio.netbook.api.b.b().s(params[0], string);
                             }
                             return null;
@@ -109,7 +103,7 @@ public abstract class NotifFragment extends Fragment {
                             }
                             if (notificationRoot != null && "TOKEN_INVALID".equals(notificationRoot.getCode())) {
                                 NotifFragment.this.startActivity(AuthLoginActivity.a(NotifFragment.this.getActivity()));
-                                com.clilystudio.netbook.util.e.a((Activity) NotifFragment.this.getActivity(), R.string.tweet_token_invalid);
+                                com.clilystudio.netbook.util.e.a(NotifFragment.this.getActivity(), R.string.tweet_token_invalid);
                                 return;
                             }
                             NotifFragment.d(NotifFragment.this).setOnLastItemVisibleListener(NotifFragment.j(NotifFragment.this));
@@ -137,7 +131,7 @@ public abstract class NotifFragment extends Fragment {
     }
 
     static /* synthetic */ void a(NotifFragment notifFragment, boolean bl) {
-        notifFragment.a(false);
+        notifFragment.a(bl);
     }
 
     static /* synthetic */ View b(NotifFragment notifFragment) {
@@ -158,10 +152,6 @@ public abstract class NotifFragment extends Fragment {
 
     static /* synthetic */ NotificationAdapter f(NotifFragment notifFragment) {
         return notifFragment.j;
-    }
-
-    static /* synthetic */ b g(NotifFragment notifFragment) {
-        return notifFragment.a;
     }
 
     static /* synthetic */ View h(NotifFragment notifFragment) {
@@ -192,10 +182,6 @@ public abstract class NotifFragment extends Fragment {
         return notifFragment.b;
     }
 
-    static /* synthetic */ com.clilystudio.netbook.a_pack.e<String, Void, NotificationRoot> o(NotifFragment notifFragment) {
-        return notifFragment.c;
-    }
-
     private void a(boolean bl) {
         if (this.g != null) {
             this.g.setVisibility(View.GONE);
@@ -223,11 +209,10 @@ public abstract class NotifFragment extends Fragment {
 
             @Override
             protected NotificationRoot doInBackground(String... params) {
+                com.clilystudio.netbook.api.b.a();
                 if (NotifFragment.this.a() == NotifFragment.Type.IMPORTANT) {
-                    NotifFragment.g(NotifFragment.this);
                     return com.clilystudio.netbook.api.b.b().r(params[0], "");
                 }
-                NotifFragment.g(NotifFragment.this);
                 return com.clilystudio.netbook.api.b.b().s(params[0], "");
             }
 
@@ -259,7 +244,7 @@ public abstract class NotifFragment extends Fragment {
                 }
                 if (notificationRoot != null && "TOKEN_INVALID".equals(notificationRoot.getCode())) {
                     NotifFragment.this.startActivity(AuthLoginActivity.a(NotifFragment.this.getActivity()));
-                    com.clilystudio.netbook.util.e.a((Activity) NotifFragment.this.getActivity(), R.string.tweet_token_invalid);
+                    com.clilystudio.netbook.util.e.a(NotifFragment.this.getActivity(), R.string.tweet_token_invalid);
                     return;
                 }
                 NotifFragment.m(NotifFragment.this);
@@ -272,9 +257,9 @@ public abstract class NotifFragment extends Fragment {
     public void onActivityCreated(Bundle bundle) {
         super.onActivityCreated(bundle);
         this.m = am.e();
-        this.f = LayoutInflater.from(this.getActivity()).inflate(R.layout.loading_item, null);
-        this.e = (ListView) this.d.getRefreshableView();
-        if (a.i()) {
+        this.f = LayoutInflater.from(this.getActivity()).inflate(R.layout.loading_item, (ViewGroup)getActivity().getWindow().getDecorView(), false);
+        this.e = this.d.getRefreshableView();
+        if (com.clilystudio.netbook.hpay100.a.a.i()) {
             this.e.setFooterDividersEnabled(false);
         }
         this.e.addFooterView(this.f);
@@ -329,7 +314,6 @@ public abstract class NotifFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
         View view = layoutInflater.inflate(R.layout.notif_fragment, viewGroup, false);
-        ButterKnife.inject((Object) this, view);
         this.d = (PullToRefreshListView) view.findViewById(R.id.ptr_list);
         this.g = view.findViewById(R.id.pb_loading);
         this.h = (TextView) view.findViewById(R.id.empty_text);
@@ -343,14 +327,14 @@ public abstract class NotifFragment extends Fragment {
         return view;
     }
 
-    @l
-    public void onNewMsgClickEvent$154ad029(a a2) {
+    @Subscribe
+    public void onNewMsgClickEvent(a a2) {
         if (this.d != null && this.l > 0) {
             this.d.setRefreshing();
         }
     }
 
     public enum Type {
-        IMPORTANT, UNIMPORTANT;
+        IMPORTANT, UNIMPORTANT
     }
 }

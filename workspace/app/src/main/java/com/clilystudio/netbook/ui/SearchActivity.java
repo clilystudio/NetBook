@@ -23,7 +23,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.clilystudio.netbook.R;
-import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.d;
 import com.clilystudio.netbook.model.AutoCompleteRoot;
 import com.clilystudio.netbook.model.BookSummary;
@@ -39,12 +38,12 @@ import com.clilystudio.netbook.widget.ax;
 import com.clilystudio.netbook.widget.i;
 import com.clilystudio.netbook.widget.j;
 import com.xiaomi.mistatistic.sdk.MiStatInterface;
+import com.xiaomi.mistatistic.sdk.MiStatInterfaceImpl;
 
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-import butterknife.ButterKnife;
 
 public class SearchActivity extends BaseActivity implements View.OnClickListener {
     private InputMethodManager a;
@@ -67,7 +66,6 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
     private TextView s;
     private View t;
     private View u;
-    private ListView v;
     private SearchHistoryAdapter w;
     private List<String> x;
 
@@ -101,8 +99,7 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
         searchActivity.f.setEnabled(bl);
         searchActivity.g.setEnabled(bl);
         View view = searchActivity.g;
-        int n = bl && searchActivity.e.isFocused() ? 0 : 4;
-        view.setVisibility(n);
+        view.setVisibility(bl && searchActivity.e.isFocused() ? View.VISIBLE : View.INVISIBLE);
         if (searchActivity.t == null) return;
         if (bl) {
             searchActivity.t.setVisibility(View.GONE);
@@ -112,10 +109,6 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
             searchActivity.t.setVisibility(View.VISIBLE);
         }
         searchActivity.i.setVisibility(View.GONE);
-    }
-
-    static /* synthetic */ void a(SearchActivity searchActivity, boolean bl, boolean bl2) {
-        searchActivity.a(true, true);
     }
 
     static /* synthetic */  W<BookSummary> b(SearchActivity searchActivity) {
@@ -128,7 +121,7 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
     }
 
     static /* synthetic */ void b(SearchActivity searchActivity, boolean bl) {
-        searchActivity.a(true, false);
+        searchActivity.a(bl, false);
     }
 
     static /* synthetic */ void c(SearchActivity searchActivity) {
@@ -136,16 +129,13 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
     }
 
     static /* synthetic */ boolean c(SearchActivity searchActivity, String string) {
-        if (!searchActivity.e.getText().toString().equals(string) && !string.equals(searchActivity.o)) {
-            return true;
-        }
-        return false;
+        return !searchActivity.e.getText().toString().equals(string) && !string.equals(searchActivity.o);
     }
 
     static /* synthetic */ void d(SearchActivity searchActivity) {
         searchActivity.x.clear();
         searchActivity.w.notifyDataSetChanged();
-        a.a(searchActivity.x, c.e, "search_history.txt");
+        com.clilystudio.netbook.hpay100.a.a.a(searchActivity.x, com.clilystudio.netbook.c.e, "search_history.txt");
         searchActivity.a(false);
     }
 
@@ -167,10 +157,6 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
 
     static /* synthetic */ int i(SearchActivity searchActivity) {
         return searchActivity.c;
-    }
-
-    static /* synthetic */ String j(SearchActivity searchActivity) {
-        return searchActivity.b;
     }
 
     static /* synthetic */ SearchFixListView k(SearchActivity searchActivity) {
@@ -253,10 +239,10 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
             }
             this.x.add(0, string2);
             this.w.notifyDataSetChanged();
-            a.a(this.x, c.e, "search_history.txt");
+            com.clilystudio.netbook.hpay100.a.a.a(this.x, com.clilystudio.netbook.c.e, "search_history.txt");
             this.a(true);
             this.g();
-            if (a.t(this)) {
+            if (com.clilystudio.netbook.hpay100.a.a.t(this)) {
                 this.a(0);
                 final com.clilystudio.netbook.a_pack.e<String, Void, List<BookSummary>> bR2 = new com.clilystudio.netbook.a_pack.e<String, Void, List<BookSummary>>() {
 
@@ -289,7 +275,7 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
                         SearchActivity.a(SearchActivity.this, true);
                         if (bookSummaries == null) {
                             SearchActivity.a(SearchActivity.this, 2);
-                            com.clilystudio.netbook.util.e.a((Activity) SearchActivity.this, (int) R.string.search_failed);
+                            com.clilystudio.netbook.util.e.a(SearchActivity.this, R.string.search_failed);
                             return;
                         }
                         SearchActivity.b(SearchActivity.this).a(bookSummaries);
@@ -311,7 +297,7 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
                 };
                 bR2.b(this.b);
             } else {
-                com.clilystudio.netbook.util.e.a((Activity) this, (int) R.string.network_unconnected);
+                com.clilystudio.netbook.util.e.a(this, R.string.network_unconnected);
             }
             if (!bl || this.m == null) return;
             {
@@ -337,7 +323,7 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
         this.n.setVisibility(View.GONE);
         this.e.clearFocus();
         if (this.a == null) {
-            this.a = (InputMethodManager) this.getSystemService("input_method");
+            this.a = (InputMethodManager) this.getSystemService(INPUT_METHOD_SERVICE);
         }
         this.a.hideSoftInputFromWindow(this.e.getWindowToken(), 0);
         this.getWindow().setSoftInputMode(2);
@@ -348,7 +334,7 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
      */
     @Override
     public void onBackPressed() {
-        boolean bl = this.i.getVisibility() == 0;
+        boolean bl = this.i.getVisibility() == View.VISIBLE;
         if (bl) {
             this.i.setVisibility(View.GONE);
             return;
@@ -393,7 +379,6 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         this.setContentView(R.layout.activity_search);
-        ButterKnife.inject(this);
         Intent intent = this.getIntent();
         this.c = intent.getIntExtra("search_mode", 1);
         if (this.c == 2) {
@@ -427,7 +412,7 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
         this.f.setEnabled(false);
         this.h = (ListView) this.findViewById(R.id.search_list);
         if (this.c == 1) {
-            this.m = layoutInflater.inflate(R.layout.search_header, (ViewGroup) this.h, false);
+            this.m = layoutInflater.inflate(R.layout.search_header, this.h, false);
             this.h.addHeaderView(this.m, null, false);
             this.m.setOnClickListener(this);
         }
@@ -435,7 +420,7 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
 
             @Override
             protected void a(int var1, BookSummary bookSummary) {
-                ((CoverView) this.a(0, CoverView.class)).setImageUrl(bookSummary.getFullCover(), R.drawable.cover_default);
+                this.a(0, CoverView.class).setImageUrl(bookSummary.getFullCover(), R.drawable.cover_default);
                 this.a(1, bookSummary.getTitle());
                 Object[] arrobject = new Object[]{bookSummary.getLatelyFollower(), Float.valueOf(bookSummary.getRetentionRatio()), bookSummary.getAuthor()};
                 this.a(2, String.format("%d人在追  |  %.1f%%读者留存  |  %s著", arrobject));
@@ -453,12 +438,12 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 BookSummary bookSummary;
                 int n2 = position - SearchActivity.this.h.getHeaderViewsCount();
-                if (n2 < 0 || n2 >= SearchActivity.this.l.getCount() || (bookSummary = (BookSummary) SearchActivity.this.l.getItem(n2)) == null) return;
+                if (n2 < 0 || n2 >= SearchActivity.this.l.getCount() || (bookSummary = SearchActivity.this.l.getItem(n2)) == null) return;
                 if (bookSummary.getPromLink() == null) {
                     SearchActivity.this.startActivity(BookInfoActivity.a(SearchActivity.this, bookSummary.getId()));
                     return;
                 }
-                new j((Context) SearchActivity.this, bookSummary.getPromLink()).a();
+                new j(SearchActivity.this, bookSummary.getPromLink()).a();
             }
         });
         if (bundle != null) {
@@ -471,7 +456,7 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if (SearchActivity.this.e.getText().toString().trim().equals("")) {
-                    com.clilystudio.netbook.util.e.a((Activity) SearchActivity.this, "请输入要搜索的关键字");
+                    com.clilystudio.netbook.util.e.a(SearchActivity.this, "请输入要搜索的关键字");
                     return true;
                 }
                 SearchActivity.this.a(true, true);
@@ -517,8 +502,8 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
                 MiStatInterface.recordCountEvent("search_history_clear", null);
             }
         });
-        this.v = (ListView) this.findViewById(R.id.search_history_list);
-        this.x = (List) a.k(c.e, "search_history.txt");
+        ListView v = (ListView) this.findViewById(R.id.search_history_list);
+        this.x = com.clilystudio.netbook.hpay100.a.a.k(com.clilystudio.netbook.c.e, "search_history.txt");
         if (this.x == null) {
             this.x = new ArrayList<String>();
         }
@@ -526,8 +511,8 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
             this.a(false);
         }
         this.w = new SearchHistoryAdapter(this);
-        this.v.setAdapter(this.w);
-        this.v.setOnItemClickListener(this.w);
+        v.setAdapter(this.w);
+        v.setOnItemClickListener(this.w);
         if (this.c != 1) {
             this.e.setTextByCode(this.b);
             this.a(false, false);
@@ -538,8 +523,8 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
         this.q = (RelativeLayout) this.findViewById(R.id.ll_hot_keyword_continer);
         this.r = (AutoFlowView) this.findViewById(R.id.afv_hots);
         this.s = (TextView) this.findViewById(R.id.btn_change);
-        if (a.k(c.e, "search_hotword.txt") != null && a.a((Context) this, "search_hot_words_date", 0) != 0) {
-            List list = (List) a.k(c.e, "search_hotword.txt");
+        if (com.clilystudio.netbook.hpay100.a.a.k(com.clilystudio.netbook.c.e, "search_hotword.txt") != null && com.clilystudio.netbook.hpay100.a.a.a(this, "search_hot_words_date", 0) != 0) {
+            List list = com.clilystudio.netbook.hpay100.a.a.k(com.clilystudio.netbook.c.e, "search_hotword.txt");
             this.q.setVisibility(View.VISIBLE);
             this.r.setWords(list);
             this.r.setOnItemClickListener(new i() {
@@ -558,7 +543,7 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
             });
             return;
         }
-        a.b((Context) this, "search_hot_words_date", 1);
+        com.clilystudio.netbook.hpay100.a.a.b(this, "search_hot_words_date", 1);
         new com.clilystudio.netbook.a_pack.e<String, Void, HotKeywordResult>() {
 
             @Override
@@ -595,7 +580,7 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
                     });
                     return;
                 }
-                com.clilystudio.netbook.util.e.a((Activity) SearchActivity.this, (String) "网络不给力！");
+                com.clilystudio.netbook.util.e.a(SearchActivity.this, "网络不给力！");
             }
         }.b();
     }
@@ -617,15 +602,6 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
         public SearchPromptAdapter(SearchActivity searchActivity) {
             this.a = searchActivity;
             this.b = new ArrayList<String>();
-        }
-
-        static /* synthetic */ List a(SearchPromptAdapter searchActivity$SearchPromptAdapter) {
-            return searchActivity$SearchPromptAdapter.b;
-        }
-
-        static /* synthetic */ List a(SearchPromptAdapter searchActivity$SearchPromptAdapter, List list) {
-            searchActivity$SearchPromptAdapter.b = list;
-            return list;
         }
 
         @Override
@@ -678,14 +654,14 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
                         } else {
                             list2 = new ArrayList();
                         }
-                        SearchActivity.SearchPromptAdapter.a(SearchPromptAdapter.this, list2);
-                        if (SearchActivity.SearchPromptAdapter.a(SearchPromptAdapter.this).isEmpty()) {
+                        SearchPromptAdapter.this.b = list2;
+                        if (SearchPromptAdapter.this.b.isEmpty()) {
                             SearchPromptAdapter.this.notifyDataSetInvalidated();
                         } else {
                             SearchPromptAdapter.this.notifyDataSetChanged();
                         }
                         SearchFixListView searchFixListView = SearchActivity.k(SearchActivity.this);
-                        searchFixListView.setVisibility( SearchActivity.SearchPromptAdapter.a(SearchPromptAdapter.this).isEmpty() ? View.GONE : View.VISIBLE);
+                        searchFixListView.setVisibility(SearchPromptAdapter.this.b.isEmpty() ? View.GONE : View.VISIBLE);
                    }
                 };
             }
@@ -770,7 +746,7 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
         public final void onItemClick(AdapterView<?> adapterView, View view, int n, long l2) {
             if (n >= 0 && n < SearchActivity.l(this.a).size()) {
                 SearchActivity.a(this.a, (String) SearchActivity.l(this.a).get(n));
-                b.a(this.a, "search_history_word_click", (String) SearchActivity.l(this.a).get(n));
+                MiStatInterfaceImpl.recordCountEvent("search_history_word_click", (String) SearchActivity.l(this.a).get(n));
             }
         }
 

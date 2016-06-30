@@ -19,6 +19,7 @@ public class AddBookFailedActivity extends BaseActivity {
         this.setContentView(R.layout.activity_add_book_failed);
         this.b(R.string.add_book_title);
         String string = this.getIntent().getStringExtra("bookTitle");
-        ((TextView) this.findViewById(R.id.add_book_failed_tips)).setText("\u8ffd\u4e66\u541b\u6b63\u5954\u8d70\u5728\u627e\u300a" + string + "\u300b\u7684\u8def\u4e0a\uff0c\u8bf7\u8010\u5fc3\u7b49\u5f85");
+        String text = "追书君正奔走在找《" + string + "》的路上，请耐心等待";
+        ((TextView) this.findViewById(R.id.add_book_failed_tips)).setText(text);
     }
 }

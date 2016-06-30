@@ -30,8 +30,7 @@ public class MaskAbleImageView extends ImageView {
      * Enabled aggressive block sorting
      */
     private void a(Context context) {
-        int n = com.clilystudio.netbook.hpay100.a.a.a(context, "customer_night_theme", false) ? this.getResources().getColor(R.color.drak_img_mask) : -1;
-        this.a = n;
+        this.a = com.clilystudio.netbook.hpay100.a.a.a(context, "customer_night_theme", false) ? this.getResources().getColor(R.color.drak_img_mask) : -1;
     }
 
     protected void a(Canvas canvas) {

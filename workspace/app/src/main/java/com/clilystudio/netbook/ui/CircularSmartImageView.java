@@ -1,14 +1,17 @@
 package com.clilystudio.netbook.ui;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.net.Uri;
 import android.util.AttributeSet;
 
-import com.clilystudio.netbook.R$styleable;
-import com.nostra13.universalimageloader.core.b.b;
+import com.clilystudio.netbook.R;
+import com.nostra13.universalimageloader.core.assist.LoadedFrom;
+import com.nostra13.universalimageloader.core.display.BitmapDisplayer;
+import com.nostra13.universalimageloader.core.imageaware.ImageAware;
 
 public class CircularSmartImageView extends CornerImageView {
     private final int b;
@@ -16,12 +19,17 @@ public class CircularSmartImageView extends CornerImageView {
     public CircularSmartImageView(Context context, AttributeSet attributeSet) {
         super(context, attributeSet);
         this.b = context.obtainStyledAttributes(attributeSet, new int[]{16842996}).getDimensionPixelSize(0, -1);
-        context.obtainStyledAttributes(attributeSet, R$styleable.CircularSmartImageView).recycle();
+        context.obtainStyledAttributes(attributeSet, R.styleable.CircularSmartImageView).recycle();
     }
 
     @Override
-    protected final /* synthetic */ com.nostra13.universalimageloader.core.b.a a() {
-        return new b(this.b / 2);
+    protected final /* synthetic */ BitmapDisplayer a() {
+        return new BitmapDisplayer() {
+            @Override
+            public void display(Bitmap bitmap, ImageAware imageAware, LoadedFrom loadedFrom) {
+                imageAware.setImageDrawable(new c(bitmap, b / 2, 0));
+            }
+        };
     }
 
     @Override
@@ -34,7 +42,7 @@ public class CircularSmartImageView extends CornerImageView {
 
     @Override
     public void setImageURI(Uri uri) {
-        this.setImageBitmap(a.a(BitmapFactory.decodeFile(uri.getPath())));
+        this.setImageBitmap(com.clilystudio.netbook.hpay100.a.a.a(BitmapFactory.decodeFile(uri.getPath())));
     }
 
     @Override

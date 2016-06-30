@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 
 import com.clilystudio.netbook.R;
@@ -29,7 +30,7 @@ public class BookTagListActivity extends BaseLoadingActivity {
     private String c;
     private ScrollLoadListView e;
     private View f;
-    private List<BookSummary> g = new ArrayList<BookSummary>();
+    private List<BookSummary> g = new ArrayList<>();
     private av h;
 
     public BookTagListActivity() {
@@ -69,7 +70,7 @@ public class BookTagListActivity extends BaseLoadingActivity {
                             com.clilystudio.netbook.util.e.a(BookTagListActivity.this, "加载失败，请检查网络或稍后再试");
                         }
                     };
-                    BookTagListActivity.this.a.b(new String[0]);
+                    BookTagListActivity.this.a.b();
                 }
             }
         };
@@ -153,7 +154,7 @@ public class BookTagListActivity extends BaseLoadingActivity {
                 }
                 BookTagListActivity.this.h();
             }
-        }.b(new String[0]);
+        }.b();
     }
 
     @Override
@@ -163,7 +164,7 @@ public class BookTagListActivity extends BaseLoadingActivity {
         this.c = this.getIntent().getStringExtra("TAG_LIST_KEY");
         this.b(this.c);
         LayoutInflater layoutInflater = LayoutInflater.from(this);
-        this.f = layoutInflater.inflate(R.layout.loading_item, null);
+        this.f = layoutInflater.inflate(R.layout.loading_item, (ViewGroup)getWindow().getDecorView(), false);
         this.f.setVisibility(View.GONE);
         this.e = (ScrollLoadListView) this.findViewById(R.id.content_scroll_list);
         this.e.addFooterView(this.f);
@@ -180,12 +181,12 @@ public class BookTagListActivity extends BaseLoadingActivity {
 
             @Override
             protected void a(int var1, BookSummary bookSummary) {
-                ((CoverView) this.a(0, CoverView.class)).setImageUrl(bookSummary.getFullCover(), R.drawable.cover_default);
+                this.a(0, CoverView.class).setImageUrl(bookSummary.getFullCover(), R.drawable.cover_default);
                 this.a(1, bookSummary.getTitle());
                 this.a(2, bookSummary.getShortIntro());
                 Object[] arrobject = bookSummary.getTags();
                 if (arrobject != null && arrobject.length > 0) {
-                    String string = TextUtils.join((CharSequence) " | ", arrobject);
+                    String string = TextUtils.join(" | ", arrobject);
                     this.a(3, false);
                     this.a(3, string);
                     return;

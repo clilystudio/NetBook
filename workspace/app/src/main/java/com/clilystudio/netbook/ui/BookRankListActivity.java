@@ -1,6 +1,5 @@
 package com.clilystudio.netbook.ui;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -9,14 +8,13 @@ import android.widget.ListView;
 
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.adapter.BookRankAdapter;
-import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.event.i;
 import com.clilystudio.netbook.event.k;
 import com.clilystudio.netbook.event.x;
 import com.clilystudio.netbook.model.BookRankRoot;
 import com.clilystudio.netbook.model.BookRankSummary;
-import com.clilystudio.netbook.util.e;
-import com.umeng.a.b;
+import com.squareup.otto.Subscribe;
+import com.xiaomi.mistatistic.sdk.MiStatInterfaceImpl;
 
 public class BookRankListActivity extends BaseActivity {
     private View a;
@@ -80,22 +78,19 @@ public class BookRankListActivity extends BaseActivity {
                     return;
                 }
                 BookRankListActivity.a(BookRankListActivity.this, 2);
-                com.clilystudio.netbook.util.e.a((Activity) BookRankListActivity.this, (int) R.string.load_failed_tips);
+                com.clilystudio.netbook.util.e.a(BookRankListActivity.this, R.string.load_failed_tips);
             }
         }.b();
     }
 
-    /*
-     * Enabled aggressive block sorting
-     */
-    @l
+    @Subscribe
     public void clickListItem(x x2) {
         BookRankSummary bookRankSummary = x2.b();
         String string = x2.a() ? "male" : "female";
-        Intent intent = !bookRankSummary.isCollapse() && a.r(this, "rank_revision_switch") ? BookRankMainActivity.a(this, bookRankSummary.getIds(), bookRankSummary.getTitle(), string) : BookRankDetailActivity.a(this, bookRankSummary.get_id(), bookRankSummary.getTitle());
+        Intent intent = !bookRankSummary.isCollapse() && com.clilystudio.netbook.hpay100.a.a.r(this, "rank_revision_switch") ? BookRankMainActivity.a(this, bookRankSummary.getIds(), bookRankSummary.getTitle(), string) : BookRankDetailActivity.a(this, bookRankSummary.get_id(), bookRankSummary.getTitle());
         this.startActivity(intent);
         String string2 = bookRankSummary.getTitle();
-        b.a(this, "book_rank_list_item", string2 + "_" + string);
+        MiStatInterfaceImpl.recordCountEvent("book_rank_list_item", string2 + "_" + string);
     }
 
     @Override
@@ -118,12 +113,9 @@ public class BookRankListActivity extends BaseActivity {
         this.b();
     }
 
-    /*
-     * Enabled aggressive block sorting
-     */
-    @l
+    @Subscribe
     public void onExpand(final k k2) {
-        if (!a.g() || a.k() || k2.a() != this.e.getLastVisiblePosition()) {
+        if (!com.clilystudio.netbook.hpay100.a.a.g() || com.clilystudio.netbook.hpay100.a.a.k() || k2.a() != this.e.getLastVisiblePosition()) {
             return;
         }
         this.f.postDelayed(new Runnable() {

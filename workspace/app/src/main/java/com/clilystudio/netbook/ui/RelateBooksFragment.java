@@ -22,14 +22,12 @@ import com.clilystudio.netbook.util.E;
 import com.clilystudio.netbook.widget.CoverView;
 import com.xiaomi.mistatistic.sdk.MiStatInterface;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class RelateBooksFragment extends Fragment implements cQ {
     LinearLayout mBookContainer;
     TextView mMore;
     LinearLayout mRelateBookRoot;
-    private boolean a = false;
 
     public static RelateBooksFragment a(String string) {
         RelateBooksFragment relateBooksFragment = new RelateBooksFragment();
@@ -39,15 +37,6 @@ public class RelateBooksFragment extends Fragment implements cQ {
         return relateBooksFragment;
     }
 
-    static /* synthetic */ boolean a(RelateBooksFragment relateBooksFragment) {
-        return relateBooksFragment.a;
-    }
-
-    /*
-     * Unable to fully structure code
-     * Enabled aggressive block sorting
-     * Lifted jumps to return sites
-     */
     @Override
     public final void a(final RelateBookRoot var1_1, String[] var2_2) {
         if (this.getActivity() == null) {
@@ -55,26 +44,9 @@ public class RelateBooksFragment extends Fragment implements cQ {
         }
         if (var1_1 == null) return;
         if (var1_1.getBooks() == null) return;
-        if (var1_1.getBooks().isEmpty() != false) return;
+        if (var1_1.getBooks().isEmpty()) return;
         this.mRelateBookRoot.setVisibility(View.VISIBLE);
-        List<BookSummary> var3_4;
-        if (this.a) {
-            List<BookSummary> var16_3 = var1_1.getBooks();
-            var3_4 = new ArrayList<BookSummary>(20);
-            for (String var19_7 : var2_2) {
-                for (BookSummary var21_9 : var16_3) {
-                    if (!var21_9.getId().equals(var19_7)) continue;
-                    var3_4.add(var21_9);
-                }
-            }
-            if (var3_4.size() != 0) {
-                var1_1.setBooks(var3_4);
-            } else {
-                var3_4 = var1_1.getBooks();
-            }
-        } else {
-            var3_4 = var1_1.getBooks();
-        }
+        List<BookSummary> var3_4 = var1_1.getBooks();
         FragmentActivity var4_10 = this.getActivity();
         DisplayMetrics var5_11 = new DisplayMetrics();
         ((WindowManager) var4_10.getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay().getMetrics(var5_11);
@@ -85,7 +57,7 @@ public class RelateBooksFragment extends Fragment implements cQ {
             this.mMore.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = RelateBookListActivity.a(RelateBooksFragment.this.getActivity(), var1_1, "\u4f60\u53ef\u80fd\u611f\u5174\u8da3", RelateBooksFragment.a(RelateBooksFragment.this));
+                    Intent intent = RelateBookListActivity.a(RelateBooksFragment.this.getActivity(), var1_1, "你可能感兴趣", false);
                     RelateBooksFragment.this.startActivity(intent);
                 }
             });
@@ -95,27 +67,21 @@ public class RelateBooksFragment extends Fragment implements cQ {
         int var10_16 = (int) var7_13.a();
         for (int var11_17 = 0; var11_17 < var9_15; var11_17++) {
             final BookSummary var12_18 = var3_4.get(var11_17);
-            View var14_20 = this.getLayoutInflater(null).inflate(R.layout.relate_book_item, (ViewGroup) this.mBookContainer, false);
+            View var14_20 = this.getLayoutInflater(null).inflate(R.layout.relate_book_item, this.mBookContainer, false);
             if (var11_17 != var9_15 - 1) {
                 var14_20.setPadding(0, 0, var10_16, 0);
             } else {
                 var14_20.setPadding(0, 0, 0, 0);
             }
-            ViewHolder var15_21 = new ViewHolder(this, var14_20);
+            ViewHolder var15_21 = new ViewHolder(var14_20);
             var15_21.mTitle.setText(var12_18.getTitle());
             var15_21.mBook.setImageUrl(var12_18.getFullCoverLarge(), R.drawable.cover_default);
             var15_21.mContainer.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     int n;
-                    if (RelateBooksFragment.a(RelateBooksFragment.this)) {
-                        com.clilystudio.netbook.hpay100.a.a.c((Context) RelateBooksFragment.this.getActivity(), var12_18.getId(), "rec_C6613205_93B6_61A6_9FEC_180B70F91B94");
-                        MiStatInterface.recordCountEvent("book_info_recommend_click", "bfd");
-                        n = 3;
-                    } else {
-                        MiStatInterface.recordCountEvent("book_info_recommend_click", "zhuishu");
-                        n = 1;
-                    }
+                    MiStatInterface.recordCountEvent("book_info_recommend_click", "zhuishu");
+                    n = 1;
                     Intent intent = BookInfoActivity.a(RelateBooksFragment.this.getActivity(), var12_18.getId(), n);
                     RelateBooksFragment.this.startActivity(intent);
                 }
@@ -135,7 +101,7 @@ public class RelateBooksFragment extends Fragment implements cQ {
         this.mBookContainer = (LinearLayout) this.getView().findViewById(R.id.books);
         this.mRelateBookRoot = (LinearLayout) this.getView().findViewById(R.id.relate_book_root);
         this.mMore = (TextView) this.getView().findViewById(R.id.more);
-        this.a = new cM(this.getActivity(), this).a(this.getArguments().getString("book_id"));
+        new cM(this.getActivity(), this).a(this.getArguments().getString("book_id"));
     }
 
     public class ViewHolder {
@@ -143,7 +109,7 @@ public class RelateBooksFragment extends Fragment implements cQ {
         View mContainer;
         TextView mTitle;
 
-        ViewHolder(RelateBooksFragment relateBooksFragment, View view) {
+        ViewHolder(View view) {
             this.mBook = (CoverView) view.findViewById(R.id.book);
             this.mTitle = (TextView) view.findViewById(R.id.title);
             this.mContainer = view.findViewById(R.id.container);

@@ -33,8 +33,8 @@ public class BookCategoryActivity extends BaseActivity {
         bookCategoryActivity.a(n);
     }
 
-    static /* synthetic */ void a(BookCategoryActivity bookCategoryActivity, CategoryLevelRoot categoryLevelRoot) {
-        a.a(categoryLevelRoot, c.f, "category_level.txt");
+    static /* synthetic */ void a(CategoryLevelRoot categoryLevelRoot) {
+        com.clilystudio.netbook.hpay100.a.a.a(categoryLevelRoot, com.clilystudio.netbook.c.f, "category_level.txt");
     }
 
     static /* synthetic */ void a(BookCategoryActivity bookCategoryActivity, CategoryRoot categoryRoot) {
@@ -44,7 +44,7 @@ public class BookCategoryActivity extends BaseActivity {
             return;
         }
         int n = bookCategoryActivity.getResources().getDisplayMetrics().widthPixels / 3;
-        int n2 = a.a((Context) bookCategoryActivity, 56.0f);
+        int n2 = com.clilystudio.netbook.hpay100.a.a.a(bookCategoryActivity, 56.0f);
         bookCategoryActivity.a(n, n2, arrcategoryRoot$Category, true);
         bookCategoryActivity.a(n, n2, arrcategoryRoot$Category2, false);
     }
@@ -81,7 +81,7 @@ public class BookCategoryActivity extends BaseActivity {
         TableRow tableRow = null;
         TableRow.LayoutParams layoutParams = new TableRow.LayoutParams(-1, -2);
         LinearLayout.LayoutParams layoutParams2 = new LinearLayout.LayoutParams(-1, -2);
-        int n4 = am.b((Context) this, (int) R.attr.audiobookCategoryItemSelector);
+        int n4 = am.b(this, R.attr.audiobookCategoryItemSelector);
         int n5 = 0;
         while (n5 < arrcategoryRoot$Category.length) {
             int n6;
@@ -92,7 +92,7 @@ public class BookCategoryActivity extends BaseActivity {
             TableLayout tableLayout = bl ? (TableLayout) this.findViewById(R.id.tags_layout_boy) : (TableLayout) this.findViewById(R.id.tags_layout_girl);
             if (n5 % 3 == 0) {
                 tableRow2 = new TableRow(this);
-                tableLayout.addView((View) tableRow2, layoutParams);
+                tableLayout.addView(tableRow2, layoutParams);
                 n6 = n3 + 1;
             } else {
                 tableRow2 = tableRow;
@@ -111,7 +111,7 @@ public class BookCategoryActivity extends BaseActivity {
                 layoutParams3.setMargins(0, -1, 0, 0);
             }
             LinearLayout linearLayout = new LinearLayout(this);
-            linearLayout.setOrientation(1);
+            linearLayout.setOrientation(LinearLayout.VERTICAL);
             linearLayout.setGravity(17);
             linearLayout.setBackgroundResource(n4);
             linearLayout.setOnClickListener(new View.OnClickListener() {
@@ -126,13 +126,14 @@ public class BookCategoryActivity extends BaseActivity {
             textView.setText(string);
             textView.setGravity(1);
             textView.setTextAppearance(this, R.style.book_category_item_large);
-            linearLayout.addView((View) textView, layoutParams2);
+            linearLayout.addView(textView, layoutParams2);
             TextView textView2 = new TextView(this);
-            textView2.setText("" + n7 + " \u672c");
+            String text = "" + n7 + " 本";
+            textView2.setText(text);
             textView2.setGravity(1);
             textView2.setTextAppearance(this, R.style.book_category_item_small);
-            linearLayout.addView((View) textView2, layoutParams2);
-            tableRow2.addView((View) linearLayout, layoutParams3);
+            linearLayout.addView(textView2, layoutParams2);
+            tableRow2.addView(linearLayout, layoutParams3);
             ++n5;
             n3 = n6;
             tableRow = tableRow2;
@@ -171,7 +172,7 @@ public class BookCategoryActivity extends BaseActivity {
             protected void onPostExecute(CategoryLevelRoot categoryLevelRoot) {
                 super.onPostExecute(categoryLevelRoot);
                 if (categoryLevelRoot != null && categoryLevelRoot.isOk()) {
-                    BookCategoryActivity.a(BookCategoryActivity.this, categoryLevelRoot);
+                    BookCategoryActivity.a(categoryLevelRoot);
                 }
             }
         }.b();

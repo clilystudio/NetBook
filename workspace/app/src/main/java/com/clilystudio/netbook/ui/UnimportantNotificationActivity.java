@@ -2,6 +2,7 @@ package com.clilystudio.netbook.ui;
 
 import android.os.Bundle;
 
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.util.J;
 
 public class UnimportantNotificationActivity extends BaseActivity {
@@ -9,7 +10,7 @@ public class UnimportantNotificationActivity extends BaseActivity {
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         this.setContentView(R.layout.activity_unimportant_notfif);
-        this.b("\u901a\u77e5");
+        this.b("通知");
     }
 
     @Override

@@ -21,12 +21,12 @@ public class CustomSearchActivity extends BaseActivity {
     static /* synthetic */ void a(final CustomSearchActivity customSearchActivity) {
         String string = customSearchActivity.a.getText().toString();
         String string2 = customSearchActivity.b.getText().toString();
-        if (a.Q(string)) {
-            e.a((Activity) customSearchActivity, (String) "\u4e66\u540d\u4e0d\u80fd\u4e3a\u7a7a");
+        if (com.clilystudio.netbook.hpay100.a.a.Q(string)) {
+            e.a(customSearchActivity, "书名不能为空");
             return;
         }
-        if (a.Q(string2)) {
-            e.a((Activity) customSearchActivity, (String) "\u4f5c\u8005\u4e0d\u80fd\u4e3a\u7a7a");
+        if (com.clilystudio.netbook.hpay100.a.a.Q(string2)) {
+            e.a(customSearchActivity, "作者不能为空");
             return;
         }
         boolean bl = true;
@@ -42,23 +42,16 @@ public class CustomSearchActivity extends BaseActivity {
                 @Override
                 public void a(BookAdd bookAdd) {
                     if (bookAdd == null) {
-                        e.a((Activity) customSearchActivity, "搜索失败，请检查网络或稍后再试");
-                        return;
-                    }
-                    if (bookAdd.isOk()) {
+                        e.a(customSearchActivity, "搜索失败，请检查网络或稍后再试");
+                    } else if (bookAdd.isOk()) {
                         String string = bookAdd.getBook();
                         Intent intent = BookInfoActivity.a(customSearchActivity, string);
                         customSearchActivity.startActivity(intent);
-                        return;
                     } else {
                         if ("EXISTS".equals(bookAdd.getCode())) {
-                            e.a((Activity) customSearchActivity, "该书已存在");
-                            return;
-                        }
-                        if (!"NOTFOUND".equals(bookAdd.getCode())) return;
-                        {
+                            e.a(customSearchActivity, "该书已存在");
+                        } else if ("NOTFOUND".equals(bookAdd.getCode())) {
                             CustomSearchActivity.b(customSearchActivity);
-                            return;
                         }
                     }
                 }

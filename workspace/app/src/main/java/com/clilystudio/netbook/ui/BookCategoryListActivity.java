@@ -367,7 +367,7 @@ public class BookCategoryListActivity extends BaseTabActivity implements ViewPag
             View view2;
             if (view == null) {
                 ax ax3 = new ax();
-                view2 = n == 0 ? this.a.inflate(R.layout.category_major_list_item, null) : this.a.inflate(R.layout.category_level_list_item, null);
+                view2 = n == 0 ? this.a.inflate(R.layout.category_major_list_item, (ViewGroup)getWindow().getDecorView(), false) : this.a.inflate(R.layout.category_level_list_item, (ViewGroup)getWindow().getDecorView(), false);
                 ax3.a = (TextView) view2.findViewById(R.id.category_name);
                 ax3.b = (ImageView) view2.findViewById(R.id.category_selected);
                 view2.setTag(ax3);
@@ -382,7 +382,7 @@ public class BookCategoryListActivity extends BaseTabActivity implements ViewPag
                 ax2.b.setVisibility(View.VISIBLE);
                 return view2;
             }
-            ax2.a.setTextColor(am.a((Context) this.c, 16842904));
+            ax2.a.setTextColor(am.a(this.c, 16842904));
             ax2.b.setVisibility(View.GONE);
             return view2;
         }

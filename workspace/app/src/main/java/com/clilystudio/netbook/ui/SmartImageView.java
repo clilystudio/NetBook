@@ -6,6 +6,7 @@ import android.util.AttributeSet;
 import com.clilystudio.netbook.api.ApiService;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.display.BitmapDisplayer;
 import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 import com.nostra13.universalimageloader.core.process.BitmapProcessor;
 
@@ -22,7 +23,7 @@ public class SmartImageView extends MaskAbleImageView {
         super(context, attributeSet, n);
     }
 
-    protected BitmapProcessor a() {
+    protected BitmapDisplayer a() {
         return null;
     }
 
@@ -45,9 +46,9 @@ public class SmartImageView extends MaskAbleImageView {
         if (n != 0) {
             v01.showImageForEmptyUri(n);
         }
-        BitmapProcessor v11 = this.a();
+        BitmapDisplayer v11 = this.a();
         if (v11 != null) {
-            v01.postProcessor(v11);
+             v01.displayer(v11);
         }
         DisplayImageOptions v02 = v01.build();
         if (string == null || !string.contains("static")) {

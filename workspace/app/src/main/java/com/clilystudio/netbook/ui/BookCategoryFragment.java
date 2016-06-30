@@ -1,6 +1,5 @@
 package com.clilystudio.netbook.ui;
 
-import android.content.Context;
 import android.content.res.Resources;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -16,7 +15,6 @@ import android.widget.TextView;
 
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.a_pack.e;
-import com.clilystudio.netbook.api.ApiService;
 import com.clilystudio.netbook.model.BookListRoot;
 import com.clilystudio.netbook.model.CategoryBook;
 import com.clilystudio.netbook.util.W;
@@ -37,7 +35,7 @@ public class BookCategoryFragment extends Fragment {
     private TextView f;
     private String g;
     private com.clilystudio.netbook.a_pack.e<String, Void, List<CategoryBook>> h;
-    private List<CategoryBook> i = new ArrayList<CategoryBook>();
+    private List<CategoryBook> i = new ArrayList<>();
     private PullToRefreshBase.OnLastItemVisibleListener j;
 
     public BookCategoryFragment() {
@@ -148,13 +146,13 @@ public class BookCategoryFragment extends Fragment {
         View view = layoutInflater.inflate(R.layout.fragment_book_category, viewGroup, false);
         this.g = ((BookCategoryListActivity) this.getActivity()).g();
         this.a = (PullToRefreshListView) view.findViewById(R.id.ptr_list);
-        this.b = (ListView) this.a.getRefreshableView();
-        a.a((Context) this.getActivity(), this.b);
+        this.b = this.a.getRefreshableView();
+        com.clilystudio.netbook.hpay100.a.a.a(this.getActivity(), this.b);
         this.e = view.findViewById(R.id.pb_loading);
         this.f = (TextView) view.findViewById(R.id.empty_text);
         final LayoutInflater layoutInflater2 = LayoutInflater.from(this.getActivity());
-        this.c = layoutInflater2.inflate(R.layout.loading_item, null);
-        if (a.i()) {
+        this.c = layoutInflater2.inflate(R.layout.loading_item, (ViewGroup)getActivity().getWindow().getDecorView(), false);
+        if (com.clilystudio.netbook.hpay100.a.a.i()) {
             this.b.setFooterDividersEnabled(false);
         }
         this.b.addFooterView(this.c);
@@ -189,7 +187,7 @@ public class BookCategoryFragment extends Fragment {
 
             @Override
             protected void a(int var1, CategoryBook categoryBook) {
-                ((CoverView) this.a(0, CoverView.class)).setImageUrl(categoryBook.getFullCover(), R.drawable.cover_default);
+                this.a(0, CoverView.class).setImageUrl(categoryBook.getFullCover(), R.drawable.cover_default);
                 this.a(1, categoryBook.getTitle());
                 this.a(2, categoryBook.getShortIntro());
                 Resources resources = layoutInflater2.getContext().getResources();

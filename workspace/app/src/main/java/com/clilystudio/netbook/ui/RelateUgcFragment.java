@@ -14,9 +14,6 @@ import com.clilystudio.netbook.model.RecommendUgcRoot;
 import com.clilystudio.netbook.ui.ugcbook.UGCDetailActivity;
 import com.clilystudio.netbook.widget.CoverView;
 
-import butterknife.ButterKnife;
-import butterknife.InjectView;
-
 public class RelateUgcFragment extends Fragment {
     LinearLayout mRelateUgcRoot;
     LinearLayout mUgcContainer;
@@ -52,31 +49,20 @@ public class RelateUgcFragment extends Fragment {
             this.b = "\u5171%1$d\u672c\u4e66  |  %2$d\u4eba\u6536\u85cf";
         }
 
-        private static /* varargs */ RecommendUgcRoot a(String... arrstring) {
-            try {
-                b.a();
-                RecommendUgcRoot recommendUgcRoot = b.b().i(arrstring[0], 3);
-                return recommendUgcRoot;
-            } catch (Exception var1_2) {
-                var1_2.printStackTrace();
-                return null;
-            }
+        @Override
+        protected final /* synthetic */ RecommendUgcRoot doInBackground(String[] arrstring) {
+            com.clilystudio.netbook.api.b.a();
+            return com.clilystudio.netbook.api.b.b().i(arrstring[0], 3);
         }
 
         @Override
-        protected final /* synthetic */ RecommendUgcRoot doInBackground(String[] arrobject) {
-            return GetUgcsTask.a((String[]) arrobject);
-        }
-
-        @Override
-        protected final /* synthetic */ void onPostExecute(Object object) {
-            RecommendUgcRoot recommendUgcRoot = (RecommendUgcRoot) object;
+        protected final /* synthetic */ void onPostExecute(RecommendUgcRoot recommendUgcRoot) {
             super.onPostExecute(recommendUgcRoot);
             if (this.a.getActivity() != null && recommendUgcRoot != null && recommendUgcRoot.getBooklists() != null && recommendUgcRoot.getBooklists().length > 0) {
                 this.a.mRelateUgcRoot.setVisibility(View.VISIBLE);
                 for (final RecommendUgcRoot.RecommendUGC recommendUGC : recommendUgcRoot.getBooklists()) {
-                    View view = this.a.getLayoutInflater(null).inflate(R.layout.list_item_ugc_book, (ViewGroup) this.a.mUgcContainer, false);
-                    GetUgcsTask.ViewHolder viewHolder = new GetUgcsTask.ViewHolder(this, view);
+                    View view = this.a.getLayoutInflater(null).inflate(R.layout.list_item_ugc_book, this.a.mUgcContainer, false);
+                    GetUgcsTask.ViewHolder viewHolder = new GetUgcsTask.ViewHolder(view);
                     viewHolder.mCover.setImageUrl(recommendUGC.getFullCover(), R.drawable.cover_default);
                     viewHolder.mTitle.setText(recommendUGC.getTitle());
                     TextView textView = viewHolder.mCount;
@@ -106,7 +92,7 @@ public class RelateUgcFragment extends Fragment {
             TextView mTitle;
             TextView mUpdated;
 
-            ViewHolder(RelateUgcFragment.GetUgcsTask getUgcsTask, View view) {
+            ViewHolder(View view) {
                 this.mCover = (CoverView) view.findViewById(R.id.cover);
                 this.mTitle = (TextView)view. findViewById(R.id.title);
                 this.mCount = (TextView) view.findViewById(R.id.message_count);
