@@ -352,9 +352,6 @@
         <!--<activity android:configChanges="keyboard|keyboardHidden|orientation|screenSize" android:name="com.qq.e.ads.ADActivity"/>-->
         <!--<activity android:configChanges="keyboardHidden|orientation" android:name="cn.sharesdk.framework.ShareSDKUIShell" android:screenOrientation="portrait" android:theme="@android:style/Theme.Translucent.NoTitleBar" android:windowSoftInputMode="stateHidden|adjustResize"/>-->
         <activity
-            android:name="com.clilystudio.netbook.ui.WifiActivity"
-            android:screenOrientation="portrait"/>
-        <activity
             android:name="com.clilystudio.netbook.reader.txt.ScanTxtFileActivity"
             android:screenOrientation="portrait"/>
         <activity
@@ -524,7 +521,6 @@
 
         <activity android:name="com.clilystudio.netbook.ui.BookRankMainActivity"/>
         <activity android:name="com.clilystudio.netbook.ui.SecretOpWebActivity"/>
-        <activity android:name="com.clilystudio.netbook.ui.ShareRemoveAdActivity"/>
 
         <meta-data
             android:name="cocosplay_mode"

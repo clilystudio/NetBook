@@ -48,7 +48,6 @@ import com.clilystudio.netbook.reader.txt.ScanTxtFileActivity;
 import com.clilystudio.netbook.ui.SearchActivity;
 import com.clilystudio.netbook.ui.SettingsActivity;
 import com.clilystudio.netbook.ui.SmartImageView;
-import com.clilystudio.netbook.ui.WifiActivity;
 import com.clilystudio.netbook.ui.user.AuthLoginActivity;
 import com.clilystudio.netbook.ui.user.MyMessageActivity;
 import com.clilystudio.netbook.ui.user.UserInfoActivity;
@@ -491,18 +490,6 @@ public class HomeActivity extends HomeParentActivity implements ViewPager.OnPage
             }
             case R.id.home_menu_scan: {
                 this.startActivity(new Intent(this, ScanTxtFileActivity.class));
-                return;
-            }
-            case R.id.home_menu_wifi_transfer: {
-                if (!com.clilystudio.netbook.hpay100.a.a.d()) {
-                    com.clilystudio.netbook.util.e.a(this, "\u65e0\u6cd5\u4f7f\u7528\uff0c\u8bf7\u68c0\u67e5SD\u5361\u662f\u5426\u6302\u8f7d");
-                    return;
-                }
-                if (com.clilystudio.netbook.hpay100.a.a.e() <= 20000) {
-                    com.clilystudio.netbook.util.e.a(this, "SD\u5361\u5269\u4f59\u5bb9\u91cf\u4e0d\u8db3");
-                    return;
-                }
-                this.startActivity(new Intent(this, WifiActivity.class));
                 return;
             }
             case R.id.home_action_menu_game: {

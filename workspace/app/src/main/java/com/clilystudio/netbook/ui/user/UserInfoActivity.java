@@ -20,7 +20,6 @@ import com.clilystudio.netbook.model.UserInfo;
 import com.clilystudio.netbook.ui.BaseActivity;
 import com.clilystudio.netbook.ui.CircularSmartImageView;
 import com.clilystudio.netbook.ui.SettingsActivity;
-import com.clilystudio.netbook.ui.ShareRemoveAdActivity;
 import com.clilystudio.netbook.ui.aa;
 import com.clilystudio.netbook.util.J;
 import com.squareup.otto.Subscribe;
@@ -206,18 +205,6 @@ public class UserInfoActivity extends BaseActivity {
                 UserInfoActivity.this.startActivity(intent);
             }
         });
-        View view = this.findViewById(R.id.user_share_remove_ad);
-        if (com.clilystudio.netbook.hpay100.a.a.r(this, "switch_share_remove_ad")) {
-            view.setVisibility(View.VISIBLE);
-            view.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = ShareRemoveAdActivity.a(UserInfoActivity.this, "userInfo");
-                    UserInfoActivity.this.startActivity(intent);
-                    MiStatInterface.recordCountEvent("share_remove_entrance_click", "userInfo");
-                }
-            });
-        }
         this.b();
         i.a().register(this);
         MiStatInterface.recordCountEvent("PERSONAL_PAGE_SHOW", null);
