@@ -1,5 +1,6 @@
 package com.clilystudio.netbook.ui;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,8 +13,12 @@ import android.widget.ListView;
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.d;
 import com.clilystudio.netbook.model.BookSummary;
+import com.clilystudio.netbook.model.SearchResultRoot;
 import com.clilystudio.netbook.util.W;
+import com.clilystudio.netbook.util.e;
 import com.clilystudio.netbook.widget.CoverView;
+
+import java.util.List;
 
 public class AuthorBooksActivity extends BaseLoadingActivity {
     private ListView a;
@@ -35,9 +40,31 @@ public class AuthorBooksActivity extends BaseLoadingActivity {
     @Override
     protected final void b() {
         this.i();
-        H h = new H(this, 0);
-        String[] arrstring = new String[]{this.c};
-        h.b(arrstring);
+        new com.clilystudio.netbook.a_pack.e<String, Void, List<BookSummary>>() {
+
+            @Override
+            protected List<BookSummary> doInBackground(String... params) {
+                SearchResultRoot searchResultRoot = com.clilystudio.netbook.api.b.b().o(params[0]);
+                if (searchResultRoot == null) return null;
+                return searchResultRoot.getBooks();
+            }
+
+            @Override
+            protected void onPostExecute(List<BookSummary> bookSummaries) {
+                super.onPostExecute(bookSummaries);
+                if (bookSummaries == null) {
+                    AuthorBooksActivity.this.h();
+                    com.clilystudio.netbook.util.e.a((Activity) AuthorBooksActivity.this, (int) R.string.search_failed);
+                    return;
+                }
+                if (bookSummaries.size() > 0) {
+                    AuthorBooksActivity.this.f();
+                } else {
+                    AuthorBooksActivity.this.g();
+                }
+                AuthorBooksActivity.b(AuthorBooksActivity.this).a(bookSummaries);
+            }
+        }.b(this.c);
     }
 
     @Override
