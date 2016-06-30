@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
@@ -13,6 +14,8 @@ import com.clilystudio.netbook.a_pack.e;
 import com.clilystudio.netbook.d;
 import com.clilystudio.netbook.model.BookSummary;
 import com.clilystudio.netbook.model.BookTagRoot;
+import com.clilystudio.netbook.util.W;
+import com.clilystudio.netbook.widget.CoverView;
 import com.clilystudio.netbook.widget.ScrollLoadListView;
 import com.clilystudio.netbook.widget.av;
 
@@ -22,7 +25,7 @@ import java.util.List;
 
 public class BookTagListActivity extends BaseLoadingActivity {
     private com.clilystudio.netbook.a_pack.e<String, Void, List<BookSummary>> a;
-    private aV b;
+    private W<BookSummary> b;
     private String c;
     private ScrollLoadListView e;
     private View f;
@@ -99,7 +102,7 @@ public class BookTagListActivity extends BaseLoadingActivity {
         return bookTagListActivity.f;
     }
 
-    static /* synthetic */ aV d(BookTagListActivity bookTagListActivity) {
+    static /* synthetic */ W<BookSummary> d(BookTagListActivity bookTagListActivity) {
         return bookTagListActivity.b;
     }
 
@@ -173,7 +176,28 @@ public class BookTagListActivity extends BaseLoadingActivity {
                 }
             }
         });
-        this.b = new aV(this, layoutInflater);
+        this.b = new W<BookSummary>(layoutInflater, R.layout.list_item_book_tags){
+
+            @Override
+            protected void a(int var1, BookSummary bookSummary) {
+                ((CoverView) this.a(0, CoverView.class)).setImageUrl(bookSummary.getFullCover(), R.drawable.cover_default);
+                this.a(1, bookSummary.getTitle());
+                this.a(2, bookSummary.getShortIntro());
+                Object[] arrobject = bookSummary.getTags();
+                if (arrobject != null && arrobject.length > 0) {
+                    String string = TextUtils.join((CharSequence) " | ", arrobject);
+                    this.a(3, false);
+                    this.a(3, string);
+                    return;
+                }
+                this.a(3, true);
+            }
+
+            @Override
+            protected int[] a() {
+                return new int[]{R.id.iv_cover, R.id.tv_title, R.id.tv_short_intro, R.id.book_tags};
+            }
+        };
         this.e.setAdapter(this.b);
         this.b();
     }

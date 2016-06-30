@@ -5,6 +5,7 @@ import android.content.res.Resources;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +15,9 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.clilystudio.netbook.R;
+import com.clilystudio.netbook.a_pack.e;
+import com.clilystudio.netbook.api.ApiService;
+import com.clilystudio.netbook.model.BookListRoot;
 import com.clilystudio.netbook.model.CategoryBook;
 import com.clilystudio.netbook.util.W;
 import com.clilystudio.netbook.widget.CoverView;
@@ -21,6 +25,7 @@ import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class BookCategoryFragment extends Fragment {
@@ -31,12 +36,22 @@ public class BookCategoryFragment extends Fragment {
     private View e;
     private TextView f;
     private String g;
-    private aq h;
+    private com.clilystudio.netbook.a_pack.e<String, Void, List<CategoryBook>> h;
     private List<CategoryBook> i = new ArrayList<CategoryBook>();
-    private j j;
+    private PullToRefreshBase.OnLastItemVisibleListener j;
 
     public BookCategoryFragment() {
-        this.j = new ap(this);
+        this.j = new PullToRefreshBase.OnLastItemVisibleListener() {
+
+            @Override
+            public void onLastItemVisible() {
+                if (BookCategoryFragment.this.h == null || BookCategoryFragment.this.h.getStatus() == AsyncTask.Status.FINISHED) {
+                    BookCategoryFragment.f(BookCategoryFragment.this).setVisibility(View.VISIBLE);
+                    BookCategoryFragment.this.h = getaqclass(true);
+                    BookCategoryFragment.this.h.b();
+                }
+            }
+        };
     }
 
     static /* synthetic */ ListView a(BookCategoryFragment bookCategoryFragment) {
@@ -51,11 +66,6 @@ public class BookCategoryFragment extends Fragment {
         return bookCategoryFragment;
     }
 
-    static /* synthetic */ aq a(BookCategoryFragment bookCategoryFragment, aq aq2) {
-        bookCategoryFragment.h = aq2;
-        return aq2;
-    }
-
     static /* synthetic */ void a(BookCategoryFragment bookCategoryFragment, CategoryBook categoryBook) {
         if (categoryBook != null) {
             bookCategoryFragment.startActivity(BookInfoActivity.a(bookCategoryFragment.getActivity(), categoryBook.getId()));
@@ -68,10 +78,6 @@ public class BookCategoryFragment extends Fragment {
 
     static /* synthetic */ TextView c(BookCategoryFragment bookCategoryFragment) {
         return bookCategoryFragment.f;
-    }
-
-    static /* synthetic */ aq d(BookCategoryFragment bookCategoryFragment) {
-        return bookCategoryFragment.h;
     }
 
     static /* synthetic */ View e(BookCategoryFragment bookCategoryFragment) {
@@ -90,7 +96,7 @@ public class BookCategoryFragment extends Fragment {
         return bookCategoryFragment.d;
     }
 
-    static /* synthetic */ j i(BookCategoryFragment bookCategoryFragment) {
+    static /* synthetic */ PullToRefreshBase.OnLastItemVisibleListener i(BookCategoryFragment bookCategoryFragment) {
         return bookCategoryFragment.j;
     }
 
@@ -98,8 +104,32 @@ public class BookCategoryFragment extends Fragment {
         this.e.setVisibility(View.VISIBLE);
         this.i.clear();
         this.d.a(this.i);
-        this.h = new aq(this);
-        this.h.b((Object[]) new String[0]);
+        this.h = getaqclass(true);
+        this.h.b();
+    }
+
+    @NonNull
+    private com.clilystudio.netbook.a_pack.e<String, Void, List<CategoryBook>> getaqclass(final boolean isContinus) {
+        return new e<String, Void, List<CategoryBook>>(){
+
+            @Override
+            protected List<CategoryBook> doInBackground(String... params) {
+                String string = BookCategoryFragment.this.getArguments().getString("bookcategory_type");
+                if (BookCategoryFragment.this.getActivity() == null) return null;
+                if (BookCategoryFragment.this.getActivity().isFinishing()) {
+                    return null;
+                }
+                String string2 = ((BookCategoryListActivity) BookCategoryFragment.this.getActivity()).f();
+                String string3 = ((BookCategoryListActivity) BookCategoryFragment.this.getActivity()).g();
+                String string4 = ((BookCategoryListActivity) BookCategoryFragment.this.getActivity()).b();
+                com.clilystudio.netbook.api.b.a();
+                int n = isContinus ? BookCategoryFragment.b(BookCategoryFragment.this).size() : 0;
+                BookListRoot bookListRoot = com.clilystudio.netbook.api. b.b().a(string4, string, string2, string3, n, 50);
+                if (bookListRoot == null) return null;
+                if (bookListRoot.getBooks() == null) return null;
+                return Arrays.asList(bookListRoot.getBooks());
+            }
+        };
     }
 
     public final void b(String string) {
@@ -118,7 +148,7 @@ public class BookCategoryFragment extends Fragment {
         View view = layoutInflater.inflate(R.layout.fragment_book_category, viewGroup, false);
         this.g = ((BookCategoryListActivity) this.getActivity()).g();
         this.a = (PullToRefreshListView) view.findViewById(R.id.ptr_list);
-        this.b = (ListView) this.a.h();
+        this.b = (ListView) this.a.getRefreshableView();
         a.a((Context) this.getActivity(), this.b);
         this.e = view.findViewById(R.id.pb_loading);
         this.f = (TextView) view.findViewById(R.id.empty_text);
@@ -149,8 +179,8 @@ public class BookCategoryFragment extends Fragment {
                         if (BookCategoryFragment.this.h != null && BookCategoryFragment.this.h.getStatus() != AsyncTask.Status.FINISHED && !BookCategoryFragment.this.h.isCancelled()) {
                             BookCategoryFragment.this.h.cancel(true);
                         }
-                        BookCategoryFragment.a(BookCategoryFragment.this, new aq(BookCategoryFragment.this, false));
-                        BookCategoryFragment.this.h.b(new String[0]);
+                        BookCategoryFragment.this.h = getaqclass(false);
+                        BookCategoryFragment.this.h.b();
                     }
                 }, 1000);
             }

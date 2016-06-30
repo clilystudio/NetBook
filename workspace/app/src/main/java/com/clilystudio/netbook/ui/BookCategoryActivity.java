@@ -3,15 +3,15 @@ package com.clilystudio.netbook.ui;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-
-import com.clilystudio.netbook.R;
-import com.clilystudio.netbook.am;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+import com.clilystudio.netbook.R;
+import com.clilystudio.netbook.a_pack.e;
+import com.clilystudio.netbook.am;
 import com.clilystudio.netbook.d;
 import com.clilystudio.netbook.model.CategoryLevelRoot;
 import com.clilystudio.netbook.model.CategoryRoot;
@@ -141,8 +141,40 @@ public class BookCategoryActivity extends BaseActivity {
 
     private void b() {
         this.a(0);
-        new al(this, 0).b(new String[0]);
-        new ak(this, 0).b((Object[]) new String[0]);
+        new e<String, Void, CategoryRoot>() {
+
+            @Override
+            protected CategoryRoot doInBackground(String... params) {
+                return com.clilystudio.netbook.api.b.b().e();
+            }
+
+            @Override
+            protected void onPostExecute(CategoryRoot categoryRoot) {
+                super.onPostExecute(categoryRoot);
+                if (categoryRoot != null && categoryRoot.isOk()) {
+                    BookCategoryActivity.a(BookCategoryActivity.this, 1);
+                    BookCategoryActivity.a(BookCategoryActivity.this, categoryRoot);
+                    return;
+                }
+                BookCategoryActivity.a(BookCategoryActivity.this, 2);
+
+            }
+        }.b();
+        new e<String, Void, CategoryLevelRoot>() {
+
+            @Override
+            protected CategoryLevelRoot doInBackground(String... params) {
+                return com.clilystudio.netbook.api.b.b().f();
+            }
+
+            @Override
+            protected void onPostExecute(CategoryLevelRoot categoryLevelRoot) {
+                super.onPostExecute(categoryLevelRoot);
+                if (categoryLevelRoot != null && categoryLevelRoot.isOk()) {
+                    BookCategoryActivity.a(BookCategoryActivity.this, categoryLevelRoot);
+                }
+            }
+        }.b();
     }
 
     @Override

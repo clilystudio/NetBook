@@ -17,7 +17,9 @@ import android.widget.TextView;
 
 import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.R;
+import com.clilystudio.netbook.a_pack.e;
 import com.clilystudio.netbook.am;
+import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.d;
 import com.clilystudio.netbook.db.BookReadRecord;
 import com.clilystudio.netbook.db.SourceRecord;
@@ -34,6 +36,7 @@ import com.clilystudio.netbook.util.t;
 import com.clilystudio.netbook.widget.CoverView;
 import com.clilystudio.netbook.widget.TagsLayout;
 import com.umeng.a.b;
+import com.xiaomi.mistatistic.sdk.MiStatInterface;
 
 import java.util.Date;
 
@@ -442,9 +445,30 @@ public class BookInfoActivity extends BaseActivity implements View.OnClickListen
 
     private void j() {
         this.e(0);
-        aI aI2 = new aI(this, 0);
-        String[] arrstring = new String[]{this.h};
-        aI2.b(arrstring);
+        com.clilystudio.netbook.a_pack.e<String, Void, BookInfo> aI2 = new e<String, Void, BookInfo>(){
+
+            @Override
+            protected BookInfo doInBackground(String... params) {
+                return com.clilystudio.netbook.api.b.b().r(params[0]);
+            }
+
+            @Override
+            protected void onPostExecute(BookInfo bookInfo) {
+                 super.onPostExecute(bookInfo);
+                if (isFinishing()) return;
+                if (bookInfo != null) {
+                    BookInfoActivity.b(BookInfoActivity.this, 1);
+                    BookInfoActivity.a(BookInfoActivity.this, bookInfo);
+                    BookInfoActivity.d(BookInfoActivity.this);
+                    BookInfoActivity.e(BookInfoActivity.this);
+                    BookInfoActivity.f(BookInfoActivity.this);
+                    com.clilystudio.netbook.hpay100.a.a.a((Context) BookInfoActivity.this, bookInfo);
+                    return;
+                }
+                BookInfoActivity.b(BookInfoActivity.this, 2);
+            }
+        };
+        aI2.b(this.h);
     }
 
     private void k() {
@@ -514,7 +538,26 @@ public class BookInfoActivity extends BaseActivity implements View.OnClickListen
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         this.setContentView(R.layout.activity_book_info);
-        final ay ay2 = new ay(this);
+        final ab ay2 = new ab(){
+
+            @Override
+            public void a() {
+                BookInfoActivity.a(BookInfoActivity.this);
+                MiStatInterface.recordCountEvent("book_info_download", null);
+            }
+
+            @Override
+            public void b() {
+                new cb(BookInfoActivity.this, new cd() {
+                    @Override
+                    public void a(int var1) {
+                        BookInfoActivity.a(BookInfoActivity.this, var1);
+                        com.clilystudio.netbook.hpay100.a.a.a((Context) BookInfoActivity.this, var1, 1);
+                    }
+                }).a().show();
+                MiStatInterface.recordCountEvent( "share_book_info_ab", null);
+           }
+        };
         this.c();
         View view = LayoutInflater.from(this).inflate(R.layout.ab_custom_two_text_view, null);
         ((TextView) view.findViewById(R.id.title)).setText(R.string.book_info_title);
@@ -540,7 +583,7 @@ public class BookInfoActivity extends BaseActivity implements View.OnClickListen
                 ay2.b();
             }
         });
-        this.a().a(view);
+        this.getActionBar().setCustomView(view);
         this.b = this.findViewById(R.id.content);
         this.c = this.findViewById(R.id.pb_loading);
         this.e = this.findViewById(R.id.load_error_hint_btn);
@@ -552,7 +595,7 @@ public class BookInfoActivity extends BaseActivity implements View.OnClickListen
         this.h = this.getIntent().getStringExtra("book_id");
         boolean bl = BookReadRecord.getOnShelf(this.h) != null;
         this.i = bl;
-        i.a().register(this);
+        com.clilystudio.netbook.event.i.a().register(this);
         this.j();
         b.a(this, "book_info_open");
         this.l = this.getIntent().getIntExtra("open_type", 0);
@@ -561,7 +604,7 @@ public class BookInfoActivity extends BaseActivity implements View.OnClickListen
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        i.a().unregister(this);
+        com.clilystudio.netbook.event.i.a().unregister(this);
     }
 
     @l

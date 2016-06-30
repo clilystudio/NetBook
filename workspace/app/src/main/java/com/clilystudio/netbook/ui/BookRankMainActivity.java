@@ -3,6 +3,9 @@ package com.clilystudio.netbook.ui;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager$OnPageChangeListener;
 import android.view.LayoutInflater;
@@ -13,6 +16,7 @@ import android.widget.TextView;
 
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.d;
+import com.clilystudio.netbook.ui.home.ZssqFragmentPagerAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -126,6 +130,43 @@ public class BookRankMainActivity extends BaseTabActivity implements ViewPager$O
         int n = this.a.getCurrentTab();
         if (n >= 0 && n < this.e.getCount()) {
             this.c.setCurrentItem(n, true);
+        }
+    }
+
+    final class aS extends ZssqFragmentPagerAdapter {
+        private String[] a;
+
+        public aS(FragmentManager fragmentManager) {
+            super(fragmentManager);
+            this.a = new String[]{"weekly", "monthly", "all"};
+            for (int i = 0; i < 3; ++i) {
+                BookRankMainActivity.b(BookRankMainActivity.this).add(i, BookRankMainActivity.a(BookRankMainActivity.this, BookRankMainActivity.a(BookRankMainActivity.this)[i], this.a[i], this.a[i]));
+            }
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            for (int j = 0; j < 3; ++j) {
+                Fragment fragment = (Fragment) BookRankMainActivity.b(BookRankMainActivity.this).get(j);
+                if (fragment.isAdded()) continue;
+                fragmentTransaction.add(BookRankMainActivity.c(BookRankMainActivity.this).getId(), fragment, this.a[j]);
+            }
+            if (!fragmentTransaction.isEmpty()) {
+                fragmentTransaction.commit();
+                fragmentManager.executePendingTransactions();
+            }
+        }
+
+        @Override
+        public final Fragment a(int n) {
+            return (Fragment) BookRankMainActivity.b(BookRankMainActivity.this).get(n);
+        }
+
+        @Override
+        protected final String b(int n) {
+            return this.a[n];
+        }
+
+        @Override
+        public final int getCount() {
+            return 3;
         }
     }
 }

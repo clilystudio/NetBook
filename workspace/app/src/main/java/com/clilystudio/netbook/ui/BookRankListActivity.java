@@ -1,5 +1,6 @@
 package com.clilystudio.netbook.ui;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -8,10 +9,13 @@ import android.widget.ListView;
 
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.adapter.BookRankAdapter;
+import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.event.i;
 import com.clilystudio.netbook.event.k;
 import com.clilystudio.netbook.event.x;
+import com.clilystudio.netbook.model.BookRankRoot;
 import com.clilystudio.netbook.model.BookRankSummary;
+import com.clilystudio.netbook.util.e;
 import com.umeng.a.b;
 
 public class BookRankListActivity extends BaseActivity {
@@ -60,7 +64,25 @@ public class BookRankListActivity extends BaseActivity {
 
     private void b() {
         this.a(0);
-        new aO(this, 0).b(new Void[0]);
+        new com.clilystudio.netbook.a_pack.e<Void, Void, BookRankRoot>(){
+
+            @Override
+            protected BookRankRoot doInBackground(Void... params) {
+                return com.clilystudio.netbook.api.b.b().d();
+            }
+
+            @Override
+            protected void onPostExecute(BookRankRoot bookRankRoot) {
+                super.onPostExecute(bookRankRoot);
+                if (bookRankRoot != null && bookRankRoot.isOk()) {
+                    BookRankListActivity.a(BookRankListActivity.this, 1);
+                    BookRankListActivity.c(BookRankListActivity.this).a(bookRankRoot);
+                    return;
+                }
+                BookRankListActivity.a(BookRankListActivity.this, 2);
+                com.clilystudio.netbook.util.e.a((Activity) BookRankListActivity.this, (int) R.string.load_failed_tips);
+            }
+        }.b();
     }
 
     /*

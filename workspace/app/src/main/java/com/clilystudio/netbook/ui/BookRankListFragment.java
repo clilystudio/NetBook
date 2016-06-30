@@ -1,5 +1,6 @@
 package com.clilystudio.netbook.ui;
 
+import android.app.Activity;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -11,12 +12,17 @@ import android.widget.TextView;
 
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.adapter.g;
+import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.model.BookRankDetail;
+import com.clilystudio.netbook.model.BookRankDetailRoot;
 import com.clilystudio.netbook.util.W;
+import com.clilystudio.netbook.util.e;
 import com.clilystudio.netbook.widget.CoverView;
 import com.clilystudio.netbook.widget.ScrollLoadListView;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 
 public class BookRankListFragment extends Fragment {
@@ -26,7 +32,7 @@ public class BookRankListFragment extends Fragment {
     private View d;
     private TextView e;
     private List<BookRankDetail> f = new ArrayList<BookRankDetail>(100);
-    private aR g;
+    private com.clilystudio.netbook.a_pack.e<String, Void, BookRankDetailRoot> g;
 
     public static BookRankListFragment a(String string, String string2) {
         BookRankListFragment bookRankListFragment = new BookRankListFragment();
@@ -50,8 +56,29 @@ public class BookRankListFragment extends Fragment {
     }
 
     private void a() {
-        this.g = new aR(this, 0);
-        this.g.b(new String[0]);
+        this.g = new com.clilystudio.netbook.a_pack.e<String, Void, BookRankDetailRoot>(){
+
+            @Override
+            protected BookRankDetailRoot doInBackground(String... params) {
+                com.clilystudio.netbook.api.b.a();
+                return com.clilystudio.netbook.api.b.b().z(BookRankListFragment.this.getArguments().getString("book_list_id"));
+            }
+
+            @Override
+            protected void onPostExecute(BookRankDetailRoot bookRankDetailRoot) {
+                super.onPostExecute(bookRankDetailRoot);
+                BookRankListFragment.b(BookRankListFragment.this).setVisibility(View.GONE);
+                if (bookRankDetailRoot != null && bookRankDetailRoot.getRanking() != null) {
+                    BookRankListFragment.this.b(1);
+                    BookRankListFragment.this.f.addAll(Arrays.asList(bookRankDetailRoot.getRanking().getBooks()));
+                    BookRankListFragment.this.a.a((Collection) BookRankListFragment.c(BookRankListFragment.this));
+                    return;
+                }
+                BookRankListFragment.this.b(2);
+                com.clilystudio.netbook.util.e.a((Activity) BookRankListFragment.this.getActivity(), (int) R.string.load_failed_tips);
+            }
+        };
+        this.g.b();
     }
 
     protected final void a(int n) {

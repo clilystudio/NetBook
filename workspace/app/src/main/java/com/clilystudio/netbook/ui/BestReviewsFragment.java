@@ -11,8 +11,10 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.clilystudio.netbook.R;
+import com.clilystudio.netbook.a_pack.e;
 import com.clilystudio.netbook.model.Author;
 import com.clilystudio.netbook.model.BookReview;
+import com.clilystudio.netbook.model.BookReviewRoot;
 import com.clilystudio.netbook.ui.post.AddReviewRatingActivity;
 import com.clilystudio.netbook.ui.post.BookPostTabActivity;
 import com.clilystudio.netbook.ui.post.ReviewActivity;
@@ -96,7 +98,7 @@ public class BestReviewsFragment extends Fragment {
                 Intent intent = new Intent(bestReviewsFragment.getActivity(), AddReviewRatingActivity.class);
                 intent.putExtra("bookReviewBookId", string);
                 bestReviewsFragment.startActivity(intent);
-             }
+            }
         });
     }
 
@@ -119,9 +121,53 @@ public class BestReviewsFragment extends Fragment {
     @Override
     public void onActivityCreated(Bundle bundle) {
         super.onActivityCreated(bundle);
-        ah ah2 = new ah(this, 0);
-        Object[] arrobject = new String[]{this.getArguments().getString("args_book_id")};
-        ah2.b(arrobject);
+        e<String, Void, BookReview[]> ah2 = new e<String, Void, BookReview[]>() {
+
+            @Override
+            protected BookReview[] doInBackground(String... params) {
+                com.clilystudio.netbook.api.b.a();
+                BookReviewRoot bookReviewRoot = com.clilystudio.netbook.api.b.b().C(params[0]);
+                if (bookReviewRoot == null) return null;
+                if (!bookReviewRoot.ok) return null;
+                if (bookReviewRoot.reviews == null) return null;
+                return bookReviewRoot.reviews;
+            }
+
+            @Override
+            protected void onPostExecute(BookReview[] bookReviews) {
+                int n = 2;
+                super.onPostExecute(bookReviews);
+                if (getActivity() == null || bookReviews == null) {
+                    return;
+                }
+                View view = BestReviewsFragment.a(BestReviewsFragment.this).findViewById(R.id.best_reviews_root);
+                view.setVisibility(View.VISIBLE);
+                int n2 = bookReviews.length;
+                if (n2 == 0) {
+                    view.findViewById(R.id.best_reviews_top).setVisibility(View.GONE);
+                    view.findViewById(R.id.best_reviews_top_empty).setVisibility(View.VISIBLE);
+                    BestReviewsFragment.b(BestReviewsFragment.this);
+                    return;
+                }
+                view.findViewById(R.id.best_reviews_top).setVisibility(View.VISIBLE);
+                view.findViewById(R.id.best_reviews_top_empty).setVisibility(View.GONE);
+                BestReviewsFragment.c(BestReviewsFragment.this);
+                if (n2 <= n) {
+                    n = n2;
+                }
+                int n3 = 0;
+                while (n3 < n) {
+                    BookReview bookReview = bookReviews[n3];
+                    if (n3 == 1) {
+                        BestReviewsFragment.d(BestReviewsFragment.this);
+                    }
+                    BestReviewsFragment.a(BestReviewsFragment.this, bookReview);
+                    ++n3;
+                }
+
+            }
+        };
+        ah2.b(this.getArguments().getString("args_book_id"));
     }
 
     @Override
@@ -132,6 +178,7 @@ public class BestReviewsFragment extends Fragment {
         this.c = a.r(this.a.getContext(), "community_user_gender_icon_toggle");
         return this.a;
     }
+
     public static class ViewHolder {
         SmartImageView avatar;
         ImageView avatarVerify;
@@ -146,14 +193,15 @@ public class BestReviewsFragment extends Fragment {
 
         ViewHolder(BestReviewsFragment bestReviewsFragment, View view) {
             this.avatar = (SmartImageView) view.findViewById(R.id.avatar);
-            this.user = (TextView) view. findViewById(R.id.user);
-            this.lv = (TextView)  view.findViewById(R.id.lv);
-            this.time = (TextView)  view.findViewById(R.id.time);
-            this.title = (TextView)  view.findViewById(R.id.title);
-            this.content = (TextView)  view.findViewById(R.id.content);
-            this.helpfulCount = (TextView)  view.findViewById(R.id.helpful_count);
-            this.avatarVerify = (ImageView) view. findViewById(R.id.avatar_verify);
-            this.rating = (RatingView)  view.findViewById(R.id.rating);
-            this.container =  view.findViewById(R.id.list_item_book_review_container);
+            this.user = (TextView) view.findViewById(R.id.user);
+            this.lv = (TextView) view.findViewById(R.id.lv);
+            this.time = (TextView) view.findViewById(R.id.time);
+            this.title = (TextView) view.findViewById(R.id.title);
+            this.content = (TextView) view.findViewById(R.id.content);
+            this.helpfulCount = (TextView) view.findViewById(R.id.helpful_count);
+            this.avatarVerify = (ImageView) view.findViewById(R.id.avatar_verify);
+            this.rating = (RatingView) view.findViewById(R.id.rating);
+            this.container = view.findViewById(R.id.list_item_book_review_container);
         }
-    }}
+    }
+}
