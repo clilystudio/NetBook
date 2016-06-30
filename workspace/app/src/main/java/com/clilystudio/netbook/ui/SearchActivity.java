@@ -1,6 +1,5 @@
 package com.clilystudio.netbook.ui;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -43,6 +42,7 @@ import com.xiaomi.mistatistic.sdk.MiStatInterfaceImpl;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Locale;
 
 
 public class SearchActivity extends BaseActivity implements View.OnClickListener {
@@ -208,102 +208,78 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
      */
     private void a(boolean bl, final boolean bl2) {
         this.i.setVisibility(View.GONE);
-        String string = this.b = this.e.getText().toString().trim();
-        int n = -1;
-        switch (string.hashCode()) {
-            default: {
-                break;
-            }
-            case 229825679: {
-                if (!string.equals("//openwebview")) break;
-                n = 0;
-            }
+        this.p = true;
+        String string2 = this.b;
+        if (this.x.contains(string2)) {
+            this.x.remove(string2);
         }
-        Intent intent = null;
-        switch (n) {
-            case 0: {
-                intent = new Intent(this, SecretOpWebActivity.class);
-            }
+        if (this.x.size() >= 6) {
+            this.x.remove(-1 + this.x.size());
         }
-        if (this.b != null && intent != null) {
-            this.startActivity(intent);
-            return;
-        } else {
-            this.p = true;
-            String string2 = this.b;
-            if (this.x.contains(string2)) {
-                this.x.remove(string2);
-            }
-            if (this.x.size() >= 6) {
-                this.x.remove(-1 + this.x.size());
-            }
-            this.x.add(0, string2);
-            this.w.notifyDataSetChanged();
-            com.clilystudio.netbook.hpay100.a.a.a(this.x, com.clilystudio.netbook.c.e, "search_history.txt");
-            this.a(true);
-            this.g();
-            if (com.clilystudio.netbook.hpay100.a.a.t(this)) {
-                this.a(0);
-                final com.clilystudio.netbook.a_pack.e<String, Void, List<BookSummary>> bR2 = new com.clilystudio.netbook.a_pack.e<String, Void, List<BookSummary>>() {
+        this.x.add(0, string2);
+        this.w.notifyDataSetChanged();
+        com.clilystudio.netbook.hpay100.a.a.a(this.x, com.clilystudio.netbook.c.e, "search_history.txt");
+        this.a(true);
+        this.g();
+        if (com.clilystudio.netbook.hpay100.a.a.t(this)) {
+            this.a(0);
+            final com.clilystudio.netbook.a_pack.e<String, Void, List<BookSummary>> bR2 = new com.clilystudio.netbook.a_pack.e<String, Void, List<BookSummary>>() {
 
-                    @Override
-                    protected List<BookSummary> doInBackground(String... params) {
-                        if (SearchActivity.i(SearchActivity.this) == 1) {
-                            List<BookSummary> list = com.clilystudio.netbook.api.b.b().n(params[0]);
-                            SearchPromRoot searchPromRoot = com.clilystudio.netbook.api.b.b().q(params[0]);
-                            if (searchPromRoot == null) return list;
-                            if (searchPromRoot.getProm() == null) return list;
-                            list.add(0, searchPromRoot.getProm());
-                            return list;
-                        }
-                        SearchResultRoot searchResultRoot = com.clilystudio.netbook.api.b.b().p(params[0]);
-                        if (searchResultRoot == null) return null;
-                        return searchResultRoot.getBooks();
+                @Override
+                protected List<BookSummary> doInBackground(String... params) {
+                    if (SearchActivity.i(SearchActivity.this) == 1) {
+                        List<BookSummary> list = com.clilystudio.netbook.api.b.b().n(params[0]);
+                        SearchPromRoot searchPromRoot = com.clilystudio.netbook.api.b.b().q(params[0]);
+                        if (searchPromRoot == null) return list;
+                        if (searchPromRoot.getProm() == null) return list;
+                        list.add(0, searchPromRoot.getProm());
+                        return list;
                     }
+                    SearchResultRoot searchResultRoot = com.clilystudio.netbook.api.b.b().p(params[0]);
+                    if (searchResultRoot == null) return null;
+                    return searchResultRoot.getBooks();
+                }
 
-                    @Override
-                    protected void onPreExecute() {
-                        super.onPreExecute();
-                        if (bl2) {
-                            SearchActivity.b(SearchActivity.this, SearchActivity.f(SearchActivity.this).getText().toString());
-                        }
+                @Override
+                protected void onPreExecute() {
+                    super.onPreExecute();
+                    if (bl2) {
+                        SearchActivity.b(SearchActivity.this, SearchActivity.f(SearchActivity.this).getText().toString());
                     }
+                }
 
-                    @Override
-                    protected void onPostExecute(List<BookSummary> bookSummaries) {
-                        super.onPostExecute(bookSummaries);
-                        SearchActivity.a(SearchActivity.this, true);
-                        if (bookSummaries == null) {
-                            SearchActivity.a(SearchActivity.this, 2);
-                            com.clilystudio.netbook.util.e.a(SearchActivity.this, R.string.search_failed);
-                            return;
-                        }
-                        SearchActivity.b(SearchActivity.this).a(bookSummaries);
-                        new Handler().post(new Runnable() {
-                            @Override
-                            public void run() {
-                                if (SearchActivity.a(SearchActivity.this) != null) {
-                                    SearchActivity.a(SearchActivity.this).setSelectionAfterHeaderView();
-                                    SearchActivity.a(SearchActivity.this).setSelection(0);
-                                }
+                @Override
+                protected void onPostExecute(List<BookSummary> bookSummaries) {
+                    super.onPostExecute(bookSummaries);
+                    SearchActivity.a(SearchActivity.this, true);
+                    if (bookSummaries == null) {
+                        SearchActivity.a(SearchActivity.this, 2);
+                        com.clilystudio.netbook.util.e.a(SearchActivity.this, R.string.search_failed);
+                        return;
+                    }
+                    SearchActivity.b(SearchActivity.this).a(bookSummaries);
+                    new Handler().post(new Runnable() {
+                        @Override
+                        public void run() {
+                            if (SearchActivity.a(SearchActivity.this) != null) {
+                                SearchActivity.a(SearchActivity.this).setSelectionAfterHeaderView();
+                                SearchActivity.a(SearchActivity.this).setSelection(0);
                             }
-                        });
-                        if (bookSummaries.size() > 0) {
-                            SearchActivity.a(SearchActivity.this, 1);
-                        } else {
-                            SearchActivity.a(SearchActivity.this, 3);
                         }
+                    });
+                    if (bookSummaries.size() > 0) {
+                        SearchActivity.a(SearchActivity.this, 1);
+                    } else {
+                        SearchActivity.a(SearchActivity.this, 3);
                     }
-                };
-                bR2.b(this.b);
-            } else {
-                com.clilystudio.netbook.util.e.a(this, R.string.network_unconnected);
-            }
-            if (!bl || this.m == null) return;
-            {
-                this.m.setVisibility(View.VISIBLE);
-                return;
-            }
+                }
+            };
+            bR2.b(this.b);
+        } else {
+            com.clilystudio.netbook.util.e.a(this, R.string.network_unconnected);
+        }
+        if (bl && this.m != null) {
+            this.m.setVisibility(View.VISIBLE);
         }
     }
 
@@ -385,11 +361,12 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
             this.b = intent.getStringExtra("keyword");
         }
         LayoutInflater layoutInflater = LayoutInflater.from(this);
-        View view = layoutInflater.inflate(R.layout.ab_search, null, false);
+        View view = layoutInflater.inflate(R.layout.ab_search, (ViewGroup) getWindow().getDecorView(), false);
         view.findViewById(R.id.back).setOnClickListener(this);
         this.setCustomActionBar(view);
         final SearchPromptAdapter searchPromptAdapter = new SearchPromptAdapter(this);
         this.i = (SearchFixListView) this.findViewById(R.id.search_prompt_list);
+        assert this.i != null;
         this.i.setAdapter(searchPromptAdapter);
         this.i.setOnItemClickListener(searchPromptAdapter);
         this.e = (SearchEditText) view.findViewById(R.id.search_input_edit);
@@ -405,10 +382,11 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
         this.j = this.findViewById(R.id.pb_loading);
         this.k = this.findViewById(R.id.search_empty_layout);
         View view2 = this.findViewById(R.id.search_empty_add);
+        assert view2 != null;
+        view2.setOnClickListener(this);
         this.n = this.findViewById(R.id.focusable);
         this.f.setOnClickListener(this);
         this.g.setOnClickListener(this);
-        view2.setOnClickListener(this);
         this.f.setEnabled(false);
         this.h = (ListView) this.findViewById(R.id.search_list);
         if (this.c == 1) {
@@ -423,7 +401,7 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
                 this.a(0, CoverView.class).setImageUrl(bookSummary.getFullCover(), R.drawable.cover_default);
                 this.a(1, bookSummary.getTitle());
                 Object[] arrobject = new Object[]{bookSummary.getLatelyFollower(), Float.valueOf(bookSummary.getRetentionRatio()), bookSummary.getAuthor()};
-                this.a(2, String.format("%d人在追  |  %.1f%%读者留存  |  %s著", arrobject));
+                this.a(2, String.format(Locale.CHINA, "%d人在追  |  %.1f%%读者留存  |  %s著", arrobject));
                 this.a(3, TextUtils.isEmpty(bookSummary.getPromLink()));
             }
 
@@ -502,15 +480,16 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
                 MiStatInterface.recordCountEvent("search_history_clear", null);
             }
         });
-        ListView v = (ListView) this.findViewById(R.id.search_history_list);
         this.x = com.clilystudio.netbook.hpay100.a.a.k(com.clilystudio.netbook.c.e, "search_history.txt");
         if (this.x == null) {
-            this.x = new ArrayList<String>();
+            this.x = new ArrayList<>();
         }
         if (this.x.size() == 0) {
             this.a(false);
         }
         this.w = new SearchHistoryAdapter(this);
+        ListView v = (ListView) this.findViewById(R.id.search_history_list);
+        assert v != null;
         v.setAdapter(this.w);
         v.setOnItemClickListener(this.w);
         if (this.c != 1) {
@@ -524,7 +503,7 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
         this.r = (AutoFlowView) this.findViewById(R.id.afv_hots);
         this.s = (TextView) this.findViewById(R.id.btn_change);
         if (com.clilystudio.netbook.hpay100.a.a.k(com.clilystudio.netbook.c.e, "search_hotword.txt") != null && com.clilystudio.netbook.hpay100.a.a.a(this, "search_hot_words_date", 0) != 0) {
-            List list = com.clilystudio.netbook.hpay100.a.a.k(com.clilystudio.netbook.c.e, "search_hotword.txt");
+            List<AutoFlowView.Word> list = com.clilystudio.netbook.hpay100.a.a.k(com.clilystudio.netbook.c.e, "search_hotword.txt");
             this.q.setVisibility(View.VISIBLE);
             this.r.setWords(list);
             this.r.setOnItemClickListener(new i() {
@@ -554,7 +533,7 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
             @Override
             protected void onPostExecute(HotKeywordResult hotKeywordResult) {
                 if (hotKeywordResult != null) {
-                    ArrayList<AutoFlowView.Word> arrayList = new ArrayList<AutoFlowView.Word>();
+                    ArrayList<AutoFlowView.Word> arrayList = new ArrayList<>();
                     for (String string : hotKeywordResult.getHotWords()) {
                         AutoFlowView.Word word = new AutoFlowView.Word();
                         word.show = 0;
@@ -601,7 +580,7 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
 
         public SearchPromptAdapter(SearchActivity searchActivity) {
             this.a = searchActivity;
-            this.b = new ArrayList<String>();
+            this.b = new ArrayList<>();
         }
 
         @Override
@@ -612,24 +591,17 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
         @Override
         public final Filter getFilter() {
             if (this.c == null) {
-                this.c = new Filter(){
+                this.c = new Filter() {
 
                     @Override
                     protected FilterResults performFiltering(CharSequence constraint) {
                         String string = SearchActivity.f(SearchActivity.this).getText().toString();
-                        ArrayList<String> arrayList = new ArrayList<String>();
+                        ArrayList<String> arrayList = new ArrayList<>();
                         arrayList.add(string);
                         arrayList.add(constraint.toString());
                         if (!TextUtils.isEmpty(string)) {
-                            AutoCompleteRoot autoCompleteRoot;
-                            try {
-                                AutoCompleteRoot autoCompleteRoot2;
-                                com.clilystudio.netbook.api.b.a();
-                                autoCompleteRoot = autoCompleteRoot2 = com.clilystudio.netbook.api.b.b().N(string);
-                            } catch (Exception var7_7) {
-                                var7_7.printStackTrace();
-                                autoCompleteRoot = null;
-                            }
+                            com.clilystudio.netbook.api.b.a();
+                            AutoCompleteRoot autoCompleteRoot = com.clilystudio.netbook.api.b.b().N(string);
                             if (autoCompleteRoot != null && autoCompleteRoot.getKeywords() != null) {
                                 arrayList.addAll(0, autoCompleteRoot.getKeywords());
                             }
@@ -642,17 +614,17 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
 
                     @Override
                     protected void publishResults(CharSequence constraint, FilterResults results) {
-                        List list2;
+                        List<String> list2;
                         int n;
-                        List list = (List) results.values;
+                        List<String> list = (List<String>) results.values;
                         if (list == null || (n = list.size()) < 2) {
                             return;
                         }
-                        String string = (String) list.get(n - 2);
+                        String string = list.get(n - 2);
                         if (n > 2 && !SearchActivity.c(SearchActivity.this, string)) {
                             list2 = list.subList(0, n - 2);
                         } else {
-                            list2 = new ArrayList();
+                            list2 = new ArrayList<>();
                         }
                         SearchPromptAdapter.this.b = list2;
                         if (SearchPromptAdapter.this.b.isEmpty()) {
@@ -662,7 +634,7 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
                         }
                         SearchFixListView searchFixListView = SearchActivity.k(SearchActivity.this);
                         searchFixListView.setVisibility(SearchPromptAdapter.this.b.isEmpty() ? View.GONE : View.VISIBLE);
-                   }
+                    }
                 };
             }
             return this.c;
@@ -683,10 +655,11 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
 
         @Override
         public final View getView(int n, View view, ViewGroup viewGroup) {
-            View view2 = this.a.getLayoutInflater().inflate(R.layout.list_item_search_prompt, viewGroup, false);
-            SearchPromptAdapter.ViewHolder searchActivity$SearchPromptAdapter$ViewHolder = new SearchPromptAdapter.ViewHolder(this, view2);
+            LayoutInflater layoutInflater = this.a.getLayoutInflater();
+            View view2 = layoutInflater.inflate(R.layout.list_item_search_prompt, viewGroup, false);
+            SearchPromptAdapter.ViewHolder viewHolder = new SearchPromptAdapter.ViewHolder(view2);
             if (n >= 0 && n < this.b.size()) {
-                searchActivity$SearchPromptAdapter$ViewHolder.label.setText(this.b.get(n));
+                viewHolder.label.setText(this.b.get(n));
             }
             return view2;
         }
@@ -704,7 +677,7 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
         class ViewHolder {
             TextView label;
 
-            ViewHolder(SearchActivity.SearchPromptAdapter searchPromptAdapter, View view) {
+            ViewHolder(View view) {
                 this.label = (TextView) view.findViewById(R.id.search_prompt_list_item);
             }
         }
@@ -735,9 +708,9 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
         @Override
         public final View getView(int n, View view, ViewGroup viewGroup) {
             View view2 = this.a.getLayoutInflater().inflate(R.layout.list_item_search_history, viewGroup, false);
-            SearchHistoryAdapter$ViewHolder searchActivity$SearchHistoryAdapter$ViewHolder = new SearchHistoryAdapter$ViewHolder(this, view2);
+            ViewHolder viewHolder = new ViewHolder(view2);
             if (n >= 0 && n < SearchActivity.l(this.a).size()) {
-                searchActivity$SearchHistoryAdapter$ViewHolder.word.setText((CharSequence) SearchActivity.l(this.a).get(n));
+                viewHolder.word.setText((CharSequence) SearchActivity.l(this.a).get(n));
             }
             return view2;
         }
@@ -750,10 +723,10 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
             }
         }
 
-        class SearchHistoryAdapter$ViewHolder {
+        class ViewHolder {
             TextView word;
 
-            SearchHistoryAdapter$ViewHolder(SearchActivity.SearchHistoryAdapter searchHistoryAdapter, View view) {
+            ViewHolder(View view) {
                 this.word = (TextView) view.findViewById(R.id.search_history_item);
             }
         }

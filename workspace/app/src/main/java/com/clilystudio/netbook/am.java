@@ -81,7 +81,7 @@ public class am {
 
     private static String B(Context context) {
         try {
-            String string = context.getPackageManager().getPackageInfo((String)context.getPackageName(), (int)16).versionName;
+            String string = context.getPackageManager().getPackageInfo(context.getPackageName(), 16).versionName;
             return string;
         }
         catch (Exception var1_2) {
@@ -319,10 +319,7 @@ public class am {
     }
 
     public static boolean a(AsyncTask asyncTask) {
-        if (asyncTask == null || asyncTask.getStatus() == AsyncTask.Status.FINISHED || asyncTask.isCancelled()) {
-            return true;
-        }
-        return false;
+        return asyncTask == null || asyncTask.getStatus() == AsyncTask.Status.FINISHED || asyncTask.isCancelled();
     }
 
     /*
@@ -347,10 +344,7 @@ public class am {
 
     public static boolean a(String string, String string2) {
         if (string == null) {
-            if (string2 == null) {
-                return true;
-            }
-            return false;
+            return string2 == null;
         }
         return string.equals(string2);
     }
@@ -760,10 +754,7 @@ public class am {
             string = null;
         }
         if (TextUtils.isEmpty(string)) return true;
-        if (context.getPackageName().equals(string)) {
-            return true;
-        }
-        return false;
+        return context.getPackageName().equals(string);
     }
 
     public static int f(Context context) {
@@ -790,10 +781,7 @@ public class am {
     }
 
     public static boolean f() {
-        if (BookReadRecord.getAll().size() >= 300) {
-            return true;
-        }
-        return false;
+        return BookReadRecord.getAll().size() >= 300;
     }
 
     /*
@@ -817,10 +805,7 @@ public class am {
     }
 
     public static boolean g() {
-        if (am.e() != null) {
-            return true;
-        }
-        return false;
+        return am.e() != null;
     }
 
     public static String h() {
@@ -838,10 +823,7 @@ public class am {
 
     public static boolean h(String string) {
         List<String> list = MyApplication.a().f();
-        if (list != null && list.contains(string)) {
-            return true;
-        }
-        return false;
+        return list != null && list.contains(string);
     }
 
     private static String i() {
@@ -915,7 +897,7 @@ public class am {
     }
 
     public static String n(Context context) {
-        String string = (String)am.c(context, "UMENG_CHANNEL");
+        String string = am.c(context, "UMENG_CHANNEL");
         if (string != null) {
             return string;
         }
@@ -924,10 +906,7 @@ public class am {
 
     public static boolean o(Context context) {
         long l2 = a.c(context, "PREF_FIRST_LAUNCH_TIME", 0);
-        if (Calendar.getInstance().getTimeInMillis() - l2 >= 259200000) {
-            return true;
-        }
-        return false;
+        return Calendar.getInstance().getTimeInMillis() - l2 >= 259200000;
     }
 
     public static boolean p(Context context) {
@@ -939,10 +918,7 @@ public class am {
     }
 
     public static boolean q(Context context) {
-        if (am.o(context) && am.r(context)) {
-            return true;
-        }
-        return false;
+        return am.o(context) && am.r(context);
     }
 
     /*
@@ -973,7 +949,7 @@ public class am {
         String string;
         String string2;
         block2 : {
-            string = am.C((Context)context).packageName;
+            string = am.C(context).packageName;
             int n = Process.myPid();
             for (ActivityManager.RunningAppProcessInfo runningAppProcessInfo : ((ActivityManager)context.getSystemService("activity")).getRunningAppProcesses()) {
                 if (runningAppProcessInfo.pid != n) continue;

@@ -4,10 +4,8 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -16,14 +14,11 @@ import android.widget.TextView;
 import com.activeandroid.ActiveAndroid;
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.am;
-import com.clilystudio.netbook.db.BookFile;
 import com.clilystudio.netbook.model.SplashAdvert;
-import com.clilystudio.netbook.model.TxtFileObject;
 import com.clilystudio.netbook.ui.home.HomeActivity;
-import com.clilystudio.netbook.util.InsideLinkIntent;
 import com.clilystudio.netbook.util.e;
+import com.xiaomi.mistatistic.sdk.MiStatInterfaceImpl;
 
-import java.io.File;
 import java.util.Calendar;
 
 public class SplashActivity extends Activity {
@@ -36,7 +31,7 @@ public class SplashActivity extends Activity {
 
     static /* synthetic */ void a(SplashActivity splashActivity, String string) {
         // 首页推广
-     }
+    }
 
     static /* synthetic */ boolean a(SplashActivity splashActivity) {
         return splashActivity.e;
@@ -56,7 +51,7 @@ public class SplashActivity extends Activity {
     }
 
     private void g() {
-         this.b();
+        this.b();
     }
 
     /*
@@ -91,7 +86,7 @@ public class SplashActivity extends Activity {
     }
 
     private void i() {
-        ((TextView) this.findViewById(R.id.splash_ad_skip)).setOnClickListener(new View.OnClickListener() {
+        this.findViewById(R.id.splash_ad_skip).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 SplashActivity.this.d();
@@ -128,9 +123,9 @@ public class SplashActivity extends Activity {
      */
     public final void b() {
         ImageView imageView = (ImageView) this.findViewById(R.id.splash_bottom);
-        this.b = !am.o((Context) this) && imageView.getDrawable() != null ? 1200 : 0;
+        this.b = !am.o(this) && imageView.getDrawable() != null ? 1200 : 0;
         this.f();
-        a.m(this, null);
+        com.clilystudio.netbook.hpay100.a.a.m(this, null);
     }
 
     public final void c() {
@@ -146,7 +141,7 @@ public class SplashActivity extends Activity {
         if (this.e) {
             return;
         }
-        if (!am.g() && !am.q((Context) this)) {
+        if (!am.g() && !am.q(this)) {
             intent = new Intent(this, IntroActivity.class);
         } else {
             intent = new Intent(this, HomeActivity.class);
@@ -162,11 +157,11 @@ public class SplashActivity extends Activity {
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         this.setContentView(R.layout.splash);
-        a.a(this.getWindow().getDecorView());
+        com.clilystudio.netbook.hpay100.a.a.a(this.getWindow().getDecorView());
         ActiveAndroid.initialize(this);
-        if (am.q((Context) this)) {
+        if (am.q(this)) {
             double d2;
-            float f2 = a.v(this, "rate_zssq_splash_ad");
+            float f2 = com.clilystudio.netbook.hpay100.a.a.v(this, "rate_zssq_splash_ad");
             if ((double) f2 <= (d2 = Math.random()) || !this.h()) {
                 this.g();
             }
@@ -174,10 +169,10 @@ public class SplashActivity extends Activity {
             this.b();
         }
         if (am.g()) {
-            b.a(this, "user_register", "YES");
+            MiStatInterfaceImpl.recordCountEvent("user_register", "YES");
             return;
         }
-        b.a(this, "user_register", "NO");
+        MiStatInterfaceImpl.recordCountEvent("user_register", "NO");
     }
 
     @Override
@@ -189,13 +184,9 @@ public class SplashActivity extends Activity {
     @Override
     public void onPause() {
         super.onPause();
-        b.a(this);
+        MiStatInterfaceImpl.recordPageEnd();
     }
 
-    /*
-     * Enabled force condition propagation
-     * Lifted jumps to return sites
-     */
     @Override
     protected void onRestart() {
         super.onRestart();
@@ -216,18 +207,16 @@ public class SplashActivity extends Activity {
         String string;
         Calendar calendar;
         super.onResume();
-        b.b(this);
-        com.xiaomi.mistatistic.sdk.b.a();
-        if (!am.g() || (n = 10000 * (calendar = Calendar.getInstance()).get(1) + 100 * calendar.get(2) + calendar.get(5)) <= a.a((Context) this, "KEY_OPEN_TIME", 0) || (string = am.e().getUser().getGender()) == null) {
+        MiStatInterfaceImpl.recordPageStart(this, null);
+        MiStatInterfaceImpl.enableLog();
+        if (!am.g() || (n = 10000 * (calendar = Calendar.getInstance()).get(Calendar.YEAR) + 100 * calendar.get(Calendar.MONTH) + calendar.get(Calendar.DATE)) <= com.clilystudio.netbook.hpay100.a.a.a(this, "KEY_OPEN_TIME", 0) || (string = am.e().getUser().getGender()) == null) {
             return;
         }
         if (string.equals("male")) {
-            com.xiaomi.mistatistic.sdk.b.a("user_gender", "male");
-            b.a(this, "user_gender", "male");
+            MiStatInterfaceImpl.recordCountEvent("user_gender", "male");
         } else if (string.equals("female")) {
-            com.xiaomi.mistatistic.sdk.b.a("user_gender", "female");
-            b.a(this, "user_gender", "female");
+            MiStatInterfaceImpl.recordCountEvent("user_gender", "female");
         }
-        a.b((Context) this, "KEY_OPEN_TIME", n);
+        com.clilystudio.netbook.hpay100.a.a.b(this, "KEY_OPEN_TIME", n);
     }
 }

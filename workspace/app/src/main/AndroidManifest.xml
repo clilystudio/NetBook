@@ -300,15 +300,6 @@
             android:screenOrientation="portrait"
             android:theme="@style/ReaderTheme"/>
         <activity
-            android:name="com.clilystudio.netbook.reader.txt.ReaderTxtActivity"
-            android:configChanges="orientation"
-            android:theme="@style/ReaderTheme">
-            <intent-filter>
-                <action android:name="com.clilystudio.netbook.ACTION_READ_TXT"/>
-                <category android:name="android.intent.category.DEFAULT"/>
-            </intent-filter>
-        </activity>
-        <activity
             android:name="com.clilystudio.netbook.reader.ReaderWebActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ReaderTheme"/>
@@ -348,9 +339,6 @@
         <!--<service android:exported="false" android:name="com.qq.e.comm.DownloadService"/>-->
         <!--<activity android:configChanges="keyboard|keyboardHidden|orientation|screenSize" android:name="com.qq.e.ads.ADActivity"/>-->
         <!--<activity android:configChanges="keyboardHidden|orientation" android:name="cn.sharesdk.framework.ShareSDKUIShell" android:screenOrientation="portrait" android:theme="@android:style/Theme.Translucent.NoTitleBar" android:windowSoftInputMode="stateHidden|adjustResize"/>-->
-        <activity
-            android:name="com.clilystudio.netbook.reader.txt.ScanTxtFileActivity"
-            android:screenOrientation="portrait"/>
         <activity
             android:name="com.clilystudio.netbook.reader.random.ReaderRandomEntranceActivity"
             android:screenOrientation="portrait"/>
@@ -517,7 +505,6 @@
             android:value="com.clilystudio.netbook"/>
 
         <activity android:name="com.clilystudio.netbook.ui.BookRankMainActivity"/>
-        <activity android:name="com.clilystudio.netbook.ui.SecretOpWebActivity"/>
 
         <meta-data
             android:name="cocosplay_mode"

@@ -248,7 +248,7 @@ public final class o {
         if (a.a((Context) this.b, "user_account_balance", 0) > this.d.a().getCurrency() || this.t) {
             checkBox.setVisibility(View.VISIBLE);
             checkBox.setChecked(a.a((Context) this.b, "auto_buy_chapter" + com.clilystudio.netbook.util.I.a, false));
-            this.u.setText("\u8d2d\u4e70\uff0c\u7ee7\u7eed\u9605\u8bfb");
+            this.u.setText("购买，继续阅读");
             this.u.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -291,7 +291,7 @@ public final class o {
             });
         } else {
             checkBox.setVisibility(View.INVISIBLE);
-            this.u.setText("\u4f59\u989d\u4e0d\u8db3\uff0c\u8bf7\u5145\u503c");
+            this.u.setText("余额不足，请充值");
             this.u.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -382,8 +382,8 @@ public final class o {
             case -5: {
                 this.p();
                 this.n.setVisibility(View.GONE);
-                this.l.setText("\u672c\u6765\u6e90\u6682\u65e0\u8be5\u5c0f\u8bf4");
-                this.m.setText("\u8bf7\u5207\u6362\u5230\u5176\u4ed6\u6765\u6e90");
+                this.l.setText("本来源暂无该小说");
+                this.m.setText("请切换到其他来源");
                 this.b(R.drawable.ic_reader_connection_error_network_normal);
                 this.u();
                 this.a(false);
@@ -399,14 +399,14 @@ public final class o {
                 this.t();
                 this.a(false);
                 if (a.t(this.b)) {
-                    this.l.setText("\u8fde\u63a5\u8d85\u65f6\uff0c\u518d\u8bd5\u8bd5\uff1f");
-                    this.m.setText("\u8bf7\u5237\u65b0\u91cd\u8bd5\u6216\u5207\u6362\u6765\u6e90");
+                    this.l.setText("连接超时，再试试？");
+                    this.m.setText("请刷新重试或切换来源");
                     this.b(R.drawable.ic_reader_connection_error_network_normal);
                     this.u();
                     return;
                 }
-                this.l.setText("\u6ca1\u7f51\uff0c\u8fde\u4e0d\u4e0a\u5440");
-                this.m.setText("\u8bf7\u68c0\u67e5\u7f51\u7edc\u540e\u91cd\u8bd5");
+                this.l.setText("没网，连不上呀");
+                this.m.setText("请检查网络后重试");
                 this.b(R.drawable.ic_reader_connection_error_no_network);
                 this.o.setVisibility(View.GONE);
                 this.n.setText(R.string.retry);
@@ -415,8 +415,8 @@ public final class o {
             case -3: {
                 this.p();
                 this.n.setVisibility(View.VISIBLE);
-                this.l.setText("\u672c\u7ae0\u6682\u65e0\u6587\u5b57");
-                this.m.setText("\u672a\u627e\u5230\u672c\u7ae0\u7684\u6587\u5b57\u5185\u5bb9");
+                this.l.setText("本章暂无文字");
+                this.m.setText("未找到本章的文字内容");
                 this.b(R.drawable.ic_reader_connection_error_network_normal);
                 this.t();
                 this.u();
@@ -425,7 +425,7 @@ public final class o {
             }
             case -2: {
                 this.p();
-                this.l.setText("\u6b64\u6765\u6e90\u5c1a\u672a\u66f4\u65b0\uff0c\u8bf7\u7a0d\u540e\u518d\u8bd5");
+                this.l.setText("此来源尚未更新，请稍后再试");
                 this.m.setText("");
                 this.b(R.drawable.ic_reader_error_no_content);
                 this.u();
@@ -435,8 +435,8 @@ public final class o {
             case -4: {
                 this.p();
                 this.n.setVisibility(View.VISIBLE);
-                this.l.setText("\u8fde\u63a5\u8d85\u65f6\uff0c\u518d\u8bd5\u8bd5\uff1f");
-                this.m.setText("\u8bf7\u5237\u65b0\u91cd\u8bd5\u6216\u5207\u6362\u6765\u6e90");
+                this.l.setText("连接超时，再试试？");
+                this.m.setText("请刷新重试或切换来源");
                 this.b(R.drawable.ic_reader_connection_error_network_normal);
                 this.n.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -508,7 +508,7 @@ public final class o {
         if (!this.q()) return;
         if (!this.a(view)) return;
         if (am.r(this.b)) return;
-        com.clilystudio.netbook.util.e.a(this.b, "\u5df2\u4e3a\u60a8\u81ea\u52a8\u514d\u9664\u5e7f\u544a");
+        com.clilystudio.netbook.util.e.a(this.b, "已为您自动免除广告");
         a.b((Context) this.b, "remove_ad_toast_showed" + com.clilystudio.netbook.util.I.a, true);
     }
 
@@ -537,7 +537,7 @@ public final class o {
 
     private void u() {
         this.o.setVisibility(View.VISIBLE);
-        this.o.setText("\u66f4\u6362\u6765\u6e90");
+        this.o.setText("更换来源");
         this.o.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

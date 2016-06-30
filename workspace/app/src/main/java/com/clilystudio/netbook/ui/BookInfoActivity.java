@@ -28,7 +28,6 @@ import com.clilystudio.netbook.event.h;
 import com.clilystudio.netbook.event.s;
 import com.clilystudio.netbook.model.BookInfo;
 import com.clilystudio.netbook.reader.dl.a;
-import com.clilystudio.netbook.ui.post.BookPostTabActivity;
 import com.clilystudio.netbook.ui.user.AuthLoginActivity;
 import com.clilystudio.netbook.util.I;
 import com.clilystudio.netbook.util.m;
@@ -36,7 +35,6 @@ import com.clilystudio.netbook.util.t;
 import com.clilystudio.netbook.widget.CoverView;
 import com.clilystudio.netbook.widget.TagsLayout;
 import com.squareup.otto.Subscribe;
-import com.umeng.a.b;
 import com.xiaomi.mistatistic.sdk.MiStatInterface;
 
 import java.util.Date;
@@ -258,7 +256,7 @@ public class BookInfoActivity extends BaseActivity implements View.OnClickListen
             }
             case 2: {
                 textView.setEnabled(false);
-                textView.setText("\u7f13\u5b58\u4e2d...");
+                textView.setText("缓存中...");
                 textView.setTextColor(this.getResources().getColor(R.color.book_info_dl));
                 return;
             }
@@ -266,7 +264,7 @@ public class BookInfoActivity extends BaseActivity implements View.OnClickListen
             case 5:
         }
         textView.setEnabled(false);
-        textView.setText("\u7b49\u5f85\u4e2d...");
+        textView.setText("等待中...");
         textView.setTextColor(this.getResources().getColor(R.color.book_info_dl));
     }
 

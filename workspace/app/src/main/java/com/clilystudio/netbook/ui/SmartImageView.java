@@ -8,7 +8,6 @@ import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.display.BitmapDisplayer;
 import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
-import com.nostra13.universalimageloader.core.process.BitmapProcessor;
 
 public class SmartImageView extends MaskAbleImageView {
     public SmartImageView(Context context) {

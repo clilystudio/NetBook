@@ -731,7 +731,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
             return;
         } else {
             if (readerActivity.Y == null) {
-                com.clilystudio.netbook.util.e.a((Activity) readerActivity, (String) "\u83b7\u53d6\u7ae0\u8282\u5185\u5bb9\u5931\u8d25,\u8bf7\u9000\u51fa\u540e\u91cd\u8bd5");
+                com.clilystudio.netbook.util.e.a((Activity) readerActivity, (String) "获取章节内容失败,请退出后重试");
                 return;
             }
             if (readerActivity.Z > -1 + readerActivity.Y.length) return;
@@ -1258,10 +1258,10 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
             return;
         } else {
             if (this.Y == null) {
-                com.clilystudio.netbook.util.e.a((Activity) this, (String) "\u83b7\u53d6\u7ae0\u8282\u5185\u5bb9\u5931\u8d25,\u8bf7\u9000\u51fa\u540e\u91cd\u8bd5");
+                com.clilystudio.netbook.util.e.a((Activity) this, (String) "获取章节内容失败,请退出后重试");
                 return;
             }
-            if (bl && !this.Y[0].startsWith("\u3000\u3000")) {
+            if (bl && !this.Y[0].startsWith("　　")) {
                 this.W = 0;
                 this.X = 1 + this.Y[0].length();
                 this.b[this.n].a(this.W, this.X);

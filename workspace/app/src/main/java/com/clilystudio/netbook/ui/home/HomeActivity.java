@@ -44,7 +44,6 @@ import com.clilystudio.netbook.model.UserVipInfo;
 import com.clilystudio.netbook.model.UshaqiOnlineConfig;
 import com.clilystudio.netbook.push.BookSubRecord;
 import com.clilystudio.netbook.push.BookUnSubRecord;
-import com.clilystudio.netbook.reader.txt.ScanTxtFileActivity;
 import com.clilystudio.netbook.ui.SearchActivity;
 import com.clilystudio.netbook.ui.SettingsActivity;
 import com.clilystudio.netbook.ui.SmartImageView;
@@ -486,10 +485,6 @@ public class HomeActivity extends HomeParentActivity implements ViewPager.OnPage
             }
             case R.id.home_menu_settings: {
                 this.startActivity(new Intent(this, SettingsActivity.class));
-                return;
-            }
-            case R.id.home_menu_scan: {
-                this.startActivity(new Intent(this, ScanTxtFileActivity.class));
                 return;
             }
             case R.id.home_action_menu_game: {
