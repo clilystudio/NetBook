@@ -1,12 +1,9 @@
 package com.clilystudio.netbook.ui;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-
-import com.clilystudio.netbook.R;
-import com.clilystudio.netbook.am;
-
 import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -16,23 +13,29 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.adapter.NotificationAdapter;
+import com.clilystudio.netbook.am;
 import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.hpay100.a.a;
 import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.model.NotificationItem;
+import com.clilystudio.netbook.model.NotificationRoot;
+import com.clilystudio.netbook.ui.user.AuthLoginActivity;
+import com.clilystudio.netbook.util.e;
 import com.clilystudio.netbook.viewbinder.notification.NotifBinderFactory;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import butterknife.ButterKnife;
 
 public abstract class NotifFragment extends Fragment {
-    private bw b;
-    private bx c;
+    private com.clilystudio.netbook.a_pack.e<String, Void, NotificationRoot> b;
+    private com.clilystudio.netbook.a_pack.e<String, Void, NotificationRoot> c;
     private PullToRefreshListView d;
     private ListView e;
     private View f;
@@ -55,11 +58,67 @@ public abstract class NotifFragment extends Fragment {
                     if (NotifFragment.this.c != null && NotifFragment.this.c.getStatus() != AsyncTask.Status.FINISHED && !NotifFragment.this.c.isCancelled()) {
                         NotifFragment.this.c.cancel(true);
                     }
-                    NotifFragment.a(NotifFragment.this, new bw(NotifFragment.this, (byte)0));
-                    String[] arrstring = new String[]{NotifFragment.this.m.getToken()};
-                    NotifFragment.this.b.b(arrstring);
+                    NotifFragment.this.b = new com.clilystudio.netbook.a_pack.e<String, Void, NotificationRoot>() {
+
+                        @Override
+                        protected NotificationRoot doInBackground(String... params) {
+                            if (!this.isCancelled()) {
+                                String string = "";
+                                if (NotifFragment.k(NotifFragment.this) != null && NotifFragment.k(NotifFragment.this).size() > 0) {
+                                    string = ((NotificationItem) NotifFragment.k(NotifFragment.this).get(-1 + NotifFragment.k(NotifFragment.this).size())).getCreated();
+                                }
+                                if (NotifFragment.this.a() == NotifFragment.Type.IMPORTANT) {
+                                    NotifFragment.g(NotifFragment.this);
+                                    return com.clilystudio.netbook.api.b.b().r(params[0], string);
+                                }
+                                NotifFragment.g(NotifFragment.this);
+                                return com.clilystudio.netbook.api.b.b().s(params[0], string);
+                            }
+                            return null;
+                        }
+
+                        @Override
+                        protected void onPostExecute(NotificationRoot notificationRoot) {
+                            super.onPostExecute(notificationRoot);
+                            if (NotifFragment.this.getActivity() == null) return;
+                            NotifFragment.b(NotifFragment.this).setVisibility(View.GONE);
+                            NotifFragment.a(NotifFragment.this).setVisibility(View.GONE);
+                            NotifFragment.h(NotifFragment.this).setVisibility(View.GONE);
+                            NotifFragment.i(NotifFragment.this).setVisibility(View.GONE);
+                            NotifFragment.d(NotifFragment.this).onRefreshComplete();
+                            if (this.isCancelled()) return;
+                            if (notificationRoot != null && notificationRoot.isOk()) {
+                                int n = notificationRoot.getNotifications().length;
+                                List<NotificationItem> list = Arrays.asList(notificationRoot.getNotifications());
+                                NotifFragment.a(NotifFragment.this, NotifFragment.l(NotifFragment.this) + list.size());
+                                NotifFragment.this.k.addAll(list);
+                                NotifFragment.f(NotifFragment.this).a(NotifFragment.this.k);
+                                if (n > 0) {
+                                    if (n >= 100) {
+                                        if (n != 100) return;
+                                        NotifFragment.d(NotifFragment.this).setOnLastItemVisibleListener(NotifFragment.j(NotifFragment.this));
+                                        return;
+                                    }
+                                } else if (NotifFragment.l(NotifFragment.this) == 0) {
+                                    NotifFragment.a(NotifFragment.this).setVisibility(View.VISIBLE);
+                                    NotifFragment.a(NotifFragment.this).setText("你还没有消息");
+                                    NotifFragment.b(NotifFragment.this).setVisibility(View.GONE);
+                                }
+                                NotifFragment.d(NotifFragment.this).setOnLastItemVisibleListener(null);
+                                return;
+                            }
+                            if (notificationRoot != null && "TOKEN_INVALID".equals(notificationRoot.getCode())) {
+                                NotifFragment.this.startActivity(AuthLoginActivity.a(NotifFragment.this.getActivity()));
+                                com.clilystudio.netbook.util.e.a((Activity) NotifFragment.this.getActivity(), R.string.tweet_token_invalid);
+                                return;
+                            }
+                            NotifFragment.d(NotifFragment.this).setOnLastItemVisibleListener(NotifFragment.j(NotifFragment.this));
+                            NotifFragment.m(NotifFragment.this);
+                        }
+                    };
+                    NotifFragment.this.b.b(NotifFragment.this.m.getToken());
                 }
-           }
+            }
         };
     }
 
@@ -72,7 +131,7 @@ public abstract class NotifFragment extends Fragment {
         return notifFragment.h;
     }
 
-    static /* synthetic */ bw a(NotifFragment notifFragment, bw bw2) {
+    static /* synthetic */ com.clilystudio.netbook.a_pack.e<String, Void, NotificationRoot> a(NotifFragment notifFragment, com.clilystudio.netbook.a_pack.e<String, Void, NotificationRoot> bw2) {
         notifFragment.b = bw2;
         return bw2;
     }
@@ -129,11 +188,11 @@ public abstract class NotifFragment extends Fragment {
         notifFragment.i.setVisibility(View.VISIBLE);
     }
 
-    static /* synthetic */ bw n(NotifFragment notifFragment) {
+    static /* synthetic */ com.clilystudio.netbook.a_pack.e<String, Void, NotificationRoot> n(NotifFragment notifFragment) {
         return notifFragment.b;
     }
 
-    static /* synthetic */ bx o(NotifFragment notifFragment) {
+    static /* synthetic */ com.clilystudio.netbook.a_pack.e<String, Void, NotificationRoot> o(NotifFragment notifFragment) {
         return notifFragment.c;
     }
 
@@ -160,9 +219,53 @@ public abstract class NotifFragment extends Fragment {
     protected abstract NotificationAdapter b();
 
     protected final void c() {
-        bx bx2 = this.c = new bx(this, 0);
-        Object[] arrobject = new String[]{this.m.getToken()};
-        bx2.b(arrobject);
+        this.c = new com.clilystudio.netbook.a_pack.e<String, Void, NotificationRoot>(){
+
+            @Override
+            protected NotificationRoot doInBackground(String... params) {
+                if (NotifFragment.this.a() == NotifFragment.Type.IMPORTANT) {
+                    NotifFragment.g(NotifFragment.this);
+                    return com.clilystudio.netbook.api.b.b().r(params[0], "");
+                }
+                NotifFragment.g(NotifFragment.this);
+                return com.clilystudio.netbook.api.b.b().s(params[0], "");
+            }
+
+            @Override
+            protected void onPostExecute(NotificationRoot notificationRoot) {
+                super.onPostExecute(notificationRoot);
+                if (NotifFragment.this.getActivity() == null) return;
+                NotifFragment.a(NotifFragment.this).setVisibility(View.GONE);
+                NotifFragment.h(NotifFragment.this).setVisibility(View.GONE);
+                NotifFragment.i(NotifFragment.this).setVisibility(View.GONE);
+                NotifFragment.b(NotifFragment.this).setVisibility(View.GONE);
+                NotifFragment.d(NotifFragment.this).onRefreshComplete();
+                NotifFragment.d(NotifFragment.this).setOnLastItemVisibleListener(NotifFragment.j(NotifFragment.this));
+                if (notificationRoot != null && notificationRoot.isOk()) {
+                    NotifFragment.a(NotifFragment.this, 0);
+                    NotifFragment.k(NotifFragment.this).clear();
+                    int n = notificationRoot.getNotifications().length;
+                    List<NotificationItem> list = Arrays.asList(notificationRoot.getNotifications());
+                    NotifFragment.a(NotifFragment.this, NotifFragment.l(NotifFragment.this) + list.size());
+                    NotifFragment.this.k.addAll(list);
+                    NotifFragment.f(NotifFragment.this).a(NotifFragment.this.k);
+                    if (n >= 100) return;
+                    NotifFragment.d(NotifFragment.this).setOnLastItemVisibleListener(null);
+                    if (n != 0) return;
+                    NotifFragment.a(NotifFragment.this).setVisibility(View.VISIBLE);
+                    NotifFragment.a(NotifFragment.this).setText("没有消息");
+                    NotifFragment.b(NotifFragment.this).setVisibility(View.GONE);
+                    return;
+                }
+                if (notificationRoot != null && "TOKEN_INVALID".equals(notificationRoot.getCode())) {
+                    NotifFragment.this.startActivity(AuthLoginActivity.a(NotifFragment.this.getActivity()));
+                    com.clilystudio.netbook.util.e.a((Activity) NotifFragment.this.getActivity(), R.string.tweet_token_invalid);
+                    return;
+                }
+                NotifFragment.m(NotifFragment.this);
+            }
+        };
+        this.c.b(this.m.getToken());
     }
 
     @Override
@@ -170,7 +273,7 @@ public abstract class NotifFragment extends Fragment {
         super.onActivityCreated(bundle);
         this.m = am.e();
         this.f = LayoutInflater.from(this.getActivity()).inflate(R.layout.loading_item, null);
-        this.e = (ListView) this.d.h();
+        this.e = (ListView) this.d.getRefreshableView();
         if (a.i()) {
             this.e.setFooterDividersEnabled(false);
         }
@@ -220,9 +323,7 @@ public abstract class NotifFragment extends Fragment {
             this.a(false);
             return;
         }
-        bx bx2 = this.c = new bx(this, 0);
-        Object[] arrobject = new String[]{this.m.getToken()};
-        bx2.b(arrobject);
+        this.c();
     }
 
     @Override
@@ -250,6 +351,6 @@ public abstract class NotifFragment extends Fragment {
     }
 
     public enum Type {
-        IMPORTANT,UNIMPORTANT;
+        IMPORTANT, UNIMPORTANT;
     }
 }

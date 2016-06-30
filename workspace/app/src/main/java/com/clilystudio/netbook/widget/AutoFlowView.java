@@ -220,7 +220,7 @@ public class AutoFlowView extends LinearLayout implements View.OnClickListener {
         this.a();
     }
 
-    public class Word implements Serializable {
+    public final  static  class Word implements Serializable {
         public String content;
         public int show;
         int leftMargin;
