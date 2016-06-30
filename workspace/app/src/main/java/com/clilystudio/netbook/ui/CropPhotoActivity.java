@@ -44,6 +44,56 @@ public class CropPhotoActivity extends BaseActivity {
      */
     @Override
     protected void onCreate(Bundle var1_1) {
+        v4 = 0x800;
+        v2 = 0x45000000#2048.0f;
+        Lcom / ushaqi / zhuishushenqi / ui / BaseActivity.onCreate(p0, p1);
+        v0 = 0x7f030035;
+        p0.setContentView(v0);
+        v0 = "\u622a\u53d6\u5934\u50cf";
+        v1 = "\u4f7f\u7528";
+        v3 = new aY();
+        v3.<init> (p0);
+        p0.a(v0, v1, v3);
+        v0 = p0.getIntent();
+        v1 = v0.getData();
+        v0 = 0x0;
+        v3 = p0.getContentResolver();
+        v1 = v3.openInputStream(v1);
+        v0 = Landroid / graphics / BitmapFactory.decodeStream(v1);
+                 v1 = v0.getHeight();
+        if (v1 < v4 && v0.getWidth() < v4) {
+            v1 = v0;
+        } else {
+            v1 = v0.getWidth();
+            int-to - float v1, v1
+            v3 = v0.getHeight();
+            int-to - float v3, v3
+            cmpl - float v4, v1, v3
+            if (v4 <= 0) {
+                v1 /= v3;
+                v1 *= v2;
+                v5 = v2;
+                v2 = v1;
+                v1 = v5;
+            } else {
+                v1 = v3 / v1;
+                v1 *= v2;
+            }
+            float-to - int v2, v2
+            float-to - int v1, v1
+            v3 = 0x0;
+            v0 = Landroid / graphics / Bitmap.createScaledBitmap(v0, v2, v1, v3);
+            v1 = v0;
+        }
+        v0 = 0x7f0c00fe;
+        v0 = p0.findViewById(v0);
+        check - cast v0, Lcom / ushaqi / zhuishushenqi / view / CropView;
+        p0.Lcom / ushaqi / zhuishushenqi / ui / CropPhotoActivity;->a = v0;
+        v0 = p0.Lcom / ushaqi / zhuishushenqi / ui / CropPhotoActivity;->a;
+        v0.setImageBitmap(v1);
+        return;
+        :goto_3
+
         block11:
         {
             var2_2 = 2048.0f;
