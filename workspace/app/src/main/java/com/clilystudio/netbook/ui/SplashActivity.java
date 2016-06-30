@@ -80,26 +80,6 @@ public class SplashActivity extends Activity {
             final String string = splashAdvert.getSplashRecord().link;
             this.findViewById(R.id.splash_ad_container).setVisibility(View.VISIBLE);
             this.findViewById(R.id.splash_bottom).setVisibility(View.GONE);
-            ImageView imageView = (ImageView) this.findViewById(R.id.splash_ad_img);
-            imageView.setImageBitmap(bitmap);
-            imageView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    block3:
-                    {
-                        SplashActivity.a(SplashActivity.this, true);
-                        SplashActivity.this.a();
-                        String string2 = splashAdvert.getSplashRecord().insideLink;
-                        if (!TextUtils.isEmpty(string2)) {
-                            SplashActivity.this.startActivity(new InsideLinkIntent((Context) SplashActivity.this, string2));
-                            SplashActivity.this.finish();
-                            break block3;
-                        }
-                        SplashActivity.a(SplashActivity.this, string);
-                    }
-                    com.clilystudio.netbook.hpay100.a.a.o(SplashActivity.this, string);
-                }
-            });
             this.i();
             com.clilystudio.netbook.hpay100.a.a.m(this, splashAdvert.getSplashRecord().splashId);
             this.f();
@@ -170,17 +150,6 @@ public class SplashActivity extends Activity {
             intent = new Intent(this, IntroActivity.class);
         } else {
             intent = new Intent(this, HomeActivity.class);
-            Intent intent2 = this.getIntent();
-            Uri uri = intent2.getData();
-            if (uri != null) {
-                if ("text/plain".equals(intent2.getType())) {
-                    String string = uri.getPath();
-                    intent.putExtra("file_name", string);
-                    TxtFileObject.add(new BookFile(new File(string)));
-                } else {
-                    intent.putExtra("file_name", "nonsupport");
-                }
-            }
         }
         this.startActivity(intent);
         this.finish();

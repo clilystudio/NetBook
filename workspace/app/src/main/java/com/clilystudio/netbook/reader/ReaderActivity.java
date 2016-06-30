@@ -402,14 +402,6 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
                         Intent var2_2 = BookInfoActivity.a(readerActivity, ReaderActivity.M(readerActivity));
                         readerActivity.startActivity(var2_2);
                         break;
-                    case R.id.menu_item_3:
-                        new com.clilystudio.netbook.ui.cb(readerActivity, new com.clilystudio.netbook.ui.cd() {
-                            @Override
-                            public void a(int var1) {
-                                ReaderActivity.e(readerActivity, var1);
-                            }
-                        }).a().show();
-                        break;
                 }
                 return true;
             }
@@ -1787,15 +1779,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
                 this.startActivity(BookInfoActivity.a(this, this.c));
                 return;
             }
-            case R.id.menu_item_3:
         }
-        new com.clilystudio.netbook.ui.cb(this, new com.clilystudio.netbook.ui.cd() {
-            @Override
-            public void a(int var1) {
-                ReaderActivity.e(ReaderActivity.this, var1);
-
-            }
-        }).a().show();
     }
 
     @l

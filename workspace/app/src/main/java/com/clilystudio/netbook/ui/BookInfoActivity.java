@@ -548,14 +548,6 @@ public class BookInfoActivity extends BaseActivity implements View.OnClickListen
 
             @Override
             public void b() {
-                new cb(BookInfoActivity.this, new cd() {
-                    @Override
-                    public void a(int var1) {
-                        BookInfoActivity.a(BookInfoActivity.this, var1);
-                        com.clilystudio.netbook.hpay100.a.a.a((Context) BookInfoActivity.this, var1, 1);
-                    }
-                }).a().show();
-                MiStatInterface.recordCountEvent( "share_book_info_ab", null);
            }
         };
         this.c();

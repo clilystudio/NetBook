@@ -2,6 +2,8 @@ package com.clilystudio.netbook.ui;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager$OnPageChangeListener;
 import android.view.LayoutInflater;
@@ -10,6 +12,8 @@ import android.widget.TabHost;
 import android.widget.TabWidget;
 import android.widget.TextView;
 
+import com.clilystudio.netbook.R;
+import com.clilystudio.netbook.ui.home.ZssqFragmentPagerAdapter;
 import com.clilystudio.netbook.widget.TabWidgetV2;
 
 import java.util.ArrayList;
@@ -79,7 +83,7 @@ public abstract class SimpleTabActivity extends BaseTabActivity implements ViewP
         TabWidgetV2 tabWidgetV2 = (TabWidgetV2) this.findViewById(16908307);
         tabWidgetV2.setItemCount(this, this.b);
         this.e = (ViewPager) this.findViewById(R.id.pager);
-        this.f = new ch(this, this.getSupportFragmentManager());
+        this.f = new ch(this.getSupportFragmentManager());
         this.e.setOffscreenPageLimit(this.b);
         this.e.setAdapter(this.f);
         this.e.setOnPageChangeListener(this);
@@ -135,6 +139,50 @@ public abstract class SimpleTabActivity extends BaseTabActivity implements ViewP
         int n = this.a.getCurrentTab();
         if (n >= 0 && n < this.f.getCount()) {
             this.e.setCurrentItem(n, true);
+        }
+    }
+
+    final class ch extends ZssqFragmentPagerAdapter {
+        private /* synthetic */ SimpleTabActivity a;
+
+        public ch(FragmentManager fragmentManager) {
+            super(fragmentManager);
+            int n = 0;
+            for (int i = 0; i < SimpleTabActivity.this.b; ++i) {
+                SimpleTabActivity.a(SimpleTabActivity.this).add(i, SimpleTabActivity.this.e(i));
+            }
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            while (n < SimpleTabActivity.this.b) {
+                Fragment fragment = (Fragment) SimpleTabActivity.a(SimpleTabActivity.this).get(n);
+                if (!fragment.isAdded()) {
+                    fragmentTransaction.add(SimpleTabActivity.b(SimpleTabActivity.this).getId(), fragment, SimpleTabActivity.this.c[n]);
+                }
+                ++n;
+            }
+            if (!fragmentTransaction.isEmpty()) {
+                fragmentTransaction.commit();
+                fragmentManager.executePendingTransactions();
+            }
+        }
+
+        @Override
+        public final Fragment a(int n) {
+            return (Fragment) SimpleTabActivity.a(this.a).get(n);
+        }
+
+        @Override
+        protected final String b(int n) {
+            return this.a.c[n];
+        }
+
+        @Override
+        public final int getCount() {
+            return this.a.b;
+        }
+
+        @Override
+        public final CharSequence getPageTitle(int n) {
+            return this.a.getResources().getStringArray(R.array.my_msg_tabs)[n];
         }
     }
 }
