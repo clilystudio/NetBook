@@ -6,6 +6,8 @@ import android.graphics.PorterDuff;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 
+import com.clilystudio.netbook.R;
+
 public class MaskAbleImageView extends ImageView {
     protected int a;
 
@@ -28,7 +30,7 @@ public class MaskAbleImageView extends ImageView {
      * Enabled aggressive block sorting
      */
     private void a(Context context) {
-        int n = a.a(context, "customer_night_theme", false) ? this.getResources().getColor(R.color.drak_img_mask) : -1;
+        int n = com.clilystudio.netbook.hpay100.a.a.a(context, "customer_night_theme", false) ? this.getResources().getColor(R.color.drak_img_mask) : -1;
         this.a = n;
     }
 

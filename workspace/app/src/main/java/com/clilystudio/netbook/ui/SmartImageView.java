@@ -4,7 +4,10 @@ import android.content.Context;
 import android.util.AttributeSet;
 
 import com.clilystudio.netbook.api.ApiService;
-import com.nostra13.universalimageloader.core.d.a;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
+import com.nostra13.universalimageloader.core.process.BitmapProcessor;
 
 public class SmartImageView extends MaskAbleImageView {
     public SmartImageView(Context context) {
@@ -19,7 +22,7 @@ public class SmartImageView extends MaskAbleImageView {
         super(context, attributeSet, n);
     }
 
-    protected com.nostra13.universalimageloader.core.b.a a() {
+    protected BitmapProcessor a() {
         return null;
     }
 
@@ -35,19 +38,20 @@ public class SmartImageView extends MaskAbleImageView {
         this.setImageUrl(string, n, null);
     }
 
-    public void setImageUrl(String string, int n, a a2) {
-        com.nostra13.universalimageloader.core.b.a a3;
-        e e2 = new e().a(true).b(true);
+    public void setImageUrl(String string, int n, ImageLoadingListener a2) {
+        DisplayImageOptions.Builder v01 = new DisplayImageOptions.Builder();
+        v01.cacheOnDisk(true);
+        v01.resetViewBeforeLoading(true);
         if (n != 0) {
-            e2.a(n);
+            v01.showImageForEmptyUri(n);
         }
-        if ((a3 = this.a()) != null) {
-            e2.a(a3);
+        BitmapProcessor v11 = this.a();
+        if (v11 != null) {
+            v01.postProcessor(v11);
         }
-        d d2 = e2.a();
-        if ("Official".equals("macServer") && string != null && string.contains("static")) {
-            return;
+        DisplayImageOptions v02 = v01.build();
+        if (string == null || !string.contains("static")) {
+            ImageLoader.getInstance().displayImage(string, this, v02, a2);
         }
-        f.a().a(string, this, d2, a2);
     }
 }
