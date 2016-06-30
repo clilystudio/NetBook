@@ -7,20 +7,22 @@ import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager$OnPageChangeListener;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.ui.home.HomeActivity;
 import com.clilystudio.netbook.ui.user.AuthLoginActivity;
 
 import java.util.ArrayList;
 
-public class IntroActivity extends Activity implements ViewPager$OnPageChangeListener,
+public class IntroActivity extends Activity implements ViewPager.OnPageChangeListener,
         View.OnClickListener {
     private static final int[] f = new int[]{R.drawable.bg_intro_1, R.drawable.bg_intro_2};
     private ViewPager a;
-    private bc b;
+    private PagerAdapter b;
     private Button c;
     private Button d;
     private ArrayList<View> e;
@@ -94,7 +96,29 @@ public class IntroActivity extends Activity implements ViewPager$OnPageChangeLis
         this.setContentView(R.layout.splash_intro);
         this.e = new ArrayList();
         this.a = (ViewPager) this.findViewById(R.id.vp_intro);
-        this.b = new bc(this);
+        this.b = new PagerAdapter(){
+
+            @Override
+            public int getCount() {
+                return IntroActivity.a(IntroActivity.this).size();
+            }
+
+            @Override
+            public Object instantiateItem(ViewGroup container, int position) {
+                container.addView((View) IntroActivity.a(IntroActivity.this).get(position), 0);
+                return IntroActivity.a(IntroActivity.this).get(position);
+            }
+
+            @Override
+            public void destroyItem(ViewGroup container, int position, Object object) {
+                container.removeView((View) IntroActivity.a(IntroActivity.this).get(position));
+            }
+
+            @Override
+            public boolean isViewFromObject(View view, Object object) {
+                return view == object;
+            }
+        };
         this.c = (Button) this.findViewById(R.id.btnQuickLogin);
         this.c.setOnClickListener(this);
         this.d = (Button) this.findViewById(R.id.btnEntryApp);
