@@ -4,15 +4,12 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
-import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.clilystudio.netbook.R$styleable;
+import com.clilystudio.netbook.R;
 
-import butterknife.ButterKnife;
-import butterknife.InjectView;
 
 public class UserInfoTaskView extends FrameLayout {
     private final int a;
@@ -23,11 +20,11 @@ public class UserInfoTaskView extends FrameLayout {
 
     public UserInfoTaskView(Context context, AttributeSet attributeSet) {
         super(context, attributeSet);
-        TypedArray typedArray = context.obtainStyledAttributes(attributeSet, R$styleable.UserInfoTaskView);
-        this.a = typedArray.getResourceId(0, R.drawable.user_info_launch);
-        this.b = typedArray.getString(1);
+        TypedArray typedArray = context.obtainStyledAttributes(attributeSet, R.styleable.UserInfoTaskView);
+        this.a = typedArray.getResourceId(R.styleable.UserInfoTaskView_aicon, R.drawable.user_info_launch);
+        this.b = typedArray.getString(R.styleable.UserInfoTaskView_atitle);
         typedArray.recycle();
-        LayoutInflater.from(context).inflate(R.layout.user_info_task, (ViewGroup) this);
+        LayoutInflater.from(context).inflate(R.layout.user_info_task, this);
     }
 
     @Override

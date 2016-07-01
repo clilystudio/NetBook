@@ -13,8 +13,8 @@ public class UserInfoLvTaskView extends UserInfoTaskView {
     public UserInfoLvTaskView(Context context, AttributeSet attributeSet) {
         super(context, attributeSet);
         TypedArray typedArray = context.obtainStyledAttributes(attributeSet, R.styleable.UserInfoLvTaskView);
-        this.a = typedArray.getBoolean(R.styleable.UserInfoLvTaskView_lv_format, false);
-        this.b = typedArray.getInteger(R.styleable.UserInfoLvTaskView_unknown_format, 1);
+        this.a = typedArray.getBoolean(R.styleable.UserInfoLvTaskView_lv, false);
+        this.b = typedArray.getInteger(R.styleable.UserInfoLvTaskView_unknown, 1);
         typedArray.recycle();
     }
 
@@ -22,7 +22,7 @@ public class UserInfoLvTaskView extends UserInfoTaskView {
     protected void onFinishInflate() {
         super.onFinishInflate();
         if (this.a) {
-            this.mExp.setText("\u7b49\u7ea7N");
+            this.mExp.setText("等级N");
             ExpView expView = this.mExp;
             expView.setBackgroundResource(R.drawable.exp_task_active);
             expView.setTextColor(expView.getResources().getColor(R.color.user_info_exp_active));

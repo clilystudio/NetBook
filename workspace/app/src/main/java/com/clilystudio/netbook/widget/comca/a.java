@@ -3,8 +3,7 @@ package com.clilystudio.netbook.widget.comca;
 import com.clilystudio.netbook.widget.comca.b;
 import java.util.ArrayList;
 
-public abstract class a
-implements Cloneable {
+public abstract class a implements Cloneable {
     ArrayList<b> a = null;
 
     public void a() {

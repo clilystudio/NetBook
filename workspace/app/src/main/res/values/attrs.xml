@@ -110,7 +110,7 @@
     <attr name="drawSelectorOnTop" format="boolean"/>
     <attr name="dividerColor" format="reference|color"/>
     <attr name="numColumns" format="integer"/>
-    <attr name="image_size" format="dimension"/>
+    <!--<attr name="image_size" format="dimension"/>-->
     <!--<attr name="layout_collapseMode">-->
         <!--<enum name="none" value="0"/>-->
         <!--<enum name="parallax" value="2"/>-->
@@ -148,13 +148,13 @@
         <!--<flag name="start" value="0x00800003"/>-->
         <!--<flag name="top" value="0x00000030"/>-->
     <!--</attr>-->
-    <attr name="radius" format="dimension"/>
+    <!--<attr name="radius" format="dimension"/>-->
     <!--<attr name="scv_background" format="color"/>-->
     <!--<attr name="scv_corner_radius" format="dimension"/>-->
     <!--<attr name="cornerRadius" format="dimension"/>-->
-    <attr name="cover" format="reference"/>
-    <attr name="frame" format="reference"/>
-    <attr name="divider_drawable" format="reference"/>
+    <!--<attr name="cover" format="reference"/>-->
+    <!--<attr name="frame" format="reference"/>-->
+    <!--<attr name="divider_drawable" format="reference"/>-->
     <declare-styleable name="DrawerArrowToggle">
         <attr name="color" format="color"/>
         <attr name="spinBars" format="boolean"/>
@@ -182,8 +182,8 @@
         </attr>
         <attr name="dividerPadding" format="dimension"/>
     </declare-styleable>
-    <attr name="emptyLayout" format="reference"/>
-    <attr name="loadingLayout" format="reference"/>
+    <!--<attr name="emptyLayout" format="reference"/>-->
+    <!--<attr name="loadingLayout" format="reference"/>-->
     <declare-styleable name="MenuItem">
         <attr name="showAsAction">
             <flag name="always" value="0x00000002"/>
@@ -208,27 +208,6 @@
     <attr name="pay_label" format="string"/>
     <attr name="pay_icon" format="reference"/>
     <attr name="pay_charge" format="reference"/>
-    <attr name="progress" format="integer"/>
-    <attr name="max" format="integer"/>
-    <attr name="move_outside_circle" format="boolean"/>
-    <attr name="maintain_equal_circle" format="boolean"/>
-    <attr name="use_custom_radii" format="boolean"/>
-    <attr name="lock_enabled" format="boolean"/>
-    <attr name="circle_x_radius" format="float"/>
-    <attr name="circle_y_radius" format="float"/>
-    <attr name="circle_stroke_width" format="float"/>
-    <attr name="pointer_radius" format="float"/>
-    <attr name="pointer_halo_width" format="float"/>
-    <attr name="pointer_halo_border_width" format="float"/>
-    <attr name="circle_color" format="string"/>
-    <attr name="circle_progress_color" format="string"/>
-    <attr name="pointer_color" format="string"/>
-    <attr name="pointer_halo_color" format="string"/>
-    <attr name="pointer_halo_color_ontouch" format="string"/>
-    <attr name="pointer_alpha_ontouch" format="integer"/>
-    <attr name="start_angle" format="float"/>
-    <attr name="end_angle" format="float"/>
-    <attr name="circle_fill" format="string"/>
     <attr name="ratingType" format="string"/>
     <attr name="ratingMargin" format="dimension"/>
     <attr name="ratingValue" format="integer"/>
@@ -434,10 +413,6 @@
         <attr name="navigationContentDescription" format="string"/>
         <!--<attr name="label" format="string"/>-->
         <!--<attr name="icona" format="reference"/>-->
-        <attr name="unknown" format="boolean"/>
-        <attr name="lv" format="integer"/>
-        <attr name="aicon" format="reference"/>
-        <attr name="atitle" format="string"/>
     </declare-styleable>
     <declare-styleable name="View">
         <attr name="paddingStart" format="dimension"/>
@@ -477,7 +452,7 @@
     </declare-styleable>
     <declare-styleable name="CoverView">
         <attr name="cover" format="reference"/>
-        <attr name="frame" format="dimension"/>
+        <attr name="frame" format="reference"/>
     </declare-styleable>
     <declare-styleable name="DividerSection">
         <attr name="divider_drawable" format="reference"/>
@@ -510,7 +485,11 @@
         <attr name="circle_fill" format="string"/>
     </declare-styleable>
     <declare-styleable name="UserInfoLvTaskView">
-        <attr name="lv_format" format="boolean"/>
-        <attr name="unknown_format" format="integer"/>
+        <attr name="unknown" format="boolean"/>
+        <attr name="lv" format="integer"/>
+    </declare-styleable>
+    <declare-styleable name="UserInfoTaskView">
+        <attr name="aicon" format="reference"/>
+        <attr name="atitle" format="string"/>
     </declare-styleable>
 </resources>

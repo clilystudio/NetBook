@@ -86,4 +86,5 @@
     <color name="scv_finished_color">#aaaaaa</color>
     <color name="user_info_exp_deactive">#333333</color>
     <color name="user_info_exp_active">#333333</color>
+    <color name="cover_semi_transparent">#aaaaaa</color>
 </resources>

@@ -20,11 +20,9 @@ import com.clilystudio.netbook.event.d;
 import com.clilystudio.netbook.model.BookFeed;
 import com.clilystudio.netbook.model.BookShelf;
 import com.clilystudio.netbook.reader.dl.a;
-import com.clilystudio.netbook.ui.SmartImageView;
 import com.clilystudio.netbook.widget.BookShelfFlagView;
 import com.clilystudio.netbook.widget.CoverLoadingLayer;
 import com.clilystudio.netbook.widget.CoverView;
-import com.clilystudio.netbook.widget.y;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -303,7 +301,7 @@ public class HomeShelfAdapter extends u<BookShelf> {
                 } else if (!var19_6.coverLoadingLayer.g()) {
                     var19_6.coverLoadingLayer.c();
                 }
-                var19_6.coverLoadingLayer.setCoverListener(new y() {
+                var19_6.coverLoadingLayer.setCoverListener(new CoverLoadingLayer.y() {
                     @Override
                     public void a() {
                         com.clilystudio.netbook.event.i.a().post(new d(var24_14, 3));

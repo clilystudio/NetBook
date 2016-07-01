@@ -26,7 +26,6 @@ import com.clilystudio.netbook.widget.comca.w;
 
 public class CoverLoadingLayer extends ImageView {
     private b A;
-    private int a = -1308622848;
     private float b = -1.0f;
     private float c = -1.0f;
     private float d = -1.0f;
@@ -47,7 +46,6 @@ public class CoverLoadingLayer extends ImageView {
     private com.clilystudio.netbook.widget.comca.w s;
     private float t;
     private int u;
-    private float v;
     private D w;
     private b x;
     private D y;
@@ -180,7 +178,6 @@ public class CoverLoadingLayer extends ImageView {
             this.f = typedArray.getDimension(R.styleable.CoverLoadingLayer_scv_corner_radius, -1.0f);
             typedArray.recycle();
         }
-        this.v = 0.0f;
         this.n = this.getResources().getDimension(R.dimen.scv_outer_circle_radius);
         this.c = this.getResources().getDimension(R.dimen.scv_inner_circle_radius);
         this.j = this.getResources().getDimension(R.dimen.scv_pause_icon_gap);
@@ -226,7 +223,7 @@ public class CoverLoadingLayer extends ImageView {
         w2.a(new D() {
             @Override
             public void a(com.clilystudio.netbook.widget.comca.w paramw) {
-                CoverLoadingLayer.a(CoverLoadingLayer.this, (Float) paramw.f());
+                CoverLoadingLayer.this.b = (Float) paramw.f();
                 invalidate();
             }
         });
@@ -355,24 +352,24 @@ public class CoverLoadingLayer extends ImageView {
             canvas.restore();
             return;
         }
-        new Paint().setColor(-65536);
-        new Paint().setColor(-16711936);
+        new Paint().setColor(0xffff0000);
+        new Paint().setColor(0xff00ff00);
         Bitmap bitmap = Bitmap.createBitmap(this.getWidth(), this.getHeight(), Bitmap.Config.ARGB_8888);
         bitmap.eraseColor(0);
         Canvas canvas2 = new Canvas(bitmap);
         Paint paint = new Paint();
-        paint.setColor(this.getResources().getColor(17170445));
+        paint.setColor(this.getResources().getColor(android.R.color.transparent));
         paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.CLEAR));
         paint.setAntiAlias(true);
         int n2 = this.getWidth();
         int n3 = this.getHeight();
-        canvas2.drawColor(this.a);
+        canvas2.drawColor(0xb2000000);
         int n4 = n2 / 2;
         int n5 = n3 / 2;
         canvas2.drawCircle(n4, n5, this.b, paint);
         Paint paint2 = new Paint(1);
         paint2.setAntiAlias(true);
-        paint2.setColor(this.a);
+        paint2.setColor(0xb2000000);
         RectF rectF = new RectF((float) n4 - this.c, (float) n5 - this.c, (float) n4 + this.c, (float) n5 + this.c);
         if (this.r == CoverLoadingLayer.Status.PROGRESS) {
             canvas2.drawArc(rectF, this.g, 270 - this.g, true, paint2);
@@ -490,7 +487,7 @@ public class CoverLoadingLayer extends ImageView {
             if (this.a(n)) return;
             {
                 this.o = n;
-                this.g = CoverLoadingLayer.a(this.o);
+                this.g = CoverLoadingLayer.a((float)this.o);
                 this.r = CoverLoadingLayer.Status.PROGRESS;
                 this.invalidate();
                 if (!this.a()) return;
@@ -508,8 +505,8 @@ public class CoverLoadingLayer extends ImageView {
         }
         this.d = 0.0f;
         int[] arrn = new int[2];
-        arrn[0] = CoverLoadingLayer.a(n3);
-        arrn[n2] = CoverLoadingLayer.a(n);
+        arrn[0] = CoverLoadingLayer.a((float)n3);
+        arrn[n2] = CoverLoadingLayer.a((float)n);
         com.clilystudio.netbook.widget.comca.w w2 = com.clilystudio.netbook.widget.comca.w.a(arrn);
         w2.a(300);
         w2.a(this.y);
@@ -550,5 +547,13 @@ public class CoverLoadingLayer extends ImageView {
     }
     enum Status {
         NONE,PREPARE,PROGRESS,PAUSE,PENDING,DOWNLOADED;
+    }
+
+    public interface y {
+        public void a();
+
+        public void b();
+
+        public void c();
     }
 }
