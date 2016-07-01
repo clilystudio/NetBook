@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -15,7 +14,6 @@ import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.a_pack.c;
 import com.clilystudio.netbook.am;
-import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.hpay100.a.a;
 import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.model.ChapterKeysRoot;
@@ -24,8 +22,8 @@ import com.clilystudio.netbook.model.ChapterSingleKey;
 import com.clilystudio.netbook.model.PurchaseChapterResult;
 import com.clilystudio.netbook.ui.user.AuthLoginActivity;
 import com.squareup.otto.Subscribe;
-import com.umeng.a.b;
 import com.xiaomi.mistatistic.sdk.MiStatInterface;
+import com.xiaomi.mistatistic.sdk.MiStatInterfaceImpl;
 
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
@@ -73,7 +71,7 @@ public final class o {
         this.l();
         this.m();
         this.k();
-        i.a().register(this);
+        com.clilystudio.netbook.event.i.a().register(this);
     }
 
     static /* synthetic */ Activity a(o o2) {
@@ -93,7 +91,7 @@ public final class o {
                 o2.d.a().setKey(string);
                 o2.d.g();
                 o2.d.a(0);
-                a.a(((ReaderActivity) o2.b).l(), ((ReaderActivity) o2.b).f(), am.e(o2.d.a().getLink()), o2.d.a());
+                com.clilystudio.netbook.hpay100.a.a.a(((ReaderActivity) o2.b).l(), ((ReaderActivity) o2.b).f(), am.e(o2.d.a().getLink()), o2.d.a());
             }
             if (o2.e) {
                 // empty if block
@@ -151,7 +149,7 @@ public final class o {
         }
         if (purchaseChapterResult.getCode().equals("BALANCE_NOT_ENOUGH")) {
             com.clilystudio.netbook.util.e.a(o2.b, "余额不足，请充值");
-            i.a().c(new com.clilystudio.netbook.event.G());
+            com.clilystudio.netbook.event.i.a().post(new com.clilystudio.netbook.event.G());
             o2.e();
             return;
         }
@@ -194,7 +192,7 @@ public final class o {
      * Enabled aggressive block sorting
      */
     private static boolean o() {
-        if (am.e() == null || !a.a((Context) MyApplication.a(), "auto_buy_chapter" + com.clilystudio.netbook.util.I.a, false)) {
+        if (am.e() == null || !com.clilystudio.netbook.hpay100.a.a.a((Context) MyApplication.a(), "auto_buy_chapter" + com.clilystudio.netbook.util.I.a, false)) {
             return false;
         }
         return true;
@@ -246,9 +244,9 @@ public final class o {
         textView.setText("" + n2);
         final CheckBox checkBox = (CheckBox) view3.findViewById(R.id.reader_page_pay_checkbox);
         this.u = (Button) view3.findViewById(R.id.reader_page_pay_btn);
-        if (a.a((Context) this.b, "user_account_balance", 0) > this.d.a().getCurrency() || this.t) {
+        if (com.clilystudio.netbook.hpay100.a.a.a((Context) this.b, "user_account_balance", 0) > this.d.a().getCurrency() || this.t) {
             checkBox.setVisibility(View.VISIBLE);
-            checkBox.setChecked(a.a((Context) this.b, "auto_buy_chapter" + com.clilystudio.netbook.util.I.a, false));
+            checkBox.setChecked(com.clilystudio.netbook.hpay100.a.a.a((Context) this.b, "auto_buy_chapter" + com.clilystudio.netbook.util.I.a, false));
             this.u.setText("购买，继续阅读");
             this.u.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -292,26 +290,6 @@ public final class o {
             });
         } else {
             checkBox.setVisibility(View.INVISIBLE);
-            this.u.setText("余额不足，请充值");
-            this.u.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (o.this.u != null) {
-                        o.this.u.setClickable(false);
-                        o.this.u.setEnabled(false);
-                    }
-                    new com.clilystudio.netbook.util.p(o.this.b).a();
-                    new Handler().postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            if (o.this.u != null) {
-                                o.this.u.setClickable(true);
-                                o.this.u.setEnabled(true);
-                            }
-                        }
-                    }, 2000);
-                }
-            });
         }
         Button button = (Button) view3.findViewById(R.id.reader_page_change_btn);
         button.setOnClickListener(new View.OnClickListener() {
@@ -351,7 +329,7 @@ public final class o {
         Reader reader;
         if (n2 != null && n2.o() == -1 && (reader = MyApplication.a().b()) != null) {
             String string = reader.i();
-            b.a(this.b, "chapter_load_error", string);
+            MiStatInterfaceImpl.recordCountEvent("chapter_load_error", string);
         }
     }
 
@@ -399,7 +377,7 @@ public final class o {
                 this.n.setVisibility(View.VISIBLE);
                 this.t();
                 this.a(false);
-                if (a.t(this.b)) {
+                if (com.clilystudio.netbook.hpay100.a.a.t(this.b)) {
                     this.l.setText("连接超时，再试试？");
                     this.m.setText("请刷新重试或切换来源");
                     this.b(R.drawable.ic_reader_connection_error_network_normal);
@@ -501,11 +479,11 @@ public final class o {
         if (view == null) return;
         view.setVisibility(View.GONE);
         if (!this.e) return;
-        if (a.a((Context) this.b, "remove_ad_toast_showed" + com.clilystudio.netbook.util.I.a, false)) return;
+        if (com.clilystudio.netbook.hpay100.a.a.a((Context) this.b, "remove_ad_toast_showed" + com.clilystudio.netbook.util.I.a, false)) return;
         if (!this.q()) return;
         if (!this.a(view)) return;
         com.clilystudio.netbook.util.e.a(this.b, "已为您自动免除广告");
-        a.b((Context) this.b, "remove_ad_toast_showed" + com.clilystudio.netbook.util.I.a, true);
+        com.clilystudio.netbook.hpay100.a.a.b((Context) this.b, "remove_ad_toast_showed" + com.clilystudio.netbook.util.I.a, true);
     }
 
     private void s() {
@@ -628,9 +606,9 @@ public final class o {
                                     super.onPostExecute(purchaseChapterResult);
                                     if (purchaseChapterResult != null && purchaseChapterResult.isOk()) {
                                         o.b(o.this).q().a().e().put(purchaseChapterResult.getChapterId(), purchaseChapterResult.getKey());
-                                        a.a(((ReaderActivity) o.a(o.this)).l(), o.b(o.this).q().a().e());
+                                        com.clilystudio.netbook.hpay100.a.a.a(((ReaderActivity) o.a(o.this)).l(), o.b(o.this).q().a().e());
                                         if (purchaseChapterResult.getChapterId().equals(readerChapter.getId())) {
-                                            a.a(((ReaderActivity) o.a(o.this)).l(), ((ReaderActivity) o.a(o.this)).f(), am.e(readerChapter.getLink()), readerChapter);
+                                            com.clilystudio.netbook.hpay100.a.a.a(((ReaderActivity) o.a(o.this)).l(), ((ReaderActivity) o.a(o.this)).f(), am.e(readerChapter.getLink()), readerChapter);
                                         }
                                     }
 
@@ -686,7 +664,7 @@ public final class o {
         }
         if (this.f()) {
             if (this.e) {
-                b.a(this.b, "paying_page_show", com.clilystudio.netbook.util.I.b);
+                MiStatInterfaceImpl.recordCountEvent("paying_page_show", com.clilystudio.netbook.util.I.b);
             }
             this.a(true);
             return;
@@ -738,14 +716,14 @@ public final class o {
             if (string != null) return false;
             return true;
         } catch (Exception var1_4) {
-            b.a(this.b, "zhuishu_catch_exception", "PageBinder_needPay:" + var1_4.getMessage());
+            MiStatInterfaceImpl.recordCountEvent("zhuishu_catch_exception", "PageBinder_needPay:" + var1_4.getMessage());
             return false;
         }
     }
 
     public final void g() {
         if (this.e) {
-            b.a(this.b, "paying_page_cancel", com.clilystudio.netbook.util.I.b);
+            MiStatInterfaceImpl.recordCountEvent("paying_page_cancel", com.clilystudio.netbook.util.I.b);
         }
     }
 
