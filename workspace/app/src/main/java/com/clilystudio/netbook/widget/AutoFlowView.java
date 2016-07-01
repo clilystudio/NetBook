@@ -28,7 +28,6 @@ public class AutoFlowView extends LinearLayout implements View.OnClickListener {
     private static i h;
     private static int i;
     private List<AutoFlowView.Word> j;
-    private List<View> k;
     private int[] l;
 
     public AutoFlowView(Context context) {
@@ -54,7 +53,6 @@ public class AutoFlowView extends LinearLayout implements View.OnClickListener {
     private void b() {
         this.setOrientation(LinearLayout.HORIZONTAL);
         this.j = new ArrayList<>();
-        this.k = new ArrayList<>();
         g = com.clilystudio.netbook.hpay100.a.a.a(this.getContext(), 12.0f);
         b = com.clilystudio.netbook.hpay100.a.a.a(this.getContext(), 6.0f);
         c = com.clilystudio.netbook.hpay100.a.a.a(this.getContext(), 12.0f);
@@ -78,7 +76,6 @@ public class AutoFlowView extends LinearLayout implements View.OnClickListener {
             }
         });
         this.removeAllViews();
-        this.k.clear();
         LayoutInflater layoutInflater = LayoutInflater.from(this.getContext());
         List<AutoFlowView.Word> list2 = this.j;
         ArrayList<h> arrayList = new ArrayList<>();
@@ -122,7 +119,6 @@ public class AutoFlowView extends LinearLayout implements View.OnClickListener {
                 textView.setOnClickListener(this);
                 textView.setTag(word.leftMargin);
                 textView.setBackgroundResource(this.l[n5 % this.l.length]);
-                this.k.add(textView);
                 this.addView(textView);
                 word.show = 1 + word.show;
             }

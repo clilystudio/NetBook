@@ -400,38 +400,4 @@ public class HomeShelfAdapter extends u<BookShelf> {
             this.check = (CheckBox) view.findViewById(R.id.checked);
         }
     }
-
-    class AlbumHolder {
-        CheckBox check;
-        CoverView cover;
-        CoverLoadingLayer coverLoadingLayer;
-        TextView desc;
-        BookShelfFlagView flag;
-        TextView title;
-        View top;
-
-        AlbumHolder(View view) {
-            this.title = (TextView) view.findViewById(R.id.title);
-            this.desc = (TextView) view.findViewById(R.id.desc);
-            this.flag = (BookShelfFlagView) view.findViewById(R.id.flag);
-            this.top = view.findViewById(R.id.top);
-            this.cover = (CoverView) view.findViewById(R.id.cover);
-            this.coverLoadingLayer = (CoverLoadingLayer) view.findViewById(R.id.cover_loading);
-            this.check = (CheckBox) view.findViewById(R.id.checked);
-        }
-    }
-
-    class AdHolder {
-        SmartImageView cover;
-        TextView desc;
-        BookShelfFlagView flag;
-        TextView title;
-
-        AdHolder(View view) {
-            this.title = (TextView) view.findViewById(R.id.title);
-            this.desc = (TextView) view.findViewById(R.id.desc);
-            this.flag = (BookShelfFlagView) view.findViewById(R.id.flag);
-            this.cover = (SmartImageView) view.findViewById(R.id.cover);
-        }
-    }
 }

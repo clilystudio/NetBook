@@ -4,8 +4,11 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import com.clilystudio.netbook.R;
 
 public class BookShelfFlagView extends TextView {
     private final Drawable b;
@@ -47,13 +50,13 @@ public class BookShelfFlagView extends TextView {
             case 1: {
                 this.a();
                 this.setBackgroundResource(R.drawable.shelf_prom_btn);
-                this.setText("\u63a8\u5e7f");
+                this.setText("推广");
                 break;
             }
             case 2: {
                 this.a();
                 this.setBackgroundResource(R.drawable.shelf_broadcast_btn);
-                this.setText("\u516c\u544a");
+                this.setText("公告");
                 break;
             }
             case 3: {
@@ -67,11 +70,11 @@ public class BookShelfFlagView extends TextView {
             case 4: {
                 this.a();
                 this.setBackgroundResource(R.drawable.shelf_feed_flag_bg);
-                this.setText("\u5f85\u6740");
+                this.setText("待杀");
             }
         }
         if (this.a == 0) {
-            this.setVisibility(4);
+            this.setVisibility(INVISIBLE);
             return;
         }
         this.setVisibility(View.VISIBLE);
