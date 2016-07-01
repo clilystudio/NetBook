@@ -438,7 +438,7 @@ public final class f {
         if (this.b == 3) return chapterRoot;
         I.h = true;
         try {
-            BookTopRoot$Favorite bookTopRoot$Favorite;
+            BookTopRoot.Favorite bookTopRoot$Favorite;
             BookTopRoot bookTopRoot = b.b().u();
             if (bookTopRoot != null && (bookTopRoot$Favorite = bookTopRoot.getFavorite()) != null) {
                 a.b(MyApplication.a(), bookTopRoot$Favorite.getBookID(), bookTopRoot$Favorite.getTocID(), bookTopRoot$Favorite.getChecksum());

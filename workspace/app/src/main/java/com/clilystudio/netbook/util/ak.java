@@ -29,20 +29,16 @@ public final class ak {
             }
         } else if (string != null && string2 == null) {
             String string4 = string.toUpperCase(Locale.US);
-            while (n < string4.length()) {
+            for (n = 0; n < string4.length(); ++n) {
                 linkedHashSet.add(Character.valueOf(string4.charAt(n)));
                 ++n;
             }
         } else if (string != null && string2 != null) {
             String string5 = string.toUpperCase(Locale.US);
             String string6 = string2.toUpperCase(Locale.US);
-            int n2 = 0;
-            do {
-                int n3 = string6.length();
-                if (n2 >= n3) break;
-                linkedHashSet2.add(Character.valueOf(string6.charAt(n2)));
-                ++n2;
-            } while (true);
+            for (n = 0; n < string6.length(); ++n) {
+                   linkedHashSet2.add(Character.valueOf(string6.charAt(n)));
+            }
             for (int i = 0; i < string5.length(); ++i) {
                 linkedHashSet.add(Character.valueOf(string5.charAt(i)));
             }

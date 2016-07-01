@@ -5,6 +5,7 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -51,25 +52,23 @@ public class AutoFlowView extends LinearLayout implements View.OnClickListener {
     }
 
     private void b() {
-        this.setOrientation(0);
-        this.j = new ArrayList<AutoFlowView.Word>();
-        this.k = new ArrayList<View>();
-        g = a.a(this.getContext(), 12.0f);
-        b = a.a(this.getContext(), 6.0f);
-        c = a.a(this.getContext(), 12.0f);
-        d = a.a(this.getContext(), 12.0f);
-        e = a.a(this.getContext(), 16.0f);
-        f = a.a(this.getContext(), 4.0f);
-        if (a.a(this.getContext(), "customer_night_theme", false)) {
+        this.setOrientation(LinearLayout.HORIZONTAL);
+        this.j = new ArrayList<>();
+        this.k = new ArrayList<>();
+        g = com.clilystudio.netbook.hpay100.a.a.a(this.getContext(), 12.0f);
+        b = com.clilystudio.netbook.hpay100.a.a.a(this.getContext(), 6.0f);
+        c = com.clilystudio.netbook.hpay100.a.a.a(this.getContext(), 12.0f);
+        d = com.clilystudio.netbook.hpay100.a.a.a(this.getContext(), 12.0f);
+        e = com.clilystudio.netbook.hpay100.a.a.a(this.getContext(), 16.0f);
+        f = com.clilystudio.netbook.hpay100.a.a.a(this.getContext(), 4.0f);
+        if (com.clilystudio.netbook.hpay100.a.a.a(this.getContext(), "customer_night_theme", false)) {
             this.l = new int[]{R.drawable.bg_book_info_tag0_dark, R.drawable.bg_book_info_tag1_dark, R.drawable.bg_book_info_tag2_dark, R.drawable.bg_book_info_tag3_dark, R.drawable.bg_book_info_tag4_dark, R.drawable.bg_book_info_tag5_dark, R.drawable.bg_book_info_tag6_dark};
             return;
         }
         this.l = new int[]{R.drawable.bg_book_info_tag0, R.drawable.bg_book_info_tag1, R.drawable.bg_book_info_tag2, R.drawable.bg_book_info_tag3, R.drawable.bg_book_info_tag4, R.drawable.bg_book_info_tag5, R.drawable.bg_book_info_tag6};
     }
 
-    /*
-     * Enabled aggressive block sorting
-     */
+
     public final void a() {
         List list;
         Collections.sort(this.j, new Comparator<Word>() {
@@ -82,17 +81,16 @@ public class AutoFlowView extends LinearLayout implements View.OnClickListener {
         this.k.clear();
         LayoutInflater layoutInflater = LayoutInflater.from(this.getContext());
         List<AutoFlowView.Word> list2 = this.j;
-        ArrayList<h> arrayList = new ArrayList<h>();
+        ArrayList<h> arrayList = new ArrayList<>();
         int n = this.getMeasuredWidth();
         if (n == 0) {
-            ArrayList<h> arrayList2 = new ArrayList<h>();
+            ArrayList<h> arrayList2 = new ArrayList<>();
             this.a(arrayList2, 0);
             this.a(arrayList2, 1);
             this.a(arrayList2, 2);
             list = arrayList2;
         } else {
-            h h2 = new h(this);
-            h h3 = h2;
+            h h3 = new h(this);
             int n2 = 0;
             int n3 = 0;
             for (int j = 0; j < list2.size(); ++j) {
@@ -105,46 +103,37 @@ public class AutoFlowView extends LinearLayout implements View.OnClickListener {
                     h3 = new h(this);
                     n2 = n4;
                 }
-                if (n3 == 3) break;
+                if (n3 == 3) {
+                    break;
+                }
                 h3.a.add(word);
             }
             list = arrayList;
         }
-        int n5 = 0;
-        int n6 = 0;
-        do {
-            if (n5 >= list.size()) {
-                a.a(this.j, c.e, "search_hotword.txt");
-                return;
-            }
+        for (int n5 = 0; n5 < list.size(); n5++) {
             h h4 = (h) list.get(n5);
-            int n7 = n6;
-            for (int n8 = 0; n8 < h4.a.size(); autoFlowView$Word.show = 1 + autoFlowView$Word.show, ++n8) {
-                AutoFlowView.Word word = (AutoFlowView.Word) h4.a.get(n8);
-                TextView textView = (TextView) layoutInflater.inflate(R.layout.autoflow_hot_word, null, false);
+            for (int n8 = 0; n8 < h4.a.size();++n8) {
+                AutoFlowView.Word word = h4.a.get(n8);
+                TextView textView = (TextView) layoutInflater.inflate(R.layout.autoflow_hot_word, (ViewGroup)getRootView(), false);
                 textView.setTextSize(12.0f);
                 textView.setBackgroundResource(R.drawable.hot_word_bg);
                 textView.setPadding(c, b, c, b);
                 textView.setText(word.content);
                 textView.setOnClickListener(this);
                 textView.setTag(word.leftMargin);
-                textView.setBackgroundResource(this.l[n7 % this.l.length]);
+                textView.setBackgroundResource(this.l[n5 % this.l.length]);
                 this.k.add(textView);
                 this.addView(textView);
-                int n9 = n7 + 1;
-                n7 = n9;
+                word.show = 1 + word.show;
             }
-            ++n5;
-            n6 = n7;
-        } while (true);
+        }
+        com.clilystudio.netbook.hpay100.a.a.a(this.j, com.clilystudio.netbook.c.e, "search_hotword.txt");
     }
 
     @Override
     public void onClick(View view) {
         if (h != null) {
-            i i2 = h;
-            this.k.indexOf(view);
-            i2.a(((TextView) view).getText().toString());
+            h.a(((TextView) view).getText().toString());
         }
     }
 
@@ -196,15 +185,15 @@ public class AutoFlowView extends LinearLayout implements View.OnClickListener {
         if (list == null || list.size() == 0) {
             return;
         }
-        int n = list.get((int) 0).show;
+        int n = list.get(0).show;
         for (int j = 1; j < list.size(); ++j) {
-            if (list.get((int) j).show >= n) continue;
-            n = list.get((int) j).show;
+            if (list.get(j).show >= n) continue;
+            n = list.get(j).show;
         }
         for (int k = 0; k < list.size(); ++k) {
             AutoFlowView.Word word = new AutoFlowView.Word();
-            word.content = list.get((int) k).content;
-            word.show = list.get((int) k).show - n;
+            word.content = list.get(k).content;
+            word.show = list.get(k).show - n;
             this.j.add(word);
         }
         this.a();
@@ -220,7 +209,7 @@ public class AutoFlowView extends LinearLayout implements View.OnClickListener {
         this.a();
     }
 
-    public final  static  class Word implements Serializable {
+    public final static class Word implements Serializable {
         public String content;
         public int show;
         int leftMargin;

@@ -255,7 +255,7 @@ public final class m {
             lbl24:
             // 2 sources:
             if (var4_4) {
-                e.a(this.a, "\u6b63\u5728\u83b7\u53d6\u6765\u6e90");
+                e.a(this.a, "正在获取来源");
                 this.a(true);
                 return;
             }

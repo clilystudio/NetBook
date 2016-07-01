@@ -27,7 +27,7 @@ public class CornerImageView extends SmartImageView {
 
     public CornerImageView(Context context) {
         super(context);
-        this.b = (int) (0.5F + 2 * context.getResources().getDisplayMetrics().density);
+        this.b = com.clilystudio.netbook.hpay100.a.a.a(this.getContext(), 2.0f);
     }
 
     public CornerImageView(Context context, AttributeSet attributeSet) {

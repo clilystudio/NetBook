@@ -1,31 +1,18 @@
 .class public Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView;
 .super Landroid/widget/LinearLayout;
 .source "SourceFile"
-
 # interfaces
 .implements Landroid/view/View$OnClickListener;
-
-
 # static fields
 .field private static final a:Ljava/lang/String;
-
 .field private static b:I
-
 .field private static c:I
-
 .field private static d:I
-
 .field private static e:I
-
 .field private static f:I
-
 .field private static g:I
-
 .field private static h:Lcom/ushaqi/zhuishushenqi/widget/i;
-
 .field private static i:I
-
-
 # instance fields
 .field private j:Ljava/util/List;
     .annotation system Ldalvik/annotation/Signature;
@@ -37,7 +24,6 @@
         }
     .end annotation
 .end field
-
 .field private k:Ljava/util/List;
     .annotation system Ldalvik/annotation/Signature;
         value = {
@@ -48,55 +34,30 @@
         }
     .end annotation
 .end field
-
 .field private l:[I
-
-
 # direct methods
 .method static constructor <clinit>()V
     .locals 1
-
     .prologue
-    .line 28
-    const-class v0, Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView;
-
-    invoke-virtual {v0}, Ljava/lang/Class;->getSimpleName()Ljava/lang/String;
-
-    move-result-object v0
-
+    v0 = Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView;;
+    v0 = v0.getSimpleName();
     sput-object v0, Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView;->a:Ljava/lang/String;
-
-    return-void
+    return;
 .end method
-
 .method public constructor <init>(Landroid/content/Context;)V
     .locals 0
-
     .prologue
-    .line 58
-    invoke-direct {p0, p1}, Landroid/widget/LinearLayout;-><init>(Landroid/content/Context;)V
-
-    .line 59
-    invoke-direct {p0}, Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView;->b()V
-
-    .line 60
-    return-void
+    p0.<init>(p1);
+    p0.b();
+    return;
 .end method
-
 .method public constructor <init>(Landroid/content/Context;Landroid/util/AttributeSet;)V
     .locals 0
-
     .prologue
-    .line 63
-    invoke-direct {p0, p1, p2}, Landroid/widget/LinearLayout;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;)V
-
-    .line 64
-    invoke-direct {p0}, Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView;->b()V
-
-    .line 65
-    return-void
+    p0.<init>(p1, p2);
+    p0.b();
+    return;
 .end method
-
 .method private a(Ljava/util/List;I)V
     .locals 6
     .annotation system Ldalvik/annotation/Signature;
@@ -108,205 +69,84 @@
             ">;I)V"
         }
     .end annotation
-
     .prologue
-    .line 276
-    iget-object v0, p0, Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView;->j:Ljava/util/List;
-
-    invoke-interface {v0}, Ljava/util/List;->size()I
-
-    move-result v0
-
-    shl-int/lit8 v1, p2, 0x2
-
-    if-le v0, v1, :cond_0
-
-    .line 277
-    new-instance v0, Lcom/ushaqi/zhuishushenqi/widget/h;
-
-    invoke-direct {v0, p0}, Lcom/ushaqi/zhuishushenqi/widget/h;-><init>(Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView;)V
-
-    .line 278
-    sget v1, Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView;->e:I
-
-    invoke-virtual {v0, v1}, Lcom/ushaqi/zhuishushenqi/widget/h;->a(I)V
-
-    .line 279
-    iget-object v1, v0, Lcom/ushaqi/zhuishushenqi/widget/h;->a:Ljava/util/List;
-
-    iget-object v2, p0, Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView;->j:Ljava/util/List;
-
-    shl-int/lit8 v3, p2, 0x2
-
-    shl-int/lit8 v4, p2, 0x2
-
-    add-int/lit8 v4, v4, 0x4
-
-    iget-object v5, p0, Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView;->j:Ljava/util/List;
-
-    invoke-interface {v5}, Ljava/util/List;->size()I
-
-    move-result v5
-
-    invoke-static {v4, v5}, Ljava/lang/Math;->min(II)I
-
-    move-result v4
-
-    invoke-interface {v2, v3, v4}, Ljava/util/List;->subList(II)Ljava/util/List;
-
-    move-result-object v2
-
-    invoke-interface {v1, v2}, Ljava/util/List;->addAll(Ljava/util/Collection;)Z
-
-    .line 280
-    sget v1, Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView;->e:I
-
-    invoke-virtual {v0, v1}, Lcom/ushaqi/zhuishushenqi/widget/h;->a(I)V
-
-    .line 281
-    invoke-interface {p1, v0}, Ljava/util/List;->add(Ljava/lang/Object;)Z
-
-    .line 283
+    v0 = p0.Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView;->j;
+    v0 = v0.size();
+    v1 = p2 << 0x2;
+    if (v0 <= v1) {
+//       if-le v0, v1, :cond_0
+    }
+    v0 = new h();
+    v0.<init>(p0);
+    v1 = Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView;->e;
+    v0.a(v1);
+    v1 = v0.Lcom/ushaqi/zhuishushenqi/widget/h;->a;
+    v2 = p0.Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView;->j;
+    v3 = p2 << 0x2;
+    v4 = p2 << 0x2;
+    v4 = v4 + 0x4;
+    v5 = p0.Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView;->j;
+    v5 = v5.size();
+    v4 = Ljava/lang/Math.min(v4, v5);
+    v2 = v2.subList(v3, v4);
+    v1.addAll(v2);
+    v1 = Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView;->e;
+    v0.a(v1);
+    p1.add(v0);
     :cond_0
-    return-void
+    return;
 .end method
-
 .method private b()V
     .locals 5
-
     .prologue
-    const/4 v4, 0x7
-
-    const/4 v3, 0x0
-
-    const/high16 v2, 0x41400000    # 12.0f
-
-    .line 68
-    invoke-virtual {p0, v3}, Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView;->setOrientation(I)V
-
-    .line 69
-    new-instance v0, Ljava/util/ArrayList;
-
-    invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V
-
-    iput-object v0, p0, Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView;->j:Ljava/util/List;
-
-    .line 70
-    new-instance v0, Ljava/util/ArrayList;
-
-    invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V
-
-    iput-object v0, p0, Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView;->k:Ljava/util/List;
-
-    .line 71
-    invoke-virtual {p0}, Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView;->getContext()Landroid/content/Context;
-
-    move-result-object v0
-
-    invoke-static {v0, v2}, Lcom/arcsoft/hpay100/a/a;->a(Landroid/content/Context;F)I
-
-    move-result v0
-
+    v4 = 0x7;
+    v3 = 0x0;
+    v2 = 0x41400000    # 12.0f;
+    p0.setOrientation(v3);
+    v0 = new ArrayList();
+    v0.<init>();
+    p0.Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView;->j = v0;
+    v0 = new ArrayList();
+    v0.<init>();
+    p0.Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView;->k = v0;
+    v0 = p0.getContext();
+    v0 = Lcom/arcsoft/hpay100/a/a.a(v0, v2);
     sput v0, Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView;->g:I
-
-    .line 72
-    invoke-virtual {p0}, Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView;->getContext()Landroid/content/Context;
-
-    move-result-object v0
-
-    const/high16 v1, 0x40c00000    # 6.0f
-
-    invoke-static {v0, v1}, Lcom/arcsoft/hpay100/a/a;->a(Landroid/content/Context;F)I
-
-    move-result v0
-
+    v0 = p0.getContext();
+    v1 = 0x40c00000    # 6.0f;
+    v0 = Lcom/arcsoft/hpay100/a/a.a(v0, v1);
     sput v0, Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView;->b:I
-
-    .line 73
-    invoke-virtual {p0}, Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView;->getContext()Landroid/content/Context;
-
-    move-result-object v0
-
-    invoke-static {v0, v2}, Lcom/arcsoft/hpay100/a/a;->a(Landroid/content/Context;F)I
-
-    move-result v0
-
+    v0 = p0.getContext();
+    v0 = Lcom/arcsoft/hpay100/a/a.a(v0, v2);
     sput v0, Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView;->c:I
-
-    .line 74
-    invoke-virtual {p0}, Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView;->getContext()Landroid/content/Context;
-
-    move-result-object v0
-
-    invoke-static {v0, v2}, Lcom/arcsoft/hpay100/a/a;->a(Landroid/content/Context;F)I
-
-    move-result v0
-
+    v0 = p0.getContext();
+    v0 = Lcom/arcsoft/hpay100/a/a.a(v0, v2);
     sput v0, Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView;->d:I
-
-    .line 75
-    invoke-virtual {p0}, Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView;->getContext()Landroid/content/Context;
-
-    move-result-object v0
-
-    const/high16 v1, 0x41800000    # 16.0f
-
-    invoke-static {v0, v1}, Lcom/arcsoft/hpay100/a/a;->a(Landroid/content/Context;F)I
-
-    move-result v0
-
+    v0 = p0.getContext();
+    v1 = 0x41800000    # 16.0f;
+    v0 = Lcom/arcsoft/hpay100/a/a.a(v0, v1);
     sput v0, Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView;->e:I
-
-    .line 76
-    invoke-virtual {p0}, Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView;->getContext()Landroid/content/Context;
-
-    move-result-object v0
-
-    const/high16 v1, 0x40800000    # 4.0f
-
-    invoke-static {v0, v1}, Lcom/arcsoft/hpay100/a/a;->a(Landroid/content/Context;F)I
-
-    move-result v0
-
+    v0 = p0.getContext();
+    v1 = 0x40800000    # 4.0f;
+    v0 = Lcom/arcsoft/hpay100/a/a.a(v0, v1);
     sput v0, Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView;->f:I
-
-    .line 79
-    invoke-virtual {p0}, Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView;->getContext()Landroid/content/Context;
-
-    move-result-object v0
-
-    const-string v1, "customer_night_theme"
-
-    invoke-static {v0, v1, v3}, Lcom/arcsoft/hpay100/a/a;->a(Landroid/content/Context;Ljava/lang/String;Z)Z
-
-    move-result v0
-
-    if-eqz v0, :cond_0
-
-    .line 80
+    v0 = p0.getContext();
+    v1 = "customer_night_theme";
+    v0 = Lcom/arcsoft/hpay100/a/a.a(v0, v1, v3);
+    if (v0 == 0) {
+//       if-eqz v0, :cond_0
+    }
     new-array v0, v4, [I
-
     fill-array-data v0, :array_0
-
-    iput-object v0, p0, Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView;->l:[I
-
-    .line 88
+    p0.Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView;->l = v0;
     :goto_0
-    return-void
-
-    .line 84
+    return;
     :cond_0
     new-array v0, v4, [I
-
     fill-array-data v0, :array_1
-
-    iput-object v0, p0, Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView;->l:[I
-
+    p0.Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView;->l = v0;
     goto :goto_0
-
-    .line 80
     nop
-
     :array_0
     .array-data 4
         0x7f020077
@@ -317,8 +157,6 @@
         0x7f020081
         0x7f020083
     .end array-data
-
-    .line 84
     :array_1
     .array-data 4
         0x7f020076
@@ -330,612 +168,277 @@
         0x7f020082
     .end array-data
 .end method
-
-
 # virtual methods
 .method public final a()V
     .locals 13
-
     .prologue
-    const/4 v3, 0x0
-
-    .line 163
-    iget-object v0, p0, Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView;->j:Ljava/util/List;
-
-    new-instance v1, Lcom/ushaqi/zhuishushenqi/widget/g;
-
-    invoke-direct {v1, p0}, Lcom/ushaqi/zhuishushenqi/widget/g;-><init>(Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView;)V
-
-    invoke-static {v0, v1}, Ljava/util/Collections;->sort(Ljava/util/List;Ljava/util/Comparator;)V
-
-    .line 1157
-    invoke-virtual {p0}, Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView;->removeAllViews()V
-
-    .line 1158
-    iget-object v0, p0, Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView;->k:Ljava/util/List;
-
-    invoke-interface {v0}, Ljava/util/List;->clear()V
-
-    .line 1130
-    invoke-virtual {p0}, Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView;->getContext()Landroid/content/Context;
-
-    move-result-object v0
-
-    invoke-static {v0}, Landroid/view/LayoutInflater;->from(Landroid/content/Context;)Landroid/view/LayoutInflater;
-
-    move-result-object v8
-
-    .line 1173
-    iget-object v9, p0, Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView;->j:Ljava/util/List;
-
-    .line 1174
-    new-instance v6, Ljava/util/ArrayList;
-
-    invoke-direct {v6}, Ljava/util/ArrayList;-><init>()V
-
-    .line 1177
-    invoke-virtual {p0}, Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView;->getMeasuredWidth()I
-
-    move-result v10
-
-    .line 1178
-    if-nez v10, :cond_0
-
-    .line 1267
-    new-instance v0, Ljava/util/ArrayList;
-
-    invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V
-
-    .line 1268
-    invoke-direct {p0, v0, v3}, Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView;->a(Ljava/util/List;I)V
-
-    .line 1269
-    const/4 v1, 0x1
-
-    invoke-direct {p0, v0, v1}, Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView;->a(Ljava/util/List;I)V
-
-    .line 1270
-    const/4 v1, 0x2
-
-    invoke-direct {p0, v0, v1}, Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView;->a(Ljava/util/List;I)V
-
-    move-object v4, v0
-
+    v3 = 0x0;
+    v0 = p0.Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView;->j;
+    v1 = new g();
+    v1.<init>(p0);
+    Ljava/util/Collections.sort(v0, v1);
+    p0.removeAllViews();
+    v0 = p0.Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView;->k;
+    v0.clear();
+    v0 = p0.getContext();
+    v8 = Landroid/view/LayoutInflater.from(v0);
+    v9 = p0.Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView;->j;
+    v6 = new ArrayList();
+    v6.<init>();
+    v10 = p0.getMeasuredWidth();
+    if (v10 != 0) {
+//       if-nez v10, :cond_0
+    }
+    v0 = new ArrayList();
+    v0.<init>();
+    p0.a(v0, v3);
+    v1 = 0x1;
+    p0.a(v0, v1);
+    v1 = 0x2;
+    p0.a(v0, v1);
+    v4 = v0;
     :goto_0
-    move v7, v3
-
-    move v1, v3
-
-    .line 1134
+    v7 = v3;
+    v1 = v3;
     :goto_1
-    invoke-interface {v4}, Ljava/util/List;->size()I
-
-    move-result v0
-
-    if-ge v7, v0, :cond_4
-
-    .line 1135
-    invoke-interface {v4, v7}, Ljava/util/List;->get(I)Ljava/lang/Object;
-
-    move-result-object v0
-
-    move-object v2, v0
-
+    v0 = v4.size();
+    if (v7 >= v0) {
+//       if-ge v7, v0, :cond_4
+    }
+    v0 = v4.get(v7);
+    v2 = v0;
     check-cast v2, Lcom/ushaqi/zhuishushenqi/widget/h;
-
-    move v5, v3
-
-    move v6, v1
-
-    .line 1136
+    v5 = v3;
+    v6 = v1;
     :goto_2
-    iget-object v0, v2, Lcom/ushaqi/zhuishushenqi/widget/h;->a:Ljava/util/List;
-
-    invoke-interface {v0}, Ljava/util/List;->size()I
-
-    move-result v0
-
-    if-ge v5, v0, :cond_3
-
-    .line 1137
-    iget-object v0, v2, Lcom/ushaqi/zhuishushenqi/widget/h;->a:Ljava/util/List;
-
-    invoke-interface {v0, v5}, Ljava/util/List;->get(I)Ljava/lang/Object;
-
-    move-result-object v0
-
-    move-object v1, v0
-
+    v0 = v2.Lcom/ushaqi/zhuishushenqi/widget/h;->a;
+    v0 = v0.size();
+    if (v5 >= v0) {
+//       if-ge v5, v0, :cond_3
+    }
+    v0 = v2.Lcom/ushaqi/zhuishushenqi/widget/h;->a;
+    v0 = v0.get(v5);
+    v1 = v0;
     check-cast v1, Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView$Word;
-
-    .line 1138
-    const v0, 0x7f030072
-
-    const/4 v9, 0x0
-
-    invoke-virtual {v8, v0, v9, v3}, Landroid/view/LayoutInflater;->inflate(ILandroid/view/ViewGroup;Z)Landroid/view/View;
-
-    move-result-object v0
-
+    v0 = 0x7f030072;
+    v9 = 0x0;
+    v0 = v8.inflate(v0, v9, v3);
     check-cast v0, Landroid/widget/TextView;
-
-    .line 1139
-    const/high16 v9, 0x41400000    # 12.0f
-
-    invoke-virtual {v0, v9}, Landroid/widget/TextView;->setTextSize(F)V
-
-    .line 1140
-    const v9, 0x7f020154
-
-    invoke-virtual {v0, v9}, Landroid/widget/TextView;->setBackgroundResource(I)V
-
-    .line 1141
-    sget v9, Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView;->c:I
-
-    sget v10, Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView;->b:I
-
-    sget v11, Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView;->c:I
-
-    sget v12, Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView;->b:I
-
-    invoke-virtual {v0, v9, v10, v11, v12}, Landroid/widget/TextView;->setPadding(IIII)V
-
-    .line 1142
-    iget-object v9, v1, Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView$Word;->content:Ljava/lang/String;
-
-    invoke-virtual {v0, v9}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
-
-    .line 1143
-    invoke-virtual {v0, p0}, Landroid/widget/TextView;->setOnClickListener(Landroid/view/View$OnClickListener;)V
-
-    .line 1144
-    iget v9, v1, Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView$Word;->leftMargin:I
-
-    invoke-static {v9}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-
-    move-result-object v9
-
-    invoke-virtual {v0, v9}, Landroid/widget/TextView;->setTag(Ljava/lang/Object;)V
-
-    .line 1145
-    iget-object v9, p0, Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView;->l:[I
-
-    iget-object v10, p0, Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView;->l:[I
-
-    array-length v10, v10
-
-    rem-int v10, v6, v10
-
-    aget v9, v9, v10
-
-    invoke-virtual {v0, v9}, Landroid/widget/TextView;->setBackgroundResource(I)V
-
-    .line 1146
-    iget-object v9, p0, Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView;->k:Ljava/util/List;
-
-    invoke-interface {v9, v0}, Ljava/util/List;->add(Ljava/lang/Object;)Z
-
-    .line 1147
-    invoke-virtual {p0, v0}, Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView;->addView(Landroid/view/View;)V
-
-    .line 1148
-    iget v0, v1, Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView$Word;->show:I
-
-    add-int/lit8 v0, v0, 0x1
-
-    iput v0, v1, Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView$Word;->show:I
-
-    .line 1149
-    add-int/lit8 v1, v6, 0x1
-
-    .line 1136
-    add-int/lit8 v0, v5, 0x1
-
-    move v5, v0
-
-    move v6, v1
-
+    v9 = 0x41400000    # 12.0f;
+    v0.setTextSize(v9);
+    v9 = 0x7f020154;
+    v0.setBackgroundResource(v9);
+    v9 = Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView;->c;
+    v10 = Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView;->b;
+    v11 = Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView;->c;
+    v12 = Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView;->b;
+    v0.setPadding(v9, v10, v11, v12);
+    v9 = v1.Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView$Word;->content;
+    v0.setText(v9);
+    v0.setOnClickListener(p0);
+    v9 = v1.Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView$Word;->leftMargin;
+    v9 = Ljava/lang/Integer.valueOf(v9);
+    v0.setTag(v9);
+    v9 = p0.Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView;->l;
+    v10 = p0.Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView;->l;
+    v10 = v10.length;
+    v10 = v6 % v10;
+    v9 = v9[v10];
+    v0.setBackgroundResource(v9);
+    v9 = p0.Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView;->k;
+    v9.add(v0);
+    p0.addView(v0);
+    v0 = v1.Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView$Word;->show;
+    v0 = v0 + 0x1;
+    v1.Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView$Word;->show = v0;
+    v1 = v6 + 0x1;
+    v0 = v5 + 0x1;
+    v5 = v0;
+    v6 = v1;
     goto :goto_2
-
-    .line 1179
     :cond_0
-    new-instance v0, Lcom/ushaqi/zhuishushenqi/widget/h;
-
-    invoke-direct {v0, p0}, Lcom/ushaqi/zhuishushenqi/widget/h;-><init>(Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView;)V
-
-    move v1, v3
-
-    move-object v2, v0
-
-    move v4, v3
-
-    move v5, v3
-
-    .line 1180
+    v0 = new h();
+    v0.<init>(p0);
+    v1 = v3;
+    v2 = v0;
+    v4 = v3;
+    v5 = v3;
     :goto_3
-    invoke-interface {v9}, Ljava/util/List;->size()I
-
-    move-result v0
-
-    if-ge v1, v0, :cond_2
-
-    .line 1181
-    invoke-interface {v9, v1}, Ljava/util/List;->get(I)Ljava/lang/Object;
-
-    move-result-object v0
-
+    v0 = v9.size();
+    if (v1 >= v0) {
+//       if-ge v1, v0, :cond_2
+    }
+    v0 = v9.get(v1);
     check-cast v0, Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView$Word;
-
-    .line 1182
-    iget-object v7, v0, Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView$Word;->content:Ljava/lang/String;
-
-    invoke-virtual {v7}, Ljava/lang/String;->length()I
-
-    move-result v7
-
-    .line 1183
-    sget v11, Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView;->g:I
-
-    mul-int/2addr v7, v11
-
-    sget v11, Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView;->c:I
-
-    shl-int/lit8 v11, v11, 0x1
-
-    add-int/2addr v7, v11
-
-    sget v11, Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView;->e:I
-
-    add-int/2addr v7, v11
-
-    .line 1184
-    add-int/2addr v4, v7
-
-    .line 1185
-    sget v11, Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView;->f:I
-
-    sub-int v11, v10, v11
-
-    if-lt v4, v11, :cond_1
-
-    .line 1186
-    add-int/lit8 v5, v5, 0x1
-
-    .line 1189
-    sget v4, Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView;->e:I
-
-    invoke-virtual {v2, v4}, Lcom/ushaqi/zhuishushenqi/widget/h;->a(I)V
-
-    .line 1193
-    invoke-interface {v6, v2}, Ljava/util/List;->add(Ljava/lang/Object;)Z
-
-    .line 1194
-    new-instance v2, Lcom/ushaqi/zhuishushenqi/widget/h;
-
-    invoke-direct {v2, p0}, Lcom/ushaqi/zhuishushenqi/widget/h;-><init>(Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView;)V
-
-    move v4, v7
-
-    .line 1197
+    v7 = v0.Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView$Word;->content;
+    v7 = v7.length();
+    v11 = Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView;->g;
+    v7 *= v11;
+    v11 = Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView;->c;
+    v11 = v11 << 0x1;
+    v7 += v11;
+    v11 = Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView;->e;
+    v7 += v11;
+    v4 += v7;
+    v11 = Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView;->f;
+    v11 = v10 - v11;
+    if (v4 < v11) {
+//       if-lt v4, v11, :cond_1
+    }
+    v5 = v5 + 0x1;
+    v4 = Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView;->e;
+    v2.a(v4);
+    v6.add(v2);
+    v2 = new h();
+    v2.<init>(p0);
+    v4 = v7;
     :cond_1
-    const/4 v7, 0x3
-
-    if-eq v5, v7, :cond_2
-
-    .line 1200
-    iget-object v7, v2, Lcom/ushaqi/zhuishushenqi/widget/h;->a:Ljava/util/List;
-
-    invoke-interface {v7, v0}, Ljava/util/List;->add(Ljava/lang/Object;)Z
-
-    .line 1180
-    add-int/lit8 v0, v1, 0x1
-
-    move v1, v0
-
+    v7 = 0x3;
+    if (v5 == v7) {
+//       if-eq v5, v7, :cond_2
+    }
+    v7 = v2.Lcom/ushaqi/zhuishushenqi/widget/h;->a;
+    v7.add(v0);
+    v0 = v1 + 0x1;
+    v1 = v0;
     goto :goto_3
-
     :cond_2
-    move-object v4, v6
-
-    .line 1202
+    v4 = v6;
     goto/16 :goto_0
-
-    .line 1134
     :cond_3
-    add-int/lit8 v0, v7, 0x1
-
-    move v7, v0
-
-    move v1, v6
-
+    v0 = v7 + 0x1;
+    v7 = v0;
+    v1 = v6;
     goto/16 :goto_1
-
-    .line 1152
     :cond_4
-    iget-object v0, p0, Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView;->j:Ljava/util/List;
-
-    sget-object v1, Lcom/ushaqi/zhuishushenqi/c;->e:Ljava/lang/String;
-
-    const-string v2, "search_hotword.txt"
-
-    invoke-static {v0, v1, v2}, Lcom/arcsoft/hpay100/a/a;->a(Ljava/lang/Object;Ljava/lang/String;Ljava/lang/String;)V
-
-    .line 170
-    return-void
+    v0 = p0.Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView;->j;
+    v1 = Lcom/ushaqi/zhuishushenqi/c;->e;
+    v2 = "search_hotword.txt";
+    Lcom/arcsoft/hpay100/a/a.a(v0, v1, v2);
+    return;
 .end method
-
 .method public onClick(Landroid/view/View;)V
     .locals 2
-
     .prologue
-    .line 261
-    sget-object v0, Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView;->h:Lcom/ushaqi/zhuishushenqi/widget/i;
-
-    if-eqz v0, :cond_0
-
-    .line 262
-    sget-object v0, Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView;->h:Lcom/ushaqi/zhuishushenqi/widget/i;
-
-    iget-object v1, p0, Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView;->k:Ljava/util/List;
-
-    invoke-interface {v1, p1}, Ljava/util/List;->indexOf(Ljava/lang/Object;)I
-
+    v0 = Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView;->h;
+    if (v0 == 0) {
+//       if-eqz v0, :cond_0
+    }
+    v0 = Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView;->h;
+    v1 = p0.Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView;->k;
+    v1.indexOf(p1);
     check-cast p1, Landroid/widget/TextView;
-
-    invoke-virtual {p1}, Landroid/widget/TextView;->getText()Ljava/lang/CharSequence;
-
-    move-result-object v1
-
-    invoke-interface {v1}, Ljava/lang/CharSequence;->toString()Ljava/lang/String;
-
-    move-result-object v1
-
-    invoke-interface {v0, v1}, Lcom/ushaqi/zhuishushenqi/widget/i;->a(Ljava/lang/String;)V
-
-    .line 264
+    v1 = p1.getText();
+    v1 = v1.toString();
+    v0.a(v1);
     :cond_0
-    return-void
+    return;
 .end method
-
 .method protected onLayout(ZIIII)V
     .locals 10
-
     .prologue
-    const/4 v0, 0x0
-
-    .line 224
-    sget v1, Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView;->c:I
-
-    sub-int v5, p4, v1
-
-    .line 228
-    sget-object v1, Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView;->a:Ljava/lang/String;
-
-    new-instance v2, Ljava/lang/StringBuilder;
-
-    const-string v3, "changed = "
-
-    invoke-direct {v2, v3}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
-
-    invoke-virtual {v2, p1}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
-
-    move-result-object v2
-
-    const-string v3, " left = 0"
-
-    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v2
-
-    const-string v3, " top = 0"
-
-    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v2
-
-    const-string v3, " right = "
-
-    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v2
-
-    invoke-virtual {v2, v5}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v2
-
-    const-string v3, " botom = "
-
-    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v2
-
-    invoke-virtual {v2, p5}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v2
-
-    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v2
-
-    invoke-static {v1, v2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
-
-    .line 231
-    invoke-virtual {p0}, Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView;->getChildCount()I
-
-    move-result v6
-
-    move v4, v0
-
-    move v1, v0
-
-    move v2, v0
-
-    .line 236
+    v0 = 0x0;
+    v1 = Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView;->c;
+    v5 = p4 - v1;
+    v1 = Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView;->a;
+    v2 = new StringBuilder();
+    v3 = "changed = ";
+    v2.<init>(v3);
+    v2 = v2.append(p1);
+    v3 = " left = 0";
+    v2 = v2.append(v3);
+    v3 = " top = 0";
+    v2 = v2.append(v3);
+    v3 = " right = ";
+    v2 = v2.append(v3);
+    v2 = v2.append(v5);
+    v3 = " botom = ";
+    v2 = v2.append(v3);
+    v2 = v2.append(p5);
+    v2 = v2.toString();
+    Landroid/util/Log.d(v1, v2);
+    v6 = p0.getChildCount();
+    v4 = v0;
+    v1 = v0;
+    v2 = v0;
     :goto_0
-    if-ge v4, v6, :cond_2
-
-    .line 237
-    invoke-virtual {p0, v4}, Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView;->getChildAt(I)Landroid/view/View;
-
-    move-result-object v7
-
-    .line 238
-    invoke-virtual {v7}, Landroid/view/View;->getMeasuredWidth()I
-
-    move-result v8
-
-    .line 239
-    invoke-virtual {v7}, Landroid/view/View;->getMeasuredHeight()I
-
-    move-result v3
-
-    .line 240
-    invoke-virtual {v7}, Landroid/view/View;->getTag()Ljava/lang/Object;
-
-    move-result-object v0
-
+    if (v4 >= v6) {
+//       if-ge v4, v6, :cond_2
+    }
+    v7 = p0.getChildAt(v4);
+    v8 = v7.getMeasuredWidth();
+    v3 = v7.getMeasuredHeight();
+    v0 = v7.getTag();
     check-cast v0, Ljava/lang/Integer;
-
-    invoke-virtual {v0}, Ljava/lang/Integer;->intValue()I
-
-    move-result v9
-
-    .line 241
-    add-int v0, v8, v9
-
-    add-int/2addr v1, v0
-
-    .line 242
-    if-nez v2, :cond_1
-
-    move v0, v3
-
-    .line 248
+    v9 = v0.intValue();
+    v0 = v8 + v9;
+    v1 += v0;
+    if (v2 != 0) {
+//       if-nez v2, :cond_1
+    }
+    v0 = v3;
     :goto_1
-    if-lt v1, v5, :cond_0
-
-    .line 249
-    add-int v1, v8, v9
-
-    .line 250
-    add-int/lit8 v2, v2, 0x1
-
-    .line 251
-    sget v0, Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView;->d:I
-
-    add-int/2addr v0, v3
-
-    mul-int/2addr v0, v2
-
-    add-int/2addr v0, v3
-
-    .line 255
+    if (v1 < v5) {
+//       if-lt v1, v5, :cond_0
+    }
+    v1 = v8 + v9;
+    v2 = v2 + 0x1;
+    v0 = Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView;->d;
+    v0 += v3;
+    v0 *= v2;
+    v0 += v3;
     :cond_0
-    sub-int v8, v1, v8
-
-    sub-int v3, v0, v3
-
-    invoke-virtual {v7, v8, v3, v1, v0}, Landroid/view/View;->layout(IIII)V
-
-    .line 236
-    add-int/lit8 v0, v4, 0x1
-
-    move v4, v0
-
+    v8 = v1 - v8;
+    v3 = v0 - v3;
+    v7.layout(v8, v3, v1, v0);
+    v0 = v4 + 0x1;
+    v4 = v0;
     goto :goto_0
-
-    .line 245
     :cond_1
-    sget v0, Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView;->d:I
-
-    add-int/2addr v0, v3
-
-    mul-int/2addr v0, v2
-
-    add-int/2addr v0, v3
-
+    v0 = Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView;->d;
+    v0 += v3;
+    v0 *= v2;
+    v0 += v3;
     goto :goto_1
-
-    .line 257
     :cond_2
-    return-void
+    return;
 .end method
-
 .method protected onMeasure(II)V
     .locals 5
-
     .prologue
-    const/4 v1, 0x0
-
-    .line 208
-    invoke-virtual {p0}, Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView;->getChildCount()I
-
-    move-result v2
-
-    move v0, v1
-
-    .line 209
+    v1 = 0x0;
+    v2 = p0.getChildCount();
+    v0 = v1;
     :goto_0
-    if-ge v0, v2, :cond_1
-
-    .line 210
-    invoke-virtual {p0, v0}, Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView;->getChildAt(I)Landroid/view/View;
-
-    move-result-object v3
-
-    .line 211
-    invoke-virtual {v3, v1, v1}, Landroid/view/View;->measure(II)V
-
-    .line 212
-    if-nez v0, :cond_0
-
-    .line 213
-    invoke-virtual {v3}, Landroid/view/View;->getMeasuredHeight()I
-
-    move-result v3
-
-    sget v4, Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView;->d:I
-
-    add-int/2addr v3, v4
-
-    mul-int/lit8 v3, v3, 0x3
-
+    if (v0 >= v2) {
+//       if-ge v0, v2, :cond_1
+    }
+    v3 = p0.getChildAt(v0);
+    v3.measure(v1, v1);
+    if (v0 != 0) {
+//       if-nez v0, :cond_0
+    }
+    v3 = v3.getMeasuredHeight();
+    v4 = Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView;->d;
+    v3 += v4;
+    v3 = v3 * 0x3;
     sput v3, Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView;->i:I
-
-    .line 209
     :cond_0
-    add-int/lit8 v0, v0, 0x1
-
+    v0 = v0 + 0x1;
     goto :goto_0
-
-    .line 216
     :cond_1
-    invoke-static {p1}, Landroid/view/View$MeasureSpec;->getSize(I)I
-
-    .line 217
-    invoke-static {p1}, Landroid/view/View$MeasureSpec;->getSize(I)I
-
-    move-result v0
-
-    sget v1, Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView;->i:I
-
-    invoke-virtual {p0, v0, v1}, Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView;->setMeasuredDimension(II)V
-
-    .line 218
-    return-void
+    Landroid/view/View$MeasureSpec.getSize(p1);
+    v0 = Landroid/view/View$MeasureSpec.getSize(p1);
+    v1 = Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView;->i;
+    p0.setMeasuredDimension(v0, v1);
+    return;
 .end method
-
 .method public setOnItemClickListener(Lcom/ushaqi/zhuishushenqi/widget/i;)V
     .locals 0
-
     .prologue
-    .line 91
     sput-object p1, Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView;->h:Lcom/ushaqi/zhuishushenqi/widget/i;
-
-    .line 92
-    return-void
+    return;
 .end method
-
 .method public setWords(Ljava/util/List;)V
     .locals 4
     .annotation system Ldalvik/annotation/Signature;
@@ -947,181 +450,92 @@
             ">;)V"
         }
     .end annotation
-
     .prologue
-    const/4 v3, 0x0
-
-    .line 108
-    iget-object v0, p0, Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView;->j:Ljava/util/List;
-
-    invoke-interface {v0}, Ljava/util/List;->clear()V
-
-    .line 109
-    if-eqz p1, :cond_0
-
-    invoke-interface {p1}, Ljava/util/List;->size()I
-
-    move-result v0
-
-    if-nez v0, :cond_1
-
-    .line 125
+    v3 = 0x0;
+    v0 = p0.Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView;->j;
+    v0.clear();
+    if (p1 == 0) {
+//       if-eqz p1, :cond_0
+    }
+    v0 = p1.size();
+    if (v0 != 0) {
+//       if-nez v0, :cond_1
+    }
     :cond_0
     :goto_0
-    return-void
-
-    .line 112
+    return;
     :cond_1
-    invoke-interface {p1, v3}, Ljava/util/List;->get(I)Ljava/lang/Object;
-
-    move-result-object v0
-
+    v0 = p1.get(v3);
     check-cast v0, Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView$Word;
-
-    iget v1, v0, Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView$Word;->show:I
-
-    .line 113
-    const/4 v0, 0x1
-
-    move v2, v1
-
-    move v1, v0
-
+    v1 = v0.Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView$Word;->show;
+    v0 = 0x1;
+    v2 = v1;
+    v1 = v0;
     :goto_1
-    invoke-interface {p1}, Ljava/util/List;->size()I
-
-    move-result v0
-
-    if-ge v1, v0, :cond_3
-
-    .line 114
-    invoke-interface {p1, v1}, Ljava/util/List;->get(I)Ljava/lang/Object;
-
-    move-result-object v0
-
+    v0 = p1.size();
+    if (v1 >= v0) {
+//       if-ge v1, v0, :cond_3
+    }
+    v0 = p1.get(v1);
     check-cast v0, Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView$Word;
-
-    iget v0, v0, Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView$Word;->show:I
-
-    if-ge v0, v2, :cond_2
-
-    .line 115
-    invoke-interface {p1, v1}, Ljava/util/List;->get(I)Ljava/lang/Object;
-
-    move-result-object v0
-
+    v0 = v0.Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView$Word;->show;
+    if (v0 >= v2) {
+//       if-ge v0, v2, :cond_2
+    }
+    v0 = p1.get(v1);
     check-cast v0, Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView$Word;
-
-    iget v2, v0, Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView$Word;->show:I
-
-    .line 113
+    v2 = v0.Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView$Word;->show;
     :cond_2
-    add-int/lit8 v0, v1, 0x1
-
-    move v1, v0
-
+    v0 = v1 + 0x1;
+    v1 = v0;
     goto :goto_1
-
     :cond_3
-    move v1, v3
-
-    .line 118
+    v1 = v3;
     :goto_2
-    invoke-interface {p1}, Ljava/util/List;->size()I
-
-    move-result v0
-
-    if-ge v1, v0, :cond_4
-
-    .line 119
-    new-instance v3, Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView$Word;
-
-    invoke-direct {v3}, Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView$Word;-><init>()V
-
-    .line 120
-    invoke-interface {p1, v1}, Ljava/util/List;->get(I)Ljava/lang/Object;
-
-    move-result-object v0
-
+    v0 = p1.size();
+    if (v1 >= v0) {
+//       if-ge v1, v0, :cond_4
+    }
+    v3 = new AutoFlowView$Word();
+    v3.<init>();
+    v0 = p1.get(v1);
     check-cast v0, Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView$Word;
-
-    iget-object v0, v0, Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView$Word;->content:Ljava/lang/String;
-
-    iput-object v0, v3, Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView$Word;->content:Ljava/lang/String;
-
-    .line 121
-    invoke-interface {p1, v1}, Ljava/util/List;->get(I)Ljava/lang/Object;
-
-    move-result-object v0
-
+    v0 = v0.Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView$Word;->content;
+    v3.Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView$Word;->content = v0;
+    v0 = p1.get(v1);
     check-cast v0, Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView$Word;
-
-    iget v0, v0, Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView$Word;->show:I
-
-    sub-int/2addr v0, v2
-
-    iput v0, v3, Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView$Word;->show:I
-
-    .line 122
-    iget-object v0, p0, Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView;->j:Ljava/util/List;
-
-    invoke-interface {v0, v3}, Ljava/util/List;->add(Ljava/lang/Object;)Z
-
-    .line 118
-    add-int/lit8 v0, v1, 0x1
-
-    move v1, v0
-
+    v0 = v0.Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView$Word;->show;
+    v0 -= v2;
+    v3.Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView$Word;->show = v0;
+    v0 = p0.Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView;->j;
+    v0.add(v3);
+    v0 = v1 + 0x1;
+    v1 = v0;
     goto :goto_2
-
-    .line 124
     :cond_4
-    invoke-virtual {p0}, Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView;->a()V
-
+    p0.a();
     goto :goto_0
 .end method
-
 .method public setWords([Ljava/lang/String;)V
     .locals 4
-
     .prologue
-    .line 98
-    iget-object v0, p0, Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView;->j:Ljava/util/List;
-
-    invoke-interface {v0}, Ljava/util/List;->clear()V
-
-    .line 99
-    array-length v1, p1
-
-    const/4 v0, 0x0
-
+    v0 = p0.Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView;->j;
+    v0.clear();
+    v1 = p1.length;
+    v0 = 0x0;
     :goto_0
-    if-ge v0, v1, :cond_0
-
-    aget-object v2, p1, v0
-
-    .line 100
-    new-instance v3, Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView$Word;
-
-    invoke-direct {v3}, Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView$Word;-><init>()V
-
-    .line 101
-    iput-object v2, v3, Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView$Word;->content:Ljava/lang/String;
-
-    .line 102
-    iget-object v2, p0, Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView;->j:Ljava/util/List;
-
-    invoke-interface {v2, v3}, Ljava/util/List;->add(Ljava/lang/Object;)Z
-
-    .line 99
-    add-int/lit8 v0, v0, 0x1
-
+    if (v0 >= v1) {
+//       if-ge v0, v1, :cond_0
+    }
+    v2 = p1[v0];
+    v3 = new AutoFlowView$Word();
+    v3.<init>();
+    v3.Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView$Word;->content = v2;
+    v2 = p0.Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView;->j;
+    v2.add(v3);
+    v0 = v0 + 0x1;
     goto :goto_0
-
-    .line 104
     :cond_0
-    invoke-virtual {p0}, Lcom/ushaqi/zhuishushenqi/widget/AutoFlowView;->a()V
-
-    .line 105
-    return-void
+    p0.a();
+    return;
 .end method

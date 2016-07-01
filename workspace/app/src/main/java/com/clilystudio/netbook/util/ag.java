@@ -46,8 +46,8 @@ public final class ag {
             a = new ag();
         }
         e = new Handler(context.getMainLooper(), h);
-        b.a();
-        d = b.b();
+        com.clilystudio.netbook.api.b.a();
+        d = com.clilystudio.netbook.api.b.b();
         b = new Handler[3];
         for (int i = 0; i < 3; ++i) {
             aj aj2 = new aj("PostCountWorker" + i);

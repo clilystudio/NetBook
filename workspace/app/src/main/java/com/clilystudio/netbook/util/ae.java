@@ -29,17 +29,15 @@ public final class ae {
      * Lifted jumps to return sites
      */
     private af a(String string) {
-        Matcher matcher = Pattern.compile("[\u7ae0|\u7b2c]?(\\d+)[\u7ae0|\u8282|\u56de]([^\\(]*)(\\(.+?\\))?").matcher(string);
-        if (!matcher.find()) return new af(this, 0, string, "");
+        Matcher matcher = Pattern.compile("[章|第]?(\\d+)[章|节|回]([^\\(]*)(\\(.+?\\))?").matcher(string);
+        if (!matcher.find()) {
+            return new af(this, 0, string, "");
+        }
         String string2 = matcher.group(1);
         int n = 0;
-        if (string2 == null) {
-            do {
-                return new af(this, n, matcher.group(2), matcher.group(3));
-                break;
-            } while (true);
+        if (string2 != null) {
+            n = Integer.parseInt(string2);
         }
-        n = Integer.parseInt(string2);
         return new af(this, n, matcher.group(2), matcher.group(3));
     }
 
@@ -79,7 +77,7 @@ public final class ae {
 
     private String c(String string) {
         StringBuffer stringBuffer = new StringBuffer();
-        Matcher matcher = Pattern.compile("[" + a.a(this.f.keySet(), "|") + "|" + a.a(this.g.keySet(), "|") + "]+").matcher(string);
+        Matcher matcher = Pattern.compile("[" + com.clilystudio.netbook.hpay100.a.a.a(this.f.keySet(), "|") + "|" + com.clilystudio.netbook.hpay100.a.a.a(this.g.keySet(), "|") + "]+").matcher(string);
         while (matcher.find()) {
             matcher.appendReplacement(stringBuffer, String.valueOf(this.d(matcher.group())));
         }
