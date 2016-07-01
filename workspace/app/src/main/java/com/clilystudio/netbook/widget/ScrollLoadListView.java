@@ -30,8 +30,7 @@ public class ScrollLoadListView extends ListView implements AbsListView.OnScroll
     @Override
     public void onScroll(AbsListView absListView, int n, int n2, int n3) {
         if (this.a != null) {
-            boolean bl = n3 > 0 && n + n2 >= n3 - 1;
-            this.b = bl;
+            this.b = n3 > 0 && n + n2 >= n3 - 1;
         }
     }
 

@@ -4,7 +4,6 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -15,8 +14,8 @@ public class LabelPtrListView extends HeaderPtrListView {
 
     public LabelPtrListView(Context context, AttributeSet attributeSet) {
         super(context, attributeSet);
-        ListView listView = (ListView) this.h();
-        View view = LayoutInflater.from(context).inflate(R.layout.my_ugc_header_label, (ViewGroup) listView, false);
+        ListView listView = this.getRefreshableView();
+        View view = LayoutInflater.from(context).inflate(R.layout.my_ugc_header_label, listView, false);
         this.c = (TextView) view.findViewById(R.id.content);
         this.c.setVisibility(View.GONE);
         listView.addHeaderView(view, null, false);

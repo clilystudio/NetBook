@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
 
-import com.clilystudio.netbook.R$styleable;
+import com.clilystudio.netbook.R;
 
 public class UserInfoLvTaskView extends UserInfoTaskView {
     private final boolean a;
@@ -12,9 +12,9 @@ public class UserInfoLvTaskView extends UserInfoTaskView {
 
     public UserInfoLvTaskView(Context context, AttributeSet attributeSet) {
         super(context, attributeSet);
-        TypedArray typedArray = context.obtainStyledAttributes(attributeSet, R$styleable.UserInfoLvTaskView);
-        this.a = typedArray.getBoolean(0, false);
-        this.b = typedArray.getInteger(1, 1);
+        TypedArray typedArray = context.obtainStyledAttributes(attributeSet, R.styleable.UserInfoLvTaskView);
+        this.a = typedArray.getBoolean(R.styleable.UserInfoLvTaskView_lv_format, false);
+        this.b = typedArray.getInteger(R.styleable.UserInfoLvTaskView_unknown_format, 1);
         typedArray.recycle();
     }
 
@@ -33,6 +33,7 @@ public class UserInfoLvTaskView extends UserInfoTaskView {
     }
 
     public void setLv(int n) {
-        this.mExp.setText("\u7b49\u7ea7" + n);
+        String text = "等级" + n;
+        this.mExp.setText(text);
     }
 }

@@ -26,7 +26,6 @@ import com.clilystudio.netbook.ui.BaseActivity;
 import com.clilystudio.netbook.util.W;
 import com.clilystudio.netbook.widget.CoverView;
 import com.clilystudio.netbook.widget.SearchEditText;
-import com.clilystudio.netbook.widget.SearchFixListView;
 import com.clilystudio.netbook.widget.ax;
 
 import java.util.ArrayList;
@@ -41,7 +40,7 @@ public class UGCGuideAddBookActivity extends BaseActivity implements View.OnClic
     private View e;
     private View f;
     private ListView g;
-    private SearchFixListView h;
+    private ListView h;
     private View i;
     private View j;
     private W<BookSummary> k;
@@ -105,7 +104,7 @@ public class UGCGuideAddBookActivity extends BaseActivity implements View.OnClic
         return uGCGuideAddBookActivity.n;
     }
 
-    static /* synthetic */ SearchFixListView f(UGCGuideAddBookActivity uGCGuideAddBookActivity) {
+    static /* synthetic */ ListView f(UGCGuideAddBookActivity uGCGuideAddBookActivity) {
         return uGCGuideAddBookActivity.h;
     }
 
@@ -309,7 +308,7 @@ public class UGCGuideAddBookActivity extends BaseActivity implements View.OnClic
         this.findViewById(R.id.select_word_layout).setVisibility(View.GONE);
         this.n = true;
         final SearchPromptAdapter searchPromptAdapter = new SearchPromptAdapter(this);
-        this.h = (SearchFixListView) this.findViewById(R.id.search_prompt_list);
+        this.h = (ListView) this.findViewById(R.id.search_prompt_list);
         this.h.setAdapter(searchPromptAdapter);
         this.h.setOnItemClickListener(searchPromptAdapter);
         this.c = (SearchEditText) view.findViewById(R.id.search_input_edit);
@@ -482,7 +481,7 @@ public class UGCGuideAddBookActivity extends BaseActivity implements View.OnClic
                         } else {
                             SearchPromptAdapter.this.notifyDataSetChanged();
                         }
-                        SearchFixListView searchFixListView = UGCGuideAddBookActivity.f(SearchPromptAdapter.this.a);
+                        ListView searchFixListView = UGCGuideAddBookActivity.f(SearchPromptAdapter.this.a);
                         searchFixListView.setVisibility(SearchPromptAdapter.this.b.isEmpty() || !UGCGuideAddBookActivity.e(SearchPromptAdapter.this.a) ? View.GONE : View.VISIBLE);
                     }
                 };

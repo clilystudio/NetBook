@@ -5,16 +5,13 @@ import android.content.Intent;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.ui.MaskAbleImageView;
-
-import butterknife.ButterKnife;
-import butterknife.InjectView;
+import com.xiaomi.mistatistic.sdk.MiStatInterfaceImpl;
 
 public class HomeFindItem extends FrameLayout {
     MaskAbleImageView mIcon;
@@ -30,7 +27,7 @@ public class HomeFindItem extends FrameLayout {
     public HomeFindItem(final Context context, final String string, int n, int n2, Intent intent) {
         super(context);
         this.a = intent;
-        LayoutInflater.from(context).inflate(R.layout.list_item_home_find, (ViewGroup) this);
+        LayoutInflater.from(context).inflate(R.layout.list_item_home_find, this);
         this.mIcon = (MaskAbleImageView) findViewById(R.id.icon);
         this.mTitle = (TextView) findViewById(R.id.title);
         this.mSubFlag = (ImageView) findViewById(R.id.sub_flag);
@@ -54,6 +51,6 @@ public class HomeFindItem extends FrameLayout {
 
     protected void a(Context context, String string) {
         context.startActivity(this.a);
-        b.a(context, "home_find_item_click", string);
+        MiStatInterfaceImpl.recordCountEvent("home_find_item_click", string);
     }
 }

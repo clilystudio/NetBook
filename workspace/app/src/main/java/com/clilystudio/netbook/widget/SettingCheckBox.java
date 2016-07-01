@@ -7,7 +7,6 @@ import android.util.AttributeSet;
 import android.widget.CompoundButton;
 
 import com.clilystudio.netbook.R;
-import com.clilystudio.netbook.R$styleable;
 
 public class SettingCheckBox extends SwitchCompat {
     private final String a;

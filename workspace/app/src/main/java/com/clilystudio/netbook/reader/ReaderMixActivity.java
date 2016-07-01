@@ -136,8 +136,7 @@ public class ReaderMixActivity extends BaseLoadingActivity {
                 ReaderMixActivity.this.f();
                 TextView textView = (TextView) ReaderMixActivity.this.findViewById(R.id.reader_mix_header_count);
                 Resources resources = ReaderMixActivity.this.getResources();
-                Object[] arrobject2 = new Object[]{-1 + list.size()};
-                textView.setText(resources.getString(R.string.source_list_title, arrobject2));
+                textView.setText(resources.getString(R.string.source_list_title, list.size() - 1));
                 Iterator iterator = list.iterator();
                 boolean bl = false;
                 while (iterator.hasNext()) {
@@ -153,21 +152,7 @@ public class ReaderMixActivity extends BaseLoadingActivity {
                 }
                 ReaderMixActivity.d(ReaderMixActivity.this).a(list);
                 ReaderMixActivity.a(ReaderMixActivity.this, (ChineseAllPromRoot) objects[1]);
-                final ChineseAllPromRoot chineseAllPromRoot = ReaderMixActivity.g(ReaderMixActivity.this);
-                if (chineseAllPromRoot != null && chineseAllPromRoot.getProm() != null) {
-                    ReaderMixActivity.h(ReaderMixActivity.this).setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            if (chineseAllPromRoot != null && chineseAllPromRoot.getProm() != null) {
-                                String string = chineseAllPromRoot.getProm().getLink();
-                                new com.clilystudio.netbook.widget.j(ReaderMixActivity.this, string).a();
-                            }
-                        }
-                    });
-                    ReaderMixActivity.h(ReaderMixActivity.this).setVisibility(View.VISIBLE);
-                    return;
-                }
-                ReaderMixActivity.h(ReaderMixActivity.this).setVisibility(View.GONE);
+                ReaderMixActivity.this.g.setVisibility(View.GONE);
             }
         };
         String[] arrstring = new String[]{this.a};

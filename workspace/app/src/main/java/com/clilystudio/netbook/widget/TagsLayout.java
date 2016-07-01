@@ -35,7 +35,7 @@ public class TagsLayout extends ViewGroup {
         int n9 = n7;
         for (int i = 0; i < n5; ++i) {
             View view = this.getChildAt(i);
-            if (view.getVisibility() == 8) continue;
+            if (view.getVisibility() == GONE) continue;
             int n10 = view.getMeasuredWidth();
             int n11 = view.getMeasuredHeight();
             ViewGroup.LayoutParams layoutParams = view.getLayoutParams();
@@ -61,8 +61,8 @@ public class TagsLayout extends ViewGroup {
         int n8 = 0;
         for (int i = 0; i < n5; ++i) {
             View view = this.getChildAt(i);
-            if (view.getVisibility() == 8) continue;
-            view.measure(View.MeasureSpec.makeMeasureSpec(n3, Integer.MIN_VALUE), View.MeasureSpec.makeMeasureSpec(n4, 0));
+            if (view.getVisibility() == GONE) continue;
+            view.measure(View.MeasureSpec.makeMeasureSpec(n3, MeasureSpec.AT_MOST), View.MeasureSpec.makeMeasureSpec(n4, MeasureSpec.UNSPECIFIED));
             int n9 = view.getMeasuredWidth();
             ViewGroup.LayoutParams layoutParams = view.getLayoutParams();
             n8 = Math.max(n8, view.getMeasuredHeight() + layoutParams.height);
@@ -73,7 +73,7 @@ public class TagsLayout extends ViewGroup {
             n6 += n9 + layoutParams.width;
         }
         this.a = n8;
-        int n10 = View.MeasureSpec.getMode(n2) == 0 ? n7 + n8 : (View.MeasureSpec.getMode(n2) == Integer.MIN_VALUE && n7 + n8 < n4 ? n7 + n8 : n4);
+        int n10 = View.MeasureSpec.getMode(n2) == MeasureSpec.UNSPECIFIED ? n7 + n8 : (View.MeasureSpec.getMode(n2) == MeasureSpec.AT_MOST && n7 + n8 < n4 ? n7 + n8 : n4);
         this.setMeasuredDimension(n3, n10);
     }
 }

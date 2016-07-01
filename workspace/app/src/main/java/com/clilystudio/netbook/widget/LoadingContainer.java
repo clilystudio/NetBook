@@ -5,10 +5,9 @@ import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
-import com.clilystudio.netbook.R$styleable;
+import com.clilystudio.netbook.R;
 
 public class LoadingContainer extends FrameLayout {
     private final View b;
@@ -17,12 +16,12 @@ public class LoadingContainer extends FrameLayout {
 
     public LoadingContainer(Context context, AttributeSet attributeSet) {
         super(context, attributeSet);
-        TypedArray typedArray = context.obtainStyledAttributes(attributeSet, R$styleable.LoadingContainer);
-        int n = typedArray.getResourceId(0, R.layout.loading_container_default_layout);
-        int n2 = typedArray.getResourceId(1, R.layout.loading_container_default_layout);
+        TypedArray typedArray = context.obtainStyledAttributes(attributeSet, R.styleable.LoadingContainer);
+        int n = typedArray.getResourceId(R.styleable.LoadingContainer_emptyLayout, R.layout.loading_container_default_layout);
+        int n2 = typedArray.getResourceId(R.styleable.LoadingContainer_loadingLayout, R.layout.loading_container_default_layout);
         typedArray.recycle();
-        this.b = LayoutInflater.from(context).inflate(n, (ViewGroup) this, false);
-        this.c = LayoutInflater.from(context).inflate(n2, (ViewGroup) this, false);
+        this.b = LayoutInflater.from(context).inflate(n, this, false);
+        this.c = LayoutInflater.from(context).inflate(n2, this, false);
     }
 
     public final void a() {

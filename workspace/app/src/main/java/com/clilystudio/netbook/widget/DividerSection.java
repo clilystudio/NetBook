@@ -8,24 +8,21 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 
-import com.clilystudio.netbook.R$styleable;
+import com.clilystudio.netbook.R;
 
 public class DividerSection extends RelativeLayout {
     private final FrameLayout a;
     private final View b;
     private final Drawable c;
 
-    /*
-     * Enabled aggressive block sorting
-     */
     public DividerSection(Context context, AttributeSet attributeSet) {
         super(context, attributeSet);
         this.b = new View(context);
-        TypedArray typedArray = context.obtainStyledAttributes(attributeSet, R$styleable.DividerSection);
-        this.c = typedArray.getDrawable(0);
+        TypedArray typedArray = context.obtainStyledAttributes(attributeSet, R.styleable.DividerSection);
+        this.c = typedArray.getDrawable(R.styleable.DividerSection_divider_drawable);
         if (this.c != null) {
             this.b.setBackgroundDrawable(this.c);
-        } else if (a.a(this.getContext(), "customer_night_theme", false)) {
+        } else if (com.clilystudio.netbook.hpay100.a.a.a(this.getContext(), "customer_night_theme", false)) {
             this.b.setBackgroundResource(R.drawable.shelf_dark_divider);
         } else {
             this.b.setBackgroundResource(R.drawable.shelf_divider);

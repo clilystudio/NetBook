@@ -51,7 +51,7 @@ public class LoadingProgressView extends ProgressView {
     }
 
     public final void a() {
-        if (this.getVisibility() != 0) {
+        if (this.getVisibility() != View.VISIBLE) {
             this.setVisibility(View.VISIBLE);
         }
         this.a = false;
@@ -68,7 +68,7 @@ public class LoadingProgressView extends ProgressView {
         w3.a(this.d);
         w4.a(this.d);
         this.c = new d();
-        this.c.a(new a[]{w2, w3, w4});
+        this.c.a(w2, w3, w4);
         this.c.a();
     }
 

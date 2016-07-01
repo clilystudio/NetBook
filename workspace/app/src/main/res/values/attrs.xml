@@ -454,10 +454,6 @@
             <enum name="src_over" value="3"/>
         </attr>
     </declare-styleable>
-    <declare-styleable name="TopicSectionItem">
-        <attr name="label" format="string"/>
-        <attr name="icona" format="reference"/>
-    </declare-styleable>
     <declare-styleable name="CoverLoadingLayer">
         <attr name="scv_background" format="color"/>
         <attr name="scv_corner_radius" format="dimension"/>
@@ -479,4 +475,42 @@
     <declare-styleable name="CornerSmartImageView">
         <attr name="radius" format="dimension"/>
     </declare-styleable>
- </resources>
+    <declare-styleable name="CoverView">
+        <attr name="cover" format="reference"/>
+        <attr name="frame" format="dimension"/>
+    </declare-styleable>
+    <declare-styleable name="DividerSection">
+        <attr name="divider_drawable" format="reference"/>
+    </declare-styleable>
+    <declare-styleable name="LoadingContainer">
+        <attr name="emptyLayout" format="reference"/>
+        <attr name="loadingLayout" format="reference"/>
+    </declare-styleable>
+    <declare-styleable name="ProgressView">
+        <attr name="progress" format="integer"/>
+        <attr name="max" format="integer"/>
+        <attr name="move_outside_circle" format="boolean"/>
+        <attr name="maintain_equal_circle" format="boolean"/>
+        <attr name="use_custom_radii" format="boolean"/>
+        <attr name="lock_enabled" format="boolean"/>
+        <attr name="circle_x_radius" format="float"/>
+        <attr name="circle_y_radius" format="float"/>
+        <attr name="circle_stroke_width" format="float"/>
+        <attr name="pointer_radius" format="float"/>
+        <attr name="pointer_halo_width" format="float"/>
+        <attr name="pointer_halo_border_width" format="float"/>
+        <attr name="circle_color" format="string"/>
+        <attr name="circle_progress_color" format="string"/>
+        <attr name="pointer_color" format="string"/>
+        <attr name="pointer_halo_color" format="string"/>
+        <attr name="pointer_halo_color_ontouch" format="string"/>
+        <attr name="pointer_alpha_ontouch" format="integer"/>
+        <attr name="start_angle" format="float"/>
+        <attr name="end_angle" format="float"/>
+        <attr name="circle_fill" format="string"/>
+    </declare-styleable>
+    <declare-styleable name="UserInfoLvTaskView">
+        <attr name="lv_format" format="boolean"/>
+        <attr name="unknown_format" format="integer"/>
+    </declare-styleable>
+</resources>

@@ -11,6 +11,6 @@ public class UserInfoExTaskView extends UserInfoTaskView {
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
-        this.setExp("\u7ecf\u9a8c+5");
+        this.setExp("经验+5");
     }
 }

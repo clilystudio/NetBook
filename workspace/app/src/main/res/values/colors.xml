@@ -83,4 +83,7 @@
     <color name="intro_red_color">#ff0000</color>
     <color name="font_orange">#ffaaaa</color>
     <color name="book_info_dl">#00ff00</color>
+    <color name="scv_finished_color">#aaaaaa</color>
+    <color name="user_info_exp_deactive">#333333</color>
+    <color name="user_info_exp_active">#333333</color>
 </resources>

@@ -10,7 +10,6 @@ import com.clilystudio.netbook.event.x;
 import com.clilystudio.netbook.model.BookRankRoot;
 import com.clilystudio.netbook.model.BookRankSummary;
 import com.clilystudio.netbook.ui.SmartImageView;
-import com.clilystudio.netbook.widget.RankCollapseItem;
 
 import java.util.List;
 
@@ -135,15 +134,6 @@ public final class BookRankAdapter extends u<BookRankSummary> {
                             com.clilystudio.netbook.event.i.a().post(new x(localBookRankSummary, BookRankAdapter.a(BookRankAdapter.this, paramInt)));
                         }
                     });
-                    break;
-                case 2:
-                    localView = this.a.inflate(R.layout.layout_rank_collapse_item, paramViewGroup, false);
-                    RankCollapseItem localRankCollapseItem = (RankCollapseItem) localView;
-                    if (b(paramInt)) {
-                        localRankCollapseItem.a(this.c, paramInt, b(paramInt));
-                    } else {
-                        localRankCollapseItem.a(this.e, paramInt, b(paramInt));
-                    }
                     break;
                 default:
                     localView = null;

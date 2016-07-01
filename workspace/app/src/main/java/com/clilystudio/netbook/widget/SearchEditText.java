@@ -25,8 +25,8 @@ public class SearchEditText extends EditText {
     }
 
     static /* synthetic */ boolean a(SearchEditText searchEditText, boolean bl) {
-        searchEditText.a = false;
-        return false;
+        searchEditText.a = bl;
+        return bl;
     }
 
     static /* synthetic */ ax b(SearchEditText searchEditText) {
@@ -39,19 +39,16 @@ public class SearchEditText extends EditText {
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
                 if (SearchEditText.a(SearchEditText.this)) {
                     SearchEditText.a(SearchEditText.this, false);
-                    return;
                 } else {
-                    if (SearchEditText.b(SearchEditText.this) == null) return;
-                    {
+                    if (SearchEditText.b(SearchEditText.this) != null) {
                         SearchEditText.b(SearchEditText.this).a();
-                        return;
                     }
                 }
             }
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-           }
+            }
 
             @Override
             public void afterTextChanged(Editable s) {

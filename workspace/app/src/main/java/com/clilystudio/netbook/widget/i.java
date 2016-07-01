@@ -1,5 +1,5 @@
 package com.clilystudio.netbook.widget;
 
 public interface i {
-    public void a(String var1);
+    void a(String var1);
 }

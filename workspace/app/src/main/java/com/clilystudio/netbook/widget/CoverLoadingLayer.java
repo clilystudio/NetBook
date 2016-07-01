@@ -191,7 +191,7 @@ public class CoverLoadingLayer extends ImageView {
         this.e = this.c;
         this.i();
         this.k = com.clilystudio.netbook.widget.comca.w.a(0.001f, 1.0f);
-        int n = this.getResources().getInteger(17694721);
+        int n = this.getResources().getInteger(android.R.integer.config_mediumAnimTime);
         this.k.a(n);
         this.k.a(this.z);
         this.k.a(this.x);
@@ -221,7 +221,7 @@ public class CoverLoadingLayer extends ImageView {
     private com.clilystudio.netbook.widget.comca.w h() {
         float[] arrf = new float[]{this.n, 2.0f * this.n};
         com.clilystudio.netbook.widget.comca.w w2 = com.clilystudio.netbook.widget.comca.w.a(arrf);
-        w2.a(this.getResources().getInteger(17694721));
+        w2.a(this.getResources().getInteger(android.R.integer.config_mediumAnimTime));
         w2.a(new AccelerateInterpolator());
         w2.a(new D() {
             @Override
@@ -537,7 +537,7 @@ public class CoverLoadingLayer extends ImageView {
             public void d(a parama) {
 
             }
-        }));
+        });
         this.m = w2;
         if (this.k == null || !this.k.d()) {
             n2 = 0;

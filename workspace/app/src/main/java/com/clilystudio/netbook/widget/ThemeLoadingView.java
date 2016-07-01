@@ -5,6 +5,8 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.FrameLayout;
 
+import com.clilystudio.netbook.R;
+
 public class ThemeLoadingView extends FrameLayout {
     private LoadingProgressView a;
     private LoadingProgressView b;
@@ -16,8 +18,8 @@ public class ThemeLoadingView extends FrameLayout {
     }
 
     static /* synthetic */ boolean a(ThemeLoadingView themeLoadingView, boolean bl) {
-        themeLoadingView.d = true;
-        return true;
+        themeLoadingView.d = bl;
+        return bl;
     }
 
     private void c() {
@@ -48,8 +50,7 @@ public class ThemeLoadingView extends FrameLayout {
      * Enabled aggressive block sorting
      */
     public final void a(boolean bl) {
-        ThemeLoadingView.Mode themeLoadingView$Mode = bl ? ThemeLoadingView.Mode.DARK : ThemeLoadingView.Mode.LIGHT;
-        this.c = themeLoadingView$Mode;
+        this.c = bl ? Mode.DARK : Mode.LIGHT;
         if (this.c == ThemeLoadingView.Mode.LIGHT) {
             this.a.setVisibility(View.VISIBLE);
             this.b.setVisibility(View.GONE);
@@ -91,6 +92,6 @@ public class ThemeLoadingView extends FrameLayout {
     }
     
     public enum Mode {
-        LIGHT, DARK;
+        LIGHT, DARK
     }
 }

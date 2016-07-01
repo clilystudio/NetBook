@@ -42,7 +42,7 @@ public class AutoFlowView extends LinearLayout implements View.OnClickListener {
 
     private void a(List<h> list, int n) {
         if (this.j.size() > n << 2) {
-            h h2 = new h(this);
+            h h2 = new h();
             h2.a(e);
             h2.a.addAll(this.j.subList(n << 2, Math.min(4 + (n << 2), this.j.size())));
             h2.a(e);
@@ -87,7 +87,7 @@ public class AutoFlowView extends LinearLayout implements View.OnClickListener {
             this.a(arrayList2, 2);
             list = arrayList2;
         } else {
-            h h3 = new h(this);
+            h h3 = new h();
             int n2 = 0;
             int n3 = 0;
             for (int j = 0; j < list2.size(); ++j) {
@@ -97,7 +97,7 @@ public class AutoFlowView extends LinearLayout implements View.OnClickListener {
                     ++n3;
                     h3.a(e);
                     arrayList.add(h3);
-                    h3 = new h(this);
+                    h3 = new h();
                     n2 = n4;
                 }
                 if (n3 == 3) {
@@ -210,5 +210,15 @@ public class AutoFlowView extends LinearLayout implements View.OnClickListener {
         public int show;
         int leftMargin;
         int topMargin;
+    }
+
+    class h {
+        List<AutoFlowView.Word> a = new ArrayList<>();
+
+        public final void a(int n) {
+            for (AutoFlowView.Word anA : this.a) {
+                anA.leftMargin = n;
+            }
+        }
     }
 }

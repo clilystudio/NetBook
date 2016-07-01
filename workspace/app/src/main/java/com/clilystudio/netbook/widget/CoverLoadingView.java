@@ -9,7 +9,6 @@ import com.clilystudio.netbook.R;
 
 public class CoverLoadingView extends CoverView {
     private final float a;
-    private CoverLoadingLayer b;
 
     public CoverLoadingView(Context context, AttributeSet attributeSet) {
         super(context, attributeSet);
@@ -21,11 +20,11 @@ public class CoverLoadingView extends CoverView {
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
-        this.b = new CoverLoadingLayer(this.getContext());
-        this.b.setCornerRadius(this.a);
+        CoverLoadingLayer b = new CoverLoadingLayer(this.getContext());
+        b.setCornerRadius(this.a);
         RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(-1, -1);
-        this.b.setLayoutParams(layoutParams);
-        this.b.setId(R.id.cover_loading);
-        this.addView(this.b);
+        b.setLayoutParams(layoutParams);
+        b.setId(R.id.cover_loading);
+        this.addView(b);
     }
 }

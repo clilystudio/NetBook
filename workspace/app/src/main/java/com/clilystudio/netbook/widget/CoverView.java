@@ -7,7 +7,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
-import com.clilystudio.netbook.R$styleable;
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.ui.CornerImageView;
 
 public class CoverView extends RelativeLayout {
@@ -16,9 +16,9 @@ public class CoverView extends RelativeLayout {
 
     public CoverView(Context context, AttributeSet attributeSet) {
         super(context, attributeSet);
-        TypedArray typedArray = context.obtainStyledAttributes(attributeSet, R$styleable.CoverView);
-        this.b = typedArray.getResourceId(0, 0);
-        typedArray.getResourceId(1, R.drawable.shelf_cover_bg);
+        TypedArray typedArray = context.obtainStyledAttributes(attributeSet, R.styleable.CoverView);
+        this.b = typedArray.getResourceId(R.styleable.CoverView_frame, 0);
+        typedArray.getResourceId(R.styleable.CoverView_cover, R.drawable.shelf_cover_bg);
         typedArray.recycle();
     }
 

@@ -32,10 +32,8 @@ import com.clilystudio.netbook.util.W;
 import com.clilystudio.netbook.widget.AutoFlowView;
 import com.clilystudio.netbook.widget.CoverView;
 import com.clilystudio.netbook.widget.SearchEditText;
-import com.clilystudio.netbook.widget.SearchFixListView;
 import com.clilystudio.netbook.widget.ax;
 import com.clilystudio.netbook.widget.i;
-import com.clilystudio.netbook.widget.j;
 import com.xiaomi.mistatistic.sdk.MiStatInterface;
 import com.xiaomi.mistatistic.sdk.MiStatInterfaceImpl;
 
@@ -53,7 +51,7 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
     private View f;
     private View g;
     private ListView h;
-    private SearchFixListView i;
+    private ListView i;
     private View j;
     private View k;
     private W<BookSummary> l;
@@ -159,7 +157,7 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
         return searchActivity.c;
     }
 
-    static /* synthetic */ SearchFixListView k(SearchActivity searchActivity) {
+    static /* synthetic */ ListView k(SearchActivity searchActivity) {
         return searchActivity.i;
     }
 
@@ -365,7 +363,7 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
         view.findViewById(R.id.back).setOnClickListener(this);
         this.setCustomActionBar(view);
         final SearchPromptAdapter searchPromptAdapter = new SearchPromptAdapter(this);
-        this.i = (SearchFixListView) this.findViewById(R.id.search_prompt_list);
+        this.i = (ListView) this.findViewById(R.id.search_prompt_list);
         assert this.i != null;
         this.i.setAdapter(searchPromptAdapter);
         this.i.setOnItemClickListener(searchPromptAdapter);
@@ -417,11 +415,7 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
                 BookSummary bookSummary;
                 int n2 = position - SearchActivity.this.h.getHeaderViewsCount();
                 if (n2 < 0 || n2 >= SearchActivity.this.l.getCount() || (bookSummary = SearchActivity.this.l.getItem(n2)) == null) return;
-                if (bookSummary.getPromLink() == null) {
-                    SearchActivity.this.startActivity(BookInfoActivity.a(SearchActivity.this, bookSummary.getId()));
-                    return;
-                }
-                new j(SearchActivity.this, bookSummary.getPromLink()).a();
+                SearchActivity.this.startActivity(BookInfoActivity.a(SearchActivity.this, bookSummary.getId()));
             }
         });
         if (bundle != null) {
@@ -632,7 +626,7 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
                         } else {
                             SearchPromptAdapter.this.notifyDataSetChanged();
                         }
-                        SearchFixListView searchFixListView = SearchActivity.k(SearchActivity.this);
+                        ListView searchFixListView = SearchActivity.k(SearchActivity.this);
                         searchFixListView.setVisibility(SearchPromptAdapter.this.b.isEmpty() ? View.GONE : View.VISIBLE);
                     }
                 };

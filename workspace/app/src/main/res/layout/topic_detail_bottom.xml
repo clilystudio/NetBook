@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <include layout="@layout/horizontal_divider" />
-    <com.clilystudio.netbook.widget.SendView android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/bottom_container" android:background="?backgroundPressed" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <EditText android:textColor="?android:textColor" android:textColorHint="?android:textColorTertiary" android:id="@id/send_content" android:background="@android:color/transparent" android:paddingLeft="16.0dip" android:paddingRight="16.0dip" android:layout_width="0.0dip" android:layout_height="wrap_content" android:minHeight="50.0dip" android:layout_weight="1.0" style="@style/MediumText" />
-        <ImageView android:id="@id/commit" android:background="@drawable/bg_red" android:clickable="true" android:layout_width="50.0dip" android:layout_height="fill_parent" android:src="@drawable/commit_comment" android:scaleType="center" android:contentDescription="@string/accessible_commit" />
-    </com.clilystudio.netbook.widget.SendView>
-</LinearLayout>

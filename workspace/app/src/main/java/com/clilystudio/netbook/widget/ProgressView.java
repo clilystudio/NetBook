@@ -14,7 +14,8 @@ import android.os.Parcelable;
 import android.util.AttributeSet;
 import android.view.View;
 
-import com.clilystudio.netbook.R$styleable;
+import com.clilystudio.netbook.R;
+
 
 public class ProgressView extends View {
     private static final int b = Color.parseColor("#d6d6d6");
@@ -27,8 +28,6 @@ public class ProgressView extends View {
     private int B;
     private int C;
     private int D;
-    private float E;
-    private float F;
     private Path G;
     private Path H;
     private int I;
@@ -38,16 +37,11 @@ public class ProgressView extends View {
     private boolean M;
     private float N;
     private float O;
-    private float P;
     private float[] Q;
-    private K R;
     private Paint g;
     private Paint h;
     private Paint i;
     private Paint j;
-    private Paint k;
-    private Paint l;
-    private Paint m;
     private float n;
     private float o;
     private float p;
@@ -138,21 +132,21 @@ public class ProgressView extends View {
         this.j = new Paint();
         this.j.set(this.i);
         this.j.setMaskFilter(new BlurMaskFilter(5.0f * this.a, BlurMaskFilter.Blur.NORMAL));
-        this.k = new Paint();
-        this.k.setAntiAlias(true);
-        this.k.setDither(true);
-        this.k.setStyle(Paint.Style.FILL);
-        this.k.setColor(this.w);
-        this.k.setStrokeWidth(this.q);
-        this.l = new Paint();
-        this.l.set(this.k);
-        this.l.setColor(this.x);
-        this.l.setAlpha(this.C);
-        this.l.setStrokeWidth(this.q + this.r);
-        this.m = new Paint();
-        this.m.set(this.k);
-        this.m.setStrokeWidth(this.s);
-        this.m.setStyle(Paint.Style.STROKE);
+        Paint k = new Paint();
+        k.setAntiAlias(true);
+        k.setDither(true);
+        k.setStyle(Paint.Style.FILL);
+        k.setColor(this.w);
+        k.setStrokeWidth(this.q);
+        Paint l = new Paint();
+        l.set(k);
+        l.setColor(this.x);
+        l.setAlpha(this.C);
+        l.setStrokeWidth(this.q + this.r);
+        Paint m = new Paint();
+        m.set(k);
+        m.setStrokeWidth(this.s);
+        m.setStyle(Paint.Style.STROKE);
     }
 
     /*
@@ -166,14 +160,14 @@ public class ProgressView extends View {
         String string3;
         String string4;
         String string5;
-        TypedArray typedArray = this.getContext().obtainStyledAttributes(attributeSet, R$styleable.ProgressView, n, 0);
-        this.o = typedArray.getFloat(6, 30.0f) * this.a;
-        this.p = typedArray.getFloat(7, 30.0f) * this.a;
-        this.q = typedArray.getFloat(9, 0.0f) * this.a;
-        this.r = typedArray.getFloat(10, 0.0f) * this.a;
-        this.s = typedArray.getFloat(11, 0.0f) * this.a;
-        this.n = typedArray.getFloat(8, 3.5f) * this.a;
-        String string6 = typedArray.getString(14);
+        TypedArray typedArray = this.getContext().obtainStyledAttributes(attributeSet, R.styleable.ProgressView, n, 0);
+        this.o = typedArray.getFloat(R.styleable.ProgressView_circle_x_radius, 30.0f) * this.a;
+        this.p = typedArray.getFloat(R.styleable.ProgressView_circle_y_radius, 30.0f) * this.a;
+        this.q = typedArray.getFloat(R.styleable.ProgressView_pointer_radius, 0.0f) * this.a;
+        this.r = typedArray.getFloat(R.styleable.ProgressView_pointer_halo_width, 0.0f) * this.a;
+        this.s = typedArray.getFloat(R.styleable.ProgressView_pointer_halo_border_width, 0.0f) * this.a;
+        this.n = typedArray.getFloat(R.styleable.ProgressView_circle_stroke_width, 3.5f) * this.a;
+        String string6 = typedArray.getString(R.styleable.ProgressView_pointer_color);
         if (string6 != null) {
             try {
                 this.w = Color.parseColor(string6);
@@ -181,35 +175,35 @@ public class ProgressView extends View {
                 this.w = d;
             }
         }
-        if ((string5 = typedArray.getString(15)) != null) {
+        if ((string5 = typedArray.getString(R.styleable.ProgressView_pointer_halo_color)) != null) {
             try {
                 this.x = Color.parseColor(string5);
             } catch (IllegalArgumentException var15_11) {
                 this.x = e;
             }
         }
-        if ((string = typedArray.getString(16)) != null) {
+        if ((string = typedArray.getString(R.styleable.ProgressView_pointer_halo_color_ontouch)) != null) {
             try {
                 this.y = Color.parseColor(string);
             } catch (IllegalArgumentException var14_12) {
                 this.y = f;
             }
         }
-        if ((string3 = typedArray.getString(12)) != null) {
+        if ((string3 = typedArray.getString(R.styleable.ProgressView_circle_color)) != null) {
             try {
                 this.z = Color.parseColor(string3);
             } catch (IllegalArgumentException var13_13) {
                 this.z = b;
             }
         }
-        if ((string4 = typedArray.getString(13)) != null) {
+        if ((string4 = typedArray.getString(R.styleable.ProgressView_circle_progress_color)) != null) {
             try {
                 this.B = Color.parseColor(string4);
             } catch (IllegalArgumentException var12_14) {
                 this.B = c;
             }
         }
-        if ((string2 = typedArray.getString(20)) != null) {
+        if ((string2 = typedArray.getString(R.styleable.ProgressView_circle_fill)) != null) {
             try {
                 this.A = Color.parseColor(string2);
             } catch (IllegalArgumentException var11_15) {
@@ -217,18 +211,18 @@ public class ProgressView extends View {
             }
         }
         this.C = Color.alpha(this.x);
-        this.D = typedArray.getInt(17, 100);
+        this.D = typedArray.getInt(R.styleable.ProgressView_pointer_alpha_ontouch, 100);
         if (this.D > 255 || this.D < 0) {
             this.D = 100;
         }
-        this.I = typedArray.getInt(1, 100);
-        this.J = typedArray.getInt(0, 0);
-        this.K = typedArray.getBoolean(4, false);
-        this.L = typedArray.getBoolean(3, true);
-        typedArray.getBoolean(2, false);
-        this.M = typedArray.getBoolean(5, true);
-        this.t = (360.0f + typedArray.getFloat(18, 270.0f) % 360.0f) % 360.0f;
-        this.u = (360.0f + typedArray.getFloat(19, 270.0f) % 360.0f) % 360.0f;
+        this.I = typedArray.getInt(R.styleable.ProgressView_max, 100);
+        this.J = typedArray.getInt(R.styleable.ProgressView_progress, 0);
+        this.K = typedArray.getBoolean(R.styleable.ProgressView_use_custom_radii, false);
+        this.L = typedArray.getBoolean(R.styleable.ProgressView_maintain_equal_circle, true);
+//        typedArray.getBoolean(R.styleable.ProgressView_maintain_equal_circle, false);
+        this.M = typedArray.getBoolean(R.styleable.ProgressView_lock_enabled, true);
+        this.t = (360.0f + typedArray.getFloat(R.styleable.ProgressView_start_angle, 270.0f) % 360.0f) % 360.0f;
+        this.u = (360.0f + typedArray.getFloat(R.styleable.ProgressView_end_angle, 270.0f) % 360.0f) % 360.0f;
         if (this.t == this.u) {
             this.u -= 0.1f;
         }
@@ -236,24 +230,20 @@ public class ProgressView extends View {
         this.a();
     }
 
-    /*
-     * Enabled aggressive block sorting
-     */
     private void b() {
-        this.E = (360.0f - (this.t - this.u)) % 360.0f;
-        if (this.E <= 0.0f) {
-            this.E = 360.0f;
+        float e1 = (360.0f - (this.t - this.u)) % 360.0f;
+        if (e1 <= 0.0f) {
+            e1 = 360.0f;
         }
-        this.P = this.J / (float) this.I * this.E + this.t;
-        this.P %= 360.0f;
-        this.F = this.P - this.t;
-        float f = this.F < 0.0f ? 360.0f + this.F : this.F;
-        this.F = f;
+        float p1 = this.J / (float) this.I * e1 + this.t;
+        p1 %= 360.0f;
+        float f1 = p1 - this.t;
+        f1 = f1 < 0.0f ? 360.0f + f1 : f1;
         this.v.set(-this.N, -this.O, this.N, this.O);
         this.G = new Path();
-        this.G.addArc(this.v, this.t, this.E);
+        this.G.addArc(this.v, this.t, e1);
         this.H = new Path();
-        this.H.addArc(this.v, this.t, this.F);
+        this.H.addArc(this.v, this.t, f1);
         PathMeasure pathMeasure = new PathMeasure(this.H, false);
         if (!pathMeasure.getPosTan(pathMeasure.getLength(), this.Q, null)) {
             new PathMeasure(this.G, false).getPosTan(0.0f, this.Q, null);
@@ -270,9 +260,6 @@ public class ProgressView extends View {
         canvas.drawPath(this.G, this.h);
     }
 
-    /*
-     * Enabled aggressive block sorting
-     */
     @Override
     protected void onMeasure(int n, int n2) {
         int n3 = ProgressView.getDefaultSize(this.getSuggestedMinimumHeight(), n2);
@@ -304,7 +291,7 @@ public class ProgressView extends View {
     @Override
     protected void onRestoreInstanceState(Parcelable parcelable) {
         Bundle bundle = (Bundle) parcelable;
-        super.onRestoreInstanceState((Parcelable) bundle.getParcelable("PARENT"));
+        super.onRestoreInstanceState(bundle.getParcelable("PARENT"));
         this.I = bundle.getInt("MAX");
         this.J = bundle.getInt("PROGRESS");
         this.z = bundle.getInt("mCircleColor");
@@ -337,28 +324,6 @@ public class ProgressView extends View {
         return bundle;
     }
 
-    public void setCircleColor(int n) {
-        this.z = n;
-        this.g.setColor(this.z);
-        this.invalidate();
-    }
-
-    public void setCircleFillColor(int n) {
-        this.A = n;
-        this.h.setColor(this.A);
-        this.invalidate();
-    }
-
-    public void setCircleProgressColor(int n) {
-        this.B = n;
-        this.i.setColor(this.B);
-        this.invalidate();
-    }
-
-    public void setLockEnabled(boolean bl) {
-        this.M = bl;
-    }
-
     public void setMax(int n) {
         if (n > 0) {
             if ((float) n <= this.J) {
@@ -368,36 +333,6 @@ public class ProgressView extends View {
             this.b();
             this.invalidate();
         }
-    }
-
-    public void setOnSeekBarChangeListener$624defb7(K k) {
-        this.R = k;
-    }
-
-    public void setPointerAlpha(int n) {
-        if (n >= 0 && n <= 255) {
-            this.C = n;
-            this.l.setAlpha(this.C);
-            this.invalidate();
-        }
-    }
-
-    public void setPointerAlphaOnTouch(int n) {
-        if (n >= 0 && n <= 255) {
-            this.D = n;
-        }
-    }
-
-    public void setPointerColor(int n) {
-        this.w = n;
-        this.k.setColor(this.w);
-        this.invalidate();
-    }
-
-    public void setPointerHaloColor(int n) {
-        this.x = n;
-        this.l.setColor(this.x);
-        this.invalidate();
     }
 
     public void setProgress(float f) {
