@@ -97,7 +97,7 @@ public class RelateBookListActivity extends BookListActivity implements cQ {
         String string = this.getIntent().getStringExtra("bookId");
         if (string != null) {
             this.e(0);
-            new cM(this, this).a(string);
+            new cM(this).a(string);
             return;
         }
         this.e(2);

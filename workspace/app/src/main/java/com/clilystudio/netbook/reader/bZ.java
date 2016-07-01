@@ -8,14 +8,12 @@ import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.Point;
 import android.preference.PreferenceManager;
-
-import com.clilystudio.netbook.R;
-import com.clilystudio.netbook.am;
 import android.view.Display;
 import android.view.WindowManager;
 
+import com.clilystudio.netbook.R;
+import com.clilystudio.netbook.am;
 import com.clilystudio.netbook.event.C;
-import com.umeng.a.b;
 import com.xiaomi.mistatistic.sdk.MiStatInterfaceImpl;
 
 import java.util.ArrayList;
@@ -38,11 +36,11 @@ public final class bZ {
     public int i;
     public int j;
     private int l;
-    private List<ce> o = new ArrayList<ce>();
-    private List<cc> p = new ArrayList<cc>();
-    private List<ca> q = new ArrayList<ca>();
-    private List<cd> r = new ArrayList<cd>();
-    private List<cb> s = new ArrayList<cb>();
+    private List<ce> o = new ArrayList<>();
+    private List<cc> p = new ArrayList<>();
+    private List<ca> q = new ArrayList<>();
+    private List<cd> r = new ArrayList<>();
+    private List<cb> s = new ArrayList<>();
     private SharedPreferences t;
     private int u;
     private boolean v;
@@ -61,12 +59,12 @@ public final class bZ {
         this.x = this.t.getBoolean("night_mode", false);
         this.y = this.t.getBoolean("convert_t", false);
         this.z = this.t.getInt("reader_background_mode", 1);
-        int n = am.b((Activity) this.m).widthPixels;
+        int n = am.b(this.m).widthPixels;
         this.c = this.n.getDimensionPixelSize(R.dimen.page_horizontal_padding);
         this.d = this.n.getDimensionPixelSize(R.dimen.page_vertical_padding);
         this.f = n - (this.c << 1);
         this.l = this.n.getDimensionPixelSize(R.dimen.page_small_text_height);
-        this.a(a.l(this.m, "reader_opt_full_screen"));
+        this.a(com.clilystudio.netbook.hpay100.a.a.l(this.m, "reader_opt_full_screen"));
         this.k();
         this.c(this.z);
     }
@@ -85,26 +83,21 @@ public final class bZ {
             this.j = R.drawable.reader_battery_bg_night;
         } else {
             switch (n) {
-                default: {
-                    break;
-                }
-                case 1: {
+                case 1:
                     this.g = this.n.getColor(R.color.reader_mode_white_text_color);
                     this.h = R.color.reader_background_white_color;
                     this.j = R.drawable.reader_battery_bg_normal;
                     break;
-                }
-                case 2: {
+                case 2:
                     this.g = this.n.getColor(R.color.reader_mode_brown_text_color);
                     this.h = R.drawable.reader_background_brown_big_img;
                     this.j = R.drawable.reader_battery_bg_brown;
                     break;
-                }
-                case 3: {
+                case 3:
                     this.g = this.n.getColor(R.color.reader_mode_green_text_color);
                     this.h = R.color.reader_background_white_green;
                     this.j = R.drawable.reader_battery_bg_green;
-                }
+                    break;
             }
         }
         this.i = Color.argb(153, Color.red(this.g), Color.green(this.g), Color.blue(this.g));
@@ -116,50 +109,38 @@ public final class bZ {
      * Lifted jumps to return sites
      */
     private void k() {
-        var1_1 = 1.0f;
-        var2_2 = this.n.getDimensionPixelSize(R.dimen.page_text_size);
+        float var1_1 = 1.0f;
+        float var2_2 = this.n.getDimensionPixelSize(R.dimen.page_text_size);
         switch (this.u) {
-            case 0: {
+            case 0:
                 var1_1 = 0.9f;
-                **break;
-            }
-            case 2: {
+                break;
+            case 2:
                 var1_1 = 1.15f;
-                **break;
-            }
-            case 3: {
+                break;
+            case 3:
                 var1_1 = 1.3f;
-                **break;
-            }
-            case 4: {
+                break;
+            case 4:
                 var1_1 = 1.6f;
-            }
-            lbl15:
-            // 5 sources:
-            default:
-            {
-                **GOTO lbl19
-            }
+                break;
             case 5:
+                var1_1 = 1.9f;
+                break;
         }
-        var1_1 = 1.9f;
-        lbl19:
-        // 2 sources:
         this.a = Math.round(var1_1 * var2_2);
         this.b = Math.round(0.4f * (float) this.a);
     }
 
     private void l() {
-        Iterator<cc> iterator = this.p.iterator();
-        while (iterator.hasNext()) {
-            iterator.next().a();
+        for (cc aP : this.p) {
+            aP.a();
         }
     }
 
     private void m() {
-        Iterator<ca> iterator = this.q.iterator();
-        while (iterator.hasNext()) {
-            iterator.next().a();
+        for (ca aQ : this.q) {
+            aQ.a();
         }
     }
 
@@ -180,10 +161,10 @@ public final class bZ {
      * Enabled aggressive block sorting
      */
     private void p() {
-        com.clilystudio.netbook.hpay100.a.a.b((Context) this.m, "customer_night_theme", this.x);
-        com.clilystudio.netbook.hpay100.a.a.b((Context) this.m, "night_mode", this.x);
+        com.clilystudio.netbook.hpay100.a.a.b(this.m, "customer_night_theme", this.x);
+        com.clilystudio.netbook.hpay100.a.a.b(this.m, "night_mode", this.x);
         if (this.x) {
-            MiStatInterfaceImpl.recordCountEvent("start_night_theme_page",null);
+            MiStatInterfaceImpl.recordCountEvent("start_night_theme_page", null);
             com.clilystudio.netbook.hpay100.a.a.B(this.m);
         } else {
             com.clilystudio.netbook.hpay100.a.a.C(this.m);
@@ -197,8 +178,7 @@ public final class bZ {
      * Enabled aggressive block sorting
      */
     public final void a() {
-        boolean bl = !this.x;
-        this.x = bl;
+        this.x = !this.x;
         this.c(this.j());
         Iterator<ce> iterator = this.o.iterator();
         do {
@@ -215,9 +195,8 @@ public final class bZ {
         boolean bl = this.x;
         this.x = false;
         this.c(n);
-        Iterator<cd> iterator = this.r.iterator();
-        while (iterator.hasNext()) {
-            iterator.next().a();
+        for (cd aR : this.r) {
+            aR.a();
         }
         if (bl) {
             this.p();
@@ -253,12 +232,12 @@ public final class bZ {
     public final void a(boolean bl) {
         int n;
         if (this.t.getBoolean("key_enable_imersive_mode", false)) {
-            Display display = ((WindowManager) this.m.getSystemService("window")).getDefaultDisplay();
+            Display display = ((WindowManager) this.m.getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay();
             Point point = new Point();
             display.getRealSize(point);
             n = point.y;
         } else {
-            n = a.L(this.m);
+            n = com.clilystudio.netbook.hpay100.a.a.L(this.m);
         }
         int n2 = this.n.getDimensionPixelSize(R.dimen.page_body_margin);
         int n3 = n - (this.d << 1) - (this.l << 1) - (n2 << 1);
@@ -266,15 +245,14 @@ public final class bZ {
             this.e = n3;
             return;
         }
-        this.e = n3 - am.k((Context) this.m);
+        this.e = n3 - am.k(this.m);
     }
 
     /*
      * Enabled aggressive block sorting
      */
     public final void b() {
-        boolean bl = !this.y;
-        this.y = bl;
+        this.y = !this.y;
         Iterator<cb> iterator = this.s.iterator();
         do {
             if (!iterator.hasNext()) {

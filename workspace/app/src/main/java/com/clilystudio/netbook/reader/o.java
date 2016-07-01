@@ -23,6 +23,7 @@ import com.clilystudio.netbook.model.ChapterLink;
 import com.clilystudio.netbook.model.ChapterSingleKey;
 import com.clilystudio.netbook.model.PurchaseChapterResult;
 import com.clilystudio.netbook.ui.user.AuthLoginActivity;
+import com.squareup.otto.Subscribe;
 import com.umeng.a.b;
 import com.xiaomi.mistatistic.sdk.MiStatInterface;
 
@@ -771,12 +772,12 @@ public final class o {
         ((TextView) this.f.findViewById(R.id.tv_time)).setText(a.format(System.currentTimeMillis()));
     }
 
-    @l
+    @Subscribe
     public final void onHideAdEvent(com.clilystudio.netbook.event.s s2) {
         this.s();
     }
 
-    @l
+    @Subscribe
     public final void onLoginEvent(com.clilystudio.netbook.event.t t2) {
         Account account;
         if (this.e && (account = t2.a()) != null) {
@@ -819,15 +820,19 @@ public final class o {
         }
     }
 
-    @l
+    @Subscribe
     public final void onRemoveAdEvent$2234193(a a2) {
         if (this.e) {
             this.f.findViewById(R.id.reader_ad_view).setVisibility(View.GONE);
         }
     }
 
-    @l
+    @Subscribe
     public final void onThemeChanged(com.clilystudio.netbook.event.C c2) {
         this.r();
+    }
+
+    public interface F {
+        public void a();
     }
 }

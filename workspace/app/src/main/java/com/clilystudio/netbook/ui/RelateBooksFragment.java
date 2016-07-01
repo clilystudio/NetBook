@@ -101,7 +101,7 @@ public class RelateBooksFragment extends Fragment implements cQ {
         this.mBookContainer = (LinearLayout) this.getView().findViewById(R.id.books);
         this.mRelateBookRoot = (LinearLayout) this.getView().findViewById(R.id.relate_book_root);
         this.mMore = (TextView) this.getView().findViewById(R.id.more);
-        new cM(this.getActivity(), this).a(this.getArguments().getString("book_id"));
+        new cM(this).a(this.getArguments().getString("book_id"));
     }
 
     public class ViewHolder {

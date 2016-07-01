@@ -935,7 +935,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
                 ReaderActivity.Z(ReaderActivity.this);
             }
         };
-        F aN2 = new F() {
+        com.clilystudio.netbook.reader.o.F aN2 = new com.clilystudio.netbook.reader.o.F() {
             @Override
             public void a() {
                 if (ReaderActivity.aa(ReaderActivity.this) == 5 || ReaderActivity.aa(ReaderActivity.this) == 10) {

@@ -6,12 +6,10 @@ import com.clilystudio.netbook.model.RelateBookRoot;
 
 public final class cM {
     private cQ a;
-    private Context b;
     private String[] c = new String[20];
 
-    public cM(Context context, cQ cQ2) {
+    public cM(cQ cQ2) {
         this.a = cQ2;
-        this.b = context;
     }
 
     static /* synthetic */ String[] a(cM cM2) {

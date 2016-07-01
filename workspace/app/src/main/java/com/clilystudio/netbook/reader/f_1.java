@@ -24,7 +24,6 @@ import com.clilystudio.netbook.model.mixtoc.SsTocRoot;
 import com.clilystudio.netbook.model.mixtoc.SsTocRow;
 import com.clilystudio.netbook.util.I;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -32,7 +31,7 @@ import java.util.regex.Pattern;
 
 public final class f {
     private int b;
-    private b a = b.a();
+    private b a = com.clilystudio.netbook.api.b.a();
     private String c;
     private String d;
     private String e;
@@ -59,7 +58,7 @@ public final class f {
 
     private ChapterRoot a(int n, String string) {
         try {
-            ChapterRoot chapterRoot = b.b().c(this.f, n, string);
+            ChapterRoot chapterRoot = com.clilystudio.netbook.api.b.b().c(this.f, n, string);
             return chapterRoot;
         } catch (Exception var3_4) {
             var3_4.printStackTrace();
@@ -72,10 +71,10 @@ public final class f {
      * Lifted jumps to return sites
      */
     private ChapterRoot a(int n, String string, String string2) {
-        String[] arrstring = a.O(this.f);
+        String[] arrstring = com.clilystudio.netbook.hpay100.a.a.O(this.f);
         if (arrstring == null) return null;
         try {
-            return b.b().a(arrstring[0], arrstring[1], n, string, string2);
+            return com.clilystudio.netbook.api.b.b().a(arrstring[0], arrstring[1], n, string, string2);
         } catch (Exception var4_6) {
             var4_6.printStackTrace();
         }
@@ -95,7 +94,6 @@ public final class f {
      * Lifted jumps to return sites
      */
     private List<ChapterLink> a(final int n, int n2) {
-        void var9_12;
         final ChapterLink[][] chapterLinks = new ChapterLink[n2][];
         ArrayList<Thread> arrayList = new ArrayList<Thread>();
         for (int j = 1; j <= n2; ++j) {
@@ -136,35 +134,22 @@ public final class f {
             if (arrchapterLink2 != null) {
                 for (ChapterLink chapterLink : arrchapterLink2) {
                     if (chapterLink == null) {
-                        ArrayList arrayList3 = new ArrayList();
-                        return var9_12;
+                        return new ArrayList<>();
                     }
                     arrayList2.add(chapterLink);
                 }
             }
             ++n4;
         }
-        return var9_12;
+        return arrayList2;
     }
 
     private ChapterRoot b(int n) {
-        try {
-            ChapterRoot chapterRoot = b.b().c(this.f, n);
-            return chapterRoot;
-        } catch (IOException var2_3) {
-            var2_3.printStackTrace();
-            return null;
-        }
+        return com.clilystudio.netbook.api.b.b().c(this.f, n);
     }
 
     private ChapterRoot b(String string, String string2) {
-        try {
-            ChapterRoot chapterRoot = b.b().p(string, string2);
-            return chapterRoot;
-        } catch (Exception var3_4) {
-            var3_4.printStackTrace();
-            return null;
-        }
+        return com.clilystudio.netbook.api.b.b().p(string, string2);
     }
 
     /*
@@ -174,7 +159,7 @@ public final class f {
     private Toc b() {
         try {
             MixTocRoot mixTocRoot;
-            MixTocRoot mixTocRoot2 = mixTocRoot = b.b().f(this.c);
+            MixTocRoot mixTocRoot2 = mixTocRoot = com.clilystudio.netbook.api.b.b().f(this.c);
             Toc toc = null;
             if (mixTocRoot2 == null) return toc;
             Toc toc2 = mixTocRoot2.getMixToc();
@@ -190,8 +175,8 @@ public final class f {
 
     private ChapterRoot c(String string) {
         try {
-            ApiService apiService = b.b();
-            if (a.l()) {
+            ApiService apiService = com.clilystudio.netbook.api.b.b();
+            if (com.clilystudio.netbook.hpay100.a.a.l()) {
                 return apiService.x(string);
             }
             ChapterRoot chapterRoot = apiService.y(string);
@@ -204,7 +189,7 @@ public final class f {
 
     private Toc c() {
         try {
-            Toc toc = b.b().e(this.d);
+            Toc toc = com.clilystudio.netbook.api.b.b().e(this.d);
             return toc;
         } catch (Exception var1_2) {
             var1_2.printStackTrace();
@@ -223,7 +208,7 @@ public final class f {
         int n2;
         try {
             int n3;
-            n2 = n3 = b.b().w(this.f);
+            n2 = n3 = com.clilystudio.netbook.api.b.b().w(this.f);
             if (n2 == 0) {
                 return null;
             }
@@ -255,7 +240,7 @@ public final class f {
         Toc toc;
         try {
             SgTocRoot sgTocRoot;
-            SgTocRoot sgTocRoot2 = sgTocRoot = b.b().s(this.f);
+            SgTocRoot sgTocRoot2 = sgTocRoot = com.clilystudio.netbook.api.b.b().s(this.f);
             toc = null;
             if (sgTocRoot2 == null) return toc;
             SgTocChapter[] arrsgTocChapter2 = sgTocRoot2.getChapter();
@@ -310,7 +295,7 @@ public final class f {
         {
             try {
                 LdTocRoot ldTocRoot2;
-                ldTocRoot = ldTocRoot2 = b.b().t(this.f);
+                ldTocRoot = ldTocRoot2 = com.clilystudio.netbook.api.b.b().t(this.f);
                 if (ldTocRoot != null && ldTocRoot.getResult() != null) break block6;
                 return null;
             } catch (Exception var1_3) {
@@ -319,7 +304,7 @@ public final class f {
             }
         }
         try {
-            String string2 = b.b().u(this.f);
+            String string2 = com.clilystudio.netbook.api.b.b().u(this.f);
             Matcher matcher = Pattern.compile("tk:'([0-9a-f]+)'").matcher(string2);
             if (!matcher.find()) return null;
             String string3 = matcher.group(1);
@@ -354,7 +339,7 @@ public final class f {
         EsTocItem[] arresTocItem;
         try {
             EsTocRoot esTocRoot;
-            EsTocRoot esTocRoot2 = esTocRoot = b.b().v(this.f);
+            EsTocRoot esTocRoot2 = esTocRoot = com.clilystudio.netbook.api.b.b().v(this.f);
             toc = null;
             if (esTocRoot2 == null) return toc;
             EsTocItem[] arresTocItem2 = esTocRoot2.getItems();
@@ -412,7 +397,7 @@ public final class f {
                         string = arrstring[0];
                     }
                 }
-                chapterRoot = this.b(a.b(string, 0));
+                chapterRoot = this.b(com.clilystudio.netbook.hpay100.a.a.b(string, 0));
                 break;
             }
             case 7: {
@@ -437,20 +422,14 @@ public final class f {
         if (this.b == 8) return chapterRoot;
         if (this.b == 3) return chapterRoot;
         I.h = true;
-        try {
-            BookTopRoot.Favorite bookTopRoot$Favorite;
-            BookTopRoot bookTopRoot = b.b().u();
-            if (bookTopRoot != null && (bookTopRoot$Favorite = bookTopRoot.getFavorite()) != null) {
-                a.b(MyApplication.a(), bookTopRoot$Favorite.getBookID(), bookTopRoot$Favorite.getTocID(), bookTopRoot$Favorite.getChecksum());
-            }
-            chapterRoot = this.c(chapterLink.getLink());
-            I.h = false;
-            return chapterRoot;
-        } catch (IOException iOException) {
-            I.h = false;
-            iOException.printStackTrace();
-            return chapterRoot;
+        BookTopRoot.Favorite bookTopRoot$Favorite;
+        BookTopRoot bookTopRoot = com.clilystudio.netbook.api.b.b().u();
+        if (bookTopRoot != null && (bookTopRoot$Favorite = bookTopRoot.getFavorite()) != null) {
+            com.clilystudio.netbook.hpay100.a.a.b(MyApplication.a(), bookTopRoot$Favorite.getBookID(), bookTopRoot$Favorite.getTocID(), bookTopRoot$Favorite.getChecksum());
         }
+        chapterRoot = this.c(chapterLink.getLink());
+        I.h = false;
+        return chapterRoot;
     }
 
     public final Toc a() {
