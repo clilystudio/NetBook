@@ -3,35 +3,17 @@ package com.clilystudio.netbook.util;
 import android.app.Activity;
 import android.app.Notification;
 import android.app.NotificationManager;
-import android.app.PendingIntent;
-import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
 import android.graphics.Bitmap;
 import android.net.wifi.WifiManager;
-import android.os.Handler;
 import android.support.v7.app.NotificationCompat;
 import android.widget.RemoteViews;
 import android.widget.Toast;
 
-import com.activeandroid.query.Delete;
 import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.R;
-import com.clilystudio.netbook.db.SplashRecord;
 import com.clilystudio.netbook.model.Account;
-import com.clilystudio.netbook.model.Author;
-import com.clilystudio.netbook.model.Splash;
-import com.clilystudio.netbook.model.SplashAdvert;
-import com.clilystudio.netbook.model.SplashRoot;
 import com.clilystudio.netbook.ui.post.OtherUserActivity;
-
-import java.io.ByteArrayOutputStream;
-import java.io.FileOutputStream;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.Iterator;
-import java.util.List;
 
 public class e {
     private static e a;
@@ -69,17 +51,6 @@ public class e {
             a = new e(context);
         }
         return a;
-    }
-
-    private static List<SplashRecord> a(List<SplashRecord> list) {
-        ArrayList<SplashRecord> arrayList = new ArrayList<SplashRecord>();
-        long l2 = System.currentTimeMillis();
-        for (int i = 0; i < list.size(); ++i) {
-            SplashRecord splashRecord = list.get(i);
-            if (splashRecord.start.getTime() > l2 || splashRecord.end.getTime() < l2) continue;
-            arrayList.add(splashRecord);
-        }
-        return arrayList;
     }
 
     public static void a(Activity activity, int n) {
@@ -127,55 +98,6 @@ public class e {
      * Enabled aggressive block sorting
      */
     static /* synthetic */ void a(e e2) {
-        b.a();
-        SplashRoot splashRoot = b.b().j();
-        if (splashRoot == null || !splashRoot.isOk()) {
-            return;
-        }
-        Splash[] arrsplash = splashRoot.getSplash();
-        if (arrsplash == null || arrsplash.length == 0) {
-            new Delete().from(SplashRecord.class).execute();
-            return;
-        }
-        ArrayList<String> arrayList = new ArrayList<String>();
-        int n = arrsplash.length;
-        for (int k = 0; k < n; ++k) {
-            arrayList.add(arrsplash[k].get_id());
-        }
-        List<SplashRecord> list = SplashRecord.getAll();
-        ArrayList<String> arrayList2 = new ArrayList<String>();
-        Iterator<SplashRecord> iterator = list.iterator();
-        while (iterator.hasNext()) {
-            arrayList2.add(iterator.next().splashId);
-        }
-        for (int i2 = 0; i2 < list.size(); ++i2) {
-            String string = list.get((int) i2).splashId;
-            if (arrayList.contains(string)) continue;
-            arrayList2.remove(string);
-            SplashRecord.delete(string);
-        }
-        int n2 = arrsplash.length;
-        int n3 = 0;
-        while (n3 < n2) {
-            Splash splash = arrsplash[n3];
-            if (!arrayList2.contains(splash.get_id())) {
-                SplashRecord.create(splash);
-                String string = splash.getImg3x4();
-                Bitmap bitmap = a.L(string);
-                if (bitmap != null) {
-                    String string2 = a.K(string);
-                    Context context = e2.b;
-                    if (bitmap != null && string2 != null && context != null) {
-                        FileOutputStream fileOutputStream = context.openFileOutput(string2, 0);
-                        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-                        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
-                        fileOutputStream.write(byteArrayOutputStream.toByteArray());
-                        fileOutputStream.close();
-                    }
-                }
-            }
-            ++n3;
-        }
     }
 
     public static void a(String string) {
@@ -278,39 +200,6 @@ public class e {
         return d;
     }
 
-    public final SplashAdvert a() {
-        List<SplashRecord> list = SplashRecord.getAll();
-        if (list.isEmpty()) {
-            return null;
-        }
-        List<SplashRecord> list2 = SplashRecord.getAllNotShow();
-        List<SplashRecord> list3 = e.a(list2);
-        int n = list3.size();
-        if (list2.isEmpty() || n == 0) {
-            for (SplashRecord splashRecord : list) {
-                splashRecord.isShow = false;
-                splashRecord.save();
-            }
-            list3 = e.a(list);
-            n = list3.size();
-            if (n == 0) {
-                return null;
-            }
-        }
-        SplashRecord splashRecord = list3.get((int) (Math.random() * (double) n));
-        String string = a.K(splashRecord.img3x4);
-        Bitmap bitmap = a.k(this.b, string);
-        if (bitmap == null) {
-            return null;
-        }
-        splashRecord.isShow = true;
-        splashRecord.save();
-        SplashAdvert splashAdvert = new SplashAdvert();
-        splashAdvert.setSplashRecord(splashRecord);
-        splashAdvert.setBitmap(bitmap);
-        return splashAdvert;
-    }
-
     public final void b() {
         new Thread(){
 
@@ -318,6 +207,6 @@ public class e {
             public void run() {
                 com.clilystudio.netbook.util.e.a(com.clilystudio.netbook.util.e.this);
             }
-        }                .start();
+        }.start();
     }
 }

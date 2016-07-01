@@ -918,28 +918,11 @@ public class am {
     }
 
     public static boolean q(Context context) {
-        return am.o(context) && am.r(context);
+        return false;
     }
 
-    /*
-     * Enabled force condition propagation
-     * Lifted jumps to return sites
-     */
     public static boolean r(Context context) {
-        if (a.a(context, "remove_ad_duration", 0) > 0) return false;
-        String string = am.n(context);
-        String string2 = com.umeng.a.b.b(context, "hide_all_ads_channel");
-        if (string2 == null || string2.length() <= 0) return true;
-        String[] arrstring = string2.split(",");
-        int n = arrstring.length;
-        int n2 = 0;
-        while (n2 < n) {
-            if (arrstring[n2].equals(string)) {
-                return false;
-            }
-            ++n2;
-        }
-        return true;
+        return false;
     }
 
     /*

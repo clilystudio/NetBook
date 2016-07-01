@@ -67,7 +67,6 @@ import com.clilystudio.netbook.model.Root;
 import com.clilystudio.netbook.model.SearchPromRoot;
 import com.clilystudio.netbook.model.SearchResultRoot;
 import com.clilystudio.netbook.model.ShelfMsgRoot;
-import com.clilystudio.netbook.model.SplashRoot;
 import com.clilystudio.netbook.model.SyncUploadResult;
 import com.clilystudio.netbook.model.TimelineResult;
 import com.clilystudio.netbook.model.Toc;
@@ -1207,11 +1206,11 @@ public class ApiService {
         httpRequest.form(hashMap);
         return ApiService.a(httpRequest, ResultStatus.class);
     }
-
-    public final SplashRoot j() {
-        String string = f + "/splashes/android";
-        return ApiService.a(this.a(HttpRequest.get(string)), SplashRoot.class);
-    }
+//
+//    public final SplashRoot j() {
+//        String string = f + "/splashes/android";
+//        return ApiService.a(this.a(HttpRequest.get(string)), SplashRoot.class);
+//    }
 
     public final PostPublish k(String string, String string2) {
         String string3 = f + String.format(Locale.CHINA, "/user/twitter/delete/%s", string2);

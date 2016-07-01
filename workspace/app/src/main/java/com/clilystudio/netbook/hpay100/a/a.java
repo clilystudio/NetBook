@@ -2277,7 +2277,7 @@ public class a {
      * Enabled aggressive block sorting
      * Lifted jumps to return sites
      */
-    private static void a(String string2, BookSyncRecord$BookModifyType bookModifyType) {
+    private static void a(String string2, BookSyncRecord.BookModifyType bookModifyType) {
         BookSyncRecord.updateOrCreate(a.o(), string2, BookSyncRecord.getTypeId(bookModifyType));
         if (am.e() == null) return;
         if (am.e().getUser() == null) {
@@ -2364,14 +2364,14 @@ public class a {
     }
 
     public static void a(String[] arrstring) {
-        a.a(arrstring, BookSyncRecord$BookModifyType.SHELF_ADD);
+        a.a(arrstring, BookSyncRecord.BookModifyType.SHELF_ADD);
     }
 
     /*
      * Enabled aggressive block sorting
      * Lifted jumps to return sites
      */
-    private static void a(String[] arrstring, BookSyncRecord$BookModifyType bookSyncRecord$BookModifyType) {
+    private static void a(String[] arrstring, BookSyncRecord.BookModifyType bookSyncRecord$BookModifyType) {
         for (String string2 : arrstring) {
             BookSyncRecord.updateOrCreate(a.o(), string2, BookSyncRecord.getTypeId(bookSyncRecord$BookModifyType));
         }
@@ -3214,7 +3214,7 @@ public class a {
     }
 
     public static void b(String[] arrstring) {
-        a.a(arrstring, BookSyncRecord$BookModifyType.FEED_ADD);
+        a.a(arrstring, BookSyncRecord.BookModifyType.FEED_ADD);
     }
 
     public static boolean b(String string2, SQLiteDatabase sQLiteDatabase) {
@@ -4506,22 +4506,7 @@ public class a {
         }
     }
 
-    /*
-     * Enabled aggressive block sorting
-     */
     public static void m(Context context, String string2) {
-        if (string2 == null) {
-            a.e(context, "ad_splash_show", null);
-            return;
-        } else {
-            String string3 = a.d(context, "ad_splash_show", null);
-            if (string3 != null && string3.contains(string2)) return;
-            {
-                MiStatInterface.recordCountEvent("ad_splash_show", string2);
-                a.e(context, "ad_splash_show", string3 + string2);
-                return;
-            }
-        }
     }
 
     /*
@@ -4757,7 +4742,7 @@ public class a {
     }
 
     public static void u(String string2) {
-        a.a(string2, BookSyncRecord$BookModifyType.SHELF_ADD);
+        a.a(string2, BookSyncRecord.BookModifyType.SHELF_ADD);
     }
 
     public static float v(Context context, String string2) {
@@ -4779,32 +4764,15 @@ public class a {
     }
 
     public static void v(String string2) {
-        a.a(string2, BookSyncRecord$BookModifyType.SHELF_REMOVE);
+        a.a(string2, BookSyncRecord.BookModifyType.SHELF_REMOVE);
     }
 
     public static void w(String string2) {
-        a.a(string2, BookSyncRecord$BookModifyType.FEED_ADD);
+        a.a(string2, BookSyncRecord.BookModifyType.FEED_ADD);
     }
 
-    /*
-     * Enabled aggressive block sorting
-     * Lifted jumps to return sites
-     */
     public static boolean w(Context context) {
-        if ("com.clilystudio.netbooktest".equals("com.clilystudio.netbook")) {
-            return true;
-        }
-        String string2 = am.n((Context) context);
-        int n2 = a.b(OnlineConfigAgent.getInstance().getConfigParams(context, "home_game_center_toggle"), 0);
-        boolean bl = am.f((Context) context) < n2;
-        if (!"Anzhi".equals(string2)) {
-            if (!("Taobao".equals(string2) || "Uc".equals(string2) || "Zhihuiyun".equals(string2))) {
-                if (!"Tencent".equals(string2)) return bl;
-            }
-            if (!bl) return false;
-        }
-        if (am.o((Context) context)) return true;
-        return false;
+        return true;
     }
 
     public static boolean w(Context context, String string2) {
@@ -4822,7 +4790,7 @@ public class a {
     }
 
     public static void x(String string2) {
-        a.a(string2, BookSyncRecord$BookModifyType.FEED_REMOVE);
+        a.a(string2, BookSyncRecord.BookModifyType.FEED_REMOVE);
     }
 
     public static boolean x(Context context) {

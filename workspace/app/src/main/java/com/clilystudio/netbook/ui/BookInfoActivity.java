@@ -335,16 +335,9 @@ public class BookInfoActivity extends BaseActivity implements View.OnClickListen
 
     private void f() {
         View view = this.findViewById(R.id.book_info_ad_view);
-        if (am.q(this) && com.clilystudio.netbook.hpay100.a.a.F(this)) {
-            view.setVisibility(View.GONE);
-            return;
-        }
         view.setVisibility(View.GONE);
     }
 
-    /*
-     * Enabled aggressive block sorting
-     */
     private void g() {
         int n2 = this.f.getPaddingLeft();
         int n3 = this.f.getPaddingTop();

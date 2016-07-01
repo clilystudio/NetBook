@@ -498,16 +498,11 @@ public final class o {
         }
         View view = this.f.findViewById(R.id.reader_ad_view);
         if (view == null) return;
-        if (am.q(this.b) && a.F(this.b) && this.q() && this.a(view) && this.b instanceof ReaderActivity) {
-            view.setVisibility(View.GONE);
-            return;
-        }
         view.setVisibility(View.GONE);
         if (!this.e) return;
         if (a.a((Context) this.b, "remove_ad_toast_showed" + com.clilystudio.netbook.util.I.a, false)) return;
         if (!this.q()) return;
         if (!this.a(view)) return;
-        if (am.r(this.b)) return;
         com.clilystudio.netbook.util.e.a(this.b, "已为您自动免除广告");
         a.b((Context) this.b, "remove_ad_toast_showed" + com.clilystudio.netbook.util.I.a, true);
     }

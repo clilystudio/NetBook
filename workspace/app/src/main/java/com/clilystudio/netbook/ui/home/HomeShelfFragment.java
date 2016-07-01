@@ -448,7 +448,7 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
         if (list == null || list.isEmpty()) {
             return;
         }
-        if (!am.r(homeShelfFragment.getActivity()) && shelfMsg != null && shelfMsg.postLink != null && (shelfMsg.postLink.startsWith("link") || shelfMsg.postLink.startsWith("game"))) {
+        if (shelfMsg != null && shelfMsg.postLink != null && (shelfMsg.postLink.startsWith("link") || shelfMsg.postLink.startsWith("game"))) {
             homeShelfFragment.e.removeHeaderView(homeShelfFragment.g);
             return;
         }
@@ -819,7 +819,7 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
     }
 
     public final void e() {
-        if (am.r(this.getActivity()) || this.g != null && this.i != null && this.i.postLink != null && (!this.i.postLink.startsWith("link") || this.i.postLink.startsWith("game"))) {
+        if (this.g != null && this.i != null && this.i.postLink != null && (!this.i.postLink.startsWith("link") || this.i.postLink.startsWith("game"))) {
             this.e.removeHeaderView(this.g);
             this.e.addHeaderView(this.g);
         }
@@ -926,9 +926,6 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
         com.clilystudio.netbook.hpay100.a.a.a(this.getActivity(), this.e);
         this.g = LayoutInflater.from(this.getActivity()).inflate(R.layout.bookshelf_header_msg, this.e, false);
         this.g.setVisibility(View.GONE);
-        if (am.r(this.getActivity())) {
-            this.e.addHeaderView(this.g);
-        }
         this.j = new HomeShelfAdapter(this.getActivity());
         this.e.setAdapter(this.j);
         this.e.setOnItemClickListener(this.C);
@@ -1017,7 +1014,7 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
     @Subscribe
     public void onHideAdEvent(com.clilystudio.netbook.event.s s2) {
         this.k();
-        if (!am.r(this.getActivity()) && this.g != null && this.i != null && this.i.postLink != null && (this.i.postLink.startsWith("link") || this.i.postLink.startsWith("game"))) {
+        if (this.g != null && this.i != null && this.i.postLink != null && (this.i.postLink.startsWith("link") || this.i.postLink.startsWith("game"))) {
             this.e.removeHeaderView(this.g);
         }
     }

@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
@@ -18,23 +17,16 @@ import android.widget.TextView;
 
 import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.R;
-import com.clilystudio.netbook.a_pack.*;
 import com.clilystudio.netbook.a_pack.e;
-import com.clilystudio.netbook.a_pack.f;
 import com.clilystudio.netbook.am;
-import com.clilystudio.netbook.api.*;
-import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.event.v;
 import com.clilystudio.netbook.model.TocSummary;
 import com.clilystudio.netbook.ui.RelateBookListActivity;
 import com.clilystudio.netbook.ui.SmartImageView;
-import com.clilystudio.netbook.ui.post.BookPostTabActivity;
 import com.clilystudio.netbook.util.InsideLinkIntent;
-import com.clilystudio.netbook.util.adutil.BaseShelfAd;
 import com.clilystudio.netbook.util.t;
 import com.clilystudio.netbook.widget.LoadingContainer;
 import com.umeng.a.b;
-import com.xiaomi.mistatistic.sdk.MiStatInterface;
 
 import java.util.Date;
 import java.util.List;
@@ -133,7 +125,7 @@ public class ReaderMenuFragment extends Fragment {
                             // h -> lewisjdeane/L-Dialogs DialogBuilder
                             h h2 = new h(fragmentActivity);
                             h2.e = "更换来源将会删除之前的预读章节，是否继续？";
-                            h2.a("更换",new DialogInterface.OnClickListener(){
+                            h2.a("更换", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
                                     dialog.dismiss();
@@ -240,7 +232,7 @@ public class ReaderMenuFragment extends Fragment {
         if (this.getView() != null && n2 != 0) {
             this.getView().findViewById(R.id.slm_frame).setPadding(0, n2, 1, 0);
         }
-        com.clilystudio.netbook.a_pack.e<String, Void, List<TocSummary>> bA2 = new e<String, Void, List<TocSummary>>(){
+        com.clilystudio.netbook.a_pack.e<String, Void, List<TocSummary>> bA2 = new e<String, Void, List<TocSummary>>() {
 
             @Override
             protected List<TocSummary> doInBackground(String... params) {
@@ -269,15 +261,8 @@ public class ReaderMenuFragment extends Fragment {
         };
         String[] arrstring = new String[]{this.e};
         bA2.b(arrstring);
-        if (am.q((Context) this.getActivity())) {
-            new bz(this, 0).b((Object[]) new Void[0]);
-            return;
-        } else {
-            if (this.getView() == null) return;
-            {
-                this.getView().findViewById(R.id.slm_reader_layout_ad).setVisibility(View.GONE);
-                return;
-            }
+        if (this.getView() != null) {
+            this.getView().findViewById(R.id.slm_reader_layout_ad).setVisibility(View.GONE);
         }
     }
 
