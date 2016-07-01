@@ -1435,7 +1435,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
     private void v() {
         n n2 = this.A();
         if (n2 != null && !n2.p()) {
-            if (n2.n() != 1) {
+            if (n2.nf() != 1) {
                 int n3 = n2.l();
                 this.j.a(n3, new e<n>() {
                     @Override

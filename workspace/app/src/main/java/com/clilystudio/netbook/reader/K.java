@@ -17,11 +17,10 @@ public final class K {
     }
 
     static /* synthetic */ n a(K k, ReaderChapter readerChapter, int n2) {
-        return n.a((K) k, (ReaderChapter) readerChapter, (int) n2);
+        return n.a(k, readerChapter, n2);
     }
 
     private void a(int n2, final int n31, final e<n> e2, boolean bl, final int n4) {
-//        L(this, e2, n4, n3)
         this.a.a(n2, new e<ReaderChapter>(){
 
             @Override
@@ -31,9 +30,8 @@ public final class K {
                     return;
                 }
                 int[] arrn = K.this.a(readerChapter.getBody());
-                int n2 = n31;
                 int n3 = 0;
-                if (n2 != 0) {
+                if (n31 != 0) {
                     if (n31 == -1) {
                         n3 = -1 + arrn.length;
                     } else {
@@ -59,7 +57,7 @@ public final class K {
     }
 
     public final void a(int n2, int n3, e<n> e2, boolean bl) {
-        this.a(n2, n3, e2, true, 1);
+        this.a(n2, n3, e2, bl, 1);
     }
 
     public final void a(int n2, e<n> e2, boolean bl) {
@@ -77,7 +75,7 @@ public final class K {
     public final void a(e<n> e2, int n2) {
         ReaderChapter readerChapter = new ReaderChapter();
         readerChapter.setStatus(n2);
-        e2.a((Object) n.a((K) this, (ReaderChapter) readerChapter, (int) 0));
+        e2.a(n.a(this, readerChapter, 0));
     }
 
     public final int[] a(String string) {
@@ -89,7 +87,7 @@ public final class K {
         staticLayout.draw(new Canvas());
         int n4 = staticLayout.getLineCount();
         int n5 = this.b.e;
-        ArrayList<Integer> arrayList = new ArrayList<Integer>();
+        ArrayList<Integer> arrayList = new ArrayList<>();
         int n6 = 0;
         do {
             int n7;
@@ -98,7 +96,7 @@ public final class K {
                 --n2;
             }
             if (string.substring(n8 = staticLayout.getLineStart(n7), staticLayout.getLineEnd(n2)).length() <= 0) continue;
-            if (arrayList.isEmpty() || n8 != (Integer) arrayList.get(-1 + arrayList.size())) {
+            if (arrayList.isEmpty() || n8 != arrayList.get(-1 + arrayList.size())) {
                 arrayList.add(n8);
             }
             n6 = staticLayout.getLineBottom(n2);
@@ -106,7 +104,7 @@ public final class K {
         int[] arrn = new int[arrayList.size()];
         int n9 = arrn.length;
         while (n3 < n9) {
-            arrn[n3] = (Integer) arrayList.get(n3);
+            arrn[n3] = arrayList.get(n3);
             ++n3;
         }
         return arrn;
