@@ -16,6 +16,7 @@ import android.view.WindowManager;
 
 import com.clilystudio.netbook.event.C;
 import com.umeng.a.b;
+import com.xiaomi.mistatistic.sdk.MiStatInterfaceImpl;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -179,13 +180,13 @@ public final class bZ {
      * Enabled aggressive block sorting
      */
     private void p() {
-        a.b((Context) this.m, "customer_night_theme", this.x);
-        a.b((Context) this.m, "night_mode", this.x);
+        com.clilystudio.netbook.hpay100.a.a.b((Context) this.m, "customer_night_theme", this.x);
+        com.clilystudio.netbook.hpay100.a.a.b((Context) this.m, "night_mode", this.x);
         if (this.x) {
-            b.a(this.m, "start_night_theme_page");
-            a.B(this.m);
+            MiStatInterfaceImpl.recordCountEvent("start_night_theme_page",null);
+            com.clilystudio.netbook.hpay100.a.a.B(this.m);
         } else {
-            a.C(this.m);
+            com.clilystudio.netbook.hpay100.a.a.C(this.m);
         }
         Intent intent = new Intent();
         intent.setAction("broadcastOnThemeChanged");
@@ -203,7 +204,7 @@ public final class bZ {
         do {
             if (!iterator.hasNext()) {
                 this.p();
-                i.a().c(new C(this.x));
+                com.clilystudio.netbook.event.i.a().post(new C(this.x));
                 return;
             }
             iterator.next().a();
