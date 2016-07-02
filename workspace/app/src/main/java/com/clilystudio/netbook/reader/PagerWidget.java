@@ -8,7 +8,7 @@ import android.view.ViewConfiguration;
 import android.view.animation.Interpolator;
 import android.widget.Scroller;
 
-import org.apache.commons.lang3.a.a;
+import org.apache.commons.lang3.reflect.FieldUtils;
 
 public class PagerWidget extends ReaderViewPager {
     private int a;
@@ -46,7 +46,7 @@ public class PagerWidget extends ReaderViewPager {
 
     private Object a(String string) {
         try {
-            Object object = a.a(ReaderViewPager.class.getDeclaredField(string), (Object) this, true);
+            Object object = FieldUtils.readField(ReaderViewPager.class.getDeclaredField(string), (Object) this, true);
             return object;
         } catch (IllegalAccessException var4_3) {
             var4_3.printStackTrace();
@@ -62,7 +62,7 @@ public class PagerWidget extends ReaderViewPager {
 
     private void a(String string, Object object) {
         try {
-            a.a(ReaderViewPager.class.getDeclaredField(string), (Object) this, object, true);
+            FieldUtils.writeField(ReaderViewPager.class.getDeclaredField(string), (Object) this, object, true);
             return;
         } catch (Exception var3_3) {
             var3_3.printStackTrace();
@@ -81,7 +81,7 @@ public class PagerWidget extends ReaderViewPager {
                 return 1.0f + f2 * (f2 * (f2 * (f2 * f2)));
             }
         }) {
-           @Override
+            @Override
             public void startScroll(int startX, int startY, int dx, int dy) {
                 super.startScroll(startX, startY, dx, dy, 400);
             }
@@ -102,112 +102,259 @@ public class PagerWidget extends ReaderViewPager {
      */
     @Override
     public boolean onTouchEvent(MotionEvent var1_1) {
-        var2_2 = BADBOOL 2;
-        var3_3 = true;
-        var4_4 = 255 & var1_1.getAction();
-        if (this.i != 0)**GOTO lbl47
-        switch (var4_4) {
-            default: {
-                **GOTO lbl34
+        v3 = 0xa;
+        v0 = 0x2;
+        v2 = 0x0;
+        v1 = 0x1;
+        int v4 = var1_1.getAction() & 0xff;
+        if (this.i == 0) {
+            switch (v4) {
+                case 0:
+                    return true;
+                case 2:
+                    if (this.e() || !this.c.isFinished() || this.d) {
+                        return super.onTouchEvent(var1_1);
+                    } else {
+                        this.d = true;
+                        int v0 = 2;
+                        if (var1_1.getX() >= this.getWidth() / 3.0) {
+                            if (var1_1.getX() <= this.getWidth() * 2.0 / 3.0) {
+                                if (var1_1.getY() >= this.getHeight() / 5.0) {
+                                    if (var1_1.getY() <= this.getHeight() 4.0 / 5.0){
+                                        v0 = 0;
+                                    }
+                                } else {
+                                    v0 = 1;
+                                }
+                            }
+                        } else {
+                            v0 = 1;
+                        }
+                        if (this.b != null) {
+                            this.b.a(v0);
+                        }
+                        this.d = false;
+                    }
+                    return true;
+                case 1:
+                    if (this.e()) {
+                        if (this.getContext() instanceof ReaderActivity) {
+                            ((ReaderActivity) this.getContext()).k();
+                        }
+                    } else {
+                        float v2 = ((Float) this.a("mInitialMotionX")).floatValue();
+                        int v0 = ((Integer) this.a("mActivePointerId")).intValue();
+                        int v3 = MotionEventCompat.findPointerIndex(var1_1, v0);
+                        if (Math.abs(MotionEventCompat.getX(var1_1, v3) - v2) > this.a) {
+                            return super.onTouchEvent(PagerWidget.a(var1_1));
+                        }
+                    }
+                    break;
             }
-            case 2: {
-                if (this.e()) {
-                    if (this.getContext() instanceof ReaderActivity == false) return super.onTouchEvent(var1_1);
-                    ((ReaderActivity) this.getContext()).k();
-                    return super.onTouchEvent(var1_1);
+        } else {
+            if (this.i == 1) {
+                switch (v4) {
+
+                    case 3:
+                        this.e = var1_1.getX();
+                        this.f = var1_1.getY();
+                        this.k = false;
+                        break;
+                    case 4:
+                        if (!this.k) {
+                            this.j.clearAnimation();
+                            this.k = true;
+                        }
+                        if (Math.abs(var1_1.getY() - this.f) > this.h) {
+                            int v0 = this.getMeasuredHeight() - var1_1.getY();
+                            if (this.getMeasuredHeight() - var1_1.getY() <= this.j.g()) {
+                                if (v0 < 10) {
+                                    v0 = 10;
+                                }
+                            } else {
+                                v0 = this.j.g();
+                            }
+                            this.j.a(v0);
+                        }
+                        break;
+                    case 5:
+                        v0 = this.e;
+                        v3 = p1.getX();
+                        v0 -= v3;
+                        v0 = Ljava / lang / Math.abs(v0);
+                        v3 = this.h;
+                        cmpl - float v0, v0, v3
+                        if (v0 > 0) {
+                            this.g = v2;
+                        } else {
+                            v0 = this.f;
+                            v3 = p1.getY();
+                            v0 -= v3;
+                            v0 = Ljava / lang / Math.abs(v0);
+                            v3 = this.h;
+                            cmpl - float v0, v0, v3
+                            if (v0 <= 0) {
+                                this.g = v1;
+                            } else {
+                                this.g = v2;
+                            }
+                        }
+                        if (this.b != 0 && this.g != 0) {
+                            v0 = this.b;
+                            v0.a(v2);
+                        }
+                        v0 = this.g;
+                        if (v0 == 0) {
+                            v0 = this.j;
+                            v0.e();
+                        }
+                        goto/16:goto_0
+
+                        packed - switch v4,:pswitch_data_1
+                }else{
+                    packed - switch v4,:pswitch_data_2
                 }
-                var10_5 = ((Float) this.a("mInitialMotionX")).floatValue();
-                var11_6 = MotionEventCompat.findPointerIndex(var1_1, (Integer) this.a("mActivePointerId"));
-                try {
-                    var13_8 = var15_7 = MotionEventCompat.getX(var1_1, var11_6);
-                } catch (Exception var12_9) {
-                    var12_9.printStackTrace();
-                    var13_8 = 0.0f;
+            }
+            return super.onTouchEvent(var1_1);
+            :goto_0
+            :
+            pswitch_0
+            return v1
+            :pswitch_1
+            :
+            pswitch_6
+                    v0 = this.b;
+            v0.a(v2);
+            goto/16:goto_0
+            :
+            pswitch_data_0
+                    .packed - switch 0x0
+            :pswitch_0
+            :
+            pswitch_2
+            :
+            pswitch_1
+                    .end packed - switch
+            :pswitch_data_1
+                    .packed - switch 0x0
+            :pswitch_3
+            :
+            pswitch_5
+            :
+            pswitch_4
+                    .end packed - switch
+            :pswitch_data_2
+                    .packed - switch 0x1
+            :pswitch_6
+                    .end packed - switch
+
+
+            var2_2 = BADBOOL 2;
+            var3_3 = true;
+            var4_4 = 255 & var1_1.getAction();
+            if (this.i != 0)**GOTO lbl47
+            switch (var4_4) {
+                default: {
+                    **GOTO lbl34
                 }
-                if (Math.abs(var13_8 - var10_5) <= (float) this.a) return var3_3;
-                super.onTouchEvent(PagerWidget.a(var1_1));
+                case 2: {
+                    if (this.e()) {
+                        if (this.getContext() instanceof ReaderActivity == false) return super.onTouchEvent(var1_1);
+                        ((ReaderActivity) this.getContext()).k();
+                        return super.onTouchEvent(var1_1);
+                    }
+                    var10_5 = ((Float) this.a("mInitialMotionX")).floatValue();
+                    var11_6 = MotionEventCompat.findPointerIndex(var1_1, (Integer) this.a("mActivePointerId"));
+                    try {
+                        var13_8 = var15_7 = MotionEventCompat.getX(var1_1, var11_6);
+                    } catch (Exception var12_9) {
+                        var12_9.printStackTrace();
+                        var13_8 = 0.0f;
+                    }
+                    if (Math.abs(var13_8 - var10_5) <= (float) this.a) return var3_3;
+                    super.onTouchEvent(PagerWidget.a(var1_1));
+                    return var3_3;
+                }
+                case 1: {
+                    if (this.e() || !this.c.isFinished() || this.d)**GOTO lbl34
+                    this.d = var3_3;
+                    var6_10 = var1_1.getX();
+                    var7_11 = var1_1.getY();
+                    var8_12 = this.getWidth() / 3;
+                    var9_13 = this.getHeight() / 5;
+                    if (var6_10 >= var8_12)**GOTO lbl37
+                    var2_2 = var3_3;
+                    **GOTO lbl43
+                    lbl34:
+                    // 2 sources:
+                    var3_3 = super.onTouchEvent(var1_1);
+                }
+                case 0:
+            }
+            return var3_3;
+            lbl37:
+            // 1 sources:
+            if (var6_10 <= var8_12 * 2.0f) {
+                if (var7_11 < var9_13) {
+                    var2_2 = var3_3;
+                } else if (var7_11 <= 4.0f * var9_13) {
+                    var2_2 = false;
+                }
+            }
+            lbl43:
+            // 7 sources:
+            if (this.b != null) {
+                this.b.a((int) var2_2 ? 1 : 0);
+            }
+            this.d = false;
+            return var3_3;
+            lbl47:
+            // 1 sources:
+            if (this.i == var3_3) {
+                switch (var4_4) {
+                    default: {
+                        return var3_3;
+                    }
+                    case 0: {
+                        this.e = var1_1.getX();
+                        this.f = var1_1.getY();
+                        this.k = false;
+                        return var3_3;
+                    }
+                    case 2: {
+                        if (!this.k) {
+                            this.j.clearAnimation();
+                            this.k = var3_3;
+                        }
+                        if ((float) Math.abs((int) (var1_1.getY() - this.f)) <= this.h) return var3_3;
+                        var5_14 = this.getMeasuredHeight() - (int) var1_1.getY();
+                        if (var5_14 > this.j.g()) {
+                            var5_14 = this.j.g();
+                        } else if (var5_14 < 10) {
+                            var5_14 = 10;
+                        }
+                        this.j.a(var5_14);
+                        return var3_3;
+                    }
+                    case 1:
+                }
+                this.g = Math.abs(this.e - var1_1.getX()) > this.h || Math.abs(this.f - var1_1.getY()) > this.h ? false : var3_3;
+                if (this.b != null && this.g) {
+                    this.b.a(0);
+                }
+                if (this.g != false) return var3_3;
+                this.j.e();
                 return var3_3;
             }
-            case 1: {
-                if (this.e() || !this.c.isFinished() || this.d)**GOTO lbl34
-                this.d = var3_3;
-                var6_10 = var1_1.getX();
-                var7_11 = var1_1.getY();
-                var8_12 = this.getWidth() / 3;
-                var9_13 = this.getHeight() / 5;
-                if (var6_10 >= var8_12)**GOTO lbl37
-                var2_2 = var3_3;
-                **GOTO lbl43
-                lbl34:
-                // 2 sources:
-                var3_3 = super.onTouchEvent(var1_1);
-            }
-            case 0:
-        }
-        return var3_3;
-        lbl37:
-        // 1 sources:
-        if (var6_10 <= var8_12 * 2.0f) {
-            if (var7_11 < var9_13) {
-                var2_2 = var3_3;
-            } else if (var7_11 <= 4.0f * var9_13) {
-                var2_2 = false;
-            }
-        }
-        lbl43:
-        // 7 sources:
-        if (this.b != null) {
-            this.b.a((int) var2_2 ? 1 : 0);
-        }
-        this.d = false;
-        return var3_3;
-        lbl47:
-        // 1 sources:
-        if (this.i == var3_3) {
             switch (var4_4) {
                 default: {
                     return var3_3;
                 }
-                case 0: {
-                    this.e = var1_1.getX();
-                    this.f = var1_1.getY();
-                    this.k = false;
-                    return var3_3;
-                }
-                case 2: {
-                    if (!this.k) {
-                        this.j.clearAnimation();
-                        this.k = var3_3;
-                    }
-                    if ((float) Math.abs((int) (var1_1.getY() - this.f)) <= this.h) return var3_3;
-                    var5_14 = this.getMeasuredHeight() - (int) var1_1.getY();
-                    if (var5_14 > this.j.g()) {
-                        var5_14 = this.j.g();
-                    } else if (var5_14 < 10) {
-                        var5_14 = 10;
-                    }
-                    this.j.a(var5_14);
-                    return var3_3;
-                }
                 case 1:
             }
-            this.g = Math.abs(this.e - var1_1.getX()) > this.h || Math.abs(this.f - var1_1.getY()) > this.h ? false : var3_3;
-            if (this.b != null && this.g) {
-                this.b.a(0);
-            }
-            if (this.g != false) return var3_3;
-            this.j.e();
+            this.b.a(0);
             return var3_3;
         }
-        switch (var4_4) {
-            default: {
-                return var3_3;
-            }
-            case 1:
-        }
-        this.b.a(0);
-        return var3_3;
-    }
 
     public void setAutoReaderTextView(AutoReaderTextView autoReaderTextView) {
         this.j = autoReaderTextView;
