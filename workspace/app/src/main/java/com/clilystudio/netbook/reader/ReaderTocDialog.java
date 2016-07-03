@@ -1,7 +1,6 @@
 package com.clilystudio.netbook.reader;
 
 import android.annotation.TargetApi;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
@@ -11,7 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ImageView;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -66,8 +64,7 @@ public class ReaderTocDialog extends DialogFragment implements AdapterView.OnIte
         }
         try {
             String string = chapterLink.getLink().substring(1 + chapterLink.getLink().lastIndexOf("/"));
-            boolean bl = this.d.e().containsKey(string);
-            return bl;
+            return this.d.e().containsKey(string);
         } catch (Exception var2_4) {
             return true;
         }
@@ -109,7 +106,7 @@ public class ReaderTocDialog extends DialogFragment implements AdapterView.OnIte
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         this.i = bZ.a(this.getActivity()) ? R.style.BaseTheme : R.style.TocDialog;
-        this.setStyle(1, this.i);
+        this.setStyle(DialogFragment.STYLE_NO_TITLE, this.i);
     }
 
     @TargetApi(value = 11)
@@ -124,17 +121,18 @@ public class ReaderTocDialog extends DialogFragment implements AdapterView.OnIte
             @Override
             public View getView(int position, View convertView, ViewGroup parent) {
                 ChapterLink chapterLink = this.getItem(position);
-                View view2 = convertView == null ? LayoutInflater.from(new ContextThemeWrapper((Context) ReaderTocDialog.this.getActivity(), i)).inflate(R.layout.list_item_toc, parent, false) : convertView;
+                View view2 = convertView == null ? LayoutInflater.from(new ContextThemeWrapper(ReaderTocDialog.this.getActivity(), i)).inflate(R.layout.list_item_toc, parent, false) : convertView;
                 if (chapterLink == null) {
                     return view2;
                 }
                 ImageView imageView = (ImageView) view2.findViewById(R.id.iv_icon);
                 TextView textView = (TextView) view2.findViewById(R.id.tv_title);
                 int n2 = ReaderTocDialog.a(ReaderTocDialog.this, position);
-                textView.setText("" + (n2 + 1) + ". " + chapterLink.getTitle());
+                String text = "" + (n2 + 1) + ". " + chapterLink.getTitle();
+                textView.setText(text);
                 if (n2 == ReaderTocDialog.b(ReaderTocDialog.this).k()) {
                     imageView.setImageLevel(1);
-                    textView.setTextColor(com.clilystudio.netbook.hpay100.a.a.b((Context) ReaderTocDialog.this.getActivity(), R.attr.dialog_text_color_highlight, ReaderTocDialog.a(ReaderTocDialog.this)));
+                    textView.setTextColor(com.clilystudio.netbook.hpay100.a.a.b(ReaderTocDialog.this.getActivity(), R.attr.dialog_text_color_highlight, ReaderTocDialog.a(ReaderTocDialog.this)));
                 } else {
                     String string = chapterLink.getLink();
                     if (ReaderTocDialog.c(ReaderTocDialog.this) != null && ReaderTocDialog.c(ReaderTocDialog.this).contains(string)) {
@@ -142,7 +140,7 @@ public class ReaderTocDialog extends DialogFragment implements AdapterView.OnIte
                     } else {
                         imageView.setImageLevel(0);
                     }
-                    textView.setTextColor(com.clilystudio.netbook.hpay100.a.a.b((Context) ReaderTocDialog.this.getActivity(), R.attr.dialog_text_color, ReaderTocDialog.a(ReaderTocDialog.this)));
+                    textView.setTextColor(com.clilystudio.netbook.hpay100.a.a.b(ReaderTocDialog.this.getActivity(), R.attr.dialog_text_color, ReaderTocDialog.a(ReaderTocDialog.this)));
                 }
                 if (!ReaderTocDialog.a(ReaderTocDialog.this, chapterLink)) {
                     view2.findViewById(R.id.iv_readable).setVisibility(View.VISIBLE);
@@ -153,8 +151,8 @@ public class ReaderTocDialog extends DialogFragment implements AdapterView.OnIte
             }
         };
         this.b.setOnItemClickListener(this);
-        this.b.setAdapter((ListAdapter) ((Object) this.a));
-        if (a.i()) {
+        this.b.setAdapter(this.a);
+        if (com.clilystudio.netbook.hpay100.a.a.i()) {
             this.b.setFastScrollAlwaysVisible(true);
         }
         return view;
@@ -179,16 +177,14 @@ public class ReaderTocDialog extends DialogFragment implements AdapterView.OnIte
     public void onResume() {
         super.onResume();
         u<ChapterLink> cf2 = this.a;
-        Object[] arrobject = this.d.h();
+        ChapterLink[] arrobject = this.d.h();
         if (arrobject != null) {
             int n = arrobject.length;
-            if (arrobject != null) {
-                int n2 = 0;
-                for (int j = -1 + Math.min((int) arrobject.length, (int) n); j > n2; --j, ++n2) {
-                    Object object = arrobject[j];
-                    arrobject[j] = arrobject[n2];
-                    arrobject[n2] = object;
-                }
+            int n2 = 0;
+            for (int j = -1 + Math.min(arrobject.length, n); j > n2; --j, ++n2) {
+                ChapterLink object = arrobject[j];
+                arrobject[j] = arrobject[n2];
+                arrobject[n2] = object;
             }
         }
         cf2.a(arrobject);

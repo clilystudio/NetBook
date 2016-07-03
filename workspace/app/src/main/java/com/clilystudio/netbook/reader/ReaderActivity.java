@@ -1861,7 +1861,6 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         this.r = (ReaderActionBar) this.findViewById(R.id.bottom_action_bar);
         this.s = (SettingWidget) this.findViewById(R.id.setting_widget);
         this.t = (AutoReaderSetWidget) this.findViewById(R.id.auto_reader_setting);
-        this.u = (ReaderTtsSetWidget) this.findViewById(R.id.reader_tts_setting);
         this.B = this.findViewById(R.id.reader_download_pro);
         this.C = (TextView) this.findViewById(R.id.reader_download_pro_current);
         this.T = (AutoReaderTextView) this.findViewById(R.id.tv_auto_reader_body);

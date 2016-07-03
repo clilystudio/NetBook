@@ -94,4 +94,6 @@
     <color name="reader_mode_brown_text_color">#cccc77</color>
     <color name="reader_mode_green_text_color">#77cc77</color>
     <color name="reader_background_white_green">#aaffaa</color>
+    <color name="deprecated_red">#ff0000</color>
+    <color name="third_text_normal">#444444</color>
 </resources>

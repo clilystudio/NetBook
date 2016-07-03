@@ -1,5 +1,6 @@
 package com.clilystudio.netbook.reader;
 
+import android.app.ActionBar;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,6 +8,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.d;
@@ -14,6 +16,7 @@ import com.clilystudio.netbook.db.BookTopicEnterRecord;
 import com.clilystudio.netbook.event.i;
 import com.clilystudio.netbook.event.v;
 import com.clilystudio.netbook.model.TopicCount;
+import com.squareup.otto.Subscribe;
 
 public class ReaderResActivity extends ReaderModeActivity {
     private View e;
@@ -44,7 +47,7 @@ public class ReaderResActivity extends ReaderModeActivity {
         super.onCreate(bundle);
         this.setContentView(R.layout.content_frame);
         this.c();
-        View view = LayoutInflater.from(this).inflate(R.layout.actionbar_custom_read_mode, null);
+        View view = LayoutInflater.from(this).inflate(R.layout.actionbar_custom_read_mode, (ViewGroup)getWindow().getDecorView(), false);
         view.findViewById(R.id.reader_ab_more).setVisibility(View.GONE);
         view.findViewById(R.id.back).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,20 +62,23 @@ public class ReaderResActivity extends ReaderModeActivity {
             }
         });
         this.e = view.findViewById(R.id.reader_ab_topic_count);
-        this.a().a(view);
-        this.a().d(true);
+        ActionBar actionBar = this.getActionBar();
+        assert actionBar != null;
+        actionBar.setCustomView(view);
+        actionBar.setDisplayShowCustomEnabled(true);
         i.a().register(this);
         this.f(this.c);
         FragmentTransaction fragmentTransaction = this.getSupportFragmentManager().beginTransaction();
+        Fragment var4_6;
         if (this.a == 0) {
-            ReaderResourceFragment readerResourceFragment = (ReaderResourceFragment) this.getSupportFragmentManager().findFragmentByTag(ReaderResourceFragment.class.getName());
-            if (readerResourceFragment == null) {
-                ReaderResourceFragment readerResourceFragment2 = ReaderResourceFragment.a(this.b, this.c);
+            var4_6 = this.getSupportFragmentManager().findFragmentByTag(ReaderResourceFragment.class.getName());
+            if (var4_6 == null) {
+                var4_6 = ReaderResourceFragment.a(this.b, this.c);
             }
         } else {
-            ReaderWebPageFragment readerWebPageFragment = this.a(this.c);
+            var4_6 = this.a(this.c);
         }
-        fragmentTransaction.replace(R.id.content_frame, (Fragment) var4_6).commit();
+        fragmentTransaction.replace(R.id.content_frame, var4_6).commit();
         com.clilystudio.netbook.a.a();
         com.clilystudio.netbook.a.a(this);
         com.clilystudio.netbook.a_pack.e<String, Void, TopicCount> bT2 = new com.clilystudio.netbook.a_pack.e<String, Void, TopicCount>(){
@@ -106,7 +112,7 @@ public class ReaderResActivity extends ReaderModeActivity {
         i.a().unregister(this);
     }
 
-    @l
+    @Subscribe
     public void onModeChanged(v v2) {
         this.finish();
     }

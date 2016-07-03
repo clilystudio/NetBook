@@ -1,6 +1,5 @@
 package com.clilystudio.netbook.reader;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -23,7 +22,6 @@ import com.clilystudio.netbook.util.W;
 import com.clilystudio.netbook.util.t;
 
 import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
 
 public class ReaderResourceFragment extends Fragment {
@@ -115,7 +113,7 @@ public class ReaderResourceFragment extends Fragment {
     @Override
     public void onActivityCreated(Bundle bundle) {
         super.onActivityCreated(bundle);
-        View view = LayoutInflater.from(this.getActivity()).inflate(R.layout.reader_resource_header, (ViewGroup) this.c, false);
+        View view = LayoutInflater.from(this.getActivity()).inflate(R.layout.reader_resource_header, this.c, false);
         this.c.addHeaderView(view, null, false);
         this.g = view.findViewById(R.id.resource_last_read_layout);
         this.i = (TextView) view.findViewById(R.id.resource_last_read_title);
@@ -134,7 +132,7 @@ public class ReaderResourceFragment extends Fragment {
             @Override
             protected void a(int var1, TocSummary tocSummary) {
                 this.a(0, tocSummary.getHost());
-                this.a(1, t.e((Date) tocSummary.getUpdated()));
+                this.a(1, t.e(tocSummary.getUpdated()));
                 if (new Date().getTime() - tocSummary.getUpdated().getTime() < 3600000) {
                     this.a(1, TextView.class).setTextColor(getResources().getColor(R.color.deprecated_red));
                     this.a(2, ImageView.class).setImageLevel(1);
@@ -161,7 +159,7 @@ public class ReaderResourceFragment extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 int n3 = position - ReaderResourceFragment.b(ReaderResourceFragment.this).getHeaderViewsCount();
                 if (n3 >= 0) {
-                    TocSummary tocSummary = (TocSummary) ReaderResourceFragment.c(ReaderResourceFragment.this).getItem(n3);
+                    TocSummary tocSummary = ReaderResourceFragment.c(ReaderResourceFragment.this).getItem(n3);
                     Intent intent = ReaderActivity.a(getActivity(), ReaderResourceFragment.a(ReaderResourceFragment.this), ReaderResourceFragment.d(ReaderResourceFragment.this), tocSummary.get_id(), null, true);
                     startActivity(intent);
                     index = n3;
@@ -173,8 +171,7 @@ public class ReaderResourceFragment extends Fragment {
             @Override
             protected List<TocSummary> doInBackground(String... params) {
                 com.clilystudio.netbook.api.b.a();
-                List<TocSummary> list = com.clilystudio.netbook.api.b.b().d(params[0]);
-                return list;
+                return com.clilystudio.netbook.api.b.b().d(params[0]);
             }
 
             @Override
@@ -201,14 +198,14 @@ public class ReaderResourceFragment extends Fragment {
     @Override
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        i.a().register(this);
+        com.clilystudio.netbook.event.i.a().register(this);
         this.a = this.getArguments().getString("BOOK_ID");
         this.b = this.getArguments().getString("BOOK_TITLE");
     }
 
     @Override
     public View onCreateView(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
-        View view = layoutInflater.inflate(R.layout.fragment_resource_list, null);
+        View view = layoutInflater.inflate(R.layout.fragment_resource_list, viewGroup, false);
         this.d = view.findViewById(R.id.pb_loading);
         this.e = view.findViewById(R.id.empty);
         this.f = view.findViewById(R.id.load_error_hint);
@@ -222,8 +219,7 @@ public class ReaderResourceFragment extends Fragment {
                     @Override
                     protected List<TocSummary> doInBackground(String... params) {
                         com.clilystudio.netbook.api.b.a();
-                        List<TocSummary> list = com.clilystudio.netbook.api.b.b().d(params[0]);
-                        return list;
+                        return com.clilystudio.netbook.api.b.b().d(params[0]);
                     }
 
                     @Override
@@ -253,7 +249,7 @@ public class ReaderResourceFragment extends Fragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        i.a().unregister(this);
+        com.clilystudio.netbook.event.i.a().unregister(this);
     }
 
     /*
@@ -285,12 +281,11 @@ public class ReaderResourceFragment extends Fragment {
                 }
             }
             String string = this.a;
-            if (a.d()) {
-                for (String string2 : a.D(string)) {
+            if (com.clilystudio.netbook.hpay100.a.a.d()) {
+                for (String string2 : com.clilystudio.netbook.hpay100.a.a.D(string)) {
                     if (string2.contains("MIX_TOC_ID") || string2.contains("_")) continue;
-                    Iterator<String> iterator = a.j(string, string2).iterator();
-                    while (iterator.hasNext()) {
-                        if ("toc".equals(iterator.next())) continue;
+                    for (String s : com.clilystudio.netbook.hpay100.a.a.j(string, string2)) {
+                        if ("toc".equals(s)) continue;
                         bl = true;
                         break block11;
                     }
@@ -300,9 +295,9 @@ public class ReaderResourceFragment extends Fragment {
         }
         if (bl) {
             this.h.setVisibility(View.VISIBLE);
-            int n2 = a.a((Context) this.getActivity(), 55.0f);
-            int n3 = a.a((Context) this.getActivity(), 40.0f);
-            if (this.g.getVisibility() == 0) {
+            int n2 = com.clilystudio.netbook.hpay100.a.a.a(this.getActivity(), 55.0f);
+            int n3 = com.clilystudio.netbook.hpay100.a.a.a(this.getActivity(), 40.0f);
+            if (this.g.getVisibility() == View.VISIBLE) {
                 LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(-1, n2);
                 layoutParams.setMargins(0, 0, 0, 0);
                 this.h.setLayoutParams(layoutParams);

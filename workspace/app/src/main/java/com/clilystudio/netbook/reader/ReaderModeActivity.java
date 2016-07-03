@@ -3,9 +3,7 @@ package com.clilystudio.netbook.reader;
 import android.os.Bundle;
 
 import com.clilystudio.netbook.R;
-import com.clilystudio.netbook.db.BookTopicEnterRecord;
 import com.clilystudio.netbook.ui.BaseActivity;
-import com.clilystudio.netbook.ui.post.BookPostTabActivity;
 
 public class ReaderModeActivity extends BaseActivity {
     protected int a;
