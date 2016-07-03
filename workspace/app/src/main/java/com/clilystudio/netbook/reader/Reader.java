@@ -272,7 +272,7 @@ public final class Reader {
         reader.i = new HashMap<String, ChapterLink>((int) ((double) arrchapterLink.length / 0.7));
         for (ChapterLink chapterLink : arrchapterLink) {
             String string = chapterLink.getId();
-            if (a.Q(string) && chapterLink != null && chapterLink.getLink() != null) {
+            if (com.clilystudio.netbook.hpay100.a.a.Q(string) && chapterLink.getLink() != null) {
                 String[] arrstring = chapterLink.getLink().split("/");
                 string = arrstring[-1 + arrstring.length];
             }
@@ -331,7 +331,7 @@ public final class Reader {
     }
 
     static /* synthetic */ Toc k(Reader reader) {
-        return (Toc) a.b(reader.c, reader.e, "toc");
+        return (Toc) com.clilystudio.netbook.hpay100.a.a.b(reader.c, reader.e, "toc");
     }
 
     static /* synthetic */ Toc l(Reader reader) {
@@ -381,7 +381,7 @@ public final class Reader {
             this.o.post(new Runnable() {
                 @Override
                 public void run() {
-                    ae ae2 = type.getListener(Reader.this);
+                    ae ae2 = getListener(Reader.this, type);
                     if (ae2 != null) {
                         ae2.a();
                     }
@@ -403,7 +403,7 @@ public final class Reader {
         this.o.post(new Runnable() {
             @Override
             public void run() {
-                ae ae2 = type.getListener(Reader.this);
+                ae ae2 = getListener(Reader.this, type);
                 if (ae2 != null) {
                     ae2.b();
                 }
@@ -528,7 +528,7 @@ public final class Reader {
             n2 = -1 + arrchapterLink.length;
         }
         ChapterLink chapterLink = arrchapterLink[n2];
-        if (this.c != null && this.e != null && chapterLink != null && chapterLink.getLink() != null && (chapter = (Chapter) a.b(this.c, this.e, string = am.e(chapterLink.getLink()))) != null) {
+        if (this.c != null && this.e != null && chapterLink != null && chapterLink.getLink() != null && (chapter = (Chapter) com.clilystudio.netbook.hpay100.a.a.b(this.c, this.e, string = am.e(chapterLink.getLink()))) != null) {
             ReaderChapter readerChapter4 = this.a(chapterLink, n2);
             readerChapter4.setBody(chapter.getBody());
             readerChapter4.setCpContent(chapter.getContent());
@@ -758,19 +758,15 @@ public final class Reader {
         this.af2 = af2;
     }
 
-    public enum Type {
-        CHAPTER,TOC;
-
-        private int code;
-
-        Type(int paramInt) {
-            this.code = paramInt;
-        }
-
-        public final ae getListener(Reader paramReader) {
-            if (this.code == 0)
-                return Reader.a(paramReader);
+    public final ae getListener(Reader paramReader, Type type) {
+        if (type == Type.CHAPTER) {
+            return Reader.a(paramReader);
+        } else {
             return Reader.b(paramReader);
         }
+    }
+
+    public enum Type {
+        CHAPTER,TOC;
     }
 }
