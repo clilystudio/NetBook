@@ -6,17 +6,15 @@ import android.content.Intent;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.clilystudio.netbook.*;
+import com.clilystudio.netbook.MyApplication;
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.event.i;
 import com.clilystudio.netbook.event.v;
 
-import butterknife.ButterKnife;
-import butterknife.InjectView;
 
 public class ReadModeItem extends FrameLayout {
     TextView mChapter;
@@ -33,7 +31,7 @@ public class ReadModeItem extends FrameLayout {
         this.a = activity;
         this.b = string;
         this.c = string2;
-        LayoutInflater.from(this.a).inflate(R.layout.list_item_mode, (ViewGroup) this);
+        LayoutInflater.from(this.a).inflate(R.layout.list_item_mode, this);
         this.mIcon = (ImageView) findViewById(R.id.icon);
         this.mName = (TextView) findViewById(R.id.name);
         this.mFlagSelect = (TextView) findViewById(R.id.flag_select);
@@ -45,7 +43,7 @@ public class ReadModeItem extends FrameLayout {
             this.mFlagSelect.setVisibility(View.VISIBLE);
             this.mFlagSelect.setText("\u5f53\u524d\u9009\u62e9");
         }
-        if (a.f(n3)) {
+        if (com.clilystudio.netbook.hpay100.a.a.f(n3)) {
             this.mFlagWeb.setVisibility(View.VISIBLE);
         }
         this.mChapter.setVisibility(View.GONE);
@@ -54,7 +52,7 @@ public class ReadModeItem extends FrameLayout {
             public void onClick(View v) {
                 if (n4 != n3) {
                     MyApplication.a().c(ReadModeItem.a(ReadModeItem.this));
-                    com.clilystudio.netbook.am.c((String) ReadModeItem.a(ReadModeItem.this), (int) n3);
+                    com.clilystudio.netbook.am.c(ReadModeItem.a(ReadModeItem.this), n3);
                     ReadModeItem.a(ReadModeItem.this, n3);
                 }
                 ReadModeItem.b(ReadModeItem.this).finish();
@@ -71,7 +69,7 @@ public class ReadModeItem extends FrameLayout {
     }
 
     private static void a() {
-        i.a().c(new v(1));
+        i.a().post(new v(1));
     }
 
     static /* synthetic */ void a(ReadModeItem readModeItem, int n2) {

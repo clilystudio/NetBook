@@ -6,7 +6,6 @@ import com.clilystudio.netbook.api.ApiService;
 import com.clilystudio.netbook.api.b;
 
 public class ReaderWebPageFragment extends WebPageFragment {
-    private int a;
 
     public static ReaderWebPageFragment a(int n, String string) {
         ReaderWebPageFragment readerWebPageFragment = new ReaderWebPageFragment();
@@ -53,11 +52,11 @@ public class ReaderWebPageFragment extends WebPageFragment {
 
     @Override
     protected final String a() {
-        this.a = this.getArguments().getInt("MODE");
+        int a = this.getArguments().getInt("MODE");
         String string = this.getArguments().getString("KEY");
         b.a();
         b.b();
-        switch (this.a) {
+        switch (a) {
             default: {
                 return ApiService.Q(string);
             }

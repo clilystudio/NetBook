@@ -11,9 +11,7 @@ import com.clilystudio.netbook.R;
 public class ReaderWebActionBar extends RelativeLayout {
     private OnBtnClickListener a;
     private TextView b;
-    private View c;
     private View d;
-    private View e;
     private TextView f;
 
     public ReaderWebActionBar(Context context) {
@@ -39,26 +37,20 @@ public class ReaderWebActionBar extends RelativeLayout {
      */
     private void b(boolean bl) {
         View view = this.findViewById(R.id.reader_ab_chapter_url_view);
-        int n = bl ? 0 : 8;
-        view.setVisibility(n);
+         view.setVisibility(bl ? VISIBLE : GONE);
     }
 
-    /*
-     * Enabled aggressive block sorting
-     */
     public final void a(boolean bl) {
-        View view = this.d;
-        int n = bl ? 0 : 4;
-        view.setVisibility(n);
+        this.d.setVisibility(bl ? VISIBLE : INVISIBLE);
     }
 
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
         this.b = (TextView) this.findViewById(R.id.reader_oper_top_title);
-        this.c = this.findViewById(R.id.reader_ab_topic);
+        View c = this.findViewById(R.id.reader_ab_topic);
         this.d = this.findViewById(R.id.reader_ab_topic_count);
-        this.e = this.findViewById(R.id.reader_ab_read_mode);
+        View e = this.findViewById(R.id.reader_ab_read_mode);
         this.f = (TextView) this.findViewById(R.id.reader_ab_chapter_url);
         View view = this.findViewById(R.id.reader_oper_back);
         View.OnClickListener cA2 = new View.OnClickListener() {
@@ -67,10 +59,10 @@ public class ReaderWebActionBar extends RelativeLayout {
                 ReaderWebActionBar.a(ReaderWebActionBar.this, v.getId());
             }
         };
-        this.c.setOnClickListener((View.OnClickListener) ((Object) cA2));
-        this.e.setOnClickListener((View.OnClickListener) ((Object) cA2));
-        this.findViewById(R.id.reader_ab_chapter_url_view).setOnClickListener((View.OnClickListener) ((Object) cA2));
-        view.setOnClickListener((View.OnClickListener) ((Object) cA2));
+        c.setOnClickListener(cA2);
+        e.setOnClickListener(cA2);
+        this.findViewById(R.id.reader_ab_chapter_url_view).setOnClickListener(cA2);
+        view.setOnClickListener(cA2);
     }
 
     public void setChapterLink(String string) {
@@ -90,7 +82,7 @@ public class ReaderWebActionBar extends RelativeLayout {
         this.b.setText(string);
     }
 
-    public void setTopicCount(String string) {
+    public void setTopicCount() {
     }
 
     public interface OnBtnClickListener {

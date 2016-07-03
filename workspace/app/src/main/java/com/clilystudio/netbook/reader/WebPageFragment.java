@@ -11,6 +11,8 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
+import com.clilystudio.netbook.R;
+
 public abstract class WebPageFragment extends Fragment implements View.OnClickListener {
     private WebView a;
     private View b;
@@ -23,7 +25,7 @@ public abstract class WebPageFragment extends Fragment implements View.OnClickLi
     static /* synthetic */ void a(WebPageFragment webPageFragment) {
         boolean bl = true;
         View view = webPageFragment.c;
-        boolean bl2 = webPageFragment.a != null && webPageFragment.a.canGoBack() ? bl : false;
+        boolean bl2 = (webPageFragment.a != null && webPageFragment.a.canGoBack());
         view.setEnabled(bl2);
         View view2 = webPageFragment.d;
         if (webPageFragment.a == null || !webPageFragment.a.canGoForward()) {
