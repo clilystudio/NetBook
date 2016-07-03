@@ -3,9 +3,8 @@ package com.clilystudio.netbook.reader;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 
-import com.clilystudio.netbook.am;
-
 import com.clilystudio.netbook.MyApplication;
+import com.clilystudio.netbook.am;
 import com.clilystudio.netbook.db.BookReadRecord;
 import com.clilystudio.netbook.db.MixTocRecord;
 import com.clilystudio.netbook.db.TocReadRecord;
@@ -27,7 +26,7 @@ import java.util.concurrent.Executors;
 
 public final class Reader {
     private static final int[] b = new int[]{1, -1, 2, 3, 0};
-    public final Map<Integer, ReaderChapter> a = new HashMap<Integer, ReaderChapter>();
+    public final Map<Integer, ReaderChapter> a = new HashMap<>();
     private final int y;
     private boolean A = false;
     private com.clilystudio.netbook.a_pack.e<String, Void, Boolean> B;
@@ -47,13 +46,12 @@ public final class Reader {
     private MixTocRecord n;
     private Handler o = new Handler();
     private ExecutorService p = Executors.newCachedThreadPool();
-    private ArrayList<ae> q = new ArrayList();
+    private ArrayList<ae> q = new ArrayList<>();
     private ae r;
     private ae s;
     private Integer t = 0;
     private Toc u;
     private String v;
-    private com.clilystudio.netbook.util.Q w = com.clilystudio.netbook.util.Q.a();
     private String x;
     private f z;
 
@@ -75,8 +73,8 @@ public final class Reader {
                 synchronized (this) {
                     ArrayList<e<ReaderChapter>> arrayList = this.map.get(var1);
                     if (arrayList == null) {
-                        ArrayList arrayList2 = new ArrayList();
-                        this.map.put(var1, arrayList2);
+                        arrayList = new ArrayList<>();
+                        this.map.put(var1, arrayList);
                     }
                     arrayList.add(var2);
                     if (!var3) {
@@ -136,7 +134,11 @@ public final class Reader {
                                 }
                             } else {
                                 if (Reader.f(Reader.this)) {
-                                    var5_4.setBody(com.clilystudio.netbook.hpay100.a.a.a(Reader.g(Reader.this), var2_2, nx).getChapter().getBody());
+                                    ChapterRoot chapterRoot = com.clilystudio.netbook.hpay100.a.a.a(Reader.this.v, var2_2, nx);
+                                    assert chapterRoot != null;
+                                    Chapter chapter = chapterRoot.getChapter();
+                                    String body = chapter.getBody();
+                                    var5_4.setBody(body);
                                 } else {
                                     ChapterRoot var6_7 = Reader.b(Reader.this, var3_3, nx);
                                     if (var6_7 == null || var6_7.getChapter() == null) {
@@ -169,7 +171,6 @@ public final class Reader {
                             af(var5_4);
                         }
                     });
-                    return;
                 }
             }
         };
@@ -263,13 +264,13 @@ public final class Reader {
         reader.a(n2, reader$Type);
     }
 
-    static /* synthetic */ void a(Reader reader, List list) {
+    static /* synthetic */ void a(Reader reader, List<Integer> list) {
         reader.a(list);
     }
 
     static /* synthetic */ void a(Reader reader, ChapterLink[] arrchapterLink) {
         reader.g = arrchapterLink;
-        reader.i = new HashMap<String, ChapterLink>((int) ((double) arrchapterLink.length / 0.7));
+        reader.i = new HashMap<>((int) ((double) arrchapterLink.length / 0.7));
         for (ChapterLink chapterLink : arrchapterLink) {
             String string = chapterLink.getId();
             if (com.clilystudio.netbook.hpay100.a.a.Q(string) && chapterLink.getLink() != null) {
@@ -295,7 +296,7 @@ public final class Reader {
     }
 
     static /* synthetic */ void b(Reader reader, Toc toc) {
-        a.a(reader.c, reader.e, "toc", toc);
+        com.clilystudio.netbook.hpay100.a.a.a(reader.c, reader.e, "toc", toc);
     }
 
     static /* synthetic */ ArrayList c(Reader reader) {
@@ -415,7 +416,7 @@ public final class Reader {
         if (list.size() == 0) {
             return;
         }
-        this.a(list.get(0), new e<ReaderChapter>(){
+        this.a(list.get(0), new e<ReaderChapter>() {
             @Override
             public void a(ReaderChapter var1) {
                 if (list.size() > 1) {
@@ -475,7 +476,7 @@ public final class Reader {
             this.m.save();
         }
         if (bl) {
-            ArrayList<Integer> arrayList = new ArrayList<Integer>();
+            ArrayList<Integer> arrayList = new ArrayList<>();
             int[] arrn = b;
             while (n4 < 5) {
                 int n5 = arrn[n4] + this.j;
@@ -499,7 +500,6 @@ public final class Reader {
     public final void a(int n2, e<ReaderChapter> e2, boolean bl, boolean bl2) {
         int n3;
         int n4;
-        String string;
         Chapter chapter;
         ReaderChapter readerChapter = com.clilystudio.netbook.util.Q.a(this.c, this.x, n2);
         if (readerChapter != null && (n4 = readerChapter.getStatus()) != -1 && n4 != -3 && n4 != -2) {
@@ -528,7 +528,7 @@ public final class Reader {
             n2 = -1 + arrchapterLink.length;
         }
         ChapterLink chapterLink = arrchapterLink[n2];
-        if (this.c != null && this.e != null && chapterLink != null && chapterLink.getLink() != null && (chapter = (Chapter) com.clilystudio.netbook.hpay100.a.a.b(this.c, this.e, string = am.e(chapterLink.getLink()))) != null) {
+        if (this.c != null && this.e != null && chapterLink != null && chapterLink.getLink() != null && (chapter = (Chapter) com.clilystudio.netbook.hpay100.a.a.b(this.c, this.e, am.e(chapterLink.getLink()))) != null) {
             ReaderChapter readerChapter4 = this.a(chapterLink, n2);
             readerChapter4.setBody(chapter.getBody());
             readerChapter4.setCpContent(chapter.getContent());
@@ -552,7 +552,7 @@ public final class Reader {
                 boolean bl;
                 Reader.a(Reader.this, 0, Reader.Type.TOC);
                 if (Reader.f(Reader.this)) {
-                    Reader.a(Reader.this, com.clilystudio.netbook.reader.txt.U.a(Reader.g(Reader.this)));
+                    Reader.a(Reader.this, com.clilystudio.netbook.reader.txt.U.a(Reader.this.v));
                     bl = false;
                 } else {
                     Reader.a(Reader.this, Reader.a(Reader.this, Reader.h(Reader.this), Reader.i(Reader.this), Reader.j(Reader.this)));
@@ -571,17 +571,14 @@ public final class Reader {
                         Reader.b(Reader.this, Reader.l(Reader.this));
                     }
                     if (bl) {
-                        Reader.a(Reader.this, new com.clilystudio.netbook.a_pack.e<String, Void, Boolean>(){
-                              @Override
+                        Reader.a(Reader.this, new com.clilystudio.netbook.a_pack.e<String, Void, Boolean>() {
+                            @Override
                             protected Boolean doInBackground(String... params) {
                                 Reader.a(Reader.this, Reader.m(Reader.this));
                                 if (Reader.l(Reader.this) != null) {
                                     Reader.b(Reader.this, Reader.l(Reader.this));
                                 }
-                                if (Reader.l(Reader.this) != null) {
-                                    return true;
-                                }
-                                 return false;
+                                return Reader.l(Reader.this) != null;
                             }
 
                             @Override
@@ -601,7 +598,7 @@ public final class Reader {
                                         af2.b();
                                     }
                                 }
-                                Reader.a(Reader.this, (com.clilystudio.netbook.a_pack.e<String, Void, Boolean>)null);
+                                Reader.a(Reader.this, (com.clilystudio.netbook.a_pack.e<String, Void, Boolean>) null);
                             }
                         });
                         Reader.n(Reader.this).b();
@@ -620,7 +617,7 @@ public final class Reader {
                     }
                 }
                 Reader.a(Reader.this, 1, Reader.Type.TOC);
-           }
+            }
 
             private void c() {
                 Reader.a(Reader.this, Reader.l(Reader.this).getHost());
@@ -652,7 +649,7 @@ public final class Reader {
     }
 
     public final void b(int n2) {
-        this.k = 0;
+        this.k = n2;
     }
 
     public final void b(ae ae2) {
@@ -683,7 +680,7 @@ public final class Reader {
 
     public final Map<String, String> e() {
         if (this.h == null) {
-            this.h = new HashMap<String, String>();
+            this.h = new HashMap<>();
         }
         return this.h;
     }
@@ -767,6 +764,6 @@ public final class Reader {
     }
 
     public enum Type {
-        CHAPTER,TOC;
+        CHAPTER, TOC
     }
 }

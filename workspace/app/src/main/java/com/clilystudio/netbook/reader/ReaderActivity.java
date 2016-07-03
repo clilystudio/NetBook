@@ -26,6 +26,7 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import com.clilystudio.netbook.MyApplication;
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.am;
 import com.clilystudio.netbook.d;
 import com.clilystudio.netbook.db.BookReadRecord;
@@ -76,7 +77,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
     private ThemeLoadingView O;
     private int P;
     private int Q;
-    private ReaderMenuFragment R = null;
+    private ReaderMenuFragment r_fragment = null;
     private PopupWindow S;
     private AutoReaderTextView T;
     private View U;
@@ -618,7 +619,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
     }
 
     static /* synthetic */ ReaderMenuFragment e(ReaderActivity readerActivity) {
-        return readerActivity.R;
+        return readerActivity.r_fragment;
     }
 
     /*
@@ -1832,8 +1833,8 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         }
         this.Q();
         FragmentTransaction fragmentTransaction = this.getSupportFragmentManager().beginTransaction();
-        this.R = ReaderMenuFragment.a(this.c, this.d);
-        fragmentTransaction.replace(R.id.menu_frame, this.R);
+        this.r_fragment = ReaderMenuFragment.a(this.c, this.d);
+        fragmentTransaction.replace(R.id.menu_frame, this.r_fragment);
         try {
             fragmentTransaction.commitAllowingStateLoss();
         } catch (IllegalStateException var8_16) {
