@@ -17,7 +17,6 @@ public class ReaderActionBar extends RelativeLayout {
     private TextView d;
     private ImageView e;
     private TextView f;
-    private TextView g;
     private View h;
     private View i;
     private View j;
@@ -61,7 +60,7 @@ public class ReaderActionBar extends RelativeLayout {
     public final void a(boolean bl) {
         RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(-1, -1);
         if (bl) {
-            layoutParams.setMargins(0, am.k((Context) this.getContext()), 0, 0);
+            layoutParams.setMargins(0, am.k(this.getContext()), 0, 0);
         } else {
             layoutParams.setMargins(0, 0, 0, 0);
         }
@@ -81,15 +80,15 @@ public class ReaderActionBar extends RelativeLayout {
         textView.setText(R.string.read_portrait);
     }
 
-    public final void c(boolean bl) {
+    public final void c() {
         this.a.setVisibility(View.GONE);
     }
 
-    public final void d(boolean bl) {
+    public final void d() {
         this.h.setVisibility(View.GONE);
     }
 
-    public final void e(boolean bl) {
+    public final void e() {
         this.j.setVisibility(View.GONE);
     }
 
@@ -106,7 +105,7 @@ public class ReaderActionBar extends RelativeLayout {
     protected void onFinishInflate() {
         super.onFinishInflate();
         RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(-1, -1);
-        layoutParams.setMargins(0, am.k((Context) this.getContext()), 0, 0);
+        layoutParams.setMargins(0, am.k(this.getContext()), 0, 0);
         this.setLayoutParams(layoutParams);
         View.OnClickListener ah2 = new View.OnClickListener() {
            @Override
@@ -115,10 +114,6 @@ public class ReaderActionBar extends RelativeLayout {
             }
         };
         this.f = (TextView) this.findViewById(R.id.reader_oper_top_title);
-        this.g = (TextView) this.findViewById(R.id.reader_ab_tts);
-        if (!com.clilystudio.netbook.hpay100.a.a.r(this.getContext(), "switch_xunfei_read")) {
-            this.g.setVisibility(View.GONE);
-        }
         this.h = this.findViewById(R.id.reader_ab_topic);
         this.i = this.findViewById(R.id.reader_ab_topic_count);
         this.d = (TextView) this.findViewById(R.id.btn_mode_text);
@@ -126,7 +121,6 @@ public class ReaderActionBar extends RelativeLayout {
         this.a = this.findViewById(R.id.reader_download);
         this.j = this.findViewById(R.id.reader_ab_read_mode);
         this.k = (TextView) this.findViewById(R.id.reader_ab_chapter_url);
-        this.g.setOnClickListener(ah2);
         this.h.setOnClickListener(ah2);
         this.j.setOnClickListener(ah2);
         this.a.setOnClickListener(ah2);
@@ -168,6 +162,6 @@ public class ReaderActionBar extends RelativeLayout {
     }
 
     public interface OnBtnClickListener {
-        public abstract void a(int n2);
+        void a(int n2);
     }
 }

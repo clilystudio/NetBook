@@ -6,13 +6,13 @@ import com.clilystudio.netbook.model.ChapterLink;
 import com.clilystudio.netbook.util.CipherUtil;
 
 public class ReaderChapter extends Chapter {
-    public static final int STATUS_CHAPTER_EMPTY = -3;
-    public static final int STATUS_CHAPTER_NOT_AVAILABLE = -2;
     public static final int STATUS_CONNECTION_ERROR = -1;
-    public static final int STATUS_MODE_ERROR = -5;
-    public static final int STATUS_OK = 1;
-    public static final int STATUS_PENDING = 0;
+    public static final int STATUS_CHAPTER_NOT_AVAILABLE = -2;
+    public static final int STATUS_CHAPTER_EMPTY = -3;
     public static final int STATUS_TOC_ERROR = -4;
+    public static final int STATUS_MODE_ERROR = -5;
+    public static final int STATUS_PENDING = 0;
+    public static final int STATUS_OK = 1;
     private String clearContent;
     private String formattedBody;
     private String key;
@@ -42,7 +42,7 @@ public class ReaderChapter extends Chapter {
                 this.clearContent = a.y(this.clearContent);
             }
             if (this.clearContent == null) {
-                return "  \u89e3\u6790\u9519\u8bef\uff0c\u8bf7\u9000\u51fa\u540e\u91cd\u65b0\u8fdb\u5165\u9605\u8bfb\u3002";
+                return "  解析错误，请退出后重新进入阅读。";
             }
             return this.clearContent;
         }
@@ -70,7 +70,7 @@ public class ReaderChapter extends Chapter {
                 n2.a(this.clearContent);
             }
             if (this.clearContent == null) {
-                return "  \u89e3\u6790\u9519\u8bef\uff0c\u8bf7\u9000\u51fa\u540e\u91cd\u65b0\u8fdb\u5165\u9605\u8bfb\u3002";
+                return "  解析错误，请退出后重新进入阅读。";
             }
             return this.clearContent;
         }
@@ -118,16 +118,10 @@ public class ReaderChapter extends Chapter {
     }
 
     public boolean hasNext() {
-        if (this.mIndex < this.mMaxIndex) {
-            return true;
-        }
-        return false;
+        return this.mIndex < this.mMaxIndex;
     }
 
     public boolean hasPrevious() {
-        if (this.mIndex != 0) {
-            return true;
-        }
-        return false;
+        return this.mIndex != 0;
     }
 }

@@ -17,23 +17,21 @@ import com.clilystudio.netbook.util.W;
 
 public class ReaderChapterDialog extends DialogFragment implements AdapterView.OnItemClickListener {
     private W<MixChapterResource> a;
-    private TextView b;
 
-    static /* synthetic */ String a(ReaderChapterDialog readerChapterDialog) {
+    static /* synthetic */ String a() {
         return null;
     }
 
     @Override
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        this.setStyle(1, R.style.Dialog);
+        this.setStyle(DialogFragment.STYLE_NO_TITLE, R.style.Dialog);
     }
 
     @Override
     public View onCreateView(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
         View view = layoutInflater.inflate(R.layout.dialog_chapter, viewGroup, false);
         ListView listView = (ListView) view.findViewById(R.id.dialog_chapter_list);
-        this.b = (TextView) view.findViewById(R.id.dialog_chapter_title);
         this.a = new W<MixChapterResource>(this.getActivity().getLayoutInflater(), R.layout.list_item_chapter){
 
             @Override
@@ -41,10 +39,6 @@ public class ReaderChapterDialog extends DialogFragment implements AdapterView.O
                  ChapterLink chapterLink = mixChapterResource.getChapter();
                 if (chapterLink == null) return;
                 this.a(0, mixChapterResource.getHost());
-                if (ReaderChapterDialog.a(ReaderChapterDialog.this) != null && ReaderChapterDialog.a(ReaderChapterDialog.this).equals(chapterLink.getLink())) {
-                    this.a(1, false);
-                    return;
-                }
                 this.a(1, true);
             }
 
@@ -54,7 +48,7 @@ public class ReaderChapterDialog extends DialogFragment implements AdapterView.O
             }
         };
         listView.setOnItemClickListener(this);
-        listView.setAdapter((ListAdapter) ((Object) this.a));
+        listView.setAdapter(this.a);
         return view;
     }
 
