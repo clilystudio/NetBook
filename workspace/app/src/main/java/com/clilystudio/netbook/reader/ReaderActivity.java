@@ -1,16 +1,15 @@
 package com.clilystudio.netbook.reader;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.content.pm.ActivityInfo;
 import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -22,7 +21,6 @@ import android.support.v4.view.PagerAdapter;
 import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewConfiguration;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.PopupMenu;
@@ -45,7 +43,6 @@ import com.clilystudio.netbook.model.ChapterLink;
 import com.clilystudio.netbook.model.TopicCount;
 import com.clilystudio.netbook.ui.BaseReadSlmActivity;
 import com.clilystudio.netbook.ui.BookInfoActivity;
-import com.clilystudio.netbook.ui.post.BookPostTabActivity;
 import com.clilystudio.netbook.util.k;
 import com.clilystudio.netbook.widget.ThemeLoadingView;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
@@ -59,7 +56,6 @@ import java.util.LinkedList;
 import java.util.Map;
 
 import uk.me.lewisdeane.ldialogs.BaseDialog;
-import uk.me.lewisdeane.ldialogs.CustomDialog;
 
 public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickListener,
         AutoReaderSetWidget.a,
@@ -215,19 +211,19 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         }
         boolean bl = com.clilystudio.netbook.am.g(readerActivity.c) == 2;
         if (bl) {
-            new BaseDialog.Builder(readerActivity).setTitle(R.string.tips).setMessage(R.string.chapter_dl_doing_msg).setPositiveButton(R.string.chapter_dl_goon,new DialogInterface.OnClickListener(){
+            new BaseDialog.Builder(readerActivity).setTitle(R.string.tips).setMessage(R.string.chapter_dl_doing_msg).setPositiveButton(R.string.chapter_dl_goon, new DialogInterface.OnClickListener() {
 
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     dialog.dismiss();
                 }
-            }).setNegativeButton(R.string.stop, new DialogInterface.OnClickListener(){
+            }).setNegativeButton(R.string.stop, new DialogInterface.OnClickListener() {
 
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     dialog.dismiss();
                     com.clilystudio.netbook.event.i.a().post(new com.clilystudio.netbook.event.d(ReaderActivity.M(readerActivity), 3));
-               }
+                }
             }).show();
         } else {
             CharSequence[] arrcharSequence = new String[]{readerActivity.getString(R.string.chapter_dl_count_50), readerActivity.getString(R.string.chapter_dl_count_after), readerActivity.getString(R.string.all)};
@@ -788,7 +784,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
     static /* synthetic */ void y(final ReaderActivity readerActivity) {
         BaseDialog.Builder h2 = new BaseDialog.Builder(readerActivity);
         h2.setMessage("是否使用原网页阅读？");
-        h2.setPositiveButton(R.string.ok,new DialogInterface.OnClickListener(){
+        h2.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
 
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -1259,24 +1255,19 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
     private void a(boolean bl) {
         if (this.b[this.n].f()) {
             this.o();
-            return;
         } else {
             if (this.Y == null) {
                 com.clilystudio.netbook.util.e.a(this, "获取章节内容失败,请退出后重试");
-                return;
-            }
-            if (bl && !this.Y[0].startsWith("　　")) {
+            } else if (bl && !this.Y[0].startsWith("　　")) {
                 this.W = 0;
                 this.X = 1 + this.Y[0].length();
                 this.b[this.n].a(this.W, this.X);
-                return;
-            }
-            this.W = this.X;
-            if (this.Z > -1 + this.Y.length) return;
-            {
-                this.X = 1 + (this.W + this.Y[this.Z].length());
-                this.b[this.n].a(this.W, this.X);
-                return;
+            } else {
+                this.W = this.X;
+                if (this.Z <= -1 + this.Y.length) {
+                    this.X = 1 + (this.W + this.Y[this.Z].length());
+                    this.b[this.n].a(this.W, this.X);
+                }
             }
         }
     }
@@ -1340,10 +1331,10 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
 
     private void r() {
         if (this.G) {
-            this.setRequestedOrientation(1);
-            return;
+            this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        } else {
+            this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         }
-        this.setRequestedOrientation(0);
     }
 
     private void s() {
@@ -1423,7 +1414,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         this.m.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if ((int)v.getTag() == 0) {
+                if ((int) v.getTag() == 0) {
                     ReaderActivity.W(ReaderActivity.this);
                 }
             }
@@ -1569,25 +1560,17 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
     private void y() {
         if (this.o) {
             this.H();
-            return;
         } else {
             n n2 = this.A();
-            if (n2 == null) return;
-            {
+            if (n2 != null) {
                 this.E();
                 if (!n2.e() && this.w()) {
                     this.h_();
-                    return;
-                }
-                if (!this.i.c()) {
+                } else if (!this.i.c()) {
                     this.m.setCurrentItem(1 + this.n, false);
                     this.v();
-                    return;
-                }
-                if (this.m.a(1 + this.n)) return;
-                {
+                } else if (!this.m.a(1 + this.n)) {
                     this.v();
-                    return;
                 }
             }
         }
@@ -1691,7 +1674,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
     public final void i() {
         this.P();
         String string = this.g != null && this.g.i() != null ? this.g.i() : this.f;
-        I.d = string;
+        com.clilystudio.netbook.util.I.d = string;
         this.startActivity(ReaderMixActivity.a(this, this.c, this.d, string));
         this.overridePendingTransition(R.anim.mode_list_enter_in, R.anim.mode_list_enter_out);
     }
@@ -1738,7 +1721,8 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         if (this.g.m()) {
             super.onBackPressed();
         } else {
-            new h(this).a(R.string.reader_add_book_title).b(R.string.add_book_hint).a(R.string.add_book, new DialogInterface.OnClickListener() {
+            new BaseDialog.Builder(this).setTitle(R.string.reader_add_book_title).setMessage(R.string.add_book_hint)
+                    .setPositiveButton(R.string.add_book, new DialogInterface.OnClickListener() {
 
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
@@ -1746,14 +1730,14 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
                     ReaderActivity.ad(ReaderActivity.this);
                     finish();
                 }
-            }).b(R.string.add_book_cancel, new DialogInterface.OnClickListener() {
+            }).setNegativeButton(R.string.add_book_cancel, new DialogInterface.OnClickListener() {
 
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     dialog.dismiss();
                     finish();
                 }
-            }).a().show();
+            }).create().show();
         }
         if (this.j()) {
             this.b[this.n].g();
@@ -1780,7 +1764,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         }
     }
 
-    @l
+    @Subscribe
     public void onConvertChanged(j j2) {
         this.h.b();
     }
@@ -1798,7 +1782,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         this.G = com.clilystudio.netbook.hpay100.a.a.l(this, "reader_orientation");
         this.r();
         this.setContentView(R.layout.activity_reader);
-        i.a().register(this);
+        com.clilystudio.netbook.event.i.a().register(this);
         Intent intent = this.getIntent();
         this.c = this.a("BOOK_ID");
         this.d = this.a("BOOK_TITLE");
@@ -1813,11 +1797,11 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         int n2 = bookReadRecord != null ? bookReadRecord.getReadMode() : MyApplication.a().d();
         this.L = n2;
         this.N = intent.getBooleanExtra("HAS_OTHER_SOURCES", true);
-        I.a = this.c;
-        I.b = this.d;
-        I.d = this.f;
-        I.c = this.e;
-        I.g = this.L;
+        com.clilystudio.netbook.util.I.a = this.c;
+        com.clilystudio.netbook.util.I.b = this.d;
+        com.clilystudio.netbook.util.I.d = this.f;
+        com.clilystudio.netbook.util.I.c = this.e;
+        com.clilystudio.netbook.util.I.g = this.L;
         com.clilystudio.netbook.hpay100.a.a.i(this, this.c);
         this.g = new Reader(this.c, this.e, this.d, this.L);
         this.g.a(this.getIntent().getStringExtra("SOURCE_ID"));
@@ -1926,8 +1910,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         }
         boolean bl2 = this.L == 5 || this.L == 10 || com.clilystudio.netbook.hpay100.a.a.h(this.L) || this.L == 9;
         View view = this.findViewById(R.id.reader_ab_read_mode);
-        int n3 = bl2 ? 0 : 8;
-        view.setVisibility(n3);
+        view.setVisibility( bl2 ? View.VISIBLE : View.GONE);
         this.r.setReaderStyle(this.h);
         this.r.b(this.G);
         this.r.setOnBtnClickListener(new ReaderActionBar.OnBtnClickListener() {
@@ -2062,7 +2045,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         } else {
             this.s();
         }
-        com.clilystudio.netbook.a_pack.e<String, Void, TopicCount> bq2 = new com.clilystudio.netbook.a_pack.e<String, Void, TopicCount>(){
+        com.clilystudio.netbook.a_pack.e<String, Void, TopicCount> bq2 = new com.clilystudio.netbook.a_pack.e<String, Void, TopicCount>() {
 
             @Override
             protected TopicCount doInBackground(String... params) {
@@ -2086,7 +2069,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         };
         bq2.b(this.c);
         if (com.clilystudio.netbook.am.e() != null) {
-            new com.clilystudio.netbook.a_pack.e<Void, Void, ChapterKeysRoot>(){
+            new com.clilystudio.netbook.a_pack.e<Void, Void, ChapterKeysRoot>() {
                 @Override
                 protected ChapterKeysRoot doInBackground(Void... params) {
                     com.clilystudio.netbook.api.b.a();
@@ -2097,7 +2080,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
                 @Override
                 protected void onPostExecute(ChapterKeysRoot chapterKeysRoot) {
                     HashMap hashMap;
-                     if (chapterKeysRoot != null && chapterKeysRoot.isOk()) {
+                    if (chapterKeysRoot != null && chapterKeysRoot.isOk()) {
                         hashMap = new HashMap((int) ((double) chapterKeysRoot.getKeyLength() / 0.7));
                         for (ChapterKeysRoot.ChapterKey chapterKeysRoot$ChapterKey : chapterKeysRoot.getKeys()) {
                             hashMap.put(chapterKeysRoot$ChapterKey.get_id(), chapterKeysRoot$ChapterKey.getKey());
