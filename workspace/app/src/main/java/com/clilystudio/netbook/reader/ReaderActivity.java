@@ -7,18 +7,22 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.os.PowerManager;
+import android.preference.PreferenceManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v4.view.PagerAdapter;
 import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewConfiguration;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.PopupMenu;
@@ -45,6 +49,7 @@ import com.clilystudio.netbook.ui.post.BookPostTabActivity;
 import com.clilystudio.netbook.util.k;
 import com.clilystudio.netbook.widget.ThemeLoadingView;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
+import com.squareup.otto.Subscribe;
 import com.xiaomi.mistatistic.sdk.MiStatInterface;
 
 import java.util.Date;
@@ -57,8 +62,8 @@ import uk.me.lewisdeane.ldialogs.BaseDialog;
 import uk.me.lewisdeane.ldialogs.CustomDialog;
 
 public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickListener,
-        a,
-        com.clilystudio.netbook.reader.d {
+        AutoReaderSetWidget.a,
+        AutoReaderTextView.d {
     public static String a = "";
     private int A;
     private View B;
@@ -812,7 +817,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         if (this.H) {
             this.j.a(this.g);
         }
-        this.m.setOnPageChangeListener(new cw() {
+        this.m.setOnPageChangeListener(new ReaderViewPager.cw() {
             @Override
             public void a(int var1) {
                 ReaderActivity.g(ReaderActivity.this, var1);
@@ -924,13 +929,13 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
     }
 
     private void C() {
-        G aL2 = new G() {
+        o.G aL2 = new o.G() {
             @Override
             public void a(int var1) {
                 ReaderActivity.h(ReaderActivity.this, var1);
             }
         };
-        H aM2 = new H() {
+        o.H aM2 = new o.H() {
             @Override
             public void a() {
                 ReaderActivity.Z(ReaderActivity.this);
@@ -1347,7 +1352,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
     }
 
     private void s() {
-        this.g.a(new ae() {
+        this.g.a(new Reader.ae() {
             @Override
             public void a() {
                 ReaderActivity.N(ReaderActivity.this);
@@ -1360,7 +1365,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
                 }
             }
         });
-        this.g.b(new ae() {
+        this.g.b(new Reader.ae() {
             @Override
             public void a() {
                 ReaderActivity.N(ReaderActivity.this);
@@ -1379,7 +1384,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         if (!this.I) {
             bl = !this.getIntent().getBooleanExtra("extra_force_online", false);
         }
-        this.g.a(new ad() {
+        this.g.a(new Reader.ad() {
             @Override
             public void a() {
                 ReaderActivity.d(ReaderActivity.this, false);
@@ -1459,7 +1464,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
                 if (!n6.e() && !this.w()) {
                     final int n7 = this.g.f();
                     this.O.a();
-                    this.g.setaf(new af() {
+                    this.g.setaf(new Reader.af() {
                         @Override
                         public void a() {
                             ReaderActivity.P(ReaderActivity.this);
@@ -1871,7 +1876,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         this.O.setVisibility(View.GONE);
         this.O.a(this.h.h());
         this.i = new bH(this);
-        this.h.a(new cc() {
+        this.h.a(new bZ.cc() {
             @Override
             public void a() {
                 for (o o2 : ReaderActivity.i(ReaderActivity.this)) {
@@ -1883,13 +1888,13 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
                 ReaderActivity.this.g();
             }
         });
-        this.h.a(new cb() {
+        this.h.a(new bZ.cb() {
             @Override
             public void a() {
                 ReaderActivity.this.g();
             }
         });
-        this.h.a(new ce() {
+        this.h.a(new bZ.ce() {
             @Override
             public void a() {
                 for (o o2 : ReaderActivity.i(ReaderActivity.this)) {
@@ -1900,13 +1905,13 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
                 ReaderActivity.u(ReaderActivity.this);
             }
         });
-        this.h.a(new ca() {
+        this.h.a(new bZ.ca() {
             @Override
             public void a() {
                 ReaderActivity.v(ReaderActivity.this);
             }
         });
-        this.h.a(new cd() {
+        this.h.a(new bZ.cd() {
             @Override
             public void a() {
                 for (o o2 : ReaderActivity.i(ReaderActivity.this)) {
@@ -1992,13 +1997,13 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
             }
         });
         this.s.setReaderStyle(this.h, this.r);
-        this.s.a(new db() {
+        this.s.a(new SettingWidget.db() {
             @Override
             public void a() {
                 startActivityForResult(ReaderOptionActivity.a(ReaderActivity.this), 0);
             }
         });
-        this.s.a(new dc() {
+        this.s.a(new SettingWidget.dc() {
             @Override
             public void a() {
                 ReaderActivity.f(ReaderActivity.this);
@@ -2254,7 +2259,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         bundle.putBoolean("SaveModeDisable", this.K);
     }
 
-    @l
+    @Subscribe
     public void onThemeChanged(C c2) {
         this.O.a(c2.a());
     }
@@ -2263,5 +2268,56 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
     public void onUserInteraction() {
         super.onUserInteraction();
         this.K();
+    }
+
+    public final class bH {
+        private final SharedPreferences a;
+        private boolean b;
+        private boolean c;
+        private int d;
+        private boolean e;
+        private boolean f;
+
+        public bH(Context context) {
+            this.a = PreferenceManager.getDefaultSharedPreferences(context);
+            this.g();
+        }
+
+        public static boolean a(Context context) {
+            return "xiaomi".equals(Build.BRAND.toLowerCase()) || !(com.clilystudio.netbook.hpay100.a.a.i() && !ViewConfiguration.get(context).hasPermanentMenuKey());
+        }
+
+        private void g() {
+            this.b = this.a.getBoolean("volume_keys_flip", true);
+            this.c = this.a.getBoolean("click_flip_animation", false);
+            this.d = this.a.getInt("reader_screen_off_time", 120000);
+            this.e = this.a.getBoolean("key_always_next_page", false);
+            this.f = this.a.getBoolean("key_enable_imersive_mode", false);
+            this.a.getBoolean("convert_t", false);
+        }
+
+        public final void a() {
+            this.g();
+        }
+
+        public final boolean b() {
+            return this.b;
+        }
+
+        public final boolean c() {
+            return this.c;
+        }
+
+        public final int d() {
+            return this.d;
+        }
+
+        public final boolean e() {
+            return this.e;
+        }
+
+        public final boolean f() {
+            return this.f;
+        }
     }
 }

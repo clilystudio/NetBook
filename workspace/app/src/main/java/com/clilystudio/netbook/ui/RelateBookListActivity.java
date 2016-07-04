@@ -8,14 +8,13 @@ import com.clilystudio.netbook.model.BookRankDetail;
 import com.clilystudio.netbook.model.BookSummary;
 import com.clilystudio.netbook.model.RelateBookRoot;
 import com.clilystudio.netbook.reader.cM;
-import com.clilystudio.netbook.reader.cQ;
 import com.xiaomi.mistatistic.sdk.MiStatInterfaceImpl;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RelateBookListActivity extends BookListActivity implements cQ {
+public class RelateBookListActivity extends BookListActivity implements cM.cQ {
     private int c;
 
     public static Intent a(Context context, RelateBookRoot relateBookRoot, String string, String string2) {

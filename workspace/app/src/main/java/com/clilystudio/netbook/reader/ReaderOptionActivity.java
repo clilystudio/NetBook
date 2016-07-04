@@ -173,7 +173,7 @@ public class ReaderOptionActivity extends BaseActivity {
                     }
                 });
                 SettingItem var15_15 = (SettingItem) this.findViewById(R.id.immersive_container);
-                if (bH.a(this)) {
+                if (ReaderActivity.bH.a(this)) {
                     assert var15_15 != null;
                     var15_15.setVisibility(View.GONE);
                     View viewById = this.findViewById(R.id.immersive_divider);

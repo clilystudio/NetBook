@@ -17,14 +17,13 @@ import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.model.BookSummary;
 import com.clilystudio.netbook.model.RelateBookRoot;
 import com.clilystudio.netbook.reader.cM;
-import com.clilystudio.netbook.reader.cQ;
 import com.clilystudio.netbook.util.E;
 import com.clilystudio.netbook.widget.CoverView;
 import com.xiaomi.mistatistic.sdk.MiStatInterface;
 
 import java.util.List;
 
-public class RelateBooksFragment extends Fragment implements cQ {
+public class RelateBooksFragment extends Fragment implements cM.cQ {
     LinearLayout mBookContainer;
     TextView mMore;
     LinearLayout mRelateBookRoot;

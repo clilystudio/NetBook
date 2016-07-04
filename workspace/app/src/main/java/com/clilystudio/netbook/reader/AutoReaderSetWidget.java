@@ -96,4 +96,13 @@ public class AutoReaderSetWidget extends LinearLayout implements View.OnClickLis
         Button g = (Button) this.findViewById(R.id.btn_auto_reader_stop);
         g.setOnClickListener(this);
     }
+
+
+    public interface a {
+        public void a();
+
+        public void b();
+
+        public void c();
+    }
 }

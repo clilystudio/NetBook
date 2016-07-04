@@ -812,4 +812,12 @@ public final class o {
     public interface F {
         public void a();
     }
+
+    public interface G {
+        public void a(int var1);
+    }
+
+    public interface H {
+        public void a();
+    }
 }

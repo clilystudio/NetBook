@@ -131,7 +131,7 @@ public class SettingWidget extends LinearLayout {
      */
     public void setReaderStyle(bZ bZ2) {
         this.a = bZ2;
-        bZ2.a(new cc() {
+        bZ2.a(new bZ.cc() {
             @Override
             public void a() {
                 SettingWidget.a(SettingWidget.this);
@@ -232,4 +232,13 @@ public class SettingWidget extends LinearLayout {
         this.b = readerActionBar;
         this.setReaderStyle(bZ2);
     }
+
+    public interface db {
+        public void a();
+    }
+
+    public interface dc {
+        public void a();
+    }
+
 }

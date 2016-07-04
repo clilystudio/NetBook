@@ -41,4 +41,8 @@ public final class cM {
         }.b(string);
         return false;
     }
+
+    public interface cQ {
+        public void a(RelateBookRoot var1, String[] var2);
+    }
 }

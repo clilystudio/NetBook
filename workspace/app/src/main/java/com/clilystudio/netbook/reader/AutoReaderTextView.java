@@ -184,4 +184,9 @@ public class AutoReaderTextView extends JustifyTextView {
     public void setTotalHeight(int n) {
         this.f = n;
     }
+
+    public interface d {
+        public void d();
+    }
+
 }

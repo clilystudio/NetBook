@@ -2,6 +2,7 @@ package com.clilystudio.netbook.reader;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.content.res.TypedArray;
 import android.database.DataSetObserver;
 import android.graphics.Canvas;
 import android.graphics.Rect;
@@ -2198,4 +2199,39 @@ public class ReaderViewPager extends ViewGroup {
             parcel.writeParcelable(this.b, n);
         }
     }
+
+    final class cs {
+        Object a;
+        int b;
+        boolean c;
+        float d;
+        float e;
+    }
+
+    public final class ct extends ViewGroup.LayoutParams {
+        public boolean a;
+        public int b;
+        float c = 0.0f;
+        boolean d;
+        int e;
+        int f;
+
+        public ct() {
+            super(-1, -1);
+        }
+
+        public ct(Context context, AttributeSet attributeSet) {
+            super(context, attributeSet);
+            TypedArray typedArray = context.obtainStyledAttributes(attributeSet, ReaderViewPager.c());
+            this.b = typedArray.getInteger(0, 48);
+            typedArray.recycle();
+        }
+    }
+
+    public interface cw {
+        public void a(int var1);
+
+        public void b(int var1);
+    }
+
 }
