@@ -766,4 +766,8 @@ public final class Reader {
     public enum Type {
         CHAPTER, TOC
     }
+
+    interface Y {
+        public void a(int var1, e<ReaderChapter> var2, boolean var3);
+    }
 }

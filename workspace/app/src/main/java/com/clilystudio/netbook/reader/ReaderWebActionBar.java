@@ -81,9 +81,9 @@ public class ReaderWebActionBar extends RelativeLayout {
     public void setTitle(String string) {
         this.b.setText(string);
     }
-
-    public void setTopicCount() {
-    }
+//
+//    public void setTopicCount() {
+//    }
 
     public interface OnBtnClickListener {
         void a(int n);
