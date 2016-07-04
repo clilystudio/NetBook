@@ -20,20 +20,7 @@ public final class bH {
     }
 
     public static boolean a(Context context) {
-        block4:
-        {
-            if (!"xiaomi".equals(Build.BRAND.toLowerCase())) break block4;
-            return true;
-        }
-        try {
-            boolean bl;
-            if (com.clilystudio.netbook.hpay100.a.a.i() && !(bl = ViewConfiguration.get(context).hasPermanentMenuKey())) {
-                return false;
-            }
-        } catch (Exception var1_2) {
-            var1_2.printStackTrace();
-        }
-        return true;
+        return "xiaomi".equals(Build.BRAND.toLowerCase()) || !(com.clilystudio.netbook.hpay100.a.a.i() && !ViewConfiguration.get(context).hasPermanentMenuKey());
     }
 
     private void g() {

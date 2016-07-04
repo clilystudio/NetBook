@@ -17,9 +17,6 @@ public class AutoReaderSetWidget extends LinearLayout implements View.OnClickLis
     private int b = 5;
     private int c;
     private TextView d;
-    private Button e;
-    private Button f;
-    private Button g;
     private a h;
 
     public AutoReaderSetWidget(Context context, AttributeSet attributeSet) {
@@ -92,11 +89,11 @@ public class AutoReaderSetWidget extends LinearLayout implements View.OnClickLis
         this.b = com.clilystudio.netbook.hpay100.a.a.a(this.a, "auto_reader_speed", 5);
         this.d = (TextView) this.findViewById(R.id.txt_auto_turn_speed);
         this.e();
-        this.e = (Button) this.findViewById(R.id.btn_auto_reader_dec);
-        this.e.setOnClickListener(this);
-        this.f = (Button) this.findViewById(R.id.btn_auto_reader_acc);
-        this.f.setOnClickListener(this);
-        this.g = (Button) this.findViewById(R.id.btn_auto_reader_stop);
-        this.g.setOnClickListener(this);
+        Button e = (Button) this.findViewById(R.id.btn_auto_reader_dec);
+        e.setOnClickListener(this);
+        Button f = (Button) this.findViewById(R.id.btn_auto_reader_acc);
+        f.setOnClickListener(this);
+        Button g = (Button) this.findViewById(R.id.btn_auto_reader_stop);
+        g.setOnClickListener(this);
     }
 }

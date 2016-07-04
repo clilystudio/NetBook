@@ -143,14 +143,13 @@ public class AutoReaderTextView extends JustifyTextView {
         TextPaint textPaint = this.getPaint();
         textPaint.setColor(this.getCurrentTextColor());
         textPaint.drawableState = this.getDrawableState();
-        this.b = this.getMeasuredWidth();
         this.c = this.getMeasuredHeight();
         int n = this.f - this.c;
         String string = this.getText().toString();
         float f2 = this.getTextSize();
-        this.a = 0;
-        this.a = (int) (f2 + (float) this.a);
-        this.a -= n;
+        int a = 0;
+        a = (int) (f2 + (float) a);
+        a -= n;
         Layout layout = this.getLayout();
         if (layout == null) {
             return;
@@ -163,17 +162,17 @@ public class AutoReaderTextView extends JustifyTextView {
             int n5 = layout.getLineEnd(n3);
             float f3 = StaticLayout.getDesiredWidth(string, n4, n5, this.getPaint());
             String string2 = string.substring(n4, n5);
-            if ((float) this.a > -f2) {
+            if ((float) a > -f2) {
                 if (AutoReaderTextView.a(string2)) {
                     this.a(canvas, string2, f3, false);
                 } else {
                     if (string2.length() > 0 && string2.charAt(-1 + string2.length()) == '\n') {
                         string2 = string2.substring(0, -1 + string2.length());
                     }
-                    canvas.drawText(string2, 0.0f, this.a, textPaint);
+                    canvas.drawText(string2, 0.0f, a, textPaint);
                 }
             }
-            this.a = n2 + this.a;
+            a = n2 + a;
             ++n3;
         }
     }

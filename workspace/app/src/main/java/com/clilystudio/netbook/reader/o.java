@@ -30,6 +30,7 @@ import java.text.SimpleDateFormat;
 import java.util.HashMap;
 
 import me.biubiubiu.justifytext.library.JustifyTextView;
+import uk.me.lewisdeane.ldialogs.BaseDialog;
 
 public final class o {
     private static final SimpleDateFormat a = new SimpleDateFormat("HH:mm");
@@ -85,7 +86,7 @@ public final class o {
         }
         if (purchaseChapterResult.isOk()) {
             o2.d.q().a().e().put(purchaseChapterResult.getChapterId(), purchaseChapterResult.getKey());
-            a.a(((ReaderActivity) o2.b).l(), o2.d.q().a().e());
+            com.clilystudio.netbook.hpay100.a.a.a(((ReaderActivity) o2.b).l(), o2.d.q().a().e());
             String string = o2.d.q().a().e().get(o2.d.a().getId());
             if (string != null) {
                 o2.d.a().setKey(string);
@@ -121,8 +122,7 @@ public final class o {
                 @Override
                 public ChapterSingleKey a(String... var1) {
                     com.clilystudio.netbook.api.b.a();
-                    ChapterSingleKey chapterSingleKey = com.clilystudio.netbook.api.b.b().f(var1[0], am.e().getToken());
-                    return chapterSingleKey;
+                    return com.clilystudio.netbook.api.b.b().f(var1[0], am.e().getToken());
                 }
 
                 @Override
@@ -192,10 +192,7 @@ public final class o {
      * Enabled aggressive block sorting
      */
     private static boolean o() {
-        if (am.e() == null || !com.clilystudio.netbook.hpay100.a.a.a((Context) MyApplication.a(), "auto_buy_chapter" + com.clilystudio.netbook.util.I.a, false)) {
-            return false;
-        }
-        return true;
+        return !(am.e() == null || !com.clilystudio.netbook.hpay100.a.a.a((Context) MyApplication.a(), "auto_buy_chapter" + com.clilystudio.netbook.util.I.a, false));
     }
 
     private void a(boolean bl) {
@@ -241,7 +238,8 @@ public final class o {
             }
             n2 = arrchapterLink[n3].getCurrency();
         }
-        textView.setText("" + n2);
+        String text = "" + n2;
+        textView.setText(text);
         final CheckBox checkBox = (CheckBox) view3.findViewById(R.id.reader_page_pay_checkbox);
         this.u = (Button) view3.findViewById(R.id.reader_page_pay_btn);
         if (com.clilystudio.netbook.hpay100.a.a.a((Context) this.b, "user_account_balance", 0) > this.d.a().getCurrency() || this.t) {
@@ -279,13 +277,14 @@ public final class o {
             checkBox.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    // h -> lewisjdeane/L-Dialogs Builder
-                    new h(o.this.b).a(true).a(R.string.auto_buy_chapter_prompt_title).b(R.string.auto_buy_chapter_prompt_content).a("\u786e\u5b9a", new DialogInterface.OnClickListener() {
+                    new BaseDialog.Builder(o.this.b).setCancelable(true).setTitle(R.string.auto_buy_chapter_prompt_title)
+                            .setMessage(R.string.auto_buy_chapter_prompt_content)
+                            .setPositiveButton("确定", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             dialog.dismiss();
                         }
-                    }).b();
+                    }).show();
                 }
             });
         } else {
@@ -630,7 +629,7 @@ public final class o {
         if (readerChapter == null || !readerChapter.isVip()) {
             return false;
         }
-        if (a.a((Context) this.b, "user_account_balance", 0) < readerChapter.getCurrency()) {
+        if (com.clilystudio.netbook.hpay100.a.a.a((Context) this.b, "user_account_balance", 0) < readerChapter.getCurrency()) {
             return false;
         }
         String string = readerChapter.getKey();

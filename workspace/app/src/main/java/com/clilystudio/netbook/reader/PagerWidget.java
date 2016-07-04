@@ -17,8 +17,6 @@ public class PagerWidget extends ReaderViewPager {
     private boolean d;
     private float e;
     private float f;
-    private boolean g;
-    private float h = 20.0f;
     private int i = 0;
     private AutoReaderTextView j;
     private boolean k = false;
@@ -46,8 +44,7 @@ public class PagerWidget extends ReaderViewPager {
 
     private Object a(String string) {
         try {
-            Object object = FieldUtils.readField(ReaderViewPager.class.getDeclaredField(string), (Object) this, true);
-            return object;
+            return FieldUtils.readField(ReaderViewPager.class.getDeclaredField(string), this, true);
         } catch (IllegalAccessException var4_3) {
             var4_3.printStackTrace();
             return null;
@@ -62,11 +59,9 @@ public class PagerWidget extends ReaderViewPager {
 
     private void a(String string, Object object) {
         try {
-            FieldUtils.writeField(ReaderViewPager.class.getDeclaredField(string), (Object) this, object, true);
-            return;
+            FieldUtils.writeField(ReaderViewPager.class.getDeclaredField(string), this, object, true);
         } catch (Exception var3_3) {
             var3_3.printStackTrace();
-            return;
         }
     }
 
@@ -131,8 +126,8 @@ public class PagerWidget extends ReaderViewPager {
                             ((ReaderActivity) this.getContext()).k();
                         }
                     } else {
-                        float v2 = ((Float) this.a("mInitialMotionX")).floatValue();
-                        int v0 = ((Integer) this.a("mActivePointerId")).intValue();
+                        float v2 = (Float) this.a("mInitialMotionX");
+                        int v0 = (Integer) this.a("mActivePointerId");
                         int v3 = MotionEventCompat.findPointerIndex(var1_1, v0);
                         if (Math.abs(MotionEventCompat.getX(var1_1, v3) - v2) > this.a) {
                             return super.onTouchEvent(PagerWidget.a(var1_1));
@@ -152,7 +147,7 @@ public class PagerWidget extends ReaderViewPager {
                         this.j.clearAnimation();
                         this.k = true;
                     }
-                    if (Math.abs(var1_1.getY() - this.f) > this.h) {
+                    if (Math.abs(var1_1.getY() - this.f) > 20.0f) {
                         int v01 = (int) (this.getMeasuredHeight() - var1_1.getY());
                         if (this.getMeasuredHeight() - var1_1.getY() <= this.j.g()) {
                             if (v01 < 10) {
@@ -165,19 +160,12 @@ public class PagerWidget extends ReaderViewPager {
                     }
                     break;
                 case 1:
-                    if (Math.abs(this.e - var1_1.getX()) > this.h) {
-                        this.g = false;
-                    } else {
-                        if (Math.abs(this.f - var1_1.getY()) <= this.h) {
-                            this.g = true;
-                        } else {
-                            this.g = false;
-                        }
-                    }
-                    if (this.b != null && this.g) {
+                    boolean g;
+                    g = Math.abs(this.e - var1_1.getX()) <= 20.0f && Math.abs(this.f - var1_1.getY()) <= 20.0f;
+                    if (this.b != null && g) {
                         this.b.a(0);
                     }
-                    if (!this.g) {
+                    if (!g) {
                         this.j.e();
                     }
                     break;
@@ -204,6 +192,6 @@ public class PagerWidget extends ReaderViewPager {
     }
 
     public interface OnPageClickListener {
-        public abstract void a(int n2);
+        void a(int n2);
     }
 }
