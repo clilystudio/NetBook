@@ -17,13 +17,12 @@ import com.clilystudio.netbook.hpay100.a.a;
 import me.biubiubiu.justifytext.library.JustifyTextView;
 
 public class AutoReaderTextView extends JustifyTextView {
-    private int c;
     private Context d;
     private int e = 5;
     private int f;
     private int g;
     private int[] h = new int[]{100, 50, 35, 25, 20, 16, 14, 12, 11, 10};
-    private d i;
+    private d_interface i;
     private RelativeLayout.LayoutParams j;
     private boolean k = false;
     private Animation.AnimationListener l;
@@ -57,8 +56,8 @@ public class AutoReaderTextView extends JustifyTextView {
     }
 
     static /* synthetic */ boolean a(AutoReaderTextView autoReaderTextView, boolean bl) {
-        autoReaderTextView.k = true;
-        return true;
+        autoReaderTextView.k = bl;
+        return bl;
     }
 
     static /* synthetic */ RelativeLayout.LayoutParams b(AutoReaderTextView autoReaderTextView) {
@@ -69,7 +68,7 @@ public class AutoReaderTextView extends JustifyTextView {
         return autoReaderTextView.g;
     }
 
-    static /* synthetic */ d d(AutoReaderTextView autoReaderTextView) {
+    static /* synthetic */ d_interface d(AutoReaderTextView autoReaderTextView) {
         return autoReaderTextView.i;
     }
 
@@ -143,8 +142,8 @@ public class AutoReaderTextView extends JustifyTextView {
         TextPaint textPaint = this.getPaint();
         textPaint.setColor(this.getCurrentTextColor());
         textPaint.drawableState = this.getDrawableState();
-        this.c = this.getMeasuredHeight();
-        int n = this.f - this.c;
+        int c = this.getMeasuredHeight();
+        int n = this.f - c;
         String string = this.getText().toString();
         float f2 = this.getTextSize();
         int a = 0;
@@ -163,7 +162,7 @@ public class AutoReaderTextView extends JustifyTextView {
             float f3 = StaticLayout.getDesiredWidth(string, n4, n5, this.getPaint());
             String string2 = string.substring(n4, n5);
             if ((float) a > -f2) {
-                if (AutoReaderTextView.a(string2)) {
+                if (this.a(string2)) {
                     this.a(canvas, string2, f3, false);
                 } else {
                     if (string2.length() > 0 && string2.charAt(-1 + string2.length()) == '\n') {
@@ -177,7 +176,7 @@ public class AutoReaderTextView extends JustifyTextView {
         }
     }
 
-    public void setOnPageTurning(d d2) {
+    public void setOnPageTurning(d_interface d2) {
         this.i = d2;
     }
 
@@ -185,8 +184,7 @@ public class AutoReaderTextView extends JustifyTextView {
         this.f = n;
     }
 
-    public interface d {
-        public void d();
+    public interface d_interface {
+        void d();
     }
-
 }

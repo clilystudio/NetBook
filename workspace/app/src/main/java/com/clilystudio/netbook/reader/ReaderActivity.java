@@ -63,7 +63,7 @@ import uk.me.lewisdeane.ldialogs.CustomDialog;
 
 public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickListener,
         AutoReaderSetWidget.a,
-        AutoReaderTextView.d {
+        AutoReaderTextView.d_interface {
     public static String a = "";
     private int A;
     private View B;
