@@ -12,9 +12,8 @@ import android.view.animation.LinearInterpolator;
 import android.view.animation.Transformation;
 import android.widget.RelativeLayout;
 
-import com.clilystudio.netbook.hpay100.a.a;
+import com.clilystudio.netbook.widget.JustifyTextView;
 
-import me.biubiubiu.justifytext.library.JustifyTextView;
 
 public class AutoReaderTextView extends JustifyTextView {
     private Context d;
@@ -126,7 +125,7 @@ public class AutoReaderTextView extends JustifyTextView {
     }
 
     public final void f() {
-        this.e = a.a(this.d, "auto_reader_speed", 5);
+        this.e = com.clilystudio.netbook.hpay100.a.a.a(this.d, "auto_reader_speed", 5);
         this.j = (RelativeLayout.LayoutParams) this.getLayoutParams();
     }
 
@@ -162,8 +161,8 @@ public class AutoReaderTextView extends JustifyTextView {
             float f3 = StaticLayout.getDesiredWidth(string, n4, n5, this.getPaint());
             String string2 = string.substring(n4, n5);
             if ((float) a > -f2) {
-                if (this.a(string2)) {
-                    this.a(canvas, string2, f3, false);
+                if (needScale(string2)) {
+                    this.drawScaledText(canvas, string2, f3, false);
                 } else {
                     if (string2.length() > 0 && string2.charAt(-1 + string2.length()) == '\n') {
                         string2 = string2.substring(0, -1 + string2.length());

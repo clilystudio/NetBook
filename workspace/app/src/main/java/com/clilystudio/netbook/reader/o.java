@@ -21,6 +21,7 @@ import com.clilystudio.netbook.model.ChapterLink;
 import com.clilystudio.netbook.model.ChapterSingleKey;
 import com.clilystudio.netbook.model.PurchaseChapterResult;
 import com.clilystudio.netbook.ui.user.AuthLoginActivity;
+import com.clilystudio.netbook.widget.JustifyTextView;
 import com.squareup.otto.Subscribe;
 import com.xiaomi.mistatistic.sdk.MiStatInterface;
 import com.xiaomi.mistatistic.sdk.MiStatInterfaceImpl;
@@ -29,7 +30,6 @@ import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.HashMap;
 
-import me.biubiubiu.justifytext.library.JustifyTextView;
 import uk.me.lewisdeane.ldialogs.BaseDialog;
 
 public final class o {
