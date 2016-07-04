@@ -5,23 +5,14 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.content.SharedPreferences;
-import android.content.pm.ActivityInfo;
 import android.graphics.drawable.ColorDrawable;
-import android.os.AsyncTask;
-import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.os.PowerManager;
 import android.preference.PreferenceManager;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v4.content.LocalBroadcastManager;
-import android.support.v4.view.PagerAdapter;
-import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.PopupMenu;
 import android.widget.PopupWindow;
@@ -29,31 +20,18 @@ import android.widget.TextView;
 
 import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.R;
-import com.clilystudio.netbook.am;
 import com.clilystudio.netbook.d;
 import com.clilystudio.netbook.db.BookReadRecord;
-import com.clilystudio.netbook.db.BookTopicEnterRecord;
 import com.clilystudio.netbook.db.MixTocRecord;
 import com.clilystudio.netbook.db.TocReadRecord;
-import com.clilystudio.netbook.event.C;
-import com.clilystudio.netbook.event.j;
-import com.clilystudio.netbook.event.v;
-import com.clilystudio.netbook.model.ChapterKeysRoot;
 import com.clilystudio.netbook.model.ChapterLink;
-import com.clilystudio.netbook.model.TopicCount;
 import com.clilystudio.netbook.ui.BaseReadSlmActivity;
 import com.clilystudio.netbook.ui.BookInfoActivity;
-import com.clilystudio.netbook.util.k;
 import com.clilystudio.netbook.widget.ThemeLoadingView;
-import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 import com.squareup.otto.Subscribe;
-import com.xiaomi.mistatistic.sdk.MiStatInterface;
 
-import java.util.Date;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.LinkedList;
-import java.util.Map;
 
 import uk.me.lewisdeane.ldialogs.BaseDialog;
 
@@ -810,7 +788,6 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
     private void B() {
 
 
-        var1_1 = 1;
         if (this.H) {
             this.j.a(this.g);
         }
@@ -852,6 +829,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         String var2_2 = MyApplication.a().g();
         if (this.c.equals(var2_2)) {
             BookReadRecord var3_3 = BookReadRecord.getOnShelf(this.c);
+            int var4_41 = -1;
             if (var3_3 != null && this.g != null) {
                 int var5_5 = var3_3.getTocIndex();
                 String var6_6 = var3_3.getChapterTitle();
@@ -864,65 +842,49 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
                     int var10_10 = 1;
                     for (int var9_9 = 0; var9_9 < 20; ++var9_9) {
                         if (var10_10 == 0) {
-                             var11_11 = var5_5 - var8_8;
+                            int var11_11 = var5_5 - var8_8;
                             if (this.a(var7_7, var6_6, var11_11)) {
-                                var4_4 = var11_11;
+                                var4_41 = var11_11;
+                                break;
                             }
-                             **GOTO lbl -1000
-                            lbl55:
-                            // 1 sources:
                             ++var8_8;
                             var10_10 = var1_1;
+                        } else {
+                            var12_12 = var5_5 + var8_8;
+                            if (this.a(var7_7, var6_6, var12_12)) {
+                                var4_41 = var12_12;
+                                break;
+                            }
+                            var10_10 = 0;
                         }
-                        var12_12 = var5_5 + var8_8;
-                        if (!this.a(var7_7, var6_6, var12_12))**GOTO lbl49
-                        var4_4 = var12_12;
-                        **GOTO lbl -1000
-                        lbl49:
-                        // 1 sources:
-                        var10_10 = 0;
-                        continue;
-                       }
-                    var4_4 = -1;
-                } else lbl - 1000: // 5 sources:
-                {
-                    do {
-                        if (var4_4 != -1) {
-                            this.g.a(var4_4, 0);
-                        }
-                        MyApplication.a().c(null);
-                        lbl25:
-                        // 2 sources:
-                    }
+                     }
                 }
-                var4_4 = -1;
-                **GOTO lbl -1000
-                MyApplication.a().a(this.g);
-                if (this.q() || com.clilystudio.netbook.hpay100.a.a.h(this.L)) {
-                    if (this.q()) {
-                        if (MixTocRecord.get(this.e) == null) {
-                            var1_1 = 0;
-                        }
-                    } else if (TocReadRecord.get(this.e) == null) {
-                        var1_1 = 0;
-                    }
-                    if (var1_1 != 0) {
-                        this.g();
-                        return;
-                    }
-                    this.c(0);
-                    return;
-                }
-                if (this.I && !this.H) {
-                    this.D();
-                    return;
-                }
-                this.g();
-                return;
-                break;
-            } while (true) ;
+            }
+            if (var4_41 != -1) {
+                this.g.a(var4_4, 0);
+            }
+            MyApplication.a().c(null);
         }
-         **while (true)
+        MyApplication.a().a(this.g);
+        if (this.q() || com.clilystudio.netbook.hpay100.a.a.h(this.L)) {
+            boolean var1_1 = true;
+            if (this.q()) {
+                if (MixTocRecord.get(this.e) == null) {
+                    var1_1 = false;
+                }
+            } else if (TocReadRecord.get(this.e) == null) {
+                var1_1 = false;
+            }
+            if (var1_1) {
+                this.g();
+            }
+            this.c(0);
+        }
+        if (this.I && !this.H) {
+            this.D();
+        } else {
+            this.g();
+        }
     }
 
     private void C() {

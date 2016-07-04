@@ -1,0 +1,114 @@
+    v5 = -0x1;
+    v4 = 0x1;
+    v3 = 0x0;
+    v0 = this.H;
+    if (v0 != 0) {
+		v0 = this.j;
+		v1 = this.g;
+		v0.a(v1);
+    }
+    v0 = this.m;
+    v1 = new aw();
+    v1.<init>(p0);
+    v0.setOnPageChangeListener(v1);
+    v0 = this.m;
+    v1 = new ax();
+    v1.<init>(p0);
+    v0.setOnClickListener$4b8a6d15(v1);
+    v0 = invoke-static {}, Lcom/ushaqi/zhuishushenqi/MyApplication;->a()Lcom/ushaqi/zhuishushenqi/MyApplication;
+    v0 = v0.g();
+    v1 = this.c;
+    v0 = v1.equals(v0);
+    if (v0 != 0) {
+		v0 = BookReadRecord.getOnShelf(this.c);
+		if (v0 != 0) {
+			if (this.g != 0) {
+				v1 = v0.getTocIndex();
+				v7 = v0.getChapterTitle();
+				v0 = this.g;
+				v0 = v0.g();
+				if (v1 <= v0) {
+					v0 = v1;
+				}
+				v8 = new ae();
+				v8.<init>();
+				v2 = p0.a(v8, v7, v0);
+				if (v2 != 0) {
+			//       if-nez v2, :cond_2
+				}
+				v0 = v4;
+				v6 = v3;
+				v2 = v4;
+				:goto_3
+				while (v6 < 20) {
+					if (v2 == 0) {
+						v2 = v1 - v0;
+						v9 = p0.a(v8, v7, v2);
+						if (v9 == 0) {
+							v0 = v0 + 0x1;
+							v2 = v4;
+							v6 = v6 + 0x1;
+							goto :goto_3
+						}
+						v0 = v2;
+						goto :goto_0
+					}
+					v2 = v1 + v0;
+					v9 = p0.a(v8, v7, v2);
+					if (v9 == 0) {
+						v0 = v2;
+						goto :goto_0
+					}
+					v2 = v3;
+					v6 = v6 + 0x1;
+					goto :goto_3
+				}
+			}
+		}
+		v0 = v5;
+		:cond_2
+		:goto_0
+		if (v0 != v5) {
+			v1 = this.g;
+			v1.a(v0, v3);
+		}
+		v0 = invoke-static {}, Lcom/ushaqi/zhuishushenqi/MyApplication;->a()Lcom/ushaqi/zhuishushenqi/MyApplication;
+		v1 = 0x0;
+		v0.c(v1);
+    }
+    v0 = invoke-static {}, Lcom/ushaqi/zhuishushenqi/MyApplication;->a()Lcom/ushaqi/zhuishushenqi/MyApplication;
+    v1 = this.g;
+    v0.a(v1);
+    v0 = p0.q();
+    if (v0 == 0) {
+		v0 = this.L;
+		v0 = Lcom/arcsoft/hpay100/a/a.h(v0);
+		if (v0 == 0) {
+			if (this.I == 0 || this.H != 0) {
+				p0.g();
+			} else {
+				p0.D();
+			}
+			return;
+		}
+    }
+    v0 = p0.q();
+    if (v0 == 0) {
+		v0 = this.e;
+		v0 = Lcom/ushaqi/zhuishushenqi/db/TocReadRecord.get(v0);
+		if (v0 == 0) {
+			v4 = v3;
+		}
+    } else {
+		v0 = this.e;
+		v0 = Lcom/ushaqi/zhuishushenqi/db/MixTocRecord.get(v0);
+		if (v0 == 0) {
+			v4 = v3;
+		}
+	}
+    if (v4 == 0) {
+		p0.c(v3);
+    } else {
+		p0.g();
+	}
+    return;
