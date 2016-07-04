@@ -808,6 +808,8 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
      * Lifted jumps to return sites
      */
     private void B() {
+
+
         var1_1 = 1;
         if (this.H) {
             this.j.a(this.g);
@@ -847,32 +849,54 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
                 }
             }
         });
-        var2_2 = MyApplication.a().g();
-        if (!this.c.equals(var2_2))**GOTO lbl25
-        var3_3 = BookReadRecord.getOnShelf(this.c);
-        if (var3_3 != null && this.g != null)**GOTO lbl12
-        var4_4 = -1;
-        **GOTO lbl -1000
-        lbl12:
-        // 1 sources:
-        var5_5 = var3_3.getTocIndex();
-        var6_6 = var3_3.getChapterTitle();
-        var4_4 = this.g.g();
-        if (var5_5 <= var4_4) {
-            var4_4 = var5_5;
-        }
-        if (!this.a(var7_7 = new com.clilystudio.netbook.util.ae(), var6_6, var4_4)) {
-            var8_8 = var1_1;
-            var10_10 = var1_1;
-        } else lbl - 1000: // 5 sources:
-        {
-            do {
-                if (var4_4 != -1) {
-                    this.g.a(var4_4, 0);
+        String var2_2 = MyApplication.a().g();
+        if (this.c.equals(var2_2)) {
+            BookReadRecord var3_3 = BookReadRecord.getOnShelf(this.c);
+            if (var3_3 != null && this.g != null) {
+                int var5_5 = var3_3.getTocIndex();
+                String var6_6 = var3_3.getChapterTitle();
+                int var4_4 = this.g.g();
+                if (var5_5 <= var4_4) {
+                    var4_4 = var5_5;
                 }
-                MyApplication.a().c(null);
-                lbl25:
-                // 2 sources:
+                com.clilystudio.netbook.util.ae var7_7 = new com.clilystudio.netbook.util.ae();
+                if (this.a(var7_7, var6_6, var4_4)) {
+                    int var10_10 = 1;
+                    for (int var9_9 = 0; var9_9 < 20; ++var9_9) {
+                        if (var10_10 == 0) {
+                             var11_11 = var5_5 - var8_8;
+                            if (this.a(var7_7, var6_6, var11_11)) {
+                                var4_4 = var11_11;
+                            }
+                             **GOTO lbl -1000
+                            lbl55:
+                            // 1 sources:
+                            ++var8_8;
+                            var10_10 = var1_1;
+                        }
+                        var12_12 = var5_5 + var8_8;
+                        if (!this.a(var7_7, var6_6, var12_12))**GOTO lbl49
+                        var4_4 = var12_12;
+                        **GOTO lbl -1000
+                        lbl49:
+                        // 1 sources:
+                        var10_10 = 0;
+                        continue;
+                       }
+                    var4_4 = -1;
+                } else lbl - 1000: // 5 sources:
+                {
+                    do {
+                        if (var4_4 != -1) {
+                            this.g.a(var4_4, 0);
+                        }
+                        MyApplication.a().c(null);
+                        lbl25:
+                        // 2 sources:
+                    }
+                }
+                var4_4 = -1;
+                **GOTO lbl -1000
                 MyApplication.a().a(this.g);
                 if (this.q() || com.clilystudio.netbook.hpay100.a.a.h(this.L)) {
                     if (this.q()) {
@@ -896,31 +920,9 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
                 this.g();
                 return;
                 break;
-            } while (true);
+            } while (true) ;
         }
-        for (var9_9 = 0; var9_9 < 20; ++var9_9) {
-            if (var10_10 == 0)**GOTO lbl51
-            var12_12 = var5_5 + var8_8;
-            if (!this.a(var7_7, var6_6, var12_12))**GOTO lbl49
-            var4_4 = var12_12;
-            **GOTO lbl -1000
-            lbl49:
-            // 1 sources:
-            var10_10 = 0;
-            continue;
-            lbl51:
-            // 1 sources:
-            var11_11 = var5_5 - var8_8;
-            if (!this.a(var7_7, var6_6, var11_11))**GOTO lbl55
-            var4_4 = var11_11;
-            **GOTO lbl -1000
-            lbl55:
-            // 1 sources:
-            ++var8_8;
-            var10_10 = var1_1;
-        }
-        var4_4 = -1;
-        **while (true)
+         **while (true)
     }
 
     private void C() {
@@ -1724,13 +1726,13 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
             new BaseDialog.Builder(this).setTitle(R.string.reader_add_book_title).setMessage(R.string.add_book_hint)
                     .setPositiveButton(R.string.add_book, new DialogInterface.OnClickListener() {
 
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    dialog.dismiss();
-                    ReaderActivity.ad(ReaderActivity.this);
-                    finish();
-                }
-            }).setNegativeButton(R.string.add_book_cancel, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                            ReaderActivity.ad(ReaderActivity.this);
+                            finish();
+                        }
+                    }).setNegativeButton(R.string.add_book_cancel, new DialogInterface.OnClickListener() {
 
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
@@ -1910,7 +1912,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         }
         boolean bl2 = this.L == 5 || this.L == 10 || com.clilystudio.netbook.hpay100.a.a.h(this.L) || this.L == 9;
         View view = this.findViewById(R.id.reader_ab_read_mode);
-        view.setVisibility( bl2 ? View.VISIBLE : View.GONE);
+        view.setVisibility(bl2 ? View.VISIBLE : View.GONE);
         this.r.setReaderStyle(this.h);
         this.r.b(this.G);
         this.r.setOnBtnClickListener(new ReaderActionBar.OnBtnClickListener() {
