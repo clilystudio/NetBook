@@ -202,7 +202,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         boolean bl = !readerActivity.G;
         readerActivity.G = bl;
         readerActivity.r();
-        com.clilystudio.netbook.hpay100.a.a.b((Context) readerActivity, "reader_orientation", readerActivity.G);
+        com.clilystudio.netbook.hpay100.a.a.b(readerActivity, "reader_orientation", readerActivity.G);
     }
 
     /*
@@ -210,29 +210,28 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
      */
     static /* synthetic */ void C(final ReaderActivity readerActivity) {
         if (readerActivity.J || readerActivity.K) {
-            com.clilystudio.netbook.util.e.a((Activity) readerActivity, (String) "缓存不可用");
+            com.clilystudio.netbook.util.e.a(readerActivity, "缓存不可用");
             return;
         }
-        boolean bl = com.clilystudio.netbook.am.g((String) readerActivity.c) == 2;
+        boolean bl = com.clilystudio.netbook.am.g(readerActivity.c) == 2;
         if (bl) {
-            new BaseDialog.Builder(readerActivity).setTitle(R.string.tips).setMessage(R.string.chapter_dl_doing_msg).a(R.string.chapter_dl_goon,new DialogInterface.OnClickListener(){
+            new BaseDialog.Builder(readerActivity).setTitle(R.string.tips).setMessage(R.string.chapter_dl_doing_msg).setPositiveButton(R.string.chapter_dl_goon,new DialogInterface.OnClickListener(){
 
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     dialog.dismiss();
                 }
-            }).b(R.string.stop, new DialogInterface.OnClickListener(){
+            }).setNegativeButton(R.string.stop, new DialogInterface.OnClickListener(){
 
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     dialog.dismiss();
                     com.clilystudio.netbook.event.i.a().post(new com.clilystudio.netbook.event.d(ReaderActivity.M(readerActivity), 3));
                }
-            }).b();
-            return;
+            }).show();
         } else {
             CharSequence[] arrcharSequence = new String[]{readerActivity.getString(R.string.chapter_dl_count_50), readerActivity.getString(R.string.chapter_dl_count_after), readerActivity.getString(R.string.all)};
-            new CustomDialog.Builder(readerActivity).setTitle(R.string.chapter_dl_title).setPositiveButton(arrcharSequence, new DialogInterface.OnClickListener() {
+            new BaseDialog.Builder(readerActivity).setTitle(R.string.chapter_dl_title).setSingleChoiceItems(arrcharSequence, 0, new DialogInterface.OnClickListener() {
 
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
@@ -257,7 +256,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
                     MyApplication.a().e().put(ReaderActivity.M(readerActivity), ReaderActivity.Y(readerActivity).d());
                     a2.a(ReaderActivity.M(readerActivity), n4, ReaderActivity.ai(readerActivity));
                 }
-            }).a().show();
+            }).create().show();
         }
     }
 
@@ -267,7 +266,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
 
     static /* synthetic */ void E(ReaderActivity readerActivity) {
         if (readerActivity.ab == null) {
-            readerActivity.ab = ((PowerManager) readerActivity.getSystemService("power")).newWakeLock(1, "lock_tag");
+            readerActivity.ab = ((PowerManager) readerActivity.getSystemService(POWER_SERVICE)).newWakeLock(1, "lock_tag");
             if (readerActivity.ab != null) {
                 readerActivity.ab.acquire();
             }
@@ -506,14 +505,14 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
 
     static /* synthetic */ void ad(ReaderActivity readerActivity) {
         if (com.clilystudio.netbook.am.f()) {
-            com.clilystudio.netbook.util.e.a((Activity) readerActivity, (String) readerActivity.getString(R.string.book_add_overflow));
+            com.clilystudio.netbook.util.e.a(readerActivity, readerActivity.getString(R.string.book_add_overflow));
             return;
         }
         readerActivity.g.a();
         com.clilystudio.netbook.hpay100.a.a.u(readerActivity.c);
         String string = readerActivity.getString(R.string.add_book_event);
         Object[] arrobject = new Object[]{readerActivity.d};
-        com.clilystudio.netbook.util.e.a((Activity) readerActivity, (String) String.format(string, arrobject));
+        com.clilystudio.netbook.util.e.a(readerActivity, String.format(string, arrobject));
     }
 
     static /* synthetic */ void ae(ReaderActivity readerActivity) {
@@ -527,7 +526,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
     static /* synthetic */ void ag(ReaderActivity readerActivity) {
         CharSequence charSequence = readerActivity.r.b().getText();
         if (charSequence != null) {
-            com.clilystudio.netbook.am.a((Activity) readerActivity, (String) charSequence.toString(), (String) null);
+            com.clilystudio.netbook.am.a(readerActivity, charSequence.toString(), null);
         }
     }
 
@@ -585,7 +584,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         readerActivity.S.getContentView().setFocusable(true);
         int[] arrn = new int[2];
         view.getLocationOnScreen(arrn);
-        readerActivity.S.showAtLocation(view, 0, arrn[0] - readerActivity.S.getWidth() + view.getWidth(), com.clilystudio.netbook.am.l((Context) readerActivity) + com.clilystudio.netbook.am.k((Context) readerActivity));
+        readerActivity.S.showAtLocation(view, 0, arrn[0] - readerActivity.S.getWidth() + view.getWidth(), com.clilystudio.netbook.am.l(readerActivity) + com.clilystudio.netbook.am.k(readerActivity));
     }
 
     static /* synthetic */ boolean b(ReaderActivity readerActivity, boolean bl) {
@@ -737,7 +736,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
             return;
         } else {
             if (readerActivity.Y == null) {
-                com.clilystudio.netbook.util.e.a((Activity) readerActivity, (String) "获取章节内容失败,请退出后重试");
+                com.clilystudio.netbook.util.e.a(readerActivity, "获取章节内容失败,请退出后重试");
                 return;
             }
             if (readerActivity.Z > -1 + readerActivity.Y.length) return;
@@ -780,7 +779,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
 
     static /* synthetic */ void x(ReaderActivity readerActivity) {
         if (readerActivity.J || readerActivity.K) {
-            com.clilystudio.netbook.util.e.a((Activity) readerActivity, (String) "\u76ee\u5f55\u4e0d\u53ef\u7528");
+            com.clilystudio.netbook.util.e.a(readerActivity, "\u76ee\u5f55\u4e0d\u53ef\u7528");
             return;
         }
         readerActivity.D();
@@ -953,7 +952,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         };
         for (int k = 0; k < 3; ++k) {
             o o2;
-            this.b[k] = o2 = new o((Activity) this, this.h);
+            this.b[k] = o2 = new o(this, this.h);
             o2.a(aL2);
             o2.a(aM2);
             o2.a(aN2);
@@ -1179,7 +1178,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         }
         this.E();
         if (!n2.e() && this.w()) {
-            com.clilystudio.netbook.util.e.a((Activity) this, (String) this.getString(R.string.auto_reader_end_notify));
+            com.clilystudio.netbook.util.e.a(this, this.getString(R.string.auto_reader_end_notify));
             this.T.clearAnimation();
             this.I();
             this.M = 0;
@@ -1188,7 +1187,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         }
         if (this.M == 1) {
             if (this.h.i()) {
-                this.T.setText(n2.a((Context) this));
+                this.T.setText(n2.a(this));
             } else {
                 this.T.setText(n2.c());
             }
@@ -1217,7 +1216,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         if (com.clilystudio.netbook.hpay100.a.a.d()) {
             Iterator<String> iterator = com.clilystudio.netbook.hpay100.a.a.j(this.c, this.e).iterator();
             while (iterator.hasNext()) {
-                String string = com.clilystudio.netbook.am.f((String) iterator.next());
+                String string = com.clilystudio.netbook.am.f(iterator.next());
                 this.x.add(string);
             }
         }
@@ -1228,8 +1227,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
      */
     private void R() {
         WindowManager.LayoutParams layoutParams = this.getWindow().getAttributes();
-        float f2 = this.h.g() ? -1.0f : (float) this.h.f() / 255.0f;
-        layoutParams.screenBrightness = f2;
+        layoutParams.screenBrightness = this.h.g() ? -1.0f : (float) this.h.f() / 255.0f;
         this.getWindow().setAttributes(layoutParams);
     }
 
@@ -1264,7 +1262,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
             return;
         } else {
             if (this.Y == null) {
-                com.clilystudio.netbook.util.e.a((Activity) this, (String) "获取章节内容失败,请退出后重试");
+                com.clilystudio.netbook.util.e.a(this, "获取章节内容失败,请退出后重试");
                 return;
             }
             if (bl && !this.Y[0].startsWith("　　")) {
@@ -1337,10 +1335,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
     }
 
     private boolean q() {
-        if (5 == this.L) {
-            return true;
-        }
-        return false;
+        return 5 == this.L;
     }
 
     private void r() {
@@ -1557,10 +1552,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
 
     private boolean w() {
         com.clilystudio.netbook.a_pack.e<String, Void, Boolean> ag2 = this.g.b();
-        if (ag2 == null || ag2.getStatus() == AsyncTask.Status.FINISHED) {
-            return true;
-        }
-        return false;
+        return ag2 == null || ag2.getStatus() == AsyncTask.Status.FINISHED;
     }
 
     private void x() {
@@ -1613,7 +1605,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         if (n2 == null) return;
         {
             if (!n2.f()) {
-                com.clilystudio.netbook.util.e.a((Activity) this, (int) R.string.is_first);
+                com.clilystudio.netbook.util.e.a(this, R.string.is_first);
                 return;
             }
             if (this.i.c()) {
@@ -1829,7 +1821,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         com.clilystudio.netbook.hpay100.a.a.i(this, this.c);
         this.g = new Reader(this.c, this.e, this.d, this.L);
         this.g.a(this.getIntent().getStringExtra("SOURCE_ID"));
-        this.g.a((Map) ((Object) this.getIntent().getSerializableExtra("CHAPTERS_KEY")));
+        this.g.a((Map) this.getIntent().getSerializableExtra("CHAPTERS_KEY"));
         if (bundle != null) {
             this.n = bundle.getInt("SaveSelectedPageIndex", 0);
             this.H = bundle.getBoolean("SaveChangeOrientation");
@@ -1975,7 +1967,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
                     case R.id.reader_ab_more: {
                         ReaderActivity.w(ReaderActivity.this).setVisibility(View.GONE);
                         View view = ReaderActivity.A(ReaderActivity.this).findViewById(R.id.reader_ab_more);
-                        if (a.i()) {
+                        if (com.clilystudio.netbook.hpay100.a.a.i()) {
                             ReaderActivity.a(ReaderActivity.this, view);
                             return;
                         }
@@ -2011,7 +2003,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
                 ReaderActivity.h(ReaderActivity.this).setReadMode(ReaderActivity.g(ReaderActivity.this));
                 ReaderActivity.k(ReaderActivity.this).setTotalHeight(ReaderActivity.i(ReaderActivity.this)[ReaderActivity.j(ReaderActivity.this)].d());
                 if (ReaderActivity.l(ReaderActivity.this).i()) {
-                    ReaderActivity.k(ReaderActivity.this).setText(ReaderActivity.m(ReaderActivity.this).a((Context) ReaderActivity.this));
+                    ReaderActivity.k(ReaderActivity.this).setText(ReaderActivity.m(ReaderActivity.this).a(ReaderActivity.this));
                 } else {
                     ReaderActivity.k(ReaderActivity.this).setText(ReaderActivity.m(ReaderActivity.this).c());
                 }
@@ -2045,10 +2037,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
 
             @Override
             public boolean isViewFromObject(View view, Object object) {
-                if (view == object) {
-                    return true;
-                }
-                return false;
+                return view == object;
             }
         });
         this.q = this.getWindow().getDecorView();
@@ -2095,7 +2084,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
                 }
             }
         };
-        bq2.b(new String[]{this.c});
+        bq2.b(this.c);
         if (com.clilystudio.netbook.am.e() != null) {
             new com.clilystudio.netbook.a_pack.e<Void, Void, ChapterKeysRoot>(){
                 @Override
@@ -2142,7 +2131,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
             var1_1.printStackTrace();
         }
         this.p();
-        i.a(). (this);
+        com.clilystudio.netbook.event.i.a().unregister(this);
         o[] arro = this.b;
         int n2 = arro.length;
         int n3 = 0;
@@ -2152,7 +2141,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
                 return;
             }
             o o2 = arro[n3];
-            i.a().unregister(o2);
+            com.clilystudio.netbook.event.i.a().unregister(o2);
             ++n3;
         } while (true);
     }
@@ -2197,7 +2186,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         }
     }
 
-    @l
+    @Subscribe
     public void onModeChanged(v v2) {
         if (v2.a() == 1) {
             this.finish();
@@ -2221,13 +2210,13 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         if (this.g != null) {
             this.g.c();
         }
-        if (com.clilystudio.netbook.hpay100.a.a.a((Context) this, "key_shelf_sort", n2) != n2) {
+        if (com.clilystudio.netbook.hpay100.a.a.a(this, "key_shelf_sort", n2) != n2) {
             n2 = 0;
         }
         if (n2 != 0 && (bookReadRecord = BookReadRecord.get(this.c)) != null) {
             bookReadRecord.readTime = new Date();
             bookReadRecord.save();
-            i.a().c(new com.clilystudio.netbook.event.g());
+            com.clilystudio.netbook.event.i.a().post(new com.clilystudio.netbook.event.g());
         }
         try {
             LocalBroadcastManager.getInstance(this).unregisterReceiver(this.ae);
@@ -2281,10 +2270,6 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         public bH(Context context) {
             this.a = PreferenceManager.getDefaultSharedPreferences(context);
             this.g();
-        }
-
-        public static boolean a(Context context) {
-            return "xiaomi".equals(Build.BRAND.toLowerCase()) || !(com.clilystudio.netbook.hpay100.a.a.i() && !ViewConfiguration.get(context).hasPermanentMenuKey());
         }
 
         private void g() {

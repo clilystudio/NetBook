@@ -4,9 +4,11 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.widget.SwitchCompat;
 import android.view.View;
+import android.view.ViewConfiguration;
 import android.view.ViewGroup;
 import android.widget.CompoundButton;
 import android.widget.RadioGroup;
@@ -173,7 +175,8 @@ public class ReaderOptionActivity extends BaseActivity {
                     }
                 });
                 SettingItem var15_15 = (SettingItem) this.findViewById(R.id.immersive_container);
-                if (ReaderActivity.bH.a(this)) {
+                boolean hasPermanentMenuKey = "xiaomi".equals(Build.BRAND.toLowerCase()) || !(com.clilystudio.netbook.hpay100.a.a.i() && !ViewConfiguration.get(this).hasPermanentMenuKey());
+                if (hasPermanentMenuKey) {
                     assert var15_15 != null;
                     var15_15.setVisibility(View.GONE);
                     View viewById = this.findViewById(R.id.immersive_divider);
