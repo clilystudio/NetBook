@@ -127,7 +127,7 @@ public class UGCMainActivity extends BaseTabActivity implements ViewPager.OnPage
             popupWindow.getContentView().setOnKeyListener(new View.OnKeyListener() {
                 @Override
                 public boolean onKey(View v, int keyCode, KeyEvent event) {
-                    if (event.getAction() == 0 && keyCode == 82 && event.getRepeatCount() == 0) {
+                    if (event.getAction() == 0 && keyCode == KeyEvent.KEYCODE_MENU && event.getRepeatCount() == 0) {
                         UGCMainActivity.h(UGCMainActivity.this);
                         return true;
                     }
