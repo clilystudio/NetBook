@@ -285,7 +285,7 @@ public class HomeActivity extends HomeParentActivity implements ViewPager.OnPage
                 this.i.getContentView().setOnKeyListener(new View.OnKeyListener() {
                     @Override
                     public boolean onKey(View v, int keyCode, KeyEvent event) {
-                        if (event.getAction() == 0 && keyCode == 82 && event.getRepeatCount() == 0) {
+                        if (event.getAction() == 0 && keyCode == KeyEvent.KEYCODE_MENU && event.getRepeatCount() == 0) {
                             HomeActivity.this.m();
                             return true;
                         }
@@ -708,7 +708,7 @@ public class HomeActivity extends HomeParentActivity implements ViewPager.OnPage
 
     @Override
     public boolean onKeyDown(int n2, KeyEvent keyEvent) {
-        if (n2 == 82 && keyEvent.getRepeatCount() == 0) {
+        if (n2 == KeyEvent.KEYCODE_MENU && keyEvent.getRepeatCount() == 0) {
             this.l();
             return true;
         }

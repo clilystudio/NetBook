@@ -407,122 +407,92 @@ public class ReaderViewPager extends ViewGroup {
         }
     }
 
-    /*
-     * Unable to fully structure code
-     * Enabled aggressive block sorting
-     * Lifted jumps to return sites
-     */
-    private void a(cs var1_1, int var2_2, cs var3_3) {
-        var4_4 = this.mAdapter.getCount();
-        var5_5 = this.e();
-        var6_6 = var5_5 > 0 ? (float) this.mPageMargin / (float) var5_5 : 0.0f;
-        if (var3_3 == null)**GOTO lbl55
-        var24_7 = var3_3.b;
-        if (var24_7 >= var1_1.b)**GOTO lbl13
-        var38_8 = var6_6 + (var3_3.e + var3_3.d);
-        var39_9 = var24_7 + true;
-        var40_10 = var38_8;
-        var41_11 = 0;
-        var42_12 = var39_9;
-        **GOTO lbl21
-        lbl13:
-        // 1 sources:
-        if (var24_7 <= var1_1.b)**GOTO lbl55
-        var25_20 = -1 + this.mItems.size();
-        var26_21 = var3_3.e;
-        var27_22 = var24_7 - true;
-        var28_23 = var25_20;
-        var29_24 = var26_21;
-        var30_25 = var27_22;
-        **GOTO lbl39
-        lbl21:
-        // 2 sources:
-        while (var42_12 <= var1_1.b && var41_11 < this.mItems.size()) {
-            var43_13 = this.mItems.get(var41_11);
-            while (var42_12 > var43_13.b && var41_11 < -1 + this.mItems.size()) {
-                var43_13 = this.mItems.get(++var41_11);
+    private void a(cs p1, int p2, cs p3) {
+        int var4_4 = this.mAdapter.getCount();
+        int var5_5 = this.e();
+        float var6_6 = var5_5 > 0 ? (float) this.mPageMargin / (float) var5_5 : 0.0f;
+        if (p3 != null) {
+            if (p3.b >= p1.b) {
+                float var38_8 = var6_6 + p3.e + p3.d;
+                int var39_9 = p3.b + 1;
+                float var40_10 = var38_8;
+                int var41_11 = 0;
+                int var42_12 = var39_9;
+                while (var42_12 <= p1.b && var41_11 < this.mItems.size()) {
+                    cs var43_13 = this.mItems.get(var41_11);
+                    while (var42_12 > var43_13.b && var41_11 < this.mItems.size() - 1) {
+                        var43_13 = this.mItems.get(++var41_11);
+                    }
+                    int var44_14 = var42_12;
+                    float var45_15 = var40_10;
+                    for (int var46_16 = var44_14; var46_16 < var43_13.b; ++var46_16) {
+                        var45_15 = var45_15 + var6_6 + this.mAdapter.getPageWidth(var46_16);
+                    }
+                    var43_13.e = var45_15;
+                    var40_10 = var45_15 + var6_6 + var43_13.d;
+                    var42_12 = var43_13.b + 1;
+                }
+            } else if (p3.b > p1.b) {
+                int var25_20 =this.mItems.size() - 1;
+                float var26_21 = p3.e;
+                int var27_22 = p3.b - 1;
+                int var28_23 = var25_20;
+                float var29_24 = var26_21;
+                int var30_25 = var27_22;
+                while (var30_25 >= p1.b && var28_23 >= 0) {
+                    cs var31_32 = this.mItems.get(var28_23);
+                    while (var30_25 < var31_32.b && var28_23 > 0) {
+                        var31_32 = this.mItems.get(--var28_23);
+                    }
+                    int var32_26 = var30_25;
+                    float var33_27 = var29_24;
+                    for (int var34_28 = var32_26; var34_28 > var31_32.b; --var34_28) {
+                         var33_27 = var33_27 - (var6_6 + this.mAdapter.getPageWidth(var34_28));
+                    }
+                    var31_32.e = var33_27 - (var6_6 + var31_32.d);
+                    var29_24 = var31_32.e;
+                    var30_25 = var31_32.b - 1;
+                }
             }
-            var44_14 = var42_12;
-            var45_15 = var40_10;
-            for (var46_16 = var44_14; var46_16 < var43_13.b; ++var46_16) {
-                var49_19 = var45_15 + (var6_6 + this.mAdapter.getPageWidth((int) var46_16));
-                var45_15 = var49_19;
-            }
-            var43_13.e = var45_15;
-            var47_17 = var45_15 + (var6_6 + var43_13.d);
-            var48_18 = var46_16 + true;
-            var40_10 = var47_17;
-            var42_12 = var48_18;
         }
-        **GOTO lbl55
-        lbl39:
-        // 2 sources:
-        while (var30_25 >= var1_1.b && var28_23 >= 0) {
-            var31_32 = this.mItems.get(var28_23);
-            while (var30_25 < var31_32.b && var28_23 > 0) {
-                var31_32 = this.mItems.get(--var28_23);
-            }
-            var32_26 = var30_25;
-            var33_27 = var29_24;
-            for (var34_28 = var32_26; var34_28 > var31_32.b; --var34_28) {
-                var37_31 = var33_27 - (var6_6 + this.mAdapter.getPageWidth((int) var34_28));
-                var33_27 = var37_31;
-            }
-            var31_32.e = var35_29 = var33_27 - (var6_6 + var31_32.d);
-            var36_30 = var34_28 - true;
-            var29_24 = var35_29;
-            var30_25 = var36_30;
-        }
-        lbl55:
-        // 4 sources:
-        var7_33 = this.mItems.size();
-        var8_34 = var1_1.e;
-        var9_35 = -1 + var1_1.b;
-        var10_36 = var1_1.b == false ? var1_1.e : -3.4028235E38f;
-        this.mFirstOffset = var10_36;
-        var11_37 = var1_1.b == var4_4 - 1 ? var1_1.e + var1_1.d - 1.0f : Float.MAX_VALUE;
-        this.mLastOffset = var11_37;
-        var12_38 = var2_2 - 1;
+        int var7_33 = this.mItems.size();
+        float var8_34 = p1.e;
+        int var9_35 = p1.b - 1;
+        this.mFirstOffset = p1.b == 0 ? p1.e : -1 * Float.MIN_VALUE;
+        this.mLastOffset =p1.b == var4_4 - 1 ? p1.e + p1.d - 1.0f : Float.MAX_VALUE;
+        int var12_38 = p2 - 1;
         while (var12_38 >= 0) {
-            var20_39 = this.mItems.get(var12_38);
+            cs var20_39 = this.mItems.get(var12_38);
             while (var9_35 > var20_39.b) {
-                var22_41 = this.mAdapter;
-                var23_42 = var9_35 - 1;
-                var8_34 -= var6_6 + var22_41.getPageWidth(var9_35);
-                var9_35 = var23_42;
+                var8_34 -= var6_6 + this.mAdapter.getPageWidth(var9_35);
+                var9_35--;
             }
-            var20_39.e = var8_34 -= var6_6 + var20_39.d;
-            if (var20_39.b == false) {
+            var8_34 = var8_34 - (var6_6 + var20_39.d);
+            var20_39.e = var8_34;
+            if (var20_39.b == 0) {
                 this.mFirstOffset = var8_34;
             }
-            var21_40 = var12_38 - 1;
-            --var9_35;
-            var12_38 = var21_40;
+            var9_35--;
+            var12_38--;
         }
-        var13_43 = var6_6 + (var1_1.e + var1_1.d);
-        var14_44 = true + var1_1.b;
-        var15_45 = var2_2 + 1;
-        do {
-            if (var15_45 >= var7_33) {
-                this.mNeedCalculatePageOffsets = false;
-                return;
-            }
-            var16_46 = this.mItems.get(var15_45);
+        float var13_43 = var6_6 + p1.e + p1.d;
+        int var14_44 = p1.b + 1;
+        int var15_45 = p2 + 1;
+        while (var15_45 < var7_33) {
+            cs var16_46 = this.mItems.get(var15_45);
             while (var14_44 < var16_46.b) {
-                var18_48 = this.mAdapter;
-                var19_49 = var14_44 + 1;
-                var13_43 += var6_6 + var18_48.getPageWidth(var14_44);
-                var14_44 = var19_49;
+                var13_43 += var6_6 + this.mAdapter.getPageWidth(var14_44);
+                var14_44++;
             }
             if (var16_46.b == var4_4 - 1) {
                 this.mLastOffset = var13_43 + var16_46.d - 1.0f;
             }
             var16_46.e = var13_43;
             var13_43 += var6_6 + var16_46.d;
-            var17_47 = var15_45 + 1;
-            ++var14_44;
-            var15_45 = var17_47;
-        } while (true);
+            var14_44++;
+            var15_45++;
+        }
+        this.mNeedCalculatePageOffsets = false;
     }
 
     /*
@@ -719,133 +689,118 @@ public class ReaderViewPager extends ViewGroup {
      * Enabled aggressive exception aggregation
      * Lifted jumps to return sites
      */
-    private void c(int var1_1) {
-        block20:
-        {
-            if (this.mCurItem != var1_1) {
-                var53_2 = this.mCurItem < var1_1 ? 66 : 17;
-                var54_3 = this.d(this.mCurItem);
-                this.mCurItem = var1_1;
-                var3_4 = var54_3;
-                var2_5 = var53_2;
-            } else {
-                var2_5 = 2;
-                var3_4 = null;
-            }
-            if (this.mAdapter == null) {
-                this.f();
-                return;
-            }
-            if (this.mPopulatePending) {
-                this.f();
-                return;
-            }
-            if (this.getWindowToken() == null) return;
-            this.mAdapter.startUpdate(this);
-            var4_6 = this.mOffscreenPageLimit;
-            var5_7 = Math.max(0, this.mCurItem - var4_6);
-            var6_8 = this.mAdapter.getCount();
-            var7_9 = Math.min(var6_8 - 1, var4_6 + this.mCurItem);
-            if (var6_8 != this.mExpectedAdapterCount) {
-                try {
-                    var51_11 = var52_10 = this.getResources().getResourceName(this.getId());
-                    throw new IllegalStateException("The application's PagerAdapter changed the adapter's contents without calling PagerAdapter#notifyDataSetChanged! Expected adapter item count: " + this.mExpectedAdapterCount + ", found: " + var6_8 + " Pager id: " + var51_11 + " Pager class: " + this.getClass() + " Problematic adapter: " + this.mAdapter.getClass());
-                } catch (Resources.NotFoundException var50_12) {
-                    var51_11 = Integer.toHexString(this.getId());
-                    throw new IllegalStateException("The application's PagerAdapter changed the adapter's contents without calling PagerAdapter#notifyDataSetChanged! Expected adapter item count: " + this.mExpectedAdapterCount + ", found: " + var6_8 + " Pager id: " + var51_11 + " Pager class: " + this.getClass() + " Problematic adapter: " + this.mAdapter.getClass());
-                }
-            }
-            for (var8_13 = 0; var8_13 < this.mItems.size(); ++var8_13) {
-                var9_14 = this.mItems.get(var8_13);
-                if (var9_14.b < this.mCurItem) continue;
-                if (var9_14.b != this.mCurItem) break;
-                break block20;
-            }
-            var9_14 = null;
+    private void c(int p1) {
+        if (this.mCurItem != p1) {
+            var2_5 = this.mCurItem < p1 ? 66 : 17;
+            var3_4 = this.d(this.mCurItem);
+            this.mCurItem = p1;
+        } else {
+            var2_5 = 2;
+            var3_4 = null;
         }
-        var10_15 = var9_14 == null && var6_8 > 0 ? this.a(this.mCurItem, var8_13) : var9_14;
-        if (var10_15 == null)**GOTO lbl104
-        var24_16 = var8_13 - 1;
-        var25_17 = var24_16 >= 0 ? this.mItems.get(var24_16) : null;
-        var26_18 = 2.0f - var10_15.d + (float) this.getPaddingLeft() / (float) this.e();
-        var27_19 = -1 + this.mCurItem;
-        var28_20 = 0.0f;
-        var30_22 = var8_13;
-        var31_23 = var24_16;
-        for (var29_21 = var27_19; var29_21 >= 0; --var29_21) {
-            if (var28_20 >= var26_18 && var29_21 < var5_7) {
-                if (var25_17 == null) break;
-                if (var29_21 != var25_17.b || var25_17.c) continue;
-                this.mItems.remove(var31_23);
-                this.mAdapter.destroyItem(this, var29_21, (Object) var25_17.a);
-                --var30_22;
-                if (--var31_23 >= 0) {
-                    var25_17 = this.mItems.get(var31_23);
+        if (this.mAdapter == null) {
+            this.f();
+            return;
+        }
+        if (this.mPopulatePending) {
+            this.f();
+            return;
+        }
+        if (this.getWindowToken() == null) return;
+        this.mAdapter.startUpdate(this);
+        int var5_7 = Math.max(0, this.mCurItem - this.mOffscreenPageLimit);
+        int var6_8 = this.mAdapter.getCount();
+        int var7_9 = Math.min(var6_8 - 1, this.mOffscreenPageLimit + this.mCurItem);
+        assert (var6_8 == this.mExpectedAdapterCount);
+        cs var9_141 = null;
+        int var8_13 = 0;
+        while (var8_13 < this.mItems.size()) {
+            cs var9_14 = this.mItems.get(var8_13);
+            if (var9_14.b >= this.mCurItem) {
+                if (var9_14.b == this.mCurItem) {
+                    var9_141 = var9_14;
+                }
+                break;
+            } else {
+                var8_13++;
+            }
+        }
+        cs var10_15 = var9_141 == null && var6_8 > 0 ? this.a(this.mCurItem, var8_13) : var9_141;
+        if (var10_15 != null) {
+            int var24_16 = var8_13 - 1;
+            cs var25_17 = var24_16 >= 0 ? this.mItems.get(var24_16) : null;
+            float var26_18 = 2.0f - var10_15.d + (float) this.getPaddingLeft() / (float) this.e();
+            float var28_20 = 0.0f;
+            int var30_22 = var8_13;
+            int var31_23 = var24_16;
+            for (int var29_21 = this.mCurItem - 1; var29_21 >= 0; --var29_21) {
+                if (var28_20 >= var26_18 && var29_21 < var5_7) {
+                    if (var25_17 == null) break;
+                    if (var29_21 != var25_17.b || var25_17.c) continue;
+                    this.mItems.remove(var31_23);
+                    this.mAdapter.destroyItem(this, var29_21, (Object) var25_17.a);
+                    --var30_22;
+                    if (--var31_23 >= 0) {
+                        var25_17 = this.mItems.get(var31_23);
+                        continue;
+                    }
+                    var25_17 = null;
                     continue;
                 }
-                var25_17 = null;
-                continue;
-            }
-            if (var25_17 != null && var29_21 == var25_17.b) {
-                var28_20 += var25_17.d;
-                if (--var31_23 >= 0) {
-                    var25_17 = this.mItems.get(var31_23);
+                if (var25_17 != null && var29_21 == var25_17.b) {
+                    var28_20 += var25_17.d;
+                    if (--var31_23 >= 0) {
+                        var25_17 = this.mItems.get(var31_23);
+                        continue;
+                    }
+                    var25_17 = null;
                     continue;
                 }
-                var25_17 = null;
-                continue;
+                var28_20 += this.a((int) var29_21, (int) (var31_23 + 1)).d;
+                ++var30_22;
+                var25_17 = var31_23 >= 0 ? this.mItems.get(var31_23) : null;
             }
-            var28_20 += this.a((int) var29_21, (int) (var31_23 + 1)).d;
-            ++var30_22;
-            var25_17 = var31_23 >= 0 ? this.mItems.get(var31_23) : null;
-        }
-        var32_24 = var10_15.d;
-        var33_25 = var30_22 + 1;
-        if (var32_24 >= 2.0f)**GOTO lbl103
-        var34_26 = var33_25 < this.mItems.size() ? this.mItems.get(var33_25) : null;
-        var35_27 = 2.0f + (float) this.getPaddingRight() / (float) this.e();
-        for (var36_28 = 1 + this.mCurItem; var36_28 < var6_8; ++var36_28) {
-            if (var32_24 < var35_27 || var36_28 <= var7_9)**GOTO lbl84
-            if (var34_26 == null) break;
-            if (var36_28 != var34_26.b || var34_26.c)**GOTO lbl96
-            this.mItems.remove(var33_25);
-            this.mAdapter.destroyItem(this, var36_28, (Object) var34_26.a);
-            var47_38 = var33_25 < this.mItems.size() ? this.mItems.get(var33_25) : null;
-            var48_39 = var32_24;
-            var40_32 = var47_38;
-            var41_33 = var48_39;
-            **GOTO lbl99
-            lbl84:
-            // 1 sources:
-            if (var34_26 != null && var36_28 == var34_26.b) {
-                var43_35 = var32_24 + var34_26.d;
-                var44_36 = ++var33_25 < this.mItems.size() ? this.mItems.get(var33_25) : null;
-                var40_32 = var44_36;
-                var41_33 = var43_35;
-            } else {
-                var37_29 = this.a(var36_28, var33_25);
-                var38_30 = var32_24 + var37_29.d;
-                var39_31 = ++var33_25 < this.mItems.size() ? this.mItems.get(var33_25) : null;
-                var40_32 = var39_31;
-                var41_33 = var38_30;
+            float var32_24 = var10_15.d;
+            int var33_25 = var30_22 + 1;
+            if (var32_24 < 2.0f) {
+                cs var34_26 = var33_25 < this.mItems.size() ? this.mItems.get(var33_25) : null;
+                float var35_27 = 2.0f + (float) this.getPaddingRight() / (float) this.e();
+                for (int var36_28 = 1 + this.mCurItem; var36_28 < var6_8; ++var36_28) {
+                    if (var32_24 >= var35_27 && var36_28 > var7_9) {
+                        if (var34_26 == null) break;
+                        if (var36_28 != var34_26.b || var34_26.c) {
+                            var45_37 = var32_24;
+                            var40_32 = var34_26;
+                            var41_33 = var45_37;
+                        } else {
+                            this.mItems.remove(var33_25);
+                            this.mAdapter.destroyItem(this, var36_28, (Object) var34_26.a);
+                            var47_38 = var33_25 < this.mItems.size() ? this.mItems.get(var33_25) : null;
+                            var48_39 = var32_24;
+                            var40_32 = var47_38;
+                            var41_33 = var48_39;
+                        }
+                    } else {
+                        if (var34_26 != null && var36_28 == var34_26.b) {
+                            var43_35 = var32_24 + var34_26.d;
+                            var44_36 = ++var33_25 < this.mItems.size() ? this.mItems.get(var33_25) : null;
+                            var40_32 = var44_36;
+                            var41_33 = var43_35;
+                        } else {
+                            var37_29 = this.a(var36_28, var33_25);
+                            var38_30 = var32_24 + var37_29.d;
+                            var39_31 = ++var33_25 < this.mItems.size() ? this.mItems.get(var33_25) : null;
+                            var40_32 = var39_31;
+                            var41_33 = var38_30;
+                        }
+                    }
+                    var42_34 = var41_33;
+                    var34_26 = var40_32;
+                    var32_24 = var42_34;
+                }
             }
-            **GOTO lbl99
-            lbl96:
-            // 1 sources:
-            var45_37 = var32_24;
-            var40_32 = var34_26;
-            var41_33 = var45_37;
-            lbl99:
-            // 4 sources:
-            var42_34 = var41_33;
-            var34_26 = var40_32;
-            var32_24 = var42_34;
+            this.a(var10_15, var30_22, var3_4);
         }
-        lbl103:
-        // 3 sources:
-        this.a(var10_15, var30_22, var3_4);
-        lbl104:
-        // 2 sources:
         var11_40 = this.mAdapter;
         var12_41 = this.mCurItem;
         var13_42 = var10_15 != null ? var10_15.a : null;

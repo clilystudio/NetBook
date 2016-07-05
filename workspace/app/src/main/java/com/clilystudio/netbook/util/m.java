@@ -5,12 +5,10 @@ import android.content.Context;
 import android.content.Intent;
 
 import com.clilystudio.netbook.R;
-import com.clilystudio.netbook.a_pack.a;
 import com.clilystudio.netbook.a_pack.c;
 import com.clilystudio.netbook.am;
 
 import com.clilystudio.netbook.MyApplication;
-import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.db.BookReadRecord;
 import com.clilystudio.netbook.db.SourceRecord;
 import com.clilystudio.netbook.event.i;
@@ -118,14 +116,14 @@ public final class m {
                 this.f = this.d.getTocId();
             }
             if (am.e() != null) {
-                HashMap hashMap = a.M(this.b);
+                HashMap hashMap = com.clilystudio.netbook.hpay100.a.a.M(this.b);
                 if (hashMap == null) {
                     hashMap = new HashMap();
                 }
-                this.a(ReaderActivity.a(this.a, this.b, this.c, this.f, null, false, hashMap, this.e));
+                this.a(ReaderActivity.a(this.a, this.b, this.c, this.f, hashMap, this.e));
                 return;
             }
-            this.a(ReaderActivity.a(this.a, this.b, this.c, this.f, null, false, this.e));
+            this.a(ReaderActivity.a(this.a, this.b, this.c, this.f, this.e));
             return;
         }
         String string = a.g(n2);
