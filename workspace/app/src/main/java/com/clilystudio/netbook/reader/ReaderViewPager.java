@@ -943,6 +943,51 @@ public class ReaderViewPager extends ViewGroup {
      * Lifted jumps to return sites
      */
     private boolean f(int var1_1) {
+        View var2_2 = this.findFocus();
+        View var3_3 = null;
+        if (var2_2 != null && var2_2 != this) {
+            ViewParent var10_8 = var2_2.getParent();
+            boolean var11_9 = false;
+            while (var10_8 instanceof ViewGroup) {
+                if (var10_8 == this) {
+                    var11_9 = true;
+                    break;
+                }
+                var10_8 = var10_8.getParent();
+            }
+
+            if (var11_9) {
+                var3_3 = var2_2;
+            } else {
+                StringBuilder var12_10 = new StringBuilder();
+                var12_10.append(var2_2.getClass().getSimpleName());
+                ViewParent var14_11 = var2_2.getParent();
+                while (var14_11 instanceof ViewGroup) {
+                    var12_10.append(" => ").append(var14_11.getClass().getSimpleName());
+                    var14_11 = var14_11.getParent();
+                }
+                Log.e("ViewPager", "arrowScroll tried to find focus based on non-child current focused view " + var12_10.toString());
+            }
+        }
+        View var4_4 = FocusFinder.getInstance().findNextFocus(this, var3_3, var1_1);
+        boolean var5_7 = false;
+        if (var4_4 == null || var4_4 == var3_3) {
+            if (var1_1 == 17 || var1_1 == 1) {
+                var5_7 = this.i();
+            } else if (var1_1 == 66 || var1_1 == 2) {
+                var5_7 = this.j();
+            }
+        } else if (var1_1 != 17) {
+            if (var1_1 == 66) {
+                var5_7 = var3_3 != null && this.a((Rect) this.mTempRect, (View) var4_4).left <= this.a((Rect) this.mTempRect, (View) var3_3).left ? this.j() : var4_4.requestFocus();
+            }
+        } else {
+            var5_7 = var3_3 != null && this.a((Rect) this.mTempRect, (View) var4_4).left >= this.a((Rect) this.mTempRect, (View) var3_3).left ? this.i() : var4_4.requestFocus();
+        }
+        if (var5_7) {
+            this.playSoundEffect(SoundEffectConstants.getContantForFocusDirection(var1_1));
+        }
+        return var5_7;
     }
 
     /*
