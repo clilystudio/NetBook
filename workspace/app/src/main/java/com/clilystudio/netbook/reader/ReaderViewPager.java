@@ -1,7 +1,6 @@
 package com.clilystudio.netbook.reader;
 
 import android.content.Context;
-import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.database.DataSetObserver;
 import android.graphics.Canvas;
@@ -433,7 +432,7 @@ public class ReaderViewPager extends ViewGroup {
                     var42_12 = var43_13.b + 1;
                 }
             } else if (p3.b > p1.b) {
-                int var25_20 =this.mItems.size() - 1;
+                int var25_20 = this.mItems.size() - 1;
                 float var26_21 = p3.e;
                 int var27_22 = p3.b - 1;
                 int var28_23 = var25_20;
@@ -447,7 +446,7 @@ public class ReaderViewPager extends ViewGroup {
                     int var32_26 = var30_25;
                     float var33_27 = var29_24;
                     for (int var34_28 = var32_26; var34_28 > var31_32.b; --var34_28) {
-                         var33_27 = var33_27 - (var6_6 + this.mAdapter.getPageWidth(var34_28));
+                        var33_27 = var33_27 - (var6_6 + this.mAdapter.getPageWidth(var34_28));
                     }
                     var31_32.e = var33_27 - (var6_6 + var31_32.d);
                     var29_24 = var31_32.e;
@@ -459,7 +458,7 @@ public class ReaderViewPager extends ViewGroup {
         float var8_34 = p1.e;
         int var9_35 = p1.b - 1;
         this.mFirstOffset = p1.b == 0 ? p1.e : -1 * Float.MIN_VALUE;
-        this.mLastOffset =p1.b == var4_4 - 1 ? p1.e + p1.d - 1.0f : Float.MAX_VALUE;
+        this.mLastOffset = p1.b == var4_4 - 1 ? p1.e + p1.d - 1.0f : Float.MAX_VALUE;
         int var12_38 = p2 - 1;
         while (var12_38 >= 0) {
             cs var20_39 = this.mItems.get(var12_38);
@@ -544,7 +543,7 @@ public class ReaderViewPager extends ViewGroup {
         float f6 = (float) n * this.mLastOffset;
         cs cs2 = this.mItems.get(0);
         cs cs3 = this.mItems.get(-1 + this.mItems.size());
-        if (cs2.b != false) {
+        if (cs2.b != 0) {
             f5 = cs2.e * (float) n;
             bl = false;
         } else {
@@ -682,21 +681,13 @@ public class ReaderViewPager extends ViewGroup {
         }
     }
 
-    /*
-     * Unable to fully structure code
-     * Enabled aggressive block sorting
-     * Enabled unnecessary exception pruning
-     * Enabled aggressive exception aggregation
-     * Lifted jumps to return sites
-     */
     private void c(int p1) {
+        int var2_5 = 2;
+        cs var3_4 = null;
         if (this.mCurItem != p1) {
             var2_5 = this.mCurItem < p1 ? 66 : 17;
             var3_4 = this.d(this.mCurItem);
             this.mCurItem = p1;
-        } else {
-            var2_5 = 2;
-            var3_4 = null;
         }
         if (this.mAdapter == null) {
             this.f();
@@ -768,68 +759,55 @@ public class ReaderViewPager extends ViewGroup {
                 for (int var36_28 = 1 + this.mCurItem; var36_28 < var6_8; ++var36_28) {
                     if (var32_24 >= var35_27 && var36_28 > var7_9) {
                         if (var34_26 == null) break;
-                        if (var36_28 != var34_26.b || var34_26.c) {
-                            var45_37 = var32_24;
-                            var40_32 = var34_26;
-                            var41_33 = var45_37;
-                        } else {
+                        if (var36_28 == var34_26.b && !var34_26.c) {
                             this.mItems.remove(var33_25);
-                            this.mAdapter.destroyItem(this, var36_28, (Object) var34_26.a);
-                            var47_38 = var33_25 < this.mItems.size() ? this.mItems.get(var33_25) : null;
-                            var48_39 = var32_24;
-                            var40_32 = var47_38;
-                            var41_33 = var48_39;
+                            this.mAdapter.destroyItem(this, var36_28, var34_26.a);
+                            var34_26 = var33_25 < this.mItems.size() ? this.mItems.get(var33_25) : null;
                         }
                     } else {
                         if (var34_26 != null && var36_28 == var34_26.b) {
-                            var43_35 = var32_24 + var34_26.d;
-                            var44_36 = ++var33_25 < this.mItems.size() ? this.mItems.get(var33_25) : null;
-                            var40_32 = var44_36;
-                            var41_33 = var43_35;
+                            var34_26 = var33_25 < this.mItems.size() ? this.mItems.get(var33_25) : null;
+                            var32_24 = var32_24 + var34_26.d;
+                            var33_25++;
                         } else {
-                            var37_29 = this.a(var36_28, var33_25);
-                            var38_30 = var32_24 + var37_29.d;
-                            var39_31 = ++var33_25 < this.mItems.size() ? this.mItems.get(var33_25) : null;
-                            var40_32 = var39_31;
-                            var41_33 = var38_30;
+                            cs var37_29 = this.a(var36_28, var33_25);
+                            var34_26 = var33_25 < this.mItems.size() ? this.mItems.get(var33_25) : null;
+                            var32_24 = var32_24 + var37_29.d;
+                            var33_25++;
                         }
                     }
-                    var42_34 = var41_33;
-                    var34_26 = var40_32;
-                    var32_24 = var42_34;
                 }
             }
             this.a(var10_15, var30_22, var3_4);
         }
-        var11_40 = this.mAdapter;
-        var12_41 = this.mCurItem;
-        var13_42 = var10_15 != null ? var10_15.a : null;
-        var11_40.setPrimaryItem(this, var12_41, (Object) var13_42);
+        this.mAdapter.setPrimaryItem(this, this.mCurItem, var10_15 != null ? var10_15.a : null);
         this.mAdapter.finishUpdate(this);
-        var14_43 = this.getChildCount();
-        for (var15_44 = 0; var15_44 < var14_43; ++var15_44) {
-            var21_45 = this.getChildAt(var15_44);
-            var22_46 = (ct) var21_45.getLayoutParams();
+        for (int var15_44 = 0; var15_44 < this.getChildCount(); ++var15_44) {
+            View var21_45 = this.getChildAt(var15_44);
+            ct var22_46 = (ct) var21_45.getLayoutParams();
             var22_46.f = var15_44;
-            if (var22_46.a != false || var22_46.c != 0.0f || (var23_47 = this.a(var21_45)) == null) continue;
-            var22_46.c = var23_47.d;
-            var22_46.e = var23_47.b;
+            if (!var22_46.a && var22_46.c == 0.0f) {
+                cs var23_47 = this.a(var21_45);
+                if (var23_47 != null) {
+                    var22_46.c = var23_47.d;
+                    var22_46.e = var23_47.b;
+                }
+            }
         }
         this.f();
-        if (this.hasFocus() == false) return;
-        var16_48 = this.findFocus();
-        var17_49 = var16_48 != null ? this.b(var16_48) : null;
-        if (var17_49 != null) {
-            if (var17_49.b == this.mCurItem) return;
-        }
-        var18_50 = 0;
-        while (var18_50 < this.getChildCount()) {
-            var19_51 = this.getChildAt(var18_50);
-            var20_52 = this.a(var19_51);
-            if (var20_52 != null && var20_52.b == this.mCurItem) {
-                if (var19_51.requestFocus(var2_5) != false) return;
+        if (this.hasFocus()) {
+            View var16_48 = this.findFocus();
+            cs var17_49 = var16_48 != null ? this.b(var16_48) : null;
+            if (var17_49 != null) {
+                if (var17_49.b == this.mCurItem) return;
             }
-            ++var18_50;
+            for (int var18_50 = 0; var18_50 < this.getChildCount(); var18_50++) {
+                View var19_51 = this.getChildAt(var18_50);
+                cs var20_52 = this.a(var19_51);
+                if (var20_52 != null && var20_52.b == this.mCurItem) {
+                    if (var19_51.requestFocus(var2_5)) return;
+                }
+            }
         }
     }
 
