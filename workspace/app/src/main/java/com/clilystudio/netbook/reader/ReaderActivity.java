@@ -43,6 +43,7 @@ import com.clilystudio.netbook.model.ChapterLink;
 import com.clilystudio.netbook.model.TopicCount;
 import com.clilystudio.netbook.ui.BaseReadSlmActivity;
 import com.clilystudio.netbook.ui.BookInfoActivity;
+import com.clilystudio.netbook.util.ae;
 import com.clilystudio.netbook.util.k;
 import com.clilystudio.netbook.widget.ThemeLoadingView;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
@@ -808,9 +809,6 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
      * Lifted jumps to return sites
      */
     private void B() {
-
-
-        var1_1 = 1;
         if (this.H) {
             this.j.a(this.g);
         }
@@ -849,80 +847,54 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
                 }
             }
         });
-        String var2_2 = MyApplication.a().g();
-        if (this.c.equals(var2_2)) {
-            BookReadRecord var3_3 = BookReadRecord.getOnShelf(this.c);
-            if (var3_3 != null && this.g != null) {
-                int var5_5 = var3_3.getTocIndex();
-                String var6_6 = var3_3.getChapterTitle();
-                int var4_4 = this.g.g();
-                if (var5_5 <= var4_4) {
-                    var4_4 = var5_5;
+        if (this.c.equals(MyApplication.a().g())) {
+            int i = -1;
+            BookReadRecord bookReadRecord = BookReadRecord.getOnShelf(this.c);
+            if (bookReadRecord != null && this.g != null) {
+                int tocIndex = bookReadRecord.getTocIndex();
+                String chapterTitle = bookReadRecord.getChapterTitle();
+                i = this.g.g();
+                if (tocIndex <= i) {
+                    i = tocIndex;
                 }
-                com.clilystudio.netbook.util.ae var7_7 = new com.clilystudio.netbook.util.ae();
-                if (this.a(var7_7, var6_6, var4_4)) {
-                    int var10_10 = 1;
-                    for (int var9_9 = 0; var9_9 < 20; ++var9_9) {
-                        if (var10_10 == 0) {
-                             var11_11 = var5_5 - var8_8;
-                            if (this.a(var7_7, var6_6, var11_11)) {
-                                var4_4 = var11_11;
+                com.clilystudio.netbook.util.ae ae2 = new ae();
+                if (!this.a(ae2, chapterTitle, i)) {
+                    i = 1;
+                    for (int i1 = 0; i1 < 20; i1++) {
+                        if (i1 % 2 == 1) {
+                            if (this.a(ae2, chapterTitle, tocIndex - i)) {
+                                i = tocIndex - i;
+                                break;
                             }
-                             **GOTO lbl -1000
-                            lbl55:
-                            // 1 sources:
-                            ++var8_8;
-                            var10_10 = var1_1;
+                            i++;
+                        } else {
+                            if (this.a(ae2, chapterTitle, tocIndex + i)) {
+                                i = tocIndex + i;
+                                break;
+                            }
                         }
-                        var12_12 = var5_5 + var8_8;
-                        if (!this.a(var7_7, var6_6, var12_12))**GOTO lbl49
-                        var4_4 = var12_12;
-                        **GOTO lbl -1000
-                        lbl49:
-                        // 1 sources:
-                        var10_10 = 0;
-                        continue;
-                       }
-                    var4_4 = -1;
-                } else lbl - 1000: // 5 sources:
-                {
-                    do {
-                        if (var4_4 != -1) {
-                            this.g.a(var4_4, 0);
-                        }
-                        MyApplication.a().c(null);
-                        lbl25:
-                        // 2 sources:
                     }
                 }
-                var4_4 = -1;
-                **GOTO lbl -1000
-                MyApplication.a().a(this.g);
-                if (this.q() || com.clilystudio.netbook.hpay100.a.a.h(this.L)) {
-                    if (this.q()) {
-                        if (MixTocRecord.get(this.e) == null) {
-                            var1_1 = 0;
-                        }
-                    } else if (TocReadRecord.get(this.e) == null) {
-                        var1_1 = 0;
-                    }
-                    if (var1_1 != 0) {
-                        this.g();
-                        return;
-                    }
-                    this.c(0);
-                    return;
-                }
-                if (this.I && !this.H) {
-                    this.D();
-                    return;
-                }
-                this.g();
-                return;
-                break;
-            } while (true) ;
+            }
+            if (i != -1) {
+                this.g.a(i, 0);
+            }
+            MyApplication.a().c(null);
         }
-         **while (true)
+        MyApplication.a().a(this.g);
+        if (!this.q() && !com.clilystudio.netbook.hpay100.a.a.h(this.L)) {
+            if (!this.I || this.H) {
+                this.g();
+            } else {
+                this.D();
+            }
+        } else {
+            if ((!this.q() && TocReadRecord.get(this.e) == null) || MixTocRecord.get(this.e) == null) {
+                this.c(0);
+            } else {
+                this.g();
+            }
+        }
     }
 
     private void C() {
