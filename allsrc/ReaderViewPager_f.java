@@ -4,51 +4,45 @@
     v4 = 0x1;
     v3 = 0x0;
     v2 = this.findFocus();
-    if (v2 != p0) {
-		if (v2 != 0) {
+	v0 = v1;
+    if (v2 != p0 && v2 != 0) {
+		v0 = v2.getParent();
+		instance-of v5, v0, Landroid/view/ViewGroup;
+		v01 = v3;
+		while (v0 instance-of ViewGroup) {
+			if (v0 == p0) {
+				v0 = v4;
+				break;
+			}
+			v0 = v0.getParent();
+		}
+		v0 = v01;
+		if (v0 != 0) {
+			v0 = v2;
+		} else {
+			v5 = new StringBuilder();
+			v5.<init>();
+			v0 = v2.getClass();
+			v0 = v0.getSimpleName();
+			v5.append(v0);
 			v0 = v2.getParent();
-			instance-of v5, v0, Landroid/view/ViewGroup;
-			v01 = v3;
 			while (v0 instance-of ViewGroup) {
-				if (v0 == p0) {
-					v0 = v4;
-					break;
-				}
+				v2 = " => ";
+				v2 = v5.append(v2);
+				v6 = v0.getClass();
+				v6 = v6.getSimpleName();
+				v2.append(v6);
 				v0 = v0.getParent();
 			}
-			v0 = v01;
-			if (v0 != 0) {
-				v0 = v2;
-			} else {
-				v5 = new StringBuilder();
-				v5.<init>();
-				v0 = v2.getClass();
-				v0 = v0.getSimpleName();
-				v5.append(v0);
-				v0 = v2.getParent();
-				while (v0 instance-of ViewGroup) {
-					v2 = " => ";
-					v2 = v5.append(v2);
-					v6 = v0.getClass();
-					v6 = v6.getSimpleName();
-					v2.append(v6);
-					v0 = v0.getParent();
-				}
-				v0 = "ViewPager";
-				v2 = new StringBuilder();
-				v6 = "arrowScroll tried to find focus based on non-child current focused view ";
-				v2.<init>(v6);
-				v5 = v5.toString();
-				v2 = v2.append(v5);
-				v2 = v2.toString();
-				Landroid/util/Log.e(v0, v2);
-				v0 = v1;
-			}
-		} else {
-			v0 = v2;
+			v0 = "ViewPager";
+			v2 = new StringBuilder();
+			v6 = "arrowScroll tried to find focus based on non-child current focused view ";
+			v2.<init>(v6);
+			v5 = v5.toString();
+			v2 = v2.append(v5);
+			v2 = v2.toString();
+			Landroid/util/Log.e(v0, v2);
 		}
-    } else {
-		v0 = v1;
 	}
     v1 = invoke-static {}, Landroid/view/FocusFinder;->getInstance()Landroid/view/FocusFinder;
     v1 = v1.findNextFocus(p0, v0, p1);
