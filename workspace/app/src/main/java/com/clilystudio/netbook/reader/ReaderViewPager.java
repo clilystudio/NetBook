@@ -1065,92 +1065,55 @@ public class ReaderViewPager extends ViewGroup {
         return false;
     }
 
-    /*
-     * Unable to fully structure code
-     * Enabled aggressive block sorting
-     * Lifted jumps to return sites
-     */
     final void a() {
-        this.mExpectedAdapterCount = var1_1 = this.mAdapter.getCount();
-        var2_2 = this.mItems.size() < 1 + (this.mOffscreenPageLimit << 1) && this.mItems.size() < var1_1;
-        var3_3 = this.mCurItem;
-        var4_4 = false;
-        var5_5 = var3_3;
-        var6_6 = var2_2;
-        var7_7 = 0;
-        do {
-            if (var7_7 >= this.mItems.size())**GOTO lbl41
-            var11_8 = this.mItems.get(var7_7);
-            var12_9 = this.mAdapter.getItemPosition(var11_8.a);
-            if (var12_9 == -1)**GOTO lbl57
-            if (var12_9 != -2)**GOTO lbl32
-            this.mItems.remove(var7_7);
-            var19_15 = var7_7 - 1;
-            if (!var4_4) {
-                this.mAdapter.startUpdate(this);
-                var4_4 = true;
-            }
-            this.mAdapter.destroyItem(this, (int) var11_8.b, (Object) var11_8.a);
-            if (this.mCurItem == var11_8.b) {
-                var20_16 = Math.max(0, Math.min(this.mCurItem, var1_1 - 1));
-                var13_10 = var19_15;
-                var14_11 = var4_4;
-                var15_12 = var20_16;
-                var16_13 = true;
-            } else {
-                var13_10 = var19_15;
-                var14_11 = var4_4;
-                var15_12 = var5_5;
-                var16_13 = true;
-            }
-            **GOTO lbl61
-            lbl32:
-            // 1 sources:
-            if (var11_8.b == var12_9)**GOTO lbl57
-            if (var11_8.b == this.mCurItem) {
-                var5_5 = var12_9;
-            }
-            var11_8.b = (SettingWidget) var12_9;
-            var13_10 = var7_7;
-            var14_11 = var4_4;
-            var15_12 = var5_5;
-            var16_13 = true;
-            **GOTO lbl61
-            lbl41:
-            // 1 sources:
-            if (var4_4) {
-                this.mAdapter.finishUpdate(this);
-            }
-            Collections.sort(this.mItems, ReaderViewPager.COMPARATOR);
-            if (var6_6 == false) return;
-            var8_17 = this.getChildCount();
-            var9_18 = 0;
-            do {
-                if (var9_18 >= var8_17) {
-                    this.a(var5_5, false, true);
-                    this.requestLayout();
-                    return;
+        int var1_1 = this.mAdapter.getCount();
+        this.mExpectedAdapterCount = var1_1;
+        boolean var6_6 = ((this.mItems.size() < this.mOffscreenPageLimit * 2 + 1) && this.mItems.size() < var1_1);
+        int var5_5 = this.mCurItem;
+        boolean var4_4 = false;
+        int var7_7 = 0;
+        while (var7_7 < this.mItems.size()) {
+            cs var11_8 = this.mItems.get(var7_7);
+            int var12_9 = this.mAdapter.getItemPosition(var11_8.a);
+            if (var12_9 == -2) {
+                this.mItems.remove(var7_7);
+                var7_7--;
+                if (!var4_4) {
+                    this.mAdapter.startUpdate(this);
+                    var4_4 = true;
                 }
-                var10_19 = (ct) this.getChildAt(var9_18).getLayoutParams();
+                this.mAdapter.destroyItem(this, (int) var11_8.b, (Object) var11_8.a);
+                if (this.mCurItem == var11_8.b) {
+                    var5_5 = Math.max(0, Math.min(this.mCurItem, var1_1 - 1));
+                    var6_6 = true;
+                } else {
+                    var6_6 = true;
+                }
+            } else if (var12_9 != -1) {
+                if (var11_8.b != var12_9) {
+                    if (var11_8.b == this.mCurItem) {
+                        var5_5 = var12_9;
+                    }
+                    var11_8.b = var12_9;
+                    var6_6 = true;
+                }
+            }
+            var7_7++;
+        }
+        if (var4_4) {
+            this.mAdapter.finishUpdate(this);
+        }
+        Collections.sort(this.mItems, ReaderViewPager.COMPARATOR);
+        if (var6_6) {
+            for (int var9_18 = 0; var9_18 < this.getChildCount(); var9_18++) {
+                ct var10_19 = (ct) this.getChildAt(var9_18).getLayoutParams();
                 if (var10_19.a == false) {
                     var10_19.c = 0.0f;
                 }
-                ++var9_18;
-            } while (true);
-            lbl57:
-            // 2 sources:
-            var13_10 = var7_7;
-            var14_11 = var4_4;
-            var15_12 = var5_5;
-            var16_13 = var6_6;
-            lbl61:
-            // 4 sources:
-            var17_14 = var13_10 + 1;
-            var6_6 = var16_13;
-            var5_5 = var15_12;
-            var4_4 = var14_11;
-            var7_7 = var17_14;
-        } while (true);
+            }
+            this.a(var5_5, false, true);
+            this.requestLayout();
+        }
     }
 
     /*
