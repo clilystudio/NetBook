@@ -1561,29 +1561,28 @@ public class ReaderViewPager extends ViewGroup {
     @Override
     protected void onMeasure(int var1_1, int var2_2) {
         this.setMeasuredDimension(ReaderViewPager.getDefaultSize(0, var1_1), ReaderViewPager.getDefaultSize(0, var2_2));
-        var3_3 = this.getMeasuredWidth();
+        int var3_3 = this.getMeasuredWidth();
         this.mGutterSize = Math.min(var3_3 / 10, this.mDefaultGutterSize);
-        var4_4 = var3_3 - this.getPaddingLeft() - this.getPaddingRight();
-        var5_5 = this.getMeasuredHeight() - this.getPaddingTop() - this.getPaddingBottom();
-        var6_6 = this.getChildCount();
-        var7_7 = 0;
-        do {
-            if (var7_7 >= var6_6)**GOTO lbl24
-            var12_8 = this.getChildAt(var7_7);
-            if (var12_8.getVisibility() == 8 || (var13_9 = (ct) var12_8.getLayoutParams()) == null || var13_9.a == false)**GOTO lbl52
-            var14_10 = 7 & var13_9.b;
-            var15_11 = 112 & var13_9.b;
-            var16_12 = Integer.MIN_VALUE;
-            var17_13 = Integer.MIN_VALUE;
-            var18_14 = var15_11 == 48 || var15_11 == 80;
-            var19_15 = var14_10 == 3 || var14_10 == 5;
-            if (var18_14) {
-                var16_12 = 1073741824;
+        int var4_4 = var3_3 - this.getPaddingLeft() - this.getPaddingRight();
+        int var5_5 = this.getMeasuredHeight() - this.getPaddingTop() - this.getPaddingBottom();
+        for (int var7_7 = 0;var7_7 < this.getChildCount();var7_7++) {
+            View var12_8 = this.getChildAt(var7_7);
+            ct  var13_9 = (ct) var12_8.getLayoutParams();
+            if (var12_8.getVisibility() != 8 && var13_9!= null && var13_9.a) {
+                int var14_10 = var13_9.b & 0x7;
+                int var15_11 = var13_9.b & 0x70;
+                int  var16_12 = Integer.MIN_VALUE;
+                int  var17_13 = Integer.MIN_VALUE;
+                boolean var18_14 = var15_11 == 48 || var15_11 == 80;
+                boolean var19_15 = var14_10 == 3 || var14_10 == 5;
+                if (var18_14) {
+                    var16_12 = 1073741824;
+                }
+                if (var13_9.width == -2)**GOTO lbl38
+                var20_16 = 1073741824;
+                var21_17 = var13_9.width != -1 ? var13_9.width : var4_4;
             }
-            if (var13_9.width == -2)**GOTO lbl38
-            var20_16 = 1073741824;
-            var21_17 = var13_9.width != -1 ? var13_9.width : var4_4;
-            **GOTO lbl40
+        }
             lbl24:
             // 1 sources:
             this.mChildWidthMeasureSpec = View.MeasureSpec.makeMeasureSpec(var4_4, 1073741824);
