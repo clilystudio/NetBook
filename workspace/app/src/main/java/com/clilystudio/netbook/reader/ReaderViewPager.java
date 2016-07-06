@@ -1480,119 +1480,90 @@ public class ReaderViewPager extends ViewGroup {
     @Override
     protected void onLayout(boolean var1_1, int var2_2, int var3_3, int var4_4, int var5_5) {
         int var6_6 = this.getChildCount();
-        var7_7 = var4_4 - var2_2;
-        var8_8 = var5_5 - var3_3;
-        var9_9 = this.getPaddingLeft();
-        var10_10 = this.getPaddingTop();
-        var11_11 = this.getPaddingRight();
-        var12_12 = this.getPaddingBottom();
-        var13_13 = this.getScrollX();
-        var14_14 = 0;
-        var15_15 = 0;
-        do {
-            if (var15_15 >= var6_6)**GOTO lbl68
-            var22_16 = this.getChildAt(var15_15);
-            if (var22_16.getVisibility() == 8)**GOTO lbl87
-            var27_21 = (ct) var22_16.getLayoutParams();
-            if (var27_21.a == false)**GOTO lbl87
-            var28_22 = 7 & var27_21.b;
-            var29_23 = 112 & var27_21.b;
-            switch (var28_22) {
-                default: {
-                    var31_25 = var9_9;
-                    break;
-                }
-                case 3: {
-                    var41_35 = var9_9 + var22_16.getMeasuredWidth();
-                    var31_25 = var9_9;
-                    var9_9 = var41_35;
-                    break;
-                }
-                case 1: {
-                    var31_25 = Math.max((var7_7 - var22_16.getMeasuredWidth()) / 2, var9_9);
-                    break;
-                }
-                case 5: {
-                    var30_24 = var7_7 - var11_11 - var22_16.getMeasuredWidth();
-                    var11_11 += var22_16.getMeasuredWidth();
-                    var31_25 = var30_24;
-                }
-            }
-            switch (var29_23) {
-                default: {
-                    var32_26 = var10_10;
-                    var40_34 = var12_12;
-                    var34_28 = var10_10;
-                    var35_29 = var40_34;
-                    break;
-                }
-                case 48: {
-                    var38_32 = var10_10 + var22_16.getMeasuredHeight();
-                    var39_33 = var10_10;
-                    var35_29 = var12_12;
-                    var34_28 = var38_32;
-                    var32_26 = var39_33;
-                    break;
-                }
-                case 16: {
-                    var32_26 = Math.max((var8_8 - var22_16.getMeasuredHeight()) / 2, var10_10);
-                    var37_31 = var12_12;
-                    var34_28 = var10_10;
-                    var35_29 = var37_31;
-                    break;
-                }
-                case 80: {
-                    var32_26 = var8_8 - var12_12 - var22_16.getMeasuredHeight();
-                    var33_27 = var12_12 + var22_16.getMeasuredHeight();
-                    var34_28 = var10_10;
-                    var35_29 = var33_27;
+        int var7_7 = var4_4 - var2_2;
+        int var8_8 = var5_5 - var3_3;
+        int var9_9 = this.getPaddingLeft();
+        int var10_10 = this.getPaddingTop();
+        int var11_11 = this.getPaddingRight();
+        int var12_12 = this.getPaddingBottom();
+        int var13_13 = this.getScrollX();
+        int var14_14 = 0;
+        for (int var15_15 = 0; var15_15 < var6_6;var15_15++) {
+            View var22_16 = this.getChildAt(var15_15);
+            if (var22_16.getVisibility() != View.GONE) {
+                ct var27_21 = (ct) var22_16.getLayoutParams();
+                if (var27_21.a) {
+                    int var28_22 = var27_21.b & 0x7;
+                    int var29_23 = var27_21.b & 0x70;
+                    switch (var28_22) {
+                        case 1:
+                            var31_25 = Math.max((var7_7 - var22_16.getMeasuredWidth()) / 2, var9_9);
+                            break;
+                        case 3:
+                            var31_25 = var9_9;
+                            var9_9 += var22_16.getMeasuredWidth();
+                            break;
+                        case 5:
+                            var11_11 += var22_16.getMeasuredWidth();
+                            var31_25 = var7_7 - var11_11;
+                            break;
+                        default:
+                            var31_25 = var9_9;
+                            break;
+                    }
+                    switch (var29_23) {
+                        case 16:
+                            var32_26 = Math.max((var8_8 - var22_16.getMeasuredHeight()) / 2, var10_10);
+                            var37_31 = var12_12;
+                            var35_29 = var37_31;
+                            break;
+                        case 48:
+                            var39_33 = var10_10;
+                            var35_29 = var12_12;
+                            var10_10 = var10_10 + var22_16.getMeasuredHeight();
+                            var32_26 = var39_33;
+                            break;
+                        case 80:
+                            var32_26 = var8_8 - var12_12 - var22_16.getMeasuredHeight();
+                            var33_27 = var12_12 + var22_16.getMeasuredHeight();
+                            var35_29 = var33_27;
+                            break;
+                        default:
+                            var32_26 = var10_10;
+                            var40_34 = var12_12;
+                            var35_29 = var40_34;
+                            break;
+                    }
+                    int var36_30 = var31_25 + var13_13;
+                    var22_16.layout(var36_30, var32_26, var36_30 + var22_16.getMeasuredWidth(), var32_26 + var22_16.getMeasuredHeight());
+                    var14_14++;
+                    var12_12 = var35_29;
                 }
             }
-            var36_30 = var31_25 + var13_13;
-            var22_16.layout(var36_30, var32_26, var36_30 + var22_16.getMeasuredWidth(), var32_26 + var22_16.getMeasuredHeight());
-            var23_17 = var14_14 + 1;
-            var24_18 = var34_28;
-            var12_12 = var35_29;
-            var25_19 = var11_11;
-            var26_20 = var9_9;
-            **GOTO lbl91
-            lbl68:
-            // 1 sources:
-            var16_36 = var7_7 - var9_9 - var11_11;
-            for (var17_37 = 0; var17_37 < var6_6; ++var17_37) {
-                var18_38 = this.getChildAt(var17_37);
-                if (var18_38.getVisibility() == 8) continue;
-                var19_39 = (ct) var18_38.getLayoutParams();
-                if (var19_39.a != false || (var20_40 = this.a(var18_38)) == null) continue;
-                var21_41 = var9_9 + (int) ((float) var16_36 * var20_40.e);
-                if (var19_39.d) {
-                    var19_39.d = false;
-                    var18_38.measure(View.MeasureSpec.makeMeasureSpec((int) ((float) var16_36 * var19_39.c), 1073741824), View.MeasureSpec.makeMeasureSpec(var8_8 - var10_10 - var12_12, 1073741824));
+        }
+        int var16_36 = var7_7 - var9_9 - var11_11;
+        for (int var17_37 = 0; var17_37 < var6_6;var17_37++) {
+            View var18_38 = this.getChildAt(var17_37);
+            if (var18_38.getVisibility() != GONE) {
+                ct var19_39 = (ct) var18_38.getLayoutParams();
+                cs var20_40 = this.a(var18_38);
+                if (!var19_39.a && var20_40 != null) {
+                    int var21_41 = var9_9 + (int) ((float) var16_36 * var20_40.e);
+                    if (var19_39.d) {
+                        var19_39.d = false;
+                        var18_38.measure(View.MeasureSpec.makeMeasureSpec((int) ((float) var16_36 * var19_39.c), 1073741824), View.MeasureSpec.makeMeasureSpec(var8_8 - var10_10 - var12_12, 1073741824));
+                    }
+                    var18_38.layout(var21_41, var10_10, var21_41 + var18_38.getMeasuredWidth(), var10_10 + var18_38.getMeasuredHeight());
                 }
-                var18_38.layout(var21_41, var10_10, var21_41 + var18_38.getMeasuredWidth(), var10_10 + var18_38.getMeasuredHeight());
             }
-            this.mTopPageBounds = var10_10;
-            this.mBottomPageBounds = var8_8 - var12_12;
-            this.mDecorChildCount = var14_14;
-            if (this.mFirstLayout) {
-                this.a(this.mCurItem, false, 0, false);
-            }
-            this.mFirstLayout = false;
-            return;
-            lbl87:
-            // 2 sources:
-            var23_17 = var14_14;
-            var24_18 = var10_10;
-            var25_19 = var11_11;
-            var26_20 = var9_9;
-            lbl91:
-            // 2 sources:
-            ++var15_15;
-            var9_9 = var26_20;
-            var11_11 = var25_19;
-            var10_10 = var24_18;
-            var14_14 = var23_17;
-        } while (true);
+        }
+        this.mTopPageBounds = var10_10;
+        this.mBottomPageBounds = var8_8 - var12_12;
+        this.mDecorChildCount = var14_14;
+        if (this.mFirstLayout) {
+            this.a(this.mCurItem, false, 0, false);
+        }
+        this.mFirstLayout = false;
     }
 
     /*
