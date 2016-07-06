@@ -1488,7 +1488,7 @@ public class ReaderViewPager extends ViewGroup {
         int var12_12 = this.getPaddingBottom();
         int var13_13 = this.getScrollX();
         int var14_14 = 0;
-        for (int var15_15 = 0; var15_15 < var6_6;var15_15++) {
+        for (int var15_15 = 0; var15_15 < var6_6; var15_15++) {
             View var22_16 = this.getChildAt(var15_15);
             if (var22_16.getVisibility() != View.GONE) {
                 ct var27_21 = (ct) var22_16.getLayoutParams();
@@ -1529,7 +1529,7 @@ public class ReaderViewPager extends ViewGroup {
             }
         }
         int var16_36 = var7_7 - var9_9 - var11_11;
-        for (int var17_37 = 0; var17_37 < var6_6;var17_37++) {
+        for (int var17_37 = 0; var17_37 < var6_6; var17_37++) {
             View var18_38 = this.getChildAt(var17_37);
             if (var18_38.getVisibility() != GONE) {
                 ct var19_39 = (ct) var18_38.getLayoutParams();
@@ -1565,65 +1565,57 @@ public class ReaderViewPager extends ViewGroup {
         this.mGutterSize = Math.min(var3_3 / 10, this.mDefaultGutterSize);
         int var4_4 = var3_3 - this.getPaddingLeft() - this.getPaddingRight();
         int var5_5 = this.getMeasuredHeight() - this.getPaddingTop() - this.getPaddingBottom();
-        for (int var7_7 = 0;var7_7 < this.getChildCount();var7_7++) {
+        for (int var7_7 = 0; var7_7 < this.getChildCount(); var7_7++) {
             View var12_8 = this.getChildAt(var7_7);
-            ct  var13_9 = (ct) var12_8.getLayoutParams();
-            if (var12_8.getVisibility() != 8 && var13_9!= null && var13_9.a) {
+            ct var13_9 = (ct) var12_8.getLayoutParams();
+            if (var12_8.getVisibility() != 8 && var13_9 != null && var13_9.a) {
                 int var14_10 = var13_9.b & 0x7;
                 int var15_11 = var13_9.b & 0x70;
-                int  var16_12 = Integer.MIN_VALUE;
-                int  var17_13 = Integer.MIN_VALUE;
+                int var16_12 = MeasureSpec.AT_MOST;
+                int var17_13 = MeasureSpec.AT_MOST;
                 boolean var18_14 = var15_11 == 48 || var15_11 == 80;
                 boolean var19_15 = var14_10 == 3 || var14_10 == 5;
                 if (var18_14) {
-                    var16_12 = 1073741824;
+                    var16_12 = MeasureSpec.EXACTLY;
+                } else if (var19_15) {
+                    var17_13 = MeasureSpec.EXACTLY;
                 }
-                if (var13_9.width == -2)**GOTO lbl38
-                var20_16 = 1073741824;
-                var21_17 = var13_9.width != -1 ? var13_9.width : var4_4;
+                int var21_17 = var4_4;
+                if (var13_9.width != -2) {
+                    var16_12 = MeasureSpec.EXACTLY;
+                    if (var13_9.width != -1) {
+                         var21_17 = var13_9.width;
+                    }
+                }
+                int var22_18 = var5_5;
+                if (var13_9.height != -2) {
+                    var17_13 = MeasureSpec.EXACTLY;
+                    if (var13_9.height != -1) {
+                        var22_18 = var13_9.height;
+                    }
+                }
+                var12_8.measure(View.MeasureSpec.makeMeasureSpec(var21_17, var16_12), View.MeasureSpec.makeMeasureSpec(var22_18, var17_13));
+                if (var18_14) {
+                    var5_5 -= var12_8.getMeasuredHeight();
+                } else if (var19_15) {
+                    var4_4 -= var12_8.getMeasuredWidth();
+                }
             }
         }
-            lbl24:
-            // 1 sources:
-            this.mChildWidthMeasureSpec = View.MeasureSpec.makeMeasureSpec(var4_4, 1073741824);
-            this.mChildHeightMeasureSpec = View.MeasureSpec.makeMeasureSpec(var5_5, 1073741824);
-            this.mInLayout = true;
-            this.b();
-            this.mInLayout = false;
-            var8_19 = this.getChildCount();
-            var9_20 = 0;
-            while (var9_20 < var8_19) {
-                var10_21 = this.getChildAt(var9_20);
-                if (var10_21.getVisibility() != 8 && ((var11_22 = (ct) var10_21.getLayoutParams()) == null || var11_22.a == false)) {
-                    var10_21.measure(View.MeasureSpec.makeMeasureSpec((int) ((float) var4_4 * var11_22.c), 1073741824), this.mChildHeightMeasureSpec);
+        this.mChildWidthMeasureSpec = View.MeasureSpec.makeMeasureSpec(var4_4, MeasureSpec.EXACTLY);
+        this.mChildHeightMeasureSpec = View.MeasureSpec.makeMeasureSpec(var5_5, MeasureSpec.EXACTLY);
+        this.mInLayout = true;
+        this.b();
+        this.mInLayout = false;
+        for (int var9_20 = 0; var9_20 < this.getChildCount(); var9_20++) {
+            View var10_21 = this.getChildAt(var9_20);
+            if (var10_21.getVisibility() != GONE) {
+                ct var11_22 = (ct) var10_21.getLayoutParams();
+                if (var11_22 == null || !var11_22.a) {
+                    var10_21.measure(View.MeasureSpec.makeMeasureSpec((int) ((float) var4_4 * var11_22.c), MeasureSpec.EXACTLY), this.mChildHeightMeasureSpec);
                 }
-                ++var9_20;
             }
-            return;
-            lbl38:
-            // 1 sources:
-            var20_16 = var16_12;
-            var21_17 = var4_4;
-            lbl40:
-            // 2 sources:
-            if (var13_9.height == -2)**GOTO lbl -1000
-            var17_13 = 1073741824;
-            if (var13_9.height != -1) {
-                var22_18 = var13_9.height;
-            } else lbl - 1000: // 2 sources:
-            {
-                var22_18 = var5_5;
-            }
-            var12_8.measure(View.MeasureSpec.makeMeasureSpec(var21_17, var20_16), View.MeasureSpec.makeMeasureSpec(var22_18, var17_13));
-            if (var18_14) {
-                var5_5 -= var12_8.getMeasuredHeight();
-            } else if (var19_15) {
-                var4_4 -= var12_8.getMeasuredWidth();
-            }
-            lbl52:
-            // 5 sources:
-            ++var7_7;
-        } while (true);
+        }
     }
 
     /*
@@ -2048,5 +2040,4 @@ public class ReaderViewPager extends ViewGroup {
 
         public void b(int var1);
     }
-
 }

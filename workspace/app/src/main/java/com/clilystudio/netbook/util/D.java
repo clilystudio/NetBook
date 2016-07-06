@@ -52,10 +52,10 @@ public class D extends LinearLayoutManager {
         }catch(Exception localException){
         }finally{
         }
-        if (i == 1073741824) {
+        if (i == View.MeasureSpec.EXACTLY) {
             n = k;
         }
-        if (j == 1073741824) {
+        if (j == View.MeasureSpec.EXACTLY) {
             i1 = m;
         }
         e(n, i1);

@@ -47,19 +47,15 @@
                 } else {
                     v2 = 0x40000000    # 2.0f;
                 }
-                v4 = v0.Lcom/ushaqi/zhuishushenqi/reader/ct;->width;
-                v11 = -0x2;
-                if (v4 == v11) {
+                if (v0.width == -2) {
                     v4 = v2;
                     v2 = v3;
                 } else {
                     v4 = 0x40000000    # 2.0f;
-                    v2 = v0.Lcom/ushaqi/zhuishushenqi/reader/ct;->width;
-                    v11 = -0x1;
-                    if (v2 == v11) {
+                    if (v0.width == -1) {
                         v2 = v3;
                     } else {
-                        v2 = v0.Lcom/ushaqi/zhuishushenqi/reader/ct;->width;
+                        v2 = v0.width;
                     }
                 }
                 v11 = v0.Lcom/ushaqi/zhuishushenqi/reader/ct;->height;
