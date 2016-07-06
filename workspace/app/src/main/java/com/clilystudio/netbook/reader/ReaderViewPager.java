@@ -1495,6 +1495,7 @@ public class ReaderViewPager extends ViewGroup {
                 if (var27_21.a) {
                     int var28_22 = var27_21.b & 0x7;
                     int var29_23 = var27_21.b & 0x70;
+                    int var31_25 = var9_9;
                     switch (var28_22) {
                         case 1:
                             var31_25 = Math.max((var7_7 - var22_16.getMeasuredWidth()) / 2, var9_9);
@@ -1507,37 +1508,23 @@ public class ReaderViewPager extends ViewGroup {
                             var11_11 += var22_16.getMeasuredWidth();
                             var31_25 = var7_7 - var11_11;
                             break;
-                        default:
-                            var31_25 = var9_9;
-                            break;
                     }
+                    int var32_26 = var10_10;
                     switch (var29_23) {
                         case 16:
                             var32_26 = Math.max((var8_8 - var22_16.getMeasuredHeight()) / 2, var10_10);
-                            var37_31 = var12_12;
-                            var35_29 = var37_31;
                             break;
                         case 48:
-                            var39_33 = var10_10;
-                            var35_29 = var12_12;
                             var10_10 = var10_10 + var22_16.getMeasuredHeight();
-                            var32_26 = var39_33;
                             break;
                         case 80:
                             var32_26 = var8_8 - var12_12 - var22_16.getMeasuredHeight();
-                            var33_27 = var12_12 + var22_16.getMeasuredHeight();
-                            var35_29 = var33_27;
-                            break;
-                        default:
-                            var32_26 = var10_10;
-                            var40_34 = var12_12;
-                            var35_29 = var40_34;
+                            var12_12 = var12_12 + var22_16.getMeasuredHeight();
                             break;
                     }
                     int var36_30 = var31_25 + var13_13;
                     var22_16.layout(var36_30, var32_26, var36_30 + var22_16.getMeasuredWidth(), var32_26 + var22_16.getMeasuredHeight());
                     var14_14++;
-                    var12_12 = var35_29;
                 }
             }
         }
@@ -1551,7 +1538,7 @@ public class ReaderViewPager extends ViewGroup {
                     int var21_41 = var9_9 + (int) ((float) var16_36 * var20_40.e);
                     if (var19_39.d) {
                         var19_39.d = false;
-                        var18_38.measure(View.MeasureSpec.makeMeasureSpec((int) ((float) var16_36 * var19_39.c), 1073741824), View.MeasureSpec.makeMeasureSpec(var8_8 - var10_10 - var12_12, 1073741824));
+                        var18_38.measure(View.MeasureSpec.makeMeasureSpec((int) ((float) var16_36 * var19_39.c), MeasureSpec.EXACTLY), View.MeasureSpec.makeMeasureSpec(var8_8 - var10_10 - var12_12, MeasureSpec.EXACTLY));
                     }
                     var18_38.layout(var21_41, var10_10, var21_41 + var18_38.getMeasuredWidth(), var10_10 + var18_38.getMeasuredHeight());
                 }
