@@ -1584,7 +1584,7 @@ public class ReaderViewPager extends ViewGroup {
                 if (var13_9.width != -2) {
                     var16_12 = MeasureSpec.EXACTLY;
                     if (var13_9.width != -1) {
-                         var21_17 = var13_9.width;
+                        var21_17 = var13_9.width;
                     }
                 }
                 int var22_18 = var5_5;
@@ -1680,11 +1680,6 @@ public class ReaderViewPager extends ViewGroup {
         }
     }
 
-    /*
-     * Unable to fully structure code
-     * Enabled aggressive block sorting
-     * Lifted jumps to return sites
-     */
     @Override
     public boolean onTouchEvent(MotionEvent var1_1) {
         if (this.mFakeDragging) {
@@ -1693,112 +1688,97 @@ public class ReaderViewPager extends ViewGroup {
         if (var1_1.getAction() == 0 && var1_1.getEdgeFlags() != 0) {
             return false;
         }
-        if (this.mAdapter == null) return false;
-        if (this.mAdapter.getCount() == 0) {
+        if (this.mAdapter == null || this.mAdapter.getCount() == 0) {
             return false;
         }
         if (this.mVelocityTracker == null) {
             this.mVelocityTracker = VelocityTracker.obtain();
         }
         this.mVelocityTracker.addMovement(var1_1);
-        var2_2 = 255 & var1_1.getAction();
-        var3_3 = false;
+        int var2_2 = var1_1.getAction() & 0xff;
+        boolean var3_3 = false;
         switch (var2_2) {
-            case 0: {
+            case 0:
                 this.mScroller.abortAnimation();
                 this.mPopulatePending = false;
                 this.b();
                 this.mIsBeingDragged = true;
                 this.b(1);
-                this.mInitialMotionX = var26_4 = var1_1.getX();
+                float var26_4 = var1_1.getX();
+                this.mInitialMotionX = var26_4;
                 this.mLastMotionX = var26_4;
-                this.mInitialMotionY = var27_5 = var1_1.getY();
+                float var27_5 = var1_1.getY();
+                this.mInitialMotionY = var27_5;
                 this.mLastMotionY = var27_5;
                 this.mActivePointerId = MotionEventCompat.getPointerId(var1_1, 0);
                 return true;
-            }
-            case 2: {
+            case 2:
                 if (!this.mIsBeingDragged) {
-                    var20_6 = MotionEventCompat.findPointerIndex(var1_1, this.mActivePointerId);
-                    var21_7 = MotionEventCompat.getX(var1_1, var20_6);
-                    var22_8 = Math.abs(var21_7 - this.mLastMotionX);
-                    var23_9 = MotionEventCompat.getY(var1_1, var20_6);
-                    var24_10 = Math.abs(var23_9 - this.mLastMotionY);
+                    int var20_6 = MotionEventCompat.findPointerIndex(var1_1, this.mActivePointerId);
+                    float var21_7 = MotionEventCompat.getX(var1_1, var20_6);
+                    float var22_8 = Math.abs(var21_7 - this.mLastMotionX);
+                    float var23_9 = MotionEventCompat.getY(var1_1, var20_6);
+                    float var24_10 = Math.abs(var23_9 - this.mLastMotionY);
                     if (var22_8 > (float) this.mTouchSlop && var22_8 > var24_10) {
                         this.mIsBeingDragged = true;
-                        var25_11 = var21_7 - this.mInitialMotionX > 0.0f ? this.mInitialMotionX + (float) this.mTouchSlop : this.mInitialMotionX - (float) this.mTouchSlop;
+                        float var25_11 = var21_7 - this.mInitialMotionX > 0.0f ? this.mInitialMotionX + (float) this.mTouchSlop : this.mInitialMotionX - (float) this.mTouchSlop;
                         this.mLastMotionX = var25_11;
                         this.mLastMotionY = var23_9;
                         this.b(1);
                         this.b(true);
                     }
                 }
-                var19_12 = this.mIsBeingDragged;
-                var3_3 = false;
-                if (var19_12 == false) return true;
-                var3_3 = false | this.a(MotionEventCompat.getX(var1_1, MotionEventCompat.findPointerIndex(var1_1, this.mActivePointerId)));
-                **break;
-            }
-            case 1: {
-                var6_13 = this.mIsBeingDragged;
-                var3_3 = false;
-                if (var6_13 == false) return true;
-                var7_14 = this.mVelocityTracker;
-                var7_14.computeCurrentVelocity(1000, this.mMaximumVelocity);
-                var8_15 = (int) VelocityTrackerCompat.getXVelocity(var7_14, this.mActivePointerId);
+                if (!this.mIsBeingDragged) return true;
+                var3_3 = this.a(MotionEventCompat.getX(var1_1, MotionEventCompat.findPointerIndex(var1_1, this.mActivePointerId)));
+                break;
+            case 1:
+                if (!this.mIsBeingDragged) return true;
+                this.mVelocityTracker.computeCurrentVelocity(1000, this.mMaximumVelocity);
+                int var8_15 = (int) VelocityTrackerCompat.getXVelocity(this.mVelocityTracker, this.mActivePointerId);
                 this.mPopulatePending = true;
-                var9_16 = this.e();
-                var10_17 = this.getScrollX();
-                var11_18 = this.g();
-                var12_19 = var11_18.b;
-                var13_20 = ((float) var10_17 / (float) var9_16 - var11_18.e) / var11_18.d;
+                int var9_16 = this.e();
+                int var10_17 = this.getScrollX();
+                cs var11_18 = this.g();
+                int var12_19 = var11_18.b;
+                float var13_20 = ((float) var10_17 / (float) var9_16 - var11_18.e) / var11_18.d;
                 if (Math.abs((int) (MotionEventCompat.getX(var1_1, MotionEventCompat.findPointerIndex(var1_1, this.mActivePointerId)) - this.mInitialMotionX)) > this.mFlingDistance && Math.abs(var8_15) > this.mMinimumVelocity) {
                     if (var8_15 <= 0) {
-                        ++var12_19;
+                        var12_19++;
                     }
-                    var15_21 = var12_19;
                 } else {
-                    var14_24 = var12_19 >= this.mCurItem ? 0.4f : 0.6f;
-                    var15_21 = (int) (var14_24 + (var13_20 + (Object) var12_19));
+                    float var14_24 = var12_19 >= this.mCurItem ? 0.4f : 0.6f;
+                    var12_19 = (int) (var14_24 + var13_20 +  var12_19);
                 }
                 if (this.mItems.size() > 0) {
-                    var17_22 = this.mItems.get(0);
-                    var18_23 = this.mItems.get(-1 + this.mItems.size());
-                    var15_21 = Math.max((int) var17_22.b, Math.min((int) var15_21, (int) var18_23.b));
+                    cs var17_22 = this.mItems.get(0);
+                    cs var18_23 = this.mItems.get(this.mItems.size() - 1);
+                    var12_19 = Math.max((int) var17_22.b, Math.min((int) var12_19, (int) var18_23.b));
                 }
-                this.a((int) var15_21, true, true, var8_15);
+                this.a((int) var12_19, true, true, var8_15);
                 this.mActivePointerId = -1;
                 this.h();
                 var3_3 = this.mLeftEdge.onRelease() | this.mRightEdge.onRelease();
-                **break;
-            }
-            case 3: {
-                var5_25 = this.mIsBeingDragged;
-                var3_3 = false;
-                if (var5_25 == false) return true;
+                break;
+            case 3:
+                if (!this.mIsBeingDragged) return true;
                 this.a(this.mCurItem, true, 0, false);
                 this.mActivePointerId = -1;
                 this.h();
                 var3_3 = this.mLeftEdge.onRelease() | this.mRightEdge.onRelease();
-            }
-            lbl82:
-            // 4 sources:
-            default:
-            {
-                if (var3_3 == false) return true;
-                ViewCompat.postInvalidateOnAnimation(this);
-                return true;
-            }
-            case 5: {
-                var4_26 = MotionEventCompat.getActionIndex(var1_1);
+                break;
+            case 5:
+                int var4_26 = MotionEventCompat.getActionIndex(var1_1);
                 this.mLastMotionX = MotionEventCompat.getX(var1_1, var4_26);
                 this.mActivePointerId = MotionEventCompat.getPointerId(var1_1, var4_26);
                 return true;
-            }
             case 6:
+                this.a(var1_1);
+                this.mLastMotionX = MotionEventCompat.getX(var1_1, MotionEventCompat.findPointerIndex(var1_1, this.mActivePointerId));
+                return true;
         }
-        this.a(var1_1);
-        this.mLastMotionX = MotionEventCompat.getX(var1_1, MotionEventCompat.findPointerIndex(var1_1, this.mActivePointerId));
+        if (var3_3) {
+            ViewCompat.postInvalidateOnAnimation(this);
+        }
         return true;
     }
 
@@ -1811,10 +1791,6 @@ public class ReaderViewPager extends ViewGroup {
         super.removeView(view);
     }
 
-    /*
-     * Enabled force condition propagation
-     * Lifted jumps to return sites
-     */
     public void setAdapter(PagerAdapter pagerAdapter) {
         if (this.mAdapter != null) {
             this.mAdapter.unregisterDataSetObserver((DataSetObserver) ((Object) this.mObserver));
