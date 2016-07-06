@@ -1393,42 +1393,38 @@ public class ReaderViewPager extends ViewGroup {
         }
     }
 
-    /*
-     * Unable to fully structure code
-     * Enabled aggressive block sorting
-     * Lifted jumps to return sites
-     */
     @Override
-    public boolean onInterceptTouchEvent(MotionEvent var1_1) {
-        var2_2 = 255 & var1_1.getAction();
+    public boolean onInterceptTouchEvent(MotionEvent p1) {
+        int var2_2 = p1.getAction() & 0xff;
         if (var2_2 == 3 || var2_2 == 1) {
             this.mIsBeingDragged = false;
             this.mIsUnableToDrag = false;
             this.mActivePointerId = -1;
-            if (this.mVelocityTracker == null) return false;
-            this.mVelocityTracker.recycle();
-            this.mVelocityTracker = null;
+            if (this.mVelocityTracker != null) {
+                this.mVelocityTracker.recycle();
+                this.mVelocityTracker = null;
+            }
             return false;
         }
         if (var2_2 != 0) {
             if (this.mIsBeingDragged) {
                 return true;
             }
-            if (this.mIsUnableToDrag != false) return false;
+            if (this.mIsUnableToDrag) {
+                return false;
+            }
         }
         switch (var2_2) {
-            case 2: {
-                var6_3 = this.mActivePointerId;
-                if (var6_3 != -1) {
-                    var7_4 = MotionEventCompat.findPointerIndex(var1_1, var6_3);
-                    var8_5 = MotionEventCompat.getX(var1_1, var7_4);
-                    var9_6 = var8_5 - this.mLastMotionX;
-                    var10_7 = Math.abs(var9_6);
-                    var11_8 = MotionEventCompat.getY(var1_1, var7_4);
-                    var12_9 = Math.abs(var11_8 - this.mInitialMotionY);
+            case 2:
+                if (this.mActivePointerId != -1) {
+                    int var7_4 = MotionEventCompat.findPointerIndex(p1, this.mActivePointerId);
+                    float var8_5 = MotionEventCompat.getX(p1, var7_4);
+                    float var9_6 = var8_5 - this.mLastMotionX;
+                    float var10_7 = Math.abs(var9_6);
+                    float var11_8 = MotionEventCompat.getY(p1, var7_4);
+                    float var12_9 = Math.abs(var11_8 - this.mInitialMotionY);
                     if (var9_6 != 0.0f) {
-                        var14_10 = this.mLastMotionX;
-                        var15_11 = var14_10 < (float) this.mGutterSize && var9_6 > 0.0f || var14_10 > (float) (this.getWidth() - this.mGutterSize) && var9_6 < 0.0f;
+                        boolean var15_11 = this.mLastMotionX < (float) this.mGutterSize && var9_6 > 0.0f || this.mLastMotionX > (float) (this.getWidth() - this.mGutterSize) && var9_6 < 0.0f;
                         if (!var15_11 && this.a(this, false, (int) var9_6, (int) var8_5, (int) var11_8)) {
                             this.mLastMotionX = var8_5;
                             this.mLastMotionY = var11_8;
@@ -1439,8 +1435,7 @@ public class ReaderViewPager extends ViewGroup {
                     if (var10_7 > (float) this.mTouchSlop && 0.5f * var10_7 > var12_9) {
                         this.mIsBeingDragged = true;
                         this.b(1);
-                        var13_12 = var9_6 > 0.0f ? this.mInitialMotionX + (float) this.mTouchSlop : this.mInitialMotionX - (float) this.mTouchSlop;
-                        this.mLastMotionX = var13_12;
+                        this.mLastMotionX = var9_6 > 0.0f ? this.mInitialMotionX + (float) this.mTouchSlop : this.mInitialMotionX - (float) this.mTouchSlop;
                         this.mLastMotionY = var11_8;
                         this.b(true);
                     } else if (var12_9 > (float) this.mTouchSlop) {
@@ -1448,39 +1443,32 @@ public class ReaderViewPager extends ViewGroup {
                     }
                     if (this.mIsBeingDragged && this.a(var8_5)) {
                         ViewCompat.postInvalidateOnAnimation(this);
-                        **break;
                     }
                 }
-                **GOTO lbl57
-            }
-            case 0: {
-                this.mInitialMotionX = var3_13 = var1_1.getX();
+                break;
+            case 0:
+                float var3_13 = p1.getX();
+                this.mInitialMotionX = var3_13;
                 this.mLastMotionX = var3_13;
-                this.mInitialMotionY = var4_14 = var1_1.getY();
+                float var4_14 = p1.getY();
+                this.mInitialMotionY = var4_14;
                 this.mLastMotionY = var4_14;
-                this.mActivePointerId = MotionEventCompat.getPointerId(var1_1, 0);
+                this.mActivePointerId = MotionEventCompat.getPointerId(p1, 0);
                 this.mIsUnableToDrag = false;
                 this.mScroller.computeScrollOffset();
                 if (this.mScrollState != 2 || Math.abs(this.mScroller.getFinalX() - this.mScroller.getCurrX()) <= this.mCloseEnough) {
                     this.a(false);
                     this.mIsBeingDragged = false;
                 }
-            }
-            lbl57:
-            // 6 sources:
-            default:
-            {
-                **GOTO lbl61
-            }
+                break;
             case 6:
+                this.a(p1);
+                break;
         }
-        this.a(var1_1);
-        lbl61:
-        // 2 sources:
         if (this.mVelocityTracker == null) {
             this.mVelocityTracker = VelocityTracker.obtain();
         }
-        this.mVelocityTracker.addMovement(var1_1);
+        this.mVelocityTracker.addMovement(p1);
         return this.mIsBeingDragged;
     }
 
