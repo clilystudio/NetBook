@@ -1479,7 +1479,7 @@ public class ReaderViewPager extends ViewGroup {
      */
     @Override
     protected void onLayout(boolean var1_1, int var2_2, int var3_3, int var4_4, int var5_5) {
-        var6_6 = this.getChildCount();
+        int var6_6 = this.getChildCount();
         var7_7 = var4_4 - var2_2;
         var8_8 = var5_5 - var3_3;
         var9_9 = this.getPaddingLeft();
