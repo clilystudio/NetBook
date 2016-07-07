@@ -1,8 +1,11 @@
 package com.clilystudio.netbook.util;
 
 import android.content.Context;
+import android.content.res.AssetManager;
+import android.content.res.Resources;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -18,7 +21,7 @@ public final class H {
         if (list.size() % 2 != 0) {
             throw new RuntimeException("The conversion table may be damaged or not exists");
         }
-        this.b = new HashMap<Character, Character>();
+        this.b = new HashMap<>();
         for (int i = 0; i < list.size(); i += 2) {
             this.b.put(list.get(i + 1), list.get(i));
         }
@@ -31,21 +34,36 @@ public final class H {
         return a;
     }
 
-    private static List<Character> a(Context context, String string, String string2) {
-        int n;
-        ArrayList<Character> arrayList = new ArrayList<Character>();
-        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(context.getResources().getAssets().open(string), string2));
-        while ((n = bufferedReader.read()) != -1) {
-            arrayList.add(Character.valueOf((char) n));
+    private static List<Character> a(Context context, String string, String charsetName) {
+        ArrayList<Character> arrayList = new ArrayList<>();
+        Resources resources = context.getResources();
+        AssetManager assets = resources.getAssets();
+        BufferedReader bufferedReader = null;
+        try {
+            bufferedReader = new BufferedReader(new InputStreamReader(assets.open(string), charsetName));
+            int n;
+            while ((n = bufferedReader.read()) != -1) {
+                arrayList.add((char) n);
+            }
+            return arrayList;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        } finally {
+            if (bufferedReader != null) {
+                try {
+                    bufferedReader.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
         }
-        bufferedReader.close();
-        return arrayList;
     }
 
     public final Character a(char c) {
-        if (this.b.get(Character.valueOf(c)) == null) {
-            return Character.valueOf(c);
+        if (this.b.get(c) == null) {
+            return c;
         }
-        return this.b.get(Character.valueOf(c));
+        return this.b.get(c);
     }
 }

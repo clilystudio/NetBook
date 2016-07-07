@@ -11,10 +11,13 @@ Lcom/nostra13/universalimageloader/core/i;
 ===================================
 package wait fix
 -----------------------------------
-event
-hpay100
+
 reader    《== T
 ui
+
+
+event
+hpay100
 util      《== T
 widget    《== T
 
