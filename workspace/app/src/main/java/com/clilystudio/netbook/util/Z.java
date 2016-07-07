@@ -3,19 +3,16 @@ package com.clilystudio.netbook.util;
 import android.app.Activity;
 import android.os.Handler;
 
+import com.activeandroid.query.Delete;
 import com.clilystudio.netbook.R;
-import com.clilystudio.netbook.a_pack.*;
 import com.clilystudio.netbook.a_pack.e;
 import com.clilystudio.netbook.am;
-
-import com.activeandroid.query.Delete;
-import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.db.BookReadRecord;
 import com.clilystudio.netbook.db.BookSyncRecord;
 import com.clilystudio.netbook.db.SyncAccount;
-import com.clilystudio.netbook.event.*;
 import com.clilystudio.netbook.event.A;
 import com.clilystudio.netbook.event.c;
+import com.clilystudio.netbook.event.i;
 import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.model.BookShelfSyncTime;
 import com.clilystudio.netbook.model.RemoteBookShelf;
@@ -27,7 +24,6 @@ import java.util.List;
 public final class Z {
     private static boolean d;
     private Activity b;
-    private b a = b.a();
     private String c;
 
     public Z(Activity activity, String string) {
@@ -66,9 +62,9 @@ public final class Z {
             list2 = null;
         }
         remoteBookShelf.getSyncDate().getTime();
-        ArrayList<String> arrayList = new ArrayList<String>();
-        RemoteBookShelf$Book[] arrremoteBookShelf$Book = remoteBookShelf.getBookShelfs();
-        RemoteBookShelf$Book[] arrremoteBookShelf$Book2 = remoteBookShelf.getFeedingBooks();
+        ArrayList<String> arrayList = new ArrayList<>();
+        RemoteBookShelf.Book[] arrremoteBookShelf$Book = remoteBookShelf.getBookShelfs();
+        RemoteBookShelf.Book[] arrremoteBookShelf$Book2 = remoteBookShelf.getFeedingBooks();
         for (BookReadRecord bookReadRecord : BookReadRecord.getAllNoFeed()) {
             if (!Z.a(bookReadRecord.getBookId(), arrremoteBookShelf$Book)) continue;
             BookReadRecord.trulyDelete(bookReadRecord.getBookId());
@@ -77,24 +73,24 @@ public final class Z {
             if (!Z.a(bookReadRecord2.getBookId(), arrremoteBookShelf$Book2)) continue;
             BookReadRecord.trulyDelete(bookReadRecord2.getBookId());
         }
-        for (RemoteBookShelf$Book remoteBookShelf$Book : arrremoteBookShelf$Book) {
-            arrayList.add(remoteBookShelf$Book.getId());
-            if (BookReadRecord.getOnShelf(remoteBookShelf$Book.getId()) != null || list != null && list.contains(remoteBookShelf$Book.getId())) continue;
-            BookReadRecord.create(remoteBookShelf$Book, true);
-            i.a().c(new c(remoteBookShelf$Book.getId(), false));
+        for (RemoteBookShelf.Book book : arrremoteBookShelf$Book) {
+            arrayList.add(book.getId());
+            if (BookReadRecord.getOnShelf(book.getId()) != null || list != null && list.contains(book.getId())) continue;
+            BookReadRecord.create(book, true);
+            i.a().post(new c(book.getId(), false));
         }
         int n = arrremoteBookShelf$Book2.length;
         int n2 = 0;
         do {
             if (n2 >= n) {
                 Z.b();
-                a.a(z.b);
+                com.clilystudio.netbook.hpay100.a.a.a(z.b);
                 return;
             }
-            RemoteBookShelf$Book remoteBookShelf$Book2 = arrremoteBookShelf$Book2[n2];
+            RemoteBookShelf.Book remoteBookShelf$Book2 = arrremoteBookShelf$Book2[n2];
             if (!(BookReadRecord.getOnShelf(remoteBookShelf$Book2.getId()) != null || list2 != null && list2.contains(remoteBookShelf$Book2.getId()))) {
                 BookReadRecord.createFeed(remoteBookShelf$Book2);
-                i.a().c(new c(remoteBookShelf$Book2.getId(), false));
+                i.a().post(new c(remoteBookShelf$Book2.getId(), false));
             }
             ++n2;
         } while (true);
@@ -108,7 +104,7 @@ public final class Z {
      * Enabled force condition propagation
      * Lifted jumps to return sites
      */
-    private static boolean a(String string, RemoteBookShelf$Book[] arrremoteBookShelf$Book) {
+    private static boolean a(String string, RemoteBookShelf.Book[] arrremoteBookShelf$Book) {
         BookSyncRecord bookSyncRecord = BookSyncRecord.get(string);
         if (bookSyncRecord != null && bookSyncRecord.getType() != BookSyncRecord.getTypeId(BookSyncRecord.BookModifyType.SYNC_SUCCESS)) return false;
         int n = arrremoteBookShelf$Book.length;
@@ -141,10 +137,10 @@ public final class Z {
         if (account != null) {
             String string = account.getUser().getId();
             if (arrstring.length > 0) {
-                new X(string, account.getToken(), BookSyncRecord.BookModifyType.SHELF_ADD, arrstring).b(new Void[0]);
+                new X(string, account.getToken(), BookSyncRecord.BookModifyType.SHELF_ADD, arrstring).b();
             }
             if (arrstring2.length > 0) {
-                new X(string, account.getToken(), BookSyncRecord.BookModifyType.FEED_ADD, arrstring2).b(new Void[0]);
+                new X(string, account.getToken(), BookSyncRecord.BookModifyType.FEED_ADD, arrstring2).b();
             }
         }
     }
@@ -162,8 +158,7 @@ public final class Z {
     private RemoteBookShelf a(String string) {
         BookShelfSyncTime bookShelfSyncTime;
         try {
-            BookShelfSyncTime bookShelfSyncTime2;
-            bookShelfSyncTime = bookShelfSyncTime2 = b.b().A(string);
+            bookShelfSyncTime = com.clilystudio.netbook.api.b.b().A(string);
         } catch (Exception var2_6) {
             var2_6.printStackTrace();
             return null;
@@ -180,8 +175,7 @@ public final class Z {
             return remoteBookShelf2;
         }
         try {
-            RemoteBookShelf remoteBookShelf3;
-            remoteBookShelf = remoteBookShelf3 = b.b().B(string);
+            remoteBookShelf = com.clilystudio.netbook.api.b.b().B(string);
         } catch (Exception var8_9) {
             var8_9.printStackTrace();
             return null;
@@ -227,7 +221,7 @@ public final class Z {
             }, 4000);
             return;
         }
-        com.clilystudio.netbook.a_pack.c<String, RemoteBookShelf> ac2 = new com.clilystudio.netbook.a_pack.c<String, RemoteBookShelf>(){
+        com.clilystudio.netbook.a_pack.c<String, RemoteBookShelf> ac2 = new com.clilystudio.netbook.a_pack.c<String, RemoteBookShelf>(Z.this.b, R.string.loading){
 
             @Override
             public RemoteBookShelf a(String... var1) {
@@ -236,20 +230,20 @@ public final class Z {
                     if (remoteBookShelf.isNeedSync()) {
                         if (remoteBookShelf.isOk()) {
                             Z.a(Z.this, remoteBookShelf);
-                            com.clilystudio.netbook.util.e.a((Activity) Z.b(Z.this), (String) "\u540c\u6b65\u5b8c\u6210");
+                            com.clilystudio.netbook.util.e.a(Z.b(Z.this), "同步完成");
                             return remoteBookShelf;
                         }
                         if ("TOKEN_INVALID".equals(remoteBookShelf.getCode())) {
-                            com.clilystudio.netbook.util.e.a((Activity) Z.b(Z.this), (int) R.string.sync_token_failed);
+                            com.clilystudio.netbook.util.e.a(Z.b(Z.this), R.string.sync_token_failed);
                             return remoteBookShelf;
                         }
-                        com.clilystudio.netbook.util.e.a((Activity) Z.b(Z.this), (String) "同步失败，请重试");
+                        com.clilystudio.netbook.util.e.a(Z.b(Z.this), "同步失败，请重试");
                         return remoteBookShelf;
                     }
-                    com.clilystudio.netbook.util.e.a((Activity) Z.b(Z.this), (String) "同步完成");
+                    com.clilystudio.netbook.util.e.a(Z.b(Z.this), "同步完成");
                     return remoteBookShelf;
                 }
-                com.clilystudio.netbook.util.e.a((Activity) Z.b(Z.this), (String) "同步失败，请检查网络或稍后再试");
+                com.clilystudio.netbook.util.e.a(Z.b(Z.this), "同步失败，请检查网络或稍后再试");
                 return remoteBookShelf;
             }
 
