@@ -238,9 +238,6 @@ public class a {
         b(context, "start_auto_read_time", 0);
     }
 
-    /*
-     * Enabled aggressive block sorting
-     */
     public static boolean E(String string) {
         File file;
         if (!string.endsWith(File.separator)) {

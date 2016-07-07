@@ -297,7 +297,5 @@ public class MyApplication extends Application {
                 com.clilystudio.netbook.hpay100.a.a.b(this, "PREF_FIRST_LAUNCH_TIME", Calendar.getInstance().getTimeInMillis());
             }
         }
-        am.s(this);
-//        SpeechUtility.createUtility(this, "appid=56655269");
     }
 }
