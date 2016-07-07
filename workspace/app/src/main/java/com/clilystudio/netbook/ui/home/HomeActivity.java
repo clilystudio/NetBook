@@ -476,7 +476,6 @@ public class HomeActivity extends HomeParentActivity implements ViewPager.OnPage
                     com.clilystudio.netbook.hpay100.a.a.b(this, "customer_night_theme", true);
                     com.clilystudio.netbook.hpay100.a.a.b(this, "night_mode", true);
                     MiStatInterface.recordCountEvent("start_night_theme_home", null);
-                    com.clilystudio.netbook.hpay100.a.a.B(this);
                     intent.putExtra("onThemeChange", 1);
                 }
                 this.startActivity(intent);
@@ -650,38 +649,6 @@ public class HomeActivity extends HomeParentActivity implements ViewPager.OnPage
                 return com.clilystudio.netbook.api.b.b().p(string3, string, string2);
             }
         }.b();
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                com.clilystudio.netbook.download.a a2;
-                boolean bl = true;
-                long l2 = com.clilystudio.netbook.hpay100.a.a.c(HomeActivity.this, "PREF_FIRST_LAUNCH_TIME", 0);
-                if (Calendar.getInstance().getTimeInMillis() - l2 < 604800000) {
-                    return;
-                }
-                if (bl && (a2 = com.clilystudio.netbook.hpay100.a.a.I(HomeActivity.this)) != null) {
-                    a2.a();
-                    String string = a2.b();
-                    SharedPreferences sharedPreferences = HomeActivity.this.getSharedPreferences("downloadInfo", 0);
-                    Set<String> set = sharedPreferences.getStringSet("uninstallShortcut", new HashSet<String>());
-                    boolean bl3 = (set != null && set.contains(string)) && bl;
-                    Set<String> set2 = sharedPreferences.getStringSet("downloadedPackage", null);
-                    if (set2 == null) return;
-                    if (!set2.contains(string)) {
-                        return;
-                    }
-                    if (bl && !bl3) {
-                        String string2 = sharedPreferences.getString("apkName", "");
-                        String string3 = sharedPreferences.getString("apkSavePath", "");
-                        com.clilystudio.netbook.download.e.b(HomeActivity.this, string3, string2);
-                        SharedPreferences.Editor editor = HomeActivity.this.getSharedPreferences("downloadInfo", 0).edit();
-                        set.add(string);
-                        editor.putStringSet("uninstallShortcut", set);
-                        editor.apply();
-                    }
-                }
-            }
-        }, 10000);
     }
 
     @Override
