@@ -85,7 +85,13 @@ public class ReaderViewPager extends ViewGroup {
         }
     };
 
-    private final Runnable mEndScrollRunnable;
+    private final Runnable mEndScrollRunnable = new Runnable() {
+        @Override
+        public void run() {
+            ReaderViewPager.a(ReaderViewPager.this, 0);
+            ReaderViewPager.this.b();
+        }
+    };
     private final ArrayList<cs> mItems = new ArrayList();
     private final cs mTempItem = new cs();
     private final Rect mTempRect = new Rect();
@@ -143,26 +149,12 @@ public class ReaderViewPager extends ViewGroup {
 
     public ReaderViewPager(Context context) {
         super(context);
-        this.mEndScrollRunnable = new Runnable() {
-            @Override
-            public void run() {
-                ReaderViewPager.a(ReaderViewPager.this, 0);
-                ReaderViewPager.this.b();
-            }
-        };
         this.mScrollState = 0;
         this.d();
     }
 
     public ReaderViewPager(Context context, AttributeSet attributeSet) {
         super(context, attributeSet);
-        this.mEndScrollRunnable = new new Runnable() {
-            @Override
-            public void run() {
-                ReaderViewPager.a(ReaderViewPager.this, 0);
-                ReaderViewPager.this.b();
-            }
-        };
         this.mScrollState = 0;
         this.d();
     }
@@ -210,7 +202,7 @@ public class ReaderViewPager extends ViewGroup {
 
     private cs a(int n, int n2) {
         cs cs2 = new cs();
-        cs2.b = (SettingWidget) n;
+        cs2.b = n;
         cs2.a = this.mAdapter.instantiateItem(this, n);
         cs2.d = this.mAdapter.getPageWidth(n);
         if (n2 < 0 || n2 >= this.mItems.size()) {
@@ -664,11 +656,8 @@ public class ReaderViewPager extends ViewGroup {
         }
         this.mScrollState = n;
         if (this.mPageTransformer$572aa01b != null) {
-            boolean bl = n != 0;
-            int n2 = this.getChildCount();
-            for (int i = 0; i < n2; ++i) {
-                int n3 = bl ? 2 : 0;
-                ViewCompat.setLayerType(this.getChildAt(i), n3, null);
+            for (int i = 0; i < this.getChildCount(); ++i) {
+                ViewCompat.setLayerType(this.getChildAt(i), n != 0 ? ViewCompat.LAYER_TYPE_HARDWARE : ViewCompat.LAYER_TYPE_NONE, null);
             }
         }
         if (this.mOnPageChangeListener == null) return;
@@ -822,7 +811,7 @@ public class ReaderViewPager extends ViewGroup {
 
     private void d() {
         this.setWillNotDraw(false);
-        this.setDescendantFocusability(262144);
+        this.setDescendantFocusability(ViewGroup.FOCUS_AFTER_DESCENDANTS);
         this.setFocusable(true);
         Context context = this.getContext();
         this.mScroller = new Scroller(context, sInterpolator);
@@ -881,8 +870,8 @@ public class ReaderViewPager extends ViewGroup {
                 return false;
             }
         });
-        if (ViewCompat.getImportantForAccessibility(this) == 0) {
-            ViewCompat.setImportantForAccessibility(this, 1);
+        if (ViewCompat.getImportantForAccessibility(this) == ViewCompat.IMPORTANT_FOR_ACCESSIBILITY_AUTO) {
+            ViewCompat.setImportantForAccessibility(this, ViewCompat.IMPORTANT_FOR_ACCESSIBILITY_YES);
         }
     }
 
@@ -905,11 +894,11 @@ public class ReaderViewPager extends ViewGroup {
             int n2 = this.e();
             int n3 = n2 + this.mPageMargin;
             float f = (float) this.mPageMargin / (float) n2;
-            SettingWidget settingWidget = cs2.b;
+            int i1 = cs2.b;
             float f2 = ((float) n / (float) n2 - cs2.e) / (f + cs2.d);
             int n4 = (int) (f2 * (float) n3);
             this.mCalledSuper = false;
-            this.a((int) settingWidget, f2, n4);
+            this.a(i1, f2, n4);
             if (!this.mCalledSuper) {
                 throw new IllegalStateException("onPageScrolled did not call superclass implementation");
             }
@@ -999,7 +988,7 @@ public class ReaderViewPager extends ViewGroup {
         float f2 = n > 0 ? (float) this.mPageMargin / (float) n : 0.0f;
         float f3 = 0.0f;
         float f4 = 0.0f;
-        Object object = -1;
+        int object = -1;
         int n2 = 0;
         boolean bl = true;
         cs cs2 = null;
@@ -1010,7 +999,7 @@ public class ReaderViewPager extends ViewGroup {
             if (!bl && cs4.b != object + 1) {
                 cs cs5 = this.mTempItem;
                 cs5.e = f2 + (f3 + f4);
-                cs5.b = (SettingWidget) (object + 1);
+                cs5.b = (object + 1);
                 cs5.d = this.mAdapter.getPageWidth((int) cs5.b);
                 n3 = n2 - 1;
                 cs3 = cs5;
@@ -1027,11 +1016,11 @@ public class ReaderViewPager extends ViewGroup {
             if (n3 == -1 + this.mItems.size()) {
                 return cs3;
             }
-            SettingWidget settingWidget = cs3.b;
+            int i1 = cs3.b;
             float f7 = cs3.d;
             int n4 = n3 + 1;
             f4 = f5;
-            object = settingWidget;
+            object = i1;
             f3 = f7;
             cs2 = cs3;
             n2 = n4;
@@ -1116,27 +1105,11 @@ public class ReaderViewPager extends ViewGroup {
         }
     }
 
-    /*
-     * Enabled force condition propagation
-     * Lifted jumps to return sites
-     */
     public final boolean a(int n) {
-        boolean bl;
         this.mPopulatePending = false;
-        if (!this.mFirstLayout) {
-            bl = true;
-            do {
-                return this.a(n, bl, false, 0);
-                break;
-            } while (true);
-        }
-        bl = false;
-        return this.a(n, bl, false, 0);
+        return this.a(n, !this.mFirstLayout, false, 0);
     }
 
-    /*
-     * Enabled aggressive block sorting
-     */
     @Override
     public void addFocusables(ArrayList<View> arrayList, int n, int n2) {
         int n3 = arrayList.size();
@@ -1145,11 +1118,11 @@ public class ReaderViewPager extends ViewGroup {
             for (int i = 0; i < this.getChildCount(); ++i) {
                 cs cs2;
                 View view = this.getChildAt(i);
-                if (view.getVisibility() != 0 || (cs2 = this.a(view)) == null || cs2.b != this.mCurItem) continue;
+                if (view.getVisibility() != VISIBLE || (cs2 = this.a(view)) == null || cs2.b != this.mCurItem) continue;
                 view.addFocusables(arrayList, n, n2);
             }
         }
-        if (n4 == 262144 && n3 != arrayList.size() || !this.isFocusable() || (n2 & 1) == 1 && this.isInTouchMode() && !this.isFocusableInTouchMode() || arrayList == null) {
+        if (n4 == ViewGroup.FOCUS_AFTER_DESCENDANTS && n3 != arrayList.size() || !this.isFocusable() || (n2 & 1) == 1 && this.isInTouchMode() && !this.isFocusableInTouchMode() || arrayList == null) {
             return;
         }
         arrayList.add(this);
@@ -1160,7 +1133,7 @@ public class ReaderViewPager extends ViewGroup {
         for (int i = 0; i < this.getChildCount(); ++i) {
             cs cs2;
             View view = this.getChildAt(i);
-            if (view.getVisibility() != 0 || (cs2 = this.a(view)) == null || cs2.b != this.mCurItem) continue;
+            if (view.getVisibility() != VISIBLE || (cs2 = this.a(view)) == null || cs2.b != this.mCurItem) continue;
             view.addTouchables(arrayList);
         }
     }
@@ -1264,7 +1237,7 @@ public class ReaderViewPager extends ViewGroup {
             boolean bl = false;
             if (n2 >= n) return bl;
             View view = this.getChildAt(n2);
-            if (view.getVisibility() == 0 && (cs2 = this.a(view)) != null && cs2.b == this.mCurItem && view.dispatchPopulateAccessibilityEvent(accessibilityEvent)) {
+            if (view.getVisibility() == VISIBLE && (cs2 = this.a(view)) != null && cs2.b == this.mCurItem && view.dispatchPopulateAccessibilityEvent(accessibilityEvent)) {
                 return true;
             }
             ++n2;
@@ -1367,15 +1340,14 @@ public class ReaderViewPager extends ViewGroup {
             cs cs2 = this.mItems.get(0);
             float f2 = cs2.e;
             int n3 = this.mItems.size();
-            reference var8_8 = cs2.b;
-            SettingWidget settingWidget = this.mItems.get((int) (n3 - 1)).b;
+            int var8_8 = cs2.b;
+            int settingWidget = this.mItems.get((int) (n3 - 1)).b;
             int n4 = 0;
-            for (reference var11_11 = var8_8; var11_11 < settingWidget; ++var11_11) {
-                float f3;
+            for (int var11_11 = var8_8; var11_11 < settingWidget; ++var11_11) {
                 while (var11_11 > cs2.b && n4 < n3) {
-                    ArrayList<cs> arrayList = this.mItems;
-                    cs2 = arrayList.get(++n4);
+                    cs2 = this.mItems.get(++n4);
                 }
+                float f3;
                 if (var11_11 == cs2.b) {
                     f3 = (cs2.e + cs2.d) * (float) n2;
                     f2 = f + (cs2.e + cs2.d);
@@ -1747,7 +1719,7 @@ public class ReaderViewPager extends ViewGroup {
                     }
                 } else {
                     float var14_24 = var12_19 >= this.mCurItem ? 0.4f : 0.6f;
-                    var12_19 = (int) (var14_24 + var13_20 +  var12_19);
+                    var12_19 = (int) (var14_24 + var13_20 + var12_19);
                 }
                 if (this.mItems.size() > 0) {
                     cs var17_22 = this.mItems.get(0);
