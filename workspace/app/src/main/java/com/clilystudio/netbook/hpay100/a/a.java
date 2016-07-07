@@ -30,20 +30,16 @@ import android.os.Environment;
 import android.os.StatFs;
 import android.os.SystemClock;
 import android.preference.PreferenceManager;
-import android.support.design.widget.K;
+
+import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.am;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.NotificationBuilderWithBuilderAccessor;
-import android.support.v4.app.NotificationCompatBase$Action;
+import android.support.v4.app.NotificationCompatBase;
 import android.support.v4.view.ViewPager;
-import android.support.v7.appcompat.R$dimen;
-import android.support.v7.appcompat.R$id;
-import android.support.v7.appcompat.R$integer;
-import android.support.v7.appcompat.R$layout;
-import android.support.v7.appcompat.R$string;
 import android.text.TextUtils;
 import android.util.Base64;
 import android.util.DisplayMetrics;
@@ -60,9 +56,6 @@ import com.clilystudio.netbook.db.BookFile;
 import com.clilystudio.netbook.db.BookReadRecord;
 import com.clilystudio.netbook.db.BookSyncRecord;
 import com.clilystudio.netbook.db.SourceRecord;
-import com.clilystudio.netbook.hpay100.config.HPaySMS;
-import com.clilystudio.netbook.hpay100.config.w;
-import com.clilystudio.netbook.hpay100.y;
 import com.clilystudio.netbook.model.BookInfo;
 import com.clilystudio.netbook.model.Chapter;
 import com.clilystudio.netbook.model.ChapterLink;
@@ -79,22 +72,14 @@ import com.clilystudio.netbook.util.I;
 import com.clilystudio.netbook.util.X;
 import com.clilystudio.netbook.util.t;
 import com.integralblue.httpresponsecache.compat.java.lang.ArrayIndexOutOfBoundsException;
-import com.integralblue.httpresponsecache.compat.libcore.net.http.C;
-import com.migu.sdk.api.MiguSdk;
-import com.mob.tools.a.i;
-import com.mob.tools.a.l;
-import com.mob.tools.a.p;
 import com.umeng.onlineconfig.OnlineConfigAgent;
 import com.xiaomi.mistatistic.sdk.MiStatInterface;
 
 import org.apache.thrift.d;
 import org.apache.thrift.e;
 import org.apache.thrift.g;
-import org.apache.thrift.protocol.a$a;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.litepal.exceptions.DataSupportException;
-import org.litepal.exceptions.DatabaseGenerateException;
 import org.mozilla.universalchardet.UniversalDetector;
 
 import java.io.BufferedReader;
@@ -150,8 +135,6 @@ import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
 
 import okio.ByteString;
-import u.aly.be;
-import u.aly.bt;
 
 public class a {
     public static int a;
@@ -181,12 +164,12 @@ public class a {
             return CipherUtil.getNewAdvert(string2, string, MyApplication.a());
         }
         I.h = false;
-        long l = a.Y("http://www.taobao.com");
+        long l = Y("http://www.taobao.com");
         if (l <= 7200) {
-            l = a.Y("http://www.163.com");
+            l = Y("http://www.163.com");
         }
         if (l <= 7200) {
-            l = a.Y("http://www.baidu.com/");
+            l = Y("http://www.baidu.com/");
         }
         if (l <= 7200) {
             l = 7200 + new Date().getTime() / 1000;
@@ -199,7 +182,7 @@ public class a {
     }
 
     public static void B(Context context) {
-        a.b(context, "start_night_theme", new Date().getTime());
+        b(context, "start_night_theme", new Date().getTime());
     }
 
     public static boolean B(String string) {
@@ -207,12 +190,12 @@ public class a {
     }
 
     public static void C(Context context) {
-        long l2 = a.a(context, "start_night_theme", 0);
+        long l2 = a(context, "start_night_theme", 0);
         long l3 = new Date().getTime();
         if (l2 > 0 && l3 > l2) {
             MiStatInterface.recordCalculateEvent("night_theme_period", null, (int) ((l3 - l2) / 1000 / 60));
         }
-        a.b(context, "start_night_theme", 0);
+        b(context, "start_night_theme", 0);
     }
 
     public static byte[] C(String p0) {
@@ -239,20 +222,20 @@ public class a {
 
     public static ArrayList<String> D(String string) {
         String string2 = "/ZhuiShuShenQi/Chapter" + File.separator + string;
-        return a.c(new File(c.a, string2));
+        return c(new File(c.a, string2));
     }
 
     public static void D(Context context) {
-        a.b(context, "start_auto_read_time", new Date().getTime());
+        b(context, "start_auto_read_time", new Date().getTime());
     }
 
     public static void E(Context context) {
-        long l2 = a.a(context, "start_auto_read_time", 0);
+        long l2 = a(context, "start_auto_read_time", 0);
         long l3 = new Date().getTime();
         if (l2 > 0 && l3 > l2) {
             MiStatInterface.recordCalculateEvent("auto_read_period", null, (int) ((l3 - l2) / 1000 / 60));
         }
-        a.b(context, "start_auto_read_time", 0);
+        b(context, "start_auto_read_time", 0);
     }
 
     /*
@@ -275,7 +258,7 @@ public class a {
         int n3 = 0;
         do {
             File file2;
-            if (n3 >= n2 || ((file2 = arrfile[n3]).isFile() ? !(bl = a.F(file2.getAbsolutePath())) : !(bl = a.E(file2.getAbsolutePath())))) {
+            if (n3 >= n2 || ((file2 = arrfile[n3]).isFile() ? !(bl = F(file2.getAbsolutePath())) : !(bl = E(file2.getAbsolutePath())))) {
                 if (bl) break;
                 return false;
             }
@@ -289,7 +272,7 @@ public class a {
      * Lifted jumps to return sites
      */
     public static boolean F(Context context) {
-        if (!a.r(context, "show_new_ads")) return false;
+        if (!r(context, "show_new_ads")) return false;
         String string = am.n((Context) context);
         String string2 = OnlineConfigAgent.getInstance().getConfigParams(context, "show_new_ads_disabled_channel");
         if (string2 == null || string2.length() <= 0) return true;
@@ -320,7 +303,7 @@ public class a {
     }
 
     public static BufferedReader G(String string) {
-        return new BufferedReader(new InputStreamReader((InputStream) new FileInputStream(new File(string)), a.H(string)));
+        return new BufferedReader(new InputStreamReader((InputStream) new FileInputStream(new File(string)), H(string)));
     }
 
     public static void G(Context context) {
@@ -342,12 +325,12 @@ public class a {
         byte[] arrby = new byte[4096];
         FileInputStream fileInputStream = new FileInputStream(string);
         UniversalDetector universalDetector = new UniversalDetector(null);
-        while ((n2 = fileInputStream.read(arrby)) > 0 && !universalDetector.a()) {
-            universalDetector.a(arrby, 0, n2);
+        while ((n2 = fileInputStream.read(arrby)) > 0 && !universalDetector.isDone()) {
+            universalDetector.handleData(arrby, 0, n2);
         }
-        universalDetector.c();
-        String string2 = universalDetector.b();
-        universalDetector.d();
+        universalDetector.dataEnd();
+        String string2 = universalDetector.getDetectedCharset();
+        universalDetector.reset();
         if (string2 == null) {
             string2 = "utf-8";
         }
@@ -359,14 +342,14 @@ public class a {
         String string2 = OnlineConfigAgent.getInstance().getConfigParams(context, "app_apk_url");
         String string3 = OnlineConfigAgent.getInstance().getConfigParams(context, "app_icon_url");
         String string4 = OnlineConfigAgent.getInstance().getConfigParams(context, "app_package_name");
-        if (!(a.Z(string) || a.Z(string2) || a.Z(string3) || a.Z(string4))) {
+        if (!(Z(string) || Z(string2) || Z(string3) || Z(string4))) {
             return new com.clilystudio.netbook.download.a(context, string, string2, string3, string4);
         }
         return null;
     }
 
     public static File I(String string) {
-        File file = a.J(c.g);
+        File file = J(c.g);
         if (file == null) {
             return null;
         }
@@ -378,7 +361,7 @@ public class a {
      * Lifted jumps to return sites
      */
     public static File J(String string) {
-        if (!a.d()) {
+        if (!d()) {
             return null;
         }
         File file = new File(string);
@@ -388,11 +371,11 @@ public class a {
     }
 
     public static void J(Context context) {
-        a.b(context, "tts_start_time", new Date().getTime());
+        b(context, "tts_start_time", new Date().getTime());
     }
 
     public static String K(String string) {
-        if (a.Q(string)) {
+        if (Q(string)) {
             return "";
         }
         return string.substring(1 + string.lastIndexOf(File.separator));
@@ -400,7 +383,7 @@ public class a {
 
     public static int L(Context context) {
         DisplayMetrics displayMetrics = new DisplayMetrics();
-        ((WindowManager) context.getSystemService("window")).getDefaultDisplay().getMetrics(displayMetrics);
+        ((WindowManager) context.getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay().getMetrics(displayMetrics);
         return displayMetrics.heightPixels;
     }
 
@@ -422,14 +405,14 @@ public class a {
     }
 
     public static HashMap<String, String> M(String string) {
-        return (HashMap) a.k(c.c, string);
+        return (HashMap) k(c.c, string);
     }
 
     public static String N(String string) {
         if (string == null) {
             return "";
         }
-        return com.integralblue.httpresponsecache.compat.libcore.a.a.b(a.C(string)) + ".apk";
+        return com.integralblue.httpresponsecache.compat.libcore.a.a.b(C(string)) + ".apk";
     }
 
     /*
@@ -461,7 +444,7 @@ public class a {
             if (arrl[1] <= 0) {
                 return null;
             }
-            SharedPreferences sharedPreferences = a.M(context);
+            SharedPreferences sharedPreferences = M(context);
             long l2 = sharedPreferences.getLong("uptr", -1);
             long l3 = sharedPreferences.getLong("dntr", -1);
             sharedPreferences.edit().putLong("uptr", (long) arrl[1]).putLong("dntr", (long) arrl[0]).commit();
@@ -623,7 +606,7 @@ public class a {
         }
         String string2 = a2.a();
         if (TextUtils.isEmpty(string2)) return string.substring(1 + string.lastIndexOf("."));
-        return a.S(string2);
+        return S(string2);
     }
 
     private static String W(String string) {
@@ -632,7 +615,7 @@ public class a {
             byte[] arrby = new byte[8];
             fileInputStream.read(arrby);
             fileInputStream.close();
-            String string2 = a.g(arrby);
+            String string2 = g(arrby);
             return string2;
         } catch (Exception var2_4) {
             com.mob.tools.e.a().w(var2_4);
@@ -739,11 +722,11 @@ public class a {
     }
 
     public static int a(URI uRI) {
-        return a.a(uRI.getScheme(), uRI.getPort());
+        return a(uRI.getScheme(), uRI.getPort());
     }
 
     public static int a(URL uRL) {
-        return a.a(uRL.getProtocol(), uRL.getPort());
+        return a(uRL.getProtocol(), uRL.getPort());
     }
 
     /*
@@ -810,7 +793,7 @@ public class a {
         long l4 = string.length();
         while ((long) n2 < l4) {
             int n4 = n2 + 1;
-            int n5 = a.a((int) string.charAt(n2), n3);
+            int n5 = a((int) string.charAt(n2), n3);
             if (n5 == -1) {
                 throw new Throwable("Invalid long: \"" + string + "\"");
             }
@@ -853,7 +836,7 @@ public class a {
         Paint paint = new Paint();
         paint.setFlags(2);
         canvas.drawBitmap(bitmap, 0.0f, 0.0f, paint);
-        a.a(bitmap2, 3, true);
+        a(bitmap2, 3, true);
         return bitmap2;
     }
 
@@ -1092,15 +1075,15 @@ public class a {
     /*
      * Enabled aggressive block sorting
      */
-    private static RemoteViews a(Context context, NotificationCompatBase$Action notificationCompatBase$Action) {
+    private static RemoteViews a(Context context, NotificationCompatBase.Action notificationCompatBase$Action) {
         boolean bl = notificationCompatBase$Action.getActionIntent() == null;
-        RemoteViews remoteViews = new RemoteViews(context.getPackageName(), R$layout.notification_media_action);
-        remoteViews.setImageViewResource(R$id.action0, notificationCompatBase$Action.getIcon());
+        RemoteViews remoteViews = new RemoteViews(context.getPackageName(), R.layout.notification_media_action);
+        remoteViews.setImageViewResource(R.id.action0, notificationCompatBase$Action.getIcon());
         if (!bl) {
-            remoteViews.setOnClickPendingIntent(R$id.action0, notificationCompatBase$Action.getActionIntent());
+            remoteViews.setOnClickPendingIntent(R.id.action0, notificationCompatBase$Action.getActionIntent());
         }
         if (Build.VERSION.SDK_INT >= 15) {
-            remoteViews.setContentDescription(R$id.action0, notificationCompatBase$Action.getTitle());
+            remoteViews.setContentDescription(R.id.action0, notificationCompatBase$Action.getTitle());
         }
         return remoteViews;
     }
@@ -1112,33 +1095,33 @@ public class a {
         boolean bl3;
         RemoteViews remoteViews = new RemoteViews(context.getPackageName(), n3);
         if (bitmap != null && Build.VERSION.SDK_INT >= 16) {
-            remoteViews.setImageViewBitmap(R$id.icon, bitmap);
+            remoteViews.setImageViewBitmap(R.id.icon, bitmap);
         } else {
-            remoteViews.setViewVisibility(R$id.icon, 8);
+            remoteViews.setViewVisibility(R.id.icon, 8);
         }
         if (charSequence != null) {
-            remoteViews.setTextViewText(R$id.title, charSequence);
+            remoteViews.setTextViewText(R.id.title, charSequence);
         }
         boolean bl4 = false;
         if (charSequence2 != null) {
-            remoteViews.setTextViewText(R$id.text, charSequence2);
+            remoteViews.setTextViewText(R.id.text, charSequence2);
             bl4 = true;
         }
         if (charSequence3 != null) {
-            remoteViews.setTextViewText(R$id.info, charSequence3);
-            remoteViews.setViewVisibility(R$id.info, 0);
+            remoteViews.setTextViewText(R.id.info, charSequence3);
+            remoteViews.setViewVisibility(R.id.info, 0);
             bl3 = true;
         } else if (n2 > 0) {
-            if (n2 > context.getResources().getInteger(R$integer.status_bar_notification_info_maxnum)) {
-                remoteViews.setTextViewText(R$id.info, context.getResources().getString(R$string.status_bar_notification_info_overflow));
+            if (n2 > context.getResources().getInteger(R.integer.status_bar_notification_info_maxnum)) {
+                remoteViews.setTextViewText(R.id.info, context.getResources().getString(R.string.status_bar_notification_info_overflow));
             } else {
                 NumberFormat numberFormat = NumberFormat.getIntegerInstance();
-                remoteViews.setTextViewText(R$id.info, numberFormat.format(n2));
+                remoteViews.setTextViewText(R.id.info, numberFormat.format(n2));
             }
-            remoteViews.setViewVisibility(R$id.info, 0);
+            remoteViews.setViewVisibility(R.id.info, 0);
             bl3 = true;
         } else {
-            remoteViews.setViewVisibility(R$id.info, 8);
+            remoteViews.setViewVisibility(R.id.info, 8);
             bl3 = bl4;
         }
         boolean bl5 = false;
@@ -1146,35 +1129,35 @@ public class a {
             int n4 = Build.VERSION.SDK_INT;
             bl5 = false;
             if (n4 >= 16) {
-                remoteViews.setTextViewText(R$id.text, charSequence4);
+                remoteViews.setTextViewText(R.id.text, charSequence4);
                 if (charSequence2 != null) {
-                    remoteViews.setTextViewText(R$id.text2, charSequence2);
-                    remoteViews.setViewVisibility(R$id.text2, 0);
+                    remoteViews.setTextViewText(R.id.text2, charSequence2);
+                    remoteViews.setViewVisibility(R.id.text2, 0);
                     bl5 = true;
                 } else {
-                    remoteViews.setViewVisibility(R$id.text2, 8);
+                    remoteViews.setViewVisibility(R.id.text2, 8);
                     bl5 = false;
                 }
                 if (bl5 && Build.VERSION.SDK_INT >= 16) {
                     if (bl2) {
-                        float f2 = context.getResources().getDimensionPixelSize(R$dimen.notification_subtext_size);
-                        remoteViews.setTextViewTextSize(R$id.text, 0, f2);
+                        float f2 = context.getResources().getDimensionPixelSize(R.dimen.notification_subtext_size);
+                        remoteViews.setTextViewTextSize(R.id.text, 0, f2);
                     }
-                    remoteViews.setViewPadding(R$id.line1, 0, 0, 0, 0);
+                    remoteViews.setViewPadding(R.id.line1, 0, 0, 0, 0);
                 }
             }
         }
         if (l2 != 0) {
             if (bl) {
-                remoteViews.setViewVisibility(R$id.chronometer, 0);
-                remoteViews.setLong(R$id.chronometer, "setBase", l2 + (SystemClock.elapsedRealtime() - System.currentTimeMillis()));
-                remoteViews.setBoolean(R$id.chronometer, "setStarted", true);
+                remoteViews.setViewVisibility(R.id.chronometer, 0);
+                remoteViews.setLong(R.id.chronometer, "setBase", l2 + (SystemClock.elapsedRealtime() - System.currentTimeMillis()));
+                remoteViews.setBoolean(R.id.chronometer, "setStarted", true);
             } else {
-                remoteViews.setViewVisibility(R$id.time, 0);
-                remoteViews.setLong(R$id.time, "setTime", l2);
+                remoteViews.setViewVisibility(R.id.time, 0);
+                remoteViews.setLong(R.id.time, "setTime", l2);
             }
         }
-        int n5 = R$id.line3;
+        int n5 = R.id.line3;
         int n6 = bl3 ? 0 : 8;
         remoteViews.setViewVisibility(n5, n6);
         return remoteViews;
@@ -1266,7 +1249,7 @@ public class a {
                 if (bl2) {
                     boolean bl3 = context.checkCallingOrSelfPermission("android.permission.WRITE_EXTERNAL_STORAGE") == 0;
                     file = null;
-                    if (bl3 && (file = a.O(context)) != null) break block3;
+                    if (bl3 && (file = O(context)) != null) break block3;
                 }
             }
             file = context.getCacheDir();
@@ -1302,7 +1285,7 @@ public class a {
      */
     public static String a() {
         synchronized (a.class) {
-            String string2 = a.m();
+            String string2 = m();
             boolean bl = am.a((String) string2);
             String string3 = null;
             if (bl) return string3;
@@ -1351,9 +1334,9 @@ public class a {
             block3:
             {
                 String string3;
-                string2 = a.a();
+                string2 = a();
                 if (!am.a((String) string2)) break block3;
-                string2 = string3 = a.b(context);
+                string2 = string3 = b(context);
             }
             return string2;
         }
@@ -1368,9 +1351,9 @@ public class a {
      * Enabled aggressive exception aggregation
      */
     public static String a(Context var0, String var1_1, Map var2_2, boolean var3_3, int var4_4, int var5_5, boolean var6_6) {
-        a.b("dalongTest", "http get request url:" + var1_1);
-        if (!a.j(var0)) {
-            a.b("dalongTest", "net error");
+        b("dalongTest", "http get request url:" + var1_1);
+        if (!j(var0)) {
+            b("dalongTest", "net error");
             return null;
         }
         var10_7 = com.clilystudio.netbook.hpay100.b.c.a(var0, 30000, 40000, true);
@@ -1380,7 +1363,7 @@ public class a {
             lbl11:
             // 2 sources:
             do {
-                a.b("dalongTest", "http request result:" + var14_9);
+                b("dalongTest", "http request result:" + var14_9);
                 var10_7.a();
                 return var14_9;
                 break;
@@ -1510,9 +1493,9 @@ public class a {
             return "MIX_TOC_ID" + string2;
         }
         if (n2 == 0) return string4;
-        if (!a.h(n2)) return null;
+        if (!h(n2)) return null;
         if (n2 != 3) return string3 + "_" + string2;
-        String[] arrstring = a.O(string3);
+        String[] arrstring = O(string3);
         if (arrstring == null) return string3 + "_" + string2;
         string3 = arrstring[0];
         return string3 + "_" + string2;
@@ -1594,7 +1577,7 @@ public class a {
             if (string3 == null) {
                 string3 = "";
             }
-            stringBuilder.append(a.j(string2) + "=" + a.j(string3));
+            stringBuilder.append(j(string2) + "=" + j(string3));
             ++n2;
         }
         return stringBuilder.toString();
@@ -1729,7 +1712,7 @@ public class a {
                 arrstring = null;
             }
             if (com.mob.a.a.c.a(context).a("table_exception") <= 0) return new ArrayList();
-            ArrayList<com.mob.a.a.f> arrayList = a.a(context, string2, arrstring);
+            ArrayList<com.mob.a.a.f> arrayList = a(context, string2, arrstring);
             return arrayList;
         }
     }
@@ -1771,14 +1754,14 @@ public class a {
             String string3 = c2.b(k);
             int n2 = 0;
             while (n2 < string3.length()) {
-                int n3 = a.b(string3, n2, " ");
+                int n3 = b(string3, n2, " ");
                 String string4 = string3.substring(n2, n3).trim();
-                n2 = a.c(string3, n3);
+                n2 = c(string3, n3);
                 if (!string3.regionMatches(n2, "realm=\"", 0, 7)) continue;
                 int n4 = n2 + 7;
-                int n5 = a.b(string3, n4, "\"");
+                int n5 = b(string3, n4, "\"");
                 String string5 = string3.substring(n4, n5);
-                n2 = a.c(string3, 1 + a.b(string3, n5 + 1, ","));
+                n2 = c(string3, 1 + b(string3, n5 + 1, ","));
                 arrayList.add(new com.integralblue.httpresponsecache.compat.libcore.net.http.c(string4, string5));
             }
         }
@@ -1789,7 +1772,7 @@ public class a {
         HashMap<String, String> hashMap = new HashMap<String, String>();
         hashMap.put("uid", com.clilystudio.netbook.util.e.c((Context) context));
         hashMap.put("iid", string2);
-        hashMap.put("iids", a.n());
+        hashMap.put("iids", n());
         hashMap.put("num", "20");
         return hashMap;
     }
@@ -1882,11 +1865,11 @@ public class a {
             hashSet.retainAll(arrayList2);
             for (String string4 : arrayList) {
                 if (hashSet.contains(string4)) continue;
-                a.t(string4);
+                t(string4);
             }
             for (String string5 : arrayList2) {
                 if (hashSet.contains(string5)) continue;
-                a.r(string5);
+                r(string5);
             }
         }
     }
@@ -1894,23 +1877,23 @@ public class a {
     /*
      * Enabled aggressive block sorting
      */
-    public static <T extends NotificationCompatBase$Action> void a(Notification notification, Context context, CharSequence charSequence, CharSequence charSequence2, CharSequence charSequence3, int n2, Bitmap bitmap, CharSequence charSequence4, boolean bl, long l2, List<T> list, boolean bl2, PendingIntent pendingIntent) {
+    public static <T extends NotificationCompatBase.Action> void a(Notification notification, Context context, CharSequence charSequence, CharSequence charSequence2, CharSequence charSequence3, int n2, Bitmap bitmap, CharSequence charSequence4, boolean bl, long l2, List<T> list, boolean bl2, PendingIntent pendingIntent) {
         int n3 = Math.min(list.size(), 5);
-        int n4 = n3 <= 3 ? R$layout.notification_template_big_media_narrow : R$layout.notification_template_big_media;
-        RemoteViews remoteViews = a.a(context, charSequence, charSequence2, charSequence3, n2, bitmap, charSequence4, bl, l2, n4, false);
-        remoteViews.removeAllViews(R$id.media_actions);
+        int n4 = n3 <= 3 ? R.layout.notification_template_big_media_narrow : R.layout.notification_template_big_media;
+        RemoteViews remoteViews = a(context, charSequence, charSequence2, charSequence3, n2, bitmap, charSequence4, bl, l2, n4, false);
+        remoteViews.removeAllViews(R.id.media_actions);
         if (n3 > 0) {
             for (int k = 0; k < n3; ++k) {
-                RemoteViews remoteViews2 = a.a(context, (NotificationCompatBase$Action) list.get(k));
-                remoteViews.addView(R$id.media_actions, remoteViews2);
+                RemoteViews remoteViews2 = a(context, (NotificationCompatBase.Action) list.get(k));
+                remoteViews.addView(R.id.media_actions, remoteViews2);
             }
         }
         if (bl2) {
-            remoteViews.setViewVisibility(R$id.cancel_action, 0);
-            remoteViews.setInt(R$id.cancel_action, "setAlpha", context.getResources().getInteger(R$integer.cancel_button_image_alpha));
-            remoteViews.setOnClickPendingIntent(R$id.cancel_action, pendingIntent);
+            remoteViews.setViewVisibility(R.id.cancel_action, 0);
+            remoteViews.setInt(R.id.cancel_action, "setAlpha", context.getResources().getInteger(R.integer.cancel_button_image_alpha));
+            remoteViews.setOnClickPendingIntent(R.id.cancel_action, pendingIntent);
         } else {
-            remoteViews.setViewVisibility(R$id.cancel_action, 8);
+            remoteViews.setViewVisibility(R.id.cancel_action, 8);
         }
         notification.bigContentView = remoteViews;
         if (bl2) {
@@ -1932,7 +1915,7 @@ public class a {
         int n2 = context.getResources().getDimensionPixelSize(R.dimen.tab_overlap);
         View view = new View(context);
         view.setLayoutParams(new AbsListView.LayoutParams(-2, n2));
-        if (a.a(context, "customer_night_theme", false)) {
+        if (a(context, "customer_night_theme", false)) {
             view.setBackgroundResource(R.drawable.bg_dark_list_item);
         } else {
             view.setBackgroundResource(R.drawable.bg_list_item);
@@ -1958,7 +1941,7 @@ public class a {
         hashMap.put("author", bookInfo.getAuthor());
         String string2 = bookInfo.getIsSerial() ? "serialize" : "end";
         hashMap.put("tag", string2);
-        hashMap.put("attr", a.a(bookInfo));
+        hashMap.put("attr", a(bookInfo));
         com.a.a.a.d(context, bookInfo.getId(), hashMap);
     }
 
@@ -2027,29 +2010,29 @@ public class a {
     /*
      * Enabled aggressive block sorting
      */
-    public static <T extends NotificationCompatBase$Action> void a(NotificationBuilderWithBuilderAccessor notificationBuilderWithBuilderAccessor, Context context, CharSequence charSequence, CharSequence charSequence2, CharSequence charSequence3, int n2, Bitmap bitmap, CharSequence charSequence4, boolean bl, long l2, List<T> list, int[] arrn, boolean bl2, PendingIntent pendingIntent) {
-        RemoteViews remoteViews = a.a(context, charSequence, charSequence2, charSequence3, n2, bitmap, charSequence4, bl, l2, R$layout.notification_template_media, true);
+    public static <T extends NotificationCompatBase.Action> void a(NotificationBuilderWithBuilderAccessor notificationBuilderWithBuilderAccessor, Context context, CharSequence charSequence, CharSequence charSequence2, CharSequence charSequence3, int n2, Bitmap bitmap, CharSequence charSequence4, boolean bl, long l2, List<T> list, int[] arrn, boolean bl2, PendingIntent pendingIntent) {
+        RemoteViews remoteViews = a(context, charSequence, charSequence2, charSequence3, n2, bitmap, charSequence4, bl, l2, R.layout.notification_template_media, true);
         int n3 = list.size();
         int n4 = arrn == null ? 0 : Math.min(arrn.length, 3);
-        remoteViews.removeAllViews(R$id.media_actions);
+        remoteViews.removeAllViews(R.id.media_actions);
         if (n4 > 0) {
             for (int k = 0; k < n4; ++k) {
                 if (k >= n3) {
                     Object[] arrobject = new Object[]{k, n3 - 1};
                     throw new IllegalArgumentException(String.format("setShowActionsInCompactView: action %d out of bounds (max %d)", arrobject));
                 }
-                RemoteViews remoteViews2 = a.a(context, (NotificationCompatBase$Action) list.get(arrn[k]));
-                remoteViews.addView(R$id.media_actions, remoteViews2);
+                RemoteViews remoteViews2 = a(context, (NotificationCompatBase.Action) list.get(arrn[k]));
+                remoteViews.addView(R.id.media_actions, remoteViews2);
             }
         }
         if (bl2) {
-            remoteViews.setViewVisibility(R$id.end_padder, 8);
-            remoteViews.setViewVisibility(R$id.cancel_action, 0);
-            remoteViews.setOnClickPendingIntent(R$id.cancel_action, pendingIntent);
-            remoteViews.setInt(R$id.cancel_action, "setAlpha", context.getResources().getInteger(R$integer.cancel_button_image_alpha));
+            remoteViews.setViewVisibility(R.id.end_padder, 8);
+            remoteViews.setViewVisibility(R.id.cancel_action, 0);
+            remoteViews.setOnClickPendingIntent(R.id.cancel_action, pendingIntent);
+            remoteViews.setInt(R.id.cancel_action, "setAlpha", context.getResources().getInteger(R.integer.cancel_button_image_alpha));
         } else {
-            remoteViews.setViewVisibility(R$id.end_padder, 0);
-            remoteViews.setViewVisibility(R$id.cancel_action, 8);
+            remoteViews.setViewVisibility(R.id.end_padder, 0);
+            remoteViews.setViewVisibility(R.id.cancel_action, 8);
         }
         notificationBuilderWithBuilderAccessor.getBuilder().setContent(remoteViews);
         if (bl2) {
@@ -2066,7 +2049,7 @@ public class a {
         Method method;
         Object[] arrobject;
         Field field;
-        if (view == null || !a.k()) {
+        if (view == null || !k()) {
             return;
         }
         try {
@@ -2102,7 +2085,7 @@ public class a {
         synchronized (a.class) {
             String string2;
             boolean bl = am.a((String) d2.a());
-            if (!bl && !d2.a().equals(a.a()) && (string2 = d2.a() + "`" + d2.d()) != null) {
+            if (!bl && !d2.a().equals(a()) && (string2 = d2.a() + "`" + d2.d()) != null) {
                 try {
                     String string3 = com.alipay.security.mobile.module.a.a.b.a(com.alipay.security.mobile.module.a.a.b.a(), string2);
                     JSONObject jSONObject = new JSONObject();
@@ -2174,7 +2157,7 @@ public class a {
             }
             File file2 = new File(file, arrstring[n3]);
             if (file2.isDirectory()) {
-                a.a(file2);
+                a(file2);
             } else {
                 file2.delete();
             }
@@ -2195,7 +2178,7 @@ public class a {
 
     public static <T> void a(T t, String string2, String string3) {
         try {
-            File file = new File(a.J(string2), string3);
+            File file = new File(J(string2), string3);
             if (!file.exists()) {
                 file.createNewFile();
             }
@@ -2221,7 +2204,7 @@ public class a {
         boolean bl = false;
         if (cursor != null) {
             while (cursor.moveToNext()) {
-                if (!a.B(cursor.getString(cursor.getColumnIndex("uri")))) continue;
+                if (!B(cursor.getString(cursor.getColumnIndex("uri")))) continue;
                 if (cursor.getInt(cursor.getColumnIndex("status")) == 8) {
                     bl = true;
                     string4 = cursor.getString(cursor.getColumnIndex("local_uri"));
@@ -2232,14 +2215,14 @@ public class a {
             }
             cursor.close();
             if (bl && string4 != null) {
-                if (a.a((Context) activity, new File(Uri.parse(string4).getPath()))) return;
+                if (a((Context) activity, new File(Uri.parse(string4).getPath()))) return;
                 {
-                    a.a(string2, string3, downloadManager);
+                    a(string2, string3, downloadManager);
                     return;
                 }
             }
         }
-        a.a(string2, string3, downloadManager);
+        a(string2, string3, downloadManager);
     }
 
     /*
@@ -2249,22 +2232,22 @@ public class a {
         int n2 = 0;
         while (n2 < string2.length()) {
             String string3;
-            int n3 = a.b(string2, n2, "=,");
+            int n3 = b(string2, n2, "=,");
             String string4 = string2.substring(n2, n3).trim();
             if (n3 == string2.length() || string2.charAt(n3) == ',') {
                 n2 = n3 + 1;
                 b2.a(string4, null);
                 continue;
             }
-            int n4 = a.c(string2, n3 + 1);
+            int n4 = c(string2, n3 + 1);
             if (n4 < string2.length() && string2.charAt(n4) == '\"') {
                 int n5 = n4 + 1;
-                int n6 = a.b(string2, n5, "\"");
+                int n6 = b(string2, n5, "\"");
                 String string5 = string2.substring(n5, n6);
                 n2 = n6 + 1;
                 string3 = string5;
             } else {
-                int n7 = a.b(string2, n4, ",");
+                int n7 = b(string2, n4, ",");
                 String string6 = string2.substring(n4, n7).trim();
                 n2 = n7;
                 string3 = string6;
@@ -2278,7 +2261,7 @@ public class a {
      * Lifted jumps to return sites
      */
     private static void a(String string2, BookSyncRecord.BookModifyType bookModifyType) {
-        BookSyncRecord.updateOrCreate(a.o(), string2, BookSyncRecord.getTypeId(bookModifyType));
+        BookSyncRecord.updateOrCreate(o(), string2, BookSyncRecord.getTypeId(bookModifyType));
         if (am.e() == null) return;
         if (am.e().getUser() == null) {
             return;
@@ -2303,8 +2286,8 @@ public class a {
     public static void a(String string2, String string3, DownloadManager downloadManager) {
         DownloadManager.Request request = new DownloadManager.Request(Uri.parse(string2));
         request.setTitle(string3);
-        String string4 = a.N(string2);
-        if (a.g()) {
+        String string4 = N(string2);
+        if (g()) {
             request.allowScanningByMediaScanner();
             request.setNotificationVisibility(1);
         }
@@ -2319,7 +2302,7 @@ public class a {
     }
 
     public static void a(String string2, Map<String, String> map) {
-        a.a(map, c.c, string2);
+        a(map, c.c, string2);
     }
 
     /*
@@ -2364,7 +2347,7 @@ public class a {
     }
 
     public static void a(String[] arrstring) {
-        a.a(arrstring, BookSyncRecord.BookModifyType.SHELF_ADD);
+        a(arrstring, BookSyncRecord.BookModifyType.SHELF_ADD);
     }
 
     /*
@@ -2373,7 +2356,7 @@ public class a {
      */
     private static void a(String[] arrstring, BookSyncRecord.BookModifyType bookSyncRecord$BookModifyType) {
         for (String string2 : arrstring) {
-            BookSyncRecord.updateOrCreate(a.o(), string2, BookSyncRecord.getTypeId(bookSyncRecord$BookModifyType));
+            BookSyncRecord.updateOrCreate(o(), string2, BookSyncRecord.getTypeId(bookSyncRecord$BookModifyType));
         }
         if (am.e() == null) return;
         if (am.e().getUser() == null) {
@@ -2422,7 +2405,7 @@ public class a {
         intent.putExtra("_mmessage_sdkVersion", 570425345);
         intent.putExtra("_mmessage_appPackage", string3);
         intent.putExtra("_mmessage_content", a2.c);
-        intent.putExtra("_mmessage_checksum", a.a(a2.c, 570425345, string3));
+        intent.putExtra("_mmessage_checksum", a(a2.c, 570425345, string3));
         context.sendBroadcast(intent, string2);
         com.e.a.a.b.a.c("MicroMsg.SDK.MMessage", "send mm message, intent=" + intent + ", perm=" + string2);
         return true;
@@ -2455,7 +2438,7 @@ public class a {
         intent.putExtra("_mmessage_sdkVersion", 570425345);
         intent.putExtra("_mmessage_appPackage", string2);
         intent.putExtra("_mmessage_content", a2.c);
-        intent.putExtra("_mmessage_checksum", a.a(a2.c, 570425345, string2));
+        intent.putExtra("_mmessage_checksum", a(a2.c, 570425345, string2));
         if (a2.d == -1) {
             intent.addFlags(268435456).addFlags(134217728);
         } else {
@@ -2518,13 +2501,13 @@ public class a {
         int n3;
         int n4 = inputStream.available();
         byte[] arrby = new byte[n2];
-        if (a.a(c2, 0, n4)) {
+        if (a(c2, 0, n4)) {
             return false;
         }
         int n5 = 0;
         while ((n3 = inputStream.read(arrby, 0, n2)) != -1) {
             outputStream.write(arrby, 0, n3);
-            if (!a.a(c2, n5 += n3, n4)) continue;
+            if (!a(c2, n5 += n3, n4)) continue;
             return false;
         }
         outputStream.flush();
@@ -2574,7 +2557,7 @@ public class a {
             return false;
         }
         try {
-            boolean bl = a.a(a.c(string3, sQLiteDatabase).b(), string2);
+            boolean bl = a(c(string3, sQLiteDatabase).b(), string2);
             return bl;
         } catch (Exception var3_4) {
             var3_4.printStackTrace();
@@ -2617,7 +2600,7 @@ public class a {
     }
 
     public static boolean a(String string2, String string3, String string4, Toc toc) {
-        if (!a.d()) {
+        if (!d()) {
             return false;
         }
         String string5 = "/ZhuiShuShenQi/Chapter" + File.separator + string2 + File.separator + string3;
@@ -2824,7 +2807,7 @@ public class a {
             for (int k = 0; k < n4; ++k) {
                 File file2 = arrfile[k];
                 if (!file2.isDirectory()) continue;
-                n2 = -1 + (n2 + a.b(file2));
+                n2 = -1 + (n2 + b(file2));
             }
         }
         return n2;
@@ -2848,7 +2831,7 @@ public class a {
     }
 
     public static Bitmap.CompressFormat b(byte[] arrby) {
-        String string2 = a.g(arrby);
+        String string2 = g(arrby);
         Bitmap.CompressFormat compressFormat = Bitmap.CompressFormat.JPEG;
         if (string2 != null && (string2.endsWith("png") || string2.endsWith("gif"))) {
             compressFormat = Bitmap.CompressFormat.PNG;
@@ -2866,7 +2849,7 @@ public class a {
      */
     public static Serializable b(String var0, String var1_1, String var2_2) {
         var3_3 = null;
-        if (var2_2 == null || !a.d()) {
+        if (var2_2 == null || !d()) {
             return null;
         }
         var4_4 = "/ZhuiShuShenQi/Chapter" + File.separator + var0 + File.separator + var1_1;
@@ -2988,7 +2971,7 @@ public class a {
 
     public static String b() {
         String string2 = com.clilystudio.netbook.hpay100.config.l.d;
-        a.b("dalongTest", "kfPhone:" + string2);
+        b("dalongTest", "kfPhone:" + string2);
         return string2;
     }
 
@@ -3000,7 +2983,7 @@ public class a {
     public static String b(Context context) {
         synchronized (a.class) {
             try {
-                String string2 = a.a(context, "profiles", "deviceid", "");
+                String string2 = a(context, "profiles", "deviceid", "");
                 String string3 = am.a((String) string2) ? null : com.alipay.security.mobile.module.a.a.b.b(com.alipay.security.mobile.module.a.a.b.a(), string2);
                 boolean bl = am.a((String) string3);
                 String string4 = null;
@@ -3021,9 +3004,9 @@ public class a {
      * Enabled aggressive exception aggregation
      */
     public static String b(Context var0, String var1_1, Map var2_2) {
-        a.b("dalongTest", "http post2 request url:" + var1_1);
-        if (!a.j(var0)) {
-            a.b("dalongTest", "net error");
+        b("dalongTest", "http post2 request url:" + var1_1);
+        if (!j(var0)) {
+            b("dalongTest", "net error");
             do {
                 return null;
                 break;
@@ -3036,7 +3019,7 @@ public class a {
             lbl12:
             // 2 sources:
             do {
-                a.b("dalongTest", "http request2 result:" + var9_6);
+                b("dalongTest", "http request2 result:" + var9_6);
                 var4_4.a();
                 return var9_6;
                 break;
@@ -3150,7 +3133,7 @@ public class a {
         if (context == null) {
             return;
         }
-        SharedPreferences.Editor editor = a.P(context);
+        SharedPreferences.Editor editor = P(context);
         editor.putFloat(string2, f2);
         editor.apply();
     }
@@ -3159,7 +3142,7 @@ public class a {
         if (context == null) {
             return;
         }
-        SharedPreferences.Editor editor = a.P(context);
+        SharedPreferences.Editor editor = P(context);
         editor.putInt(string2, n2);
         editor.apply();
     }
@@ -3168,7 +3151,7 @@ public class a {
         if (context == null) {
             return;
         }
-        SharedPreferences.Editor editor = a.P(context);
+        SharedPreferences.Editor editor = P(context);
         editor.putLong(string2, l2);
         editor.apply();
     }
@@ -3177,16 +3160,16 @@ public class a {
         d = string2;
         e = string3;
         f = string4;
-        a.e(context, "CIPHER_BOOK_ID", string2);
-        a.e(context, "CIPHER_TOC_ID", string3);
-        a.e(context, "CIPHER_CHECKSUM", string4);
+        e(context, "CIPHER_BOOK_ID", string2);
+        e(context, "CIPHER_TOC_ID", string3);
+        e(context, "CIPHER_CHECKSUM", string4);
     }
 
     public static void b(Context context, String string2, boolean bl) {
         if (context == null) {
             return;
         }
-        SharedPreferences.Editor editor = a.P(context);
+        SharedPreferences.Editor editor = P(context);
         editor.putBoolean(string2, bl);
         editor.apply();
     }
@@ -3214,12 +3197,12 @@ public class a {
     }
 
     public static void b(String[] arrstring) {
-        a.a(arrstring, BookSyncRecord.BookModifyType.FEED_ADD);
+        a(arrstring, BookSyncRecord.BookModifyType.FEED_ADD);
     }
 
     public static boolean b(String string2, SQLiteDatabase sQLiteDatabase) {
         try {
-            boolean bl = a.a(a.a(sQLiteDatabase), string2);
+            boolean bl = a(a(sQLiteDatabase), string2);
             return bl;
         } catch (Exception var2_3) {
             var2_3.printStackTrace();
@@ -3248,7 +3231,7 @@ public class a {
 
     public static String c() {
         String string2 = com.clilystudio.netbook.hpay100.config.l.e;
-        a.b("dalongTest", "appname:" + string2);
+        b("dalongTest", "appname:" + string2);
         return string2;
     }
 
@@ -3276,7 +3259,7 @@ public class a {
             if (d2 != null && !am.a((String) d2.a())) {
                 return d2.a();
             }
-            string2 = a.a(context);
+            string2 = a(context);
             if (!am.a((String) string2)) return string2;
             HashMap<String, String> hashMap = new HashMap<String, String>();
             hashMap.put("utdid", am.a(map, (String) "utdid", (String) ""));
@@ -3314,7 +3297,7 @@ public class a {
 
     public static org.litepal.d.a.b c(String string2, SQLiteDatabase sQLiteDatabase) {
         Cursor cursor = null;
-        if (a.b(string2, sQLiteDatabase)) {
+        if (b(string2, sQLiteDatabase)) {
             org.litepal.d.a.b b2 = new org.litepal.d.a.b();
             b2.a(string2);
             String string3 = "pragma table_info(" + string2 + ")";
@@ -3401,7 +3384,7 @@ public class a {
         String string2;
         block4:
         {
-            string2 = a.a(context, "vkeyid_settings", "log_switch", "");
+            string2 = a(context, "vkeyid_settings", "log_switch", "");
             if (!am.a((String) string2)) break block4;
             return true;
         }
@@ -3457,7 +3440,7 @@ public class a {
     }
 
     public static int d(Context context, String string2) {
-        return a.b(context, "drawable", string2);
+        return b(context, "drawable", string2);
     }
 
     public static long d(Context context) {
@@ -3559,7 +3542,7 @@ public class a {
      */
     public static String d(byte[] arrby) {
         byte[] arrby2;
-        if (arrby == null || (arrby2 = a.e(arrby)) == null) {
+        if (arrby == null || (arrby2 = e(arrby)) == null) {
             return null;
         }
         return com.mob.tools.b.d.a(arrby2);
@@ -3575,7 +3558,7 @@ public class a {
         if (context == null) {
             return;
         }
-        SharedPreferences.Editor editor = a.P(context);
+        SharedPreferences.Editor editor = P(context);
         editor.putLong(string2, l2);
         editor.apply();
     }
@@ -3620,7 +3603,7 @@ public class a {
     }
 
     public static int e(Context context, String string2) {
-        return a.b(context, "string", string2);
+        return b(context, "string", string2);
     }
 
     public static int e(String string2) {
@@ -3642,7 +3625,7 @@ public class a {
     }
 
     public static long e() {
-        if (a.d()) {
+        if (d()) {
             try {
                 StatFs statFs = new StatFs(Environment.getExternalStorageDirectory().getPath());
                 long l2 = (long) statFs.getBlockSize() * (long) statFs.getAvailableBlocks() / 1024;
@@ -3696,7 +3679,7 @@ public class a {
             return string4;
         }
         try {
-            string4 = Base64.encodeToString(a.d(string3, string2), 0);
+            string4 = Base64.encodeToString(d(string3, string2), 0);
             if (TextUtils.isEmpty(string4)) return string4;
             if (!string4.contains("\n")) return string4;
             return string4.replace("\n", "");
@@ -3710,7 +3693,7 @@ public class a {
         if (context == null) {
             return;
         }
-        SharedPreferences.Editor editor = a.P(context);
+        SharedPreferences.Editor editor = P(context);
         editor.putString(string2, string3);
         editor.apply();
     }
@@ -3725,7 +3708,7 @@ public class a {
         }
         try {
             ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(arrby);
-            byte[] arrby2 = a.a(byteArrayInputStream);
+            byte[] arrby2 = a(byteArrayInputStream);
             byteArrayInputStream.close();
             return arrby2;
         } catch (Throwable var2_3) {
@@ -3735,7 +3718,7 @@ public class a {
     }
 
     public static int f(Context context, String string2) {
-        return a.b(context, "layout", string2);
+        return b(context, "layout", string2);
     }
 
     /*
@@ -3747,7 +3730,7 @@ public class a {
             return null;
         }
         FileInputStream fileInputStream = new FileInputStream(file);
-        Bitmap bitmap = a.a((InputStream) fileInputStream, 1);
+        Bitmap bitmap = a((InputStream) fileInputStream, 1);
         fileInputStream.close();
         return bitmap;
     }
@@ -3791,11 +3774,11 @@ public class a {
 
     public static List<BookFile> f() {
         ArrayList<BookFile> arrayList = new ArrayList<BookFile>();
-        File[] arrfile = a.J(c.g).listFiles();
+        File[] arrfile = J(c.g).listFiles();
         if (arrfile != null) {
             for (File file : arrfile) {
                 BookFile bookFile = new BookFile();
-                bookFile.setSize(a.a(file.length(), true));
+                bookFile.setSize(a(file.length(), true));
                 bookFile.setName(file.getName());
                 arrayList.add(bookFile);
             }
@@ -3865,7 +3848,7 @@ public class a {
     }
 
     public static int g(Context context, String string2) {
-        return a.b(context, "id", string2);
+        return b(context, "id", string2);
     }
 
     public static Bitmap.CompressFormat g(String string2) {
@@ -3876,7 +3859,7 @@ public class a {
         if (string3.endsWith("jpg") || string3.endsWith("jpeg") || string3.endsWith("bmp") || string3.endsWith("tif")) {
             return Bitmap.CompressFormat.JPEG;
         }
-        String string4 = a.W(string2);
+        String string4 = W(string2);
         if (string4.endsWith("png") || string4.endsWith("gif")) {
             return Bitmap.CompressFormat.PNG;
         }
@@ -3923,21 +3906,21 @@ public class a {
     private static String g(byte[] arrby) {
         byte[] arrby2 = new byte[]{-1, -40, -1, -32};
         byte[] arrby3 = new byte[]{-1, -40, -1, -31};
-        if (a.a(arrby, arrby2) || a.a(arrby, arrby3)) {
+        if (a(arrby, arrby2) || a(arrby, arrby3)) {
             return "jpg";
         }
-        if (a.a(arrby, new byte[]{-119, 80, 78, 71})) {
+        if (a(arrby, new byte[]{-119, 80, 78, 71})) {
             return "png";
         }
-        if (a.a(arrby, "GIF".getBytes())) {
+        if (a(arrby, "GIF".getBytes())) {
             return "gif";
         }
-        if (a.a(arrby, "BM".getBytes())) {
+        if (a(arrby, "BM".getBytes())) {
             return "bmp";
         }
         byte[] arrby4 = new byte[]{73, 73, 42};
         byte[] arrby5 = new byte[]{77, 77, 42};
-        if (a.a(arrby, arrby4) || a.a(arrby, arrby5)) {
+        if (a(arrby, arrby4) || a(arrby, arrby5)) {
             return "tif";
         }
         return null;
@@ -3998,7 +3981,7 @@ public class a {
             return false;
         }
         try {
-            a.a(new FileInputStream(string2), new FileOutputStream(string3));
+            a(new FileInputStream(string2), new FileOutputStream(string3));
             return true;
         } catch (Throwable var2_2) {
             return false;
@@ -4033,7 +4016,7 @@ public class a {
      */
     public static String h(String string2) {
         byte[] arrby;
-        if (string2 == null || (arrby = a.i(string2)) == null) {
+        if (string2 == null || (arrby = i(string2)) == null) {
             return null;
         }
         return com.mob.tools.b.d.a(arrby);
@@ -4206,7 +4189,7 @@ public class a {
             return null;
         }
         try {
-            byte[] arrby = a.e(string2.getBytes("utf-8"));
+            byte[] arrby = e(string2.getBytes("utf-8"));
             return arrby;
         } catch (Throwable var1_2) {
             com.mob.tools.e.a().w(var1_2);
@@ -4223,7 +4206,7 @@ public class a {
 
     public static String j(String string2) {
         try {
-            String string3 = a.f(string2, "utf-8");
+            String string3 = f(string2, "utf-8");
             return string3;
         } catch (Throwable var1_2) {
             com.mob.tools.e.a().w(var1_2);
@@ -4233,7 +4216,7 @@ public class a {
 
     public static ArrayList<String> j(String string2, String string3) {
         String string4 = "/ZhuiShuShenQi/Chapter" + File.separator + string2 + File.separator + string3;
-        return a.c(new File(c.a, string4));
+        return c(new File(c.a, string4));
     }
 
     public static boolean j() {
@@ -4244,7 +4227,7 @@ public class a {
     }
 
     public static boolean j(Context context) {
-        if (a.i(context) == -1) {
+        if (i(context) == -1) {
             return false;
         }
         return true;
@@ -4353,7 +4336,7 @@ public class a {
         File file;
         block4:
         {
-            file = new File(a.J(string2), string3);
+            file = new File(J(string2), string3);
             if (file.exists()) break block4;
             return null;
         }
@@ -4382,7 +4365,7 @@ public class a {
         boolean bl;
         block2:
         {
-            int n2 = a.i(context);
+            int n2 = i(context);
             if (n2 != 0 && n2 != 1 && n2 != 7 && n2 != 8 && n2 != 9) {
                 bl = false;
                 if (n2 != 10) break block2;
@@ -4402,8 +4385,8 @@ public class a {
         String string3 = n2 >= 0 ? "http://" + string2.substring(n2 + 1) : "http://" + string2;
         try {
             URL uRL = new URL(string3);
-            Bundle bundle = a.m(uRL.getQuery());
-            bundle.putAll(a.m(uRL.getRef()));
+            Bundle bundle = m(uRL.getQuery());
+            bundle.putAll(m(uRL.getRef()));
             return bundle;
         } catch (Throwable var4_5) {
             com.mob.tools.e.a().w(var4_5);
@@ -4429,7 +4412,7 @@ public class a {
     }
 
     public static boolean l(Context context, String string2) {
-        return a.a(context, string2, true);
+        return a(context, string2, true);
     }
 
     /*
@@ -4492,7 +4475,7 @@ public class a {
     }
 
     public static File m(Context context) {
-        return a.a(context, true);
+        return a(context, true);
     }
 
     private static String m() {
@@ -4515,16 +4498,16 @@ public class a {
     public static int n(String string2) {
         int n2 = 1;
         if (string2 == null) {
-            throw a.X(string2);
+            throw X(string2);
         }
         int n3 = string2.length();
         if (n3 == 0) {
-            throw a.X(string2);
+            throw X(string2);
         }
         int n4 = string2.charAt(0) == '-' ? n2 : 0;
         if (n4 != 0) {
             if (n2 == n3) {
-                throw a.X(string2);
+                throw X(string2);
             }
         } else {
             n2 = 0;
@@ -4534,28 +4517,28 @@ public class a {
         int n7 = 0;
         while (n6 < n5) {
             int n8 = n6 + 1;
-            int n9 = a.a((int) string2.charAt(n6), 10);
+            int n9 = a((int) string2.charAt(n6), 10);
             if (n9 == -1) {
-                throw a.X(string2);
+                throw X(string2);
             }
             if (-214748364 > n7) {
-                throw a.X(string2);
+                throw X(string2);
             }
             int n10 = n7 * 10 - n9;
             if (n10 > n7) {
-                throw a.X(string2);
+                throw X(string2);
             }
             n7 = n10;
             n6 = n8;
         }
         if (n4 == 0 && (n7 = -n7) < 0) {
-            throw a.X(string2);
+            throw X(string2);
         }
         return n7;
     }
 
     public static File n(Context context) {
-        File file = a.a(context, true);
+        File file = a(context, true);
         File file2 = new File(file, "uil-images");
         if (!file2.exists() && !file2.mkdir()) {
             return file;
@@ -4595,14 +4578,14 @@ public class a {
         }
         int n4 = string2.charAt(0) == '-' ? n2 : 0;
         if (n4) {
-            if (n2 != n3) return a.a(string2, n2, 10, (boolean) n4);
+            if (n2 != n3) return a(string2, n2, 10, (boolean) n4);
             {
                 throw new Throwable("Invalid long: \"" + string2 + "\"");
             }
         } else {
             n2 = 0;
         }
-        return a.a(string2, n2, 10, (boolean) n4);
+        return a(string2, n2, 10, (boolean) n4);
     }
 
     private static String o() {
@@ -4613,8 +4596,8 @@ public class a {
     }
 
     public static Map<String, String> o(Context context) {
-        Map<String, String> map = a.p(context);
-        map.put("iid", a.n());
+        Map<String, String> map = p(context);
+        map.put("iid", n());
         return map;
     }
 
@@ -4640,9 +4623,9 @@ public class a {
     }
 
     public static void q(Context context) {
-        d = a.d(context, "CIPHER_BOOK_ID", null);
-        e = a.d(context, "CIPHER_TOC_ID", null);
-        f = a.d(context, "CIPHER_CHECKSUM", null);
+        d = d(context, "CIPHER_BOOK_ID", null);
+        e = d(context, "CIPHER_TOC_ID", null);
+        f = d(context, "CIPHER_CHECKSUM", null);
     }
 
     public static void q(Context context, String string2) {
@@ -4650,7 +4633,7 @@ public class a {
     }
 
     public static boolean q(String string2) {
-        if (a.p(string2) || string2.equals("DELETE")) {
+        if (p(string2) || string2.equals("DELETE")) {
             return true;
         }
         return false;
@@ -4668,7 +4651,7 @@ public class a {
         int n2 = networkInfo.getType();
         if (n2 == 0) {
             String string2 = networkInfo.getExtraInfo();
-            if (a.Q(string2)) return 0;
+            if (Q(string2)) return 0;
             if (!string2.toLowerCase().equals("cmnet")) return 2;
             return 3;
         }
@@ -4677,7 +4660,7 @@ public class a {
     }
 
     public static void r(String string2) {
-        String string3 = a.s(string2);
+        String string3 = s(string2);
         BookSubRecord.create(string3);
         com.xiaomi.mipush.sdk.d.b(MyApplication.a(), string3, null);
     }
@@ -4695,7 +4678,7 @@ public class a {
     }
 
     public static boolean s(Context context) {
-        if (a.r(context) == 1) {
+        if (r(context) == 1) {
             return true;
         }
         return false;
@@ -4706,7 +4689,7 @@ public class a {
     }
 
     public static void t(String string2) {
-        String string3 = a.s(string2);
+        String string3 = s(string2);
         BookUnSubRecord.create(string3);
         com.xiaomi.mipush.sdk.d.c(MyApplication.a(), string3, null);
     }
@@ -4735,14 +4718,14 @@ public class a {
 
     public static void u(Context context) {
         int n2 = t.a();
-        if (n2 != a.a(context, "key_all_post_open_by_day", 0)) {
+        if (n2 != a(context, "key_all_post_open_by_day", 0)) {
             MiStatInterface.recordCountEvent("all_post_open_by_day", null);
-            a.b(context, "key_all_post_open_by_day", n2);
+            b(context, "key_all_post_open_by_day", n2);
         }
     }
 
     public static void u(String string2) {
-        a.a(string2, BookSyncRecord.BookModifyType.SHELF_ADD);
+        a(string2, BookSyncRecord.BookModifyType.SHELF_ADD);
     }
 
     public static float v(Context context, String string2) {
@@ -4757,18 +4740,18 @@ public class a {
 
     public static void v(Context context) {
         int n2 = t.a();
-        if (n2 != a.a(context, "key_audiobook_listen_count", 0)) {
+        if (n2 != a(context, "key_audiobook_listen_count", 0)) {
             MiStatInterface.recordCountEvent("audiobook_listen_count",null);
-            a.b(context, "key_audiobook_listen_count", n2);
+            b(context, "key_audiobook_listen_count", n2);
         }
     }
 
     public static void v(String string2) {
-        a.a(string2, BookSyncRecord.BookModifyType.SHELF_REMOVE);
+        a(string2, BookSyncRecord.BookModifyType.SHELF_REMOVE);
     }
 
     public static void w(String string2) {
-        a.a(string2, BookSyncRecord.BookModifyType.FEED_ADD);
+        a(string2, BookSyncRecord.BookModifyType.FEED_ADD);
     }
 
     public static boolean w(Context context) {
@@ -4790,7 +4773,7 @@ public class a {
     }
 
     public static void x(String string2) {
-        a.a(string2, BookSyncRecord.BookModifyType.FEED_REMOVE);
+        a(string2, BookSyncRecord.BookModifyType.FEED_REMOVE);
     }
 
     public static boolean x(Context context) {
