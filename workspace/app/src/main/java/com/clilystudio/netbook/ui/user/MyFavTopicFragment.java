@@ -1,7 +1,6 @@
 package com.clilystudio.netbook.ui.user;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -24,9 +23,6 @@ import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.model.ResultStatus;
 import com.clilystudio.netbook.model.Topic;
 import com.clilystudio.netbook.model.TopicPost;
-import com.clilystudio.netbook.ui.post.BookHelpActivity;
-import com.clilystudio.netbook.ui.post.PostDetailActivity;
-import com.clilystudio.netbook.ui.post.ReviewActivity;
 import com.clilystudio.netbook.util.W;
 import com.clilystudio.netbook.widget.CoverView;
 import com.clilystudio.netbook.widget.LabelPtrListView;
@@ -126,10 +122,6 @@ public class MyFavTopicFragment extends Fragment {
         myFavTopicFragment.c.setCountText("\u5171\u6536\u85cf\u4e86%d\u6761\u8bdd\u9898", n);
     }
 
-    static /* synthetic */ ListView g(MyFavTopicFragment myFavTopicFragment) {
-        return myFavTopicFragment.d;
-    }
-
     static /* synthetic */ int k(MyFavTopicFragment myFavTopicFragment) {
         return myFavTopicFragment.j;
     }
@@ -219,31 +211,6 @@ public class MyFavTopicFragment extends Fragment {
                         MyFavTopicFragment.this.b.b(arrstring);
                     }
                 }, 1000);
-            }
-        });
-        this.d.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                int n2 = position - MyFavTopicFragment.g(MyFavTopicFragment.this).getHeaderViewsCount();
-                if (n2 >= 0 && n2 < MyFavTopicFragment.this.i.size()) {
-                    Intent intent;
-                    TopicPost topicPost = MyFavTopicFragment.this.i.get(n2);
-                    String string = topicPost.getBlock();
-                    if ("help".equals(string)) {
-                        Intent intent2 = new Intent(MyFavTopicFragment.this.getActivity(), BookHelpActivity.class);
-                        intent2.putExtra("extraBookHelpId", topicPost.get_id());
-                        intent = intent2;
-                    } else if ("review".equals(string)) {
-                        Intent intent3 = new Intent(MyFavTopicFragment.this.getActivity(), ReviewActivity.class);
-                        intent3.putExtra("extraReviewId", topicPost.get_id());
-                        intent = intent3;
-                    } else {
-                        Intent intent4 = new Intent(MyFavTopicFragment.this.getActivity(), PostDetailActivity.class);
-                        intent4.putExtra("PostBookId", topicPost.get_id());
-                        intent = intent4;
-                    }
-                    MyFavTopicFragment.this.startActivity(intent);
-                }
             }
         });
         this.h = new W<TopicPost>(this.getLayoutInflater(null), R.layout.list_item_new_topic) {

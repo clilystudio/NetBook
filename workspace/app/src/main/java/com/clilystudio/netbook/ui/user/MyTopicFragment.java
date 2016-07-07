@@ -1,6 +1,5 @@
 package com.clilystudio.netbook.ui.user;
 
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -9,7 +8,6 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -19,9 +17,6 @@ import com.clilystudio.netbook.am;
 import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.model.Topic;
 import com.clilystudio.netbook.model.TopicPost;
-import com.clilystudio.netbook.ui.post.BookHelpActivity;
-import com.clilystudio.netbook.ui.post.PostDetailActivity;
-import com.clilystudio.netbook.ui.post.ReviewActivity;
 import com.clilystudio.netbook.util.W;
 import com.clilystudio.netbook.widget.CoverView;
 import com.clilystudio.netbook.widget.LabelPtrListView;
@@ -34,7 +29,6 @@ public class MyTopicFragment extends Fragment {
     private com.clilystudio.netbook.a_pack.e<String, Void, Topic> a;
     private com.clilystudio.netbook.a_pack.e<String, Void, Topic> b;
     private LabelPtrListView c;
-    private ListView d;
     private View e;
     private View f;
     private TextView g;
@@ -126,10 +120,6 @@ public class MyTopicFragment extends Fragment {
         return myTopicFragment.b;
     }
 
-    static /* synthetic */ ListView g(MyTopicFragment myTopicFragment) {
-        return myTopicFragment.d;
-    }
-
     static /* synthetic */ View i(MyTopicFragment myTopicFragment) {
         return myTopicFragment.e;
     }
@@ -151,11 +141,11 @@ public class MyTopicFragment extends Fragment {
         this.c = (LabelPtrListView) view.findViewById(R.id.ptr_list);
         this.c.setMode(PullToRefreshBase.Mode.PULL_FROM_START);
         this.e = layoutInflater2.inflate(R.layout.loading_item, (ViewGroup)getActivity().getWindow().getDecorView(), false);
-        this.d = this.c.getRefreshableView();
+        ListView d = this.c.getRefreshableView();
         if (com.clilystudio.netbook.hpay100.a.a.i()) {
-            this.d.setFooterDividersEnabled(false);
+            d.setFooterDividersEnabled(false);
         }
-        this.d.addFooterView(this.e);
+        d.addFooterView(this.e);
         this.e.setVisibility(View.GONE);
         this.c.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener<ListView>() {
             @Override
@@ -181,31 +171,6 @@ public class MyTopicFragment extends Fragment {
                     }
 
                 }, 1000);
-            }
-        });
-        this.d.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                int n2 = position - MyTopicFragment.g(MyTopicFragment.this).getHeaderViewsCount();
-                if (n2 >= 0 && n2 < MyTopicFragment.this.i.size()) {
-                    Intent intent;
-                    TopicPost topicPost = MyTopicFragment.this.i.get(n2);
-                    String string = topicPost.getBlock();
-                    if ("help".equals(string)) {
-                        Intent intent2 = new Intent(MyTopicFragment.this.getActivity(), BookHelpActivity.class);
-                        intent2.putExtra("extraBookHelpId", topicPost.get_id());
-                        intent = intent2;
-                    } else if ("review".equals(string)) {
-                        Intent intent3 = new Intent(MyTopicFragment.this.getActivity(), ReviewActivity.class);
-                        intent3.putExtra("extraReviewId", topicPost.get_id());
-                        intent = intent3;
-                    } else {
-                        Intent intent4 = new Intent(MyTopicFragment.this.getActivity(), PostDetailActivity.class);
-                        intent4.putExtra("PostBookId", topicPost.get_id());
-                        intent = intent4;
-                    }
-                    MyTopicFragment.this.startActivity(intent);
-                }
             }
         });
         this.h = new W<TopicPost>(layoutInflater2, R.layout.list_item_new_topic) {
@@ -252,7 +217,7 @@ public class MyTopicFragment extends Fragment {
                 return new int[]{R.id.new_topic_listitem_cover, R.id.new_topic_listitem_user, R.id.time, R.id.title, R.id.new_topic_listitem_vote, R.id.new_topic_listitem_comment, R.id.new_topic_listitem_label_status};
             }
         };
-        this.d.setAdapter(this.h);
+        d.setAdapter(this.h);
         Account account = am.e();
         if (account == null) {
             this.f.setVisibility(View.GONE);
