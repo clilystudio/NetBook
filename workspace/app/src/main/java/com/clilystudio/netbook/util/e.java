@@ -13,18 +13,14 @@ import android.widget.Toast;
 import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.model.Account;
-import com.clilystudio.netbook.ui.post.OtherUserActivity;
 
 public class e {
-    private static e a;
     private static RemoteViews c;
     private static NotificationManager d;
     private static Notification e;
     private static long f;
-    private Context b;
 
-    private e(Context context) {
-        this.b = context;
+    private e() {
     }
 
     public static int a(int n) {
@@ -36,9 +32,9 @@ public class e {
             return 20;
         }
         if (n2 <= 10) {
-            return 10 + (e.a(n - 1) << 1);
+            return 10 + (a(n - 1) << 1);
         }
-        return 3840 + (e.a(n - 1) + 50 * (n2 - 10));
+        return 3840 + (a(n - 1) + 50 * (n2 - 10));
     }
 
     static /* synthetic */ long a(long l) {
@@ -46,22 +42,15 @@ public class e {
         return l;
     }
 
-    public static e a(Context context) {
-        if (a == null) {
-            a = new e(context);
-        }
-        return a;
-    }
-
     public static void a(Activity activity, int n) {
         if (activity == null) {
             return;
         }
-        e.a(activity, activity.getString(n), 0);
+        a(activity, activity.getString(n), 0);
     }
 
     public static void a(Activity activity, String string) {
-        e.a(activity, string, 0);
+        a(activity, string, 0);
     }
 
     private static void a(final Activity activity, final String string, final int n) {
@@ -76,14 +65,11 @@ public class e {
         });
     }
 
-    public static void a(Context context, long l2, int n) {
-    }
-
     public static void a(Context context, String string) {
         if (context == null || string == null) {
             return;
         }
-        Toast.makeText(context, string, 0).show();
+        Toast.makeText(context, string, Toast.LENGTH_SHORT).show();
     }
 
     static /* synthetic */ void a(Bitmap bitmap) {
@@ -92,12 +78,6 @@ public class e {
         }
         c.setImageViewBitmap(R.id.cover, bitmap);
         d.notify(1001, e);
-    }
-
-    /*
-     * Enabled aggressive block sorting
-     */
-    static /* synthetic */ void a(e e2) {
     }
 
     public static void a(String string) {
@@ -121,16 +101,11 @@ public class e {
     }
 
     public static void b(Activity activity, String string) {
-        e.a(activity, string, 1);
+        a(activity, string, 1);
     }
 
-    public static void b(Context context) {
-        try {
-            d.cancel(1001);
-             return;
-        } catch (Exception var1_1) {
-            return;
-        }
+    public static void b() {
+        d.cancel(1001);
     }
 
     public static void b(String string) {
@@ -149,7 +124,7 @@ public class e {
     public static Notification c() {
         NotificationCompat.Builder notificationCompat$Builder;
         Notification notification;
-        d = (NotificationManager) MyApplication.a().getSystemService("notification");
+        d = (NotificationManager) MyApplication.a().getSystemService(Context.NOTIFICATION_SERVICE);
         c = new RemoteViews(MyApplication.a().getPackageName(), R.layout.notification_audio_bar);
         notificationCompat$Builder = new NotificationCompat.Builder(MyApplication.a());
         notificationCompat$Builder.setSmallIcon(17301623);
@@ -161,11 +136,11 @@ public class e {
 
     public static String c(Context context) {
         if (com.clilystudio.netbook.am.e() == null) {
-            String string = ((WifiManager) context.getSystemService("wifi")).getConnectionInfo().getMacAddress();
+            String string = ((WifiManager) context.getSystemService(Context.WIFI_SERVICE)).getConnectionInfo().getMacAddress();
             if (string == null) {
                 string = "";
             }
-            return com.integralblue.httpresponsecache.compat.libcore.a.a.b(string.getBytes());
+            com.integralblue.httpresponsecache.compat.libcore.io.Base64.encode(string.getBytes());
         }
         return com.clilystudio.netbook.am.e().getUser().getId();
     }
@@ -175,7 +150,7 @@ public class e {
         if (account == null) {
             return;
         }
-        new Thread(){
+        new Thread() {
             @Override
             public void run() {
                 com.clilystudio.netbook.api.b.a();
@@ -186,27 +161,5 @@ public class e {
 
     static /* synthetic */ long d() {
         return f;
-    }
-
-    static /* synthetic */ RemoteViews e() {
-        return c;
-    }
-
-    static /* synthetic */ Notification f() {
-        return e;
-    }
-
-    static /* synthetic */ NotificationManager g() {
-        return d;
-    }
-
-    public final void b() {
-        new Thread(){
-
-            @Override
-            public void run() {
-                com.clilystudio.netbook.util.e.a(com.clilystudio.netbook.util.e.this);
-            }
-        }.start();
     }
 }

@@ -1,17 +1,16 @@
 package com.clilystudio.netbook.util;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 
+import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.a_pack.c;
 import com.clilystudio.netbook.am;
-
-import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.db.BookReadRecord;
 import com.clilystudio.netbook.db.SourceRecord;
 import com.clilystudio.netbook.event.i;
+import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.model.BookInfo;
 import com.clilystudio.netbook.model.TocSource;
 import com.clilystudio.netbook.model.TocSourceRoot;
@@ -72,15 +71,15 @@ public final class m {
     }
 
     static /* synthetic */ boolean a(m m2, boolean bl) {
-        m2.e = true;
-        return true;
+        m2.e = bl;
+        return bl;
     }
 
     static /* synthetic */ String b(m m2) {
         return m2.b;
     }
 
-    static /* synthetic */ void b(m m2, List list) {
+    static /* synthetic */ void b(m m2, List<TocSummary> list) {
         for (TocSummary tocSummary : list) {
             if (!"zhuishuvip".equals(tocSummary.getSource())) continue;
             MyApplication.a().a(9);
@@ -97,7 +96,7 @@ public final class m {
     private void a(int n2) {
         MyApplication.a().a(n2);
         if (n2 == 5) {
-            this.a(ReaderActivity.a(this.a, this.b, this.c, "MIX_TOC_ID", null, false));
+            this.a(ReaderActivity.a(this.a, this.b, this.c, "MIX_TOC_ID", (String)null, false));
             return;
         }
         if (n2 == 0 || n2 == 1 || n2 == 4 || n2 == 2) {
@@ -108,7 +107,7 @@ public final class m {
         }
         if (n2 == 10 && this.d != null) {
             String string = this.d.getTocId();
-            this.a(ReaderActivity.a(this.a, this.b, this.c, string, null, false));
+            this.a(ReaderActivity.a(this.a, this.b, this.c, string, (String)null, false));
             return;
         }
         if (n2 == 9) {
@@ -116,9 +115,9 @@ public final class m {
                 this.f = this.d.getTocId();
             }
             if (am.e() != null) {
-                HashMap hashMap = com.clilystudio.netbook.hpay100.a.a.M(this.b);
+                HashMap<String, String> hashMap = com.clilystudio.netbook.hpay100.a.a.M(this.b);
                 if (hashMap == null) {
-                    hashMap = new HashMap();
+                    hashMap = new HashMap<>();
                 }
                 this.a(ReaderActivity.a(this.a, this.b, this.c, this.f, hashMap, this.e));
                 return;
@@ -126,15 +125,15 @@ public final class m {
             this.a(ReaderActivity.a(this.a, this.b, this.c, this.f, this.e));
             return;
         }
-        String string = a.g(n2);
+        String string = com.clilystudio.netbook.hpay100.a.a.g(n2);
         SourceRecord sourceRecord = SourceRecord.get(this.b, string);
         if (sourceRecord == null || sourceRecord.getSourceId() == null) {
             this.a(true);
             return;
         }
         String string2 = sourceRecord.getSourceId();
-        String string3 = a.a(this.b, n2, string2, null);
-        if (a.a((Context) this.a, string, false)) {
+        String string3 = com.clilystudio.netbook.hpay100.a.a.a(this.b, n2, string2, null);
+        if (com.clilystudio.netbook.hpay100.a.a.a(this.a, string, false)) {
             Intent intent = ReaderActivity.a(this.a, this.b, this.c, string3, string, false);
             intent.putExtra("SOURCE_ID", string2);
             this.a(intent);
@@ -149,13 +148,12 @@ public final class m {
     }
 
     private void a(boolean bl) {
-        com.clilystudio.netbook.a_pack.c<String, TocSourceRoot> n2 = new com.clilystudio.netbook.a_pack.c<String, TocSourceRoot>(this.a, R.string.loading, bl){
+        com.clilystudio.netbook.a_pack.c<String, TocSourceRoot> n2 = new com.clilystudio.netbook.a_pack.c<String, TocSourceRoot>(this.a, R.string.loading, bl) {
 
             @Override
             public TocSourceRoot a(String... var1) {
                 com.clilystudio.netbook.api.b.a();
-                TocSourceRoot tocSourceRoot = com.clilystudio.netbook.api.b.b().g(var1[0]);
-                return tocSourceRoot;
+                return com.clilystudio.netbook.api.b.b().g(var1[0]);
             }
 
             @Override
@@ -165,10 +163,8 @@ public final class m {
                         return;
                     }
                     TocSource[] arrtocSource = tocSourceRoot.getSources();
-                    int n2 = arrtocSource.length;
                     int n3 = 5;
-                    for (int j = 0; j < n2; ++j) {
-                        TocSource tocSource = arrtocSource[j];
+                    for (TocSource tocSource : arrtocSource) {
                         com.clilystudio.netbook.hpay100.a.a.a(tocSource, m.b(m.this));
                         if (!tocSource.isPriority()) continue;
                         String string = tocSource.getSource();
@@ -184,14 +180,14 @@ public final class m {
                 } else {
                     com.clilystudio.netbook.util.e.a(m.a(m.this), "获取资源站失败，请重试");
                 }
-           }
+            }
         };
         String[] arrstring = new String[]{this.b};
         n2.b(arrstring);
     }
 
     private void a(boolean bl, final boolean bl2) {
-        c<String, List<TocSummary>> o2 = new c<String, List<TocSummary>>(m.this.a, R.string.loading, bl){
+        c<String, List<TocSummary>> o2 = new c<String, List<TocSummary>>(m.this.a, R.string.loading, bl) {
             @Override
             public List<TocSummary> a(String... var1) {
                 com.clilystudio.netbook.api.b.a();
@@ -223,50 +219,32 @@ public final class m {
      * Enabled aggressive block sorting
      * Lifted jumps to return sites
      */
-    public final void a(BookReadRecord var1_1) {
-        var2_2 = 5;
-        this.d = var1_1;
-        this.b = var1_1.getBookId();
-        this.c = var1_1.getTitle();
-        var3_3 = var1_1.getReadMode();
-        if (var1_1.have_cp == 1) {
-            if (var1_1.getTocId() == null) {
+    public final void a(BookReadRecord p1) {
+        this.d = p1;
+        this.b = p1.getBookId();
+        this.c = p1.getTitle();
+        int var3_3 = p1.getReadMode();
+        if (p1.have_cp == 1) {
+            if (p1.getTocId() == null) {
                 this.a(true, true);
                 return;
             }
             this.a(var3_3);
-            return;
-        }
-        var4_4 = false;
-        if (var3_3 != -1)**GOTO lbl24
-        var5_5 = a.c((Context) this.a, "PREF_FIRST_LAUNCH_TIME", 0);
-        var7_6 = Calendar.getInstance().getTimeInMillis() - var5_5 >= 2592000000L;
-        var4_4 = false;
-        if (var7_6)**GOTO lbl28
-        var8_7 = am.e();
-        if (var8_7 == null)**GOTO lbl -1000
-        var10_8 = var8_7.getUser().getLv();
-        var4_4 = false;
-        if (var10_8 < var2_2) lbl - 1000: // 2 sources:
-        {
-            var4_4 = true;
-            lbl24:
-            // 2 sources:
-            if (var4_4) {
-                e.a(this.a, "正在获取来源");
-                this.a(true);
-                return;
+        } else if (var3_3 == -1) {
+            int var5_5 = com.clilystudio.netbook.hpay100.a.a.c(this.a, "PREF_FIRST_LAUNCH_TIME", 0);
+            boolean var7_6 = Calendar.getInstance().getTimeInMillis() - var5_5 >= 2592000000L;
+            if (!var7_6) {
+                Account var8_7 = am.e();
+                if (var8_7 == null || var8_7.getUser().getLv() < 5) {
+                    com.clilystudio.netbook.util.e.a(this.a, "正在获取来源");
+                    this.a(true);
+                    return;
+                }
             }
+            p1.setReadMode(5);
+            p1.save();
+            this.a(5);
         }
-        lbl28:
-        // 5 sources:
-        if (var3_3 == -1) {
-            var1_1.setReadMode(var2_2);
-            var1_1.save();
-        } else {
-            var2_2 = var3_3;
-        }
-        this.a(var2_2);
     }
 
     public final void a(BookInfo bookInfo) {

@@ -1,10 +1,7 @@
 package com.clilystudio.netbook.util;
 
-import com.clilystudio.netbook.a_pack.*;
 import com.clilystudio.netbook.a_pack.e;
 import com.clilystudio.netbook.am;
-
-import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.db.BookClickRecord;
 import com.clilystudio.netbook.model.ResultStatus;
 
@@ -40,7 +37,7 @@ public final class k {
         List<BookClickRecord> list2 = BookClickRecord.getBookClickRecords(this.a);
         if (list2 != null && list2.size() > 0) {
             for (BookClickRecord bookClickRecord : list2) {
-                if (a.b(this.b, 0) <= a.b(bookClickRecord.today_time, 0)) continue;
+                if (com.clilystudio.netbook.hpay100.a.a.b(this.b, 0) <= com.clilystudio.netbook.hpay100.a.a.b(bookClickRecord.today_time, 0)) continue;
                 BookClickRecord.deleteByBookId(this.a);
             }
         }
@@ -56,8 +53,7 @@ public final class k {
                 @Override
                 protected ResultStatus doInBackground(String... params) {
                     com.clilystudio.netbook.api.b.a();
-                    ResultStatus resultStatus = com.clilystudio.netbook.api.b.b().n(params[0], params[1], params[2]);
-                    return resultStatus;
+                    return com.clilystudio.netbook.api.b.b().n(params[0], params[1], params[2]);
                 }
 
                 @Override

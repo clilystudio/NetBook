@@ -17,17 +17,17 @@ public final class X extends e<Void, Void, SyncUploadResult> {
         this.c = string2;
         this.e = bookModifyType;
         this.d = arrstring;
-        b.a();
-        this.a = b.b();
+        com.clilystudio.netbook.api.b.a();
+        this.a = com.clilystudio.netbook.api.b.b();
     }
 
     private String a() {
         if (this.d == null || this.d.length == 0) {
             return "";
         }
-        StringBuffer stringBuffer = new StringBuffer(this.d[0]);
+        StringBuilder stringBuffer = new StringBuilder(this.d[0]);
         for (int i = 1; i < this.d.length; ++i) {
-            stringBuffer.append("," + this.d[i]);
+            stringBuffer.append(",").append(this.d[i]);
         }
         return stringBuffer.toString();
     }
@@ -47,13 +47,12 @@ public final class X extends e<Void, Void, SyncUploadResult> {
     }
 
     @Override
-    protected final /* synthetic */ Object doInBackground(Object[] var1_1) {
-        return this.a();
+    protected final /* synthetic */ SyncUploadResult doInBackground(Void[] var1_1) {
+        return this.b();
     }
 
     @Override
-    protected final /* synthetic */ void onPostExecute(Object object) {
-        SyncUploadResult syncUploadResult = (SyncUploadResult) object;
+    protected final /* synthetic */ void onPostExecute(SyncUploadResult syncUploadResult) {
         super.onPostExecute(syncUploadResult);
         if (syncUploadResult != null && syncUploadResult.isOk()) {
             for (String string : this.d) {

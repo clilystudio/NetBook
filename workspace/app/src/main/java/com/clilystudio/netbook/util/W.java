@@ -12,14 +12,18 @@ import java.util.Collection;
 import java.util.List;
 
 public abstract class W<V> extends al {
-    private static final Object[] a = new Object[0];
+    private final V[] a = (V[])new Object[0];
     private final LayoutInflater b;
     private final int c;
     private final int[] d;
-    private Object[] e;
+    private V[] e;
+
+    public W(Activity activity) {
+        this(activity.getLayoutInflater(), R.layout.list_item_resource_download);
+    }
 
     public W(Activity activity, int n) {
-        this(activity.getLayoutInflater(), R.layout.list_item_resource_download);
+        this(activity.getLayoutInflater(), n);
     }
 
     public W(LayoutInflater layoutInflater, int n) {
@@ -36,9 +40,9 @@ public abstract class W<V> extends al {
 
     protected abstract void a(int var1, V var2);
 
-    public final void a(Collection<?> collection) {
+    public final void a(Collection<V> collection) {
         if (collection != null && !collection.isEmpty()) {
-            this.a(collection.toArray());
+            this.a((V[])collection.toArray());
             return;
         }
         this.a(a);
@@ -47,7 +51,7 @@ public abstract class W<V> extends al {
     /*
      * Enabled aggressive block sorting
      */
-    public final void a(Object[] arrobject) {
+    public final void a(V[] arrobject) {
         this.e = arrobject != null ? arrobject : a;
         this.notifyDataSetChanged();
     }

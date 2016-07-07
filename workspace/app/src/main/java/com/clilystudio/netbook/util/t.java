@@ -2,7 +2,6 @@ package com.clilystudio.netbook.util;
 
 import android.text.format.DateUtils;
 
-import java.text.ParseException;
 import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -16,7 +15,7 @@ public final class t {
 
     public static int a() {
         Date date = new Date();
-        return a.b(a.format(date), 0);
+        return com.clilystudio.netbook.hpay100.a.a.b(a.format(date), 0);
     }
 
     public static String a(long l) {
@@ -46,23 +45,13 @@ public final class t {
         return a.format(date);
     }
 
-    /*
-     * Enabled force condition propagation
-     * Lifted jumps to return sites
-     */
     public static Date a(String string) {
         try {
             return b.parse(string);
-        } catch (ParseException var2_2) {
-            var2_2.printStackTrace();
-            do {
-                return new Date();
-                break;
-            } while (true);
         } catch (Exception var1_3) {
             var1_3.printStackTrace();
-            return new Date();
         }
+        return new Date();
     }
 
     /*
@@ -71,11 +60,9 @@ public final class t {
     public static /* varargs */ boolean a(Date date, Date... arrdate) {
         if (date == null) return false;
         if (arrdate.length == 1) {
-            if (date.getTime() < t.f(arrdate[0]).getTime() || date.getTime() > t.g(arrdate[0]).getTime()) return false;
-            return true;
+            return !(date.getTime() < t.f(arrdate[0]).getTime() || date.getTime() > t.g(arrdate[0]).getTime());
         }
-        if (arrdate.length == 2 && date.getTime() >= t.f(arrdate[0]).getTime() && date.getTime() <= t.g(arrdate[1]).getTime()) return true;
-        return false;
+        return arrdate.length == 2 && date.getTime() >= t.f(arrdate[0]).getTime() && date.getTime() <= t.g(arrdate[1]).getTime();
     }
 
     public static String b(long l) {
@@ -84,12 +71,12 @@ public final class t {
         long l3 = l % 3600000 / 60000;
         long l4 = l % 60000 / 1000;
         if (l2 > 0) {
-            stringBuilder.append("" + l2 + ":");
+            stringBuilder.append("").append(l2).append(":");
         }
         if (l3 < 10) {
             stringBuilder.append("0");
         }
-        stringBuilder.append("" + l3 + ":");
+        stringBuilder.append("").append(l3).append(":");
         if (l4 < 10) {
             stringBuilder.append("0");
         }
@@ -133,20 +120,20 @@ public final class t {
     private static Date f(Date date) {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(date);
-        calendar.set(11, 0);
-        calendar.set(12, 0);
-        calendar.set(13, 0);
-        calendar.set(14, 0);
+        calendar.set(Calendar.HOUR_OF_DAY, 0);
+        calendar.set(Calendar.MINUTE, 0);
+        calendar.set(Calendar.SECOND, 0);
+        calendar.set(Calendar.MILLISECOND, 0);
         return calendar.getTime();
     }
 
     private static Date g(Date date) {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(date);
-        calendar.set(11, 23);
-        calendar.set(12, 59);
-        calendar.set(13, 59);
-        calendar.set(14, 999);
+        calendar.set(Calendar.HOUR_OF_DAY, 23);
+        calendar.set(Calendar.MINUTE, 59);
+        calendar.set(Calendar.SECOND, 59);
+        calendar.set(Calendar.MILLISECOND, 999);
         return calendar.getTime();
     }
 }
