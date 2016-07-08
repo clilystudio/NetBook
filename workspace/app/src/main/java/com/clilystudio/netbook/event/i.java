@@ -4,15 +4,9 @@ import com.squareup.otto.Bus;
 import com.squareup.otto.ThreadEnforcer;
 
 public final class i {
-    private static final Bus a = new Bus(new ThreadEnforcer() {
-        @Override
-        public void enforce(Bus bus) {
-
-        }
-    });
-//    private static final b a = new b(m.a);
+    private static final Bus mBus = new Bus(ThreadEnforcer.MAIN);
 
     public static Bus a() {
-        return a;
+        return mBus;
     }
 }

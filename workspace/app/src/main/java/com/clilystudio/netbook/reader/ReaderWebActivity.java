@@ -22,7 +22,7 @@ import com.clilystudio.netbook.db.BookTopicEnterRecord;
 import com.clilystudio.netbook.db.SourceRecord;
 import com.clilystudio.netbook.db.SourceWebReadRecord;
 import com.clilystudio.netbook.event.i;
-import com.clilystudio.netbook.event.v;
+import com.clilystudio.netbook.event.ModeChangedEvent;
 import com.clilystudio.netbook.model.TopicCount;
 import com.clilystudio.netbook.model.mixtoc.EsTocItem;
 import com.clilystudio.netbook.model.mixtoc.EsTocRoot;
@@ -378,7 +378,7 @@ public class ReaderWebActivity extends BaseReadActivity {
     }
 
     @Subscribe
-    public void onModeChanged(v v2) {
+    public void onModeChanged(ModeChangedEvent v2) {
         this.finish();
     }
 

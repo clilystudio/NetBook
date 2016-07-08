@@ -14,7 +14,7 @@ import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.a_pack.e;
 import com.clilystudio.netbook.am;
-import com.clilystudio.netbook.event.v;
+import com.clilystudio.netbook.event.ModeChangedEvent;
 import com.clilystudio.netbook.model.TocSummary;
 import com.clilystudio.netbook.ui.RelateBookListActivity;
 import com.clilystudio.netbook.util.t;
@@ -62,7 +62,7 @@ public class ReaderMenuFragment extends Fragment {
         activity.finish();
         MyApplication.a().c(readerMenuFragment.e);
         am.c(readerMenuFragment.e, 10);
-        com.clilystudio.netbook.event.i.a().post(new v(1));
+        com.clilystudio.netbook.event.i.a().post(new ModeChangedEvent(1));
         readerMenuFragment.startActivity(ReaderActivity.a(readerMenuFragment.getActivity(), readerMenuFragment.e, readerMenuFragment.f, tocSummary.get_id(), null, true));
     }
 

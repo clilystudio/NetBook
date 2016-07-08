@@ -35,9 +35,10 @@ import com.clilystudio.netbook.db.BookReadRecord;
 import com.clilystudio.netbook.db.BookTopicEnterRecord;
 import com.clilystudio.netbook.db.MixTocRecord;
 import com.clilystudio.netbook.db.TocReadRecord;
+import com.clilystudio.netbook.event.BookReadEvent;
 import com.clilystudio.netbook.event.ThemeChangedEvent;
-import com.clilystudio.netbook.event.j;
-import com.clilystudio.netbook.event.v;
+import com.clilystudio.netbook.event.ConvertChangedEvent;
+import com.clilystudio.netbook.event.ModeChangedEvent;
 import com.clilystudio.netbook.model.ChapterKeysRoot;
 import com.clilystudio.netbook.model.ChapterLink;
 import com.clilystudio.netbook.model.TopicCount;
@@ -1637,7 +1638,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
     }
 
     @Subscribe
-    public void onConvertChanged(j j2) {
+    public void onConvertChanged(ConvertChangedEvent j2) {
         this.h.b();
     }
 
@@ -2027,8 +2028,8 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
     }
 
     @Subscribe
-    public void onModeChanged(v v2) {
-        if (v2.a() == 1) {
+    public void onModeChanged(ModeChangedEvent v2) {
+        if (v2.getMode() == 1) {
             this.finish();
             return;
         }
@@ -2056,7 +2057,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         if (n2 != 0 && (bookReadRecord = BookReadRecord.get(this.c)) != null) {
             bookReadRecord.readTime = new Date();
             bookReadRecord.save();
-            com.clilystudio.netbook.event.i.a().post(new com.clilystudio.netbook.event.g());
+            com.clilystudio.netbook.event.i.a().post(new BookReadEvent());
         }
         try {
             LocalBroadcastManager.getInstance(this).unregisterReceiver(this.ae);

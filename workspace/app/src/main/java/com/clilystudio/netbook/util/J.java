@@ -2,13 +2,11 @@ package com.clilystudio.netbook.util;
 
 import android.content.Context;
 
-import com.clilystudio.netbook.a_pack.*;
 import com.clilystudio.netbook.am;
 
-import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.db.AccountInfo;
 import com.clilystudio.netbook.event.i;
-import com.clilystudio.netbook.event.w;
+import com.clilystudio.netbook.event.NotifEvent;
 import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.model.NotifCountRoot;
 import com.clilystudio.netbook.model.Root;
@@ -78,13 +76,13 @@ public class J {
                         J.b(J.this, notifCountRoot.getUnimportant());
                         Date date = notifCountRoot.getLastReadImportantTime();
                         Date date2 = notifCountRoot.getLastReadUnimportantTime();
-                        if (am.h((Context) J.a(J.this)).equals("0")) {
-                            am.a((Context) J.a(J.this), (long) date.getTime());
+                        if (am.h(J.a(J.this)).equals("0")) {
+                            am.a(J.a(J.this), date.getTime());
                         }
-                        if (am.i((Context) J.a(J.this)).equals("0")) {
-                            am.b((Context) J.a(J.this), (long) date2.getTime());
+                        if (am.i(J.a(J.this)).equals("0")) {
+                            am.b(J.a(J.this), date2.getTime());
                         }
-                        i.a().post(new w());
+                        i.a().post(new NotifEvent());
                      }
                 }
             };
@@ -117,8 +115,8 @@ public class J {
                     super.onPostExecute(root);
                     if (root != null && root.isOk()) {
                         J.this.a(0);
-                        i.a().post(new w());
-                        am.j((Context) J.a(J.this));
+                        i.a().post(new NotifEvent());
+                        am.j(J.a(J.this));
                     }
                 }
             };
@@ -144,13 +142,13 @@ public class J {
                     if (root != null && root.isOk()) {
                         AccountInfo accountInfo;
                         J.this.b(0);
-                        am.b((Context) J.a(J.this), (long) System.currentTimeMillis());
+                        am.b(J.a(J.this), System.currentTimeMillis());
                         Account account = am.e();
                         if (account != null && (accountInfo = AccountInfo.getByToken(account.getToken())) != null) {
                             accountInfo.setPrevUnimpNotif(0);
                             accountInfo.save();
                         }
-                        i.a().post(new w());
+                        i.a().post(new NotifEvent());
                     }
                 }
             };

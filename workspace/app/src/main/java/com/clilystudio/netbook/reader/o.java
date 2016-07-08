@@ -14,6 +14,7 @@ import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.a_pack.c;
 import com.clilystudio.netbook.am;
+import com.clilystudio.netbook.event.LoginEvent;
 import com.clilystudio.netbook.event.ThemeChangedEvent;
 import com.clilystudio.netbook.hpay100.a.a;
 import com.clilystudio.netbook.model.ChapterKeysRoot;
@@ -736,13 +737,8 @@ public final class o {
     }
 
     @Subscribe
-    public final void onHideAdEvent(com.clilystudio.netbook.event.s s2) {
-        this.s();
-    }
-
-    @Subscribe
-    public final void onLoginEvent(com.clilystudio.netbook.event.t t2) {
-        if (this.e && t2.a() != null) {
+    public final void onLoginEvent(LoginEvent t2) {
+        if (this.e && t2.getAccount() != null) {
             new c<Void, ChapterKeysRoot>(this.b, "正在获取资产信息...") {
                 String arg;
 

@@ -9,7 +9,7 @@ public class ClickDownloadItemReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         Intent intent2 = new Intent("android.intent.action.VIEW_DOWNLOADS");
-        intent2.setFlags(268435456);
+        intent2.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         try {
             context.startActivity(intent2);
             return;

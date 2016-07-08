@@ -24,7 +24,6 @@ import com.clilystudio.netbook.db.BookReadRecord;
 import com.clilystudio.netbook.db.SourceRecord;
 import com.clilystudio.netbook.event.c;
 import com.clilystudio.netbook.event.h;
-import com.clilystudio.netbook.event.s;
 import com.clilystudio.netbook.model.BookInfo;
 import com.clilystudio.netbook.reader.dl.a;
 import com.clilystudio.netbook.ui.user.AuthLoginActivity;
@@ -537,6 +536,7 @@ public class BookInfoActivity extends BaseActivity implements View.OnClickListen
         this.g.setOnClickListener(this);
         this.f.setOnClickListener(this);
         this.e.setOnClickListener(this);
+        this.f();
         this.h = this.getIntent().getStringExtra("book_id");
         boolean bl = BookReadRecord.getOnShelf(this.h) != null;
         this.i = bl;
@@ -557,11 +557,6 @@ public class BookInfoActivity extends BaseActivity implements View.OnClickListen
         if (this.h.equals(d2.b())) {
             this.a(d2.a());
         }
-    }
-
-    @Subscribe
-    public void onHideAdEvent(s s2) {
-        this.f();
     }
 
     @Override

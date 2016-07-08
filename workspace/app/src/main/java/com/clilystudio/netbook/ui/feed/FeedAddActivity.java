@@ -10,7 +10,7 @@ import android.widget.ListView;
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.db.BookReadRecord;
 import com.clilystudio.netbook.event.i;
-import com.clilystudio.netbook.event.l;
+import com.clilystudio.netbook.event.FeedAddedEvent;
 import com.clilystudio.netbook.ui.BaseActivity;
 import com.clilystudio.netbook.ui.aa;
 import com.clilystudio.netbook.util.W;
@@ -34,7 +34,7 @@ public class FeedAddActivity extends BaseActivity {
             bookReadRecord.setFeeding(true);
             bookReadRecord.setChapterCountAtFeed(bookReadRecord.getChapterCount());
             bookReadRecord.save();
-            i.a().post(new l(bookReadRecord));
+            i.a().post(new FeedAddedEvent(bookReadRecord));
         }
         Intent intent = new Intent(feedAddActivity, FeedListActivity.class);
         intent.addFlags(335544320);

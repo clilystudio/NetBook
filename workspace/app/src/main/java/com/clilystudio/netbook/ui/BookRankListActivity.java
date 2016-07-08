@@ -9,8 +9,7 @@ import android.widget.ListView;
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.adapter.BookRankAdapter;
 import com.clilystudio.netbook.event.i;
-import com.clilystudio.netbook.event.k;
-import com.clilystudio.netbook.event.x;
+import com.clilystudio.netbook.event.BookRankClickEvent;
 import com.clilystudio.netbook.model.BookRankRoot;
 import com.clilystudio.netbook.model.BookRankSummary;
 import com.squareup.otto.Subscribe;
@@ -84,9 +83,9 @@ public class BookRankListActivity extends BaseActivity {
     }
 
     @Subscribe
-    public void clickListItem(x x2) {
-        BookRankSummary bookRankSummary = x2.b();
-        String string = x2.a() ? "male" : "female";
+    public void onBookRankClickEvent(BookRankClickEvent x2) {
+        BookRankSummary bookRankSummary = x2.getBookRankSummary();
+        String string = x2.isMale() ? "male" : "female";
         Intent intent = !bookRankSummary.isCollapse() && com.clilystudio.netbook.hpay100.a.a.r(this, "rank_revision_switch") ? BookRankMainActivity.a(this, bookRankSummary.getIds(), bookRankSummary.getTitle(), string) : BookRankDetailActivity.a(this, bookRankSummary.get_id(), bookRankSummary.getTitle());
         this.startActivity(intent);
         String string2 = bookRankSummary.getTitle();
@@ -111,19 +110,6 @@ public class BookRankListActivity extends BaseActivity {
         this.c = new BookRankAdapter(this.getLayoutInflater());
         this.e.setAdapter(this.c);
         this.b();
-    }
-
-    @Subscribe
-    public void onExpand(final k k2) {
-        if (!com.clilystudio.netbook.hpay100.a.a.g() || com.clilystudio.netbook.hpay100.a.a.k() || k2.a() != this.e.getLastVisiblePosition()) {
-            return;
-        }
-        this.f.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                BookRankListActivity.this.e.smoothScrollToPositionFromTop(k2.a(), 0);
-            }
-        }, 50);
     }
 
     @Override

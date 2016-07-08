@@ -13,8 +13,9 @@ import android.widget.TextView;
 
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.db.BookReadRecord;
+import com.clilystudio.netbook.event.FeedAddedEvent;
 import com.clilystudio.netbook.event.i;
-import com.clilystudio.netbook.event.m;
+import com.clilystudio.netbook.event.FeedSettingChangedEvent;
 import com.clilystudio.netbook.event.n;
 import com.clilystudio.netbook.ui.BaseActivity;
 import com.clilystudio.netbook.util.W;
@@ -51,7 +52,7 @@ public class FeedListActivity extends BaseActivity {
                     if (finalJ != n2) {
                         int n = com.clilystudio.netbook.hpay100.a.a.e(finalJ);
                         MiStatInterface.recordCalculateEvent( "feed_chapter_count",null, n);
-                        i.a().post(new m());
+                        i.a().post(new FeedSettingChangedEvent());
                     }
                 }
             });
@@ -66,12 +67,12 @@ public class FeedListActivity extends BaseActivity {
     }
 
     @Subscribe
-    public void onBookAddedEvent(com.clilystudio.netbook.event.l l2) {
+    public void onFeedAdded(FeedAddedEvent l2) {
         this.b();
     }
 
     @Subscribe
-    public void onChapterCountEvent(m m2) {
+    public void onFeedSettingChanged(FeedSettingChangedEvent m2) {
         this.b();
     }
 

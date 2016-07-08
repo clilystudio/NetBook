@@ -14,7 +14,7 @@ import com.clilystudio.netbook.d;
 import com.clilystudio.netbook.event.AccountUpdatedEvent;
 import com.clilystudio.netbook.event.UserInfoChangedEvent;
 import com.clilystudio.netbook.event.i;
-import com.clilystudio.netbook.event.u;
+import com.clilystudio.netbook.event.LogoutEvent;
 import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.model.User;
 import com.clilystudio.netbook.model.UserInfo;
@@ -218,7 +218,7 @@ public class UserInfoActivity extends BaseActivity {
     }
 
     @Subscribe
-    public void onLogoutEvent(u u2) {
+    public void onLogoutEvent(LogoutEvent u2) {
         this.finish();
     }
 

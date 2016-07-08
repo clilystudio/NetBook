@@ -1,4 +1,4 @@
 package com.clilystudio.netbook.event;
 
-public final class o {
+public final class NotifEvent {
 }

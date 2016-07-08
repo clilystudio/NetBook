@@ -1,7 +1,6 @@
 package com.clilystudio.netbook.ui;
 
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,11 +14,10 @@ import android.widget.TextView;
 import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.am;
-import com.clilystudio.netbook.event.g;
+import com.clilystudio.netbook.event.BookReadEvent;
 import com.clilystudio.netbook.event.i;
-import com.clilystudio.netbook.event.u;
+import com.clilystudio.netbook.event.LogoutEvent;
 import com.clilystudio.netbook.util.e;
-import com.umeng.onlineconfig.OnlineConfigAgent;
 import com.xiaomi.mipush.sdk.MiPushClient;
 
 import uk.me.lewisdeane.ldialogs.BaseDialog;
@@ -55,7 +53,7 @@ public class SettingsActivity extends BaseActivity implements View.OnClickListen
             settingsActivity.a = n;
             com.clilystudio.netbook.hpay100.a.a.b(settingsActivity, "key_shelf_sort", settingsActivity.a);
             ((TextView) settingsActivity.findViewById(R.id.settings_shelf_sort_value)).setText(string);
-            i.a().post(new g());
+            i.a().post(new BookReadEvent());
         }
     }
 
@@ -80,7 +78,7 @@ public class SettingsActivity extends BaseActivity implements View.OnClickListen
         com.clilystudio.netbook.hpay100.a.a.e(settingsActivity, "pref_new_imp_notif_time", "0");
         com.clilystudio.netbook.hpay100.a.a.b(settingsActivity, "remove_ad_duration", 0);
         settingsActivity.finish();
-        i.a().post(new u());
+        i.a().post(new LogoutEvent());
     }
 
     @Override

@@ -10,7 +10,7 @@ import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.adapter.NotificationAdapter;
 import com.clilystudio.netbook.am;
 import com.clilystudio.netbook.event.i;
-import com.clilystudio.netbook.event.w;
+import com.clilystudio.netbook.event.NotifEvent;
 import com.clilystudio.netbook.util.J;
 import com.squareup.otto.Subscribe;
 
@@ -56,7 +56,7 @@ public class ImportantNotificationFragment extends NotifFragment {
     }
 
     @Subscribe
-    public void onNotifEvent(w w2) {
+    public void onNotifEvent(NotifEvent w2) {
         boolean bl = J.a(this.getActivity()).b() > 0;
         this.a(bl);
     }

@@ -29,12 +29,14 @@ import com.clilystudio.netbook.adapter.HomeShelfAdapter;
 import com.clilystudio.netbook.am;
 import com.clilystudio.netbook.db.BookFile;
 import com.clilystudio.netbook.db.BookReadRecord;
+import com.clilystudio.netbook.event.BookReadEvent;
 import com.clilystudio.netbook.event.BookShelfRefreshEvent;
 import com.clilystudio.netbook.event.DownloadProgressEvent;
+import com.clilystudio.netbook.event.FeedAddedEvent;
+import com.clilystudio.netbook.event.FeedSettingChangedEvent;
+import com.clilystudio.netbook.event.GenderIntroEvent;
 import com.clilystudio.netbook.event.ShelfUpdatedEvent;
-import com.clilystudio.netbook.event.g;
 import com.clilystudio.netbook.event.h;
-import com.clilystudio.netbook.event.l;
 import com.clilystudio.netbook.model.BookFeed;
 import com.clilystudio.netbook.model.BookGenderRecommend;
 import com.clilystudio.netbook.model.BookShelf;
@@ -408,7 +410,7 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
             bookReadRecord.setChapterCountAtFeed(bookReadRecord.getChapterCount());
             bookReadRecord.setLastActionTime(new Date().getTime());
             bookReadRecord.save();
-            homeShelfFragment.a(bookReadRecord, true);
+            homeShelfFragment.a(bookReadRecord);
             if (com.clilystudio.netbook.hpay100.a.a.a(homeShelfFragment.getActivity(), "feed_intro_dialog", true)) {
                 FragmentActivity fragmentActivity = homeShelfFragment.getActivity();
                 if (fragmentActivity != null) {
@@ -569,13 +571,11 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
         }.start();
     }
 
-    private void a(BookReadRecord bookReadRecord, boolean bl) {
+    private void a(BookReadRecord bookReadRecord) {
         com.clilystudio.netbook.hpay100.a.a.t(bookReadRecord.getBookId());
         BookReadRecord.addAccountInfo(bookReadRecord);
-        if (bl) {
-            this.k();
-            com.clilystudio.netbook.hpay100.a.a.w(bookReadRecord.getBookId());
-        }
+        this.k();
+        com.clilystudio.netbook.hpay100.a.a.w(bookReadRecord.getBookId());
     }
 
     private void a(BookShelf bookShelf, boolean bl) {
@@ -847,7 +847,7 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
     }
 
     @Subscribe
-    public void onBookRead(g g2) {
+    public void onBookRead(BookReadEvent g2) {
         this.k();
     }
 
@@ -953,8 +953,8 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
     }
 
     @Subscribe
-    public void onFeedAdded(l l2) {
-        this.a(l2.b(), l2.a());
+    public void onFeedAdded(FeedAddedEvent l2) {
+        this.a(l2.getBookReadRecord());
     }
 
     @Subscribe
@@ -965,13 +965,13 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
     }
 
     @Subscribe
-    public void onFeedSettingChanged(com.clilystudio.netbook.event.m m2) {
+    public void onFeedSettingChanged(FeedSettingChangedEvent m2) {
         this.d.setRefreshing();
     }
 
     @Subscribe
-    public void onGenderIntroEvent(com.clilystudio.netbook.event.r r2) {
-        int n2 = r2.a();
+    public void onGenderIntroEvent(GenderIntroEvent r2) {
+        int n2 = r2.getGender();
         System.out.println("type : " + n2);
         if (n2 == 0) {
             this.b(3);
@@ -1012,9 +1012,7 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
             }
         }
     }
-
-    @Subscribe
-    public void onHideAdEvent(com.clilystudio.netbook.event.s s2) {
+    public void onHideAdEvent() {
         this.k();
         if (this.g != null && this.i != null && this.i.postLink != null && (this.i.postLink.startsWith("link") || this.i.postLink.startsWith("game"))) {
             this.e.removeHeaderView(this.g);

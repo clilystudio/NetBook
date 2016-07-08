@@ -30,17 +30,14 @@ import com.clilystudio.netbook.db.AccountInfo;
 import com.clilystudio.netbook.db.BookReadRecord;
 import com.clilystudio.netbook.event.AccountUpdatedEvent;
 import com.clilystudio.netbook.event.BookShelfRefreshEvent;
-import com.clilystudio.netbook.event.o;
-import com.clilystudio.netbook.event.s;
-import com.clilystudio.netbook.event.t;
-import com.clilystudio.netbook.event.w;
+import com.clilystudio.netbook.event.LoginEvent;
+import com.clilystudio.netbook.event.NotifEvent;
 import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.model.BookTopRoot;
 import com.clilystudio.netbook.model.IKanshuUrlResult;
 import com.clilystudio.netbook.model.RecommendInfo;
 import com.clilystudio.netbook.model.ResultServer;
 import com.clilystudio.netbook.model.User;
-import com.clilystudio.netbook.model.UserVipInfo;
 import com.clilystudio.netbook.model.UshaqiOnlineConfig;
 import com.clilystudio.netbook.push.BookSubRecord;
 import com.clilystudio.netbook.push.BookUnSubRecord;
@@ -442,7 +439,7 @@ public class HomeActivity extends HomeParentActivity implements ViewPager.OnPage
                     accountInfo.setPrevUnimpNotif(J.a(this).b());
                     accountInfo.save();
                     MiStatInterface.recordCountEvent("view_notification", null);
-                    com.clilystudio.netbook.event.i.a().post(new w());
+                    com.clilystudio.netbook.event.i.a().post(new NotifEvent());
                     this.startActivity(new Intent(this, MyMessageActivity.class));
                     return;
                 }
@@ -612,7 +609,6 @@ public class HomeActivity extends HomeParentActivity implements ViewPager.OnPage
         }, 3000);
         if (this.p != null) {
             com.clilystudio.netbook.util.e.c("launch");
-            refreshUserVipInfo();
         }
         if (bundle != null) {
             tabWidgetV2.setIndex(bundle.getInt("extra_index"));
@@ -665,11 +661,6 @@ public class HomeActivity extends HomeParentActivity implements ViewPager.OnPage
         com.clilystudio.netbook.hpay100.a.a.b(this, "search_hot_words_date", 0);
     }
 
-    @Subscribe
-    public void onEnterTweet(o o2) {
-        this.s.getChildAt(1).setVisibility(View.GONE);
-    }
-
     @Override
     public boolean onKeyDown(int n2, KeyEvent keyEvent) {
         if (n2 == KeyEvent.KEYCODE_MENU && keyEvent.getRepeatCount() == 0) {
@@ -680,38 +671,17 @@ public class HomeActivity extends HomeParentActivity implements ViewPager.OnPage
     }
 
     @Subscribe
-    public void onLoginEvent(t t2) {
-        this.p = t2.a();
+    public void onLoginEvent(LoginEvent t2) {
+        this.p = t2.getAccount();
         if (this.p != null) {
             this.a(this.p.getUser());
-            boolean bl = t2.b() != AuthLoginActivity.Source.HOME;
+            boolean bl = t2.getSource() != AuthLoginActivity.Source.HOME;
             new Z(this, this.p.getToken()).a(bl);
             this.a(this.p);
-            refreshUserVipInfo();
         }
     }
 
     private void refreshUserVipInfo() {
-        e<String, Void, UserVipInfo> h2 = new e<String, Void, UserVipInfo>() {
-
-            @Override
-            protected UserVipInfo doInBackground(String... params) {
-                HomeActivity.f(HomeActivity.this);
-                return com.clilystudio.netbook.api.b.b().O(params[0]);
-            }
-
-            @Override
-            protected void onPostExecute(UserVipInfo userVipInfo) {
-                super.onPostExecute(userVipInfo);
-                if (userVipInfo != null && userVipInfo.isOk()) {
-                    MiStatInterface.recordCalculateEvent("remove_ad_duration", null, userVipInfo.getDueInMs());
-                    if (userVipInfo.getDueInMs() > 0) {
-                        com.clilystudio.netbook.event.i.a().post(new s());
-                    }
-                }
-            }
-        };
-        h2.b(this.p.getToken());
     }
 
     @Override
@@ -721,7 +691,7 @@ public class HomeActivity extends HomeParentActivity implements ViewPager.OnPage
     }
 
     @Subscribe
-    public void onNotifEvent(w w2) {
+    public void onNotifEvent(NotifEvent w2) {
         int n2 = J.a(this).e();
         View view = this.k.findViewById(R.id.msg_dot);
         TextView textView = (TextView) this.k.findViewById(R.id.msg_count);

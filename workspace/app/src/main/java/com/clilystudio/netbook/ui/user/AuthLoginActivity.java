@@ -17,6 +17,7 @@ import android.widget.Toast;
 import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.a_pack.c;
+import com.clilystudio.netbook.event.LoginEvent;
 import com.clilystudio.netbook.event.i;
 import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.ui.BaseActivity;
@@ -137,8 +138,8 @@ public class AuthLoginActivity extends BaseActivity implements Handler.Callback 
                                     com.clilystudio.netbook.api.b.b().h(account.getUser().getId());
                                     com.clilystudio.netbook.hpay100.a.a.a(AuthLoginActivity.this, account.getUser().getId());
                                     MyApplication.a().a(account);
-                                    com.clilystudio.netbook.event.t t2 = new com.clilystudio.netbook.event.t(account);
-                                    t2.a((AuthLoginActivity.Source) AuthLoginActivity.this.getIntent().getSerializableExtra("KEY_SOURCE"));
+                                    LoginEvent t2 = new LoginEvent(account);
+                                    t2.setSource((AuthLoginActivity.Source) AuthLoginActivity.this.getIntent().getSerializableExtra("KEY_SOURCE"));
                                     i.a().post(t2);
                                     com.clilystudio.netbook.util.e.a(AuthLoginActivity.this, "登录成功");
                                 } else {

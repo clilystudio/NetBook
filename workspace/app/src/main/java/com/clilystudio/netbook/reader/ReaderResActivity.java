@@ -14,7 +14,7 @@ import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.d;
 import com.clilystudio.netbook.db.BookTopicEnterRecord;
 import com.clilystudio.netbook.event.i;
-import com.clilystudio.netbook.event.v;
+import com.clilystudio.netbook.event.ModeChangedEvent;
 import com.clilystudio.netbook.model.TopicCount;
 import com.squareup.otto.Subscribe;
 
@@ -113,7 +113,7 @@ public class ReaderResActivity extends ReaderModeActivity {
     }
 
     @Subscribe
-    public void onModeChanged(v v2) {
+    public void onModeChanged(ModeChangedEvent v2) {
         this.finish();
     }
 }

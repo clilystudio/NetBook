@@ -22,7 +22,7 @@ public class GenderIntroDialog extends DialogFragment {
             @Override
             public void onClick(View v) {
                 dismiss();
-                i.a().post(new com.clilystudio.netbook.event.r(0));
+                i.a().post(new GenderIntroEvent(0));
                 MiStatInterface.recordCountEvent("book_recommend_gender_click", "cancel");
             }
         });
@@ -30,7 +30,7 @@ public class GenderIntroDialog extends DialogFragment {
             @Override
             public void onClick(View v) {
                 dismiss();
-                i.a().post(new com.clilystudio.netbook.event.r(1));
+                i.a().post(new GenderIntroEvent(1));
                 MiStatInterface.recordCountEvent("book_recommend_gender_click", "male");
             }
         });
@@ -38,7 +38,7 @@ public class GenderIntroDialog extends DialogFragment {
             @Override
             public void onClick(View v) {
                 dismiss();
-                i.a().post(new com.clilystudio.netbook.event.r(2));
+                i.a().post(new GenderIntroEvent(2));
                 MiStatInterface.recordCountEvent("book_recommend_gender_click", "female");
             }
         });

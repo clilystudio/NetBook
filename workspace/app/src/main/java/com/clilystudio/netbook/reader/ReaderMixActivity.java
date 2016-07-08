@@ -17,7 +17,7 @@ import com.clilystudio.netbook.a_pack.e;
 import com.clilystudio.netbook.am;
 import com.clilystudio.netbook.api.ApiService;
 import com.clilystudio.netbook.d;
-import com.clilystudio.netbook.event.v;
+import com.clilystudio.netbook.event.ModeChangedEvent;
 import com.clilystudio.netbook.model.ChineseAllPromRoot;
 import com.clilystudio.netbook.model.TocSummary;
 import com.clilystudio.netbook.ui.BaseLoadingActivity;
@@ -86,7 +86,7 @@ public class ReaderMixActivity extends BaseLoadingActivity {
                 if (!string.equals(ReaderMixActivity.a(readerMixActivity))) {
                     MyApplication.a().c(ReaderMixActivity.b(readerMixActivity));
                     am.c(ReaderMixActivity.b(readerMixActivity), 9);
-                    com.clilystudio.netbook.event.i.a().post(new v(1));
+                    com.clilystudio.netbook.event.i.a().post(new ModeChangedEvent(1));
                     ReaderMixActivity.a(readerMixActivity, ReaderMixActivity.f(readerMixActivity).get_id());
                 }
                 readerMixActivity.finish();
@@ -230,7 +230,7 @@ public class ReaderMixActivity extends BaseLoadingActivity {
                 if (!"mix".equals(ReaderMixActivity.a(ReaderMixActivity.this))) {
                     MyApplication.a().c(ReaderMixActivity.b(ReaderMixActivity.this));
                     com.clilystudio.netbook.am.c(ReaderMixActivity.b(ReaderMixActivity.this), 5);
-                    com.clilystudio.netbook.event.i.a().post(new v(1));
+                    com.clilystudio.netbook.event.i.a().post(new ModeChangedEvent(1));
                     ReaderMixActivity.a(ReaderMixActivity.this, "MIX_TOC_ID");
                 }
                 ReaderMixActivity.this.finish();
@@ -251,7 +251,7 @@ public class ReaderMixActivity extends BaseLoadingActivity {
                     } else {
                         am.c(ReaderMixActivity.b(ReaderMixActivity.this), 10);
                     }
-                    com.clilystudio.netbook.event.i.a().post(new v(1));
+                    com.clilystudio.netbook.event.i.a().post(new ModeChangedEvent(1));
                     ReaderMixActivity.a(ReaderMixActivity.this, tocSummary.get_id());
                 }
                 ReaderMixActivity.this.finish();
