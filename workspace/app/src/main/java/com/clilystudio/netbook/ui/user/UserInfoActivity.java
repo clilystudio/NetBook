@@ -12,7 +12,7 @@ import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.am;
 import com.clilystudio.netbook.d;
 import com.clilystudio.netbook.event.AccountUpdatedEvent;
-import com.clilystudio.netbook.event.K;
+import com.clilystudio.netbook.event.UserInfoChangedEvent;
 import com.clilystudio.netbook.event.i;
 import com.clilystudio.netbook.event.u;
 import com.clilystudio.netbook.model.Account;
@@ -223,7 +223,7 @@ public class UserInfoActivity extends BaseActivity {
     }
 
     @Subscribe
-    public void onUserInfoChanged(K k) {
+    public void onUserInfoChanged(UserInfoChangedEvent k) {
         this.b();
     }
 }

@@ -1,4 +1,4 @@
 package com.clilystudio.netbook.event;
 
-public final class K {
+public final class UserInfoChangedEvent {
 }
