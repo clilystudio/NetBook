@@ -2,7 +2,7 @@ package com.clilystudio.netbook.widget.comca;
 
 import java.util.ArrayList;
 
-final class e extends c {
+final class e implements b {
     private boolean a;
     private /* synthetic */ ArrayList b;
     private /* synthetic */ d c;
@@ -11,6 +11,11 @@ final class e extends c {
         this.c = d2;
         this.b = arrayList;
         this.a = false;
+    }
+
+    @Override
+    public void a(a var1) {
+
     }
 
     public final void b(a a2) {
@@ -26,5 +31,10 @@ final class e extends c {
 
     public final void c(a a2) {
         this.a = true;
+    }
+
+    @Override
+    public void d(a var1) {
+
     }
 }

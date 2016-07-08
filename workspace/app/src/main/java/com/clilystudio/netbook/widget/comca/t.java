@@ -5,7 +5,7 @@ final class t extends s {
     private float d;
 
     public /* varargs */ t(String string, float... arrf) {
-        super(string, 0);
+        super(string, (byte)0);
         this.a(arrf);
     }
 
@@ -33,7 +33,7 @@ final class t extends s {
 
     @Override
     final Object c() {
-        return Float.valueOf(this.d);
+        return this.d;
     }
 
     @Override

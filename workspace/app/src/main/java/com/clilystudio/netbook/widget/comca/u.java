@@ -5,7 +5,7 @@ final class u extends s {
     private int d;
 
     public /* varargs */ u(String string, int... arrn) {
-        super(string, 0);
+        super(string, (byte)0);
         this.a(arrn);
     }
 
