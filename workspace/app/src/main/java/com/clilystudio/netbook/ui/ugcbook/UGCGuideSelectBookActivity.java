@@ -14,7 +14,7 @@ import android.widget.TextView;
 
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.db.BookReadRecord;
-import com.clilystudio.netbook.event.D;
+import com.clilystudio.netbook.event.AddShelfBooksEvent;
 import com.clilystudio.netbook.model.BookSummary;
 import com.clilystudio.netbook.model.UGCNewCollection;
 import com.clilystudio.netbook.ui.BaseActivity;
@@ -143,13 +143,14 @@ public class UGCGuideSelectBookActivity extends BaseActivity {
                     arrayList.add(bookSummary.getId());
                 }
                 ArrayList<String> arrayList2 = new ArrayList<>();
-                for (int j = 0; j < UGCGuideSelectBookActivity.b(UGCGuideSelectBookActivity.this).size(); ++j) {
-                    String string = ((BookReadRecord) UGCGuideSelectBookActivity.b(UGCGuideSelectBookActivity.this).get(j)).getBookId();
-                    if (arrayList.contains(string)) continue;
-                    arrayList2.add(string);
+                for (int j = 0; j < UGCGuideSelectBookActivity.this.i.size(); ++j) {
+                    String string = UGCGuideSelectBookActivity.this.i.get(j).getBookId();
+                    if (!arrayList.contains(string)) {
+                        arrayList2.add(string);
+                    }
                 }
                 String[] arrstring = com.clilystudio.netbook.hpay100.a.a.a(arrayList2, String.class);
-                com.clilystudio.netbook.event.i.a().post(new D(arrstring));
+                com.clilystudio.netbook.event.i.a().post(new AddShelfBooksEvent(arrstring));
                 finish();
             }
         });

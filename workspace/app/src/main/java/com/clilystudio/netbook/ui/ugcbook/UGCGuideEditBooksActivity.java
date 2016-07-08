@@ -18,7 +18,7 @@ import android.widget.TextView;
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.a_pack.c;
 import com.clilystudio.netbook.am;
-import com.clilystudio.netbook.event.D;
+import com.clilystudio.netbook.event.AddShelfBooksEvent;
 import com.clilystudio.netbook.event.E;
 import com.clilystudio.netbook.event.i;
 import com.clilystudio.netbook.model.Account;
@@ -159,7 +159,7 @@ public class UGCGuideEditBooksActivity extends BaseActivity implements View.OnCl
     }
 
     @Subscribe
-    public void onAddShelfBooks(D d) {
+    public void onAddShelfBooks(AddShelfBooksEvent d) {
         c<String[], List<BookSummary>> n = new c<String[], List<BookSummary>>(this, "正在添加书籍...") {
 
             @Override
@@ -181,7 +181,7 @@ public class UGCGuideEditBooksActivity extends BaseActivity implements View.OnCl
                 com.clilystudio.netbook.util.e.a(UGCGuideEditBooksActivity.this, "添加书籍失败，请检查网络或重试");
             }
         };
-        n.b(new String[][]{d.a()});
+        n.b(new String[][]{d.getBookIds()});
     }
 
     @Override
