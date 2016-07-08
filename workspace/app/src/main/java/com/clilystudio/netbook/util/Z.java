@@ -11,7 +11,7 @@ import com.clilystudio.netbook.db.BookReadRecord;
 import com.clilystudio.netbook.db.BookSyncRecord;
 import com.clilystudio.netbook.db.SyncAccount;
 import com.clilystudio.netbook.event.ShelfUpdatedEvent;
-import com.clilystudio.netbook.event.c;
+import com.clilystudio.netbook.event.BookAddedEvent;
 import com.clilystudio.netbook.event.i;
 import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.model.BookShelfSyncTime;
@@ -77,7 +77,7 @@ public final class Z {
             arrayList.add(book.getId());
             if (BookReadRecord.getOnShelf(book.getId()) != null || list != null && list.contains(book.getId())) continue;
             BookReadRecord.create(book, true);
-            i.a().post(new c(book.getId(), false));
+            i.a().post(new BookAddedEvent(book.getId(), false));
         }
         int n = arrremoteBookShelf$Book2.length;
         int n2 = 0;
@@ -90,7 +90,7 @@ public final class Z {
             RemoteBookShelf.Book remoteBookShelf$Book2 = arrremoteBookShelf$Book2[n2];
             if (!(BookReadRecord.getOnShelf(remoteBookShelf$Book2.getId()) != null || list2 != null && list2.contains(remoteBookShelf$Book2.getId()))) {
                 BookReadRecord.createFeed(remoteBookShelf$Book2);
-                i.a().post(new c(remoteBookShelf$Book2.getId(), false));
+                i.a().post(new BookAddedEvent(remoteBookShelf$Book2.getId(), false));
             }
             ++n2;
         } while (true);

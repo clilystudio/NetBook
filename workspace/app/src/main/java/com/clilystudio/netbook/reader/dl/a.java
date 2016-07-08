@@ -9,6 +9,7 @@ import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.db.BookDlRecord;
 import com.clilystudio.netbook.db.BookReadRecord;
 import com.clilystudio.netbook.event.DownloadProgressEvent;
+import com.clilystudio.netbook.event.DownloadStatusEvent;
 import com.clilystudio.netbook.event.i;
 import com.clilystudio.netbook.util.e;
 
@@ -65,7 +66,7 @@ public class a {
     private void b(BookReadRecord bookReadRecord, int n, int n2) {
         String string = bookReadRecord.getBookId();
         int n3 = bookReadRecord.getReadMode();
-        i.a().post(new com.clilystudio.netbook.event.d(string, 1));
+        i.a().post(new DownloadStatusEvent(string, 1));
         e.a((Activity) this.a,  "已加入缓存队列");
         MyApplication.a().f().add(string);
         int n4 = n < 0 ? 0 : n;

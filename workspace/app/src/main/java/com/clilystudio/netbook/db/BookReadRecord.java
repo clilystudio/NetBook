@@ -9,8 +9,8 @@ import com.activeandroid.query.Delete;
 import com.activeandroid.query.From;
 import com.activeandroid.query.Select;
 import com.clilystudio.netbook.api.ApiService;
-import com.clilystudio.netbook.event.c;
-import com.clilystudio.netbook.event.h;
+import com.clilystudio.netbook.event.BookAddedEvent;
+import com.clilystudio.netbook.event.BookRemovedEvent;
 import com.clilystudio.netbook.event.i;
 import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.model.BookGenderRecommend;
@@ -97,7 +97,7 @@ public class BookReadRecord extends Model {
         BookReadRecord bookReadRecord = BookReadRecord.createBookRecord(bookInfo);
         BookReadRecord.addAccountInfo(bookReadRecord);
         bookReadRecord.save();
-        i.a().post(new c(bookReadRecord.getBookId()));
+        i.a().post(new BookAddedEvent(bookReadRecord.getBookId()));
     }
 
     public static void create(BookInfo bookInfo, String string, int n, int n2, int n3) {
@@ -109,7 +109,7 @@ public class BookReadRecord extends Model {
         BookReadRecord.addAccountInfo(bookReadRecord);
         bookReadRecord.save();
         MixTocRecord.create(string2, string, n, n2);
-        i.a().post(new c(string2));
+        i.a().post(new BookAddedEvent(string2));
     }
 
     public static void create(BookInfo bookInfo, String string, String string2, String string3, int n, int n2, int n3) {
@@ -121,7 +121,7 @@ public class BookReadRecord extends Model {
         BookReadRecord.addAccountInfo(bookReadRecord);
         bookReadRecord.save();
         TocReadRecord.create(string4, string, string2, string3, n, n2);
-        i.a().post(new c(string4));
+        i.a().post(new BookAddedEvent(string4));
     }
 
     public static void create(RemoteBookShelf.Book book, boolean bl) {
@@ -207,7 +207,7 @@ public class BookReadRecord extends Model {
 
     public static void deleteAndSync(String string) {
         BookReadRecord.delete(string);
-        i.a().post(new h(string));
+        i.a().post(new BookRemovedEvent(string));
     }
 
     private static void deleteDlRecord(String string) {

@@ -29,14 +29,16 @@ import com.clilystudio.netbook.adapter.HomeShelfAdapter;
 import com.clilystudio.netbook.am;
 import com.clilystudio.netbook.db.BookFile;
 import com.clilystudio.netbook.db.BookReadRecord;
+import com.clilystudio.netbook.event.BookAddedEvent;
 import com.clilystudio.netbook.event.BookReadEvent;
 import com.clilystudio.netbook.event.BookShelfRefreshEvent;
 import com.clilystudio.netbook.event.DownloadProgressEvent;
 import com.clilystudio.netbook.event.FeedAddedEvent;
+import com.clilystudio.netbook.event.FeedRemovedEvent;
 import com.clilystudio.netbook.event.FeedSettingChangedEvent;
 import com.clilystudio.netbook.event.GenderIntroEvent;
 import com.clilystudio.netbook.event.ShelfUpdatedEvent;
-import com.clilystudio.netbook.event.h;
+import com.clilystudio.netbook.event.BookRemovedEvent;
 import com.clilystudio.netbook.model.BookFeed;
 import com.clilystudio.netbook.model.BookGenderRecommend;
 import com.clilystudio.netbook.model.BookShelf;
@@ -839,11 +841,11 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
     }
 
     @Subscribe
-    public void onBookAdded(com.clilystudio.netbook.event.c c2) {
-        if (c2.a()) {
+    public void onBookAdded(BookAddedEvent c2) {
+        if (c2.isLocal()) {
             this.k();
         }
-        com.clilystudio.netbook.hpay100.a.a.r(c2.b());
+        com.clilystudio.netbook.hpay100.a.a.r(c2.getBookId());
     }
 
     @Subscribe
@@ -852,8 +854,8 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
     }
 
     @Subscribe
-    public void onBookRemoved(h h2) {
-        this.a(h2.b());
+    public void onBookRemoved(BookRemovedEvent h2) {
+        this.a(h2.getBookId());
     }
 
     @Override
@@ -958,10 +960,10 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
     }
 
     @Subscribe
-    public void onFeedRemoved(com.clilystudio.netbook.event.n n2) {
+    public void onFeedRemoved(FeedRemovedEvent n2) {
         this.k();
-        com.clilystudio.netbook.hpay100.a.a.r(n2.b());
-        com.clilystudio.netbook.hpay100.a.a.x(n2.b());
+        com.clilystudio.netbook.hpay100.a.a.r(n2.getBookId());
+        com.clilystudio.netbook.hpay100.a.a.x(n2.getBookId());
     }
 
     @Subscribe

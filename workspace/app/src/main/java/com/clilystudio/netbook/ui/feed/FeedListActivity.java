@@ -16,7 +16,7 @@ import com.clilystudio.netbook.db.BookReadRecord;
 import com.clilystudio.netbook.event.FeedAddedEvent;
 import com.clilystudio.netbook.event.i;
 import com.clilystudio.netbook.event.FeedSettingChangedEvent;
-import com.clilystudio.netbook.event.n;
+import com.clilystudio.netbook.event.FeedRemovedEvent;
 import com.clilystudio.netbook.ui.BaseActivity;
 import com.clilystudio.netbook.util.W;
 import com.clilystudio.netbook.widget.CoverView;
@@ -120,7 +120,7 @@ public class FeedListActivity extends BaseActivity {
                         bookReadRecord.setFeedFat(false);
                         BookReadRecord.addAccountInfo(bookReadRecord);
                         bookReadRecord.save();
-                        com.clilystudio.netbook.event.i.a().post(new n(bookReadRecord.getBookId()));
+                        com.clilystudio.netbook.event.i.a().post(new FeedRemovedEvent(bookReadRecord.getBookId()));
                     }
                 });
            }

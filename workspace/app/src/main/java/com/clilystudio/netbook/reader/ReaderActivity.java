@@ -36,6 +36,7 @@ import com.clilystudio.netbook.db.BookTopicEnterRecord;
 import com.clilystudio.netbook.db.MixTocRecord;
 import com.clilystudio.netbook.db.TocReadRecord;
 import com.clilystudio.netbook.event.BookReadEvent;
+import com.clilystudio.netbook.event.DownloadStatusEvent;
 import com.clilystudio.netbook.event.ThemeChangedEvent;
 import com.clilystudio.netbook.event.ConvertChangedEvent;
 import com.clilystudio.netbook.event.ModeChangedEvent;
@@ -217,7 +218,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     dialog.dismiss();
-                    com.clilystudio.netbook.event.i.a().post(new com.clilystudio.netbook.event.d(ReaderActivity.M(readerActivity), 3));
+                    com.clilystudio.netbook.event.i.a().post(new DownloadStatusEvent(ReaderActivity.M(readerActivity), 3));
                 }
             }).show();
         } else {

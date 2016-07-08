@@ -22,8 +22,9 @@ import com.clilystudio.netbook.am;
 import com.clilystudio.netbook.d;
 import com.clilystudio.netbook.db.BookReadRecord;
 import com.clilystudio.netbook.db.SourceRecord;
-import com.clilystudio.netbook.event.c;
-import com.clilystudio.netbook.event.h;
+import com.clilystudio.netbook.event.BookAddedEvent;
+import com.clilystudio.netbook.event.DownloadStatusEvent;
+import com.clilystudio.netbook.event.BookRemovedEvent;
 import com.clilystudio.netbook.model.BookInfo;
 import com.clilystudio.netbook.reader.dl.a;
 import com.clilystudio.netbook.ui.user.AuthLoginActivity;
@@ -436,15 +437,15 @@ public class BookInfoActivity extends BaseActivity implements View.OnClickListen
     }
 
     @Subscribe
-    public void onBookAdded(c c2) {
-        if (c2.b().equals(this.h) && !this.i) {
+    public void onBookAdded(BookAddedEvent c2) {
+        if (c2.getBookId().equals(this.h) && !this.i) {
             this.m.sendEmptyMessage(0);
         }
     }
 
     @Subscribe
-    public void onBookRemoved(h h2) {
-        if (h2.b().equals(this.h) && this.i) {
+    public void onBookRemoved(BookRemovedEvent h2) {
+        if (h2.getBookId().equals(this.h) && this.i) {
             this.i = false;
             this.g();
         }
@@ -553,9 +554,9 @@ public class BookInfoActivity extends BaseActivity implements View.OnClickListen
     }
 
     @Subscribe
-    public void onDownloadStatus(com.clilystudio.netbook.event.d d2) {
-        if (this.h.equals(d2.b())) {
-            this.a(d2.a());
+    public void onDownloadStatus(DownloadStatusEvent d2) {
+        if (this.h.equals(d2.getBookId())) {
+            this.a(d2.getStatus());
         }
     }
 

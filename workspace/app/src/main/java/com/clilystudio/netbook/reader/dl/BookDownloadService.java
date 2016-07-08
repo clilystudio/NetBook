@@ -15,7 +15,7 @@ import com.clilystudio.netbook.db.BookDlRecord;
 import com.clilystudio.netbook.db.BookReadRecord;
 import com.clilystudio.netbook.db.SourceRecord;
 import com.clilystudio.netbook.event.DownloadProgressEvent;
-import com.clilystudio.netbook.event.d;
+import com.clilystudio.netbook.event.DownloadStatusEvent;
 import com.clilystudio.netbook.model.Chapter;
 import com.clilystudio.netbook.model.ChapterLink;
 import com.clilystudio.netbook.model.ChapterRoot;
@@ -331,7 +331,7 @@ public class BookDownloadService extends Service {
             return;
         }
         this.a(2);
-        com.clilystudio.netbook.event.i.a().post(new d(this.a, 2));
+        com.clilystudio.netbook.event.i.a().post(new DownloadStatusEvent(this.a, 2));
         this.c();
     }
 
@@ -432,7 +432,7 @@ public class BookDownloadService extends Service {
     private void e() {
         this.i.putExtra("SerDlStopFlag", -1);
         this.h();
-        com.clilystudio.netbook.event.i.a().post(new d(this.a, 4));
+        com.clilystudio.netbook.event.i.a().post(new DownloadStatusEvent(this.a, 4));
         this.f();
         this.a();
     }
@@ -483,8 +483,8 @@ public class BookDownloadService extends Service {
     }
 
     @Subscribe
-    public void onDownloadStatus(d d2) {
-        switch (d2.a()) {
+    public void onDownloadStatus(DownloadStatusEvent d2) {
+        switch (d2.getStatus()) {
             default: {
                 return;
             }
@@ -522,7 +522,7 @@ public class BookDownloadService extends Service {
                 BookDownloadService.c(this.a);
                 BookDownloadService.a(this.a, false);
                 BookDownloadService.a(this.a, 2);
-                com.clilystudio.netbook.event.i.a().post(new d(BookDownloadService.d(this.a), 2));
+                com.clilystudio.netbook.event.i.a().post(new DownloadStatusEvent(BookDownloadService.d(this.a), 2));
                 BookDownloadService.e(this.a);
                 BookDownloadService.b(this.a, false);
             }
