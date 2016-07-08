@@ -2,7 +2,6 @@ package com.clilystudio.netbook.ui.home;
 
 import android.app.ActionBar;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Handler;
@@ -29,6 +28,7 @@ import com.clilystudio.netbook.a_pack.e;
 import com.clilystudio.netbook.am;
 import com.clilystudio.netbook.db.AccountInfo;
 import com.clilystudio.netbook.db.BookReadRecord;
+import com.clilystudio.netbook.event.AccountUpdatedEvent;
 import com.clilystudio.netbook.event.BookShelfRefreshEvent;
 import com.clilystudio.netbook.event.o;
 import com.clilystudio.netbook.event.s;
@@ -62,11 +62,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Enumeration;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
@@ -386,7 +383,7 @@ public class HomeActivity extends HomeParentActivity implements ViewPager.OnPage
     }
 
     @Subscribe
-    public void onAccountUpdated(com.clilystudio.netbook.event.a a2) {
+    public void onAccountUpdated(AccountUpdatedEvent a2) {
         Account account = am.e();
         if (account != null) {
             this.l.setImageUrl(account.getUser().getFullAvatar());

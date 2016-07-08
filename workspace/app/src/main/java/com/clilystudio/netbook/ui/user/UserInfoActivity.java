@@ -11,6 +11,7 @@ import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.am;
 import com.clilystudio.netbook.d;
+import com.clilystudio.netbook.event.AccountUpdatedEvent;
 import com.clilystudio.netbook.event.K;
 import com.clilystudio.netbook.event.i;
 import com.clilystudio.netbook.event.u;
@@ -86,7 +87,7 @@ public class UserInfoActivity extends BaseActivity {
             user.setAvatar(userInfo.getAvatar());
             user.setLv(userInfo.getLv());
             MyApplication.a().a(account);
-            i.a().post(new com.clilystudio.netbook.event.a());
+            i.a().post(new AccountUpdatedEvent());
         }
     }
 
