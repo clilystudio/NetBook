@@ -1,12 +1,5 @@
 package com.clilystudio.netbook.widget.comca;
 
-import com.clilystudio.netbook.widget.comca.a;
-import com.clilystudio.netbook.widget.comca.b;
-import com.clilystudio.netbook.widget.comca.d;
-import com.clilystudio.netbook.widget.comca.h;
-import com.clilystudio.netbook.widget.comca.j;
-import java.util.ArrayList;
-
 final class i implements b {
     private d a;
     private j b;
@@ -24,7 +17,8 @@ final class i implements b {
      */
     private void e(a a2) {
         h h2;
-        block2 : {
+        block2:
+        {
             if (this.a.b) {
                 return;
             }
@@ -32,7 +26,7 @@ final class i implements b {
             for (int k = 0; k < n; ++k) {
                 h2 = this.b.c.get(k);
                 if (h2.b != this.c || h2.a.a != a2) continue;
-                a2.b((b)this);
+                a2.b((b) this);
                 break block2;
             }
             h2 = null;
@@ -40,7 +34,7 @@ final class i implements b {
         this.b.c.remove(h2);
         if (this.b.c.size() != 0) return;
         this.b.a.a();
-        d.a((d)this.a).add(this.b.a);
+        d.a((d) this.a).add(this.b.a);
     }
 
     public final void a(a a2) {

@@ -1,7 +1,5 @@
 package com.clilystudio.netbook.widget.comca;
 
-import com.clilystudio.netbook.widget.comca.a;
-
 public interface b {
     public void a(a var1);
 

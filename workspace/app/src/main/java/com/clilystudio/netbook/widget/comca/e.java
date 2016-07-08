@@ -1,9 +1,5 @@
 package com.clilystudio.netbook.widget.comca;
 
-import com.clilystudio.netbook.widget.comca.a;
-import com.clilystudio.netbook.widget.comca.c;
-import com.clilystudio.netbook.widget.comca.d;
-import com.clilystudio.netbook.widget.comca.j;
 import java.util.ArrayList;
 
 final class e extends c {
@@ -21,9 +17,9 @@ final class e extends c {
         if (!this.a) {
             int n = this.b.size();
             for (int i = 0; i < n; ++i) {
-                j j2 = (j)this.b.get(i);
+                j j2 = (j) this.b.get(i);
                 j2.a.a();
-                d.a((d)this.c).add(j2.a);
+                d.a((d) this.c).add(j2.a);
             }
         }
     }

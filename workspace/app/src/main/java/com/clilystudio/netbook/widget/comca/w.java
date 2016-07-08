@@ -1,36 +1,49 @@
 package com.clilystudio.netbook.widget.comca;
 
+import android.os.Handler;
 import android.os.Looper;
+import android.os.Message;
 import android.util.AndroidRuntimeException;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.AnimationUtils;
 import android.view.animation.Interpolator;
 import android.view.animation.LinearInterpolator;
-import com.clilystudio.netbook.widget.comca.A;
-import com.clilystudio.netbook.widget.comca.B;
-import com.clilystudio.netbook.widget.comca.C;
-import com.clilystudio.netbook.widget.comca.D;
-import com.clilystudio.netbook.widget.comca.a;
-import com.clilystudio.netbook.widget.comca.b;
-import com.clilystudio.netbook.widget.comca.k;
-import com.clilystudio.netbook.widget.comca.m;
-import com.clilystudio.netbook.widget.comca.s;
-import com.clilystudio.netbook.widget.comca.x;
-import com.clilystudio.netbook.widget.comca.y;
-import com.clilystudio.netbook.widget.comca.z;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 
 public final class w extends a {
-    private static ThreadLocal<C> d = new ThreadLocal();
-    private static final ThreadLocal<ArrayList<w>> e = new x();
-    private static final ThreadLocal<ArrayList<w>> f = new y();
-    private static final ThreadLocal<ArrayList<w>> g = new z();
+    private static final ThreadLocal<ArrayList<w>> e = new ThreadLocal<ArrayList<w>>(){
+        @Override
+        protected ArrayList<w> initialValue() {
+            return new ArrayList<>();
+        }
+    };
+    private static final ThreadLocal<ArrayList<w>> f = new ThreadLocal<ArrayList<w>>(){
+        @Override
+        protected ArrayList<w> initialValue() {
+            return new ArrayList<>();
+        }
+    };
+    private static final ThreadLocal<ArrayList<w>> g = new ThreadLocal<ArrayList<w>>(){
+        @Override
+        protected ArrayList<w> initialValue() {
+            return new ArrayList<>();
+        }
+    };
     private static final ThreadLocal<ArrayList<w>> h = new ThreadLocal<>();
     private static final ThreadLocal<ArrayList<w>> i = new ThreadLocal<>();
     private static final Interpolator j = new AccelerateDecelerateInterpolator();
+    private static ThreadLocal<C> d = new ThreadLocal();
     private static long v;
+
+    static {
+        new m();
+        new k();
+        v = 10;
+    }
+
     private s[] A;
     private HashMap<String, s> B;
     private long b;
@@ -51,12 +64,6 @@ public final class w extends a {
     private Interpolator y = j;
     private ArrayList<D> z = null;
 
-    static {
-        new m();
-        new k();
-        v = 10;
-    }
-
     static /* synthetic */ long a(w w2) {
         return w2.u;
     }
@@ -64,7 +71,7 @@ public final class w extends a {
     /*
      * Enabled aggressive block sorting
      */
-    public static /* varargs */ w a(float ... arrf) {
+    public static /* varargs */ w a(float... arrf) {
         w w2 = new w();
         if (arrf == null || arrf.length == 0) {
             return w2;
@@ -82,7 +89,7 @@ public final class w extends a {
     /*
      * Enabled aggressive block sorting
      */
-    public static /* varargs */ w a(int ... arrn) {
+    public static /* varargs */ w a(int... arrn) {
         w w2 = new w();
         if (arrn == null || arrn.length == 0) {
             return w2;
@@ -95,31 +102,6 @@ public final class w extends a {
         }
         w2.s = false;
         return w2;
-    }
-
-    private void a(float f) {
-        float f2;
-        this.m = f2 = this.y.getInterpolation(f);
-        int n = this.A.length;
-        for (int i = 0; i < n; ++i) {
-            this.A[i].a(f2);
-        }
-        if (this.z != null) {
-            int n2 = this.z.size();
-            for (int j = 0; j < n2; ++j) {
-                this.z.get(j).a(this);
-            }
-        }
-    }
-
-    private /* varargs */ void a(s ... arrs) {
-        this.A = arrs;
-        this.B = new HashMap(1);
-        for (int i = 0; i <= 0; ++i) {
-            s s2 = arrs[0];
-            this.B.put(s2.a, s2);
-        }
-        this.s = false;
     }
 
     /*
@@ -154,17 +136,6 @@ public final class w extends a {
         w2.o();
     }
 
-    private void d(long l) {
-        this.n();
-        long l2 = AnimationUtils.currentAnimationTimeMillis();
-        if (this.p != 1) {
-            this.c = l;
-            this.p = 2;
-        }
-        this.b = l2 - l;
-        this.c(l2);
-    }
-
     static /* synthetic */ ThreadLocal h() {
         return e;
     }
@@ -189,6 +160,42 @@ public final class w extends a {
         return v;
     }
 
+    private void a(float f) {
+        float f2;
+        this.m = f2 = this.y.getInterpolation(f);
+        int n = this.A.length;
+        for (int i = 0; i < n; ++i) {
+            this.A[i].a(f2);
+        }
+        if (this.z != null) {
+            int n2 = this.z.size();
+            for (int j = 0; j < n2; ++j) {
+                this.z.get(j).a(this);
+            }
+        }
+    }
+
+    private /* varargs */ void a(s... arrs) {
+        this.A = arrs;
+        this.B = new HashMap(1);
+        for (int i = 0; i <= 0; ++i) {
+            s s2 = arrs[0];
+            this.B.put(s2.a, s2);
+        }
+        this.s = false;
+    }
+
+    private void d(long l) {
+        this.n();
+        long l2 = AnimationUtils.currentAnimationTimeMillis();
+        if (this.p != 1) {
+            this.c = l;
+            this.p = 2;
+        }
+        this.b = l2 - l;
+        this.c(l2);
+    }
+
     private void n() {
         if (!this.s) {
             int n = this.A.length;
@@ -205,10 +212,10 @@ public final class w extends a {
         g.get().remove(this);
         this.p = 0;
         if (this.q && this.a != null) {
-            ArrayList arrayList = (ArrayList)this.a.clone();
+            ArrayList arrayList = (ArrayList) this.a.clone();
             int n = arrayList.size();
             for (int i = 0; i < n; ++i) {
-                ((b)arrayList.get(i)).b((a)this);
+                ((b) arrayList.get(i)).b((a) this);
             }
         }
         this.q = false;
@@ -219,17 +226,17 @@ public final class w extends a {
         this.n();
         e.get().add(this);
         if (this.u > 0 && this.a != null) {
-            ArrayList arrayList = (ArrayList)this.a.clone();
+            ArrayList arrayList = (ArrayList) this.a.clone();
             int n = arrayList.size();
             for (int i = 0; i < n; ++i) {
-                ((b)arrayList.get(i)).a((a)this);
+                ((b) arrayList.get(i)).a((a) this);
             }
         }
     }
 
     private w q() {
         int n = 0;
-        w w2 = (w)super.e();
+        w w2 = (w) super.e();
         if (this.z != null) {
             ArrayList<D> arrayList = this.z;
             w2.z = new ArrayList();
@@ -287,10 +294,10 @@ public final class w extends a {
             this.p = 0;
             this.q = true;
             if (this.a != null) {
-                ArrayList arrayList = (ArrayList)this.a.clone();
+                ArrayList arrayList = (ArrayList) this.a.clone();
                 int n = arrayList.size();
                 for (int i = 0; i < n; ++i) {
-                    ((b)arrayList.get(i)).a((a)this);
+                    ((b) arrayList.get(i)).a((a) this);
                 }
             }
         }
@@ -319,9 +326,9 @@ public final class w extends a {
     public final void b() {
         if (this.p != 0 || f.get().contains(this) || g.get().contains(this)) {
             if (this.q && this.a != null) {
-                Iterator iterator = ((ArrayList)this.a.clone()).iterator();
+                Iterator iterator = ((ArrayList) this.a.clone()).iterator();
                 while (iterator.hasNext()) {
-                    ((b)iterator.next()).c((a)this);
+                    ((b) iterator.next()).c((a) this);
                 }
             }
             this.o();
@@ -400,5 +407,102 @@ public final class w extends a {
             }
         }
         return string;
+    }
+
+    final class C extends Handler {
+        private C() {
+        }
+
+        /* synthetic */ C(byte by) {
+            this();
+        }
+
+        /*
+         * Unable to fully structure code
+         * Enabled aggressive block sorting
+         * Lifted jumps to return sites
+         */
+        @Override
+        public final void handleMessage(Message var1_1) {
+            var2_2 = (ArrayList) w.h().get();
+            var3_3 = (ArrayList) w.i().get();
+            switch (var1_1.what) {
+                default: {
+                    return;
+                }
+                case 0: {
+                    var26_4 = (ArrayList) w.j().get();
+                    var4_5 = var2_2.size() <= 0 && var3_3.size() <= 0;
+                }
+                case 1: {
+                    var4_5 = true;
+                    **GOTO lbl24
+                }
+            }
+            while (var26_4.size() > 0) {
+                var27_6 = (ArrayList) var26_4.clone();
+                var26_4.clear();
+                var28_7 = var27_6.size();
+                for (var29_8 = 0; var29_8 < var28_7; ++var29_8) {
+                    var30_9 = (w) var27_6.get(var29_8);
+                    if (w.a(var30_9) == 0) {
+                        w.b(var30_9);
+                        continue;
+                    }
+                    var3_3.add(var30_9);
+                }
+            }
+            lbl24:
+            // 2 sources:
+            var5_10 = AnimationUtils.currentAnimationTimeMillis();
+            var7_11 = (ArrayList) w.k().get();
+            var8_12 = (ArrayList) w.l().get();
+            var9_13 = var3_3.size();
+            for (var10_14 = 0; var10_14 < var9_13; ++var10_14) {
+                var24_15 = (w) var3_3.get(var10_14);
+                if (!w.a(var24_15, var5_10)) continue;
+                var7_11.add(var24_15);
+            }
+            var11_16 = var7_11.size();
+            if (var11_16 > 0) {
+                for (var20_17 = 0; var20_17 < var11_16; ++var20_17) {
+                    var21_18 = (w) var7_11.get(var20_17);
+                    w.b(var21_18);
+                    w.a(var21_18, true);
+                    var3_3.remove(var21_18);
+                }
+                var7_11.clear();
+            }
+            var12_19 = var2_2.size();
+            var13_20 = 0;
+            var14_21 = var12_19;
+            while (var13_20 < var14_21) {
+                var17_22 = (w) var2_2.get(var13_20);
+                if (var17_22.c(var5_10)) {
+                    var8_12.add(var17_22);
+                }
+                if (var2_2.size() == var14_21) {
+                    ++var13_20;
+                    continue;
+                }
+                --var14_21;
+                var8_12.remove(var17_22);
+            }
+            if (var8_12.size() > 0) {
+                for (var16_23 = 0; var16_23 < var8_12.size(); ++var16_23) {
+                    w.c((w) var8_12.get(var16_23));
+                }
+                var8_12.clear();
+            }
+            if (var4_5 == false) return;
+            if (var2_2.isEmpty()) {
+                if (var3_3.isEmpty() != false) return;
+            }
+            this.sendEmptyMessageDelayed(1, Math.max(0, w.m() - (AnimationUtils.currentAnimationTimeMillis() - var5_10)));
+        }
+    }
+
+    public interface D {
+        public void a(w var1);
     }
 }

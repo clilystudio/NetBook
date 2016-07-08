@@ -1,11 +1,9 @@
 package com.clilystudio.netbook.widget.comca;
 
 import android.view.animation.Interpolator;
-import com.clilystudio.netbook.widget.comca.o;
-import com.clilystudio.netbook.widget.comca.v;
+
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
 
 class r {
     int a;
@@ -15,7 +13,7 @@ class r {
     private o e;
     private o f;
 
-    public /* varargs */ r(o ... arro) {
+    public /* varargs */ r(o... arro) {
         this.a = arro.length;
         this.c = new ArrayList();
         this.c.addAll(Arrays.asList(arro));

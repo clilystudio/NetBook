@@ -1,8 +1,6 @@
 package com.clilystudio.netbook.widget.comca;
 
 import android.view.animation.Interpolator;
-import com.clilystudio.netbook.widget.comca.p;
-import com.clilystudio.netbook.widget.comca.q;
 
 public abstract class o implements Cloneable {
     float a;

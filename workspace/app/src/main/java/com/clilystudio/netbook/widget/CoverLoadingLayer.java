@@ -18,7 +18,6 @@ import android.view.animation.AccelerateInterpolator;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.ImageView;
 
-import com.clilystudio.netbook.widget.comca.D;
 import com.clilystudio.netbook.widget.comca.a;
 import com.clilystudio.netbook.widget.comca.b;
 import com.clilystudio.netbook.R;
@@ -46,10 +45,10 @@ public class CoverLoadingLayer extends ImageView {
     private com.clilystudio.netbook.widget.comca.w s;
     private float t;
     private int u;
-    private D w;
+    private com.clilystudio.netbook.widget.comca.w.D w;
     private b x;
-    private D y;
-    private D z;
+    private com.clilystudio.netbook.widget.comca.w.D y;
+    private com.clilystudio.netbook.widget.comca.w.D z;
 
     public CoverLoadingLayer(Context context) {
         super(context);
@@ -58,7 +57,7 @@ public class CoverLoadingLayer extends ImageView {
 
     public CoverLoadingLayer(Context context, AttributeSet attributeSet) {
         super(context, attributeSet);
-        this.w = new D() {
+        this.w = new com.clilystudio.netbook.widget.comca.w.D() {
             @Override
             public void a(w paramw) {
                 CoverLoadingLayer.b(CoverLoadingLayer.this, CoverLoadingLayer.d(CoverLoadingLayer.this) * (Float) paramw.f());
@@ -86,14 +85,14 @@ public class CoverLoadingLayer extends ImageView {
 
             }
         };
-        this.y = new D(){
+        this.y = new com.clilystudio.netbook.widget.comca.w.D(){
             @Override
             public void a(com.clilystudio.netbook.widget.comca.w paramw) {
                 CoverLoadingLayer.a(CoverLoadingLayer.this, (Integer) paramw.f());
                 CoverLoadingLayer.this.invalidate();
             }
         };
-        this.z = new D(){
+        this.z = new com.clilystudio.netbook.widget.comca.w.D(){
             @Override
             public void a(com.clilystudio.netbook.widget.comca.w paramw) {
                 float f = ((Float) paramw.f()).floatValue();
@@ -220,7 +219,7 @@ public class CoverLoadingLayer extends ImageView {
         com.clilystudio.netbook.widget.comca.w w2 = com.clilystudio.netbook.widget.comca.w.a(arrf);
         w2.a(this.getResources().getInteger(android.R.integer.config_mediumAnimTime));
         w2.a(new AccelerateInterpolator());
-        w2.a(new D() {
+        w2.a(new com.clilystudio.netbook.widget.comca.w.D() {
             @Override
             public void a(com.clilystudio.netbook.widget.comca.w paramw) {
                 CoverLoadingLayer.this.b = (Float) paramw.f();

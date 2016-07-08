@@ -1,21 +1,17 @@
 package com.clilystudio.netbook.widget.comca;
 
-import com.clilystudio.netbook.widget.comca.n;
-import com.clilystudio.netbook.widget.comca.r;
-import com.clilystudio.netbook.widget.comca.s;
-
 final class u extends s {
     private n c;
     private int d;
 
-    public /* varargs */ u(String string, int ... arrn) {
+    public /* varargs */ u(String string, int... arrn) {
         super(string, 0);
         this.a(arrn);
     }
 
     private u d() {
-        u u2 = (u)super.a();
-        u2.c = (n)u2.b;
+        u u2 = (u) super.a();
+        u2.c = (n) u2.b;
         return u2;
     }
 
@@ -30,9 +26,9 @@ final class u extends s {
     }
 
     @Override
-    public final /* varargs */ void a(int ... arrn) {
+    public final /* varargs */ void a(int... arrn) {
         super.a(arrn);
-        this.c = (n)this.b;
+        this.c = (n) this.b;
     }
 
     @Override

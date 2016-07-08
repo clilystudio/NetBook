@@ -1,8 +1,5 @@
-
 package com.clilystudio.netbook.widget.comca;
 
-import com.clilystudio.netbook.widget.comca.a;
-import com.clilystudio.netbook.widget.comca.h;
 import java.util.ArrayList;
 
 final class j implements Cloneable {
@@ -19,11 +16,10 @@ final class j implements Cloneable {
 
     public final j a() {
         try {
-            j j2 = (j)super.clone();
+            j j2 = (j) super.clone();
             j2.a = this.a.e();
             return j2;
-        }
-        catch (CloneNotSupportedException var1_2) {
+        } catch (CloneNotSupportedException var1_2) {
             throw new AssertionError();
         }
     }

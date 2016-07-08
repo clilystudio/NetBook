@@ -4,7 +4,6 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
 
-import com.clilystudio.netbook.widget.comca.D;
 import com.clilystudio.netbook.widget.comca.a;
 import com.clilystudio.netbook.widget.comca.b;
 import com.clilystudio.netbook.widget.comca.d;
@@ -14,12 +13,12 @@ public class LoadingProgressView extends ProgressView {
     private boolean a = true;
     private float b;
     private d c;
-    private com.clilystudio.netbook.widget.comca.D d;
-    private D e;
+    private com.clilystudio.netbook.widget.comca.w.D d;
+    private com.clilystudio.netbook.widget.comca.w.D e;
 
     public LoadingProgressView(Context context, AttributeSet attributeSet) {
         super(context, attributeSet);
-        this.d = new D() {
+        this.d = new com.clilystudio.netbook.widget.comca.w.D() {
             @Override
             public void a(w paramw) {
                 if (!LoadingProgressView.a(LoadingProgressView.this)) {
@@ -28,7 +27,7 @@ public class LoadingProgressView extends ProgressView {
                 }
             }
         };
-        this.e = new D() {
+        this.e = new com.clilystudio.netbook.widget.comca.w.D() {
             @Override
             public void a(w paramw) {
                 float f = (Float) paramw.f();

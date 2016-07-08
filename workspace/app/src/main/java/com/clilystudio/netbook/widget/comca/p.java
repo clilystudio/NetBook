@@ -1,8 +1,5 @@
 package com.clilystudio.netbook.widget.comca;
 
-import android.view.animation.Interpolator;
-import com.clilystudio.netbook.widget.comca.o;
-
 final class p extends o {
     float b;
 

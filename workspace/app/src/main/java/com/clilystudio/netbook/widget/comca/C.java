@@ -1,8 +1,5 @@
 package com.clilystudio.netbook.widget.comca;
 
-import com.clilystudio.netbook.widget.comca.a;
-import com.clilystudio.netbook.widget.comca.b;
-
 public abstract class c implements b {
     @Override
     public final void a(a a2) {

@@ -1,6 +1,5 @@
 package com.clilystudio.netbook.widget.comca;
 
-import com.clilystudio.netbook.widget.comca.b;
 import java.util.ArrayList;
 
 public abstract class a implements Cloneable {
@@ -51,14 +50,13 @@ public abstract class a implements Cloneable {
         int n;
         int n2;
         try {
-            a2 = (a)super.clone();
+            a2 = (a) super.clone();
             if (this.a == null) return a2;
             arrayList = this.a;
-            a2.a = new ArrayList<E>();
+            a2.a = new ArrayList<>();
             n = arrayList.size();
             n2 = 0;
-        }
-        catch (CloneNotSupportedException var1_5) {
+        } catch (CloneNotSupportedException var1_5) {
             throw new AssertionError();
         }
         while (n2 < n) {

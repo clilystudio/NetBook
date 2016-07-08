@@ -1,16 +1,6 @@
 package com.clilystudio.netbook.widget.comca;
 
-import com.clilystudio.netbook.widget.comca.a;
-import com.clilystudio.netbook.widget.comca.b;
-import com.clilystudio.netbook.widget.comca.e;
-import com.clilystudio.netbook.widget.comca.f;
-import com.clilystudio.netbook.widget.comca.g;
-import com.clilystudio.netbook.widget.comca.h;
-import com.clilystudio.netbook.widget.comca.i;
-import com.clilystudio.netbook.widget.comca.j;
-import com.clilystudio.netbook.widget.comca.w;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 
@@ -48,7 +38,7 @@ public final class d extends a {
     }
 
     private d f() {
-        d d2 = (d)super.e();
+        d d2 = (d) super.e();
         d2.g = true;
         d2.b = false;
         d2.i = false;
@@ -81,14 +71,14 @@ public final class d extends a {
             if (arrayList2 == null) continue;
             Iterator iterator2 = arrayList2.iterator();
             while (iterator2.hasNext()) {
-                arrayList.remove((b)iterator2.next());
+                arrayList.remove((b) iterator2.next());
             }
         }
         for (j j4 : this.e) {
-            j j5 = (j)hashMap.get(j4);
+            j j5 = (j) hashMap.get(j4);
             if (j4.b == null) continue;
             for (h h2 : j4.b) {
-                j5.a(new h((j)hashMap.get(h2.a), h2.b));
+                j5.a(new h((j) hashMap.get(h2.a), h2.b));
             }
         }
         return d2;
@@ -108,7 +98,7 @@ public final class d extends a {
             while (arrayList.size() > 0) {
                 int n2 = arrayList.size();
                 for (int k = 0; k < n2; ++k) {
-                    j j3 = (j)arrayList.get(k);
+                    j j3 = (j) arrayList.get(k);
                     this.f.add(j3);
                     if (j3.e == null) continue;
                     int n3 = j3.e.size();
@@ -180,7 +170,7 @@ public final class d extends a {
                     h h2 = j3.b.get(i3);
                     h2.a.a.a(new i(this, j3, h2.b));
                 }
-                j3.c = (ArrayList)j3.b.clone();
+                j3.c = (ArrayList) j3.b.clone();
             }
             j3.a.a(this.h);
         }
@@ -196,19 +186,19 @@ public final class d extends a {
             this.k.a();
         }
         if (this.a != null) {
-            ArrayList arrayList2 = (ArrayList)this.a.clone();
+            ArrayList arrayList2 = (ArrayList) this.a.clone();
             int n4 = arrayList2.size();
             for (int i4 = 0; i4 < n4; ++i4) {
-                ((b)arrayList2.get(i4)).a(this);
+                ((b) arrayList2.get(i4)).a(this);
             }
         }
         if (this.e.size() == 0 && 0 == 0) {
             this.i = false;
             if (this.a != null) {
-                ArrayList arrayList3 = (ArrayList)this.a.clone();
+                ArrayList arrayList3 = (ArrayList) this.a.clone();
                 int n5 = arrayList3.size();
                 while (n < n5) {
-                    ((b)arrayList3.get(n)).b(this);
+                    ((b) arrayList3.get(n)).b(this);
                     ++n;
                 }
             }
@@ -218,7 +208,7 @@ public final class d extends a {
     /*
      * Enabled aggressive block sorting
      */
-    public final /* varargs */ void a(a ... arra) {
+    public final /* varargs */ void a(a... arra) {
         this.g = true;
         int n = 0;
         while (n < 2) {
@@ -244,10 +234,10 @@ public final class d extends a {
         if (this.i) {
             ArrayList arrayList;
             if (this.a != null) {
-                ArrayList arrayList2 = (ArrayList)this.a.clone();
+                ArrayList arrayList2 = (ArrayList) this.a.clone();
                 Iterator iterator = arrayList2.iterator();
                 while (iterator.hasNext()) {
-                    ((b)iterator.next()).c(this);
+                    ((b) iterator.next()).c(this);
                 }
                 arrayList = arrayList2;
             } else {
@@ -264,7 +254,7 @@ public final class d extends a {
             if (arrayList != null) {
                 Iterator iterator = arrayList.iterator();
                 while (iterator.hasNext()) {
-                    ((b)iterator.next()).b(this);
+                    ((b) iterator.next()).b(this);
                 }
             }
             this.i = false;
@@ -294,9 +284,9 @@ public final class d extends a {
                 }
             }
             if (this.a != null) {
-                Iterator iterator = ((ArrayList)this.a.clone()).iterator();
+                Iterator iterator = ((ArrayList) this.a.clone()).iterator();
                 while (iterator.hasNext()) {
-                    ((b)iterator.next()).b(this);
+                    ((b) iterator.next()).b(this);
                 }
             }
             this.i = false;
