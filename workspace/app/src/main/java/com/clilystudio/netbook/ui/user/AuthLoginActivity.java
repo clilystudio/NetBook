@@ -136,7 +136,6 @@ public class AuthLoginActivity extends BaseActivity implements Handler.Callback 
                                 if (account.isOk()) {
                                     com.clilystudio.netbook.api.b.a();
                                     com.clilystudio.netbook.api.b.b().h(account.getUser().getId());
-                                    com.clilystudio.netbook.hpay100.a.a.a(AuthLoginActivity.this, account.getUser().getId());
                                     MyApplication.a().a(account);
                                     LoginEvent t2 = new LoginEvent(account);
                                     t2.setSource((AuthLoginActivity.Source) AuthLoginActivity.this.getIntent().getSerializableExtra("KEY_SOURCE"));
