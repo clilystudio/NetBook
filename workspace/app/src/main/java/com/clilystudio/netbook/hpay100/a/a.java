@@ -37,6 +37,7 @@ import android.support.v4.app.NotificationBuilderWithBuilderAccessor;
 import android.support.v4.app.NotificationCompatBase;
 import android.support.v4.view.ViewPager;
 import android.text.TextUtils;
+import android.text.style.StrikethroughSpan;
 import android.util.Base64;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -1049,27 +1050,6 @@ public class a {
         throw new IllegalArgumentException("TODO");
     }
 
-    /*
-     * Enabled aggressive block sorting
-     * Enabled unnecessary exception pruning
-     * Enabled aggressive exception aggregation
-     */
-    public static String a() {
-        synchronized (a.class) {
-            String string2 = m();
-            boolean bl = am.a(string2);
-            String string3 = null;
-            if (bl) return string3;
-            String[] arrstring = string2.split("`");
-            string3 = null;
-            if (arrstring == null) return string3;
-            int n2 = arrstring.length;
-            string3 = null;
-            if (n2 < 2) return string3;
-            return arrstring[0];
-        }
-    }
-
     public static String a(long l2, boolean bl) {
         if (l2 < 1000) {
             return "" + l2 + " B";
@@ -1078,20 +1058,6 @@ public class a {
         String string2 = "" + "kMGTPE".charAt(n2 - 1);
         Object[] arrobject = new Object[]{(double) l2 / Math.pow(1000.0, n2), string2};
         return String.format("%.1f %sB", arrobject);
-    }
-
-    public static String a(Context context) {
-        synchronized (a.class) {
-            String string2;
-            block3:
-            {
-                String string3;
-                string2 = a();
-                if (!am.a(string2)) break block3;
-                string2 = string3 = b(context);
-            }
-            return string2;
-        }
     }
 
     public static String a(Context context, String string2, String string3, String string4) {
@@ -1960,227 +1926,27 @@ public class a {
         return compressFormat;
     }
 
-    /*
-     * Unable to fully structure code
-     * Enabled aggressive exception aggregation
-     */
     public static Serializable b(String var0, String var1_1, String var2_2) {
-        var3_3 = null;
-        if (var2_2 == null || !d()) {
-            return null;
-        }
-        var4_4 = "/ZhuiShuShenQi/Chapter" + File.separator + var0 + File.separator + var1_1;
-        var5_5 = new File(c.a, var4_4);
-        if (!var5_5.exists()) {
-            return null;
-        }
-        var14_6 = new File(var5_5, var2_2);
-        if (!var14_6.exists()) {
-            return null;
-        }
-        var7_7 = new FileInputStream(var14_6);
-        var11_8 = new ObjectInputStream(var7_7);
-        var15_9 = (Serializable) var11_8.readObject();
         try {
-            var11_8.close();
-        } catch (Exception var16_11) {
-            var16_11.printStackTrace();
-            **continue;
-        }
-        lbl22:
-        // 2 sources:
-        do {
-            try {
-                var7_7.close();
-                return var15_9;
-            } catch (Exception var17_10) {
-                var17_10.printStackTrace();
-                return var15_9;
-            }
-            break;
-        } while (true);
-        catch(Exception var10_12){
-            block35:
-            {
-                var11_8 = null;
-                var7_7 = null;
-                lbl33:
-                // 4 sources:
-                var10_13.printStackTrace();
-                if (var11_8 == null) break block35;
-                try {
-                    var11_8.close();
-                } catch (Exception var13_16) {
-                    var13_16.printStackTrace();
-                    **continue;
-                }
-            }
-            lbl38:
-            // 2 sources:
-            do {
-                if (var7_7 != null) {
-                    var7_7.close();
-                }
-                lbl42:
-                // 4 sources:
-                do {
-                    return null;
-                    break;
-                } while (true);
-                break;
-            } while (true);
-            catch(Exception var12_17){
-                var12_17.printStackTrace();
-                **continue;
-            }
-        }
-        catch(Throwable var6_18){
-            var7_7 = null;
-            lbl52:
-            // 3 sources:
-            do {
-                if (var3_3 != null) {
-                    var3_3.close();
-                }
-                lbl56:
-                // 4 sources:
-                do {
-                    if (var7_7 != null) {
+            if (var2_2 != null && d()) {
+                String var4_4 = "/ZhuiShuShenQi/Chapter" + File.separator + var0 + File.separator + var1_1;
+                File var5_5 = new File(com.clilystudio.netbook.c.a, var4_4);
+                if (var5_5.exists()) {
+                    File var14_6 = new File(var5_5, var2_2);
+                    if (var14_6.exists()) {
+                        FileInputStream var7_7 = new FileInputStream(var14_6);
+                        ObjectInputStream var11_8 = new ObjectInputStream(var7_7);
+                        Serializable var15_9 = (Serializable) var11_8.readObject();
+                        var11_8.close();
                         var7_7.close();
+                        return var15_9;
                     }
-                    lbl60:
-                    // 4 sources:
-                    do {
-                        throw var6_19;
-                        break;
-                    } while (true);
-                    break;
-                } while (true);
-                catch(Exception var9_22){
-                    var9_22.printStackTrace();
-                    **continue;
                 }
-                catch(Exception var8_23){
-                    var8_23.printStackTrace();
-                    **continue;
-                }
-                break;
-            } while (true);
-        }
-        catch(Throwable var6_20){
-            var3_3 = null;
-            **GOTO lbl52
-        }
-        {
-            catch(Throwable var6_21){
-            var3_3 = var11_8;
-            **continue;
-        }
-        }
-        catch(Exception var10_14){
-            var11_8 = null;
-            **GOTO lbl33
-        }
-        catch(Exception var10_15){
-            **GOTO lbl33
-        }
-    }
-
-    public static String b() {
-        String string2 = com.clilystudio.netbook.hpay100.config.l.d;
-        b("dalongTest", "kfPhone:" + string2);
-        return string2;
-    }
-
-    /*
-     * Enabled aggressive block sorting
-     * Enabled unnecessary exception pruning
-     * Enabled aggressive exception aggregation
-     */
-    public static String b(Context context) {
-        synchronized (a.class) {
-            try {
-                String string2 = a(context, "profiles", "deviceid", "");
-                String string3 = am.a(string2) ? null : com.alipay.security.mobile.module.a.a.b.b(com.alipay.security.mobile.module.a.a.b.a(), string2);
-                boolean bl = am.a(string3);
-                String string4 = null;
-                if (bl) return string4;
-                new com.alipay.b.a.a.a();
-                Map<String, String> map = com.alipay.b.a.a.a.a(string3);
-                if (map == null) return "";
-                return map.get("deviceId");
-            } catch (Throwable var2_6) {
-                // empty catch block
             }
-            return "";
+        } catch (Exception e1) {
+            e1.printStackTrace();
         }
-    }
-
-    /*
-     * Unable to fully structure code
-     * Enabled aggressive exception aggregation
-     */
-    public static String b(Context var0, String var1_1, Map var2_2) {
-        b("dalongTest", "http post2 request url:" + var1_1);
-        if (!j(var0)) {
-            b("dalongTest", "net error");
-            do {
-                return null;
-                break;
-            } while (true);
-        }
-        var4_4 = var7_3 = com.clilystudio.netbook.hpay100.b.c.a(var0);
-        var8_5 = com.clilystudio.netbook.hpay100.b.c.a(var1_1, null, var2_2);
-        if (var8_5 != null) {
-            var9_6 = var8_5.a("UTF-8");
-            lbl12:
-            // 2 sources:
-            do {
-                b("dalongTest", "http request2 result:" + var9_6);
-                var4_4.a();
-                return var9_6;
-                break;
-            } while (true);
-        }
-        catch(Exception var6_7){
-            var4_4 = null;
-            lbl20:
-            // 3 sources:
-            var6_8.printStackTrace();
-            if (var4_4 == null)**continue;
-            var4_4.a();
-            return null;
-        }
-        catch(Throwable var3_10){
-            var4_4 = null;
-            var5_11 = var3_10;
-            lbl27:
-            // 2 sources:
-            do {
-                if (var4_4 != null) {
-                    var4_4.a();
-                }
-                throw var5_11;
-                break;
-            } while (true);
-        }
-        {
-            catch(Throwable var5_12){
-            **continue;
-        }
-        }
-        catch(Exception var6_9){
-            **GOTO lbl20
-        }
-        var9_6 = null;
-        **while (true)
-    }
-
-    public static String b(Context context, Map<String, String> map) {
-        synchronized (a.class) {
-            String string2 = new com.alipay.b.a.a(context).a(map);
-            return string2;
-        }
+        return null;
     }
 
     public static String b(String string2) {
@@ -2195,54 +1961,23 @@ public class a {
             messageDigest.update(string2.getBytes("UTF-8"));
             byte[] arrby = messageDigest.digest();
             stringBuilder = new StringBuilder();
-            for (int i2 = 0; i2 < arrby.length; ++i2) {
-                Object[] arrobject = new Object[]{Byte.valueOf(arrby[i2])};
+            for (byte anArrby : arrby) {
+                Object[] arrobject = new Object[]{Byte.valueOf(anArrby)};
                 stringBuilder.append(String.format("%02x", arrobject));
             }
+            String string3 = stringBuilder.toString();
+            return string3;
         } catch (Exception var2_7) {
             return null;
         }
-        {
-            continue;
-        }
-        String string3 = stringBuilder.toString();
-        return string3;
-    }
-
-    public static URI b(URL uRL) {
-        return uRL.toURI();
-    }
+     }
 
     public static void b(Activity activity) {
         Intent intent = new Intent("android.intent.action.GET_CONTENT").setType("image/*");
         try {
             activity.startActivityForResult(intent, 9162);
-            return;
         } catch (ActivityNotFoundException var2_2) {
             com.clilystudio.netbook.util.e.a(activity, "crop pick error");
-            return;
-        }
-    }
-//
-//    public static void b(Context context, Advert advert) {
-//     }
-
-    /*
-     * Enabled aggressive block sorting
-     * Enabled unnecessary exception pruning
-     * Enabled aggressive exception aggregation
-     */
-    public static void b(Context context, String string2) {
-        synchronized (a.class) {
-            try {
-                SharedPreferences.Editor editor = context.getSharedPreferences("vkeyid_settings", 0).edit();
-                if (editor != null) {
-                    editor.putString("vkey_applist_version", com.alipay.security.mobile.module.a.a.b.a(com.alipay.security.mobile.module.a.a.b.a(), string2));
-                    editor.commit();
-                }
-            } catch (Throwable var2_3) {
-            }
-            return;
         }
     }
 
@@ -2307,12 +2042,6 @@ public class a {
         }
     }
 
-    public static void b(String string2, String string3) {
-        if (w.b) {
-            Log.e(string2, string3);
-        }
-    }
-
     public static void b(String[] arrstring) {
         a(arrstring, BookSyncRecord.BookModifyType.FEED_ADD);
     }
@@ -2336,46 +2065,10 @@ public class a {
         return PreferenceManager.getDefaultSharedPreferences(context).getLong(string2, l2);
     }
 
-    public static String c() {
-        String string2 = com.clilystudio.netbook.hpay100.config.l.e;
-        b("dalongTest", "appname:" + string2);
-        return string2;
-    }
-
     public static String c(int n2) {
         double d2 = Math.floor((double) n2 / Math.pow(1024.0, 2.0));
         DecimalFormat decimalFormat = new DecimalFormat("0.0");
         return decimalFormat.format(d2) + "MB";
-    }
-
-    public static String c(Context context, String string2) {
-        return new l().downloadCache(context, string2, "images", true, null);
-    }
-
-    /*
-     * Enabled aggressive block sorting
-     * Enabled unnecessary exception pruning
-     * Enabled aggressive exception aggregation
-     */
-    public static String c(Context context, Map<String, String> map) {
-        synchronized (a.class) {
-            String string2 = com.alipay.b.a.g.a();
-            boolean bl = am.a(string2);
-            if (!bl) return string2;
-            com.alipay.b.a.d d2 = am.a((Context) context);
-            if (d2 != null && !am.a((String) d2.a())) {
-                return d2.a();
-            }
-            string2 = a(context);
-            if (!am.a(string2)) return string2;
-            HashMap<String, String> hashMap = new HashMap<String, String>();
-            hashMap.put("utdid", am.a(map, "utdid", ""));
-            hashMap.put("tid", am.a(map, "tid", ""));
-            hashMap.put("userId", am.a(map, "userId", ""));
-            com.alipay.b.e.a.a(context).a(0, hashMap, null);
-            String string3 = am.d((Context) context);
-            return string3;
-        }
     }
 
     public static String c(byte[] arrby) {
@@ -2402,76 +2095,16 @@ public class a {
         return arrayList;
     }
 
-    public static void c(Context context, String string2, String string3) {
-        HashMap<String, String> hashMap = new HashMap<String, String>();
-        hashMap.put("uid", com.clilystudio.netbook.util.e.c(context));
-        com.a.a.a.a(context, string3, string2, hashMap);
-    }
-
     public static void c(Closeable closeable) {
         try {
             closeable.close();
-            return;
         } catch (Exception var1_1) {
-            return;
+            var1_1.printStackTrace();
         }
     }
 
     public static void c(String string2, String string3) {
         Log.w("PullToRefresh", "You're using the deprecated " + string2 + " attr, please switch over to " + string3);
-    }
-
-    /*
-     * Unable to fully structure code
-     * Enabled aggressive block sorting
-     * Lifted jumps to return sites
-     */
-    public static /* varargs */ void c(String... var0) {
-        if (var0 == null) return;
-        var1_1 = var0.length;
-        if (var1_1 <= 0) return;
-        var2_2 = var0[0];
-        var3_3 = TextUtils.isEmpty(var2_2);
-        var4_4 = 0;
-        if (var3_3)**GOTO lbl -1000
-        var5_5 = TextUtils.isEmpty("?");
-        var4_4 = 0;
-        if (var5_5)**GOTO lbl -1000
-        var6_6 = var2_2.indexOf("?");
-        var7_7 = var2_2;
-        do {
-            if (var6_6 == -1) lbl - 1000: // 3 sources:
-            {
-                if (var1_1 == var4_4 + 1) return;
-                throw new DataSupportException("The parameters in conditions are incorrect.");
-            }
-            var8_8 = var4_4 + 1;
-            var9_9 = var7_7.substring(var6_6 + "?".length());
-            var10_10 = var9_9.indexOf("?");
-            var7_7 = var9_9;
-            var6_6 = var10_10;
-            var4_4 = var8_8;
-        } while (true);
-    }
-
-    public static boolean c(Context context) {
-        String string2;
-        block4:
-        {
-            string2 = a(context, "vkeyid_settings", "log_switch", "");
-            if (!am.a(string2)) break block4;
-            return true;
-        }
-        try {
-            String string3 = com.alipay.security.mobile.module.a.a.b.b(com.alipay.security.mobile.module.a.a.b.a(), string2);
-            if (!am.a(string3)) {
-                boolean bl = string3.equals("1");
-                return bl;
-            }
-        } catch (Throwable var1_4) {
-            // empty catch block
-        }
-        return true;
     }
 
     /*
@@ -2517,98 +2150,11 @@ public class a {
         return b(context, "drawable", string2);
     }
 
-    public static long d(Context context) {
-        String string2;
-        block4:
-        {
-            string2 = context.getSharedPreferences("vkeyid_settings", 0).getString("vkey_valid", "");
-            if (!am.a(string2)) break block4;
-            return 0;
-        }
-        try {
-            String string3 = com.alipay.security.mobile.module.a.a.b.b(com.alipay.security.mobile.module.a.a.b.a(), string2);
-            if (!am.a(string3)) {
-                long l2 = Long.parseLong(string3);
-                return l2;
-            }
-        } catch (Throwable var1_4) {
-            // empty catch block
-        }
-        return 0;
-    }
-
     public static String d(Context context, String string2, String string3) {
         if (context == null) {
             return string3;
         }
         return PreferenceManager.getDefaultSharedPreferences(context).getString(string2, string3);
-    }
-
-    /*
-     * Unable to fully structure code
-     * Enabled aggressive exception aggregation
-     */
-    public static String d(String var0) {
-        var1_1 = new StringBuilder();
-        if (!new File(var0).exists()) {
-            return null;
-        }
-        var6_2 = new BufferedReader(new InputStreamReader(new FileInputStream(var0), "UTF-8"));
-        try {
-            while ((var10_3 = var6_2.readLine()) != null) {
-                var1_1.append(var10_3);
-            }
-        } catch (IOException var9_4) {
-            var3_5 = var6_2;
-            lbl13:
-            // 2 sources:
-            if (var3_5 != null) {
-                var3_5.close();
-            }
-            lbl16:
-            // 6 sources:
-            do {
-                return var1_1.toString();
-                break;
-            } while (true);
-        }
-        try {
-            var6_2.close();
-        } catch (Throwable var12_6) {
-        }
-        **GOTO lbl16
-        catch(Throwable var5_7){
-            var6_2 = null;
-            var7_8 = var5_7;
-            lbl26:
-            // 2 sources:
-            if (var6_2 != null) {
-                var6_2.close();
-            }
-            lbl29:
-            // 4 sources:
-            do {
-                throw var7_8;
-                break;
-            } while (true);
-        }
-        {
-            catch(Throwable var4_10){
-            **continue;
-        }
-        }
-        {
-            catch(Throwable var8_11){
-            **continue;
-        }
-        }
-        catch(Throwable var7_9){
-            **GOTO lbl26
-        }
-        catch(IOException var2_12){
-            var3_5 = null;
-            **GOTO lbl13
-        }
     }
 
     public static void d(Context context, String string2, int n2) {
@@ -2628,22 +2174,6 @@ public class a {
 
     public static boolean d() {
         return "mounted".equals(Environment.getExternalStorageState());
-    }
-
-    public static byte[] d(String string2, String string3) {
-        if (string2 == null || string3 == null) {
-            return null;
-        }
-        byte[] arrby = string2.getBytes("UTF-8");
-        byte[] arrby2 = new byte[16];
-        System.arraycopy(arrby, 0, arrby2, 0, Math.min(arrby.length, 16));
-        byte[] arrby3 = string3.getBytes("UTF-8");
-        SecretKeySpec secretKeySpec = new SecretKeySpec(arrby2, "AES");
-        Cipher cipher = Cipher.getInstance("AES/ECB/PKCS7Padding", "BC");
-        cipher.init(1, secretKeySpec);
-        byte[] arrby4 = new byte[cipher.getOutputSize(arrby3.length)];
-        cipher.doFinal(arrby4, cipher.update(arrby3, 0, arrby3.length, arrby4, 0));
-        return arrby4;
     }
 
     public static int e(int n2) {
@@ -2705,28 +2235,6 @@ public class a {
         return context.getSharedPreferences("mistat", 0).getLong(string2, l2);
     }
 
-    /*
-     * Enabled force condition propagation
-     * Lifted jumps to return sites
-     */
-    public static String e(String string2, String string3) {
-        String string4 = null;
-        if (string2 == null) return string4;
-        string4 = null;
-        if (string3 == null) {
-            return string4;
-        }
-        try {
-            string4 = Base64.encodeToString(d(string3, string2), 0);
-            if (TextUtils.isEmpty(string4)) return string4;
-            if (!string4.contains("\n")) return string4;
-            return string4.replace("\n", "");
-        } catch (Throwable var3_4) {
-            com.mob.tools.e.a().w(var3_4);
-            return string4;
-        }
-    }
-
     public static void e(Context context, String string2, String string3) {
         if (context == null) {
             return;
@@ -2740,60 +2248,13 @@ public class a {
         return b(context, "layout", string2);
     }
 
-    /*
-     * Enabled aggressive block sorting
-     */
-    public static Bitmap f(String string2) {
-        File file;
-        if (TextUtils.isEmpty(string2) || !(file = new File(string2)).exists()) {
-            return null;
-        }
-        FileInputStream fileInputStream = new FileInputStream(file);
-        Bitmap bitmap = a(fileInputStream, 1);
-        fileInputStream.close();
-        return bitmap;
-    }
-
-    /*
-     * Enabled force condition propagation
-     * Lifted jumps to return sites
-     */
-    public static String f(Context context) {
-        synchronized (a.class) {
-            String string2;
-            block5:
-            {
-                string2 = context.getSharedPreferences("vkeyid_settings", 0).getString("vkey_applist_version", "");
-                if (!am.a(string2)) break block5;
-                return "";
-            }
-            try {
-                String string3 = com.alipay.security.mobile.module.a.a.b.b(com.alipay.security.mobile.module.a.a.b.a(), string2);
-                if (!am.a(string3)) return string3;
-                return "";
-            } catch (Throwable var2_3) {
-                return "";
-            } catch (Throwable var1_4) {
-                throw var1_4;
-            }
-        }
-    }
-
     public static String f(Context context, String string2, String string3) {
         return context.getSharedPreferences("mistat", 0).getString(string2, string3);
     }
 
-    public static String f(String string2, String string3) {
-        String string4 = URLEncoder.encode(string2, string3);
-        if (TextUtils.isEmpty(string4)) {
-            return string4;
-        }
-        return string4.replace("+", "%20");
-    }
-
     public static List<BookFile> f() {
         ArrayList<BookFile> arrayList = new ArrayList<BookFile>();
-        File[] arrfile = J(c.g).listFiles();
+        File[] arrfile = J(com.clilystudio.netbook.c.g).listFiles();
         if (arrfile != null) {
             for (File file : arrfile) {
                 BookFile bookFile = new BookFile();
@@ -2813,54 +2274,6 @@ public class a {
 
     public static boolean f(int n2) {
         return n2 == 4 || n2 == 1 || n2 == 2;
-    }
-
-    /*
-     * Unable to fully structure code
-     * Enabled aggressive block sorting
-     * Enabled unnecessary exception pruning
-     * Enabled aggressive exception aggregation
-     * Lifted jumps to return sites
-     */
-    public static byte[] f(byte[] var0) {
-        if (var0 == null) return null;
-        if (var0.length <= 0) {
-            return null;
-        }
-        var1_1 = new Deflater();
-        var1_1.setInput(var0);
-        var1_1.finish();
-        var2_2 = new byte[8192];
-        a.a = 0;
-        try {
-            var3_3 = new ByteArrayOutputStream();
-        } catch (Throwable var6_7) {
-            var4_6 = var6_7;
-            var3_3 = null;
-            **GOTO lbl -1000
-        }
-        do {
-            if (!var1_1.finished()) break block7;
-            var1_1.end();
-            break;
-        } while (true);
-        catch(Throwable var4_5)lbl - 1000: // 2 sources:
-        {
-            if (var3_3 == null) throw var4_6;
-            var3_3.close();
-            throw var4_6;
-        }
-        {
-            block7:
-            {
-                var3_3.close();
-                return var3_3.toByteArray();
-            }
-            var5_4 = var1_1.deflate(var2_2);
-            a.a = var5_4 + a.a;
-            var3_3.write(var2_2, 0, var5_4);
-            continue;
-        }
     }
 
     public static int g(Context context, String string2) {
@@ -2942,38 +2355,6 @@ public class a {
         return null;
     }
 
-    /*
-     * Enabled aggressive block sorting
-     * Enabled unnecessary exception pruning
-     * Enabled aggressive exception aggregation
-     */
-    public static Map<String, String> g(Context context) {
-        synchronized (a.class) {
-            com.alipay.security.mobile.module.b.d.a();
-            HashMap<String, String> hashMap = new HashMap<String, String>();
-            hashMap.put("AE1", com.alipay.security.mobile.module.b.d.b());
-            StringBuilder stringBuilder = new StringBuilder();
-            String string2 = com.alipay.security.mobile.module.b.d.c() ? "1" : "0";
-            hashMap.put("AE2", stringBuilder.append(string2).toString());
-            StringBuilder stringBuilder2 = new StringBuilder();
-            String string3 = com.alipay.security.mobile.module.b.d.a(context) ? "1" : "0";
-            hashMap.put("AE3", stringBuilder2.append(string3).toString());
-            hashMap.put("AE4", com.alipay.security.mobile.module.b.d.d());
-            hashMap.put("AE5", com.alipay.security.mobile.module.b.d.e());
-            hashMap.put("AE6", com.alipay.security.mobile.module.b.d.f());
-            hashMap.put("AE7", com.alipay.security.mobile.module.b.d.g());
-            hashMap.put("AE8", com.alipay.security.mobile.module.b.d.h());
-            hashMap.put("AE9", com.alipay.security.mobile.module.b.d.i());
-            hashMap.put("AE10", com.alipay.security.mobile.module.b.d.j());
-            hashMap.put("AE11", com.alipay.security.mobile.module.b.d.k());
-            hashMap.put("AE12", com.alipay.security.mobile.module.b.d.l());
-            hashMap.put("AE13", com.alipay.security.mobile.module.b.d.m());
-            hashMap.put("AE14", com.alipay.security.mobile.module.b.d.n());
-            hashMap.put("AE15", com.alipay.security.mobile.module.b.d.o());
-            return hashMap;
-        }
-    }
-
     public static void g(Context context, String string2, String string3) {
         SharedPreferences.Editor editor = context.getSharedPreferences("mistat", 0).edit();
         editor.putString(string2, string3);
@@ -2982,29 +2363,6 @@ public class a {
 
     public static boolean g() {
         return Build.VERSION.SDK_INT >= 11;
-    }
-
-    public static com.alipay.security.mobile.module.http.a h(Context context) {
-        if (context == null) {
-            return null;
-        }
-        return com.alipay.security.mobile.module.http.b.a(context);
-    }
-
-    public static String h(Context context, String string2) {
-        File file;
-        String string3 = context.getFilesDir().getAbsolutePath() + "/Mob/cache/";
-        com.mob.tools.b.a a2 = com.mob.tools.b.a.a(context);
-        if (com.mob.tools.b.a.p()) {
-            string3 = Environment.getExternalStorageDirectory().getAbsolutePath() + "/Mob/" + a2.k() + "/cache/";
-        }
-        if (!TextUtils.isEmpty(string2)) {
-            string3 = string3 + string2 + "/";
-        }
-        if (!(file = new File(string3)).exists()) {
-            file.mkdirs();
-        }
-        return string3;
     }
 
     public static String h(String string2, String string3) {
@@ -3027,7 +2385,7 @@ public class a {
 
     public static int i(Context context) {
         NetworkInfo networkInfo;
-        ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService("connectivity");
+        ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         try {
             networkInfo = connectivityManager.getActiveNetworkInfo();
             if (networkInfo == null) {
@@ -3136,18 +2494,14 @@ public class a {
         JSONObject jSONObject = new JSONObject();
         try {
             String[] arrstring = string2.split(string3);
-            for (int i2 = 0; i2 < arrstring.length; ++i2) {
-                String[] arrstring2 = arrstring[i2].split("=");
-                jSONObject.put(arrstring2[0], arrstring[i2].substring(1 + arrstring2[0].length()));
+            for (String anArrstring : arrstring) {
+                String[] arrstring2 = anArrstring.split("=");
+                jSONObject.put(arrstring2[0], anArrstring.substring(1 + arrstring2[0].length()));
             }
         } catch (Exception var4_6) {
             var4_6.printStackTrace();
         }
-        {
-            continue;
-            break;
-        }
-        return jSONObject;
+         return jSONObject;
     }
 
     public static void i(Context context, String string2) {
@@ -3167,19 +2521,9 @@ public class a {
         return 255 & n2 >> 8;
     }
 
-    public static String j(String string2) {
-        try {
-            String string3 = f(string2, "utf-8");
-            return string3;
-        } catch (Throwable var1_2) {
-            com.mob.tools.e.a().w(var1_2);
-            return null;
-        }
-    }
-
     public static ArrayList<String> j(String string2, String string3) {
         String string4 = "/ZhuiShuShenQi/Chapter" + File.separator + string2 + File.separator + string3;
-        return c(new File(c.a, string4));
+        return c(new File(com.clilystudio.netbook.c.a, string4));
     }
 
     public static boolean j() {
@@ -3210,81 +2554,6 @@ public class a {
         } catch (Throwable var2_4) {
             com.mob.tools.e.a().w(var2_4);
             return 0;
-        }
-    }
-
-    /*
-     * Unable to fully structure code
-     * Enabled aggressive exception aggregation
-     */
-    public static Bitmap k(Context var0, String var1_1) {
-        block20:
-        {
-            var3_3 = var9_2 = var0.openFileInput(var1_1);
-            var6_5 = var10_4 = BitmapFactory.decodeStream(var3_3);
-            if (var3_3 == null) break block20;
-            try {
-                var3_3.close();
-            } catch (Exception var11_6) {
-                var11_6.printStackTrace();
-                return var6_5;
-            }
-        }
-        do {
-            return var6_5;
-            break;
-        } while (true);
-        catch(FileNotFoundException var2_7){
-            var3_3 = null;
-            lbl17:
-            // 5 sources:
-            var2_8.printStackTrace();
-            var6_5 = null;
-            if (var3_3 == null)**continue;
-            try {
-                var3_3.close();
-                return null;
-            } catch (Exception var7_12) {
-                var7_12.printStackTrace();
-                return null;
-            }
-        }
-        catch(Throwable var8_13){
-            var3_3 = null;
-            var4_14 = var8_13;
-            lbl29:
-            // 2 sources:
-            do {
-                if (var3_3 != null) {
-                    var3_3.close();
-                }
-                lbl33:
-                // 4 sources:
-                do {
-                    throw var4_14;
-                    break;
-                } while (true);
-                catch(Exception var5_16){
-                    var5_16.printStackTrace();
-                    **continue;
-                }
-                break;
-            } while (true);
-        }
-        {
-            catch(Throwable var4_15){
-            **continue;
-        }
-        }
-        catch(FileNotFoundException var2_9){
-            **GOTO lbl17
-        }
-        catch(OutOfMemoryError var2_10){
-            var3_3 = null;
-            **GOTO lbl17
-        }
-        catch(OutOfMemoryError var2_11){
-            **GOTO lbl17
         }
     }
 
@@ -3330,25 +2599,6 @@ public class a {
             bl = true;
         }
         return bl;
-    }
-
-    /*
-     * Enabled aggressive block sorting
-     * Enabled unnecessary exception pruning
-     * Enabled aggressive exception aggregation
-     */
-    public static Bundle l(String string2) {
-        int n2 = string2.indexOf("://");
-        String string3 = n2 >= 0 ? "http://" + string2.substring(n2 + 1) : "http://" + string2;
-        try {
-            URL uRL = new URL(string3);
-            Bundle bundle = m(uRL.getQuery());
-            bundle.putAll(m(uRL.getRef()));
-            return bundle;
-        } catch (Throwable var4_5) {
-            com.mob.tools.e.a().w(var4_5);
-            return new Bundle();
-        }
     }
 
     public static String l(String string2, String string3) {
@@ -3432,65 +2682,6 @@ public class a {
         return a(context, true);
     }
 
-    private static String m() {
-        String string2 = am.d((String) "deviceid_v2");
-        try {
-            String string3 = new JSONObject(string2).getString("device");
-            String string4 = com.alipay.security.mobile.module.a.a.b.b(com.alipay.security.mobile.module.a.a.b.a(), string3);
-            return string4;
-        } catch (Exception var1_3) {
-            return null;
-        }
-    }
-
-    public static void m(Context context, String string2) {
-    }
-
-    /*
-     * Enabled aggressive block sorting
-     */
-    public static int n(String string2) {
-        int n2 = 1;
-        if (string2 == null) {
-            throw X(string2);
-        }
-        int n3 = string2.length();
-        if (n3 == 0) {
-            throw X(string2);
-        }
-        int n4 = string2.charAt(0) == '-' ? n2 : 0;
-        if (n4 != 0) {
-            if (n2 == n3) {
-                throw X(string2);
-            }
-        } else {
-            n2 = 0;
-        }
-        int n5 = string2.length();
-        int n6 = n2;
-        int n7 = 0;
-        while (n6 < n5) {
-            int n8 = n6 + 1;
-            int n9 = a((int) string2.charAt(n6), 10);
-            if (n9 == -1) {
-                throw X(string2);
-            }
-            if (-214748364 > n7) {
-                throw X(string2);
-            }
-            int n10 = n7 * 10 - n9;
-            if (n10 > n7) {
-                throw X(string2);
-            }
-            n7 = n10;
-            n6 = n8;
-        }
-        if (n4 == 0 && (n7 = -n7) < 0) {
-            throw X(string2);
-        }
-        return n7;
-    }
-
     public static File n(Context context) {
         File file = a(context, true);
         File file2 = new File(file, "uil-images");
@@ -3516,30 +2707,6 @@ public class a {
 
     public static void n(Context context, String string2) {
         MiStatInterface.recordCountEvent("home_ab_menu_click", string2);
-    }
-
-    /*
-     * Enabled aggressive block sorting
-     */
-    public static long o(String string2) throws Throwable {
-        int n2 = 1;
-        if (string2 == null) {
-            throw new Throwable("Invalid long: \"" + string2 + "\"");
-        }
-        int n3 = string2.length();
-        if (!n3) {
-            throw new Throwable("Invalid long: \"" + string2 + "\"");
-        }
-        int n4 = string2.charAt(0) == '-' ? n2 : 0;
-        if (n4) {
-            if (n2 != n3) return a(string2, n2, 10, (boolean) n4);
-            {
-                throw new Throwable("Invalid long: \"" + string2 + "\"");
-            }
-        } else {
-            n2 = 0;
-        }
-        return a(string2, n2, 10, (boolean) n4);
     }
 
     private static String o() {
@@ -3592,7 +2759,7 @@ public class a {
      * Lifted jumps to return sites
      */
     public static int r(Context context) {
-        NetworkInfo networkInfo = ((ConnectivityManager) context.getSystemService("connectivity")).getActiveNetworkInfo();
+        NetworkInfo networkInfo = ((ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE)).getActiveNetworkInfo();
         if (networkInfo == null) {
             return 0;
         }
@@ -3766,23 +2933,5 @@ public class a {
             return string2.replaceAll("\\n[\\s]+", "\n").trim();
         }
         return null;
-    }
-
-    public static boolean z(Context context) {
-        String string2 = am.n(context);
-        String string3 = OnlineConfigAgent.getInstance().getConfigParams(context, "one_yuan_disabled_channel");
-        if (string3 != null && string3.length() > 0) {
-            String[] arrstring = string3.split(",");
-            int n2 = arrstring.length;
-            for (int i2 = 0; i2 < n2; ++i2) {
-                if (!arrstring[i2].equals(string2)) continue;
-                return false;
-            }
-        }
-        return true;
-    }
-
-    public void a(am am2) {
-        this.b.setCurrentItem(am2.a());
     }
 }
