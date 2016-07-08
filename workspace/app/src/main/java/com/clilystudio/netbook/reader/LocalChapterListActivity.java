@@ -191,7 +191,7 @@ public class LocalChapterListActivity extends BaseActivity {
                 int n3 = position - LocalChapterListActivity.a(LocalChapterListActivity.this).getHeaderViewsCount();
                 if (n3 >= 0) {
                     TocDownloadSummary tocDownloadSummary = LocalChapterListActivity.b(LocalChapterListActivity.this).getItem(n3);
-                    Intent intent = ReaderActivity.a(LocalChapterListActivity.this, LocalChapterListActivity.c(LocalChapterListActivity.this), LocalChapterListActivity.d(LocalChapterListActivity.this), tocDownloadSummary.getTocId(), null, true);
+                    Intent intent = ReaderActivity.a(LocalChapterListActivity.this, LocalChapterListActivity.c(LocalChapterListActivity.this), LocalChapterListActivity.d(LocalChapterListActivity.this), tocDownloadSummary.getTocId(), (String)null, true);
                     LocalChapterListActivity.this.startActivity(intent);
                 }
             }

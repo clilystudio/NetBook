@@ -45,50 +45,15 @@ public class User implements Serializable {
         this.gender = string;
     }
 
-    /*
-     * Unable to fully structure code
-     * Enabled aggressive block sorting
-     * Lifted jumps to return sites
-     */
     public int getGenderFlag() {
-        var1_1 = this.gender;
-        var2_2 = -1;
-        switch (var1_1.hashCode()) {
-            case 3343885: {
-                if (var1_1.equals("male")) {
-                    var2_2 = 0;
-                    **break;
-                }
-                **GOTO lbl12
-            }
-            case -1278174388: {
-                if (var1_1.equals("female")) {
-                    var2_2 = 1;
-                }
-            }
-            lbl12:
-            // 6 sources:
-            default:
-            {
-                **GOTO lbl17
-            }
-            case 3392903:
-        }
-        if (var1_1.equals("null")) {
-            var2_2 = 2;
-        }
-        lbl17:
-        // 4 sources:
-        switch (var2_2) {
-            default: {
+        switch (this.gender) {
+            case "male":
                 return 0;
-            }
-            case 1: {
+            case "female":
                 return 1;
-            }
-            case 2:
+            default:
+                return 2;
         }
-        return 2;
     }
 
     public String getId() {

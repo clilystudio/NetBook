@@ -64,7 +64,7 @@ public class ReaderMenuFragment extends Fragment {
         MyApplication.a().c(readerMenuFragment.e);
         am.c(readerMenuFragment.e, 10);
         BusProvider.getInstance().post(new ModeChangedEvent(1));
-        readerMenuFragment.startActivity(ReaderActivity.a(readerMenuFragment.getActivity(), readerMenuFragment.e, readerMenuFragment.f, tocSummary.get_id(), null, true));
+        readerMenuFragment.startActivity(ReaderActivity.a(readerMenuFragment.getActivity(), readerMenuFragment.e, readerMenuFragment.f, tocSummary.get_id(), (String)null, true));
     }
 
     /*

@@ -59,7 +59,7 @@ public class ReaderMixActivity extends BaseLoadingActivity {
     }
 
     static /* synthetic */ void a(ReaderMixActivity readerMixActivity, String string) {
-        readerMixActivity.startActivity(ReaderActivity.a(readerMixActivity, readerMixActivity.a, readerMixActivity.b, string, null, true));
+        readerMixActivity.startActivity(ReaderActivity.a(readerMixActivity, readerMixActivity.a, readerMixActivity.b, string, (String)null, true));
     }
 
     static /* synthetic */ String b(ReaderMixActivity readerMixActivity) {

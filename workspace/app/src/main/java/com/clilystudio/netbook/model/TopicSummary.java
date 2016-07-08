@@ -7,7 +7,7 @@ public class TopicSummary {
     public TopicSummaryBook[] getBooks() {
         for (int i = 0; i < this.books.length; ++i) {
             if (this.books[i] != null) continue;
-            this.books[i] = new TopicSummaryBook(this);
+            this.books[i] = new TopicSummaryBook();
             this.books[i].set_id("");
         }
         return this.books;

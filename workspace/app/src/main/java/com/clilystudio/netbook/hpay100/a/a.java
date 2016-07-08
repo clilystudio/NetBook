@@ -397,8 +397,7 @@ public class a {
             HttpURLConnection httpURLConnection = (HttpURLConnection) new URL(string).openConnection();
             httpURLConnection.setDoInput(true);
             httpURLConnection.connect();
-            Bitmap bitmap = BitmapFactory.decodeStream(httpURLConnection.getInputStream());
-            return bitmap;
+            return BitmapFactory.decodeStream(httpURLConnection.getInputStream());
         } catch (Exception var1_3) {
             var1_3.printStackTrace();
             return null;
@@ -410,32 +409,21 @@ public class a {
     }
 
     public static HashMap<String, String> M(String string) {
-        return (HashMap) k(com.clilystudio.netbook.c.c, string);
+        return (HashMap<String, String>) k(com.clilystudio.netbook.c.c, string);
     }
 
-    public static String N(String string) {
-        if (string == null) {
-            return "";
-        }
-        return com.integralblue.httpresponsecache.compat.libcore.a.a.b(C(string)) + ".apk";
-    }
-
-    /*
-     * Enabled force condition propagation
-     * Lifted jumps to return sites
-     */
     private static File O(Context context) {
         File file = new File(new File(new File(new File(Environment.getExternalStorageDirectory(), "Android"), "data"), context.getPackageName()), "cache");
         if (file.exists()) return file;
         if (!file.mkdirs()) {
-            com.nostra13.universalimageloader.b.d.c("Unable to create external cache directory", new Object[0]);
+            com.nostra13.universalimageloader.utils.L.e("Unable to create external cache directory");
             return null;
         }
         try {
             new File(file, ".nomedia").createNewFile();
             return file;
         } catch (IOException var2_2) {
-            com.nostra13.universalimageloader.b.d.b("Can't create \".nomedia\" file in application external cache directory", new Object[0]);
+            com.nostra13.universalimageloader.utils.L.e("Can't create \".nomedia\" file in application external cache directory");
             return file;
         }
     }
@@ -529,15 +517,10 @@ public class a {
             byte[] arrby = new byte[8];
             fileInputStream.read(arrby);
             fileInputStream.close();
-            String string2 = g(arrby);
-            return string2;
+            return g(arrby);
         } catch (Exception var2_4) {
             return null;
         }
-    }
-
-    private static Throwable X(String string) {
-        throw new Throwable("Invalid int: \"" + string + "\"");
     }
 
     private static long Y(String string) {
@@ -1013,31 +996,6 @@ public class a {
         }
     }
 
-    /*
-     * Enabled aggressive block sorting
-     */
-    public static File a(Context context, boolean bl) {
-        File file;
-        block3:
-        {
-            file = null;
-            if (bl) {
-                boolean bl2 = "mounted".equals(Environment.getExternalStorageState());
-                file = null;
-                if (bl2) {
-                    boolean bl3 = context.checkCallingOrSelfPermission("android.permission.WRITE_EXTERNAL_STORAGE") == 0;
-                    file = null;
-                    if (bl3 && (file = O(context)) != null) break block3;
-                }
-            }
-            file = context.getCacheDir();
-        }
-        if (file != null) return file;
-        String string2 = "/data/data/" + context.getPackageName() + "/cache/";
-        com.nostra13.universalimageloader.b.d.c("Can't define system cache directory! '%s' will be used.", string2);
-        return new File(string2);
-    }
-
     public static Class<?> a(Type type) {
         Type type2 = type;
         do {
@@ -1188,7 +1146,7 @@ public class a {
      * Enabled aggressive block sorting
      */
     public static void a(Activity activity) {
-        String[] arrstring = com.xiaomi.mipush.sdk.d.b(activity).toArray(new String[0]);
+        String[] arrstring = com.xiaomi.mipush.sdk.MiPushClient.getAllAlias(activity).toArray(new String[0]);
         ArrayList<String> arrayList = new ArrayList<String>();
         if (arrstring != null) {
             for (String string2 : arrstring) {
@@ -1196,8 +1154,8 @@ public class a {
                 arrayList.add(string3);
             }
         }
-        ArrayList<String> arrayList2 = new ArrayList<String>();
-        HashSet<String> hashSet = new HashSet<String>();
+        ArrayList<String> arrayList2 = new ArrayList<>();
+        HashSet<String> hashSet = new HashSet<>();
         List<BookReadRecord> list = BookReadRecord.getAll();
         if (list != null) {
             Iterator<BookReadRecord> iterator = list.iterator();
@@ -1265,18 +1223,6 @@ public class a {
         }
         view.setEnabled(false);
         listView.addHeaderView(view);
-    }
-
-    public static void a(Context context, BookInfo bookInfo) {
-        HashMap<String, Object> hashMap = new HashMap<String, Object>();
-        hashMap.put("iid", bookInfo.getId());
-        hashMap.put("title", bookInfo.getTitle());
-        hashMap.put("cat", bookInfo.getCat());
-        hashMap.put("author", bookInfo.getAuthor());
-        String string2 = bookInfo.getIsSerial() ? "serialize" : "end";
-        hashMap.put("tag", string2);
-        hashMap.put("attr", a(bookInfo));
-        com.a.a.a.d(context, bookInfo.getId(), hashMap);
     }
 
     public static void a(Context context, String string2, Map<String, String> map) {
@@ -1471,37 +1417,6 @@ public class a {
 
     /*
      * Enabled aggressive block sorting
-     */
-    public static void a(String string2, com.koushikdutta.async.http.b.b b2) {
-        int n2 = 0;
-        while (n2 < string2.length()) {
-            String string3;
-            int n3 = b(string2, n2, "=,");
-            String string4 = string2.substring(n2, n3).trim();
-            if (n3 == string2.length() || string2.charAt(n3) == ',') {
-                n2 = n3 + 1;
-                b2.a(string4, null);
-                continue;
-            }
-            int n4 = c(string2, n3 + 1);
-            if (n4 < string2.length() && string2.charAt(n4) == '\"') {
-                int n5 = n4 + 1;
-                int n6 = b(string2, n5, "\"");
-                String string5 = string2.substring(n5, n6);
-                n2 = n6 + 1;
-                string3 = string5;
-            } else {
-                int n7 = b(string2, n4, ",");
-                String string6 = string2.substring(n4, n7).trim();
-                n2 = n7;
-                string3 = string6;
-            }
-            b2.a(string4, string3);
-        }
-    }
-
-    /*
-     * Enabled aggressive block sorting
      * Lifted jumps to return sites
      */
     private static void a(String string2, BookSyncRecord.BookModifyType bookModifyType) {
@@ -1527,24 +1442,8 @@ public class a {
         } while (true);
     }
 
-    public static void a(String string2, String string3, DownloadManager downloadManager) {
-        DownloadManager.Request request = new DownloadManager.Request(Uri.parse(string2));
-        request.setTitle(string3);
-        String string4 = N(string2);
-        if (g()) {
-            request.allowScanningByMediaScanner();
-            request.setNotificationVisibility(1);
-        }
-        request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, string4);
-        try {
-            downloadManager.enqueue(request);
-         } catch (Exception var7_5) {
-            var7_5.printStackTrace();
-        }
-    }
-
     public static void a(String string2, Map<String, String> map) {
-        a(map, c.c, string2);
+        a(map, com.clilystudio.netbook.c.c, string2);
     }
 
     /*
@@ -1650,30 +1549,6 @@ public class a {
         return intent.getData() != null;
     }
 
-    private static boolean a(com.nostra13.universalimageloader.b.c c2, int n2, int n3) {
-        return c2 != null && !c2.a(n2, n3) && n2 * 100 / n3 < 75;
-    }
-
-    public static boolean a(InputStream inputStream, OutputStream outputStream, com.nostra13.universalimageloader.b.c c2, int n2) {
-        int n3;
-        int n4 = inputStream.available();
-        byte[] arrby = new byte[n2];
-        if (a(c2, 0, n4)) {
-            return false;
-        }
-        int n5 = 0;
-        while ((n3 = inputStream.read(arrby, 0, n2)) != -1) {
-            outputStream.write(arrby, 0, n3);
-            if (!a(c2, n5 += n3, n4)) continue;
-            return false;
-        }
-        outputStream.flush();
-        return true;
-    }
-
-    /*
-     * Enabled aggressive block sorting
-     */
     public static boolean a(Class<?> class_) {
         return class_.isPrimitive() || class_.equals(String.class) || class_.equals(Integer.class) || class_.equals(Long.class) || class_.equals(Double.class) || class_.equals(Float.class) || class_.equals(Boolean.class) || class_.equals(Short.class) || class_.equals(Character.class) || class_.equals(Byte.class) || class_.equals(Void.class);
     }
@@ -2504,12 +2379,6 @@ public class a {
          return jSONObject;
     }
 
-    public static void i(Context context, String string2) {
-        HashMap<String, String> hashMap = new HashMap<String, String>();
-        hashMap.put("uid", com.clilystudio.netbook.util.e.c(context));
-        com.a.a.a.a(context, string2, hashMap);
-    }
-
     public static boolean i() {
         return Build.VERSION.SDK_INT >= 19;
     }
@@ -2537,23 +2406,10 @@ public class a {
     public static boolean j(Context context, String string2) {
         PackageManager packageManager = context.getPackageManager();
         try {
-            packageManager.getPackageInfo(string2, 128);
+            packageManager.getPackageInfo(string2, PackageManager.GET_META_DATA);
             return true;
         } catch (PackageManager.NameNotFoundException var3_3) {
             return false;
-        }
-    }
-
-    public static long k(String string2) {
-        try {
-            Date date = new Date(string2);
-            Calendar calendar = Calendar.getInstance();
-            calendar.setTime(date);
-            long l2 = calendar.getTimeInMillis();
-            return l2;
-        } catch (Throwable var2_4) {
-            com.mob.tools.e.a().w(var2_4);
-            return 0;
         }
     }
 
@@ -2621,42 +2477,6 @@ public class a {
 
     /*
      * Enabled aggressive block sorting
-     * Enabled unnecessary exception pruning
-     * Enabled aggressive exception aggregation
-     */
-    public static int[] l(Context context) {
-        WindowManager windowManager;
-        try {
-            windowManager = (WindowManager) context.getSystemService("window");
-        } catch (Throwable var1_2) {
-            com.mob.tools.e.a().w(var1_2);
-            windowManager = null;
-        }
-        if (windowManager == null) {
-            return new int[]{0, 0};
-        }
-        Display display = windowManager.getDefaultDisplay();
-        if (Build.VERSION.SDK_INT < 13) {
-            DisplayMetrics displayMetrics = new DisplayMetrics();
-            display.getMetrics(displayMetrics);
-            int[] arrn = new int[]{displayMetrics.widthPixels, displayMetrics.heightPixels};
-            return arrn;
-        }
-        try {
-            Point point = new Point();
-            Method method = display.getClass().getMethod("getRealSize", Point.class);
-            method.setAccessible(true);
-            method.invoke(display, point);
-            int[] arrn = new int[]{point.x, point.y};
-            return arrn;
-        } catch (Throwable var8_9) {
-            com.mob.tools.e.a().w(var8_9);
-            return new int[]{0, 0};
-        }
-    }
-
-    /*
-     * Enabled aggressive block sorting
      */
     public static Bundle m(String string2) {
         Bundle bundle = new Bundle();
@@ -2676,19 +2496,6 @@ public class a {
             ++n3;
         }
         return bundle;
-    }
-
-    public static File m(Context context) {
-        return a(context, true);
-    }
-
-    public static File n(Context context) {
-        File file = a(context, true);
-        File file2 = new File(file, "uil-images");
-        if (!file2.exists() && !file2.mkdir()) {
-            return file;
-        }
-        return file2;
     }
 
     private static String n() {
@@ -2777,7 +2584,7 @@ public class a {
     public static void r(String string2) {
         String string3 = s(string2);
         BookSubRecord.create(string3);
-        com.xiaomi.mipush.sdk.d.b(MyApplication.a(), string3, null);
+        com.xiaomi.mipush.sdk.MiPushClient.subscribe(MyApplication.a(), string3, null);
     }
 
     public static boolean r(Context context, String string2) {
@@ -2803,11 +2610,11 @@ public class a {
     public static void t(String string2) {
         String string3 = s(string2);
         BookUnSubRecord.create(string3);
-        com.xiaomi.mipush.sdk.d.c(MyApplication.a(), string3, null);
+        com.xiaomi.mipush.sdk.MiPushClient.unsubscribe(MyApplication.a(), string3, null);
     }
 
     public static boolean t(Context context) {
-        ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService("connectivity");
+        ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         if (connectivityManager == null) {
             return false;
         }

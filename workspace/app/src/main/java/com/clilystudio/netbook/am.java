@@ -34,7 +34,6 @@ import com.clilystudio.netbook.db.BookDlRecord;
 import com.clilystudio.netbook.db.BookReadRecord;
 import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.model.User;
-import com.clilystudio.netbook.ui.SplashActivity;
 import com.clilystudio.netbook.ui.user.AuthLoginActivity;
 import com.clilystudio.netbook.util.H;
 import com.clilystudio.netbook.util.e;

@@ -22,24 +22,13 @@ public class ReaderChapterIdentifier implements Comparable<ReaderChapterIdentifi
     }
 
     public boolean equals(Object object) {
-        boolean bl;
-        block3:
-        {
-            try {
-                ReaderChapterIdentifier readerChapterIdentifier = (ReaderChapterIdentifier) object;
-                boolean bl2 = readerChapterIdentifier.bookId.equals(this.bookId);
-                bl = false;
-                if (!bl2) break block3;
-            } catch (Exception var2_6) {
-                var2_6.printStackTrace();
-                return false;
-            }
-            boolean bl3 = readerChapterIdentifier.tocHost.equals(this.tocHost);
-            bl = false;
-            if (!bl3) break block3;
-            bl = true;
+        try {
+            ReaderChapterIdentifier readerChapterIdentifier = (ReaderChapterIdentifier) object;
+            return readerChapterIdentifier.bookId.equals(this.bookId) && readerChapterIdentifier.tocHost.equals(this.tocHost);
+        } catch (Exception var2_6) {
+            var2_6.printStackTrace();
+            return false;
         }
-        return bl;
     }
 
     public String getBookId() {

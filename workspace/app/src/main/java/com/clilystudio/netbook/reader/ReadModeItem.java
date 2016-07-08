@@ -76,7 +76,7 @@ public class ReadModeItem extends FrameLayout {
         switch (n2) {
             default: {
                 ReadModeItem.a();
-                Intent intent = ReaderActivity.a(readModeItem.a, readModeItem.b, readModeItem.c, "MIX_TOC_ID", null, false);
+                Intent intent = ReaderActivity.a(readModeItem.a, readModeItem.b, readModeItem.c, "MIX_TOC_ID", (String)null, false);
                 readModeItem.a.startActivity(intent);
                 readModeItem.a.finish();
                 return;

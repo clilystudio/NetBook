@@ -422,7 +422,6 @@ public class BookInfoActivity extends BaseActivity implements View.OnClickListen
                     BookInfoActivity.d(BookInfoActivity.this);
                     BookInfoActivity.e(BookInfoActivity.this);
                     BookInfoActivity.f(BookInfoActivity.this);
-                    com.clilystudio.netbook.hpay100.a.a.a(BookInfoActivity.this, bookInfo);
                     return;
                 }
                 BookInfoActivity.b(BookInfoActivity.this, 2);

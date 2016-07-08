@@ -89,7 +89,7 @@ public class ReaderResourceFragment extends Fragment {
     }
 
     static /* synthetic */ void a(ReaderResourceFragment readerResourceFragment, String string) {
-        readerResourceFragment.startActivity(ReaderActivity.a(readerResourceFragment.getActivity(), readerResourceFragment.a, readerResourceFragment.b, string, null, false));
+        readerResourceFragment.startActivity(ReaderActivity.a(readerResourceFragment.getActivity(), readerResourceFragment.a, readerResourceFragment.b, string, (String)null, false));
     }
 
     static /* synthetic */ void a(ReaderResourceFragment readerResourceFragment, List list) {
@@ -161,7 +161,7 @@ public class ReaderResourceFragment extends Fragment {
                 int n3 = position - ReaderResourceFragment.b(ReaderResourceFragment.this).getHeaderViewsCount();
                 if (n3 >= 0) {
                     TocSummary tocSummary = ReaderResourceFragment.c(ReaderResourceFragment.this).getItem(n3);
-                    Intent intent = ReaderActivity.a(getActivity(), ReaderResourceFragment.a(ReaderResourceFragment.this), ReaderResourceFragment.d(ReaderResourceFragment.this), tocSummary.get_id(), null, true);
+                    Intent intent = ReaderActivity.a(getActivity(), ReaderResourceFragment.a(ReaderResourceFragment.this), ReaderResourceFragment.d(ReaderResourceFragment.this), tocSummary.get_id(),  (String)null, true);
                     startActivity(intent);
                     index = n3;
                 }

@@ -1676,7 +1676,6 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         com.clilystudio.netbook.util.I.d = this.f;
         com.clilystudio.netbook.util.I.c = this.e;
         com.clilystudio.netbook.util.I.g = this.L;
-        com.clilystudio.netbook.hpay100.a.a.i(this, this.c);
         this.g = new Reader(this.c, this.e, this.d, this.L);
         this.g.a(this.getIntent().getStringExtra("SOURCE_ID"));
         this.g.a((Map<String, String>) this.getIntent().getSerializableExtra("CHAPTERS_KEY"));
