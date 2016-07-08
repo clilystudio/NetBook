@@ -17,7 +17,6 @@ public class s implements Cloneable {
 
     String a;
     r b = null;
-    private com.xiaomi.mistatistic.sdk.a.r c;
     private Class d;
     private v g;
     private Object h;
@@ -43,7 +42,6 @@ public class s implements Cloneable {
         try {
             s s2 = (s) super.clone();
             s2.a = this.a;
-            s2.c = this.c;
             s2.b = this.b.a();
             s2.g = this.g;
             return s2;
@@ -60,16 +58,15 @@ public class s implements Cloneable {
      * Enabled aggressive block sorting
      */
     public /* varargs */ void a(float... arrf) {
-        int n;
         this.d = Float.TYPE;
         int n2 = arrf.length;
         p[] arrp = new p[java.lang.Math.max(n2, 2)];
-        if (n2 == n) {
+        if (n2 == 1) {
             arrp[0] = new p(0.0f);
-            arrp[n] = (p) o.a(1.0f, arrf[0]);
+            arrp[1] = (p) o.a(1.0f, arrf[0]);
         } else {
             arrp[0] = (p) o.a(0.0f, arrf[0]);
-            for (n = 1; n < n2; ++n) {
+            for (int n = 1; n < n2; ++n) {
                 arrp[n] = (p) o.a((float) n / (float) (n2 - 1), arrf[n]);
             }
         }
@@ -80,16 +77,15 @@ public class s implements Cloneable {
      * Enabled aggressive block sorting
      */
     public /* varargs */ void a(int... arrn) {
-        int n2;
         this.d = Integer.TYPE;
         int n3 = arrn.length;
         q[] arrq = new q[java.lang.Math.max(n3, 2)];
-        if (n3 == n2) {
+        if (n3 == 1) {
             arrq[0] = new q(0.0f);
-            arrq[n2] = (q) o.a(1.0f, arrn[0]);
+            arrq[1] = (q) o.a(1.0f, arrn[0]);
         } else {
             arrq[0] = (q) o.a(0.0f, arrn[0]);
-            for (n2 = 1; n2 < n3; ++n2) {
+            for (int n2 = 1; n2 < n3; ++n2) {
                 arrq[n2] = (q) o.a((float) n2 / (float) (n3 - 1), arrn[n2]);
             }
         }

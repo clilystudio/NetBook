@@ -38,12 +38,11 @@ final class n extends r {
     }
 
     public final int b(float f) {
-        int n2;
         if (this.a == 2) {
             if (this.h) {
                 this.h = false;
-                this.e = ((q) this.c.get((int) 0)).b;
-                this.f = ((q) this.c.get((int) n2)).b;
+                this.e = ((q) this.c.get(0)).b;
+                this.f = ((q) this.c.get(1)).b;
                 this.g = this.f - this.e;
             }
             if (this.b != null) {
@@ -56,7 +55,7 @@ final class n extends r {
         }
         if (f <= 0.0f) {
             q q2 = (q) this.c.get(0);
-            q q3 = (q) this.c.get(n2);
+            q q3 = (q) this.c.get(1);
             int n3 = q2.b;
             int n4 = q3.b;
             float f2 = q2.a;
@@ -89,7 +88,7 @@ final class n extends r {
             return ((Number) this.d.a(f7, n5, n6)).intValue();
         }
         q q6 = (q) this.c.get(0);
-        for (n2 = 1; n2 < this.a; ++n2) {
+        for (int n2 = 1; n2 < this.a; ++n2) {
             q q7 = (q) this.c.get(n2);
             if (f < q7.a) {
                 Interpolator interpolator = q7.b();
@@ -106,7 +105,7 @@ final class n extends r {
             }
             q6 = q7;
         }
-        return ((Number) ((o) this.c.get(-1 + this.a)).a()).intValue();
+        return ((Number) this.c.get(-1 + this.a).a()).intValue();
     }
 
     @Override

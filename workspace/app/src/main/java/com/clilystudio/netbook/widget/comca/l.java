@@ -35,12 +35,11 @@ final class l extends r {
     }
 
     public final float b(float f) {
-        int n;
         if (this.a == 2) {
             if (this.h) {
                 this.h = false;
-                this.e = ((p) this.c.get((int) 0)).b;
-                this.f = ((p) this.c.get((int) n)).b;
+                this.e = ((p) this.c.get(0)).b;
+                this.f = ((p) this.c.get(1)).b;
                 this.g = this.f - this.e;
             }
             if (this.b != null) {
@@ -53,7 +52,7 @@ final class l extends r {
         }
         if (f <= 0.0f) {
             p p2 = (p) this.c.get(0);
-            p p3 = (p) this.c.get(n);
+            p p3 = (p) this.c.get(1);
             float f2 = p2.b;
             float f3 = p3.b;
             float f4 = p2.a;
@@ -86,7 +85,7 @@ final class l extends r {
             return ((Number) this.d.a(f11, Float.valueOf(f7), Float.valueOf(f8))).floatValue();
         }
         p p6 = (p) this.c.get(0);
-        for (n = 1; n < this.a; ++n) {
+        for (int n = 1; n < this.a; ++n) {
             p p7 = (p) this.c.get(n);
             if (f < p7.a) {
                 Interpolator interpolator = p7.b();
@@ -103,7 +102,7 @@ final class l extends r {
             }
             p6 = p7;
         }
-        return ((Number) ((o) this.c.get(-1 + this.a)).a()).floatValue();
+        return ((Number) this.c.get(-1 + this.a).a()).floatValue();
     }
 
     @Override

@@ -1,431 +1,209 @@
 .class final Lcom/c/a/C;
 .super Landroid/os/Handler;
 .source "SourceFile"
-
-
 # direct methods
 .method private constructor <init>()V
     .locals 0
-
     .prologue
-    .line 570
-    invoke-direct {p0}, Landroid/os/Handler;-><init>()V
-
-    return-void
+    p0.<init>();
+    return;
 .end method
-
 .method synthetic constructor <init>(B)V
     .locals 0
-
     .prologue
-    .line 570
-    invoke-direct {p0}, Lcom/c/a/C;-><init>()V
-
-    return-void
+    p0.<init>();
+    return;
 .end method
-
-
 # virtual methods
 .method public final handleMessage(Landroid/os/Message;)V
     .locals 12
-
     .prologue
-    .line 585
-    const/4 v3, 0x1
-
-    .line 586
-    invoke-static {}, Lcom/c/a/w;->h()Ljava/lang/ThreadLocal;
-
-    move-result-object v0
-
-    invoke-virtual {v0}, Ljava/lang/ThreadLocal;->get()Ljava/lang/Object;
-
-    move-result-object v0
-
+    v3 = 0x1;
+    v0 = invoke-static {}, Lcom/c/a/w;->h()Ljava/lang/ThreadLocal;
+    v0 = v0.get();
     check-cast v0, Ljava/util/ArrayList;
-
-    .line 587
-    invoke-static {}, Lcom/c/a/w;->i()Ljava/lang/ThreadLocal;
-
-    move-result-object v1
-
-    invoke-virtual {v1}, Ljava/lang/ThreadLocal;->get()Ljava/lang/Object;
-
-    move-result-object v1
-
+    v1 = invoke-static {}, Lcom/c/a/w;->i()Ljava/lang/ThreadLocal;
+    v1 = v1.get();
     check-cast v1, Ljava/util/ArrayList;
-
-    .line 588
-    iget v2, p1, Landroid/os/Message;->what:I
-
+    v2 = p1.Landroid/os/Message;->what;
     packed-switch v2, :pswitch_data_0
-
-    .line 682
     :cond_0
     :goto_0
-    return-void
-
-    .line 592
+    return;
     :pswitch_0
-    invoke-static {}, Lcom/c/a/w;->j()Ljava/lang/ThreadLocal;
-
-    move-result-object v2
-
-    invoke-virtual {v2}, Ljava/lang/ThreadLocal;->get()Ljava/lang/Object;
-
-    move-result-object v2
-
+    v2 = invoke-static {}, Lcom/c/a/w;->j()Ljava/lang/ThreadLocal;
+    v2 = v2.get();
     check-cast v2, Ljava/util/ArrayList;
-
-    .line 593
-    invoke-virtual {v0}, Ljava/util/ArrayList;->size()I
-
-    move-result v4
-
-    if-gtz v4, :cond_1
-
-    invoke-virtual {v1}, Ljava/util/ArrayList;->size()I
-
-    move-result v4
-
-    if-lez v4, :cond_f
-
-    .line 594
+    v4 = v0.size();
+    if (v4 > 0) {
+//       if-gtz v4, :cond_1
+    }
+    v4 = v1.size();
+    if (v4 <= 0) {
+//       if-lez v4, :cond_f
+    }
     :cond_1
-    const/4 v3, 0x0
-
-    move v5, v3
-
-    .line 601
+    v3 = 0x0;
+    v5 = v3;
     :cond_2
     :goto_1
-    invoke-virtual {v2}, Ljava/util/ArrayList;->size()I
-
-    move-result v3
-
-    if-lez v3, :cond_4
-
-    .line 602
-    invoke-virtual {v2}, Ljava/util/ArrayList;->clone()Ljava/lang/Object;
-
-    move-result-object v3
-
+    v3 = v2.size();
+    if (v3 <= 0) {
+//       if-lez v3, :cond_4
+    }
+    v3 = v2.clone();
     check-cast v3, Ljava/util/ArrayList;
-
-    .line 604
-    invoke-virtual {v2}, Ljava/util/ArrayList;->clear()V
-
-    .line 605
-    invoke-virtual {v3}, Ljava/util/ArrayList;->size()I
-
-    move-result v7
-
-    .line 606
-    const/4 v4, 0x0
-
-    move v6, v4
-
+    v2.clear();
+    v7 = v3.size();
+    v4 = 0x0;
+    v6 = v4;
     :goto_2
-    if-ge v6, v7, :cond_2
-
-    .line 607
-    invoke-virtual {v3, v6}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
-
-    move-result-object v4
-
+    if (v6 >= v7) {
+//       if-ge v6, v7, :cond_2
+    }
+    v4 = v3.get(v6);
     check-cast v4, Lcom/c/a/w;
-
-    .line 609
-    invoke-static {v4}, Lcom/c/a/w;->a(Lcom/c/a/w;)J
-
-    move-result-wide v8
-
-    const-wide/16 v10, 0x0
-
+    v8 = Lcom/c/a/w.a(v4);
+    v10 = 0x0;
     cmp-long v8, v8, v10
-
-    if-nez v8, :cond_3
-
-    .line 610
-    invoke-static {v4}, Lcom/c/a/w;->b(Lcom/c/a/w;)V
-
-    .line 606
+    if (v8 != 0) {
+//       if-nez v8, :cond_3
+    }
+    Lcom/c/a/w.b(v4);
     :goto_3
-    add-int/lit8 v4, v6, 0x1
-
-    move v6, v4
-
+    v4 = v6 + 0x1;
+    v6 = v4;
     goto :goto_2
-
-    .line 612
     :cond_3
-    invoke-virtual {v1, v4}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
-
+    v1.add(v4);
     goto :goto_3
-
     :pswitch_1
-    move v5, v3
-
-    .line 620
+    v5 = v3;
     :cond_4
     invoke-static {}, Landroid/view/animation/AnimationUtils;->currentAnimationTimeMillis()J
-
     move-result-wide v8
-
-    .line 621
-    invoke-static {}, Lcom/c/a/w;->k()Ljava/lang/ThreadLocal;
-
-    move-result-object v2
-
-    invoke-virtual {v2}, Ljava/lang/ThreadLocal;->get()Ljava/lang/Object;
-
-    move-result-object v2
-
+    v2 = invoke-static {}, Lcom/c/a/w;->k()Ljava/lang/ThreadLocal;
+    v2 = v2.get();
     check-cast v2, Ljava/util/ArrayList;
-
-    .line 622
-    invoke-static {}, Lcom/c/a/w;->l()Ljava/lang/ThreadLocal;
-
-    move-result-object v3
-
-    invoke-virtual {v3}, Ljava/lang/ThreadLocal;->get()Ljava/lang/Object;
-
-    move-result-object v3
-
+    v3 = invoke-static {}, Lcom/c/a/w;->l()Ljava/lang/ThreadLocal;
+    v3 = v3.get();
     check-cast v3, Ljava/util/ArrayList;
-
-    .line 626
-    invoke-virtual {v1}, Ljava/util/ArrayList;->size()I
-
-    move-result v7
-
-    .line 627
-    const/4 v4, 0x0
-
-    move v6, v4
-
+    v7 = v1.size();
+    v4 = 0x0;
+    v6 = v4;
     :goto_4
-    if-ge v6, v7, :cond_6
-
-    .line 628
-    invoke-virtual {v1, v6}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
-
-    move-result-object v4
-
+    if (v6 >= v7) {
+//       if-ge v6, v7, :cond_6
+    }
+    v4 = v1.get(v6);
     check-cast v4, Lcom/c/a/w;
-
-    .line 629
-    invoke-static {v4, v8, v9}, Lcom/c/a/w;->a(Lcom/c/a/w;J)Z
-
-    move-result v10
-
-    if-eqz v10, :cond_5
-
-    .line 630
-    invoke-virtual {v2, v4}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
-
-    .line 627
+    v10 = Lcom/c/a/w.a(v4, v8, v9);
+    if (v10 == 0) {
+//       if-eqz v10, :cond_5
+    }
+    v2.add(v4);
     :cond_5
-    add-int/lit8 v4, v6, 0x1
-
-    move v6, v4
-
+    v4 = v6 + 0x1;
+    v6 = v4;
     goto :goto_4
-
-    .line 633
     :cond_6
-    invoke-virtual {v2}, Ljava/util/ArrayList;->size()I
-
-    move-result v7
-
-    .line 634
-    if-lez v7, :cond_8
-
-    .line 635
-    const/4 v4, 0x0
-
-    move v6, v4
-
+    v7 = v2.size();
+    if (v7 <= 0) {
+//       if-lez v7, :cond_8
+    }
+    v4 = 0x0;
+    v6 = v4;
     :goto_5
-    if-ge v6, v7, :cond_7
-
-    .line 636
-    invoke-virtual {v2, v6}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
-
-    move-result-object v4
-
+    if (v6 >= v7) {
+//       if-ge v6, v7, :cond_7
+    }
+    v4 = v2.get(v6);
     check-cast v4, Lcom/c/a/w;
-
-    .line 637
-    invoke-static {v4}, Lcom/c/a/w;->b(Lcom/c/a/w;)V
-
-    .line 638
-    const/4 v10, 0x1
-
-    invoke-static {v4, v10}, Lcom/c/a/w;->a(Lcom/c/a/w;Z)Z
-
-    .line 639
-    invoke-virtual {v1, v4}, Ljava/util/ArrayList;->remove(Ljava/lang/Object;)Z
-
-    .line 635
-    add-int/lit8 v4, v6, 0x1
-
-    move v6, v4
-
+    Lcom/c/a/w.b(v4);
+    v10 = 0x1;
+    Lcom/c/a/w.a(v4, v10);
+    v1.remove(v4);
+    v4 = v6 + 0x1;
+    v6 = v4;
     goto :goto_5
-
-    .line 641
     :cond_7
-    invoke-virtual {v2}, Ljava/util/ArrayList;->clear()V
-
-    .line 646
+    v2.clear();
     :cond_8
-    invoke-virtual {v0}, Ljava/util/ArrayList;->size()I
-
-    move-result v2
-
-    .line 647
-    const/4 v4, 0x0
-
-    move v6, v4
-
-    move v4, v2
-
-    .line 648
+    v2 = v0.size();
+    v4 = 0x0;
+    v6 = v4;
+    v4 = v2;
     :goto_6
-    if-ge v6, v4, :cond_b
-
-    .line 649
-    invoke-virtual {v0, v6}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
-
-    move-result-object v2
-
+    if (v6 >= v4) {
+//       if-ge v6, v4, :cond_b
+    }
+    v2 = v0.get(v6);
     check-cast v2, Lcom/c/a/w;
-
-    .line 650
-    invoke-virtual {v2, v8, v9}, Lcom/c/a/w;->c(J)Z
-
-    move-result v7
-
-    if-eqz v7, :cond_9
-
-    .line 651
-    invoke-virtual {v3, v2}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
-
-    .line 653
+    v7 = v2.c(v8, v9);
+    if (v7 == 0) {
+//       if-eqz v7, :cond_9
+    }
+    v3.add(v2);
     :cond_9
-    invoke-virtual {v0}, Ljava/util/ArrayList;->size()I
-
-    move-result v7
-
-    if-ne v7, v4, :cond_a
-
-    .line 654
-    add-int/lit8 v2, v6, 0x1
-
-    move v6, v2
-
+    v7 = v0.size();
+    if (v7 != v4) {
+//       if-ne v7, v4, :cond_a
+    }
+    v2 = v6 + 0x1;
+    v6 = v2;
     goto :goto_6
-
-    .line 663
     :cond_a
-    add-int/lit8 v4, v4, -0x1
-
-    .line 664
-    invoke-virtual {v3, v2}, Ljava/util/ArrayList;->remove(Ljava/lang/Object;)Z
-
+    v4 = v4 + -0x1;
+    v3.remove(v2);
     goto :goto_6
-
-    .line 667
     :cond_b
-    invoke-virtual {v3}, Ljava/util/ArrayList;->size()I
-
-    move-result v2
-
-    if-lez v2, :cond_d
-
-    .line 668
-    const/4 v2, 0x0
-
-    move v4, v2
-
+    v2 = v3.size();
+    if (v2 <= 0) {
+//       if-lez v2, :cond_d
+    }
+    v2 = 0x0;
+    v4 = v2;
     :goto_7
-    invoke-virtual {v3}, Ljava/util/ArrayList;->size()I
-
-    move-result v2
-
-    if-ge v4, v2, :cond_c
-
-    .line 669
-    invoke-virtual {v3, v4}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
-
-    move-result-object v2
-
+    v2 = v3.size();
+    if (v4 >= v2) {
+//       if-ge v4, v2, :cond_c
+    }
+    v2 = v3.get(v4);
     check-cast v2, Lcom/c/a/w;
-
-    invoke-static {v2}, Lcom/c/a/w;->c(Lcom/c/a/w;)V
-
-    .line 668
-    add-int/lit8 v2, v4, 0x1
-
-    move v4, v2
-
+    Lcom/c/a/w.c(v2);
+    v2 = v4 + 0x1;
+    v4 = v2;
     goto :goto_7
-
-    .line 671
     :cond_c
-    invoke-virtual {v3}, Ljava/util/ArrayList;->clear()V
-
-    .line 676
+    v3.clear();
     :cond_d
-    if-eqz v5, :cond_0
-
-    invoke-virtual {v0}, Ljava/util/ArrayList;->isEmpty()Z
-
-    move-result v0
-
-    if-eqz v0, :cond_e
-
-    invoke-virtual {v1}, Ljava/util/ArrayList;->isEmpty()Z
-
-    move-result v0
-
-    if-nez v0, :cond_0
-
-    .line 677
+    if (v5 == 0) {
+//       if-eqz v5, :cond_0
+    }
+    v0 = v0.isEmpty();
+    if (v0 == 0) {
+//       if-eqz v0, :cond_e
+    }
+    v0 = v1.isEmpty();
+    if (v0 != 0) {
+//       if-nez v0, :cond_0
+    }
     :cond_e
-    const/4 v0, 0x1
-
-    const-wide/16 v2, 0x0
-
+    v0 = 0x1;
+    v2 = 0x0;
     invoke-static {}, Lcom/c/a/w;->m()J
-
     move-result-wide v4
-
     invoke-static {}, Landroid/view/animation/AnimationUtils;->currentAnimationTimeMillis()J
-
     move-result-wide v6
-
-    sub-long/2addr v6, v8
-
-    sub-long/2addr v4, v6
-
-    invoke-static {v2, v3, v4, v5}, Ljava/lang/Math;->max(JJ)J
-
-    move-result-wide v2
-
-    invoke-virtual {p0, v0, v2, v3}, Lcom/c/a/C;->sendEmptyMessageDelayed(IJ)Z
-
+    v6 -= v8;
+    v4 -= v6;
+    v2 = Ljava/lang/Math.max(v2, v3, v4, v5);
+    p0.sendEmptyMessageDelayed(v0, v2, v3);
     goto/16 :goto_0
-
     :cond_f
-    move v5, v3
-
+    v5 = v3;
     goto/16 :goto_1
-
-    .line 588
     nop
-
     :pswitch_data_0
     .packed-switch 0x0
         :pswitch_0
