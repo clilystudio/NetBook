@@ -10,7 +10,7 @@ import com.clilystudio.netbook.am;
 import com.clilystudio.netbook.db.BookReadRecord;
 import com.clilystudio.netbook.db.BookSyncRecord;
 import com.clilystudio.netbook.db.SyncAccount;
-import com.clilystudio.netbook.event.A;
+import com.clilystudio.netbook.event.ShelfUpdatedEvent;
 import com.clilystudio.netbook.event.c;
 import com.clilystudio.netbook.event.i;
 import com.clilystudio.netbook.model.Account;
@@ -210,7 +210,7 @@ public final class Z {
                                 Z.b(false);
                                 if (remoteBookShelf != null && remoteBookShelf.isNeedSync() && remoteBookShelf.isOk()) {
                                     Z.a(Z.this, remoteBookShelf);
-                                    i.a().post(new com.clilystudio.netbook.event.A(remoteBookShelf.getTotalBookCounts()));
+                                    i.a().post(new ShelfUpdatedEvent(remoteBookShelf.getTotalBookCounts()));
                                 }
                             }
                         };
@@ -250,10 +250,10 @@ public final class Z {
             @Override
             public void a(RemoteBookShelf remoteBookShelf) {
                  if (remoteBookShelf != null) {
-                    i.a().post(new com.clilystudio.netbook.event.A(remoteBookShelf.getTotalBookCounts()));
+                    i.a().post(new ShelfUpdatedEvent(remoteBookShelf.getTotalBookCounts()));
                     return;
                 }
-                i.a().post(new A(1));
+                i.a().post(new ShelfUpdatedEvent(1));
             }
         };
         String[] arrstring = new String[]{this.c};

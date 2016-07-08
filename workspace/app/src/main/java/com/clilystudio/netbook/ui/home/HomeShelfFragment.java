@@ -30,6 +30,7 @@ import com.clilystudio.netbook.am;
 import com.clilystudio.netbook.db.BookFile;
 import com.clilystudio.netbook.db.BookReadRecord;
 import com.clilystudio.netbook.event.BookShelfRefreshEvent;
+import com.clilystudio.netbook.event.ShelfUpdatedEvent;
 import com.clilystudio.netbook.event.g;
 import com.clilystudio.netbook.event.h;
 import com.clilystudio.netbook.event.l;
@@ -114,7 +115,7 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
                         } else {
                             com.clilystudio.netbook.util.e.a(HomeShelfFragment.this.getActivity(), "书籍不存在");
                             TxtFileObject.delete(bookFile);
-                            com.clilystudio.netbook.event.i.a().post(new com.clilystudio.netbook.event.A());
+                            com.clilystudio.netbook.event.i.a().post(new ShelfUpdatedEvent());
                         }
                         break;
                     case 3:
@@ -1049,8 +1050,8 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
     }
 
     @Subscribe
-    public void onShelfUpdated(com.clilystudio.netbook.event.A a2) {
-        if (a2.a() == 0 && this.z && am.p(this.getActivity())) {
+    public void onShelfUpdated(ShelfUpdatedEvent a2) {
+        if (a2.getBookCounts() == 0 && this.z && am.p(this.getActivity())) {
             if (!this.A) {
                 com.clilystudio.netbook.hpay100.a.a.a(this.getActivity());
             }
