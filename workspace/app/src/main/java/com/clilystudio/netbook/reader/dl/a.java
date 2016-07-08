@@ -10,7 +10,7 @@ import com.clilystudio.netbook.db.BookDlRecord;
 import com.clilystudio.netbook.db.BookReadRecord;
 import com.clilystudio.netbook.event.DownloadProgressEvent;
 import com.clilystudio.netbook.event.DownloadStatusEvent;
-import com.clilystudio.netbook.event.i;
+import com.clilystudio.netbook.event.BusProvider;
 import com.clilystudio.netbook.util.e;
 
 import uk.me.lewisdeane.ldialogs.BaseDialog;
@@ -66,7 +66,7 @@ public class a {
     private void b(BookReadRecord bookReadRecord, int n, int n2) {
         String string = bookReadRecord.getBookId();
         int n3 = bookReadRecord.getReadMode();
-        i.a().post(new DownloadStatusEvent(string, 1));
+        BusProvider.getInstance().post(new DownloadStatusEvent(string, 1));
         e.a((Activity) this.a,  "已加入缓存队列");
         MyApplication.a().f().add(string);
         int n4 = n < 0 ? 0 : n;
@@ -78,7 +78,7 @@ public class a {
         } else {
             BookDlRecord.reset(bookDlRecord, n4, n2);
         }
-        i.a().post(new DownloadProgressEvent());
+        BusProvider.getInstance().post(new DownloadProgressEvent());
         Intent intent = new Intent(this.a, BookDownloadService.class);
         this.a.startService(intent);
     }

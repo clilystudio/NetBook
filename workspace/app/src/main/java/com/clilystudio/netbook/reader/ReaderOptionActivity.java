@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.d;
+import com.clilystudio.netbook.event.BusProvider;
 import com.clilystudio.netbook.event.ConvertChangedEvent;
 import com.clilystudio.netbook.ui.BaseActivity;
 import com.clilystudio.netbook.util.I;
@@ -156,7 +157,7 @@ public class ReaderOptionActivity extends BaseActivity {
                     @Override
                     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                         MiStatInterface.recordCountEvent("convert_t", "" + isChecked);
-                        com.clilystudio.netbook.event.i.a().post(new ConvertChangedEvent());
+                        BusProvider.getInstance().post(new ConvertChangedEvent());
                         ReaderOptionActivity.a(var5_5, isChecked);
                     }
                 });

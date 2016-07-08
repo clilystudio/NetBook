@@ -12,7 +12,7 @@ import com.clilystudio.netbook.db.BookSyncRecord;
 import com.clilystudio.netbook.db.SyncAccount;
 import com.clilystudio.netbook.event.ShelfUpdatedEvent;
 import com.clilystudio.netbook.event.BookAddedEvent;
-import com.clilystudio.netbook.event.i;
+import com.clilystudio.netbook.event.BusProvider;
 import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.model.BookShelfSyncTime;
 import com.clilystudio.netbook.model.RemoteBookShelf;
@@ -77,7 +77,7 @@ public final class Z {
             arrayList.add(book.getId());
             if (BookReadRecord.getOnShelf(book.getId()) != null || list != null && list.contains(book.getId())) continue;
             BookReadRecord.create(book, true);
-            i.a().post(new BookAddedEvent(book.getId(), false));
+            BusProvider.getInstance().post(new BookAddedEvent(book.getId(), false));
         }
         int n = arrremoteBookShelf$Book2.length;
         int n2 = 0;
@@ -90,7 +90,7 @@ public final class Z {
             RemoteBookShelf.Book remoteBookShelf$Book2 = arrremoteBookShelf$Book2[n2];
             if (!(BookReadRecord.getOnShelf(remoteBookShelf$Book2.getId()) != null || list2 != null && list2.contains(remoteBookShelf$Book2.getId()))) {
                 BookReadRecord.createFeed(remoteBookShelf$Book2);
-                i.a().post(new BookAddedEvent(remoteBookShelf$Book2.getId(), false));
+                BusProvider.getInstance().post(new BookAddedEvent(remoteBookShelf$Book2.getId(), false));
             }
             ++n2;
         } while (true);
@@ -210,7 +210,7 @@ public final class Z {
                                 Z.b(false);
                                 if (remoteBookShelf != null && remoteBookShelf.isNeedSync() && remoteBookShelf.isOk()) {
                                     Z.a(Z.this, remoteBookShelf);
-                                    i.a().post(new ShelfUpdatedEvent(remoteBookShelf.getTotalBookCounts()));
+                                    BusProvider.getInstance().post(new ShelfUpdatedEvent(remoteBookShelf.getTotalBookCounts()));
                                 }
                             }
                         };
@@ -250,10 +250,10 @@ public final class Z {
             @Override
             public void a(RemoteBookShelf remoteBookShelf) {
                  if (remoteBookShelf != null) {
-                    i.a().post(new ShelfUpdatedEvent(remoteBookShelf.getTotalBookCounts()));
+                    BusProvider.getInstance().post(new ShelfUpdatedEvent(remoteBookShelf.getTotalBookCounts()));
                     return;
                 }
-                i.a().post(new ShelfUpdatedEvent(1));
+                BusProvider.getInstance().post(new ShelfUpdatedEvent(1));
             }
         };
         String[] arrstring = new String[]{this.c};

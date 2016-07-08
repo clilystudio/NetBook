@@ -14,7 +14,7 @@ import android.widget.TextView;
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.db.BookReadRecord;
 import com.clilystudio.netbook.event.FeedAddedEvent;
-import com.clilystudio.netbook.event.i;
+import com.clilystudio.netbook.event.BusProvider;
 import com.clilystudio.netbook.event.FeedSettingChangedEvent;
 import com.clilystudio.netbook.event.FeedRemovedEvent;
 import com.clilystudio.netbook.ui.BaseActivity;
@@ -52,7 +52,7 @@ public class FeedListActivity extends BaseActivity {
                     if (finalJ != n2) {
                         int n = com.clilystudio.netbook.hpay100.a.a.e(finalJ);
                         MiStatInterface.recordCalculateEvent( "feed_chapter_count",null, n);
-                        i.a().post(new FeedSettingChangedEvent());
+                        BusProvider.getInstance().post(new FeedSettingChangedEvent());
                     }
                 }
             });
@@ -81,7 +81,7 @@ public class FeedListActivity extends BaseActivity {
         super.onCreate(bundle);
         this.setContentView(R.layout.activity_feed_list);
         this.b(R.string.feed);
-        i.a().register(this);
+        BusProvider.getInstance().register(this);
         ListView listView = (ListView) this.findViewById(R.id.book_feed_list);
         this.a = new W<BookReadRecord>(this.getLayoutInflater(), R.layout.list_item_feed_list){
 
@@ -120,7 +120,7 @@ public class FeedListActivity extends BaseActivity {
                         bookReadRecord.setFeedFat(false);
                         BookReadRecord.addAccountInfo(bookReadRecord);
                         bookReadRecord.save();
-                        com.clilystudio.netbook.event.i.a().post(new FeedRemovedEvent(bookReadRecord.getBookId()));
+                        BusProvider.getInstance().post(new FeedRemovedEvent(bookReadRecord.getBookId()));
                     }
                 });
            }
@@ -143,7 +143,7 @@ public class FeedListActivity extends BaseActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        i.a().unregister(this);
+        BusProvider.getInstance().unregister(this);
     }
 
     @Override

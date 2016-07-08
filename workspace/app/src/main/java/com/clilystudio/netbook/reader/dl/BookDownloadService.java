@@ -14,6 +14,7 @@ import com.clilystudio.netbook.am;
 import com.clilystudio.netbook.db.BookDlRecord;
 import com.clilystudio.netbook.db.BookReadRecord;
 import com.clilystudio.netbook.db.SourceRecord;
+import com.clilystudio.netbook.event.BusProvider;
 import com.clilystudio.netbook.event.DownloadProgressEvent;
 import com.clilystudio.netbook.event.DownloadStatusEvent;
 import com.clilystudio.netbook.model.Chapter;
@@ -55,7 +56,7 @@ public class BookDownloadService extends Service {
             bookDlRecord.setStatus(n);
             bookDlRecord.save();
         }
-        com.clilystudio.netbook.event.i.a().post(new DownloadProgressEvent());
+        BusProvider.getInstance().post(new DownloadProgressEvent());
     }
 
     static /* synthetic */ void a(BookDownloadService bookDownloadService, int n) {
@@ -331,7 +332,7 @@ public class BookDownloadService extends Service {
             return;
         }
         this.a(2);
-        com.clilystudio.netbook.event.i.a().post(new DownloadStatusEvent(this.a, 2));
+        BusProvider.getInstance().post(new DownloadStatusEvent(this.a, 2));
         this.c();
     }
 
@@ -401,7 +402,7 @@ public class BookDownloadService extends Service {
                     }
                     BookDownloadService.c(BookDownloadService.this);
                     if (BookDownloadService.n(BookDownloadService.this) == 0 || BookDownloadService.g(BookDownloadService.this) == BookDownloadService.h(BookDownloadService.this)) {
-                        com.clilystudio.netbook.event.i.a().post(new DownloadProgressEvent());
+                        BusProvider.getInstance().post(new DownloadProgressEvent());
                         BookDownloadService.c(BookDownloadService.this, BookDownloadService.g(BookDownloadService.this));
                     } else {
                         int nx = 1;
@@ -410,7 +411,7 @@ public class BookDownloadService extends Service {
                         }
                         if (BookDownloadService.g(BookDownloadService.this) - BookDownloadService.n(BookDownloadService.this) < nx) return;
                         {
-                            com.clilystudio.netbook.event.i.a().post(new DownloadProgressEvent());
+                            BusProvider.getInstance().post(new DownloadProgressEvent());
                             BookDownloadService.c(BookDownloadService.this, BookDownloadService.g(BookDownloadService.this));
                         }
                     }
@@ -426,13 +427,13 @@ public class BookDownloadService extends Service {
         this.h();
         this.a(3);
         this.a();
-        com.clilystudio.netbook.event.i.a().post(new DownloadProgressEvent());
+        BusProvider.getInstance().post(new DownloadProgressEvent());
     }
 
     private void e() {
         this.i.putExtra("SerDlStopFlag", -1);
         this.h();
-        com.clilystudio.netbook.event.i.a().post(new DownloadStatusEvent(this.a, 4));
+        BusProvider.getInstance().post(new DownloadStatusEvent(this.a, 4));
         this.f();
         this.a();
     }
@@ -460,7 +461,7 @@ public class BookDownloadService extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
-        com.clilystudio.netbook.event.i.a().register(this);
+        BusProvider.getInstance().register(this);
         this.i = new Intent("com.clilystudio.netbook.dlReceiver");
         IntentFilter intentFilter = new IntentFilter();
         intentFilter.addAction("android.net.wifi.supplicant.STATE_CHANGE");
@@ -478,7 +479,7 @@ public class BookDownloadService extends Service {
     @Override
     public void onDestroy() {
         this.j = true;
-        com.clilystudio.netbook.event.i.a().unregister(this);
+        BusProvider.getInstance().unregister(this);
         super.onDestroy();
     }
 
@@ -522,7 +523,7 @@ public class BookDownloadService extends Service {
                 BookDownloadService.c(this.a);
                 BookDownloadService.a(this.a, false);
                 BookDownloadService.a(this.a, 2);
-                com.clilystudio.netbook.event.i.a().post(new DownloadStatusEvent(BookDownloadService.d(this.a), 2));
+                BusProvider.getInstance().post(new DownloadStatusEvent(BookDownloadService.d(this.a), 2));
                 BookDownloadService.e(this.a);
                 BookDownloadService.b(this.a, false);
             }

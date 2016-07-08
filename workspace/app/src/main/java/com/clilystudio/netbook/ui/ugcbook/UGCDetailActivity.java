@@ -15,6 +15,7 @@ import android.widget.TextView;
 import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.am;
+import com.clilystudio.netbook.event.BusProvider;
 import com.clilystudio.netbook.event.UgcDraftEvent;
 import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.model.Author;
@@ -268,7 +269,7 @@ public class UGCDetailActivity extends BaseActivity implements View.OnClickListe
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         this.setContentView(R.layout.activity_ugcbook_detail);
-        com.clilystudio.netbook.event.i.a().register(this);
+        BusProvider.getInstance().register(this);
         if (com.clilystudio.netbook.hpay100.a.a.a(this.getIntent())) {
             List<String> list = this.getIntent().getData().getPathSegments();
             this.o = list.get(-1 + list.size());
@@ -397,7 +398,7 @@ public class UGCDetailActivity extends BaseActivity implements View.OnClickListe
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        com.clilystudio.netbook.event.i.a().unregister(this);
+        BusProvider.getInstance().unregister(this);
     }
 
     @Subscribe

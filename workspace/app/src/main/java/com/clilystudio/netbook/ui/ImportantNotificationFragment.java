@@ -9,7 +9,7 @@ import android.widget.ListView;
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.adapter.NotificationAdapter;
 import com.clilystudio.netbook.am;
-import com.clilystudio.netbook.event.i;
+import com.clilystudio.netbook.event.BusProvider;
 import com.clilystudio.netbook.event.NotifEvent;
 import com.clilystudio.netbook.util.J;
 import com.squareup.otto.Subscribe;
@@ -65,13 +65,13 @@ public class ImportantNotificationFragment extends NotifFragment {
     public void onPause() {
         super.onPause();
         J.a(this.getActivity()).c();
-        i.a().unregister(this);
+        BusProvider.getInstance().unregister(this);
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        i.a().register(this);
+        BusProvider.getInstance().register(this);
         boolean bl = J.a(this.getActivity()).b() > 0;
         this.a(bl);
     }

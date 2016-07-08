@@ -15,6 +15,7 @@ import com.clilystudio.netbook.am;
 import com.clilystudio.netbook.db.BookDlRecord;
 import com.clilystudio.netbook.db.BookFile;
 import com.clilystudio.netbook.db.BookReadRecord;
+import com.clilystudio.netbook.event.BusProvider;
 import com.clilystudio.netbook.event.DownloadProgressEvent;
 import com.clilystudio.netbook.event.DownloadStatusEvent;
 import com.clilystudio.netbook.model.BookFeed;
@@ -304,7 +305,7 @@ public class HomeShelfAdapter extends u<BookShelf> {
                 var19_6.coverLoadingLayer.setCoverListener(new CoverLoadingLayer.y() {
                     @Override
                     public void a() {
-                        com.clilystudio.netbook.event.i.a().post(new DownloadStatusEvent(var24_14, 3));
+                        BusProvider.getInstance().post(new DownloadStatusEvent(var24_14, 3));
                     }
 
                     @Override
@@ -318,7 +319,7 @@ public class HomeShelfAdapter extends u<BookShelf> {
                         if (bookDlRecord != null) {
                             bookDlRecord.setStatus(3);
                             bookDlRecord.save();
-                            com.clilystudio.netbook.event.i.a().post(new DownloadProgressEvent());
+                            BusProvider.getInstance().post(new DownloadProgressEvent());
                         }
                     }
                 });

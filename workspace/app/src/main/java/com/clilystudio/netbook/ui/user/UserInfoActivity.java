@@ -13,7 +13,7 @@ import com.clilystudio.netbook.am;
 import com.clilystudio.netbook.d;
 import com.clilystudio.netbook.event.AccountUpdatedEvent;
 import com.clilystudio.netbook.event.UserInfoChangedEvent;
-import com.clilystudio.netbook.event.i;
+import com.clilystudio.netbook.event.BusProvider;
 import com.clilystudio.netbook.event.LogoutEvent;
 import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.model.User;
@@ -87,7 +87,7 @@ public class UserInfoActivity extends BaseActivity {
             user.setAvatar(userInfo.getAvatar());
             user.setLv(userInfo.getLv());
             MyApplication.a().a(account);
-            i.a().post(new AccountUpdatedEvent());
+            BusProvider.getInstance().post(new AccountUpdatedEvent());
         }
     }
 
@@ -207,14 +207,14 @@ public class UserInfoActivity extends BaseActivity {
             }
         });
         this.b();
-        i.a().register(this);
+        BusProvider.getInstance().register(this);
         MiStatInterface.recordCountEvent("PERSONAL_PAGE_SHOW", null);
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        i.a().unregister(this);
+        BusProvider.getInstance().unregister(this);
     }
 
     @Subscribe

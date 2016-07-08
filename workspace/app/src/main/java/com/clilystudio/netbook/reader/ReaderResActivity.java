@@ -13,7 +13,7 @@ import android.view.ViewGroup;
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.d;
 import com.clilystudio.netbook.db.BookTopicEnterRecord;
-import com.clilystudio.netbook.event.i;
+import com.clilystudio.netbook.event.BusProvider;
 import com.clilystudio.netbook.event.ModeChangedEvent;
 import com.clilystudio.netbook.model.TopicCount;
 import com.squareup.otto.Subscribe;
@@ -66,7 +66,7 @@ public class ReaderResActivity extends ReaderModeActivity {
         assert actionBar != null;
         actionBar.setCustomView(view);
         actionBar.setDisplayShowCustomEnabled(true);
-        i.a().register(this);
+        BusProvider.getInstance().register(this);
         this.f(this.c);
         FragmentTransaction fragmentTransaction = this.getSupportFragmentManager().beginTransaction();
         Fragment var4_6;
@@ -109,7 +109,7 @@ public class ReaderResActivity extends ReaderModeActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        i.a().unregister(this);
+        BusProvider.getInstance().unregister(this);
     }
 
     @Subscribe

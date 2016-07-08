@@ -15,7 +15,7 @@ import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.am;
 import com.clilystudio.netbook.event.BookReadEvent;
-import com.clilystudio.netbook.event.i;
+import com.clilystudio.netbook.event.BusProvider;
 import com.clilystudio.netbook.event.LogoutEvent;
 import com.clilystudio.netbook.util.e;
 import com.xiaomi.mipush.sdk.MiPushClient;
@@ -53,7 +53,7 @@ public class SettingsActivity extends BaseActivity implements View.OnClickListen
             settingsActivity.a = n;
             com.clilystudio.netbook.hpay100.a.a.b(settingsActivity, "key_shelf_sort", settingsActivity.a);
             ((TextView) settingsActivity.findViewById(R.id.settings_shelf_sort_value)).setText(string);
-            i.a().post(new BookReadEvent());
+            BusProvider.getInstance().post(new BookReadEvent());
         }
     }
 
@@ -78,7 +78,7 @@ public class SettingsActivity extends BaseActivity implements View.OnClickListen
         com.clilystudio.netbook.hpay100.a.a.e(settingsActivity, "pref_new_imp_notif_time", "0");
         com.clilystudio.netbook.hpay100.a.a.b(settingsActivity, "remove_ad_duration", 0);
         settingsActivity.finish();
-        i.a().post(new LogoutEvent());
+        BusProvider.getInstance().post(new LogoutEvent());
     }
 
     @Override

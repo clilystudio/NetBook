@@ -9,7 +9,7 @@ import com.clilystudio.netbook.a_pack.c;
 import com.clilystudio.netbook.am;
 import com.clilystudio.netbook.db.BookReadRecord;
 import com.clilystudio.netbook.db.SourceRecord;
-import com.clilystudio.netbook.event.i;
+import com.clilystudio.netbook.event.BusProvider;
 import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.model.BookInfo;
 import com.clilystudio.netbook.model.TocSource;
@@ -34,7 +34,7 @@ public final class m {
 
     public m(Activity activity) {
         this.a = activity;
-        i.a().register(this);
+        BusProvider.getInstance().register(this);
     }
 
     static /* synthetic */ Activity a(m m2) {

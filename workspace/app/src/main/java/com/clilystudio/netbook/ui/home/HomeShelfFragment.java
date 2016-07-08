@@ -32,6 +32,7 @@ import com.clilystudio.netbook.db.BookReadRecord;
 import com.clilystudio.netbook.event.BookAddedEvent;
 import com.clilystudio.netbook.event.BookReadEvent;
 import com.clilystudio.netbook.event.BookShelfRefreshEvent;
+import com.clilystudio.netbook.event.BusProvider;
 import com.clilystudio.netbook.event.DownloadProgressEvent;
 import com.clilystudio.netbook.event.FeedAddedEvent;
 import com.clilystudio.netbook.event.FeedRemovedEvent;
@@ -120,7 +121,7 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
                         } else {
                             com.clilystudio.netbook.util.e.a(HomeShelfFragment.this.getActivity(), "书籍不存在");
                             TxtFileObject.delete(bookFile);
-                            com.clilystudio.netbook.event.i.a().post(new ShelfUpdatedEvent());
+                            BusProvider.getInstance().post(new ShelfUpdatedEvent());
                         }
                         break;
                     case 3:
@@ -264,7 +265,7 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
             }
         }
         homeShelfFragment.k();
-        com.clilystudio.netbook.event.i.a().post(new BookShelfRefreshEvent());
+        BusProvider.getInstance().post(new BookShelfRefreshEvent());
     }
 
     static /* synthetic */ void a(final HomeShelfFragment homeShelfFragment, CharSequence[] arrcharSequence, final BookShelf bookShelf) {
@@ -599,7 +600,7 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
     private void a(String string) {
         this.k();
         com.clilystudio.netbook.hpay100.a.a.t(string);
-        com.clilystudio.netbook.event.i.a().post(new BookShelfRefreshEvent());
+        BusProvider.getInstance().post(new BookShelfRefreshEvent());
         com.clilystudio.netbook.hpay100.a.a.v(string);
     }
 
@@ -861,7 +862,7 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
     @Override
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        com.clilystudio.netbook.event.i.a().register(this);
+        BusProvider.getInstance().register(this);
     }
 
     @Override
@@ -912,7 +913,7 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
         this.d.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener<ListView>() {
             @Override
             public void onRefresh(PullToRefreshBase<ListView> refreshView) {
-                com.clilystudio.netbook.event.i.a().post(new BookShelfRefreshEvent());
+                BusProvider.getInstance().post(new BookShelfRefreshEvent());
                 HomeShelfAdapter.a = true;
                 new Handler().postDelayed(new Runnable() {
                     @Override
@@ -944,7 +945,7 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
     @Override
     public void onDestroy() {
         super.onDestroy();
-        com.clilystudio.netbook.event.i.a().unregister(this);
+        BusProvider.getInstance().unregister(this);
     }
 
     @Subscribe

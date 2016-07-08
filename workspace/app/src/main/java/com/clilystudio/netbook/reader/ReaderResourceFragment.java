@@ -17,6 +17,7 @@ import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.a_pack.e;
 import com.clilystudio.netbook.db.BookReadRecord;
 import com.clilystudio.netbook.db.TocReadRecord;
+import com.clilystudio.netbook.event.BusProvider;
 import com.clilystudio.netbook.model.TocSummary;
 import com.clilystudio.netbook.util.W;
 import com.clilystudio.netbook.util.t;
@@ -198,7 +199,7 @@ public class ReaderResourceFragment extends Fragment {
     @Override
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        com.clilystudio.netbook.event.i.a().register(this);
+        BusProvider.getInstance().register(this);
         this.a = this.getArguments().getString("BOOK_ID");
         this.b = this.getArguments().getString("BOOK_TITLE");
     }
@@ -249,7 +250,7 @@ public class ReaderResourceFragment extends Fragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        com.clilystudio.netbook.event.i.a().unregister(this);
+        BusProvider.getInstance().unregister(this);
     }
 
     /*

@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.R;
-import com.clilystudio.netbook.event.i;
+import com.clilystudio.netbook.event.BusProvider;
 import com.clilystudio.netbook.event.ModeChangedEvent;
 
 
@@ -69,7 +69,7 @@ public class ReadModeItem extends FrameLayout {
     }
 
     private static void a() {
-        i.a().post(new ModeChangedEvent(1));
+        BusProvider.getInstance().post(new ModeChangedEvent(1));
     }
 
     static /* synthetic */ void a(ReadModeItem readModeItem, int n2) {

@@ -8,7 +8,7 @@ import android.widget.ListView;
 
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.adapter.BookRankAdapter;
-import com.clilystudio.netbook.event.i;
+import com.clilystudio.netbook.event.BusProvider;
 import com.clilystudio.netbook.event.BookRankClickEvent;
 import com.clilystudio.netbook.model.BookRankRoot;
 import com.clilystudio.netbook.model.BookRankSummary;
@@ -115,12 +115,12 @@ public class BookRankListActivity extends BaseActivity {
     @Override
     public void onPause() {
         super.onPause();
-        i.a().unregister(this);
+        BusProvider.getInstance().unregister(this);
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        i.a().register(this);
+        BusProvider.getInstance().register(this);
     }
 }

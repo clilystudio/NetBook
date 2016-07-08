@@ -8,6 +8,7 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.clilystudio.netbook.R;
+import com.clilystudio.netbook.event.BusProvider;
 import com.clilystudio.netbook.event.FeedSettingChangedEvent;
 import com.clilystudio.netbook.ui.BaseActivity;
 
@@ -51,7 +52,7 @@ public class FeedSettingActivity extends BaseActivity {
         Object[] arrobject = new Object[]{feedSettingActivity.b};
         textView.setText(String.format(string, arrobject));
         com.clilystudio.netbook.hpay100.a.a.b(feedSettingActivity, "feed_chapter_count", feedSettingActivity.b);
-        com.clilystudio.netbook.event.i.a().post(new FeedSettingChangedEvent());
+        BusProvider.getInstance().post(new FeedSettingChangedEvent());
     }
 
     /*

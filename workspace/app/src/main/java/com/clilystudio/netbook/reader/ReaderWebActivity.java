@@ -21,7 +21,7 @@ import com.clilystudio.netbook.db.BookReadRecord;
 import com.clilystudio.netbook.db.BookTopicEnterRecord;
 import com.clilystudio.netbook.db.SourceRecord;
 import com.clilystudio.netbook.db.SourceWebReadRecord;
-import com.clilystudio.netbook.event.i;
+import com.clilystudio.netbook.event.BusProvider;
 import com.clilystudio.netbook.event.ModeChangedEvent;
 import com.clilystudio.netbook.model.TopicCount;
 import com.clilystudio.netbook.model.mixtoc.EsTocItem;
@@ -178,7 +178,7 @@ public class ReaderWebActivity extends BaseReadActivity {
     public void onCreate(Bundle var1_1) {
         super.onCreate(var1_1);
         this.setContentView(R.layout.activity_reader_web);
-        i.a().register(this);
+        BusProvider.getInstance().register(this);
         this.c = this.getIntent().getStringExtra("BOOK_ID");
         this.d = this.getIntent().getStringExtra("BOOK_TITLE");
         this.e = this.getIntent().getStringExtra("SOURCE_ID");
@@ -374,7 +374,7 @@ public class ReaderWebActivity extends BaseReadActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        i.a().unregister(this);
+        BusProvider.getInstance().unregister(this);
     }
 
     @Subscribe

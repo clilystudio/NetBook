@@ -23,6 +23,7 @@ import com.clilystudio.netbook.d;
 import com.clilystudio.netbook.db.BookReadRecord;
 import com.clilystudio.netbook.db.SourceRecord;
 import com.clilystudio.netbook.event.BookAddedEvent;
+import com.clilystudio.netbook.event.BusProvider;
 import com.clilystudio.netbook.event.DownloadStatusEvent;
 import com.clilystudio.netbook.event.BookRemovedEvent;
 import com.clilystudio.netbook.model.BookInfo;
@@ -541,7 +542,7 @@ public class BookInfoActivity extends BaseActivity implements View.OnClickListen
         this.h = this.getIntent().getStringExtra("book_id");
         boolean bl = BookReadRecord.getOnShelf(this.h) != null;
         this.i = bl;
-        com.clilystudio.netbook.event.i.a().register(this);
+        BusProvider.getInstance().register(this);
         this.j();
         MiStatInterface.recordCountEvent("book_info_open", null);
         this.l = this.getIntent().getIntExtra("open_type", 0);
@@ -550,7 +551,7 @@ public class BookInfoActivity extends BaseActivity implements View.OnClickListen
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        com.clilystudio.netbook.event.i.a().unregister(this);
+        BusProvider.getInstance().unregister(this);
     }
 
     @Subscribe

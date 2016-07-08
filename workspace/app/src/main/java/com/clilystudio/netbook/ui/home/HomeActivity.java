@@ -30,6 +30,7 @@ import com.clilystudio.netbook.db.AccountInfo;
 import com.clilystudio.netbook.db.BookReadRecord;
 import com.clilystudio.netbook.event.AccountUpdatedEvent;
 import com.clilystudio.netbook.event.BookShelfRefreshEvent;
+import com.clilystudio.netbook.event.BusProvider;
 import com.clilystudio.netbook.event.LoginEvent;
 import com.clilystudio.netbook.event.NotifEvent;
 import com.clilystudio.netbook.model.Account;
@@ -439,7 +440,7 @@ public class HomeActivity extends HomeParentActivity implements ViewPager.OnPage
                     accountInfo.setPrevUnimpNotif(J.a(this).b());
                     accountInfo.save();
                     MiStatInterface.recordCountEvent("view_notification", null);
-                    com.clilystudio.netbook.event.i.a().post(new NotifEvent());
+                    BusProvider.getInstance().post(new NotifEvent());
                     this.startActivity(new Intent(this, MyMessageActivity.class));
                     return;
                 }
@@ -516,7 +517,7 @@ public class HomeActivity extends HomeParentActivity implements ViewPager.OnPage
         if (!this.c) {
             r.setVisibility(View.GONE);
         }
-        com.clilystudio.netbook.event.i.a().register(this);
+        BusProvider.getInstance().register(this);
         this.f = (TabHost) this.findViewById(R.id.host);
         TabWidgetV2 tabWidgetV2 = (TabWidgetV2) this.findViewById(android.R.id.content);
         this.g = (ViewPager) this.findViewById(R.id.pager);
@@ -648,7 +649,7 @@ public class HomeActivity extends HomeParentActivity implements ViewPager.OnPage
     protected void onDestroy() {
         super.onDestroy();
         ShareSDK.stopSDK(this);
-        com.clilystudio.netbook.event.i.a().unregister(this);
+        BusProvider.getInstance().unregister(this);
         this.p = null;
         if (this.t != null) {
             this.t.clearHistory();

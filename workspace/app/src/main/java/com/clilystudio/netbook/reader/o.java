@@ -14,6 +14,7 @@ import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.a_pack.c;
 import com.clilystudio.netbook.am;
+import com.clilystudio.netbook.event.BusProvider;
 import com.clilystudio.netbook.event.LoginEvent;
 import com.clilystudio.netbook.event.ThemeChangedEvent;
 import com.clilystudio.netbook.hpay100.a.a;
@@ -73,7 +74,7 @@ public final class o {
         this.l();
         this.m();
         this.k();
-        com.clilystudio.netbook.event.i.a().register(this);
+        BusProvider.getInstance().register(this);
     }
 
     static /* synthetic */ Activity a(o o2) {

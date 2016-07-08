@@ -21,7 +21,7 @@ import com.clilystudio.netbook.am;
 import com.clilystudio.netbook.event.AddShelfBooksEvent;
 import com.clilystudio.netbook.event.UgcDraftEvent;
 import com.clilystudio.netbook.event.UpdateUgcListEvent;
-import com.clilystudio.netbook.event.i;
+import com.clilystudio.netbook.event.BusProvider;
 import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.model.Author;
 import com.clilystudio.netbook.model.BookSummary;
@@ -209,7 +209,7 @@ public class UGCGuideEditBooksActivity extends BaseActivity implements View.OnCl
         String string2;
         super.onCreate(bundle);
         this.setContentView(R.layout.ugc_add_edit_books);
-        i.a().register(this);
+        BusProvider.getInstance().register(this);
         Bundle bundle2 = this.getIntent().getExtras();
         if (bundle2 != null && bundle2.containsKey("name") && bundle2.containsKey("desc")) {
             String string3 = bundle2.getString("name");
@@ -251,8 +251,8 @@ public class UGCGuideEditBooksActivity extends BaseActivity implements View.OnCl
                             }
                             com.clilystudio.netbook.util.e.a(UGCGuideEditBooksActivity.this, "已保存到草稿箱");
                             UGCNewCollection uGCNewCollection = UGCGuideEditBooksActivity.e();
-                            i.a().post(new UgcDraftEvent());
-                            i.a().post(new UpdateUgcListEvent(UGCGuideEditBooksActivity.this.f, uGCNewCollection.getTitle(), uGCNewCollection.getDesc(), uGCNewCollection.getBooks().size(), uGCNewCollection.getBooks().get(0).getCover()));
+                            BusProvider.getInstance().post(new UgcDraftEvent());
+                            BusProvider.getInstance().post(new UpdateUgcListEvent(UGCGuideEditBooksActivity.this.f, uGCNewCollection.getTitle(), uGCNewCollection.getDesc(), uGCNewCollection.getBooks().size(), uGCNewCollection.getBooks().get(0).getCover()));
                             UGCGuideEditBooksActivity.this.finish();
                         }
                     }.b();
@@ -358,7 +358,7 @@ public class UGCGuideEditBooksActivity extends BaseActivity implements View.OnCl
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        i.a().unregister(this);
+        BusProvider.getInstance().unregister(this);
     }
 
     @Override
@@ -404,7 +404,7 @@ public class UGCGuideEditBooksActivity extends BaseActivity implements View.OnCl
                         intent2.putExtra("modify_update", uGCNewCollection);
                         intent2.putExtra("my_author", UGCGuideEditBooksActivity.j(UGCGuideEditBooksActivity.this));
                         intent2.setFlags(67108864);
-                        i.a().post(new UpdateUgcListEvent(UGCGuideEditBooksActivity.this.f, uGCNewCollection.getTitle(), uGCNewCollection.getDesc(), uGCNewCollection.getBooks().size(), uGCNewCollection.getBooks().get(0).getCover()));
+                        BusProvider.getInstance().post(new UpdateUgcListEvent(UGCGuideEditBooksActivity.this.f, uGCNewCollection.getTitle(), uGCNewCollection.getDesc(), uGCNewCollection.getBooks().size(), uGCNewCollection.getBooks().get(0).getCover()));
                         intent = intent2;
                     } else {
                         com.clilystudio.netbook.util.e.a(UGCGuideEditBooksActivity.this, "发布成功");

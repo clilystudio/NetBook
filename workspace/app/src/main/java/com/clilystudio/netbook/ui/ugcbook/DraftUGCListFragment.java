@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 
+import com.clilystudio.netbook.event.BusProvider;
 import com.clilystudio.netbook.event.UpdateUgcListEvent;
 import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.model.UGCBookListRoot;
@@ -29,13 +30,13 @@ public class DraftUGCListFragment extends AbsUGCListFragment {
     @Override
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        com.clilystudio.netbook.event.i.a().register(this);
+        BusProvider.getInstance().register(this);
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-        com.clilystudio.netbook.event.i.a().unregister(this);
+        BusProvider.getInstance().unregister(this);
     }
 
     @Override

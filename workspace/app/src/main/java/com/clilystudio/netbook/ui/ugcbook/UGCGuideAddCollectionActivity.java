@@ -12,7 +12,7 @@ import com.clilystudio.netbook.a_pack.c;
 import com.clilystudio.netbook.am;
 import com.clilystudio.netbook.event.UgcDraftEvent;
 import com.clilystudio.netbook.event.UpdateUgcListEvent;
-import com.clilystudio.netbook.event.i;
+import com.clilystudio.netbook.event.BusProvider;
 import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.model.Author;
 import com.clilystudio.netbook.model.ResultStatus;
@@ -136,8 +136,8 @@ public class UGCGuideAddCollectionActivity extends BaseActivity {
                             }
                             com.clilystudio.netbook.util.e.a(UGCGuideAddCollectionActivity.this, "已保存到草稿箱");
                             UGCNewCollection uGCNewCollection = UGCGuideAddCollectionActivity.e();
-                            i.a().post(new UgcDraftEvent());
-                            i.a().post(new UpdateUgcListEvent(UGCGuideAddCollectionActivity.this.c, uGCNewCollection.getTitle(), uGCNewCollection.getDesc(), uGCNewCollection.getBooks().size(), uGCNewCollection.getBooks().get(0).getCover()));
+                            BusProvider.getInstance().post(new UgcDraftEvent());
+                            BusProvider.getInstance().post(new UpdateUgcListEvent(UGCGuideAddCollectionActivity.this.c, uGCNewCollection.getTitle(), uGCNewCollection.getDesc(), uGCNewCollection.getBooks().size(), uGCNewCollection.getBooks().get(0).getCover()));
                             UGCGuideAddCollectionActivity.this.finish();
                         }
                     }.b();
@@ -155,7 +155,7 @@ public class UGCGuideAddCollectionActivity extends BaseActivity {
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         this.setContentView(R.layout.activity_ucg_guide_add_collection);
-        i.a().register(this);
+        BusProvider.getInstance().register(this);
         this.a = (TextView) this.findViewById(R.id.name_field);
         this.b = (TextView) this.findViewById(R.id.desc_field);
         this.c = this.getIntent().getStringExtra("ugc_id");
@@ -184,7 +184,7 @@ public class UGCGuideAddCollectionActivity extends BaseActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        i.a().unregister(this);
+        BusProvider.getInstance().unregister(this);
     }
 
     @Subscribe

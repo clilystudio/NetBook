@@ -13,6 +13,7 @@ import android.view.WindowManager;
 
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.am;
+import com.clilystudio.netbook.event.BusProvider;
 import com.clilystudio.netbook.event.ThemeChangedEvent;
 import com.xiaomi.mistatistic.sdk.MiStatInterfaceImpl;
 
@@ -184,7 +185,7 @@ public final class bZ {
         do {
             if (!iterator.hasNext()) {
                 this.p();
-                com.clilystudio.netbook.event.i.a().post(new ThemeChangedEvent(this.x));
+                BusProvider.getInstance().post(new ThemeChangedEvent(this.x));
                 return;
             }
             iterator.next().a();

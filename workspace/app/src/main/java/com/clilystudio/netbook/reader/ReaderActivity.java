@@ -36,6 +36,7 @@ import com.clilystudio.netbook.db.BookTopicEnterRecord;
 import com.clilystudio.netbook.db.MixTocRecord;
 import com.clilystudio.netbook.db.TocReadRecord;
 import com.clilystudio.netbook.event.BookReadEvent;
+import com.clilystudio.netbook.event.BusProvider;
 import com.clilystudio.netbook.event.DownloadStatusEvent;
 import com.clilystudio.netbook.event.ThemeChangedEvent;
 import com.clilystudio.netbook.event.ConvertChangedEvent;
@@ -218,7 +219,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     dialog.dismiss();
-                    com.clilystudio.netbook.event.i.a().post(new DownloadStatusEvent(ReaderActivity.M(readerActivity), 3));
+                    BusProvider.getInstance().post(new DownloadStatusEvent(ReaderActivity.M(readerActivity), 3));
                 }
             }).show();
         } else {
@@ -1656,7 +1657,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         this.G = com.clilystudio.netbook.hpay100.a.a.l(this, "reader_orientation");
         this.r();
         this.setContentView(R.layout.activity_reader);
-        com.clilystudio.netbook.event.i.a().register(this);
+        BusProvider.getInstance().register(this);
         Intent intent = this.getIntent();
         this.c = this.a("BOOK_ID");
         this.d = this.a("BOOK_TITLE");
@@ -1974,7 +1975,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
             var1_1.printStackTrace();
         }
         this.p();
-        com.clilystudio.netbook.event.i.a().unregister(this);
+        BusProvider.getInstance().unregister(this);
         o[] arro = this.b;
         int n2 = arro.length;
         int n3 = 0;
@@ -1984,7 +1985,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
                 return;
             }
             o o2 = arro[n3];
-            com.clilystudio.netbook.event.i.a().unregister(o2);
+            BusProvider.getInstance().unregister(o2);
             ++n3;
         } while (true);
     }
@@ -2058,7 +2059,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         if (n2 != 0 && (bookReadRecord = BookReadRecord.get(this.c)) != null) {
             bookReadRecord.readTime = new Date();
             bookReadRecord.save();
-            com.clilystudio.netbook.event.i.a().post(new BookReadEvent());
+            BusProvider.getInstance().post(new BookReadEvent());
         }
         try {
             LocalBroadcastManager.getInstance(this).unregisterReceiver(this.ae);

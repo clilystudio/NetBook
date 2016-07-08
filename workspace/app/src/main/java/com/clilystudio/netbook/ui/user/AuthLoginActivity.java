@@ -18,7 +18,7 @@ import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.a_pack.c;
 import com.clilystudio.netbook.event.LoginEvent;
-import com.clilystudio.netbook.event.i;
+import com.clilystudio.netbook.event.BusProvider;
 import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.ui.BaseActivity;
 import com.squareup.otto.Subscribe;
@@ -140,7 +140,7 @@ public class AuthLoginActivity extends BaseActivity implements Handler.Callback 
                                     MyApplication.a().a(account);
                                     LoginEvent t2 = new LoginEvent(account);
                                     t2.setSource((AuthLoginActivity.Source) AuthLoginActivity.this.getIntent().getSerializableExtra("KEY_SOURCE"));
-                                    i.a().post(t2);
+                                    BusProvider.getInstance().post(t2);
                                     com.clilystudio.netbook.util.e.a(AuthLoginActivity.this, "登录成功");
                                 } else {
                                     String string = account.getCode();
@@ -215,13 +215,13 @@ public class AuthLoginActivity extends BaseActivity implements Handler.Callback 
                 AuthLoginActivity.a(AuthLoginActivity.this);
             }
         });
-        i.a().register(this);
+        BusProvider.getInstance().register(this);
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        i.a().unregister(this);
+        BusProvider.getInstance().unregister(this);
     }
 
     @Subscribe

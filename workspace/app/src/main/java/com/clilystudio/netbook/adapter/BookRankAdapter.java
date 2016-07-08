@@ -7,6 +7,7 @@ import android.widget.TextView;
 
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.event.BookRankClickEvent;
+import com.clilystudio.netbook.event.BusProvider;
 import com.clilystudio.netbook.model.BookRankRoot;
 import com.clilystudio.netbook.model.BookRankSummary;
 import com.clilystudio.netbook.ui.SmartImageView;
@@ -131,7 +132,7 @@ public final class BookRankAdapter extends u<BookRankSummary> {
                     localView.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            com.clilystudio.netbook.event.i.a().post(new BookRankClickEvent(localBookRankSummary, BookRankAdapter.a(BookRankAdapter.this, paramInt)));
+                            BusProvider.getInstance().post(new BookRankClickEvent(localBookRankSummary, BookRankAdapter.a(BookRankAdapter.this, paramInt)));
                         }
                     });
                     break;

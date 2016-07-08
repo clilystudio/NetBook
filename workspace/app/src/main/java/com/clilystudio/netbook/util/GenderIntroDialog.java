@@ -22,7 +22,7 @@ public class GenderIntroDialog extends DialogFragment {
             @Override
             public void onClick(View v) {
                 dismiss();
-                i.a().post(new GenderIntroEvent(0));
+                BusProvider.getInstance().post(new GenderIntroEvent(0));
                 MiStatInterface.recordCountEvent("book_recommend_gender_click", "cancel");
             }
         });
@@ -30,7 +30,7 @@ public class GenderIntroDialog extends DialogFragment {
             @Override
             public void onClick(View v) {
                 dismiss();
-                i.a().post(new GenderIntroEvent(1));
+                BusProvider.getInstance().post(new GenderIntroEvent(1));
                 MiStatInterface.recordCountEvent("book_recommend_gender_click", "male");
             }
         });
@@ -38,7 +38,7 @@ public class GenderIntroDialog extends DialogFragment {
             @Override
             public void onClick(View v) {
                 dismiss();
-                i.a().post(new GenderIntroEvent(2));
+                BusProvider.getInstance().post(new GenderIntroEvent(2));
                 MiStatInterface.recordCountEvent("book_recommend_gender_click", "female");
             }
         });

@@ -18,7 +18,7 @@ import com.clilystudio.netbook.a_pack.c;
 import com.clilystudio.netbook.am;
 import com.clilystudio.netbook.d;
 import com.clilystudio.netbook.event.UserInfoChangedEvent;
-import com.clilystudio.netbook.event.i;
+import com.clilystudio.netbook.event.BusProvider;
 import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.model.ChangeGenderRoot;
 import com.clilystudio.netbook.model.ChangeNickNameRoot;
@@ -111,7 +111,7 @@ public class ModifyUserInfoActivity extends BaseActivity implements View.OnClick
                             String string2 = string.equals("male") ? "男" : "女";
                             textView.setText(string2);
                             com.clilystudio.netbook.util.e.a(modifyUserInfoActivity, "修改成功");
-                            i.a().post(new UserInfoChangedEvent());
+                            BusProvider.getInstance().post(new UserInfoChangedEvent());
                         }
                     }
                 };
@@ -162,7 +162,7 @@ public class ModifyUserInfoActivity extends BaseActivity implements View.OnClick
                         public void a(Root root) {
                              if (root != null && root.isOk()) {
                                 com.clilystudio.netbook.util.e.a(ModifyUserInfoActivity.this, "修改成功");
-                                i.a().post(new UserInfoChangedEvent());
+                                BusProvider.getInstance().post(new UserInfoChangedEvent());
                                  ModifyUserInfoActivity.this.mPortrait.setImageURI(output);
                                 return;
                             }
@@ -254,7 +254,7 @@ public class ModifyUserInfoActivity extends BaseActivity implements View.OnClick
                                     if (changeNickNameRoot.isOk()) {
                                         ModifyUserInfoActivity.this.mNameView.setText(this.a);
                                         com.clilystudio.netbook.util.e.a(ModifyUserInfoActivity.this, "修改成功");
-                                        i.a().post(new UserInfoChangedEvent());
+                                        BusProvider.getInstance().post(new UserInfoChangedEvent());
                                         return;
                                     }
                                     com.clilystudio.netbook.util.e.a(ModifyUserInfoActivity.this, changeNickNameRoot.getErrorMessage());

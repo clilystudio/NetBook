@@ -5,7 +5,7 @@ import android.content.Context;
 import com.clilystudio.netbook.am;
 
 import com.clilystudio.netbook.db.AccountInfo;
-import com.clilystudio.netbook.event.i;
+import com.clilystudio.netbook.event.BusProvider;
 import com.clilystudio.netbook.event.NotifEvent;
 import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.model.NotifCountRoot;
@@ -82,7 +82,7 @@ public class J {
                         if (am.i(J.a(J.this)).equals("0")) {
                             am.b(J.a(J.this), date2.getTime());
                         }
-                        i.a().post(new NotifEvent());
+                        BusProvider.getInstance().post(new NotifEvent());
                      }
                 }
             };
@@ -115,7 +115,7 @@ public class J {
                     super.onPostExecute(root);
                     if (root != null && root.isOk()) {
                         J.this.a(0);
-                        i.a().post(new NotifEvent());
+                        BusProvider.getInstance().post(new NotifEvent());
                         am.j(J.a(J.this));
                     }
                 }
@@ -148,7 +148,7 @@ public class J {
                             accountInfo.setPrevUnimpNotif(0);
                             accountInfo.save();
                         }
-                        i.a().post(new NotifEvent());
+                        BusProvider.getInstance().post(new NotifEvent());
                     }
                 }
             };
