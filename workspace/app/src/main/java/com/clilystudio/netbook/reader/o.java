@@ -14,6 +14,7 @@ import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.a_pack.c;
 import com.clilystudio.netbook.am;
+import com.clilystudio.netbook.event.ThemeChangedEvent;
 import com.clilystudio.netbook.hpay100.a.a;
 import com.clilystudio.netbook.model.ChapterKeysRoot;
 import com.clilystudio.netbook.model.ChapterLink;
@@ -789,7 +790,7 @@ public final class o {
     }
 
     @Subscribe
-    public final void onThemeChanged(com.clilystudio.netbook.event.C c2) {
+    public final void onThemeChanged(ThemeChangedEvent c2) {
         this.r();
     }
 

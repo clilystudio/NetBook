@@ -35,7 +35,7 @@ import com.clilystudio.netbook.db.BookReadRecord;
 import com.clilystudio.netbook.db.BookTopicEnterRecord;
 import com.clilystudio.netbook.db.MixTocRecord;
 import com.clilystudio.netbook.db.TocReadRecord;
-import com.clilystudio.netbook.event.C;
+import com.clilystudio.netbook.event.ThemeChangedEvent;
 import com.clilystudio.netbook.event.j;
 import com.clilystudio.netbook.event.v;
 import com.clilystudio.netbook.model.ChapterKeysRoot;
@@ -2087,8 +2087,8 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
     }
 
     @Subscribe
-    public void onThemeChanged(C c2) {
-        this.O.a(c2.a());
+    public void onThemeChanged(ThemeChangedEvent c2) {
+        this.O.a(c2.isNightMode());
     }
 
     @Override
