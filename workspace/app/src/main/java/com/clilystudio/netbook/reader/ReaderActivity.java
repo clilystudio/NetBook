@@ -926,9 +926,9 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
     private void F() {
         if (this.o) {
             this.H();
-            return;
+        } else {
+            this.G();
         }
-        this.G();
     }
 
     /*

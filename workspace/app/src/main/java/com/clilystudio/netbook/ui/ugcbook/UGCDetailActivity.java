@@ -15,7 +15,7 @@ import android.widget.TextView;
 import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.am;
-import com.clilystudio.netbook.event.E;
+import com.clilystudio.netbook.event.UgcDraftEvent;
 import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.model.Author;
 import com.clilystudio.netbook.model.BookSummary;
@@ -401,7 +401,7 @@ public class UGCDetailActivity extends BaseActivity implements View.OnClickListe
     }
 
     @Subscribe
-    public void onUgcDraftEvent(E e2) {
+    public void onUgcDraftEvent(UgcDraftEvent e2) {
         this.finish();
     }
 }

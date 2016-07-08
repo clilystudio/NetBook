@@ -62,21 +62,17 @@ public class AutoReaderSetWidget extends LinearLayout implements View.OnClickLis
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            default: {
-                return;
-            }
-            case R.id.btn_auto_reader_dec: {
+             case R.id.btn_auto_reader_dec:
                 this.h.b();
-                return;
-            }
-            case R.id.btn_auto_reader_acc: {
+                break;
+             case R.id.btn_auto_reader_acc:
                 this.h.a();
-                return;
-            }
+                 break;
             case R.id.btn_auto_reader_stop:
+                com.clilystudio.netbook.hpay100.a.a.E(this.getContext());
+                this.h.c();
+                break;
         }
-        com.clilystudio.netbook.hpay100.a.a.E(this.getContext());
-        this.h.c();
     }
 
     @Override

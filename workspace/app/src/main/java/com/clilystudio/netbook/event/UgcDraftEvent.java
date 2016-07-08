@@ -1,4 +1,4 @@
 package com.clilystudio.netbook.event;
 
-public final class E {
+public final class UgcDraftEvent {
 }

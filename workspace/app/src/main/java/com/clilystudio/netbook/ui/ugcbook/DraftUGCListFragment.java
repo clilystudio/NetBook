@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 
-import com.clilystudio.netbook.event.J;
+import com.clilystudio.netbook.event.UpdateUgcListEvent;
 import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.model.UGCBookListRoot;
 import com.squareup.otto.Subscribe;
@@ -52,16 +52,16 @@ public class DraftUGCListFragment extends AbsUGCListFragment {
     }
 
     @Subscribe
-    public void onUpdateUgcList(J j2) {
+    public void onUpdateUgcList(UpdateUgcListEvent j2) {
         if (this.i == null || this.c == null) {
             return;
         }
         for (UGCBookListRoot.UGCBook ugcBook : this.i) {
-            if (!ugcBook.get_id().equals(j2.b())) continue;
-            ugcBook.setCover(j2.a());
-            ugcBook.setTitle(j2.c());
-            ugcBook.setDesc(j2.d());
-            ugcBook.setBookCount(j2.e());
+            if (!ugcBook.get_id().equals(j2.getId())) continue;
+            ugcBook.setCover(j2.getCover());
+            ugcBook.setTitle(j2.getTitle());
+            ugcBook.setDesc(j2.getDesc());
+            ugcBook.setBookCount(j2.getSize());
             ugcBook.setUpdated(new Date());
         }
         Collections.sort(this.i, new Comparator<UGCBookListRoot.UGCBook>() {

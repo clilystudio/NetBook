@@ -30,6 +30,7 @@ import com.clilystudio.netbook.am;
 import com.clilystudio.netbook.db.BookFile;
 import com.clilystudio.netbook.db.BookReadRecord;
 import com.clilystudio.netbook.event.BookShelfRefreshEvent;
+import com.clilystudio.netbook.event.DownloadProgressEvent;
 import com.clilystudio.netbook.event.ShelfUpdatedEvent;
 import com.clilystudio.netbook.event.g;
 import com.clilystudio.netbook.event.h;
@@ -945,7 +946,7 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
     }
 
     @Subscribe
-    public void onDownloadProgress(com.clilystudio.netbook.event.I i2) {
+    public void onDownloadProgress(DownloadProgressEvent i2) {
         if (this.k == 0) {
             this.j.notifyDataSetChanged();
         }

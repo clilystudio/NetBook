@@ -15,7 +15,7 @@ import com.clilystudio.netbook.am;
 import com.clilystudio.netbook.db.BookDlRecord;
 import com.clilystudio.netbook.db.BookFile;
 import com.clilystudio.netbook.db.BookReadRecord;
-import com.clilystudio.netbook.event.I;
+import com.clilystudio.netbook.event.DownloadProgressEvent;
 import com.clilystudio.netbook.event.d;
 import com.clilystudio.netbook.model.BookFeed;
 import com.clilystudio.netbook.model.BookShelf;
@@ -318,7 +318,7 @@ public class HomeShelfAdapter extends u<BookShelf> {
                         if (bookDlRecord != null) {
                             bookDlRecord.setStatus(3);
                             bookDlRecord.save();
-                            com.clilystudio.netbook.event.i.a().post(new I());
+                            com.clilystudio.netbook.event.i.a().post(new DownloadProgressEvent());
                         }
                     }
                 });

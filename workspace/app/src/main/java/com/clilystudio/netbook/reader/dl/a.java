@@ -8,7 +8,7 @@ import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.db.BookDlRecord;
 import com.clilystudio.netbook.db.BookReadRecord;
-import com.clilystudio.netbook.event.I;
+import com.clilystudio.netbook.event.DownloadProgressEvent;
 import com.clilystudio.netbook.event.i;
 import com.clilystudio.netbook.util.e;
 
@@ -77,7 +77,7 @@ public class a {
         } else {
             BookDlRecord.reset(bookDlRecord, n4, n2);
         }
-        i.a().post(new I());
+        i.a().post(new DownloadProgressEvent());
         Intent intent = new Intent(this.a, BookDownloadService.class);
         this.a.startService(intent);
     }

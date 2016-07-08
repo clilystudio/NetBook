@@ -1,11 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.clilystudio.netbook.reader.AutoReaderSetWidget android:orientation="vertical" android:background="@color/reader_setting_bg" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/text_size_14" android:textColor="@android:color/background_dark" android:layout_gravity="center_horizontal" android:id="@id/txt_auto_turn_speed" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp_16" />
-    <RelativeLayout android:layout_gravity="center_horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp_18">
-        <View android:id="@id/view_target" android:layout_width="0.0dip" android:layout_height="0.0dip" android:layout_centerHorizontal="true" android:layout_centerVertical="true" />
-        <Button android:textSize="@dimen/text_size_12" android:textColor="@android:color/background_dark" android:id="@id/btn_auto_reader_dec" android:background="@drawable/auto_reader_setting_shape" android:layout_width="100.0dip" android:layout_height="32.0dip" android:layout_marginRight="@dimen/dp_10" android:text="减速 -" android:layout_toLeftOf="@id/view_target" android:layout_centerVertical="true" />
-        <Button android:textSize="@dimen/text_size_12" android:textColor="@android:color/background_dark" android:id="@id/btn_auto_reader_acc" android:background="@drawable/auto_reader_setting_shape" android:layout_width="100.0dip" android:layout_height="32.0dip" android:layout_marginLeft="@dimen/dp_10" android:text="加速 +" android:layout_toRightOf="@id/view_target" android:layout_centerVertical="true" />
+<com.clilystudio.netbook.reader.AutoReaderSetWidget xmlns:android="http://schemas.android.com/apk/res/android"
+                                                    android:layout_width="fill_parent"
+                                                    android:layout_height="wrap_content"
+                                                    android:background="@color/reader_setting_bg"
+                                                    android:orientation="vertical"
+                                                    android:visibility="gone">
+
+    <TextView
+        android:id="@id/txt_auto_turn_speed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/dp_16"
+        android:textColor="@android:color/background_dark"
+        android:textSize="@dimen/text_size_14"/>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/dp_18">
+
+        <View
+            android:id="@id/view_target"
+            android:layout_width="0.0dip"
+            android:layout_height="0.0dip"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"/>
+
+        <Button
+            android:id="@id/btn_auto_reader_dec"
+            android:layout_width="100.0dip"
+            android:layout_height="32.0dip"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/dp_10"
+            android:layout_toLeftOf="@id/view_target"
+            android:background="@drawable/auto_reader_setting_shape"
+            android:text="减速 -"
+            android:textColor="@android:color/background_dark"
+            android:textSize="@dimen/text_size_12"/>
+
+        <Button
+            android:id="@id/btn_auto_reader_acc"
+            android:layout_width="100.0dip"
+            android:layout_height="32.0dip"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_toRightOf="@id/view_target"
+            android:background="@drawable/auto_reader_setting_shape"
+            android:text="加速 +"
+            android:textColor="@android:color/background_dark"
+            android:textSize="@dimen/text_size_12"/>
     </RelativeLayout>
-    <Button android:textSize="@dimen/text_size_12" android:textColor="@android:color/background_dark" android:layout_gravity="center_horizontal" android:id="@id/btn_auto_reader_stop" android:background="@drawable/auto_reader_setting_shape" android:layout_width="223.0dip" android:layout_height="32.0dip" android:layout_marginTop="14.0dip" android:layout_marginBottom="16.0dip" android:text="@string/auto_reader_stop" />
+
+    <Button
+        android:id="@id/btn_auto_reader_stop"
+        android:layout_width="223.0dip"
+        android:layout_height="32.0dip"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="16.0dip"
+        android:layout_marginTop="14.0dip"
+        android:background="@drawable/auto_reader_setting_shape"
+        android:text="@string/auto_reader_stop"
+        android:textColor="@android:color/background_dark"
+        android:textSize="@dimen/text_size_12"/>
 </com.clilystudio.netbook.reader.AutoReaderSetWidget>

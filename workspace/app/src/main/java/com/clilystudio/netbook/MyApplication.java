@@ -10,7 +10,6 @@ import com.activeandroid.ActiveAndroid;
 import com.activeandroid.query.Select;
 import com.clilystudio.netbook.api.ApiService;
 import com.clilystudio.netbook.db.BookReadRecord;
-import com.clilystudio.netbook.event.H;
 import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.model.BookInfo;
 import com.clilystudio.netbook.model.ChapterLink;
@@ -263,7 +262,6 @@ public class MyApplication extends Application {
                     ApiService.a(string);
                 }
                 ApiService.j(OnlineConfigAgent.getInstance().getConfigParams(b,"reader_web_url"), 4);
-                com.clilystudio.netbook.event.i.a().register(new H(com.clilystudio.netbook.hpay100.a.a.x(b)));
             }
         });
         if (com.clilystudio.netbook.hpay100.a.a.l(this, "update_notice_key")) {

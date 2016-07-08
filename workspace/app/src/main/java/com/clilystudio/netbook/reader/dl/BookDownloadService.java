@@ -14,6 +14,7 @@ import com.clilystudio.netbook.am;
 import com.clilystudio.netbook.db.BookDlRecord;
 import com.clilystudio.netbook.db.BookReadRecord;
 import com.clilystudio.netbook.db.SourceRecord;
+import com.clilystudio.netbook.event.DownloadProgressEvent;
 import com.clilystudio.netbook.event.d;
 import com.clilystudio.netbook.model.Chapter;
 import com.clilystudio.netbook.model.ChapterLink;
@@ -54,7 +55,7 @@ public class BookDownloadService extends Service {
             bookDlRecord.setStatus(n);
             bookDlRecord.save();
         }
-        com.clilystudio.netbook.event.i.a().post(new com.clilystudio.netbook.event.I());
+        com.clilystudio.netbook.event.i.a().post(new DownloadProgressEvent());
     }
 
     static /* synthetic */ void a(BookDownloadService bookDownloadService, int n) {
@@ -400,7 +401,7 @@ public class BookDownloadService extends Service {
                     }
                     BookDownloadService.c(BookDownloadService.this);
                     if (BookDownloadService.n(BookDownloadService.this) == 0 || BookDownloadService.g(BookDownloadService.this) == BookDownloadService.h(BookDownloadService.this)) {
-                        com.clilystudio.netbook.event.i.a().post(new com.clilystudio.netbook.event.I());
+                        com.clilystudio.netbook.event.i.a().post(new DownloadProgressEvent());
                         BookDownloadService.c(BookDownloadService.this, BookDownloadService.g(BookDownloadService.this));
                     } else {
                         int nx = 1;
@@ -409,7 +410,7 @@ public class BookDownloadService extends Service {
                         }
                         if (BookDownloadService.g(BookDownloadService.this) - BookDownloadService.n(BookDownloadService.this) < nx) return;
                         {
-                            com.clilystudio.netbook.event.i.a().post(new com.clilystudio.netbook.event.I());
+                            com.clilystudio.netbook.event.i.a().post(new DownloadProgressEvent());
                             BookDownloadService.c(BookDownloadService.this, BookDownloadService.g(BookDownloadService.this));
                         }
                     }
@@ -425,7 +426,7 @@ public class BookDownloadService extends Service {
         this.h();
         this.a(3);
         this.a();
-        com.clilystudio.netbook.event.i.a().post(new com.clilystudio.netbook.event.I());
+        com.clilystudio.netbook.event.i.a().post(new DownloadProgressEvent());
     }
 
     private void e() {

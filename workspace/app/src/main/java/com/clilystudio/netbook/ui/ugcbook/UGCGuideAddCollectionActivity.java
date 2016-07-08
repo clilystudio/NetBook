@@ -10,8 +10,8 @@ import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.a_pack.c;
 import com.clilystudio.netbook.am;
-import com.clilystudio.netbook.event.E;
-import com.clilystudio.netbook.event.J;
+import com.clilystudio.netbook.event.UgcDraftEvent;
+import com.clilystudio.netbook.event.UpdateUgcListEvent;
 import com.clilystudio.netbook.event.i;
 import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.model.Author;
@@ -121,11 +121,11 @@ public class UGCGuideAddCollectionActivity extends BaseActivity {
                         public ResultStatus a(Void... var1) {
                             Account account = am.a(UGCGuideAddCollectionActivity.this);
                             if (account == null) return null;
-                            if (UGCGuideAddCollectionActivity.e(UGCGuideAddCollectionActivity.this) == null)
+                            if (UGCGuideAddCollectionActivity.this.c == null)
                                 return com.clilystudio.netbook.api.b.b().b(UGCGuideAddCollectionActivity.e(), account.getToken());
-                            if (UGCGuideAddCollectionActivity.e(UGCGuideAddCollectionActivity.this).equals(""))
+                            if (UGCGuideAddCollectionActivity.this.c.equals(""))
                                 return com.clilystudio.netbook.api.b.b().b(UGCGuideAddCollectionActivity.e(), account.getToken());
-                            return com.clilystudio.netbook.api.b.b().b(UGCGuideAddCollectionActivity.e(), account.getToken(), UGCGuideAddCollectionActivity.e(UGCGuideAddCollectionActivity.this));
+                            return com.clilystudio.netbook.api.b.b().b(UGCGuideAddCollectionActivity.e(), account.getToken(), UGCGuideAddCollectionActivity.this.c);
                         }
 
                         @Override
@@ -136,8 +136,8 @@ public class UGCGuideAddCollectionActivity extends BaseActivity {
                             }
                             com.clilystudio.netbook.util.e.a(UGCGuideAddCollectionActivity.this, "已保存到草稿箱");
                             UGCNewCollection uGCNewCollection = UGCGuideAddCollectionActivity.e();
-                            i.a().post(new E());
-                            i.a().post(new J(UGCGuideAddCollectionActivity.e(UGCGuideAddCollectionActivity.this), uGCNewCollection.getTitle(), uGCNewCollection.getDesc(), uGCNewCollection.getBooks().size(), uGCNewCollection.getBooks().get(0).getCover()));
+                            i.a().post(new UgcDraftEvent());
+                            i.a().post(new UpdateUgcListEvent(UGCGuideAddCollectionActivity.this.c, uGCNewCollection.getTitle(), uGCNewCollection.getDesc(), uGCNewCollection.getBooks().size(), uGCNewCollection.getBooks().get(0).getCover()));
                             UGCGuideAddCollectionActivity.this.finish();
                         }
                     }.b();
@@ -188,7 +188,7 @@ public class UGCGuideAddCollectionActivity extends BaseActivity {
     }
 
     @Subscribe
-    public void onUgcDraftEvent(com.clilystudio.netbook.event.E e2) {
+    public void onUgcDraftEvent(UgcDraftEvent e2) {
         this.finish();
     }
 }

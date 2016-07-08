@@ -146,7 +146,6 @@ public final class o {
         }
         if (purchaseChapterResult.getCode().equals("BALANCE_NOT_ENOUGH")) {
             com.clilystudio.netbook.util.e.a(o2.b, "余额不足，请充值");
-            com.clilystudio.netbook.event.i.a().post(new com.clilystudio.netbook.event.G());
             o2.e();
             return;
         }

@@ -19,7 +19,8 @@ import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.a_pack.c;
 import com.clilystudio.netbook.am;
 import com.clilystudio.netbook.event.AddShelfBooksEvent;
-import com.clilystudio.netbook.event.E;
+import com.clilystudio.netbook.event.UgcDraftEvent;
+import com.clilystudio.netbook.event.UpdateUgcListEvent;
 import com.clilystudio.netbook.event.i;
 import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.model.Author;
@@ -235,11 +236,11 @@ public class UGCGuideEditBooksActivity extends BaseActivity implements View.OnCl
                         public ResultStatus a(Void... var1) {
                             Account account = am.a(UGCGuideEditBooksActivity.this);
                             if (account == null) return null;
-                            if (UGCGuideEditBooksActivity.f(UGCGuideEditBooksActivity.this) == null)
+                            if (UGCGuideEditBooksActivity.this.f == null)
                                 return com.clilystudio.netbook.api.b.b().b(UGCGuideEditBooksActivity.e(), account.getToken());
-                            if (UGCGuideEditBooksActivity.f(UGCGuideEditBooksActivity.this).equals(""))
+                            if (UGCGuideEditBooksActivity.this.f.equals(""))
                                 return com.clilystudio.netbook.api.b.b().b(UGCGuideEditBooksActivity.e(), account.getToken());
-                            return com.clilystudio.netbook.api.b.b().b(UGCGuideEditBooksActivity.e(), account.getToken(), UGCGuideEditBooksActivity.f(UGCGuideEditBooksActivity.this));
+                            return com.clilystudio.netbook.api.b.b().b(UGCGuideEditBooksActivity.e(), account.getToken(), UGCGuideEditBooksActivity.this.f);
                         }
 
                         @Override
@@ -250,8 +251,8 @@ public class UGCGuideEditBooksActivity extends BaseActivity implements View.OnCl
                             }
                             com.clilystudio.netbook.util.e.a(UGCGuideEditBooksActivity.this, "已保存到草稿箱");
                             UGCNewCollection uGCNewCollection = UGCGuideEditBooksActivity.e();
-                            i.a().post(new E());
-                            i.a().post(new com.clilystudio.netbook.event.J(UGCGuideEditBooksActivity.f(UGCGuideEditBooksActivity.this), uGCNewCollection.getTitle(), uGCNewCollection.getDesc(), uGCNewCollection.getBooks().size(), uGCNewCollection.getBooks().get(0).getCover()));
+                            i.a().post(new UgcDraftEvent());
+                            i.a().post(new UpdateUgcListEvent(UGCGuideEditBooksActivity.this.f, uGCNewCollection.getTitle(), uGCNewCollection.getDesc(), uGCNewCollection.getBooks().size(), uGCNewCollection.getBooks().get(0).getCover()));
                             UGCGuideEditBooksActivity.this.finish();
                         }
                     }.b();
@@ -374,13 +375,13 @@ public class UGCGuideEditBooksActivity extends BaseActivity implements View.OnCl
                     Account account = am.a(UGCGuideEditBooksActivity.this);
                     if (account == null) return null;
                     if (UGCGuideEditBooksActivity.d(UGCGuideEditBooksActivity.this)) {
-                        return com.clilystudio.netbook.api.b.b().c(UGCGuideEditBooksActivity.e(), account.getToken(), UGCGuideEditBooksActivity.f(UGCGuideEditBooksActivity.this));
+                        return com.clilystudio.netbook.api.b.b().c(UGCGuideEditBooksActivity.e(), account.getToken(), UGCGuideEditBooksActivity.this.f);
                     }
-                    if (UGCGuideEditBooksActivity.f(UGCGuideEditBooksActivity.this) == null)
+                    if (UGCGuideEditBooksActivity.this.f == null)
                         return com.clilystudio.netbook.api.b.b().a(UGCGuideEditBooksActivity.e(), account.getToken());
-                    if (UGCGuideEditBooksActivity.f(UGCGuideEditBooksActivity.this).equals(""))
+                    if (UGCGuideEditBooksActivity.this.f.equals(""))
                         return com.clilystudio.netbook.api.b.b().a(UGCGuideEditBooksActivity.e(), account.getToken());
-                    return com.clilystudio.netbook.api.b.b().a(UGCGuideEditBooksActivity.e(), account.getToken(), UGCGuideEditBooksActivity.f(UGCGuideEditBooksActivity.this));
+                    return com.clilystudio.netbook.api.b.b().a(UGCGuideEditBooksActivity.e(), account.getToken(), UGCGuideEditBooksActivity.this.f);
                 }
 
                 @Override
@@ -394,16 +395,16 @@ public class UGCGuideEditBooksActivity extends BaseActivity implements View.OnCl
                         com.clilystudio.netbook.util.e.a(UGCGuideEditBooksActivity.this, "发布成功");
                         intent = new Intent(UGCGuideEditBooksActivity.this, UserUGCActivity.class);
                         intent.setFlags(67108864);
-                    } else if (UGCGuideEditBooksActivity.f(UGCGuideEditBooksActivity.this) != null && !UGCGuideEditBooksActivity.f(UGCGuideEditBooksActivity.this).equals("")) {
+                    } else if (UGCGuideEditBooksActivity.this.f != null && !UGCGuideEditBooksActivity.this.f.equals("")) {
                         com.clilystudio.netbook.util.e.a(UGCGuideEditBooksActivity.this, "修改成功");
                         UGCNewCollection uGCNewCollection = UGCGuideEditBooksActivity.e();
                         Intent intent2 = new Intent(this.b(), UGCDetailActivity.class);
-                        intent2.putExtra("book_id", UGCGuideEditBooksActivity.f(UGCGuideEditBooksActivity.this));
+                        intent2.putExtra("book_id", UGCGuideEditBooksActivity.this.f);
                         intent2.putExtra("my_list", true);
                         intent2.putExtra("modify_update", uGCNewCollection);
                         intent2.putExtra("my_author", UGCGuideEditBooksActivity.j(UGCGuideEditBooksActivity.this));
                         intent2.setFlags(67108864);
-                        i.a().post(new com.clilystudio.netbook.event.J(UGCGuideEditBooksActivity.f(UGCGuideEditBooksActivity.this), uGCNewCollection.getTitle(), uGCNewCollection.getDesc(), uGCNewCollection.getBooks().size(), uGCNewCollection.getBooks().get(0).getCover()));
+                        i.a().post(new UpdateUgcListEvent(UGCGuideEditBooksActivity.this.f, uGCNewCollection.getTitle(), uGCNewCollection.getDesc(), uGCNewCollection.getBooks().size(), uGCNewCollection.getBooks().get(0).getCover()));
                         intent = intent2;
                     } else {
                         com.clilystudio.netbook.util.e.a(UGCGuideEditBooksActivity.this, "发布成功");
