@@ -17,7 +17,7 @@ import android.widget.Toast;
 import com.clilystudio.netbook.IntentBuilder;
 import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.R;
-import com.clilystudio.netbook.a_pack.c;
+import com.clilystudio.netbook.a_pack.BaseLoadingTask;
 import com.clilystudio.netbook.event.LoginEvent;
 import com.clilystudio.netbook.event.BusProvider;
 import com.clilystudio.netbook.model.Account;
@@ -123,7 +123,7 @@ public class AuthLoginActivity extends BaseActivity implements Handler.Callback 
                 String string = platform.getDb().getUserId();
                 String string2 = platform.getDb().getToken();
                 if (string != null && string2 != null) {
-                    com.clilystudio.netbook.a_pack.c<String, Account> f2 = new c<String, Account>((Activity) this, R.string.login_loading) {
+                    BaseLoadingTask<String, Account> f2 = new BaseLoadingTask<String, Account>((Activity) this, R.string.login_loading) {
 
                         @Override
                         public Account a(String... var1) {

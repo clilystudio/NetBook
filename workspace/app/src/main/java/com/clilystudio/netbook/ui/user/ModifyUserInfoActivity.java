@@ -15,7 +15,7 @@ import android.widget.TextView;
 import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.a_pack.BaseAsyncTask;
-import com.clilystudio.netbook.a_pack.c;
+import com.clilystudio.netbook.a_pack.BaseLoadingTask;
 import com.clilystudio.netbook.am;
 import com.clilystudio.netbook.IntentBuilder;
 import com.clilystudio.netbook.event.UserInfoChangedEvent;
@@ -80,7 +80,7 @@ public class ModifyUserInfoActivity extends BaseActivity implements View.OnClick
         h2.setPositiveButton("确认修改", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                com.clilystudio.netbook.a_pack.c<String, ChangeGenderRoot> q2 = new c<String, ChangeGenderRoot>(modifyUserInfoActivity, R.string.loading) {
+                BaseLoadingTask<String, ChangeGenderRoot> q2 = new BaseLoadingTask<String, ChangeGenderRoot>(modifyUserInfoActivity, R.string.loading) {
 
                     @Override
                     public ChangeGenderRoot a(String... var1) {
@@ -151,7 +151,7 @@ public class ModifyUserInfoActivity extends BaseActivity implements View.OnClick
             {
                 if (n2 == -1) {
                     final Uri output = intent.getParcelableExtra("output");
-                    new c<String, Root>(ModifyUserInfoActivity.this, "正在上传图片..."){
+                    new BaseLoadingTask<String, Root>(ModifyUserInfoActivity.this, "正在上传图片..."){
 
                         @Override
                         public Root a(String... var1) {
@@ -236,7 +236,7 @@ public class ModifyUserInfoActivity extends BaseActivity implements View.OnClick
 
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            c<String, ChangeNickNameRoot> s2 = new c<String, ChangeNickNameRoot>(ModifyUserInfoActivity.this, R.string.loading){
+                            BaseLoadingTask<String, ChangeNickNameRoot> s2 = new BaseLoadingTask<String, ChangeNickNameRoot>(ModifyUserInfoActivity.this, R.string.loading){
                                 String a;
 
                                 @Override

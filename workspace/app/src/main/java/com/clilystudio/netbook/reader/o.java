@@ -13,7 +13,7 @@ import android.widget.TextView;
 import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.a_pack.BaseAsyncTask;
-import com.clilystudio.netbook.a_pack.c;
+import com.clilystudio.netbook.a_pack.BaseLoadingTask;
 import com.clilystudio.netbook.am;
 import com.clilystudio.netbook.event.BusProvider;
 import com.clilystudio.netbook.event.LoginEvent;
@@ -117,7 +117,7 @@ public final class o {
                 o2.e();
                 return;
             }
-            c<String, ChapterSingleKey> e2 = new c<String, ChapterSingleKey>(o2.b, R.string.loading, false) {
+            BaseLoadingTask<String, ChapterSingleKey> e2 = new BaseLoadingTask<String, ChapterSingleKey>(o2.b, R.string.loading, false) {
 
                 @Override
                 public ChapterSingleKey a(String... var1) {
@@ -251,7 +251,7 @@ public final class o {
                     }
                     a(o.this, false);
                     com.clilystudio.netbook.hpay100.a.a.b(o.this.b, "auto_buy_chapter" + com.clilystudio.netbook.util.I.a, checkBox.isChecked());
-                    c<String, PurchaseChapterResult> i2 = new c<String, PurchaseChapterResult>(o.this.b, "购买中...") {
+                    BaseLoadingTask<String, PurchaseChapterResult> i2 = new BaseLoadingTask<String, PurchaseChapterResult>(o.this.b, "购买中...") {
 
                         @Override
                         public PurchaseChapterResult a(String... var1) {
@@ -557,7 +557,7 @@ public final class o {
         this.b(n2);
         if (this.a(n2.a())) {
             MiStatInterface.recordCountEvent("paying_page_auto_purchase", com.clilystudio.netbook.util.I.b);
-            c<String, PurchaseChapterResult> i2 = new c<String, PurchaseChapterResult>(o.this.b, "自动购买中...") {
+            BaseLoadingTask<String, PurchaseChapterResult> i2 = new BaseLoadingTask<String, PurchaseChapterResult>(o.this.b, "自动购买中...") {
 
                 @Override
                 public PurchaseChapterResult a(String... var1) {
@@ -741,7 +741,7 @@ public final class o {
     @Subscribe
     public final void onLoginEvent(LoginEvent t2) {
         if (this.e && t2.getAccount() != null) {
-            new c<Void, ChapterKeysRoot>(this.b, "正在获取资产信息...") {
+            new BaseLoadingTask<Void, ChapterKeysRoot>(this.b, "正在获取资产信息...") {
                 String arg;
 
                 @Override

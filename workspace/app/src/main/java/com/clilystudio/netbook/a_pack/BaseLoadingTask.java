@@ -7,29 +7,29 @@ import android.widget.Toast;
 
 import com.clilystudio.netbook.R;
 
-public abstract class c<Input, E> extends BaseAsyncTask<Input, Void, E> {
+public abstract class BaseLoadingTask<Input, E> extends BaseAsyncTask<Input, Void, E> {
     private ProgressDialog a;
     private Activity b;
     private String c;
     private boolean d = true;
     private boolean e = true;
 
-    public c(Activity activity) {
+    public BaseLoadingTask(Activity activity) {
         this.b = activity;
         this.c = activity.getString(R.string.loading);
     }
 
-    public c(Activity activity, int resId) {
+    public BaseLoadingTask(Activity activity, int resId) {
         this.b = activity;
         this.c = activity.getString(resId);
     }
 
-    public c(Activity activity, int resId, boolean bl) {
+    public BaseLoadingTask(Activity activity, int resId, boolean bl) {
         this(activity, resId);
         this.e = bl;
     }
 
-    public c(Activity activity, String string) {
+    public BaseLoadingTask(Activity activity, String string) {
         this.b = activity;
         this.c = string;
     }
@@ -77,7 +77,7 @@ public abstract class c<Input, E> extends BaseAsyncTask<Input, Void, E> {
             this.a = ProgressDialog.show(this.b, null, string, true, this.d, new DialogInterface.OnCancelListener() {
                 @Override
                 public void onCancel(DialogInterface dialog) {
-                    c.this.cancel(true);
+                    BaseLoadingTask.this.cancel(true);
                 }
             });
             this.a.setCanceledOnTouchOutside(false);

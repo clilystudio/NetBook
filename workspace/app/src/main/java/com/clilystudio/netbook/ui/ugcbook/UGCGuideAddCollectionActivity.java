@@ -8,7 +8,7 @@ import android.widget.TextView;
 
 import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.R;
-import com.clilystudio.netbook.a_pack.c;
+import com.clilystudio.netbook.a_pack.BaseLoadingTask;
 import com.clilystudio.netbook.am;
 import com.clilystudio.netbook.event.UgcDraftEvent;
 import com.clilystudio.netbook.event.UpdateUgcListEvent;
@@ -115,7 +115,7 @@ public class UGCGuideAddCollectionActivity extends BaseActivity {
                     uGCNewCollection.setTitle(UGCGuideAddCollectionActivity.c(UGCGuideAddCollectionActivity.this).getText().toString());
                     uGCNewCollection.setDesc(UGCGuideAddCollectionActivity.d(UGCGuideAddCollectionActivity.this).getText().toString());
 
-                    new c<Void, ResultStatus>(UGCGuideAddCollectionActivity.this, "正在保存到草稿箱...") {
+                    new BaseLoadingTask<Void, ResultStatus>(UGCGuideAddCollectionActivity.this, "正在保存到草稿箱...") {
 
                         @Override
                         public ResultStatus a(Void... var1) {

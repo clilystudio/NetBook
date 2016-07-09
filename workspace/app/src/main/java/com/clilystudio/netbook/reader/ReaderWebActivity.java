@@ -16,7 +16,7 @@ import android.widget.TextView;
 import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.a_pack.BaseAsyncTask;
-import com.clilystudio.netbook.a_pack.c;
+import com.clilystudio.netbook.a_pack.BaseLoadingTask;
 import com.clilystudio.netbook.IntentBuilder;
 import com.clilystudio.netbook.db.BookReadRecord;
 import com.clilystudio.netbook.db.BookTopicEnterRecord;
@@ -222,7 +222,7 @@ public class ReaderWebActivity extends BaseReadActivity {
                 break;
             }
             case 6: {
-                c<String, String> var24_12 = new c<String, String>(this, R.string.loading) {
+                BaseLoadingTask<String, String> var24_12 = new BaseLoadingTask<String, String>(this, R.string.loading) {
                     @Override
                     public String a(String... var1) {
                         return com.clilystudio.netbook.api.b.b().b(var1[0], var3_3[0] + 1);
@@ -245,7 +245,7 @@ public class ReaderWebActivity extends BaseReadActivity {
                 var17_14[0] = var2_2 != null ? var2_2.getCmd() : null;
                 if (BookReadRecord.get(this.c) != null || MyApplication.a().c() != null) {
 //                    cJ(this, this, var3_3[0], var17_14);
-                    c<String, SgTocRoot> var21_17 = new c<String, SgTocRoot>(this, R.string.loading) {
+                    BaseLoadingTask<String, SgTocRoot> var21_17 = new BaseLoadingTask<String, SgTocRoot>(this, R.string.loading) {
 
                         @Override
                         public SgTocRoot a(String... var1) {
@@ -288,7 +288,7 @@ public class ReaderWebActivity extends BaseReadActivity {
                 break;
             }
             case 3: {
-                com.clilystudio.netbook.a_pack.c<String, EsTocRoot> var4_19 = new c<String, EsTocRoot>(this, R.string.loading) {
+                BaseLoadingTask<String, EsTocRoot> var4_19 = new BaseLoadingTask<String, EsTocRoot>(this, R.string.loading) {
 
                     @Override
                     public EsTocRoot a(String... var1) {

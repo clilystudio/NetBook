@@ -24,7 +24,7 @@ import android.widget.TextView;
 
 import com.clilystudio.netbook.CachePathConst;
 import com.clilystudio.netbook.R;
-import com.clilystudio.netbook.a_pack.c;
+import com.clilystudio.netbook.a_pack.BaseLoadingTask;
 import com.clilystudio.netbook.a_pack.BaseAsyncTask;
 import com.clilystudio.netbook.adapter.HomeShelfAdapter;
 import com.clilystudio.netbook.am;
@@ -980,7 +980,7 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
         if (n2 == 0) {
             this.b(3);
         } else {
-            com.clilystudio.netbook.a_pack.c<String, BookGenderRecommend> bookGenderRecommendc = new c<String, BookGenderRecommend>(this.getActivity(), getString(R.string.recommend_loading)) {
+            BaseLoadingTask<String, BookGenderRecommend> bookGenderRecommendc = new BaseLoadingTask<String, BookGenderRecommend>(this.getActivity(), getString(R.string.recommend_loading)) {
 
                 @Override
                 public BookGenderRecommend a(String... var1) {

@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.widget.EditText;
 
 import com.clilystudio.netbook.R;
-import com.clilystudio.netbook.a_pack.c;
+import com.clilystudio.netbook.a_pack.BaseLoadingTask;
 import com.clilystudio.netbook.model.BookAdd;
 import com.clilystudio.netbook.util.e;
 
@@ -32,7 +32,7 @@ public class CustomSearchActivity extends BaseActivity {
         boolean bl = true;
         if (bl) {
             String string3 = Build.BRAND + " " + Build.MODEL;
-            c<String, BookAdd> ba2 = new c<String, BookAdd>((Activity) customSearchActivity, R.string.book_add_loading) {
+            BaseLoadingTask<String, BookAdd> ba2 = new BaseLoadingTask<String, BookAdd>((Activity) customSearchActivity, R.string.book_add_loading) {
 
                 @Override
                 public BookAdd a(String... var1) {

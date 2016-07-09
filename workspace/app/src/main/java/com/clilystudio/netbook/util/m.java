@@ -5,7 +5,7 @@ import android.content.Intent;
 
 import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.R;
-import com.clilystudio.netbook.a_pack.c;
+import com.clilystudio.netbook.a_pack.BaseLoadingTask;
 import com.clilystudio.netbook.am;
 import com.clilystudio.netbook.db.BookReadRecord;
 import com.clilystudio.netbook.db.SourceRecord;
@@ -148,7 +148,7 @@ public final class m {
     }
 
     private void a(boolean bl) {
-        com.clilystudio.netbook.a_pack.c<String, TocSourceRoot> n2 = new com.clilystudio.netbook.a_pack.c<String, TocSourceRoot>(this.a, R.string.loading, bl) {
+        BaseLoadingTask<String, TocSourceRoot> n2 = new BaseLoadingTask<String, TocSourceRoot>(this.a, R.string.loading, bl) {
 
             @Override
             public TocSourceRoot a(String... var1) {
@@ -187,7 +187,7 @@ public final class m {
     }
 
     private void a(boolean bl, final boolean bl2) {
-        c<String, List<TocSummary>> o2 = new c<String, List<TocSummary>>(m.this.a, R.string.loading, bl) {
+        BaseLoadingTask<String, List<TocSummary>> o2 = new BaseLoadingTask<String, List<TocSummary>>(m.this.a, R.string.loading, bl) {
             @Override
             public List<TocSummary> a(String... var1) {
                 com.clilystudio.netbook.api.b.a();

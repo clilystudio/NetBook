@@ -16,7 +16,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.clilystudio.netbook.R;
-import com.clilystudio.netbook.a_pack.c;
+import com.clilystudio.netbook.a_pack.BaseLoadingTask;
 import com.clilystudio.netbook.am;
 import com.clilystudio.netbook.event.AddShelfBooksEvent;
 import com.clilystudio.netbook.event.UgcDraftEvent;
@@ -161,7 +161,7 @@ public class UGCGuideEditBooksActivity extends BaseActivity implements View.OnCl
 
     @Subscribe
     public void onAddShelfBooks(AddShelfBooksEvent d) {
-        c<String[], List<BookSummary>> n = new c<String[], List<BookSummary>>(this, "正在添加书籍...") {
+        BaseLoadingTask<String[], List<BookSummary>> n = new BaseLoadingTask<String[], List<BookSummary>>(this, "正在添加书籍...") {
 
             @Override
             public List<BookSummary> a(String[]... var1) {
@@ -231,7 +231,7 @@ public class UGCGuideEditBooksActivity extends BaseActivity implements View.OnCl
                         com.clilystudio.netbook.util.e.a(UGCGuideEditBooksActivity.this, "至少要添加一本书籍才能保存哦");
                         return;
                     }
-                    new c<Void, ResultStatus>(UGCGuideEditBooksActivity.this, "正在保存到草稿箱...") {
+                    new BaseLoadingTask<Void, ResultStatus>(UGCGuideEditBooksActivity.this, "正在保存到草稿箱...") {
                         @Override
                         public ResultStatus a(Void... var1) {
                             Account account = am.a(UGCGuideEditBooksActivity.this);
@@ -369,7 +369,7 @@ public class UGCGuideEditBooksActivity extends BaseActivity implements View.OnCl
 
     private void procb() {
         if (UGCGuideEditBooksActivity.b(UGCGuideEditBooksActivity.this)) {
-            new c<Void, ResultStatus>(UGCGuideEditBooksActivity.this, R.string.loading) {
+            new BaseLoadingTask<Void, ResultStatus>(UGCGuideEditBooksActivity.this, R.string.loading) {
                 @Override
                 public ResultStatus a(Void... var1) {
                     Account account = am.a(UGCGuideEditBooksActivity.this);

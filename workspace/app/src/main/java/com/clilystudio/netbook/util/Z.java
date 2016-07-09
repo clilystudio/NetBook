@@ -6,6 +6,7 @@ import android.os.Handler;
 import com.activeandroid.query.Delete;
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.a_pack.BaseAsyncTask;
+import com.clilystudio.netbook.a_pack.BaseLoadingTask;
 import com.clilystudio.netbook.am;
 import com.clilystudio.netbook.db.BookReadRecord;
 import com.clilystudio.netbook.db.BookSyncRecord;
@@ -221,7 +222,7 @@ public final class Z {
             }, 4000);
             return;
         }
-        com.clilystudio.netbook.a_pack.c<String, RemoteBookShelf> ac2 = new com.clilystudio.netbook.a_pack.c<String, RemoteBookShelf>(Z.this.b, R.string.loading){
+        BaseLoadingTask<String, RemoteBookShelf> ac2 = new BaseLoadingTask<String, RemoteBookShelf>(Z.this.b, R.string.loading){
 
             @Override
             public RemoteBookShelf a(String... var1) {

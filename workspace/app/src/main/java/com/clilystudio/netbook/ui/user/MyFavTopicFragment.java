@@ -18,7 +18,7 @@ import android.widget.TextView;
 
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.a_pack.BaseAsyncTask;
-import com.clilystudio.netbook.a_pack.c;
+import com.clilystudio.netbook.a_pack.BaseLoadingTask;
 import com.clilystudio.netbook.am;
 import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.model.ResultStatus;
@@ -133,7 +133,7 @@ public class MyFavTopicFragment extends Fragment {
             AdapterView.AdapterContextMenuInfo adapterContextMenuInfo = (AdapterView.AdapterContextMenuInfo) menuItem.getMenuInfo();
             if (menuItem.getItemId() == 0) {
                 TopicPost topicPost = (TopicPost) this.d.getAdapter().getItem(adapterContextMenuInfo.position);
-                c<String, ResultStatus> y2 = new c<String, ResultStatus>((Activity) this.getActivity(), R.string.loading){
+                BaseLoadingTask<String, ResultStatus> y2 = new BaseLoadingTask<String, ResultStatus>((Activity) this.getActivity(), R.string.loading){
 
                     @Override
                     public ResultStatus a(String... var1) {
