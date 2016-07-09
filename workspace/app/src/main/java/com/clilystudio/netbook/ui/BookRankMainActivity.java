@@ -15,7 +15,7 @@ import android.widget.TabWidget;
 import android.widget.TextView;
 
 import com.clilystudio.netbook.R;
-import com.clilystudio.netbook.d;
+import com.clilystudio.netbook.IntentBuilder;
 import com.clilystudio.netbook.ui.home.ZssqFragmentPagerAdapter;
 import com.xiaomi.mistatistic.sdk.MiStatInterfaceImpl;
 
@@ -31,7 +31,7 @@ public class BookRankMainActivity extends BaseTabActivity implements ViewPager.O
     private String[] f;
 
     public static Intent a(Context context, String[] arrstring, String string, String string2) {
-        return new d().a(context, BookRankMainActivity.class).a("book_list_ids", arrstring).a("book_list_title", string).a("rank_gender", string2).a();
+        return new IntentBuilder().put(context, BookRankMainActivity.class).put("book_list_ids", arrstring).put("book_list_title", string).put("rank_gender", string2).build();
     }
 
     static /* synthetic */ BookRankListFragment a(BookRankMainActivity bookRankMainActivity, String string, String string2, String string3) {

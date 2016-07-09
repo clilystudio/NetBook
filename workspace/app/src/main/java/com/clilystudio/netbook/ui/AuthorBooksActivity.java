@@ -10,7 +10,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.clilystudio.netbook.R;
-import com.clilystudio.netbook.d;
+import com.clilystudio.netbook.IntentBuilder;
 import com.clilystudio.netbook.model.BookSummary;
 import com.clilystudio.netbook.model.SearchResultRoot;
 import com.clilystudio.netbook.util.W;
@@ -25,7 +25,7 @@ public class AuthorBooksActivity extends BaseLoadingActivity {
     private String c;
 
     public static Intent a(Context context, String string) {
-        return new d().a(context, AuthorBooksActivity.class).a("keyword", string).a();
+        return new IntentBuilder().put(context, AuthorBooksActivity.class).put("keyword", string).build();
     }
 
     static /* synthetic */ ListView a(AuthorBooksActivity authorBooksActivity) {

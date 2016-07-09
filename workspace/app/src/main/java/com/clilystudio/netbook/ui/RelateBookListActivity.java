@@ -3,7 +3,7 @@ package com.clilystudio.netbook.ui;
 import android.content.Context;
 import android.content.Intent;
 
-import com.clilystudio.netbook.d;
+import com.clilystudio.netbook.IntentBuilder;
 import com.clilystudio.netbook.model.BookRankDetail;
 import com.clilystudio.netbook.model.BookSummary;
 import com.clilystudio.netbook.model.RelateBookRoot;
@@ -18,11 +18,11 @@ public class RelateBookListActivity extends BookListActivity implements cM.cQ {
     private int c;
 
     public static Intent a(Context context, RelateBookRoot relateBookRoot, String string, String string2) {
-        return new d().a(context, RelateBookListActivity.class).a("RelateBookRoot", (Serializable) null).a("book_list_title", string).a("bookId", string2).a("entrancePosition", 2).a();
+        return new IntentBuilder().put(context, RelateBookListActivity.class).putSerializable("RelateBookRoot", (Serializable) null).put("book_list_title", string).put("bookId", string2).put("entrancePosition", 2).build();
     }
 
     public static Intent a(Context context, RelateBookRoot relateBookRoot, String string, boolean bl) {
-        return new d().a(context, RelateBookListActivity.class).a("RelateBookRoot", relateBookRoot).a("book_list_title", string).a("entrancePosition", 1).a("IS_BFD_RECOMMEND", bl).a();
+        return new IntentBuilder().put(context, RelateBookListActivity.class).putSerializable("RelateBookRoot", relateBookRoot).put("book_list_title", string).put("entrancePosition", 1).putSerializable("IS_BFD_RECOMMEND", bl).build();
     }
 
     private void a(RelateBookRoot relateBookRoot) {

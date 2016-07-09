@@ -16,7 +16,7 @@ import android.widget.TextView;
 import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.a_pack.c;
-import com.clilystudio.netbook.d;
+import com.clilystudio.netbook.IntentBuilder;
 import com.clilystudio.netbook.db.BookReadRecord;
 import com.clilystudio.netbook.db.BookTopicEnterRecord;
 import com.clilystudio.netbook.db.SourceRecord;
@@ -47,7 +47,7 @@ public class ReaderWebActivity extends BaseReadActivity {
     }
 
     public static Intent a(Context context, String string, String string2, String string3, String string4, int n) {
-        return new d().a(context, ReaderWebActivity.class).a("BOOK_ID", string).a("BOOK_TITLE", string2).a("TOC_ID", string3).a("SOURCE_ID", string4).a("BOOK_MODE", n).a();
+        return new IntentBuilder().put(context, ReaderWebActivity.class).put("BOOK_ID", string).put("BOOK_TITLE", string2).put("TOC_ID", string3).put("SOURCE_ID", string4).put("BOOK_MODE", n).build();
     }
 
     static /* synthetic */ SgTocChapter a(SgTocChapter[] arrsgTocChapter, String string) {

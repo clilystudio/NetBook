@@ -16,7 +16,7 @@ import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.a_pack.c;
 import com.clilystudio.netbook.am;
-import com.clilystudio.netbook.d;
+import com.clilystudio.netbook.IntentBuilder;
 import com.clilystudio.netbook.event.UserInfoChangedEvent;
 import com.clilystudio.netbook.event.BusProvider;
 import com.clilystudio.netbook.model.Account;
@@ -54,7 +54,7 @@ public class ModifyUserInfoActivity extends BaseActivity implements View.OnClick
     }
 
     public static Intent a(Context context, long l) {
-        return new d().a(context, ModifyUserInfoActivity.class).a("nickname_updated_time", l).a();
+        return new IntentBuilder().put(context, ModifyUserInfoActivity.class).putSerializable("nickname_updated_time", l).build();
     }
 
     static /* synthetic */ User a(ModifyUserInfoActivity modifyUserInfoActivity) {

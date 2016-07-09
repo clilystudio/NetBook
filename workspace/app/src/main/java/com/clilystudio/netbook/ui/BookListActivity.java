@@ -10,7 +10,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.clilystudio.netbook.R;
-import com.clilystudio.netbook.d;
+import com.clilystudio.netbook.IntentBuilder;
 import com.clilystudio.netbook.model.BookRankDetail;
 import com.clilystudio.netbook.util.W;
 import com.clilystudio.netbook.widget.CoverView;
@@ -22,7 +22,7 @@ public abstract class BookListActivity extends BaseActivity {
     private TextView e;
 
     public static Intent a(Context context, String string, String string2) {
-        return new d().a(context, BookRankDetailActivity.class).a("book_list_id", string).a("book_list_title", string2).a();
+        return new IntentBuilder().put(context, BookRankDetailActivity.class).put("book_list_id", string).put("book_list_title", string2).build();
     }
 
     protected void a(int n) {

@@ -6,13 +6,13 @@ import android.os.Bundle;
 import android.view.ViewGroup;
 
 import com.clilystudio.netbook.R;
-import com.clilystudio.netbook.d;
+import com.clilystudio.netbook.IntentBuilder;
 import com.clilystudio.netbook.ui.BaseActivity;
 
 public class ModeListActivity extends BaseActivity {
 
     public static Intent a(Context context, String string, String string2, int n) {
-        return new d().a(context, ModeListActivity.class).a("BOOK_ID", string).a("BOOK_TITLE", string2).a("BOOK_MODE", n).a();
+        return new IntentBuilder().put(context, ModeListActivity.class).put("BOOK_ID", string).put("BOOK_TITLE", string2).put("BOOK_MODE", n).build();
     }
 
     @Override

@@ -23,7 +23,7 @@ import android.widget.TextView;
 
 import com.clilystudio.netbook.CachePathConst;
 import com.clilystudio.netbook.R;
-import com.clilystudio.netbook.d;
+import com.clilystudio.netbook.IntentBuilder;
 import com.clilystudio.netbook.model.AutoCompleteRoot;
 import com.clilystudio.netbook.model.BookSummary;
 import com.clilystudio.netbook.model.HotKeywordResult;
@@ -73,7 +73,7 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
     }
 
     public static Intent a(Context context, int n) {
-        return new d().a(context, SearchActivity.class).a("search_mode", n).a();
+        return new IntentBuilder().put(context, SearchActivity.class).put("search_mode", n).build();
     }
 
     static /* synthetic */ ListView a(SearchActivity searchActivity) {

@@ -12,7 +12,7 @@ import android.view.ViewGroup;
 
 import com.clilystudio.netbook.ActivityStack;
 import com.clilystudio.netbook.R;
-import com.clilystudio.netbook.d;
+import com.clilystudio.netbook.IntentBuilder;
 import com.clilystudio.netbook.db.BookTopicEnterRecord;
 import com.clilystudio.netbook.event.BusProvider;
 import com.clilystudio.netbook.event.ModeChangedEvent;
@@ -33,7 +33,7 @@ public class ReaderResActivity extends ReaderModeActivity {
     }
 
     public static Intent a(Context context, String string, String string2, int n) {
-        return new d().a(context, ReaderResActivity.class).a("BOOK_ID", string).a("BOOK_TITLE", string2).a("BOOK_MODE", n).a();
+        return new IntentBuilder().put(context, ReaderResActivity.class).put("BOOK_ID", string).put("BOOK_TITLE", string2).put("BOOK_MODE", n).build();
     }
 
     static /* synthetic */ View b(ReaderResActivity readerResActivity) {

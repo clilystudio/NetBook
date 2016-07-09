@@ -6,11 +6,11 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 import com.clilystudio.netbook.R;
-import com.clilystudio.netbook.d;
+import com.clilystudio.netbook.IntentBuilder;
 
 public class AddBookFailedActivity extends BaseActivity {
     public static Intent a(Context context, String string) {
-        return new d().a(context, AddBookFailedActivity.class).a("bookTitle", string).a();
+        return new IntentBuilder().put(context, AddBookFailedActivity.class).put("bookTitle", string).build();
     }
 
     @Override

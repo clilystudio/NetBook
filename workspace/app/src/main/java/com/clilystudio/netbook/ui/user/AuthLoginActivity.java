@@ -14,6 +14,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Toast;
 
+import com.clilystudio.netbook.IntentBuilder;
 import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.a_pack.c;
@@ -37,7 +38,7 @@ public class AuthLoginActivity extends BaseActivity implements Handler.Callback 
     private View c = null;
 
     public static Intent a(Context context) {
-        return new com.clilystudio.netbook.d().a(context, AuthLoginActivity.class).a();
+        return new IntentBuilder().put(context, AuthLoginActivity.class).build();
     }
 
     static /* synthetic */ void a(AuthLoginActivity authLoginActivity) {

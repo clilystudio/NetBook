@@ -18,7 +18,7 @@ import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.a_pack.e;
 import com.clilystudio.netbook.am;
-import com.clilystudio.netbook.d;
+import com.clilystudio.netbook.IntentBuilder;
 import com.clilystudio.netbook.db.BookReadRecord;
 import com.clilystudio.netbook.db.SourceRecord;
 import com.clilystudio.netbook.event.BookAddedEvent;
@@ -65,11 +65,11 @@ public class BookInfoActivity extends BaseActivity implements View.OnClickListen
     }
 
     public static Intent a(Context context, String string) {
-        return new d().a(context, BookInfoActivity.class).a("book_id", string).a("open_type", 0).a();
+        return new IntentBuilder().put(context, BookInfoActivity.class).put("book_id", string).put("open_type", 0).build();
     }
 
     public static Intent a(Context context, String string, int n) {
-        return new d().a(context, BookInfoActivity.class).a("book_id", string).a("open_type", n).a();
+        return new IntentBuilder().put(context, BookInfoActivity.class).put("book_id", string).put("open_type", n).build();
     }
 
     static /* synthetic */ BookInfo a(BookInfoActivity bookInfoActivity, BookInfo bookInfo) {

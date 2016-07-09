@@ -13,7 +13,7 @@ import com.clilystudio.netbook.CachePathConst;
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.a_pack.e;
 import com.clilystudio.netbook.am;
-import com.clilystudio.netbook.d;
+import com.clilystudio.netbook.IntentBuilder;
 import com.clilystudio.netbook.model.CategoryLevelRoot;
 import com.clilystudio.netbook.model.CategoryRoot;
 
@@ -23,7 +23,7 @@ public class BookCategoryActivity extends BaseActivity {
     private View c;
 
     public static Intent a(Context context) {
-        return new d().a(context, BookCategoryActivity.class).a();
+        return new IntentBuilder().put(context, BookCategoryActivity.class).build();
     }
 
     static /* synthetic */ void a(BookCategoryActivity bookCategoryActivity) {

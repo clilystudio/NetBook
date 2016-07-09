@@ -15,7 +15,7 @@ import android.widget.TextView;
 
 import com.clilystudio.netbook.CachePathConst;
 import com.clilystudio.netbook.R;
-import com.clilystudio.netbook.d;
+import com.clilystudio.netbook.IntentBuilder;
 import com.clilystudio.netbook.model.Toc;
 import com.clilystudio.netbook.model.TocDownloadSummary;
 import com.clilystudio.netbook.ui.BaseActivity;
@@ -36,7 +36,7 @@ public class LocalChapterListActivity extends BaseActivity {
     private String h;
 
     public static Intent a(Context context, String string, String string2) {
-        return new d().a(context, LocalChapterListActivity.class).a("BOOK_ID", string).a("BOOK_TITLE", string2).a();
+        return new IntentBuilder().put(context, LocalChapterListActivity.class).put("BOOK_ID", string).put("BOOK_TITLE", string2).build();
     }
 
     static /* synthetic */ ListView a(LocalChapterListActivity localChapterListActivity) {

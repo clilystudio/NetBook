@@ -24,7 +24,7 @@ import android.widget.TextView;
 import com.clilystudio.netbook.CachePathConst;
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.am;
-import com.clilystudio.netbook.d;
+import com.clilystudio.netbook.IntentBuilder;
 import com.clilystudio.netbook.model.CategoryLevelRoot;
 import com.clilystudio.netbook.ui.home.ZssqFragmentPagerAdapter;
 import com.xiaomi.mistatistic.sdk.MiStatInterface;
@@ -47,7 +47,7 @@ public class BookCategoryListActivity extends BaseTabActivity implements ViewPag
     private avAdapter l;
 
     public static Intent a(Context context, boolean bl, String string) {
-        return new d().a(context, BookCategoryListActivity.class).a("CATEGORY_GENDER", bl).a("CATEGORY_KEY", string).a();
+        return new IntentBuilder().put(context, BookCategoryListActivity.class).putSerializable("CATEGORY_GENDER", bl).put("CATEGORY_KEY", string).build();
     }
 
     static /* synthetic */ void a(BookCategoryListActivity bookCategoryListActivity) {

@@ -10,7 +10,7 @@ import android.widget.TextView;
 import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.am;
-import com.clilystudio.netbook.d;
+import com.clilystudio.netbook.IntentBuilder;
 import com.clilystudio.netbook.event.AccountUpdatedEvent;
 import com.clilystudio.netbook.event.UserInfoChangedEvent;
 import com.clilystudio.netbook.event.BusProvider;
@@ -41,7 +41,7 @@ public class UserInfoActivity extends BaseActivity {
     private Date e;
 
     public static Intent a(Context context, String string) {
-        return new d().a(context, UserInfoActivity.class).a("account_token", string).a();
+        return new IntentBuilder().put(context, UserInfoActivity.class).put("account_token", string).build();
     }
 
     static /* synthetic */ Date a(UserInfoActivity userInfoActivity, Date date) {

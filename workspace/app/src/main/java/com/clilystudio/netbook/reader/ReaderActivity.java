@@ -30,7 +30,7 @@ import android.widget.TextView;
 import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.am;
-import com.clilystudio.netbook.d;
+import com.clilystudio.netbook.IntentBuilder;
 import com.clilystudio.netbook.db.BookReadRecord;
 import com.clilystudio.netbook.db.BookTopicEnterRecord;
 import com.clilystudio.netbook.db.MixTocRecord;
@@ -341,15 +341,15 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
     }
 
     public static Intent a(Context context, String string, String string2, String string3, String string4, boolean bl) {
-        return new d().a(context, ReaderActivity.class).a("BOOK_ID", string).a("BOOK_TITLE", string2).a("TOC_ID", string3).a("SOURCE_HOST", string4).a("IS_SHOW_TOC", bl).a();
+        return new IntentBuilder().put(context, ReaderActivity.class).put("BOOK_ID", string).put("BOOK_TITLE", string2).put("TOC_ID", string3).put("SOURCE_HOST", string4).putSerializable("IS_SHOW_TOC", bl).build();
     }
 
     public static Intent a(Context context, String string, String string2, String string3, HashMap<String, String> hashMap, boolean bl2) {
-        return new d().a(context, ReaderActivity.class).a("BOOK_ID", string).a("BOOK_TITLE", string2).a("TOC_ID", string3).a("SOURCE_HOST", (String) null).a("IS_SHOW_TOC", false).a("CHAPTERS_KEY", hashMap).a("HAS_OTHER_SOURCES", bl2).a();
+        return new IntentBuilder().put(context, ReaderActivity.class).put("BOOK_ID", string).put("BOOK_TITLE", string2).put("TOC_ID", string3).put("SOURCE_HOST", (String) null).putSerializable("IS_SHOW_TOC", false).putSerializable("CHAPTERS_KEY", hashMap).putSerializable("HAS_OTHER_SOURCES", bl2).build();
     }
 
     public static Intent a(Context context, String string, String string2, String string3, boolean bl2) {
-        return new d().a(context, ReaderActivity.class).a("BOOK_ID", string).a("BOOK_TITLE", string2).a("TOC_ID", string3).a("SOURCE_HOST", (String) null).a("IS_SHOW_TOC", false).a("HAS_OTHER_SOURCES", bl2).a();
+        return new IntentBuilder().put(context, ReaderActivity.class).put("BOOK_ID", string).put("BOOK_TITLE", string2).put("TOC_ID", string3).put("SOURCE_HOST", (String) null).putSerializable("IS_SHOW_TOC", false).putSerializable("HAS_OTHER_SOURCES", bl2).build();
     }
 
     static /* synthetic */ String a(ReaderActivity readerActivity, String string) {

@@ -16,7 +16,7 @@ import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.a_pack.e;
 import com.clilystudio.netbook.am;
 import com.clilystudio.netbook.api.ApiService;
-import com.clilystudio.netbook.d;
+import com.clilystudio.netbook.IntentBuilder;
 import com.clilystudio.netbook.event.BusProvider;
 import com.clilystudio.netbook.event.ModeChangedEvent;
 import com.clilystudio.netbook.model.ChineseAllPromRoot;
@@ -41,7 +41,7 @@ public class ReaderMixActivity extends BaseLoadingActivity {
     private TocSummary k;
 
     public static Intent a(Context context, String string, String string2, String string3) {
-        return new d().a(context, ReaderMixActivity.class).a("BOOK_ID", string).a("BOOK_TITLE", string2).a("SOURCE", string3).a();
+        return new IntentBuilder().put(context, ReaderMixActivity.class).put("BOOK_ID", string).put("BOOK_TITLE", string2).put("SOURCE", string3).build();
     }
 
     static /* synthetic */ ChineseAllPromRoot a(ReaderMixActivity readerMixActivity, ChineseAllPromRoot chineseAllPromRoot) {

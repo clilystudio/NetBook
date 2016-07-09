@@ -15,7 +15,7 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.clilystudio.netbook.R;
-import com.clilystudio.netbook.d;
+import com.clilystudio.netbook.IntentBuilder;
 import com.clilystudio.netbook.event.BusProvider;
 import com.clilystudio.netbook.event.ConvertChangedEvent;
 import com.clilystudio.netbook.ui.BaseActivity;
@@ -37,7 +37,7 @@ public class ReaderOptionActivity extends BaseActivity {
     }
 
     public static Intent a(Context context) {
-        return new d().a(context, ReaderOptionActivity.class).a();
+        return new IntentBuilder().put(context, ReaderOptionActivity.class).build();
     }
 
     static /* synthetic */ void a(final ReaderOptionActivity readerOptionActivity) {

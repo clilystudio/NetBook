@@ -12,7 +12,7 @@ import android.widget.AdapterView;
 
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.a_pack.e;
-import com.clilystudio.netbook.d;
+import com.clilystudio.netbook.IntentBuilder;
 import com.clilystudio.netbook.model.BookSummary;
 import com.clilystudio.netbook.model.BookTagRoot;
 import com.clilystudio.netbook.util.W;
@@ -77,7 +77,7 @@ public class BookTagListActivity extends BaseLoadingActivity {
     }
 
     public static Intent a(Context context, String string) {
-        return new d().a(context, BookTagListActivity.class).a("TAG_LIST_KEY", string).a();
+        return new IntentBuilder().put(context, BookTagListActivity.class).put("TAG_LIST_KEY", string).build();
     }
 
     static /* synthetic */ com.clilystudio.netbook.a_pack.e<String, Void, List<BookSummary>> a(BookTagListActivity bookTagListActivity, com.clilystudio.netbook.a_pack.e<String, Void, List<BookSummary>> aW2) {
