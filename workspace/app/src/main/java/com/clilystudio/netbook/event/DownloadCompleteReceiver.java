@@ -21,7 +21,7 @@ public class DownloadCompleteReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
         Cursor cursor;
         long l;
-        DownloadManager downloadManager = (DownloadManager) context.getSystemService("download");
+        DownloadManager downloadManager = (DownloadManager) context.getSystemService(Context.DOWNLOAD_SERVICE);
         try {
             if (!"android.intent.action.DOWNLOAD_COMPLETE".equals(intent.getAction())) return;
             l = intent.getLongExtra("extra_download_id", 0);

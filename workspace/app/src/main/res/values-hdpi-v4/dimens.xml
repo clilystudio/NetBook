@@ -9,6 +9,6 @@
     <dimen name="post_comment_name_width">120.0dip</dimen>
     <dimen name="random_entrance_gap_big">15.0dip</dimen>
     <dimen name="random_entrance_gap_small">10.0dip</dimen>
-    <item type="dimen" name="random_entrance_multiplier">1.0</item>
+    <item name="random_entrance_multiplier" type="dimen">1.0</item>
     <dimen name="random_entrance_title">30.0sp</dimen>
 </resources>

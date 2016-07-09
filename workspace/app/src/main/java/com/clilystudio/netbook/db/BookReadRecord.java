@@ -296,7 +296,7 @@ public class BookReadRecord extends Model {
     }
 
     public String buildDesc() {
-        Object[] arrobject = new Object[]{t.e((Date) this.getUpdated()), this.last_chapter};
+        Object[] arrobject = new Object[]{t.e(this.getUpdated()), this.last_chapter};
         return String.format("%s:%s", arrobject);
     }
 

@@ -26,7 +26,7 @@ final class i implements b {
             for (int k = 0; k < n; ++k) {
                 h2 = this.b.c.get(k);
                 if (h2.b != this.c || h2.a.a != a2) continue;
-                a2.b((b) this);
+                a2.b(this);
                 break block2;
             }
             h2 = null;
@@ -34,7 +34,7 @@ final class i implements b {
         this.b.c.remove(h2);
         if (this.b.c.size() != 0) return;
         this.b.a.a();
-        d.a((d) this.a).add(this.b.a);
+        d.a(this.a).add(this.b.a);
     }
 
     public final void a(a a2) {

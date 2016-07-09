@@ -40,9 +40,6 @@ public class DnsCacheRecord extends Model {
     }
 
     public boolean isExpired() {
-        if (new Date().getTime() > this.expiredTime.getTime()) {
-            return true;
-        }
-        return false;
+        return new Date().getTime() > this.expiredTime.getTime();
     }
 }

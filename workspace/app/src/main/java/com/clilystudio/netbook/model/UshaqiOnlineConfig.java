@@ -10,10 +10,7 @@ public class UshaqiOnlineConfig {
     }
 
     public boolean isServerError() {
-        if (!TextUtils.isEmpty(this.serverError)) {
-            return true;
-        }
-        return false;
+        return !TextUtils.isEmpty(this.serverError);
     }
 
     public void setServerError(String string) {

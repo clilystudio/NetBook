@@ -323,22 +323,22 @@ public final class bZ {
     }
 
     public interface ca {
-        public void a();
+        void a();
     }
 
     public interface cb {
-        public void a();
+        void a();
     }
 
     public interface cc {
-        public void a();
+        void a();
     }
 
     public interface cd {
-        public void a();
+        void a();
     }
 
     public interface ce {
-        public void a();
+        void a();
     }
 }

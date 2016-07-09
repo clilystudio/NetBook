@@ -20,7 +20,7 @@ final class p extends o {
 
     @Override
     public final Object a() {
-        return Float.valueOf(this.b);
+        return this.b;
     }
 
     @Override

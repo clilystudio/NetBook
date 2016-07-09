@@ -28,15 +28,15 @@ public class a {
 
     private void a(final BookReadRecord bookReadRecord, final int n, final int n2) {
         if (bookReadRecord == null) {
-            e.a((Activity) this.a, (String) "请重试");
+            e.a(this.a, "请重试");
             return;
         }
         if (!com.clilystudio.netbook.hpay100.a.a.d()) {
-            e.a((Activity) this.a, (String) "无法缓存，请检查SD卡是否挂载");
+            e.a(this.a, "无法缓存，请检查SD卡是否挂载");
             return;
         }
         if (com.clilystudio.netbook.hpay100.a.a.f(bookReadRecord.getReadMode())) {
-            e.b((Activity) this.a, (String) "暂不支持当前模式缓存");
+            e.b(this.a, "暂不支持当前模式缓存");
             return;
         }
         if (1 == com.clilystudio.netbook.hpay100.a.a.r(this.a)) {
@@ -67,7 +67,7 @@ public class a {
         String string = bookReadRecord.getBookId();
         int n3 = bookReadRecord.getReadMode();
         BusProvider.getInstance().post(new DownloadStatusEvent(string, 1));
-        e.a((Activity) this.a,  "已加入缓存队列");
+        e.a(this.a,  "已加入缓存队列");
         MyApplication.a().f().add(string);
         int n4 = n < 0 ? 0 : n;
         BookDlRecord bookDlRecord = BookDlRecord.get(string);

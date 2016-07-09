@@ -1,24 +1,154 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="?android:windowBackground" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/text_size_20" android:id="@id/list_title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dp_16" android:layout_marginTop="@dimen/dp_24" android:layout_marginRight="@dimen/dp_16" android:text="Title" />
-    <FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
-        <TextView android:textSize="@dimen/text_size_12" android:textColor="?android:textColorSecondary" android:id="@id/list_comment" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dp_16" android:layout_marginTop="@dimen/dp_16" android:layout_marginRight="@dimen/dp_16" android:text="Content" android:maxLines="5" android:lineSpacingMultiplier="1.4" />
-        <ImageButton android:layout_gravity="bottom|right|center" android:id="@id/ugcbook_more" android:background="@null" android:visibility="gone" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/dp_16" android:src="@drawable/ugcbook_detail_more" />
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="fill_parent"
+              android:layout_height="fill_parent"
+              android:background="?android:windowBackground"
+              android:orientation="vertical">
+
+    <TextView
+        android:id="@id/list_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_16"
+        android:layout_marginRight="@dimen/dp_16"
+        android:layout_marginTop="@dimen/dp_24"
+        android:text="Title"
+        android:textSize="@dimen/text_size_20"/>
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@id/list_comment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_16"
+            android:layout_marginRight="@dimen/dp_16"
+            android:layout_marginTop="@dimen/dp_16"
+            android:lineSpacingMultiplier="1.4"
+            android:maxLines="5"
+            android:text="Content"
+            android:textColor="?android:textColorSecondary"
+            android:textSize="@dimen/text_size_12"/>
+
+        <ImageButton
+            android:id="@id/ugcbook_more"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|right|center"
+            android:layout_marginRight="@dimen/dp_16"
+            android:background="@null"
+            android:clickable="true"
+            android:src="@drawable/ugcbook_detail_more"
+            android:visibility="gone"/>
     </FrameLayout>
-    <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dp_16" android:layout_marginTop="@dimen/dp_36" android:layout_marginBottom="@dimen/dp_16">
-        <com.clilystudio.netbook.ui.CircularSmartImageView android:id="@id/avatar" android:src="@drawable/avatar_default" style="@style/Cover_Ugc_Detail" />
-        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/author_layout" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dp_16" android:layout_toLeftOf="@id/ugcbook_share" android:layout_toRightOf="@id/avatar" android:layout_centerVertical="true">
-            <TextView android:textSize="@dimen/text_size_12" android:textColor="#ff727272" android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="创建自" />
-            <TextView android:textSize="@dimen/text_size_12" android:textColor="#ffa58d5e" android:ellipsize="end" android:layout_gravity="center_vertical" android:id="@id/author_info" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dp_6" android:text="Author" android:singleLine="true" />
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/dp_16"
+        android:layout_marginLeft="@dimen/dp_16"
+        android:layout_marginTop="@dimen/dp_36">
+
+        <com.clilystudio.netbook.ui.CircularSmartImageView
+            android:id="@id/avatar"
+            style="@style/Cover_Ugc_Detail"
+            android:src="@drawable/avatar_default"/>
+
+        <LinearLayout
+            android:id="@id/author_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/dp_16"
+            android:layout_toLeftOf="@id/ugcbook_share"
+            android:layout_toRightOf="@id/avatar"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="创建自"
+                android:textColor="#ff727272"
+                android:textSize="@dimen/text_size_12"/>
+
+            <TextView
+                android:id="@id/author_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/dp_6"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:text="Author"
+                android:textColor="#ffa58d5e"
+                android:textSize="@dimen/text_size_12"/>
         </LinearLayout>
-        <TextView android:textSize="@dimen/text_size_12" android:textColor="#ff795e3c" android:id="@id/author_time" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dp_16" android:layout_marginTop="1.0dip" android:text="\ 000" android:layout_toRightOf="@id/avatar" android:layout_below="@id/author_layout" />
-        <com.clilystudio.netbook.widget.DrawableTextView android:textSize="@dimen/text_size_12" android:textColor="@color/post_detail_agree" android:gravity="left|center" android:id="@id/ugcbook_share" android:background="@drawable/bg_agree_btn" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/dp_16" android:text="@string/share" android:drawableLeft="@drawable/ugcbook_detail_share" android:drawablePadding="4.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+
+        <TextView
+            android:id="@id/author_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/author_layout"
+            android:layout_marginLeft="@dimen/dp_16"
+            android:layout_marginTop="1.0dip"
+            android:layout_toRightOf="@id/avatar"
+            android:text="\ 000"
+            android:textColor="#ff795e3c"
+            android:textSize="@dimen/text_size_12"
+            android:visibility="gone"/>
+
+        <com.clilystudio.netbook.widget.DrawableTextView
+            android:id="@id/ugcbook_share"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/dp_16"
+            android:background="@drawable/bg_agree_btn"
+            android:clickable="true"
+            android:drawableLeft="@drawable/ugcbook_detail_share"
+            android:drawablePadding="4.0dip"
+            android:gravity="left|center"
+            android:text="@string/share"
+            android:textColor="@color/post_detail_agree"
+            android:textSize="@dimen/text_size_12"/>
     </RelativeLayout>
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="50.0dip" android:layout_marginLeft="@dimen/dp_16">
-        <TextView android:textSize="@dimen/text_size_15" android:textColor="#ffb93221" android:id="@id/list_fav_count" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="\ 99" />
-        <TextView android:textSize="@dimen/text_size_15" android:textColor="#ff352828" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dp_3" android:text="收藏" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="50.0dip"
+        android:layout_marginLeft="@dimen/dp_16"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@id/list_fav_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="\ 99"
+            android:textColor="#ffb93221"
+            android:textSize="@dimen/text_size_15"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_3"
+            android:text="收藏"
+            android:textColor="#ff352828"
+            android:textSize="@dimen/text_size_15"/>
     </LinearLayout>
-    <include layout="@layout/horizontal_divider" />
-    <TextView android:id="@id/vote_total" android:paddingLeft="@dimen/dp_16" android:visibility="gone" android:text="书单列表" style="@style/ListItemLabel" />
+
+    <include layout="@layout/horizontal_divider"/>
+
+    <TextView
+        android:id="@id/vote_total"
+        style="@style/ListItemLabel"
+        android:paddingLeft="@dimen/dp_16"
+        android:text="书单列表"
+        android:visibility="gone"/>
 </LinearLayout>

@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.clilystudio.netbook.widget.NicknameEditText android:textColor="?android:textColorSecondary" android:id="@id/name_field" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    <TextView android:textColor="@android:color/holo_red_light" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:text="修改后需要30天才能再次修改" style="@style/SmallText" />
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="fill_parent"
+              android:layout_height="fill_parent"
+              android:orientation="vertical">
+
+    <com.clilystudio.netbook.widget.NicknameEditText
+        android:id="@id/name_field"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textColor="?android:textColorSecondary"/>
+
+    <TextView
+        style="@style/SmallText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8.0dip"
+        android:text="修改后需要30天才能再次修改"
+        android:textColor="@android:color/holo_red_light"/>
 </LinearLayout>

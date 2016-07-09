@@ -1,10 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/popup_view" android:background="@android:color/transparent" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:id="@id/back_view" android:background="@android:color/transparent" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <LinearLayout android:gravity="center_vertical" android:layout_gravity="top|right|center" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/dp_8">
-        <TextView android:textSize="@dimen/text_size_16" android:textColor="?android:textColor" android:gravity="left|center" android:id="@id/create_ugc" android:background="?homeMenuPopupBgTop" android:paddingLeft="@dimen/dp_16" android:layout_width="144.0dip" android:layout_height="@dimen/home_menu_height" android:text="@string/ugc_create" android:singleLine="true" />
-        <View android:background="?lineColor" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_alignParentBottom="true" />
-        <TextView android:textSize="@dimen/text_size_16" android:textColor="?android:textColor" android:gravity="left|center" android:id="@id/my_ugc" android:background="?homeMenuPopupBgBottom" android:paddingLeft="@dimen/dp_16" android:layout_width="144.0dip" android:layout_height="@dimen/home_menu_height" android:text="@string/ugc_myown" android:singleLine="true" />
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:id="@id/popup_view"
+             android:layout_width="fill_parent"
+             android:layout_height="fill_parent"
+             android:background="@android:color/transparent"
+             android:gravity="center_vertical"
+             android:orientation="vertical">
+
+    <View
+        android:id="@id/back_view"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@android:color/transparent"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|right|center"
+        android:layout_marginRight="@dimen/dp_8"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@id/create_ugc"
+            android:layout_width="144.0dip"
+            android:layout_height="@dimen/home_menu_height"
+            android:background="?homeMenuPopupBgTop"
+            android:gravity="left|center"
+            android:paddingLeft="@dimen/dp_16"
+            android:singleLine="true"
+            android:text="@string/ugc_create"
+            android:textColor="?android:textColor"
+            android:textSize="@dimen/text_size_16"/>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1.0px"
+            android:layout_alignParentBottom="true"
+            android:background="?lineColor"/>
+
+        <TextView
+            android:id="@id/my_ugc"
+            android:layout_width="144.0dip"
+            android:layout_height="@dimen/home_menu_height"
+            android:background="?homeMenuPopupBgBottom"
+            android:gravity="left|center"
+            android:paddingLeft="@dimen/dp_16"
+            android:singleLine="true"
+            android:text="@string/ugc_myown"
+            android:textColor="?android:textColor"
+            android:textSize="@dimen/text_size_16"/>
     </LinearLayout>
 </FrameLayout>

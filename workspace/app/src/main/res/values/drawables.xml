@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <item type="drawable" name="hpay_cancel_selector">false</item>
-    <item type="drawable" name="hpay_edit">false</item>
-    <item type="drawable" name="hpay_getyzm_bg">false</item>
-    <item type="drawable" name="round_corner_rect_solidgray">false</item>
-    <item type="drawable" name="skyblue_platform_list_item">false</item>
-    <item type="drawable" name="skyblue_platform_list_item_selected">false</item>
-    <item type="drawable" name="skyblue_platform_list_selector">false</item>
-    <item type="drawable" name="notification_template_icon_bg">#3333b5e5</item>
+    <item name="hpay_cancel_selector" type="drawable">false</item>
+    <item name="hpay_edit" type="drawable">false</item>
+    <item name="hpay_getyzm_bg" type="drawable">false</item>
+    <item name="round_corner_rect_solidgray" type="drawable">false</item>
+    <item name="skyblue_platform_list_item" type="drawable">false</item>
+    <item name="skyblue_platform_list_item_selected" type="drawable">false</item>
+    <item name="skyblue_platform_list_selector" type="drawable">false</item>
+    <item name="notification_template_icon_bg" type="drawable">#3333b5e5</item>
 </resources>

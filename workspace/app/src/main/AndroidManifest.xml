@@ -101,10 +101,6 @@
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW"/>
-                <category android:name="android.intent.category.DEFAULT"/>
-            </intent-filter>
         </activity>
         <activity
             android:name="com.clilystudio.netbook.ui.home.HomeActivity"
@@ -169,95 +165,6 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.clilystudio.netbook.ui.post.BookPostTabActivity"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"/>
-        <activity
-            android:name="com.clilystudio.netbook.ui.post.PostDetailActivity"
-            android:exported="true"
-            android:screenOrientation="portrait">
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW"/>
-
-                <category android:name="android.intent.category.DEFAULT"/>
-                <category android:name="android.intent.category.BROWSABLE"/>
-
-                <data
-                    android:host="zhuishushenqi.com"
-                    android:pathPrefix="/discussdetail"
-                    android:scheme="ushaqi"/>
-            </intent-filter>
-        </activity>
-        <activity
-            android:name="com.clilystudio.netbook.ui.post.ReviewListActivity"
-            android:exported="true"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"/>
-        <activity
-            android:name="com.clilystudio.netbook.ui.post.CommonPostListActivity"
-            android:exported="true"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"/>
-        <activity
-            android:name="com.clilystudio.netbook.ui.post.BookHelpListActivity"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"/>
-        <activity
-            android:name="com.clilystudio.netbook.ui.post.GirlTopicListActivity"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"/>
-        <activity
-            android:name="com.clilystudio.netbook.ui.post.GirlTopicActivity"
-            android:screenOrientation="portrait"/>
-        <activity
-            android:name="com.clilystudio.netbook.ui.post.AddGirlTopicActivity"
-            android:screenOrientation="portrait"/>
-        <activity
-            android:name="com.clilystudio.netbook.ui.post.AddReviewActivity"
-            android:screenOrientation="portrait"/>
-        <activity
-            android:name="com.clilystudio.netbook.ui.post.AddReviewRatingActivity"
-            android:exported="true"
-            android:screenOrientation="portrait"/>
-        <activity
-            android:name="com.clilystudio.netbook.ui.post.AddReviewContentActivity"
-            android:screenOrientation="portrait"/>
-        <activity
-            android:name="com.clilystudio.netbook.ui.post.ReviewActivity"
-            android:screenOrientation="portrait"/>
-        <activity
-            android:name="com.clilystudio.netbook.ui.post.AddBookHelpActivity"
-            android:screenOrientation="portrait"/>
-        <activity
-            android:name="com.clilystudio.netbook.ui.post.BookHelpActivity"
-            android:screenOrientation="portrait"/>
-        <activity
-            android:name="com.clilystudio.netbook.ui.post.AddTopicCategoryActivity"
-            android:screenOrientation="portrait"/>
-        <activity
-            android:name="com.clilystudio.netbook.ui.post.AddVoteActivity"
-            android:screenOrientation="portrait"/>
-        <activity
-            android:name="com.clilystudio.netbook.ui.post.AddTopicActivity"
-            android:screenOrientation="portrait"/>
-        <activity
-            android:name="com.clilystudio.netbook.ui.post.AddVoteItemActivity"
-            android:configChanges="keyboardHidden|screenSize"
-            android:screenOrientation="portrait"/>
-        <activity
-            android:name="com.clilystudio.netbook.ui.post.TweetTabActivity"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"/>
-        <activity
-            android:name="com.clilystudio.netbook.ui.post.FollowerListActivity"
-            android:screenOrientation="portrait"/>
-        <activity
-            android:name="com.clilystudio.netbook.ui.post.OtherUserActivity"
-            android:screenOrientation="portrait"/>
-        <activity
-            android:name="com.clilystudio.netbook.ui.post.TweetDetailActivity"
-            android:screenOrientation="portrait"/>
-        <activity
             android:name="com.clilystudio.netbook.ui.BookInfoActivity"
             android:exported="true"
             android:screenOrientation="portrait"/>
@@ -296,10 +203,6 @@
             android:exported="true"
             android:theme="@style/ReaderTheme"/>
         <activity
-            android:name="com.clilystudio.netbook.reader.random.ReaderRandomActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/ReaderTheme"/>
-        <activity
             android:name="com.clilystudio.netbook.reader.ReaderWebActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ReaderTheme"/>
@@ -336,12 +239,6 @@
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </activity>
-        <!--<service android:exported="false" android:name="com.qq.e.comm.DownloadService"/>-->
-        <!--<activity android:configChanges="keyboard|keyboardHidden|orientation|screenSize" android:name="com.qq.e.ads.ADActivity"/>-->
-        <!--<activity android:configChanges="keyboardHidden|orientation" android:name="cn.sharesdk.framework.ShareSDKUIShell" android:screenOrientation="portrait" android:theme="@android:style/Theme.Translucent.NoTitleBar" android:windowSoftInputMode="stateHidden|adjustResize"/>-->
-        <activity
-            android:name="com.clilystudio.netbook.reader.random.ReaderRandomEntranceActivity"
-            android:screenOrientation="portrait"/>
         <activity
             android:name="com.clilystudio.netbook.ui.feed.FeedAddActivity"
             android:exported="true"

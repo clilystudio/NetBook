@@ -455,7 +455,7 @@
     <string name="sms_verify_price">支付金额</string>
     <string name="sms_wrong_number">您输入的手机号有误，请核对后再试</string>
     <string name="source_list_title">共搜索到%1$d个网站</string>
-    <item type="string" name="spb_default_speed">1.0</item>
+    <item name="spb_default_speed" type="string">1.0</item>
     <string name="status_bar_notification_info_overflow">999+</string>
     <string name="stop">停止</string>
     <string name="sync_loading">同步中…</string>

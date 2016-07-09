@@ -26,7 +26,7 @@ public class CipherUtil {
             byte[] arrby4 = a.a(arrby2, 16, arrby2.length);
             IvParameterSpec ivParameterSpec = new IvParameterSpec(arrby3);
             Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
-            cipher.init(2, (Key) secretKeySpec, ivParameterSpec);
+            cipher.init(2, secretKeySpec, ivParameterSpec);
             String string3 = new String(cipher.doFinal(arrby4));
             return string3;
         } catch (Exception var2_10) {

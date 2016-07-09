@@ -95,7 +95,7 @@ public class CoverLoadingLayer extends ImageView {
         this.z = new com.clilystudio.netbook.widget.comca.w.D(){
             @Override
             public void a(com.clilystudio.netbook.widget.comca.w paramw) {
-                float f = ((Float) paramw.f()).floatValue();
+                float f = (Float) paramw.f();
                 CoverLoadingLayer.b(CoverLoadingLayer.this, f * CoverLoadingLayer.d(CoverLoadingLayer.this));
                 CoverLoadingLayer.this.invalidate();
             }
@@ -259,17 +259,11 @@ public class CoverLoadingLayer extends ImageView {
     }
 
     private boolean j() {
-        if (this.l != null && this.l.d()) {
-            return true;
-        }
-        return false;
+        return this.l != null && this.l.d();
     }
 
     public final boolean a() {
-        if (this.o == 100) {
-            return true;
-        }
-        return false;
+        return this.o == 100;
     }
 
     public final void b() {
@@ -299,10 +293,7 @@ public class CoverLoadingLayer extends ImageView {
     }
 
     public final boolean g() {
-        if (this.s != null && this.s.d()) {
-            return true;
-        }
-        return false;
+        return this.s != null && this.s.d();
     }
 
     /*
@@ -545,14 +536,14 @@ public class CoverLoadingLayer extends ImageView {
         this.m.a();
     }
     enum Status {
-        NONE,PREPARE,PROGRESS,PAUSE,PENDING,DOWNLOADED;
+        NONE,PREPARE,PROGRESS,PAUSE,PENDING,DOWNLOADED
     }
 
     public interface y {
-        public void a();
+        void a();
 
-        public void b();
+        void b();
 
-        public void c();
+        void c();
     }
 }

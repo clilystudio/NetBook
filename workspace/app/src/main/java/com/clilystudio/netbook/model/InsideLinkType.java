@@ -14,7 +14,7 @@ public enum  InsideLinkType {
     private String name;
     private String value;
 
-    private InsideLinkType(String string2) {
+    InsideLinkType(String string2) {
         this.name = string2;
     }
 

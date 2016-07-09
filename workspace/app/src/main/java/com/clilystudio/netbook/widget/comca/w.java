@@ -164,8 +164,8 @@ public final class w extends a {
         float f2;
         this.m = f2 = this.y.getInterpolation(f);
         int n = this.A.length;
-        for (int i = 0; i < n; ++i) {
-            this.A[i].a(f2);
+        for (com.clilystudio.netbook.widget.comca.s aA : this.A) {
+            aA.a(f2);
         }
         if (this.z != null) {
             int n2 = this.z.size();
@@ -199,8 +199,8 @@ public final class w extends a {
     private void n() {
         if (!this.s) {
             int n = this.A.length;
-            for (int i = 0; i < n; ++i) {
-                this.A[i].b();
+            for (com.clilystudio.netbook.widget.comca.s aA : this.A) {
+                aA.b();
             }
             this.s = true;
         }
@@ -215,7 +215,7 @@ public final class w extends a {
             ArrayList arrayList = (ArrayList) this.a.clone();
             int n = arrayList.size();
             for (int i = 0; i < n; ++i) {
-                ((b) arrayList.get(i)).b((a) this);
+                ((b) arrayList.get(i)).b(this);
             }
         }
         this.q = false;
@@ -229,7 +229,7 @@ public final class w extends a {
             ArrayList arrayList = (ArrayList) this.a.clone();
             int n = arrayList.size();
             for (int i = 0; i < n; ++i) {
-                ((b) arrayList.get(i)).a((a) this);
+                ((b) arrayList.get(i)).a(this);
             }
         }
     }
@@ -297,7 +297,7 @@ public final class w extends a {
                 ArrayList arrayList = (ArrayList) this.a.clone();
                 int n = arrayList.size();
                 for (int i = 0; i < n; ++i) {
-                    ((b) arrayList.get(i)).a((a) this);
+                    ((b) arrayList.get(i)).a(this);
                 }
             }
         }
@@ -325,9 +325,8 @@ public final class w extends a {
     public final void b() {
         if (this.p != 0 || f.get().contains(this) || g.get().contains(this)) {
             if (this.q && this.a != null) {
-                Iterator iterator = ((ArrayList) this.a.clone()).iterator();
-                while (iterator.hasNext()) {
-                    ((b) iterator.next()).c((a) this);
+                for (Object o1 : ((ArrayList) this.a.clone())) {
+                    ((b) o1).c(this);
                 }
             }
             this.o();
@@ -377,10 +376,7 @@ public final class w extends a {
     }
 
     public final boolean d() {
-        if (this.p == 1 || this.q) {
-            return true;
-        }
-        return false;
+        return this.p == 1 || this.q;
     }
 
     public final /* synthetic */ a e() {
@@ -401,8 +397,8 @@ public final class w extends a {
     public final String toString() {
         String string = "ValueAnimator@" + Integer.toHexString(this.hashCode());
         if (this.A != null) {
-            for (int i = 0; i < this.A.length; ++i) {
-                string = string + "\n    " + this.A[i].toString();
+            for (com.clilystudio.netbook.widget.comca.s aA : this.A) {
+                string = string + "\n    " + aA.toString();
             }
         }
         return string;
@@ -449,7 +445,7 @@ public final class w extends a {
             int var11_16 = var7_11.size();
             if (var11_16 > 0) {
                 for (int var20_17 = 0; var20_17 < var11_16; ++var20_17) {
-                    w var21_18 = (w) var7_11.get(var20_17);
+                    w var21_18 = var7_11.get(var20_17);
                     b(var21_18);
                     a(var21_18, true);
                     var3_3.remove(var21_18);
@@ -485,6 +481,6 @@ public final class w extends a {
     }
 
     public interface D {
-        public void a(w var1);
+        void a(w var1);
     }
 }

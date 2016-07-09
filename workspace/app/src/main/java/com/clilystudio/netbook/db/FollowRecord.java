@@ -47,8 +47,7 @@ public class FollowRecord extends Model {
         User user = am.e().getUser();
         ActiveAndroid.beginTransaction();
         int n = arrfollower.length;
-        for (int i = 0; i < n; ++i) {
-            Follower follower = arrfollower[i];
+        for (Follower follower : arrfollower) {
             FollowRecord followRecord = new FollowRecord();
             followRecord.setUserId(user.getId());
             followRecord.setFollowedId(follower.get_id());

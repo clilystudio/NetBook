@@ -1,3 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextView android:id="@id/distillate_flag" android:background="@drawable/bg_distillate_flag" android:text="精品" android:drawableLeft="@drawable/ic_topic_distillate" android:layout_alignParentRight="true" style="@style/PostFlag"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+          android:id="@id/distillate_flag"
+          style="@style/PostFlag"
+          android:layout_alignParentRight="true"
+          android:background="@drawable/bg_distillate_flag"
+          android:drawableLeft="@drawable/ic_topic_distillate"
+          android:text="精品"/>

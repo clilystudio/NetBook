@@ -1,28 +1,160 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView android:background="?backgroundPressed" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:id="@id/main_settings_content" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <TextView android:text="@string/settings" style="@style/SettingLabel" />
-        <RelativeLayout android:id="@id/settings_shelf_sort" android:background="?backgroundSelector" android:paddingLeft="@dimen/dp_16" android:paddingRight="@dimen/dp_16" android:layout_width="fill_parent" android:layout_height="@dimen/dp_55">
-            <TextView android:textSize="@dimen/settings_item_l" android:textColor="?android:textColor" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="书架排序" android:layout_centerVertical="true" />
-            <TextView android:textSize="@dimen/text_size_14" android:textColor="?android:textColorSecondary" android:id="@id/settings_shelf_sort_value" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/dp_10" android:layout_toLeftOf="@id/arrow" android:layout_centerVertical="true" />
-            <ImageView android:id="@id/arrow" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/ios_arrow" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="?backgroundPressed">
+
+    <LinearLayout
+        android:id="@id/main_settings_content"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            style="@style/SettingLabel"
+            android:text="@string/settings"/>
+
+        <RelativeLayout
+            android:id="@id/settings_shelf_sort"
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/dp_55"
+            android:background="?backgroundSelector"
+            android:paddingLeft="@dimen/dp_16"
+            android:paddingRight="@dimen/dp_16">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="书架排序"
+                android:textColor="?android:textColor"
+                android:textSize="@dimen/settings_item_l"/>
+
+            <TextView
+                android:id="@id/settings_shelf_sort_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/dp_10"
+                android:layout_toLeftOf="@id/arrow"
+                android:textColor="?android:textColorSecondary"
+                android:textSize="@dimen/text_size_14"/>
+
+            <ImageView
+                android:id="@id/arrow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ios_arrow"/>
         </RelativeLayout>
-        <View android:background="?lineColor" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="@dimen/dp_16" />
-        <android.support.v7.widget.SwitchCompat android:textSize="@dimen/settings_item_l" android:textColor="?android:textColor" android:id="@id/cb_notice_update" android:checked="true" android:text="@string/update_notice" style="@style/Setting_Item_Switch" />
-        <View android:background="?lineColor" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="@dimen/dp_16" />
-        <android.support.v7.widget.SwitchCompat android:textSize="@dimen/settings_item_l" android:textColor="?android:textColor" android:id="@id/cb_save_bandwidth" android:checked="false" android:text="省流量模式（无头像）" style="@style/Setting_Item_Switch" />
-        <TextView android:text="@string/more" style="@style/SettingLabel" />
-        <TextView android:textSize="@dimen/settings_item_l" android:textColor="?android:textColor" android:id="@id/tv_disclaimer" android:background="?backgroundSelector" android:text="@string/disclaimer_title" style="@style/Home_Settings_Item" />
-        <View android:background="?lineColor" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="@dimen/dp_16" />
-        <TextView android:textSize="@dimen/settings_item_l" android:textColor="?android:textColor" android:id="@id/tv_jd" android:background="?backgroundSelector" android:text="加入我们" style="@style/Home_Settings_Item" />
-        <View android:id="@id/jd_divider" android:background="?lineColor" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="@dimen/dp_16" />
-        <TextView android:textSize="@dimen/settings_item_l" android:textColor="?android:textColor" android:id="@id/tv_feedback" android:background="?backgroundSelector" android:text="@string/feedback_title" style="@style/Home_Settings_Item" />
-        <View android:background="?lineColor" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="@dimen/dp_16" />
-        <TextView android:textSize="@dimen/settings_item_l" android:textColor="?android:textColor" android:id="@id/settings_market_assessment" android:background="?backgroundSelector" android:text="@string/settings_market" style="@style/Home_Settings_Item" />
-        <LinearLayout android:gravity="center_horizontal" android:orientation="horizontal" android:paddingTop="@dimen/dp_18" android:paddingBottom="@dimen/dp_10" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <TextView android:textSize="@dimen/text_size_12" android:textColor="?android:textColorTertiary" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/version_title" />
-            <TextView android:textSize="@dimen/text_size_12" android:textColor="?android:textColorTertiary" android:id="@id/settings_version_name" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dp_5" android:text="3.0" />
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1.0px"
+            android:layout_marginLeft="@dimen/dp_16"
+            android:background="?lineColor"/>
+
+        <android.support.v7.widget.SwitchCompat
+            android:id="@id/cb_notice_update"
+            style="@style/Setting_Item_Switch"
+            android:checked="true"
+            android:text="@string/update_notice"
+            android:textColor="?android:textColor"
+            android:textSize="@dimen/settings_item_l"/>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1.0px"
+            android:layout_marginLeft="@dimen/dp_16"
+            android:background="?lineColor"/>
+
+        <android.support.v7.widget.SwitchCompat
+            android:id="@id/cb_save_bandwidth"
+            style="@style/Setting_Item_Switch"
+            android:checked="false"
+            android:text="省流量模式（无头像）"
+            android:textColor="?android:textColor"
+            android:textSize="@dimen/settings_item_l"/>
+
+        <TextView
+            style="@style/SettingLabel"
+            android:text="@string/more"/>
+
+        <TextView
+            android:id="@id/tv_disclaimer"
+            style="@style/Home_Settings_Item"
+            android:background="?backgroundSelector"
+            android:text="@string/disclaimer_title"
+            android:textColor="?android:textColor"
+            android:textSize="@dimen/settings_item_l"/>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1.0px"
+            android:layout_marginLeft="@dimen/dp_16"
+            android:background="?lineColor"/>
+
+        <TextView
+            android:id="@id/tv_jd"
+            style="@style/Home_Settings_Item"
+            android:background="?backgroundSelector"
+            android:text="加入我们"
+            android:textColor="?android:textColor"
+            android:textSize="@dimen/settings_item_l"/>
+
+        <View
+            android:id="@id/jd_divider"
+            android:layout_width="fill_parent"
+            android:layout_height="1.0px"
+            android:layout_marginLeft="@dimen/dp_16"
+            android:background="?lineColor"/>
+
+        <TextView
+            android:id="@id/tv_feedback"
+            style="@style/Home_Settings_Item"
+            android:background="?backgroundSelector"
+            android:text="@string/feedback_title"
+            android:textColor="?android:textColor"
+            android:textSize="@dimen/settings_item_l"/>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1.0px"
+            android:layout_marginLeft="@dimen/dp_16"
+            android:background="?lineColor"/>
+
+        <TextView
+            android:id="@id/settings_market_assessment"
+            style="@style/Home_Settings_Item"
+            android:background="?backgroundSelector"
+            android:text="@string/settings_market"
+            android:textColor="?android:textColor"
+            android:textSize="@dimen/settings_item_l"/>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal"
+            android:paddingBottom="@dimen/dp_10"
+            android:paddingTop="@dimen/dp_18">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/version_title"
+                android:textColor="?android:textColorTertiary"
+                android:textSize="@dimen/text_size_12"/>
+
+            <TextView
+                android:id="@id/settings_version_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_5"
+                android:text="3.0"
+                android:textColor="?android:textColorTertiary"
+                android:textSize="@dimen/text_size_12"/>
         </LinearLayout>
     </LinearLayout>
 </ScrollView>

@@ -1,6 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/popup_view" android:background="@android:color/transparent" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:id="@id/back_view" android:background="#a0000000" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <ListView android:id="@id/min_category_list" android:background="?android:windowBackground" android:layout_width="fill_parent" android:layout_height="wrap_content" android:divider="@null" android:dividerHeight="0.0dip" />
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:id="@id/popup_view"
+             android:layout_width="fill_parent"
+             android:layout_height="fill_parent"
+             android:background="@android:color/transparent"
+             android:gravity="center_vertical"
+             android:orientation="vertical">
+
+    <View
+        android:id="@id/back_view"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="#a0000000"/>
+
+    <ListView
+        android:id="@id/min_category_list"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="?android:windowBackground"
+        android:divider="@null"
+        android:dividerHeight="0.0dip"/>
 </FrameLayout>

@@ -16,9 +16,9 @@ public final class ae {
     private String[][] c = new String[][]{{"零", "0"}, {"一", "1"}, {"二", "2"}, {"两", "2"}, {"三", "3"},
             {"四", "4"}, {"五", "5"}, {"六", "6"}, {"七", "7"}, {"八", "8"}, {"九", "9"}};
     private String[][] d = new String[][]{{"万", "10000"}, {"千", "1000"}, {"百", "100"}, {"十", "10"}};
-    private Map<String, String> e = new HashMap<String, String>();
-    private Map<String, Integer> f = new HashMap<String, Integer>();
-    private Map<String, Integer> g = new HashMap<String, Integer>();
+    private Map<String, String> e = new HashMap<>();
+    private Map<String, Integer> f = new HashMap<>();
+    private Map<String, Integer> g = new HashMap<>();
 
     public ae() {
         this.a();
@@ -139,11 +139,6 @@ public final class ae {
         if (string4.equals(string3 = this.b(string2))) return bl;
         af af2 = this.a(string4);
         af af3 = this.a(string3);
-        if (af.a(af2) != af.a(af3)) return false;
-        if (!TextUtils.equals(af2.b(), af3.b())) {
-            return false;
-        }
-        if (this.a.a(af2.a(), af3.a()) >= 0.5f) return bl;
-        return false;
+        return af.a(af2) == af.a(af3) && TextUtils.equals(af2.b(), af3.b()) && this.a.a(af2.a(), af3.a()) >= 0.5f && bl;
     }
 }

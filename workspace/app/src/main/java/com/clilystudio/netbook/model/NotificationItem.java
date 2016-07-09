@@ -137,7 +137,7 @@ public class NotificationItem {
     }
 
     public Date getServerDate() {
-        return t.b((String) this.getCreated());
+        return t.b(this.getCreated());
     }
 
     public String getSubTitle() {
@@ -189,17 +189,11 @@ public class NotificationItem {
     }
 
     public boolean isPush() {
-        if (this.getTrigger() == null) {
-            return true;
-        }
-        return false;
+        return this.getTrigger() == null;
     }
 
     public boolean isPushPost() {
-        if (this.isPush() && this.getPost() != null) {
-            return true;
-        }
-        return false;
+        return this.isPush() && this.getPost() != null;
     }
 
     public boolean isType(String string) {

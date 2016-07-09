@@ -1,16 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
 <merge
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:id="@id/vote_total_layout" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <TextView android:id="@id/vote_total" android:text="共0人投票" style="@style/ListItemLabel" />
-        <View android:background="?lineColor" android:layout_width="fill_parent" android:layout_height="1.0px" />
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:id="@id/vote_total_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@id/vote_total"
+            style="@style/ListItemLabel"
+            android:text="共0人投票"/>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1.0px"
+            android:background="?lineColor"/>
     </LinearLayout>
-    <include android:id="@id/vote_item_1" android:visibility="gone" layout="@layout/list_item_post_detail_vote" />
-    <include android:id="@id/vote_item_2" android:visibility="gone" layout="@layout/list_item_post_detail_vote" />
-    <include android:id="@id/vote_item_3" android:visibility="gone" layout="@layout/list_item_post_detail_vote" />
-    <include android:id="@id/vote_item_4" android:visibility="gone" layout="@layout/list_item_post_detail_vote" />
-    <include android:id="@id/vote_item_5" android:visibility="gone" layout="@layout/list_item_post_detail_vote" />
-    <include android:id="@id/vote_item_6" android:visibility="gone" layout="@layout/list_item_post_detail_vote" />
-    <include android:id="@id/vote_item_7" android:visibility="gone" layout="@layout/list_item_post_detail_vote" />
-    <include android:id="@id/vote_divider" android:visibility="gone" layout="@layout/horizontal_divider" />
+
+    <include
+        android:id="@id/vote_item_1"
+        layout="@layout/list_item_post_detail_vote"
+        android:visibility="gone"/>
+
+    <include
+        android:id="@id/vote_item_2"
+        layout="@layout/list_item_post_detail_vote"
+        android:visibility="gone"/>
+
+    <include
+        android:id="@id/vote_item_3"
+        layout="@layout/list_item_post_detail_vote"
+        android:visibility="gone"/>
+
+    <include
+        android:id="@id/vote_item_4"
+        layout="@layout/list_item_post_detail_vote"
+        android:visibility="gone"/>
+
+    <include
+        android:id="@id/vote_item_5"
+        layout="@layout/list_item_post_detail_vote"
+        android:visibility="gone"/>
+
+    <include
+        android:id="@id/vote_item_6"
+        layout="@layout/list_item_post_detail_vote"
+        android:visibility="gone"/>
+
+    <include
+        android:id="@id/vote_item_7"
+        layout="@layout/list_item_post_detail_vote"
+        android:visibility="gone"/>
+
+    <include
+        android:id="@id/vote_divider"
+        layout="@layout/horizontal_divider"
+        android:visibility="gone"/>
 </merge>

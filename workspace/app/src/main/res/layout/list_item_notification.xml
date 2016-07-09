@@ -1,12 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.clilystudio.netbook.widget.DividerSection android:background="?backgroundSelector" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <FrameLayout android:layout_width="@dimen/shelf_divider_left_gap" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp_16" android:layout_alignParentLeft="true">
-        <com.clilystudio.netbook.ui.CircularSmartImageView android:layout_gravity="center_horizontal" android:id="@id/avatar" android:layout_width="34.0dip" android:layout_height="34.0dip" />
+<com.clilystudio.netbook.widget.DividerSection xmlns:android="http://schemas.android.com/apk/res/android"
+                                               android:layout_width="fill_parent"
+                                               android:layout_height="wrap_content"
+                                               android:background="?backgroundSelector">
+
+    <FrameLayout
+        android:layout_width="@dimen/shelf_divider_left_gap"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="@dimen/dp_16">
+
+        <com.clilystudio.netbook.ui.CircularSmartImageView
+            android:id="@id/avatar"
+            android:layout_width="34.0dip"
+            android:layout_height="34.0dip"
+            android:layout_gravity="center_horizontal"/>
     </FrameLayout>
-    <LinearLayout android:orientation="vertical" android:paddingTop="16.0dip" android:paddingRight="16.0dip" android:paddingBottom="16.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/shelf_divider_left_gap" android:layout_toLeftOf="@id/msg_comment_to_me_new" android:layout_alignParentLeft="true" android:layout_centerVertical="true">
-        <TextView android:textSize="@dimen/text_size_15" android:typeface="normal" android:textColor="?android:textColor" android:gravity="center_vertical" android:id="@id/main_text" android:paddingRight="@dimen/dp_12" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="测试评论" />
-        <TextView android:textSize="@dimen/text_size_11" android:textColor="?android:textColorSecondary" android:id="@id/sub_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:singleLine="true" android:drawableLeft="@drawable/reply2" android:drawablePadding="@dimen/dp_5" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/shelf_divider_left_gap"
+        android:layout_toLeftOf="@id/msg_comment_to_me_new"
+        android:orientation="vertical"
+        android:paddingBottom="16.0dip"
+        android:paddingRight="16.0dip"
+        android:paddingTop="16.0dip">
+
+        <TextView
+            android:id="@id/main_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:paddingRight="@dimen/dp_12"
+            android:text="测试评论"
+            android:textColor="?android:textColor"
+            android:textSize="@dimen/text_size_15"
+            android:typeface="normal"/>
+
+        <TextView
+            android:id="@id/sub_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8.0dip"
+            android:drawableLeft="@drawable/reply2"
+            android:drawablePadding="@dimen/dp_5"
+            android:singleLine="true"
+            android:textColor="?android:textColorSecondary"
+            android:textSize="@dimen/text_size_11"/>
     </LinearLayout>
-    <ImageView android:id="@id/msg_comment_to_me_new" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dp_5" android:layout_marginRight="@dimen/dp_20" android:src="@drawable/tabhost_dot_icon" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+
+    <ImageView
+        android:id="@id/msg_comment_to_me_new"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/dp_5"
+        android:layout_marginRight="@dimen/dp_20"
+        android:src="@drawable/tabhost_dot_icon"
+        android:visibility="gone"/>
 </com.clilystudio.netbook.widget.DividerSection>

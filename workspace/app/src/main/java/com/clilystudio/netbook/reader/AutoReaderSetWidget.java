@@ -95,10 +95,10 @@ public class AutoReaderSetWidget extends LinearLayout implements View.OnClickLis
 
 
     public interface a {
-        public void a();
+        void a();
 
-        public void b();
+        void b();
 
-        public void c();
+        void c();
     }
 }

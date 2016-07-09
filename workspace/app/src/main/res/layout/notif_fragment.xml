@@ -1,9 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="?backgroundPressed" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.handmark.pulltorefresh.library.PullToRefreshListView android:id="@id/ptr_list" android:layout_width="fill_parent" android:layout_height="fill_parent" android:headerDividersEnabled="false" android:footerDividersEnabled="false" ptr:ptrMode="disabled" ptr:ptrShowIndicator="false" ptr:ptrAnimationStyle="flip" ptr:ptrRotateDrawableWhilePulling="@drawable/fancy_spinner" style="@style/ListView" xmlns:ptr="http://schemas.android.com/apk/res-auto" />
-    <TextView android:textSize="@dimen/text_size_16" android:textColor="@color/empty_view_text" android:gravity="center" android:id="@id/empty_text" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="没有任何内容" android:layout_centerVertical="true" />
-    <ProgressBar android:id="@id/pb_loading" android:layout_centerInParent="true" style="@style/Loading" />
-    <include layout="@layout/notif_empty_view_bell" />
-    <ImageView android:id="@id/load_error_hint_btn" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/load_error_hint" android:layout_centerInParent="true" />
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:background="?backgroundPressed">
+
+    <com.handmark.pulltorefresh.library.PullToRefreshListView xmlns:ptr="http://schemas.android.com/apk/res-auto"
+                                                              android:id="@id/ptr_list"
+                                                              style="@style/ListView"
+                                                              android:layout_width="fill_parent"
+                                                              android:layout_height="fill_parent"
+                                                              android:footerDividersEnabled="false"
+                                                              android:headerDividersEnabled="false"
+                                                              ptr:ptrAnimationStyle="flip"
+                                                              ptr:ptrMode="disabled"
+                                                              ptr:ptrRotateDrawableWhilePulling="@drawable/fancy_spinner"
+                                                              ptr:ptrShowIndicator="false"/>
+
+    <TextView
+        android:id="@id/empty_text"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:gravity="center"
+        android:text="没有任何内容"
+        android:textColor="@color/empty_view_text"
+        android:textSize="@dimen/text_size_16"
+        android:visibility="gone"/>
+
+    <ProgressBar
+        android:id="@id/pb_loading"
+        style="@style/Loading"
+        android:layout_centerInParent="true"/>
+
+    <include layout="@layout/notif_empty_view_bell"/>
+
+    <ImageView
+        android:id="@id/load_error_hint_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:src="@drawable/load_error_hint"
+        android:visibility="gone"/>
 </RelativeLayout>

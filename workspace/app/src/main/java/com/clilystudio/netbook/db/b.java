@@ -1,8 +1,5 @@
 package com.clilystudio.netbook.db;
 
-import java.util.ArrayList;
-import java.util.List;
-
 // For Db Version Upgrade
 @Deprecated
 public final class b {

@@ -1,24 +1,123 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="?android:windowBackground" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:id="@id/content" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <LinearLayout android:gravity="center" android:orientation="horizontal" android:background="?colorPrimary" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <RelativeLayout android:gravity="center_horizontal" android:id="@id/book_review_top_left" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" style="@style/Post_List_PopupWindow">
-                <TextView android:textSize="@dimen/book_post_pop_text" android:textColor="@color/book_topic_top_text" android:id="@id/book_review_top_left_title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="全部" />
-                <ImageView android:id="@id/book_review_top_left_arrow" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:src="@drawable/book_topic_top_arrow_down" android:layout_toRightOf="@id/book_review_top_left_title" android:layout_centerVertical="true" />
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:background="?android:windowBackground">
+
+    <LinearLayout
+        android:id="@id/content"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="?colorPrimary"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:id="@id/book_review_top_left"
+                style="@style/Post_List_PopupWindow"
+                android:layout_width="0.0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0"
+                android:gravity="center_horizontal">
+
+                <TextView
+                    android:id="@id/book_review_top_left_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="全部"
+                    android:textColor="@color/book_topic_top_text"
+                    android:textSize="@dimen/book_post_pop_text"/>
+
+                <ImageView
+                    android:id="@id/book_review_top_left_arrow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="5.0dip"
+                    android:layout_toRightOf="@id/book_review_top_left_title"
+                    android:src="@drawable/book_topic_top_arrow_down"/>
             </RelativeLayout>
-            <RelativeLayout android:gravity="center_horizontal" android:id="@id/book_review_top_mid" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" style="@style/Post_List_PopupWindow">
-                <TextView android:textSize="@dimen/book_post_pop_text" android:textColor="@color/book_topic_top_text" android:id="@id/book_review_top_mid_title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="全部类型" />
-                <ImageView android:id="@id/book_review_top_mid_arrow" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:src="@drawable/book_topic_top_arrow_down" android:layout_toRightOf="@id/book_review_top_mid_title" android:layout_centerVertical="true" />
+
+            <RelativeLayout
+                android:id="@id/book_review_top_mid"
+                style="@style/Post_List_PopupWindow"
+                android:layout_width="0.0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0"
+                android:gravity="center_horizontal">
+
+                <TextView
+                    android:id="@id/book_review_top_mid_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="全部类型"
+                    android:textColor="@color/book_topic_top_text"
+                    android:textSize="@dimen/book_post_pop_text"/>
+
+                <ImageView
+                    android:id="@id/book_review_top_mid_arrow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="5.0dip"
+                    android:layout_toRightOf="@id/book_review_top_mid_title"
+                    android:src="@drawable/book_topic_top_arrow_down"/>
             </RelativeLayout>
-            <RelativeLayout android:gravity="center_horizontal" android:id="@id/book_review_top_right" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" style="@style/Post_List_PopupWindow">
-                <TextView android:textSize="@dimen/book_post_pop_text" android:textColor="@color/book_topic_top_text" android:id="@id/book_review_top_right_title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="默认排序" />
-                <ImageView android:id="@id/book_review_top_right_arrow" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:src="@drawable/book_topic_top_arrow_down" android:layout_toRightOf="@id/book_review_top_right_title" android:layout_centerVertical="true" />
+
+            <RelativeLayout
+                android:id="@id/book_review_top_right"
+                style="@style/Post_List_PopupWindow"
+                android:layout_width="0.0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0"
+                android:gravity="center_horizontal">
+
+                <TextView
+                    android:id="@id/book_review_top_right_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="默认排序"
+                    android:textColor="@color/book_topic_top_text"
+                    android:textSize="@dimen/book_post_pop_text"/>
+
+                <ImageView
+                    android:id="@id/book_review_top_right_arrow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="5.0dip"
+                    android:layout_toRightOf="@id/book_review_top_right_title"
+                    android:src="@drawable/book_topic_top_arrow_down"/>
             </RelativeLayout>
         </LinearLayout>
-        <View android:background="?lineColor" android:layout_width="fill_parent" android:layout_height="1.0px" />
-        <com.handmark.pulltorefresh.library.PullToRefreshListView android:id="@id/ptr_list" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/DividerListView" />
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1.0px"
+            android:background="?lineColor"/>
+
+        <com.handmark.pulltorefresh.library.PullToRefreshListView
+            android:id="@id/ptr_list"
+            style="@style/DividerListView"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"/>
     </LinearLayout>
-    <TextView android:textSize="@dimen/text_size_16" android:textColor="@color/empty_view_text" android:id="@id/empty_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" />
-    <ProgressBar android:id="@id/pb_loading" android:layout_centerInParent="true" style="@style/Loading" />
+
+    <TextView
+        android:id="@id/empty_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:textColor="@color/empty_view_text"
+        android:textSize="@dimen/text_size_16"/>
+
+    <ProgressBar
+        android:id="@id/pb_loading"
+        style="@style/Loading"
+        android:layout_centerInParent="true"/>
 </RelativeLayout>

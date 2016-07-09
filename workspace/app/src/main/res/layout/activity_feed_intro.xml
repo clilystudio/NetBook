@@ -1,15 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="?android:windowBackground" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:paddingLeft="@dimen/dp_35" android:paddingRight="@dimen/dp_35" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
-        <ImageView android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp_30" android:src="@drawable/feed_intro_img" />
-        <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp_30">
-            <View android:layout_gravity="center" android:background="?lineColor" android:layout_width="0.0dip" android:layout_height="1.0px" android:layout_weight="1.0" />
-            <TextView android:textSize="@dimen/text_size_12" android:textColor="#ffffffff" android:gravity="center" android:layout_gravity="center" android:background="@drawable/long_secret_text_bar" android:paddingLeft="@dimen/dp_6" android:paddingRight="@dimen/dp_6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="新功能" />
-            <View android:layout_gravity="center" android:background="#ffbababa" android:layout_width="0.0dip" android:layout_height="1.0px" android:layout_weight="1.0" />
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="fill_parent"
+              android:layout_height="fill_parent"
+              android:background="?android:windowBackground"
+              android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0.0dip"
+        android:layout_weight="1.0"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/dp_35"
+        android:paddingRight="@dimen/dp_35">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/dp_30"
+            android:src="@drawable/feed_intro_img"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_30"
+            android:orientation="horizontal">
+
+            <View
+                android:layout_width="0.0dip"
+                android:layout_height="1.0px"
+                android:layout_gravity="center"
+                android:layout_weight="1.0"
+                android:background="?lineColor"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/long_secret_text_bar"
+                android:gravity="center"
+                android:paddingLeft="@dimen/dp_6"
+                android:paddingRight="@dimen/dp_6"
+                android:text="新功能"
+                android:textColor="#ffffffff"
+                android:textSize="@dimen/text_size_12"/>
+
+            <View
+                android:layout_width="0.0dip"
+                android:layout_height="1.0px"
+                android:layout_gravity="center"
+                android:layout_weight="1.0"
+                android:background="#ffbababa"/>
         </LinearLayout>
-        <TextView android:textSize="@dimen/random_entrance_title" android:textStyle="bold" android:gravity="center" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/random_entrance_gap_big" android:text="@string/feed" />
-        <TextView android:textSize="@dimen/text_size_14" android:textColor="?android:textColorSecondary" android:gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/random_entrance_gap_big" android:text="@string/feed_intro_desc" android:lineSpacingMultiplier="1.2" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/random_entrance_gap_big"
+            android:gravity="center"
+            android:text="@string/feed"
+            android:textSize="@dimen/random_entrance_title"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/random_entrance_gap_big"
+            android:gravity="center"
+            android:lineSpacingMultiplier="1.2"
+            android:text="@string/feed_intro_desc"
+            android:textColor="?android:textColorSecondary"
+            android:textSize="@dimen/text_size_14"/>
     </LinearLayout>
-    <Button android:textSize="@dimen/text_size_20" android:textColor="@android:color/white" android:layout_gravity="center_horizontal" android:id="@id/feed_intro_btn" android:background="?audiobookRedButtonSelector" android:layout_width="300.0dip" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/dp_42" android:text="@string/ok_user" />
+
+    <Button
+        android:id="@id/feed_intro_btn"
+        android:layout_width="300.0dip"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="@dimen/dp_42"
+        android:background="?audiobookRedButtonSelector"
+        android:text="@string/ok_user"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/text_size_20"/>
 </LinearLayout>

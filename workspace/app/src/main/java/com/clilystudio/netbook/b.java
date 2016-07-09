@@ -81,8 +81,8 @@ public final class b {
     public final /* varargs */ void a(String... arrstring) {
         Properties properties = this.a();
         int n = arrstring.length;
-        for (int i = 0; i < n; ++i) {
-            properties.remove(arrstring[i]);
+        for (String anArrstring : arrstring) {
+            properties.remove(anArrstring);
         }
         this.b(properties);
     }

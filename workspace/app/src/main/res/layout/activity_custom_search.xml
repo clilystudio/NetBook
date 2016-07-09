@@ -1,21 +1,107 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView android:background="?backgroundPressed" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:layout_gravity="center_horizontal" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <TextView android:text="请确认填写内容准确" style="@style/ListItemLabel" />
-        <View android:background="?lineColor" android:layout_width="fill_parent" android:layout_height="1.0px" />
-        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <View android:focusable="true" android:focusableInTouchMode="true" android:layout_width="0.0px" android:layout_height="0.0px" />
-            <FrameLayout android:background="?backgroundNormal" android:paddingTop="@dimen/dp_15" android:paddingBottom="@dimen/dp_15" android:layout_width="fill_parent" android:layout_height="wrap_content">
-                <EditText android:textSize="@dimen/text_size_17" android:textColor="?android:textColorSecondary" android:textColorHint="?android:textColorTertiary" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/add_book_name" android:background="@null" android:paddingLeft="@dimen/dp_60" android:layout_width="fill_parent" android:layout_height="fill_parent" android:hint="请输入完整的书名" android:singleLine="true" style="@style/edit_text_style" />
-                <TextView android:textSize="@dimen/text_size_17" android:textColor="?android:textColor" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:paddingLeft="14.0dip" android:text="书名" style="@style/label_text" />
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="?backgroundPressed">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <TextView
+            style="@style/ListItemLabel"
+            android:text="请确认填写内容准确"/>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1.0px"
+            android:background="?lineColor"/>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <View
+                android:layout_width="0.0px"
+                android:layout_height="0.0px"
+                android:focusable="true"
+                android:focusableInTouchMode="true"/>
+
+            <FrameLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="?backgroundNormal"
+                android:paddingBottom="@dimen/dp_15"
+                android:paddingTop="@dimen/dp_15">
+
+                <EditText
+                    android:id="@id/add_book_name"
+                    style="@style/edit_text_style"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_gravity="center_vertical"
+                    android:background="@null"
+                    android:gravity="center_vertical"
+                    android:hint="请输入完整的书名"
+                    android:paddingLeft="@dimen/dp_60"
+                    android:singleLine="true"
+                    android:textColor="?android:textColorSecondary"
+                    android:textColorHint="?android:textColorTertiary"
+                    android:textSize="@dimen/text_size_17"/>
+
+                <TextView
+                    style="@style/label_text"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="14.0dip"
+                    android:text="书名"
+                    android:textColor="?android:textColor"
+                    android:textSize="@dimen/text_size_17"/>
             </FrameLayout>
-            <View android:background="?lineColor" android:layout_width="fill_parent" android:layout_height="1.0px" />
-            <FrameLayout android:background="?backgroundNormal" android:paddingTop="@dimen/dp_15" android:paddingBottom="@dimen/dp_15" android:layout_width="fill_parent" android:layout_height="wrap_content">
-                <EditText android:textSize="@dimen/text_size_17" android:textColor="?android:textColorSecondary" android:textColorHint="?android:textColorTertiary" android:layout_gravity="center_vertical" android:id="@id/add_book_author" android:background="@null" android:paddingLeft="@dimen/dp_60" android:focusable="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:hint="请输入作者姓名" android:singleLine="true" style="@style/edit_text_style" />
-                <TextView android:textSize="@dimen/text_size_17" android:textColor="?android:textColor" android:layout_gravity="center_vertical" android:paddingLeft="15.0dip" android:text="作者" style="@style/label_text" />
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1.0px"
+                android:background="?lineColor"/>
+
+            <FrameLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="?backgroundNormal"
+                android:paddingBottom="@dimen/dp_15"
+                android:paddingTop="@dimen/dp_15">
+
+                <EditText
+                    android:id="@id/add_book_author"
+                    style="@style/edit_text_style"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_gravity="center_vertical"
+                    android:background="@null"
+                    android:focusable="true"
+                    android:hint="请输入作者姓名"
+                    android:paddingLeft="@dimen/dp_60"
+                    android:singleLine="true"
+                    android:textColor="?android:textColorSecondary"
+                    android:textColorHint="?android:textColorTertiary"
+                    android:textSize="@dimen/text_size_17"/>
+
+                <TextView
+                    style="@style/label_text"
+                    android:layout_gravity="center_vertical"
+                    android:paddingLeft="15.0dip"
+                    android:text="作者"
+                    android:textColor="?android:textColor"
+                    android:textSize="@dimen/text_size_17"/>
             </FrameLayout>
         </LinearLayout>
-        <View android:background="?lineColor" android:layout_width="fill_parent" android:layout_height="1.0px" />
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1.0px"
+            android:background="?lineColor"/>
     </LinearLayout>
 </ScrollView>

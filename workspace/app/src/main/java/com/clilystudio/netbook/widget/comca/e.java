@@ -24,7 +24,7 @@ final class e implements b {
             for (int i = 0; i < n; ++i) {
                 j j2 = (j) this.b.get(i);
                 j2.a.a();
-                d.a((d) this.c).add(j2.a);
+                d.a(this.c).add(j2.a);
             }
         }
     }

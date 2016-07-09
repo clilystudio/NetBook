@@ -9,7 +9,7 @@ public class BookRankRoot {
     private boolean ok;
 
     private List<BookRankSummary> filterMainList(List<BookRankSummary> list) {
-        ArrayList<BookRankSummary> arrayList = new ArrayList<BookRankSummary>();
+        ArrayList<BookRankSummary> arrayList = new ArrayList<>();
         for (BookRankSummary bookRankSummary : list) {
             if (bookRankSummary.isCollapse()) continue;
             arrayList.add(bookRankSummary);
@@ -18,7 +18,7 @@ public class BookRankRoot {
     }
 
     private List<BookRankSummary> filterSubList(List<BookRankSummary> list) {
-        ArrayList<BookRankSummary> arrayList = new ArrayList<BookRankSummary>();
+        ArrayList<BookRankSummary> arrayList = new ArrayList<>();
         for (BookRankSummary bookRankSummary : list) {
             if (!bookRankSummary.isCollapse()) continue;
             arrayList.add(bookRankSummary);

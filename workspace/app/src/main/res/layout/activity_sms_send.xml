@@ -1,11 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="?android:windowBackground" android:paddingLeft="@dimen/dp_16" android:paddingRight="@dimen/dp_16" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/text_size_15" android:textColor="?android:textColorSecondary" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp_32" android:text="@string/sms_input_number" />
-    <EditText android:textSize="@dimen/text_size_20" android:textColor="?android:textColor" android:id="@id/sms_number_text" android:background="@null" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp_20" android:digits="1234567890 +" />
-    <View android:id="@id/sms_normal_line" android:background="?lineColor" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginTop="@dimen/dp_10" />
-    <View android:id="@id/sms_error_line" android:background="@android:color/holo_red_light" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginTop="@dimen/dp_10" />
-    <TextView android:textSize="@dimen/text_size_12" android:textColor="@android:color/holo_red_light" android:id="@id/sms_wrong_text" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp_10" android:text="@string/sms_wrong_number" />
-    <Button android:textSize="@dimen/text_size_15" android:textColor="@android:color/white" android:gravity="center" android:id="@id/sms_pay_next" android:background="@android:color/darker_gray" android:layout_width="fill_parent" android:layout_height="@dimen/dp_48" android:layout_marginTop="@dimen/dp_48" android:text="下一步" />
-    <TextView android:textSize="@dimen/text_size_12" android:textColor="?android:textColorTertiary" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp_24" android:text="@string/sms_description" />
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="fill_parent"
+              android:layout_height="fill_parent"
+              android:background="?android:windowBackground"
+              android:orientation="vertical"
+              android:paddingLeft="@dimen/dp_16"
+              android:paddingRight="@dimen/dp_16">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_32"
+        android:text="@string/sms_input_number"
+        android:textColor="?android:textColorSecondary"
+        android:textSize="@dimen/text_size_15"/>
+
+    <EditText
+        android:id="@id/sms_number_text"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_20"
+        android:background="@null"
+        android:digits="1234567890 +"
+        android:textColor="?android:textColor"
+        android:textSize="@dimen/text_size_20"/>
+
+    <View
+        android:id="@id/sms_normal_line"
+        android:layout_width="fill_parent"
+        android:layout_height="1.0dip"
+        android:layout_marginTop="@dimen/dp_10"
+        android:background="?lineColor"/>
+
+    <View
+        android:id="@id/sms_error_line"
+        android:layout_width="fill_parent"
+        android:layout_height="1.0dip"
+        android:layout_marginTop="@dimen/dp_10"
+        android:background="@android:color/holo_red_light"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@id/sms_wrong_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_10"
+        android:text="@string/sms_wrong_number"
+        android:textColor="@android:color/holo_red_light"
+        android:textSize="@dimen/text_size_12"
+        android:visibility="invisible"/>
+
+    <Button
+        android:id="@id/sms_pay_next"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/dp_48"
+        android:layout_marginTop="@dimen/dp_48"
+        android:background="@android:color/darker_gray"
+        android:gravity="center"
+        android:text="下一步"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/text_size_15"/>
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_24"
+        android:text="@string/sms_description"
+        android:textColor="?android:textColorTertiary"
+        android:textSize="@dimen/text_size_12"/>
 </LinearLayout>

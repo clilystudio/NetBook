@@ -1,7 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/pay_grid_item" android:background="@drawable/pay_charge_item_bg" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="105.0dip" android:minHeight="105.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/text_size_30" android:textColor="@drawable/pay_grid_item_textcolor" android:id="@id/pay_grid_price" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-    <TextView android:textSize="@dimen/text_size_15" android:textColor="@drawable/pay_grid_item_textcolor" android:id="@id/pay_grid_currency" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp_10" />
-    <TextView android:textSize="@dimen/text_size_15" android:textColor="@drawable/pay_grid_item_textcolor" android:id="@id/pay_grid_voucher" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp_4" />
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:id="@id/pay_grid_item"
+              android:layout_width="fill_parent"
+              android:layout_height="105.0dip"
+              android:background="@drawable/pay_charge_item_bg"
+              android:clickable="true"
+              android:focusable="true"
+              android:gravity="center"
+              android:minHeight="105.0dip"
+              android:orientation="vertical">
+
+    <TextView
+        android:id="@id/pay_grid_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@drawable/pay_grid_item_textcolor"
+        android:textSize="@dimen/text_size_30"/>
+
+    <TextView
+        android:id="@id/pay_grid_currency"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_10"
+        android:textColor="@drawable/pay_grid_item_textcolor"
+        android:textSize="@dimen/text_size_15"/>
+
+    <TextView
+        android:id="@id/pay_grid_voucher"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_4"
+        android:textColor="@drawable/pay_grid_item_textcolor"
+        android:textSize="@dimen/text_size_15"/>
 </LinearLayout>

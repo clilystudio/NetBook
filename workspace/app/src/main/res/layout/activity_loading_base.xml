@@ -1,8 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/base_layout" android:background="?android:windowBackground" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <FrameLayout android:id="@id/content" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <ProgressBar android:id="@id/common_list_pb" android:visibility="gone" android:layout_centerInParent="true" style="@style/Loading" />
-    <ImageView android:id="@id/common_list_error" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/load_error_hint" android:layout_centerInParent="true" />
-    <TextView android:id="@id/common_list_empty" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="暂无内容" android:layout_centerInParent="true" style="@style/SubtitleText" />
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@id/base_layout"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:background="?android:windowBackground">
+
+    <FrameLayout
+        android:id="@id/content"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"/>
+
+    <ProgressBar
+        android:id="@id/common_list_pb"
+        style="@style/Loading"
+        android:layout_centerInParent="true"
+        android:visibility="gone"/>
+
+    <ImageView
+        android:id="@id/common_list_error"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:src="@drawable/load_error_hint"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@id/common_list_empty"
+        style="@style/SubtitleText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="暂无内容"
+        android:visibility="gone"/>
 </RelativeLayout>

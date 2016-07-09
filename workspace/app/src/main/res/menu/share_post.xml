@@ -1,10 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:icon="@drawable/ic_share_sina" android:id="@id/sina" android:title="新浪微博" />
-    <item android:icon="@drawable/ic_share_weixin_moments" android:id="@id/wx_moments" android:title="朋友圈" />
-    <item android:icon="@drawable/ic_share_qq_zone" android:id="@id/qzone" android:title="QQ 空间" />
-    <item android:icon="@drawable/ic_share_weixin" android:id="@id/wx_friend" android:title="微信好友" />
-    <item android:icon="@drawable/ic_share_qq" android:id="@id/qq_friend" android:title="QQ 好友" />
-    <item android:icon="@drawable/ic_share_copy" android:id="@id/copy" android:title="复制" />
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@id/sina"
+        android:icon="@drawable/ic_share_sina"
+        android:title="新浪微博"/>
+    <item
+        android:id="@id/wx_moments"
+        android:icon="@drawable/ic_share_weixin_moments"
+        android:title="朋友圈"/>
+    <item
+        android:id="@id/qzone"
+        android:icon="@drawable/ic_share_qq_zone"
+        android:title="QQ 空间"/>
+    <item
+        android:id="@id/wx_friend"
+        android:icon="@drawable/ic_share_weixin"
+        android:title="微信好友"/>
+    <item
+        android:id="@id/qq_friend"
+        android:icon="@drawable/ic_share_qq"
+        android:title="QQ 好友"/>
+    <item
+        android:id="@id/copy"
+        android:icon="@drawable/ic_share_copy"
+        android:title="复制"/>
 </menu>

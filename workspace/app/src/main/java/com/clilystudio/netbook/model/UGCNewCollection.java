@@ -6,15 +6,14 @@ import java.util.Iterator;
 import java.util.List;
 
 public class UGCNewCollection implements Serializable {
-    List<BookSummary> books = new ArrayList<BookSummary>();
+    List<BookSummary> books = new ArrayList<>();
     private String desc;
     private String title;
 
     public void addBook(BookSummary bookSummary) {
         String string = bookSummary.getId();
-        Iterator<BookSummary> iterator = this.books.iterator();
-        while (iterator.hasNext()) {
-            if (!string.equals(iterator.next().getId())) continue;
+        for (BookSummary book : this.books) {
+            if (!string.equals(book.getId())) continue;
             return;
         }
         this.books.add(bookSummary);

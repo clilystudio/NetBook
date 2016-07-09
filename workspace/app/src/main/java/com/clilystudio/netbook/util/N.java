@@ -24,7 +24,7 @@ public final class N {
     }
 
     public final void a(String string) {
-        Account account = am.a((Activity) this.a);
+        Account account = am.a(this.a);
         if (account != null) {
             this.a(account.getToken(), string);
         }
@@ -44,16 +44,16 @@ public final class N {
             protected void onPostExecute(ResultStatus resultStatus) {
                  super.onPostExecute(resultStatus);
                 if (resultStatus == null) {
-                    e.a((Activity) N.a(N.this), (String) "收藏失败，请检查网络或稍后再试");
+                    e.a(N.a(N.this), "收藏失败，请检查网络或稍后再试");
                     return;
                 }
                 if (resultStatus.isOk()) {
-                    e.a((Activity) N.a(N.this), (String) "收藏成功");
+                    e.a(N.a(N.this), "收藏成功");
                     return;
                 } else {
                     if (!"11000".equals(resultStatus.getCode())) return;
                     {
-                        e.a((Activity) N.a(N.this), (String) "你已经收藏过啦～");
+                        e.a(N.a(N.this), "你已经收藏过啦～");
                         return;
                     }
                 }
@@ -69,7 +69,7 @@ public final class N {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 final String stringX = String.valueOf(which + 1);
-                e.a((Activity) N.a(N.this), (int) R.string.post_report_successful);
+                e.a(N.a(N.this), R.string.post_report_successful);
                 if (!bl) {
                     if (string2 == null) {
                         new Thread() {

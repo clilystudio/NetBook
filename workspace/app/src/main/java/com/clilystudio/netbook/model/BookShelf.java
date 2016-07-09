@@ -87,9 +87,6 @@ public class BookShelf {
         if (this.mBookRecord != null) {
             return this.mBookRecord.isTop();
         }
-        if (this.mTxt != null) {
-            return this.mTxt.isTop();
-        }
-        return false;
+        return this.mTxt != null && this.mTxt.isTop();
     }
 }

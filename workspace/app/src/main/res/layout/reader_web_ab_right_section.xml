@@ -1,9 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:gravity="center_horizontal" android:id="@id/reader_ab_topic" android:background="@drawable/bg_darker" android:padding="@dimen/dp_8" android:layout_width="@dimen/dp_55" android:layout_height="fill_parent" android:layout_toLeftOf="@id/reader_ab_read_mode">
-        <TextView android:textSize="@dimen/text_size_15" android:textColor="#ccffffff" android:id="@id/reader_ab_topic_icon" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="社区" android:layout_centerVertical="true" />
-        <ImageView android:gravity="center" android:id="@id/reader_ab_topic_count" android:background="@drawable/reader_topic_dot" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp_9" android:layout_marginRight="0.0dip" android:layout_toRightOf="@id/reader_ab_topic_icon" android:layout_alignParentTop="true" />
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="wrap_content"
+              android:layout_height="fill_parent"
+              android:orientation="horizontal">
+
+    <RelativeLayout
+        android:id="@id/reader_ab_topic"
+        android:layout_width="@dimen/dp_55"
+        android:layout_height="fill_parent"
+        android:layout_toLeftOf="@id/reader_ab_read_mode"
+        android:background="@drawable/bg_darker"
+        android:gravity="center_horizontal"
+        android:padding="@dimen/dp_8">
+
+        <TextView
+            android:id="@id/reader_ab_topic_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="社区"
+            android:textColor="#ccffffff"
+            android:textSize="@dimen/text_size_15"/>
+
+        <ImageView
+            android:id="@id/reader_ab_topic_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginRight="0.0dip"
+            android:layout_marginTop="@dimen/dp_9"
+            android:layout_toRightOf="@id/reader_ab_topic_icon"
+            android:background="@drawable/reader_topic_dot"
+            android:gravity="center"
+            android:visibility="invisible"/>
     </RelativeLayout>
-    <TextView android:textSize="@dimen/text_size_15" android:textColor="#ccffffff" android:gravity="center" android:id="@id/reader_ab_read_mode" android:background="@drawable/bg_darker" android:layout_width="@dimen/dp_55" android:layout_height="fill_parent" android:text="换源" android:layout_toLeftOf="@id/reader_ab_more" />
+
+    <TextView
+        android:id="@id/reader_ab_read_mode"
+        android:layout_width="@dimen/dp_55"
+        android:layout_height="fill_parent"
+        android:layout_toLeftOf="@id/reader_ab_more"
+        android:background="@drawable/bg_darker"
+        android:gravity="center"
+        android:text="换源"
+        android:textColor="#ccffffff"
+        android:textSize="@dimen/text_size_15"/>
 </LinearLayout>

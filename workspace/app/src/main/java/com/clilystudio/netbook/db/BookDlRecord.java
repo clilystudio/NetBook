@@ -42,10 +42,7 @@ public class BookDlRecord extends Model {
     private int total;
 
     public static boolean containsTocInfo(BookDlRecord bookDlRecord) {
-        if (!TextUtils.isEmpty(bookDlRecord.getBookTitle()) && !TextUtils.isEmpty(bookDlRecord.getBookId())) {
-            return true;
-        }
-        return false;
+        return !TextUtils.isEmpty(bookDlRecord.getBookTitle()) && !TextUtils.isEmpty(bookDlRecord.getBookId());
     }
 
     public static void create(String string, String string2, String string3, String string4, int n, int n2, int n3, int n4) {

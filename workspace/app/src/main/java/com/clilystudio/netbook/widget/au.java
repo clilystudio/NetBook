@@ -27,8 +27,7 @@ final class au extends LayerDrawable {
         boolean bl = false;
         int n = arrn.length;
         boolean bl2 = false;
-        for (int i = 0; i < n; ++i) {
-            int n2 = arrn[i];
+        for (int n2 : arrn) {
             if (n2 == 16842910) {
                 bl2 = true;
                 continue;

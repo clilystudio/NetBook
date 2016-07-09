@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<inset android:insetLeft="@dimen/shelf_divider_left_gap"
-  xmlns:android="http://schemas.android.com/apk/res/android">
+<inset xmlns:android="http://schemas.android.com/apk/res/android"
+       android:insetLeft="@dimen/shelf_divider_left_gap">
     <shape>
-        <solid android:color="@color/dark_line" />
+        <solid android:color="@color/dark_line"/>
     </shape>
 </inset>

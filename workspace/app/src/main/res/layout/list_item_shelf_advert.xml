@@ -1,10 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:paddingLeft="@dimen/dp_16" android:paddingRight="@dimen/dp_16" android:layout_width="fill_parent" android:layout_height="@dimen/bookshelf_height"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.clilystudio.netbook.ui.SmartImageView android:layout_gravity="center_vertical" android:id="@id/cover" android:layout_width="@dimen/dp_40" android:layout_height="@dimen/dp_40" android:layout_marginTop="2.0dip" android:layout_marginRight="@dimen/dp_15" android:scaleType="fitXY" />
-    <LinearLayout android:layout_gravity="center" android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginTop="2.0dip" android:layout_weight="1.0">
-        <TextView android:id="@id/title" android:singleLine="true" style="@style/ShelfMainText" />
-        <TextView android:id="@id/desc" style="@style/ShelfSubText" />
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="fill_parent"
+              android:layout_height="@dimen/bookshelf_height"
+              android:orientation="horizontal"
+              android:paddingLeft="@dimen/dp_16"
+              android:paddingRight="@dimen/dp_16">
+
+    <com.clilystudio.netbook.ui.SmartImageView
+        android:id="@id/cover"
+        android:layout_width="@dimen/dp_40"
+        android:layout_height="@dimen/dp_40"
+        android:layout_gravity="center_vertical"
+        android:layout_marginRight="@dimen/dp_15"
+        android:layout_marginTop="2.0dip"
+        android:scaleType="fitXY"/>
+
+    <LinearLayout
+        android:layout_width="0.0dip"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="2.0dip"
+        android:layout_weight="1.0"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@id/title"
+            style="@style/ShelfMainText"
+            android:singleLine="true"/>
+
+        <TextView
+            android:id="@id/desc"
+            style="@style/ShelfSubText"/>
     </LinearLayout>
-    <com.clilystudio.netbook.widget.BookShelfFlagView android:gravity="right" android:layout_gravity="center" android:id="@id/flag" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="35.0dip" />
+
+    <com.clilystudio.netbook.widget.BookShelfFlagView
+        android:id="@id/flag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginLeft="35.0dip"
+        android:gravity="right"/>
 </LinearLayout>

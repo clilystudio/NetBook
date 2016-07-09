@@ -1,20 +1,126 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="?android:windowBackground" android:paddingLeft="@dimen/dp_16" android:paddingRight="@dimen/dp_16" android:layout_width="fill_parent" android:layout_height="@dimen/dp_56" android:minHeight="@dimen/dp_56"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_toLeftOf="@id/consume_record_pay_info">
-        <TextView android:textSize="@dimen/text_size_12" android:textColor="?android:textColor" android:ellipsize="end" android:id="@id/consume_record_book" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="book" android:singleLine="true" android:layout_alignParentLeft="true" />
-        <TextView android:textSize="@dimen/text_size_12" android:textColor="?android:textColorSecondary" android:ellipsize="end" android:id="@id/consume_record_chapter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dp_2" android:text="book" android:singleLine="true" android:layout_toRightOf="@id/consume_record_book" android:layout_alignBaseline="@id/consume_record_book" />
-        <TextView android:textSize="@dimen/text_size_12" android:textColor="?android:textColorTertiary" android:id="@id/consume_record_type" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp_4" android:text="book" android:singleLine="true" android:layout_below="@id/consume_record_book" android:layout_alignParentLeft="true" />
-        <TextView android:textSize="@dimen/text_size_12" android:textColor="?android:textColorTertiary" android:id="@id/consume_record_time" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dp_2" android:text="book" android:singleLine="true" android:maxLength="10" android:layout_toRightOf="@id/consume_record_type" android:layout_alignBaseline="@id/consume_record_type" />
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/dp_56"
+                android:background="?android:windowBackground"
+                android:minHeight="@dimen/dp_56"
+                android:paddingLeft="@dimen/dp_16"
+                android:paddingRight="@dimen/dp_16">
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_toLeftOf="@id/consume_record_pay_info"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@id/consume_record_book"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:text="book"
+            android:textColor="?android:textColor"
+            android:textSize="@dimen/text_size_12"/>
+
+        <TextView
+            android:id="@id/consume_record_chapter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@id/consume_record_book"
+            android:layout_marginLeft="@dimen/dp_2"
+            android:layout_toRightOf="@id/consume_record_book"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:text="book"
+            android:textColor="?android:textColorSecondary"
+            android:textSize="@dimen/text_size_12"/>
+
+        <TextView
+            android:id="@id/consume_record_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@id/consume_record_book"
+            android:layout_marginTop="@dimen/dp_4"
+            android:singleLine="true"
+            android:text="book"
+            android:textColor="?android:textColorTertiary"
+            android:textSize="@dimen/text_size_12"/>
+
+        <TextView
+            android:id="@id/consume_record_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@id/consume_record_type"
+            android:layout_marginLeft="@dimen/dp_2"
+            android:layout_toRightOf="@id/consume_record_type"
+            android:maxLength="10"
+            android:singleLine="true"
+            android:text="book"
+            android:textColor="?android:textColorTertiary"
+            android:textSize="@dimen/text_size_12"/>
     </RelativeLayout>
-    <ImageView android:id="@id/consume_record_more" android:background="?backgroundSelector" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/pay_record_more" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-    <LinearLayout android:orientation="horizontal" android:id="@id/consume_record_pay_info" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="16.0dip" android:layout_toLeftOf="@id/consume_record_more" android:layout_centerVertical="true">
-        <TextView android:textSize="@dimen/text_size_12" android:textColor="@android:color/holo_red_light" android:id="@id/consume_record_currency" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-        <TextView android:textSize="@dimen/text_size_12" android:textColor="?android:textColorSecondary" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text=" 追书币" />
-        <LinearLayout android:orientation="horizontal" android:id="@id/consume_record_voucher_layout" android:layout_width="wrap_content" android:layout_height="wrap_content">
-            <TextView android:textSize="@dimen/text_size_12" android:textColor="?android:textColorSecondary" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text=" + " />
-            <TextView android:textSize="@dimen/text_size_12" android:textColor="@android:color/holo_red_light" android:id="@id/consume_record_voucher" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-            <TextView android:textSize="@dimen/text_size_12" android:textColor="?android:textColorSecondary" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text=" 追书券" />
+
+    <ImageView
+        android:id="@id/consume_record_more"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:background="?backgroundSelector"
+        android:src="@drawable/pay_record_more"/>
+
+    <LinearLayout
+        android:id="@id/consume_record_pay_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="16.0dip"
+        android:layout_toLeftOf="@id/consume_record_more"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@id/consume_record_currency"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/holo_red_light"
+            android:textSize="@dimen/text_size_12"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" 追书币"
+            android:textColor="?android:textColorSecondary"
+            android:textSize="@dimen/text_size_12"/>
+
+        <LinearLayout
+            android:id="@id/consume_record_voucher_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" + "
+                android:textColor="?android:textColorSecondary"
+                android:textSize="@dimen/text_size_12"/>
+
+            <TextView
+                android:id="@id/consume_record_voucher"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/holo_red_light"
+                android:textSize="@dimen/text_size_12"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" 追书券"
+                android:textColor="?android:textColorSecondary"
+                android:textSize="@dimen/text_size_12"/>
         </LinearLayout>
     </LinearLayout>
 </RelativeLayout>

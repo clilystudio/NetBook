@@ -1,7 +1,7 @@
 package com.clilystudio.netbook.ui;
 
 public interface ab {
-    public void a();
+    void a();
 
-    public void b();
+    void b();
 }

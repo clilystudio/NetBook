@@ -1,7 +1,5 @@
 package com.clilystudio.netbook.reader;
 
-import android.content.Context;
-
 import com.clilystudio.netbook.model.RelateBookRoot;
 
 public final class cM {
@@ -43,6 +41,6 @@ public final class cM {
     }
 
     public interface cQ {
-        public void a(RelateBookRoot var1, String[] var2);
+        void a(RelateBookRoot var1, String[] var2);
     }
 }

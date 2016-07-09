@@ -1,9 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/relate_book_root" android:paddingLeft="@dimen/dp_16" android:paddingRight="@dimen/dp_16" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="@dimen/dp_48">
-        <TextView android:textSize="@dimen/text_size_15" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="你可能感兴趣" android:layout_weight="1.0" />
-        <TextView android:textSize="@dimen/text_size_12" android:textColor="?android:textColorSecondary" android:id="@id/more" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="更多" />
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:id="@id/relate_book_root"
+              android:layout_width="fill_parent"
+              android:layout_height="fill_parent"
+              android:orientation="vertical"
+              android:paddingLeft="@dimen/dp_16"
+              android:paddingRight="@dimen/dp_16"
+              android:visibility="gone">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/dp_48"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0.0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:text="你可能感兴趣"
+            android:textSize="@dimen/text_size_15"/>
+
+        <TextView
+            android:id="@id/more"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="更多"
+            android:textColor="?android:textColorSecondary"
+            android:textSize="@dimen/text_size_12"
+            android:visibility="gone"/>
     </LinearLayout>
-    <LinearLayout android:orientation="horizontal" android:id="@id/books" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginBottom="@dimen/dp_16" />
+
+    <LinearLayout
+        android:id="@id/books"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginBottom="@dimen/dp_16"
+        android:orientation="horizontal"/>
 </LinearLayout>

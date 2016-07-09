@@ -11,7 +11,7 @@ public class RecommendInfo {
             return null;
         }
         try {
-            RecommendInfo recommendInfo = (RecommendInfo) new Gson().fromJson(string, RecommendInfo.class);
+            RecommendInfo recommendInfo = new Gson().fromJson(string, RecommendInfo.class);
             return recommendInfo;
         } catch (Exception var1_2) {
             return null;

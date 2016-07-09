@@ -1,8 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="#9fffffff" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <ImageView android:id="@id/cover" android:layout_width="@dimen/dp_40" android:layout_height="@dimen/dp_40" android:layout_margin="8.0dip" android:src="@drawable/cover_normal" android:scaleType="fitXY" android:layout_alignParentLeft="true" />
-    <TextView android:textSize="12.0sp" android:textColor="#ff212121" android:ellipsize="end" android:id="@id/tv_title" android:layout_width="180.0dip" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:text="追书神器-有声小说" android:singleLine="true" android:layout_toRightOf="@id/cover" android:layout_below="@id/top" />
-    <TextView android:textSize="10.0sp" android:textColor="#ff727272" android:id="@id/tv_time" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:text="00:00/00:00" android:layout_toRightOf="@id/cover" android:layout_below="@id/tv_title" />
-    <ImageView android:id="@id/iv_control" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="24.0dip" android:src="@drawable/ic_play_audiobook_button" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="#9fffffff"
+    >
+
+    <ImageView
+        android:id="@id/cover"
+        android:layout_width="@dimen/dp_40"
+        android:layout_height="@dimen/dp_40"
+        android:layout_alignParentLeft="true"
+        android:layout_margin="8.0dip"
+        android:scaleType="fitXY"
+        android:src="@drawable/cover_normal"/>
+
+    <TextView
+        android:id="@id/tv_title"
+        android:layout_width="180.0dip"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/top"
+        android:layout_marginTop="8.0dip"
+        android:layout_toRightOf="@id/cover"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:text="追书神器-有声小说"
+        android:textColor="#ff212121"
+        android:textSize="12.0sp"/>
+
+    <TextView
+        android:id="@id/tv_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_title"
+        android:layout_marginTop="10.0dip"
+        android:layout_toRightOf="@id/cover"
+        android:text="00:00/00:00"
+        android:textColor="#ff727272"
+        android:textSize="10.0sp"/>
+
+    <ImageView
+        android:id="@id/iv_control"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="24.0dip"
+        android:src="@drawable/ic_play_audiobook_button"/>
 </RelativeLayout>

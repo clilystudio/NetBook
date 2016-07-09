@@ -234,11 +234,11 @@ public class SettingWidget extends LinearLayout {
     }
 
     public interface db {
-        public void a();
+        void a();
     }
 
     public interface dc {
-        public void a();
+        void a();
     }
 
 }

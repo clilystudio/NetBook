@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <item type="layout" name="abc_action_bar_up_container">false</item>
-    <item type="layout" name="abc_action_bar_view_list_nav_layout">false</item>
-    <item type="layout" name="ad_layout">false</item>
-    <item type="layout" name="ugc_major_list_item">false</item>
-    <item type="layout" name="ugc_miner_list_item">false</item>
+    <item name="abc_action_bar_up_container" type="layout">false</item>
+    <item name="abc_action_bar_view_list_nav_layout" type="layout">false</item>
+    <item name="ad_layout" type="layout">false</item>
+    <item name="ugc_major_list_item" type="layout">false</item>
+    <item name="ugc_miner_list_item" type="layout">false</item>
 </resources>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_pressed="true" android:drawable="@color/light_window_bg_dark" />
-    <item android:drawable="@drawable/book_category_item_nor" />
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@color/light_window_bg_dark" android:state_pressed="true"/>
+    <item android:drawable="@drawable/book_category_item_nor"/>
 </selector>

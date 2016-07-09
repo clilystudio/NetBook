@@ -1,3 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.clilystudio.netbook.widget.ScrollLoadListView android:id="@id/content_scroll_list" android:background="?android:windowBackground" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="?android:listSelector" android:cacheColorHint="#00000000" android:divider="?android:divider" android:dividerHeight="1.0px" android:fastScrollEnabled="false" android:headerDividersEnabled="false" android:footerDividersEnabled="false" android:smoothScrollbar="true"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<com.clilystudio.netbook.widget.ScrollLoadListView xmlns:android="http://schemas.android.com/apk/res/android"
+                                                   android:id="@id/content_scroll_list"
+                                                   android:layout_width="fill_parent"
+                                                   android:layout_height="fill_parent"
+                                                   android:background="?android:windowBackground"
+                                                   android:cacheColorHint="#00000000"
+                                                   android:divider="?android:divider"
+                                                   android:dividerHeight="1.0px"
+                                                   android:fadingEdge="none"
+                                                   android:fastScrollEnabled="false"
+                                                   android:footerDividersEnabled="false"
+                                                   android:headerDividersEnabled="false"
+                                                   android:listSelector="?android:listSelector"
+                                                   android:smoothScrollbar="true"/>

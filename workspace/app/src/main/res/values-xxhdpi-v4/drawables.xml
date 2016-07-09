@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <item type="drawable" name="ic_retention_ratio">false</item>
-    <item type="drawable" name="cannot_refresh">false</item>
-    <item type="drawable" name="ic_launcher_test">false</item>
-    <item type="drawable" name="ic_pay_charge">false</item>
-    <item type="drawable" name="ugc_star">false</item>
+    <item name="ic_retention_ratio" type="drawable">false</item>
+    <item name="cannot_refresh" type="drawable">false</item>
+    <item name="ic_launcher_test" type="drawable">false</item>
+    <item name="ic_pay_charge" type="drawable">false</item>
+    <item name="ugc_star" type="drawable">false</item>
 </resources>

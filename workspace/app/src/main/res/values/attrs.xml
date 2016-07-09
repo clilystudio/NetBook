@@ -95,10 +95,10 @@
         <attr name="listItemLayout" format="reference"/>
     </declare-styleable>
     <!--<attr name="layout_scrollFlags">-->
-        <!--<flag name="enterAlways" value="0x00000004"/>-->
-        <!--<flag name="enterAlwaysCollapsed" value="0x00000008"/>-->
-        <!--<flag name="exitUntilCollapsed" value="0x00000002"/>-->
-        <!--<flag name="scroll" value="0x00000001"/>-->
+    <!--<flag name="enterAlways" value="0x00000004"/>-->
+    <!--<flag name="enterAlwaysCollapsed" value="0x00000008"/>-->
+    <!--<flag name="exitUntilCollapsed" value="0x00000002"/>-->
+    <!--<flag name="scroll" value="0x00000001"/>-->
     <!--</attr>-->
     <!--<attr name="layout_scrollInterpolator" format="reference"/>-->
     <declare-styleable name="AppCompatTextView">
@@ -112,9 +112,9 @@
     <attr name="numColumns" format="integer"/>
     <!--<attr name="image_size" format="dimension"/>-->
     <!--<attr name="layout_collapseMode">-->
-        <!--<enum name="none" value="0"/>-->
-        <!--<enum name="parallax" value="2"/>-->
-        <!--<enum name="pin" value="1"/>-->
+    <!--<enum name="none" value="0"/>-->
+    <!--<enum name="parallax" value="2"/>-->
+    <!--<enum name="pin" value="1"/>-->
     <!--</attr>-->
     <!--<attr name="layout_collapseParallaxMultiplier" format="float"/>-->
     <!--<attr name="expandedTitleMargin" format="dimension"/>-->
@@ -133,20 +133,20 @@
     <!--<attr name="layout_anchor" format="reference"/>-->
     <!--<attr name="layout_keyline" format="integer"/>-->
     <!--<attr name="layout_anchorGravity">-->
-        <!--<flag name="bottom" value="0x00000050"/>-->
-        <!--<flag name="center" value="0x00000011"/>-->
-        <!--<flag name="center_horizontal" value="0x00000001"/>-->
-        <!--<flag name="center_vertical" value="0x00000010"/>-->
-        <!--<flag name="clip_horizontal" value="0x00000008"/>-->
-        <!--<flag name="clip_vertical" value="0x00000080"/>-->
-        <!--<flag name="end" value="0x00800005"/>-->
-        <!--<flag name="fill" value="0x00000077"/>-->
-        <!--<flag name="fill_horizontal" value="0x00000007"/>-->
-        <!--<flag name="fill_vertical" value="0x00000070"/>-->
-        <!--<flag name="left" value="0x00000003"/>-->
-        <!--<flag name="right" value="0x00000005"/>-->
-        <!--<flag name="start" value="0x00800003"/>-->
-        <!--<flag name="top" value="0x00000030"/>-->
+    <!--<flag name="bottom" value="0x00000050"/>-->
+    <!--<flag name="center" value="0x00000011"/>-->
+    <!--<flag name="center_horizontal" value="0x00000001"/>-->
+    <!--<flag name="center_vertical" value="0x00000010"/>-->
+    <!--<flag name="clip_horizontal" value="0x00000008"/>-->
+    <!--<flag name="clip_vertical" value="0x00000080"/>-->
+    <!--<flag name="end" value="0x00800005"/>-->
+    <!--<flag name="fill" value="0x00000077"/>-->
+    <!--<flag name="fill_horizontal" value="0x00000007"/>-->
+    <!--<flag name="fill_vertical" value="0x00000070"/>-->
+    <!--<flag name="left" value="0x00000003"/>-->
+    <!--<flag name="right" value="0x00000005"/>-->
+    <!--<flag name="start" value="0x00800003"/>-->
+    <!--<flag name="top" value="0x00000030"/>-->
     <!--</attr>-->
     <!--<attr name="radius" format="dimension"/>-->
     <!--<attr name="scv_background" format="color"/>-->
@@ -167,8 +167,8 @@
     </declare-styleable>
     <!--<attr name="rippleColor" format="color"/>-->
     <!--<attr name="fabSize">-->
-        <!--<enum name="normal" value="0"/>-->
-        <!--<enum name="mini" value="1"/>-->
+    <!--<enum name="normal" value="0"/>-->
+    <!--<enum name="mini" value="1"/>-->
     <!--</attr>-->
     <!--<attr name="pressedTranslationZ" format="dimension"/>-->
     <!--<attr name="borderWidth" format="dimension"/>-->
@@ -267,12 +267,12 @@
     <!--<attr name="tabContentStart" format="dimension"/>-->
     <!--<attr name="tabBackground" format="reference"/>-->
     <!--<attr name="tabMode">-->
-        <!--<enum name="fixed" value="1"/>-->
-        <!--<enum name="scrollable" value="0"/>-->
+    <!--<enum name="fixed" value="1"/>-->
+    <!--<enum name="scrollable" value="0"/>-->
     <!--</attr>-->
     <!--<attr name="tabGravity">-->
-        <!--<enum name="center" value="1"/>-->
-        <!--<enum name="fill" value="0"/>-->
+    <!--<enum name="center" value="1"/>-->
+    <!--<enum name="fill" value="0"/>-->
     <!--</attr>-->
     <!--<attr name="tabMinWidth" format="dimension"/>-->
     <!--<attr name="tabMaxWidth" format="dimension"/>-->
@@ -434,7 +434,7 @@
         <attr name="scv_corner_radius" format="dimension"/>
     </declare-styleable>
     <declare-styleable name="CoverLoadingView">
-         <attr name="cornerRadius" format="dimension"/>
+        <attr name="cornerRadius" format="dimension"/>
     </declare-styleable>
     <declare-styleable name="TabWidgetV2">
         <attr name="adjust_padding" format="dimension"/>

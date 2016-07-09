@@ -48,9 +48,8 @@ public class RetweenRecord extends Model {
     public static void save2DB(List<RetweenRecord> list) {
         ActiveAndroid.beginTransaction();
         try {
-            Iterator<RetweenRecord> iterator = list.iterator();
-            while (iterator.hasNext()) {
-                iterator.next().save();
+            for (RetweenRecord aList : list) {
+                aList.save();
             }
             ActiveAndroid.setTransactionSuccessful();
             return;

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_pressed="true" android:drawable="@drawable/shelf_cover_pre" />
-    <item android:drawable="@drawable/shelf_cover2" />
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/shelf_cover_pre" android:state_pressed="true"/>
+    <item android:drawable="@drawable/shelf_cover2"/>
 </selector>

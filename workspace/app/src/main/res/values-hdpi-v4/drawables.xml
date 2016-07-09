@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <item type="drawable" name="ic_retention_ratio">false</item>
-    <item type="drawable" name="migu_checked">false</item>
-    <item type="drawable" name="migu_compact_close">false</item>
-    <item type="drawable" name="migu_compact_logo">false</item>
-    <item type="drawable" name="migu_contract_press">false</item>
-    <item type="drawable" name="migu_edit_del">false</item>
-    <item type="drawable" name="migu_icon_extend">false</item>
-    <item type="drawable" name="migu_icon_shrink">false</item>
-    <item type="drawable" name="migu_piccode">false</item>
-    <item type="drawable" name="migu_piccode_refresh">false</item>
-    <item type="drawable" name="migu_unchecked">false</item>
+    <item name="ic_retention_ratio" type="drawable">false</item>
+    <item name="migu_checked" type="drawable">false</item>
+    <item name="migu_compact_close" type="drawable">false</item>
+    <item name="migu_compact_logo" type="drawable">false</item>
+    <item name="migu_contract_press" type="drawable">false</item>
+    <item name="migu_edit_del" type="drawable">false</item>
+    <item name="migu_icon_extend" type="drawable">false</item>
+    <item name="migu_icon_shrink" type="drawable">false</item>
+    <item name="migu_piccode" type="drawable">false</item>
+    <item name="migu_piccode_refresh" type="drawable">false</item>
+    <item name="migu_unchecked" type="drawable">false</item>
 </resources>

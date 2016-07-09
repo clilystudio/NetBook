@@ -1,9 +1,6 @@
 package com.clilystudio.netbook.hpay100.a;
 
 import android.app.Activity;
-import android.app.DownloadManager;
-import android.app.Notification;
-import android.app.PendingIntent;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
@@ -16,7 +13,6 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Paint;
-import android.graphics.Point;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
@@ -33,15 +29,10 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v4.app.NotificationBuilderWithBuilderAccessor;
-import android.support.v4.app.NotificationCompatBase;
 import android.support.v4.view.ViewPager;
 import android.text.TextUtils;
-import android.text.style.StrikethroughSpan;
-import android.util.Base64;
 import android.util.DisplayMetrics;
 import android.util.Log;
-import android.view.Display;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.AbsListView;
@@ -74,16 +65,11 @@ import com.integralblue.httpresponsecache.compat.java.lang.ArrayIndexOutOfBounds
 import com.umeng.onlineconfig.OnlineConfigAgent;
 import com.xiaomi.mistatistic.sdk.MiStatInterface;
 
-import org.apache.thrift.d;
-import org.apache.thrift.e;
-import org.apache.thrift.g;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.mozilla.universalchardet.UniversalDetector;
 
 import java.io.BufferedReader;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
 import java.io.Closeable;
 import java.io.File;
 import java.io.FileInputStream;
@@ -94,7 +80,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.io.OutputStream;
 import java.io.Serializable;
 import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Array;
@@ -108,18 +93,12 @@ import java.net.URI;
 import java.net.URL;
 import java.net.URLConnection;
 import java.net.URLDecoder;
-import java.net.URLEncoder;
 import java.nio.ByteOrder;
-import java.security.KeyFactory;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.security.PublicKey;
-import java.security.Signature;
-import java.security.spec.X509EncodedKeySpec;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Collection;
 import java.util.Date;
 import java.util.HashMap;
@@ -128,10 +107,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
-import java.util.zip.Deflater;
-
-import javax.crypto.Cipher;
-import javax.crypto.spec.SecretKeySpec;
 
 import okio.ByteString;
 
@@ -869,22 +844,6 @@ public class a {
     /*
      * Enabled aggressive block sorting
      */
-    private static RemoteViews a(Context context, NotificationCompatBase.Action notificationCompatBase$Action) {
-        boolean bl = notificationCompatBase$Action.getActionIntent() == null;
-        RemoteViews remoteViews = new RemoteViews(context.getPackageName(), R.layout.notification_media_action);
-        remoteViews.setImageViewResource(R.id.action0, notificationCompatBase$Action.getIcon());
-        if (!bl) {
-            remoteViews.setOnClickPendingIntent(R.id.action0, notificationCompatBase$Action.getActionIntent());
-        }
-        if (Build.VERSION.SDK_INT >= 15) {
-            remoteViews.setContentDescription(R.id.action0, notificationCompatBase$Action.getTitle());
-        }
-        return remoteViews;
-    }
-
-    /*
-     * Enabled aggressive block sorting
-     */
     private static RemoteViews a(Context context, CharSequence charSequence, CharSequence charSequence2, CharSequence charSequence3, int n2, Bitmap bitmap, CharSequence charSequence4, boolean bl, long l2, int n3, boolean bl2) {
         boolean bl3;
         RemoteViews remoteViews = new RemoteViews(context.getPackageName(), n3);
@@ -1015,7 +974,7 @@ public class a {
         int n2 = (int) (Math.log(l2) / Math.log(1000.0));
         String string2 = "" + "kMGTPE".charAt(n2 - 1);
         Object[] arrobject = new Object[]{(double) l2 / Math.pow(1000.0, n2), string2};
-        return String.format("%.1f %sB", arrobject);
+        return String.format(Locale.CHINA,"%.1f %sB", arrobject);
     }
 
     public static String a(Context context, String string2, String string3, String string4) {
@@ -1109,10 +1068,10 @@ public class a {
             MessageDigest messageDigest = MessageDigest.getInstance("MD5");
             messageDigest.update(arrby);
             byte[] arrby2 = messageDigest.digest();
-            StringBuffer stringBuffer = new StringBuffer(arrby2.length << 1);
-            for (int n2 = 0; n2 < arrby2.length; n2++) {
-                stringBuffer.append(Character.forDigit((240 & arrby2[n2]) >> 4, 16));
-                stringBuffer.append(Character.forDigit(15 & arrby2[n2], 16));
+            StringBuilder stringBuffer = new StringBuilder(arrby2.length << 1);
+            for (byte anArrby2 : arrby2) {
+                stringBuffer.append(Character.forDigit((240 & anArrby2) >> 4, 16));
+                stringBuffer.append(Character.forDigit(15 & anArrby2, 16));
             }
             return stringBuffer.toString();
         } catch (NoSuchAlgorithmException var1_6) {
@@ -1121,7 +1080,7 @@ public class a {
     }
 
     public static Map<String, String> a(Context context, int n2, String string2) {
-        HashMap<String, String> hashMap = new HashMap<String, String>();
+        HashMap<String, String> hashMap = new HashMap<>();
         hashMap.put("uid", com.clilystudio.netbook.util.e.c(context));
         hashMap.put("iid", string2);
         hashMap.put("iids", n());
@@ -1147,7 +1106,7 @@ public class a {
      */
     public static void a(Activity activity) {
         String[] arrstring = com.xiaomi.mipush.sdk.MiPushClient.getAllAlias(activity).toArray(new String[0]);
-        ArrayList<String> arrayList = new ArrayList<String>();
+        ArrayList<String> arrayList = new ArrayList<>();
         if (arrstring != null) {
             for (String string2 : arrstring) {
                 String string3 = string2 != null && string2.length() > 5 ? string2.substring(5) : "";
@@ -1158,9 +1117,8 @@ public class a {
         HashSet<String> hashSet = new HashSet<>();
         List<BookReadRecord> list = BookReadRecord.getAll();
         if (list != null) {
-            Iterator<BookReadRecord> iterator = list.iterator();
-            while (iterator.hasNext()) {
-                arrayList2.add(iterator.next().getBookId());
+            for (BookReadRecord aList : list) {
+                arrayList2.add(aList.getBookId());
             }
             hashSet.addAll(arrayList);
             hashSet.retainAll(arrayList2);
@@ -1172,33 +1130,6 @@ public class a {
                 if (hashSet.contains(string5)) continue;
                 r(string5);
             }
-        }
-    }
-
-    /*
-     * Enabled aggressive block sorting
-     */
-    public static <T extends NotificationCompatBase.Action> void a(Notification notification, Context context, CharSequence charSequence, CharSequence charSequence2, CharSequence charSequence3, int n2, Bitmap bitmap, CharSequence charSequence4, boolean bl, long l2, List<T> list, boolean bl2, PendingIntent pendingIntent) {
-        int n3 = Math.min(list.size(), 5);
-        int n4 = n3 <= 3 ? R.layout.notification_template_big_media_narrow : R.layout.notification_template_big_media;
-        RemoteViews remoteViews = a(context, charSequence, charSequence2, charSequence3, n2, bitmap, charSequence4, bl, l2, n4, false);
-        remoteViews.removeAllViews(R.id.media_actions);
-        if (n3 > 0) {
-            for (int k = 0; k < n3; ++k) {
-                RemoteViews remoteViews2 = a(context, list.get(k));
-                remoteViews.addView(R.id.media_actions, remoteViews2);
-            }
-        }
-        if (bl2) {
-            remoteViews.setViewVisibility(R.id.cancel_action, 0);
-            remoteViews.setInt(R.id.cancel_action, "setAlpha", context.getResources().getInteger(R.integer.cancel_button_image_alpha));
-            remoteViews.setOnClickPendingIntent(R.id.cancel_action, pendingIntent);
-        } else {
-            remoteViews.setViewVisibility(R.id.cancel_action, 8);
-        }
-        notification.bigContentView = remoteViews;
-        if (bl2) {
-            notification.flags = 2 | notification.flags;
         }
     }
 
@@ -1232,7 +1163,7 @@ public class a {
             for (String string3 : map.keySet()) {
                 editor.putString(string3, map.get(string3));
             }
-            editor.commit();
+            editor.apply();
         }
     }
 
@@ -1263,39 +1194,6 @@ public class a {
             fragmentTransaction.commitAllowingStateLoss();
         } catch (IllegalStateException var5_5) {
             var5_5.printStackTrace();
-        }
-    }
-
-    /*
-     * Enabled aggressive block sorting
-     */
-    public static <T extends NotificationCompatBase.Action> void a(NotificationBuilderWithBuilderAccessor notificationBuilderWithBuilderAccessor, Context context, CharSequence charSequence, CharSequence charSequence2, CharSequence charSequence3, int n2, Bitmap bitmap, CharSequence charSequence4, boolean bl, long l2, List<T> list, int[] arrn, boolean bl2, PendingIntent pendingIntent) {
-        RemoteViews remoteViews = a(context, charSequence, charSequence2, charSequence3, n2, bitmap, charSequence4, bl, l2, R.layout.notification_template_media, true);
-        int n3 = list.size();
-        int n4 = arrn == null ? 0 : Math.min(arrn.length, 3);
-        remoteViews.removeAllViews(R.id.media_actions);
-        if (n4 > 0) {
-            for (int k = 0; k < n4; ++k) {
-                if (k >= n3) {
-                    Object[] arrobject = new Object[]{k, n3 - 1};
-                    throw new IllegalArgumentException(String.format("setShowActionsInCompactView: action %d out of bounds (max %d)", arrobject));
-                }
-                RemoteViews remoteViews2 = a(context, list.get(arrn[k]));
-                remoteViews.addView(R.id.media_actions, remoteViews2);
-            }
-        }
-        if (bl2) {
-            remoteViews.setViewVisibility(R.id.end_padder, 8);
-            remoteViews.setViewVisibility(R.id.cancel_action, 0);
-            remoteViews.setOnClickPendingIntent(R.id.cancel_action, pendingIntent);
-            remoteViews.setInt(R.id.cancel_action, "setAlpha", context.getResources().getInteger(R.integer.cancel_button_image_alpha));
-        } else {
-            remoteViews.setViewVisibility(R.id.end_padder, 0);
-            remoteViews.setViewVisibility(R.id.cancel_action, 8);
-        }
-        notificationBuilderWithBuilderAccessor.getBuilder().setContent(remoteViews);
-        if (bl2) {
-            notificationBuilderWithBuilderAccessor.getBuilder().setOngoing(true);
         }
     }
 
@@ -1676,7 +1574,7 @@ public class a {
     }
 
     public static byte[] a(String string2, int n2, String string3) {
-        StringBuffer stringBuffer = new StringBuffer();
+        StringBuilder stringBuffer = new StringBuilder();
         if (string2 != null) {
             stringBuffer.append(string2);
         }
@@ -1766,8 +1664,7 @@ public class a {
             int n3 = arrfile.length;
             int n4 = arrfile.length;
             n2 = n3;
-            for (int k = 0; k < n4; ++k) {
-                File file2 = arrfile[k];
+            for (File file2 : arrfile) {
                 if (!file2.isDirectory()) continue;
                 n2 = -1 + (n2 + b(file2));
             }
@@ -1948,10 +1845,10 @@ public class a {
 
     public static String c(byte[] arrby) {
         int n2 = arrby.length;
-        StringBuffer stringBuffer = new StringBuffer();
+        StringBuilder stringBuffer = new StringBuilder();
         if (arrby != null) {
-            for (int i2 = 0; i2 < n2; ++i2) {
-                Object[] arrobject = new Object[]{Byte.valueOf(arrby[i2])};
+            for (byte anArrby : arrby) {
+                Object[] arrobject = new Object[]{Byte.valueOf(anArrby)};
                 stringBuffer.append(String.format("%02x", arrobject));
             }
         }
@@ -1959,12 +1856,12 @@ public class a {
     }
 
     public static ArrayList<String> c(File file) {
-        ArrayList<String> arrayList = new ArrayList<String>();
+        ArrayList<String> arrayList = new ArrayList<>();
         File[] arrfile = file.listFiles();
         if (arrfile != null) {
             int n2 = arrfile.length;
-            for (int i2 = 0; i2 < n2; ++i2) {
-                arrayList.add(arrfile[i2].getName());
+            for (File anArrfile : arrfile) {
+                arrayList.add(anArrfile.getName());
             }
         }
         return arrayList;
@@ -2035,7 +1932,7 @@ public class a {
     public static void d(Context context, String string2, int n2) {
         SharedPreferences.Editor editor = context.getSharedPreferences("mistat", 0).edit();
         editor.putInt(string2, n2);
-        editor.commit();
+        editor.apply();
     }
 
     public static void d(Context context, String string2, long l2) {
@@ -2128,7 +2025,7 @@ public class a {
     }
 
     public static List<BookFile> f() {
-        ArrayList<BookFile> arrayList = new ArrayList<BookFile>();
+        ArrayList<BookFile> arrayList = new ArrayList<>();
         File[] arrfile = J(com.clilystudio.netbook.c.g).listFiles();
         if (arrfile != null) {
             for (File file : arrfile) {
@@ -2144,7 +2041,7 @@ public class a {
     public static void f(Context context, String string2, long l2) {
         SharedPreferences.Editor editor = context.getSharedPreferences("mistat", 0).edit();
         editor.putLong(string2, l2);
-        editor.commit();
+        editor.apply();
     }
 
     public static boolean f(int n2) {
@@ -2233,7 +2130,7 @@ public class a {
     public static void g(Context context, String string2, String string3) {
         SharedPreferences.Editor editor = context.getSharedPreferences("mistat", 0).edit();
         editor.putString(string2, string3);
-        editor.commit();
+        editor.apply();
     }
 
     public static boolean g() {
@@ -2502,9 +2399,8 @@ public class a {
         List<BookReadRecord> list = BookReadRecord.getAll();
         StringBuilder stringBuilder = new StringBuilder();
         if (list.size() > 0) {
-            Iterator<BookReadRecord> iterator = list.iterator();
-            while (iterator.hasNext()) {
-                stringBuilder.append(iterator.next().getBookId());
+            for (BookReadRecord aList : list) {
+                stringBuilder.append(aList.getBookId());
                 stringBuilder.append("|");
             }
             stringBuilder.deleteCharAt(-1 + stringBuilder.length());
@@ -2534,7 +2430,7 @@ public class a {
     }
 
     public static Map<String, String> p(Context context) {
-        HashMap<String, String> hashMap = new HashMap<String, String>();
+        HashMap<String, String> hashMap = new HashMap<>();
         hashMap.put("uid", com.clilystudio.netbook.util.e.c(context));
         return hashMap;
     }
@@ -2695,8 +2591,8 @@ public class a {
         if (string3 != null && string3.length() > 0) {
             String[] arrstring = string3.split(",");
             int n2 = arrstring.length;
-            for (int i2 = 0; i2 < n2; ++i2) {
-                if (!arrstring[i2].equals(string2)) continue;
+            for (String anArrstring : arrstring) {
+                if (!anArrstring.equals(string2)) continue;
                 return false;
             }
         }

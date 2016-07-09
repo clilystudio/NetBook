@@ -1,15 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:paddingTop="@dimen/dp_16" android:paddingRight="@dimen/dp_16" android:paddingBottom="@dimen/dp_16" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <FrameLayout android:id="@id/left_part" android:layout_width="@dimen/shelf_divider_left_gap" android:layout_height="wrap_content">
-        <com.clilystudio.netbook.widget.CoverView android:layout_gravity="center" android:id="@id/iv_cover" style="@style/CoverView" />
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:paddingBottom="@dimen/dp_16"
+                android:paddingRight="@dimen/dp_16"
+                android:paddingTop="@dimen/dp_16">
+
+    <FrameLayout
+        android:id="@id/left_part"
+        android:layout_width="@dimen/shelf_divider_left_gap"
+        android:layout_height="wrap_content">
+
+        <com.clilystudio.netbook.widget.CoverView
+            android:id="@id/iv_cover"
+            style="@style/CoverView"
+            android:layout_gravity="center"/>
     </FrameLayout>
-    <TextView android:ellipsize="end" android:id="@id/tv_title" android:paddingTop="-1.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_toRightOf="@id/left_part" android:layout_alignTop="@id/left_part" style="@style/LargeText" />
-    <TextView android:ellipsize="end" android:id="@id/tv_short_intro" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp_7" android:singleLine="true" android:layout_below="@id/tv_title" android:layout_alignLeft="@id/tv_title" style="@style/MediumText" />
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp_7" android:layout_below="@id/tv_short_intro" android:layout_alignLeft="@id/tv_title">
-        <ImageView android:id="@id/iv_favorite_count" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/margin_xs" android:src="@drawable/ic_favorite_count" />
-        <TextView android:textSize="@dimen/list_item_book_summary_sub" android:id="@id/tv_favorite_count" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/SubText" />
-        <ImageView android:id="@id/iv_track_count" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dp_15" android:layout_marginRight="@dimen/margin_xs" android:src="@drawable/ic_track_count" />
-        <TextView android:textSize="@dimen/list_item_book_summary_sub" android:id="@id/tv_track_count" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/SubText" />
+
+    <TextView
+        android:id="@id/tv_title"
+        style="@style/LargeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/left_part"
+        android:layout_toRightOf="@id/left_part"
+        android:ellipsize="end"
+        android:paddingTop="-1.0dip"
+        android:singleLine="true"/>
+
+    <TextView
+        android:id="@id/tv_short_intro"
+        style="@style/MediumText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/tv_title"
+        android:layout_below="@id/tv_title"
+        android:layout_marginTop="@dimen/dp_7"
+        android:ellipsize="end"
+        android:singleLine="true"/>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/tv_title"
+        android:layout_below="@id/tv_short_intro"
+        android:layout_marginTop="@dimen/dp_7"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@id/iv_favorite_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/margin_xs"
+            android:src="@drawable/ic_favorite_count"/>
+
+        <TextView
+            android:id="@id/tv_favorite_count"
+            style="@style/SubText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/list_item_book_summary_sub"/>
+
+        <ImageView
+            android:id="@id/iv_track_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_15"
+            android:layout_marginRight="@dimen/margin_xs"
+            android:src="@drawable/ic_track_count"/>
+
+        <TextView
+            android:id="@id/tv_track_count"
+            style="@style/SubText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/list_item_book_summary_sub"/>
     </LinearLayout>
 </RelativeLayout>

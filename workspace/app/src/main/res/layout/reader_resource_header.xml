@@ -1,20 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="?backgroundPressed" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:id="@id/resource_last_read_layout" android:background="?backgroundSelector" android:layout_width="fill_parent" android:layout_height="@dimen/list_item_resource_header_height" android:layout_marginTop="@dimen/dp_40">
-        <View android:background="?lineColor" android:layout_width="fill_parent" android:layout_height="1.0px" />
-        <ImageView android:id="@id/resource_last_read_icon" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dp_15" android:layout_marginRight="@dimen/dp_5" android:src="@drawable/res_header_last_read_icon" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
-        <TextView android:id="@id/resource_last_read_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/dp_10" android:text="最近浏览" android:layout_toRightOf="@id/resource_last_read_icon" android:layout_centerVertical="true" style="@style/LargeText" />
-        <TextView android:ellipsize="end" android:id="@id/resource_last_read_title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/dp_10" android:singleLine="true" android:layout_toRightOf="@id/resource_last_read_text" android:layout_centerVertical="true" style="@style/SmallText" />
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="fill_parent"
+              android:layout_height="fill_parent"
+              android:background="?backgroundPressed"
+              android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@id/resource_last_read_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/list_item_resource_header_height"
+        android:layout_marginTop="@dimen/dp_40"
+        android:background="?backgroundSelector">
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1.0px"
+            android:background="?lineColor"/>
+
+        <ImageView
+            android:id="@id/resource_last_read_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/dp_15"
+            android:layout_marginRight="@dimen/dp_5"
+            android:src="@drawable/res_header_last_read_icon"/>
+
+        <TextView
+            android:id="@id/resource_last_read_text"
+            style="@style/LargeText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/dp_10"
+            android:layout_toRightOf="@id/resource_last_read_icon"
+            android:text="最近浏览"/>
+
+        <TextView
+            android:id="@id/resource_last_read_title"
+            style="@style/SmallText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/dp_10"
+            android:layout_toRightOf="@id/resource_last_read_text"
+            android:ellipsize="end"
+            android:singleLine="true"/>
     </RelativeLayout>
-    <RelativeLayout android:id="@id/resource_header_download_layout" android:background="?backgroundSelector" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/list_item_resource_header_height">
-        <View android:background="?lineColor" android:layout_width="fill_parent" android:layout_height="1.0px" />
-        <ImageView android:id="@id/res_header_download_icon" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dp_15" android:layout_marginRight="@dimen/dp_5" android:src="@drawable/res_header_download_icon" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
-        <TextView android:textSize="@dimen/list_item_resource_header_title" android:textColor="?android:textColor" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="缓存章节" android:layout_toRightOf="@id/res_header_download_icon" android:layout_centerVertical="true" />
+
+    <RelativeLayout
+        android:id="@id/resource_header_download_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/list_item_resource_header_height"
+        android:background="?backgroundSelector"
+        android:visibility="gone">
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1.0px"
+            android:background="?lineColor"/>
+
+        <ImageView
+            android:id="@id/res_header_download_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/dp_15"
+            android:layout_marginRight="@dimen/dp_5"
+            android:src="@drawable/res_header_download_icon"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/res_header_download_icon"
+            android:text="缓存章节"
+            android:textColor="?android:textColor"
+            android:textSize="@dimen/list_item_resource_header_title"/>
     </RelativeLayout>
-    <View android:background="?lineColor" android:layout_width="fill_parent" android:layout_height="1.0px" />
-    <LinearLayout android:orientation="vertical" android:id="@id/resource_count_layout" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <TextView android:id="@id/resource_count" android:text="共搜索到0网站" style="@style/ListItemLabel" />
-        <include layout="@layout/horizontal_divider" />
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1.0px"
+        android:background="?lineColor"/>
+
+    <LinearLayout
+        android:id="@id/resource_count_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@id/resource_count"
+            style="@style/ListItemLabel"
+            android:text="共搜索到0网站"/>
+
+        <include layout="@layout/horizontal_divider"/>
     </LinearLayout>
 </LinearLayout>

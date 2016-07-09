@@ -1,8 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <FrameLayout android:layout_width="@dimen/actionbar_back_width" android:layout_height="@dimen/actionbar_height">
-        <ImageView android:layout_gravity="left|center" android:id="@id/back" android:background="?selectableItemBackgroundBorderless" android:paddingLeft="@dimen/dp_16" android:paddingRight="@dimen/dp_16" android:layout_width="wrap_content" android:layout_height="fill_parent" android:src="@drawable/ab_back" />
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="wrap_content"
+              android:layout_height="fill_parent"
+              android:orientation="horizontal">
+
+    <FrameLayout
+        android:layout_width="@dimen/actionbar_back_width"
+        android:layout_height="@dimen/actionbar_height">
+
+        <ImageView
+            android:id="@id/back"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_gravity="left|center"
+            android:background="?selectableItemBackgroundBorderless"
+            android:paddingLeft="@dimen/dp_16"
+            android:paddingRight="@dimen/dp_16"
+            android:src="@drawable/ab_back"/>
     </FrameLayout>
-    <TextView android:textSize="18.0sp" android:textColor="@android:color/white" android:ellipsize="end" android:layout_gravity="center" android:id="@id/title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="30.0dip" android:singleLine="true" />
+
+    <TextView
+        android:id="@id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginRight="30.0dip"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:textColor="@android:color/white"
+        android:textSize="18.0sp"/>
 </LinearLayout>

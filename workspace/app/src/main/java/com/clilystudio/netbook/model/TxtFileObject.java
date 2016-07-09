@@ -52,9 +52,8 @@ public class TxtFileObject {
     }
 
     public static void saveTxtFiles(List<BookFile> list) {
-        Iterator<BookFile> iterator = list.iterator();
-        while (iterator.hasNext()) {
-            iterator.next().save();
+        for (BookFile aList : list) {
+            aList.save();
         }
     }
 

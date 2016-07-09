@@ -8,7 +8,7 @@ public class TtsRoot {
 
     public static TtsRoot getInfoFromJson(String string) {
         try {
-            TtsRoot ttsRoot = (TtsRoot) new Gson().fromJson(string, TtsRoot.class);
+            TtsRoot ttsRoot = new Gson().fromJson(string, TtsRoot.class);
             return ttsRoot;
         } catch (Exception var1_2) {
             return null;

@@ -30,10 +30,7 @@ public class Tweet {
      * Enabled aggressive block sorting
      */
     public boolean equals(Object object) {
-        if (object == null || !object.getClass().equals(Tweet.class)) {
-            return false;
-        }
-        return this._id.equals(((Tweet) object).get_id());
+        return !(object == null || !object.getClass().equals(Tweet.class)) && this._id.equals(((Tweet) object).get_id());
     }
 
     public Book getBook() {

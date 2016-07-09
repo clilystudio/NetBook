@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <item type="drawable" name="ic_retention_ratio">false</item>
+    <item name="ic_retention_ratio" type="drawable">false</item>
 </resources>

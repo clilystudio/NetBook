@@ -1,7 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="@dimen/dp_56"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/text_size_12" android:textStyle="italic" android:id="@id/tv_track_number" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dp_16" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
-    <TextView android:textSize="@dimen/text_size_15" android:ellipsize="end" android:id="@id/tv_track_name" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dp_16" android:singleLine="true" android:layout_toLeftOf="@id/img_play_button" android:layout_toRightOf="@id/tv_track_number" android:layout_centerVertical="true" />
-    <ImageView android:id="@id/img_play_button" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/dp_24" android:src="@drawable/audiobook_item_play" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/dp_56">
+
+    <TextView
+        android:id="@id/tv_track_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/dp_16"
+        android:textSize="@dimen/text_size_12"
+        android:textStyle="italic"/>
+
+    <TextView
+        android:id="@id/tv_track_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/dp_16"
+        android:layout_toLeftOf="@id/img_play_button"
+        android:layout_toRightOf="@id/tv_track_number"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:textSize="@dimen/text_size_15"/>
+
+    <ImageView
+        android:id="@id/img_play_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="@dimen/dp_24"
+        android:src="@drawable/audiobook_item_play"/>
 </RelativeLayout>

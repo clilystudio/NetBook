@@ -30,6 +30,6 @@ public final class Q {
         if (a.get(readerChapterIdentifier) != null) {
             return;
         }
-        a.put(readerChapterIdentifier, new HashMap<Integer, ReaderChapter>(map));
+        a.put(readerChapterIdentifier, new HashMap<>(map));
     }
 }

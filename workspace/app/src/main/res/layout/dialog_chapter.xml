@@ -1,7 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="#fffafafa" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/read_toc_title_text" android:textColor="@color/sub_text" android:id="@id/dialog_chapter_title" android:paddingTop="@dimen/dp_12" android:paddingBottom="@dimen/dp_12" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerHorizontal="true" />
-    <ImageView android:background="@drawable/toc_list_divider" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/dialog_chapter_title" />
-    <ListView android:id="@id/dialog_chapter_list" android:layout_width="fill_parent" android:layout_height="wrap_content" android:divider="@drawable/toc_list_divider" android:dividerHeight="1.0px" android:layout_below="@id/dialog_chapter_title" android:footerDividersEnabled="true" android:fadeScrollbars="false" />
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="#fffafafa">
+
+    <TextView
+        android:id="@id/dialog_chapter_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:paddingBottom="@dimen/dp_12"
+        android:paddingTop="@dimen/dp_12"
+        android:textColor="@color/sub_text"
+        android:textSize="@dimen/read_toc_title_text"/>
+
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/dialog_chapter_title"
+        android:background="@drawable/toc_list_divider"/>
+
+    <ListView
+        android:id="@id/dialog_chapter_list"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/dialog_chapter_title"
+        android:divider="@drawable/toc_list_divider"
+        android:dividerHeight="1.0px"
+        android:fadeScrollbars="false"
+        android:footerDividersEnabled="true"/>
 </RelativeLayout>

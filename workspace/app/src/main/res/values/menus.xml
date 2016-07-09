@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <item type="menu" name="abs_menu_ugc_create">false</item>
+    <item name="abs_menu_ugc_create" type="menu">false</item>
 </resources>

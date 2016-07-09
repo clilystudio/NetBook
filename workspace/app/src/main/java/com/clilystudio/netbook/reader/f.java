@@ -95,7 +95,7 @@ public final class f {
      */
     private List<ChapterLink> a(final int n, int n2) {
         final ChapterLink[][] chapterLinks = new ChapterLink[n2][];
-        ArrayList<Thread> arrayList = new ArrayList<Thread>();
+        ArrayList<Thread> arrayList = new ArrayList<>();
         for (int j = 1; j <= n2; ++j) {
             final int finalJ = j;
             Thread thread = new Thread(new Runnable() {
@@ -126,7 +126,7 @@ public final class f {
                 var18_9.printStackTrace();
             }
         }
-        ArrayList<ChapterLink> arrayList2 = new ArrayList<ChapterLink>();
+        ArrayList<ChapterLink> arrayList2 = new ArrayList<>();
         int n3 = chapterLinks.length;
         int n4 = 0;
         while (n4 < n3) {

@@ -103,7 +103,7 @@ public final class a {
     public final void a() {
         double d2;
         float f2 = com.clilystudio.netbook.hpay100.a.a.u(this.a, "rate_test");
-        if ((double) f2 <= (d2 = Math.random()) || com.clilystudio.netbook.download.e.a(this.a, this.f) || this.g && (!this.g || com.clilystudio.netbook.download.e.a(this.e, this.b).booleanValue())) {
+        if ((double) f2 <= (d2 = Math.random()) || com.clilystudio.netbook.download.e.a(this.a, this.f) || this.g && (!this.g || com.clilystudio.netbook.download.e.a(this.e, this.b))) {
             return;
         }
         if (com.clilystudio.netbook.download.e.a(this.a)) {

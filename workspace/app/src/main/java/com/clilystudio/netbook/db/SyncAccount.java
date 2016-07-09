@@ -29,10 +29,7 @@ public class SyncAccount extends Model {
         String string = account.getUser().getId();
         List list = new Select().from(SyncAccount.class).where("uid = ?", string).execute();
         if (!list.isEmpty()) {
-            if (((SyncAccount) list.get((int) 0)).updateTime.getTime() < date.getTime()) {
-                return true;
-            }
-            return false;
+            return ((SyncAccount) list.get(0)).updateTime.getTime() < date.getTime();
         }
         return true;
     }

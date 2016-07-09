@@ -1,8 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/root" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.clilystudio.netbook.reader.PagerWidget android:id="@id/main_view" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <include android:id="@id/reader_random_action_bar" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" layout="@layout/reader_random_operation_bar" />
-    <include android:id="@id/read_random_widget" android:layout_width="fill_parent" android:layout_height="60.0dip" android:layout_alignParentBottom="true" layout="@layout/reader_random_widget" />
-    <ProgressBar android:id="@id/reader_content_loading" android:visibility="gone" android:layout_centerInParent="true" style="@style/Loading" />
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@id/root"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+
+    <com.clilystudio.netbook.reader.PagerWidget
+        android:id="@id/main_view"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"/>
+
+    <include
+        android:id="@id/reader_random_action_bar"
+        layout="@layout/reader_random_operation_bar"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"/>
+
+    <include
+        android:id="@id/read_random_widget"
+        layout="@layout/reader_random_widget"
+        android:layout_width="fill_parent"
+        android:layout_height="60.0dip"
+        android:layout_alignParentBottom="true"/>
+
+    <ProgressBar
+        android:id="@id/reader_content_loading"
+        style="@style/Loading"
+        android:layout_centerInParent="true"
+        android:visibility="gone"/>
 </RelativeLayout>

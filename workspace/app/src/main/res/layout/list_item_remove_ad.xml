@@ -1,7 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="?android:windowBackground" android:paddingLeft="@dimen/dp_16" android:paddingRight="@dimen/dp_16" android:layout_width="fill_parent" android:layout_height="@dimen/dp_56" android:minHeight="@dimen/dp_56"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/text_size_15" android:id="@id/vip_content" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="免除7天" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
-    <Button android:textSize="@dimen/text_size_12" android:textColor="@android:color/white" android:id="@id/vip_purchase" android:background="@drawable/common_btn_red_bg" android:paddingLeft="@dimen/dp_8" android:paddingRight="@dimen/dp_8" android:layout_width="wrap_content" android:layout_height="@dimen/dp_24" android:text="200追书币" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-    <View android:id="@id/divider" android:background="?lineColor" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_alignParentBottom="true" />
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/dp_56"
+                android:background="?android:windowBackground"
+                android:minHeight="@dimen/dp_56"
+                android:paddingLeft="@dimen/dp_16"
+                android:paddingRight="@dimen/dp_16">
+
+    <TextView
+        android:id="@id/vip_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:text="免除7天"
+        android:textSize="@dimen/text_size_15"/>
+
+    <Button
+        android:id="@id/vip_purchase"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/dp_24"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:background="@drawable/common_btn_red_bg"
+        android:paddingLeft="@dimen/dp_8"
+        android:paddingRight="@dimen/dp_8"
+        android:text="200追书币"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/text_size_12"/>
+
+    <View
+        android:id="@id/divider"
+        android:layout_width="fill_parent"
+        android:layout_height="1.0px"
+        android:layout_alignParentBottom="true"
+        android:background="?lineColor"/>
 </RelativeLayout>

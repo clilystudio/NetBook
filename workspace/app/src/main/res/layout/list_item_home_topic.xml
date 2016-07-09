@@ -1,11 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.clilystudio.netbook.widget.DividerSection android:layout_width="fill_parent" android:layout_height="@dimen/home_topic_item_height"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="horizontal" android:paddingRight="@dimen/dp_20" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <FrameLayout android:layout_width="@dimen/shelf_divider_left_gap" android:layout_height="fill_parent">
-            <com.clilystudio.netbook.ui.SmartImageView android:layout_gravity="center_vertical" android:id="@id/cover" android:layout_width="@dimen/dp_28" android:layout_height="@dimen/dp_35" android:layout_marginLeft="@dimen/dp_20" />
+<com.clilystudio.netbook.widget.DividerSection xmlns:android="http://schemas.android.com/apk/res/android"
+                                               android:layout_width="fill_parent"
+                                               android:layout_height="@dimen/home_topic_item_height">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="horizontal"
+        android:paddingRight="@dimen/dp_20">
+
+        <FrameLayout
+            android:layout_width="@dimen/shelf_divider_left_gap"
+            android:layout_height="fill_parent">
+
+            <com.clilystudio.netbook.ui.SmartImageView
+                android:id="@id/cover"
+                android:layout_width="@dimen/dp_28"
+                android:layout_height="@dimen/dp_35"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/dp_20"/>
         </FrameLayout>
-        <TextView android:textSize="@dimen/text_size_16" android:layout_gravity="center_vertical" android:id="@id/title" android:layout_width="0.0dip" android:layout_height="wrap_content" android:singleLine="true" android:layout_weight="1.0" />
-        <TextView android:textSize="@dimen/text_size_12" android:textColor="#ffffffff" android:gravity="center" android:layout_gravity="center" android:id="@id/message_count" android:background="@drawable/number_badge" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@id/title"
+            android:layout_width="0.0dip"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1.0"
+            android:singleLine="true"
+            android:textSize="@dimen/text_size_16"/>
+
+        <TextView
+            android:id="@id/message_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/number_badge"
+            android:gravity="center"
+            android:textColor="#ffffffff"
+            android:textSize="@dimen/text_size_12"/>
     </LinearLayout>
 </com.clilystudio.netbook.widget.DividerSection>

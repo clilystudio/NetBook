@@ -3,15 +3,15 @@ package com.clilystudio.netbook.model;
 import java.io.Serializable;
 
 public interface ReplyeeInfo extends Serializable {
-    public Author getAuthor();
+    Author getAuthor();
 
-    public void setAuthor(Author var1);
+    void setAuthor(Author var1);
 
-    public String getCommentId();
+    String getCommentId();
 
-    public void setCommentId(String var1);
+    void setCommentId(String var1);
 
-    public int getFloor();
+    int getFloor();
 
-    public void setFloor(int var1);
+    void setFloor(int var1);
 }

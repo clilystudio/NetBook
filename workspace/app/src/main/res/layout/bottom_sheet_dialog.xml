@@ -1,8 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="?dialogBackground" android:paddingBottom="8.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:id="@id/bottom_sheet_divider" android:background="?dividerColor" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginBottom="8.0dip" />
-    <TextView android:id="@id/bottom_sheet_title" android:visibility="gone" style="@style/BottomSheet.Title" />
-    <GridView android:id="@id/bottom_sheet_gridview" android:paddingLeft="24.0dip" android:paddingRight="24.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:numColumns="?numColumns" style="@style/BottomSheet.List" />
-    <FrameLayout android:id="@id/bottom_sheet_customview" android:visibility="gone" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="fill_parent"
+              android:layout_height="wrap_content"
+              android:background="?dialogBackground"
+              android:orientation="vertical"
+              android:paddingBottom="8.0dip">
+
+    <View
+        android:id="@id/bottom_sheet_divider"
+        android:layout_width="fill_parent"
+        android:layout_height="1.0dip"
+        android:layout_marginBottom="8.0dip"
+        android:background="?dividerColor"/>
+
+    <TextView
+        android:id="@id/bottom_sheet_title"
+        style="@style/BottomSheet.Title"
+        android:visibility="gone"/>
+
+    <GridView
+        android:id="@id/bottom_sheet_gridview"
+        style="@style/BottomSheet.List"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:numColumns="?numColumns"
+        android:paddingLeft="24.0dip"
+        android:paddingRight="24.0dip"/>
+
+    <FrameLayout
+        android:id="@id/bottom_sheet_customview"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:fadingEdge="none"
+        android:visibility="gone"/>
 </LinearLayout>

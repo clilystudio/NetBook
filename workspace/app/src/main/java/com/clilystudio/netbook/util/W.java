@@ -68,7 +68,7 @@ public abstract class W<V> extends al {
     }
 
     public V getItem(int n) {
-        return (V) this.e[n];
+        return this.e[n];
     }
 
     @Override

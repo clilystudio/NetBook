@@ -768,24 +768,24 @@ public final class Reader {
     }
 
     interface Y {
-        public void a(int var1, e<ReaderChapter> var2, boolean var3);
+        void a(int var1, e<ReaderChapter> var2, boolean var3);
     }
 
     public interface ad {
-        public void a();
+        void a();
 
-        public void b();
+        void b();
     }
 
     public interface ae {
-        public void a();
+        void a();
 
-        public void b();
+        void b();
     }
 
     public interface af {
-        public void a();
+        void a();
 
-        public void b();
+        void b();
     }
 }

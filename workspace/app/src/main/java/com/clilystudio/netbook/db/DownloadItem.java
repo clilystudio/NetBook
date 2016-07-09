@@ -25,9 +25,6 @@ public class DownloadItem extends Model {
      * Enabled aggressive block sorting
      */
     public static boolean existsInDb(String string) {
-        if (TextUtils.isEmpty(string) || new Select().from(DownloadItem.class).where("package_name=?", string).execute().size() == 0) {
-            return false;
-        }
-        return true;
+        return !(TextUtils.isEmpty(string) || new Select().from(DownloadItem.class).where("package_name=?", string).execute().size() == 0);
     }
 }

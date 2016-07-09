@@ -31,7 +31,7 @@ final class l extends r {
 
     @Override
     public final Object a(float f) {
-        return Float.valueOf(this.b(f));
+        return this.b(f);
     }
 
     public final float b(float f) {
@@ -48,7 +48,7 @@ final class l extends r {
             if (this.d == null) {
                 return this.e + f * this.g;
             }
-            return ((Number) this.d.a(f, Float.valueOf(this.e), Float.valueOf(this.f))).floatValue();
+            return ((Number) this.d.a(f, this.e, this.f)).floatValue();
         }
         if (f <= 0.0f) {
             p p2 = (p) this.c.get(0);
@@ -65,7 +65,7 @@ final class l extends r {
             if (this.d == null) {
                 return f2 + f6 * (f3 - f2);
             }
-            return ((Number) this.d.a(f6, Float.valueOf(f2), Float.valueOf(f3))).floatValue();
+            return ((Number) this.d.a(f6, f2, f3)).floatValue();
         }
         if (f >= 1.0f) {
             p p4 = (p) this.c.get(-2 + this.a);
@@ -82,7 +82,7 @@ final class l extends r {
             if (this.d == null) {
                 return f7 + f11 * (f8 - f7);
             }
-            return ((Number) this.d.a(f11, Float.valueOf(f7), Float.valueOf(f8))).floatValue();
+            return ((Number) this.d.a(f11, f7, f8)).floatValue();
         }
         p p6 = (p) this.c.get(0);
         for (int n = 1; n < this.a; ++n) {
@@ -98,7 +98,7 @@ final class l extends r {
                 if (this.d == null) {
                     return f13 + f12 * (f14 - f13);
                 }
-                return ((Number) this.d.a(f12, Float.valueOf(f13), Float.valueOf(f14))).floatValue();
+                return ((Number) this.d.a(f12, f13, f14)).floatValue();
             }
             p6 = p7;
         }

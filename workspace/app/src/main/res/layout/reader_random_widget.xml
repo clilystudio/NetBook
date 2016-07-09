@@ -1,14 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:background="@color/read_random_widget_bg" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:baselineAligned="false"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center" android:layout_gravity="center_vertical" android:orientation="horizontal" android:id="@id/read_random_add" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
-        <com.clilystudio.netbook.widget.SAutoFrameLayout android:id="@id/bg_read_random_add_text" android:background="@drawable/bg_red_button" android:layout_width="150.0dip" android:layout_height="40.0dip">
-            <TextView android:textSize="14.0sp" android:textColor="#ffffffff" android:gravity="center" android:layout_gravity="center" android:id="@id/read_random_add_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/read_random_add" android:drawableLeft="@drawable/secret_add_book" android:drawablePadding="8.0dip" />
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="fill_parent"
+              android:layout_height="fill_parent"
+              android:background="@color/read_random_widget_bg"
+              android:baselineAligned="false"
+              android:orientation="horizontal"
+              android:visibility="gone">
+
+    <LinearLayout
+        android:id="@id/read_random_add"
+        android:layout_width="0.0dip"
+        android:layout_height="fill_parent"
+        android:layout_gravity="center_vertical"
+        android:layout_weight="1.0"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <com.clilystudio.netbook.widget.SAutoFrameLayout
+            android:id="@id/bg_read_random_add_text"
+            android:layout_width="150.0dip"
+            android:layout_height="40.0dip"
+            android:background="@drawable/bg_red_button">
+
+            <TextView
+                android:id="@id/read_random_add_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:drawableLeft="@drawable/secret_add_book"
+                android:drawablePadding="8.0dip"
+                android:gravity="center"
+                android:text="@string/read_random_add"
+                android:textColor="#ffffffff"
+                android:textSize="14.0sp"/>
         </com.clilystudio.netbook.widget.SAutoFrameLayout>
     </LinearLayout>
-    <LinearLayout android:gravity="center" android:layout_gravity="center_vertical" android:orientation="horizontal" android:id="@id/read_random_next" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
-        <com.clilystudio.netbook.widget.SAutoFrameLayout android:background="@drawable/bg_black_button" android:layout_width="150.0dip" android:layout_height="40.0dip">
-            <TextView android:textSize="14.0sp" android:textColor="#ffffffff" android:layout_gravity="center" android:id="@id/read_opt_orient_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/read_random_next" android:drawableLeft="@drawable/random_next" android:drawablePadding="8.0dip" />
+
+    <LinearLayout
+        android:id="@id/read_random_next"
+        android:layout_width="0.0dip"
+        android:layout_height="fill_parent"
+        android:layout_gravity="center_vertical"
+        android:layout_weight="1.0"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <com.clilystudio.netbook.widget.SAutoFrameLayout
+            android:layout_width="150.0dip"
+            android:layout_height="40.0dip"
+            android:background="@drawable/bg_black_button">
+
+            <TextView
+                android:id="@id/read_opt_orient_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:drawableLeft="@drawable/random_next"
+                android:drawablePadding="8.0dip"
+                android:text="@string/read_random_next"
+                android:textColor="#ffffffff"
+                android:textSize="14.0sp"/>
         </com.clilystudio.netbook.widget.SAutoFrameLayout>
     </LinearLayout>
 </LinearLayout>

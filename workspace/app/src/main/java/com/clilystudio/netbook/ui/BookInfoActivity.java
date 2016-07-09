@@ -295,9 +295,9 @@ public class BookInfoActivity extends BaseActivity implements View.OnClickListen
         int n2 = arrstring.length;
         int n3 = com.clilystudio.netbook.hpay100.a.a.a(this, 16.0f);
         TagsLayout tagsLayout = (TagsLayout) view.findViewById(R.id.tags_layout);
-        for (int n5 = 0; n5 < n2; n5++) {
+        for (String anArrstring : arrstring) {
             TextView textView = (TextView) layoutInflater.inflate(R.layout.book_info_tags_item, tagsLayout, false).findViewById(R.id.tag_text);
-            final String string = arrstring[n5];
+            final String string = anArrstring;
             textView.setText(string);
             textView.setBackgroundResource(R.drawable.bg_book_info_tag0_dark);
             textView.setOnClickListener(new View.OnClickListener() {
@@ -376,7 +376,7 @@ public class BookInfoActivity extends BaseActivity implements View.OnClickListen
                 Object[] arrobject = new Object[]{this.k.getTitle()};
                 String string4 = String.format(string3, arrobject);
                 if (com.clilystudio.netbook.hpay100.a.a.a(this, "add_update_notify_login", true) && !am.g()) {
-                    View view = this.getLayoutInflater().inflate(R.layout.remove_shelf_confirm, null, false);
+                    View view = this.getLayoutInflater().inflate(R.layout.remove_shelf_confirm, (ViewGroup)getWindow().getDecorView(), false);
                     final CheckBox checkBox = (CheckBox) view.findViewById(R.id.remove_shelf_cache);
                     checkBox.setText(this.getString(R.string.add_update_not_notify));
                     checkBox.setChecked(false);
@@ -400,7 +400,7 @@ public class BookInfoActivity extends BaseActivity implements View.OnClickListen
             }
             MiStatInterfaceImpl.recordCountEvent("book_info_add", null);
         }
-        com.clilystudio.netbook.util.e.a((Activity) this, (String) string);
+        com.clilystudio.netbook.util.e.a(this, string);
     }
 
     private void j() {
@@ -504,7 +504,7 @@ public class BookInfoActivity extends BaseActivity implements View.OnClickListen
             }
         };
         this.c();
-        View view = LayoutInflater.from(this).inflate(R.layout.ab_custom_two_text_view, null);
+        View view = LayoutInflater.from(this).inflate(R.layout.ab_custom_two_text_view, (ViewGroup)getWindow().getDecorView(),false);
         ((TextView) view.findViewById(R.id.title)).setText(R.string.book_info_title);
         view.findViewById(R.id.back).setOnClickListener(new View.OnClickListener() {
             @Override

@@ -1,11 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="@dimen/home_topic_item_height"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="horizontal" android:paddingRight="20.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <FrameLayout android:layout_gravity="center" android:layout_width="@dimen/shelf_divider_left_gap" android:layout_height="wrap_content">
-            <ImageView android:layout_gravity="center_vertical" android:id="@id/icon" android:layout_width="@dimen/dp_24" android:layout_height="@dimen/dp_24" android:layout_marginLeft="@dimen/dp_20" />
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/home_topic_item_height">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="horizontal"
+        android:paddingRight="20.0dip">
+
+        <FrameLayout
+            android:layout_width="@dimen/shelf_divider_left_gap"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center">
+
+            <ImageView
+                android:id="@id/icon"
+                android:layout_width="@dimen/dp_24"
+                android:layout_height="@dimen/dp_24"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/dp_20"/>
         </FrameLayout>
-        <TextView android:id="@id/label" android:layout_width="0.0dip" android:layout_height="wrap_content" style="@style/TopicLabel" />
+
+        <TextView
+            android:id="@id/label"
+            style="@style/TopicLabel"
+            android:layout_width="0.0dip"
+            android:layout_height="wrap_content"/>
     </LinearLayout>
-    <View android:background="?android:divider" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_alignParentBottom="true" />
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1.0px"
+        android:layout_alignParentBottom="true"
+        android:background="?android:divider"/>
 </RelativeLayout>
