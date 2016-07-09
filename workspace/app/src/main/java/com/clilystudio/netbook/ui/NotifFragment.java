@@ -13,6 +13,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.clilystudio.netbook.R;
+import com.clilystudio.netbook.a_pack.BaseAsyncTask;
 import com.clilystudio.netbook.adapter.NotificationAdapter;
 import com.clilystudio.netbook.am;
 import com.clilystudio.netbook.hpay100.a.a;
@@ -30,8 +31,8 @@ import java.util.Arrays;
 import java.util.List;
 
 public abstract class NotifFragment extends Fragment {
-    private com.clilystudio.netbook.a_pack.e<String, Void, NotificationRoot> b;
-    private com.clilystudio.netbook.a_pack.e<String, Void, NotificationRoot> c;
+    private BaseAsyncTask<String, Void, NotificationRoot> b;
+    private BaseAsyncTask<String, Void, NotificationRoot> c;
     private PullToRefreshListView d;
     private ListView e;
     private View f;
@@ -53,7 +54,7 @@ public abstract class NotifFragment extends Fragment {
                     if (NotifFragment.this.c != null && NotifFragment.this.c.getStatus() != AsyncTask.Status.FINISHED && !NotifFragment.this.c.isCancelled()) {
                         NotifFragment.this.c.cancel(true);
                     }
-                    NotifFragment.this.b = new com.clilystudio.netbook.a_pack.e<String, Void, NotificationRoot>() {
+                    NotifFragment.this.b = new BaseAsyncTask<String, Void, NotificationRoot>() {
 
                         @Override
                         protected NotificationRoot doInBackground(String... params) {
@@ -125,7 +126,7 @@ public abstract class NotifFragment extends Fragment {
         return notifFragment.h;
     }
 
-    static /* synthetic */ com.clilystudio.netbook.a_pack.e<String, Void, NotificationRoot> a(NotifFragment notifFragment, com.clilystudio.netbook.a_pack.e<String, Void, NotificationRoot> bw2) {
+    static /* synthetic */ BaseAsyncTask<String, Void, NotificationRoot> a(NotifFragment notifFragment, BaseAsyncTask<String, Void, NotificationRoot> bw2) {
         notifFragment.b = bw2;
         return bw2;
     }
@@ -178,7 +179,7 @@ public abstract class NotifFragment extends Fragment {
         notifFragment.i.setVisibility(View.VISIBLE);
     }
 
-    static /* synthetic */ com.clilystudio.netbook.a_pack.e<String, Void, NotificationRoot> n(NotifFragment notifFragment) {
+    static /* synthetic */ BaseAsyncTask<String, Void, NotificationRoot> n(NotifFragment notifFragment) {
         return notifFragment.b;
     }
 
@@ -205,7 +206,7 @@ public abstract class NotifFragment extends Fragment {
     protected abstract NotificationAdapter b();
 
     protected final void c() {
-        this.c = new com.clilystudio.netbook.a_pack.e<String, Void, NotificationRoot>(){
+        this.c = new BaseAsyncTask<String, Void, NotificationRoot>(){
 
             @Override
             protected NotificationRoot doInBackground(String... params) {

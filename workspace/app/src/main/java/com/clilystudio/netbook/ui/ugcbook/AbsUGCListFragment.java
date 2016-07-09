@@ -13,6 +13,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.clilystudio.netbook.R;
+import com.clilystudio.netbook.a_pack.BaseAsyncTask;
 import com.clilystudio.netbook.am;
 import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.model.UGCBookListRoot;
@@ -33,8 +34,8 @@ public abstract class AbsUGCListFragment extends Fragment implements AdapterView
     protected View d;
     protected View e;
     protected Handler f = new Handler();
-    protected com.clilystudio.netbook.a_pack.e<String, Void, UGCBookListRoot> g;
-    protected com.clilystudio.netbook.a_pack.e<String, Void, UGCBookListRoot> h;
+    protected BaseAsyncTask<String, Void, UGCBookListRoot> g;
+    protected BaseAsyncTask<String, Void, UGCBookListRoot> h;
     protected List<UGCBookListRoot.UGCBook> i = new ArrayList<>();
     protected TextView j;
     private TextView k;
@@ -51,7 +52,7 @@ public abstract class AbsUGCListFragment extends Fragment implements AdapterView
                     if (AbsUGCListFragment.this.g != null && AbsUGCListFragment.this.g.getStatus() != AsyncTask.Status.FINISHED && !AbsUGCListFragment.this.g.isCancelled()) {
                         AbsUGCListFragment.this.g.cancel(true);
                     }
-                    AbsUGCListFragment.this.h = new com.clilystudio.netbook.a_pack.e<String, Void, UGCBookListRoot>() {
+                    AbsUGCListFragment.this.h = new BaseAsyncTask<String, Void, UGCBookListRoot>() {
 
                         @Override
                         protected UGCBookListRoot doInBackground(String... params) {
@@ -123,7 +124,7 @@ public abstract class AbsUGCListFragment extends Fragment implements AdapterView
     protected abstract UGCBookListRoot a(Account var1, int var2);
 
     public final void a() {
-        new com.clilystudio.netbook.a_pack.e<String, Void, UGCBookListRoot>() {
+        new BaseAsyncTask<String, Void, UGCBookListRoot>() {
 
             @Override
             protected UGCBookListRoot doInBackground(String... params) {
@@ -210,7 +211,7 @@ public abstract class AbsUGCListFragment extends Fragment implements AdapterView
                         if (AbsUGCListFragment.this.g != null && AbsUGCListFragment.this.g.getStatus() != AsyncTask.Status.FINISHED && !AbsUGCListFragment.this.g.isCancelled()) {
                             AbsUGCListFragment.this.g.cancel(true);
                         }
-                        AbsUGCListFragment.this.g = new com.clilystudio.netbook.a_pack.e<String, Void, UGCBookListRoot>() {
+                        AbsUGCListFragment.this.g = new BaseAsyncTask<String, Void, UGCBookListRoot>() {
 
                             @Override
                             protected UGCBookListRoot doInBackground(String... params) {

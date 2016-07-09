@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.R;
+import com.clilystudio.netbook.a_pack.BaseAsyncTask;
 import com.clilystudio.netbook.am;
 import com.clilystudio.netbook.IntentBuilder;
 import com.clilystudio.netbook.event.AccountUpdatedEvent;
@@ -98,7 +99,7 @@ public class UserInfoActivity extends BaseActivity {
 
     private void b() {
         if (this.c != null) {
-            com.clilystudio.netbook.a_pack.e<String, Void, UserInfo> aK2 = new com.clilystudio.netbook.a_pack.e<String, Void, UserInfo>() {
+            BaseAsyncTask<String, Void, UserInfo> aK2 = new BaseAsyncTask<String, Void, UserInfo>() {
 
                 @Override
                 protected UserInfo doInBackground(String... params) {

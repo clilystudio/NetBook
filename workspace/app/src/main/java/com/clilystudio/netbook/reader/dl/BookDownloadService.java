@@ -10,6 +10,7 @@ import android.os.IBinder;
 import android.support.v4.content.LocalBroadcastManager;
 
 import com.clilystudio.netbook.MyApplication;
+import com.clilystudio.netbook.a_pack.BaseAsyncTask;
 import com.clilystudio.netbook.am;
 import com.clilystudio.netbook.db.BookDlRecord;
 import com.clilystudio.netbook.db.BookReadRecord;
@@ -253,7 +254,7 @@ public class BookDownloadService extends Service {
         }
         this.b = com.clilystudio.netbook.hpay100.a.a.a(this.a, this.c, string, this.b);
         this.k.a(this.b, string2, string);
-        new com.clilystudio.netbook.a_pack.e<Void, Void, Toc>(){
+        new BaseAsyncTask<Void, Void, Toc>(){
             @Override
             protected Toc doInBackground(Void... params) {
                 return BookDownloadService.f(BookDownloadService.this).a();
@@ -359,7 +360,7 @@ public class BookDownloadService extends Service {
             }
             final ChapterLink finalChapterLink = chapterLink;
             final int finalN = n;
-            new com.clilystudio.netbook.a_pack.e<Void, Void, ChapterRoot>(){
+            new BaseAsyncTask<Void, Void, ChapterRoot>(){
                 @Override
                 protected ChapterRoot doInBackground(Void... params) {
                     ChapterRoot chapterRoot = BookDownloadService.f(BookDownloadService.this).a(finalChapterLink, finalN);

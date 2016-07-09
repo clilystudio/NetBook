@@ -2,6 +2,7 @@ package com.clilystudio.netbook.util;
 
 import android.content.Context;
 
+import com.clilystudio.netbook.a_pack.BaseAsyncTask;
 import com.clilystudio.netbook.am;
 
 import com.clilystudio.netbook.db.AccountInfo;
@@ -60,7 +61,7 @@ public class J {
 
     public final void a(Account account) {
         if (account != null) {
-            com.clilystudio.netbook.a_pack.e<String, Void, NotifCountRoot> k = new com.clilystudio.netbook.a_pack.e<String, Void, NotifCountRoot>(){
+            BaseAsyncTask<String, Void, NotifCountRoot> k = new BaseAsyncTask<String, Void, NotifCountRoot>(){
 
                 @Override
                 protected NotifCountRoot doInBackground(String... params) {
@@ -102,7 +103,7 @@ public class J {
     public final void c() {
         Account account = am.e();
         if (account != null) {
-            com.clilystudio.netbook.a_pack.e<String, Void, Root> l = new com.clilystudio.netbook.a_pack.e<String, Void, Root>(){
+            BaseAsyncTask<String, Void, Root> l = new BaseAsyncTask<String, Void, Root>(){
 
                 @Override
                 protected Root doInBackground(String... params) {
@@ -128,7 +129,7 @@ public class J {
     public final void d() {
         Account account = am.e();
         if (account != null) {
-            com.clilystudio.netbook.a_pack.e<String, Void, Root> m = new com.clilystudio.netbook.a_pack.e<String, Void, Root>(){
+            BaseAsyncTask<String, Void, Root> m = new BaseAsyncTask<String, Void, Root>(){
 
                 @Override
                 protected Root doInBackground(String... params) {

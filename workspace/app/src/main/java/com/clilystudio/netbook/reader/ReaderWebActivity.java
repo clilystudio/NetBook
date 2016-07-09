@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.R;
+import com.clilystudio.netbook.a_pack.BaseAsyncTask;
 import com.clilystudio.netbook.a_pack.c;
 import com.clilystudio.netbook.IntentBuilder;
 import com.clilystudio.netbook.db.BookReadRecord;
@@ -345,7 +346,7 @@ public class ReaderWebActivity extends BaseReadActivity {
                         .setNegativeButton("不使用", var13_21).show();
             }
         }
-        com.clilystudio.netbook.a_pack.e<String, Void, TopicCount> var7_10 = new com.clilystudio.netbook.a_pack.e<String, Void, TopicCount>() {
+        BaseAsyncTask<String, Void, TopicCount> var7_10 = new BaseAsyncTask<String, Void, TopicCount>() {
 
             @Override
             protected TopicCount doInBackground(String... params) {

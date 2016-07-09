@@ -1,6 +1,6 @@
 package com.clilystudio.netbook.util;
 
-import com.clilystudio.netbook.a_pack.e;
+import com.clilystudio.netbook.a_pack.BaseAsyncTask;
 import com.clilystudio.netbook.am;
 import com.clilystudio.netbook.db.BookClickRecord;
 import com.clilystudio.netbook.model.ResultStatus;
@@ -48,7 +48,7 @@ public final class k {
             bl = false;
         }
         if (!bl) {
-            com.clilystudio.netbook.a_pack.e<String, Void, ResultStatus> l2 = new e<String, Void, ResultStatus>(){
+            BaseAsyncTask<String, Void, ResultStatus> l2 = new BaseAsyncTask<String, Void, ResultStatus>(){
 
                 @Override
                 protected ResultStatus doInBackground(String... params) {

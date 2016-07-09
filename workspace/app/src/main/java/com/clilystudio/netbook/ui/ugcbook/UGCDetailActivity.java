@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.R;
+import com.clilystudio.netbook.a_pack.BaseAsyncTask;
 import com.clilystudio.netbook.am;
 import com.clilystudio.netbook.event.BusProvider;
 import com.clilystudio.netbook.event.UgcDraftEvent;
@@ -124,7 +125,7 @@ public class UGCDetailActivity extends BaseActivity implements View.OnClickListe
     static /* synthetic */ void c(final UGCDetailActivity uGCDetailActivity) {
         Account account = am.a(uGCDetailActivity);
         if (account != null) {
-            com.clilystudio.netbook.a_pack.e<String, Void, ResultStatus> q2 = new com.clilystudio.netbook.a_pack.e<String, Void, ResultStatus>() {
+            BaseAsyncTask<String, Void, ResultStatus> q2 = new BaseAsyncTask<String, Void, ResultStatus>() {
 
                 @Override
                 protected ResultStatus doInBackground(String... params) {
@@ -201,7 +202,7 @@ public class UGCDetailActivity extends BaseActivity implements View.OnClickListe
 
     private void b() {
         this.e(0);
-        com.clilystudio.netbook.a_pack.e<String, Void, UGCBookDetailRoot> r2 = new com.clilystudio.netbook.a_pack.e<String, Void, UGCBookDetailRoot>() {
+        BaseAsyncTask<String, Void, UGCBookDetailRoot> r2 = new BaseAsyncTask<String, Void, UGCBookDetailRoot>() {
 
             @Override
             protected UGCBookDetailRoot doInBackground(String... params) {

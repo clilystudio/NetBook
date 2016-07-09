@@ -16,7 +16,7 @@ import android.widget.TextView;
 
 import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.R;
-import com.clilystudio.netbook.a_pack.e;
+import com.clilystudio.netbook.a_pack.BaseAsyncTask;
 import com.clilystudio.netbook.am;
 import com.clilystudio.netbook.IntentBuilder;
 import com.clilystudio.netbook.db.BookReadRecord;
@@ -404,7 +404,7 @@ public class BookInfoActivity extends BaseActivity implements View.OnClickListen
 
     private void j() {
         this.e(0);
-        com.clilystudio.netbook.a_pack.e<String, Void, BookInfo> aI2 = new e<String, Void, BookInfo>() {
+        BaseAsyncTask<String, Void, BookInfo> aI2 = new BaseAsyncTask<String, Void, BookInfo>() {
 
             @Override
             protected BookInfo doInBackground(String... params) {

@@ -19,6 +19,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.clilystudio.netbook.R;
+import com.clilystudio.netbook.a_pack.BaseAsyncTask;
 import com.clilystudio.netbook.model.AutoCompleteRoot;
 import com.clilystudio.netbook.model.BookSummary;
 import com.clilystudio.netbook.model.SearchPromRoot;
@@ -149,7 +150,7 @@ public class UGCGuideAddBookActivity extends BaseActivity implements View.OnClic
         if (com.clilystudio.netbook.hpay100.a.a.t(this)) {
             this.a(0);
             if (bl) {
-                com.clilystudio.netbook.a_pack.e<String, Void, List<BookSummary>> w2 = new com.clilystudio.netbook.a_pack.e<String, Void, List<BookSummary>>() {
+                BaseAsyncTask<String, Void, List<BookSummary>> w2 = new BaseAsyncTask<String, Void, List<BookSummary>>() {
 
                     @Override
                     protected List<BookSummary> doInBackground(String... params) {
@@ -195,7 +196,7 @@ public class UGCGuideAddBookActivity extends BaseActivity implements View.OnClic
                 w2.b(this.b);
                 return;
             }
-            com.clilystudio.netbook.a_pack.e<String, Void, List<BookSummary>> a2 = new com.clilystudio.netbook.a_pack.e<String, Void, List<BookSummary>>() {
+            BaseAsyncTask<String, Void, List<BookSummary>> a2 = new BaseAsyncTask<String, Void, List<BookSummary>>() {
 
                 @Override
                 protected List<BookSummary> doInBackground(String... params) {

@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.ListView;
 
 import com.clilystudio.netbook.R;
+import com.clilystudio.netbook.a_pack.BaseAsyncTask;
 import com.clilystudio.netbook.adapter.BookRankAdapter;
 import com.clilystudio.netbook.event.BusProvider;
 import com.clilystudio.netbook.event.BookRankClickEvent;
@@ -61,7 +62,7 @@ public class BookRankListActivity extends BaseActivity {
 
     private void b() {
         this.a(0);
-        new com.clilystudio.netbook.a_pack.e<Void, Void, BookRankRoot>(){
+        new BaseAsyncTask<Void, Void, BookRankRoot>(){
 
             @Override
             protected BookRankRoot doInBackground(Void... params) {

@@ -24,6 +24,7 @@ import android.widget.TextView;
 import com.clilystudio.netbook.CachePathConst;
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.IntentBuilder;
+import com.clilystudio.netbook.a_pack.BaseAsyncTask;
 import com.clilystudio.netbook.model.AutoCompleteRoot;
 import com.clilystudio.netbook.model.BookSummary;
 import com.clilystudio.netbook.model.HotKeywordResult;
@@ -222,7 +223,7 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
         this.g();
         if (com.clilystudio.netbook.hpay100.a.a.t(this)) {
             this.a(0);
-            final com.clilystudio.netbook.a_pack.e<String, Void, List<BookSummary>> bR2 = new com.clilystudio.netbook.a_pack.e<String, Void, List<BookSummary>>() {
+            final BaseAsyncTask<String, Void, List<BookSummary>> bR2 = new BaseAsyncTask<String, Void, List<BookSummary>>() {
 
                 @Override
                 protected List<BookSummary> doInBackground(String... params) {
@@ -518,7 +519,7 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
             return;
         }
         com.clilystudio.netbook.hpay100.a.a.b(this, "search_hot_words_date", 1);
-        new com.clilystudio.netbook.a_pack.e<String, Void, HotKeywordResult>() {
+        new BaseAsyncTask<String, Void, HotKeywordResult>() {
 
             @Override
             protected HotKeywordResult doInBackground(String... params) {

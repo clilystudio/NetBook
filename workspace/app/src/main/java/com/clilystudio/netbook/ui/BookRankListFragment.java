@@ -10,6 +10,7 @@ import android.widget.AdapterView;
 import android.widget.TextView;
 
 import com.clilystudio.netbook.R;
+import com.clilystudio.netbook.a_pack.BaseAsyncTask;
 import com.clilystudio.netbook.model.BookRankDetail;
 import com.clilystudio.netbook.model.BookRankDetailRoot;
 import com.clilystudio.netbook.util.W;
@@ -50,7 +51,7 @@ public class BookRankListFragment extends Fragment {
     }
 
     private void a() {
-        com.clilystudio.netbook.a_pack.e<String, Void, BookRankDetailRoot> g = new com.clilystudio.netbook.a_pack.e<String, Void, BookRankDetailRoot>() {
+        BaseAsyncTask<String, Void, BookRankDetailRoot> g = new BaseAsyncTask<String, Void, BookRankDetailRoot>() {
 
             @Override
             protected BookRankDetailRoot doInBackground(String... params) {

@@ -1,13 +1,14 @@
 package com.clilystudio.netbook.ui;
 
 import com.clilystudio.netbook.R;
+import com.clilystudio.netbook.a_pack.BaseAsyncTask;
 import com.clilystudio.netbook.model.BookRankDetailRoot;
 
 public class BookRankDetailActivity extends BookListActivity {
     @Override
     protected final void b() {
         this.e(0);
-        com.clilystudio.netbook.a_pack.e<String, Void, BookRankDetailRoot> aL2 = new com.clilystudio.netbook.a_pack.e<String, Void, BookRankDetailRoot>() {
+        BaseAsyncTask<String, Void, BookRankDetailRoot> aL2 = new BaseAsyncTask<String, Void, BookRankDetailRoot>() {
 
             @Override
             protected BookRankDetailRoot doInBackground(String... params) {

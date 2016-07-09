@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.R;
+import com.clilystudio.netbook.a_pack.BaseAsyncTask;
 import com.clilystudio.netbook.am;
 import com.clilystudio.netbook.api.b;
 import com.clilystudio.netbook.model.ResultStatus;
@@ -38,7 +39,7 @@ public class UserTaskActivity extends BaseActivity {
     protected void onActivityResult(int n, int n2, Intent intent) {
         super.onActivityResult(n, n2, intent);
         if (n == 2) {
-            new com.clilystudio.netbook.a_pack.e<String, Void, ResultStatus>(){
+            new BaseAsyncTask<String, Void, ResultStatus>(){
 
                 @Override
                 protected ResultStatus doInBackground(String... params) {

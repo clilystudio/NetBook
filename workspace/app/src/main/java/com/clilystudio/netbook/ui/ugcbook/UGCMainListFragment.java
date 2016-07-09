@@ -14,6 +14,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.clilystudio.netbook.R;
+import com.clilystudio.netbook.a_pack.BaseAsyncTask;
 import com.clilystudio.netbook.model.UGCBookListRoot;
 import com.clilystudio.netbook.util.W;
 import com.clilystudio.netbook.widget.CoverView;
@@ -34,8 +35,8 @@ public class UGCMainListFragment extends Fragment implements AdapterView.OnItemC
     private W<UGCBookListRoot.UGCBook> d;
     private View e;
     private TextView f;
-    private com.clilystudio.netbook.a_pack.e<String, Void, UGCBookListRoot> g;
-    private com.clilystudio.netbook.a_pack.e<String, Void, UGCBookListRoot> h;
+    private BaseAsyncTask<String, Void, UGCBookListRoot> g;
+    private BaseAsyncTask<String, Void, UGCBookListRoot> h;
     private List<UGCBookListRoot.UGCBook> i = new ArrayList<>();
     private String j;
     private PullToRefreshBase.OnLastItemVisibleListener k;
@@ -49,7 +50,7 @@ public class UGCMainListFragment extends Fragment implements AdapterView.OnItemC
                     if (UGCMainListFragment.this.h != null && UGCMainListFragment.this.h.getStatus() != AsyncTask.Status.FINISHED && !UGCMainListFragment.this.h.isCancelled()) {
                         UGCMainListFragment.this.h.cancel(true);
                     }
-                    UGCMainListFragment.this.h = new com.clilystudio.netbook.a_pack.e<String, Void, UGCBookListRoot>() {
+                    UGCMainListFragment.this.h = new BaseAsyncTask<String, Void, UGCBookListRoot>() {
 
                         @Override
                         protected UGCBookListRoot doInBackground(String... params) {
@@ -144,8 +145,8 @@ public class UGCMainListFragment extends Fragment implements AdapterView.OnItemC
     }
 
     @NonNull
-    private com.clilystudio.netbook.a_pack.e<String, Void, UGCBookListRoot> getgclass() {
-        return new com.clilystudio.netbook.a_pack.e<String, Void, UGCBookListRoot>() {
+    private BaseAsyncTask<String, Void, UGCBookListRoot> getgclass() {
+        return new BaseAsyncTask<String, Void, UGCBookListRoot>() {
 
             @Override
             protected UGCBookListRoot doInBackground(String... params) {
@@ -235,7 +236,7 @@ public class UGCMainListFragment extends Fragment implements AdapterView.OnItemC
                         if (UGCMainListFragment.this.g != null && UGCMainListFragment.this.g.getStatus() != AsyncTask.Status.FINISHED && !UGCMainListFragment.this.g.isCancelled()) {
                             UGCMainListFragment.this.g.cancel(true);
                         }
-                        UGCMainListFragment.this.g = new com.clilystudio.netbook.a_pack.e<String, Void, UGCBookListRoot>() {
+                        UGCMainListFragment.this.g = new BaseAsyncTask<String, Void, UGCBookListRoot>() {
 
                             @Override
                             protected UGCBookListRoot doInBackground(String... params) {

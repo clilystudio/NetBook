@@ -14,7 +14,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.clilystudio.netbook.R;
-import com.clilystudio.netbook.a_pack.e;
+import com.clilystudio.netbook.a_pack.BaseAsyncTask;
 import com.clilystudio.netbook.db.BookReadRecord;
 import com.clilystudio.netbook.db.TocReadRecord;
 import com.clilystudio.netbook.event.BusProvider;
@@ -167,7 +167,7 @@ public class ReaderResourceFragment extends Fragment {
                 }
             }
         });
-        com.clilystudio.netbook.a_pack.e<String, Void, List<TocSummary>> bY2 = new e<String, Void, List<TocSummary>>() {
+        BaseAsyncTask<String, Void, List<TocSummary>> bY2 = new BaseAsyncTask<String, Void, List<TocSummary>>() {
 
             @Override
             protected List<TocSummary> doInBackground(String... params) {
@@ -215,7 +215,7 @@ public class ReaderResourceFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 ReaderResourceFragment.a(ReaderResourceFragment.this, 0);
-                com.clilystudio.netbook.a_pack.e<String, Void, List<TocSummary>> bY2 = new e<String, Void, List<TocSummary>>() {
+                BaseAsyncTask<String, Void, List<TocSummary>> bY2 = new BaseAsyncTask<String, Void, List<TocSummary>>() {
 
                     @Override
                     protected List<TocSummary> doInBackground(String... params) {

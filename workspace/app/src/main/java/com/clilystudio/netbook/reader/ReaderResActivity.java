@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import com.clilystudio.netbook.ActivityStack;
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.IntentBuilder;
+import com.clilystudio.netbook.a_pack.BaseAsyncTask;
 import com.clilystudio.netbook.db.BookTopicEnterRecord;
 import com.clilystudio.netbook.event.BusProvider;
 import com.clilystudio.netbook.event.ModeChangedEvent;
@@ -82,7 +83,7 @@ public class ReaderResActivity extends ReaderModeActivity {
         fragmentTransaction.replace(R.id.content_frame, var4_6).commit();
         ActivityStack.getInstance();
         ActivityStack.add(this);
-        com.clilystudio.netbook.a_pack.e<String, Void, TopicCount> bT2 = new com.clilystudio.netbook.a_pack.e<String, Void, TopicCount>(){
+        BaseAsyncTask<String, Void, TopicCount> bT2 = new BaseAsyncTask<String, Void, TopicCount>(){
 
             @Override
             protected TopicCount doInBackground(String... params) {

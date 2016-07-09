@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.R;
+import com.clilystudio.netbook.a_pack.BaseAsyncTask;
 import com.clilystudio.netbook.a_pack.c;
 import com.clilystudio.netbook.am;
 import com.clilystudio.netbook.event.BusProvider;
@@ -584,7 +585,7 @@ public final class o {
                     public void a(final ReaderChapter readerChapter) {
                         if (readerChapter != null && o.this.a(readerChapter)) {
                             MiStatInterface.recordCountEvent("paying_page_auto_purchase", com.clilystudio.netbook.util.I.b);
-                            com.clilystudio.netbook.a_pack.e<String, Void, PurchaseChapterResult> j = new com.clilystudio.netbook.a_pack.e<String, Void, PurchaseChapterResult>() {
+                            BaseAsyncTask<String, Void, PurchaseChapterResult> j = new BaseAsyncTask<String, Void, PurchaseChapterResult>() {
 
                                 @Override
                                 protected PurchaseChapterResult doInBackground(String... params) {

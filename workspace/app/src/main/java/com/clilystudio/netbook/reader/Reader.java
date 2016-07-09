@@ -4,6 +4,7 @@ import android.os.Handler;
 import android.support.annotation.NonNull;
 
 import com.clilystudio.netbook.MyApplication;
+import com.clilystudio.netbook.a_pack.BaseAsyncTask;
 import com.clilystudio.netbook.am;
 import com.clilystudio.netbook.db.BookReadRecord;
 import com.clilystudio.netbook.db.MixTocRecord;
@@ -29,7 +30,7 @@ public final class Reader {
     public final Map<Integer, ReaderChapter> a = new HashMap<>();
     private final int y;
     private boolean A = false;
-    private com.clilystudio.netbook.a_pack.e<String, Void, Boolean> B;
+    private BaseAsyncTask<String, Void, Boolean> B;
     private af af2;
     private Y C;
     private String c;
@@ -225,7 +226,7 @@ public final class Reader {
         return reader.s;
     }
 
-    static /* synthetic */ com.clilystudio.netbook.a_pack.e<String, Void, Boolean> a(Reader reader, com.clilystudio.netbook.a_pack.e<String, Void, Boolean> ag2) {
+    static /* synthetic */ BaseAsyncTask<String, Void, Boolean> a(Reader reader, BaseAsyncTask<String, Void, Boolean> ag2) {
         reader.B = ag2;
         return ag2;
     }
@@ -346,7 +347,7 @@ public final class Reader {
         return null;
     }
 
-    static /* synthetic */ com.clilystudio.netbook.a_pack.e<String, Void, Boolean> n(Reader reader) {
+    static /* synthetic */ BaseAsyncTask<String, Void, Boolean> n(Reader reader) {
         return reader.B;
     }
 
@@ -571,7 +572,7 @@ public final class Reader {
                         Reader.b(Reader.this, Reader.l(Reader.this));
                     }
                     if (bl) {
-                        Reader.a(Reader.this, new com.clilystudio.netbook.a_pack.e<String, Void, Boolean>() {
+                        Reader.a(Reader.this, new BaseAsyncTask<String, Void, Boolean>() {
                             @Override
                             protected Boolean doInBackground(String... params) {
                                 Reader.a(Reader.this, Reader.m(Reader.this));
@@ -598,7 +599,7 @@ public final class Reader {
                                         af2.b();
                                     }
                                 }
-                                Reader.a(Reader.this, (com.clilystudio.netbook.a_pack.e<String, Void, Boolean>) null);
+                                Reader.a(Reader.this, (BaseAsyncTask<String, Void, Boolean>) null);
                             }
                         });
                         Reader.n(Reader.this).b();
@@ -644,7 +645,7 @@ public final class Reader {
         this.h = map;
     }
 
-    public final com.clilystudio.netbook.a_pack.e<String, Void, Boolean> b() {
+    public final BaseAsyncTask<String, Void, Boolean> b() {
         return this.B;
     }
 

@@ -13,6 +13,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.clilystudio.netbook.R;
+import com.clilystudio.netbook.a_pack.BaseAsyncTask;
 import com.clilystudio.netbook.am;
 import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.model.Topic;
@@ -26,8 +27,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MyTopicFragment extends Fragment {
-    private com.clilystudio.netbook.a_pack.e<String, Void, Topic> a;
-    private com.clilystudio.netbook.a_pack.e<String, Void, Topic> b;
+    private BaseAsyncTask<String, Void, Topic> a;
+    private BaseAsyncTask<String, Void, Topic> b;
     private LabelPtrListView c;
     private View e;
     private View f;
@@ -47,7 +48,7 @@ public class MyTopicFragment extends Fragment {
                     if (MyTopicFragment.f(MyTopicFragment.this) != null && MyTopicFragment.f(MyTopicFragment.this).getStatus() != AsyncTask.Status.FINISHED && !MyTopicFragment.f(MyTopicFragment.this).isCancelled()) {
                         MyTopicFragment.f(MyTopicFragment.this).cancel(true);
                     }
-                    MyTopicFragment.this.a = new com.clilystudio.netbook.a_pack.e<String, Void, Topic>(){
+                    MyTopicFragment.this.a = new BaseAsyncTask<String, Void, Topic>(){
 
                         @Override
                         protected Topic doInBackground(String... params) {
@@ -84,7 +85,7 @@ public class MyTopicFragment extends Fragment {
                             com.clilystudio.netbook.util.e.a(MyTopicFragment.this.getActivity(), "加载失败，请检查网络或稍后再试");
                         }
                     };
-                    com.clilystudio.netbook.a_pack.e<String, Void, Topic> f = MyTopicFragment.e(MyTopicFragment.this);
+                    BaseAsyncTask<String, Void, Topic> f = MyTopicFragment.e(MyTopicFragment.this);
                     String[] arrstring = new String[]{MyTopicFragment.b(MyTopicFragment.this)};
                     f.b(arrstring);
                 }
@@ -112,11 +113,11 @@ public class MyTopicFragment extends Fragment {
         return myTopicFragment.c;
     }
 
-    static /* synthetic */ com.clilystudio.netbook.a_pack.e<String, Void, Topic> e(MyTopicFragment myTopicFragment) {
+    static /* synthetic */ BaseAsyncTask<String, Void, Topic> e(MyTopicFragment myTopicFragment) {
         return myTopicFragment.a;
     }
 
-    static /* synthetic */ com.clilystudio.netbook.a_pack.e<String, Void, Topic> f(MyTopicFragment myTopicFragment) {
+    static /* synthetic */ BaseAsyncTask<String, Void, Topic> f(MyTopicFragment myTopicFragment) {
         return myTopicFragment.b;
     }
 
@@ -165,7 +166,7 @@ public class MyTopicFragment extends Fragment {
                             MyTopicFragment.e(MyTopicFragment.this).cancel(true);
                         }
                         MyTopicFragment.this.a = getGClass();
-                        com.clilystudio.netbook.a_pack.e<String, Void, Topic> g = MyTopicFragment.f(MyTopicFragment.this);
+                        BaseAsyncTask<String, Void, Topic> g = MyTopicFragment.f(MyTopicFragment.this);
                         String[] arrstring = new String[]{MyTopicFragment.b(MyTopicFragment.this)};
                         g.b(arrstring);
                     }
@@ -226,15 +227,15 @@ public class MyTopicFragment extends Fragment {
             return view;
         }
         this.j = account.getToken();
-        com.clilystudio.netbook.a_pack.e<String, Void, Topic> g2 = this.b = getGClass();
+        BaseAsyncTask<String, Void, Topic> g2 = this.b = getGClass();
         String[] arrstring = new String[]{this.j};
         g2.b(arrstring);
         return view;
     }
 
     @NonNull
-    private com.clilystudio.netbook.a_pack.e<String, Void, Topic> getGClass() {
-        return new com.clilystudio.netbook.a_pack.e<String, Void, Topic>(){
+    private BaseAsyncTask<String, Void, Topic> getGClass() {
+        return new BaseAsyncTask<String, Void, Topic>(){
 
             @Override
             protected Topic doInBackground(String... params) {

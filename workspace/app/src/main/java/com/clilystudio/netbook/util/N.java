@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.DialogInterface;
 
 import com.clilystudio.netbook.R;
+import com.clilystudio.netbook.a_pack.BaseAsyncTask;
 import com.clilystudio.netbook.am;
 
 import com.clilystudio.netbook.api.b;
@@ -31,7 +32,7 @@ public final class N {
     }
 
     public final void a(String string, String string2) {
-        new com.clilystudio.netbook.a_pack.e<String, Void, ResultStatus>() {
+        new BaseAsyncTask<String, Void, ResultStatus>() {
 
             @Override
             protected ResultStatus doInBackground(String... params) {

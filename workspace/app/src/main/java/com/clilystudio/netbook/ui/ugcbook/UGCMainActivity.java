@@ -20,7 +20,7 @@ import android.widget.TableLayout;
 import android.widget.TextView;
 
 import com.clilystudio.netbook.R;
-import com.clilystudio.netbook.a_pack.e;
+import com.clilystudio.netbook.a_pack.BaseAsyncTask;
 import com.clilystudio.netbook.am;
 import com.clilystudio.netbook.model.UgcFilterRoot;
 import com.clilystudio.netbook.ui.BaseTabActivity;
@@ -274,7 +274,7 @@ public class UGCMainActivity extends BaseTabActivity implements ViewPager.OnPage
             tabSpec.setIndicator(view3);
             this.a.addTab(tabSpec);
         }
-        new e<Void, Void, UgcFilterRoot>() {
+        new BaseAsyncTask<Void, Void, UgcFilterRoot>() {
 
             @Override
             protected UgcFilterRoot doInBackground(Void... params) {

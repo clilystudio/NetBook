@@ -29,6 +29,7 @@ import android.widget.TextView;
 
 import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.R;
+import com.clilystudio.netbook.a_pack.BaseAsyncTask;
 import com.clilystudio.netbook.am;
 import com.clilystudio.netbook.IntentBuilder;
 import com.clilystudio.netbook.db.BookReadRecord;
@@ -1430,7 +1431,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
     }
 
     private boolean w() {
-        com.clilystudio.netbook.a_pack.e<String, Void, Boolean> ag2 = this.g.b();
+        BaseAsyncTask<String, Void, Boolean> ag2 = this.g.b();
         return ag2 == null || ag2.getStatus() == AsyncTask.Status.FINISHED;
     }
 
@@ -1906,7 +1907,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         } else {
             this.s();
         }
-        com.clilystudio.netbook.a_pack.e<String, Void, TopicCount> bq2 = new com.clilystudio.netbook.a_pack.e<String, Void, TopicCount>() {
+        BaseAsyncTask<String, Void, TopicCount> bq2 = new BaseAsyncTask<String, Void, TopicCount>() {
 
             @Override
             protected TopicCount doInBackground(String... params) {
@@ -1930,7 +1931,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         };
         bq2.b(this.c);
         if (com.clilystudio.netbook.am.e() != null) {
-            new com.clilystudio.netbook.a_pack.e<Void, Void, ChapterKeysRoot>() {
+            new BaseAsyncTask<Void, Void, ChapterKeysRoot>() {
                 @Override
                 protected ChapterKeysRoot doInBackground(Void... params) {
                     com.clilystudio.netbook.api.b.a();

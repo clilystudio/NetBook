@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.R;
-import com.clilystudio.netbook.a_pack.e;
+import com.clilystudio.netbook.a_pack.BaseAsyncTask;
 import com.clilystudio.netbook.am;
 import com.clilystudio.netbook.event.BusProvider;
 import com.clilystudio.netbook.event.ModeChangedEvent;
@@ -148,7 +148,7 @@ public class ReaderMenuFragment extends Fragment {
         if (this.getView() != null && n2 != 0) {
             this.getView().findViewById(R.id.slm_frame).setPadding(0, n2, 1, 0);
         }
-        com.clilystudio.netbook.a_pack.e<String, Void, List<TocSummary>> bA2 = new e<String, Void, List<TocSummary>>() {
+        BaseAsyncTask<String, Void, List<TocSummary>> bA2 = new BaseAsyncTask<String, Void, List<TocSummary>>() {
 
             @Override
             protected List<TocSummary> doInBackground(String... params) {

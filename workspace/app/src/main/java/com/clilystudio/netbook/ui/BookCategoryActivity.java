@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import com.clilystudio.netbook.CachePathConst;
 import com.clilystudio.netbook.R;
-import com.clilystudio.netbook.a_pack.e;
+import com.clilystudio.netbook.a_pack.BaseAsyncTask;
 import com.clilystudio.netbook.am;
 import com.clilystudio.netbook.IntentBuilder;
 import com.clilystudio.netbook.model.CategoryLevelRoot;
@@ -143,7 +143,7 @@ public class BookCategoryActivity extends BaseActivity {
 
     private void b() {
         this.a(0);
-        new e<String, Void, CategoryRoot>() {
+        new BaseAsyncTask<String, Void, CategoryRoot>() {
 
             @Override
             protected CategoryRoot doInBackground(String... params) {
@@ -162,7 +162,7 @@ public class BookCategoryActivity extends BaseActivity {
 
             }
         }.b();
-        new e<String, Void, CategoryLevelRoot>() {
+        new BaseAsyncTask<String, Void, CategoryLevelRoot>() {
 
             @Override
             protected CategoryLevelRoot doInBackground(String... params) {

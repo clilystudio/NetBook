@@ -5,7 +5,7 @@ import android.os.Handler;
 
 import com.activeandroid.query.Delete;
 import com.clilystudio.netbook.R;
-import com.clilystudio.netbook.a_pack.e;
+import com.clilystudio.netbook.a_pack.BaseAsyncTask;
 import com.clilystudio.netbook.am;
 import com.clilystudio.netbook.db.BookReadRecord;
 import com.clilystudio.netbook.db.BookSyncRecord;
@@ -197,7 +197,7 @@ public final class Z {
                 @Override
                 public void run() {
                     if (!Z.a()) {
-                        com.clilystudio.netbook.a_pack.e<String, Void, RemoteBookShelf> ab2 = new e<String, Void, RemoteBookShelf>(){
+                        BaseAsyncTask<String, Void, RemoteBookShelf> ab2 = new BaseAsyncTask<String, Void, RemoteBookShelf>(){
                             @Override
                             protected RemoteBookShelf doInBackground(String... params) {
                                  Z.b(true);

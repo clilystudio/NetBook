@@ -7,6 +7,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.clilystudio.netbook.R;
+import com.clilystudio.netbook.a_pack.BaseAsyncTask;
 import com.clilystudio.netbook.am;
 import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.model.ResultStatus;
@@ -64,7 +65,7 @@ public class FavUGCListFragment extends AbsUGCListFragment implements AdapterVie
                 Account account = am.a(FavUGCListFragment.this.getActivity());
                 if (account != null) {
                     FavUGCListFragment.a(FavUGCListFragment.this).setRefreshing();
-                    com.clilystudio.netbook.a_pack.e<String, Void, ResultStatus> h2 = new com.clilystudio.netbook.a_pack.e<String, Void, ResultStatus>() {
+                    BaseAsyncTask<String, Void, ResultStatus> h2 = new BaseAsyncTask<String, Void, ResultStatus>() {
 
                         @Override
                         protected ResultStatus doInBackground(String... params) {

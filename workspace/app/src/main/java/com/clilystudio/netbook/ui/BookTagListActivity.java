@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 
 import com.clilystudio.netbook.R;
-import com.clilystudio.netbook.a_pack.e;
+import com.clilystudio.netbook.a_pack.BaseAsyncTask;
 import com.clilystudio.netbook.IntentBuilder;
 import com.clilystudio.netbook.model.BookSummary;
 import com.clilystudio.netbook.model.BookTagRoot;
@@ -25,7 +25,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class BookTagListActivity extends BaseLoadingActivity {
-    private com.clilystudio.netbook.a_pack.e<String, Void, List<BookSummary>> a;
+    private BaseAsyncTask<String, Void, List<BookSummary>> a;
     private W<BookSummary> b;
     private String c;
     private ScrollLoadListView e;
@@ -39,7 +39,7 @@ public class BookTagListActivity extends BaseLoadingActivity {
             public void a() {
                 if (BookTagListActivity.this.a == null || BookTagListActivity.this.a.getStatus() == AsyncTask.Status.FINISHED) {
                     BookTagListActivity.this.f.setVisibility(View.VISIBLE);
-                    BookTagListActivity.this.a = new com.clilystudio.netbook.a_pack.e<String, Void, List<BookSummary>>() {
+                    BookTagListActivity.this.a = new BaseAsyncTask<String, Void, List<BookSummary>>() {
 
                         @Override
                         protected List<BookSummary> doInBackground(String... params) {
@@ -80,7 +80,7 @@ public class BookTagListActivity extends BaseLoadingActivity {
         return new IntentBuilder().put(context, BookTagListActivity.class).put("TAG_LIST_KEY", string).build();
     }
 
-    static /* synthetic */ com.clilystudio.netbook.a_pack.e<String, Void, List<BookSummary>> a(BookTagListActivity bookTagListActivity, com.clilystudio.netbook.a_pack.e<String, Void, List<BookSummary>> aW2) {
+    static /* synthetic */ BaseAsyncTask<String, Void, List<BookSummary>> a(BookTagListActivity bookTagListActivity, BaseAsyncTask<String, Void, List<BookSummary>> aW2) {
         bookTagListActivity.a = aW2;
         return aW2;
     }
@@ -115,14 +115,14 @@ public class BookTagListActivity extends BaseLoadingActivity {
         return bookTagListActivity.h;
     }
 
-    static /* synthetic */ com.clilystudio.netbook.a_pack.e<String, Void, List<BookSummary>> g(BookTagListActivity bookTagListActivity) {
+    static /* synthetic */ BaseAsyncTask<String, Void, List<BookSummary>> g(BookTagListActivity bookTagListActivity) {
         return bookTagListActivity.a;
     }
 
     @Override
     protected final void b() {
         this.i();
-        new e<String, Void, List<BookSummary>>() {
+        new BaseAsyncTask<String, Void, List<BookSummary>>() {
             @Override
             protected List<BookSummary> doInBackground(String... params) {
                 BookTagRoot bookTagRoot = com.clilystudio.netbook.api.b.b().c(BookTagListActivity.this.c, 0, 50);

@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.R;
+import com.clilystudio.netbook.a_pack.BaseAsyncTask;
 import com.clilystudio.netbook.a_pack.c;
 import com.clilystudio.netbook.am;
 import com.clilystudio.netbook.IntentBuilder;
@@ -336,7 +337,7 @@ public class ModifyUserInfoActivity extends BaseActivity implements View.OnClick
         this.b = this.getIntent().getLongExtra("nickname_updated_time", -1);
         if (this.b == -1) {
             this.c = false;
-            com.clilystudio.netbook.a_pack.e<String, Void, UserInfo> r2 = new com.clilystudio.netbook.a_pack.e<String, Void, UserInfo>(){
+            BaseAsyncTask<String, Void, UserInfo> r2 = new BaseAsyncTask<String, Void, UserInfo>(){
 
                 @Override
                 protected UserInfo doInBackground(String... params) {

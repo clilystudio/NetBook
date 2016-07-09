@@ -17,6 +17,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.clilystudio.netbook.R;
+import com.clilystudio.netbook.a_pack.BaseAsyncTask;
 import com.clilystudio.netbook.a_pack.c;
 import com.clilystudio.netbook.am;
 import com.clilystudio.netbook.model.Account;
@@ -33,8 +34,8 @@ import java.util.Arrays;
 import java.util.List;
 
 public class MyFavTopicFragment extends Fragment {
-    private com.clilystudio.netbook.a_pack.e<String, Void, Topic> a;
-    private com.clilystudio.netbook.a_pack.e<String, Void, Topic> b;
+    private BaseAsyncTask<String, Void, Topic> a;
+    private BaseAsyncTask<String, Void, Topic> b;
     private LabelPtrListView c;
     private ListView d;
     private View e;
@@ -56,7 +57,7 @@ public class MyFavTopicFragment extends Fragment {
                     if (MyFavTopicFragment.this.b != null && MyFavTopicFragment.this.b.getStatus() != AsyncTask.Status.FINISHED && !MyFavTopicFragment.this.b.isCancelled()) {
                         MyFavTopicFragment.this.b.cancel(true);
                     }
-                    MyFavTopicFragment.this.a = new com.clilystudio.netbook.a_pack.e<String, Void, Topic>(){
+                    MyFavTopicFragment.this.a = new BaseAsyncTask<String, Void, Topic>(){
 
                         @Override
                         protected Topic doInBackground(String... params) {
@@ -273,8 +274,8 @@ public class MyFavTopicFragment extends Fragment {
     }
 
     @NonNull
-    private com.clilystudio.netbook.a_pack.e<String, Void, Topic> getAClass() {
-        return new com.clilystudio.netbook.a_pack.e<String, Void, Topic>(){
+    private BaseAsyncTask<String, Void, Topic> getAClass() {
+        return new BaseAsyncTask<String, Void, Topic>(){
 
             @Override
             protected Topic doInBackground(String... params) {

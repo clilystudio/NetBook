@@ -14,7 +14,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.clilystudio.netbook.R;
-import com.clilystudio.netbook.a_pack.e;
+import com.clilystudio.netbook.a_pack.BaseAsyncTask;
 import com.clilystudio.netbook.model.BookListRoot;
 import com.clilystudio.netbook.model.CategoryBook;
 import com.clilystudio.netbook.util.W;
@@ -34,7 +34,7 @@ public class BookCategoryFragment extends Fragment {
     private View e;
     private TextView f;
     private String g;
-    private com.clilystudio.netbook.a_pack.e<String, Void, List<CategoryBook>> h;
+    private BaseAsyncTask<String, Void, List<CategoryBook>> h;
     private List<CategoryBook> i = new ArrayList<>();
     private PullToRefreshBase.OnLastItemVisibleListener j;
 
@@ -107,8 +107,8 @@ public class BookCategoryFragment extends Fragment {
     }
 
     @NonNull
-    private com.clilystudio.netbook.a_pack.e<String, Void, List<CategoryBook>> getaqclass(final boolean isContinus) {
-        return new e<String, Void, List<CategoryBook>>(){
+    private BaseAsyncTask<String, Void, List<CategoryBook>> getaqclass(final boolean isContinus) {
+        return new BaseAsyncTask<String, Void, List<CategoryBook>>(){
 
             @Override
             protected List<CategoryBook> doInBackground(String... params) {

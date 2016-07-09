@@ -1,5 +1,6 @@
 package com.clilystudio.netbook.reader;
 
+import com.clilystudio.netbook.a_pack.BaseAsyncTask;
 import com.clilystudio.netbook.model.RelateBookRoot;
 
 public final class cM {
@@ -19,7 +20,7 @@ public final class cM {
     }
 
     public final boolean a(String string) {
-        new com.clilystudio.netbook.a_pack.e<String, Void, RelateBookRoot>() {
+        new BaseAsyncTask<String, Void, RelateBookRoot>() {
 
             @Override
             protected RelateBookRoot doInBackground(String... params) {

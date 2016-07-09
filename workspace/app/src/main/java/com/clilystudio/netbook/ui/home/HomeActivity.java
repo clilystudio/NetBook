@@ -24,7 +24,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.clilystudio.netbook.R;
-import com.clilystudio.netbook.a_pack.e;
+import com.clilystudio.netbook.a_pack.BaseAsyncTask;
 import com.clilystudio.netbook.am;
 import com.clilystudio.netbook.db.AccountInfo;
 import com.clilystudio.netbook.db.BookReadRecord;
@@ -164,7 +164,7 @@ public class HomeActivity extends HomeParentActivity implements ViewPager.OnPage
                 float f2 = this.j();
                 double d2 = Math.random();
                 if (bl && (double) f2 > d2 && !this.u) {
-                    new e<Void, Void, IKanshuUrlResult>() {
+                    new BaseAsyncTask<Void, Void, IKanshuUrlResult>() {
 
                         @Override
                         protected IKanshuUrlResult doInBackground(Void... params) {
@@ -591,7 +591,7 @@ public class HomeActivity extends HomeParentActivity implements ViewPager.OnPage
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                new e<Void, Void, UshaqiOnlineConfig>() {
+                new BaseAsyncTask<Void, Void, UshaqiOnlineConfig>() {
 
                     @Override
                     protected UshaqiOnlineConfig doInBackground(Void... params) {
@@ -620,7 +620,7 @@ public class HomeActivity extends HomeParentActivity implements ViewPager.OnPage
             new Z(this, account.getToken()).a(true);
         }
         this.a(this.getIntent());
-        new e<String, Void, ResultServer>() {
+        new BaseAsyncTask<String, Void, ResultServer>() {
 
             @Override
             protected ResultServer doInBackground(String... params) {
@@ -750,7 +750,7 @@ public class HomeActivity extends HomeParentActivity implements ViewPager.OnPage
         super.onResume();
         com.clilystudio.netbook.api.e.a("1".equals(OnlineConfigAgent.getInstance().getConfigParams(this, "use_http_dns")));
         if (com.clilystudio.netbook.hpay100.a.a.l()) {
-            new e<Void, Void, BookTopRoot>() {
+            new BaseAsyncTask<Void, Void, BookTopRoot>() {
 
                 @Override
                 protected BookTopRoot doInBackground(Void... params) {

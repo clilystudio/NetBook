@@ -13,7 +13,7 @@ import android.widget.TextView;
 
 import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.R;
-import com.clilystudio.netbook.a_pack.e;
+import com.clilystudio.netbook.a_pack.BaseAsyncTask;
 import com.clilystudio.netbook.am;
 import com.clilystudio.netbook.api.ApiService;
 import com.clilystudio.netbook.IntentBuilder;
@@ -110,7 +110,7 @@ public class ReaderMixActivity extends BaseLoadingActivity {
     @Override
     protected final void b() {
         this.i();
-        com.clilystudio.netbook.a_pack.e<String, Void, Object[]> bE2 = new e<String, Void, Object[]>() {
+        BaseAsyncTask<String, Void, Object[]> bE2 = new BaseAsyncTask<String, Void, Object[]>() {
 
             @Override
             protected Object[] doInBackground(String... params) {

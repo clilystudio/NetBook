@@ -7,7 +7,7 @@ import android.widget.Toast;
 
 import com.clilystudio.netbook.R;
 
-public abstract class c<Input, E> extends e<Input, Void, E> {
+public abstract class c<Input, E> extends BaseAsyncTask<Input, Void, E> {
     private ProgressDialog a;
     private Activity b;
     private String c;
@@ -57,7 +57,7 @@ public abstract class c<Input, E> extends e<Input, Void, E> {
     @Override
     public void onCancelled() {
         super.onCancelled();
-        Toast.makeText(this.b, "\u5df2\u53d6\u6d88", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this.b, "已取消", Toast.LENGTH_SHORT).show();
     }
 
     @Override

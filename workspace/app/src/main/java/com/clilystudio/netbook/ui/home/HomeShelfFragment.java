@@ -25,7 +25,7 @@ import android.widget.TextView;
 import com.clilystudio.netbook.CachePathConst;
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.a_pack.c;
-import com.clilystudio.netbook.a_pack.e;
+import com.clilystudio.netbook.a_pack.BaseAsyncTask;
 import com.clilystudio.netbook.adapter.HomeShelfAdapter;
 import com.clilystudio.netbook.am;
 import com.clilystudio.netbook.db.BookFile;
@@ -506,7 +506,7 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
         if (!homeShelfFragment.b) {
             homeShelfFragment.k();
         }
-        new com.clilystudio.netbook.a_pack.e<Void, Void, List<BookUpdate>>() {
+        new BaseAsyncTask<Void, Void, List<BookUpdate>>() {
             private List<BookReadRecord> a;
 
             @Override
@@ -670,7 +670,7 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
                     this.d.setRefreshing();
                 }
                 this.b = false;
-                new e<Void, Void, ShelfMsgRoot>() {
+                new BaseAsyncTask<Void, Void, ShelfMsgRoot>() {
 
                     @Override
                     protected ShelfMsgRoot doInBackground(Void... params) {

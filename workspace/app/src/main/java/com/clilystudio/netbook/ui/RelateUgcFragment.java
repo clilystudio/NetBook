@@ -10,6 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.clilystudio.netbook.R;
+import com.clilystudio.netbook.a_pack.BaseAsyncTask;
 import com.clilystudio.netbook.model.RecommendUgcRoot;
 import com.clilystudio.netbook.ui.ugcbook.UGCDetailActivity;
 import com.clilystudio.netbook.widget.CoverView;
@@ -40,7 +41,7 @@ public class RelateUgcFragment extends Fragment {
         String[] arrstring = new String[]{this.getArguments().getString("book_id")};
         relateUgcFragment$GetUgcsTask.b(arrstring);
     }
-    public final class GetUgcsTask extends com.clilystudio.netbook.a_pack.e<String, Void, RecommendUgcRoot> {
+    public final class GetUgcsTask extends BaseAsyncTask<String, Void, RecommendUgcRoot> {
         final /* synthetic */ RelateUgcFragment a;
         private String b;
 
