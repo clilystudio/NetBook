@@ -99,6 +99,8 @@ import com.github.kevinsawicki.http.HttpRequest;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonIOException;
 import com.google.gson.JsonParseException;
@@ -113,6 +115,9 @@ import com.xiaomi.mistatistic.sdk.data.HttpEvent;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.Type;
+import java.text.ParsePosition;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
@@ -131,7 +136,7 @@ public class ApiService {
     private static String i = "http://m.baidu.com/s?word=";
     private static String j = "http://tieba.baidu.com/f?kw=";
     private static String k = "http://m.sm.cn/s?q=";
-    private static final Gson l = new GsonBuilder().registerTypeAdapter(Date.class, new a()).create();
+    private static final Gson l = new GsonBuilder().registerTypeAdapter(Date.class, new DateDeserializer()).create();
 
     private final f c;
 
@@ -1605,4 +1610,12 @@ public class ApiService {
 //            this.initCause(jsonParseException);
 //        }
 //    }
+
+    static final class DateDeserializer implements JsonDeserializer<Date> {
+        @Override
+        public final /* synthetic */ Date deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext jsonDeserializationContext) {
+            String string = jsonElement.getAsString().replace("Z", "+0000");
+            return new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ", Locale.CHINA).parse(string, new ParsePosition(0));
+        }
+    }
 }
