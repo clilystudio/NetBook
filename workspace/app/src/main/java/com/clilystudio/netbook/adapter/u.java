@@ -3,6 +3,7 @@ package com.clilystudio.netbook.adapter;
 import android.widget.BaseAdapter;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public abstract class u<T> extends BaseAdapter {
@@ -20,9 +21,7 @@ public abstract class u<T> extends BaseAdapter {
         if (arrT == null) {
             return;
         }
-        for (T t : arrT) {
-            this.a.add(t);
-        }
+        Collections.addAll(this.a, arrT);
         this.notifyDataSetChanged();
     }
 

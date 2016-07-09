@@ -47,8 +47,7 @@ public class BookFile extends Model {
             return false;
         }
         BookFile bookFile = (BookFile) object;
-        if (bookFile.name == null) return false;
-        return bookFile.name.equals(this.name);
+        return bookFile.name != null && bookFile.name.equals(this.name);
     }
 
     public String getFilePath() {

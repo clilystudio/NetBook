@@ -2,7 +2,6 @@ package com.clilystudio.netbook.widget;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import android.widget.ListView;
 
 import com.clilystudio.netbook.hpay100.a.a;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;

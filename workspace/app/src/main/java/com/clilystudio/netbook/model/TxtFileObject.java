@@ -5,7 +5,6 @@ import com.activeandroid.query.From;
 import com.activeandroid.query.Select;
 import com.clilystudio.netbook.db.BookFile;
 
-import java.util.Iterator;
 import java.util.List;
 
 public class TxtFileObject {

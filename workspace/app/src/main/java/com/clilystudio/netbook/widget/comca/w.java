@@ -11,7 +11,6 @@ import android.view.animation.LinearInterpolator;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 
 public final class w extends a {
     private static final ThreadLocal<ArrayList<w>> e = new ThreadLocal<ArrayList<w>>() {

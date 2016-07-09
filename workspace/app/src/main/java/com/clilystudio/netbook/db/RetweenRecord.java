@@ -7,7 +7,6 @@ import com.activeandroid.annotation.Table;
 import com.activeandroid.query.Delete;
 import com.activeandroid.query.Select;
 
-import java.util.Iterator;
 import java.util.List;
 
 @Table(name = "RetweenRecord")

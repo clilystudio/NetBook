@@ -63,6 +63,7 @@ import com.clilystudio.netbook.util.X;
 import com.clilystudio.netbook.util.t;
 import com.integralblue.httpresponsecache.compat.java.lang.ArrayIndexOutOfBoundsException;
 import com.umeng.onlineconfig.OnlineConfigAgent;
+import com.xiaomi.mipush.sdk.MiPushClient;
 import com.xiaomi.mistatistic.sdk.MiStatInterface;
 
 import org.json.JSONException;
@@ -934,7 +935,7 @@ public class a {
             String v41 = "";
             String v51 = v2.readLine();
             while (v51 != null && v3 != 0) {
-                v41 = new StringBuilder().append(v41).append("\n").append(v5).toString();
+                v41 = v41 + "\n" + v5;
                 v3--;
                 v51 = v2.readLine();
             }
@@ -1105,7 +1106,8 @@ public class a {
      * Enabled aggressive block sorting
      */
     public static void a(Activity activity) {
-        String[] arrstring = com.xiaomi.mipush.sdk.MiPushClient.getAllAlias(activity).toArray(new String[0]);
+        List<String> allAlias = MiPushClient.getAllAlias(activity);
+        String[] arrstring = allAlias.toArray(new String[allAlias.size()]);
         ArrayList<String> arrayList = new ArrayList<>();
         if (arrstring != null) {
             for (String string2 : arrstring) {
