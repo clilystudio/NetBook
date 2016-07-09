@@ -303,8 +303,8 @@ public class ApiService {
      */
     private HttpRequest a(HttpRequest httpRequest) {
         long l = new Date().getTime();
-        if (com.clilystudio.netbook.api.e.a()) {
-            httpRequest = com.clilystudio.netbook.api.e.a2(httpRequest);
+        if (DnsManager.isUseDns()) {
+            httpRequest = DnsManager.a2(httpRequest);
         }
         try {
             boolean bl = this.b(httpRequest).ok();
@@ -1529,8 +1529,8 @@ public class ApiService {
         String string3 = h + string2;
         String string4 = string3 + "?" + com.clilystudio.netbook.hpay100.a.a.A(string2);
         HttpRequest httpRequest = HttpRequest.get(string4);
-        if (com.clilystudio.netbook.api.e.a()) {
-            httpRequest = com.clilystudio.netbook.api.e.a2(httpRequest);
+        if (DnsManager.isUseDns()) {
+            httpRequest = DnsManager.a2(httpRequest);
         }
         HttpRequest httpRequest2 = this.b(httpRequest);
         boolean bl = httpRequest2.ok();
@@ -1560,8 +1560,8 @@ public class ApiService {
         String string2 = am.e(string);
         String string3 = g + String.format(Locale.CHINA, "/chapter/%s", string2);
         HttpRequest httpRequest = HttpRequest.get(string3);
-        if (com.clilystudio.netbook.api.e.a()) {
-            httpRequest = com.clilystudio.netbook.api.e.a2(httpRequest);
+        if (DnsManager.isUseDns()) {
+            httpRequest = DnsManager.a2(httpRequest);
         }
         HttpRequest httpRequest2 = this.b(httpRequest);
         boolean bl = httpRequest2.ok();

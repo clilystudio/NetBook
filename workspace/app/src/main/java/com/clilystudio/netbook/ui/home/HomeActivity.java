@@ -26,6 +26,7 @@ import android.widget.Toast;
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.a_pack.BaseAsyncTask;
 import com.clilystudio.netbook.am;
+import com.clilystudio.netbook.api.DnsManager;
 import com.clilystudio.netbook.db.AccountInfo;
 import com.clilystudio.netbook.db.BookReadRecord;
 import com.clilystudio.netbook.event.AccountUpdatedEvent;
@@ -748,7 +749,7 @@ public class HomeActivity extends HomeParentActivity implements ViewPager.OnPage
     public void onResume() {
         Account account;
         super.onResume();
-        com.clilystudio.netbook.api.e.a("1".equals(OnlineConfigAgent.getInstance().getConfigParams(this, "use_http_dns")));
+        DnsManager.a("1".equals(OnlineConfigAgent.getInstance().getConfigParams(this, "use_http_dns")));
         if (com.clilystudio.netbook.hpay100.a.a.l()) {
             new BaseAsyncTask<Void, Void, BookTopRoot>() {
 

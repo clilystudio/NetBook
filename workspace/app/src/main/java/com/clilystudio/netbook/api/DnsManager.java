@@ -10,8 +10,8 @@ import com.github.kevinsawicki.http.HttpRequest;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public final class e {
-    private static boolean a;
+public final class DnsManager {
+    private static boolean mUseDns;
     private static c b = c.a();
 
     public static HttpRequest a2(HttpRequest httpRequest) {
@@ -60,10 +60,10 @@ public final class e {
     }
 
     public static void a(boolean bl) {
-        a = bl;
+        mUseDns = bl;
     }
 
-    public static boolean a() {
-        return a;
+    public static boolean isUseDns() {
+        return mUseDns;
     }
 }

@@ -9,6 +9,7 @@ import android.text.TextUtils;
 import com.activeandroid.ActiveAndroid;
 import com.activeandroid.query.Select;
 import com.clilystudio.netbook.api.ApiService;
+import com.clilystudio.netbook.api.DnsManager;
 import com.clilystudio.netbook.db.BookReadRecord;
 import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.model.BookInfo;
@@ -220,7 +221,7 @@ public class MyApplication extends Application {
     public void onCreate() {
         super.onCreate();
         b = this;
-        com.clilystudio.netbook.api.e.a("1".equals(OnlineConfigAgent.getInstance().getConfigParams(b, "use_http_dns")));
+        DnsManager.a("1".equals(OnlineConfigAgent.getInstance().getConfigParams(b, "use_http_dns")));
         com.clilystudio.netbook.hpay100.a.a.q(this);
         ActiveAndroid.initialize(this);
         String string = "";
