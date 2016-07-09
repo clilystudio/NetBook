@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.clilystudio.netbook.ActivityStack;
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.d;
 import com.clilystudio.netbook.db.BookTopicEnterRecord;
@@ -79,8 +80,8 @@ public class ReaderResActivity extends ReaderModeActivity {
             var4_6 = this.a(this.c);
         }
         fragmentTransaction.replace(R.id.content_frame, var4_6).commit();
-        com.clilystudio.netbook.a.a();
-        com.clilystudio.netbook.a.a(this);
+        ActivityStack.getInstance();
+        ActivityStack.add(this);
         com.clilystudio.netbook.a_pack.e<String, Void, TopicCount> bT2 = new com.clilystudio.netbook.a_pack.e<String, Void, TopicCount>(){
 
             @Override
