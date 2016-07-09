@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.clilystudio.netbook.CachePathConst;
 import com.clilystudio.netbook.R;
 
 import java.io.Serializable;
@@ -123,7 +124,7 @@ public class AutoFlowView extends LinearLayout implements View.OnClickListener {
                 word.show = 1 + word.show;
             }
         }
-        com.clilystudio.netbook.hpay100.a.a.a(this.j, com.clilystudio.netbook.c.e, "search_hotword.txt");
+        com.clilystudio.netbook.hpay100.a.a.a(this.j, CachePathConst.SearchHistory, "search_hotword.txt");
     }
 
     @Override

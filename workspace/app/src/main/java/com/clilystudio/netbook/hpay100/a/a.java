@@ -39,6 +39,7 @@ import android.widget.AbsListView;
 import android.widget.ListView;
 import android.widget.RemoteViews;
 
+import com.clilystudio.netbook.CachePathConst;
 import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.am;
@@ -196,7 +197,7 @@ public class a {
 
     public static ArrayList<String> D(String string) {
         String string2 = "/ZhuiShuShenQi/Chapter" + File.separator + string;
-        return c(new File(com.clilystudio.netbook.c.a, string2));
+        return c(new File(CachePathConst.RootPath, string2));
     }
 
     public static void D(Context context) {
@@ -329,14 +330,6 @@ public class a {
         return null;
     }
 
-    public static File I(String string) {
-        File file = J(com.clilystudio.netbook.c.g);
-        if (file == null) {
-            return null;
-        }
-        return new File(file, string);
-    }
-
     /*
      * Enabled force condition propagation
      * Lifted jumps to return sites
@@ -385,7 +378,7 @@ public class a {
     }
 
     public static HashMap<String, String> M(String string) {
-        return (HashMap<String, String>) k(com.clilystudio.netbook.c.c, string);
+        return (HashMap<String, String>) k(CachePathConst.ChapterKey, string);
     }
 
     private static File O(Context context) {
@@ -1343,7 +1336,7 @@ public class a {
     }
 
     public static void a(String string2, Map<String, String> map) {
-        a(map, com.clilystudio.netbook.c.c, string2);
+        a(map, CachePathConst.ChapterKey, string2);
     }
 
     /*
@@ -1483,7 +1476,7 @@ public class a {
             return false;
         }
         String string5 = "/ZhuiShuShenQi/Chapter" + File.separator + string2 + File.separator + string3;
-        File file = new File(com.clilystudio.netbook.c.a, string5);
+        File file = new File(CachePathConst.RootPath, string5);
         try {
             if (!file.exists()) {
                 file.mkdirs();
@@ -1503,7 +1496,7 @@ public class a {
             return false;
         }
         String string5 = "/ZhuiShuShenQi/Chapter" + File.separator + string2 + File.separator + string3;
-        File file = new File(com.clilystudio.netbook.c.a, string5);
+        File file = new File(CachePathConst.RootPath, string5);
         try {
             if (!file.exists()) {
                 file.mkdirs();
@@ -1704,7 +1697,7 @@ public class a {
         try {
             if (var2_2 != null && d()) {
                 String var4_4 = "/ZhuiShuShenQi/Chapter" + File.separator + var0 + File.separator + var1_1;
-                File var5_5 = new File(com.clilystudio.netbook.c.a, var4_4);
+                File var5_5 = new File(CachePathConst.RootPath, var4_4);
                 if (var5_5.exists()) {
                     File var14_6 = new File(var5_5, var2_2);
                     if (var14_6.exists()) {
@@ -2026,20 +2019,6 @@ public class a {
         return context.getSharedPreferences("mistat", 0).getString(string2, string3);
     }
 
-    public static List<BookFile> f() {
-        ArrayList<BookFile> arrayList = new ArrayList<>();
-        File[] arrfile = J(com.clilystudio.netbook.c.g).listFiles();
-        if (arrfile != null) {
-            for (File file : arrfile) {
-                BookFile bookFile = new BookFile();
-                bookFile.setSize(a(file.length(), true));
-                bookFile.setName(file.getName());
-                arrayList.add(bookFile);
-            }
-        }
-        return arrayList;
-    }
-
     public static void f(Context context, String string2, long l2) {
         SharedPreferences.Editor editor = context.getSharedPreferences("mistat", 0).edit();
         editor.putLong(string2, l2);
@@ -2291,7 +2270,7 @@ public class a {
 
     public static ArrayList<String> j(String string2, String string3) {
         String string4 = "/ZhuiShuShenQi/Chapter" + File.separator + string2 + File.separator + string3;
-        return c(new File(com.clilystudio.netbook.c.a, string4));
+        return c(new File(CachePathConst.RootPath, string4));
     }
 
     public static boolean j() {

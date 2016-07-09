@@ -13,6 +13,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.clilystudio.netbook.CachePathConst;
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.d;
 import com.clilystudio.netbook.model.Toc;
@@ -48,7 +49,7 @@ public class LocalChapterListActivity extends BaseActivity {
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
                 String string2 = LocalChapterListActivity.c(localChapterListActivity);
-                com.clilystudio.netbook.hpay100.a.a.E(com.clilystudio.netbook.c.b + File.separator + string2 + File.separator + string);
+                com.clilystudio.netbook.hpay100.a.a.E(CachePathConst.Chapter + File.separator + string2 + File.separator + string);
                 LocalChapterListActivity.e(localChapterListActivity);
             }
         }).setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
@@ -99,7 +100,7 @@ public class LocalChapterListActivity extends BaseActivity {
             Toc toc = (Toc) com.clilystudio.netbook.hpay100.a.a.b(localChapterListActivity.g, string, "toc");
             String string2 = localChapterListActivity.g;
             String string3 = "/ZhuiShuShenQi/Chapter" + File.separator + string2 + File.separator + string;
-            int n2 = com.clilystudio.netbook.hpay100.a.a.b(new File(com.clilystudio.netbook.c.a, string3));
+            int n2 = com.clilystudio.netbook.hpay100.a.a.b(new File(CachePathConst.RootPath, string3));
             if (toc != null) {
                 --n2;
             }

@@ -21,6 +21,7 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.clilystudio.netbook.CachePathConst;
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.d;
 import com.clilystudio.netbook.model.AutoCompleteRoot;
@@ -133,7 +134,7 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
     static /* synthetic */ void d(SearchActivity searchActivity) {
         searchActivity.x.clear();
         searchActivity.w.notifyDataSetChanged();
-        com.clilystudio.netbook.hpay100.a.a.a(searchActivity.x, com.clilystudio.netbook.c.e, "search_history.txt");
+        com.clilystudio.netbook.hpay100.a.a.a(searchActivity.x, CachePathConst.SearchHistory, "search_history.txt");
         searchActivity.a(false);
     }
 
@@ -216,7 +217,7 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
         }
         this.x.add(0, string2);
         this.w.notifyDataSetChanged();
-        com.clilystudio.netbook.hpay100.a.a.a(this.x, com.clilystudio.netbook.c.e, "search_history.txt");
+        com.clilystudio.netbook.hpay100.a.a.a(this.x, CachePathConst.SearchHistory, "search_history.txt");
         this.a(true);
         this.g();
         if (com.clilystudio.netbook.hpay100.a.a.t(this)) {
@@ -474,7 +475,7 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
                 MiStatInterface.recordCountEvent("search_history_clear", null);
             }
         });
-        this.x = com.clilystudio.netbook.hpay100.a.a.k(com.clilystudio.netbook.c.e, "search_history.txt");
+        this.x = com.clilystudio.netbook.hpay100.a.a.k(CachePathConst.SearchHistory, "search_history.txt");
         if (this.x == null) {
             this.x = new ArrayList<>();
         }
@@ -496,8 +497,8 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
         this.q = (RelativeLayout) this.findViewById(R.id.ll_hot_keyword_continer);
         this.r = (AutoFlowView) this.findViewById(R.id.afv_hots);
         this.s = (TextView) this.findViewById(R.id.btn_change);
-        if (com.clilystudio.netbook.hpay100.a.a.k(com.clilystudio.netbook.c.e, "search_hotword.txt") != null && com.clilystudio.netbook.hpay100.a.a.a(this, "search_hot_words_date", 0) != 0) {
-            List<AutoFlowView.Word> list = com.clilystudio.netbook.hpay100.a.a.k(com.clilystudio.netbook.c.e, "search_hotword.txt");
+        if (com.clilystudio.netbook.hpay100.a.a.k(CachePathConst.SearchHistory, "search_hotword.txt") != null && com.clilystudio.netbook.hpay100.a.a.a(this, "search_hot_words_date", 0) != 0) {
+            List<AutoFlowView.Word> list = com.clilystudio.netbook.hpay100.a.a.k(CachePathConst.SearchHistory, "search_hotword.txt");
             this.q.setVisibility(View.VISIBLE);
             this.r.setWords(list);
             this.r.setOnItemClickListener(new i() {
@@ -534,7 +535,7 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
                         word.content = string;
                         arrayList.add(word);
                     }
-                    com.clilystudio.netbook.hpay100.a.a.a(arrayList, com.clilystudio.netbook.c.e, "search_hotword.txt");
+                    com.clilystudio.netbook.hpay100.a.a.a(arrayList, CachePathConst.SearchHistory, "search_hotword.txt");
                     SearchActivity.g(SearchActivity.this).setVisibility(View.VISIBLE);
                     SearchActivity.e(SearchActivity.this).setWords(hotKeywordResult.getHotWords());
                     SearchActivity.e(SearchActivity.this).setOnItemClickListener(new i() {

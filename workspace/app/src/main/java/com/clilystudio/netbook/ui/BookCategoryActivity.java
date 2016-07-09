@@ -9,6 +9,7 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+import com.clilystudio.netbook.CachePathConst;
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.a_pack.e;
 import com.clilystudio.netbook.am;
@@ -34,7 +35,7 @@ public class BookCategoryActivity extends BaseActivity {
     }
 
     static /* synthetic */ void a(CategoryLevelRoot categoryLevelRoot) {
-        com.clilystudio.netbook.hpay100.a.a.a(categoryLevelRoot, com.clilystudio.netbook.c.f, "category_level.txt");
+        com.clilystudio.netbook.hpay100.a.a.a(categoryLevelRoot, CachePathConst.CategoryLevel, "category_level.txt");
     }
 
     static /* synthetic */ void a(BookCategoryActivity bookCategoryActivity, CategoryRoot categoryRoot) {

@@ -2,7 +2,7 @@ package com.clilystudio.netbook.reader.txt;
 
 import android.util.Log;
 
-import com.clilystudio.netbook.c;
+import com.clilystudio.netbook.CachePathConst;
 import com.clilystudio.netbook.model.ChapterLink;
 import com.clilystudio.netbook.model.Toc;
 import com.clilystudio.netbook.model.mixtoc.LocalTxtToc;
@@ -100,7 +100,7 @@ public final class U {
         try {
             String name = U.b(string);
             if (name != null) {
-                ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(new File(com.clilystudio.netbook.hpay100.a.a.J(c.d), name)));
+                ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(new File(com.clilystudio.netbook.hpay100.a.a.J(CachePathConst.TextToc), name)));
                 objectOutputStream.writeObject(new LocalTxtToc(new File(string).length(), list));
                 objectOutputStream.flush();
                 objectOutputStream.close();
@@ -170,7 +170,7 @@ public final class U {
         File file;
         String name = U.b(string);
         if (name != null) {
-            file = new File(com.clilystudio.netbook.hpay100.a.a.J(c.d), name);
+            file = new File(com.clilystudio.netbook.hpay100.a.a.J(CachePathConst.TextToc), name);
             if (!file.exists()) return null;
             try {
                 ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(file));

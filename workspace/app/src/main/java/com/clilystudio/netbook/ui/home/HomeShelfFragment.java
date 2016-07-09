@@ -22,6 +22,7 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.clilystudio.netbook.CachePathConst;
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.a_pack.c;
 import com.clilystudio.netbook.a_pack.e;
@@ -569,7 +570,7 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
             @Override
             public void run() {
                 String string = U.b(bookFile.getFilePath());
-                com.clilystudio.netbook.hpay100.a.a.F(com.clilystudio.netbook.c.d + string);
+                com.clilystudio.netbook.hpay100.a.a.F(CachePathConst.TextToc + string);
             }
         }.start();
     }
@@ -647,7 +648,7 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
 
             @Override
             public void run() {
-                com.clilystudio.netbook.hpay100.a.a.E(com.clilystudio.netbook.c.b + File.separator + string);
+                com.clilystudio.netbook.hpay100.a.a.E(CachePathConst.Chapter + File.separator + string);
             }
         }.start();
     }

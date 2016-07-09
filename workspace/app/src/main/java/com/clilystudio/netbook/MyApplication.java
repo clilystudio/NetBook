@@ -56,17 +56,13 @@ public class MyApplication extends Application {
         return b;
     }
 
-    static /* synthetic */ void a(MyApplication myApplication) {
-        File file = new File(myApplication.getCacheDir(), "http2");
-        try {
-            com.integralblue.httpresponsecache.HttpResponseCache.install(file, 200 * 1024 * 1024);
-        } catch (Exception var2_2) {
-            var2_2.printStackTrace();
-        }
-    }
-
     public final String a(String string) {
-        return AppPropsManager.getInstance(this).load().getProperty(string);
+        Properties properties = AppPropsManager.getInstance(this).load();
+        if (properties != null) {
+            return properties.getProperty(string);
+        } else {
+            return null;
+        }
     }
 
     public final void a(int n) {
@@ -285,81 +281,6 @@ public class MyApplication extends Application {
                 com.clilystudio.netbook.hpay100.a.a.b(this, "PREF_FIRST_LAUNCH_TIME", calendar.getTimeInMillis());
             } else {
                 com.clilystudio.netbook.hpay100.a.a.b(this, "PREF_FIRST_LAUNCH_TIME", Calendar.getInstance().getTimeInMillis());
-            }
-        }
-    }
-    public final class b {
-        private static b mInstance;
-        private Context mContext;
-
-        public static b getInstance(Context context) {
-            if (mInstance == null) {
-                mInstance = new b();
-                mInstance.mContext = context;
-            }
-            return mInstance;
-        }
-
-        /*
-         * Unable to fully structure code
-         * Enabled aggressive exception aggregation
-         */
-        private void save(Properties properties) {
-            FileOutputStream fos = null;
-            try {
-                fos = new FileOutputStream(new File(this.mContext.getDir("config", 0), "config"));
-                properties.store(fos, null);
-                fos.flush();
-            } catch (IOException e) {
-                e.printStackTrace();
-            } finally {
-                if (fos != null) {
-                    try {
-                        fos.close();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-        }
-
-        public final Properties load() {
-            Properties properties = new Properties();
-            File dir = this.mContext.getDir("config", 0);
-            FileInputStream fis = null;
-            try {
-                fis = new FileInputStream(dir.getPath() + File.separator + "config");
-                properties.load(fis);
-                return properties;
-            } catch (IOException e) {
-                e.printStackTrace();
-                return null;
-            } finally {
-                if (fis != null) {
-                    try {
-                        fis.close();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-        }
-
-        public final void put(Properties properties) {
-            Properties properties2 = this.load();
-            if (properties2 != null) {
-                properties2.putAll(properties);
-            }
-            this.save(properties2);
-        }
-
-        public final /* varargs */ void remove(String... keys) {
-            Properties properties = this.load();
-            if (properties != null) {
-                for (String key : keys) {
-                    properties.remove(key);
-                }
-                this.save(properties);
             }
         }
     }
