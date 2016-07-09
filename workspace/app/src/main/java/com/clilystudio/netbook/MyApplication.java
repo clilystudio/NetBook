@@ -65,12 +65,8 @@ public class MyApplication extends Application {
         }
     }
 
-    private void a(Properties properties) {
-        com.clilystudio.netbook.b.a(this).a(properties);
-    }
-
     public final String a(String string) {
-        return com.clilystudio.netbook.b.a(this).a().getProperty(string);
+        return AppPropsManager.getInstance(this).load().getProperty(string);
     }
 
     public final void a(int n) {
@@ -80,7 +76,7 @@ public class MyApplication extends Application {
     public final void a(Account account) {
         Properties tokenProperties = new Properties();
         tokenProperties.setProperty("account.token", account.getToken());
-        this.a(tokenProperties);
+        AppPropsManager.getInstance(this).put(tokenProperties);
         Properties userProperties = new Properties();
         User user = account.getUser();
         userProperties.setProperty("user.id", user.getId());
@@ -90,7 +86,7 @@ public class MyApplication extends Application {
         if (user.getGender() != null) {
             userProperties.setProperty("user.gender", user.getGender());
         }
-        this.a(userProperties);
+        AppPropsManager.getInstance(this).put(userProperties);
     }
 
     public final void a(BookInfo bookInfo) {
@@ -101,12 +97,8 @@ public class MyApplication extends Application {
         this.c = reader;
     }
 
-    public final void a(String string, String string2) {
-        com.clilystudio.netbook.b.a(this).a(string, string2);
-    }
-
     public final /* varargs */ void a(String... arrstring) {
-        com.clilystudio.netbook.b.a(this).a(arrstring);
+        AppPropsManager.getInstance(this).remove(arrstring);
     }
 
     public final boolean a(Serializable var1_1, String var2_2) {
@@ -293,6 +285,81 @@ public class MyApplication extends Application {
                 com.clilystudio.netbook.hpay100.a.a.b(this, "PREF_FIRST_LAUNCH_TIME", calendar.getTimeInMillis());
             } else {
                 com.clilystudio.netbook.hpay100.a.a.b(this, "PREF_FIRST_LAUNCH_TIME", Calendar.getInstance().getTimeInMillis());
+            }
+        }
+    }
+    public final class b {
+        private static b mInstance;
+        private Context mContext;
+
+        public static b getInstance(Context context) {
+            if (mInstance == null) {
+                mInstance = new b();
+                mInstance.mContext = context;
+            }
+            return mInstance;
+        }
+
+        /*
+         * Unable to fully structure code
+         * Enabled aggressive exception aggregation
+         */
+        private void save(Properties properties) {
+            FileOutputStream fos = null;
+            try {
+                fos = new FileOutputStream(new File(this.mContext.getDir("config", 0), "config"));
+                properties.store(fos, null);
+                fos.flush();
+            } catch (IOException e) {
+                e.printStackTrace();
+            } finally {
+                if (fos != null) {
+                    try {
+                        fos.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }
+
+        public final Properties load() {
+            Properties properties = new Properties();
+            File dir = this.mContext.getDir("config", 0);
+            FileInputStream fis = null;
+            try {
+                fis = new FileInputStream(dir.getPath() + File.separator + "config");
+                properties.load(fis);
+                return properties;
+            } catch (IOException e) {
+                e.printStackTrace();
+                return null;
+            } finally {
+                if (fis != null) {
+                    try {
+                        fis.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }
+
+        public final void put(Properties properties) {
+            Properties properties2 = this.load();
+            if (properties2 != null) {
+                properties2.putAll(properties);
+            }
+            this.save(properties2);
+        }
+
+        public final /* varargs */ void remove(String... keys) {
+            Properties properties = this.load();
+            if (properties != null) {
+                for (String key : keys) {
+                    properties.remove(key);
+                }
+                this.save(properties);
             }
         }
     }
