@@ -12,14 +12,14 @@ import java.net.URL;
 
 public final class DnsManager {
     private static boolean mUseDns;
-    private static c b = c.a();
+    private static DnsCacheManager b = DnsCacheManager.getInstance();
 
     public static HttpRequest a2(HttpRequest httpRequest) {
         String string2;
         String string3;
         URL uRL = httpRequest.getConnection().getURL();
-        String string = uRL.getHost();
-        DnsCacheRecord dnsCacheRecord = new Select().from(DnsCacheRecord.class).where("host = ?", string).executeSingle();
+        String host = uRL.getHost();
+        DnsCacheRecord dnsCacheRecord = new Select().from(DnsCacheRecord.class).where("host = ?", host).executeSingle();
         if (dnsCacheRecord != null && dnsCacheRecord.isExpired()) {
             dnsCacheRecord.delete();
             string2 = null;
@@ -31,14 +31,14 @@ public final class DnsManager {
         if (string2 != null) {
             HttpRequest httpRequest2 = null;
             try {
-                httpRequest2 = new HttpRequest(new URL(uRL.toString().replace(string, string2)), httpRequest.method());
-                httpRequest2.header("Host", string);
+                httpRequest2 = new HttpRequest(new URL(uRL.toString().replace(host, string2)), httpRequest.method());
+                httpRequest2.header("Host", host);
             } catch (MalformedURLException e) {
                 e.printStackTrace();
             }
             return httpRequest2;
         }
-        string3 = HttpRequest.get(String.format("http://119.29.29.29/d?dn=%s&ttl=1", string)).body();
+        string3 = HttpRequest.get(String.format("http://119.29.29.29/d?dn=%s&ttl=1", host)).body();
         if (string3 == null) {
             throw new DnsParseFailedException(string3 + " parse failed");
         }
@@ -48,10 +48,10 @@ public final class DnsManager {
         string2 = d2.getIp();
         HttpRequest httpRequest2 = null;
         if (!TextUtils.isEmpty(string2)) {
-            b.a(d2, string);
+            b.a(d2, host);
              try {
-                httpRequest2 = new HttpRequest(new URL(uRL.toString().replace(string, string2)), httpRequest.method());
-                httpRequest2.header("Host", string);
+                httpRequest2 = new HttpRequest(new URL(uRL.toString().replace(host, string2)), httpRequest.method());
+                httpRequest2.header("Host", host);
             } catch (MalformedURLException e) {
                 e.printStackTrace();
             }
