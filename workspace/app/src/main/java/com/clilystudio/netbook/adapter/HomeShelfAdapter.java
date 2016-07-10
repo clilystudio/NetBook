@@ -28,7 +28,7 @@ import com.clilystudio.netbook.widget.CoverView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HomeShelfAdapter extends u<BookShelf> {
+public class HomeShelfAdapter extends BaseBookAdapter<BookShelf> {
     public static boolean a;
 
     static {

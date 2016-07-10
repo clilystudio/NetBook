@@ -14,13 +14,13 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.clilystudio.netbook.R;
-import com.clilystudio.netbook.adapter.u;
+import com.clilystudio.netbook.adapter.BaseBookAdapter;
 import com.clilystudio.netbook.model.ChapterLink;
 
 import java.util.LinkedList;
 
 public class ReaderTocDialog extends DialogFragment implements AdapterView.OnItemClickListener {
-    private u<ChapterLink> a;
+    private BaseBookAdapter<ChapterLink> a;
     private ListView b;
     private TextView c;
     private Reader d;
@@ -116,7 +116,7 @@ public class ReaderTocDialog extends DialogFragment implements AdapterView.OnIte
         this.c = (TextView) view.findViewById(R.id.dialog_toc_title);
         this.b = (ListView) view.findViewById(R.id.dialog_toc_list);
 //        cf(this, LayoutInflater.from(new ContextThemeWrapper((Context) this.getActivity(), this.i)));
-        this.a = new u<ChapterLink>(){
+        this.a = new BaseBookAdapter<ChapterLink>(){
 
             @Override
             public View getView(int position, View convertView, ViewGroup parent) {
@@ -176,7 +176,7 @@ public class ReaderTocDialog extends DialogFragment implements AdapterView.OnIte
     @Override
     public void onResume() {
         super.onResume();
-        u<ChapterLink> cf2 = this.a;
+        BaseBookAdapter<ChapterLink> cf2 = this.a;
         ChapterLink[] arrobject = this.d.h();
         if (arrobject != null) {
             int n = arrobject.length;

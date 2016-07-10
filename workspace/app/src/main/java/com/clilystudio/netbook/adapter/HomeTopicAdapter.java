@@ -13,7 +13,7 @@ import com.clilystudio.netbook.ui.SmartImageView;
 import com.clilystudio.netbook.util.ag;
 import com.clilystudio.netbook.util.ai;
 
-public final class HomeTopicAdapter extends u<BookShelfTopic> {
+public final class HomeTopicAdapter extends BaseBookAdapter<BookShelfTopic> {
     private LayoutInflater a;
     private ag b;
 

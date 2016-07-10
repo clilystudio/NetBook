@@ -14,7 +14,7 @@ import com.clilystudio.netbook.ui.SmartImageView;
 
 import java.util.List;
 
-public final class BookRankAdapter extends u<BookRankSummary> {
+public final class BookRankAdapter extends BaseBookAdapter<BookRankSummary> {
     private LayoutInflater a;
     private List<BookRankSummary> b;
     private List<BookRankSummary> c;
