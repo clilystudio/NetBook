@@ -352,7 +352,7 @@ public class ApiService {
 
     private HttpRequest b(HttpRequest httpRequest, int n) {
         httpRequest.chunk(15000).bufferSize(15000);
-        httpRequest.userAgent(this.c.a(n));
+        httpRequest.userAgent(this.c.getUserAgent(n));
         if (n == 6) {
             httpRequest.referer("http://bookshelf.html5.qq.com/page?t=pad");
         }

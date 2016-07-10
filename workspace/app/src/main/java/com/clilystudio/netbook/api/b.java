@@ -16,7 +16,7 @@ public final class b {
 
     public static ApiService b() {
         if (b == null) {
-            b = new ApiService(f.a());
+            b = new ApiService(f.getInstance());
         }
         return b;
     }

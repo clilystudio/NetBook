@@ -15,17 +15,17 @@ import java.util.ArrayList;
 import java.util.Locale;
 
 public class f {
-    private static f b = null;
+    private static f mInstance = null;
     private String a = null;
 
     private f() {
     }
 
-    public static f a() {
-        if (b == null) {
-            b = new f();
+    public static f getInstance() {
+        if (mInstance == null) {
+            mInstance = new f();
         }
-        return b;
+        return mInstance;
     }
 
     /*
@@ -48,7 +48,7 @@ public class f {
         return string.toUpperCase();
     }
 
-    public final String a(int n) {
+    public final String getUserAgent(int n) {
         switch (n) {
             case 6:
                 return "Mozilla/5.0 (iPad; CPU OS 7_1_2 like Mac OS X) AppleWebKit/537.51.2 (KHTML, like Gecko) Version/6.0 MQQBrowser/4.3 Mobile/11D257 Safari/7534.48.3";
@@ -76,14 +76,14 @@ public class f {
                 } catch (PackageManager.NameNotFoundException var3_14) {
                     packageInfo = null;
                 }
-                String string2 = packageInfo != null ? packageInfo.versionName : "not-found";
+                String versionName = packageInfo != null ? packageInfo.versionName : "not-found";
                 TelephonyManager telephonyManager = (TelephonyManager) myApplication.getSystemService(Context.TELEPHONY_SERVICE);
                 try {
                     string = telephonyManager.getSimOperatorName();
                 } catch (Exception var7_15) {
                     string = "not-found";
                 }
-                Object[] arrobject = new Object[]{"ZhuiShuShenQi", string2, Build.VERSION.RELEASE, f.a(Build.MANUFACTURER), f.a(Build.DEVICE), f.a(Build.BRAND), f.a(Build.MODEL), f.a(string)};
+                Object[] arrobject = new Object[]{"ZhuiShuShenQi", versionName, Build.VERSION.RELEASE, f.a(Build.MANUFACTURER), f.a(Build.DEVICE), f.a(Build.BRAND), f.a(Build.MODEL), f.a(string)};
                 this.a = String.format("%s/%s (Android %s; %s %s / %s %s; %s)", arrobject);
                 arrayList = new ArrayList<>();
                 StringBuilder stringBuilder = new StringBuilder("preload=");
