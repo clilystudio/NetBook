@@ -315,13 +315,6 @@
             </intent-filter>
         </receiver>
         <receiver
-            android:name="com.clilystudio.netbook.download.ConnectionChangeReceiver"
-            android:label="NetworkConnection">
-            <intent-filter>
-                <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
-            </intent-filter>
-        </receiver>
-        <receiver
             android:name="com.clilystudio.netbook.push.MiPushReceiver"
             android:exported="false">
             <intent-filter>

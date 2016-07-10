@@ -319,17 +319,6 @@ public class a {
         return "utf-8";
     }
 
-    public static com.clilystudio.netbook.download.a I(Context context) {
-        String string = OnlineConfigAgent.getInstance().getConfigParams(context, "app_name");
-        String string2 = OnlineConfigAgent.getInstance().getConfigParams(context, "app_apk_url");
-        String string3 = OnlineConfigAgent.getInstance().getConfigParams(context, "app_icon_url");
-        String string4 = OnlineConfigAgent.getInstance().getConfigParams(context, "app_package_name");
-        if (!(Z(string) || Z(string2) || Z(string3) || Z(string4))) {
-            return new com.clilystudio.netbook.download.a(context, string, string2, string3, string4);
-        }
-        return null;
-    }
-
     /*
      * Enabled force condition propagation
      * Lifted jumps to return sites
