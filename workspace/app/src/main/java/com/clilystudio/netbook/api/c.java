@@ -15,12 +15,12 @@ public final class c {
         return a;
     }
 
-    public final void a(d d2, String string) {
+    public final void a(DnsRecord d2, String string) {
         synchronized (this) {
             DnsCacheRecord dnsCacheRecord = new DnsCacheRecord();
-            dnsCacheRecord.setExpiredTime(d2.b());
+            dnsCacheRecord.setExpiredTime(d2.getExpiredTime());
             dnsCacheRecord.setHost(string);
-            dnsCacheRecord.setIp(d2.a());
+            dnsCacheRecord.setIp(d2.getIp());
             dnsCacheRecord.save();
         }
     }

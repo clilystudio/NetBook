@@ -38,14 +38,14 @@ public final class DnsManager {
             }
             return httpRequest2;
         }
-        string3 = HttpRequest.get(String.format("http://%s/d?dn=%s&ttl=1", "119.29.29.29", string)).body();
+        string3 = HttpRequest.get(String.format("http://119.29.29.29/d?dn=%s&ttl=1", string)).body();
         if (string3 == null) {
             throw new DnsParseFailedException(string3 + " parse failed");
         }
         String[] arrstring = string3.split(",");
         String[] arrstring2 = arrstring[0].split(";");
-        d d2 = new d(arrstring2[0], Integer.parseInt(arrstring[1]));
-        string2 = d2.a();
+        DnsRecord d2 = new DnsRecord(arrstring2[0], Integer.parseInt(arrstring[1]));
+        string2 = d2.getIp();
         HttpRequest httpRequest2 = null;
         if (!TextUtils.isEmpty(string2)) {
             b.a(d2, string);
