@@ -14,16 +14,16 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Locale;
 
-public class f {
-    private static f mInstance = null;
+public class UserAgentManager {
+    private static UserAgentManager mInstance = null;
     private String a = null;
 
-    private f() {
+    private UserAgentManager() {
     }
 
-    public static f getInstance() {
+    public static UserAgentManager getInstance() {
         if (mInstance == null) {
-            mInstance = new f();
+            mInstance = new UserAgentManager();
         }
         return mInstance;
     }
@@ -66,7 +66,7 @@ public class f {
 
     public final String b() {
         if (this.a == null) {
-            synchronized (f.class) {
+            synchronized (UserAgentManager.class) {
                 ArrayList<String> arrayList;
                 PackageInfo packageInfo;
                 String string;
@@ -83,7 +83,7 @@ public class f {
                 } catch (Exception var7_15) {
                     string = "not-found";
                 }
-                Object[] arrobject = new Object[]{"ZhuiShuShenQi", versionName, Build.VERSION.RELEASE, f.a(Build.MANUFACTURER), f.a(Build.DEVICE), f.a(Build.BRAND), f.a(Build.MODEL), f.a(string)};
+                Object[] arrobject = new Object[]{"ZhuiShuShenQi", versionName, Build.VERSION.RELEASE, UserAgentManager.a(Build.MANUFACTURER), UserAgentManager.a(Build.DEVICE), UserAgentManager.a(Build.BRAND), UserAgentManager.a(Build.MODEL), UserAgentManager.a(string)};
                 this.a = String.format("%s/%s (Android %s; %s %s / %s %s; %s)", arrobject);
                 arrayList = new ArrayList<>();
                 StringBuilder stringBuilder = new StringBuilder("preload=");

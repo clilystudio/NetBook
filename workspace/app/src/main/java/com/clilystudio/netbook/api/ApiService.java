@@ -138,9 +138,9 @@ public class ApiService {
     private static String k = "http://m.sm.cn/s?q=";
     private static final Gson l = new GsonBuilder().registerTypeAdapter(Date.class, new DateDeserializer()).create();
 
-    private final f c;
+    private final UserAgentManager c;
 
-    public ApiService(f f2) {
+    public ApiService(UserAgentManager f2) {
         URLStatsRecorder.setEventFilter(new HttpEventFilter() {
             @Override
             public HttpEvent onEvent(HttpEvent httpEvent) {
@@ -342,7 +342,7 @@ public class ApiService {
 
     private HttpRequest b(HttpRequest httpRequest) {
         httpRequest.chunk(15000).bufferSize(15000);
-        f f2 = this.c;
+        UserAgentManager f2 = this.c;
         String string = "1".equals(OnlineConfigAgent.getInstance().getConfigParams(MyApplication.a(), "ua-toggle")) ? f2.b() : "";
         httpRequest.header(string);
         httpRequest.header("X-User-Agent", this.c.b());
