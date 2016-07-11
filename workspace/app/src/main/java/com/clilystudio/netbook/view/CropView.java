@@ -6,6 +6,7 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.RectF;
 import android.util.AttributeSet;
+import android.view.ViewTreeObserver;
 
 import com.clilystudio.netbook.R;
 
@@ -112,7 +113,24 @@ public class CropView extends PhotoView {
         super.onFinishInflate();
         this.setBackgroundResource(android.R.color.black);
         this.setDrawingCacheEnabled(true);
-        this.getViewTreeObserver().addOnPreDrawListener(new b(this));
+        this.getViewTreeObserver().addOnPreDrawListener(new  ViewTreeObserver.OnPreDrawListener(){
+
+            @Override
+            public boolean onPreDraw() {
+                float f2 = CropView.this.getWidth();
+                float f3 = f2 / CropView.a(CropView.this);
+                if (f3 >= (float) CropView.this.getHeight()) {
+                    f2 *= (float) CropView.this.getHeight() / f3;
+                    f3 = CropView.this.getHeight();
+                }
+                float f4 = Math.min(f2, f3);
+                float f5 = CropView.b(CropView.this) / f4;
+                CropView.c(CropView.this).setScale(f5);
+                CropView.this.getViewTreeObserver().removeOnPreDrawListener(this);
+                CropView.c(CropView.this).setScale(f5, false);
+                return true;
+            }
+        });
     }
 
     @Override
