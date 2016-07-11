@@ -14,7 +14,6 @@ import android.widget.LinearLayout;
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.ui.home.HomeActivity;
 import com.clilystudio.netbook.ui.user.AuthLoginActivity;
-import com.xiaomi.mistatistic.sdk.MiStatInterfaceImpl;
 
 import java.util.ArrayList;
 
@@ -78,11 +77,9 @@ public class IntroActivity extends Activity implements ViewPager.OnPageChangeLis
         switch (view.getId()) {
             case R.id.btnQuickLogin:
                 this.startActivity(AuthLoginActivity.a(this));
-                MiStatInterfaceImpl.recordCountEvent("intro_quick_login", null);
                 break;
             case R.id.btnEntryApp:
                 this.c();
-                MiStatInterfaceImpl.recordCountEvent("intro_entry_app", null);
                 break;
         }
     }
@@ -121,7 +118,6 @@ public class IntroActivity extends Activity implements ViewPager.OnPageChangeLis
         this.d = (Button) this.findViewById(R.id.btnEntryApp);
         this.d.setOnClickListener(this);
         this.a();
-        MiStatInterfaceImpl.recordCountEvent("intro_show_count", null);
     }
 
     @Override

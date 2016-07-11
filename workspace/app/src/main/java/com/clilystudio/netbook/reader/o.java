@@ -27,8 +27,6 @@ import com.clilystudio.netbook.model.PurchaseChapterResult;
 import com.clilystudio.netbook.ui.user.AuthLoginActivity;
 import com.clilystudio.netbook.widget.JustifyTextView;
 import com.squareup.otto.Subscribe;
-import com.xiaomi.mistatistic.sdk.MiStatInterfaceImpl;
-
 import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.Locale;
@@ -318,7 +316,6 @@ public final class o {
         Reader reader;
         if (n2 != null && n2.o() == -1 && (reader = MyApplication.getInstance().getReader()) != null) {
             String string = reader.i();
-            MiStatInterfaceImpl.recordCountEvent("chapter_load_error", string);
         }
     }
 
@@ -645,9 +642,6 @@ public final class o {
             return;
         }
         if (this.f()) {
-            if (this.e) {
-                MiStatInterfaceImpl.recordCountEvent("paying_page_show", com.clilystudio.netbook.util.I.b);
-            }
             this.a(true);
             return;
         }
@@ -697,20 +691,11 @@ public final class o {
             }
             return string == null;
         } catch (Exception var1_4) {
-            MiStatInterfaceImpl.recordCountEvent("zhuishu_catch_exception", "PageBinder_needPay:" + var1_4.getMessage());
+            var1_4.printStackTrace();
             return false;
         }
     }
 
-    public final void g() {
-        if (this.e) {
-            MiStatInterfaceImpl.recordCountEvent("paying_page_cancel", com.clilystudio.netbook.util.I.b);
-        }
-    }
-
-    /*
-     * Enabled aggressive block sorting
-     */
     public final void h() {
         View view;
         if (this.e || (view = this.f.findViewById(R.id.reader_ad_view)) == null) {

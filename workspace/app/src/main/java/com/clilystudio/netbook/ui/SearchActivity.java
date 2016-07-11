@@ -710,7 +710,6 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
         public final void onItemClick(AdapterView<?> adapterView, View view, int n, long l2) {
             if (n >= 0 && n < SearchActivity.l(this.a).size()) {
                 SearchActivity.a(this.a, (String) SearchActivity.l(this.a).get(n));
-                MiStatInterfaceImpl.recordCountEvent("search_history_word_click", (String) SearchActivity.l(this.a).get(n));
             }
         }
 

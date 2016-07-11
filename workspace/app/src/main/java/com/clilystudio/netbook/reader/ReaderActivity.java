@@ -1620,9 +1620,6 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
                 }
             }).create().show();
         }
-        if (this.j()) {
-            this.b[this.n].g();
-        }
     }
 
     @Override

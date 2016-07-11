@@ -771,26 +771,6 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
         com.clilystudio.netbook.hpay100.a.a.b(v22);
         com.clilystudio.netbook.hpay100.a.a.b(getActivity(), "unsync_bookrecord_first", 1);
         return v6;
-//        :catch_0
-//        move-exception v0
-//        MiStatInterfaceImpl.recordCountEvent("zhuishu_catch_exception", "HomeShelfFragment_createShelf:" + v0.getMessage());
-//        goto :goto_5
-//        :catch_1
-//        move-exception v0
-//        MiStatInterfaceImpl.recordCountEvent("zhuishu_catch_exception", "HomeShelfFragment_createShelf:" + v0.getMessage());
-//        if (v0.getMessage().contains("no such table: BookSyncRecord")) {
-//            v1 = new SQLiteUtils();
-//            v1.<init>();
-//            v1 = "CREATE TABLE IF NOT EXISTS BookSyncRecord (id integer primary key AutoIncrement,userId varchar(20),bookId varchar(20), type int,updated long);";
-//            Lcom/activeandroid/util/SQLiteUtils.execSql(v1);
-//        }
-//        this.a(v6);
-//        return v6;
-//        :catch_2
-//        move-exception v1
-//        MiStatInterfaceImpl.recordCountEvent("zhuishu_catch_exception", "HomeShelfFragment_createTableBookSyncRecord:" + v0.getMessage());
-//        this.a(v6);
-//        return v6;
     }
 
     private void k() {
