@@ -226,11 +226,9 @@ public class HomeActivity extends HomeParentActivity implements ViewPager.OnPage
         switch (n) {
             case R.id.home_action_menu_search:
                 this.startActivity(SearchActivity.a(this));
-                com.clilystudio.netbook.hpay100.a.a.n(this, "home_ab_search");
                 break;
             case R.id.home_action_menu_more:
                 this.l();
-                com.clilystudio.netbook.hpay100.a.a.n(this, "home_ab_more");
                 break;
         }
     }

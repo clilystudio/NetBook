@@ -513,7 +513,6 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
             this.s.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    com.clilystudio.netbook.hpay100.a.a.G(SearchActivity.this);
                     SearchActivity.e(SearchActivity.this).a();
                 }
             });
@@ -550,7 +549,6 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
                     SearchActivity.h(SearchActivity.this).setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            com.clilystudio.netbook.hpay100.a.a.G(SearchActivity.this);
                             SearchActivity.e(SearchActivity.this).a();
                         }
                     });

@@ -167,9 +167,6 @@ public class a {
     public static void C(Context context) {
         long l2 = a(context, "start_night_theme", 0);
         long l3 = new Date().getTime();
-        if (l2 > 0 && l3 > l2) {
-            MiStatInterface.recordCalculateEvent("night_theme_period", null, (int) ((l3 - l2) / 1000 / 60));
-        }
         b(context, "start_night_theme", 0);
     }
 
@@ -206,9 +203,6 @@ public class a {
     public static void E(Context context) {
         long l2 = a(context, "start_auto_read_time", 0);
         long l3 = new Date().getTime();
-        if (l2 > 0 && l3 > l2) {
-            MiStatInterface.recordCalculateEvent("auto_read_period", null, (int) ((l3 - l2) / 1000 / 60));
-        }
         b(context, "start_auto_read_time", 0);
     }
 
@@ -280,10 +274,6 @@ public class a {
             e1.printStackTrace();
         }
         return null;
-    }
-
-    public static void G(Context context) {
-        MiStatInterface.recordCountEvent("HOT_KEY_WORD_CHANGE_CLICK", "CHANGE");
     }
 
     public static float H(Context context) {
@@ -2377,10 +2367,6 @@ public class a {
         return stringBuilder.toString();
     }
 
-    public static void n(Context context, String string2) {
-        MiStatInterface.recordCountEvent("home_ab_menu_click", string2);
-    }
-
     private static String o() {
         if (am.e() != null && am.e().getUser() != null) {
             return am.e().getUser().getId();
@@ -2392,10 +2378,6 @@ public class a {
         Map<String, String> map = p(context);
         map.put("iid", n());
         return map;
-    }
-
-    public static void o(Context context, String string2) {
-        MiStatInterface.recordCountEvent("splash_ad_click", string2);
     }
 
     public static Map<String, String> p(Context context) {

@@ -24,7 +24,6 @@ public class SplashActivity extends Activity {
             @Override
             public void onClick(View v) {
                 SplashActivity.this.d();
-                com.clilystudio.netbook.hpay100.a.a.o(SplashActivity.this, "SKIP");
             }
         });
         this.findViewById(R.id.splash_ad_container).setVisibility(View.VISIBLE);

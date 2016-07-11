@@ -1,9 +1,7 @@
 package com.clilystudio.netbook;
 
-import android.app.ActivityManager;
 import android.app.Application;
 import android.content.Context;
-import android.os.Process;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
 
@@ -22,7 +20,6 @@ import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.umeng.onlineconfig.OnlineConfigAgent;
 import com.umeng.onlineconfig.UmengOnlineConfigureListener;
 import com.xiaomi.mipush.sdk.MiPushClient;
-import com.xiaomi.mistatistic.sdk.MiStatInterface;
 
 import org.json.JSONObject;
 
@@ -197,9 +194,6 @@ public class MyApplication extends Application {
         return this.mBookCacheList;
     }
 
-    /*
-     * Enabled aggressive block sorting
-     */
     @Override
     public void onCreate() {
         super.onCreate();
@@ -230,22 +224,7 @@ public class MyApplication extends Application {
             }
         });
         if (com.clilystudio.netbook.hpay100.a.a.l(this, "update_notice_key")) {
-            boolean bl;
-            block9:
-            {
-                List<ActivityManager.RunningAppProcessInfo> list = ((ActivityManager) this.getSystemService(Context.ACTIVITY_SERVICE)).getRunningAppProcesses();
-                String string3 = this.getPackageName();
-                int n2 = Process.myPid();
-                for (ActivityManager.RunningAppProcessInfo runningAppProcessInfo2 : list) {
-                    if (runningAppProcessInfo2.pid != n2 || !string3.equals(runningAppProcessInfo2.processName)) continue;
-                    bl = true;
-                    break block9;
-                }
-                bl = false;
-            }
-            if (bl) {
-                MiPushClient.registerPush(this, "2882303761517133731", "5941713373731");
-            }
+            MiPushClient.registerPush(this, "2882303761517133731", "5941713373731");
         }
         ImageLoaderConfiguration configuration = ImageLoaderConfiguration.createDefault(this);
         ImageLoader.getInstance().init(configuration);
