@@ -34,7 +34,7 @@ public abstract class BaseLoadingTask<Input, E> extends BaseAsyncTask<Input, Voi
         this.c = string;
     }
 
-    public /* varargs */ abstract E a(Input... var1);
+    public abstract E a(Input... var1);
 
     public abstract void a(E var1);
 
@@ -43,7 +43,7 @@ public abstract class BaseLoadingTask<Input, E> extends BaseAsyncTask<Input, Voi
     }
 
     @Override
-    public /* varargs */ E doInBackground(Input... arrInput) {
+    public E doInBackground(Input... arrInput) {
         E e2;
         try {
             e2 = this.a(arrInput);

@@ -57,7 +57,7 @@ public final class t {
     /*
      * Enabled aggressive block sorting
      */
-    public static /* varargs */ boolean a(Date date, Date... arrdate) {
+    public static boolean a(Date date, Date... arrdate) {
         if (date == null) return false;
         if (arrdate.length == 1) {
             return !(date.getTime() < t.f(arrdate[0]).getTime() || date.getTime() > t.g(arrdate[0]).getTime());

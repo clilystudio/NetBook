@@ -94,7 +94,7 @@ public class MyApplication extends Application {
         this.c = reader;
     }
 
-    public final /* varargs */ void a(String... arrstring) {
+    public final void a(String... arrstring) {
         AppPropsManager.getInstance(this).remove(arrstring);
     }
 

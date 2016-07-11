@@ -13,7 +13,7 @@ final class n extends r {
     private int g;
     private boolean h = true;
 
-    public /* varargs */ n(q... arrq) {
+    public n(q... arrq) {
         super(arrq);
     }
 

@@ -4,7 +4,7 @@ final class u extends s {
     private n c;
     private int d;
 
-    public /* varargs */ u(String string, int... arrn) {
+    public u(String string, int... arrn) {
         super(string, (byte)0);
         this.a(arrn);
     }
@@ -26,7 +26,7 @@ final class u extends s {
     }
 
     @Override
-    public final /* varargs */ void a(int... arrn) {
+    public final void a(int... arrn) {
         super.a(arrn);
         this.c = (n) this.b;
     }

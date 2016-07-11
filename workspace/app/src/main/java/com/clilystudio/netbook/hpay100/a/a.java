@@ -1346,7 +1346,7 @@ public class a {
      * Enabled unnecessary exception pruning
      * Enabled aggressive exception aggregation
      */
-    public static /* varargs */ void a(Closeable... arrcloseable) {
+    public static void a(Closeable... arrcloseable) {
         int n2 = arrcloseable.length;
         int n3 = 0;
         while (n3 < n2) {

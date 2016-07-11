@@ -207,7 +207,7 @@ public final class d extends a {
     /*
      * Enabled aggressive block sorting
      */
-    public final /* varargs */ void a(a... arra) {
+    public final void a(a... arra) {
         this.g = true;
         int n = 0;
         while (n < 2) {

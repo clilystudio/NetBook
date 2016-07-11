@@ -73,7 +73,7 @@ public final class AppPropsManager {
         this.save(properties2);
     }
 
-    public final /* varargs */ void remove(String... keys) {
+    public final void remove(String... keys) {
         Properties properties = this.load();
         if (properties != null) {
             for (String key : keys) {

@@ -14,7 +14,7 @@ public abstract class BaseAsyncTask<Params, Progress, Result> extends AsyncTask<
         this.a = b.b();
     }
 
-    public final /* varargs */ AsyncTask<Params, Progress, Result> b(Params... arrParams) {
+    public final AsyncTask<Params, Progress, Result> b(Params... arrParams) {
         try {
             if (Build.VERSION.SDK_INT >= 11) {
                 return this.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, arrParams);

@@ -10,7 +10,7 @@ final class l extends r {
     private float g;
     private boolean h = true;
 
-    public /* varargs */ l(p... arrp) {
+    public l(p... arrp) {
         super(arrp);
     }
 

@@ -13,7 +13,7 @@ class r {
     private o e;
     private o f;
 
-    public /* varargs */ r(o... arro) {
+    public r(o... arro) {
         this.a = arro.length;
         this.c = new ArrayList();
         this.c.addAll(Arrays.asList(arro));

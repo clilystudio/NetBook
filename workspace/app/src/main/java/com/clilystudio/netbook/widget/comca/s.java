@@ -30,11 +30,11 @@ public class s implements Cloneable {
         this(string);
     }
 
-    public static /* varargs */ s a(String string, float... arrf) {
+    public static s a(String string, float... arrf) {
         return new t(string, arrf);
     }
 
-    public static /* varargs */ s a(String string, int... arrn) {
+    public static s a(String string, int... arrn) {
         return new u(string, arrn);
     }
 
@@ -57,7 +57,7 @@ public class s implements Cloneable {
     /*
      * Enabled aggressive block sorting
      */
-    public /* varargs */ void a(float... arrf) {
+    public void a(float... arrf) {
         this.d = Float.TYPE;
         int n2 = arrf.length;
         p[] arrp = new p[java.lang.Math.max(n2, 2)];
@@ -76,7 +76,7 @@ public class s implements Cloneable {
     /*
      * Enabled aggressive block sorting
      */
-    public /* varargs */ void a(int... arrn) {
+    public void a(int... arrn) {
         this.d = Integer.TYPE;
         int n3 = arrn.length;
         q[] arrq = new q[java.lang.Math.max(n3, 2)];

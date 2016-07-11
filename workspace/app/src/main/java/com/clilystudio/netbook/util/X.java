@@ -12,7 +12,7 @@ public final class X extends BaseAsyncTask<Void, Void, SyncUploadResult> {
     private String[] d;
     private BookSyncRecord.BookModifyType e;
 
-    public /* varargs */ X(String string, String string2, BookSyncRecord.BookModifyType bookModifyType, String... arrstring) {
+    public X(String string, String string2, BookSyncRecord.BookModifyType bookModifyType, String... arrstring) {
         this.b = string;
         this.c = string2;
         this.e = bookModifyType;
@@ -32,7 +32,7 @@ public final class X extends BaseAsyncTask<Void, Void, SyncUploadResult> {
         return stringBuffer.toString();
     }
 
-    private /* varargs */ SyncUploadResult b() {
+    private SyncUploadResult b() {
         if (this.e == BookSyncRecord.BookModifyType.SHELF_ADD) {
             return this.a.G(this.c, a());
         } else if (this.e == BookSyncRecord.BookModifyType.SHELF_REMOVE) {

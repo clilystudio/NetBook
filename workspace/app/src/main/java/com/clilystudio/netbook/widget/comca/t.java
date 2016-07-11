@@ -4,7 +4,7 @@ final class t extends s {
     private l c;
     private float d;
 
-    public /* varargs */ t(String string, float... arrf) {
+    public t(String string, float... arrf) {
         super(string, (byte)0);
         this.a(arrf);
     }
@@ -26,7 +26,7 @@ final class t extends s {
     }
 
     @Override
-    public final /* varargs */ void a(float... arrf) {
+    public final void a(float... arrf) {
         super.a(arrf);
         this.c = (l) this.b;
     }

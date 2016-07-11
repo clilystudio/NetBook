@@ -70,7 +70,7 @@ public final class w extends a {
     /*
      * Enabled aggressive block sorting
      */
-    public static /* varargs */ w a(float... arrf) {
+    public static w a(float... arrf) {
         w w2 = new w();
         if (arrf == null || arrf.length == 0) {
             return w2;
@@ -88,7 +88,7 @@ public final class w extends a {
     /*
      * Enabled aggressive block sorting
      */
-    public static /* varargs */ w a(int... arrn) {
+    public static w a(int... arrn) {
         w w2 = new w();
         if (arrn == null || arrn.length == 0) {
             return w2;
@@ -174,7 +174,7 @@ public final class w extends a {
         }
     }
 
-    private /* varargs */ void a(s... arrs) {
+    private void a(s... arrs) {
         this.A = arrs;
         this.B = new HashMap(1);
         for (int i = 0; i <= 0; ++i) {
