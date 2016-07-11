@@ -223,7 +223,7 @@ public class MyApplication extends Application {
                 ApiService.j(OnlineConfigAgent.getInstance().getConfigParams(mApp, "reader_web_url"), 4);
             }
         });
-        if (com.clilystudio.netbook.hpay100.a.a.l(this, "update_notice_key")) {
+        if (PreferenceManager.getDefaultSharedPreferences(this).getBoolean("update_notice_key", true)) {
             MiPushClient.registerPush(this, "2882303761517133731", "5941713373731");
         }
         ImageLoaderConfiguration configuration = ImageLoaderConfiguration.createDefault(this);
