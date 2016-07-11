@@ -215,7 +215,7 @@ public class BookDownloadService extends Service {
             this.e = bookDlRecord.getTotal();
             this.l = 0;
             this.f = 0;
-            this.g = MyApplication.a().e().get(this.a);
+            this.g = MyApplication.getInstance().getChapterCacheMap().get(this.a);
             if (this.g != null && this.e > 0) {
                 this.b();
                 return;
@@ -441,8 +441,8 @@ public class BookDownloadService extends Service {
     }
 
     private void f() {
-        MyApplication.a().e().remove(this.a);
-        MyApplication.a().f().remove(this.a);
+        MyApplication.getInstance().getChapterCacheMap().remove(this.a);
+        MyApplication.getInstance().getBookCacheList().remove(this.a);
         BookDlRecord.delete(this.a);
     }
 

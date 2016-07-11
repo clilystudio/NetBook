@@ -244,7 +244,7 @@ public class ReaderWebActivity extends BaseReadActivity {
             }
             case 7: {
                 var17_14[0] = var2_2 != null ? var2_2.getCmd() : null;
-                if (BookReadRecord.get(this.c) != null || MyApplication.a().c() != null) {
+                if (BookReadRecord.get(this.c) != null || MyApplication.getInstance().getBookInfo() != null) {
 //                    cJ(this, this, var3_3[0], var17_14);
                     BaseLoadingTask<String, SgTocRoot> var21_17 = new BaseLoadingTask<String, SgTocRoot>(this, R.string.loading) {
 

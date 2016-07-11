@@ -425,7 +425,7 @@ public final class f {
         BookTopRoot.Favorite bookTopRoot$Favorite;
         BookTopRoot bookTopRoot = ApiServiceProvider.getApiService().u();
         if (bookTopRoot != null && (bookTopRoot$Favorite = bookTopRoot.getFavorite()) != null) {
-            com.clilystudio.netbook.hpay100.a.a.b(MyApplication.a(), bookTopRoot$Favorite.getBookID(), bookTopRoot$Favorite.getTocID(), bookTopRoot$Favorite.getChecksum());
+            com.clilystudio.netbook.hpay100.a.a.b(MyApplication.getInstance(), bookTopRoot$Favorite.getBookID(), bookTopRoot$Favorite.getTocID(), bookTopRoot$Favorite.getChecksum());
         }
         chapterRoot = this.c(chapterLink.getLink());
         I.h = false;

@@ -432,7 +432,7 @@ public class BookInfoActivity extends BaseActivity implements View.OnClickListen
 
     private void k() {
         if (this.k != null) {
-            MyApplication.a().a(this.k);
+            MyApplication.getInstance().setBookInfo(this.k);
         }
     }
 

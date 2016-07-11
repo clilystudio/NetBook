@@ -189,7 +189,7 @@ public class am {
     }
 
     public static void a(EditText editText, String string) {
-        String string2 = MyApplication.a().a(string);
+        String string2 = MyApplication.getInstance().getProperty(string);
         if (!com.clilystudio.netbook.hpay100.a.a.Q(string2)) {
             editText.setText(string2);
             editText.requestFocus();
@@ -367,14 +367,14 @@ public class am {
         }
     }
 
-    public static void c(String string, int n) {
+    public static void c(String string, int readMode) {
         BookReadRecord bookReadRecord = BookReadRecord.get(string);
         if (bookReadRecord != null) {
-            bookReadRecord.setReadMode(n);
+            bookReadRecord.setReadMode(readMode);
             bookReadRecord.save();
             return;
         }
-        MyApplication.a().a(n);
+        MyApplication.getInstance().setReadMode(readMode);
     }
 
     public static void d(Context context, String string) {
@@ -391,17 +391,17 @@ public class am {
      * Lifted jumps to return sites
      */
     public static Account e() {
-        MyApplication myApplication = MyApplication.a();
-        String string = myApplication.a("user.id");
-        String string2 = myApplication.a("account.token");
+        MyApplication myApplication = MyApplication.getInstance();
+        String string = myApplication.getProperty("user.id");
+        String string2 = myApplication.getProperty("account.token");
         if (string == null || string2 == null) return null;
         Account account = new Account();
         User user = new User();
         user.setId(string);
-        user.setNickname(myApplication.a("user.name"));
-        user.setAvatar(myApplication.a("user.avatar"));
-        user.setLv(com.clilystudio.netbook.hpay100.a.a.b(myApplication.a("user.lv"), 0));
-        user.setGender(myApplication.a("user.gender"));
+        user.setNickname(myApplication.getProperty("user.name"));
+        user.setAvatar(myApplication.getProperty("user.avatar"));
+        user.setLv(com.clilystudio.netbook.hpay100.a.a.b(myApplication.getProperty("user.lv"), 0));
+        user.setGender(myApplication.getProperty("user.gender"));
         account.setOk(true);
         account.setToken(string2);
         account.setUser(user);
@@ -495,7 +495,7 @@ public class am {
     }
 
     public static String h() {
-        return Settings.Secure.getString(MyApplication.a().getContentResolver(), "android_id");
+        return Settings.Secure.getString(MyApplication.getInstance().getContentResolver(), "android_id");
     }
 
     public static String h(Context context) {
@@ -508,7 +508,7 @@ public class am {
     }
 
     public static boolean h(String string) {
-        List<String> list = MyApplication.a().f();
+        List<String> list = MyApplication.getInstance().getBookCacheList();
         return list != null && list.contains(string);
     }
 

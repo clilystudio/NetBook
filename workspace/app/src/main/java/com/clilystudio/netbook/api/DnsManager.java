@@ -59,8 +59,8 @@ public final class DnsManager {
         return httpRequest2;
     }
 
-    public static void a(boolean bl) {
-        mUseDns = bl;
+    public static void setUseDns(boolean useDns) {
+        mUseDns = useDns;
     }
 
     public static boolean isUseDns() {

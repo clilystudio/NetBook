@@ -67,7 +67,7 @@ public class UserAgentManager {
                 ArrayList<String> arrayList;
                 PackageInfo packageInfo;
                 String string;
-                MyApplication myApplication = MyApplication.a();
+                MyApplication myApplication = MyApplication.getInstance();
                 try {
                     packageInfo = myApplication.getPackageManager().getPackageInfo(myApplication.getPackageName(), 0);
                 } catch (PackageManager.NameNotFoundException var3_14) {

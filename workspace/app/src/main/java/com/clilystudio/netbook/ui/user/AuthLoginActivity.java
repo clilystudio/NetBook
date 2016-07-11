@@ -138,7 +138,7 @@ public class AuthLoginActivity extends BaseActivity implements Handler.Callback 
                                 if (account.isOk()) {
                                     ApiServiceProvider.getInstance();
                                     ApiServiceProvider.getApiService().h(account.getUser().getId());
-                                    MyApplication.a().a(account);
+                                    MyApplication.getInstance().saveAccoutInfo(account);
                                     LoginEvent t2 = new LoginEvent(account);
                                     t2.setSource((AuthLoginActivity.Source) AuthLoginActivity.this.getIntent().getSerializableExtra("KEY_SOURCE"));
                                     BusProvider.getInstance().post(t2);

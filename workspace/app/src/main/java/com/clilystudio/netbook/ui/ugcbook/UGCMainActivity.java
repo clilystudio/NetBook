@@ -61,7 +61,6 @@ public class UGCMainActivity extends BaseTabActivity implements ViewPager.OnPage
     }
 
     static /* synthetic */ void a(UGCMainActivity uGCMainActivity, String string) {
-        MiStatInterface.recordCountEvent("ugc_filter", string);
         if (!uGCMainActivity.i.equals(string)) {
             uGCMainActivity.i = string;
             uGCMainActivity.d(string);
@@ -199,7 +198,6 @@ public class UGCMainActivity extends BaseTabActivity implements ViewPager.OnPage
             @Override
             public void onClick(View v) {
                 if (com.clilystudio.netbook.am.a(UGCMainActivity.this) != null) {
-                    MiStatInterface.recordCountEvent("ugc_create", null);
                     Intent intent = new Intent(UGCMainActivity.this, UGCGuideAddCollectionActivity.class);
                     UGCMainActivity.this.startActivity(intent);
                     UGCMainActivity.h(UGCMainActivity.this);
@@ -210,7 +208,6 @@ public class UGCMainActivity extends BaseTabActivity implements ViewPager.OnPage
             @Override
             public void onClick(View v) {
                 if (am.a(UGCMainActivity.this) != null) {
-                    MiStatInterface.recordCountEvent("ugc_my_own", null);
                     Intent intent = new Intent(UGCMainActivity.this, UserUGCActivity.class);
                     UGCMainActivity.this.startActivity(intent);
                     UGCMainActivity.h(UGCMainActivity.this);

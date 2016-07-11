@@ -125,9 +125,9 @@ public class e {
     public static Notification c() {
         NotificationCompat.Builder notificationCompat$Builder;
         Notification notification;
-        d = (NotificationManager) MyApplication.a().getSystemService(Context.NOTIFICATION_SERVICE);
-        c = new RemoteViews(MyApplication.a().getPackageName(), R.layout.notification_audio_bar);
-        notificationCompat$Builder = new NotificationCompat.Builder(MyApplication.a());
+        d = (NotificationManager) MyApplication.getInstance().getSystemService(Context.NOTIFICATION_SERVICE);
+        c = new RemoteViews(MyApplication.getInstance().getPackageName(), R.layout.notification_audio_bar);
+        notificationCompat$Builder = new NotificationCompat.Builder(MyApplication.getInstance());
         notificationCompat$Builder.setSmallIcon(17301623);
         notificationCompat$Builder.setContent(c);
         notificationCompat$Builder.setAutoCancel(false).setOngoing(true);

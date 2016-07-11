@@ -244,7 +244,7 @@ public final class Reader {
         if (reader.l != null) {
             f2 = new f(reader.l);
         } else {
-            BookInfo bookInfo = MyApplication.a().c();
+            BookInfo bookInfo = MyApplication.getInstance().getBookInfo();
             f2 = null;
             if (bookInfo != null) {
                 f2 = new f(bookInfo, reader.y);
@@ -436,7 +436,7 @@ public final class Reader {
     }
 
     public final void a() {
-        BookInfo bookInfo = MyApplication.a().c();
+        BookInfo bookInfo = MyApplication.getInstance().getBookInfo();
         if (bookInfo == null || bookInfo.getId() == null || !bookInfo.getId().equals(this.c)) {
             return;
         }

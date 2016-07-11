@@ -18,6 +18,7 @@ import android.widget.Filterable;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.a_pack.BaseAsyncTask;
 import com.clilystudio.netbook.api.ApiServiceProvider;
@@ -62,7 +63,7 @@ public class UGCGuideAddBookActivity extends BaseActivity implements View.OnClic
     static /* synthetic */ void a(UGCGuideAddBookActivity uGCGuideAddBookActivity, int n) {
         if (n >= 0 && n < uGCGuideAddBookActivity.k.getCount()) {
             BookSummary bookSummary = uGCGuideAddBookActivity.k.getItem(n);
-            UGCGuideAddBookActivity.e().addBook(bookSummary);
+            MyApplication.getInstance().getUGCNewCollection().addBook(bookSummary);
             bookSummary.setSelected(true);
         }
     }
@@ -336,7 +337,7 @@ public class UGCGuideAddBookActivity extends BaseActivity implements View.OnClic
 
             @Override
             protected void a(int var1, BookSummary bookSummary) {
-                List<BookSummary> books = UGCGuideAddBookActivity.e().getBooks();
+                List<BookSummary> books = MyApplication.getInstance().getUGCNewCollection().getBooks();
                 if (books != null) {
                     for (BookSummary book : books) {
                         if (!book.getId().equals(bookSummary.getId())) continue;

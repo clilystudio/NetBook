@@ -15,6 +15,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.a_pack.BaseLoadingTask;
 import com.clilystudio.netbook.am;
@@ -55,7 +56,7 @@ public class UGCGuideEditBooksActivity extends BaseActivity implements View.OnCl
     static /* synthetic */ void a(final UGCGuideEditBooksActivity uGCGuideEditBooksActivity, int n) {
         String string;
         Editable editable;
-        List<BookSummary> list = UGCGuideEditBooksActivity.e().getBooks();
+        List<BookSummary> list = MyApplication.getInstance().getUGCNewCollection().getBooks();
         if (list == null || list.size() == 0) {
             return;
         }
@@ -109,7 +110,7 @@ public class UGCGuideEditBooksActivity extends BaseActivity implements View.OnCl
     }
 
     static /* synthetic */ void b(final UGCGuideEditBooksActivity uGCGuideEditBooksActivity, int n) {
-        final List<BookSummary> list = UGCGuideEditBooksActivity.e().getBooks();
+        final List<BookSummary> list = MyApplication.getInstance().getUGCNewCollection().getBooks();
         if (list == null || list.size() == 0) {
             return;
         }
@@ -151,7 +152,7 @@ public class UGCGuideEditBooksActivity extends BaseActivity implements View.OnCl
     }
 
     private void b() {
-        UGCNewCollection uGCNewCollection = UGCGuideEditBooksActivity.e();
+        UGCNewCollection uGCNewCollection = MyApplication.getInstance().getUGCNewCollection();
         this.e.a(uGCNewCollection.getBooks());
         if (uGCNewCollection.getBooks() != null && uGCNewCollection.getBooks().size() == 0) {
             this.c.setVisibility(View.VISIBLE);
@@ -172,7 +173,7 @@ public class UGCGuideEditBooksActivity extends BaseActivity implements View.OnCl
             @Override
             public void a(List<BookSummary> list) {
                 if (list != null) {
-                    UGCNewCollection uGCNewCollection = UGCGuideEditBooksActivity.e();
+                    UGCNewCollection uGCNewCollection = MyApplication.getInstance().getUGCNewCollection();
                     for (BookSummary bookSummary : list) {
                         uGCNewCollection.addBook(bookSummary);
                         bookSummary.setSelected(true);
@@ -228,7 +229,7 @@ public class UGCGuideEditBooksActivity extends BaseActivity implements View.OnCl
             this.a("编辑书单", R.string.save, R.string.publish, new ab() {
                 @Override
                 public void a() {
-                    if (UGCGuideEditBooksActivity.e().getBooks().size() == 0) {
+                    if (MyApplication.getInstance().getUGCNewCollection().getBooks().size() == 0) {
                         com.clilystudio.netbook.util.e.a(UGCGuideEditBooksActivity.this, "至少要添加一本书籍才能保存哦");
                         return;
                     }
@@ -238,10 +239,10 @@ public class UGCGuideEditBooksActivity extends BaseActivity implements View.OnCl
                             Account account = am.a(UGCGuideEditBooksActivity.this);
                             if (account == null) return null;
                             if (UGCGuideEditBooksActivity.this.f == null)
-                                return ApiServiceProvider.getApiService().b(UGCGuideEditBooksActivity.e(), account.getToken());
+                                return ApiServiceProvider.getApiService().b(MyApplication.getInstance().getUGCNewCollection(), account.getToken());
                             if (UGCGuideEditBooksActivity.this.f.equals(""))
-                                return ApiServiceProvider.getApiService().b(UGCGuideEditBooksActivity.e(), account.getToken());
-                            return ApiServiceProvider.getApiService().b(UGCGuideEditBooksActivity.e(), account.getToken(), UGCGuideEditBooksActivity.this.f);
+                                return ApiServiceProvider.getApiService().b(MyApplication.getInstance().getUGCNewCollection(), account.getToken());
+                            return ApiServiceProvider.getApiService().b(MyApplication.getInstance().getUGCNewCollection(), account.getToken(), UGCGuideEditBooksActivity.this.f);
                         }
 
                         @Override
@@ -251,7 +252,7 @@ public class UGCGuideEditBooksActivity extends BaseActivity implements View.OnCl
                                 return;
                             }
                             com.clilystudio.netbook.util.e.a(UGCGuideEditBooksActivity.this, "已保存到草稿箱");
-                            UGCNewCollection uGCNewCollection = UGCGuideEditBooksActivity.e();
+                            UGCNewCollection uGCNewCollection = MyApplication.getInstance().getUGCNewCollection();
                             BusProvider.getInstance().post(new UgcDraftEvent());
                             BusProvider.getInstance().post(new UpdateUgcListEvent(UGCGuideEditBooksActivity.this.f, uGCNewCollection.getTitle(), uGCNewCollection.getDesc(), uGCNewCollection.getBooks().size(), uGCNewCollection.getBooks().get(0).getCover()));
                             UGCGuideEditBooksActivity.this.finish();
@@ -272,7 +273,7 @@ public class UGCGuideEditBooksActivity extends BaseActivity implements View.OnCl
                 }
             });
         }
-        UGCNewCollection uGCNewCollection = UGCGuideEditBooksActivity.e();
+        UGCNewCollection uGCNewCollection = MyApplication.getInstance().getUGCNewCollection();
         uGCNewCollection.setDesc(string);
         uGCNewCollection.setTitle(string2);
         ListView b = (ListView) this.findViewById(R.id.list);
@@ -376,13 +377,13 @@ public class UGCGuideEditBooksActivity extends BaseActivity implements View.OnCl
                     Account account = am.a(UGCGuideEditBooksActivity.this);
                     if (account == null) return null;
                     if (UGCGuideEditBooksActivity.d(UGCGuideEditBooksActivity.this)) {
-                        return ApiServiceProvider.getApiService().c(UGCGuideEditBooksActivity.e(), account.getToken(), UGCGuideEditBooksActivity.this.f);
+                        return ApiServiceProvider.getApiService().c(MyApplication.getInstance().getUGCNewCollection(), account.getToken(), UGCGuideEditBooksActivity.this.f);
                     }
                     if (UGCGuideEditBooksActivity.this.f == null)
-                        return ApiServiceProvider.getApiService().a(UGCGuideEditBooksActivity.e(), account.getToken());
+                        return ApiServiceProvider.getApiService().a(MyApplication.getInstance().getUGCNewCollection(), account.getToken());
                     if (UGCGuideEditBooksActivity.this.f.equals(""))
-                        return ApiServiceProvider.getApiService().a(UGCGuideEditBooksActivity.e(), account.getToken());
-                    return ApiServiceProvider.getApiService().a(UGCGuideEditBooksActivity.e(), account.getToken(), UGCGuideEditBooksActivity.this.f);
+                        return ApiServiceProvider.getApiService().a(MyApplication.getInstance().getUGCNewCollection(), account.getToken());
+                    return ApiServiceProvider.getApiService().a(MyApplication.getInstance().getUGCNewCollection(), account.getToken(), UGCGuideEditBooksActivity.this.f);
                 }
 
                 @Override
@@ -398,7 +399,7 @@ public class UGCGuideEditBooksActivity extends BaseActivity implements View.OnCl
                         intent.setFlags(67108864);
                     } else if (UGCGuideEditBooksActivity.this.f != null && !UGCGuideEditBooksActivity.this.f.equals("")) {
                         com.clilystudio.netbook.util.e.a(UGCGuideEditBooksActivity.this, "修改成功");
-                        UGCNewCollection uGCNewCollection = UGCGuideEditBooksActivity.e();
+                        UGCNewCollection uGCNewCollection = MyApplication.getInstance().getUGCNewCollection();
                         Intent intent2 = new Intent(this.b(), UGCDetailActivity.class);
                         intent2.putExtra("book_id", UGCGuideEditBooksActivity.this.f);
                         intent2.putExtra("my_list", true);

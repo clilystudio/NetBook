@@ -35,14 +35,6 @@ public class BaseActivity extends AppCompatActivity {
         };
     }
 
-    protected static UGCNewCollection e() {
-        MyApplication myApplication = MyApplication.a();
-        if (myApplication.a == null) {
-            myApplication.a = new UGCNewCollection();
-        }
-        return myApplication.a;
-    }
-
     private void a(String string, int n) {
         View view = LayoutInflater.from(this).inflate(n, null);
         ActionBar actionBar = getActionBar();
@@ -310,22 +302,6 @@ public class BaseActivity extends AppCompatActivity {
     protected void onDestroy() {
         this.unregisterReceiver(this.a);
         super.onDestroy();
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-//        com.umeng.a.b.a(this);
-//        com.a.a.a.b(this);
-//        MiStatInterface.recordPageEnd();
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-//        com.umeng.a.b.b(this);
-//        com.a.a.a.a(this);
-        MiStatInterface.recordPageStart(this, this.getClass().getName());
     }
 
     public void setCustomActionBar(View view) {

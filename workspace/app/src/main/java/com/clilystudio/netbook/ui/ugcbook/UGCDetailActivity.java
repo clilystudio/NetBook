@@ -87,7 +87,7 @@ public class UGCDetailActivity extends BaseActivity implements View.OnClickListe
 
     static /* synthetic */ void b(UGCDetailActivity uGCDetailActivity) {
         if (uGCDetailActivity.r != null) {
-            MyApplication myApplication = MyApplication.a();
+            MyApplication myApplication = MyApplication.getInstance();
             UGCBookDetail uGCBookDetail = uGCDetailActivity.r;
             UGCNewCollection uGCNewCollection = new UGCNewCollection();
             uGCNewCollection.setTitle(uGCBookDetail.getTitle());
@@ -106,7 +106,7 @@ public class UGCDetailActivity extends BaseActivity implements View.OnClickListe
                 arrayList.add(bookSummary);
             }
             uGCNewCollection.setBooks(arrayList);
-            myApplication.a = uGCNewCollection;
+            myApplication.mUGCNewCollection = uGCNewCollection;
             Intent intent = new Intent(uGCDetailActivity, UGCGuideAddCollectionActivity.class);
             intent.putExtra("ugc_id", uGCDetailActivity.o);
             intent.putExtra("is_draft", uGCDetailActivity.q);

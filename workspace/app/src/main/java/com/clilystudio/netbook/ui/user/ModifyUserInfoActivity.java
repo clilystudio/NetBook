@@ -99,15 +99,15 @@ public class ModifyUserInfoActivity extends BaseActivity implements View.OnClick
                                 com.clilystudio.netbook.util.e.a(modifyUserInfoActivity, changeGenderRoot.getErrorMessage());
                                 return;
                             }
-                            UserInfo userInfo = (UserInfo) MyApplication.a().b("savedObject_userinfo");
+                            UserInfo userInfo = (UserInfo) MyApplication.getInstance().loadObject("savedObject_userinfo");
                             String string = ModifyUserInfoActivity.a(modifyUserInfoActivity).getGender().equals("male") ? "female" : "male";
                             userInfo.setGender(string);
-                            MyApplication.a().a(userInfo, "savedObject_userinfo");
+                            MyApplication.getInstance().saveObject(userInfo, "savedObject_userinfo");
                             Account account = am.a(modifyUserInfoActivity);
                             if (account != null) {
                                 ModifyUserInfoActivity.a(modifyUserInfoActivity).setGender(string);
                                 account.setUser(ModifyUserInfoActivity.a(modifyUserInfoActivity));
-                                MyApplication.a().a(account);
+                                MyApplication.getInstance().saveAccoutInfo(account);
                             }
                             TextView textView = modifyUserInfoActivity.mGenderView;
                             String string2 = string.equals("male") ? "男" : "女";
@@ -350,11 +350,11 @@ public class ModifyUserInfoActivity extends BaseActivity implements View.OnClick
                      super.onPostExecute(userInfo);
                     if (userInfo == null) {
                         com.clilystudio.netbook.util.e.a(ModifyUserInfoActivity.this, "载入失败");
-                        MyApplication.a().b("savedObject_userinfo");
+                        MyApplication.getInstance().loadObject("savedObject_userinfo");
                         return;
                     }
                     if (userInfo.isOk()) {
-                        MyApplication.a().a(userInfo, "savedObject_userinfo");
+                        MyApplication.getInstance().saveObject(userInfo, "savedObject_userinfo");
                         Date date = userInfo.getNicknameUpdated();
                         if (date == null) {
                             ModifyUserInfoActivity.a(ModifyUserInfoActivity.this, -2);

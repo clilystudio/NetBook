@@ -120,7 +120,6 @@ public class HomeActivity extends HomeParentActivity implements ViewPager.OnPage
         });
         homeActivity.t.loadUrl(string);
         homeActivity.u = true;
-        MiStatInterface.recordCountEvent("take_17k_webflow", null);
     }
 
     private static void a(List<BookReadRecord> list) {
@@ -441,7 +440,6 @@ public class HomeActivity extends HomeParentActivity implements ViewPager.OnPage
                     AccountInfo accountInfo = AccountInfo.getOrCreate(this.p.getToken());
                     accountInfo.setPrevUnimpNotif(J.a(this).b());
                     accountInfo.save();
-                    MiStatInterface.recordCountEvent("view_notification", null);
                     BusProvider.getInstance().post(new NotifEvent());
                     this.startActivity(new Intent(this, MyMessageActivity.class));
                     return;
@@ -472,7 +470,6 @@ public class HomeActivity extends HomeParentActivity implements ViewPager.OnPage
                     this.o.setImageResource(R.drawable.theme_day);
                     com.clilystudio.netbook.hpay100.a.a.b(this, "customer_night_theme", true);
                     com.clilystudio.netbook.hpay100.a.a.b(this, "night_mode", true);
-                    MiStatInterface.recordCountEvent("start_night_theme_home", null);
                     intent.putExtra("onThemeChange", 1);
                 }
                 this.startActivity(intent);
@@ -750,7 +747,7 @@ public class HomeActivity extends HomeParentActivity implements ViewPager.OnPage
     public void onResume() {
         Account account;
         super.onResume();
-        DnsManager.a("1".equals(OnlineConfigAgent.getInstance().getConfigParams(this, "use_http_dns")));
+        DnsManager.setUseDns("1".equals(OnlineConfigAgent.getInstance().getConfigParams(this, "use_http_dns")));
         if (com.clilystudio.netbook.hpay100.a.a.l()) {
             new BaseAsyncTask<Void, Void, BookTopRoot>() {
 

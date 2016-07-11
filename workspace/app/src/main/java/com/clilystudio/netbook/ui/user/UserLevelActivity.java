@@ -29,7 +29,7 @@ public class UserLevelActivity extends BaseActivity {
         this.mLevelRank = (TextView) findViewById(R.id.user_level_rank);
         this.mDoTask = (Button) findViewById(R.id.go_to_task);
         this.b("\u7ecf\u9a8c\u7b49\u7ea7");
-        UserInfo userInfo = (UserInfo) MyApplication.a().b("savedObject_userinfo");
+        UserInfo userInfo = (UserInfo) MyApplication.getInstance().loadObject("savedObject_userinfo");
         int n = userInfo.getLv();
         int n2 = userInfo.getExp();
         int n3 = e.a(n);

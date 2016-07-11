@@ -12,6 +12,7 @@ import android.widget.CompoundButton;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.db.BookReadRecord;
 import com.clilystudio.netbook.event.AddShelfBooksEvent;
@@ -39,7 +40,7 @@ public class UGCGuideSelectBookActivity extends BaseActivity {
         } else {
             BookReadRecord bookReadRecord = uGCGuideSelectBookActivity.g.getItem(n);
             uGCGuideSelectBookActivity.i.remove(bookReadRecord);
-            UGCNewCollection uGCNewCollection = UGCGuideSelectBookActivity.e();
+            UGCNewCollection uGCNewCollection = MyApplication.getInstance().getUGCNewCollection();
             if (uGCNewCollection.getBooks() != null) {
                 BookSummary bookSummary2 = null;
                 for (BookSummary bookSummary21 : uGCNewCollection.getBooks()) {
@@ -104,7 +105,7 @@ public class UGCGuideSelectBookActivity extends BaseActivity {
         }
         this.i = new ArrayList<>();
         this.j = new boolean[h.size()];
-        UGCNewCollection uGCNewCollection = UGCGuideSelectBookActivity.e();
+        UGCNewCollection uGCNewCollection = MyApplication.getInstance().getUGCNewCollection();
         if (uGCNewCollection != null && uGCNewCollection.getBooks() != null) {
             List<BookSummary> list = uGCNewCollection.getBooks();
             ArrayList<String> arrayList = new ArrayList<>();
@@ -138,7 +139,7 @@ public class UGCGuideSelectBookActivity extends BaseActivity {
         this.f.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                UGCNewCollection uGCNewCollection = UGCGuideSelectBookActivity.e();
+                UGCNewCollection uGCNewCollection = MyApplication.getInstance().getUGCNewCollection();
                 ArrayList<String> arrayList = new ArrayList<>();
                 for (BookSummary bookSummary : uGCNewCollection.getBooks()) {
                     arrayList.add(bookSummary.getId());

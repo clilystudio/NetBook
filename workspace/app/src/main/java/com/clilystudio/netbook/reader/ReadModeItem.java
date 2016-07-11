@@ -51,7 +51,7 @@ public class ReadModeItem extends FrameLayout {
             @Override
             public void onClick(View v) {
                 if (n4 != n3) {
-                    MyApplication.a().c(ReadModeItem.a(ReadModeItem.this));
+                    MyApplication.getInstance().setBookId(ReadModeItem.a(ReadModeItem.this));
                     com.clilystudio.netbook.am.c(ReadModeItem.a(ReadModeItem.this), n3);
                     ReadModeItem.a(ReadModeItem.this, n3);
                 }

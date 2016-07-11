@@ -279,10 +279,6 @@ public class ApiService {
         }
     }
 
-    private static void v() {
-        MiStatInterface.recordCountEvent("server_error", null);
-    }
-
     private static ChapterRoot w() {
         ChapterRoot chapterRoot = new ChapterRoot();
         chapterRoot.setStatus(-3);
@@ -314,7 +310,6 @@ public class ApiService {
             }
         } catch (HttpRequest.HttpRequestException var4_4) {
             ApiService.a(httpRequest.url().toString(), l, httpRequest.code(), var4_4.getClass().getName());
-            ApiService.v();
         }
         return httpRequest;
     }
@@ -325,7 +320,7 @@ public class ApiService {
                 Log.e(b, "Unexpected response code: " + httpRequest.code());
             }
         } catch (HttpRequest.HttpRequestException var3_3) {
-            ApiService.v();
+            var3_3.printStackTrace();
         }
         return httpRequest;
     }
@@ -343,7 +338,7 @@ public class ApiService {
     private HttpRequest b(HttpRequest httpRequest) {
         httpRequest.chunk(15000).bufferSize(15000);
         UserAgentManager f2 = this.c;
-        String string = "1".equals(OnlineConfigAgent.getInstance().getConfigParams(MyApplication.a(), "ua-toggle")) ? f2.getXUserAgent() : "";
+        String string = "1".equals(OnlineConfigAgent.getInstance().getConfigParams(MyApplication.getInstance(), "ua-toggle")) ? f2.getXUserAgent() : "";
         httpRequest.header(string);
         httpRequest.header("X-User-Agent", this.c.getXUserAgent());
         httpRequest.header("X-Device-Id", am.h());

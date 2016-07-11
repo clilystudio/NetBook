@@ -62,7 +62,7 @@ public final class m {
             m2.d.setReadMode(9);
             m2.d.save();
         } else {
-            MyApplication.a().a(9);
+            MyApplication.getInstance().setReadMode(9);
         }
         m2.f = tocSummary.get_id();
         boolean bl = true;
@@ -83,7 +83,7 @@ public final class m {
     static /* synthetic */ void b(m m2, List<TocSummary> list) {
         for (TocSummary tocSummary : list) {
             if (!"zhuishuvip".equals(tocSummary.getSource())) continue;
-            MyApplication.a().a(9);
+            MyApplication.getInstance().setReadMode(9);
             m2.f = tocSummary.get_id();
             m2.a(9);
             break;
@@ -95,7 +95,7 @@ public final class m {
     }
 
     private void a(int n2) {
-        MyApplication.a().a(n2);
+        MyApplication.getInstance().setReadMode(n2);
         if (n2 == 5) {
             this.a(ReaderActivity.a(this.a, this.b, this.c, "MIX_TOC_ID", (String)null, false));
             return;
@@ -175,7 +175,7 @@ public final class m {
                         m.c(m.this).setReadMode(n3);
                         m.c(m.this).save();
                     } else {
-                        MyApplication.a().a(n3);
+                        MyApplication.getInstance().setReadMode(n3);
                     }
                     m.a(m.this, n3);
                 } else {

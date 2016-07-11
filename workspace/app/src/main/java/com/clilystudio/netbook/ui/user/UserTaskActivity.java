@@ -72,7 +72,7 @@ public class UserTaskActivity extends BaseActivity {
         this.mExpVote = (TextView) findViewById(R.id.user_exp_vote);
         this.mVoteView = findViewById(R.id.user_vote_layout);
         this.b("\u4efb\u52a1");
-        UserInfo userInfo = (UserInfo) MyApplication.a().b("savedObject_userinfo");
+        UserInfo userInfo = (UserInfo) MyApplication.getInstance().loadObject("savedObject_userinfo");
         this.mExpInfo.setTextColor(this.getResources().getColor(R.color.primary_green));
         this.mExpLaunch.setTextColor(this.getResources().getColor(R.color.primary_green));
         if (userInfo != null) {

@@ -88,7 +88,7 @@ public class UserInfoActivity extends BaseActivity {
             user.setNickname(userInfo.getNickname());
             user.setAvatar(userInfo.getAvatar());
             user.setLv(userInfo.getLv());
-            MyApplication.a().a(account);
+            MyApplication.getInstance().saveAccoutInfo(account);
             BusProvider.getInstance().post(new AccountUpdatedEvent());
         }
     }
@@ -114,7 +114,7 @@ public class UserInfoActivity extends BaseActivity {
                     if (userInfo != null) {
                         if (userInfo.isOk()) {
                             UserInfoActivity.a(UserInfoActivity.this, userInfo);
-                            MyApplication.a().a(userInfo, "savedObject_userinfo");
+                            MyApplication.getInstance().saveObject(userInfo, "savedObject_userinfo");
                             UserInfoActivity.a(UserInfoActivity.this, userInfo.getNicknameUpdated());
                             UserInfoActivity.a(UserInfoActivity.this, J.a(UserInfoActivity.this).a());
                             UserInfoActivity.b(userInfo);
@@ -125,7 +125,7 @@ public class UserInfoActivity extends BaseActivity {
                         }
                     } else {
                         com.clilystudio.netbook.util.e.a(UserInfoActivity.this, "载入失败");
-                        UserInfo userInfo2 = (UserInfo) MyApplication.a().b("savedObject_userinfo");
+                        UserInfo userInfo2 = (UserInfo) MyApplication.getInstance().loadObject("savedObject_userinfo");
                         if (userInfo2 != null) {
                             UserInfoActivity.a(UserInfoActivity.this, userInfo2);
                         }
@@ -210,7 +210,6 @@ public class UserInfoActivity extends BaseActivity {
         });
         this.b();
         BusProvider.getInstance().register(this);
-        MiStatInterface.recordCountEvent("PERSONAL_PAGE_SHOW", null);
     }
 
     @Override

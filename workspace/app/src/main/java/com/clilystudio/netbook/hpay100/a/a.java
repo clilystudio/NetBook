@@ -43,7 +43,6 @@ import com.clilystudio.netbook.CachePathConst;
 import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.am;
-import com.clilystudio.netbook.db.BookFile;
 import com.clilystudio.netbook.db.BookReadRecord;
 import com.clilystudio.netbook.db.BookSyncRecord;
 import com.clilystudio.netbook.db.SourceRecord;
@@ -137,7 +136,7 @@ public class a {
         }
         String string2 = CipherUtil.b(e, CipherUtil.b(d, f)).substring(0, 20);
         if (!I.h) {
-            return CipherUtil.getNewAdvert(string2, string, MyApplication.a());
+            return CipherUtil.getNewAdvert(string2, string, MyApplication.getInstance());
         }
         I.h = false;
         long l = Y("http://www.taobao.com");
@@ -150,7 +149,7 @@ public class a {
         if (l <= 7200) {
             l = 7200 + new Date().getTime() / 1000;
         }
-        return CipherUtil.getNewAdvertWork(string2, l, string, MyApplication.a());
+        return CipherUtil.getNewAdvertWork(string2, l, string, MyApplication.getInstance());
     }
 
     public static boolean A(Context context) {
@@ -397,7 +396,7 @@ public class a {
         return arrstring;
     }
 
-    private static SharedPreferences.Editor P(Context context) {
+    private static SharedPreferences.Editor getEditor(Context context) {
         return PreferenceManager.getDefaultSharedPreferences(context).edit();
     }
 
@@ -1741,7 +1740,7 @@ public class a {
         if (context == null) {
             return;
         }
-        SharedPreferences.Editor editor = P(context);
+        SharedPreferences.Editor editor = getEditor(context);
         editor.putFloat(string2, f2);
         editor.apply();
     }
@@ -1750,17 +1749,17 @@ public class a {
         if (context == null) {
             return;
         }
-        SharedPreferences.Editor editor = P(context);
+        SharedPreferences.Editor editor = getEditor(context);
         editor.putInt(string2, n2);
         editor.apply();
     }
 
-    public static void b(Context context, String string2, long l2) {
+    public static void b(Context context, String key, long value) {
         if (context == null) {
             return;
         }
-        SharedPreferences.Editor editor = P(context);
-        editor.putLong(string2, l2);
+        SharedPreferences.Editor editor = getEditor(context);
+        editor.putLong(key, value);
         editor.apply();
     }
 
@@ -1777,7 +1776,7 @@ public class a {
         if (context == null) {
             return;
         }
-        SharedPreferences.Editor editor = P(context);
+        SharedPreferences.Editor editor = getEditor(context);
         editor.putBoolean(string2, bl);
         editor.apply();
     }
@@ -1802,8 +1801,8 @@ public class a {
         a(arrstring, BookSyncRecord.BookModifyType.FEED_ADD);
     }
 
-    public static int c(Context context, String string2, int n2) {
-        return context.getSharedPreferences("mistat", 0).getInt(string2, n2);
+    public static int c(Context context, String key, int defValue) {
+        return context.getSharedPreferences("mistat", 0).getInt(key, defValue);
     }
 
     private static int c(String string2, int n2) {
@@ -1923,7 +1922,7 @@ public class a {
         if (context == null) {
             return;
         }
-        SharedPreferences.Editor editor = P(context);
+        SharedPreferences.Editor editor = getEditor(context);
         editor.putLong(string2, l2);
         editor.apply();
     }
@@ -1995,7 +1994,7 @@ public class a {
         if (context == null) {
             return;
         }
-        SharedPreferences.Editor editor = P(context);
+        SharedPreferences.Editor editor = getEditor(context);
         editor.putString(string2, string3);
         editor.apply();
     }
@@ -2335,7 +2334,7 @@ public class a {
     }
 
     public static boolean l() {
-        return !"0".equals(OnlineConfigAgent.getInstance().getConfigParams(MyApplication.a(), "force_encrypt_chapter"));
+        return !"0".equals(OnlineConfigAgent.getInstance().getConfigParams(MyApplication.getInstance(), "force_encrypt_chapter"));
     }
 
     public static boolean l(Context context, String string2) {
@@ -2450,7 +2449,7 @@ public class a {
     public static void r(String string2) {
         String string3 = s(string2);
         BookSubRecord.create(string3);
-        com.xiaomi.mipush.sdk.MiPushClient.subscribe(MyApplication.a(), string3, null);
+        com.xiaomi.mipush.sdk.MiPushClient.subscribe(MyApplication.getInstance(), string3, null);
     }
 
     public static boolean r(Context context, String string2) {
@@ -2476,7 +2475,7 @@ public class a {
     public static void t(String string2) {
         String string3 = s(string2);
         BookUnSubRecord.create(string3);
-        com.xiaomi.mipush.sdk.MiPushClient.unsubscribe(MyApplication.a(), string3, null);
+        com.xiaomi.mipush.sdk.MiPushClient.unsubscribe(MyApplication.getInstance(), string3, null);
     }
 
     public static boolean t(Context context) {

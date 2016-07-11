@@ -303,12 +303,6 @@
         <service
             android:name="com.clilystudio.netbook.reader.dl.BookDownloadService"
             android:exported="false"/>
-
-        <receiver android:name="com.clilystudio.netbook.event.DownloadCompleteReceiver">
-            <intent-filter>
-                <action android:name="android.intent.action.DOWNLOAD_COMPLETE"/>
-            </intent-filter>
-        </receiver>
         <receiver android:name="com.clilystudio.netbook.event.ClickDownloadItemReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.DOWNLOAD_NOTIFICATION_CLICKED"/>
@@ -365,10 +359,10 @@
 
         <meta-data
             android:name="AA_DB_NAME"
-            android:value="zhuishushenqi.db"/>
+            android:value="netbook.db"/>
         <meta-data
             android:name="AA_DB_VERSION"
-            android:value="45"/>
+            android:value="1"/>
         <meta-data
             android:name="UMENG_APPKEY"
             android:value="51307770527015737900000a"/>

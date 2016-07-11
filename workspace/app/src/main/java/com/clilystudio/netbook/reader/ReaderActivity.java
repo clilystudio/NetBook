@@ -248,7 +248,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
                     }
                     ReaderActivity.ah(readerActivity).setVisibility(View.VISIBLE);
                     com.clilystudio.netbook.reader.dl.a a2 = new com.clilystudio.netbook.reader.dl.a(readerActivity);
-                    MyApplication.a().e().put(ReaderActivity.M(readerActivity), ReaderActivity.Y(readerActivity).d());
+                    MyApplication.getInstance().getChapterCacheMap().put(ReaderActivity.M(readerActivity), ReaderActivity.Y(readerActivity).d());
                     a2.a(ReaderActivity.M(readerActivity), n4, ReaderActivity.ai(readerActivity));
                 }
             }).create().show();
@@ -791,7 +791,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
                 }
             }
         });
-        if (this.c.equals(MyApplication.a().g())) {
+        if (this.c.equals(MyApplication.getInstance().getBookId())) {
             int i = -1;
             BookReadRecord bookReadRecord = BookReadRecord.getOnShelf(this.c);
             if (bookReadRecord != null && this.g != null) {
@@ -823,9 +823,9 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
             if (i != -1) {
                 this.g.a(i, 0);
             }
-            MyApplication.a().c(null);
+            MyApplication.getInstance().setBookId(null);
         }
-        MyApplication.a().a(this.g);
+        MyApplication.getInstance().setReader(this.g);
         if (!this.q() && !com.clilystudio.netbook.hpay100.a.a.h(this.L)) {
             if (!this.I || this.H) {
                 this.g();
@@ -1671,7 +1671,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         }
         this.e = string;
         BookReadRecord bookReadRecord = BookReadRecord.get(this.c);
-        this.L = bookReadRecord != null ? bookReadRecord.getReadMode() : MyApplication.a().d();
+        this.L = bookReadRecord != null ? bookReadRecord.getReadMode() : MyApplication.getInstance().getReadMode();
         this.N = intent.getBooleanExtra("HAS_OTHER_SOURCES", true);
         com.clilystudio.netbook.util.I.a = this.c;
         com.clilystudio.netbook.util.I.b = this.d;
@@ -1898,7 +1898,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         this.J();
         if (this.H) {
             this.I = false;
-            Reader reader = MyApplication.a().b();
+            Reader reader = MyApplication.getInstance().getReader();
             if (reader != null) {
                 this.g = reader;
                 this.B();

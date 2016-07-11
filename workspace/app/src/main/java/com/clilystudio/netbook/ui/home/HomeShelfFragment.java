@@ -109,9 +109,6 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
                             bookReadRecord.save();
                             HomeShelfFragment.a(HomeShelfFragment.this).notifyDataSetChanged();
                         }
-                        if (bookReadRecord.isRecommended()) {
-                            MiStatInterface.recordCountEvent("book_recommend_read_click", bookReadRecord.getTitle());
-                        }
                         break;
                     case 2:
                         BookFile bookFile = bookShelf.getTxt();
@@ -479,7 +476,6 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
             public void onClick(View v) {
                 if (!shelfMsg.login || am.a(homeShelfFragment.getActivity()) != null) {
                     homeShelfFragment.startActivity(new InsideLinkIntent(homeShelfFragment.getActivity(), insideLink));
-                    MiStatInterface.recordCountEvent("shelf_msg_click", insideLink.getLabel());
                 }
             }
         });
@@ -814,7 +810,6 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
     }
 
     public final void d() {
-        MiStatInterface.recordCountEvent("home_shelf_bulk_operation", null);
         this.e.removeHeaderView(this.g);
         this.w.setVisibility(View.VISIBLE);
         this.e.removeFooterView(this.h);

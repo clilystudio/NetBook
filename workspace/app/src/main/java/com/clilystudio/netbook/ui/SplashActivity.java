@@ -15,18 +15,9 @@ import com.xiaomi.mistatistic.sdk.MiStatInterfaceImpl;
 import java.util.Calendar;
 
 public class SplashActivity extends Activity {
-    private Handler c = new Handler();
+    private Handler mHandler = new Handler();
     private boolean e = false;
     private boolean f = false;
-
-    public final void a(long l2) {
-        this.c.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                SplashActivity.this.d();
-            }
-        }, l2);
-    }
 
     public final void c() {
         this.findViewById(R.id.splash_ad_skip).setOnClickListener(new View.OnClickListener() {
@@ -58,8 +49,12 @@ public class SplashActivity extends Activity {
         super.onCreate(bundle);
         this.setContentView(R.layout.splash);
         com.clilystudio.netbook.hpay100.a.a.a(this.getWindow().getDecorView());
-        ActiveAndroid.initialize(this);
-        this.a(1200);
+        this.mHandler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                SplashActivity.this.d();
+            }
+        }, 1200);
         if (am.g()) {
             MiStatInterfaceImpl.recordCountEvent("user_register", "YES");
         } else {

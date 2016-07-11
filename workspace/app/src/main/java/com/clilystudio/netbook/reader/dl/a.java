@@ -68,7 +68,7 @@ public class a {
         int n3 = bookReadRecord.getReadMode();
         BusProvider.getInstance().post(new DownloadStatusEvent(string, 1));
         e.a(this.a,  "已加入缓存队列");
-        MyApplication.a().f().add(string);
+        MyApplication.getInstance().getBookCacheList().add(string);
         int n4 = n < 0 ? 0 : n;
         BookDlRecord bookDlRecord = BookDlRecord.get(string);
         if (bookDlRecord == null) {

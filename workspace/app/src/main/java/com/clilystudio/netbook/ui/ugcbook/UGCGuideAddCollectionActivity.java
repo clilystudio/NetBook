@@ -89,7 +89,7 @@ public class UGCGuideAddCollectionActivity extends BaseActivity {
             bl = true;
         }
         if (bl) {
-            if (!this.f && this.c != null && !this.c.equals("") || UGCGuideAddCollectionActivity.e().getBooks().size() <= 0) {
+            if (!this.f && this.c != null && !this.c.equals("") || MyApplication.getInstance().getUGCNewCollection().getBooks().size() <= 0) {
                 BaseDialog.Builder h2 = new BaseDialog.Builder(this);
                 h2.setTitle("提示");
                 h2.setMessage("离开将丢失已输入的内容，确定离开？");
@@ -112,7 +112,7 @@ public class UGCGuideAddCollectionActivity extends BaseActivity {
             }).setNegativeButton("保存并离开", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                    UGCNewCollection uGCNewCollection = UGCGuideAddCollectionActivity.e();
+                    UGCNewCollection uGCNewCollection = MyApplication.getInstance().getUGCNewCollection();
                     uGCNewCollection.setTitle(UGCGuideAddCollectionActivity.c(UGCGuideAddCollectionActivity.this).getText().toString());
                     uGCNewCollection.setDesc(UGCGuideAddCollectionActivity.d(UGCGuideAddCollectionActivity.this).getText().toString());
 
@@ -123,10 +123,10 @@ public class UGCGuideAddCollectionActivity extends BaseActivity {
                             Account account = am.a(UGCGuideAddCollectionActivity.this);
                             if (account == null) return null;
                             if (UGCGuideAddCollectionActivity.this.c == null)
-                                return ApiServiceProvider.getApiService().b(UGCGuideAddCollectionActivity.e(), account.getToken());
+                                return ApiServiceProvider.getApiService().b(MyApplication.getInstance().getUGCNewCollection(), account.getToken());
                             if (UGCGuideAddCollectionActivity.this.c.equals(""))
-                                return ApiServiceProvider.getApiService().b(UGCGuideAddCollectionActivity.e(), account.getToken());
-                            return ApiServiceProvider.getApiService().b(UGCGuideAddCollectionActivity.e(), account.getToken(), UGCGuideAddCollectionActivity.this.c);
+                                return ApiServiceProvider.getApiService().b(MyApplication.getInstance().getUGCNewCollection(), account.getToken());
+                            return ApiServiceProvider.getApiService().b(MyApplication.getInstance().getUGCNewCollection(), account.getToken(), UGCGuideAddCollectionActivity.this.c);
                         }
 
                         @Override
@@ -136,7 +136,7 @@ public class UGCGuideAddCollectionActivity extends BaseActivity {
                                 return;
                             }
                             com.clilystudio.netbook.util.e.a(UGCGuideAddCollectionActivity.this, "已保存到草稿箱");
-                            UGCNewCollection uGCNewCollection = UGCGuideAddCollectionActivity.e();
+                            UGCNewCollection uGCNewCollection = MyApplication.getInstance().getUGCNewCollection();
                             BusProvider.getInstance().post(new UgcDraftEvent());
                             BusProvider.getInstance().post(new UpdateUgcListEvent(UGCGuideAddCollectionActivity.this.c, uGCNewCollection.getTitle(), uGCNewCollection.getDesc(), uGCNewCollection.getBooks().size(), uGCNewCollection.getBooks().get(0).getCover()));
                             UGCGuideAddCollectionActivity.this.finish();
@@ -164,7 +164,7 @@ public class UGCGuideAddCollectionActivity extends BaseActivity {
         this.e = (Author) this.getIntent().getSerializableExtra("my_author");
         int n = R.string.ugc_create;
         if (this.c != null && !this.c.equals("")) {
-            UGCNewCollection uGCNewCollection = MyApplication.a().a;
+            UGCNewCollection uGCNewCollection = MyApplication.getInstance().mUGCNewCollection;
             if (uGCNewCollection != null) {
                 this.a.setText(uGCNewCollection.getTitle());
                 this.b.setText(uGCNewCollection.getDesc());
@@ -172,7 +172,7 @@ public class UGCGuideAddCollectionActivity extends BaseActivity {
             }
             n = R.string.ugc_edit;
         } else {
-            MyApplication.a().a = new UGCNewCollection();
+            MyApplication.getInstance().mUGCNewCollection = new UGCNewCollection();
         }
         this.a(n, R.string.next, new aa() {
             @Override

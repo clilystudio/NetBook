@@ -4,19 +4,19 @@ import android.app.ActivityManager;
 import android.app.Application;
 import android.content.Context;
 import android.os.Process;
+import android.preference.PreferenceManager;
 import android.text.TextUtils;
 
 import com.activeandroid.ActiveAndroid;
-import com.activeandroid.query.Select;
 import com.clilystudio.netbook.api.ApiService;
 import com.clilystudio.netbook.api.DnsManager;
-import com.clilystudio.netbook.db.BookReadRecord;
 import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.model.BookInfo;
 import com.clilystudio.netbook.model.ChapterLink;
 import com.clilystudio.netbook.model.UGCNewCollection;
 import com.clilystudio.netbook.model.User;
 import com.clilystudio.netbook.reader.Reader;
+import com.integralblue.httpresponsecache.HttpResponseCache;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.umeng.onlineconfig.OnlineConfigAgent;
@@ -41,36 +41,44 @@ import java.util.Map;
 import java.util.Properties;
 
 public class MyApplication extends Application {
-    private static MyApplication b = null;
-    public UGCNewCollection a;
-    private Reader c;
-    private BookInfo d;
-    private int e;
-    private String f = null;
-    private List<String> g;
-    private Map<String, ChapterLink[]> h;
-    private List<String> i = null;
-    private List<String> j = null;
-    private List<Long> k = null;
+    private static MyApplication mApp = null;
+    public UGCNewCollection mUGCNewCollection;
+    private Reader mReader;
+    private BookInfo mBookInfo;
+    private int mReadMode;
+    private String mBookId = null;
+    private List<String> mBookCacheList;
+    private Map<String, ChapterLink[]> mChapterCacheMap;
 
-    public static MyApplication a() {
-        return b;
+    public static MyApplication getInstance() {
+        return mApp;
     }
 
-    public final String a(String string) {
+    public final String getProperty(String name) {
         Properties properties = AppPropsManager.getInstance(this).load();
         if (properties != null) {
-            return properties.getProperty(string);
+            return properties.getProperty(name);
         } else {
             return null;
         }
     }
 
-    public final void a(int n) {
-        this.e = n;
+    public final UGCNewCollection getUGCNewCollection() {
+        if (this.mUGCNewCollection == null) {
+            this.mUGCNewCollection = new UGCNewCollection();
+        }
+        return this.mUGCNewCollection;
     }
 
-    public final void a(Account account) {
+    public final int getReadMode() {
+        return this.mReadMode;
+    }
+
+    public final void setReadMode(int readMode) {
+        this.mReadMode = readMode;
+    }
+
+    public final void saveAccoutInfo(Account account) {
         Properties tokenProperties = new Properties();
         tokenProperties.setProperty("account.token", account.getToken());
         AppPropsManager.getInstance(this).put(tokenProperties);
@@ -86,25 +94,33 @@ public class MyApplication extends Application {
         AppPropsManager.getInstance(this).put(userProperties);
     }
 
-    public final void a(BookInfo bookInfo) {
-        this.d = bookInfo;
+    public final BookInfo getBookInfo() {
+        return this.mBookInfo;
     }
 
-    public final void a(Reader reader) {
-        this.c = reader;
+    public final void setBookInfo(BookInfo bookInfo) {
+        this.mBookInfo = bookInfo;
     }
 
-    public final void a(String... arrstring) {
-        AppPropsManager.getInstance(this).remove(arrstring);
+    public final Reader getReader() {
+        return this.mReader;
     }
 
-    public final boolean a(Serializable var1_1, String var2_2) {
+    public final void setReader(Reader reader) {
+        this.mReader = reader;
+    }
+
+    public final void removeProperties(String... keys) {
+        AppPropsManager.getInstance(this).remove(keys);
+    }
+
+    public final boolean saveObject(Serializable object, String name) {
         FileOutputStream fos = null;
         ObjectOutputStream oos = null;
         try {
-            fos = openFileOutput(var2_2, Context.MODE_PRIVATE);
+            fos = openFileOutput(name, Context.MODE_PRIVATE);
             oos = new ObjectOutputStream(fos);
-            oos.writeObject(var1_1);
+            oos.writeObject(object);
             oos.flush();
             return true;
         } catch (IOException e1) {
@@ -128,17 +144,13 @@ public class MyApplication extends Application {
         return false;
     }
 
-    public final Reader b() {
-        return this.c;
-    }
-
-    public final Serializable b(String var1_1) {
-        File file = getFileStreamPath(var1_1);
+    public final Serializable loadObject(String name) {
+        File file = getFileStreamPath(name);
         if (file.exists()) {
             FileInputStream fis = null;
             ObjectInputStream ois = null;
             try {
-                fis = openFileInput(var1_1);
+                fis = openFileInput(name);
                 ois = new ObjectInputStream(fis);
                 return (Serializable) ois.readObject();
             } catch (ClassNotFoundException | IOException e1) {
@@ -163,55 +175,26 @@ public class MyApplication extends Application {
         return null;
     }
 
-    public final BookInfo c() {
-        return this.d;
+    public final String getBookId() {
+        return this.mBookId;
     }
 
-    public final void c(String string) {
-        this.f = string;
+    public final void setBookId(String bookId) {
+        this.mBookId = bookId;
     }
 
-    public final int d() {
-        return this.e;
-    }
-
-    public final Map<String, ChapterLink[]> e() {
-        if (this.h == null) {
-            this.h = new HashMap<>();
+    public final Map<String, ChapterLink[]> getChapterCacheMap() {
+        if (this.mChapterCacheMap == null) {
+            this.mChapterCacheMap = new HashMap<>();
         }
-        return this.h;
+        return this.mChapterCacheMap;
     }
 
-    public final List<String> f() {
-        if (this.g == null) {
-            this.g = new ArrayList<>();
+    public final List<String> getBookCacheList() {
+        if (this.mBookCacheList == null) {
+            this.mBookCacheList = new ArrayList<>();
         }
-        return this.g;
-    }
-
-    public final String g() {
-        return this.f;
-    }
-
-    public final List<String> h() {
-        if (this.i == null) {
-            this.i = new ArrayList<>();
-        }
-        return this.i;
-    }
-
-    public final List<String> i() {
-        if (this.j == null) {
-            this.j = new ArrayList<>();
-        }
-        return this.j;
-    }
-
-    public final List<Long> j() {
-        if (this.k == null) {
-            this.k = new ArrayList<>();
-        }
-        return this.k;
+        return this.mBookCacheList;
     }
 
     /*
@@ -220,37 +203,30 @@ public class MyApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        b = this;
-        DnsManager.a("1".equals(OnlineConfigAgent.getInstance().getConfigParams(b, "use_http_dns")));
+        mApp = this;
+        String useHttpDns = OnlineConfigAgent.getInstance().getConfigParams(mApp, "use_http_dns");
+        DnsManager.setUseDns("1".equals(useHttpDns));
         com.clilystudio.netbook.hpay100.a.a.q(this);
         ActiveAndroid.initialize(this);
-        String string = "";
-        int n = Process.myPid();
-        for (ActivityManager.RunningAppProcessInfo runningAppProcessInfo : ((ActivityManager) this.getSystemService(Context.ACTIVITY_SERVICE)).getRunningAppProcesses()) {
-            string = runningAppProcessInfo.pid == n ? runningAppProcessInfo.processName : string;
-        }
-        if (string.equals("com.clilystudio.netbook")) {
-            Thread thread = new Thread() {
-                @Override
-                public void run() {
-                    File file = new File(getCacheDir(), "http2");
-                    try {
-                        com.integralblue.httpresponsecache.HttpResponseCache.install(file, 200 * 1024 * 1024);
-                    } catch (Exception var2_2) {
-                        var2_2.printStackTrace();
-                    }
+        new Thread() {
+            @Override
+            public void run() {
+                File file = new File(getCacheDir(), "http2");
+                try {
+                    HttpResponseCache.install(file, 200 * 1024 * 1024);
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
-            };
-            thread.start();
-        }
+            }
+        }.start();
         OnlineConfigAgent.getInstance().setOnlineConfigListener(new UmengOnlineConfigureListener() {
             @Override
             public void onDataReceived(JSONObject jsonObject) {
-                String string = OnlineConfigAgent.getInstance().getConfigParams(b, "set_default_api");
+                String string = OnlineConfigAgent.getInstance().getConfigParams(mApp, "set_default_api");
                 if (!TextUtils.isEmpty(string)) {
                     ApiService.a(string);
                 }
-                ApiService.j(OnlineConfigAgent.getInstance().getConfigParams(b,"reader_web_url"), 4);
+                ApiService.j(OnlineConfigAgent.getInstance().getConfigParams(mApp, "reader_web_url"), 4);
             }
         });
         if (com.clilystudio.netbook.hpay100.a.a.l(this, "update_notice_key")) {
@@ -271,18 +247,16 @@ public class MyApplication extends Application {
                 MiPushClient.registerPush(this, "2882303761517133731", "5941713373731");
             }
         }
-        MiStatInterface.initialize(this, "2882303761517133731", "5941713373731", am.n(this));
         ImageLoaderConfiguration configuration = ImageLoaderConfiguration.createDefault(this);
         ImageLoader.getInstance().init(configuration);
-        if (com.clilystudio.netbook.hpay100.a.a.c(this, "PREF_FIRST_LAUNCH_TIME", 0) == 0) {
-            boolean bl = !new Select().from(BookReadRecord.class).execute().isEmpty();
-            if (bl) {
-                Calendar calendar = Calendar.getInstance();
-                calendar.set(Calendar.YEAR, 2000);
-                com.clilystudio.netbook.hpay100.a.a.b(this, "PREF_FIRST_LAUNCH_TIME", calendar.getTimeInMillis());
-            } else {
-                com.clilystudio.netbook.hpay100.a.a.b(this, "PREF_FIRST_LAUNCH_TIME", Calendar.getInstance().getTimeInMillis());
-            }
+        if (PreferenceManager.getDefaultSharedPreferences(this).getLong("PREF_FIRST_LAUNCH_TIME", 0L) == 0L) {
+            com.clilystudio.netbook.hpay100.a.a.b(this, "PREF_FIRST_LAUNCH_TIME", Calendar.getInstance().getTimeInMillis());
         }
+    }
+
+    @Override
+    public void onTerminate() {
+        super.onTerminate();
+        ActiveAndroid.dispose();
     }
 }

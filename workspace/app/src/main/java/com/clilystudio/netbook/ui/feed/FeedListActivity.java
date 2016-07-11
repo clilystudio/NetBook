@@ -51,7 +51,6 @@ public class FeedListActivity extends BaseActivity {
                     alertDialog.dismiss();
                     if (finalJ != n2) {
                         int n = com.clilystudio.netbook.hpay100.a.a.e(finalJ);
-                        MiStatInterface.recordCalculateEvent( "feed_chapter_count",null, n);
                         BusProvider.getInstance().post(new FeedSettingChangedEvent());
                     }
                 }

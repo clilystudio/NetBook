@@ -74,7 +74,7 @@ public class SettingsActivity extends BaseActivity implements View.OnClickListen
                 ApiServiceProvider.getApiService().P(am.e().getToken());
             }
         }).start();
-        MyApplication.a().a("account.token", "user.id", "user.name", "user.avatar", "user.lv", "user.gender");
+        MyApplication.getInstance().removeProperties("account.token", "user.id", "user.name", "user.avatar", "user.lv", "user.gender");
         com.clilystudio.netbook.hpay100.a.a.e(settingsActivity, "pref_new_unimp_notif_time", "0");
         com.clilystudio.netbook.hpay100.a.a.e(settingsActivity, "pref_new_imp_notif_time", "0");
         com.clilystudio.netbook.hpay100.a.a.b(settingsActivity, "remove_ad_duration", 0);

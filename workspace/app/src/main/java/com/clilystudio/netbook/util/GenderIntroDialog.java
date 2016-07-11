@@ -22,7 +22,6 @@ public class GenderIntroDialog extends DialogFragment {
             public void onClick(View v) {
                 dismiss();
                 BusProvider.getInstance().post(new GenderIntroEvent(0));
-                MiStatInterface.recordCountEvent("book_recommend_gender_click", "cancel");
             }
         });
         view.findViewById(R.id.btnMale).setOnClickListener(new View.OnClickListener() {
@@ -30,7 +29,6 @@ public class GenderIntroDialog extends DialogFragment {
             public void onClick(View v) {
                 dismiss();
                 BusProvider.getInstance().post(new GenderIntroEvent(1));
-                MiStatInterface.recordCountEvent("book_recommend_gender_click", "male");
             }
         });
         view.findViewById(R.id.btnFemale).setOnClickListener(new View.OnClickListener() {
@@ -38,7 +36,6 @@ public class GenderIntroDialog extends DialogFragment {
             public void onClick(View v) {
                 dismiss();
                 BusProvider.getInstance().post(new GenderIntroEvent(2));
-                MiStatInterface.recordCountEvent("book_recommend_gender_click", "female");
             }
         });
         return new AlertDialog.Builder(this.getActivity()).setView(view).create();

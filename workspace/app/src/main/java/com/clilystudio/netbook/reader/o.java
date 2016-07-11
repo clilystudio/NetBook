@@ -189,7 +189,7 @@ public final class o {
     }
 
     private static boolean of() {
-        return !(am.e() == null || !com.clilystudio.netbook.hpay100.a.a.a(MyApplication.a(), "auto_buy_chapter" + com.clilystudio.netbook.util.I.a, false));
+        return !(am.e() == null || !com.clilystudio.netbook.hpay100.a.a.a(MyApplication.getInstance(), "auto_buy_chapter" + com.clilystudio.netbook.util.I.a, false));
     }
 
     private void a(boolean bl) {
@@ -223,7 +223,7 @@ public final class o {
         view3.setVisibility(View.VISIBLE);
         view4.setVisibility(View.GONE);
         TextView textView = (TextView) this.f.findViewById(R.id.reader_page_pay_price);
-        ChapterLink[] arrchapterLink = MyApplication.a().b().d();
+        ChapterLink[] arrchapterLink = MyApplication.getInstance().getReader().d();
         if (arrchapterLink == null || arrchapterLink.length == 0) {
             n2 = 0;
         } else {
@@ -322,7 +322,7 @@ public final class o {
 
     private void b(n n2) {
         Reader reader;
-        if (n2 != null && n2.o() == -1 && (reader = MyApplication.a().b()) != null) {
+        if (n2 != null && n2.o() == -1 && (reader = MyApplication.getInstance().getReader()) != null) {
             String string = reader.i();
             MiStatInterfaceImpl.recordCountEvent("chapter_load_error", string);
         }
@@ -449,7 +449,7 @@ public final class o {
      * Enabled aggressive block sorting
      */
     private boolean q() {
-        if (MyApplication.a().d() == 9) {
+        if (MyApplication.getInstance().getReadMode() == 9) {
             return false;
         }
         boolean bl = false;
@@ -578,7 +578,7 @@ public final class o {
         }
         if (n2.j() == 0) {
             int n3 = n2.l();
-            Reader reader = MyApplication.a().b();
+            Reader reader = MyApplication.getInstance().getReader();
             if (of()) {
                 reader.a(n3 + 1, new e<ReaderChapter>() {
 
@@ -685,7 +685,7 @@ public final class o {
             if (this.d == null) {
                 return false;
             }
-            ChapterLink[] arrchapterLink = MyApplication.a().b().d();
+            ChapterLink[] arrchapterLink = MyApplication.getInstance().getReader().d();
             if (arrchapterLink == null) return false;
             if (arrchapterLink.length == 0) {
                 return false;
@@ -771,7 +771,7 @@ public final class o {
                                 hashMap = new HashMap<>();
                             }
                         }
-                        MyApplication.a().b().a(hashMap);
+                        MyApplication.getInstance().getReader().a(hashMap);
                         return;
                     }
                     com.clilystudio.netbook.util.e.a(o.this.b, "获取个人信息失败，请检查网路后重试");

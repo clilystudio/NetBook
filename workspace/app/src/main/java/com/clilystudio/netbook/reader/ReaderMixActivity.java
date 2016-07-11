@@ -86,7 +86,7 @@ public class ReaderMixActivity extends BaseLoadingActivity {
             @Override
             public void onClick(View v) {
                 if (!string.equals(ReaderMixActivity.a(readerMixActivity))) {
-                    MyApplication.a().c(ReaderMixActivity.b(readerMixActivity));
+                    MyApplication.getInstance().setBookId(ReaderMixActivity.b(readerMixActivity));
                     am.c(ReaderMixActivity.b(readerMixActivity), 9);
                     BusProvider.getInstance().post(new ModeChangedEvent(1));
                     ReaderMixActivity.a(readerMixActivity, ReaderMixActivity.f(readerMixActivity).get_id());
@@ -230,7 +230,7 @@ public class ReaderMixActivity extends BaseLoadingActivity {
             @Override
             public void onClick(View v) {
                 if (!"mix".equals(ReaderMixActivity.a(ReaderMixActivity.this))) {
-                    MyApplication.a().c(ReaderMixActivity.b(ReaderMixActivity.this));
+                    MyApplication.getInstance().setBookId(ReaderMixActivity.b(ReaderMixActivity.this));
                     com.clilystudio.netbook.am.c(ReaderMixActivity.b(ReaderMixActivity.this), 5);
                     BusProvider.getInstance().post(new ModeChangedEvent(1));
                     ReaderMixActivity.a(ReaderMixActivity.this, "MIX_TOC_ID");
@@ -247,7 +247,7 @@ public class ReaderMixActivity extends BaseLoadingActivity {
                 int n2 = position - ReaderMixActivity.c(ReaderMixActivity.this).getHeaderViewsCount();
                 TocSummary tocSummary = ReaderMixActivity.d(ReaderMixActivity.this).getItem(n2);
                 if (!tocSummary.getHost().equals(ReaderMixActivity.a(ReaderMixActivity.this))) {
-                    MyApplication.a().c(ReaderMixActivity.b(ReaderMixActivity.this));
+                    MyApplication.getInstance().setBookId(ReaderMixActivity.b(ReaderMixActivity.this));
                     if ("vip.zhuishushenqi.com".equals(ReaderMixActivity.a(ReaderMixActivity.this))) {
                         am.c(ReaderMixActivity.b(ReaderMixActivity.this), 9);
                     } else {
