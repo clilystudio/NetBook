@@ -11,7 +11,6 @@ import android.widget.TextView;
 
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.ui.MaskAbleImageView;
-import com.xiaomi.mistatistic.sdk.MiStatInterfaceImpl;
 
 public class HomeFindItem extends FrameLayout {
     MaskAbleImageView mIcon;
@@ -51,6 +50,5 @@ public class HomeFindItem extends FrameLayout {
 
     protected void a(Context context, String string) {
         context.startActivity(this.a);
-        MiStatInterfaceImpl.recordCountEvent("home_find_item_click", string);
     }
 }

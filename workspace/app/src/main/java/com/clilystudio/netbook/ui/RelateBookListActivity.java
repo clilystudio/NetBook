@@ -8,7 +8,6 @@ import com.clilystudio.netbook.model.BookRankDetail;
 import com.clilystudio.netbook.model.BookSummary;
 import com.clilystudio.netbook.model.RelateBookRoot;
 import com.clilystudio.netbook.reader.cM;
-import com.xiaomi.mistatistic.sdk.MiStatInterfaceImpl;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -53,10 +52,7 @@ public class RelateBookListActivity extends BookListActivity implements cM.cQ {
         if (n < 0) return;
         if (n < this.a.getCount()) {
             BookRankDetail bookRankDetail = this.a.getItem(n);
-            if (this.c == n2) {
-                MiStatInterfaceImpl.recordCountEvent("book_info_recommend_click", "zhuishu");
-            } else {
-                MiStatInterfaceImpl.recordCountEvent("page_footing_recommend_click", "zhuishu");
+            if (this.c != n2) {
                 n2 = 2;
             }
             this.startActivity(BookInfoActivity.a(this, bookRankDetail.get_id(), n2));

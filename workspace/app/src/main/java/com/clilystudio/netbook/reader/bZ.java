@@ -15,7 +15,6 @@ import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.am;
 import com.clilystudio.netbook.event.BusProvider;
 import com.clilystudio.netbook.event.ThemeChangedEvent;
-import com.xiaomi.mistatistic.sdk.MiStatInterfaceImpl;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -165,7 +164,6 @@ public final class bZ {
         com.clilystudio.netbook.hpay100.a.a.b(this.m, "customer_night_theme", this.x);
         com.clilystudio.netbook.hpay100.a.a.b(this.m, "night_mode", this.x);
         if (this.x) {
-            MiStatInterfaceImpl.recordCountEvent("start_night_theme_page", null);
             com.clilystudio.netbook.hpay100.a.a.B(this.m);
         } else {
             com.clilystudio.netbook.hpay100.a.a.C(this.m);

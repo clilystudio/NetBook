@@ -2,6 +2,7 @@ package com.clilystudio.netbook.ui.home;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,17 +14,12 @@ import com.clilystudio.netbook.ui.BookRankListActivity;
 import com.clilystudio.netbook.ui.ugcbook.UGCMainActivity;
 import com.clilystudio.netbook.widget.HomeFindItem;
 
-public class HomeFindFragment extends HomeFragment {
+public class HomeFindFragment extends Fragment {
 
     public static HomeFindFragment a(Bundle bundle) {
         HomeFindFragment homeFindFragment = new HomeFindFragment();
         homeFindFragment.setArguments(bundle);
         return homeFindFragment;
-    }
-
-    @Override
-    public final String a() {
-        return "home_find";
     }
 
     @Override

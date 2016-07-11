@@ -35,7 +35,6 @@ import com.clilystudio.netbook.util.t;
 import com.clilystudio.netbook.widget.CoverView;
 import com.clilystudio.netbook.widget.TagsLayout;
 import com.squareup.otto.Subscribe;
-import com.xiaomi.mistatistic.sdk.MiStatInterfaceImpl;
 
 import uk.me.lewisdeane.ldialogs.BaseDialog;
 
@@ -397,7 +396,6 @@ public class BookInfoActivity extends BaseActivity implements View.OnClickListen
                 }
                 string = string4;
             }
-            MiStatInterfaceImpl.recordCountEvent("book_info_add", null);
         }
         com.clilystudio.netbook.util.e.a(this, string);
     }
@@ -471,7 +469,6 @@ public class BookInfoActivity extends BaseActivity implements View.OnClickListen
                 } else {
                     new m(this).a(bookReadRecord);
                 }
-                MiStatInterfaceImpl.recordCountEvent("book_info_search", null);
                 return;
             }
             case R.id.author_and_type: {

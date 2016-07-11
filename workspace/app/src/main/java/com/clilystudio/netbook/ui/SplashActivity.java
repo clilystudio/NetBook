@@ -9,7 +9,6 @@ import android.view.View;
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.am;
 import com.clilystudio.netbook.ui.home.HomeActivity;
-import com.xiaomi.mistatistic.sdk.MiStatInterfaceImpl;
 
 import java.util.Calendar;
 
@@ -53,23 +52,12 @@ public class SplashActivity extends Activity {
                 SplashActivity.this.d();
             }
         }, 1200);
-        if (am.g()) {
-            MiStatInterfaceImpl.recordCountEvent("user_register", "YES");
-        } else {
-            MiStatInterfaceImpl.recordCountEvent("user_register", "NO");
-        }
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
         this.e = true;
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-        MiStatInterfaceImpl.recordPageEnd();
     }
 
     @Override
@@ -89,15 +77,8 @@ public class SplashActivity extends Activity {
         String string;
         Calendar calendar;
         super.onResume();
-        MiStatInterfaceImpl.recordPageStart(this, null);
-        MiStatInterfaceImpl.enableLog();
         if (!am.g() || (n = 10000 * (calendar = Calendar.getInstance()).get(Calendar.YEAR) + 100 * calendar.get(Calendar.MONTH) + calendar.get(Calendar.DATE)) <= com.clilystudio.netbook.hpay100.a.a.a(this, "KEY_OPEN_TIME", 0) || (string = am.e().getUser().getGender()) == null) {
             return;
-        }
-        if (string.equals("male")) {
-            MiStatInterfaceImpl.recordCountEvent("user_gender", "male");
-        } else if (string.equals("female")) {
-            MiStatInterfaceImpl.recordCountEvent("user_gender", "female");
         }
         com.clilystudio.netbook.hpay100.a.a.b(this, "KEY_OPEN_TIME", n);
     }

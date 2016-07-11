@@ -107,9 +107,6 @@ import com.google.gson.JsonParseException;
 import com.google.gson.JsonParser;
 import com.google.gson.JsonSyntaxException;
 import com.umeng.onlineconfig.OnlineConfigAgent;
-import com.xiaomi.mistatistic.sdk.URLStatsRecorder;
-import com.xiaomi.mistatistic.sdk.controller.HttpEventFilter;
-import com.xiaomi.mistatistic.sdk.data.HttpEvent;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -140,13 +137,6 @@ public class ApiService {
     private final UserAgentManager c;
 
     public ApiService(UserAgentManager f2) {
-        URLStatsRecorder.setEventFilter(new HttpEventFilter() {
-            @Override
-            public HttpEvent onEvent(HttpEvent httpEvent) {
-                Log.d("NetBook", httpEvent.getUrl());
-                return httpEvent;
-            }
-        });
         this.c = f2;
     }
 
@@ -225,7 +215,6 @@ public class ApiService {
         } catch (Exception var5_5) {
             return;
         }
-        URLStatsRecorder.addHttpEvent(new HttpEvent(url, l2 - timeCost, responseCode, exceptionName));
     }
 
     private static String ad(String string) {

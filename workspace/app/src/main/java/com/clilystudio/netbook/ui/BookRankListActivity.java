@@ -15,7 +15,6 @@ import com.clilystudio.netbook.event.BookRankClickEvent;
 import com.clilystudio.netbook.model.BookRankRoot;
 import com.clilystudio.netbook.model.BookRankSummary;
 import com.squareup.otto.Subscribe;
-import com.xiaomi.mistatistic.sdk.MiStatInterfaceImpl;
 
 public class BookRankListActivity extends BaseActivity {
     private View a;
@@ -90,8 +89,6 @@ public class BookRankListActivity extends BaseActivity {
         String string = x2.isMale() ? "male" : "female";
         Intent intent = !bookRankSummary.isCollapse() && com.clilystudio.netbook.hpay100.a.a.r(this, "rank_revision_switch") ? BookRankMainActivity.a(this, bookRankSummary.getIds(), bookRankSummary.getTitle(), string) : BookRankDetailActivity.a(this, bookRankSummary.get_id(), bookRankSummary.getTitle());
         this.startActivity(intent);
-        String string2 = bookRankSummary.getTitle();
-        MiStatInterfaceImpl.recordCountEvent("book_rank_list_item", string2 + "_" + string);
     }
 
     @Override

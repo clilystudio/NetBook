@@ -70,7 +70,7 @@ import java.util.List;
 
 import uk.me.lewisdeane.ldialogs.BaseDialog;
 
-public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScrollListener {
+public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollListener {
     private static final String a = HomeShelfFragment.class.getSimpleName();
     private boolean A = false;
     private long B = 0;
@@ -777,11 +777,6 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
         if (this.getActivity() != null) {
             this.i();
         }
-    }
-
-    @Override
-    public final String a() {
-        return "home_shelf";
     }
 
     public final boolean c() {

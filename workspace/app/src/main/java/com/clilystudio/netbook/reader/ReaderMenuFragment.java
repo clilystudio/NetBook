@@ -21,7 +21,6 @@ import com.clilystudio.netbook.model.TocSummary;
 import com.clilystudio.netbook.ui.RelateBookListActivity;
 import com.clilystudio.netbook.util.t;
 import com.clilystudio.netbook.widget.LoadingContainer;
-import com.xiaomi.mistatistic.sdk.MiStatInterfaceImpl;
 
 import java.util.List;
 
@@ -133,7 +132,6 @@ public class ReaderMenuFragment extends Fragment {
 
     static /* synthetic */ void i(ReaderMenuFragment readerMenuFragment) {
         readerMenuFragment.startActivity(RelateBookListActivity.a(readerMenuFragment.getActivity(), null, "你可能感兴趣", readerMenuFragment.e));
-        MiStatInterfaceImpl.recordCountEvent("reader_menu_relate_book_a", null);
     }
 
     static /* synthetic */ LoadingContainer k(ReaderMenuFragment readerMenuFragment) {

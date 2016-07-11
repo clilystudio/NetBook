@@ -17,7 +17,6 @@ import android.widget.TextView;
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.IntentBuilder;
 import com.clilystudio.netbook.ui.home.ZssqFragmentPagerAdapter;
-import com.xiaomi.mistatistic.sdk.MiStatInterfaceImpl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -123,7 +122,6 @@ public class BookRankMainActivity extends BaseTabActivity implements ViewPager.O
         String string = intent.getStringExtra("book_list_title");
         String string2 = string + BookRankMainActivity.a(n);
         String string3 = intent.getStringExtra("rank_gender");
-        MiStatInterfaceImpl.recordCountEvent("book_rank_tab_click", string2 + "_" + string3);
     }
 
     @Override

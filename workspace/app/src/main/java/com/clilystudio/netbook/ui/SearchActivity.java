@@ -37,7 +37,6 @@ import com.clilystudio.netbook.widget.CoverView;
 import com.clilystudio.netbook.widget.SearchEditText;
 import com.clilystudio.netbook.widget.ax;
 import com.clilystudio.netbook.widget.i;
-import com.xiaomi.mistatistic.sdk.MiStatInterfaceImpl;
 
 import java.util.ArrayList;
 import java.util.Calendar;
