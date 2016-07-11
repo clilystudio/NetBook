@@ -1,6 +1,7 @@
 package com.clilystudio.netbook.reader;
 
 import com.clilystudio.netbook.a_pack.BaseAsyncTask;
+import com.clilystudio.netbook.api.ApiServiceProvider;
 import com.clilystudio.netbook.model.RelateBookRoot;
 
 public final class cM {
@@ -24,8 +25,8 @@ public final class cM {
 
             @Override
             protected RelateBookRoot doInBackground(String... params) {
-                com.clilystudio.netbook.api.b.a();
-                return com.clilystudio.netbook.api.b.b().X(params[0]);
+                ApiServiceProvider.getInstance();
+                return ApiServiceProvider.getApiService().X(params[0]);
             }
 
             @Override

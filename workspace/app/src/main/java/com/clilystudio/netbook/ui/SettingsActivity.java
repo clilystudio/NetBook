@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.am;
+import com.clilystudio.netbook.api.ApiServiceProvider;
 import com.clilystudio.netbook.event.BookReadEvent;
 import com.clilystudio.netbook.event.BusProvider;
 import com.clilystudio.netbook.event.LogoutEvent;
@@ -70,7 +71,7 @@ public class SettingsActivity extends BaseActivity implements View.OnClickListen
         new Thread(new Runnable() {
             @Override
             public void run() {
-                com.clilystudio.netbook.api.b.b().P(am.e().getToken());
+                ApiServiceProvider.getApiService().P(am.e().getToken());
             }
         }).start();
         MyApplication.a().a("account.token", "user.id", "user.name", "user.avatar", "user.lv", "user.gender");

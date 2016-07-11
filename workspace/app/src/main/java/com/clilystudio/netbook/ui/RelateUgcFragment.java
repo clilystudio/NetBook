@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.a_pack.BaseAsyncTask;
+import com.clilystudio.netbook.api.ApiServiceProvider;
 import com.clilystudio.netbook.model.RecommendUgcRoot;
 import com.clilystudio.netbook.ui.ugcbook.UGCDetailActivity;
 import com.clilystudio.netbook.widget.CoverView;
@@ -52,8 +53,8 @@ public class RelateUgcFragment extends Fragment {
 
         @Override
         protected final /* synthetic */ RecommendUgcRoot doInBackground(String[] arrstring) {
-            com.clilystudio.netbook.api.b.a();
-            return com.clilystudio.netbook.api.b.b().i(arrstring[0], 3);
+            ApiServiceProvider.getInstance();
+            return ApiServiceProvider.getApiService().i(arrstring[0], 3);
         }
 
         @Override

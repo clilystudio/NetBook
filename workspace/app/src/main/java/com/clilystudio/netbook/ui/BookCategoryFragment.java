@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.a_pack.BaseAsyncTask;
+import com.clilystudio.netbook.api.ApiServiceProvider;
 import com.clilystudio.netbook.model.BookListRoot;
 import com.clilystudio.netbook.model.CategoryBook;
 import com.clilystudio.netbook.util.W;
@@ -120,9 +121,9 @@ public class BookCategoryFragment extends Fragment {
                 String string2 = ((BookCategoryListActivity) BookCategoryFragment.this.getActivity()).f();
                 String string3 = ((BookCategoryListActivity) BookCategoryFragment.this.getActivity()).g();
                 String string4 = ((BookCategoryListActivity) BookCategoryFragment.this.getActivity()).b();
-                com.clilystudio.netbook.api.b.a();
+                ApiServiceProvider.getInstance();
                 int n = isContinus ? BookCategoryFragment.b(BookCategoryFragment.this).size() : 0;
-                BookListRoot bookListRoot = com.clilystudio.netbook.api. b.b().a(string4, string, string2, string3, n, 50);
+                BookListRoot bookListRoot = ApiServiceProvider.getApiService().a(string4, string, string2, string3, n, 50);
                 if (bookListRoot == null) return null;
                 if (bookListRoot.getBooks() == null) return null;
                 return Arrays.asList(bookListRoot.getBooks());

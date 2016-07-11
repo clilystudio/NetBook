@@ -26,6 +26,7 @@ import android.widget.Toast;
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.a_pack.BaseAsyncTask;
 import com.clilystudio.netbook.am;
+import com.clilystudio.netbook.api.ApiServiceProvider;
 import com.clilystudio.netbook.api.DnsManager;
 import com.clilystudio.netbook.db.AccountInfo;
 import com.clilystudio.netbook.db.BookReadRecord;
@@ -145,7 +146,7 @@ public class HomeActivity extends HomeParentActivity implements ViewPager.OnPage
         return homeActivity.g;
     }
 
-    static /* synthetic */ com.clilystudio.netbook.api.b f(HomeActivity homeActivity) {
+    static /* synthetic */ ApiServiceProvider f(HomeActivity homeActivity) {
         return homeActivity.d;
     }
 
@@ -153,7 +154,7 @@ public class HomeActivity extends HomeParentActivity implements ViewPager.OnPage
         return homeActivity.o();
     }
 
-    static /* synthetic */ com.clilystudio.netbook.api.b h(HomeActivity homeActivity) {
+    static /* synthetic */ ApiServiceProvider h(HomeActivity homeActivity) {
         return homeActivity.d;
     }
 
@@ -169,8 +170,8 @@ public class HomeActivity extends HomeParentActivity implements ViewPager.OnPage
 
                         @Override
                         protected IKanshuUrlResult doInBackground(Void... params) {
-                            com.clilystudio.netbook.api.b.a();
-                            return com.clilystudio.netbook.api.b.b().t();
+                            ApiServiceProvider.getInstance();
+                            return ApiServiceProvider.getApiService().t();
                         }
 
                         @Override
@@ -596,7 +597,7 @@ public class HomeActivity extends HomeParentActivity implements ViewPager.OnPage
 
                     @Override
                     protected UshaqiOnlineConfig doInBackground(Void... params) {
-                        return com.clilystudio.netbook.api.b.b().a();
+                        return ApiServiceProvider.getApiService().a();
                     }
 
                     @Override
@@ -641,7 +642,7 @@ public class HomeActivity extends HomeParentActivity implements ViewPager.OnPage
                 }
                 String string3 = am.t(HomeActivity.this);
                 HomeActivity.h(HomeActivity.this);
-                return com.clilystudio.netbook.api.b.b().p(string3, string, string2);
+                return ApiServiceProvider.getApiService().p(string3, string, string2);
             }
         }.b();
     }
@@ -755,8 +756,8 @@ public class HomeActivity extends HomeParentActivity implements ViewPager.OnPage
 
                 @Override
                 protected BookTopRoot doInBackground(Void... params) {
-                    com.clilystudio.netbook.api.b.a();
-                    return com.clilystudio.netbook.api.b.b().u();
+                    ApiServiceProvider.getInstance();
+                    return ApiServiceProvider.getApiService().u();
                 }
 
                 @Override

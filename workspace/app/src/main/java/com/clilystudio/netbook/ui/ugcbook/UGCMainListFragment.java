@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.a_pack.BaseAsyncTask;
+import com.clilystudio.netbook.api.ApiServiceProvider;
 import com.clilystudio.netbook.model.UGCBookListRoot;
 import com.clilystudio.netbook.util.W;
 import com.clilystudio.netbook.widget.CoverView;
@@ -55,8 +56,8 @@ public class UGCMainListFragment extends Fragment implements AdapterView.OnItemC
                         @Override
                         protected UGCBookListRoot doInBackground(String... params) {
                             if (!this.isCancelled()) {
-                                com.clilystudio.netbook.api.b.a();
-                                return com.clilystudio.netbook.api.b.b().a(UGCMainListFragment.this.getArguments().getString("duration"), UGCMainListFragment.this.getArguments().getString("sort"), UGCMainListFragment.h(UGCMainListFragment.this).getCount(), 20, UGCMainListFragment.this.b());
+                                ApiServiceProvider.getInstance();
+                                return ApiServiceProvider.getApiService().a(UGCMainListFragment.this.getArguments().getString("duration"), UGCMainListFragment.this.getArguments().getString("sort"), UGCMainListFragment.h(UGCMainListFragment.this).getCount(), 20, UGCMainListFragment.this.b());
                             }
                             return null;
                         }
@@ -150,8 +151,8 @@ public class UGCMainListFragment extends Fragment implements AdapterView.OnItemC
 
             @Override
             protected UGCBookListRoot doInBackground(String... params) {
-                com.clilystudio.netbook.api.b.a();
-                return com.clilystudio.netbook.api.b.b().a(UGCMainListFragment.this.getArguments().getString("duration"), UGCMainListFragment.this.getArguments().getString("sort"), 0, 20, UGCMainListFragment.this.b());
+                ApiServiceProvider.getInstance();
+                return ApiServiceProvider.getApiService().a(UGCMainListFragment.this.getArguments().getString("duration"), UGCMainListFragment.this.getArguments().getString("sort"), 0, 20, UGCMainListFragment.this.b());
             }
 
             @Override
@@ -240,8 +241,8 @@ public class UGCMainListFragment extends Fragment implements AdapterView.OnItemC
 
                             @Override
                             protected UGCBookListRoot doInBackground(String... params) {
-                                com.clilystudio.netbook.api.b.a();
-                                return com.clilystudio.netbook.api.b.b().a(UGCMainListFragment.this.getArguments().getString("duration"), UGCMainListFragment.this.getArguments().getString("sort"), 0, 20, UGCMainListFragment.this.b());
+                                ApiServiceProvider.getInstance();
+                                return ApiServiceProvider.getApiService().a(UGCMainListFragment.this.getArguments().getString("duration"), UGCMainListFragment.this.getArguments().getString("sort"), 0, 20, UGCMainListFragment.this.b());
                             }
 
                             @Override

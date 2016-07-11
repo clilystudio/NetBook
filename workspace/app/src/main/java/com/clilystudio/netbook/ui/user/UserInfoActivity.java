@@ -12,6 +12,7 @@ import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.a_pack.BaseAsyncTask;
 import com.clilystudio.netbook.am;
 import com.clilystudio.netbook.IntentBuilder;
+import com.clilystudio.netbook.api.ApiServiceProvider;
 import com.clilystudio.netbook.event.AccountUpdatedEvent;
 import com.clilystudio.netbook.event.UserInfoChangedEvent;
 import com.clilystudio.netbook.event.BusProvider;
@@ -103,7 +104,7 @@ public class UserInfoActivity extends BaseActivity {
 
                 @Override
                 protected UserInfo doInBackground(String... params) {
-                    return com.clilystudio.netbook.api.b.b().K(params[0]);
+                    return ApiServiceProvider.getApiService().K(params[0]);
                 }
 
                 @Override

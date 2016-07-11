@@ -7,6 +7,7 @@ import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.a_pack.BaseLoadingTask;
 import com.clilystudio.netbook.am;
+import com.clilystudio.netbook.api.ApiServiceProvider;
 import com.clilystudio.netbook.db.BookReadRecord;
 import com.clilystudio.netbook.db.SourceRecord;
 import com.clilystudio.netbook.event.BusProvider;
@@ -152,8 +153,8 @@ public final class m {
 
             @Override
             public TocSourceRoot a(String... var1) {
-                com.clilystudio.netbook.api.b.a();
-                return com.clilystudio.netbook.api.b.b().g(var1[0]);
+                ApiServiceProvider.getInstance();
+                return ApiServiceProvider.getApiService().g(var1[0]);
             }
 
             @Override
@@ -190,8 +191,8 @@ public final class m {
         BaseLoadingTask<String, List<TocSummary>> o2 = new BaseLoadingTask<String, List<TocSummary>>(m.this.a, R.string.loading, bl) {
             @Override
             public List<TocSummary> a(String... var1) {
-                com.clilystudio.netbook.api.b.a();
-                return com.clilystudio.netbook.api.b.b().d(var1[0]);
+                ApiServiceProvider.getInstance();
+                return ApiServiceProvider.getApiService().d(var1[0]);
             }
 
             @Override

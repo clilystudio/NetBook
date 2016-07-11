@@ -16,6 +16,7 @@ import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.a_pack.BaseAsyncTask;
 import com.clilystudio.netbook.adapter.NotificationAdapter;
 import com.clilystudio.netbook.am;
+import com.clilystudio.netbook.api.ApiServiceProvider;
 import com.clilystudio.netbook.hpay100.a.a;
 import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.model.NotificationItem;
@@ -63,11 +64,11 @@ public abstract class NotifFragment extends Fragment {
                                 if (NotifFragment.k(NotifFragment.this) != null && NotifFragment.k(NotifFragment.this).size() > 0) {
                                     string = ((NotificationItem) NotifFragment.k(NotifFragment.this).get(-1 + NotifFragment.k(NotifFragment.this).size())).getCreated();
                                 }
-                                com.clilystudio.netbook.api.b.a();
+                                ApiServiceProvider.getInstance();
                                 if (NotifFragment.this.a() == NotifFragment.Type.IMPORTANT) {
-                                    return com.clilystudio.netbook.api.b.b().r(params[0], string);
+                                    return ApiServiceProvider.getApiService().r(params[0], string);
                                 }
-                                return com.clilystudio.netbook.api.b.b().s(params[0], string);
+                                return ApiServiceProvider.getApiService().s(params[0], string);
                             }
                             return null;
                         }
@@ -210,11 +211,11 @@ public abstract class NotifFragment extends Fragment {
 
             @Override
             protected NotificationRoot doInBackground(String... params) {
-                com.clilystudio.netbook.api.b.a();
+                ApiServiceProvider.getInstance();
                 if (NotifFragment.this.a() == NotifFragment.Type.IMPORTANT) {
-                    return com.clilystudio.netbook.api.b.b().r(params[0], "");
+                    return ApiServiceProvider.getApiService().r(params[0], "");
                 }
-                return com.clilystudio.netbook.api.b.b().s(params[0], "");
+                return ApiServiceProvider.getApiService().s(params[0], "");
             }
 
             @Override

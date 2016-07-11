@@ -6,6 +6,7 @@ import android.os.Handler;
 import android.os.Message;
 
 import com.clilystudio.netbook.api.ApiService;
+import com.clilystudio.netbook.api.ApiServiceProvider;
 
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -46,8 +47,8 @@ public final class ag {
             a = new ag();
         }
         e = new Handler(context.getMainLooper(), h);
-        com.clilystudio.netbook.api.b.a();
-        d = com.clilystudio.netbook.api.b.b();
+        ApiServiceProvider.getInstance();
+        d = ApiServiceProvider.getApiService();
         b = new Handler[3];
         for (int i = 0; i < 3; ++i) {
             aj aj2 = new aj("PostCountWorker" + i);

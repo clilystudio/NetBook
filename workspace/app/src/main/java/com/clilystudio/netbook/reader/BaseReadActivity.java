@@ -4,10 +4,10 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 
 import com.clilystudio.netbook.R;
-import com.clilystudio.netbook.api.b;
+import com.clilystudio.netbook.api.ApiServiceProvider;
 
 public class BaseReadActivity extends FragmentActivity {
-    protected b a = b.a();
+    protected ApiServiceProvider a = ApiServiceProvider.getInstance();
 
     @Override
     protected void onCreate(Bundle bundle) {

@@ -9,6 +9,7 @@ import android.widget.ListView;
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.a_pack.BaseAsyncTask;
 import com.clilystudio.netbook.am;
+import com.clilystudio.netbook.api.ApiServiceProvider;
 import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.model.ResultStatus;
 import com.clilystudio.netbook.model.UGCBookListRoot;
@@ -28,8 +29,8 @@ public class FavUGCListFragment extends AbsUGCListFragment implements AdapterVie
 
     @Override
     protected final UGCBookListRoot a(Account account, int n) {
-        com.clilystudio.netbook.api.b.a();
-        return com.clilystudio.netbook.api.b.b().f(account.getToken(), n);
+        ApiServiceProvider.getInstance();
+        return ApiServiceProvider.getApiService().f(account.getToken(), n);
     }
 
     @Override
@@ -69,8 +70,8 @@ public class FavUGCListFragment extends AbsUGCListFragment implements AdapterVie
 
                         @Override
                         protected ResultStatus doInBackground(String... params) {
-                            com.clilystudio.netbook.api.b.a();
-                            return com.clilystudio.netbook.api.b.b().E(params[0], params[1]);
+                            ApiServiceProvider.getInstance();
+                            return ApiServiceProvider.getApiService().E(params[0], params[1]);
                         }
 
                         @Override

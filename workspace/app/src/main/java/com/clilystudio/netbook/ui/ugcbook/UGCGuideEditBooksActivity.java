@@ -18,6 +18,7 @@ import android.widget.TextView;
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.a_pack.BaseLoadingTask;
 import com.clilystudio.netbook.am;
+import com.clilystudio.netbook.api.ApiServiceProvider;
 import com.clilystudio.netbook.event.AddShelfBooksEvent;
 import com.clilystudio.netbook.event.UgcDraftEvent;
 import com.clilystudio.netbook.event.UpdateUgcListEvent;
@@ -165,7 +166,7 @@ public class UGCGuideEditBooksActivity extends BaseActivity implements View.OnCl
 
             @Override
             public List<BookSummary> a(String[]... var1) {
-                return com.clilystudio.netbook.api.b.b().a(var1[0]);
+                return ApiServiceProvider.getApiService().a(var1[0]);
             }
 
             @Override
@@ -237,10 +238,10 @@ public class UGCGuideEditBooksActivity extends BaseActivity implements View.OnCl
                             Account account = am.a(UGCGuideEditBooksActivity.this);
                             if (account == null) return null;
                             if (UGCGuideEditBooksActivity.this.f == null)
-                                return com.clilystudio.netbook.api.b.b().b(UGCGuideEditBooksActivity.e(), account.getToken());
+                                return ApiServiceProvider.getApiService().b(UGCGuideEditBooksActivity.e(), account.getToken());
                             if (UGCGuideEditBooksActivity.this.f.equals(""))
-                                return com.clilystudio.netbook.api.b.b().b(UGCGuideEditBooksActivity.e(), account.getToken());
-                            return com.clilystudio.netbook.api.b.b().b(UGCGuideEditBooksActivity.e(), account.getToken(), UGCGuideEditBooksActivity.this.f);
+                                return ApiServiceProvider.getApiService().b(UGCGuideEditBooksActivity.e(), account.getToken());
+                            return ApiServiceProvider.getApiService().b(UGCGuideEditBooksActivity.e(), account.getToken(), UGCGuideEditBooksActivity.this.f);
                         }
 
                         @Override
@@ -375,13 +376,13 @@ public class UGCGuideEditBooksActivity extends BaseActivity implements View.OnCl
                     Account account = am.a(UGCGuideEditBooksActivity.this);
                     if (account == null) return null;
                     if (UGCGuideEditBooksActivity.d(UGCGuideEditBooksActivity.this)) {
-                        return com.clilystudio.netbook.api.b.b().c(UGCGuideEditBooksActivity.e(), account.getToken(), UGCGuideEditBooksActivity.this.f);
+                        return ApiServiceProvider.getApiService().c(UGCGuideEditBooksActivity.e(), account.getToken(), UGCGuideEditBooksActivity.this.f);
                     }
                     if (UGCGuideEditBooksActivity.this.f == null)
-                        return com.clilystudio.netbook.api.b.b().a(UGCGuideEditBooksActivity.e(), account.getToken());
+                        return ApiServiceProvider.getApiService().a(UGCGuideEditBooksActivity.e(), account.getToken());
                     if (UGCGuideEditBooksActivity.this.f.equals(""))
-                        return com.clilystudio.netbook.api.b.b().a(UGCGuideEditBooksActivity.e(), account.getToken());
-                    return com.clilystudio.netbook.api.b.b().a(UGCGuideEditBooksActivity.e(), account.getToken(), UGCGuideEditBooksActivity.this.f);
+                        return ApiServiceProvider.getApiService().a(UGCGuideEditBooksActivity.e(), account.getToken());
+                    return ApiServiceProvider.getApiService().a(UGCGuideEditBooksActivity.e(), account.getToken(), UGCGuideEditBooksActivity.this.f);
                 }
 
                 @Override

@@ -20,6 +20,7 @@ import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.a_pack.BaseAsyncTask;
 import com.clilystudio.netbook.a_pack.BaseLoadingTask;
 import com.clilystudio.netbook.am;
+import com.clilystudio.netbook.api.ApiServiceProvider;
 import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.model.ResultStatus;
 import com.clilystudio.netbook.model.Topic;
@@ -61,8 +62,8 @@ public class MyFavTopicFragment extends Fragment {
 
                         @Override
                         protected Topic doInBackground(String... params) {
-                            com.clilystudio.netbook.api.b.a();
-                            return com.clilystudio.netbook.api.b.b().d(params[0], MyFavTopicFragment.k(MyFavTopicFragment.this));
+                            ApiServiceProvider.getInstance();
+                            return ApiServiceProvider.getApiService().d(params[0], MyFavTopicFragment.k(MyFavTopicFragment.this));
                         }
 
                         @Override
@@ -137,8 +138,8 @@ public class MyFavTopicFragment extends Fragment {
 
                     @Override
                     public ResultStatus a(String... var1) {
-                        com.clilystudio.netbook.api.b.a();
-                        return com.clilystudio.netbook.api.b.b().z(var1[0], var1[1]);
+                        ApiServiceProvider.getInstance();
+                        return ApiServiceProvider.getApiService().z(var1[0], var1[1]);
                     }
 
                     @Override
@@ -279,8 +280,8 @@ public class MyFavTopicFragment extends Fragment {
 
             @Override
             protected Topic doInBackground(String... params) {
-                com.clilystudio.netbook.api.b.a();
-                return com.clilystudio.netbook.api.b.b().d(params[0], 0);
+                ApiServiceProvider.getInstance();
+                return ApiServiceProvider.getApiService().d(params[0], 0);
             }
 
             @Override

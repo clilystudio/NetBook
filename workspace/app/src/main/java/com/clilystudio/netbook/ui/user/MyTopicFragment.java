@@ -15,6 +15,7 @@ import android.widget.TextView;
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.a_pack.BaseAsyncTask;
 import com.clilystudio.netbook.am;
+import com.clilystudio.netbook.api.ApiServiceProvider;
 import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.model.Topic;
 import com.clilystudio.netbook.model.TopicPost;
@@ -52,8 +53,8 @@ public class MyTopicFragment extends Fragment {
 
                         @Override
                         protected Topic doInBackground(String... params) {
-                            com.clilystudio.netbook.api.b.a();
-                            return com.clilystudio.netbook.api.b.b().e(params[0], MyTopicFragment.this.i.size());
+                            ApiServiceProvider.getInstance();
+                            return ApiServiceProvider.getApiService().e(params[0], MyTopicFragment.this.i.size());
                         }
 
                         @Override
@@ -239,8 +240,8 @@ public class MyTopicFragment extends Fragment {
 
             @Override
             protected Topic doInBackground(String... params) {
-                com.clilystudio.netbook.api.b.a();
-                return com.clilystudio.netbook.api.b.b().e(params[0], 0);
+                ApiServiceProvider.getInstance();
+                return ApiServiceProvider.getApiService().e(params[0], 0);
             }
 
             @Override

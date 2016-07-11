@@ -32,6 +32,7 @@ import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.a_pack.BaseAsyncTask;
 import com.clilystudio.netbook.am;
 import com.clilystudio.netbook.IntentBuilder;
+import com.clilystudio.netbook.api.ApiServiceProvider;
 import com.clilystudio.netbook.db.BookReadRecord;
 import com.clilystudio.netbook.db.BookTopicEnterRecord;
 import com.clilystudio.netbook.db.MixTocRecord;
@@ -1911,8 +1912,8 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
 
             @Override
             protected TopicCount doInBackground(String... params) {
-                com.clilystudio.netbook.api.b.a();
-                return com.clilystudio.netbook.api.b.b().I(params[0]);
+                ApiServiceProvider.getInstance();
+                return ApiServiceProvider.getApiService().I(params[0]);
             }
 
             @Override
@@ -1934,8 +1935,8 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
             new BaseAsyncTask<Void, Void, ChapterKeysRoot>() {
                 @Override
                 protected ChapterKeysRoot doInBackground(Void... params) {
-                    com.clilystudio.netbook.api.b.a();
-                    return com.clilystudio.netbook.api.b.b().g(am.e().getToken(), ReaderActivity.M(ReaderActivity.this));
+                    ApiServiceProvider.getInstance();
+                    return ApiServiceProvider.getApiService().g(am.e().getToken(), ReaderActivity.M(ReaderActivity.this));
                 }
 
                 @Override

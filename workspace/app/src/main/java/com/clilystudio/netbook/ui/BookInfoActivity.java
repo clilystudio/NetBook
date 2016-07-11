@@ -19,6 +19,7 @@ import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.a_pack.BaseAsyncTask;
 import com.clilystudio.netbook.am;
 import com.clilystudio.netbook.IntentBuilder;
+import com.clilystudio.netbook.api.ApiServiceProvider;
 import com.clilystudio.netbook.db.BookReadRecord;
 import com.clilystudio.netbook.db.SourceRecord;
 import com.clilystudio.netbook.event.BookAddedEvent;
@@ -408,7 +409,7 @@ public class BookInfoActivity extends BaseActivity implements View.OnClickListen
 
             @Override
             protected BookInfo doInBackground(String... params) {
-                return com.clilystudio.netbook.api.b.b().r(params[0]);
+                return ApiServiceProvider.getApiService().r(params[0]);
             }
 
             @Override

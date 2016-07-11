@@ -5,6 +5,7 @@ import android.content.Context;
 import com.clilystudio.netbook.a_pack.BaseAsyncTask;
 import com.clilystudio.netbook.am;
 
+import com.clilystudio.netbook.api.ApiServiceProvider;
 import com.clilystudio.netbook.db.AccountInfo;
 import com.clilystudio.netbook.event.BusProvider;
 import com.clilystudio.netbook.event.NotifEvent;
@@ -65,8 +66,8 @@ public class J {
 
                 @Override
                 protected NotifCountRoot doInBackground(String... params) {
-                    com.clilystudio.netbook.api.b.a();
-                    return com.clilystudio.netbook.api.b.b().G(params[0]);
+                    ApiServiceProvider.getInstance();
+                    return ApiServiceProvider.getApiService().G(params[0]);
                 }
 
                 @Override
@@ -107,8 +108,8 @@ public class J {
 
                 @Override
                 protected Root doInBackground(String... params) {
-                    com.clilystudio.netbook.api.b.a();
-                    return com.clilystudio.netbook.api.b.b().L(params[0]);
+                    ApiServiceProvider.getInstance();
+                    return ApiServiceProvider.getApiService().L(params[0]);
                 }
 
                 @Override
@@ -133,8 +134,8 @@ public class J {
 
                 @Override
                 protected Root doInBackground(String... params) {
-                    com.clilystudio.netbook.api.b.a();
-                    return com.clilystudio.netbook.api.b.b().M(params[0]);
+                    ApiServiceProvider.getInstance();
+                    return ApiServiceProvider.getApiService().M(params[0]);
                 }
 
                 @Override

@@ -20,6 +20,7 @@ import android.widget.TextView;
 
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.a_pack.BaseAsyncTask;
+import com.clilystudio.netbook.api.ApiServiceProvider;
 import com.clilystudio.netbook.model.AutoCompleteRoot;
 import com.clilystudio.netbook.model.BookSummary;
 import com.clilystudio.netbook.model.SearchPromRoot;
@@ -154,8 +155,8 @@ public class UGCGuideAddBookActivity extends BaseActivity implements View.OnClic
 
                     @Override
                     protected List<BookSummary> doInBackground(String... params) {
-                        List<BookSummary> list = com.clilystudio.netbook.api.b.b().n(params[0]);
-                        SearchPromRoot searchPromRoot = com.clilystudio.netbook.api.b.b().q(params[0]);
+                        List<BookSummary> list = ApiServiceProvider.getApiService().n(params[0]);
+                        SearchPromRoot searchPromRoot = ApiServiceProvider.getApiService().q(params[0]);
                         if (searchPromRoot != null && searchPromRoot.getProm() != null) {
                             list.add(0, searchPromRoot.getProm());
                         }
@@ -200,8 +201,8 @@ public class UGCGuideAddBookActivity extends BaseActivity implements View.OnClic
 
                 @Override
                 protected List<BookSummary> doInBackground(String... params) {
-                    List<BookSummary> list = com.clilystudio.netbook.api.b.b().n(params[0]);
-                    SearchPromRoot searchPromRoot = com.clilystudio.netbook.api.b.b().q(params[0]);
+                    List<BookSummary> list = ApiServiceProvider.getApiService().n(params[0]);
+                    SearchPromRoot searchPromRoot = ApiServiceProvider.getApiService().q(params[0]);
                     if (searchPromRoot != null && searchPromRoot.getProm() != null) {
                         list.add(0, searchPromRoot.getProm());
                     }
@@ -452,8 +453,8 @@ public class UGCGuideAddBookActivity extends BaseActivity implements View.OnClic
                         arrayList.add(string);
                         arrayList.add(constraint.toString());
                         if (!TextUtils.isEmpty(string)) {
-                            com.clilystudio.netbook.api.b.a();
-                            AutoCompleteRoot autoCompleteRoot = com.clilystudio.netbook.api.b.b().N(string);
+                            ApiServiceProvider.getInstance();
+                            AutoCompleteRoot autoCompleteRoot = ApiServiceProvider.getApiService().N(string);
                             if (autoCompleteRoot != null && autoCompleteRoot.getKeywords() != null) {
                                 arrayList.addAll(0, autoCompleteRoot.getKeywords());
                             }

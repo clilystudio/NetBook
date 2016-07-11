@@ -18,6 +18,7 @@ import com.clilystudio.netbook.IntentBuilder;
 import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.a_pack.BaseLoadingTask;
+import com.clilystudio.netbook.api.ApiServiceProvider;
 import com.clilystudio.netbook.event.LoginEvent;
 import com.clilystudio.netbook.event.BusProvider;
 import com.clilystudio.netbook.model.Account;
@@ -127,16 +128,16 @@ public class AuthLoginActivity extends BaseActivity implements Handler.Callback 
 
                         @Override
                         public Account a(String... var1) {
-                            com.clilystudio.netbook.api.b.a();
-                            return com.clilystudio.netbook.api.b.b().g(var1[0], var1[1], var1[2]);
+                            ApiServiceProvider.getInstance();
+                            return ApiServiceProvider.getApiService().g(var1[0], var1[1], var1[2]);
                         }
 
                         @Override
                         public void a(Account account) {
                             if (account != null && account.getUser() != null && account.getToken() != null) {
                                 if (account.isOk()) {
-                                    com.clilystudio.netbook.api.b.a();
-                                    com.clilystudio.netbook.api.b.b().h(account.getUser().getId());
+                                    ApiServiceProvider.getInstance();
+                                    ApiServiceProvider.getApiService().h(account.getUser().getId());
                                     MyApplication.a().a(account);
                                     LoginEvent t2 = new LoginEvent(account);
                                     t2.setSource((AuthLoginActivity.Source) AuthLoginActivity.this.getIntent().getSerializableExtra("KEY_SOURCE"));

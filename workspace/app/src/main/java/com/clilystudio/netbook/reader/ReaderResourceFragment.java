@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.a_pack.BaseAsyncTask;
+import com.clilystudio.netbook.api.ApiServiceProvider;
 import com.clilystudio.netbook.db.BookReadRecord;
 import com.clilystudio.netbook.db.TocReadRecord;
 import com.clilystudio.netbook.event.BusProvider;
@@ -171,8 +172,8 @@ public class ReaderResourceFragment extends Fragment {
 
             @Override
             protected List<TocSummary> doInBackground(String... params) {
-                com.clilystudio.netbook.api.b.a();
-                return com.clilystudio.netbook.api.b.b().d(params[0]);
+                ApiServiceProvider.getInstance();
+                return ApiServiceProvider.getApiService().d(params[0]);
             }
 
             @Override
@@ -219,8 +220,8 @@ public class ReaderResourceFragment extends Fragment {
 
                     @Override
                     protected List<TocSummary> doInBackground(String... params) {
-                        com.clilystudio.netbook.api.b.a();
-                        return com.clilystudio.netbook.api.b.b().d(params[0]);
+                        ApiServiceProvider.getInstance();
+                        return ApiServiceProvider.getApiService().d(params[0]);
                     }
 
                     @Override

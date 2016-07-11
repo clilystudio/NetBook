@@ -12,6 +12,7 @@ import android.widget.ListView;
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.IntentBuilder;
 import com.clilystudio.netbook.a_pack.BaseAsyncTask;
+import com.clilystudio.netbook.api.ApiServiceProvider;
 import com.clilystudio.netbook.model.BookSummary;
 import com.clilystudio.netbook.model.SearchResultRoot;
 import com.clilystudio.netbook.util.W;
@@ -44,7 +45,7 @@ public class AuthorBooksActivity extends BaseLoadingActivity {
 
             @Override
             protected List<BookSummary> doInBackground(String... params) {
-                SearchResultRoot searchResultRoot = com.clilystudio.netbook.api.b.b().o(params[0]);
+                SearchResultRoot searchResultRoot = ApiServiceProvider.getApiService().o(params[0]);
                 if (searchResultRoot == null) return null;
                 return searchResultRoot.getBooks();
             }

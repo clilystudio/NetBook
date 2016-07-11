@@ -16,6 +16,7 @@ import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.a_pack.BaseAsyncTask;
 import com.clilystudio.netbook.am;
+import com.clilystudio.netbook.api.ApiServiceProvider;
 import com.clilystudio.netbook.event.BusProvider;
 import com.clilystudio.netbook.event.UgcDraftEvent;
 import com.clilystudio.netbook.model.Account;
@@ -129,7 +130,7 @@ public class UGCDetailActivity extends BaseActivity implements View.OnClickListe
 
                 @Override
                 protected ResultStatus doInBackground(String... params) {
-                    return com.clilystudio.netbook.api.b.b().D(params[0], params[1]);
+                    return ApiServiceProvider.getApiService().D(params[0], params[1]);
                 }
 
                 @Override
@@ -206,10 +207,10 @@ public class UGCDetailActivity extends BaseActivity implements View.OnClickListe
 
             @Override
             protected UGCBookDetailRoot doInBackground(String... params) {
-                if (!UGCDetailActivity.k(UGCDetailActivity.this)) return com.clilystudio.netbook.api.b.b().U(params[0]);
+                if (!UGCDetailActivity.k(UGCDetailActivity.this)) return ApiServiceProvider.getApiService().U(params[0]);
                 Account account = am.a(UGCDetailActivity.this);
                 if (account == null) return null;
-                return com.clilystudio.netbook.api.b.b().C(account.getToken(), params[0]);
+                return ApiServiceProvider.getApiService().C(account.getToken(), params[0]);
             }
 
             @Override

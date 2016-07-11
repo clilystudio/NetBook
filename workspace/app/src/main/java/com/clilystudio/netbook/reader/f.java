@@ -4,7 +4,7 @@ import android.text.Html;
 
 import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.api.ApiService;
-import com.clilystudio.netbook.api.b;
+import com.clilystudio.netbook.api.ApiServiceProvider;
 import com.clilystudio.netbook.db.BookReadRecord;
 import com.clilystudio.netbook.db.SourceRecord;
 import com.clilystudio.netbook.model.BookInfo;
@@ -31,7 +31,7 @@ import java.util.regex.Pattern;
 
 public final class f {
     private int b;
-    private b a = com.clilystudio.netbook.api.b.a();
+    private ApiServiceProvider a = ApiServiceProvider.getInstance();
     private String c;
     private String d;
     private String e;
@@ -58,7 +58,7 @@ public final class f {
 
     private ChapterRoot a(int n, String string) {
         try {
-            ChapterRoot chapterRoot = com.clilystudio.netbook.api.b.b().c(this.f, n, string);
+            ChapterRoot chapterRoot = ApiServiceProvider.getApiService().c(this.f, n, string);
             return chapterRoot;
         } catch (Exception var3_4) {
             var3_4.printStackTrace();
@@ -74,7 +74,7 @@ public final class f {
         String[] arrstring = com.clilystudio.netbook.hpay100.a.a.O(this.f);
         if (arrstring == null) return null;
         try {
-            return com.clilystudio.netbook.api.b.b().a(arrstring[0], arrstring[1], n, string, string2);
+            return ApiServiceProvider.getApiService().a(arrstring[0], arrstring[1], n, string, string2);
         } catch (Exception var4_6) {
             var4_6.printStackTrace();
         }
@@ -102,7 +102,7 @@ public final class f {
                 @Override
                 public void run() {
                     SsTocRow[] arrssTocRow;
-                    SsTocRoot ssTocRoot = com.clilystudio.netbook.api.b.b().a(finalJ, n, f.this.f);
+                    SsTocRoot ssTocRoot = ApiServiceProvider.getApiService().a(finalJ, n, f.this.f);
                     if (ssTocRoot == null || ssTocRoot.getRows() == null) return;
                     arrssTocRow = ssTocRoot.getRows();
                     ChapterLink[] arrchapterLink = new ChapterLink[arrssTocRow.length];
@@ -145,11 +145,11 @@ public final class f {
     }
 
     private ChapterRoot b(int n) {
-        return com.clilystudio.netbook.api.b.b().c(this.f, n);
+        return ApiServiceProvider.getApiService().c(this.f, n);
     }
 
     private ChapterRoot b(String string, String string2) {
-        return com.clilystudio.netbook.api.b.b().p(string, string2);
+        return ApiServiceProvider.getApiService().p(string, string2);
     }
 
     /*
@@ -159,7 +159,7 @@ public final class f {
     private Toc b() {
         try {
             MixTocRoot mixTocRoot;
-            MixTocRoot mixTocRoot2 = mixTocRoot = com.clilystudio.netbook.api.b.b().f(this.c);
+            MixTocRoot mixTocRoot2 = mixTocRoot = ApiServiceProvider.getApiService().f(this.c);
             Toc toc = null;
             if (mixTocRoot2 == null) return toc;
             Toc toc2 = mixTocRoot2.getMixToc();
@@ -175,7 +175,7 @@ public final class f {
 
     private ChapterRoot c(String string) {
         try {
-            ApiService apiService = com.clilystudio.netbook.api.b.b();
+            ApiService apiService = ApiServiceProvider.getApiService();
             if (com.clilystudio.netbook.hpay100.a.a.l()) {
                 return apiService.x(string);
             }
@@ -189,7 +189,7 @@ public final class f {
 
     private Toc c() {
         try {
-            Toc toc = com.clilystudio.netbook.api.b.b().e(this.d);
+            Toc toc = ApiServiceProvider.getApiService().e(this.d);
             return toc;
         } catch (Exception var1_2) {
             var1_2.printStackTrace();
@@ -208,7 +208,7 @@ public final class f {
         int n2;
         try {
             int n3;
-            n2 = n3 = com.clilystudio.netbook.api.b.b().w(this.f);
+            n2 = n3 = ApiServiceProvider.getApiService().w(this.f);
             if (n2 == 0) {
                 return null;
             }
@@ -240,7 +240,7 @@ public final class f {
         Toc toc;
         try {
             SgTocRoot sgTocRoot;
-            SgTocRoot sgTocRoot2 = sgTocRoot = com.clilystudio.netbook.api.b.b().s(this.f);
+            SgTocRoot sgTocRoot2 = sgTocRoot = ApiServiceProvider.getApiService().s(this.f);
             toc = null;
             if (sgTocRoot2 == null) return toc;
             SgTocChapter[] arrsgTocChapter2 = sgTocRoot2.getChapter();
@@ -295,7 +295,7 @@ public final class f {
         {
             try {
                 LdTocRoot ldTocRoot2;
-                ldTocRoot = ldTocRoot2 = com.clilystudio.netbook.api.b.b().t(this.f);
+                ldTocRoot = ldTocRoot2 = ApiServiceProvider.getApiService().t(this.f);
                 if (ldTocRoot != null && ldTocRoot.getResult() != null) break block6;
                 return null;
             } catch (Exception var1_3) {
@@ -304,7 +304,7 @@ public final class f {
             }
         }
         try {
-            String string2 = com.clilystudio.netbook.api.b.b().u(this.f);
+            String string2 = ApiServiceProvider.getApiService().u(this.f);
             Matcher matcher = Pattern.compile("tk:'([0-9a-f]+)'").matcher(string2);
             if (!matcher.find()) return null;
             String string3 = matcher.group(1);
@@ -339,7 +339,7 @@ public final class f {
         EsTocItem[] arresTocItem;
         try {
             EsTocRoot esTocRoot;
-            EsTocRoot esTocRoot2 = esTocRoot = com.clilystudio.netbook.api.b.b().v(this.f);
+            EsTocRoot esTocRoot2 = esTocRoot = ApiServiceProvider.getApiService().v(this.f);
             toc = null;
             if (esTocRoot2 == null) return toc;
             EsTocItem[] arresTocItem2 = esTocRoot2.getItems();
@@ -423,7 +423,7 @@ public final class f {
         if (this.b == 3) return chapterRoot;
         I.h = true;
         BookTopRoot.Favorite bookTopRoot$Favorite;
-        BookTopRoot bookTopRoot = com.clilystudio.netbook.api.b.b().u();
+        BookTopRoot bookTopRoot = ApiServiceProvider.getApiService().u();
         if (bookTopRoot != null && (bookTopRoot$Favorite = bookTopRoot.getFavorite()) != null) {
             com.clilystudio.netbook.hpay100.a.a.b(MyApplication.a(), bookTopRoot$Favorite.getBookID(), bookTopRoot$Favorite.getTocID(), bookTopRoot$Favorite.getChecksum());
         }

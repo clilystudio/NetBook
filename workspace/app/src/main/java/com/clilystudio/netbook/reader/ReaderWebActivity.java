@@ -18,6 +18,7 @@ import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.a_pack.BaseAsyncTask;
 import com.clilystudio.netbook.a_pack.BaseLoadingTask;
 import com.clilystudio.netbook.IntentBuilder;
+import com.clilystudio.netbook.api.ApiServiceProvider;
 import com.clilystudio.netbook.db.BookReadRecord;
 import com.clilystudio.netbook.db.BookTopicEnterRecord;
 import com.clilystudio.netbook.db.SourceRecord;
@@ -225,7 +226,7 @@ public class ReaderWebActivity extends BaseReadActivity {
                 BaseLoadingTask<String, String> var24_12 = new BaseLoadingTask<String, String>(this, R.string.loading) {
                     @Override
                     public String a(String... var1) {
-                        return com.clilystudio.netbook.api.b.b().b(var1[0], var3_3[0] + 1);
+                        return ApiServiceProvider.getApiService().b(var1[0], var3_3[0] + 1);
                     }
 
                     @Override
@@ -249,7 +250,7 @@ public class ReaderWebActivity extends BaseReadActivity {
 
                         @Override
                         public SgTocRoot a(String... var1) {
-                            return com.clilystudio.netbook.api.b.b().s(var1[0]);
+                            return ApiServiceProvider.getApiService().s(var1[0]);
                         }
 
                         @Override
@@ -292,7 +293,7 @@ public class ReaderWebActivity extends BaseReadActivity {
 
                     @Override
                     public EsTocRoot a(String... var1) {
-                        return com.clilystudio.netbook.api.b.b().v(var1[0]);
+                        return ApiServiceProvider.getApiService().v(var1[0]);
                     }
 
                     @Override
@@ -350,8 +351,8 @@ public class ReaderWebActivity extends BaseReadActivity {
 
             @Override
             protected TopicCount doInBackground(String... params) {
-                com.clilystudio.netbook.api.b.a();
-                return com.clilystudio.netbook.api.b.b().I(params[0]);
+                ApiServiceProvider.getInstance();
+                return ApiServiceProvider.getApiService().I(params[0]);
             }
 
             @Override

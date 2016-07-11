@@ -3,7 +3,7 @@ package com.clilystudio.netbook.reader;
 import android.os.Bundle;
 
 import com.clilystudio.netbook.api.ApiService;
-import com.clilystudio.netbook.api.b;
+import com.clilystudio.netbook.api.ApiServiceProvider;
 
 public class ReaderWebPageFragment extends WebPageFragment {
 
@@ -54,8 +54,8 @@ public class ReaderWebPageFragment extends WebPageFragment {
     protected final String a() {
         int a = this.getArguments().getInt("MODE");
         String string = this.getArguments().getString("KEY");
-        b.a();
-        b.b();
+        ApiServiceProvider.getInstance();
+        ApiServiceProvider.getApiService();
         switch (a) {
             default: {
                 return ApiService.Q(string);

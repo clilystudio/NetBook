@@ -25,6 +25,7 @@ import com.clilystudio.netbook.CachePathConst;
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.IntentBuilder;
 import com.clilystudio.netbook.a_pack.BaseAsyncTask;
+import com.clilystudio.netbook.api.ApiServiceProvider;
 import com.clilystudio.netbook.model.AutoCompleteRoot;
 import com.clilystudio.netbook.model.BookSummary;
 import com.clilystudio.netbook.model.HotKeywordResult;
@@ -228,14 +229,14 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
                 @Override
                 protected List<BookSummary> doInBackground(String... params) {
                     if (SearchActivity.i(SearchActivity.this) == 1) {
-                        List<BookSummary> list = com.clilystudio.netbook.api.b.b().n(params[0]);
-                        SearchPromRoot searchPromRoot = com.clilystudio.netbook.api.b.b().q(params[0]);
+                        List<BookSummary> list = ApiServiceProvider.getApiService().n(params[0]);
+                        SearchPromRoot searchPromRoot = ApiServiceProvider.getApiService().q(params[0]);
                         if (searchPromRoot == null) return list;
                         if (searchPromRoot.getProm() == null) return list;
                         list.add(0, searchPromRoot.getProm());
                         return list;
                     }
-                    SearchResultRoot searchResultRoot = com.clilystudio.netbook.api.b.b().p(params[0]);
+                    SearchResultRoot searchResultRoot = ApiServiceProvider.getApiService().p(params[0]);
                     if (searchResultRoot == null) return null;
                     return searchResultRoot.getBooks();
                 }
@@ -596,8 +597,8 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
                         arrayList.add(string);
                         arrayList.add(constraint.toString());
                         if (!TextUtils.isEmpty(string)) {
-                            com.clilystudio.netbook.api.b.a();
-                            AutoCompleteRoot autoCompleteRoot = com.clilystudio.netbook.api.b.b().N(string);
+                            ApiServiceProvider.getInstance();
+                            AutoCompleteRoot autoCompleteRoot = ApiServiceProvider.getApiService().N(string);
                             if (autoCompleteRoot != null && autoCompleteRoot.getKeywords() != null) {
                                 arrayList.addAll(0, autoCompleteRoot.getKeywords());
                             }

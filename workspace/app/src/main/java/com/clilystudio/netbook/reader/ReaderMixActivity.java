@@ -17,6 +17,7 @@ import com.clilystudio.netbook.a_pack.BaseAsyncTask;
 import com.clilystudio.netbook.am;
 import com.clilystudio.netbook.api.ApiService;
 import com.clilystudio.netbook.IntentBuilder;
+import com.clilystudio.netbook.api.ApiServiceProvider;
 import com.clilystudio.netbook.event.BusProvider;
 import com.clilystudio.netbook.event.ModeChangedEvent;
 import com.clilystudio.netbook.model.ChineseAllPromRoot;
@@ -114,8 +115,8 @@ public class ReaderMixActivity extends BaseLoadingActivity {
 
             @Override
             protected Object[] doInBackground(String... params) {
-                com.clilystudio.netbook.api.b.a();
-                ApiService apiService = com.clilystudio.netbook.api.b.b();
+                ApiServiceProvider.getInstance();
+                ApiService apiService = ApiServiceProvider.getApiService();
                 return new Object[]{apiService.d(params[0]), apiService.aa(params[0])};
             }
 

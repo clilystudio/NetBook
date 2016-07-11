@@ -22,6 +22,7 @@ import android.widget.TextView;
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.a_pack.BaseAsyncTask;
 import com.clilystudio.netbook.am;
+import com.clilystudio.netbook.api.ApiServiceProvider;
 import com.clilystudio.netbook.model.UgcFilterRoot;
 import com.clilystudio.netbook.ui.BaseTabActivity;
 import com.clilystudio.netbook.ui.home.ZssqFragmentPagerAdapter;
@@ -278,7 +279,7 @@ public class UGCMainActivity extends BaseTabActivity implements ViewPager.OnPage
 
             @Override
             protected UgcFilterRoot doInBackground(Void... params) {
-                return com.clilystudio.netbook.api.b.b().o();
+                return ApiServiceProvider.getApiService().o();
             }
 
             @Override

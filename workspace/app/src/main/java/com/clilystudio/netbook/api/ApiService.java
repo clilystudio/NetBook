@@ -343,9 +343,9 @@ public class ApiService {
     private HttpRequest b(HttpRequest httpRequest) {
         httpRequest.chunk(15000).bufferSize(15000);
         UserAgentManager f2 = this.c;
-        String string = "1".equals(OnlineConfigAgent.getInstance().getConfigParams(MyApplication.a(), "ua-toggle")) ? f2.b() : "";
+        String string = "1".equals(OnlineConfigAgent.getInstance().getConfigParams(MyApplication.a(), "ua-toggle")) ? f2.getXUserAgent() : "";
         httpRequest.header(string);
-        httpRequest.header("X-User-Agent", this.c.b());
+        httpRequest.header("X-User-Agent", this.c.getXUserAgent());
         httpRequest.header("X-Device-Id", am.h());
         return httpRequest;
     }

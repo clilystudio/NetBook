@@ -14,6 +14,7 @@ import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.a_pack.BaseAsyncTask;
 import com.clilystudio.netbook.am;
+import com.clilystudio.netbook.api.ApiServiceProvider;
 import com.clilystudio.netbook.event.BusProvider;
 import com.clilystudio.netbook.event.ModeChangedEvent;
 import com.clilystudio.netbook.model.TocSummary;
@@ -152,8 +153,8 @@ public class ReaderMenuFragment extends Fragment {
 
             @Override
             protected List<TocSummary> doInBackground(String... params) {
-                com.clilystudio.netbook.api.b.a();
-                return com.clilystudio.netbook.api.b.b().d(params[0]);
+                ApiServiceProvider.getInstance();
+                return ApiServiceProvider.getApiService().d(params[0]);
             }
 
             @Override

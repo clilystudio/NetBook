@@ -10,6 +10,7 @@ import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.a_pack.BaseLoadingTask;
 import com.clilystudio.netbook.am;
+import com.clilystudio.netbook.api.ApiServiceProvider;
 import com.clilystudio.netbook.event.UgcDraftEvent;
 import com.clilystudio.netbook.event.UpdateUgcListEvent;
 import com.clilystudio.netbook.event.BusProvider;
@@ -122,10 +123,10 @@ public class UGCGuideAddCollectionActivity extends BaseActivity {
                             Account account = am.a(UGCGuideAddCollectionActivity.this);
                             if (account == null) return null;
                             if (UGCGuideAddCollectionActivity.this.c == null)
-                                return com.clilystudio.netbook.api.b.b().b(UGCGuideAddCollectionActivity.e(), account.getToken());
+                                return ApiServiceProvider.getApiService().b(UGCGuideAddCollectionActivity.e(), account.getToken());
                             if (UGCGuideAddCollectionActivity.this.c.equals(""))
-                                return com.clilystudio.netbook.api.b.b().b(UGCGuideAddCollectionActivity.e(), account.getToken());
-                            return com.clilystudio.netbook.api.b.b().b(UGCGuideAddCollectionActivity.e(), account.getToken(), UGCGuideAddCollectionActivity.this.c);
+                                return ApiServiceProvider.getApiService().b(UGCGuideAddCollectionActivity.e(), account.getToken());
+                            return ApiServiceProvider.getApiService().b(UGCGuideAddCollectionActivity.e(), account.getToken(), UGCGuideAddCollectionActivity.this.c);
                         }
 
                         @Override

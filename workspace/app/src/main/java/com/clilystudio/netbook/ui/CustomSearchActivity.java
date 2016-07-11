@@ -8,6 +8,7 @@ import android.widget.EditText;
 
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.a_pack.BaseLoadingTask;
+import com.clilystudio.netbook.api.ApiServiceProvider;
 import com.clilystudio.netbook.model.BookAdd;
 import com.clilystudio.netbook.util.e;
 
@@ -36,7 +37,7 @@ public class CustomSearchActivity extends BaseActivity {
 
                 @Override
                 public BookAdd a(String... var1) {
-                    return com.clilystudio.netbook.api.b.b().f(var1[0], var1[1], var1[2]);
+                    return ApiServiceProvider.getApiService().f(var1[0], var1[1], var1[2]);
                 }
 
                 @Override

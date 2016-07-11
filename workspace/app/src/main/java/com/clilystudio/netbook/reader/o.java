@@ -15,6 +15,7 @@ import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.a_pack.BaseAsyncTask;
 import com.clilystudio.netbook.a_pack.BaseLoadingTask;
 import com.clilystudio.netbook.am;
+import com.clilystudio.netbook.api.ApiServiceProvider;
 import com.clilystudio.netbook.event.BusProvider;
 import com.clilystudio.netbook.event.LoginEvent;
 import com.clilystudio.netbook.event.ThemeChangedEvent;
@@ -121,8 +122,8 @@ public final class o {
 
                 @Override
                 public ChapterSingleKey a(String... var1) {
-                    com.clilystudio.netbook.api.b.a();
-                    return com.clilystudio.netbook.api.b.b().f(var1[0], am.e().getToken());
+                    ApiServiceProvider.getInstance();
+                    return ApiServiceProvider.getApiService().f(var1[0], am.e().getToken());
                 }
 
                 @Override
@@ -255,8 +256,8 @@ public final class o {
 
                         @Override
                         public PurchaseChapterResult a(String... var1) {
-                            com.clilystudio.netbook.api.b.a();
-                            return com.clilystudio.netbook.api.b.b().a(var1[0], var1[1], 0);
+                            ApiServiceProvider.getInstance();
+                            return ApiServiceProvider.getApiService().a(var1[0], var1[1], 0);
                         }
 
                         @Override
@@ -561,8 +562,8 @@ public final class o {
 
                 @Override
                 public PurchaseChapterResult a(String... var1) {
-                    com.clilystudio.netbook.api.b.a();
-                    return com.clilystudio.netbook.api.b.b().a(var1[0], var1[1], 0);
+                    ApiServiceProvider.getInstance();
+                    return ApiServiceProvider.getApiService().a(var1[0], var1[1], 0);
                 }
 
                 @Override
@@ -589,8 +590,8 @@ public final class o {
 
                                 @Override
                                 protected PurchaseChapterResult doInBackground(String... params) {
-                                    com.clilystudio.netbook.api.b.a();
-                                    return com.clilystudio.netbook.api.b.b().a(params[0], params[1], 1);
+                                    ApiServiceProvider.getInstance();
+                                    return ApiServiceProvider.getApiService().a(params[0], params[1], 1);
                                 }
 
                                 @Override
@@ -748,8 +749,8 @@ public final class o {
                 public ChapterKeysRoot a(Void... var1) {
                     if (o.this.b instanceof ReaderActivity) {
                         arg = ((ReaderActivity) o.this.b).l();
-                        com.clilystudio.netbook.api.b.a();
-                        return com.clilystudio.netbook.api.b.b().g(am.e().getToken(), arg);
+                        ApiServiceProvider.getInstance();
+                        return ApiServiceProvider.getApiService().g(am.e().getToken(), arg);
                     }
                     return null;
                 }

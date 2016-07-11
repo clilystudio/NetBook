@@ -18,6 +18,7 @@ import com.clilystudio.netbook.a_pack.BaseAsyncTask;
 import com.clilystudio.netbook.a_pack.BaseLoadingTask;
 import com.clilystudio.netbook.am;
 import com.clilystudio.netbook.IntentBuilder;
+import com.clilystudio.netbook.api.ApiServiceProvider;
 import com.clilystudio.netbook.event.UserInfoChangedEvent;
 import com.clilystudio.netbook.event.BusProvider;
 import com.clilystudio.netbook.model.Account;
@@ -86,7 +87,7 @@ public class ModifyUserInfoActivity extends BaseActivity implements View.OnClick
                     public ChangeGenderRoot a(String... var1) {
                         Account account = am.e();
                         if (account != null) {
-                            return com.clilystudio.netbook.api.b.b().v(account.getToken(), var1[0]);
+                            return ApiServiceProvider.getApiService().v(account.getToken(), var1[0]);
                         }
                         return  null;
                     }
@@ -155,7 +156,7 @@ public class ModifyUserInfoActivity extends BaseActivity implements View.OnClick
 
                         @Override
                         public Root a(String... var1) {
-                            return com.clilystudio.netbook.api.b.b().a(am.a(ModifyUserInfoActivity.this).getToken(), output);
+                            return ApiServiceProvider.getApiService().a(am.a(ModifyUserInfoActivity.this).getToken(), output);
 
                         }
 
@@ -244,7 +245,7 @@ public class ModifyUserInfoActivity extends BaseActivity implements View.OnClick
                                     this.a = var1[0];
                                     Account account = am.e();
                                     if (account != null) {
-                                        return com.clilystudio.netbook.api.b.b().u(account.getToken(), var1[0]);
+                                        return ApiServiceProvider.getApiService().u(account.getToken(), var1[0]);
                                     }
                                     return null;
                                 }
@@ -341,7 +342,7 @@ public class ModifyUserInfoActivity extends BaseActivity implements View.OnClick
 
                 @Override
                 protected UserInfo doInBackground(String... params) {
-                    return com.clilystudio.netbook.api.b.b().K(params[0]);
+                    return ApiServiceProvider.getApiService().K(params[0]);
                 }
 
                 @Override

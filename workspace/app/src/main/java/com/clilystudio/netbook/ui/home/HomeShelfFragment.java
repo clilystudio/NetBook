@@ -28,6 +28,7 @@ import com.clilystudio.netbook.a_pack.BaseLoadingTask;
 import com.clilystudio.netbook.a_pack.BaseAsyncTask;
 import com.clilystudio.netbook.adapter.HomeShelfAdapter;
 import com.clilystudio.netbook.am;
+import com.clilystudio.netbook.api.ApiServiceProvider;
 import com.clilystudio.netbook.db.BookFile;
 import com.clilystudio.netbook.db.BookReadRecord;
 import com.clilystudio.netbook.event.BookAddedEvent;
@@ -516,8 +517,8 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
                 for (BookReadRecord anA : this.a) {
                     arrayList.add(anA.getBookId());
                 }
-                com.clilystudio.netbook.api.b.a();
-                return com.clilystudio.netbook.api.b.b().a(arrayList);
+                ApiServiceProvider.getInstance();
+                return ApiServiceProvider.getApiService().a(arrayList);
             }
 
             @Override
@@ -674,8 +675,8 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
 
                     @Override
                     protected ShelfMsgRoot doInBackground(Void... params) {
-                        com.clilystudio.netbook.api.b.a();
-                        return com.clilystudio.netbook.api.b.b().l();
+                        ApiServiceProvider.getInstance();
+                        return ApiServiceProvider.getApiService().l();
                     }
 
                     @Override
@@ -987,7 +988,7 @@ public class HomeShelfFragment extends HomeFragment implements AbsListView.OnScr
                     int n;
                     BookGenderRecommend bookGenderRecommend;
                     int n2 = 0;
-                    bookGenderRecommend = com.clilystudio.netbook.api.b.b().ac(var1[0]);
+                    bookGenderRecommend = ApiServiceProvider.getApiService().ac(var1[0]);
                     if (!bookGenderRecommend.isOk()) return bookGenderRecommend;
                     BookGenderRecommend.RecommendBook[] recommendBooks = bookGenderRecommend.getBooks();
                     n = recommendBooks.length;

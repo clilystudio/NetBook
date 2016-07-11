@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.R;
+import com.clilystudio.netbook.api.ApiServiceProvider;
 import com.clilystudio.netbook.model.Account;
 
 public class e {
@@ -153,8 +154,8 @@ public class e {
         new Thread() {
             @Override
             public void run() {
-                com.clilystudio.netbook.api.b.a();
-                com.clilystudio.netbook.api.b.b().x(account.getToken(), string);
+                ApiServiceProvider.getInstance();
+                ApiServiceProvider.getApiService().x(account.getToken(), string);
             }
         }.start();
     }

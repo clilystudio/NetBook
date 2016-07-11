@@ -11,7 +11,7 @@ import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.a_pack.BaseAsyncTask;
 import com.clilystudio.netbook.am;
-import com.clilystudio.netbook.api.b;
+import com.clilystudio.netbook.api.ApiServiceProvider;
 import com.clilystudio.netbook.model.ResultStatus;
 import com.clilystudio.netbook.model.UserInfo;
 import com.clilystudio.netbook.ui.BaseActivity;
@@ -43,7 +43,7 @@ public class UserTaskActivity extends BaseActivity {
 
                 @Override
                 protected ResultStatus doInBackground(String... params) {
-                    return b.b().W(am.e().getToken());
+                    return ApiServiceProvider.getApiService().W(am.e().getToken());
                 }
 
                 @Override

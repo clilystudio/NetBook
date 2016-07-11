@@ -2,6 +2,7 @@ package com.clilystudio.netbook.ui;
 
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.a_pack.BaseAsyncTask;
+import com.clilystudio.netbook.api.ApiServiceProvider;
 import com.clilystudio.netbook.model.BookRankDetailRoot;
 
 public class BookRankDetailActivity extends BookListActivity {
@@ -12,7 +13,7 @@ public class BookRankDetailActivity extends BookListActivity {
 
             @Override
             protected BookRankDetailRoot doInBackground(String... params) {
-                return com.clilystudio.netbook.api.b.b().z(params[0]);
+                return ApiServiceProvider.getApiService().z(params[0]);
             }
 
             @Override

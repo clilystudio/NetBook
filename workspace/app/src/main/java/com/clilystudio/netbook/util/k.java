@@ -2,6 +2,7 @@ package com.clilystudio.netbook.util;
 
 import com.clilystudio.netbook.a_pack.BaseAsyncTask;
 import com.clilystudio.netbook.am;
+import com.clilystudio.netbook.api.ApiServiceProvider;
 import com.clilystudio.netbook.db.BookClickRecord;
 import com.clilystudio.netbook.model.ResultStatus;
 
@@ -52,8 +53,8 @@ public final class k {
 
                 @Override
                 protected ResultStatus doInBackground(String... params) {
-                    com.clilystudio.netbook.api.b.a();
-                    return com.clilystudio.netbook.api.b.b().n(params[0], params[1], params[2]);
+                    ApiServiceProvider.getInstance();
+                    return ApiServiceProvider.getApiService().n(params[0], params[1], params[2]);
                 }
 
                 @Override

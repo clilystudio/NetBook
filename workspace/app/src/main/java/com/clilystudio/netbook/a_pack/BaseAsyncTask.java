@@ -4,14 +4,14 @@ import android.os.AsyncTask;
 import android.os.Build;
 
 import com.clilystudio.netbook.api.ApiService;
-import com.clilystudio.netbook.api.b;
+import com.clilystudio.netbook.api.ApiServiceProvider;
 
 public abstract class BaseAsyncTask<Params, Progress, Result> extends AsyncTask<Params, Progress, Result> {
     private final ApiService a;
 
     public BaseAsyncTask() {
-        b.a();
-        this.a = b.b();
+        ApiServiceProvider.getInstance();
+        this.a = ApiServiceProvider.getApiService();
     }
 
     public final AsyncTask<Params, Progress, Result> b(Params... arrParams) {

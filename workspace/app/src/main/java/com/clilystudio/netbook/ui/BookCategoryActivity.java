@@ -14,6 +14,7 @@ import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.a_pack.BaseAsyncTask;
 import com.clilystudio.netbook.am;
 import com.clilystudio.netbook.IntentBuilder;
+import com.clilystudio.netbook.api.ApiServiceProvider;
 import com.clilystudio.netbook.model.CategoryLevelRoot;
 import com.clilystudio.netbook.model.CategoryRoot;
 
@@ -147,7 +148,7 @@ public class BookCategoryActivity extends BaseActivity {
 
             @Override
             protected CategoryRoot doInBackground(String... params) {
-                return com.clilystudio.netbook.api.b.b().e();
+                return ApiServiceProvider.getApiService().e();
             }
 
             @Override
@@ -166,7 +167,7 @@ public class BookCategoryActivity extends BaseActivity {
 
             @Override
             protected CategoryLevelRoot doInBackground(String... params) {
-                return com.clilystudio.netbook.api.b.b().f();
+                return ApiServiceProvider.getApiService().f();
             }
 
             @Override

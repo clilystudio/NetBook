@@ -14,6 +14,7 @@ import com.clilystudio.netbook.ActivityStack;
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.IntentBuilder;
 import com.clilystudio.netbook.a_pack.BaseAsyncTask;
+import com.clilystudio.netbook.api.ApiServiceProvider;
 import com.clilystudio.netbook.db.BookTopicEnterRecord;
 import com.clilystudio.netbook.event.BusProvider;
 import com.clilystudio.netbook.event.ModeChangedEvent;
@@ -87,8 +88,8 @@ public class ReaderResActivity extends ReaderModeActivity {
 
             @Override
             protected TopicCount doInBackground(String... params) {
-                com.clilystudio.netbook.api.b.a();
-                return com.clilystudio.netbook.api.b.b().I(params[0]);
+                ApiServiceProvider.getInstance();
+                return ApiServiceProvider.getApiService().I(params[0]);
             }
 
             @Override

@@ -7,7 +7,7 @@ import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.a_pack.BaseAsyncTask;
 import com.clilystudio.netbook.am;
 
-import com.clilystudio.netbook.api.b;
+import com.clilystudio.netbook.api.ApiServiceProvider;
 import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.model.ResultStatus;
 
@@ -36,8 +36,8 @@ public final class N {
 
             @Override
             protected ResultStatus doInBackground(String... params) {
-                b.a();
-                ResultStatus resultStatus = b.b().y(params[0], params[1]);
+                ApiServiceProvider.getInstance();
+                ResultStatus resultStatus = ApiServiceProvider.getApiService().y(params[0], params[1]);
                 return resultStatus;
             }
 
@@ -77,8 +77,8 @@ public final class N {
 
                             @Override
                             public void run() {
-                                com.clilystudio.netbook.api.b.a();
-                                com.clilystudio.netbook.api.b.b().w(string, stringX);
+                                ApiServiceProvider.getInstance();
+                                ApiServiceProvider.getApiService().w(string, stringX);
                             }
                         }.start();
                         return;
@@ -87,8 +87,8 @@ public final class N {
 
                         @Override
                         public void run() {
-                            com.clilystudio.netbook.api.b.a();
-                            com.clilystudio.netbook.api.b.b().l(string, string2, stringX);
+                            ApiServiceProvider.getInstance();
+                            ApiServiceProvider.getApiService().l(string, string2, stringX);
                         }
                     }.start();
                     return;
@@ -98,8 +98,8 @@ public final class N {
 
                         @Override
                         public void run() {
-                            com.clilystudio.netbook.api.b.a();
-                            com.clilystudio.netbook.api.b.b().e(am.e().getToken(), string, stringX);
+                            ApiServiceProvider.getInstance();
+                            ApiServiceProvider.getApiService().e(am.e().getToken(), string, stringX);
                         }
                     }.start();
                     return;
@@ -108,8 +108,8 @@ public final class N {
 
                     @Override
                     public void run() {
-                        com.clilystudio.netbook.api.b.a();
-                        com.clilystudio.netbook.api.b.b().b(string, string2, stringX);
+                        ApiServiceProvider.getInstance();
+                        ApiServiceProvider.getApiService().b(string, string2, stringX);
                     }
                 }.start();
             }

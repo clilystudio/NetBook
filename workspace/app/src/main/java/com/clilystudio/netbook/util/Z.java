@@ -8,6 +8,7 @@ import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.a_pack.BaseAsyncTask;
 import com.clilystudio.netbook.a_pack.BaseLoadingTask;
 import com.clilystudio.netbook.am;
+import com.clilystudio.netbook.api.ApiServiceProvider;
 import com.clilystudio.netbook.db.BookReadRecord;
 import com.clilystudio.netbook.db.BookSyncRecord;
 import com.clilystudio.netbook.db.SyncAccount;
@@ -159,7 +160,7 @@ public final class Z {
     private RemoteBookShelf a(String string) {
         BookShelfSyncTime bookShelfSyncTime;
         try {
-            bookShelfSyncTime = com.clilystudio.netbook.api.b.b().A(string);
+            bookShelfSyncTime = ApiServiceProvider.getApiService().A(string);
         } catch (Exception var2_6) {
             var2_6.printStackTrace();
             return null;
@@ -176,7 +177,7 @@ public final class Z {
             return remoteBookShelf2;
         }
         try {
-            remoteBookShelf = com.clilystudio.netbook.api.b.b().B(string);
+            remoteBookShelf = ApiServiceProvider.getApiService().B(string);
         } catch (Exception var8_9) {
             var8_9.printStackTrace();
             return null;

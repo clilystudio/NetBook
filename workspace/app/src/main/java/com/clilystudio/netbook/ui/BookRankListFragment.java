@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.a_pack.BaseAsyncTask;
+import com.clilystudio.netbook.api.ApiServiceProvider;
 import com.clilystudio.netbook.model.BookRankDetail;
 import com.clilystudio.netbook.model.BookRankDetailRoot;
 import com.clilystudio.netbook.util.W;
@@ -55,8 +56,8 @@ public class BookRankListFragment extends Fragment {
 
             @Override
             protected BookRankDetailRoot doInBackground(String... params) {
-                com.clilystudio.netbook.api.b.a();
-                return com.clilystudio.netbook.api.b.b().z(BookRankListFragment.this.getArguments().getString("book_list_id"));
+                ApiServiceProvider.getInstance();
+                return ApiServiceProvider.getApiService().z(BookRankListFragment.this.getArguments().getString("book_list_id"));
             }
 
             @Override

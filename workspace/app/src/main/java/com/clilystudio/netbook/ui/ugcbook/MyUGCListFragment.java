@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 
+import com.clilystudio.netbook.api.ApiServiceProvider;
 import com.clilystudio.netbook.event.BusProvider;
 import com.clilystudio.netbook.event.UpdateUgcListEvent;
 import com.clilystudio.netbook.model.Account;
@@ -14,8 +15,8 @@ import com.squareup.otto.Subscribe;
 public class MyUGCListFragment extends AbsUGCListFragment {
     @Override
     protected final UGCBookListRoot a(Account account, int n) {
-        com.clilystudio.netbook.api.b.a();
-        return com.clilystudio.netbook.api.b.b().g(account.getToken(), n);
+        ApiServiceProvider.getInstance();
+        return ApiServiceProvider.getApiService().g(account.getToken(), n);
     }
 
     @Override
