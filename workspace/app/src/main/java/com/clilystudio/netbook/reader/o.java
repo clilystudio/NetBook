@@ -27,7 +27,6 @@ import com.clilystudio.netbook.model.PurchaseChapterResult;
 import com.clilystudio.netbook.ui.user.AuthLoginActivity;
 import com.clilystudio.netbook.widget.JustifyTextView;
 import com.squareup.otto.Subscribe;
-import com.xiaomi.mistatistic.sdk.MiStatInterface;
 import com.xiaomi.mistatistic.sdk.MiStatInterfaceImpl;
 
 import java.text.SimpleDateFormat;
@@ -246,10 +245,6 @@ public final class o {
             this.u.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    MiStatInterface.recordCountEvent("paying_page_purchase", com.clilystudio.netbook.util.I.b);
-                    if (checkBox.isChecked()) {
-                        MiStatInterface.recordCountEvent("paying_page_auto_choose", com.clilystudio.netbook.util.I.b);
-                    }
                     a(o.this, false);
                     com.clilystudio.netbook.hpay100.a.a.b(o.this.b, "auto_buy_chapter" + com.clilystudio.netbook.util.I.a, checkBox.isChecked());
                     BaseLoadingTask<String, PurchaseChapterResult> i2 = new BaseLoadingTask<String, PurchaseChapterResult>(o.this.b, "购买中...") {
@@ -292,7 +287,6 @@ public final class o {
             public void onClick(View v) {
                 if (o.this.b instanceof ReaderActivity) {
                     ((ReaderActivity) o.this.b).i();
-                    MiStatInterface.recordCountEvent("paying_page_cancel", com.clilystudio.netbook.util.I.b);
                 }
             }
         });
@@ -557,7 +551,6 @@ public final class o {
         this.n();
         this.b(n2);
         if (this.a(n2.a())) {
-            MiStatInterface.recordCountEvent("paying_page_auto_purchase", com.clilystudio.netbook.util.I.b);
             BaseLoadingTask<String, PurchaseChapterResult> i2 = new BaseLoadingTask<String, PurchaseChapterResult>(o.this.b, "自动购买中...") {
 
                 @Override
@@ -585,7 +578,6 @@ public final class o {
                     @Override
                     public void a(final ReaderChapter readerChapter) {
                         if (readerChapter != null && o.this.a(readerChapter)) {
-                            MiStatInterface.recordCountEvent("paying_page_auto_purchase", com.clilystudio.netbook.util.I.b);
                             BaseAsyncTask<String, Void, PurchaseChapterResult> j = new BaseAsyncTask<String, Void, PurchaseChapterResult>() {
 
                                 @Override

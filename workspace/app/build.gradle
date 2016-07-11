@@ -29,7 +29,6 @@ dependencies {
     compile project(':PullToRefresh')
     compile project(':SlidingMenu')
     compile files('libs/MiPush_SDK_Client_2_2_21.jar')
-    compile files('libs/MiStats_SDK_Client_1_7_0.jar')
     compile files('libs/activeandroid-3.0.jar')
     compile files('libs/umeng-onlineconfig_v1.0.0.jar')
     compile files('libs/MobCommons-2016.0426.1819.jar')

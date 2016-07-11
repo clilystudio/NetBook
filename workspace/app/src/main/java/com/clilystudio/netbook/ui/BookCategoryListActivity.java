@@ -27,7 +27,6 @@ import com.clilystudio.netbook.am;
 import com.clilystudio.netbook.IntentBuilder;
 import com.clilystudio.netbook.model.CategoryLevelRoot;
 import com.clilystudio.netbook.ui.home.ZssqFragmentPagerAdapter;
-import com.xiaomi.mistatistic.sdk.MiStatInterface;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -63,7 +62,6 @@ public class BookCategoryListActivity extends BaseTabActivity implements ViewPag
                 bookCategoryListActivity.f.showAsDropDown(textView);
             }
         }
-        MiStatInterface.recordCountEvent("book_category_filter_click", null);
         bookCategoryListActivity.e("收起");
     }
 
@@ -77,12 +75,6 @@ public class BookCategoryListActivity extends BaseTabActivity implements ViewPag
             bookCategoryListActivity.g.notifyDataSetChanged();
             bookCategoryListActivity.j.get(bookCategoryListActivity.k.getCurrentItem()).a();
             bookCategoryListActivity.j.get(bookCategoryListActivity.k.getCurrentItem()).b(bookCategoryListActivity.g());
-            String string2 = bookCategoryListActivity.b ? "男生 - " : "女生 - ";
-            if (string.equals(bookCategoryListActivity.c)) {
-                com.clilystudio.netbook.hpay100.a.a.p(bookCategoryListActivity, string2 + string);
-            } else {
-                MiStatInterface.recordCountEvent("book_category_minor_click", string2 + bookCategoryListActivity.c + " - " + string);
-            }
         }
         bookCategoryListActivity.i();
     }
@@ -286,7 +278,6 @@ public class BookCategoryListActivity extends BaseTabActivity implements ViewPag
         int n = this.a.getCurrentTab();
         if (n >= 0 && n < this.l.getCount()) {
             this.k.setCurrentItem(n, true);
-            MiStatInterface.recordCountEvent("book_category_tab_click", this.i[n]);
         }
     }
 

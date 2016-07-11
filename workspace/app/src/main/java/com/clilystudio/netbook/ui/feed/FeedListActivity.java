@@ -21,7 +21,6 @@ import com.clilystudio.netbook.ui.BaseActivity;
 import com.clilystudio.netbook.util.W;
 import com.clilystudio.netbook.widget.CoverView;
 import com.squareup.otto.Subscribe;
-import com.xiaomi.mistatistic.sdk.MiStatInterface;
 
 import java.util.List;
 

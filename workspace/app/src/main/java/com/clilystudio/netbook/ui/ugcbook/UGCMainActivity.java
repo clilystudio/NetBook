@@ -29,7 +29,6 @@ import com.clilystudio.netbook.ui.home.ZssqFragmentPagerAdapter;
 import com.clilystudio.netbook.ui.user.UserUGCActivity;
 import com.clilystudio.netbook.util.D;
 import com.clilystudio.netbook.widget.UgcFilterTextView;
-import com.xiaomi.mistatistic.sdk.MiStatInterface;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -35,7 +35,6 @@ import com.clilystudio.netbook.util.t;
 import com.clilystudio.netbook.widget.CoverView;
 import com.clilystudio.netbook.widget.TagsLayout;
 import com.squareup.otto.Subscribe;
-import com.xiaomi.mistatistic.sdk.MiStatInterface;
 import com.xiaomi.mistatistic.sdk.MiStatInterfaceImpl;
 
 import uk.me.lewisdeane.ldialogs.BaseDialog;
@@ -496,7 +495,6 @@ public class BookInfoActivity extends BaseActivity implements View.OnClickListen
             @Override
             public void a() {
                 BookInfoActivity.a(BookInfoActivity.this);
-                MiStatInterface.recordCountEvent("book_info_download", null);
             }
 
             @Override
@@ -543,7 +541,6 @@ public class BookInfoActivity extends BaseActivity implements View.OnClickListen
         this.i = bl;
         BusProvider.getInstance().register(this);
         this.j();
-        MiStatInterface.recordCountEvent("book_info_open", null);
         this.l = this.getIntent().getIntExtra("open_type", 0);
     }
 

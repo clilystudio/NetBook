@@ -37,7 +37,6 @@ import com.clilystudio.netbook.widget.CoverView;
 import com.clilystudio.netbook.widget.SearchEditText;
 import com.clilystudio.netbook.widget.ax;
 import com.clilystudio.netbook.widget.i;
-import com.xiaomi.mistatistic.sdk.MiStatInterface;
 import com.xiaomi.mistatistic.sdk.MiStatInterfaceImpl;
 
 import java.util.ArrayList;
@@ -474,7 +473,6 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
             @Override
             public void onClick(View v) {
                 SearchActivity.d(SearchActivity.this);
-                MiStatInterface.recordCountEvent("search_history_clear", null);
             }
         });
         this.x = com.clilystudio.netbook.hpay100.a.a.k(CachePathConst.SearchHistory, "search_history.txt");
@@ -506,7 +504,6 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
             this.r.setOnItemClickListener(new i() {
                 @Override
                 public void a(String var1) {
-                    com.clilystudio.netbook.hpay100.a.a.t(SearchActivity.this, var1);
                     SearchActivity.a(SearchActivity.this, var1);
                 }
             });
@@ -542,7 +539,6 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
                     SearchActivity.e(SearchActivity.this).setOnItemClickListener(new i() {
                         @Override
                         public void a(String var1) {
-                            com.clilystudio.netbook.hpay100.a.a.t(SearchActivity.this, var1);
                             SearchActivity.a(SearchActivity.this, var1);
                         }
                     });

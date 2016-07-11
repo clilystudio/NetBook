@@ -12,7 +12,6 @@ import android.widget.LinearLayout;
 import android.widget.SeekBar;
 
 import com.clilystudio.netbook.R;
-import com.xiaomi.mistatistic.sdk.MiStatInterface;
 
 public class SettingWidget extends LinearLayout {
     private bZ a;
@@ -106,7 +105,6 @@ public class SettingWidget extends LinearLayout {
             view.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    MiStatInterface.recordCountEvent("auto_read_start", null);
                     com.clilystudio.netbook.hpay100.a.a.D(SettingWidget.this.getContext());
                     dc2.a();
                 }

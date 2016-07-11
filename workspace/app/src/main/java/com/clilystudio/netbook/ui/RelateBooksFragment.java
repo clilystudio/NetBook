@@ -19,7 +19,6 @@ import com.clilystudio.netbook.model.RelateBookRoot;
 import com.clilystudio.netbook.reader.cM;
 import com.clilystudio.netbook.util.F;
 import com.clilystudio.netbook.widget.CoverView;
-import com.xiaomi.mistatistic.sdk.MiStatInterface;
 
 import java.util.List;
 
@@ -78,9 +77,7 @@ public class RelateBooksFragment extends Fragment implements cM.cQ {
             var15_21.mContainer.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    int n;
-                    MiStatInterface.recordCountEvent("book_info_recommend_click", "zhuishu");
-                    n = 1;
+                    int n = 1;
                     Intent intent = BookInfoActivity.a(RelateBooksFragment.this.getActivity(), var12_18.getId(), n);
                     RelateBooksFragment.this.startActivity(intent);
                 }

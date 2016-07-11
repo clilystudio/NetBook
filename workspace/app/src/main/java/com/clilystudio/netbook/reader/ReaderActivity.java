@@ -53,7 +53,6 @@ import com.clilystudio.netbook.util.k;
 import com.clilystudio.netbook.widget.ThemeLoadingView;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 import com.squareup.otto.Subscribe;
-import com.xiaomi.mistatistic.sdk.MiStatInterface;
 
 import java.util.Date;
 import java.util.HashMap;
@@ -1710,7 +1709,6 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
             public void onOpened() {
                 ReaderActivity.a(ReaderActivity.this);
                 ReaderActivity.this.a(ReaderActivity.this.Q);
-                com.clilystudio.netbook.hpay100.a.a.q(ReaderActivity.this, "打开页尾");
             }
         });
         this.m = (PagerWidget) this.findViewById(R.id.main_view);
@@ -1959,7 +1957,6 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
             }.b();
         }
         new k(this.c).a();
-        MiStatInterface.recordCountEvent("read_mode_33_new", com.clilystudio.netbook.hpay100.a.a.g(this.L));
     }
 
     /*

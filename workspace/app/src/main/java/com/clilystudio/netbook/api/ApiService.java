@@ -107,7 +107,6 @@ import com.google.gson.JsonParseException;
 import com.google.gson.JsonParser;
 import com.google.gson.JsonSyntaxException;
 import com.umeng.onlineconfig.OnlineConfigAgent;
-import com.xiaomi.mistatistic.sdk.MiStatInterface;
 import com.xiaomi.mistatistic.sdk.URLStatsRecorder;
 import com.xiaomi.mistatistic.sdk.controller.HttpEventFilter;
 import com.xiaomi.mistatistic.sdk.data.HttpEvent;

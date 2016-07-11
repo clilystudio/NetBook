@@ -10,7 +10,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.clilystudio.netbook.R;
-import com.xiaomi.mistatistic.sdk.MiStatInterface;
 
 public class AutoReaderSetWidget extends LinearLayout implements View.OnClickListener {
     private Context a;
@@ -37,9 +36,6 @@ public class AutoReaderSetWidget extends LinearLayout implements View.OnClickLis
     }
 
     public final void b() {
-        if (this.c != this.b) {
-            MiStatInterface.recordCalculateEvent("auto_read_speed", null, this.b);
-        }
         this.setVisibility(View.GONE);
     }
 

@@ -59,7 +59,6 @@ import com.clilystudio.netbook.util.InsideLinkIntent;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.squareup.otto.Subscribe;
-import com.xiaomi.mistatistic.sdk.MiStatInterface;
 
 import java.io.File;
 import java.util.ArrayList;

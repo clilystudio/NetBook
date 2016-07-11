@@ -11,7 +11,6 @@ import android.view.ViewGroup;
 
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.event.*;
-import com.xiaomi.mistatistic.sdk.MiStatInterface;
 
 public class GenderIntroDialog extends DialogFragment {
     @Override

@@ -56,7 +56,6 @@ import com.clilystudio.netbook.widget.TabWidgetV2;
 import com.squareup.otto.Subscribe;
 import com.umeng.onlineconfig.OnlineConfigAgent;
 import com.xiaomi.mipush.sdk.MiPushClient;
-import com.xiaomi.mistatistic.sdk.MiStatInterface;
 
 import java.io.BufferedReader;
 import java.io.IOException;

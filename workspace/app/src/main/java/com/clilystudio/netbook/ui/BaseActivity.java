@@ -13,14 +13,11 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.api.ApiServiceProvider;
-import com.clilystudio.netbook.model.UGCNewCollection;
 import com.clilystudio.netbook.ui.home.HomeActivity;
 import com.clilystudio.netbook.ui.user.AuthLoginActivity;
 import com.clilystudio.netbook.util.e;
-import com.xiaomi.mistatistic.sdk.MiStatInterface;
 
 public class BaseActivity extends AppCompatActivity {
     protected ApiServiceProvider d = ApiServiceProvider.getInstance();

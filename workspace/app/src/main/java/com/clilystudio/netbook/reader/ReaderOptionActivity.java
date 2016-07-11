@@ -21,7 +21,6 @@ import com.clilystudio.netbook.event.ConvertChangedEvent;
 import com.clilystudio.netbook.ui.BaseActivity;
 import com.clilystudio.netbook.util.I;
 import com.clilystudio.netbook.widget.SettingItem;
-import com.xiaomi.mistatistic.sdk.MiStatInterface;
 
 import uk.me.lewisdeane.ldialogs.BaseDialog;
 
@@ -135,28 +134,24 @@ public class ReaderOptionActivity extends BaseActivity {
                 var2_2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                     @Override
                     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                        MiStatInterface.recordCountEvent("volume_keys_flip", "" + isChecked);
                         ReaderOptionActivity.a(var2_2, isChecked);
                     }
                 });
                 var3_3.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                     @Override
                     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                        MiStatInterface.recordCountEvent("click_flip_animation", "" + isChecked);
                         ReaderOptionActivity.a(var3_3, isChecked);
                     }
                 });
                 var4_4.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                     @Override
                     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                        MiStatInterface.recordCountEvent("reader_opt_full_screen", "" + isChecked);
                         ReaderOptionActivity.a(var4_4, isChecked);
                     }
                 });
                 var5_5.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                     @Override
                     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                        MiStatInterface.recordCountEvent("convert_t", "" + isChecked);
                         BusProvider.getInstance().post(new ConvertChangedEvent());
                         ReaderOptionActivity.a(var5_5, isChecked);
                     }
@@ -171,7 +166,6 @@ public class ReaderOptionActivity extends BaseActivity {
                 var6_6.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                     @Override
                     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                        MiStatInterface.recordCountEvent("auto_buy_chapter" + I.a, "" + isChecked);
                         ReaderOptionActivity.a(var6_6, isChecked);
                     }
                 });
@@ -190,7 +184,6 @@ public class ReaderOptionActivity extends BaseActivity {
                         @Override
                         public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                             com.clilystudio.netbook.hpay100.a.a.b(ReaderOptionActivity.this, "key_enable_imersive_mode", isChecked);
-                            MiStatInterface.recordCountEvent("imersive_switcher", null);
                         }
                     });
                 }

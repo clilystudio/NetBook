@@ -64,7 +64,6 @@ import com.clilystudio.netbook.util.t;
 import com.integralblue.httpresponsecache.compat.java.lang.ArrayIndexOutOfBoundsException;
 import com.umeng.onlineconfig.OnlineConfigAgent;
 import com.xiaomi.mipush.sdk.MiPushClient;
-import com.xiaomi.mistatistic.sdk.MiStatInterface;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -2386,10 +2385,6 @@ public class a {
         return hashMap;
     }
 
-    public static void p(Context context, String string2) {
-        MiStatInterface.recordCountEvent("book_category_major_click", string2);
-    }
-
     public static boolean p(String string2) {
         return string2.equals("POST") || string2.equals("PUT") || string2.equals("PATCH");
     }
@@ -2398,10 +2393,6 @@ public class a {
         d = d(context, "CIPHER_BOOK_ID", null);
         e = d(context, "CIPHER_TOC_ID", null);
         f = d(context, "CIPHER_CHECKSUM", null);
-    }
-
-    public static void q(Context context, String string2) {
-        MiStatInterface.recordCountEvent("reader_menu_event", string2);
     }
 
     public static boolean q(String string2) {
@@ -2442,16 +2433,8 @@ public class a {
         return "book:" + string2;
     }
 
-    public static void s(Context context, String string2) {
-        MiStatInterface.recordCountEvent("post_official_open", string2);
-    }
-
     public static boolean s(Context context) {
         return r(context) == 1;
-    }
-
-    public static void t(Context context, String string2) {
-        MiStatInterface.recordCountEvent("HOT_KEY_WORD_CLICK", string2);
     }
 
     public static void t(String string2) {
@@ -2482,7 +2465,6 @@ public class a {
     public static void u(Context context) {
         int n2 = t.a();
         if (n2 != a(context, "key_all_post_open_by_day", 0)) {
-            MiStatInterface.recordCountEvent("all_post_open_by_day", null);
             b(context, "key_all_post_open_by_day", n2);
         }
     }
@@ -2504,7 +2486,6 @@ public class a {
     public static void v(Context context) {
         int n2 = t.a();
         if (n2 != a(context, "key_audiobook_listen_count", 0)) {
-            MiStatInterface.recordCountEvent("audiobook_listen_count", null);
             b(context, "key_audiobook_listen_count", n2);
         }
     }

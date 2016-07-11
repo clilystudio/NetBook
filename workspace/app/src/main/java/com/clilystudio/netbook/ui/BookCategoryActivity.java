@@ -120,8 +120,6 @@ public class BookCategoryActivity extends BaseActivity {
                 @Override
                 public void onClick(View v) {
                     BookCategoryActivity.this.startActivity(BookCategoryListActivity.a(BookCategoryActivity.this, bl, string));
-                    String string1 = bl ? "\u7537\u751f - " : "\u5973\u751f - ";
-                    com.clilystudio.netbook.hpay100.a.a.p(BookCategoryActivity.this, string1 + string);
                 }
             });
             TextView textView = new TextView(this);
