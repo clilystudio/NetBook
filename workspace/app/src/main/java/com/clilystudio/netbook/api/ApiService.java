@@ -247,26 +247,6 @@ public class ApiService {
         return arrayList;
     }
 
-    public static void j(String string, int n) {
-        if (!TextUtils.isEmpty(string)) {
-            String[] arrstring = string.split(",");
-            if (arrstring.length >= n) {
-                for (int j = 0; j < arrstring.length; ++j) {
-                    arrstring[j] = arrstring[j].trim();
-                }
-                if (!TextUtils.isEmpty(arrstring[0]) && !i.equals(arrstring[0])) {
-                    i = arrstring[0];
-                }
-                if (!TextUtils.isEmpty(arrstring[1]) && !ApiService.j.equals(arrstring[1])) {
-                    ApiService.j = arrstring[1];
-                }
-                if (!TextUtils.isEmpty(arrstring[2]) && !ApiService.k.equals(arrstring[2])) {
-                    ApiService.k = arrstring[2];
-                }
-            }
-        }
-    }
-
     private static ChapterRoot w() {
         ChapterRoot chapterRoot = new ChapterRoot();
         chapterRoot.setStatus(-3);

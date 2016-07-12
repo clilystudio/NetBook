@@ -7,6 +7,7 @@ import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -20,6 +21,7 @@ import android.graphics.drawable.NinePatchDrawable;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Process;
+import android.preference.PreferenceManager;
 import android.provider.Settings;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
@@ -499,7 +501,8 @@ public class am {
     }
 
     public static String h(Context context) {
-        String string = com.clilystudio.netbook.hpay100.a.a.d(context, "pref_new_imp_notif_time", null);
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+        String string = sharedPreferences.getString("pref_new_imp_notif_time", null);
         if (string == null) {
             string = "0";
             com.clilystudio.netbook.hpay100.a.a.e(context, "pref_new_imp_notif_time", string);
@@ -513,7 +516,8 @@ public class am {
     }
 
     public static String i(Context context) {
-        String string = com.clilystudio.netbook.hpay100.a.a.d(context, "pref_new_unimp_notif_time", null);
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+        String string = sharedPreferences.getString("pref_new_unimp_notif_time", null);
         if (string == null) {
             string = "0";
             com.clilystudio.netbook.hpay100.a.a.e(context, "pref_new_unimp_notif_time", string);

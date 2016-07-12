@@ -113,9 +113,9 @@ import okio.ByteString;
 public class a {
     public static int a;
     private static float c;
-    private static String d;
-    private static String e;
-    private static String f;
+    private static String cipherBookId;
+    private static String cipherTocId;
+    private static String cipherCheckSum;
     private final ViewPager b;
 
     public a(ViewPager viewPager) {
@@ -126,14 +126,14 @@ public class a {
      * Enabled aggressive block sorting
      */
     public static String A(String string) {
-        if (d == null || e == null || f == null) {
+        if (cipherBookId == null || cipherTocId == null || cipherCheckSum == null) {
             return null;
         }
         boolean bl = false;
         if (bl) {
             return null;
         }
-        String string2 = CipherUtil.b(e, CipherUtil.b(d, f)).substring(0, 20);
+        String string2 = CipherUtil.b(cipherTocId, CipherUtil.b(cipherBookId, cipherCheckSum)).substring(0, 20);
         if (!I.h) {
             return CipherUtil.getNewAdvert(string2, string, MyApplication.getInstance());
         }
@@ -1753,9 +1753,9 @@ public class a {
     }
 
     public static void b(Context context, String string2, String string3, String string4) {
-        d = string2;
-        e = string3;
-        f = string4;
+        cipherBookId = string2;
+        cipherTocId = string3;
+        cipherCheckSum = string4;
         e(context, "CIPHER_BOOK_ID", string2);
         e(context, "CIPHER_TOC_ID", string3);
         e(context, "CIPHER_CHECKSUM", string4);
@@ -1892,19 +1892,6 @@ public class a {
 
     public static int d(Context context, String string2) {
         return b(context, "drawable", string2);
-    }
-
-    public static String d(Context context, String string2, String string3) {
-        if (context == null) {
-            return string3;
-        }
-        return PreferenceManager.getDefaultSharedPreferences(context).getString(string2, string3);
-    }
-
-    public static void d(Context context, String string2, int n2) {
-        SharedPreferences.Editor editor = context.getSharedPreferences("mistat", 0).edit();
-        editor.putInt(string2, n2);
-        editor.apply();
     }
 
     public static void d(Context context, String string2, long l2) {
@@ -2389,10 +2376,11 @@ public class a {
         return string2.equals("POST") || string2.equals("PUT") || string2.equals("PATCH");
     }
 
-    public static void q(Context context) {
-        d = d(context, "CIPHER_BOOK_ID", null);
-        e = d(context, "CIPHER_TOC_ID", null);
-        f = d(context, "CIPHER_CHECKSUM", null);
+    public static void initCipherInfo(Context context) {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+        cipherBookId = sharedPreferences.getString("CIPHER_BOOK_ID", null);
+        cipherTocId = sharedPreferences.getString("CIPHER_TOC_ID", null);
+        cipherCheckSum = sharedPreferences.getString("CIPHER_CHECKSUM", null);
     }
 
     public static boolean q(String string2) {

@@ -5,7 +5,6 @@ import android.app.Application;
 import android.content.Context;
 import android.os.Process;
 import android.preference.PreferenceManager;
-import android.text.TextUtils;
 import android.util.Log;
 
 import com.activeandroid.ActiveAndroid;
@@ -20,13 +19,9 @@ import com.clilystudio.netbook.reader.Reader;
 import com.integralblue.httpresponsecache.HttpResponseCache;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
-import com.umeng.onlineconfig.OnlineConfigAgent;
-import com.umeng.onlineconfig.UmengOnlineConfigureListener;
 import com.xiaomi.channel.commonutils.logger.LoggerInterface;
 import com.xiaomi.mipush.sdk.Logger;
 import com.xiaomi.mipush.sdk.MiPushClient;
-
-import org.json.JSONObject;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -46,6 +41,8 @@ public class MyApplication extends Application {
     public static final String TAG = "QuiteBook";
     private static final String MIPUSH_APP_ID = "2882303761517133731";
     private static final String MIPUSH_APP_KEY = "5941713373731";
+    private static final String DEFUALT_API_URL = "zhuishushenqi.com";
+    private static final String READER_WEB_URL = "5941713373731";
     private static MyApplication mApp = null;
     public UGCNewCollection mUGCNewCollection;
     private Reader mReader;
@@ -206,10 +203,10 @@ public class MyApplication extends Application {
     public void onCreate() {
         super.onCreate();
         mApp = this;
-        String useHttpDns = OnlineConfigAgent.getInstance().getConfigParams(mApp, "use_http_dns");
-        DnsManager.setUseDns("1".equals(useHttpDns));
-        com.clilystudio.netbook.hpay100.a.a.q(this);
         ActiveAndroid.initialize(this);
+        DnsManager.setUseDns(true);
+        ApiService.a(DEFUALT_API_URL);
+        com.clilystudio.netbook.hpay100.a.a.initCipherInfo(this);
         new Thread() {
             @Override
             public void run() {
@@ -221,16 +218,6 @@ public class MyApplication extends Application {
                 }
             }
         }.start();
-        OnlineConfigAgent.getInstance().setOnlineConfigListener(new UmengOnlineConfigureListener() {
-            @Override
-            public void onDataReceived(JSONObject jsonObject) {
-                String string = OnlineConfigAgent.getInstance().getConfigParams(mApp, "set_default_api");
-                if (!TextUtils.isEmpty(string)) {
-                    ApiService.a(string);
-                }
-                ApiService.j(OnlineConfigAgent.getInstance().getConfigParams(mApp, "reader_web_url"), 4);
-            }
-        });
         if (shouldInit()) {
             MiPushClient.registerPush(this, MIPUSH_APP_ID, MIPUSH_APP_KEY);
             LoggerInterface newLogger = new LoggerInterface() {
