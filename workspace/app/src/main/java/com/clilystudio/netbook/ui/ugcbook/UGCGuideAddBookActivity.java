@@ -29,7 +29,7 @@ import com.clilystudio.netbook.ui.BaseActivity;
 import com.clilystudio.netbook.util.W;
 import com.clilystudio.netbook.widget.CoverView;
 import com.clilystudio.netbook.widget.SearchEditText;
-import com.clilystudio.netbook.widget.ax;
+import com.clilystudio.netbook.widget.OnUserInputListener;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -315,7 +315,7 @@ public class UGCGuideAddBookActivity extends BaseActivity implements View.OnClic
         this.h.setAdapter(searchPromptAdapter);
         this.h.setOnItemClickListener(searchPromptAdapter);
         this.c = (SearchEditText) view.findViewById(R.id.search_input_edit);
-        this.c.setOnUserInputListener(new ax() {
+        this.c.setOnUserInputListener(new OnUserInputListener() {
             @Override
             public void a() {
                 UGCGuideAddBookActivity.a(UGCGuideAddBookActivity.this, true);

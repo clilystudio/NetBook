@@ -8,7 +8,7 @@ import android.widget.EditText;
 
 public class SearchEditText extends EditText {
     private boolean a;
-    private ax b;
+    private OnUserInputListener b;
 
     public SearchEditText(Context context) {
         super(context);
@@ -29,7 +29,7 @@ public class SearchEditText extends EditText {
         return bl;
     }
 
-    static /* synthetic */ ax b(SearchEditText searchEditText) {
+    static /* synthetic */ OnUserInputListener b(SearchEditText searchEditText) {
         return searchEditText.b;
     }
 
@@ -57,7 +57,7 @@ public class SearchEditText extends EditText {
         });
     }
 
-    public void setOnUserInputListener(ax ax2) {
+    public void setOnUserInputListener(OnUserInputListener ax2) {
         this.b = ax2;
     }
 
