@@ -105,4 +105,8 @@ public class LoadingProgressView extends ProgressView {
     public final boolean b() {
         return this.a;
     }
+
+    public interface OnLoadingProgressListener {
+        void onEnd();
+    }
 }
