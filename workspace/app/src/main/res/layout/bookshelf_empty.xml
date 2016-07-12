@@ -22,7 +22,7 @@
         android:textColor="#ffc6c6c6"
         android:textSize="@dimen/text_size_19"/>
 
-    <com.clilystudio.netbook.widget.SAutoFrameLayout
+    <FrameLayout
         android:id="@id/add_new_book"
         android:layout_width="172.0dip"
         android:layout_height="44.0dip"
@@ -40,5 +40,5 @@
             android:text="去添加"
             android:textColor="#ffffffff"
             android:textSize="@dimen/text_size_16"/>
-    </com.clilystudio.netbook.widget.SAutoFrameLayout>
+    </FrameLayout>
 </LinearLayout>

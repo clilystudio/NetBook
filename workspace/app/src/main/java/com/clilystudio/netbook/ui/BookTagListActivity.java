@@ -19,7 +19,7 @@ import com.clilystudio.netbook.model.BookTagRoot;
 import com.clilystudio.netbook.util.W;
 import com.clilystudio.netbook.widget.CoverView;
 import com.clilystudio.netbook.widget.ScrollLoadListView;
-import com.clilystudio.netbook.widget.av;
+import com.clilystudio.netbook.widget.OnLastItemListener;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -32,10 +32,10 @@ public class BookTagListActivity extends BaseLoadingActivity {
     private ScrollLoadListView e;
     private View f;
     private List<BookSummary> g = new ArrayList<>();
-    private av h;
+    private OnLastItemListener h;
 
     public BookTagListActivity() {
-        this.h = new av() {
+        this.h = new OnLastItemListener() {
             @Override
             public void a() {
                 if (BookTagListActivity.this.a == null || BookTagListActivity.this.a.getStatus() == AsyncTask.Status.FINISHED) {
@@ -112,7 +112,7 @@ public class BookTagListActivity extends BaseLoadingActivity {
         return bookTagListActivity.e;
     }
 
-    static /* synthetic */ av f(BookTagListActivity bookTagListActivity) {
+    static /* synthetic */ OnLastItemListener f(BookTagListActivity bookTagListActivity) {
         return bookTagListActivity.h;
     }
 

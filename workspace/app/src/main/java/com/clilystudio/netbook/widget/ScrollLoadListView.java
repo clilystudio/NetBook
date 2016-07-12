@@ -6,7 +6,7 @@ import android.widget.AbsListView;
 import android.widget.ListView;
 
 public class ScrollLoadListView extends ListView implements AbsListView.OnScrollListener {
-    private av a;
+    private OnLastItemListener a;
     private boolean b;
 
     public ScrollLoadListView(Context context) {
@@ -41,7 +41,7 @@ public class ScrollLoadListView extends ListView implements AbsListView.OnScroll
         }
     }
 
-    public void setOnLastItemListener(av av2) {
+    public void setOnLastItemListener(OnLastItemListener av2) {
         this.a = av2;
     }
 }
