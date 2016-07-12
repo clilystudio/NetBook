@@ -68,4 +68,8 @@ public class SearchEditText extends EditText {
             this.setSelection(string.length());
         }
     }
+
+    public interface OnUserInputListener {
+        void a();
+    }
 }

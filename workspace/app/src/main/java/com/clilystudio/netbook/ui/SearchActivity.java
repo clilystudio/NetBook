@@ -35,7 +35,6 @@ import com.clilystudio.netbook.util.W;
 import com.clilystudio.netbook.widget.AutoFlowView;
 import com.clilystudio.netbook.widget.CoverView;
 import com.clilystudio.netbook.widget.SearchEditText;
-import com.clilystudio.netbook.widget.OnUserInputListener;
 import com.clilystudio.netbook.widget.i;
 
 import java.util.ArrayList;
@@ -369,7 +368,7 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
         this.i.setAdapter(searchPromptAdapter);
         this.i.setOnItemClickListener(searchPromptAdapter);
         this.e = (SearchEditText) view.findViewById(R.id.search_input_edit);
-        this.e.setOnUserInputListener(new OnUserInputListener() {
+        this.e.setOnUserInputListener(new SearchEditText.OnUserInputListener() {
             @Override
             public void a() {
                 String string = String.valueOf(Calendar.getInstance().getTimeInMillis());
