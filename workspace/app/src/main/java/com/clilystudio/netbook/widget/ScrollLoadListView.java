@@ -44,4 +44,8 @@ public class ScrollLoadListView extends ListView implements AbsListView.OnScroll
     public void setOnLastItemListener(OnLastItemListener av2) {
         this.a = av2;
     }
+
+    public interface OnLastItemListener {
+        void a();
+    }
 }
