@@ -12,7 +12,7 @@ import com.clilystudio.netbook.db.BookReadRecord;
 import com.clilystudio.netbook.event.BusProvider;
 import com.clilystudio.netbook.event.FeedAddedEvent;
 import com.clilystudio.netbook.ui.BaseActivity;
-import com.clilystudio.netbook.ui.aa;
+import com.clilystudio.netbook.ui.BaseCallBack;
 import com.clilystudio.netbook.util.W;
 import com.clilystudio.netbook.util.e;
 import com.clilystudio.netbook.widget.CoverView;
@@ -53,7 +53,7 @@ public class FeedAddActivity extends BaseActivity {
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         this.setContentView(R.layout.activity_feed_add);
-        this.a(R.string.feed_select_book, R.string.feed_add_ok, new aa() {
+        this.a(R.string.feed_select_book, R.string.feed_add_ok, new BaseCallBack() {
             @Override
             public void a() {
                 FeedAddActivity.a(FeedAddActivity.this);

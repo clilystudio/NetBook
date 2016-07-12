@@ -70,7 +70,7 @@ public class CustomSearchActivity extends BaseActivity {
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         this.setContentView(R.layout.activity_custom_search);
-        this.a(R.string.add_book_title, R.string.add_book_create, new aa() {
+        this.a(R.string.add_book_title, R.string.add_book_create, new BaseCallBack() {
             @Override
             public void a() {
                 CustomSearchActivity.a(CustomSearchActivity.this);

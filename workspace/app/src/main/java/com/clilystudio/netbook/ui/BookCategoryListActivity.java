@@ -223,7 +223,7 @@ public class BookCategoryListActivity extends BaseTabActivity implements ViewPag
         if (this.h) {
             this.b(this.c);
         } else {
-            this.a(this.c, "筛选", new aa() {
+            this.a(this.c, "筛选", new BaseCallBack() {
                 @Override
                 public void a() {
                     BookCategoryListActivity.a(BookCategoryListActivity.this);

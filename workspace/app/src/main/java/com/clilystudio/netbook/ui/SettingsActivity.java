@@ -119,7 +119,7 @@ public class SettingsActivity extends BaseActivity implements View.OnClickListen
         super.onCreate(bundle);
         this.setContentView(R.layout.activity_setting);
         if (this.getIntent().getBooleanExtra("from_user_info", false)) {
-            this.a(R.string.settings, "退出登录", new aa() {
+            this.a(R.string.settings, "退出登录", new BaseCallBack() {
                 @Override
                 public void a() {
                     SettingsActivity.a(SettingsActivity.this);

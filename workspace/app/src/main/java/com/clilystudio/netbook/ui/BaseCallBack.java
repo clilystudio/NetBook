@@ -1,5 +1,5 @@
 package com.clilystudio.netbook.ui;
 
-public interface aa {
+public interface BaseCallBack {
     void a();
 }

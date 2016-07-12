@@ -47,11 +47,11 @@ public class BaseActivity extends AppCompatActivity {
         }
     }
 
-    public final void a(int n, int n2, aa aa2) {
+    public final void a(int n, int n2, BaseCallBack aa2) {
         this.a(this.getString(n), this.getString(n2), aa2);
     }
 
-    public final void a(int n, String string, int n2, final ab ab2) {
+    public final void a(int n, String string, int n2, final ActionBarClickListener ab2) {
         this.c();
         View view = LayoutInflater.from(this).inflate(R.layout.ab_custom_text_icon_view, (ViewGroup) getWindow().getDecorView(), false);
         ((TextView) view.findViewById(R.id.title)).setText(n);
@@ -68,13 +68,13 @@ public class BaseActivity extends AppCompatActivity {
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ab2.a();
+                ab2.onTextClick();
             }
         });
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ab2.b();
+                ab2.onIconClick();
             }
         });
         ActionBar actionBar = getActionBar();
@@ -83,11 +83,11 @@ public class BaseActivity extends AppCompatActivity {
         }
     }
 
-    public final void a(int n, String string, aa aa2) {
+    public final void a(int n, String string, BaseCallBack aa2) {
         this.a(this.getString(n), string, aa2);
     }
 
-    public final void a(String string, int n, int n2, final ab ab2) {
+    public final void a(String string, int n, int n2, final ActionBarClickListener ab2) {
         this.c();
         View view = LayoutInflater.from(this).inflate(R.layout.ab_custom_two_text_view, (ViewGroup) getWindow().getDecorView(), false);
         ((TextView) view.findViewById(R.id.title)).setText(string);
@@ -104,13 +104,13 @@ public class BaseActivity extends AppCompatActivity {
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ab2.a();
+                ab2.onTextClick();
             }
         });
         textView2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ab2.b();
+                ab2.onIconClick();
             }
         });
         ActionBar actionBar = getActionBar();
@@ -119,11 +119,11 @@ public class BaseActivity extends AppCompatActivity {
         }
     }
 
-    public final void a(String string, int n, aa aa2) {
+    public final void a(String string, int n, BaseCallBack aa2) {
         this.a(string, this.getString(n), aa2);
     }
 
-    public final void a(String string, int n, final aa aa2, String string2) {
+    public final void a(String string, int n, final BaseCallBack aa2, String string2) {
         this.c();
         View view = LayoutInflater.from(this).inflate(R.layout.actionbar_custom_icon_view, (ViewGroup) getWindow().getDecorView(), false);
         ((TextView) view.findViewById(R.id.title)).setText(string);
@@ -148,7 +148,7 @@ public class BaseActivity extends AppCompatActivity {
         }
     }
 
-    public final void a(String string, String string2, final aa aa2) {
+    public final void a(String string, String string2, final BaseCallBack aa2) {
         this.c();
         View view = LayoutInflater.from(this).inflate(R.layout.actionbar_custom_text_view, (ViewGroup) getWindow().getDecorView(), false);
         ((TextView) view.findViewById(R.id.title)).setText(string);
@@ -176,7 +176,7 @@ public class BaseActivity extends AppCompatActivity {
         this.b(this.getString(n));
     }
 
-    public final void b(int n, int n2, final aa aa2) {
+    public final void b(int n, int n2, final BaseCallBack aa2) {
         this.c();
         View view = LayoutInflater.from(this).inflate(R.layout.actionbar_custom_icon_view, (ViewGroup) getWindow().getDecorView(), false);
         ((TextView) view.findViewById(R.id.title)).setText(n);

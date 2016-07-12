@@ -32,7 +32,7 @@ public class BookFile extends Model {
 
     public BookFile(File file) {
         this.name = file.getName();
-        this.size = a.a(file.length(), true);
+        this.size = a.formatFileSize(file.length());
         this.filePath = file.getPath();
     }
 

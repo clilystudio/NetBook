@@ -19,7 +19,7 @@ import com.clilystudio.netbook.model.Author;
 import com.clilystudio.netbook.model.ResultStatus;
 import com.clilystudio.netbook.model.UGCNewCollection;
 import com.clilystudio.netbook.ui.BaseActivity;
-import com.clilystudio.netbook.ui.aa;
+import com.clilystudio.netbook.ui.BaseCallBack;
 import com.squareup.otto.Subscribe;
 
 import uk.me.lewisdeane.ldialogs.BaseDialog;
@@ -174,7 +174,7 @@ public class UGCGuideAddCollectionActivity extends BaseActivity {
         } else {
             MyApplication.getInstance().mUGCNewCollection = new UGCNewCollection();
         }
-        this.a(n, R.string.next, new aa() {
+        this.a(n, R.string.next, new BaseCallBack() {
             @Override
             public void a() {
                 UGCGuideAddCollectionActivity.a(UGCGuideAddCollectionActivity.this);

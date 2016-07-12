@@ -1,9 +1,12 @@
 package com.clilystudio.netbook;
 
+import android.app.ActivityManager;
 import android.app.Application;
 import android.content.Context;
+import android.os.Process;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
+import android.util.Log;
 
 import com.activeandroid.ActiveAndroid;
 import com.clilystudio.netbook.api.ApiService;
@@ -19,6 +22,8 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.umeng.onlineconfig.OnlineConfigAgent;
 import com.umeng.onlineconfig.UmengOnlineConfigureListener;
+import com.xiaomi.channel.commonutils.logger.LoggerInterface;
+import com.xiaomi.mipush.sdk.Logger;
 import com.xiaomi.mipush.sdk.MiPushClient;
 
 import org.json.JSONObject;
@@ -38,6 +43,9 @@ import java.util.Map;
 import java.util.Properties;
 
 public class MyApplication extends Application {
+    public static final String TAG = "QuiteBook";
+    private static final String MIPUSH_APP_ID = "2882303761517133731";
+    private static final String MIPUSH_APP_KEY = "5941713373731";
     private static MyApplication mApp = null;
     public UGCNewCollection mUGCNewCollection;
     private Reader mReader;
@@ -223,8 +231,26 @@ public class MyApplication extends Application {
                 ApiService.j(OnlineConfigAgent.getInstance().getConfigParams(mApp, "reader_web_url"), 4);
             }
         });
-        if (PreferenceManager.getDefaultSharedPreferences(this).getBoolean("update_notice_key", true)) {
-            MiPushClient.registerPush(this, "2882303761517133731", "5941713373731");
+        if (shouldInit()) {
+            MiPushClient.registerPush(this, MIPUSH_APP_ID, MIPUSH_APP_KEY);
+            LoggerInterface newLogger = new LoggerInterface() {
+
+                @Override
+                public void setTag(String tag) {
+                    // ignore
+                }
+
+                @Override
+                public void log(String content, Throwable t) {
+                    Log.d(TAG, content, t);
+                }
+
+                @Override
+                public void log(String content) {
+                    Log.d(TAG, content);
+                }
+            };
+            Logger.setLogger(this, newLogger);
         }
         ImageLoaderConfiguration configuration = ImageLoaderConfiguration.createDefault(this);
         ImageLoader.getInstance().init(configuration);
@@ -237,5 +263,18 @@ public class MyApplication extends Application {
     public void onTerminate() {
         super.onTerminate();
         ActiveAndroid.dispose();
+    }
+
+    private boolean shouldInit() {
+        ActivityManager am = ((ActivityManager) getSystemService(Context.ACTIVITY_SERVICE));
+        List<ActivityManager.RunningAppProcessInfo> processInfos = am.getRunningAppProcesses();
+        String mainProcessName = getPackageName();
+        int myPid = Process.myPid();
+        for (ActivityManager.RunningAppProcessInfo info : processInfos) {
+            if (info.pid == myPid && mainProcessName.equals(info.processName)) {
+                return true;
+            }
+        }
+        return false;
     }
 }

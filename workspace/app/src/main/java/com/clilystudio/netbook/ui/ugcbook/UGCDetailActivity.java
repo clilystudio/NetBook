@@ -29,7 +29,7 @@ import com.clilystudio.netbook.model.UGCNewCollection;
 import com.clilystudio.netbook.ui.BaseActivity;
 import com.clilystudio.netbook.ui.BookInfoActivity;
 import com.clilystudio.netbook.ui.SmartImageView;
-import com.clilystudio.netbook.ui.aa;
+import com.clilystudio.netbook.ui.BaseCallBack;
 import com.clilystudio.netbook.widget.CoverView;
 import com.squareup.otto.Subscribe;
 
@@ -281,7 +281,7 @@ public class UGCDetailActivity extends BaseActivity implements View.OnClickListe
         this.p = this.getIntent().getBooleanExtra("my_list", false);
         this.q = this.getIntent().getBooleanExtra("is_draft", false);
         String string = this.p ? "\u7f16\u8f91" : "\u6536\u85cf";
-        this.a("书单详情", string, new aa() {
+        this.a("书单详情", string, new BaseCallBack() {
             @Override
             public void a() {
                 if (UGCDetailActivity.a(UGCDetailActivity.this)) {

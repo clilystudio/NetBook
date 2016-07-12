@@ -24,6 +24,7 @@ import com.clilystudio.netbook.a_pack.BaseAsyncTask;
 import com.clilystudio.netbook.am;
 import com.clilystudio.netbook.api.ApiServiceProvider;
 import com.clilystudio.netbook.model.UgcFilterRoot;
+import com.clilystudio.netbook.ui.ActionBarClickListener;
 import com.clilystudio.netbook.ui.BaseTabActivity;
 import com.clilystudio.netbook.ui.home.ZssqFragmentPagerAdapter;
 import com.clilystudio.netbook.ui.user.UserUGCActivity;
@@ -238,14 +239,14 @@ public class UGCMainActivity extends BaseTabActivity implements ViewPager.OnPage
                 UGCMainActivity.this.e("筛选");
             }
         });
-        this.a(R.string.ugc_list, "筛选", R.drawable.ic_action_overflow, new com.clilystudio.netbook.ui.ab() {
+        this.a(R.string.ugc_list, "筛选", R.drawable.ic_action_overflow, new ActionBarClickListener() {
             @Override
-            public void a() {
+            public void onTextClick() {
                 UGCMainActivity.a(UGCMainActivity.this);
             }
 
             @Override
-            public void b() {
+            public void onIconClick() {
                 UGCMainActivity.b(UGCMainActivity.this);
             }
         });

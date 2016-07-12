@@ -938,13 +938,13 @@ public class a {
         throw new IllegalArgumentException("TODO");
     }
 
-    public static String a(long l2, boolean bl) {
-        if (l2 < 1000) {
-            return "" + l2 + " B";
+    public static String formatFileSize(long fileSize) {
+        if (fileSize < 1000) {
+            return "" + fileSize + " B";
         }
-        int n2 = (int) (Math.log(l2) / Math.log(1000.0));
+        int n2 = (int) (Math.log(fileSize) / Math.log(1000.0));
         String string2 = "" + "kMGTPE".charAt(n2 - 1);
-        Object[] arrobject = new Object[]{(double) l2 / Math.pow(1000.0, n2), string2};
+        Object[] arrobject = new Object[]{(double) fileSize / Math.pow(1000.0, n2), string2};
         return String.format(Locale.CHINA,"%.1f %sB", arrobject);
     }
 

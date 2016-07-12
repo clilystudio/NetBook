@@ -36,7 +36,7 @@ public class CropPhotoActivity extends BaseActivity {
         float var2_2 = 2048.0f;
         super.onCreate(var1_1);
         this.setContentView(R.layout.activity_crop_photo);
-        this.a("截取头像", "使用", new aa() {
+        this.a("截取头像", "使用", new BaseCallBack() {
             @Override
             public void a() {
                 CropPhotoActivity.a(CropPhotoActivity.this);

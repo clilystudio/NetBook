@@ -23,7 +23,7 @@ import com.clilystudio.netbook.model.UserInfo;
 import com.clilystudio.netbook.ui.BaseActivity;
 import com.clilystudio.netbook.ui.CircularSmartImageView;
 import com.clilystudio.netbook.ui.SettingsActivity;
-import com.clilystudio.netbook.ui.aa;
+import com.clilystudio.netbook.ui.BaseCallBack;
 import com.clilystudio.netbook.util.J;
 import com.squareup.otto.Subscribe;
 
@@ -148,7 +148,7 @@ public class UserInfoActivity extends BaseActivity {
         this.mLevel = (TextView) findViewById(R.id.level);
         this.mExpProgress = (ProgressBar) findViewById(R.id.exp_pregress);
         this.mMessageCount = (TextView) findViewById(R.id.message_count);
-        this.a(R.string.user_info, "编辑资料", new aa() {
+        this.a(R.string.user_info, "编辑资料", new BaseCallBack() {
             @Override
             public void a() {
                 UserInfoActivity.a(UserInfoActivity.this);

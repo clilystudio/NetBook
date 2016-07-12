@@ -487,15 +487,15 @@ public class BookInfoActivity extends BaseActivity implements View.OnClickListen
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         this.setContentView(R.layout.activity_book_info);
-        final ab ay2 = new ab() {
+        final ActionBarClickListener ay2 = new ActionBarClickListener() {
 
             @Override
-            public void a() {
+            public void onTextClick() {
                 BookInfoActivity.a(BookInfoActivity.this);
             }
 
             @Override
-            public void b() {
+            public void onIconClick() {
             }
         };
         this.c();
@@ -514,13 +514,13 @@ public class BookInfoActivity extends BaseActivity implements View.OnClickListen
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ay2.a();
+                ay2.onTextClick();
             }
         });
         textView2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ay2.b();
+                ay2.onIconClick();
             }
         });
         this.getActionBar().setCustomView(view);

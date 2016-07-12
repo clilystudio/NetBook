@@ -30,8 +30,8 @@ import com.clilystudio.netbook.model.BookSummary;
 import com.clilystudio.netbook.model.ResultStatus;
 import com.clilystudio.netbook.model.UGCNewCollection;
 import com.clilystudio.netbook.ui.BaseActivity;
-import com.clilystudio.netbook.ui.aa;
-import com.clilystudio.netbook.ui.ab;
+import com.clilystudio.netbook.ui.BaseCallBack;
+import com.clilystudio.netbook.ui.ActionBarClickListener;
 import com.clilystudio.netbook.ui.user.UserUGCActivity;
 import com.clilystudio.netbook.util.W;
 import com.clilystudio.netbook.widget.CoverView;
@@ -226,9 +226,9 @@ public class UGCGuideEditBooksActivity extends BaseActivity implements View.OnCl
         this.h = this.getIntent().getBooleanExtra("is_draft", false);
         ShareSDK.initSDK(this);
         if (this.h || this.f == null || this.f.equals("")) {
-            this.a("编辑书单", R.string.save, R.string.publish, new ab() {
+            this.a("编辑书单", R.string.save, R.string.publish, new ActionBarClickListener() {
                 @Override
-                public void a() {
+                public void onTextClick() {
                     if (MyApplication.getInstance().getUGCNewCollection().getBooks().size() == 0) {
                         com.clilystudio.netbook.util.e.a(UGCGuideEditBooksActivity.this, "至少要添加一本书籍才能保存哦");
                         return;
@@ -261,12 +261,12 @@ public class UGCGuideEditBooksActivity extends BaseActivity implements View.OnCl
                 }
 
                 @Override
-                public void b() {
+                public void onIconClick() {
                     procb();
                 }
             });
         } else {
-            this.a("书单详情", R.string.publish, new aa() {
+            this.a("书单详情", R.string.publish, new BaseCallBack() {
                 @Override
                 public void a() {
                     procb();
