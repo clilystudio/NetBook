@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.clilystudio.netbook">
-
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.clilystudio.netbook">
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
@@ -9,72 +7,13 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
     <uses-permission android:name="android.permission.VIBRATE"/>
-    <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT"/>
-    <uses-permission android:name="com.android.launcher.permission.UNINSTALL_SHORTCUT"/>
     <uses-permission android:name="android.permission.WAKE_LOCK"/>
-    <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS"/>
-    <uses-permission android:name="com.android.launcher.permission.WRITE_SETTINGS"/>
-    <uses-permission android:name="com.android.launcher2.permission.READ_SETTINGS"/>
-    <uses-permission android:name="com.android.launcher2.permission.WRITE_SETTINGS"/>
-    <uses-permission android:name="com.android.launcher3.permission.READ_SETTINGS"/>
-    <uses-permission android:name="com.android.launcher3.permission.WRITE_SETTINGS"/>
-    <uses-permission android:name="org.adw.launcher.permission.READ_SETTINGS"/>
-    <uses-permission android:name="org.adw.launcher.permission.WRITE_SETTINGS"/>
-    <uses-permission android:name="com.htc.launcher.permission.READ_SETTINGS"/>
-    <uses-permission android:name="com.htc.launcher.permission.WRITE_SETTINGS"/>
-    <uses-permission android:name="com.qihoo360.launcher.permission.READ_SETTINGS"/>
-    <uses-permission android:name="com.qihoo360.launcher.permission.WRITE_SETTINGS"/>
-    <uses-permission android:name="com.lge.launcher.permission.READ_SETTINGS"/>
-    <uses-permission android:name="com.lge.launcher.permission.WRITE_SETTINGS"/>
-    <uses-permission android:name="net.qihoo.launcher.permission.READ_SETTINGS"/>
-    <uses-permission android:name="net.qihoo.launcher.permission.WRITE_SETTINGS"/>
-    <uses-permission android:name="org.adwfreak.launcher.permission.READ_SETTINGS"/>
-    <uses-permission android:name="org.adwfreak.launcher.permission.WRITE_SETTINGS"/>
-    <uses-permission android:name="org.adw.launcher_donut.permission.READ_SETTINGS"/>
-    <uses-permission android:name="org.adw.launcher_donut.permission.WRITE_SETTINGS"/>
-    <uses-permission android:name="com.huawei.launcher3.permission.READ_SETTINGS"/>
-    <uses-permission android:name="com.huawei.launcher3.permission.WRITE_SETTINGS"/>
-    <uses-permission android:name="com.fede.launcher.permission.READ_SETTINGS"/>
-    <uses-permission android:name="com.fede.launcher.permission.WRITE_SETTINGS"/>
-    <uses-permission android:name="com.sec.android.app.twlauncher.settings.READ_SETTINGS"/>
-    <uses-permission android:name="com.sec.android.app.twlauncher.settings.WRITE_SETTINGS"/>
-    <uses-permission android:name="com.anddoes.launcher.permission.READ_SETTINGS"/>
-    <uses-permission android:name="com.anddoes.launcher.permission.WRITE_SETTINGS"/>
-    <uses-permission android:name="com.tencent.qqlauncher.permission.READ_SETTINGS"/>
-    <uses-permission android:name="com.tencent.qqlauncher.permission.WRITE_SETTINGS"/>
-    <uses-permission android:name="com.huawei.launcher2.permission.READ_SETTINGS"/>
-    <uses-permission android:name="com.huawei.launcher2.permission.WRITE_SETTINGS"/>
-    <uses-permission android:name="com.android.mylauncher.permission.READ_SETTINGS"/>
-    <uses-permission android:name="com.android.mylauncher.permission.WRITE_SETTINGS"/>
-    <uses-permission android:name="com.ebproductions.android.launcher.permission.READ_SETTINGS"/>
-    <uses-permission android:name="com.ebproductions.android.launcher.permission.WRITE_SETTINGS"/>
-    <uses-permission android:name="com.oppo.launcher.permission.READ_SETTINGS"/>
-    <uses-permission android:name="com.oppo.launcher.permission.WRITE_SETTINGS"/>
-    <uses-permission android:name="com.miui.mihome2.permission.READ_SETTINGS"/>
-    <uses-permission android:name="com.miui.mihome2.permission.WRITE_SETTINGS"/>
-    <uses-permission android:name="com.huawei.android.launcher.permission.READ_SETTINGS"/>
-    <uses-permission android:name="com.huawei.android.launcher.permission.WRITE_SETTINGS"/>
-    <uses-permission android:name="telecom.mdesk.permission.READ_SETTINGS"/>
-    <uses-permission android:name="telecom.mdesk.permission.WRITE_SETTINGS"/>
-    <uses-permission android:name="dianxin.permission.ACCESS_LAUNCHER_DATA"/>
-    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS"/>
-    <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
-    <uses-permission android:name="android.permission.SEND_SMS"/>
-    <uses-permission android:name="android.permission.READ_SMS"/>
-    <uses-permission android:name="android.permission.RECEIVE_SMS"/>
-    <uses-permission android:name="android.permission.WRITE_SMS"/>
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.READ_CONTACTS"/>
 
-    <permission
-        android:name="com.clilystudio.netbook.permission.MIPUSH_RECEIVE"/>
-
+    <permission android:name="com.clilystudio.netbook.permission.MIPUSH_RECEIVE" android:protectionLevel="signature"/>
     <uses-permission android:name="com.clilystudio.netbook.permission.MIPUSH_RECEIVE"/>
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_COARSE_UPDATES"/>
     <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE"/>
-    <uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS"/>
 
     <supports-screens
         android:anyDensity="true"
@@ -303,6 +242,7 @@
         <service
             android:name="com.clilystudio.netbook.reader.dl.BookDownloadService"
             android:exported="false"/>
+
         <receiver android:name="com.clilystudio.netbook.event.ClickDownloadItemReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.DOWNLOAD_NOTIFICATION_CLICKED"/>
@@ -330,7 +270,6 @@
         <service
             android:name="com.xiaomi.mipush.sdk.MessageHandleService"
             android:enabled="true"/>
-
         <receiver
             android:name="com.xiaomi.push.service.receivers.NetworkStatusReceiver"
             android:exported="true">

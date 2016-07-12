@@ -99,7 +99,7 @@
     <string name="pull_to_refresh_from_bottom_refreshing_label">@string/pull_to_refresh_refreshing_label</string>
     <string name="pull_to_refresh_from_bottom_release_label">@string/pull_to_refresh_release_label</string>
     <string name="app_init_message" formatted="false">首次打开应用，正在加载模块中…%n%</string>
-    <string name="app_name"> 追书神器 </string>
+    <string name="app_name">静读</string>
     <string name="bad_tf_card_state">Bad TF Card State!</string>
     <string name="copy_right">Copyright © 2015 Maxthon. All rights reserved.</string>
     <string name="game_center">游戏中心</string>

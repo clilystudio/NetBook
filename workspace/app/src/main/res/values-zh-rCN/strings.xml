@@ -14,7 +14,7 @@
     <string name="abc_shareactionprovider_share_with">分享方式</string>
     <string name="abc_shareactionprovider_share_with_application">通过%s分享</string>
     <string name="app_init_message" formatted="false">首次打开应用，正在加载模块中…%n%</string>
-    <string name="app_name">追书神器</string>
+    <string name="app_name">静读</string>
     <string name="bad_tf_card_state">找不到TF卡！</string>
     <string name="copy_right">©1999–2015 网际傲游（北京）科技有限公司</string>
     <string name="game_center">游戏中心</string>

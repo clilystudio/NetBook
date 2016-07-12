@@ -17,16 +17,6 @@ public class SplashActivity extends Activity {
     private boolean e = false;
     private boolean f = false;
 
-    public final void c() {
-        this.findViewById(R.id.splash_ad_skip).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                SplashActivity.this.d();
-            }
-        });
-        this.findViewById(R.id.splash_ad_container).setVisibility(View.VISIBLE);
-    }
-
     public final void d() {
         Intent intent;
         if (this.e) {
