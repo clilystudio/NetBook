@@ -71,7 +71,7 @@ public class LoadingProgressView extends ProgressView {
         this.c.a();
     }
 
-    public final void a(final ah ah2) {
+    public final void a(final OnLoadingProgressListener ah2) {
         this.a = true;
         float[] arrf = new float[]{this.b, 100.0f};
         w w2 = w.a(arrf);
@@ -86,7 +86,7 @@ public class LoadingProgressView extends ProgressView {
             @Override
             public void b(a parama) {
                 setVisibility(View.GONE);
-                ah2.a();
+                ah2.onEnd();
             }
 
             @Override
