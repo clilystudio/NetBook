@@ -51,7 +51,7 @@ import com.clilystudio.netbook.ui.user.AuthLoginActivity;
 import com.clilystudio.netbook.ui.user.MyMessageActivity;
 import com.clilystudio.netbook.ui.user.UserInfoActivity;
 import com.clilystudio.netbook.util.UserNotificationManager;
-import com.clilystudio.netbook.util.Z;
+import com.clilystudio.netbook.util.BookShelfSyncManager;
 import com.clilystudio.netbook.widget.TabWidgetV2;
 import com.squareup.otto.Subscribe;
 import com.umeng.onlineconfig.OnlineConfigAgent;
@@ -447,7 +447,7 @@ public class HomeActivity extends HomeParentActivity implements ViewPager.OnPage
             case R.id.home_menu_sync: {
                 if (this.mAccount != null) {
                     this.m();
-                    new Z(this, this.mAccount.getToken()).a(false);
+                    new BookShelfSyncManager(this, this.mAccount.getToken()).a(false);
                     return;
                 }
                 this.startActivityForResult(AuthLoginActivity.a(this), 100);
@@ -613,7 +613,7 @@ public class HomeActivity extends HomeParentActivity implements ViewPager.OnPage
         this.findViewById(R.id.home_action_menu_more).setOnClickListener(this);
         this.findViewById(R.id.home_action_menu_search).setOnClickListener(this);
         if (this != null && (account = am.getAccount()) != null) {
-            new Z(this, account.getToken()).a(true);
+            new BookShelfSyncManager(this, account.getToken()).a(true);
         }
         this.a(this.getIntent());
         new BaseAsyncTask<String, Void, ResultServer>() {
@@ -673,7 +673,7 @@ public class HomeActivity extends HomeParentActivity implements ViewPager.OnPage
         if (this.mAccount != null) {
             this.a(this.mAccount.getUser());
             boolean bl = t2.getSource() != AuthLoginActivity.Source.HOME;
-            new Z(this, this.mAccount.getToken()).a(bl);
+            new BookShelfSyncManager(this, this.mAccount.getToken()).a(bl);
             UserNotificationManager.getInstance(this).getUserNotificationCount(mAccount);
         }
     }

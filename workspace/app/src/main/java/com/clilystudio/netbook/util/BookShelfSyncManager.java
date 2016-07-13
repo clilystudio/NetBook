@@ -23,28 +23,24 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public final class Z {
-    private static boolean d;
+public final class BookShelfSyncManager {
+    private static boolean mIsLoading;
     private Activity b;
-    private String c;
+    private String mToken;
 
-    public Z(Activity activity, String string) {
+    public BookShelfSyncManager(Activity activity, String token) {
         this.b = activity;
-        this.c = string;
+        this.mToken = token;
     }
 
-    static /* synthetic */ RemoteBookShelf a(Z z, String string) {
+    static /* synthetic */ RemoteBookShelf a(BookShelfSyncManager z, String string) {
         return z.a(string);
-    }
-
-    static /* synthetic */ String a(Z z) {
-        return z.c;
     }
 
     /*
      * Enabled aggressive block sorting
      */
-    static /* synthetic */ void a(Z z, RemoteBookShelf remoteBookShelf) {
+    static /* synthetic */ void a(BookShelfSyncManager z, RemoteBookShelf remoteBookShelf) {
         List<BookSyncRecord> list;
         Account account;
         List<BookSyncRecord> list2;
@@ -68,11 +64,11 @@ public final class Z {
         RemoteBookShelf.Book[] arrremoteBookShelf$Book = remoteBookShelf.getBookShelfs();
         RemoteBookShelf.Book[] arrremoteBookShelf$Book2 = remoteBookShelf.getFeedingBooks();
         for (BookReadRecord bookReadRecord : BookReadRecord.getAllNoFeed()) {
-            if (!Z.a(bookReadRecord.getBookId(), arrremoteBookShelf$Book)) continue;
+            if (!BookShelfSyncManager.a(bookReadRecord.getBookId(), arrremoteBookShelf$Book)) continue;
             BookReadRecord.trulyDelete(bookReadRecord.getBookId());
         }
         for (BookReadRecord bookReadRecord2 : BookReadRecord.getAllFeeding()) {
-            if (!Z.a(bookReadRecord2.getBookId(), arrremoteBookShelf$Book2)) continue;
+            if (!BookShelfSyncManager.a(bookReadRecord2.getBookId(), arrremoteBookShelf$Book2)) continue;
             BookReadRecord.trulyDelete(bookReadRecord2.getBookId());
         }
         for (RemoteBookShelf.Book book : arrremoteBookShelf$Book) {
@@ -85,7 +81,7 @@ public final class Z {
         int n2 = 0;
         do {
             if (n2 >= n) {
-                Z.b();
+                BookShelfSyncManager.b();
                 com.clilystudio.netbook.hpay100.a.a.a(z.b);
                 return;
             }
@@ -98,14 +94,6 @@ public final class Z {
         } while (true);
     }
 
-    static /* synthetic */ boolean a() {
-        return d;
-    }
-
-    /*
-     * Enabled force condition propagation
-     * Lifted jumps to return sites
-     */
     private static boolean a(String string, RemoteBookShelf.Book[] arrremoteBookShelf$Book) {
         BookSyncRecord bookSyncRecord = BookSyncRecord.get(string);
         if (bookSyncRecord != null && bookSyncRecord.getType() != BookSyncRecord.getTypeId(BookSyncRecord.BookModifyType.SYNC_SUCCESS)) return false;
@@ -120,7 +108,7 @@ public final class Z {
         return true;
     }
 
-    static /* synthetic */ Activity b(Z z) {
+    static /* synthetic */ Activity b(BookShelfSyncManager z) {
         return z.b;
     }
 
@@ -145,11 +133,6 @@ public final class Z {
                 new BookSyncTask(string, account.getToken(), BookSyncRecord.BookModifyType.FEED_ADD, arrstring2).b();
             }
         }
-    }
-
-    static /* synthetic */ boolean b(boolean bl) {
-        d = bl;
-        return bl;
     }
 
     /*
@@ -198,54 +181,52 @@ public final class Z {
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    if (!Z.a()) {
-                        BaseAsyncTask<String, Void, RemoteBookShelf> ab2 = new BaseAsyncTask<String, Void, RemoteBookShelf>(){
+                    if (!mIsLoading) {
+                        new BaseAsyncTask<String, Void, RemoteBookShelf>(){
                             @Override
                             protected RemoteBookShelf doInBackground(String... params) {
-                                 Z.b(true);
-                                return Z.a(Z.this, params[0]);
+                                mIsLoading = true;
+                                return BookShelfSyncManager.a(BookShelfSyncManager.this, params[0]);
                             }
 
                             @Override
                             protected void onPostExecute(RemoteBookShelf remoteBookShelf) {
                                 super.onPostExecute(remoteBookShelf);
-                                Z.b(false);
+                                mIsLoading = false;
                                 if (remoteBookShelf != null && remoteBookShelf.isNeedSync() && remoteBookShelf.isOk()) {
-                                    Z.a(Z.this, remoteBookShelf);
+                                    BookShelfSyncManager.a(BookShelfSyncManager.this, remoteBookShelf);
                                     BusProvider.getInstance().post(new ShelfUpdatedEvent(remoteBookShelf.getTotalBookCounts()));
                                 }
                             }
-                        };
-                        String[] arrstring = new String[]{Z.a(Z.this)};
-                        ab2.b(arrstring);
+                        }.b(mToken);
                     }
                 }
             }, 4000);
             return;
         }
-        BaseLoadingTask<String, RemoteBookShelf> ac2 = new BaseLoadingTask<String, RemoteBookShelf>(Z.this.b, R.string.loading){
+        BaseLoadingTask<String, RemoteBookShelf> ac2 = new BaseLoadingTask<String, RemoteBookShelf>(BookShelfSyncManager.this.b, R.string.loading){
 
             @Override
             public RemoteBookShelf a(String... var1) {
-                RemoteBookShelf remoteBookShelf = Z.a(Z.this, var1[0]);
+                RemoteBookShelf remoteBookShelf = BookShelfSyncManager.a(BookShelfSyncManager.this, var1[0]);
                 if (remoteBookShelf != null) {
                     if (remoteBookShelf.isNeedSync()) {
                         if (remoteBookShelf.isOk()) {
-                            Z.a(Z.this, remoteBookShelf);
-                            com.clilystudio.netbook.util.e.a(Z.b(Z.this), "同步完成");
+                            BookShelfSyncManager.a(BookShelfSyncManager.this, remoteBookShelf);
+                            com.clilystudio.netbook.util.e.a(BookShelfSyncManager.b(BookShelfSyncManager.this), "同步完成");
                             return remoteBookShelf;
                         }
                         if ("TOKEN_INVALID".equals(remoteBookShelf.getCode())) {
-                            com.clilystudio.netbook.util.e.a(Z.b(Z.this), R.string.sync_token_failed);
+                            com.clilystudio.netbook.util.e.a(BookShelfSyncManager.b(BookShelfSyncManager.this), R.string.sync_token_failed);
                             return remoteBookShelf;
                         }
-                        com.clilystudio.netbook.util.e.a(Z.b(Z.this), "同步失败，请重试");
+                        com.clilystudio.netbook.util.e.a(BookShelfSyncManager.b(BookShelfSyncManager.this), "同步失败，请重试");
                         return remoteBookShelf;
                     }
-                    com.clilystudio.netbook.util.e.a(Z.b(Z.this), "同步完成");
+                    com.clilystudio.netbook.util.e.a(BookShelfSyncManager.b(BookShelfSyncManager.this), "同步完成");
                     return remoteBookShelf;
                 }
-                com.clilystudio.netbook.util.e.a(Z.b(Z.this), "同步失败，请检查网络或稍后再试");
+                com.clilystudio.netbook.util.e.a(BookShelfSyncManager.b(BookShelfSyncManager.this), "同步失败，请检查网络或稍后再试");
                 return remoteBookShelf;
             }
 
@@ -258,7 +239,7 @@ public final class Z {
                 BusProvider.getInstance().post(new ShelfUpdatedEvent(1));
             }
         };
-        String[] arrstring = new String[]{this.c};
+        String[] arrstring = new String[]{this.mToken};
         ac2.b(arrstring);
     }
 }
