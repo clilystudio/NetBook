@@ -4,7 +4,7 @@ import java.util.LinkedHashSet;
 import java.util.Locale;
 import java.util.Set;
 
-public final class ak {
+public final class ChapterSameCalculator {
     private float a = 1.0f;
     private float b = 1.0f;
 
@@ -52,8 +52,8 @@ public final class ak {
             linkedHashSet3.retainAll(linkedHashSet);
         }
         int n4 = linkedHashSet3.size();
-        int n5 = ak.a(linkedHashSet, linkedHashSet2);
-        int n6 = ak.a(linkedHashSet2, linkedHashSet);
+        int n5 = ChapterSameCalculator.a(linkedHashSet, linkedHashSet2);
+        int n6 = ChapterSameCalculator.a(linkedHashSet2, linkedHashSet);
         return (float) n4 / ((float) n4 + this.a * (float) n5 + this.b * (float) n6);
     }
 }

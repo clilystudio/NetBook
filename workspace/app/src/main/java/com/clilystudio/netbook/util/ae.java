@@ -8,7 +8,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public final class ae {
-    private ak a = new ak();
+    private ChapterSameCalculator a = new ChapterSameCalculator();
     private String[][] b = new String[][]{{"！", "!"}, {"？", "?"}, {"（", "("}, {"）", ")"}, {"。", "."},
             {"，", ","}, {"；", ";"}, {"：", ":"}, {"、", ","}, {"〔", "("}, {"〕", ")"},
             {"　", " "}, {"０", "0"}, {"１", "1"}, {"２", "2"}, {"３", "3"}, {"４", "4"}, {"５", "5"},
@@ -28,17 +28,17 @@ public final class ae {
      * Enabled force condition propagation
      * Lifted jumps to return sites
      */
-    private af a(String string) {
+    private ChapterInfo a(String string) {
         Matcher matcher = Pattern.compile("[章|第]?(\\d+)[章|节|回]([^\\(]*)(\\(.+?\\))?").matcher(string);
         if (!matcher.find()) {
-            return new af(this, 0, string, "");
+            return new ChapterInfo(0, string, "");
         }
         String string2 = matcher.group(1);
         int n = 0;
         if (string2 != null) {
             n = Integer.parseInt(string2);
         }
-        return new af(this, n, matcher.group(2), matcher.group(3));
+        return new ChapterInfo(n, matcher.group(2), matcher.group(3));
     }
 
     private void a() {
@@ -137,32 +137,32 @@ public final class ae {
         if (string.equals(string2)) return bl;
         String string4 = this.b(string);
         if (string4.equals(string3 = this.b(string2))) return bl;
-        af af2 = this.a(string4);
-        af af3 = this.a(string3);
-        return af.a(af2) == af.a(af3) && TextUtils.equals(af2.b(), af3.b()) && this.a.a(af2.a(), af3.a()) >= 0.5f && bl;
+        ChapterInfo af2 = this.a(string4);
+        ChapterInfo af3 = this.a(string3);
+        return af2.getChapterNo() == af3.getChapterNo() && TextUtils.equals(af2.getChapterName(), af3.getChapterName()) && this.a.a(af2.getVolumeName(), af3.getVolumeName()) >= 0.5f && bl;
     }
 
-    static final class af {
-        private int a;
-        private String b;
-        private String c;
+    static final class ChapterInfo {
+        private int mChapterNo;
+        private String mVolumeName;
+        private String mChapterName;
 
-        af(ae ae2, int n, String string, String string2) {
-            this.a = n;
-            this.b = string;
-            this.c = string2;
+        ChapterInfo(int chapterNo, String volumeName, String chapterName) {
+            this.mChapterNo = chapterNo;
+            this.mVolumeName = volumeName;
+            this.mChapterName = chapterName;
         }
 
-        static /* synthetic */ int a(af af2) {
-            return af2.a;
+        public final int getChapterNo() {
+            return this.mChapterNo;
         }
 
-        public final String a() {
-            return this.b;
+        public final String getVolumeName() {
+            return this.mVolumeName;
         }
 
-        public final String b() {
-            return this.c;
+        public final String getChapterName() {
+            return this.mChapterName;
         }
     }
 
