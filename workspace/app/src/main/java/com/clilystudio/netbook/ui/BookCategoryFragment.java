@@ -188,25 +188,25 @@ public class BookCategoryFragment extends Fragment {
 
             @Override
             protected void a(int var1, CategoryBook categoryBook) {
-                CoverView coverView = this.a(0);
+                CoverView coverView = this.getTagView(0);
                 coverView.setImageUrl(categoryBook.getFullCover(), R.drawable.cover_default);
-                this.a(1, categoryBook.getTitle());
-                this.a(2, categoryBook.getShortIntro());
+                this.setText(1, categoryBook.getTitle());
+                this.setText(2, categoryBook.getShortIntro());
                 Resources resources = layoutInflater2.getContext().getResources();
                 Object[] arrobject = new Object[]{categoryBook.getLatelyFollower()};
-                this.a(3, resources.getString(R.string.follower_count_format, arrobject));
+                this.setText(3, resources.getString(R.string.follower_count_format, arrobject));
                 float f = categoryBook.getRetentionRatio();
                 if (f > 0.0f) {
                     Object[] arrobject2 = new Object[]{Float.valueOf(f)};
-                    this.a(4, resources.getString(R.string.retention_ratio_format, arrobject2));
-                    this.a(4, false);
-                    this.a(5, false);
+                    this.setText(4, resources.getString(R.string.retention_ratio_format, arrobject2));
+                    this.setVisibility(4, false);
+                    this.setVisibility(5, false);
                 } else {
-                    this.a(4, true);
-                    this.a(5, true);
+                    this.setVisibility(4, true);
+                    this.setVisibility(5, true);
                 }
-                this.a(6, categoryBook.getAuthor());
-                this.a(7, categoryBook.getMajorCate());
+                this.setText(6, categoryBook.getAuthor());
+                this.setText(7, categoryBook.getMajorCate());
             }
 
             @Override

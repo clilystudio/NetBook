@@ -344,19 +344,19 @@ public class UGCGuideAddBookActivity extends BaseActivity implements View.OnClic
                         UGCGuideAddBookActivity.a(UGCGuideAddBookActivity.this, var1);
                     }
                 }
-                CoverView coverView = this.a(0);
+                CoverView coverView = this.getTagView(0);
                 coverView.setImageUrl(bookSummary.getFullCover(), R.drawable.cover_default);
-                this.a(1, bookSummary.getTitle());
+                this.setText(1, bookSummary.getTitle());
                 Object[] arrobject = new Object[]{bookSummary.getLatelyFollower(), Float.valueOf(bookSummary.getRetentionRatio()), bookSummary.getAuthor()};
-                this.a(2, String.format(Locale.CHINA,"%d人在追  |  %.1f%%读者留存  |  %s著", arrobject));
-                this.a(3, TextUtils.isEmpty(bookSummary.getPromLink()));
+                this.setText(2, String.format(Locale.CHINA,"%d人在追  |  %.1f%%读者留存  |  %s著", arrobject));
+                this.setVisibility(3, TextUtils.isEmpty(bookSummary.getPromLink()));
                 if (bookSummary.isSelected()) {
-                    this.a(4, true);
-                    this.a(5, false);
+                    this.setVisibility(4, true);
+                    this.setVisibility(5, false);
                     return;
                 }
-                this.a(4, false);
-                this.a(5, true);
+                this.setVisibility(4, false);
+                this.setVisibility(5, true);
             }
 
             @Override

@@ -314,22 +314,22 @@ public class UGCDetailActivity extends BaseActivity implements View.OnClickListe
             protected void a(int var1, UGCBookDetail.UGCBookContainer var2) {
                 UGCBookDetail.UGCBookContainer.UGCBookItem ugcBookItem;
                 if (var2.getComment() != null && var2.getComment().trim().length() > 6) {
-                    this.a(2, var2.getComment());
-                    this.a(7, false);
+                    this.setText(2, var2.getComment());
+                    this.setVisibility(7, false);
                 } else {
-                    this.a(7, true);
+                    this.setVisibility(7, true);
                 }
                 if ((ugcBookItem = var2.getBook()) != null) {
-                    this.a(0, ugcBookItem.getTitle());
-                    this.a(1, String.valueOf(ugcBookItem.getLatelyFollower()));
-                    CoverView coverView = this.a(3);
+                    this.setText(0, ugcBookItem.getTitle());
+                    this.setText(1, String.valueOf(ugcBookItem.getLatelyFollower()));
+                    CoverView coverView = this.getTagView(3);
                     coverView.setImageUrl(ugcBookItem.getFullCover(), R.drawable.cover_default);
-                    this.a(4, ugcBookItem.getAuthor());
+                    this.setText(4, ugcBookItem.getAuthor());
                     long l = ugcBookItem.getWordCount();
                     if (l <= 0) {
-                        this.a(5, true);
-                        this.a(6, true);
-                        this.a(8, true);
+                        this.setVisibility(5, true);
+                        this.setVisibility(6, true);
+                        this.setVisibility(8, true);
                         return;
                     }
                     String string = " \u5b57";
@@ -340,11 +340,11 @@ public class UGCDetailActivity extends BaseActivity implements View.OnClickListe
                         l /= 100;
                         string = " \u767e\u5b57";
                     }
-                    this.a(5, "" + l);
-                    this.a(6, string);
-                    this.a(5, false);
-                    this.a(6, false);
-                    this.a(8, false);
+                    this.setText(5, "" + l);
+                    this.setText(6, string);
+                    this.setVisibility(5, false);
+                    this.setVisibility(6, false);
+                    this.setVisibility(8, false);
                 }
             }
 

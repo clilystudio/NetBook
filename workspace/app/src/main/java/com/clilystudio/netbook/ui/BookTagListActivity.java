@@ -182,18 +182,18 @@ public class BookTagListActivity extends BaseLoadingActivity {
 
             @Override
             protected void a(int var1, BookSummary bookSummary) {
-                CoverView coverView = this.a(0);
+                CoverView coverView = this.getTagView(0);
                 coverView.setImageUrl(bookSummary.getFullCover(), R.drawable.cover_default);
-                this.a(1, bookSummary.getTitle());
-                this.a(2, bookSummary.getShortIntro());
+                this.setText(1, bookSummary.getTitle());
+                this.setText(2, bookSummary.getShortIntro());
                 Object[] arrobject = bookSummary.getTags();
                 if (arrobject != null && arrobject.length > 0) {
                     String string = TextUtils.join(" | ", arrobject);
-                    this.a(3, false);
-                    this.a(3, string);
+                    this.setVisibility(3, false);
+                    this.setText(3, string);
                     return;
                 }
-                this.a(3, true);
+                this.setVisibility(3, true);
             }
 
             @Override

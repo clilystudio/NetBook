@@ -85,16 +85,16 @@ public class FeedListActivity extends BaseActivity {
 
             @Override
             protected void a(int var1, final BookReadRecord bookReadRecord) {
-                CoverView coverView = this.a(0);
+                CoverView coverView = this.getTagView(0);
                 coverView.setImageUrl(bookReadRecord.getFullCover(), R.drawable.cover_default);
-                this.a(1, bookReadRecord.getTitle());
+                this.setText(1, bookReadRecord.getTitle());
                 int n2 = bookReadRecord.getChapterCount() - bookReadRecord.getChapterCountAtFeed();
                 int n3 = 0;
                 if (n2 >= 0) {
                     n3 = n2;
                 }
-                this.a(2, "养了 " + n3 + " 章未读");
-                final TextView textView = this.a(3);
+                this.setText(2, "养了 " + n3 + " 章未读");
+                final TextView textView = this.getTagView(3);
                 if (bookReadRecord.isFeeding()) {
                     textView.setEnabled(true);
                     textView.setText("\u79fb\u56de");
@@ -106,7 +106,7 @@ public class FeedListActivity extends BaseActivity {
                         textView.setTextColor(FeedListActivity.this.getResources().getColor(R.color.feed_list_light));
                     }
                 } else {
-                    this.a(textView);
+                    this.setTagViews(textView);
                 }
                 textView.setOnClickListener(new View.OnClickListener() {
                     @Override

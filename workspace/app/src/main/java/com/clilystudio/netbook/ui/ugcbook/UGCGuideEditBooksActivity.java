@@ -291,11 +291,11 @@ public class UGCGuideEditBooksActivity extends BaseActivity implements View.OnCl
 
             @Override
             protected void a(int var1, BookSummary bookSummary) {
-                CoverView coverView = this.a(0);
+                CoverView coverView = this.getTagView(0);
                 coverView.setImageUrl(bookSummary.getFullCover(), R.drawable.cover_default);
-                this.a(1, bookSummary.getTitle());
-                this.a(2, bookSummary.getAuthor());
-                this.a(3, "" + bookSummary.getLatelyFollower());
+                this.setText(1, bookSummary.getTitle());
+                this.setText(2, bookSummary.getAuthor());
+                this.setText(3, "" + bookSummary.getLatelyFollower());
                 long l = bookSummary.getWordCount();
                 if (l > 0) {
                     String string = " \u5b57";
@@ -306,24 +306,24 @@ public class UGCGuideEditBooksActivity extends BaseActivity implements View.OnCl
                         l /= 100;
                         string = " \u767e\u5b57";
                     }
-                    this.a(4, "" + l);
-                    this.a(5, string);
-                    this.a(4, false);
-                    this.a(5, false);
-                    this.a(9, false);
+                    this.setText(4, "" + l);
+                    this.setText(5, string);
+                    this.setVisibility(4, false);
+                    this.setVisibility(5, false);
+                    this.setVisibility(9, false);
                 } else {
-                    this.a(4, true);
-                    this.a(5, true);
-                    this.a(9, true);
+                    this.setVisibility(4, true);
+                    this.setVisibility(5, true);
+                    this.setVisibility(9, true);
                 }
                 if (bookSummary.getAppendComment() != null && bookSummary.getAppendComment().trim().length() > 0) {
-                    this.a(6, bookSummary.getAppendComment());
-                    this.a(7, true);
-                    this.a(8, false);
+                    this.setText(6, bookSummary.getAppendComment());
+                    this.setVisibility(7, true);
+                    this.setVisibility(8, false);
                     return;
                 }
-                this.a(7, false);
-                this.a(8, true);
+                this.setVisibility(7, false);
+                this.setVisibility(8, true);
             }
 
             @Override

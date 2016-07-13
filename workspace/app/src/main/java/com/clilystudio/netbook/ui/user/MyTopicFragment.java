@@ -182,11 +182,11 @@ public class MyTopicFragment extends Fragment {
             @Override
             protected void a(int var1, TopicPost topicPost) {
                 String string;
-                this.a(1, topicPost.getAuthor().getNickname());
-                this.a(2, DateTimeUtil.e(topicPost.getCreated()));
-                this.a(3, topicPost.getTitle());
+                this.setText(1, topicPost.getAuthor().getNickname());
+                this.setText(2, DateTimeUtil.e(topicPost.getCreated()));
+                this.setText(3, topicPost.getTitle());
                 String string2 = topicPost.getBlock();
-                CoverView coverView = this.a(0);
+                CoverView coverView = this.getTagView(0);
                 if ("help".equals(string2)) {
                     coverView.setImageResource(R.drawable.book_help_cover_default);
                 } else if ("ramble".equals(string2)) {
@@ -195,26 +195,26 @@ public class MyTopicFragment extends Fragment {
                     coverView.setImageUrl(topicPost.getBook().getFullCover(), R.drawable.cover_default);
                 }
                 if ("vote".equals(topicPost.getType())) {
-                    this.a(4, false);
-                    this.a(5, true);
-                    this.a(4, String.valueOf(topicPost.getVoteCount()));
+                    this.setVisibility(4, false);
+                    this.setVisibility(5, true);
+                    this.setText(4, String.valueOf(topicPost.getVoteCount()));
                 } else {
-                    this.a(4, true);
-                    this.a(5, false);
-                    this.a(5, String.valueOf(topicPost.getCommentCount()));
+                    this.setVisibility(4, true);
+                    this.setVisibility(5, false);
+                    this.setText(5, String.valueOf(topicPost.getCommentCount()));
                 }
-                ImageView imageView = this.a(6);
+                ImageView imageView = this.getTagView(6);
                 if ("focus".equals(string = topicPost.getState())) {
-                    this.a(6, false);
+                    this.setVisibility(6, false);
                     imageView.setImageLevel(0);
                     return;
                 }
                 if ("hot".equals(string)) {
-                    this.a(6, false);
+                    this.setVisibility(6, false);
                     imageView.setImageLevel(1);
                     return;
                 }
-                this.a(6, true);
+                this.setVisibility(6, true);
             }
 
             @Override

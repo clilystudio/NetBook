@@ -266,31 +266,31 @@ public abstract class AbsUGCListFragment extends Fragment implements AdapterView
             @Override
             protected void a(int var1, UGCBookListRoot.UGCBook ugcBook) {
                 if (ugcBook == null) return;
-                CoverView coverView = this.a(0);
+                CoverView coverView = this.getTagView(0);
                 coverView.setImageUrl(ugcBook.getFullCover(), R.drawable.cover_default);
-                this.a(1, ugcBook.getTitle());
-                this.a(4, ugcBook.getDesc());
+                this.setText(1, ugcBook.getTitle());
+                this.setText(4, ugcBook.getDesc());
                 if (ugcBook.isDraft()) {
-                    this.a(2, String.format(Locale.CHINA, "共%1$d本书", ugcBook.getBookCount()));
-                    this.a(3, true);
-                    this.a(5, DateTimeUtil.e(ugcBook.getUpdated()));
-                    this.a(5, false);
+                    this.setText(2, String.format(Locale.CHINA, "共%1$d本书", ugcBook.getBookCount()));
+                    this.setVisibility(3, true);
+                    this.setText(5, DateTimeUtil.e(ugcBook.getUpdated()));
+                    this.setVisibility(5, false);
                     if (ugcBook.getBookCount() >= 8) {
-                        this.a(6, false);
-                        this.a(7, true);
+                        this.setVisibility(6, false);
+                        this.setVisibility(7, true);
                         return;
                     }
-                    this.a(6, true);
-                    this.a(7, false);
+                    this.setVisibility(6, true);
+                    this.setVisibility(7, false);
                     return;
                 }
                 Object[] arrobject = new Object[]{ugcBook.getBookCount(), ugcBook.getCollectorCount()};
-                this.a(2, String.format(Locale.CHINA, "共%1$d本书  |  %2$d人收藏", arrobject));
-                this.a(3, ugcBook.getAuthor());
-                this.a(3, false);
-                this.a(5, true);
-                this.a(6, true);
-                this.a(7, true);
+                this.setText(2, String.format(Locale.CHINA, "共%1$d本书  |  %2$d人收藏", arrobject));
+                this.setText(3, ugcBook.getAuthor());
+                this.setVisibility(3, false);
+                this.setVisibility(5, true);
+                this.setVisibility(6, true);
+                this.setVisibility(7, true);
             }
 
             @Override

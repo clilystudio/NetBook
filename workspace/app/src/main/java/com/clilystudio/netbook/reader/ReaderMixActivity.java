@@ -174,8 +174,8 @@ public class ReaderMixActivity extends BaseLoadingActivity {
             @Override
             protected void a(int var1, TocSummary tocSummary) {
                 String string = tocSummary.getHost();
-                ImageView imageView = this.a(0);
-                TextView textView = this.a(1);
+                ImageView imageView = this.getTagView(0);
+                TextView textView = this.getTagView(1);
                 if (string.contains("baidu")) {
                     imageView.setVisibility(View.VISIBLE);
                     textView.setVisibility(View.GONE);
@@ -197,14 +197,14 @@ public class ReaderMixActivity extends BaseLoadingActivity {
                     textView.setVisibility(View.VISIBLE);
                     textView.setText(string.substring(0, 1).toUpperCase());
                 }
-                this.a(2, string);
-                this.a(3, DateTimeUtil.e(tocSummary.getUpdated()) + "\uff1a");
-                this.a(4, tocSummary.getLastChapter());
+                this.setText(2, string);
+                this.setText(3, DateTimeUtil.e(tocSummary.getUpdated()) + "\uff1a");
+                this.setText(4, tocSummary.getLastChapter());
                 if (string.equals(ReaderMixActivity.a(ReaderMixActivity.this))) {
-                    this.a(5, false);
+                    this.setVisibility(5, false);
                     return;
                 }
-                this.a(5, true);
+                this.setVisibility(5, true);
 
             }
 

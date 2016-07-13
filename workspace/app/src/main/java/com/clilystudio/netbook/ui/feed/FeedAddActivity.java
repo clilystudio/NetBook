@@ -81,10 +81,10 @@ public class FeedAddActivity extends BaseActivity {
 
             @Override
             protected void a(int var1, BookReadRecord bookReadRecord) {
-                CoverView coverView = this.a(0);
+                CoverView coverView = this.getTagView(0);
                 coverView.setImageUrl(bookReadRecord.getFullCover(), R.drawable.cover_default);
-                this.a(1, bookReadRecord.getTitle());
-                CheckBox checkBox = this.a(2);
+                this.setText(1, bookReadRecord.getTitle());
+                CheckBox checkBox = this.getTagView(2);
                 checkBox.setChecked(false);
                 BookReadRecord bookReadRecord2 = FeedAddActivity.b(FeedAddActivity.this).getItem(var1);
                 int n2 = 0;

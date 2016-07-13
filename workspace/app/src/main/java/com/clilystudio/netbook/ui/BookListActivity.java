@@ -81,20 +81,20 @@ public abstract class BookListActivity extends BaseActivity {
 
             @Override
             protected void a(int var1, BookRankDetail bookRankDetail) {
-                CoverView coverView = this.a(0);
+                CoverView coverView = this.getTagView(0);
                 coverView.setImageUrl(bookRankDetail.getFullCover(), R.drawable.cover_default);
-                this.a(1, bookRankDetail.getTitle());
-                this.a(2, bookRankDetail.getShortIntro());
+                this.setText(1, bookRankDetail.getTitle());
+                this.setText(2, bookRankDetail.getShortIntro());
                 Resources resources = getLayoutInflater().getContext().getResources();
                 Object[] arrobject = new Object[1];
                 arrobject[0] = bookRankDetail.getLatelyFollower();
-                this.a(3, resources.getString(R.string.follower_count_format, arrobject));
+                this.setText(3, resources.getString(R.string.follower_count_format, arrobject));
                 Object[] arrobject2 = new Object[1];
                 arrobject2[0] = bookRankDetail.getRetentionRatio();
-                this.a(4, resources.getString(R.string.retention_ratio_format, arrobject2));
-                this.a(5, bookRankDetail.getRetentionRatio() == null);
-                this.a(6, bookRankDetail.getAuthor());
-                this.a(7, bookRankDetail.getCat());
+                this.setText(4, resources.getString(R.string.retention_ratio_format, arrobject2));
+                this.setVisibility(5, bookRankDetail.getRetentionRatio() == null);
+                this.setText(6, bookRankDetail.getAuthor());
+                this.setText(7, bookRankDetail.getCat());
             }
 
             @Override

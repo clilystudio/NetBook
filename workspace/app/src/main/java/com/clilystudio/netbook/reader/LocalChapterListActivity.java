@@ -171,13 +171,13 @@ public class LocalChapterListActivity extends BaseActivity {
 
             @Override
             protected void a(int var1, TocDownloadSummary tocDownloadSummary) {
-                this.a(0, tocDownloadSummary.getHostName());
-                this.a(1, "已预读" + tocDownloadSummary.getCount() + "章");
+                this.setText(0, tocDownloadSummary.getHostName());
+                this.setText(1, "已预读" + tocDownloadSummary.getCount() + "章");
                 if (-1 == var1) {
-                    this.a(2, false);
+                    this.setVisibility(2, false);
                     return;
                 }
-                this.a(2, true);
+                this.setVisibility(2, true);
             }
 
             @Override

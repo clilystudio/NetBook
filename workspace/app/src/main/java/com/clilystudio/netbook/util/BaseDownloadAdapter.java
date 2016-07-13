@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.TextView;
 
 import com.clilystudio.netbook.R;
 
@@ -11,7 +13,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
-public abstract class BaseDownloadAdapter<V> extends al {
+public abstract class BaseDownloadAdapter<V> extends BaseAdapter {
     private final V[] a = (V[])new Object[0];
     private final LayoutInflater b;
     private final int mLayoutId;
@@ -34,7 +36,7 @@ public abstract class BaseDownloadAdapter<V> extends al {
     }
 
     protected final void a(int position, View view, V item) {
-        this.a(view);
+        this.setTagViews(view);
         this.a(position, item);
     }
 
@@ -76,9 +78,47 @@ public abstract class BaseDownloadAdapter<V> extends al {
     @Override
     public View getView(int n, View view, ViewGroup viewGroup) {
         if (view == null) {
-            view = super.a(this.b.inflate(this.mLayoutId, null), this.mViewIds);
+            view = addTagViews(this.b.inflate(this.mLayoutId, null), this.mViewIds);
         }
         this.a(n, view, this.getItem(n));
         return view;
     }
+
+    private View[] mTagViews;
+
+    protected final View setVisibility(int position, boolean shouldHide) {
+        View view = this.mTagViews[position];
+        if (view != null) {
+            if (shouldHide) {
+                view.setVisibility(View.GONE);
+            } else {
+                view.setVisibility(View.VISIBLE);
+            }
+        }
+        return view;
+    }
+
+    protected final View addTagViews(View view, int[] viewIds) {
+        this.mTagViews = new View[viewIds.length];
+        for (int i = 0; i < viewIds.length; ++i) {
+            this.mTagViews[i] = view.findViewById(viewIds[i]);
+        }
+        view.setTag(this.mTagViews);
+        return view;
+    }
+
+    protected final TextView setText(int position, CharSequence text) {
+        TextView textView = (TextView) this.mTagViews[position];
+        textView.setText(text);
+        return textView;
+    }
+
+    protected final <T> T getTagView(int position) {
+        return (T) this.mTagViews[position];
+    }
+
+    protected final void setTagViews(View view) {
+        this.mTagViews = (View[]) view.getTag();
+    }
+
 }
