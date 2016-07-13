@@ -17,7 +17,6 @@ import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.model.BookSummary;
 import com.clilystudio.netbook.model.RelateBookRoot;
 import com.clilystudio.netbook.reader.cM;
-import com.clilystudio.netbook.util.F;
 import com.clilystudio.netbook.widget.CoverView;
 
 import java.util.List;
@@ -49,7 +48,7 @@ public class RelateBooksFragment extends Fragment implements cM.cQ {
         DisplayMetrics var5_11 = new DisplayMetrics();
         ((WindowManager) var4_10.getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay().getMetrics(var5_11);
         int var6_12 = (int) ((float) var5_11.widthPixels - 2.0f * this.getResources().getDimension(R.dimen.relate_book_outer_padding));
-        com.clilystudio.netbook.util.F var7_13 = getF(var6_12, this.getResources().getDimension(R.dimen.dp_60));
+        F var7_13 = getF(var6_12, this.getResources().getDimension(R.dimen.dp_60));
         if (var3_4.size() > var7_13.b()) {
             this.mMore.setVisibility(View.VISIBLE);
             this.mMore.setOnClickListener(new View.OnClickListener() {
@@ -86,7 +85,7 @@ public class RelateBooksFragment extends Fragment implements cM.cQ {
         }
     }
 
-    private com.clilystudio.netbook.util.F getF(float arg1, float arg2) {
+    private F getF(float arg1, float arg2) {
         float f = arg1 - arg2;
         float fc = getActivity().getResources().getDimension(R.dimen.relate_book_min_gap);
         for (int i = (int) (f / (arg2 + fc)); i > 0; --i) {
@@ -121,6 +120,25 @@ public class RelateBooksFragment extends Fragment implements cM.cQ {
             this.mBook = (CoverView) view.findViewById(R.id.book);
             this.mTitle = (TextView) view.findViewById(R.id.title);
             this.mContainer = view.findViewById(R.id.container);
+        }
+    }
+
+
+    public final class F {
+        private int a;
+        private float b;
+
+        public F(int n, float f) {
+            this.a = n;
+            this.b = f;
+        }
+
+        public final float a() {
+            return this.b;
+        }
+
+        public final int b() {
+            return this.a;
         }
     }
 }
