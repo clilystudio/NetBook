@@ -16,28 +16,22 @@ public final class ag {
     private static int c;
     private static ApiService d;
     private static Handler e;
-    private static ConcurrentHashMap<String, ai> f;
-    private static ConcurrentHashMap<String, Integer> g;
-    private static Handler.Callback h;
+    private static ConcurrentHashMap<String, onPostCountChangeListener> f = new ConcurrentHashMap<>();
+    private static ConcurrentHashMap<String, Integer> g = new ConcurrentHashMap<>();
+    private static Handler.Callback h = new Handler.Callback() {
 
-    static {
-        f = new ConcurrentHashMap();
-        g = new ConcurrentHashMap();
-        h = new Handler.Callback(){
-
-            @Override
-            public boolean handleMessage(Message msg) {
-                Bundle bundle = msg.getData();
-                int n = bundle.getInt("postCount");
-                String string = bundle.getString("bookId");
-                if (ag.a().containsKey(string)) {
-                    ((ai) ag.a().remove(string)).a(string, n);
-                    ag.b().put(string, n);
-                }
-                return true;
+        @Override
+        public boolean handleMessage(Message msg) {
+            Bundle bundle = msg.getData();
+            int n = bundle.getInt("postCount");
+            String string = bundle.getString("bookId");
+            if (ag.a().containsKey(string)) {
+                ag.a().remove(string).a(string, n);
+                ag.b().put(string, n);
             }
-        };
-    }
+            return true;
+        }
+    };
 
     private ag() {
     }
@@ -58,11 +52,11 @@ public final class ag {
         return a;
     }
 
-    static /* synthetic */ ConcurrentHashMap a() {
+    static /* synthetic */ ConcurrentHashMap<String, onPostCountChangeListener> a() {
         return f;
     }
 
-    static /* synthetic */ ConcurrentHashMap b() {
+    static /* synthetic */ ConcurrentHashMap<String, Integer> b() {
         return g;
     }
 
@@ -77,25 +71,20 @@ public final class ag {
     /*
      * Enabled aggressive block sorting
      */
-    public final void a(String string, ai ai2) {
+    public final void a(String string, onPostCountChangeListener ai2) {
         if (g.containsKey(string)) {
             ai2.a(string, g.get(string));
-            return;
-        } else {
-            if (f.containsKey(string)) return;
-            {
-                f.put(string, ai2);
-                Handler[] arrhandler = b;
-                int n = c;
-                c = n + 1;
-                Handler handler = arrhandler[n % b.length];
-                Message message = Message.obtain(handler);
-                Bundle bundle = new Bundle();
-                bundle.putString("bookId", string);
-                message.setData(bundle);
-                handler.sendMessage(message);
-                return;
-            }
+        } else if (!f.containsKey(string)) {
+            f.put(string, ai2);
+            Handler[] arrhandler = b;
+            int n = c;
+            c = n + 1;
+            Handler handler = arrhandler[n % b.length];
+            Message message = Message.obtain(handler);
+            Bundle bundle = new Bundle();
+            bundle.putString("bookId", string);
+            message.setData(bundle);
+            handler.sendMessage(message);
         }
     }
 }
