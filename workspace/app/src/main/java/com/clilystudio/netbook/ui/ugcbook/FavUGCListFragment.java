@@ -13,14 +13,14 @@ import com.clilystudio.netbook.api.ApiServiceProvider;
 import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.model.ResultStatus;
 import com.clilystudio.netbook.model.UGCBookListRoot;
-import com.clilystudio.netbook.util.W;
+import com.clilystudio.netbook.util.BaseDownloadAdapter;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 
 import uk.me.lewisdeane.ldialogs.BaseDialog;
 
 public class FavUGCListFragment extends AbsUGCListFragment implements AdapterView.OnItemLongClickListener {
     private ListView k;
-    private W l;
+    private BaseDownloadAdapter l;
     private PullToRefreshListView m;
 
     static /* synthetic */ PullToRefreshListView a(FavUGCListFragment favUGCListFragment) {

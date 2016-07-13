@@ -15,7 +15,7 @@ import com.clilystudio.netbook.a_pack.BaseAsyncTask;
 import com.clilystudio.netbook.api.ApiServiceProvider;
 import com.clilystudio.netbook.model.BookSummary;
 import com.clilystudio.netbook.model.SearchResultRoot;
-import com.clilystudio.netbook.util.W;
+import com.clilystudio.netbook.util.BaseDownloadAdapter;
 import com.clilystudio.netbook.widget.CoverView;
 
 import java.util.List;
@@ -23,7 +23,7 @@ import java.util.Locale;
 
 public class AuthorBooksActivity extends BaseLoadingActivity {
     private ListView a;
-    private W<BookSummary> b;
+    private BaseDownloadAdapter<BookSummary> b;
     private String c;
 
     public static Intent a(Context context, String string) {
@@ -34,7 +34,7 @@ public class AuthorBooksActivity extends BaseLoadingActivity {
         return authorBooksActivity.a;
     }
 
-    static /* synthetic */ W<BookSummary> b(AuthorBooksActivity authorBooksActivity) {
+    static /* synthetic */ BaseDownloadAdapter<BookSummary> b(AuthorBooksActivity authorBooksActivity) {
         return authorBooksActivity.b;
     }
 
@@ -75,7 +75,7 @@ public class AuthorBooksActivity extends BaseLoadingActivity {
         this.c = this.getIntent().getStringExtra("keyword");
         this.b(this.c);
         this.a = (ListView) this.findViewById(R.id.search_list);
-        this.b = new W<BookSummary>(LayoutInflater.from(this), R.layout.list_item_search_result) {
+        this.b = new BaseDownloadAdapter<BookSummary>(LayoutInflater.from(this), R.layout.list_item_search_result) {
 
             @Override
             protected void a(int var1, BookSummary bookSummary) {

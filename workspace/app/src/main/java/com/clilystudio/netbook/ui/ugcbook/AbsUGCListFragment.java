@@ -17,7 +17,7 @@ import com.clilystudio.netbook.a_pack.BaseAsyncTask;
 import com.clilystudio.netbook.am;
 import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.model.UGCBookListRoot;
-import com.clilystudio.netbook.util.W;
+import com.clilystudio.netbook.util.BaseDownloadAdapter;
 import com.clilystudio.netbook.widget.CoverView;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
@@ -30,7 +30,7 @@ import java.util.Locale;
 public abstract class AbsUGCListFragment extends Fragment implements AdapterView.OnItemClickListener {
     protected PullToRefreshListView a;
     protected ListView b;
-    protected W<UGCBookListRoot.UGCBook> c;
+    protected BaseDownloadAdapter<UGCBookListRoot.UGCBook> c;
     protected View d;
     protected View e;
     protected Handler f = new Handler();
@@ -169,7 +169,7 @@ public abstract class AbsUGCListFragment extends Fragment implements AdapterView
         }.b();
     }
 
-    public final W b() {
+    public final BaseDownloadAdapter b() {
         return this.c;
     }
 
@@ -259,7 +259,7 @@ public abstract class AbsUGCListFragment extends Fragment implements AdapterView
                 }, 1000);
             }
         });
-        this.c = new W<UGCBookListRoot.UGCBook>(getActivity().getLayoutInflater(), R.layout.list_item_ugc_book) {
+        this.c = new BaseDownloadAdapter<UGCBookListRoot.UGCBook>(getActivity().getLayoutInflater(), R.layout.list_item_ugc_book) {
 
             @Override
             protected void a(int var1, UGCBookListRoot.UGCBook ugcBook) {

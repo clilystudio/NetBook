@@ -19,7 +19,7 @@ import com.clilystudio.netbook.IntentBuilder;
 import com.clilystudio.netbook.model.Toc;
 import com.clilystudio.netbook.model.TocDownloadSummary;
 import com.clilystudio.netbook.ui.BaseActivity;
-import com.clilystudio.netbook.util.W;
+import com.clilystudio.netbook.util.BaseDownloadAdapter;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -29,7 +29,7 @@ import uk.me.lewisdeane.ldialogs.BaseDialog;
 public class LocalChapterListActivity extends BaseActivity {
     private TextView a;
     private ListView b;
-    private com.clilystudio.netbook.util.W<TocDownloadSummary> c;
+    private BaseDownloadAdapter<TocDownloadSummary> c;
     private View e;
     private ProgressDialog f;
     private String g;
@@ -61,7 +61,7 @@ public class LocalChapterListActivity extends BaseActivity {
         }).show();
     }
 
-    static /* synthetic */ W<TocDownloadSummary> b(LocalChapterListActivity localChapterListActivity) {
+    static /* synthetic */ BaseDownloadAdapter<TocDownloadSummary> b(LocalChapterListActivity localChapterListActivity) {
         return localChapterListActivity.c;
     }
 
@@ -167,7 +167,7 @@ public class LocalChapterListActivity extends BaseActivity {
         this.e = LayoutInflater.from(this).inflate(R.layout.resource_loacl_header, this.b, false);
         this.b.addHeaderView(this.e, null, false);
         this.e.setVisibility(View.GONE);
-        this.c = new W<TocDownloadSummary>(getLayoutInflater(), R.layout.list_item_resource_download) {
+        this.c = new BaseDownloadAdapter<TocDownloadSummary>(getLayoutInflater(), R.layout.list_item_resource_download) {
 
             @Override
             protected void a(int var1, TocDownloadSummary tocDownloadSummary) {

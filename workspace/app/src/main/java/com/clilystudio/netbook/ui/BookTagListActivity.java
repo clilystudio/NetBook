@@ -16,7 +16,7 @@ import com.clilystudio.netbook.IntentBuilder;
 import com.clilystudio.netbook.api.ApiServiceProvider;
 import com.clilystudio.netbook.model.BookSummary;
 import com.clilystudio.netbook.model.BookTagRoot;
-import com.clilystudio.netbook.util.W;
+import com.clilystudio.netbook.util.BaseDownloadAdapter;
 import com.clilystudio.netbook.widget.CoverView;
 import com.clilystudio.netbook.widget.ScrollLoadListView;
 
@@ -26,7 +26,7 @@ import java.util.List;
 
 public class BookTagListActivity extends BaseLoadingActivity {
     private BaseAsyncTask<String, Void, List<BookSummary>> a;
-    private W<BookSummary> b;
+    private BaseDownloadAdapter<BookSummary> b;
     private String c;
     private ScrollLoadListView e;
     private View f;
@@ -103,7 +103,7 @@ public class BookTagListActivity extends BaseLoadingActivity {
         return bookTagListActivity.f;
     }
 
-    static /* synthetic */ W<BookSummary> d(BookTagListActivity bookTagListActivity) {
+    static /* synthetic */ BaseDownloadAdapter<BookSummary> d(BookTagListActivity bookTagListActivity) {
         return bookTagListActivity.b;
     }
 
@@ -177,7 +177,7 @@ public class BookTagListActivity extends BaseLoadingActivity {
                 }
             }
         });
-        this.b = new W<BookSummary>(layoutInflater, R.layout.list_item_book_tags){
+        this.b = new BaseDownloadAdapter<BookSummary>(layoutInflater, R.layout.list_item_book_tags){
 
             @Override
             protected void a(int var1, BookSummary bookSummary) {

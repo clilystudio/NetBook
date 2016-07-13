@@ -30,6 +30,7 @@ import com.clilystudio.netbook.ui.BaseActivity;
 import com.clilystudio.netbook.ui.BookInfoActivity;
 import com.clilystudio.netbook.ui.SmartImageView;
 import com.clilystudio.netbook.ui.BaseCallBack;
+import com.clilystudio.netbook.util.BaseDownloadAdapter;
 import com.clilystudio.netbook.widget.CoverView;
 import com.squareup.otto.Subscribe;
 
@@ -45,7 +46,7 @@ public class UGCDetailActivity extends BaseActivity implements View.OnClickListe
     private SmartImageView g;
     private ImageButton i;
     private ListView j;
-    private com.clilystudio.netbook.util.W<UGCBookDetail.UGCBookContainer> k;
+    private BaseDownloadAdapter<UGCBookDetail.UGCBookContainer> k;
     private View l;
     private View m;
     private String o;
@@ -159,7 +160,7 @@ public class UGCDetailActivity extends BaseActivity implements View.OnClickListe
         return uGCDetailActivity.j;
     }
 
-    static /* synthetic */ com.clilystudio.netbook.util.W<UGCBookDetail.UGCBookContainer> h(UGCDetailActivity uGCDetailActivity) {
+    static /* synthetic */ BaseDownloadAdapter<UGCBookDetail.UGCBookContainer> h(UGCDetailActivity uGCDetailActivity) {
         return uGCDetailActivity.k;
     }
 
@@ -305,7 +306,7 @@ public class UGCDetailActivity extends BaseActivity implements View.OnClickListe
         this.i = (ImageButton) view.findViewById(R.id.ugcbook_more);
         this.i.setOnClickListener(this.t);
         this.j.addHeaderView(view, null, false);
-        this.k = new com.clilystudio.netbook.util.W<UGCBookDetail.UGCBookContainer>(this.getLayoutInflater(), R.layout.list_item_ugcbook_detail) {
+        this.k = new BaseDownloadAdapter<UGCBookDetail.UGCBookContainer>(this.getLayoutInflater(), R.layout.list_item_ugcbook_detail) {
 
             @Override
             protected void a(int var1, UGCBookDetail.UGCBookContainer var2) {

@@ -17,7 +17,7 @@ import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.a_pack.BaseAsyncTask;
 import com.clilystudio.netbook.api.ApiServiceProvider;
 import com.clilystudio.netbook.model.UGCBookListRoot;
-import com.clilystudio.netbook.util.W;
+import com.clilystudio.netbook.util.BaseDownloadAdapter;
 import com.clilystudio.netbook.widget.CoverView;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
@@ -33,7 +33,7 @@ public class UGCMainListFragment extends Fragment implements AdapterView.OnItemC
     private PullToRefreshListView a;
     private ListView b;
     private View c;
-    private W<UGCBookListRoot.UGCBook> d;
+    private BaseDownloadAdapter<UGCBookListRoot.UGCBook> d;
     private View e;
     private TextView f;
     private BaseAsyncTask<String, Void, UGCBookListRoot> g;
@@ -133,7 +133,7 @@ public class UGCMainListFragment extends Fragment implements AdapterView.OnItemC
         return uGCMainListFragment.i;
     }
 
-    static /* synthetic */ W<UGCBookListRoot.UGCBook> h(UGCMainListFragment uGCMainListFragment) {
+    static /* synthetic */ BaseDownloadAdapter<UGCBookListRoot.UGCBook> h(UGCMainListFragment uGCMainListFragment) {
         return uGCMainListFragment.d;
     }
 
@@ -281,7 +281,7 @@ public class UGCMainListFragment extends Fragment implements AdapterView.OnItemC
                 }, 1000);
             }
         });
-        this.d = new W<UGCBookListRoot.UGCBook>(layoutInflater2, R.layout.list_item_ugc_book) {
+        this.d = new BaseDownloadAdapter<UGCBookListRoot.UGCBook>(layoutInflater2, R.layout.list_item_ugc_book) {
 
             @Override
             protected void a(int var1, UGCBookListRoot.UGCBook ugcBook) {

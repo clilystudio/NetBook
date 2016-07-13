@@ -31,7 +31,7 @@ import com.clilystudio.netbook.model.BookSummary;
 import com.clilystudio.netbook.model.HotKeywordResult;
 import com.clilystudio.netbook.model.SearchPromRoot;
 import com.clilystudio.netbook.model.SearchResultRoot;
-import com.clilystudio.netbook.util.W;
+import com.clilystudio.netbook.util.BaseDownloadAdapter;
 import com.clilystudio.netbook.widget.AutoFlowView;
 import com.clilystudio.netbook.widget.CoverView;
 import com.clilystudio.netbook.widget.SearchEditText;
@@ -53,7 +53,7 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
     private ListView i;
     private View j;
     private View k;
-    private W<BookSummary> l;
+    private BaseDownloadAdapter<BookSummary> l;
     private View m;
     private View n;
     private String o;
@@ -108,7 +108,7 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
         searchActivity.i.setVisibility(View.GONE);
     }
 
-    static /* synthetic */  W<BookSummary> b(SearchActivity searchActivity) {
+    static /* synthetic */  BaseDownloadAdapter<BookSummary> b(SearchActivity searchActivity) {
         return searchActivity.l;
     }
 
@@ -391,7 +391,7 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
             this.h.addHeaderView(this.m, null, false);
             this.m.setOnClickListener(this);
         }
-        this.l = new W<BookSummary>(layoutInflater, R.layout.list_item_search_result) {
+        this.l = new BaseDownloadAdapter<BookSummary>(layoutInflater, R.layout.list_item_search_result) {
 
             @Override
             protected void a(int var1, BookSummary bookSummary) {

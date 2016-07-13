@@ -26,7 +26,7 @@ import com.clilystudio.netbook.model.AutoCompleteRoot;
 import com.clilystudio.netbook.model.BookSummary;
 import com.clilystudio.netbook.model.SearchPromRoot;
 import com.clilystudio.netbook.ui.BaseActivity;
-import com.clilystudio.netbook.util.W;
+import com.clilystudio.netbook.util.BaseDownloadAdapter;
 import com.clilystudio.netbook.widget.CoverView;
 import com.clilystudio.netbook.widget.SearchEditText;
 
@@ -45,7 +45,7 @@ public class UGCGuideAddBookActivity extends BaseActivity implements View.OnClic
     private ListView h;
     private View i;
     private View j;
-    private W<BookSummary> k;
+    private BaseDownloadAdapter<BookSummary> k;
     private View l;
     private String m;
     private boolean n;
@@ -84,7 +84,7 @@ public class UGCGuideAddBookActivity extends BaseActivity implements View.OnClic
         return !uGCGuideAddBookActivity.c.getText().toString().equals(string) && !string.equals(uGCGuideAddBookActivity.m);
     }
 
-    static /* synthetic */ W<BookSummary> c(UGCGuideAddBookActivity uGCGuideAddBookActivity) {
+    static /* synthetic */ BaseDownloadAdapter<BookSummary> c(UGCGuideAddBookActivity uGCGuideAddBookActivity) {
         return uGCGuideAddBookActivity.k;
     }
 
@@ -332,7 +332,7 @@ public class UGCGuideAddBookActivity extends BaseActivity implements View.OnClic
         this.f.setOnClickListener(this);
         this.e.setEnabled(false);
         this.g = (ListView) this.findViewById(R.id.search_list);
-        this.k = new W<BookSummary>(layoutInflater, R.layout.ugcbook_add_search_result) {
+        this.k = new BaseDownloadAdapter<BookSummary>(layoutInflater, R.layout.ugcbook_add_search_result) {
 
             @Override
             protected void a(int var1, BookSummary bookSummary) {

@@ -13,7 +13,7 @@ import com.clilystudio.netbook.event.BusProvider;
 import com.clilystudio.netbook.event.FeedAddedEvent;
 import com.clilystudio.netbook.ui.BaseActivity;
 import com.clilystudio.netbook.ui.BaseCallBack;
-import com.clilystudio.netbook.util.W;
+import com.clilystudio.netbook.util.BaseDownloadAdapter;
 import com.clilystudio.netbook.util.e;
 import com.clilystudio.netbook.widget.CoverView;
 
@@ -21,7 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FeedAddActivity extends BaseActivity {
-    private W<BookReadRecord> a;
+    private BaseDownloadAdapter<BookReadRecord> a;
     private ListView b;
     private ArrayList<BookReadRecord> c = new ArrayList<>();
 
@@ -41,7 +41,7 @@ public class FeedAddActivity extends BaseActivity {
         feedAddActivity.startActivity(intent);
     }
 
-    static /* synthetic */ W<BookReadRecord> b(FeedAddActivity feedAddActivity) {
+    static /* synthetic */ BaseDownloadAdapter<BookReadRecord> b(FeedAddActivity feedAddActivity) {
         return feedAddActivity.a;
     }
 
@@ -77,7 +77,7 @@ public class FeedAddActivity extends BaseActivity {
     @Override
     public void onResume() {
         super.onResume();
-        this.a = new W<BookReadRecord>(this.getLayoutInflater(), R.layout.list_item_feed_add){
+        this.a = new BaseDownloadAdapter<BookReadRecord>(this.getLayoutInflater(), R.layout.list_item_feed_add){
 
             @Override
             protected void a(int var1, BookReadRecord bookReadRecord) {

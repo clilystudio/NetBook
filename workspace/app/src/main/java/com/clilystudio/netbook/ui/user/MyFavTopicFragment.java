@@ -25,7 +25,7 @@ import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.model.ResultStatus;
 import com.clilystudio.netbook.model.Topic;
 import com.clilystudio.netbook.model.TopicPost;
-import com.clilystudio.netbook.util.W;
+import com.clilystudio.netbook.util.BaseDownloadAdapter;
 import com.clilystudio.netbook.widget.CoverView;
 import com.clilystudio.netbook.widget.LabelPtrListView;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
@@ -42,7 +42,7 @@ public class MyFavTopicFragment extends Fragment {
     private View e;
     private View f;
     private TextView g;
-    private W<TopicPost> h;
+    private BaseDownloadAdapter<TopicPost> h;
     private List<TopicPost> i = new ArrayList<>();
     private int j;
     private String k;
@@ -215,7 +215,7 @@ public class MyFavTopicFragment extends Fragment {
                 }, 1000);
             }
         });
-        this.h = new W<TopicPost>(this.getLayoutInflater(null), R.layout.list_item_new_topic) {
+        this.h = new BaseDownloadAdapter<TopicPost>(this.getLayoutInflater(null), R.layout.list_item_new_topic) {
 
             @Override
             protected void a(int var1, TopicPost topicPost) {

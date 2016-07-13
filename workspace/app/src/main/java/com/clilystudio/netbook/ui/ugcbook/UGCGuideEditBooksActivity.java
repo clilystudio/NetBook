@@ -33,7 +33,7 @@ import com.clilystudio.netbook.ui.BaseActivity;
 import com.clilystudio.netbook.ui.BaseCallBack;
 import com.clilystudio.netbook.ui.ActionBarClickListener;
 import com.clilystudio.netbook.ui.user.UserUGCActivity;
-import com.clilystudio.netbook.util.W;
+import com.clilystudio.netbook.util.BaseDownloadAdapter;
 import com.clilystudio.netbook.widget.CoverView;
 import com.squareup.otto.Subscribe;
 
@@ -48,7 +48,7 @@ import uk.me.lewisdeane.ldialogs.BaseDialog;
 public class UGCGuideEditBooksActivity extends BaseActivity implements View.OnClickListener {
     Map<String, String> a = new HashMap<>();
     private View c;
-    private W<BookSummary> e;
+    private BaseDownloadAdapter<BookSummary> e;
     private String f;
     private Author g;
     private boolean h;
@@ -286,7 +286,7 @@ public class UGCGuideEditBooksActivity extends BaseActivity implements View.OnCl
         b.addHeaderView(view, null, false);
         view.findViewById(R.id.collection_add_search).setOnClickListener(this);
         view.findViewById(R.id.collection_add_shelf).setOnClickListener(this);
-        this.e = new W<BookSummary>(this.getLayoutInflater(), R.layout.list_item_ucg_book_guide_edit) {
+        this.e = new BaseDownloadAdapter<BookSummary>(this.getLayoutInflater(), R.layout.list_item_ucg_book_guide_edit) {
 
             @Override
             protected void a(int var1, BookSummary bookSummary) {

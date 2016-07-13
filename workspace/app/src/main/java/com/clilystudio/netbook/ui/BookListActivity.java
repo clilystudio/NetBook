@@ -12,11 +12,11 @@ import android.widget.TextView;
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.IntentBuilder;
 import com.clilystudio.netbook.model.BookRankDetail;
-import com.clilystudio.netbook.util.W;
+import com.clilystudio.netbook.util.BaseDownloadAdapter;
 import com.clilystudio.netbook.widget.CoverView;
 
 public abstract class BookListActivity extends BaseActivity {
-    protected W<BookRankDetail> a;
+    protected BaseDownloadAdapter<BookRankDetail> a;
     private View b;
     private View c;
     private TextView e;
@@ -77,7 +77,7 @@ public abstract class BookListActivity extends BaseActivity {
                 b();
             }
         });
-        this.a = new W<BookRankDetail>(this.getLayoutInflater(), R.layout.list_item_ori_book){
+        this.a = new BaseDownloadAdapter<BookRankDetail>(this.getLayoutInflater(), R.layout.list_item_ori_book){
 
             @Override
             protected void a(int var1, BookRankDetail bookRankDetail) {

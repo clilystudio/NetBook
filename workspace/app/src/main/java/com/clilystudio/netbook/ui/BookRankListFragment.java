@@ -14,7 +14,7 @@ import com.clilystudio.netbook.a_pack.BaseAsyncTask;
 import com.clilystudio.netbook.api.ApiServiceProvider;
 import com.clilystudio.netbook.model.BookRankDetail;
 import com.clilystudio.netbook.model.BookRankDetailRoot;
-import com.clilystudio.netbook.util.W;
+import com.clilystudio.netbook.util.BaseDownloadAdapter;
 import com.clilystudio.netbook.widget.CoverView;
 import com.clilystudio.netbook.widget.ScrollLoadListView;
 
@@ -23,7 +23,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class BookRankListFragment extends Fragment {
-    protected W<BookRankDetail> a;
+    protected BaseDownloadAdapter<BookRankDetail> a;
     private View b;
     private View c;
     private View d;
@@ -137,7 +137,7 @@ public class BookRankListFragment extends Fragment {
                 BookRankListFragment.a(BookRankListFragment.this);
             }
         });
-        this.a = new W<BookRankDetail>(this.getActivity().getLayoutInflater(), R.layout.list_item_ori_book){
+        this.a = new BaseDownloadAdapter<BookRankDetail>(this.getActivity().getLayoutInflater(), R.layout.list_item_ori_book){
 
             @Override
             protected void a(int var1, BookRankDetail bookRankDetail) {

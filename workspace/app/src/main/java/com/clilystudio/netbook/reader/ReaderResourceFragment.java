@@ -20,7 +20,7 @@ import com.clilystudio.netbook.db.BookReadRecord;
 import com.clilystudio.netbook.db.TocReadRecord;
 import com.clilystudio.netbook.event.BusProvider;
 import com.clilystudio.netbook.model.TocSummary;
-import com.clilystudio.netbook.util.W;
+import com.clilystudio.netbook.util.BaseDownloadAdapter;
 import com.clilystudio.netbook.util.t;
 
 import java.util.Date;
@@ -38,7 +38,7 @@ public class ReaderResourceFragment extends Fragment {
     private TextView i;
     private View j;
     private TextView k;
-    private com.clilystudio.netbook.util.W<TocSummary> l;
+    private BaseDownloadAdapter<TocSummary> l;
 
     private int index = -1;
 
@@ -104,7 +104,7 @@ public class ReaderResourceFragment extends Fragment {
         return readerResourceFragment.c;
     }
 
-    static /* synthetic */ W<TocSummary> c(ReaderResourceFragment readerResourceFragment) {
+    static /* synthetic */ BaseDownloadAdapter<TocSummary> c(ReaderResourceFragment readerResourceFragment) {
         return readerResourceFragment.l;
     }
 
@@ -129,7 +129,7 @@ public class ReaderResourceFragment extends Fragment {
                 ReaderResourceFragment.this.startActivity(intent);
             }
         });
-        this.l = new W<TocSummary>(this.getActivity().getLayoutInflater(), R.layout.list_item_resource) {
+        this.l = new BaseDownloadAdapter<TocSummary>(this.getActivity().getLayoutInflater(), R.layout.list_item_resource) {
 
             @Override
             protected void a(int var1, TocSummary tocSummary) {

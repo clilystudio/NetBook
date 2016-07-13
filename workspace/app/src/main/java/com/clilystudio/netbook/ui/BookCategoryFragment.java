@@ -18,7 +18,7 @@ import com.clilystudio.netbook.a_pack.BaseAsyncTask;
 import com.clilystudio.netbook.api.ApiServiceProvider;
 import com.clilystudio.netbook.model.BookListRoot;
 import com.clilystudio.netbook.model.CategoryBook;
-import com.clilystudio.netbook.util.W;
+import com.clilystudio.netbook.util.BaseDownloadAdapter;
 import com.clilystudio.netbook.widget.CoverView;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
@@ -31,7 +31,7 @@ public class BookCategoryFragment extends Fragment {
     private PullToRefreshListView a;
     private ListView b;
     private View c;
-    private W<CategoryBook> d;
+    private BaseDownloadAdapter<CategoryBook> d;
     private View e;
     private TextView f;
     private String g;
@@ -91,7 +91,7 @@ public class BookCategoryFragment extends Fragment {
         return bookCategoryFragment.a;
     }
 
-    static /* synthetic */ W<CategoryBook> h(BookCategoryFragment bookCategoryFragment) {
+    static /* synthetic */ BaseDownloadAdapter<CategoryBook> h(BookCategoryFragment bookCategoryFragment) {
         return bookCategoryFragment.d;
     }
 
@@ -184,7 +184,7 @@ public class BookCategoryFragment extends Fragment {
                 }, 1000);
             }
         });
-        this.d = new W<CategoryBook>(layoutInflater2, R.layout.list_item_ori_book) {
+        this.d = new BaseDownloadAdapter<CategoryBook>(layoutInflater2, R.layout.list_item_ori_book) {
 
             @Override
             protected void a(int var1, CategoryBook categoryBook) {

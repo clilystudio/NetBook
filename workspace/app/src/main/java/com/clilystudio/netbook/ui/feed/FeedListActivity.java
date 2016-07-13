@@ -18,7 +18,7 @@ import com.clilystudio.netbook.event.BusProvider;
 import com.clilystudio.netbook.event.FeedSettingChangedEvent;
 import com.clilystudio.netbook.event.FeedRemovedEvent;
 import com.clilystudio.netbook.ui.BaseActivity;
-import com.clilystudio.netbook.util.W;
+import com.clilystudio.netbook.util.BaseDownloadAdapter;
 import com.clilystudio.netbook.widget.CoverView;
 import com.squareup.otto.Subscribe;
 
@@ -27,7 +27,7 @@ import java.util.List;
 import uk.me.lewisdeane.ldialogs.BaseDialog;
 
 public class FeedListActivity extends BaseActivity {
-    private W<BookReadRecord> a;
+    private BaseDownloadAdapter<BookReadRecord> a;
     private int b;
 
     static /* synthetic */ int a(FeedListActivity feedListActivity) {
@@ -81,7 +81,7 @@ public class FeedListActivity extends BaseActivity {
         this.b(R.string.feed);
         BusProvider.getInstance().register(this);
         ListView listView = (ListView) this.findViewById(R.id.book_feed_list);
-        this.a = new W<BookReadRecord>(this.getLayoutInflater(), R.layout.list_item_feed_list){
+        this.a = new BaseDownloadAdapter<BookReadRecord>(this.getLayoutInflater(), R.layout.list_item_feed_list){
 
             @Override
             protected void a(int var1, final BookReadRecord bookReadRecord) {

@@ -23,7 +23,7 @@ import com.clilystudio.netbook.event.ModeChangedEvent;
 import com.clilystudio.netbook.model.ChineseAllPromRoot;
 import com.clilystudio.netbook.model.TocSummary;
 import com.clilystudio.netbook.ui.BaseLoadingActivity;
-import com.clilystudio.netbook.util.W;
+import com.clilystudio.netbook.util.BaseDownloadAdapter;
 import com.clilystudio.netbook.util.t;
 
 import java.util.Iterator;
@@ -34,7 +34,7 @@ public class ReaderMixActivity extends BaseLoadingActivity {
     private String b;
     private String c;
     private ListView e;
-    private com.clilystudio.netbook.util.W<TocSummary> f;
+    private BaseDownloadAdapter<TocSummary> f;
     private View g;
     private ChineseAllPromRoot h;
     private View i;
@@ -71,7 +71,7 @@ public class ReaderMixActivity extends BaseLoadingActivity {
         return readerMixActivity.e;
     }
 
-    static /* synthetic */ W<TocSummary> d(ReaderMixActivity readerMixActivity) {
+    static /* synthetic */ BaseDownloadAdapter<TocSummary> d(ReaderMixActivity readerMixActivity) {
         return readerMixActivity.f;
     }
 
@@ -169,7 +169,7 @@ public class ReaderMixActivity extends BaseLoadingActivity {
         this.a = this.getIntent().getStringExtra("BOOK_ID");
         this.b = this.getIntent().getStringExtra("BOOK_TITLE");
         this.c = this.getIntent().getStringExtra("SOURCE");
-        this.f = new W<TocSummary>(this.getLayoutInflater(), R.layout.list_item_mix_source) {
+        this.f = new BaseDownloadAdapter<TocSummary>(this.getLayoutInflater(), R.layout.list_item_mix_source) {
 
             @Override
             protected void a(int var1, TocSummary tocSummary) {

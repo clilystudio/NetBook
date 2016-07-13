@@ -11,22 +11,22 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
-public abstract class W<V> extends al {
+public abstract class BaseDownloadAdapter<V> extends al {
     private final V[] a = (V[])new Object[0];
     private final LayoutInflater b;
     private final int c;
     private final int[] d;
     private V[] e;
 
-    public W(Activity activity) {
+    public BaseDownloadAdapter(Activity activity) {
         this(activity.getLayoutInflater(), R.layout.list_item_resource_download);
     }
 
-    public W(Activity activity, int n) {
+    public BaseDownloadAdapter(Activity activity, int n) {
         this(activity.getLayoutInflater(), n);
     }
 
-    public W(LayoutInflater layoutInflater, int n) {
+    public BaseDownloadAdapter(LayoutInflater layoutInflater, int n) {
         this.b = layoutInflater;
         this.c = n;
         this.e = a;
