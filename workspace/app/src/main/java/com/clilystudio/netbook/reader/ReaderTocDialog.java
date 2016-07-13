@@ -105,7 +105,7 @@ public class ReaderTocDialog extends DialogFragment implements AdapterView.OnIte
     @Override
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        this.i = bZ.a(this.getActivity()) ? R.style.BaseTheme : R.style.TocDialog;
+        this.i = ReaderStyle.a(this.getActivity()) ? R.style.BaseTheme : R.style.TocDialog;
         this.setStyle(DialogFragment.STYLE_NO_TITLE, this.i);
     }
 

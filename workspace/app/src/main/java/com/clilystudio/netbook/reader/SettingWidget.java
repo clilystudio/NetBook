@@ -14,7 +14,7 @@ import android.widget.SeekBar;
 import com.clilystudio.netbook.R;
 
 public class SettingWidget extends LinearLayout {
-    private bZ a;
+    private ReaderStyle a;
     private ReaderActionBar b;
     private View c;
     private View d;
@@ -40,7 +40,7 @@ public class SettingWidget extends LinearLayout {
         settingWidget.b();
     }
 
-    static /* synthetic */ bZ b(SettingWidget settingWidget) {
+    static /* synthetic */ ReaderStyle b(SettingWidget settingWidget) {
         return settingWidget.a;
     }
 
@@ -127,9 +127,9 @@ public class SettingWidget extends LinearLayout {
     /*
      * Enabled aggressive block sorting
      */
-    public void setReaderStyle(bZ bZ2) {
+    public void setReaderStyle(ReaderStyle bZ2) {
         this.a = bZ2;
-        bZ2.a(new bZ.cc() {
+        bZ2.a(new ReaderStyle.cc() {
             @Override
             public void a() {
                 SettingWidget.a(SettingWidget.this);
@@ -226,7 +226,7 @@ public class SettingWidget extends LinearLayout {
         });
     }
 
-    public void setReaderStyle(bZ bZ2, ReaderActionBar readerActionBar) {
+    public void setReaderStyle(ReaderStyle bZ2, ReaderActionBar readerActionBar) {
         this.b = readerActionBar;
         this.setReaderStyle(bZ2);
     }

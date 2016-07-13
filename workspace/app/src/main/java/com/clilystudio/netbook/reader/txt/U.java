@@ -27,10 +27,10 @@ public final class U {
      * Enabled force condition propagation
      * Lifted jumps to return sites
      */
-    public static Toc a(String var0) {
+    public static Toc getToc(String host) {
         Toc var1_1 = new Toc();
-        var1_1.setHost(var0);
-        List<ChapterLink> var3_2 = U.d(var0);
+        var1_1.setHost(host);
+        List<ChapterLink> var3_2 = U.d(host);
         if (var3_2 != null && var3_2.size() != 0) {
             var1_1.setChapters(var3_2.toArray(new ChapterLink[var3_2.size()]));
             return var1_1;
@@ -38,7 +38,7 @@ public final class U {
         try {
             for (int var5_4 = 0; var5_4 < 2; ++var5_4) {
                 String var6_5 = U.a[var5_4];
-                BufferedReader var7_6 = com.clilystudio.netbook.hpay100.a.a.G(var0);
+                BufferedReader var7_6 = com.clilystudio.netbook.hpay100.a.a.G(host);
                 List<ChapterLink> var8_7 = new ArrayList<>();
                 Pattern var9_8 = Pattern.compile(var6_5);
                 int var10_9 = 0;
@@ -71,7 +71,7 @@ public final class U {
                     if (var8_7.size() > 0) {
                         ChapterLink var19_17 = var8_7.get(-1 + var8_7.size());
                         var19_17.setTxtCharLength(var11_10 - var19_17.getTxtCharOffset());
-                        U.a(var8_7, var0);
+                        U.a(var8_7, host);
                     }
                     var7_6.close();
                     var3_2 = var8_7;
@@ -80,7 +80,7 @@ public final class U {
                 }
             }
             if (var3_2.size() == 0) {
-                var3_2 = U.c(var0);
+                var3_2 = U.c(host);
                 if (var3_2 != null && var3_2.size() > 0) {
                     var1_1.setRealChapter(false);
                 }
@@ -98,7 +98,7 @@ public final class U {
 
     private static void a(List<ChapterLink> list, String string) {
         try {
-            String name = U.b(string);
+            String name = getFileName(string);
             if (name != null) {
                 ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(new File(com.clilystudio.netbook.hpay100.a.a.J(CachePathConst.TextToc), name)));
                 objectOutputStream.writeObject(new LocalTxtToc(new File(string).length(), list));
@@ -110,8 +110,8 @@ public final class U {
         }
     }
 
-    public static String b(String string) {
-        String string2 = string.trim().substring(1 + string.lastIndexOf("/"));
+    public static String getFileName(String filePath) {
+        String string2 = filePath.trim().substring(1 + filePath.lastIndexOf("/"));
         int n = string2.lastIndexOf(".");
         if (n != -1) {
             return string2.substring(0, n);
@@ -166,9 +166,9 @@ public final class U {
      * Enabled force condition propagation
      * Lifted jumps to return sites
      */
-    private static List<ChapterLink> d(String string) {
+    private static List<ChapterLink> d(String host) {
         File file;
-        String name = U.b(string);
+        String name = U.getFileName(host);
         if (name != null) {
             file = new File(com.clilystudio.netbook.hpay100.a.a.J(CachePathConst.TextToc), name);
             if (!file.exists()) return null;
@@ -176,7 +176,7 @@ public final class U {
                 ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(file));
                 LocalTxtToc localTxtToc = (LocalTxtToc) objectInputStream.readObject();
                 objectInputStream.close();
-                if (new File(string).length() == localTxtToc.getTxtFileLength()) {
+                if (new File(host).length() == localTxtToc.getTxtFileLength()) {
                     return localTxtToc.getChapterLinks();
                 }
                 file.delete();

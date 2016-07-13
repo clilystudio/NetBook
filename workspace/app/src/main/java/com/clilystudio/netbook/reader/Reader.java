@@ -553,7 +553,7 @@ public final class Reader {
                 boolean bl;
                 Reader.a(Reader.this, 0, Reader.Type.TOC);
                 if (Reader.f(Reader.this)) {
-                    Reader.a(Reader.this, com.clilystudio.netbook.reader.txt.U.a(Reader.this.v));
+                    Reader.a(Reader.this, com.clilystudio.netbook.reader.txt.U.getToc(Reader.this.v));
                     bl = false;
                 } else {
                     Reader.a(Reader.this, Reader.a(Reader.this, Reader.h(Reader.this), Reader.i(Reader.this), Reader.j(Reader.this)));

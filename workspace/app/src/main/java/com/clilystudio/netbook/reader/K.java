@@ -9,9 +9,9 @@ import java.util.ArrayList;
 
 public final class K {
     private Reader a;
-    private bZ b;
+    private ReaderStyle b;
 
-    public K(Reader reader, bZ bZ2) {
+    public K(Reader reader, ReaderStyle bZ2) {
         this.a = reader;
         this.b = bZ2;
     }

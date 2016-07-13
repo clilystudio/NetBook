@@ -581,7 +581,7 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
         new Thread() {
             @Override
             public void run() {
-                String string = U.b(bookFile.getFilePath());
+                String string = U.getFileName(bookFile.getFilePath());
                 com.clilystudio.netbook.hpay100.a.a.F(CachePathConst.TextToc + string);
             }
         }.start();

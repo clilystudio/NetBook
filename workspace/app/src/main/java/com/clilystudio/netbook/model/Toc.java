@@ -22,8 +22,8 @@ public class Toc implements Serializable {
         return this.host;
     }
 
-    public void setHost(String string) {
-        this.host = string;
+    public void setHost(String host) {
+        this.host = host;
     }
 
     public String getName() {

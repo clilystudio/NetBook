@@ -110,7 +110,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
     private String e;
     private String f;
     private Reader g;
-    private bZ h;
+    private ReaderStyle h;
     private bH i;
     private K j;
     private ReaderTocDialog k;
@@ -664,7 +664,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         return n2;
     }
 
-    static /* synthetic */ bZ l(ReaderActivity readerActivity) {
+    static /* synthetic */ ReaderStyle l(ReaderActivity readerActivity) {
         return readerActivity.h;
     }
 
@@ -1723,12 +1723,12 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         this.C = (TextView) this.findViewById(R.id.reader_download_pro_current);
         this.T = (AutoReaderTextView) this.findViewById(R.id.tv_auto_reader_body);
         this.U = this.findViewById(R.id.view_auto_reader_shadow);
-        this.h = new bZ(this);
+        this.h = new ReaderStyle(this);
         this.O = (ThemeLoadingView) this.findViewById(R.id.reader_content_loading);
         this.O.setVisibility(View.GONE);
         this.O.a(this.h.h());
         this.i = new bH(this);
-        this.h.a(new bZ.cc() {
+        this.h.a(new ReaderStyle.cc() {
             @Override
             public void a() {
                 for (o o2 : ReaderActivity.i(ReaderActivity.this)) {
@@ -1740,13 +1740,13 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
                 ReaderActivity.this.g();
             }
         });
-        this.h.a(new bZ.cb() {
+        this.h.a(new ReaderStyle.cb() {
             @Override
             public void a() {
                 ReaderActivity.this.g();
             }
         });
-        this.h.a(new bZ.ce() {
+        this.h.a(new ReaderStyle.ce() {
             @Override
             public void a() {
                 for (o o2 : ReaderActivity.i(ReaderActivity.this)) {
@@ -1757,13 +1757,13 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
                 ReaderActivity.u(ReaderActivity.this);
             }
         });
-        this.h.a(new bZ.ca() {
+        this.h.a(new ReaderStyle.ca() {
             @Override
             public void a() {
                 ReaderActivity.v(ReaderActivity.this);
             }
         });
-        this.h.a(new bZ.cd() {
+        this.h.a(new ReaderStyle.cd() {
             @Override
             public void a() {
                 for (o o2 : ReaderActivity.i(ReaderActivity.this)) {

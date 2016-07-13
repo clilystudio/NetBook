@@ -38,7 +38,7 @@ import uk.me.lewisdeane.ldialogs.BaseDialog;
 public final class o {
     private static final SimpleDateFormat a = new SimpleDateFormat("HH:mm", Locale.CHINA);
     private final Activity b;
-    private final bZ c;
+    private final ReaderStyle c;
     private n d;
     private boolean e;
     private View f;
@@ -58,7 +58,7 @@ public final class o {
     private boolean t = false;
     private Button u;
 
-    public o(Activity activity, bZ bZ2) {
+    public o(Activity activity, ReaderStyle bZ2) {
         this.b = activity;
         this.c = bZ2;
         this.f = this.b.getLayoutInflater().inflate(R.layout.reader_page, (ViewGroup)this.b.getWindow().getDecorView(), false);

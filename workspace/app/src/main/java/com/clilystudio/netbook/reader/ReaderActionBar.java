@@ -13,7 +13,7 @@ import android.widget.TextView;
 public class ReaderActionBar extends RelativeLayout {
     private View a;
     private OnBtnClickListener b;
-    private bZ c;
+    private ReaderStyle c;
     private TextView d;
     private ImageView e;
     private TextView f;
@@ -34,7 +34,7 @@ public class ReaderActionBar extends RelativeLayout {
         super(context, attributeSet, n);
     }
 
-    static /* synthetic */ bZ a(ReaderActionBar readerActionBar) {
+    static /* synthetic */ ReaderStyle a(ReaderActionBar readerActionBar) {
         return readerActionBar.c;
     }
 
@@ -152,7 +152,7 @@ public class ReaderActionBar extends RelativeLayout {
         this.b = a2;
     }
 
-    public void setReaderStyle(bZ bZ2) {
+    public void setReaderStyle(ReaderStyle bZ2) {
         this.c = bZ2;
         this.a();
     }

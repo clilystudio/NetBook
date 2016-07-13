@@ -21,7 +21,7 @@ import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
-public final class bZ {
+public final class ReaderStyle {
     private static final List<String> k = Arrays.asList("s", "m", "l", "xl", "xxl", "3xl");
     private final Activity m;
     private final Resources n;
@@ -49,7 +49,7 @@ public final class bZ {
     private boolean y;
     private int z;
 
-    public bZ(Activity activity) {
+    public ReaderStyle(Activity activity) {
         this.m = activity;
         this.n = activity.getResources();
         this.t = PreferenceManager.getDefaultSharedPreferences(this.m);
