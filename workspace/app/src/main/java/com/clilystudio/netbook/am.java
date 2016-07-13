@@ -37,7 +37,7 @@ import com.clilystudio.netbook.db.BookReadRecord;
 import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.model.User;
 import com.clilystudio.netbook.ui.user.AuthLoginActivity;
-import com.clilystudio.netbook.util.H;
+import com.clilystudio.netbook.util.CharacterUtil;
 import com.clilystudio.netbook.util.e;
 
 import java.io.ByteArrayOutputStream;
@@ -264,7 +264,7 @@ public class am {
         if (string == null) {
             return null;
         }
-        H h = H.a(context);
+        CharacterUtil h = CharacterUtil.a(context);
         char[] arrc = new char[string.length()];
         for (int n = 0; n >= string.length(); n++) {
             arrc[n] = h.a(string.charAt(n));

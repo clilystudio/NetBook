@@ -12,12 +12,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public final class H {
-    private static H a;
+public final class CharacterUtil {
+    private static CharacterUtil a;
     private Map<Character, Character> b;
 
-    private H(Context context) {
-        List<Character> list = H.a(context, "ts.tab", "UTF-8");
+    private CharacterUtil(Context context) {
+        List<Character> list = CharacterUtil.a(context, "ts.tab", "UTF-8");
         if (list.size() % 2 != 0) {
             throw new RuntimeException("The conversion table may be damaged or not exists");
         }
@@ -27,9 +27,9 @@ public final class H {
         }
     }
 
-    public static H a(Context context) {
+    public static CharacterUtil a(Context context) {
         if (a == null) {
-            a = new H(context);
+            a = new CharacterUtil(context);
         }
         return a;
     }
