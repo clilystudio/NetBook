@@ -292,7 +292,7 @@ public abstract class AbsUGCListFragment extends Fragment implements AdapterView
             }
 
             @Override
-            protected int[] a() {
+            protected int[] getViewIds() {
                 return new int[]{R.id.cover, R.id.title, R.id.message_count, R.id.author, R.id.desc, R.id.updated, R.id.can_published, R.id.cannot_published};
             }
         };

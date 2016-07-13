@@ -359,7 +359,7 @@ public class UGCGuideAddBookActivity extends BaseActivity implements View.OnClic
             }
 
             @Override
-            protected int[] a() {
+            protected int[] getViewIds() {
                 return new int[]{R.id.iv_cover, R.id.tv_title, R.id.tv_short_intro, R.id.prom_label, R.id.item_add_btn, R.id.item_add_text};
             }
 

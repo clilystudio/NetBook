@@ -155,7 +155,7 @@ public class ReaderResourceFragment extends Fragment {
             }
 
             @Override
-            protected int[] a() {
+            protected int[] getViewIds() {
                 return new int[]{R.id.tv_name, R.id.tv_updated, R.id.iv_ic_updated, R.id.tv_last_chapter, R.id.resource_list_item_last_select};
             }
         };

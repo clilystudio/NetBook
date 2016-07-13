@@ -326,7 +326,7 @@ public class UGCGuideEditBooksActivity extends BaseActivity implements View.OnCl
             }
 
             @Override
-            protected int[] a() {
+            protected int[] getViewIds() {
                 return new int[]{R.id.avatar, R.id.title, R.id.author, R.id.followcount, R.id.wordcount, R.id.wordunit, R.id.comment, R.id.comment_add_layout, R.id.comment_edit_layout, R.id.separate};
             }
 

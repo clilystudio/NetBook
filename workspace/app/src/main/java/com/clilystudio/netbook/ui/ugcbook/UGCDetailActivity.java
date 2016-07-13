@@ -199,7 +199,7 @@ public class UGCDetailActivity extends BaseActivity implements View.OnClickListe
             }
         });
         this.f.setText(String.valueOf(uGCBookDetail.getCollectorCount()));
-        this.k.a(uGCBookDetail.getBooks());
+        this.k.setDatas(uGCBookDetail.getBooks());
     }
 
     private void b() {
@@ -347,7 +347,7 @@ public class UGCDetailActivity extends BaseActivity implements View.OnClickListe
             }
 
             @Override
-            protected int[] a() {
+            protected int[] getViewIds() {
                 return new int[]{R.id.title, R.id.message_count, R.id.desc, R.id.avatar, R.id.author, R.id.message_textcount, R.id.message_textunit, R.id.desc_layout, R.id.message_separate};
             }
         };

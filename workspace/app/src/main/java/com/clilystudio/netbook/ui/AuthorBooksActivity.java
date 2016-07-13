@@ -88,7 +88,7 @@ public class AuthorBooksActivity extends BaseLoadingActivity {
             }
 
             @Override
-            protected int[] a() {
+            protected int[] getViewIds() {
                 return new int[]{R.id.iv_cover, R.id.tv_title, R.id.tv_short_intro, R.id.prom_label};
             }
         };

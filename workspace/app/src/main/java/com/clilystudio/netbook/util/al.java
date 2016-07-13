@@ -19,10 +19,10 @@ public abstract class al extends BaseAdapter {
         return view;
     }
 
-    protected final View a(View view, int[] arrn) {
-        this.a = new View[arrn.length];
-        for (int i = 0; i < arrn.length; ++i) {
-            this.a[i] = view.findViewById(arrn[i]);
+    protected final View a(View view, int[] viewIds) {
+        this.a = new View[viewIds.length];
+        for (int i = 0; i < viewIds.length; ++i) {
+            this.a[i] = view.findViewById(viewIds[i]);
         }
         view.setTag(this.a);
         return view;

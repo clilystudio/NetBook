@@ -14,72 +14,69 @@ import java.util.List;
 public abstract class BaseDownloadAdapter<V> extends al {
     private final V[] a = (V[])new Object[0];
     private final LayoutInflater b;
-    private final int c;
-    private final int[] d;
-    private V[] e;
+    private final int mLayoutId;
+    private final int[] mViewIds;
+    private V[] mDatas;
 
     public BaseDownloadAdapter(Activity activity) {
         this(activity.getLayoutInflater(), R.layout.list_item_resource_download);
     }
 
-    public BaseDownloadAdapter(Activity activity, int n) {
-        this(activity.getLayoutInflater(), n);
+    public BaseDownloadAdapter(Activity activity, int layoutId) {
+        this(activity.getLayoutInflater(), layoutId);
     }
 
-    public BaseDownloadAdapter(LayoutInflater layoutInflater, int n) {
+    public BaseDownloadAdapter(LayoutInflater layoutInflater, int layoutId) {
         this.b = layoutInflater;
-        this.c = n;
-        this.e = a;
-        this.d = this.a();
+        this.mLayoutId = layoutId;
+        this.mDatas = a;
+        this.mViewIds = getViewIds();
     }
 
-    protected final void a(int n, View view, V v) {
+    protected final void a(int position, View view, V item) {
         this.a(view);
-        this.a(n, v);
+        this.a(position, item);
     }
 
     protected abstract void a(int var1, V var2);
 
     public final void a(Collection<V> collection) {
         if (collection != null && !collection.isEmpty()) {
-            this.a((V[])collection.toArray());
-            return;
+            this.setDatas((V[])collection.toArray());
+        } else {
+            this.setDatas(a);
         }
-        this.a(a);
     }
 
-    /*
-     * Enabled aggressive block sorting
-     */
-    public final void a(V[] arrobject) {
-        this.e = arrobject != null ? arrobject : a;
+    public final void setDatas(V[] arrobject) {
+        this.mDatas = arrobject != null ? arrobject : a;
         this.notifyDataSetChanged();
     }
 
-    protected abstract int[] a();
+    protected abstract int[] getViewIds();
 
-    public final List<V> c() {
-        return Arrays.asList(this.e);
+    public final List<V> getDatas() {
+        return Arrays.asList(this.mDatas);
     }
 
     @Override
     public int getCount() {
-        return this.e.length;
+        return this.mDatas.length;
     }
 
     public V getItem(int n) {
-        return this.e[n];
+        return this.mDatas[n];
     }
 
     @Override
     public long getItemId(int n) {
-        return this.e[n].hashCode();
+        return this.mDatas[n].hashCode();
     }
 
     @Override
     public View getView(int n, View view, ViewGroup viewGroup) {
         if (view == null) {
-            view = super.a(this.b.inflate(this.c, null), this.d);
+            view = super.a(this.b.inflate(this.mLayoutId, null), this.mViewIds);
         }
         this.a(n, view, this.getItem(n));
         return view;

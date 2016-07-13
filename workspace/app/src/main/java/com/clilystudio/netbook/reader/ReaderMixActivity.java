@@ -209,7 +209,7 @@ public class ReaderMixActivity extends BaseLoadingActivity {
             }
 
             @Override
-            protected int[] a() {
+            protected int[] getViewIds() {
                 return new int[]{R.id.source_icon_logo, R.id.source_icon_text, R.id.source, R.id.update_time, R.id.last_chapter, R.id.selected};
             }
         };

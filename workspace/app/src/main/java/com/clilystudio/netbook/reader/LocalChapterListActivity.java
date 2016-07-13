@@ -181,7 +181,7 @@ public class LocalChapterListActivity extends BaseActivity {
             }
 
             @Override
-            protected int[] a() {
+            protected int[] getViewIds() {
                 return new int[]{R.id.tv_name, R.id.tv_last_chapter, R.id.resource_list_item_last_select};
             }
         };

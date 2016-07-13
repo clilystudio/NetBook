@@ -21,7 +21,7 @@ public class BookRankDetailActivity extends BookListActivity {
                 super.onPostExecute(bookRankDetailRoot);
                 if (bookRankDetailRoot != null && bookRankDetailRoot.getRanking() != null) {
                     BookRankDetailActivity.this.e(1);
-                    BookRankDetailActivity.this.a.a(bookRankDetailRoot.getRanking().getBooks());
+                    BookRankDetailActivity.this.a.setDatas(bookRankDetailRoot.getRanking().getBooks());
                     return;
                 }
                 BookRankDetailActivity.this.e(2);

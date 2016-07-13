@@ -125,7 +125,7 @@ public class FeedListActivity extends BaseActivity {
            }
 
             @Override
-            protected int[] a() {
+            protected int[] getViewIds() {
                 return new int[]{R.id.book_feed_list_cover, R.id.book_feed_list_title, R.id.book_feed_list_chapter, R.id.book_feed_list_remove};
             }
         };

@@ -99,7 +99,7 @@ public class FeedAddActivity extends BaseActivity {
             }
 
             @Override
-            protected int[] a() {
+            protected int[] getViewIds() {
                 return new int[]{R.id.book_feed_add_cover, R.id.book_feed_add_title, R.id.book_feed_add_checkbox};
             }
         };
