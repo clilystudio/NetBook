@@ -12,6 +12,7 @@ import com.clilystudio.netbook.db.TocReadRecord;
 import com.clilystudio.netbook.model.Chapter;
 import com.clilystudio.netbook.model.ChapterLink;
 import com.clilystudio.netbook.model.ChapterRoot;
+import com.clilystudio.netbook.model.ReaderChapterIdentifier;
 import com.clilystudio.netbook.model.Toc;
 import com.clilystudio.netbook.util.BookInfoUtil;
 
@@ -501,7 +502,7 @@ public final class Reader {
         int n3;
         int n4;
         Chapter chapter;
-        ReaderChapter readerChapter = com.clilystudio.netbook.util.Q.a(this.c, this.x, n2);
+        ReaderChapter readerChapter = Q.a(this.c, this.x, n2);
         if (readerChapter != null && (n4 = readerChapter.getStatus()) != -1 && n4 != -3 && n4 != -2) {
             e2.a(readerChapter);
             this.p();
@@ -665,7 +666,7 @@ public final class Reader {
 
     public final void c() {
         if (this.c != null && this.x != null) {
-            com.clilystudio.netbook.util.Q.a(this.c, this.x, this.a);
+            Q.a(this.c, this.x, this.a);
         }
     }
 
@@ -788,4 +789,29 @@ public final class Reader {
 
         void b();
     }
+
+    public static final class Q {
+        private static HashMap<ReaderChapterIdentifier, Map<Integer, ReaderChapter>> a = new HashMap<>();
+
+        private Q() {
+        }
+
+        public static ReaderChapter a(String bookId, String tocHost, int n) {
+            ReaderChapterIdentifier readerChapterIdentifier = new ReaderChapterIdentifier(bookId, tocHost);
+            Map<Integer, ReaderChapter> map = a.get(readerChapterIdentifier);
+            if (map == null) {
+                return null;
+            }
+            return map.get(n);
+        }
+
+        public static void a(String bookId, String tocHost, Map<Integer, ReaderChapter> map) {
+            ReaderChapterIdentifier readerChapterIdentifier = new ReaderChapterIdentifier(bookId, tocHost);
+            if (a.get(readerChapterIdentifier) != null) {
+                return;
+            }
+            a.put(readerChapterIdentifier, new HashMap<>(map));
+        }
+    }
+
 }

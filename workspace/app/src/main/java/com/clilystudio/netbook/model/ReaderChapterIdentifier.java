@@ -7,9 +7,9 @@ public class ReaderChapterIdentifier implements Comparable<ReaderChapterIdentifi
     private long createTime;
     private String tocHost;
 
-    public ReaderChapterIdentifier(String string, String string2) {
-        this.bookId = string;
-        this.tocHost = string2;
+    public ReaderChapterIdentifier(String bookId, String tocHost) {
+        this.bookId = bookId;
+        this.tocHost = tocHost;
         this.createTime = Calendar.getInstance().getTimeInMillis();
     }
 
