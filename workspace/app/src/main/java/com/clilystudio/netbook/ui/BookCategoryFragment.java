@@ -188,7 +188,8 @@ public class BookCategoryFragment extends Fragment {
 
             @Override
             protected void a(int var1, CategoryBook categoryBook) {
-                this.a(0, CoverView.class).setImageUrl(categoryBook.getFullCover(), R.drawable.cover_default);
+                CoverView coverView = this.a(0);
+                coverView.setImageUrl(categoryBook.getFullCover(), R.drawable.cover_default);
                 this.a(1, categoryBook.getTitle());
                 this.a(2, categoryBook.getShortIntro());
                 Resources resources = layoutInflater2.getContext().getResources();

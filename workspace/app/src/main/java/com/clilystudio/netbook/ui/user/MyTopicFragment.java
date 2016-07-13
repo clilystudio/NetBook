@@ -184,7 +184,7 @@ public class MyTopicFragment extends Fragment {
                 this.a(2, com.clilystudio.netbook.util.t.e(topicPost.getCreated()));
                 this.a(3, topicPost.getTitle());
                 String string2 = topicPost.getBlock();
-                CoverView coverView = this.a(0, CoverView.class);
+                CoverView coverView = this.a(0);
                 if ("help".equals(string2)) {
                     coverView.setImageResource(R.drawable.book_help_cover_default);
                 } else if ("ramble".equals(string2)) {
@@ -201,14 +201,15 @@ public class MyTopicFragment extends Fragment {
                     this.a(5, false);
                     this.a(5, String.valueOf(topicPost.getCommentCount()));
                 }
+                ImageView imageView = this.a(6);
                 if ("focus".equals(string = topicPost.getState())) {
                     this.a(6, false);
-                    this.a(6, ImageView.class).setImageLevel(0);
+                    imageView.setImageLevel(0);
                     return;
                 }
                 if ("hot".equals(string)) {
                     this.a(6, false);
-                    this.a(6, ImageView.class).setImageLevel(1);
+                    imageView.setImageLevel(1);
                     return;
                 }
                 this.a(6, true);

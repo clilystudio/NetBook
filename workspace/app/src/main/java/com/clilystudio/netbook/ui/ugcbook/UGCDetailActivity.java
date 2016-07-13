@@ -319,7 +319,8 @@ public class UGCDetailActivity extends BaseActivity implements View.OnClickListe
                 if ((ugcBookItem = var2.getBook()) != null) {
                     this.a(0, ugcBookItem.getTitle());
                     this.a(1, String.valueOf(ugcBookItem.getLatelyFollower()));
-                    this.a(3, CoverView.class).setImageUrl(ugcBookItem.getFullCover(), R.drawable.cover_default);
+                    CoverView coverView = this.a(3);
+                    coverView.setImageUrl(ugcBookItem.getFullCover(), R.drawable.cover_default);
                     this.a(4, ugcBookItem.getAuthor());
                     long l = ugcBookItem.getWordCount();
                     if (l <= 0) {

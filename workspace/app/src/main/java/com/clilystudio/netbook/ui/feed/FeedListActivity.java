@@ -85,7 +85,8 @@ public class FeedListActivity extends BaseActivity {
 
             @Override
             protected void a(int var1, final BookReadRecord bookReadRecord) {
-                this.a(0, CoverView.class).setImageUrl(bookReadRecord.getFullCover(), R.drawable.cover_default);
+                CoverView coverView = this.a(0);
+                coverView.setImageUrl(bookReadRecord.getFullCover(), R.drawable.cover_default);
                 this.a(1, bookReadRecord.getTitle());
                 int n2 = bookReadRecord.getChapterCount() - bookReadRecord.getChapterCountAtFeed();
                 int n3 = 0;
@@ -93,7 +94,7 @@ public class FeedListActivity extends BaseActivity {
                     n3 = n2;
                 }
                 this.a(2, "养了 " + n3 + " 章未读");
-                final TextView textView = this.a(3, TextView.class);
+                final TextView textView = this.a(3);
                 if (bookReadRecord.isFeeding()) {
                     textView.setEnabled(true);
                     textView.setText("\u79fb\u56de");

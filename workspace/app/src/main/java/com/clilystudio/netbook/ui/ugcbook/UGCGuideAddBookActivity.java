@@ -343,7 +343,8 @@ public class UGCGuideAddBookActivity extends BaseActivity implements View.OnClic
                         UGCGuideAddBookActivity.a(UGCGuideAddBookActivity.this, var1);
                     }
                 }
-                this.a(0, CoverView.class).setImageUrl(bookSummary.getFullCover(), R.drawable.cover_default);
+                CoverView coverView = this.a(0);
+                coverView.setImageUrl(bookSummary.getFullCover(), R.drawable.cover_default);
                 this.a(1, bookSummary.getTitle());
                 Object[] arrobject = new Object[]{bookSummary.getLatelyFollower(), Float.valueOf(bookSummary.getRetentionRatio()), bookSummary.getAuthor()};
                 this.a(2, String.format(Locale.CHINA,"%d人在追  |  %.1f%%读者留存  |  %s著", arrobject));

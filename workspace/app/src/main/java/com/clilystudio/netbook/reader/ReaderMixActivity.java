@@ -174,8 +174,8 @@ public class ReaderMixActivity extends BaseLoadingActivity {
             @Override
             protected void a(int var1, TocSummary tocSummary) {
                 String string = tocSummary.getHost();
-                ImageView imageView = this.a(0, ImageView.class);
-                TextView textView = this.a(1, TextView.class);
+                ImageView imageView = this.a(0);
+                TextView textView = this.a(1);
                 if (string.contains("baidu")) {
                     imageView.setVisibility(View.VISIBLE);
                     textView.setVisibility(View.GONE);

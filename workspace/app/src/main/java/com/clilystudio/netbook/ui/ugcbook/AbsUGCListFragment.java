@@ -264,7 +264,8 @@ public abstract class AbsUGCListFragment extends Fragment implements AdapterView
             @Override
             protected void a(int var1, UGCBookListRoot.UGCBook ugcBook) {
                 if (ugcBook == null) return;
-                this.a(0, CoverView.class).setImageUrl(ugcBook.getFullCover(), R.drawable.cover_default);
+                CoverView coverView = this.a(0);
+                coverView.setImageUrl(ugcBook.getFullCover(), R.drawable.cover_default);
                 this.a(1, ugcBook.getTitle());
                 this.a(4, ugcBook.getDesc());
                 if (ugcBook.isDraft()) {

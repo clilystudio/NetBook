@@ -81,7 +81,8 @@ public abstract class BookListActivity extends BaseActivity {
 
             @Override
             protected void a(int var1, BookRankDetail bookRankDetail) {
-                this.a(0, CoverView.class).setImageUrl(bookRankDetail.getFullCover(), R.drawable.cover_default);
+                CoverView coverView = this.a(0);
+                coverView.setImageUrl(bookRankDetail.getFullCover(), R.drawable.cover_default);
                 this.a(1, bookRankDetail.getTitle());
                 this.a(2, bookRankDetail.getShortIntro());
                 Resources resources = getLayoutInflater().getContext().getResources();

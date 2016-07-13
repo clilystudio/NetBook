@@ -136,11 +136,15 @@ public class ReaderResourceFragment extends Fragment {
                 this.a(0, tocSummary.getHost());
                 this.a(1, t.e(tocSummary.getUpdated()));
                 if (new Date().getTime() - tocSummary.getUpdated().getTime() < 3600000) {
-                    this.a(1, TextView.class).setTextColor(getResources().getColor(R.color.deprecated_red));
-                    this.a(2, ImageView.class).setImageLevel(1);
+                    TextView textView = this.a(1);
+                    textView.setTextColor(getResources().getColor(R.color.deprecated_red));
+                    ImageView imageView = this.a(2);
+                    imageView.setImageLevel(1);
                 } else {
-                    this.a(1, TextView.class).setTextColor(getResources().getColor(R.color.third_text_normal));
-                    this.a(2, ImageView.class).setImageLevel(0);
+                    TextView textView = this.a(1);
+                    textView.setTextColor(getResources().getColor(R.color.third_text_normal));
+                    ImageView imageView = this.a(2);
+                    imageView.setImageLevel(0);
                 }
                 this.a(3, tocSummary.getLastChapter());
                 if (index == var1) {

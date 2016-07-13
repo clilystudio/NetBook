@@ -290,7 +290,8 @@ public class UGCGuideEditBooksActivity extends BaseActivity implements View.OnCl
 
             @Override
             protected void a(int var1, BookSummary bookSummary) {
-                this.a(0, CoverView.class).setImageUrl(bookSummary.getFullCover(), R.drawable.cover_default);
+                CoverView coverView = this.a(0);
+                coverView.setImageUrl(bookSummary.getFullCover(), R.drawable.cover_default);
                 this.a(1, bookSummary.getTitle());
                 this.a(2, bookSummary.getAuthor());
                 this.a(3, "" + bookSummary.getLatelyFollower());
