@@ -19,7 +19,7 @@ import com.clilystudio.netbook.event.BusProvider;
 import com.clilystudio.netbook.event.ModeChangedEvent;
 import com.clilystudio.netbook.model.TocSummary;
 import com.clilystudio.netbook.ui.RelateBookListActivity;
-import com.clilystudio.netbook.util.t;
+import com.clilystudio.netbook.util.DateTimeUtil;
 import com.clilystudio.netbook.widget.LoadingContainer;
 
 import java.util.List;
@@ -85,7 +85,7 @@ public class ReaderMenuFragment extends Fragment {
                     View view = fragmentActivity.getLayoutInflater().inflate(R.layout.list_item_reader_menu_toc, viewGroup, false);
                     TocHolder TocHolder = new TocHolder(view);
                     TocHolder.link.setText(tocSummary.getHost());
-                    TocHolder.time.setText(t.e(tocSummary.getUpdated()));
+                    TocHolder.time.setText(DateTimeUtil.e(tocSummary.getUpdated()));
                     TocHolder.title.setText(tocSummary.getLastChapter());
                     viewGroup.addView(view);
                     view.setOnClickListener(new View.OnClickListener() {

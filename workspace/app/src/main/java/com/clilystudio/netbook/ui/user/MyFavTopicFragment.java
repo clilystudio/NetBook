@@ -26,6 +26,7 @@ import com.clilystudio.netbook.model.ResultStatus;
 import com.clilystudio.netbook.model.Topic;
 import com.clilystudio.netbook.model.TopicPost;
 import com.clilystudio.netbook.util.BaseDownloadAdapter;
+import com.clilystudio.netbook.util.DateTimeUtil;
 import com.clilystudio.netbook.widget.CoverView;
 import com.clilystudio.netbook.widget.LabelPtrListView;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
@@ -221,7 +222,7 @@ public class MyFavTopicFragment extends Fragment {
             protected void a(int var1, TopicPost topicPost) {
                 String string;
                 this.a(1, topicPost.getAuthor().getNickname());
-                this.a(2, com.clilystudio.netbook.util.t.e(topicPost.getCreated()));
+                this.a(2, DateTimeUtil.e(topicPost.getCreated()));
                 this.a(3, topicPost.getTitle());
                 String string2 = topicPost.getBlock();
                 CoverView coverView = this.a(0);

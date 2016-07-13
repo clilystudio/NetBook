@@ -21,7 +21,7 @@ import com.clilystudio.netbook.db.TocReadRecord;
 import com.clilystudio.netbook.event.BusProvider;
 import com.clilystudio.netbook.model.TocSummary;
 import com.clilystudio.netbook.util.BaseDownloadAdapter;
-import com.clilystudio.netbook.util.t;
+import com.clilystudio.netbook.util.DateTimeUtil;
 
 import java.util.Date;
 import java.util.List;
@@ -134,7 +134,7 @@ public class ReaderResourceFragment extends Fragment {
             @Override
             protected void a(int var1, TocSummary tocSummary) {
                 this.a(0, tocSummary.getHost());
-                this.a(1, t.e(tocSummary.getUpdated()));
+                this.a(1, DateTimeUtil.e(tocSummary.getUpdated()));
                 if (new Date().getTime() - tocSummary.getUpdated().getTime() < 3600000) {
                     TextView textView = this.a(1);
                     textView.setTextColor(getResources().getColor(R.color.deprecated_red));

@@ -31,6 +31,7 @@ import com.clilystudio.netbook.ui.BookInfoActivity;
 import com.clilystudio.netbook.ui.SmartImageView;
 import com.clilystudio.netbook.ui.BaseCallBack;
 import com.clilystudio.netbook.util.BaseDownloadAdapter;
+import com.clilystudio.netbook.util.DateTimeUtil;
 import com.clilystudio.netbook.widget.CoverView;
 import com.squareup.otto.Subscribe;
 
@@ -184,7 +185,7 @@ public class UGCDetailActivity extends BaseActivity implements View.OnClickListe
             this.g.setImageUrl(author.getScaleAvatar());
             this.b.setText(author.getNickname());
         }
-        this.a.setText(com.clilystudio.netbook.util.t.e(uGCBookDetail.getCreated()));
+        this.a.setText(DateTimeUtil.e(uGCBookDetail.getCreated()));
         this.c.setText(u);
         this.e.setText(v);
         this.e.post(new Runnable() {

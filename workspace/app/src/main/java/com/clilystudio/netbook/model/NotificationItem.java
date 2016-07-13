@@ -1,6 +1,6 @@
 package com.clilystudio.netbook.model;
 
-import com.clilystudio.netbook.util.t;
+import com.clilystudio.netbook.util.DateTimeUtil;
 
 import java.util.Date;
 
@@ -137,7 +137,7 @@ public class NotificationItem {
     }
 
     public Date getServerDate() {
-        return t.b(this.getCreated());
+        return DateTimeUtil.b(this.getCreated());
     }
 
     public String getSubTitle() {

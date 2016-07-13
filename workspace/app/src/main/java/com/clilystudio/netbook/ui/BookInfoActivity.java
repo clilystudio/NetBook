@@ -30,7 +30,7 @@ import com.clilystudio.netbook.reader.dl.a;
 import com.clilystudio.netbook.ui.user.AuthLoginActivity;
 import com.clilystudio.netbook.util.BookInfoUtil;
 import com.clilystudio.netbook.util.BookSourceManager;
-import com.clilystudio.netbook.util.t;
+import com.clilystudio.netbook.util.DateTimeUtil;
 import com.clilystudio.netbook.widget.CoverView;
 import com.clilystudio.netbook.widget.TagsLayout;
 import com.squareup.otto.Subscribe;
@@ -178,7 +178,7 @@ public class BookInfoActivity extends BaseActivity implements View.OnClickListen
             textView2.setVisibility(View.GONE);
         }
         if (bookInfoActivity.k.getUpdated() != null) {
-            String string2 = bookInfoActivity.k.getIsSerial() ? t.e(bookInfoActivity.k.getUpdated()) : "完结";
+            String string2 = bookInfoActivity.k.getIsSerial() ? DateTimeUtil.e(bookInfoActivity.k.getUpdated()) : "完结";
             ((TextView) bookInfoActivity.findViewById(R.id.update_time)).setText(string2);
         }
         ((TextView) bookInfoActivity.findViewById(R.id.book_detail_info_followers)).setText(Integer.toString(bookInfoActivity.k.getLatelyFollower()));

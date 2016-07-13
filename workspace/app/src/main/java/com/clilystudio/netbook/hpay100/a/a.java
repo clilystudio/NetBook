@@ -59,7 +59,7 @@ import com.clilystudio.netbook.util.CipherUtil;
 import com.clilystudio.netbook.util.GenderIntroDialog;
 import com.clilystudio.netbook.util.BookInfoUtil;
 import com.clilystudio.netbook.util.X;
-import com.clilystudio.netbook.util.t;
+import com.clilystudio.netbook.util.DateTimeUtil;
 import com.integralblue.httpresponsecache.compat.java.lang.ArrayIndexOutOfBoundsException;
 import com.umeng.onlineconfig.OnlineConfigAgent;
 import com.xiaomi.mipush.sdk.MiPushClient;
@@ -2450,7 +2450,7 @@ public class a {
     }
 
     public static void u(Context context) {
-        int n2 = t.a();
+        int n2 = DateTimeUtil.getTodayValue();
         if (n2 != a(context, "key_all_post_open_by_day", 0)) {
             b(context, "key_all_post_open_by_day", n2);
         }
@@ -2471,7 +2471,7 @@ public class a {
     }
 
     public static void v(Context context) {
-        int n2 = t.a();
+        int n2 = DateTimeUtil.getTodayValue();
         if (n2 != a(context, "key_audiobook_listen_count", 0)) {
             b(context, "key_audiobook_listen_count", n2);
         }

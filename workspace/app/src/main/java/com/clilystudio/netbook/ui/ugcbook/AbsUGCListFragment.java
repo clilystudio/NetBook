@@ -18,6 +18,7 @@ import com.clilystudio.netbook.am;
 import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.model.UGCBookListRoot;
 import com.clilystudio.netbook.util.BaseDownloadAdapter;
+import com.clilystudio.netbook.util.DateTimeUtil;
 import com.clilystudio.netbook.widget.CoverView;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
@@ -271,7 +272,7 @@ public abstract class AbsUGCListFragment extends Fragment implements AdapterView
                 if (ugcBook.isDraft()) {
                     this.a(2, String.format(Locale.CHINA, "共%1$d本书", ugcBook.getBookCount()));
                     this.a(3, true);
-                    this.a(5, com.clilystudio.netbook.util.t.e(ugcBook.getUpdated()));
+                    this.a(5, DateTimeUtil.e(ugcBook.getUpdated()));
                     this.a(5, false);
                     if (ugcBook.getBookCount() >= 8) {
                         this.a(6, false);

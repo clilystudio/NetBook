@@ -18,6 +18,7 @@ import com.clilystudio.netbook.a_pack.BaseAsyncTask;
 import com.clilystudio.netbook.api.ApiServiceProvider;
 import com.clilystudio.netbook.model.UGCBookListRoot;
 import com.clilystudio.netbook.util.BaseDownloadAdapter;
+import com.clilystudio.netbook.util.DateTimeUtil;
 import com.clilystudio.netbook.widget.CoverView;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
@@ -293,7 +294,7 @@ public class UGCMainListFragment extends Fragment implements AdapterView.OnItemC
                 if (ugcBook.isDraft()) {
                     this.a(2, String.format(Locale.CHINA,"共%1$d本书", ugcBook.getBookCount()));
                     this.a(3, true);
-                    this.a(5, com.clilystudio.netbook.util.t.e(ugcBook.getUpdated()));
+                    this.a(5, DateTimeUtil.e(ugcBook.getUpdated()));
                     this.a(5, false);
                     if (ugcBook.getBookCount() >= 8) {
                         this.a(6, false);

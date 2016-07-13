@@ -16,7 +16,7 @@ import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.model.BookGenderRecommend;
 import com.clilystudio.netbook.model.BookInfo;
 import com.clilystudio.netbook.model.RemoteBookShelf;
-import com.clilystudio.netbook.util.t;
+import com.clilystudio.netbook.util.DateTimeUtil;
 
 import java.util.Date;
 import java.util.List;
@@ -296,7 +296,7 @@ public class BookReadRecord extends Model {
     }
 
     public String buildDesc() {
-        Object[] arrobject = new Object[]{t.e(this.getUpdated()), this.last_chapter};
+        Object[] arrobject = new Object[]{DateTimeUtil.e(this.getUpdated()), this.last_chapter};
         return String.format("%s:%s", arrobject);
     }
 

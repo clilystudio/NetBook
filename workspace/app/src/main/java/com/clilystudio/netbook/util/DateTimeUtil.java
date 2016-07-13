@@ -8,46 +8,45 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
-public final class t {
-    private static final SimpleDateFormat a = new SimpleDateFormat("yyyyMMdd", Locale.CHINA);
-    private static final SimpleDateFormat b = new SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.CHINA);
-    private static final SimpleDateFormat c = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ", Locale.CHINA);
+public final class DateTimeUtil {
+    private static final SimpleDateFormat mShortFormatter = new SimpleDateFormat("yyyyMMdd", Locale.CHINA);
+    private static final SimpleDateFormat mNormalFormatter = new SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.CHINA);
+    private static final SimpleDateFormat mLongFormatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ", Locale.CHINA);
 
-    public static int a() {
-        Date date = new Date();
-        return com.clilystudio.netbook.hpay100.a.a.b(a.format(date), 0);
+    public static int getTodayValue() {
+        return com.clilystudio.netbook.hpay100.a.a.b(mShortFormatter.format(new Date()), 0);
     }
 
-    public static String a(long l) {
-        long l2 = Math.abs(System.currentTimeMillis() - l);
+    public static String formatTime(long timeMillis) {
+        long l2 = Math.abs(System.currentTimeMillis() - timeMillis);
         if (l2 <= 60000) {
-            return "\u521a\u521a";
+            return "刚刚";
         }
         if (l2 <= 604800000) {
-            return DateUtils.getRelativeTimeSpanString(l).toString();
+            return DateUtils.getRelativeTimeSpanString(timeMillis).toString();
         }
         if (l2 <= 2592000000L) {
             long l3 = l2 / 86400000;
-            return "" + l3 + " \u5929\u524d";
+            return "" + l3 + " 天前";
         }
         if (l2 <= 31536000000L) {
             long l4 = l2 / 2592000000L;
-            return "" + l4 + " \u6708\u524d";
+            return "" + l4 + " 月前";
         }
         if (l2 <= 94608000000L) {
             long l5 = l2 / 31536000000L;
-            return "" + l5 + " \u5e74\u524d";
+            return "" + l5 + " 年前";
         }
-        return DateUtils.getRelativeTimeSpanString(l).toString();
+        return DateUtils.getRelativeTimeSpanString(timeMillis).toString();
     }
 
-    public static String a(Date date) {
-        return a.format(date);
+    public static String formatShortDate(Date date) {
+        return mShortFormatter.format(date);
     }
 
-    public static Date a(String string) {
+    public static Date getDateByString(String string) {
         try {
-            return b.parse(string);
+            return mNormalFormatter.parse(string);
         } catch (Exception var1_3) {
             var1_3.printStackTrace();
         }
@@ -60,9 +59,9 @@ public final class t {
     public static boolean a(Date date, Date... arrdate) {
         if (date == null) return false;
         if (arrdate.length == 1) {
-            return !(date.getTime() < t.f(arrdate[0]).getTime() || date.getTime() > t.g(arrdate[0]).getTime());
+            return !(date.getTime() < DateTimeUtil.getDayBegin(arrdate[0]).getTime() || date.getTime() > DateTimeUtil.getDayEnd(arrdate[0]).getTime());
         }
-        return arrdate.length == 2 && date.getTime() >= t.f(arrdate[0]).getTime() && date.getTime() <= t.g(arrdate[1]).getTime();
+        return arrdate.length == 2 && date.getTime() >= DateTimeUtil.getDayBegin(arrdate[0]).getTime() && date.getTime() <= DateTimeUtil.getDayEnd(arrdate[1]).getTime();
     }
 
     public static String b(long l) {
@@ -93,7 +92,7 @@ public final class t {
 
     public static Date b(String string) {
         String string2 = string.replace("Z", "+0000");
-        return c.parse(string2, new ParsePosition(0));
+        return mLongFormatter.parse(string2, new ParsePosition(0));
     }
 
     public static String c(Date date) {
@@ -112,12 +111,12 @@ public final class t {
 
     public static String e(Date date) {
         if (date != null) {
-            return t.a(date.getTime());
+            return DateTimeUtil.formatTime(date.getTime());
         }
-        return "\u6682\u65e0";
+        return "暂无";
     }
 
-    private static Date f(Date date) {
+    private static Date getDayBegin(Date date) {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(date);
         calendar.set(Calendar.HOUR_OF_DAY, 0);
@@ -127,7 +126,7 @@ public final class t {
         return calendar.getTime();
     }
 
-    private static Date g(Date date) {
+    private static Date getDayEnd(Date date) {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(date);
         calendar.set(Calendar.HOUR_OF_DAY, 23);

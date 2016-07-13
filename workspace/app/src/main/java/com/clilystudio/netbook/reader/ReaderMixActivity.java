@@ -24,7 +24,7 @@ import com.clilystudio.netbook.model.ChineseAllPromRoot;
 import com.clilystudio.netbook.model.TocSummary;
 import com.clilystudio.netbook.ui.BaseLoadingActivity;
 import com.clilystudio.netbook.util.BaseDownloadAdapter;
-import com.clilystudio.netbook.util.t;
+import com.clilystudio.netbook.util.DateTimeUtil;
 
 import java.util.Iterator;
 import java.util.List;
@@ -198,7 +198,7 @@ public class ReaderMixActivity extends BaseLoadingActivity {
                     textView.setText(string.substring(0, 1).toUpperCase());
                 }
                 this.a(2, string);
-                this.a(3, t.e(tocSummary.getUpdated()) + "\uff1a");
+                this.a(3, DateTimeUtil.e(tocSummary.getUpdated()) + "\uff1a");
                 this.a(4, tocSummary.getLastChapter());
                 if (string.equals(ReaderMixActivity.a(ReaderMixActivity.this))) {
                     this.a(5, false);
