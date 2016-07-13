@@ -47,19 +47,11 @@ public class BookDownloadManager {
             this.startDownloadService(bookReadRecord, start, total);
             return;
         }
-        final d b2 = new d() {
-
-            @Override
-            public void a() {
-                BookDownloadManager.this.startDownloadService(bookReadRecord, start, total);
-            }
-        };
-
         new BaseDialog.Builder(this.mActivity).setTitle(R.string.zssq_tips).setMessage(R.string.chapter_dl_net_type_msg).setPositiveButton(R.string.chapter_dl, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
-                b2.a();
+                startDownloadService(bookReadRecord, start, total);
             }
         }).setNegativeButton(R.string.cancel, null).show();
     }
