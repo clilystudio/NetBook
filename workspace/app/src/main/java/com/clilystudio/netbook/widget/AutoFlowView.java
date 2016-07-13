@@ -26,7 +26,7 @@ public class AutoFlowView extends LinearLayout implements View.OnClickListener {
     private static int e;
     private static int f;
     private static int g;
-    private static i h;
+    private static OnItemClickListener h;
     private static int i;
     private List<AutoFlowView.Word> j;
     private int[] l;
@@ -173,7 +173,7 @@ public class AutoFlowView extends LinearLayout implements View.OnClickListener {
         this.setMeasuredDimension(View.MeasureSpec.getSize(n), i);
     }
 
-    public void setOnItemClickListener(i i2) {
+    public void setOnItemClickListener(OnItemClickListener i2) {
         h = i2;
     }
 

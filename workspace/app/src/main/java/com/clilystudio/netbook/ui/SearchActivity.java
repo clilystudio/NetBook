@@ -35,7 +35,7 @@ import com.clilystudio.netbook.util.W;
 import com.clilystudio.netbook.widget.AutoFlowView;
 import com.clilystudio.netbook.widget.CoverView;
 import com.clilystudio.netbook.widget.SearchEditText;
-import com.clilystudio.netbook.widget.i;
+import com.clilystudio.netbook.widget.OnItemClickListener;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -499,7 +499,7 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
             List<AutoFlowView.Word> list = com.clilystudio.netbook.hpay100.a.a.k(CachePathConst.SearchHistory, "search_hotword.txt");
             this.q.setVisibility(View.VISIBLE);
             this.r.setWords(list);
-            this.r.setOnItemClickListener(new i() {
+            this.r.setOnItemClickListener(new OnItemClickListener() {
                 @Override
                 public void a(String var1) {
                     SearchActivity.a(SearchActivity.this, var1);
@@ -534,7 +534,7 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
                     com.clilystudio.netbook.hpay100.a.a.a(arrayList, CachePathConst.SearchHistory, "search_hotword.txt");
                     SearchActivity.g(SearchActivity.this).setVisibility(View.VISIBLE);
                     SearchActivity.e(SearchActivity.this).setWords(hotKeywordResult.getHotWords());
-                    SearchActivity.e(SearchActivity.this).setOnItemClickListener(new i() {
+                    SearchActivity.e(SearchActivity.this).setOnItemClickListener(new OnItemClickListener() {
                         @Override
                         public void a(String var1) {
                             SearchActivity.a(SearchActivity.this, var1);
