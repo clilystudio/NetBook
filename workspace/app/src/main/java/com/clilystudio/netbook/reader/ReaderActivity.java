@@ -48,6 +48,7 @@ import com.clilystudio.netbook.model.ChapterLink;
 import com.clilystudio.netbook.model.TopicCount;
 import com.clilystudio.netbook.ui.BaseReadSlmActivity;
 import com.clilystudio.netbook.ui.BookInfoActivity;
+import com.clilystudio.netbook.util.BookInfo;
 import com.clilystudio.netbook.util.ae;
 import com.clilystudio.netbook.util.k;
 import com.clilystudio.netbook.widget.ThemeLoadingView;
@@ -1560,7 +1561,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
     public final void i() {
         this.P();
         String string = this.g != null && this.g.i() != null ? this.g.i() : this.f;
-        com.clilystudio.netbook.util.I.d = string;
+        BookInfo.source = string;
         this.startActivity(ReaderMixActivity.a(this, this.c, this.d, string));
         this.overridePendingTransition(R.anim.mode_list_enter_in, R.anim.mode_list_enter_out);
     }
@@ -1669,11 +1670,11 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         BookReadRecord bookReadRecord = BookReadRecord.get(this.c);
         this.L = bookReadRecord != null ? bookReadRecord.getReadMode() : MyApplication.getInstance().getReadMode();
         this.N = intent.getBooleanExtra("HAS_OTHER_SOURCES", true);
-        com.clilystudio.netbook.util.I.a = this.c;
-        com.clilystudio.netbook.util.I.b = this.d;
-        com.clilystudio.netbook.util.I.d = this.f;
-        com.clilystudio.netbook.util.I.c = this.e;
-        com.clilystudio.netbook.util.I.g = this.L;
+        BookInfo.bookId = this.c;
+        BookInfo.title = this.d;
+        BookInfo.source = this.f;
+        BookInfo.tocId = this.e;
+        BookInfo.readMode = this.L;
         this.g = new Reader(this.c, this.e, this.d, this.L);
         this.g.a(this.getIntent().getStringExtra("SOURCE_ID"));
         this.g.a((Map<String, String>) this.getIntent().getSerializableExtra("CHAPTERS_KEY"));

@@ -46,7 +46,6 @@ import com.clilystudio.netbook.am;
 import com.clilystudio.netbook.db.BookReadRecord;
 import com.clilystudio.netbook.db.BookSyncRecord;
 import com.clilystudio.netbook.db.SourceRecord;
-import com.clilystudio.netbook.model.BookInfo;
 import com.clilystudio.netbook.model.Chapter;
 import com.clilystudio.netbook.model.ChapterLink;
 import com.clilystudio.netbook.model.ChapterRoot;
@@ -58,7 +57,7 @@ import com.clilystudio.netbook.reader.ReaderActivity;
 import com.clilystudio.netbook.reader.ReaderTocDialog;
 import com.clilystudio.netbook.util.CipherUtil;
 import com.clilystudio.netbook.util.GenderIntroDialog;
-import com.clilystudio.netbook.util.I;
+import com.clilystudio.netbook.util.BookInfo;
 import com.clilystudio.netbook.util.X;
 import com.clilystudio.netbook.util.t;
 import com.integralblue.httpresponsecache.compat.java.lang.ArrayIndexOutOfBoundsException;
@@ -134,10 +133,10 @@ public class a {
             return null;
         }
         String string2 = CipherUtil.b(cipherTocId, CipherUtil.b(cipherBookId, cipherCheckSum)).substring(0, 20);
-        if (!I.h) {
+        if (!BookInfo.h) {
             return CipherUtil.getNewAdvert(string2, string, MyApplication.getInstance());
         }
-        I.h = false;
+        BookInfo.h = false;
         long l = Y("http://www.taobao.com");
         if (l <= 7200) {
             l = Y("http://www.163.com");
@@ -959,7 +958,7 @@ public class a {
      * Enabled aggressive exception aggregation
      * Lifted jumps to return sites
      */
-    private static String a(BookInfo var0) {
+    private static String a(com.clilystudio.netbook.model.BookInfo var0) {
         JSONObject var1_1 = new JSONObject();
         try {
             var1_1.put("bk_name", var0.getTitle());

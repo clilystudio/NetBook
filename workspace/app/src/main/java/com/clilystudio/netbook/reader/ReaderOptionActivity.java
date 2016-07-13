@@ -19,7 +19,7 @@ import com.clilystudio.netbook.IntentBuilder;
 import com.clilystudio.netbook.event.BusProvider;
 import com.clilystudio.netbook.event.ConvertChangedEvent;
 import com.clilystudio.netbook.ui.BaseActivity;
-import com.clilystudio.netbook.util.I;
+import com.clilystudio.netbook.util.BookInfo;
 import com.clilystudio.netbook.widget.SettingItem;
 
 import uk.me.lewisdeane.ldialogs.BaseDialog;
@@ -115,7 +115,7 @@ public class ReaderOptionActivity extends BaseActivity {
         boolean var9_9 = com.clilystudio.netbook.hpay100.a.a.a(this, "click_flip_animation", false);
         boolean var10_10 = com.clilystudio.netbook.hpay100.a.a.l(this, "reader_opt_full_screen");
         boolean var11_11 = com.clilystudio.netbook.hpay100.a.a.a(this, "convert_t", false);
-        boolean var12_12 = com.clilystudio.netbook.hpay100.a.a.a(this, "auto_buy_chapter" + I.a, false);
+        boolean var12_12 = com.clilystudio.netbook.hpay100.a.a.a(this, "auto_buy_chapter" + BookInfo.bookId, false);
         assert var2_2 != null;
         var2_2.setChecked(var8_8);
         assert var3_3 != null;

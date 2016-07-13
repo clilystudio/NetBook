@@ -9,12 +9,11 @@ import com.clilystudio.netbook.am;
 import com.clilystudio.netbook.db.BookReadRecord;
 import com.clilystudio.netbook.db.MixTocRecord;
 import com.clilystudio.netbook.db.TocReadRecord;
-import com.clilystudio.netbook.model.BookInfo;
 import com.clilystudio.netbook.model.Chapter;
 import com.clilystudio.netbook.model.ChapterLink;
 import com.clilystudio.netbook.model.ChapterRoot;
 import com.clilystudio.netbook.model.Toc;
-import com.clilystudio.netbook.util.I;
+import com.clilystudio.netbook.util.BookInfo;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -244,7 +243,7 @@ public final class Reader {
         if (reader.l != null) {
             f2 = new f(reader.l);
         } else {
-            BookInfo bookInfo = MyApplication.getInstance().getBookInfo();
+            com.clilystudio.netbook.model.BookInfo bookInfo = MyApplication.getInstance().getBookInfo();
             f2 = null;
             if (bookInfo != null) {
                 f2 = new f(bookInfo, reader.y);
@@ -284,9 +283,9 @@ public final class Reader {
 
     static /* synthetic */ ChapterRoot b(Reader reader, ChapterLink chapterLink, int n2) {
         if (reader.z != null) {
-            reader.z.b(I.c);
-            reader.z.a(I.a);
-            reader.z.a(I.g);
+            reader.z.b(BookInfo.tocId);
+            reader.z.a(BookInfo.bookId);
+            reader.z.a(BookInfo.readMode);
             return reader.z.a(chapterLink, n2);
         }
         return null;
@@ -436,7 +435,7 @@ public final class Reader {
     }
 
     public final void a() {
-        BookInfo bookInfo = MyApplication.getInstance().getBookInfo();
+        com.clilystudio.netbook.model.BookInfo bookInfo = MyApplication.getInstance().getBookInfo();
         if (bookInfo == null || bookInfo.getId() == null || !bookInfo.getId().equals(this.c)) {
             return;
         }

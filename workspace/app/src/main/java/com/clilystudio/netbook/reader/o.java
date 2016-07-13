@@ -25,6 +25,7 @@ import com.clilystudio.netbook.model.ChapterLink;
 import com.clilystudio.netbook.model.ChapterSingleKey;
 import com.clilystudio.netbook.model.PurchaseChapterResult;
 import com.clilystudio.netbook.ui.user.AuthLoginActivity;
+import com.clilystudio.netbook.util.BookInfo;
 import com.clilystudio.netbook.widget.JustifyTextView;
 import com.squareup.otto.Subscribe;
 import java.text.SimpleDateFormat;
@@ -186,7 +187,7 @@ public final class o {
     }
 
     private static boolean of() {
-        return !(am.e() == null || !com.clilystudio.netbook.hpay100.a.a.a(MyApplication.getInstance(), "auto_buy_chapter" + com.clilystudio.netbook.util.I.a, false));
+        return !(am.e() == null || !com.clilystudio.netbook.hpay100.a.a.a(MyApplication.getInstance(), "auto_buy_chapter" + BookInfo.bookId, false));
     }
 
     private void a(boolean bl) {
@@ -238,13 +239,13 @@ public final class o {
         this.u = (Button) view3.findViewById(R.id.reader_page_pay_btn);
         if (com.clilystudio.netbook.hpay100.a.a.a(this.b, "user_account_balance", 0) > this.d.a().getCurrency() || this.t) {
             checkBox.setVisibility(View.VISIBLE);
-            checkBox.setChecked(com.clilystudio.netbook.hpay100.a.a.a(this.b, "auto_buy_chapter" + com.clilystudio.netbook.util.I.a, false));
+            checkBox.setChecked(com.clilystudio.netbook.hpay100.a.a.a(this.b, "auto_buy_chapter" + BookInfo.bookId, false));
             this.u.setText("购买，继续阅读");
             this.u.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     a(o.this, false);
-                    com.clilystudio.netbook.hpay100.a.a.b(o.this.b, "auto_buy_chapter" + com.clilystudio.netbook.util.I.a, checkBox.isChecked());
+                    com.clilystudio.netbook.hpay100.a.a.b(o.this.b, "auto_buy_chapter" + BookInfo.bookId, checkBox.isChecked());
                     BaseLoadingTask<String, PurchaseChapterResult> i2 = new BaseLoadingTask<String, PurchaseChapterResult>(o.this.b, "购买中...") {
 
                         @Override
@@ -465,11 +466,11 @@ public final class o {
         if (view == null) return;
         view.setVisibility(View.GONE);
         if (!this.e) return;
-        if (com.clilystudio.netbook.hpay100.a.a.a(this.b, "remove_ad_toast_showed" + com.clilystudio.netbook.util.I.a, false)) return;
+        if (com.clilystudio.netbook.hpay100.a.a.a(this.b, "remove_ad_toast_showed" + BookInfo.bookId, false)) return;
         if (!this.q()) return;
         if (!this.a(view)) return;
         com.clilystudio.netbook.util.e.a(this.b, "已为您自动免除广告");
-        com.clilystudio.netbook.hpay100.a.a.b(this.b, "remove_ad_toast_showed" + com.clilystudio.netbook.util.I.a, true);
+        com.clilystudio.netbook.hpay100.a.a.b(this.b, "remove_ad_toast_showed" + BookInfo.bookId, true);
     }
 
     private void s() {

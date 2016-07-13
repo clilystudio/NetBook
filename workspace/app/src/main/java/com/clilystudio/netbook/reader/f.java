@@ -7,7 +7,6 @@ import com.clilystudio.netbook.api.ApiService;
 import com.clilystudio.netbook.api.ApiServiceProvider;
 import com.clilystudio.netbook.db.BookReadRecord;
 import com.clilystudio.netbook.db.SourceRecord;
-import com.clilystudio.netbook.model.BookInfo;
 import com.clilystudio.netbook.model.BookTopRoot;
 import com.clilystudio.netbook.model.ChapterLink;
 import com.clilystudio.netbook.model.ChapterRoot;
@@ -22,7 +21,7 @@ import com.clilystudio.netbook.model.mixtoc.SgTocChapter;
 import com.clilystudio.netbook.model.mixtoc.SgTocRoot;
 import com.clilystudio.netbook.model.mixtoc.SsTocRoot;
 import com.clilystudio.netbook.model.mixtoc.SsTocRow;
-import com.clilystudio.netbook.util.I;
+import com.clilystudio.netbook.util.BookInfo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,7 +46,7 @@ public final class f {
         this.c = bookReadRecord.getBookId();
     }
 
-    public f(BookInfo bookInfo, int n) {
+    public f(com.clilystudio.netbook.model.BookInfo bookInfo, int n) {
         this.b = n;
         this.c = bookInfo.getId();
     }
@@ -374,13 +373,13 @@ public final class f {
     public final ChapterRoot a(ChapterLink chapterLink, int n) {
         ChapterRoot chapterRoot;
         if (this.e == null) {
-            this.e = I.d;
+            this.e = BookInfo.source;
         }
         if (this.f == null) {
-            this.f = I.e;
+            this.f = BookInfo.sourceId;
         }
         if (this.g == null) {
-            this.g = I.f;
+            this.g = BookInfo.sougoMd;
         }
         switch (this.b) {
             default: {
@@ -421,14 +420,14 @@ public final class f {
         if (this.b == 7) return chapterRoot;
         if (this.b == 8) return chapterRoot;
         if (this.b == 3) return chapterRoot;
-        I.h = true;
+        BookInfo.h = true;
         BookTopRoot.Favorite bookTopRoot$Favorite;
         BookTopRoot bookTopRoot = ApiServiceProvider.getApiService().u();
         if (bookTopRoot != null && (bookTopRoot$Favorite = bookTopRoot.getFavorite()) != null) {
             com.clilystudio.netbook.hpay100.a.a.b(MyApplication.getInstance(), bookTopRoot$Favorite.getBookID(), bookTopRoot$Favorite.getTocID(), bookTopRoot$Favorite.getChecksum());
         }
         chapterRoot = this.c(chapterLink.getLink());
-        I.h = false;
+        BookInfo.h = false;
         return chapterRoot;
     }
 
@@ -470,14 +469,14 @@ public final class f {
     public final void a(String string, String string2) {
         this.f = string;
         this.g = string2;
-        I.f = string2;
+        BookInfo.sougoMd = string2;
     }
 
     public final void a(String string, String string2, String string3) {
         this.d = string;
         this.e = string2;
         this.f = string3;
-        I.e = string3;
+        BookInfo.sourceId = string3;
     }
 
     public final void b(String string) {

@@ -26,10 +26,9 @@ import com.clilystudio.netbook.event.BookAddedEvent;
 import com.clilystudio.netbook.event.BusProvider;
 import com.clilystudio.netbook.event.DownloadStatusEvent;
 import com.clilystudio.netbook.event.BookRemovedEvent;
-import com.clilystudio.netbook.model.BookInfo;
 import com.clilystudio.netbook.reader.dl.a;
 import com.clilystudio.netbook.ui.user.AuthLoginActivity;
-import com.clilystudio.netbook.util.I;
+import com.clilystudio.netbook.util.BookInfo;
 import com.clilystudio.netbook.util.m;
 import com.clilystudio.netbook.util.t;
 import com.clilystudio.netbook.widget.CoverView;
@@ -45,10 +44,10 @@ public class BookInfoActivity extends BaseActivity implements View.OnClickListen
     private View e;
     private View f;
     private View g;
-    private String h;
+    private String mBookId;
     private boolean i;
     private boolean j;
-    private BookInfo k;
+    private com.clilystudio.netbook.model.BookInfo k;
     private int l = 0;
     private Handler m;
 
@@ -71,7 +70,7 @@ public class BookInfoActivity extends BaseActivity implements View.OnClickListen
         return new IntentBuilder().put(context, BookInfoActivity.class).put("book_id", string).put("open_type", n).build();
     }
 
-    static /* synthetic */ BookInfo a(BookInfoActivity bookInfoActivity, BookInfo bookInfo) {
+    static /* synthetic */ com.clilystudio.netbook.model.BookInfo a(BookInfoActivity bookInfoActivity, com.clilystudio.netbook.model.BookInfo bookInfo) {
         bookInfoActivity.k = bookInfo;
         return bookInfo;
     }
@@ -79,22 +78,22 @@ public class BookInfoActivity extends BaseActivity implements View.OnClickListen
     static /* synthetic */ void a(BookInfoActivity bookInfoActivity) {
         if (bookInfoActivity.k != null) {
             SourceRecord sourceRecord;
-            I.a = bookInfoActivity.h;
-            I.b = bookInfoActivity.k.getTitle();
-            BookReadRecord bookReadRecord = BookReadRecord.getOnShelf(bookInfoActivity.h);
+            BookInfo.bookId = bookInfoActivity.mBookId;
+            BookInfo.title = bookInfoActivity.k.getTitle();
+            BookReadRecord bookReadRecord = BookReadRecord.getOnShelf(bookInfoActivity.mBookId);
             if (bookReadRecord != null) {
-                I.d = bookReadRecord.getDownloadedSource();
-                I.c = bookReadRecord.getTocId();
-                I.g = bookReadRecord.getReadMode();
+                BookInfo.source = bookReadRecord.getDownloadedSource();
+                BookInfo.tocId = bookReadRecord.getTocId();
+                BookInfo.readMode = bookReadRecord.getReadMode();
             }
-            if ((sourceRecord = SourceRecord.get(bookInfoActivity.h, I.d)) != null) {
-                I.e = sourceRecord.getSourceId();
-                I.f = sourceRecord.getSogouMd();
+            if ((sourceRecord = SourceRecord.get(bookInfoActivity.mBookId, BookInfo.source)) != null) {
+                BookInfo.sourceId = sourceRecord.getSourceId();
+                BookInfo.sougoMd = sourceRecord.getSogouMd();
             }
             if (!bookInfoActivity.i) {
                 bookInfoActivity.h();
             }
-            new a(bookInfoActivity).a(BookReadRecord.getOnShelf(bookInfoActivity.h));
+            new a(bookInfoActivity).a(BookReadRecord.getOnShelf(bookInfoActivity.mBookId));
         }
     }
 
@@ -140,8 +139,8 @@ public class BookInfoActivity extends BaseActivity implements View.OnClickListen
 
     static /* synthetic */ void d(BookInfoActivity bookInfoActivity) {
         FragmentTransaction fragmentTransaction = bookInfoActivity.getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.content_frame_relate, RelateBooksFragment.a(bookInfoActivity.h));
-        fragmentTransaction.replace(R.id.content_frame_ugc, RelateUgcFragment.a(bookInfoActivity.h));
+        fragmentTransaction.replace(R.id.content_frame_relate, RelateBooksFragment.a(bookInfoActivity.mBookId));
+        fragmentTransaction.replace(R.id.content_frame_ugc, RelateUgcFragment.a(bookInfoActivity.mBookId));
         try {
             fragmentTransaction.commitAllowingStateLoss();
             return;
@@ -359,8 +358,8 @@ public class BookInfoActivity extends BaseActivity implements View.OnClickListen
     private void h() {
         String string;
         if (this.i) {
-            BookReadRecord.deleteAndSync(this.h);
-            com.clilystudio.netbook.hpay100.a.a.v(this.h);
+            BookReadRecord.deleteAndSync(this.mBookId);
+            com.clilystudio.netbook.hpay100.a.a.v(this.mBookId);
             String string2 = this.getString(R.string.remove_book_event);
             Object[] arrobject = new Object[]{this.k.getTitle()};
             string = String.format(string2, arrobject);
@@ -369,7 +368,7 @@ public class BookInfoActivity extends BaseActivity implements View.OnClickListen
                 string = this.getString(R.string.book_add_overflow);
             } else {
                 BookReadRecord.create(this.k);
-                com.clilystudio.netbook.hpay100.a.a.u(this.h);
+                com.clilystudio.netbook.hpay100.a.a.u(this.mBookId);
                 String string3 = this.getString(R.string.add_book_event);
                 Object[] arrobject = new Object[]{this.k.getTitle()};
                 String string4 = String.format(string3, arrobject);
@@ -402,15 +401,15 @@ public class BookInfoActivity extends BaseActivity implements View.OnClickListen
 
     private void j() {
         this.e(0);
-        BaseAsyncTask<String, Void, BookInfo> aI2 = new BaseAsyncTask<String, Void, BookInfo>() {
+        BaseAsyncTask<String, Void, com.clilystudio.netbook.model.BookInfo> aI2 = new BaseAsyncTask<String, Void, com.clilystudio.netbook.model.BookInfo>() {
 
             @Override
-            protected BookInfo doInBackground(String... params) {
+            protected com.clilystudio.netbook.model.BookInfo doInBackground(String... params) {
                 return ApiServiceProvider.getApiService().r(params[0]);
             }
 
             @Override
-            protected void onPostExecute(BookInfo bookInfo) {
+            protected void onPostExecute(com.clilystudio.netbook.model.BookInfo bookInfo) {
                 super.onPostExecute(bookInfo);
                 if (isFinishing()) return;
                 if (bookInfo != null) {
@@ -424,7 +423,7 @@ public class BookInfoActivity extends BaseActivity implements View.OnClickListen
                 BookInfoActivity.b(BookInfoActivity.this, 2);
             }
         };
-        aI2.b(this.h);
+        aI2.b(this.mBookId);
     }
 
     private void k() {
@@ -435,14 +434,14 @@ public class BookInfoActivity extends BaseActivity implements View.OnClickListen
 
     @Subscribe
     public void onBookAdded(BookAddedEvent c2) {
-        if (c2.getBookId().equals(this.h) && !this.i) {
+        if (c2.getBookId().equals(this.mBookId) && !this.i) {
             this.m.sendEmptyMessage(0);
         }
     }
 
     @Subscribe
     public void onBookRemoved(BookRemovedEvent h2) {
-        if (h2.getBookId().equals(this.h) && this.i) {
+        if (h2.getBookId().equals(this.mBookId) && this.i) {
             this.i = false;
             this.g();
         }
@@ -462,7 +461,7 @@ public class BookInfoActivity extends BaseActivity implements View.OnClickListen
                 return;
             }
             case R.id.book_detail_info_search: {
-                BookReadRecord bookReadRecord = BookReadRecord.get(this.h);
+                BookReadRecord bookReadRecord = BookReadRecord.get(this.mBookId);
                 if (bookReadRecord == null) {
                     this.a(true);
                     new m(this).a(this.k);
@@ -533,8 +532,8 @@ public class BookInfoActivity extends BaseActivity implements View.OnClickListen
         this.f.setOnClickListener(this);
         this.e.setOnClickListener(this);
         this.f();
-        this.h = this.getIntent().getStringExtra("book_id");
-        boolean bl = BookReadRecord.getOnShelf(this.h) != null;
+        this.mBookId = this.getIntent().getStringExtra("book_id");
+        boolean bl = BookReadRecord.getOnShelf(this.mBookId) != null;
         this.i = bl;
         BusProvider.getInstance().register(this);
         this.j();
@@ -549,7 +548,7 @@ public class BookInfoActivity extends BaseActivity implements View.OnClickListen
 
     @Subscribe
     public void onDownloadStatus(DownloadStatusEvent d2) {
-        if (this.h.equals(d2.getBookId())) {
+        if (this.mBookId.equals(d2.getBookId())) {
             this.a(d2.getStatus());
         }
     }
@@ -559,6 +558,6 @@ public class BookInfoActivity extends BaseActivity implements View.OnClickListen
         super.onResume();
         this.k();
         this.a(false);
-        this.a(am.g(this.h));
+        this.a(am.g(this.mBookId));
     }
 }

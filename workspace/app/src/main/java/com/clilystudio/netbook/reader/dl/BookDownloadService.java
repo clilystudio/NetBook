@@ -25,7 +25,7 @@ import com.clilystudio.netbook.model.ChapterRoot;
 import com.clilystudio.netbook.model.Toc;
 import com.clilystudio.netbook.model.TocSource;
 import com.clilystudio.netbook.model.TocSourceRoot;
-import com.clilystudio.netbook.util.I;
+import com.clilystudio.netbook.util.BookInfo;
 import com.squareup.otto.Subscribe;
 
 import java.util.ArrayList;
@@ -323,9 +323,9 @@ public class BookDownloadService extends Service {
             }
         }
         this.b = com.clilystudio.netbook.hpay100.a.a.a(this.a, this.c, string, this.b);
-        this.k.b(I.c);
-        this.k.a(I.a);
-        this.k.a(I.g);
+        this.k.b(BookInfo.tocId);
+        this.k.a(BookInfo.bookId);
+        this.k.a(BookInfo.readMode);
         this.i.putExtra("SerDlStopFlag", 0);
         this.h = com.clilystudio.netbook.hpay100.a.a.j(this.a, this.b);
         if (com.clilystudio.netbook.hpay100.a.a.e() <= (long) (10 * this.e << 1)) {
@@ -398,7 +398,7 @@ public class BookDownloadService extends Service {
                         BookDownloadService.b(BookDownloadService.this).putExtra("SerDlLink", string);
                         BookDownloadService.l(BookDownloadService.this);
                         if (BookDownloadService.m(BookDownloadService.this) == null) {
-                            BookDownloadService.a(BookDownloadService.this, I.c);
+                            BookDownloadService.a(BookDownloadService.this, BookInfo.tocId);
                         }
                         com.clilystudio.netbook.hpay100.a.a.a(BookDownloadService.d(BookDownloadService.this), BookDownloadService.m(BookDownloadService.this), am.e(string), chapter);
                     }
