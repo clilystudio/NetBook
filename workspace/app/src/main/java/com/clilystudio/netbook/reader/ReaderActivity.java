@@ -50,7 +50,6 @@ import com.clilystudio.netbook.ui.BaseReadSlmActivity;
 import com.clilystudio.netbook.ui.BookInfoActivity;
 import com.clilystudio.netbook.util.BookInfoUtil;
 import com.clilystudio.netbook.util.ae;
-import com.clilystudio.netbook.util.k;
 import com.clilystudio.netbook.widget.ThemeLoadingView;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 import com.squareup.otto.Subscribe;
@@ -1954,7 +1953,6 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
                 }
             }.b();
         }
-        new k(this.c).a();
     }
 
     /*
