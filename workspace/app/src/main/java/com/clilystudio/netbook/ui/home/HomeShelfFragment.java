@@ -47,6 +47,7 @@ import com.clilystudio.netbook.model.BookGenderRecommend;
 import com.clilystudio.netbook.model.BookShelf;
 import com.clilystudio.netbook.model.BookUpdate;
 import com.clilystudio.netbook.model.InsideLink;
+import com.clilystudio.netbook.model.InsideLinkFactory;
 import com.clilystudio.netbook.model.ShelfMsg;
 import com.clilystudio.netbook.model.ShelfMsgRoot;
 import com.clilystudio.netbook.model.TxtFileObject;
@@ -67,6 +68,8 @@ import java.util.Comparator;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import uk.me.lewisdeane.ldialogs.BaseDialog;
 
@@ -461,9 +464,8 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
         homeShelfFragment.e.addHeaderView(homeShelfFragment.g);
         homeShelfFragment.g.setVisibility(View.VISIBLE);
         TextView textView = (TextView) homeShelfFragment.g.findViewById(R.id.title);
-        new com.clilystudio.netbook.util.a.a();
         assert shelfMsg != null;
-        final InsideLink insideLink = com.clilystudio.netbook.util.a.a.a(shelfMsg.postLink);
+        final InsideLink insideLink = getInsideLink(shelfMsg.postLink);
         textView.setText(insideLink.getLabel());
         if (shelfMsg.highlight) {
             textView.setTextColor(homeShelfFragment.getActivity().getResources().getColor(R.color.shelf_msg_highlight));
@@ -478,6 +480,17 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
                 }
             }
         });
+    }
+
+    private static InsideLink getInsideLink(String string) {
+        if (string == null || string.length() < 4) {
+            throw new IllegalArgumentException(string + " must have length above 4");
+        }
+        Matcher matcher = Pattern.compile("^\\[\\[(.+?):(.+?) (.+)\\]\\]$").matcher(string);
+        if (!matcher.find()) {
+            throw new IllegalArgumentException(string + " is in wrong format");
+        }
+        return InsideLinkFactory.create(matcher.group(1), matcher.group(2), matcher.group(3));
     }
 
     static /* synthetic */ void c(HomeShelfFragment homeShelfFragment, BookReadRecord bookReadRecord) {
