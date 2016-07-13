@@ -7,13 +7,13 @@ import com.clilystudio.netbook.IntentBuilder;
 import com.clilystudio.netbook.model.BookRankDetail;
 import com.clilystudio.netbook.model.BookSummary;
 import com.clilystudio.netbook.model.RelateBookRoot;
-import com.clilystudio.netbook.reader.cM;
+import com.clilystudio.netbook.reader.RelateBookManager;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RelateBookListActivity extends BookListActivity implements cM.cQ {
+public class RelateBookListActivity extends BookListActivity implements RelateBookManager.cQ {
     private int c;
 
     public static Intent a(Context context, RelateBookRoot relateBookRoot, String string, String string2) {
@@ -92,7 +92,7 @@ public class RelateBookListActivity extends BookListActivity implements cM.cQ {
         String string = this.getIntent().getStringExtra("bookId");
         if (string != null) {
             this.e(0);
-            new cM(this).a(string);
+            new RelateBookManager(this).a(string);
             return;
         }
         this.e(2);

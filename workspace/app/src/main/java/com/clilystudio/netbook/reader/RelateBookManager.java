@@ -4,23 +4,15 @@ import com.clilystudio.netbook.a_pack.BaseAsyncTask;
 import com.clilystudio.netbook.api.ApiServiceProvider;
 import com.clilystudio.netbook.model.RelateBookRoot;
 
-public final class cM {
+public final class RelateBookManager {
     private cQ a;
     private String[] c = new String[20];
 
-    public cM(cQ cQ2) {
+    public RelateBookManager(cQ cQ2) {
         this.a = cQ2;
     }
 
-    static /* synthetic */ String[] a(cM cM2) {
-        return cM2.c;
-    }
-
-    static /* synthetic */ cQ b(cM cM2) {
-        return cM2.a;
-    }
-
-    public final boolean a(String string) {
+    public final boolean a(String bookId) {
         new BaseAsyncTask<String, Void, RelateBookRoot>() {
 
             @Override
@@ -33,16 +25,14 @@ public final class cM {
             protected void onPostExecute(RelateBookRoot relateBookRoot) {
                 super.onPostExecute(relateBookRoot);
                 if (relateBookRoot != null && relateBookRoot.isOk()) {
-                    cM.b(cM.this).a(relateBookRoot, cM.a(cM.this));
-                } else {
-                    cM.b(cM.this).a(relateBookRoot, cM.a(cM.this));
+                    RelateBookManager.this.a.a(relateBookRoot, RelateBookManager.this.c);
                 }
             }
-        }.b(string);
+        }.b(bookId);
         return false;
     }
 
     public interface cQ {
-        void a(RelateBookRoot var1, String[] var2);
+        void a(RelateBookRoot relateBookRoot, String[] var2);
     }
 }
