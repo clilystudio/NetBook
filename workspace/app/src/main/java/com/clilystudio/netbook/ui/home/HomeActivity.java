@@ -50,6 +50,7 @@ import com.clilystudio.netbook.ui.SmartImageView;
 import com.clilystudio.netbook.ui.user.AuthLoginActivity;
 import com.clilystudio.netbook.ui.user.MyMessageActivity;
 import com.clilystudio.netbook.ui.user.UserInfoActivity;
+import com.clilystudio.netbook.util.ToastUtil;
 import com.clilystudio.netbook.util.UserNotificationManager;
 import com.clilystudio.netbook.util.BookShelfSyncManager;
 import com.clilystudio.netbook.widget.TabWidgetV2;
@@ -198,7 +199,7 @@ public class HomeActivity extends HomeParentActivity implements ViewPager.OnPage
         String string = intent.getStringExtra("file_name");
         if (string == null) return;
         if ("nonsupport".equals(string)) {
-            com.clilystudio.netbook.util.e.a(this, "\u5f88\u62b1\u6b49\uff0c\u6682\u4e0d\u652f\u6301\u6b64\u683c\u5f0f\u7684\u56fe\u4e66");
+            ToastUtil.showShortToast(this, "\u5f88\u62b1\u6b49\uff0c\u6682\u4e0d\u652f\u6301\u6b64\u683c\u5f0f\u7684\u56fe\u4e66");
             return;
         }
         Intent intent2 = new Intent("com.clilystudio.netbook.ACTION_READ_TXT");
@@ -604,8 +605,14 @@ public class HomeActivity extends HomeParentActivity implements ViewPager.OnPage
                 }.b();
             }
         }, 3000);
-        if (this.mAccount != null) {
-            com.clilystudio.netbook.util.e.c("launch");
+        if (mAccount != null) {
+            new Thread() {
+                @Override
+                public void run() {
+                    ApiServiceProvider.getInstance();
+                    ApiServiceProvider.getApiService().addUserExp(mAccount.getToken(), "launch");
+                }
+            }.start();
         }
         if (bundle != null) {
             tabWidgetV2.setIndex(bundle.getInt("extra_index"));

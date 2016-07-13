@@ -14,6 +14,7 @@ import com.clilystudio.netbook.event.BusProvider;
 import com.clilystudio.netbook.event.BookRankClickEvent;
 import com.clilystudio.netbook.model.BookRankRoot;
 import com.clilystudio.netbook.model.BookRankSummary;
+import com.clilystudio.netbook.util.ToastUtil;
 import com.squareup.otto.Subscribe;
 
 public class BookRankListActivity extends BaseActivity {
@@ -78,7 +79,7 @@ public class BookRankListActivity extends BaseActivity {
                     return;
                 }
                 BookRankListActivity.a(BookRankListActivity.this, 2);
-                com.clilystudio.netbook.util.e.a(BookRankListActivity.this, R.string.load_failed_tips);
+                ToastUtil.showToast(BookRankListActivity.this, R.string.load_failed_tips);
             }
         }.b();
     }

@@ -155,7 +155,7 @@ public final class BookSourceManager {
                     }
                     BookSourceManager.this.a(readMode);
                 } else {
-                    com.clilystudio.netbook.util.e.a(BookSourceManager.this.mActivity, "获取资源站失败，请重试");
+                    ToastUtil.showShortToast(BookSourceManager.this.mActivity, "获取资源站失败，请重试");
                 }
             }
         }.b(this.mBookId);
@@ -172,7 +172,7 @@ public final class BookSourceManager {
             @Override
             public void a(List<TocSummary> list) {
                 if (list == null) {
-                    com.clilystudio.netbook.util.e.a(BookSourceManager.this.mActivity, "获取资源站失败，请重试");
+                    ToastUtil.showShortToast(BookSourceManager.this.mActivity, "获取资源站失败，请重试");
                     return;
                 }
                 if (list.size() > 1) {
@@ -211,7 +211,7 @@ public final class BookSourceManager {
             if (!var7_6) {
                 Account var8_7 = am.getAccount();
                 if (var8_7 == null || var8_7.getUser().getLv() < 5) {
-                    com.clilystudio.netbook.util.e.a(this.mActivity, "正在获取来源");
+                    ToastUtil.showShortToast(this.mActivity, "正在获取来源");
                     this.a(true);
                     return;
                 }

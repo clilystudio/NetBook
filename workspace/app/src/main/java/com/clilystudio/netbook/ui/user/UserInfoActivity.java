@@ -24,6 +24,7 @@ import com.clilystudio.netbook.ui.BaseActivity;
 import com.clilystudio.netbook.ui.CircularSmartImageView;
 import com.clilystudio.netbook.ui.SettingsActivity;
 import com.clilystudio.netbook.ui.BaseCallBack;
+import com.clilystudio.netbook.util.ToastUtil;
 import com.clilystudio.netbook.util.UserNotificationManager;
 import com.squareup.otto.Subscribe;
 
@@ -69,7 +70,7 @@ public class UserInfoActivity extends BaseActivity {
     static /* synthetic */ void a(UserInfoActivity userInfoActivity, UserInfo userInfo) {
         int n = userInfo.getLv();
         int n2 = userInfo.getExp();
-        int n3 = com.clilystudio.netbook.util.e.a(n);
+        int n3 = com.clilystudio.netbook.hpay100.a.a.getLevelExp(n);
         String string = userInfo.getScaleAvatar(2);
         userInfoActivity.mPortrait.setImageUrl(string, R.drawable.avatar_default);
         userInfoActivity.mName.setText(userInfo.getNickname());
@@ -119,11 +120,11 @@ public class UserInfoActivity extends BaseActivity {
                             UserInfoActivity.b(userInfo);
                         } else {
                             if ("TOKEN_INVALID".equals(userInfo.getCode())) {
-                                com.clilystudio.netbook.util.e.a(UserInfoActivity.this, "帐号无效或过期，请退出登录后重试");
+                                ToastUtil.showShortToast(UserInfoActivity.this, "帐号无效或过期，请退出登录后重试");
                             }
                         }
                     } else {
-                        com.clilystudio.netbook.util.e.a(UserInfoActivity.this, "载入失败");
+                        ToastUtil.showShortToast(UserInfoActivity.this, "载入失败");
                         UserInfo userInfo2 = (UserInfo) MyApplication.getInstance().loadObject("savedObject_userinfo");
                         if (userInfo2 != null) {
                             UserInfoActivity.a(UserInfoActivity.this, userInfo2);
@@ -135,7 +136,7 @@ public class UserInfoActivity extends BaseActivity {
             aK2.b(arrstring);
             return;
         }
-        com.clilystudio.netbook.util.e.a(this, "账号异常，请重新授权登录后再试");
+        ToastUtil.showShortToast(this, "账号异常，请重新授权登录后再试");
     }
 
     @Override

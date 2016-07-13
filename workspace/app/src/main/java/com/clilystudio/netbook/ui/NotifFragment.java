@@ -22,6 +22,7 @@ import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.model.NotificationItem;
 import com.clilystudio.netbook.model.NotificationRoot;
 import com.clilystudio.netbook.ui.user.AuthLoginActivity;
+import com.clilystudio.netbook.util.ToastUtil;
 import com.clilystudio.netbook.viewbinder.notification.NotifBinderFactory;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
@@ -105,7 +106,7 @@ public abstract class NotifFragment extends Fragment {
                             }
                             if (notificationRoot != null && "TOKEN_INVALID".equals(notificationRoot.getCode())) {
                                 NotifFragment.this.startActivity(AuthLoginActivity.a(NotifFragment.this.getActivity()));
-                                com.clilystudio.netbook.util.e.a(NotifFragment.this.getActivity(), R.string.tweet_token_invalid);
+                                ToastUtil.showToast(NotifFragment.this.getActivity(), R.string.tweet_token_invalid);
                                 return;
                             }
                             NotifFragment.d(NotifFragment.this).setOnLastItemVisibleListener(NotifFragment.j(NotifFragment.this));
@@ -246,7 +247,7 @@ public abstract class NotifFragment extends Fragment {
                 }
                 if (notificationRoot != null && "TOKEN_INVALID".equals(notificationRoot.getCode())) {
                     NotifFragment.this.startActivity(AuthLoginActivity.a(NotifFragment.this.getActivity()));
-                    com.clilystudio.netbook.util.e.a(NotifFragment.this.getActivity(), R.string.tweet_token_invalid);
+                    ToastUtil.showToast(NotifFragment.this.getActivity(), R.string.tweet_token_invalid);
                     return;
                 }
                 NotifFragment.m(NotifFragment.this);

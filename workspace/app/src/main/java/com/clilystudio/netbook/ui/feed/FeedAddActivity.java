@@ -14,7 +14,7 @@ import com.clilystudio.netbook.event.FeedAddedEvent;
 import com.clilystudio.netbook.ui.BaseActivity;
 import com.clilystudio.netbook.ui.BaseCallBack;
 import com.clilystudio.netbook.util.BaseDownloadAdapter;
-import com.clilystudio.netbook.util.e;
+import com.clilystudio.netbook.util.ToastUtil;
 import com.clilystudio.netbook.widget.CoverView;
 
 import java.util.ArrayList;
@@ -27,7 +27,7 @@ public class FeedAddActivity extends BaseActivity {
 
     static /* synthetic */ void a(FeedAddActivity feedAddActivity) {
         if (feedAddActivity.c.isEmpty()) {
-            e.a(feedAddActivity, "你还没有选择移入的书籍");
+            ToastUtil.showShortToast(feedAddActivity, "你还没有选择移入的书籍");
             return;
         }
         for (BookReadRecord bookReadRecord : feedAddActivity.c) {

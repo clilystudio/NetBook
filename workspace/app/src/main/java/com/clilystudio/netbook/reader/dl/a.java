@@ -11,7 +11,7 @@ import com.clilystudio.netbook.db.BookReadRecord;
 import com.clilystudio.netbook.event.DownloadProgressEvent;
 import com.clilystudio.netbook.event.DownloadStatusEvent;
 import com.clilystudio.netbook.event.BusProvider;
-import com.clilystudio.netbook.util.e;
+import com.clilystudio.netbook.util.ToastUtil;
 
 import uk.me.lewisdeane.ldialogs.BaseDialog;
 
@@ -28,15 +28,15 @@ public class a {
 
     private void a(final BookReadRecord bookReadRecord, final int n, final int n2) {
         if (bookReadRecord == null) {
-            e.a(this.a, "请重试");
+            ToastUtil.showShortToast(this.a, "请重试");
             return;
         }
         if (!com.clilystudio.netbook.hpay100.a.a.d()) {
-            e.a(this.a, "无法缓存，请检查SD卡是否挂载");
+            ToastUtil.showShortToast(this.a, "无法缓存，请检查SD卡是否挂载");
             return;
         }
         if (com.clilystudio.netbook.hpay100.a.a.f(bookReadRecord.getReadMode())) {
-            e.b(this.a, "暂不支持当前模式缓存");
+            ToastUtil.showLongToast(this.a, "暂不支持当前模式缓存");
             return;
         }
         if (1 == com.clilystudio.netbook.hpay100.a.a.r(this.a)) {
@@ -67,7 +67,7 @@ public class a {
         String string = bookReadRecord.getBookId();
         int n3 = bookReadRecord.getReadMode();
         BusProvider.getInstance().post(new DownloadStatusEvent(string, 1));
-        e.a(this.a,  "已加入缓存队列");
+        ToastUtil.showShortToast(this.a,  "已加入缓存队列");
         MyApplication.getInstance().getBookCacheList().add(string);
         int n4 = n < 0 ? 0 : n;
         BookDlRecord bookDlRecord = BookDlRecord.get(string);

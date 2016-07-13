@@ -15,7 +15,7 @@ import com.clilystudio.netbook.api.ApiServiceProvider;
 import com.clilystudio.netbook.model.ResultStatus;
 import com.clilystudio.netbook.model.UserInfo;
 import com.clilystudio.netbook.ui.BaseActivity;
-import com.clilystudio.netbook.util.e;
+import com.clilystudio.netbook.util.ToastUtil;
 
 public class UserTaskActivity extends BaseActivity {
     TextView mExpInfo;
@@ -51,7 +51,7 @@ public class UserTaskActivity extends BaseActivity {
                     super.onPostExecute(resultStatus);
                     if (resultStatus != null && !resultStatus.isOk()) {
                         UserTaskActivity.a(UserTaskActivity.this, true);
-                        e.a(UserTaskActivity.this, "你已经完成这个任务");
+                        ToastUtil.showShortToast(UserTaskActivity.this, "你已经完成这个任务");
                     }
                 }
             }.b();
@@ -97,7 +97,7 @@ public class UserTaskActivity extends BaseActivity {
                 try {
                     UserTaskActivity.this.startActivityForResult(intent, 2);
                 } catch (ActivityNotFoundException var4_3) {
-                    com.clilystudio.netbook.util.e.a(UserTaskActivity.this,"打开应用市场失败");
+                    ToastUtil.showShortToast(UserTaskActivity.this,"打开应用市场失败");
                 }
             }
         });

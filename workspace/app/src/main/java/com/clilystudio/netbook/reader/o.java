@@ -26,6 +26,7 @@ import com.clilystudio.netbook.model.ChapterSingleKey;
 import com.clilystudio.netbook.model.PurchaseChapterResult;
 import com.clilystudio.netbook.ui.user.AuthLoginActivity;
 import com.clilystudio.netbook.util.BookInfoUtil;
+import com.clilystudio.netbook.util.ToastUtil;
 import com.clilystudio.netbook.widget.JustifyTextView;
 import com.squareup.otto.Subscribe;
 import java.text.SimpleDateFormat;
@@ -83,7 +84,7 @@ public final class o {
 
     static /* synthetic */ void a(final o o2, PurchaseChapterResult purchaseChapterResult) {
         if (purchaseChapterResult == null) {
-            com.clilystudio.netbook.util.e.a(o2.b, "支付失败，请重试");
+            ToastUtil.showShortToast(o2.b, "支付失败，请重试");
             return;
         }
         if (purchaseChapterResult.isOk()) {
@@ -139,7 +140,7 @@ public final class o {
                         o2.e();
                         return;
                     }
-                    com.clilystudio.netbook.util.e.a(com.clilystudio.netbook.reader.o.a(o2), "出现异常，请退出阅读后重试");
+                    ToastUtil.showShortToast(com.clilystudio.netbook.reader.o.a(o2), "出现异常，请退出阅读后重试");
                 }
             };
             String[] arrstring = new String[]{o2.d.a().getId()};
@@ -147,11 +148,11 @@ public final class o {
             return;
         }
         if (purchaseChapterResult.getCode().equals("BALANCE_NOT_ENOUGH")) {
-            com.clilystudio.netbook.util.e.a(o2.b, "余额不足，请充值");
+            ToastUtil.showShortToast(o2.b, "余额不足，请充值");
             o2.e();
             return;
         }
-        com.clilystudio.netbook.util.e.a(o2.b, "支付失败，请重试");
+        ToastUtil.showShortToast(o2.b, "支付失败，请重试");
     }
 
     static /* synthetic */ void a(o o2, boolean bl) {
@@ -414,7 +415,7 @@ public final class o {
                             }
                             return;
                         }
-                        com.clilystudio.netbook.util.e.a(o.this.b, R.string.network_unconnected);
+                        ToastUtil.showToast(o.this.b, R.string.network_unconnected);
                     }
                 });
                 this.u();
@@ -469,7 +470,7 @@ public final class o {
         if (com.clilystudio.netbook.hpay100.a.a.a(this.b, "remove_ad_toast_showed" + BookInfoUtil.bookId, false)) return;
         if (!this.q()) return;
         if (!this.a(view)) return;
-        com.clilystudio.netbook.util.e.a(this.b, "已为您自动免除广告");
+        ToastUtil.showShortToast(this.b, "已为您自动免除广告");
         com.clilystudio.netbook.hpay100.a.a.b(this.b, "remove_ad_toast_showed" + BookInfoUtil.bookId, true);
     }
 
@@ -491,7 +492,7 @@ public final class o {
                     }
                     return;
                 }
-                com.clilystudio.netbook.util.e.a(o.this.b, R.string.network_unconnected);
+                ToastUtil.showToast(o.this.b, R.string.network_unconnected);
             }
         });
     }
@@ -752,7 +753,7 @@ public final class o {
                         MyApplication.getInstance().getReader().a(hashMap);
                         return;
                     }
-                    com.clilystudio.netbook.util.e.a(o.this.b, "获取个人信息失败，请检查网路后重试");
+                    ToastUtil.showShortToast(o.this.b, "获取个人信息失败，请检查网路后重试");
                 }
             }.b();
         }

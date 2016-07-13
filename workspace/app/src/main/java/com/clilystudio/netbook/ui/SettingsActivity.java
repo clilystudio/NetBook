@@ -18,7 +18,7 @@ import com.clilystudio.netbook.api.ApiServiceProvider;
 import com.clilystudio.netbook.event.BookReadEvent;
 import com.clilystudio.netbook.event.BusProvider;
 import com.clilystudio.netbook.event.LogoutEvent;
-import com.clilystudio.netbook.util.e;
+import com.clilystudio.netbook.util.ToastUtil;
 import com.xiaomi.mipush.sdk.MiPushClient;
 
 import uk.me.lewisdeane.ldialogs.BaseDialog;
@@ -67,7 +67,7 @@ public class SettingsActivity extends BaseActivity implements View.OnClickListen
     }
 
     static /* synthetic */ void c(SettingsActivity settingsActivity) {
-        e.a(settingsActivity, "已登出");
+        ToastUtil.showShortToast(settingsActivity, "已登出");
         new Thread(new Runnable() {
             @Override
             public void run() {

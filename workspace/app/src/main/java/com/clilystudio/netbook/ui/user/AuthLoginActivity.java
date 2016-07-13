@@ -23,6 +23,7 @@ import com.clilystudio.netbook.event.LoginEvent;
 import com.clilystudio.netbook.event.BusProvider;
 import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.ui.BaseActivity;
+import com.clilystudio.netbook.util.ToastUtil;
 import com.squareup.otto.Subscribe;
 
 import java.util.HashMap;
@@ -142,19 +143,19 @@ public class AuthLoginActivity extends BaseActivity implements Handler.Callback 
                                     LoginEvent t2 = new LoginEvent(account);
                                     t2.setSource((AuthLoginActivity.Source) AuthLoginActivity.this.getIntent().getSerializableExtra("KEY_SOURCE"));
                                     BusProvider.getInstance().post(t2);
-                                    com.clilystudio.netbook.util.e.a(AuthLoginActivity.this, "登录成功");
+                                    ToastUtil.showShortToast(AuthLoginActivity.this, "登录成功");
                                 } else {
                                     String string = account.getCode();
                                     if ("AUTHENTICATION_FAILED".equals(string)) {
-                                        com.clilystudio.netbook.util.e.a(AuthLoginActivity.this, R.string.auth_invalid);
+                                        ToastUtil.showToast(AuthLoginActivity.this, R.string.auth_invalid);
                                     } else if ("BANNED_USER".equals(string)) {
-                                        com.clilystudio.netbook.util.e.a(AuthLoginActivity.this, "登录失败，该账户被封禁");
+                                        ToastUtil.showShortToast(AuthLoginActivity.this, "登录失败，该账户被封禁");
                                     } else {
-                                        com.clilystudio.netbook.util.e.a(AuthLoginActivity.this, "登录失败，请重试");
+                                        ToastUtil.showShortToast(AuthLoginActivity.this, "登录失败，请重试");
                                     }
                                 }
                             } else {
-                                com.clilystudio.netbook.util.e.a(AuthLoginActivity.this, "登录失败，请检查网络或者稍后再试");
+                                ToastUtil.showShortToast(AuthLoginActivity.this, "登录失败，请检查网络或者稍后再试");
                             }
                             AuthLoginActivity.this.finish();
                         }

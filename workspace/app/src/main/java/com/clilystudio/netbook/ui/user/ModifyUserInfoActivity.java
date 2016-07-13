@@ -30,6 +30,7 @@ import com.clilystudio.netbook.model.UserInfo;
 import com.clilystudio.netbook.ui.BaseActivity;
 import com.clilystudio.netbook.ui.CircularSmartImageView;
 import com.clilystudio.netbook.ui.CropPhotoActivity;
+import com.clilystudio.netbook.util.ToastUtil;
 
 import java.io.File;
 import java.util.Calendar;
@@ -68,7 +69,7 @@ public class ModifyUserInfoActivity extends BaseActivity implements View.OnClick
      */
     static /* synthetic */ void a(final ModifyUserInfoActivity modifyUserInfoActivity, final boolean bl) {
         if (modifyUserInfoActivity.a.getGender().equals("male") == bl) {
-            com.clilystudio.netbook.util.e.a(modifyUserInfoActivity, "没有修改");
+            ToastUtil.showShortToast(modifyUserInfoActivity, "没有修改");
             return;
         }
         Object[] arrobject = new Object[1];
@@ -96,7 +97,7 @@ public class ModifyUserInfoActivity extends BaseActivity implements View.OnClick
                     public void a(ChangeGenderRoot changeGenderRoot) {
                         if (changeGenderRoot != null) {
                             if (!changeGenderRoot.isOk()) {
-                                com.clilystudio.netbook.util.e.a(modifyUserInfoActivity, changeGenderRoot.getErrorMessage());
+                                ToastUtil.showShortToast(modifyUserInfoActivity, changeGenderRoot.getErrorMessage());
                                 return;
                             }
                             UserInfo userInfo = (UserInfo) MyApplication.getInstance().loadObject("savedObject_userinfo");
@@ -112,7 +113,7 @@ public class ModifyUserInfoActivity extends BaseActivity implements View.OnClick
                             TextView textView = modifyUserInfoActivity.mGenderView;
                             String string2 = string.equals("male") ? "男" : "女";
                             textView.setText(string2);
-                            com.clilystudio.netbook.util.e.a(modifyUserInfoActivity, "修改成功");
+                            ToastUtil.showShortToast(modifyUserInfoActivity, "修改成功");
                             BusProvider.getInstance().post(new UserInfoChangedEvent());
                         }
                     }
@@ -163,19 +164,19 @@ public class ModifyUserInfoActivity extends BaseActivity implements View.OnClick
                         @Override
                         public void a(Root root) {
                              if (root != null && root.isOk()) {
-                                com.clilystudio.netbook.util.e.a(ModifyUserInfoActivity.this, "修改成功");
+                                ToastUtil.showShortToast(ModifyUserInfoActivity.this, "修改成功");
                                 BusProvider.getInstance().post(new UserInfoChangedEvent());
                                  ModifyUserInfoActivity.this.mPortrait.setImageURI(output);
                                 return;
                             }
-                            com.clilystudio.netbook.util.e.a(ModifyUserInfoActivity.this, "上传失败");
+                            ToastUtil.showShortToast(ModifyUserInfoActivity.this, "上传失败");
                         }
                     }.b();
                     return;
                 }
                 if (n2 != 404) return;
                 {
-                    com.clilystudio.netbook.util.e.a(this, ((Throwable) intent.getSerializableExtra("error")).getMessage());
+                    ToastUtil.showShortToast(this, ((Throwable) intent.getSerializableExtra("error")).getMessage());
                 }
             }
         }
@@ -224,7 +225,7 @@ public class ModifyUserInfoActivity extends BaseActivity implements View.OnClick
                 long l2 = this.b;
                 long l3 = Calendar.getInstance().getTimeInMillis() - l2;
                 if (l3 < 0) {
-                    com.clilystudio.netbook.util.e.a(this, "暂时无法修改");
+                    ToastUtil.showShortToast(this, "暂时无法修改");
                 }
                 if (l3 >= 2592000000L || this.b == -2) {
                     View view2 = this.getLayoutInflater().inflate(R.layout.dialog_user_rename, (ViewGroup)getWindow().getDecorView(), false);
@@ -255,11 +256,11 @@ public class ModifyUserInfoActivity extends BaseActivity implements View.OnClick
                                     if (changeNickNameRoot == null) return;
                                     if (changeNickNameRoot.isOk()) {
                                         ModifyUserInfoActivity.this.mNameView.setText(this.a);
-                                        com.clilystudio.netbook.util.e.a(ModifyUserInfoActivity.this, "修改成功");
+                                        ToastUtil.showShortToast(ModifyUserInfoActivity.this, "修改成功");
                                         BusProvider.getInstance().post(new UserInfoChangedEvent());
                                         return;
                                     }
-                                    com.clilystudio.netbook.util.e.a(ModifyUserInfoActivity.this, changeNickNameRoot.getErrorMessage());
+                                    ToastUtil.showShortToast(ModifyUserInfoActivity.this, changeNickNameRoot.getErrorMessage());
                                 }
                             };
                             String[] arrstring = new String[]{editText.getText().toString()};
@@ -279,20 +280,20 @@ public class ModifyUserInfoActivity extends BaseActivity implements View.OnClick
                 long l4 = 2592000000L - l3;
                 if (l4 >= 86400000) {
                     int n2 = (int) (l4 / 86400000);
-                    com.clilystudio.netbook.util.e.a(this, String.format(Locale.CHINA,"再过%d天才能修改哦", n2));
+                    ToastUtil.showShortToast(this, String.format(Locale.CHINA,"再过%d天才能修改哦", n2));
                     return;
                 }
                 int n3 = (int) (l4 / 3600000);
                 if (n3 == 0) {
                     n3 = 1;
                 }
-                com.clilystudio.netbook.util.e.a(this, String.format(Locale.CHINA,"再过%d小时才能修改哦", n3));
+                ToastUtil.showShortToast(this, String.format(Locale.CHINA,"再过%d小时才能修改哦", n3));
                 return;
             }
             case R.id.gender_section:
         }
         if (this.e) {
-            com.clilystudio.netbook.util.e.a(this, "只有一次修改性别的机会，你已经改过了哦");
+            ToastUtil.showShortToast(this, "只有一次修改性别的机会，你已经改过了哦");
             return;
         }
         View view3 = this.getLayoutInflater().inflate(R.layout.dialog_modify_gender, (ViewGroup)getWindow().getDecorView(), false);
@@ -349,7 +350,7 @@ public class ModifyUserInfoActivity extends BaseActivity implements View.OnClick
                 protected void onPostExecute(UserInfo userInfo) {
                      super.onPostExecute(userInfo);
                     if (userInfo == null) {
-                        com.clilystudio.netbook.util.e.a(ModifyUserInfoActivity.this, "载入失败");
+                        ToastUtil.showShortToast(ModifyUserInfoActivity.this, "载入失败");
                         MyApplication.getInstance().loadObject("savedObject_userinfo");
                         return;
                     }
@@ -366,7 +367,7 @@ public class ModifyUserInfoActivity extends BaseActivity implements View.OnClick
                     } else {
                         if (!"TOKEN_INVALID".equals(userInfo.getCode())) return;
                         {
-                            com.clilystudio.netbook.util.e.a(ModifyUserInfoActivity.this, "帐号无效或过期，请退出登录后重试");
+                            ToastUtil.showShortToast(ModifyUserInfoActivity.this, "帐号无效或过期，请退出登录后重试");
                         }
                     }
                 }

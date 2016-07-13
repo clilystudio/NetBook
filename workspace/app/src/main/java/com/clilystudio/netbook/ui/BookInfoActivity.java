@@ -31,6 +31,7 @@ import com.clilystudio.netbook.ui.user.AuthLoginActivity;
 import com.clilystudio.netbook.util.BookInfoUtil;
 import com.clilystudio.netbook.util.BookSourceManager;
 import com.clilystudio.netbook.util.DateTimeUtil;
+import com.clilystudio.netbook.util.ToastUtil;
 import com.clilystudio.netbook.widget.CoverView;
 import com.clilystudio.netbook.widget.TagsLayout;
 import com.squareup.otto.Subscribe;
@@ -396,7 +397,7 @@ public class BookInfoActivity extends BaseActivity implements View.OnClickListen
                 string = string4;
             }
         }
-        com.clilystudio.netbook.util.e.a(this, string);
+        ToastUtil.showShortToast(this, string);
     }
 
     private void j() {

@@ -20,6 +20,7 @@ import com.clilystudio.netbook.model.ResultStatus;
 import com.clilystudio.netbook.model.UGCNewCollection;
 import com.clilystudio.netbook.ui.BaseActivity;
 import com.clilystudio.netbook.ui.BaseCallBack;
+import com.clilystudio.netbook.util.ToastUtil;
 import com.squareup.otto.Subscribe;
 
 import uk.me.lewisdeane.ldialogs.BaseDialog;
@@ -39,17 +40,17 @@ public class UGCGuideAddCollectionActivity extends BaseActivity {
         Account account = am.a(uGCGuideAddCollectionActivity);
         if (account == null) return;
         if (account.getUser() != null && account.getUser().getLv() < 2) {
-            com.clilystudio.netbook.util.e.a(uGCGuideAddCollectionActivity, "等级不够");
+            ToastUtil.showShortToast(uGCGuideAddCollectionActivity, "等级不够");
             return;
         }
         String string = uGCGuideAddCollectionActivity.a.getText().toString();
         String string2 = uGCGuideAddCollectionActivity.b.getText().toString();
         if (com.clilystudio.netbook.hpay100.a.a.Q(string)) {
-            com.clilystudio.netbook.util.e.a(uGCGuideAddCollectionActivity, "请输入书单名");
+            ToastUtil.showShortToast(uGCGuideAddCollectionActivity, "请输入书单名");
             return;
         }
         if (com.clilystudio.netbook.hpay100.a.a.Q(string2)) {
-            com.clilystudio.netbook.util.e.a(uGCGuideAddCollectionActivity, "请输入书单主题介绍");
+            ToastUtil.showShortToast(uGCGuideAddCollectionActivity, "请输入书单主题介绍");
             return;
         }
         Intent intent = new Intent(uGCGuideAddCollectionActivity, UGCGuideEditBooksActivity.class);
@@ -132,10 +133,10 @@ public class UGCGuideAddCollectionActivity extends BaseActivity {
                         @Override
                         public void a(ResultStatus resultStatus) {
                             if (resultStatus == null || !resultStatus.isOk()) {
-                                com.clilystudio.netbook.util.e.a(UGCGuideAddCollectionActivity.this, "保存失败，请检查网络或重试");
+                                ToastUtil.showShortToast(UGCGuideAddCollectionActivity.this, "保存失败，请检查网络或重试");
                                 return;
                             }
-                            com.clilystudio.netbook.util.e.a(UGCGuideAddCollectionActivity.this, "已保存到草稿箱");
+                            ToastUtil.showShortToast(UGCGuideAddCollectionActivity.this, "已保存到草稿箱");
                             UGCNewCollection uGCNewCollection = MyApplication.getInstance().getUGCNewCollection();
                             BusProvider.getInstance().post(new UgcDraftEvent());
                             BusProvider.getInstance().post(new UpdateUgcListEvent(UGCGuideAddCollectionActivity.this.c, uGCNewCollection.getTitle(), uGCNewCollection.getDesc(), uGCNewCollection.getBooks().size(), uGCNewCollection.getBooks().get(0).getCover()));

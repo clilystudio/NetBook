@@ -10,7 +10,7 @@ import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.a_pack.BaseLoadingTask;
 import com.clilystudio.netbook.api.ApiServiceProvider;
 import com.clilystudio.netbook.model.BookAdd;
-import com.clilystudio.netbook.util.e;
+import com.clilystudio.netbook.util.ToastUtil;
 
 public class CustomSearchActivity extends BaseActivity {
     private EditText a;
@@ -23,11 +23,11 @@ public class CustomSearchActivity extends BaseActivity {
         String string = customSearchActivity.a.getText().toString();
         String string2 = customSearchActivity.b.getText().toString();
         if (com.clilystudio.netbook.hpay100.a.a.Q(string)) {
-            e.a(customSearchActivity, "书名不能为空");
+            ToastUtil.showShortToast(customSearchActivity, "书名不能为空");
             return;
         }
         if (com.clilystudio.netbook.hpay100.a.a.Q(string2)) {
-            e.a(customSearchActivity, "作者不能为空");
+            ToastUtil.showShortToast(customSearchActivity, "作者不能为空");
             return;
         }
         boolean bl = true;
@@ -43,14 +43,14 @@ public class CustomSearchActivity extends BaseActivity {
                 @Override
                 public void a(BookAdd bookAdd) {
                     if (bookAdd == null) {
-                        e.a(customSearchActivity, "搜索失败，请检查网络或稍后再试");
+                        ToastUtil.showShortToast(customSearchActivity, "搜索失败，请检查网络或稍后再试");
                     } else if (bookAdd.isOk()) {
                         String string = bookAdd.getBook();
                         Intent intent = BookInfoActivity.a(customSearchActivity, string);
                         customSearchActivity.startActivity(intent);
                     } else {
                         if ("EXISTS".equals(bookAdd.getCode())) {
-                            e.a(customSearchActivity, "该书已存在");
+                            ToastUtil.showShortToast(customSearchActivity, "该书已存在");
                         } else if ("NOTFOUND".equals(bookAdd.getCode())) {
                             CustomSearchActivity.b(customSearchActivity);
                         }

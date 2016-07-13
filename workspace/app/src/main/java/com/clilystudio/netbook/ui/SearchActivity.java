@@ -32,6 +32,7 @@ import com.clilystudio.netbook.model.HotKeywordResult;
 import com.clilystudio.netbook.model.SearchPromRoot;
 import com.clilystudio.netbook.model.SearchResultRoot;
 import com.clilystudio.netbook.util.BaseDownloadAdapter;
+import com.clilystudio.netbook.util.ToastUtil;
 import com.clilystudio.netbook.widget.AutoFlowView;
 import com.clilystudio.netbook.widget.CoverView;
 import com.clilystudio.netbook.widget.SearchEditText;
@@ -251,7 +252,7 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
                     SearchActivity.a(SearchActivity.this, true);
                     if (bookSummaries == null) {
                         SearchActivity.a(SearchActivity.this, 2);
-                        com.clilystudio.netbook.util.e.a(SearchActivity.this, R.string.search_failed);
+                        ToastUtil.showToast(SearchActivity.this, R.string.search_failed);
                         return;
                     }
                     SearchActivity.b(SearchActivity.this).a(bookSummaries);
@@ -273,7 +274,7 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
             };
             bR2.b(this.b);
         } else {
-            com.clilystudio.netbook.util.e.a(this, R.string.network_unconnected);
+            ToastUtil.showToast(this, R.string.network_unconnected);
         }
         if (bl && this.m != null) {
             this.m.setVisibility(View.VISIBLE);
@@ -428,7 +429,7 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if (SearchActivity.this.e.getText().toString().trim().equals("")) {
-                    com.clilystudio.netbook.util.e.a(SearchActivity.this, "请输入要搜索的关键字");
+                    ToastUtil.showShortToast(SearchActivity.this, "请输入要搜索的关键字");
                     return true;
                 }
                 SearchActivity.this.a(true, true);
@@ -548,7 +549,7 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
                     });
                     return;
                 }
-                com.clilystudio.netbook.util.e.a(SearchActivity.this, "网络不给力！");
+                ToastUtil.showShortToast(SearchActivity.this, "网络不给力！");
             }
         }.b();
     }

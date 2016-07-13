@@ -27,6 +27,7 @@ import com.clilystudio.netbook.model.BookSummary;
 import com.clilystudio.netbook.model.SearchPromRoot;
 import com.clilystudio.netbook.ui.BaseActivity;
 import com.clilystudio.netbook.util.BaseDownloadAdapter;
+import com.clilystudio.netbook.util.ToastUtil;
 import com.clilystudio.netbook.widget.CoverView;
 import com.clilystudio.netbook.widget.SearchEditText;
 
@@ -191,7 +192,7 @@ public class UGCGuideAddBookActivity extends BaseActivity implements View.OnClic
                             return;
                         }
                         UGCGuideAddBookActivity.b(UGCGuideAddBookActivity.this, 2);
-                        com.clilystudio.netbook.util.e.a(UGCGuideAddBookActivity.this, R.string.search_failed);
+                        ToastUtil.showToast(UGCGuideAddBookActivity.this, R.string.search_failed);
                     }
                 };
                 w2.b(this.b);
@@ -237,14 +238,14 @@ public class UGCGuideAddBookActivity extends BaseActivity implements View.OnClic
                         return;
                     }
                     UGCGuideAddBookActivity.b(UGCGuideAddBookActivity.this, 2);
-                    com.clilystudio.netbook.util.e.a(UGCGuideAddBookActivity.this, R.string.search_failed);
+                    ToastUtil.showToast(UGCGuideAddBookActivity.this, R.string.search_failed);
                 }
             };
             String[] arrstring = new String[]{this.b};
             a2.b(arrstring);
             return;
         }
-        com.clilystudio.netbook.util.e.a(this, R.string.network_unconnected);
+        ToastUtil.showToast(this, R.string.network_unconnected);
     }
 
     private void b() {

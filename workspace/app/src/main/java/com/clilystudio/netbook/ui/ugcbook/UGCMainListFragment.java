@@ -19,6 +19,7 @@ import com.clilystudio.netbook.api.ApiServiceProvider;
 import com.clilystudio.netbook.model.UGCBookListRoot;
 import com.clilystudio.netbook.util.BaseDownloadAdapter;
 import com.clilystudio.netbook.util.DateTimeUtil;
+import com.clilystudio.netbook.util.ToastUtil;
 import com.clilystudio.netbook.widget.CoverView;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
@@ -92,11 +93,11 @@ public class UGCMainListFragment extends Fragment implements AdapterView.OnItemC
                                     return;
                                 }
                                 UGCMainListFragment.e(UGCMainListFragment.this).setOnLastItemVisibleListener(UGCMainListFragment.this.k);
-                                com.clilystudio.netbook.util.e.a(UGCMainListFragment.this.getActivity(), "加载失败，上拉可重新加载");
+                                ToastUtil.showShortToast(UGCMainListFragment.this.getActivity(), "加载失败，上拉可重新加载");
                                 return;
                             }
                             UGCMainListFragment.e(UGCMainListFragment.this).setOnLastItemVisibleListener(UGCMainListFragment.this.k);
-                            com.clilystudio.netbook.util.e.a(UGCMainListFragment.this.getActivity(), "加载失败，请检查网络或稍后再试");
+                            ToastUtil.showShortToast(UGCMainListFragment.this.getActivity(), "加载失败，请检查网络或稍后再试");
                         }
                     };
                     UGCMainListFragment.this.h.b();
@@ -181,10 +182,10 @@ public class UGCMainListFragment extends Fragment implements AdapterView.OnItemC
                         }
                         return;
                     }
-                    com.clilystudio.netbook.util.e.a(UGCMainListFragment.this.getActivity(), "加载失败，请下拉刷新重试");
+                    ToastUtil.showShortToast(UGCMainListFragment.this.getActivity(), "加载失败，请下拉刷新重试");
                     return;
                 }
-                com.clilystudio.netbook.util.e.a(UGCMainListFragment.this.getActivity(), "加载失败，请检查网络或稍后再试");
+                ToastUtil.showShortToast(UGCMainListFragment.this.getActivity(), "加载失败，请检查网络或稍后再试");
             }
         };
     }
@@ -271,10 +272,10 @@ public class UGCMainListFragment extends Fragment implements AdapterView.OnItemC
                                         }
                                         return;
                                     }
-                                    com.clilystudio.netbook.util.e.a(UGCMainListFragment.this.getActivity(), "加载失败，请下拉刷新重试");
+                                    ToastUtil.showShortToast(UGCMainListFragment.this.getActivity(), "加载失败，请下拉刷新重试");
                                     return;
                                 }
-                                com.clilystudio.netbook.util.e.a(UGCMainListFragment.this.getActivity(), "加载失败，请检查网络或稍后再试");
+                                ToastUtil.showShortToast(UGCMainListFragment.this.getActivity(), "加载失败，请检查网络或稍后再试");
                             }
                         };
                         UGCMainListFragment.this.g.b();

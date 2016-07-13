@@ -17,6 +17,7 @@ import com.clilystudio.netbook.api.ApiServiceProvider;
 import com.clilystudio.netbook.model.BookSummary;
 import com.clilystudio.netbook.model.BookTagRoot;
 import com.clilystudio.netbook.util.BaseDownloadAdapter;
+import com.clilystudio.netbook.util.ToastUtil;
 import com.clilystudio.netbook.widget.CoverView;
 import com.clilystudio.netbook.widget.ScrollLoadListView;
 
@@ -67,7 +68,7 @@ public class BookTagListActivity extends BaseLoadingActivity {
                                 BookTagListActivity.this.e.setOnLastItemListener(null);
                                 return;
                             }
-                            com.clilystudio.netbook.util.e.a(BookTagListActivity.this, "加载失败，请检查网络或稍后再试");
+                            ToastUtil.showShortToast(BookTagListActivity.this, "加载失败，请检查网络或稍后再试");
                         }
                     };
                     BookTagListActivity.this.a.b();

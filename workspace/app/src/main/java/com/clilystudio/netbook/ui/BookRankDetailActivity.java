@@ -4,6 +4,7 @@ import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.a_pack.BaseAsyncTask;
 import com.clilystudio.netbook.api.ApiServiceProvider;
 import com.clilystudio.netbook.model.BookRankDetailRoot;
+import com.clilystudio.netbook.util.ToastUtil;
 
 public class BookRankDetailActivity extends BookListActivity {
     @Override
@@ -25,7 +26,7 @@ public class BookRankDetailActivity extends BookListActivity {
                     return;
                 }
                 BookRankDetailActivity.this.e(2);
-                com.clilystudio.netbook.util.e.a(BookRankDetailActivity.this, R.string.load_failed_tips);
+                ToastUtil.showToast(BookRankDetailActivity.this, R.string.load_failed_tips);
             }
         };
         String[] arrstring = new String[]{this.getIntent().getStringExtra("book_list_id")};

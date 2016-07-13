@@ -26,6 +26,7 @@ import com.clilystudio.netbook.model.Toc;
 import com.clilystudio.netbook.model.TocSource;
 import com.clilystudio.netbook.model.TocSourceRoot;
 import com.clilystudio.netbook.util.BookInfoUtil;
+import com.clilystudio.netbook.util.ToastUtil;
 import com.squareup.otto.Subscribe;
 
 import java.util.ArrayList;
@@ -272,7 +273,7 @@ public class BookDownloadService extends Service {
                     BookDownloadService.q(BookDownloadService.this);
                     return;
                 }
-                com.clilystudio.netbook.util.e.a(BookDownloadService.this.getApplicationContext(), "获取目录失败，暂时无法缓存");
+                ToastUtil.showToast(BookDownloadService.this.getApplicationContext(), "获取目录失败，暂时无法缓存");
                 BookDownloadService.r(BookDownloadService.this);
             }
         }.b();
@@ -329,7 +330,7 @@ public class BookDownloadService extends Service {
         this.i.putExtra("SerDlStopFlag", 0);
         this.h = com.clilystudio.netbook.hpay100.a.a.j(this.a, this.b);
         if (com.clilystudio.netbook.hpay100.a.a.e() <= (long) (10 * this.e << 1)) {
-            com.clilystudio.netbook.util.e.a(this, "SD卡剩余容量不足，请减少缓存数目或增加存储");
+            ToastUtil.showToast(this, "SD卡剩余容量不足，请减少缓存数目或增加存储");
             this.stopSelf();
             return;
         }
@@ -384,13 +385,13 @@ public class BookDownloadService extends Service {
                     int n2 = com.clilystudio.netbook.hpay100.a.a.r(BookDownloadService.this);
                     if (BookDownloadService.j(BookDownloadService.this) == 1 && n2 > 1) {
                         BookDownloadService.k(BookDownloadService.this);
-                        com.clilystudio.netbook.util.e.a(BookDownloadService.this.getApplicationContext(), "流量下自动暂停缓存，连接 Wi-Fi 继续或手动开始缓存");
+                        ToastUtil.showToast(BookDownloadService.this.getApplicationContext(), "流量下自动暂停缓存，连接 Wi-Fi 继续或手动开始缓存");
                     } else if (com.clilystudio.netbook.hpay100.a.a.t(BookDownloadService.this)) {
                         BookDownloadService.e(BookDownloadService.this);
                         BookDownloadService.b(BookDownloadService.this, false);
                     } else {
                         BookDownloadService.k(BookDownloadService.this);
-                        com.clilystudio.netbook.util.e.a(BookDownloadService.this.getApplicationContext(), "缓存暂停，连接网络后继续下载");
+                        ToastUtil.showToast(BookDownloadService.this.getApplicationContext(), "缓存暂停，连接网络后继续下载");
                     }
                     BookDownloadService.b(BookDownloadService.this, n2);
                     if (chapterRoot != null && chapterRoot.getChapter() != null && (chapter = chapterRoot.getChapter()).getBody() != null) {

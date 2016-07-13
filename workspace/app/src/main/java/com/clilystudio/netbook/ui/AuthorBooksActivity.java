@@ -16,6 +16,7 @@ import com.clilystudio.netbook.api.ApiServiceProvider;
 import com.clilystudio.netbook.model.BookSummary;
 import com.clilystudio.netbook.model.SearchResultRoot;
 import com.clilystudio.netbook.util.BaseDownloadAdapter;
+import com.clilystudio.netbook.util.ToastUtil;
 import com.clilystudio.netbook.widget.CoverView;
 
 import java.util.List;
@@ -55,7 +56,7 @@ public class AuthorBooksActivity extends BaseLoadingActivity {
                 super.onPostExecute(bookSummaries);
                 if (bookSummaries == null) {
                     AuthorBooksActivity.this.h();
-                    com.clilystudio.netbook.util.e.a(AuthorBooksActivity.this, R.string.search_failed);
+                    ToastUtil.showToast(AuthorBooksActivity.this, R.string.search_failed);
                     return;
                 }
                 if (bookSummaries.size() > 0) {

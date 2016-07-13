@@ -30,6 +30,7 @@ import com.clilystudio.netbook.model.mixtoc.EsTocItem;
 import com.clilystudio.netbook.model.mixtoc.EsTocRoot;
 import com.clilystudio.netbook.model.mixtoc.SgTocChapter;
 import com.clilystudio.netbook.model.mixtoc.SgTocRoot;
+import com.clilystudio.netbook.util.ToastUtil;
 import com.squareup.otto.Subscribe;
 
 import uk.me.lewisdeane.ldialogs.BaseDialog;
@@ -232,7 +233,7 @@ public class ReaderWebActivity extends BaseReadActivity {
                     @Override
                     public void a(String var1) {
                         if (var1 == null) {
-                            com.clilystudio.netbook.util.e.a(ReaderWebActivity.this, "载入失败");
+                            ToastUtil.showShortToast(ReaderWebActivity.this, "载入失败");
                         } else {
                             ReaderWebActivity.a(ReaderWebActivity.this, var3_3[0] + 1, var1);
                         }
@@ -274,10 +275,10 @@ public class ReaderWebActivity extends BaseReadActivity {
                                     ReaderWebActivity.a(ReaderWebActivity.this, string, var17_14[0], string2, string3);
                                     return;
                                 }
-                                com.clilystudio.netbook.util.e.a(ReaderWebActivity.this, "载入失败");
+                                ToastUtil.showShortToast(ReaderWebActivity.this, "载入失败");
                                 return;
                             }
-                            com.clilystudio.netbook.util.e.a(ReaderWebActivity.this, "载入失败");
+                            ToastUtil.showShortToast(ReaderWebActivity.this, "载入失败");
                         }
                     };
                     String[] var22_18 = new String[]{this.e};
@@ -307,7 +308,7 @@ public class ReaderWebActivity extends BaseReadActivity {
                             ReaderWebActivity.a(ReaderWebActivity.this, 1 + var3_3[0], esTocItem.getCurl());
                             return;
                         }
-                        com.clilystudio.netbook.util.e.a(ReaderWebActivity.this, "载入失败");
+                        ToastUtil.showShortToast(ReaderWebActivity.this, "载入失败");
                     }
                 };
                 String[] var5_20 = new String[]{this.e};

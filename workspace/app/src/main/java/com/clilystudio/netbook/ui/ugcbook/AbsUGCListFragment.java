@@ -19,6 +19,7 @@ import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.model.UGCBookListRoot;
 import com.clilystudio.netbook.util.BaseDownloadAdapter;
 import com.clilystudio.netbook.util.DateTimeUtil;
+import com.clilystudio.netbook.util.ToastUtil;
 import com.clilystudio.netbook.widget.CoverView;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
@@ -93,11 +94,11 @@ public abstract class AbsUGCListFragment extends Fragment implements AdapterView
                                     return;
                                 }
                                 AbsUGCListFragment.this.a.setOnLastItemVisibleListener(AbsUGCListFragment.a(AbsUGCListFragment.this));
-                                com.clilystudio.netbook.util.e.a(AbsUGCListFragment.this.getActivity(), "加载失败，上拉可重新加载");
+                                ToastUtil.showShortToast(AbsUGCListFragment.this.getActivity(), "加载失败，上拉可重新加载");
                                 return;
                             }
                             AbsUGCListFragment.this.a.setOnLastItemVisibleListener(AbsUGCListFragment.a(AbsUGCListFragment.this));
-                            com.clilystudio.netbook.util.e.a(AbsUGCListFragment.this.getActivity(), "加载失败，请检查网络或稍后再试");
+                            ToastUtil.showShortToast(AbsUGCListFragment.this.getActivity(), "加载失败，请检查网络或稍后再试");
                         }
                     };
                     AbsUGCListFragment.this.h.b();
@@ -162,10 +163,10 @@ public abstract class AbsUGCListFragment extends Fragment implements AdapterView
                         }
                         return;
                     }
-                    com.clilystudio.netbook.util.e.a(AbsUGCListFragment.this.getActivity(), "加载失败，请下拉刷新重试");
+                    ToastUtil.showShortToast(AbsUGCListFragment.this.getActivity(), "加载失败，请下拉刷新重试");
                     return;
                 }
-                com.clilystudio.netbook.util.e.a(AbsUGCListFragment.this.getActivity(), "加载失败，请检查网络或下拉刷新重试");
+                ToastUtil.showShortToast(AbsUGCListFragment.this.getActivity(), "加载失败，请检查网络或下拉刷新重试");
             }
         }.b();
     }
@@ -249,10 +250,10 @@ public abstract class AbsUGCListFragment extends Fragment implements AdapterView
                                         }
                                         return;
                                     }
-                                    com.clilystudio.netbook.util.e.a(AbsUGCListFragment.this.getActivity(), "加载失败，请下拉刷新重试");
+                                    ToastUtil.showShortToast(AbsUGCListFragment.this.getActivity(), "加载失败，请下拉刷新重试");
                                     return;
                                 }
-                                com.clilystudio.netbook.util.e.a(AbsUGCListFragment.this.getActivity(), "加载失败，请检查网络或下拉刷新重试");
+                                ToastUtil.showShortToast(AbsUGCListFragment.this.getActivity(), "加载失败，请检查网络或下拉刷新重试");
                             }
                         };
                         AbsUGCListFragment.this.g.b();

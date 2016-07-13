@@ -1509,11 +1509,11 @@ public class ApiService {
         }
     }
 
-    public final ResultStatus x(String string, String string2) {
+    public final ResultStatus addUserExp(String token, String type) {
         String string3 = f + "/user/add-exp";
         HashMap<String, String> hashMap = new HashMap<>();
-        hashMap.put("token", string);
-        hashMap.put("type", string2);
+        hashMap.put("token", token);
+        hashMap.put("type", type);
         HttpRequest httpRequest = this.b(HttpRequest.post(string3));
         httpRequest.form(hashMap);
         return ApiService.a(httpRequest, ResultStatus.class);

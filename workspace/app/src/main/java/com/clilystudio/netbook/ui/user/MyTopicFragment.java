@@ -21,6 +21,7 @@ import com.clilystudio.netbook.model.Topic;
 import com.clilystudio.netbook.model.TopicPost;
 import com.clilystudio.netbook.util.BaseDownloadAdapter;
 import com.clilystudio.netbook.util.DateTimeUtil;
+import com.clilystudio.netbook.util.ToastUtil;
 import com.clilystudio.netbook.widget.CoverView;
 import com.clilystudio.netbook.widget.LabelPtrListView;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
@@ -84,7 +85,7 @@ public class MyTopicFragment extends Fragment {
                                 MyTopicFragment.d(MyTopicFragment.this).setOnLastItemVisibleListener(null);
                                 return;
                             }
-                            com.clilystudio.netbook.util.e.a(MyTopicFragment.this.getActivity(), "加载失败，请检查网络或稍后再试");
+                            ToastUtil.showShortToast(MyTopicFragment.this.getActivity(), "加载失败，请检查网络或稍后再试");
                         }
                     };
                     BaseAsyncTask<String, Void, Topic> f = MyTopicFragment.e(MyTopicFragment.this);
@@ -275,7 +276,7 @@ public class MyTopicFragment extends Fragment {
                     MyTopicFragment.a(MyTopicFragment.this, MyTopicFragment.this.i.size());
                     return;
                 }
-                com.clilystudio.netbook.util.e.a(MyTopicFragment.this.getActivity(), "加载失败，请检查网络或者稍后再试");
+                ToastUtil.showShortToast(MyTopicFragment.this.getActivity(), "加载失败，请检查网络或者稍后再试");
             }
         };
     }

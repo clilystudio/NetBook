@@ -38,7 +38,7 @@ import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.model.User;
 import com.clilystudio.netbook.ui.user.AuthLoginActivity;
 import com.clilystudio.netbook.util.CharacterUtil;
-import com.clilystudio.netbook.util.e;
+import com.clilystudio.netbook.util.ToastUtil;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -117,7 +117,7 @@ public class am {
         if (account != null) {
             return account;
         }
-        e.a(activity, "请登录后再操作");
+        ToastUtil.showShortToast(activity, "请登录后再操作");
         activity.startActivity(AuthLoginActivity.a(activity));
         return null;
     }
@@ -172,7 +172,7 @@ public class am {
         } catch (ActivityNotFoundException var4_4) {
             var4_4.printStackTrace();
             if (string2 == null) return;
-            e.a(activity, string2);
+            ToastUtil.showShortToast(activity, string2);
         }
     }
 

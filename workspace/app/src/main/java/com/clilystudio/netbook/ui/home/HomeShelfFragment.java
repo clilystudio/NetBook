@@ -58,6 +58,7 @@ import com.clilystudio.netbook.ui.feed.FeedListActivity;
 import com.clilystudio.netbook.util.BookSourceManager;
 import com.clilystudio.netbook.util.FeedIntroDialog;
 import com.clilystudio.netbook.util.InsideLinkIntent;
+import com.clilystudio.netbook.util.ToastUtil;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.squareup.otto.Subscribe;
@@ -121,7 +122,7 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
                             intent.putExtra("file_name", string);
                             HomeShelfFragment.this.startActivity(intent);
                         } else {
-                            com.clilystudio.netbook.util.e.a(HomeShelfFragment.this.getActivity(), "书籍不存在");
+                            ToastUtil.showShortToast(HomeShelfFragment.this.getActivity(), "书籍不存在");
                             TxtFileObject.delete(bookFile);
                             BusProvider.getInstance().post(new ShelfUpdatedEvent());
                         }
@@ -240,13 +241,13 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
         }
         if (hasUpdate) {
             homeShelfFragment.k();
-            com.clilystudio.netbook.util.e.a(homeShelfFragment.getActivity(), R.string.refurbish_changed);
+            ToastUtil.showToast(homeShelfFragment.getActivity(), R.string.refurbish_changed);
         } else {
             if (hasFeedChange) {
                 homeShelfFragment.k();
             } else {
                 homeShelfFragment.j.notifyDataSetChanged();
-                com.clilystudio.netbook.util.e.a(homeShelfFragment.getActivity(), R.string.refurbish_no_change);
+                ToastUtil.showToast(homeShelfFragment.getActivity(), R.string.refurbish_no_change);
             }
         }
     }
@@ -539,7 +540,7 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
                         HomeShelfFragment.a(homeShelfFragment, bookUpdates, this.a);
                     } else {
                         if (HomeShelfFragment.i(homeShelfFragment) == 0) {
-                            com.clilystudio.netbook.util.e.a(homeShelfFragment.getActivity(), R.string.network_failed);
+                            ToastUtil.showToast(homeShelfFragment.getActivity(), R.string.network_failed);
                         }
                     }
                 }
@@ -713,7 +714,7 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
             this.b(3);
             return;
         }
-        com.clilystudio.netbook.util.e.a(this.getActivity(), "载入书架失败，请重试");
+        ToastUtil.showShortToast(this.getActivity(), "载入书架失败，请重试");
     }
 
     private List<BookShelf> j() {
@@ -889,7 +890,7 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
                 if (HomeShelfFragment.a(HomeShelfFragment.this) == null) return;
                 List<BookShelf> list = HomeShelfFragment.a(HomeShelfFragment.this).e();
                 if (list == null || list.size() == 0) {
-                    com.clilystudio.netbook.util.e.a((Context) HomeShelfFragment.this.getActivity(), "你没有选择要删除的书哦");
+                    ToastUtil.showToast((Context) HomeShelfFragment.this.getActivity(), "你没有选择要删除的书哦");
                     return;
                 }
                 HomeShelfFragment.a(HomeShelfFragment.this, list);

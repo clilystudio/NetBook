@@ -17,7 +17,7 @@ import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.api.ApiServiceProvider;
 import com.clilystudio.netbook.ui.home.HomeActivity;
 import com.clilystudio.netbook.ui.user.AuthLoginActivity;
-import com.clilystudio.netbook.util.e;
+import com.clilystudio.netbook.util.ToastUtil;
 
 public class BaseActivity extends AppCompatActivity {
     protected ApiServiceProvider d = ApiServiceProvider.getInstance();
@@ -227,7 +227,7 @@ public class BaseActivity extends AppCompatActivity {
     }
 
     public final void d() {
-        e.a(this, R.string.token_invalid);
+        ToastUtil.showToast(this, R.string.token_invalid);
         this.startActivity(AuthLoginActivity.a(this));
     }
 

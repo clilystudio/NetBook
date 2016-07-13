@@ -27,6 +27,7 @@ import com.clilystudio.netbook.model.Topic;
 import com.clilystudio.netbook.model.TopicPost;
 import com.clilystudio.netbook.util.BaseDownloadAdapter;
 import com.clilystudio.netbook.util.DateTimeUtil;
+import com.clilystudio.netbook.util.ToastUtil;
 import com.clilystudio.netbook.widget.CoverView;
 import com.clilystudio.netbook.widget.LabelPtrListView;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
@@ -98,11 +99,11 @@ public class MyFavTopicFragment extends Fragment {
                                     return;
                                 }
                                 MyFavTopicFragment.this.c.setOnLastItemVisibleListener(MyFavTopicFragment.this.l);
-                                com.clilystudio.netbook.util.e.a(MyFavTopicFragment.this.getActivity(), "加载失败，上拉可重新加载");
+                                ToastUtil.showShortToast(MyFavTopicFragment.this.getActivity(), "加载失败，上拉可重新加载");
                                 return;
                             }
                             MyFavTopicFragment.this.c.setOnLastItemVisibleListener(MyFavTopicFragment.this.l);
-                            com.clilystudio.netbook.util.e.a(MyFavTopicFragment.this.getActivity(), "加载失败，请检查网络或稍后再试");
+                            ToastUtil.showShortToast(MyFavTopicFragment.this.getActivity(), "加载失败，请检查网络或稍后再试");
                         }
                     };
                     String[] arrstring = new String[]{MyFavTopicFragment.b(MyFavTopicFragment.this)};
@@ -147,14 +148,14 @@ public class MyFavTopicFragment extends Fragment {
                     public void a(ResultStatus resultStatus) {
                         if (resultStatus != null) {
                             if (resultStatus.isOk()) {
-                                com.clilystudio.netbook.util.e.a(this.b(), "删除成功");
+                                ToastUtil.showShortToast(this.b(), "删除成功");
                                 MyFavTopicFragment.this.c.setRefreshing();
                                 return;
                             }
-                            com.clilystudio.netbook.util.e.a(this.b(), "删除失败，请稍后再试");
+                            ToastUtil.showShortToast(this.b(), "删除失败，请稍后再试");
                             return;
                         }
-                        com.clilystudio.netbook.util.e.a(this.b(), "删除失败，请检查网络或稍后再试");
+                        ToastUtil.showShortToast(this.b(), "删除失败，请检查网络或稍后再试");
                     }
                 };
                  y2.b(this.k, topicPost.get_id());
@@ -314,10 +315,10 @@ public class MyFavTopicFragment extends Fragment {
                         }
                         return;
                     }
-                    com.clilystudio.netbook.util.e.a(MyFavTopicFragment.this.getActivity(), "加载失败，请下拉刷新重试");
+                    ToastUtil.showShortToast(MyFavTopicFragment.this.getActivity(), "加载失败，请下拉刷新重试");
                     return;
                 }
-                com.clilystudio.netbook.util.e.a(MyFavTopicFragment.this.getActivity(), "加载失败，请检查网络或者稍后再试");
+                ToastUtil.showShortToast(MyFavTopicFragment.this.getActivity(), "加载失败，请检查网络或者稍后再试");
             }
         };
     }

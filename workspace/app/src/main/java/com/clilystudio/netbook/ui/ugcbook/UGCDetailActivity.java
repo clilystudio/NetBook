@@ -32,6 +32,7 @@ import com.clilystudio.netbook.ui.SmartImageView;
 import com.clilystudio.netbook.ui.BaseCallBack;
 import com.clilystudio.netbook.util.BaseDownloadAdapter;
 import com.clilystudio.netbook.util.DateTimeUtil;
+import com.clilystudio.netbook.util.ToastUtil;
 import com.clilystudio.netbook.widget.CoverView;
 import com.squareup.otto.Subscribe;
 
@@ -118,7 +119,7 @@ public class UGCDetailActivity extends BaseActivity implements View.OnClickListe
             uGCDetailActivity.startActivity(intent);
             return;
         }
-        com.clilystudio.netbook.util.e.a((Context) uGCDetailActivity, "书单信息未加载，请检查网络或稍后再试");
+        ToastUtil.showToast((Context) uGCDetailActivity, "书单信息未加载，请检查网络或稍后再试");
     }
 
     static /* synthetic */ void b(UGCDetailActivity uGCDetailActivity, UGCBookDetail uGCBookDetail) {
@@ -139,10 +140,10 @@ public class UGCDetailActivity extends BaseActivity implements View.OnClickListe
                 protected void onPostExecute(ResultStatus resultStatus) {
                     super.onPostExecute(resultStatus);
                     if (resultStatus != null && resultStatus.isOk()) {
-                        com.clilystudio.netbook.util.e.a(uGCDetailActivity, "已收藏");
+                        ToastUtil.showShortToast(uGCDetailActivity, "已收藏");
                         return;
                     }
-                    com.clilystudio.netbook.util.e.a(uGCDetailActivity, "收藏失败，请检查网络或稍后再试");
+                    ToastUtil.showShortToast(uGCDetailActivity, "收藏失败，请检查网络或稍后再试");
                 }
             };
             q2.b(account.getToken(), uGCDetailActivity.o);

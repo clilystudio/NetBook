@@ -14,6 +14,7 @@ import com.clilystudio.netbook.model.Account;
 import com.clilystudio.netbook.model.ResultStatus;
 import com.clilystudio.netbook.model.UGCBookListRoot;
 import com.clilystudio.netbook.util.BaseDownloadAdapter;
+import com.clilystudio.netbook.util.ToastUtil;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 
 import uk.me.lewisdeane.ldialogs.BaseDialog;
@@ -79,10 +80,10 @@ public class FavUGCListFragment extends AbsUGCListFragment implements AdapterVie
                             super.onPostExecute(resultStatus);
                             if (resultStatus != null && resultStatus.isOk()) {
                                 FavUGCListFragment.this.a();
-                                com.clilystudio.netbook.util.e.a(FavUGCListFragment.this.getActivity(), "删除成功");
+                                ToastUtil.showShortToast(FavUGCListFragment.this.getActivity(), "删除成功");
                                 return;
                             }
-                            com.clilystudio.netbook.util.e.a(FavUGCListFragment.this.getActivity(), "删除失败");
+                            ToastUtil.showShortToast(FavUGCListFragment.this.getActivity(), "删除失败");
                         }
                     };
                     String[] arrstring = new String[]{account.getToken(), ugcBook.get_id()};

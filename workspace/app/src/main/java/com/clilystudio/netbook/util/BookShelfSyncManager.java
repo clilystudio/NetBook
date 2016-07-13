@@ -213,20 +213,20 @@ public final class BookShelfSyncManager {
                     if (remoteBookShelf.isNeedSync()) {
                         if (remoteBookShelf.isOk()) {
                             BookShelfSyncManager.a(BookShelfSyncManager.this, remoteBookShelf);
-                            com.clilystudio.netbook.util.e.a(BookShelfSyncManager.b(BookShelfSyncManager.this), "同步完成");
+                            ToastUtil.showShortToast(BookShelfSyncManager.b(BookShelfSyncManager.this), "同步完成");
                             return remoteBookShelf;
                         }
                         if ("TOKEN_INVALID".equals(remoteBookShelf.getCode())) {
-                            com.clilystudio.netbook.util.e.a(BookShelfSyncManager.b(BookShelfSyncManager.this), R.string.sync_token_failed);
+                            ToastUtil.showToast(BookShelfSyncManager.b(BookShelfSyncManager.this), R.string.sync_token_failed);
                             return remoteBookShelf;
                         }
-                        com.clilystudio.netbook.util.e.a(BookShelfSyncManager.b(BookShelfSyncManager.this), "同步失败，请重试");
+                        ToastUtil.showShortToast(BookShelfSyncManager.b(BookShelfSyncManager.this), "同步失败，请重试");
                         return remoteBookShelf;
                     }
-                    com.clilystudio.netbook.util.e.a(BookShelfSyncManager.b(BookShelfSyncManager.this), "同步完成");
+                    ToastUtil.showShortToast(BookShelfSyncManager.b(BookShelfSyncManager.this), "同步完成");
                     return remoteBookShelf;
                 }
-                com.clilystudio.netbook.util.e.a(BookShelfSyncManager.b(BookShelfSyncManager.this), "同步失败，请检查网络或稍后再试");
+                ToastUtil.showShortToast(BookShelfSyncManager.b(BookShelfSyncManager.this), "同步失败，请检查网络或稍后再试");
                 return remoteBookShelf;
             }
 

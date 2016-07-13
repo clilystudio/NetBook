@@ -34,6 +34,7 @@ import com.clilystudio.netbook.ui.BaseCallBack;
 import com.clilystudio.netbook.ui.ActionBarClickListener;
 import com.clilystudio.netbook.ui.user.UserUGCActivity;
 import com.clilystudio.netbook.util.BaseDownloadAdapter;
+import com.clilystudio.netbook.util.ToastUtil;
 import com.clilystudio.netbook.widget.CoverView;
 import com.squareup.otto.Subscribe;
 
@@ -129,7 +130,7 @@ public class UGCGuideEditBooksActivity extends BaseActivity implements View.OnCl
 
     static /* synthetic */ boolean b(UGCGuideEditBooksActivity uGCGuideEditBooksActivity) {
         if (uGCGuideEditBooksActivity.e.getCount() < 8) {
-             com.clilystudio.netbook.util.e.a(uGCGuideEditBooksActivity, String.format(Locale.CHINA,"太少啦，单个书单至少需要%d本小说哦", 8));
+             ToastUtil.showShortToast(uGCGuideEditBooksActivity, String.format(Locale.CHINA,"太少啦，单个书单至少需要%d本小说哦", 8));
             return false;
         }
         return true;
@@ -181,7 +182,7 @@ public class UGCGuideEditBooksActivity extends BaseActivity implements View.OnCl
                     UGCGuideEditBooksActivity.c(UGCGuideEditBooksActivity.this);
                     return;
                 }
-                com.clilystudio.netbook.util.e.a(UGCGuideEditBooksActivity.this, "添加书籍失败，请检查网络或重试");
+                ToastUtil.showShortToast(UGCGuideEditBooksActivity.this, "添加书籍失败，请检查网络或重试");
             }
         };
         n.b(new String[][]{d.getBookIds()});
@@ -230,7 +231,7 @@ public class UGCGuideEditBooksActivity extends BaseActivity implements View.OnCl
                 @Override
                 public void onTextClick() {
                     if (MyApplication.getInstance().getUGCNewCollection().getBooks().size() == 0) {
-                        com.clilystudio.netbook.util.e.a(UGCGuideEditBooksActivity.this, "至少要添加一本书籍才能保存哦");
+                        ToastUtil.showShortToast(UGCGuideEditBooksActivity.this, "至少要添加一本书籍才能保存哦");
                         return;
                     }
                     new BaseLoadingTask<Void, ResultStatus>(UGCGuideEditBooksActivity.this, "正在保存到草稿箱...") {
@@ -248,10 +249,10 @@ public class UGCGuideEditBooksActivity extends BaseActivity implements View.OnCl
                         @Override
                         public void a(ResultStatus resultStatus) {
                             if (resultStatus == null || !resultStatus.isOk()) {
-                                com.clilystudio.netbook.util.e.a(UGCGuideEditBooksActivity.this, "保存失败，请检查网络或重试");
+                                ToastUtil.showShortToast(UGCGuideEditBooksActivity.this, "保存失败，请检查网络或重试");
                                 return;
                             }
-                            com.clilystudio.netbook.util.e.a(UGCGuideEditBooksActivity.this, "已保存到草稿箱");
+                            ToastUtil.showShortToast(UGCGuideEditBooksActivity.this, "已保存到草稿箱");
                             UGCNewCollection uGCNewCollection = MyApplication.getInstance().getUGCNewCollection();
                             BusProvider.getInstance().post(new UgcDraftEvent());
                             BusProvider.getInstance().post(new UpdateUgcListEvent(UGCGuideEditBooksActivity.this.f, uGCNewCollection.getTitle(), uGCNewCollection.getDesc(), uGCNewCollection.getBooks().size(), uGCNewCollection.getBooks().get(0).getCover()));
@@ -391,15 +392,15 @@ public class UGCGuideEditBooksActivity extends BaseActivity implements View.OnCl
                 public void a(ResultStatus resultStatus) {
                     Intent intent;
                     if (resultStatus == null || !resultStatus.isOk()) {
-                        com.clilystudio.netbook.util.e.a(UGCGuideEditBooksActivity.this, "发布失败");
+                        ToastUtil.showShortToast(UGCGuideEditBooksActivity.this, "发布失败");
                         return;
                     }
                     if (UGCGuideEditBooksActivity.d(UGCGuideEditBooksActivity.this)) {
-                        com.clilystudio.netbook.util.e.a(UGCGuideEditBooksActivity.this, "发布成功");
+                        ToastUtil.showShortToast(UGCGuideEditBooksActivity.this, "发布成功");
                         intent = new Intent(UGCGuideEditBooksActivity.this, UserUGCActivity.class);
                         intent.setFlags(67108864);
                     } else if (UGCGuideEditBooksActivity.this.f != null && !UGCGuideEditBooksActivity.this.f.equals("")) {
-                        com.clilystudio.netbook.util.e.a(UGCGuideEditBooksActivity.this, "修改成功");
+                        ToastUtil.showShortToast(UGCGuideEditBooksActivity.this, "修改成功");
                         UGCNewCollection uGCNewCollection = MyApplication.getInstance().getUGCNewCollection();
                         Intent intent2 = new Intent(this.b(), UGCDetailActivity.class);
                         intent2.putExtra("book_id", UGCGuideEditBooksActivity.this.f);
@@ -410,7 +411,7 @@ public class UGCGuideEditBooksActivity extends BaseActivity implements View.OnCl
                         BusProvider.getInstance().post(new UpdateUgcListEvent(UGCGuideEditBooksActivity.this.f, uGCNewCollection.getTitle(), uGCNewCollection.getDesc(), uGCNewCollection.getBooks().size(), uGCNewCollection.getBooks().get(0).getCover()));
                         intent = intent2;
                     } else {
-                        com.clilystudio.netbook.util.e.a(UGCGuideEditBooksActivity.this, "发布成功");
+                        ToastUtil.showShortToast(UGCGuideEditBooksActivity.this, "发布成功");
                         intent = new Intent(UGCGuideEditBooksActivity.this, UGCMainActivity.class);
                     }
                     UGCGuideEditBooksActivity.this.startActivity(intent);

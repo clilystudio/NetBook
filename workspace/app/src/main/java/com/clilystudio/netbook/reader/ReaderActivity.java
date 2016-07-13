@@ -49,6 +49,7 @@ import com.clilystudio.netbook.model.TopicCount;
 import com.clilystudio.netbook.ui.BaseReadSlmActivity;
 import com.clilystudio.netbook.ui.BookInfoActivity;
 import com.clilystudio.netbook.util.BookInfoUtil;
+import com.clilystudio.netbook.util.ToastUtil;
 import com.clilystudio.netbook.util.ae;
 import com.clilystudio.netbook.widget.ThemeLoadingView;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
@@ -204,7 +205,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
      */
     static /* synthetic */ void C(final ReaderActivity readerActivity) {
         if (readerActivity.J || readerActivity.K) {
-            com.clilystudio.netbook.util.e.a(readerActivity, "缓存不可用");
+            ToastUtil.showShortToast(readerActivity, "缓存不可用");
             return;
         }
         boolean bl = com.clilystudio.netbook.am.g(readerActivity.c) == 2;
@@ -479,14 +480,14 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
 
     static /* synthetic */ void ad(ReaderActivity readerActivity) {
         if (com.clilystudio.netbook.am.f()) {
-            com.clilystudio.netbook.util.e.a(readerActivity, readerActivity.getString(R.string.book_add_overflow));
+            ToastUtil.showShortToast(readerActivity, readerActivity.getString(R.string.book_add_overflow));
             return;
         }
         readerActivity.g.a();
         com.clilystudio.netbook.hpay100.a.a.u(readerActivity.c);
         String string = readerActivity.getString(R.string.add_book_event);
         Object[] arrobject = new Object[]{readerActivity.d};
-        com.clilystudio.netbook.util.e.a(readerActivity, String.format(string, arrobject));
+        ToastUtil.showShortToast(readerActivity, String.format(string, arrobject));
     }
 
     static /* synthetic */ void ag(ReaderActivity readerActivity) {
@@ -719,7 +720,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
 
     static /* synthetic */ void x(ReaderActivity readerActivity) {
         if (readerActivity.J || readerActivity.K) {
-            com.clilystudio.netbook.util.e.a(readerActivity, "目录不可用");
+            ToastUtil.showShortToast(readerActivity, "目录不可用");
             return;
         }
         readerActivity.D();
@@ -1080,7 +1081,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         }
         this.E();
         if (!n2.e() && this.w()) {
-            com.clilystudio.netbook.util.e.a(this, this.getString(R.string.auto_reader_end_notify));
+            ToastUtil.showShortToast(this, this.getString(R.string.auto_reader_end_notify));
             this.T.clearAnimation();
             this.I();
             this.M = 0;
@@ -1157,7 +1158,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
             this.o();
         } else {
             if (this.Y == null) {
-                com.clilystudio.netbook.util.e.a(this, "获取章节内容失败,请退出后重试");
+                ToastUtil.showShortToast(this, "获取章节内容失败,请退出后重试");
             } else if (bl && !this.Y[0].startsWith("　　")) {
                 this.W = 0;
                 this.X = 1 + this.Y[0].length();
@@ -1477,7 +1478,7 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
         if (n2 == null) return;
         {
             if (!n2.f()) {
-                com.clilystudio.netbook.util.e.a(this, R.string.is_first);
+                ToastUtil.showToast(this, R.string.is_first);
                 return;
             }
             if (this.i.c()) {

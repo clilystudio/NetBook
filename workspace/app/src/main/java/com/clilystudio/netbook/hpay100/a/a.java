@@ -19,6 +19,7 @@ import android.graphics.Rect;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
+import android.net.wifi.WifiManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
@@ -60,6 +61,7 @@ import com.clilystudio.netbook.util.GenderIntroDialog;
 import com.clilystudio.netbook.util.BookInfoUtil;
 import com.clilystudio.netbook.util.BookSyncTask;
 import com.clilystudio.netbook.util.DateTimeUtil;
+import com.clilystudio.netbook.util.ToastUtil;
 import com.integralblue.httpresponsecache.compat.java.lang.ArrayIndexOutOfBoundsException;
 import com.umeng.onlineconfig.OnlineConfigAgent;
 import com.xiaomi.mipush.sdk.MiPushClient;
@@ -1051,11 +1053,22 @@ public class a {
 
     public static Map<String, String> a(Context context, int n2, String string2) {
         HashMap<String, String> hashMap = new HashMap<>();
-        hashMap.put("uid", com.clilystudio.netbook.util.e.c(context));
+        hashMap.put("uid", getUserId(context));
         hashMap.put("iid", string2);
         hashMap.put("iids", n());
         hashMap.put("num", "20");
         return hashMap;
+    }
+
+    public static String getUserId(Context context) {
+        if (com.clilystudio.netbook.am.getAccount() == null) {
+            String string = ((WifiManager) context.getSystemService(Context.WIFI_SERVICE)).getConnectionInfo().getMacAddress();
+            if (string == null) {
+                string = "";
+            }
+            com.integralblue.httpresponsecache.compat.libcore.io.Base64.encode(string.getBytes());
+        }
+        return com.clilystudio.netbook.am.getAccount().getUser().getId();
     }
 
     public static short a(byte[] arrby, int n2, ByteOrder byteOrder) {
@@ -1720,7 +1733,7 @@ public class a {
         try {
             activity.startActivityForResult(intent, 9162);
         } catch (ActivityNotFoundException var2_2) {
-            com.clilystudio.netbook.util.e.a(activity, "crop pick error");
+            ToastUtil.showShortToast(activity, "crop pick error");
         }
     }
 
@@ -2367,7 +2380,7 @@ public class a {
 
     public static Map<String, String> p(Context context) {
         HashMap<String, String> hashMap = new HashMap<>();
-        hashMap.put("uid", com.clilystudio.netbook.util.e.c(context));
+        hashMap.put("uid", getUserId(context));
         return hashMap;
     }
 
@@ -2555,5 +2568,20 @@ public class a {
             return string2.replaceAll("\\n[\\s]+", "\n").trim();
         }
         return null;
+    }
+
+
+    public static int getLevelExp(int level) {
+        if (level <= 0 || level > 999) {
+            return 0;
+        }
+        int n2 = level + 1;
+        if (n2 == 2) {
+            return 20;
+        }
+        if (n2 <= 10) {
+            return 10 + (getLevelExp(level - 1) << 1);
+        }
+        return 3840 + (getLevelExp(level - 1) + 50 * (n2 - 10));
     }
 }

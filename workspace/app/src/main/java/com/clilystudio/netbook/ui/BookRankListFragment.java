@@ -15,6 +15,7 @@ import com.clilystudio.netbook.api.ApiServiceProvider;
 import com.clilystudio.netbook.model.BookRankDetail;
 import com.clilystudio.netbook.model.BookRankDetailRoot;
 import com.clilystudio.netbook.util.BaseDownloadAdapter;
+import com.clilystudio.netbook.util.ToastUtil;
 import com.clilystudio.netbook.widget.CoverView;
 import com.clilystudio.netbook.widget.ScrollLoadListView;
 
@@ -71,7 +72,7 @@ public class BookRankListFragment extends Fragment {
                     return;
                 }
                 BookRankListFragment.this.b(2);
-                com.clilystudio.netbook.util.e.a(BookRankListFragment.this.getActivity(), R.string.load_failed_tips);
+                ToastUtil.showToast(BookRankListFragment.this.getActivity(), R.string.load_failed_tips);
             }
         };
         g.b();

@@ -10,7 +10,6 @@ import com.clilystudio.netbook.MyApplication;
 import com.clilystudio.netbook.R;
 import com.clilystudio.netbook.model.UserInfo;
 import com.clilystudio.netbook.ui.BaseActivity;
-import com.clilystudio.netbook.util.e;
 
 import java.util.Locale;
 
@@ -32,7 +31,7 @@ public class UserLevelActivity extends BaseActivity {
         UserInfo userInfo = (UserInfo) MyApplication.getInstance().loadObject("savedObject_userinfo");
         int n = userInfo.getLv();
         int n2 = userInfo.getExp();
-        int n3 = e.a(n);
+        int n3 = com.clilystudio.netbook.hpay100.a.a.getLevelExp(n);
         String text = "" + n + "级";
         this.mCurrentLevel.setText(text);
         String text1 = "" + n2 + "/" + n3;
