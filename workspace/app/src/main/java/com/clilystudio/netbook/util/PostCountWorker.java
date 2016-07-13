@@ -7,9 +7,9 @@ import android.os.Message;
 
 import com.clilystudio.netbook.model.PostCountRoot;
 
-final class aj extends HandlerThread implements Handler.Callback {
-    public aj(String string) {
-        super(string);
+final class PostCountWorker extends HandlerThread implements Handler.Callback {
+    public PostCountWorker(String name) {
+        super(name);
     }
 
     @Override

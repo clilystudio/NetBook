@@ -11,7 +11,6 @@ import com.clilystudio.netbook.db.BookTopicEnterRecord;
 import com.clilystudio.netbook.model.BookShelfTopic;
 import com.clilystudio.netbook.ui.SmartImageView;
 import com.clilystudio.netbook.util.ag;
-import com.clilystudio.netbook.util.onPostCountChangeListener;
 
 public final class HomeTopicAdapter extends BaseBookAdapter<BookShelfTopic> {
     private LayoutInflater a;
@@ -83,7 +82,7 @@ public final class HomeTopicAdapter extends BaseBookAdapter<BookShelfTopic> {
                 viewHolder.mCount.setVisibility(View.GONE);
                 viewHolder.mCount.setText("");
                 viewHolder.mCount.setTag(string);
-                this.b.a(string, new onPostCountChangeListener() {
+                this.b.a(string, new ag.onPostCountChangeListener() {
                     @Override
                     public void a(String var1, int var2) {
                         if (!viewHolder.mCount.getTag().equals(var1)) return;

@@ -45,7 +45,7 @@ public final class ag {
         d = ApiServiceProvider.getApiService();
         b = new Handler[3];
         for (int i = 0; i < 3; ++i) {
-            aj aj2 = new aj("PostCountWorker" + i);
+            PostCountWorker aj2 = new PostCountWorker("PostCountWorker" + i);
             aj2.start();
             ag.b[i] = new Handler(aj2.getLooper(), aj2);
         }
@@ -86,5 +86,9 @@ public final class ag {
             message.setData(bundle);
             handler.sendMessage(message);
         }
+    }
+
+    public interface onPostCountChangeListener {
+        void a(String var1, int var2);
     }
 }
