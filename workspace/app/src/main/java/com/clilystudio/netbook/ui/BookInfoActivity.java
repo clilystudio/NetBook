@@ -26,7 +26,7 @@ import com.clilystudio.netbook.event.BookAddedEvent;
 import com.clilystudio.netbook.event.BusProvider;
 import com.clilystudio.netbook.event.DownloadStatusEvent;
 import com.clilystudio.netbook.event.BookRemovedEvent;
-import com.clilystudio.netbook.reader.dl.a;
+import com.clilystudio.netbook.reader.dl.BookDownloadManager;
 import com.clilystudio.netbook.ui.user.AuthLoginActivity;
 import com.clilystudio.netbook.util.BookInfoUtil;
 import com.clilystudio.netbook.util.BookSourceManager;
@@ -94,7 +94,7 @@ public class BookInfoActivity extends BaseActivity implements View.OnClickListen
             if (!bookInfoActivity.i) {
                 bookInfoActivity.h();
             }
-            new a(bookInfoActivity).a(BookReadRecord.getOnShelf(bookInfoActivity.mBookId));
+            new BookDownloadManager(bookInfoActivity).startDownload(BookReadRecord.getOnShelf(bookInfoActivity.mBookId));
         }
     }
 

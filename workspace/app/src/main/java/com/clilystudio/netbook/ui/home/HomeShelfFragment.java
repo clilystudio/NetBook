@@ -51,6 +51,7 @@ import com.clilystudio.netbook.model.InsideLinkFactory;
 import com.clilystudio.netbook.model.ShelfMsg;
 import com.clilystudio.netbook.model.ShelfMsgRoot;
 import com.clilystudio.netbook.model.TxtFileObject;
+import com.clilystudio.netbook.reader.dl.BookDownloadManager;
 import com.clilystudio.netbook.reader.txt.U;
 import com.clilystudio.netbook.ui.BookInfoActivity;
 import com.clilystudio.netbook.ui.feed.FeedIntroActivity;
@@ -496,7 +497,7 @@ public class HomeShelfFragment extends Fragment implements AbsListView.OnScrollL
     }
 
     static /* synthetic */ void c(HomeShelfFragment homeShelfFragment, BookReadRecord bookReadRecord) {
-        new com.clilystudio.netbook.reader.dl.a(homeShelfFragment.getActivity()).a(bookReadRecord);
+        new BookDownloadManager(homeShelfFragment.getActivity()).startDownload(bookReadRecord);
     }
 
     static /* synthetic */ void c(final HomeShelfFragment homeShelfFragment, final BookShelf bookShelf) {

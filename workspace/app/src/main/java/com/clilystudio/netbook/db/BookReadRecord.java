@@ -223,11 +223,11 @@ public class BookReadRecord extends Model {
         MixTocRecord.deleteByBookId(string);
     }
 
-    public static BookReadRecord get(String string) {
-        if (string == null) {
+    public static BookReadRecord get(String bookId) {
+        if (bookId == null) {
             return null;
         }
-        return (BookReadRecord) new Select().from(BookReadRecord.class).where("book_id = ?", string).executeSingle();
+        return (BookReadRecord) new Select().from(BookReadRecord.class).where("book_id = ?", bookId).executeSingle();
     }
 
     public static List<BookReadRecord> getAll() {

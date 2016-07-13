@@ -45,16 +45,16 @@ public class BookDlRecord extends Model {
         return !TextUtils.isEmpty(bookDlRecord.getBookTitle()) && !TextUtils.isEmpty(bookDlRecord.getBookId());
     }
 
-    public static void create(String string, String string2, String string3, String string4, int n, int n2, int n3, int n4) {
+    public static void create(String bookId, String bookTitle, String author, String tocId, int mode, int start, int total, int status) {
         BookDlRecord bookDlRecord = new BookDlRecord();
-        bookDlRecord.bookId = string;
-        bookDlRecord.bookTitle = string2;
-        bookDlRecord.author = string3;
-        bookDlRecord.tocId = string4;
-        bookDlRecord.mode = n;
-        bookDlRecord.start = n2;
-        bookDlRecord.total = n3;
-        bookDlRecord.status = n4;
+        bookDlRecord.bookId = bookId;
+        bookDlRecord.bookTitle = bookTitle;
+        bookDlRecord.author = author;
+        bookDlRecord.tocId = tocId;
+        bookDlRecord.mode = mode;
+        bookDlRecord.start = start;
+        bookDlRecord.total = total;
+        bookDlRecord.status = status;
         bookDlRecord.created = new Date();
         bookDlRecord.save();
     }

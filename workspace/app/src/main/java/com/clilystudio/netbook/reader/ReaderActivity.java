@@ -47,6 +47,7 @@ import com.clilystudio.netbook.event.ModeChangedEvent;
 import com.clilystudio.netbook.model.ChapterKeysRoot;
 import com.clilystudio.netbook.model.ChapterLink;
 import com.clilystudio.netbook.model.TopicCount;
+import com.clilystudio.netbook.reader.dl.BookDownloadManager;
 import com.clilystudio.netbook.ui.BaseReadSlmActivity;
 import com.clilystudio.netbook.ui.BookInfoActivity;
 import com.clilystudio.netbook.util.BookInfoUtil;
@@ -252,9 +253,9 @@ public class ReaderActivity extends BaseReadSlmActivity implements View.OnClickL
                         ReaderActivity.ad(readerActivity);
                     }
                     ReaderActivity.ah(readerActivity).setVisibility(View.VISIBLE);
-                    com.clilystudio.netbook.reader.dl.a a2 = new com.clilystudio.netbook.reader.dl.a(readerActivity);
+                    BookDownloadManager a2 = new BookDownloadManager(readerActivity);
                     MyApplication.getInstance().getChapterCacheMap().put(ReaderActivity.M(readerActivity), ReaderActivity.Y(readerActivity).d());
-                    a2.a(ReaderActivity.M(readerActivity), n4, ReaderActivity.ai(readerActivity));
+                    a2.startDownload(ReaderActivity.M(readerActivity), n4, ReaderActivity.ai(readerActivity));
                 }
             }).create().show();
         }

@@ -20,7 +20,7 @@ import com.clilystudio.netbook.event.DownloadProgressEvent;
 import com.clilystudio.netbook.event.DownloadStatusEvent;
 import com.clilystudio.netbook.model.BookFeed;
 import com.clilystudio.netbook.model.BookShelf;
-import com.clilystudio.netbook.reader.dl.a;
+import com.clilystudio.netbook.reader.dl.BookDownloadManager;
 import com.clilystudio.netbook.widget.BookShelfFlagView;
 import com.clilystudio.netbook.widget.CoverLoadingLayer;
 import com.clilystudio.netbook.widget.CoverView;
@@ -310,7 +310,7 @@ public class HomeShelfAdapter extends BaseBookAdapter<BookShelf> {
 
                     @Override
                     public void b() {
-                       new a((Activity)HomeShelfAdapter.this.b).a(var24_14, 0, 0);
+                       new BookDownloadManager((Activity)HomeShelfAdapter.this.b).startDownload(var24_14, 0, 0);
                    }
 
                     @Override
